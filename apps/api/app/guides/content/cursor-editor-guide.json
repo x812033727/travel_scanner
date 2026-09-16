@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Cursor 是以 VS Code 程式碼為基礎改寫的編輯器，介面與預設快捷鍵幾乎沒變，多出來的是三種 AI 用法：邊打字邊冒出灰字的 Tab 補全、側邊欄的 Chat，以及會自己改多個檔案、跑指令的代理（Agent）。三種用法解決的問題不同，分清楚再決定要不要付費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Cursor 是以 VS Code 程式碼為基礎改寫的編輯器，介面與預設快捷鍵幾乎沒變，多出來的是三種 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 用法：邊打字邊冒出灰字的 Tab 補全、側邊欄的 Chat，以及會自己改多個檔案、跑指令的代理（Agent）。三種用法解決的問題不同，分清楚再決定要不要付費。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -76,9 +91,15 @@
           "text": "Import 會把擴充功能、佈景主題、設定與鍵盤配置一次帶過來，前提是同一台電腦真的裝著 VS Code。換新電腦就先在 VS Code 用命令選擇區找 Preferences: Open Profiles (UI) 匯出設定檔，再到 Cursor 用同一個命令匯入。搬完確認常用的擴充功能是否都在，Open VSX 上不一定有。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜VS Code 與 JetBrains 整合",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-ide-integration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜VS Code 與 JetBrains 整合",
+              "kind": "life",
+              "slug": "claude-code-ide-integration"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -104,9 +125,15 @@
           "text": "不想被打斷時，右下角的 Tab 狀態指示器可以暫停一段時間、整個關掉，或只對某些副檔名關掉，例如寫 Markdown 或 JSON 的時候。覺得 Tab 鍵和縮排習慣打架，到鍵盤快捷鍵設定搜尋 Accept Cursor Tab Suggestions 換一個鍵。"
         },
         {
-          "type": "link",
-          "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
-          "url": "https://mokaair.com/zh-TW/life/github-copilot-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+              "kind": "life",
+              "slug": "github-copilot-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -164,9 +191,15 @@
           "text": "代理可以直接在你的電腦上執行終端機指令。官方把 Auto-review 形容成多數人最實用的設定，卻也在同一頁明說它不是資安邊界：審查的分類模型會判斷錯，可能放行你本來會擋下的指令。剛開始就選 Allowlist，在乾淨的 Git 分支上做事，提交前自己看過差異。"
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -192,9 +225,15 @@
           "text": "模型在對話框的模型選單切換。Cursor 把模型分成兩個用量池：Cursor Models 收自家與合作訓練的 Grok 4.6、Grok 4.5 與 Composer 2.5，Other Models 收 OpenAI、Anthropic、Google 等第三方模型，按各家 API 價格計費。不想自己挑就用自動（Auto），官方說它分成 Cost、Balance 與 Intelligence 三種取向。"
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -268,19 +307,37 @@
           "text": "隱私模式（Privacy Mode）要自己確認。官方說法很直接：開啟後你的程式碼絕不會被 Cursor 或模型供應商拿去訓練。打開方式是按 Cmd + Shift + J（Windows 與 Linux 按 Ctrl + Shift + J）開啟設定，點左側 General，把 Privacy Mode 切開；Enterprise 團隊預設開啟。同一頁也說明：即使開著，提示詞與程式碼脈絡仍會送到 OpenAI、Anthropic、Google 等供應商。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+              "kind": "life",
+              "slug": "ai-coding-cost-tokens-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "氛圍編碼（Vibe Coding）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "氛圍編碼（Vibe Coding）是什麼",
+              "kind": "life",
+              "slug": "ai-term-vibe-coding"
+            }
+          ]
         }
       ],
       "sources": [

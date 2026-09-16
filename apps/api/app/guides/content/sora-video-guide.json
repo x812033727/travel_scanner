@@ -43,8 +43,23 @@
           "text": "官方的停止服務說明只有兩句是日期：Sora 的網站與 App 已於 2026 年 4 月 26 日停止，Sora API 將於 2026 年 9 月 24 日停止。開發者文件的棄用頁攤開細節：Videos API、sora-2 與 sora-2-pro 兩個別名，加上三個日期版快照，共六列全部在該日從 API 移除。"
         },
         {
-          "type": "paragraph",
-          "text": "那張表最值得看的是最後一欄。其他被淘汰的模型都填了建議替代，Sora 這六列全是空的，官方沒有指定接手的模型。模型頁上 Sora 2 與 Sora 2 Pro 都掛著 Legacy 標記，底下的快照標成 Deprecated。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "那張表最值得看的是最後一欄。其他被淘汰的模型都填了建議替代，Sora 這六列全是空的，官方沒有指定接手的模型。模型頁上 Sora 2 與 Sora 2 Pro 都掛著 Legacy "
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，底下的快照標成 Deprecated。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -170,36 +185,40 @@
               "text": "拿這張表對照還在營運的工具："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Veo 與 Google Flow：影片、分鏡與匯出",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
               "text": "，中文介面看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-              "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
             },
             {
               "type": "text",
               "text": "，想橫向比較就看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
-              "url": "https://mokaair.com/zh-TW/life/ai-video-tools-compared"
+              "kind": "life",
+              "slug": "ai-video-tools-compared"
             },
             {
               "type": "text",
               "text": "；原理看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
             },
             {
               "type": "text",
@@ -262,8 +281,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "OpenAI 現在的內容憑證檢查（Content Provenance）找兩種訊號：C2PA 內容憑證（Content Credentials）是寫進圖片的簽章後設資料，含簽發者與是否由 AI 生成；SynthID 則是直接嵌在媒體本身的浮水印，圖片與音訊都適用。官方另有網頁版查驗工具。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 現在的內容憑證檢查（Content Provenance）找兩種訊號：C2PA 內容憑證（Content Credentials）是寫進圖片的簽章後設資料，含簽發者與是否由 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生成；SynthID 則是直接嵌在媒體本身的浮水印，圖片與音訊都適用。官方另有網頁版查驗工具。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -274,14 +308,26 @@
           "text": "結果也容易誤讀。官方寫著 not_detected 只代表沒找到它支援的訊號，不代表不是 AI 生成：後設資料可能在轉檔時被清掉、浮水印可能衰減、也可能來自別家的模型。"
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -305,18 +351,30 @@
           "text": "「ChatGPT 裡面還能生影片嗎？」查證當天，Plus、Pro、Go 的官方說明頁列出的功能裡沒有影片生成，Plus 寫的是圖片生成。之後會不會加回來，以官網的方案說明頁為準。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "「已經下載的舊影片還能用嗎？」檔案在你手上，但公開發布是另一件事：著作權與各平台的 AI 內容標示規範各有寫法，上傳前先看平台當下怎麼要求。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         }
       ],
       "sources": [

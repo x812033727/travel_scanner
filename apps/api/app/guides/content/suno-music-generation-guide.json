@@ -62,9 +62,15 @@
           "text": "官方把免費下載分成兩種情況：2026 年 9 月 3 日之前加入的免費使用者最多有 7 次試用下載，之後加入的可能偶爾拿到，兩種都可以另外加購。試用下載會留著、不每月補充，而且明文不適用商業用途。下載額度只管「把檔案帶離平台」：在 Suno 上聽、用連結分享整個資料庫，官方寫所有方案都不受限制。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
-          "url": "https://mokaair.com/zh-TW/life/minimax-music-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+              "kind": "life",
+              "slug": "minimax-music-generation"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -90,17 +96,38 @@
           "code": "【Lyrics 歌詞欄位】\n[Intro]\n夜班公車 停在第七個路口\n\n[Verse]\n便利商店的燈 白得像白天\n我把耳機音量 調到蓋過雨聲\n明天的事 留給明天再說\n\n[Pre-Chorus]\n再兩站 就到家\n再兩句 就說完\n\n[Chorus]\n所以我們慢慢走\n把整條回家的路 走成一首歌\n所以我們慢慢走\n沒有人在等 也沒關係\n\n[Bridge]\n如果天亮以前 雨停了\n我就把這一段 留給你\n\n[Outro]\n夜班公車 開走了\n\n【Styles 風格欄位】\ndream pop, mid-tempo, female vocal, clean electric guitar,\nwarm analog synth pads, soft brushed drums, reverb-heavy,\nmelancholic but hopeful\n\n【Advanced / Exclude 排除欄位】\nheavy distortion, rap vocals, saxophone\n\n【Title 標題欄位】\n夜班公車\n"
         },
         {
-          "type": "paragraph",
-          "text": "段落標記的字直接照官方的音樂詞彙表：Intro、Verse、Pre-Chorus、Chorus、Bridge、Outro 都在表上。同一份詞彙表建議把速度、力度與樂器寫進提示詞，官方舉的例子像「upbeat allegro pop」「crescendo into powerful chorus」「sparse piano and vocals」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "段落"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "的字直接照官方的音樂詞彙表：Intro、Verse、Pre-Chorus、Chorus、Bridge、Outro 都在表上。同一份詞彙表建議把速度、力度與樂器寫進提示詞，官方舉的例子像「upbeat allegro pop」「crescendo into powerful chorus」「sparse piano and vocals」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "歌詞的歸屬官方寫得很清楚：不論你用哪一個方案，你輸入的原創歌詞的所有權與權利都還是你的；如果歌詞是別人寫的，官方要求先取得授權。"
         },
         {
-          "type": "link",
-          "text": "ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看",
-          "url": "https://mokaair.com/zh-TW/life/ai-voice-cloning-elevenlabs"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看",
+              "kind": "life",
+              "slug": "ai-voice-cloning-elevenlabs"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -120,9 +147,15 @@
           "text": "v6 之前的模型全部退場。官方寫舊模型只是不能再生成新歌，既有的歌還留在資料庫裡可以聽、分享、重新母帶（Remaster）與翻唱，但新的產出一律由 v6 系列生成，聲音可能跟原本那次不同。"
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -170,9 +203,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
-          "url": "https://mokaair.com/zh-TW/life/adobe-podcast-audio"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
+              "kind": "life",
+              "slug": "adobe-podcast-audio"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -230,9 +269,15 @@
           "text": "點數用完不代表要停工。官方寫 Pro 與 Premier 的月額度用完後，隔天起會拿到跟免費方案一樣的每天 50 點，而且只要訂閱還在，用這 50 點做的歌一樣有商用權；一旦退回免費層，之後做的新歌就不再符合商用資格。"
         },
         {
-          "type": "link",
-          "text": "Envato 音樂素材怎麼用：專案授權與上傳後申訴",
-          "url": "https://mokaair.com/zh-TW/life/envato-music-license"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Envato 音樂素材怎麼用：專案授權與上傳後申訴",
+              "kind": "life",
+              "slug": "envato-music-license"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -240,8 +285,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "服務條款頁自己標示最後修訂日 2026 年 8 月 10 日、生效日 2026 年 9 月 3 日，裡面把方案分兩段寫。Pro 與 Premier 那段的原文是 Suno 把它擁有的、由你的輸入所生成的產出（Output）的一切權利、所有權與利益「讓與」給你，但同一句接著寫，基於機器學習的性質，Suno 不保證任何產出會產生著作權。免費或基本方案那段則寫你承諾只把產出用於合法的、個人的、非商業的用途。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "服務條款頁自己標示最後修訂日 2026 年 8 月 10 日、生效日 2026 年 9 月 3 日，裡面把方案分兩段寫。Pro 與 Premier 那段的原文是 Suno 把它擁有的、由你的輸入所生成的產出（Output）的一切權利、所有權與利益「讓與」給你，但同一句接著寫，基於"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "的性質，Suno 不保證任何產出會產生著作權。免費或基本方案那段則寫你承諾只把產出用於合法的、個人的、非商業的用途。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -266,14 +326,26 @@
           "text": "條款把商用權綁在合法下載上：沒有下載過的產出不能商用，而 Pro 每月 20 次、Premier 每月 60 次的額度不滾存、每個帳單日重設，所以要發行的歌先在平台上聽完、確定版本再下載，不要用額度試聽。免費方案的 7 次終身試用下載不附商用權，事後升級預設也不會追溯授權免費期間做的歌，官方寫例外情況存在但不保證。"
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         }
       ],
       "sources": [

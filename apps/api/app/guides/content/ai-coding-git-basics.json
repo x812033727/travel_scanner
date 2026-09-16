@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "讓 AI 代理改程式最常出事的不是它寫錯，而是它寫錯了你回不去。解法不是先學整套 Git，而是先學會做檢查點：隨時能回到「還沒讓它動手之前」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "改程式最常出事的不是它寫錯，而是它寫錯了你回不去。解法不是先學整套 Git，而是先學會做檢查點：隨時能回到「還沒讓它動手之前」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -59,9 +74,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
           "type": "image",
@@ -102,9 +123,15 @@
           "code": "git config --global user.name \"你的名字\"\ngit config --global user.email \"you@example.com\"\ngit config --global init.defaultBranch main\n\n# 看目前的設定，以及每一條是從哪個檔案來的\ngit config --list --show-origin"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜終端機、路徑與 Git 基礎",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-terminal-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜終端機、路徑與 Git 基礎",
+              "kind": "life",
+              "slug": "claude-code-terminal-git-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -131,8 +158,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "代理說「改好了」不等於改對了。git diff 不加參數看的是工作目錄相對於索引，也就是還沒 add 的部分；--staged 看索引相對於上一個提交，也就是現在 commit 會提交什麼；HEAD 是兩邊加起來。git log 則是看歷史，官方文件說明 --graph 會在左邊畫出分支與合併的文字圖。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "代理說「改好了」不等於改對了。git diff 不加"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "看的是工作目錄相對於索引，也就是還沒 add 的部分；--staged 看索引相對於上一個提交，也就是現在 commit 會提交什麼；HEAD 是兩邊加起來。git log 則是看歷史，官方文件說明 --graph 會在左邊畫出分支與合併的文字圖。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -141,14 +183,26 @@
           "code": "git diff              # 還沒暫存的修改\ngit diff --staged     # 已暫存、下一個提交會帶走的修改\ngit diff HEAD         # 相對於上一個提交的全部改動\ngit diff --stat       # 只看哪些檔案各動了幾行\n\ngit log --oneline --graph    # 一行一個提交，左邊附分支圖\ngit log -p README.md         # 這個檔案每次改了什麼"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜Git、差異審查與 PR",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-git-review-pr"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜Git、差異審查與 PR",
+              "kind": "life",
+              "slug": "claude-code-git-review-pr"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+              "kind": "life",
+              "slug": "ai-code-review-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -174,9 +228,15 @@
           "text": "刪分支有兩級：git branch -d 要求已完全合併才肯刪，git branch -D 是 --delete --force 的簡寫，沒合併也照刪。試錯分支確定不要才用 -D。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜Git Worktree 平行工作",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-worktrees-parallel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜Git Worktree 平行工作",
+              "kind": "life",
+              "slug": "claude-code-worktrees-parallel"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -320,22 +380,49 @@
           "text": "多數程式代理都有自己的還原功能。以 Claude Code 為例，官方文件說明它會在你送出每一個開啟新回合的提示詞之前自動建立檢查點，用 /rewind 叫出選單，可選擇只還原程式碼、只還原對話或兩者。"
         },
         {
-          "type": "paragraph",
-          "text": "但範圍有明確邊界，官方文件都列出來了：bash 指令改掉的檔案不會被追蹤；子代理做的修改通常不在這個 session 的檢查點裡，官方直接寫那種情況要用 Git 還原；在 Claude Code 之外手動改的也不算。一個 session 只留最近 100 個檢查點的快照，預設在最後一次存檔約 30 天後清掉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "但範圍有明確邊界，官方文件都列出來了：bash 指令改掉的檔案不會被追蹤；"
+            },
+            {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "做的修改通常不在這個 session 的檢查點裡，官方直接寫那種情況要用 Git 還原；在 Claude Code 之外手動改的也不算。一個 session 只留最近 100 個檢查點的快照，預設在最後一次存檔約 30 天後清掉。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "官方文件那一節的標題就叫「不是版本控制的替代品」：檢查點是為了 session 層級的快速復原，長期歷史與協作還是要用 Git。分界線很好記——那個狀態你想留到明天，就 commit。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜Checkpoint 與 /rewind",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-checkpoints-rewind"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜Checkpoint 與 /rewind",
+              "kind": "life",
+              "slug": "claude-code-checkpoints-rewind"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
-          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

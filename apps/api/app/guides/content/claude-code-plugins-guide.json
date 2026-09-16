@@ -25,8 +25,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Plugin 可以把 Skills、代理、Hooks、MCP 或語言伺服器相關設定打包，方便安裝與管理。本篇會從官方目錄查看一個外掛的內容、選擇作用範圍、完成一次能力驗證，再練習停用與移除。安裝成功只是開始，還要確認依賴、登入與實際工具能否使用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Plugin 可以把 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "、代理、Hooks、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 或語言伺服器相關設定打包，方便安裝與管理。本篇會從官方目錄查看一個外掛的內容、選擇作用範圍、完成一次能力驗證，再練習停用與移除。安裝成功只是開始，還要確認依賴、登入與實際工具能否使用。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

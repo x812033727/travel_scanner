@@ -39,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "色相用來描述偏紅、偏綠或偏藍等色彩方向；彩度描述顏色由灰到鮮明的程度；明度則協助調整深淺。CSS 的 HSL 以色相、飽和度與亮度參數表示 sRGB 色彩，讓你不必只靠紅綠藍三個通道猜測結果。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "色相用來描述偏紅、偏綠或偏藍等色彩方向；彩度描述顏色由灰到鮮明的程度；明度則協助調整深淺。CSS 的 HSL 以色相、飽和度與亮度"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "表示 sRGB 色彩，讓你不必只靠紅綠藍三個通道猜測結果。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -98,8 +113,23 @@
           "text": "本文以不透明 sRGB 色碼和純白背景計算：#777777 約為 4.478:1，未達一般文字的 4.5:1；#666666 約為 5.742:1，達到這項門檻。判定時要使用未四捨五入的數值，不能把前者顯示成 4.5 就視為通過。"
         },
         {
-          "type": "paragraph",
-          "text": "深青綠 #0D6B68 與白色的對比約為 6.325:1，可作本例的候選組合。這只檢查指定色對；透明度、圖片背景、漸層和狀態變化都可能改變結果。字型筆畫、字級及閱讀環境仍會影響體驗，應在實際頁面檢查，而不只看色票工具上的通過標記。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "深青綠 #0D6B68 與白色的對比約為 6.325:1，可作本例的候選組合。這只檢查指定色對；透明度、圖片背景、漸層和狀態變化都可能改變結果。字型筆畫、字級及閱讀環境仍會影響體驗，應在實際頁面檢查，而不只看色票工具上的通過"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -206,19 +236,37 @@
           "text": "請核對實際文字背景、透明度、圖片與互動狀態。對比只是驗收的一部分，還需確認資訊不只靠顏色，以及內容與操作本身是否清楚。"
         },
         {
-          "type": "link",
-          "text": "搭配字級與間距建立閱讀層級",
-          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "搭配字級與間距建立閱讀層級",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用原型任務檢查實際操作",
-          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用原型任務檢查實際操作",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理品牌語氣與設計假設",
-          "url": "https://mokaair.com/zh-TW/life/brand-tone-vibe-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理品牌語氣與設計假設",
+              "kind": "life",
+              "slug": "brand-tone-vibe-marketing"
+            }
+          ]
         }
       ],
       "sources": [

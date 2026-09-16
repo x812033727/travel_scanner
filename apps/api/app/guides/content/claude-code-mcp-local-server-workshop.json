@@ -25,8 +25,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "本篇讓 Claude 讀取你自己提供的待辦資料。你會建立唯讀 MCP server，先用測試客戶端驗證工具清單與呼叫結果，再連進 Claude Code。完成不是畫面顯示 Connected，而是工具真的回傳指定資料、參數錯誤可以辨認，而且伺服器沒有修改原始檔案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇讓 Claude 讀取你自己提供的待辦資料。你會建立唯讀 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " server，先用測試客戶端驗證工具清單與呼叫結果，再連進 Claude Code。完成不是畫面顯示 Connected，而是工具真的回傳指定資料、"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "錯誤可以辨認，而且伺服器沒有修改原始檔案。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

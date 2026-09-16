@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "「幫我寫一個公式」是很多人第一次把 ChatGPT 當 Excel AI 用的理由，也最常拿到一條貼上就報錯的公式。這篇回答的問題是：Excel 的問題要怎麼描述，它才會給出一條能直接貼上、貼上後你也知道對不對的公式。結論是三件事：先講清楚 Excel 版本與欄位並附三列範例；貼回去後用一格手算或小樣本驗證；改不掉的重複步驟才請它寫 VBA，而且先在新檔案上跑。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「幫我寫一個公式」是很多人第一次把 ChatGPT 當 Excel "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 用的理由，也最常拿到一條貼上就報錯的公式。這篇回答的問題是：Excel 的問題要怎麼描述，它才會給出一條能直接貼上、貼上後你也知道對不對的公式。結論是三件事：先講清楚 Excel 版本與欄位並附三列範例；貼回去後用一格手算或小樣本驗證；改不掉的重複步驟才請它寫 VBA，而且先在新檔案上跑。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -58,14 +73,26 @@
           "text": "本篇六個問題都用同一份假想的表，提示詞的開頭固定是：「我用 Microsoft 365 的 Excel（Windows）。訂單工作表：A 訂單編號、B 日期（日期格式）、C 客戶、D 業務、E 金額、F 狀態，第 1 列標題，資料在第 2 到 500 列；客戶工作表：A 客戶名稱、B 地區、C 業務窗口。範例：……」，後面接那一題的要求，一次只問一題。它給的公式複製到儲存格時，確認開頭有等號、沒有多出前後的引號。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -73,8 +100,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "問題 1，跨表查找。要求寫成：「在訂單工作表 G2 放公式，用 C 欄的客戶名稱到客戶工作表 A 欄找同名的列，回傳那一列 B 欄的地區，找不到顯示查無。」Microsoft 365 它會給 =XLOOKUP(C2,客戶!$A$2:$A$500,客戶!$B$2:$B$500,\"查無\")。四個參數依序是：要找的值 C2、去哪一欄找、找到後回傳哪一欄、找不到時顯示什麼；後兩個範圍用 $ 鎖住，往下填滿時才不會跟著位移。Excel 2016 與 2019 沒有 XLOOKUP，要它改寫成 =IFERROR(INDEX(客戶!$B$2:$B$500,MATCH(C2,客戶!$A$2:$A$500,0)),\"查無\")：MATCH 找出客戶在第幾列，INDEX 回傳那一列的地區，最後的 0 代表完全相符，IFERROR 把找不到時的錯誤值換成「查無」。驗證：挑一個客戶，自己到客戶工作表翻它的地區對一次；再填一個不存在的客戶名，確認出現查無而不是 #N/A；明明有卻查無，多半是一邊的名稱尾巴多了空白，先用 TRIM 清掉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "問題 1，跨表查找。要求寫成：「在訂單工作表 G2 放公式，用 C 欄的客戶名稱到客戶工作表 A 欄找同名的列，回傳那一列 B 欄的地區，找不到顯示查無。」Microsoft 365 它會給 =XLOOKUP(C2,客戶!$A$2:$A$500,客戶!$B$2:$B$500,\"查無\")。四個"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "依序是：要找的值 C2、去哪一欄找、找到後回傳哪一欄、找不到時顯示什麼；後兩個範圍用 $ 鎖住，往下填滿時才不會跟著位移。Excel 2016 與 2019 沒有 XLOOKUP，要它改寫成 =IFERROR(INDEX(客戶!$B$2:$B$500,MATCH(C2,客戶!$A$2:$A$500,0)),\"查無\")：MATCH 找出客戶在第幾列，INDEX 回傳那一列的地區，最後的 0 代表完全相符，IFERROR 把找不到時的錯誤值換成「查無」。驗證：挑一個客戶，自己到客戶工作表翻它的地區對一次；再填一個不存在的客戶名，確認出現查無而不是 #N/A；明明有卻查無，多半是一邊的名稱尾巴多了空白，先用 TRIM 清掉。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -176,14 +218,26 @@
           "text": "清完之後用新欄計算、把原欄隱藏，不要把結果貼回原欄蓋掉原始資料，轉錯還有得救。整份表每一欄都要清的話，直接上傳檔案請它處理比一條一條公式快，那是另外兩篇的範圍。"
         },
         {
-          "type": "link",
-          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+              "kind": "life",
+              "slug": "chatgpt-file-upload-analysis"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+              "kind": "life",
+              "slug": "chatgpt-data-analysis-csv"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -209,9 +263,15 @@
           "text": "驗證固定三個動作：一格手算（挑一列自己算，對公式的結果）、小樣本（前 10 列複製到新工作表跑一次，眼睛看得完）、邊界值（空白、查不到、金額為 0 的列各放一列進範例）。錯了就把錯誤訊息與那一格的內容原封不動貼回去追問：「G5 顯示 #N/A，C5 的內容是『大安店 』，客戶工作表 A 欄有『大安店』」，它會看出尾端的空白。追問時同一個對話問到底，它記得你的欄位；開新對話就要把描述格式再貼一次。它給的公式再順也只是根據你的描述推測，跟它說的其他事一樣要查。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "table",

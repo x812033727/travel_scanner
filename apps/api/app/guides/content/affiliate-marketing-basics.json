@@ -98,8 +98,23 @@
           "text": "原創示例可寫成：本篇部分連結為合作連結，透過連結完成符合條件的購買，我們可能收到佣金。這是揭露架構，實際還要符合合作計畫的指定聲明及適用要求。Amazon 對合作身分另有明確的揭露條款，不能假設自己的一句通用說明可取代所有平台規定。"
         },
         {
-          "type": "paragraph",
-          "text": "網站付費或聯盟連結也應依 Google 搜尋指引設定合適的 rel 屬性，sponsored 是偏好的標記方式，nofollow 仍可接受。但這種程式碼標記不會替代讀者看得到的利益揭露；寫了揭露也不表示可以使用不實評價，沒有試過就不應寫成長期使用心得。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網站付費或聯盟連結也應依 Google 搜尋指引設定合適的 rel 屬性，sponsored 是偏好的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "方式，nofollow 仍可接受。但這種程式碼標記不會替代讀者看得到的利益揭露；寫了揭露也不表示可以使用不實評價，沒有試過就不應寫成長期使用心得。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -206,19 +221,37 @@
           "text": "佣金還受到商品、歸因、交易有效性及退貨條件影響。先核對計畫的完整規則，再以核銷與收款結果計算收入。"
         },
         {
-          "type": "link",
-          "text": "看懂廣告與收入的完整成本",
-          "url": "https://mokaair.com/zh-TW/life/marketing-metrics-roi-roas"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "看懂廣告與收入的完整成本",
+              "kind": "life",
+              "slug": "marketing-metrics-roi-roas"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "處理創作者合作的內容與揭露",
-          "url": "https://mokaair.com/zh-TW/life/influencer-collaboration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "處理創作者合作的內容與揭露",
+              "kind": "life",
+              "slug": "influencer-collaboration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "管理連結命名及追蹤範圍",
-          "url": "https://mokaair.com/zh-TW/life/utm-link-conventions"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "管理連結命名及追蹤範圍",
+              "kind": "life",
+              "slug": "utm-link-conventions"
+            }
+          ]
         }
       ],
       "sources": [

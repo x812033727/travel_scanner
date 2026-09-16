@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Perplexity 把搜尋結果直接寫成一段答案，句子後面掛著編號，點下去就是它讀的那個網頁。結論先說：它適合「我想知道某件事，而且要看得到出處」的題目；要創作、要長篇改稿，回去用聊天型的工具比較順手。搜「搜尋 AI」找 Google 以外選項的人，它是最常被點名的一個。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Perplexity 把搜尋結果直接寫成一段答案，句子後面掛著編號，點下去就是它讀的那個網頁。結論先說：它適合「我想知道某件事，而且要看得到出處」的題目；要創作、要長篇改稿，回去用聊天型的工具比較順手。搜「搜尋 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」找 Google 以外選項的人，它是最常被點名的一個。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -64,9 +79,15 @@
           "text": "這種「先檢索、再讓模型根據檢索到的內容作答」的做法有個統一的名字，各家 AI 搜尋都建立在同一套原理上。"
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -88,23 +109,41 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-search-vs-google"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+              "kind": "life",
+              "slug": "chatgpt-search-vs-google"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google 搜尋 AI 模式：追問與來源判讀",
-          "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google 搜尋 AI 模式：追問與來源判讀",
+              "kind": "life",
+              "slug": "google-ai-mode-search"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "另一種做法是把 AI 助手直接放在社群平台裡，回答時大量引用平台上的貼文，那又是另一套取捨。"
         },
         {
-          "type": "link",
-          "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
-          "url": "https://mokaair.com/zh-TW/life/grok-xai-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
+              "kind": "life",
+              "slug": "grok-xai-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -172,9 +211,15 @@
           "text": "要注意兩件事。第一，免費版的 Pro Search 次數，官方方案比較表寫每天 3 次，另一篇較舊的帳號說明卻寫每天 5 次，兩個數字都掛在官網上，實際可用次數以你帳號裡顯示的為準。第二，付費版的額度官方只寫「每週額度（一般使用）」這種文字，沒有公開確切數字，只有企業方案才列出每週 400 次、每月 80 次這類值。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -190,14 +235,26 @@
           "text": "Deep Research 官方寫多數研究任務在 3 分鐘內完成，實際產出一份回答大約要等 4 到 5 分鐘；這個模式不能自己指定模型，官方寫它會依研究需求自動挑一組最合適的模型。同樣是要等上好幾分鐘的研究功能，其他家的做法可以對照著看。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-deep-research-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
+              "kind": "life",
+              "slug": "chatgpt-deep-research-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Deep Research：研究計畫、來源與報告",
-          "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Deep Research：研究計畫、來源與報告",
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
+            }
+          ]
         },
         {
           "type": "code",
@@ -206,12 +263,42 @@
           "code": "請回答：<你的問題>\n規則：\n- 每個數字、日期、金額後面標出處，出處限官方網站或政府網站\n- 官方頁面查不到就寫「查不到」，不要用推估的數字\n- 最後列出你實際讀過的網址，一行一個"
         },
         {
-          "type": "paragraph",
-          "text": "模型清單官方說會隨著新模型推出而更新。撰稿當天說明中心列的 Pro Search 可選模型是 GPT-5.4、Claude Sonnet 4.6、Nemotron 3 Super 120B with Thinking，另外 GPT-5.5 與 Claude Opus 4.7 只開給 Max 與企業方案；預設的「Best」模式則由系統依題型自動挑，官方寫這個模式不設額度上限。部分模型還有「Thinking」開關，打開就是切到推理模型的走法，適合多步驟的技術題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型清單官方說會隨著新模型推出而更新。撰稿當天說明中心列的 Pro Search 可選模型是 GPT-5.4、Claude Sonnet 4.6、Nemotron 3 Super 120B with Thinking，另外 GPT-5.5 與 Claude Opus 4.7 只開給 Max 與企業方案；預設的「Best」模式則由系統依題型自動挑，官方寫這個模式不設額度上限。部分模型還有「Thinking」開關，打開就是切到"
+            },
+            {
+              "type": "article",
+              "text": "推理模型",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "的走法，適合多步驟的技術題。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Spaces 是把同一個專案的對話、檔案與自訂指令收在一起的工作區，預設私密，可以邀人當檢視者或共編者，Pro 與 Max 每個 Space 最多五位共編者。檔案上傳的官方數字是單檔 50 MB；每個 Space 的檔案數 Pro 是 50 個、Max 與 Enterprise Pro 是 500 個、Enterprise Max 是 5,000 個。可以上傳純文字、程式碼、PDF、圖片，以及音訊與影片，官方會自動把語音轉成逐字稿並標記說話者，但影片畫面不會被索引。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Spaces 是把同一個專案的對話、檔案與自訂指令收在一起的工作區，預設私密，可以邀人當檢視者或共編者，Pro 與 Max 每個 Space 最多五位共編者。檔案上傳的官方數字是單檔 50 MB；每個 Space 的檔案數 Pro 是 50 個、Max 與 Enterprise Pro 是 500 個、Enterprise Max 是 5,000 個。可以上傳純文字、程式碼、PDF、圖片，以及音訊與影片，官方會自動把語音轉成逐字稿並"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "說話者，但影片畫面不會被索引。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -275,18 +362,30 @@
           "text": "會被錯誤引用的多半不是整段胡說，而是數字對不上、把舊版本的規則當成現行規則。判讀的方法另有一篇專門寫。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "對經營網站的人來說，這種「答案在上、連結在下」的介面代表一件事：內容要寫得容易被引用，結論明確、數字標出處、段落各自成立可以被單獨摘走。"
         },
         {
-          "type": "link",
-          "text": "AI 搜尋時代的內容整理：SEO、GEO 與 AEO 怎麼配合",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 搜尋時代的內容整理：SEO、GEO 與 AEO 怎麼配合",
+              "kind": "life",
+              "slug": "ai-search-geo-content"
+            }
+          ]
         }
       ],
       "sources": [

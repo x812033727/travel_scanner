@@ -25,12 +25,52 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "TAIDE 不是一個打開網頁就能聊天的服務，它是國科會的計畫，產出的是可以下載回自己電腦、自己部署的模型權重。國科會 2024 年 4 月 15 日的新聞稿寫著，計畫自 2023 年初推動，全名是可信任生成式 AI 發展先期計畫（Trustworthy AI Dialogue Engine），當天釋出的 TAIDE-LX-7B 建立在 Meta Llama-2-7B 上，額外擴充了繁體中文字元與字詞。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "TAIDE 不是一個打開網頁就能聊天的服務，它是國科會的計畫，產出的是可以下載回自己電腦、自己部署的模型權重。國科會 2024 年 4 月 15 日的新聞稿寫著，計畫自 2023 年初推動，全名是可信任"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 發展先期計畫（Trustworthy "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Dialogue Engine），當天釋出的 TAIDE-LX-7B 建立在 Meta Llama-2-7B 上，額外擴充了繁體中文字元與字詞。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇按官方頁面走一遍：現在有哪些版本、參數與基礎模型是什麼、兩份授權條款寫了哪些限制、從同意條款到在自己電腦跑起來要做哪幾步，還有繁中表現官方是用什麼題目、什麼方法評的。以 2026 年 9 月 15 日的 taide.tw、國科會網站與 Hugging Face 官方模型卡當天頁面為準，這裡不做實測，也不排名次。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇按官方頁面走一遍：現在有哪些版本、"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與基礎模型是什麼、兩份授權條款寫了哪些限制、從同意條款到在自己電腦跑起來要做哪幾步，還有繁中表現官方是用什麼題目、什麼方法評的。以 2026 年 9 月 15 日的 taide.tw、國科會網站與 Hugging Face 官方模型卡當天頁面為準，這裡不做實測，也不排名次。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -57,18 +97,20 @@
               "text": "權重可以下載、授權條款卻自己寫一份，這和標準的開源授權不一樣，判斷方式看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+              "kind": "life",
+              "slug": "ai-term-open-weights"
             },
             {
               "type": "text",
               "text": "，兩類模型對使用者的差別看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開源 vs 閉源模型：對使用者的差別",
-              "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+              "kind": "life",
+              "slug": "ai-open-vs-closed-models"
             },
             {
               "type": "text",
@@ -194,9 +236,10 @@
               "text": "條款還有一句值得留意：你對模型的使用行為不得違反中華民國法令或其他國家、國際組織適用法律，括號裡直接點名歐盟人工智慧法案。這部法案和台灣的規定各管到什麼，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
-              "url": "https://mokaair.com/zh-TW/life/ai-regulation-eu-act-taiwan"
+              "kind": "life",
+              "slug": "ai-regulation-eu-act-taiwan"
             },
             {
               "type": "text",
@@ -235,9 +278,10 @@
               "text": "這種倉庫在 Hugging Face 叫 gated model。官方文件寫，想用就必須先申請存取，也就是得先登入一個 Hugging Face 使用者帳號，而且申請只能從瀏覽器操作；核准分自動與人工兩種，自動核准的話會立刻取得檔案存取權，TAIDE 這 9 個公開版本設的就是自動核准。帳號怎麼開，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hugging Face 入門：找模型、看授權、下載",
-              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+              "kind": "life",
+              "slug": "huggingface-guide"
             },
             {
               "type": "text",
@@ -297,19 +341,37 @@
           "text": "圖形介面與終端機兩條路，站上各有一篇從安裝開始的專文；12.4B 這種規模跑不跑得動，先把硬體那篇看完再決定下載哪一個版本。"
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -317,8 +379,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "官方公布的評測有三套，題目與方法都寫在模型卡上。下面只轉述官方寫的內容，沒有做任何自行測試，也不排名次。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方公布的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "有三套，題目與方法都寫在模型卡上。下面只轉述官方寫的內容，沒有做任何自行測試，也不排名次。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -341,9 +418,10 @@
               "text": "要判斷夠不夠用，實際的做法是拿你真正要做的事去跑：把手上十到二十份真實的信件或摘要需求整理成一份固定題目，在不同版本上各跑一次，自己看輸出，而不是看別人的平均分。TAIDE-LX-7B 的模型卡也寫它適合會進一步微調的使用情境，這件事怎麼做可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
             },
             {
               "type": "text",
@@ -373,12 +451,23 @@
           "inlines": [
             {
               "type": "text",
-              "text": "台灣還有別的官方模型頁。聯發科研究團隊在 Hugging Face 的 MediaTek-Research 組織頁釋出 Breeze 系列，Llama-Breeze2-8B-Instruct 的模型卡寫它建立在 LLaMA 3.2 上、有 3B 與 8B 兩種規模、加了視覺與函式呼叫能力，授權標示 llama3.2；更早的 Breeze-7B-Instruct-v1_0 寫建立在 Mistral-7B 上，授權標示 apache-2.0。TAIDE 的上游家族也有一篇："
+              "text": "台灣還有別的官方模型頁。聯發科研究團隊在 Hugging Face 的 MediaTek-Research 組織頁釋出 Breeze 系列，Llama-Breeze2-8B-Instruct 的模型卡寫它建立在 LLaMA 3.2 上、有 3B 與 8B 兩種規模、加了視覺與"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "函式呼叫",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "能力，授權標示 llama3.2；更早的 Breeze-7B-Instruct-v1_0 寫建立在 Mistral-7B 上，授權標示 apache-2.0。TAIDE 的上游家族也有一篇："
+            },
+            {
+              "type": "article",
               "text": "Llama 模型家族：授權與版本",
-              "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+              "kind": "life",
+              "slug": "llama-models-explained"
             },
             {
               "type": "text",

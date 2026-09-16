@@ -90,8 +90,23 @@
           "code": "/mcp\n"
         },
         {
-          "type": "paragraph",
-          "text": "在清單中找到內建 computer-use 伺服器並選 Enable。這項開關按專案保存，不需要另行下載名稱相似的 MCP 套件。如果沒有這個項目，先核對作業系統、帳號方案與版本，而不是任意加入第三方螢幕控制工具。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在清單中找到內建 computer-use 伺服器並選 Enable。這項開關按專案保存，不需要另行下載名稱相似的 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 套件。如果沒有這個項目，先核對作業系統、帳號方案與版本，而不是任意加入第三方螢幕控制工具。"
+            }
+          ]
         },
         {
           "type": "paragraph",

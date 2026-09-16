@@ -202,8 +202,23 @@
           "text": "路徑反例：找到腳本，卻讀錯輸入位置"
         },
         {
-          "type": "paragraph",
-          "text": "先確定目前位於 codex-skill-lab，且技能資料夾內沒有另一份 data/tasks.json，再逐行執行下面兩行。第一行移到技能根目錄；第二行能找到 scripts/count-tasks.mjs，但會在錯誤位置找 data/tasks.json，預期 ENOENT、退出 1，沒有成功 JSON。立即讀取退出碼後，用最後一行回到練習根目錄，再重跑前面的完整命令，應恢復 3／1／2。不要把 SKILL.md 的相對連結基準套到腳本的輸入參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先確定目前位於 codex-skill-lab，且技能資料夾內沒有另一份 data/tasks.json，再逐行執行下面兩行。第一行移到技能根目錄；第二行能找到 scripts/count-tasks.mjs，但會在錯誤位置找 data/tasks.json，預期 ENOENT、退出 1，沒有成功 JSON。立即讀取退出碼後，用最後一行回到練習根目錄，再重跑前面的完整命令，應恢復 3／1／2。不要把 SKILL.md 的相對連結基準套到腳本的輸入"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -242,8 +257,23 @@
           "text": "步驟 5：使用技能並檢查交付"
         },
         {
-          "type": "paragraph",
-          "text": "從練習根目錄開始新任務。桌面版在技能入口或輸入 @ 後選擇 todo-summary；CLI／IDE 用 /skills 或輸入 $ 選擇。先確認選單中的名稱與檔案位置，若沒有出現，檢查專案根目錄和副檔名，重新開啟 Codex 後再試。以下是給代理的自然語言需求，不是要在 PowerShell 執行的命令。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "從練習根目錄開始新任務。桌面版在技能入口或輸入 @ 後選擇 todo-summary；CLI／IDE 用 /"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": " 或輸入 $ 選擇。先確認選單中的名稱與檔案位置，若沒有出現，檢查專案根目錄和副檔名，重新開啟 Codex 後再試。以下是給代理的自然語言需求，不是要在 PowerShell 執行的命令。"
+            }
+          ]
         },
         {
           "type": "code",

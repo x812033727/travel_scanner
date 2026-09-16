@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Canva 的 AI 功能不是另外買的外掛，而是綁在方案上：一部分工具隨方案附贈、不吃額度，其餘的共用同一份每月 AI 額度，工具等級愈高吃得愈兇；免費帳號拿到的是最小的那一份，而且完全沒有最高等級的工具可用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Canva 的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 功能不是另外買的外掛，而是綁在方案上：一部分工具隨方案附贈、不吃額度，其餘的共用同一份每月 AI 額度，工具等級愈高吃得愈兇；免費帳號拿到的是最小的那一份，而且完全沒有最高等級的工具可用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,9 +62,15 @@
           "text": "定價頁的方案對照表也不再有 Magic Media、Magic Design 這些舊名稱。圖片與影片生成改寫成「用 Canva AI 生成設計、元素與圖片」與「用 Canva AI 製作影片」，能連續對話、自己動手改整份設計的那個叫 Canva AI 2.0。看到教學裡的名字對不上選單時，以官網當天的頁面為準，不要拿舊名稱去找功能。"
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -57,8 +78,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "官方說明中心把 Canva 的 AI 工具分成兩類。第一類叫 AI 設計工具，隨方案附贈、不計入每月額度，但官方註明有合理使用限制；官方點名的例子是 Canva AI 的文字功能、Magic Write、照片與影片動畫、AI Voice，以及 Affinity 裡在裝置上執行的機器學習工具。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方說明中心把 Canva 的 AI 工具分成兩類。第一類叫 AI 設計工具，隨方案附贈、不計入每月額度，但官方註明有合理使用限制；官方點名的例子是 Canva AI 的文字功能、Magic Write、照片與影片動畫、AI Voice，以及 Affinity 裡在裝置上執行的"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "工具。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -210,23 +246,41 @@
           "text": "另外兩個細節值得記下來：定價頁寫的 Translate 是把文字翻成 100 種以上的語言，並且支援整批處理；企業方案才有的 Canva Shield AI 輸出補償需要至少 100 個席次，而「管理團隊成員能不能用 AI 工具」的管理控制項從 Business 方案起才有。"
         },
         {
-          "type": "link",
-          "text": "Canva 製作圖文：範本、版面與輸出品質檢查",
-          "url": "https://mokaair.com/zh-TW/life/canva-design-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Canva 製作圖文：範本、版面與輸出品質檢查",
+              "kind": "life",
+              "slug": "canva-design-workflow"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "去背與放大是最多人拿 Canva 當免費工具用的入口，但它在 Canva 屬於付費功能。要比較其他做法、或想確認輸出成什麼格式再上網站，可以接著看這兩篇。"
         },
         {
-          "type": "link",
-          "text": "AI 去背與放大：免費工具怎麼挑",
-          "url": "https://mokaair.com/zh-TW/life/ai-remove-background-upscale"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 去背與放大：免費工具怎麼挑",
+              "kind": "life",
+              "slug": "ai-remove-background-upscale"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -267,8 +321,33 @@
           "text": "條款自己舉了兩個例子：用 AI 編輯 Canva 圖庫裡的照片，那張輸出不歸你；用 AI 生成一份包含圖庫照片的簡報，整份簡報是你的，但裡面的個別照片只是授權給你使用。這條界線很實用：要印製、要授權出去、要放進客戶交付物的素材，盡量從自己上傳的檔案開始改，不要從圖庫照片改。條款另外提醒，因為這類技術的性質，輸出不保證唯一，別的使用者可能拿到很相似的結果。"
         },
         {
-          "type": "paragraph",
-          "text": "標示的規定寫在禁止事項裡：不可以讓任何人誤以為 AI 產品生成的內容是人寫的，也不可以移除、變更或停用 AI 生成內容上的來源與中繼資料標記，條款直接點名包含 C2PA 中繼資料。反過來說，官方頁面沒有寫每一種輸出都會自動嵌入內容憑證（Content Credentials），所以「你手上這個檔案到底有沒有被標記」要以官網說明與檔案本身為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "標示的規定寫在禁止事項裡：不可以讓任何人誤以為 AI 產品生成的內容是人寫的，也不可以移除、變更或停用 AI 生成內容上的來源與中繼資料"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，條款直接點名包含 C2PA 中繼資料。反過來說，官方頁面沒有寫每一種輸出都會自動嵌入"
+            },
+            {
+              "type": "article",
+              "text": "內容憑證",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            },
+            {
+              "type": "text",
+              "text": "（Content Credentials），所以「你手上這個檔案到底有沒有被標記」要以官網說明與檔案本身為準。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -279,14 +358,26 @@
           "text": "想比較 Canva 以外的圖片生成路線，或想知道用提示詞生成整份簡報有哪些工具，可以接著看這兩篇。"
         },
         {
-          "type": "link",
-          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 做簡報：Gamma、Copilot 與 Gemini",
-          "url": "https://mokaair.com/zh-TW/life/ai-slides-generation-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 做簡報：Gamma、Copilot 與 Gemini",
+              "kind": "life",
+              "slug": "ai-slides-generation-tools"
+            }
+          ]
         },
         {
           "type": "heading",

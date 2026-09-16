@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "結論先講：照 Notion 官方說明中心的寫法，Notion AI 只在 Business 與 Enterprise 方案完整提供，免費版與 Plus 只拿到少量體驗回覆（官方用語 complimentary AI responses），用完就會跳出升級訊息。官方定價頁以美元標價：Business 年繳每位成員每月 US$20、月繳 US$24；Plus 年繳 US$10、月繳 US$12；Enterprise 寫的是 Custom pricing，要聯絡業務。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "結論先講：照 Notion 官方說明中心的寫法，Notion "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 只在 Business 與 Enterprise 方案完整提供，免費版與 Plus 只拿到少量體驗回覆（官方用語 complimentary AI responses），用完就會跳出升級訊息。官方定價頁以美元標價：Business 年繳每位成員每月 US$20、月繳 US$24；Plus 年繳 US$10、月繳 US$12；Enterprise 寫的是 Custom pricing，要聯絡業務。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -140,18 +155,45 @@
           "text": "官方也寫了三個容易誤會的時間：初次連接依內容量最久要 72 小時才索引完；之後新增的內容最多要 3 小時才會出現在搜尋結果；連接器一般只讀得到設定日往前一年的資料。剛連好就問不到上個月的討論，多半只是還沒索引完。"
         },
         {
-          "type": "paragraph",
-          "text": "第四類是會議記錄與代理。AI Meeting Notes 要 Business 或 Enterprise 方案，桌面版要 4.7.0 以上、macOS 要 13 以上；在頁面用斜線指令 meet 建立區塊，按 Start transcribing 開始，官方特別寫著按下去等於確認在場所有人都同意錄音與轉錄。官方問答列出支援 16 種語言（English、Chinese、Spanish、French、German、Japanese、Korean、Portuguese、Russian、Thai、Vietnamese、Danish、Finnish、Norwegian、Dutch、Swedish），只寫 Chinese、沒有分繁簡，講者標記目前只有英文。每人每天上限 10 小時，要產生摘要至少要 300 個字元的逐字稿。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第四類是會議記錄與代理。AI Meeting Notes 要 Business 或 Enterprise 方案，桌面版要 4.7.0 以上、macOS 要 13 以上；在頁面用斜線指令 meet 建立區塊，按 Start transcribing 開始，官方特別寫著按下去等於確認在場所有人都同意錄音與轉錄。官方問答列出支援 16 種語言（English、Chinese、Spanish、French、German、Japanese、Korean、Portuguese、Russian、Thai、Vietnamese、Danish、Finnish、Norwegian、Dutch、Swedish），只寫 Chinese、沒有分繁簡，講者"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "目前只有英文。每人每天上限 10 小時，要產生摘要至少要 300 個字元的逐字稿。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
-          "url": "https://mokaair.com/zh-TW/life/ai-meeting-notes-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
+              "kind": "life",
+              "slug": "ai-meeting-notes-tools"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
-          "url": "https://mokaair.com/zh-TW/life/meeting-notes-action-template"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+              "kind": "life",
+              "slug": "meeting-notes-action-template"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -217,17 +259,38 @@
           "text": "這一段最該照原文抄。官方的 Notion AI 安全與隱私說明頁寫：By default, Notion and its AI Subprocessors do not use Customer Data to train any models，也就是預設不拿你的客戶資料訓練任何模型，同頁還寫明與子處理者有合約禁止他們這樣做。官方定價頁的問答多一句條件：除非你自己選擇同意分享資料。合起來讀是預設不訓練，但設定裡有一個你可以自己打開的分享開關。"
         },
         {
-          "type": "paragraph",
-          "text": "保留期限分兩種：Enterprise 方案預設由 LLM 供應商採零資料保留；非 Enterprise 方案，供應商保留客戶資料最多 30 天後刪除。向量表示（embedding）在頁面或工作區刪除後 60 天內刪除，頁面本身刪掉後 30 天內還救得回來。官方也寫出供應商包含 Anthropic 與 OpenAI。權限方面官方寫得很白：你沒有存取權的內容不會出現在給你的回答裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "保留期限分兩種：Enterprise 方案預設由 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 供應商採零資料保留；非 Enterprise 方案，供應商保留客戶資料最多 30 天後刪除。向量表示（embedding）在頁面或工作區刪除後 60 天內刪除，頁面本身刪掉後 30 天內還救得回來。官方也寫出供應商包含 Anthropic 與 OpenAI。權限方面官方寫得很白：你沒有存取權的內容不會出現在給你的回答裡。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "設定都在同一個地方。工作區擁有者在任何方案都能到設定裡的 Notion AI 分頁調整：是否把資料分享給 Notion 改善 AI、連接器、是否允許 AI 搜尋網路、讀取外部網站前要不要先確認；會議錄音儲存與逐字稿刪除排程也在這頁。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -236,9 +299,15 @@
           "text": "Notion Agent 能代替你在 Slack 找人、搜尋頻道、發訊息與回覆討論串，也能透過 MCP 伺服器碰其他應用程式，權限跟你本人一樣。所以兩件事要先做。權限最小化：先只連真的需要搜尋的應用程式，能唯讀就唯讀，在測試頁面或測試頻道跑過再開給全公司，並定期回頭看它做過什麼。提示詞注入：代理讀進來的網頁、郵件或票務內容都可能藏著寫給它看的指令，讓它做你沒要求的事，因此會寫入或會對外發送的動作都要保留人工確認這一關。"
         },
         {
-          "type": "link",
-          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
-          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+              "kind": "life",
+              "slug": "mcp-servers-for-everyone"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -266,24 +335,48 @@
           "text": "最後是自己驗證的方法。本文不能登入實測，建議你在 30 天試用期內這樣測：拿一份真實文件，同一段提示詞分別交給行內 AI 與 Notion Agent，比較它有沒有引用到正確的頁面；再錄一段五分鐘的中文會議丟進 AI Meeting Notes，看人名、數字與專有名詞錯在哪裡。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
-          "url": "https://mokaair.com/zh-TW/life/ai-second-brain-obsidian"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
+              "kind": "life",
+              "slug": "ai-second-brain-obsidian"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         }
       ],
       "sources": [

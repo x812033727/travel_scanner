@@ -94,8 +94,23 @@
           "text": "公平會處理原則會考量整體印象，以及重要交易資訊的排版、位置、字體與限制揭露。這表示不能只逐句確認真假，還要看整張圖與整個頁面是否容易讓人誤解。醒目標題與不成比例的小字，可能傳達完全不同的訊息。"
         },
         {
-          "type": "paragraph",
-          "text": "以原創假設為例，若單次課程費用設定為新臺幣九百八十元，包含指定材料與課堂工具使用，就把這些內容相鄰呈現。若另有加購項目，清楚區分是否必要與如何計價。這個數字只用來示範寫法，不是市場價格調查或購買建議。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "以原創假設為例，若單次課程費用設定為新臺幣九百八十元，包含指定材料與課堂"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "，就把這些內容相鄰呈現。若另有加購項目，清楚區分是否必要與如何計價。這個數字只用來示範寫法，不是市場價格調查或購買建議。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +216,37 @@
           "text": "醒目文字、圖片與小字應一起檢查。沒有證據的保證先拿掉，重要費用與限制讓讀者在做決定前看得見。"
         },
         {
-          "type": "link",
-          "text": "把文案工作排入內容日曆",
-          "url": "https://mokaair.com/zh-TW/life/content-marketing-calendar"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把文案工作排入內容日曆",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "先理解讀者的需求與使用情境",
-          "url": "https://mokaair.com/zh-TW/life/stp-persona-research"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先理解讀者的需求與使用情境",
+              "kind": "life",
+              "slug": "stp-persona-research"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓文章標題準確描述內容",
-          "url": "https://mokaair.com/zh-TW/life/seo-title-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓文章標題準確描述內容",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
         }
       ],
       "sources": [

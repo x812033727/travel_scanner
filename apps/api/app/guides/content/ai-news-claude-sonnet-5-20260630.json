@@ -27,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "事件日期：2026-06-30；本文查核日期：2026-09-14。6 月 30 日 Sonnet 5 發布，強調規畫、工具使用、程式與知識工作，首發列所有方案並為 Free／Pro 預設。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "事件日期：2026-06-30；本文查核日期：2026-09-14。6 月 30 日 Sonnet 5 發布，強調規畫、"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "、程式與知識工作，首發列所有方案並為 Free／Pro 預設。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "官方稱接近 Opus 4.8 的部分表現但成本較低，屬廠商評測說法。公告 8 月 10 日更新：每百萬輸入 token 2 美元、輸出 10 美元的介紹價改為永久；原訂 9 月 1 日 3／15 美元不再適用。API 單價與聊天訂閱費不同，effort、任務長度及重試也影響實際使用量。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方稱接近 Opus 4.8 的部分表現但成本較低，屬廠商"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "說法。公告 8 月 10 日更新：每百萬輸入 token 2 美元、輸出 10 美元的介紹價改為永久；原訂 9 月 1 日 3／15 美元不再適用。API 單價與聊天訂閱費不同，effort、任務長度及重試也影響實際使用量。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -48,8 +78,23 @@
           "text": "基礎主題歸類屬於明確規則的資訊整理，模型僅需理解標準語意即可快速將文字對應到已知類別，這類作業幾乎不需要額外思考步驟。但在多位客服人員回覆相似問題時，常會因為政策更新時間差而產生矛盾說法，這時模型就必須逐段拆解文字脈絡並進行交叉比對。最後，面對特殊情境的難題草稿撰寫，更牽涉到多步驟因果推演與政策邊界的拿捏。"
         },
         {
-          "type": "paragraph",
-          "text": "在這個編輯情境中，不同複雜度的項目對上下文長度與輸出 token 量的需求各異。若將基礎分類與複雜政策草稿混在同一條處理管線，往往會導致工程團隊無法精準評估支出效益。因此在導入初期，首要任務是拆解內部作業類型，辨識哪些工作需要模型進行多重推論，哪些僅需單次快速響應，藉此建立清晰的分流標準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在這個編輯情境中，不同複雜度的項目對"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "與輸出 token 量的需求各異。若將基礎分類與複雜政策草稿混在同一條處理管線，往往會導致工程團隊無法精準評估支出效益。因此在導入初期，首要任務是拆解內部作業類型，辨識哪些工作需要模型進行多重推論，哪些僅需單次快速響應，藉此建立清晰的分流標準。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -135,8 +180,23 @@
           "text": "對每週只整理少量資料的小型團隊，先使用自己已有的聊天介面，可能比另建 API 流程容易評估。Free 與付費訂閱是不同方案，也可能有不同限額或加購機制，不能把所有聊天使用都當成固定月費內無限提供。這篇記錄的是 Sonnet 5 首發與價格更新；實際可選模型、限額與收費仍需查當前帳號。"
         },
         {
-          "type": "paragraph",
-          "text": "相對地，採用 API 介面雖然能與內部知識庫和工單系統串接，並享受永久降價後的每百萬輸入 2 美元與輸出 10 美元費率，但實際花費會直接受到任務長度、系統提示詞長度以及呼叫頻率的影響。當業務量突然增加或發生迴圈重試時，帳單金額可能迅速攀升，這要求管理者必須在架構層面設置嚴格的用量監控與預算上限。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "相對地，採用 API 介面雖然能與內部知識庫和工單系統串接，並享受永久降價後的每百萬輸入 2 美元與輸出 10 美元費率，但實際花費會直接受到任務長度、"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "長度以及呼叫頻率的影響。當業務量突然增加或發生迴圈重試時，帳單金額可能迅速攀升，這要求管理者必須在架構層面設置嚴格的用量監控與預算上限。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -148,8 +208,23 @@
           "text": "漸進式落地的驗收與監控機制"
         },
         {
-          "type": "paragraph",
-          "text": "為了讓技術投資轉化為實際生產力，組織在導入初期應建立小規模的試行流程，而非直接全面替換既有人工作業。以每週客服問題彙整為例，可以先選取單一產品線的非機密問答作為試驗對象，分別測試簡單分類與矛盾比對的產出品質。透過逐週記錄模型漏答率與重試次數，逐步調整提示詞結構與思考深度參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "為了讓技術投資轉化為實際生產力，組織在導入初期應建立小規模的試行流程，而非直接全面替換既有人工作業。以每週客服問題彙整為例，可以先選取單一產品線的非機密問答作為試驗對象，分別測試簡單分類與矛盾比對的產出品質。透過逐週記錄模型漏答率與重試次數，逐步調整提示詞結構與思考深度"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -162,14 +237,26 @@
           "text": "評估模型成本時，切勿僅看單次提示詞的調用價格。將重試次數、推論思考時間以及人工核對所花費的工時共同納入計算，才能真實反映每週客服彙整的實際合格交付成本。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         }
       ],
       "sources": [
@@ -336,14 +423,26 @@
           "text": "When evaluating model costs, never look only at the price of a single prompt call. Truly reflecting the actual qualified delivery cost of weekly customer service compilation requires factoring in retry counts, reasoning thinking time, and the labor hours spent on manual verification."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work Officially Debuts: How to Clearly Delegate Cross-File Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work Officially Debuts: How to Clearly Delegate Cross-File Tasks",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         }
       ],
       "sources": [
@@ -510,14 +609,26 @@
           "text": "モデルのコストを評価する際、プロンプト1回あたりの呼び出し単価だけで判断してはなりません。再試行回数、推論思考時間、人手による照合に費やした工数をすべて計算に含めて初めて、週次のサポート集約における真の合格納品コストを把握できます。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 正式登場：複数ファイルをまたぐタスクを明確に指示する方法",
-          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 正式登場：複数ファイルをまたぐタスクを明確に指示する方法",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         }
       ],
       "sources": [
@@ -684,14 +795,26 @@
           "text": "모델 비용을 평가할 때 단순 프롬프트 1회 호출 가격만 봐서는 안 됩니다. 재시도 횟수, 추론 사고 시간, 수작업 검토에 소요된 공수를 모두 계산에 포함해야 주간 고객지원 정리의 실제 합격 납품 비용을 정확히 파악할 수 있습니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 공식 공개: 파일 간 작업을 명확하게 인계하는 법",
-          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 공식 공개: 파일 간 작업을 명확하게 인계하는 법",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         }
       ],
       "sources": [
@@ -858,14 +981,26 @@
           "text": "评估模型成本时，切勿仅看单次提示词的调用价格。将重试次数、推理思考时间以及人工核对所花费的工时共同纳入计算，才能真实反映每周客服汇总的实际合格交付成本。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 正式亮相：如何把跨文件工作交代清楚？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 正式亮相：如何把跨文件工作交代清楚？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         }
       ],
       "sources": [

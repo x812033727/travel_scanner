@@ -30,8 +30,23 @@
           "text": "上下文視窗（Context Window）是模型單次處理資訊時的容量限制，通常以 token 表示。它可能容納本輪問題、應用程式指示、部分歷史訊息、附件內容與工具結果，也要依服務規則考慮輸出空間。聊天畫面裡看得到一段舊對話，不代表模型這一次也收到那段原文。"
         },
         {
-          "type": "paragraph",
-          "text": "如果 AI 忘了你先前的要求，原因可能是內容沒有被送入、被摘要時省略，或雖然仍在輸入裡卻沒有被正確使用。本文會用整理社區會議的情境，幫你區分容量問題與理解問題，再決定該分段、補充原文還是重整工作狀態。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 忘了你先前的要求，原因可能是內容沒有被送入、被摘要時省略，或雖然仍在輸入裡卻沒有被正確使用。本文會用整理社區會議的情境，幫你區分容量問題與理解問題，再決定該分段、補充原文還是重整工作狀態。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -43,8 +58,23 @@
           "text": "你可以把視窗想成這一輪工作的桌面。桌上的東西由應用程式準備，不一定等於你所有上傳檔案或全部聊天紀錄。有些工具把文件全文放入，有些先搜尋相關段落，也有些在對話變長時保留摘要。具體行為由產品實作決定，不能假設所有聊天工具都按相同方式丟掉最早訊息。"
         },
         {
-          "type": "paragraph",
-          "text": "這個桌面和模型訓練所得的知識不同。訓練讓模型的參數形成處理語言與任務的能力；當次上下文則提供目前問題需要的資料。你今天貼入會議決議，模型可以依它作答，但不代表這些內容立刻成為模型權重的一部分，或所有新對話從此都能讀到。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個桌面和模型訓練所得的知識不同。訓練讓模型的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "形成處理語言與任務的能力；當次上下文則提供目前問題需要的資料。你今天貼入會議決議，模型可以依它作答，但不代表這些內容立刻成為模型權重的一部分，或所有新對話從此都能讀到。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +194,48 @@
           "text": "「正在討論」不能在摘要裡變成「已決定」；把否定條件、撤回事項與原文位置一起帶到下一輪。"
         },
         {
-          "type": "link",
-          "text": "token（Token）是什麼：AI 如何計算文字長度",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "kind": "life",
+              "slug": "ai-term-token"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+              "kind": "life",
+              "slug": "ai-term-context-compaction"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+              "kind": "life",
+              "slug": "ai-term-agent-memory"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

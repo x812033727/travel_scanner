@@ -51,9 +51,15 @@
           "text": "服務由新加坡公司 Nanonoble Pte. Ltd. 營運，準據法與仲裁地都在新加坡。條款的地區限制一節只寫「不保證本服務在所有司法管轄區都可以存取或適合使用」，沒有國家清單，也沒有點名台灣。本站撰稿時無法從台灣的網路環境實測，網頁版連不連得上、兩大 App 商店有沒有上架，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -105,9 +111,10 @@
               "text": "這一圈「想一步、動一下、看結果、再想下一步」就是代理的基本運作方式；想知道它為什麼有時候會繞路或停在半路，可以先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
             },
             {
               "type": "text",
@@ -140,18 +147,45 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "外部工具靠兩套機制：MCP Servers 接本機命令、遠端服務與第三方資料能力，設定存在你自己的裝置上；外掛市集的初始外掛涵蓋金融資料、企業查詢、法律檢索、知識整理與 Office 檔案處理。也可以綁通訊軟體下指令，頻道依地區不同。條款另外寫明，授權第三方帳號後代理可以存取並儲存那些帳號裡的內容。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "外部工具靠兩套機制："
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " Servers 接本機命令、遠端服務與第三方資料能力，設定存在你自己的裝置上；外掛市集的初始外掛涵蓋金融資料、企業查詢、法律檢索、知識整理與 Office 檔案處理。也可以綁通訊軟體下指令，頻道依地區不同。條款另外寫明，授權第三方帳號後代理可以存取並儲存那些帳號裡的內容。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+              "kind": "life",
+              "slug": "ai-term-human-in-the-loop"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -254,9 +288,15 @@
           "text": "審核與刪除也要知道。條款寫公司可以基於任何理由或沒有理由自行移除或拒絕處理使用者內容，也寫「我們會自動封鎖部分內容，但無法在提交或生成前審查所有內容」。網頁版設定有「資料控制」，可以匯出自己的資料、刪除所有對話、刪除帳號，但介面註明會員有效期內暫時無法註銷。"
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -268,24 +308,48 @@
           "text": "用過 ChatGPT 代理模式的人會覺得手感熟悉：都是你講目標、它自己拆步驟操作工具，也都會在關鍵動作前停下來等你點頭。差別在生態，MiniMax 把簡報、文件、圖片、語音與影片放在同一個帳號與同一套點數裡；Anthropic 的 Claude 走另一套組合。這裡只點名，不做沒查過的比較。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+              "kind": "life",
+              "slug": "chatgpt-agent-mode-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
+            }
+          ]
         }
       ],
       "sources": [

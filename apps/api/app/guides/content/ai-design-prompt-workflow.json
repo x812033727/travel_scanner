@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "請 AI 畫一個簡潔的查詢頁，可能會得到完整的輸入框、進度列和漂亮插圖。但它未必知道店家沒有配送服務，也未必知道訂單編號印在收據哪裡。提示的第一個任務，是提供正確的工作背景，而不是堆疊形容風格的詞。這對任何 UI AI 或設計 AI 都成立。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 畫一個簡潔的查詢頁，可能會得到完整的輸入框、進度列和漂亮插圖。但它未必知道店家沒有配送服務，也未必知道訂單編號印在收據哪裡。提示的第一個任務，是提供正確的工作背景，而不是堆疊形容風格的詞。這對任何 UI AI 或設計 AI 都成立。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,8 +58,23 @@
           "text": "在開啟生成工具前，先用一小段文字描述誰在什麼情況下做什麼事。例如：顧客在手機上拿著收據，希望輸入編號後知道能否到店領衣。完成條件是看懂目前狀態、營業時間及下一步，而不是停留在一張具有品牌感的首頁。"
         },
         {
-          "type": "paragraph",
-          "text": "把已確認事實與尚待確認項目分開。店名和公開電話可以來自店家提供的資料；查詢需要哪些欄位、多久更新一次、過期訂單如何處理，則要先詢問負責人。沒有答案時請 AI 保留標記，不讓它自行補出客服承諾或取件規則。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把已確認事實與尚待確認項目分開。店名和公開電話可以來自店家提供的資料；查詢需要哪些欄位、多久更新一次、過期訂單如何處理，則要先詢問負責人。沒有答案時請 AI 保留"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不讓它自行補出客服承諾或取件規則。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +236,37 @@
           "text": "用 AI 找出盲點後，應回到可查證資料與實際操作觀察。保留沒有答案的地方，比把合理猜測寫成已知事實更方便後續驗證。"
         },
         {
-          "type": "link",
-          "text": "核對 Figma AI 的功能與資料權限",
-          "url": "https://mokaair.com/zh-TW/life/figma-ai-design-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核對 Figma AI 的功能與資料權限",
+              "kind": "life",
+              "slug": "figma-ai-design-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "選擇線框與原型的驗證方式",
-          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "選擇線框與原型的驗證方式",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "了解 UI 與 UX 的工作分工",
-          "url": "https://mokaair.com/zh-TW/life/ui-ux-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "了解 UI 與 UX 的工作分工",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
         }
       ],
       "sources": [

@@ -64,8 +64,23 @@
           "text": "eager 不表示一定比其他正常圖片更早完成；fetchpriority 則是另一種載入優先順序提示。重要的 LCP 圖片可由工程師評估是否使用 high，但它不會把 lazy 的延後條件取消。把兩個選項都打開，不能保證主圖就會立即出現。"
         },
         {
-          "type": "paragraph",
-          "text": "如果網站已能產生正確的原生標記，通常不需要只為一般圖片再加入一套延遲載入程式庫。特殊效果、舊環境或需要更細控制的情況，可以另外評估，但要把新增依賴和維護方式記錄下來，避免簡單圖片背後疊上多套互相改寫的機制。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果網站已能產生正確的原生"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，通常不需要只為一般圖片再加入一套延遲載入程式庫。特殊效果、舊環境或需要更細控制的情況，可以另外評估，但要把新增依賴和維護方式記錄下來，避免簡單圖片背後疊上多套互相改寫的機制。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +216,37 @@
           "text": "先確認首屏與 LCP 素材，再對較後面的圖片使用延遲載入。所有圖片仍要有合適的空間、替代文字與可取得的檔案。"
         },
         {
-          "type": "link",
-          "text": "建立圖片檔案與替代文字流程",
-          "url": "https://mokaair.com/zh-TW/life/image-seo-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立圖片檔案與替代文字流程",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "逐項驗證 WordPress 加速設定",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-performance-plugins"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "逐項驗證 WordPress 加速設定",
+              "kind": "life",
+              "slug": "wordpress-performance-plugins"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "辨認 LCP 與版面位移瓶頸",
-          "url": "https://mokaair.com/zh-TW/life/core-web-vitals-diagnosis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨認 LCP 與版面位移瓶頸",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
         }
       ],
       "sources": [

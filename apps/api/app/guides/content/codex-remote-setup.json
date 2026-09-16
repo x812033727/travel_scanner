@@ -77,8 +77,33 @@
           "text": "電腦需有目前支援的 ChatGPT 桌面版、登入可使用 Codex 的同一帳號與工作區，並開著應用程式、連線且未睡眠。手機更新官方 ChatGPT 應用程式。若組織要求 SSO、多因素驗證或通行金鑰，先完成該流程；管理員也可能須啟用 Remote Control。功能依分階段提供，沒有 Remote 選項時先查版本、工作區與資格。"
         },
         {
-          "type": "paragraph",
-          "text": "官方列出的手機 Remote 主機是 macOS 與 Windows；不能因 Linux 桌面預覽版存在，就推定它也支援同一配對流程。首次手機配對從桌面應用程式開始，CLI 或 IDE 的登入不能代替。主機上的 Git、Node.js、瀏覽器、Skills 和 MCP 可用性也不會由手機補齊；後續任務需要哪個工具，就在真正執行的主機檢查。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方列出的手機 Remote 主機是 macOS 與 Windows；不能因 Linux 桌面預覽版存在，就推定它也支援同一配對流程。首次手機配對從桌面應用程式開始，CLI 或 IDE 的登入不能代替。主機上的 Git、Node.js、瀏覽器、"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": " 和 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 可用性也不會由手機補齊；後續任務需要哪個工具，就在真正執行的主機檢查。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -86,8 +111,23 @@
           "text": "步驟一：在主機準備可辨認的專案"
         },
         {
-          "type": "paragraph",
-          "text": "在主機建立新資料夾 codex-remote-lab，用純文字編輯器存兩個檔案。host-marker.txt 使用下面第一個區塊，request.txt 使用第二個。REMOTE-LAB-A 是本篇虛構練習標記，不是主機的真實名稱；你仍要另記錄桌面版顯示的裝置名稱與實際專案路徑。若資料夾已存在，就換新名稱，不覆寫舊資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在主機建立新資料夾 codex-remote-lab，用純文字編輯器存兩個檔案。host-marker.txt 使用下面第一個區塊，request.txt 使用第二個。REMOTE-LAB-A 是本篇虛構練習"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不是主機的真實名稱；你仍要另記錄桌面版顯示的裝置名稱與實際專案路徑。若資料夾已存在，就換新名稱，不覆寫舊資料。"
+            }
+          ]
         },
         {
           "type": "code",

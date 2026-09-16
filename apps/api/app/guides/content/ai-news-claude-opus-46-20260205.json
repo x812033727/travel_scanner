@@ -31,8 +31,23 @@
           "text": "事件日期：2026-02-05；本文查核日期：2026-09-14。2 月 5 日 Opus 4.6 發布，強調程式、研究與文件工作；Opus 首次提供 1M token 上下文 beta。"
         },
         {
-          "type": "paragraph",
-          "text": "公告同時介紹 adaptive thinking、effort 與 API context compaction。首發列 Claude、API 與主要雲端平台；1M beta 並非所有聊天帳號共同上限。基準成績是 Anthropic 評測，長上下文容量不能等同沒有遺漏或理解錯誤。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "公告同時介紹 adaptive thinking、effort 與 API context compaction。首發列 Claude、API 與主要雲端平台；1M beta 並非所有聊天帳號共同上限。基準成績是 Anthropic "
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "，長上下文容量不能等同沒有遺漏或理解錯誤。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -101,8 +116,23 @@
           "text": "面對跨年度的龐雜報價歷史，將長文本拆解為分組閱讀流程往往比單次巨量輸入更穩健。使用者可以依照工程類別或年度階段劃分閱讀批次，例如將機房控制板更換與鋼索定期保養拆為獨立任務。在提問時，應明確標示問題範圍，指示系統僅根據指定編號的文件進行條款摘錄與項目比對，避免模型調用記憶庫中其他看似相關卻非當期的模糊資訊進行拼湊。"
         },
         {
-          "type": "paragraph",
-          "text": "範圍縮小後，比較重點會更容易說清楚，例如工資是否另計、廢料清運是否已包含在總價內。這是整理任務的設計方式，不能推定它會自動觸發特定的思考深度設定。若工具提供工作量或思考相關選項，可以固定同一批資料比較；沒有這些選項時，仍可透過明確提問和來源標記改善查核流程。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "範圍縮小後，比較重點會更容易說清楚，例如工資是否另計、廢料清運是否已包含在總價內。這是整理任務的設計方式，不能推定它會自動觸發特定的思考深度設定。若工具提供工作量或思考相關選項，可以固定同一批資料比較；沒有這些選項時，仍可透過明確提問和來源"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "改善查核流程。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -154,14 +184,26 @@
           "text": "百萬容量雖大幅拓展閱讀上限，但模型評測數據不保證零遺漏。處理關鍵合約與財務報價時，務必以文件清冊限定提問範圍，並抽查頁碼回溯原文，避免壓縮機制濾除關鍵細節。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -320,14 +362,26 @@
           "text": "While 1M capacity vastly expands reading limits, model benchmark numbers do not guarantee zero omissions. When handling critical contracts and financial quotes, always constrain question scopes with document registries and spot-check page numbers against source text to prevent compression mechanisms from stripping out key details."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex Launched: How AI Coding Moves Toward Deliverable Work",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex Launched: How AI Coding Moves Toward Deliverable Work",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -486,14 +540,26 @@
           "text": "100万トークンの容量は読解上限を大幅に拡大しますが、ベンチマーク値は見落としゼロを保証しません。重要契約や財務見積を扱う際は、文書目録で質問範囲を絞り、ページ番号から原文をサンプリング照合して、圧縮による重要細部の脱落を防いでください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex登場：AIプログラミングは実用的な成果物へどう進むか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex登場：AIプログラミングは実用的な成果物へどう進むか？",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -652,14 +718,26 @@
           "text": "100만 토큰 용량이 읽기 한도를 대폭 확장했지만, 모델 벤치마크 데이터가 무결점을 보증하지는 않습니다. 핵심 계약서와 재무 견적을 다룰 때는 반드시 문서 목록으로 질문 범위를 한정하고 원본 페이지 번호를 표본 조사하여 압축 메커니즘으로 핵심 세부 사항이 누락되지 않도록 방지해야 합니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex 출시: AI 코딩은 어떻게 납품 가능한 결과물로 이어지는가?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex 출시: AI 코딩은 어떻게 납품 가능한 결과물로 이어지는가?",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -818,14 +896,26 @@
           "text": "百万容量虽大幅拓展阅读上限，但模型评测数据不保证零遗漏。处理关键合同与财务报价时，务必以文档清册限定提问范围，并抽查页码回溯原文，避免压缩机制滤除关键细节。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex 发布：AI 写代码如何走向可交付的工作？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex 发布：AI 写代码如何走向可交付的工作？",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         }
       ],
       "sources": [

@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想把 AI 留在自己家裡跑，Mac mini 是目前最容易擺得下、也最安靜的一種選擇，原因不在晶片有多快，而在它的記憶體是 CPU 與 GPU 共用的統一記憶體：模型不必先擠進顯示卡那一小塊顯示記憶體（VRAM），所以「買多少記憶體」幾乎就等於「能載入多大的模型」。結論先講：真正的決定權在統一記憶體容量，而 2026 年 9 月 14 日 apple.com/tw 上的 Mac mini，統一記憶體從 16GB 到 64GB。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想把 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 留在自己家裡跑，Mac mini 是目前最容易擺得下、也最安靜的一種選擇，原因不在晶片有多快，而在它的記憶體是 CPU 與 GPU 共用的統一記憶體：模型不必先擠進顯示卡那一小塊顯示記憶體（VRAM），所以「買多少記憶體」幾乎就等於「能載入多大的模型」。結論先講：真正的決定權在統一記憶體容量，而 2026 年 9 月 14 日 apple.com/tw 上的 Mac mini，統一記憶體從 16GB 到 64GB。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,8 +58,23 @@
           "text": "一般的顯示卡桌機跑本機模型時，模型權重要從系統記憶體搬進顯示卡的顯示記憶體，放不下就得拆開放或退回 CPU 執行。Apple 晶片走的是另一條路。Apple 開發者文件在 Metal 的 hasUnifiedMemory 屬性上寫的定義是「一個布林值，表示 GPU 是否與 CPU 共用它全部的記憶體」，同一份資料 CPU 與 GPU 都看得到，不必為了給 GPU 用而複製一份。對本機模型來說，這代表你買到的統一記憶體幾乎整塊都能拿來放模型，而不是被一張卡的容量鎖死。"
         },
         {
-          "type": "paragraph",
-          "text": "Ollama 官方的硬體支援頁對這件事只寫了一句：Ollama 透過 Metal API 在 Apple 裝置上做 GPU 加速。也就是說，在 Apple 晶片的 Mac 上不必另外處理驅動程式或 CUDA。Apple 自己的 Mac mini 產品頁也直接點名了這類軟體，寫「Mac mini 經過最佳化，可執行世界上最先進的 AI app」，並列出 Ollama 與 LM Studio Bionic 這些大型語言模型 app。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Ollama 官方的硬體支援頁對這件事只寫了一句：Ollama 透過 Metal API 在 Apple 裝置上做 GPU 加速。也就是說，在 Apple 晶片的 Mac 上不必另外處理驅動程式或 CUDA。Apple 自己的 Mac mini 產品頁也直接點名了這類軟體，寫「Mac mini 經過最佳化，可執行世界上最先進的 AI app」，並列出 Ollama 與 LM Studio Bionic 這些"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " app。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -60,9 +90,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -130,9 +166,15 @@
           "text": "表格裡有一件事值得停下來想：M6 加到 32GB 加 1TB SSD 的 NT$61,400，已經比 M5 Pro 24GB 版本的 NT$59,900 貴。同樣的錢，一邊買到比較大的記憶體、一邊買到比較高的頻寬與比較多的核心，官網沒有告訴你哪個組合跑模型比較好，這個判斷得自己下。"
         },
         {
-          "type": "link",
-          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
-          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+              "kind": "life",
+              "slug": "gadget-purchase-needs-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -158,9 +200,15 @@
           "text": "上下文視窗也要吃記憶體。Ollama 文件寫預設的上下文視窗是 4096 個 token，並依顯示記憶體分三級給預設值：小於 24 GiB 是 4k、24 到 48 GiB 是 32k、48 GiB 以上是 256k；文件同時建議網頁搜尋、代理（Agent）與寫程式這類任務至少設到 64000 個 token。這份分級是照顯示記憶體寫的，官網沒有另外給 Apple 晶片的對照表，實際載到哪裡請用 ollama ps 看 PROCESSOR 欄位。"
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -178,8 +226,23 @@
           "code": "ollama run gemma4\nollama ps\nollama stop gemma4"
         },
         {
-          "type": "paragraph",
-          "text": "常開靠兩件事。第一，官方 FAQ 寫 macOS 與 Windows 版的 Ollama 安裝時會註冊成登入項目，登入就自己啟動（同一段也寫了怎麼關掉：在「系統設定」搜尋「登入項目」，於「允許在背景執行」底下把 Ollama 關掉）。第二，模型預設只在記憶體裡留 5 分鐘就卸載，官方提供 OLLAMA_KEEP_ALIVE 環境變數或 API 的 keep_alive 參數來改，設成 -1 代表一直留著。在 macOS 上以應用程式方式執行時，官方指定的環境變數設法是 launchctl setenv，設完要重新啟動 Ollama 應用程式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "常開靠兩件事。第一，官方 FAQ 寫 macOS 與 Windows 版的 Ollama 安裝時會註冊成登入項目，登入就自己啟動（同一段也寫了怎麼關掉：在「系統設定」搜尋「登入項目」，於「允許在背景執行」底下把 Ollama 關掉）。第二，模型預設只在記憶體裡留 5 分鐘就卸載，官方提供 OLLAMA_KEEP_ALIVE 環境變數或 API 的 keep_alive "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "來改，設成 -1 代表一直留著。在 macOS 上以應用程式方式執行時，官方指定的環境變數設法是 launchctl setenv，設完要重新啟動 Ollama 應用程式。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -221,14 +284,26 @@
           "text": "Ollama 官方文件說明本機 API 端點不需要驗證，所以綁到 0.0.0.0 等於把模型的控制權交給整個區網。做完這一步請確認路由器沒有把 11434 埠對外轉發。真的需要在外面連，官方文件列出的方式只有三種：用 Nginx 之類的代理伺服器把請求轉給本機的 11434 埠、用 ngrok、或用 Cloudflare Tunnel；這三種都只負責把流量送進來，驗證要自己在前面那一層補上。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -258,9 +333,15 @@
           "text": "Open WebUI 的強化指南第一節談的就是網路位置：這套軟體是為「私人、可信任的網路」設計的，跟資料庫、容器登錄或 CI 伺服器一樣，建議放在 VPN、零信任存取代理，或帶驗證與 IP 白名單的反向代理後面。家用情境把這句話翻成白話就是：留在區網裡，不要直接往公網開。"
         },
         {
-          "type": "link",
-          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
-          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+              "kind": "life",
+              "slug": "open-webui-chat-interface"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -276,23 +357,56 @@
           "text": "至於該買 Mac mini 還是組一台裝顯示卡的桌機，這篇不做跨平台的數字比較，因為官網之間沒有可以直接比的共同基準。可以先分開想兩個問題：顯示記憶體要多少、預算怎麼配，以及自己養一台到底划不划算。這兩題同系列各有專篇。"
         },
         {
-          "type": "link",
-          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+              "kind": "life",
+              "slug": "local-ai-gpu-buying-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "最後提醒一件常被混在一起的事：Apple Intelligence 是 Apple 內建在系統裡的 AI 功能，和你自己用 Ollama 跑的開放權重模型是兩套完全不同的東西，只是剛好可以住在同一台 Mac mini 上。想知道系統內建的那一套在台灣能做到什麼，那是另一篇的題目。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後提醒一件常被混在一起的事：Apple Intelligence 是 Apple 內建在系統裡的 AI 功能，和你自己用 Ollama 跑的"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型是兩套完全不同的東西，只是剛好可以住在同一台 Mac mini 上。想知道系統內建的那一套在台灣能做到什麼，那是另一篇的題目。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
-          "url": "https://mokaair.com/zh-TW/life/apple-intelligence-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+              "kind": "life",
+              "slug": "apple-intelligence-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -133,8 +133,33 @@
           "code": "node --test skill.test.mjs\n"
         },
         {
-          "type": "paragraph",
-          "text": "如果第一項說找不到腳本，先檢查根目錄和 .agents/skills/todo-summary/scripts/count-tasks.mjs 的實際位置。若全部案例都變成 Usage，看看測試檔是否仍傳入 file 參數；若只有 JSON 錯誤文字不同，測試只要求有錯誤訊息，不依賴某一版 Node.js 的完整標點。先保留錯誤輸出，再比對版本，別為了綠燈而刪掉負面案例。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果第一項說找不到腳本，先檢查根目錄和 .agents/"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/todo-summary/scripts/count-tasks.mjs 的實際位置。若全部案例都變成 Usage，看看測試檔是否仍傳入 file "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "；若只有 JSON 錯誤文字不同，測試只要求有錯誤訊息，不依賴某一版 Node.js 的完整標點。先保留錯誤輸出，再比對版本，別為了綠燈而刪掉負面案例。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -255,8 +280,23 @@
           "text": "若代理宣稱已執行但只提供預期結果，要求指出實際命令與工具輸出；仍無法確認，就保留「未確認」，不要替它補證據。若多個同名技能同時出現，記錄選到的路徑，先停用或移出你這次新建的重複副本再重測，保留其他人的技能。不要任意改全域設定來掩蓋本機教材路徑錯誤。"
         },
         {
-          "type": "paragraph",
-          "text": "練習結束前確認 input-format.md 已恢復原名、count-tasks.mjs 已恢復正確版、data/tasks.json 未被修改，最後八項測試全過。報告必須分開寫程式測試與技能行為；未在 macOS 或 Linux 實際操作，就標記依文件與跨平台 Node.js 用法查證。本教材提供的參考測試不等於已替你在各入口執行模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "練習結束前確認 input-format.md 已恢復原名、count-tasks.mjs 已恢復正確版、data/tasks.json 未被修改，最後八項測試全過。報告必須分開寫程式測試與技能行為；未在 macOS 或 Linux 實際操作，就"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "依文件與跨平台 Node.js 用法查證。本教材提供的參考測試不等於已替你在各入口執行模型。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

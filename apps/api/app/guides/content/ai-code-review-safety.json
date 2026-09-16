@@ -26,8 +26,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 代理寫程式的速度不是問題，問題是要不要把產出的改動直接合併。可以用，但不能跳過審查，而且要看的地方跟你自己寫程式時不一樣：代理常犯的錯有固定幾種，改動超出交代、測試寫來配合實作、引用不存在的套件、把金鑰寫進程式碼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "寫程式的速度不是問題，問題是要不要把產出的改動直接合併。可以用，但不能跳過審查，而且要看的地方跟你自己寫程式時不一樣：代理常犯的錯有固定幾種，改動超出交代、測試寫來配合實作、引用不存在的套件、把金鑰寫進程式碼。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -49,13 +60,34 @@
           "code": "git status\ngit diff --stat\ngit diff\ngit log --oneline main..HEAD"
         },
         {
-          "type": "paragraph",
-          "text": "讀的時候問三個問題：檔案在範圍裡嗎？有沒有刪掉我沒要求刪的？有沒有一段我看不懂？第三個最重要，看不懂就不要合併。OWASP 的 LLM Top 10 把過度代理（Excessive Agency）列為 LLM06:2025，成因之一是系統拿到超出需要的功能與權限。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讀的時候問三個問題：檔案在範圍裡嗎？有沒有刪掉我沒要求刪的？有沒有一段我看不懂？第三個最重要，看不懂就不要合併。OWASP 的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " Top 10 把過度代理（Excessive Agency）列為 LLM06:2025，成因之一是系統拿到超出需要的功能與權限。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+              "kind": "life",
+              "slug": "ai-coding-git-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -72,9 +104,15 @@
           "text": "如果它一次改十幾個檔案而你讀不動，那是任務給得太大，把需求拆小、先提計畫。"
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -82,8 +120,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "第二步是跑測試，並讓代理補測試。陷阱在於：測試也可能是 AI 為了讓實作通過而寫的。它可能把斷言寫成「有回傳就好」，或把現在的輸出照抄進期望值，於是測試會過，卻是永遠亮綠燈的儀表板。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二步是跑測試，並讓代理補測試。陷阱在於：測試也可能是 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 為了讓實作通過而寫的。它可能把斷言寫成「有回傳就好」，或把現在的輸出照抄進期望值，於是測試會過，卻是永遠亮綠燈的儀表板。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -100,9 +153,15 @@
           "text": "最後一項值得養成習慣：不必懂整個測試框架，只要把回傳值改錯、看測試會不會變紅。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜除錯與補測試",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-debug-and-test"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜除錯與補測試",
+              "kind": "life",
+              "slug": "claude-code-debug-and-test"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -137,9 +196,15 @@
           "text": "npm 官方文件說明 npm ci 必須有 package-lock.json、絕不寫回鎖定檔，和 package.json 對不上時直接報錯。pip 的安全安裝文件說明，雜湊檢查模式用 requirements.txt 裡的雜湊值防止遠端竄改，並要求所有相依用 == 鎖版。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -161,17 +226,38 @@
           "text": "GitHub 官方文件寫得很清楚：要移除的敏感資料如果是密碼或 token，第一步是撤銷或輪換它。就算改寫歷史再強制推送，那些 commit 仍可能留在別人的 clone 與 fork、用 SHA-1 開啟的快取檢視，或引用它的 pull request 裡。"
         },
         {
-          "type": "paragraph",
-          "text": "接著看輸入驗證。OWASP Top 10 的 2025 年版把注入列為 A05:2025，涵蓋 SQL、作業系統命令、ORM、LDAP 等，首選做法是使用不經過直譯器、或提供參數化介面的安全 API；SQL 注入防護速查表更直接：教人寫查詢就該教他用綁定變數的預備語句。看 AI 寫的查詢，重點是輸入有沒有被串進字串。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著看輸入驗證。OWASP Top 10 的 2025 年版把注入列為 A05:2025，涵蓋 SQL、作業系統命令、ORM、LDAP 等，首選做法是使用不經過直譯器、或提供"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "化介面的安全 API；SQL 注入防護速查表更直接：教人寫查詢就該教他用綁定變數的預備語句。看 AI 寫的查詢，重點是輸入有沒有被串進字串。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "如果代理會讀網頁、讀 issue、讀別人傳來的檔案，還要多防一種注入。OWASP 的 LLM Top 10 把提示詞注入排在第一位 LLM01:2025。Anthropic 的 Claude Code 安全文件把它定義為攻擊者插入惡意文字、覆蓋或操縱 AI 助理的指令，說明 curl、wget 這類命令預設不自動核准，並建議：核准前先看命令、不把不可信內容直接餵給模型、用虛擬機器執行腳本。"
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -196,19 +282,37 @@
           "text": "原則一樣：先在唯讀模式讓它讀懂專案、提計畫，方向對了再放開寫入。"
         },
         {
-          "type": "link",
-          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜Plan Mode 與權限模式",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-permissions-plan-mode"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜Plan Mode 與權限模式",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜專案資料與操作安全",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-project-data-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜專案資料與操作安全",
+              "kind": "life",
+              "slug": "claude-code-project-data-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -257,14 +361,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+              "kind": "life",
+              "slug": "ai-term-human-in-the-loop"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         },
         {
           "type": "image",

@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "行事曆上的 AI 不會替你決定該做什麼，它省下的是比對誰有空、把待辦拖進日曆、記得在對的時間提醒自己。官網現在寫得出來的能力只有四類：找時間、自動排工作區塊、用自然語言建活動、定時提醒與排程任務。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "行事曆上的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 不會替你決定該做什麼，它省下的是比對誰有空、把待辦拖進日曆、記得在對的時間提醒自己。官網現在寫得出來的能力只有四類：找時間、自動排工作區塊、用自然語言建活動、定時提醒與排程任務。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -74,14 +89,26 @@
           "text": "要讓別人直接訂你的時間，靠的是 Google 日曆的預約時段。個人帳戶或 Business Starter 可以建一個預約頁；要建多個、自動寄提醒或加最多 20 位共同主持人，需要 Google One Premium、AI Pro 或 Business Standard 以上方案。"
         },
         {
-          "type": "link",
-          "text": "家庭共用行事曆怎麼用：讓誰出門、誰接手與時間異動都看得懂",
-          "url": "https://mokaair.com/zh-TW/life/shared-household-calendar"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "家庭共用行事曆怎麼用：讓誰出門、誰接手與時間異動都看得懂",
+              "kind": "life",
+              "slug": "shared-household-calendar"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "小團隊使用 Workspace AI：帳號與管理",
-          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小團隊使用 Workspace AI：帳號與管理",
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -93,8 +120,23 @@
           "text": "先講一件會影響選擇的事：Clockwise 已經結束。官網首頁放的是收攤公告，寫著團隊加入 Salesforce、產品自 2026 年 3 月 27 日起不再提供，它建立的事件會從行事曆移除，並建議轉用 Reclaim。"
         },
         {
-          "type": "paragraph",
-          "text": "Reclaim.ai 官網頁首與關於頁現在都寫著「Reclaim.ai from Dropbox」，說法是它現在是 Dropbox 的一部分。它跑在 Google 日曆或 Outlook 行事曆上，把專注時間、習慣與任務排進空檔。免費的 Lite 給 5 個 AI 代理（Agent）、1 人團隊、1 週排程範圍、1 組行事曆同步、1 條預約連結；定價頁預設年繳，Starter 每席每月 10 美元、Business 15 美元、Enterprise 22 美元。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Reclaim.ai 官網頁首與關於頁現在都寫著「Reclaim.ai from Dropbox」，說法是它現在是 Dropbox 的一部分。它跑在 Google 日曆或 Outlook 行事曆上，把專注時間、習慣與任務排進空檔。免費的 Lite 給 5 個 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "（Agent）、1 人團隊、1 週排程範圍、1 組行事曆同步、1 條預約連結；定價頁預設年繳，Starter 每席每月 10 美元、Business 15 美元、Enterprise 22 美元。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -136,14 +178,26 @@
           "code": "【建活動｜Gemini App，指定行事曆】\n@Google Calendar 下週三下午三點，在信義區牙醫診所，建立一個 60 分鐘的「洗牙」活動，說明欄寫上要帶健保卡。\n\n【找空檔｜任何已連結行事曆的助理】\n列出我這週三到週五的空檔，只算上午九點到下午六點、連續 90 分鐘以上的，並標出哪幾段已經被會議切開。\n\n【設排程任務｜ChatGPT 排程任務或 Gemini 排程動作】\n每週一早上八點，整理我本週的行事曆與未完成待辦，列出三件必須完成的事、兩段可以放深度工作的空檔，以及需要我先確認的衝突。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+              "kind": "life",
+              "slug": "chatgpt-mobile-app-tips"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜排程與重複任務",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-scheduled-tasks"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜排程與重複任務",
+              "kind": "life",
+              "slug": "claude-code-scheduled-tasks"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -184,14 +238,26 @@
           }
         },
         {
-          "type": "link",
-          "text": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
-          "url": "https://mokaair.com/zh-TW/life/weekly-review-reset-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
+              "kind": "life",
+              "slug": "weekly-review-reset-routine"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑",
-          "url": "https://mokaair.com/zh-TW/life/ai-weekly-review-templates"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑",
+              "kind": "life",
+              "slug": "ai-weekly-review-templates"
+            }
+          ]
         },
         {
           "type": "table",
@@ -275,8 +341,23 @@
           "text": "行事曆是密度很高的個人資料，你去哪裡、見了誰都寫在上面。第一件是連結本身，Gemini App 要連結 Google Workspace 並開著「保留活動記錄」才能存取，設定裡可以隨時中斷。第二件是模型訓練，OpenAI 的 Google 應用程式資料控管常見問題寫著，它不會用直接來自已連結 Google 應用程式的資料訓練通用模型，例外是送出意見回饋、自己複製貼上，以及已出現在回覆的內容。"
         },
         {
-          "type": "paragraph",
-          "text": "第三件是權限最小化：先在不重要的帳戶上試、只連真的需要的行事曆、把排程任務壓到最低。另外，只要助理會讀行事曆上的文字，活動標題與說明欄就是外部輸入，別人寄來的邀請可以在說明欄裡寫下針對 AI 的指令，也就是提示詞注入。先給讀取再考慮寫入。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三件是權限最小化：先在不重要的帳戶上試、只連真的需要的行事曆、把排程任務壓到最低。另外，只要助理會讀行事曆上的文字，活動標題與說明欄就是外部輸入，別人寄來的邀請可以在說明欄裡寫下針對 AI 的指令，也就是"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "。先給讀取再考慮寫入。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -293,14 +374,26 @@
           "text": "Microsoft 官方常見問題寫明：Copilot 自動改期時，與會者收到的是一般的會議更新訊息，看起來就像你自己改了時間。重要的對外會議先不要打開自動改期，或事先告訴對方你開了這個功能。"
         },
         {
-          "type": "link",
-          "text": "用 AI 管理 Email：分類、摘要與草稿的工作流",
-          "url": "https://mokaair.com/zh-TW/life/ai-email-management"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 管理 Email：分類、摘要與草稿的工作流",
+              "kind": "life",
+              "slug": "ai-email-management"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
-          "url": "https://mokaair.com/zh-TW/life/ai-meeting-notes-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
+              "kind": "life",
+              "slug": "ai-meeting-notes-tools"
+            }
+          ]
         }
       ],
       "sources": [

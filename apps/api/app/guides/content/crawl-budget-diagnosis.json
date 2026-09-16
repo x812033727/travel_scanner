@@ -77,8 +77,23 @@
           "text": "先列出網址如何產生：分類、站內搜尋、排序、分頁、日期及其他篩選條件。相同內容只是排列順序不同，和確實回答不同需求的專題頁應分開處理。是否保留某個入口，應由使用者任務與內容差異決定，不能只看網址有沒有問號。"
         },
         {
-          "type": "paragraph",
-          "text": "Google 的多面向導覽文件提醒，篩選組合可能形成極大的網址空間。若某些組合不需要被抓取，可評估相應規則；若要提供搜尋入口，就應維持一致的參數或路徑邏輯，避免同一條件反覆排列。不存在的組合與分頁也需要正確回應。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的多面向導覽文件提醒，篩選組合可能形成極大的網址空間。若某些組合不需要被抓取，可評估相應規則；若要提供搜尋入口，就應維持一致的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "或路徑邏輯，避免同一條件反覆排列。不存在的組合與分頁也需要正確回應。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +216,26 @@
           "text": "抓取量可以因整理重複網址而下降，也可能因伺服器錯誤而下降。把請求類型、回應結果與重要內容更新放在一起看，才能知道下降代表節省資源，還是需要立即處理的可用性問題。"
         },
         {
-          "type": "link",
-          "text": "辨識搜尋與 AI 爬蟲的用途",
-          "url": "https://mokaair.com/zh-TW/life/search-crawlers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨識搜尋與 AI 爬蟲的用途",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立網站日常維護清單",
-          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立網站日常維護清單",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
         }
       ],
       "sources": [

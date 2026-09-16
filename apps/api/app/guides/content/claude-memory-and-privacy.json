@@ -43,9 +43,15 @@
           "text": "一句話送進 Claude 之後會往三個方向去。第一條是記憶：Claude 邊聊邊把值得記的事存成一則一則的主題（Topics），下一個對話就帶著；第二條是訓練：如果你允許「協助改善模型」，這段對話會以去識別化的形式進入訓練資料；第三條是保留：不管前兩條開不開，對話本身都會存在 Anthropic 的伺服器，直到你刪除、再等最多 30 天。三條路各有開關與期限，關掉一條不等於關掉另外兩條：關掉訓練，記憶照常在記；重設記憶，對話還在歷史裡；刪掉對話，從它生成的記憶條目也不會跟著消失。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -75,14 +81,26 @@
           "text": "兩個容易誤會的地方：刪掉一段對話，從它生成的記憶條目不會跟著消失，要另外到 Topics 裡刪；匯出帳號資料時，記憶會一起包在裡面。"
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -94,12 +112,52 @@
           "text": "Anthropic 在 2025 年 8 月 28 日更新消費者條款：Free、Pro、Max 帳號（包含用這些帳號使用 Claude Code）的對話可以用來訓練模型，前提是你允許。新帳號在註冊流程裡選一次，舊帳號當時有到 2025 年 10 月 8 日的期限要做決定；官網沒有寫這個選項的預設值，註冊時那一步自己看清楚。Team、Enterprise、API、Claude for Education 與 Claude for Government 走商業條款，不在這個範圍。"
         },
         {
-          "type": "paragraph",
-          "text": "開關的位置：左下角帳號名稱 → Settings → Privacy（隱私）→ Help improve our AI models（幫助改進我們的 AI 模型），手機 App 走同一條路。開與關的差別主要在保留期：允許時，你的對話會以去識別化形式在訓練管線裡保留最長 5 年，而且只算打開之後新開或接續的對話；不允許時維持 30 天。會用到的內容包含整段對話、上傳的內容、自訂風格與對話偏好；透過連接器（例如 Google Drive、MCP）讀到的原始資料不算，除非你把它貼進對話。Anthropic 說會先把資料與帳號去連結、只讓少數人員接觸、並過濾敏感資料，但同一頁也建議不要貼財務資料、病歷、密碼與機密文件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開關的位置：左下角帳號名稱 → Settings → Privacy（隱私）→ Help improve our "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " models（幫助改進我們的 AI 模型），手機 App 走同一條路。開與關的差別主要在保留期：允許時，你的對話會以去識別化形式在訓練管線裡保留最長 5 年，而且只算打開之後新開或接續的對話；不允許時維持 30 天。會用到的內容包含整段對話、上傳的內容、自訂風格與對話偏好；透過連接器（例如 Google Drive、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "）讀到的原始資料不算，除非你把它貼進對話。Anthropic 說會先把資料與帳號去連結、只讓少數人員接觸、並過濾敏感資料，但同一頁也建議不要貼財務資料、病歷、密碼與機密文件。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "改設定之後會發生什麼，官網寫得很清楚：關掉之後，新的對話不再用於未來的訓練，之前存下的對話也不再進入未來的訓練批次；但已經開始的訓練與已經訓練完成的模型不會倒回去。刪掉單一對話，那段對話也不會再用於未來訓練。另外有兩個不受開關影響的例外：被安全系統標記違反使用政策的對話，輸入與輸出最長保留 2 年、分類分數最長 7 年，可能用來改善內部的安全模型；按讚或倒讚送出的回饋，整段對話會保留 5 年，去除帳號連結後可用於研究與訓練。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "改設定之後會發生什麼，官網寫得很清楚：關掉之後，新的對話不再用於未來的訓練，之前存下的對話也不再進入未來的訓練批次；但已經開始的訓練與已經訓練完成的模型不會倒回去。刪掉單一對話，那段對話也不會再用於未來訓練。另外有兩個不受開關影響的例外：被安全系統"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "違反使用政策的對話，輸入與輸出最長保留 2 年、分類分數最長 7 年，可能用來改善內部的安全模型；按讚或倒讚送出的回饋，整段對話會保留 5 年，去除帳號連結後可用於研究與訓練。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -155,9 +213,15 @@
           "text": "對話預設私密，但按右上角 Share 產生公開連結後，任何拿到網址的人不用帳號就能看分享當下的快照，之後的訊息不會自動更新；快照包含所有訊息與 Artifacts，不包含你上傳的檔案。Anthropic 在分享頁加了 noindex、不發布目錄、網址是猜不到的長字串，但官網自己也說：連結被貼到公開網站、被截圖或被存檔服務複製，這些都管不到，把公開連結當成公開發表。要收回，到 Share 選單改成 Private，或到 Settings → Privacy → Shared chats 逐一 Unshare，連結立刻失效，但別人已經複製的內容收不回。比較保險的做法是用信箱邀請特定人：對方只能看、不能接著聊，邀請 30 天沒開啟會過期。Artifacts 的 Publish 同樣是公開給所有人，Unpublish 之後同一個 Artifact 不能再發布。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+              "kind": "life",
+              "slug": "chatgpt-shared-links-privacy"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -169,9 +233,15 @@
           "text": "只講兩家官網都查得到的三點。訓練開關：ChatGPT 個人帳號的 Improve the model for everyone 要自己去 Settings → Data Controls 關掉（官網用的字是 opt out），Claude 是註冊時要你選一次、之後在 Settings → Privacy 改。保留期：兩家刪掉的對話都是 30 天內從系統移除，Claude 多了「允許訓練就保留 5 年」這條，ChatGPT 的說明中心沒有對應的年限。無痕對話：ChatGPT 叫 Temporary chat，Claude 叫 Incognito chat，都保留 30 天。Gemini 的做法與三家的並排清單在隱私設定總覽篇。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",

@@ -182,8 +182,23 @@
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
         {
-          "type": "paragraph",
-          "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，標記 LINUX-CLI-01；同時看實際讀取記錄。接著在同一個 Codex 工作階段要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。完成後才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核對沒有改動。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": " LINUX-CLI-01；同時看實際讀取記錄。接著在同一個 Codex 工作階段要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。完成後才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核對沒有改動。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
+            }
+          ]
         },
         {
           "type": "heading",

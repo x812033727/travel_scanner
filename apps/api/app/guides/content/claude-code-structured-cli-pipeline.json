@@ -208,8 +208,23 @@
           "text": "使用參數陣列執行 Claude"
         },
         {
-          "type": "paragraph",
-          "text": "材料的 automation/run-claude.mjs 用 Node spawn 呼叫 CLI，將 JSON Schema 當成單一參數，輸入資料則透過 stdin 傳入。這能避免把 JSON 內的引號、換行或使用者文字直接拼進 shell 命令。程式不使用 shell:true，也不把外部文字當成可以執行的指令。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料的 automation/run-claude.mjs 用 Node spawn 呼叫 CLI，將 JSON Schema 當成單一"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，輸入資料則透過 stdin 傳入。這能避免把 JSON 內的引號、換行或使用者文字直接拼進 shell 命令。程式不使用 shell:true，也不把外部文字當成可以執行的指令。"
+            }
+          ]
         },
         {
           "type": "code",

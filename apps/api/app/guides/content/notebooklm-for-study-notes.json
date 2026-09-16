@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這篇把已建立的 NotebookLM 筆記本接到讀書流程：先寫出自己的理解，再用測驗找出缺口，最後以語音或影片複習。重點不是一次生成所有格式，而是每種產出都解決一個問題，並且能回到原始資料核對。完成後可建立一套約二十分鐘的單元複習方法。讀書 AI 幫得上忙的地方是找出你哪裡沒懂，不是替你讀完。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇把已建立的 NotebookLM 筆記本接到讀書流程：先寫出自己的理解，再用測驗找出缺口，最後以語音或影片複習。重點不是一次生成所有格式，而是每種產出都解決一個問題，並且能回到原始資料核對。完成後可建立一套約二十分鐘的單元複習方法。讀書 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 幫得上忙的地方是找出你哪裡沒懂，不是替你讀完。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,9 +70,10 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 入門",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -73,9 +89,10 @@
               "text": "本篇依 2026 年 9 月 14 日官方說明整理，部分頁面使用新名稱 Gemini Notebook。操作以電腦網頁與可編輯筆記本為主，未登入帳號實測產出。手機支援的功能與編輯入口可能較少，語音互動、影片格式與語言另有條件，額度集中看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案說明",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -141,8 +158,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "在 Studio 選 Flashcards「記憶卡」，以同一組來源建立概念卡。每張只放一個判斷，例如「一天很冷能否推翻長期趨勢」，背面要有簡短理由。先作答再翻面，依實際理解標記已掌握或尚未掌握，最後集中複習答錯的卡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在 Studio 選 Flashcards「記憶卡」，以同一組來源建立概念卡。每張只放一個判斷，例如「一天很冷能否推翻長期趨勢」，背面要有簡短理由。先作答再翻面，依實際理解"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "已掌握或尚未掌握，最後集中複習答錯的卡。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -182,9 +214,10 @@
               "text": "影片完成後逐段核對字幕、旁白及圖示是否表達同一概念。例如畫面若把「機率」配上毫米刻度，就算旁白正確也可能誤導。需要自己安排鏡頭和素材的創作短片，應看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Veo 與 Flow",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
@@ -258,18 +291,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 入門",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -278,9 +313,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

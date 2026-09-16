@@ -26,17 +26,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "看到一張圖想知道是不是 AI 生成的，與其用肉眼找破綻，先去找標示比較可靠。現在的標示分成兩層：一層是畫在畫面上、人眼看得見的浮水印，另一層是藏在檔案裡、要用工具才讀得出來的訊號，包括 Google 的 SynthID 這類隱形浮水印、C2PA 的內容憑證（Content Credentials），以及 IPTC 圖片中繼資料。結論先講：找得到標示是很強的線索，找不到標示什麼都不代表。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "看到一張圖想知道是不是 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生成的，與其用肉眼找破綻，先去找標示比較可靠。現在的標示分成兩層：一層是畫在畫面上、人眼看得見的浮水印，另一層是藏在檔案裡、要用工具才讀得出來的訊號，包括 Google 的 SynthID 這類隱形浮水印、C2PA 的內容憑證（Content Credentials），以及 IPTC 圖片中繼資料。結論先講：找得到標示是很強的線索，找不到標示什麼都不代表。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇照 OpenAI、Google、Adobe 與 Meta 官方說明頁當天的寫法，整理各家把什麼標示放進圖片裡、可見浮水印能不能關，然後帶你用幾個入口實際查一張圖，最後說明標示在哪些情況會消失，以及你自己發布 AI 圖片時可以怎麼標。名詞定義站上已經有一篇，這篇只寫操作。"
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -77,21 +98,57 @@
           "code": "Include a visible OpenAI watermark in the image."
         },
         {
-          "type": "link",
-          "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
-          "url": "https://mokaair.com/zh-TW/life/sora-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
+              "kind": "life",
+              "slug": "sora-video-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Google 分三層做。可見浮水印是一個開關：在 gemini.google.com 左下角的設定裡找 Media 的 Watermark，可以開或關。官方特別註明，在印度、南韓與越南只有 AI Ultra 訂閱者看得到這個開關，其他人生成的視覺媒體一律帶可見浮水印。開著的時候，新生成的圖片會出現浮水印，影片是整段持續疊加，音樂則是加在隨曲子產生的視覺播放器上。"
         },
         {
-          "type": "paragraph",
-          "text": "看不見的那一層不受這個開關影響。官方說明寫，所有用 Gemini Apps 生成或編輯的 AI 媒體都含有看不見的 SynthID 浮水印，同時也會寫入 C2PA 內容憑證中繼資料。Google 在 2025 年 11 月的官方部落格寫，SynthID 自 2023 年推出以來已標記超過 200 億筆 AI 生成內容。手機端也開始標了：2026 年 5 月的官方部落格寫，Pixel 10 是第一支為照片提供內容憑證的手機，影片的內容憑證接著擴大到 Pixel 8、9、10。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "看不見的那一層不受這個開關影響。官方說明寫，所有用 Gemini Apps 生成或編輯的 AI 媒體都含有看不見的 SynthID 浮水印，同時也會寫入 C2PA 內容憑證中繼資料。Google 在 2025 年 11 月的官方部落格寫，SynthID 自 2023 年推出以來已"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "超過 200 億筆 AI 生成內容。手機端也開始標了：2026 年 5 月的官方部落格寫，Pixel 10 是第一支為照片提供內容憑證的手機，影片的內容憑證接著擴大到 Pixel 8、9、10。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Adobe 走的是內容憑證這條路。Firefly 的說明寫，Adobe 會自動為 100% 像素由 Adobe Firefly 生成的作品加上內容憑證，裡面固定包含簽發者 Adobe Inc.、使用的應用程式或裝置，以及做過的動作，文生圖還會附一張輸出縮圖。Photoshop 則要自己開：在 Window 選單裡找 Content Credentials（Beta），按 Enable Content Credentials；匯出時走 File、Export、Export As，格式選 JPG 或 PNG（官方寫目前只有這兩種格式支援內容憑證），再決定要 Publish to Content Credentials cloud 還是 Attach to file。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Adobe 走的是內容憑證這條路。Firefly 的說明寫，Adobe 會自動為 100% 像素由 Adobe Firefly 生成的作品加上內容憑證，裡面固定包含簽發者 Adobe Inc.、使用的應用程式或裝置，以及做過的動作，"
+            },
+            {
+              "type": "article",
+              "text": "文生圖",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            },
+            {
+              "type": "text",
+              "text": "還會附一張輸出縮圖。Photoshop 則要自己開：在 Window 選單裡找 Content Credentials（Beta），按 Enable Content Credentials；匯出時走 File、Export、Export As，格式選 JPG 或 PNG（官方寫目前只有這兩種格式支援內容憑證），再決定要 Publish to Content Credentials cloud 還是 Attach to file。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -210,9 +267,15 @@
           "text": "內容憑證只提供正面訊號。開源文件寫得很白：內容憑證對一張圖的來源與歷程提供正面訊號，但不對一張圖的真偽提供負面訊號。OpenAI 的說明也寫，查驗工具不會確認內容正確、未經編輯、合法擁有，或被放在正確的脈絡裡。反過來說，查不到訊號的原因很多：可能是建立時還沒有這套標示、來自不支援的產品或檔案格式、中繼資料在上傳下載途中被清掉、浮水印被壓縮或裁切磨掉，也可能根本是別家 AI 做的。把查驗結果當成一條證據，不要當成判決。"
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -235,24 +298,48 @@
           "text": "壓縮與轉檔會不會把標示弄掉，跟你選什麼格式、怎麼壓有關；至於 AI 修圖工具本身怎麼用、平台對 AI 內容的揭露規定怎麼寫、生成的圖在台灣能不能商用，站上各有一篇可以接著看。"
         },
         {
-          "type": "link",
-          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
-          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         }
       ],
       "sources": [

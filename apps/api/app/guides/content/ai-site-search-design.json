@@ -26,8 +26,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "訪客在手作展館網站問下雨還能參加嗎，想知道的可能是室內課程照常、戶外活動取消，或能否改期。只回傳含有下雨兩字的頁面未必夠用，但 AI 若把不同活動規則拼成一個答案，也可能造成誤會。搜尋設計要從這個差別開始。這也是規劃網站搜尋 AI 的第一個決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "訪客在手作展館網站問下雨還能參加嗎，想知道的可能是室內課程照常、戶外活動取消，或能否改期。只回傳含有下雨兩字的頁面未必夠用，但 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 若把不同活動規則拼成一個答案，也可能造成誤會。搜尋設計要從這個差別開始。這也是規劃網站"
+            },
+            {
+              "type": "article",
+              "text": "搜尋 AI",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            },
+            {
+              "type": "text",
+              "text": " 的第一個決定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -73,8 +98,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "常見做法是先檢索相關內容，再把找到的段落交給模型整理，這類流程稱為 RAG。它能讓回答參考網站資料，但檢索到不完整或不相關內容時仍可能答錯。本篇只用這個概念設計站內回應，不把它當成查證正確率的保證。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "常見做法是先檢索相關內容，再把找到的段落交給模型整理，這類流程稱為 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "。它能讓回答參考網站資料，但檢索到不完整或不相關內容時仍可能答錯。本篇只用這個概念設計站內回應，不把它當成查證正確率的保證。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +246,37 @@
           "text": "把回答中的重要條件逐一對回原文。相關性分數和引用清單可協助檢查，不能直接當成正確率或授權證明。"
         },
         {
-          "type": "link",
-          "text": "讓網站資訊架構先回應讀者需求",
-          "url": "https://mokaair.com/zh-TW/life/website-information-architecture"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓網站資訊架構先回應讀者需求",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規劃 AI 搜尋環境中的內容寫法",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃 AI 搜尋環境中的內容寫法",
+              "kind": "life",
+              "slug": "ai-search-geo-content"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "從搜尋意圖整理文章切角",
-          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "從搜尋意圖整理文章切角",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
         }
       ],
       "sources": [

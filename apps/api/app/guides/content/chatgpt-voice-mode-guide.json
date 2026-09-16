@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "ChatGPT 的語音模式讓你用講的跟它對話、聽它用講的回答，2026 年 7 月起改由 GPT-Live 系列模型驅動，能一邊聽一邊講，不用等你講完才回應。這篇回答台灣使用者最常問的三件事：拿它練英文口說要怎麼設定、出國能不能當口譯、不想打字時該用聽寫還是語音模式。結論是三種都做得到，關鍵在開場的第一句話怎麼講，以及先知道它的額度、噪音與隱私限制在哪裡。把它當口說 AI 練英文、當口譯 AI 出國用，都從第一句話開始。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 的語音模式讓你用講的跟它對話、聽它用講的回答，2026 年 7 月起改由 GPT-Live 系列模型驅動，能一邊聽一邊講，不用等你講完才回應。這篇回答台灣使用者最常問的三件事：拿它練英文口說要怎麼設定、出國能不能當口譯、不想打字時該用聽寫還是語音模式。結論是三種都做得到，關鍵在開場的第一句話怎麼講，以及先知道它的額度、噪音與隱私限制在哪裡。把它當口說 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 練英文、當口譯 AI 出國用，都從第一句話開始。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,14 +72,26 @@
           "text": "額度依方案不同。OpenAI 在 2026 年 9 月 9 日簡化了 GPT-Live 的每日上限：Go 每天最多 3 小時，用的是 GPT-Live-1 mini；Plus 每天最多 3 小時 GPT-Live-1；Pro（每月 100 美元）每天最多 15 小時；Pro（每月 200 美元）不限時。免費版可以用 GPT-Live-1 mini，每 24 小時有額度上限，官方只寫「有限」沒有給數字，以官網為準。額度以連續 24 小時滾動計算，不是每天午夜歸零；單次語音對話最長 2 小時，到了上限或對話太長時它會自己結束，你可以改用文字繼續或再開一次。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-seniors-first-steps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
+              "kind": "life",
+              "slug": "ai-for-seniors-first-steps"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -119,9 +146,15 @@
           "text": "三種練法都建議戴耳機，官方的建議也是耳機、安靜的環境與調高音量能減少它誤判你講完或被自己的聲音干擾；iPhone 可以在語音對話中打開控制中心，把麥克風模式切成語音隔離。每次練完回到對話看逐字稿，把它糾正過的句子抄下來，隔天用同一段開場句再練一次，進步最快。它糾正得到的是發音與文法，給不了考試分數，這點看文末的提醒。"
         },
         {
-          "type": "link",
-          "text": "用 ChatGPT 學英文：對話練習、糾錯與單字卡，每天 20 分鐘的六種練法與提示詞",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-english-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 ChatGPT 學英文：對話練習、糾錯與單字卡，每天 20 分鐘的六種練法與提示詞",
+              "kind": "life",
+              "slug": "chatgpt-for-english-learning"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -147,9 +180,15 @@
           "url": "https://mokaair.com/zh-TW/guides"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+              "kind": "life",
+              "slug": "chatgpt-mobile-app-tips"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -222,9 +261,15 @@
           "text": "做不到的是「用語音但不把聲音送出去」：語音辨識在 OpenAI 的伺服器上進行，聲音一定會傳過去。能做的就是上面三件事，加上不講不該講的內容。其他 AI 工具的同類設定可以對照下面這篇一次關好。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "callout",

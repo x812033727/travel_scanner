@@ -30,8 +30,23 @@
           "text": "Midjourney 是一套用文字描述生成圖片的服務，官方文件寫得很直接：網頁版 midjourney.com 與 Discord 目前都沒有免費試用，唯一的限量試用在 niji·journey 手機 App 上，所以想畫出第一張圖就得先訂閱。這篇回答四件事：四個方案差在哪、一張圖會吃掉多少 GPU 時間、提示詞送出後那四張圖可以怎麼往下做，以及條款對所有權與商用是怎麼寫的。"
         },
         {
-          "type": "paragraph",
-          "text": "讀完你會知道該用 Discord 還是 Google 帳號註冊、四個方案的月費與年費、Fast 與 Relax 差在哪裡、生成後的 Vary 與 Upscale 各做什麼，也會拿到一份常用參數清單與可以直接貼上的範例提示詞。價格、時數、版本與條款全部以 2026 年 9 月 14 日的官方頁面為準，訂閱前請再看一次當天的頁面。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讀完你會知道該用 Discord 還是 Google 帳號註冊、四個方案的月費與年費、Fast 與 Relax 差在哪裡、生成後的 Vary 與 Upscale 各做什麼，也會拿到一份常用"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "清單與可以直接貼上的範例提示詞。價格、時數、版本與條款全部以 2026 年 9 月 14 日的官方頁面為準，訂閱前請再看一次當天的頁面。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -180,9 +195,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -225,14 +246,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "Midjourney 提示詞：風格、比例、參考圖",
-          "url": "https://mokaair.com/zh-TW/life/midjourney-prompt-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Midjourney 提示詞：風格、比例、參考圖",
+              "kind": "life",
+              "slug": "midjourney-prompt-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -271,28 +304,52 @@
           "text": "條款裡兩個最容易踩到的點：公司年營收超過 100 萬美元時，公司與其員工必須訂閱 Pro 或 Mega 才擁有生成的資產；放大其他使用者的圖，那張圖的所有權仍屬原作者，要使用就得先取得對方同意。官方也明說 Midjourney 不提供著作權指導，各國法規不同，個案請諮詢法律專業人士。"
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "還在猶豫要不要付訂閱費的話，可以先用免費能試的工具練手感，再回頭比較各家方案。"
         },
         {
-          "type": "link",
-          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+              "kind": "life",
+              "slug": "chatgpt-image-generation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 繪圖風格提示參考：50 種風格描述",
-          "url": "https://mokaair.com/zh-TW/life/ai-art-prompt-styles-reference"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 繪圖風格提示參考：50 種風格描述",
+              "kind": "life",
+              "slug": "ai-art-prompt-styles-reference"
+            }
+          ]
         }
       ],
       "sources": [

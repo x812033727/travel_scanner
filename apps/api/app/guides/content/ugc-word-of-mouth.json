@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "顧客標記品牌、傳來使用照片，或在評價平台留下心得，都是不同的互動。品牌若想把這些內容放進商品頁、社群貼文或廣告，需要重新確認使用目的與權利，不能把一次公開分享理解成永久、任意使用的同意。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "顧客"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "品牌、傳來使用照片，或在評價平台留下心得，都是不同的互動。品牌若想把這些內容放進商品頁、社群貼文或廣告，需要重新確認使用目的與權利，不能把一次公開分享理解成永久、任意使用的同意。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +216,37 @@
           "text": "轉載、剪輯與付費廣告分別確認。徵求平台評價時，也要遵守平台對利益交換、選擇性邀評及施壓的限制。"
         },
         {
-          "type": "link",
-          "text": "安排社群互動與回覆人力",
-          "url": "https://mokaair.com/zh-TW/life/social-media-planning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排社群互動與回覆人力",
+              "kind": "life",
+              "slug": "social-media-planning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查行銷文案的條件與真實性",
-          "url": "https://mokaair.com/zh-TW/life/marketing-copywriting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查行銷文案的條件與真實性",
+              "kind": "life",
+              "slug": "marketing-copywriting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓售後互動接回顧客旅程",
-          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓售後互動接回顧客旅程",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
         }
       ],
       "sources": [

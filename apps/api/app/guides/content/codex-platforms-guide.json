@@ -219,8 +219,23 @@
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
         {
-          "type": "paragraph",
-          "text": "預期讀到 local-copy-A，並能以工具結果支援工作路徑。平臺可能使用隔離工作副本，因此不要求路徑和自己桌面文字完全相同；重點是所選分支、檔案標記和工作環境能對上。若它無法證實是哪臺主機，就把主機身份列為未知，再回連線設定核對，而不是把推測當作成功。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期讀到 local-copy-A，並能以工具結果支援工作路徑。平臺可能使用隔離工作副本，因此不要求路徑和自己桌面文字完全相同；重點是所選分支、檔案"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "和工作環境能對上。若它無法證實是哪臺主機，就把主機身份列為未知，再回連線設定核對，而不是把推測當作成功。"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -128,8 +128,23 @@
           "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
         },
         {
-          "type": "paragraph",
-          "text": "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援子代理的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援"
+            },
+            {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -229,8 +244,23 @@
           "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
         },
         {
-          "type": "paragraph",
-          "text": "查看衝突檔會看到兩種標題與 Git 標記。這次不選任一方，而是保存錯誤和 status，執行 merge --abort。中止後再跑測試，預期恢復先前兩項通過、status 乾淨。若工作目錄在合併前本來就有修改，abort 不保證能重建所有未提交狀態；因此不要省略前一步的檢查。真正要解衝突時逐段決定保留行為，再重跑測試，不能一律取 ours 或 theirs。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查看衝突檔會看到兩種標題與 Git "
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。這次不選任一方，而是保存錯誤和 status，執行 merge --abort。中止後再跑測試，預期恢復先前兩項通過、status 乾淨。若工作目錄在合併前本來就有修改，abort 不保證能重建所有未提交狀態；因此不要省略前一步的檢查。真正要解衝突時逐段決定保留行為，再重跑測試，不能一律取 ours 或 theirs。"
+            }
+          ]
         },
         {
           "type": "code",

@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這篇用「桌上一隻杯子，晨光慢慢移動」的短片，練習文字提示、素材參考、首尾影格、分鏡和匯出。學完可以從單一鏡頭開始，檢查連續性後再組成短片。本文保留 Veo 與 Flow 的既定篇名，同時說明 Gemini 影片入口目前使用的模型變化。影片 AI 生成的每一段都要先看連續性，再談好不好看。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇用「桌上一隻杯子，晨光慢慢移動」的短片，練習文字提示、素材參考、首尾影格、分鏡和匯出。學完可以從單一鏡頭開始，檢查連續性後再組成短片。本文保留 Veo 與 Flow 的既定篇名，同時說明 Gemini 影片入口目前使用的模型變化。"
+            },
+            {
+              "type": "article",
+              "text": "影片 AI",
+              "kind": "life",
+              "slug": "ai-video-tools-compared"
+            },
+            {
+              "type": "text",
+              "text": " 生成的每一段都要先看連續性，再談好不好看。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -60,12 +75,23 @@
           "inlines": [
             {
               "type": "text",
-              "text": "準備符合資格的帳號、可使用的生成額度，以及自己拍攝或有權使用的參考圖。Gemini 個人影片功能需相應 Google AI 方案且年滿十八歲，Workspace 另依授權；Flow 的地區與功能也要檢查。費用集中參閱"
+              "text": "準備符合資格的帳號、可使用的生成額度，以及自己拍攝或有權使用的參考圖。Gemini 個人影片功能需相應 Google "
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 方案且年滿十八歲，Workspace 另依授權；Flow 的地區與功能也要檢查。費用集中參閱"
+            },
+            {
+              "type": "article",
               "text": "方案與點數",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -125,9 +151,10 @@
               "text": "Ingredients「素材參考」用來提供角色、物品或風格；Frames「影格」則指定片段開始或結束的畫面。想保持杯子外形，可加入已核對的"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "參考圖片",
-              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
             },
             {
               "type": "text",
@@ -241,18 +268,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 圖片生成與修圖",
-              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "免費與付費方案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -261,9 +290,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

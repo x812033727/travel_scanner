@@ -98,8 +98,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "本例使用專案範圍，方便和練習材料一起管理。如果要讓所有專案都可用，可以放在使用者的 ~/.claude/skills/，但先在單一專案驗證較容易排錯。同名的個人、專案與外掛技能可能發生覆蓋，應避免用過於通用的名稱。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本例使用專案範圍，方便和練習材料一起管理。如果要讓所有專案都可用，可以放在使用者的 ~/.claude/"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/，但先在單一專案驗證較容易排錯。同名的個人、專案與外掛技能可能發生覆蓋，應避免用過於通用的名稱。"
+            }
+          ]
         },
         {
           "type": "heading",

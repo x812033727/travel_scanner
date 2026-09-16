@@ -25,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這一篇建立可以下載審查結果的 GitHub Actions 練習：PR 只執行沒有模型秘密的基準測試，模型審查由預設分支手動觸發，輸出通過結構驗證後才保存成附件。你會核對真正的 workflow run、來源提交與取消狀態，避免只貼 YAML 就宣稱 CI 已完成。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一篇建立可以下載審查結果的 GitHub Actions 練習：PR 只執行沒有模型秘密的"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "，模型審查由預設分支手動觸發，輸出通過結構驗證後才保存成附件。你會核對真正的 workflow run、來源提交與取消狀態，避免只貼 YAML 就宣稱 CI 已完成。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -152,8 +167,23 @@
           "code": "name: Claude lab baseline\non: [pull_request, workflow_dispatch]\npermissions:\n  contents: read\njobs:\n  baseline:\n    runs-on: ubuntu-latest\n    timeout-minutes: 5\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '22'\n      - run: node --test tests/model.test.mjs\n"
         },
         {
-          "type": "paragraph",
-          "text": "保存 run URL、來源 SHA、分支、事件與退出結果。只看到工作流檔案出現在 GitHub，不代表它已執行；綠色提交標記也要確認是哪一個檢查。第一次故意在測試分支注入已知 toggle 錯誤，確認 baseline 真的變紅，再修正並重跑。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "保存 run URL、來源 SHA、分支、事件與退出結果。只看到工作流檔案出現在 GitHub，不代表它已執行；綠色提交"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "也要確認是哪一個檢查。第一次故意在測試分支注入已知 toggle 錯誤，確認 baseline 真的變紅，再修正並重跑。"
+            }
+          ]
         },
         {
           "type": "paragraph",

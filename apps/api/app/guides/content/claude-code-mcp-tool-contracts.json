@@ -25,8 +25,29 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MCP 連線成功之後，下一個問題是工具能不能被正確使用。本篇設計 list_tasks 與 get_task 的分工、輸入 Schema、查無資料及分頁結果，並用真正的 MCP 客戶端檢查空結果、錯誤參數和多頁資料，最後再觀察 Claude 是否選對工具。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 連線成功之後，下一個問題是工具能不能被正確使用。本篇設計 list_tasks 與 get_task 的分工、輸入 Schema、查無資料及分頁結果，並用真正的 MCP 客戶端檢查空結果、錯誤"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "和多頁資料，最後再觀察 Claude 是否選對工具。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

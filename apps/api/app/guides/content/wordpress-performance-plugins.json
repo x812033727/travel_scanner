@@ -96,8 +96,23 @@
           "text": "NitroPack 提供 Standard、Medium、Strong、Ludicrous 與 Custom 等模式，涵蓋不同程度的設定。官方入門文件目前記載預設是 Ludicrous，但預設不代表適合每個網站。先查看實際帳號設定，依功能檢查結果調整，不需要為追求模式名稱而忽略版面異常。"
         },
         {
-          "type": "paragraph",
-          "text": "Test Mode 開啟時，普通網址以未啟用 NitroPack 優化的方式運作，測試者可用帶有 testnitro=1 參數的網址查看優化版本。這讓你能比較同一頁，但若原站已靠 NitroPack 加速，開啟此模式也會改變一般訪客取得的優化狀態，需安排合適的測試時段。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Test Mode 開啟時，普通網址以未啟用 NitroPack 優化的方式運作，測試者可用帶有 testnitro=1 "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的網址查看優化版本。這讓你能比較同一頁，但若原站已靠 NitroPack 加速，開啟此模式也會改變一般訪客取得的優化狀態，需安排合適的測試時段。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -203,19 +218,37 @@
           "text": "報表改善但選單、表單或購物流程壞掉，仍屬未完成。保存前後設定，先回復必要功能，再重新縮小優化範圍。"
         },
         {
-          "type": "link",
-          "text": "釐清網站與 CDN 快取分工",
-          "url": "https://mokaair.com/zh-TW/life/website-cache-cdn"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "釐清網站與 CDN 快取分工",
+              "kind": "life",
+              "slug": "website-cache-cdn"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用一致條件閱讀速度報表",
-          "url": "https://mokaair.com/zh-TW/life/pagespeed-performance-review"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用一致條件閱讀速度報表",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "備份網站並準備還原",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "備份網站並準備還原",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
         }
       ],
       "sources": [

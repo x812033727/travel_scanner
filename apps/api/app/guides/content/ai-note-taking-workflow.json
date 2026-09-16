@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想用 AI 做筆記的人最常卡在一個問題：到底要用哪一個。這篇的結論是不必挑，Notion、Obsidian 與 NotebookLM 擅長的是筆記流程裡不同的段落，Notion 把事情結構化並放在雲端協作，Obsidian 把純文字檔留在自己的電腦上，NotebookLM 專門針對你丟進去的資料回答問題並附上可以點回原文的引用。三個分工，比硬挑一個好用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 做筆記的人最常卡在一個問題：到底要用哪一個。這篇的結論是不必挑，Notion、Obsidian 與 NotebookLM 擅長的是筆記流程裡不同的段落，Notion 把事情結構化並放在雲端協作，Obsidian 把純文字檔留在自己的電腦上，NotebookLM 專門針對你丟進去的資料回答問題並附上可以點回原文的引用。三個分工，比硬挑一個好用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,9 +71,15 @@
           "text": "AI 在這套流程裡的位置很固定：把長的變短、把散的變整齊、把看過的變成問題。真正決定筆記價值的兩件事，原始出處與你自己的判斷，要留在人手上，後面會再談。"
         },
         {
-          "type": "link",
-          "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
-          "url": "https://mokaair.com/zh-TW/life/reading-notes-that-you-reuse"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
+              "kind": "life",
+              "slug": "reading-notes-that-you-reuse"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -70,22 +91,49 @@
           "text": "Notion 是雲端工作區。免費的 Free 方案每人每月 0 美元，個人使用的區塊數不限，兩人以上的工作區才有上限；檔案上傳每個限 5 MB，外部訪客上限 10 位，頁面歷史保留 7 天。Plus 是每人每月 10 美元，檔案上傳不限、頁面歷史 30 天，外部訪客不限。官網價格頁預設以美元、年繳顯示，月繳價要在頁面上切換，以官網為準。"
         },
         {
-          "type": "paragraph",
-          "text": "Notion AI 的位置要看清楚。官方說明中心寫的是 Notion AI 只在 Business 與 Enterprise 方案提供，Business 每人每月 20 美元，內含會替你完成多步驟任務的 Notion Agent、AI Meeting Notes 與還在 Beta 的 Enterprise Search，頁面歷史 90 天；Enterprise 為客製報價，並且對 Notion AI 使用的大型語言模型供應商採零資料保留。Free 與 Plus 使用者拿到的是有限次數的免費回應，官網沒有公布確切次數，以官網為準，用完會出現升級提示。比較貴的高階模型另外需要 Notion credits，而且預設關閉，要由工作區擁有者或管理員開啟。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Notion AI 的位置要看清楚。官方說明中心寫的是 Notion AI 只在 Business 與 Enterprise 方案提供，Business 每人每月 20 美元，內含會替你完成多步驟任務的 Notion Agent、AI Meeting Notes 與還在 Beta 的 Enterprise Search，頁面歷史 90 天；Enterprise 為客製報價，並且對 Notion AI 使用的"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "供應商採零資料保留。Free 與 Plus 使用者拿到的是有限次數的免費回應，官網沒有公布確切次數，以官網為準，用完會出現升級提示。比較貴的高階模型另外需要 Notion credits，而且預設關閉，要由工作區擁有者或管理員開啟。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
-          "url": "https://mokaair.com/zh-TW/life/notion-ai-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
+              "kind": "life",
+              "slug": "notion-ai-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Obsidian 走另一條路。軟體本身免費而且不限功能、不需註冊，筆記就是你自己資料夾裡的 Markdown 純文字檔，官方文件把這個資料夾叫做 vault，同一個資料夾也收得下 .base、.canvas、圖片、音訊、影片與 PDF；核心外掛 Bases 可以用檔案的屬性做出類似資料庫的表格與卡片檢視。官方沒有任何 AI 方案，AI 要靠社群外掛接上去。付費的是加購服務：Sync Standard 每人每月 4 美元（年繳）或 5 美元（月繳），1 個遠端 vault、1 GB 空間、單檔上限 5 MB、版本歷史 1 個月；Sync Plus 每人每月 8 美元（年繳）或 10 美元（月繳），10 個遠端 vault、10 GB 空間、可加購到 100 GB、單檔上限 200 MB、版本歷史 12 個月。Publish 每站每月 8 美元（年繳）或 10 美元（月繳），商業授權每人每年 50 美元，官網明講不是強制。"
         },
         {
-          "type": "link",
-          "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
-          "url": "https://mokaair.com/zh-TW/life/ai-second-brain-obsidian"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
+              "kind": "life",
+              "slug": "ai-second-brain-obsidian"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -96,9 +144,15 @@
           "text": "上限照方案分層。免費層在官網叫 Gemini Notebook Standard，每位使用者 100 本筆記本、每本 50 個來源、每天 50 次對話、每天 3 份語音摘要與 3 份影片摘要、每天 10 份報告，Deep Research 每月 10 次。要提高上限就要買 Google AI 方案：AI Plus 每月 4.99 美元、AI Pro 每月 19.99 美元、AI Ultra 每月 99.99 美元起，另有每月 199.99 美元的級距。對應過來，Plus 是 200 本筆記本、每本 100 個來源、每天 200 次對話；Pro 是 500 本、每本 300 個來源、每天 500 次對話、每天 20 份語音摘要；Ultra 最高到每本 600 個來源、每天 5,000 次對話。官方說明頁標示 2026 年 9 月 2 日起使用上限會調整，也寫明數字可能變動。台灣在支援地區清單內，介面支援 80 種以上語言，新台幣定價官網沒有列，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "NotebookLM 入門：資料、筆記本與引用",
-          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NotebookLM 入門：資料、筆記本與引用",
+              "kind": "life",
+              "slug": "notebooklm-guide"
+            }
+          ]
         },
         {
           "type": "table",
@@ -193,9 +247,15 @@
           "code": "以下是 AI 產生的摘要，以及我自己寫的筆記。\n請逐條列出兩者說法不一致的地方：AI 的說法、我的說法、需要回去查證的原文位置。\n不要幫我決定誰對，只要把差異列出來。"
         },
         {
-          "type": "link",
-          "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
-          "url": "https://mokaair.com/zh-TW/life/ai-prompt-library-personal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+              "kind": "life",
+              "slug": "ai-prompt-library-personal"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -225,19 +285,37 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
-          "url": "https://mokaair.com/zh-TW/life/meeting-notes-action-template"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+              "kind": "life",
+              "slug": "meeting-notes-action-template"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NotebookLM 進階：測驗、語音與影片摘要",
-          "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NotebookLM 進階：測驗、語音與影片摘要",
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -264,9 +342,15 @@
           "text": "Obsidian 預設開著限制模式，不執行第三方程式碼，要裝社群外掛就得先關掉。官方文件寫得很白：外掛會繼承 Obsidian 的存取權限，可以讀取你電腦上的檔案、連上網路、安裝其他程式，而且技術上沒辦法把外掛限制在特定權限內。要接 AI 外掛就挑官方會自動掃描、並在外掛目錄顯示安全評分的，先放在一個測試用的 vault 裡跑幾天，再決定要不要放進存了合約與健康資料的那一個。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         }
       ],
       "sources": [

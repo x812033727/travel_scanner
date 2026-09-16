@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "網站工具顯示缺少 llms.txt，是否代表 AI 完全看不到內容？先別急著安裝外掛。這個檔案可以提供整理過的文件入口，但是否有人使用、連結是否正確，以及內容有沒有持續更新，才是評估價值的起點。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網站工具顯示缺少 llms.txt，是否代表 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 完全看不到內容？先別急著安裝外掛。這個檔案可以提供整理過的文件入口，但是否有人使用、連結是否正確，以及內容有沒有持續更新，才是評估價值的起點。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -121,8 +136,23 @@
           "text": "先由一般瀏覽器開啟檔案，抽查每一類文件的連結、繁體中文與版本資訊。再用預定工具，明確提供這份導讀，請它找出某型號的清潔步驟，並要求指出來源。這是在測試文件入口是否能完成任務，與自然搜尋中的出現率是不同問題。"
         },
         {
-          "type": "paragraph",
-          "text": "Chrome 的 Lighthouse 在代理瀏覽檢查中有 llms.txt 項目。官方目前說明，取得檔案時的伺服器錯誤會被標記；未提供檔案而回傳 404 則屬不適用，因為檔案仍是選擇性提供。不要把這個檢查項目解讀成缺檔就會受到搜尋處罰。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Chrome 的 Lighthouse 在代理瀏覽檢查中有 llms.txt 項目。官方目前說明，取得檔案時的伺服器錯誤會被"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "；未提供檔案而回傳 404 則屬不適用，因為檔案仍是選擇性提供。不要把這個檢查項目解讀成缺檔就會受到搜尋處罰。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,19 +226,37 @@
           "text": "檔案可讀、連結有效與內容最新應分別檢查。若無法確認哪些工具會使用，先做小範圍驗證，不預先承諾搜尋效果。"
         },
         {
-          "type": "link",
-          "text": "辨認搜尋爬蟲與 AI 取頁用途",
-          "url": "https://mokaair.com/zh-TW/life/search-crawlers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨認搜尋爬蟲與 AI 取頁用途",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立網站地圖與網址提交流程",
-          "url": "https://mokaair.com/zh-TW/life/sitemap-website-submission"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立網站地圖與網址提交流程",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用可追溯證據觀察 AI 搜尋曝光",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-tools-measurement"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用可追溯證據觀察 AI 搜尋曝光",
+              "kind": "life",
+              "slug": "ai-search-tools-measurement"
+            }
+          ]
         }
       ],
       "sources": [

@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "用 AI 修商品圖已經不是要不要用的問題，而是修到哪裡為止的問題：背景、光線、構圖可以換，商品本身的顏色、材質、尺寸與附件不能換。這篇把賣家最常用的四種 AI 商品圖用法、各家工具官方頁寫得出來的能力與限制，以及蝦皮規範與公平交易法對商品圖的要求放在一起看，結論是同一條線：圖可以做得好看，但不能讓買家對收到的東西產生錯誤預期。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 修商品圖已經不是要不要用的問題，而是修到哪裡為止的問題：背景、光線、構圖可以換，商品本身的顏色、材質、尺寸與附件不能換。這篇把賣家最常用的四種 AI 商品圖用法、各家工具官方頁寫得出來的能力與限制，以及蝦皮規範與公平交易法對商品圖的要求放在一起看，結論是同一條線：圖可以做得好看，但不能讓買家對收到的東西產生錯誤預期。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -70,8 +85,23 @@
           "text": "Canva 把 AI 功能分成 Standard、Premium、Ultra 三層，共用同一份每月 AI 額度。官方說明頁寫免費方案每月最多 200 次 Standard 或 20 次 Premium，而且沒有 Ultra 的使用權；Pro 與 Teams 是2,000 次 Standard 或 200 次 Premium 或 20 次 Ultra；Business 與 Enterprise 是 4,000、400、40。用文字生圖屬於 Premium 以上，所以免費方案每個月能生成的商品情境圖大約就是 20 張的量級；這份額度表 Canva 會調整，實際數字以官網當天的說明頁為準。Canva 的方案價格頁在這個環境讀不到，價格以官網為準。"
         },
         {
-          "type": "paragraph",
-          "text": "Adobe Firefly 的方案頁列出 Firefly Standard 每月 US$9.99 含 2,000 點生成額度、Pro 每月 US$19.99 含 4,000 點、Pro Plus 原價 US$49.99 首年 US$34.97 含 10,000 點。免費使用者官方寫的是每天有一定的生成次數、每日重設，沒有寫確切張數，以官網為準。Firefly 的產品頁寫模型以 Adobe Stock 的授權內容與著作權已到期的公共領域內容訓練，產出會附上內容憑證（Content Credentials）；說明頁進一步寫，只有在「100% 的像素都由 Firefly 生成」的素材上才會自動加上內容憑證。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Adobe Firefly 的方案頁列出 Firefly Standard 每月 US$9.99 含 2,000 點生成額度、Pro 每月 US$19.99 含 4,000 點、Pro Plus 原價 US$49.99 首年 US$34.97 含 10,000 點。免費使用者官方寫的是每天有一定的生成次數、每日重設，沒有寫確切張數，以官網為準。Firefly 的產品頁寫模型以 Adobe Stock 的授權內容與著作權已到期的公共領域內容訓練，產出會附上"
+            },
+            {
+              "type": "article",
+              "text": "內容憑證",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            },
+            {
+              "type": "text",
+              "text": "（Content Credentials）；說明頁進一步寫，只有在「100% 的像素都由 Firefly 生成」的素材上才會自動加上內容憑證。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -114,9 +144,15 @@
           "caption": "資料來源：各工具的官方功能頁與定價頁，2026 年 9 月查證；免費層內容與價格會依地區顯示，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "AI 去背與放大：免費工具怎麼挑",
-          "url": "https://mokaair.com/zh-TW/life/ai-remove-background-upscale"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 去背與放大：免費工具怎麼挑",
+              "kind": "life",
+              "slug": "ai-remove-background-upscale"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -167,8 +203,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Shopee AI 服務條款（頁面標示最後更新 2025 年 8 月 28 日）第 3.1.6 點寫得很直白：使用者「應自行辨識或判斷，為避免誤導或使用者有權知悉時，應於適當處揭露並讓使用者可合理辨識該等內容有使用 AI 工具或係 AI 生成內容」，而且「本平台不對任何未適當標示的行為所造成之任何爭議或損害承擔任何責任」。同一份條款第 3.1.5 點要求賣家對上傳的內容、素材或檔案擁有所有必要權利，第 3.3 點則寫，用蝦皮以外的工具做出來的第三方 AI 生成內容，「必須被標記為 AI 生成的內容」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Shopee AI 服務條款（頁面標示最後更新 2025 年 8 月 28 日）第 3.1.6 點寫得很直白：使用者「應自行辨識或判斷，為避免誤導或使用者有權知悉時，應於適當處揭露並讓使用者可合理辨識該等內容有使用 AI 工具或係 AI 生成內容」，而且「本平台不對任何未適當標示的行為所造成之任何爭議或損害承擔任何責任」。同一份條款第 3.1.5 點要求賣家對上傳的內容、素材或檔案擁有所有必要權利，第 3.3 點則寫，用蝦皮以外的工具做出來的第三方 AI 生成內容，「必須被"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "為 AI 生成的內容」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -179,9 +230,15 @@
           "text": "較早的蝦皮購物規範也是同一個方向，要求賣家「提供仔細且真實的商品敘述，並附售商品的實際圖片」，並寫明如果蝦皮認定商品有廣告不實等情形，仍會禁止刊登。其他通路查不到對外公開的圖片規範頁：momo 的供應商規範要登入供應商系統才看得到，以官方公告為準；PChome 商店街的網站公告寫，原平台交易功能提供到 2024 年 10 月 31 日，自 2024 年 11 月 1 日起轉型為品牌官網服務；Amazon 的商品圖片規範頁需登入賣家中心才能開啟，規格以該頁當天的版本為準。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -213,9 +270,15 @@
           "text": "去背、換情境、放大與虛擬模特兒都會重新畫出像素，模型不知道商品實際長什麼樣子，只會把畫面補成合理的樣子。上架前把成品、沒修過的原檔與實際商品放在一起比對顏色、材質、配件數量與尺寸感，是唯一能擋下問題的步驟。另外要記得平台的標示要求：蝦皮把「應於適當處揭露並讓使用者可合理辨識」寫進 AI 服務條款，而且明講平台不為未適當標示負責；Canva 的 AI 產品條款也禁止移除、變更或停用內容的來源與中繼資料標籤，包含但不限於 C2PA 中繼資料。"
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -231,23 +294,41 @@
           "text": "輸出這一段建議按通路分開處理：主圖用能存透明底的格式做中介檔，最後輸出成平台接受的格式；情境圖與說明圖走壓縮率較好的格式。內容憑證雖然會附在檔案上，但一般的壓縮與轉檔流程不保證中繼資料會被保留，如果打算靠它做揭露，輸出後要自己確認資料還在，或者乾脆在商品描述裡用文字寫清楚哪幾張是 AI 生成的。內容憑證的規格由 C2PA 維護，官方網站寫這套標準已有五百家以上的公司支持。"
         },
         {
-          "type": "link",
-          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "圖片處理完之後，剩下的是商品頁本身：替代文字怎麼寫、圖片和規格表怎麼對上、變體要不要各自配圖。這些和 AI 無關，卻決定了這批圖能不能被找到。"
         },
         {
-          "type": "link",
-          "text": "網站圖片怎麼處理：尺寸、替代文字與搜尋可讀性",
-          "url": "https://mokaair.com/zh-TW/life/image-seo-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站圖片怎麼處理：尺寸、替代文字與搜尋可讀性",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "商品頁 SEO：規格、變體與購買問題怎麼整理",
-          "url": "https://mokaair.com/zh-TW/life/ecommerce-product-seo"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "商品頁 SEO：規格、變體與購買問題怎麼整理",
+              "kind": "life",
+              "slug": "ecommerce-product-seo"
+            }
+          ]
         }
       ],
       "sources": [

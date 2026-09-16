@@ -40,8 +40,23 @@
           "text": "模型更新，先看哪一段工作變得更容易"
         },
         {
-          "type": "paragraph",
-          "text": "發布稿描述 Opus 5 更重視檢查與反覆修正，也列出程式及知識工作的評測結果。這些結果代表 Anthropic 在指定題目和設定下得到的表現，不能直接推算成你的報告會進步多少，或每個人都能少花多少時間。讀新聞時，可以先把「模型表現更好」改寫成一個可觀察的問題：它能否在交稿前找出自己引用錯的數字？"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "發布稿描述 Opus 5 更重視檢查與反覆修正，也列出程式及知識工作的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "結果。這些結果代表 Anthropic 在指定題目和設定下得到的表現，不能直接推算成你的報告會進步多少，或每個人都能少花多少時間。讀新聞時，可以先把「模型表現更好」改寫成一個可觀察的問題：它能否在交稿前找出自己引用錯的數字？"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -166,14 +181,26 @@
           "text": "發布稿中的比較來自供應商指定的評測。本文情境是編輯建議；請用自己的固定任務確認效果。"
         },
         {
-          "type": "link",
-          "text": "先理解模型與工具的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先理解模型與工具的差別",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 入門與使用入口",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 入門與使用入口",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         }
       ],
       "sources": [
@@ -339,14 +366,26 @@
           "text": "Comparisons in release announcements come from vendor-specified evaluations. The scenarios here are editorial recommendations; verify effectiveness with your own fixed tasks."
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
-          "url": "https://mokaair.com/en/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -512,14 +551,26 @@
           "text": "発表リリース内の比較データはベンダー指定のベンチマークに基づくものです。本稿のシナリオは編集部推奨の枠組みであり、効果の検証は自社の固定タスクで行ってください。"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -685,14 +736,26 @@
           "text": "발표 자료의 비교치는 공급업체가 지정한 벤치마크 결과입니다. 본문 시나리오는 에디터의 제안이며, 고정된 자체 작업으로 효과를 직접 확인하세요."
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -858,14 +921,26 @@
           "text": "发布稿中的对比均来自供应商指定的评测。本文情境为编辑建议；请利用个人固定的任务确认实际效果。"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [

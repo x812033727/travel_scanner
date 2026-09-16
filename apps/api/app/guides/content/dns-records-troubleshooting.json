@@ -39,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "example.com、www.example.com 與 shop.example.com 是不同名稱，可以使用不同設定。DNS 處理的名稱不包含 https 開頭、斜線後的文章路徑或查詢參數。回報問題前，先寫下受影響的完整名稱，再記錄實際瀏覽的網址，這樣才能區分網域解析與個別頁面錯誤。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "example.com、www.example.com 與 shop.example.com 是不同名稱，可以使用不同設定。DNS 處理的名稱不包含 https 開頭、斜線後的文章路徑或查詢"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。回報問題前，先寫下受影響的完整名稱，再記錄實際瀏覽的網址，這樣才能區分網域解析與個別頁面錯誤。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -181,14 +196,26 @@
           "text": "同一個 DNS 區域可能同時服務網站、郵件與驗證。不要為了排查單一頁面而刪除所有紀錄；若要還原整個區域，先確認會影響哪些後續變更。"
         },
         {
-          "type": "link",
-          "text": "買網域前先做的功課：名稱、持有人與續約管理",
-          "url": "https://mokaair.com/zh-TW/life/domain-registration-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "買網域前先做的功課：名稱、持有人與續約管理",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
-          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
         }
       ],
       "sources": [

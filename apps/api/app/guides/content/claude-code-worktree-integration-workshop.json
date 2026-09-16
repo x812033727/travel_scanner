@@ -145,8 +145,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "兩份工作都涉及 view-mode.txt，是刻意安排的衝突案例。真實工作可以先切得更乾淨；但學會辨識重疊，比假設永遠不會衝突更實用。本篇也會讓你看見「檔案有衝突標記」與「需求有矛盾」並不總是同一件事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "兩份工作都涉及 view-mode.txt，是刻意安排的衝突案例。真實工作可以先切得更乾淨；但學會辨識重疊，比假設永遠不會衝突更實用。本篇也會讓你看見「檔案有衝突"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "」與「需求有矛盾」並不總是同一件事。"
+            }
+          ]
         },
         {
           "type": "heading",

@@ -26,8 +26,53 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這篇只回答一個問題：我現在要做某件事，該打開哪一個 AI。答案依任務不同：中文寫作與潤稿、讀長文件、做小工具先開 Claude；翻譯、做圖片、查資料、語音口說練習先開 Gemini；會寫程式的人多一個 Codex；要在 Gmail 與 Google 文件裡直接用，Gemini 得買 Google AI 方案，Claude 的免費連接器反而可以先頂著用。以上全部依 2026 年 9 月 13 日各家官網與說明中心查到的「功能有沒有、免費版有沒有」來排，沒有做誰比較聰明的評比。如果你是搜「翻譯 AI」「寫作 AI」或「寫程式 AI」進來的，先看對應任務那一節，再決定要不要換工具。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇只回答一個問題：我現在要做某件事，該打開哪一個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "。答案依任務不同：中文寫作與潤稿、讀長文件、做小工具先開 Claude；翻譯、做圖片、查資料、語音口說練習先開 Gemini；會寫程式的人多一個 Codex；要在 Gmail 與 Google 文件裡直接用，Gemini 得買 Google AI 方案，Claude 的免費連接器反而可以先頂著用。以上全部依 2026 年 9 月 13 日各家官網與說明中心查到的「功能有沒有、免費版有沒有」來排，沒有做誰比較聰明的評比。如果你是搜「"
+            },
+            {
+              "type": "article",
+              "text": "翻譯 AI",
+              "kind": "life",
+              "slug": "claude-for-translation-zh-tw"
+            },
+            {
+              "type": "text",
+              "text": "」「"
+            },
+            {
+              "type": "article",
+              "text": "寫作 AI",
+              "kind": "life",
+              "slug": "claude-writing-style-guide"
+            },
+            {
+              "type": "text",
+              "text": "」或「"
+            },
+            {
+              "type": "article",
+              "text": "寫程式 AI",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            },
+            {
+              "type": "text",
+              "text": "」進來的，先看對應任務那一節，再決定要不要換工具。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,9 +101,15 @@
           "text": "依這三步排出來的「首選」，是免費就能做、功能是正式功能、而且跟多數台灣使用者的工作流最合的那一個；「備選」是功能同樣存在、但要付費或工作流稍微繞一點的。你手上如果已經有另一家的付費帳號，把備選當首選完全合理。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -78,14 +129,26 @@
           "text": "讀長文件與摘要：首選 Claude，備選 Gemini。Claude 的說明中心把限制寫得很清楚：對話裡每個檔案最大 500 MB，PDF 在 100 頁以內連圖表一起看，101 到 1,000 頁只讀文字，超過 1,000 頁不能上傳；同一個對話最多 20 個檔案，支援 PDF、Word、Excel、CSV、EPUB 等格式。常要回頭問同一批文件的話，把它們放進「專案」，免費帳號可以建 5 個專案，文件會被快取，不用每次重傳。Gemini 免費版一次最多 10 個檔案、每個 100 MB，還能直接丟影片與音訊（免費版影片總長 5 分鐘、音訊 10 分鐘，付費方案分別放寬到 1 小時與 3 小時），適合會議錄音與教學影片；Google AI Pro 以上有 100 萬 token 的上下文窗口。提示句：「先用 200 字說這份 PDF 的結論，再列出五個重點，每個重點附頁碼，最後告訴我哪些地方你不確定。」"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -93,22 +156,49 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "寫程式與做小工具：首選 Claude，備選 Codex。不會寫程式、只想要一個能用的小工具（匯率換算、行程表、抽籤器）的人，Claude 免費版的 Artifacts 就夠：它能直接產出單頁網站、React 元件與 SVG 圖，做好就在旁邊的面板跑起來，還可以發布成連結給別人用。會寫程式的人再往上一階用 Claude Code，在終端機或 VS Code、JetBrains 等編輯器裡改整個專案，這個要 Pro（每月 20 美元，年繳換算每月 17 美元）以上。Codex 是 OpenAI 的寫程式代理，用 ChatGPT 帳號登入，官方定價頁把 Free 方案定位成「在小型程式任務上試試 Codex 的能力」，每月 0 美元；Plus 每月 20 美元才有網頁、CLI、編輯器擴充與 iOS 四個完整入口。已經付 ChatGPT Plus 的人，直接用 Codex 比再開一個 Claude Pro 划算。Gemini 的 Canvas 同樣能寫 app 與程式並分享連結，免費就有，當第三個選項。提示句：「做一個網頁小工具：輸入日圓金額與匯率，顯示台幣，數字要有千分位，可以在手機上用，不需要後端，做完告訴我怎麼分享給朋友。」"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "寫程式與做小工具：首選 Claude，備選 Codex。不會寫程式、只想要一個能用的小工具（匯率換算、行程表、抽籤器）的人，Claude 免費版的 Artifacts 就夠：它能直接產出單頁網站、"
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": " 元件與 SVG 圖，做好就在旁邊的面板跑起來，還可以發布成連結給別人用。會寫程式的人再往上一階用 Claude Code，在終端機或 VS Code、JetBrains 等編輯器裡改整個專案，這個要 Pro（每月 20 美元，年繳換算每月 17 美元）以上。Codex 是 OpenAI 的寫程式代理，用 ChatGPT 帳號登入，官方定價頁把 Free 方案定位成「在小型程式任務上試試 Codex 的能力」，每月 0 美元；Plus 每月 20 美元才有網頁、CLI、編輯器擴充與 iOS 四個完整入口。已經付 ChatGPT Plus 的人，直接用 Codex 比再開一個 Claude Pro 划算。Gemini 的 Canvas 同樣能寫 app 與程式並分享連結，免費就有，當第三個選項。提示句：「做一個網頁小工具：輸入日圓金額與匯率，顯示台幣，數字要有千分位，可以在手機上用，不需要後端，做完告訴我怎麼分享給朋友。」"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
-          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "做圖片與修圖：首選 Gemini，備選 ChatGPT。Gemini 免費版就內建圖片生成與編輯，模型叫 Nano Banana 2，可以從文字生圖，也可以上傳自己的照片要求局部修改，或一次上傳多張圖合成新圖；沒有 Google AI 方案的帳號下載 1K 解析度，有方案的可以下載 2K。年齡限制要記得：生成要 13 歲以上，編輯要 18 歲以上。ChatGPT 的 App Store 官方說明寫它能「依描述建立原創圖片，或編輯既有圖片」，功能是確定有的；但免費方案能不能用、額度多少，官方方案頁今天打不開，以官網為準，開發者定價文件則明寫圖片生成會讓額度消耗得比一般對話快 3 到 5 倍。要做影片或配音而不是靜態圖，去看 MiniMax 那一篇。提示句：「把這張照片的背景換成乾淨的白色，人物、衣服與手上的東西都不要動，不要加任何文字，輸出直式。」"
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -120,9 +210,15 @@
           "url": "https://mokaair.com/zh-TW/guides"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -235,9 +331,15 @@
           "text": "兩週足夠讓你碰到額度上限、發現某個功能其實用不到、也發現哪個工具你會自然而然打開。多數人一個免費帳號加一個付費就夠：免費的那個負責它免費就做得好的任務（例如 Gemini 的圖片、研究與語音，或 Claude 的寫作與讀文件），付費的那個選你最常做的事所在的生態系。三家都付費的人，通常是工作需要交叉驗證，不是一般使用者的情況。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         }
       ],
       "sources": [

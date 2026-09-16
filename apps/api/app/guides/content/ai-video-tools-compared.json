@@ -25,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "要挑一個 AI 影片工具，2026 年 9 月的答案和半年前不一樣：OpenAI 的 Sora 網站與 App 已在 2026 年 4 月 26 日停止，Videos API 也在 2026 年 9 月 24 日關閉。還能訂閱來用的是 Google 的 Veo 與 Flow、MiniMax 的海螺，以及 Kling。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要挑一個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 影片工具，2026 年 9 月的答案和半年前不一樣：OpenAI 的 Sora 網站與 App 已在 2026 年 4 月 26 日停止，Videos API 也在 2026 年 9 月 24 日關閉。還能訂閱來用的是 Google 的 Veo 與 Flow、MiniMax 的海螺，以及 Kling。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -50,9 +65,15 @@
           "text": "海螺走網頁版，官網首頁當天掛的是 MiniMax H3；官方模型頁寫它最長 15 秒、最高 1440p 或 2K，生成帶原生立體聲的影片。Kling 走網頁與行動 App，主力模型是 Kling VIDEO 3.0；Runway 本篇只列價格。"
         },
         {
-          "type": "link",
-          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -135,14 +156,26 @@
           "text": "音訊是這一輪最大的分野，四家都做到原生生成：Veo 的音效、環境音與對白都是原生生成，MiniMax 寫 H3 帶原生立體聲，Kling VIDEO 3.0 分成原生音訊與無原生音訊兩種模式。對白與環境音不用另外配，配樂仍要自己處理。"
         },
         {
-          "type": "link",
-          "text": "Veo 與 Google Flow：影片、分鏡與匯出",
-          "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -154,9 +187,15 @@
           "text": "想讓同一個角色出現在好幾顆鏡頭裡，各家的功能名稱不同。Veo 官方頁寫可以給場景、角色或物件的參考圖，也可以給風格參考圖，讓角色跨場景維持外觀；Flow 把它分成 Ingredients／References to Video 與 Frames to Video，而且 Veo 3.1 Lite 與 Fast 支援參考圖、Quality 不支援。海螺列的是 Character、Motion、Camera 與 Voice Reference，Kling 則叫 Element Reference，可把角色綁定，讓鏡頭移動時仍一致。"
         },
         {
-          "type": "link",
-          "text": "Gemini Omni 在 I/O 亮相：用對話改影片，素材與連續性仍要自己把關",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-omni-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Omni 在 I/O 亮相：用對話改影片，素材與連續性仍要自己把關",
+              "kind": "life",
+              "slug": "ai-news-gemini-omni-20260519"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -178,9 +217,15 @@
           "text": "Gemini Apps 的說明頁寫得很直接：可見浮水印的開關只控制可見浮水印，不影響 SynthID，也不影響 Content Credentials。把看得見的那層關掉，檔案裡的中繼資料還在。反過來說，社群平台看的是你有沒有主動揭露，上傳前還是要照平台規範勾選 AI 生成。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -243,19 +288,37 @@
           }
         },
         {
-          "type": "link",
-          "text": "Kling 與 Runway：影片生成工具介紹",
-          "url": "https://mokaair.com/zh-TW/life/kling-runway-video-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Kling 與 Runway：影片生成工具介紹",
+              "kind": "life",
+              "slug": "kling-runway-video-tools"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
-          "url": "https://mokaair.com/zh-TW/life/sora-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
+              "kind": "life",
+              "slug": "sora-video-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
-          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+              "kind": "life",
+              "slug": "short-video-marketing"
+            }
+          ]
         }
       ],
       "sources": [

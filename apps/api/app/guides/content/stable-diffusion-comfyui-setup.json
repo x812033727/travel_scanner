@@ -39,22 +39,49 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "一般生圖工具給你一個輸入框，ComfyUI 給你一張畫布：每個方塊是一個節點，輸出接到下一個節點的輸入。官方把它定位成內容創作的模組化 AI 引擎，可在 Windows、Linux 與 macOS 本機執行，也有官方付費雲端版。官網寫得很直接：免費、開源、採 GPL-3.0，沒有功能鎖也沒有試用期，並有超過 5,000 個社群擴充、合計超過 60,000 個節點。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一般生圖工具給你一個輸入框，ComfyUI 給你一張畫布：每個方塊是一個節點，輸出接到下一個節點的輸入。官方把它定位成內容創作的模組化 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 引擎，可在 Windows、Linux 與 macOS 本機執行，也有官方付費雲端版。官網寫得很直接：免費、開源、採 GPL-3.0，沒有功能鎖也沒有試用期，並有超過 5,000 個社群擴充、合計超過 60,000 個節點。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "官方另外提到兩個省時間的設計：只有「有輸出而且輸入齊全」的部分會被執行，同一份圖送第二次時只重跑有變動的部分。README 也寫明核心除非你要求否則不下載任何東西，並可用 --disable-api-nodes 關掉需付費的 API 節點，讓功能全部留在離線狀態。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+              "kind": "life",
+              "slug": "chatgpt-image-generation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
-          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -89,8 +116,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "ComfyUI 本體很小，佔空間的是模型。官方文件寫得很清楚：模型不隨程式附上，要自己下載，放到 ComfyUI/models/ 底下對應類型的子資料夾，再用對應的載入節點（名稱多半以 Load 開頭）選檔案。常見子資料夾有 checkpoints、vae、loras、controlnet、embeddings，以及新一代模型用到的 diffusion_models 與 text_encoders。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ComfyUI 本體很小，佔空間的是模型。官方文件寫得很清楚：模型不隨程式附上，要自己下載，放到 ComfyUI/models/ 底下對應類型的子資料夾，再用對應的載入節點（名稱多半以 Load 開頭）選檔案。常見子資料夾有 checkpoints、vae、loras、controlnet、"
+            },
+            {
+              "type": "article",
+              "text": "embeddings",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            },
+            {
+              "type": "text",
+              "text": "，以及新一代模型用到的 diffusion_models 與 text_encoders。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -117,9 +159,15 @@
           "text": "手動複製進去的檔案 ComfyUI 不會自己發現，官方的做法是按鍵盤 R 重新整理節點定義，或直接重開。另有一個常被忽略的限制：ComfyUI 原生不支援 GGUF 格式，要用得另外安裝社群自訂節點。"
         },
         {
-          "type": "link",
-          "text": "Hugging Face 入門：找模型、看授權、下載",
-          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "kind": "life",
+              "slug": "huggingface-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -172,22 +220,49 @@
           "text": "接著是兩個 CLIP Text Encode 節點，一個接到取樣器的 Positive、一個接到 Negative，分別是你要的與你不要的東西；Empty Latent Image 則建構出一塊純雜訊的潛在空間，尺寸決定最終圖片的長寬。"
         },
         {
-          "type": "paragraph",
-          "text": "KSampler 是核心，去雜訊就發生在這裡。官方列出的參數裡，seed 控制隨機性，steps 是去雜訊的迭代次數，cfg 是無分類器引導強度（太高會過擬合），sampler_name 與 scheduler 決定演算法與雜訊衰減節奏，denoise 官方寫 0.0 保留原輸入特徵、1.0 是完全的雜訊。最後 VAE Decode 換回像素空間，Save Image 預覽並存檔。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "KSampler 是核心，去雜訊就發生在這裡。官方列出的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "裡，seed 控制隨機性，steps 是去雜訊的迭代次數，cfg 是無分類器引導強度（太高會過擬合），sampler_name 與 scheduler 決定演算法與雜訊衰減節奏，denoise 官方寫 0.0 保留原輸入特徵、1.0 是完全的雜訊。最後 VAE Decode 換回像素空間，Save Image 預覽並存檔。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "提示詞有兩個 ComfyUI 特有的語法：用小括號調整權重，例如 (golden hour:1.2)，只寫括號的預設權重是 1.1；用大括號做動態提示詞，{day|night} 每次排入佇列時會隨機換一個。"
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -203,8 +278,23 @@
           "text": "那份授權對非商用的定義寫得很細：只要你因此獲得任何直接或間接的報酬就不算，並明列三種不算非商用的情況——產生收入的活動、與終端使用者直接互動或會影響終端使用者的場合、以及拿來訓練或蒸餾其他要商用的模型。要商用必須另外向 Black Forest Labs 申請，公司可自行決定是否同意。"
         },
         {
-          "type": "paragraph",
-          "text": "FLUX.2 維持同樣分法但換了授權檔。官方 GitHub 的模型表列得很清楚：FLUX.2 [dev]（320 億參數）與 FLUX.2 [klein] 9B 系列走 FLUX Non-Commercial License v2.1；FLUX.2 [klein] 4B 系列則是 Apache 2.0，官方模型卡直接寫開放權重可依 Apache 2.0 授權作商業使用。同一個 klein 家族，4B 能商用、9B 不能。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "FLUX.2 維持同樣分法但換了授權檔。官方 GitHub 的模型表列得很清楚：FLUX.2 [dev]（320 億參數）與 FLUX.2 [klein] 9B 系列走 FLUX Non-Commercial License v2.1；FLUX.2 [klein] 4B 系列則是 Apache 2.0，官方模型卡直接寫"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "可依 Apache 2.0 授權作商業使用。同一個 klein 家族，4B 能商用、9B 不能。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -310,14 +400,26 @@
           "text": "至於買什麼硬體才跑得動，這篇只抄官方寫過的數字。官網下載頁的說法是：強烈建議配一張獨立顯示卡，顯示記憶體越大，能跑的模型與批次就越大；沒有顯示卡的人可以改用官方雲端。"
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+              "kind": "life",
+              "slug": "local-ai-gpu-buying-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -337,14 +439,26 @@
           "text": "台灣目前沒有針對 AI 生成影像的統一標示法規，但只要輸出會流到別人面前，主動標示最省事。另一個界線要先畫好：兩家的條款都禁止用模型產生冒用他人身分、未經同意的親密影像或其他違法內容，本機執行不會讓這些行為變成合法。"
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         }
       ],
       "sources": [

@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "用 AI 管理電子郵件，省時間的不是「請它幫我寫信」，而是把收件匣拆成收信、分類、摘要、草稿、人工確認五段，每一段交給合適的工具，最後一段留給自己。Gmail、Outlook 與 Apple 郵件都把中間三段做進了內建功能，門檻卻各不相同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 管理電子郵件，省時間的不是「請它幫我寫信」，而是把收件匣拆成收信、分類、摘要、草稿、人工確認五段，每一段交給合適的工具，最後一段留給自己。Gmail、Outlook 與 Apple 郵件都把中間三段做進了內建功能，門檻卻各不相同。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -84,9 +99,15 @@
           "text": "Apple 郵件的分類和 Apple Intelligence 是兩件事：郵件分類把信分成主要、交易、更新、促銷 4 類，官方註明不是所有國家或地區都有；判優先度的「優先訊息」才屬於 Apple Intelligence。"
         },
         {
-          "type": "link",
-          "text": "收件匣不必清到零：用待辦、等待與歸檔處理電子郵件",
-          "url": "https://mokaair.com/zh-TW/life/email-triage-three-actions"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "收件匣不必清到零：用待辦、等待與歸檔處理電子郵件",
+              "kind": "life",
+              "slug": "email-triage-three-actions"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -110,9 +131,15 @@
           "text": "以上價格都取自各官網的美國區頁面、以美元計，台灣區定價以官網為準。帳號在這些門檻外面也有辦法：把信的重點貼進一般的聊天式 AI 產生草稿再貼回信箱，沒有方案限制、繁體中文一定能用。"
         },
         {
-          "type": "link",
-          "text": "用 ChatGPT 寫 Email：中英文商務信件範本與提示詞",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-email-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 ChatGPT 寫 Email：中英文商務信件範本與提示詞",
+              "kind": "life",
+              "slug": "chatgpt-for-email-writing"
+            }
+          ]
         },
         {
           "type": "code",
@@ -186,8 +213,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Superhuman Mail 的方案頁列兩個對個人開放的價位：Starter 年繳每位成員每月 25 美元、Business 年繳 33 美元，再上面是要洽談的 Enterprise；Auto Drafts、Ask AI 與 MCP 伺服器都要 Business 才有。該頁只列年繳價，月繳價格以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Superhuman Mail 的方案頁列兩個對個人開放的價位：Starter 年繳每位成員每月 25 美元、Business 年繳 33 美元，再上面是要洽談的 Enterprise；Auto Drafts、Ask AI 與 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器都要 Business 才有。該頁只列年繳價，月繳價格以官網為準。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -207,8 +249,23 @@
           "text": "Google 的說明頁寫，Gemini in Gmail 會用你的內容產生更有用的回覆，但不用來訓練或改進模型，也不會在未經允許下儲存提示詞與輸出。有個例外：個人帳號若把資料分享給 Gemini Apps 或搜尋的 Personal Intelligence，就改照那邊的條款，可能用於訓練。"
         },
         {
-          "type": "paragraph",
-          "text": "Microsoft 的資料與隱私文件寫成一句：提示詞、回覆與透過 Microsoft Graph 取得的資料，不會用來訓練基礎大型語言模型。Apple 則把承諾寫在運算位置上：多數情況模型在裝置上跑，複雜的請求走 Private Cloud Compute，在那裡處理的資料不會被儲存、Apple 也無法取用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Microsoft 的資料與隱私文件寫成一句：提示詞、回覆與透過 Microsoft Graph 取得的資料，不會用來訓練基礎"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "。Apple 則把承諾寫在運算位置上：多數情況模型在裝置上跑，複雜的請求走 Private Cloud Compute，在那裡處理的資料不會被儲存、Apple 也無法取用。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -217,9 +274,15 @@
           "text": "匯款與帳號變更：牽涉銀行帳號、金額或收款人變更的信，一律回原本的聯絡管道用電話確認，不要因為摘要說「對方要求改匯款帳號」就照做。密碼與驗證碼：不要貼進任何對話框，也不要讓自動化流程代為轉寄。法律、人事與合約回覆：可請 AI 列出對方主張的點，定稿要由能負責的人或專業人士來。摘要最常漏掉否定句與附帶條件，看到「對方同意」，務必回原文確認前後有沒有「除非」。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -246,24 +309,48 @@
           "text": "如果瓶頸其實在會議或行事曆，要調整的就不是郵件工具。"
         },
         {
-          "type": "link",
-          "text": "小團隊使用 Workspace AI：帳號與管理",
-          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小團隊使用 Workspace AI：帳號與管理",
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
-          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+              "kind": "life",
+              "slug": "microsoft-copilot-windows-office"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 排程與行事曆助手：找時間、排工作區塊與定時提醒",
-          "url": "https://mokaair.com/zh-TW/life/ai-calendar-scheduling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 排程與行事曆助手：找時間、排工作區塊與定時提醒",
+              "kind": "life",
+              "slug": "ai-calendar-scheduling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
-          "url": "https://mokaair.com/zh-TW/life/ai-meeting-notes-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 會議記錄工具怎麼挑：Otter、Google Meet、Teams、Zoom 與 Notion",
+              "kind": "life",
+              "slug": "ai-meeting-notes-tools"
+            }
+          ]
         }
       ],
       "sources": [

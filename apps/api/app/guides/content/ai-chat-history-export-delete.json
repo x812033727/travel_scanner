@@ -100,18 +100,20 @@
               "text": "記憶與自訂指令的細節可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
             },
             {
               "type": "text",
               "text": "；已經分享出去的對話是另一條路，刪掉原始對話不代表連結失效，那部分看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+              "kind": "life",
+              "slug": "chatgpt-shared-links-privacy"
             },
             {
               "type": "text",
@@ -155,9 +157,15 @@
           "text": "刪帳號前先處理訂閱：Pro 或 Max 要先在帳單設定取消，等這一期結束、訂閱失效之後再刪。刪除在 Settings 的 Account 頁，按 Delete account 照提示走完。官網寫刪帳號是永久的，對話、專案與帳號資訊都拿不回來，想留就先匯出；透過第三方服務用 Claude 的人要找那個服務刪。另外，允許用你的對話改進 Claude 的人要注意，去識別化的資料最長會留 5 年。"
         },
         {
-          "type": "link",
-          "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
-          "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+              "kind": "life",
+              "slug": "claude-memory-and-privacy"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -181,9 +189,15 @@
           "text": "兩個最容易漏掉的地方都寫在官方的隱私中心。第一，暫時對話以及關掉「保留活動」之後的對話，仍會跟著帳號留 72 小時，官網寫這是為了回應你、處理意見與應付系統故障，只是不會出現在活動記錄裡。第二，被人工審閱過的對話與相關資料，官網寫刪活動記錄不會一起刪，會在與 Google 帳號脫鉤的狀態下最長保留 3 年。記憶（在設定的 Personal Intelligence 裡）沒有逐條刪除的入口，官網的做法是把含有那件事的對話全部刪掉，若那件事來自連結的應用程式還要一起斷開。"
         },
         {
-          "type": "link",
-          "text": "活動記錄與隱私：查看、刪除與設定",
-          "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "活動記錄與隱私：查看、刪除與設定",
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
+            }
+          ]
         },
         {
           "type": "table",
@@ -290,18 +304,20 @@
               "text": "這兩家的方案、入口與資料流向另有專篇："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
-              "url": "https://mokaair.com/zh-TW/life/grok-xai-guide"
+              "kind": "life",
+              "slug": "grok-xai-guide"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-              "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
             },
             {
               "type": "text",
@@ -342,27 +358,30 @@
               "text": "訓練開關、暫時對話與隱私設定的完整版在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
             },
             {
               "type": "text",
               "text": "；公司帳號的規範看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "公司裡用 AI 的規範：資料外流與合規",
-              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
             },
             {
               "type": "text",
               "text": "；換帳號前的安全設定看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
-              "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
+              "kind": "life",
+              "slug": "ai-account-security-2fa-api-keys"
             },
             {
               "type": "text",

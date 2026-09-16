@@ -97,8 +97,23 @@
           "code": "node --test core.test.mjs\n"
         },
         {
-          "type": "paragraph",
-          "text": "預期是 2 過 1 敗，失敗在篩選行為。只有真的執行得到這個結果，才能在交接寫「已確認」。沒有 Node 或路徑錯誤，就寫阻礙與實際錯誤摘要，不填預設成功數字。不要保存帳號、金鑰或完整私密工具輸出；這個教材只需要虛構標記與相關測試資訊。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期是 2 過 1 敗，失敗在篩選行為。只有真的執行得到這個結果，才能在交接寫「已確認」。沒有 Node 或路徑錯誤，就寫阻礙與實際錯誤摘要，不填預設成功數字。不要保存帳號、金鑰或完整私密工具輸出；這個教材只需要虛構"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與相關測試資訊。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -106,8 +121,23 @@
           "text": "步驟 2：寫一份可查證的交接"
         },
         {
-          "type": "paragraph",
-          "text": "在根目錄建立 handoff.md。下面是完成基準測試後可使用的完整範例；如果你的結果不同，先更正 Observed 欄位。目標說明要做到什麼，Scope 指出可以改哪裡，Observed 帶上版本與命令，Not checked 保留缺少的證據，Next 讓接手者知道第一步要確認什麼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在根目錄建立 handoff.md。下面是完成"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "後可使用的完整範例；如果你的結果不同，先更正 Observed 欄位。目標說明要做到什麼，Scope 指出可以改哪裡，Observed 帶上版本與命令，Not checked 保留缺少的證據，Next 讓接手者知道第一步要確認什麼。"
+            }
+          ]
         },
         {
           "type": "code",

@@ -25,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Kimi 是北京月之暗面科技（Moonshot AI）做的 AI 助手，強項是長文件與代理（Agent）任務。聊天入口收在 kimi.com，原本的 kimi.moonshot.cn 會轉到同一個地方；開發者的 API 平台仍分國際站與中國站，模型清單一樣，價目與免費額度不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Kimi 是北京月之暗面科技（Moonshot "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "）做的 AI 助手，強項是長文件與代理（Agent）任務。聊天入口收在 kimi.com，原本的 kimi.moonshot.cn 會轉到同一個地方；開發者的 API 平台仍分國際站與中國站，模型清單一樣，價目與免費額度不同。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -73,18 +88,30 @@
           "text": "一次能吃多少看模型：K2.6 單輪的上下文視窗約 128K token，大約 5 萬到 6 萬個中文字；K3 是 100 萬 token，官網註明要最高階會員權益，撰寫時還要把對話長度選成超長。官網把踩線寫成「對話超過 20 萬個中文字怎麼辦」：單檔太大就拆檔分批送，多輪累積到上限就先請它整理成交接文件再貼進新對話，刪舊訊息並不會把上下文視窗空出來。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "要不要上網查由 Kimi 自己依問題判斷，介面上沒有聯網開關。內建官方工具有網頁搜尋、指定網址抓取、以圖搜圖、執行 Python 做分析與圖表，以及記憶。思考模式已經和聊天、代理合成同一個體驗，想多想幾步改選模型與推理強度：K2.6 有標準與進階，K3 與 K3 叢集多一級極致，強度越高用掉的 token 越多。"
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
           "type": "image",
@@ -109,18 +136,45 @@
           "text": "權重放在 Hugging Face 的 moonshotai 官方組織，當天由新到舊是 Kimi-K3（2026 年 6 月 13 日）、Kimi-K2.7-Code、Kimi-K2.6、Kimi-K2.5 與 Kimi-K2-Thinking。站上名詞篇把權重可下載、授權另有條件的做法叫開放權重（Open Weights），也有人寫成開源權重。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "K3 的模型卡寫混合專家（MoE）架構，總參數 2.8T、啟用參數 104B、共 93 層，896 個專家每個 token 只選 16 個，上下文長度 1,048,576 個 token，官網稱它是第一個開放的 3T 級模型。K2.6 與 K2.7 Code 是前一代：總參數 1T、啟用 32B、384 個專家選 8 個、上下文 256K。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "K3 的模型卡寫混合專家（MoE）架構，總"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " 2.8T、啟用參數 104B、共 93 層，896 個專家每個 token 只選 16 個，上下文長度 1,048,576 個 token，官網稱它是第一個開放的 3T 級模型。K2.6 與 K2.7 Code 是前一代：總參數 1T、啟用 32B、384 個專家選 8 個、上下文 256K。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合專家模型（Mixture of Experts）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合專家模型（Mixture of Experts）是什麼",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -181,9 +235,15 @@
           "text": "會員這邊說明中心列四個方案，價格是人民幣：Andante 每月 49 元、Moderato 99 元、Allegretto 199 元、Allegro 699 元，年繳最多省 1,680 元。四個方案共用同一個額度池，依實際 token 消耗扣、每月刷新不累積，Kimi Code 另有每週 5 小時的單獨限制。K3 的 100 萬 token 長對話官網寫只有 Allegro 有。免費帳號沒有列成方案，台幣定價官網也沒列，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -213,29 +273,59 @@
           "text": "要把設定與檢查一次做完，或想看同一批模型怎麼比，可以接著看下面幾篇。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
-          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+              "kind": "life",
+              "slug": "qwen-alibaba-models-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
-          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+              "kind": "life",
+              "slug": "claude-file-analysis-pdf-excel"
+            }
+          ]
         }
       ],
       "sources": [

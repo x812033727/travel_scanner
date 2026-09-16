@@ -64,8 +64,14 @@
           "type": "rich_paragraph",
           "inlines": [
             {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
               "type": "text",
-              "text": "MCP 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與"
+              "text": " 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與"
             },
             {
               "type": "article",

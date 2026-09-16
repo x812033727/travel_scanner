@@ -46,9 +46,15 @@
           "text": "這也解釋了為什麼 API 價格會分「輸入」與「輸出」兩個數字：模型讀你送進去的每一個 token 都要算，寫出來的每一個 token 也要算，而寫比讀貴得多，三家旗艦的輸出價格都是輸入的五到六倍。token 是模型眼中的字，一個中文字通常不等於一個 token；如果這個詞還不熟，先看下面這篇再回來。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -81,9 +87,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -91,17 +103,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "三階講的是模型多大，推理講的是它答之前要不要先想。OpenAI 的說明是推理模型會先產生內部的推理 token 再給出回覆，API 上用 reasoning effort 控制想多少，等級從 none、minimal、low、medium、high、xhigh 到 max，GPT-6 Astra 不接受 none，也就是一定會想。Anthropic 把這件事叫 thinking，Opus 5、Sonnet 5、Fable 5.1 預設都開著「自適應思考」，由模型自己決定要不要想、想多深，再用 effort 參數調整整體投入的力氣，Fable 5.1 的思考是常開的。Google 的說法是「使用思考模型時，Gemini 會先在內部推理再回應」，目前 Gemini 3 系列的 Pro、Flash、Flash-Lite 都支援，用 thinking level 從 minimal 到 high 調整，3.5 Flash-Lite 預設是 minimal。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三階講的是模型多大，推理講的是它答之前要不要先想。OpenAI 的說明是推理模型會先產生內部的推理 token 再給出回覆，API 上用 reasoning effort 控制想多少，等級從 none、minimal、low、medium、high、xhigh 到 max，GPT-6 Astra 不接受 none，也就是一定會想。Anthropic 把這件事叫 thinking，Opus 5、Sonnet 5、Fable 5.1 預設都開著「自適應思考」，由模型自己決定要不要想、想多深，再用 effort "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "調整整體投入的力氣，Fable 5.1 的思考是常開的。Google 的說法是「使用思考模型時，Gemini 會先在內部推理再回應」，目前 Gemini 3 系列的 Pro、Flash、Flash-Lite 都支援，用 thinking level 從 minimal 到 high 調整，3.5 Flash-Lite 預設是 minimal。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "所以選模型其實是兩個決定：先選階（多大），再決定要不要開推理（想多久）。中階開推理，很多時候比旗艦不開推理更划算，因為思考用掉的 token 也是按輸出計價，開在便宜的模型上花得少。Anthropic 的選模指南直接寫：調整 effort 常常比換模型更好用。推理什麼時候值得開、開了會慢多少，另有一篇細講。"
         },
         {
-          "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -232,18 +265,55 @@
           "text": "Claude 的定價頁寫得很直接：免費方案可以用 Sonnet 與 Haiku，也就是中階與輕量；Pro 方案月繳每月 20 美元、年繳折合每月 17 美元，加上 Opus，Fable 模型則以用量點數另計；Max 方案每月 100 美元起，分 5 倍與 20 倍兩種用量，Fable 模型最多可用到每週額度的一半。也就是免費版就能用到中階，付費買的是旗艦與更多用量。Claude 的選單在介面上哪裡、怎麼切換，入門篇有說明。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Gemini 應用程式的訂閱頁（2026 年 9 月 13 日）寫免費版「可使用 3.6 Flash」並「不定量地使用 3.1 Pro」，也就是免費版就有中階，旗艦能用但額度不固定；Google AI Plus 每月 4.99 美元，用量是免費版的 2 倍；Google AI Pro 每月 19.99 美元，用量是免費版的 4 倍，對 Pro 模型有更高的使用額度；Google AI Ultra 每月 99.99 美元起，用量最高到 Pro 方案的 20 倍，並獨有 Deep Think 模式。Gemini 的說明中心另外寫到，用量上限每 5 小時刷新一次直到用完每週額度，付費方案用完額度時可以改用 Flash-Lite 繼續聊；上下文長度也依方案不同，免費版 3.2 萬 token、AI Plus 12.8 萬、AI Pro 與 AI Ultra 100 萬。訂閱頁上同時出現「3.1 Pro」與「Gemini 3 Pro」兩種寫法，實際拿到哪個版本以官網為準。三家免費與付費方案的完整差異，另有一篇整理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini 應用程式的訂閱頁（2026 年 9 月 13 日）寫免費版「可使用 3.6 Flash」並「不定量地使用 3.1 Pro」，也就是免費版就有中階，旗艦能用但額度不固定；Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Plus 每月 4.99 美元，用量是免費版的 2 倍；Google AI Pro 每月 19.99 美元，用量是免費版的 4 倍，對 Pro 模型有更高的使用額度；Google AI Ultra 每月 99.99 美元起，用量最高到 Pro 方案的 20 倍，並獨有 Deep Think 模式。Gemini 的說明中心另外寫到，用量上限每 5 小時刷新一次直到用完每週額度，付費方案用完額度時可以改用 Flash-Lite 繼續聊；"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "也依方案不同，免費版 3.2 萬 token、AI Plus 12.8 萬、AI Pro 與 AI Ultra 100 萬。訂閱頁上同時出現「3.1 Pro」與「Gemini 3 Pro」兩種寫法，實際拿到哪個版本以官網為準。三家免費與付費方案的完整差異，另有一篇整理。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",

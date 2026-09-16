@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "OpenRouter 把各家模型放在同一個端點後面：註冊一次、拿一把金鑰、把程式裡的 base URL 換成 openrouter.ai 的 API 網址，就能用同一份 OpenAI 格式的程式碼呼叫 Anthropic、Google、OpenAI、DeepSeek 等公司的模型。官網 FAQ 寫得很直白：token 價格照供應商原價、不加價，OpenRouter 的收入來自你儲值時收的手續費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenRouter 把各家模型放在同一個端點後面：註冊一次、拿一把金鑰、把程式裡的 base URL 換成 openrouter."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的 API 網址，就能用同一份 OpenAI 格式的程式碼呼叫 Anthropic、Google、OpenAI、DeepSeek 等公司的模型。官網 FAQ 寫得很直白：token 價格照供應商原價、不加價，OpenRouter 的收入來自你儲值時收的手續費。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -84,14 +99,26 @@
           "text": "和直接呼叫單一家的 API 幾乎一樣，差別只在 base URL、金鑰，以及模型代號要寫成「公司／模型」。想先從單一家做起，站上另有兩篇從頭走一次的教學。"
         },
         {
-          "type": "link",
-          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+              "kind": "life",
+              "slug": "claude-api-first-call"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI Studio 與第一個 Gemini API 呼叫",
-          "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Studio 與第一個 Gemini API 呼叫",
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -129,27 +156,60 @@
           "text": "有些模型的價格會隨條件變。文件的 pricing.overrides 欄位就是用來表示長上下文或離峰時段的另一組價格，例如當天的 GPT-5.6 Luna 基本價是輸入 0.2、輸出 1.2 美元，提示詞超過 272,000 個 token 之後改成 0.4 與 1.8。輸入快取讀取是獨立的一欄，通常比原價便宜一截。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+              "kind": "life",
+              "slug": "ai-coding-cost-tokens-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "免費模型是模型代號結尾加 :free 的變體。FAQ 寫這類模型「永遠免費、速率限制很低」，也直說通常不適合正式上線使用。限制寫在 API 文件的 Limits 頁：不論有沒有儲值都是每分鐘 20 次；累計儲值不到 10 美元每天 50 次，滿 10 美元每天 1,000 次。定價頁的問答補充，熱門模型的免費額度在尖峰時段還可能被供應商那邊限流，失敗的嘗試一樣算進當天配額。"
         },
         {
-          "type": "paragraph",
-          "text": "當天用公開 API 查，結尾是 :free 的模型在文字模型裡有 19 個，把所有輸出型態算進來是 25 個。想讓 OpenRouter 自己挑一個免費模型，文件提供 openrouter/free 這個代號。免費清單裡不少是開放權重模型，同一個模型你也可以選擇拉回自己的電腦跑。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "當天用公開 API 查，結尾是 :free 的模型在文字模型裡有 19 個，把所有輸出型態算進來是 25 個。想讓 OpenRouter 自己挑一個免費模型，文件提供 openrouter/free 這個代號。免費清單裡不少是"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型，同一個模型你也可以選擇拉回自己的電腦跑。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "gpt-oss-openai-open-weights"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -165,8 +225,23 @@
           "text": "文件自己舉的例子最好懂：供應商 A 每百萬 token 1 美元、B 是 2 美元、C 是 3 美元，而 B 最近出過錯。請求會先送 A，送到 A 的機率是 C 的 9 倍（1 除以 3 的平方等於九分之一）；A 失敗換 C，C 也失敗才輪到 B。"
         },
         {
-          "type": "paragraph",
-          "text": "要自己決定就用請求裡的 provider 物件。文件列出的欄位包含 order（依序嘗試的供應商）、allow_fallbacks（預設 true，關掉就只讓最優先那家服務）、only 與 ignore（只用或跳過某幾家）、require_parameters（預設 false，開了只用支援你所有參數的供應商）、sort（照 price、throughput 或 latency 排序）、max_price 等。文件提醒：設了 sort 或 order，預設的負載平衡就會停用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要自己決定就用請求裡的 provider 物件。文件列出的欄位包含 order（依序嘗試的供應商）、allow_fallbacks（預設 true，關掉就只讓最優先那家服務）、only 與 ignore（只用或跳過某幾家）、require_parameters（預設 false，開了只用支援你所有"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的供應商）、sort（照 price、throughput 或 latency 排序）、max_price 等。文件提醒：設了 sort 或 order，預設的負載平衡就會停用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,9 +271,15 @@
           "text": "不是每個模型都吃同樣的參數。定價頁的問答寫：底層模型如果支援 tools 或 function calling，你就能透過同一個 API 使用它——支不支援看模型本身，不是 OpenRouter 幫你補上。當天用模型 API 的 supported_parameters=tools 篩選，447 個文字模型裡有 358 個列出工具呼叫。路由文件也提到，請求帶了 tools 或 tool_choice 時，OpenRouter 會盡量路由到已知支援工具使用的供應商。"
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -228,9 +309,15 @@
           "text": "FAQ 寫：如果你在請求裡指定了 provider 路由，但沒有任何供應商符合帳號設定的隱私等級，你會收到錯誤、請求不會完成——不是默默降級去用比較寬鬆的那家。零資料留存也有邊界：文件註明這項強制只涵蓋推論請求的供應商路由，不涵蓋你自己啟用的外掛與工具（例如網頁搜尋），那些各有自己的資料留存政策。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -308,14 +395,26 @@
           "text": "還在猶豫要走雲端 API 還是把模型拉回自己的電腦，站上有一篇把兩邊成本攤開算，一篇從安裝帶你跑第一個本機模型。"
         },
         {
-          "type": "link",
-          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

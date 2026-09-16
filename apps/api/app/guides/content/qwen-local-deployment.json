@@ -26,17 +26,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Qwen（通義千問）大部分版本的權重是公開下載的，所以它不只是一個網頁服務：把檔案抓回來，用 Ollama 或 LM Studio 就能在自己的電腦上跑，對話不會送到別人的伺服器。但有一件事要先講清楚，官方模型卡沒有任何一句保證輸出會是繁體中文，台灣用語得靠你在系統提示詞裡自己指定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Qwen（通義千問）大部分版本的權重是公開下載的，所以它不只是一個網頁服務：把檔案抓回來，用 Ollama 或 LM Studio 就能在自己的電腦上跑，對話不會送到別人的伺服器。但有一件事要先講清楚，官方模型卡沒有任何一句保證輸出會是繁體中文，台灣用語得靠你在"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "裡自己指定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇是實作篇：當天官方模型庫有哪些標籤與檔案大小、拉取與執行要打什麼指令、thinking 模式怎麼開關、繁體中文怎麼固定下來、上下文視窗預設多少要怎麼調、哪些版本可以商用。指令照官方文件原文抄，數字全部取自 2026 年 9 月 14 日的官方頁面；本文沒有實機測試，圖形介面的步驟以官網當天版本為準。"
         },
         {
-          "type": "link",
-          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
-          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+              "kind": "life",
+              "slug": "qwen-alibaba-models-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -63,19 +84,37 @@
           "text": "檔案大小是要下載的量，也是記憶體的下限；但官方沒有給「幾 GB 記憶體配哪個模型」的對照表，跑不跑得動要自己算，以官網為準。標籤尾巴的 q4_K_M、q8_0 是量化格式，同一個模型換一種量化，檔案大小差好幾倍。"
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "kind": "life",
+              "slug": "gguf-quantization-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -97,18 +136,30 @@
           "text": "ollama ps 要看一眼。官方常見問題寫，PROCESSOR 欄位顯示 100% GPU 表示整個模型載進顯示記憶體，100% CPU 表示全部在系統記憶體，48%/52% CPU/GPU 這種寫法表示兩邊各放一部分。回答慢到不能用，多半就是掉到 CPU 了。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "不想打指令就用 LM Studio。官方模型目錄當天列得到 Qwen3.8（27B）、Qwen3.6 與 Qwen3.5（2B、4B、9B、27B、35B），在 Discover 分頁搜尋名稱就能下載。載入設定（GPU 卸載、上下文大小、Flash Attention）在 My Models 分頁按齒輪圖示改，官方文件說改完會變成這個模型的預設值，之後從任何地方載入都套用。"
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -126,8 +177,23 @@
           "code": "# 這一次要思考\nollama run qwen3.5:9b --think \"幫我比較兩種行程安排\"\n\n# 這一次不要思考\nollama run qwen3.5:9b --think=false \"把這段話縮成一句\"\n\n# 照樣思考，但不要把思考過程印出來\nollama run qwen3.5:9b --hidethinking \"9.9 和 9.11 哪個大\"\n\n# 在互動模式裡隨時切換\n/set think\n/set nothink"
         },
         {
-          "type": "paragraph",
-          "text": "API 那邊是 think 欄位，接受 true 與 false，也接受 low、medium、high、max 幾個等級，max 表示最高的思考等級。模型卡自己用的是另一套名字：Qwen3.8-27B 的模型卡寫 thinking 預設開啟、可以逐次關掉，思考深度用 reasoning_effort 調，等級是 xhigh（預設）、medium、low，另外 preserve_thinking 預設開啟，會把歷史訊息裡的思考脈絡留下來。兩套名稱不同，用 Ollama 就照 Ollama 文件的欄位，用 vLLM、SGLang 這類服務框架才輪到模型卡的參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "API 那邊是 think 欄位，接受 true 與 false，也接受 low、medium、high、max 幾個等級，max 表示最高的思考等級。模型卡自己用的是另一套名字：Qwen3.8-27B 的模型卡寫 thinking 預設開啟、可以逐次關掉，思考深度用 reasoning_effort 調，等級是 xhigh（預設）、medium、low，另外 preserve_thinking 預設開啟，會把歷史訊息裡的思考脈絡留下來。兩套名稱不同，用 Ollama 就照 Ollama 文件的欄位，用 vLLM、SGLang 這類服務框架才輪到模型卡的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -154,8 +220,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "先看模型卡怎麼寫語言支援。Qwen3.5 的模型卡列了「擴充到 201 種語言與方言」，同一張卡的評測表裡，中文評測 C-Eval 一欄 Qwen3.5-9B 是 88.2、Qwen3.5-4B 是 85.1。但整張卡沒有一句把繁體和簡體分開講，也沒有提到台灣用語；Qwen3.8-27B 的模型卡更直接沒有列語言數量。換句話說，繁體不是一個可以勾的選項，是你要在系統提示詞裡明確要求的事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先看模型卡怎麼寫語言支援。Qwen3.5 的模型卡列了「擴充到 201 種語言與方言」，同一張卡的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "表裡，中文評測 C-Eval 一欄 Qwen3.5-9B 是 88.2、Qwen3.5-4B 是 85.1。但整張卡沒有一句把繁體和簡體分開講，也沒有提到台灣用語；Qwen3.8-27B 的模型卡更直接沒有列語言數量。換句話說，繁體不是一個可以勾的選項，是你要在系統提示詞裡明確要求的事。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -220,13 +301,34 @@
           "text": "Ollama 的標籤頁不寫授權，要回 Hugging Face 的模型卡看。查證當天用 Hugging Face 的模型 API 逐一核對 license 標籤：Qwen3.5 的 0.8B、2B、4B、9B、27B、35B-A3B、122B-A10B，以及 Qwen3.6-27B、Qwen3.6-35B-A3B、Qwen3.8-27B，全部標 apache-2.0，商用沒有額外門檻。Qwen3.8-Flash-Next 不一樣，license 欄標 other、license_name 標 qwen-community-1.0。"
         },
         {
-          "type": "paragraph",
-          "text": "那份 Qwen Community License 1.0 的原文有兩條額外條件。一是拿去做的商業產品或服務，如果每月活躍使用者超過 100,000,000 人、或每月營收超過 20,000,000 美元，就要把模型名稱明顯標在產品介面上。二是你或關係企業如果在做「模型即服務」或「AI 工作助理」生意，商業使用前要另外向 Qwen 取得授權；純內部使用、而且不把模型、輸出或底層模型能力提供給第三方，不受這一條限制。個人在自己電腦上跑不會碰到這兩條，但公司要上線前該讀原文。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "那份 Qwen Community License 1.0 的原文有兩條額外條件。一是拿去做的商業產品或服務，如果每月活躍使用者超過 100,000,000 人、或每月營收超過 20,000,000 美元，就要把模型名稱明顯標在產品介面上。二是你或關係企業如果在做「模型即服務」或「"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工作助理」生意，商業使用前要另外向 Qwen 取得授權；純內部使用、而且不把模型、輸出或底層模型能力提供給第三方，不受這一條限制。個人在自己電腦上跑不會碰到這兩條，但公司要上線前該讀原文。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
           "type": "table",
@@ -287,14 +389,26 @@
           "text": "最後提醒一句：本機跑的開放權重版本和官方代管版本不是同一回事。Qwen3.8-27B 的模型卡自己就寫，之後會有代管版本，預設給更長的上下文與官方內建工具；別把網頁上看到的表現直接套到自己電腦上那一份。要比較家族成員或別家的中文模型，站上另有兩篇可以接著看。"
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         }
       ],
       "sources": [

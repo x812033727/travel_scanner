@@ -43,8 +43,23 @@
           "text": "研究團隊可以透過示範、強化學習或蒸餾等方式，讓模型更擅長產生可驗證的解題行為。DeepSeek-R1 相關研究展示強化學習可以促進反思與驗證等模式，但其中不同模型與訓練階段有不同安排，不能據此說所有推理模型都只靠同一種訓練。對模型能力的描述，應回到具體研究與評估條件。"
         },
         {
-          "type": "paragraph",
-          "text": "使用時也可以給模型更多推論計算，例如較長的中間推導、探索不同候選或以檢查器篩選。這些屬於推論時計算的設計，與增加模型參數是不同方向。某些產品把它呈現為思考等級，但設定能控制什麼、是否自動調整，以及如何計算資源，都依產品而異。一般概念文章不宜把一家的滑桿當成所有模型共有的機制。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "使用時也可以給模型更多推論計算，例如較長的中間推導、探索不同候選或以檢查器篩選。這些屬於推論時計算的設計，與增加模型"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "是不同方向。某些產品把它呈現為思考等級，但設定能控制什麼、是否自動調整，以及如何計算資源，都依產品而異。一般概念文章不宜把一家的滑桿當成所有模型共有的機制。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -152,24 +167,48 @@
           "text": "缺少場地公告時先查來源；條件彼此衝突時指出衝突。兩種問題都不能靠更長回答掩蓋。"
         },
         {
-          "type": "link",
-          "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+              "kind": "life",
+              "slug": "ai-term-knowledge-distillation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

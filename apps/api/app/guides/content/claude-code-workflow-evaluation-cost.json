@@ -108,8 +108,33 @@
           "text": "本篇使用四種既有審查情境：資料缺陷、畫面缺陷、乾淨差異與缺少輸入。品質先定義為正確判斷、具體證據、範圍維持及驗證誠實。速度更快但捏造缺陷的方法，不應只因秒數少就被選為較佳流程。"
         },
         {
-          "type": "paragraph",
-          "text": "把比較問題寫到 evaluation-plan.md，例如「在相同四個 diff 案例，SOP Skill 是否減少缺檔時的無關閱讀」。這比「哪個 AI 最好」可操作得多，也能讓下一位讀者知道結論的適用範圍。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把比較問題寫到 "
+            },
+            {
+              "type": "article",
+              "text": "evaluation",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "-plan.md，例如「在相同四個 diff 案例，SOP Skill 是否減少缺檔時的無關閱讀」。這比「哪個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 最好」可操作得多，也能讓下一位讀者知道結論的適用範圍。"
+            }
+          ]
         },
         {
           "type": "heading",

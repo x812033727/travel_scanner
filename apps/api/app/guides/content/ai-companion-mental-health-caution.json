@@ -26,8 +26,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 可以陪你把話說出口，但它不能替你做診斷，也不能在危急時刻代替真人。這不是使用者謹慎一點的問題，而是各家官方使用政策白紙黑字寫著的界線。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 可以陪你把話說出口，但它不能替你做診斷，也不能在危急時刻代替真人。這不是使用者謹慎一點的問題，而是各家官方使用政策白紙黑字寫著的界線。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -64,9 +75,10 @@
               "text": "Meta 的 AI 使用條款生效日是 2026 年 5 月 13 日，年齡門檻是未滿 13 歲不得使用；禁止事項包含產生或散布可能傷害他人的內容，其中明列鼓勵自傷。條款也用全大寫寫著不應依賴輸出內容，或用它形成醫學、財務、法律或藥物方面的專業建議或決定。這些條款管到的是 WhatsApp 與 Instagram 裡的同一個助理，實際位置與隱私設定可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
-              "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+              "kind": "life",
+              "slug": "meta-ai-whatsapp-instagram"
             },
             {
               "type": "text",
@@ -108,18 +120,20 @@
               "text": "不想打字的話，用講的也可以，做法見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+              "kind": "life",
+              "slug": "chatgpt-voice-mode-guide"
             },
             {
               "type": "text",
               "text": "；要帶家裡長輩一起用，先從 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
-              "url": "https://mokaair.com/zh-TW/life/ai-for-seniors-first-steps"
+              "kind": "life",
+              "slug": "ai-for-seniors-first-steps"
             },
             {
               "type": "text",
@@ -148,9 +162,10 @@
               "text": "還有一個容易忽略的坑：AI 講出來的專線號碼、服務時間與地址可能是錯的。這不是它壞掉，是語言模型本來就會把不存在的細節說得很流暢，成因與查證方法可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-              "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
             },
             {
               "type": "text",
@@ -252,27 +267,30 @@
               "text": "三家的訓練與隱私開關整理在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
             },
             {
               "type": "text",
               "text": "；Claude 記住什麼、怎麼清掉，見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
-              "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+              "kind": "life",
+              "slug": "claude-memory-and-privacy"
             },
             {
               "type": "text",
               "text": "；想把聊過的內容整批帶走或刪掉，做法見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "匯出與刪除你的 AI 對話記錄",
-              "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+              "kind": "life",
+              "slug": "ai-chat-history-export-delete"
             },
             {
               "type": "text",
@@ -290,17 +308,38 @@
           "text": "陪在旁邊的人能做什麼，官方文件寫得比想像中具體。OpenAI 的家長控制說明中心列出安全通知會在哪些情況寄出：受過專門訓練的審查人員判定有嚴重自傷疑慮、判定出可能與飲食失調有關而可能構成健康疑慮的行為，或是帳號因暴力相關對話被停用。通知裡包含疑慮類型的簡短說明、必要時的帳號停用資訊與相關支援資源，但不包含對話內容、逐字稿或對話紀錄。收到通知後該做什麼，同一頁寫的是：去問問你的孩子，問他當下安不安全，不帶評判地聽，並協助他聯絡信任的人、合格專業人員或危機專線；如果你認為他可能傷害自己或面臨立即威脅，聯絡當地緊急服務。"
         },
         {
-          "type": "paragraph",
-          "text": "其他家走的是不同路線。OpenAI 的 ChatGPT for Teens 說明頁寫明，家長控制不讓家長讀取或監看青少年的對話。Character.AI 的家長洞察由青少年自己在偏好設定裡邀請家長，家長同意後每週收到一份活動報告，內容是使用時間與互動最多的 Characters。Anthropic 則是直接畫年齡線：官方公告寫著要求 Claude.ai 使用者年滿 18 歲，建立帳號時必須確認，若使用者在對話中自述未滿 18 歲，分類器會標記送審，確認屬於未成年的帳號會被停用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他家走的是不同路線。OpenAI 的 ChatGPT for Teens 說明頁寫明，家長控制不讓家長讀取或監看青少年的對話。Character.AI 的家長洞察由青少年自己在偏好設定裡邀請家長，家長同意後每週收到一份活動報告，內容是使用時間與互動最多的 Characters。Anthropic 則是直接畫年齡線：官方公告寫著要求 Claude.ai 使用者年滿 18 歲，建立帳號時必須確認，若使用者在對話中自述未滿 18 歲，分類器會"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "送審，確認屬於未成年的帳號會被停用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "家裡有小孩要用 AI，各家的年齡限制與可以先打開的設定，完整版見下面這篇。"
         },
         {
-          "type": "link",
-          "text": "家長指南：孩子用 AI 的年齡限制與設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-kids-parent-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "家長指南：孩子用 AI 的年齡限制與設定",
+              "kind": "life",
+              "slug": "ai-for-kids-parent-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",

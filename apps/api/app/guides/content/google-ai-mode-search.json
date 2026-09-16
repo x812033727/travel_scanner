@@ -26,8 +26,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Google 搜尋的 AI 模式與 AI 摘要都會整理網路資訊，但入口與使用方式不同。本篇用「第一次搭台灣高鐵，如何找搭乘規則」做練習，學習提問、追問、打開來源和保留未確認事項。目標是形成自己的查證清單，而不是把搜尋摘要直接當成官方公告。把它當搜尋 AI 用的前提，是每個答案都能點回來源。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 搜尋的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 模式與 AI 摘要都會整理網路資訊，但入口與使用方式不同。本篇用「第一次搭台灣高鐵，如何找搭乘規則」做練習，學習提問、追問、打開來源和保留未確認事項。目標是形成自己的查證清單，而不是把搜尋摘要直接當成官方公告。把它當"
+            },
+            {
+              "type": "article",
+              "text": "搜尋 AI",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            },
+            {
+              "type": "text",
+              "text": " 用的前提，是每個答案都能點回來源。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,9 +80,10 @@
               "text": "AI Overviews「AI 摘要」會在部分一般搜尋結果中出現，是否顯示由系統判斷，不是每個關鍵字都有。AI Mode「AI 模式」則有獨立的提問與追問介面。Gemini 應用程式是另一個產品，對話、工具與設定不能全部當成同一套，入門可看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 第一次使用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
             },
             {
               "type": "text",
@@ -135,9 +161,10 @@
               "text": "如果答案開始增加未詢問的購票網站或優惠，將範圍拉回原問題。你要完成的是搭乘準備，不一定需要買新服務。追問時保留明確條件，結束後可以將已核對的資料整理進"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "旅行規劃流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-for-travel-planning"
+              "kind": "life",
+              "slug": "gemini-for-travel-planning"
             },
             {
               "type": "text",
@@ -166,9 +193,10 @@
               "text": "重要資訊也可換一種問法重新搜尋，檢查是否找到不同原始來源。若結果互相矛盾，應縮小到具體條件或聯絡主管單位，而不是讓 AI 在兩個數字間選一個。需要長篇研究和報告架構時，可改用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -202,9 +230,10 @@
               "text": "「沒有訂閱可以用嗎？」基本 AI 模式與部分搜尋 AI 功能的資格，和付費進階模型不同。先看自己可用入口，費用及方案需求集中參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -228,9 +257,10 @@
               "text": "「網站經營者如何知道自己有沒有被引用？」另見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "網站的 AI 摘要觀察方法",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-overviews-for-site-owners"
+              "kind": "life",
+              "slug": "google-ai-overviews-for-site-owners"
             },
             {
               "type": "text",
@@ -279,18 +309,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "網站經營者看 AI 摘要",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-overviews-for-site-owners"
+              "kind": "life",
+              "slug": "google-ai-overviews-for-site-owners"
             },
             {
               "type": "text",
@@ -299,9 +331,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

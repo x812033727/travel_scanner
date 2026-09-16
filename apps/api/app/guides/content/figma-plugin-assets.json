@@ -134,8 +134,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "協作者能看到畫布的變更，不表示看得到你當時的外掛操作與設定。交接時記下外掛名稱、正式頁面、使用日期、處理範圍和必要參數；若後續還要更新資料，也要說明由誰執行、需要哪個帳號，以及沒有外掛時如何修改。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "協作者能看到畫布的變更，不表示看得到你當時的外掛操作與設定。交接時記下外掛名稱、正式頁面、使用日期、處理範圍和必要"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "；若後續還要更新資料，也要說明由誰執行、需要哪個帳號，以及沒有外掛時如何修改。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +221,37 @@
           "text": "先確認檔案存取與資料說明，再使用不含個資的小草稿評估。素材插入成功後，仍須保存其原始作者與授權，才能安心交接。"
         },
         {
-          "type": "link",
-          "text": "先理解 Figma 的檔案與元件結構",
-          "url": "https://mokaair.com/zh-TW/life/figma-design-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先理解 Figma 的檔案與元件結構",
+              "kind": "life",
+              "slug": "figma-design-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立可回查的素材授權清單",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立可回查的素材授權清單",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查圖片格式與輸出品質",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查圖片格式與輸出品質",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         }
       ],
       "sources": [

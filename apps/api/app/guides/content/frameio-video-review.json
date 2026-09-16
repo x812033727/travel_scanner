@@ -90,8 +90,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "V4 的 Internal Comments 供工作區和專案成員討論，不會顯示給外部 Share 審稿者。送出前確認選的是 Internal 或 Public，並留意內部留言的鎖頭標記。本例對工作分配的討論可放內部，給客戶確認的姓名修正則應放在對方能看到的位置。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "V4 的 Internal Comments 供工作區和專案成員討論，不會顯示給外部 Share 審稿者。送出前確認選的是 Internal 或 Public，並留意內部留言的鎖頭"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。本例對工作分配的討論可放內部，給客戶確認的姓名修正則應放在對方能看到的位置。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +216,37 @@
           "text": "更新資料夾或版本後，用接收者的條件重新確認分享結果。送出審稿通知時，寫明這一輪的版本和要確認的事項。"
         },
         {
-          "type": "link",
-          "text": "先整理 Premiere 素材與可修改專案",
-          "url": "https://mokaair.com/zh-TW/life/premiere-editing-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先整理 Premiere 素材與可修改專案",
+              "kind": "life",
+              "slug": "premiere-editing-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "教學影片如何安排示範與驗收",
-          "url": "https://mokaair.com/zh-TW/life/course-video-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "教學影片如何安排示範與驗收",
+              "kind": "life",
+              "slug": "course-video-editing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "一起保存影音素材授權紀錄",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "一起保存影音素材授權紀錄",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         }
       ],
       "sources": [

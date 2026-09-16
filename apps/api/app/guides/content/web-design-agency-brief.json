@@ -47,8 +47,23 @@
           "text": "接著註明哪些事情本期不處理，例如沒有即時剩餘名額、沒有線上收款，也沒有會員帳號。這些界線會影響資料來源、錯誤處理和後台權限。若只是表單詢問，頁面就不能顯示讓人誤以為已保留座位的確認訊息。"
         },
         {
-          "type": "paragraph",
-          "text": "用你自己的素材和文字說明需求。參考網站可以標記喜歡的導覽方式、資訊順序或留白比例，讓設計師理解目的；不要要求照搬別人的圖片、文案和整套視覺。也要寫出不適合的地方，例如動畫太多、手機聯絡入口難找。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用你自己的素材和文字說明需求。參考網站可以"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "喜歡的導覽方式、資訊順序或留白比例，讓設計師理解目的；不要要求照搬別人的圖片、文案和整套視覺。也要寫出不適合的地方，例如動畫太多、手機聯絡入口難找。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +216,37 @@
           "text": "保留一份所有人都能查閱的需求版本，新增項目另記影響。不要用展示截圖取代操作驗收，也不要把拿到後台帳號直接等同於完成所有資產交接。"
         },
         {
-          "type": "link",
-          "text": "先估算網站的完整預算",
-          "url": "https://mokaair.com/zh-TW/life/website-budget-worksheet"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先估算網站的完整預算",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排網站維護的固定工作",
-          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排網站維護的固定工作",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解 WordPress 備份與復原",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解 WordPress 備份與復原",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
         }
       ],
       "sources": [

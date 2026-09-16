@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MiniMax 是一家總部在上海、2026 年 1 月在香港交易所掛牌的 AI 公司，你在短影音上看到的「海螺 AI 做的影片」就是它的產品之一；台灣使用者打開國際版網址，用 Google 或 Apple 帳號登入就能免費試做幾支影片、試聽幾段語音，不需要中國手機號碼，但要先知道資料會存到哪裡、哪些東西不該上傳。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 是一家總部在上海、2026 年 1 月在香港交易所掛牌的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 公司，你在短影音上看到的「海螺 AI 做的影片」就是它的產品之一；台灣使用者打開國際版網址，用 Google 或 Apple 帳號登入就能免費試做幾支影片、試聽幾段語音，不需要中國手機號碼，但要先知道資料會存到哪裡、哪些東西不該上傳。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,8 +71,23 @@
           "text": "海螺 AI（Hailuo AI）是影片與圖片生成產品，國際版網址是 hailuoai.video，也有 iOS 與 Android App。2026 年 7 月 31 日推出的 MiniMax H3 是目前的主力模型：文字、圖片、影片、聲音都可以一起當參考素材，一次生成 4 到 15 秒、24 fps 的影片，預設短邊 768 像素，可以再放大到 2K，而且影片自帶立體聲的配音與環境音，不必另外配音。舊一代的 Hailuo 2.3 仍留在 API 上，1080p 只能做 6 秒、768p 最長 10 秒。H3 的基礎模型權重已經放上 Hugging Face，採 MiniMax H3 Community License，有顯示卡的人可以自己架。同一家還有一個叫 MiniMax Design 的桌面創作平台，官網定位是商業內容創作的代理平台；一般人先從海螺的網頁版開始就夠。"
         },
         {
-          "type": "paragraph",
-          "text": "語音產品叫 MiniMax Audio，網址在 minimax.io 的 audio 分頁。2026 年 1 月 23 日發表的 Speech 2.8 是現行模型，官方文章說用 10 秒的聲音樣本就能複製一個人的音色與語速，還加入「嗯」「呃」這類口語標記讓合成語音更像真人；文字轉語音頁面的文案寫有 300 多種聲音、32 種語言。網頁版可以直接輸入文字試聽，配音、有聲書、影片旁白是它主打的用途。開發者則走 API，模型名是 speech-2.8-hd 與 speech-2.8-turbo，按字元計費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "語音產品叫 MiniMax Audio，網址在 minimax.io 的 audio 分頁。2026 年 1 月 23 日發表的 Speech 2.8 是現行模型，官方文章說用 10 秒的聲音樣本就能複製一個人的音色與語速，還加入「嗯」「呃」這類口語"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "讓合成語音更像真人；文字轉語音頁面的文案寫有 300 多種聲音、32 種語言。網頁版可以直接輸入文字試聽，配音、有聲書、影片旁白是它主打的用途。開發者則走 API，模型名是 speech-2.8-hd 與 speech-2.8-turbo，按字元計費。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -68,8 +98,43 @@
           "text": "對話助理在國際版叫 MiniMax Agent，網址是 agent.minimax.io，2025 年 10 月跟 M2 模型一起推出，有處理日常問答與摘要的 Lightning 模式，以及跑長任務的 Pro 模式。2026 年 5 月 27 日的更新加入 Agent Team，讓多個代理分工做研究、寫程式、排版並互相檢查，官方文章也把升級後的 Agent 改名為 Mavis，意思是「MiniMax as a Jarvis」。桌面版叫 MiniMax Code，有 macOS 與 Windows 版，另有命令列工具；Android 手機 App 在 Google Play 的名稱是 MiniMax。官方把 Agent、CLI 與 API 的訂閱合併成一個，點數共用。"
         },
         {
-          "type": "paragraph",
-          "text": "第五條是開源模型與 API 平台。M 系列是 MiniMax 的大型語言模型：M2 在 2025 年 10 月 27 日開源，M2.5 採 Modified-MIT 授權，M2.7 約 229B 參數，2026 年推出的 M3 約 428B 總參數、23B 啟用參數，上下文長度 1M token，能讀圖片與影片，Hugging Face 上的授權標示為 minimax-community。權重都放在 Hugging Face 的 MiniMaxAI 組織與 GitHub 的 MiniMax-AI 組織。不想自己架的開發者用 platform.minimax.io 的 API，文字、影片、語音、音樂、圖片都在同一個平台。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第五條是開源模型與 API 平台。M 系列是 MiniMax 的"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "：M2 在 2025 年 10 月 27 日開源，M2.5 採 Modified-MIT 授權，M2.7 約 229B "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，2026 年推出的 M3 約 428B 總參數、23B 啟用參數，"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": " 1M token，能讀圖片與影片，Hugging Face 上的授權標示為 minimax-community。權重都放在 Hugging Face 的 MiniMaxAI 組織與 GitHub 的 MiniMax-AI 組織。不想自己架的開發者用 platform.minimax.io 的 API，文字、影片、語音、音樂、圖片都在同一個平台。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -85,9 +150,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -109,13 +180,34 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "價格都是美元，官網沒有台灣定價；MiniMax 的價目表變動頻繁，M3 目前的價格是官網標示「永久 5 折」後的數字，下單前再看一次價目頁。如果你只是想知道這家公司跟 DeepSeek 有什麼不一樣：兩家都是中國的模型公司、都開源權重，但 DeepSeek 以文字模型為主，MiniMax 的重心在影片、語音與音樂這些多模態產品。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "價格都是美元，官網沒有台灣定價；MiniMax 的價目表變動頻繁，M3 目前的價格是官網標示「永久 5 折」後的數字，下單前再看一次價目頁。如果你只是想知道這家公司跟 DeepSeek 有什麼不一樣：兩家都是中國的模型公司、都開源權重，但 DeepSeek 以文字模型為主，MiniMax 的重心在影片、語音與音樂這些"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "產品。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+              "kind": "life",
+              "slug": "deepseek-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -131,8 +223,23 @@
           "text": "跟你上傳的東西最相關的兩條：海螺的隱私政策說，上傳含人臉的照片時，系統會暫時擷取臉部特徵來生成影片，這些資料「只用於該次任務、不儲存、不用來辨識你」，生成完成後照片與臉部資料會刪除；API 平台的政策則承諾不用你的輸入資料推斷個人特徵，也不用來做使用者畫像或投放廣告。不過兩份政策都沒有明確寫「不用你的內容訓練模型」，帳號名稱、Email、裝置資訊與使用紀錄則會保留到「達成收集目的所需的期間」。想刪除資料，兩份政策都留了信箱與帳號刪除的路徑。"
         },
         {
-          "type": "paragraph",
-          "text": "內容審查一定有。海螺的服務條款列出禁止的內容類型，要求使用者在法律要求或可能誤導他人時標示內容為 AI 生成，也禁止自行移除平台加的浮水印或標記；介面上申請去除浮水印時，還有一段要你確認內容不涉及深偽的聲明。實務上，包含真人臉孔、名人、暴力或政治敏感題材的提示詞可能被拒絕生成或事後移除，這在中國背景的服務上會比美國的服務更嚴一些，先有心理準備就不會覺得莫名其妙。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "內容審查一定有。海螺的服務條款列出禁止的內容類型，要求使用者在法律要求或可能誤導他人時標示內容為 AI 生成，也禁止自行移除平台加的浮水印或標記；介面上申請去除浮水印時，還有一段要你確認內容不涉及"
+            },
+            {
+              "type": "article",
+              "text": "深偽",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            },
+            {
+              "type": "text",
+              "text": "的聲明。實務上，包含真人臉孔、名人、暴力或政治敏感題材的提示詞可能被拒絕生成或事後移除，這在中國背景的服務上會比美國的服務更嚴一些，先有心理準備就不會覺得莫名其妙。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -141,9 +248,15 @@
           "text": "一、服務條款寫你保留內容所有權，但同時授予公司一個「免權利金、永久、不可撤銷、全球」的使用授權，你的照片、聲音樣本與生成結果都在這個範圍裡。二、10 秒就能複製聲音，代表別人拿你的一段語音也做得到；自己的聲音樣本不要放在公開的作品裡，家人的聲音更不要替他們上傳。三、別人的臉與聲音需要本人同意，服務條款也要求你保證擁有必要的授權；用來開玩笑的合成影片一旦流出，責任在上傳的人身上。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -222,9 +335,15 @@
           "text": "如果你的需求是做短影音配圖或替影片配音，海螺與 MiniMax Audio 是這家公司最成熟、也最容易免費試到的兩條線；純粹想找一個聊天助理，MiniMax Agent 值得試，但它的強項在長任務與代理分工，日常問答用你原本習慣的工具就好。想知道哪類工作該用哪個工具，看下面這篇。"
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         }
       ],
       "sources": [

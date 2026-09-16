@@ -163,8 +163,23 @@
           "text": "用程式彙整人工評分"
         },
         {
-          "type": "paragraph",
-          "text": "材料提供 skills/score.mjs，負責檢查評分欄位型別、案例 id 是否重複，以及有無證據文字，再統計每項判準與全部通過數。它不會自行讀文章判定品質，也不會把模型自己的滿分自評當成人工評分。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料提供 "
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/score.mjs，負責檢查評分欄位型別、案例 id 是否重複，以及有無證據文字，再統計每項判準與全部通過數。它不會自行讀文章判定品質，也不會把模型自己的滿分自評當成人工評分。"
+            }
+          ]
         },
         {
           "type": "code",

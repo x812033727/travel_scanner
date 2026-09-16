@@ -66,8 +66,23 @@
           "text": "關鍵字比對可能在較長字詞內命中，因此不要把過短的英文字或常見中文詞加入嚴格封鎖。先找反覆出現且具辨識度的推銷片語，記錄設定原因與日期；若正常留言被攔，回頭檢查規則，而不是要求每位讀者自行猜測不能使用哪些字。"
         },
         {
-          "type": "paragraph",
-          "text": "在留言區附近寫簡短規範，例如歡迎相關補充、不公開個人聯絡資料、不接受無關廣告。把對內容的不同意見與垃圾訊息分開處理，避免因讀者批評就標記為垃圾，讓自動分類收到錯誤回饋。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在留言區附近寫簡短規範，例如歡迎相關補充、不公開個人聯絡資料、不接受無關廣告。把對內容的不同意見與垃圾訊息分開處理，避免因讀者批評就"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "為垃圾，讓自動分類收到錯誤回饋。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -193,14 +208,26 @@
           "text": "先確認內容再使用 Spam 或 Not Spam。不同意見不等於垃圾留言，清空數量也不等於完成審核；保留讓正常讀者被看見的流程。"
         },
         {
-          "type": "link",
-          "text": "規劃會員註冊的審核流程",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-member-registration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃會員註冊的審核流程",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立聯絡表單的防護與留存",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立聯絡表單的防護與留存",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
         }
       ],
       "sources": [

@@ -34,9 +34,15 @@
           "text": "這篇帶你走三條路：用 Open WebUI 建一個知識庫、用 LM Studio 把檔案拖進對話、再用 Ollama 的嵌入 API 寫一支最小的 RAG 腳本。中間每個名詞都會連到系列裡的名詞篇，分段大小與取幾段只寫官方文件列出的數字，最後說清楚表格、掃描版 PDF 與上下文視窗為什麼會讓答案失準。"
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -48,37 +54,67 @@
           "text": "第一步是分段。整份文件通常遠超過模型一次讀得下的量，所以要先切成一段一段的片段；相鄰兩段之間留一點重疊，是為了避免答案剛好被切在接縫上。Open WebUI 把這兩個值叫 Chunk Size 與 Chunk Overlap，環境變數表寫預設是 1000 與 100。"
         },
         {
-          "type": "link",
-          "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-chunking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "第二步是嵌入。每一段文字送進嵌入模型會變成一串數字，也就是向量，意思相近的段落在這個空間裡距離也相近。Ollama 說明文件寫向量長度看模型而定，常見是 384 到 1024 維，而 /api/embed 回傳的是 L2 正規化過的單位長度向量，所以算餘弦相似度時，把兩個向量逐項相乘再加總就是答案。"
         },
         {
-          "type": "link",
-          "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-embedding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "剩下三步是找、排、答。向量連同原文存進向量資料庫，提問時把問題用同一個嵌入模型算成向量，比對後取出最像的幾段；要更準就再加一層重排，把撈回來的片段重新打分數。Open WebUI 的混合搜尋就是這樣做的：BM25 關鍵字搜尋加上向量搜尋，再用 CrossEncoder 重排，官方文件寫這個開關預設是關的。最後一步才是生成，把選中的片段連同問題一起放進提示詞交給模型。"
         },
         {
-          "type": "link",
-          "text": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-vector-database"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
         },
         {
           "type": "image",
@@ -117,9 +153,15 @@
           "text": "要調的設定都在 Settings > Admin > Documents。嵌入模型預設是在本機跑的 sentence-transformers/all-MiniLM-L6-v2，也可以把嵌入引擎切成 Ollama 或 OpenAI；向量資料庫預設是 chroma，官方文件列出的選項有 13 種。文件另外提醒，掛上來的知識庫有兩種取用模式：預設的 Focused Retrieval 只塞進最相關的片段，Full Context 則是每則訊息都把整份文件放進去。"
         },
         {
-          "type": "link",
-          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
-          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+              "kind": "life",
+              "slug": "open-webui-chat-interface"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -135,9 +177,15 @@
           "text": "離線這件事官方也寫清楚：把文件拖進 LM Studio 對話或做 RAG，文件會留在你的機器上，所有處理都在本機完成，不會離開這個應用程式。長度方面，官方文件說上下文視窗是用 token 計算的，一個 token 大約四分之三個英文字，估片段量時可以拿這個當粗略換算。"
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -155,13 +203,34 @@
           "code": "pip install ollama\nollama pull embeddinggemma\nollama pull gemma4"
         },
         {
-          "type": "paragraph",
-          "text": "embeddinggemma 是 Google 的 300M 參數嵌入模型，模型庫頁寫 622MB、2K 上下文視窗，也寫這個標籤需要 Ollama v0.11.10 以後的版本。想換別的，官方嵌入頁推薦的還有 qwen3-embedding（0.6b 是 639MB、32K 上下文視窗）與 all-minilm（22m 是 46MB、512 上下文視窗），另一個常見的 nomic-embed-text 是 274MB、2K 上下文視窗。先用 curl 確認端點真的會回向量。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "embeddinggemma 是 Google 的 300M "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "嵌入模型，模型庫頁寫 622MB、2K 上下文視窗，也寫這個標籤需要 Ollama v0.11.10 以後的版本。想換別的，官方嵌入頁推薦的還有 qwen3-embedding（0.6b 是 639MB、32K 上下文視窗）與 all-minilm（22m 是 46MB、512 上下文視窗），另一個常見的 nomic-embed-text 是 274MB、2K 上下文視窗。先用 curl 確認端點真的會回向量。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
           "type": "code",
@@ -248,8 +317,23 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "同一頁還附了一段預算算法：片段 1000 token、Top K 取 5，檢索就會塞進大約 5000 token 的內容，再加上系統提示詞與對話紀錄，8K 的上下文視窗大概只剩兩三千 token 留給對話本身。另外，開了 Markdown 標題分段之後容易切出一堆碎片，官方建議把 Chunk Min Size Target 設成 Chunk Size 的五成到六成（例如 2000 配 1000），實測可以讓片段數少掉九成以上，而且準確度還變好。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一頁還附了一段預算算法：片段 1000 token、Top K 取 5，檢索就會塞進大約 5000 token 的內容，再加上"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "與對話紀錄，8K 的上下文視窗大概只剩兩三千 token 留給對話本身。另外，開了 Markdown 標題分段之後容易切出一堆碎片，官方建議把 Chunk Min Size Target 設成 Chunk Size 的五成到六成（例如 2000 配 1000），實測可以讓片段數少掉九成以上，而且準確度還變好。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -275,27 +359,60 @@
           "text": "官方對幻覺的描述值得抄下來：模型不是因為想錯才編，而是一開始就沒拿到正確的內容。所以答案不對時，先回頭看檢索撈了什麼，再去怪模型。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "做不到的第一件事是掃描版 PDF。官方文件寫預設的 pypdf 抽取器碰到圖片型 PDF 常常抽不到字，要換成 Apache Tika 或 Docling，或在同一頁把 PDF 影像抽取（OCR）打開。第二件是表格與試算表：CSV 解析出來就只有一列一列的資料，問「總共幾筆」時模型只看得到被檢索到的那幾列，要開 ENABLE_RAG_CSV_SUMMARY 才會在檔案前面補上列數與欄位名稱，而且這個設定預設關閉、只對打開之後才上傳的檔案生效。第三件是上下文長度，前面那則警告已經說過。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "做不到的第一件事是掃描版 PDF。官方文件寫預設的 pypdf 抽取器碰到圖片型 PDF 常常抽不到字，要換成 Apache Tika 或 Docling，或在同一頁把 PDF 影像抽取（OCR）打開。第二件是表格與試算表：CSV 解析出來就只有一列一列的資料，問「總共幾筆」時模型只看得到被檢索到的那幾列，要開 ENABLE_RAG_CSV_SUMMARY 才會在檔案前面補上列數與欄位名稱，而且這個設定預設關閉、只對打開之後才上傳的檔案生效。第三件是"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "，前面那則警告已經說過。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "如果文件本來就短，手上又剛好有一台上下文視窗很大的模型，整份塞進去往往比檢索準，官方文件自己也這麼說，這時候本機 RAG 就不必硬上。"
         },
         {
-          "type": "link",
-          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
-          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+              "kind": "life",
+              "slug": "claude-file-analysis-pdf-excel"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NotebookLM 入門：資料、筆記本與引用",
-          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NotebookLM 入門：資料、筆記本與引用",
+              "kind": "life",
+              "slug": "notebooklm-guide"
+            }
+          ]
         }
       ],
       "sources": [

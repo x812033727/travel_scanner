@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "孩子能不能用某個 AI，第一個要看的是各家官網寫的年齡門檻，而五家寫的都不一樣：ChatGPT 未滿 13 歲不得使用、13 到 18 歲要家長同意；Gemini 跟著 Google 帳號年齡走，未滿 13 歲得由家長在 Family Link 開啟；Claude 的消費者條款寫 18 歲；Meta AI 寫未滿 13 歲不能用；Character.AI 已經移除未滿 18 歲的開放式對話。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "孩子能不能用某個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，第一個要看的是各家官網寫的年齡門檻，而五家寫的都不一樣：ChatGPT 未滿 13 歲不得使用、13 到 18 歲要家長同意；Gemini 跟著 Google 帳號年齡走，未滿 13 歲得由家長在 Family Link 開啟；Claude 的消費者條款寫 18 歲；Meta AI 寫未滿 13 歲不能用；Character.AI 已經移除未滿 18 歲的開放式對話。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -107,9 +122,10 @@
               "text": "未成年帳號另有加強的內容過濾：在給所有人的過濾之外，登入 Google 帳號的未成年人會多一層，包括避免 Gemini 宣稱自己是人或有人類情緒、避免扮演有害角色；同一頁也承認過濾不完美。資料這一邊，未滿 13 歲沒有「保留活動記錄」這個設定；一般帳號的活動記錄預設 18 個月後自動刪除，關掉保留後對話仍會留 72 小時。三家的隱私開關整理在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
             },
             {
               "type": "text",
@@ -135,14 +151,26 @@
           "text": "Character.AI 的 2025 年 10 月 29 日公告寫，移除未滿 18 歲的開放式對話，過渡期先把每天對話時間限制在 2 小時再往下調。11 月 21 日的後續公告寫美國已降到每天 1 小時，並從 11 月 24 日開始分兩批移除，其他市場陸續跟進。未滿 18 歲仍可以用非對話的功能，過去的對話與角色也留著。"
         },
         {
-          "type": "link",
-          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
-          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+              "kind": "life",
+              "slug": "meta-ai-whatsapp-instagram"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 陪伴與心理健康：可以與不可以",
-          "url": "https://mokaair.com/zh-TW/life/ai-companion-mental-health-caution"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 陪伴與心理健康：可以與不可以",
+              "kind": "life",
+              "slug": "ai-companion-mental-health-caution"
+            }
+          ]
         },
         {
           "type": "image",
@@ -205,8 +233,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "台灣這邊有官方文件可以照著看：教育部的「中小學使用『生成式人工智慧』注意事項2.1（教師、行政人員及家長版）」在 115 年 2 月 11 日核定，前兩次核定是 113 年 7 月 1 日與 114 年 12 月 23 日，電子檔放在教育部推動中小學數位學習精進方案入口網。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣這邊有官方文件可以照著看：教育部的「中小學使用『"
+            },
+            {
+              "type": "article",
+              "text": "生成式人工智慧",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "』注意事項2.1（教師、行政人員及家長版）」在 115 年 2 月 11 日核定，前兩次核定是 113 年 7 月 1 日與 114 年 12 月 23 日，電子檔放在教育部推動中小學數位學習精進方案入口網。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -220,9 +263,10 @@
               "text": "另外兩點家長也用得到。第五點提醒學生避免輸入自己的姓名、照片、聯絡方式或家庭資訊，並要求建立家長知情與同意機制。第三點寫 AI 內容辨識工具只能作為初步篩檢，學校處理作業爭議時應結合教師專業判斷、作品內容與學習歷程綜合研判，不把偵測結果當唯一依據。作業能不能用、怎麼標示，接著看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
-              "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+              "kind": "life",
+              "slug": "ai-for-students-honest-use"
             },
             {
               "type": "text",
@@ -261,27 +305,30 @@
               "text": "第 4 條最常被跳過，幻覺長什麼樣、怎麼拆成可以查的主張，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-              "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
             },
             {
               "type": "text",
               "text": "；孩子第一次開帳號要選什麼，看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
             },
             {
               "type": "text",
               "text": "。把規矩先講清楚再放手，跟 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "零用錢怎麼給：把金錢觀教給孩子的實際做法",
-              "url": "https://mokaair.com/zh-TW/life/kids-allowance-money-education"
+              "kind": "life",
+              "slug": "kids-allowance-money-education"
             },
             {
               "type": "text",
@@ -301,8 +348,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "教育部注意事項的第四點寫了處理順序：發現學生接觸或遭受深偽技術製作的不當性影像，或涉及色情、暴力等違反兒少保護的內容時，教師與家長應優先協助學生截圖保留證據，切勿轉傳以免造成二度傷害；性影像事件向衛生福利部性影像處理中心申訴，其他不當內容向 iWIN 網路內容防護機構檢舉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "教育部注意事項的第四點寫了處理順序：發現學生接觸或遭受"
+            },
+            {
+              "type": "article",
+              "text": "深偽",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            },
+            {
+              "type": "text",
+              "text": "技術製作的不當性影像，或涉及色情、暴力等違反兒少保護的內容時，教師與家長應優先協助學生截圖保留證據，切勿轉傳以免造成二度傷害；性影像事件向衛生福利部性影像處理中心申訴，其他不當內容向 iWIN 網路內容防護機構檢舉。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -313,14 +375,26 @@
           "text": "心理這一塊，衛福部心理健康司的頁面寫，有心理壓力或情緒困擾可以撥打 1925 安心專線，提供 24 小時免付費心理諮詢服務。孩子跟 AI 聊到讓你擔心的內容時，先找專線與專業人員。"
         },
         {
-          "type": "link",
-          "text": "AI 詐騙與 Deepfake：台灣案例與防範",
-          "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+              "kind": "life",
+              "slug": "ai-scams-deepfake-taiwan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "匯出與刪除你的 AI 對話記錄",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "匯出與刪除你的 AI 對話記錄",
+              "kind": "life",
+              "slug": "ai-chat-history-export-delete"
+            }
+          ]
         }
       ],
       "sources": [

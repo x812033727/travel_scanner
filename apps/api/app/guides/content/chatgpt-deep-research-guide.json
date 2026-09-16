@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "ChatGPT 的 Deep Research 是一個會自己規劃、自己讀幾十個甚至上百個網頁、最後交出一份附引用報告的研究代理（Agent）；它適合「要比較、要整理、要看很多來源」的問題，不適合查一個數字。結論先講：它能把幾小時的查資料壓成官方說的 5 到 30 分鐘，但報告是起點不是結論，每個關鍵引用都要自己點開。如果你是搜「報告 AI」想找人代寫報告的，這個研究 AI 給的是附引用的起點，不是能直接交的成品。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 的 Deep Research 是一個會自己規劃、自己讀幾十個甚至上百個網頁、最後交出一份附引用報告的研究代理（Agent）；它適合「要比較、要整理、要看很多來源」的問題，不適合查一個數字。結論先講：它能把幾小時的查資料壓成官方說的 5 到 30 分鐘，但報告是起點不是結論，每個關鍵引用都要自己點開。如果你是搜「報告 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」想找人代寫報告的，這個研究 AI 給的是附引用的起點，不是能直接交的成品。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -48,14 +63,26 @@
           "text": "換句話說，搜尋是「替你查」，Deep Research 是「替你做一份功課」。它是 OpenAI 較早推出的代理（Agent）功能之一：自己規劃步驟、自己用工具、遇到新資訊會回頭調整。代理是什麼、跟一般聊天差在哪，另有一篇說明；搜尋功能本身和 Google 的差別，也另有一篇。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-search-vs-google"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+              "kind": "life",
+              "slug": "chatgpt-search-vs-google"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -81,14 +108,26 @@
           "text": "要等多久：官方公告寫 5 到 30 分鐘，題目越寬、來源越多越久。額度：說明中心現在只寫「依方案而異」，不再列固定數字；輸入框旁的用量計數器會顯示你還剩幾次，有固定月額度的方案從你第一次使用那天起每 30 天重置。定價頁的對照是 Free 和 Go（每月 8 美元）「有限」、Plus（每月 20 美元）「擴充」、Pro（每月 100 美元起）「最高」；Pro 100 美元的整體用量是 Plus 的 5 倍、Pro 200 美元是 20 倍，而 Pro 200 美元從 2026 年 9 月 10 日起暫停新訂閱。OpenAI 2025 年 4 月的公告曾寫過 Plus 每月 25 次、Pro 250 次、Free 5 次，用完自動切到輕量版；這組數字網路上還很常見，但說明中心已不再列出，實際以你帳號的計數器和官網為準。能不能用也依方案和所在國家或地區而定，工具選單裡沒看到就是這個原因。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -100,8 +139,23 @@
           "text": "OpenAI Academy 的原則是：一個好題目要講清楚目標、範圍、時間、想要的輸出格式，以及來源的偏好或限制。整理成好記的 5 個部件：範圍（比什麼、幾個、哪些條件）、時間（只看哪一年以後）、地區（台灣、幣別、通路）、輸出格式（表格、章節、每個數字附來源）、排除條件（不要哪類來源、查不到就標未查到）。五個都寫到，它幾乎不用再問你，報告也比較不會偏。"
         },
         {
-          "type": "paragraph",
-          "text": "範例一，比較三款空氣清淨機：「我住台灣，想買一台放在 8 坪臥室的空氣清淨機，預算新台幣 8,000 到 15,000 元。請從台灣目前有公司貨的機型裡挑三款比較，條件是 CADR 值、適用坪數、濾網每年更換費用、最低與最高噪音值、耗電量、保固年限。只看 2024 年以後在台灣上市或仍在販售的機型，價格用新台幣，以品牌台灣官網和主要電商通路的頁面為準。輸出：一張比較表、每款一段優缺點、最後一個推薦和理由，每個數字後面附來源連結。排除：內容農場和只有廣告的評測不要引用，不要用中國大陸的型號和價格，規格查不到就寫『未查到』，不要猜。」"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "範例一，比較三款空氣清淨機：「我住台灣，想買一台放在 8 坪臥室的空氣清淨機，預算新台幣 8,000 到 15,000 元。請從台灣目前有公司貨的機型裡挑三款比較，條件是 CADR 值、適用坪數、濾網每年更換費用、最低與最高噪音值、耗電量、保固年限。只看 2024 年以後在台灣上市或仍在販售的機型，價格用新台幣，以品牌台灣官網和主要電商通路的頁面為準。輸出：一張比較表、每款一段優缺點、最後一個推薦和理由，每個數字後面附來源連結。排除：內容農場和只有廣告的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "不要引用，不要用中國大陸的型號和價格，規格查不到就寫『未查到』，不要猜。」"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -143,9 +197,15 @@
           "text": "第三步找出它假設了什麼。報告不會告訴你它替你做了哪些決定：預算是不是當成含稅、坪數是台灣坪還是日本坪、簽證條件是不是套用了別國護照的規定。把每個沒有來源的數字和每個「通常」「一般來說」圈起來，就是它的假設清單；不放心的回到對話問「這句話的依據是什麼」，或補條件重跑。幻覺為什麼會發生、五個三分鐘內能做完的查證動作，另有一篇專門講。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",

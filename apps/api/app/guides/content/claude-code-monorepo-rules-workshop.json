@@ -104,8 +104,23 @@
           "code": "apps/\n  web/view.js\n  api/tasks.js\npackages/\n  shared/ids.js\n.claude/\n  CLAUDE.md\nconfig/\n  rules.web.md\n  rules.api.md\n"
         },
         {
-          "type": "paragraph",
-          "text": "先寫一張四欄矩陣：規則、存放位置、適用路徑、行為證據。共同規則的證據可以是相同標題測試；前端規則的證據可以是新增按鈕具有名稱且可用鍵盤操作。標記文字只能協助辨認來源，不能取代真正的成果檢查。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先寫一張四欄矩陣：規則、存放位置、適用路徑、行為證據。共同規則的證據可以是相同標題測試；前端規則的證據可以是新增按鈕具有名稱且可用鍵盤操作。"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "文字只能協助辨認來源，不能取代真正的成果檢查。"
+            }
+          ]
         },
         {
           "type": "heading",

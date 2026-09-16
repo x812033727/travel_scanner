@@ -26,17 +26,53 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "把 Ollama 裝在自己的筆電上，只有坐在那台電腦前面才用得到。換成一台 Linux VPS，同一組工具就變成一個隨時開著、手機和公司電腦都連得上的服務：Ollama 負責跑模型，Open WebUI 負責介面與帳號，前面再放一台反向代理接上網域與 HTTPS。結論先講：指令都是現成的，真正要小心的是把埠關好，因為 Ollama 的本機 API 不需要任何驗證，這一點決定了整台機器的設定方式。搜「自架 AI」的人，重點不在指令，在把埠關好。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把 Ollama 裝在自己的筆電上，只有坐在那台電腦前面才用得到。換成一台 Linux VPS，同一組工具就變成一個隨時開著、手機和公司電腦都連得上的服務：Ollama 負責跑模型，Open WebUI 負責介面與帳號，前面再放一台反向代理接上網域與 HTTPS。結論先講：指令都是現成的，真正要小心的是把埠關好，因為 Ollama 的本機 API 不需要任何驗證，這一點決定了整台機器的設定方式。搜「"
+            },
+            {
+              "type": "article",
+              "text": "自架 AI",
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
+            },
+            {
+              "type": "text",
+              "text": "」的人，重點不在指令，在把埠關好。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇帶你把六件事做完：挑機器規格、用官方腳本裝 Ollama 並改 systemd 的環境變數、用 Docker 跑 Open WebUI 並只綁在 127.0.0.1、用 Caddy 或 Nginx 加 Certbot 開 HTTPS、開好帳號與防火牆、安排備份與更新，最後把費用結構列清楚。租機器、設定網域 DNS、連 SSH 這些基礎步驟站上已經有一篇完整教學，照那篇做，這裡只補 AI 服務的部分。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇帶你把六件事做完：挑機器規格、用官方腳本裝 Ollama 並改 systemd 的環境變數、用 Docker 跑 Open WebUI 並只綁在 127.0.0.1、用 Caddy 或 Nginx 加 Certbot 開 HTTPS、開好帳號與防火牆、安排備份與更新，最後把費用結構列清楚。租機器、設定網域 DNS、連 SSH 這些基礎步驟站上已經有一篇完整教學，照那篇做，這裡只補 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 服務的部分。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
-          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+              "kind": "life",
+              "slug": "deploy-ai-built-site-to-vps"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -62,9 +98,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
-          "url": "https://mokaair.com/zh-TW/life/hosting-types-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -92,9 +134,15 @@
           "code": "# sudo systemctl edit ollama.service\n[Service]\nEnvironment=\"OLLAMA_HOST=0.0.0.0:11434\"\nEnvironment=\"OLLAMA_CONTEXT_LENGTH=8192\"\n\n# 存檔離開後，照文件再跑這兩行：\n# sudo systemctl daemon-reload\n# sudo systemctl restart ollama"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -120,9 +168,15 @@
           "text": "存好之後在同一個目錄執行 docker compose up -d。幾個欄位官方文件都有交代：WEBUI_SECRET_KEY 用 openssl rand -hex 32 產生並固定下來，容器重建時才不會把所有人登出，它同時用來簽發登入 token 與加密存放的敏感資料；volume 是對話、帳號、設定與上傳檔案的所在，文件的原話是絕對不要不掛 volume 就跑；OLLAMA_BASE_URL 在 Docker 裡的預設值本來就是 host.docker.internal 的 11434 埠，extra_hosts 那行讓容器找得到主機；WEBUI_URL 填公開網址，OAuth 與內部連結才會正確。介面的操作步驟以官網當天版本為準。"
         },
         {
-          "type": "link",
-          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
-          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+              "kind": "life",
+              "slug": "open-webui-chat-interface"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -158,9 +212,15 @@
           "code": "# Certbot：官方建議的 snap 安裝方式\nsudo snap install --classic certbot\nsudo ln -s /snap/bin/certbot /usr/local/bin/certbot\nsudo certbot --nginx          # 取得憑證並自動改 Nginx 設定\nsudo certbot renew --dry-run  # 演練自動續期\n\n# 防火牆：先放行 SSH，再打開\nsudo ufw allow 22\nsudo ufw allow 80\nsudo ufw allow 443\nsudo ufw enable\nsudo ufw status"
         },
         {
-          "type": "link",
-          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
-          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
         },
         {
           "type": "image",
@@ -279,28 +339,52 @@
           "text": "費用結構跟雲端 API 完全不同：你付的是機器，不是 token。固定支出是 VPS 月費（看規格，價格以主機商官網為準，這篇不列特定業者的數字）、網域年費，再加上放備份的空間；憑證從 Let's Encrypt 拿不用錢，Ollama 與 Open WebUI 本身也不用錢。會變動的是流量，以及你願不願意為了速度升級到有顯示卡的方案。要判斷划不划算，就拿這幾項跟你現在每個月付的訂閱或 API 帳單擺在一起比。"
         },
         {
-          "type": "link",
-          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "最後提醒一件常被忽略的事：自架之後，這台機器的更新、備份、憑證、帳號與資料外洩風險都算你的。同一件事交給雲端服務商，責任分界不一樣；決定之前先想清楚你接得住哪些。模型要挑哪一個、蒸餾版和完整版差在哪，站上另有專文可以接著看。"
         },
         {
-          "type": "link",
-          "text": "SaaS、PaaS 與 IaaS：你使用服務，也接下哪些責任",
-          "url": "https://mokaair.com/zh-TW/life/saas-paas-iaas-responsibility"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "SaaS、PaaS 與 IaaS：你使用服務，也接下哪些責任",
+              "kind": "life",
+              "slug": "saas-paas-iaas-responsibility"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "WordPress 主機比較怎麼做：用同一張需求表評估供應商",
-          "url": "https://mokaair.com/zh-TW/life/managed-hosting-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 主機比較怎麼做：用同一張需求表評估供應商",
+              "kind": "life",
+              "slug": "managed-hosting-comparison"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         }
       ],
       "sources": [

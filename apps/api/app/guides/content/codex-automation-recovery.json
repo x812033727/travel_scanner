@@ -123,8 +123,23 @@
           "text": "步驟 2：重現『有答案，但沒有完成證據』"
         },
         {
-          "type": "paragraph",
-          "text": "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確標記的模擬中斷，不要修改真實失敗紀錄來假裝成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "的模擬中斷，不要修改真實失敗紀錄來假裝成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。"
+            }
+          ]
         },
         {
           "type": "code",

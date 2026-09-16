@@ -25,8 +25,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MCP 排錯要把設定、程序、網路、登入與資料權限逐層拆開。本篇延續 notion-lab，也說明本機 stdio 伺服器的差異。你會建立一份可交給維護者的診斷紀錄，指出哪一層已通過、哪一層失敗，避免反覆重裝卻沒有新證據。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 排錯要把設定、程序、網路、登入與資料權限逐層拆開。本篇延續 notion-lab，也說明本機 stdio 伺服器的差異。你會建立一份可交給維護者的診斷紀錄，指出哪一層已通過、哪一層失敗，避免反覆重裝卻沒有新證據。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -43,7 +54,17 @@
             },
             {
               "type": "text",
-              "text": "。本篇不提供通用權杖或隨機套件安裝命令；伺服器啟動方式必須來自該服務的官方文件。處理真實帳號時，分享錯誤前先移除權杖、授權碼、私人 URL 參數與內容。"
+              "text": "。本篇不提供通用權杖或隨機套件安裝命令；伺服器啟動方式必須來自該服務的官方文件。處理真實帳號時，分享錯誤前先移除權杖、授權碼、私人 URL "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與內容。"
             }
           ]
         },

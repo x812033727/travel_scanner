@@ -101,8 +101,23 @@
           "text": "Google 建議不同語言版本使用不同網址，並可透過 hreflang 協助標示對應關係。Polylang 提供目錄、子網域等網址設定方向，應在大量發布前選定。對小型團隊而言，先看維護與導覽是否清楚，不必因為增加英文就立刻購買另一個網域。"
         },
         {
-          "type": "paragraph",
-          "text": "標題、描述、圖片替代文字及網址路徑也可能需要翻譯。TranslatePress 官方把這些 SEO 項目的翻譯能力列在付費 SEO Pack，應在選型時納入需求。外掛可以協助輸出標記，仍要檢查實際頁面是否指向正確語言版本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "標題、描述、圖片替代文字及網址路徑也可能需要翻譯。TranslatePress 官方把這些 SEO 項目的翻譯能力列在付費 SEO Pack，應在選型時納入需求。外掛可以協助輸出"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，仍要檢查實際頁面是否指向正確語言版本。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -198,14 +213,26 @@
           "text": "從首頁到服務說明、聯絡表單及回覆提示都使用可理解的語言，通常比一次翻譯大量文章但缺少操作入口更方便讀者。先在少量頁面確認流程，再擴充。"
         },
         {
-          "type": "link",
-          "text": "規劃工作室網站內容與聯絡路徑",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-business-site"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃工作室網站內容與聯絡路徑",
+              "kind": "life",
+              "slug": "wordpress-business-site"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理 WordPress 分類與導覽選單",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理 WordPress 分類與導覽選單",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
         }
       ],
       "sources": [

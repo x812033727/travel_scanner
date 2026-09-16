@@ -29,8 +29,23 @@
           "text": "「開源模型」和「閉源模型」在日常討論裡常被當成品質標籤，但這兩個詞真正回答的是另一個問題：模型的檔案在誰手上、條款由誰寫。對一般使用者來說，這個差別會落在五件具體的事上：能不能離線與自架、資料去哪裡、授權允許你拿去做什麼、模型會不會退場、費用怎麼算。"
         },
         {
-          "type": "paragraph",
-          "text": "這篇不比誰比較聰明，也不做排名，只把當天官方檔案裡寫出來的條款抄下來對照：OSI 的開源 AI 定義、五個開放權重模型家族的授權原文，以及三家閉源 API 的資料使用與保留條款，最後給一張決策表與一套你自己就能做的測試方法。本環境不能登入、不能實測，所有內容以 2026 年 9 月 15 日當天的官方頁面與授權檔為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇不比誰比較聰明，也不做排名，只把當天官方檔案裡寫出來的條款抄下來對照：OSI 的開源 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 定義、五個開放權重模型家族的授權原文，以及三家閉源 API 的資料使用與保留條款，最後給一張決策表與一套你自己就能做的測試方法。本環境不能登入、不能實測，所有內容以 2026 年 9 月 15 日當天的官方頁面與授權檔為準。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -42,21 +57,33 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Open Source Initiative（OSI）的 Open Source AI Definition，官網頁面上標的版本是 1.0。它把開源 AI 寫成一組自由的清單：使用（Use）、研究（Study）、修改（Modify）、分享（Share），並且明講行使這些自由的前提，是拿得到修改系統時的偏好形式，原文寫的是 preferred form to make modifications。這份定義列了三個必備元件：資料資訊（Data Information）、程式（Code）與參數（Parameters）。換句話說，權重檔可以下載，並不自動符合這份定義。名詞本身站上已經各有一篇："
+              "text": "Open Source Initiative（OSI）的 Open Source AI Definition，官網頁面上標的版本是 1.0。它把開源 AI 寫成一組自由的清單：使用（Use）、研究（Study）、修改（Modify）、分享（Share），並且明講行使這些自由的前提，是拿得到修改系統時的偏好形式，原文寫的是 preferred form to make modifications。這份定義列了三個必備元件：資料資訊（Data Information）、程式（Code）與"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "（Parameters）。換句話說，權重檔可以下載，並不自動符合這份定義。名詞本身站上已經各有一篇："
+            },
+            {
+              "type": "article",
               "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
             },
             {
               "type": "text",
               "text": "把三個元件逐項拆開，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+              "kind": "life",
+              "slug": "ai-term-open-weights"
             },
             {
               "type": "text",
@@ -85,27 +112,30 @@
               "text": "真的要動手，站上有三篇可以接著看："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hugging Face 入門：找模型、看授權、下載",
-              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+              "kind": "life",
+              "slug": "huggingface-guide"
             },
             {
               "type": "text",
               "text": "講怎麼找模型與看授權，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-              "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+              "kind": "life",
+              "slug": "ollama-getting-started"
             },
             {
               "type": "text",
               "text": "講在 Windows 與 Mac 上跑起第一個模型，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-              "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
             },
             {
               "type": "text",
@@ -137,8 +167,23 @@
           "code": "OpenAI — Data controls in the OpenAI platform\n\"Your data is your data. As of March 1, 2023, data sent to the OpenAI API is not\nused to train or improve OpenAI models (unless you explicitly opt in to share\ndata with us).\"\n\"By default, abuse monitoring logs are generated for all API feature usage and\nretained for up to 30 days, unless longer retention is required by law, or is\nreasonably necessary to protect our services or any third party from harm.\"\n\nAnthropic — Is my data used for model training?（商用產品）與 How long do you store my organization's data?\n\"By default, we will not use your inputs or outputs from our commercial products\n(e.g. Claude for Work, Anthropic API, Claude Gov, etc.) to train our models.\"\n\"For Anthropic API users, we automatically delete inputs and outputs on our\nbackend within 30 days of receipt or generation, except: ...\"\n\nGoogle — Gemini API Additional Terms of Service\nUnpaid Services: \"Google uses the content you submit to the Services and any\ngenerated responses to provide, improve, and develop Google products and\nservices and machine learning technologies\" / \"Do not submit sensitive,\nconfidential, or personal information to the Unpaid Services.\"\nPaid Services: \"Google doesn't use your prompts (including associated system\ninstructions, cached content, and files such as images, videos, or documents) or\nresponses to improve our products\""
         },
         {
-          "type": "paragraph",
-          "text": "把三段放在一起看，界線就出來了：付費與商用的通道，三家都寫預設不用於訓練，但都會為了濫用監控保留一段時間，OpenAI 與 Anthropic 寫的都是 30 天。免費與個人的通道則相反，OpenAI 的說明中心寫個人服務可能拿內容去訓練模型，Google 的 Gemini API 條款更直接叫你不要把敏感、機密或個人資訊送進免費服務。Anthropic 的消費版另有一頁，寫的是你選擇同意、或對話被安全審查標記時才會被使用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把三段放在一起看，界線就出來了：付費與商用的通道，三家都寫預設不用於訓練，但都會為了濫用監控保留一段時間，OpenAI 與 Anthropic 寫的都是 30 天。免費與個人的通道則相反，OpenAI 的說明中心寫個人服務可能拿內容去訓練模型，Google 的 Gemini API 條款更直接叫你不要把敏感、機密或個人資訊送進免費服務。Anthropic 的消費版另有一頁，寫的是你選擇同意、或對話被安全審查"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "時才會被使用。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -183,63 +228,70 @@
               "text": "每個家族的版本與用法，站上各有一篇："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Llama 模型家族：授權與版本",
-              "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+              "kind": "life",
+              "slug": "llama-models-explained"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemma：Google 的開源模型怎麼用",
-              "url": "https://mokaair.com/zh-TW/life/gemma-google-open-models"
+              "kind": "life",
+              "slug": "gemma-google-open-models"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
-              "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+              "kind": "life",
+              "slug": "gpt-oss-openai-open-weights"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
-              "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+              "kind": "life",
+              "slug": "qwen-alibaba-models-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
-              "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+              "kind": "life",
+              "slug": "deepseek-beginner-guide"
             },
             {
               "type": "text",
               "text": "。歐洲的選項可以看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放",
-              "url": "https://mokaair.com/zh-TW/life/mistral-le-chat-guide"
+              "kind": "life",
+              "slug": "mistral-le-chat-guide"
             },
             {
               "type": "text",
               "text": "，繁體中文的在地模型則看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "台灣的本土模型：TAIDE 與繁中表現",
-              "url": "https://mokaair.com/zh-TW/life/ai-taiwan-local-models-taide"
+              "kind": "life",
+              "slug": "ai-taiwan-local-models-taide"
             },
             {
               "type": "text",
@@ -254,9 +306,15 @@
           "text": "同一個家族換一代就可能換授權：Gemma 3 的倉庫標的是 Gemma 授權、下載前要先按同意，Gemma 4 的模型卡標的是 Apache 2.0、倉庫沒有設同意關卡；Qwen 同一代裡也有 Apache 2.0 與兩份自訂授權並存。要拿去做產品之前，打開你真正要用的那個版本的倉庫，讀那個資料夾裡的 LICENSE 檔，不要引用別人整理的表格。另外，授權管的是模型檔案能不能用、怎麼散布，模型產出的內容歸誰是另一套規則。"
         },
         {
-          "type": "link",
-          "text": "AI 與著作權：台灣法規與判決整理",
-          "url": "https://mokaair.com/zh-TW/life/ai-and-copyright-law-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 與著作權：台灣法規與判決整理",
+              "kind": "life",
+              "slug": "ai-and-copyright-law-taiwan"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -284,18 +342,20 @@
               "text": "閉源 API 的費用按用量算，主要看每百萬 token 的單價與訂閱月費，各家的數字在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 價格比較：每百萬 token 各家多少",
-              "url": "https://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026"
+              "kind": "life",
+              "slug": "ai-api-pricing-comparison-2026"
             },
             {
               "type": "text",
               "text": "有整理。開放權重模型沒有按次收費，換成硬體、電力與你自己的時間；划不划算，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-              "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
             },
             {
               "type": "text",

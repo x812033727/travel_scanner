@@ -34,9 +34,15 @@
           "text": "這篇帶你做到四件事：從台灣能用哪幾種方式註冊、這題該開哪個模式、官網現在列的模型版本，以及發出第一次 API 呼叫。背景另有入門篇，這裡只講操作。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+              "kind": "life",
+              "slug": "deepseek-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -92,9 +98,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -120,14 +132,26 @@
           "text": "還有一件事比選模式更有效：把背景、限制與想要的格式寫進提示詞。問清楚的一般對話，往往勝過含糊提問加深度思考。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -152,12 +176,42 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "先講一個會被舊教學誤導的地方：deepseek-chat 與 deepseek-reasoner 這兩個模型名已經不是現役。官網 2026 年 4 月 24 日的更新日誌寫，兩個舊名將在 2026 年 7 月 24 日停止服務，在那之前分別指向非思考模式與思考模式。對話模型與推理模型已合併成同一個模型、改用參數切換，網頁版那顆按鈕就是這個切換。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先講一個會被舊教學誤導的地方：deepseek-chat 與 deepseek-reasoner 這兩個模型名已經不是現役。官網 2026 年 4 月 24 日的更新日誌寫，兩個舊名將在 2026 年 7 月 24 日停止服務，在那之前分別指向非思考模式與思考模式。對話模型與推理模型已合併成同一個模型、改用"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "切換，網頁版那顆按鈕就是這個切換。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "定價頁目前只列 deepseek-flash 與 deepseek-v4-pro，模型版本是 DeepSeek-V4.1-Flash 與 DeepSeek-V4-Pro-0813，上下文視窗都是 1M token（官網寫「上下文長度」），輸出最長 384K。舊名 deepseek-v4-flash 還收得到請求，但已改由 V4.1-Flash 服務。V3.2、V3.1、R1 在透明度中心還查得到，但不在定價頁上。網頁版與 App 用哪一版，官網最後一次明說三端同步是 2026 年 8 月 13 日的公告，之後未再說明，以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "定價頁目前只列 deepseek-flash 與 deepseek-v4-pro，模型版本是 DeepSeek-V4.1-Flash 與 DeepSeek-V4-Pro-0813，上下文視窗都是 1M token（官網寫「"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "」），輸出最長 384K。舊名 deepseek-v4-flash 還收得到請求，但已改由 V4.1-Flash 服務。V3.2、V3.1、R1 在透明度中心還查得到，但不在定價頁上。網頁版與 App 用哪一版，官網最後一次明說三端同步是 2026 年 8 月 13 日的公告，之後未再說明，以官網為準。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -219,9 +273,15 @@
           "text": "計價以每百萬 token 為單位，分離峰與高峰兩價，離峰是高峰的一半。中文定價頁寫高峰是北京時間週一至週五 9:00 到 12:00 與 14:00 到 18:00（台灣時間相同），英文頁寫 01:00 到 04:00 與 06:00 到 10:00 UTC，是同一段時間的兩種寫法。輸入再分快取命中與未命中：deepseek-flash 命中每百萬 token 0.003 美元、未命中 0.15 美元，相差 50 倍。"
         },
         {
-          "type": "link",
-          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -241,13 +301,34 @@
           "text": "第二是資料的位置。隱私政策寫明：為了提供服務，DeepSeek 直接在中華人民共和國境內蒐集、處理並儲存你的個人資料。同一份政策也給了兩個你能自己做的動作：拒絕把資料用於訓練，以及在設定裡刪除對話紀錄。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "第三是幻覺，這點官方寫在隱私政策裡：這類服務靠預測最可能出現的字來產生回答，最可能的字不一定最正確，因此不應依賴輸出的事實正確性。服務條款第 3.1 條更要求你在發布輸出前主動查證，並標示內容由人工智慧生成。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三是幻覺，這點官方寫在隱私政策裡：這類服務靠預測最可能出現的字來產生回答，最可能的字不一定最正確，因此不應依賴輸出的事實正確性。服務條款第 3.1 條更要求你在發布輸出前主動查證，並標示內容由"
+            },
+            {
+              "type": "article",
+              "text": "人工智慧",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "生成。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -256,23 +337,41 @@
           "text": "深度思考多印出來的那一段是模型生成的文字，不是查詢紀錄，它可以推得很順卻從一個錯的前提出發。把它當檢查清單：挑出關鍵事實，逐一到官方頁面核對，核不到就當成還沒有答案。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這三點有你不能接受的，還有兩條路：把開源蒸餾版下載到自己的電腦跑，內容就不離開這台機器；或先比較同一批中國系模型再決定。"
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         }
       ],
       "sources": [

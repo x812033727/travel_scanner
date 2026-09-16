@@ -81,8 +81,33 @@
           }
         },
         {
-          "type": "paragraph",
-          "text": "-p 是非互動執行入口，並不等於沙盒或只讀模式。正常模式仍會載入工作目錄及使用者設定中的部分規則、Hooks、Skills、外掛與 MCP，且不會出現一般互動式工作區信任提示。因此先選乾淨練習目錄並檢查設定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "-p 是非互動執行入口，並不等於沙盒或只讀模式。正常模式仍會載入工作目錄及使用者設定中的部分規則、Hooks、"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "、外掛與 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "，且不會出現一般互動式工作區信任提示。因此先選乾淨練習目錄並檢查設定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -100,8 +125,23 @@
           "code": "claude -p \"請用一句繁體中文解釋待辦清單，不使用工具。\" --tools \"\"\n"
         },
         {
-          "type": "paragraph",
-          "text": "預期程序輸出一句說明後退出。若出現認證錯誤，先回互動 CLI 確認登入；若參數不支援，查看 claude --help 與版本。非互動模式沒有等你在對話中補充資訊的正常流程，所以提示要一次提供必要背景。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "預期程序輸出一句說明後退出。若出現認證錯誤，先回互動 CLI 確認登入；若"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "不支援，查看 claude --help 與版本。非互動模式沒有等你在對話中補充資訊的正常流程，所以提示要一次提供必要背景。"
+            }
+          ]
         },
         {
           "type": "paragraph",

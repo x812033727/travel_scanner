@@ -54,27 +54,30 @@
               "text": "帳號端另有兩個破口：分享出去的連結與模型讀到的外部文字，見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+              "kind": "life",
+              "slug": "chatgpt-shared-links-privacy"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞注入是什麼：使用者該懂的攻擊",
-              "url": "https://mokaair.com/zh-TW/life/ai-prompt-injection-explained"
+              "kind": "life",
+              "slug": "ai-prompt-injection-explained"
             },
             {
               "type": "text",
               "text": "，隱私開關看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
             },
             {
               "type": "text",
@@ -121,8 +124,23 @@
           "text": "Claude 提供的是工作階段管理。點左下角頭像進設定、切到帳戶，往下捲到使用中的工作階段，會列出裝置與瀏覽器、依 IP 推估的位置與最後使用時間；不認得的點三點選單選終止，要一次登出全部就在同一區塊按登出。官方寫明這選項在 iOS 與 Android 的 App 上沒有。"
         },
         {
-          "type": "paragraph",
-          "text": "官方數字：claude.ai 的網頁工作階段長度 28 天，只要頁面上有動作，每小時會自動往後延成 28 天。登入過 Claude Code 的話，授權 token 要在設定的 Claude Code 分頁另外刪掉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方數字：claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的網頁工作階段長度 28 天，只要頁面上有動作，每小時會自動往後延成 28 天。登入過 Claude Code 的話，授權 token 要在設定的 Claude Code 分頁另外刪掉。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -178,18 +196,20 @@
               "text": "網銀的「裝置綁定加一次性密碼」是同一個邏輯，見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "網銀與帳戶安全：裝置綁定、OTP 與常見詐騙手法",
-              "url": "https://mokaair.com/zh-TW/life/online-banking-security"
+              "kind": "life",
+              "slug": "online-banking-security"
             },
             {
               "type": "text",
               "text": "；公司帳號另看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "公司裡用 AI 的規範：資料外流與合規",
-              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
             },
             {
               "type": "text",
@@ -222,18 +242,20 @@
               "text": "金鑰怎麼申請、帳單怎麼看，見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-              "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+              "kind": "life",
+              "slug": "claude-api-first-call"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -403,14 +425,26 @@
           "text": "處理完把對話記錄也清一遍，被看過的東西不會因為改密碼就消失。另外，官方在兩步驟驗證頁寫得很清楚：驗證碼不要給任何人。"
         },
         {
-          "type": "link",
-          "text": "匯出與刪除你的 AI 對話記錄",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "匯出與刪除你的 AI 對話記錄",
+              "kind": "life",
+              "slug": "ai-chat-history-export-delete"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 詐騙與 Deepfake：台灣案例與防範",
-          "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+              "kind": "life",
+              "slug": "ai-scams-deepfake-taiwan"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -420,9 +454,10 @@
               "text": "網站後台也是同一套邏輯，可接著看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "WordPress 安全維護：帳號、更新與防護外掛的分工",
-              "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+              "kind": "life",
+              "slug": "wordpress-security-basics"
             },
             {
               "type": "text",

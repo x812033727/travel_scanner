@@ -168,8 +168,23 @@
           "text": "步驟一：建立能辨認的練習檔"
         },
         {
-          "type": "paragraph",
-          "text": "在文字編輯器建立 greeting.txt，內容如下；再另存一份 greeting.original.txt。兩個檔案放進新資料夾 codex-cli-lab。確認副檔名沒有變成 .txt.txt，內容不是 Word 檔案。第二行是固定版本標記，用來分辨讀到的是否真是你的練習檔；備份則能核對修改前後。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在文字編輯器建立 greeting.txt，內容如下；再另存一份 greeting.original.txt。兩個檔案放進新資料夾 codex-cli-lab。確認副檔名沒有變成 .txt.txt，內容不是 Word 檔案。第二行是固定版本"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，用來分辨讀到的是否真是你的練習檔；備份則能核對修改前後。"
+            }
+          ]
         },
         {
           "type": "code",

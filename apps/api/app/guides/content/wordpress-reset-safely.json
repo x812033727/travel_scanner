@@ -118,8 +118,23 @@
           "text": "進入已確認的工具頁，閱讀這次操作的刪除範圍、保留項目及完成後會啟用的功能。若選擇 WP Reset，可從工具選單進入其管理頁；依目前版本顯示的確認程序進行，不跳過確認，也不把教學中的選項當成所有版本的預設值。"
         },
         {
-          "type": "paragraph",
-          "text": "執行前再確認手上的備份可讀取，並記錄目前內容數量與測試標記。重置後重新登入，查看文章、媒體記錄、實體檔案、佈景及外掛狀態是否符合預期。若只想清空練習內容，卻發現仍有需要保留的資料，就先停止後續清理，回到復原計畫。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "執行前再確認手上的備份可讀取，並記錄目前內容數量與測試"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。重置後重新登入，查看文章、媒體記錄、實體檔案、佈景及外掛狀態是否符合預期。若只想清空練習內容，卻發現仍有需要保留的資料，就先停止後續清理，回到復原計畫。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -207,19 +222,37 @@
           "text": "測試網址不保證使用測試資料庫。操作前核對網址、檔案位置及資料庫對應，確保演練副本獨立，且手上有能取得、能還原的備份。"
         },
         {
-          "type": "link",
-          "text": "確認網站備份真的能還原",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "確認網站備份真的能還原",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立本機 WordPress 測試站",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-local-development"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立本機 WordPress 測試站",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "選擇適合的佈景主題",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-theme-selection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "選擇適合的佈景主題",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
         }
       ],
       "sources": [

@@ -55,9 +55,10 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 入門",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -139,9 +140,10 @@
               "text": "若失去原 Drive 文件存取權或原檔被刪除，來源可能無法被引用，即使仍占用來源數量。這時應恢復合法存取或更換資料，不能把「無法讀取」解讀為「文件沒有內容」。來源與方案上限請集中參考 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案與額度說明",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -185,9 +187,10 @@
               "text": "若得到 24 人，先查引用是否還在 v1；若引用顯示 v2 卻回答 24，則是回答與證據不一致，應保存案例後重新提問。若沒有引用，要求指出章節並人工查看，不用猜測模型是否「記住」了舊答案。需要保留真正未決的兩份資料時，改用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "矛盾資料的證據矩陣",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
@@ -239,18 +242,20 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 入門：資料、筆記本與引用",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
@@ -269,9 +274,15 @@
           "url": "https://mokaair.com/guides/notebooklm-source-versioning/research-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

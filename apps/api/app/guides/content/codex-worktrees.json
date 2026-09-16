@@ -184,8 +184,23 @@
           "text": "在 Git 專案的新任務輸入框下選 Worktree，再選起始分支，送出需求後由 Codex 建立工作目錄。選目前分支連同未提交修改時，先核對那些修改確實應帶入，不要把無關私有資料也當作任務背景。桌面建立的管理型 worktree 預設可能是 detached HEAD；要長期保留成果，可在任務標頭用 Create branch here 建立分支，再按正常 Git 流程驗收提交。"
         },
         {
-          "type": "paragraph",
-          "text": "需要把同一任務與程式帶到 Local 時用 Hand off，完成後重新核對目錄、分支及檔案；Handoff 是移動工作，不等於已合併 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同欄位；若 Linux 預覽沒有所需控制，使用本篇 Git 命令方式並標記差異。手機透過 Remote 控制連線電腦上的任務，worktree 留在主機，不是在 iPhone 或 Android 本機執行 Git。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要把同一任務與程式帶到 Local 時用 Hand off，完成後重新核對目錄、分支及檔案；Handoff 是移動工作，不等於已合併 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同欄位；若 Linux 預覽沒有所需控制，使用本篇 Git 命令方式並"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "差異。手機透過 Remote 控制連線電腦上的任務，worktree 留在主機，不是在 iPhone 或 Android 本機執行 Git。"
+            }
+          ]
         },
         {
           "type": "table",

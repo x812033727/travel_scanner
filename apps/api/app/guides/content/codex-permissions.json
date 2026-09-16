@@ -80,8 +80,23 @@
           "text": "步驟 1：建立最小權限練習"
         },
         {
-          "type": "paragraph",
-          "text": "在編輯器建立 codex-permissions-lab，新增 note.txt 與 request.txt，分別放以下兩段。它們只是虛構標記，不需要 API 金鑰、登入檔或正式專案。開整合終端機，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 確認末端是此資料夾，避免用錯目前目錄來判斷沙盒。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在編輯器建立 codex-permissions-lab，新增 note.txt 與 request.txt，分別放以下兩段。它們只是虛構"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不需要 API 金鑰、登入檔或正式專案。開整合終端機，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 確認末端是此資料夾，避免用錯目前目錄來判斷沙盒。"
+            }
+          ]
         },
         {
           "type": "code",

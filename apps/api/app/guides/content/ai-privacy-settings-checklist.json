@@ -43,9 +43,15 @@
           "text": "關掉「用我的對話改善模型」之後，新對話不會進訓練資料，但對話仍會送到對方伺服器處理，並依各家規則保留：刪掉的對話，ChatGPT 與 Claude 都寫明 30 天內從系統移除；Claude 允許訓練時去識別化資料最長保留 5 年，不允許則維持 30 天；Gemini 關掉活動記錄後，對話仍與帳號一起保存 72 小時，人工審閱過的對話另外保留最長 3 年。開關做得到「不進訓練資料」，做不到「對方從來沒收到」。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -67,9 +73,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -77,8 +89,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 在 2025 年更新消費者條款後，Free、Pro、Max 的對話可以用於訓練，前提是你允許：新帳號註冊時會被問一次，之後隨時可改；被安全系統標記或自願加入測試計畫的對話是例外。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 在 2025 年更新消費者條款後，Free、Pro、Max 的對話可以用於訓練，前提是你允許：新帳號註冊時會被問一次，之後隨時可改；被安全系統"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "或自願加入測試計畫的對話是例外。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -91,9 +118,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -101,8 +134,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 把 Gemini 的對話存放叫「Gemini 系列應用程式活動記錄」，開關名稱是 Keep Activity：年滿 18 歲的個人帳號預設開啟，開著時對話與上傳的檔案會用來改善 Google 的產品與機器學習技術，一部分由人工審閱。說明頁提醒：不要輸入不希望審閱員看到的機密資訊。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 把 Gemini 的對話存放叫「Gemini 系列應用程式活動記錄」，開關名稱是 Keep Activity：年滿 18 歲的個人帳號預設開啟，開著時對話與上傳的檔案會用來改善 Google 的產品與"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "技術，一部分由人工審閱。說明頁提醒：不要輸入不希望審閱員看到的機密資訊。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -115,13 +163,34 @@
           "ordered": true
         },
         {
-          "type": "paragraph",
-          "text": "Gmail 與文件側邊欄裡的 Gemini 是另一套規則：Gmail 說明頁寫明它會讀你在 Workspace 裡的內容來回答，但不用這些內容訓練 Gemini 或其他生成式 AI 模型，未經你允許不儲存提示與產出，也不用於廣告；你主動把 Workspace 資料分享給 Gemini 應用程式做個人化時是例外，以 support 頁為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gmail 與文件側邊欄裡的 Gemini 是另一套規則：Gmail 說明頁寫明它會讀你在 Workspace 裡的內容來回答，但不用這些內容訓練 Gemini 或其他"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 模型，未經你允許不儲存提示與產出，也不用於廣告；你主動把 Workspace 資料分享給 Gemini 應用程式做個人化時是例外，以 support 頁為準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         },
         {
           "type": "image",
@@ -188,9 +257,15 @@
           "text": "身分證字號、護照號碼、健保卡號；信用卡號、銀行帳號、密碼與一次性驗證碼；公司內部文件、未公開的合約與財報、原始碼與 API 金鑰；客戶名單、員工名冊與他人的姓名加電話或地址；病歷、檢驗報告與用藥紀錄。真的要處理就先去識別化：姓名換代號、號碼打碼。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+              "kind": "life",
+              "slug": "deepseek-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",

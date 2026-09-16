@@ -39,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "remove.bg 對去背的說明是：用 AI 技術偵測前景圖層、把它和背景分開，另外還有幾套演算法改善細節、避免色彩污染，成品是一張去掉背景的圖。放大（上採樣，upscale）方向相反。Upscayl 的常見問題寫得直白：它用 AI 模型「猜測細節可能長什麼樣」來增強圖片，底層是 Real-ESRGAN 與 Vulkan。Photoroom 的 Image Enhancer 把步驟拆得更細：先放大尺寸、增加像素數，再分析原圖，然後生成一張補上合理細節的新版本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "remove.bg 對去背的說明是：用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 技術偵測前景圖層、把它和背景分開，另外還有幾套演算法改善細節、避免色彩污染，成品是一張去掉背景的圖。放大（上採樣，upscale）方向相反。Upscayl 的常見問題寫得直白：它用 AI 模型「猜測細節可能長什麼樣」來增強圖片，底層是 Real-ESRGAN 與 Vulkan。Photoroom 的 Image Enhancer 把步驟拆得更細：先放大尺寸、增加像素數，再分析原圖，然後生成一張補上合理細節的新版本。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -69,9 +84,15 @@
           "text": "格式與尺寸也寫在說明頁：上傳支援 JPG、PNG 與 WebP，單檔最大 22 MB；可上傳與可輸出的最高解析度都是 50 MP（例如 5774 × 8660），超過會自動縮小，預覽圖則固定只有 0.25 MP（例如 625 × 400）。走 API 的話輸出格式還有差別：PNG 只支援到 10 MP，更大張又要透明背景就得用 WebP 或 ZIP。"
         },
         {
-          "type": "link",
-          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -82,9 +103,15 @@
           "text": "Canva 的背景移除有專門的說明頁，不過這個頁面在查證當天跳出需要啟用 JavaScript 與 Cookie 的驗證，抄不到原文，所以免費層能用幾次、哪些方案包含這個功能、輸出到多大，這篇不猜數字，一律以 Canva 說明中心與定價頁當天的內容為準。有一件事倒是可以確認：remove.bg 網站頁尾標示自己是「a Canva Austria GmbH brand」，也就是 remove.bg 現在是 Canva 旗下的品牌。"
         },
         {
-          "type": "link",
-          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+              "kind": "life",
+              "slug": "canva-ai-features-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -114,9 +141,15 @@
           "text": "費用部分要分清楚三種版本：從 GitHub 或 upscayl.org 下載的桌面版免費；Mac App Store 上架的版本在台灣區要 390 元新台幣（版本同樣是 2.15.0，需要 macOS 12 以上）；官網另有雲端服務 Upscayl Cloud，免費試用給 10 點，Pro 方案每月 24.99 美元含 300 點，頁面上標示可處理到 256MP 的圖。"
         },
         {
-          "type": "link",
-          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
-          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+              "kind": "life",
+              "slug": "stable-diffusion-comfyui-setup"
+            }
+          ]
         },
         {
           "type": "image",
@@ -217,19 +250,37 @@
           "text": "測完就能把工具對應到用途。素材還散在手機相簿裡的話，先整理再挑會快很多；如果目標是修復泛黃、有刮痕的舊照片，那是另一組工具與另一套流程；如果是要放到網站上，放大之後還有尺寸與壓縮要處理，同一張圖不必上傳到超過版面需要的解析度。"
         },
         {
-          "type": "link",
-          "text": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
-          "url": "https://mokaair.com/zh-TW/life/phone-photo-declutter-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
+              "kind": "life",
+              "slug": "phone-photo-declutter-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-photo-restoration-old-photos"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 修復老照片：去刮痕、放大與上色分開做，工具怎麼選",
+              "kind": "life",
+              "slug": "ai-photo-restoration-old-photos"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網站圖片怎麼處理：尺寸、替代文字與搜尋可讀性",
-          "url": "https://mokaair.com/zh-TW/life/image-seo-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站圖片怎麼處理：尺寸、替代文字與搜尋可讀性",
+              "kind": "life",
+              "slug": "image-seo-workflow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -245,9 +296,15 @@
           "text": "另一個常被混淆的問題是圖片歸誰。Photoroom 在說明頁寫明：不主張使用者提供或產生的內容的任何所有權，內容由使用者擁有，也由使用者負責確認符合各地法規。Upscayl 桌面版的原始碼是 AGPL-3.0，下載頁的常見問題另有商業使用與企業使用的專門問答，實際條件以官網為準。"
         },
         {
-          "type": "link",
-          "text": "賣家用 AI 做商品圖：四種用法、平台規範與紅線",
-          "url": "https://mokaair.com/zh-TW/life/ai-product-photo-for-sellers"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "賣家用 AI 做商品圖：四種用法、平台規範與紅線",
+              "kind": "life",
+              "slug": "ai-product-photo-for-sellers"
+            }
+          ]
         },
         {
           "type": "paragraph",

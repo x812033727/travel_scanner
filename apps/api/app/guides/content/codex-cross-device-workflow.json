@@ -151,8 +151,23 @@
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
         {
-          "type": "paragraph",
-          "text": "確認差異後，由你把 handoff.md 的 Marker 更新為 2，並在 Verified 寫明這次由哪個控制裝置、何時完成新讀取。只記錄看到的結果，不填「測試全部通過」，因為這次並沒有執行程式測試。要還原練習時，將標記與紀錄一起改回 1，再讀一次確認；這種精確還原不會撤銷其他程式或遠端任務。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "確認差異後，由你把 handoff.md 的 Marker 更新為 2，並在 Verified 寫明這次由哪個控制裝置、何時完成新讀取。只記錄看到的結果，不填「測試全部通過」，因為這次並沒有執行程式測試。要還原練習時，將"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與紀錄一起改回 1，再讀一次確認；這種精確還原不會撤銷其他程式或遠端任務。"
+            }
+          ]
         },
         {
           "type": "heading",

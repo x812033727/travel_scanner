@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Apple Intelligence 是 Apple 內建在 iPhone、iPad 與 Mac 的 AI 功能，不必另外下載 App，也不用再開帳號。官網列的支援語言含繁體中文，點名有地區限制的只有歐盟與中國大陸，沒有提到台灣。搜「手機 AI」想知道 iPhone 有什麼的，先看支援機型與語言。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Apple Intelligence 是 Apple 內建在 iPhone、iPad 與 Mac 的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 功能，不必另外下載 App，也不用再開帳號。官網列的支援語言含繁體中文，點名有地區限制的只有歐盟與中國大陸，沒有提到台灣。搜「手機 AI」想知道 iPhone 有什麼的，先看支援機型與語言。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,9 +72,15 @@
           "text": "系統需求是 iOS 18.1、iPadOS 18.1、macOS Sequoia 15.1、visionOS 2.4 或 watchOS 11 以上版本，裝置要留 7 GB 儲存空間，且裝置語言和 Siri 語言要設成同一種支援語言。"
         },
         {
-          "type": "link",
-          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
-          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+              "kind": "life",
+              "slug": "gadget-purchase-needs-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -104,9 +125,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
-          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+              "kind": "life",
+              "slug": "immersive-translate-guide"
+            }
+          ]
         },
         {
           "type": "table",
@@ -205,9 +232,15 @@
           "text": "Apple 的說法是三層，每層的資料流向與開關都不同。第一層是裝置端：手冊寫基礎在於裝置端處理，無須收集便能瞭解你的個人資訊，「即時翻譯」也完全在裝置上執行。"
         },
         {
-          "type": "link",
-          "text": "小型語言模型（Small Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小型語言模型（Small Language Model）是什麼",
+              "kind": "life",
+              "slug": "ai-term-small-language-model"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -241,9 +274,15 @@
           "text": "不連帳號等於套用 Apple 談好的那份規則：不儲存、不拿去訓練、也看不到你的 Apple 帳號。連了帳號會拿到訂閱者的進階功能，要求也會留進 ChatGPT 聊天記錄，但規則換成 OpenAI 自己的帳號政策。手冊也寫明使用 ChatGPT 必須年滿 13 歲。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -262,29 +301,59 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+              "kind": "life",
+              "slug": "chatgpt-mobile-app-tips"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "iPhone 與 iPad：安裝、語音與照片",
-          "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "iPhone 與 iPad：安裝、語音與照片",
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
-          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+              "kind": "life",
+              "slug": "microsoft-copilot-windows-office"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
-          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+              "kind": "life",
+              "slug": "meta-ai-whatsapp-instagram"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
-          "url": "https://mokaair.com/zh-TW/life/line-ai-features-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
+              "kind": "life",
+              "slug": "line-ai-features-taiwan"
+            }
+          ]
         }
       ],
       "sources": [

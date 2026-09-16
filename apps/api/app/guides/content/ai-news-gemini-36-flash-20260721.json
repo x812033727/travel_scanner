@@ -105,8 +105,23 @@
           "text": "因此，驗收流程不能僅依賴程式是否順利跑完，而必須建立定期隨機抽樣機制。專案人員應按比例抽出產出的結構化資料，逐欄對照原始送件內容，特別著重檢查數字位數、特殊符號與長地址的完整度。唯有將欄位準確率維持在設定標準內，同時監控異常重試的比例，模型管線的總體擁有成本才具有真實的評估價值。"
         },
         {
-          "type": "paragraph",
-          "text": "抽樣時可同時選一般紀錄與已標記的例外，避免只檢查看起來最整齊的輸出。若簡單分類先把重要疑點刪掉，後面的強模型也無從核對。保留原始資料與處理紀錄，才能發現分工流程究竟是在省事，還是把錯誤藏得更深。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "抽樣時可同時選一般紀錄與已"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "的例外，避免只檢查看起來最整齊的輸出。若簡單分類先把重要疑點刪掉，後面的強模型也無從核對。保留原始資料與處理紀錄，才能發現分工流程究竟是在省事，還是把錯誤藏得更深。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -127,8 +142,23 @@
           "text": "資安防禦邊界的授權與使用考量"
         },
         {
-          "type": "paragraph",
-          "text": "隨著大型活動整合更多數位系統，報名表單可能包含敏感個資甚至線上支付憑證。Google 在七月同時推出了強調防禦特化的 3.5 Flash Cyber，其基準測試表現屬於官方發表結果，專注於威脅識別與代碼檢驗。然而，企業在架構規劃時必須認知，防禦資安模型具備特定存取資格限制，不能預設一般帳號能在後台隨意呼叫切換。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "隨著大型活動整合更多數位系統，報名表單可能包含敏感個資甚至線上支付憑證。Google 在七月同時推出了強調防禦特化的 3.5 Flash Cyber，其"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "表現屬於官方發表結果，專注於威脅識別與代碼檢驗。然而，企業在架構規劃時必須認知，防禦資安模型具備特定存取資格限制，不能預設一般帳號能在後台隨意呼叫切換。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -154,14 +184,26 @@
           "text": "官方效能比較基於 Google 發布成果；防禦資安模型需特定存取資格。API 計費為公告美元用量價格而非訂閱費，規劃工作流程時應預留抽樣校驗與例外處理成本。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         }
       ],
       "sources": [
@@ -320,14 +362,26 @@
           "text": "Official performance comparisons reflect Google's published claims; defensive security models require specific access eligibility. API pricing reflects announced USD pay-as-you-go rates rather than subscription fees. Factor in sampling validation and exception-handling overhead when designing workflows."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 Released: What Changes Matter Most for Everyday Work Users?",
-          "url": "https://mokaair.com/en/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 Released: What Changes Matter Most for Everyday Work Users?",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         }
       ],
       "sources": [
@@ -486,14 +540,26 @@
           "text": "公式の性能比較はGoogleの発表結果に基づきます。防御的セキュリティモデルの利用には特定のアクセス資格が必要です。API課金は発表された米ドル使用量価格であり、サブスクリプション料金ではありません。ワークフロー設計時にはサンプリング検証と例外処理のコストをあらかじめ見込んでおく必要があります。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5登場：一般のデスクワーカーが注目すべき変化とは？",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5登場：一般のデスクワーカーが注目すべき変化とは？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         }
       ],
       "sources": [
@@ -652,14 +718,26 @@
           "text": "공식 성능 비교 수치는 Google의 발표 자료에 기반하며 방어적 보안 모델은 특정 접근 권한이 필요합니다. API 요금은 구독료가 아닌 발표 당일의 달러 사용량 단가이며, 워크플로 기획 시 샘플링 검증 및 예외 처리 비용을 반드시 반영해야 합니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 출시: 일반 직장인은 어떤 변화에 주목해야 할까?",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 출시: 일반 직장인은 어떤 변화에 주목해야 할까?",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         }
       ],
       "sources": [
@@ -818,14 +896,26 @@
           "text": "官方性能比较基于 Google 发布成果；防御资安模型需特定访问资格。API 计费为公告美元用量价格而非订阅费，规划工作流程时应预留抽样校验与例外处理成本。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 发布：普通办公用户值得关注哪些变化？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 发布：普通办公用户值得关注哪些变化？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         }
       ],
       "sources": [

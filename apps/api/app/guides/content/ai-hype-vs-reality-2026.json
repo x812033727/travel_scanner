@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "2026 年談 AI 最好查的一份資料，是各家自己寫的那一份。模型發表時附的 system card 與 model card、API 文件裡直接叫 Limitations 的章節、說明中心對幻覺與記憶的白話說明，都由廠商自己署名，裡面同時寫著做得到什麼、哪裡會出錯、哪些事它還不行。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026 年談 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 最好查的一份資料，是各家自己寫的那一份。模型發表時附的 system card 與 model card、API 文件裡直接叫 Limitations 的章節、說明中心對幻覺與記憶的白話說明，都由廠商自己署名，裡面同時寫著做得到什麼、哪裡會出錯、哪些事它還不行。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -60,18 +75,20 @@
               "text": "這些文件裡的分數該怎麼讀，站上有一篇專門談："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱",
-              "url": "https://mokaair.com/zh-TW/life/ai-benchmarks-explained"
+              "kind": "life",
+              "slug": "ai-benchmarks-explained"
             },
             {
               "type": "text",
               "text": "；2026 年到目前為止有哪些模型發表過，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
-              "url": "https://mokaair.com/zh-TW/life/ai-model-release-timeline-2026"
+              "kind": "life",
+              "slug": "ai-model-release-timeline-2026"
             },
             {
               "type": "text",
@@ -89,8 +106,23 @@
           "text": "先看規格。OpenAI 的模型頁寫 GPT-6 Astra 的上下文視窗是 1,050,000 個 token、最大輸入 922,000 個、單次最多輸出 128,000 個，輸入只收文字與圖片、輸出只有文字，知識截止日是 2026 年 4 月 30 日。Anthropic 的文件寫 Claude Opus 5 等模型是 100 萬 token 上下文視窗、單次最多 128k 輸出，一個請求最多放 600 張圖片或 PDF 頁數。Gemini 3.8 Flash 模型卡寫輸入收文字、圖片、音訊與影片，上下文視窗最高 100 萬 token、輸出 64K token。"
         },
         {
-          "type": "paragraph",
-          "text": "再看官方自報的評測。Claude Opus 5 系統卡的能力總表列著 SWE-bench Pro 79.2、OSWorld 2.0 70.6、BrowseComp 90.8。這些是 Anthropic 自己跑的分數、自己選的題庫，不是第三方複驗，也不該拿去跨廠牌比大小。但同一張表看得出一件事：連官方自己列的數字都停在七成到九成之間，沒有一項滿分。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再看官方自報的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "。Claude Opus 5 系統卡的能力總表列著 SWE-bench Pro 79.2、OSWorld 2.0 70.6、BrowseComp 90.8。這些是 Anthropic 自己跑的分數、自己選的題庫，不是第三方複驗，也不該拿去跨廠牌比大小。但同一張表看得出一件事：連官方自己列的數字都停在七成到九成之間，沒有一項滿分。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -100,9 +132,10 @@
               "text": "上下文視窗塞得下，不等於它真的都讀進去了。這兩件事的差別，站上有專文："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-              "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+              "kind": "life",
+              "slug": "ai-context-window-explained"
             },
             {
               "type": "text",
@@ -145,18 +178,20 @@
               "text": "把一段流暢的回答拆成可以逐條查的主張，站上有專文："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-              "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
             },
             {
               "type": "text",
               "text": "；想反過來用工具偵測一段文字是不是 AI 寫的，先看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 偵測工具準不準：官方自己寫的限制與誤判",
-              "url": "https://mokaair.com/zh-TW/life/ai-detection-tools-reliability"
+              "kind": "life",
+              "slug": "ai-detection-tools-reliability"
             },
             {
               "type": "text",
@@ -220,18 +255,20 @@
               "text": "代理到底和一般問答差在哪，站上有專文："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-              "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+              "kind": "life",
+              "slug": "ai-agents-explained"
             },
             {
               "type": "text",
               "text": "；讓模型直接操作電腦畫面是怎麼回事、官方畫了哪些界線，看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
-              "url": "https://mokaair.com/zh-TW/life/claude-computer-use-explained"
+              "kind": "life",
+              "slug": "claude-computer-use-explained"
             },
             {
               "type": "text",
@@ -309,9 +346,15 @@
           "text": "順帶更新一件會影響你怎麼讀舊教學的事：OpenAI 說明中心今天寫著，ChatGPT 的代理模式已不再提供，長時間、多步驟的任務與成品交付請改用 ChatGPT Work。站上那篇代理模式教學寫的是它還在時的操作，當成歷史紀錄讀就好。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+              "kind": "life",
+              "slug": "chatgpt-agent-mode-guide"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -321,18 +364,20 @@
               "text": "模型「多想幾步」到底改變了什麼、又沒改變什麼，看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
             },
             {
               "type": "text",
               "text": "；想先弄清楚現在市面上有哪些工具，看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-              "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
             },
             {
               "type": "text",
@@ -380,18 +425,20 @@
               "text": "名詞卡住可以先翻 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
-              "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+              "kind": "life",
+              "slug": "ai-glossary-50-terms"
             },
             {
               "type": "text",
               "text": "；跑這五個任務要花掉多少電和水，另一篇照官方永續報告算過："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 的用電與用水：一次對話的成本",
-              "url": "https://mokaair.com/zh-TW/life/ai-energy-water-footprint"
+              "kind": "life",
+              "slug": "ai-energy-water-footprint"
             },
             {
               "type": "text",

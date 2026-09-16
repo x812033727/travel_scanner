@@ -51,9 +51,15 @@
           "text": "2026 年 9 月查看 OpenAI 說明中心，分享流程裡已經沒有這個勾選框；常見問題直接寫著：分享頁不打算讓搜尋引擎索引，但這不代表連結是私密的，任何能打開連結的人都能再轉傳。實際畫面以官網為準；別把「不會被搜尋到」誤讀成「只有我傳的人看得到」。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -80,9 +86,15 @@
           "text": "還有一條容易忽略：收到連結的人按 Continue（繼續）接著聊時，系統會在他的帳號裡複製出一份獨立的私人對話，之後你刪掉連結，副本仍留在他那裡。另外，關掉「Improve the model for everyone」（用我的對話改善模型）不會刪除既有的分享連結，也不會改變誰能打開。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -125,9 +137,15 @@
           "text": "用別人做的 GPT（自製 GPT）聊天時，說明中心明確寫著建立者看不到使用者與它的個別對話，你的記憶與自訂指令也不會被 GPT 使用。但如果那個 GPT 接了外部 API 或應用程式，你輸入內容的相關部分可能被送到第三方，OpenAI 不稽核也不控制對方怎麼使用或保存，所以只用信得過的 GPT，而且不要貼機密。"
         },
         {
-          "type": "link",
-          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+              "kind": "life",
+              "slug": "chatgpt-custom-gpts-build"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -142,9 +160,15 @@
           "text": "Projects（專案）另有規則：從個人專案分享單一對話時，看的人只看到那則對話，其他對話、檔案與指令不會一起出去；但專案本身可以整個分享給「Anyone with a link」（任何有連結的人），那時出去的就是整個工作區。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
           "type": "table",
@@ -219,9 +243,15 @@
           "text": "兩個常被混淆的設定，只點到為止。暫時對話（Temporary Chat）：開新對話時按右上角的 Temporary，不進歷史、不建立記憶、不用於訓練，OpenAI 為了安全仍可能保留最多 30 天；它解決的是「不要留在我這邊」，跟分享連結無關。關閉訓練：Settings → Data controls → 關掉 Improve the model for everyone；個人方案（Free、Go、Plus、Pro）的對話可能用於訓練，除非你退出，而且這個開關不影響既有的分享連結。三家工具的訓練、記憶、匯出與刪除設定，隱私設定那篇有完整清單。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         }
       ],
       "sources": [

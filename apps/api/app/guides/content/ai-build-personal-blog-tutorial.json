@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想把文章放在自己的網址底下，又不想租一台每月會出帳單的伺服器、不想維護資料庫，靜態網站產生器就是最省事的那條路：它在你自己的電腦上把 Markdown 檔案建置成一整包 HTML，代管服務只負責把這包檔案送給讀者。個人部落格用一個產生器、一個免費代管方案、一個自己的網域就夠了，而安裝、設定與改版型這幾段最容易卡住的工作，正好可以交給 AI 代理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想把文章放在自己的網址底下，又不想租一台每月會出帳單的伺服器、不想維護資料庫，靜態網站產生器就是最省事的那條路：它在你自己的電腦上把 Markdown 檔案建置成一整包 HTML，代管服務只負責把這包檔案送給讀者。個人部落格用一個產生器、一個免費代管方案、一個自己的網域就夠了，而安裝、設定與改版型這幾段最容易卡住的工作，正好可以交給 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,9 +72,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "Markdown 基礎：建立 MD、標題與程式碼",
-          "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Markdown 基礎：建立 MD、標題與程式碼",
+              "kind": "life",
+              "slug": "gemini-markdown-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -75,8 +96,23 @@
           "text": "Hugo 的官方 Quick Start 要求 v0.158.0 以上，另外要有 Git，因為主題常以 Git submodule 的形式裝進專案。它分成 standard、deploy、extended、extended/deploy 四個版本，官方建議沒有特別需求就用 standard；Homebrew 裝到的是 extended/deploy，Winget 與 Chocolatey 裝到的是 extended。開發伺服器啟動後，終端機會印出本機的 1313 埠網址，改檔案存檔瀏覽器就自動重整。官方網站上另有一個主題目錄可以挑版型。"
         },
         {
-          "type": "paragraph",
-          "text": "Astro 目前的大版本是 v7，官方文件要求 Node.js v22.12.0 以上，並特別註明不支援 v23 這類奇數版本。用 npm create astro@latest 會啟動一個安裝精靈，一路問下來，中間可以挑一個官方的 starter template。開發伺服器跑起來之後在本機的 4321 埠，建置產物預設放在 dist。Astro 的特色是可以在同一個專案裡加進 React、Preact、Svelte、Vue 這些官方整合的前端框架元件，之後想在部落格裡放互動小工具時會派上用場。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Astro 目前的大版本是 v7，官方文件要求 Node.js v22.12.0 以上，並特別註明不支援 v23 這類奇數版本。用 npm create astro@latest 會啟動一個安裝精靈，一路問下來，中間可以挑一個官方的 starter template。開發伺服器跑起來之後在本機的 4321 埠，建置產物預設放在 dist。Astro 的特色是可以在同一個專案裡加進 "
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": "、Preact、Svelte、Vue 這些官方整合的前端框架元件，之後想在部落格裡放互動小工具時會派上用場。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -148,14 +184,26 @@
           "code": "這一輪只改一件事：文章列表頁。\n\n目標：\n- 每篇顯示標題、日期、前兩行摘要。\n- 一頁 10 篇，手機上單欄，桌機上維持現在的寬度。\n\n規則：\n- 不要改 themes/ 資料夾裡的檔案。要覆寫就在專案的 layouts/ 下建同名檔案。\n- 改完跑一次 hugo server，告訴我新增或修改了哪幾個檔案。\n- 我看過再決定要不要留，不要順手改其他頁面。"
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code 入門：認識工具與第一條學習路線",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code 入門：認識工具與第一條學習路線",
+              "kind": "life",
+              "slug": "claude-code-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -191,9 +239,15 @@
           "text": "本機預覽是最該養成的習慣。開發伺服器跑起來後，終端機會印出本機的 1313 埠網址，改檔案存檔瀏覽器就用 LiveReload 自動重整；官方文件說明這是把一小段 JavaScript 注入產生的頁面，不必安裝任何軟體或外掛。每篇文章上線前，先在這裡看過排版、圖片與連結。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜Markdown 零基礎",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-markdown-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜Markdown 零基礎",
+              "kind": "life",
+              "slug": "claude-code-markdown-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -265,9 +319,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
-          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+              "kind": "life",
+              "slug": "deploy-ai-built-site-to-vps"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -287,14 +347,26 @@
           "text": "RSS 與 sitemap 交給產生器就好。Hugo 內建這兩樣，預設會替首頁、章節、分類與標籤頁產生 RSS，建置後也會在輸出目錄根部放一份 sitemap.xml。Astro 要自己加官方的 sitemap 整合，裝好之後建置時會產生 sitemap-index.xml 與 sitemap-0.xml；Eleventy 則是裝官方的 RSS 外掛，官方註明外掛第 2 版起需要 Eleventy v3 以上。三者都要你在設定檔裡填好網站的正式網址，feed 裡的連結才會是絕對網址。"
         },
         {
-          "type": "link",
-          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+              "kind": "life",
+              "slug": "ai-coding-git-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Vibe coding：不會寫程式也能做出第一個網站",
-          "url": "https://mokaair.com/zh-TW/life/vibe-coding-first-website"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Vibe coding：不會寫程式也能做出第一個網站",
+              "kind": "life",
+              "slug": "vibe-coding-first-website"
+            }
+          ]
         }
       ],
       "sources": [

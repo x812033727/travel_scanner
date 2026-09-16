@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "公司裡能不能用 AI，不是一句可以或不行講得完。要決定的是三件事：哪些資料不能貼進公開的 AI、公司買的商用方案對訓練與保留寫了什麼、出事時公司拿得出哪些管理紀錄。三件事都有官方答案，不必用猜的。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "公司裡能不能用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，不是一句可以或不行講得完。要決定的是三件事：哪些資料不能貼進公開的 AI、公司買的商用方案對訓練與保留寫了什麼、出事時公司拿得出哪些管理紀錄。三件事都有官方答案，不必用猜的。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -80,18 +95,20 @@
               "text": "個人帳號那一層的開關看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
             },
             {
               "type": "text",
               "text": "；對話記錄怎麼帶走或清掉看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "匯出與刪除你的 AI 對話記錄",
-              "url": "https://mokaair.com/zh-TW/life/ai-chat-history-export-delete"
+              "kind": "life",
+              "slug": "ai-chat-history-export-delete"
             },
             {
               "type": "text",
@@ -137,9 +154,10 @@
               "text": "要不要為了這些控制項升級方案，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "小公司要不要買 ChatGPT Business（原 Team）：資料不訓練、共用專案、集中管理",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-team-for-small-business"
+              "kind": "life",
+              "slug": "chatgpt-team-for-small-business"
             },
             {
               "type": "text",
@@ -148,8 +166,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 商用那篇的原文是：預設不會用商用產品（例如 Claude for Work、Anthropic API）的輸入或輸出訓練模型。組織資料那篇寫保留期：刪掉的對話立刻從歷史消失、30 天內從後端刪除；無痕對話 30 天內自動刪除；被標記為違反使用政策的對話，輸入與輸出最長 2 年、分類分數最長 7 年；回饋資料 5 年。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 商用那篇的原文是：預設不會用商用產品（例如 Claude for Work、Anthropic API）的輸入或輸出訓練模型。組織資料那篇寫保留期：刪掉的對話立刻從歷史消失、30 天內從後端刪除；無痕對話 30 天內自動刪除；被"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "為違反使用政策的對話，輸入與輸出最長 2 年、分類分數最長 7 年；回饋資料 5 年。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -163,9 +196,10 @@
               "text": "記憶會記住什麼、怎麼清，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
-              "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+              "kind": "life",
+              "slug": "claude-memory-and-privacy"
             },
             {
               "type": "text",
@@ -174,8 +208,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Google 這邊看生成式 AI 隱私中心頁，最後更新日期標 2026 年 8 月 14 日。訓練那段的原文是：使用者的提示詞屬於雲端資料處理增補條款下的客戶資料，未經客戶事前許可或指示，Workspace 不會用客戶資料訓練模型。保留期用一張表列：Workspace 裡的 Gemini 由管理員決定，從 90 天到無限期，可選 3 個月、18 個月、3 年或無限期；Gemini 應用程式最長 36 個月，可選 3、18 或 36 個月自動刪除，預設 18 個月，對話記錄關掉時新對話只存 72 小時；Gemini Notebook 在工作階段結束後不保留。回饋資料最長 18 個月。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 這邊看"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 隱私中心頁，最後更新日期標 2026 年 8 月 14 日。訓練那段的原文是：使用者的提示詞屬於雲端資料處理增補條款下的客戶資料，未經客戶事前許可或指示，Workspace 不會用客戶資料訓練模型。保留期用一張表列：Workspace 裡的 Gemini 由管理員決定，從 90 天到無限期，可選 3 個月、18 個月、3 年或無限期；Gemini 應用程式最長 36 個月，可選 3、18 或 36 個月自動刪除，預設 18 個月，對話記錄關掉時新對話只存 72 小時；Gemini Notebook 在工作階段結束後不保留。回饋資料最長 18 個月。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -258,14 +307,26 @@
           "text": "公司已經在用 Google Workspace 的話，帳號與管理那一層值得先看過；如果同事會用到中國廠商的服務，資料流向要另外查一次。"
         },
         {
-          "type": "link",
-          "text": "小團隊使用 Workspace AI：帳號與管理",
-          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小團隊使用 Workspace AI：帳號與管理",
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -298,18 +359,20 @@
               "text": "帳號本身的防護是另一條線，兩步驟驗證與金鑰外洩看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
-              "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
+              "kind": "life",
+              "slug": "ai-account-security-2fa-api-keys"
             },
             {
               "type": "text",
               "text": "；同事把外部網頁或檔案丟給 AI 讀時要小心的攻擊面，看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞注入是什麼：使用者該懂的攻擊",
-              "url": "https://mokaair.com/zh-TW/life/ai-prompt-injection-explained"
+              "kind": "life",
+              "slug": "ai-prompt-injection-explained"
             },
             {
               "type": "text",
@@ -348,18 +411,20 @@
               "text": "規範裡如果要寫產出的著作權歸屬，或是未來的法規會怎麼管，另外兩篇有整理："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 與著作權：台灣法規與判決整理",
-              "url": "https://mokaair.com/zh-TW/life/ai-and-copyright-law-taiwan"
+              "kind": "life",
+              "slug": "ai-and-copyright-law-taiwan"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
-              "url": "https://mokaair.com/zh-TW/life/ai-regulation-eu-act-taiwan"
+              "kind": "life",
+              "slug": "ai-regulation-eu-act-taiwan"
             },
             {
               "type": "text",
@@ -398,9 +463,10 @@
               "text": "如果公司是靠 AI 寫程式，還有一組跟規範綁在一起的檢查動作，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
-              "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+              "kind": "life",
+              "slug": "ai-code-review-safety"
             },
             {
               "type": "text",

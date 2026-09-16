@@ -26,17 +26,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一份 40 頁的論文或法說會簡報，丟給 Claude 問一句「幫我摘要」，拿回來的多半是一段很順、你卻不敢寫進報告的文字。這篇回答的是另一個問題：怎麼在 20 分鐘內看出它主張什麼、證據夠不夠、你該不該引用。做法是把讀的動作拆成掃描、精讀、批判三段，每一段問不同的問題，每一段結束都回原文核對一次。搜「論文 AI」或「摘要 AI」找到的工具都能給你那段很順的文字，差別在你接下來怎麼問。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一份 40 頁的論文或法說會簡報，丟給 Claude 問一句「幫我摘要」，拿回來的多半是一段很順、你卻不敢寫進報告的文字。這篇回答的是另一個問題：怎麼在 20 分鐘內看出它主張什麼、證據夠不夠、你該不該引用。做法是把讀的動作拆成掃描、精讀、批判三段，每一段問不同的問題，每一段結束都回原文核對一次。搜「論文 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」或「摘要 AI」找到的工具都能給你那段很順的文字，差別在你接下來怎麼問。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "你會拿到三種讀法的提示詞、六個提問順序、三句批判性問法、多份文獻做成比較表格的方法，以及它最會出錯的五個地方。功能名稱、上下文視窗與方案可用性都在 2026 年 9 月依 Anthropic 官網查證；上傳格式與檔案上限這篇不重講，看檔案分析那一篇。"
         },
         {
-          "type": "link",
-          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
-          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+              "kind": "life",
+              "slug": "claude-file-analysis-pdf-excel"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -56,9 +77,15 @@
           "text": "精讀與批判值得把思考打開。官網寫模型與 effort（努力程度）設在送出鍵旁邊，點模型名稱可改，分成 Low、Medium、High、Extra high 與 Max，High 是建議預設；另有獨立的思考切換，決定它要不要先把推理攤在可展開的區塊裡。要看它有沒有跳步就點開那一塊。"
         },
         {
-          "type": "link",
-          "text": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
-          "url": "https://mokaair.com/zh-TW/life/claude-extended-thinking-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
+              "kind": "life",
+              "slug": "claude-extended-thinking-guide"
+            }
+          ]
         },
         {
           "type": "table",
@@ -157,13 +184,34 @@
           "text": "最常見的錯不是內容錯，是串行：把 B 的樣本數填進 A 那一列。防法一是先讓它各做一張單篇表，確認無誤再合併；二是抽兩格回原檔看那一頁。最後追一句「這幾份最大的分歧是什麼？是結論不同，還是樣本與方法不同造成的？」"
         },
         {
-          "type": "paragraph",
-          "text": "同一個主題讀很久，就把文獻放進專案（Projects）。官網寫所有方案都能用、免費帳號最多五個，付費方案在內容接近上下文視窗上限時會自動改用檢索增強生成（RAG），把容量擴大最多 10 倍；代價是它改用搜尋工具撈片段，不是整份讀進去，所以它回「沒有」只代表沒搜到。官網也寫付費方案最新的模型在對話中支援到 1M token，另一批 500K，其餘 200K；對話接近上限時它會摘要前面的訊息，所以比較表做完先複製出來存檔。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一個主題讀很久，就把文獻放進專案（Projects）。官網寫所有方案都能用、免費帳號最多五個，付費方案在內容接近上下文視窗上限時會自動改用"
+            },
+            {
+              "type": "article",
+              "text": "檢索增強生成",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "（RAG），把容量擴大最多 10 倍；代價是它改用搜尋工具撈片段，不是整份讀進去，所以它回「沒有」只代表沒搜到。官網也寫付費方案最新的模型在對話中支援到 1M token，另一批 500K，其餘 200K；對話接近上限時它會摘要前面的訊息，所以比較表做完先複製出來存檔。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -186,9 +234,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -208,8 +262,23 @@
           "text": "要把回答扣在同儕審查的文獻上，Claude 的連接器目錄裡有 John Wiley & Sons 提供的 Scholar Gateway，官網寫它附可驗證的引用與 DOI 連結，目前只涵蓋 Wiley 的內容。"
         },
         {
-          "type": "paragraph",
-          "text": "各校對生成式 AI 的規定不同，有的要求揭露用了哪些工具、用在哪一段，有的科目完全禁止，動筆前先看系上與課程的規定。可以外包的是「幫我看出這篇在講什麼」「幫我列出該核對哪幾頁」，不能外包的是判斷、引用，以及你自己寫的那段話。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各校對"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 的規定不同，有的要求揭露用了哪些工具、用在哪一段，有的科目完全禁止，動筆前先看系上與課程的規定。可以外包的是「幫我看出這篇在講什麼」「幫我列出該核對哪幾頁」，不能外包的是判斷、引用，以及你自己寫的那段話。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -218,9 +287,15 @@
           "text": "凡是你要寫進報告的句子，都要回原文看過那一段。提問時就把規則講在前面：每一句都要標出第幾頁、哪一張表，找不到出處就寫「無法確認」。它報不出頁碼，或報了卻對不上，那句話就不要用，更不要掛上引用。"
         },
         {
-          "type": "link",
-          "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
+              "kind": "life",
+              "slug": "ai-for-students-honest-use"
+            }
+          ]
         }
       ],
       "sources": [

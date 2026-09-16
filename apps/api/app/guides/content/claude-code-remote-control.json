@@ -33,7 +33,17 @@
           "inlines": [
             {
               "type": "text",
-              "text": "先準備已登入的 CLI、可信任的專案資料夾，以及使用同一 claude.ai 帳號的手機或瀏覽器。官方需求列出支援訂閱方案，Team／Enterprise 另需擁有者啟用組織設定；API 金鑰、第三方模型供應商與部分自訂端點設定不適用。請先核對"
+              "text": "先準備已登入的 CLI、可信任的專案資料夾，以及使用同一 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 帳號的手機或瀏覽器。官方需求列出支援訂閱方案，Team／Enterprise 另需擁有者啟用組織設定；API 金鑰、第三方模型供應商與部分自訂端點設定不適用。請先核對"
             },
             {
               "type": "article",
@@ -100,8 +110,23 @@
           "code": "/remote-control Todo 練習\n"
         },
         {
-          "type": "paragraph",
-          "text": "若你希望終端機主要作為等候手機連線的服務，可在 shell 執行 claude remote-control。這是終端機命令，不是對話內斜線指令。官方還提供其他啟動參數；初學先使用一種方式完成單一工作，不必一次啟動多個並行 session。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若你希望終端機主要作為等候手機連線的服務，可在 shell 執行 claude remote-control。這是終端機命令，不是對話內斜線指令。官方還提供其他啟動"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "；初學先使用一種方式完成單一工作，不必一次啟動多個並行 session。"
+            }
+          ]
         },
         {
           "type": "code",

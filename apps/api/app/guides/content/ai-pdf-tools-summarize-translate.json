@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一份 PDF 交給 AI 之前，先決定你要的是哪一件事：讀懂它、換一種語言看它，還是它根本不能外傳。三種需求對應的工具不一樣，卡住你的通常不是模型聰不聰明，而是各家官網白紙黑字寫的上傳上限：檔案幾 MB、幾頁、一天幾次，以及掃描出來的 PDF 到底讀不讀得到。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一份 PDF 交給 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 之前，先決定你要的是哪一件事：讀懂它、換一種語言看它，還是它根本不能外傳。三種需求對應的工具不一樣，卡住你的通常不是模型聰不聰明，而是各家官網白紙黑字寫的上傳上限：檔案幾 MB、幾頁、一天幾次，以及掃描出來的 PDF 到底讀不讀得到。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -62,18 +77,30 @@
           "text": "ChatGPT 的檔案上傳 FAQ 把限制寫得很細。不分方案，單一檔案硬上限 512MB，文字與文件類檔案每個上限 200 萬個 token（試算表不受這條限制），CSV 或試算表約 50MB，圖片 20MB；儲存空間是每位使用者 25GB、每個組織 100GB。次數則寫一般使用者每 3 小時最多上傳 80 個檔案，免費使用者每天 3 個檔案；放進專案（Projects）的檔案另外算，免費 5 個、Go 與 Plus 25 個、Edu、Pro、Business 與 Enterprise 40 個。官方說明頁寫 ChatGPT Plus 每月 20 美元，目前不支援年繳。"
         },
         {
-          "type": "link",
-          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+              "kind": "life",
+              "slug": "chatgpt-file-upload-analysis"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Claude 的上傳說明頁列出支援 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON 與 XLSX（XLSX 要先在帳號裡開啟程式碼執行與檔案建立）。對話裡上傳是單檔 500MB、每個對話最多 20 個檔案、PDF 最多 1000 頁；放進專案的檔案是單檔 30MB，數量不限但要塞得進上下文視窗。PDF 的讀法分兩段：100 頁以內連圖表等視覺元素一起分析，101 到 1000 頁只處理文字，超過 1000 頁直接跳出檔案太大的錯誤。價格是 Free 0 美元，Pro 年繳折算每月 17 美元（一次收 200 美元）、月繳 20 美元，Max 從每月 100 美元起。"
         },
         {
-          "type": "link",
-          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
-          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+              "kind": "life",
+              "slug": "claude-file-analysis-pdf-excel"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -84,9 +111,15 @@
           "text": "NotebookLM 現在的官方名稱是 Gemini Notebook，說明頁寫每一則來源最多 50 萬字或上傳檔 200MB、沒有頁數上限，匯入失敗的三個常見原因是超過 50 萬字、超過 200MB，以及原始 PDF 有防拷貝保護。升級頁列的結構上限是：免費（Standard）每人 100 本筆記本、每本 50 則來源、每天 50 次對話、3 份語音摘要；AI Plus 每本 100 則來源；AI Pro 500 本、每本 300 則來源、每天 500 次對話；AI Ultra 每本 500 或 600 則來源。但官方另一頁寫，2026 年 9 月 2 日起改成依運算量計算的使用上限，額度每 5 小時回補一次直到每週上限，所以那些每天次數實際還剩多少，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "NotebookLM 入門：資料、筆記本與引用",
-          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NotebookLM 入門：資料、筆記本與引用",
+              "kind": "life",
+              "slug": "notebooklm-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -110,14 +143,26 @@
           "text": "如果你要的不是輸出一份譯文檔案，而是一邊看原文一邊看譯文、或守住整份專有名詞的譯法，整份機器翻譯就不是最好的工具：前者該用瀏覽器外掛，後者要的是帶著術語表來回校對的對話。"
         },
         {
-          "type": "link",
-          "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
-          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+              "kind": "life",
+              "slug": "immersive-translate-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
-          "url": "https://mokaair.com/zh-TW/life/claude-for-translation-zh-tw"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
+              "kind": "life",
+              "slug": "claude-for-translation-zh-tw"
+            }
+          ]
         },
         {
           "type": "table",
@@ -213,9 +258,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "手機掃描檔案怎麼更清楚：光線、裁切、頁序與送出前檢查",
-          "url": "https://mokaair.com/zh-TW/life/phone-document-scanning-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "手機掃描檔案怎麼更清楚：光線、裁切、頁序與送出前檢查",
+              "kind": "life",
+              "slug": "phone-document-scanning-workflow"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -245,17 +296,38 @@
           "text": "Google 的 Gemini 應用程式隱私中心寫，人工審閱者會檢視一部分資料，並請使用者不要輸入不希望審閱者看到的機密資訊；活動紀錄自動刪除預設 18 個月，可改成 3 個月、36 個月或不自動刪除，經人工審閱的對話最多保留 3 年，暫時對話與關掉「保留活動」時的對話則只留 72 小時、不用於訓練模型。Gemini Notebook 的隱私頁另外寫，筆記本裡的內容不會直接訓練基礎 AI 模型，除非你送出意見回饋。"
         },
         {
-          "type": "paragraph",
-          "text": "Adobe 在 AI 助理的說明頁寫「Adobe 絕不會使用你的文件或資料來訓練 AI 模型」，但同一套文件的用量政策頁也寫明，Acrobat 的生成式 AI 功能會在雲端處理文件。DeepL 的說明中心則寫 Pro 方案提供另一層安全性。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Adobe 在 AI 助理的說明頁寫「Adobe 絕不會使用你的文件或資料來訓練 AI 模型」，但同一套文件的用量政策頁也寫明，Acrobat 的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 功能會在雲端處理文件。DeepL 的說明中心則寫 Pro 方案提供另一層安全性。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "判斷標準不是哪一家比較安全，而是這份檔案能不能接受它離開你的電腦；答案是不能的時候，唯一乾淨的作法是在自己的電腦上跑模型。"
         },
         {
-          "type": "link",
-          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
-          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+              "kind": "life",
+              "slug": "open-webui-chat-interface"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -295,14 +367,26 @@
           "text": "第二段抓出來的表格可以直接倒進試算表接著算；第一段的帶頁碼摘要適合存進筆記工具，頁碼就是半年後回頭找原文的索引。"
         },
         {
-          "type": "link",
-          "text": "試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-spreadsheet-automation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
+              "kind": "life",
+              "slug": "ai-spreadsheet-automation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -319,9 +403,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "用 Claude 讀論文與長報告：摘要、提問與批判",
-          "url": "https://mokaair.com/zh-TW/life/claude-for-research-summaries"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 讀論文與長報告：摘要、提問與批判",
+              "kind": "life",
+              "slug": "claude-for-research-summaries"
+            }
+          ]
         }
       ],
       "sources": [

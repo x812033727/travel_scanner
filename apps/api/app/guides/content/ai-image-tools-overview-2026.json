@@ -26,8 +26,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "第一次要用 AI 生圖，該從哪一個開始？答案是先看你要它做什麼，再看免費層給你什麼。目前的主流是四條路線：ChatGPT 的圖片生成、Gemini 的 Nano Banana、Midjourney，以及 FLUX 這類可以下載到自己電腦跑的開放權重模型。差別不在誰畫得好看，而在免費層的限制、能不能改你手上的圖、輸出能不能拿去賣。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次要用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生圖，該從哪一個開始？答案是先看你要它做什麼，再看免費層給你什麼。目前的主流是四條路線：ChatGPT 的圖片生成、Gemini 的 Nano Banana、Midjourney，以及 FLUX 這類可以下載到自己電腦跑的"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型。差別不在誰畫得好看，而在免費層的限制、能不能改你手上的圖、輸出能不能拿去賣。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,9 +68,15 @@
           "text": "ChatGPT 的圖片生成長在對話裡：描述你要的圖，生成完可以繼續在同一段對話裡要求修改，手機上也能先畫草圖再叫它變成成品。官方在 2026 年 9 月 8 日換上 ChatGPT Images 2.5，發布文說它的細節更銳利、編輯更精準，生成延遲比 Images 2.0 最多降低 50%。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.5：圖片生成、局部修改與草圖功能更新",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-images-25-20260908"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.5：圖片生成、局部修改與草圖功能更新",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-25-20260908"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -60,19 +91,37 @@
           "text": "第四條是開放權重：黑森林實驗室（Black Forest Labs）的 FLUX 與 Stability AI 的 Stable Diffusion 都公開模型權重，你可以呼叫官方 API，也可以下載到自己的電腦跑。官方模型頁列出 FLUX.2 klein 的 4B 版本需要 8.4 GB 顯示記憶體、9B 版本需要 19.6 GB。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+              "kind": "life",
+              "slug": "chatgpt-image-generation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
-          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
-          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+              "kind": "life",
+              "slug": "stable-diffusion-comfyui-setup"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -158,8 +207,23 @@
           "text": "局部修改三家都有。ChatGPT 用選取工具圈出要改的區域再描述，或直接在對話裡講；Midjourney 的 Editor 用同一個 Edit Model 做局部重畫與往外擴圖；Gemini 的文件把做法寫成語意遮罩與局部重繪。"
         },
         {
-          "type": "paragraph",
-          "text": "輸出規格是 Gemini 寫得最清楚：預設 1K，可指定 2K 與 4K，比例有 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9 這十種。Midjourney 用比例參數指定，預設 1:1 且不接受小數。ChatGPT 只寫可以換比例重新生成，沒有公布像素對照表。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "輸出規格是 Gemini 寫得最清楚：預設 1K，可指定 2K 與 4K，比例有 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9 這十種。Midjourney 用比例"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "指定，預設 1:1 且不接受小數。ChatGPT 只寫可以換比例重新生成，沒有公布像素對照表。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -172,14 +236,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -199,18 +275,45 @@
           "text": "開放權重要看授權。官方模型頁寫 FLUX.2 klein 的 4B 版本走 Apache 2.0、可以商用，9B 版本走 FLUX 非商業授權；其他模型的授權各不相同，下載前先看模型卡的 license 欄位，不要假設開源等於可商用。Google 官方頁面沒有寫一句「你擁有生成的圖片」，商用條件以其服務條款為準。"
         },
         {
-          "type": "paragraph",
-          "text": "標示三家都做，形式不同。OpenAI 說支援的圖片同時含 C2PA 內容憑證與 SynthID 浮水印，並提供官方驗證頁。Gemini 產生或編輯的所有媒體都含隱形的 SynthID，看得見的浮水印可在設定裡開關，在印度、南韓、越南要有 AI Ultra 訂閱才看得到這個設定。Midjourney 在每個檔案裡藏一個 ID 標籤，但官方承認截圖、編輯與多數社群網站會把它移除。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "標示三家都做，形式不同。OpenAI 說支援的圖片同時含 C2PA "
+            },
+            {
+              "type": "article",
+              "text": "內容憑證",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            },
+            {
+              "type": "text",
+              "text": "與 SynthID 浮水印，並提供官方驗證頁。Gemini 產生或編輯的所有媒體都含隱形的 SynthID，看得見的浮水印可在設定裡開關，在印度、南韓、越南要有 AI Ultra 訂閱才看得到這個設定。Midjourney 在每個檔案裡藏一個 ID 標籤，但官方承認截圖、編輯與多數社群網站會把它移除。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -241,14 +344,26 @@
           "text": "一、這張圖要做什麼？改照片和做整組作品用的工具不一樣。二、會不會拿去賣？Midjourney 對年營收超過 100 萬美元的公司有方案要求，開放權重模型也有明寫非商業的版本。三、素材能不能上傳？不能的話就只剩下把模型裝在自己電腦這條路。"
         },
         {
-          "type": "link",
-          "text": "Midjourney 入門：網頁版、參數與訂閱",
-          "url": "https://mokaair.com/zh-TW/life/midjourney-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Midjourney 入門：網頁版、參數與訂閱",
+              "kind": "life",
+              "slug": "midjourney-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 繪圖風格提示參考：50 種風格描述",
-          "url": "https://mokaair.com/zh-TW/life/ai-art-prompt-styles-reference"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 繪圖風格提示參考：50 種風格描述",
+              "kind": "life",
+              "slug": "ai-art-prompt-styles-reference"
+            }
+          ]
         }
       ],
       "sources": [

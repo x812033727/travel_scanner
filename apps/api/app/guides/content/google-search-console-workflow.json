@@ -77,8 +77,23 @@
           "text": "在正確資源的頂端檢查列輸入完整網址，先讀現有 Google 索引資訊，記錄索引狀態、最近檢索與標準網址等可用欄位。這份資料描述 Google 已處理的版本，頁面若剛改過，畫面可能還沒有反映最新狀態。"
         },
         {
-          "type": "paragraph",
-          "text": "再按測試線上網址，查看目前是否能擷取與處理頁面。即時測試有助確認剛修正的存取或標記問題，但不會涵蓋所有品質、處罰或移除因素，也不能預測最終選哪個標準網址。因此即時可建立索引，仍不等於已實際編入索引。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再按測試線上網址，查看目前是否能擷取與處理頁面。即時測試有助確認剛修正的存取或"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "問題，但不會涵蓋所有品質、處罰或移除因素，也不能預測最終選哪個標準網址。因此即時可建立索引，仍不等於已實際編入索引。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -121,8 +136,23 @@
           "text": "網頁索引報表可以協助找出一組網址的共同狀態，但未建立索引不全是錯誤。重複版本、刻意不公開給搜尋的內容，或已移除且沒有替代內容的舊頁，可能有合理原因。目標是重要且適合搜尋的標準頁面，不是把每個數字都變成零。"
         },
         {
-          "type": "paragraph",
-          "text": "先選一個有影響的原因，抽查相關頁面與樣本，再決定是否需要修正。例如課程主頁意外無法擷取，和排序參數的替代版本被排除，優先度不同。報表提供的是示例，不能把畫面列出的幾筆當成網站全部問題的完整清單。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先選一個有影響的原因，抽查相關頁面與樣本，再決定是否需要修正。例如課程主頁意外無法擷取，和排序"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的替代版本被排除，優先度不同。報表提供的是示例，不能把畫面列出的幾筆當成網站全部問題的完整清單。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,19 +226,37 @@
           "text": "先處理讀者需要、且原本就應公開的頁面。不要為了消除未索引數量而開放私人內容，也不要把即時測試、驗證修正和要求索引混成同一種完成狀態。"
         },
         {
-          "type": "link",
-          "text": "先認識搜尋抓取與索引",
-          "url": "https://mokaair.com/zh-TW/life/search-crawlers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先認識搜尋抓取與索引",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理 DNS 記錄的正確位置",
-          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理 DNS 記錄的正確位置",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "流量改變時如何核對證據",
-          "url": "https://mokaair.com/zh-TW/life/google-ranking-history"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "流量改變時如何核對證據",
+              "kind": "life",
+              "slug": "google-ranking-history"
+            }
+          ]
         }
       ],
       "sources": [

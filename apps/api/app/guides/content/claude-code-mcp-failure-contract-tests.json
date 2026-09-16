@@ -25,8 +25,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MCP 顯示錯誤時，先找出故障發生在啟動、協定、工具或結果處理哪一層，比反覆重新安裝更有效。本篇提供會退出、輸出錯誤格式和持續等待的伺服器材料，讓你練習有限時間內結束、保留診斷資料並恢復正常連線。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 顯示錯誤時，先找出故障發生在啟動、協定、工具或結果處理哪一層，比反覆重新安裝更有效。本篇提供會退出、輸出錯誤格式和持續等待的伺服器材料，讓你練習有限時間內結束、保留診斷資料並恢復正常連線。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -182,8 +193,23 @@
           "text": "工具錯誤與連線錯誤分開測"
         },
         {
-          "type": "paragraph",
-          "text": "恢復正常 server，再送入 limit=0 等不合法參數。這次連線和初始化都成功，失敗發生在工具輸入驗證。回應的 isError 不代表伺服器已崩潰；你應能接著用合法參數完成下一次查詢。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "恢復正常 server，再送入 limit=0 等不合法"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。這次連線和初始化都成功，失敗發生在工具輸入驗證。回應的 isError 不代表伺服器已崩潰；你應能接著用合法參數完成下一次查詢。"
+            }
+          ]
         },
         {
           "type": "code",

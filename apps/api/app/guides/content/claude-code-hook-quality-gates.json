@@ -104,12 +104,42 @@
           "text": "本課在 Stop 事件執行固定的模型測試命令，只檢查這四個測試是否通過。它不是不可繞過的 CI，也不表示網站已通過瀏覽器、手機或部署驗證。把一個小 Hook 說成完整品質保證，會讓讀者誤以為未覆蓋的部分也已檢查。"
         },
         {
-          "type": "paragraph",
-          "text": "材料的 hooks/quality.mjs 使用 Node 啟動另一個 Node 程序，傳入參數陣列，不從事件拼接命令。工作目錄取自事件 cwd，執行上限十五秒。固定命令能讓結果可比較，也避免一次 Stop 自動安裝依賴、啟動外部服務或跑一整套沒有時間上限的工作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料的 hooks/quality.mjs 使用 Node 啟動另一個 Node 程序，傳入"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "陣列，不從事件拼接命令。工作目錄取自事件 cwd，執行上限十五秒。固定命令能讓結果可比較，也避免一次 Stop 自動安裝依賴、啟動外部服務或跑一整套沒有時間上限的工作。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "先手動執行 node --test tests/model.test.mjs，確認四個基準測試正常。若本機 Node 不存在，Hook 自然也不會成功；先處理環境，再談品質判斷。執行失敗、測試斷言失敗和超時都應保留原因，不能全部換成「已檢查」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先手動執行 node --test tests/model.test.mjs，確認四個"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "正常。若本機 Node 不存在，Hook 自然也不會成功；先處理環境，再談品質判斷。執行失敗、測試斷言失敗和超時都應保留原因，不能全部換成「已檢查」。"
+            }
+          ]
         },
         {
           "type": "heading",

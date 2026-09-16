@@ -128,8 +128,23 @@
           "text": "步驟 3：建立一次執行、逐層驗證的程式"
         },
         {
-          "type": "paragraph",
-          "text": "將下方完整程式存為同一資料夾的 run_summary.py。它只用 Python 標準函式庫，不需 pip install。程式先建立全新的輸出資料夾，保存 schema 與 running 狀態，再用參數陣列啟動 Codex；不把模型文字拼成 shell 指令。120 秒是教材自行設定的等待上限，不是 Codex 的固定限制。遇到逾時、啟動失敗或非零退出，保留產物並拒絕接受答案，不自動重試。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "將下方完整程式存為同一資料夾的 run_summary.py。它只用 Python 標準函式庫，不需 pip install。程式先建立全新的輸出資料夾，保存 schema 與 running 狀態，再用"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "陣列啟動 Codex；不把模型文字拼成 shell 指令。120 秒是教材自行設定的等待上限，不是 Codex 的固定限制。遇到逾時、啟動失敗或非零退出，保留產物並拒絕接受答案，不自動重試。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

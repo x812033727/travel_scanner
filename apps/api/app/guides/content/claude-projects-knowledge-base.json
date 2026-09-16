@@ -83,14 +83,26 @@
           "text": "用過 ChatGPT 的 Projects 的話，兩邊骨架相同，都是指令、檔案、對話三層；差別在 Claude 的知識不以檔案數計，而是看放不放得進上下文視窗，每個專案的記憶自動分開、不用自己選模式，分享專案則只有 Team 與 Enterprise 有。ChatGPT 各方案的差異與檔案上限，請看本站另一篇的整理。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -111,8 +123,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "以下用網頁版 claude.ai 說明，桌面版相同，手機 App 以 App 的側欄為準。兩個範例專案一起建。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "以下用網頁版 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 說明，桌面版相同，手機 App 以 App 的側欄為準。兩個範例專案一起建。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -142,27 +169,75 @@
           "text": "兩份都把「以哪個檔案為準」和「資料不夠就先問」寫進去了，幻覺最常出現在 Claude 想幫忙填空的時候。指令改了之後，已經產生的回答不會回頭改，之後送出的訊息才照新規則走。"
         },
         {
-          "type": "link",
-          "text": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
-          "url": "https://mokaair.com/zh-TW/life/claude-system-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
+              "kind": "life",
+              "slug": "claude-system-prompt-basics"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "知識檔案接受的文件格式與一般上傳相同：PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX（XLSX 要先在設定開啟程式執行與檔案建立），圖片也可以；但專案檔案單檔上限 30 MB（一般對話是 500 MB），數量不限，前提是全部內容放得進上下文視窗，而且只抽取文字（說明中心註明多模態 PDF 例外），Word 裡嵌的圖片、掃描成圖片的價格表都讀不到，先轉成文字再放。檔名要有意義，例如「2026 房型價格表」而不是「scan001」，說明中心說 Claude 會靠檔名判斷該讀哪一份。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "知識檔案接受的文件格式與一般上傳相同：PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX（XLSX 要先在設定開啟程式執行與檔案建立），圖片也可以；但專案檔案單檔上限 30 MB（一般對話是 500 MB），數量不限，前提是全部內容放得進上下文視窗，而且只抽取文字（說明中心註明"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": " PDF 例外），Word 裡嵌的圖片、掃描成圖片的價格表都讀不到，先轉成文字再放。檔名要有意義，例如「2026 房型價格表」而不是「scan001」，說明中心說 Claude 會靠檔名判斷該讀哪一份。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "容量沒有一個固定的檔案總數，看的是上下文視窗：付費方案依模型是 1M、500K 或 200K token（官網換算 200K 約 500 頁文字），免費版的數字官網沒有分開寫。超過怎麼辦：Pro、Max、Team、Enterprise 在知識接近或超過上下文視窗時自動切換 RAG（檢索增強生成）模式，專案上會出現已啟用 RAG 的標示，容量最多擴大 10 倍。這時 Claude 不再把整個知識庫讀進對話，而是用「專案知識搜尋」工具找出相關段落來回答，你會在對話裡看到它在搜尋；網頁搜尋、延伸思考與 Research 照常可用，知識減到門檻以下會自動切回整份讀入。免費版沒有 RAG，說明中心寫的是到了門檻就不能再加內容，以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "容量沒有一個固定的檔案總數，看的是上下文視窗：付費方案依模型是 1M、500K 或 200K token（官網換算 200K 約 500 頁文字），免費版的數字官網沒有分開寫。超過怎麼辦：Pro、Max、Team、Enterprise 在知識接近或超過上下文視窗時自動切換 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "（檢索增強生成）模式，專案上會出現已啟用 RAG 的標示，容量最多擴大 10 倍。這時 Claude 不再把整個知識庫讀進對話，而是用「專案知識搜尋」工具找出相關段落來回答，你會在對話裡看到它在搜尋；網頁搜尋、延伸思考與 Research 照常可用，知識減到門檻以下會自動切回整份讀入。免費版沒有 RAG，說明中心寫的是到了門檻就不能再加內容，以官網為準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
-          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+              "kind": "life",
+              "slug": "claude-file-analysis-pdf-excel"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "image",
@@ -197,9 +272,15 @@
           "text": "專案記憶是另一層。記憶在 Free、Pro、Max 預設開啟，Team 與 Enterprise 要由擁有者在組織設定開啟；說明中心寫明每個專案有自己獨立的記憶空間與專案摘要，專案裡聊到的事不會流到專案外或其他專案，反過來也一樣，所以民宿專案談過的客人狀況不會出現在讀書專案，把對話移出專案後，它就改算進專案外的記憶。要看或改，走 Settings（設定）→ Memory，所有主題列在 Topics 下，可逐條編輯或刪除，也可以在對話裡直接說「記住這件事」；關閉時有 Pause（暫停，保留現有記憶但不再新增）與 Reset（重設，連專案記憶一起永久刪除，無法復原）兩個選項。付費方案還能請 Claude 搜尋過去的對話，在專案裡搜尋只限這個專案。"
         },
         {
-          "type": "link",
-          "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
-          "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
+              "kind": "life",
+              "slug": "claude-memory-and-privacy"
+            }
+          ]
         },
         {
           "type": "heading",

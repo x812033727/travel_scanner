@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想用 ChatGPT 學英文，最常見的失敗方式是每天請它「教我英文」，讀完它生成的範文就關掉，一個月後什麼都沒留下。這篇的結論是：把它當一個隨時在線、不會不耐煩的批改老師與對話對象，每天固定 20 分鐘，內容全部從你自己寫的句子與講的話出發；一週下來你會有一份自己的錯句清單與單字卡，這比讀任何範文都有效。搜「英文 AI」或「學英文 AI」找到的其他工具，也能照這套流程用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想用 ChatGPT 學英文，最常見的失敗方式是每天請它「教我英文」，讀完它生成的範文就關掉，一個月後什麼都沒留下。這篇的結論是：把它當一個隨時在線、不會不耐煩的批改老師與對話對象，每天固定 20 分鐘，內容全部從你自己寫的句子與講的話出發；一週下來你會有一份自己的錯句清單與單字卡，這比讀任何範文都有效。搜「英文 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」或「學英文 AI」找到的其他工具，也能照這套流程用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,14 +72,26 @@
           "text": "不知道自己幾分就描述做得到的事：看得懂菜單但點餐會卡住、能讀新聞標題但讀不完內文。目標寫一個就好，多益、職場或旅行三選一，寫太多它會平均分配、什麼都練不深。存好之後開一個新對話問「你知道我的英文程度和目標嗎」，它答得出來才算設定成功。這兩個功能的細節看下面兩篇。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -76,9 +103,15 @@
           "text": "六種練法各給一段提示詞，編號 1 到 6，後面的一週練習表用編號稱呼。提示詞用中文寫就可以，回答的規則你已經在自訂指令裡講清楚了，貼上去之後只要接上你的內容。每天 20 分鐘的基本組合是：暖身 3 分鐘（讀昨天的單字卡、唸一次被改過的句子、決定今天的主題）、寫作糾錯 7 分鐘、對話 7 分鐘、單字卡 3 分鐘；本節最後有一張圖把這個流程與六種練法畫在一起。提示詞本身怎麼寫得更清楚，可以先看提示詞入門那篇。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -135,9 +168,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+              "kind": "life",
+              "slug": "chatgpt-voice-mode-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -239,9 +278,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",

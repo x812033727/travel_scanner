@@ -115,8 +115,23 @@
           "text": "這個試算沒有保證增加預算後仍會拿到相同訂單，也沒有替全店固定成本保留空間。若希望活動另留下指定金額，應先從五千元中扣除，再看可支付的廣告費。不要把某篇文章給的通用倍數當作自己商品的安全線。"
         },
         {
-          "type": "paragraph",
-          "text": "在試算表保留收入、商品、履約、素材與廣告費各自的欄位，另外標記退款是否已回補、資料是否已完整。分母為零時，不應硬算成零報酬：沒有廣告支出的 ROAS 或沒有轉換的 CPA，都應註明無法用該式得到有限結果，並保留原始支出與數量。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在試算表保留收入、商品、履約、素材與廣告費各自的欄位，另外"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "退款是否已回補、資料是否已完整。分母為零時，不應硬算成零報酬：沒有廣告支出的 ROAS 或沒有轉換的 CPA，都應註明無法用該式得到有限結果，並保留原始支出與數量。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -206,19 +221,37 @@
           "text": "ROAS 不會自動扣掉商品、寄送、素材與人事。ROI 也要先約定投入範圍；本文活動剩餘未涵蓋全店所有固定成本。"
         },
         {
-          "type": "link",
-          "text": "規劃 Google 廣告的預算與扣款界線",
-          "url": "https://mokaair.com/zh-TW/life/google-ads-budget"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃 Google 廣告的預算與扣款界線",
+              "kind": "life",
+              "slug": "google-ads-budget"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓成效目標對應顧客的實際階段",
-          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓成效目標對應顧客的實際階段",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "先整理小店的行銷目標與投入",
-          "url": "https://mokaair.com/zh-TW/life/marketing-plan-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先整理小店的行銷目標與投入",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
         }
       ],
       "sources": [

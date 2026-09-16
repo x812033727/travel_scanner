@@ -94,8 +94,23 @@
           "text": "曝光有不同的計算條件。一般搜尋項目與需要捲動、展開的結果區塊，未必採用同樣規則；因此不能把一次曝光解釋成讀者已仔細看完標題。想研究特定版位時，先查該類型的官方定義，而不是把所有曝光當成相同的觀看程度。"
         },
         {
-          "type": "paragraph",
-          "text": "同樣地，AI Overviews 內多個連結會共用該區塊的位置值。看到平均位置變好，不必然代表一般文字連結往上移，也不能單憑它斷定 AI 帶來或拿走多少點擊。要保留結果類型的限制，將沒有直接證據的原因寫成待驗證假設。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同樣地，"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Overviews 內多個連結會共用該區塊的位置值。看到平均位置變好，不必然代表一般文字連結往上移，也不能單憑它斷定 AI 帶來或拿走多少點擊。要保留結果類型的限制，將沒有直接證據的原因寫成待驗證假設。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -195,19 +210,37 @@
           "text": "同時提供曝光、點擊、分群條件與查閱期間。若結果版位或查詢組成改變，先說明限制，再決定要調整哪個頁面。"
         },
         {
-          "type": "link",
-          "text": "建立 Search Console 定期檢查流程",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立 Search Console 定期檢查流程",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "寫出符合頁面用途的搜尋標題",
-          "url": "https://mokaair.com/zh-TW/life/seo-title-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "寫出符合頁面用途的搜尋標題",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用搜尋意圖區分讀者任務",
-          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用搜尋意圖區分讀者任務",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
         }
       ],
       "sources": [

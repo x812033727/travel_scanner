@@ -82,9 +82,15 @@
           "text": "六個欄位裡，範例通常最有效。要模型照一種格式做，與其用形容詞描述那個格式，不如直接給它一組看得到的輸入與輸出，讓它照著模仿。"
         },
         {
-          "type": "link",
-          "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
         },
         {
           "type": "image",
@@ -104,9 +110,15 @@
           "text": "如果「把問題問清楚」這一步還在摸索，先把單則提示詞寫好再談收納，順序會順很多。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -122,35 +134,93 @@
           "text": "先看 ChatGPT。自訂指令（Custom Instructions）是帳號層級、套用到所有對話的長期設定，官方說明頁寫免費版與 Go 最多存 1,500 個字元，Plus、Pro、Business、Enterprise 與教育方案最多 5,000 個字元，網頁、桌面、iOS 與 Android 都有，位置在設定裡的「個人化」。Projects 則是每個專案自己一套指示，官方寫專案指示只在該專案裡生效，而且會覆蓋全域的自訂指令；專案數量不限，能上傳的檔案數依方案不同，免費版每個專案 5 個、Go 與 Plus 25 個、教育版、Pro、Business 與 Enterprise 40 個，而且一次最多同時上傳 10 個。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "以前常被拿來當提示詞庫的自製 GPT 要特別注意。官方說明頁現在寫個人帳號（免費版、Go、Plus、Pro）已經不能新建或發布 GPT，既有的還能用、符合方案與權限的還能編輯，Business、Enterprise 與教育版工作區則依工作區設定決定；官方建議把流程改搬到 Plugins，並寫明受影響的 Enterprise 工作區預定 2026 年 12 月 11 日退場，遷移流程預定 2026 年 9 月 17 日開始。要長期存放提示詞，先別把家安在這裡。"
         },
         {
-          "type": "link",
-          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+              "kind": "life",
+              "slug": "chatgpt-custom-gpts-build"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Claude 的個人化說明頁列了三層：帳號層級的「Instructions for Claude」、專案層級的 Project instructions，以及 Skills。專案所有使用者都能建，免費帳號最多五個；付費方案在專案知識接近上限時會自動啟用檢索（官方稱 RAG），容量最多擴大到十倍。三層裡最接近提示詞庫的是 Skills：官方說明它是一個資料夾，裡面至少要有一個 skill.md，開頭的 YAML 要填 name（最多 64 個字元）與 description（最多 200 個字元），整個資料夾打包成 ZIP 上傳；Free、Pro、Max、Team 與 Enterprise 都能用，但要先開啟程式碼執行與檔案建立。分享只在 Team 與 Enterprise 方案，而且分享出去是唯讀，你之後更新，對方下次使用時會自動拿到新版。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude 的個人化說明頁列了三層：帳號層級的「Instructions for Claude」、專案層級的 Project instructions，以及 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "。專案所有使用者都能建，免費帳號最多五個；付費方案在專案知識接近上限時會自動啟用檢索（官方稱 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "），容量最多擴大到十倍。三層裡最接近提示詞庫的是 Skills：官方說明它是一個資料夾，裡面至少要有一個 skill.md，開頭的 YAML 要填 name（最多 64 個字元）與 description（最多 200 個字元），整個資料夾打包成 ZIP 上傳；Free、Pro、Max、Team 與 Enterprise 都能用，但要先開啟程式碼執行與檔案建立。分享只在 Team 與 Enterprise 方案，而且分享出去是唯讀，你之後更新，對方下次使用時會自動拿到新版。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Skills 是什麼：把重複流程包成可重用的技能",
-          "url": "https://mokaair.com/zh-TW/life/claude-skills-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Skills 是什麼：把重複流程包成可重用的技能",
+              "kind": "life",
+              "slug": "claude-skills-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Gemini 的對應物是 Gems。官方說明頁寫只要登入就能建，用個人 Google 帳號需年滿 13 歲；在網頁版建好之後會出現在行動版與 Google Workspace 的 Gemini 側邊欄，還可以在「Knowledge」區掛上檔案。分享做得比另外兩家細：可以指定 Viewer 或 Editor、可以設存取到期日、可以轉移擁有者，分享出去的 Gem 會存進你的 Google 雲端硬碟。官方也明寫，任何有存取權的人都看得到 Gem 的指示與你上傳的檔案。另外，帳號層級的「Instructions for Gemini」只支援個人 Google 帳號，工作、學校與受監護帳號不能用，而且官方註明這項設定在 Gems 裡不適用。"
         },
         {
-          "type": "paragraph",
-          "text": "第二類是文字展開工具，適合「不管在哪個輸入框，兩秒把整段提示詞貼出來」的人。Raycast 的 Snippets 在免費方案裡就有，官方手冊寫單則 Snippet 的文字上限是 65,000 個字元，可以設關鍵字自動展開、用標籤分類，也能用一個 JSON 檔匯入匯出，欄位是 name、text 與 keyword。要跨裝置同步得升級，定價頁把 Cloud Sync 列在 Pro 才有，個人 Pro 每月 10 美元、年繳 96 美元；團隊免費方案能共用 Snippets 但上限 30 則，團隊 Pro 每位使用者每月 15 美元、年繳每位 144 美元才不限。把提示詞變成一按就跑的 AI Commands，官方手冊標示為 Pro 專屬。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二類是文字展開工具，適合「不管在哪個輸入框，兩秒把整段提示詞貼出來」的人。Raycast 的 Snippets 在免費方案裡就有，官方手冊寫單則 Snippet 的文字上限是 65,000 個字元，可以設關鍵字自動展開、用標籤分類，也能用一個 JSON 檔匯入匯出，欄位是 name、text 與 keyword。要跨裝置同步得升級，定價頁把 Cloud Sync 列在 Pro 才有，個人 Pro 每月 10 美元、年繳 96 美元；團隊免費方案能共用 Snippets 但上限 30 則，團隊 Pro 每位使用者每月 15 美元、年繳每位 144 美元才不限。把提示詞變成一按就跑的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Commands，官方手冊標示為 Pro 專屬。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -171,9 +241,15 @@
           "text": "Obsidian 走本機路線。官方說明頁寫 Templates 是核心外掛，先在設定裡指定範本資料夾，之後用「Insert template」把範本插進目前這則筆記；範本裡可以用 {{title}}、{{date}}（預設格式 YYYY-MM-DD）與 {{time}}（預設格式 HH:mm）三個變數。Obsidian 本身免費、不需註冊；要跨裝置同步與版本歷史得加購 Sync，官方定價頁寫年繳時每位使用者每月 4 美元、月繳 5 美元，功能列表裡就包含版本歷史與共用 vault 協作。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
         },
         {
           "type": "table",
@@ -292,9 +368,15 @@
           "text": "改版的時候不要直接覆蓋。把舊的那一版留著，在版本欄寫一行「這次改了什麼、為什麼」，等新版連續幾次都比較好再刪掉舊的。能自動幫你留的只有幾種：Notion 的頁面歷史、Obsidian Sync 的版本歷史，以及放在 Git 裡的純文字檔；其他存放處官方都沒有版本清單，只能靠你自己在版本欄寫。"
         },
         {
-          "type": "link",
-          "text": "AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑",
-          "url": "https://mokaair.com/zh-TW/life/ai-weekly-review-templates"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 週回顧與目標管理範本：固定輸入、固定輸出，還能讓它自動跑",
+              "kind": "life",
+              "slug": "ai-weekly-review-templates"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -138,8 +138,23 @@
           "text": "測試先從少量虛構詢問開始，包含首次送出、重複送出、欄位缺漏與更新。確認原始資料、目的系統與通知能互相對照。若某一步失敗，應能找到原因、知道是否已部分完成，並由指定人員決定如何補做。"
         },
         {
-          "type": "paragraph",
-          "text": "驗收不只看綠色成功標記，也要檢查實際內容是否正確。例如紀錄有建立，但負責人錯誤或日期格式不符，仍不能算完成。另測試停止連接後的安排，確認店員知道如何暫時人工接手，避免服務完全依賴無人維護的自動流程。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "驗收不只看綠色成功"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，也要檢查實際內容是否正確。例如紀錄有建立，但負責人錯誤或日期格式不符，仍不能算完成。另測試停止連接後的安排，確認店員知道如何暫時人工接手，避免服務完全依賴無人維護的自動流程。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +216,37 @@
           "text": "方向、欄位與衝突規則未定之前，不要開啟大範圍雙向同步。成功連線只表示連得上，還需要驗收資料與後續工作。"
         },
         {
-          "type": "link",
-          "text": "先用行銷計畫確認工作目標",
-          "url": "https://mokaair.com/zh-TW/life/marketing-plan-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先用行銷計畫確認工作目標",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規劃網站表單與必要資訊",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃網站表單與必要資訊",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查網站與門市的交接流程",
-          "url": "https://mokaair.com/zh-TW/life/omo-channel-integration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查網站與門市的交接流程",
+              "kind": "life",
+              "slug": "omo-channel-integration"
+            }
+          ]
         }
       ],
       "sources": [

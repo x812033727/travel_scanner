@@ -26,17 +26,53 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "學生用 AI 會不會被當抄襲，答案取決於三件事：你用它做什麼、老師准不准、你有沒有說。把用法分成三類就很清楚：請它解釋觀念、出練習題、檢查文法、整理自己的筆記、規劃讀書進度，這些是學習，放心用；潤稿、翻譯、寫大綱，要看該門課的規定，而且用了就要標示；整份作業代寫、考試作答、捏造引用，通常不行，被發現就是學術誠信問題。搜「學生 AI」「作業 AI」或「作文 AI」的人，答案也在這三類裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "學生用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 會不會被當抄襲，答案取決於三件事：你用它做什麼、老師准不准、你有沒有說。把用法分成三類就很清楚：請它解釋觀念、出練習題、檢查文法、整理自己的筆記、規劃讀書進度，這些是學習，放心用；潤稿、翻譯、寫大綱，要看該門課的規定，而且用了就要標示；整份作業代寫、考試作答、捏造引用，通常不行，被發現就是學術誠信問題。搜「學生 AI」「作業 AI」或「作文 AI」的人，答案也在這三類裡。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇寫給台灣的高中生、大學生與家長。先把三類用法講清楚，再看教育部與幾所大學在 2026 年 9 月公開的規範，接著示範作業裡怎麼標示用了 AI：APA 官方的引用格式，以及使用聲明該寫的四件事。後半段講兩件最容易吃虧的事：AI 偵測工具不可靠，草稿與版本紀錄要留好；AI 會編出不存在的論文與書，引用前一定要查到原文。最後附五個可以直接貼進 ChatGPT、Claude 或 Gemini 的學習提示詞。還沒決定用哪個工具的人，先看總覽。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇寫給台灣的高中生、大學生與家長。先把三類用法講清楚，再看教育部與幾所大學在 2026 年 9 月公開的規範，接著示範作業裡怎麼標示用了 AI：APA 官方的引用格式，以及使用聲明該寫的四件事。後半段講兩件最容易吃虧的事："
+            },
+            {
+              "type": "article",
+              "text": "AI 偵測",
+              "kind": "life",
+              "slug": "ai-detection-tools-reliability"
+            },
+            {
+              "type": "text",
+              "text": "工具不可靠，草稿與版本紀錄要留好；AI 會編出不存在的論文與書，引用前一定要查到原文。最後附五個可以直接貼進 ChatGPT、Claude 或 Gemini 的學習提示詞。還沒決定用哪個工具的人，先看總覽。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -66,8 +102,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "高中端的依據是教育部 2024 年 12 月 13 日發函、2025 年 6 月 10 日更新的「高級中等學校學生學習評量及學習歷程檔案使用生成式人工智慧注意事項」。它分教師指引、學生指引與師生共同注意事項三部分：教師要在課程開始、作業與測驗前明確說明 AI 的使用規範，並教學生引註方法；學生要遵守教師的規範，誠實揭露、正確引註、對內容負責；可以用 AI 訂正評量結果、整理學習歷程檔案的重點與反思，但要清楚標註。附表還有揭露範例與使用情形聲明書的參考格式，後面會用到。教育部的臺灣學術倫理教育資源中心另有給大學校園的指引，重點是對生成內容保持質疑並親自驗證、直接拿生成內容交差有代寫的倫理問題、適度揭露、不把個資與機密交給 AI。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "高中端的依據是教育部 2024 年 12 月 13 日發函、2025 年 6 月 10 日更新的「高級中等學校學生學習評量及學習歷程檔案使用"
+            },
+            {
+              "type": "article",
+              "text": "生成式人工智慧",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "注意事項」。它分教師指引、學生指引與師生共同注意事項三部分：教師要在課程開始、作業與測驗前明確說明 AI 的使用規範，並教學生引註方法；學生要遵守教師的規範，誠實揭露、正確引註、對內容負責；可以用 AI 訂正評量結果、整理學習歷程檔案的重點與反思，但要清楚標註。附表還有揭露範例與使用情形聲明書的參考格式，後面會用到。教育部的臺灣學術倫理教育資源中心另有給大學校園的指引，重點是對生成內容保持質疑並親自驗證、直接拿生成內容交差有代寫的倫理問題、適度揭露、不把個資與機密交給 AI。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -127,9 +178,15 @@
           "text": "對學生來說，這代表兩件事。第一，被質疑時最有力的證據不是「我沒有用」，而是過程：把作業寫在有版本紀錄的文件裡，不要每次另存新檔覆蓋，手寫筆記與草稿拍照留著，用了 AI 的對話保留連結或截圖；教育部的注意事項也要求保留原始與修改歷程。第二，這些紀錄要拿得出來，所以別在交作業後把對話刪光。AI 工具的對話紀錄與隱私設定怎麼調，另有一篇。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -152,9 +209,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -166,14 +229,26 @@
           "text": "AI 最常害學生違規的方式不是代寫，而是編出處。請它「給我五篇關於這個主題的論文」，它會回你格式完整、作者像真的、期刊也存在的清單，其中一部分根本不存在；書名、頁碼、法條與統計數字也一樣。原因是模型在猜最像答案的句子，不是在查資料庫，所以教育部的注意事項才要求對生成結果多方查證。規則只有一條：任何要寫進參考文獻的東西，都要自己在圖書館系統、Google Scholar 或出版社網站找到原文，確認它真的講了你要引用的那句話，找不到就不引。把捏造的引用交出去，就算是 AI 編的，責任仍是你的，成大的指引寫得很直接：最終學術責任由使用者全權承擔。怎麼查、模型為什麼會這樣，各有一篇。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
           "type": "heading",

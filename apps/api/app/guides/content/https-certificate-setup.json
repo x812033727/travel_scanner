@@ -89,8 +89,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "手動輸入 HTTPS 網址，檢查首頁、文章及後台能否正常運作，再依主機或網站框架文件設定 HTTP 轉到 HTTPS。測試時保留原路徑與必要參數，避免所有舊文章都被丟回首頁。根網域與 www 的統一方式也應清楚，讓訪客從任何常用入口進來都有一致結果。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手動輸入 HTTPS 網址，檢查首頁、文章及後台能否正常運作，再依主機或網站框架文件設定 HTTP 轉到 HTTPS。測試時保留原路徑與必要"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，避免所有舊文章都被丟回首頁。根網域與 www 的統一方式也應清楚，讓訪客從任何常用入口進來都有一致結果。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -182,14 +197,26 @@
           "text": "加密連線與備份、權限、更新和內容可信度是不同事項。請把憑證管理列入維護表，並持續處理網站本身需要的安全與復原工作。"
         },
         {
-          "type": "link",
-          "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
-          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
-          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
         }
       ],
       "sources": [

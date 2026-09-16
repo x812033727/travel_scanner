@@ -73,8 +73,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 的精選摘要會由系統判斷是否適合某次搜尋，網站不能自行標記就保證取得版位。可以把讀者常見問題寫清楚，卻不應為了爭取摘要，新增沒有證據的保證工期或所有衣物皆可修改等說法。搜尋上的簡短內容也需要保留重要條件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的精選摘要會由系統判斷是否適合某次搜尋，網站不能自行"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "就保證取得版位。可以把讀者常見問題寫清楚，卻不應為了爭取摘要，新增沒有證據的保證工期或所有衣物皆可修改等說法。搜尋上的簡短內容也需要保留重要條件。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -142,8 +157,23 @@
           "text": "品牌字詞增加也只能當作關注變化的線索。它可能與活動、口耳相傳或其他曝光一起發生，不能直接證明某篇文章產生了多少品牌價值。為每項結論補上資料來源與限制，讓下一次決策知道哪些是事實，哪些仍需進一步了解。"
         },
         {
-          "type": "paragraph",
-          "text": "如果考慮限制搜尋摘要或 AI 呈現，先確認具體控制的範圍、目前目標及可能少掉的入口，再由網站負責人決定。內容策略的驗收應包含資訊是否準確、讀者是否能完成任務，以及經營成本是否合理；單一流量數字不足以取代這些判斷。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果考慮限制搜尋摘要或 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 呈現，先確認具體控制的範圍、目前目標及可能少掉的入口，再由網站負責人決定。內容策略的驗收應包含資訊是否準確、讀者是否能完成任務，以及經營成本是否合理；單一流量數字不足以取代這些判斷。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -196,19 +226,37 @@
           "text": "保留改查、點別站與放棄等可能性。用可取得的互動及實際服務紀錄補充判斷，不把一減 CTR 當成零點擊率。"
         },
         {
-          "type": "link",
-          "text": "理解搜尋結果頁與 CTR 變化",
-          "url": "https://mokaair.com/zh-TW/life/search-results-clickthrough"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解搜尋結果頁與 CTR 變化",
+              "kind": "life",
+              "slug": "search-results-clickthrough"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "按搜尋意圖安排內容",
-          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "按搜尋意圖安排內容",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量測 AI 搜尋引用與進站證據",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-tools-measurement"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量測 AI 搜尋引用與進站證據",
+              "kind": "life",
+              "slug": "ai-search-tools-measurement"
+            }
+          ]
         }
       ],
       "sources": [

@@ -29,8 +29,23 @@
           "text": "Llama 是 Meta 釋出、可以把權重下載回自己電腦執行的模型家族。到 2026 年 9 月 14 日為止，Meta 開發者網站上列出的 Llama 只到 2025 年 4 月 5 日的 Llama 4，而 Meta 現在主推的是另一條產品線 Muse 系列。Llama 的授權叫社群授權，可以商用，但附帶標示、命名、使用政策與月活躍使用者門檻等條件，不是 OSI 認可的開源授權。"
         },
         {
-          "type": "paragraph",
-          "text": "這篇會帶你看完官網現在列了哪些版本、每個版本的規模與上下文視窗、授權原文裡真正會影響你的那幾條，以及三條合法拿到權重的路線：在 Meta 開發者網站填表申請、在 Hugging Face 的受管制倉庫按同意，或直接用 Ollama 拉官方標籤。最後說明你在 WhatsApp、Instagram 裡用到的 Meta AI 和 Llama 是什麼關係。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇會帶你看完官網現在列了哪些版本、每個版本的規模與上下文視窗、授權原文裡真正會影響你的那幾條，以及三條合法拿到權重的路線：在 Meta 開發者網站填表申請、在 Hugging Face 的受管制倉庫按同意，或直接用 Ollama 拉官方標籤。最後說明你在 WhatsApp、Instagram 裡用到的 Meta "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 和 Llama 是什麼關係。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -42,8 +57,23 @@
           "text": "和只能透過網站或 API 使用的雲端服務不同，Llama 提供的是模型權重檔案本身。你把檔案下載到自己的電腦或伺服器，用 Ollama、LM Studio 這類軟體載入，就能離線對話；資料不會離開你的機器，也不必按次計費。代價是速度與品質受硬體限制，輸出的內容也要你自己負責。"
         },
         {
-          "type": "paragraph",
-          "text": "Meta 官方的 Llama 4 頁面把這一代描述成最容易取得、也最容易擴展的一代 Llama，並寫著所有 Llama 4 模型都採用原生多模態設計、運用早期融合（early fusion）：文字和影像由同一個模型一起處理，不是外掛一個看圖模組。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Meta 官方的 Llama 4 頁面把這一代描述成最容易取得、也最容易擴展的一代 Llama，並寫著所有 Llama 4 模型都採用原生"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "設計、運用早期融合（early fusion）：文字和影像由同一個模型一起處理，不是外掛一個看圖模組。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -53,18 +83,20 @@
               "text": "要先分清楚兩個名詞：能下載權重不等於開源。這一點在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+              "kind": "life",
+              "slug": "ai-term-open-weights"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
             },
             {
               "type": "text",
@@ -104,27 +136,30 @@
               "text": "啟用參數、專家與上下文視窗這三個詞如果還不熟，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "混合專家模型（Mixture of Experts）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型參數（Model Parameters）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-              "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+              "kind": "life",
+              "slug": "ai-context-window-explained"
             },
             {
               "type": "text",
@@ -288,27 +323,30 @@
               "text": "這三條路各有一篇更完整的教學："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-              "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+              "kind": "life",
+              "slug": "ollama-getting-started"
             },
             {
               "type": "text",
               "text": "講安裝與第一個模型，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hugging Face 入門：找模型、看授權、下載",
-              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+              "kind": "life",
+              "slug": "huggingface-guide"
             },
             {
               "type": "text",
               "text": "講帳號、受管制倉庫與下載指令，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
-              "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+              "kind": "life",
+              "slug": "gguf-quantization-explained"
             },
             {
               "type": "text",
@@ -326,17 +364,38 @@
           "text": "Meta 在 2026 年 4 月 8 日宣布 Muse Spark，由 Meta Superintelligence Labs 打造。官方公告說它是 Meta 目前最強的語言模型，用在 Meta AI 應用程式與 meta.ai 網站、WhatsApp、Instagram、Facebook、Messenger，以及 Ray-Ban Meta 與 Oakley Meta 眼鏡、Meta Ray-Ban Display 上。公告同時寫著希望未來的版本能開源，但目前只提供給部分夥伴的私有 API 預覽，沒有釋出權重。"
         },
         {
-          "type": "paragraph",
-          "text": "另一邊，Muse Glimmer 在 2026 年 8 月 9 日上架 Hugging Face 的 meta-models 組織。官網把它描述成為常駐本機代理打造的開放模型，針對工具使用、長任務與失敗復原調校。模型卡寫的是約 29.6B 總參數、其中約 1.8B 是視覺編碼器，密集因果 Transformer 架構、上下文 131,072 tokens 以上、訓練資料涵蓋超過 100 種語言，授權 Apache 2.0，並註明本模型不打算讓未滿 18 歲的個人下載或使用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另一邊，Muse Glimmer 在 2026 年 8 月 9 日上架 Hugging Face 的 meta-models 組織。官網把它描述成為常駐本機代理打造的開放模型，針對"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "、長任務與失敗復原調校。模型卡寫的是約 29.6B 總參數、其中約 1.8B 是視覺編碼器，密集因果 Transformer 架構、上下文 131,072 tokens 以上、訓練資料涵蓋超過 100 種語言，授權 Apache 2.0，並註明本模型不打算讓未滿 18 歲的個人下載或使用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "所以要分成三件事看：你在 WhatsApp 裡用到的 Meta AI 是雲端服務，背後是沒有公開權重的 Muse Spark；Llama 4 是你可以自己下載、用社群授權的上一代開放權重模型；Muse Glimmer 是新的開放權重模型，走 Apache 2.0。Meta 開發者網站的導覽目前只列到 Llama 4 與 Llama 3，Llama 會不會有下一版，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
-          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+              "kind": "life",
+              "slug": "meta-ai-whatsapp-instagram"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -346,18 +405,20 @@
               "text": "其他家的開放權重模型也用同一套方法看："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemma：Google 的開源模型怎麼用",
-              "url": "https://mokaair.com/zh-TW/life/gemma-google-open-models"
+              "kind": "life",
+              "slug": "gemma-google-open-models"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
-              "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+              "kind": "life",
+              "slug": "gpt-oss-openai-open-weights"
             },
             {
               "type": "text",

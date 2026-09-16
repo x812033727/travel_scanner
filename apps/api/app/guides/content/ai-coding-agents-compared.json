@@ -25,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "同一個需求交給三個 AI 寫程式代理（Agent），誰寫得比較好？這篇不回答這個問題。我們手上沒有三家的付費帳號與額度，跑不出可信的分數，所以改比另一件更有用的事：同一個需求在 Claude Code、Codex CLI 與 Gemini CLI 上各自要按哪些步驟、在哪裡停下來確認、產出去哪裡看、錢從哪裡扣。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一個需求交給三個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 寫程式代理（Agent），誰寫得比較好？這篇不回答這個問題。我們手上沒有三家的付費帳號與額度，跑不出可信的分數，所以改比另一件更有用的事：同一個需求在 Claude Code、Codex CLI 與 Gemini CLI 上各自要按哪些步驟、在哪裡停下來確認、產出去哪裡看、錢從哪裡扣。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -46,14 +61,26 @@
           "text": "這些都是官方文件寫死的事實，你自己也查得到。誰寫的程式比較好則要用你自己的專案去測，最後一節會給方法。想先弄清楚「跑分」與「評測」分別指什麼，站上另有兩篇名詞解釋。"
         },
         {
-          "type": "link",
-          "text": "基準測試（Benchmark）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "基準測試（Benchmark）是什麼",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -75,9 +102,15 @@
           "text": "把這段提示詞原封不動貼給三個代理，是比較能成立的前提。它把要做什麼、不做什麼、怎樣算完成都寫清楚，最後一句還要求代理自己說明怎麼驗證。怎麼寫代理接得住的提示詞，站上另有一篇專門談。"
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -112,19 +145,37 @@
           "text": "三個工具的入門步驟，站上各有一篇從頭帶一次。"
         },
         {
-          "type": "link",
-          "text": "Claude Code 入門：認識工具與第一條學習路線",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code 入門：認識工具與第一條學習路線",
+              "kind": "life",
+              "slug": "claude-code-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
-          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini CLI 安裝：第一次在終端機對話",
-          "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini CLI 安裝：第一次在終端機對話",
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -177,14 +228,26 @@
           "text": "三家都讓你把專案規則寫成一個檔案，每次開始自動讀進去：Claude Code 讀 CLAUDE.md，Codex 讀 AGENTS.md，Gemini CLI 預設讀 GEMINI.md，三者都用 /init 產生初稿。要注意官方文件明講 Claude Code 不讀 AGENTS.md，專案已經有 AGENTS.md 的話，在 CLAUDE.md 用一行匯入語法引進來即可。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜CLAUDE.md 完整教學",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-claude-md-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜CLAUDE.md 完整教學",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GEMINI.md 入門：建立規則與 /init",
-          "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GEMINI.md 入門：建立規則與 /init",
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -274,14 +337,26 @@
           "text": "同一題至少跑兩輪再下結論，同一個模型跑兩次結果本來就會有差。幾輪之後你多半會發現，差別不在誰比較聰明，而在哪個工具的權限模式跟你比較合拍。想看還有哪些同類工具，站上有一篇總覽。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "CLI 寫程式：理解、規劃、修改與測試",
-          "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CLI 寫程式：理解、規劃、修改與測試",
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
+            }
+          ]
         }
       ],
       "sources": [

@@ -109,8 +109,23 @@
           "text": "翻譯接在後面。官方功能頁寫產生好的字幕可以自動翻成另一種語言，並提醒發布前檢查人名、術語、斷行與時間；同一頁的常見問題也寫了 CapCut 桌面版與線上版都能單獨匯出 SRT 檔，方便拿去上傳。"
         },
         {
-          "type": "paragraph",
-          "text": "費用要自己查。官方說明中心寫 Pro 訂閱在手機、桌面與網頁都能用，Standard 只在部分地區供應、只在手機 App 生效，另一篇寫 Pro 含 100GB 雲端空間；至於月費，官方文章直接說價格、AI 點數、浮水印規則與匯出限制會隨方案、平台、帳號、地區與促銷而變，要在登入的帳號裡確認，所以這篇不寫數字，以官網為準。點數的官方說法是用在圖片生成、腳本轉影片、智慧去背、進階配音這類功能，執行前畫面會顯示這次扣多少點。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "費用要自己查。官方說明中心寫 Pro 訂閱在手機、桌面與網頁都能用，Standard 只在部分地區供應、只在手機 App 生效，另一篇寫 Pro 含 100GB 雲端空間；至於月費，官方文章直接說價格、"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 點數、浮水印規則與匯出限制會隨方案、平台、帳號、地區與促銷而變，要在登入的帳號裡確認，所以這篇不寫數字，以官網為準。點數的官方說法是用在圖片生成、腳本轉影片、智慧去背、進階配音這類功能，執行前畫面會顯示這次扣多少點。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -122,8 +137,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Whisper 是 OpenAI 釋出的語音辨識模型，官方 README 寫程式碼與模型權重採 MIT 授權，安裝後多一個 whisper 指令，另外需要系統裡有 ffmpeg。它和剪輯軟體最大的差別在輸出：官方原始碼的 CLI 參數 --output_format（縮寫 -f）預設是 all，可指定 txt、vtt、srt、tsv、json、jsonl 其中一種，--output_dir（縮寫 -o）決定檔案放哪，預設是目前資料夾。要一個乾淨的字幕檔，就把格式指定成 srt。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Whisper 是 OpenAI 釋出的語音辨識模型，官方 README 寫程式碼與模型權重採 MIT 授權，安裝後多一個 whisper 指令，另外需要系統裡有 ffmpeg。它和剪輯軟體最大的差別在輸出：官方原始碼的 CLI "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " --output_format（縮寫 -f）預設是 all，可指定 txt、vtt、srt、tsv、json、jsonl 其中一種，--output_dir（縮寫 -o）決定檔案放哪，預設是目前資料夾。要一個乾淨的字幕檔，就把格式指定成 srt。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -152,14 +182,26 @@
           "text": "中文還有一個坑。官方原始碼的語言清單有 100 種語言，中文只有一個 chinese（代碼 zh，別名表裡 mandarin 也指向 zh），另外單列 cantonese（yue），沒有繁簡之分，所以輸出哪一種字形不保證，得自己轉換或在翻譯那一步一起處理。字幕斷行的 --max_line_width、--max_line_count 與 --max_words_per_line 三個參數，官方都註明要先把 --word_timestamps 設成 True，而那功能官方自己標示為實驗性質。模型怎麼挑、硬體要多好，站上已經寫過。"
         },
         {
-          "type": "link",
-          "text": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
-          "url": "https://mokaair.com/zh-TW/life/whisper-local-transcription"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
+              "kind": "life",
+              "slug": "whisper-local-transcription"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
-          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+              "kind": "life",
+              "slug": "transcription-desktop-tools"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -171,8 +213,23 @@
           "text": "第一件是自動字幕。官方說明列出的可用語言有 67 種，中文與粵語（官方寫成 Cantonese/Hong Kong）都在裡面；影片有多條語音軌時，自動字幕只會是預設語言那一條。官方也列了產不出字幕的原因：音訊還在處理、語言不支援、影片太長、音質太差、開頭安靜太久，或多位講者重疊、一段裡混了多種語言。直播的自動字幕只有英文，官方寫明逐步開放給訂閱數超過 1,000 的頻道，串流要用一般延遲。"
         },
         {
-          "type": "paragraph",
-          "text": "第二件是上傳自己的字幕檔，也是把 Whisper 的成果接上平台的方法：在 YouTube Studio 左側選字幕，挑影片，按新增語言再按新增，然後選上傳檔案、自動同步或手動輸入。選上傳檔案要先決定含不含時間碼；選自動同步時，官方提醒逐字稿必須是語音辨識支援的語言、且與影片裡說的同一種語言，超過一小時或音質不佳的影片不建議這樣做。能上傳的格式官方列成三組，並註明基本格式不吃樣式標記、檔案必須是純 UTF-8。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二件是上傳自己的字幕檔，也是把 Whisper 的成果接上平台的方法：在 YouTube Studio 左側選字幕，挑影片，按新增語言再按新增，然後選上傳檔案、自動同步或手動輸入。選上傳檔案要先決定含不含時間碼；選自動同步時，官方提醒逐字稿必須是語音辨識支援的語言、且與影片裡說的同一種語言，超過一小時或音質不佳的影片不建議這樣做。能上傳的格式官方列成三組，並註明基本格式不吃樣式"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、檔案必須是純 UTF-8。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -211,9 +268,15 @@
           "text": "翻完不要直接上架。三個檢查點最會出事：數字（金額、日期、版本）有沒有被改掉、專有名詞前後是不是同一個譯法、每段字數會不會長到擋住畫面。方法很土但有效：把原文與譯文兩份字幕檔並排，先看序號對不對得上，再挑三到五段開影片對讀。"
         },
         {
-          "type": "link",
-          "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
-          "url": "https://mokaair.com/zh-TW/life/claude-for-translation-zh-tw"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 做中英日翻譯：語氣、專有名詞與術語表",
+              "kind": "life",
+              "slug": "claude-for-translation-zh-tw"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -241,18 +304,30 @@
           "text": "YouTube 的說明寫自動字幕可能因為發音、口音、方言或背景噪音而誤判，要求創作者檢查過再發布；CapCut 的說明寫自動字幕可能因為噪音、口音、語速或音質而認錯字；YouTube 對自動配音也寫了同樣的話，還特別點名專有名詞、慣用語與行話難翻。不管哪一條路，發布前逐行看過人名、品牌、數字與單位是省不掉的一道工。用了 AI 配音或 AI 翻譯配音，還要看平台對合成內容的標示規範。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "字幕只是影片的一部分。旁白、示範畫面與講解節奏怎麼安排，站上另有一篇專門寫教學影片的剪法。"
         },
         {
-          "type": "link",
-          "text": "教學影片怎麼剪：旁白、示範畫面與學習節奏",
-          "url": "https://mokaair.com/zh-TW/life/course-video-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "教學影片怎麼剪：旁白、示範畫面與學習節奏",
+              "kind": "life",
+              "slug": "course-video-editing"
+            }
+          ]
         }
       ],
       "sources": [

@@ -190,8 +190,23 @@
           "text": "表格與可讀性檢查"
         },
         {
-          "type": "paragraph",
-          "text": "程式碼區塊裡的 HTML 標籤應當作文字顯示，不能為了預覽效果直接執行。當你要示範三個反引號本身，可以使用更長的外層 fence 包住，讓內層範例保持完整。這在撰寫 SKILL.md 教學、README 範本或文件中的文件時很常見，也能避免複製後少掉結尾標記。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "程式碼區塊裡的 HTML 標籤應當作文字顯示，不能為了預覽效果直接執行。當你要示範三個反引號本身，可以使用更長的外層 fence 包住，讓內層範例保持完整。這在撰寫 SKILL.md 教學、README 範本或文件中的文件時很常見，也能避免複製後少掉結尾"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "table",

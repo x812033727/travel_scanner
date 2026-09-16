@@ -39,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "先看代理迴圈長什麼樣。Claude 官方文件把它拆成五步：模型收到提示詞，連同系統提示詞、工具定義與對話紀錄一起進去；模型判斷要回話還是呼叫工具；SDK 執行被要求的工具，把結果送回模型；中間兩步反覆跑，每跑完一圈算一個回合（turn）；直到模型給出沒有任何工具呼叫的回覆，迴圈才結束。自己刻一次不難，難的是後面那些：重試、逾時、上下文視窗塞爆要壓縮、工具權限、成本上限。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先看代理迴圈長什麼樣。Claude 官方文件把它拆成五步：模型收到提示詞，連同"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "、工具定義與對話紀錄一起進去；模型判斷要回話還是呼叫工具；SDK 執行被要求的工具，把結果送回模型；中間兩步反覆跑，每跑完一圈算一個回合（turn）；直到模型給出沒有任何工具呼叫的回覆，迴圈才結束。自己刻一次不難，難的是後面那些：重試、逾時、上下文視窗塞爆要壓縮、工具權限、成本上限。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -66,18 +81,20 @@
               "text": "所以「要不要用框架」不是非黑即白。OpenAI 的文件就直說：想自己掌握迴圈、工具派送與狀態，流程又短，那直接呼叫 Responses API 就好；要交給執行環境管回合、工具執行、護欄、交接或 session，才輪到 Agents SDK。迴圈的細節可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
             },
             {
               "type": "text",
               "text": "，代理和一般問答差在哪則看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-              "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+              "kind": "life",
+              "slug": "ai-agents-explained"
             },
             {
               "type": "text",
@@ -121,9 +138,10 @@
               "text": "金鑰各用各的環境變數：OpenAI Agents SDK 讀 OPENAI_API_KEY，Claude Agent SDK 讀 ANTHROPIC_API_KEY。Claude 的文件特別提醒，SDK 只從執行程序的環境讀金鑰，不會自動載入 .env 檔。沒申請過金鑰的話，可以先看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-              "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+              "kind": "life",
+              "slug": "claude-api-first-call"
             },
             {
               "type": "text",
@@ -158,18 +176,20 @@
               "text": "護欄分三種，官方文件叫 input guardrails、output guardrails 與 tool guardrails；文件舉的例子是用便宜又快的模型先擋掉惡意用法，省下貴模型的錢。MCP 支援四種接法：讓 Responses API 代為呼叫的 HostedMCPTool、自己連的 Streamable HTTP、HTTP with SSE，以及 stdio。倉庫授權是 MIT，pyproject.toml 標的版本是 0.22.2。MCP 是什麼可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
             },
             {
               "type": "text",
               "text": "，交接與分工則看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration"
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
             },
             {
               "type": "text",
@@ -187,8 +207,23 @@
           "text": "這一套的定位最直白。官方文件說它給你的是跑 Claude Code 的那一套工具、代理迴圈與上下文管理，只是變成 Python 與 TypeScript 的函式庫；想用別的語言驅動同一個迴圈，文件的建議是把 CLI 當子程序跑，帶 -p 與 --output-format json。兩種語言的套件都內建 Claude Code 的原生執行檔，多數情況不用另外裝。"
         },
         {
-          "type": "paragraph",
-          "text": "文件列出可以在 SDK 裡用的能力：內建工具（讀寫檔案、執行指令、搜尋網路）、hooks（在代理生命週期的關鍵點插自己的程式）、子代理、MCP、權限（哪些工具自動跑、哪些要核准）、sessions（跨次對話保留脈絡，可續接或分岔），以及會從專案的 .claude/ 與使用者家目錄自動載入的 skills、commands 與 memory。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件列出可以在 SDK 裡用的能力：內建工具（讀寫檔案、執行指令、搜尋網路）、hooks（在代理生命週期的關鍵點插自己的程式）、子代理、MCP、權限（哪些工具自動跑、哪些要核准）、sessions（跨次對話保留脈絡，可續接或分岔），以及會從專案的 .claude/ 與使用者家目錄自動載入的 "
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "、commands 與 memory。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -208,27 +243,30 @@
               "text": "迴圈的上限也在這裡設：max_turns 只算有工具呼叫的回合，max_budget_usd 照花費設上限；官方建議正式環境預設就設一個預算，否則迴圈會一直跑到模型自己覺得做完為止。授權要看兩層：倉庫的 LICENSE 是 MIT，pyproject.toml 標的版本是 0.2.152，但文件的授權一節寫的是「Claude Agent SDK 的使用受 Anthropic 商業服務條款規範」，個別元件另有 LICENSE 的除外。這一套站上有兩篇專文："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude Agent SDK 入門",
-              "url": "https://mokaair.com/zh-TW/life/claude-code-agent-sdk"
+              "kind": "life",
+              "slug": "claude-code-agent-sdk"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude Code｜Agent SDK：保存狀態、取消與重新接續",
-              "url": "https://mokaair.com/zh-TW/life/claude-code-agent-sdk-stateful-runner"
+              "kind": "life",
+              "slug": "claude-code-agent-sdk-stateful-runner"
             },
             {
               "type": "text",
               "text": "；子代理的邊界怎麼切，可以看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "子代理（Subagent）是什麼：把有邊界的工作交出去",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-subagent"
+              "kind": "life",
+              "slug": "ai-term-subagent"
             },
             {
               "type": "text",
@@ -263,9 +301,10 @@
               "text": "記憶分兩層：checkpointer 把一條對話（thread）的狀態存成檢查點，屬於短期、單一對話內的記憶，人在迴圈裡、時光回溯與故障續跑都靠它；store 則是跨對話的長期記憶。官方的疑難排解也點名，InMemorySaver 把檢查點放在記憶體，程序一重啟就全沒了，正式環境要換成會落地的 checkpointer，並且定期清掉太舊的檢查點。這一層在講什麼，可以對照 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-agent-memory"
+              "kind": "life",
+              "slug": "ai-term-agent-memory"
             },
             {
               "type": "text",
@@ -278,12 +317,23 @@
           "inlines": [
             {
               "type": "text",
-              "text": "和同一家其他產品的關係，官方文件說得很清楚：LangChain 是代理框架，提供模型與工具的抽象與整合；LangGraph 是協調用的執行環境；LangSmith 是追蹤、評測、提示詞與部署的平台；Deep Agents 則是蓋在 LangGraph 上的 harness。文件也寫明不用 LangChain 也能用 LangGraph。倉庫授權是 MIT，libs/langgraph 的 pyproject.toml 標 1.2.11。另外，舊網址 langchain-ai.github.io 的 LangGraph 文件已經搬家，現在轉到 docs.langchain.com。harness 這個詞，站上有 "
+              "text": "和同一家其他產品的關係，官方文件說得很清楚：LangChain 是代理框架，提供模型與工具的抽象與整合；LangGraph 是協調用的執行環境；LangSmith 是追蹤、評測、提示詞與部署的平台；Deep Agents 則是蓋在 LangGraph 上的 harness。文件也寫明不用 LangChain 也能用 LangGraph。倉庫授權是 MIT，libs/langgraph 的 pyproject.toml 標 1.2.11。另外，舊網址 langchain-"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": ".github.io 的 LangGraph 文件已經搬家，現在轉到 docs.langchain.com。harness 這個詞，站上有 "
+            },
+            {
+              "type": "article",
               "text": "代理執行環境工程（Harness Engineering）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-harness-engineering"
+              "kind": "life",
+              "slug": "ai-term-harness-engineering"
             },
             {
               "type": "text",
@@ -346,9 +396,10 @@
               "text": "Google 的 Agent Development Kit（ADK）官網現在掛在 adk.dev，舊的 google.github.io/adk-docs 會轉過去。官網標的是 ADK 2.0，支援 Python、TypeScript、Go、Java 與 Kotlin 五種語言，adk-python 倉庫的授權是 Apache License 2.0，各語言套件的版本以官網為準。文件裡有 A2A 的 quickstart，也就是代理之間互相交辦任務的那個協定，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol"
+              "kind": "life",
+              "slug": "ai-term-agent2agent-protocol"
             },
             {
               "type": "text",
@@ -357,8 +408,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Microsoft Agent Framework 的文件在 Microsoft Learn 上，官方說它是 Semantic Kernel 與 AutoGen 的直接接班，由同兩個團隊做；四大區塊是 Agents、Harness Agent、Workflows 與 Integrations。Python 裝的是 agent-framework 套件，Go 版官方標公開預覽，宣告式代理、RAG、CodeAct 與 functional workflows 還沒有，倉庫授權是 MIT。文件也給了一條判準：能用一個函式解決的事就寫函式，不要動用 AI 代理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Microsoft Agent Framework 的文件在 Microsoft Learn 上，官方說它是 Semantic Kernel 與 AutoGen 的直接接班，由同兩個團隊做；四大區塊是 Agents、Harness Agent、Workflows 與 Integrations。Python 裝的是 agent-framework 套件，Go 版官方標公開預覽，宣告式代理、"
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "、CodeAct 與 functional workflows 還沒有，倉庫授權是 MIT。文件也給了一條判準：能用一個函式解決的事就寫函式，不要動用 AI 代理。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -390,9 +456,10 @@
               "text": "三套都可以往多代理走，但代價是一樣的：多一個代理就多一份上下文、多一次交接可能傳丟訊息。要不要拆，可以先看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system"
+              "kind": "life",
+              "slug": "ai-term-multi-agent-system"
             },
             {
               "type": "text",
@@ -405,19 +472,37 @@
           "text": "不想寫程式的話，框架不是唯一的路：把 MCP 伺服器接到現成的 AI 助理、用 n8n 這類工作流軟體拉節點，或做一個接 AI 的 LINE 客服機器人，也能做到類似的事。"
         },
         {
-          "type": "link",
-          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
-          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+              "kind": "life",
+              "slug": "mcp-servers-for-everyone"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "n8n 入門：用 AI 節點做自動化工作流",
-          "url": "https://mokaair.com/zh-TW/life/n8n-ai-automation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "n8n 入門：用 AI 節點做自動化工作流",
+              "kind": "life",
+              "slug": "n8n-ai-automation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-customer-service-line-bot"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
+              "kind": "life",
+              "slug": "ai-customer-service-line-bot"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -432,18 +517,20 @@
               "text": "代理會自己決定下一步，所以「跑起來了」不等於「做對了」。三家官方文件的方向一致：先用追蹤看每一步呼叫了什麼，再用評測把行為變成可以打分的東西。OpenAI 的代理安全頁面把 trace grading 與 evals 一起寫進建議清單，LangSmith 的定位裡就包含評測，Claude Agent SDK 則有 OpenTelemetry 的觀測文件。評測怎麼設計，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型與代理評測（Evals）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+              "kind": "life",
+              "slug": "ai-term-evals"
             },
             {
               "type": "text",
               "text": "；上線後怎麼顧，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "代理系統維運（AgentOps）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-agentops"
+              "kind": "life",
+              "slug": "ai-term-agentops"
             },
             {
               "type": "text",
@@ -452,8 +539,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "安全的第一個坑是提示詞注入。OpenAI 的說法是：不受信任的文字或資料進到系統，裡面藏的惡意內容試圖蓋掉原本給模型的指示，可能被用來把私人資料經由後續的工具呼叫外流。Anthropic 的部署指南舉的例子更具體：如果一個倉庫的說明檔裡寫了奇怪的指示，Claude Code 可能會把它們當成任務的一部分執行。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安全的第一個坑是"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "。OpenAI 的說法是：不受信任的文字或資料進到系統，裡面藏的惡意內容試圖蓋掉原本給模型的指示，可能被用來把私人資料經由後續的工具呼叫外流。Anthropic 的部署指南舉的例子更具體：如果一個倉庫的說明檔裡寫了奇怪的指示，Claude Code 可能會把它們當成任務的一部分執行。"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -39,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 的語言模型教材以 token 或序列的機率建模說明語言模型。token 是模型處理文字的單位，可能對應整個詞、詞的一部分、字元或其他切分；不能一律把一個中文字當成一個 token。文字先被轉成模型可處理的表示，模型再依已學到的參數與當次上下文進行運算。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的語言模型教材以 token 或序列的機率建模說明語言模型。token 是模型處理文字的單位，可能對應整個詞、詞的一部分、字元或其他切分；不能一律把一個中文字當成一個 token。文字先被轉成模型可處理的表示，模型再依已學到的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與當次上下文進行運算。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,8 +71,19 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "預訓練通常讓模型從廣泛資料學習模式；後續訓練可以調整指令遵循、偏好或特定任務表現。這些階段改變模型參數。使用時的提示詞則告訴模型這次要做什麼，例如從清單找出描述符合的物品、標記資訊不足，以及保留原始編號，通常不會因此更新底層權重。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "預訓練",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "通常讓模型從廣泛資料學習模式；後續訓練可以調整指令遵循、偏好或特定任務表現。這些階段改變模型參數。使用時的提示詞則告訴模型這次要做什麼，例如從清單找出描述符合的物品、標記資訊不足，以及保留原始編號，通常不會因此更新底層權重。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +190,48 @@
           "text": "請它指出依據、保留資料編號並列出缺少的條件。語氣與自我信心不是查證結果，實際來源與工具輸出才提供可核對的證據。"
         },
         {
-          "type": "link",
-          "text": "token（Token）是什麼：AI 如何計算文字長度",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "kind": "life",
+              "slug": "ai-term-token"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

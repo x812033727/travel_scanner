@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想在自己的電腦跑 AI 模型，又不想碰終端機，LM Studio 是最接近「裝好就能用」的一條路：一套桌面軟體，在同一個視窗裡搜尋、下載模型、對話，也能把模型開成本機 API 伺服器。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想在自己的電腦跑 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 模型，又不想碰終端機，LM Studio 是最接近「裝好就能用」的一條路：一套桌面軟體，在同一個視窗裡搜尋、下載模型、對話，也能把模型開成本機 API 伺服器。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -39,8 +54,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "官方文件的說法是讓你「在本機執行 Llama、DeepSeek、Qwen、Phi 等大型語言模型」，支援 macOS、Windows 與 Linux。官方把自家工具拆成三個，名字很像但角色不同："
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方文件的說法是讓你「在本機執行 Llama、DeepSeek、Qwen、Phi 等"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "」，支援 macOS、Windows 與 Linux。官方把自家工具拆成三個，名字很像但角色不同："
+            }
+          ]
         },
         {
           "type": "list",
@@ -74,9 +104,15 @@
           "text": "官方沒有給「幾 B 的模型對應幾 GB 記憶體」的對照表，模型要多少記憶體得看檔案大小與上下文視窗。"
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -113,23 +149,41 @@
           "text": "同一個模型底下常會冒出 Q3_K_S、Q_8 之類好幾個選項。官方文件說這些是同一個模型的複本，只是保真度不同，Q 代表「量化」，把檔案壓小、換取一部分品質。文件的建議只有一句：機器夠力就選 4-bit 或以上。"
         },
         {
-          "type": "link",
-          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "kind": "life",
+              "slug": "gguf-quantization-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "格式上，官網的模型目錄頁把模型分成 GGUF 與 MLX 兩種篩選，首頁則寫執行環境底層是 MLX 與 llama.cpp。別處抓好的 GGUF 檔可用 lms import 匯入（文件標示為實驗性），模型預設放在 ~/.lmstudio/models 底下。"
         },
         {
-          "type": "link",
-          "text": "Hugging Face 入門：找模型、看授權、下載",
-          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "kind": "life",
+              "slug": "huggingface-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -137,8 +191,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "模型抓好後到 Chat 分頁，打開模型載入器選一個模型，載入前可先改參數。官方文件對「載入模型」的定義是：配置記憶體來放模型權重與其他參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型抓好後到 Chat 分頁，打開模型載入器選一個模型，載入前可先改"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。官方文件對「載入模型」的定義是：配置記憶體來放模型權重與其他參數。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -149,13 +218,34 @@
           "text": "找不到這些選項通常是模式問題。文件說介面分成 User 與 Developer：User 只顯示對話介面、其他自動設定；Developer 開放可調的載入與推論參數，在 Settings 開啟。"
         },
         {
-          "type": "paragraph",
-          "text": "對話裡也能附檔案。官方文件寫可以附 .docx、.pdf、.txt：內容塞得進上下文視窗時整份放進對話，太長時改用檢索增強生成（RAG）。官方提醒這招時好時壞，查詢時把預期會出現在原文的名詞寫進去比較準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "對話裡也能附檔案。官方文件寫可以附 .docx、.pdf、.txt：內容塞得進上下文視窗時整份放進對話，太長時改用"
+            },
+            {
+              "type": "article",
+              "text": "檢索增強生成",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "（RAG）。官方提醒這招時好時壞，查詢時把預期會出現在原文的名詞寫進去比較準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -173,8 +263,23 @@
           "code": "lms get openai/gpt-oss-20b\nlms load openai/gpt-oss-20b\nlms server start"
         },
         {
-          "type": "paragraph",
-          "text": "文件寫伺服器啟動後監聽在 localhost 的埠 1234。OpenAI 相容端點在 v1 底下，文件列了 /v1/models、/v1/responses、/v1/chat/completions、/v1/embeddings 與 /v1/completions。現有的 OpenAI 客戶端程式可以沿用，只要把 base URL 換掉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件寫伺服器啟動後監聽在 localhost 的埠 1234。OpenAI 相容端點在 v1 底下，文件列了 /v1/models、/v1/responses、/v1/chat/completions、/v1/"
+            },
+            {
+              "type": "article",
+              "text": "embeddings",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            },
+            {
+              "type": "text",
+              "text": " 與 /v1/completions。現有的 OpenAI 客戶端程式可以沿用，只要把 base URL 換掉。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -263,9 +368,15 @@
           "text": "隱私權政策則寫 LM Studio「處理盡可能少的資訊，而且可以完全在裝置上離線運作」，除了雲端服務外不處理 App 裡的對話或文件內容。"
         },
         {
-          "type": "link",
-          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -285,14 +396,26 @@
           "text": "和 Ollama 相比，官方文件撐得住的差別有三點：介面上 LM Studio 本身就是圖形介面；格式上官網目錄用 GGUF 與 MLX 兩種篩選；授權上 Ollama 的 LICENSE 是 MIT，LM Studio 則是自家條款。速度與相容性官方沒有比較，這篇不猜。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -301,9 +424,15 @@
           "text": "LM Studio 的使用條款把你下載的模型歸類為「第三方 AI 模型」，寫明這些產品是依你和第三方供應商之間的授權協議提供給你，你要自行確保使用方式合法。所以要看兩份文件：App 能怎麼用看 LM Studio 的條款，模型能不能商用看模型自己的授權。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         }
       ],
       "sources": [

@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "抽屜底下那疊泛黃、有摺痕的老照片，用 AI 救得回來嗎？救得回一部分，但要先拆開來看：修復不是一個按鈕，而是三件不同的工作——去掉刮痕與噪點、把尺寸放大、把黑白照上色。三件事背後的模型不一樣，可信度也不一樣，其中上色那一件嚴格說起來不算還原。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "抽屜底下那疊泛黃、有摺痕的老照片，用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 救得回來嗎？救得回一部分，但要先拆開來看：修復不是一個按鈕，而是三件不同的工作——去掉刮痕與噪點、把尺寸放大、把黑白照上色。三件事背後的模型不一樣，可信度也不一樣，其中上色那一件嚴格說起來不算還原。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -105,13 +120,34 @@
           "text": "Google 相簿的 iPhone 與 iPad 版官方說明頁，把自動修圖建議列成 Enhance、Dynamic 與 AI Enhance，Actions 分頁裡點 Magic Eraser 移除干擾物，另外還有 Unblur。兩個官方寫明的限制：改良版的 Unblur 需要裝置至少 6 GB 記憶體，AI Enhance 官方頁寫目前只在美國提供，而且 Google 帳戶語言要設成英文（美國）。介面以官網當天版本為準。"
         },
         {
-          "type": "paragraph",
-          "text": "更接近「修復老照片」的是對話式編輯。Google 在 2025 年 8 月 20 日的官方部落格裡示範的講法就是 restore this old photo；同一篇寫這個功能先在美國的 Pixel 10 上線，也寫到相簿要支援 C2PA 內容憑證（Content Credentials），用來顯示一張圖是怎麼拍、怎麼編輯的。台灣什麼時候拿得到，以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更接近「修復老照片」的是對話式編輯。Google 在 2025 年 8 月 20 日的官方部落格裡示範的講法就是 restore this old photo；同一篇寫這個功能先在美國的 Pixel 10 上線，也寫到相簿要支援 C2PA "
+            },
+            {
+              "type": "article",
+              "text": "內容憑證",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            },
+            {
+              "type": "text",
+              "text": "（Content Credentials），用來顯示一張圖是怎麼拍、怎麼編輯的。台灣什麼時候拿得到，以官網為準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -195,9 +231,15 @@
           "text": "底層原理上，這類模型跟現在的生圖模型是同一個家族：它們從資料學到的分布裡取樣出一個結果，而不是從你的照片裡讀出答案，所以同一張照片跑兩次可能得到兩種顏色。"
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -247,9 +289,15 @@
           "text": "README 解釋 -w 是保真度權重，範圍 0 到 1：值越小畫面品質越高，值越大越忠於原圖；整張照片的範例用 0.7，裁切並對齊過的人臉範例用 0.5。上色用的 inference_colorization.py，官方註明是給裁切並對齊過的 512 乘 512 人臉使用。授權要看清楚：GFPGAN 是 Apache License 2.0，CodeFormer 是 S-Lab License 1.0，授權條文第一句就寫明重新散布與使用限於非商業用途。"
         },
         {
-          "type": "link",
-          "text": "AI 去背與放大：免費工具怎麼挑",
-          "url": "https://mokaair.com/zh-TW/life/ai-remove-background-upscale"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 去背與放大：免費工具怎麼挑",
+              "kind": "life",
+              "slug": "ai-remove-background-upscale"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -261,8 +309,23 @@
           "text": "免費的線上修復工具最值得先讀的不是功能介紹，是隱私政策裡講保留期限的那幾句。Remini 的隱私政策（最後更新 2026 年 7 月 20 日）寫：你上傳的圖片與影片，有訂閱的保留最多二十（20）天、沒有訂閱的保留最多七（7）天，從最近一次使用該功能起算，無論如何都會在上傳後兩（2）年內刪除。同一頁也寫「你的圖片與影片不會被用來訓練我們的 AI 技術，除非你明確選擇加入」，以及「我們不會販售、交易或主張擁有你的任何圖片或影片」。"
         },
         {
-          "type": "paragraph",
-          "text": "Google 這邊，相簿的隱私說明頁寫「我們不會把你的個人資訊賣給任何人，也不會把你存在 Photos 裡的內容用於廣告」；Gemini 功能的隱私說明頁寫「我們不會用你在 Google 相簿裡的個人資料，訓練 Google 相簿以外的生成式 AI 模型」，並寫人工審閱者不會看 Ask Photos 的回應，除非你提供意見回饋，或在極少數處理濫用的情況下。使用這些功能還有條件：年滿 18 歲、身在已推出的地區、開啟臉部分組。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 這邊，相簿的隱私說明頁寫「我們不會把你的個人資訊賣給任何人，也不會把你存在 Photos 裡的內容用於廣告」；Gemini 功能的隱私說明頁寫「我們不會用你在 Google 相簿裡的個人資料，訓練 Google 相簿以外的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 模型」，並寫人工審閱者不會看 Ask Photos 的回應，除非你提供意見回饋，或在極少數處理濫用的情況下。使用這些功能還有條件：年滿 18 歲、身在已推出的地區、開啟臉部分組。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -292,14 +355,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WebP、JPEG 與 PNG 怎麼選：用內容決定格式與壓縮",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
-          "url": "https://mokaair.com/zh-TW/life/phone-photo-declutter-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "手機照片整理順序：先保留，再刪重複，最後做真正會翻的相簿",
+              "kind": "life",
+              "slug": "phone-photo-declutter-workflow"
+            }
+          ]
         },
         {
           "type": "callout",

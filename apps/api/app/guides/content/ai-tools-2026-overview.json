@@ -26,8 +26,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "現在最常被提到的 AI 工具可以先分成六個：OpenAI 的 ChatGPT、Anthropic 的 Claude、Google 的 Gemini 是三個通用聊天助理，免費版就能做大多數日常的事；OpenAI Codex 是專門寫程式的代理；上海的 MiniMax 以影片、語音與開放權重模型見長；杭州的 DeepSeek 完全免費、模型開源，但資料存放在中國，台灣公務機關已經全面禁用。一般使用者從 ChatGPT、Claude、Gemini 任一個的免費版開始就夠，真的碰到額度上限再付費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "現在最常被提到的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工具可以先分成六個：OpenAI 的 ChatGPT、Anthropic 的 Claude、Google 的 Gemini 是三個通用聊天助理，免費版就能做大多數日常的事；OpenAI Codex 是專門寫程式的代理；上海的 MiniMax 以影片、語音與"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型見長；杭州的 DeepSeek 完全免費、模型開源，但資料存放在中國，台灣公務機關已經全面禁用。一般使用者從 ChatGPT、Claude、Gemini 任一個的免費版開始就夠，真的碰到額度上限再付費。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,46 +68,82 @@
           "text": "接下來會反覆出現三個詞。模型是背後那個經過訓練、會接話的大型語言模型，例如 GPT-5.6、Claude Opus 5、Gemini 3.6 Flash；聊天工具是你實際打開的網頁或 App，例如 ChatGPT、Claude、Gemini，同一個工具裡通常可以切換好幾個模型；代理則是能自己拆步驟、動手操作檔案或程式、跑上好幾分鐘才回報結果的工具，Codex、Claude Code、MiniMax Code 都屬於這一類。看方案時記得問三件事：免費版給哪個模型、額度多少、代理功能有沒有包含在內。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "ChatGPT 是 OpenAI 的聊天工具，也是目前使用者最多、周邊功能最齊的一個：對話、網頁搜尋、檔案上傳、圖片生成、語音、資料分析都在同一個介面。官網的免費方案頁寫明，免費使用者的日常文字對話不限次數，只有防濫用機制；檔案上傳、圖片生成、語音與資料分析則各有額度。付費方案由低到高是 Go、Plus、Pro：Go 在美國是每月 8 美元，Plus 每月 20 美元，Pro 從每月 100 美元起，另有每月 200 美元的 20 倍額度版。目前的模型家族是 GPT-5.6，分成 Sol、Terra、Luna 三個等級，最強的 GPT-6 Astra 主打最難的推理與程式工作。OpenAI 的支援地區名單有台灣，付費以美元計。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Claude 是 Anthropic 的聊天工具，長文件、寫作與程式是它被提得最多的用途。官網方案頁列出免費版就能在網頁、iOS、Android 與桌面版使用，含網頁搜尋、記憶、檔案建立、語音模式、Artifacts 與連接器，模型是 Sonnet 與 Haiku；Pro 每月 20 美元（年繳換算每月 17 美元）多了 Opus 模型、Claude Code、Cowork、Design 與 Research；Max 從每月 100 美元起，額度是 Pro 的 5 倍或 20 倍。目前的模型是 Claude Opus 5、Sonnet 5、Haiku 4.5，以及主打長時間代理工作的 Claude Fable 5.1。Anthropic 的支援名單有台灣，付費同樣以美元計。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Gemini 是 Google 的聊天工具，優勢是跟 Gmail、Google 文件、YouTube、地圖綁在一起，而且有台幣定價。免費版用 Gemini 3.6 Flash，含圖片生成、Deep Research、Gemini Live 語音與 Canvas，還有 15 GB 雲端空間。付費方案在台灣叫 Google AI Plus 每月 165 元、Google AI Pro 每月 650 元、Google AI Ultra 每月 3,300 元或 6,500 元；Pro 是多數人會考慮的一階，額度是免費版的 4 倍，附 5 TB 空間與 YouTube Premium Lite。Gemini App 的支援地區有台灣，語言含繁體中文。"
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -94,9 +155,15 @@
           "text": "Codex 不是另一個聊天機器人，而是 OpenAI 的寫程式代理：你用文字描述要做的事，它在你的專案裡讀檔案、改程式、跑測試，再把結果交回來。它有網頁版、終端機的 CLI、VS Code 等編輯器的擴充功能，以及 iOS App，全部用同一個 ChatGPT 帳號登入。依官方文件，Free、Go、Plus、Pro 四個方案都包含 Codex，差別在額度：免費版適合試幾個小任務，Plus 適合每週幾次專注的寫程式時段，Pro 的額度是 Plus 的 5 倍或 20 倍，並可用 GPT-5.3-Codex-Spark 這個快速模型；圖片生成不在免費版裡。開發者也可以改用 API 金鑰，按 API 用量付費。如果你不寫程式，可以先跳過這一段，知道它跟 Claude Code、MiniMax Code 是同一類工具就好。"
         },
         {
-          "type": "link",
-          "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
-          "url": "https://mokaair.com/zh-TW/life/codex-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Codex 是什麼：從 ChatGPT 裡的寫程式代理到 Codex CLI",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -104,22 +171,49 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "MiniMax 的公司全名是上海稀宇科技，在台灣最常被看到的產品是海螺 AI（Hailuo AI），一個做影片、圖片與音訊的生成工具。最新的模型 MiniMax H3 可以生成最長 15 秒、2K 解析度、帶原生立體聲的影片；免費使用者可以生成，但下載的影片會有浮水印，付費方案由低到高是 Standard、Pro、Master、Ultra、Max，每月配給的點數月底歸零，價格以官網為準。除了影片，MiniMax 還有語音模型 Speech 2.8、音樂模型 Music 3.0，以及開放權重的文字模型 M3：上下文長度 1M tokens，主打寫程式與代理任務，用它自家的社群授權，商用可以，年營收超過 2,000 萬美元要先取得書面授權。給寫程式的人與開發者的 Token Plan 分成 Plus 每月 22 美元、Max 每月 55 美元、Ultra 每月 132 美元。國際版海螺 AI 由新加坡公司營運，中國版的隱私協議則明寫資料存放在中國境內；國際版網站在台灣可以打開，帳號與付款細節以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 的公司全名是上海稀宇科技，在台灣最常被看到的產品是海螺 AI（Hailuo AI），一個做影片、圖片與音訊的生成工具。最新的模型 MiniMax H3 可以生成最長 15 秒、2K 解析度、帶原生立體聲的影片；免費使用者可以生成，但下載的影片會有浮水印，付費方案由低到高是 Standard、Pro、Master、Ultra、Max，每月配給的點數月底歸零，價格以官網為準。除了影片，MiniMax 還有語音模型 Speech 2.8、音樂模型 Music 3.0，以及開放權重的文字模型 M3："
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": " 1M tokens，主打寫程式與代理任務，用它自家的社群授權，商用可以，年營收超過 2,000 萬美元要先取得書面授權。給寫程式的人與開發者的 Token Plan 分成 Plus 每月 22 美元、Max 每月 55 美元、Ultra 每月 132 美元。國際版海螺 AI 由新加坡公司營運，中國版的隱私協議則明寫資料存放在中國境內；國際版網站在台灣可以打開，帳號與付款細節以官網為準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "DeepSeek 的營運公司是杭州深度求索（Hangzhou DeepSeek Artificial Intelligence Co., Ltd.）。它的網頁版與 App 官方寫明完全免費、沒有廣告、沒有內購，有網頁搜尋、深度思考模式與檔案上傳；最新的模型 DeepSeek-V4.1-Flash 的權重用 MIT 授權開源，上下文長度同樣是 1M tokens，而且能看圖。免費與開源是它的兩大吸引力，但資料流向要先知道：DeepSeek 的隱私政策明寫，個人資料在中華人民共和國境內收集、處理與存放。台灣數位發展部在 2025 年初警示公務機關與關鍵基礎設施不得使用，行政院隨後宣布公務機關全面禁用，含雲端服務、App 與地端下載；資安署 2025 年 2 月 20 日的新聞稿寫明目前未限制一般民眾下載使用，但提醒注意資安與隱私風險。如果你在公部門、學校或公營事業工作，或處理任何不能外流的資料，直接不要用。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
+              "kind": "life",
+              "slug": "deepseek-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -206,9 +300,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -232,19 +332,37 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -262,9 +380,15 @@
           "text": "身分證字號、健保卡號、信用卡號、住址與電話、密碼、公司內部文件、客戶名單、未公開的財務數字、病歷，六個工具都不要貼。就算關了模型改善，對話仍會在對方的伺服器上存放一段時間。先把要問的內容去識別化，用「某客戶」「某公司」代替真名，需要的欄位留空，得到答案再自己填回去。公務機關與學校的同仁另外要遵守行政院的生成式 AI 參考指引：機密文書由承辦人親自撰寫，不能給 AI，也不能把應保密或未經機關同意公開的資訊貼進去。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         }
       ],
       "sources": [

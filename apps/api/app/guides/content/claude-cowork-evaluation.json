@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "攝影社準備辦小型成果展，幹部想把不同成員提供的作品說明整理成統一格式。與其只問 AI 怎麼排版，他希望工具能讀取指定檔案、整理缺漏，再產出待確認的文件。Claude Cowork 可用來評估這類多步驟工作，但開始前要先界定它可以看到與修改什麼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "攝影社準備辦小型成果展，幹部想把不同成員提供的作品說明整理成統一格式。與其只問 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 怎麼排版，他希望工具能讀取指定檔案、整理缺漏，再產出待確認的文件。Claude Cowork 可用來評估這類多步驟工作，但開始前要先界定它可以看到與修改什麼。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -107,8 +122,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "第一次試作刻意放入容易發現的差異：一份漏了署名、一份同時有舊版和新版標記、一份說明內含與任務無關的指令。先記下正確處理方式，再看輸出。文件中的文字應當作資料，不應因為它要求更改工作範圍，就被視為幹部新的授權。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次試作刻意放入容易發現的差異：一份漏了署名、一份同時有舊版和新版"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、一份說明內含與任務無關的指令。先記下正確處理方式，再看輸出。文件中的文字應當作資料，不應因為它要求更改工作範圍，就被視為幹部新的授權。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +231,26 @@
           "text": "雲端 Cowork 透過桌面讀取的檔案會送至伺服器處理。先確認資料可用於這種工作方式，再連接所需的副本。"
         },
         {
-          "type": "link",
-          "text": "評估 AI 代理服務的權限與成果",
-          "url": "https://mokaair.com/zh-TW/life/agent-service-evaluation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "評估 AI 代理服務的權限與成果",
+              "kind": "life",
+              "slug": "agent-service-evaluation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解生成式 AI 的能力與驗收",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解生成式 AI 的能力與驗收",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
         }
       ],
       "sources": [

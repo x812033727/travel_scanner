@@ -75,8 +75,23 @@
           "text": "Google 要分兩邊看。Google DeepMind 的部落格有官方 RSS，今天讀到 100 筆，最新一筆標的是 9 月 8 日；同一頁的頁尾還放了一個官方訂閱表單，標題原文是「Sign up for updates on our latest innovations」，這是本篇列到的來源裡，唯一一個在廠商官方頁面上直接看得到的電子報入口。Gemini 的模型細節另外一條線是開發者文件的釋出說明頁，那一頁逐日列，今天最上面三條分別標 9 月 3 日、9 月 2 日與 9 月 1 日。"
         },
         {
-          "type": "paragraph",
-          "text": "剩下幾家的情況：Meta 的 AI 部落格今天讀得到，列表上最新的文章標在 7 月，但沒有 RSS，rss 與 feed 兩個路徑都是 404；Microsoft 的官方新聞室有一個 AI 主題頁，頁面上就掛著一個標示為訂閱 RSS 的連結，指到官方 feed；Mistral 的新聞 RSS 今天 86 筆；DeepSeek 把模型公告放在官方 API 文件底下的 news 區，沒有 RSS，試出來的 rss.xml 回的是一頁文件而不是 feed；Qwen 的官方部落格是前端渲染、程式讀不到內容，改追它在 Hugging Face 的官方帳號最實際；Hugging Face 自己的部落格有 RSS，今天 862 筆。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "剩下幾家的情況：Meta 的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 部落格今天讀得到，列表上最新的文章標在 7 月，但沒有 RSS，rss 與 feed 兩個路徑都是 404；Microsoft 的官方新聞室有一個 AI 主題頁，頁面上就掛著一個標示為訂閱 RSS 的連結，指到官方 feed；Mistral 的新聞 RSS 今天 86 筆；DeepSeek 把模型公告放在官方 API 文件底下的 news 區，沒有 RSS，試出來的 rss.xml 回的是一頁文件而不是 feed；Qwen 的官方部落格是前端渲染、程式讀不到內容，改追它在 Hugging Face 的官方帳號最實際；Hugging Face 自己的部落格有 RSS，今天 862 筆。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -86,18 +101,20 @@
               "text": "這九家 2026 年到目前為止各發了什麼，站上已經按官方公告日整理成一條時間軸："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
-              "url": "https://mokaair.com/zh-TW/life/ai-model-release-timeline-2026"
+              "kind": "life",
+              "slug": "ai-model-release-timeline-2026"
             },
             {
               "type": "text",
               "text": "；想先知道這些名字分別是什麼東西、誰做什麼用的，可以看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-              "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
             },
             {
               "type": "text",
@@ -117,8 +134,43 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "新聞稿講的是故事，規格寫在另外三種頁面上，而且這三種頁面幾乎不會被轉述，所以自己去看反而最省時間。第一種是模型卡。Hugging Face 的官方文件講得很白：模型卡就是模型倉庫裡的 README.md，是一個帶有 YAML 中繼資料的 Markdown 檔，應該寫出這個模型是什麼、預期用途與限制（含偏誤與倫理考量）、訓練參數與實驗資訊、用了哪些資料集，以及評測結果。授權欄也在這裡，這是判斷一個開放權重模型能不能商用的地方。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "新聞稿講的是故事，規格寫在另外三種頁面上，而且這三種頁面幾乎不會被轉述，所以自己去看反而最省時間。第一種是模型卡。Hugging Face 的官方文件講得很白：模型卡就是模型倉庫裡的 README.md，是一個帶有 YAML 中繼資料的 Markdown 檔，應該寫出這個模型是什麼、預期用途與限制（含偏誤與倫理考量）、訓練"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與實驗資訊、用了哪些資料集，以及"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "結果。授權欄也在這裡，這是判斷一個"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型能不能商用的地方。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -142,18 +194,20 @@
               "text": "模型卡怎麼讀、授權欄那些字母代表什麼，站上有一篇專門寫這件事："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hugging Face 入門：找模型、看授權、下載",
-              "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+              "kind": "life",
+              "slug": "huggingface-guide"
             },
             {
               "type": "text",
               "text": "。模型卡與 system card 裡的評測數字要怎麼看才不會被誤導，另外一篇寫得比較細："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱",
-              "url": "https://mokaair.com/zh-TW/life/ai-benchmarks-explained"
+              "kind": "life",
+              "slug": "ai-benchmarks-explained"
             },
             {
               "type": "text",
@@ -175,8 +229,43 @@
           "text": "arXiv 也有官方的郵件訂閱，做法寫在它的說明頁上：寄一封純文字信給對應的檔案庫信箱，主旨寫 subscribe 加上你的名字，內文用 add 指定子類別。官方特別提醒信要用純 ASCII 文字寄，格式化信件會被系統忽略。這是本篇列到的第二個官方郵件訂閱入口，也是唯一一個學術來源的。"
         },
         {
-          "type": "paragraph",
-          "text": "資安標準看 OWASP 的生成式 AI 安全專案，官網有 RSS，首頁上也有官方電子報的訂閱區塊，原文寫的是「Join the Newsletter」。它的 LLM 風險清單是提示詞注入這類名詞的原始出處，被引用得很多，但引用的人常常改寫過，直接看原文比較準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "資安標準看 OWASP 的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 安全專案，官網有 RSS，首頁上也有官方電子報的訂閱區塊，原文寫的是「Join the Newsletter」。它的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 風險清單是"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "這類名詞的原始出處，被引用得很多，但引用的人常常改寫過，直接看原文比較準。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -194,18 +283,20 @@
               "text": "官方公告裡的專有名詞如果卡住，可以先翻"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
-              "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+              "kind": "life",
+              "slug": "ai-glossary-50-terms"
             },
             {
               "type": "text",
               "text": "；官方自己也會把話講得比實際能力漂亮，這部分的落差整理在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 能與不能：2026 年的誠實盤點",
-              "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+              "kind": "life",
+              "slug": "ai-hype-vs-reality-2026"
             },
             {
               "type": "text",
@@ -364,14 +455,26 @@
           "text": "查證這篇時有三個官網讀不到：OpenAI 的網站與說明中心回 HTTP 403、Perplexity 的網站回 403、歐盟法規資料庫 EUR-Lex 沒有回正常內容。遇到這種情況，正確的做法是換同一家的其他官方入口，例如 OpenAI 的官方新聞 RSS、Grok 的開發者文件，或歐盟執委會自己的 AI Act 頁面，而不是改去看轉述。反過來說，一則消息在官網上找不到任何對應頁面，就先當成還沒確認，不要因為它被很多人轉發就當真。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         }
       ],
       "sources": [

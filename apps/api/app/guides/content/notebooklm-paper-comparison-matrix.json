@@ -55,18 +55,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "證據矩陣",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -88,8 +90,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "先只讀標題、摘要與方法開頭，為三篇編 P1、P2、P3。P1 是 2020 年的 Dense Passage Retrieval，探討用監督資料訓練雙編碼器做段落檢索。P2 是 2023 年的 HyDE，探討缺乏目標任務相關性標籤時，以假想文件協助檢索。P3 是 2024 年的 Lost in the Middle，研究相關資訊所在位置與上下文長度如何影響作答。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先只讀標題、摘要與方法開頭，為三篇編 P1、P2、P3。P1 是 2020 年的 Dense Passage Retrieval，探討用監督資料訓練雙編碼器做段落檢索。P2 是 2023 年的 HyDE，探討缺乏目標任務相關性標籤時，以假想文件協助檢索。P3 是 2024 年的 Lost in the Middle，研究相關資訊所在位置與"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "如何影響作答。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -184,9 +201,10 @@
               "text": "交付前在解壓根目錄執行 python research_checks.py papers 60，確認 PDF 與授權紀錄一致，再人工抽查每篇至少一個數字與一個限制。最後將研究空缺接到 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "有更新紀錄的專題報告",
-              "url": "https://mokaair.com/zh-TW/life/gemini-research-report-workshop"
+              "kind": "life",
+              "slug": "gemini-research-report-workshop"
             },
             {
               "type": "text",
@@ -234,27 +252,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research：研究計畫、來源與報告",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 多格式教材：講義、語音與影片摘要一致性檢查",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-multiformat-lesson-pack"
+              "kind": "life",
+              "slug": "notebooklm-multiformat-lesson-pack"
             },
             {
               "type": "text",
@@ -273,9 +294,15 @@
           "url": "https://mokaair.com/guides/notebooklm-paper-comparison-matrix/research-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

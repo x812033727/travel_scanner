@@ -25,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MiniMax 的 M 系列是這家公司的文字與多模態語言模型線。2026 年 9 月 14 日在官網與 Hugging Face 官方組織頁上，最新版本是 MiniMax-M3，前幾代 M2、M2.1、M2.5、M2.7 仍可透過 API 呼叫，權重也都能下載。要注意的是授權：每一代條款都重寫過，能不能拿去做生意得一代一代看。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 的 M 系列是這家公司的文字與"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "語言模型線。2026 年 9 月 14 日在官網與 Hugging Face 官方組織頁上，最新版本是 MiniMax-M3，前幾代 M2、M2.1、M2.5、M2.7 仍可透過 API 呼叫，權重也都能下載。要注意的是授權：每一代條款都重寫過，能不能拿去做生意得一代一代看。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -38,13 +53,34 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "MiniMax 官網把自家模型分成文字、影片、語音、音樂幾條線。M 系列是文字那一條，也是可以下載權重自己部署的那一條，官方 API 文件把它描述為用於代理（Agent）推理、工具呼叫、寫程式與長文本任務的語言模型。只用海螺 AI 聊天或生影片不會碰到這些名字，要接進自己的軟體才需要挑版本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 官網把自家模型分成文字、影片、語音、音樂幾條線。M 系列是文字那一條，也是可以下載權重自己部署的那一條，官方 API 文件把它描述為用於代理（Agent）推理、工具呼叫、寫程式與長文本任務的語言模型。只用海螺 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 聊天或生影片不會碰到這些名字，要接進自己的軟體才需要挑版本。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -89,32 +125,56 @@
           "text": "M 系列是混合專家架構。MiniMax-M2 的模型卡寫 2,300 億總參數、每個 token 啟用 100 億，M2.1 在官方 API 文件裡相同。M2.5 與 M2.7 的模型卡沒寫參數，Hugging Face 頁面統計 2,290 億，M2.7 的設定檔顯示 256 個專家、每次挑 8 個。M3 寫約 4,280 億參數、約 230 億啟用。"
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合專家模型（Mixture of Experts）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合專家模型（Mixture of Experts）是什麼",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "上下文視窗上，官方 API 文件寫 M2 到 M2.7 都是 204,800 個 token，M3 是 1,000,000 個 token；官網 M3 產品頁寫最高 1,000,000 token 並保證至少 512K。M1 的模型卡寫原生支援 1,000,000 token。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "推理的開關方式各代不同。M2 的模型卡說它是交錯思考模型，回覆裡的思考內容用 think 標籤包住，下一輪要原樣送回去。M3 提供 thinking 參數三種模式：enabled 永遠思考、adaptive 由模型決定、disabled 關掉以換速度。"
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -189,18 +249,45 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "M 系列常被稱為開源模型，精確的說法是開放權重，也有人寫成開源權重：MiniMax 把訓練完成的權重放上 Hugging Face 讓人下載、部署與微調，但沒有公開訓練資料與完整訓練流程。開源的定義還包含任何人、任何用途都能使用，而 M2.7 的非商業條款與 M3 的商用標示義務都不符合，只有 M1 的 Apache 2.0 是例外。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "M 系列常被稱為開源模型，精確的說法是開放權重，也有人寫成開源權重：MiniMax 把訓練完成的權重放上 Hugging Face 讓人下載、部署與"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，但沒有公開訓練資料與完整訓練流程。開源的定義還包含任何人、任何用途都能使用，而 M2.7 的非商業條款與 M3 的商用標示義務都不符合，只有 M1 的 Apache 2.0 是例外。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -224,8 +311,23 @@
           "code": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"MiniMax-M3\",\n    max_tokens=1000,\n    messages=[{\"role\": \"user\", \"content\": \"用三句話說明什麼是上下文視窗\"}],\n)\n\nfor block in response.content:\n    if block.type == \"thinking\":\n        print(block.thinking)\n    elif block.type == \"text\":\n        print(block.text)"
         },
         {
-          "type": "paragraph",
-          "text": "按量計費寫在官方 Pay as You Go 頁，幣別是美元，文件沒有台幣定價。M3 輸入 512K token 以內是輸入 0.3 美元、輸出 1.2 美元，超過 512K 是 0.6 與 2.4 美元，兩段都標為長期五折後的價，提示詞快取讀取 0.06 與 0.12 美元。M2.7 與 Legacy 的 M2.5、M2.1、M2 同為 0.3 與 1.2 美元，highspeed 版 0.6 與 2.4 美元。另有 priority 服務層，價格是標準價的 1.5 倍。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "按量計費寫在官方 Pay as You Go 頁，幣別是美元，文件沒有台幣定價。M3 輸入 512K token 以內是輸入 0.3 美元、輸出 1.2 美元，超過 512K 是 0.6 與 2.4 美元，兩段都標為長期五折後的價，"
+            },
+            {
+              "type": "article",
+              "text": "提示詞快取",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "讀取 0.06 與 0.12 美元。M2.7 與 Legacy 的 M2.5、M2.1、M2 同為 0.3 與 1.2 美元，highspeed 版 0.6 與 2.4 美元。另有 priority 服務層，價格是標準價的 1.5 倍。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -264,24 +366,48 @@
           "text": "怎麼挑：長文本、寫程式與代理任務用 M3；預算敏感、任務單純用 M2.7 或 Legacy 版本；想在自己機器上跑，先讀那一版授權檔再決定要不要投硬體；只要生影片或配音，直接用對應的影片與語音模型。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
-          "url": "https://mokaair.com/zh-TW/life/minimax-agent-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
+              "kind": "life",
+              "slug": "minimax-agent-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         }
       ],
       "sources": [

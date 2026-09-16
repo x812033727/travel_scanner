@@ -56,8 +56,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "先列出顧客可能接觸的地方，再用訪談、詢問紀錄與實際服務流程確認。每個階段記錄顧客想完成的事、使用的管道、需要的資訊、目前遇到的阻礙，以及內部由誰處理。未知的部分先標記，不必為了畫滿流程而補上想像。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先列出顧客可能接觸的地方，再用訪談、詢問紀錄與實際服務流程確認。每個階段記錄顧客想完成的事、使用的管道、需要的資訊、目前遇到的阻礙，以及內部由誰處理。未知的部分先"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不必為了畫滿流程而補上想像。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -107,8 +122,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "檢查事件是否漏送、重複觸發或把失敗提交當成成功。可以在自己的測試裝置啟用除錯模式，用 DebugView 核對事件與參數，再實際走過成功及失敗流程。Google 說明指出，隱私控制或未同意分析 Cookie 等情況可能使除錯事件不可見。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檢查事件是否漏送、重複觸發或把失敗提交當成成功。可以在自己的測試裝置啟用除錯模式，用 DebugView 核對事件與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，再實際走過成功及失敗流程。Google 說明指出，隱私控制或未同意分析 Cookie 等情況可能使除錯事件不可見。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,19 +226,37 @@
           "text": "漏斗未前進可能來自需求差異、改用其他管道或資料缺口。先核對量測，再研究原因，才能選出值得投入的改善。"
         },
         {
-          "type": "link",
-          "text": "用訪談建立有證據的人物誌",
-          "url": "https://mokaair.com/zh-TW/life/stp-persona-research"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用訪談建立有證據的人物誌",
+              "kind": "life",
+              "slug": "stp-persona-research"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查 WordPress 表單與提交結果",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查 WordPress 表單與提交結果",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "將改善排入小店行銷計畫",
-          "url": "https://mokaair.com/zh-TW/life/marketing-plan-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "將改善排入小店行銷計畫",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
         }
       ],
       "sources": [

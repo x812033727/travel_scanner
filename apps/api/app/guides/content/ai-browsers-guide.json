@@ -26,8 +26,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 瀏覽器把一個助理放進瀏覽器裡，回答你關於眼前這一頁的問題，也可能替你點按、填表、下單。結論先講：2026 年 9 月 15 日查各家官網，台灣讀者現在裝得起來的主要是 Perplexity Comet 與 Chrome 內建的 Gemini；Dia 只有 macOS 版，OpenAI 的 ChatGPT Atlas 已經停止運作，而真正替你操作網頁的代理（Agent）功能幾乎都綁著付費方案與美國地區。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 瀏覽器把一個助理放進瀏覽器裡，回答你關於眼前這一頁的問題，也可能替你點按、填表、下單。結論先講：2026 年 9 月 15 日查各家官網，台灣讀者現在裝得起來的主要是 Perplexity Comet 與 Chrome 內建的 Gemini；Dia 只有 macOS 版，OpenAI 的 ChatGPT Atlas 已經停止運作，而真正替你操作網頁的代理（Agent）功能幾乎都綁著付費方案與美國地區。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -69,9 +80,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-search-vs-google"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 搜尋 vs Google：六類問題什麼時候該用哪一個",
+              "kind": "life",
+              "slug": "chatgpt-search-vs-google"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -87,18 +104,30 @@
           "text": "它的助理叫 Comet Assistant，跑在主視窗旁的側邊欄。權限開關在設定的隱私與安全性頁：你可以允許或禁止它讀取瀏覽紀錄、瀏覽網頁與和網站互動，也能把特定網站加進封鎖清單，官方舉的例子就是自己的網路銀行。官方說明另外寫得很直白：Comet 不會取得你的密碼與付款資料。企業版管理員還能逐個網域設成 Browser Control、Read Only 或 No Access。"
         },
         {
-          "type": "link",
-          "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/perplexity-ai-search-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "OpenAI 這邊要改口徑。官方說明文件寫「Atlas is scheduled to stop working on August 9, 2026」，給了大約 30 天緩衝，要使用者先把書籤匯出成 HTML 檔再匯入別的瀏覽器。Atlas 從 2025 年 10 月 21 日推出到停止都只有 macOS 版，沒有出過 Windows 版。接手的是 ChatGPT 桌面版內建的瀏覽器：官方寫它在 macOS 與 Windows 的桌面版裡，能開多個分頁、下載檔案、等你登入。另外有一個跑在雲端的 cloud browser，遇到登入頁會停下來，用獨立的安全表單請你輸入帳密。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+              "kind": "life",
+              "slug": "chatgpt-agent-mode-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -118,9 +147,15 @@
           "text": "代理功能 Google 叫它 auto browse，條件寫得很清楚：18 歲以上、人在美國、裝置語言設成英文、帳號要有 Google AI Pro 或 Google AI Ultra，安全瀏覽要開在增強或標準保護，目前也還沒開放到 Live 對話與 iPhone、iPad。換句話說，台灣讀者今天在 Chrome 裡拿得到的是第 1 層與第 2 層。想先體驗代理操作，另一條路是用擴充功能把別家的代理接進來。"
         },
         {
-          "type": "link",
-          "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
-          "url": "https://mokaair.com/zh-TW/life/claude-in-chrome-browser-agent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+              "kind": "life",
+              "slug": "claude-in-chrome-browser-agent"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -193,9 +228,15 @@
           "text": "第一類是提示詞注入：網頁裡藏著一段寫給 AI 看的指令，助理讀到之後照著做，而不是照你說的做。各家官方文件都寫進去了。微軟的支援頁直接舉例：你請 Copilot 照食譜頁面訂食材，頁面裡可能藏著要它改去別的網站蒐集敏感資訊的文字。Dia 的安全頁把防線一條條列出來——不自動開啟模型產生的網址、代理模式看不到密碼欄位與不可逆的按鈕、不會自己導覽到別的網站——同時也承認防線不完美。OpenAI 的桌面版瀏覽器說明則給了一句可以直接當原則用的話：把網站內容當成不可信的資料。"
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,9 +247,15 @@
           "text": "第三類是隱私設定，而且多半預設打開。Dia 官方寫預設會拿一部分內容資料改進產品，這些資料不綁帳號、保留 30 天後刪除，可以在設定裡關掉；Chrome 的 Gemini 預設會分享你目前的分頁，這個預設值也能在 Chrome 設定裡關掉。裝完任何一個 AI 瀏覽器，第一件事就是把分享內容、預設分享分頁、記憶這幾個開關找出來，自己決定。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -242,14 +289,26 @@
           "text": "最後一句提醒：AI 瀏覽器讓分頁更好用，也讓隨手開一堆分頁的成本更低。把真正要留下來的東西整理成可以再次打開的收藏，比讓助理每次重讀一遍有用。"
         },
         {
-          "type": "link",
-          "text": "瀏覽器書籤太多怎麼辦：用正在做的事整理，讓收藏能再次開啟",
-          "url": "https://mokaair.com/zh-TW/life/browser-bookmark-project-folders"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "瀏覽器書籤太多怎麼辦：用正在做的事整理，讓收藏能再次開啟",
+              "kind": "life",
+              "slug": "browser-bookmark-project-folders"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
-          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+              "kind": "life",
+              "slug": "mcp-servers-for-everyone"
+            }
+          ]
         }
       ],
       "sources": [

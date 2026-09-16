@@ -26,17 +26,48 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "台灣讀者最熟的平台是 LINE，官方帳號接上 Messaging API 就能變成會回話的機器人。程式碼可以整段交給 AI 代理，真正卡住人的是設定：帳號怎麼開、金鑰在哪拿、webhook 為什麼要 HTTPS 公開網址、簽章怎麼驗。搜「LINE 機器人 AI」找到的教學，多半也卡在同一個地方。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣讀者最熟的平台是 LINE，官方帳號接上 Messaging API 就能變成會回話的機器人。程式碼可以整段交給 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "，真正卡住人的是設定：帳號怎麼開、金鑰在哪拿、webhook 為什麼要 HTTPS 公開網址、簽章怎麼驗。搜「LINE 機器人 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」找到的教學，多半也卡在同一個地方。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇帶你做一個回聲機器人：你傳什麼，它就回什麼，通了再加小功能。過程分成建帳號、拿金鑰、本機測試、部署上線四段，每段都有能自己確認的檢查點。"
         },
         {
-          "type": "link",
-          "text": "Vibe coding：不會寫程式也能做出第一個網站",
-          "url": "https://mokaair.com/zh-TW/life/vibe-coding-first-website"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Vibe coding：不會寫程式也能做出第一個網站",
+              "kind": "life",
+              "slug": "vibe-coding-first-website"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -84,9 +115,15 @@
           "text": "請 AI 產生程式時，讓它一律從環境變數讀金鑰，別把真正的值貼進對話，也別提交到版本庫。channel secret 一旦重新發行舊的立刻失效，本來會過的簽章驗證會整批失敗。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜專案資料與操作安全",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-project-data-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜專案資料與操作安全",
+              "kind": "life",
+              "slug": "claude-code-project-data-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -118,14 +155,26 @@
           "text": "讓代理自己跑安裝指令前，先確認它的執行範圍限制在這個專案資料夾裡。程式到手先在本機跑起來，看有沒有印出監聽的埠號。"
         },
         {
-          "type": "link",
-          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -237,9 +286,15 @@
           "text": "改完自己看一遍再測。最值得檢查的是：金鑰有沒有被寫進檔案、使用者傳來的內容會不會被當成指令執行、例外時伺服器會不會停掉。"
         },
         {
-          "type": "link",
-          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+              "kind": "life",
+              "slug": "ai-code-review-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -255,14 +310,26 @@
           "text": "部署前先把程式放進版本控制，環境變數檔留在本機；換網址後一定要重新 Verify 並自己傳一句話確認。"
         },
         {
-          "type": "link",
-          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
-          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+              "kind": "life",
+              "slug": "deploy-ai-built-site-to-vps"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+              "kind": "life",
+              "slug": "ai-coding-git-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -325,9 +392,15 @@
           "text": "Verify 顯示 Success 代表 LINE 找得到你的伺服器；日誌出現事件代表請求真的送到；收到回覆代表 reply token 用成功。卡住時先判斷斷在哪段，再改那一段。"
         },
         {
-          "type": "link",
-          "text": "Claude Code 入門：認識工具與第一條學習路線",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code 入門：認識工具與第一條學習路線",
+              "kind": "life",
+              "slug": "claude-code-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

@@ -115,8 +115,23 @@
           "text": "Dcard Pixel 的基本程式碼可記錄頁面瀏覽，購買或加入購物車等標準事件另行設定。原創品牌先盤點網站已有的追蹤，選擇適合的安裝方式；可以依官方手冊手動或透過 GTM 設定，但不因為想看更多資料，就重複裝上數組基本程式碼。"
         },
         {
-          "type": "paragraph",
-          "text": "安裝後逐項測試對應行為，用官方 Pixel Helper 與後台事件狀態核對。瀏覽容量表、加入購物車與完成購買應有不同定義，測試訂單另行標記。追蹤仍涉及資料蒐集，需確認網站權限、對訪客的說明與適用規範，不以安裝成功代替資料使用責任。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "安裝後逐項測試對應行為，用官方 Pixel Helper 與後台事件狀態核對。瀏覽容量表、加入購物車與完成購買應有不同定義，測試訂單另行"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。追蹤仍涉及資料蒐集，需確認網站權限、對訪客的說明與適用規範，不以安裝成功代替資料使用責任。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -201,19 +216,37 @@
           "text": "先確認事件來源與歸因範圍，再計算廣告成果。內容授權、刊登政策與一般看板發文規範也要分別核對。"
         },
         {
-          "type": "link",
-          "text": "取得心得內容的授權並回應評價",
-          "url": "https://mokaair.com/zh-TW/life/ugc-word-of-mouth"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "取得心得內容的授權並回應評價",
+              "kind": "life",
+              "slug": "ugc-word-of-mouth"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "確認創作者合作範圍與驗收",
-          "url": "https://mokaair.com/zh-TW/life/influencer-collaboration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "確認創作者合作範圍與驗收",
+              "kind": "life",
+              "slug": "influencer-collaboration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把廣告文案的主張與條件寫清楚",
-          "url": "https://mokaair.com/zh-TW/life/marketing-copywriting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把廣告文案的主張與條件寫清楚",
+              "kind": "life",
+              "slug": "marketing-copywriting"
+            }
+          ]
         }
       ],
       "sources": [

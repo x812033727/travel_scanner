@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "網站有一百篇文章，網站地圖卻列出數千個網址，不一定表示內容變豐富了。分類、排序參數和不同版本都可能讓清單膨脹。製作 Sitemap 的第一步，是決定哪些網址值得讓搜尋引擎發現，而不是把看得到的連結全部倒進檔案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網站有一百篇文章，網站地圖卻列出數千個網址，不一定表示內容變豐富了。分類、排序"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "和不同版本都可能讓清單膨脹。製作 Sitemap 的第一步，是決定哪些網址值得讓搜尋引擎發現，而不是把看得到的連結全部倒進檔案。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +216,37 @@
           "text": "Sitemap 提供發現網址的線索，無法替代存取控制、轉址或索引設定。先確認希望頁面呈現的結果，再選擇對應的處理方法。"
         },
         {
-          "type": "link",
-          "text": "先設定 Search Console 與理解各階段",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先設定 Search Console 與理解各階段",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "辨識抓取預算是否真是問題",
-          "url": "https://mokaair.com/zh-TW/life/crawl-budget-diagnosis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨識抓取預算是否真是問題",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "釐清重複內容與頁面分工",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-cannibalization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "釐清重複內容與頁面分工",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
         }
       ],
       "sources": [

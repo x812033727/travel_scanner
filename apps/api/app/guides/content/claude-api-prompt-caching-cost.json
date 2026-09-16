@@ -30,8 +30,23 @@
           "text": "用 Claude API 寫一個小工具，第一個月的帳單常常比預期高一截。原因多半只有一個：模型沒有記憶，每次呼叫都要把整段系統提示與背景知識重送一遍，輸入 token 一天就累積幾百萬個。結論可以先講：先到主控台看用量分佈，找出被重送最多次的那段長前綴，標成提示快取。依 Anthropic 官方文件，快取讀取只收基礎輸入價的 0.1 倍，寫入 1.25 倍，讀一次就回本；不急的工作再丟批次，輸入與輸出照標價的 50% 計費。"
         },
         {
-          "type": "paragraph",
-          "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件，把三個省錢手段由易到難講一遍：提示快取、批次處理、選對模型。每一個都寫清楚它砍掉帳單的哪一塊、代價是什麼、什麼情況反而更貴，參數名稱照官方文件。最後用一個每天呼叫 200 次的小工具做試算，看三個手段各砍掉多少，再列四個常見錯誤。價格與規則換得很快，動手前以官網當下的頁面為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件，把三個省錢手段由易到難講一遍：提示快取、批次處理、選對模型。每一個都寫清楚它砍掉帳單的哪一塊、代價是什麼、什麼情況反而更貴，"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "名稱照官方文件。最後用一個每天呼叫 200 次的小工具做試算，看三個手段各砍掉多少，再列四個常見錯誤。價格與規則換得很快，動手前以官網當下的頁面為準。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -64,8 +79,23 @@
           "text": "價錢分三種。寫進快取的那一次，5 分鐘版收基礎輸入價的 1.25 倍，1 小時版收 2 倍；之後每次讀到快取只收 0.1 倍，Fable 5.1 更只收 0.025 倍。官方文件直接把回本點寫出來：5 分鐘版讀一次就回本，1 小時版讀兩次回本。存活時間預設 5 分鐘，每讀一次就免費續命，所以只要呼叫沒斷超過 5 分鐘，同一份前綴可以一直接力用下去。要注意這段時間是從發出請求那一刻算起，不是從回答結束算。想撐久一點就用 1 小時的選項，寫法是在 cache_control 裡多一個 ttl 欄位、值填 1h；官方文件寫明沒有更長的選項。"
         },
         {
-          "type": "paragraph",
-          "text": "最小可快取長度依模型不同：Opus 5 與 Fable 5.1 是 512 個 token，Sonnet 5 與 Opus 4.8 是 1,024，Opus 4.7 是 2,048，Haiku 4.5 與 Opus 4.6、4.5 是 4,096。不到門檻不會報錯，只是靜靜地不快取，要確認有沒有中，就看回應裡的 cache_creation_input_tokens 與 cache_read_input_tokens 是不是都是 0。標記用的參數叫 cache_control，值是一個物件，type 填 ephemeral。有兩種用法：放在請求最上層是自動快取，系統會把斷點放在最後一個可快取的區塊，對話變長時自動往後移，官方建議多數情況從這個開始；放在個別內容區塊上是明確斷點，一個請求最多 4 個，超過會回 400 錯誤。快取不會跨組織共用，在 Claude API 上還按 workspace 隔離。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最小可快取長度依模型不同：Opus 5 與 Fable 5.1 是 512 個 token，Sonnet 5 與 Opus 4.8 是 1,024，Opus 4.7 是 2,048，Haiku 4.5 與 Opus 4.6、4.5 是 4,096。不到門檻不會報錯，只是靜靜地不快取，要確認有沒有中，就看回應裡的 cache_creation_input_tokens 與 cache_read_input_tokens 是不是都是 0。"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "用的參數叫 cache_control，值是一個物件，type 填 ephemeral。有兩種用法：放在請求最上層是自動快取，系統會把斷點放在最後一個可快取的區塊，對話變長時自動往後移，官方建議多數情況從這個開始；放在個別內容區塊上是明確斷點，一個請求最多 4 個，超過會回 400 錯誤。快取不會跨組織共用，在 Claude API 上還按 workspace 隔離。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -117,9 +147,15 @@
           "text": "另一個容易忽略的是對話長度。每送一則訊息，模型都要把前面整段對話重讀一次，對話越長每一則越貴，而思考用掉的 token 還是按輸出計價。換了主題就開新對話，或把前面的內容濃縮成一段摘要再接下去，比一路聊到底便宜很多。要注意換模型會讓快取失效：官方的快取診斷把 model_changed 列為第一種沒中的原因，快取按模型隔離，同一段對話中途換模型，前綴得整段重寫。"
         },
         {
-          "type": "link",
-          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+              "kind": "life",
+              "slug": "claude-model-lineup-2026"
+            }
+          ]
         },
         {
           "type": "image",
@@ -217,9 +253,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+              "kind": "life",
+              "slug": "claude-api-first-call"
+            }
+          ]
         },
         {
           "type": "paragraph",

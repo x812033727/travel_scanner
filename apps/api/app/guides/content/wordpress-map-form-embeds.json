@@ -41,8 +41,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "地圖要對應實際集合點，不只核對店名，還要檢查門牌、入口與地圖標記。有些場地名稱相似，或入口位於側巷，單靠地圖中心點容易造成誤解。正文另外寫完整地址、集合樓層及簡短入口說明，方便讀者複製或交給同行者。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "地圖要對應實際集合點，不只核對店名，還要檢查門牌、入口與地圖"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。有些場地名稱相似，或入口位於側巷，單靠地圖中心點容易造成誤解。正文另外寫完整地址、集合樓層及簡短入口說明，方便讀者複製或交給同行者。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -197,14 +212,26 @@
           "text": "擁有者能開啟表單，不代表一般訪客能作答。發布後使用未登入或非組織帳號檢查實際入口，並確認回覆摘要沒有公開不該公開的內容。"
         },
         {
-          "type": "link",
-          "text": "建立 WordPress 聯絡表單",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立 WordPress 聯絡表單",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排網站頁面與文章內容",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-posts-pages"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排網站頁面與文章內容",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
         }
       ],
       "sources": [

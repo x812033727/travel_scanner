@@ -70,8 +70,23 @@
           "text": "留存期間在「How Long Do We Keep Your Personal Data」一節，沒有天數也沒有月數，只寫在提供服務所必要的期間內保存，並舉例說只要你還有帳號就會保留。帳號在多久，資料就可能留多久。"
         },
         {
-          "type": "paragraph",
-          "text": "訓練兩份文件都寫了。隱私政策把訓練與改善自家的機器學習模型與演算法列為用途之一；簡體中文版寫可能將服務蒐集的輸入及對應輸出，用於 DeepSeek 模型訓練和服務的最佳化。服務條款第 4.3 條給了開關：在加密處理、嚴格去識別化且無法還原到特定個人的前提下以最小範圍使用，拒絕的人可以關閉「Improve the model for everyone」退出，簡體中文版把開關寫成「数据用于优化体验」。實際名稱與位置以介面為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "訓練兩份文件都寫了。隱私政策把訓練與改善自家的"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "模型與演算法列為用途之一；簡體中文版寫可能將服務蒐集的輸入及對應輸出，用於 DeepSeek 模型訓練和服務的最佳化。服務條款第 4.3 條給了開關：在加密處理、嚴格去識別化且無法還原到特定個人的前提下以最小範圍使用，拒絕的人可以關閉「Improve the model for everyone」退出，簡體中文版把開關寫成「数据用于优化体验」。實際名稱與位置以介面為準。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -116,9 +131,15 @@
           "code": "Subject: Data Subject Request - Access and Deletion\n\nHello DeepSeek Privacy Team,\n\nI am a DeepSeek account holder located in Taiwan.\nAccount email / phone: <your account>\n\nI would like to request:\n1. A copy of the personal data associated with my account.\n2. Deletion of my chat history and my account.\n3. Confirmation that my inputs and outputs are no longer used\n   for training your models.\n\nPlease confirm whether these requests can be processed for a\nuser located in Taiwan, and what identity verification you need.\n\nThank you.\n"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "table",
@@ -185,9 +206,10 @@
               "text": "模型層的安全限制和平台層的內容審查是兩件事：前者是模型被訓練成不回答，後者是服務端的過濾與記錄。想分清楚，可以看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "安全防護機制（Guardrails）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+              "kind": "life",
+              "slug": "ai-term-guardrails"
             },
             {
               "type": "text",
@@ -201,8 +223,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "政府公告有三份。2025 年 1 月 31 日，數位發展部發布「公務機關不得使用 Deepseek AI 服務以防範資安風險」，依據是行政院 2019 年公布實施的「各機關對危害國家資通安全產品限制使用原則」，理由寫其運行涉跨境傳輸及資訊外洩等資安疑慮，屬危害國家資通安全產品。適用對象是中央與地方機關（構）、公立學校、公營事業、行政法人，以及自行或委外營運提供公眾活動或使用之場地；關鍵基礎設施提供者與政府捐助之財團法人參考辦理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "政府公告有三份。2025 年 1 月 31 日，數位發展部發布「公務機關不得使用 Deepseek "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 服務以防範資安風險」，依據是行政院 2019 年公布實施的「各機關對危害國家資通安全產品限制使用原則」，理由寫其運行涉跨境傳輸及資訊外洩等資安疑慮，屬危害國家資通安全產品。適用對象是中央與地方機關（構）、公立學校、公營事業、行政法人，以及自行或委外營運提供公眾活動或使用之場地；關鍵基礎設施提供者與政府捐助之財團法人參考辦理。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -213,9 +250,15 @@
           "text": "個人這邊的一般原則在個人資料保護法第 5 條：個人資料之蒐集、處理或利用，應尊重當事人之權益，依誠實及信用方法為之，不得逾越特定目的之必要範圍，並應與蒐集之目的具有正當合理之關聯。你貼進 AI 對話框的別人的個資，責任在你不在工具。"
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -239,36 +282,40 @@
               "text": "第三條路的前提是開放權重，看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+              "kind": "life",
+              "slug": "ai-term-open-weights"
             },
             {
               "type": "text",
               "text": "；想實際跑一次看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-              "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
             },
             {
               "type": "text",
               "text": "。沒用過 DeepSeek 的人先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "DeepSeek 是什麼：免費、開源與資料流向，用之前先知道的事",
-              "url": "https://mokaair.com/zh-TW/life/deepseek-beginner-guide"
+              "kind": "life",
+              "slug": "deepseek-beginner-guide"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
-              "url": "https://mokaair.com/zh-TW/life/deepseek-chat-and-reasoner"
+              "kind": "life",
+              "slug": "deepseek-chat-and-reasoner"
             },
             {
               "type": "text",
@@ -300,18 +347,20 @@
               "text": "別家工具也一樣。記憶功能會留下什麼，看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude 的記憶與隱私：什麼會被記住、怎麼清除、對話會不會拿去訓練",
-              "url": "https://mokaair.com/zh-TW/life/claude-memory-and-privacy"
+              "kind": "life",
+              "slug": "claude-memory-and-privacy"
             },
             {
               "type": "text",
               "text": "；把對話分享出去的後果，看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
-              "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+              "kind": "life",
+              "slug": "chatgpt-shared-links-privacy"
             },
             {
               "type": "text",

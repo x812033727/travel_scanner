@@ -118,8 +118,23 @@
           "text": "移除選單可能只是整理介面。WordPress 的 remove_menu_page 函式本身處理的是選單項目，因此單靠這類顯示調整，不能證明對應頁面或功能已被禁止。真正的權限設計要確認伺服器在請求頁面及提交操作時都有適當檢查。"
         },
         {
-          "type": "paragraph",
-          "text": "User Role Editor Pro 的管理選單模組則明確說明會同時隱藏項目並阻擋對應網址。這仍有它的設定範圍與參數行為，應測試清單、搜尋、編輯與儲存流程。不能從一個網址被阻擋，推論外掛的所有 API 或前台資料都已受同一規則保護。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "User Role Editor Pro 的管理選單模組則明確說明會同時隱藏項目並阻擋對應網址。這仍有它的設定範圍與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "行為，應測試清單、搜尋、編輯與儲存流程。不能從一個網址被阻擋，推論外掛的所有 API 或前台資料都已受同一規則保護。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -198,14 +213,26 @@
           "text": "先在測試站調整新角色，保留已確認可用的管理員登入與備份。不要直接拿唯一管理員帳號測試移除管理能力，避免把自己鎖在後台之外。"
         },
         {
-          "type": "link",
-          "text": "加強 WordPress 帳號與安全維護",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "加強 WordPress 帳號與安全維護",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "掌握 WordPress 後台基本操作",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-admin-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "掌握 WordPress 後台基本操作",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
         }
       ],
       "sources": [

@@ -30,8 +30,23 @@
           "text": "讀者在中文課程頁切換英文，卻回到英文首頁，通常不是他想要的結果。網站雖然有兩種語言，仍可能缺少逐頁的對應關係。hreflang 是把這些本地化版本告訴 Google 的方式之一，前提是網站確實有可使用的對應內容。"
         },
         {
-          "type": "paragraph",
-          "text": "開始前先選一組重要頁面，例如同一堂課的中文、英文介紹和報名說明。不要從全站批次加標記開始，而是先確認內容、網址和切換行為，再把驗證過的規則延伸到其他文章。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開始前先選一組重要頁面，例如同一堂課的中文、英文介紹和報名說明。不要從全站批次加"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "開始，而是先確認內容、網址和切換行為，再把驗證過的規則延伸到其他文章。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +216,37 @@
           "text": "沒有完成的譯文就記為缺口，不要用不存在的網址或無關首頁補齊。先讓每個版本內容可用，再維護雙向且一致的語言關係。"
         },
         {
-          "type": "link",
-          "text": "規劃 WordPress 多語系網站",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-multilingual-site"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃 WordPress 多語系網站",
+              "kind": "life",
+              "slug": "wordpress-multilingual-site"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查 canonical 指向是否一致",
-          "url": "https://mokaair.com/zh-TW/life/canonical-url-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查 canonical 指向是否一致",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "選擇子網域或子目錄",
-          "url": "https://mokaair.com/zh-TW/life/website-www-subdomains"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "選擇子網域或子目錄",
+              "kind": "life",
+              "slug": "website-www-subdomains"
+            }
+          ]
         }
       ],
       "sources": [

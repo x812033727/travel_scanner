@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "小店老闆問「AI 能幫我什麼」，答案通常不是換一套系統，而是把每天重複的文字工作交出去：回同樣的問題、翻同一份菜單、把單據排成一張表。這篇把一個月內真的能動手的六件事攤開來講，每件寫清楚用哪個工具、官網當天的費用、免費層做得到哪裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小店老闆問「"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 能幫我什麼」，答案通常不是換一套系統，而是把每天重複的文字工作交出去：回同樣的問題、翻同一份菜單、把單據排成一張表。這篇把一個月內真的能動手的六件事攤開來講，每件寫清楚用哪個工具、官網當天的費用、免費層做得到哪裡。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -86,14 +101,26 @@
           "code": "你是我的店務助理。我貼上店裡最近三十則顧客訊息。\n請做三件事：\n1. 歸納出最常被問的十個問題，依出現次數排序。\n2. 每個問題寫一則回覆草稿，限 120 字以內，語氣親切、不使用驚嘆號。\n3. 標出哪些問題的答案我必須自己確認（價格、庫存、活動日期），不要替我猜。\n不要寫進任何顧客姓名、電話或地址。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-customer-service-line-bot"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
+              "kind": "life",
+              "slug": "ai-customer-service-line-bot"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
-          "url": "https://mokaair.com/zh-TW/life/line-ai-features-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
+              "kind": "life",
+              "slug": "line-ai-features-taiwan"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -123,9 +150,15 @@
           "text": "排版可以交給 Canva 這類設計工具。但無論用哪一套，成品都要有人逐項核對品名、售價、份量、過敏原與素食標示——AI 寫錯這幾項的後果會落在現場。"
         },
         {
-          "type": "link",
-          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+              "kind": "life",
+              "slug": "canva-ai-features-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -137,22 +170,49 @@
           "text": "Google Ads 的生成圖像功能會在設定廣告活動、編輯素材資源群組、素材資源庫與部分最佳化建議裡出現，門檻寫得很具體：官方說只允許部分廣告主手動輸入提示詞生成圖像，帳戶要使用英文、荷蘭文、法文、德文、義大利文、日文、葡萄牙文或西班牙文版介面，處於有效狀態且廣告已放送至少 30 天，政策遵循記錄良好，尚未完成選舉廣告驗證，且未宣傳敏感產業內容；提示詞也只支援同一份語言清單。用繁體中文介面的台灣小店，照清單看還不能自己下提示詞生成圖像。"
         },
         {
-          "type": "paragraph",
-          "text": "其餘規格也記一下：生成圖像在素材資源庫自動保留 14 天，要延長就加進廣告活動；樣式參考圖每次最多選 5 張，且不應包含標誌、浮水印或產品圖片；生成圖像都含辨識機制，包括開源標準標記與數位隱藏式浮水印 SynthID。官方也寫著這些素材不保證通過廣告政策審核，發布前應自行確認內容正確。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其餘規格也記一下：生成圖像在素材資源庫自動保留 14 天，要延長就加進廣告活動；樣式參考圖每次最多選 5 張，且不應包含標誌、浮水印或產品圖片；生成圖像都含辨識機制，包括開源標準"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與數位隱藏式浮水印 SynthID。官方也寫著這些素材不保證通過廣告政策審核，發布前應自行確認內容正確。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Meta 把廣告端的 AI 素材功能集中在「高效速成+ 廣告創意」（Advantage+ creative），說明頁在 Meta 企業商家使用說明；該頁內容由瀏覽器端載入，本次查證只能確認頁面標題與功能名稱，功能清單與可用地區以官網為準。另一則 2026 年 8 月 19 日的公告寫，Meta AI 開始推出小型商家功能，可連結 Instagram 與 Facebook 帳號、Meta 廣告活動與 Google Workspace，分析成效、產生簡報與試算表；公告寫現在開始使用免費，之後想用更多要訂閱 Meta One。"
         },
         {
-          "type": "link",
-          "text": "Meta 廣告入門：Facebook、Instagram 與 Threads 的設定檢查",
-          "url": "https://mokaair.com/zh-TW/life/meta-ads-first-campaign"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta 廣告入門：Facebook、Instagram 與 Threads 的設定檢查",
+              "kind": "life",
+              "slug": "meta-ads-first-campaign"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google 搜尋廣告入門：關鍵字、素材與轉換檢查",
-          "url": "https://mokaair.com/zh-TW/life/google-ads-first-campaign"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google 搜尋廣告入門：關鍵字、素材與轉換檢查",
+              "kind": "life",
+              "slug": "google-ads-first-campaign"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -168,8 +228,23 @@
           "text": "評論回覆這一側，官方寫商家要先通過驗證才能回覆，回覆會經過內容政策審核，通常最多 10 分鐘、最長可能 30 天。回覆以商家名義公開顯示，不會顯示個人名稱；撰寫評論的人會收到通知，讀完後仍可修改評論。"
         },
         {
-          "type": "paragraph",
-          "text": "商家描述欄位官網標明不得超過 750 個半形字元，並提示可以利用 AI 技術輔助建立描述；但那一頁的限制寫著，這項功能僅在特定區域開放部分使用者，且僅支援某些語言，使用者需年滿 18 歲。「使用 Gemini 網頁應用程式管理 Google 商家檔案」寫得更明確：它能撰寫評論回覆、建立貼文、歸納評論裡的顧客意見，但限制清單只列荷蘭文、英文、法文、德文、北印度文、印尼文、義大利文、日文、波蘭文、葡萄牙文、西班牙文與土耳其文，沒有中文，而且只適用於 Gemini 網頁應用程式、須用個人 Google 帳戶登入。結論很直接：這一段的 AI 還幫不上中文小店，草稿自己用聊天 AI 產，回覆再貼回商家檔案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "商家描述欄位官網標明不得超過 750 個半形字元，並提示可以利用 AI 技術輔助建立描述；但那一頁的限制寫著，這項功能僅在特定區域開放部分使用者，且僅支援某些語言，使用者需年滿 18 歲。「使用 Gemini 網頁應用程式管理 Google 商家檔案」寫得更明確：它能撰寫評論回覆、建立貼文、歸納評論裡的顧客意見，但限制清單只列荷蘭文、英文、法文、德文、北印度文、印尼文、義大利文、日文、波蘭文、葡萄牙文、西班牙文與土耳其文，沒有中文，而且只適用於 Gemini 網頁應用程式、須用個人 Google 帳戶登入。結論很直接：這一段的 AI 還幫不上中文小店，草稿自己用"
+            },
+            {
+              "type": "article",
+              "text": "聊天 AI",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": " 產，回覆再貼回商家檔案。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -178,9 +253,15 @@
           "code": "以下是我這週收到的顧客評論，請逐則處理。\n每一則輸出三個欄位：\n1. 這則評論在講什麼問題（一句話）。\n2. 回覆草稿，80 字以內，先謝謝再回應具體內容，不承諾我沒說過的補償。\n3. 這則要不要我親自處理（是／否）與原因。\n不要編造店內政策，不確定的地方留「待老闆確認」。"
         },
         {
-          "type": "link",
-          "text": "Google 商家檔案怎麼管理：資格、資訊與評價回覆",
-          "url": "https://mokaair.com/zh-TW/life/google-business-profile"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google 商家檔案怎麼管理：資格、資訊與評價回覆",
+              "kind": "life",
+              "slug": "google-business-profile"
+            }
+          ]
         },
         {
           "type": "image",
@@ -215,9 +296,15 @@
           "code": "AI(\"提示詞\",[選用範圍])\n=AI(\"將客戶諮詢內容歸類為讚賞、換貨要求或退貨要求。\",C2)"
         },
         {
-          "type": "link",
-          "text": "試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-spreadsheet-automation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "試算表 AI 自動化：Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
+              "kind": "life",
+              "slug": "ai-spreadsheet-automation"
+            }
+          ]
         },
         {
           "type": "table",
@@ -313,14 +400,26 @@
           "text": "最後一件是社群貼文。把前面五段的素材集中起來再排一次月曆，比每天臨時想文案省力；每月回頭檢查成效，才知道哪一段值得繼續花錢。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做社群貼文：IG、Threads、FB 排程",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-social-media-content"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做社群貼文：IG、Threads、FB 排程",
+              "kind": "life",
+              "slug": "ai-for-social-media-content"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "小店行銷計畫怎麼寫：目標、受眾與每月檢查",
-          "url": "https://mokaair.com/zh-TW/life/marketing-plan-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小店行銷計畫怎麼寫：目標、受眾與每月檢查",
+              "kind": "life",
+              "slug": "marketing-plan-small-business"
+            }
+          ]
         }
       ],
       "sources": [

@@ -47,8 +47,23 @@
           "text": "第二件是語音克隆，分成即時（Instant Voice Cloning）與專業（Professional Voice Cloning），下面單獨講。第三件是配音翻譯（Dubbing）：上傳影片或貼一段 YouTube、TikTok 的網址，官方說可翻成 90 種以上語言並保留原講者的聲音，單檔不得超過 2 GB 也不得超過 180 分鐘；預設的第二代自動配音沒有站內編輯逐字稿的選項，舊版 Dubbing Studio 官方標示為維護模式。"
         },
         {
-          "type": "paragraph",
-          "text": "第四件是音效：用一段最長 450 個字元的提示詞生成音效，官方寫的長度上限是 30 秒，可以開啟循環拼出更長的環境音。另外還有語音轉文字、音樂與對話代理（Agent），上面這些功能官方都有對應的 API。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第四件是音效：用一段最長 450 個字元的提示詞生成音效，官方寫的長度上限是 30 秒，可以開啟循環拼出更長的環境音。另外還有"
+            },
+            {
+              "type": "article",
+              "text": "語音轉文字",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            },
+            {
+              "type": "text",
+              "text": "、音樂與對話代理（Agent），上面這些功能官方都有對應的 API。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -134,8 +149,23 @@
           "text": "即時克隆是上傳幾段錄音就馬上得到一個聲音，官方文件說沒有訓練過程。錄音官方建議大約 1 到 2 分鐘、乾淨、沒有殘響與背景雜訊，至少要錄 1 分鐘，超過 3 分鐘官方說幫助不大；檔案切成幾個不重要，重要的是總長度。存檔之前介面會要你確認你有權利、也取得同意克隆這個聲音。"
         },
         {
-          "type": "paragraph",
-          "text": "專業克隆是拿你的錄音做微調，官方要求至少 30 分鐘的高品質音訊，建議盡量接近 2 到 3 小時，方案上要 Creator 以上才有名額。送出後官方寫微調通常需要 3 到 6 小時，排隊多時可能更久、最長到 24 小時。兩者差別不只是像不像，而是穩定度：素材越多，長篇旁白裡的語氣起伏越一致。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "專業克隆是拿你的錄音做"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，官方要求至少 30 分鐘的高品質音訊，建議盡量接近 2 到 3 小時，方案上要 Creator 以上才有名額。送出後官方寫微調通常需要 3 到 6 小時，排隊多時可能更久、最長到 24 小時。兩者差別不只是像不像，而是穩定度：素材越多，長篇旁白裡的語氣起伏越一致。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -173,8 +203,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "專業克隆的官方文件寫得很直接：只能建立你自己的聲音，即使對方同意也不行。要用別人的聲音只能走即時克隆，責任落在建立的人身上。禁止使用政策第 5 條寫的是，不得為了以下情形複製他人聲音：未經同意或沒有法律權利、對當事人造成騷擾或傷害（包含未經授權的性化內容）、或以讓他人誤以為這不是人工智慧生成的方式使用。第 6 條另外禁止冒充政治候選人與民選官員。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "專業克隆的官方文件寫得很直接：只能建立你自己的聲音，即使對方同意也不行。要用別人的聲音只能走即時克隆，責任落在建立的人身上。禁止使用政策第 5 條寫的是，不得為了以下情形複製他人聲音：未經同意或沒有法律權利、對當事人造成騷擾或傷害（包含未經授權的性化內容）、或以讓他人誤以為這不是"
+            },
+            {
+              "type": "article",
+              "text": "人工智慧",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "生成的方式使用。第 6 條另外禁止冒充政治候選人與民選官員。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -185,9 +230,15 @@
           "text": "換句話說，平台擋得住隨手拿公開影片去複製名人，擋不住拿同事的語音訊息去做即時克隆。後者要靠你自己留紀錄：誰、何時、同意用在哪裡、怎麼撤回。"
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -222,38 +273,74 @@
           "text": "台灣的相關規定與各平台的標示要求另有專篇，深偽本身的判讀方式也有一篇。要自己做語音內容，周邊流程可以一起理順：錄音的降噪、成品的逐字稿，以及做成有人像影片時的工具。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
-          "url": "https://mokaair.com/zh-TW/life/adobe-podcast-audio"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Adobe Podcast 音訊處理：降噪前後應該檢查什麼",
+              "kind": "life",
+              "slug": "adobe-podcast-audio"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
-          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+              "kind": "life",
+              "slug": "transcription-desktop-tools"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看",
-          "url": "https://mokaair.com/zh-TW/life/ai-avatar-video-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看",
+              "kind": "life",
+              "slug": "ai-avatar-video-tools"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "同樣是聲音，用途不一樣工具就不一樣：想練口說或做即時口說翻譯，走的是對話式的語音模式；想要背景音樂或完整歌曲，走的是音樂生成，那邊的商用規則也自成一套。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+              "kind": "life",
+              "slug": "chatgpt-voice-mode-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/suno-music-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算",
+              "kind": "life",
+              "slug": "suno-music-generation-guide"
+            }
+          ]
         }
       ],
       "sources": [

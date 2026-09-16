@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "n8n 是一套工作流（workflow）自動化軟體，你在畫布上把節點（node）接起來，從觸發開始，中間可以放 AI Agent 節點呼叫語言模型，最後把結果送到信箱、試算表或聊天室。它可以用官方託管的 n8n Cloud，也可以照 Sustainable Use License 架在自己機器上，兩邊是同一套軟體，差別在誰顧主機、哪些功能要付費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "n8n 是一套工作流（workflow）自動化軟體，你在畫布上把節點（node）接起來，從觸發開始，中間可以放 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Agent 節點呼叫語言模型，最後把結果送到信箱、試算表或聊天室。它可以用官方託管的 n8n Cloud，也可以照 Sustainable Use License 架在自己機器上，兩邊是同一套軟體，差別在誰顧主機、哪些功能要付費。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -116,9 +131,15 @@
           "text": "不想碰伺服器的話，也有不必自架的同類服務，計費單位和 n8n 的「一次執行」不同，值得先比較。"
         },
         {
-          "type": "link",
-          "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
-          "url": "https://mokaair.com/zh-TW/life/zapier-make-ai-automation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
+              "kind": "life",
+              "slug": "zapier-make-ai-automation"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -225,14 +246,26 @@
           "text": "輸出端用的是一般節點：寄信用 Gmail、通知用 Slack、寫紀錄用 Google Sheets。要接 LINE 的人注意，官方文件寫 Line 節點從 n8n 1.64.0 起淘汰，因為 LINE Notify 已在 2025 年 4 月 1 日結束服務；要串 LINE 官方帳號，用 HTTP Request 節點自己呼叫 API。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 幫你做 LINE 機器人：從零到上線",
-          "url": "https://mokaair.com/zh-TW/life/ai-build-line-bot-tutorial"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 幫你做 LINE 機器人：從零到上線",
+              "kind": "life",
+              "slug": "ai-build-line-bot-tutorial"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -254,18 +287,45 @@
           "code": "{\n  \"mcpServers\": {\n    \"n8n\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"<MCP_URL>\",\n        \"--header\",\n        \"Authorization: Bearer ${AUTH_TOKEN}\"\n      ],\n      \"env\": {\n        \"AUTH_TOKEN\": \"<MCP_BEARER_TOKEN>\"\n      }\n    }\n  }\n}"
         },
         {
-          "type": "paragraph",
-          "text": "該用內建節點還是 MCP 伺服器當工具，官方文件有一段對照：內建節點可以把參數固定住、只留幾格讓模型填，控制較緊；MCP 伺服器給代理的空間大，代價是控制力較低、每次呼叫吃掉的上下文視窗較多。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "該用內建節點還是 MCP 伺服器當工具，官方文件有一段對照：內建節點可以把"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "固定住、只留幾格讓模型填，控制較緊；MCP 伺服器給代理的空間大，代價是控制力較低、每次呼叫吃掉的上下文視窗較多。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
-          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+              "kind": "life",
+              "slug": "mcp-servers-for-everyone"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -292,9 +352,15 @@
           "text": "第二本帳是模型的錢。AI Agent 呼叫的是你自己接上去的模型供應商，那邊照 token 另外計費，和 n8n 的執行數互不相干。n8n Cloud 另有 Gateway credits，讓 Starter 與 Pro 方案在支援的節點上改用預付點數、不必自己申請 API 金鑰，官方文件寫它從 n8n 2.36.0 起提供，Enterprise 與自架版沒有。方案頁上的 AI credits 則是 AI Assistant（預覽版）的每月額度，Starter 每月 2300 點、Pro 依方案大小是 5700 或 13700 點，不能加購也不能累積到下個月。"
         },
         {
-          "type": "link",
-          "text": "OpenRouter：一把金鑰用遍各家模型",
-          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenRouter：一把金鑰用遍各家模型",
+              "kind": "life",
+              "slug": "openrouter-multi-model-api"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -306,13 +372,34 @@
           "text": "金鑰不要打在節點的參數欄位裡，要建成憑證（credentials）。官方文件說憑證是被保管起來的驗證資訊，存檔時 n8n 會先測一次連不連得上。很多網頁 API 的憑證還有一個 Allowed HTTP Request Domains 欄位，限制這把憑證在 HTTP Request 節點裡可以打去哪些網域：全部、指定網域清單，或完全禁止，用來防止金鑰被送到不該去的地方。"
         },
         {
-          "type": "paragraph",
-          "text": "只要 AI 節點會讀到外部內容，不管是網頁、電子郵件還是別人送進來的表單，那些內容都要當成不可信的輸入，要防的是提示詞注入。先把權限縮到最小：能唯讀就不要給寫入、工具只開用得到的那幾個、先在測試帳號與測試資料上跑，再回頭看執行紀錄確認代理做了什麼。n8n 也有兩個對應的節點：Guardrails 可以在送進模型前或拿到輸出後檢查越獄、NSFW、個資、密鑰與離題；工具的人工審核（human-in-the-loop）則讓工作流在代理要動用某個工具前先停住，由人按核准或拒絕，適合寄信、改資料、刪資料這種不可逆的動作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "只要 AI 節點會讀到外部內容，不管是網頁、電子郵件還是別人送進來的表單，那些內容都要當成不可信的輸入，要防的是提示詞注入。先把權限縮到最小：能唯讀就不要給寫入、工具只開用得到的那幾個、先在測試帳號與測試資料上跑，再回頭看執行紀錄確認代理做了什麼。n8n 也有兩個對應的節點：Guardrails 可以在送進模型前或拿到輸出後檢查"
+            },
+            {
+              "type": "article",
+              "text": "越獄",
+              "kind": "life",
+              "slug": "ai-term-jailbreak"
+            },
+            {
+              "type": "text",
+              "text": "、NSFW、個資、密鑰與離題；工具的人工審核（human-in-the-loop）則讓工作流在代理要動用某個工具前先停住，由人按核准或拒絕，適合寄信、改資料、刪資料這種不可逆的動作。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
           "type": "callout",

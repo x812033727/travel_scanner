@@ -100,8 +100,23 @@
           "text": "用 help 查正確入口"
         },
         {
-          "type": "paragraph",
-          "text": "在終端機輸入 claude --help，查看啟動命令與參數。進入 Claude 對話後輸入 /help，查看目前可用的對話指令。這兩份說明回答不同層次的問題，不能拿對話選單沒有某個參數，就判斷 CLI 不支援它。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在終端機輸入 claude --help，查看啟動命令與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。進入 Claude 對話後輸入 /help，查看目前可用的對話指令。這兩份說明回答不同層次的問題，不能拿對話選單沒有某個參數，就判斷 CLI 不支援它。"
+            }
+          ]
         },
         {
           "type": "code",

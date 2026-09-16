@@ -26,8 +26,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MiniMax 的 Speech 系列把文字變成音檔。官方文件寫它支援 40 種語言與 300 多個系統音色，同步合成單次上限 10,000 字元，非同步長文單次上限 1,000,000 字元。要做中文配音、有聲書或影片旁白，你真正要決定的只有三件事：走網頁版還是 API、挑哪一個音色、參數怎麼調。如果你是搜「配音 AI」找工具的，成品好不好也就看這三件事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 的 Speech 系列把文字變成音檔。官方文件寫它支援 40 種語言與 300 多個系統音色，同步合成單次上限 10,000 字元，非同步長文單次上限 1,000,000 字元。要做中文配音、有聲書或影片旁白，你真正要決定的只有三件事：走網頁版還是 API、挑哪一個音色、"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "怎麼調。如果你是搜「配音 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」找工具的，成品好不好也就看這三件事。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -60,14 +85,26 @@
           "code": "# 金鑰放環境變數，不要寫死在程式碼或前端\nexport MINIMAX_API_KEY=\"your-key\"\n\ncurl --location 'https://api.minimax.io/v1/t2a_v2' \\\n  --header \"Authorization: Bearer ${MINIMAX_API_KEY}\" \\\n  --header 'Content-Type: application/json' \\\n  --data '{\n    \"model\": \"speech-2.8-hd\",\n    \"text\": \"第一段唸完停一下<#0.6#>再接第二段。\",\n    \"language_boost\": \"Chinese\",\n    \"output_format\": \"url\",\n    \"subtitle_enable\": true,\n    \"voice_setting\": {\n      \"voice_id\": \"Chinese (Mandarin)_Radio_Host\",\n      \"speed\": 1,\n      \"vol\": 1,\n      \"pitch\": 0\n    },\n    \"audio_setting\": {\n      \"sample_rate\": 44100,\n      \"bitrate\": 128000,\n      \"format\": \"mp3\",\n      \"channel\": 1\n    }\n  }'"
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -158,19 +195,37 @@
           "code": "\"\"\"一章一個非同步任務；金鑰讀環境變數 MINIMAX_API_KEY。\"\"\"\nimport os\nimport requests\n\napi_key = os.environ[\"MINIMAX_API_KEY\"]\npayload = {\n    \"model\": \"speech-2.8-hd\",\n    \"text\": open(\"chapter-01.txt\", encoding=\"utf-8\").read(),\n    \"language_boost\": \"Chinese\",\n    \"voice_setting\": {\"voice_id\": \"Chinese (Mandarin)_Radio_Host\", \"speed\": 1, \"vol\": 1, \"pitch\": 0},\n    \"audio_setting\": {\"audio_sample_rate\": 44100, \"bitrate\": 128000, \"format\": \"mp3\", \"channel\": 1},\n}\nresp = requests.post(\n    \"https://api.minimax.io/v1/t2a_async_v2\",\n    headers={\"Authorization\": f\"Bearer {api_key}\", \"Content-Type\": \"application/json\"},\n    json=payload,\n    timeout=60,\n)\nprint(resp.json())  # 取回 task_id，輪詢狀態，完成後用 file_id 下載"
         },
         {
-          "type": "link",
-          "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
-          "url": "https://mokaair.com/zh-TW/life/minimax-music-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+              "kind": "life",
+              "slug": "minimax-music-generation"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -269,33 +324,63 @@
           "text": "資料流向也看一眼：服務條款寫營運方是一家新加坡公司，隱私政策當天標示更新於 2025 年 12 月 9 日，寫一般不會把個人資料傳到新加坡以外的國家，服務對象限 16 歲以上。"
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "最後一句提醒：一段夠像的合成語音就足以冒充一個人打電話借錢，這是深偽最便宜的用法。把 AI 生成標示在作品上、保留可查的來源歷程，是保護自己，也保護被複製的人。"
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+              "kind": "life",
+              "slug": "chatgpt-voice-mode-guide"
+            }
+          ]
         }
       ],
       "sources": [

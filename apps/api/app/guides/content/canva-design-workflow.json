@@ -47,8 +47,23 @@
           "text": "在 Canva 首頁搜尋範本，預覽後選擇自訂範本進入編輯器，也可在編輯器的 Templates 面板尋找。挑選時先看資訊量、圖文配置和可修改空間，而不只是顏色。活動規則較多時，選擇能容納說明的版面，比把文字硬塞進圖片型範本更實用。"
         },
         {
-          "type": "paragraph",
-          "text": "套用範本後逐一替換示例內容，特別檢查角落日期、頁尾名稱及複製頁面留下的舊資訊。範本中的人物、圖片和文案只是設計起點，不能自動代表這次活動的真實情況；若使用 AI 協助改寫，也要自行確認事實與台灣用語。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "套用範本後逐一替換示例內容，特別檢查角落日期、頁尾名稱及複製頁面留下的舊資訊。範本中的人物、圖片和文案只是設計起點，不能自動代表這次活動的真實情況；若使用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 協助改寫，也要自行確認事實與台灣用語。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -94,8 +109,23 @@
           "text": "製作純靜態社群圖文時，JPG 可用於以照片為主且不需透明度的畫面；PNG 適合需要清楚圖形或透明度的情境，實際檔案大小仍要比較。下載後檢查像素尺寸與文字邊緣，不以副檔名或最高品質選項就推定適合所有平台。"
         },
         {
-          "type": "paragraph",
-          "text": "需要文件閱讀時可評估 PDF Standard，需要印刷時再依印刷廠要求評估 PDF Print、色彩描述方式、出血與裁切標記。PDF Print 不會替低解析度原圖補回真實細節，SVG 輸出也不能讓其中的點陣圖片自動變成無限清晰的向量。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "需要文件閱讀時可評估 PDF Standard，需要印刷時再依印刷廠要求評估 PDF Print、色彩描述方式、出血與裁切"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。PDF Print 不會替低解析度原圖補回真實細節，SVG 輸出也不能讓其中的點陣圖片自動變成無限清晰的向量。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +236,37 @@
           "text": "需要分享 PDF 時，先移除不應公開的原始影像內容，再置入安全版本。不要只靠遮蓋、裁切或扁平化選項來保證保密。"
         },
         {
-          "type": "link",
-          "text": "先分清 RGB 與 CMYK 的交付需求",
-          "url": "https://mokaair.com/zh-TW/life/rgb-cmyk-export"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先分清 RGB 與 CMYK 的交付需求",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "比較圖片格式和壓縮方式",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比較圖片格式和壓縮方式",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理可商用素材的授權紀錄",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理可商用素材的授權紀錄",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         }
       ],
       "sources": [

@@ -26,12 +26,52 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MiniMax 的音樂生成用一段描述加一段歌詞做出一首帶人聲與編曲的完整歌曲，但入口換了位置：官方文件寫明，自 2026 年 8 月 20 日起，付費的音樂與歌詞生成 API 不再開放給新使用者，免費版音樂 API 停止提供，改請使用者用 MiniMax Audio 網頁服務，或取用 Hugging Face 上的開源權重 MiniMax Music 3。搜「作曲 AI」或「音樂 AI」找到它的人，先看入口在哪裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 的音樂生成用一段描述加一段歌詞做出一首帶人聲與編曲的完整歌曲，但入口換了位置：官方文件寫明，自 2026 年 8 月 20 日起，付費的音樂與歌詞生成 API 不再開放給新使用者，免費版音樂 API 停止提供，改請使用者用 MiniMax Audio 網頁服務，或取用 Hugging Face 上的開源權重 MiniMax Music 3。搜「"
+            },
+            {
+              "type": "article",
+              "text": "作曲 AI",
+              "kind": "life",
+              "slug": "suno-music-generation-guide"
+            },
+            {
+              "type": "text",
+              "text": "」或「音樂 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」找到它的人，先看入口在哪裡。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇照官網文件走一遍：在哪裡動手、描述與歌詞各自要寫什麼、段落標記有哪幾種、一首歌多長、輸出什麼格式、費用怎麼算、API 最小呼叫長什麼樣，音檔能不能商用與著作權要注意什麼。條款沒有明講的部分直接寫「以官網為準」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇照官網文件走一遍：在哪裡動手、描述與歌詞各自要寫什麼、段落"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "有哪幾種、一首歌多長、輸出什麼格式、費用怎麼算、API 最小呼叫長什麼樣，音檔能不能商用與著作權要注意什麼。條款沒有明講的部分直接寫「以官網為準」。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -56,9 +96,15 @@
           "text": "海螺（Hailuo AI）的 App 或網站裡有沒有獨立的音樂分頁、台灣的 App Store 與 Google Play 上架狀況，官方說明頁沒有寫，本站也無法從台灣以外的環境確認實際畫面，以官網為準。想先弄清楚這個品牌底下有哪些產品，先看下面這篇。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -66,8 +112,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "模型吃兩份輸入：提示詞欄位 prompt 放音樂描述，lyrics 放要唱出來的字。官方把 prompt 定義為「描述音樂的風格、情緒與使用情境」，做有人聲的歌時選填、長度 0 到 2,000 個字元；把 is_instrumental 設成 true 做純演奏曲時改為必填、1 到 2,000 個字元，歌詞可以不給。另有 lyrics_optimizer 參數，設成 true 又沒給歌詞時會照描述自動生一份。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型吃兩份輸入：提示詞欄位 prompt 放音樂描述，lyrics 放要唱出來的字。官方把 prompt 定義為「描述音樂的風格、情緒與使用情境」，做有人聲的歌時選填、長度 0 到 2,000 個字元；把 is_instrumental 設成 true 做純演奏曲時改為必填、1 到 2,000 個字元，歌詞可以不給。另有 lyrics_optimizer "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，設成 true 又沒給歌詞時會照描述自動生一份。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -248,27 +309,30 @@
               "text": "同一件事其他家也在做，Google 把 Lyria 放進 Gemini 就是一例；各家的長度、費用與授權規則不一樣，要比就照官網一項一項比對。另一邊的選擇看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
-              "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-35-gemini-20260904"
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
             },
             {
               "type": "text",
               "text": "。想補背景知識，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "生成式 AI（Generative AI）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
             },
             {
               "type": "text",
               "text": "與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
             },
             {
               "type": "text",
@@ -281,19 +345,37 @@
           "text": "MiniMax 底下的其他生成功能，本站另有三篇："
         },
         {
-          "type": "link",
-          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 語音合成：中文配音、有聲書與影片旁白",
-          "url": "https://mokaair.com/zh-TW/life/minimax-speech-tts-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 語音合成：中文配音、有聲書與影片旁白",
+              "kind": "life",
+              "slug": "minimax-speech-tts-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         }
       ],
       "sources": [

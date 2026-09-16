@@ -25,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Qwen（通義千問）是阿里巴巴做的一整套 AI 模型。和多數線上服務最大的差別是，大部分版本的權重可以下載回自己的電腦跑；但家族裡也有只能呼叫 API 的版本，授權還分三種。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Qwen（通義千問）是阿里巴巴做的一整套 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 模型。和多數線上服務最大的差別是，大部分版本的權重可以下載回自己的電腦跑；但家族裡也有只能呼叫 API 的版本，授權還分三種。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -42,9 +57,15 @@
           "text": "中文譯名是通義千問，英文與模型檔名一律寫 Qwen。名字在 2026 年換過：chat.qwen.ai 的頁面標題現在是 Qwen Studio，官網說它讓使用者和開發者用同一個入口存取 Qwen 的開源與自家模型，舊文章寫的 Qwen Chat 就是這個網址。舊部落格 qwenlm.github.io 停在 2025 年 9 月，打開會公告新站在 qwen.ai 並轉址。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -84,9 +105,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -94,22 +121,49 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "第一個是參數規模。Qwen3.8-2.4T-A95B 的模型卡寫總參數 2.4T、啟用 95B；Qwen3.8-27B 是 270 億的密集模型，沒有啟用參數；Qwen3.8-Flash-Next 寫 125B 總參數、6B 啟用，另加 51B 的 n-gram 嵌入；Qwen3-Coder-Next 是 80B、3B 啟用。只啟用一部分的架構叫混合專家。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一個是"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "規模。Qwen3.8-2.4T-A95B 的模型卡寫總參數 2.4T、啟用 95B；Qwen3.8-27B 是 270 億的密集模型，沒有啟用參數；Qwen3.8-Flash-Next 寫 125B 總參數、6B 啟用，另加 51B 的 n-gram 嵌入；Qwen3-Coder-Next 是 80B、3B 啟用。只啟用一部分的架構叫混合專家。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合專家模型（Mixture of Experts）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合專家模型（Mixture of Experts）是什麼",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "第二個是上下文視窗。前面三個都寫原生 262,144 個 token，延伸上限是 Qwen3.8-2.4T-A95B 的 1,010,000 與另外兩個的 1,000,000；Qwen3-Coder-Next 只寫原生 262,144。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -127,8 +181,43 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Apache 2.0 最寬鬆，Qwen3.8-27B、Qwen3-Coder-Next、Qwen-Image-2512、Qwen3-ASR 與 Qwen3-TTS 都標這一個，商用沒有額外門檻。另外兩種是 Qwen 自己寫的：Qwen3.8-2.4T-A95B 用 Qwen3.8-Max License，Qwen3.8-Flash-Next 用 Qwen Community License 1.0，開頭都允許修改、散布與微調，但各加了條件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Apache 2.0 最寬鬆，Qwen3.8-27B、Qwen3-Coder-Next、Qwen-Image-2512、Qwen3-"
+            },
+            {
+              "type": "article",
+              "text": "ASR",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            },
+            {
+              "type": "text",
+              "text": " 與 Qwen3-"
+            },
+            {
+              "type": "article",
+              "text": "TTS",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            },
+            {
+              "type": "text",
+              "text": " 都標這一個，商用沒有額外門檻。另外兩種是 Qwen 自己寫的：Qwen3.8-2.4T-A95B 用 Qwen3.8-Max License，Qwen3.8-Flash-Next 用 Qwen Community License 1.0，開頭都允許修改、散布與"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，但各加了條件。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -140,9 +229,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -162,9 +257,15 @@
           "text": "介面列的功能有聯網搜尋、深度研究、圖片生成、影片生成、Web Dev、Artifacts、語音對話、視訊對話、思考模式與檔案上傳。付費有升級 Plus 的入口，價格與開放地區要登入才看得到，台灣能不能訂閱以官網為準。"
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -207,14 +308,26 @@
           "text": "保留期限沒有給固定天數，只寫取決於個資性質、蒐集處理原因與法律要求。介面上能調的是臨時對話與記憶。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -226,19 +339,37 @@
           "text": "開放權重可以完全在自己的電腦上跑。Qwen3.8 的說明列了 transformers、llama.cpp、MLX 與 Unsloth，Qwen3-Coder-Next 的模型卡也點名 Ollama，做法和本站的 Ollama 教學一樣。"
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Kimi（月之暗面）：長文件與 K 系列模型",
-          "url": "https://mokaair.com/zh-TW/life/kimi-moonshot-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Kimi（月之暗面）：長文件與 K 系列模型",
+              "kind": "life",
+              "slug": "kimi-moonshot-guide"
+            }
+          ]
         },
         {
           "type": "table",

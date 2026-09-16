@@ -39,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "官方目前將 Claude Design 列為 Pro、Max、Team 與 Enterprise 的測試功能，Enterprise 預設關閉。可從網頁 claude.ai/design 或 Claude Desktop 側欄進入，仍需確認自己的方案與組織設定。不要只看別人的展示影片，就推定帳戶已取得相同入口。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方目前將 Claude Design 列為 Pro、Max、Team 與 Enterprise 的測試功能，Enterprise 預設關閉。可從網頁 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "/design 或 Claude Desktop 側欄進入，仍需確認自己的方案與組織設定。不要只看別人的展示影片，就推定帳戶已取得相同入口。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +216,26 @@
           "text": "活動金額、人數與報名狀態應有依據。試作需要佔位內容時，清楚標示，讓接手者知道哪些資訊尚不能對外使用。"
         },
         {
-          "type": "link",
-          "text": "用線框圖與原型驗證操作需求",
-          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用線框圖與原型驗證操作需求",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "設計使用字型前先核對授權",
-          "url": "https://mokaair.com/zh-TW/life/font-license-web-typography"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "設計使用字型前先核對授權",
+              "kind": "life",
+              "slug": "font-license-web-typography"
+            }
+          ]
         }
       ],
       "sources": [

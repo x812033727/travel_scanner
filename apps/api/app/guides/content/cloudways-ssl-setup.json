@@ -96,8 +96,23 @@
           "text": "憑證可正常使用後，再依應用設定啟用 HTTP 到 HTTPS 的轉址。Cloudways 的安裝後建議也提醒，代理、伺服器及 WordPress 外掛若同時設定互相衝突的規則，可能造成反覆跳轉。請記錄哪一層負責統一網址，避免出現問題時又在另一層新增一組規則。"
         },
         {
-          "type": "paragraph",
-          "text": "驗證時輸入根網域和 www 的 HTTP、HTTPS 入口，確認落到預期位置，且文章路徑與必要參數沒有遺失。若只測首頁，可能漏掉舊連結全部跳回首頁的情況。對已經公開的網站，請選幾篇既有文章與主要功能頁逐一測試，保留修改前後的差異。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "驗證時輸入根網域和 www 的 HTTP、HTTPS 入口，確認落到預期位置，且文章路徑與必要"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "沒有遺失。若只測首頁，可能漏掉舊連結全部跳回首頁的情況。對已經公開的網站，請選幾篇既有文章與主要功能頁逐一測試，保留修改前後的差異。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -181,14 +196,26 @@
           "text": "同一應用的新憑證會取代原憑證。請確認所有仍在使用的網域名稱及連線路徑，並保存必要的回復資料。"
         },
         {
-          "type": "link",
-          "text": "Cloudways 建站：伺服器、應用程式與帳戶驗證",
-          "url": "https://mokaair.com/zh-TW/life/cloudways-wordpress-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Cloudways 建站：伺服器、應用程式與帳戶驗證",
+              "kind": "life",
+              "slug": "cloudways-wordpress-setup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
-          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
         }
       ],
       "sources": [

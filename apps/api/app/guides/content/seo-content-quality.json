@@ -60,8 +60,23 @@
           "text": "官方文件能支持「服務提供某項功能」，實際測試則能回答在指定環境下如何運作，兩者證據不同。若沒有安裝或操作過工具，就將內容寫成功能整理和選擇方法，不使用「我試過」「速度最快」或「使用後完全沒有問題」等句子。"
         },
         {
-          "type": "paragraph",
-          "text": "有測試時，記錄版本、裝置、方案、資料規模與步驟，保留必要的結果證據。測試一份小文件成功匯出，只能支持這個範圍，不能推論所有附件、格式或大型資料庫都能完整移轉。比較文章尤其要讓不同工具使用相近條件，否則數字很難公平解讀。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有測試時，記錄版本、裝置、方案、資料規模與步驟，保留必要的結果證據。測試一份小文件成功匯出，只能支持這個範圍，不能推論所有附件、格式或大型資料庫都能完整移轉。比較文章尤其要讓不同"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "相近條件，否則數字很難公平解讀。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -111,8 +126,23 @@
           "text": "正文確認後，再核對標題、摘要、替代文字與結構化資料。功能已改成需要付費，摘要卻仍寫免費，讀者依然會被誤導。不要把這些欄位當作一次填好就不再維護的裝飾，它們常是讀者最先看到的資訊。"
         },
         {
-          "type": "paragraph",
-          "text": "Google 的生成式 AI 內容指南把準確性、品質與關聯性同樣延伸到這些欄位，也提醒大量製造沒有附加價值的頁面可能違反政策。工具可以協助整理線索與草稿，最終的來源核對、差異判斷及修正仍需要有人負責，不能用生成完成作為驗收終點。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 內容指南把準確性、品質與關聯性同樣延伸到這些欄位，也提醒大量製造沒有附加價值的頁面可能違反政策。工具可以協助整理線索與草稿，最終的來源核對、差異判斷及修正仍需要有人負責，不能用生成完成作為驗收終點。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,14 +236,26 @@
           "text": "把「未確認」寫進研究記錄，並決定補查、縮小結論或先移除該項承諾。表格看起來每格都有答案，並不比誠實標明資料不足更有用；讀者需要的是能依據的資訊。"
         },
         {
-          "type": "link",
-          "text": "檢查標題的內容承諾",
-          "url": "https://mokaair.com/zh-TW/life/seo-title-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查標題的內容承諾",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "發現重複文章時如何整併",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-cannibalization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "發現重複文章時如何整併",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
         }
       ],
       "sources": [

@@ -100,8 +100,23 @@
           "code": "請先只讀取專案，整理入口、資料流、啟動與測試命令。\n查看目前 Git 差異，區分既有修改與未追蹤檔案。\n列出你需要確認的假設與最小重構候選，先不要修改。\n"
         },
         {
-          "type": "paragraph",
-          "text": "如果 README 與 package.json 不一致，先以實際腳本和執行結果核對，記錄文件落差。不要因 README 宣稱測試通過，就跳過基準測試；也不要因現有測試失敗，就把所有失敗歸咎於接下來的修改。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 README 與 package.json 不一致，先以實際腳本和執行結果核對，記錄文件落差。不要因 README 宣稱測試通過，就跳過"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "；也不要因現有測試失敗，就把所有失敗歸咎於接下來的修改。"
+            }
+          ]
         },
         {
           "type": "heading",

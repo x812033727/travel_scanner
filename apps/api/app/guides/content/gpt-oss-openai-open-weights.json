@@ -38,8 +38,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "OpenAI 在公告裡寫明，gpt-oss 是繼 GPT-2 之後自家第一批開放權重的語言模型（Whisper 與 CLIP 這類模型更早就開放過）。兩個版本都是混合專家架構，每個 token 只啟用一部分參數，所以總參數量大、實際算的參數量小很多。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 在公告裡寫明，gpt-oss 是繼 GPT-2 之後自家第一批開放權重的語言模型（Whisper 與 CLIP 這類模型更早就開放過）。兩個版本都是混合專家架構，每個 token 只啟用一部分"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，所以總參數量大、實際算的參數量小很多。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -53,18 +68,45 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "Hugging Face 的 openai 組織頁顯示，這兩個版本都在 2025 年 8 月 4 日上架；同一個組織在 2025 年 9 月 18 日另外上架了 gpt-oss-safeguard-120b 與 gpt-oss-safeguard-20b，授權一樣是 Apache 2.0。說明中心把 safeguard 標為研究預覽，它從 gpt-oss 微調而來、架構沒改，用途是照你寫的安全政策分類內容；一般聊天與代理（Agent）建議還是用原本的 gpt-oss。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hugging Face 的 openai 組織頁顯示，這兩個版本都在 2025 年 8 月 4 日上架；同一個組織在 2025 年 9 月 18 日另外上架了 gpt-oss-safeguard-120b 與 gpt-oss-safeguard-20b，授權一樣是 Apache 2.0。說明中心把 safeguard 標為研究預覽，它從 gpt-oss "
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "而來、架構沒改，用途是照你寫的安全政策分類內容；一般聊天與代理（Agent）建議還是用原本的 gpt-oss。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合專家模型（Mixture of Experts）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合專家模型（Mixture of Experts）是什麼",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -92,18 +134,45 @@
           "code": "lms get openai/gpt-oss-20b"
         },
         {
-          "type": "paragraph",
-          "text": "不想自己準備硬體，OpenAI 公告列出上線前就合作的部署平台：Azure、Hugging Face、vLLM、Ollama、llama.cpp、LM Studio、AWS、Fireworks、Together AI、Baseten、Databricks、Vercel、Cloudflare 與 OpenRouter，硬體端點名 NVIDIA、AMD、Cerebras 與 Groq。公告也寫到微軟用 ONNX Runtime 把 gpt-oss-20b 帶上 Windows。名單以外的供應商以官網目前頁面為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不想自己準備硬體，OpenAI 公告列出上線前就合作的部署平台：Azure、Hugging Face、vLLM、Ollama、llama.cpp、LM Studio、AWS、Fireworks、Together "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "、Baseten、Databricks、Vercel、Cloudflare 與 OpenRouter，硬體端點名 NVIDIA、AMD、Cerebras 與 Groq。公告也寫到微軟用 ONNX Runtime 把 gpt-oss-20b 帶上 Windows。名單以外的供應商以官網目前頁面為準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -119,9 +188,15 @@
           "text": "OpenAI 的 Cookbook 在 Ollama 那篇說得再具體些：gpt-oss-20b 最好有 16GB 以上的顯示記憶體或統一記憶體，gpt-oss-120b 最好有 60GB 以上。Ollama 模型庫頁顯示 gpt-oss:20b 下載大小 14GB、gpt-oss:120b 是 65GB，上下文視窗都標 128K。更細的機型對照以官網為準。"
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -153,9 +228,15 @@
           "text": "另一件事是 harmony 回應格式：官方說兩個模型都用 harmony 訓練，不照這個格式用就不會正常運作；它把回應拆成 analysis、commentary、final 三個頻道，只有 final 是給使用者看的。官方文件也寫明，透過 Ollama 這類推論方案使用時格式由工具處理。"
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -193,14 +274,26 @@
           }
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -262,19 +355,37 @@
           "text": "同樣能下載的模型，各家授權差很多，選之前先把授權原文和硬體需求放在一起看。"
         },
         {
-          "type": "link",
-          "text": "Llama 模型家族：授權與版本",
-          "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Llama 模型家族：授權與版本",
+              "kind": "life",
+              "slug": "llama-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemma：Google 的開源模型怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/gemma-google-open-models"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemma：Google 的開源模型怎麼用",
+              "kind": "life",
+              "slug": "gemma-google-open-models"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         }
       ],
       "sources": [

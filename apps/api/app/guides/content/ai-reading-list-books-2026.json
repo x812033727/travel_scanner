@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想弄懂 AI，光靠零散的網路文章拼不出一張完整的地圖，讀幾本書還是最省力的路。這篇列出 10 本書，每一本都查得到繁體中文版的出版紀錄，分成原理與歷史、社會與工作的影響、動手與工作方法三類；結論是順序比書單本身重要，先讀一本講機器怎麼學的，再讀幾本講社會影響的，最後才讀教你怎麼用的那兩本，後面的書會好讀很多。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想弄懂 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，光靠零散的網路文章拼不出一張完整的地圖，讀幾本書還是最省力的路。這篇列出 10 本書，每一本都查得到繁體中文版的出版紀錄，分成原理與歷史、社會與工作的影響、動手與工作方法三類；結論是順序比書單本身重要，先讀一本講機器怎麼學的，再讀幾本講社會影響的，最後才讀教你怎麼用的那兩本，後面的書會好讀很多。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -63,8 +78,23 @@
           "text": "這三本負責建立底層的直覺：機器不是被寫死規則，而是從資料裡歸納規則；這一波進展也不是某個天才在某天想通了，而是資料、算力與長期投入疊出來的。先把這件事想清楚，後面談風險與治理的書才不會讀成科幻。"
         },
         {
-          "type": "paragraph",
-          "text": "《大演算：機器學習的終極演算法 將如何改變我們的未來，創造新紀元的文明？》，佩德羅．多明戈斯（Pedro Domingos）著，張正苓、胡玉城譯，三采文化 2016 年出版；原文書名 The Master Algorithm，Basic Books 於 2015 年出版。全書把機器學習拆成五個彼此競爭的學派，再問有沒有可能出現一個統包全部的終極演算法。書裡的例子比今天的聊天機器人早了好幾代，但「規則是從資料長出來的」這件事講得最清楚。適合完全沒有技術背景、卻想知道 AI 為什麼需要大量資料、又為什麼會出錯的人。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "《大演算："
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "的終極演算法 將如何改變我們的未來，創造新紀元的文明？》，佩德羅．多明戈斯（Pedro Domingos）著，張正苓、胡玉城譯，三采文化 2016 年出版；原文書名 The Master Algorithm，Basic Books 於 2015 年出版。全書把機器學習拆成五個彼此競爭的學派，再問有沒有可能出現一個統包全部的終極演算法。書裡的例子比今天的聊天機器人早了好幾代，但「規則是從資料長出來的」這件事講得最清楚。適合完全沒有技術背景、卻想知道 AI 為什麼需要大量資料、又為什麼會出錯的人。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -247,28 +277,52 @@
           "text": "如果你想把整本書丟進工具做問答，NotebookLM 這類以來源為主的工具比一般聊天視窗合適，因為它會把回答指回你上傳的段落，方便你回頭核對。實際的上限與支援格式以官方說明為準。"
         },
         {
-          "type": "link",
-          "text": "NotebookLM 入門：資料、筆記本與引用",
-          "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NotebookLM 入門：資料、筆記本與引用",
+              "kind": "life",
+              "slug": "notebooklm-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "讀書筆記要怎麼寫才會再被自己用到，站上另外有一篇專門談這件事；想把整套流程放進筆記軟體，可以再看筆記工具分工與 Obsidian 的做法。"
         },
         {
-          "type": "link",
-          "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
-          "url": "https://mokaair.com/zh-TW/life/reading-notes-that-you-reuse"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
+              "kind": "life",
+              "slug": "reading-notes-that-you-reuse"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
-          "url": "https://mokaair.com/zh-TW/life/ai-second-brain-obsidian"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Obsidian＋AI 打造第二大腦：外掛、程式代理與 MCP 三種接法",
+              "kind": "life",
+              "slug": "ai-second-brain-obsidian"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -277,23 +331,41 @@
           "text": "把整本書丟給 AI 產生摘要，得到的通常是「這本書談了 AI 的機會與風險」這種誰都寫得出來的句子。更麻煩的是模型可能把書裡沒寫過的內容講得很肯定，也就是幻覺；書名、章節、作者的結論、你打算引用的句子，全部要回原文核對。AI 最適合的位置是在你讀完之後：整理你自己的筆記、出複習題、把主張變成可以查證的清單。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "讀長篇論述時，把摘要與提問交給 AI 很省力，但要先知道它會在哪裡失準；書裡出現的專有名詞如果卡住，也可以先查名詞篇再回來讀。"
         },
         {
-          "type": "link",
-          "text": "用 Claude 讀論文與長報告：摘要、提問與批判",
-          "url": "https://mokaair.com/zh-TW/life/claude-for-research-summaries"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 讀論文與長報告：摘要、提問與批判",
+              "kind": "life",
+              "slug": "claude-for-research-summaries"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-glossary-50-terms"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞速查：50 個常見詞彙一次搞懂",
+              "kind": "life",
+              "slug": "ai-glossary-50-terms"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -309,14 +381,26 @@
           "text": "還有一件事值得先講：英文圈這兩年很紅的幾本 AI 書，本文查證當天在全國新書資訊網以書名與作者檢索，都沒有查到繁體中文版紀錄，包括 Karen Hao 的 Empire of AI、Brian Christian 的 The Alignment Problem，以及 AI Snake Oil。想讀目前只能找原文版；同一位作者的《決斷的演算》倒是有繁體中文版。書單以外的延伸閱讀，站上還有工具總覽與代理的入門文章可以接著看。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         }
       ],
       "sources": [

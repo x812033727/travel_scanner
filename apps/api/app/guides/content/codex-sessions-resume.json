@@ -79,8 +79,23 @@
           "text": "步驟一：建立容易辨認的兩個練習"
         },
         {
-          "type": "paragraph",
-          "text": "在同一個練習父資料夾建立 codex-session-a 與 codex-session-b，各自新增 note.txt。A 放第一段，B 放第二段，不要把兩段放進同一個檔案。兩個檔名都叫 note.txt，但內容標記不同；這讓你不能只靠檔名猜測目前工作位置。記下父資料夾在哪裡，後續每次啟動前都先核對目錄。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在同一個練習父資料夾建立 codex-session-a 與 codex-session-b，各自新增 note.txt。A 放第一段，B 放第二段，不要把兩段放進同一個檔案。兩個檔名都叫 note.txt，但內容"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "不同；這讓你不能只靠檔名猜測目前工作位置。記下父資料夾在哪裡，後續每次啟動前都先核對目錄。"
+            }
+          ]
         },
         {
           "type": "code",

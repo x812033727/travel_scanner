@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "提示詞注入（Prompt Injection）不是把 AI 弄壞，而是把指令藏在它會讀到的資料裡，讓它照別人寫的做、不是照你說的做。結論先講：這件事防不乾淨，OWASP 與三家官方安全頁都自己寫了這句話，所以使用者這端有用的不是挑一個「有防護」的產品，而是把代理（Agent）的權限縮小、把不可逆的動作留一道確認。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "提示詞注入（Prompt Injection）不是把 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 弄壞，而是把指令藏在它會讀到的資料裡，讓它照別人寫的做、不是照你說的做。結論先講：這件事防不乾淨，OWASP 與三家官方安全頁都自己寫了這句話，所以使用者這端有用的不是挑一個「有防護」的產品，而是把代理（Agent）的權限縮小、把不可逆的動作留一道確認。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -39,8 +54,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "OWASP 的生成式 AI 安全專案把提示詞注入排在大型語言模型十大風險的第一名，編號 LLM01:2025，這份清單到今天在官網上仍是 2025 年版。條目把定義、兩種型態、九個攻擊情境與七條緩解措施寫在同一頁，以下是原文。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OWASP 的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 安全專案把提示詞注入排在"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "十大風險的第一名，編號 LLM01:2025，這份清單到今天在官網上仍是 2025 年版。條目把定義、兩種型態、九個攻擊情境與七條緩解措施寫在同一頁，以下是原文。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -49,17 +89,48 @@
           "code": "A Prompt Injection Vulnerability occurs when user prompts alter the LLM's\nbehavior or output in unintended ways. These inputs can affect the model even\nif they are imperceptible to humans, therefore prompt injections do not need\nto be human-visible/readable, as long as the content is parsed by the model.\n\nDirect Prompt Injections\nDirect prompt injections occur when a user's prompt input directly alters the\nbehavior of the model in unintended or unexpected ways. The input can be\neither intentional (i.e., a malicious actor deliberately crafting a prompt to\nexploit the model) or unintentional (i.e., a user inadvertently providing\ninput that triggers unexpected behavior).\n\nIndirect Prompt Injections\nIndirect prompt injections occur when an LLM accepts input from external\nsources, such as websites or files. The content may have in the external\ncontent data that when interpreted by the model, alters the behavior of the\nmodel in unintended or unexpected ways."
         },
         {
-          "type": "paragraph",
-          "text": "兩者差在入口。直接注入是使用者自己打進去的輸入改變了模型行為，原文寫明可以是故意的、也可以是無意的；間接注入是模型從外部來源讀進來的內容改變了它的行為，舉的來源就是網站與檔案。還有一句常被跳過的話：這些輸入就算人眼看不見也算數，只要內容被模型解析就成立。條目也直接寫著，檢索增強生成（RAG）與微調沒辦法完全解決提示詞注入。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "兩者差在入口。直接注入是使用者自己打進去的輸入改變了模型行為，原文寫明可以是故意的、也可以是無意的；間接注入是模型從外部來源讀進來的內容改變了它的行為，舉的來源就是網站與檔案。還有一句常被跳過的話：這些輸入就算人眼看不見也算數，只要內容被模型解析就成立。條目也直接寫著，"
+            },
+            {
+              "type": "article",
+              "text": "檢索增強生成",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "（RAG）與"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "沒辦法完全解決提示詞注入。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "九個攻擊情境裡，四個離一般使用者最近。情境一是直接注入：攻擊者對客服機器人送進一段提示詞，要它忽略先前的規範、去查私人資料庫並寄出電子郵件。情境二是間接注入：使用者請模型摘要網頁，網頁裡的隱藏指令讓模型插入一張連往某個網址的圖片，把私人對話外洩出去。情境四是有人改掉檢索資料庫裡的文件；情境七是惡意提示詞藏在圖片裡。"
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -67,12 +138,42 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "模型看到的是一長串文字。系統提示詞、你打的問題、抓回來的網頁、工具回傳的結果，最後都排在同一個上下文視窗裡，文字本身沒有欄位標明哪一段是命令、哪一段只是要被閱讀的資料。所以官方講的防線不是要模型「更小心一點」，而是把兩者分開標示，再讓有後果的動作另外要一道授權。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型看到的是一長串文字。"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "、你打的問題、抓回來的網頁、工具回傳的結果，最後都排在同一個上下文視窗裡，文字本身沒有欄位標明哪一段是命令、哪一段只是要被閱讀的資料。所以官方講的防線不是要模型「更小心一點」，而是把兩者分開標示，再讓有後果的動作另外要一道授權。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 在 platform.claude.com 的〈Mitigate jailbreaks and prompt injections〉把兩種威脅模型分開：越獄與直接注入的敵人是應用的使用者本人，間接注入則是使用者可信、但 Claude 讀到的第三方內容裡藏了指令，點名的來源是網頁、郵件本文、上傳檔案的 OCR 文字與工具回傳結果。做法很具體：第三方內容只放進 tool_result 區塊，不要放進系統提示詞；在工具說明欄裡講清楚內容是什麼、從哪裡來；在系統提示詞裡明講工具與搜尋回傳的內容是不可信資料；再加上最小權限。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 在 platform.claude.com 的〈Mitigate jailbreaks and prompt injections〉把兩種威脅模型分開："
+            },
+            {
+              "type": "article",
+              "text": "越獄",
+              "kind": "life",
+              "slug": "ai-term-jailbreak"
+            },
+            {
+              "type": "text",
+              "text": "與直接注入的敵人是應用的使用者本人，間接注入則是使用者可信、但 Claude 讀到的第三方內容裡藏了指令，點名的來源是網頁、郵件本文、上傳檔案的 OCR 文字與工具回傳結果。做法很具體：第三方內容只放進 tool_result 區塊，不要放進系統提示詞；在工具說明欄裡講清楚內容是什麼、從哪裡來；在系統提示詞裡明講工具與搜尋回傳的內容是不可信資料；再加上最小權限。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -98,9 +199,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -116,37 +223,82 @@
           "text": "第二個是會自己上網、自己讀信的代理。OpenAI 說明中心的 ChatGPT agent 條目舉的例子是：你請它看行事曆與最近的電子郵件、幫一群人找餐廳，它查資料時遇到一則惡意留言，留言要它去 Gmail 取出密碼重設碼、送到某個惡意網站。Codex 文件則示範程式端的版本：你請它修一個 GitHub issue，描述裡藏著要它執行的指令，照做之後最近一次提交的內容就被送到攻擊者的伺服器。"
         },
         {
-          "type": "paragraph",
-          "text": "第三個是 MCP 伺服器與連接器。MCP 規格 2026-07-28 版的〈Security and Trust & Safety〉把三件事寫成必須：使用者要明確同意並理解所有資料存取與操作、主機把使用者資料交給伺服器前要取得明確同意、主機呼叫任何工具前要取得明確同意。還有一句對注入特別重要——工具行為的說明除非來自可信的伺服器，否則應視為不可信。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三個是 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器與連接器。MCP 規格 2026-07-28 版的〈Security and Trust & Safety〉把三件事寫成必須：使用者要明確同意並理解所有資料存取與操作、主機把使用者資料交給伺服器前要取得明確同意、主機呼叫任何工具前要取得明確同意。還有一句對注入特別重要——工具行為的說明除非來自可信的伺服器，否則應視為不可信。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "第四個是客服機器人，OWASP 的第一個情境講的就是它。如果你自己在做一個接 AI 的 LINE 官方帳號，這一條就變成你的設計題：進來的訊息是外部輸入，能查什麼、能寄什麼必須由程式決定，不是由訊息文字決定。"
         },
         {
-          "type": "link",
-          "text": "AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險",
-          "url": "https://mokaair.com/zh-TW/life/ai-browsers-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險",
+              "kind": "life",
+              "slug": "ai-browsers-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
-          "url": "https://mokaair.com/zh-TW/life/claude-in-chrome-browser-agent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+              "kind": "life",
+              "slug": "claude-in-chrome-browser-agent"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+              "kind": "life",
+              "slug": "chatgpt-agent-mode-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
-          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+              "kind": "life",
+              "slug": "mcp-servers-for-everyone"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-customer-service-line-bot"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做客服機器人：LINE 官方帳號接 AI",
+              "kind": "life",
+              "slug": "ai-customer-service-line-bot"
+            }
+          ]
         },
         {
           "type": "table",
@@ -239,14 +391,26 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
-          "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
+              "kind": "life",
+              "slug": "ai-account-security-2fa-api-keys"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "公司裡用 AI 的規範：資料外流與合規",
-          "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "公司裡用 AI 的規範：資料外流與合規",
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -283,14 +447,26 @@
           "text": "結果也要小心解讀。一次通過不代表永遠安全，換一個模型版本、換一組工具、換一種頁面排版都可能不一樣；反過來，如果它一看到可疑內容就連正常的摘要都做不出來，那也是個問題。這個自測法只回答一件事：在你自己的用法下，它會不會把資料裡的文字當成你的指令。"
         },
         {
-          "type": "link",
-          "text": "Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph",
-          "url": "https://mokaair.com/zh-TW/life/ai-agent-frameworks-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph",
+              "kind": "life",
+              "slug": "ai-agent-frameworks-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜MCP 回傳含有指令時：資料與操作權限分開",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-mcp-untrusted-output"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜MCP 回傳含有指令時：資料與操作權限分開",
+              "kind": "life",
+              "slug": "claude-code-mcp-untrusted-output"
+            }
+          ]
         }
       ],
       "sources": [

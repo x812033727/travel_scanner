@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "「一次 AI 對話要用多少電、多少水」，目前只有兩家公司公布自己量出來的一手數字：Google 說一次 Gemini 文字提示的中位數是 0.24 瓦時電、0.26 毫升水，Mistral 說 Le Chat 一次 400 token 的回應是 1.14 公克二氧化碳當量、45 毫升水。兩組數字差很多，不是誰說謊，而是量法不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「一次 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 對話要用多少電、多少水」，目前只有兩家公司公布自己量出來的一手數字：Google 說一次 Gemini 文字提示的中位數是 0.24 瓦時電、0.26 毫升水，Mistral 說 Le Chat 一次 400 token 的回應是 1.14 公克二氧化碳當量、45 毫升水。兩組數字差很多，不是誰說謊，而是量法不同。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -218,8 +233,23 @@
           "text": "但同一份報告的另一半是：2025 年全球資料中心用電成長 17%，AI 資料中心成長 50%，而全球總用電只成長 3%。資料中心用電從 2025 年的 485 太瓦時，預估到 2030 年約成長到 950 太瓦時，屆時約占全球用電的 3%。IEA 前一份《Energy and AI》（2025 年 4 月）給的則是 2024 年 415 太瓦時、約占 1.5%。"
         },
         {
-          "type": "paragraph",
-          "text": "差別在用法。IEA 明講，影片生成、推理模型與代理任務每次查詢可能比簡單的文字生成多耗數百到數千倍的能源。所以 0.24 瓦時是「中位數的文字提示」的成本，不是你叫 AI 跑半小時代理任務的成本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "差別在用法。IEA 明講，影片生成、"
+            },
+            {
+              "type": "article",
+              "text": "推理模型",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "與代理任務每次查詢可能比簡單的文字生成多耗數百到數千倍的能源。所以 0.24 瓦時是「中位數的文字提示」的成本，不是你叫 AI 跑半小時代理任務的成本。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -271,36 +301,40 @@
               "text": "「挑對模型大小」在站上有三篇可以接著看："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-              "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
             },
             {
               "type": "text",
               "text": "說明分層怎麼看，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "小型語言模型（Small Language Model）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+              "kind": "life",
+              "slug": "ai-term-small-language-model"
             },
             {
               "type": "text",
               "text": "解釋小模型能做什麼，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "量化（Quantization）：用較少位元執行模型的取捨",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+              "kind": "life",
+              "slug": "ai-term-quantization"
             },
             {
               "type": "text",
               "text": "則是同一個模型變小的另一條路。模型大小本身怎麼算，看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型參數（Model Parameters）是什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
             },
             {
               "type": "text",
@@ -316,18 +350,20 @@
               "text": "把工作搬回自己的電腦，用電就從資料中心移到你家的電表，這是取捨不是節能："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-              "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
             },
             {
               "type": "text",
               "text": "講什麼情況值得，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-              "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
             },
             {
               "type": "text",
@@ -340,14 +376,26 @@
           "text": "最後兩篇補上這篇沒寫的兩半：用量本身怎麼估，以及這一年被講得太滿的說法各自站不站得住腳。"
         },
         {
-          "type": "link",
-          "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
-          "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
+              "kind": "life",
+              "slug": "ai-token-cost-estimation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 能與不能：2026 年的誠實盤點",
-          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 能與不能：2026 年的誠實盤點",
+              "kind": "life",
+              "slug": "ai-hype-vs-reality-2026"
+            }
+          ]
         },
         {
           "type": "callout",

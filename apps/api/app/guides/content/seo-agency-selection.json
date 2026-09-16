@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "收到三份提案，一份每月寫四篇文章，一份承諾改善技術問題，另一份主打讓 AI 認識品牌。即使它們都叫 SEO 或 GEO 服務，實際買到的工作也可能完全不同。把月費排成高低，還不足以判斷哪份適合你的網站。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "收到三份提案，一份每月寫四篇文章，一份承諾改善技術問題，另一份主打讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 認識品牌。即使它們都叫 SEO 或 GEO 服務，實際買到的工作也可能完全不同。把月費排成高低，還不足以判斷哪份適合你的網站。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +216,26 @@
           "text": "不要只驗收排名截圖或 AI 回答截圖。先核對交付的內容、修改證據與資料權限，再用事先約定的方法觀察成效；任何外部搜尋結果都不應被當成每次必然出現的保證。"
         },
         {
-          "type": "link",
-          "text": "先釐清技術 SEO 稽核範圍",
-          "url": "https://mokaair.com/zh-TW/life/technical-seo-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先釐清技術 SEO 稽核範圍",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把網站費用整理成完整預算",
-          "url": "https://mokaair.com/zh-TW/life/website-budget-worksheet"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把網站費用整理成完整預算",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
         }
       ],
       "sources": [

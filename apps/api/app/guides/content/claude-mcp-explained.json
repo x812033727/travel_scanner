@@ -26,8 +26,29 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MCP 是 Model Context Protocol 的縮寫，一個讓 AI 應用連上外部系統的開放標準，官網的比喻是 AI 應用的 USB-C 接頭：一種接法就接上你的檔案、日曆與資料庫。在 Claude 裡它通常不叫 MCP，而叫「連接器」與「桌面版擴充功能」。點幾下、登入一次、按下同意，Claude 就多了一組能讀你的資料、能替你動手的工具。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 是 Model Context Protocol 的縮寫，一個讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 應用連上外部系統的開放標準，官網的比喻是 AI 應用的 USB-C 接頭：一種接法就接上你的檔案、日曆與資料庫。在 Claude 裡它通常不叫 MCP，而叫「連接器」與「桌面版擴充功能」。點幾下、登入一次、按下同意，Claude 就多了一組能讀你的資料、能替你動手的工具。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,9 +68,15 @@
           "text": "標準由誰管也有答案。Anthropic 在 2025 年 12 月 9 日把 MCP 捐給 Linux Foundation 底下新成立的 Agentic AI Foundation，治理模式不變。同一篇公告寫公開的 MCP 伺服器超過 10,000 個，Claude 的連接器目錄超過 75 個。規格以日期編號，目前是 2026-07-28 版。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -106,18 +133,30 @@
           "text": "遠端還是本機，判準是工具在哪裡跑。工具是你登入的雲端服務，或你想在網頁、手機、桌面版都能用，就選遠端的網頁連接器。工具跑在你自己的電腦上，或需要作業系統層級的存取，就選桌面版擴充功能：它其實是本機 MCP 伺服器，只在 Claude Desktop 與 Claude Code 能用，安裝路徑是 Settings > Extensions，按 Browse extensions 從目錄裝。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "要和另外兩件事分清楚。瀏覽器擴充功能讓 Claude 在瀏覽器畫面上讀網頁、點按鈕，走的是畫面；MCP 走資料介面，回傳的是結構化結果，不必模擬點擊。代理模式是上面那一層：代理自己規劃、用工具、看結果、修正，MCP 只負責把工具接上來。"
         },
         {
-          "type": "link",
-          "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
-          "url": "https://mokaair.com/zh-TW/life/claude-computer-use-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
+              "kind": "life",
+              "slug": "claude-computer-use-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -146,9 +185,15 @@
           "text": "接好可以問「我下週有哪些會議」。官方對權限有兩句值得記住：Claude 沿用你原本的權限，你在 Google Workspace 看不到的它也看不到；而且只在你明確要求時取用，只取需要的最少資訊。寄信、搬檔案這類會改動東西的動作，預設每次先問過你。連不上就先中斷再重連，還是不行就到 Google 帳號的已連結應用程式頁面解除授權再來一次。"
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -160,8 +205,23 @@
           "text": "先認清楚一個連接器能做什麼。官方寫三件事：讀取資料；建立、修改或刪除資料；以你的名義採取行動。所以授權畫面該看的是中間那幾行小字：要的權限是檢視還是管理、是一個行事曆還是全部、有沒有包含刪除。官方最佳實務直接說，看起來不必要的就拒絕。"
         },
         {
-          "type": "paragraph",
-          "text": "第三方伺服器的風險是真的。Claude 的說明寫著，惡意的 MCP 伺服器可能夾帶隱藏指令，讓 Claude 做出你沒要求的動作，這就是提示詞注入，只是藏在工具說明或回傳的內容裡。Anthropic 的工程文章補一句：本機工具可以稽核，遠端伺服器卻可能在你核准之後改變行為，目錄之外一律視為不可信；「已驗證」標籤也不是安全稽核。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三方伺服器的風險是真的。Claude 的說明寫著，惡意的 MCP 伺服器可能夾帶隱藏指令，讓 Claude 做出你沒要求的動作，這就是"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "，只是藏在工具說明或回傳的內容裡。Anthropic 的工程文章補一句：本機工具可以稽核，遠端伺服器卻可能在你核准之後改變行為，目錄之外一律視為不可信；「已驗證」標籤也不是安全稽核。"
+            }
+          ]
         },
         {
           "type": "paragraph",
