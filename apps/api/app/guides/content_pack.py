@@ -67,6 +67,9 @@ class ArticlePack(StrictModel):
     destination_id: str | None = Field(default=None, max_length=64)
     topics: list[str] = Field(default_factory=list, max_length=10)
     valid_until: date | None = None
+    # The day the news happened, on a dated news item (``ai-news-...-20260914`` carries
+    # ``2026-09-14``). A news list is ordered by it; publication time is the import's.
+    news_date: date | None = None
     featured: bool = False
     display_order: int = Field(default=100, ge=0, le=100_000)
     # Other names the article answers to, per locale (the editor's; the glossary and the
@@ -191,6 +194,7 @@ def _same_taxonomy(
         article.kind == pack.kind
         and article.destination_id == destination
         and article.valid_until == pack.valid_until
+        and article.news_date == pack.news_date
         and article.featured == pack.featured
         and article.display_order == pack.display_order
         and set(topics) == wanted
@@ -311,6 +315,7 @@ def _taxonomy_payload(
         destination_id=pack.destination_id,
         topics=pack.topics,
         valid_until=pack.valid_until,
+        news_date=pack.news_date,
         featured=pack.featured,
         display_order=pack.display_order,
         aliases=cast(dict[Locale, list[str]], _pack_aliases(pack)),
@@ -339,6 +344,7 @@ async def _apply_article(
                 destination_id=pack.destination_id,
                 topics=pack.topics,
                 valid_until=pack.valid_until,
+                news_date=pack.news_date,
                 document=pack.locales[first.locale],
                 locale=first.locale,
             ),

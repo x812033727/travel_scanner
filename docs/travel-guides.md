@@ -194,7 +194,7 @@ retracting it would 404 every link already pointing at it — and is returned wi
 reader expects. Publishing something that is *already* expired is refused rather than
 creating an invisible page.
 
-**The reader is never shown a date.** `valid_until` and `published_at` are editorial and
+**The reader is never shown a date** -- with one exception, the news lists below. `valid_until` and `published_at` are editorial and
 operational fields: they decide what is listed, what the sitemap carries and what the
 `Article` JSON-LD reports, and neither is drawn on a card or an article. There is no
 "published on", no "applies until" and no expiry banner — a notice that is still correct
@@ -250,6 +250,23 @@ keys and a tag, and a cursor minted under one order is refused under the other w
 to the listing's first page. `featured` and `display_order` are the content pack's
 (`content_pack.py`), so reordering a batch is a number change and a `guides-import`, not a
 code change.
+
+`news` (2026-09-16) orders by `news_date`, the day the news happened, newest first, with the
+undated rows after the dated ones, then publication time and the slug. It exists because the
+news topic is imported in batches: a week of stories publishes within the same minute, so
+`latest` put 7 July between 10 and 4 September. `news_date` is one date per article, carried by
+the pack (`"news_date": "2026-09-14"` on `ai-news-...-20260914`; a test holds every dated
+`ai-news` slug to it), written by `guides-import` like every other taxonomy field and editable
+in the admin form. A taxonomy save that leaves the key out keeps the stored day; `null` clears
+it -- the form predates the field, and a save from an old form must not wipe the day. Its
+cursor is tagged like `curated`'s and refused under the other orders.
+
+The news lists are the one place a reader sees a date: the lifestyle hub's "latest news" (the
+twenty newest dated stories of `ai-news`, one line each) and the `ai-news` topic hub (the whole
+topic, one line each, evergreen pieces last, no order toggle). The date shown is `news_date`,
+never `published_at` or `updated_at`: the day a story happened is part of the story, whereas a
+publication stamp would only age copy that is still correct. A new news topic joins them
+through `NEWS_TOPICS` in `apps/web/lib/guides.ts`, once its packs carry `news_date`.
 
 `GET /guides/series` reads `app/guides/series_registry.json`, the one list of series and
 tutorial hubs across the three mechanisms that hold one (the `series_data` catalogues, the
