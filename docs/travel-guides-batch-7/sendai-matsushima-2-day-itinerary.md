@@ -123,7 +123,7 @@ sources 最多 20 筆，(9)(18) 視字數取捨；拿掉 (18) 就不要寫「一
 1. 開頭第二段 → `sendai-airport-access-loople-bus-guide`（howto，本批第 9 篇）：連結文字講「機場到仙台站、るーぷる仙台與地鐵票券怎麼買」。
 2. 開頭第二段 → `japan-shinkansen-ticket-guide`（howto，既有，長青）：連結文字講「はやぶさ全車指定席、票在えきねっと 訂」。
 3. H2-3 Day 2 行李那句 → `japan-station-locker-guide`（howto，既有，長青）：連結文字講「置物櫃在閘內閘外怎麼找、憑證怎麼留」。
-4. H2-5 季節段春天那句 → `japan-cherry-blossom-2027`（intel，既有，valid_until 2027-05-10）：**季節段例外**，連結文字講「年度開花預測與平年值」。2027-05-11 刪掉這個連結與 `related` 裡的它（有 2028 年版就改連新版）。
+4. H2-5 季節段春天那句 → `japan-cherry-blossom-2027`（intel，既有，valid_until 2027-05-10）：**季節段例外**，連結文字講「年度開花預測與平年值」。2027-05-11 刪掉季節段春天那句的 `japan-cherry-blossom-2027` 連結，句子保留（有 2028 年版就改連新版）；`related` 四篇都是長青 howto，本來就不含這個 intel，不用動。
 5. H2-6 → `yamadera-day-trip-from-sendai`（howto，本批第 11 篇）：連結文字講「山寺那天怎麼排」。
 6. H2-6 → `zao-fox-village-from-sendai`（howto，本批第 12 篇）：連結文字講「藏王狐狸村怎麼去」。
 7. H2-6 名物那句 → `return-to-taiwan-customs-duty-free-guide`（howto，既有，長青）：連結文字講「肉製品要申報檢疫」。
@@ -178,8 +178,8 @@ sources 最多 20 筆，(9)(18) 視字數取捨；拿掉 (18) 就不要寫「一
 
 - **和第 9 篇對數字（上線前一定要做）：** `sendai-airport-access-loople-bus-guide` 是るーぷる、地鐵、空港線票價的主場。兩篇共用的數字是るーぷる一日券 630、共通券 920、まるごとパス 2,930／1,470、班距（平日 20 分、週末與假日 15 分、8 月全日 15 分）、首末班（仙台駅前 9:00／16:00）、一圈約 70 分。兩篇同一個 PR 上線，數字不一致就一起改。
 - 本批互連（batch7-list.md 第 9、10、11、12 條）：第 9 篇結尾要連本篇；本篇開頭連第 9 篇。第 11 篇（山寺）、第 12 篇（狐狸村）都要連回本篇，本篇 H2-6 連它們。上線後跑 `guides-links-check --locale zh-TW` 確認七個 article inline 的 slug 與 kind 都存在。
-- 既有文章反向連回本篇（彙整進「既有文章補連第七批」那張票）：`japan-cherry-blossom-2027` 的「仙台、札幌與北陸」小節可以連本篇；`japan-shinkansen-ticket-guide` 在「往仙台、盛岡、新潟、金澤方向」那句之後可以連本篇（和第 9 篇擇一或兩篇都連，連結文字要分得出來）。
-- 2027-05-11：刪掉季節段春天那句的 `japan-cherry-blossom-2027` 連結與 `related` 裡的它（該 intel 2027-05-10 到期），句子保留；屆時若已有 2028 年版櫻花情報就改連新版。上線 PR 要開 `tasks/open` 票並寫明這個日期。
+- 既有文章反向連回本篇（彙整進「既有文章補連第七批」那張票）：`japan-cherry-blossom-2027` 的「仙台、札幌與北陸」小節可以連本篇；`japan-shinkansen-ticket-guide`：那句「往仙台、盛岡、新潟、金澤方向」在 `blocks[4]` 的清單項目裡，`list` 的 `items` 是純字串（`apps/api/app/site_pages/schemas.py`）、塞不進 article inline，所以改成**在 `blocks[6]` 的旺季 callout 之後、H2「JR Pass 什麼時候才划算」（`blocks[19]`）之前新增一個 `rich_paragraph`**：「到了仙台之後怎麼從車站進市區、要不要買市內票券」＋ `article` inline（`kind: howto`、`slug: sendai-airport-access-loople-bus-guide`）。**第 9、10 篇擇一登記，協調者只加一個區塊，兩篇不要各加一個。**
+- 2027-05-11：刪掉季節段春天那句的 `japan-cherry-blossom-2027` 連結（該 intel 2027-05-10 到期），句子保留；`related` 四篇（`sendai-airport-access-loople-bus-guide`、`yamadera-day-trip-from-sendai`、`zao-fox-village-from-sendai`、`japan-shinkansen-ticket-guide`）都是長青 howto，不含這個 intel，不用動；屆時若已有 2028 年版櫻花情報就改連新版。上線 PR 要開 `tasks/open` 票並寫明這個日期。
 - 2026 年 11 月前後：SENDAI光のページェント 官網公布 2026 年檔期後，季節段冬天那句可以補上日期（或維持只寫月份）；`japan-winter-illumination-2026` 若加入仙台，那篇可以反向連本篇，但本文不連它（2027 年到期）。
 - 每年 11 月：重查遊覽船冬季安排（16:00 停航、9:00 中型船）、福浦橋冬季時間（11 月到 3 月 8:30–16:30）、瑞巖寺 11 月與 12 月的閉門時間，有變就改表格 2 與季節段。
 - 每年 3 月 JR 春季時刻改正後：重查仙石線班次與「一小時兩班」的說法、仙台まるごとパス 的價格與範圍，有變就改 H2-1、H2-3 與 summary。

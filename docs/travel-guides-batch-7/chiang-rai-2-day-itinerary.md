@@ -180,7 +180,7 @@ sources 最多 20 筆，(10)(11)(13) 視字數取捨。
 
 ## 上線後與交叉檢查
 
-- **補反向連結**：`chiang-mai-3-day-itinerary` Day 3 第三項的結尾「或乾脆在清萊住一晚」後面，加一個 article inline 連 `guides/howto/chiang-rai-2-day-itinerary`（連結文字講「清萊住一晚的兩天怎麼排」）。那篇的清萊數字不動，只加連結。
+- **補反向連結**：在 `chiang-mai-3-day-itinerary` 的 Day 3 清單（`blocks[14]`）之後、照片（`blocks[15]`）之前，**新增一個 `rich_paragraph` 區塊**：純文字「清萊值得住一晚，白廟、藍廟、黑屋與郊區可以排成兩天」＋ `article` inline（`kind: howto`、`slug: chiang-rai-2-day-itinerary`、連結文字「清萊兩天一夜怎麼排」）。不要試著把連結塞進 Day 3 清單第三項的句尾「或乾脆在清萊住一晚」：`list` 的 `items` 是純字串（`apps/api/app/site_pages/schemas.py`），放不進 article inline。清單三個項目、那篇的清萊數字與 `blocks[16]` 的 offer 都不動（新區塊不會讓兩個 offer 相鄰）。
 - **Greenbus 官網恢復後**（開 tasks/open 票追蹤，本篇與清邁篇同一個 PR 改）：核對清邁往清萊的實際發車站、班次與票價。若確認不是「第 1 巴士站」，要同時修正清邁篇 Day 3 那一句與本篇的交通表；本篇屆時可以把「以官網為準」換成實際票價。
 - AOT 清萊機場交通頁、Air4Thai、黑屋官網 thawan-duchanee.com、doitung.org、singhapark.com、chiangraicity.go.th 任何一個恢復後：補機場到市區的價目、黑屋門票、董山套票、辛哈公園的付費項目、鐘樓燈光秀場次，並把對應的「以現場為準」改成數字。
 - 每年 11 月旺季開始前重查 TAT 東京的五個景點頁（白廟、藍廟、黑屋、花園、辛哈公園）與清萊頁的交通時間；白廟 200 泰銖或 3 小時 20 分有變，清邁篇要同一個 PR 一起改。

@@ -52,14 +52,14 @@ H3「Grab 怎麼叫、17 號門在哪」：喀比機場的國際線是 Terminal 
 萊雷西（Railay West）是連綿的白沙灘、有長住型的小屋，外國旅客多；穿過餐廳那一區到對面就是萊雷東（Railay East），TAT 寫萊雷東不適合游泳、有紅樹林，氣氛像秘境；萊雷東到帕南沿路的石灰岩壁是世界知名的攀岩聖地，TAT 東京喀比頁寫難度不同的路線有 250 條以上，有教練帶初學者也能爬。
 帕南海灘從奧南搭長尾船約 30 到 40 分（TAT 帕南頁），海灘上有當地人信仰的公主洞。長尾船票價、末班時間沒有官方頁，寫「以奧南碼頭現場牌價與船家公告為準」；不要寫漲退潮要涉水、行李怎麼上船這類沒有來源的細節。
 放一個 tip callout：住萊雷的人，進出都要配合船班與海況，落地當天太晚到就先住奧南或喀比鎮一晚，隔天再過去；Tigerline 的船站有 Railay Bay（Floating Pier (East)），Andaman Wave Master 的出發點選單也有 Krabi (Railey East Floating Pier) 與 Ao Nang (Nopparat Thara Beach)，班次以官網訂票頁為準。
-段末一句 article inline：四島、皮皮島與國家公園門票怎麼排，看喀比跳島篇（howto，`krabi-ao-nang-railay-4-islands`）；拿掉連結那句話要讀得通。
+段末一句純文字：四島、皮皮島與國家公園門票怎麼排是第 4 篇的主題，本文一句帶過、不寫門票數字。**這裡不放連結**，連第 4 篇的 article inline 放在 H2-4 分區表之後那段的段末（batch7-list 第 3 條寫「3 的結尾與住哪段 → 4」，以清單為準）。
 
 (6) H2-4「第一次去住哪一區」：分區表 4 欄「區域／官方頁怎麼寫／怎麼到／適合誰」，四列。特色只寫 TAT 東京頁寫到的，沒寫到的區只寫相對位置與交通：
 - 奧南（อ่าวนาง）：TAT 寫是喀比最熱鬧的海灘、鄰近海灘與島嶼的出發點，約 500 公尺沙灘兩端停著往島嶼的船，沿街是資訊中心、餐廳、潛水店與土產店，傍晚到夜裡人多，11 到 4 月的最佳季節看得到日落；機場車程約 50 分；第一次來、想一站解決吃飯與跳島的人。
 - 喀比鎮（กระบี่）：機場車程約 30 分；TAT 寫市區到奧南等主要觀光地有路線巴士，長途巴士總站也在這裡；轉車、只過一晚、預算型。
 - 萊雷與帕南：沒有車路，奧南長尾船約 30 分（帕南約 30 到 40 分）；萊雷西是白沙灘、萊雷東不適合游泳、是攀岩聖地；想住在岩壁下、不介意進出要等船的人。
 - 克隆芒與 Tubkaek：在奧南北邊；官方觀光頁沒有專頁描述，本文只寫位置與 Tigerline 的接駁站有列這兩家飯店區；車程以叫車 App 或飯店接送為準；整天待在度假村、不打算天天進奧南的人。
-表後一段：TAT 東京喀比頁寫乾季到熱季是旺季、飯店比較貴，雨季飯店便宜；怎麼挑一句話收尾——想熱鬧與方便選奧南，要轉車或省錢選喀比鎮，想住在岩壁下選萊雷，只想泡在度假村選克隆芒與 Tubkaek。之後放 hotel offer。
+表後一段：TAT 東京喀比頁寫乾季到熱季是旺季、飯店比較貴，雨季飯店便宜；怎麼挑一句話收尾——想熱鬧與方便選奧南，要轉車或省錢選喀比鎮，想住在岩壁下選萊雷，只想泡在度假村選克隆芒與 Tubkaek。段末一句 article inline：住奧南的人，四島、萊雷與皮皮島怎麼排，看喀比跳島篇（howto，`krabi-ao-nang-railay-4-islands`）；拿掉連結那句話要讀得通。之後放 hotel offer。
 
 (7) H2-5「普吉、曼谷怎麼接喀比」：先寫渡輪，這是本段唯一有官方數字的部分。
 - 沒有直達船：Andaman Wave Master 官網的航線卡片只有普吉⇄皮皮（約 2 小時起、700 泰銖起）與喀比⇄皮皮（約 2 小時、450 泰銖起），普吉到喀比要用訂票頁的 Connecting Route「Phuket - Krabi」，實際是在皮皮島轉船。
@@ -81,7 +81,7 @@ H3「Grab 怎麼叫、17 號門在哪」：喀比機場的國際線是 Terminal 
   2. 「萊雷可以開車進去嗎」→ 不行，萊雷沒有車路，從奧南搭長尾船約 30 分，船資以奧南碼頭現場牌價為準；行李多、班機晚到就先住奧南或喀比鎮一晚。
   3. 「普吉到喀比有直達渡輪嗎」→ Andaman Wave Master 官網是 Connecting Route，在皮皮島轉船：普吉拉莎達⇄皮皮 700 泰銖起、喀比 Klong Jilad⇄皮皮 450 泰銖，各約 2 小時；Tigerline 有快艇網絡，班次票價以官網訂票頁為準。
 
-(9) 結尾：一句「喀比玩幾天怎麼排」連第 4 篇（可選，若 H2-3 已連過就不重複），再放兩個 link 區塊：`destinations/krabi` 城市頁與 `foods?destination_id=krabi` 美食目錄。
+(9) 結尾：一句「喀比玩幾天怎麼排」連第 4 篇（可選；要放就讓連結文字和 H2-4 那句不同），再放兩個 link 區塊：`destinations/krabi` 城市頁與 `foods?destination_id=krabi` 美食目錄。
 `related`（最多 4）：`krabi-ao-nang-railay-4-islands`、`phuket-airport-transport-where-to-stay`、`southeast-asia-seasons-when-to-go`、`thailand-esim-sim-wifi`。
 `aliases`：「甲米」「甲米機場」「萊利」（Railay 另一個常見譯法；正文統一用目的地目錄的「萊雷」）。
 
@@ -127,7 +127,7 @@ sources 最多 20 筆，(6)(13)(14) 視字數取捨；拿掉 (6) 仍然不能寫
 完整網址前綴是 https://mokaair.com/zh-TW/。文章連結一律用 `rich_paragraph` 的 `article` inline（填對方的 kind 與 slug），城市頁與美食目錄用 `link` 區塊。每一句都要寫成拿掉連結後仍讀得通。
 1. 開頭第二段 → `taoyuan-airport-departure-guide`（howto，既有，長青）：連結文字講「桃園機場的報到、安檢與行動電源規定」。
 2. H2-1 最後一句 → `thailand-esim-sim-wifi`（howto，既有，長青）：連結文字講「泰國上網怎麼選：eSIM、SIM 卡與分享器」。
-3. H2-3 段末 → `krabi-ao-nang-railay-4-islands`（howto，本批第 4 篇）：連結文字講「奧南出發的四島、萊雷與皮皮島怎麼排」。
+3. H2-4 分區表之後那段段末 → `krabi-ao-nang-railay-4-islands`（howto，本批第 4 篇）：連結文字講「住奧南的人，四島、萊雷與皮皮島怎麼排」。（以 batch7-list 第 3 條的「3 的結尾與住哪段 → 4」為準；H2-3 萊雷那段只寫純文字、不連。）
 4. H2-5 段末 → `phuket-airport-transport-where-to-stay`（howto，既有，長青）：連結文字講「普吉機場到各海灘與住哪一區」。
 5. H2-6 季節段末 → `southeast-asia-seasons-when-to-go`（howto，本批第 8 篇）：連結文字講「東南亞各地哪個月去」。
 6. H2-6 最後一句 → `return-to-taiwan-customs-duty-free-guide`（howto，既有，長青）：連結文字講「回台行李、肉製品與免稅額規定」。
@@ -177,7 +177,7 @@ diagram-1.svg，1600×900，放在 H2-1 那段文字之後、H2-2 標題之前�
 ## 上線後與交叉檢查
 
 - 反向連結（普吉篇已預留位置）：`phuket-airport-transport-where-to-stay` 的規格「上線後與交叉檢查」寫了「第七批喀比文（例如 krabi-ao-nang-railay-4-islands）或普吉跳島文上線後：本文 H2-5 或結尾補連過去，對方也連回本文」。本篇上線後，在那篇 H2-5「島內移動與季節」段末或結尾補一個 article inline 連 `guides/howto/krabi-airport-transport-where-to-stay`（連結文字講「普吉玩完接喀比：渡輪怎麼轉、住哪一區」）；那篇「不放 activities」的規則不動。
-- 本批互連（batch7-list.md 第 3、4 條）：第 4 篇喀比跳島的開頭「怎麼到奧南」要連本篇，本篇 H2-3 與結尾連第 4 篇。兩篇共用的數字（機場到奧南約 50 分、奧南到萊雷長尾船約 30 分、喀比 Klong Jilad⇄皮皮 450／350 與 09:00、13:00 班次）要同一套；任何一篇改，同一個 PR 改另一篇。
+- 本批互連（batch7-list.md 第 3、4 條）：第 4 篇喀比跳島的開頭「怎麼到奧南」要連本篇，本篇 H2-4 連第 4 篇、結尾可選再連一次（H2-3 萊雷那段不連）。兩篇共用的數字（機場到奧南約 50 分、奧南到萊雷長尾船約 30 分、喀比 Klong Jilad⇄皮皮 450／350 與 09:00、13:00 班次）要同一套；任何一篇改，同一個 PR 改另一篇。
 - 第 8 篇季節篇的泰國段可連回本篇（喀比乾季 11–3、雨季 6–10 的來源在本篇）。
 - 既有文章反向連回：`thailand-esim-sim-wifi` 最後一節「離開曼谷」那一項現在提到普吉，可加一句喀比並連本篇（做法同普吉篇）。
 - 2026-12-01（上線 PR 同時開票並寫明日期，旺季前）：重看 Andaman Wave Master 四個頁面（`/ferry/phuket-to-phiphi/`、`/ferry/phiphi-to-krabi/`、`/ferry/krabi-to-phiphi/`、`/ferry/phiphi-to-phuket/`）與 Tigerline 首頁，旺季班表常變；有變同時改 H2-5 表格、summary 與 FAQ 第 3 題，三處必須一致。

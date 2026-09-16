@@ -190,7 +190,7 @@ diagram-1.svg，1600×900，放在 H2-1 的表格之後、H2-2 標題之前。vi
 ## 上線後與交叉檢查
 
 - 本批互連（batch7-list.md 第 9 條）：第 10 篇的開頭交通段要連本篇，本篇結尾連第 10、11、12 篇。四篇共用的數字（空港線 680／IC 672、25 分、るーぷる 260／630／920、地鐵一日券 840／620、仙台まるごとパス 2,930）必須同一套；任何一篇改，同一個 PR 改其他篇。第 10、11 篇如果要寫仙台まるごとパス 的划算與否，算術以本篇為準。
-- 既有文章反向連回（上線 PR 開票）：`japan-ic-card-suica-icoca-guide` 的「十張卡全國互通，但不能跨區」一節，可加一句地方卡的例子並連本篇（icsca 只在仙台圈、不能當便利商店電子錢包）。`japan-shinkansen-ticket-guide` 的「往仙台」那段可加一句「到了仙台之後怎麼進市區」連本篇。兩處都要寫成拿掉連結仍讀得通。
+- 既有文章反向連回（上線 PR 開票）：`japan-ic-card-suica-icoca-guide` 的「十張卡全國互通，但不能跨區」一節，可加一句地方卡的例子並連本篇（icsca 只在仙台圈、不能當便利商店電子錢包）。`japan-shinkansen-ticket-guide`：那句「往仙台、盛岡、新潟、金澤方向」在 `blocks[4]` 的清單項目裡，`list` 的 `items` 是純字串（`apps/api/app/site_pages/schemas.py`）、塞不進 article inline，所以改成**在 `blocks[6]` 的旺季 callout 之後、H2「JR Pass 什麼時候才划算」（`blocks[19]`）之前新增一個 `rich_paragraph`**：「到了仙台之後怎麼從車站進市區、要不要買市內票券」＋ `article` inline（`kind: howto`、`slug: sendai-airport-access-loople-bus-guide`）。**第 9、10 篇擇一登記，協調者只加一個區塊，兩篇不要各加一個。**兩處都要寫成拿掉連結仍讀得通。
 - 2027-03-20 之後（上線 PR 同時開票，寫明日期）：JR 東日本 2027 年春季改正之後，重開 `https://www.senat.co.jp/fare/sendaiair/` 與兩個時刻表頁，核對 680／672、首末班（5:31／23:23、5:45／23:10）與白天 20 分班距；有變同時改 H2-1 表格、H2-2、summary、FAQ 第 1 題與 diagram-1，五處必須一致。
 - 2026-10-31 以前（上線 PR 同時開票）：冬季班表換季後重讀仙台機場官網國際線月間時刻（`https://www.sendai-airport.co.jp/flight/intl-monthly.html` 與其 API），核對長榮、星宇、台灣虎航的每週班期；班期變了就改 H2-5 表格與表後那兩句。
 - 2027-04-01 以前：重看るーぷる仙台 `https://loople-sendai.jp/about/`（平日時刻表標「令和7年9月1日改正」，年度改正常在春天）與仙台市交通局 `https://www.kotsu.city.sendai.jp/fare/waribiki/`，核對 260／630／920 與 840／620；同時確認 8 月 15 分間隔的公告還在。
