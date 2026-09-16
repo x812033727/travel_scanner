@@ -1,7 +1,7 @@
 ---
 id: 2026-09-16-news-batch-4-0-crypto-and
 title: News batch 4.0: crypto and tech-news topics, migration 0079 and retopic rules
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5

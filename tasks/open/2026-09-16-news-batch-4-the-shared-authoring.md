@@ -1,7 +1,7 @@
 ---
 id: 2026-09-16-news-batch-4-the-shared-authoring
 title: News batch 4: the shared authoring brief for the crypto, tech and AI news verticals
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: claude-opus-5

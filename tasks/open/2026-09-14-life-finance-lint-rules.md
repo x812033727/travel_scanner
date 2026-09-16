@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-life-finance-lint-rules
 title: 財經文章的免責與措辭 lint 規則
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5
