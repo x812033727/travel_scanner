@@ -166,13 +166,26 @@ Destination annotations come from the same catalogue read the destination index 
 outage leaves the destinations listed without their annotation rather than dropping the section --
 those pages are still there.
 
-**Who can actually read it.** Three of the agents that advertise consuming llms.txt -- `GPTBot`,
-`ClaudeBot` and `PerplexityBot` -- are refused in `robots.ts` under the policy recorded there, so
-they will never fetch this file. That is not a reason to revisit the refusals, and a flat metric
-here is not evidence that it should be. The readers it does have are the agents that fetch on a
-person's behalf and cite what they found (`ChatGPT-User`, `OAI-SearchBot`), ordinary search
-crawlers, and tooling. The convention also has no registered discovery directive -- a client
+**Who can actually read it.** Under the default AI-crawler policy (below) the agents that
+advertise consuming llms.txt and cite what they found -- `PerplexityBot`, `ClaudeBot`,
+`ChatGPT-User`, `OAI-SearchBot` -- may fetch it; `GPTBot` and the other training crawlers are
+refused in `robots.ts` and never will. A flat metric here is not evidence that the refusals
+should be revisited. The convention also has no registered discovery directive -- a client
 probes the well-known path or does not -- so `robots.txt` is not modified to point at it.
+
+## AI crawlers
+
+Decided 2026-09-15: the site wants to be *cited* by the engines that answer with sources, and
+not to be *harvested* by the ones that train on it and send nobody back. `apps/web/app/robots.ts`
+therefore keeps two lists. The training crawlers (`GPTBot`, `anthropic-ai`, `CCBot`,
+`Google-Extended`, `Applebot-Extended`, `Bytespider`, `Amazonbot`, `meta-externalagent`,
+`Diffbot`) are refused; the search crawlers (`PerplexityBot`, `ClaudeBot`) are let in; the
+agents that fetch on a person's behalf (`ChatGPT-User`, `OAI-SearchBot`) are not listed and
+never were. `AI_CRAWLER_POLICY` picks the line -- `allow-search` (the default), `block` (both
+lists refused, the policy before this date) or `allow` (neither) -- and is read per request
+(`dynamic = "force-dynamic"`), so a change needs no rebuild. `robots.txt` is a declaration, not
+a defence: it stops the crawlers honest enough to read it, and volume from the rest is the
+per-source read limit's problem.
 
 Serving the file implies nothing about being indexed, cited, or summarised anywhere. It is one
 document that costs one request; it is not a ranking mechanism, and no part of this repository

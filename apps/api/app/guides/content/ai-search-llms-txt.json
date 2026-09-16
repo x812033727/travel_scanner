@@ -259,7 +259,7 @@
           "items": [
             "給所有爬蟲的那一組允許整站，只擋機器用的端點與不該被猜到的 token 網址：API、後台、分享與轉址路徑。",
             "會員頁面刻意保持可被抓取，改用頁面上的 noindex，理由就是上一節那一條。",
-            "拒絕的抓取式爬蟲名單目前有 11 個 user-agent，包含 GPTBot、ClaudeBot、CCBot 等；ChatGPT-User 與 OAI-SearchBot 刻意不在名單上。"
+            "拒絕的名單只留訓練用爬蟲，目前 9 個 user-agent，包含 GPTBot、CCBot、Google-Extended 等；會引用來源的搜尋型爬蟲（PerplexityBot、ClaudeBot）與替使用者取頁的 ChatGPT-User、OAI-SearchBot 刻意不在名單上，政策可由環境變數切換。"
           ],
           "ordered": false
         },
