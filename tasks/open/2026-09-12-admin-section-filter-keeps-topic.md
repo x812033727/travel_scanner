@@ -1,17 +1,18 @@
 ---
 id: 2026-09-12-admin-section-filter-keeps-topic
 title: 後台文章清單：切換專區沒有清掉主題篩選
-status: open
+status: review
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-16T02:39:28Z
 created_at: 2026-09-12T16:57:07Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on: []
 scope:
   - apps/web/components/admin-guides-list.tsx
+  - apps/web/components/admin-guides-list.test.tsx
 ---
 
 # 後台文章清單：切換專區沒有清掉主題篩選
@@ -37,15 +38,15 @@ PR 已經替該端點加了 section 參數），所以兩套詞彙都列在裡�
 
 ## Definition of done
 
-- [ ] 切換專區後，畫面上顯示的篩選條件與實際送出的查詢一致——不會出現一個永遠查不到
+- [x] 切換專區後，畫面上顯示的篩選條件與實際送出的查詢一致——不會出現一個永遠查不到
       東西、而使用者看不出原因的組合。
-- [ ] 決定寫進註解：這個 admin 的多篩選互動規則是什麼（互不清除／依賴關係才清除）。
+- [x] 決定寫進註解：這個 admin 的多篩選互動規則是什麼（互不清除／依賴關係才清除）。
 
 ## Steps
 
-- [ ] 決定規則：切專區時清掉 `topic`，或把主題下拉改成依 `section` 取、且同步清掉不合的值。
-- [ ] 一併看 `kind` 下拉：它現在不分專區列出全部三種 kind。
-- [ ] 補 `admin-guides-list.test.tsx` 的案例（現有 fixture 只有一個旅遊主題，沒有專區篩選覆蓋）。
+- [x] 決定規則：切專區時清掉 `topic`，或把主題下拉改成依 `section` 取、且同步清掉不合的值。
+- [x] 一併看 `kind` 下拉：它現在不分專區列出全部三種 kind。
+- [x] 補 `admin-guides-list.test.tsx` 的案例（現有 fixture 只有一個旅遊主題，沒有專區篩選覆蓋）。
 
 ## How to verify
 
@@ -60,3 +61,7 @@ PR 已經替該端點加了 section 參數），所以兩套詞彙都列在裡�
 
 編輯器那側已經是專區感知的：`admin-guides-panel.tsx` 會用 `topic.section ?? "travel"` 過濾
 主題勾選框，並在 kind 跨專區時清掉主題。沒跟上的是清單的篩選列。
+
+2026-09-16 落地（claude-fable-5-1）：規則寫在 `admin-guides-list.tsx` 的註解——彼此獨立的篩選（狀態、目的地、關鍵字）互不清除；
+依附於專區的（型態、主題）在專區改變時清掉，且兩個下拉只列該專區的值（網址上帶著的值即使不屬於該專區也保留在選單裡，畫面與查詢一致）。
+測試：`?topic=transport&kind=howto` 切到生活分享 → 網址只剩 `section=life`，型態選單只剩「生活分享」，主題選單沒有「交通」。
