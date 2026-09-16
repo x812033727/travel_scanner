@@ -41,9 +41,15 @@ const summary = {
 const params = Promise.resolve({ locale: "zh-TW" as const });
 const search = (over: Record<string, string> = {}) => Promise.resolve({ ...over });
 
+/** The section listing answers with `articles`; the news read (the `ai-news` topic) answers
+ *  empty unless a test says otherwise, so a card is on the page once. */
+const listing = (articles: unknown[]) =>
+  mocks.list.mockImplementation(async (_locale: string, filters: { topic?: string }) =>
+    ({ articles: filters.topic === "ai-news" ? [] : articles, next_cursor: null, available: true }));
+
 beforeEach(() => {
   vi.clearAllMocks();
-  mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null, available: true });
+  listing([summary]);
   mocks.topics.mockResolvedValue([{ slug: "ai", label: "AI 工具", section: "life" }]);
   mocks.series.mockResolvedValue([]);
   mocks.summary.mockResolvedValue({ counts: [], available: false });
@@ -123,7 +129,7 @@ describe("the lifestyle listing", () => {
 
   it("keeps Gemini lessons out of the listing until the registry lists the hub, which is when it is published", async () => {
     const lesson = { ...summary, slug: catalogue.articles[0].slug, title: "Gemini 第一課" };
-    mocks.list.mockResolvedValue({ articles: [summary, lesson], next_cursor: null, available: true });
+    listing([summary, lesson]);
     render(await LifeHubPage({ params, searchParams: search() }));
     expect(screen.queryByRole("link", { name: "Gemini 第一課" })).toBeNull();
     expect(screen.getByRole("link", { name: "我每天在用的 AI 工具" })).toBeTruthy();
@@ -131,6 +137,33 @@ describe("the lifestyle listing", () => {
     mocks.series.mockResolvedValue([geminiRow]);
     render(await LifeHubPage({ params, searchParams: search() }));
     expect(screen.getByRole("link", { name: "Gemini 第一課" }).getAttribute("href")).toBe(`/life/${catalogue.articles[0].slug}`);
+  });
+
+  it("opens with the newest news from the news topic, with the topic hub as see-all, on the plain page only", async () => {
+    const news = { ...summary, slug: "ai-news-openai-devday", title: "OpenAI DevDay 重點", topics: [{ slug: "ai-news", label: "AI 新聞與趨勢", section: "life" as const }] };
+    mocks.list.mockImplementation(async (_locale: string, filters: { topic?: string }) =>
+      filters.topic === "ai-news"
+        ? { articles: [news], next_cursor: null, available: true }
+        : { articles: [summary], next_cursor: null, available: true });
+    mocks.topics.mockResolvedValue([
+      { slug: "ai", label: "AI 工具", section: "life", parent: null, count: 5 },
+      { slug: "ai-news", label: "AI 新聞與趨勢", section: "life", parent: "ai", description: "這週的 AI 大事。", count: 3 },
+    ]);
+    render(await LifeHubPage({ params, searchParams: search() }));
+    // Newest first is the API's default order, so no `sort` rides along.
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { kind: "life", topic: "ai-news" }, 6);
+    const block = screen.getByTestId("life-news");
+    expect(block.querySelector("h2")?.textContent).toBe("最新新聞");
+    expect(screen.getByText("這週的 AI 大事。")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "看全部" }).getAttribute("href")).toBe("/life/topics/ai-news");
+    expect(screen.getByRole("link", { name: "OpenAI DevDay 重點" }).getAttribute("href")).toBe("/life/ai-news-openai-devday");
+    // The news comes right after the hero, before the topics.
+    expect(block.compareDocumentPosition(screen.getByTestId("topic-tiles")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    cleanup();
+    mocks.list.mockClear();
+    render(await LifeHubPage({ params, searchParams: search({ topic: "ai" }) }));
+    expect(screen.queryByTestId("life-news")).toBeNull();
+    expect(mocks.list).not.toHaveBeenCalledWith("zh-TW", expect.objectContaining({ topic: "ai-news" }), 6);
   });
 
   it("lists in the editor's order, so the overview leads whatever batch came last", async () => {
@@ -195,6 +228,8 @@ describe("what the lifestyle listing tells search engines", () => {
     const arguments_ = { kind: "life", topic: undefined, cursor: undefined, sort: "curated" };
     await generateMetadata({ params, searchParams: search() });
     render(await LifeHubPage({ params, searchParams: search() }));
-    for (const call of mocks.list.mock.calls) expect(call).toEqual(["zh-TW", arguments_, 24]);
+    // The news block is the body's own read; the section listing is the shared one.
+    const listing = mocks.list.mock.calls.filter((call) => call[1].topic !== "ai-news");
+    expect(listing).toEqual([["zh-TW", arguments_, 24], ["zh-TW", arguments_, 24]]);
   });
 });

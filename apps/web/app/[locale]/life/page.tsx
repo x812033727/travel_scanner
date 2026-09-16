@@ -25,6 +25,13 @@ type Search = { topic?: string; cursor?: string };
 const listFor = (locale: Locale, search: Search) =>
   getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor, sort: "curated" }, 24);
 
+/** The section opens with its news: the news sub-topic, newest first (the API's default
+ *  order, which is the right one for dated pieces), six at a time, with the topic hub as
+ *  "see all". Only on the plain first page: a `?topic=` or `?cursor=` view is already
+ *  somewhere specific, and the news topic's own hub lists all of it. */
+const LIFE_NEWS_TOPIC = "ai-news";
+const NEWS_LIMIT = 6;
+
 /**
  * The lifestyle section: the same article system as `/guides`, with its own hub, its own
  * topic vocabulary and no kind segment, because `life` is the only kind that lists here.
@@ -62,8 +69,10 @@ export default async function LifeHubPage(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ) {
   const [{ locale }, search] = await Promise.all([params, searchParams]);
-  const [rawList, topics, registry, summary, t, nav] = await Promise.all([
+  const showNews = !search.topic && !search.cursor;
+  const [rawList, rawNews, topics, registry, summary, t, nav] = await Promise.all([
     listFor(locale, search),
+    showNews ? getGuideList(locale, { kind: "life", topic: LIFE_NEWS_TOPIC }, NEWS_LIMIT) : Promise.resolve(null),
     getGuideTopics(locale, "life"),
     getSeriesIndex(locale),
     guideSitemapSummary(),
@@ -84,6 +93,8 @@ export default async function LifeHubPage(
     locale, hubPublished: Boolean(geminiReference) && registry.some((item) => item.source === "web-gemini"),
   });
   const list = { ...rawList, articles: geminiReference ? filterGeminiArticleLinks(rawList.articles, geminiSeries) : rawList.articles };
+  const news = rawNews && geminiReference ? filterGeminiArticleLinks(rawNews.articles, geminiSeries) : rawNews?.articles ?? [];
+  const newsTopic = topics.find((topic) => topic.slug === LIFE_NEWS_TOPIC) ?? null;
   const series: SeriesRowItem[] = registry
     .filter((item) => item.section === "life")
     .map((item) => (item.source === "web-gemini" && geminiSeries
@@ -121,6 +132,23 @@ export default async function LifeHubPage(
           ]}
           labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
         />
+
+        {news.length ? (
+          <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h2 id="life-news-heading" className="text-2xl font-bold tracking-tight">{t("guides.latestNews")}</h2>
+              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={guideTopicHref("life", LIFE_NEWS_TOPIC)}>
+                {t("guides.seeAll")}
+              </Link>
+            </div>
+            {newsTopic?.description ? <p className="mt-2 max-w-2xl leading-7 text-[var(--muted)]">{newsTopic.description}</p> : null}
+            <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {news.map((article) => (
+                <GuideCard key={article.slug} article={article} labels={cardLabels} variant="compact" />
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <TopicTiles
           section="life"
