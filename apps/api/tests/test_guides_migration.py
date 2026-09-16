@@ -219,7 +219,23 @@ def test_the_seeded_topics_match_the_python_vocabulary():
 #: appended to, never reordered, so concatenating these in revision order has to reproduce
 #: it exactly -- a slug inserted mid-tuple would still pass a set comparison while a fresh
 #: database and an upgraded one disagreed about its display_order.
-LIFE_SEED_MIGRATIONS = ("0074_lifestyle_guides", "0075_finance_topic", "0076_guide_topic_hierarchy")
+LIFE_SEED_MIGRATIONS = (
+    "0074_lifestyle_guides",
+    "0075_finance_topic",
+    "0076_guide_topic_hierarchy",
+    "0080_crypto_and_tech_topics",
+)
+#: The subset that seeds sub-topics and hub leads. 0074 and 0075 predate both, so they carry
+#: no ``LIFE_SEED_SUBTOPICS`` at all.
+LIFE_SUBTOPIC_MIGRATIONS = ("0076_guide_topic_hierarchy", "0080_crypto_and_tech_topics")
+
+
+def seeded_life_topics(name: str) -> list[tuple[str, int, object]]:
+    return list(getattr(migration(name), "LIFE_SEED_TOPICS", ()))
+
+
+def seeded_life_subtopics(name: str) -> list[tuple[str, str, int, object]]:
+    return list(getattr(migration(name), "LIFE_SEED_SUBTOPICS", ()))
 
 
 def test_the_seeded_life_topics_match_the_python_vocabulary():
@@ -234,33 +250,49 @@ def test_the_seeded_life_topics_match_the_python_vocabulary():
     assert seeded == list(LIFE_SEED_TOPICS)
 
 
-def test_the_seeded_life_display_orders_do_not_collide():
-    """They order one filter row; two topics on the same number sort by slug by accident."""
-    orders = [
-        order for name in LIFE_SEED_MIGRATIONS for _, order, _ in migration(name).LIFE_SEED_TOPICS
-    ]
-    assert len(set(orders)) == len(orders)
-    assert orders == sorted(orders)
-
-
 def test_the_seeded_sub_topics_match_the_python_vocabulary():
-    """0076 seeds the sub-topics and the hub leads; both must agree with the application
-    constants for the reason the parent vocabulary must."""
+    """The sub-topics and the hub leads, concatenated in revision order, must agree with the
+    application constants for the reason the parent vocabulary must."""
     from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, LIFE_TOPIC_DESCRIPTIONS
 
-    module = migration("0076_guide_topic_hierarchy")
-    seeded = [(slug, parent, labels) for slug, parent, _, labels in module.LIFE_SEED_SUBTOPICS]
+    seeded = [
+        (slug, parent, labels)
+        for name in LIFE_SUBTOPIC_MIGRATIONS
+        for slug, parent, _, labels in seeded_life_subtopics(name)
+    ]
     assert seeded == list(LIFE_SEED_SUBTOPICS)
-    assert module.TOPIC_DESCRIPTIONS == LIFE_TOPIC_DESCRIPTIONS
+
+    # Each revision owns a disjoint slice of the leads, which is what makes the merge order
+    # irrelevant; two revisions claiming one slug would let a rollback restore the other's.
+    leads: dict[str, dict[str, str]] = {}
+    for name in LIFE_SUBTOPIC_MIGRATIONS:
+        described = migration(name).TOPIC_DESCRIPTIONS
+        assert not set(described) & set(leads), name
+        leads.update(described)
+    assert leads == LIFE_TOPIC_DESCRIPTIONS
+
     parents = {slug for slug, _ in LIFE_SEED_TOPICS}
-    assert {parent for _, parent, _, _ in module.LIFE_SEED_SUBTOPICS} <= parents
-    assert set(module.TOPIC_DESCRIPTIONS) <= parents | {slug for slug, _, _ in LIFE_SEED_SUBTOPICS}
-    # One display order column sorts parents and children alike, so none may repeat.
-    orders = [
-        order for name in LIFE_SEED_MIGRATIONS for _, order, _ in migration(name).LIFE_SEED_TOPICS
-    ] + [order for _, _, order, _ in module.LIFE_SEED_SUBTOPICS]
-    assert len(set(orders)) == len(orders)
-    assert orders == sorted(orders)
+    assert {parent for _, parent, _ in seeded} <= parents
+    assert set(leads) <= parents | {slug for slug, _, _ in LIFE_SEED_SUBTOPICS}
+
+
+def test_the_seeded_life_display_orders_are_unique_and_each_revision_starts_above_the_last():
+    """They order one filter row, and two topics on the same number sort by slug by accident.
+    One display_order column sorts parents and children alike, so no two rows may share a
+    number. The old assertion was that the concatenation ascends globally, which only held
+    while every revision seeded parents before children. 0079 seeds a parent at 530 after
+    0076's children reached 520, so the property to hold it to is the one that was always
+    meant: each revision's own rows ascend, and begin above everything already seeded."""
+    highest = 0
+    seen: set[int] = set()
+    for name in LIFE_SEED_MIGRATIONS:
+        orders = [order for _, order, _ in seeded_life_topics(name)]
+        orders += [order for _, _, order, _ in seeded_life_subtopics(name)]
+        assert orders == sorted(orders), name
+        assert not seen & set(orders), name
+        assert min(orders) > highest, name
+        seen |= set(orders)
+        highest = max(orders)
 
 
 LIFE_SLUGS = ("ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc")
@@ -531,6 +563,101 @@ def test_0075_seeds_finance_and_its_rollback_spares_the_other_life_topics(monkey
             ) == before
 
 
+def test_0079_seeds_the_two_news_verticals_and_its_rollback_spares_the_earlier_vocabulary(
+    monkeypatch,
+):
+    """0079 adds no schema, so it runs on whatever 0076 left. ``tech-news`` hangs under the
+    parent this same revision seeds and ``crypto`` under ``finance``, which 0075 seeded three
+    revisions earlier -- the case that would break if the parent lookup only saw its own rows.
+
+    ``PRAGMA foreign_keys`` stays off for the reason the 0074 test gives.
+    """
+    names = (
+        "0072_travel_guides",
+        "0074_lifestyle_guides",
+        "0075_finance_topic",
+        "0076_guide_topic_hierarchy",
+        "0080_crypto_and_tech_topics",
+    )
+    modules = [migration(name) for name in names]
+    for module in modules:
+        monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    *earlier, verticals = modules
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        Base.metadata.create_all(
+            connection,
+            tables=[
+                User.__table__,
+                GuideTopic.__table__,
+                GuideArticle.__table__,
+                GuideArticleLocale.__table__,
+                GuideArticleRevision.__table__,
+            ],
+        )
+        with Operations.context(MigrationContext.configure(connection)):
+            for module in earlier:
+                module.upgrade()
+            before = connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic))
+
+            verticals.upgrade()
+
+            rows = {
+                row.slug: row
+                for row in connection.execute(
+                    sa.select(
+                        GuideTopic.slug,
+                        GuideTopic.id,
+                        GuideTopic.parent_id,
+                        GuideTopic.section,
+                        GuideTopic.display_order,
+                        GuideTopic.descriptions_json,
+                        GuideTopic.source,
+                    )
+                )
+            }
+            added = len(verticals.LIFE_SEED_TOPICS) + len(verticals.LIFE_SEED_SUBTOPICS)
+            assert len(rows) == before + added
+            for slug, parent, order, _ in verticals.LIFE_SEED_SUBTOPICS:
+                assert rows[slug].parent_id == rows[parent].id, slug
+                assert (rows[slug].section, rows[slug].display_order, rows[slug].source) == (
+                    "life",
+                    order,
+                    "seed",
+                )
+            # The one this revision could get wrong: an older revision's parent.
+            assert rows["crypto"].parent_id == rows["finance"].id
+            assert rows["tech-news"].parent_id == rows["tech"].id
+            assert rows["tech"].parent_id is None
+            assert rows["crypto"].descriptions_json == verticals.TOPIC_DESCRIPTIONS["crypto"]
+
+            # A re-run writes nothing, and a lead an editor rewrote is never restored.
+            connection.execute(
+                sa.update(GuideTopic)
+                .where(GuideTopic.slug == "crypto")
+                .values(descriptions_json={"zh-TW": "\u81ea\u8a02"})
+            )
+            verticals.upgrade()
+            assert (
+                connection.scalar(sa.select(sa.func.count()).select_from(GuideTopic))
+                == before + added
+            )
+            assert connection.scalar(
+                sa.select(GuideTopic.descriptions_json).where(GuideTopic.slug == "crypto")
+            ) == {"zh-TW": "\u81ea\u8a02"}
+
+            verticals.downgrade()
+
+            remaining = sections(connection)
+            assert set(remaining) & set(verticals.SLUGS) == set()
+            # Everything the earlier revisions own is still here -- a rollback scoped by
+            # ``section = 'life'`` would have taken the whole vocabulary with it.
+            assert {"ai", "finance", "website", "marketing", "investing", "ai-news"} <= set(
+                remaining
+            )
+            assert len(remaining) == before
+
+
 @pytest.mark.parametrize("fresh_metadata", [False, True])
 def test_0076_adds_the_hierarchy_and_its_rollback_spares_the_earlier_vocabulary(
     monkeypatch, fresh_metadata
@@ -542,7 +669,8 @@ def test_0076_adds_the_hierarchy_and_its_rollback_spares_the_earlier_vocabulary(
 
     ``PRAGMA foreign_keys`` stays off for the reason the 0074 test gives.
     """
-    modules = [migration(name) for name in ("0072_travel_guides", *LIFE_SEED_MIGRATIONS)]
+    names = ("0072_travel_guides", "0074_lifestyle_guides", "0075_finance_topic")
+    modules = [migration(name) for name in (*names, "0076_guide_topic_hierarchy")]
     for module in modules:
         monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
     travel, life, finance, hierarchy = modules

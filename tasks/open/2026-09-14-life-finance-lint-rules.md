@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-life-finance-lint-rules
 title: 財經文章的免責與措辭 lint 規則
-status: open
+status: review
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-16T11:16:56Z
 created_at: 2026-09-14T11:45:30Z
 completed_at:
-branch:
+branch: claude/brave-hopper-8ezxba
 depends_on: []
 scope:
   - apps/api/app/guides/pack_ingest.py
@@ -32,15 +32,15 @@ scope:
 
 ## Definition of done
 
-- [ ] `lint_document` 認得文章的 topics，並對帶 `finance` 的文章多跑兩條規則。
-- [ ] `finance_no_disclaimer`（**error**）：帶 `finance` 的文章若沒有一個 `callout` 的
+- [x] `lint_document` 認得文章的 topics，並對帶 `finance` 的文章多跑兩條規則。
+- [x] `finance_no_disclaimer`（**error**）：帶 `finance` 的文章若沒有一個 `callout` 的
       `text` 含免責標記字串，就是 error。
-- [ ] `finance_claim_language`（**warning**）：帶 `finance` 的文章正文出現絕對化措辭
+- [x] `finance_claim_language`（**warning**）：帶 `finance` 的文章正文出現絕對化措辭
       （保證獲利／穩賺／包賺／必漲／必跌／無風險／報明牌／飆股／老師帶單…）時提醒審稿者。
-- [ ] `docs/travel-guides.md` 的 `### Editorial rules (the review standard for a pack)` 底下
+- [x] `docs/travel-guides.md` 的 `### Editorial rules (the review standard for a pack)` 底下
       新增一小節記這兩條規則——`lint_document` 的 docstring 說那一節**就是**它編碼的規則集，
       規則沒有寫在那裡，下一個維護者會把它刪掉。
-- [ ] 既有的 273 篇 life 內容包仍然全綠（它們都沒有 `finance`，規則不會觸發）。
+- [x] 既有的 273 篇 life 內容包仍然全綠（它們都沒有 `finance`，規則不會觸發）。
 
 ## Steps
 
@@ -48,9 +48,9 @@ scope:
 
 `lint_document` 目前是 `(document: GuideDocument, kind: Kind)`，拿不到 topics。
 
-- [ ] 改成 `lint_document(document, kind, *, topics: Sequence[str] = ())`。
+- [x] 改成 `lint_document(document, kind, *, topics: Sequence[str] = ())`。
       **關鍵字參數加預設值**，這樣 `tests/test_guides_pack_ingest.py` 既有的呼叫不用改就仍然編得過。
-- [ ] 正式呼叫點只有兩處，兩處都已經有 `pack` 在手：`pack_ingest.py:808` 與 `:902`，
+- [x] 正式呼叫點只有兩處，兩處都已經有 `pack` 在手：`pack_ingest.py:808` 與 `:902`，
       各加 `topics=pack.topics`。
 
 ### 2. 規則
@@ -63,20 +63,20 @@ FINANCE_CLAIM_WORDS = re.compile(
 )
 ```
 
-- [ ] `finance_no_disclaimer` 是 **error**：樣板檢查，零誤判，脆弱正是它的用處。
+- [x] `finance_no_disclaimer` 是 **error**：樣板檢查，零誤判，脆弱正是它的用處。
       今天沒有任何內容包帶 `finance`，所以 CI 現在就是綠的。
-- [ ] `finance_claim_language` 是 **warning，不是 error**。`investment-scam-red-flags`
+- [x] `finance_claim_language` 是 **warning，不是 error**。`investment-scam-red-flags`
       這篇本來就要引用那些詞當詐騙話術的特徵；設成 error 會擋掉一篇正當的文章，
       並且教下一個寫作者去繞過 linter。站上把 `no_diagram`、`no_internal_link`
       也放在 warning，同一個道理。
-- [ ] 規則只對帶 `finance` 的文章生效，其他 life 文章（AI 系列 273 篇）完全不受影響。
+- [x] 規則只對帶 `finance` 的文章生效，其他 life 文章（AI 系列 273 篇）完全不受影響。
 
 ### 3. 測試（`tests/test_guides_pack_ingest.py`）
 
-- [ ] 帶 `topics=("finance",)`、沒有免責 callout 的文件 → `finance_no_disclaimer`，level 是 `error`。
-- [ ] 同一份文件加上含 `FINANCE_DISCLAIMER_MARKER` 的 callout → 不再出現這個 code。
-- [ ] 正文含「穩賺」且帶 `finance` → `finance_claim_language`，level 是 **`warning`**，不是 error。
-- [ ] 同樣的文字但 topics 是 `("ai",)` → 兩條規則都不觸發。
+- [x] 帶 `topics=("finance",)`、沒有免責 callout 的文件 → `finance_no_disclaimer`，level 是 `error`。
+- [x] 同一份文件加上含 `FINANCE_DISCLAIMER_MARKER` 的 callout → 不再出現這個 code。
+- [x] 正文含「穩賺」且帶 `finance` → `finance_claim_language`，level 是 **`warning`**，不是 error。
+- [x] 同樣的文字但 topics 是 `("ai",)` → 兩條規則都不觸發。
 
 ## How to verify
 
@@ -105,3 +105,35 @@ cd apps/api && uv run ruff check . && uv run mypy app
 - 不要做成前端統一渲染的免責條。那要動五語系 `messages/`（連帶 `check:i18n`）與文章元件，
   而且會出現在 `expense-tracking-getting-started` 這種不需要投資免責的篇上。
   站上把自動揭露條留給合作連結；逐篇 callout 進到索引得到的正文裡，對 E-E-A-T 也比較好。
+
+## 實作紀錄（claude-opus-5, 2026-09-16）
+
+三處與票上寫的不同，都是實作時查到的事實，不是改範圍：
+
+1. **呼叫點行號漂掉了。** 票上寫 `pack_ingest.py:808` 與 `:902`，實際是 `:876` 與 `:976`
+   （`lint_document` 本身在 `:189`）。兩處都已經有 `pack` 在手，照票上的做法補 `topics=pack.topics`。
+
+2. **「今天沒有任何內容包帶 `finance`」已經過期。** 財經批次 01–03 合併後，
+   現在有 **60 篇** life 內容包帶 `finance`。實測這 60 篇（全部 zh-TW 單語）
+   每一篇都已經有逐字含「不是投資建議」的 callout，所以規則設成 error 仍然全綠——
+   結論不變，理由不同：不是「規則不會觸發」，而是「既有內容本來就合規」。
+   這反而讓規則更有價值：它現在就在守那 60 篇。
+
+3. **免責標記改成五語，且觸發範圍不是整個 `finance` 家族。** 兩個發現：
+   - `lint_all` 是**逐語系**送進 `lint_document` 的（`:990` 附近），而且不會告訴它現在看的是哪個語系。
+     單一中文標記會讓任何多語系財經文章的四份譯文全部變成 error。
+     所以改成 `FINANCE_DISCLAIMER_MARKERS` 五語元組，casefold 比對，任一命中即可。
+     這對接下來的幣圈五語批次是必要條件。
+   - 觸發主題定為 `{finance, investing, crypto}`，**不是**整個財經家族。
+     `crypto` 要單獨列，因為 `retopic` 只會替 `website`／`marketing` 這兩個新父主題補父層
+     （`retopic.py:531` 的 `LIFE_SEED_TOPICS[:8]`），`finance` 屬於原本的八個，
+     所以 `crypto-*` 文章永遠不會自動帶到 `finance`，會整個逃過這條規則。
+     反過來，`banking`／`credit`／`tax-insurance`／`finance-basics` 刻意排除：
+     實測有四篇帶這些子主題、沒有免責且**本來就不該有**——
+     `taiwan-company-registration`、`wise-transfer-checklist`、`youtube-payment-tax-info`、
+     `household-inventory-spreadsheet`。要求它們掛投資免責，正是票上 Notes 警告的那種誤判，
+     而且會教會寫作者「這段是樣板、貼上去就好」，免責條就是這樣失去意義的。
+
+驗證：`pack_cli lint --kind life` 845 篇 0 error（`finance_claim_language` 也 0 筆）；
+`test_guides_pack_ingest` 28 passed、`test_guides_content_pack` 與 `test_guides_content_links` 全綠；
+`ruff check`、`ruff format`、`mypy app` 全過。
