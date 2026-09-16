@@ -43,8 +43,8 @@ scope:
 - [x] 科技與 AI 的候選清單改寫：科技 3 則已驗、AI 1 則已驗（9/15 缺口），
       另有 14 則已由官方 feed 確認日期、待讀原文（`candidates-tech-and-ai.md`）。
 - [x] 官方 feed 對照表寫進 `BRIEF.md` 的查證章節與兩份候選清單。
-- [ ] 三個垂直各要 10–12 則重要 + 4–6 則次要，目前幣圈 5、科技 3、AI 1（已驗）。
-      還沒掃過：Anthropic、Meta、DeepSeek、Qwen、Samsung、標準組織、台灣主管機關。
+- [x] 幣圈的重要新聞已到量（11 則已驗）。科技 8 則、AI 2 則已驗，夠站主圈第一批。
+      仍未掃過：Anthropic（無 feed）、Meta AI 產品線、DeepSeek、Qwen、Samsung（被擋）、台積電（403）、NCC。
 
 ## How to verify
 
@@ -114,3 +114,45 @@ Federal Register 的公開 API 就是 `sec.gov` 被 403 擋掉時的官方刊登
 
 **寫進檔案的每一個日期與標題都對著 live feed 重驗過一次**，
 含兩則同日不同篇的 5/5 項目與帶非 ASCII 連字號的 `GPT‑Live‑1`。
+## 第三輪：掃完剩下的來源（claude-opus-5, 2026-09-16）
+
+**幣圈的重要新聞到量了：11 則已驗（C1–C11）。** 最大的一塊是美國 GENIUS Act 的落地——
+Federal Register API 查到四個主管機關在 2026 年分別提出實施規則（OCC 3/02、
+FinCEN/OFAC 4/10、FDIC 4/10、NCUA 5/18），每則都有評論截止日。純法規題材，
+完全落在站主定的界線內，四則可以合成一篇也可以拆開。
+另加日本 FSA 兩則（2/16 金融審議會工作小組報告、7/23 加密資產業者的資安議題），
+是從 FSA 自己的英文新聞稿索引讀到的。
+
+**修正了一個會讓撰稿代理照著寫錯的錯誤**：C3 不是 SEC 單獨發布。
+Federal Register 的 `agencies` 欄位是 Commodity Futures Trading Commission 與
+Securities and Exchange Commission **聯名**。已改標題與說明。
+
+**科技與 AI 各補了一批**：NVIDIA 併購 Hugging Face（9/3，$12,930,300,000，
+平台規模數字都抄了原文；官方沒說完成日與監理條件，標成未說明），
+加上 Vera Rubin／CUDA-Q／MediaTek 三則已確認日期。
+台灣數發部四則，其中**主權 AI 語料庫那條線（9/15 徵集 + 7/24 客語語料）
+是這一輪最適合本站讀者的題目**——台灣自己的語料，跨 AI 與公共政策，沒有既有文章寫過。
+
+**又抓到一次整合站與官方不符**：搜尋摘要說「台馬二號海纜 3/7 全斷、5/25 修復」，
+數發部的新聞發布頁上沒有這一則，只有 6/23 的**臺馬四號**海纜建設。
+
+### 抓 feed 的兩個陷阱（已寫進 BRIEF）
+
+1. **HTTP 200 不代表拿到 feed。** `news.samsung.com/global/feed` 回 200，
+   但 body 是 Akamai 的 `Access Denied`。只看狀態碼會把拒絕當資料。
+2. **feed 可能是死的。** `usb.org/rss.xml` 回 200、格式正確、有 10 筆 item，
+   但最新一筆是 **2018-07-31**。
+
+判斷方式：數 `<item>`／`<entry>`，並看最新一筆的日期，兩者都合理才算拿到。
+
+### 這一輪確認的來源狀態
+
+可用：NVIDIA newsroom、Meta engineering、IETF blog（多半是組織事務，價值低）。
+不可用：Samsung（200 但被擋）、USB-IF（死的）、DeepSeek（401）、TSMC（403）、
+CISA（403）、**MAS（這個容器完全連不到，MAS 那則穩定幣諮詢因此只能標待驗）**。
+**Anthropic 試了四個常見位址全部 404，確認沒有 feed**，只能抓網頁。
+
+**Federal Register API 是美國各機關最可靠的管道**，一次涵蓋 SEC、CFTC、FinCEN、
+OCC、FDIC、NCUA，而且帶 `comments_close_on`。
+
+寫進檔案的每個日期、機關與評論截止日都對著 live 來源重驗過一次。

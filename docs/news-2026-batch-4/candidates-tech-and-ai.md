@@ -26,6 +26,25 @@
 | Windows | `https://blogs.windows.com/feed/` | ✅ 200 |
 | Anthropic | `/rss.xml`、`/news/rss.xml` | ❌ 都 404，**沒找到 feed**，要抓 `anthropic.com/news`（回 200） |
 | 台灣 NCC | `ncc.gov.tw` | ⚠️ 擋在安全驗證後，搜尋引擎讀不到內文，要換管道 |
+| NVIDIA Newsroom | `https://nvidianews.nvidia.com/releases.xml` | ✅ 20 筆，最新 2026-09-16 |
+| Meta Engineering | `https://engineering.fb.com/feed/` | ✅ 200（工程部落格，不是 AI 產品消息） |
+| IETF Blog | `https://www.ietf.org/blog/feed/` | ✅ 598 筆、2026 年 25 筆，但**多半是組織事務**，新聞價值低 |
+| USB-IF | `https://www.usb.org/rss.xml` | ⚠️ 200、格式正確，但**最新一筆是 2018-07-31** |
+| Samsung Newsroom | `https://news.samsung.com/global/feed` | ❌ **200 但 body 是 Akamai 的 Access Denied** |
+| DeepSeek | `api.deepseek.com/news/rss` | ❌ 401 |
+| TSMC | `pr.tsmc.com/rss/newsfeed` | ❌ 403 |
+| CISA | `cisa.gov/cybersecurity-advisories/all.xml` | ❌ 403 |
+| 新加坡 MAS | 網頁與 consultation 頁 | ❌ **這個容器連不到**（service unavailable） |
+| 美國各機關 | Federal Register API | ✅ **最可靠的管道**，涵蓋 SEC／CFTC／FinCEN／OCC／FDIC／NCUA |
+
+### 兩個陷阱
+
+1. **HTTP 200 不代表拿到 feed。** Samsung 那一列回 200，
+   但 body 是 `<TITLE>Access Denied</TITLE>`。只看狀態碼會把一頁拒絕當成資料。
+2. **feed 可能是死的。** USB-IF 那一列格式完全正確、有 10 筆 item，
+   但最新一筆停在 2018 年。拿它當「USB-IF 沒有新消息」的依據會錯。
+
+檢查方式：**數 `<item>`／`<entry>` 的數量，並看最新一筆的日期**，兩者都合理才算拿到。
 
 **feed 給的是日期與標題，不是內容。** 開稿時仍要讀該篇原文，
 `sources` 放的是文章頁的網址，不是 feed 的網址。
@@ -72,6 +91,31 @@
   但頁面是 JS 算繪的，WebFetch 只拿得到標題，**日期沒有確認**。要寫得換管道。
 - **Altman 那則是 Fortune 專訪的轉述。** 當事人原文可以當一手來源，
   轉述不行——**要拿到 Fortune 原文**才能寫。
+
+## ✅ 已驗：NVIDIA 併購 Hugging Face
+
+### A3 — NVIDIA to Acquire Hugging Face
+- **事件日** 2026-09-03　**建議 slug** `ai-news-nvidia-hugging-face-20260903`
+- **一手來源** `https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/`
+- **官方原文載明**：價格 **$12,930,300,000**；
+  Hugging Face「remain an open platform for the entire AI ecosystem」，
+  續支援 open source 與 open weight 模型、multi-cloud 與 multi-accelerator；
+  平台規模 **1,800 萬**開發者／研究者／創作者、**300 萬**個模型、
+  **50 萬**個資料集、**100 萬**個應用、**20 萬家以上**公司；
+  NVIDIA 自己貢獻過 **500+ 個模型與 250+ 個開放資料集**。
+- **官方沒說**：預計完成日、監理核准條件、人事安排、價格以外的財務細節。
+  這幾點要寫成「官方未說明」，**不可推測會不會過關**。
+- **為什麼重要**：既有 38 篇沒有任何一篇寫併購，
+  而 Hugging Face 是讀者實際會用到的平台。
+  9/3 當天站上已有 `ai-news-gpt-6-astra-20260903`，**是不同題目，不衝突**。
+
+### ⚠️ NVIDIA 的其餘三則（feed 已確認日期與標題，內容待讀原文）
+
+| 事件日 | 官方標題 | 備註 |
+| --- | --- | --- |
+| 2026-09-15 | AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements… | 接既有的 `ai-news-nvidia-rubin-20260105` |
+| 2026-09-14 | NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing | 量子運算，放科技垂直 |
+| 2026-08-31 | NVIDIA and MediaTek Deepen Long-Standing Partnership… | **聯發科是台灣公司**，對本站讀者特別相關 |
 
 ## ⚠️ 1/1 起的補漏：日期已由官方 feed 確認，內容待讀原文
 
@@ -145,6 +189,26 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
   兩者是不是同一件事，要讀 EUR-Lex 的法規原文確認，**不可照抄整合站**。
 - **讀者角度**：在歐盟賣的智慧裝置都受這套規範，對台灣消費者代表韌體更新與漏洞揭露會怎麼變。
 
+### T4 — 台灣數位發展部四則（✅ 日期與標題已驗）
+
+從數發部自己的新聞發布頁讀到（`https://moda.gov.tw/press/press-releases/372`），**不是整合站**：
+
+| 事件日 | 官方標題 |
+| --- | --- |
+| 2026-09-15 | 數發部啟動主權AI語料庫民間語料徵集 號召作家與出版業共襄盛舉 |
+| 2026-09-10 | 數發部舉辦「頻譜政策領航 邁向6G新世代」國際研討會 聚焦6G前瞻布局與AI應用 |
+| 2026-07-24 | 數發部「臺灣主權AI訓練語料庫」新增2000萬tokens客語語料 充實本土AI語言資料基礎 |
+| 2026-06-23 | 數發部積極推動臺馬四號海纜及馬祖4鄉微波站建設 強化離島通訊韌性 |
+
+**主權 AI 語料庫那條線（9/15 ＋ 7/24）是這一輪最適合本站讀者的題目**：
+台灣自己的中文與客語語料，跨 AI 與公共政策，而且沒有任何既有文章寫過。
+建議 slug `tech-news-taiwan-sovereign-ai-corpus-20260915`，
+把 7/24 的客語語料當成同一條線的前情，寫在同一篇裡。
+
+**⚠️ 又一次整合站與官方不符。** 搜尋摘要說「台馬**二**號海纜 2026-03-07 全斷、
+2026-05-25 完成緊急修復」——**數發部的新聞發布頁上沒有這一則**，
+只有 6/23 的**臺馬四號**海纜建設。要寫海纜必須自己找到那則公告，不能照抄。
+
 ## ⚠️ 待驗（有官方日期，內容還沒讀原文）
 
 | 事件日 | 題目 | 來源狀態 |
@@ -173,11 +237,15 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
 
 目標是每個垂直 10–12 則重要 + 4–6 則次要。
 
-| 垂直 | ✅ 已驗 | ⚠️ 有日期、待讀原文 | 還要補 |
+| 垂直 | ✅ 已驗 | ⚠️ 有日期、待讀原文 | 距離 10–12 則 |
 | --- | --- | --- | --- |
-| 幣圈 | 5 | 0 | 9–13 |
-| 科技 | 3 | 4 | 7–11 |
-| AI | 1（9/15 缺口） | 10（OpenAI feed） | 視站主選題而定 |
+| 幣圈 | **11**（C1–C11） | 1（MAS，此容器連不到） | 已到量 |
+| 科技 | **8**（Apple 3、NVIDIA 1、moda 4） | 7 | 差 2–4 |
+| AI | **2**（Gemini 3.8 Live、NVIDIA×HF） | 13（OpenAI feed 10、NVIDIA 3） | 視站主選題 |
+
+**幣圈的重要新聞已經到量。** 科技與 AI 的「已驗」也夠站主圈第一批了。
+還沒掃過的：Anthropic（沒有 feed，要抓網頁）、Meta 的 AI 產品消息、DeepSeek、
+Qwen、Samsung（feed 被擋）、台積電（feed 403）、NCC。
 
 **下一步**：用上面那張 feed 表逐家掃過 Anthropic、Meta、DeepSeek、Qwen、Samsung、
 標準組織與主管機關，把「已驗」的數量做上去。每一則都要有：

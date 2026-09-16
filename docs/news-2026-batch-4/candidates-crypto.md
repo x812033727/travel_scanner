@@ -57,7 +57,7 @@
 - **讀者角度**：台灣讀者用到的歐洲平台可能因此停止對歐盟客戶服務，
   以及「有沒有牌照」要去哪裡查。
 
-### C3 — SEC 對加密資產適用證券法的解釋令
+### C3 — CFTC 與 SEC 聯名：加密資產適用證券法的解釋令
 - **事件日** 2026-03-23（聯邦公報刊登日與生效日）
 - **建議 slug** `crypto-news-sec-crypto-interpretation-20260323`
 - **一手來源**（`sec.gov` 實測 403，改用聯邦公報，這是官方刊登管道）
@@ -65,6 +65,10 @@
     Crypto Assets and Certain Transactions Involving Crypto Assets」
     `https://www.federalregister.gov/documents/2026/03/23/2026-05635/application-of-the-federal-securities-laws-to-certain-types-of-crypto-assets-and-certain`
     （type: Rule；publication_date 2026-03-23；effective 2026-03-23）
+- **❌ 一個已經修正的錯誤**：這不是 SEC 單獨發布。
+  聯邦公報的 `agencies` 欄位寫的是
+  **Commodity Futures Trading Commission, Securities and Exchange Commission**，
+  是兩個機關**聯名**。文章寫成「SEC 發布」就是錯的。
 - **⚠️ 開稿時要釐清**：法律事務所的整理說 SEC 是 **3/17 發布**、3/23 生效。
   聯邦公報的刊登日是 3/23。**發布日與刊登日是兩件事，文章要寫清楚是哪一個**，
   並以能指到原文的那一個為準。
@@ -76,6 +80,7 @@
 - **一手來源**
   - Federal Register, Proposed Rule：「Regulation Crypto Assets」
     `https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets`
+    （評論截止 **2026-10-20**，來自 Federal Register 的 `comments_close_on`）
 - **⚠️ 同 C3**：線索說 8/18 提出、聯邦公報 8/21 刊登，兩個日期要分清楚。
   評論期的長度要從刊登的原文讀，不要抄整理文章。
 - **讀者角度**：這還只是**草案**，不是生效的規則——把「提出」和「通過」分開寫，
@@ -97,6 +102,69 @@
 
 ---
 
+### C6–C9 — 美國 GENIUS Act 的落地：四個主管機關同時提規則
+
+【Guiding and Establishing National Innovation for U.S. Stablecoins Act】（GENIUS Act）
+在 2026 年由四個主管機關分別提出實施規則。
+**這是純法規題材，完全落在站主定的界線內**，
+而且四則可以合成一篇「美國穩定幣法怎麼落地」，也可以拆開。
+
+全部來自 Federal Register API（`sec.gov` 被 403 擋掉時的官方刊登管道），
+含機關、標題與評論截止日：
+
+| 代號 | 刊登日 | 機關 | 評論截止 |
+| --- | --- | --- | --- |
+| C6 | 2026-03-02 | Treasury / OCC | 2026-05-01 |
+| C7 | 2026-04-10 | Treasury / OFAC / FinCEN | 2026-06-09 |
+| C8 | 2026-04-10 | FDIC | 2026-06-09 |
+| C9 | 2026-05-18 | NCUA | 2026-07-17 |
+
+- **C6** `crypto-news-genius-act-occ-20260302`—「Implementing the Guiding and Establishing
+  National Innovation for U.S. Stablecoins Act for the Issuance of Stablecoins by Entities
+  Subject to the Jurisdiction of the Office of the Comptroller of the Currency」
+  `https://www.federalregister.gov/documents/2026/03/02/2026-04089/implementing-the-guiding-and-establishing-national-innovation-for-us-stablecoins-act-for-the`
+- **C7** `crypto-news-stablecoin-aml-20260410`—「Permitted Payment Stablecoin Issuer
+  Anti-Money Laundering/Countering the Financing of Terrorism Program and Sanctions
+  Compliance Program Requirements」
+  `https://www.federalregister.gov/documents/2026/04/10/2026-06963/permitted-payment-stablecoin-issuer-anti-money-launderingcountering-the-financing-of-terrorism`
+- **C8** `crypto-news-fdic-genius-act-20260410`—「GENIUS Act Requirements and Standards for
+  FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions」
+  `https://www.federalregister.gov/documents/2026/04/10/2026-06974/genius-act-requirements-and-standards-for-fdic-supervised-permitted-payment-stablecoin-issuers-and`
+- **C9** `crypto-news-ncua-genius-act-20260518`—「Implementing the … U.S. Stablecoins Act for
+  the Issuance of Stablecoins by Entities Subject to the Jurisdiction of the National Credit
+  Union Administration」
+  `https://www.federalregister.gov/documents/2026/05/18/2026-09915/implementing-the-guiding-and-establishing-national-innovation-for-us-stablecoins-act-for-the`
+
+**讀者角度**：穩定幣在美國從「沒人管」變成「誰可以發、要守什麼規矩」，
+對台灣使用者來說最直接的影響是跨境支付與儲值服務的對手方是誰。
+**不寫**哪一樣穩定幣比較安全、該不該持有。
+
+### C10、C11 — 日本 FSA
+
+從 FSA 自己的 2026 年英文新聞稿索引讀到，**不是整合站**：
+
+- **C10**｜2026-02-16｜`crypto-news-jfsa-working-group-20260216`
+  「Publication of the Report by the Working Group on Crypto-asset Systems of the
+  Financial System Council」
+- **C11**｜2026-07-23｜`crypto-news-jfsa-cybersecurity-20260723`
+  「Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses」
+
+索引頁 `https://www.fsa.go.jp/en/news/index.html`，開稿時點進各自的新聞稿讀內文。
+
+⚠️ **整合站說「2026 年 4 月內閣通過修正金商法與資金決濟法的法案」，
+FSA 的新聞稿索引上沒有這一則。** 要寫必須另外找到官方出處。
+
+### ⚠️ 待驗：新加坡 MAS 的穩定幣論詢
+
+線索：2026-09-01 就修正《支付服務法》以落地穩定幣框架提出論詢，
+2026-10-16 截止，範圍是恞定星幣或任一 G10 貨幣的單一貨幣穩定幣。
+
+**這個容器連不到 MAS**（兩個網址都回 service unavailable），
+所以上面那些數字**都還沒有回到一手來源核對**。要寫先在別的環境驗過。
+網址：`https://www.mas.gov.sg/news/media-releases/2026/mas-consults-on-legislative-amendments-to-implement-stablecoin-regulatory-framework`
+
+---
+
 ## ❌ 查否：線索與一手來源不符
 
 ### 以太坊 2026 年的升級日期
@@ -114,7 +182,10 @@ Bogotá-Heze（Hegotá）都列為「TBD」，沒有主網日期。**
 
 ---
 
-## 還沒查的方向（要補足 10–12 則重要 + 4–6 則次要）
+## 還沒查的方向
+
+**現況：11 則已驗（C1–C11）＋1 則待驗（MAS）。重要新聞那 10–12 則的量已經到了。**
+還缺的是 8/1 起的次要新聞 4–6 則，以及下列方向：
 
 依 `crypto.md` 的界線，下列方向還沒查，開票前要補：
 

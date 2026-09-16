@@ -64,6 +64,16 @@ Anthropic 兩個常見位址都 404，沒有 feed）。
 **feed 給的是日期與標題，不是內容。** 開稿時仍要讀該篇原文，
 `sources` 放的是文章頁的網址，不是 feed 的網址。
 
+**兩個實測踩到的陷阱，抓 feed 時一定要檢查：**
+
+1. **HTTP 200 不代表拿到 feed。** `https://news.samsung.com/global/feed` 回 200，
+   但 body 是 Akamai 的 `<TITLE>Access Denied</TITLE>`。只看狀態碼會把一頁拒絕當成資料。
+2. **feed 可能是死的。** `https://www.usb.org/rss.xml` 回 200、格式正確、有 10 筆 item，
+   但最新一筆是 **2018-07-31**。拿它當「這家沒有新消息」的依據會錯。
+
+所以判斷「拿到 feed 了嗎」要看兩件事：**`<item>`／`<entry>` 的數量**，
+以及**最新一筆的日期**。兩者都合理才算拿到，否則要當成取得失敗、換管道。
+
 ## 內容包格式
 
 檔案 `apps/api/app/guides/content/<slug>.json`。
