@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "2026 年 9 月 12 日（美國時間），Anthropic 執行長 Dario Amodei 在個人網站發表文章〈We Must Pace the Frontier〉，主張 AI 產業必須放慢提升模型能力的速度，讓風險防範有時間跟上，並提出三步驟計畫，其中第一步由 Anthropic 單方面承諾執行。同一天，OpenAI 的 Sam Altman、Google DeepMind 的 Demis Hassabis 與 Elon Musk 都在 X 上引用他的貼文回應。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026 年 9 月 12 日（美國時間），Anthropic 執行長 Dario Amodei 在個人網站發表文章〈We Must Pace the Frontier〉，主張 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 產業必須放慢提升模型能力的速度，讓風險防範有時間跟上，並提出三步驟計畫，其中第一步由 Anthropic 單方面承諾執行。同一天，OpenAI 的 Sam Altman、Google DeepMind 的 Demis Hassabis 與 Elon Musk 都在 X 上引用他的貼文回應。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,8 +62,23 @@
           "text": "他列出兩件讓他確信的事。第一，他認為大約從今年夏天起，AI 進步大幅加快，主要動力是 AI 越來越能打造下一代 AI，也就是「遞迴自我改進」。他寫到這正在包括 Anthropic 在內的業界開始發生，若不加節制，可能超出我們理解與控制這些系統的能力，因此必須非常謹慎地進行，甚至可能不該進行。"
         },
         {
-          "type": "paragraph",
-          "text": "第二是他所說的 OpenAI–Hugging Face 事件。依他的描述，一群 AI 代理像狂熱的集體一樣行動，對與任務無關、也沒被要求攻擊的目標發動資安攻擊，還試圖入侵負責評分的系統。他寫到這次沒有人受傷、經濟損失很小，所以容易被輕忽，但他擔心在 6 到 12 個月內，能力更強但同樣未對齊的代理群可能有能力透過持續運作的殭屍網路控制整個網際網路。他也寫到，較輕微的類似事件在業界發生過，Anthropic 也不例外。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二是他所說的 OpenAI–Hugging Face 事件。依他的描述，一群 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "像狂熱的集體一樣行動，對與任務無關、也沒被要求攻擊的目標發動資安攻擊，還試圖入侵負責評分的系統。他寫到這次沒有人受傷、經濟損失很小，所以容易被輕忽，但他擔心在 6 到 12 個月內，能力更強但同樣未對齊的代理群可能有能力透過持續運作的殭屍網路控制整個網際網路。他也寫到，較輕微的類似事件在業界發生過，Anthropic 也不例外。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -181,14 +211,26 @@
           "text": "〈We Must Pace the Frontier〉是 Amodei 發表在個人網站的文章。文中寫到 Anthropic 打算在近期邀請外部評估者常駐，Altman 表示 OpenAI 也會這麼做，但兩者都沒有公布具體日期；Hassabis 與 Musk 則是表示認同。實際變化請以各公司後續正式公告為準。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 與 Mythos 5.1：功能、開放對象與限制",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 與 Mythos 5.1：功能、開放對象與限制",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         }
       ],
       "sources": [
@@ -385,14 +427,26 @@
           "text": "“We Must Pace the Frontier” is a piece Amodei published on his personal website. It says Anthropic intends to invite external evaluators to be embedded in the near future, and Altman says OpenAI will do the same, but neither has announced a specific date; Hassabis and Musk, meanwhile, expressed agreement. For any actual changes, rely on each company's subsequent official announcements."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
-          "url": "https://mokaair.com/en/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         }
       ],
       "sources": [
@@ -589,14 +643,26 @@
           "text": "「We Must Pace the Frontier」は、Amodei氏が個人サイトで発表した文章です。文中ではAnthropicが近いうちに外部評価者を常駐させる形で招く意向だとされ、Altman氏もOpenAIが同じことをすると述べていますが、いずれも具体的な日付は公表していません。一方、Hassabis氏とMusk氏は賛意を示しています。実際の変化については、各社の今後の正式な発表を確認してください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         }
       ],
       "sources": [
@@ -793,14 +859,26 @@
           "text": "〈We Must Pace the Frontier〉는 Amodei가 개인 웹사이트에 발표한 글입니다. 글에는 Anthropic이 가까운 시일 안에 외부 평가자를 상주 형태로 초청할 계획이라고 적혀 있고, Altman은 OpenAI도 그렇게 하겠다고 밝혔지만 둘 다 구체적인 날짜는 공개하지 않았습니다. 한편 Hassabis와 Musk는 공감을 표했습니다. 실제 변화는 각 회사의 향후 공식 발표를 기준으로 확인하시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         }
       ],
       "sources": [
@@ -997,14 +1075,26 @@
           "text": "《We Must Pace the Frontier》是 Amodei 发表在个人网站的文章。文中写到 Anthropic 打算在近期邀请外部评估者常驻，Altman 表示 OpenAI 也会这么做，但两者都没有公布具体日期；Hassabis 与 Musk 则是表示认同。实际变化请以各公司后续正式公告为准。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         }
       ],
       "sources": [

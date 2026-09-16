@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,23 @@
           "text": "2026 年 9 月 10 日，DeepSeek 在官方 API 文件發布 DeepSeek-V4.1-Flash，說明它是新架構系列中最小的模型，具備原生的圖像理解能力，呼叫時的模型名稱是 deepseek-flash。前一代 V4-Flash 與 V4-Flash-Vision-Exp 同時退役，舊名暫時導向新模型。公告也寫 V4-Pro 的請求將自 9 月 14 日起改導向 V4.1-Flash，但查核時官方更新日誌與價格頁寫的是 9 月 14 日之後繼續提供 V4-Pro。"
         },
         {
-          "type": "paragraph",
-          "text": "本文於 2026 年 9 月 15 日查核。這次公告說明的是 API 的變動，DeepSeek App 與網頁版目前用哪個模型，官方這幾頁沒有交代，本文不做推定。本站沒有實際呼叫或評測這個模型，文中的能力與評測說法都是 DeepSeek 自己的表述；生活與工作情境則是編輯設計的例子。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本文於 2026 年 9 月 15 日查核。這次公告說明的是 API 的變動，DeepSeek App 與網頁版目前用哪個模型，官方這幾頁沒有交代，本文不做推定。本站沒有實際呼叫或"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "這個模型，文中的能力與評測說法都是 DeepSeek 自己的表述；生活與工作情境則是編輯設計的例子。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,8 +55,53 @@
           "text": "V4.1-Flash 的公告寫了什麼"
         },
         {
-          "type": "paragraph",
-          "text": "DeepSeek 表示，V4.1-Flash 是參數規模 552B 的混合專家（MoE）模型，採用新的 Causal Encoder-Decoder 架構，讀取輸入時啟用 8B 參數、產生輸出時啟用 16B，官方稱之為輸入與輸出不對稱。公告也說，新的預訓練方式加上更大規模的強化學習後訓練，讓它在基準測試上超過包括 DeepSeek-V4-Pro 在內的旗艦模型。這是廠商說法，模型卡對照表也有它落後其他廠商模型的項目，本站沒有重測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "DeepSeek 表示，V4.1-Flash 是"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "規模 552B 的混合專家（"
+            },
+            {
+              "type": "article",
+              "text": "MoE",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            },
+            {
+              "type": "text",
+              "text": "）模型，採用新的 Causal Encoder-Decoder 架構，讀取輸入時啟用 8B 參數、產生輸出時啟用 16B，官方稱之為輸入與輸出不對稱。公告也說，新的"
+            },
+            {
+              "type": "article",
+              "text": "預訓練",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "方式加上更大規模的強化學習後訓練，讓它在"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "上超過包括 DeepSeek-V4-Pro 在內的旗艦模型。這是廠商說法，模型卡對照表也有它落後其他廠商模型的項目，本站沒有重測。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -151,16 +212,42 @@
           "text": "使用中國廠商服務前，自己要讀的條款"
         },
         {
-          "type": "paragraph",
-          "text": "透過 DeepSeek 官方 API 或 App 使用時，輸入的內容會送到 DeepSeek 的服務處理。資料如何保存、存放在哪裡、是否用於改善服務，請閱讀 DeepSeek 官方隱私政策與服務條款，本文不代為解讀。公司若要把內部資料送進任何外部 AI 服務，不論廠商來自哪個國家，都應先確認內部的資料規範是否允許。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "透過 DeepSeek 官方 API 或 App 使用時，輸入的內容會送到 DeepSeek 的服務處理。資料如何保存、存放在哪裡、是否用於改善服務，請閱讀 DeepSeek 官方隱私政策與服務條款，本文不代為解讀。公司若要把內部資料送進任何外部 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 服務，不論廠商來自哪個國家，都應先確認內部的資料規範是否允許。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "間接使用時要多問一層。第三方工具可能直接串接 DeepSeek 官方 API，也可能使用其他雲端平台代管的模型，兩者適用的條款不同。可以在工具的說明頁或隱私政策裡找「模型供應商」「資料傳輸」之類的段落；找不到答案之前，不要先把身分證字號、客戶名單或未公開的合約貼進去。"
         },
         {
-          "type": "paragraph",
-          "text": "開放權重提供另一種選擇：模型卡採 MIT 授權，機構可以在自己的環境部署，資料不必送往 DeepSeek 的 API。不過自行部署要承擔硬體、維運與資料管理，這些取捨在本站 Qwen3.5 開放權重那篇已有說明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "提供另一種選擇：模型卡採 MIT 授權，機構可以在自己的環境部署，資料不必送往 DeepSeek 的 API。不過自行部署要承擔硬體、維運與資料管理，這些取捨在本站 Qwen3.5 開放權重那篇已有說明。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -169,14 +256,26 @@
           "text": "deepseek-flash 由 V4.1-Flash 服務；deepseek-v4-flash 與 deepseek-v4-flash-vision-exp 兩個舊名暫時導向 V4.1-Flash，按 Flash 價格計費；更新日誌與價格頁寫 deepseek-v4-pro 在 9 月 14 日之後繼續提供，計費方式不變。發布公告頁仍保留 9 月 14 日起改導向的原文，官方未標示繼續提供這段說明的日期，串接前請再看更新日誌與價格頁的最新內容。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -361,14 +460,26 @@
           "text": "deepseek-flash is served by V4.1-Flash; the two old names deepseek-v4-flash and deepseek-v4-flash-vision-exp are temporarily routed to V4.1-Flash and billed at Flash prices; the change log and pricing page say deepseek-v4-pro continues to be offered after September 14 with billing unchanged. The release announcement page still carries the original text about rerouting starting September 14, and DeepSeek has not dated the note about continued availability, so check the latest version of the change log and the pricing page before integrating."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
-          "url": "https://mokaair.com/en/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -553,14 +664,26 @@
           "text": "deepseek-flashはV4.1-Flashが処理しています。deepseek-v4-flashとdeepseek-v4-flash-vision-expの二つの旧名は一時的にV4.1-Flashへ振り向けられ、Flashの料金で課金されます。更新ログと料金ページには、deepseek-v4-proは9月14日以降も提供が続き、課金方法は変わらないと書かれています。リリース告知ページには9月14日から振り向けるという元の文言が残っており、提供継続の説明がいつのものかも公式には示されていないため、連携する前に更新ログと料金ページの最新内容を改めて確認してください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
-          "url": "https://mokaair.com/ja/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -745,14 +868,26 @@
           "text": "deepseek-flash는 V4.1-Flash가 처리합니다. deepseek-v4-flash와 deepseek-v4-flash-vision-exp 두 기존 이름은 일시적으로 V4.1-Flash로 연결되며 Flash 가격으로 과금됩니다. 업데이트 로그와 가격 페이지에는 deepseek-v4-pro가 9월 14일 이후에도 계속 제공되며 과금 방식은 변하지 않는다고 적혀 있습니다. 출시 공지 페이지에는 9월 14일부터 전환한다는 원래 문구가 남아 있고, 계속 제공한다는 설명의 날짜도 공식적으로 표시되어 있지 않으므로, 연동하기 전에 업데이트 로그와 가격 페이지의 최신 내용을 다시 확인하시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
-          "url": "https://mokaair.com/ko/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -937,14 +1072,26 @@
           "text": "deepseek-flash 由 V4.1-Flash 提供服务；deepseek-v4-flash 与 deepseek-v4-flash-vision-exp 两个旧名暂时指向 V4.1-Flash，按 Flash 价格计费；更新日志与价格页写 deepseek-v4-pro 在 9 月 14 日之后继续提供，计费方式不变。发布公告页仍保留 9 月 14 日起改为指向新模型的原文，官方未标注继续提供这段说明的日期，接入前请再查看更新日志与价格页的最新内容。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [

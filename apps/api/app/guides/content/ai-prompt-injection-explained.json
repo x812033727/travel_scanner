@@ -362,8 +362,33 @@
           "text": "Anthropic 的 Claude Code 安全頁把提示詞注入單獨列一節：手動模式下敏感操作要明確核准、抓網頁內容的 curl 與 wget 預設不自動核准、抓網頁用獨立的上下文視窗避免把可能惡意的提示詞帶進主對話、第一次執行的專案與新的 MCP 伺服器要通過信任確認。同一頁「處理不可信內容」的五條做法是：核准前先看指令、不要把不可信內容直接倒給 Claude、確認對關鍵檔案的變更、用虛擬機跑腳本與工具呼叫、用 /feedback 回報可疑行為。瀏覽器端另外有兩個分類器，一個檢查進來的內容、一個在每個動作執行前檢查它；官方寫明目前設定讓內部測試的攻擊成功率降到 0.08% 以下，也寫明風險不是零。"
         },
         {
-          "type": "paragraph",
-          "text": "Google 把防線分成六層，寫在 Workspace 管理員的〈Indirect prompt injections & Google's layered defense strategy for Gemini〉（頁面標記最後更新 2026 年 9 月 10 日）：注入內容分類器、把安全指示加在提示詞周圍提醒模型忽略對抗性指令的 security thought reinforcement、Markdown 淨化與可疑網址遮蔽、對有風險操作要求使用者確認的確認框架、處理掉問題時通知使用者，以及模型本身的對抗穩健性。使用者這端，Gemini Apps 說明頁寫偵測到可疑活動時會跳出安全風險警告，有時整段內容不能用來產生回覆，有時只排除可疑的那一部分。Gemini API 的 Computer Use 文件另有一個檢查截圖裡有沒有隱藏對抗性指令的參數，官方寫明預設關閉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 把防線分成六層，寫在 Workspace 管理員的〈Indirect prompt injections & Google's layered defense strategy for Gemini〉（頁面"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "最後更新 2026 年 9 月 10 日）：注入內容分類器、把安全指示加在提示詞周圍提醒模型忽略對抗性指令的 security thought reinforcement、Markdown 淨化與可疑網址遮蔽、對有風險操作要求使用者確認的確認框架、處理掉問題時通知使用者，以及模型本身的對抗穩健性。使用者這端，Gemini Apps 說明頁寫偵測到可疑活動時會跳出安全風險警告，有時整段內容不能用來產生回覆，有時只排除可疑的那一部分。Gemini API 的 Computer Use 文件另有一個檢查截圖裡有沒有隱藏對抗性指令的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，官方寫明預設關閉。"
+            }
+          ]
         },
         {
           "type": "callout",

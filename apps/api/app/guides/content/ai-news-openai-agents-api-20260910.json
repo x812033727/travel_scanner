@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,53 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "2026 年 9 月 10 日，OpenAI 發表〈Introducing the Agents API〉，以公開 beta 推出 Agents API。依官方文件說明，這個 API 讓其他應用程式透過 OpenAI 代管的服務，使用驅動 Codex 的代理運作框架（harness）：工作階段（session）、流程編排、上下文壓縮與復原（recovery）由 OpenAI 處理，開發者則負責提供工具並選擇執行環境。代理可以在沙箱裡執行程式、編輯檔案、連接 MCP 伺服器並產出成果檔，也能把工作拆給子代理分頭處理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026 年 9 月 10 日，OpenAI 發表〈Introducing the Agents API〉，以公開 beta 推出 Agents API。依官方文件說明，這個 API 讓其他應用程式透過 OpenAI 代管的服務，使用驅動 Codex 的代理運作框架（harness）：工作階段（session）、流程編排、"
+            },
+            {
+              "type": "article",
+              "text": "上下文壓縮",
+              "kind": "life",
+              "slug": "ai-term-context-compaction"
+            },
+            {
+              "type": "text",
+              "text": "與復原（recovery）由 OpenAI 處理，開發者則負責提供工具並選擇執行環境。代理可以在"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "裡執行程式、編輯檔案、連接 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器並產出成果檔，也能把工作拆給"
+            },
+            {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "分頭處理。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -183,14 +229,26 @@
           "text": "代理能讀寫哪些資料與服務？紀錄在哪裡、誰能看、留多久？跑錯時誰能中止、怎麼中止？試跑費用多少、預算上限怎麼設？另外先對照公司規範：資料落地目前只支援美國，且不支援零資料保留。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 發布：從回答問題到完成電腦工作",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 發布：從回答問題到完成電腦工作",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -389,14 +447,26 @@
           "text": "What data and services can the agent read and write? Where are the logs, who can see them, and how long are they kept? If the agent goes wrong, who can stop it, and how? What did the trial run cost, and how is the budget cap set? Also check your company's policies first: data residency is currently supported only in the United States, and Zero Data Retention is not supported."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -595,14 +665,26 @@
           "text": "エージェントはどのデータとサービスを読み書きできますか。ログはどこにあり、誰が見られ、どのくらい保存されますか。誤った動作をしたとき、誰がどのように止められますか。試験運用の費用はいくらで、予算の上限はどう設定しますか。あわせて社内規定との照合も先に行いましょう。データレジデンシーは現在米国のみに対応し、ゼロデータ保持には対応していません。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -801,14 +883,26 @@
           "text": "에이전트가 읽고 쓸 수 있는 데이터와 서비스는 무엇입니까? 기록은 어디에 있고, 누가 볼 수 있으며, 얼마나 보관합니까? 잘못 실행될 때 누가 어떻게 중지할 수 있습니까? 시범 운영 비용은 얼마이고 예산 상한은 어떻게 설정합니까? 아울러 회사 규정과도 먼저 대조해 보시기 바랍니다. 데이터 레지던시는 현재 미국만 지원하며, 제로 데이터 보존은 지원하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1007,14 +1101,26 @@
           "text": "智能体能读写哪些数据与服务？日志在哪里、谁能看、保存多久？出错时谁能中止、怎么中止？试运行费用多少、预算上限怎么设？另外先对照公司规范：数据驻留目前只支持美国，且不支持零数据保留。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [

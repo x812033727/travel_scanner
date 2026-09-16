@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "2026 年 9 月 10 日，Anthropic 發布威脅情報報告〈Detecting and countering misuse of AI: September 2026〉，整理 2025 年 12 月至 2026 年 8 月間偵測並阻斷的 Claude 濫用，分為網路攻擊、影響力操作、監控、詐騙、生物濫用、常規武器開發與非法蒸餾七類。網路攻擊部分指出，多數行動已不只是一問一答的聊天，而是由 AI 直接執行或統籌；API 金鑰也成了被偷、被轉賣的目標。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026 年 9 月 10 日，Anthropic 發布威脅情報報告〈Detecting and countering misuse of "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": ": September 2026〉，整理 2025 年 12 月至 2026 年 8 月間偵測並阻斷的 Claude 濫用，分為網路攻擊、影響力操作、監控、詐騙、生物濫用、常規武器開發與非法蒸餾七類。網路攻擊部分指出，多數行動已不只是一問一答的聊天，而是由 AI 直接執行或統籌；API 金鑰也成了被偷、被轉賣的目標。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,8 +72,23 @@
           "text": "七類濫用：報告裡的重點案例"
         },
         {
-          "type": "paragraph",
-          "text": "網路攻擊一節的行動者包括疑似國家支持的團體、金錢動機的犯罪集團與駭客行動主義者，一個人或小組就能靠 AI 代理同時對多個受害者下手。影響力操作一節收錄 9 個案例，來源涵蓋俄羅斯、伊朗、土耳其、波斯灣、南亞、非洲與歐洲，手法包括假帳號、假新聞網站與虛構人設，但多數內容很少或沒有真實互動。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網路攻擊一節的行動者包括疑似國家支持的團體、金錢動機的犯罪集團與駭客行動主義者，一個人或小組就能靠 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "同時對多個受害者下手。影響力操作一節收錄 9 個案例，來源涵蓋俄羅斯、伊朗、土耳其、波斯灣、南亞、非洲與歐洲，手法包括假帳號、假新聞網站與虛構人設，但多數內容很少或沒有真實互動。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -114,8 +145,23 @@
           "text": "從聊天到代理：API 金鑰為何成了戰利品"
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 歸納，本期多數網路行動由 AI 直接執行或統籌，不再只是向聊天機器人發問，而是用多代理框架分頭偵察、入侵與竊取資料，人類主要負責選定目標和檢視成果。報告同時提醒兩點：人類仍握有最關鍵的決定；自動化程度和造成的傷害也是兩回事，幾起最嚴重的入侵反而每一步都由人指揮。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 歸納，本期多數網路行動由 AI 直接執行或統籌，不再只是向聊天機器人發問，而是用"
+            },
+            {
+              "type": "article",
+              "text": "多代理",
+              "kind": "life",
+              "slug": "ai-term-multi-agent-system"
+            },
+            {
+              "type": "text",
+              "text": "框架分頭偵察、入侵與竊取資料，人類主要負責選定目標和檢視成果。報告同時提醒兩點：人類仍握有最關鍵的決定；自動化程度和造成的傷害也是兩回事，幾起最嚴重的入侵反而每一步都由人指揮。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -126,8 +172,23 @@
           "text": "報告說，拿到 AI 金鑰的人一次得到三樣東西：可以轉賣的贓物、由原主付費的運算資源，以及把活動記在原主名下的掩護。報告提到，這些金鑰常是合法客戶不小心放進公開程式碼、手機 App 安裝檔、容器、網站與聊天機器人；有一場駭客行動主義者的攻擊，整整一個月都靠偷來的金鑰運作。Anthropic 說明，有兩案的金鑰都是從客戶環境偷走，自家系統未被入侵。"
         },
         {
-          "type": "paragraph",
-          "text": "報告另記錄一名俄語犯罪者，從一家 AI 廠商的自動評測沙盒騙出正式環境金鑰，後續又在約 4 天內攻擊約 30 家 AI 公司；目標是取得尚未發布的 Claude 模型，但每條途徑都失敗。也有集團低價兜售 Claude，實際把流量轉給其他模型並偷走買家憑證。Anthropic 建議 AI 服務只從授權管道購買，並把 AI 金鑰與代理整合當成正式環境憑證來保護。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "報告另記錄一名俄語犯罪者，從一家 AI 廠商的自動"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "沙盒騙出正式環境金鑰，後續又在約 4 天內攻擊約 30 家 AI 公司；目標是取得尚未發布的 Claude 模型，但每條途徑都失敗。也有集團低價兜售 Claude，實際把流量轉給其他模型並偷走買家憑證。Anthropic 建議 AI 服務只從授權管道購買，並把 AI 金鑰與代理整合當成正式環境憑證來保護。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -187,14 +248,26 @@
           "text": "報告內容是 Anthropic 挑選揭露的個案與它自己的歸因，不是全產業統計，本站未實測也無法獨立驗證。自保重點是：不因對方文字流暢就相信，不從非官方管道購買或下載 AI 工具，不把 API 金鑰貼在公開處或聊天裡，只給 AI 代理完成工作所需的權限。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -397,14 +470,26 @@
           "text": "The report consists of cases Anthropic chose to disclose and its own attributions, not industry-wide statistics; this site has not tested them and cannot independently verify them. The key self-protection points: do not trust someone just because their messages are fluent, do not buy or download AI tools from unofficial channels, do not post API keys in public places or in chats, and give AI agents only the permissions they need to do the job."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
-          "url": "https://mokaair.com/en/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -607,14 +692,26 @@
           "text": "レポートの内容は、Anthropicが選んで公開した個別の事例と同社自身による帰属の判断であり、業界全体の統計ではありません。当サイトは実際に試しておらず、独自に検証することもできません。自衛のポイントは、文章が自然だというだけで相手を信じないこと、非公式の経路からAIツールを購入・ダウンロードしないこと、APIキーを公開の場やチャットに貼らないこと、AIエージェントには作業に必要な権限だけを与えることです。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
-          "url": "https://mokaair.com/ja/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -817,14 +914,26 @@
           "text": "보고서 내용은 Anthropic이 골라 공개한 개별 사례와 회사 자체의 배후 지목이며 업계 전체 통계가 아닙니다. 본 사이트는 직접 테스트하지 않았고 독립적으로 검증할 수도 없습니다. 자기 보호의 핵심은 상대의 글이 자연스럽다는 이유만으로 믿지 않기, 비공식 경로에서 AI 도구를 구매하거나 내려받지 않기, API 키를 공개된 곳이나 채팅에 올리지 않기, AI 에이전트에는 작업에 필요한 권한만 주기입니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
-          "url": "https://mokaair.com/ko/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1027,14 +1136,26 @@
           "text": "报告内容是 Anthropic 挑选披露的个案与它自己的归因，不是全行业统计，本站未实测也无法独立验证。自保重点是：不因对方文字流畅就相信，不从非官方渠道购买或下载 AI 工具，不把 API 密钥贴在公开处或聊天里，只给 AI 智能体完成工作所需的权限。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
