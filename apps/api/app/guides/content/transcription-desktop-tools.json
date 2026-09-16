@@ -12,8 +12,8 @@
   "display_order": 100,
   "locales": {
     "zh-TW": {
-      "title": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
-      "description": "搜「逐字稿 AI」找到的工具，錄音變成文字後，還需要核對講者、繁體用字和時間碼。本文以原創社區口述訪談情境，介紹 MacWhisper 與 Const-me WhisperDesktop 的桌面轉寫流程，區分本機模型、雲端轉寫與 AI 摘要的資料流。附工具比較表、操作步驟及自繪圖解，協助你保留原始錄音、整理可追溯逐字稿，再輸出適合閱讀或影片使用的字幕檔。",
+      "title": "MacWhisper 與 WhisperDesktop 圖形介面逐字稿教學：不打指令的本機轉寫流程",
+      "description": "不想打指令的話，MacWhisper 與 WhisperDesktop 這兩個圖形介面工具能在自己電腦上把錄音變成文字；變成文字後，還需要核對講者、繁體用字和時間碼。本文以原創社區口述訪談情境，介紹 MacWhisper 與 Const-me WhisperDesktop 的桌面轉寫流程，區分本機模型、雲端轉寫與 AI 摘要的資料流。附工具比較表、操作步驟及自繪圖解，協助你保留原始錄音、整理可追溯逐字稿，再輸出適合閱讀或影片使用的字幕檔。",
       "hero": {
         "src": "/guides/transcription-desktop-tools/hero.jpg",
         "alt": "Mokaair 原創資料夾、文件與螢幕插圖，象徵保存音訊、校對逐字稿和回放字幕。",
@@ -250,6 +250,25 @@
               "text": "讓短影片的內容與字幕更清楚",
               "kind": "life",
               "slug": "short-video-marketing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "偏好指令列或要用 Python 批次處理、輸出 SRT／VTT 字幕的話，看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "whisper-local-transcription",
+              "text": "用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 安裝與 SRT 字幕輸出"
+            },
+            {
+              "type": "text",
+              "text": "。"
             }
           ]
         }

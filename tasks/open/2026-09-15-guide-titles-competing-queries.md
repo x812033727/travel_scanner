@@ -1,14 +1,14 @@
 ---
 id: 2026-09-15-guide-titles-competing-queries
 title: 三組文章標題和既有文章搶同一個查詢
-status: open
+status: review
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-16T03:39:50Z
 created_at: 2026-09-15T12:49:32Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on: []
 scope:
   - apps/api/app/guides/content/gguf-quantization-explained.json
@@ -33,18 +33,18 @@ scope:
 
 ## Definition of done
 
-- [ ] 三篇的標題，以及必要時的 description 首句，改成點明各自獨特角度的寫法。
+- [x] 三篇的標題，以及必要時的 description 首句，改成點明各自獨特角度的寫法。
       URL 不變；另一篇既有文章不改。
-- [ ] 每組雙向互連：改標題的這篇連到對方，對方如果還沒連過來，就在本票範圍外另外處理。
+- [x] 每組雙向互連：改標題的這篇連到對方，對方如果還沒連過來，就在本票範圍外另外處理。
       本票範圍只含要改標題的四個內容包，互連只改這四篇。
 - [ ] 正式站以 `--slug` 限定匯入並發布更新，公開頁的 h1 已更新。
 
 ## Steps
 
-- [ ] `gguf-quantization-explained`：標題改成實作型，例如「GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 檔名與檔案大小」。在正文加一條連到 `ai-term-quantization` 的連結。
-- [ ] `claude-mcp-explained`：標題以「在 Claude 裡怎麼加 MCP 連接器」為主。開頭連到 `ai-term-model-context-protocol` 的名詞解釋。
-- [ ] `transcription-desktop-tools` 標題點明圖形介面，例如「MacWhisper 與 WhisperDesktop 逐字稿教學」；`whisper-local-transcription` 標題點明指令列，例如「用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 與 SRT 輸出」。在 `transcription-desktop-tools` 文末補一條連到 `whisper-local-transcription` 的連結（反方向已經有了）。
-- [ ] 跑 `pack_cli lint --slug` 與內容包測試。
+- [x] `gguf-quantization-explained`：標題改成實作型，例如「GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 檔名與檔案大小」。在正文加一條連到 `ai-term-quantization` 的連結。
+- [x] `claude-mcp-explained`：標題以「在 Claude 裡怎麼加 MCP 連接器」為主。開頭連到 `ai-term-model-context-protocol` 的名詞解釋。
+- [x] `transcription-desktop-tools` 標題點明圖形介面，例如「MacWhisper 與 WhisperDesktop 逐字稿教學」；`whisper-local-transcription` 標題點明指令列，例如「用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 與 SRT 輸出」。在 `transcription-desktop-tools` 文末補一條連到 `whisper-local-transcription` 的連結（反方向已經有了）。
+- [x] 跑 `pack_cli lint --slug` 與內容包測試。
 
 ## How to verify
 
@@ -58,7 +58,6 @@ python -m app.cli guides-import --actor-email <admin> --locale zh-TW --publish -
   --slug transcription-desktop-tools --slug whisper-local-transcription
 ```
 
-`tests/test_guides_content_links.py` 在 PR #526 才加入；那個 PR 還沒合併前，先跳過這個檔。
 
 ## Notes
 
@@ -67,3 +66,11 @@ python -m app.cli guides-import --actor-email <admin> --locale zh-TW --publish -
   - 第二段：其餘 50 組由 1 位審查者初篩，判定重複的才升級加派 2 位。結果沒有一組需要升級。
 - 標題互搶的判斷與改法建議都出自這些審查者。範例標題只是建議，請以文章實際內容定稿。
 - 同一次審查中，`claude-skills-explained`（Agent Skills）與 `deepseek-privacy-and-data-flow`（DeepSeek 入門）也被提過。審查者判斷只需要互連、不必改標題，所以不列入本票。
+- 2026-09-16 定稿（分支 `claude/travel-article-structure-search-sr9jiq`）：
+  - `gguf-quantization-explained` →「GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體」。連到 `ai-term-quantization` 的連結 `relink` 已經放在 block 2，沒有再加。
+  - `claude-mcp-explained` →「在 Claude 裡怎麼加 MCP 連接器：讀資料夾與查行事曆的設定示範」，description 首句改成操作角度。連到 `ai-term-model-context-protocol` 的連結已在 block 0。
+  - `transcription-desktop-tools` →「MacWhisper 與 WhisperDesktop 圖形介面逐字稿教學：不打指令的本機轉寫流程」，description 首句同步，文末加一個 `rich_paragraph` 連到 `whisper-local-transcription`。
+  - `whisper-local-transcription` →「用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 安裝與 SRT 字幕輸出」，description 首句同步，block 38 指向桌面工具篇的連結文字改成新標題。
+  - `pack_cli lint --slug` ×4 無 error；`test_guides_content_pack.py`、`test_guides_content_links.py` 通過。
+  - 另有 17 篇以舊標題當連結文字（slug 沒變，連結仍有效）：開了 `2026-09-16-retitled-guides-stale-link-text`，scope 就是那 17 個檔。
+  - 剩下的 DoD 是部署：主機上 `guides-import --slug` ×4 `--dry-run` 應為四個 zh-TW `update`，再 `--publish`。

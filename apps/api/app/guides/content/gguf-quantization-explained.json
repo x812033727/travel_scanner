@@ -12,7 +12,7 @@
   "display_order": 100,
   "locales": {
     "zh-TW": {
-      "title": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+      "title": "GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體",
       "description": "GGUF 檔名裡的 Q4_K_M、Q8_0、F16 是量化類型，決定檔案多大、要多少記憶體。這篇照 llama.cpp 與 ggml 官方文件講 GGUF 格式與命名規則、各類型的每權重位元數，用官方對照表（Llama 3.1 8B 從 14.96 GiB 到 4.58 GiB）與 Ollama、Hugging Face 上同一個模型的不同量化大小說明怎麼選，並附官方的轉檔與量化指令。",
       "hero": {
         "src": "/guides/gguf-quantization-explained/hero.jpg",

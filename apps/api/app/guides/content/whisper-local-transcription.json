@@ -12,8 +12,8 @@
   "display_order": 100,
   "locales": {
     "zh-TW": {
-      "title": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
-      "description": "Whisper 是可以整個搬回自己電腦的逐字稿 AI：OpenAI 的模型權重下載後，音檔不必上傳。這篇照官方 README、模型卡與 LICENSE，說明六種模型大小的參數、顯示記憶體需求與相對速度，用 pip 與 ffmpeg 完成安裝，示範指令列與 Python 兩種轉錄方式、srt 與 vtt 字幕的輸出參數、中文與繁體輸出的設定，以及幻覺與重複這些官方寫明的限制。",
+      "title": "用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 安裝與 SRT 字幕輸出",
+      "description": "用指令列或 Python 在自己電腦跑 Whisper，音檔不必上傳：OpenAI 的模型權重下載後就能離線轉逐字稿。這篇照官方 README、模型卡與 LICENSE，說明六種模型大小的參數、顯示記憶體需求與相對速度，用 pip 與 ffmpeg 完成安裝，示範指令列與 Python 兩種轉錄方式、srt 與 vtt 字幕的輸出參數、中文與繁體輸出的設定，以及幻覺與重複這些官方寫明的限制。",
       "hero": {
         "src": "/guides/whisper-local-transcription/hero.jpg",
         "alt": "插圖：一台筆電的螢幕裡，左邊圓形中的聲波沿著橘色箭頭指向右邊一張帶時間戳的逐字稿卡片",
@@ -334,7 +334,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
+              "text": "MacWhisper 與 WhisperDesktop 圖形介面逐字稿教學：不打指令的本機轉寫流程",
               "kind": "life",
               "slug": "transcription-desktop-tools"
             }
