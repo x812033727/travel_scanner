@@ -440,6 +440,21 @@ def test_lint_all_compares_the_packs_with_the_catalogue(tmp_path: Path) -> None:
     assert not errors(findings["chatgpt-beginner-guide"])
     assert [p.message for p in findings["catalogue"]] == ["ai-tools-2026-overview: not written yet"]
 
+    # A section holds articles outside any one series. Those are not gaps: one line for the
+    # record, never a warning per slug, so the real gaps stay visible and ``--warnings`` holds.
+    catalogue.write_text(
+        "| # | slug | 標題 |\n|---|---|---|\n| 1 | `ai-tools-2026-overview` | 總覽 |\n",
+        encoding="utf-8",
+    )
+    findings = lint_all(content, public, kind="life", catalogue=catalogue)
+    assert [(p.level, p.code) for p in findings["catalogue"]] == [
+        ("warning", "catalogue_missing_pack"),
+        ("info", "packs_outside_catalogue"),
+    ]
+    assert findings["catalogue"][1].message.startswith(
+        "1 life pack(s) are not in this list, which is fine: chatgpt-beginner-guide"
+    )
+
 
 def test_lint_all_counts_sitemap_rows_but_has_no_ceiling_to_warn_about(tmp_path: Path) -> None:
     """The web slices each section and locale into as many numbered child sitemaps as its

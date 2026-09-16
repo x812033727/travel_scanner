@@ -99,7 +99,8 @@ USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)"
 #: at both ends so "CC BY-NC 2.0" (starts with "CC BY") and KOGL are refused.
 ALLOWED_LICENSE = re.compile(r"^(cc0|public domain|pd|cc by(-sa)?)(\s+\d+(\.\d+)?)?$")
 
-Level = Literal["error", "warning"]
+#: ``info`` is for the record only: it never fails a run, not even under ``--warnings``.
+Level = Literal["error", "warning", "info"]
 
 
 @dataclass(frozen=True)
@@ -1020,11 +1021,21 @@ def lint_all(
         notes: list[Problem] = []
         for slug in sorted(listed - have):
             notes.append(Problem("warning", "catalogue_missing_pack", f"{slug}: not written yet"))
-        for pack in packs:
-            if pack.kind == "life" and pack.slug not in listed:
-                notes.append(
-                    Problem("warning", "pack_not_in_catalogue", f"{pack.slug}: add it to the list")
+        # A catalogue lists one series; the section holds articles outside it (the household
+        # and productivity pieces, the finance batches). Those are not gaps, so they get one
+        # line for the record rather than a warning each, which buried the real gaps.
+        outside = sorted(
+            pack.slug for pack in packs if pack.kind == "life" and pack.slug not in listed
+        )
+        if outside:
+            shown = ", ".join(outside[:5]) + (", …" if len(outside) > 5 else "")
+            notes.append(
+                Problem(
+                    "info",
+                    "packs_outside_catalogue",
+                    f"{len(outside)} life pack(s) are not in this list, which is fine: {shown}",
                 )
+            )
         findings["catalogue"] = notes
     return findings
 

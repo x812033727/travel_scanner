@@ -166,7 +166,7 @@ def main(argv: list[str] | None = None) -> int:
         if problems:
             print(slug)
             _print(problems, "  ")
-        if errors(problems) or (args.warnings and problems):
+        if errors(problems) or (args.warnings and any(p.level != "info" for p in problems)):
             failed = True
     print(f"{len(findings)} entries checked")
     return 1 if failed else 0
