@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">先保什麼：損失大小與發生機率的四格矩陣 / Sorting cover by size of loss and frequency</title>
+<desc id="desc">四格矩陣。縱軸是損失大小，由下往上變大；橫軸是發生機率，由左往右變高。左上格（機率低、損失大）標示「風險移轉」：發生機率低，但一旦發生就補不回來，是保險最典型的位置，把損失轉給承接的一方，例如重大醫療費用、長期照顧與收入中斷。右上格（機率高、損失大）標示「先降低風險本身」：機率與損失都高，光靠移轉不夠，先從避免與減輕做起，再看剩下的部分怎麼處理。左下格（機率低、損失小）標示「自己承擔」：少發生，金額也小，日常現金流就吸收得掉，不需要另外安排。右下格（機率高、損失小）標示「用現金與預備金」：常常發生，但金額不大，例如門診自行負擔、換一副眼鏡，金額在可預期的範圍內。圖下方註明第三個問題是這個風險多久之後可能發生，時間點越近的排在越前面；並註明左上格就是保險法第一條所說不可預料或不可抗力之事故所致之損害。</desc>
+<defs><marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 12 6 L 0 12 Z" fill="#5C6B6B"/></marker></defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="60" y="52" font-size="30" text-anchor="start" font-weight="700" fill="#102A2B">先保什麼：用損失大小與發生機率排順序</text>
+<text x="60" y="84" font-size="18" text-anchor="start" fill="#5C6B6B">Sorting cover: the size of the loss against how often it happens</text>
+<line x1="212" y1="678" x2="212" y2="146" stroke="#5C6B6B" stroke-width="3" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="212" y1="678" x2="1516" y2="678" stroke="#5C6B6B" stroke-width="3" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<text x="136" y="278" font-size="20" text-anchor="middle" font-weight="700" fill="#102A2B">損失大</text>
+<text x="136" y="538" font-size="20" text-anchor="middle" font-weight="700" fill="#102A2B">損失小</text>
+<text x="560" y="722" font-size="20" text-anchor="middle" font-weight="700" fill="#102A2B">機率低</text>
+<text x="1220" y="722" font-size="20" text-anchor="middle" font-weight="700" fill="#102A2B">機率高</text>
+<text x="890" y="762" font-size="18" text-anchor="middle" fill="#5C6B6B">縱軸：損失大小　橫軸：發生機率</text>
+<rect x="240" y="150" width="640" height="240" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="560" y="220" font-size="24" text-anchor="middle" font-weight="700" fill="#102A2B">風險移轉</text>
+<text x="560" y="272" font-size="17" text-anchor="middle" fill="#102A2B">發生機率低，但一旦發生就補不回來</text>
+<text x="560" y="308" font-size="17" text-anchor="middle" fill="#102A2B">保險最典型的位置：把損失轉給承接的一方</text>
+<text x="560" y="344" font-size="17" text-anchor="middle" fill="#102A2B">例如重大醫療費用、長期照顧與收入中斷</text>
+<rect x="900" y="150" width="640" height="240" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="1220" y="220" font-size="24" text-anchor="middle" font-weight="700" fill="#102A2B">先降低風險本身</text>
+<text x="1220" y="272" font-size="17" text-anchor="middle" fill="#102A2B">機率與損失都高，光靠移轉不夠</text>
+<text x="1220" y="308" font-size="17" text-anchor="middle" fill="#102A2B">先從避免與減輕做起</text>
+<text x="1220" y="344" font-size="17" text-anchor="middle" fill="#102A2B">再看剩下的部分怎麼處理</text>
+<rect x="240" y="410" width="640" height="240" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="560" y="480" font-size="24" text-anchor="middle" font-weight="700" fill="#102A2B">自己承擔</text>
+<text x="560" y="532" font-size="17" text-anchor="middle" fill="#102A2B">少發生，金額也小</text>
+<text x="560" y="568" font-size="17" text-anchor="middle" fill="#102A2B">日常現金流就吸收得掉</text>
+<text x="560" y="604" font-size="17" text-anchor="middle" fill="#102A2B">不需要另外安排</text>
+<rect x="900" y="410" width="640" height="240" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="1220" y="480" font-size="24" text-anchor="middle" font-weight="700" fill="#102A2B">用現金與預備金</text>
+<text x="1220" y="532" font-size="17" text-anchor="middle" fill="#102A2B">常常發生，但金額不大</text>
+<text x="1220" y="568" font-size="17" text-anchor="middle" fill="#102A2B">例如門診自行負擔、換一副眼鏡</text>
+<text x="1220" y="604" font-size="17" text-anchor="middle" fill="#102A2B">金額在可預期的範圍內</text>
+<text x="890" y="810" font-size="18" text-anchor="middle" fill="#102A2B">第三個問題：這個風險多久之後可能發生？時間點越近的，排在越前面。</text>
+<text x="890" y="844" font-size="17" text-anchor="middle" fill="#5C6B6B">左上格，就是保險法第一條所說「不可預料或不可抗力之事故所致之損害」。</text>
+<text x="1540" y="880" font-size="15" text-anchor="end" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -32,7 +32,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這篇把查得到的事實排開：DeepSeek 是哪家公司、有哪些產品、免費版怎麼開始、隱私政策逐條寫了什麼、台灣的規定管到誰、內容審查是怎樣的現象，最後用一張決策樹和一張表格比較官方 App、第三方雲端託管、自己電腦跑開源版三種途徑的資料流向與費用。文中的模型名稱、價格與規定全部在 2026 年 9 月 13 日查自 DeepSeek 官方文件、Hugging Face、行政院與數位發展部的公告頁。"
+          "text": "這篇把查得到的事實排開：DeepSeek 是哪家公司、有哪些產品、免費版怎麼開始、隱私政策逐條寫了什麼、台灣的規定管到誰、內容審查是怎樣的現象，最後用一張決策樹和一張表格比較官方 App、第三方雲端託管、自己電腦跑開源版三種途徑的資料流向與費用。文中的模型名稱、價格與規定全部在 2026 年 9 月 13 日查自 DeepSeek 官方文件、Hugging Face、行政院與數位發展部的公告頁，Hugging Face 模型卡的部分在 9 月 15 日複查。"
         },
         {
           "type": "heading",
@@ -63,7 +63,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "官網首頁在 2026 年 9 月列出的現行主力是 DeepSeek-V4.1-Flash，官方更新記錄寫它在 2026 年 9 月 10 日發布，是新架構家族裡最小的模型，具備原生的圖像理解；更早的 V4 與 R1 等也列在首頁。V4.1-Flash 的權重放在 Hugging Face，模型卡寫明授權是 MIT，總"
+              "text": "官網首頁在 2026 年 9 月列出的現行主力是 DeepSeek-V4.1-Flash，官方更新記錄寫它在 2026 年 9 月 10 日發布，是新架構家族裡最小的模型，具備原生的圖像理解；更早的 V4 與 R1 等也列在首頁。V4.1-Flash 的權重放在 Hugging Face，模型卡寫明授權是 MIT，骨幹"
             },
             {
               "type": "article",
@@ -73,7 +73,7 @@
             },
             {
               "type": "text",
-              "text": " 552B，每次推論只啟用其中一小部分，上下文最長 100 萬 token。MIT 授權的意思是任何人都可以下載、修改、商用，「開源」就是從這裡來的。但「開源權重」與「免費服務」是兩件事：前者是你自己拿模型去跑，後者是官方的伺服器幫你跑，資料流向完全不同。"
+              "text": " 552B，每個 token 在讀入提示詞（prefill）時只啟用其中 8B、生成（decode）時 16B，上下文最長 100 萬 token。MIT 授權的意思是任何人都可以下載、修改、商用，「開源」就是從這裡來的。但「開源權重」與「免費服務」是兩件事：前者是你自己拿模型去跑，後者是官方的伺服器幫你跑，資料流向完全不同。"
             }
           ]
         },
@@ -210,7 +210,7 @@
         },
         {
           "type": "paragraph",
-          "text": "途徑三是在自己電腦跑開源權重：資料完全不離開你的機器，也不用付費，是三條路裡唯一資料不外流的一條。限制在硬體：V4.1-Flash 有 552B 參數，模型卡示範的是用 vLLM 或 SGLang 在伺服器級 GPU 上啟動，V4 Pro 的模型卡更提到單一節點四張 GB300，都不是筆電能跑的規模。一般電腦能跑的是小模型，Ollama 的 deepseek-r1 頁面列出從 1.5b（1.1GB）到 671b（404GB）共七種尺寸，小的版本是用 R1 的輸出蒸餾 Qwen 與 Llama 而來，能力不及原版。另外 Ollama 上的 deepseek-v4.1-flash 只有 cloud 標籤，Ollama 文件寫這類模型會「自動卸載到 Ollama 的雲端服務」執行，資料其實去了 Ollama 的伺服器。審查行為會跟著權重走，本機跑不會讓它消失。"
+          "text": "途徑三是在自己電腦跑開源權重：資料完全不離開你的機器，也不用付費，是三條路裡唯一資料不外流的一條。限制在硬體：V4.1-Flash 的模型卡寫骨幹參數 552B，Hugging Face 頁面標示的模型大小是 763B 參數。模型卡本身沒有 vLLM 或 SGLang 的啟動範例，「Minimal Inference」一節只指向 inference 資料夾；那份說明寫明它是方便閱讀的參考實作、不是正式上線用的推論引擎，做法是先把權重轉成每個張量平行分區一份的檔案（範例分成 8 份），再用 torchrun 在一台機器上開 8 個行程執行。頁面「Use this model」選單裡的 vLLM、SGLang 指令，是 Hugging Face 對模型自動產生的通用範本，不是 DeepSeek 寫的。DeepSeek 自己寫出 vLLM 與 SGLang 啟動指令的是 V4-Pro-0813 的模型卡，其中 vLLM 範例用的是單一節點四張 GB300。這些都不是筆電能跑的規模。一般電腦能跑的是小模型，Ollama 的 deepseek-r1 頁面列出從 1.5b（1.1GB）到 671b（404GB）共七種尺寸，小的版本是用 R1 的輸出蒸餾 Qwen 與 Llama 而來，能力不及原版。另外 Ollama 上的 deepseek-v4.1-flash 只有 cloud 標籤，Ollama 文件寫這類模型會「自動卸載到 Ollama 的雲端服務」執行，資料其實去了 Ollama 的伺服器。審查行為會跟著權重走，本機跑不會讓它消失。"
         },
         {
           "type": "image",
@@ -254,7 +254,7 @@
               "不離開你的電腦",
               "免費，但要有足夠的記憶體與顯示卡",
               "有技術能力、資料敏感或想離線使用的人",
-              "完整版要伺服器級 GPU；一般電腦只能跑蒸餾小模型；Ollama 的 cloud 標籤不是本機"
+              "完整版不是一般電腦跑得動的規模；一般電腦只能跑蒸餾小模型；Ollama 的 cloud 標籤不是本機"
             ]
           ],
           "caption": "三種途徑比較（2026 年 9 月依 DeepSeek 隱私政策、Microsoft Learn、AWS 與 Ollama 官方文件整理）。"
@@ -314,14 +314,14 @@
           "checked_on": "2026-09-13"
         },
         {
-          "title": "Hugging Face：deepseek-ai/DeepSeek-V4.1-Flash 模型卡（MIT 授權、552B 參數、100 萬 token 上下文、vLLM 與 SGLang 啟動方式）",
+          "title": "Hugging Face：deepseek-ai/DeepSeek-V4.1-Flash 模型卡（MIT 授權、骨幹參數 552B、每 token 啟用 8B／16B、100 萬 token 上下文、頁面標示 763B 參數；無 vLLM、SGLang 範例，inference/README.md 為參考實作、8 份張量平行檔以 torchrun 執行）",
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-15"
         },
         {
-          "title": "Hugging Face：deepseek-ai/DeepSeek-V4-Pro-0813 模型卡（MIT 授權、單一節點四張 GB300 的部署示範）",
+          "title": "Hugging Face：deepseek-ai/DeepSeek-V4-Pro-0813 模型卡（MIT 授權、vLLM 與 SGLang 啟動指令、vLLM 單一節點四張 GB300 的範例）",
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-15"
         },
         {
           "title": "GitHub：deepseek-ai/deepseek-harness（DeepSeek Harness 為 MIT 授權的開源代理工具）",

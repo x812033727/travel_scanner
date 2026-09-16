@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "ai-news-gpt-live-voice-20260708",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "（简体中文帮助页面同样写作 Live）",
+    "new": "（繁体中文帮助页面译为“即时”）",
+    "reason": "必改：原稿写的是中文（繁中）说明页把 Live 译为「即时」，译稿改成“简体中文帮助页面同样写作 Live”，换成了一个没有查核过的新说法（factcheck 只核过 zh-hant 页，简中页本次无法打开验证），而且丢掉了读者在繁中页会看到“即时”这个已查核事实",
+    "rejected_because": "翻譯者已以 curl 讀取 OpenAI 簡中說明頁，Live 在簡中頁即寫作 Live"
+  },
+  {
+    "slug": "ai-news-google-assistant-gemini-20260904",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "二是口译模式，页面写明",
+    "new": "二是口译模式（繁体中文帮助页面译作“翻译模式”），页面写明",
+    "reason": "必改：漏掉原稿括注「繁中說明頁譯作『翻譯模式』」。文章是台湾读者视角，台湾账号在繁中界面找的是“翻译模式”，删掉会让读者找不到对应功能",
+    "rejected_because": "翻譯者已對照 Google 簡中說明頁，簡中讀者看到的是「口译模式」"
+  },
+  {
+    "slug": "ai-news-google-assistant-gemini-20260904",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "某些 Gemini 操作功能的语言。",
+    "new": "某些 Gemini 操作功能的语言；繁体中文版帮助页面把唤醒词写作“Ok Google”。",
+    "reason": "必改：漏句，原稿最后一句「繁中版說明頁把喚醒詞寫作『Ok Google』」整句没译，这是查核过的事实",
+    "rejected_because": "簡中說明頁的喚醒詞與英文相同，繁中頁寫法對簡中讀者無用"
+  },
+  {
+    "slug": "ai-news-gpt-live-voice-20260708",
+    "locale": "en",
+    "file": "pack",
+    "old": "(the English help page calls it Live as well)",
+    "new": "(the Traditional Chinese help page translates it as “即時”)",
+    "reason": "必改：原稿是說繁中說明頁譯為「即時」，英文版改成「英文說明頁也叫 Live」，是研究紀錄沒有查過的新增事實（只查了 zh-hant 頁）",
+    "rejected_because": "翻譯者已讀取 OpenAI 英文說明頁，介面名稱即 Live"
+  },
+  {
+    "slug": "ai-news-google-assistant-gemini-20260904",
+    "locale": "en",
+    "file": "pack",
+    "old": "The second is Interpreter mode, which the page says requires switching to Google Assistant.",
+    "new": "The second is Interpreter mode (called 翻譯模式, “translation mode,” on the Traditional Chinese help page), which the page says requires switching to Google Assistant.",
+    "reason": "必改：漏掉原稿「繁中說明頁譯作翻譯模式」，台灣讀者用中文介面時找不到對應名稱（研究紀錄有查證）",
+    "rejected_because": "英文讀者看到的是英文介面 Interpreter mode，繁中譯名不適用"
+  },
+  {
+    "slug": "ai-news-google-assistant-gemini-20260904",
+    "locale": "en",
+    "file": "pack",
+    "old": "voice commands and some Gemini action features.",
+    "new": "voice commands and some Gemini action features. The Traditional Chinese help page writes the wake word as “Ok Google.”",
+    "reason": "必改：漏掉原稿「繁中版說明頁把喚醒詞寫作 Ok Google」這一事實（研究紀錄有查證）",
+    "rejected_because": "英文說明頁即為 Hey Google，繁中頁寫法對英文讀者無用"
+  },
+  {
+    "slug": "ai-news-gpt-live-voice-20260708",
+    "locale": "ko",
+    "file": "pack",
+    "old": "확인하시기 바랍니다(한국어 도움말 페이지에서도 Live로 표기합니다)",
+    "new": "확인하시기 바랍니다",
+    "reason": "必改：原稿括號是「中文說明頁譯為『即時』」，韓文版改寫成「韓文說明頁也標為 Live」，是原稿沒有、本站也未查核的新事實；中文頁譯名對韓文讀者無意義，直接刪除括號",
+    "rejected_because": "翻譯者已讀取 OpenAI 韓文說明頁，Live 即寫作 Live"
+  },
+  {
+    "slug": "ai-news-google-assistant-gemini-20260904",
+    "locale": "ko",
+    "file": "pack",
+    "old": "표시되어 있지도 않습니다.",
+    "new": "표시되어 있지도 않습니다. 중국어(번체) 도움말 페이지에서는 호출어를 'Ok Google'로 표기합니다.",
+    "reason": "建議：漏譯原稿「繁中版說明頁把喚醒詞寫作『Ok Google』」；本節談台灣使用者的語言，這句對台灣視角有意義",
+    "rejected_because": "韓文讀者看到的是韓文說明頁，繁中頁寫法不適用"
+  },
+  {
+    "slug": "ai-news-siri-ai-ios-27-20260914",
+    "locale": "ko",
+    "file": "pack",
+    "old": "사진 앱의 ‘공간 프레임 재설정’과 ‘확대/축소’, Safari의 ‘탭을 주제별로 그룹화’와 ‘알림 받기’, 캘린더의 ‘이벤트 설명’, 단축어의 ‘단축어 설명’,",
+    "new": "사진 앱의 공간 재구성과 확장, Safari의 주제별 탭 분류와 ‘알림 받기’, 캘린더에서 설명으로 일정 만들기, 단축어 앱에서 설명으로 만드는 단축어,",
+    "reason": "必改：「延伸」誤譯成「확대/축소」（縮放）；「用描述建立行程」變成「이벤트 설명」、意思不同；且把未查證的韓文字樣加引號當成官方介面名稱（原稿只有「通知我」「通話情境」「建議」加引號）",
+    "rejected_because": "Apple 韓國 iOS 功能適用範圍頁的正式名稱就是 공간 프레임 재설정／확대/축소／탭을 주제별로 그룹화／이벤트 설명／단축어 설명"
+  },
+  {
+    "slug": "ai-news-siri-ai-ios-27-20260914",
+    "locale": "ko",
+    "file": "pack",
+    "old": "사진: 공간 프레임 재설정, 확대/축소",
+    "new": "사진: 공간 재구성, 확장",
+    "reason": "必改：同上，「延伸」不是縮放",
+    "rejected_because": "同上，확대/축소 是 Apple 韓國官方名稱"
+  },
+  {
+    "slug": "ai-news-siri-ai-ios-27-20260914",
+    "locale": "ko",
+    "file": "pack",
+    "old": "Safari: 알림 받기, 탭 그룹화",
+    "new": "Safari: 알림 받기, 주제별 탭 분류",
+    "reason": "建議：與正文改法一致；「탭 그룹」是 Safari 既有另一功能，易混淆",
+    "rejected_because": "同上，탭을 주제별로 그룹화 是 Apple 韓國官方名稱"
+  },
+  {
+    "slug": "ai-news-google-assistant-gemini-20260904",
+    "locale": "ja",
+    "file": "pack",
+    "old": "なお、日本語版のヘルプページではウェイクワードを「OK Google」と表記しています。",
+    "new": "なお、繁体字中国語版のヘルプページではウェイクワードを「Ok Google」と表記しています（日本語版では「OK Google」）。",
+    "reason": "建議：原稿此處講的是台灣使用者看到的繁中說明頁寫法，譯文整句換成日文頁資訊，台灣視角消失；已查日文說明頁確為「OK Google」，故兩者並列",
+    "rejected_because": "日文讀者看到的是日文說明頁的「OK Google」，繁中頁寫法不適用"
+  }
+]

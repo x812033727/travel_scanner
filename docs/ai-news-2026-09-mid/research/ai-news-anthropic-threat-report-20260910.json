@@ -1,0 +1,199 @@
+{
+  "slug": "ai-news-anthropic-threat-report-20260910",
+  "event_date": "2026-09-10",
+  "title": "Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰",
+  "sources": [
+    {
+      "title": "Anthropic：Detecting and countering misuse of AI: September 2026",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "Anthropic：威脅情報報告全文 PDF",
+      "url": "https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "Claude 說明中心：API Key Best Practices",
+      "url": "https://support.claude.com/en/articles/9767949-api-key-best-practices-keeping-your-keys-safe-and-secure",
+      "checked_on": "2026-09-15"
+    },
+    {
+      "title": "Claude 說明中心：Report, block, and remove content from Claude",
+      "url": "https://support.claude.com/en/articles/7996906-report-block-and-remove-content-from-claude",
+      "checked_on": "2026-09-15"
+    }
+  ],
+  "checked_on": "2026-09-15",
+  "verified_facts": [
+    "報告標題 Detecting and countering misuse of AI: September 2026，PDF 封面寫 Published September 10, 2026；Anthropic 威脅情報總頁 https://www.anthropic.com/threat-intelligence 也列為 Sep 10, 2026（https://www-cdn.anthropic.com/e50be2e51e7695dc4b1366a37a245a597377d3b5/Anthropic-Detecting-and-countering-091026.pdf）",
+    "報告涵蓋 2025 年 12 月至 2026 年 8 月間阻斷的活動，七個 harm areas：cyber operations, influence operations, surveillance, scams and fraud, biological misuse, conventional weapons development, distillation（https://www.anthropic.com/threat-intelligence-report-september-2026；PDF p.3 同文）",
+    "PDF 目錄章節與起始頁：Cyber operations p.4、Influence operations p.41、Surveillance operations p.81、Conventional weapons p.111、Biological misuse p.129、Scams and fraud p.139、Illicit distillation p.143；篇幅最長的是影響力操作（p.41–80），不是網路攻擊（p.4–40）（PDF p.2）",
+    "前幾期報告為 2025 年 3 月、8 月、11 月（PDF p.3 Overview）",
+    "被濫用的是 Claude Haiku、Sonnet、Opus；除一起非法蒸餾案外，沒有案例涉及 Claude Fable 或 Mythos 等級模型（PDF p.3 Overview）",
+    "Anthropic 自述案例不是 typical misuse，而是 most notable and novel threat activity（PDF p.3 Overview）",
+    "各案處置：Overview 寫 disrupted the activity、強化防護、視情況與 authorities and industry partners 分享情報；各章另寫 banned accounts（PDF p.3、p.81、p.112）",
+    "官方頁提供 Download report 與 Download IOCs 連結，正文與 PDF 相同（https://www.anthropic.com/threat-intelligence-report-september-2026）",
+    "網路攻擊行動者：suspected state-sponsored groups, financially motivated criminals, and politically motivated individuals；個別行動者以 agentic AI 同時處理多個受害者（PDF p.4、p.38–39）",
+    "網路攻擊：A majority of the operations described in this report 由 AI direct execution or orchestration 促成，went beyond simple questions and responses from a chatbot，使用多代理框架執行偵察、exploitation 與資料外洩；人類負責設定目標與檢視外洩資料（PDF p.5–6）；另有行動者仍以對話方式使用 Claude（PDF p.39 autonomy spectrum）",
+    "網路攻擊兩個 caveats：人類保留 the decisions that matter most；autonomy and harm are separate axes，Several of the most serious compromises 來自 a human directed every step 的行動（PDF p.39）",
+    "None of the operations depended on some entirely novel technique；攻擊仍是 stolen credentials, unpatched edge devices, exposed services, SQL injection, phishing；the economics of the attacks have changed（PDF p.39）",
+    "取得 AI 金鑰的三種好處：Loot（轉賣）、Compute（由他人付費）、Cover（活動記在合法持有者名下）（PDF p.30）",
+    "詐欺轉售商取得的存取權 Most commonly 來自合法客戶意外把 API 金鑰與 session tokens 暴露在產品、App、GitHub 等公開程式碼、手機安裝檔、Docker 容器、網站與聊天機器人（PDF p.30）",
+    "一場駭客行動主義者活動 ran for a month entirely on stolen API keys（PDF p.30）",
+    "兩案明寫金鑰是從客戶環境偷走、Anthropic 自身系統未被該行動者入侵：ShinyHunters 相關的 GTG-50014（PDF p.14–15）與 GTG-50020（PDF p.31）",
+    "GTG-50020：俄語、金錢動機；對 AI 廠商自動評測沙盒注入惡意指令取得正式環境金鑰；A follow-on campaign 從同一基礎設施在 about four days 內攻擊 roughly thirty AI companies（找到一條可行路徑後套用到三十個目標）；stated goal 是取得 pre-release Claude 模型，The actor never gained access; every attempted path failed（PDF p.30–31）",
+    "GTG-50021：假 AI 轉售商兜售便宜 Claude，流量被轉到其他模型並竊取買家的 Anthropic 帳號憑證；另有網站自稱多模型中介、提供折扣存取，讓受害者安裝假冒 Claude Code 等 AI harness 的憑證竊取程式（PDF p.28–29）",
+    "Anthropic 建議：AI access should be purchased only through authorized channels；把 AI 金鑰與代理整合視同 production credentials（PDF p.30）",
+    "攻擊者搜尋外洩權杖的來源包括 victim-deployed AI agents（PDF p.16）",
+    "影響力操作收錄 nine cases，來源 Russia, Iran, Turkey, Gulf, South Asia, Africa, Europe，受眾在六大洲；多數內容 little or no authentic engagement（PDF p.41、p.44）",
+    "監控一節涵蓋 Between January and July of this year 的案例，行動者來自中國、伊朗、西非與商業 surveillance-for-hire 市場（PDF p.81）",
+    "GTG-14020：Anthropic 認為 linked to a China-based, PRC government-aligned intelligence operation，以 Claude 建立宗教人士檔案，對象包括 the leadership of the Presbyterian Church in Taiwan（PDF p.89–92）",
+    "GTG-14022（撰稿時誤記為 GTG-14021）：Anthropic 以 medium confidence 評估為替政府客戶工作的承包商，用 Claude 監控與分類 political figures in Taiwan 等對象（PDF p.98–99）",
+    "常規武器：six cases，three in China, two in Russia, one in Yemen（PDF p.111）",
+    "生物濫用：five case studies；不公開研究機構、國家、病原與技術；do not assert that they intended harm；案例不是 imminence of biological threats currently uplifted by Claude 的證據（PDF p.129–130、p.137）",
+    "詐騙 GTG-15001：China-based app studio 以 Claude 建立 over 20 dating apps，宣稱 fully human；2026 年 4 月兩週內 more than 4,700 distinct AI personas 與 at least 25,000 unique individuals 對話；AI 人設被指示 deflect requests for video calls or photos；招募的真人 gig workers 負責 live video calls and social media follows；聊天額度以 in-app coins 補充（PDF p.139–140）",
+    "非法蒸餾：Since we published our first disclosure in February，阻斷來自 seven labs based in China 的蒸餾攻擊；以 high confidence 歸因於特定 PRC labs；illicit distillation 通常靠 fake accounts 等詐欺手段；DeepSeek, Xiaomi, and Moonshot fed conversations between their own models and users into Claude，Moonshot 與 DeepSeek 的客戶 likely not made aware；範例含開發者把 Telegram、Feishu、Notion 權杖貼進 PRC lab 程式助手（PDF p.143–150）。以上皆為 Anthropic 單方指控",
+    "報告未收錄被點名公司或團體的回應（PDF 全文檢索 for comment / declined / denied / responded 無相關結果）",
+    "金鑰守則（頁面日期 March 16, 2026）：勿分享、勿貼在 public discussions, emails, or support tickets（even between you and Anthropic）；用環境變數與加密機密；If possible 不同環境分用不同金鑰；定期輪替 for example, every 90 days；開啟機密掃描；regularly reviewing logs and usage patterns within the Console（https://support.claude.com/en/articles/9767949-api-key-best-practices-keeping-your-keys-safe-and-secure）",
+    "懷疑外洩：recommend revoking the key immediately，登入 Claude Console 的 API keys 頁面選 Delete API Key（頁面沒有寫「再建立新金鑰」）；Anthropic 參與 GitHub Secret scanning partner program，公開 GitHub 儲存庫中偵測到的 Claude API 金鑰 automatically deactivates，並寄 detailed email notification（同上）",
+    "回報方式：usersafety@anthropic.com 收的是模型 safety issues（含安全機制造成的使用困擾），需附 enough detail to replicate；分享對話可用 report 按鈕或獨立表單；認為違反 usage policies or local laws 的內容用 https://claude.com/form/anthropic-content-reporting 表單；頁面 lastUpdatedDate 2026-09-04（https://support.claude.com/en/articles/7996906-report-block-and-remove-content-from-claude）"
+  ],
+  "unverified_or_excluded": [
+    "官方網頁本身沒有逐日發布日期，WebFetch 只讀到 September 2026；日期改以 PDF 封面與 Anthropic 威脅情報總頁的 Sep 10, 2026 為準。",
+    "報告頁、PDF 與威脅情報總頁都沒有專門的威脅情報回報窗口；文章只寫說明中心列出的通用回報方式（usersafety 信箱、內容檢舉表單、分享頁檢舉按鈕），不宣稱那是濫用情資專線。",
+    "各案攻擊手法、惡意程式名稱、入侵指標、受害組織細節一律不寫（依撰稿指示不寫可操作內容）。",
+    "GTG-17002 模擬情境以台灣 12 個目標為預設的描述：屬武器案例的目標細節，為避免聳動且與一般讀者自保無關，未寫入。",
+    "非法蒸餾各公司的交換次數（Alibaba 逾 1.51 億、Moonshot 逾 2,300 萬、DeepSeek 逾 1,210 萬、Zhipu 逾 340 萬、Xiaomi 逾 40 萬）與被點名公司名稱：屬 Anthropic 單方指控且與本篇讀者角度無關，另可能與 DeepSeek、Qwen 相關篇重疊，未寫入；如其他篇要引用須標明是 Anthropic 指控。",
+    "影響力操作的個別國家案例（摩爾多瓦、肯亞、馬來西亞 222 選區等）：PDF 有，但篇幅與讀者角度考量未寫。",
+    "台灣反詐騙專線號碼等在地資訊：本篇 sources 無一手出處，未寫號碼，只寫改用自己查到的官方管道確認。",
+    "被點名公司是否已回應報告：未另行查找，文章只寫報告本身沒有收錄回應。",
+    "查核時刪改（2026-09-15）：「網路攻擊一節篇幅最長」與目錄頁碼不符，刪除；「刪除金鑰後再建立新的」說明中心原文沒有，刪除；「安全相關問題寄 usersafety」原文限於模型安全性問題，已縮小範圍；GTG-50020「全部失敗」原文指取得未發布模型的途徑，不是對 30 家公司的攻擊，已改寫。"
+  ],
+  "editorial_brief": "原創情境兩則：交友 App 對象總找理由不視訊、App 不斷要求購買點數（對應 GTG-15001 的公開描述，不是真實人物）；三人工作室給 AI 代理只讀指定信箱的最小權限。刻意不談：攻擊手法與工具細節、入侵指標、生物與武器技術內容、各蒸餾案的公司數字與模型名，也不比較哪家 AI 較安全，不把廠商揭露當成全產業統計。",
+  "hero_label": "AI 濫用報告怎麼讀",
+  "diagram": {
+    "title": "API 金鑰為何成了戰利品",
+    "caption": "報告歸納攻擊者拿到 AI 金鑰的三種好處，以及把金鑰當正式環境憑證保護的原則。",
+    "nodes": [
+      [
+        "轉賣獲利",
+        "金鑰與帳號可轉賣"
+      ],
+      [
+        "白用算力",
+        "攻擊費用由原主支付"
+      ],
+      [
+        "隱藏身分",
+        "活動記在原主名下"
+      ],
+      [
+        "自保原則",
+        "當正式環境憑證管"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "How to read the report",
+      "diagram": {
+        "title": "Why API keys became spoils",
+        "caption": "The report identifies three benefits attackers get from an AI key, and the principle of protecting keys as production credentials.",
+        "nodes": [
+          [
+            "Resale profit",
+            "Keys and accounts are resold"
+          ],
+          [
+            "Free compute",
+            "Original owner pays the bill"
+          ],
+          [
+            "Hidden identity",
+            "Activity logged to the owner"
+          ],
+          [
+            "Self-protection",
+            "Treat keys as prod credentials"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "AI悪用レポートの読み方",
+      "diagram": {
+        "title": "APIキーが戦利品になった理由",
+        "caption": "レポートがまとめた、攻撃者がAIのキーを手に入れる3つの利点と、キーを本番環境の認証情報として守る原則です。",
+        "nodes": [
+          [
+            "転売で利益",
+            "キーやアカウントを転売"
+          ],
+          [
+            "計算資源のただ乗り",
+            "攻撃費用は元の持ち主が負担"
+          ],
+          [
+            "身元を隠す",
+            "活動は元の持ち主の名義に"
+          ],
+          [
+            "自衛の原則",
+            "本番環境の認証情報として管理"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "AI 악용 보고서 읽는 법",
+      "diagram": {
+        "title": "API 키가 전리품이 된 이유",
+        "caption": "보고서가 정리한, 공격자가 AI 키를 얻었을 때의 세 가지 이점과 키를 프로덕션 환경 자격 증명처럼 보호하는 원칙입니다.",
+        "nodes": [
+          [
+            "되팔아 수익",
+            "키와 계정을 재판매"
+          ],
+          [
+            "공짜 연산 자원",
+            "비용은 원래 주인 부담"
+          ],
+          [
+            "신분 숨기기",
+            "활동은 원래 주인 명의로"
+          ],
+          [
+            "자기 보호 원칙",
+            "프로덕션 자격 증명처럼 관리"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "AI 滥用报告怎么读",
+      "diagram": {
+        "title": "API 密钥为何成了战利品",
+        "caption": "报告归纳攻击者拿到 AI 密钥的三种好处，以及把密钥当作生产环境凭据保护的原则。",
+        "nodes": [
+          [
+            "转卖获利",
+            "密钥与账号可转卖"
+          ],
+          [
+            "白用算力",
+            "攻击费用由原主支付"
+          ],
+          [
+            "隐藏身份",
+            "活动记在原主名下"
+          ],
+          [
+            "自保原则",
+            "当生产环境凭据管"
+          ]
+        ]
+      }
+    }
+  }
+}

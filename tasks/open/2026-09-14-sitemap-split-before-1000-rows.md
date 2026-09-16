@@ -1,6 +1,6 @@
 ---
 id: 2026-09-14-sitemap-split-before-1000-rows
-title: sitemap 拆成 sitemap index：986 列，下一批 20 篇就破 1,000
+title: sitemap 拆成 sitemap index：已經 1,395 列，上限 1,000 已破
 status: review
 priority: P1
 area: web
@@ -33,7 +33,7 @@ scope:
   - apps/api/tests/test_gemini_series.py
 ---
 
-# sitemap 拆成 sitemap index：986 列，下一批 20 篇就破 1,000
+# sitemap 拆成 sitemap index：已經 1,395 列，上限 1,000 已破
 
 ## Why
 
@@ -45,6 +45,40 @@ scope:
 
 `GET /guides/sitemap`（`apps/api/app/guides/router.py`）沒有分頁參數，所以不能只在 web 端拆；`docs/seo.md`
 寫的「No sitemap index is needed」與 `docs/travel-guides.md` 的「Still open」都要一起改。
+
+
+## 2026-09-15 複測：966 列，headroom 只剩 34
+
+財經系列批次 03 開工前實測 `origin/main` 上的內容包：**778 個包、966 個 (article, locale) 列**
+（zh-TW 758、en／ja／ko／zh-CN 各 52）。比這張票寫的 926 又多了 40 列，因為這中間又合併了幾批。
+
+- 距離 `SITEMAP_LIMIT = 1000` 只剩 **34 列**。
+- 財經批次 03（20 篇，只有 zh-TW）落地後是 **986**，剩 14 列。
+- 財經批次 04–06 還有 **60 篇**，AI 系列批次 08–12 還有 **91 篇**——兩邊加起來 151 篇，
+  **不管哪一邊先動都會爆掉**。
+
+站主已知悉並決定先寫批次 03。**批次 04 開工前這張票必須先解決。**
+
+### 2026-09-15 批次 03 落地並併入當天 main：**1,395 列，上限已經破了**
+
+先講分支自己的數字：財經批次 03 的二十篇落地後，`pack_cli lint` 回報 **986 列**，
+與上面的推算一致，headroom 14。
+
+**但把當天的 `origin/main` 併進來之後是 1,395 列。**
+內容包 963 個（850 個單語系、93 個**五語系**、20 個四語系；kind 分佈 life 838、howto 106、intel 19）。
+對照上面複測時的 778 個包、32 個五語系——**推過 1,000 的不是財經系列，是五語系包從 32 變成 93**，
+一個五語系包就是五列。
+
+所以這張票的性質變了：**不再是「還剩幾列」，而是已經有大約 395 個已發布的
+(article, locale) 進不了 sitemap**（`service.py` 的查詢是 `.limit(SITEMAP_LIMIT)`，
+`order_by(published_at.desc())`，所以被砍掉的是**最舊的那些**）。
+搜尋引擎抓不到那幾百頁，而且不會有任何錯誤訊息。
+
+**這張票的優先順序應該往上調，不只是「批次 04 開工前要做」。**
+
+這張票目前認領不了：`depends_on` 的 `2026-09-14-claude-code-tutorial-center` 與
+`2026-09-14-pack-ingest-urlopen-scheme` 都還是 `status: review`，而且兩張都佔著
+`apps/api/app/guides/pack_ingest.py` 的 scope。要動這張票得先讓那兩張合併或認領過期。
 
 ## Definition of done
 
