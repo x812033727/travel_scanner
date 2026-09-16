@@ -1,6 +1,9 @@
 import type { GuideKind } from "./guides";
 
-export type ArticleReference = { kind: GuideKind; slug: string; title: string };
+/** `description` is the target's published description, when the reference was built from
+ *  a published revision: what a definition card shows under a term link. Optional, so a
+ *  reference built elsewhere (a catalogue row, an older API) still parses. */
+export type ArticleReference = { kind: GuideKind; slug: string; title: string; description?: string | null };
 export type SeriesEntry = ArticleReference & {
   number: number; group: string; level: string; platforms: string[]; aliases: string[];
   description: string; minutes: number; operation_minutes?: number | null;

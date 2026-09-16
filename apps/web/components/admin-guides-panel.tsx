@@ -265,6 +265,9 @@ export function AdminGuidesPanel() {
         expected_version: detail.version, kind: detail.kind, destination_id: detail.destination_id,
         topics: detail.topics.map((topic) => topic.slug), valid_until: detail.valid_until,
         featured: detail.featured, display_order: detail.display_order,
+        // Only this locale's names travel: the other locales' stay as they are on the server.
+        aliases: { [detail.locale]: detail.aliases?.[detail.locale] ?? [] },
+        related: detail.related ?? [],
       }),
     }));
     setNotice(t("taxonomySaved"));
@@ -527,6 +530,22 @@ export function AdminGuidesPanel() {
           </label>
           <label className="flex min-h-11 items-center gap-3">
             <input type="checkbox" checked={detail.featured} onChange={(event) => setDetail({ ...detail, featured: event.target.checked })} />{t("featured")}
+          </label>
+          <label className="grid gap-2">{t("aliases")}
+            <input className={control} value={(detail.aliases?.[detail.locale] ?? []).join(", ")}
+              placeholder={t("aliasesHelp")}
+              onChange={(event) => setDetail({
+                ...detail,
+                aliases: { ...(detail.aliases ?? {}), [detail.locale]: event.target.value.split(/[,，]/).map((name) => name.trim()).filter(Boolean) },
+              })} />
+          </label>
+          <label className="grid gap-2">{t("related")}
+            <input className={control} value={(detail.related ?? []).join(", ")}
+              placeholder={t("relatedHelp")}
+              onChange={(event) => setDetail({
+                ...detail,
+                related: event.target.value.split(/[,，\s]+/).map((slug) => slug.trim()).filter(Boolean),
+              })} />
           </label>
           <fieldset className="grid gap-2 sm:col-span-2">
             <legend className="font-semibold">{t("topics")}</legend>

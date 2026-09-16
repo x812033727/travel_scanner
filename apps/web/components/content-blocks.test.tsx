@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ContentBlocks } from "@/components/content-blocks";
 import {
@@ -22,6 +22,26 @@ describe("tutorial content", () => {
     expect(screen.queryByRole("link", { name: "hidden tutorial" })).toBeNull();
     expect(screen.getByText("hidden tutorial")).toBeTruthy();
     expect(document.querySelector("script")).toBeNull();
+  });
+
+  it("shows a definition card only for a target with a published description, and only when it has the words for it", () => {
+    const blocks: RichContentBlock[] = [{ type: "rich_paragraph", inlines: [
+      { type: "article", kind: "life", slug: "described", text: "a term" },
+      { type: "article", kind: "life", slug: "bare", text: "a plain link" },
+    ] }];
+    const links = [
+      { kind: "life" as const, slug: "described", title: "The term", description: "What it means." },
+      { kind: "life" as const, slug: "bare", title: "Bare" },
+    ];
+    render(<ContentBlocks locale="en" articleLinks={links} blocks={blocks} termLabels={{ card: "名詞說明", readMore: "閱讀全文" }} />);
+    const term = screen.getByRole("link", { name: "a term" });
+    expect(term.getAttribute("href")).toBe("/en/life/described");
+    expect(term.getAttribute("aria-expanded")).toBe("false");
+    expect(screen.getByRole("link", { name: "a plain link" }).getAttribute("aria-expanded")).toBeNull();
+    cleanup();
+    // Without the labels (a caller that is not the article page) every target is a plain link.
+    render(<ContentBlocks locale="en" articleLinks={links} blocks={blocks} />);
+    expect(screen.getByRole("link", { name: "a term" }).getAttribute("aria-expanded")).toBeNull();
   });
   it("copies exact code including HTML, tabs, quotes and the final newline", async () => {
     const code = '<button>\n\tSave & "test"\n</button>\n';
@@ -275,6 +295,21 @@ describe("rendering the rich blocks", () => {
     render(<ContentBlocks blocks={blocks} labels={labels} headingStart={2} />);
     const headings = screen.getAllByRole("heading", { level: 2 });
     expect(headings.map((heading) => heading.id)).toEqual(["section-3", "section-4"]);
+  });
+
+  it("numbers level-3 headings within their section, restarting under every level-2", () => {
+    render(<ContentBlocks headingStart={0} blocks={[
+      { type: "heading", level: 2, text: "一" },
+      { type: "heading", level: 3, text: "一之一" },
+      { type: "heading", level: 3, text: "一之二" },
+      { type: "heading", level: 2, text: "二" },
+      { type: "heading", level: 3, text: "二之一" },
+    ]} />);
+    expect(screen.getAllByRole("heading", { level: 2 }).map((h) => h.id)).toEqual(["section-1", "section-2"]);
+    expect(screen.getAllByRole("heading", { level: 3 }).map((h) => h.id)).toEqual(["section-1-1", "section-1-2", "section-2-1"]);
+    cleanup();
+    render(<ContentBlocks blocks={[{ type: "heading", level: 2, text: "一" }, { type: "heading", level: 3, text: "一之一" }]} />);
+    expect(screen.getByRole("heading", { level: 3 }).id).toBe("");
   });
 
   it("gives headings no id at all when no start is given, which is what the legal pages want", () => {

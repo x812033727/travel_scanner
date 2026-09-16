@@ -355,6 +355,12 @@ export type GuideArticleState = {
   partner_links?: GuidePartnerLink[];
   article_links?: ArticleReference[];
   series?: SeriesNavigation | null;
+  /** Further reading (the editor's picks, then the nearest neighbours), the articles whose
+   *  text links here, and the other names this article answers to. All optional, so an
+   *  article from an older API simply draws none of them. */
+  related?: ArticleReference[];
+  backlinks?: ArticleReference[];
+  aliases?: string[];
 };
 
 export function isGuideTopic(value: unknown): value is GuideTopic {

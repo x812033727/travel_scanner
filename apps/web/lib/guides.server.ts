@@ -263,9 +263,13 @@ export async function loadGuideArticle(
   // A malformed entry costs only its own link, never the article: the block it belongs to
   // finds no match and draws nothing.
   const partnerLinks = Array.isArray(body.partner_links) ? body.partner_links.filter(isGuidePartnerLink) : [];
+  const references = (value: unknown) => (Array.isArray(value) ? value.filter(isArticleReference) : []);
   return { ...shared, status: "published", document: body.document, partner_links: partnerLinks,
-    article_links: Array.isArray(body.article_links) ? body.article_links.filter(isArticleReference) : [],
+    article_links: references(body.article_links),
     series: isSeriesNavigation(body.series) ? body.series : null,
+    related: references(body.related),
+    backlinks: references(body.backlinks),
+    aliases: Array.isArray(body.aliases) ? body.aliases.filter((name): name is string => typeof name === "string") : [],
   };
 }
 

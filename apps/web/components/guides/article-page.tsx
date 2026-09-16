@@ -9,6 +9,7 @@ import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
+import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
 import { SiteHeader } from "@/components/site-header";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
@@ -216,17 +217,28 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const kindLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   // A card is labelled by its section and nothing else, so the kind labels are the whole set.
   const card: GuideCardLabels = kindLabels;
-  const related = kind === "life"
+  // What to read next comes from the API's ranked list when it has one (the editor's picks,
+  // then the nearest neighbours); a lesson's own related lessons are already listed by the
+  // series navigation just above and are not repeated. A lifestyle article keeps the travel
+  // handover after it; a travel article's list replaces the same-city cards it used to end
+  // with, which an API without the list still supplies.
+  const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
+  const grid = state.related?.length
+    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />
+    : null;
+  const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
+  const handover = kind === "life"
     ? await travelCrosslinks(locale, state.destination_id, {
       relatedTravel: t("guides.relatedTravel"),
       relatedDestinations: t("guides.relatedDestinations"),
       card,
     })
-    : await relatedTravel(locale, state, {
+    : grid ? null : await relatedTravel(locale, state, {
       relatedTravel: t("guides.related"),
       relatedDestinations: t("guides.relatedDestinations"),
       card,
     });
+  const related = grid || cited || handover ? <>{grid}{cited}{handover}</> : null;
   // Travel articles sit under the guides hub and then their kind; a lifestyle article sits
   // directly under `/life`, which is both its hub and its only listing.
   const trail: Crumb[] = kind === "life"
@@ -246,6 +258,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       imageCredit: t("guides.imageCredit"),
       tip: t("guides.calloutTip"), warning: t("guides.calloutWarning"), info: t("guides.calloutInfo"),
     },
+    term: { card: t("guides.termCard"), readMore: t("guides.termReadMore") },
   };
   const hero = state.document.hero;
   const copy = seriesCopy(locale);

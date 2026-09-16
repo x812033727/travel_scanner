@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderGuideArticle } from "./article-page";
 import type { LearningEntry } from "@/lib/codex-learning";
@@ -63,5 +63,48 @@ describe("Codex articles on the shared page", () => {
     render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
     expect(mocks.series).not.toHaveBeenCalled();
     expect(screen.queryByRole("region", { name: "Learning directory" })).toBeNull();
+  });
+});
+
+describe("further reading", () => {
+  const ref = (slug: string, title: string, kind: "life" | "howto" = "life") =>
+    ({ kind, slug, title, description: `${title} 的描述` });
+
+  it("shows the API's ranked list, minus what the series navigation already lists, then who cites the article", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      series: { ...state.series, related: [ref("already", "已列")] },
+      related: [ref("already", "已列"), ref("next", "接著讀"), ref("guide", "旅遊攻略", "howto")],
+      backlinks: [ref("citing", "引用者")],
+    });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    const grid = screen.getByRole("region", { name: "同主題延伸閱讀" });
+    expect(within(grid).getAllByRole("listitem").map((item) => item.textContent)).toEqual([
+      expect.stringContaining("接著讀"), expect.stringContaining("旅遊攻略"),
+    ]);
+    expect(within(grid).queryByRole("link", { name: "已列" })).toBeNull();
+    expect(within(grid).getByRole("link", { name: "旅遊攻略" }).getAttribute("href")).toBe("/guides/howto/guide");
+    expect(screen.getByRole("region", { name: "引用本文的文章" }).textContent).toContain("引用者");
+    // The lifestyle handover to the travel section still follows.
+    expect(screen.getByTestId("travel-crosslinks")).toBeTruthy();
+    const order = [screen.getByTestId("related-grid"), screen.getByTestId("backlinks"), screen.getByTestId("travel-crosslinks")];
+    expect(order[0].compareDocumentPosition(order[1]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(order[1].compareDocumentPosition(order[2]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("draws neither section for an article the API sent without them", async () => {
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    expect(screen.queryByTestId("related-grid")).toBeNull();
+    expect(screen.queryByTestId("backlinks")).toBeNull();
+  });
+
+  it("hands the definition-card words to the body, so a term link can show its target's description", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      document: { ...document, blocks: [{ type: "rich_paragraph", inlines: [{ type: "article", kind: "life", slug: "term", text: "the term" }] }] },
+      article_links: [ref("term", "Term")],
+    });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    expect(screen.getByRole("link", { name: "the term" }).getAttribute("aria-expanded")).toBe("false");
   });
 });

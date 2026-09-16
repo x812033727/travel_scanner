@@ -10,6 +10,7 @@ import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/compo
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
+import type { TermLinkLabels } from "@/components/guides/term-link";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { contentBlockLink } from "@/lib/content-blocks";
@@ -39,6 +40,8 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   partnerDisclosure: string;
   partner: PartnerLinkLabels;
   blocks: ContentBlockLabels;
+  /** The definition card under a term link; without it a term is a plain link. */
+  term?: TermLinkLabels;
 };
 
 /** Fewer level-2 headings than this and a table of contents is longer than the scroll it saves. */
@@ -219,7 +222,7 @@ export function GuideArticle({
                   />
                 ) : null}
                 {piece.blocks.length ? (
-                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} articleLinks={state.article_links} locale={state.locale} />
+                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} articleLinks={state.article_links} locale={state.locale} termLabels={labels.term} />
                 ) : null}
               </Fragment>
             ))}

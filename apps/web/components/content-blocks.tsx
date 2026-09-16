@@ -9,6 +9,7 @@ import {
 import { siteUrl } from "@/lib/seo";
 import { GuideImage } from "@/components/guides/guide-image";
 import { GuideCodeBlock, type CodeLabels } from "@/components/guide-code-block";
+import { TermLink, type TermLinkLabels } from "@/components/guides/term-link";
 import type { ArticleReference } from "@/lib/guide-series";
 
 /** The words the renderer cannot invent: a credit prefix and one name per callout tone. A
@@ -67,15 +68,33 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
  * pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart, articleLinks = [], locale = "en",
+  blocks, labels, headingStart, articleLinks = [], locale = "en", termLabels,
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
   headingStart?: number;
   articleLinks?: readonly ArticleReference[];
   locale?: string;
+  /** The words of the definition card under a term link; without them a term is a plain link. */
+  termLabels?: TermLinkLabels;
 }) {
-  let sections = headingStart ?? 0;
+  // Heading ids are decided in one pass before rendering: level-2 headings continue the
+  // sequence the caller started, and level-3 headings count within their section
+  // (`section-3-2`) so a citation can point at a sub-answer.
+  const headingIds = new Map<number, string>();
+  if (headingStart !== undefined) {
+    let section = headingStart;
+    let subsection = 0;
+    blocks.forEach((block, index) => {
+      if (block.type !== "heading") return;
+      if (block.level === 3) {
+        headingIds.set(index, `section-${section}-${++subsection}`);
+      } else {
+        subsection = 0;
+        headingIds.set(index, `section-${++section}`);
+      }
+    });
+  }
   return <>{blocks.map((block, index) => {
     if (block.type === "code") return <GuideCodeBlock key={index} block={block} labels={labels?.code} />;
     if (block.type === "rich_paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.inlines.map((node, i) => {
@@ -84,7 +103,13 @@ export function ContentBlocks({
         const target = articleLinks.find(ref => ref.slug === node.slug && ref.kind === node.kind);
         if (!target) return <span key={i}>{node.text}</span>;
         const path = target.kind === "life" ? `/life/${target.slug}` : `/guides/${target.kind}/${target.slug}`;
-        return <a key={i} href={`/${locale}${path}`} className="text-[var(--teal)] underline underline-offset-4">{node.text}</a>;
+        const href = `/${locale}${path}`;
+        // A target with a published description gets the definition card; one without (an
+        // older API, a catalogue reference) stays the plain link it always was.
+        if (target.description && termLabels) {
+          return <TermLink key={i} href={href} text={node.text} title={target.title} description={target.description} labels={termLabels} />;
+        }
+        return <a key={i} href={href} className="text-[var(--teal)] underline underline-offset-4">{node.text}</a>;
       }
       if (node.type === "link") {
         const href = contentBlockLink(node.url);
@@ -97,8 +122,8 @@ export function ContentBlocks({
       return <span key={i}>{node.text}</span>;
     })}</p>;
     if (block.type === "heading") {
-      if (block.level === 3) return <h3 key={index} className="pt-2 text-lg font-semibold">{block.text}</h3>;
-      const id = headingStart === undefined ? undefined : `section-${++sections}`;
+      const id = headingIds.get(index);
+      if (block.level === 3) return <h3 key={index} id={id} className="scroll-mt-24 pt-2 text-lg font-semibold">{block.text}</h3>;
       return <h2 key={index} id={id} className="scroll-mt-24 pt-4 text-xl font-bold">{block.text}</h2>;
     }
     if (block.type === "paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.text}</p>;

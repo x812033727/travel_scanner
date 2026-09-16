@@ -162,6 +162,31 @@ describe("partner links", () => {
   });
 });
 
+describe("further reading and names", () => {
+  const ref = { kind: "life", slug: "next", title: "接著讀", description: "描述" };
+
+  it("carries related, backlinks and aliases, dropping malformed entries", async () => {
+    vi.stubGlobal("fetch", respond({
+      ...article,
+      related: [ref, { kind: "nope", slug: "x", title: "t" }, null],
+      backlinks: [{ ...ref, slug: "citing", description: null }],
+      aliases: ["ML", 3, "機器學習"],
+    }));
+    const state = await loadGuideArticle("howto", "narita-to-tokyo", "zh-TW");
+    expect(state.related).toEqual([ref]);
+    expect(state.backlinks).toEqual([{ ...ref, slug: "citing", description: null }]);
+    expect(state.aliases).toEqual(["ML", "機器學習"]);
+  });
+
+  it("reads an API that predates them as having none", async () => {
+    vi.stubGlobal("fetch", respond(article));
+    const state = await loadGuideArticle("howto", "narita-to-tokyo", "zh-TW");
+    expect(state.related).toEqual([]);
+    expect(state.backlinks).toEqual([]);
+    expect(state.aliases).toEqual([]);
+  });
+});
+
 describe("the sitemap enumeration", () => {
   const rows = [
     { kind: "howto", slug: "narita-to-tokyo", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z" },

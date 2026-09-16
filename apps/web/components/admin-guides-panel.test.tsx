@@ -198,6 +198,20 @@ describe("hiding", () => {
     expect(screen.getByText(/這篇文章已隱藏/)).toBeTruthy();
   });
 
+  it("sends this locale's names and the related picks with the classification", async () => {
+    await open();
+    fireEvent.change(screen.getByLabelText("別名（此語言）"), { target: { value: "成田到東京, Skyliner 攻略，" } });
+    fireEvent.change(screen.getByLabelText("延伸閱讀"), { target: { value: "tokyo-transit-passes, jr-pass-guide" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存分類" }));
+    await waitFor(() => {
+      const call = mocks.api.mock.calls.find(([path, init]) => String(path).startsWith(`/admin/guides/${id}?`) && init?.method === "PUT");
+      expect(call).toBeTruthy();
+      const body = JSON.parse(call![1].body);
+      expect(body.aliases).toEqual({ "zh-TW": ["成田到東京", "Skyliner 攻略"] });
+      expect(body.related).toEqual(["tokyo-transit-passes", "jr-pass-guide"]);
+    });
+  });
+
   it("never sends visibility inside the classification form", async () => {
     await open();
     fireEvent.click(screen.getByRole("button", { name: "儲存分類" }));
