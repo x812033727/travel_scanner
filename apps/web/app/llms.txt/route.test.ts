@@ -144,15 +144,19 @@ describe("llms.txt", () => {
     const text = await body();
     // The hub in the language with the most under it; a sub-topic is not a line of its own;
     // a topic with nothing anywhere is left out.
-    expect(text).toContain(`- [AI tools](${siteUrl}/zh-TW/life/topics/ai): 500 articles in 繁體中文: Tools, terms and news.`);
+    // The counts pick that language and are not written down: an engine may quote this
+    // file back weeks later, and by then the figure would be wrong.
+    expect(text).toContain(`- [AI tools](${siteUrl}/zh-TW/life/topics/ai): In 繁體中文: Tools, terms and news.`);
     // English wins a tie.
-    expect(text).toContain(`- [Transport](${siteUrl}/en/guides/topics/transport): 3 articles in English`);
+    expect(text).toContain(`- [Transport](${siteUrl}/en/guides/topics/transport): In English`);
+    expect(text).not.toContain("articles in");
     expect(text).not.toContain("AI glossary](");
     expect(text).not.toContain("Miscellany");
     // Each hub once, under the first language (English first) that publishes it.
     expect(text).toContain(`- [AI glossary index](${siteUrl}/en/life/ai-terms-index): English`);
     expect(text).not.toContain("AI 名詞總索引");
-    expect(text).toContain(`- [Claude Code 教學中心](${siteUrl}/zh-TW/life/claude-code-tutorials): 96 lessons, 繁體中文, 從安裝到進階`);
+    expect(text).toContain(`- [Claude Code 教學中心](${siteUrl}/zh-TW/life/claude-code-tutorials): 繁體中文, 從安裝到進階`);
+    expect(text).not.toContain("lessons");
     expect(text.indexOf("### Topics")).toBeLessThan(text.indexOf("### Series"));
   });
 

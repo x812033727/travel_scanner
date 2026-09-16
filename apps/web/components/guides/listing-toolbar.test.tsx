@@ -7,14 +7,14 @@ const topics = [
   { slug: "food", label: "美食", section: "travel" as const, parent: null, count: 2 },
 ];
 const labels = {
-  allTopics: "全部主題", topicsLabel: "主題篩選", subtopics: "子主題", moreChips: "還有 {count} 個", fewerChips: "收起",
+  allTopics: "全部主題", topicsLabel: "主題篩選", subtopics: "子主題", moreChips: "更多", fewerChips: "收起",
   sortLabel: "排序", sortCurated: "精選優先", sortLatest: "最新優先",
 };
 const sort = { current: "curated" as const, hrefs: { curated: "/guides/howto", latest: "/guides/howto?sort=latest" } };
 
 describe("the listing toolbar", () => {
-  it("holds the topic chips, the order as links with the current one marked, and the count", () => {
-    render(<ListingToolbar section="travel" topics={topics} active={null} allHref="/guides/howto" sort={sort} count="106 篇文章" labels={labels} />);
+  it("holds the topic chips and the order as links, with the current one marked", () => {
+    render(<ListingToolbar section="travel" topics={topics} active={null} allHref="/guides/howto" sort={sort} labels={labels} />);
     expect(screen.getByRole("link", { name: /交通/ }).getAttribute("href")).toBe("/guides/topics/transport");
     const order = screen.getByRole("navigation", { name: "排序" });
     const curated = screen.getByRole("link", { name: "精選優先" });
@@ -24,11 +24,12 @@ describe("the listing toolbar", () => {
     expect(curated.getAttribute("href")).toBe("/guides/howto");
     expect(latest.getAttribute("aria-current")).toBeNull();
     expect(latest.getAttribute("href")).toBe("/guides/howto?sort=latest");
-    expect(screen.getByText("106 篇文章")).toBeTruthy();
+    // A listing grows, so its size is never written down -- not on the chips, not here.
+    expect(screen.getByTestId("listing-toolbar").textContent).not.toMatch(/\d/);
     expect(screen.getByTestId("listing-toolbar").className).toContain("app-listing-toolbar");
   });
 
-  it("draws no order or count row on a listing with one order and no known count", () => {
+  it("draws no order row on a listing with one order", () => {
     render(<ListingToolbar section="travel" topics={topics} active="food" allHref="/guides/intel" labels={labels} />);
     expect(screen.queryByRole("navigation", { name: "排序" })).toBeNull();
     expect(screen.getByRole("link", { name: /美食/ }).getAttribute("aria-current")).toBe("page");

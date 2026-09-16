@@ -47,7 +47,7 @@ describe("/search/articles", () => {
   it("reads the query, section and offset from the URL and hands them to one search", async () => {
     render(await page({ q: " JR Pass ", section: "travel", offset: "10" }));
     expect(mocks.search).toHaveBeenCalledWith("zh-TW", { q: "JR Pass", section: "travel", offset: 10 });
-    expect(screen.getByRole("heading", { level: 2, name: "「JR Pass」共 1 篇文章" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 2, name: "「JR Pass」的文章" })).toBeTruthy();
     expect(screen.getByRole("link", { name: /JR Pass 值得買嗎/ }).getAttribute("href")).toBe("/guides/howto/jr-pass-guide");
     // The words the reader typed are marked in the passage.
     expect(screen.getAllByText("JR", { selector: "mark" }).length).toBeGreaterThan(0);

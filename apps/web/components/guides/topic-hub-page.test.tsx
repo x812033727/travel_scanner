@@ -10,14 +10,14 @@ import { renderTopicHub, topicHubMetadata } from "./topic-hub-page";
  */
 
 const mocks = vi.hoisted(() => ({
-  list: vi.fn(), vocabulary: vi.fn(),
+  list: vi.fn(), vocabulary: vi.fn(), series: vi.fn(),
   notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }),
 }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 // `hubIsEmpty` stays the real rule for the older-API case below.
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
-  getGuideList: mocks.list, getGuideTopicList: mocks.vocabulary,
+  getGuideList: mocks.list, getGuideTopicList: mocks.vocabulary, getSeriesIndex: mocks.series,
 }));
 vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
 
@@ -31,14 +31,26 @@ const topics = [
   { slug: "ai", label: "AI 工具", section: "life" as const, parent: null, description: "AI 的一切。", count: 5, counts: { "zh-TW": 5, en: 2 } },
   { slug: "ai-terms", label: "AI 名詞解釋", section: "life" as const, parent: "ai", description: null, count: 2, counts: { "zh-TW": 2 } },
   { slug: "ai-news", label: "AI 新聞與趨勢", section: "life" as const, parent: "ai", description: null, count: 0, counts: {} },
+  { slug: "ai-chat", label: "對話助理", section: "life" as const, parent: "ai", description: null, count: 3, counts: { "zh-TW": 3 } },
 ];
 const route = (over: Partial<Parameters<typeof renderTopicHub>[0]> = {}) =>
   ({ locale: "zh-TW" as const, section: "life" as const, topic: "ai-terms", ...over });
+
+const glossary = {
+  slug: "ai-terms", section: "life" as const, source: "catalogue" as const, topic: "ai-terms", entries: 81,
+  hub: { kind: "life" as const, slug: "ai-terms-index", title: "AI 名詞總索引", description: "從這份總索引開始" },
+};
+const gemini = {
+  slug: "gemini", section: "life" as const, source: "web-gemini" as const, topic: "ai-chat", entries: null,
+  hub: { kind: "life" as const, slug: "gemini-guide", title: "Gemini 完整教學", description: "電腦、手機、CLI" },
+};
+const travelSeries = { ...glossary, slug: "packing", section: "travel" as const, topic: "ai-terms" };
 
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.vocabulary.mockResolvedValue({ topics, available: true });
   mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null, available: true });
+  mocks.series.mockResolvedValue([glossary, gemini, travelSeries]);
 });
 
 describe("the topic hub", () => {
@@ -57,11 +69,33 @@ describe("the topic hub", () => {
     render(await renderTopicHub(route()));
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("AI 名詞解釋");
     expect(screen.getByText("AI 的一切。")).toBeTruthy();
-    expect(screen.getByText("2 篇文章")).toBeTruthy();
+    // `topic.count` is 2 here and decides indexability below; the page never prints it.
+    expect(screen.queryByText(/篇文章/)).toBeNull();
     expect(screen.getByRole("link", { name: "量化（Quantization）是什麼" }).getAttribute("href"))
       .toBe("/life/ai-term-quantization");
     expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-terms", cursor: undefined, sort: "latest" }, 24);
     expect(mocks.vocabulary).toHaveBeenCalledWith("zh-TW", "life");
+  });
+
+  it("offers the series this topic owns, and on a parent hub the ones its children own", async () => {
+    render(await renderTopicHub(route()));
+    // The sub-topic's own series, and not the one belonging to a sibling sub-topic.
+    expect(screen.getByRole("link", { name: "AI 名詞總索引" }).getAttribute("href")).toBe("/life/ai-terms-index");
+    expect(screen.queryByRole("link", { name: "Gemini 完整教學" })).toBeNull();
+    // `entries` is 81 and is never printed: a series gains articles.
+    expect(screen.queryByText(/81/)).toBeNull();
+  });
+
+  it("gathers its children's series on a parent hub, and never another section's", async () => {
+    render(await renderTopicHub(route({ topic: "ai" })));
+    expect(screen.getByRole("link", { name: "AI 名詞總索引" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Gemini 完整教學" })).toBeTruthy();
+  });
+
+  it("draws no series block for a topic that owns none", async () => {
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
+    render(await renderTopicHub(route({ topic: "ai-news" })));
+    expect(screen.queryByTestId("series-row")).toBeNull();
   });
 
   it("walks the breadcrumb home › section › parent › topic, and marks the topic chip current", async () => {

@@ -89,11 +89,7 @@ describe("the lifestyle listing", () => {
     expect(screen.getByText("這裡還沒有已發布的內容。")).toBeTruthy();
   });
 
-  it("opens with a search box scoped to the section and the figures the API gave", async () => {
-    mocks.summary.mockResolvedValue({
-      counts: [{ kind: "life", locale: "zh-TW", count: 818 }, { kind: "howto", locale: "zh-TW", count: 106 }],
-      available: true,
-    });
+  it("opens with a search box scoped to the section, and says nothing about how big it is", async () => {
     mocks.topics.mockResolvedValue([
       { slug: "ai", label: "AI 工具", section: "life", parent: null, description: "AI 的一切。", count: 500 },
       { slug: "ai-terms", label: "AI 名詞解釋", section: "life", parent: "ai", count: 80 },
@@ -104,27 +100,27 @@ describe("the lifestyle listing", () => {
     const form = screen.getByRole("search");
     expect(form.getAttribute("action")).toBe("/zh-TW/search/articles");
     expect(form.querySelector('input[name="section"]')?.getAttribute("value")).toBe("life");
-    expect(screen.getByTestId("hub-stats").textContent).toBe("818 篇文章2 個主題");
+    // The hub used to print "818 篇文章 2 個主題" here; the section grows every week.
+    expect(screen.queryByTestId("hub-stats")).toBeNull();
     // The tiles: a parent with its lead and sub-topic chip, an empty parent left out.
     expect(screen.getByText("AI 的一切。")).toBeTruthy();
     expect(screen.getByRole("link", { name: "AI 名詞解釋" }).getAttribute("href")).toBe("/life/topics/ai-terms");
     expect(screen.queryByRole("link", { name: "其他" })).toBeNull();
+    // 500 / 80 / 40 decide which tiles draw; none of them reaches the page.
+    expect(screen.getByTestId("topic-tiles").textContent).not.toMatch(/\d/);
     expect(screen.getByRole("heading", { level: 2, name: "全部文章" })).toBeTruthy();
   });
 
-  it("offers the registry's series as the way in, with the Gemini lesson count the web decides", async () => {
+  it("leaves the series to the topic hubs, while still reading the registry to place Gemini", async () => {
     mocks.series.mockResolvedValue([claudeRow, geminiRow]);
     render(await LifeHubPage({ params, searchParams: search() }));
-    expect(screen.getByRole("link", { name: "Claude Code 教學中心" }).getAttribute("href")).toBe("/life/claude-code-tutorials");
-    expect(screen.getByText("從安裝到進階")).toBeTruthy();
-    expect(screen.getByText("96 篇")).toBeTruthy();
-    // One link to the Gemini hub (the e2e counts them), under the projection's own sentence.
-    expect(screen.getAllByRole("link").filter((link) => link.getAttribute("href") === `/life/${catalogue.hubSlug}`)).toHaveLength(1);
-    expect(screen.getByText(/篇完整教學/)).toBeTruthy();
-    cleanup();
-    mocks.series.mockResolvedValue([]);
-    render(await LifeHubPage({ params, searchParams: search() }));
+    // Every series names one topic, so it belongs on that topic's hub rather than here.
     expect(screen.queryByTestId("series-row")).toBeNull();
+    expect(screen.queryByRole("link", { name: "Claude Code 教學中心" })).toBeNull();
+    expect(screen.queryByText(/篇完整教學/)).toBeNull();
+    // The registry row is still the Gemini hub's publication signal -- the next test
+    // depends on it -- so the read stays even though nothing draws from it here.
+    expect(mocks.series).toHaveBeenCalledWith("zh-TW");
   });
 
   it("keeps Gemini lessons out of the listing until the registry lists the hub, which is when it is published", async () => {

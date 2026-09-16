@@ -63,18 +63,12 @@ describe("the guides hub", () => {
     ]);
     render(await GuidesHubPage({ params }));
     expect(screen.getByRole("link", { name: "交通" }).getAttribute("href")).toBe("/guides/topics/transport");
-    expect(screen.getByText("4 篇")).toBeTruthy();
+    // The count is what leaves 海灘 out; it is not printed on the tile that stays.
+    expect(screen.getByTestId("topic-tiles").textContent).not.toMatch(/\d/);
     expect(screen.queryByRole("link", { name: /海灘/ })).toBeNull();
   });
 
-  it("opens with a search box scoped to the section and the figures the API gave", async () => {
-    mocks.summary.mockResolvedValue({
-      counts: [
-        { kind: "intel", locale: "zh-TW", count: 19 }, { kind: "howto", locale: "zh-TW", count: 106 },
-        { kind: "life", locale: "zh-TW", count: 800 }, { kind: "howto", locale: "en", count: 3 },
-      ],
-      available: true,
-    });
+  it("opens with a search box scoped to the section, and says nothing about how big it is", async () => {
     mocks.topics.mockResolvedValue([
       { slug: "transport", label: "交通", section: "travel", parent: null, count: 4 },
       { slug: "food", label: "美食", section: "travel", parent: null, count: 2 },
@@ -84,22 +78,19 @@ describe("the guides hub", () => {
     const form = screen.getByRole("search");
     expect(form.getAttribute("action")).toBe("/zh-TW/search/articles");
     expect(form.querySelector('input[name="section"]')?.getAttribute("value")).toBe("travel");
-    // This section's kinds in this language only, and the topics with something under them.
-    expect(screen.getByTestId("hub-stats").textContent).toBe("125 篇文章2 個主題");
+    // The hub used to print "125 篇文章 2 個主題" here. The section grows weekly, so the
+    // figure was wrong between deploys; the API still sends the counts it is computed from.
+    expect(screen.queryByTestId("hub-stats")).toBeNull();
   });
 
-  it("lists the series the registry offers this section, and no row when there are none", async () => {
+  it("leaves the series to the topic hubs", async () => {
     mocks.series.mockResolvedValue([
-      { slug: "claude-code", section: "life", hub: { kind: "life", slug: "claude-code-tutorials", title: "Claude Code 教學中心" }, source: "api-series", topic: "claude-code", entries: 96 },
       { slug: "japan-rail", section: "travel", hub: { kind: "howto", slug: "japan-rail-guide", title: "日本鐵路完全攻略", description: "從 JR Pass 到 IC 卡" }, source: "catalogue", topic: "transport", entries: null },
     ]);
     render(await GuidesHubPage({ params }));
-    expect(screen.getByRole("link", { name: "日本鐵路完全攻略" }).getAttribute("href")).toBe("/guides/howto/japan-rail-guide");
-    expect(screen.queryByRole("link", { name: "Claude Code 教學中心" })).toBeNull();
-    cleanup();
-    mocks.series.mockResolvedValue([]);
-    render(await GuidesHubPage({ params }));
+    // A series belongs to one topic, so it belongs on that topic's hub, not here.
     expect(screen.queryByTestId("series-row")).toBeNull();
+    expect(screen.queryByRole("link", { name: "日本鐵路完全攻略" })).toBeNull();
   });
 
   it("groups the destinations with articles by country, and draws nothing without any", async () => {

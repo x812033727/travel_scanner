@@ -1,0 +1,250 @@
+---
+id: 2026-09-14-planner-spend-ceiling
+title: AI itinerary planning has no spend ceiling
+status: done
+priority: P1
+area: api
+owner: claude-opus-5
+claimed_at: 2026-09-14T13:15:06Z
+created_at: 2026-09-14T13:15:02Z
+completed_at: 2026-09-16T06:12:25Z
+branch: claude/festive-tesla-qtibnk
+depends_on: []
+scope:
+  - apps/api/app/infra.py
+  - apps/api/app/ai/itinerary.py
+  - apps/api/app/config.py
+  - apps/api/app/trips/router.py
+  - apps/api/app/trips/intents.py
+  - apps/api/app/i18n.py
+  - apps/api/tests/conftest.py
+  - apps/api/tests/test_planner_budget.py
+  - apps/api/tests/test_trip_intents.py
+  - apps/api/tests/test_trip_create_replay.py
+  - apps/web/components/trip-editor.tsx
+  - apps/web/components/trip-editor.test.tsx
+  - apps/web/messages
+  - .env.example
+  - docs/anti-scraping.md
+  - architecture.md
+---
+
+# AI itinerary planning has no spend ceiling
+
+## Why
+
+`POST /trips` plans with the LLM and counts nothing. `save_trip` (`app/trips/router.py`)
+calls `AIItineraryPlanner.generate` whenever `source` is `blank` and `planning_mode` is not
+`manual_blank` -- and `ai_draft` is that field's default, so a request that simply omits it
+spends provider money. There is no rate limit on the path and no usage charge; planning at
+creation is free by design (`architecture.md`).
+
+The only ceiling is the 20 saved trips cap, and `DELETE /trips/{trip_id}` makes that cap
+mean nothing: create, delete, create is an unbounded loop, and each turn of it is not one
+call but up to four, because the planner fails over across the whole roster and Gemini
+retries itself once on a validation failure. `AI_PLANNER_MAX_OUTPUT_TOKENS` is 12000.
+
+Two smaller versions of the same hole sit beside it. The deprecated
+`POST /trips/{id}/itinerary/generate` reaches the planner with no limit either. And both it
+and the trip-intent path *refund* the slot they counted whenever the planner falls back to
+catalog -- correct for a traveller who lost a real outage, and a lever for anyone who can
+provoke one: the calls are attempted, the budget is handed back, repeat.
+
+## Definition of done
+
+- [x] An account cannot spend provider calls on itinerary planning without bound, however
+      many trips it creates and deletes.
+- [x] Reaching the ceiling still produces a usable itinerary from the reviewed catalogue --
+      it never refuses, and it says which of the two happened rather than borrowing the
+      copy for a provider outage.
+- [x] A genuine full-provider outage still costs the traveller nothing, exactly as today.
+- [x] The ceiling can be lowered on a running deployment without a rebuild.
+- [x] Redis being unreachable stops the spend instead of opening it.
+
+## Steps
+
+- [x] `budget_spent` in `app/infra.py`: the fail-closed counterpart to
+      `over_named_rate_limit`, for a budget that costs money rather than load.
+- [x] `app/ai/itinerary.py`: lift the catalog tail of `generate` into `catalog_result`,
+      add `planner_budget_reached`, and add `plan_within_budget` as the one entry point
+      that spends the roster.
+- [x] Skip the roster entirely when no candidate could survive `normalize_draft`.
+- [x] `ai_planner_user_budget` + `ai_planner_user_budget_window_seconds` in `config.py`,
+      and the matching block in `.env.example`.
+- [x] Route all three user-facing planner call sites in `app/trips/router.py` through
+      `plan_within_budget`; leave the refunds alone.
+- [x] Neutralise the new default in `tests/conftest.py`.
+- [x] `planner_budget_reached` copy in the five `apps/web/messages` locales, the code list
+      in `trip-editor.tsx`, and a headline that does not claim an outage.
+- [x] `docs/anti-scraping.md` Known gaps, and the planning paragraph in `architecture.md`.
+
+## How to verify
+
+```bash
+cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest
+npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:web
+npm run test:tools && npm run check:tasks
+```
+
+End to end, against the original attack: start the API with `AI_PLANNER_USER_BUDGET=2`,
+then `POST /trips` three times on one account with `planning_mode: "ai_draft"`. The first
+two responses carry a real provider in `data.planning.provider`; from the third it is
+`catalog` with `status: "fallback"` and `planner_budget_reached` in the warnings, and the
+status code is still 201. Then run create-delete-create and confirm deleting a trip does
+not give the budget back.
+
+## Notes
+
+**Claimed with `--force`.** `2026-09-12-trip-partner-offer-availability` holds
+`apps/api/app/trips/router.py` in its scope, but its claim has been open since
+2026-09-12T13:27:21Z -- past the 24 hour staleness rule in `tasks/README.md`. Same
+convention as `tasks/done/2026-09-12-edge-rate-limit-and-header-hygiene.md`. The overlap is
+three call-site lines in a 6000 line file, nowhere near that task's partner-offer work.
+
+**Why degrade instead of 429.** Refusing to create a trip is the harshest outcome available
+and the UI already renders the alternative: `trip-editor.tsx` shows the fallback badge, and
+the copy exists in all five locales. `app/ai/trip_parser.py` sets the precedent -- its rate
+gate returns `MockAITripParser` rather than raising. So the ceiling costs an abuser money
+and costs a heavy traveller nothing but a less clever itinerary.
+
+**Why a new warning code rather than `planner_fallback_used`.** That string reads "the
+providers could not do it". Showing it to someone who actually hit their own ceiling is the
+kind of dishonesty `intents.py` already argues against in its fallback comment.
+
+**Why the refunds did not need changing.** The new counter is never refunded and sits
+inside the shared entry point, so it bounds the attempts themselves. The existing
+refundable limiters keep doing their own, different job, and a traveller who loses a real
+outage still gets their slot back.
+
+**Not in this task**, deliberately: moving the budget onto the back office AI planner card
+(`app/admin/service.py` `ProviderDefinition`) would let the owner lower it without even a
+restart, but it pulls in `admin-settings-panel.tsx` and five `admin.json` files. Metering
+`POST /{id}/itinerary/preview`, which is limited to 12/hour but never charged, is a pricing
+decision rather than an abuse fix. Both are worth their own tasks.
+
+## 本次驗證（claude-opus-5, 2026-09-14）
+
+Full suite green: `ruff`, `mypy app`, 3740 pytest passed / 277 skipped; web lint, typecheck,
+`check:i18n`, 2809 vitest passed; `test:tools` 48 passed; `check:tasks` validated.
+
+End to end against a real Redis with the real Lua counter, `AI_PLANNER_USER_BUDGET=2` and
+`AI_PLANNER_IP_BUDGET=3`:
+
+- Five create-delete-create attempts asked the roster **twice**. Attempts 3-5 returned the
+  catalogue plan carrying `planner_budget_reached` alone, while the two real provider
+  failures carried `planner_provider_failed` + `planner_fallback_used` -- the distinction
+  the trip editor now renders as two different headlines.
+- Three **fresh accounts** on the same address were stopped by the address ceiling after one
+  more call, so minting accounts does not reset the budget.
+- A request with no candidates never reached a provider and was not counted, because nothing
+  was spent.
+- `abuse:ai-planner-llm-user:<date>` and `abuse:ai-planner-llm-ip:<date>` both populated with
+  hashed sources, so the numbers can be judged against real traffic.
+
+## Notes from doing it
+
+**`Request | None = None` does not work in FastAPI.** It looks like the polite way to add the
+caller's address without disturbing the signature, and it raises `FastAPIError: Invalid args
+for response field` at import: `analyze_param` uses `lenient_issubclass`, so a union falls
+through the "is this a Starlette type" check and is treated as a Pydantic body field. It has
+to be a bare `request: Request`, which then has to precede the defaulted `idempotency_key`,
+which is why `tests/test_trip_create_replay.py` grew a positional argument.
+
+**The per-address budget was not in the original plan and is why it is there now.** Per
+account alone looked sufficient until `/auth/register` turned out to return a token
+immediately with no email verification, which makes `AUTH_REGISTER_IP_LIMIT` (30/h) a
+multiplier on any per-account number. The residual gap -- someone with many addresses -- is
+written down in `docs/anti-scraping.md` Known gaps rather than left implied.
+
+**The no-candidate guard removes more waste than the budget does, for the cheapest attack.**
+`normalize_draft` keeps only items naming a `candidate_key` the request supplied, and
+`_load_ai_planner_candidates` returns `[]` on a `match_destination` miss, so a destination
+name the catalogue does not know spent the whole roster and could not produce one usable
+item. It costs a caller nothing to type and cost us four vendors. Found while checking the
+budget design, fixed in the same door.
+
+## Follow-up after review (2026-09-15, another claude-opus-5 session, at the owner's request)
+
+PR #500 sat red on `api` for two runs, and the Codex review on it left three findings. All four
+were real and are fixed on the same branch; the scope above grew by `intents.py`, `i18n.py`
+and the intent tests to carry them.
+
+**The red `api` job was test isolation, not the gate.**
+`test_an_uncountable_budget_is_treated_as_spent` patched `_incr_window` so the real
+`budget_spent` would run, but left `record_rate_limit_hit` real. `get_redis()` is an
+`lru_cache` singleton, and pytest gives every test its own event loop, so on a machine with a
+Redis server the write reused a pooled connection bound to an earlier test's closed loop and
+raised `RuntimeError: Event loop is closed` -- which `record_rate_limit_hit` does not catch.
+Without a server it is a swallowed `ConnectionError`, which is why it passed on Windows and
+failed only in CI. Reproduced locally by warming the client against a `fakeredis`
+`TcpFakeServer` in a prior test. Fix: `stub_redis_writes` in the test file, used by the
+`gate` fixture and by that test; the same reproduction then passes. Production has one loop
+and is unaffected.
+
+**P1 -- the address ceiling only covered trip creation.** `_build_ai_planning` (behind
+`/itinerary/preview` and `/intents`) and the deprecated `/itinerary/generate` passed only the
+account, so minted accounts each brought a whole budget to those routes. All three now pass
+`client_ip(request)`; router-level tests pin preview and generate, and an intent test pins the
+intent path.
+
+**P2 -- a spent budget on `/intents` was reported as an outage.** The intent route treats
+every catalogue fallback as a provider failure and raised `503 ai_planner_unavailable`. It now
+checks for `planner_budget_reached` and raises `429 planner_budget_reached` with its own copy
+in the five locales (`i18n.py`); the fair-use slots are still refunded, since nothing was
+produced, and the planner budget itself still is not.
+
+**P2 -- an address refusal spent the account's own hour.** The account was counted before
+the address turned the attempt away, so a traveller behind a busy NAT lost personal budget to
+attempts that never reached a provider -- a block that could outlast the shared window.
+`plan_within_budget` now refunds the earlier account count when a later budget rejects. It is
+the only refund in the gate, and it undoes a count for a call that never happened; attempts
+that reach the roster stay counted, and a test pins that.
+
+Verified locally: `ruff`, `mypy app` (328 files), and `test_planner_budget.py`,
+`test_trip_intents.py`, `test_trip_create_replay.py`, `test_trip_preferences.py`,
+`test_ai_itinerary.py` -- 128 passed, 1 skipped.
+
+### Second review round (2026-09-15)
+
+The owner still saw problems, so the whole PR went through a six-lens review (abuse, gate
+logic, routes, web and i18n, tests and CI, docs and tasks). Every finding was then put in front
+of two adversarial verifiers. 9 findings survived; 2 were refuted, as was the one extra finding
+a completeness critic raised. All 9 are fixed here, and a second pair of reviewers checked the
+fixes. The scope above grew by `trip-editor.test.tsx`.
+
+- **Tests went red on the 29th-31st of every month.** The two POST /trips harness tests built
+  dates with `date.replace(year+1)` and `replace(day=min(day + 2, 28))`, which gives an end date
+  before the start on those days and raises on Feb 29. That is four failing cases in the
+  required `api` job, the first on 2026-09-29. They now use `timedelta`. Checked with
+  `date.today()` pinned to 2026-09-29 and to 2028-02-29.
+- **`/intents` on a trip with no plannable places said "temporarily unavailable, try again".**
+  The no-candidates guard returns a catalogue fallback, and the intent route read that as an
+  outage. It now answers `422 itinerary_exact_locations_required`, the wording generate and
+  apply already use for `needs_setup`. That check comes before the budget check, and the
+  intent slots are still refunded.
+- **The replan preview never said the budget was spent.** The reason only surfaced after Apply,
+  inside a collapsed panel. The preview overlay now leads with `preview.budgetReached` (five
+  locales, amber) and lists any other reminders under it, never repeating the budget line. The
+  post-Apply notice uses `aiBudgetReached`.
+- **en/ja/ko copy said "you used this hour's AI planning".** The address budget is shared, so
+  the traveller reading this may not be the one who spent it. All three are now neutral, in the
+  web messages and in the API detail.
+- **No web test pinned the budget headline.** Two tests now do: the post-Apply badge, and the
+  preview overlay with its Apply notice.
+- **Docs.** `docs/anti-scraping.md` and `architecture.md` still said "never a 429" and "never
+  refunded", and Known gaps put the residual ceiling at a third of its real size. That ceiling
+  is `AI_PLANNER_IP_BUDGET` per address, times the number of addresses.
+- **Tasks.** `2026-09-14-planner-budget-admin-card` named a test file that does not exist and
+  said the budget never refuses. `2026-09-14-preview-never-charged` had web checklist items but
+  no web scope.
+
+Refuted, not changed:
+- **"IPv6 addresses are keyed per /128, so a /64 has no address ceiling."** True of the code,
+  and of every other per-address limiter here (the nginx zones, `auth-register-ip`). But
+  `mokaair.com` publishes no AAAA record on 2026-09-15 (A `187.127.118.6` only), so callers
+  arrive over IPv4. If the site ever gains an AAAA record, this becomes worth grouping by prefix.
+- **"The task stays in `review` after merge."** That is the documented loop: `status review`
+  while the PR is open, `done` once it merges.
+- **"The intent limiters stop limiting."** The two new refunded outcomes (no candidates, spent
+  budget) never ask a provider and never produce an appliable preview. Every call that reaches
+  a provider is still counted.

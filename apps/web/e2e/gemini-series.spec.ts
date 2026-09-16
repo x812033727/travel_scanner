@@ -212,5 +212,11 @@ test("server HTML, RSC, loaded scripts and life cards respect the server flag", 
   await expect(page.getByTestId("series-lessons").locator("li > a")).toHaveCount(series.articles.length);
   await page.goto(`${canonical}/zh-TW/life`);
   for (const article of hiddenArticles) await expect(page.locator(`a[href$="/life/${article.slug}"]`)).toHaveCount(0);
-  await expect(page.getByText(`${series.articles.length} 篇完整教學`, { exact: false })).toBeVisible();
+  // The section hub no longer carries the series, and says nothing about how many lessons
+  // the projection made visible -- the number grew every time a lesson shipped.
+  await expect(page.getByTestId("series-row")).toHaveCount(0);
+  await expect(page.getByText("篇完整教學", { exact: false })).toHaveCount(0);
+  // The way in is the series' own topic hub: `ai-chat` in the registry.
+  await page.goto(`${canonical}/zh-TW/life/topics/ai-chat`);
+  await expect(page.getByTestId("series-row").locator(`a[href$="/life/${catalogue.hubSlug}"]`)).toHaveCount(1);
 });

@@ -10,7 +10,7 @@ export function GeminiNavigation({ series, number, position, copy }: { series: V
   const group = series.groups.find(entry => entry.id === current.group);
   return <nav aria-label={position === "top" ? copy.navigation : copy.continue} className="min-w-0 space-y-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 [overflow-wrap:anywhere]">
     <a href={visibleGeminiHref(series, series.hubSlug)} className={link}>{copy.back}</a>
-    <p className="text-sm text-[var(--muted)]">{group?.title} · {copy.position.replace("{number}", String(current.number)).replace("{total}", String(series.articles.length))}</p>
+    {group ? <p className="text-sm text-[var(--muted)]">{group.title}</p> : null}
     {position === "top" && prerequisites.length ? <div><p className="font-semibold">{copy.prerequisites}</p><ul>{prerequisites.map(entry => <li key={entry.slug}><a className={link} href={visibleGeminiHref(series, entry.slug)}>{entry.title}</a></li>)}</ul></div> : null}
     {position === "bottom" ? <>
       <div className="grid min-w-0 gap-3 sm:grid-cols-2">

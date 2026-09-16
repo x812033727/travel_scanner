@@ -108,7 +108,7 @@ export default async function ArticleSearchPage(
             ) : null}
             <h2 className="text-xl font-bold tracking-tight">
               {result.total || result.best_match
-                ? t("guides.searchResults", { query: q, count: result.total })
+                ? t("guides.searchResults", { query: q })
                 : t("guides.searchNoResults", { query: q })}
             </h2>
             {!result.total && !result.best_match ? (
@@ -147,7 +147,6 @@ export default async function ArticleSearchPage(
                       <li key={topic.slug}>
                         <Link className="app-filter-chip" href={guideTopicHref(value, topic.slug)}>
                           {topic.label}
-                          {topic.count ? <span className="app-filter-count">{topic.count}</span> : null}
                         </Link>
                       </li>
                     ))}

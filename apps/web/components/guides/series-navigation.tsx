@@ -9,7 +9,7 @@ export function SeriesStart({ series, locale }: { series: SeriesNavigation; loca
   const copy = seriesCopy(locale);
   return <div className="space-y-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
     <ArticleLink target={series.hub} locale={locale} prefix={copy.back} />
-    {series.current ? <p className="text-sm text-[var(--muted)]">{String(series.current.number).padStart(2, "0")} · {copy[series.current.level as "beginner" | "intermediate" | "advanced"] ?? series.current.level} · {series.current.platforms.map(platformLabel).join(" / ")}</p> : null}
+    {series.current ? <p className="text-sm text-[var(--muted)]">{copy[series.current.level as "beginner" | "intermediate" | "advanced"] ?? series.current.level} · {series.current.platforms.map(platformLabel).join(" / ")}</p> : null}
     {series.prerequisites.length ? <div><h2 className="text-sm font-semibold">{copy.prerequisites}</h2>
       <ul>{series.prerequisites.map(target => <li key={target.slug}><ArticleLink target={target} locale={locale} /></li>)}</ul>
     </div> : null}

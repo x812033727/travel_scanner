@@ -40,12 +40,12 @@ export function GeminiDirectory({ series, copy }: { series: VisibleGeminiSeries;
         </> : null}
       </div>
       <button type="button" onClick={() => { setQuery(""); setGroup(""); setPath(""); setStage(undefined); setTrack(undefined); }} className={`min-h-11 ${anchor}`}>{copy.clear}</button>
-      <p role="status" className="text-sm text-[var(--muted)]">{copy.count.replace("{count}", String(articles.length)).replace("{total}", String(series.articles.length))}</p>
+      <p role="status" className="sr-only">{copy.filtered}</p>
     </div>
     <nav aria-label={copy.suggestedPaths} className="space-y-4">
       <h2 className="text-xl font-bold">{copy.byGoal}</h2>
       {routes.map(entry => <details key={entry.id} open={Boolean(path)} className="min-w-0 rounded-xl border border-[var(--line)] p-4">
-        <summary className="cursor-pointer py-2 font-semibold">{entry.title} · {entry.articles.length} {copy.lessons}</summary>
+        <summary className="cursor-pointer py-2 font-semibold">{entry.title}</summary>
         <p className="my-3 leading-7 text-[var(--muted)]">{entry.description}</p>
         <ol className="list-decimal space-y-2 pl-5">{entry.articles.map(number => {
           const article = series.articles.find(item => item.number === number);
@@ -59,7 +59,7 @@ export function GeminiDirectory({ series, copy }: { series: VisibleGeminiSeries;
         return members.length ? <section key={entry.id} id={`chapter-${entry.id.toLowerCase()}`} className="scroll-mt-24 space-y-3">
           <h2 className="text-xl font-bold">{entry.id}. {entry.title}</h2>
           <ol className="grid gap-3">{members.map(article => <li key={article.slug} className="min-w-0 rounded-xl border border-[var(--line)] p-4">
-            <a href={visibleGeminiHref(series, article.slug)} className={`block text-lg font-semibold ${anchor}`}><span className="mr-2 font-mono text-sm">{String(article.number).padStart(2, "0")}</span>{article.title}</a>
+            <a href={visibleGeminiHref(series, article.slug)} className={`block text-lg font-semibold ${anchor}`}>{article.title}</a>
             <p className="mt-2 leading-7">{copy.outcome}{article.purpose}</p>
             <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-[var(--muted)]"><span>{article.level}</span><span>{article.platforms.join("、")}</span><span>{copy.minutes.replace("{minutes}", String(article.minutes))}</span>{article.stage === 2 ? <><span>{copy.advancedStage}</span><span>{article.track ? copy.tracks[article.track] : null}</span><span>{copy.labMinutes.replace("{minutes}", String(article.labMinutes))}</span></> : null}</p>
           </li>)}</ol>
