@@ -48,7 +48,6 @@ export function DestinationGroups({
                 href={`${listing}?country=${encodeURIComponent(group.country)}`}
               >
                 {labels.countryAll.replace("{country}", group.label)}
-                <span className="app-filter-count">{group.count}</span>
               </Link>
             </h3>
             <ul className="mt-2 flex flex-wrap gap-2">
@@ -59,7 +58,6 @@ export function DestinationGroups({
                     href={`${listing}?destination=${encodeURIComponent(city.id)}`}
                   >
                     {city.label}
-                    <span className="app-filter-count">{city.count}</span>
                   </Link>
                 </li>
               ))}

@@ -69,8 +69,10 @@ function openPaths(
  * A parent topic's line: the hub in the language with the most under it, since an AI
  * search engine reading this file wants the page with the articles, not the English hub
  * that says "nothing here yet" while the section publishes in Chinese. English wins a tie,
- * and a topic with nothing anywhere is left out. The note carries the count and language,
- * then the hub's own lead where the vocabulary has one.
+ * and a topic with nothing anywhere is left out. The counts pick that language and are not
+ * written down: this file is regenerated per request but an engine may quote it back weeks
+ * later, by which time the figure is wrong. The note carries the language, then the hub's
+ * own lead where the vocabulary has one.
  */
 function topicLine(section: GuideSection, topic: GuideTopic): string | null {
   const counts = topic.counts ?? {};
@@ -80,8 +82,7 @@ function topicLine(section: GuideSection, topic: GuideTopic): string | null {
     if (count > 0 && (best === null || count > (counts[best] ?? 0))) best = locale;
   }
   if (best === null) return null;
-  const count = counts[best] ?? 0;
-  const note = `${count} ${count === 1 ? "article" : "articles"} in ${localeLabels[best]}${topic.description ? `: ${topic.description}` : ""}`;
+  const note = `In ${localeLabels[best]}${topic.description ? `: ${topic.description}` : ""}`;
   return entry(topic.label, localeUrl(best, guideTopicHref(section, topic.slug)), note);
 }
 
@@ -151,8 +152,7 @@ export async function GET(): Promise<Response> {
     for (const row of rows) {
       if (seen.has(row.slug)) continue;
       seen.add(row.slug);
-      const note = [row.entries ? `${row.entries} lessons` : null, localeLabels[locale], row.hub.description ?? null]
-        .filter(Boolean).join(", ");
+      const note = [localeLabels[locale], row.hub.description ?? null].filter(Boolean).join(", ");
       seriesLines.push(entry(row.hub.title, localeUrl(locale, guideHref(row.hub.kind, row.hub.slug)), note));
     }
   });

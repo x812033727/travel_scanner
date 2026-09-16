@@ -10,7 +10,7 @@ import type { Locale } from "@/i18n/routing";
 import {
   guideHref, guideListHref, guideTopicHref, isGuideListSort, isTravelGuideKind, type GuideListSort, type TravelGuideKind,
 } from "@/lib/guides";
-import { getGuideList, getGuideTopics, guideSitemapSummary, hubIsEmpty } from "@/lib/guides.server";
+import { getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
 import { localeUrl } from "@/lib/seo";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
@@ -81,10 +81,9 @@ export default async function GuideListPage(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ) {
   const [{ locale, kind }, search] = await Promise.all([resolve(params), searchParams]);
-  const [list, topics, summary, t, nav] = await Promise.all([
+  const [list, topics, t, nav] = await Promise.all([
     listFor(locale, kind, search),
     getGuideTopics(locale, "travel"),
-    guideSitemapSummary(),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
@@ -103,11 +102,6 @@ export default async function GuideListPage(
   };
   const searchLabels = { label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") };
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
-  // The summary counts the whole kind, so only the unfiltered view can show a figure.
-  const unfiltered = !search.topic && !search.destination && !search.country;
-  const count = unfiltered && summary.available
-    ? summary.counts.filter((row) => row.kind === kind && row.locale === locale).reduce((sum, row) => sum + row.count, 0)
-    : 0;
 
   return (
     <>
@@ -132,7 +126,6 @@ export default async function GuideListPage(
           active={search.topic ?? null}
           allHref={guideListHref(kind)}
           sort={{ current: sort, hrefs: { curated: viewHref(kind, search, "curated"), latest: viewHref(kind, search, "latest") } }}
-          count={count ? t("guides.resultCount", { count }) : null}
           labels={{
             allTopics: t("guides.allTopics"), topicsLabel: t("guides.topicsLabel"), subtopics: t("guides.subtopics"),
             moreChips: t("guides.moreChips"), fewerChips: t("guides.fewerChips"),

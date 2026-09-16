@@ -62,7 +62,7 @@ export function SeriesHub({ series }: { series: GuideSeries }) {
       </select></label>
     </div>
     <div className="flex flex-wrap items-center justify-between gap-3">
-      <p role="status" aria-live="polite">{entries.length} {copy.results}</p>
+      <p role="status" aria-live="polite" className="sr-only">{copy.filtered}</p>
       <button type="button" onClick={clear} className="min-h-11 rounded-xl border border-[var(--line)] px-4">{copy.clear}</button>
     </div>
     {!entries.length ? <p className="rounded-2xl border border-[var(--line)] p-6">{copy.empty}</p> : null}
@@ -71,7 +71,7 @@ export function SeriesHub({ series }: { series: GuideSeries }) {
       <ol className="grid gap-3 sm:grid-cols-2">
         {group.entries.map(entry => <li key={entry.slug} className="min-w-0 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
           <a href={`/${series.locale}${guideHref(entry.kind, entry.slug)}`} className="block text-lg font-semibold text-[var(--teal)] underline-offset-4 hover:underline">
-            <span className="mr-2 font-mono text-sm text-[var(--muted)]">{String(entry.number).padStart(2, "0")}</span>{entry.title}
+            {entry.title}
           </a>
           <p className="mt-2 text-sm leading-7 text-[var(--muted)]">{entry.description.includes("。") ? `${entry.description.split("。")[0]}。` : entry.description}</p>
           <p className="mt-3 text-xs leading-6">{copy[entry.level as "beginner" | "intermediate" | "advanced"] ?? entry.level} · {entry.minutes} {copy.minutes}</p>

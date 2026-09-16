@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { ListingEmpty, ListingToolbar } from "@/components/guides/listing-toolbar";
+import { SeriesRow } from "@/components/guides/series-row";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
@@ -10,7 +11,8 @@ import { locales, type Locale } from "@/i18n/routing";
 import {
   guideHref, guideTopicHref, isGuideListSort, sectionHubHref, topicLocales, type GuideListSort, type GuideSection, type GuideTopic,
 } from "@/lib/guides";
-import { getGuideList, getGuideTopicList, hubIsEmpty } from "@/lib/guides.server";
+import type { SeriesSummary } from "@/lib/guide-series";
+import { getGuideList, getGuideTopicList, getSeriesIndex, hubIsEmpty } from "@/lib/guides.server";
 import { HREFLANG_DEFAULT, localeUrl } from "@/lib/seo";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
@@ -29,6 +31,22 @@ function reads({ locale, section, topic, cursor, sort }: TopicHubRoute) {
     getGuideTopicList(locale, section),
     getGuideList(locale, { section, topic, cursor, sort: sortOf(sort) }, PAGE_SIZE),
   ]);
+}
+
+/**
+ * The series and tutorial hubs this topic owns. A registry row names one topic, always a
+ * sub-topic, so a parent hub gathers what its children hold -- otherwise the family page a
+ * reader lands on first would be the one page that never mentions them.
+ *
+ * A row whose topic is null, or names a topic this language's vocabulary does not carry,
+ * appears nowhere. `test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve`
+ * holds every row to a topic in the lifestyle vocabulary, so that is a broken registry
+ * rather than a case to render around.
+ */
+function seriesFor(series: readonly SeriesSummary[], topics: readonly GuideTopic[], route: TopicHubRoute) {
+  const owns = (slug: string | null) =>
+    slug === route.topic || topics.find((topic) => topic.slug === slug)?.parent === route.topic;
+  return series.filter((item) => item.section === route.section && owns(item.topic));
 }
 
 /**
@@ -78,8 +96,9 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
 
 export async function renderTopicHub(route: TopicHubRoute) {
   const { locale, section } = route;
-  const [[vocabulary, list], t, nav] = await Promise.all([
+  const [[vocabulary, list], registry, t, nav] = await Promise.all([
     reads(route),
+    getSeriesIndex(locale),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
@@ -136,13 +155,17 @@ export async function renderTopicHub(route: TopicHubRoute) {
           <p className="mt-6 leading-7 text-[var(--muted)]">{t("guides.topicUnavailable")}</p>
         ) : null}
 
+        <SeriesRow
+          series={seriesFor(registry, vocabulary.topics, route)}
+          labels={{ heading: t("guides.seriesRow"), lead: t("guides.seriesLead") }}
+        />
+
         <ListingToolbar
           section={section}
           topics={vocabulary.topics}
           active={route.topic}
           allHref={sectionHubHref(section)}
           sort={{ current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
-          count={topic?.count !== undefined && topic.count > 0 ? t("guides.resultCount", { count: topic.count }) : null}
           labels={toolbarLabels}
         />
 

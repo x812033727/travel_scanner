@@ -3,16 +3,13 @@ import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { DestinationGroups } from "@/components/guides/destination-groups";
 import { HubHero } from "@/components/guides/hub-hero";
-import { SeriesRow } from "@/components/guides/series-row";
 import { TopicTiles } from "@/components/guides/topic-tiles";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref } from "@/lib/guides";
-import {
-  getDestinationFacets, getGuideList, getGuideTopics, getSeriesIndex, guideSitemapSummary, hubIsEmpty, sectionArticleCount,
-} from "@/lib/guides.server";
+import { getDestinationFacets, getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 /** The same two reads the body makes, with the same arguments, so React's per-request cache
@@ -42,24 +39,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 
 /**
  * The travel hub, top to bottom: what the section is and a search box scoped to it, the
- * topics as tiles, the series it offers, the editor's featured guides, the newest intel,
- * and every destination with something written, grouped by country.
+ * topics as tiles, the editor's featured guides, the newest intel, and every destination
+ * with something written, grouped by country.
+ *
+ * Series moved to the topic hubs and the figures line is gone, both for the reasons the
+ * lifestyle hub gives -- the two hubs stay the same shape on purpose.
  */
 export default async function GuidesHubPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
-  const [[intel, howto], topics, facets, series, summary, t, nav] = await Promise.all([
+  const [[intel, howto], topics, facets, t, nav] = await Promise.all([
     hubLists(locale),
     getGuideTopics(locale, "travel"),
     getDestinationFacets(locale, "travel"),
-    getSeriesIndex(locale),
-    guideSitemapSummary(),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
-  // A topic nothing is published under in this language has no hub worth counting; one
-  // whose count an older API did not send is kept.
-  const browsable = topics.filter((topic) => !topic.parent && (topic.count === undefined || topic.count > 0));
-  const articleCount = sectionArticleCount(summary, "travel", locale);
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
@@ -85,22 +79,13 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
           intro={t("guides.hubIntro")}
           section="travel"
           action={`/${locale}/search/articles`}
-          stats={[
-            articleCount ? t("guides.resultCount", { count: articleCount }) : null,
-            browsable.length ? t("guides.hubTopicCount", { count: browsable.length }) : null,
-          ]}
           labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
         />
 
         <TopicTiles
           section="travel"
           topics={topics}
-          labels={{ heading: t("guides.browseTopics"), articles: t("guides.topicArticles"), more: t("guides.subtopicsMore") }}
-        />
-
-        <SeriesRow
-          series={series.filter((item) => item.section === "travel")}
-          labels={{ heading: t("guides.seriesRow"), lead: t("guides.seriesLead"), entries: t("guides.seriesEntries") }}
+          labels={{ heading: t("guides.browseTopics"), more: t("guides.subtopicsMore") }}
         />
 
         {sections.map((section) => (

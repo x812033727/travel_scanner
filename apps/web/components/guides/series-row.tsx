@@ -5,18 +5,22 @@ import { guideHref } from "@/lib/guides";
 export type SeriesRowLabels = {
   heading: string;
   lead: string;
-  /** ICU-free: `{count}` is replaced here. */
-  entries: string;
 };
 
 /** A registry row plus, optionally, the sentence the page wants under it instead of the hub
- *  article's description -- the Gemini series, whose visible lesson count the web decides. */
+ *  article's description. */
 export type SeriesRowItem = SeriesSummary & { note?: string | null };
 
 /**
- * The series and tutorial hubs a section offers, from `GET /guides/series`: one card per
- * hub published in this language, in registry order. One link per card, to the hub
- * article, so a page that counts links to a hub (the Gemini e2e does) sees exactly one.
+ * The series and tutorial hubs a topic offers, from `GET /guides/series`: one card per hub
+ * published in this language, in registry order. One link per card, to the hub article, so
+ * a page that counts links to a hub (the Gemini e2e does) sees exactly one.
+ *
+ * This sits on the topic hubs rather than the section hub. A series belongs to one topic
+ * (`SeriesSummary.topic`), so the reader who has chosen that topic is the one it answers;
+ * on the section hub it competed with the topics themselves for the same attention.
+ *
+ * No lesson count: a series gains articles, so the figure aged into a lie between deploys.
  */
 export function SeriesRow({ series, labels }: { series: readonly SeriesRowItem[]; labels: SeriesRowLabels }) {
   if (!series.length) return null;
@@ -38,11 +42,6 @@ export function SeriesRow({ series, labels }: { series: readonly SeriesRowItem[]
                 </Link>
               </h3>
               {note ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{note}</p> : null}
-              {item.entries ? (
-                <p className="mt-2 text-[length:var(--text-meta)] text-[var(--muted)]">
-                  {labels.entries.replace("{count}", String(item.entries))}
-                </p>
-              ) : null}
             </li>
           );
         })}

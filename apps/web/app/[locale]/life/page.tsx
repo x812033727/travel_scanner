@@ -3,14 +3,13 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { HubHero } from "@/components/guides/hub-hero";
-import { SeriesRow, type SeriesRowItem } from "@/components/guides/series-row";
 import { TopicTiles } from "@/components/guides/topic-tiles";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { guideHref, guideListHref, guideTopicHref } from "@/lib/guides";
-import { getGuideList, getGuideTopics, getSeriesIndex, guideSitemapSummary, hubIsEmpty, sectionArticleCount } from "@/lib/guides.server";
+import { getGuideList, getGuideTopics, getSeriesIndex, hubIsEmpty } from "@/lib/guides.server";
 import { localeUrl } from "@/lib/seo";
 import { getGeminiHubReference, getVisibleGeminiSeries, filterGeminiArticleLinks } from "@/lib/gemini-series.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
@@ -61,21 +60,24 @@ export async function generateMetadata(
 
 /**
  * The lifestyle hub, the same shape as the travel one: what the section is and a search
- * box scoped to it, the topics as tiles, the series and tutorial hubs from the registry
- * (which replaced three hand-written entry boxes, and grows with the registry rather than
- * with this file), then the listing in the editor's order.
+ * box scoped to it, the topics as tiles, then the listing in the editor's order.
+ *
+ * The series and tutorial hubs used to sit between the tiles and the listing. They moved
+ * to the topic hubs (`renderTopicHub`), where the reader has already said which subject
+ * they want -- every series names its topic, so this page was showing all of them to
+ * everyone. Neither the tiles nor the header carries a figure any more, for the reason in
+ * `HubHero`: the section grows weekly and the number was wrong between deploys.
  */
 export default async function LifeHubPage(
   { params, searchParams }: { params: Promise<Params>; searchParams: Promise<Search> },
 ) {
   const [{ locale }, search] = await Promise.all([params, searchParams]);
   const showNews = !search.topic && !search.cursor;
-  const [rawList, rawNews, topics, registry, summary, t, nav] = await Promise.all([
+  const [rawList, rawNews, topics, registry, t, nav] = await Promise.all([
     listFor(locale, search),
     showNews ? getGuideList(locale, { kind: "life", topic: LIFE_NEWS_TOPIC }, NEWS_LIMIT) : Promise.resolve(null),
     getGuideTopics(locale, "life"),
     getSeriesIndex(locale),
-    guideSitemapSummary(),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
@@ -95,13 +97,6 @@ export default async function LifeHubPage(
   const list = { ...rawList, articles: geminiReference ? filterGeminiArticleLinks(rawList.articles, geminiSeries) : rawList.articles };
   const news = rawNews && geminiReference ? filterGeminiArticleLinks(rawNews.articles, geminiSeries) : rawNews?.articles ?? [];
   const newsTopic = topics.find((topic) => topic.slug === LIFE_NEWS_TOPIC) ?? null;
-  const series: SeriesRowItem[] = registry
-    .filter((item) => item.section === "life")
-    .map((item) => (item.source === "web-gemini" && geminiSeries
-      ? { ...item, note: t("geminiSeries.entry", { count: geminiSeries.articles.length }) }
-      : item));
-  const browsable = topics.filter((topic) => !topic.parent && (topic.count === undefined || topic.count > 0));
-  const articleCount = sectionArticleCount(summary, "life", locale);
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
@@ -126,10 +121,6 @@ export default async function LifeHubPage(
           intro={t("guides.lifeHubIntro")}
           section="life"
           action={`/${locale}/search/articles`}
-          stats={[
-            articleCount ? t("guides.resultCount", { count: articleCount }) : null,
-            browsable.length ? t("guides.hubTopicCount", { count: browsable.length }) : null,
-          ]}
           labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
         />
 
@@ -154,12 +145,7 @@ export default async function LifeHubPage(
           section="life"
           topics={topics}
           active={search.topic ?? null}
-          labels={{ heading: t("guides.browseTopics"), articles: t("guides.topicArticles"), more: t("guides.subtopicsMore") }}
-        />
-
-        <SeriesRow
-          series={series}
-          labels={{ heading: t("guides.seriesRow"), lead: t("guides.seriesLead"), entries: t("guides.seriesEntries") }}
+          labels={{ heading: t("guides.browseTopics"), more: t("guides.subtopicsMore") }}
         />
 
         <section className="mt-10" aria-labelledby="life-listing-heading">

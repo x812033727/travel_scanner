@@ -8,7 +8,6 @@ export type TopicChipLabels = {
   allTopics: string;
   topicsLabel: string;
   subtopics: string;
-  /** ICU-free: `{count}` is replaced here, because a function cannot cross into a client component. */
   moreChips: string;
   fewerChips: string;
 };
@@ -20,7 +19,8 @@ export type TopicChipLabels = {
  *
  * A topic nothing is published under in this language is left out unless it is the one
  * the reader is on: a chip that leads to an empty page is worse than no chip. A topic
- * whose count the API did not send (an older API) is kept.
+ * whose count the API did not send (an older API) is kept. That is all `topic.count` does
+ * here -- the chip used to print it, and the number was stale the day after it rendered.
  */
 export function TopicChips({
   section, topics, active, allHref, labels, className = "mt-6 grid gap-2",
@@ -39,7 +39,7 @@ export function TopicChips({
   const family = current?.parent ? topics.find((topic) => topic.slug === current.parent) ?? null : current;
   const children = family ? topics.filter((topic) => topic.parent === family.slug && shown(topic)) : [];
   if (!parents.length && !children.length) return null;
-  const more = (count: number) => labels.moreChips.replace("{count}", String(count));
+  const more = () => labels.moreChips;
   const chip = (topic: GuideTopic, exact: boolean, familyMember: boolean) => (
     <Link
       key={topic.slug}
@@ -48,7 +48,6 @@ export function TopicChips({
       className={`app-filter-chip ${exact || familyMember ? "app-filter-chip-active" : ""}`}
     >
       {topic.label}
-      {topic.count !== undefined && topic.count > 0 ? <span className="app-filter-count">{topic.count}</span> : null}
     </Link>
   );
   const leading = (

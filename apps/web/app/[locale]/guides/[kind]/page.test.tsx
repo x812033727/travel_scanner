@@ -78,13 +78,12 @@ describe("the section listing", () => {
     expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ sort: "curated" }), 24);
   });
 
-  it("shows how many articles the kind has from the summary, on the unfiltered view only", async () => {
-    mocks.summary.mockResolvedValue({
-      counts: [{ kind: "intel", locale: "zh-TW", count: 19 }, { kind: "intel", locale: "ja", count: 2 }, { kind: "howto", locale: "zh-TW", count: 106 }],
-      available: true,
-    });
+  it("never says how many articles the kind has, filtered or not", async () => {
+    // The listing grows every week, so a figure printed here is wrong between deploys.
+    // The summary is still what the sitemap is built from; this page just stopped reading it.
     render(await GuideListPage({ params: params("intel"), searchParams: search() }));
-    expect(screen.getByText("19 篇文章")).toBeTruthy();
+    expect(screen.queryByText(/篇文章/)).toBeNull();
+    expect(mocks.summary).not.toHaveBeenCalled();
     cleanup();
     render(await GuideListPage({ params: params("intel"), searchParams: search({ topic: "transport" }) }));
     expect(screen.queryByText(/篇文章/)).toBeNull();

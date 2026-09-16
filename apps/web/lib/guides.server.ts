@@ -4,7 +4,6 @@ import {
   type GuideSeries, type SeriesSummary,
 } from "./guide-series";
 import {
-  guideSection,
   isDestinationFacet,
   isGuidePartnerLink,
   isGuideSummary,
@@ -423,14 +422,6 @@ export async function guideSitemapSummary(): Promise<GuideSitemapSummary> {
   return { counts, available: true };
 }
 
-/** How many articles a section publishes in a locale, per the summary; null when the
- *  summary could not be read, so a hub shows no figure rather than a zero. */
-export function sectionArticleCount(summary: GuideSitemapSummary, section: GuideSection, locale: Locale): number | null {
-  if (!summary.available) return null;
-  return summary.counts
-    .filter((row) => guideSection(row.kind) === section && row.locale === locale)
-    .reduce((sum, row) => sum + row.count, 0);
-}
 
 export const getGuideList = cache(loadGuideList);
 export const getGuideTopics = cache(loadGuideTopics);

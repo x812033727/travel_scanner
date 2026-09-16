@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { TopicChips } from "./topic-chips";
 
 const labels = {
-  allTopics: "全部主題", topicsLabel: "主題篩選", subtopics: "子主題", moreChips: "還有 {count} 個", fewerChips: "收起",
+  allTopics: "全部主題", topicsLabel: "主題篩選", subtopics: "子主題", moreChips: "更多", fewerChips: "收起",
 };
 const topics = [
   { slug: "ai", label: "AI 工具", section: "life" as const, parent: null, count: 3 },
@@ -18,7 +18,8 @@ describe("the two-level topic chips", () => {
   it("links each top-level topic to its hub and leaves out what this language has nothing under", () => {
     render(<TopicChips section="life" topics={topics} active={null} allHref="/life" labels={labels} />);
     expect(screen.getByRole("link", { name: /AI 工具/ }).getAttribute("href")).toBe("/life/topics/ai");
-    expect(screen.getByRole("link", { name: /AI 工具/ }).textContent).toBe("AI 工具3");
+    // The count decides whether the chip draws at all; it is not printed on it.
+    expect(screen.getByRole("link", { name: /AI 工具/ }).textContent).toBe("AI 工具");
     expect(screen.queryByRole("link", { name: /理財與金錢/ })).toBeNull();
     // No family is selected, so no sub-topic row.
     expect(screen.queryByText("子主題")).toBeNull();

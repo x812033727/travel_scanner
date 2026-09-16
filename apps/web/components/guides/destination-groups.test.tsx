@@ -24,7 +24,8 @@ describe("browsing the travel hub by destination", () => {
     expect(screen.getByRole("link", { name: /日本全部/ }).getAttribute("href")).toBe("/guides/howto?country=japan");
     const tokyo = screen.getByRole("link", { name: /東京/ });
     expect(tokyo.getAttribute("href")).toBe("/guides/howto?destination=tokyo");
-    expect(tokyo.textContent).toBe("東京11");
+    // The facet count decides which pills draw (below); the pill never prints it.
+    expect(tokyo.textContent).toBe("東京");
     // A city with nothing published here leads to an empty list, so it gets no pill.
     expect(screen.queryByRole("link", { name: /濟州/ })).toBeNull();
   });

@@ -204,7 +204,9 @@ test("fixed life entry, unavailable directory retry and missing locale", async (
 
 test("preview download links stay local and serve the exact reviewed ZIP bytes", async ({ page }) => {
   await page.goto(site.origin + "/zh-TW/life/claude-code-project-rules-workshop");
-  await expect(page.getByRole("link", { name: "第 61 篇練習材料", exact: true })).toHaveAttribute("href", site.origin + "/tutorials/claude-code/advanced/lesson-61.zip");
+  // Anchored on the href, not the link's words: the label is content and is being rewritten
+  // to stop naming a lesson by number (2026-09-16-content-packs-counts-in-hub-titles).
+  await expect(page.locator(`a[href="${site.origin}/tutorials/claude-code/advanced/lesson-61.zip"]`)).toHaveCount(1);
   const paths = new Set<string>();
   for (const pack of packs.values()) for (const block of pack.locales["zh-TW"].blocks) {
     for (const inline of block.inlines ?? []) if (inline.type === "link" && inline.url?.startsWith("https://mokaair.com/tutorials/claude-code/advanced/")) paths.add(new URL(inline.url).pathname);

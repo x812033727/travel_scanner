@@ -100,11 +100,13 @@
 | 任務 | 內容 |
 | --- | --- |
 | `guide-listing-curated-order` | `GET /guides?sort=latest\|curated`；`/life`、hub 精選攻略、`/guides/howto` 用 curated；舊 cursor 被拒導回第一頁 |
-| `guides-hub-redesign-web` | `HubHero`（搜尋、篇數／主題數）→ `TopicTiles` → `SeriesRow` → 精選攻略（首張 featured 卡）→ 最新情報 → 依目的地 |
+| `guides-hub-redesign-web` | `HubHero`（搜尋）→ `TopicTiles` → 精選攻略（首張 featured 卡）→ 最新情報 → 依目的地 |
 | `life-hub-redesign-web` | 同構；三段手寫 aside 由登錄檔列取代；**開頭先列「最新新聞」（`ai-news`，最新在前，站主 2026-09-16 要求）** |
-| `listing-toolbar-web` | `ListingToolbar`（chips、`?sort=`、結果數）與 `ListingEmpty`（附搜尋）；md 以上 sticky |
+| `listing-toolbar-web` | `ListingToolbar`（chips、`?sort=`）與 `ListingEmpty`（附搜尋）；md 以上 sticky |
 | `article-reading-polish-web` | `GuideCard` `compact`／`featured`；`.app-term-link`／`.app-term-card`／`.app-summary-card` 以 token 寫；延伸閱讀格距；系列上下篇雙欄 |
 | `llms-txt-topic-hubs-and-series` | `/llms.txt` 多 `### Topics`（父主題、篇數最多的語系）與 `### Series` |
+| 篇數與課序（2026-09-16） | 讀者看得到的地方一律不顯示目錄大小與課程序號：站主的理由是「會一直增加」，顯示出來就一直是錯的。`TopicOption.count`／`counts`、`SeriesEntry.number`、`GuideSearchResult.total`、`DestinationFacet.count`、`SitemapSummary.counts` 全部留在 wire 上，因為可見性、`noindex`、hreflang、sitemap、排序、上下篇與分頁都靠它們 —— 拿掉的只有畫面 |
+| 系列搬進主題（2026-09-16） | `SeriesRow` 從兩個 hub 移到 `renderTopicHub`：每個系列在 `series_registry.json` 都指定一個（子）主題，子主題頁顯示自己的，父主題頁蒐集底下所有子主題的 |
 | sitemap 上限 | 每專區×語系超過 5,000 列自動編號子檔，API `offset`；lint 不再預警 |
 
 檔案先後序（避免 scope 衝突）：`service.py/router.py/schemas.py`：1.1 → registry → search → links → blocks；

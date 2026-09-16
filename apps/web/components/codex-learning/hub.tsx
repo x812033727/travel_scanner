@@ -38,7 +38,7 @@ function FilteredHub({ entries, locale, available }: HubProps) {
   return <section aria-label={c.title} className="my-8 space-y-6">
     <details className="rounded-xl border border-[var(--line)] p-4">
       <summary className="min-h-11 cursor-pointer font-semibold">{d.order}</summary>
-      <div className="grid gap-2 sm:grid-cols-2">{units.map((item, index) => <button disabled={!interactive} type="button" key={item.id} aria-pressed={unit === item.id} onClick={() => update({ unit: item.id })} className="min-h-11 rounded-lg border border-[var(--line)] p-3 text-left aria-pressed:bg-[var(--paper)]">{item.id} · {item.title} <span className="text-xs">{String(index * 6 + 1).padStart(2, "0")}–{String(index * 6 + 6).padStart(2, "0")}</span></button>)}</div>
+      <div className="grid gap-2 sm:grid-cols-2">{units.map((item) => <button disabled={!interactive} type="button" key={item.id} aria-pressed={unit === item.id} onClick={() => update({ unit: item.id })} className="min-h-11 rounded-lg border border-[var(--line)] p-3 text-left aria-pressed:bg-[var(--paper)]">{item.id} · {item.title}</button>)}</div>
     </details>
     <label className="block font-medium">{c.search}<input disabled={!interactive} maxLength={200} type="search" value={query} onChange={(e) => update({ q: e.target.value }, true)} className={field} /></label>
     <div className="grid gap-3 sm:grid-cols-2">
@@ -47,11 +47,11 @@ function FilteredHub({ entries, locale, available }: HubProps) {
     </div>
     <button disabled={!interactive} type="button" className="min-h-11 underline" onClick={() => update(emptyFilters)}>{c.clear}</button>
     {!available && <p role="status">{c.unavailable}</p>}
-    <p role="status" aria-live="polite">{results.length} / {entries.length}</p>
+    <p role="status" aria-live="polite" className="sr-only">{c.filtered}</p>
     {!results.length && <p>{c.empty}</p>}
     <ol className="grid gap-4">
       {results.map((entry) => <li key={entry.slug} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
-        <p className="mb-2 text-xs text-[var(--muted)]">{String(entry.order).padStart(2, "0")} · {entry.unit} · {c.levels[entry.level]} · {d.read} {entry.minutes} {c.minutes}{entry.operationMinutes && <> · {d.practice} {entry.operationMinutes} {c.minutes}</>}</p>
+        <p className="mb-2 text-xs text-[var(--muted)]">{entry.unit} · {c.levels[entry.level]} · {d.read} {entry.minutes} {c.minutes}{entry.operationMinutes && <> · {d.practice} {entry.operationMinutes} {c.minutes}</>}</p>
         <h2 className="text-lg font-semibold">{entry.published ? <Link href={`/life/${entry.slug}`} className="text-[var(--teal)] underline">{entry.title}</Link> : entry.title}</h2>
         <p className="mt-2 leading-7">{entry.description}</p>
         <p className="mt-3 text-sm text-[var(--muted)]">{entry.platforms.map((p) => c.platforms[p]).join(" · ")}</p>

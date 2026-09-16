@@ -89,7 +89,8 @@ describe("Gemini actual page integration", () => {
     mocks.list.mockResolvedValue({ articles: [catalogue.articles[0], deep].map(article => ({ ...article, kind: "life", description: article.purpose, destination_id: null, destination_label: null, topics: [], published_at: "2026-09-14", valid_until: null, featured: false })), next_cursor: null });
     const html = renderToStaticMarkup(await LifePage({ params: Promise.resolve({ locale: "zh-TW" }), searchParams: Promise.resolve({}) }));
     expect(html.includes(deep.slug)).toBe(advanced);
-    expect(html).toContain(`${advanced ? 86 : 50} 篇完整教學`);
-    expect(html).toContain("claude-code-tutorials");
+    // The hub no longer carries the series row, so it says nothing about how many
+    // lessons the projection made visible -- the topic hubs carry the series now.
+    expect(html).not.toContain("篇完整教學");
   });
 });
