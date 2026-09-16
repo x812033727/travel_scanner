@@ -50,7 +50,7 @@
 ### Phase 0 — 前置（既有任務）
 `2026-09-14-pack-ingest-urlopen-scheme`（review，持有 `pack_ingest.py`）→ `2026-09-14-guide-listing-curated-order`
 → `2026-09-14-sitemap-split-before-1000-rows`（P1；吸收 `2026-09-14-guide-sitemap-capacity`）→ `2026-09-12-guide-topic-admin-crud`
-（之後要讓 `TopicCreate/Update` 帶 `parent_slug` 與 `descriptions_json`）。
+（2026-09-16 落地：`POST/PUT /admin/guides/topics`，`TopicCreate/Update` 帶 `parent_slug` 與 `descriptions`；後台「新增主題」表單）。
 
 ### Phase 1 — 分類架構（本 PR 落地）
 | 任務 | 內容 |
