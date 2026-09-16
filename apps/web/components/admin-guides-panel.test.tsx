@@ -233,6 +233,57 @@ describe("conflicts", () => {
   });
 });
 
+describe("topics", () => {
+  it("lets an editor add a topic and offers it as a checkbox at once", async () => {
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) => {
+      if (path.startsWith("/admin/guides/topics") && init?.method === "POST") {
+        const body = JSON.parse(init.body!);
+        return Promise.resolve({
+          slug: body.slug, label: body.names["zh-TW"], section: body.section, parent: body.parent_slug ?? null,
+          names: body.names, descriptions: {}, display_order: body.display_order, is_active: true, source: "admin",
+        });
+      }
+      return route(path, init);
+    });
+    window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=zh-TW`);
+    render(<AdminGuidesPanel />);
+    await screen.findByLabelText("標題");
+    fireEvent.click(screen.getByText("新增主題"));
+    fireEvent.change(screen.getByLabelText("主題代碼（slug）"), { target: { value: "budget" } });
+    const names: Record<string, string> = { English: "Budget", "日本語": "節約", "한국어": "예산", "繁體中文": "預算", "简体中文": "预算" };
+    for (const [language, name] of Object.entries(names)) {
+      fireEvent.change(screen.getByLabelText(`${language} 名稱`), { target: { value: name } });
+    }
+    fireEvent.change(screen.getByLabelText("排序（小的在前）"), { target: { value: "15" } });
+    fireEvent.click(screen.getByRole("button", { name: "建立主題" }));
+    // The new topic is a checkbox of this section's vocabulary now, unchecked, ready to tick.
+    const checkbox = await screen.findByLabelText("預算");
+    expect((checkbox as HTMLInputElement).checked).toBe(false);
+    expect(screen.getByRole("status").textContent).toContain("已新增主題 budget");
+    const call = mocks.api.mock.calls.find(([path, init]) => String(path).startsWith("/admin/guides/topics") && init?.method === "POST");
+    expect(JSON.parse(call![1].body)).toEqual({
+      slug: "budget", section: "travel", display_order: 15,
+      names: { en: "Budget", ja: "節約", ko: "예산", "zh-TW": "預算", "zh-CN": "预算" },
+    });
+  });
+
+  it("reports a slug either section already has, as the API refuses it", async () => {
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) => {
+      if (path.startsWith("/admin/guides/topics") && init?.method === "POST") {
+        return Promise.reject(new ApiError("taken", 409, "guide_topic_exists"));
+      }
+      return route(path, init);
+    });
+    window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=zh-TW`);
+    render(<AdminGuidesPanel />);
+    await screen.findByLabelText("標題");
+    fireEvent.click(screen.getByText("新增主題"));
+    fireEvent.change(screen.getByLabelText("主題代碼（slug）"), { target: { value: "transport" } });
+    fireEvent.click(screen.getByRole("button", { name: "建立主題" }));
+    expect(await screen.findByRole("alert")).toBeTruthy();
+  });
+});
+
 describe("a language nobody has started", () => {
   it("offers to start it instead of reporting a failure", async () => {
     mocks.api.mockImplementation((path: string) => {

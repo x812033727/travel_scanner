@@ -53,8 +53,18 @@ Three orthogonal axes, because no single one of them covers the content:
    `_resolve_topics` refuses a topic from the other section with `422
    guide_topic_section_mismatch` on both create and update. Without that column the seven
    lifestyle slugs would appear as filter chips on the travel hub and as checkboxes to a
-   travel editor. Adding a topic still needs a seed migration — there is no write endpoint
-   yet; `tasks/open/2026-09-12-guide-topic-admin-crud.md` holds that.
+   travel editor. An editor adds a topic without a deploy: `POST /admin/guides/topics`
+   (slug, section, a label in every locale, `display_order`, an optional `parent_slug` and
+   per-locale hub leads) and `PUT /admin/guides/topics/{slug}` (rename, reorder, re-file
+   under a top-level parent of the same section or clear the parent, retire with
+   `is_active`). Both need `content.manage`, write an `AdminAuditLog` row
+   (`guide_topic_created` / `guide_topic_updated`, target `guide_topic:{slug}`), and answer
+   with the topic as the editor sees it (`AdminTopic`: every label and lead). Slugs follow
+   the article rule and are global (`uq_guide_topic_slug`, 409 `guide_topic_exists`), the
+   vocabulary stays two levels deep (a parent with children cannot be re-filed, a sub-topic
+   cannot be a parent), and a row the editor made carries `source='admin'`, which the seed
+   migrations never overwrite. The admin panel's classification form has the matching
+   "add a topic" disclosure; the new topic is a checkbox of its section at once.
 
 Seven topic slugs (`culture`, `nature`, `family`, `nightlife`, `viewpoint`, `food`,
 `shopping`, `hotel`, `beach`) are shared verbatim with `app/discovery/taxonomy.py` so a

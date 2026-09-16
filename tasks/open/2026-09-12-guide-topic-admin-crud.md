@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-guide-topic-admin-crud
 title: 後台新增／編輯文章主題標籤
-status: open
+status: review
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-16T02:32:38Z
 created_at: 2026-09-12T14:18:00Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on: []
 scope:
   - apps/api/app/guides/router.py
@@ -22,6 +22,8 @@ scope:
   - apps/web/messages/ko/admin.json
   - apps/web/messages/zh-CN/admin.json
   - apps/web/messages/zh-TW/admin.json
+  - apps/api/tests/test_admin_rbac.py
+  - docs/travel-guides.md
 ---
 
 # 後台新增／編輯文章主題標籤
@@ -36,17 +38,17 @@ migration 種子（0072 旅遊、0074 生活）或直接改資料庫。生活分
 
 ## Definition of done
 
-- [ ] `POST /admin/guides/topics`（slug、section、五語系 `names_json`、display_order）與
+- [x] `POST /admin/guides/topics`（slug、section、五語系 `names_json`、display_order）與
       `PUT /admin/guides/topics/{slug}`（改名、停用），`content.manage` 才能寫，寫入留 `AdminAuditLog`。
-- [ ] `source='admin'` 的主題不會被 migration 種子覆蓋（0072／0073 已保證）；slug 用與文章相同的小寫規則。
-- [ ] 後台面板多一個小表單可新增主題並立即出現在對應專區的勾選框。
-- [ ] 錯誤碼從 `admin_service.py` 拋出（路徑含 admin，免翻譯）；測試涵蓋重複 slug、缺語系標籤、跨專區。
+- [x] `source='admin'` 的主題不會被 migration 種子覆蓋（0072／0073 已保證）；slug 用與文章相同的小寫規則。
+- [x] 後台面板多一個小表單可新增主題並立即出現在對應專區的勾選框。
+- [x] 錯誤碼從 `admin_service.py` 拋出（路徑含 admin，免翻譯）；測試涵蓋重複 slug、缺語系標籤、跨專區。
 
 ## Steps
 
-- [ ] schemas：`TopicCreate`／`TopicUpdate`；admin_service：寫入與審計；router：兩個端點。
-- [ ] 面板：表單＋重新載入主題；測試。
-- [ ] 文案：`messages/*/admin.json` `guides.*` 新 key（五語系同步）。
+- [x] schemas：`TopicCreate`／`TopicUpdate`；admin_service：寫入與審計；router：兩個端點。
+- [x] 面板：表單＋重新載入主題；測試。
+- [x] 文案：`messages/*/admin.json` `guides.*` 新 key（五語系同步）。
 
 ## How to verify
 
@@ -59,3 +61,10 @@ cd apps/web && npx vitest run components/admin-guides-panel.test.tsx
 
 - 這張票的 scope 完全落在 `2026-09-12-lifestyle-section-and-guides-relabel` 之內，那張 `done` 之前 claim 會被拒絕；這是刻意的。
 - 主題 slug 全域唯一（`uq_guide_topic_slug`），旅遊與生活不能各有一個 `ai`。
+
+2026-09-16 落地（claude-fable-5-1，分支 `claude/travel-article-structure-search-sr9jiq`）：`TopicCreate`／`TopicUpdate`／`AdminTopic`；
+`POST /admin/guides/topics`、`PUT /admin/guides/topics/{slug}`（`require_admin` 依路徑推出 `content.manage`，RBAC 表補三列）；
+`admin_service.create_topic/update_topic` 寫 `AdminAuditLog`（`guide_topic:{slug}`，before／after）。規則：slug 全站唯一（409 `guide_topic_exists`）、
+五語系名稱必填（422）、父主題須同專區且為頂層（422 `guide_topic_parent_*`）、有子主題者不能再掛父（`guide_topic_has_children`）、
+專區不可改；seed 主題可改名但 `source` 仍是 `seed`。後台分類表單多「新增主題」摺疊區（代碼、父主題、五語系名稱、排序），建立後立刻成為該專區的勾選框。
+測試：API 四則（含 support 角色 403）、面板兩則；`docs/travel-guides.md` Topics 段更新。

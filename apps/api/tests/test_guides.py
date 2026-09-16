@@ -1019,6 +1019,163 @@ async def test_topic_labels_follow_the_reader_language(database, actor) -> None:
         assert by_locale["en"]["transport"] == "Transport"
 
 
+TOPIC_NAMES = {"en": "Onsen", "ja": "温泉", "ko": "온천", "zh-TW": "溫泉", "zh-CN": "温泉"}
+
+
+async def test_an_editor_adds_a_topic_without_a_deploy_and_it_lists_at_once(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await api.post(
+            "/admin/guides/topics",
+            json={"slug": "Onsen", "section": "travel", "names": TOPIC_NAMES, "display_order": 15},
+        )
+        assert created.status_code == 201, created.text
+        body = created.json()
+        assert body["slug"] == "onsen" and body["label"] == "溫泉"
+        assert body["source"] == "admin" and body["parent"] is None and body["is_active"]
+        assert body["names"] == TOPIC_NAMES and body["display_order"] == 15
+        listed = (
+            await api.get("/admin/guides/topics", params={"section": "travel", "locale": "en"})
+        ).json()["topics"]
+        assert any(row["slug"] == "onsen" and row["label"] == "Onsen" for row in listed)
+        public = (await api.get("/guides/topics", params={"section": "travel"})).json()["topics"]
+        assert [row["slug"] for row in public if row["slug"] == "onsen"] == ["onsen"]
+        assert all(row["slug"] != "onsen" for row in
+                   (await api.get("/guides/topics", params={"section": "life"})).json()["topics"])
+        # An article may carry it from the next save.
+        article = await create_article(api, slug="tokyo-onsen-day-trip", topics=["onsen"])
+        assert [row["slug"] for row in article["topics"]] == ["onsen"]
+    async with database() as session:
+        audit = await session.scalar(
+            select(AdminAuditLog).where(AdminAuditLog.target == "guide_topic:onsen")
+        )
+        assert audit is not None and audit.action == "guide_topic_created"
+        assert audit.metadata_json["after"]["names"] == TOPIC_NAMES
+
+
+async def test_a_topic_refuses_a_taken_slug_a_missing_label_and_the_wrong_parent(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        payload = {"slug": "onsen", "section": "travel", "names": TOPIC_NAMES}
+        assert (await api.post("/admin/guides/topics", json=payload)).status_code == 201
+        duplicate = await api.post("/admin/guides/topics", json=payload)
+        assert duplicate.status_code == 409 and duplicate.json()["code"] == "guide_topic_exists"
+        # Slugs are global: the seed's own are taken too, and a life ``transport`` is refused.
+        seeded = await api.post(
+            "/admin/guides/topics", json={**payload, "slug": "transport", "section": "life"}
+        )
+        assert seeded.status_code == 409
+        missing = await api.post(
+            "/admin/guides/topics",
+            json={**payload, "slug": "cheap", "names": {**TOPIC_NAMES, "ko": " "}},
+        )
+        assert missing.status_code == 422
+        bad_slug = await api.post("/admin/guides/topics", json={**payload, "slug": "Bad Slug!"})
+        assert bad_slug.status_code == 422
+        crossed = await api.post(
+            "/admin/guides/topics",
+            json={
+                "slug": "ai-budget",
+                "section": "life",
+                "names": TOPIC_NAMES,
+                "parent_slug": "transport",
+            },
+        )
+        assert crossed.status_code == 422
+        assert crossed.json()["code"] == "guide_topic_parent_section_mismatch"
+        unknown = await api.post(
+            "/admin/guides/topics",
+            json={
+                "slug": "ai-budget",
+                "section": "life",
+                "names": TOPIC_NAMES,
+                "parent_slug": "nope",
+            },
+        )
+        assert unknown.status_code == 422
+        assert unknown.json()["code"] == "guide_topic_parent_unknown"
+        nested = await api.post(
+            "/admin/guides/topics",
+            json={
+                "slug": "ai-budget",
+                "section": "life",
+                "names": TOPIC_NAMES,
+                "parent_slug": "ai-terms",
+            },
+        )
+        assert nested.status_code == 422
+        assert nested.json()["code"] == "guide_topic_parent_not_top_level"
+
+
+async def test_a_topic_can_be_renamed_filed_under_a_parent_and_retired(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await api.post(
+            "/admin/guides/topics",
+            json={"slug": "ai-budget", "section": "life", "names": TOPIC_NAMES},
+        )
+        assert created.status_code == 201, created.text
+        renamed = await api.put(
+            "/admin/guides/topics/ai-budget",
+            json={
+                "names": {**TOPIC_NAMES, "zh-TW": "AI 預算"},
+                "parent_slug": "ai",
+                "display_order": 5,
+                "descriptions": {"zh-TW": "花在 AI 上的錢。", "en": "  "},
+            },
+        )
+        assert renamed.status_code == 200, renamed.text
+        body = renamed.json()
+        assert body["label"] == "AI 預算" and body["parent"] == "ai" and body["display_order"] == 5
+        assert body["descriptions"] == {"zh-TW": "花在 AI 上的錢。"}
+        assert body["description"] == "花在 AI 上的錢。"
+        public = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
+        row = next(item for item in public if item["slug"] == "ai-budget")
+        assert row["parent"] == "ai" and row["description"] == "花在 AI 上的錢。"
+
+        cleared = await api.put("/admin/guides/topics/ai-budget", json={"parent_slug": ""})
+        assert cleared.status_code == 200 and cleared.json()["parent"] is None
+        retired = await api.put("/admin/guides/topics/ai-budget", json={"is_active": False})
+        assert retired.status_code == 200 and retired.json()["is_active"] is False
+        public = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
+        assert all(item["slug"] != "ai-budget" for item in public)
+        assert (
+            await api.put("/admin/guides/topics/nope", json={"is_active": True})
+        ).status_code == 404
+        # A parent with children stays top-level: the vocabulary is two levels deep.
+        under = await api.put("/admin/guides/topics/ai", json={"parent_slug": "website"})
+        assert under.status_code == 422 and under.json()["code"] == "guide_topic_has_children"
+        # A seed topic keeps its source under an edit, and the edit holds against the seed.
+        seed = await api.put(
+            "/admin/guides/topics/transport", json={"names": {**TOPIC_NAMES, "zh-TW": "交通方式"}}
+        )
+        assert seed.status_code == 200, seed.text
+        assert seed.json()["source"] == "seed" and seed.json()["label"] == "交通方式"
+    async with database() as session:
+        audits = list(
+            await session.scalars(
+                select(AdminAuditLog).where(AdminAuditLog.target == "guide_topic:ai-budget")
+            )
+        )
+        assert [audit.action for audit in audits][:2] == [
+            "guide_topic_created",
+            "guide_topic_updated",
+        ]
+        assert audits[1].metadata_json["before"]["display_order"] == 100
+        assert audits[1].metadata_json["after"]["display_order"] == 5
+
+
+async def test_an_admin_without_content_capability_cannot_add_a_topic(database, actor) -> None:
+    actor._admin_roles_cache = {"support"}
+    async with client(make_app(database, actor)) as api:
+        payload = {"slug": "onsen", "section": "travel", "names": TOPIC_NAMES}
+        assert (await api.post("/admin/guides/topics", json=payload)).status_code == 403
+        assert (
+            await api.put("/admin/guides/topics/transport", json={"is_active": False})
+        ).status_code == 403
+
+
 async def test_an_admin_without_content_capability_cannot_write(database, actor) -> None:
     actor._admin_roles_cache = {"support"}
     async with client(make_app(database, actor)) as api:

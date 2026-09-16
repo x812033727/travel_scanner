@@ -19,6 +19,7 @@ import {
 } from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
+import { localeLabels } from "@/i18n/routing";
 
 const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,var(--line))] bg-[var(--surface)] px-3 py-2 text-[var(--ink)]";
 const languages: Record<SitePageLocale, string> = { "zh-TW": "繁體中文", "zh-CN": "简体中文", en: "English", ja: "日本語", ko: "한국어" };
@@ -123,6 +124,10 @@ export function AdminGuidesPanel() {
   const [creating, setCreating] = useState(false);
   const [newSlug, setNewSlug] = useState("");
   const [newKind, setNewKind] = useState<GuideKind>("howto");
+  // The "add a topic" form: a slug, an optional parent, one name per language, an order.
+  const [newTopic, setNewTopic] = useState<{ slug: string; parent: string; order: string; names: Record<string, string> }>({
+    slug: "", parent: "", order: "100", names: {},
+  });
 
   const dirty = Boolean(draft && detail && JSON.stringify(draft) !== JSON.stringify(detail.draft));
   const requestLeave = useCallback((proceed: () => void) => {
@@ -274,6 +279,25 @@ export function AdminGuidesPanel() {
       }),
     }));
     setNotice(t("taxonomySaved"));
+  });
+
+  /** A topic the editor adds joins the vocabulary at once, as a checkbox of this section,
+   *  without a deploy: the API lists every active row. Slugs are global, so the API
+   *  answers 409 for one either section already has. */
+  const createTopic = () => run(async () => {
+    const created = await api<GuideTopic>("/admin/guides/topics" + suffix, {
+      method: "POST",
+      body: JSON.stringify({
+        slug: newTopic.slug.trim(),
+        section: detailSection,
+        names: newTopic.names,
+        display_order: Number.parseInt(newTopic.order, 10) || 100,
+        ...(newTopic.parent ? { parent_slug: newTopic.parent } : {}),
+      }),
+    });
+    setTopics((current) => [...current.filter((topic) => topic.slug !== created.slug), created]);
+    setNewTopic({ slug: "", parent: "", order: "100", names: {} });
+    setNotice(t("topicCreated", { slug: created.slug }));
   });
 
   const viewRevision = (id: string) => run(async () => {
@@ -587,6 +611,32 @@ export function AdminGuidesPanel() {
                 </label>;
               })}
             </div>
+            <details className="mt-2 rounded-2xl border border-[var(--line)] p-3">
+              <summary className="min-h-11 cursor-pointer font-semibold">{t("newTopic")}</summary>
+              <p className="mt-1 text-sm leading-7 text-[var(--muted)]">{t("newTopicHelp")}</p>
+              <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                <label className="grid gap-1">{t("newTopicSlug")}
+                  <input className="app-field" value={newTopic.slug} onChange={(event) => setNewTopic({ ...newTopic, slug: event.target.value })} />
+                </label>
+                <label className="grid gap-1">{t("newTopicParent")}
+                  <select className="app-field" value={newTopic.parent} onChange={(event) => setNewTopic({ ...newTopic, parent: event.target.value })}>
+                    <option value="">{t("newTopicNoParent")}</option>
+                    {sectionTopics.filter((topic) => !topic.parent).map((topic) => <option key={topic.slug} value={topic.slug}>{topic.label}</option>)}
+                  </select>
+                </label>
+                {sitePageLocales.map((code) => (
+                  <label key={code} className="grid gap-1">{t("newTopicName", { locale: localeLabels[code] })}
+                    <input className="app-field" value={newTopic.names[code] ?? ""} onChange={(event) => setNewTopic({ ...newTopic, names: { ...newTopic.names, [code]: event.target.value } })} />
+                  </label>
+                ))}
+                <label className="grid gap-1">{t("newTopicOrder")}
+                  <input className="app-field" type="number" min={0} max={100000} value={newTopic.order} onChange={(event) => setNewTopic({ ...newTopic, order: event.target.value })} />
+                </label>
+              </div>
+              <div className="mt-3">
+                <Button secondary disabled={busy || !manage.allowed || !newTopic.slug.trim()} onClick={() => void createTopic()}>{t("createTopic")}</Button>
+              </div>
+            </details>
           </fieldset>
         </fieldset>
         {detail.kind === "life" && <p className="text-sm leading-7 text-[var(--muted)]">{t("lifeDestinationHelp")}</p>}

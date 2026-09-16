@@ -21,7 +21,7 @@ from app.admin.schemas import AdminAuditView
 from app.affiliates.content_links import ContentCategory
 from app.affiliates.schemas import AffiliateModule
 from app.guides.publication import ArticleStatus
-from app.i18n import Locale
+from app.i18n import LOCALES, Locale
 from app.site_pages.schemas import (
     HeadingBlock,
     LinkBlock,
@@ -419,6 +419,82 @@ class TopicOption(BaseModel):
 
 class TopicList(BaseModel):
     topics: list[TopicOption]
+
+
+def _topic_names(value: dict[str, str]) -> dict[str, str]:
+    """Every locale, each a non-empty label. ``topic_label`` would show the slug where a
+    label is missing, which is honest but not what an editor meant to publish."""
+    cleaned = {locale: plain_text(text).strip() for locale, text in value.items()}
+    missing = [locale for locale in LOCALES if not cleaned.get(locale)]
+    if missing:
+        raise ValueError(f"a label is needed in every locale: {', '.join(missing)}")
+    return cleaned
+
+
+def _topic_descriptions(value: dict[str, str] | None) -> dict[str, str] | None:
+    """A lead per locale; a locale left out or emptied simply has none."""
+    if value is None:
+        return None
+    return {locale: plain_text(text).strip() for locale, text in value.items() if text.strip()}
+
+
+class TopicCreate(StrictModel):
+    """A topic an editor adds without a deploy: the seed migrations only ever insert slugs
+    that are absent, so a row with ``source='admin'`` survives every later seed."""
+
+    slug: str = Field(min_length=2, max_length=64)
+    section: Section
+    names: dict[Locale, str]
+    display_order: int = Field(default=100, ge=0, le=100_000)
+    # A top-level topic of the same section, for a sub-topic; None for a top-level one.
+    parent_slug: str | None = Field(default=None, max_length=64)
+    descriptions: dict[Locale, str] | None = None
+
+    @field_validator("slug")
+    @classmethod
+    def normalize_slug(cls, value: str) -> str:
+        return article_slug(value)
+
+    @field_validator("names")
+    @classmethod
+    def every_locale(cls, value: dict[str, str]) -> dict[str, str]:
+        return _topic_names(value)
+
+    @field_validator("descriptions")
+    @classmethod
+    def clean_descriptions(cls, value: dict[str, str] | None) -> dict[str, str] | None:
+        return _topic_descriptions(value)
+
+
+class TopicUpdate(StrictModel):
+    """Only what is given changes. The section never does: articles carry it."""
+
+    names: dict[Locale, str] | None = None
+    display_order: int | None = Field(default=None, ge=0, le=100_000)
+    is_active: bool | None = None
+    # ``None`` leaves the parent alone, ``""`` clears it, a slug sets it.
+    parent_slug: str | None = Field(default=None, max_length=64)
+    descriptions: dict[Locale, str] | None = None
+
+    @field_validator("names")
+    @classmethod
+    def every_locale(cls, value: dict[str, str] | None) -> dict[str, str] | None:
+        return None if value is None else _topic_names(value)
+
+    @field_validator("descriptions")
+    @classmethod
+    def clean_descriptions(cls, value: dict[str, str] | None) -> dict[str, str] | None:
+        return _topic_descriptions(value)
+
+
+class AdminTopic(TopicOption):
+    """A topic as the editor sees it: every label and lead, not only the reader's."""
+
+    names: dict[str, str]
+    descriptions: dict[str, str]
+    display_order: int
+    is_active: bool
+    source: str
 
 
 class DestinationFacet(BaseModel):

@@ -10,6 +10,7 @@ from app.db import get_session
 from app.guides import admin_service, search, service, taxonomy
 from app.guides.publication import ArticleStatus
 from app.guides.schemas import (
+    AdminTopic,
     ArticleCreate,
     ArticleDetail,
     ArticleList,
@@ -35,7 +36,9 @@ from app.guides.schemas import (
     SeriesIndex,
     SitemapList,
     SitemapSummary,
+    TopicCreate,
     TopicList,
+    TopicUpdate,
     VisibilityWrite,
 )
 from app.guides.series import public_series, public_series_index
@@ -264,6 +267,23 @@ async def list_admin_topics(
     section: Section | None = None,
 ) -> TopicList:
     return await taxonomy.list_topics(session, locale, section)
+
+
+# Writes need ``content.manage``, which ``require_admin`` derives from the path: every
+# mutation under /admin/guides is content management. Errors stay untranslated: this is an
+# operator surface, and the codes say what went wrong to the person who can fix it.
+@admin_router.post("/topics", response_model=AdminTopic, status_code=201)
+async def create_topic(
+    payload: TopicCreate, user: AdminUser, session: Session, locale: Locale = "zh-TW"
+) -> AdminTopic:
+    return await admin_service.create_topic(session, user, payload, locale)
+
+
+@admin_router.put("/topics/{slug}", response_model=AdminTopic)
+async def update_topic(
+    slug: str, payload: TopicUpdate, user: AdminUser, session: Session, locale: Locale = "zh-TW"
+) -> AdminTopic:
+    return await admin_service.update_topic(session, user, slug, payload, locale)
 
 
 # Before ``/{article_id}``, like the routes below: that pattern would take "partners" as an
