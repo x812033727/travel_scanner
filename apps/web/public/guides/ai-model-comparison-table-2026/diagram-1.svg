@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">同一張表裡的兩種欄位 / Two kinds of column in one table</title>
+  <desc id="desc">左邊由上而下是旗艦級、中階級、輕量級三個級距的方塊，三個方塊接到中間一條縱向的線，再分成兩條箭頭指向右邊兩個面板。上面的綠色面板寫「可以直接比」，列出上下文視窗、最大輸出與每百萬 token 輸入輸出價，因為各家官網的寫法一致。下面的紅色面板寫「不能直接比」，列出官方自報分數，因為各家用的 benchmark 與測試條件不同。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">同一張表裡的兩種欄位</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Two kinds of column in one table</text>
+
+  <text x="60" y="160" font-size="20" font-weight="bold" fill="#102A2B">三個級距</text>
+
+  <rect x="60" y="190" width="400" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="232" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">旗艦級</text>
+  <text x="260" y="266" text-anchor="middle" font-size="16" fill="#5C6B6B">最貴、各家標榜最強的一支</text>
+
+  <rect x="60" y="330" width="400" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="372" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">中階級</text>
+  <text x="260" y="406" text-anchor="middle" font-size="16" fill="#5C6B6B">正式產品流量最常落在這層</text>
+
+  <rect x="60" y="470" width="400" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="512" text-anchor="middle" font-size="22" font-weight="bold" fill="#102A2B">輕量級</text>
+  <text x="260" y="546" text-anchor="middle" font-size="16" fill="#5C6B6B">跑量、分類與即時回應</text>
+
+  <path d="M 460 245 L 540 245" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 460 385 L 540 385" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 460 525 L 540 525" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 540 245 L 540 525" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 540 340 L 690 285" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 540 430 L 690 605" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="700" y="170" width="840" height="240" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="740" y="222" font-size="24" font-weight="bold" fill="#0D6B68">可以直接比</text>
+  <text x="740" y="266" font-size="17" fill="#102A2B">上下文視窗　各家官網都以 token 為單位，欄位對得起來</text>
+  <text x="740" y="304" font-size="17" fill="#102A2B">最大輸出　　單次回應的上限，寫法一致</text>
+  <text x="740" y="342" font-size="17" fill="#102A2B">每百萬 token 輸入與輸出價　同一個幣別、同一個計量單位</text>
+  <text x="740" y="382" font-size="16" fill="#5C6B6B">所以同一個級距裡，這三欄可以橫著比</text>
+
+  <rect x="700" y="490" width="840" height="240" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="740" y="542" font-size="24" font-weight="bold" fill="#B8442D">不能直接比</text>
+  <text x="740" y="586" font-size="17" fill="#102A2B">官方自報分數　有的家公布、有的家只給相對說法</text>
+  <text x="740" y="624" font-size="17" fill="#102A2B">各家挑的 benchmark 幾乎沒有交集</text>
+  <text x="740" y="662" font-size="17" fill="#102A2B">給不給工具、取樣幾次、用誰的 scaffold 都會動到分數</text>
+  <text x="740" y="702" font-size="16" fill="#5C6B6B">所以這一欄只能各自看，不能相減排名次</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
