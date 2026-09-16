@@ -12,10 +12,64 @@ branch:
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
 scope:
+  - apps/api/app/guides/content/crypto-news-taiwan-vasp-act-20260630.json
+  - apps/web/public/guides/crypto-news-taiwan-vasp-act-20260630
+  - apps/api/app/guides/content/crypto-news-mica-transition-ends-20260701.json
+  - apps/web/public/guides/crypto-news-mica-transition-ends-20260701
+  - apps/api/app/guides/content/crypto-news-sec-crypto-interpretation-20260323.json
+  - apps/web/public/guides/crypto-news-sec-crypto-interpretation-20260323
+  - apps/api/app/guides/content/crypto-news-sec-regulation-crypto-assets-20260821.json
+  - apps/web/public/guides/crypto-news-sec-regulation-crypto-assets-20260821
+  - apps/api/app/guides/content/crypto-news-eba-psd2-mica-20260212.json
+  - apps/web/public/guides/crypto-news-eba-psd2-mica-20260212
+  - apps/api/app/guides/content/crypto-news-genius-act-occ-20260302.json
+  - apps/web/public/guides/crypto-news-genius-act-occ-20260302
+  - apps/api/app/guides/content/crypto-news-stablecoin-aml-20260410.json
+  - apps/web/public/guides/crypto-news-stablecoin-aml-20260410
+  - apps/api/app/guides/content/crypto-news-fdic-genius-act-20260410.json
+  - apps/web/public/guides/crypto-news-fdic-genius-act-20260410
+  - apps/api/app/guides/content/crypto-news-ncua-genius-act-20260518.json
+  - apps/web/public/guides/crypto-news-ncua-genius-act-20260518
+  - apps/api/app/guides/content/crypto-news-jfsa-working-group-20260216.json
+  - apps/web/public/guides/crypto-news-jfsa-working-group-20260216
+  - apps/api/app/guides/content/crypto-news-jfsa-cybersecurity-20260723.json
+  - apps/web/public/guides/crypto-news-jfsa-cybersecurity-20260723
+  - apps/api/app/guides/content/crypto-news-2026-index.json
+  - apps/web/public/guides/crypto-news-2026-index
   - docs/crypto-news-2026
 ---
 
 # News batch 4.1: crypto regulation, technology and industry news
+
+## 站主圈選結果（2026-09-16）
+
+站主的指示是「**幣圈和科技的先全部寫，AI 挑補漏那幾則**」。
+
+**幣圈：候選清單 C1–C11 全部寫，11 篇。**
+
+C6–C9 是美國 GENIUS Act 的四個主管機關版本，候選清單原本寫「可以合成一篇」。
+站主說全部寫，所以**四篇分開**，各自寫自己主管機關管到誰、要求什麼；
+四篇互相連結，不要四篇重複解釋一次 GENIUS Act 是什麼。
+
+**沒有納入**：新加坡 MAS 那則（這個容器連不到 MAS，兩個網址都回 service unavailable）。
+要寫必須在別的環境先驗過，現在納入就是照抄線索。
+以太坊 2026 年升級那則維持 ❌ 查否：官方把日期列為 TBD，整合站的 Q3 2026 沒有官方依據。
+
+| 代號 | 事件日 | slug | 題目 |
+| --- | --- | --- | --- |
+| C1 | 2026-06-30 | `crypto-news-taiwan-vasp-act-20260630` | 台灣《虛擬資產服務法》三讀通過 |
+| C2 | 2026-07-01 | `crypto-news-mica-transition-ends-20260701` | 歐盟 MiCA 過渡期結束 |
+| C3 | 2026-03-23 | `crypto-news-sec-crypto-interpretation-20260323` | CFTC 與 SEC 聯名的加密資產證券法解釋令 |
+| C4 | 2026-08-21 | `crypto-news-sec-regulation-crypto-assets-20260821` | SEC 提出 Regulation Crypto Assets（草案） |
+| C5 | 2026-02-12 | `crypto-news-eba-psd2-mica-20260212` | EBA 對 PSD2 與 MiCA 銜接的意見書 |
+| C6 | 2026-03-02 | `crypto-news-genius-act-occ-20260302` | GENIUS Act 落地：OCC |
+| C7 | 2026-04-10 | `crypto-news-stablecoin-aml-20260410` | 穩定幣發行商的洗錢防制與制裁遵循 |
+| C8 | 2026-04-10 | `crypto-news-fdic-genius-act-20260410` | GENIUS Act 落地：FDIC |
+| C9 | 2026-05-18 | `crypto-news-ncua-genius-act-20260518` | GENIUS Act 落地：NCUA |
+| C10 | 2026-02-16 | `crypto-news-jfsa-working-group-20260216` | 日本 FSA 金融審議會工作小組報告 |
+| C11 | 2026-07-23 | `crypto-news-jfsa-cybersecurity-20260723` | 日本 FSA：加密資產業者的資安問題與對策 |
+
+`scope` 已經照這份清單逐篇填好（每篇兩行）。工作區是 `docs/crypto-news-2026/`。
 
 ## Why
 
@@ -36,34 +90,22 @@ ETF 資金流、買賣時機、殖利率／質押報酬／空投、任何具體�
 **機器只擋得住樣板。**「有沒有變相推薦標的」「風險講得夠不夠」要人逐篇看，
 這是這張票 Definition of done 的一部分，不要指望 lint。
 
-## 候選題目
+## scope 已填好，但認領還要等兩件事
 
-[`docs/news-2026-batch-4/candidates-crypto.md`](../../docs/news-2026-batch-4/candidates-crypto.md)
-有 **11 則已回一手來源驗過**（C1–C11），含台灣《虛擬資產服務法》三讀、
-歐盟 MiCA 過渡期結束、CFTC 與 SEC 聯名的解釋令、美國 GENIUS Act 四個機關的實施規則、
-日本 FSA 兩則。**重要新聞的量已經到了。**
+`scope` 已經照上面的圈選結果逐篇填好。認領之前還缺兩件事：
 
-次要新聞目前 0 則——在「不碰行情」的界線內，8/1–9/16 查證後確實稀薄，
-建議把窗口放寬到全年再挑份量輕的。
+1. **`depends_on` 的 4.0 還沒 done**（`2026-09-16-news-batch-4-0-crypto-and`，
+   目前 `review`，等 PR #536 合併）。詞彙、migration 與財經免責 lint 都在那張票裡，
+   沒有它寫出來的內容包過不了 lint。
+2. **`apps/api/app/guides/content` 整個目錄被
+   `2026-09-15-content-summary-howto-and-life`（`in-progress`）持有**，
+   在 2026-09-17T03:39Z 變 stale。
 
-## 這張票還不能認領
+**兩件都不要用 `--force` 繞過。** 第 1 條會讓內容包 lint 失敗，
+第 2 條正是用來擋兩個 agent 互相覆蓋的規則。
 
-`tasks/open/2026-09-15-content-summary-howto-and-life`（`in-progress`，
-scope 是**整個 `apps/api/app/guides/content` 目錄**）擋住所有內容包任務。
-它的認領在 **2026-09-17T03:39Z** 變 stale，屆時才能 claim。
-**不要用 `--force` 繞過**——那條規則正是用來擋兩個 agent 互相覆蓋的。
-
-## scope 還沒填完
-
-目前只有工作區目錄。**站主圈完題目之後**，要把每篇的兩行路徑補進 `scope`：
-
-```
-apps/api/app/guides/content/<slug>.json
-apps/web/public/guides/<slug>
-```
-
-比照 `tasks/done/2026-09-15-ai-news-batch-3-seven-mid.md`。
-**絕對不要用整個 `content/` 目錄當 scope**，否則就變成現在擋住這張票的那個問題。
+在那之前可以做、而且已經在做的是**研究**：工作區目錄不在任何人的 scope 裡，
+研究紀錄先寫在那裡，鎖一讓出來就能直接開稿。
 
 ## 流程
 
