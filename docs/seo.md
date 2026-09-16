@@ -163,7 +163,14 @@ and the annotations are English, the language `x-default` points at.
 
 The file is not a second sitemap and does not try to be. `/sitemap.xml` stays the complete list
 and the file says so in its own header. What llms.txt adds is what each section *is*, which the
-sitemap's bare URLs cannot carry.
+sitemap's bare URLs cannot carry. Under the two article hubs it also lists the structure
+(2026-09-16): a `### Topics` line per top-level topic, linking to the topic hub in the language
+with the most articles under it (English wins a tie; a topic with nothing anywhere is left
+out) with the count, the language and the hub's lead; and a `### Series` line per series or
+tutorial hub from `GET /guides/series`, once each, under the first language (English first)
+that publishes it, with the lesson count where the API holds the catalogue. Both come from
+`getGuideTopics` and `getSeriesIndex`, and an outage leaves the sub-sections out while the two
+hub lines stand.
 
 It reuses `SITEMAP_ROUTES` rather than restating which pages are public. The gating is four
 feature switches plus the discovery switch, and a second file re-deriving that list would

@@ -3,6 +3,7 @@ import metadata from "@/messages/en/metadata.json";
 import { locales } from "@/i18n/routing";
 import { getDestinations } from "@/lib/destinations.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
+import { getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
 import { siteUrl } from "@/lib/seo";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
@@ -27,6 +28,10 @@ vi.mock("next-intl/server", () => ({
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
 vi.mock("@/lib/discovery-status.server", () => ({ getDiscoveryStatus: vi.fn() }));
 vi.mock("@/lib/destinations.server", () => ({ getDestinations: vi.fn() }));
+// The topic vocabulary and the series registry, stubbed; the rest of the module is real.
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(), getGuideTopics: vi.fn(), getSeriesIndex: vi.fn(),
+}));
 // `SITEMAP_ROUTES` comes from `app/sitemap.ts`, which imports the community module, and that one
 // starts with `import "server-only"` -- a package only Next's own build resolves. Nothing here
 // calls it, but Vite still has to resolve the import; app/sitemap.test.ts mocks it the same way.
@@ -50,6 +55,8 @@ describe("llms.txt", () => {
     vi.mocked(getDestinations).mockReset().mockResolvedValue([
       summary("tokyo", "Tokyo", "Dense and legible for a first trip to Japan."),
     ]);
+    vi.mocked(getGuideTopics).mockReset().mockResolvedValue([]);
+    vi.mocked(getSeriesIndex).mockReset().mockResolvedValue([]);
   });
 
   it("is read per request, like the sitemap that reads the same switches", () => {
@@ -117,6 +124,42 @@ describe("llms.txt", () => {
     const text = await body();
     expect(text).toContain(`- [Travel intel and guides](${siteUrl}/en/guides): ${metadata.guidesDescription}`);
     expect(text).toContain(`- [Lifestyle](${siteUrl}/en/life): ${metadata.lifeDescription}`);
+  });
+
+  it("lists each top-level topic where its articles are, and every series hub once", async () => {
+    vi.mocked(getGuideTopics).mockImplementation(async (_locale, section) => section === "life"
+      ? [
+        { slug: "ai", label: "AI tools", section: "life", parent: null, description: "Tools, terms and news.", count: 2, counts: { en: 2, "zh-TW": 500 } },
+        { slug: "ai-terms", label: "AI glossary", section: "life", parent: "ai", count: 0, counts: { "zh-TW": 80 } },
+        { slug: "misc", label: "Miscellany", section: "life", parent: null, count: 0, counts: {} },
+      ]
+      : [{ slug: "transport", label: "Transport", section: "travel", parent: null, count: 3, counts: { en: 3, ja: 3 } }]);
+    vi.mocked(getSeriesIndex).mockImplementation(async (locale) => locale === "zh-TW"
+      ? [
+        { slug: "claude-code", section: "life", hub: { kind: "life", slug: "claude-code-tutorials", title: "Claude Code 教學中心", description: "從安裝到進階" }, source: "api-series", topic: "claude-code", entries: 96 },
+        { slug: "ai-terms", section: "life", hub: { kind: "life", slug: "ai-terms-index", title: "AI 名詞總索引" }, source: "catalogue", topic: "ai-terms", entries: null },
+      ]
+      : locale === "en" ? [{ slug: "ai-terms", section: "life", hub: { kind: "life", slug: "ai-terms-index", title: "AI glossary index" }, source: "catalogue", topic: "ai-terms", entries: null }] : []);
+    const text = await body();
+    // The hub in the language with the most under it; a sub-topic is not a line of its own;
+    // a topic with nothing anywhere is left out.
+    expect(text).toContain(`- [AI tools](${siteUrl}/zh-TW/life/topics/ai): 500 articles in 繁體中文: Tools, terms and news.`);
+    // English wins a tie.
+    expect(text).toContain(`- [Transport](${siteUrl}/en/guides/topics/transport): 3 articles in English`);
+    expect(text).not.toContain("AI glossary](");
+    expect(text).not.toContain("Miscellany");
+    // Each hub once, under the first language (English first) that publishes it.
+    expect(text).toContain(`- [AI glossary index](${siteUrl}/en/life/ai-terms-index): English`);
+    expect(text).not.toContain("AI 名詞總索引");
+    expect(text).toContain(`- [Claude Code 教學中心](${siteUrl}/zh-TW/life/claude-code-tutorials): 96 lessons, 繁體中文, 從安裝到進階`);
+    expect(text.indexOf("### Topics")).toBeLessThan(text.indexOf("### Series"));
+  });
+
+  it("leaves the topic and series sub-sections out when the API answers nothing, keeping the hubs", async () => {
+    const text = await body();
+    expect(text).not.toContain("### Topics");
+    expect(text).not.toContain("### Series");
+    expect(text).toContain(`- [Travel intel and guides](${siteUrl}/en/guides)`);
   });
 
   it("strips the brand suffix the page titles need and a list label does not", async () => {

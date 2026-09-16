@@ -96,8 +96,16 @@
 **上線順序**：web 先部署（渲染器與 guard），之後才發布含 summary／faq 的內容；
 `content-summary-howto-and-life`（編輯撰寫摘要與 FAQ）與 `2026-09-14-answer-first-howto-descriptions` 留給內容階段。
 
-### Phase 5 — UI/UX
-`guides-hub-redesign-web` → `life-hub-redesign-web`；`listing-toolbar-web`；`article-reading-polish-web`。
+### Phase 5 — UI/UX（2026-09-16 落地）
+| 任務 | 內容 |
+| --- | --- |
+| `guide-listing-curated-order` | `GET /guides?sort=latest\|curated`；`/life`、hub 精選攻略、`/guides/howto` 用 curated；舊 cursor 被拒導回第一頁 |
+| `guides-hub-redesign-web` | `HubHero`（搜尋、篇數／主題數）→ `TopicTiles` → `SeriesRow` → 精選攻略（首張 featured 卡）→ 最新情報 → 依目的地 |
+| `life-hub-redesign-web` | 同構；三段手寫 aside 由登錄檔列取代；**開頭先列「最新新聞」（`ai-news`，最新在前，站主 2026-09-16 要求）** |
+| `listing-toolbar-web` | `ListingToolbar`（chips、`?sort=`、結果數）與 `ListingEmpty`（附搜尋）；md 以上 sticky |
+| `article-reading-polish-web` | `GuideCard` `compact`／`featured`；`.app-term-link`／`.app-term-card`／`.app-summary-card` 以 token 寫；延伸閱讀格距；系列上下篇雙欄 |
+| `llms-txt-topic-hubs-and-series` | `/llms.txt` 多 `### Topics`（父主題、篇數最多的語系）與 `### Series` |
+| sitemap 上限 | 每專區×語系超過 5,000 列自動編號子檔，API `offset`；lint 不再預警 |
 
 檔案先後序（避免 scope 衝突）：`service.py/router.py/schemas.py`：1.1 → registry → search → links → blocks；
 `admin_service.py`：1.1 → crud → search → aliases → links；`content-blocks.tsx`：heading-anchors → term-link → jsonld；
