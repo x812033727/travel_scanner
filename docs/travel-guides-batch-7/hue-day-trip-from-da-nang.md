@@ -221,7 +221,7 @@ sources 最多 20 筆，本篇列 10 到 14 筆即可。**不能當來源**：`l
 ## 上線後與交叉檢查
 
 - 本批互連（batch7-list.md 第 17 條）：本篇開頭連 `da-nang-hoi-an-4-day-itinerary`、火車段連第 18 篇、季節段連 `vietnam-money-sim-grab-guide`。上線後跑 `uv run python -m app.cli guides-links-check --locale zh-TW` 確認每個方向都通，並確認 `destinations/hue` 與 `foods?destination_id=hue` 有頁面。
-- 反向連結（既有文章要改，收進「既有文章補連第七批」那張票）：`da-nang-hoi-an-4-day-itinerary` 的 Day 4 段（「有一整天的人改去美山聖地」那一段）後面加一句連到本篇——想看皇城與陵墓就往北去順化；順便確認那篇結尾的美食目錄連結 `foods?city=da-nang` 要不要一起改成 `destination_id`（那是另一張票 `2026-09-14-food-links-city-param-ignored` 的範圍，本篇不要順手改別篇）。
+- 反向連結（既有文章要改，收進「既有文章補連第七批」那張票）：`da-nang-hoi-an-4-day-itinerary` 的 Day 4 段（`blocks[22]`，「有一整天的人改去美山聖地」那一段）句尾加一句連到本篇——想看皇城與陵墓就往北去順化；該區塊目前是 `paragraph`，要整塊改成 `rich_paragraph`（原文拆成 `text` inline，連結處插 `article` inline），文字一個字都不改；順便確認那篇結尾的美食目錄連結 `foods?city=da-nang` 要不要一起改成 `destination_id`（那是另一張票 `2026-09-14-food-links-city-param-ignored` 的範圍，本篇不要順手改別篇）。
 - 與第 18 篇的口徑：統一線時刻若兩篇都寫，必須同一次查詢的同一組數字；第 18 篇寫河內與西貢出發的票價、車廂等級、退換票，本篇不重複。第 18 篇上線前後各對一次；它若沒上線，拿掉本篇 H2-1 的連結與 `related` 裡的它。
 - 撰稿當天與 ingest 當天各重查一次：giotaugiave.dsvn.vn 的統一線時刻（改點）、eticket 票價 API（票價與聯票組合）、`hueworldheritage.org.vn` 主站是否恢復（恢復就補開放時間，並把「以現場為準」改掉，這是本篇最想補的一項）。
 - **HĐ 順化－峴港觀光列車**：dsvn.vn 或鐵路運輸股份公司若公布 HĐ1 到 HĐ4 的時刻與票價，要改 H2-1、summary 與 FAQ 第 1 題——「當天來回只能包車或巴士」這個結論可能因此改變。上線 PR 開一張票，2027-03-01 前回查一次。

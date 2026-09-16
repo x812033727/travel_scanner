@@ -379,7 +379,7 @@ topics 是 itinerary、culture、transport，不在禁放清單裡。正式站�
 ## 上線後與交叉檢查
 
 - **補反向連結**（上線 PR 另開一張票，scope 為 `apps/api/app/guides/content` 的三個檔）：
-  - `hong-kong-4-day-itinerary` 第 29 個區塊（「回程日不排離島，也別硬塞迪士尼或澳門，想去就多留一天」那段）之後，加一個 article inline 連 `guides/howto/macau-day-trip-from-hong-kong`，連結文字講「多留一天去澳門怎麼安排」。那篇的數字不動，只加連結。
+  - `hong-kong-4-day-itinerary` 的 `blocks[29]`（「回程日不排離島，也別硬塞迪士尼或澳門，想去就多留一天」那段）**整塊改成 `rich_paragraph`**（原文拆成 `text` inline，文字一個字都不改），在句尾「想去就多留一天」之後接一個 `article` inline 連 `guides/howto/macau-day-trip-from-hong-kong`，連結文字講「多留一天去澳門怎麼安排」。**不要在後面新增獨立區塊**：`blocks[30]` 本來就是只有一個 article inline 的 `rich_paragraph`（連機場交通篇），中間再插一段純連結會變成兩個連續的「只有連結」段落；`blocks[30]` 維持原狀，那篇的數字不動。
   - `hong-kong-airport-to-city` 的「依住宿區選路線」表之後或回程段，可視字數加一條連本篇（住上環、中環的人，港澳碼頭就在上環站上面）。
   - `cheung-chau-walking-day` 結尾可選加一條「另一個從碼頭出發的一日」連本篇。
 - **年度複查**（建議 2027 年 4 月，或任一家宣布調價時；本篇是長青 howto，沒有到期日會提醒，這張票要放進 `tasks/open`）：

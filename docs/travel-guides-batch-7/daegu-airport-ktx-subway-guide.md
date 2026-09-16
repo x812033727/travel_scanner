@@ -183,7 +183,7 @@ diagram-1.svg，1600×900，放在 H2-2 那段文字之後、H2-3 標題之前�
 ## 上線後與交叉檢查
 
 - 本批互連（batch7-list.md 第 13、14 條）：第 14 篇 `daegu-2-day-itinerary` 的開頭交通段要連本篇，本篇開頭與結尾各連它一次。兩篇共用的數字（SRT 水西到東大邱一般室 37,000、地鐵刷卡 1,500、急行公車 1,950、機場到峨洋橋 1.8 公里與 28 分）必須同一套；任何一篇改，同一個 PR 改另一篇。第 14 篇不得再列一次地鐵票價表或機場計程車費率，只連過來。
-- 反向連結（上線 PR 開成「既有文章補連第七批」的票）：`korea-ktx-srt-ticket-guide` block 25「東大邱：京釜線的高鐵都停…」那一句後面加一句 article inline 連本篇（連結文字講「東大邱站怎麼接地鐵、大邱機場怎麼進市區」）；`gimhae-airport-to-busan` 可在結尾加一句「從釜山接大邱」連本篇；`korea-naver-map-kakao-t-guide` block 40 結尾列了首爾與釜山的計程車費差異，可加一句大邱並連本篇。
+- 反向連結（上線 PR 開成「既有文章補連第七批」的票）：**`korea-ktx-srt-ticket-guide` 的 `blocks[25]` 由第 13、15 篇合併成同一次編輯**（兩篇分開改會互相覆蓋，掉一個反向連結）：把該 `paragraph` 整塊改成 `rich_paragraph`，依序是〈慶州那段純文字〉→〈東大邱那句〉＋ `article` inline（`daegu-airport-ktx-subway-guide`，連結文字「東大邱站怎麼接地鐵、大邱機場怎麼進市區」）→〈全州那句〉＋ `article` inline（`jeonju-hanok-village-day-trip-from-seoul`，連結文字「全州一天怎麼排」）。原文拆成 `text` inline，兩個 inline 不相鄰，文字與數字一個都不改。；`gimhae-airport-to-busan` 可在結尾加一句「從釜山接大邱」連本篇；`korea-naver-map-kakao-t-guide` `blocks[40]` 結尾列了首爾與釜山的計程車費差異，可加一句大邱並連本篇——該區塊目前是 `paragraph`，要整塊改成 `rich_paragraph`（原文拆成 `text` inline，連結處插 `article` inline），文字一個字都不改。
 - 2026-10-26 之後（上線 PR 同時開票並寫明日期）：TW663／TW664 的運航期間到 2026-10-24／25，冬季班表出來後用第 (3) 條的 AJAX 端點重查一次，改 H2-1 表格、summary 第二句與 H2-3 的清晨、深夜那段；查不到就把時間改成「以航空公司官網為準」。
 - 2026-12-31 以前（上線 PR 同時開票）：重讀 DTRO 運賃頁與轉乘頁（頁面標的最近更新是 2026-01-15，票價通常在年初調），確認 1,500／1,700／1,950 與 30 分鐘轉乘沒變，並再確認一次整站仍然沒有「1일권」。**若大邱之後推出一日券或觀光通票，H2-4、summary 與 FAQ 第 2 題三處要同時改**。
 - SR 每次公布新票價表（現行是 2026-09-01 起）時：本篇的 37,000／53,600／15,600 與 `korea-ktx-srt-ticket-guide` 的 37,000／53,600 要同一個 PR 改完。

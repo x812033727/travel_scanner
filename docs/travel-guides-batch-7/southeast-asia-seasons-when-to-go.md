@@ -139,7 +139,7 @@ sources 最多 20 筆，上面 10 筆全放，`checked_on` 填實際打開那天
 
 **本篇不放 offer。** 三個理由，規格裡寫死，撰稿者不要自己加：
 1. `destination_id` 是 `null`，offer 一定要填一個 destination_id，但本文橫跨泰國、越南、新加坡、香港六個地區，挑任何一個城市都與段落內容對不上。
-2. `topics` 有 `budget`，第六批與本批的規則是 budget 主題原則上不放。
+2. 本篇的主軸是 `season`，沒有任何一段在賣票或賣住宿；`budget` 只是輔助主題，不像機場交通篇那樣有具體的交通票券可掛（`bangkok-where-to-stay`、`sendai-airport-access-loople-bus-guide`、`daegu-airport-ktx-subway-guide`、`vietnam-domestic-flights-train-guide` 那幾篇雖然也有 `budget`，主題是 `hotel`／`transport`，照放）。
 3. 本文的每一段都會連到該地的專篇，那些專篇各自有自己的 offer（例如普吉機場交通篇的 transport、普吉跳島篇的 activities），在本文再放一個會和它們重複。
 如果之後要加，位置只能在 H2-2 泰國段之後、H2-3 越南段的標題之前（第一個 H2 之後、前後不相鄰），module 用 `flight`，destination_id 另外決定；這件事列在「上線後與交叉檢查」，不在首發版本做。
 

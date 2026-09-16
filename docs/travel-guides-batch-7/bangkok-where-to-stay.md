@@ -166,9 +166,9 @@ diagram-1.svg，1600×900，放在 H2-1 的 hotel offer 之後、tip callout 之
 ## 上線後與交叉檢查
 
 - 既有文章反向連回（彙整進「既有文章補連第七批」那張票）：
-  - `bangkok-airport-to-city` H2「住蘇坤蔚、暹羅、考山路，各選哪一種」開頭補一句 article inline 連 `bangkok-where-to-stay`（連結文字講「哪一區適合你、六區怎麼比」）；那一節的四個項目不動。
-  - `bangkok-bts-mrt-boat-guide` H2「尖峰與常用路線」的結尾或 tip callout 之後補一句連本篇。
-  - `bangkok-4-day-itinerary` 開頭「住在暹羅到蘇坤蔚一帶」那句加連結到本篇。
+  - `bangkok-airport-to-city`：在 `blocks[15]` 的 H2「住蘇坤蔚、暹羅、考山路，各選哪一種」與 `blocks[16]` 的清單之間，**新增一個 `rich_paragraph`**：「先決定住哪一區，再回頭看機場怎麼接」＋ `article` inline（`kind: howto`、`slug: bangkok-where-to-stay`、連結文字講「哪一區適合你、六區怎麼比」）。標題後沒有既有段落可以「補一句」，清單四項與 `blocks[17]` 的 tip callout 都不動。
+  - `bangkok-bts-mrt-boat-guide` H2「尖峰與常用路線」：該節結尾是 `list`（純字串，放不了 inline），所以在 `blocks[26]` 的 tip callout 之後**新增一個 `rich_paragraph`** 連本篇。
+  - `bangkok-4-day-itinerary` `blocks[0]` 開頭「住在暹羅到蘇坤蔚一帶」那句加連結到本篇；該區塊目前是 `paragraph`，要整塊改成 `rich_paragraph`（原文拆成 `text` inline，連結處插 `article` inline），文字一個字都不改。
   - 三篇既有曼谷文的 `foods?city=bangkok` 不要順手改，等票 `2026-09-14-food-links-city-param-ignored` 修好一起處理；本篇自己用 `destination_id`。
 - 本批互連：第 8 篇季節篇的泰國段若要提曼谷的乾季與雨季，口徑要和本篇、四天行程篇一致（11 月到 2 月最涼最貴、5 月到 10 月雨季、潑水節 4 月中）；第 3 篇喀比交通篇若加「從曼谷接喀比」的句子，可以反向連本篇。
 - BEM（MRT 首末班）：撰稿時、上線後各試一次 https://metro.bemplc.co.th/Train-Service-Time ；哪一天讀到了，就把實際首末班補進 H2-8 與表 A，並同步更新 `bangkok-bts-mrt-boat-guide` 最後那句「MRT 各站末班時間不同，深夜出門先查 BEM 官網」。兩篇要一起改。

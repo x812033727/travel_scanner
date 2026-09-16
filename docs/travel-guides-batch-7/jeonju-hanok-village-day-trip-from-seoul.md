@@ -210,7 +210,7 @@ sources 最多 20 筆；（9）（11）視字數取捨。
 
 ## 上線後與交叉檢查
 
-- **補反向連結（既有文章要改）**：`korea-ktx-srt-ticket-guide` 的 block 25（H3「到慶州、東大邱、全州」）最後一句「全州：從龍山站搭 KTX（全羅線），SR 也有水西出發到全州的班次，票價以兩家官網為準。」後面加一個 article inline 連 `guides/howto/jeonju-hanok-village-day-trip-from-seoul`（連結文字講「全州一天怎麼排」）。那篇的既有數字不動，只加連結；如果順便補水西 4 班或 SRT 30,300，要和本篇同一個 PR 改。
+- **補反向連結（既有文章要改）**：**`korea-ktx-srt-ticket-guide` 的 `blocks[25]` 由第 13、15 篇合併成同一次編輯**（兩篇分開改會互相覆蓋，掉一個反向連結）：把該 `paragraph` 整塊改成 `rich_paragraph`，依序是〈慶州那段純文字〉→〈東大邱那句〉＋ `article` inline（`daegu-airport-ktx-subway-guide`，連結文字「東大邱站怎麼接地鐵、大邱機場怎麼進市區」）→〈全州那句〉＋ `article` inline（`jeonju-hanok-village-day-trip-from-seoul`，連結文字「全州一天怎麼排」）。原文拆成 `text` inline，兩個 inline 不相鄰，文字與數字一個都不改。那篇的既有數字不動，只加連結；如果順便補水西 4 班或 SRT 30,300，要和本篇同一個 PR 改。
 - **補反向連結（既有文章要改）**：`seoul-4-day-itinerary` 的 Day 3 段落，接在 block 23（DMZ 的 rich_paragraph）之後、block 24 的 activities offer 之前，加一句「想跑更遠可以換成全州」並連 `guides/howto/jeonju-hanok-village-day-trip-from-seoul`。加的是 rich_paragraph，不會讓兩個 offer 相鄰。
 - **反向連結（可選）**：`seoul-palaces-hanbok-guide` 的「穿韓服免門票」那一節（block 6、7 之後）加一句「首爾以外不一定有這條規定，例如全州慶基殿」並連回本篇；`suwon-hwaseong-day-trip` 的韓服段同理。這兩篇改動後要重跑 ingest 並更新 `checked_on`。
 - **SR 改點後（每次時刻表改版，上線 PR 開票追蹤）**：重讀 `atchNo=29` 時刻表與 `atchNo=18` 票價表，核對 25 班、1 小時 28 分、23:11→00:46、水西 4 班、30,300／43,900；有變就同時改本篇的表 1、summary、FAQ、diagram-1，並檢查 `korea-ktx-srt-ticket-guide` 要不要一起改。
