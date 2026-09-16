@@ -3,6 +3,7 @@ import metadata from "@/messages/en/metadata.json";
 import { locales } from "@/i18n/routing";
 import { getDestinations } from "@/lib/destinations.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
+import type { GuideTopic } from "@/lib/guides";
 import { getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
 import { siteUrl } from "@/lib/seo";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
@@ -127,7 +128,7 @@ describe("llms.txt", () => {
   });
 
   it("lists each top-level topic where its articles are, and every series hub once", async () => {
-    vi.mocked(getGuideTopics).mockImplementation(async (_locale, section) => section === "life"
+    vi.mocked(getGuideTopics).mockImplementation(async (_locale, section): Promise<GuideTopic[]> => section === "life"
       ? [
         { slug: "ai", label: "AI tools", section: "life", parent: null, description: "Tools, terms and news.", count: 2, counts: { en: 2, "zh-TW": 500 } },
         { slug: "ai-terms", label: "AI glossary", section: "life", parent: "ai", count: 0, counts: { "zh-TW": 80 } },
