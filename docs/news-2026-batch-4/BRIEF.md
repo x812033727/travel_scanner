@@ -74,6 +74,14 @@ Anthropic 兩個常見位址都 404，沒有 feed）。
 所以判斷「拿到 feed 了嗎」要看兩件事：**`<item>`／`<entry>` 的數量**，
 以及**最新一筆的日期**。兩者都合理才算拿到，否則要當成取得失敗、換管道。
 
+3. **官方標題裡有看不見的字元。** Apple Developer 的
+   `Update: New domain for Sign in with Apple` 實際上是
+   `Sign\xa0in\xa0with\xa0Apple`（不斷行空格）；OpenAI 的
+   `Build more natural voice experiences with GPT‑Live‑1 in the API` 用的是
+   非 ASCII 的連字號 `‑`（U+2011）。**用純 ASCII 的字串去比對會查無此項**，
+   而 `check_article.py` 要求 link 的 `text` 等於目標文章的 title，
+   所以抄標題時要連這些字元一起抄，不要自己打一遍。
+
 ## 內容包格式
 
 檔案 `apps/api/app/guides/content/<slug>.json`。

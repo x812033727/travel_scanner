@@ -311,8 +311,13 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
 | 科技 | **11**（Apple 3、NVIDIA 1、moda 4、T5–T7） | 6 | **已到量** |
 | AI | **2**（Gemini 3.8 Live、NVIDIA×HF） | 13（OpenAI feed 10、NVIDIA 3） | 視站主選題 |
 
-**三個垂直的重要新聞候選都夠站主圈選了。** 接下來缺的是各垂直 **4–6 則的「次要新聞」**
-（T7 Pixel Drop 是科技的第一則），以及 Anthropic／Meta／DeepSeek／Qwen 的逐月掃描。
+**三個垂直的重要新聞候選都夠站主圈選了。**
+
+次要新聞（8/1–9/16）的現況見本頁最後一節：**AI 8 則、科技 8 則都夠了，
+幣圈 0 則**——在「不碰行情」的界線內，那段期間的幣圈次要新聞查證後確實很稀薄。
+
+還沒掃過：Anthropic（沒有 feed，要抓網頁）、Meta 的 AI 產品線、DeepSeek、Qwen、
+Samsung（feed 被擋）、台積電（feed 403）、NCC。
 
 **幣圈的重要新聞已經到量。** 科技與 AI 的「已驗」也夠站主圈第一批了。
 還沒掃過的：Anthropic（沒有 feed，要抓網頁）、Meta 的 AI 產品消息、DeepSeek、
@@ -321,3 +326,93 @@ Qwen、Samsung（feed 被擋）、台積電（feed 403）、NCC。
 **下一步**：用上面那張 feed 表逐家掃過 Anthropic、Meta、DeepSeek、Qwen、Samsung、
 標準組織與主管機關，把「已驗」的數量做上去。每一則都要有：
 事件日、建議 slug、一手來源網址、來源原文載明的關鍵事實、讀者角度、以及**不要寫什麼**。
+
+---
+
+# 次要新聞（8/1 → 9/16）
+
+每個垂直要 4–6 則。下列日期與標題**全部來自官方 feed**，所以日期可信；
+但除了標 ✅ 的，內容都還沒讀原文。
+
+## AI 的次要新聞
+
+OpenAI 官方 feed 在這段期間有 **89 筆**，站上既有文章只覆蓋其中 11 個日期。
+下面挑的是「具體、對一般讀者有用，但不到頭條」的：
+
+| 事件日 | 官方標題 | 為什麼適合當次要新聞 |
+| --- | --- | --- |
+| 2026-08-11 | Testing ads in ChatGPT | 與 8/18 是同一條線，**建議合成一篇**：ChatGPT 裡的廣告怎麼來的 |
+| 2026-08-18 | ChatGPT Ads expands across Europe | 同上 |
+| 2026-08-18 | Introducing ChatGPT for Teens: Built for learning, backed by protections | 家長與青少年，對本站讀者很具體 |
+| 2026-08-19 | Offering Zero Data Retention for frontier models | 隱私與資料保留，可接既有的 `ai-safety` 題材 |
+| 2026-08-13 | Previewing Ultrafast mode: GPT-5.6 Sol at up to 14X the speed | 「14X」是**廠商宣稱**，一定要寫成「OpenAI 表示」 |
+| 2026-08-10 | Premium seats are coming to ChatGPT Business | 方案與計費 |
+| 2026-08-25 | Disrupting a new covert influence campaign from Russia | 可與既有的 `ai-news-anthropic-threat-report-20260910` 對照 |
+| 2026-09-09 | Paul Christiano joins OpenAI Foundation Board | 治理，份量輕但明確 |
+
+**⚠️ 2026-08-26「The Hugging Face incident and the road ahead」**：
+這則和 9/3 的 NVIDIA 併購 Hugging Face 是同一個平台的兩件事，很值得寫，
+但 **`openai.com/index/...` 對 WebFetch 回 403**，內容讀不到。
+feed 只給了日期與標題。要寫得換管道（官方 RSS 的 description 欄位、
+或 Hugging Face 自己的公告）。
+
+## 科技的次要新聞
+
+### ✅ 已驗：Apple M6 與 M5 Ultra（8/25）——這則其實夠格當「重要新聞」
+
+- **事件日** 2026-08-25　**建議 slug** `tech-news-apple-m6-m5-ultra-20260825`
+- **一手來源**
+  `https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/`
+- **官方原文載明**：
+  - **M6 是 Apple 第一顆 2 奈米製程晶片**；12 核 CPU（2 個 super core、
+    4 個效能核心、6 個節能核心）、12 核 GPU 含 Neural Accelerators、
+    雙 16 核神經網路引擎；統一記憶體頻寬最高 **170GB/s**、記憶體最高 **32GB**；
+    「up to 1.2x faster multithreaded performance as compared to M5」。
+  - **M5 Ultra 是 M 系列第一個四晶粒架構**（UltraFusion）；最高 36 核 CPU
+    （12 super core、24 效能核心）、最高 80 核 GPU、32 核神經網路引擎；
+    統一記憶體頻寬 **1.2TB/s**、記憶體最高 **512GB**；
+    「up to 1.3x higher multithreaded performance than M3 Ultra」。
+  - M6 首發在新 Mac mini、M5 Ultra 首發在新 Mac Studio。
+- **官方沒說**：售價與上市日期。兩項都要寫成「官方未說明」。
+- **所有效能倍數都是 Apple 的宣稱**，一律寫成「Apple 表示」，本站沒有實測。
+- **這則不該當次要新聞。** 第一顆 2nm 消費級晶片是這段期間最硬的科技題目之一，
+  而且站上完全沒寫過。建議提到「重要新聞」那一格，次要新聞另外挑。
+- 同日還有兩篇新聞稿（Mac Studio with M5 Max and M5 Ultra、
+  Mac mini featuring the all-new M6 and M5 Pro），可以併進同一篇。
+
+### ⚠️ 其餘科技次要新聞（feed 已確認日期與標題）
+
+| 事件日 | 官方標題 | 來源 |
+| --- | --- | --- |
+| 2026-09-01 | Upcoming changes to Rosetta support for Intel-based macOS apps | Apple Developer |
+| 2026-08-27 | Tax and price updates for apps, In-App Purchases, and subscriptions | Apple Developer |
+| 2026-08-24 | Update: New domain for Sign in with Apple | Apple Developer |
+| 2026-08-12 | Updates to age ratings for the Republic of Korea | Apple Developer |
+| 2026-09-08 | Listening to families. Improving Microsoft Family.／Helping families and educators support safer experiences and healthier habits on Windows | Windows（兩篇同日，可合成一篇） |
+| 2026-09-03 | Sparks Fly: NVIDIA Accelerates Local AI at IFA 2026 | NVIDIA，可與 T6 Project Zenith 對照 |
+| 2026-09-14 | Perplexity Portable Computer Is Now Available on Windows, Powered by NVIDIA RTX | NVIDIA |
+
+加上已列的 **T7 September Pixel Drop（9/15）**，科技的次要新聞候選已經超過 4–6 則。
+
+**Rosetta 那則（9/1）對讀者最實用**：舊的 Intel Mac App 什麼時候會不能跑，
+是使用者真的會遇到的事。
+
+## 幣圈的次要新聞：這段期間**很稀薄**，這是查證結果不是偷懶
+
+在站主定的界線內（只寫法規／技術／產業，不碰行情），8/1–9/16 幾乎沒有東西：
+
+- **Federal Register**（涵蓋 SEC／CFTC／FinCEN／OCC／FDIC／NCUA）在這個窗口
+  扣掉例行的 SRO 申報後**只有 3 筆**，其中一筆就是已列為重要新聞的 C4
+  （8/21 Regulation Crypto Assets）。另一筆是 2026-09-04 的
+  **Transfer Agent Rules**（SEC 提案，評論截止 2026-11-03），
+  它出現在 crypto 關鍵字結果裡，但**要先確認它是否真的涉及代幣化證券**才能用。
+  第三筆是聯邦法規統一議程的例行公告，沒有新聞價值。
+- **台灣金管會**：用 `fsc.gov.tw` 限定搜尋，回來的都是 **2025 年**的新聞稿
+  （最新一筆是 2025-09-22 的 VASP 洗錢防制登記名單），
+  **沒有找到 2026 年 8–9 月的項目**。這是「沒查到」，不是「沒發生」——
+  金管會的站內搜尋在這個環境不好用，要換管道（公報、法規查詢系統）再確認一次。
+
+**結論**：幣圈的次要新聞目前 **0 則**，而且不是隨便找就有。
+建議做法是把窗口放寬到 2026 年全年再挑「份量較輕」的項目
+（例如 C10 日本 FSA 的工作小組報告就偏次要），
+而不是為了湊 4–6 則去寫行情或整合站的內容。
