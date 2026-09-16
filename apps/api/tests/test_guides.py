@@ -11,7 +11,7 @@ import json
 import os
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
-from unittest.mock import ANY
+from unittest.mock import ANY, AsyncMock
 from uuid import UUID, uuid4
 
 import pytest
@@ -26,6 +26,7 @@ from sqlalchemy.pool import NullPool
 from app.auth.service import current_user
 from app.config import get_settings
 from app.db import Base, get_session
+from app.guides import router as guides_router
 from app.guides.models import (
     GuideArticle,
     GuideArticleAlias,
@@ -58,6 +59,22 @@ TABLES = [
     # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
     AffiliateClick.__table__,
 ]
+
+
+@pytest.fixture(autouse=True)
+def limiter(monkeypatch):
+    """The search limiter never touches Redis here.
+
+    ``get_redis`` is a process-wide ``lru_cache``; a real client created under one test's
+    event loop answers the next test with ``RuntimeError: Event loop is closed``, which the
+    fail-open limiter does not shrug at because it is not a ``RedisError``. The limiter's own
+    behaviour is proven in ``test_guides_search``, which flips this stub on purpose.
+    """
+    over = AsyncMock(return_value=False)
+    hit = AsyncMock()
+    monkeypatch.setattr(guides_router, "over_named_rate_limit", over)
+    monkeypatch.setattr(guides_router, "record_rate_limit_hit", hit)
+    return over, hit
 
 
 @pytest.fixture(params=["sqlite", "postgresql"])

@@ -19,6 +19,7 @@ from tests import test_guides as guides
 from tests.test_guides_content_pack import write_pack
 
 database = guides.database
+limiter = guides.limiter
 actor = guides.actor
 client = guides.client
 make_app = guides.make_app
