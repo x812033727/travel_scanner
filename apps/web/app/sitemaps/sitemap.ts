@@ -5,7 +5,7 @@ import { guideHref, guideSection, guideTopicHref, type GuideKind, type GuideSect
 import { HREFLANG_DEFAULT, languageAlternates, localeUrl } from "@/lib/seo";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
 import {
-  guideSitemapEntries, guideSitemapSummary, guideTopicSitemapEntries, type GuideSitemapSummary,
+  guideSitemapEntries, guideSitemapSummary, guideTopicSitemapEntries, SITEMAP_CHILD_LIMIT, type GuideSitemapSummary,
 } from "@/lib/guides.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
@@ -99,17 +99,68 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
 
 /**
  * The children of the sitemap index, by id. `static` carries every route below; each
- * `{section}-{locale}` child carries that section's topic hubs and articles in that
- * language. Fixed, not derived from a row count: Next calls `generateSitemaps` during
- * `next build`, where there is no API to ask, so the list has to be knowable without one.
- * A child with nothing published answers an empty file, and the index (`sitemap.xml/route.ts`)
- * leaves it out while the summary can be read.
+ * `{section}-{locale}` child carries that section's topic hubs and its first
+ * `SITEMAP_CHILD_LIMIT` articles in that language, and `{section}-{locale}-{n}` (n ≥ 2)
+ * the next slice of its articles, as many slices as the rows need. So a section has no
+ * ceiling: the day `life-zh-TW` passes 5,000 rows, `life-zh-TW-2` exists and the index
+ * lists it, with no row ever left unadvertised.
+ *
+ * These eleven are the ids that exist whatever the counts say. The numbered ones are
+ * derived from `GET /guides/sitemap/summary` when a crawler asks (`sitemapChildren`): Next
+ * calls `generateSitemaps` per request and answers 404 for an id it did not return, and it
+ * also calls it during `next build`, where there is no API -- a failed summary read then
+ * yields exactly this list. A base child with nothing published answers an empty file
+ * rather than a 404, and the index (`sitemap.xml/route.ts`) leaves it out while the summary
+ * can be read.
  */
 export const SITEMAP_SECTIONS: readonly GuideSection[] = ["travel", "life"];
 export const SITEMAP_CHILDREN: readonly string[] = [
   "static",
   ...SITEMAP_SECTIONS.flatMap((section) => locales.map((locale) => `${section}-${locale}`)),
 ];
+
+/** One section child: which section and language, and which slice of its rows (1-based). */
+export type SitemapChild = { section: GuideSection; locale: Locale; page: number };
+
+/** The id `parseSitemapChild` reads back: the base id for the first slice, `-n` after it. */
+export function sitemapChildId({ section, locale, page }: SitemapChild): string {
+  return page > 1 ? `${section}-${locale}-${page}` : `${section}-${locale}`;
+}
+
+/** Rows a section publishes in a locale, per the summary: the sum over the section's kinds. */
+function sectionRows(summary: GuideSitemapSummary, { section, locale }: Pick<SitemapChild, "section" | "locale">): number {
+  return summary.counts
+    .filter((row) => guideSection(row.kind) === section && row.locale === locale)
+    .reduce((sum, row) => sum + row.count, 0);
+}
+
+/**
+ * Every child a crawler may fetch, in `SITEMAP_CHILDREN` order with each section's slices
+ * together: the static child, each base child always (so an index read during an outage,
+ * which lists every base child, never points at a file that has since vanished), and a
+ * numbered child per further `SITEMAP_CHILD_LIMIT` rows the summary reports.
+ */
+export function sitemapChildren(summary: GuideSitemapSummary): string[] {
+  return SITEMAP_CHILDREN.flatMap((id) => {
+    const target = parseSitemapChild(id);
+    if (!target || !summary.available) return [id];
+    const slices = Math.max(1, Math.ceil(sectionRows(summary, target) / SITEMAP_CHILD_LIMIT));
+    return Array.from({ length: slices }, (_, index) => sitemapChildId({ ...target, page: index + 1 }));
+  });
+}
+
+/**
+ * The children worth listing in the index: the static one and every slice of a section and
+ * locale that publishes something. When the summary cannot be read, every base child --
+ * an outage is not an empty section, and a child that then answers with no rows costs one
+ * fetch rather than a hidden section.
+ */
+export function listedSitemapChildren(summary: GuideSitemapSummary): string[] {
+  return sitemapChildren(summary).filter((id) => {
+    const target = parseSitemapChild(id);
+    return !target || !summary.available || sectionRows(summary, target) > 0;
+  });
+}
 
 /**
  * Where Next serves a child: `/sitemaps/sitemap/<id>.xml`. This module lives one folder down
@@ -122,23 +173,29 @@ export function sitemapChildPath(id: string): string {
   return `/sitemaps/sitemap/${id}.xml`;
 }
 
-/** The section and locale a child id names, or null for `static` and anything unknown. */
-export function parseSitemapChild(id: string): { section: GuideSection; locale: Locale } | null {
+/** The section, locale and slice a child id names, or null for `static` and anything
+ *  unknown -- including a numbered spelling `sitemapChildId` never produces (`-1`, `-02`). */
+export function parseSitemapChild(id: string): SitemapChild | null {
   for (const section of SITEMAP_SECTIONS) {
     for (const locale of locales) {
-      if (id === `${section}-${locale}`) return { section, locale };
+      const base = `${section}-${locale}`;
+      if (id === base) return { section, locale, page: 1 };
+      if (id.startsWith(`${base}-`)) {
+        const suffix = id.slice(base.length + 1);
+        return /^(?:[2-9]|[1-9]\d+)$/.test(suffix) ? { section, locale, page: Number(suffix) } : null;
+      }
     }
   }
   return null;
 }
 
 export async function generateSitemaps(): Promise<{ id: string }[]> {
-  return SITEMAP_CHILDREN.map((id) => ({ id }));
+  return sitemapChildren(await guideSitemapSummary()).map((id) => ({ id }));
 }
 
 /**
  * One child of the index. Next hands the id from the URL (a promise since Next 16); an id
- * outside `SITEMAP_CHILDREN` never reaches here because Next answers 404 for it, and the
+ * outside `generateSitemaps` never reaches here because Next answers 404 for it, and the
  * empty array is only insurance against that changing.
  */
 export default async function sitemap({ id }: { id: Promise<string> }): Promise<MetadataRoute.Sitemap> {
@@ -211,7 +268,9 @@ function publishes(summary: GuideSitemapSummary, kinds: readonly GuideKind[], lo
 }
 
 /**
- * One section in one language: its topic hubs, then its articles.
+ * One section in one language: its topic hubs, then its articles -- or, for a numbered
+ * child, the next `SITEMAP_CHILD_LIMIT` of its articles and no hubs, which the first child
+ * already carries.
  *
  * Two things here deliberately differ from the static child, and both follow from the
  * section publishing one locale at a time:
@@ -225,10 +284,10 @@ function publishes(summary: GuideSitemapSummary, kinds: readonly GuideKind[], lo
  *   The API names those locales on every row, which is what lets a child that holds one
  *   language still point at the others.
  */
-async function sectionSitemap({ section, locale }: { section: GuideSection; locale: Locale }): Promise<MetadataRoute.Sitemap> {
+async function sectionSitemap({ section, locale, page }: SitemapChild): Promise<MetadataRoute.Sitemap> {
   const [topics, guides] = await Promise.all([
-    guideTopicSitemapEntries(),
-    guideSitemapEntries({ section, locale }),
+    page === 1 ? guideTopicSitemapEntries() : Promise.resolve([]),
+    guideSitemapEntries({ section, locale, offset: (page - 1) * SITEMAP_CHILD_LIMIT }),
   ]);
 
   /**

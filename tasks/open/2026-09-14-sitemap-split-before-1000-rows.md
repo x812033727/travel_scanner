@@ -86,3 +86,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life
 - `guides.server.ts` 與 `pack_ingest.py` 目前被 review 中的 `2026-09-14-claude-code-tutorial-center`、`2026-09-14-pack-ingest-urlopen-scheme` 持有，所以先 depends_on 那兩張。
 - `2026-09-14-guide-listing-curated-order` 也會改 `service.py`；先合併的那張，後面那張要 rebase。
 - 來源：`docs/travel-guides.md`「Both sections share one 1,000-row sitemap budget」；Google 單一 sitemap 上限 50,000 列，這裡的 1,000 是自訂預算。
+- 2026-09-16 站主要求把上限整個拿掉：每專區×語系的子檔改為 5,000 列一片、超過就自動編號（`life-zh-TW-2`、`-3`…），
+  片數由 `GET /guides/sitemap/summary` 在請求時算（`generateSitemaps` 每次請求都跑，Next 對它沒回傳的 id 回 404；建置時 API 讀不到就退回 11 個基本子檔）。
+  API `GET /guides/sitemap` 多 `offset`（第 n 片從 `(n-1)×5000` 進入同一個總排序，之後照 cursor 走）。`pack_cli lint` 的 `sitemap_budget` 警告與 `SITEMAP_WARN_ROWS` 刪除。
+  文件：`docs/seo.md`、`docs/travel-guides.md`、`docs/article-architecture.md`。

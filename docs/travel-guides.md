@@ -238,7 +238,9 @@ one row per published, non-expired article × locale, newest first, with the slu
 locale as tiebreakers so rows published in the same second page cleanly. `section` and
 `locale` narrow it to one child sitemap, `limit` (default and maximum 1,000) is the page and
 `next_cursor` the keyset to follow; a call without parameters still answers the newest
-thousand rows in one page, as it did before paging. Each row names every locale its article
+thousand rows in one page, as it did before paging. `offset` skips that many rows before the
+page (after the cursor's position when one is given), which is how the web's second child of
+a section starts at row 5,000 without paging through the first. Each row names every locale its article
 is published in (`locales`), which is what lets a one-language child carry the article's
 full hreflang set. `GET /guides/sitemap/summary` counts published rows per kind and locale
 for the sitemap index and the section hubs. The article response carries
@@ -853,12 +855,13 @@ The other, a `link` block that published tracked URLs undisclosed and uncounted,
 by the partner-link work: tracked ordinary URLs are refused on write and paid links have a
 block of their own (see "Partner links").
 
-The sitemap is an index over one child per section and locale (`docs/seo.md`), each child
-holding up to 5,000 (article, locale) rows read from `GET /guides/sitemap` in pages; the
-shared 1,000-row budget the two sections used to compete for is gone. `pack_cli lint` warns
-per child at 4,000 rows (`SITEMAP_WARN_ROWS`), naming the child, so the next split -- most
-likely `life-zh-TW`, which carries the bulk of the lifestyle section -- is planned before a
-row is evicted rather than after.
+The sitemap is an index over children per section and locale (`docs/seo.md`), each child a
+slice of up to 5,000 (article, locale) rows read from `GET /guides/sitemap` in pages, and a
+section that outgrows one child gets a numbered second (`life-zh-TW-2`) from the row count
+the summary reports -- the shared 1,000-row budget the two sections used to compete for is
+gone, and so is any ceiling after it. `pack_cli lint` no longer warns about sitemap rows:
+`sitemap_children()` still counts them per section and locale for the curious, but there is
+no row a batch could push out.
 
 ## Advertising
 

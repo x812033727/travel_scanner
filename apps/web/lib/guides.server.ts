@@ -295,13 +295,15 @@ export type GuideSitemapEntry = {
 };
 
 /**
- * The most rows one child sitemap carries. Google's per-file limit is 50,000 URLs; this is a
- * far lower self-imposed bound that keeps one runaway enumeration from dominating a child,
- * read in pages of `SITEMAP_PAGE_SIZE` so a child never waits on more than a handful of
- * calls. The lint in `apps/api/app/guides/pack_ingest.py` warns at 80% of it, per child.
+ * The most rows one child sitemap carries: not a ceiling on the section, a slice of it. A
+ * section and locale with more rows than this is served as numbered children
+ * (`app/sitemaps/sitemap.ts`), the n-th starting `(n - 1) × SITEMAP_CHILD_LIMIT` rows down
+ * the API's total order, so nothing is ever left unadvertised. Google's per-file limit is
+ * 50,000 URLs; 5,000 keeps each file quick to serve and to fetch, read in pages of
+ * `SITEMAP_PAGE_SIZE` (the API's page maximum) so a child needs a handful of calls.
  */
 export const SITEMAP_CHILD_LIMIT = 5000;
-export const SITEMAP_PAGE_SIZE = 500;
+export const SITEMAP_PAGE_SIZE = 1000;
 
 /** The slug grammar the API enforces on write (`SLUG_PATTERN`, apps/api/app/guides/schemas.py). */
 const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -309,19 +311,22 @@ const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 /**
  * The enumeration, plus whether it is the complete publication picture.
  *
- * `complete` is false after a failed page or a child that hit `SITEMAP_CHILD_LIMIT`. A
- * failed first page returns no entries at all; a failed later page keeps the rows already
- * read, because a child with most of its articles beats a child with none -- but either way
- * the caller must not read an absence here as "not published".
+ * `complete` is false after a failed page. A failed first page returns no entries at all; a
+ * failed later page keeps the rows already read, because a child with most of its articles
+ * beats a child with none -- but either way the caller must not read an absence here as
+ * "not published". A slice that filled `SITEMAP_CHILD_LIMIT` is complete: the rows after it
+ * belong to the next numbered child, not to this one.
  */
 export type GuideSitemapResult = { entries: GuideSitemapEntry[]; complete: boolean };
 
-/** Which child's rows to enumerate: one section, one locale. Empty means every row. */
-export type GuideSitemapFilters = { section?: GuideSection; locale?: Locale };
+/** Which child's rows to enumerate: one section, one locale, and how many rows down the
+ *  API's order the child starts (the n-th child of a section starts at
+ *  `(n - 1) × SITEMAP_CHILD_LIMIT`). Empty means every row from the top. */
+export type GuideSitemapFilters = { section?: GuideSection; locale?: Locale; offset?: number };
 
 /**
- * Publication-aware enumeration for `app/sitemap.ts`, following `next_cursor` until the API
- * says the page was the last one.
+ * Publication-aware enumeration for `app/sitemaps/sitemap.ts`, following `next_cursor`
+ * until the API says the page was the last one or the child's slice is full.
  *
  * Returns no entries on a failed first page. The sitemap must degrade to its static child
  * rather than disappear: an empty sitemap tells Google the site has no pages, which is far
@@ -336,6 +341,8 @@ export async function guideSitemapEntries(filters: GuideSitemapFilters = {}): Pr
     const params = new URLSearchParams({ limit: String(SITEMAP_PAGE_SIZE) });
     if (filters.section) params.set("section", filters.section);
     if (filters.locale) params.set("locale", filters.locale);
+    // The offset enters the order once; every later page continues from the cursor.
+    if (!cursor && filters.offset) params.set("offset", String(filters.offset));
     if (cursor) params.set("cursor", cursor);
     const row: unknown = await fetchJson(`/guides/sitemap?${params.toString()}`, defaultLocale);
     const body = row as Record<string, unknown> | null;
@@ -372,11 +379,8 @@ export async function guideSitemapEntries(filters: GuideSitemapFilters = {}): Pr
       rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at, ...modified, ...apiLocales });
     }
     cursor = typeof body.next_cursor === "string" && body.next_cursor ? body.next_cursor : null;
-    if (rows.length >= SITEMAP_CHILD_LIMIT && cursor) {
-      // Rows beyond the cap stay unadvertised rather than unbounded; the lint warns long before.
-      complete = false;
-      break;
-    }
+    // A full slice is this child's whole share; the rows after it are the next child's.
+    if (rows.length >= SITEMAP_CHILD_LIMIT) break;
   } while (cursor);
 
   return {

@@ -441,12 +441,10 @@ def test_lint_all_compares_the_packs_with_the_catalogue(tmp_path: Path) -> None:
     assert [p.message for p in findings["catalogue"]] == ["ai-tools-2026-overview: not written yet"]
 
 
-def test_lint_all_warns_per_child_sitemap_and_only_past_its_threshold(
-    tmp_path: Path, monkeypatch
-) -> None:
-    """The sitemap is one child per section and locale, so the budget warning names the
-    child that is filling, counts every pack rather than the ones ``kind`` narrowed the run
-    to, and stays silent below the threshold."""
+def test_lint_all_counts_sitemap_rows_but_has_no_ceiling_to_warn_about(tmp_path: Path) -> None:
+    """The web slices each section and locale into as many numbered child sitemaps as its
+    rows need, so the lint reports the count per section and locale for the curious and
+    never a budget warning: there is no row a batch could push out of the sitemap."""
     from app.guides import pack_ingest
     from app.guides.content_pack import load_packs
 
@@ -461,13 +459,8 @@ def test_lint_all_warns_per_child_sitemap_and_only_past_its_threshold(
     )
     assert pack_ingest.sitemap_children(load_packs(content)) == {"life-zh-TW": 1}
     assert "sitemap" not in lint_all(content, public, kind="life")
-
-    monkeypatch.setattr(pack_ingest, "SITEMAP_WARN_ROWS", 0)
-    findings = lint_all(content, public, kind="howto")
-    assert [(p.level, p.code) for p in findings["sitemap"]] == [("warning", "sitemap_budget")]
-    assert findings["sitemap"][0].message.startswith(
-        "life-zh-TW: 1 (article, locale) rows; a child sitemap holds 5,000"
-    )
+    assert "sitemap" not in lint_all(content, public, kind="howto")
+    assert not hasattr(pack_ingest, "SITEMAP_WARN_ROWS")
 
 
 # --- the Commons transport ------------------------------------------------------------------

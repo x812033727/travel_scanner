@@ -12,7 +12,10 @@ import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getCommunityState } from "@/lib/community/server";
 import { closedCommunity, type CommunityState } from "@/lib/community/types";
-import sitemap, { dynamic, generateSitemaps, parseSitemapChild, SITEMAP_CHILDREN, SITEMAP_ROUTES, sitemapChildPath } from "./sitemap";
+import sitemap, {
+  dynamic, generateSitemaps, listedSitemapChildren, parseSitemapChild, SITEMAP_CHILDREN, SITEMAP_ROUTES,
+  sitemapChildId, sitemapChildPath, sitemapChildren,
+} from "./sitemap";
 import { guideSection } from "@/lib/guides";
 
 vi.mock("@/lib/site-visibility.server", () => ({ getSiteVisibility: vi.fn() }));
@@ -25,7 +28,9 @@ const STATIC_ROUTES = SITEMAP_ROUTES.filter((route) => !route.discovery && !rout
 // Defaulting to an unreadable summary is what keeps every assertion below about the static
 // routes exactly as it was, including the whole-array comparison: with no publication picture
 // every section hub stays listed in all five languages. The hub cases opt in to a summary.
-vi.mock("@/lib/guides.server", () => ({
+// The reads are stubbed; the slice size stays the real constant the children are cut by.
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(),
   guideSitemapEntries: vi.fn(), guideSitemapSummary: vi.fn(), guideTopicSitemapEntries: vi.fn(),
 }));
 
@@ -78,25 +83,62 @@ function routeExists(path: string): boolean {
 }
 
 describe("the index's children", () => {
-  it("names one static child and one per section and locale, without asking the API", async () => {
-    vi.mocked(guideSitemapSummary).mockReset();
+  it("names one static child and one per section and locale when the summary cannot be read", async () => {
+    // `next build` calls generateSitemaps with no API to reach: the read fails and the
+    // list is the eleven base children, every one of which always exists.
+    vi.mocked(guideSitemapSummary).mockReset().mockResolvedValue(unavailableSummary);
+    vi.mocked(guideSitemapEntries).mockReset();
     expect(await generateSitemaps()).toEqual(SITEMAP_CHILDREN.map((id) => ({ id })));
     expect(SITEMAP_CHILDREN).toEqual([
       "static",
       "travel-en", "travel-ja", "travel-ko", "travel-zh-TW", "travel-zh-CN",
       "life-en", "life-ja", "life-ko", "life-zh-TW", "life-zh-CN",
     ]);
-    // `next build` calls generateSitemaps with no API to reach; the list is a constant.
-    expect(guideSitemapSummary).not.toHaveBeenCalled();
     expect(guideSitemapEntries).not.toHaveBeenCalled();
+  });
+
+  it("adds a numbered child per further 5,000 rows a section publishes in a language, so no row is ever left out", async () => {
+    // 12,000 lifestyle rows in zh-TW need three children; 5,000 exactly still fit in one;
+    // a section with nothing keeps its base child (an empty file, never a 404) and no more.
+    const summary = {
+      counts: [
+        { kind: "life" as const, locale: "zh-TW" as const, count: 12_000 },
+        { kind: "intel" as const, locale: "zh-TW" as const, count: 2_000 },
+        { kind: "howto" as const, locale: "zh-TW" as const, count: 3_000 },
+        { kind: "howto" as const, locale: "en" as const, count: 1 },
+      ],
+      available: true,
+    };
+    expect(sitemapChildren(summary)).toEqual([
+      "static",
+      "travel-en", "travel-ja", "travel-ko", "travel-zh-TW", "travel-zh-CN",
+      "life-en", "life-ja", "life-ko", "life-zh-TW", "life-zh-TW-2", "life-zh-TW-3", "life-zh-CN",
+    ]);
+    // The index lists only what has rows: every slice of a publishing section, no empty child.
+    expect(listedSitemapChildren(summary)).toEqual([
+      "static", "travel-en", "travel-zh-TW", "life-zh-TW", "life-zh-TW-2", "life-zh-TW-3",
+    ]);
+    expect(listedSitemapChildren(unavailableSummary)).toEqual([...SITEMAP_CHILDREN]);
+    // Next answers 404 for an id generateSitemaps did not return, so the numbered children
+    // have to come from it at request time -- from the same summary the index reads.
+    vi.mocked(guideSitemapSummary).mockReset().mockResolvedValue(summary);
+    expect((await generateSitemaps()).map((item) => item.id)).toEqual(sitemapChildren(summary));
   });
 
   it("serves each child under /sitemaps/sitemap/<id>.xml, the .xml keeping it out of the locale proxy", () => {
     expect(sitemapChildPath("life-zh-TW")).toBe("/sitemaps/sitemap/life-zh-TW.xml");
-    expect(parseSitemapChild("life-zh-TW")).toEqual({ section: "life", locale: "zh-TW" });
-    expect(parseSitemapChild("travel-en")).toEqual({ section: "travel", locale: "en" });
+    expect(parseSitemapChild("life-zh-TW")).toEqual({ section: "life", locale: "zh-TW", page: 1 });
+    expect(parseSitemapChild("travel-en")).toEqual({ section: "travel", locale: "en", page: 1 });
+    expect(parseSitemapChild("life-zh-TW-2")).toEqual({ section: "life", locale: "zh-TW", page: 2 });
+    expect(parseSitemapChild("life-zh-TW-12")).toEqual({ section: "life", locale: "zh-TW", page: 12 });
+    expect(sitemapChildId({ section: "life", locale: "zh-TW", page: 1 })).toBe("life-zh-TW");
+    expect(sitemapChildId({ section: "life", locale: "zh-TW", page: 3 })).toBe("life-zh-TW-3");
     expect(parseSitemapChild("static")).toBeNull();
     expect(parseSitemapChild("life-xx")).toBeNull();
+    // Only the spelling sitemapChildId produces: the first slice has no number, and no zeros.
+    for (const id of ["life-zh-TW-1", "life-zh-TW-0", "life-zh-TW-02", "life-zh-TW-2x", "life-zh-TW-"]) {
+      expect(parseSitemapChild(id), id).toBeNull();
+    }
   });
 
   it("answers an unknown id with nothing rather than a guess", async () => {
@@ -313,13 +355,25 @@ describe("guide articles in the section children", () => {
   it("files each row in the child of its own section and language, and asks the API for exactly that", async () => {
     arrange();
     expect((await child("travel-ja")).map((entry) => entry.url)).toEqual([`${siteUrl}/ja/guides/howto/narita-to-tokyo`]);
-    expect(guideSitemapEntries).toHaveBeenLastCalledWith({ section: "travel", locale: "ja" });
+    expect(guideSitemapEntries).toHaveBeenLastCalledWith({ section: "travel", locale: "ja", offset: 0 });
     expect((await child("life-zh-TW")).map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/life/ai-notes`]);
     expect((await child("life-en")).map((entry) => entry.url)).toEqual([]);
     expect((await child("travel-zh-TW")).map((entry) => entry.url).sort()).toEqual([
       `${siteUrl}/zh-TW/guides/howto/narita-to-tokyo`,
       `${siteUrl}/zh-TW/guides/intel/jr-pass-sale`,
     ]);
+  });
+
+  it("starts a numbered child 5,000 rows down the same order, with the articles only", async () => {
+    // The topic hubs live in the first child; the second is the next slice of articles.
+    arrange();
+    vi.mocked(guideTopicSitemapEntries).mockResolvedValue([{ section: "life", slug: "ai", locales: ["zh-TW"] }]);
+    const first = await child("life-zh-TW");
+    expect(first.map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/life/topics/ai`, `${siteUrl}/zh-TW/life/ai-notes`]);
+    const second = await child("life-zh-TW-2");
+    expect(guideSitemapEntries).toHaveBeenLastCalledWith({ section: "life", locale: "zh-TW", offset: 5000 });
+    expect(second.map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/life/ai-notes`]);
+    expect(guideTopicSitemapEntries).toHaveBeenCalledTimes(1);
   });
 
   it("keeps a row the API filed under the wrong child out of it", async () => {

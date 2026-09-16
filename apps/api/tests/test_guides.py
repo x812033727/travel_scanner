@@ -9,6 +9,7 @@ from __future__ import annotations
 import os
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
+from unittest.mock import ANY
 from uuid import uuid4
 
 import pytest
@@ -938,6 +939,21 @@ async def test_the_sitemap_pages_by_section_and_locale_without_repeating_or_drop
         travel_zh = await rows(section="travel", locale="zh-TW")
         assert sorted(row["slug"] for row in travel_zh) == ["jr-pass-sale", "narita-to-tokyo"]
         assert await rows(locale="ko") == []
+
+        # ``offset`` is how a second child file starts where the first stopped without
+        # paging through it: the same total order, entered further down, then followed by
+        # cursor alone -- the offset is sent once. Past the end it is an empty page.
+        async def page(**params):
+            body = (await api.get("/guides/sitemap", params=params)).json()
+            found = [(r["kind"], r["slug"], r["locale"]) for r in body["entries"]]
+            return found, body["next_cursor"]
+
+        assert await page(offset=2) == (keys[2:], None)
+        third, cursor = await page(offset=2, limit=1)
+        assert third == keys[2:3] and cursor
+        assert await page(cursor=cursor, limit=1) == (keys[3:4], ANY)
+        assert await page(offset=5) == ([], None)
+        assert (await api.get("/guides/sitemap", params={"offset": -1})).status_code == 422
         assert (await api.get("/guides/sitemap", params={"section": "recipes"})).status_code == 422
 
         tampered = await api.get("/guides/sitemap", params={"cursor": "not-a-cursor"})

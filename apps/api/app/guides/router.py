@@ -152,11 +152,12 @@ async def public_sitemap(
     section: Section | None = None,
     locale: Locale | None = None,
     cursor: str | None = Query(default=None, max_length=512),
+    offset: int = Query(default=0, ge=0),
     limit: int = Query(default=service.SITEMAP_LIMIT, ge=1, le=service.SITEMAP_LIMIT),
 ) -> SitemapList:
     response.headers["Cache-Control"] = "no-store"
     return await service.sitemap_entries(
-        session, section=section, locale=locale, cursor=cursor, limit=limit
+        session, section=section, locale=locale, cursor=cursor, offset=offset, limit=limit
     )
 
 

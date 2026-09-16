@@ -4,7 +4,10 @@ import { siteUrl } from "@/lib/seo";
 import { SITEMAP_CHILDREN } from "../sitemaps/sitemap";
 import { dynamic, GET } from "./route";
 
-vi.mock("@/lib/guides.server", () => ({ guideSitemapSummary: vi.fn() }));
+// The summary is stubbed; the slice size the children are cut by stays the real constant.
+vi.mock("@/lib/guides.server", async (original) => ({
+  ...await original<typeof import("@/lib/guides.server")>(), guideSitemapSummary: vi.fn(),
+}));
 
 const children = (xml: string) =>
   [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
@@ -33,6 +36,20 @@ describe("/sitemap.xml, the index", () => {
       "/sitemaps/sitemap/travel-zh-TW.xml", "/sitemaps/sitemap/life-zh-TW.xml",
     ]);
     for (const loc of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) expect(loc[1].startsWith(`${siteUrl}/`)).toBe(true);
+  });
+
+  it("lists a numbered child per further 5,000 rows, so a section that outgrows one file gets a second at once", async () => {
+    vi.mocked(guideSitemapSummary).mockResolvedValue({
+      counts: [
+        { kind: "life", locale: "zh-TW", count: 5_001 },
+        { kind: "howto", locale: "en", count: 5_000 },
+      ],
+      available: true,
+    });
+    expect(children(await (await GET()).text())).toEqual([
+      "/sitemaps/sitemap/static.xml", "/sitemaps/sitemap/travel-en.xml",
+      "/sitemaps/sitemap/life-zh-TW.xml", "/sitemaps/sitemap/life-zh-TW-2.xml",
+    ]);
   });
 
   it("lists every child when the summary cannot be read, because an outage is not an empty section", async () => {

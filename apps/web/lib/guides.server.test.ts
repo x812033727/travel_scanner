@@ -311,7 +311,7 @@ describe("the sitemap enumeration", () => {
     expect(result.entries.map((entry) => entry.slug)).toEqual(["narita-to-tokyo", "narita-to-tokyo"]);
   });
 
-  it("stops at the child limit rather than paging without bound", async () => {
+  it("stops at the child's slice rather than paging without bound, and calls a full slice complete", async () => {
     const page = Array.from({ length: SITEMAP_PAGE_SIZE }, (_, index) => ({
       kind: "intel", slug: `deal-${index}`, locale: "zh-TW", published_at: "2026-09-01T00:00:00Z",
     }));
@@ -320,12 +320,27 @@ describe("the sitemap enumeration", () => {
       calls += 1;
       return { ok: true, json: async () => ({ entries: page, next_cursor: `page-${calls}` }) };
     }));
-    const capped = await guideSitemapEntries();
-    // A capped answer is not the publication picture: the rows it left could be the only
-    // articles some language has, so callers must not read an absence here as "none published".
-    expect(capped.complete).toBe(false);
-    expect(capped.entries).toHaveLength(SITEMAP_CHILD_LIMIT);
+    const slice = await guideSitemapEntries();
+    // The rows after the slice are the next numbered child's, not a gap in the picture.
+    expect(slice.complete).toBe(true);
+    expect(slice.entries).toHaveLength(SITEMAP_CHILD_LIMIT);
     expect(calls).toBe(SITEMAP_CHILD_LIMIT / SITEMAP_PAGE_SIZE);
+  });
+
+  it("enters the order at the child's offset once, then follows the cursor alone", async () => {
+    const fetchMock = paged([[rows[0]], [rows[1]]]);
+    vi.stubGlobal("fetch", fetchMock);
+    const result = await guideSitemapEntries({ section: "life", locale: "zh-TW", offset: 5000 });
+    expect(result.complete).toBe(true);
+    expect(result.entries).toHaveLength(2);
+    const [first, second] = fetchMock.mock.calls.map(([url]) => new URL(url).searchParams);
+    expect(first.get("offset")).toBe("5000");
+    expect(second.get("offset")).toBeNull();
+    expect(second.get("cursor")).toBe("page-1");
+    // No offset parameter at all from the top of a section: the API's default is zero.
+    vi.stubGlobal("fetch", paged([[rows[0]]]));
+    await guideSitemapEntries({ section: "life", locale: "zh-TW", offset: 0 });
+    expect(new URL(vi.mocked(fetch).mock.calls[0][0] as string).searchParams.get("offset")).toBeNull();
   });
 
   it("reports a whole answer as complete, which is what lets a hub be left out", async () => {

@@ -88,10 +88,6 @@ INTEL_TEXT_RANGE = (700, 3_000)
 DOCUMENT_JSON_LIMIT = 110_000
 MIN_LABEL_PX = 15
 DIAGRAM_VIEWBOX = "0 0 1600 900"
-#: The sitemap is one child per section and locale (``apps/web/app/sitemap.ts``), each
-#: holding up to this many (article, locale) rows; the lint warns at 80% of it, per child.
-SITEMAP_CHILD_LIMIT = 5000
-SITEMAP_WARN_ROWS = 4000
 SITE_ORIGIN = "https://mokaair.com/"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MOKAAIR_CREDIT = ImageCredit(author="Mokaair", license="© Mokaair")
@@ -1030,31 +1026,17 @@ def lint_all(
                     Problem("warning", "pack_not_in_catalogue", f"{pack.slug}: add it to the list")
                 )
         findings["catalogue"] = notes
-    budget = sitemap_budget(packs)
-    if budget:
-        findings["sitemap"] = budget
     return findings
 
 
 def sitemap_children(packs: list[ArticlePack]) -> dict[str, int]:
-    """(article, locale) rows per child sitemap, keyed ``{section}-{locale}`` as the web
-    names the children."""
+    """(article, locale) rows per section and locale, keyed ``{section}-{locale}`` as the
+    web names the first child sitemap of each. Informational only: the web slices a section
+    and locale into as many numbered children as its rows need (``SITEMAP_CHILD_LIMIT`` in
+    ``apps/web/lib/guides.server.ts``), so there is no ceiling for a lint to warn about."""
     rows: dict[str, int] = {}
     for pack in packs:
         for locale in pack.locales:
             key = f"{section_of(pack.kind)}-{locale}"
             rows[key] = rows.get(key, 0) + 1
     return rows
-
-
-def sitemap_budget(packs: list[ArticlePack]) -> list[Problem]:
-    return [
-        Problem(
-            "warning",
-            "sitemap_budget",
-            f"{child}: {rows} (article, locale) rows; a child sitemap holds "
-            f"{SITEMAP_CHILD_LIMIT:,} -- split that child before it fills",
-        )
-        for child, rows in sorted(sitemap_children(packs).items())
-        if rows > SITEMAP_WARN_ROWS
-    ]

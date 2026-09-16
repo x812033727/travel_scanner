@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { guideSitemapSummary } from "@/lib/guides.server";
-import { guideSection } from "@/lib/guides";
 import { siteUrl } from "@/lib/seo";
-import { SITEMAP_CHILDREN, parseSitemapChild, sitemapChildPath } from "../sitemaps/sitemap";
+import { listedSitemapChildren, sitemapChildPath } from "../sitemaps/sitemap";
 
 /**
- * `/sitemap.xml` is a sitemap index: one child for the static routes and one per section
- * and locale for the articles and their topic hubs (`app/sitemaps/sitemap.ts`,
- * `generateSitemaps`, served at `/sitemaps/sitemap/<id>.xml`).
+ * `/sitemap.xml` is a sitemap index: one child for the static routes and, per section and
+ * locale, one child per `SITEMAP_CHILD_LIMIT` articles for the articles and their topic
+ * hubs (`app/sitemaps/sitemap.ts`, `generateSitemaps`, served at
+ * `/sitemaps/sitemap/<id>.xml`). Nothing here caps a section: a sixth thousand rows means a
+ * second child, listed the next time a crawler asks.
  *
  * Next writes the children but never an index, and it refuses a `sitemap.ts` beside a
  * `sitemap.xml/route.ts` as the same route declared twice -- so this handler is what keeps
@@ -27,14 +28,7 @@ export const dynamic = "force-dynamic";
 const escape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 export async function GET(): Promise<NextResponse> {
-  const summary = await guideSitemapSummary();
-  const children = SITEMAP_CHILDREN.filter((id) => {
-    const target = parseSitemapChild(id);
-    if (!target || !summary.available) return true;
-    return summary.counts.some(
-      (row) => guideSection(row.kind) === target.section && row.locale === target.locale && row.count > 0,
-    );
-  });
+  const children = listedSitemapChildren(await guideSitemapSummary());
   const body = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',

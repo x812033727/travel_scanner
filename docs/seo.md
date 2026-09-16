@@ -119,9 +119,16 @@ authenticated data are needed to enumerate them. All entries include language al
 
 Published guide articles live in the section children, one entry per published translation in
 the child of its section and language, enumerated through `GET /guides/sitemap?section=&locale=`
-in pages of `SITEMAP_PAGE_SIZE` (500) followed by `next_cursor`, up to `SITEMAP_CHILD_LIMIT`
-(5,000) rows per child -- a self-imposed bound far under Google's 50,000, with the content
-lint warning at 80% of it per child. They are the only entries carrying `lastmod`: the
+in pages of `SITEMAP_PAGE_SIZE` (1,000, the API's page maximum) followed by `next_cursor`.
+A child holds at most `SITEMAP_CHILD_LIMIT` (5,000) rows, and that is a slice, not a ceiling:
+a section and language with more rows is served as numbered children (`life-zh-TW`,
+`life-zh-TW-2`, …), the n-th entering the API's total order at `offset=(n-1)×5,000` and the
+index listing every slice, so no row is ever left unadvertised however many batches land.
+The number of slices comes from `GET /guides/sitemap/summary` when a crawler asks
+(`generateSitemaps` runs per request, and Next answers 404 for an id it did not return);
+the eleven base children exist whatever the counts say, and a read that fails -- as it does
+during `next build`, where there is no API -- yields exactly those. The old per-child lint
+warning is gone with the ceiling (2026-09-16). They are the only entries carrying `lastmod`: the
 timestamp of the revision readers currently see (`modified_at`), which moves on every
 republication, falling back to the first `published_at` when an older API omits it. An
 article's alternates name only the locales it is genuinely published in (the API sends

@@ -536,21 +536,29 @@ async def sitemap_entries(
     section: Section | None = None,
     locale: Locale | None = None,
     cursor: str | None = None,
+    offset: int = 0,
     limit: int = SITEMAP_LIMIT,
 ) -> SitemapList:
-    """Publication-aware enumeration for ``apps/web/app/sitemap.ts``, one page at a time.
+    """Publication-aware enumeration for ``apps/web/app/sitemaps/sitemap.ts``, one page at
+    a time.
 
     Only rows that the list and the article page would also serve. Expired intel and
     withdrawn translations leave here at the same moment they leave the site.
 
-    The web splits the sitemap into one child per section and locale, so both filters exist;
+    The web splits the sitemap into children per section and locale, so both filters exist;
     a page holds at most ``SITEMAP_LIMIT`` rows and the caller follows ``next_cursor`` until
     it is None. Newest first, with the slug and the locale as tiebreakers: a batch import
     publishes dozens of rows in the same second, and a keyset on the timestamp alone would
     repeat or skip them across pages.
+
+    ``offset`` skips that many rows before the page -- after the cursor's position when one
+    is given. It is what lets a section that outgrew one child file start its second child
+    at row 5,000 without paging through the first: the order is total, so an offset into it
+    is as stable as the keyset, and a sitemap is rebuilt from the top whenever it is read.
     """
     kinds = kind_filter(None, section)
     size = min(max(limit, 1), SITEMAP_LIMIT)
+    skip = max(offset, 0)
     # The current public version's own timestamp rides along as ``modified_at``: the same
     # predicate ``_published_document`` resolves the pointer with, as an outer join so a
     # damaged pointer costs that row its lastmod rather than its place in the file.
@@ -598,7 +606,9 @@ async def sitemap_entries(
                 GuideArticleLocale.published_at.desc(),
                 GuideArticle.slug,
                 GuideArticleLocale.locale,
-            ).limit(size + 1)
+            )
+            .offset(skip)
+            .limit(size + 1)
         )
     )
     has_more = len(rows) > size

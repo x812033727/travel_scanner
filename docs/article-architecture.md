@@ -142,6 +142,6 @@
 - 驗證：`GET /api/v1/guides/topics?locale=zh-TW&section=life`（父 `parent:null`、子帶 `parent`、`count/counts`）、
   `GET /api/v1/guides?locale=zh-TW&kind=howto&country=japan`、`GET /api/v1/guides/destinations?locale=zh-TW`、`GET /api/v1/guides/series?locale=zh-TW`；
   開 `/zh-TW/life/topics/ai-terms`、`/zh-TW/guides/topics/transport`、`/en/life/topics/ai-terms`（應 noindex），看 canonical、robots、JSON-LD；`/sitemap.xml` 含主題 hub 列。
-- 風險：sitemap 已拆成 index（每專區×語系一個子檔，`pack_cli lint` 4,000 列預警）；
+- 風險：sitemap 已拆成 index（每專區×語系一個子檔，超過 5,000 列自動編號成 `-2`、`-3`… 子檔，沒有上限；lint 不再預警）；
   CJK 搜尋用 pg_trgm 需 UTF-8 `lc_ctype`；新 block 的 web 渲染器先於內容；
   別名以（文章、語系、別名）唯一，同語系多篇共用的別名只加權、不置頂（系列 lesson 的 `aliases` 有 346 個重複，如 `cli`、`手機`）。
