@@ -19,29 +19,6 @@ scope:
 
 ## Why
 
-Describe the problem in the terms someone who has never seen it would need.
-
-## Definition of done
-
-- [x] `_document_text` 回傳的字串含摘要與 FAQ，所以簡體字掃描掃得到它們，
-      圖上只在摘要出現的數字不再被判成「文章沒有提到」。
-
-## Steps
-
-- [x] `_document_text` 加 `SummaryBlock` 與 `FaqBlock` 分支，docstring 說明理由。
-- [x] 回歸測試，含正例與反例，並做變異驗證（拿掉修正會紅）。
-- [x] 掃過 `pack_ingest` 其餘走訪區塊的函式，確認沒有第二處同類缺口。
-
-## How to verify
-
-The exact commands or clicks that prove it works.
-
-## Notes
-
-Findings, decisions and dead ends, so the next agent does not repeat them.
-
-## Why
-
 `_document_text` 的 docstring 寫「Every string a reader sees, joined」，但它的分支停在
 `LinkBlock`，**沒有 `SummaryBlock` 與 `FaqBlock`**。這兩種區塊是 #531 Phase 4 才加的，
 當時補進了 `_body_parts`（所以 `text_length` 與 `finance_claim_language` 沒有這個洞），
@@ -64,15 +41,16 @@ FAQ 的 question 與 answer 分開 extend、不是串成一個字串，因為這
 `_NUMBER` 掃描；串起來會讓「問題結尾的數字」與「答案開頭的數字」黏成一個假的數字。
 （`_body_parts` 那邊是計長度用的，串起來沒有影響，所以兩邊寫法不同是刻意的。）
 
-## Notes
+## Definition of done
 
-- 回歸測試做過**變異驗證**：把兩個分支拿掉，`test_document_text_carries_the_summary_and_the_faq`
-  會紅；放回去 9 passed。測試同時驗正例（圖上的 170GB/s 只出現在摘要、512GB 只出現在
-  FAQ 答案，都不該被判缺）與反例（999GB 仍然要被判缺）。
-- `search.document_text`（`search.py` 的另一個同名函式）**本來就有**摘要與 FAQ，
-  而且 `tests/test_guides_search.py` 有一條測試逐字驗它。只有 `pack_ingest` 這個漏了。
-- 掃過 `pack_ingest` 其餘走訪區塊的函式，沒有發現第二處同類缺口。
-- 這個問題是批次 4 工具移植的驗證代理發現的，不是人工查出來的。
+- [x] `_document_text` 回傳的字串含摘要與 FAQ，所以簡體字掃描掃得到它們，
+      圖上只在摘要出現的數字不再被判成「文章沒有提到」。
+
+## Steps
+
+- [x] `_document_text` 加 `SummaryBlock` 與 `FaqBlock` 分支，docstring 說明理由。
+- [x] 回歸測試，含正例與反例，並做變異驗證（拿掉修正會紅）。
+- [x] 掃過 `pack_ingest` 其餘走訪區塊的函式，確認沒有第二處同類缺口。
 
 ## How to verify
 
@@ -85,3 +63,13 @@ uv run python -m app.guides.pack_cli lint --kind life    # 0 error
 
 實際結果（2026-09-16）：**3,902 passed / 343 skipped / 0 failed**、
 `lint --kind life` 845 篇 **0 error**、ruff 與 mypy 全過。
+
+## Notes
+
+- 回歸測試做過**變異驗證**：把兩個分支拿掉，`test_document_text_carries_the_summary_and_the_faq`
+  會紅；放回去 9 passed。測試同時驗正例（圖上的 170GB/s 只出現在摘要、512GB 只出現在
+  FAQ 答案，都不該被判缺）與反例（999GB 仍然要被判缺）。
+- `search.document_text`（`search.py` 的另一個同名函式）**本來就有**摘要與 FAQ，
+  而且 `tests/test_guides_search.py` 有一條測試逐字驗它。只有 `pack_ingest` 這個漏了。
+- 掃過 `pack_ingest` 其餘走訪區塊的函式，沒有發現第二處同類缺口。
+- 這個問題是批次 4 工具移植的驗證代理發現的，不是人工查出來的。
