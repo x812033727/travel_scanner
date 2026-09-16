@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-content-packs-counts-in-hub-titles
 title: "Content packs: counts in the three live hub articles and the 82 links to the glossary index"
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5
 claimed_at: 2026-09-16T08:54:15Z
 created_at: 2026-09-16T06:14:00Z
-completed_at:
+completed_at: 2026-09-16T09:22:01Z
 branch: claude/hub-pack-counts
 depends_on:
   - 2026-09-16-stop-showing-article-counts-and-lesson
@@ -129,7 +129,7 @@ scope:
 - [x] 三篇中心文章的標題、描述與開頭段不再有會成長的數字。
 - [x] 82 篇的連結文字換成新標題。
 - [x] 會把舊標題寫回去的來源一起改：`revise_glossary.py`，以及系列目錄與 lesson 原稿。
-- [ ] 85 篇已重新匯入正式站，主題頁的系列卡與文章內連結都看不到這些數字。
+- [x] 85 篇已重新匯入正式站，主題頁的系列卡與文章內連結都看不到這些數字。
 
 ## Steps
 
@@ -159,3 +159,9 @@ in-progress）佔著，而且它接下來的批次正好是 `ai-term-` 與 `gemi
 
 未發布內容包裡的數字（`claude-code-tutorials`、`codex-learning-hub`、`claude-code-build-todo-app` 的描述，
 以及 73 個包正文的「第 N 篇」）拆到 `2026-09-16-unpublished-content-packs-hub-descriptions-and`。
+
+2026-09-16 09:20 UTC 部署 #534（`96e67829`）後以 `--slug` 限定匯入 85 篇：dry-run 85 篇全是 `update`、
+0 個新建、分類不變；正式匯入 updated 85／published 85／failed 無。驗證（直接打容器內的 web）：
+`/zh-TW/life/topics/ai` 三張系列卡、三篇中心文章、`ai-term-agent-loop` 與 `what-is-a-large-language-model`
+的可見文字都沒有「81 個概念／10 篇看懂／五十篇教學／十篇專文」；文末連結與 `<title>` 是新標題；
+搜尋「AI 名詞總索引」回來的前兩筆就是兩個新標題（匯入走 admin write path，索引自己跟上，不必 reindex）。
