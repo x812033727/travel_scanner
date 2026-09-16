@@ -35,12 +35,16 @@ scope:
 ## 候選題目
 
 [`docs/news-2026-batch-4/candidates-tech-and-ai.md`](../../docs/news-2026-batch-4/candidates-tech-and-ai.md)
-有 **11 則已驗**：Apple iPhone Duo 與 9/9 發表會硬體、歐盟 CRA 通報義務、
+有 **12 則已驗**：Apple iPhone Duo 與 9/9 發表會硬體、歐盟 CRA 通報義務、
 台灣數發部四則（主權 AI 語料庫那條線最適合本站讀者）、
-Apple 歐盟 App 商業條款、Windows Project Zenith、September Pixel Drop。
+Apple 歐盟 App 商業條款、Windows Project Zenith、September Pixel Drop、
+**Apple M6 與 M5 Ultra**。
 
-**一個待站主決定的分類問題**：Apple M6／M5 Ultra（8/25）目前放在「次要新聞」，
-但 **M6 是 Apple 第一顆 2 奈米製程晶片**、站上完全沒寫過，我建議升級成重要新聞。
+**分類已定**：Apple M6／M5 Ultra（8/25）原本列在「次要新聞」，
+**站主在 2026-09-16 裁定升級為重要新聞**（M6 是 Apple 第一顆 2 奈米製程晶片、
+站上完全沒寫過），已經移進候選清單的已驗區成為 **T8**。
+剩下的分類建議只有一個方向相反的：**T7 September Pixel Drop 份量偏輕，
+我建議當次要新聞**，但那一則由站主圈選時一併決定即可。
 
 **與既有文章的分工**：`ai-news-siri-ai-ios-27-20260914` 已經寫過 iOS 27 與 Siri AI，
 9/9 那篇**只寫硬體**，軟體連回去那篇。

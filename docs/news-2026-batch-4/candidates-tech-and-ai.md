@@ -262,6 +262,34 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
 - **這則份量偏輕，建議放「8/1 起的次要新聞」那一格**，不要當重要新聞。
   次要新聞每個垂直要 4–6 則，這是第一則。
 
+### T8 — Apple M6 與 M5 Ultra（✅ 已驗，**站主裁定為重要新聞**）
+
+- **事件日** 2026-08-25，**建議 slug** `tech-news-apple-m6-m5-ultra-20260825`
+- **一手來源**
+  `https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/`
+- **官方原文載明**：
+  - **M6 是 Apple 第一顆 2 奈米製程晶片**；12 核 CPU（2 個 super core、
+    4 個效能核心、6 個節能核心）、12 核 GPU 含 Neural Accelerators、
+    雙 16 核神經網路引擎；統一記憶體頻寬最高 **170GB/s**、記憶體最高 **32GB**；
+    「up to 1.2x faster multithreaded performance as compared to M5」。
+  - **M5 Ultra 是 M 系列第一個四晶粒架構**（UltraFusion）；最高 36 核 CPU
+    （12 super core、24 效能核心）、最高 80 核 GPU、32 核神經網路引擎；
+    統一記憶體頻寬 **1.2TB/s**、記憶體最高 **512GB**；
+    「up to 1.3x higher multithreaded performance than M3 Ultra」。
+  - M6 首發在新 Mac mini、M5 Ultra 首發在新 Mac Studio。
+- **官方沒說**：售價與上市日期。兩項都要寫成「官方未說明」。
+- **所有效能倍數都是 Apple 的宣稱**，一律寫成「Apple 表示」，本站沒有實測；
+  也**不要**拿它去跟其他廠商的晶片比較，官方沒有做那個比較。
+- **為什麼是重要新聞**：第一顆 2 奈米製程的消費級晶片是這段期間最硬的科技題目之一，
+  站上完全沒寫過。**站主在 2026-09-16 裁定從「次要新聞」升級為「重要新聞」。**
+- **讀者角度**：2 奈米製程與四晶粒封裝各自解決什麼問題，以及「統一記憶體頻寬」
+  對本機跑模型代表什麼——可以接 T6 Project Zenith 的
+  「64 GB 以上統一記憶體、250 GB/s 以上記憶體頻寬」那組門檻對照著寫。
+- 同日還有兩篇新聞稿，可以併進同一篇（網址已由 Newsroom feed 確認）：
+  - `https://www.apple.com/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/`
+  - `https://www.apple.com/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/`
+- 界線：`tech.md` 禁止購買建議，所以**不寫**「該不該換機」「值不值得升級」。
+
 ### ⚠️ Apple Developer feed 裡還沒展開的平台政策
 
 日期與標題已由 feed 確認，內容未讀：
@@ -308,10 +336,14 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
 | 垂直 | ✅ 已驗 | ⚠️ 有日期、待讀原文 | 距離 10–12 則 |
 | --- | --- | --- | --- |
 | 幣圈 | **11**（C1–C11） | 1（MAS，此容器連不到） | **已到量** |
-| 科技 | **11**（Apple 3、NVIDIA 1、moda 4、T5–T7） | 6 | **已到量** |
+| 科技 | **12**（Apple 3、NVIDIA 1、moda 4、T5–T8） | 6 | **已到量** |
 | AI | **2**（Gemini 3.8 Live、NVIDIA×HF） | 13（OpenAI feed 10、NVIDIA 3） | 視站主選題 |
 
 **三個垂直的重要新聞候選都夠站主圈選了。**
+
+科技那 12 則裡有一則例外要記住：**T7 September Pixel Drop 份量偏輕，我仍建議當次要新聞**，
+所以實際可寫成重要新聞的是 11 則。反過來 **T8 Apple M6／M5 Ultra 原本列在次要新聞，
+站主在 2026-09-16 裁定升級為重要新聞**，已經移進上面的已驗區。
 
 次要新聞（8/1–9/16）的現況見本頁最後一節：**AI 8 則、科技 8 則都夠了，
 幣圈 0 則**——在「不碰行情」的界線內，那段期間的幣圈次要新聞查證後確實很稀薄。
@@ -358,27 +390,8 @@ feed 只給了日期與標題。要寫得換管道（官方 RSS 的 description 
 
 ## 科技的次要新聞
 
-### ✅ 已驗：Apple M6 與 M5 Ultra（8/25）——這則其實夠格當「重要新聞」
-
-- **事件日** 2026-08-25　**建議 slug** `tech-news-apple-m6-m5-ultra-20260825`
-- **一手來源**
-  `https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/`
-- **官方原文載明**：
-  - **M6 是 Apple 第一顆 2 奈米製程晶片**；12 核 CPU（2 個 super core、
-    4 個效能核心、6 個節能核心）、12 核 GPU 含 Neural Accelerators、
-    雙 16 核神經網路引擎；統一記憶體頻寬最高 **170GB/s**、記憶體最高 **32GB**；
-    「up to 1.2x faster multithreaded performance as compared to M5」。
-  - **M5 Ultra 是 M 系列第一個四晶粒架構**（UltraFusion）；最高 36 核 CPU
-    （12 super core、24 效能核心）、最高 80 核 GPU、32 核神經網路引擎；
-    統一記憶體頻寬 **1.2TB/s**、記憶體最高 **512GB**；
-    「up to 1.3x higher multithreaded performance than M3 Ultra」。
-  - M6 首發在新 Mac mini、M5 Ultra 首發在新 Mac Studio。
-- **官方沒說**：售價與上市日期。兩項都要寫成「官方未說明」。
-- **所有效能倍數都是 Apple 的宣稱**，一律寫成「Apple 表示」，本站沒有實測。
-- **這則不該當次要新聞。** 第一顆 2nm 消費級晶片是這段期間最硬的科技題目之一，
-  而且站上完全沒寫過。建議提到「重要新聞」那一格，次要新聞另外挑。
-- 同日還有兩篇新聞稿（Mac Studio with M5 Max and M5 Ultra、
-  Mac mini featuring the all-new M6 and M5 Pro），可以併進同一篇。
+> **Apple M6 與 M5 Ultra（8/25）已由站主裁定升級為重要新聞**，
+> 移到上面的 **T8**。這一格不再計入它。
 
 ### ⚠️ 其餘科技次要新聞（feed 已確認日期與標題）
 
