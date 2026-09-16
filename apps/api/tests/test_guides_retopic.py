@@ -57,6 +57,8 @@ def content(tmp_path: Path) -> Path:
         pack("personal-finance-first-steps", topics=["finance", "tutorial"]),
         pack("weekly-review-reset-routine", topics=["productivity", "daily"]),
         pack("narita-to-tokyo", kind="howto", topics=["transport"]),
+        pack("tech-news-usb-c-mandate-20260401", topics=["gadgets"]),
+        pack("crypto-news-fsc-vasp-rules-20260501", topics=["finance"]),
     ]
     for row in rows:
         (tmp_path / f"{row['slug']}.json").write_text(
@@ -93,6 +95,12 @@ def test_a_slug_earns_its_sub_topic_and_keeps_what_it_had(content: Path) -> None
         "tutorial",
         "finance-basics",
     ]
+    # ``tech`` is a new parent, so a tech-news article is given it. ``crypto``'s parent
+    # ``finance`` is one of the original eight the rule leaves alone, so it arrives only
+    # because the pack already carried it -- the gap ``pack_ingest.FINANCE_TOPICS`` covers
+    # by naming ``crypto`` itself.
+    assert rows["tech-news-usb-c-mandate-20260401"].proposed == ["gadgets", "tech", "tech-news"]
+    assert rows["crypto-news-fsc-vasp-rules-20260501"].proposed == ["finance", "crypto"]
 
 
 def test_an_article_without_a_rule_and_a_travel_article_are_left_alone(content: Path) -> None:

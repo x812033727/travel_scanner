@@ -118,6 +118,8 @@
 
 **生活分享**：`software`、`gadgets`、`productivity`、`daily`、`misc` 維持單層；`tutorial` 保留於資料但不作導覽。
 
+0079 又加了兩個新聞垂直：`crypto` 掛在 `finance` 底下（同一個 YMYL 主題、同一條免責規則），`tech-news` 掛在新父主題 `tech` 底下。`tech` 沒有拿 `gadgets` 或 `software` 改造：前者是 3C 裝置、後者是 App，而晶片、電信與平台法規兩邊都不是，上面那句「維持單層」也因此仍然成立。
+
 | 父主題 | 子主題 | 吸收（`retopic` 規則摘要） |
 | --- | --- | --- |
 | `ai` AI 工具 | `ai-terms` AI 名詞解釋 | `ai-term-*`、詞彙表 hub、`*-explained` 概念篇 |
@@ -132,7 +134,8 @@
 | | `ai-plans` AI 方案與費用 | `ai-free-vs-paid-*`、`ai-api-pricing-*`、`openrouter-*`… |
 | `website` 架站與電商（新） | `wordpress` / `woocommerce` / `web-basics` | `wordpress-*` 與主題、主機前綴；`woocommerce-*`；`domain-*`、`dns-*`、`website-*`、`css-*`… |
 | `marketing` 行銷與 SEO（新） | `seo` / `ads` / `content-marketing` | `seo-*`、SEO 工具、技術 SEO；`google-ads-*`、`adsense-*`、`affiliate-*`；`content-marketing-*`、`brand-*`、`marketing-*`… |
-| `finance` 理財與金錢 | `finance-basics` / `banking` / `credit` / `tax-insurance` / `investing` | 財經批次 01／02／02／03–04／05–06 |
+| `finance` 理財與金錢 | `finance-basics` / `banking` / `credit` / `tax-insurance` / `investing` / `crypto`（0079） | 財經批次 01／02／02／03–04／05–06；`crypto-news-*`、`bitcoin-*`、`stablecoin-*` |
+| `tech` 科技與產業（0079 新增） | `tech-news` | `tech-news-*` |
 
 **旅遊**：主題不加子層；第二軸為國家 → 目的地（`DestinationProfile.country` → `japan`、`south-korea`、`taiwan`、`thailand`、`vietnam`、`singapore`、`hong-kong`）。
 
