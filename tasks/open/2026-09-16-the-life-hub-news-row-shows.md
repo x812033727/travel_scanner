@@ -12,6 +12,8 @@ branch:
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
 scope:
+  - apps/web/lib/guides.ts
+  - apps/web/lib/guides.test.ts
   - apps/web/app/[locale]/life/page.tsx
   - apps/web/app/[locale]/life/page.test.tsx
 ---
@@ -20,35 +22,39 @@ scope:
 
 ## Why
 
-站主 2026-09-16 要求 `/life` 開頭先列「最新新聞」（`docs/article-architecture.md` Phase 5,
-`life-hub-redesign-web`）。實作是 `apps/web/app/[locale]/life/page.tsx` 的
+站主 2026-09-16 要求 `/life` 開頭先列「最新新聞」。PR #537 把它做成
+依 `news_date` 排序的 `NewsList`（首頁前 20 條），並留了擴充點：
 
 ```ts
-const LIFE_NEWS_TOPIC = "ai-news";
+// apps/web/lib/guides.ts
+export const LIFE_NEWS_TOPIC = "ai-news";
+export const NEWS_TOPICS: readonly string[] = [LIFE_NEWS_TOPIC];
 ```
 
-**一個字串，一個子主題。** `2026-09-16-news-batch-4-0-crypto-and` 之後站上有三個新聞
-子主題（`ai-news`、`tech-news`、`crypto`），但那一列永遠只會顯示 AI 新聞。
-幣圈與科技新聞刊出後會直接看不到——除非讀者自己走到該主題的 hub。
+`NEWS_TOPICS` 的註解自己寫明：「Add a topic here when it starts carrying dated
+news packs with `news_date`」。
 
-這不是批次 4.0 的範圍（那張票不碰 web），但它是內容刊出前必須先落地的一步，
-否則新垂直等於沒有入口。
+`2026-09-16-news-batch-4-0-crypto-and`（PR #536）加了 `tech-news` 與 `crypto`
+兩個新聞子主題。**內容一刊出，這兩個垂直就會是「帶 `news_date` 的新聞包」，
+但不會出現在首頁那一列，它們的主題頁也還是卡片而不是新聞清單。**
 
 ## Definition of done
 
-- [ ] `/life` 第一頁的「最新新聞」列同時涵蓋三個新聞子主題，最新在前。
-- [ ] 「看全部」連到哪裡有明確答案（三個 hub 不能只連其中一個）——
-      可能要一個新的落點，或改成連 `/life/topics/<各自>`，這是這張票要決定的事。
-- [ ] 只在第一頁出現的既有規則不變（`?topic=` 或 `?cursor=` 的畫面不顯示這一列）。
-- [ ] 若需要新的標題字串，五語 `messages/` 都要補，並通過 `npm run check:i18n`。
+- [ ] `NEWS_TOPICS` 納入 `tech-news` 與 `crypto`，
+      兩個主題頁因此自動變成 `sort=news` 的一行一則清單（`isNewsTopic` 已經接好）。
+- [ ] `/life` 首頁那一列涵蓋三個新聞子主題，仍然依 `news_date` 由新到舊、仍然只取前 20 條。
+- [ ] 「看全部」有合理去處——現在連 `guideTopicHref("life", LIFE_NEWS_TOPIC)`，
+      三個主題之後要決定連哪裡。**這是這張票要決定的事**，不是實作細節。
+- [ ] 測試涵蓋：三個主題的文章都會出現在首頁那一列，且排序是跨主題的 `news_date`。
 
 ## Steps
 
-- [ ] 決定資料取法：`getGuideList` 目前吃單一 `topic`。三個子主題要嘛三次請求後合併排序，
-      要嘛 API 支援多主題查詢——先確認 `GET /guides` 的 `topic` 參數能不能收多值，
-      不能的話這張票要先決定是改 API 還是在 web 合併。
-- [ ] 常數從 `LIFE_NEWS_TOPIC` 改成清單，並讓「看全部」有合理去處。
-- [ ] `page.test.tsx` 補上三個子主題都會出現在那一列的斷言。
+- [ ] 先確認 `GET /guides` 的 `topic` 參數能不能收多值。
+      收不到的話，首頁那一列要嘛打三次再合併排序，要嘛改 API——
+      **先確認再動手**，這決定這張票是純 web 還是要跨到 api。
+- [ ] `NEWS_TOPICS` 加兩個 slug。
+- [ ] `/life` 首頁的取法改成涵蓋三個主題。
+- [ ] 若需要新的標題或「看全部」字串，五語 `messages/` 都要補，並過 `npm run check:i18n`。
 
 ## How to verify
 
@@ -56,12 +62,16 @@ const LIFE_NEWS_TOPIC = "ai-news";
 npm run test:web && npm run check:i18n && npm run lint:web && npm run typecheck:web
 ```
 
-再用 `next dev` 開 `/zh-TW/life`，確認三種新聞都出現在開頭那一列、順序是最新在前，
-並確認 `?topic=ai` 的畫面仍然沒有那一列。
+再用 `next dev` 開 `/zh-TW/life`，確認三種新聞都在開頭那一列、
+順序是跨主題依 `news_date`，並確認 `?topic=ai` 的畫面仍然沒有那一列。
 
 ## Notes
 
-- 詞彙由 `2026-09-16-news-batch-4-0-crypto-and` 的 migration `0079` 種下，
-  所以這張票 `depends_on` 它：`tech-news` 與 `crypto` 在那之前不存在。
-- 內容還沒寫。這張票可以先落地，列會是空的或只有 AI 新聞，
-  等批次 4.1／4.2 的文章刊出後自然填滿；`ListingEmpty` 已經有空狀態。
+- **`depends_on` 是內容票，不是 #536。** 詞彙已經在 #536 裡了，
+  但 `NEWS_TOPICS` 加了空主題只會得到兩個空清單頁。
+  **等 4.1／4.2 有文章刊出再做**，或做了之後接受短期的空狀態（`ListingEmpty` 已經有）。
+- #537 已經把 `isNewsTopic` 接到 `topic-hub-page.tsx` 的預設排序與渲染，
+  所以主題頁那半邊**不用改程式**，加進 `NEWS_TOPICS` 就會生效。
+- 原本這張票寫的是「`LIFE_NEWS_TOPIC` 寫死在 `life/page.tsx`」——
+  #537 之後常數搬到 `lib/guides.ts` 並多了 `NEWS_TOPICS` 這個擴充點，
+  scope 與做法都已依此更新。

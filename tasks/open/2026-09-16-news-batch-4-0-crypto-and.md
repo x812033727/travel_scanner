@@ -13,7 +13,7 @@ depends_on: []
 scope:
   - apps/api/app/guides/taxonomy.py
   - apps/api/app/guides/retopic.py
-  - apps/api/migrations/versions/0079_crypto_and_tech_topics.py
+  - apps/api/migrations/versions/0080_crypto_and_tech_topics.py
   - apps/api/tests/test_guides_migration.py
   - apps/api/tests/test_guides_retopic.py
   - docs/article-architecture.md
@@ -43,7 +43,7 @@ scope:
 
 - [x] `taxonomy.py`：`LIFE_SEED_TOPICS` append `tech`；`LIFE_SEED_SUBTOPICS` append
       `tech-news`、`crypto`；`LIFE_TOPIC_DESCRIPTIONS` 補三段 hub 導言。
-- [x] `0079_crypto_and_tech_topics.py`：形狀照 `0075`（純種子、不動 schema）＋ `0076` 的
+- [x] `0080_crypto_and_tech_topics.py`：形狀照 `0075`（純種子、不動 schema）＋ `0076` 的
       `parent_id`／`descriptions_json` 種子迴圈。display_order 接在 0076 的 520 之後：
       `tech` 530、`tech-news` 540、`crypto` 550。
 - [x] `test_guides_migration.py`：四處要改，見 Notes。
@@ -102,3 +102,12 @@ uv run ruff check . && uv run mypy app
 **還沒做、屬於別張票的：** `apps/web/app/[locale]/life/page.tsx` 的
 `LIFE_NEWS_TOPIC = "ai-news"` 是單一字串，`/life` 的「最新新聞」列只會顯示 AI 新聞。
 幣圈與科技新聞要出現在那一列，需要改成讀三個子主題——另開一張 web 票。
+
+## 改號紀錄（2026-09-16）
+
+原本是 `0079_crypto_and_tech_topics`，**與 PR #537 的 `0079_guide_news_date` 撞號**
+（兩個都接在 `0078_guide_article_links` 之後，`alembic upgrade head` 會看到兩個 head）。
+#537 先合併，所以這一支改成 **`0080_crypto_and_tech_topics`** 並把 `down_revision`
+接到 `0079_guide_news_date`——正是 #537 那支 migration 自己的 docstring 交代的做法。
+除了編號與接點，內容沒有任何改變；仍然不動 schema、仍然只種那三個 slug。
+`tests/test_guides_migration.py` 的三處引用一併更新。

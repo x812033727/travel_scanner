@@ -1,7 +1,7 @@
 """Two news verticals join the lifestyle vocabulary: ``tech`` with ``tech-news``, and ``crypto``.
 
-Revision ID: 0079_crypto_and_tech_topics
-Revises: 0078_guide_article_links
+Revision ID: 0080_crypto_and_tech_topics
+Revises: 0079_guide_news_date
 
 Seeding only. 0076 built ``parent_id`` and ``descriptions_json`` and 0074 built ``section``
 and both CHECK constraints, so this revision touches no schema at all -- which is why, like
@@ -17,6 +17,12 @@ already. A second top-level crypto tree would need a duplicate of all of it.
 ``tech`` has to be a new parent, because there is nowhere to put it. ``gadgets`` is 3C devices
 and ``software`` is apps; chips, telecoms and platform regulation are neither, and
 ``docs/article-architecture.md`` records the decision that those five stay single-level.
+
+This started life as ``0079`` and was renumbered: ``0079_guide_news_date`` (PR #537) also
+revised 0078, and two revisions off one parent give ``alembic upgrade head`` two heads.
+#537 merged first, so this one re-chains onto it and takes the next number -- exactly what
+that migration's own docstring says the second-merged branch must do. Nothing else changed;
+this revision still touches no schema and seeds the same three slugs.
 
 It keeps 0072's seeding contract: only a slug the database does not already hold is inserted,
 so a re-run is a no-op and a label an administrator rewrote is never restored. The hub lead is
@@ -41,8 +47,8 @@ import sqlalchemy as sa
 from alembic import context, op
 from sqlalchemy.engine import Connection
 
-revision: str = "0079_crypto_and_tech_topics"
-down_revision: str | None = "0078_guide_article_links"
+revision: str = "0080_crypto_and_tech_topics"
+down_revision: str | None = "0079_guide_news_date"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

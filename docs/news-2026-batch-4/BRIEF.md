@@ -93,6 +93,18 @@ slug 一律 `<vertical>-news-<topic>-<YYYYMMDD>`，日期是**事件日**，不�
 （可再加 `gadgets`／`software`）；幣圈用 `["finance", "crypto"]`。
 `destination_id` 一律 `null`。`kind` 一律 `life`。
 
+**`news_date` 必填（2026-09-16 新增，PR #537）。** 內容包多了一個頂層欄位：
+
+```json
+"news_date": "2026-09-14"
+```
+
+值就是**事件日**，和 slug 尾巴的日期一致。它不是發布日、也不是更新日。
+`/life` 首頁的「最新新聞」與新聞主題頁用 `sort=news` 依這個欄位由新到舊排，
+**沒有 `news_date` 的文章會被排到最後、而且不會出現在首頁那 20 條裡**。
+既有 38 篇 `ai-news-*-YYYYMMDD` 已經由 #537 補齊，測試會擋住之後忘記帶的包——
+所以漏了會直接 CI 紅，不是只是排序不好看。
+
 ### blocks 的順序（批次 4 新增了兩個區塊）
 
 1. `paragraph`：事件是什麼（第一句寫出事件日期，例如「2026 年 6 月 30 日」）。

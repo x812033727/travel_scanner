@@ -223,11 +223,11 @@ LIFE_SEED_MIGRATIONS = (
     "0074_lifestyle_guides",
     "0075_finance_topic",
     "0076_guide_topic_hierarchy",
-    "0079_crypto_and_tech_topics",
+    "0080_crypto_and_tech_topics",
 )
 #: The subset that seeds sub-topics and hub leads. 0074 and 0075 predate both, so they carry
 #: no ``LIFE_SEED_SUBTOPICS`` at all.
-LIFE_SUBTOPIC_MIGRATIONS = ("0076_guide_topic_hierarchy", "0079_crypto_and_tech_topics")
+LIFE_SUBTOPIC_MIGRATIONS = ("0076_guide_topic_hierarchy", "0080_crypto_and_tech_topics")
 
 
 def seeded_life_topics(name: str) -> list[tuple[str, int, object]]:
@@ -577,7 +577,7 @@ def test_0079_seeds_the_two_news_verticals_and_its_rollback_spares_the_earlier_v
         "0074_lifestyle_guides",
         "0075_finance_topic",
         "0076_guide_topic_hierarchy",
-        "0079_crypto_and_tech_topics",
+        "0080_crypto_and_tech_topics",
     )
     modules = [migration(name) for name in names]
     for module in modules:
