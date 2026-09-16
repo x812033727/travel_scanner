@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-15T13:57:28Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on:
   - 2026-09-15-pack-autolink-and-relink-cli
 scope:
@@ -40,3 +40,8 @@ cd apps/api && uv run pytest tests/test_guides_content_links.py tests/test_guide
 ## Notes
 
 claim 時整個 content 目錄會被鎖，做完立刻 release／review。
+
+2026-09-16 第一批（claude-fable-5-1，commit「content(life): 第一批 relink＋autolink：ai-term-／ai-search- 89 篇」）：
+`relink --prefix ai-term- --prefix ai-search- --apply` 轉 317 條、保留 0 條；`autolink` 同前綴 85 篇加 220 條。lint 無 error、連結 kind 測試綠。
+剩餘前綴（`claude-code-`、`codex-`、`gemini-`、其餘）各自：`relink --dry-run` → 審 → `--apply`；`autolink --dry-run` → 審 diff → `--apply`；一個 commit。
+全庫尚可轉 3,710 條（4,027 − 317）。部署時記得 `guides-import --slug …` 後 `guides-links-rebuild`。

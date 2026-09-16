@@ -73,9 +73,16 @@
 細節見 `docs/travel-guides.md`「Search」。別名種子這次一併做了（`app/guides/aliases.py`）；
 `guide-aliases-seed-and-pack-field` 剩內容包欄位、後台欄位與 `docs/ai-suffix-keywords.md` 來源。
 
-### Phase 3 — 互連
-`guide-aliases-seed-and-pack-field` → `pack-autolink-and-relink-cli` → `content-relink-autolink-life` / `-travel`；
-`article-links-table-and-related-api`（0078 連結表、related、backlinks、`guides-links-check`）→ `term-link-popover-related-grid-web`。
+### Phase 3 — 互連（已落地，同一分支；內容第一批已套）
+| 任務 | 內容 |
+| --- | --- |
+| `guide-aliases-seed-and-pack-field` | `ArticlePack.aliases`（≤12／語系）走 taxonomy 匯入、後台可編；`guides-aliases-seed` 加 `docs/ai-suffix-keywords.md`（`keyword`）來源。同語系別名多篇共用不 409（Phase 2 決策） |
+| `pack-autolink-and-relink-cli` | `app/guides/autolink.py`；`pack_cli relink`（原始站內 URL → article inline）與 `autolink`（名詞第一次出現連到詞條，每目標一次、≤8／篇、ASCII 詞界、重跑 no-op）；lint `raw_internal_url` |
+| `article-links-table-and-related-api` | 0078 `guide_article_links`（inline 列發布時寫、撤下時刪；related 列編輯指定）；`PublicArticle += related／backlinks／aliases`、`ArticleReference.description`；`guides-links-rebuild`、`guides-links-check` |
+| `term-link-popover-related-grid-web` | `<TermLink>` 定義卡、`<RelatedGrid>`／`<Backlinks>`、後台別名與 related 欄位；順手做掉 `heading-anchors-for-h3`（`section-N-M`） |
+| `content-relink-autolink-life` | 第一批 `ai-term-`／`ai-search-` 89 篇：317 條 URL 轉換、220 條名詞連結；其餘前綴分批 |
+
+細節見 `docs/travel-guides.md`「Links」。全庫 `relink --dry-run`：742 篇、4,027 條可轉、552 條保留（551 條非文章 URL、1 條自連）。
 
 ### Phase 4 — SEO / AEO / GEO
 `summary-and-faq-blocks-api` → `summary-faq-definedterm-jsonld-web`（**web 渲染器先部署，再發布含新區塊的內容**）；
@@ -114,6 +121,11 @@
 ## 部署與驗證
 
 - 部署順序：migrate（0076、0077）→ API → web；之後 `python -m app.cli guides-import --actor-email … --dry-run` 應列出 430 筆 `taxonomy: update`，再正式匯入。
+- Phase 3 部署後：migrate 0078 → `python -m app.cli guides-links-rebuild`（連結表只在發布時寫，不跑則「引用本文的文章」全空）→
+  `guides-aliases-seed --dry-run`（現在含 keyword 來源）→ 正式跑 → `guides-import --slug …`（第一批 89 篇，`--publish`）→
+  `guides-links-check --locale zh-TW`（列出指向未發布目標的連結；已知 25 條在暫緩發布的批次上）。
+  驗證：`GET /guides/life/ai-term-machine-learning?locale=zh-TW` 看 `related`／`backlinks`／`aliases`；
+  文章頁 hover 名詞看定義卡、Tab 到連結按 Esc；手機首次點開卡；文末「同主題延伸閱讀」。
 - Phase 2 部署後**必須**跑一次 `python -m app.cli guides-search-reindex`（索引只在發布時建，不跑則搜尋是空的），
   再 `guides-aliases-seed --dry-run` → 正式跑；`SHOW lc_ctype;` 需為 UTF-8，`\di ix_guide_search_entries_search_text_trgm` 應存在。
   驗證：`curl '/api/v1/guides/search?locale=zh-TW&q=機器學習'`（`best_match` 為名詞解釋篇）、`q=ＡＩ`、`q=%25%25`（0 筆不 500）、`q=a`（422）；

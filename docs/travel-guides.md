@@ -343,7 +343,14 @@ pack of that slug; one row per language the pack is written in) and the lesson `
 of every `series_data` catalogue, inserts only the rows that are not there yet, never
 deletes or rewrites, reports the slugs it could not find and the aliases several articles
 share, and refreshes the index rows it touched. `--terms-file` points it at a copy of the
-glossary list where the repository's `docs/` is not on disk.
+glossary list where the repository's `docs/` is not on disk. Two more sources feed the
+same table: the suffix-keyword table (`docs/ai-suffix-keywords.md`, `source="keyword"`,
+`--keywords-file`), whose keyword and variants become names of the row's primary landing
+article -- or of its `備` fallback while the primary has no pack -- for the Chinese locales
+the pack is written in; and the pack's own `aliases` field (`{locale: [name]}`, at most
+twelve per locale), imported through the taxonomy path as the editor's names
+(`source="editor"`) and editable in the admin panel. The editor's names for a locale are
+replaced whole on every write (`[]` clears them); the seeded ones are never touched.
 
 **Rate limit.** 120 queries a minute per address, counted with `over_named_rate_limit`,
 which fails *open*: a search that goes dark because Redis blinked is the worse outcome, and
@@ -356,6 +363,81 @@ an ellipsis that NFKC turns into three periods still marks the right characters)
 header carries the same search as a combobox on wide screens and as a sheet that ⌘K /
 Ctrl+K and the phone header's icon open (`components/site-search`); the typeahead reads
 `/guides/search?limit=6` through the BFF after a 200 ms pause and treats a 422 as no match.
+
+## Links
+
+Articles point at each other in one way the site controls -- an `article` inline
+(`{"type": "article", "kind", "slug", "text"}`) inside a `rich_paragraph` -- and one it
+merely tolerates, a raw `https://mokaair.com/{locale}/…` URL in a `link` block or inline. The
+inline renders as a link only while its target is published in the reader's language and
+is checked against the target's kind; the raw URL is a string that stays a link when its
+target is withdrawn, and is invisible to everything below. `pack_cli lint` warns about
+raw article URLs (`raw_internal_url`); `pack_cli relink` turns them into inlines.
+
+**The table.** `guide_article_links` (0078) holds `inline` rows -- written when a
+translation is published from the `article` inlines of its published text, in reading
+order, and deleted when it is withdrawn, in the transaction that moves the published
+pointer (`admin_service._write_revision`) -- and `related` rows, the editor's picks on the
+identity (`locale` NULL), replaced whole like topics. A link to an article that does not
+exist at all is recorded in the publish audit row (`unresolved_links`), not refused; a link
+to an article that is merely unpublished resolves and waits. Whether a target may *show* is
+decided at read time through `published_filters`, never by the table. The migration
+builds no rows: after deploying it run
+
+```bash
+cd apps/api && uv run python -m app.cli guides-links-rebuild --dry-run   # then without the flag
+cd apps/api && uv run python -m app.cli guides-links-check --locale zh-TW  # exit 1 on findings
+```
+
+The rebuild is idempotent and drops rows no published translation backs. The check walks
+every published translation and lists each in-text link a reader cannot follow --
+`missing`, `wrong_kind`, `unpublished`, `hidden`, `expired` -- and every raw article URL.
+
+**Further reading.** `PublicArticle.related` (`links.related_articles`) is at most four
+references, the editor's picks first and then, each tier newest first and skipping what
+an earlier tier chose: articles sharing a sub-topic, articles under the same parent topic
+(its own and its other sub-topics'), articles about the same destination, the other
+lessons of the same series group. Only visible articles count, so a withdrawn pick makes
+room for a neighbour. `backlinks` is the published articles whose text links here, newest
+first, at most eight. Both are ordinary links and stay under an expired notice. Every
+`ArticleReference` now carries the target's published `description`, which is what the
+web's definition card shows under a term link.
+
+**The pack fields.** `ArticlePack.related` (at most four slugs, in display order) goes
+through the taxonomy path and is applied after every pack of the run is written, so a
+pick may name a pack later in the same import; a pick that still names nothing is the one
+refusal the run ends on (`guide_related_unknown`). `ArticlePack.aliases` is described under
+"Search".
+
+**relink and autolink.** Both are pure rewrites of a pack's raw JSON in
+`app/guides/autolink.py`, run as `pack_cli relink|autolink [--kind] [--prefix]… [--slug]…
+[--dry-run|--apply]`, printing a Markdown table of what changes and writing only the
+`blocks` of the locales that changed (every shipped pack round-trips through
+`json.dumps(indent=2)`, so the diff is the links). `relink` converts a `link` block into a
+`rich_paragraph` holding one `article` inline and a `link` inline into an `article` inline
+when the URL names an article with a pack of that kind and nothing follows the slug but a
+query string (dropped); a self-link, a wrong-kind link, a link to a slug without a pack and
+any non-article site URL are kept and listed. `autolink` links the first mention of a name
+to the article it names: the names are the glossary, the keyword table and the packs'
+`aliases` fields (never a series catalogue's keyword hints), restricted to names that
+point at exactly one article of the locale and are at least two characters; only
+`paragraph` blocks and `text` inlines are touched (never a heading, list, table, callout or
+code); longest name first; an ASCII name needs word boundaries (`AI` never links inside
+`OpenAI`) and ignores case, a name with CJK in it is matched as written; each target links
+once per document, counting the inlines already there; at most eight per document; never
+the article itself. A second run is a no-op, since the linked words now sit inside an
+`article` inline. The first batch (`ai-term-`, `ai-search-`: 317 URLs converted, 220 names
+linked) is applied; the remaining batches are `tasks/open/2026-09-15-content-relink-autolink-*`.
+
+**The web.** A term link (`components/guides/term-link.tsx`) is the `article` inline whose
+target carries a description: a dotted-underline `<a>` that opens a definition card after a
+short hover, at once on focus, and on the first tap where there is no hover (the second
+tap follows the link); Escape, blur and a pointer elsewhere close it. Without JavaScript it
+is the link and nothing else. The end of an article shows `related` as "同主題延伸閱讀"
+(`components/guides/related-grid.tsx`, minus the lessons the series navigation already
+lists) and `backlinks` as "引用本文的文章"; a travel article's list replaces the same-city
+cards it used to end with, a lifestyle article keeps the travel handover after it.
+Level-3 headings carry `section-N-M` ids so a citation can point at a sub-answer.
 
 ## Verification
 
