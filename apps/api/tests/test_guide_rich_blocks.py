@@ -72,6 +72,35 @@ def test_document_text_carries_the_summary_and_the_faq() -> None:
     assert missing_diagram_numbers(diagram("999GB"), doc) == ["999"]
 
 
+def test_document_text_never_fuses_a_question_into_its_answer() -> None:
+    """The FAQ's question and answer go in as separate parts. Joining them would splice the
+    digits either side of the seam into a number the article never states, and this rule's whole
+    job is to catch a figure the article never states."""
+    doc = GuideDocument.model_validate(
+        {
+            "title": "標題",
+            "description": "描述",
+            "blocks": [
+                {"type": "paragraph", "text": "內文。"},
+                {"type": "heading", "text": "小節", "level": 2},
+                {
+                    "type": "faq",
+                    "items": [
+                        {"question": "記憶體上限是 5", "answer": "12GB 起跳。"},
+                        {"question": "還有別的嗎？", "answer": "官方未說明。"},
+                    ],
+                },
+            ],
+        }
+    )
+    svg = (
+        "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'>"
+        "<text x='40' y='80' font-size='48'>512</text></svg>"
+    )
+    # Fused, the seam reads "…上限是 512GB 起跳。" and 512 would count as stated.
+    assert missing_diagram_numbers(svg, doc) == ["512"]
+
+
 @pytest.mark.parametrize(
     "url", ["javascript:alert(1)", "//evil.test", "https://a:b@evil.test", "data:text/html,x"]
 )

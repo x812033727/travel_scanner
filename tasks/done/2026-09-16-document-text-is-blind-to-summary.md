@@ -73,3 +73,17 @@ uv run python -m app.guides.pack_cli lint --kind life    # 0 error
   而且 `tests/test_guides_search.py` 有一條測試逐字驗它。只有 `pack_ingest` 這個漏了。
 - 掃過 `pack_ingest` 其餘走訪區塊的函式，沒有發現第二處同類缺口。
 - 這個問題是批次 4 工具移植的驗證代理發現的，不是人工查出來的。
+
+### 結案後的補強（同日）
+
+批次 4 工具移植的驗證代理**獨立重跑了這個修正**，用 before/after 探針確認它真的有效：
+zh-TW 摘要裡的簡體字，修正前 `exit=0 OK`、修正後 `exit=1 - simplified characters in zh-TW: 语这问题`；
+FAQ 答案裡的簡體字同樣從 `exit=0` 變成 `exit=1`；圖上只在 FAQ 出現的數字，
+修正前被誤報成「文章沒有提到」，修正後不再誤報。
+
+同一批驗證也指出**原本的回歸測試沒有釘住那個刻意的決定**：commit 訊息說 question 與
+answer 要分開 extend、不能串接，但測試在串接版本下**照樣會過**。已補上
+`test_document_text_never_fuses_a_question_into_its_answer`：FAQ 的問題結尾是 `5`、
+答案開頭是 `12GB`，串接會在接縫處生出文章從來沒寫過的 `512`。
+串接版本下這條測試會紅，實測確認過。
+

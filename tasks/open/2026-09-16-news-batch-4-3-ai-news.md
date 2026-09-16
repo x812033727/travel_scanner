@@ -77,7 +77,7 @@ EDGAR 全文檢索 API、`cdn.openai.com` 的資產路徑、`platform.openai.com
 | B5 | 2026-05-28 | `ai-news-frontier-governance-20260528` | OpenAI Frontier Governance Framework |
 | B6 | 2026-06-08 | `ai-news-openai-s1-20260608` | 保密送件 S-1（不可寫成投資題材） |
 | B7 | 2026-06-24 | `ai-news-openai-broadcom-chip-20260624` | OpenAI 與 Broadcom 的推論晶片 |
-| B8 | 2026-09-10 | `ai-news-chatgpt-financial-services-20260910` | ChatGPT for Financial Services（帶 finance，必附免責） |
+| B8 | 2026-09-10 | `ai-news-chatgpt-financial-services-20260910` | ChatGPT for Financial Services（**不掛 finance**，理由見 `ai.md`） |
 | B9 | 2026-09-10 | `ai-news-gpt-live-1-api-20260910` | GPT-Live-1 進 API |
 | B10 | 2026-09-11 | `ai-news-chatgpt-storage-scale-20260911` | 十億使用者的儲存架構 |
 | A1 | 2026-09-15 | `ai-news-gemini-38-live-20260915` | Gemini 3.8 Live 與 Extended Thinking（併入開發者側那篇） |
