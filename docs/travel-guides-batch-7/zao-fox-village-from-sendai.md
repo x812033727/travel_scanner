@@ -57,7 +57,7 @@
   - 去程第 2 班：白石蔵王駅 13:05／白石駅 13:10／狐狸村 13:39
   - 回程第 1 班：狐狸村 12:10／白石駅 12:39／白石蔵王駅 12:46
   - 回程第 2 班：狐狸村 15:00／白石駅 15:29／白石蔵王駅 15:36
-- 表下一句：時刻出自タケヤ交通 依 CC BY 4.0 公開的 GTFS-JP 資料（檔案更新日 2026 年 7 月 21 日，有效期間到 2027 年 3 月 31 日），**現場以官網時刻表與站牌公告為準**。車程去程約 34 分、回程約 36 分。
+- 表下一句：時刻出自タケヤ交通 依 CC BY 4.0 公開的 GTFS-JP 資料（檔案更新日 2026 年 7 月 21 日，有效期間到 2027 年 3 月 31 日），**現場以官網時刻表與站牌公告為準**。車程是照表算的：去程約 34 分（10:15→10:49）、回程約 36 分（12:10→12:46）。
 - tip callout「三種排法」，三句，只用表格裡的時刻：
   - 半天（上午）：10:15 去、12:10 回，園內約 1 小時 20 分。
   - 一天：10:15 去、15:00 回，園內約 4 小時 10 分，中間要自己解決午餐（見 H2-4）。
@@ -215,7 +215,7 @@ sources 建議 8 到 10 筆。(6)(9)(10) 視字數與正文內容取捨；拿掉
 - 本批互連（batch7-list.md 第 12 條）：本文連第 10、9 篇與 `japan-shinkansen-ticket-guide`。上線後跑 `uv run python -m app.cli guides-links-check --locale zh-TW`，確認三個 article inline 的 slug 與 kind 都存在，`destinations/sendai` 與 `foods?destination_id=sendai` 兩個網址通過。
 - ingest 腳本的 KNOWN 白名單要包含 `sendai-matsushima-2-day-itinerary`、`sendai-airport-access-loople-bus-guide`，以及 `related` 裡的 `yamadera-day-trip-from-sendai`；第 11 篇若沒上線，只要把它從 `related` 拿掉，正文不用動。
 - **反向連結**：本篇的入口由第 9 篇（結尾「出城一日遊」）與第 10 篇（H2-6「玩更久」）提供，**不要再去搶 `japan-shinkansen-ticket-guide`「往仙台、盛岡、新潟、金澤方向」那一段**——第 9、10 篇的規格都已經登記要在那裡加連結，協調者擇一即可，本篇不列進「既有文章補連第七批」那張票。
-- **每年 4 月重查（上線 PR 開票，寫明日期）**：重開 `https://takeyakotsu.jp/zao-access/` 與 GTFS 資料檔 `https://takeyakotsu.jp/assets/download/gtfs-hokan-takeyakotsu.zip`，核對運賃 1,000／500 與四個班次的時刻；現行 GTFS 的有效期間到 **2027-03-31**，所以 **2027 年 3 月底前一定要再抓一次**，時刻變了就同時改表格二、tip callout、summary 第二句、FAQ 第 3 題與 diagram-1（五個地方）。
+- **每年 4 月重查（上線 PR 開票，寫明日期）**：重開 `https://takeyakotsu.jp/zao-access/` 與 GTFS 資料檔 `https://takeyakotsu.jp/assets/download/gtfs-hokan-takeyakotsu.zip`，核對運賃 1,000／500 與四個班次的時刻；**時刻變了要重算去程約 34 分、回程約 36 分這兩個分鐘數**（它們是從發到時刻相減來的）；現行 GTFS 的有效期間到 **2027-03-31**，所以 **2027 年 3 月底前一定要再抓一次**，時刻變了就同時改表格二、tip callout、summary 第二句、FAQ 第 3 題與 diagram-1（五個地方）。
 - **每年 11 月到 12 月**：重查冬季營業時間與冬季那條「みやぎ蔵王山麓アクセス線」當年度有沒有公告（`http://zao-fox-village.com/access` 與 `https://www.takeyakoutu.jp/miyagizao_sanroku_access.html`）；沒有新公告就把 H2-5 那段的期間改寫成「以官網公告為準」，不要留著舊年度的日期。
 - **狐狸村官網改成 https 時**：把 sources 的兩筆（首頁與交通頁，以及三個 `descriptions/` 頁）網址改成 https，並拿掉「撰稿時要小心」第 1 條衍生的那句「官網目前是 http」。這條要寫進上線 PR 開的票裡，因為它不是靠日期觸發的。
 - **jreast.co.jp 之後讀得到時**：把仙台→白石蔵王的「以官網為準」換成實際票價與車程，並同步通知第 9、10、11 篇（那三篇也有 JR 區間寫「以官網為準」的段落）。

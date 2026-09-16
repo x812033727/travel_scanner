@@ -75,7 +75,7 @@
 
 **(18) paragraph（日本，2 句）**：日本沒有農曆新年假期，那一週唯一的日本假日是 2 月 11 日（四）建国記念の日（內閣府）。**不寫「日本商店照常營業」以外的推論，不寫中國旅客潮的任何數字**（沒有查任何官方統計），不寫札幌雪祭的日期。
 
-**(19) rich_paragraph（結尾）**：同一年春天的日本還有一個要避開的檔期，黃金週怎麼避、新幹線什麼時候全席指定，看黃金週篇 — article inline，kind `intel`，slug `japan-golden-week-2027`（本批第 2 篇）。
+**(19) rich_paragraph（結尾）**：同一年春天的日本還有一個要避開的檔期，黃金週是哪幾天、新幹線在那段期間會變成什麼樣子，看黃金週篇 — article inline，kind `intel`，slug `japan-golden-week-2027`（本批第 2 篇）。
 
 **(20) link 區塊**：`https://mokaair.com/zh-TW/destinations/hong-kong`
 **(21) link 區塊**：`https://mokaair.com/zh-TW/destinations/seoul`
@@ -131,7 +131,7 @@ sources 最多 20 筆，上面 12 筆全放得下。
 1. 第 (3) 區塊 → `taiwan-long-weekends-2027-flight-planning`（`intel`，既有，2027-12-31 到期，晚於本篇）：連結文字講「2027 台灣連假一覽與請假接法」。句子本身要寫出 2 月 4 日到 10 日，拿掉連結後仍讀得通。
 2. 第 (13) 區塊 → `hong-kong-4-day-itinerary`（`howto`，既有，長青）：連結文字講「香港四天三夜怎麼排、各館開放時間」。
 3. 第 (17) 區塊 → `korea-ktx-srt-ticket-guide`（`howto`，既有，長青）：連結文字講「首爾釜山 KTX 與 SRT 怎麼訂」。
-4. 第 (19) 區塊 → `japan-golden-week-2027`（`intel`，本批第 2 篇，2027-05-10 到期，晚於本篇）：連結文字講「2027 日本黃金週是哪幾天」。本批互連表第 1、2 條規定兩篇互連，對方在開頭那句連回本篇。
+4. 第 (19) 區塊 → `japan-golden-week-2027`（`intel`，本批第 2 篇，2027-05-10 到期，晚於本篇）：連結文字講「2027 日本黃金週是哪幾天、新幹線在那段期間會變成什麼樣子」。**不要寫成「什麼時候全席指定」**：2027 年黃金週のぞみ全席指定席的期間 JR 東海與 JR 西日本還沒公告，第 2 篇一律寫「以官網公告為準」，連結文字不能讓讀者以為點過去會拿到日期。本批互連表第 1、2 條規定兩篇互連，對方在開頭那句連回本篇。
 5. 第 (20) 區塊 `link`：`destinations/hong-kong`。
 6. 第 (21) 區塊 `link`：`destinations/seoul`。
 
