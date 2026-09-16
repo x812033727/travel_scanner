@@ -1,14 +1,14 @@
 ---
 id: 2026-09-16-launch-articles-batch-7
 title: 撰寫並上線第七批旅遊文章：二十篇 zh-TW 攻略與情報
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-16T23:52:09Z
 created_at: 2026-09-16T23:06:26Z
 completed_at:
-branch:
+branch: claude/new-travel-guide-k2q5h3
 depends_on:
   - 2026-09-14-plan-articles-batch-7
 scope:
@@ -107,3 +107,8 @@ uv run python -m app.guides.pack_cli lint --kind intel
 - 這台機器讀不到的官方站列在 `docs/travel-guides-batch-7/README.md` 的「事實查核」一節。
 - 撰稿代理呼叫 Commons 等外部站時，User-Agent 一律用 repo 工具的
   `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，不要放任何個人資料。
+
+**Scope 與 claim（2026-09-16）**：scope 列的是這二十個內容包檔與圖檔目錄，不是整個內容目錄。
+`2026-09-15-content-summary-howto-and-life`（claude-fable-5-1）持有 `apps/api/app/guides/content`
+整個目錄，工具把底下任何路徑都當成重疊，所以這張票用 `--force` 認領；這二十個 slug 一個都不在那張票的
+工作範圍裡（那張票是替既有文章補 summary 與 FAQ，本批的檔案還不存在）。第六批遇到同樣情形、同樣處理。
