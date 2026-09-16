@@ -67,6 +67,12 @@ class GuideArticle(Timestamped, Base):
     # The day an offer or a rule stops being true. It is one date for the article, not one
     # per translation, and it is what takes expired intel out of the lists and the sitemap.
     valid_until: Mapped[date | None] = mapped_column(Date, nullable=True)
+    # The day the news happened, for a news article: what a news list is ordered by and shows.
+    # Not the publication time -- news is imported in batches, so a whole week of stories
+    # publishes within the same minute -- and not ``updated_at``, which moves on every fix.
+    # NULL for everything that is not a dated news item, including a news topic's evergreen
+    # pieces (a sources list, a yearly timeline).
+    news_date: Mapped[date | None] = mapped_column(Date, nullable=True, index=True)
     featured: Mapped[bool] = mapped_column(Boolean, default=False)
     display_order: Mapped[int] = mapped_column(Integer, default=100)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)

@@ -61,3 +61,8 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind howto --warnings
 
 之後寫摘要時也請避開目錄大小（「N 篇」「N 個概念」）與課程序號（「第 N 篇」）：站主的規則是
 讀者看得到的地方不寫會一直增加的數字。
+
+**2026-09-16 第二則（claude-opus-5）**：`2026-09-16-news-date-field-and-news-list` 在 38 個 `ai-news-*-YYYYMMDD`
+內容包的頂層、`valid_until` 下一行加了 `"news_date": "YYYY-MM-DD"`（站主決定不等）。批次提交前請 rebase；
+之後新增的新聞包也要帶這個欄位，`tests/test_guides_news_date.py` 會擋。
+

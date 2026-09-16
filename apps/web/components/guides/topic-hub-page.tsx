@@ -3,13 +3,15 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { ListingEmpty, ListingToolbar } from "@/components/guides/listing-toolbar";
+import { NewsList } from "@/components/guides/news-list";
 import { SeriesRow } from "@/components/guides/series-row";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
 import {
-  guideHref, guideTopicHref, isGuideListSort, sectionHubHref, topicLocales, type GuideListSort, type GuideSection, type GuideTopic,
+  guideHref, guideTopicHref, isGuideListSort, isNewsTopic, sectionHubHref, topicLocales,
+  type GuideListSort, type GuideSection, type GuideTopic,
 } from "@/lib/guides";
 import type { SeriesSummary } from "@/lib/guide-series";
 import { getGuideList, getGuideTopicList, getSeriesIndex, hubIsEmpty } from "@/lib/guides.server";
@@ -20,16 +22,26 @@ export type TopicHubRoute = { locale: Locale; section: GuideSection; topic: stri
 
 const PAGE_SIZE = 24;
 
-/** Newest first unless the reader asked for the editor's order: a topic mixes dated
- *  notices with evergreen guides, and the newest is the safer default across both. */
-const sortOf = (value?: string): GuideListSort => (isGuideListSort(value) ? value : "latest");
+/** A topic's own order, the one its address carries without `?sort=`. A news topic is
+ *  ordered by the day the news happened; everything else newest first, because a topic mixes
+ *  dated notices with evergreen guides and the newest is the safer default across both. */
+const defaultSortOf = (route: TopicHubRoute): GuideListSort => (isNewsTopic(route.section, route.topic) ? "news" : "latest");
+
+/** The order a request reads. A news topic has one order and ignores `?sort=`: a list of
+ *  news in the editor's order, or by the minute a batch was imported, is not a news list.
+ *  Elsewhere the reader may ask for the editor's order; `news` is not offered there. */
+function sortOf(route: TopicHubRoute): GuideListSort {
+  if (isNewsTopic(route.section, route.topic)) return "news";
+  return isGuideListSort(route.sort) && route.sort !== "news" ? route.sort : "latest";
+}
 
 /** One listing read and one vocabulary read, shared by the metadata and the body through
  *  React's per-request cache: same arguments, one call each to the API. */
-function reads({ locale, section, topic, cursor, sort }: TopicHubRoute) {
+function reads(route: TopicHubRoute) {
+  const { locale, section, topic, cursor } = route;
   return Promise.all([
     getGuideTopicList(locale, section),
-    getGuideList(locale, { section, topic, cursor, sort: sortOf(sort) }, PAGE_SIZE),
+    getGuideList(locale, { section, topic, cursor, sort: sortOf(route) }, PAGE_SIZE),
   ]);
 }
 
@@ -116,10 +128,11 @@ export async function renderTopicHub(route: TopicHubRoute) {
     sortLabel: t("guides.sortLabel"), sortCurated: t("guides.sortCurated"), sortLatest: t("guides.sortLatest"),
   };
   const searchLabels = { label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") };
-  const sort = sortOf(route.sort);
+  const news = isNewsTopic(section, route.topic);
+  const sort = sortOf(route);
   // The hub's own address is its default order; the other order rides on `?sort=`.
-  const view = (value: GuideListSort) => (value === "latest" ? path : `${path}?sort=${value}`);
-  const next = `${view(sort)}${sort === "latest" ? "?" : "&"}cursor=`;
+  const view = (value: GuideListSort) => (value === defaultSortOf(route) ? path : `${path}?sort=${value}`);
+  const next = `${view(sort)}${view(sort).includes("?") ? "&" : "?"}cursor=`;
   const trail = [
     { name: nav("home"), path: "/" },
     { name: sectionTitle, path: sectionHubHref(section) },
@@ -165,16 +178,20 @@ export async function renderTopicHub(route: TopicHubRoute) {
           topics={vocabulary.topics}
           active={route.topic}
           allHref={sectionHubHref(section)}
-          sort={{ current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
+          sort={news ? null : { current: sort, hrefs: { curated: view("curated"), latest: view("latest") } }}
           labels={toolbarLabels}
         />
 
         {list.articles.length ? (
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {list.articles.map((article) => (
-              <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
-            ))}
-          </ul>
+          news ? (
+            <NewsList articles={list.articles} className="mt-6" />
+          ) : (
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {list.articles.map((article) => (
+                <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
+              ))}
+            </ul>
+          )
         ) : (
           <ListingEmpty
             section={section}
