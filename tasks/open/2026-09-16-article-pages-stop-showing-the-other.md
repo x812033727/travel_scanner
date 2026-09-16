@@ -1,7 +1,7 @@
 ---
 id: 2026-09-16-article-pages-stop-showing-the-other
 title: Article pages stop showing the other-language list
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-opus-5
@@ -22,6 +22,7 @@ scope:
   - apps/web/messages/zh-TW/common.json
   - apps/web/messages/zh-CN/common.json
 ---
+
 # Article pages stop showing the other-language list
 
 ## Why
@@ -65,6 +66,9 @@ Then open any article published in more than one language (for example
 `view-source` still shows `<link rel="alternate" hreflang="…">` for each published locale.
 
 ## Notes
+
+- Pushed to `claude/jolly-dirac-yg32tb`; no pull request was asked for. Full web suite green
+  (288 files, 3110 tests), plus `lint:web`, `check:i18n`, `typecheck:web`, `test:tools`.
 
 - `docs/travel-guides.md:734` still lists "other languages" as the last thing an article
   draws. That file is held by `2026-09-16-news-date-field-and-news-list`, so the one-line
