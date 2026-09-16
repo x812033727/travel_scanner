@@ -24,7 +24,7 @@ vi.mock("@/components/destination-affiliate-options", () => ({
 
 const labels = {
   intel: "情報", howto: "攻略", life: "生活分享",
-  updated: "更新", sources: "來源", checkedOn: "查核日", destination: "目的地", otherLanguages: "其他語言",
+  updated: "更新", sources: "來源", checkedOn: "查核日", destination: "目的地",
   contents: "目錄", adLabel: "廣告", disclosure: "透過合作連結預訂，本站可能獲得分潤。",
   partnerDisclosure: "本文含合作連結，透過連結購買或訂閱，本站可能獲得分潤。",
   partner: { badge: "合作連結", newTab: "另開新分頁" },
@@ -502,6 +502,22 @@ describe("GuideArticle consent message", () => {
     draw({ document: longBody }, { adsense: withCmp });
     // Without this the loader forces non-personalised ads and the consent answer is ignored.
     expect(screen.getByTestId("ad-slot").getAttribute("data-cmp")).toBe("true");
+  });
+});
+
+describe("GuideArticle translations", () => {
+  it("ends at the sources: a translated article never lists its other languages", () => {
+    const { container } = draw({
+      published_locales: ["zh-TW", "en", "ja", "ko", "zh-CN"],
+      document: { ...document, sources: [{ title: "來源", url: "https://example.com/", checked_on: "2026-09-01" }] },
+    });
+    // The set is still declared to search engines in `alternates.languages`; the reader
+    // switches language from the header, not from a list under the article.
+    expect(container.querySelector("a[hreflang]")).toBeNull();
+    expect(screen.queryByText("English")).toBeNull();
+    expect(screen.queryByText("日本語")).toBeNull();
+    const sections = container.querySelectorAll("section");
+    expect(sections[sections.length - 1]!.textContent).toContain("來源");
   });
 });
 

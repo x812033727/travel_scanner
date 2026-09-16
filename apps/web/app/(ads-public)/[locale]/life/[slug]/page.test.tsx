@@ -76,11 +76,12 @@ describe("a published lifestyle article", () => {
     expect(listing.every((href) => href === "/life")).toBe(true);
   });
 
-  it("links its other languages at the lifestyle URL", async () => {
-    render(await LifeArticlePage({ params: params() }));
-    const japanese = screen.getByRole("link", { name: "日本語" });
-    expect(japanese.getAttribute("href")).toBe("/ja/life/ai-notes");
-    expect(japanese.getAttribute("hreflang")).toBe("ja");
+  it("declares its other languages at the lifestyle URL in the head, and lists none under the article", async () => {
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
+    expect(metadata.alternates!.languages!.ja).toContain("/ja/life/ai-notes");
+    const { container } = render(await LifeArticlePage({ params: params() }));
+    expect(screen.queryByRole("link", { name: "日本語" })).toBeNull();
+    expect(container.querySelector("a[hreflang]")).toBeNull();
   });
 
   it("always ends with the travel crosslinks, whether or not it has a destination", async () => {
