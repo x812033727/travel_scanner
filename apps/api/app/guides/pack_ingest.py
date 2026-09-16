@@ -160,7 +160,10 @@ class PackIngestError(ValueError):
 
 
 def _document_text(document: GuideDocument) -> str:
-    """Every string a reader sees, joined, for the length rule and the diagram-number rule."""
+    """Every string a reader sees, joined, for the length rule and the diagram-number rule.
+    Summary and FAQ count: they are read like any other section, so a figure the diagram draws
+    and only the summary states is carried by the article, and a simplified character there is
+    still a simplified character on the page."""
     parts = [document.title, document.description]
     for block in document.blocks:
         if isinstance(block, ParagraphBlock | HeadingBlock):
@@ -182,6 +185,11 @@ def _document_text(document: GuideDocument) -> str:
             parts.append(block.caption)
         elif isinstance(block, LinkBlock):
             parts.append(block.text)
+        elif isinstance(block, SummaryBlock):
+            parts.extend(block.items)
+        elif isinstance(block, FaqBlock):
+            parts.extend(item.question for item in block.items)
+            parts.extend(item.answer for item in block.items)
     return "\n".join(part for part in parts if part)
 
 

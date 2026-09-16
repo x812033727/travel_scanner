@@ -6,7 +6,7 @@ import pytest
 from pydantic import ValidationError
 
 from app.guides.admin_service import _ordinary_urls
-from app.guides.pack_ingest import _body_length, _document_text
+from app.guides.pack_ingest import _body_length, _document_text, missing_diagram_numbers
 from app.guides.schemas import CodeBlock, GuideDocument, RichParagraphBlock
 from tests import test_guides as guides
 
@@ -30,6 +30,46 @@ def test_rich_paragraph_preserves_spaces_and_is_counted() -> None:
     assert _document_text(doc).endswith("Read GEMINI.md before editing.")
     assert _body_length(doc) == len("ReadGEMINI.mdbeforeediting.")
     assert list(_ordinary_urls(doc)) == [rich()["inlines"][1]["url"]]
+
+
+def test_document_text_carries_the_summary_and_the_faq() -> None:
+    """The summary and the FAQ are sections a reader reads, so the two rules built on
+    ``_document_text`` -- the diagram-number rule and the simplified-character scan the news
+    batches run -- have to see them. They were added to ``_body_parts`` when the blocks landed
+    but not here, which made a figure stated only in the summary read as one the article never
+    carried, and a simplified character in an answer read as clean."""
+    doc = GuideDocument.model_validate(
+        {
+            "title": "標題",
+            "description": "描述",
+            "blocks": [
+                {"type": "summary", "items": ["頻寬最高 170GB/s。", "官方未說明售價。"]},
+                {"type": "paragraph", "text": "內文。"},
+                {"type": "heading", "text": "小節", "level": 2},
+                {
+                    "type": "faq",
+                    "items": [
+                        {"question": "台灣買得到嗎？", "answer": "官方未列出地區。"},
+                        {"question": "記憶體上限多少？", "answer": "最高 512GB。"},
+                    ],
+                },
+            ],
+        }
+    )
+    text = _document_text(doc)
+    for part in ("170GB/s", "官方未說明售價。", "台灣買得到嗎？", "最高 512GB。"):
+        assert part in text, part
+    # The diagram rule compares against this text, so a figure only the summary states counts,
+    # and so does one only an answer states.
+    def diagram(label: str) -> str:
+        return (
+            "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'>"
+            f"<text x='40' y='80' font-size='48'>{label}</text></svg>"
+        )
+
+    assert missing_diagram_numbers(diagram("170GB/s"), doc) == []
+    assert missing_diagram_numbers(diagram("512GB"), doc) == []
+    assert missing_diagram_numbers(diagram("999GB"), doc) == ["999"]
 
 
 @pytest.mark.parametrize(
