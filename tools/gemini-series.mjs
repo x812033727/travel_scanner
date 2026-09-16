@@ -130,6 +130,13 @@ export function checkPacks(series = catalogue, workspace = root, { phase = "base
         }
         if (url.origin !== origin || !url.pathname.startsWith("/" + series.locale + "/life/")) continue;
         const target = url.pathname.split("/").at(-1);
+        if (!known.has(target)) {
+          // Since the glossary term links and the relink of raw site URLs (docs/travel-guides.md,
+          // "Links") a lesson may link any shipped article, not only a sibling; it has to exist.
+          const shipped = [workspace, root].some((base) => existsSync(path.join(base, "apps/api/app/guides/content", target + ".json")));
+          if (!shipped) errors.push(slug + ": missing linked article " + target);
+          continue;
+        }
         const linked = readPack(target);
         if (linked && url.hash && !hasAnchor(linked, url.hash.slice(1), series.locale)) errors.push(slug + ": missing anchor " + target + url.hash);
       }
