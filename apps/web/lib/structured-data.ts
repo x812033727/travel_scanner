@@ -142,7 +142,9 @@ export type Reference = { title: string; url: string; checkedOn?: string | null 
  *   article renderer states that rule as "no expiry banner, no date it applied until". Publishing
  *   the withheld date to ask an answer engine to stop citing the page is both dishonest and the
  *   opposite of what this graph is for.
- * - `HowTo` for `kind === "howto"`, and `FAQPage` anywhere. See the note at the foot of this file.
+ * - `HowTo` for `kind === "howto"`, and an `FAQPage` read out of headings. See the note at the
+ *   foot of this file. An `FAQPage` the editor wrote as a `faq` block is a different thing and
+ *   has its own builder, `faqPage`, below.
  */
 export function guideArticle(
   locale: Locale,
@@ -167,6 +169,9 @@ export function guideArticle(
     collection?: boolean;
     /** The hub's members, when the series listing resolved. */
     entries?: readonly Crumb[] | null;
+    /** The editor's summary block: the answer in two to five sentences. Becomes `abstract`,
+     *  and the card that shows it (`#article-summary`) becomes the speakable passage. */
+    abstract?: readonly string[] | null;
   },
 ): object {
   const url = localeUrl(locale, input.path);
@@ -197,6 +202,12 @@ export function guideArticle(
       ? { about: { "@type": "TouristDestination", name: input.destination.name, url: localeUrl(locale, input.destination.path) } }
       : {}),
     ...(input.minutes ? { timeRequired: `PT${input.minutes}M` } : {}),
+    ...(input.abstract?.length
+      ? {
+          abstract: input.abstract.join(" "),
+          speakable: { "@type": "SpeakableSpecification", cssSelector: ["#article-summary"] },
+        }
+      : {}),
     isAccessibleForFree: true,
     ...(references.length
       ? { citation: references.map((row) => ({ "@type": "CreativeWork", name: row.title, url: row.url })) }
@@ -221,6 +232,54 @@ export function guideArticle(
 }
 
 /**
+ * The questions an editor wrote as a `faq` block, each with its answer, as the page shows
+ * them. Only from that block: a question is a question because the editor said so, never
+ * because a heading ends in one (see the note at the foot of this file). Google has shown
+ * FAQ rich results only for government and health sites since 2023; the audience for this
+ * graph is the answer engines, who read the same `<details>` the reader does.
+ */
+export function faqPage(
+  locale: Locale, path: string, items: readonly { question: string; answer: string }[],
+): object | null {
+  const questions = items.filter((item) => item.question.trim() && item.answer.trim());
+  if (!questions.length) return null;
+  return {
+    "@context": CONTEXT,
+    "@type": "FAQPage",
+    "@id": `${localeUrl(locale, path)}#faq`,
+    mainEntity: questions.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+/**
+ * A glossary entry: the article defines the term its title names, answers to the names in
+ * `aliases`, and belongs to the glossary `set` (the hub article of a catalogue-type
+ * series). Emitted only for an article the API says is an entry of a set.
+ */
+export function definedTerm(
+  locale: Locale,
+  input: { path: string; name: string; description: string; aliases?: readonly string[]; set: Crumb },
+): object {
+  const aliases = (input.aliases ?? []).map((name) => name.trim()).filter((name) => name && name !== input.name);
+  const url = localeUrl(locale, input.path);
+  return {
+    "@context": CONTEXT,
+    "@type": "DefinedTerm",
+    "@id": `${url}#term`,
+    name: input.name,
+    description: input.description,
+    url,
+    inLanguage: locale,
+    ...(aliases.length ? { alternateName: aliases } : {}),
+    inDefinedTermSet: { "@type": "DefinedTermSet", name: input.set.name, url: localeUrl(locale, input.set.path) },
+  };
+}
+
+/**
  * Two graphs this corpus looks like it should carry and must not.
  *
  * `HowTo`, for the 106 `howto` articles: only 20 of them hold an ordered list at all, and those
@@ -229,9 +288,11 @@ export function guideArticle(
  * from e-Gate, which as `HowToStep` instructs the reader to obtain an exit ban. `ordered: true`
  * in these packs means "numbered for reading". A step list needs an author to declare one.
  *
- * `FAQPage`: only 10 of 498 documents hold two question-heading-and-answer pairs, and the
- * headings that match are section titles (`怎麼去：JR 舞濱、迪士尼度假區線`), not questions.
- * Google has restricted FAQ rich results to health and government sites since 2023, so the
- * upside is machine-readers only -- who are the same audience that discounts a site whose
- * markup does not match its page.
+ * `FAQPage` derived from headings: only 10 of 498 documents hold two question-heading-and-answer
+ * pairs, and the headings that match are section titles (`怎麼去：JR 舞濱、迪士尼度假區線`), not
+ * questions. Google has restricted FAQ rich results to health and government sites since 2023,
+ * so the upside is machine-readers only -- who are the same audience that discounts a site
+ * whose markup does not match its page. That is why `faqPage` above takes only the `faq` block
+ * an editor wrote (2026-09-16): the questions on the page and the questions in the graph are
+ * then the same list, by construction.
  */

@@ -20,6 +20,10 @@ export type ContentBlockLabels = {
   warning: string;
   info: string;
   code?: CodeLabels;
+  /** The headings over a summary card and a FAQ section drawn in the body (the admin
+   *  preview); the article page hoists both out and names them itself. */
+  summary?: string;
+  faq?: string;
 };
 
 const TONE_CLASSES: Record<CalloutTone, string> = {
@@ -54,6 +58,38 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
       ) : credit.license}
       {")"}
     </span>
+  );
+}
+
+/** The article's answer, as a card: the two to five sentences a reader takes away. `id` is
+ *  the article page's, so its speakable selector points here; the preview passes none. */
+export function SummaryCard({ items, heading, id }: { items: readonly string[]; heading?: string; id?: string }) {
+  return (
+    <aside id={id} aria-label={heading} className="rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-4">
+      {heading ? <p className="text-xs font-bold uppercase tracking-wide text-[var(--muted)]">{heading}</p> : null}
+      <ul className="mt-2 list-disc space-y-1 pl-5 leading-7">
+        {items.map((item, index) => <li key={index}>{item}</li>)}
+      </ul>
+    </aside>
+  );
+}
+
+/** Questions readers ask, each answered in place. A native disclosure per question: the
+ *  answers are in the HTML for a crawler and a reader without JavaScript, folded for one
+ *  scanning the list. */
+export function FaqSection({ items, heading, id }: { items: readonly { question: string; answer: string }[]; heading?: string; id?: string }) {
+  return (
+    <section id={id} aria-label={heading} className="border-t border-[var(--line)] pt-6">
+      {heading ? <h2 className="text-lg font-semibold">{heading}</h2> : null}
+      <div className="mt-2 divide-y divide-[var(--line)]">
+        {items.map((item, index) => (
+          <details key={index} className="py-2">
+            <summary className="flex min-h-11 cursor-pointer items-center font-semibold">{item.question}</summary>
+            <p className="mt-2 whitespace-pre-wrap leading-7 text-[var(--muted)]">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -127,6 +163,8 @@ export function ContentBlocks({
       return <h2 key={index} id={id} className="scroll-mt-24 pt-4 text-xl font-bold">{block.text}</h2>;
     }
     if (block.type === "paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.text}</p>;
+    if (block.type === "summary") return <SummaryCard key={index} items={block.items} heading={labels?.summary} />;
+    if (block.type === "faq") return <FaqSection key={index} items={block.items} heading={labels?.faq} />;
     if (block.type === "list") {
       const List = block.ordered ? "ol" : "ul";
       return <List key={index} className={`space-y-2 pl-6 leading-8 ${block.ordered ? "list-decimal" : "list-disc"}`}>{block.items.map((text, i) => <li key={i}>{text}</li>)}</List>;

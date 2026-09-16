@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ContentBlocks } from "@/components/content-blocks";
 import {
@@ -22,6 +22,19 @@ describe("tutorial content", () => {
     expect(screen.queryByRole("link", { name: "hidden tutorial" })).toBeNull();
     expect(screen.getByText("hidden tutorial")).toBeTruthy();
     expect(document.querySelector("script")).toBeNull();
+  });
+
+  it("draws a summary as a card and a FAQ as disclosures, headed by the words it is given", () => {
+    render(<ContentBlocks labels={{ imageCredit: "圖片：", tip: "小提醒", warning: "注意", info: "補充", summary: "重點摘要", faq: "常見問題" }} blocks={[
+      { type: "summary", items: ["第一句。", "第二句。"] },
+      { type: "faq", items: [{ question: "多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" }] },
+    ]} />);
+    const card = screen.getByRole("complementary", { name: "重點摘要" });
+    expect(within(card).getAllByRole("listitem").map((item) => item.textContent)).toEqual(["第一句。", "第二句。"]);
+    const faq = screen.getByRole("region", { name: "常見問題" });
+    expect(faq.querySelectorAll("details")).toHaveLength(2);
+    expect(within(faq).getByText("多久？").tagName).toBe("SUMMARY");
+    expect(within(faq).getByText("四十一分鐘。")).toBeTruthy();
   });
 
   it("shows a definition card only for a target with a published description, and only when it has the words for it", () => {
@@ -223,6 +236,18 @@ describe("the rich block guard", () => {
       { type: "table", header: ["a"], rows: [["b"]] },
       { type: "callout", tone: "tip", text: "x" },
     ])).toBe(true);
+  });
+
+  it("accepts a summary of two to five sentences and a FAQ of two to ten answered questions", () => {
+    const faq = (count: number) => ({ type: "faq", items: Array.from({ length: count }, (_, i) => ({ question: `Q${i}?`, answer: `A${i}.` })) });
+    const summary = (count: number) => ({ type: "summary", items: Array.from({ length: count }, (_, i) => `S${i}.`) });
+    expect(isRichContentBlockList([summary(2), summary(5), faq(2), faq(10)])).toBe(true);
+    for (const block of [summary(1), summary(6), faq(1), faq(11), { type: "summary", items: ["ok", " "] },
+      { type: "faq", items: [{ question: "Q?", answer: "" }, { question: "Q2?", answer: "A" }] }]) {
+      expect(isRichContentBlockList([block]), JSON.stringify(block)).toBe(false);
+    }
+    // Still guide-only: the legal pages' guard refuses them.
+    expect(isContentBlockList([summary(2)])).toBe(false);
   });
 
   it.each([

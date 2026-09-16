@@ -5,8 +5,10 @@ import {
   isImageCredit,
   isImageSize,
   isRichContentBlock,
+  type FaqBlock,
   type ImageCredit,
   type RichContentBlock,
+  type SummaryBlock,
 } from "./content-blocks";
 import type { Locale } from "@/i18n/routing";
 import type { ArticleReference, SeriesNavigation } from "./guide-series";
@@ -361,6 +363,9 @@ export type GuideArticleState = {
   related?: ArticleReference[];
   backlinks?: ArticleReference[];
   aliases?: string[];
+  /** The glossary this article is an entry of, when it is one: the page marks it up as a
+   *  DefinedTerm in that set. */
+  term_set?: ArticleReference | null;
 };
 
 export function isGuideTopic(value: unknown): value is GuideTopic {
@@ -448,6 +453,25 @@ export function isExpired(validUntil: string | null, today: Date = new Date()): 
  * A partner link never stays inside `blocks`: the shared renderer would draw its URL as an
  * ordinary, unqualified link.
  */
+/** The summary and the FAQ are drawn in fixed places -- the answer under the description, the
+ *  questions before the sources -- so the body is rendered without them. The API allows one
+ *  of each; a document from an older draft that somehow carries two keeps the first. */
+export function splitArticleExtras(blocks: readonly GuideBlock[]): {
+  summary: SummaryBlock | null;
+  faq: FaqBlock | null;
+  blocks: GuideBlock[];
+} {
+  let summary: SummaryBlock | null = null;
+  let faq: FaqBlock | null = null;
+  const rest: GuideBlock[] = [];
+  for (const block of blocks) {
+    if (block.type === "summary" && !summary) summary = block;
+    else if (block.type === "faq" && !faq) faq = block;
+    else rest.push(block);
+  }
+  return { summary, faq, blocks: rest };
+}
+
 export type GuideSegment = {
   blocks: RichContentBlock[];
   headingStart: number;
@@ -505,6 +529,8 @@ export function readingMinutes(document: GuideDocument): number {
     if (block.type === "table") parts.push(...block.header, ...block.rows.flat());
     if (block.type === "image") parts.push(block.caption ?? "");
     if (block.type === "rich_paragraph") parts.push(...block.inlines.map(node => node.text));
+    if (block.type === "summary") parts.push(...block.items);
+    if (block.type === "faq") parts.push(...block.items.flatMap((item) => [item.question, item.answer]));
   }
   const text = parts.join(" ");
   const characters = (text.match(CJK) ?? []).length;

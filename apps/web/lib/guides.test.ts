@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
+import { splitArticleExtras,
   articleSearchHref, guideHeadings, guideHref, guideListHref, guideSection, highlight, isExpired, isGuideKind,
   isGuidePartnerLink, isGuideSearchHit, isGuideSearchResult, isGuideSummary, isPublishedGuide, isTravelGuideKind,
   partnerClickPath, readingMinutes, splitGuideBlocks,
@@ -282,5 +282,26 @@ describe("article search", () => {
     expect(highlight("İstanbul pass", ["pass"])).toEqual([{ text: "İstanbul ", hit: false }, { text: "pass", hit: true }]);
     // A term inside one original character marks that character once, never three times.
     expect(highlight("A…B", ["."])).toEqual([{ text: "A", hit: false }, { text: "…", hit: true }, { text: "B", hit: false }]);
+  });
+});
+
+describe("summary and FAQ blocks", () => {
+  const summary = { type: "summary" as const, items: ["先買票。", "再上車。"] };
+  const faq = { type: "faq" as const, items: [{ question: "要多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" }] };
+
+  it("are hoisted out of the body, first of each kind, leaving the rest in order", () => {
+    const body = { type: "paragraph" as const, text: "Skyliner 最快。" };
+    const split = splitArticleExtras([summary, body, faq, { ...faq, items: faq.items.slice(0, 2) }]);
+    expect(split.summary).toBe(summary);
+    expect(split.faq).toBe(faq);
+    expect(split.blocks).toEqual([body, { ...faq, items: faq.items.slice(0, 2) }]);
+    expect(splitArticleExtras([body])).toEqual({ summary: null, faq: null, blocks: [body] });
+  });
+
+  it("count towards the reading time", () => {
+    const base = { ...document, blocks: [{ type: "paragraph" as const, text: "短。" }] };
+    const long = Array.from({ length: 5 }, (_, i) => `${"很長的句子".repeat(20)}${i}`);
+    expect(readingMinutes({ ...base, blocks: [{ type: "summary", items: long }, ...base.blocks] }))
+      .toBeGreaterThan(readingMinutes(base));
   });
 });

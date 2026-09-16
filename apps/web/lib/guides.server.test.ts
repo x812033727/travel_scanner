@@ -171,11 +171,13 @@ describe("further reading and names", () => {
       related: [ref, { kind: "nope", slug: "x", title: "t" }, null],
       backlinks: [{ ...ref, slug: "citing", description: null }],
       aliases: ["ML", 3, "機器學習"],
+      term_set: { kind: "life", slug: "ai-terms-index", title: "AI 名詞總索引" },
     }));
     const state = await loadGuideArticle("howto", "narita-to-tokyo", "zh-TW");
     expect(state.related).toEqual([ref]);
     expect(state.backlinks).toEqual([{ ...ref, slug: "citing", description: null }]);
     expect(state.aliases).toEqual(["ML", "機器學習"]);
+    expect(state.term_set).toEqual({ kind: "life", slug: "ai-terms-index", title: "AI 名詞總索引" });
   });
 
   it("reads an API that predates them as having none", async () => {
@@ -184,6 +186,7 @@ describe("further reading and names", () => {
     expect(state.related).toEqual([]);
     expect(state.backlinks).toEqual([]);
     expect(state.aliases).toEqual([]);
+    expect(state.term_set).toBeNull();
   });
 });
 

@@ -40,7 +40,15 @@ export type InlineNode =
 export type RichParagraphBlock = { type: "rich_paragraph"; inlines: InlineNode[] };
 export const codeLanguages = ["text", "powershell", "bash", "json", "markdown", "html", "css", "javascript", "typescript", "python", "yaml", "sh", "shell", "toml", "csv"] as const;
 export type CodeBlock = { type: "code"; label: string; language: typeof codeLanguages[number]; code: string };
-export type RichContentBlock = ContentBlock | ImageBlock | TableBlock | CalloutBlock | RichParagraphBlock | CodeBlock;
+/** The article's answer in two to five sentences, ahead of the body; one per article. */
+export type SummaryBlock = { type: "summary"; items: string[] };
+export type FaqItem = { question: string; answer: string };
+/** Questions readers ask, each with its answer; one per article. */
+export type FaqBlock = { type: "faq"; items: FaqItem[] };
+export const SUMMARY_ITEMS = { min: 2, max: 5 } as const;
+export const FAQ_ITEMS = { min: 2, max: 10 } as const;
+export type RichContentBlock =
+  | ContentBlock | ImageBlock | TableBlock | CalloutBlock | RichParagraphBlock | CodeBlock | SummaryBlock | FaqBlock;
 
 export function isInlineNode(value: unknown): value is InlineNode {
   if (!value || typeof value !== "object") return false;
@@ -146,6 +154,16 @@ export function isRichContentBlock(block: unknown): block is RichContentBlock {
   if (entry.type === "callout") {
     return (calloutTones as readonly string[]).includes(entry.tone as string)
       && typeof entry.text === "string" && isOptionalText(entry.title);
+  }
+  if (entry.type === "summary") {
+    return Array.isArray(entry.items) && entry.items.length >= SUMMARY_ITEMS.min && entry.items.length <= SUMMARY_ITEMS.max
+      && entry.items.every((item) => typeof item === "string" && item.trim().length > 0);
+  }
+  if (entry.type === "faq") {
+    return Array.isArray(entry.items) && entry.items.length >= FAQ_ITEMS.min && entry.items.length <= FAQ_ITEMS.max
+      && entry.items.every((item) => !!item && typeof item === "object"
+        && typeof (item as FaqItem).question === "string" && (item as FaqItem).question.trim().length > 0
+        && typeof (item as FaqItem).answer === "string" && (item as FaqItem).answer.trim().length > 0);
   }
   return false;
 }

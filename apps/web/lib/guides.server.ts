@@ -270,6 +270,7 @@ export async function loadGuideArticle(
     related: references(body.related),
     backlinks: references(body.backlinks),
     aliases: Array.isArray(body.aliases) ? body.aliases.filter((name): name is string => typeof name === "string") : [],
+    term_set: isArticleReference(body.term_set) ? body.term_set : null,
   };
 }
 

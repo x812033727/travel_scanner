@@ -29,7 +29,7 @@ const emptyDocument = (): GuideDocument => ({
 const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
 
 /** Every block an editor can add, in the order the buttons appear. */
-const blockTypes = ["heading", "paragraph", "rich_paragraph", "code", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
+const blockTypes = ["summary", "heading", "paragraph", "rich_paragraph", "code", "list", "link", "image", "table", "callout", "faq", "offer", "partner_link"] as const;
 type BlockType = typeof blockTypes[number];
 
 /** `partner` is the program a new partner link starts on: the first one the API lists. */
@@ -43,6 +43,8 @@ function newBlock(type: BlockType, partner = ""): GuideBlock {
     case "image": return { type, src: "", alt: "", width: 1600, height: 900, caption: "", credit: null };
     case "table": return { type, header: ["", ""], rows: [["", ""]], caption: "" };
     case "callout": return { type, tone: "tip", title: "", text: "" };
+    case "summary": return { type, items: ["", ""] };
+    case "faq": return { type, items: [{ question: "", answer: "" }, { question: "", answer: "" }] };
     case "offer": return { type, module: "activities", destination_id: null, heading: "" };
     case "partner_link": return { type, partner, url: "", label: "", note: "" };
     default: return { type: "paragraph", text: "" };
@@ -142,6 +144,7 @@ export function AdminGuidesPanel() {
   const kindLocked = Boolean(detail?.locales.some((entry) => entry.published_version !== null));
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
   const blockLabels: ContentBlockLabels = {
+    summary: t("blocks.summary"), faq: t("blocks.faq"),
     imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
     code: seriesCopy(interfaceLocale),
   };
@@ -369,6 +372,27 @@ export function AdminGuidesPanel() {
         return <label className="grid gap-2">{t("text")}
           <textarea className={control} rows={4} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
         </label>;
+      case "summary":
+        return <label className="grid gap-2">{t("summaryHelp")}
+          <textarea className={control} rows={4} value={block.items.join("\n")} onChange={(event) => updateBlock(index, { ...block, items: event.target.value.split("\n") })} />
+        </label>;
+      case "faq":
+        return <div className="space-y-3">
+          {block.items.map((item, position) => <div key={position} className="grid gap-2 rounded-xl border border-[var(--line)] p-3">
+            <label className="grid gap-2">{t("faqQuestion")}
+              <input className={control} value={item.question} onChange={(event) => updateBlock(index, {
+                ...block, items: block.items.map((entry, i) => i === position ? { ...entry, question: event.target.value } : entry),
+              })} />
+            </label>
+            <label className="grid gap-2">{t("faqAnswer")}
+              <textarea className={control} rows={3} value={item.answer} onChange={(event) => updateBlock(index, {
+                ...block, items: block.items.map((entry, i) => i === position ? { ...entry, answer: event.target.value } : entry),
+              })} />
+            </label>
+            <div><Button secondary disabled={block.items.length <= 2} onClick={() => updateBlock(index, { ...block, items: block.items.filter((_, i) => i !== position) })}>{t("removeFaqItem")}</Button></div>
+          </div>)}
+          <Button secondary disabled={block.items.length >= 10} onClick={() => updateBlock(index, { ...block, items: [...block.items, { question: "", answer: "" }] })}>{t("addFaqItem")}</Button>
+        </div>;
       case "list":
         return <>
           <label className="grid gap-2">{t("itemsHelp")}
@@ -605,7 +629,9 @@ export function AdminGuidesPanel() {
             </div>
           </fieldset>)}</div>
 
-          <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => type !== "partner_link" || partners.length > 0).map((type) =>
+          <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => (type !== "partner_link" || partners.length > 0)
+            // One summary and one FAQ per article, which the API also refuses to exceed.
+            && ((type !== "summary" && type !== "faq") || !draft.blocks.some((block) => block.type === type))).map((type) =>
             <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {blockName(type)}</Button>)}
           </div>
 

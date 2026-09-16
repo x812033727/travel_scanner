@@ -504,3 +504,31 @@ describe("GuideArticle consent message", () => {
     expect(screen.getByTestId("ad-slot").getAttribute("data-cmp")).toBe("true");
   });
 });
+
+describe("GuideArticle summary and FAQ", () => {
+  it("draws the summary under the description and the FAQ before the sources, and neither in the body", () => {
+    const { container } = draw({
+      document: {
+        ...document,
+        blocks: [
+          { type: "summary", items: ["先買 eSIM。", "落地就能上網。"] },
+          ...document.blocks,
+          { type: "faq", items: [{ question: "要實體 SIM 嗎？", answer: "不用。" }, { question: "多少錢？", answer: "看方案。" }] },
+        ],
+        sources: [{ title: "來源", url: "https://example.com/", checked_on: "2026-09-01" }],
+      },
+    });
+    const summary = container.querySelector("#article-summary")!;
+    expect(summary).not.toBeNull();
+    expect(summary.textContent).toContain("先買 eSIM。");
+    const description = screen.getByText(document.description);
+    expect(description.compareDocumentPosition(summary) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const faq = container.querySelector("#article-faq")!;
+    const sources = screen.getByRole("heading", { name: "來源" });
+    expect(faq.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(faq.querySelectorAll("details")).toHaveLength(2);
+    // Once each: the body renders around them.
+    expect(screen.getAllByText("先買 eSIM。")).toHaveLength(1);
+    expect(screen.getAllByText("要實體 SIM 嗎？")).toHaveLength(1);
+  });
+});

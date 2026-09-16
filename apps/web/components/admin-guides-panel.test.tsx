@@ -323,6 +323,29 @@ describe("rich blocks", () => {
     expect(within(dialog).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["Skyliner", "41 分"]);
   });
 
+  it("adds one summary and one FAQ, typed as lines and as question-answer pairs, and offers each only once", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 重點摘要" }));
+    fireEvent.change(screen.getByLabelText("每行一句，2 到 5 句；放在第一個標題之前"), { target: { value: "先買票。\n再上車。" } });
+    expect(screen.queryByRole("button", { name: "新增區塊 · 重點摘要" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 常見問題" }));
+    const questions = screen.getAllByLabelText("問題");
+    const answers = screen.getAllByLabelText("答案");
+    expect(questions).toHaveLength(2);
+    fireEvent.change(questions[0], { target: { value: "要多久？" } });
+    fireEvent.change(answers[0], { target: { value: "四十一分鐘。" } });
+    fireEvent.change(questions[1], { target: { value: "多少錢？" } });
+    fireEvent.change(answers[1], { target: { value: "兩千五。" } });
+    expect(screen.queryByRole("button", { name: "新增區塊 · 常見問題" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
+    await waitFor(() => expect(savedDocument()).not.toBeNull());
+    const blocks = savedDocument()!.blocks;
+    expect(blocks.find((block: { type: string }) => block.type === "summary")).toEqual({ type: "summary", items: ["先買票。", "再上車。"] });
+    expect(blocks.at(-1)).toEqual({ type: "faq", items: [
+      { question: "要多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" },
+    ] });
+  });
+
   it("sends a hero and a partner block in the draft it saves", async () => {
     await open();
     fireEvent.click(screen.getByRole("button", { name: "加入主圖" }));

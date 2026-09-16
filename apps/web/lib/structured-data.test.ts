@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
-import { breadcrumbs, guideArticle, itemList, organization, touristDestination, webSite } from "@/lib/structured-data";
+import { definedTerm, faqPage, breadcrumbs, guideArticle, itemList, organization, touristDestination, webSite } from "@/lib/structured-data";
 
 const parse = (value: object | null) => JSON.parse(JSON.stringify(value));
 
@@ -185,9 +185,16 @@ describe("guideArticle", () => {
 
   it("omits every optional field rather than emitting an empty one", () => {
     const data = parse(guideArticle("en", { ...article, references: [], keywords: [] }));
-    for (const key of ["citation", "keywords", "about", "image", "timeRequired", "expires", "mainEntity"]) {
+    for (const key of ["citation", "keywords", "about", "image", "timeRequired", "expires", "mainEntity", "abstract", "speakable"]) {
       expect(data).not.toHaveProperty(key);
     }
+  });
+
+  it("carries the editor's summary as the abstract and names its card as the speakable passage", () => {
+    const data = parse(guideArticle("zh-TW", { ...article, abstract: ["先買 eSIM。", "落地就能上網。"] }));
+    expect(data.abstract).toBe("先買 eSIM。 落地就能上網。");
+    expect(data.speakable).toEqual({ "@type": "SpeakableSpecification", cssSelector: ["#article-summary"] });
+    expect(parse(guideArticle("zh-TW", { ...article, abstract: [] }))).not.toHaveProperty("abstract");
   });
 
   it("joins topic labels into keywords and points `about` at the destination's own page", () => {
@@ -241,5 +248,36 @@ describe("guideArticle", () => {
     const data = parse(guideArticle("zh-TW", { ...article, collection: true, entries: null }));
     expect(data["@type"]).toBe("CollectionPage");
     expect(data).not.toHaveProperty("mainEntity");
+  });
+});
+
+describe("faqPage", () => {
+  it("lists the editor's questions with their answers, and nothing without any", () => {
+    const data = parse(faqPage("zh-TW", "/life/tokyo-esim", [
+      { question: "要實體 SIM 嗎？", answer: "不用。" }, { question: " ", answer: "空的問題不算" },
+    ]));
+    expect(data["@type"]).toBe("FAQPage");
+    expect(data["@id"]).toBe(`${siteUrl}/zh-TW/life/tokyo-esim#faq`);
+    expect(data.mainEntity).toEqual([
+      { "@type": "Question", name: "要實體 SIM 嗎？", acceptedAnswer: { "@type": "Answer", text: "不用。" } },
+    ]);
+    expect(faqPage("zh-TW", "/life/tokyo-esim", [{ question: "", answer: "" }])).toBeNull();
+  });
+});
+
+describe("definedTerm", () => {
+  it("names the term, its other names and the glossary it belongs to", () => {
+    const data = parse(definedTerm("zh-TW", {
+      path: "/life/ai-term-machine-learning", name: "機器學習", description: "讓電腦從資料學規則。",
+      aliases: ["ML", " 機器學習 ", "Machine Learning"], set: { name: "AI 名詞總索引", path: "/life/ai-terms-index" },
+    }));
+    expect(data["@type"]).toBe("DefinedTerm");
+    expect(data["@id"]).toBe(`${siteUrl}/zh-TW/life/ai-term-machine-learning#term`);
+    expect(data.name).toBe("機器學習");
+    // The term's own name is not one of its other names.
+    expect(data.alternateName).toEqual(["ML", "Machine Learning"]);
+    expect(data.inDefinedTermSet).toEqual({ "@type": "DefinedTermSet", name: "AI 名詞總索引", url: `${siteUrl}/zh-TW/life/ai-terms-index` });
+    expect(parse(definedTerm("zh-TW", { path: "/life/x", name: "X", description: "d", set: { name: "S", path: "/life/s" } })))
+      .not.toHaveProperty("alternateName");
   });
 });

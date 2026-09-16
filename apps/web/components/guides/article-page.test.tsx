@@ -1,14 +1,17 @@
-import { render, screen, within } from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderGuideArticle } from "./article-page";
 import type { LearningEntry } from "@/lib/codex-learning";
 
-const mocks = vi.hoisted(() => ({ article: vi.fn(), series: vi.fn() }));
+const mocks = vi.hoisted(() => ({
+  article: vi.fn(), series: vi.fn(), topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
+}));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false }) }));
 vi.mock("@/lib/guides.server", () => ({
   getGuideArticle: mocks.article, getGuideSeries: mocks.series,
   getGuideList: async () => ({ articles: [], next_cursor: null }),
+  getGuideTopics: mocks.topics,
 }));
 vi.mock("@/components/codex-learning/hub", () => ({ LearningHub: ({ entries, available }: { entries: LearningEntry[]; available: boolean }) =>
   <section aria-label="Learning directory" data-available={available}>
@@ -106,5 +109,70 @@ describe("further reading", () => {
     });
     render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
     expect(screen.getByRole("link", { name: "the term" }).getAttribute("aria-expanded")).toBe("false");
+  });
+});
+
+describe("breadcrumb, summary, FAQ and glossary markup", () => {
+  it("shows a breadcrumb on every article, through the topic's parent hub when the vocabulary knows it", async () => {
+    mocks.topics.mockResolvedValue([
+      { slug: "ai", label: "AI", section: "life", parent: null },
+      { slug: "ai-terms", label: "AI 名詞解釋", section: "life", parent: "ai" },
+    ]);
+    mocks.article.mockResolvedValue({ ...state, series: null, topics: [{ slug: "ai-terms", label: "AI 名詞解釋", parent: "ai" }] });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    const nav = screen.getByRole("navigation", { name: "頁面路徑" });
+    expect(within(nav).getAllByRole("link").map((link) => link.getAttribute("href"))).toEqual([
+      "/life", "/life/topics/ai", "/life/topics/ai-terms",
+    ]);
+    expect(mocks.topics).toHaveBeenCalledWith("en", "life");
+    const json = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    const crumbs = json.find(item => item["@type"] === "BreadcrumbList");
+    expect(crumbs.itemListElement.map((item: { name: string }) => item.name)).toEqual(["首頁", "生活分享", "AI", "AI 名詞解釋", "Codex hub"]);
+  });
+
+  it("keeps the topic crumb when the vocabulary is unavailable, and skips it for an article without topics", async () => {
+    mocks.article.mockResolvedValue({ ...state, series: null, topics: [{ slug: "ai", label: "AI" }] });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    expect(within(screen.getByRole("navigation", { name: "頁面路徑" })).getAllByRole("link").map((link) => link.getAttribute("href")))
+      .toEqual(["/life", "/life/topics/ai"]);
+    cleanup();
+    mocks.article.mockResolvedValue({ ...state, series: null, topics: [] });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    expect(within(screen.getByRole("navigation", { name: "頁面路徑" })).getAllByRole("link").map((link) => link.getAttribute("href")))
+      .toEqual(["/life"]);
+  });
+
+  it("emits the abstract, the FAQ and the glossary entry exactly when the page shows them", async () => {
+    mocks.article.mockResolvedValue({
+      ...state,
+      series: null,
+      document: { ...document, blocks: [
+        { type: "summary", items: ["先讀這句。", "再讀那句。"] },
+        ...document.blocks,
+        { type: "faq", items: [{ question: "要多久？", answer: "十分鐘。" }, { question: "要錢嗎？", answer: "不用。" }] },
+      ] },
+      aliases: ["ML"],
+      term_set: { kind: "life", slug: "ai-terms-index", title: "AI 名詞總索引", description: "全部名詞" },
+    });
+    const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    const json = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    // The fixture is the Codex hub, so its graph is a CollectionPage; the fields are the same.
+    const article = json.find(item => item["@type"] === "CollectionPage" || item["@type"] === "Article");
+    expect(article.abstract).toBe("先讀這句。 再讀那句。");
+    expect(article.speakable.cssSelector).toEqual(["#article-summary"]);
+    expect(container.querySelector("#article-summary")).not.toBeNull();
+    const faq = json.find(item => item["@type"] === "FAQPage");
+    expect(faq.mainEntity.map((item: { name: string }) => item.name)).toEqual(["要多久？", "要錢嗎？"]);
+    expect(container.querySelectorAll("#article-faq details")).toHaveLength(2);
+    const term = json.find(item => item["@type"] === "DefinedTerm");
+    expect(term.name).toBe(document.title);
+    expect(term.alternateName).toEqual(["ML"]);
+    expect(term.inDefinedTermSet.url).toContain("/en/life/ai-terms-index");
+    cleanup();
+    mocks.article.mockResolvedValue({ ...state, series: null });
+    const plain = render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    const graphs = [...plain.container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
+    expect(graphs.map(item => item["@type"])).not.toEqual(expect.arrayContaining(["FAQPage", "DefinedTerm"]));
+    expect(graphs.find(item => item["@type"] === "CollectionPage" || item["@type"] === "Article")).not.toHaveProperty("abstract");
   });
 });
