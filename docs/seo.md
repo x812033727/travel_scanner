@@ -232,8 +232,11 @@ so content cannot close its script tag. It emits only nonempty graphs that descr
 | citation | Every source the article lists, through the same sanitizer that draws the visible list |
 | WebPage `lastReviewed` / `reviewedBy` | The newest `checked_on` across those sources, on the article's `mainEntityOfPage` |
 | about | The article's destination, pointing at that destination's own page |
+| abstract and speakable | An article with an editor-written summary block: the summary as `abstract`, and the card that shows it (`#article-summary`) as the speakable passage |
+| FAQPage | An article with an editor-written `faq` block, and only then: the questions in the graph are the `<details>` on the page, by construction. Google shows FAQ rich results only for government and health sites since 2023; the audience is the answer engines |
+| DefinedTerm | A glossary entry (an article the API reports as belonging to a catalogue-type series' topic): its title as the term, its aliases as `alternateName`, the glossary hub as `inDefinedTermSet` |
 
-There is no invented review or FAQ markup. `TouristDestination` is a Place, so it does
+There is no invented review markup, and no FAQ markup read out of headings: an `FAQPage` comes from a `faq` block the editor wrote, or not at all. `TouristDestination` is a Place, so it does
 not claim the CreativeWork-only `inLanguage` property. Purchases are not enabled; this work
 does not add Product/Offer markup or represent plans as bookable offers.
 

@@ -364,6 +364,30 @@ header carries the same search as a combobox on wide screens and as a sheet that
 Ctrl+K and the phone header's icon open (`components/site-search`); the typeahead reads
 `/guides/search?limit=6` through the BFF after a 200 ms pause and treats a 422 as no match.
 
+## Summary and FAQ blocks
+
+Two guide-only blocks carry the answer-first shape an answer engine quotes and a reader
+skims. ``summary`` (``{"type": "summary", "items": [...]}``, two to five sentences) is the
+article's answer, written by the editor and never generated; the model allows one per
+document and requires it before the first heading, so it is the opening rather than a
+recap, and ``pack_cli lint`` warns (``no_summary``) when a lifestyle or how-to article has
+none. ``faq`` (``{"type": "faq", "items": [{"question", "answer"}, ...]}``, two to ten
+pairs) is the questions readers actually ask, one per document. The web draws the summary
+as a card under the description (``#article-summary``) and the FAQ as ``<details>`` before
+the sources, hoisting both out of the body; the search index ranks summary sentences and
+FAQ questions like headings and FAQ answers like body text. In the graph the summary is
+the Article's ``abstract`` and its card the speakable passage, and the FAQ is an
+``FAQPage`` -- from this block only, never read out of headings (``docs/seo.md``).
+
+**Deploy order.** The web guard (``isPublishedGuide``) refuses a document with a block it
+does not know and renders the "unavailable" screen with ``noindex``, so the web renderer
+ships before any article carrying these blocks is published.
+
+**Glossary entries.** ``PublicArticle.term_set`` names the hub of the catalogue-type series
+(``series_registry.json``, ``source: "catalogue"``) whose topic the article carries, when
+that hub is published in the locale; the web marks such an article up as a ``DefinedTerm``
+with its aliases as ``alternateName`` and the hub as ``inDefinedTermSet``.
+
 ## Links
 
 Articles point at each other in one way the site controls -- an `article` inline

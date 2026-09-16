@@ -84,10 +84,17 @@
 
 細節見 `docs/travel-guides.md`「Links」。全庫 `relink --dry-run`：742 篇、4,027 條可轉、552 條保留（551 條非文章 URL、1 條自連）。
 
-### Phase 4 — SEO / AEO / GEO
-`summary-and-faq-blocks-api` → `summary-faq-definedterm-jsonld-web`（**web 渲染器先部署，再發布含新區塊的內容**）；
-`article-breadcrumb-visible-web`；`robots-ai-crawler-switch`；`content-summary-howto-and-life`（人工撰寫，不自動生成）。
-既有 `2026-09-14-answer-first-howto-descriptions`（應改為明列 68 檔）與 `2026-09-14-heading-anchors-for-h3` 屬同一階段。
+### Phase 4 — SEO / AEO / GEO（機制已落地，同一分支；內容由編輯另寫）
+| 任務 | 內容 |
+| --- | --- |
+| `summary-and-faq-blocks-api` | `SummaryBlock`（2–5 句、至多一個、在第一個標題前）與 `FaqBlock`（2–10 題、至多一個）；lint `no_summary`；索引納入；`PublicArticle.term_set` |
+| `summary-faq-definedterm-jsonld-web` | 摘要卡 `#article-summary`、FAQ `<details>`；JSON-LD `abstract`＋`speakable`、`FAQPage`（只從 faq 區塊）、`DefinedTerm`；後台可加兩種區塊 |
+| `article-breadcrumb-visible-web` | 每篇文章可見麵包屑：專區 › 父主題 › 子主題 › (系列) › 標題，與 `BreadcrumbList` 同一條 trail |
+| `robots-ai-crawler-switch` | `AI_CRAWLER_POLICY=block\|allow-search\|allow`（預設 allow-search，每次請求讀取）；`docs/seo.md` 記錄 |
+| `heading-anchors-for-h3` | 已在 Phase 3 做掉（`section-N-M`） |
+
+**上線順序**：web 先部署（渲染器與 guard），之後才發布含 summary／faq 的內容；
+`content-summary-howto-and-life`（編輯撰寫摘要與 FAQ）與 `2026-09-14-answer-first-howto-descriptions` 留給內容階段。
 
 ### Phase 5 — UI/UX
 `guides-hub-redesign-web` → `life-hub-redesign-web`；`listing-toolbar-web`；`article-reading-polish-web`。
@@ -121,6 +128,8 @@
 ## 部署與驗證
 
 - 部署順序：migrate（0076、0077）→ API → web；之後 `python -m app.cli guides-import --actor-email … --dry-run` 應列出 430 筆 `taxonomy: update`，再正式匯入。
+- Phase 4 部署後：`curl https://mokaair.com/robots.txt` 應只擋訓練用爬蟲（`AI_CRAWLER_POLICY` 未設即 allow-search）；
+  文章頁看麵包屑；含 summary／faq 的文章把 JSON-LD 貼到 validator.schema.org（Article.abstract／speakable、FAQPage、DefinedTerm）。
 - Phase 3 部署後：migrate 0078 → `python -m app.cli guides-links-rebuild`（連結表只在發布時寫，不跑則「引用本文的文章」全空）→
   `guides-aliases-seed --dry-run`（現在含 keyword 來源）→ 正式跑 → `guides-import --slug …`（第一批 89 篇，`--publish`）→
   `guides-links-check --locale zh-TW`（列出指向未發布目標的連結；已知 25 條在暫緩發布的批次上）。
