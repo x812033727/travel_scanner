@@ -1,0 +1,381 @@
+{
+ "slug": "ai-news-chatgpt-financial-services-20260910",
+ "title": "（撰稿時填入 zh-TW title，≤ 60 字）",
+ "checked_on": "2026-09-16",
+ "event_date": "2026-09-10",
+ "event_date_basis": "OpenAI 官方新聞頁的署名日期為 September 10, 2026，官方 RSS 的 pubDate 為 Thu, 10 Sep 2026 07:00:00 GMT，兩者一致。這是公告日＝事件日；官方沒有另外給生效日、開賣日或開放日，公告只寫 available to eligible financial institutions。sitemap 的 lastmod（2026-09-11T23:41:13.520Z）是網站建置時間，不是事件日，不可引用。",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "openai.com 全站（含 /index/、/policies/、/business/、/academy/、/solutions/）在本容器對 curl 一律回 HTTP 403，body 是 Cloudflare 的 'Enable JavaScript and cookies to continue'；chatgpt.com 403、help.openai.com 403。openai.com 上只有三個路徑會回 200：/robots.txt、/sitemap.xml（含各分區 sitemap，回真實 URL 與 lastmod）、/news/rss.xml（1,194 筆 item，最新一筆 2026-09-16，確認是活的 feed）。公告本文因此是用 Internet Archive 對官方頁的逐字封存讀到的：web.archive.org/web/20260914012930/（memento-datetime Mon, 14 Sep 2026 01:29:30 GMT，是目前最新的封存）與 web.archive.org/web/20260910175211/（上線當天）。兩份都抓下來比對過。完整性交叉驗證：封存頁的 <meta name=description> 與官方 RSS 的 description 逐字相同，og:url 為 https://openai.com/index/introducing-chatgpt-financial-services/，標題與 feed 的 <title> 相同，因此可確認封存的就是這一頁。**重要：這一頁是活文件，9/10 與 9/14 兩個版本內容不同**（見 unverified_or_excluded 的前三條）；我讀到的是 9/14 版，2026-09-16 的線上版無法確認，撰稿時要寫明「本文依 2026 年 9 月 14 日的官方頁版本」。**內容包的 sources 一律寫 https://openai.com/index/introducing-chatgpt-financial-services/（官方原址），不得把 web.archive.org 的網址寫進內容包。** 另外三條來源 learn.chatgpt.com（OpenAI 官方 ChatGPT 產品文件，由 developers.openai.com/llms.txt 官方列為 'ChatGPT product documentation'）在本容器**直接可讀、回 200**，沒有經過任何中介；developers.openai.com 也回 200。抓不到的：openai.com/policies/financial-services-terms/（sitemap 裡有這個真實路徑，但線上 403、Internet Archive 沒有任何封存，回 404）、openai.com/solutions/industries/financial-services/（只有 2026-07-23 的封存，早於發布，無用）、openai.com/business/solutions/finance/（封存回 403）。learn.chatgpt.com 的 llms.txt 共 323 行、逐行檢查過，**沒有任何一頁在講 ChatGPT for Financial Services**，代表這個產品到 2026-09-16 為止沒有公開的產品說明文件。Morgan Stanley 新聞室 403；Evercore 與 LSEG 的新聞頁回 200 但是前端渲染、curl 拿不到任何條目，所以沒有取得合作方自己的公告。web.archive.org 的 CDX API 今天多次回 'Temporarily Offline'，無法列出全部封存；改用指定時間戳的 302 轉址反查，確認 2026-09-16 之前最新的封存就是 20260914012930。",
+ "sources": [
+  {
+   "title": "Introducing ChatGPT for Financial Services",
+   "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Pricing",
+   "url": "https://learn.chatgpt.com/docs/pricing",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "ChatGPT Work Overview",
+   "url": "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Plugin controls",
+   "url": "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "editorial_brief": "讀者是台灣的一般上班族與會用 ChatGPT 的個人使用者，不是投資銀行從業人員。角度不是「這個工具多強」，而是「一個賣給金融機構的 AI 產品發表了，它和我手上的 ChatGPT 帳號有什麼關係、又沒有關係」。三個切點：(1) 這是 ChatGPT Work 的客製版本、賣給合資格金融機構、要聯絡業務，個人帳號不會因為這則新聞多出任何功能，官方也沒給任何地區與時程；(2) 這次官方主打的是「資料內建 + 逐格溯源」，把數字追回原始表格與段落——這正好是一般人用 AI 處理數字時最該學的檢查動作，可用編輯設計的生活例子（自己核對帳單、整理年度支出）說明，並標明那是本站設計的例子；(3) 官方放了三張評測圖，其中一張自承是外部夥伴的 eval、一張自承是內部評測，還有一張圖說與圖表資料互相矛盾——示範怎麼讀廠商自己的評測圖，比抄數字有用。刻意不談：不評論哪家資料商比較好、不談任何金融商品、不談市場或股價、不推測 OpenAI 的商業模式與營收、不推測台灣的銀行會不會導入、不把設計夥伴寫成已導入的客戶。 ★ 本篇的 lint 硬性要求（assignment 指定要寫進輸出）：這是一篇金融產品的文章，若 topics 採用 [\"ai\",\"finance\",\"ai-news\"]，apps/api/app/guides/pack_ingest.py 的 _finance_problems 會因 FINANCE_TOPICS = {finance, investing, crypto} 命中而啟動，並要求文件的 blocks 裡至少有一個 CalloutBlock，其 text 經 casefold 之後包含 FINANCE_DISCLAIMER_MARKERS 五個字串之一：「不是投資建議」(zh-TW)、「不是投资建议」(zh-CN)、\"not investment advice\" (en)、「投資助言ではありません」(ja)、「투자 조언이 아닙니다」(ko)。缺少就出 error 級 finance_no_disclaimer，pack_cli lint --kind life 不會是 0 error。lint 是逐語系檢查的，所以五個語系的文件各自都要有自己語言的標記字串，不能只翻中文那句（en 的比對是 casefold，所以 \"This is not investment advice.\" 可以）。因此本篇會有兩個 callout：一般提醒 + 免責，順序照 crypto.md，免責放在第五節之後、兩個 link 之前。免責文字請照 crypto.md 的範本改寫成 AI 版：說明本文講的是產品與功能、不推薦任何金融商品、不是投資建議、不含價格與買賣時機，並寫上查核日 2026-09-16。★ 衝突提醒：docs/news-2026-batch-4/ai.md 寫「AI 篇不帶 finance 主題，不要加投資免責」。若編輯決定改用 [\"ai\",\"productivity\",\"ai-news\"] 或 [\"ai\",\"software\",\"ai-news\"]，lint 就不會要求免責 callout。但本篇主題是投行的估值、LBO 與 pitchbook，掛 finance 才誠實，建議掛 finance 並照規則加免責 callout，且在 tasks 裡記下這條規格衝突。",
+ "verified_facts": [
+  {
+   "fact": "官方公告頁署名日期為 September 10, 2026，分類標示為 Product，標題為 Introducing ChatGPT for Financial Services。這是事件日，官方沒有另外給生效日或開放日。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAISeptember 10, 2026 / Product / Introducing ChatGPT for Financial Services"
+  },
+  {
+   "fact": "OpenAI 官方 RSS 的這一筆 pubDate 為 Thu, 10 Sep 2026 07:00:00 GMT，category 為 Product，link 為 https://openai.com/index/introducing-chatgpt-financial-services，與頁面署名日期一致。",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<pubDate>Thu, 10 Sep 2026 07:00:00 GMT</pubDate>"
+  },
+  {
+   "fact": "官方 RSS 與頁面 meta description 逐字相同，內容為：Introducing ChatGPT for Financial Services, combining built-in financial data and GPT-6 Astra for research, modeling, and client-ready materials。頁面 og:url 為 https://openai.com/index/introducing-chatgpt-financial-services/（帶尾斜線）。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Introducing ChatGPT for Financial Services, combining built-in financial data and GPT-6 Astra for research, modeling, and client-ready materials."
+  },
+  {
+   "fact": "OpenAI 說明 ChatGPT for Financial Services 是「ChatGPT Work 的客製化體驗」，把內建金融資料與 GPT-6 Astra 的推理結合，協助團隊做研究、財務模型與客製化的客戶資料。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We’re introducing ChatGPT for Financial Services, a tailored ChatGPT Work experience that combines built-in financial data with GPT‑6 Astra’s reasoning to help teams develop research, financial models, and customized client materials."
+  },
+  {
+   "fact": "OpenAI 表示這個產品是由與 Morgan Stanley 及 Evercore 的設計夥伴關係（design partnership）形塑的。官方沒有說這兩家已經導入或購買。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This product has been shaped by our design partnership with Morgan Stanley and Evercore."
+  },
+  {
+   "fact": "OpenAI 表示起點是投資銀行（investment banking）與股票研究（equity research）兩塊，並說夥伴合作會影響後訓練、產品改善，以及往其他金融服務類別的擴張。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Our early work with Morgan Stanley and Evercore has helped steer where we have started: investment banking and equity research."
+  },
+  {
+   "fact": "2026-09-14 版的內建資料商清單為 Daloopa、PitchBook、LSEG News 與 Crunchbase，涵蓋法說會逐字稿、財務報表、公司基本面、未上市公司等資料。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ChatGPT for Financial Services includes datasets from providers like Daloopa, PitchBook, LSEG News and Crunchbase covering earnings transcripts, financial statements, company fundamentals, private companies, and more."
+  },
+  {
+   "fact": "OpenAI 說明這些資料由 OpenAI 索引並存放在 OpenAI 自己的基礎設施上，團隊可直接使用，不必另外談合約或設定 connector。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Teams can start working with these datasets immediately, with no separate contracts to negotiate or connectors to set up. We index and host this data on OpenAI infrastructure, allowing us to improve retrieval, latency, and how we surface it in the product experience."
+  },
+  {
+   "fact": "OpenAI 宣稱由自己索引與代管資料可以提高正確性，並帶來 granular citations 這類新功能，讓銀行從業人員把數字與說法追回來源、在分析過程中檢查佐證。這是廠商宣稱，官方沒有提供可驗證的數據。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "This data is indexed and hosted by OpenAI to enable higher accuracy and new features like granular citations so that bankers can trace figures and claims back to their sources, and check the evidence as their analysis develops."
+  },
+  {
+   "fact": "OpenAI 說明溯源可以把數字與主張指回特定的表格與段落，並把佐證資訊高亮供檢視。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Trace figures and claims to specific tables and passages, with the supporting information highlighted for review."
+  },
+  {
+   "fact": "OpenAI 舉的官方例子是損益正常化分析（P&L normalization）：可檢視調整後 EBITDA 背後的調節與附註、了解哪些成本被排除，再決定如何用在估值上。這是官方寫的例子，不是本站設計的情境。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For a banker running a P&L normalization analysis, that means being able to inspect the reconciliation and notes behind an adjusted EBITDA, understanding which costs were excluded, and deciding how to use it in a valuation."
+  },
+  {
+   "fact": "既有訂閱的串接尚未完成：OpenAI 只說「正在與」S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva 與 Moody's 合作做共用登入與權利（entitlement）整合，並說供應商「將能」透過 ChatGPT 登入辨識使用者。官方沒有給時程，也沒說已經可用。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "So we’re working with S&P Capital IQ, LSEG, MSCI, Dow Jones Factiva, and Moody’s on shared sign-in and entitlement integrations. Providers will be able to recognize users through their ChatGPT sign-in to enable automatic access to data they’re already entitled to."
+  },
+  {
+   "fact": "2026-09-14 版寫連接器生態「包含超過 50+ 個 connector」，並點名 Datasite、Box、Preqin、FactSet 與 Intapp。官方用的就是 over 50+ 這個重複的寫法。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Our broader connector ecosystem includes over 50+ connectors including Datasite, Box, Preqin, FactSet and Intapp."
+  },
+  {
+   "fact": "OpenAI 說產品原生提供包含 GPT-6 Astra 在內的前沿模型，未來新模型推出時也會直接可用；公司也可集中管理存取權與資料連線。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The product also offers state of the art frontier intelligence, including GPT‑6 Astra, natively and will continue to have newer models available out of the box as they are released. Firms can also centrally manage access and data connections, supported by ChatGPT’s enterprise security and governance controls."
+  },
+  {
+   "fact": "OpenAI 宣稱 GPT-6 Astra 在金融服務工作的三項核心能力上是 state of the art：資訊檢索（information retrieval）、財務推理（financial reasoning）與成果產出（artifact generation）。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GPT‑6 Astra is state of the art across three of the core capabilities required for financial services work: information retrieval, financial reasoning, and artifact generation."
+  },
+  {
+   "fact": "評測一 OfficeQA Pro：OpenAI 的圖說寫 GPT-6 Astra 得 69.9%、GPT-5.6 Sol 得 60.2%；圖表原始資料另有 Claude Fable 5.1 的 62.4%，這個數字只在圖表資料裡、圖說沒提。官方說 OfficeQA Pro 測的是 AI 代理能否在美國財政部公報（U.S. Treasury Bulletins）中找到並分析資訊，包含複雜的財務表格、圖表與附註。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OfficeQA Pro tests whether AI agents can find and analyze information across U.S. Treasury Bulletins, including complex financial tables, charts, and supporting footnotes. GPT‑6 Astra scores 69.9%, compared with 60.2% for GPT‑5.6 Sol."
+  },
+  {
+   "fact": "評測二 BoxBench：OpenAI 的圖說寫 GPT-6 Astra 得 77%、GPT-5.6 Sol 得 74%，並自行註明「這是外部夥伴提供的 eval」。圖表原始資料為 GPT-6 Astra 0.77、GPT-5.6 Sol 0.74、Claude Fable 5.1 0.72，指標名稱是 weighted rubric accuracy。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "BoxBench tests how well models can reason over documents in complex business workflows to turn them into rich deliverables. GPT-6 Astra scores 77%, compared with 74% for GPT-5.6 Sol. Note this is an Eval provided by an External partner."
+  },
+  {
+   "fact": "評測三 專業簡報製作：OpenAI 自行註明這是內部評測（圖表標題為 Slides Head to Head (Internal) / Versus Opus 5，Y 軸為 Win Rate (Human Eval)），測的是從零做簡報與照既有範本做簡報。圖說與圖表資料一致的數字只有一個：GPT-6 Astra 對 Opus 5 的人評勝率 55.6%。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "This internal evaluation tests models on professional slide creation, including both making slide decks from scratch and following existing templates. GPT-6 Astra scores a win rate of 55.6% against Opus 5 in human comparisons, compared to only 21.6% for GPT-5.6 Sol."
+  },
+  {
+   "fact": "同一張簡報評測圖的圖說與圖表資料互相矛盾：圖說把 21.6% 歸給 GPT-5.6 Sol，但圖表原始資料是 GPT-5.5 為 0.216、GPT-5.6 Sol 為 0.306、GPT-6 Astra 為 0.556。兩個版本（9/10 與 9/14）都有這個矛盾，不是抓取錯誤。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "{\"model\":\"GPT-5.5\",\"win_rate\":0.216},{\"model\":\"GPT-5.6 Sol\",\"win_rate\":0.306},{\"model\":\"GPT-6 Astra\",\"win_rate\":0.556}"
+  },
+  {
+   "fact": "範本功能：在 ChatGPT for Financial Services 裡，管理者可透過專屬的 admin page 發布 Excel、Word 與 PowerPoint 範本；設定公司範本與風格指南後，團隊可把分析轉成公司格式的估值模型、研究報告與 pitchbook。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In ChatGPT for Financial Services, administrators can publish Excel, Word, and PowerPoint templates through a dedicated admin page."
+  },
+  {
+   "fact": "安全與治理建立在 ChatGPT Enterprise 既有能力上：SAML SSO、SCIM 佈建與角色式存取控制（role-based access controls）。官方強調重點是保護重大未公開資訊（material non-public information）與客戶機密。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ChatGPT for Financial Services builds on ChatGPT Enterprise’s SAML SSO, SCIM provisioning, and role-based access controls."
+  },
+  {
+   "fact": "OpenAI 說明公司的業務資料預設不用於訓練模型，靜態與傳輸中都加密，管理者可設定 workspace 的保留期；法遵團隊可透過 OpenAI Compliance Platform 把支援的 workspace 紀錄匯出到自有的稽核與調查流程。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Your firm’s business data is not used to train our models by default. It is encrypted at rest and in transit, and admins can configure workspace retention."
+  },
+  {
+   "fact": "資訊隔離：可依角色管理 skills 與 apps 的存取權、開關支援的 app 讀寫動作，也可建立多個 workspace 來執行資訊隔離牆（information barriers）。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Firms can manage access to skills and apps by role and enable or disable supported app read and write actions. Multiple workspaces can also be created to enforce information barriers."
+  },
+  {
+   "fact": "供應狀況全文只有兩句：ChatGPT for Financial Services 供「合資格的金融機構」使用，有興趣請聯絡 OpenAI 或自己的客戶經理。頁面的行動按鈕連到 /business/contact-sales-financial-services/ 與 /contact-sales/。沒有任何地區、時程、資格條件或價格。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ChatGPT for Financial Services is available to eligible financial institutions. If you’re interested, please contact us or reach out to your account team."
+  },
+  {
+   "fact": "官方頁的使用情境分頁（產品截圖）共五個：Value analysis、LBO Modelling、Buyer screening、Earnings analysis、Pitchbook preparation。這些是截圖分頁名稱，官方沒有為每一個寫說明文字。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Value analysisLBO ModellingBuyer screeningEarnings analysisPitchbook preparation"
+  },
+  {
+   "fact": "官方頁引用的資料商代表：Crunchbase 執行長 Jager McConnell、Daloopa 執行長 Thomas Li、PitchBook 技術與工程執行副總 Tom Van Buskirk、Fiscal.ai 執行長 Braden Dennis；訂閱商代表為 S&P Global 的 Sally Moore（Chief Client Officer and Co-Head of Market Intelligence, Kensho Data & Platforms）與 LSEG 的 Emily Prince（Group Head of Enterprise AI）。",
+   "url": "https://web.archive.org/web/20260914012930/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "這一頁是活文件：2026-09-10 上線版與 2026-09-14 版內容不同，至少有三處改動（內建資料商清單、MCP 段落的點名、以及一整張 connector 錯誤率圖與其說明句被刪除）。撰稿必須寫明依據的是 2026 年 9 月 14 日的版本。",
+   "url": "https://web.archive.org/web/20260910175211/https://openai.com/index/introducing-chatgpt-financial-services/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OpenAI 官方 ChatGPT 產品文件的定價頁列出的方案為 Free 每月 0 美元、Go 每月 8 美元、Plus 每月 20 美元、Pro 每月 100 美元起、Business 每位使用者每月 20 美元（2 人以上、年繳，月繳為 25 美元）、Enterprise & Edu 為「聯絡業務」不標價。整份定價文件沒有任何一處提到 ChatGPT for Financial Services。",
+   "url": "https://learn.chatgpt.com/docs/pricing.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "name=\"Enterprise & Edu\" ... ctaLabel=\"Contact sales\""
+  },
+  {
+   "fact": "同一份官方定價文件說明 ChatGPT Work 與 Codex 共用計價、額度與用量上限，並公告 GPT-5.5 將於 2026 年 10 月 14 日從 ChatGPT、ChatGPT Work 與 Codex 的所有方案退場（OpenAI API 不受影響）。",
+   "url": "https://learn.chatgpt.com/docs/pricing.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "GPT-5.5 retires from ChatGPT, ChatGPT Work, and Codex on all plans on October 14, 2026. The OpenAI API isn't affected."
+  },
+  {
+   "fact": "官方 ChatGPT Work 說明文件指出，ChatGPT Work 與 Codex 共用核心的執行、隔離與權限機制，落在使用者 ChatGPT Business 或 Enterprise 合約的同一組安全邊界內；網頁版的工作在雲端執行，不在成員的裝置上。",
+   "url": "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ChatGPT Work can complete multi-step tasks using the information, files, applications, and tools available to an authorized workspace member. On the web, those tasks run in the cloud, not on the member's device."
+  },
+  {
+   "fact": "官方 ChatGPT Work 說明文件的保留期規定：Compliance Logs Platform 的紀錄在平台保留 30 天，匯出的副本依接收系統的政策；Enterprise 在 Library 以外的暫存上傳可能在 48 小時後過期，除非另有保留設定。",
+   "url": "https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "**Compliance Logs Platform records:** Remain available in the platform for 30 days."
+  },
+  {
+   "fact": "官方 Plugin controls 文件說明：plugin 可包含 skills 與 MCP servers；成員只有在該 plugin 與 MCP server 對其角色開放、且本人擁有該連線服務的存取權時，才能使用該 MCP server 的能力；管理者在 workspace 設定決定哪些 plugin 可用。",
+   "url": "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A member can use an MCP server's capabilities only when the plugin and MCP server are available to their role and they have access to the connected service."
+  },
+  {
+   "fact": "OpenAI 官方 ChatGPT 產品文件索引（llms.txt，共 323 行）逐行檢查後，沒有任何一頁在說明 ChatGPT for Financial Services，代表截至 2026-09-16 這個產品沒有公開的說明文件。",
+   "url": "https://learn.chatgpt.com/llms.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "官方 sitemap 的 page 分區確實列有 https://openai.com/policies/financial-services-terms/ 與 https://openai.com/business/contact-sales-financial-services/ 兩個真實路徑，代表金融服務另有專屬條款頁與專屬業務聯絡頁；本次兩頁都讀不到內容。",
+   "url": "https://openai.com/sitemap.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "沒有任何價格：官方公告與官方定價文件都沒有 ChatGPT for Financial Services 的費用、每席次成本、最低席次、合約長度，也沒說它是 ChatGPT Enterprise 的加購、獨立方案，還是合約條款。",
+  "沒有任何地區或國家：全文唯一出現的地名是評測所用的「U.S. Treasury Bulletins」。沒有提到台灣、亞洲或任何市場，也沒有語言支援說明。",
+  "沒有定義「合資格的金融機構」（eligible financial institutions）：沒有寫資格條件、機構類型、規模門檻、審核方式或需要多久。",
+  "沒有開放時程：全文沒有 beta、preview、waitlist、分批開放、試辦或「幾月幾日起可用」的字眼，只叫人聯絡業務或客戶經理。",
+  "沒有說個人使用者（Free、Go、Plus、Pro）能不能用，也沒有說 ChatGPT Business 工作區是否適用。",
+  "沒有公布任何客戶數、機構數、席次數、使用量或採用率。",
+  "沒有說 Morgan Stanley 與 Evercore 已經導入、購買或全行使用，官方只稱其為設計夥伴（design partners）並引用其發言。",
+  "對 S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's 只說「正在合作」與「將能」，沒有說已上線，也沒有給時程。",
+  "沒有說明內建資料的涵蓋範圍、歷史深度、更新頻率、地區涵蓋或授權條件；也沒有說內建資料是否另外收費或計入用量額度。",
+  "沒有公布任何評測的方法、題數、評分者人數、時間或可重現的細節；BoxBench 官方自己註明是外部夥伴提供的 eval，簡報評測官方自己註明是內部評測。",
+  "沒有提到任何主管機關的核准、認證或法遵背書（例如 FINRA、SEC、FCA、金管會），安全段落講的全是 ChatGPT Enterprise 既有的功能。",
+  "沒有談模型出錯、幻覺或準確率上限，也沒有說產出可否直接對外交付給客戶、需不需要人工覆核。",
+  "沒有說資料落地（data residency）選項，也沒有說是否支援零資料保留（Zero Data Retention）。",
+  "沒有說這個產品和 2026-03-05 的 ChatGPT for Excel and new financial data integrations、2026-05-15 的 A new personal finance experience in ChatGPT 之間的關係，也沒說是否取代任何既有功能。",
+  "沒有公布 admin page 的名稱、位置或設定步驟；官方 ChatGPT 產品文件站上完全沒有這個產品的說明頁。",
+  "沒有說產品介面語言、是否支援繁體中文，也沒有說資料商的資料是否含非美國市場。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "connector 錯誤率從 Quartr 5.09% 降到 1.99%、S&P Global 6.84% 降到 2.66%、FactSet 9.59% 降到 6.45%、Daloopa 7.53% 降到 2.57%，並有一句「我們透過自動化評估與迭代最佳化了熱門 MCP connector 的可靠度」。",
+   "seen_where": "2026-09-10 上線當天的官方頁版本（web.archive.org/web/20260910175211/）的圖表資料與圖說",
+   "why_excluded": "這張圖與這句話在 2026-09-14 的官方頁版本已被刪除（9/14 版全頁搜尋不到 Quartr，也搜不到那句話）。官方自己撤下的數字不能當成現行官方說法寫進文章。"
+  },
+  {
+   "claim": "OpenAI 針對「金融服務最常用的 MCP」特別點名了 S&P Global 與 FactSet。",
+   "seen_where": "2026-09-10 版：some of the most used MCPs in financial services like S&P Global and FactSet",
+   "why_excluded": "2026-09-14 版把「like S&P Global and FactSet」拿掉了。以 9/14 版為準，不點名。"
+  },
+  {
+   "claim": "內建資料商是 Daloopa、PitchBook 與 LSEG News 三家。",
+   "seen_where": "2026-09-10 版正文",
+   "why_excluded": "2026-09-14 版已改成四家（加入 Crunchbase），並新增 Crunchbase 與 Fiscal.ai 的引言。撰稿要用 9/14 版的四家並註明版本日期。"
+  },
+  {
+   "claim": "Fiscal.ai 是 ChatGPT for Financial Services 的內建資料商之一。",
+   "seen_where": "官方頁 Data providers 的引言輪播與 logo 群（Crunchbase、Daloopa、PitchBook、Fiscal.ai）",
+   "why_excluded": "9/14 版正文的內建資料商清單只有 Daloopa、PitchBook、LSEG News 與 Crunchbase，沒有 Fiscal.ai；Fiscal.ai 執行長的發言只說是 partnership。官方正文沒說的事不寫。"
+  },
+  {
+   "claim": "產品名稱是 OpenAI for Financial Services。",
+   "seen_where": "官方頁引用的 Daloopa 執行長 Thomas Li 發言：one of the native data partners for OpenAI for Financial Services",
+   "why_excluded": "那是受訪者的用語。官方產品名是 ChatGPT for Financial Services（標題、meta、正文、CTA 皆同），不可當成第二個官方名稱。"
+  },
+  {
+   "claim": "GPT-5.6 Sol 在專業簡報製作評測的人評勝率是 21.6%。",
+   "seen_where": "官方簡報評測的圖說",
+   "why_excluded": "同一張圖的圖表原始資料把 0.216 歸給 GPT-5.5、把 GPT-5.6 Sol 記為 0.306。圖說與資料互相矛盾（兩個版本都一樣），所以只引用兩處一致的 55.6%。"
+  },
+  {
+   "claim": "ChatGPT for Financial Services 有專屬的服務條款，內容為……",
+   "seen_where": "官方 sitemap 列有真實路徑 https://openai.com/policies/financial-services-terms/",
+   "why_excluded": "該頁線上回 403，Internet Archive 完全沒有封存（回 404），內容不明。只能寫「官方 sitemap 顯示另有金融服務專屬條款頁」，不得描述其內容。"
+  },
+  {
+   "claim": "申請流程是填表／需要提供哪些資料／有多久審核。",
+   "seen_where": "官方頁 CTA 連到 /business/contact-sales-financial-services/ 與 /contact-sales/",
+   "why_excluded": "兩頁在本容器都 403，沒有讀到任何內容，無法描述申請流程。"
+  },
+  {
+   "claim": "產品介面有 source picker、可高亮 adjusted EBITDA 的來源佐證、可用公司核准範本做 company overview deck。",
+   "seen_where": "官方頁產品截圖的 alt 文字",
+   "why_excluded": "這些只是圖片替代文字，沒有對應的功能說明段落，不足以寫成已確認的介面名稱或功能。"
+  },
+  {
+   "claim": "Morgan Stanley 或 Evercore 自己確認了這項合作。",
+   "seen_where": "官方頁引用了兩家的具名發言",
+   "why_excluded": "Morgan Stanley 新聞室在本容器回 403，Evercore 與 LSEG 的新聞頁回 200 但是前端渲染、curl 取不到任何條目，沒有拿到合作方自己的公告。文章只能寫「OpenAI 表示」與「官方頁引用 Morgan Stanley 的說法」。"
+  },
+  {
+   "claim": "OpenAI Compliance Platform、Compliance Logs Platform、Compliance API 是同一件事。",
+   "seen_where": "公告用 OpenAI Compliance Platform；learn.chatgpt.com 用 Compliance Logs Platform 與 Compliance API",
+   "why_excluded": "沒有任何官方頁說明三者的關係，不可寫成同義詞或互相代換。"
+  },
+  {
+   "claim": "同日其他 OpenAI 公告（Now everyone can put data to work、GPT-Live-1 in the API、Expanding AI access and cyber defense for federal, state, local, and tribal governments）的內容。",
+   "seen_where": "openai.com/news/rss.xml 的 2026-09-10 條目",
+   "why_excluded": "本次沒有查證這些頁面的內文，且不在本篇題目內。Agents API 站上已有 ai-news-openai-agents-api-20260910。"
+  },
+  {
+   "claim": "openai.com 的 sitemap lastmod（例如 2026-09-11T23:41:13.520Z）代表官方更新了這篇公告。",
+   "seen_where": "https://openai.com/sitemap.xml/product/",
+   "why_excluded": "lastmod 是網站建置時間戳，站上大量頁面同時變動，不能當成內容更新日。內容確實有更新，但證據是兩個封存版本的逐字比對，不是 lastmod。"
+  },
+  {
+   "claim": "「1 of 2」「1 of 4」是內容的一部分。",
+   "seen_where": "官方頁抽取出的純文字",
+   "why_excluded": "那是輪播元件的計數字串，不是內容。"
+  }
+ ],
+ "hero_label": "AI 進投行，先看得懂來源",
+ "diagram": {
+  "title": "金融版 ChatGPT 的四層",
+  "caption": "（撰稿時與內容包 diagram caption 一致，寫查核日 2026-09-16）",
+  "nodes": [
+   [
+    "內建資料",
+    "四家資料商直接可用"
+   ],
+   [
+    "逐格溯源",
+    "數字指回表格段落"
+   ],
+   [
+    "模板產出",
+    "管理者發布公司範本"
+   ],
+   [
+    "機構才有",
+    "合資格機構聯絡業務"
+   ]
+  ]
+ },
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md 第 137 行寫「站上 9/10 只寫了 Agents API」——9/10 站上其實已有三篇：ai-news-anthropic-threat-report-20260910、ai-news-openai-agents-api-20260910、ai-news-deepseek-v41-flash-20260910。題目本身沒有被寫過，這點仍然成立。",
+  "ai.md 的「沒有免責 callout：AI 篇不帶 finance 主題，不要加投資免責」與本篇直接衝突。若本篇 topics 採用 finance，pack_ingest 的 finance_no_disclaimer（error）必定觸發，一定要加免責 callout。這是規格層級的衝突，要由編輯決定，不能兩邊都照做。",
+  "ai.md 既有篇目表把 GPT-6 Astra 的事件日列為 2026-09-03。官方 feed 顯示 2026-09-03 的是〈GPT-6 Astra: A new generation of intelligence〉，另有 2026-09-09 的〈GPT-6 Astra: The next generation in intelligence for work〉，是兩則不同的官方公告；站上只寫了 9/3 那一則。9/9 那則目前是缺口。",
+  "2026-09-16 重新確認：ai-news-2026-january-september-index 的 zh-TW title 仍是「2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用」、description 仍寫「38 則」，display_order 為 141；ai-news-* 目前最大的 display_order 是 148（ai-news-siri-ai-ios-27-20260914），與 ai.md 所寫一致。",
+  "ai.md 說 openai.com 網頁對 curl 與 WebFetch 都回 403——2026-09-16 複查仍然成立，但要補充：openai.com/sitemap.xml 及其各分區 sitemap 回 200，是在 403 之下取得官方真實路徑（避免猜網址）的可用管道；另外 learn.chatgpt.com 與 developers.openai.com 整站可讀，是 help.openai.com 被擋時的官方替代。"
+ ],
+ "overlaps_existing_article": "四篇要分工。ai-news-openai-agents-api-20260910 是同一天同一家公司，但主題是開發者 API 的計費與資料落地：本篇完全不寫 Agents API、不寫 API 計價，那篇也沒寫金融資料與評測。ai-news-gpt-6-astra-20260903 已寫過 GPT-6 Astra 的能力總覽：本篇只寫這次公告裡金融場景的三項能力（資訊檢索、財務推理、成果產出）與三張評測圖，模型本身的介紹用一句帶過並連過去。ai-news-chatgpt-work-20260709 已寫過 ChatGPT Work 的跨檔案交辦方法：本篇只說明「這是 ChatGPT Work 的客製版本」，不重述交辦方法。另外站上有 chatgpt-for-excel-formulas（用 ChatGPT 寫 Excel 公式，topics 為 ai/productivity/ai-chat），不是新聞、也不是 OpenAI 的 ChatGPT for Excel 產品，但名稱近似，行文要避免讀者混淆，也不要連過去當相關新聞。兩個 link 建議：第一個放 ai-news-2026-january-september-index（AI 垂直索引），第二個放 ai-news-openai-agents-api-20260910（同日、同公司、對照面最清楚）；link 的 text 必須逐字等於目標內容包該語言的正式 title。",
+ "must_not_write": [
+  "不得寫任何價格、每席次費用、合約金額或「大概多少錢」的推測——官方公告與官方定價文件都沒有。",
+  "不得寫台灣、亞洲或任何地區可用或不可用，也不得寫「台灣的銀行可以／不能用」——官方完全沒提地區。",
+  "不得寫個人 ChatGPT 帳號可以用、或升級 Plus/Pro 就有；官方只寫供合資格金融機構使用、請聯絡業務。",
+  "不得把 S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's 的整合寫成已上線；官方寫的是「正在合作」與「將能」。",
+  "不得寫 Morgan Stanley 或 Evercore 已導入、已購買、全行使用；官方只說是設計夥伴。",
+  "不得引用已被官方從頁面撤下的 connector 錯誤率數字（5.09%、1.99%、6.84%、2.66%、9.59%、6.45%、7.53%、2.57%）。",
+  "不得引用 21.6% 這個數字——同一張圖的圖說與圖表資料互相矛盾。簡報評測只寫 55.6%。",
+  "不得把 69.9%、77%、55.6% 寫成中立第三方的評測結果；BoxBench 要註明官方自承是外部夥伴提供的 eval，簡報評測要註明官方自承是內部評測，全部要寫成「OpenAI 表示」。",
+  "不得寫 Fiscal.ai 是內建資料商之一。",
+  "不得寫本站試用過、實測過、比較過任何功能。",
+  "不得出現任何投資標的、報酬、殖利率、漲跌、市值、買賣時機或「值不值得」的內容；也不得把 LBO、估值、pitchbook 寫成讀者可以自己拿來做投資判斷的方法。",
+  "內容包的 sources 不得放 web.archive.org 的網址，第一條一律寫 https://openai.com/index/introducing-chatgpt-financial-services/。",
+  "不得推測 openai.com/policies/financial-services-terms/ 的內容，只能寫「官方 sitemap 顯示另有金融服務專屬條款頁，本文查核時無法讀取」。",
+  "不得寫「官方說明文件指出」某個 ChatGPT for Financial Services 的設定步驟——官方產品文件站上沒有這個產品的任何一頁。",
+  "不得省略免責 callout：只要 topics 含 finance，缺少含「不是投資建議」六字的 callout 會讓 pack_cli lint 出 error，整包過不了。",
+  "五個語系的免責 callout 要各自含該語言的標記字串（zh-TW 不是投資建議／zh-CN 不是投资建议／en not investment advice／ja 投資助言ではありません／ko 투자 조언이 아닙니다），不可只翻譯中文那句。"
+ ]
+}

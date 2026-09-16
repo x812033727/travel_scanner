@@ -1,0 +1,437 @@
+{
+ "slug": "crypto-news-jfsa-working-group-20260216",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "FSA 全站在這個容器裡可連：www.fsa.go.jp 英文與日文頁、/en/refer/... 與 /singi/... 的 PDF、/common/diet/ 的 PDF 全部 HTTP 200 並取得實際內容（不是拒絕頁）。實際抓到並讀過的：英文新聞稿索引（200）、英文公告頁 20260216.html（200）、報告全文 01.pdf（200、62 頁、821,835 bytes）、概要 02.pdf（200、5 頁）、參考資料 03.pdf（200、6 頁）、日文公告頁 20251210.html（200）、工作小組開催實績頁（200）、FSA「国会提出法案等」/common/diet/index.html（200）、法律案要綱 /common/diet/221/02/04.pdf（200、7 頁）、法案概要 /common/diet/221/02/02.pdf（200、1 頁）、FSA 2026-07-29 政令公布新聞稿（200）、FSA 2026-09-15 內閣府令公布新聞稿（200，確認與暗號資產無關）、眾議院第221回國會議案一覽（200、Shift_JIS）與該案審議經過頁（200）。\n\n容器內的工具問題：pdfminer 與 pypdf 一開始因為系統的 cryptography 綁定壞掉而無法載入（_cffi_backend 缺失），`pip install cffi` 之後 pypdf 可用，三份 PDF 都成功抽出文字。後面的代理如果要重抽，要先裝 cffi。\n\n查不到／沒查的：FSA 日文新聞稿沒有可用的年度封存索引（/news/r8/index.html、/news/r8/202604/index.html、/news/past.html 都 404），所以 2026 年 4 月的日文新聞稿要靠搜尋當線索再回官方頁；我沒有找到 FSA 對該法案提出當天的日文新聞稿，改以 FSA 自己的「国会提出法案等」頁與眾議院議案頁作為一手來源。內閣官房的「国会提出法案（第221回）」頁只列內閣官房主管的法案，沒有金融庁的法案。\n\n來源白名單的注意事項：crypto.md 的日本部分只寫「日本 FSA 與 JVCEA」。我把眾議院（shugiin.go.jp）當成一手來源，理由是它是國會自身的官方議案紀錄（與台灣部分列入的立法院同性質），而且 FSA 自己的頁面也連到 shugiin.go.jp。若查核者認為要全部留在 FSA 網域內，可以把 sources 第 4 條換成法律案要綱 https://www.fsa.go.jp/common/diet/221/02/04.pdf 或 FSA 2026-07-29 政令新聞稿 https://www.fsa.go.jp/news/r8/shouken/20260729/20260729.html（兩者都已抓過、都是 FSA 網域），但那樣就拿不到「公布日 2026-07-23／法律第64號」這兩個數字，文章裡就不能寫。另外兩份可替換進 sources 的官方 PDF：概要 02.pdf 與參考資料 03.pdf（資本額 1,000 萬→5,000 萬日圓、罰則 3 年→5 年、20% 等對照表在 03.pdf 最清楚）。\n\n活文件警告：報告全文 01.pdf 的 HTTP Last-Modified 為 2026-08-03（頁面同時標 Updated on August 3, 2026），PDF 內部 ModDate 為 2026-07-31；02.pdf 與 03.pdf 的 Last-Modified 為 2026-07-03。本紀錄所有引文都來自 2026-09-16 當天下載的版本，撰稿與查核時要重抓，不要沿用這裡的字句而不比對。",
+ "sources": [
+  {
+   "title": "Publication of the Report by the Working Group on Crypto-asset Systems of the Financial System Council",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+   "publisher": "Financial Services Agency, The Japanese Government",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Report by the Working Group on Crypto-asset Systems of the Financial System Council",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "publisher": "Financial Services Agency, The Japanese Government",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "国会提出法案等",
+   "url": "https://www.fsa.go.jp/common/diet/index.html",
+   "publisher": "金融庁",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "閣法 第221回国会 57 金融商品取引法及び資金決済に関する法律の一部を改正する法律案（議案審議経過情報）",
+   "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm",
+   "publisher": "衆議院",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-02-16",
+ "event_date_basis": "三個日期一定要分清楚，寫錯就是錯的文章：（1）報告本體的日期是 **2025-12-10**——日文公告頁標「令和７年12月10日」，英文報告封面也印 December 10, 2025，工作小組的第六次（最後一次）會議是 2025-11-26。（2）**2026-02-16** 是 FSA 把英文版（Provisional Translation）公布在英文網站的日子，也是英文新聞稿索引 2026 年 February 區塊列出的日期；英文頁自己寫「(Japanese version: published December 10, 2025)」。（3）該英文頁另標 **Updated on August 3, 2026**，而報告全文 PDF 的 HTTP Last-Modified 正是 2026-08-03，代表英文檔案後來又換過版。\n\n本篇 slug 用 20260216，事件日就設 2026-02-16，理由是批次 4 的區間是 2026-01-01 起，而 2026-02-16 是這件事落在區間內的官方動作（英文版公布）。**但第一段不可以寫成「2026 年 2 月 16 日金融審議會提出報告」**——要寫成「金融廳於 2026 年 2 月 16 日公布這份報告的英文版，報告本身的日期是 2025 年 12 月 10 日」。如果站主希望事件日對齊報告本體，那就要改 slug 為 ...-20251210，但那個日期在批次 4 的區間之外。\n\n後續的法案時程（另一組日期，不要跟報告日期混用）：2026-04-10 內閣提出法案、2026-06-11 眾議院本會議可決、2026-07-15 參議院本會議可決（成立）、2026-07-23 公布為令和8年法律第64號、2026-08-12 只有「無登記業罰則提高與 SESC 犯則調查權」的部分先施行；暗號資產主體部分的施行日由政令另定、官方尚未公布。",
+ "verified_facts": [
+  {
+   "fact": "金融庁（FSA）英文新聞稿索引 Press Releases (2026) 的 February 區塊列有一則 \"Publication of the Report by the Working Group on Crypto-asset Systems of the Financial System Council (February 16, 2026)\"，連到 /en/refer/councils/singie_kinyu/20260216.html。同一份 2026 年索引的 April 區塊沒有任何「內閣通過修正金商法與資金決濟法法案」的條目。",
+   "url": "https://www.fsa.go.jp/en/news/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Publication of the Report by the Working Group on Crypto-asset Systems of the Financial System Council (February 16, 2026)"
+  },
+  {
+   "fact": "FSA 英文公告頁的日期標示為 February 16, 2026，並另標 \"Updated on August 3, 2026\" 與 \"(Japanese version: published December 10, 2025)\"。也就是：報告本體是 2025-12-10 的日文版，2026-02-16 是英文版公布日，之後又更新過。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "February 16, 2026 / Updated on August 3, 2026 / Financial Services Agency / (Japanese version: published December 10, 2025)"
+  },
+  {
+   "fact": "公告內文只有一句：金融審議會「暗號資產制度工作小組」（主席為上智大學法學部教授 MORISHITA Tetsuo／森下哲朗）已彙整並公布報告。承辦單位為 Financial Markets Division, Policy and Markets Bureau，電話 +81-(0)3-3506-6000（分機 3970、2393）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Working Group on Crypto-asset Systems of the Financial System Council (Chaired by Professor MORISHITA Tetsuo, Faculty of Law, Sophia University) has compiled and published a report."
+  },
+  {
+   "fact": "公告頁掛三份 PDF：01.pdf 報告全文（62 頁）、02.pdf 報告概要（5 頁）、03.pdf 參考資料（6 頁）。2026-09-16 實測下載，01.pdf 的 HTTP Last-Modified 為 2026-08-03、PDF 內部 ModDate 為 2026-07-31；02.pdf 與 03.pdf 的 Last-Modified 均為 2026-07-03。**這三份是會被改版的活文件，引用時要寫明讀的是哪一版。**",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "報告全文封面日期為 December 10, 2025，並標明 \"Provisional Translation\"（暫譯本）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Report by the Working Group on Crypto-asset Systems of the Financial System Council / December 10, 2025 / Provisional Translation"
+  },
+  {
+   "fact": "日文原頁（/singi/singi_kinyu/tosin/20251210.html）標題為「金融審議会『暗号資産制度に関するワーキング・グループ』報告の公表について」，日期「令和７年12月10日」，並寫明「なお、本報告書は、今後、金融審議会総会・金融分科会において報告されることとなります」。",
+   "url": "https://www.fsa.go.jp/singi/singi_kinyu/tosin/20251210.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "令和７年12月10日／金融庁"
+  },
+  {
+   "fact": "工作小組共開六次會：第1回 2025-07-31、第2回 2025-09-02、第3回 2025-09-29、第4回 2025-10-22、第5回 2025-11-07、第6回 2025-11-26（官方頁以令和７年紀年）。",
+   "url": "https://www.fsa.go.jp/singi/singi_kinyu/angoshisanseido_wg/angoshisanseido_wg_index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "成員名單（As of December 10, 2025）：主席 MORISHITA, Tetsuo（上智大學法學部教授），委員 13 人——ARIYOSHI Naoya、ITO Aki、IWASHITA Naoyuki、OTSUKI Nana、OGAWA Keiko、KATO Takahito、KAWAMURA Kenji、KONO Yasuko、SAKO Kazue、NAGASAWA Yumiko、MATSUI Tomoyo、MATSUO Ken'ichi、MATSUO Shin'ichiro。另有 19 個觀察員單位，含 JVCEA、日本銀行協會、日本證券業協會、警察廳、消費者廳、數位廳、法務省、財務省等。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "緣起：FSA 於 2025-04-10 發表討論文件 \"Examination of the Regulatory Systems Related to Crypto-Assets\"；2025-06-25 金融審議會第 55 回總會與第 43 回金融分科會合同會合上，金融擔當大臣要求審議會檢討暗號資產的適當監理架構；金融審議會因此設立本工作小組，自 2025 年 7 月起開了六次會。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the Working Group on Crypto-Asset Systems (hereinafter, the \"Working Group\"), which held six meetings beginning in July 2025"
+  },
+  {
+   "fact": "報告核心建議一：把暗號資產交易的法律依據從《資金決濟法》（Payment Services Act, PSA）移到《金融商品取引法》（FIEA），並把暗號資產定位成「有別於有價證券的金融商品」。報告同時建議把 PSA 裡的暗號資產相關條文刪除，避免法規重疊。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The governing law for crypto-assets should be changed from the Payment Services Act (PSA) to the Financial Instruments and Exchange Act (FIEA)."
+  },
+  {
+   "fact": "報告明言：現行 PSA 定義下不屬於暗號資產的 NFT 與穩定幣，在修法後的 FIEA 下仍然不在暗號資產定義之內。穩定幣（digital-money type）繼續依 PSA 以電子決濟手段（electronic payment instruments）管理。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/02.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Non-Fungible Tokens (NFTs) and stablecoins that are not classified as crypto-assets under the current PSA will remain outside of the definition of crypto-assets under the amended FIEA."
+  },
+  {
+   "fact": "報告在「修法目的」一節主動聲明：修法不得被解讀成官方對投資暗號資產的背書。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "it should be made clear that such regulatory revisions should not be interpreted as an official endorsement of investment in crypto-assets"
+  },
+  {
+   "fact": "報告列出五項「迫切課題」：①強化資訊揭露（白皮書說明不清、與實際程式碼有出入）；②確保交易妥適與處理未登記業者（FSA 收到大量詐騙勸誘的詢問）；③處理投資顧問／投資講座與線上社群的不當行為；④確保價格形成與交易的公正（IOSCO 建議、歐盟與韓國已立法）；⑤強化資安（交易所遭網路攻擊導致暗號資產外流反覆發生）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/02.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "報告引用的國內現況（皆為報告轉引第三方統計，非 FSA 自行統計）：國內暗號資產交換業者的開戶數超過 1,300 萬戶、使用者存放資產超過 5 兆日圓（兩者皆為 2025 年 10 月數字，來源註明 JVCEA）；約 70% 持有人年所得在 700 萬日圓以下（來源：日本暗号資産ビジネス協会）；逾 80% 個人帳戶持有資產不到 10 萬日圓（來源：JVCEA FY2024 年度報告）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the number of accounts opened with domestic CASPs exceeds 13 million and that user deposits exceed JPY 5 trillion (both figures as of October 2025)"
+  },
+  {
+   "fact": "報告引用 FSA 自己 2024-07-05 的調查：有投資經驗者當中持有暗號資產的比例為 7.3%，高於外匯保證金交易者與公司債持有者；持有暗號資產的最主要理由（86.6%）是期待長期價格上漲。概要 PDF 把後者寫成 87%。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the proportion of crypto-asset holders among those with investment experience (7.3 percent) exceeds the proportions of FX traders and corporate bond investors"
+  },
+  {
+   "fact": "報告指出 FSA 的金融服務利用者諮詢室平均每月收到超過 350 件暗號資產相關的詢問與申訴，多數與詐騙型投資勸誘或交易有關；註腳補充 2025 年 7–9 月共收到 1,487 件、約占該類別全部件數的 10%；國民生活中心（National Consumer Affairs Center of Japan）2024 年度收到 7,227 件暗號資產相關諮詢，多於壽險（4,222 件）與投資信託（366 件）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the FSA's Financial Services User Consultation Office currently receives, on average, more than 350 crypto-asset-related inquiries and complaints per month"
+  },
+  {
+   "fact": "揭露制度分兩類對象：①有可辨識發行人的暗號資產（例如 IEO 代幣）——發行人募資時須公表「特定暗號資產資訊」；②其他暗號資產（例如比特幣）——由交換業者（CASP）自行編製並公表資訊。揭露項目包含：暗號資產的特性與功能、發行總量、底層技術、附隨的權利義務、相關風險；有發行人者另加發行人資訊、募資款項的用途、專案內容。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/02.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "揭露義務的豁免：向少數投資人或合格機構投資人（qualified institutional investors）的私募；無償配發的暗號資產；以及作為挖礦（交易驗證）獎勵而自動產生、對公眾發生的配發。參考資料進一步註明「無償配發、以及挖礦或質押獎勵自動產生的配發」都豁免。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/02.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Offers of crypto-assets provided free of charge / Offers to the public that are automatically created as a reward for mining (validation of transactions)"
+  },
+  {
+   "fact": "私募豁免的具體門檻寫在報告的參考資料 2：①對 49 人以下（不含合格機構投資人）的要約，且附轉讓限制；②只對合格機構投資人的要約，且附轉讓限制。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(i) offers to 49 or fewer persons (excluding Qualified Institutional Investors), subject to transfer restrictions"
+  },
+  {
+   "fact": "持續揭露：有發行人且有募資者，法定「即時揭露」加法定「年度定期揭露」；有發行人但未募資者，法定即時揭露加自律規則下的定期揭露；其他暗號資產由 CASP 負責。揭露義務的終止條件也寫明：發行人端在暗號資產「去中心化」後終止，或全部國內 CASP 都停止經手時免除；CASP 端在該業者停止經手時免除。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "確保揭露正確性的手段：虛偽記載或漏未揭露要負刑事責任、民事賠償責任與課徵金；發行人違反揭露義務時，可讓全部國內 CASP 停止經手該暗號資產（報告註腳補充：即使停止經手，仍應允許使用者把該暗號資產轉出）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "審查把關：報告建議以法令課予 CASP 審查義務、要求由具技術能力的第三方做程式碼稽核（code audits）、在自律機構（SRO）內設置獨立委員會或獨立組織並集中審查功能，且允許 SRO 把部分審查外包給具專業的第三方。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "散戶保護：發行人若未接受會計師事務所的財務稽核就向散戶廣泛募資，報告建議比照股權群眾募資設投資上限。報告本身沒有給暗號資產的上限金額，只在註腳寫出現行股權群眾募資的上限公式：淨資產（不含自用住宅）的 5%、年所得的 5%、或 50 萬日圓三者取高者，且計算結果超過 200 萬日圓時以 200 萬日圓為上限。募集結束後的次級交易則不需設投資上限。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the investment limit is the greater of: (i) 5% of net assets (excluding residential real estate), (ii) 5% of annual income, or (iii) JPY500,000, subject to a cap of JPY 2 million"
+  },
+  {
+   "fact": "報告另建議：契約上原則禁止發行人在上架審查期間與開始經手之後對特定人大量無償配發；並對發行人與關係人設定開始經手前後一段期間的賣出限制（lock-up period）。同一發行人（含實質同集團業者）不得在日本同時進行多筆募資。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "業者規範：報告建議把從事暗號資產買賣的業者原則上比照「第一種金融商品取引業」管理。參考資料的對照表寫出兩項具體數字差距：資本要求由現行 1,000 萬日圓提高到 5,000 萬日圓；並新增自有資本規制比率（capital adequacy requirements）、兼營業務事前申報、責任準備金、外務員（sales representatives）制度。現行由自律規則規範的禁止行為要提升到法令層級。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Capital requirements  10 million yen  50 million yen"
+  },
+  {
+   "fact": "使用者資產保全：現行 PSA 下「原則以冷錢包（cold wallet）保管使用者暗號資產」的規定要移植到 FIEA，並再強化，包含涵蓋整條供應鏈的資安管理。報告主張細節放在指引（guidelines）而非法條，以便隨技術更新調整。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "新增對「關鍵系統供應商」的規範：對提供 CASP 暗號資產管理所需關鍵系統的業者，要求事前向主管機關申報、課予行為規範（含以撤銷 CASP 登記等過去不當行為為欠格事由、確保所提供系統安全的義務），並賦予主管機關直接掌握營運狀況與發出改善命令的權限；CASP 原則上只能使用已申報業者提供的關鍵系統。背景是近期攻擊 CASP 所用錢包軟體供應商而導致資產外流的事件。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "責任準備金（liability reserves）：現行只對熱錢包（hot wallet）保管部分要求持有同種同量的「履行保證暗號資產」，但冷錢包同樣有被駭外流風險，因此建議另外提列適當水準的責任準備金，並允許在調查外流原因期間先行動支賠償而不必事前核准；也可考慮以保險作為替代或併用。**報告沒有寫出提列比率或金額。**",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "借入暗號資產與質押（staking）：對「向使用者借入暗號資產、拿去質押或轉借、期滿連同借用費返還」的商業模式，報告主張納入 FIEA，課予三類義務——轉借的對手方違約風險與再委託質押的 slashing 風險的風險管理架構、自行保管暗號資產的安全管理架構、以及向使用者提供風險資訊與遵守廣告規範。機構投資人或散戶向 CASP 借入這種不具公開性的借貸交易則排除在外。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "銀行與保險公司：報告認為由銀行、保險公司「自己」發行與買賣暗號資產仍須審慎檢討，理由包含洗錢風險、系統風險、價格波動風險與聲譽風險，以及客戶可能因為「是銀行賣的」而低估風險；銀行與保險公司自行從事暗號資產的投資運用業務則應維持禁止。但在具備適當風險管理與治理架構的前提下，可以允許其「為自身投資目的」持有暗號資產；其子公司（及姊妹公司、關係企業）則可在新的金融商品取引業規範下發行、買賣與居間暗號資產，並得經營暗號資產的投資運用業務。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/02.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "對未登記業者：報告建議把暗號資產買賣納入 FIEA 的金融商品取引業以提高罰則；報告註腳寫出現行與修法後的對照——現行 PSA 下無登記經營暗號資產交換業為三年以下有期徒刑、三百萬日圓以下罰金或併科；FIEA 下無登記經營金融商品取引業為五年以下有期徒刑、五百萬日圓以下罰金或併科。另有意見建議把上限提高到十年。參考資料的對照表另列「無登記勸誘」新設一年以下有期徒刑。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "providing crypto-asset exchange services without registration is punishable by imprisonment for up to three years, a fine of up to three million yen"
+  },
+  {
+   "fact": "對未登記業者的其他手段：禁止未登記業者表示有意從事該業務、由法院發緊急禁止命令（emergency injunctions）、賦予證券交易等監視委員會（SESC）聲請該命令與為此進行犯則調查的權限；並考慮設民事條文，讓與未登記業者訂立的買賣契約在一定情形下無效（報告以現行 FIEA 第 171 條之 2 對未上市股票的規定為參照）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "防止暗號資產被當成詐騙付款工具：報告建議以法令要求 CASP 在使用者要把暗號資產轉到 unhosted wallet（非登記業者管理的錢包）或未登記業者的錢包時，發出詐騙風險警示並確認轉出目的；進行適當的交易監控；並在新開戶後、以及轉到新指定錢包前設置冷靜期或其他審慎期間（deliberation period）。**報告沒有寫這個期間有多長。**",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "establishing a cooling-off period or other deliberation period immediately after account opening and before transfers to newly designated wallets"
+  },
+  {
+   "fact": "內線交易規範：報告指出現行 FIEA 並未直接規範暗號資產的內線交易，但已有禁止不正行為、禁止使用詐欺手段與操縱市場等一般規定；建議以上市有價證券的內線交易規範為基礎新設暗號資產的內線交易規範。適用範圍是「國內 CASP 已經手或已正式申請經手」的暗號資產，且不問交易場所——包含 DEX 與 P2P 交易。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "內線交易的「重要事實」分三類並另設概括條款（basket clause）：①與可辨識發行人的業務有關（例：發行人破產、發現重大安全性弱點）；②與 CASP 經手暗號資產有關（例：開始或停止經手、暗號資產外流）；③與大量交易有關（例：買進或賣出已發行量 20% 以上的決定或其取消）。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Material facts relating to large-volume transactions (e.g., the purchase or sale of 20% or more of the issued crypto-assets)"
+  },
+  {
+   "fact": "內線交易的「公表」方法：限於在 CASP 或自律機構（SRO）的網站上公告；社群媒體上的發布不算公表。報告給的理由是平台種類繁多、資訊在使用者間擴散程度低、貼文容易刪改、且無法確保來源與內容真偽。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Information dissemination via social media platforms is not regarded as a means of publication."
+  },
+  {
+   "fact": "內線交易的禁止行為與豁免：知悉未公表重要事實而為買賣、交換、現物出資等「交易」者禁止；暗號資產的初次發行與相對應的初次取得也納入禁止（限有償取得，挖礦等取得排除）；除比照上市有價證券的豁免外，另設一項豁免——行為人能證明「即使不知道該重要事實，該筆交易也會成立」時不罰。另建議禁止為使他人獲利而傳達未公表重要事實或勸誘交易。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "執法：報告建議為暗號資產的市場濫用（含內線交易）建立與上市有價證券相當的課徵金制度，賦予 SESC 犯則調查權與課徵金調查權並強化其組織量能，並大幅強化 CASP 的交易監控與 SRO、SESC 的市場監視架構；同時把暗號資產交易納入與外國監理機關的互惠調查合作範圍。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "其他市場濫用：報告建議把禁止安定操作（stabilization transactions）的規定延伸適用於暗號資產；並把「收受對價而在網站或線上平台公開表示交易判斷意見者須揭露收受對價」的規定（針對所謂 stealth marketing）延伸到暗號資產。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "DEX（去中心化交易所）：報告說「明確的監理方式尚未確立」，適當的作法是繼續研議與 CASP 現行規範有別、技術上相稱的監理架構，並密切觀察其他法域的發展；對於把日本境內使用者接到 DEX 的使用者介面（UI）提供者，則需先加深對現況的理解，再考慮風險為本且相稱的規範（可能包含說明該 DEX 風險的義務，以及《犯罪收益移轉防止法》下的身分確認等 AML/CFT 義務）。報告也寫明部分 DEX 在歐洲與美國被認為不在監理範圍內。眼前的措施是：政府與已登記的 CASP 應充分告知使用者，透過 DEX 或未在日本登記的業者交易可能承受無法預見的損失。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "市場開設規範：報告認為暗號資產「交易所」（以委託簿撮合）雖是多數人參與的交易場所，但個別交易所的價格發現功能有限，因此導入如金融商品取引所執照或 PTS 那樣嚴格的市場開設規範的必要性不高；至於是否允許現有金融商品取引所經手現貨暗號資產，報告認為現階段應審慎。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "自律機構：報告把 JVCEA（Japan Virtual and Crypto Assets Exchange Association）列為認定協會，並註明「需要實質強化其組織架構」，包含確保人力與提高會費收入、設置獨立委員會、禁止幹部與員工買賣及持有暗號資產、強化利益衝突管理與對 CASP 的監查架構。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "JVCEA (substantial enhancement of organizational frameworks is necessary)"
+  },
+  {
+   "fact": "使用者教育：報告點名金融經濟教育推進機構（J-FLEC），要求教材寫出暗號資產的幾項關鍵風險——價格波動大、交易歷史相對短因此尚無公認的評價方法、轉錯地址等操作失誤可能造成不可逆的損失、CASP 保管的資產有遭駭風險、以及使用者應在充分理解風險後、以閒置資金的範圍內交易。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "報告的結論一節主動限縮自己的射程：本次檢討主要針對透過國內 CASP 進行的交易，只涵蓋全球暗號資產交易的一部分，也不能單憑本次檢討確保整個市場的健全；DEX 等高度匿名的區塊目前無法在全球範圍有效監理，仍需跨國監理合作。",
+   "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It should therefore be recognized that this review covers only a portion of global crypto-asset trading."
+  },
+  {
+   "fact": "【回答指派問題：所謂「2026 年 4 月內閣通過修法」是真的，但正確說法是「內閣提出的法案於 2026-04-10 送進國會」】FSA 的「国会提出法案等」頁（第221回国会）列有『金融商品取引法及び資金決済に関する法律の一部を改正する法律』，註明「令和８年４月10日提出、令和８年７月15日成立」，並說明該法案就「暗号資産」「サステナビリティ情報の開示・保証」「スタートアップへの資金供給」「不公正取引規制」等建立制度。",
+   "url": "https://www.fsa.go.jp/common/diet/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "（令和８年４月10日提出、令和８年７月15日成立）"
+  },
+  {
+   "fact": "眾議院的議案審議經過情報（閣法 第221回国会 第57号）記載：議案提出者「内閣」；衆議院議案受理 令和8年4月10日；衆議院付託 令和8年5月28日（財務金融委員会）；衆議院委員會可決 令和8年6月10日、本會議可決 令和8年6月11日；參議院議案受理 令和8年6月11日、付託 令和8年6月15日（財政金融委員会）、委員會可決 令和8年7月14日、本會議可決 令和8年7月15日；公布年月日／法律番号：令和8年7月23日／第64号。",
+   "url": "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm",
+   "is_vendor_claim": false,
+   "verbatim_quote": "公布年月日／法律番号　令和 8年 7月23日／64"
+  },
+  {
+   "fact": "法律案要綱（FSA 為國會審議製作的官方文件，PDF 內部建立日期 2026-04-02）寫出修法的條文對應：新設「特定暗号資産」定義於金商法第二條第五十項（只有特定人有發行權限者）；特定暗号資産發行人的公表義務於第二十七條之三十九、之五十、之五十一；業者於開始經手時的公表義務於第二十七條之五十三；募集售出的監查證明義務於第二十七條之五十九（少額者除外）；未公表特定暗号資産資訊者由業者公表於第二十七條之六十、之六十一。",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/04.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "要綱的業規制部分：把暗號資產買賣、特定暗號資產募集售出、暗號資產借入等納入金融商品取引業（第二條第八項）；兼營業務事前申報（第三十五條之二之二）；業務管理體制整備義務（第三十五條之三）；不得經手不符公益或投資人保護基準的暗號資產（第四十三條之七）；關鍵資訊系統供應商的申報制與相關義務（第二條第五十四、五十五項、第三章之六、第四十三條之十二）；委外管理（第四十三條之十三）；金融商品取引責任準備金（第四十六條之五）；自己資本規制比率（第四十六條之六）；只做借入等「暗号資産取引特例業務」者的登記特例（第二十九條之六）；暗號資產的投資運用與投資助言納入規範（第二條第八項第十一～十五號）；暗號資產仲介納入金融商品仲介業（第二條第十一項、第三章之二）。",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/04.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "要綱的不公正交易部分：內線交易三條——特定暗号資産發行人關係人（第一七一條之七）、暗号資産取引業者關係人（第一七一條之八）、大量賣買者關係人（第一七一條之九）；禁止傳達與勸誘（第一七一條之十）；收受對價表示交易判斷意見須併同表示（第一七一條之十二）；未登記業者所為的一定賣出原則無效（第一七一條之十五）；犯則事件定義新增暗號資產交易（第二一〇條）。",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/04.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "要綱把無登記經營金融商品取引業的罰則提高到「十年以下拘禁刑或一千萬日圓以下罰金，得併科」（第一九七條）——比工作小組報告本文寫的「五年以下、五百萬日圓以下」更重，與報告註腳所記的「有意見建議提高到十年」一致。",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/04.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "十年以下の拘禁刑若しくは千万円以下の罰金に処し、又はこれを併科する"
+  },
+  {
+   "fact": "要綱第２：配合上述修正，把暗號資產交易相關規定從《資金決済に関する法律》刪除（修正前第二條第十四～二十項、修正前第三章之三、修正前第三章之四中暗號資產仲介行為的部分）。",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/04.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "要綱第３「施行期日等」：本法原則上自公布日起一年內、由政令指定之日施行。例外三項——①無登記業者罰則提高與犯則事件定義擴大（不含暗號資產交易部分）：公布日起算滿二十日之日；②特定非財務資訊揭露與監查證明、成長資金供給相關揭露制度：令和九年四月一日（2027-04-01）；③證券取引等監視委員會犯則調查程序數位化：令和九年十月一日（2027-10-01）。**也就是暗號資產部分的施行日要另由政令指定，要綱本身沒有寫。**",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/04.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FSA 2026-07-29 新聞稿確認：第221回國會通過的該法當中，「無登記業對罰則提高」與「SESC 犯則調查權限追加」的規定自公布日起算滿二十日之日、即令和８年８月12日（2026-08-12）施行；配套的『関係政令の整備に関する政令』於令和８年７月24日閣議決定、同年7月29日公布。該稿沒有提到暗號資產部分的施行日。",
+   "url": "https://www.fsa.go.jp/news/r8/shouken/20260729/20260729.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "公布の日から起算して20日を経過した日（令和８年８月12日（水曜））から施行されます"
+  },
+  {
+   "fact": "法案概要 PDF（2026 年 4 月，金融庁）把該法分成四塊：①暗號資產相關規制的檢討（從資金決濟法移到金商法）；②企業永續資訊的揭露與保證；③促進對新創企業的資金供給；④有價證券不公正交易規制等的檢討。第③塊含把有價證券申報書的提出免除基準從 1 億日圓提高到 5 億日圓（要綱第４條關係）。",
+   "url": "https://www.fsa.go.jp/common/diet/221/02/02.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "報告是審議會的建議，不是法律。報告本身沒有寫任何條文生效日，也沒有寫國會何時審議——修法時程要看後續的法案與政令。",
+  "報告沒有給暗號資產的投資上限金額或公式，只寫「比照股權群眾募資」；註腳裡的 5%／5%／50 萬日圓／200 萬日圓上限是現行股權群眾募資的規定，不是暗號資產的。",
+  "報告沒有寫新開戶後的冷靜期／審慎期間有多長，也沒有寫適用哪些轉出情境的細節。",
+  "報告沒有寫責任準備金的提列比率或金額，只說「適當水準」。",
+  "報告本文沒有寫資本額數字；1,000 萬日圓→5,000 萬日圓是參考資料對照表裡的現行 CASP 與第一種金商業的對比。",
+  "報告沒有對 DEX 給出結論——明確寫「明確的監理方式尚未確立」，只說繼續研議。",
+  "報告沒有說 NFT 與穩定幣會被納入暗號資產規範；相反地明確寫它們留在定義之外。",
+  "報告沒有談稅制。全文沒有任何關於申報、稅率或分離課稅的建議（唯一出現 tax 的地方是一個資料來源的標題）。",
+  "報告沒有點名任何一家交易所、錢包或發行方，也沒有列出受影響的業者名單。",
+  "報告沒有說日本的使用者或境外使用者何時會看到這些變化落到自己帳戶上。",
+  "FSA 的英文頁只有一句話介紹，沒有新聞稿式的說明、沒有大臣談話、沒有 Q&A。",
+  "沒有任何官方頁面（截至 2026-09-16 我查到的範圍）寫出暗號資產相關條文的施行日；法律只寫「公布日起一年內由政令指定」，公布日是 2026-07-23，所以最晚 2027-07-23，但確切日期官方尚未公布。",
+  "FSA 的「国会提出法案等」頁與眾議院議案頁都沒有寫「閣議決定」的日期，只寫「提出」（4/10）與提出者是「内閣」。要寫成「內閣會議通過」必須另外找到閣議決定當天的官方紀錄。",
+  "我沒有讀最終公布的法律條文本身（令和8年法律第64號），只讀了 FSA 為國會製作的法律案要綱與概要，以及眾議院的審議經過紀錄。要綱描述的是 2026-04-10 提出時的法案；眾議院紀錄顯示兩院皆為「可決」而未列修正案，但我沒有逐條核對最終條文。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "「2026 年 4 月內閣通過修正金商法與資金決濟法的法案」",
+   "seen_where": "docs/news-2026-batch-4/candidates-crypto.md 記錄的整合站說法（前一位查證者在 FSA 英文索引上找不到）",
+   "why_excluded": "**這一則實際上成立，但措辭要改。** 在 FSA 日文站的「国会提出法案等」查到官方紀錄：『金融商品取引法及び資金決済に関する法律の一部を改正する法律』於令和8年4月10日提出、令和8年7月15日成立；眾議院議案頁記載議案提出者為「内閣」、公布日令和8年7月23日、法律第64號。所以正確寫法是「內閣提出的修法法案於 2026-04-10 送進第221回國會、2026-07-15 通過、2026-07-23 公布」，而不是「4 月內閣通過法案」；而且是一部同時修正兩部法律的法案，不是「法案們」。FSA 英文新聞稿索引確實沒有這一則，所以前一位查證者查不到是因為只看了英文索引。"
+  },
+  {
+   "claim": "報告已在金融審議會總會・金融分科會報告過（例如 2026-01-27 的第56回總會・第44回金融分科會合同會合）",
+   "seen_where": "日文頁寫「本報告書は、今後、金融審議会総会・金融分科会において報告されることとなります」；FSA 英文索引有 2026-01-27 的合同會合條目",
+   "why_excluded": "我沒有打開那場合同會合的頁面確認議題，因此不能寫成「已在該場會議報告」。要寫必須先讀該頁。"
+  },
+  {
+   "claim": "全球暗號資產市值超過 3 兆美元",
+   "seen_where": "報告全文第 9 頁（引用 CoinMarketCap，2025-11-30）",
+   "why_excluded": "crypto.md 明令不寫市值，且來源 CoinMarketCap 在禁用名單上。即使出現在官方報告裡也不寫。"
+  },
+  {
+   "claim": "比特幣 ETF 在多國掛牌、資金持續透過這些工具流入暗號資產；美國投資比特幣 ETF 的機構投資人（含退休基金）增加",
+   "seen_where": "報告全文第 4–5 頁（後者引用日本經濟新聞 2024-11-30）",
+   "why_excluded": "crypto.md 明令不寫 ETF 資金流；且其中一項的來源是新聞媒體，不是一手來源。"
+  },
+  {
+   "claim": "野村控股與 Laser Digital 的調查顯示日本機構投資人的投資意願升高",
+   "seen_where": "報告全文註 16",
+   "why_excluded": "業者自行發布的調查、且被用來描述投資意願，落在「不寫投資導向」的界線外。"
+  },
+  {
+   "claim": "報告提到歐盟 MiCA 與韓國《虛擬資產使用者保護法》已就內線交易立法、美國已有內線交易執法案例",
+   "seen_where": "報告全文第 7 頁與註 20、21、22",
+   "why_excluded": "可以寫「FSA 報告指出歐盟與韓國已立法」這個層次（有一手來源），但**不可**寫成本站查證過 MiCA 或韓國法的條文內容——那要另外回 ESMA／韓國 FSC 的原文。"
+  },
+  {
+   "claim": "現行 JVCEA 的會員家數、日本已登記的暗號資產交換業者家數",
+   "seen_where": "未查",
+   "why_excluded": "報告沒有給這些數字，我也沒有去查 FSA 的登記業者名單。要寫必須另查金融庁「金融商品取引業者等登録一覧」或 JVCEA 會員名單。"
+  },
+  {
+   "claim": "本篇所讀的英文 PDF 與 2026-02-16 當天掛上去的版本完全相同",
+   "seen_where": "HTTP Last-Modified 與 PDF ModDate",
+   "why_excluded": "01.pdf 的 Last-Modified 是 2026-08-03（頁面也標 Updated on August 3, 2026），02/03.pdf 是 2026-07-03，都晚於 2026-02-16。我讀的是 2026-09-16 當天線上的版本，不能宣稱與首發版一致。"
+  }
+ ],
+ "must_not_write": [
+  "任何幣價、漲跌幅、市值（含報告引用的全球市值 3 兆美元）、交易量、ETF 資金流。",
+  "任何把某個暗號資產寫成可以持有的選項，或暗示日本修法後「比較安全所以可以買」。",
+  "質押（staking）報酬率、借出暗號資產的借用費率、空投獎勵數字——報告談的是「借入暗號資產的業者要被規範」，不是報酬。",
+  "交易所、錢包、託管商的比較或推薦，任何聯盟／追蹤連結。",
+  "不要把「日本把暗號資產移到金商法」寫成「日本承認暗號資產是投資商品所以背書投資」——報告本文明確否認這個解讀，這句一定要寫進文章。",
+  "不要把報告的建議寫成已生效的法律義務。報告是建議；法律是 2026-07-23 公布的令和8年法律第64號；暗號資產部分的施行日官方尚未公布。",
+  "不要寫「2026 年 4 月內閣通過法案」這種模糊講法（見 unverified 第 1 條），要寫提出／成立／公布三個日期。",
+  "不要從整合站抄任何日本監理的數字；本篇所有數字都能指回上面列的 FSA 或眾議院頁面。",
+  "報告引用的國內統計（1,300 萬戶、5 兆日圓存放資產、7.3%、86.6%、每月 350 件）都是報告「轉引」JVCEA、業界團體或 FSA 自己的調查，寫的時候要寫成「報告引用的數字」，不要寫成 FSA 的即時統計。5 兆日圓那一項最好只在說明「為什麼要修法」時出現，不要單獨當市場規模數字用。"
+ ],
+ "overlaps_existing_article": "站上目前沒有任何 crypto-news-* 內容包（apps/api/app/guides/content/ 只有 finance-glossary-50-terms.json 與 personal-finance-first-steps.json），所以沒有既有文章可重複。要避開的是同批次的兄弟篇：（a）C11 `crypto-news-jfsa-cybersecurity-20260723`（FSA「Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses」，英文索引連到 /en/policy/bgin/innovationtop.html）——**資安的細節留給 C11**；本篇只寫報告把資安列為五大課題之一、以及建議把供應鏈資安與關鍵系統供應商納管這個「制度設計」層次，不展開資安手法。（b）C1 `crypto-news-taiwan-vasp-act-20260630`（台灣《虛擬資產服務法》）——台灣的許可制細節留給 C1；本篇若要對照，只能寫「兩地都在同一年把虛擬資產從洗錢防制導向的登記制往金融監理靠」這種制度層次的敘述，不可比較哪一邊比較嚴、也不可重述台灣的 12／21／3 個月時程。（c）C2 MiCA、C3／C4 美國 SEC——報告只是「提到歐盟與韓國已就內線交易立法」，本篇不展開那些法域的條文。",
+ "editorial_brief": "讀者：在台灣、會用到日本或其他境外加密平台的一般使用者，以及想知道「主管機關到底在管什麼」的財經讀者。角度：**用一份審議會報告，說明一個國家怎麼把加密資產從「支付工具」重新定位成「金融商品」，以及這個轉換會改到使用者看得見的哪些地方。**\n\n主線是三段式的制度故事：① 日本從 2016 年起就以《資金決濟法》管暗號資產（登記制、AML/CFT、冷錢包），是世界上最早的框架之一；② 但使用者把它當投資標的了——報告引用的數字是開戶數超過 1,300 萬戶、逾八成個人帳戶不到 10 萬日圓、持有的最大理由是期待長期上漲，而 FSA 每月收到超過 350 件多半與詐騙勸誘有關的申訴；③ 所以報告建議把法律依據換成《金融商品取引法》，補上三件原本沒有的東西——**上架前的資訊揭露**、**比照第一種金商業的業者規範**、**內線交易與市場濫用規範加上 SESC 的調查權**。\n\n五個小節建議：（一）這份報告是什麼、誰寫的、什麼時候寫的（含 2025-12-10 與 2026-02-16 的分別）；（二）為什麼要改：報告列的五項迫切課題＋表格放「現行 PSA vs 報告建議的 FIEA」對照；（三）一般使用者看得到的三件事：上架前要公表哪些資訊、轉去 unhosted wallet 前的警示與審慎期間、遇到未登記業者時的法律效果（圖解放在這節結尾）；（四）報告刻意沒有結論的部分：DEX、銀行保險公司自營、投資上限與審慎期間的具體數字；（五）報告之後發生了什麼：2026-04-10 提出、07-15 成立、07-23 公布為令和8年法律第64號，只有罰則部分在 2026-08-12 先施行，暗號資產主體的施行日還沒公布。\n\n生活情境（要標明是編輯設計的例子）：一個台灣使用者在日本平台上看到一個沒聽過的代幣要上架，現在只能自己去讀白皮書；報告建議的制度下，交易所或發行人要在上架前於網站公表特性、發行總量、底層技術、附隨權利義務與風險，而且寫錯要負責。這是「制度改變了資訊從哪裡來」，不是「所以可以買」。\n\n刻意不談：幣價與市值、哪個平台會受影響、稅務（報告沒談）、資安手法（留給 C11）、台灣法規的細節（留給 C1）、以及任何「日本承認加密資產是投資商品」的推論——報告自己否認這個解讀，這句一定要寫出來。\n\nhero 標語建議：「從支付法搬到金商法」（10 字）。圖解四格建議（2×2，數字都要在正文出現）：①「換法源」「資金決濟法→金商法」②「先揭露」「上架前公表特性與風險」③「管內線」「經手或申請中的幣皆納入」④「未定案」「DEX 與施行日待定」。",
+ "corrections_to_candidate_list": [
+  "candidates-crypto.md 的 C10 條目與警語要更新。警語寫「整合站說『2026 年 4 月內閣通過修正金商法與資金決濟法的法案』，FSA 的新聞稿索引上沒有這一則。要寫必須另外找到官方出處」——官方出處找到了，但**不在英文索引上，在日文站**：https://www.fsa.go.jp/common/diet/index.html（第221回国会：『金融商品取引法及び資金決済に関する法律の一部を改正する法律』，令和８年４月10日提出、令和８年７月15日成立），以及眾議院議案審議經過 https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm（閣法 第221回 第57號，公布 令和8年7月23日／法律第64號）。正確措辭是「內閣提出的法案 2026-04-10 送進國會」，不是「4 月內閣通過法案」。",
+  "C10 的事件日要加註：報告本體是 2025-12-10（日文版），2026-02-16 是英文版公布日，英文頁另標 Updated on August 3, 2026。候選清單現在只寫 2026-02-16，會讓撰稿者誤以為報告是那天寫成的。",
+  "C10 的來源清單要補上報告的三份 PDF 直鏈（01/02/03.pdf）與日文公告頁 /singi/singi_kinyu/tosin/20251210.html，以及工作小組開催實績頁（六次會議日期）。只給英文索引頁不夠開稿。",
+  "候選清單開頭的封鎖清單可以加一條容器實測結果：www.fsa.go.jp 全站（英日、HTML 與 PDF）都可連，但 FSA 日文新聞稿**沒有**年度封存索引頁（/news/r8/index.html、/news/r8/202604/index.html、/news/past.html 皆 404），要找特定日期的日文新聞稿只能靠搜尋當線索再回官方頁。",
+  "工具環境註記（對後續所有要讀 PDF 的代理都有用）：本容器的 pdfminer.six 與 pypdf 因為系統 cryptography 綁定損壞而無法 import（_cffi_backend 缺失，會丟 pyo3 PanicException）；`pip install cffi` 之後 pypdf 即可正常抽文字。"
+ ]
+}

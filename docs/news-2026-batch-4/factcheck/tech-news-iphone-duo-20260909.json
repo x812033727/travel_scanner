@@ -1,0 +1,60 @@
+{
+ "slug": "tech-news-iphone-duo-20260909",
+ "verdict": "needs_fixes",
+ "confirmed_count": 71,
+ "source_reachability": "All four cited URLs fetched by me with curl -A \"Mokaair-editorial\" on 2026-09-16, all real document bodies, no challenge pages or Access Denied bodies. (1) https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/ -> HTTP 200, 341,693 bytes, real press release (PRESS RELEASE / September 9, 2026 / CUPERTINO, CALIFORNIA), 14 footnotes. Researcher logged 341,575 bytes; the 118-byte delta is page-level dynamic markup, every passage I compared is identical. (2) https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/ -> HTTP 200, 298,161 bytes (researcher: 298,043; same 118-byte delta), real body 「新聞發佈 / 2026 年 9 月 9 日 / Apple 發表 iPhone Duo」, 10 footnotes. (3) https://www.apple.com/tw/iphone-duo/specs/ -> HTTP 200, 251,311 bytes, <title>iPhone Duo - 技術規格 - Apple (台灣)</title>, byte count matches the researcher exactly. (4) https://www.apple.com/sg/newsroom/2026/09/apple-unveils-iphone-duo/ -> HTTP 200, 330,229 bytes, real body. Corroboration I fetched but which is not in sources: apple.com/newsroom/rss-feed.rss 200 with 20 <entry>, newest 2026-09-16, Duo entry <updated> 2026-09-09T18:15:40.996Z and href matching the cited page; /uk/ /jp/ /au/ newsroom versions 200 (all \"more than 70\" / 「70以上」); iPhone 18 Pro control group 200 at .../apple-debuts-iphone-18-pro-and-iphone-18-pro-max/ (my own first guessed slug apple-introduces-... returned 404, so this URL cannot be guessed) - en \"more than 65 countries and regions\", tw 「65 個以上國家和地區」, confirming the researcher's control group; apple.com/tw/shop/buy-iphone/iphone-duo 200, title 「購買 iPhone Duo - Apple (台灣)」. Quote trace: I matched all 75 verbatim_quote strings against my own copies (whitespace- and footnote-marker-tolerant); 75/75 trace to their cited page with identical numbers and units. No fact is sourced to news media, an aggregator, a law-firm blog or a search snippet. No guessed identifier in any recorded fact - A3720, IEC 60529, iOS 27.1, A19 Pro/A20 Pro all appear verbatim on the cited pages. Full fact-check record written to /tmp/claude-0/-home-user-travel-scanner/7f63d65a-c509-5a16-8b56-4ffddc3bb57b/scratchpad/research/tech-news-iphone-duo-20260909-factcheck.json (the researcher's own file was left untouched).",
+ "refuted": [
+  {
+   "fact": "not_said item: 「新聞稿沒有寫後鏡頭有幾顆，也沒有獨立的望遠鏡頭模組」",
+   "why": "The cited TW specs page heads the rear camera block 「4800 萬像素雙融合相機系統」. Apple does state the rear is a two-camera (dual fusion) system, on a page the researcher lists as a source. Only the press release is silent, so the not_said must be narrowed to the press release or dropped."
+  },
+  {
+   "fact": "not_said item: 「Apple 沒有提到 iPhone Duo 的 NCC 型式認證或任何台灣法規狀態」",
+   "why": "The cited TW specs page carries 「如需台灣 NCC 認證產品的進一步詳細資訊，請按這裡」. It is boilerplate and gives no Duo-specific certification status, but the absolute statement is contradicted by the cited page."
+  }
+ ],
+ "unsupported": [
+  {
+   "fact": "verified_fact #20, trailing clause 「內螢幕不是用 Ceramic Shield 2」",
+   "why": "No source says this. The English page says Ceramic Shield on the back and Ceramic Shield 2 'on the front' (caption: 'on the outer display'); the TW specs page lists 「超瓷晶盾 2 面板／超瓷晶盾背板」 and says nothing about the inner display. This is an inference from absence recorded as a fact. Rewrite as 「Apple 只說明 Ceramic Shield 2 用於正面／外螢幕，內螢幕的保護方式另行說明」."
+  },
+  {
+   "fact": "verified_fact #57, 「Apple 的目標是 2030 年整體營運碳中和」 and 「製程 60% 採用可再生能源」, both attached to the English URL",
+   "why": "The English page says 'carbon neutral across its entire footprint by 2030' and '60 percent renewable energy ... across the supply chain'. 整體營運 and 製程 are the Apple TW page's wording, not the English page's - 'entire footprint' is broader than 營運. Either re-attach these to the TW URL or change the wording to 整體碳足跡／供應鏈."
+  },
+  {
+   "fact": "verified_fact #45 (20-minute wired / 30-minute wireless 50% charge) recorded with is_vendor_claim=false",
+   "why": "These figures carry the same Apple-measured July 2026 preproduction-unit footnote as the battery figures in #42, which the researcher correctly marked is_vendor_claim=true. The labelling is internally inconsistent and the BRIEF requires 「Apple 表示」 for vendor-measured numbers."
+  },
+  {
+   "fact": "verified_fact #25, 「零快門延遲」 and the low-light performance wording, recorded with is_vendor_claim=false",
+   "why": "'zero shutter lag' and 'excels in low light' are Apple capability claims, not published specifications, and no independent test exists."
+  },
+  {
+   "fact": "verified_fact #32, 「讓使用者首次能在 iPhone 上並排開啟兩個 app」, recorded with is_vendor_claim=false",
+   "why": "'for the first time' is Apple's own characterisation, not a verified fact."
+  },
+  {
+   "fact": "verified_fact #47, 「超過 500 家電信業者支援 eSIM」, recorded with is_vendor_claim=false",
+   "why": "A vendor-supplied count. The fact text hedges with 「Apple 說明」 but the flag contradicts it."
+  },
+  {
+   "fact": "verbatim_quote field in #0, #1, #11 and #46",
+   "why": "These stitch separate page elements together with ' / ' into one string presented as a verbatim quote. Each element exists on the page but the quoted string as written does not appear anywhere. The other 71 entries use '...' correctly; these four should too, so a non-existent quote is not carried into translation and QA."
+  }
+ ],
+ "additional_findings": [
+  "Apple's two headline superlatives are missing from verified_facts entirely and survive only inside a not_said item: 'Opened, it is the thinnest iPhone ever' and 'iPhone Duo features the largest display ever on iPhone' (Ternus repeats 'the largest display ever on iPhone that still fits easily in your pocket'). These are the press release's central claims and must be recorded as 「Apple 表示」 facts.",
+  "Unrecorded EN/TW divergence that will cause overstatement in a zh-TW article: the TW press release drops Apple's 'up to' hedges. TW 「6 核心 CPU 比 A19 Pro 快了 20%」 vs EN 'up to 20 percent faster'; TW 「其剛度比業界其他採用的材質高出 40%」 vs EN 'up to 40 percent higher stiffness'. Worse, TW 「7 核心 GPU 速度和能源效率都提升了 40%」 attaches 40% to power efficiency as well, where EN says 'up to 40 percent faster and more power efficient' - the 40% attaches to speed only. Three numbers a writer copying Apple TW would get wrong.",
+  "Unrecorded EN/TW divergence with a wrong figure pairing: TW 「搭配 MagSafe 或 Qi2 充電器，iPhone Duo 約 20 分鐘即可充至最多 50% 電量，或無線充電約 30 分鐘即可充至最多 50% 電量」 attaches MagSafe/Qi2 to the 20-minute figure. The English makes 20 minutes the wired case and 30 minutes the MagSafe/Qi2 wireless case, and the TW specs page agrees with the English. The researcher used the English (correct) but did not flag the trap in Apple's own TW text.",
+  "TW specs footnote 13 「須使用速度達 10Gb/s 的 USB 3 連接線」 conditions the 10Gb/s figure in #54, while the in-box cable is listed only as 「USB-C 充電連接線 (1 公尺)」. #54 records both halves but not the condition that links them.",
+  "The TW specs page lists 「支援 Apple Pencil (USB-C)」 under the display block with no timing caveat, while the press release says 'Later this year'. Record this next to #16 so the article does not imply Apple Pencil works at launch.",
+  "#24 records the dimensions in page order but without labels. The specs page labels 164.6 mm as 寬度 and 117.8 mm as 高度 when open, and 84.1 mm 寬度 / 117.8 mm 高度 when closed, with 254 g listed for both states. The editorial brief calls for a 尺寸 table, and swapping 寬/高 is an easy error at that step.",
+  "The exclusion reason for the TW store prices is wrong. NT$81,900 and NT$118,900 do appear on apple.com/tw/shop/buy-iphone/iphone-duo (HTTP 200, confirmed by me), and prices are not 能力宣稱, so tech.md's 產品行銷頁 restriction does not apply on its face. Keeping them out is still right, but for the reason that actually holds: the raw HTML cannot map capacity to price - I tried the same mapping and it also failed.",
+  "Two 'not at launch' conditions in the English footnotes are unrecorded and are exactly the kind the BRIEF wants surfaced: footnote 5 limits the new Photographic Styles texture/grain controls to 'iPhone models that support the latest generation of Photographic Styles', and footnote 6 says SynthID 'will be available in a software update later this year'.",
+  "The availability lists differ by membership as well as by count: Brazil appears in the en/uk/au/sg lists and is absent from the TW list, which adds 泰國 and 台灣. This strengthens the researcher's own 'including … is illustrative' argument and belongs with the 63/70 note.",
+  "EN footnote 3 says Siri AI is unavailable initially in the EU on iOS, iPadOS and watchOS; the TW footnote says only 「在歐盟地區，Siri AI 推出初期不會於 iOS 上提供」. #69 cites the English URL so it is correct as written, but the narrower TW scope matters at the translation stage.",
+  "Survived my attack, stated for the record: the 63-vs-70 contradiction is real and specific to this press release. TW says 「超過 63 個國家和地區」 and lists 台灣; en/uk/jp/au/sg all say more than 70 / 「70以上」. The iPhone 18 Pro control group holds - both its en ('more than 65 countries and regions') and tw (「65 個以上國家和地區」) versions say 65. The candidate-list line numbers in corrections_to_candidate_list (154, 156-157, 157, 159, 160) are all exact.",
+  "Survived my attack: no date conflation anywhere. 發表 2026-09-09, 預購 2026-10-16 (5 a.m. PT = 台灣時間晚上 8 點, arithmetic checks out), 首波供貨 2026-10-23, 第二波 2026-10-30 - all four are Fridays given the release's own 'Monday, September 14' anchor. Apple Intelligence (9/14) and the Siri AI beta (9/14) are separate dates and are recorded separately. The Atom feed's <updated> for this entry matches the stated event date."
+ ]
+}

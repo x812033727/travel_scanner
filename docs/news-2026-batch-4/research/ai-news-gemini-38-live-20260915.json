@@ -1,0 +1,416 @@
+{
+ "slug": "ai-news-gemini-38-live-20260915",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All four recorded sources were fetched successfully from this container on 2026-09-16 with curl -A \"Mokaair-editorial\" and no personal data in any request. Status codes actually observed: model post 200 (427,841 bytes), developer post 200 (391,568 bytes), model card 200 (148,728 bytes), Gemini API pricing 200 (242,786 bytes). Both lead URLs in the assignment resolved with no redirect - the URL fetched is the URL recorded. blog.google/rss/ returned 200 with 20 <item> elements, newest 2026-09-16 15:00 UTC, so the feed is live, not stale; it independently confirms both posts at Tue, 15 Sep 2026 17:00:00 +0000, the same timestamp for both. Two further first-party pages were fetched for cross-checking but are NOT recorded as sources (the BRIEF caps sources at 4): https://ai.google.dev/gemini-api/docs/live-api (200) and https://ai.google.dev/gemini-api/docs/live-api/thinking (200). The first is what surfaced the 70-vs-97 language discrepancy; the second confirmed thinking_level low/medium/high is supported on gemini-3.8-live-extended-thinking and not supported on gemini-3.8-live. Facts resting only on those two pages are kept out of verified_facts and written up in unverified_or_excluded instead. LIVE-DOCUMENT WARNING, per the BRIEF: the Gemini API pricing page is not a snapshot. Its footer read 'Last updated 2026-09-15 UTC' when read on 2026-09-16, and it can be revised without the URL changing. Every price in this record is the version read on 2026-09-16 and must be re-checked before publication rather than trusted from these notes. The model card carries the same warning in its own words: 'Model cards may be updated from time to time'. No news media, aggregator or search snippet was used for any recorded fact. No blocked page held a fact needed for this article, so nothing was dropped for access reasons.",
+ "sources": [
+  {
+   "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "publisher": "Google (blog.google, The Keyword)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "publisher": "Google (blog.google, The Keyword)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Gemini 3.8 Audio (Live, Live Extended Thinking) - Model Card",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "publisher": "Google DeepMind",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Gemini Developer API Pricing",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "publisher": "Google (Gemini API documentation)",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-09-15",
+ "event_date_basis": "Announcement, publication and rollout start are the same day, so there is no split to resolve. Three independent first-party confirmations: (1) both blog posts carry <meta property=\"article:published_time\" content=\"2026-09-15\"> and an on-page byline date 'Sep 15, 2026'; (2) blog.google's official RSS gives both posts pubDate 'Tue, 15 Sep 2026 17:00:00 +0000'; (3) the DeepMind model card is stamped 'Published 15 September 2026'. The effective date matches: Google writes 'rolling out starting today' for both models, so availability begins 2026-09-15. Caveat for the writer: 'starting today' is a start, not a completion - the rollout was still in progress as far as any source says, and the enterprise channel is a private preview. A fourth corroboration is the pricing page footer 'Last updated 2026-09-15 UTC'. slug date 20260915 and news_date 2026-09-15 are both correct.",
+ "verified_facts": [
+  {
+   "fact": "Google published two blog.google posts on 2026-09-15 introducing the models: the model post 'Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking' and the developer post 'Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe'. The model post's meta article:published_time is 2026-09-15 and its byline date line reads 'Sep 15, 2026'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Sep 15, 2026"
+  },
+  {
+   "fact": "The developer post carries the same publication date, meta article:published_time 2026-09-15, byline date 'Sep 15, 2026'.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Sep 15, 2026"
+  },
+  {
+   "fact": "The model post's on-page H1 / og:title is 'Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking'; the browser <title> is the shorter 'Gemini 3.8 Live & Gemini 3.8 Live Extended Thinking'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking"
+  },
+  {
+   "fact": "The developer post's on-page H1 / og:title is 'Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe'.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe"
+  },
+  {
+   "fact": "Authors of the model post are Tom Ouyang (Principal Engineer) and Malini Jaganathan (Member of Technical Staff, on behalf of the Gemini Audio Team).",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Tom Ouyang Principal Engineer Malini Jaganathan Member of Technical Staff, on behalf of the Gemini Audio Team"
+  },
+  {
+   "fact": "Authors of the developer post are Alisa Fortin (Product Manager, Google DeepMind) and Thor Schaeff (Member of the Technical Staff (DevX), Google DeepMind).",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Two models were announced, positioned differently: 'Gemini 3.8 Live: Built for scale and cost efficiency, combining conversational intelligence with fluid dialogue and visual grounding.' and 'Gemini 3.8 Live Extended Thinking: Built for high-complexity tasks, with increased intelligence and multi-step reasoning.'",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Gemini 3.8 Live: Built for scale and cost efficiency, combining conversational intelligence with fluid dialogue and visual grounding. Gemini 3.8 Live Extended Thinking: Built for high-complexity tasks, with increased intelligence and multi-step reasoning."
+  },
+  {
+   "fact": "Google frames the pair as 'our most advanced live dialogue models yet' (meta description and standfirst).",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are our most advanced live dialogue models yet, built for natural conversation."
+  },
+  {
+   "fact": "Google says Gemini 3.8 Live processes visual inputs in near real-time, automatically detects and transitions between 97 supported languages mid-conversation, and executes tools and API calls in the background while continuing the conversation, so the model can acknowledge requests and keep chatting while tasks finish. All four capabilities named in the assignment are in this single sentence pair.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Gemini 3.8 Live processes visual inputs in near real-time, enriching conversations with context for more helpful responses. It automatically detects and transitions between 97 supported languages mid-conversation. It executes tools and API calls in the background while continuing the conversation, so the model can acknowledge requests and keep chatting while tasks finish in the background."
+  },
+  {
+   "fact": "Google says that for tasks requiring deeper reasoning, 3.8 Live Extended Thinking 'reasons and speaks simultaneously', using early verbal cues like 'Let me check that...' to acknowledge prompts, and live progress narration to walk users through multi-step background tasks as they progress.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "For tasks that require deeper reasoning, 3.8 Live Extended Thinking reasons and speaks simultaneously. It delivers increased intelligence for complex workflows while maintaining an uninterrupted conversational flow - using early verbal cues like “Let me check that…” to acknowledge prompts naturally, and live progress narration to walk users through multi-step background tasks as they progress."
+  },
+  {
+   "fact": "The developer post lists five key capabilities of the pair: asynchronous function calling (execute API and tool calls in the background while continuing to stream audio responses), visual context (ground dialogue in live visual inputs), alphanumeric precision (accurately parse confirmation codes, claim numbers and technical data), multilingual support ('coverage for 97+ languages and accent consistency'), and incremental content updates.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Alphanumeric precision: Accurately parse confirmation codes, claim numbers, and technical data"
+  },
+  {
+   "fact": "Google says 3.8 Live Extended Thinking supports 'configurable thinking' to handle complex, multi-step reasoning in the background while responding or narrating its progress in the main conversation, and calls the pair 'a more streamlined alternative to cascaded architectures'.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "These models represent a step-change from our previous live models and provide a more streamlined alternative to cascaded architectures."
+  },
+  {
+   "fact": "The model post's video captions describe demonstrations, not measured results: Gemini 3.8 Live guiding employee onboarding using visual context, playing chess in near real-time using visual context; 3.8 Live Extended Thinking turning raw sketches plus voice feedback into functional React components, coordinating multi-step bookings and asynchronous function calls, and building business plans and marketing toolkits through speech.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Google says all audio generated by its AI products is watermarked with SynthID, an imperceptible watermark woven into the audio output.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "All audio generated by our AI products is watermarked with SynthID. This imperceptible watermark is woven directly into the audio output, ensuring AI-generated content remains detectable to help prevent misinformation."
+  },
+  {
+   "fact": "AVAILABILITY, 3.8 Live, verbatim: '3.8 Live is rolling out starting today: For developers: In the Gemini API and Google AI Studio / For enterprises: In private preview in Gemini Enterprise and coming soon to Gemini Enterprise for Customer Experience / For everyone: In Search Live'. Note that for 3.8 Live the consumer line names ONLY Search Live.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "3.8 Live is rolling out starting today: For developers: In the Gemini API and Google AI Studio. For enterprises: In private preview in Gemini Enterprise and coming soon to Gemini Enterprise for Customer Experience. For everyone: In Search Live"
+  },
+  {
+   "fact": "AVAILABILITY, 3.8 Live Extended Thinking, verbatim: '3.8 Live Extended Thinking is rolling out starting today: For developers: In the Gemini API and Google AI Studio / For enterprises: In private preview in Gemini Enterprise and coming soon to Gemini Enterprise for Customer Experience and Google Workspace business customers / For everyone: In Gemini Live and for Google AI Pro and Ultra subscribers in Workspace in Docs, and all Google AI subscribers in Gmail and Keep'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For everyone: In Gemini Live and for Google AI Pro and Ultra subscribers in Workspace in Docs, and all Google AI subscribers in Gmail and Keep"
+  },
+  {
+   "fact": "The Pro/Ultra gate applies specifically to Docs. Google's wording splits the Workspace surfaces: 'Google AI Pro and Ultra subscribers in Workspace in Docs' versus 'all Google AI subscribers in Gmail and Keep'. Docs is the narrower tier; Gmail and Keep are open to all Google AI subscribers.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "for Google AI Pro and Ultra subscribers in Workspace in Docs, and all Google AI subscribers in Gmail and Keep"
+  },
+  {
+   "fact": "'Coming soon' items carry no date. For 3.8 Live: Gemini Enterprise for Customer Experience. For 3.8 Live Extended Thinking: Gemini Enterprise for Customer Experience and Google Workspace business customers.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "coming soon to Gemini Enterprise for Customer Experience and Google Workspace business customers"
+  },
+  {
+   "fact": "The enterprise channel is explicitly a private preview for both models, not general availability.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In private preview in Gemini Enterprise"
+  },
+  {
+   "fact": "Both models roll out on the same day, phrased only as 'rolling out starting today' - a staged rollout, not a completed one.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "is rolling out starting today"
+  },
+  {
+   "fact": "Google names the consumer surfaces in prose as well: 'They also make speaking with Gemini across the Gemini app, Google Workspace, and Search more fluid and collaborative'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "They also make speaking with Gemini across the Gemini app, Google Workspace, and Search more fluid and collaborative — helping you tackle complex tasks using just your voice."
+  },
+  {
+   "fact": "The model card gives an independent, slightly broader distribution list. Gemini 3.8 Live: Gemini API, Gemini App, Google AI Studio, Google Cloud / Vertex AI, Google Search Live. Gemini 3.8 Live Extended Thinking: Gemini App, Gemini API, Google AI Studio, Google Cloud / Vertex AI, Google Workspace (Gmail, Docs, and Keep).",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Gemini 3.8 Live is distributed in the following channels; respective documentation shared in line: Gemini API, Gemini App, Google AI Studio, Google Cloud / Vertex AI, Google Search Live"
+  },
+  {
+   "fact": "Google says 3.8 Live Extended Thinking captured 'the #1 overall spot on Artificial Analysis' Speech to Speech Quality Index (82.6)'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "capturing the #1 overall spot on Artificial Analysis' Speech to Speech Quality Index (82.6)"
+  },
+  {
+   "fact": "Google says 3.8 Live Extended Thinking 'leads in agentic task completion with 68.6% on τ-Voice and 35.1% on Sierra's τ-Voice-banking benchmark'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "leads in agentic task completion with 68.6% on τ-Voice and 35.1% on Sierra’s τ-Voice-banking benchmark"
+  },
+  {
+   "fact": "Google says 3.8 Live Extended Thinking scores 97.7% on Big Bench Audio 'while maintaining a highly competitive price point compared to other frontier models'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "scoring 97.7% on Big Bench Audio, while maintaining a highly competitive price point compared to other frontier models"
+  },
+  {
+   "fact": "Google says Gemini 3.8 Live 'has shown a high preference among users, securing a second place in the Speech Agent Arena'.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Gemini 3.8 Live has shown a high preference among users, securing a second place in the Speech Agent Arena"
+  },
+  {
+   "fact": "Google says that on ServiceNow's EVA-Bench its models 'push the Pareto Frontier for complex workflows by successfully balancing accuracy with conversational quality', with the caveat printed directly beneath: 'Note: This was run on the Live API on Gemini Enterprise Agent Platform.'",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Note: This was run on the Live API on Gemini Enterprise Agent Platform."
+  },
+  {
+   "fact": "The developer post states the leaderboard claim in a shorter form: 3.8 Live Extended Thinking 'ranking #1 on Artificial Analysis' Speech-to-Speech leaderboard' - the index name and the 82.6 score are not repeated there.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "ranking #1 on Artificial Analysis’ Speech-to-Speech leaderboard"
+  },
+  {
+   "fact": "Developer pricing, as stated in the developer post: '$0.005/min for audio input and $0.018/min for audio output', with a footnote marked on the output figure reading '*Estimate based on $3/1M tokens for input and $12/1M tokens for output'. The per-minute numbers are therefore Google's own estimate derived from token prices, not a metered per-minute tariff.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Competitively priced at $0.005/min for audio input and $0.018/min for audio output"
+  },
+  {
+   "fact": "The official Gemini API pricing page (read 2026-09-16, page footer 'Last updated 2026-09-15 UTC') groups gemini-3.8-live, gemini-3.8-live-extended-thinking and gemini-3.1-flash-live-preview in ONE pricing block, so both 3.8 models carry the same list price.",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Gemini 3.8 Live, Gemini 3.8 Live Extended Thinking, and Gemini 3.1 Flash Live Preview"
+  },
+  {
+   "fact": "Paid tier input prices per 1M tokens: $0.75 (text); $3.00 or $0.005/min (audio); $1.00 or $0.002/min (image/video).",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Input price Free of charge $0.75 (text) $3.00 or $0.005/min (audio) $1.00 or $0.002/min (image/video)"
+  },
+  {
+   "fact": "Paid tier output price per 1M tokens, including thinking tokens: $4.50 (text); $12.00 or $0.018/min (audio). Thinking tokens are billed as output.",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Output price (including thinking tokens) Free of charge $4.50 (text) $12.00 or $0.018/min (audio)"
+  },
+  {
+   "fact": "There is a free tier for these models: input and output are both listed 'Free of charge'. The same table's last row states 'Used to improve our products': Yes for the Free Tier, No for the Paid Tier. Free-tier use therefore feeds product improvement; paid-tier use does not.",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Used to improve our products Yes No"
+  },
+  {
+   "fact": "Grounding with Google Search is 'Supported' for this model group; 5,000 free search requests per month shared across all Gemini 3.x models, then $14 per 1,000 requests. A single user request may trigger more than one search query, and each query is charged.",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests."
+  },
+  {
+   "fact": "The official pricing page describes the group as 'Our low-latency, audio-to-audio models optimized for real-time voice agents and live dialogue, including background reasoning support with Extended Thinking.'",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Our low-latency, audio-to-audio models optimized for real-time voice agents and live dialogue, including background reasoning support with Extended Thinking."
+  },
+  {
+   "fact": "Model card published 15 September 2026, titled 'Gemini 3.8 Audio (Live, Live Extended Thinking)'. It states the two models are collectively referred to as Gemini 3.8 Audio.",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Published 15 September 2026"
+  },
+  {
+   "fact": "Both models are based on Gemini 3 Pro - 'Gemini 3.8 Audio is based on Gemini 3 Pro' - and the model card defers training data, hardware, software, safety policies and acceptable use to the Gemini 3 Pro model card.",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Gemini 3.8 Audio is based on Gemini 3 Pro."
+  },
+  {
+   "fact": "Inputs: audio, images, video and text, with a token context window of up to 128K. Outputs: audio and text, with 64K token output.",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking: Audio, images, video, and text with a token context window of up to 128K."
+  },
+  {
+   "fact": "The model card states the knowledge cutoff date is January 2025. This is a hard limit on what the models know, independent of live Search grounding.",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The knowledge cutoff date is January 2025."
+  },
+  {
+   "fact": "Known limitations named by Google: the models 'may exhibit some of the general limitations of foundation models, such as hallucinations', Google is 'continually working to improve jailbreak resistance', and 'There may also be occasional slowness or timeout issues.'",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "There may also be occasional slowness or timeout issues."
+  },
+  {
+   "fact": "Frontier safety: Google evaluated Gemini 3.7 Flash under its Frontier Safety Framework and found it did not reach any Tracked or Critical Capability Levels (T/CCLs); it states the 3.8 Live models do not have meaningful new capabilities or material increases in performance compared with Gemini 3.7 Flash and so are 'not likely' to reach any T/CCLs. The 3.8 Live models were not themselves put through that assessment.",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Our assessments have shown that Gemini 3.8 Live or Gemini 3.8 Live Extended Thinking does not have meaningful new capabilities or material increases in performance compared to Gemini 3.7 Flash; therefore, based on Gemini 3.7 Flash results, we are confident that Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking are not likely to reach any T/CCLs."
+  },
+  {
+   "fact": "Intended usage as stated: the models 'process continuous streams of audio, video, and text to deliver spoken responses in real-time to create natural conversational experiences well-suited for users, developers, and enterprises.'",
+   "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Official model identifiers confirmed on the pricing page: gemini-3.8-live and gemini-3.8-live-extended-thinking.",
+   "url": "https://ai.google.dev/gemini-api/docs/pricing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "gemini-3.8-live, gemini-3.8-live-extended-thinking, and gemini-3.1-flash-live-preview"
+  },
+  {
+   "fact": "Google names seven Live API integration partners that handle media streaming infrastructure: Agora, Fishjam, LangChain, LiveKit, Pipecat, Vercel and Vision Agents.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Agora, Fishjam, LiveKit, LangChain, Pipecat, Vercel, and Vision Agents, our Live API integration partners that handle media streaming infrastructure for real-world deployment"
+  },
+  {
+   "fact": "Google says it is 'partnering with companies like Salesforce, Genspark, and Lumeris who are excited about 3.8 Live and 3.8 Live Extended Thinking, highlighting its impressive latency, fluidity, and tool-calling capabilities.' No customer results are given.",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We’re also partnering with companies like Salesforce, Genspark, and Lumeris"
+  },
+  {
+   "fact": "Gemini 3.5 Transcribe is NOT new on 2026-09-15. The developer post says it was 'Released last month' and repeats 'Last month, we released Gemini 3.5 Transcribe'. It is a dedicated speech-to-text model.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Released last month, it achieved an average Word Error Rate (WER) of 4.0% (streaming) and 2.6% (non-streaming)."
+  },
+  {
+   "fact": "Google says Gemini 3.5 Transcribe covers 85+ languages and achieved an average Word Error Rate of 4.0% (streaming) and 2.6% (non-streaming); features named are automatic code-switching, custom vocabulary biasing via a custom_vocabulary list of up to 1,000 terms, and a smart transcription mode that removes filler words. Via the Interactions API it transcribes audio files up to 1 hour long with structured timestamps and speaker labeling.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "brings highly precise transcription across 85+ languages"
+  },
+  {
+   "fact": "Other audio models Google lists as already available in the Gemini API: Gemini 3.5 Live Translate (speech-to-speech translation across more than 70 languages), Gemini 3.1 Flash TTS, and Lyria 3.5.",
+   "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Gemini 3.5 Live Translate: Speech-to-speech translation across more than 70 languages"
+  }
+ ],
+ "not_said": [
+  "NO REGION OR COUNTRY SCOPE ANYWHERE. This is the single most important gap. The model post says only 'rolling out starting today' for both models and never names a country, region, market or launch order. A full-text scan of the model post, the developer post and the model card found zero region statements; the only country names on the pages are blog.google's own locale switcher in the site chrome, which is navigation, not content. The article MUST NOT imply or assume that a Taiwanese Google account can use any of this, and must say 'Google did not state the region scope'.",
+  "No interface-language scope. The 97-language figure describes what the model can detect and speak inside a conversation. Google does NOT say which interface languages the consumer surfaces (Search Live, Gemini Live, Docs/Gmail/Keep) support at launch, and does not confirm that Traditional Chinese is among the languages enabled on any consumer surface.",
+  "No date for any 'coming soon' item. Gemini Enterprise for Customer Experience, and Google Workspace business customers for Extended Thinking, are marked 'coming soon' with no timeframe.",
+  "No consumer price. The only prices Google publishes are developer API prices. Google does not state what Google AI Pro or Google AI Ultra cost, nor any usage limit, quota, session length cap or fair-use cap for consumers in Search Live, Gemini Live, Docs, Gmail or Keep.",
+  "No end date or completion date for the rollout. 'Starting today' is a start, and Google does not say when any surface finishes rolling out or how a user can tell which model they are talking to.",
+  "No eligibility detail for the enterprise private preview: no application route, no qualifying criteria, no waitlist, no participant count.",
+  "No list of the 97 languages. Google gives the count only. There is no published enumeration on any of the four sources.",
+  "No latency figures. Both posts repeatedly say 'near real-time', 'low-latency', 'impressive latency' and 'fluid', but publish no millisecond figure for time-to-first-audio or turn latency.",
+  "No independent testing. Every benchmark number comes from Google's own post citing third-party leaderboards; Mokaair has run no hands-on test, and the article must say so.",
+  "No statement on whether audio from consumer surfaces is retained, used for training, or how long it is kept. The 'used to improve our products' Yes/No split on the pricing page covers the Gemini API free and paid tiers only, not Search Live, Gemini Live or Workspace.",
+  "No accuracy or error rate for the 97-language automatic detection and mid-conversation switching, and no statement about what happens when detection is wrong.",
+  "No statement that Gemini 3.8 Live replaces or deprecates any earlier Live model. gemini-3.1-flash-live-preview is still listed on the pricing page alongside the new models, and the Live API thinking guide describes upgrading from it as optional.",
+  "No pricing distinction between Gemini 3.8 Live and 3.8 Live Extended Thinking. They share one pricing block, so the cheaper-model framing ('built for scale and cost efficiency') is about token consumption and reasoning overhead, not about a lower list price - and Google never says this in so many words."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "'You can start using these features today through the Gemini API, Google Workspace, and the Gemini app.'",
+   "seen_where": "The 'Read AI-generated summary' panel at the top of the model post (https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/)",
+   "why_excluded": "This block is machine-generated and carries Google's own disclaimer, printed twice: 'Summaries were generated by Google AI. Generative AI is experimental.' It also flatly contradicts the human-written availability list further down the same page - Workspace Docs is gated to AI Pro/Ultra and Gemini Enterprise is a private preview, neither of which is 'you can start using it today'. Nothing from any of the AI summary panels (General summary / Bullet points / Basic explainer) may be quoted or used as a fact."
+  },
+  {
+   "claim": "Gemini 3.8 Live supports 97 languages, stated as a settled platform figure.",
+   "seen_where": "Model post says exactly '97 supported languages'; developer post says '97+ languages'; the official Live API overview doc (https://ai.google.dev/gemini-api/docs/live-api, fetched 2026-09-16, HTTP 200) still says 'Multilingual support: Converse in 70 supported languages' and the string '97' does not appear on that page at all.",
+   "why_excluded": "Not excluded, but it must be attributed and not hardened. Write it as 'Google's announcement says 97' and note that Google's own Live API documentation still carried the older figure of 70 on the day we checked. Do not present 97 as a documented platform capability, and do not silently pick one number. The '97' vs '97+' difference between Google's own two posts is also real."
+  },
+  {
+   "claim": "Gemini 3.8 Live is available in the Gemini app / Gemini Live.",
+   "seen_where": "The model card (https://deepmind.google/models/model-cards/gemini-3-8-audio/) lists 'Gemini App' as a distribution channel for Gemini 3.8 Live; the blog post's consumer line for 3.8 Live names only Search Live, and puts Gemini Live under 3.8 Live Extended Thinking.",
+   "why_excluded": "The two first-party sources disagree on which model reaches the Gemini app. The blog post is the launch statement and is more specific about who gets what, so the article should follow the blog's split (Search Live = 3.8 Live, Gemini Live = Extended Thinking) and must not claim 3.8 Live is in the Gemini app. Flag the discrepancy rather than resolving it."
+  },
+  {
+   "claim": "The per-minute prices $0.005 in / $0.018 out are the billed rate.",
+   "seen_where": "Developer post headline figure (https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/)",
+   "why_excluded": "The footnote on the same page says '*Estimate based on $3/1M tokens for input and $12/1M tokens for output', and the official pricing page bills per 1M tokens. The per-minute number is a derived estimate. Write it as an estimate Google provides, with the token price beside it."
+  },
+  {
+   "claim": "Gemini 3.8 Live Extended Thinking passed a frontier safety assessment.",
+   "seen_where": "Model card Frontier Safety Assessment section (https://deepmind.google/models/model-cards/gemini-3-8-audio/)",
+   "why_excluded": "Google assessed Gemini 3.7 Flash, not the 3.8 Live models, and reasons by inference that the new models are 'not likely' to reach any Tracked or Critical Capability Levels. Writing 'passed' would overstate it. If mentioned at all, state that the assessment was carried over from Gemini 3.7 Flash."
+  },
+  {
+   "claim": "Gemini 3.5 Transcribe was launched on 2026-09-15 alongside the Live models.",
+   "seen_where": "The developer post's title pairs it with 3.8 Live: 'Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe' (https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/)",
+   "why_excluded": "The body of the same post says twice that it was released 'last month'. The title is a bundling of the audio suite, not a launch claim. Do not date 3.5 Transcribe to 9/15."
+  },
+  {
+   "claim": "Any figure about how many users, developers or enterprises have access, or any adoption/usage number.",
+   "seen_where": "Not found anywhere.",
+   "why_excluded": "No first-party source publishes one. Nothing to write."
+  },
+  {
+   "claim": "Named-customer outcomes for Salesforce, Genspark and Lumeris.",
+   "seen_where": "Model post (https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/) says these companies 'are excited about' the models.",
+   "why_excluded": "An expression of interest with no deployment, no metric and no quoted spokesperson. Not usable as evidence that the models work in production; at most mention that Google names them as partners."
+  },
+  {
+   "claim": "Third-party leaderboard standings verified at source (Artificial Analysis Speech to Speech Quality Index, Speech Agent Arena, ServiceNow EVA-Bench, Sierra tau-Voice-banking).",
+   "seen_where": "Google links out to artificialanalysis.ai and servicenow.github.io from the model post.",
+   "why_excluded": "Not fetched, and they are leaderboards that change continuously, so a standing recorded today would be stale by publication. Every benchmark number in the article is written as 'Google says'. A ranking of '#1' or 'second place' is a snapshot Google reported on 2026-09-15."
+  },
+  {
+   "claim": "News-media framing of this launch as a response to any competitor's voice model.",
+   "seen_where": "Not used. No aggregator or news source was consulted for this record.",
+   "why_excluded": "BRIEF forbids media as a recorded source, and Google's posts make no competitive comparison beyond the anonymous phrase 'other frontier models'."
+  }
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md line 68-69 says consumers get it in 'Search Live, Gemini Live, and Workspace (Docs/Gmail/Keep) for AI Pro/Ultra subscribers'. That flattens two distinctions Google actually draws. (a) The two models have DIFFERENT consumer surfaces: 3.8 Live is 'For everyone: In Search Live' only; Gemini Live and the Workspace surfaces belong to 3.8 Live Extended Thinking. (b) The AI Pro/Ultra gate applies to Docs only - Google's words are 'for Google AI Pro and Ultra subscribers in Workspace in Docs, and all Google AI subscribers in Gmail and Keep'. Gmail and Keep are open to all Google AI subscribers, a wider group.",
+  "candidates-tech-and-ai.md line 66-67 lists 'coming soon' as Gemini Enterprise for Customer Experience and Google Workspace for both models. Google lists Google Workspace business customers as 'coming soon' ONLY under 3.8 Live Extended Thinking; under 3.8 Live the only 'coming soon' item is Gemini Enterprise for Customer Experience.",
+  "candidates-tech-and-ai.md line 63 gives '97 種語言' without qualification. The model post says '97 supported languages'; the developer post says '97+ languages'; and Google's own Live API overview doc still said 70 on 2026-09-16. Worth flagging, not stating flat.",
+  "candidates-tech-and-ai.md A2 (lines 74-80) proposes a separate slug ai-news-gemini-live-voice-api-20260915 and then recommends folding it into A1. Confirmed correct: the two posts cross-link each other ('Today, we released ...') and share a publication timestamp of 2026-09-15 17:00 UTC. One article.",
+  "The candidate entry does not mention that a free tier exists for these models in the Gemini API, that free-tier traffic is marked 'Used to improve our products: Yes', or that the model card gives a January 2025 knowledge cutoff and a 128K context window. All three are reader-relevant and verified.",
+  "The candidate entry does not warn about the AI-generated summary panels at the top of blog.google posts, which state an availability claim that contradicts the article body. A writing agent working from the page could easily quote them by mistake."
+ ],
+ "must_not_write": [
+  "Do not say or imply that Taiwanese accounts, or accounts in any named country, can use these features. Google published no region scope. Write '官方未說明開放地區'.",
+  "Do not write '我們試用' / 'we tested' / any hands-on impression. Mokaair ran no test. Every capability is Google's description.",
+  "Do not state benchmark numbers (82.6, 68.6%, 35.1%, 97.7%, #1, second place) as facts. Always 'Google 表示' / 'Google 指出'.",
+  "Do not quote anything from the 'Read AI-generated summary', 'General summary', 'Bullet points' or 'Basic explainer' panels on blog.google. They are machine-generated and one of them contradicts the article body.",
+  "Do not say the AI Pro/Ultra requirement covers Docs, Gmail and Keep. It covers Docs. Gmail and Keep are 'all Google AI subscribers'.",
+  "Do not say Gemini 3.8 Live is in the Gemini app. Google's launch post puts 3.8 Live in Search Live and Extended Thinking in Gemini Live.",
+  "Do not present $0.005/min and $0.018/min as a billed per-minute tariff. They are Google's estimate from $3 and $12 per 1M tokens, and billing is per token.",
+  "Do not say 3.8 Live is cheaper than 3.8 Live Extended Thinking. They share one list price; the difference is how many tokens the reasoning consumes.",
+  "Do not date Gemini 3.5 Transcribe to 2026-09-15. Google says it shipped the previous month.",
+  "Do not say the models 'passed' a frontier safety assessment; the assessment was run on Gemini 3.7 Flash and carried over by inference.",
+  "Do not write a second article for the developer post. One article, per the BRIEF's no-duplication rule and the candidate file's own recommendation.",
+  "Do not re-explain what Gemini Live's productivity features do (covered by ai-news-gemini-live-20260826) or the economics of the Gemini 3.8 Flash text model (covered by ai-news-gemini-38-flash-20260902).",
+  "Do not draw any logo, wordmark, UI screenshot or product icon in the diagram, per BRIEF.",
+  "Do not put any number in the diagram that does not appear in the article body."
+ ],
+ "overlaps_existing_article": "Three existing packs are adjacent; none covers this event, and all three were read rather than judged from their titles.\n\n1. ai-news-gemini-live-20260826 'Gemini Live 生產力更新：用語音處理郵件與待辦' (news_date 2026-08-26, source blog.google/innovation-and-ai/products/gemini-app/productivity-features-gemini-live/). Its five headings are about Spark, Daily Brief, searching email by voice and verifying results. DIVISION: that article owns what Gemini Live's productivity features DO; this article owns the speech-to-speech MODEL underneath and who can reach it. Do not re-teach Daily Brief or Spark here.\n\n2. ai-news-gemini-38-flash-20260902 'Gemini 3.8 Flash 推出：模型升級對日常工具意味著什麼？' (news_date 2026-09-02). Same model generation, different modality - that one is the text/agentic Flash model and already spends a whole section on why identical unit prices produce different total costs. DIVISION: do not repeat that cost argument. Here the cost angle is specifically that 3.8 Live and 3.8 Live Extended Thinking share ONE list price while differing in reasoning token consumption, plus the free tier's 'used to improve our products' flag. This is the recommended second link (相關新聞) - it is the same generation's other line and the candidate file suggests it.\n\n3. ai-news-gpt-live-voice-20260708 'GPT-Live 讓 ChatGPT 語音邊聽邊說：插話、方案用量與錄音設定' (news_date 2026-07-08). Structurally the closest article on the site: a rival real-time voice model, with barge-in, plan-based quotas and recording settings. DIVISION: do not turn this piece into a GPT-Live comparison, and do not reuse its 插話/錄音 framing. Google's posts make no competitor comparison.\n\nAlso note ai-news-siri-ai-ios-27-20260914 (2026-09-14) is the immediately preceding article and already carries the 'English beta first, what can a Taiwanese user actually use' angle. This article needs the same discipline about region scope but should not copy that article's structure.\n\nFirst link (本垂直索引) is ai-news-2026-january-september-index, current zh-TW title '2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用'. WARNING: ai.md schedules that index for retitling in this batch, and check_article.py asserts link.text == the target's title. Read the index pack for its title at the moment of writing rather than copying the string above. display_order continues from 148.",
+ "editorial_brief": "READER AND ANGLE. Written for a Taiwanese general reader who uses Gemini in Search, the Gemini app or Google Docs and keeps hearing that voice AI got better. The question the article answers is not 'is the model good' but 'which of these five doors is actually open to me, and what changes when I talk to it instead of typing'. The spine is the gap between a launch and an entitlement: Google shipped two models on one day into five different channels with five different conditions, and the consumer sentence is the narrowest part of the announcement, not the widest.\n\nTHE CENTRAL FACT TO GET RIGHT. Google published no region scope at all - only 'rolling out starting today'. Full-text scans of all three Google pages found no country, region or market statement. The article must say 官方未說明開放地區 plainly and must never suggest a Taiwanese account has this. This is the one thing a reviewer will check first.\n\nTHE SECOND THING TO GET RIGHT. The availability matrix is finer-grained than the candidate list records. 3.8 Live for everyone means Search Live only. 3.8 Live Extended Thinking for everyone means Gemini Live, plus Docs for Google AI Pro and Ultra subscribers, plus Gmail and Keep for all Google AI subscribers. Enterprise is a private preview for both. A table of 4 columns x 5 rows (surface / which model / who qualifies / status) carries this better than prose and is the natural fit for the BRIEF's required table at the end of section 2, caption dated 2026-09-16.\n\nSUGGESTED FIVE SECTIONS. (1) What was announced and which model sits behind which door. (2) The four capability claims - near real-time visual input, 97-language mid-conversation switching, background tool execution without interrupting the conversation, and Extended Thinking reasoning while speaking - all attributed to Google, ending with the availability table. (3) Why 'starting today' is not 'available to you': staged rollout, private preview, subscription gates, no region statement; diagram goes here. (4) Cost and data: the free tier exists, free-tier traffic is marked 'used to improve our products', paid is not, both models share one price, per-minute figures are Google's estimate from token prices. (5) What Google did not say and what to check yourself - knowledge cutoff January 2025 despite the real-time framing, no latency figures, no language list, no consumer quota, SynthID watermarking on all generated audio.\n\nORIGINAL SCENARIO, to be labelled as an editorial example per BRIEF. A reader planning a trip asks Gemini by voice to compare two itineraries while showing the screen to the camera; the model acknowledges, searches in the background and narrates progress. The editorial point is not that this is magical but that three separate conditions must hold before it happens - the right surface, the right subscription, and a region Google has not named - and that a January 2025 knowledge cutoff means anything time-sensitive still depends on live search grounding, which is metered separately.\n\nTONE AND SCOPE. Plain, specific, no hype; the article's value is the conditions, not the capabilities. Deliberately out of scope: any comparison with OpenAI's GPT-Live or any other vendor (Google makes none), any benchmark interpretation beyond reporting Google's numbers as claims, any hands-on impression, any Gemini Live productivity feature already covered on 2026-08-26, and any repeat of the 3.8 Flash cost argument from 2026-09-02.\n\nHERO LABEL SUGGESTION (zh-TW, <= 12 chars): 語音模型升級，開放條件分開看\n\nDIAGRAM SUGGESTION, 2x2, title '3.8 Live 的四道門' (<= 20 chars), caption to carry the 2026-09-16 check date. Nodes, reading top-left to bottom-right: ['開發者', 'API 與 AI Studio 當天開放'] / ['企業', 'Gemini Enterprise 私人預覽'] / ['搜尋與 Gemini', 'Search Live、Gemini Live'] / ['Workspace', 'Docs 限 Pro 與 Ultra']. Every one of these strings must also appear in the body text, and no numeral appears in the diagram, which keeps it inside the BRIEF's rule that diagram numbers must exist in the article."
+}

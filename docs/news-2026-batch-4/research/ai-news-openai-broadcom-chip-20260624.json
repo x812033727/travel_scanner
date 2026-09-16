@@ -1,0 +1,317 @@
+{
+ "slug": "ai-news-openai-broadcom-chip-20260624",
+ "event_date": "2026-06-24",
+ "event_date_basis": "Broadcom's own press-release page carries JSON-LD \"datePublished\": \"2026-06-24T09:00:48-0400\" and the dateline \"SAN FRANCISCO and PALO ALTO, Calif., June  24, 2026  (GLOBE NEWSWIRE)\". OpenAI's official news RSS lists the same item with pubDate \"Wed, 24 Jun 2026 06:00:00 GMT\". Announcement date and publication date are therefore the same day, 2026-06-24, on both sides. The EFFECTIVE date is different and must not be conflated: the Broadcom release says the platform is \"designed for initial deployment by the end of 2026\", and Hock Tan's quote says gigawatt-scale data centres \"with Microsoft and other partners beginning in 2026\". There is no stated ship date, general-availability date or purchase date of any kind.",
+ "checked_on": "2026-09-16",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "FULL for the Broadcom side, which is an equally first-party co-announcer, so the article can be written to spec.\n\nWHAT WORKED:\n- https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor -> HTTP 200, 70,913 bytes, complete press-release body plus JSON-LD. THIS IS THE LOAD-BEARING SOURCE; essentially every figure in the article comes from it.\n- https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10 -> HTTP 200, full body of the 2025-10-13 background release.\n- https://openai.com/news/rss.xml -> HTTP 200, 725,972 bytes, 1,194 <item>, newest 2026-09-16, so the feed is live and not a rejection page. It carries OpenAI's own title, category, link and one-line description for the 2026-06-24 item and for the 2026-08-25 follow-up.\n\nACCESS QUIRK WORTH RECORDING FOR LATER AGENTS: investors.broadcom.com REFUSES the User-Agent \"Mokaair-editorial\" - curl exits 52 \"Empty reply from server\" on every attempt, over both HTTP/2 and HTTP/1.1. The same URL returns HTTP 200 to curl's DEFAULT User-Agent over HTTP/2. No personal data was sent in any request. www.broadcom.com/company/news/product-releases (301 -> /company/news/releases) and www.broadcom.com/company/news/product-releases/64506 both return 200 but are React shells: the listing has zero \"openai\"/\"jalape\" hits and the detail page only exposes the headline in <title>, so the corporate-newsroom mirror is unusable as a readable source. https://investors.broadcom.com/news-releases (the listing) returns 404. https://investors.broadcom.com/rss/news-releases.xml returns 200 but holds only the 10 newest items (2026-08-06 to 2026-09-02), so it cannot reach June.\n\nWHAT WAS BLOCKED: https://openai.com/index/openai-broadcom-jalapeno-inference-chip (and the trailing-slash and /ja-JP/ variants) returns HTTP 403 with a ~9.8 KB Cloudflare body, as does https://openai.com/index/jalapeno-first-results. The OpenAI blog post's own text was therefore NEVER read; the only OpenAI-authored wording I hold is the RSS title + description. The \"Read the OpenAI blog post\" link inside the Broadcom release is a GlobeNewswire /Tracker redirect, which I did not follow and did not record.\n- https://investors.broadcom.com/node/64506/pdf returns 200, application/pdf, 26,529 bytes, 2 pages - but the page content is image/custom-encoded, no pdftotext in this container, and a manual zlib+text-operator extraction produced only binary image data. It is NOT cited because I could not actually read it.\n- Broadcom's Q3 FY2026 earnings release (2026-09-02) was fetched (200) and searched: it contains \"custom AI accelerators\" revenue language but ZERO occurrences of \"Jalape\" or \"OpenAI\", so nothing in it can be attached to this chip.",
+ "vertical_decision": "WRITE IT IN THE AI VERTICAL ONLY (slug ai-news-openai-broadcom-chip-20260624). Do NOT also file a tech-news-* pack. Reasons: (1) tech.md's own boundary test is \"the subject is not an AI model or AI service\" - here the chip exists only to serve OpenAI's own LLM products and both companies describe it purely in LLM-inference terms (\"architected around OpenAI's vision for the future of LLM inference\", \"informed by the systems OpenAI runs every day across ChatGPT, Codex, the API\"); (2) precedent - ai-news-nvidia-rubin-20260105 already puts AI compute hardware in the AI vertical; (3) the reader-search test in tech.md points at \"OpenAI chip\", an AI query; (4) practical - there is currently NO tech-news-* content pack on the site at all (970 packs, 40 ai-news-*, zero tech-news-*), so the tech vertical has no index article for the mandatory first link, while ai-news-2026-january-september-index exists. The row at candidates-tech-and-ai.md line ~314 (tech table, 2026-06-24) should therefore be struck.",
+ "sources": [
+  {
+   "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "publisher": "Broadcom Inc.",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+   "publisher": "Broadcom Inc.",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "OpenAI News (official RSS feed)",
+   "url": "https://openai.com/news/rss.xml",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "The announcement was made jointly by OpenAI and Broadcom on 2026-06-24. Broadcom's press-release page carries the dateline and the machine-readable publication date 2026-06-24T09:00:48-04:00.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "SAN FRANCISCO and PALO ALTO, Calif., June  24, 2026  (GLOBE NEWSWIRE) -- OpenAI and Broadcom (NASDAQ: AVGO) today unveiled Jalapeño"
+  },
+  {
+   "fact": "The product name is spelled Jalapeño, with the tilde n, in Broadcom's release and in OpenAI's own feed description. It is NOT spelled 'Jalapeno' in the official text.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Jalapeño"
+  },
+  {
+   "fact": "Broadcom's own headline for the announcement is 'OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor'. OpenAI's own feed title for the same day is different: 'OpenAI and Broadcom unveil LLM-optimized inference chip'. Both are official; they are two companies' headlines for one announcement.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor"
+  },
+  {
+   "fact": "OpenAI's official news feed lists the item on Wed, 24 Jun 2026 06:00:00 GMT, category 'Company', link https://openai.com/index/openai-broadcom-jalapeno-inference-chip, with the one-line description: 'OpenAI and Broadcom introduce Jalapeño, a custom AI chip built for LLM inference to improve performance, efficiency, and scale across AI systems.'",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI and Broadcom introduce Jalapeño, a custom AI chip built for LLM inference to improve performance, efficiency, and scale across AI systems."
+  },
+  {
+   "fact": "Broadcom calls Jalapeño 'OpenAI's first Intelligence Processor' and 'the first AI accelerator in a multi-generation compute platform the companies are building together'. 'Intelligence Processor' is the official category word; the release never calls it a GPU.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI and Broadcom (NASDAQ: AVGO) today unveiled Jalapeño, OpenAI’s first Intelligence Processor: an accelerator architected around OpenAI’s vision for the future of LLM inference, and the first AI accelerator in a multi-generation compute platform the companies are building together to make advanced AI faster, more reliable, and more accessible to more people."
+  },
+  {
+   "fact": "The release opens with five bullets: 'Built from the ground up for current and future LLMs across the industry'; 'Developed from design to production in nine months, accelerated by OpenAI's models'; 'Will deliver performance per watt better than current state-of-the-art, based on early testing'; 'Expands OpenAI's full-stack platform, from products to models and now to chips'; 'To be deployed at gigawatt scale with data center partners, over multiple generations'.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Built from the ground up for current and future LLMs across the industry / Developed from design to production in nine months, accelerated by OpenAI’s models / Will deliver performance per watt better than current state-of-the-art, based on early testing / Expands OpenAI’s full-stack platform, from products to models and now to chips / To be deployed at gigawatt scale with data center partners, over multiple generations"
+  },
+  {
+   "fact": "Division of labour as officially stated: OpenAI designed the chip from scratch, informed by its roadmap of models, kernels, serving systems and product needs; Broadcom and Celestica help industrialize the platform through chip implementation, board and rack system integration, high-performance networking and scalable production systems.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI designed the chip from scratch around its deep understanding of LLM fundamentals, informed by its roadmap of models, kernels, serving systems, and product needs, with partners Broadcom and Celestica, helping industrialize the platform through chip implementation, board, rack system integration, high-performance networking, and scalable production systems."
+  },
+  {
+   "fact": "A third company, Celestica, is named as a partner for board, rack and system expertise. Only three companies are named on the build side: OpenAI, Broadcom, Celestica.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "combining OpenAI-designed accelerators with Broadcom silicon implementation, networking, and connectivity technologies; and Celestica’s board, rack and system expertise"
+  },
+  {
+   "fact": "The one Broadcom component named by product family is Tomahawk networking silicon.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Broadcom’s silicon implementation and networking technologies, including Tomahawk networking silicon, help bring the platform to large-scale production."
+  },
+  {
+   "fact": "A physical handover is described: the chip was delivered to OpenAI CEO Sam Altman and President Greg Brockman by Broadcom President and CEO Hock Tan and Semiconductor Solutions President Charlie Kawwas.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Jalapeño was delivered to OpenAI CEO Sam Altman and President Greg Brockman by Broadcom President and CEO Hock Tan and Semiconductor Solutions President Charlie Kawwas, marking an important step in OpenAI’s strategy to build the full stack behind its models and products."
+  },
+  {
+   "fact": "As of the announcement the chip exists as engineering samples, not shipping product: samples are running ML workloads in the lab at production target frequency and power, including the model GPT-5.3-Codex-Spark.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Engineering samples of the Jalapeño chip are running ML workloads in the lab at production target frequency and power, including GPT-5.3-Codex-Spark."
+  },
+  {
+   "fact": "OpenAI says it is still measuring final performance; the only performance statement offered is directional, with no number: performance per watt 'substantially better than current state-of-the-art', based on early testing.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "While OpenAI is still measuring final performance, early testing shows that Jalapeño will deliver performance per watt substantially better than current state-of-the-art."
+  },
+  {
+   "fact": "Broadcom says a detailed technical report on performance 'will be presented in the coming months' - i.e. the measured numbers were deliberately not published on 2026-06-24.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A detailed technical report on performance will be presented in the coming months."
+  },
+  {
+   "fact": "Architecture claim, stated qualitatively only: the design reduces data movement and balances compute, memory and networking so that realized utilization is 'much closer to theoretical peak performance'. No utilization percentage is given.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The architecture reduces data movement and balances compute, memory, and networking resources to achieve realized utilization much closer to theoretical peak performance."
+  },
+  {
+   "fact": "Design-philosophy claim: Jalapeño is 'a blank-slate design for modern LLM inference, not a general-purpose accelerator adapted from earlier AI workloads', informed by the systems OpenAI runs across ChatGPT, Codex, the API and future agentic products, while also being designed for current and future LLMs across the industry.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Jalapeño is a blank-slate design for modern LLM inference, not a general-purpose accelerator adapted from earlier AI workloads. It is informed by the systems OpenAI runs every day across ChatGPT, Codex, the API, and future agentic products, while also being designed for current and future LLMs across the industry."
+  },
+  {
+   "fact": "Stated design goal (a goal, not a measured result): combine the power and throughput of today's leading AI accelerators with latency closer to the fastest specialized inference systems, making it suited to interactive LLM products at scale.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The goal is to combine the power and throughput of today’s leading AI accelerators with latency closer to the fastest specialized inference systems, making Jalapeño well suited for interactive LLM products at scale."
+  },
+  {
+   "fact": "Nine months is the headline schedule figure, but the two places it appears say different things. The bullet says 'Developed from design to production in nine months'; the body says 'co-developed from initial design to manufacturing tape-out in just nine months'. Tape-out is not production. Use the body wording.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Jalapeño was co-developed from initial design to manufacturing tape-out in just nine months"
+  },
+  {
+   "fact": "Broadcom hedges the speed record explicitly: the programme 'represents what may be the fastest ASIC development cycle ever achieved in high-performance advanced semiconductors'. 'may be' is in the official text; it is not asserted as established.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "the custom AI accelerator program represents what may be the fastest ASIC development cycle ever achieved in high-performance advanced semiconductors"
+  },
+  {
+   "fact": "OpenAI's own models were used to accelerate parts of the chip's design and optimization process, and the release draws the loop explicitly: the same models served to users are helping improve the infrastructure used to run future models.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "That speed reflects deep software-hardware co-development with OpenAI’s engineering teams, Broadcom’s silicon implementation expertise, and the use of OpenAI models to accelerate parts of the design and optimization process."
+  },
+  {
+   "fact": "Deployment timing as officially stated: the multi-generation compute platform is 'designed for initial deployment by the end of 2026, and expanding in the years ahead'. 'Designed for' is the official hedge - it is not a committed launch date.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Jalapeño is the first step in a multi-generation compute platform designed for initial deployment by the end of 2026, and expanding in the years ahead"
+  },
+  {
+   "fact": "Deployment scale as officially stated: 'To be deployed at gigawatt scale with data center partners, over multiple generations'. No number of gigawatts, chips, racks or sites is attached to Jalapeño anywhere in this release.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "To be deployed at gigawatt scale with data center partners, over multiple generations"
+  },
+  {
+   "fact": "Hock Tan (President and CEO, Broadcom) names one data-centre partner: 'By co-developing our industry-leading silicon directly with OpenAI, we are enabling the deployment of gigawatt scale data centers with Microsoft and other partners beginning in 2026.' Microsoft is the only partner named in the whole release besides Celestica.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Our collaboration with OpenAI represents a fundamental commitment to scaling the physical infrastructure required for the next decade of AI. This is just the beginning of a multi-generation roadmap. By co-developing our industry-leading silicon directly with OpenAI, we are enabling the deployment of gigawatt scale data centers with Microsoft and other partners beginning in 2026."
+  },
+  {
+   "fact": "Richard Ho is identified as the person 'who leads OpenAI's hardware program'. His quote: the architecture was optimized around 'the kernels, memory movement, networking, and serving patterns that matter most for frontier AI models', and 'Based on early testing, Jalapeño will efficiently execute our most important workloads close to the hardware's theoretical limits.'",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Jalapeño was designed from the ground up for LLM inference using detailed insights from our close collaboration with OpenAI researchers. We optimized the architecture around the kernels, memory movement, networking, and serving patterns that matter most for frontier AI models. Based on early testing, Jalapeño will efficiently execute our most important workloads close to the hardware’s theoretical limits."
+  },
+  {
+   "fact": "Greg Brockman is titled 'President and Co-Founder, OpenAI' in this release. His quote frames the chip as part of a full-stack strategy to make compute more abundant so AI is 'faster, more reliable, more affordable for people and businesses'.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The world is moving to a compute-powered economy. Jalapeño is part of our long-term full-stack infrastructure strategy to make compute more abundant, resulting in AI which is faster, more reliable, more affordable for people and businesses, and can be used to solve more important problems. By designing more of the stack ourselves, we can serve more intelligence with greater efficiency and keep pushing advanced AI toward broader access."
+  },
+  {
+   "fact": "The release carries an explicit forward-looking-statements notice under Section 21E of the Securities Exchange Act of 1934 and Section 27A of the Securities Act of 1933, naming the Jalapeño delivery and the gigawatt-scale data-centre deployment as forward-looking, and saying 'undue reliance should not be placed on such statements'. This is the company's own instruction not to treat the deployment language as fact.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+   "is_vendor_claim": false,
+   "verbatim_quote": "These statements include, but are not limited to, statements regarding Broadcom’s collaboration with OpenAI in delivering Jalapeño to OpenAI and Broadcom helping bring OpenAI’s full-stack platform to large-scale production to enable the deployment of gigawatt scale datacenters. ... Accordingly, undue reliance should not be placed on such statements."
+  },
+  {
+   "fact": "BACKGROUND (2025-10-13, a separate earlier announcement): OpenAI and Broadcom announced 'a collaboration for 10 gigawatts of custom AI accelerators', with OpenAI designing the accelerators and systems and Broadcom developing and deploying them.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI and Broadcom Inc. (NASDAQ: AVGO) today announced a collaboration for 10 gigawatts of custom AI accelerators. OpenAI will design the accelerators and systems, which will be developed and deployed in partnership with Broadcom."
+  },
+  {
+   "fact": "BACKGROUND (2025-10-13): the stated rollout window is 'Broadcom to deploy racks of AI accelerator and network systems targeted to start in the second half of 2026, to complete by end of 2029'.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Broadcom to deploy racks of AI accelerator and network systems targeted to start in the second half of 2026, to complete by end of 2029"
+  },
+  {
+   "fact": "BACKGROUND (2025-10-13): the racks are 'scaled entirely with Ethernet and other connectivity solutions from Broadcom', with deployments 'across OpenAI's facilities and partner data centers'. Charlie Kawwas's quote lists Broadcom's Ethernet, PCIe and optical connectivity portfolio.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The racks, scaled entirely with Ethernet and other connectivity solutions from Broadcom, will meet surging global demand for AI, with deployments across OpenAI’s facilities and partner data centers."
+  },
+  {
+   "fact": "BACKGROUND (2025-10-13): the commercial status then was a term sheet, not a completed contract - 'The two companies have signed a term sheet to deploy racks incorporating the AI accelerators and Broadcom networking solutions', alongside 'long-standing agreements on the co-development and supply of the AI accelerators'.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI and Broadcom have long-standing agreements on the co-development and supply of the AI accelerators. The two companies have signed a term sheet to deploy racks incorporating the AI accelerators and Broadcom networking solutions."
+  },
+  {
+   "fact": "BACKGROUND (2025-10-13): the release states 'OpenAI has grown to over 800 million weekly active users'. This figure is as of 2025-10-13 and must be dated if used; no user figure appears in the 2026-06-24 release.",
+   "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI has grown to over 800 million weekly active users and strong adoption across global enterprises, small businesses, and developers."
+  },
+  {
+   "fact": "BACKGROUND (2025-10-13): OpenAI's own feed summarises that announcement as 'a multi-year partnership to deploy 10 gigawatts of OpenAI-designed AI accelerators, co-developing next-generation systems and Ethernet solutions to power scalable, energy-efficient AI infrastructure by 2029.'",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI and Broadcom announce a multi-year partnership to deploy 10 gigawatts of OpenAI-designed AI accelerators, co-developing next-generation systems and Ethernet solutions to power scalable, energy-efficient AI infrastructure by 2029."
+  },
+  {
+   "fact": "FOLLOW-UP (2026-08-25, after the event date of this article): OpenAI's official feed carries 'Jalapeño’s first results show industry-leading speed and efficiency in AI inference' (category Engineering, 07:00 GMT), described as 'Jalapeño is a custom inference chip from OpenAI that delivers faster, more power-efficient AI inference, with higher throughput and lower latency for modern models.' The article page itself is 403 in this container, so NOTHING beyond this one line may be written about it.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Jalapeño’s first results show industry-leading speed and efficiency in AI inference"
+  },
+  {
+   "fact": "FOLLOW-UP CONTEXT (2026-08-25, 07:05 GMT): OpenAI's feed also carries 'The full stack behind abundant intelligence', described as 'OpenAI CFO Sarah Friar explains how advances across chips, compute, models, and products compound to deliver more useful intelligence at greater scale and lower cost.' Same caveat: page unreadable, one line only.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI CFO Sarah Friar explains how advances across chips, compute, models, and products compound to deliver more useful intelligence at greater scale and lower cost."
+  }
+ ],
+ "not_said": [
+  "NO PRICE of any kind. The chip is not sold; there is no unit price, no per-token price, no cost-per-inference figure, and no statement that any ChatGPT or API price will change.",
+  "NO MANUFACTURING DETAIL. The release never names a foundry (TSMC is not mentioned), never gives a process node, never gives die size, transistor count, package type, clock frequency or power draw in watts. 'Production target frequency and power' is used without any number.",
+  "NO MEMORY SPECIFICATION. HBM, memory capacity and memory bandwidth are not mentioned at all. 'memory movement' and 'memory' appear only as architectural words.",
+  "NO BENCHMARK NUMBER. Not one measured figure is published: no tokens/second, no latency in ms, no perf-per-watt ratio, no percentage, no comparison table. The release says OpenAI 'is still measuring final performance' and promises a technical report 'in the coming months'.",
+  "NO NAMED COMPETITOR AND NO COMPARISON BASELINE. 'current state-of-the-art' is never defined; NVIDIA, AMD, Google TPU and Trainium are not mentioned anywhere.",
+  "NO STATED LINK TO THE 10 GIGAWATT FIGURE. The 2026-06-24 release says 'gigawatt scale' but gives no number, and never says Jalapeño is the accelerator covered by the 2025-10-13 10 GW collaboration. Treating them as the same programme is the reader's inference, not an official statement.",
+  "NO QUANTITY. Number of chips, racks, systems or data-centre sites is not stated.",
+  "NO EXACT DEPLOYMENT DATE. Only 'designed for initial deployment by the end of 2026' and 'beginning in 2026'. No month, no region, no site list.",
+  "NO EXTERNAL SALE. The release says the design is flexible enough to work with 'all LLMs' and with 'current and future LLMs across the industry', but it NEVER says the chip will be sold, rented or made available to any company other than OpenAI, and it names no third-party customer.",
+  "NO CONSUMER-FACING EFFECT. Nothing says ChatGPT, Codex or the API will become faster or cheaper on any date, or that any user-visible change will happen at all.",
+  "NO REGIONAL INFORMATION. Taiwan, Asia and any country other than the US (San Francisco / Palo Alto datelines) are absent. No statement about which regions the deployed capacity serves.",
+  "NO MODEL-SUPPORT LIST. GPT-5.3-Codex-Spark is named only as a workload running on engineering samples in the lab. There is no statement about which production models will run on it.",
+  "NO ROLE DETAIL FOR CELESTICA beyond 'board, rack and system expertise', and no contract, value or term for Celestica or Broadcom.",
+  "NO FINANCIAL TERMS of the OpenAI-Broadcom arrangement in the 2026-06-24 release: no order value, no volume commitment, no duration. The 2025-10-13 release only goes as far as 'a term sheet'.",
+  "NO REGULATORY, EXPORT-CONTROL OR SUPPLY-CHAIN CONDITION is mentioned in either release.",
+  "NO SECOND-GENERATION DETAIL. 'multi-generation roadmap' and 'over multiple generations' are asserted with no names, dates or specifications for any later generation."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Jalapeño shows cost savings of roughly 50% compared with typical AI GPUs (widely reported as '50% cheaper than Nvidia GPUs').",
+   "seen_where": "Search-result snippets and aggregator/news pages (TechCrunch, Bloomberg, Seeking Alpha, sqmagazine, aitoolsrecap) surfaced while looking for the official URL.",
+   "why_excluded": "This number appears NOWHERE in either Broadcom release, which are the only first-party pages I could read. It is attributed to OpenAI's own blog post, which returns HTTP 403 here. Per the brief, a fact that exists only behind a block does not get written. DO NOT put any cost-saving percentage in the article."
+  },
+  {
+   "claim": "Jalapeño is 'OpenAI's first custom chip'.",
+   "seen_where": "TechCrunch headline surfaced in search results.",
+   "why_excluded": "The first-party wording is narrower: 'OpenAI's first Intelligence Processor' and 'the first AI accelerator in a multi-generation compute platform'. Use the official phrasing; do not upgrade it to a claim about all chips OpenAI has ever made."
+  },
+  {
+   "claim": "The text of OpenAI's own 2026-06-24 blog post (https://openai.com/index/openai-broadcom-jalapeno-inference-chip).",
+   "seen_where": "Linked from OpenAI's official RSS feed and from the Broadcom release (via a GlobeNewswire /Tracker redirect).",
+   "why_excluded": "HTTP 403 (Cloudflare, ~9.8 KB body) for the bare URL, the trailing-slash URL and the /ja-JP/ locale variant. Only OpenAI's feed title, category and one-line description could be read. Anything the OpenAI post says beyond that one line must not be written."
+  },
+  {
+   "claim": "The findings in OpenAI's 2026-08-25 'Jalapeño’s first results' post - any speed, throughput, latency or efficiency number.",
+   "seen_where": "OpenAI official RSS feed lists the item; the post itself is at https://openai.com/index/jalapeno-first-results.",
+   "why_excluded": "HTTP 403. Only the official title and the one-sentence feed description are available, and both are vendor claims with no figures. The article may mention that a first-results post exists on 2026-08-25, and no more."
+  },
+  {
+   "claim": "Broadcom's Q3 FY2026 AI semiconductor revenue ($16.7 billion, +221% year over year, +54% quarter over quarter; Q4 guidance $21.7 billion, +236%) as evidence of Jalapeño demand.",
+   "seen_where": "Broadcom's own Q3 FY2026 earnings release dated 2026-09-02, which I fetched (HTTP 200).",
+   "why_excluded": "That release contains zero occurrences of 'Jalapeño' or 'OpenAI', so the revenue cannot be attributed to this chip. It is also financial/market framing, which this vertical does not write."
+  },
+  {
+   "claim": "The PDF version of the Broadcom release at https://investors.broadcom.com/node/64506/pdf.",
+   "seen_where": "Linked as 'PDF Version' from the Broadcom release page.",
+   "why_excluded": "Returns HTTP 200 and a valid 2-page application/pdf, but the container has no pdftotext and manual stream extraction yielded only image data, so I could not read it. Not cited, because I did not actually read it."
+  },
+  {
+   "claim": "Any Broadcom corporate-newsroom rendering of the release (https://www.broadcom.com/company/news/product-releases/64506).",
+   "seen_where": "Search results and Broadcom's own site.",
+   "why_excluded": "HTTP 200 but a React shell: only the headline is present in <title>, the body never reaches curl. The investors.broadcom.com page is the readable first-party copy and is what is cited."
+  },
+  {
+   "claim": "That Jalapeño is the accelerator being deployed under the 10 GW / 'complete by end of 2029' schedule from 2025-10-13.",
+   "seen_where": "The natural reading of the two Broadcom releases side by side.",
+   "why_excluded": "Neither release states it. The June 2026 release never repeats '10 gigawatts' and never cross-references the October 2025 collaboration. This must be written as two separate announcements, not one continuous programme."
+  }
+ ],
+ "must_not_write": [
+  "Do not write any cost or price comparison, in particular the '50% cheaper than GPUs' figure - it is not in any first-party page reachable from here.",
+  "Do not write a foundry, process node, memory type/capacity, transistor count, clock speed or wattage. None is stated.",
+  "Do not write that Jalapeño beats NVIDIA (or any named chip). The only claim is 'performance per watt substantially better than current state-of-the-art', undefined and unmeasured, and OpenAI says it is 'still measuring final performance'.",
+  "Do not write that the chip is 'in production' or '量產'. The body says tape-out; the status described is engineering samples running in the lab. Write 工程樣片 / tape-out, and flag that the bullet's 'design to production' and the body's 'design to manufacturing tape-out' do not say the same thing.",
+  "Do not write that Jalapeño delivers the 10 gigawatts announced in October 2025, or attach the '10 GW' or 'by end of 2029' figures to Jalapeño. Keep the 2025-10-13 announcement clearly separate and clearly dated.",
+  "Do not write that anyone can buy, rent, order or benchmark the chip, or that it will be offered to other companies. 'Designed to work with all LLMs' is an architecture claim, not a sales statement.",
+  "Do not promise users anything: no 'ChatGPT will get faster', no 'prices will fall', no date on which readers notice a difference.",
+  "Do not write about Taiwan availability, Taiwanese suppliers or local pricing - nothing in the sources touches them.",
+  "Do not write investment framing of any kind: no AVGO share price, no revenue figures, no 'good for Broadcom's business', no buy/sell language. The AI vertical carries no finance disclaimer and must not need one.",
+  "Do not describe it as a GPU. Official words: Intelligence Processor, AI accelerator, custom inference chip.",
+  "Do not claim 'fastest ASIC development ever' as a fact - the official text says 'what may be the fastest'.",
+  "Do not re-explain what Codex or GPT-5.3-Codex is; ai-news-gpt-53-codex-20260205 already covers it. GPT-5.3-Codex-Spark appears here only as a lab workload.",
+  "Do not describe the 2026-08-25 first-results post beyond its official title and one-line description - the page is 403 here.",
+  "Do not say 'we tested it' or imply any hands-on measurement. Every performance sentence must read '廚商表示' / 'Broadcom 與 OpenAI 表示'.",
+  "Do not omit the forward-looking-statements point: the deployment language is formally a forward-looking statement that Broadcom itself says should not be relied on unduly. That belongs in the article, not just in the notes."
+ ],
+ "overlaps_existing_article": "No overlap in text: a grep for 'broadcom' and 'jalape' across all 970 packs in apps/api/app/guides/content returns nothing, so no existing article mentions this. CLOSEST NEIGHBOUR is ai-news-nvidia-rubin-20260105 ('NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？', display_order 120, news_date 2026-01-05), which is the site's other AI-compute-hardware piece. DIVISION OF LABOUR: the Rubin article is about a chip platform NVIDIA sells to the whole industry for training and inference; this article is about an accelerator OpenAI designed for its own inference fleet and does not sell. Frame this one as 'the service operator builds its own chip', not as 'a faster chip appeared'; do not re-explain what an AI accelerator is at Rubin's length, and use the Rubin piece as the second link. ALSO ADJACENT: ai-news-gpt-53-codex-20260205 (GPT-5.3-Codex-Spark is named here only as a lab workload - do not re-explain Codex) and ai-news-pace-the-frontier-20260912 (compute scaling debate - stay out of the 'should AI scale' argument, this piece is about how inference is served). VERTICAL: candidates-tech-and-ai.md lists this same event twice, once in the AI table (line ~136) and once in the tech table (line ~314), each marked '兩邊擇一'. It is being written in the AI vertical; the tech row must be struck. There are currently zero tech-news-* packs on the site, so the tech vertical has no index article for the mandatory first link.",
+ "editorial_brief": "READER: a Taiwanese general reader who uses ChatGPT or a similar assistant and has no hardware background. The question the article answers is 'why does the company that makes the model now make the chip, and what does that change for me?' - not 'is this chip good'. ANGLE: an AI service is a stack (product, model, serving system, chip); on 2026-06-24 OpenAI and Broadcom showed the bottom layer of that stack for the first time, and the interesting part for a reader is what an announcement at this stage can and cannot tell you. THE SPINE OF THE PIECE IS THE GAP BETWEEN ANNOUNCEMENT AND AVAILABILITY: a chip that has taped out and is running in a lab on engineering samples, a deployment 'designed for' the end of 2026, a performance report promised 'in the coming months', and a formal forward-looking-statements notice attached by Broadcom itself. That is a concrete, teachable distinction and it is exactly the kind of thing this site's readers get wrong when they read chip news. FIVE SECTIONS THAT WORK: (1) what was announced on 2026-06-24 and in whose words - note that OpenAI's and Broadcom's own headlines differ ('inference chip' vs 'Intelligence Processor'); (2) who did which part - OpenAI the architecture, Broadcom the silicon implementation and Tomahawk networking, Celestica the board/rack/system - with the comparison table here; (3) what stage it is actually at: nine months to tape-out (and the bullet-vs-body wording difference), engineering samples running GPT-5.3-Codex-Spark in the lab, no measured numbers published - diagram goes here; (4) deployment: 'gigawatt scale', 'initial deployment by the end of 2026', Microsoft named as a data-centre partner, and the separate, earlier 2025-10-13 10 GW collaboration that must be kept distinct; (5) how to read a chip announcement as a user - what is a measured fact, what is a vendor claim, what is a forward-looking statement, and why nothing here says your ChatGPT gets faster on any date. TONE: the table and diagram must carry only figures that appear in the body - the only numbers available are 2026-06-24, nine months, end of 2026, 2025-10-13, 10 gigawatts (attached to the 2025 announcement ONLY), second half of 2026 and end of 2029 (2025 announcement only), and over 800 million weekly active users (2025-10-13 only, must be dated). DELIBERATELY OUT OF SCOPE: whether this threatens NVIDIA, what it means for Broadcom's or OpenAI's finances, chip-industry supply-chain politics, Taiwanese suppliers, and any judgement about whether custom silicon is the right strategy.",
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md line ~314 (tech table, 2026-06-24, 'OpenAI 與 Broadcom 的 LLM 推論晶片') should be struck: the event is being written once, in the AI vertical, as ai-news-openai-broadcom-chip-20260624. The site has zero tech-news-* packs, so the tech vertical cannot supply the mandatory index link yet.",
+  "Both candidate rows give only OpenAI's feed title. Broadcom's own headline for the same announcement is different - 'OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor' - and Broadcom is an equal first-party co-announcer whose page is READABLE from this container while openai.com/index/* is not. The rows should say so.",
+  "The product name carries a tilde in the official text: Jalapeño, not Jalapeno. The slug keeps the ASCII spelling, the prose must not.",
+  "The OpenAI 補漏 table is missing two items from the same official feed that belong to this story: 2026-08-25 'Jalapeño’s first results show industry-leading speed and efficiency in AI inference' (category Engineering) and 2026-08-25 'The full stack behind abundant intelligence' (OpenAI CFO Sarah Friar). The first is a direct follow-up to this article's event and must be flagged so a later agent does not write it as a duplicate - and both pages are 403 here, so neither can currently be written to spec on its own.",
+  "ACCESS NOTE FOR THE WHOLE BATCH (not in any candidates file): investors.broadcom.com returns an empty reply (curl exit 52) to the User-Agent 'Mokaair-editorial' but HTTP 200 to curl's default User-Agent over HTTP/2. www.broadcom.com/company/news/* is front-end rendered and returns no article body to curl, and https://investors.broadcom.com/news-releases (the listing) is 404 while https://investors.broadcom.com/rss/news-releases.xml is 200 with only the 10 newest items. Broadcom press releases are therefore reachable only by their news-release-details slug.",
+  "Minor, outside this assignment's scope but noticed: apps/api/app/guides/content/ai-news-2026-january-september-index.json has no top-level news_date, although BRIEF.md says news_date is now mandatory and PR #537 backfilled the 38 ai-news-* packs."
+ ],
+ "title_note": "The zh-TW title of the AI index as of 2026-09-16 is '2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用' and the Rubin pack's is 'NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？'. ai.md schedules a retitle of the index, so re-read both titles at writing time - check_article.py asserts link.text equals the target's current title. display_order continues after 148."
+}

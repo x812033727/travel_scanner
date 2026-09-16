@@ -1,0 +1,429 @@
+{
+ "slug": "tech-news-nvidia-mediatek-20260831",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "Reached everything needed. (1) nvidianews.nvidia.com/releases.xml returned HTTP 200 with 20 <item> elements, newest 2026-09-16 — but its oldest item was 2026-09-01, so the target release was not in it. Walking ?page=3 (HTTP 200, 20 items) surfaced the real link and the official pubDate Mon, 31 Aug 2026 12:30:00 GMT / modDate 12:35:28 GMT. (2) The NVIDIA release page itself, https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms, returned HTTP 200, 82,927 bytes, correct <title>; I read the full body. WARNING for later agents: a shortened guess of that slug ('...-deepen-long-standing-partnership') also returns HTTP 200, 68,941 bytes, but the body is the generic 'News Archive | NVIDIA Newsroom' page. Status code alone would have hidden the soft-404. (3) MediaTek: corp.mediatek.com/news-events/press-releases 301s to www.mediatek.com/press-room (HTTP 200); www.mediatek.com/news-events/press-releases is 404. The press-room RSS at www.mediatek.com/press-room/rss.xml returned HTTP 200 with 10 items, newest 2026-09-15 — a live feed. Both the English and the zh-TW versions of the joint release returned HTTP 200 and were read in full. (4) Taiwan MOPS: emops.twse.com.tw and mops.twse.com.tw both return a security-block page to curl from this container ('FOR SECURITY REASONS, THIS PAGE CAN NOT BE ACCESSED', error code shown). WebFetch reached them. I used only URLs that MediaTek's own investor-relations page links to, plus the two detail links that the listing page's own gotoURL() markup contains — nothing was guessed. Because the MOPS figures came through WebFetch's text extraction rather than raw HTML I could inspect, I ran three independent passes over the 2026-08-31 filing asking for verbatim field text and they agreed, and the numbers are internally consistent: 17,500 certificates x US$200,000 denomination = US$3,500,000 thousand, and NT$4,513.75 / 1.15 = NT$3,925.00 exactly, matching the quoted closing price. I am treating those figures as reliable but the writer should attribute them to MediaTek's MOPS filing, not to the press release. (5) SEC: efts.sec.gov full-text search API returned HTTP 200. 'MediaTek' within NVIDIA's CIK 0001045810 gives 12 hits, none after 2024-02-21; a 2026-08-01 to 2026-09-16 all-filer search surfaced no NVIDIA filing. So there is no US filing to cite. (6) sec.gov itself, openai.com/index/*, pr.tsmc.com and news.samsung.com were not needed and were not retried.",
+ "sources": [
+  {
+   "title": "NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "publisher": "NVIDIA Newsroom",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台",
+   "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "publisher": "聯發科技（MediaTek）新聞室",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Announcement of the completion of pricing for the Company's First Issuance of Unsecured Overseas Convertible Bonds (MediaTek Inc., 2026/08/31 20:25:52)",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "publisher": "公開資訊觀測站 MOPS（臺灣證券交易所）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "MediaTek Collaborates with NVIDIA on RTX Spark to Power the Next Wave of Windows PC Experiences",
+   "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+   "publisher": "MediaTek Press Room",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-08-31",
+ "event_date_basis": "2026-08-31 is the announcement date and is what the slug and news_date must carry. Both companies' datelines read August 31, 2026 ('SANTA CLARA, Calif.—AUGUST 31, 2026'; 「2026 年 8 月 31 日美國聖塔克拉訊」). NVIDIA's official feed gives pubDate Mon, 31 Aug 2026 12:30:00 GMT and modDate Mon, 31 Aug 2026 12:35:28 GMT — 12:30 GMT is 20:30 on 31 August Taipei time. MediaTek's own CMS timestamps disagree between locales: the zh-TW page carries 2026-08-31 12:30:00 while the English page carries 2026-08-30 21:40:00 (displayed as 'Aug 31, 2026 - 05:40 AM'), and MediaTek's RSS repeats the 30 Aug 21:40 GMT value for the English page. The datelines on both pages still say August 31, so the discrepancy is a publishing-system artefact, not a different event date. Publication and effective dates differ from the event date and must not be conflated: MediaTek's board resolved to issue the bonds on 2026-07-31; pricing completed and was filed on MOPS on 2026-08-31 at 20:25:52 Taipei (about five minutes before the press release); the bonds' TENTATIVE issue date is 2026/09/08 and tentative maturity 2031/09/08; conversion cannot start until three months after issuance. As of the 2026-09-16 check there is no MOPS announcement confirming the issuance actually completed.",
+ "verified_facts": [
+  {
+   "fact": "The announcement is dated August 31, 2026 and datelined Santa Clara, California. NVIDIA's newsroom page prints the date 'August 31, 2026'; MediaTek's English page opens 'SANTA CLARA, Calif.—AUGUST 31, 2026'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "August 31, 2026"
+  },
+  {
+   "fact": "The official English title is 'NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms"
+  },
+  {
+   "fact": "The release carries two official subheadings.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Companies Expand Collaboration Across Multigenerational Cloud AI Factories, Local AI Computing and Automotive | MediaTek to Adopt New NVIDIA NVLink Fusion Platform, Helping Customers Take Custom XPUs to NVIDIA NVLink-Connected, Rack-Scale AI Factories"
+  },
+  {
+   "fact": "The core announcement is a deepening of an existing collaboration, not a new partnership and not a product launch.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA and MediaTek today announced a deepening of their longstanding collaboration to build the next generations of AI computing platforms — spanning AI infrastructure, local AI computing and automotive."
+  },
+  {
+   "fact": "MediaTek will adopt the NVIDIA NVLink Fusion platform to give hyperscalers, cloud service providers and frontier model developers a prevalidated path to develop custom XPUs and bring them into NVIDIA NVLink-connected, rack-scale AI factories.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As part of the expanded collaboration, MediaTek will adopt the NVIDIA NVLink Fusion™ platform to provide hyperscalers, cloud service providers and frontier model developers with a prevalidated path to develop custom XPUs and bring them into NVIDIA NVLink™-connected, rack-scale AI factories."
+  },
+  {
+   "fact": "NVIDIA says it combines its accelerated computing, AI, graphics and software platforms with MediaTek's custom silicon, high-performance computing, power-efficient SoC design, advanced packaging, interconnects and connectivity.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The companies combine NVIDIA’s accelerated computing, AI, graphics and software platforms with MediaTek’s leadership in custom silicon, high-performance computing, power-efficient system-on-chip (SoC) design, advanced packaging, interconnects and connectivity."
+  },
+  {
+   "fact": "NVIDIA has invested US$3.5 billion in convertible bonds issued by MediaTek. This is the only financial figure in the press release, and the release gives no other terms.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA has also invested $3.5 billion in convertible bonds issued by MediaTek."
+  },
+  {
+   "fact": "MediaTek's own Traditional Chinese release is more specific than the English one about the instrument: it calls it 海外可轉換公司債（ECB） (overseas convertible bond) and states the amount as 美金 35 億元.",
+   "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA 同時投資美金 35 億元於聯發科技發行的海外可轉換公司債（ECB）。"
+  },
+  {
+   "fact": "The official Traditional Chinese title MediaTek uses is 「NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台」.",
+   "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台"
+  },
+  {
+   "fact": "The collaboration is described as covering three major areas: AI infrastructure, local AI computing, and automotive.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA and MediaTek are collaborating in three major areas:"
+  },
+  {
+   "fact": "AI infrastructure area: MediaTek will work with NVIDIA's NVLink Fusion ecosystem so customers can develop custom AI infrastructure that integrates with NVIDIA rack-scale systems and AI factories.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AI infrastructure: MediaTek will work with NVIDIA’s NVLink Fusion ecosystem to enable customers to develop custom AI infrastructure designed to integrate with NVIDIA rack-scale systems and AI factories."
+  },
+  {
+   "fact": "Local AI computing area: the companies will continue to collaborate on multiple generations of NVIDIA RTX Spark and DGX Spark PC chips for consumer PCs, AI developer supercomputers and enterprise-class workstations, integrating NVIDIA GPUs with MediaTek SoCs. No generation is named, dated or specified.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Local AI computing: The companies will continue to collaborate on multiple generations of NVIDIA RTX Spark™ and DGX Spark™ PC chips, powering consumer PCs, AI developer supercomputers and enterprise-class workstations, that integrate NVIDIA GPUs with MediaTek SoCs."
+  },
+  {
+   "fact": "MediaTek's zh-TW release labels this same bullet 邊緣 AI 運算 (edge AI computing), where the English release says 'Local AI computing'. They are the same bullet, not two separate programmes.",
+   "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "邊緣 AI 運算：雙方將持續合作開發未來數代 RTX Spark™ 與 DGX Spark™ 電腦晶片"
+  },
+  {
+   "fact": "Automotive area: MediaTek and NVIDIA will continue developing platforms for AI-powered, software-defined vehicles in the era of physical AI. No vehicle, brand, model or date is given.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Automotive: MediaTek and NVIDIA will continue developing platforms for AI-powered, software-defined vehicles in the era of physical AI."
+  },
+  {
+   "fact": "NVIDIA founder and CEO Jensen Huang is quoted saying AI is transforming every computing platform and that the two companies are building platforms that bring NVIDIA accelerated computing to new markets. This is a company statement, not an independently verified claim.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": true,
+   "verbatim_quote": "“AI is transforming every computing platform — from the world’s largest AI factories to the PC and the car,” said Jensen Huang, founder and CEO of NVIDIA. “MediaTek is one of the world’s great semiconductor companies, with exceptional expertise in system-on-chip design, connectivity, leading performance and power efficiency. Together, we’re building platforms that bring NVIDIA accelerated computing to new markets and give customers the freedom to create differentiated AI systems at enormous scale.”"
+  },
+  {
+   "fact": "Rick Tsai is identified as vice chairman and CEO of MediaTek (zh-TW: 聯發科技副董事長暨執行長蔡力行); he is quoted saying NVIDIA's investment strengthens a collaboration spanning cloud AI infrastructure, local AI computing and automotive. Company statement, not fact.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": true,
+   "verbatim_quote": "“MediaTek and NVIDIA share a vision for making advanced AI computing pervasive across the technology landscape,” said Rick Tsai, vice chairman and CEO of MediaTek. “NVIDIA’s investment strengthens a collaboration that spans cloud AI infrastructure, local AI computing and automotive in the era of physical AI."
+  },
+  {
+   "fact": "MediaTek will offer the NVLink Fusion platform as a design foundation for customers developing custom AI accelerators, so their platforms can evolve alongside future NVIDIA architectures.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MediaTek will offer the NVLink Fusion platform as a design foundation for customers developing custom AI accelerators, enabling their platforms to evolve alongside future NVIDIA architectures."
+  },
+  {
+   "fact": "NVIDIA describes the NVLink Fusion platform as a prebuilt, prequalified and system-prevalidated foundation for multi-die XPU development. This is a vendor description of its own product.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The NVLink Fusion platform provides a prebuilt, prequalified and system-prevalidated foundation for multi-die XPU development — accelerating the path from silicon and advanced packaging to rack-scale systems."
+  },
+  {
+   "fact": "The NVLink Fusion platform is said to bring together three named technologies: the NVIDIA NVLink Fusion chiplet, NVIDIA NVLink-C2C, and NVIDIA NVHBM.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The NVLink Fusion platform brings together the critical technologies surrounding a custom XPU, including:"
+  },
+  {
+   "fact": "The NVLink Fusion chiplet connects XPUs to the NVIDIA NVLink scale-up fabric using NVIDIA photonics or electrical interconnects.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA NVLink Fusion chiplet, connecting XPUs to the NVIDIA NVLink scale-up fabric using NVIDIA photonics or electrical interconnects."
+  },
+  {
+   "fact": "NVLink-C2C is described as providing high-bandwidth, energy-efficient connectivity between XPUs, NVIDIA Rosa CPUs and other compatible processors. 'NVIDIA Rosa CPUs' is the wording used in both companies' releases; neither release explains what a Rosa CPU is or when it ships.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA NVLink-C2C, providing high-bandwidth, energy-efficient connectivity between XPUs, NVIDIA Rosa CPUs and other compatible processors."
+  },
+  {
+   "fact": "NVHBM is described as integrating customized memory capabilities to increase bandwidth and energy efficiency while dedicating more silicon area to compute. Vendor description; no figures given.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA NVHBM, integrating customized memory capabilities to increase bandwidth and energy efficiency while dedicating more silicon area to compute."
+  },
+  {
+   "fact": "The division of labour stated: customers focus on differentiated compute while NVIDIA and MediaTek supply the NVLink connectivity, memory architecture, packaging, manufacturing and rack-scale technologies needed for production deployment.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Rather than engineering and qualifying every element surrounding a custom XPU from the ground up, customers can focus resources on the differentiated compute that defines their platforms while relying on NVIDIA and MediaTek for the NVLink connectivity, memory architecture, packaging, manufacturing and rack-scale technologies required for production deployment."
+  },
+  {
+   "fact": "Customers can bring their XPU designs to MediaTek and tailor connectivity, memory, packaging, performance and power characteristics to their workloads and infrastructure requirements.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Customers can bring their XPU designs to MediaTek and tailor connectivity, memory, packaging, performance and power characteristics to their workloads and infrastructure requirements."
+  },
+  {
+   "fact": "MediaTek is described as part of the broader NVIDIA NVLink Fusion ecosystem; the NVIDIA MGX rack-scale architecture is named as part of the stack partners can use. NVIDIA claims this reduces development complexity, increases performance and accelerates time to market for semi-custom AI factories.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": true,
+   "verbatim_quote": "With NVLink Fusion, partners can leverage NVIDIA’s proven scale-up and scale-out technology stack and ecosystem, as well as the NVIDIA MGX™ rack-scale architecture, to reduce development complexity, increase performance and accelerate time to market for semi-custom AI factories."
+  },
+  {
+   "fact": "Existing work cited: MediaTek collaborated with NVIDIA on the GB10 Grace Blackwell Superchip that powers NVIDIA DGX Spark, which combines an NVIDIA Blackwell GPU and Grace CPU connected by NVLink-C2C.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MediaTek collaborated with NVIDIA on the GB10 Grace Blackwell Superchip that powers NVIDIA DGX Spark, which combines an NVIDIA Blackwell GPU and Grace CPU connected by NVLink-C2C to bring powerful AI capabilities to edge systems."
+  },
+  {
+   "fact": "The companies say they have extended that collaboration with NVIDIA RTX Spark to power the next generation of consumer PCs. The 31 Aug release announces no RTX Spark product, price or date.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The companies have extended their collaboration with NVIDIA RTX Spark to power the next generation of consumer PCs redefined for the AI era."
+  },
+  {
+   "fact": "Automotive detail: MediaTek Dimensity Auto platforms integrate NVIDIA technologies to deliver advanced AI and NVIDIA RTX graphics for intelligent vehicle cockpits and can work alongside NVIDIA DRIVE AGX. The release says the companies will continue across future generations.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MediaTek Dimensity Auto platforms integrate NVIDIA technologies to deliver advanced AI and NVIDIA RTX™ graphics for intelligent vehicle cockpits and can work alongside NVIDIA DRIVE AGX™."
+  },
+  {
+   "fact": "Boilerplate identifiers: MediaTek is listed as TWSE: 2454 and described as a fabless semiconductor design company; NVIDIA is NASDAQ: NVDA.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MediaTek (TWSE: 2454) is a global leader in fabless semiconductor design, powering AI from the edge to the cloud."
+  },
+  {
+   "fact": "MediaTek attaches a forward-looking statement saying the release relates solely to the business collaboration, does not constitute forecast information under applicable Taiwan laws and regulations, and that MediaTek makes no representation, warranty or assurance regarding achievement of any anticipated objectives, milestones, performance or results. It also tells investors to exercise independent judgment.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It does not constitute, and should not be construed as, any business, operational, financial, revenue, earnings, or other forecast information under applicable Taiwan laws and regulations."
+  },
+  {
+   "fact": "That MediaTek forward-looking statement appears on the English pages (NVIDIA newsroom and MediaTek English) but is NOT reproduced on MediaTek's zh-TW page, which ends at the About sections.",
+   "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "NVIDIA's official news feed timestamps the release at Mon, 31 Aug 2026 12:30:00 GMT with a modDate of Mon, 31 Aug 2026 12:35:28 GMT (12:30 GMT = 20:30 Taipei time).",
+   "url": "https://nvidianews.nvidia.com/releases.xml?page=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<pubDate>Mon, 31 Aug 2026 12:30:00 GMT</pubDate> ... <modDate>Mon, 31 Aug 2026 12:35:28 GMT</modDate>"
+  },
+  {
+   "fact": "MediaTek's own page timestamps differ by locale: the zh-TW page shows 2026年8月31日 with machine value 2026-08-31 12:30:00, while the English page shows 'Aug 31, 2026 - 05:40 AM' with machine value 2026-08-30 21:40:00. Both datelines nonetheless read August 31, 2026.",
+   "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+   "is_vendor_claim": false,
+   "verbatim_quote": "2026-08-31 12:30:00"
+  },
+  {
+   "fact": "MediaTek's board resolved on 2026-07-31 to issue the company's FIRST unsecured overseas convertible bonds, for up to US$4 billion, tentatively five years, tentatively 0% coupon, tentatively at 100% of face value, with proceeds for procurement of raw materials in foreign currencies. Statutory filing on Taiwan's MOPS.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260731&spoke_time=204351&seq_no=10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Board of Directors has resolved to issue the Company's first unsecured overseas convertible bonds"
+  },
+  {
+   "fact": "The same 2026-07-31 filing sets a denomination of US$200,000 per bond or integral multiples of US$100,000 above that, authorises the chairman or his designee to fix terms on market conditions at issuance, and caps the combined issuance with unsecured straight corporate bonds at US$5 billion.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260731&spoke_time=204351&seq_no=10",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Each Bond has a denomination of US$200,000 or an integral multiple of US$100,000 in excess of US$200,000"
+  },
+  {
+   "fact": "On 2026-08-31 at 20:25:52 Taipei time, MediaTek filed on MOPS an 'Announcement of the completion of pricing for the Company's First Issuance of Unsecured Overseas Convertible Bonds' — about five minutes before NVIDIA's press release went out (12:30 GMT = 20:30 Taipei).",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?TYPEK=sii&co_id=2454&year=2026&month=all&step=0&query=co&colorchg=1",
+   "is_vendor_claim": false,
+   "verbatim_quote": "2026/08/31 | 20:25:52 | Announcement of the completion of pricing for the Company's First Issuance of Unsecured Overseas Convertible Bonds"
+  },
+  {
+   "fact": "The pricing filing states the total issue amount as US$3,900,000 thousand (US$3.9 billion) — larger than the US$3.5 billion NVIDIA disclosed, so NVIDIA took part of, not all of, the issue.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Issue Amount: US$3,900,000 thousand"
+  },
+  {
+   "fact": "The pricing filing states NVIDIA Corporation subscribed for 17,500 certificates for a total of US$3,500,000 thousand (17,500 x US$200,000 = US$3.5 billion).",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA Corporation has subscribed for 17,500 certificates, for a total amount of US$3,500,000 thousand."
+  },
+  {
+   "fact": "Bond terms in the pricing filing: 0% coupon per annum; issue price 100% of par; tentative issue date 2026/09/08; tentative maturity 2031/09/08, the 5th anniversary of the issue date.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Tentative Issue Date: 2026/09/08 ... Tentative Maturity Date: 2031/09/08, the 5th anniversary of the Issue Date."
+  },
+  {
+   "fact": "Conversion price is NT$4,513.75 per share, set at 115% of the NT$3,925 TWSE closing price of MediaTek common shares on August 31, 2026; the bonds convert into newly issued common shares.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "which has been determined at 115% of the closing price of NT$3,925 per share of the Company's Common Shares on the TWSE on August 31, 2026"
+  },
+  {
+   "fact": "Conversion window: from the day immediately following the date falling three months after issuance (excluding the issue date) until the 10th day prior to the maturity date.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "at any time starting from the day immediately following the date falling three (3) months after the issuance of the Bonds (not including the Issue Date) to (1) the 10th day prior to the Maturity Date"
+  },
+  {
+   "fact": "The filing states the maximum dilution of shareholding would be approximately 1.67% assuming full conversion of the Bonds within the current year. That figure covers the whole US$3.9 billion issue, not NVIDIA's US$3.5 billion portion alone.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Assuming full conversion of the Bonds within the current year, the maximum dilution of shareholding would be approximately 1.67%."
+  },
+  {
+   "fact": "The bonds are offered/listed through the Singapore Exchange Securities Trading Limited, and proceeds will fund procurement of raw materials in foreign currencies.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The proceeds will be used to fund the procurement of raw materials in foreign currencies."
+  },
+  {
+   "fact": "Bondholders may not require MediaTek to repurchase the bonds before maturity except on listed triggering circumstances; MediaTek may redeem early if more than 90% of the bonds have been redeemed, converted or repurchased, or upon certain ROC tax law changes that raise its costs.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+   "is_vendor_claim": false,
+   "verbatim_quote": "more than 90% of the Bonds issued have been redeemed, converted or repurchased"
+  },
+  {
+   "fact": "As checked on 2026-09-16, MediaTek's 2026 MOPS material-information list contains no announcement after 2026-08-31 confirming completion of the bond issuance itself; the September rows are investor meetings (09/02), an RSA capital amendment registration (09/03), August net sales (09/10) and a MediaTek Singapore subsidiary announcement (09/11). The 2026/09/08 issue date therefore remains the 'tentative' date given on 2026-08-31.",
+   "url": "https://emops.twse.com.tw/server-java/t05st01_e?TYPEK=sii&co_id=2454&year=2026&month=all&step=0&query=co&colorchg=1",
+   "is_vendor_claim": false,
+   "verbatim_quote": "no September 2026 rows about the convertible bond issuance"
+  },
+  {
+   "fact": "Prior state of the PC collaboration: on June 1, 2026 MediaTek announced its role in NVIDIA RTX Spark, 'introduced today as a new class of processors powering Windows 11 PCs purpose-built for personal agents'. RTX Spark was therefore introduced three months before the 31 August announcement.",
+   "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+   "is_vendor_claim": false,
+   "verbatim_quote": "TAIPEI, Taiwan – June 1, 2026 – MediaTek today announced its role in enabling NVIDIA RTX Spark, introduced today as a new class of processors powering Windows 11 PCs purpose-built for personal agents."
+  },
+  {
+   "fact": "The June 1, 2026 release states the first wave of laptops powered by NVIDIA RTX Spark will be available Fall 2026. The 31 August release does not repeat, update or confirm that timing.",
+   "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The first wave of laptops powered by NVIDIA RTX Spark will be available Fall 2026."
+  },
+  {
+   "fact": "The June 1, 2026 release already listed the existing collaborations: automotive with the C-X1 platform, data center AI infrastructure with NVLink Fusion, and the GB10 SoC — so NVLink Fusion work with MediaTek predates the 31 August announcement.",
+   "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This new lineup expands already robust existing collaborations between MediaTek and NVIDIA; in automotive with the C-X1 platform, in data center AI infrastructure with NVLink Fusion, and on the GB10 SoC."
+  },
+  {
+   "fact": "MediaTek says it designed a proprietary memory controller for RTX Spark supporting up to 128GB of unified memory, and cites a 'strategic manufacturing partnership with TSMC' for the SoC. Both are MediaTek's own claims in its June 1, 2026 release, and TSMC is not named anywhere in the 31 August release.",
+   "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+   "is_vendor_claim": true,
+   "verbatim_quote": "MediaTek designed a proprietary memory controller, supporting up to 128GB of unified memory."
+  },
+  {
+   "fact": "Vince Hu is identified in the June 1, 2026 release as Corporate Senior Vice President at MediaTek and head of the company's compute platforms, data center solutions and IoT businesses.",
+   "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+   "is_vendor_claim": false,
+   "verbatim_quote": "said Vince Hu, Corporate Senior Vice President at MediaTek and head of the company’s compute platforms, data center solutions and IoT businesses"
+  }
+ ],
+ "not_said": [
+  "Neither company's press release states the TOTAL size of the convertible bond issue, the coupon, the maturity, the conversion price, the conversion period, the dilution, the listing venue or the issue date. The only figure in the release is NVIDIA's US$3.5 billion. All of the other terms come from MediaTek's MOPS statutory filing of 2026-08-31, and the article must attribute them there, not to the press release.",
+  "The press release does not say NVIDIA has become a MediaTek shareholder. Convertible bonds are not shares until converted; per the MOPS filing conversion cannot begin until three months after issuance.",
+  "Neither the press release nor the MOPS filing states what percentage of MediaTek NVIDIA itself would hold if it converted only its own US$3.5 billion. The ~1.67% figure is the maximum dilution of the whole US$3.9 billion issue.",
+  "The MOPS filing names no subscriber other than NVIDIA and does not say how the remaining roughly US$0.4 billion of the issue was placed.",
+  "No product is launched, named as a new model, or dated on 2026-08-31. 'Multiple generations of NVIDIA RTX Spark and DGX Spark PC chips' is the entire product statement — no generation names, no specifications, no process node, no clock speeds, no memory figures, no launch window.",
+  "No prices are given for anything — no chip pricing, no PC pricing, no licensing or royalty terms for the NVLink Fusion work.",
+  "No volumes, unit forecasts, wafer commitments, capacity reservations or revenue figures. MediaTek's own forward-looking statement expressly says the release is not any business, operational, financial, revenue or earnings forecast under Taiwan law.",
+  "No customers are named for the custom XPU / NVLink Fusion business. No design wins, no hyperscaler, no cloud service provider, no frontier model developer is identified.",
+  "No automaker, vehicle brand, model or production date is named for the Dimensity Auto / DRIVE AGX work, and no start-of-production date is given.",
+  "No foundry, packaging house or memory supplier is named in the 31 August release. TSMC appears only in MediaTek's separate 2026-06-01 RTX Spark release, and only as MediaTek's manufacturing partner for that SoC.",
+  "No regions, no country availability, and nothing at all about Taiwan availability, Taiwan pricing or a Taiwan launch. The release is a corporate and technology announcement, not a consumer availability announcement.",
+  "No regulatory approval, antitrust review, export-control condition or closing condition is mentioned for the investment, and no closing date is given for it.",
+  "No governance terms: no board seat, no observer right, no exclusivity, no standstill, no lock-up, no minimum purchase commitment is mentioned.",
+  "No benchmark, throughput, bandwidth, power or efficiency number appears anywhere in the 31 August release. Every capability statement is qualitative.",
+  "The release does not say when NVLink Fusion chiplet, NVLink-C2C, NVHBM or the 'NVIDIA Rosa CPUs' it names become available, nor what a Rosa CPU is.",
+  "The release does not restate or update the 'Fall 2026' first-wave RTX Spark laptop timing from MediaTek's 2026-06-01 release, and it does not say whether that timing still holds.",
+  "As of the check date 2026-09-16 there is no MediaTek MOPS announcement confirming that the bond issuance actually completed on the tentative 2026/09/08 issue date, so the article must call that date tentative.",
+  "Neither company says the collaboration is new or exclusive; both call it a deepening of a long-standing collaboration, and MediaTek's own June 2026 release already listed NVLink Fusion, GB10 and the C-X1 automotive platform as existing work."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Share-price reaction, market capitalisation change or analyst reaction to the announcement.",
+   "seen_where": "General knowledge that news media covered this; no first-party page consulted.",
+   "why_excluded": "No first-party source. TWSE/MOPS pages reachable from this container do not carry price commentary, and news media may not become a recorded fact under the BRIEF."
+  },
+  {
+   "claim": "NT dollar equivalent of the US$3.5 billion or US$3.9 billion.",
+   "seen_where": "Would have to be computed from an exchange rate.",
+   "why_excluded": "No source I fetched states an NT dollar figure for the issue. Converting it myself would be a derived number, not a sourced one."
+  },
+  {
+   "claim": "That NVIDIA will hold roughly 1.5% of MediaTek after converting its own portion.",
+   "seen_where": "Derivable from the MOPS filing figures.",
+   "why_excluded": "The filing states ~1.67% maximum dilution for the whole issue only. Attributing a per-subscriber stake would be my arithmetic, not the filing's statement."
+  },
+  {
+   "claim": "That MediaTek's NT$3,925 closing price on 2026-08-31 was a record high or a specific day's move.",
+   "seen_where": "Implied by the conversion-price field in the MOPS filing.",
+   "why_excluded": "The filing gives the closing price only as the pricing reference. It says nothing about it being a high or about the day's move, and I did not reach a TWSE quote page."
+  },
+  {
+   "claim": "Analyst quote from Ben Bajarin of Creative Strategies about the MediaTek-NVIDIA PC collaboration creating 'more choices for consumers in the premium Windows 11 PC market' and being 'a calculated push beyond Chromebooks'.",
+   "seen_where": "MediaTek's own 2026-06-01 RTX Spark press release.",
+   "why_excluded": "It is a third-party analyst opinion that MediaTek chose to print in its own release. It is not a first-party statement of fact by either company, and the tech vertical forbids turning opinion into a recommendation. Excluded from verified_facts."
+  },
+  {
+   "claim": "That 'NVIDIA NemoClaw' (named in MediaTek's June 2026 release as an example of a local AI agent) is a shipping NVIDIA product.",
+   "seen_where": "MediaTek 2026-06-01 RTX Spark release.",
+   "why_excluded": "Only a passing mention inside a MediaTek release. I did not reach an NVIDIA page defining or confirming it, so it must not be described as a product."
+  },
+  {
+   "claim": "What an 'NVIDIA Rosa CPU' is, which architecture or generation it belongs to, or when it ships.",
+   "seen_where": "Named in both companies' 31 August releases.",
+   "why_excluded": "Both releases name it without explanation. I did not reach an official NVIDIA page defining it. The name may be recorded as used; nothing further may be asserted."
+  },
+  {
+   "claim": "Total number of certificates in the whole US$3.9 billion issue.",
+   "seen_where": "MOPS 2026-08-31 pricing filing.",
+   "why_excluded": "The filing gives the issue amount and the denomination but, on the fetch I made, does not state a total certificate count for the whole issue. 19,500 would be arithmetic, not a quoted figure."
+  },
+  {
+   "claim": "Whether NVIDIA disclosed this investment in a US securities filing.",
+   "seen_where": "SEC EDGAR full-text search (efts.sec.gov).",
+   "why_excluded": "Searched NVIDIA's CIK 0001045810 for 'MediaTek': 12 hits, none later than 2024-02-21. A broad 2026-08-01 to 2026-09-16 full-text search returned no NVIDIA filing. So no SEC-sourced fact exists to write, and the article must not claim NVIDIA filed anything."
+  }
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md prints the title truncated as 'NVIDIA and MediaTek Deepen Long-Standing Partnership...'. The full official title is 'NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms'. MediaTek's official zh-TW title is a different sentence, not a translation of the English one: 「NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台」.",
+  "The feed row in candidates-tech-and-ai.md ('NVIDIA Newsroom | releases.xml | 20 items, newest 2026-09-16') is accurate but misleading for this assignment: the default releases.xml holds only 20 items and on 2026-09-16 its oldest item is 2026-09-01, so the 2026-08-31 MediaTek release is NOT in it. It appears on https://nvidianews.nvidia.com/releases.xml?page=3. Page 2 returns the same 20 items as page 1 shifted by one, so paging has to be walked, not assumed.",
+  "New trap worth adding to the BRIEF's list: nvidianews.nvidia.com soft-404s. The plausible-looking guess https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership returns HTTP 200 with the generic 'News Archive | NVIDIA Newsroom' page, not a 404. Status code plus page size look like a hit. The real slug ends '...-to-build-ai-edge-to-cloud-computing-platforms' and must be taken from the feed.",
+  "The candidates note for this item says only '聯發科是台灣公司'. It understates the story: the same announcement carries a US$3.5 billion NVIDIA investment in MediaTek convertible bonds, and MediaTek filed the full pricing terms on Taiwan's MOPS the same evening. The Taiwan angle is the statutory filing, not just the company's nationality.",
+  "tech.md names the workspace as docs/tech-news-2026/ while BRIEF.md and this batch's files live in docs/news-2026-batch-4/. One of the two is stale; the writing agent should confirm which directory the content pack and research record go in before writing.",
+  "MOPS access: emops.twse.com.tw returns a security-block page to curl from this container (body: '因為安全性考量，您所執行的頁面無法呈現。 / FOR SECURITY REASONS, THIS PAGE CAN NOT BE ACCESSED.'), and mops.twse.com.tw returns the same. WebFetch reaches both. Worth adding to the known-blocks list with the WebFetch workaround, since MOPS is the statutory channel for every TWSE-listed Taiwanese company."
+ ],
+ "overlaps_existing_article": "No real overlap. The content directory holds 970 packs and no tech-news-* pack exists yet — this would be among the first in the tech vertical. The only NVIDIA pack is ai-news-nvidia-rubin-20260105 (zh-TW title: 「NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？」, topics ai/software/ai-news, news_date 2026-01-05). That one is about what data-centre compute upgrades do to the cost and latency of everyday cloud AI services; it does not mention MediaTek, NVLink Fusion, RTX Spark or DGX Spark. Division of labour: the Rubin pack owns 'what more AI compute means for the services you use'; this pack owns 'what two chip companies agreed to build together, and what a Taiwanese listed company disclosed to its regulator on the same evening'. Link to the Rubin pack as the related news item. ai-taiwan-local-models-taide mentions MediaTek Research's Breeze models on Hugging Face — a different MediaTek entity and a different subject, no conflict. Also note ai-news-nvidia-hugging-face-20260903 is a separate candidate in the same batch (NVIDIA acquiring Hugging Face); keep this pack off acquisitions and keep that one off the MediaTek partnership.",
+ "must_not_write": [
+  "Do not call this a product launch or a chip unveiling. Nothing was launched on 2026-08-31. RTX Spark was introduced on 2026-06-01; DGX Spark and the GB10 Grace Blackwell Superchip predate both. The release only promises 'multiple generations' of future chips.",
+  "Do not write that NVIDIA bought a stake in MediaTek, became a shareholder, or 'took equity'. It subscribed to convertible bonds. Conversion cannot begin until three months after the issue date, and the issue date itself is still tentative.",
+  "Do not write '稀釋 1.67%' as NVIDIA's stake. 1.67% is the maximum dilution of the whole US$3.9 billion issue assuming full conversion within the year, per MediaTek's filing.",
+  "Do not attribute the bond terms (US$3.9bn total, 0% coupon, NT$4,513.75 conversion price, NT$3,925 closing price, 2031/09/08 maturity, SGX, 1.67%) to the press release. They come from MediaTek's MOPS filing of 2026-08-31 and must be attributed to it, phrased as 「聯發科向公開資訊觀測站申報」.",
+  "Do not write any price, availability date, region or Taiwan launch for any product. None exists in the 31 August release.",
+  "Do not present NVIDIA's or MediaTek's descriptions of NVLink Fusion (prevalidated, prequalified, reduces complexity, increases performance, accelerates time to market) as facts. Write 「NVIDIA 表示」、「聯發科表示」. The site does no testing.",
+  "Do not name customers, hyperscalers, automakers or design wins — none are named — and do not infer any from the phrase 'hyperscalers, cloud service providers and frontier model developers'.",
+  "Do not say TSMC manufactures anything in this announcement. TSMC appears only in MediaTek's separate June 2026 RTX Spark release, and only as MediaTek's manufacturing partner for that SoC.",
+  "Do not give investment advice, share-price commentary or a view on whether the deal is good for MediaTek shareholders, and per tech.md do NOT add a finance disclaimer callout — this pack carries topics ['tech','tech-news'] only, with no 'finance' topic.",
+  "Do not write buying advice of any kind (whether to buy an RTX Spark PC, whether to upgrade, which chip is better). tech.md forbids it.",
+  "Do not treat 'local AI computing' and 「邊緣 AI 運算」 as two different programmes. They are the English and MediaTek-zh-TW labels for the same bullet.",
+  "Do not explain what an 'NVIDIA Rosa CPU' is. Both releases name it without defining it and no official page was reached. Name it and say the release does not explain it.",
+  "Do not claim the collaboration is new or exclusive. Both companies call it a deepening, and MediaTek's June 2026 release already listed NVLink Fusion, GB10 and the C-X1 automotive platform as existing work.",
+  "Do not claim NVIDIA filed anything with the SEC about this. EDGAR full-text search found nothing.",
+  "Do not draw logos, wordmarks or UI in the diagram, and do not put any number in the diagram that is not in the article body."
+ ],
+ "editorial_brief": "WHO IT IS FOR: Taiwanese readers who follow technology but are not chip engineers, and who care because MediaTek (聯發科技, TWSE 2454) is a Taiwanese company whose disclosures land on MOPS in Chinese. The angle is not 'NVIDIA is huge'. It is: on one evening, 31 August 2026, two chip companies published a partnership announcement in English, and within about five minutes of each other a Taiwanese listed company filed the money side of the same event with its own regulator — and the two documents say different amounts of things. Reading both is what tells you what actually happened. STRUCTURE THAT FITS THE FACTS (five level-2 sections per BRIEF): (1) What was announced on 31 August 2026 — a deepening of an existing collaboration across three named areas, plus the one financial line the press release carries. (2) The three areas explained plainly: custom XPUs via NVLink Fusion for rack-scale AI factories; PC chips (RTX Spark, DGX Spark); automotive (Dimensity Auto alongside DRIVE AGX). End this section with the required table. (3) The money: what MediaTek told MOPS that the press release never said — first overseas convertible bond issue, US$3.9bn total of which NVIDIA took US$3.5bn, 0% coupon, NT$4,513.75 conversion price at 115% of the NT$3,925 close, tentative 2026/09/08 issue and 2031/09/08 maturity, SGX, approximately 1.67% maximum dilution. End this section with the diagram. (4) What this is NOT — no product, no price, no date, no customer, no Taiwan availability; and MediaTek's own forward-looking statement saying the release is not a forecast under Taiwan law. (5) What would actually tell you whether it is working — the tentative issue date passing, a named XPU customer, a named next-generation Spark chip, a named car. Frame these as things to watch that are currently unstated, not as predictions. TABLE SUGGESTION (3 columns, 4 rows, cells short, caption carries the check date 2026-09-16): columns 「合作領域」/「官方點名的技術」/「官方未說明」; rows AI 基礎建設 / 邊緣與本地 AI 運算 / 車用 / 投資. DIAGRAM SUGGESTION (2x2, four nodes, every number in it must also be in the body): 「三大領域」「一筆投資」「申報才有的條件」「官方未說」. Title under 20 characters, e.g. 「一則公告的兩個版本」. Hero label under 12 characters, e.g. 「合作公告，不是新產品」. ORIGINAL SCENARIO (must be labelled as an editorially constructed example): a reader who sees a headline about 'NVIDIA investing in MediaTek' and wants to know whether that means a new laptop chip is coming, or shares changing hands — the answer is neither, and the article shows how to tell by comparing the press release with the MOPS filing. DELIBERATELY OUT OF SCOPE: share-price movement, valuation, whether the bonds are a good deal, any comparison of MediaTek against Qualcomm or others, any buying advice about RTX Spark PCs, and any speculation about which hyperscaler the custom-XPU business is for. Also out of scope: the NVIDIA-Hugging Face acquisition, which is a separate pack in this batch. TONE: plain and specific. Every capability sentence attributed to the company that said it. State the check date 2026-09-16 in the second paragraph and say the site did no hands-on testing."
+}

@@ -1,0 +1,464 @@
+{
+ "slug": "ai-news-frontier-governance-20260528",
+ "sourcing_verdict": "full",
+ "event_date": "2026-05-28",
+ "checked_on": "2026-09-16",
+ "sourcing_notes": "openai.com/index/* is 403 for curl AND for WebFetch (verified today on https://openai.com/index/openai-frontier-governance-framework/ and its de-DE alternate, plus /safety/, /news/, /policies/, /global-affairs/our-approach-to-frontier-risk/ - all HTTP 403 Cloudflare). BUT two official routes are open and together they gave the complete document: (1) https://openai.com/sitemap.xml and https://openai.com/sitemap.xml/safety/ return HTTP 200 and confirm the canonical URL https://openai.com/index/openai-frontier-governance-framework/ with <lastmod>2026-06-04T08:13:28.790Z</lastmod>; (2) the framework PDF itself is on cdn.openai.com and returns HTTP 200. The PDF URL was found via a web search used ONLY as a lead; the URL actually fetched is https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf (HTTP 200, 6,136,955 bytes, application/pdf, md5 efeae18be97ece7b1a71e7afcf2019d6, Last-Modified: Wed, 27 May 2026 16:04:12 GMT). 22 pages, text extracted with pypdf (uv-isolated env; the container's system cryptography module is broken, so pdfminer/pypdf fail unless run under `env -u PYTHONPATH uv run --no-project --python 3.12 --with pypdf`). The blob Last-Modified of 2026-05-27 is one day before the feed pubDate of 2026-05-28 and has NOT moved since, so the PDF read today is the launch version, not a later revision. Also fetched and read in full: California SB 53 chaptered text on leginfo (HTTP 200, page states 'Version: 09/29/25 - Chaptered'); the European Commission GPAI Code of Practice policy page (HTTP 200, page states 'Last update 31 July 2026'); the Code's Safety and Security chapter PDF via https://ec.europa.eu/newsroom/dae/redirection/document/118119 (HTTP 200, 43 pages, PDF ModDate 2025-08-01); OpenAI's Preparedness Framework v2 PDF on cdn.openai.com (HTTP 200, 22 pages, PDF CreationDate 2025-04-28, blob Last-Modified Mon, 09 Jun 2025 21:27:02 GMT, i.e. unchanged); and the Commission's 31 July 2026 enforcement press item. The OpenAI news RSS feed (https://openai.com/news/rss.xml) returned HTTP 200 with 1,194 <item> elements, all carrying pubDate, lastBuildDate 'Wed, 16 Sep 2026 14:30:47 GMT', newest item 2026-09-16, 408 items dated 2026 - so the feed is live, not a dead or denied feed. The ONLY thing still behind the block is OpenAI's HTML announcement page (headline copy, any on-page framing, and whether the page links this exact PDF). The PDF carries the whole framework, so nothing needed for the article is missing. Because the announcement page is unreachable, the recommended sources list uses the PDF URL rather than the /index/ URL.",
+ "sources": [
+  {
+   "title": "Frontier Governance Framework (PDF)",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Bill Text - SB-53 Artificial intelligence models: large developers.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "publisher": "California Legislative Information",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "The General-Purpose AI Code of Practice",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+   "publisher": "European Commission",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Preparedness Framework Version 2 (PDF)",
+   "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date_basis": "事件日 2026-05-28 來自 OpenAI 官方 RSS（https://openai.com/news/rss.xml）該篇的 pubDate：'Thu, 28 May 2026 00:00:00 GMT'。三項交叉驗證：(1) 框架 PDF 在 cdn.openai.com 的 blob 標頭為 'last-modified: Wed, 27 May 2026 16:04:12 GMT'，比公告日早一天，符合發布前上傳；(2) openai.com/sitemap.xml/safety/ 記載該頁 <lastmod>2026-06-04T08:13:28.790Z</lastmod>，是發布後的頁面更動，不是發布日；(3) PDF 本身完全沒有日期。因此：發布日 = 事件日 = 2026-05-28；檔案上傳日 2026-05-27；頁面最後更動 2026-06-04；文件本身無版本與日期。TFAIA 與 EU CoP 的生效日則是另一件事，兩份官方文件都沒印出來（見 not_said）。",
+ "verified_facts": [
+  {
+   "fact": "OpenAI's official news feed carries the item 'OpenAI’s Frontier Governance Framework' with pubDate 'Thu, 28 May 2026 00:00:00 GMT', category 'Safety', and link https://openai.com/index/openai-frontier-governance-framework . The event date 2026-05-28 rests on this official pubDate; the HTML page itself returns HTTP 403 in this container.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<title><![CDATA[OpenAI’s Frontier Governance Framework]]></title> ... <category><![CDATA[Safety]]></category> <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>"
+  },
+  {
+   "fact": "The feed's official one-line description of the item reads: 'Explore OpenAI’s Frontier Governance Framework and how our AI safety, security, and risk practices align with emerging EU and California regulations.'",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Explore OpenAI’s Frontier Governance Framework and how our AI safety, security, and risk practices align with emerging EU and California regulations."
+  },
+  {
+   "fact": "OpenAI's safety sitemap lists the canonical page https://openai.com/index/openai-frontier-governance-framework/ with <lastmod>2026-06-04T08:13:28.790Z</lastmod>, i.e. the page was touched about a week after publication. The sitemap also lists dozens of hreflang alternates (am-ET, ar, bg-BG, ... de-DE etc.), so the page exists in many languages; all of them return HTTP 403 here, so no localised wording was read.",
+   "url": "https://openai.com/sitemap.xml/safety/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The framework PDF on OpenAI's CDN returns HTTP 200, is 6,136,955 bytes, 22 pages, and its blob header says 'last-modified: Wed, 27 May 2026 16:04:12 GMT' — one day before the announcement — and it has not changed since, so the text read on 2026-09-16 is the version published at launch.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The PDF's cover page carries only the title 'Frontier Governance Framework'. The document carries NO version number, NO 'last updated' date and NO changelog. Its PDF metadata is only {'/Author': 'Super PDF Plugin', '/Creator': 'Super PDF Plugin', '/Producer': 'Super PDF Plugin'} with no CreationDate or ModDate.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FGF's contents list seven numbered sections: 1 Introduction; 2 Systemic risk assessment & mitigation (2.1 identification, 2.2 analysis, 2.3 risk acceptance determination, 2.4 risk tiers, 2.5 safety mitigations, 2.6 critical safety incident identification and response); 3 Security risk management; 4 Model reporting; 5 Input from external experts; 6 Allocation of responsibility for risk management; 7 Framework change management (7.1 update and approval process, 7.2 framework assessment).",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OpenAI says it developed the FGF 'to explain how we fulfill our regulatory obligations and to document our current technical and organizational processes for systemic risk assessment and mitigation across key risk categories, including cybersecurity, CBRN (chemical, biological, radiological, and nuclear), harmful manipulation, and loss of control risks.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we have developed this Frontier Governance Framework (FGF) to explain how we fulfill our regulatory obligations and to document our current technical and organizational processes for systemic risk assessment and mitigation across key risk categories, including cybersecurity, CBRN (chemical, biological, radiological, and nuclear), harmful manipulation, and loss of control risks."
+  },
+  {
+   "fact": "The FGF states it is designed to meet the baseline legal requirements of two regimes at once: under California's Transparency in Frontier AI Act (TFAIA) 'this FGF is our Frontier AI Framework', and under the European Union's General-Purpose AI Code of Practice 'this FGF serves as our publicly available summary of OpenAI’s Safety & Security Framework, describing how we assess and mitigate systemic risks and ensure adequate cybersecurity protection for models covered under Regulation (EU) 2024/1689 (the EU AI Act).'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Our FGF is designed to meet the baseline legal requirements of various frontier AI laws"
+  },
+  {
+   "fact": "On the relationship with the older Preparedness Framework (PF), the FGF says: 'The PF and FGF together describe OpenAI’s practices, and we will continue to use and evolve the PF to define and operationalize OpenAI’s own approach to managing the most serious risks from advanced AI systems, including in situations where our internal practices go beyond current legal requirements.' It adds that the PF 'may use different definitions of catastrophic risk and does not depend on specific legal compute thresholds like the FGF.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "it may use different definitions of catastrophic risk and does not depend on specific legal compute thresholds like the FGF"
+  },
+  {
+   "fact": "Scope: 'The FGF covers frontier models as defined under the TFAIA and “general-purpose models with systemic risk” under the EU AI Act.' When the FGF says 'systemic' risks it means 'both catastrophic risks under the TFAIA and systemic risks under the EU AI Act'. The processes 'apply to covered models that OpenAI has deployed externally, and in some cases internally with respect to risks resulting from circumventing oversight mechanisms.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FGF says its approach is informed by ISO 42001, the NIST AI Risk Management Framework, and frontier safety laws in relevant jurisdictions, and also draws on 'the proposal for Responsible Scaling Policies first introduced by METR as well as industry best practices.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "including ISO 42001, the NIST AI Risk Management Framework, and frontier safety laws in relevant jurisdictions"
+  },
+  {
+   "fact": "THE KEY NUMBER IN THE FGF. Its definition of systemic risk is: 'This FGF’s definition of systemic risk includes foreseeable and material risks of severe harm from the development, storage, use, or deployment of our most advanced frontier models, including risks that a model will materially contribute to greater than 50 fatalities or $1 billion of property damages or losses arising from a single incident.' These are the only two quantities in the whole document.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "including risks that a model will materially contribute to greater than 50 fatalities or $1 billion of property damages or losses arising from a single incident"
+  },
+  {
+   "fact": "The FGF says its risk assessment 'incorporates feedback from academic researchers, independent domain experts, industry bodies such as the Frontier Model Forum, and the U.S. government, the European Commission and other government agencies'.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FGF names exactly four systemic risk categories: (1) Cyber offense — 'Risks of enabling large-scale sophisticated cyber-attacks, including on critical systems... e.g. through automated vulnerability discovery, exploit generation, operational use, and attack scaling.'; (2) Chemical, biological, radiological & nuclear (CBRN); (3) Harmful manipulation — 'Risks stemming from the strategic distortion of human behavior, including the use of model capabilities to conduct influence operations, election interference, or other coordinated campaigns to manipulate public opinion or undermine democratic processes.'; (4) Loss of control — 'Risks stemming from the inability to reliably direct, modify, or shut down a model, including evading the controls of a model developer or user, or autonomous conduct that, if conducted by a human, would constitute a crime of murder, assault, extortion, or theft.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FGF admits an uneven state of readiness: 'Currently, we estimate the severity and probability of harm of risks related to CBRN, cyber offense, and loss of control under this FGF. We are still in the early stages of developing an approach for assessing risks from harmful manipulation.' It says influence-operation risks 'are best addressed through system level mitigations, such as post-deployment monitoring, rather than model evaluations before deployment.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We are still in the early stages of developing an approach for assessing risks from harmful manipulation."
+  },
+  {
+   "fact": "The FGF says OpenAI treats a single capability elicitation as a floor, not a ceiling: 'we accordingly treat one-time capability elicitations in a frontier model as a lower-bound, rather than a ceiling, on capabilities that may emerge in real world use and misuse', and that 'out of an abundance of caution we have treated models as crossing a capability threshold in circumstances where we are unable to rule out that a new threshold had been reached, even in the absence of direct evidence that it has occurred.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we have treated models as crossing a capability threshold in circumstances where we are unable to rule out that a new threshold had been reached"
+  },
+  {
+   "fact": "The FGF warns that its pre-deployment evaluations are proxies: 'Some evaluations can help rule out that a model has reached a new capability threshold, but passing them does not establish that the threshold has actually been reached.' Additional evidence used includes 'human expert red-teaming, expert consultations, and resource-intensive third party evaluations', and the final call 'reflects a holistic judgment based on the totality of available evidence'.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Cyber offense risk tiers (three tiers, described not numerically scored). Tier 1: the model 'provides assistance equivalent to publicly available resources and/or may provide material technical assistance to active cyber operations using known attack methodologies.' Tier 2: 'substantial capability uplift to small organizations by removing existing bottlenecks to scaling cyber operations, including by automating end-to-end cyber operations against reasonably hardened targets or by automating the discovery and exploitation of operationally relevant vulnerabilities.' Tier 3: 'A tool-augmented model can identify and develop functional zero-day exploits of all severity levels in many hardened real-world critical systems without human intervention OR the model can devise and execute end-to-end novel strategies for cyberattacks against hardened targets given only a high-level desired goal.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "CBRN risk tiers (three). Tier 1: capabilities 'provide minimal advantage compared to publicly available information or search engines, or provides minor uplift or lowers barriers to experts.' Tier 2: 'meaningful counterfactual assistance (relative to unlimited access to baseline of tools available in 2021) to novice actors (anyone with a basic relevant technical background) that enables them to create known biological or chemical threats.' Tier 3: 'The model can enable an expert to develop a highly dangerous novel threat vector (e.g., comparable to a novel CDC Class A biological agent) OR the model can be connected to tools and equipment to complete the full engineering and/or synthesis cycle of a regulated or novel biological threat without human intervention.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "relative to unlimited access to baseline of tools available in 2021"
+  },
+  {
+   "fact": "Within CBRN, OpenAI says it 'principally build[s] safeguards against biological and chemical threats' and prioritises biological capability evaluations 'due to the higher potential severity of biological threats'. For nuclear and radiological threats it says the needed information and expertise 'is significant, and classified', that there are physical barriers such as 'access to fissile material, specialized equipment, and ballistics', and that 'nuclear weapons development cannot be fully studied outside of a classified context.' It commits only to continue research and to 'engage with national security stakeholders on how best to assess these risks.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Harmful manipulation has NO tier table in the FGF. The document says: 'OpenAI’s approach to harmful manipulation remains exploratory due to its nascency as a systemic risk area. This risk tier is subject to further research and may be substantially changed over time.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI’s approach to harmful manipulation remains exploratory due to its nascency as a systemic risk area."
+  },
+  {
+   "fact": "Loss of control risk tiers (three). Tier 1: reliably completes complex multi-step tasks but below expert humans; 'demonstrates basic situational awareness when elicited and executes deceptive behaviors in narrow, highly prompted scenarios' (example: 'can understand it is being evaluated if prompted and may subtly underperform when instructed'). Tier 2: impact 'broadly equivalent to an expert human'; 'demonstrates the capability to reliably evade detection across a variety of evaluation methods, including the capability to evade chain of thought monitoring' (example: 'can insert subtle flaws or hidden vulnerabilities that survive expert review'). Tier 3: 'superior to the most expert humans in executing most complex projects and can operate autonomously for extended, sustained periods of time... monitoring the model and its chain of thought cannot reliably detect or rule out evasion of human control' (example: 'can acquire resources and expand capacity against active countermeasures'). The FGF adds that 'Outside of risks related to AI self-improvement, these risk tiers remain exploratory and may evolve substantially.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Deployment rule: 'If residual risks associated with the model exceed acceptable risk levels, the model is not deployed unless additional mitigation measures are implemented that sufficiently minimize risk.' Where residual risk is acceptable, OpenAI says it documents 'a justification for why the systemic risks stemming from the model are acceptable, including reasonably foreseeable conditions under which the justification may no longer hold, as informed by recommendations from OpenAI’s Safety Advisory Group and external experts, as available and appropriate.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OpenAI says it maintains an 'AI Safety Incident Response Plan (AIRP)' plus a separate 'Cybersecurity Incident Response Plan'. Detection channels listed: 'automated monitoring, employee escalation, end-user feedback, (including support tickets and external reporting forms), notification from regulators or the press, and review of on- or off-platform activity.' On external reporting it says only: 'If an incident is determined to be reportable, we will gather relevant information from the investigation and remediation phase for reporting to appropriate authorities within the required deadlines.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Security: OpenAI says it maintains an 'Information Security and Privacy Program aligned with ISO 27001, 27017, 27018, and 27701, and supported by SOC 2 Type II evaluations', protecting 'model weights, training data, and customer data'. The four listed security mitigations are: protection of unreleased model weights (encryption at rest and in transit, continuous monitoring, multi-factor authentication, multi-party approval, detailed logging, physical access controls and inspections); hardening interface access to unreleased model parameters (rate limited, monitored, logged); insider threats (personnel screening and regular training, internal monitoring for anomalous activity, model execution sandboxed with restricted egress by default); and security assurance (red teaming, penetration testing, vulnerability scanning, SOC 2 Type II audits, ISO 27001 certification, vulnerability disclosure programs).",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Model reporting: results of the assessment are documented in a 'Safety and Security Model Report (referred to as “Transparency Reports” under the TFAIA)'. OpenAI says it also publishes 'details of these assessments in system cards or in other reporting when a model launches.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Model report update cadence: 'We will in any event determine whether to update the Model Report for our most capable frontier models once every six months.' Three stated exceptions: '(1) the model’s capabilities have not materially changed since the last update, (2) we plan to release a more capable model in less than a month, or (3) if the model is considered similarly safe or safer (under Appendix 2.2 of the Code of Practice).' Separately, OpenAI may run 'lighter-touch model evaluations at appropriate trigger points', triggers being '(1) the release of an updated model or (2) where we have reason to believe a model’s risk profile may have materially changed.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We will in any event determine whether to update the Model Report for our most capable frontier models once every six months."
+  },
+  {
+   "fact": "External experts: the FGF uses permissive wording only — 'We may solicit and obtain input from external experts in relevant domains, and other stakeholders'. It mentions 'independent third-party evaluators, stress testing of safeguards for models approaching or reaching a new risk tier, or to provide independent expert opinions to assist the Safety Advisory Group', plus 'commissioned research reports, public research, and other discussions with internal and external domain experts'. No third party is named and no mandatory external review is committed to.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We may solicit and obtain input from external experts in relevant domains"
+  },
+  {
+   "fact": "Legal entities: 'OpenAI OpCo LLC is responsible for compliance with the TFAIA for covered models in the United States. OpenAI Ireland Limited is the provider of OpenAI’s GPAI-SR models in the EU and responsible for compliance with the EU Code of Practice. The board of directors of OpenAI Ireland Limited exercise systemic risk oversight under this Framework for EU purposes.' The FGF points to 'Appendix B of the PF' for further deployment-governance detail.",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Who can change the framework: 'Updates to this FGF may be proposed by OpenAI’s Safety Advisory Group, Head of Safety Systems, Head of Preparedness, Chief Information Security Officer, Chief Compliance Officer, General Counsel, or executive leadership.' OpenAI's Legal function oversees the update process. 'Material updates will be presented to the Safety and Security Committee of the board of directors of the OpenAI Foundation and to the board of directors of OpenAI Ireland Limited for oversight, with changes and justifications for material updates documented in a changelog and published within 30 days of the update.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "documented in a changelog and published within 30 days of the update"
+  },
+  {
+   "fact": "Framework assessment cadence: 'OpenAI will complete a Framework Assessment at least once every 12 months from the Effective Dates of the TFAIA and the EU Code of Practice'. Factors listed: changes in law or regulatory guidance, changes in frontier model capabilities and related technologies, new approaches to mitigations and safeguards, other incidents affecting the industry, and new industry best practices and standards. For the EU Code of Practice, 'if we identify any instances of non-adherence or any measures that are required to be implemented to ensure continued adherence, we will draft and implement a remediation plan, and update the FGF as appropriate.'",
+   "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "at least once every 12 months from the Effective Dates of the TFAIA and the EU Code of Practice"
+  },
+  {
+   "fact": "California SB 53 (Wiener) became Chapter 138 of the Statutes of 2025. The leginfo page for the chaptered version (labelled 'Version: 09/29/25 - Chaptered', date published 09/29/2025) shows 'Approved by Governor September 29, 2025' and 'Filed with Secretary of State September 29, 2025'. It adds Chapter 25.1 (commencing with Section 22757.10) to Division 8 of the Business and Professions Code, Section 11546.8 to the Government Code, and Chapter 5.1 (commencing with Section 1107) to Part 3 of Division 2 of the Labor Code.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "An act to add Chapter 25.1 (commencing with Section 22757.10) to Division 8 of the Business and Professions Code, to add Section 11546.8 to the Government Code, and to add Chapter 5.1 (commencing with Section 1107) to Part 3 of Division 2 of the Labor Code, relating to artificial intelligence."
+  },
+  {
+   "fact": "Section 22757.10: 'This chapter shall be known as the Transparency in Frontier Artificial Intelligence Act.' — this is the TFAIA that OpenAI's FGF says it is written to satisfy.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This chapter shall be known as the Transparency in Frontier Artificial Intelligence Act."
+  },
+  {
+   "fact": "Statutory definition of the document OpenAI published: Section 22757.11(g): '“Frontier AI framework” means documented technical and organizational protocols to manage, assess, and mitigate catastrophic risks.'",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "“Frontier AI framework” means documented technical and organizational protocols to manage, assess, and mitigate catastrophic risks."
+  },
+  {
+   "fact": "Who is covered: Section 22757.11(i)(1) defines a 'frontier model' as a foundation model 'trained using a quantity of computing power greater than 10^26 integer or floating-point operations', counting the original training run plus later fine-tuning, reinforcement learning or other material modifications. Section 22757.11(j) defines a 'large frontier developer' as a frontier developer that with its affiliates 'collectively had annual gross revenues in excess of five hundred million dollars ($500,000,000) in the preceding calendar year.'",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "a quantity of computing power greater than 10^26 integer or floating-point operations"
+  },
+  {
+   "fact": "Statutory definition of 'catastrophic risk' (Section 22757.11(c)): a foreseeable and material risk that a frontier developer's development, storage, use or deployment of a foundation model 'will materially contribute to the death of, or serious injury to, more than 50 people or more than one billion dollars ($1,000,000,000) in damage to, or loss of, property arising from a single incident' involving the model providing expert-level assistance with a chemical, biological, radiological or nuclear weapon; engaging without meaningful human oversight in a cyberattack or conduct that would be murder, assault, extortion or theft if done by a human; or evading the control of its developer or user. This is where the '50' and '$1 billion' in OpenAI's FGF come from.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "more than 50 people or more than one billion dollars ($1,000,000,000) in damage to, or loss of, property arising from a single incident"
+  },
+  {
+   "fact": "Section 22757.12(a) requires a large frontier developer to 'write, implement, comply with, and clearly and conspicuously publish on its internet website a frontier AI framework' describing ten things: incorporating national/international standards and industry-consensus best practices; defining and assessing thresholds, 'which may include multiple-tiered thresholds'; applying mitigations; reviewing assessments and adequacy of mitigations as part of the deploy-or-use-internally decision; using third parties to assess risk and mitigation effectiveness; revisiting and updating the framework; cybersecurity practices to secure unreleased model weights; identifying and responding to critical safety incidents; internal governance practices; and assessing catastrophic risk from internal use, 'including risks resulting from a frontier model circumventing oversight mechanisms.'",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "which may include multiple-tiered thresholds"
+  },
+  {
+   "fact": "Section 22757.12(b): the framework must be reviewed and, as appropriate, updated 'at least once per year', and after a material modification the developer must publish the modified framework and a justification 'within 30 days'. This is the statutory source of the 30-day changelog commitment in OpenAI's FGF.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.12(c): before or concurrently with deploying a new or substantially modified frontier model, a frontier developer must publish a transparency report listing the developer's website, a way for a natural person to contact it, the model's release date, supported languages, supported output modalities, intended uses, and any generally applicable restrictions or conditions on use. A large frontier developer must add summaries of catastrophic-risk assessments, their results, 'the extent to which third-party evaluators were involved', and other steps taken. Paragraph (3) says publishing this 'as part of a larger document, including a system card or model card' counts as compliance.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.12(d): a large frontier developer must transmit to California's Office of Emergency Services a summary of any assessment of catastrophic risk arising from INTERNAL use of its frontier models 'every three months or pursuant to another reasonable schedule specified by the large frontier developer and communicated in writing to the Office of Emergency Services'. Section 22757.13(b) requires OES to build a confidential submission mechanism for these, and 22757.13(f) exempts them from the California Public Records Act.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.12(e) bars a frontier developer from making 'a materially false or misleading statement about catastrophic risk from its frontier models or its management of catastrophic risk', and bars a large frontier developer from making a materially false or misleading statement 'about its implementation of, or compliance with, its frontier AI framework'. It does not apply to a statement 'made in good faith and was reasonable under the circumstances.'",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.12(f) permits redactions 'necessary to protect the frontier developer’s trade secrets, the frontier developer’s cybersecurity, public safety, or the national security of the United States or to comply with any federal or state law', but the published version must 'describe the character and justification of the redaction', and the unredacted information must be retained for five years.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.13(c): a critical safety incident must be reported to the Office of Emergency Services 'within 15 days of discovering the critical safety incident'; if it 'poses an imminent risk of death or serious physical injury' the developer must disclose it 'within 24 hours to an authority, including any law enforcement agency or public safety agency with jurisdiction'. Section 22757.13(g): 'Beginning January 1, 2027, and annually thereafter', OES must publish an anonymised, aggregated report on the incidents it has reviewed.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.14: 'On or before January 1, 2027, and annually thereafter, the Department of Technology shall assess recent evidence and developments' and recommend whether and how to update the definitions of 'frontier model', 'frontier developer' and 'large frontier developer' — i.e. the 10^26 compute figure and the $500 million revenue figure are explicitly reviewable.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section 22757.15: a large frontier developer that fails to publish or transmit a required compliant document, makes a prohibited statement, fails to report an incident, 'or fails to comply with its own frontier AI framework' is subject to 'a civil penalty in an amount dependent upon the severity of the violation that does not exceed one million dollars ($1,000,000) per violation', and that penalty 'shall be recovered in a civil action brought only by the Attorney General.' Publishing the framework therefore makes the company's own words enforceable against it.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": "does not exceed one million dollars ($1,000,000) per violation"
+  },
+  {
+   "fact": "SB 53 also adds whistleblower protections for 'covered employees' (Labor Code Chapter 5.1, commencing with Section 1107), requires a large frontier developer to run an anonymous internal disclosure channel with 'a monthly update to the person who made the disclosure', requires disclosures and responses to be shared with officers and directors 'at least once each quarter', and preempts local rules adopted 'on or after January 1, 2025' that specifically regulate frontier developers' management of catastrophic risk. A separate section creates a 14-member consortium to design a public cloud cluster called 'CalCompute', which becomes operative 'only upon an appropriation'.",
+   "url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The European Commission's own page states the General-Purpose AI (GPAI) Code of Practice 'was published on July 10, 2025', is 'a voluntary tool, prepared by independent experts in a multi-stakeholder process', and that 'The Commission and the AI Board have confirmed that the code is an adequate voluntary tool for providers of GPAI models to demonstrate compliance with the AI Act.' The page's own 'Last update' is 31 July 2026.",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The code was published on July 10, 2025"
+  },
+  {
+   "fact": "The Code has three separately authored chapters. 'The Chapters on Transparency and Copyright offer all providers of general-purpose AI models a way to demonstrate compliance with their obligations under Article 53 AI Act.' The Safety and Security chapter 'is only relevant to the small number of providers of the most advanced models, those that are subject to the AI Act's obligations for providers of general-purpose AI models with systemic risk under Article 55 AI Act.'",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OpenAI appears in the Commission's published signatory list, alongside AI Studio Delta, Aleph Alpha, Almawave, Amazon, Anthropic, Black Forest Labs, Bria AI, Cohere, Domyn, Dweve, Fastweb, Google, IBM, LINAGORA, Microsoft, Mistral AI, Open Hippo, Pleias, ServiceNow and WRITER. The page separately notes 'xAI signed up to the Safety and Security Chapter' only, and that it must demonstrate transparency and copyright compliance 'via alternative adequate means'. The page warns 'Some signatories may not appear immediately' as the list is updated.",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Code's Safety and Security chapter (43-page official PDF served from the Commission's newsroom) sets Commitment 1 'Safety and Security Framework', citing 'Articles 55(1) and 56(5), and recitals 110, 114, and 115 AI Act'. Signatories 'commit to adopting a state-of-the-art Safety and Security Framework' and must have 'confirmed the Framework no later than four weeks after having notified the Commission pursuant to Article 52(1) AI Act and no later than two weeks before placing the model on the market.'",
+   "url": "https://ec.europa.eu/newsroom/dae/redirection/document/118119",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Measure 10.2 of the Code's Safety and Security chapter is the clause OpenAI's FGF answers: 'If and insofar as necessary to assess and/or mitigate systemic risks, Signatories will publish (e.g. via their websites) a summarised version of their Framework and Model Report(s), and updates thereof... with removals to not undermine the effectiveness of safety and/or security mitigations and to protect sensitive commercial information.' Measure 7.6 requires signatories to 'provide the AI Office with an updated Model Report at least every six months'; Measure 10.1 requires documentation to be 'retained at least 10 years after the model has been placed on the market.'",
+   "url": "https://ec.europa.eu/newsroom/dae/redirection/document/118119",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Signatories will provide the AI Office with an updated Model Report at least every six months."
+  },
+  {
+   "fact": "Timing context from the Commission's own press item (publication 31 July 2026): 'From 2 August 2026, the European Commission’s AI Office, together with national authorities, will begin enforcing the Artificial Intelligence (AI) Act.'",
+   "url": "https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august",
+   "is_vendor_claim": false,
+   "verbatim_quote": "From 2 August 2026, the European Commission’s AI Office, together with national authorities, will begin enforcing the Artificial Intelligence (AI) Act."
+  },
+  {
+   "fact": "OpenAI's Preparedness Framework PDF is labelled 'Version 2. Last updated: 15th April, 2025' and is 22 pages. Its blob header shows last-modified Mon, 09 Jun 2025 21:27:02 GMT, so it has not been revised since and remains the version the FGF refers to as of 2026-09-16.",
+   "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Version 2. Last updated: 15th April, 2025"
+  },
+  {
+   "fact": "THE CONCRETE DIFFERENCE BETWEEN THE TWO OPENAI DOCUMENTS. The Preparedness Framework sets a much higher bar for 'severe harm': 'By “severe harm” in this document, we mean the death or grave injury of thousands of people or hundreds of billions of dollars of economic damage.' The FGF's legally-driven figure is 'greater than 50 fatalities or $1 billion'. The PF adds that in setting a high bar 'we aim to ensure that the most severe risks receive attention commensurate with their magnitude.'",
+   "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we mean the death or grave injury of thousands of people or hundreds of billions of dollars of economic damage"
+  },
+  {
+   "fact": "The categories also differ. The Preparedness Framework tracks THREE 'Tracked Categories' — Biological and Chemical, Cybersecurity, and AI Self-improvement — plus five 'Research Categories' (Long-range Autonomy, Sandbagging, Autonomous Replication and Adaptation, Undermining Safeguards, and Nuclear and Radiological). The FGF instead names FOUR categories: cyber offense, CBRN, harmful manipulation and loss of control. 'Harmful manipulation' has no counterpart in the PF's Tracked Categories.",
+   "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The PF uses two named thresholds rather than numbered tiers: 'High capability thresholds mean capabilities that significantly increase existing risk vectors for severe harm'; 'Critical capability thresholds mean capabilities that present a meaningful risk of a qualitatively new threat vector for severe harm with no ready precedent.' Models crossing High are not deployed until safeguards sufficiently minimise the risk; Critical capabilities 'require safeguards even during the development of the covered system, irrespective of deployment plans.'",
+   "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Safety Advisory Group the FGF refers to is defined in the PF: 'An internal, cross-functional group of OpenAI leaders called the Safety Advisory Group (SAG) oversees the Preparedness Framework and makes expert recommendations on the level and type of safeguards required for deploying frontier capabilities safely and securely. OpenAI Leadership can approve or reject these recommendations, and our Board’s Safety and Security Committee provides oversight of these decisions.' The SAG is internal, not independent.",
+   "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Optional context, feed-only. OpenAI's official news feed dated 'Tue, 01 Sep 2026 13:00:00 GMT' carries the item 'Path to Astra: critical capabilities and frontier safeguards' with the official description 'Astra is the first OpenAI model to meet the Critical cybersecurity capability threshold under the Preparedness Framework, with stronger safeguards for release.' The article page (https://openai.com/index/path-to-astra) is HTTP 403 here, so nothing beyond this one line was read. Use it only as this one sentence, attributed to OpenAI, or not at all.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Astra is the first OpenAI model to meet the Critical cybersecurity capability threshold under the Preparedness Framework, with stronger safeguards for release."
+  }
+ ],
+ "not_said": [
+  "The FGF PDF carries NO date, NO version number and NO changelog anywhere in its 22 pages. The 2026-05-28 date comes from OpenAI's news feed and the 2026-05-27 blob timestamp, not from the document. Do not write that the document is dated 28 May 2026 — write that OpenAI published it on that date.",
+  "The FGF never states the effective dates of the TFAIA or of the EU Code of Practice. It only says Framework Assessments run 'at least once every 12 months from the Effective Dates'. Do not state a TFAIA start date: the chaptered SB 53 text on leginfo also does not print a general operative date for the new chapter (the only fixed dates in it are 1 January 2027 for the OES and Department of Technology reports, and 1 January 2025 for local preemption).",
+  "The FGF never names a single model. It does not say which OpenAI models are in scope, which risk tier any model currently sits at, or whether any model has crossed a tier. No GPT-5.x, GPT-6 Astra, Sol, Luna or Terra appears in it.",
+  "The FGF contains no evaluation results, no benchmark scores and no percentages. Apart from '50 fatalities', '$1 billion', 'six months', '12 months' and '30 days', there are no numbers in it.",
+  "The FGF does not state the 10^26 compute figure or the $500 million revenue figure. It only alludes to 'specific legal compute thresholds'. Those numbers are in the California statute, and must be attributed to SB 53, not to OpenAI.",
+  "The FGF does not name any external expert, third-party evaluator or red-teaming organisation, and does not commit to mandatory external review. Its wording is 'We may solicit and obtain input from external experts'.",
+  "The FGF does not say where, when or whether Safety and Security Model Reports will be published in full, nor does it give a URL for them. It says only that details are published 'in system cards or in other reporting when a model launches'.",
+  "The FGF says nothing about consumer-facing products, prices, plans, regions, languages or availability. It changes nothing a user can see in ChatGPT, and does not claim to.",
+  "The FGF mentions no jurisdiction other than California / the United States and the EU / Ireland. Taiwan, Japan, Korea, the UK and China are not mentioned. Do not imply any obligation towards Taiwanese users.",
+  "The FGF does not mention penalties, fines or enforcement consequences. The $1,000,000-per-violation figure and the Attorney General's exclusive right of action are in SB 53, not in OpenAI's document.",
+  "The FGF gives no tier table for harmful manipulation and explicitly calls that area 'exploratory'. Do not present four fully-specified tier systems — there are three.",
+  "The FGF does not say the framework was reviewed or approved by any regulator, and neither the Commission's GPAI page nor the Code's Safety and Security chapter says the AI Office approves or certifies an individual signatory's framework.",
+  "The Commission's signatory page confirms OpenAI signed the Code of Practice but does not say which chapters OpenAI signed (it names chapter-specific signing only for xAI), and it does not link to or endorse OpenAI's FGF.",
+  "Nothing in any source read says the FGF has been updated since publication. The PDF blob has not changed since 2026-05-27. The sitemap shows the HTML page was touched on 2026-06-04, but the page is unreachable here so what changed is unknown — do not claim it was or was not revised."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Page 17 of the FGF reads 'OpenAI also maintains vulnerability disclosure programs and 27/7/365 incident response capabilities.'",
+   "seen_where": "The FGF PDF itself, confirmed twice (default and layout extraction modes)",
+   "why_excluded": "'27/7/365' is almost certainly a typo for '24/7/365' in OpenAI's own document. Do not quote the figure and do not silently 'correct' it to 24/7. If round-the-clock incident response is worth mentioning at all, write it without a number."
+  },
+  {
+   "claim": "The TFAIA / SB 53 took effect on 1 January 2026.",
+   "seen_where": "General knowledge of California's default effective-date rule for non-urgency statutes; several secondary write-ups assert it",
+   "why_excluded": "The chaptered bill text on leginfo does not print an operative date for the new Business and Professions Code chapter, and I did not reach an official page that states one. Write 'the statute does not print a general effective date' or omit the date entirely."
+  },
+  {
+   "claim": "OpenAI's HTML announcement page for the FGF links to exactly the PDF at cdn.openai.com/pdf/e37d949b-.../openai-frontier-governance-framework.pdf.",
+   "seen_where": "Inferred: the filename matches the page slug, the blob timestamp is 2026-05-27, and the PDF text matches the feed's official description",
+   "why_excluded": "openai.com/index/* is 403 to curl and to WebFetch, so the link on the page could not be seen. The PDF is first-party (OpenAI's own CDN, HTTP 200) and is safe to cite as OpenAI's document; just do not assert 'the announcement page links to this PDF'."
+  },
+  {
+   "claim": "Secondary coverage framed this as 'the era of voluntary AI self-governance ending', said the EU Code has been 'in force since August 2025', and said California's law 'is already in effect'.",
+   "seen_where": "Search-result summaries of enterprisedna.co, startuphub.ai, ciodive.com, techjacksolutions.com, keepingupwith.ai, techtimes.com",
+   "why_excluded": "All news media / aggregators / marketing blogs. Used only as a lead to locate the PDF and the statute. None of this framing is in a first-party source and none of it may be written."
+  },
+  {
+   "claim": "Microsoft publishes a document also called a 'Frontier Governance Framework'.",
+   "seen_where": "A cdn-dynmedia-1.microsoft.com PDF appeared in search results",
+   "why_excluded": "Not fetched, not verified, and out of scope for this article. Do not compare OpenAI's document with any other company's unless a later pass actually reads the other document."
+  },
+  {
+   "claim": "Any figure about how many models OpenAI currently treats as 'covered models', or how many Transparency Reports it has filed with California's Office of Emergency Services.",
+   "seen_where": "Nowhere first-party",
+   "why_excluded": "No first-party source states it. OES filings under 22757.12(d) are exempt from the California Public Records Act, so this is not publicly checkable at all. Must be written as unknown if raised."
+  },
+  {
+   "claim": "That the FGF's risk tiers map one-to-one onto the Preparedness Framework's High / Critical thresholds.",
+   "seen_where": "A natural but unsupported reading of the two documents side by side",
+   "why_excluded": "Neither document states a mapping. The FGF uses Tier 1/2/3 per category; the PF uses High and Critical. The FGF says only that the PF 'may use different definitions'. Do not build a mapping table."
+  },
+  {
+   "claim": "Reactions, expert commentary or regulator responses to the FGF.",
+   "seen_where": "Not searched for beyond the leads above",
+   "why_excluded": "No first-party reaction was found. The article should not imply there was a public response."
+  }
+ ],
+ "editorial_brief": "讀者：在台灣用 ChatGPT 工作的一般使用者，以及公司裡要判斷「這家 AI 廠商可不可以信」的人。角度：2026 年 5 月 28 日 OpenAI 公開一份 22 頁的 Frontier Governance Framework，這不是新的安全承諾，而是一份「交給主管機關看的作業說明書」：同一份文件要同時當加州 TFAIA 的 frontier AI framework，又當歐盟 GPAI 行為準則下 Safety & Security Framework 的公開摘要。文章要回答的實際問題是：這份文件讓使用者多知道什麼、又有哪些它刊明不說。五個小節的建議骨架：(1) 5/28 發生了什麼——一份 PDF、四類風險、兩部法規；(2) 「50 人、一億美元」這個門檻是怎麼來的——出自加州 SB 53 的定義，並與 OpenAI 自己 Preparedness Framework 的「數千人傷亡、數千億美元」對照（這節結尾放 table）；(3) 三級風險分級實際寫了什麼——網攻、CBRN、失控各三級，而「有害操弄」沒有分級（這節結尾放圖解）；(4) 公開之後誰能追蹤——一年一次 Framework Assessment、重大修改 30 天內發 changelog、最強模型每六個月審一次 Model Report，以及加州州法讓「沒遵守自己寫的框架」變成可罰款的違法事項；(5) 對台灣使用者實際代表什麼——產品上什麼都沒變，但多了一份可以拿來對照廠商說法的公開文件；台灣並不在這份文件的管轄範圍內。生活情境請標明是編輯設計的例子（例：公司要導入 AI 工具時，如何看廠商的公開框架）。topics 建議 [\"ai\", \"ai-news\"]（跟同為治理題的 ai-news-pace-the-frontier-20260912 一致），news_date 寫 2026-05-28，display_order 接在 148 之後。兩個 link：第一個放 AI 索引 ai-news-2026-january-september-index，第二個放 ai-news-pace-the-frontier-20260912（zh-TW title：「Amodei 呼籲放慢前沿 AI：〈We Must Pace the Frontier〉的主張與界線」，連結文字要逐字相同）。刻意不談：歐盟 AI 法第 50 條的標示義務（已有 ai-news-eu-transparency-20260802）、OpenAI 上市與募資、放慢與否的價值辩論、以及任何對其他廠商框架的比較。",
+ "overlaps_existing_article": "站上 38 篇 ai-news-* 裡沒有任何一篇提到 Preparedness Framework、Frontier Governance Framework、TFAIA 或 SB 53（在 apps/api/app/guides/content/ 對全部 JSON grep 過，零命中），所以題目本身沒有重複。兩篇需要劃清界線：(1) ai-news-eu-transparency-20260802「歐盟 AI 透明度規則上路」講的是 AI 法第 50 條的聊天機器人告知與深偽標示，引用的是歐盟執委會 8/2 執法公告；本篇講的是第 55 條的系統性風險義務與 GPAI 行為準則的 Safety and Security 章，是同一部法的不同部分。最多用一句話區隔，不要重講標示規則。(2) ai-news-pace-the-frontier-20260912「Amodei 呼籲放慢前沿 AI」是個人論述與第三方評估者的主張，引用 darioamodei.com 與三則 X 貼文；本篇是已經發生的法避文件，有具體條款與罰則。兩篇的交集是「第三方評估」：本篇只寫 FGF 用的是 may 而非必須、且未點名任何機構，不重述 Amodei 的三步驟計畫。(3) 未來若要寫 2026-09-01 的「Path to Astra」（Astra 達到 Critical cybersecurity 門檻），那是另一篇，本篇最多引官方 feed 的那一句。",
+ "must_not_write": [
+  "Do not write that this is a new safety policy or that OpenAI 'tightened' its safety rules. The document itself says it overlaps with the existing Preparedness Framework and exists to document compliance with two laws. Frame it as a disclosure document, not a change of practice.",
+  "Do not attribute the '50 fatalities / $1 billion' figures to OpenAI's own risk appetite. OpenAI adopted them because California's TFAIA defines catastrophic risk that way. Say so in the same sentence.",
+  "Do not say the framework was approved, accepted, endorsed or certified by the European Commission, the AI Office, the California Attorney General or the Office of Emergency Services. No source says that.",
+  "Do not write 'we tested' or 'we verified' anything. Every capability claim, tier description and security claim is OpenAI's own wording and must be written as 'OpenAI 表示 / OpenAI 在文件中寫道'.",
+  "Do not treat this as investment or corporate news and do not connect it to OpenAI's S-1 or financing. AI vertical only, no finance topic, no investment framing.",
+  "Do not tell readers in Taiwan that any of these rules protect them. The TFAIA is Californian and the Code of Practice is EU. Say explicitly that the document names no Taiwanese obligation.",
+  "Do not re-explain the EU AI Act's chatbot and deepfake labelling rules — that is the existing article ai-news-eu-transparency-20260802 (Article 50 transparency). This article is about Article 55 systemic-risk obligations and the GPAI Code of Practice, a different part of the same law. One sentence of contrast is the maximum.",
+  "Do not re-argue whether frontier AI should be slowed down — that is ai-news-pace-the-frontier-20260912. Link to it, do not restate it.",
+  "Do not quote '27/7/365' and do not correct it to 24/7 either; leave the number out.",
+  "Do not write a fifth tier, a harmful-manipulation tier table, or any threshold that is not in the PDF. Three of the four categories have tiers; harmful manipulation does not.",
+  "Do not use a news site, a law-firm note or a search snippet as a source, and do not cite openai.com/index/openai-frontier-governance-framework/ as a fetched source — it returns 403 and was never read."
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md says '❌ 查否：OpenAI 在 9/15–9/16 沒有發布消息' and that the feed's last item is 2026-09-14. That is now stale: as of 2026-09-16 14:30 UTC the feed's lastBuildDate is 'Wed, 16 Sep 2026 14:30:47 GMT' and its newest item is 'Reimagining advertising with AI' (Product), pubDate Wed, 16 Sep 2026 13:00:00 GMT, link https://openai.com/index/reimagining-advertising-with-ai . 9/15 still has nothing.",
+  "candidates-tech-and-ai.md and BRIEF.md both say the OpenAI feed has 1,193 items with 407 in 2026. Re-counted today: 1,194 items, all with pubDate, 408 dated 2026. The figure moves with every new post — do not treat it as fixed.",
+  "BRIEF.md / candidates-tech-and-ai.md record only that openai.com returns 403 and that the RSS feed is the fallback. Two more official routes work and should be added to the table: https://openai.com/sitemap.xml and its per-section children (e.g. /sitemap.xml/safety/, /global-affairs/, /publication/, /company/) return HTTP 200 and give canonical URLs plus <lastmod> timestamps; and cdn.openai.com serves OpenAI's PDFs with HTTP 200 (framework documents, system cards). The /index/ HTML pages remain 403 to both curl and WebFetch, including every locale alternate.",
+  "candidates-tech-and-ai.md lists this item as '2026-05-28 | OpenAI's Frontier Governance Framework | 與既有 ai-news-pace-the-frontier-20260912 同一條線'. The date is correct. The suggested relation is only loosely right: the Amodei piece is an opinion essay about slowing down, this is a compliance document. They belong in the same section of the index but the articles should not be written as a pair.",
+  "Practical note for other agents in this container: the system Python's 'cryptography' module is broken (ModuleNotFoundError: _cffi_backend, then a pyo3 PanicException), which makes pypdf AND pdfminer fail on import. Working workaround: env -u PYTHONPATH uv run --no-project --python 3.12 --with pypdf python <script>. There is no pdftotext, mutool or qpdf installed."
+ ]
+}

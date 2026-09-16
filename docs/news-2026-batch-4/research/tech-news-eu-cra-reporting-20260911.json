@@ -1,0 +1,496 @@
+{
+ "slug": "tech-news-eu-cra-reporting-20260911",
+ "checked_on": "2026-09-16",
+ "event_date": "2026-09-11",
+ "event_date_basis": "Article 71(2) of Regulation (EU) 2024/2847 fixes 11 September 2026 as the date from which Article 14 (manufacturer reporting) applies. ENISA's press release announcing the Single Reporting Platform launch is dated 11 September 2026 and says 'From today, 11 September 2026, manufacturers are required to report'. The Commission's Cyber Resilience Act - Reporting obligations page carries 'Last update 11 September 2026'. So announcement date = effective date = 2026-09-11. Earlier/other dates that are NOT the event date: the Regulation was signed 23 October 2024 and published in OJ L, 2024/2847 on 20.11.2024; ENISA's AR guidance pages were last updated 9-10 September 2026 (pre-launch); the ENISA SRP FAQ page shows 'Updated: 12 September 2026' (post-launch revision); the Commission guidance C(2026) 5252 was published 27 July 2026; the CSIRT coordinator list was last updated 10 September 2026.",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All four recorded sources were fetched successfully with curl -A \"Mokaair-editorial\" on 2026-09-16. HTTP status actually observed: digital-strategy.ec.europa.eu/en/policies/cra-reporting 200 (52,986 bytes); www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched 200 (49,815 bytes); ENISA SRP FAQ 200 (78,755 bytes); publications.europa.eu/resource/celex/32024R2847 with 'Accept: application/xhtml+xml' 200, 710,696 bytes, which is the full Official Journal text of Regulation (EU) 2024/2847 (header line 'L_202402847EN.000101.fmx.xml', 'Official Journal of the European Union / EN / L series / 2024/2847 / 20.11.2024'). EUR-LEX IS BLOCKED IN THIS CONTAINER as documented in the brief: eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R2847, eur-lex.europa.eu/eli/reg/2024/2847/oj and eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847 all returned HTTP 202 with a zero-byte body (AWS WAF). http://data.europa.eu/eli/reg/2024/2847/oj (the ELI printed inside the OJ text itself) redirects to the same blocked EUR-Lex URL and therefore also returned 202/0 bytes here. WORKING OFFICIAL ROUTE FOUND: the Publications Office CELLAR content-negotiation endpoint. https://publications.europa.eu/resource/celex/32024R2847 returns HTTP 404 for 'Accept: text/html' and for 'Accept: application/pdf', but HTTP 200 for 'Accept: application/xhtml+xml' (cellar id 21b7d4eb-a6e2-11ef-85f0-01aa75ed71a1). With a browser-style Accept header it 302s to an RDF metadata dump, so if the writing agent wants a reader-friendly official URL instead, use the Publications Office record page https://op.europa.eu/en/publication-detail/-/publication/21b7d4eb-a6e2-11ef-85f0-01aa75ed71a1 - I fetched it, HTTP 200, and its <title> is the full correct title of Regulation (EU) 2024/2847 - but note that page is metadata only, it does not contain the article text, so the article text facts below are traced to the CELLAR URL I actually read. OTHER OFFICIAL PAGES FETCHED (200) AND USABLE AS SWAPS, all first-party: https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp (the SRP topic page; note the lead URL .../product-security-and-certification/... is stale and 301s here), https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/list-of-csirts-designated-as-coordinators, https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation (Commission guidance announcement, 27 July 2026), and https://publications.europa.eu/resource/celex/32026R0881 with 'Accept: application/xhtml+xml' 200 (the full OJ text of Commission Delegated Regulation (EU) 2026/881). I did NOT open https://portal.cra-srp.enisa.europa.eu/ - it is a login portal and nothing would be gained by hitting it; its address is recorded only because ENISA publishes it. I did NOT read the Commission guidance PDF C(2026) 5252 itself or the Commission 'FAQs on the CRA implementation' PDF, so nothing below is attributed to them beyond the fact that they exist and which sections cover reporting.",
+ "sources": [
+  {
+   "title": "Cyber Resilience Act - Reporting obligations",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+   "publisher": "European Commission (Shaping Europe's digital future, DG CONNECT)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "The CRA Single Reporting Platform is launched",
+   "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+   "publisher": "ENISA (European Union Agency for Cybersecurity)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Single Reporting Platform (SRP) - Frequently Asked Questions",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "publisher": "ENISA (European Union Agency for Cybersecurity)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Regulation (EU) 2024/2847 (Cyber Resilience Act), Official Journal text",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "publisher": "Publications Office of the European Union",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "RESOLVES THE ASSIGNED CONFLICT. Regulation (EU) 2024/2847 Article 71(2) ('Entry into force and application') sets three different application dates in one paragraph: the Regulation as a whole applies from 11 December 2027, Article 14 applies from 11 September 2026, and Chapter IV (Articles 35 to 51) applies from 11 June 2026. So the aggregators' '11 December 2027' and the Commission page's '11 September 2026' are not in conflict: 11 December 2027 is the general application date of the Regulation, and 11 September 2026 is a carve-out that covers Article 14 ONLY.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This Regulation shall apply from 11 December 2027. However, Article 14 shall apply from 11 September 2026 and Chapter IV (Articles 35 to 51) shall apply from 11 June 2026."
+  },
+  {
+   "fact": "Article 14 of Regulation (EU) 2024/2847 is titled 'Reporting obligations of manufacturers'. It is the only reporting article brought forward to 11 September 2026 by Article 71(2).",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Article 14 / Reporting obligations of manufacturers"
+  },
+  {
+   "fact": "Article 24 of Regulation (EU) 2024/2847 is titled 'Obligations of open-source software stewards'. Article 24(3) is the paragraph that extends Article 14's reporting duties to open-source software stewards. Article 24 is NOT carved out by Article 71(2), so it takes the general date of 11 December 2027.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The obligations laid down in Article 14(1) shall apply to open-source software stewards to the extent that they are involved in the development of the products with digital elements. The obligations laid down in Article 14(3) and (8) shall apply to open-source software stewards to the extent that severe incidents having an impact on the security of products with digital elements affect network and information systems provided by the open-source software stewards for the development of such products."
+  },
+  {
+   "fact": "The European Commission's own reporting-obligations page states both dates explicitly and attributes the open-source steward date to Article 71(2).",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As of 11 September 2026, manufacturers are required to report actively exploited vulnerabilities and severe incidents impacting the security of products with digital elements. In accordance with Article 71(2) of the CRA, open-source software stewards are subject to reporting obligations (Article 24(3)) from 11 December 2027."
+  },
+  {
+   "fact": "The Commission states in its own words that the CRA's main obligations apply from 11 December 2027 while reporting obligations already apply from 11 September 2026 (page published and last updated 27 July 2026).",
+   "url": "https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Cyber Resilience Act's main obligations apply from 11 December 2027 , with reporting obligations already applying as of 11 September 2026."
+  },
+  {
+   "fact": "ENISA states the same split in its launch press release.",
+   "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The CRA's reporting obligations apply to manufacturers from 11 September 2026, while its main cybersecurity requirements obligations apply from 11 December 2027."
+  },
+  {
+   "fact": "ENISA FAQ 29 ('When did the reporting obligations start?') repeats the split and names the articles: Article 14 for manufacturers from 11 September 2026, Article 24(3) for open-source software stewards from 11 December 2027 in accordance with Article 71(2).",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The CRA reporting obligations under Art. 14 apply to manufacturers of products with digital elements from 11 September 2026. In accordance with Art. 71(2) of the CRA, the reporting obligations for open-source software stewards under Art. 24(3) apply from 11 December 2027."
+  },
+  {
+   "fact": "The third date in Article 71(2), 11 June 2026, covers Chapter IV, i.e. Articles 35 to 51, which is the chapter on notification of conformity assessment bodies. This date has already passed and is NOT the reporting start date.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Chapter IV (Articles 35 to 51) shall apply from 11 June 2026"
+  },
+  {
+   "fact": "Article 14(2) sets the three deadlines for an ACTIVELY EXPLOITED VULNERABILITY: (a) an early warning notification without undue delay and in any event within 24 hours of the manufacturer becoming aware; (b) a vulnerability notification without undue delay and in any event within 72 hours of becoming aware; (c) a final report no later than 14 days after a corrective or mitigating measure is available.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "an early warning notification of an actively exploited vulnerability, without undue delay and in any event within 24 hours of the manufacturer becoming aware of it ... a vulnerability notification, without undue delay and in any event within 72 hours ... a final report, no later than 14 days after a corrective or mitigating measure is available"
+  },
+  {
+   "fact": "Article 14(4) sets the three deadlines for a SEVERE INCIDENT: (a) early warning within 24 hours of becoming aware, including at least whether the incident is suspected of being caused by unlawful or malicious acts; (b) an incident notification within 72 hours of becoming aware; (c) a final report WITHIN ONE MONTH AFTER THE SUBMISSION OF THE 72-HOUR INCIDENT NOTIFICATION - i.e. the one-month clock runs from the 72-hour notification, not from the 14-day rule and not from awareness.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "a final report, within one month after the submission of the incident notification under point (b)"
+  },
+  {
+   "fact": "The one-month final report for severe incidents must contain at least a detailed description of the incident including its severity and impact, the type of threat or root cause likely to have triggered it, and applied and ongoing mitigation measures. The 14-day final report for actively exploited vulnerabilities must contain at least a description of the vulnerability including severity and impact, where available information on any malicious actor exploiting it, and details of the security update or other corrective measures made available.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Commission page gives the same four timings in one sentence and uses 'within a month from the 72-hour notification' for severe incidents.",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "They need to submit an early warning within 24 hours of becoming aware, and a full notification within 72 hours. A final report needs to be submitted no later than 14 days after a corrective measure is available for actively exploited vulnerabilities and within a month from the 72-hour notification for severe incidents."
+  },
+  {
+   "fact": "ENISA FAQ 7 states the same deadlines and adds that the clock starts when the manufacturer or open-source steward BECOMES AWARE of the actively exploited vulnerability or severe incident.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The reporting process starts when a manufacturer or open-source steward becomes aware of an actively exploited vulnerability or severe incident."
+  },
+  {
+   "fact": "Article 14(6): where necessary, the CSIRT designated as coordinator that initially received the notification may ask the manufacturer for an INTERMEDIATE report on relevant status updates. This is a fourth possible report on top of the 24h/72h/final sequence.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 14(7): the notification is submitted through the single reporting platform using the electronic notification end-point of the CSIRT designated as coordinator of the Member State where the manufacturer has its MAIN ESTABLISHMENT in the Union, and shall be simultaneously accessible to ENISA. Main establishment means the Member State where decisions on the cybersecurity of the manufacturer's products with digital elements are predominantly taken; if that cannot be determined, the Member State where the manufacturer has the establishment with the highest number of employees in the Union.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 14(7) third subparagraph: a manufacturer with NO main establishment in the Union follows a fixed order of four fallbacks to pick the CSIRT: (a) the Member State where the authorised representative acting for the highest number of that manufacturer's products is established; (b) the Member State of the importer placing the highest number of its products on the market; (c) the Member State of the distributor making the highest number of its products available; (d) the Member State with the highest number of users of its products. This is the provision that catches manufacturers based outside the EU.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 16(2): after receiving a notification, the CSIRT designated as coordinator that initially received it shall WITHOUT DELAY disseminate it via the single reporting platform to the CSIRTs designated as coordinators in the territories where the manufacturer has indicated the product has been made available.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 16(3): after receiving a notification, CSIRTs designated as coordinators shall provide their own Member State's market surveillance authorities with the notified information necessary for those authorities to fulfil their obligations under the Regulation.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Commission page summarises the routing as: report once through the SRP; the notification is addressed to the CSIRT where the manufacturer has its main establishment; unless particularly exceptional circumstances apply the information is made available simultaneously to ENISA; that CSIRT shares it without delay with all other CSIRTs in whose territory the product has been made available.",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Manufacturers report only once through the CRA Single Reporting Platform (SRP) . The notification is addressed to the Computer Security Incident Response Team (CSIRT) where they have their main establishment and, unless particularly exceptional circumstances apply, the information is made available simultaneously to ENISA."
+  },
+  {
+   "fact": "ENISA FAQ 20 ('Who receives the reports submitted through the platform?') answers: as a general rule the notification is made available simultaneously to the CSIRT designated as coordinator in the relevant Member State and to ENISA (unless particularly exceptional circumstances apply), and the receiving CSIRT then disseminates it without delay to other relevant CSIRTs across the EU via the platform.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "ENISA FAQ 18 warns that picking the wrong CSIRT has a consequence: 'If the wrong CDaC is selected, the notification may be invalidated and will need to be resubmitted to the correct CDaC.'",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "If the wrong CDaC is selected, the notification may be invalidated and will need to be resubmitted to the correct CDaC."
+  },
+  {
+   "fact": "ENISA publishes a 'List of CSIRTs Designated as Coordinators' with one contact entry per EU Member State. Counted on the page: 27 Member States, from Austria to Sweden. The page shows 'Last updated: 10 September 2026'.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/list-of-csirts-designated-as-coordinators",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Last updated: 10 September 2026"
+  },
+  {
+   "fact": "Article 16(1) is the legal basis for the platform: for the purposes of the notifications under Article 14(1) and (3) and Article 15(1) and (2), and in order to simplify manufacturers' reporting obligations, a single reporting platform shall be established by ENISA, whose day-to-day operations ENISA manages and maintains; the architecture must allow Member States and ENISA to put in place their own electronic notification end-points.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Commission states that ENISA established the CRA Single Reporting Platform pursuant to Article 16 of the CRA and in close cooperation with the CSIRT Network, and that it is operational as of 11 September 2026, and that manufacturers and open-source software stewards are required to submit their notifications through that platform.",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Pursuant to Article 16 of the CRA, and in close cooperation with the CSIRT Network, ENISA has established the CRA Single Reporting Platform (SRP), operational as of 11 September 2026."
+  },
+  {
+   "fact": "VENDOR/AGENCY CLAIM, phrase as 'ENISA says': ENISA says it has deployed the INITIAL OPERATING CAPABILITY of the Single Reporting Platform - not a finished platform - and that it 'will continue to improve and expand its functionalities over the coming months based on operational experience and user needs'.",
+   "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The EU Agency for Cybersecurity (ENISA) has deployed the initial operating capability of the Single Reporting Platform (SRP)."
+  },
+  {
+   "fact": "ENISA publishes the platform address as https://portal.cra-srp.enisa.europa.eu and says that from there you select 'Assigned Representative' and log in with an EU Login account; ENISA FAQ 28 says 'The portal will be available from 11 September 2026.' (I did not open the portal itself.)",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The SRP will be available at https://portal.cra-srp.enisa.europa.eu . From there, select \"Assigned Representative\" and log in using your EU Login account. The portal will be available from 11 September 2026."
+  },
+  {
+   "fact": "ENISA FAQ 9: the people who submit notifications are 'Assigned Representatives' (ARs). An AR must hold an EU Login account with multi-factor authentication enabled. There can be only ONE Primary AR per manufacturer and UP TO 20 Secondary ARs. The AR-manufacturer association is validated by the designated CSIRT; verification runs in parallel with reporting and an AR whose association is not yet verified may submit UP TO 20 notifications for that manufacturer before verification becomes mandatory.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "There can be only one Primary AR per manufacturer and up to 20 Secondary ARs. ... ARs whose manufacturer association has not yet been verified may submit up to 20 notifications for that manufacturer before verification becomes mandatory."
+  },
+  {
+   "fact": "ENISA FAQ 24: at launch the platform is available in ENGLISH ONLY. ENISA says it will progressively translate the Factsheet and other supporting materials into all EU languages, and that availability of additional language versions of the platform itself will be reviewed in the next phase of the project.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": true,
+   "verbatim_quote": "At launch, the platform will be available in English only."
+  },
+  {
+   "fact": "ENISA FAQ 15: NO API is provided at the initial release of the SRP, so notifications must be submitted through the platform interface; ENISA says API functionality 'may be considered in a future phase'.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "no Application Programming Interface (API) will be provided at the initial release of the SRP, so notifications must be submitted through the platform interface"
+  },
+  {
+   "fact": "ENISA FAQ 4, 6 and 27: the VOLUNTARY reporting channel foreseen in Article 15 of the CRA is NOT yet implemented in the platform. Only mandatory notifications of actively exploited vulnerabilities and severe incidents can currently be submitted. ENISA says voluntary reporting 'will be introduced in a future phase'.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Voluntary reporting under Art. 15 will be introduced in a future phase of the platform."
+  },
+  {
+   "fact": "ENISA FAQ 30: the current version of the platform supports only mandatory notifications by manufacturers under Article 14. Someone who is not a manufacturer and wants to report a vulnerability is told to contact the relevant national CSIRT directly, and is warned their submission 'might be marked as ‘invalid’ in the SRP'. This is the line that stops readers assuming the SRP is a consumer complaint channel.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "ENISA FAQ 25: if the SRP is temporarily unavailable, manufacturers should wait until it is available again and then submit; they may contact their designated CSIRT directly in the meantime if immediate communication is necessary, but the notification must still be submitted through the SRP once it is back, in accordance with the CRA.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "KNOWN DEFECT ENISA ITSELF DISCLOSES (FAQ 26): in the current release the 72-hour counter displays a due date/time 48 hours after submission of the 24-hour Early Warning, so 'in some cases, a notification may be displayed as overdue before 72 hours have elapsed since the manufacturer or open-source software steward became aware of the event.' ENISA says this logic will be updated in a future release. For actively exploited vulnerabilities no final-report counter is implemented at all, because that deadline depends on when a corrective measure becomes available; for severe incidents the counter shows a due date one month after the 72-hour notification. ENISA says the counters do not replace the legal obligation.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In the current release, the 72-hour counter displays a due date/time 48hrs after submission of the 24-hour Early Warning. As a result, in some cases, a notification may be displayed as overdue before 72 hours have elapsed since the manufacturer or open-source software steward became aware of the event."
+  },
+  {
+   "fact": "ENISA FAQ 8: only ONE notification is required for a given actively exploited vulnerability or severe incident even where a manufacturer has multiple EU branches or subsidiaries and/or a parent company headquartered outside the EU; it is the manufacturer's responsibility to coordinate internally and ensure the required notification is submitted through the SRP.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 3(42) defines 'actively exploited vulnerability' as a vulnerability for which there is reliable evidence that a malicious actor has exploited it in a system without permission of the system owner. Merely knowing a vulnerability exists is not enough to trigger Article 14(1).",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "‘actively exploited vulnerability’ means a vulnerability for which there is reliable evidence that a malicious actor has exploited it in a system without permission of the system owner"
+  },
+  {
+   "fact": "Article 14(5) defines when an incident counts as SEVERE: where it negatively affects or is capable of negatively affecting the ability of a product with digital elements to protect the availability, authenticity, integrity or confidentiality of SENSITIVE OR IMPORTANT data or functions; or where it has led or is capable of leading to the introduction or execution of malicious code in the product or in the network and information systems of a user of the product.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 3(1) defines 'product with digital elements' as a software or hardware product and its remote data processing solutions, including software or hardware components placed on the market separately. Article 3(14) defines 'open-source software steward' as a legal person, other than a manufacturer, that has the purpose or objective of systematically providing support on a sustained basis for the development of specific products with digital elements qualifying as free and open-source software and intended for commercial activities, and that ensures the viability of those products.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 2(1): the Regulation applies to products with digital elements made available on the market whose intended purpose or reasonably foreseeable use includes a direct or indirect logical or physical data connection to a device or network. Article 2 then excludes products covered by the medical devices regulations (EU) 2017/745 and (EU) 2017/746, the vehicle general safety regulation (EU) 2019/2144, products certified under the civil aviation regulation (EU) 2018/1139, marine equipment under Directive 2014/90/EU, spare parts manufactured to the same specification as the component they replace, and products developed or modified exclusively for national security or defence or specifically designed to process classified information.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 14(8): after becoming aware of an actively exploited vulnerability or a severe incident, the manufacturer shall INFORM THE IMPACTED USERS of the product and, where appropriate, all users, of that vulnerability or incident and, where necessary, of the risk mitigation and corrective measures users can deploy - where appropriate in a structured, machine-readable format. If the manufacturer fails to inform users in a timely manner, the notified CSIRTs designated as coordinators may provide that information to users where proportionate and necessary. This is the part of Article 14 that faces the ordinary device owner.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 69(3): by way of derogation from the transitional rule in Article 69(2), the obligations laid down in Article 14 apply to ALL products with digital elements within the scope of the Regulation that were placed on the market BEFORE 11 December 2027. So the reporting duty already covers devices that were sold years ago, not just new models. (Article 69(2) says products placed on the market before 11 December 2027 are subject to the Regulation's other requirements only if they undergo a substantial modification from that date.)",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By way of derogation from paragraph 2 of this Article, the obligations laid down in Article 14 shall apply to all products with digital elements that fall within the scope of this Regulation that have been placed on the market before 11 December 2027."
+  },
+  {
+   "fact": "ENISA FAQ 13: a manufacturer is NOT required to retrospectively report an actively exploited vulnerability where it was already aware of the active exploitation before 11 September 2026; but where it becomes aware of the active exploitation after that date the obligation applies, including where the underlying vulnerability existed or was previously known. ENISA attributes this reading to the Commission's FAQs on the CRA implementation, subsections 5.1 and 5.3.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 16(2) second subparagraph: in exceptional circumstances, in particular at the manufacturer's request and in light of the sensitivity of the notified information, dissemination to other CSIRTs may be delayed on justified cybersecurity-related grounds for a period strictly necessary, including where the vulnerability is subject to a coordinated vulnerability disclosure procedure under Article 12(1) of Directive (EU) 2022/2555. A CSIRT that withholds a notification must immediately inform ENISA, justify it, and say when it will disseminate.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 16(2) third subparagraph sets the three 'particularly exceptional circumstances' in which even ENISA gets only partial information: (a) the notified vulnerability has been actively exploited and, on available information, in no other Member State than that of the receiving CSIRT; (b) any immediate further dissemination would likely supply information whose disclosure would be contrary to the essential interests of that Member State; (c) the notified vulnerability poses an imminent high cybersecurity risk stemming from further dissemination. In those cases only the fact that a notification was made, general product information, the general nature of the exploit, and the fact that security-related grounds were raised are made available to ENISA until the full notification is disseminated.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Commission adopted the delegated act required by Article 14(9) on 11 December 2025: Commission Delegated Regulation (EU) 2026/881 of 11 December 2025, published in the Official Journal L series as 2026/881 on 20.4.2026, ELI http://data.europa.eu/eli/reg_del/2026/881/oj. It specifies the terms and conditions for applying the cybersecurity-related grounds for delaying dissemination of notifications, and it enters into force on the twentieth day following publication.",
+   "url": "https://publications.europa.eu/resource/celex/32026R0881",
+   "is_vendor_claim": false,
+   "verbatim_quote": "COMMISSION DELEGATED REGULATION (EU) 2026/881 of 11 December 2025 supplementing Regulation (EU) 2024/2847 ... by specifying the terms and conditions for applying the cybersecurity-related grounds in relation to delaying the dissemination of notifications"
+  },
+  {
+   "fact": "Delegated Regulation (EU) 2026/881 Article 3 lists four conditions, at least one of which must be met before a CSIRT may delay dissemination on grounds stemming from the nature of the reported information, and all four are on top of a balancing test that the cybersecurity risks of dissemination outweigh its benefits and cannot be mitigated by protocols such as the Traffic Light Protocol (TLP) or the Permissible Actions Protocol (PAP): (a) the manufacturer has told the CSIRT that an effective risk mitigation measure such as a security update or user guidance is expected within 72 hours - and if it does not arrive in that window the CSIRT shall disseminate; (b) the notification contains enough to create an exploitation technique, particularly where the vulnerability is easily identified and exploited by actors with limited skills and resources; (c) the CSIRT can share enough partial information for the other CSIRTs to put adequate mitigations in place; (d) the CSIRT learned of the vulnerability as a trusted intermediary in a coordinated vulnerability disclosure under Article 12(1) of Directive (EU) 2022/2555. Articles 4 and 5 add grounds relating to a specific CSIRT that has been hit by a cybersecurity incident or lacks confidentiality capability, and to the single reporting platform itself having been affected by a cybersecurity incident.",
+   "url": "https://publications.europa.eu/resource/celex/32026R0881",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "ENISA FAQ 21: during the first 72-hour window the reporter should assess whether Particularly Exceptional Circumstances (PEC) apply; PEC may be invoked only where at least one of the conditions under Article 16(2) of the CRA is met; where PEC is invoked in the 72-hour notification, ENISA receives only partial information until the receiving CSIRT makes the full notification available.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 17(5): after a security update or other corrective or mitigating measure is available, ENISA shall, IN AGREEMENT WITH THE MANUFACTURER, add the publicly known vulnerability notified under Article 14(1) or Article 15(1) to the European vulnerability database established under Article 12(2) of Directive (EU) 2022/2555. This is the only route by which a reported vulnerability becomes public through the system, and it requires the manufacturer's agreement and a fix being available.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 17(2): where public awareness is necessary to prevent or mitigate a severe incident or to handle an ongoing incident, or where disclosure is otherwise in the public interest, the CSIRT designated as coordinator may, after consulting the manufacturer and where appropriate in cooperation with ENISA, inform the public about the incident or require the manufacturer to do so.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 17(3): ENISA must prepare, every 24 months, a technical report on emerging trends in cybersecurity risks in products with digital elements and submit it to the Cooperation Group under Article 14 of Directive (EU) 2022/2555; the FIRST such report is due within 24 months of the date of application of the Article 14(1) and (3) obligations - i.e. within 24 months of 11 September 2026.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 70(2): by 11 September 2028 the Commission must, after consulting ENISA and the CSIRTs network, submit a report to the European Parliament and the Council assessing the effectiveness of the single reporting platform and the impact of CSIRTs applying the cybersecurity-related delay grounds on its timely dissemination of notifications.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 17(4): the mere act of notifying under Article 14(1) and (3) or Article 15(1) and (2) shall not subject the notifying person to increased liability. Article 17(6): CSIRTs designated as coordinators shall provide helpdesk support on the Article 14 reporting obligations to manufacturers, in particular microenterprises and small and medium-sized enterprises.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 64(1) leaves the actual penalty rules to Member States, which must lay down effective, proportionate and dissuasive penalties and notify them to the Commission. Article 64(2) sets the ceiling relevant here: non-compliance with the essential cybersecurity requirements in Annex I and with the obligations set out in ARTICLES 13 AND 14 is subject to administrative fines of up to EUR 15 000 000 or, if the offender is an undertaking, up to 2,5 % of its total worldwide annual turnover for the preceding financial year, whichever is higher. Article 64(3) sets a EUR 10 000 000 / 2 % tier for a list of other articles, and Article 64(4) a EUR 5 000 000 / 1 % tier for supplying incorrect, incomplete or misleading information to notified bodies and market surveillance authorities.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Non-compliance with the essential cybersecurity requirements set out in Annex I and the obligations set out in Articles 13 and 14 shall be subject to administrative fines of up to EUR 15 000 000 or, if the offender is an undertaking, up to 2,5 % of the its total worldwide annual turnover for the preceding financial year, whichever is higher."
+  },
+  {
+   "fact": "Article 64(10) carves out two groups: 'By way of derogation from paragraphs 3 to 9, the administrative fines referred to in those paragraphs shall not apply to the following: (a) manufacturers that qualify as microenterprises or small enterprises with regard to any failure to meet the deadline referred to in Article 14(2), point (a), or Article 14(4), point (a); (b) any infringement of this Regulation by open-source software stewards.' Article 14(2)(a) and 14(4)(a) are the two 24-HOUR EARLY WARNING deadlines. NOTE FOR THE WRITER: the derogation is worded as applying to 'paragraphs 3 to 9', while the Article 14 fines sit in paragraph 2 - quote the provision, do not paraphrase it into a clean rule.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By way of derogation from paragraphs 3 to 9, the administrative fines referred to in those paragraphs shall not apply to the following: (a) manufacturers that qualify as microenterprises or small enterprises with regard to any failure to meet the deadline referred to in Article 14(2), point (a), or Article 14(4), point (a); (b) any infringement of this Regulation by open-source software stewards."
+  },
+  {
+   "fact": "Regulation (EU) 2024/2847 is dated 23 October 2024 (done at Strasbourg) and was published in the Official Journal L series as 2024/2847 on 20.11.2024. Its full title is 'Regulation (EU) 2024/2847 of the European Parliament and of the Council of 23 October 2024 on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) 2019/1020 and Directive (EU) 2020/1828 (Cyber Resilience Act)'. Article 71(1) says it enters into force on the twentieth day following publication.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Commission background, useful only as context: the Commission describes the CRA as 'in force since December 2024' and published practical guidance on 27 July 2026 - document C(2026) 5252, a Communication plus an Annex 'Commission guidance on the application of the Cyber Resilience Act (CRA)' - which it says contains 67 practical examples plus use cases, flowcharts and graphs, and which it states is NON-BINDING. Section 9.1 of that guidance covers reporting obligations. The Commission also publishes 'FAQs on the CRA implementation', Section 5 of which covers reporting.",
+   "url": "https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Today's guidance - though non-binding - gives companies the clarity they need to prepare now, confidently and efficiently."
+  },
+  {
+   "fact": "Commission examples of what the CRA covers, in the Commission's own words: 'Digital products are part of everyday life in Europe - from baby monitors to smartwatches, from apps to computer programs.' Useful for the reader-facing framing without inventing product names.",
+   "url": "https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Digital products are part of everyday life in Europe - from baby monitors to smartwatches, from apps to computer programs."
+  },
+  {
+   "fact": "AGENCY CLAIM, phrase as 'ENISA says' / 'ENISA's Executive Director said'. ENISA's Executive Director Juhan Lepassaar is quoted in the launch release: 'Vulnerabilities in digital products are often exploited by threat actors to subvert or hamper critical services, such as healthcare, energy, transport or telecommunications. The streamlined reporting and sharing of information on actively exploited vulnerabilities and severe incidents helps to build a more resilient Digital Single Market.'",
+   "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Vulnerabilities in digital products are often exploited by threat actors to subvert or hamper critical services, such as healthcare, energy, transport or telecommunications . The streamlined reporting and sharing of information on actively exploited vulnerabilities and severe incidents helps to build a more resilient Digital Single Market."
+  },
+  {
+   "fact": "ENISA says the platform was tested before launch with national CSIRTs, the CRA Expert Group, selected manufacturers and other users, and that it will be periodically reviewed and re-tested after launch (FAQ 22, and the thanks paragraph in the press release). ENISA also says it must notify the CSIRTs Network and the Commission of any security incident affecting the platform itself (Article 16(4) of the CRA).",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "ENISA publishes, alongside the platform, a Factsheet (English, with versions also in DE, EL, FR, HU, LV, NL, RO, SL, SV), Terms and Conditions, an FAQ, an SRP Glossary, an AR User Manual, an AR tutorial video, four guidance pages (AR User Registration, AR Notification submission and update, AR Interface functions, Particularly Exceptional Circumstances) and a helpdesk. The guidance pages carry 'Updated: 9 September 2026' or 'Updated: 10 September 2026'; ENISA states these materials 'reflect ENISA's current best knowledge and may be subject to change'.",
+   "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Article 13(8) of the CRA, for context on what changes on 11 December 2027 and not now: manufacturers must determine a SUPPORT PERIOD reflecting how long the product is expected to be in use, and that support period 'shall be at least five years' unless the product is expected to be in use for less than five years, in which case it corresponds to the expected use time. Article 13(9) requires each security update issued during the support period to remain available for a minimum of 10 years after it was issued, or for the remainder of the support period, whichever is longer. Article 13(19) requires the END DATE of the support period, at least the month and year, to be specified clearly and understandably AT THE TIME OF PURCHASE. NONE OF THIS IS IN FORCE YET - Article 13 is not carved out by Article 71(2), so it applies from 11 December 2027.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the support period shall be at least five years"
+  },
+  {
+   "fact": "Article 13(17): manufacturers must designate a SINGLE POINT OF CONTACT so users can communicate directly and rapidly with them, including to report vulnerabilities; it must be easily identifiable, listed in the user information in Annex II, and must let users choose their preferred means of communication rather than being limited to automated tools. Again, this applies from 11 December 2027, not from 11 September 2026.",
+   "url": "https://publications.europa.eu/resource/celex/32024R2847",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "NO COUNT OF REPORTS. Neither ENISA nor the Commission publishes how many notifications have been submitted through the SRP since 11 September 2026, nor how many manufacturers or Assigned Representatives have registered. Do not write any number.",
+  "NO NAMED CASE. No official source names a single vulnerability, incident, product, brand or manufacturer that has been reported through the platform. Write no example as if it were real.",
+  "NOT A PUBLIC DATABASE. Neither the Commission page nor ENISA says that notifications become public or searchable. The only official public route stated is Article 17(5) - ENISA adds the vulnerability to the European vulnerability database (EUVD) only after a corrective measure is available AND in agreement with the manufacturer - plus Article 17(2), where a CSIRT may inform the public where necessary. Do not tell readers they will be able to look up what was reported about their device.",
+  "NOT A CONSUMER CHANNEL. No official source says consumers can use the SRP. ENISA FAQ 30 says the opposite: the current version supports only mandatory notifications by manufacturers, and a non-manufacturer's submission 'might be marked as ‘invalid’'. Do not present the SRP as somewhere a reader can report a bug.",
+  "NO PENALTY IN FORCE STATED. Neither the Commission reporting page nor any ENISA page mentions fines. The EUR 15 000 000 / 2,5 % ceiling comes from Article 64 of the Regulation, and Article 64(1) leaves the actual penalties to each Member State. CRITICALLY: Article 64 is NOT carved out by Article 71(2), so on the face of the text it applies from 11 December 2027, and NO official source I reached says whether administrative fines can be imposed for an Article 14 breach occurring between 11 September 2026 and 11 December 2027. Do not assert either way; if penalties are mentioned at all, say that Article 64 sets the ceilings, that Member States set the rules, and that the official pages do not address enforcement during this window.",
+  "NO DATE FOR THE MISSING FEATURES. ENISA says voluntary reporting under Article 15, an API, and additional platform languages are for 'a future phase' or 'the next phase', and gives NO date for any of them.",
+  "NO TAIWAN, NO NON-EU MARKET STATEMENT. No official source says anything about Taiwan, or about whether a device sold outside the EU is affected. The scope in Article 2(1) is products with digital elements MADE AVAILABLE ON THE [Union] MARKET. Article 14(7) covers manufacturers with no main establishment in the Union, but only for products on the EU market. Do not write that Taiwanese buyers are covered, and do not write that they are not - say what the scope provision says and stop.",
+  "NO USER-FACING TIMING. Article 14(8) requires the manufacturer to inform impacted users, but neither the Regulation nor any official page sets a DEADLINE for informing users, nor a required channel, nor a required language. The 24h/72h/14-day/one-month deadlines are for the authorities, not for the user notice.",
+  "NO PRICE, NO FEE. Nothing on any page says whether using the SRP costs anything. Do not speculate.",
+  "NO UPTIME OR CAPACITY FIGURE. No official source gives availability, capacity, throughput or response-time figures for the platform.",
+  "NO STATEMENT THAT DEVICES WILL GET MORE UPDATES. Nothing in the 11 September 2026 change requires any manufacturer to ship a patch, or to ship it faster. Article 14 requires reporting; the vulnerability-handling and support-period duties are in Article 13 and Annex I and apply from 11 December 2027. Do not let the article imply that firmware updates improve from 11 September 2026.",
+  "NO NUMBER OF AFFECTED COMPANIES. No official source estimates how many manufacturers fall within Article 14.",
+  "THE COMMISSION REPORTING PAGE DOES NOT MENTION Article 14(8) (informing users), the penalties in Article 64, the transitional rule in Article 69(3), or the definitions in Article 3 - those come from the Regulation text only."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "'The CRA's main obligations apply from 2027-12-11' framed as if it contradicted the 2026-09-11 reporting start (the conflict this assignment was sent to resolve).",
+   "seen_where": "Aggregator summaries cited in docs/news-2026-batch-4/candidates-tech-and-ai.md line 187-189.",
+   "why_excluded": "NOT excluded - resolved, and the resolution is in verified_facts. Article 71(2) contains both dates: the Regulation applies from 11 December 2027, Article 14 from 11 September 2026, Chapter IV from 11 June 2026. The Commission's own guidance page words it the same way. The aggregator statement is correct but incomplete; the article must give all three dates and name the articles, not pick a side."
+  },
+  {
+   "claim": "'Manufacturers and open-source software stewards must report through the SRP from 11 September 2026.'",
+   "seen_where": "docs/news-2026-batch-4/candidates-tech-and-ai.md line 185-186; also loosely implied by the ENISA SRP topic page's opening sentence and by the ENISA press release's second paragraph, which say the platform 'enables manufacturers and open-source software stewards to meet their new CRA reporting obligations' without a date qualifier.",
+   "why_excluded": "WRONG as stated and must be corrected in the article. From 11 September 2026 the duty falls on MANUFACTURERS only. Open-source software stewards come in on 11 December 2027 under Article 24(3) via Article 71(2) - stated by the Commission page, by ENISA FAQ 4, 5, 27 and 29, and by the 'Who is the platform for?' section of the ENISA press release itself. ENISA's own careful wording elsewhere is 'and, once applicable, open-source software stewards'."
+  },
+  {
+   "claim": "Article 24(3) applies to open-source software stewards 'to the extent that they are involved in the DEPLOYMENT of products with digital elements'.",
+   "seen_where": "ENISA SRP FAQ, answer 5.",
+   "why_excluded": "Excluded in favour of the statutory wording. Article 24(3) of Regulation (EU) 2024/2847 says 'to the extent that they are involved in the DEVELOPMENT of the products with digital elements'. ENISA's own FAQ 29 and the Commission page track the Regulation. Use 'development'."
+  },
+  {
+   "claim": "The CRA entered into force on 10 December 2024.",
+   "seen_where": "Arithmetic on Article 71(1) ('the twentieth day following that of its publication') plus the OJ publication date of 20.11.2024; the Commission library page says only 'in force since December 2024'.",
+   "why_excluded": "No official page I reached states an exact entry-into-force date, and I am not going to publish a date I calculated myself. If the article needs it, write 'the Commission says the CRA has been in force since December 2024' and cite the Commission, or give the publication date 20 November 2024 from the OJ text."
+  },
+  {
+   "claim": "The EU's Digital Omnibus changed the CRA's dates or obligations.",
+   "seen_where": "The Commission guidance page mentions 'the Digital Omnibus published in November 2025' twice, in the context of simplification.",
+   "why_excluded": "The page says nothing about the Digital Omnibus amending the CRA, and I did not read the Digital Omnibus itself. Any claim that CRA dates moved would be invention. Note also that the Article 71(2) text I read on 2026-09-16 still reads 11 December 2027 / 11 September 2026 / 11 June 2026."
+  },
+  {
+   "claim": "Reports submitted to the SRP reach all 27 EU CSIRTs / the EU has 27 CSIRTs designated as coordinators.",
+   "seen_where": "ENISA's 'List of CSIRTs Designated as Coordinators' page, last updated 10 September 2026, which I counted as having one entry per Member State for 27 Member States.",
+   "why_excluded": "Partly usable, partly not. The count of 27 entries is mine, from the page; ENISA does not print the number '27' on that page. And Article 16(2) says the receiving CSIRT disseminates to the CSIRTs in whose territory the manufacturer has indicated the product was MADE AVAILABLE - not automatically to all of them. If the writer uses the figure, attribute it as 'ENISA's list has one contact per EU Member State' and do not say every report goes to all 27."
+  },
+  {
+   "claim": "Any figure for how many notifications the SRP has received, or how many manufacturers registered, in its first days.",
+   "seen_where": "Nowhere official. I looked at the ENISA press release, the SRP topic page, the FAQ (updated 12 September 2026) and the Commission page (last updated 11 September 2026).",
+   "why_excluded": "No official source publishes any such number. Write nothing."
+  },
+  {
+   "claim": "Text of Regulation (EU) 2024/2847 as served by EUR-Lex.",
+   "seen_where": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R2847 , https://eur-lex.europa.eu/eli/reg/2024/2847/oj , http://data.europa.eu/eli/reg/2024/2847/oj",
+   "why_excluded": "Not excluded as a fact, only as a URL. All three returned HTTP 202 with an empty body from this container (AWS WAF), exactly as the brief warned. The article text quoted above was read instead from the Publications Office CELLAR endpoint https://publications.europa.eu/resource/celex/32024R2847 with Accept: application/xhtml+xml, which returned the full OJ text. Cite the URL that was actually read."
+  },
+  {
+   "claim": "Contents of Commission guidance C(2026) 5252 and of the Commission 'FAQs on the CRA implementation' beyond their existence and section numbering.",
+   "seen_where": "Referenced by both the Commission reporting page (Section 9.1 of the guidance, Section 5 of the FAQs) and by ENISA FAQ 10, 11, 12, 13 and 14 (which also cites paragraph 218 of the guidance annex).",
+   "why_excluded": "I did not download or read either PDF, so nothing is attributed to them. Where ENISA restates their content (for example FAQ 13 on retrospective reporting) the fact is recorded as ENISA's restatement, attributed to the ENISA FAQ URL."
+  },
+  {
+   "claim": "That the SRP portal at https://portal.cra-srp.enisa.europa.eu is live and what it looks like.",
+   "seen_where": "ENISA SRP topic page and FAQ 9 and 28 publish the address.",
+   "why_excluded": "I deliberately did not fetch the portal - it is an EU Login-gated reporting system and there is nothing to learn from its login wall. Record only that ENISA publishes that address and says the portal is available from 11 September 2026. Do not describe the interface."
+  }
+ ],
+ "must_not_write": [
+  "Do not write that open-source software stewards must report from 11 September 2026. They must report from 11 December 2027 (Article 24(3) via Article 71(2)).",
+  "Do not write that 'the CRA takes effect on 11 September 2026' or 'the CRA starts today'. Only Article 14 starts then; Chapter IV started 11 June 2026; everything else starts 11 December 2027.",
+  "Do not write that the 14-day final report applies to severe incidents. 14 days is for actively exploited vulnerabilities and runs from when a corrective or mitigating measure becomes available; severe incidents get one month from the 72-hour notification.",
+  "Do not write that the deadlines run from when the vulnerability or incident happened. They run from when the manufacturer BECOMES AWARE (Article 14(2) and (4), ENISA FAQ 7).",
+  "Do not write that the report goes 'to the EU' or 'to Brussels'. It goes through the SRP to the CSIRT designated as coordinator of the Member State of main establishment, and is simultaneously accessible to ENISA unless particularly exceptional circumstances apply.",
+  "Do not tell readers they can report a problem with their own device through the SRP (ENISA FAQ 30 says the opposite).",
+  "Do not imply that devices will get faster patches from 11 September 2026. The patching and support-period duties are Article 13 / Annex I and apply from 11 December 2027.",
+  "Do not describe the platform as complete. ENISA calls it 'initial operating capability'; there is no API, no voluntary reporting, English only, and ENISA discloses a 72-hour counter bug.",
+  "Do not write attack technique, exploit detail, malware names or indicators of compromise - tech.md forbids operable attack detail, and this article has no reason to go near it.",
+  "Do not turn this into buying advice or a 'which brand is safer' piece - tech.md forbids purchase recommendations.",
+  "Do not cite any news outlet, law-firm note or compliance-vendor blog. All four sources are first-party.",
+  "Do not state any number of reports filed, companies registered, or named incidents - none exists officially.",
+  "Do not use the stale lead URL https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp in sources; it redirects to /topics/product-security/single-reporting-platform-srp.",
+  "Do not cite EUR-Lex URLs that were never successfully fetched from here."
+ ],
+ "overlaps_existing_article": "The only existing pack in the same territory is ai-news-eu-transparency-20260802 (zh-TW title: 歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？), which covers a DIFFERENT regulation (the AI Act, Regulation (EU) 2024/1689) and a different start date (2 August 2026), and is written for creators who publish AI-generated content. There is no overlap of subject matter, article numbers or dates. The division to state in the copy: that piece is about labelling AI-generated content; this one is about product cybersecurity reporting under the Cyber Resilience Act, Regulation (EU) 2024/2847. Use ai-news-eu-transparency-20260802 as the second link (the related-news link) - it is the closest neighbour on the site, both being EU digital rules with a 2026 application date. WARNING FOR THE PARENT: there is currently NO tech vertical index pack on the site (all 38 news packs are ai-news-*, and the only index is ai-news-2026-january-september-index). The BRIEF requires the first link to be this vertical's index, so the tech index slug has to be decided at batch level before this pack's links can be finalised. Also note tech.md names the workspace as docs/tech-news-2026/, which does not exist in the repo yet - only docs/news-2026-batch-4/ does. Nothing in this research duplicates ai-news-anthropic-threat-report-20260910 either; that is a threat-intelligence report, not a regulation.",
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-tech-and-ai.md line 185-186 says the SRP is where '製造商與開源軟體管理者都要透過它通報' from 2026-09-11. Wrong for stewards: open-source software stewards are only obliged from 11 December 2027 (Article 24(3) read with Article 71(2)). ENISA's own careful phrasing is 'manufacturers and, once applicable, open-source software stewards'.",
+  "The ⚠️ question at lines 187-189 is answered: there is no contradiction. Article 71(2) contains all three dates - the Regulation applies from 11 December 2027, Article 14 from 11 September 2026, Chapter IV (Articles 35-51) from 11 June 2026. The aggregators' '2027-12-11' is the general application date; the Commission page's '2027-12-11' for stewards is the same date because Article 24(3) was never carved out. Both are right; neither is complete on its own.",
+  "The ENISA lead URL https://www.enisa.europa.eu/topics/product-security-and-certification/single-reporting-platform-srp is stale. It returns 200 but only after redirecting to https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp . Use the redirect target.",
+  "The EUR-Lex lead https://eur-lex.europa.eu/eli/reg/2024/2847/oj cannot be used from this container at all (HTTP 202, empty body). The working official route for the OJ text is the Publications Office CELLAR endpoint https://publications.europa.eu/resource/celex/32024R2847 with an 'Accept: application/xhtml+xml' header. Worth adding to the brief's list of known-working fallbacks alongside the ESMA note.",
+  "Line 184's '重大事故則是 72 小時通報後一個月內' is correct and matches Article 14(4)(c) verbatim ('within one month after the submission of the incident notification under point (b)'). Line 186's '通報送往主要營業地的 CSIRT 並同步給 ENISA' is also correct but needs the qualifier 'unless particularly exceptional circumstances apply' that the Commission page carries.",
+  "The candidates file does not mention that the platform launched only as 'initial operating capability', that there is no API, that voluntary reporting under Article 15 is not implemented, that the platform is English-only at launch, or that ENISA discloses a bug in its own 72-hour counter. Those are the most newsworthy specifics on the page and should be in the article.",
+  "The candidates file does not mention Article 69(3), which makes Article 14 reporting apply to products placed on the market BEFORE 11 December 2027 - i.e. to devices already in people's hands. That is the strongest reader hook and it is in the Regulation, not on the Commission page."
+ ],
+ "editorial_brief": "READER AND ANGLE (per tech.md: the subject is a platform regulation, not an AI model; no purchase advice; vendor and agency claims stay attributed). Written for a Taiwanese general reader who owns connected things - a router, a smart speaker, a watch, a camera, a car dashcam, a phone - and who keeps seeing 'EU rule starts' headlines without learning what actually changed. The reader angle is: from 11 September 2026 a manufacturer that sells a connected product in the EU has a CLOCK on it. When it learns that a vulnerability in its product is actually being exploited, or that a severe incident has hit the product's security, it has 24 hours to file an early warning, 72 hours to file the full notification, and then either 14 days after a fix is available (vulnerability) or one month after the 72-hour notification (severe incident) to file the final report - all through one EU platform, ENISA's Single Reporting Platform. The second thing the reader should take away is the correction the assignment asked for: 11 December 2027 is NOT wrong, it is the date the rest of the Regulation applies, including the open-source software steward duty in Article 24(3) and the support-period and patching duties in Article 13. Only Article 14 was brought forward to 11 September 2026, and Chapter IV started even earlier, on 11 June 2026. Article 71(2) says all three in one paragraph - quote it. \n\nSUGGESTED FIVE SECTIONS: (1) what started on 11 September 2026 and what did not - Article 71(2)'s three dates, spelled out; (2) the four clocks and what each report must contain, ending with the TABLE (see below); (3) where the report goes - SRP, the CSIRT of the main establishment, simultaneously to ENISA, then onward to the CSIRTs of the countries where the product is sold, plus the market surveillance authorities; the delayed-dissemination exception and Delegated Regulation (EU) 2026/881; this section ends with the DIAGRAM; (4) what this does and does not mean for the person holding the device - Article 14(8) user notification, Article 69(3) covering devices already sold, and the blunt fact that nothing here forces a patch (that is Article 13, from 11 December 2027); (5) how finished the platform actually is - initial operating capability, English only, no API, no voluntary reporting yet, ENISA's own disclosed counter bug, and the fact that no numbers have been published. \n\nTABLE (3-4 columns, 3-6 rows, short cells, caption carries checked_on 2026-09-16). Suggested: rows = 早期預警 / 完整通報 / 最終報告（遭積極利用的漏洞）/ 最終報告（重大事故）; columns = 期限 / 起算點 / 依據條款. Do not add a fifth column. All four deadlines and all four article references are in verified_facts. \n\nDIAGRAM (2x2, four nodes, and every number on it must also appear in the body): suggested nodes = ['發現','24 小時內送早期預警'] / ['單一通報平台','一次通報送到一個窗口'] / ['主要營業地 CSIRT','同步給 ENISA'] / ['其他成員國 CSIRT','轉發給市場監督機關']. Per the BRIEF: no logos, no wordmarks, no interface screenshots - write 'ENISA' and 'CSIRT' as plain text. \n\nSUMMARY (2-5 sentences, before the first heading): first sentence is the answer - on 11 September 2026 the CRA's Article 14 reporting duty started and ENISA's Single Reporting Platform went live; second and third give the conditions - it binds manufacturers only, the 24h/72h/14-day/one-month clocks, and open-source software stewards come in on 11 December 2027; last sentence is the caveat - the platform launched as an initial capability in English only, and nothing here obliges anyone to ship a patch. Every number repeated verbatim from the body. \n\nFAQ (2-10 pairs, answers plain text, no links): the questions a reader will really ask - '我的裝置不是在歐盟買的，有差嗎？' (answer from Article 2(1) scope and Article 14(7)'s fallback order, and say plainly that no official source addresses non-EU buyers); '我可以自己通報嗎？' (no - ENISA FAQ 30); '通報了我就會知道嗎？' (Article 14(8) says the manufacturer must tell affected users but sets no deadline; Article 17(5) EUVD entry needs a fix and the manufacturer's agreement); '舊機到底算不算？' (Article 69(3)); '2027 年 12 月 11 日又會發生什麼？' (the rest of the Regulation, including Article 24(3) and Article 13's five-year minimum support period). \n\nSCOPE DELIBERATELY EXCLUDED: conformity assessment, CE marking, Annex I essential requirements, the important/critical product classes in Annex III/IV, notified bodies, harmonised standards, and national penalty regimes. They belong to the 11 December 2027 story and would bloat a piece whose news is one article and one platform. The one Article 13 detail worth keeping is the five-year minimum support period and the purchase-time disclosure of the support end date, used only to show the reader what is still ahead. \n\nLIFE-SCENARIO RULE: any everyday example (一台這幾年買的網路攝影機、一台還在用的路由器) must be labelled as an editorial illustration. The Commission's own 'baby monitors to smartwatches' line is quotable as the Commission's example, not as ours. TONE: plain, no alarm. The honest headline fact is procedural - one clock, one platform, one window - and the honest caveat is that the platform is admittedly unfinished and the patching duties have not started."
+}

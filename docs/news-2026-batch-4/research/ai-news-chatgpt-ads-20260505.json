@@ -1,0 +1,377 @@
+{
+ "slug": "ai-news-chatgpt-ads-20260505",
+ "checked_on": "2026-09-16",
+ "event_date": "2026-05-05",
+ "event_date_basis": "OpenAI's own news feed (https://openai.com/news/rss.xml, fetched 2026-09-16, HTTP 200, 1,194 <item>, newest pubDate Wed, 16 Sep 2026 13:00:00 GMT) carries <title>New ways to buy ChatGPT ads</title> with <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>, <category>Product</category>, <link>https://openai.com/index/new-ways-to-buy-chatgpt-ads</link>. That pubDate is the announcement date and the event date. It is not the page's last-modified date: OpenAI's own sitemap (https://openai.com/sitemap.xml/product/, HTTP 200) lists the canonical URL https://openai.com/index/new-ways-to-buy-chatgpt-ads/ with <lastmod>2026-05-22T19:11:20.545Z</lastmod>, so the post was revised after publication. No effective date, availability date or rollout date appears on any page I could reach. The article body itself returns HTTP 403 (Cloudflare managed challenge), so the date rests on OpenAI's own feed metadata, not on the article text.",
+ "sourcing_verdict": "partial",
+ "sourcing_notes": "WHAT I REACHED. (1) https://openai.com/news/rss.xml - HTTP 200, 725,972 bytes, 1,194 <item>, newest pubDate Wed, 16 Sep 2026 13:00:00 GMT. Live and official. Each item carries OpenAI's own one-line description, and those descriptions contain real figures ('31 European markets', '$1 billion in annualized revenue run rate'). There is no <content:encoded>; the feed exposes title, description, link, guid, category, pubDate only. (2) developers.openai.com - NOT blocked. This is the important new finding. Its sitemap (https://developers.openai.com/sitemap-index.xml -> /sitemap-0.xml, 1,315 URLs) lists 31 official ChatGPT Ads documentation pages under https://developers.openai.com/ads/. All 31 returned HTTP 200 as HTML and as the Markdown twin the site itself advertises ('Markdown versions of documentation pages are available by appending .md to the page URL'). Also reachable: https://developers.openai.com/ads/llms-full.txt (HTTP 200, 355,929 bytes, single-file export) and https://developers.openai.com/ads/openapi.json (HTTP 200, OpenAPI 3.1.0, info.version 2.3.0, 64 paths, servers[0].url https://api.ads.openai.com/v1). (3) https://openai.com/robots.txt and https://openai.com/sitemap.xml plus its 38 sub-sitemaps return HTTP 200 even though every HTML page on openai.com returns 403 - useful for confirming canonical URLs and lastmod dates without guessing.\n\nWHAT I COULD NOT REACH, with the status actually observed. https://openai.com/index/new-ways-to-buy-chatgpt-ads/ -> HTTP 403, response header 'cf-mitigated: challenge', server: cloudflare, body is the Cloudflare 'Just a moment...' interstitial. Same 403 for the other ads posts, for locale variants (/ja-JP/index/...), for ?_rsc=, for /policies/ad-policies/, /policies/ad-tools-terms/, /policies/row-privacy-policy/, /news/, /chatgpt/, /llms.txt. help.openai.com: robots.txt is 200 but every article is 403 with cf-mitigated: challenge, including the two article URLs the repo's existing pack cites (en/articles/20001047-ads-in-chatgpt, en-us/articles/20001245-ads-manager-availability). https://ads.openai.com/ -> 403 Cloudflare challenge (reached via a 302 from https://chatgpt.com/ads, so the hostname is confirmed, not guessed). https://developers.openai.com/ads/openai-geotargets.csv -> redirects to https://ads.openai.com/assets/openai-geotargets.csv and therefore 403, so the official list of targetable countries/regions/markets could not be read. https://chatgpt.com/sitemap.xml and /marketing-sitemap.xml -> 403. https://advertising.openai.com -> connect failure (proxy 502).\n\nWHY 'partial'. The assignment's angle has two halves. How the ads are sold is fully documented from a first-party surface I actually fetched. What OpenAI states about privacy separation lives almost entirely on openai.com/index/* and help.openai.com, both 403; the only privacy wording I can quote is OpenAI's own one-line feed descriptions. An article can be written, but it must be built around the buying mechanism and must attribute every privacy sentence to OpenAI's feed wording, not to an article body nobody here has read.\n\nSOURCES LIST vs EXTRA URLS. The four entries in `sources` are the ones the writer should cite. I also fetched and recorded facts from sibling doc pages that are NOT in the four; those facts are tagged '[NOT IN sources]'. To use one, swap it into the four-source list; never cite a URL that is not in the pack's sources.\n\nLIVE-DOCUMENT WARNING. No developers.openai.com/ads page carries a publication or revision date in its body. The only dates on that surface are the changelog entries inside /ads/api-overview, whose earliest DATED entry is 3 June 2026 (the entry before it is just 'v1 - Published the initial API version', undated). These docs therefore describe the Ads product as it stood on 2026-09-16 and must not be used to describe what shipped on 2026-05-05. OpenAI's sitemap also shows the ads posts being revised long after publication: testing-ads-in-chatgpt lastmod 2026-09-15T11:52:14.524Z; chatgpt-ads-expands-across-europe lastmod 2026-09-16T12:50:39.497Z; expanding-access-to-ai-with-chatgpt-ads lastmod 2026-09-16T12:50:35.814Z; new-ways-to-buy-chatgpt-ads lastmod 2026-05-22T19:11:20.545Z.",
+ "sources": [
+  {
+   "title": "OpenAI News (official RSS feed)",
+   "url": "https://openai.com/news/rss.xml",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Overview - Ads (Advertiser API)",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Bidding & Budgets - Ads",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Targeting - Ads",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "OpenAI's official news feed lists the announcement as title 'New ways to buy ChatGPT ads', pubDate 'Tue, 05 May 2026 00:00:00 GMT', category 'Product', link https://openai.com/index/new-ways-to-buy-chatgpt-ads. The feed itself was fetched on 2026-09-16 and returned 1,194 items with a newest pubDate of Wed, 16 Sep 2026 13:00:00 GMT, so it is live.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "New ways to buy ChatGPT ads"
+  },
+  {
+   "fact": "OpenAI's own one-line description of the 2026-05-05 announcement names three things: a beta self-serve Ads Manager, CPC bidding, and enhanced measurement tools; and states a privacy purpose. Everything after 'built to' is OpenAI's claim about its own product, not an independently checked fact.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI expands ChatGPT ads with a beta self-serve Ads Manager, CPC bidding, and enhanced measurement tools—built to protect privacy and keep conversations separate from ads."
+  },
+  {
+   "fact": "The ads line starts earlier than the assignment date. The same feed carries a 2026-01-16 item, category 'Company', titled 'Our approach to advertising and expanding access to ChatGPT', whose official description says OpenAI plans to TEST advertising in the U.S. for ChatGPT's free and Go tiers. Note the tier names come from OpenAI's own description here, but the description says 'plans to test', not that it is live.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI plans to test advertising in the U.S. for ChatGPT’s free and Go tiers to expand affordable access to AI worldwide, while protecting privacy, trust, and answer quality."
+  },
+  {
+   "fact": "A 2026-08-11 item, category 'Company', is titled 'Testing ads in ChatGPT'. Its official description is the fullest privacy/labelling wording I could verify anywhere: clear labeling, answer independence, strong privacy protections, user control. Write it as OpenAI's statement, not as a checked fact.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control."
+  },
+  {
+   "fact": "A 2026-08-18 item, category 'Product', is titled 'ChatGPT Ads expands across Europe' and its official description gives the figure 31 European markets. The description does NOT list which 31 markets they are.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "ChatGPT Ads is expanding to 31 European markets. Learn how advertisers can reach people as they explore, compare options, and make decisions."
+  },
+  {
+   "fact": "A 2026-08-31 item, category 'Product', is titled 'A milestone in expanding access to AI' and its official description states ChatGPT Ads reached $1 billion in annualized revenue run rate. This is a company financial claim in OpenAI's own words; it is not audited and it belongs to the 8/31 event, not to 5/5.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "ChatGPT Ads reaches $1 billion in annualized revenue run rate and expands globally, supporting broader access to AI through free and affordable options."
+  },
+  {
+   "fact": "On the check date itself, 2026-09-16, OpenAI published another ads post, category 'Product', titled 'Reimagining advertising with AI', whose description names Sponsored Agents and integrations with HubSpot and Shopify. The post body is 403 here, so nothing beyond these words can be written. Its existence means any article dated 2026-05-05 is already several announcements behind.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Explore new AI-powered advertising experiences from OpenAI, including Sponsored Agents, tools for marketers, and integrations with HubSpot and Shopify."
+  },
+  {
+   "fact": "A 2026-01-18 item titled 'A business that scales with the value of intelligence' describes OpenAI's business model as spanning subscriptions, API, ads, commerce and compute, i.e. OpenAI positions ads as one of five revenue lines.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "OpenAI’s business model scales with intelligence—spanning subscriptions, API, ads, commerce, and compute—driven by deepening ChatGPT adoption."
+  },
+  {
+   "fact": "The self-serve product is called Ads Manager and lives at https://ads.openai.com/. OpenAI's docs say you need an ad account there, and that the Advertiser API key is created on the Settings page inside Ads Manager (https://ads.openai.com/settings). The Ads Manager interface itself returns HTTP 403 from this container, so nothing about its screens can be described.",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": "You will need an [ad account](https://ads.openai.com/) and an Advertiser API key. You can create your Advertiser API key within the [Settings page](https://ads.openai.com/settings) in Ads Manager."
+  },
+  {
+   "fact": "Buying is structured in four levels: Ad account contains Campaigns, each Campaign contains Ad groups, each Ad group contains Ads. The docs state exactly what is configured where: Ad account = advertiser branding, currency, timezone, account access, spend limits; Campaign = objective, budget, schedule, geographic and platform targeting, audience inclusion and exclusion, conversion events; Ad group = bid strategy, context hints, audience bid multipliers, product set; Ad = creative, image or product template, destination URL.",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Advertiser API base URL is https://api.ads.openai.com and authentication is a bearer token ('Authorization: Bearer ...'). Supported create endpoints accept an Idempotency-Key so a network retry does not create a duplicate.",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "An ad creative in the worked example is of type 'chat_card' and carries a title, a body, a target_url and an uploaded image file_id. The uploaded creative image must be at least 640 x 640 pixels. Creating an ad submits its creative for review.",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Use an image at least 640 × 640 pixels."
+  },
+  {
+   "fact": "Newly created campaigns, ad groups and ads are created paused in the documented workflow, and each level has to be activated separately (/ads/{id}/activate, /ad_groups/{id}/activate, /campaigns/{id}/activate). The docs are explicit that activation is not sufficient: 'Activation enables delivery when the remaining requirements are satisfied.' A preview shows appearance only: 'A preview shows appearance; it does not confirm serving eligibility.'",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A preview shows appearance; it does not confirm serving eligibility."
+  },
+  {
+   "fact": "Advertiser API rate limits are published: 600 requests per minute per endpoint and 1,200 requests per minute overall, enforced by both ad account and IP address. Bulk job creation has a separate limit of 10 requests per 10 seconds per ad account.",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Ads API changelog on this page has dated entries only from 3 June 2026 onward. In order: September 10th, 2026 - granular web platform targeting with desktop_web, ios_web and android_web; September 9th, 2026 - daily account spending limits for ad accounts on postpaid invoice billing, renewing at midnight in the account timezone; August 25th, 2026 - custom audience Add, Remove, Replace and Merge operations, automatic identifier matching, and support for small and empty exclusion-only audiences; July 16th, 2026 - passing the Pixel browser reference as events[].user.obref in Conversions API requests; June 16th, 2026 - conversion-optimized campaign bidding with bidding_type 'conversions'; June 11th, 2026 - segmented insights for product, country and device breakdowns plus zero-impression product expansion; June 3rd, 2026 - location targeting including /geo_lookup/search, plus conversion setup and reporting endpoints for API keys, pixels, event settings and conversion insights. The only entry before those is an undated 'v1 - Published the initial API version'. THE CHANGELOG DOES NOT DATE THE 2026-05-05 ANNOUNCEMENT AND DOES NOT MENTION THE SELF-SERVE ADS MANAGER BETA.",
+   "url": "https://developers.openai.com/ads/api-overview",
+   "is_vendor_claim": false,
+   "verbatim_quote": "### v1\n\n- Published the initial API version."
+  },
+  {
+   "fact": "There are exactly three campaign objectives and they determine what the advertiser pays for. The docs table: bidding_type 'impressions' with billing_event_type 'impression' and strategy 'fixed_bid'; bidding_type 'clicks' with billing_event_type 'click' and strategy 'fixed_bid' or 'maximize_clicks'; bidding_type 'conversions' with billing_event_type 'click' and strategy 'fixed_bid' or 'maximize_conversions'. So paying per click (CPC) is the billing event for both the clicks objective and the conversions objective.",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The campaign objective and the budget sit on the campaign; the billing event and the bid strategy sit on the ad group. The docs state it as a table: 'Campaign objective | Campaign | The outcome to optimize for'; 'Campaign budget | Campaign | The daily or lifetime spending limit shared by its ad groups'; 'Billing event | Ad group | Whether you pay for impressions or clicks'; 'Bid strategy | Ad group | Whether you set bids or let OpenAI adjust them'.",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Billing event | Ad group | Whether you pay for impressions or clicks"
+  },
+  {
+   "fact": "Three bid strategies are documented. Fixed bid: the advertiser sets the bid via max_bid_micros, works with impressions, clicks or conversions objectives, and with a daily or lifetime budget. Maximize clicks: OpenAI adjusts bids to seek more clicks from the budget, clicks objective only, daily budget only, max_bid_micros omitted. Maximize conversions: same but for the conversions objective. OpenAI names the latter two collectively 'Maximize Results', and says both are available for standard and product-feed campaigns.",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "**Maximize Results** is the name for the `maximize_clicks` and `maximize_conversions` strategies."
+  },
+  {
+   "fact": "Bids and budgets are integers in micros: one major currency unit equals 1,000,000 micros. The docs' worked USD examples: $1.00 = 1000000; $2.50 = 2500000; $50.00 = 50000000; a $2 click bid = 2000000; a $3 click bid = 3000000; a $50 daily budget = 50000000; a $500 lifetime budget = 500000000; an updated $75 daily budget = 75000000; a $200 daily budget on the conversion example = 200000000. For impression bidding the API expects a bid PER IMPRESSION, so a $60 CPM is $0.06 per impression = 60000 micros. All of these are labelled illustrative amounts in the docs, not prices OpenAI charges.",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A $60 CPM bid is $0.06 per impression, so send `60000` micros: `60 ÷ 1,000 × 1,000,000 = 60000`."
+  },
+  {
+   "fact": "A campaign has exactly one budget field, daily_spend_limit_micros or lifetime_spend_limit_micros, never both. Maximize Results requires a daily budget. A lifetime budget cannot be reduced below what the campaign has already spent, and a daily budget cannot be switched back to a lifetime budget through an update - you have to create a new campaign.",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "You cannot switch a daily budget back to a lifetime budget through a campaign update."
+  },
+  {
+   "fact": "OpenAI does not publish the minimum spend. The docs say only: 'Daily minimums depend on the account currency. Requests below the applicable minimum return an error with the required amount.' and 'Bid limits and permitted monetary precision depend on the account currency and campaign objective.' No number is given anywhere on the page.",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Daily minimums depend on the account currency. Requests below the applicable minimum return an error with the required amount."
+  },
+  {
+   "fact": "The API can tell an advertiser its bid may be too low, but explicitly refuses to treat that as a block: requesting include[]=bid_too_low returns guidance only. 'bid_too_low: true indicates that the bid may be too low for reliable delivery. It is guidance, not a serving restriction.'",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It is guidance, not a serving restriction."
+  },
+  {
+   "fact": "Money spent is gated at two independent levels. 'Campaign budgets and ad account spend limits apply independently. Raising a campaign budget does not override an exhausted account spend limit.' Account spend-limit windows are not universal: 'Spend-limit windows are available only to some accounts.'",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Spend-limit windows are available only to some accounts."
+  },
+  {
+   "fact": "Whether an ad actually shows depends on more than budget and bid. The docs list the conditions: 'Delivery also depends on the campaign schedule, resource statuses, reviews, targeting, and available inventory.'",
+   "url": "https://developers.openai.com/ads/bidding-and-budgets",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Delivery also depends on the campaign schedule, resource statuses, reviews, targeting, and available inventory."
+  },
+  {
+   "fact": "Targeting decides who is eligible to see a campaign's ads, and the three kinds stack rather than override each other: 'Campaign targeting determines who is eligible to receive the campaign's ads. Geographic, platform, and audience settings work together; matching one setting does not override the others.' Exclusions win over inclusions when someone is in both.",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Exclusions take precedence when someone belongs to both an included audience and an excluded audience."
+  },
+  {
+   "fact": "Geographic targeting uses ISO 3166-1 alpha-2 country codes or location IDs from /geo_lookup/search, and OpenAI warns that a valid country code is not the same as an available advertising country. This is the sentence to use instead of speculating about Taiwan: 'A code's ISO validity does not mean it is available for advertising in your account; use supported advertising locations.'",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A code’s ISO validity does not mean it is available for advertising in your account; use supported advertising locations."
+  },
+  {
+   "fact": "Platform targeting picks which ChatGPT surfaces an ad can appear on, and the docs spell out a counter-intuitive case: 'This selects the web group. It does not mean desktop-only traffic. An iPhone user visiting ChatGPT in a browser belongs to web inventory rather than the iOS app group.'",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "An iPhone user visiting ChatGPT in a browser belongs to web inventory rather than the iOS app group."
+  },
+  {
+   "fact": "The mechanism that links an ad to what a user is talking about is called Context Hints, set on the ad group. Advertisers write free-text descriptions of the product or use case - the docs' own examples are 'Lightweight trail running shoes for rocky terrain' and 'Water-resistant footwear for wet-weather hiking'. An ad group can contain up to 2,000 hints. OpenAI states two limits on them: 'Hints are not exact-match keywords. They also do not replace explicit geographic, platform, or audience targeting.'",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Hints are not exact-match keywords. They also do not replace explicit geographic, platform, or audience targeting."
+  },
+  {
+   "fact": "This is the single most useful sentence for the reader angle, and it is a disclaimer rather than a promise: OpenAI will not guarantee that writing a particular hint makes an ad appear in a particular conversation. It is also the only place in the whole ads documentation set that uses the word 'conversation' in relation to ad triggering.",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "These examples illustrate writing style, not a guarantee that a particular conversation will trigger an ad."
+  },
+  {
+   "fact": "Advertisers can upload customer lists as custom audiences, and there is a documented floor: 'Inclusion and bid multipliers require at least 25,000 matched users; exclusion audiences have no minimum matched count.' Including an audience restricts eligibility to matching users; a bid multiplier only changes the bid for them and leaves non-members eligible.",
+   "url": "https://developers.openai.com/ads/campaign-targeting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Inclusion and bid multipliers require at least 25,000 matched users; exclusion audiences have no minimum matched count."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/custom-audiences] Personalised ads are stated as not yet available in part of Europe: 'Custom audiences are not supported for campaigns targeting the European Economic Area (EEA) or Switzerland, where personalized ads are not yet available.' The same page requires advertisers to upload only first-party data they have the right to use, forbids broker-sourced data, and points at OpenAI's Ad Tools Terms (https://openai.com/policies/ad-tools-terms/, which returns 403 here).",
+   "url": "https://developers.openai.com/ads/custom-audiences",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Custom audiences are not supported for campaigns targeting the European Economic Area (EEA) or Switzerland, where personalized ads are not yet available."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/conversion-optimized-campaigns] Conversion-optimised CPC (oCPC) is described as open beta for standard and product-feed campaigns, and the billing stays per click: 'Billing does not change to pay per conversion. OpenAI charges you only when a valid click occurs, and the auction determines the actual CPC.' The three goals are tabulated as impressions (CPM, per 1,000 impressions), clicks (CPC, per valid click) and conversions (oCPC, per valid click, not per conversion). An existing CPM or CPC campaign cannot be converted to oCPC, and the selected conversion event cannot be changed after creation.",
+   "url": "https://developers.openai.com/ads/conversion-optimized-campaigns",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Billing does not change to pay per conversion. OpenAI charges you only when a valid click occurs, and the auction determines the actual CPC."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/conversion-tracking] Measurement has two documented routes that share a Pixel ID: a browser JavaScript Measurement Pixel and a server-to-server Conversions API. 'Both integrations use a Pixel ID to identify the data source. A server-only integration still needs a Pixel ID, but does not require installing the browser Pixel.'",
+   "url": "https://developers.openai.com/ads/conversion-tracking",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A server-only integration still needs a Pixel ID, but does not require installing the browser Pixel."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/measurement-pixel] The Measurement Pixel SDK is loaded from https://bzrcdn.openai.com/sdk/oaiq.min.js and initialised with a Pixel ID created in the conversions tab of Ads Manager. It supports a consent gate - oaiq('consent', false) before init, oaiq('consent', true) after the user grants measurement consent - and a per-event opt_out option described as 'Set to true to opt out the event from future user-level personalization.' The SDK automatically captures an identifier called oppref from the landing page URL, described as 'a privacy-preserving identifier', and stores it in a first-party __oppref cookie. When automatic advanced matching is enabled it hashes detected customer information with SHA-256 before sending it.",
+   "url": "https://developers.openai.com/ads/measurement-pixel",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It captures `oppref` from the landing page URL, which is a privacy-preserving identifier"
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/measurement-pixel] View-through conversions use a fixed one-day window after an eligible ad impression, are reported in Ads Manager as a separate campaign-level metric, and are deliberately excluded from the main Conversions total. 'CPA, post-click CVR, bidding, billing, and conversion optimization also remain click-through-based.' Where a conversion qualifies for both, the click takes precedence.",
+   "url": "https://developers.openai.com/ads/measurement-pixel",
+   "is_vendor_claim": false,
+   "verbatim_quote": "View-through conversions use a fixed one-day window after an eligible ad impression."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/supported-events] Thirteen conversion event names are documented: app_installed, app_opened, appointment_scheduled, checkout_started, contents_viewed, custom, items_added, lead_created, order_created, page_viewed, registration_completed, subscription_created, trial_started. app_installed and app_opened are Conversions API only and are not supported by the JavaScript Pixel. Monetary values are sent as integers in the ISO 4217 minor unit, e.g. 12999 for $129.99 with currency USD.",
+   "url": "https://developers.openai.com/ads/supported-events",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/reporting] The reported metrics are impressions, clicks, spend, ctr, cpc, cpm, conversions, cpa, post_click_cvr, order_created_attributed_sales and order_created_roas. CTR is returned as a ratio (0.04 means 4%). Spend, CPC and CPM are in major currency units, not micros. The docs warn that 'A null value means the metric is unavailable or cannot be calculated. It does not mean zero.'",
+   "url": "https://developers.openai.com/ads/reporting",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A `null` value means the metric is unavailable or cannot be calculated. It does not mean zero."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/api-reference/ads] Creative text is tightly capped: creative.title is 3 to 50 characters and creative.body is at most 100 characters. Every ad carries a review_status of in_review, rejected or approved, and a rejected ad is said to violate OpenAI's ads policies (linked as https://openai.com/policies/ad-policies/, which returns 403 here). An ad preview expires 24 hours after creation. The two creative types are chat_card and product_ad_template.",
+   "url": "https://developers.openai.com/ads/api-reference/ads",
+   "is_vendor_claim": false,
+   "verbatim_quote": "`creative.title` | string | Yes | `3` to `50` chars."
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/bulk-api] OpenAI uses the term 'self-serve' as an official limit category: 5,000 non-archived self-serve campaigns per ad account, 5,000 non-archived self-serve ad groups, and 5,000 active or paused self-serve ads.",
+   "url": "https://developers.openai.com/ads/bulk-api",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Self-serve campaigns per ad account | `5,000` non-archived campaigns"
+  },
+  {
+   "fact": "[NOT IN sources - https://developers.openai.com/ads/openapi.json] The machine-readable spec confirms the enumerations rather than leaving them to prose: campaign bidding_type is one of impressions, clicks, conversions; billing_event_type is one of impression, click; ad-group bidding strategy is one of fixed_bid, maximize_clicks, maximize_conversions (the response schema also carries automated_bid). The spec declares OpenAPI 3.1.0, info.version 2.3.0, 64 paths, server https://api.ads.openai.com/v1.",
+   "url": "https://developers.openai.com/ads/openapi.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"enum\": [\"impressions\", \"clicks\", \"conversions\"]"
+  },
+  {
+   "fact": "[NOT IN sources - https://openai.com/sitemap.xml/product/] OpenAI's own sitemap confirms the canonical URL https://openai.com/index/new-ways-to-buy-chatgpt-ads/ and dates it lastmod 2026-05-22T19:11:20.545Z, i.e. 17 days after publication. The three later ads posts have much newer lastmod values (testing-ads-in-chatgpt 2026-09-15T11:52:14.524Z; chatgpt-ads-expands-across-europe 2026-09-16T12:50:39.497Z; expanding-access-to-ai-with-chatgpt-ads 2026-09-16T12:50:35.814Z). These are live documents, not snapshots.",
+   "url": "https://openai.com/sitemap.xml/product/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<loc>https://openai.com/index/new-ways-to-buy-chatgpt-ads/</loc><lastmod>2026-05-22T19:11:20.545Z</lastmod>"
+  }
+ ],
+ "not_said": [
+  "The body of the 2026-05-05 announcement is not readable from this container (HTTP 403, cf-mitigated: challenge). Nothing about what exactly shipped that day beyond OpenAI's own one-line feed description may be written, and no sentence may be presented as a quotation from that post.",
+  "No source I reached says the self-serve Ads Manager beta opened on 2026-05-05. The Ads API changelog's earliest dated entry is 3 June 2026 and it never mentions the Ads Manager beta at all.",
+  "The Ads documentation never says where in the ChatGPT interface an ad appears, how it is visually labelled, or that it carries a 'Sponsored' marker. 'Clear labeling' exists only as OpenAI's own feed wording for the 2026-08-11 post.",
+  "The documentation never states which ChatGPT plans see ads. The only plan wording I verified is the 2026-01-16 feed description saying OpenAI PLANS TO TEST advertising for the free and Go tiers in the U.S. It does not say Plus, Pro, Business, Enterprise or Edu are ad-free, and it does not describe the position as of 2026-05-05 or later.",
+  "The documentation never says whether advertisers can or cannot see a user's chats, chat history or memory. The word 'memory' does not appear in the ads docs at all.",
+  "No minimum daily budget, no minimum bid, no CPC price and no rate card appears anywhere. OpenAI says only that daily minimums and bid limits depend on the account's currency and objective, and that a request below the minimum returns an error naming the required amount.",
+  "The official list of countries, regions and markets an advertiser can target could not be read: the CSV linked from the docs redirects to ads.openai.com and returns 403 here. No claim about which countries are targetable may be written.",
+  "Nothing I reached says whether Taiwan is available - as an advertiser location, as a targetable market, or as a place where users see ads. Do not infer it either way. OpenAI's own sentence covers this: a valid ISO country code does not mean the country is available for advertising in your account.",
+  "The documentation never mentions age limits on ad delivery.",
+  "The developers.openai.com Ads pages carry no publication date, no revision date and no version banner in their bodies. They describe the product as it stood on 2026-09-16 and cannot be used to say what existed on 2026-05-05.",
+  "OpenAI's Ad Policies (https://openai.com/policies/ad-policies/) and Ad Tools Terms (https://openai.com/policies/ad-tools-terms/) are linked by the official documentation but both return 403 here. Their contents are unverified and none of their rules may be paraphrased.",
+  "Nothing states how the auction actually chooses between advertisers, beyond 'the auction determines the actual CPC' and a list of oCPC inputs (ad quality, relevance, click likelihood, conversion likelihood).",
+  "Nothing states what share of ChatGPT conversations carry an ad, how often ads appear, or how many advertisers are using the product.",
+  "Nothing on any reachable page confirms the 2026-08-18 Europe post was later amended, or says what the 31 European markets are."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "ChatGPT ads are shown to Free and Go users, while Plus, Pro, Business, Enterprise and Edu do not include ads, and accounts identified as under 18 are not shown ads.",
+   "seen_where": "The repository's own existing content pack apps/api/app/guides/content/chatgpt-ads-status.json (zh-TW), which cites https://help.openai.com/en/articles/20001047-ads-in-chatgpt.",
+   "why_excluded": "help.openai.com returns HTTP 403 with cf-mitigated: challenge for every article from this container, so I could not read the cited page. A claim inside another article in this repo is not a first-party source. The only plan wording I could verify is OpenAI's 2026-01-16 feed description, which says OpenAI 'plans to test' advertising for the free and Go tiers in the U.S. - a plan, in January, not a statement of current plan coverage."
+  },
+  {
+   "claim": "The Ads Manager self-serve availability list covers the United States, Japan, Korea and several European markets, and Taiwan is not on it, with eligibility tied to the legal entity that publishes and is billed.",
+   "seen_where": "Same existing pack chatgpt-ads-status.json, citing https://help.openai.com/en-us/articles/20001245-ads-manager-availability.",
+   "why_excluded": "That help centre URL returns HTTP 403 here. I also could not read the official geotarget catalogue (developers.openai.com/ads/openai-geotargets.csv redirects to ads.openai.com and 403s). Writing a country list would mean copying an unverifiable claim out of another article."
+  },
+  {
+   "claim": "Advertisers receive only aggregated performance information and cannot read a user's private chats, history or memory; if a user messages an advertiser directly, the advertiser sees that message.",
+   "seen_where": "Same existing pack chatgpt-ads-status.json, attributed to OpenAI's help centre.",
+   "why_excluded": "Source page 403. The Ads documentation I did read is consistent with aggregate-only reporting (Insights returns impressions, clicks, spend, CTR, CPC, conversions and segment breakdowns, and audience sizes come back as privacy-preserving ranges) but it nowhere makes the negative statement about chats, history or memory. Consistency is not a source."
+  },
+  {
+   "claim": "Ads are clearly labelled, are kept separate from answers, and advertisers cannot buy their way into rewriting, ranking or controlling model answers; seeing an ad is not an OpenAI recommendation.",
+   "seen_where": "Same existing pack chatgpt-ads-status.json; and, in weaker form, OpenAI's feed descriptions.",
+   "why_excluded": "The detailed version comes from a 403 help page. The only wording I can legitimately use is OpenAI's own feed text - 'clear labeling, answer independence, strong privacy protections, and user control' (2026-08-11) and 'built to protect privacy and keep conversations separate from ads' (2026-05-05) - and it must be written as 'OpenAI 表示', never as a checked fact."
+  },
+  {
+   "claim": "The 2026-08-18 Europe post was updated on 2026-08-31 to state that the 31 European markets can use the self-serve Ads Manager.",
+   "seen_where": "Same existing pack chatgpt-ads-status.json.",
+   "why_excluded": "Both the 8/18 and 8/31 posts are 403. The feed shows 8/31 as a separate post with its own title, 'A milestone in expanding access to AI', not as an update to the Europe post. OpenAI's sitemap does show the Europe page being revised (lastmod 2026-09-16T12:50:39Z), so it has changed at least once, but I cannot read what changed or when the self-serve sentence appeared."
+  },
+  {
+   "claim": "'Sponsored Agents' and integrations with HubSpot and Shopify are part of OpenAI's advertising products.",
+   "seen_where": "OpenAI's own feed description for the 2026-09-16 post 'Reimagining advertising with AI'.",
+   "why_excluded": "The description is first-party and can be quoted as OpenAI's wording, but the post body is 403, so no detail exists about what a Sponsored Agent is, who can use it, where, or from when. Do not describe the feature; at most note that OpenAI announced it on the check date. It also falls outside a 2026-05-05 article."
+  },
+  {
+   "claim": "ChatGPT Ads reached a $1 billion annualized revenue run rate.",
+   "seen_where": "OpenAI's own feed description for the 2026-08-31 post 'A milestone in expanding access to AI'.",
+   "why_excluded": "Not excluded from the record, but excluded from being treated as a fact about the 2026-05-05 event. It is an unaudited company claim attached to a different date. If used at all it must read 'OpenAI 在 8 月 31 日的公告中表示' and must not be presented as a May figure."
+  },
+  {
+   "claim": "Any description of what the Ads Manager screens look like, how a campaign is created in the interface, or what the onboarding flow asks for.",
+   "seen_where": "ads.openai.com, reached by the documented 302 from chatgpt.com/ads.",
+   "why_excluded": "ads.openai.com returns HTTP 403 (Cloudflare challenge) for every path including /robots.txt and /sitemap.xml. The interface has not been seen. The site does not do hands-on testing in any case."
+  },
+  {
+   "claim": "That the developers.openai.com Ads documentation describes the product as announced on 2026-05-05.",
+   "seen_where": "Inference from the overlap between the feed description (self-serve Ads Manager, CPC bidding, measurement tools) and the docs.",
+   "why_excluded": "Deliberately excluded as an inference. The docs are undated live documents read on 2026-09-16 and the changelog's dated entries start on 2026-06-03. Any article must say plainly that the API documentation was read on 2026-09-16 and reflects that date."
+  },
+  {
+   "claim": "Figures and CPC/CPM amounts such as $2 per click, $50 daily, $60 CPM or a $100 CPA bid.",
+   "seen_where": "Worked examples throughout the Ads documentation.",
+   "why_excluded": "The docs label them explicitly as illustrative: 'Budget and bid examples use illustrative USD amounts.' They are not prices, minimums or benchmarks and must never be written as what ChatGPT ads cost. Only the micros conversion rule (1 unit = 1,000,000 micros) is a real rule."
+  }
+ ],
+ "must_not_write": [
+  "Do not quote or paraphrase the body of any openai.com/index/* post. None of them was readable (HTTP 403, cf-mitigated: challenge). Only the feed's own one-line descriptions may be quoted, and the article must say so.",
+  "Do not write that ChatGPT ads have or have not reached Taiwan, for users or for advertisers, and do not write that Taiwanese advertisers can or cannot open an account. No source I reached says either.",
+  "Do not write which ChatGPT plans do or do not show ads, and do not write anything about under-18 accounts. Those claims trace only to a 403 help centre page.",
+  "Do not state a minimum budget, a minimum bid, a typical CPC or any price. The docs' dollar figures are labelled illustrative examples.",
+  "Do not present the developers.openai.com Ads docs as a description of 2026-05-05. Say they were read on 2026-09-16, and that the Ads API changelog's dated entries begin on 2026-06-03.",
+  "Do not write OpenAI's privacy sentences as facts. 'Keep conversations separate from ads', 'clear labeling', 'answer independence', 'user control' are OpenAI's own wording and must be attributed as OpenAI 表示.",
+  "Do not rewrite chatgpt-ads-status. That existing pack already covers advertiser-country availability, the Europe expansion, labelling and answer separation, plan-level ad exposure, aggregated measurement and the ad policies, and it already cites the 2026-05-05 post.",
+  "Do not say 'we tested', 'we opened an account', 'we saw an ad' or anything implying hands-on use. Ads Manager is 403 here.",
+  "Do not invent or reuse help.openai.com article numbers. The two that appear in the existing pack could not be opened; do not cite them in a new pack.",
+  "Do not describe OpenAI's Ad Policies or Ad Tools Terms rules. Both pages are 403 here; only their existence and URLs are confirmed, by an official link in the API reference.",
+  "Do not describe 'Sponsored Agents', HubSpot or Shopify beyond the one line in the feed, and do not put them in an article dated 2026-05-05.",
+  "Do not use the .md twin URLs (e.g. /ads/api-overview.md) as reader-facing sources; cite the human page URLs, which also returned 200.",
+  "Do not claim the 31 European markets are a user-facing rollout, an advertiser-eligibility list, or both. The feed description says only that ChatGPT Ads 'is expanding to 31 European markets'."
+ ],
+ "overlaps_existing_article": "SERIOUS OVERLAP - the parent should decide whether this article should exist at all before a writer starts. apps/api/app/guides/content/chatgpt-ads-status.json already exists: slug chatgpt-ads-status, kind life, topics ['tutorial','ai-chat'], display_order 100, zh-TW only, 33 blocks, no summary and no faq, checked 2026-09-14, titled 'ChatGPT 廣告怎麼查：開放地區、官方規則與品牌準備'. It cites https://openai.com/index/new-ways-to-buy-chatgpt-ads/ as one of its five sources, and its final section already summarises exactly this event: CPC 點擊出價、自助管理工具、Conversions API 與像素量測. It also already covers advertiser-country availability (and that Taiwan was not on the list on 2026-09-14), the 8/18 Europe expansion and the 31 markets, labelling and separation from answers, which plans see ads, aggregated measurement, and the ad policies. Note that ai.md's table of 38 existing titles lists only ai-news-* slugs, so it does not surface this pack - which is why the candidate list treats 2026-05-05 as an untouched gap.\n\nIF THE ARTICLE IS STILL WANTED, divide it like this. chatgpt-ads-status keeps the brand-preparation angle: am I eligible, what do I prepare, what do I check on the official pages. The new ai-news piece must be event-anchored and mechanism-focused, and must add what the existing pack does not have: the four-level structure (ad account / campaign / ad group / ad) and what is set at each level; the three objectives and what each one actually bills for (CPM per 1,000 impressions, CPC per valid click, oCPC still per valid click); fixed bid versus Maximize Results and which budget type each needs; micros; the Context Hints mechanism and OpenAI's refusal to guarantee that a hint triggers an ad in any particular conversation; platform targeting and the web-versus-app inventory quirk; the 25,000 matched-user floor for audience inclusion; and the dated Ads API changelog from 2026-06-03 to 2026-09-10, which shows the product still moving four months after the announcement. The second link block should point at chatgpt-ads-status so the two do not compete, and the article should not repeat its eligibility checklist.\n\nAlso weigh the freshness problem: OpenAI published another ads post on the check date itself (2026-09-16, 'Reimagining advertising with AI'), and the Europe and milestone posts were both revised on 2026-09-16. An article pinned to 2026-05-05 is the fourth event in a six-event line.",
+ "editorial_brief": "讀者是台灣的一般 ChatGPT 使用者，不是廣告代理商。他們開始在對話裡看到或聽說有廣告，想知道「我看到的東西是怎麼來的」。切入點是賣方的機制：2026 年 5 月 5 日 OpenAI 在自家新聞渠道宣布「New ways to buy ChatGPT ads」，官方描述提到 beta 自助式 Ads Manager、CPC 出價與量測工具；一個廣告主要先建廣告帳戶、再建廣告活動（決定目標、預算、地區與平台）、廣告組（決定出價方式與 context hints）、才是真正的廣告素材，而且每一層都要通過審核才能上線。重點要把「按曝光付費」、「按點擊付費」、「以轉換為目標但仍按點擊付費」三件事分開講，因為這決定了廣告主想要使用者做什麼。\n\n第二個重點是界線：本站只能讀到 OpenAI 官方 feed 的一句話描述與廣告 API 文件，宣布原文與說明中心在本容器回 403。所以「廣告與對話分開」、「清楚標示」這些話一律寫成「OpenAI 在官方說明裡表示」，並明說本文沒有登入廣告後台、沒有實測。最有價值的一句官方原文反而是免責性質的：官方文件寫明 context hints 的範例「是寫法示範，不保證某一段對話會觸發廣告」。\n\n生活情境由編輯自行設計並標明為例子（例如一位使用者在問登山鞋，廣告主寫的是「岩地輕量越野鞋」這種描述），不得寫成實際案例。\n\n這篇刻意不談：台灣能不能看到或買到廣告（查不到一手來源）、哪些方案會出現廣告（來源被擋）、最低預算與實際廣告費（官方未公佈）、以及廣告主的準備步驟（由現有的 chatgpt-ads-status 負責）。結尾的 callout 講查證日與可用性的區別；相關新聞連結指向 chatgpt-ads-status。",
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-tech-and-ai.md line 133 lists 2026-05-05 'New ways to buy ChatGPT ads' as an unwritten gap. It is not untouched: apps/api/app/guides/content/chatgpt-ads-status.json already exists, was checked on 2026-09-14, and already cites https://openai.com/index/new-ways-to-buy-chatgpt-ads/ as a source. The candidate list and ai.md both miss it because ai.md's existing-articles table only enumerates ai-news-* slugs.",
+  "Lines 376-377 of candidates-tech-and-ai.md treat 2026-08-11 and 2026-08-18 as the whole ads line. The official feed shows six ads posts, not two: 2026-01-16 'Our approach to advertising and expanding access to ChatGPT' (Company), 2026-05-05 'New ways to buy ChatGPT ads' (Product), 2026-08-11 'Testing ads in ChatGPT' (Company), 2026-08-18 'ChatGPT Ads expands across Europe' (Product), 2026-08-31 'A milestone in expanding access to AI' (Product, the $1B run-rate post), 2026-09-16 'Reimagining advertising with AI' (Product, Sponsored Agents / HubSpot / Shopify). The 1/16 post is the start of the line and the 8/31 and 9/16 posts are missing from the list entirely.",
+  "A 2026-09-16 OpenAI post exists. candidates-tech-and-ai.md says OpenAI's feed ends at 2026-09-14 ('查否：OpenAI 在 9/15–9/16 沒有發布消息'). On 2026-09-16 the feed's newest item is 'Reimagining advertising with AI', pubDate Wed, 16 Sep 2026 13:00:00 GMT. That finding is now stale and should be re-checked before any '9/15-9/16 gap' claim is used.",
+  "NEW WORKING ROUTE, worth adding to the feed table: developers.openai.com is NOT behind the Cloudflare challenge. https://developers.openai.com/ (200), /robots.txt (200), /sitemap-index.xml -> /sitemap-0.xml (200, 1,315 URLs), /llms.txt (200). It hosts 31 official ChatGPT Ads documentation pages under /ads/, each also available as Markdown by appending .md, plus /ads/llms-full.txt (356 KB combined export) and /ads/openapi.json. This is the usable first-party route for anything about OpenAI's ads or API products while openai.com stays blocked.",
+  "NEW WORKING ROUTE: openai.com/robots.txt and openai.com/sitemap.xml return 200 even though every HTML page on openai.com returns 403, and the sitemap index fans out to 38 sub-sitemaps (/sitemap.xml/page/, /product/, /company/, /chatgpt/, /publication/, /release/, /global-affairs/ ...) that carry canonical URLs plus lastmod timestamps. This is how to confirm an openai.com URL and its revision date without guessing one.",
+  "NEW BLOCKS to record so nobody rediscovers them: https://ads.openai.com/ returns 403 Cloudflare challenge on every path including robots.txt and sitemap.xml (https://chatgpt.com/ads 302-redirects there, which is how the hostname was confirmed). https://developers.openai.com/ads/openai-geotargets.csv redirects to ads.openai.com/assets/ and therefore 403s, so the official targetable-location catalogue is unreadable. https://chatgpt.com/sitemap.xml and /marketing-sitemap.xml are 403. https://advertising.openai.com does not resolve (proxy 502). openai.com/llms.txt is 403.",
+  "Refine the openai.com block description: it is not WebFetch-specific. curl with -A Mokaair-editorial gets HTTP 403 with response headers 'cf-mitigated: challenge' and 'server: cloudflare' and a JavaScript interstitial body. Locale prefixes (/ja-JP/, /de-DE/) and query variants do not help. XML and txt paths under openai.com are the exception and do return 200.",
+  "help.openai.com is confirmed 403 for articles, but its /robots.txt returns 200 (it is an Intercom-style help centre with Crawl-delay: 1 and only /not-authorized and /not-found disallowed). Do not read the 200 on robots.txt as the help centre being reachable."
+ ]
+}

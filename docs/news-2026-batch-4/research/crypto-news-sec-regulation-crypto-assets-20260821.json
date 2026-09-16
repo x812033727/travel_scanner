@@ -1,0 +1,589 @@
+{
+ "slug": "crypto-news-sec-regulation-crypto-assets-20260821",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "拿到全文，可以寫完整篇。實際取得狀況（2026-09-16 於本容器實測）：\nOK — https://www.federalregister.gov/api/v1/documents/2026-17183.json 回 HTTP 200，內容為真實 metadata。\nOK — https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt 回 HTTP 200，795,262 bytes、13,701 行，是提案全文（含規則原文附錄），本次所有法規事實都讀自這一份。\nOK — https://www.govinfo.gov/content/pkg/FR-2026-08-21/pdf/2026-17183.pdf 回 HTTP 200、5,538,351 bytes，抽出第一頁文字核對過 SUMMARY 與 DATES，與 .txt 版一致。這是 GPO 官方 PDF，最適合給讀者點。\nOK — https://www.sec.gov/news/pressreleases.rss 回 HTTP 200，25 則 item，最新一則 2026-09-16，是活的。裡面有 2026-76「SEC Proposes New Regulation Crypto Assets」，pubDate 2026-08-18。\nOK — https://www.sec.gov/news/statements.rss 回 HTTP 200，25 則 item，最新 2026-09-16。三份 2026-08-18 的委員聲明只拿到標題與時間。\n陷阱 — https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets（正規網頁版）回 HTTP 200，但 body 是 <title>Federal Register :: Request Access</title> 的攔截頁，不是文件。這正是 BRIEF 說的「HTTP 200 不代表拿到文件」。所以 sources 放的是實際拿到內容的 .txt 與 govinfo PDF，沒有把這個網址列為已抓取來源。\n擋住 — www.sec.gov 的網頁一律 403（實測 /rules-regulations/2026/08/s7-2026-27 與 /newsroom/press-releases/2026-76-... 都是 403，body 1,925 bytes）；www.regulations.gov 的 document 與 docket 頁都回 403（CloudFront）；www.sec.gov/rss/rules/proposed.xml 與 /rss/news/speeches.xml 也是 403（只有 /news/*.rss 這組路徑通）。\n因此：SEC 新聞稿本文、SEC 規則頁摘要、三份委員聲明的內文、regulations.gov 上的即時意見件數，都沒有讀到，相關內容一律不寫。",
+ "sources": [
+  {
+   "title": "Regulation Crypto Assets (Proposed Rule), 91 FR 54510 — Federal Register full text",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "publisher": "Office of the Federal Register / U.S. Government Publishing Office",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Regulation Crypto Assets, Federal Register Vol. 91, No. 161, pp. 54510-54655 (official PDF)",
+   "url": "https://www.govinfo.gov/content/pkg/FR-2026-08-21/pdf/2026-17183.pdf",
+   "publisher": "U.S. Government Publishing Office (GovInfo)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Federal Register document record 2026-17183 (API)",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-17183.json",
+   "publisher": "Office of the Federal Register",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "SEC Press Releases (official RSS) — item 2026-76 “SEC Proposes New Regulation Crypto Assets”",
+   "url": "https://www.sec.gov/news/pressreleases.rss",
+   "publisher": "U.S. Securities and Exchange Commission",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-08-21",
+ "event_date_basis": "三個日期都有一手佐證，必須在文章裡分開寫：\n(1) 2026-08-18 — 委員會核准並對外宣布。文件署名區逐字寫「By the Commission. Dated: August 18, 2026.」；SEC 官方新聞稿 RSS 的 2026-76 一則 pubDate 為 Tue, 18 Aug 2026 13:15:48 -0400；同日三位委員各發一份聲明。\n(2) 2026-08-20 — 送存聯邦公報辦公室。文件末行「[FR Doc. 2026-17183 Filed 8-20-26 8:45 am]」。\n(3) 2026-08-21 — 聯邦公報刊登日，也是意見期起算日。DATES 欄逐字寫「This release was published in the Federal Register on August 21, 2026.」，意見截止日 2026-10-20 是從這一天起算。\n沒有生效日。這是提案規則，DATES 欄沒有 effective date，規則原文用佔位字串「[INSERT EFFECTIVE DATE OF FINAL RULE, IF ADOPTED]」。\n注意：聯邦公報 API 的 effective_on 欄位填的是 2026-08-21，那是該 API 對 proposed rule 的欄位填法，不是規則生效日，不可據此寫「已生效」。\n⚠ event_date 選 2026-08-21 是照任務指派與 candidates-crypto.md 的 C4，理由是刊登日才是啟動意見期的法律事實。但 BRIEF 的規則是「日期是事件日，不是發布日」，批次 3 也曾把 -20260709 改名為 -20260708，因為官方發布日是 7/8。照那個先例，這篇的 slug 尾巴應該是 20260818（SEC 宣布日）。這一點請站主或編務決定；我照指派保留 20260821，但已在 corrections_to_candidate_list 提出。",
+ "verified_facts": [
+  {
+   "fact": "這份文件的正式名稱是「Regulation Crypto Assets」，機關欄寫的是 Securities and Exchange Commission 一個機關，ACTION 欄寫的是「Proposed rule.」（提案規則）。與 2026 年 3 月那份由 CFTC 與 SEC 聯名的解釋令不同，這一份是 SEC 單獨提出的。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AGENCY: Securities and Exchange Commission.\n\nACTION: Proposed rule."
+  },
+  {
+   "fact": "聯邦公報 API 的 agencies 欄位只列出一個機關：Securities and Exchange Commission（id 466）；type 欄位是「Proposed Rule」，action 欄位是「Proposed rule.」。",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-17183.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"agencies\":[{\"raw_name\":\"SECURITIES AND EXCHANGE COMMISSION\",...}],\"type\":\"Proposed Rule\",\"action\":\"Proposed rule.\""
+  },
+  {
+   "fact": "文件編號與案號：Release Nos. 33-11434; 34-106150; File No. S7-2026-27；RIN 3235-AN38；聯邦公報文件編號 2026-17183。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Release Nos. 33-11434; 34-106150; File No. S7-2026-27]\nRIN 3235-AN38"
+  },
+  {
+   "fact": "聯邦公報引註是 91 FR 54510，刊在第 91 卷第 161 期（2026 年 8 月 21 日星期五），頁碼 54510 至 54655，共 146 頁。",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-17183.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"citation\":\"91 FR 54510\",\"start_page\":54510,\"end_page\":54655,\"page_length\":146"
+  },
+  {
+   "fact": "提案會修改或新增的法規位置是 17 CFR 第 200、201、228、230、232、239 部；新的「Regulation Crypto Assets」本身放在 17 CFR 第 228 部。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "17 CFR Parts 200, 201, 228, 230, 232, and 239"
+  },
+  {
+   "fact": "聯邦公報上的 regulations.gov 對應文件編號是 SEC-2026-5190-0001，機關代號 SEC。",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-17183.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"regulations_dot_gov_info\":{\"comments_count\":0,\"agency_id\":\"SEC\",\"document_id\":\"SEC-2026-5190-0001\",\"checked_regulationsdotgov_at\":\"2026-08-22T15:55:04Z\"}"
+  },
+  {
+   "fact": "DATES 欄只寫兩件事：這份文件於 2026 年 8 月 21 日刊登在聯邦公報，意見應於 2026 年 10 月 20 日或之前送達。DATES 欄沒有寫任何生效日或遵循期限。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "DATES: This release was published in the Federal Register on August 21, 2026. Comments should be received on or before October 20, 2026."
+  },
+  {
+   "fact": "聯邦公報 API 的 comments_close_on 欄位是 2026-10-20，與文件 DATES 欄一致；publication_date 是 2026-08-21。",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-17183.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"comments_close_on\":\"2026-10-20\",\"publication_date\":\"2026-08-21\""
+  },
+  {
+   "fact": "文件末尾的署名區寫「By the Commission. Dated: August 18, 2026.」，署名人是秘書長 Vanessa A. Countryman。也就是委員會核准這份提案的日期是 2026 年 8 月 18 日，比刊登日早三天。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By the Commission.\n    Dated: August 18, 2026.\nVanessa A. Countryman,\nSecretary."
+  },
+  {
+   "fact": "文件最後一行的公報註記是「[FR Doc. 2026-17183 Filed 8-20-26 8:45 am]」，即 2026 年 8 月 20 日上午 8 時 45 分送存聯邦公報辦公室，8 月 21 日刊登。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[FR Doc. 2026-17183 Filed 8-20-26 8:45 am]"
+  },
+  {
+   "fact": "SEC 官方新聞稿 RSS 裡有一則標題「SEC Proposes New Regulation Crypto Assets」，編號 2026-76，pubDate 為 Tue, 18 Aug 2026 13:15:48 -0400，連結是 https://www.sec.gov/newsroom/press-releases/2026-76-sec-proposes-new-regulation-crypto-assets。這證實 SEC 對外宣布的日期是 2026 年 8 月 18 日。",
+   "url": "https://www.sec.gov/news/pressreleases.rss",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<title>  SEC Proposes New Regulation Crypto Assets\n</title>  <pubDate>Tue, 18 Aug 2026 13:15:48 -0400</pubDate>"
+  },
+  {
+   "fact": "該新聞稿 RSS 的 description 欄（官方一句話摘要，結尾被官方截斷）寫：「The Securities and Exchange Commission today announced that it proposed new rules, titled “Regulation Crypto Assets,” that would create a clear and fit-for-purpose framework for certain investment contracts involving crypto assets. This proposal follows…」",
+   "url": "https://www.sec.gov/news/pressreleases.rss",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The Securities and Exchange Commission today announced that it proposed new rules, titled “Regulation Crypto Assets,” that would create a clear and fit-for-purpose framework for certain investment contracts involving crypto assets. This proposal follows…"
+  },
+  {
+   "fact": "SEC 官方聲明 RSS 顯示，2026 年 8 月 18 日同日有三位委員各發一份聲明：主席 Paul S. Atkins 的「Statement on Regulation Crypto Assets: Fit-for-Purpose Exemptions for Crypto Market Innovation」（14:30:23 -0400）、委員 Hester M. Peirce 的「Filling the Regulatory Tank: Regulation Crypto Assets Proposing Release」（14:30:21 -0400）、委員 Mark T. Uyeda 的「Statement on Regulation Crypto Assets」（14:29:22 -0400）。RSS 只給標題、作者與時間，內文頁在本容器回 403，因此不得引用其內容。",
+   "url": "https://www.sec.gov/news/statements.rss",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "SUMMARY 欄說明提案內容：建立一套針對「涉及加密資產的特定投資契約」的量身訂做募集制度，包含兩項免除 1933 年證券法第 5 條註冊要求的豁免；第一項豁免允許四年期間內募集最高 500 萬美元，第二項豁免允許每 12 個月期間內募集最高 7,500 萬美元。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The first exemption would permit offerings of up to $5 million during a four-year period. The second exemption would permit offerings of up to $75 million during each 12-month period."
+  },
+  {
+   "fact": "SUMMARY 欄載明：兩項豁免下發行人都必須向投資人提供「原則導向的敘述性揭露」；第二項豁免的發行人另外必須提供財務報表並負持續申報義務；使用這兩項豁免的發行人仍然受聯邦證券法反詐欺與反操縱條款拘束。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Under both exemptions, issuers would be required to make certain principles-based narrative disclosures available to their investors. In addition, issuers under the second exemption would be required to provide financial statements and would be subject to ongoing reporting requirements. Issuers that rely on these exemptions would remain subject to the antifraud and antimanipulation provisions of the Federal securities laws."
+  },
+  {
+   "fact": "SUMMARY 欄載明：提案還包含一個附條件的安全港，針對證券法與 1934 年證券交易法「證券」定義中的「投資契約」一詞；若安全港條件滿足，該加密資產就被視為不受該投資契約拘束。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "If the conditions of that proposed safe harbor are satisfied, then a crypto asset would be deemed not to be subject to an investment contract for purposes of those definitions of “security.”"
+  },
+  {
+   "fact": "提案的 Regulation Crypto Assets 分為五個 subpart：A 一般規定（Rules 100-104）、B 新創豁免（Rule 200）、C 募資豁免（Rules 300-307）、D 投資契約安全港（Rule 400）、E「合格買方」定義與州法優先排除（Rule 500）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "提案把「crypto asset（加密資產）」定義為「任何記錄在以密碼學保護的分散式帳本上的數位價值表彰」。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Crypto asset. “Crypto asset” means any digital representation of value that is recorded on a cryptographically-secured distributed ledger."
+  },
+  {
+   "fact": "提案把「covered investment contract（適用投資契約）」定義為構成投資契約的契約、交易或安排，且必須同時滿足三項要件：(1) 有一個加密資產受該投資契約拘束；(2) 該加密資產本身不是證券；(3) 除該加密資產以外沒有其他資產（不論是證券或非證券）受該投資契約拘束。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(1) a crypto asset is subject to the investment contract; (2) such crypto asset is not a security; and (3) no asset other than such crypto asset (including any security or non-security asset) is subject to the investment contract."
+  },
+  {
+   "fact": "提案把「covered transaction」定義為依新創豁免所為的適用投資契約之要約、出售或其他分配，明文包含被稱為「airdrops」的分配，以及為酬謝或誘因而作的分配（例如對過去或未來使用該網路或應用程式的酬謝，或對營運、治理、保護該網路或應用程式的獎勵）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(2) Any public or private offering, including a distribution and transactions referred to as “airdrops,” of a covered investment contract in one or a series of transactions in exchange for, in recognition of, as or incentive for past or future use of an associated crypto network or associated crypto application, or as a reward or incentive for conducting activities primarily related to operating, governing, or securing an associated crypto network or associated crypto application."
+  },
+  {
+   "fact": "Rule 102（Sec. 228.102）規定委員會必須定期、且至少每五年一次，依勞工部勞工統計局公布的都市消費者物價指數（CPI-U）調整 Rule 228.200 與 subpart C 的募集金額上限。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Commission periodically, but not less than once every five years, must adjust the offering amount limitations in Sec. 228.200 and subpart C of this Regulation Crypto Assets to reflect any changes in the Consumer Price Index for All Urban Consumers published by the Bureau of Labor Statistics of the Department of Labor."
+  },
+  {
+   "fact": "Rule 103（Sec. 228.103）列出十類必須揭露的資訊：(1) 投資契約重要條款（含發行人承諾投入的重要經營努力及其進度）；(2) 募集重要條款（單位數、每單位價格、期間、購買人資格或限制、重要協議、預估淨得款與費用、資金用途、白皮書等募集資料的免費公開網址）；(3) 該加密資產的重要面向；(4) 管理階層、關係人與利益衝突；(5) 相關網路或應用程式與開發計畫及進度；(6) 安全性與原始碼公開網址；(7) 代幣經濟與配置（供給、定價、鎖倉、分配方式、關係人持有、釋出時程、生成與銷毀機制、交易紀錄查核方法）；(8) 治理機制、智能合約治理與權限；(9) 生態系（鏈上與鏈下）；(10) 風險因子，且必須避免空泛陳述、只寫個案特有的風險。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Rule 103(a) 要求資訊必須「以清楚、簡潔、可理解的語言呈現，不過度依賴技術術語或行話」，並須與發行人在官網、官方社群帳號、白皮書等既有公開管道的說法一致。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "should be presented in clear, concise, and understandable language, without overly relying on technical terminology or jargon"
+  },
+  {
+   "fact": "Rule 104（Sec. 228.104）是「不良行為人」失格條款：若發行人或 Rule 262(a) 所列類型之人會依 Rule 262 失格，則不得使用 Regulation Crypto Assets 的任何豁免；但在最終規則（若通過）生效日之前發生的定罪、命令、判決、停職、開除或禁止令不適用。規則原文在該處留的是佔位字串「[INSERT EFFECTIVE DATE OF FINAL RULE, IF ADOPTED]」。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "provided, however, that such disqualification shall not apply with respect to any conviction, order, judgment, decree, suspension, expulsion, or bar that occurred or was issued before [INSERT EFFECTIVE DATE OF FINAL RULE, IF ADOPTED]."
+  },
+  {
+   "fact": "Rule 104(b) 規定：對於發生在最終規則生效日之前、本來會觸發失格的事由，發行人仍須在募集說明書中或在出售前合理期間內以書面向每位購買人說明。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "新創豁免（Rule 200）的六項條件是：(1) 四年期限；(2) 發行人資格；(3) 一次性使用；(4) 募集上限；(5) 揭露與申報要求；(6) 一般條件。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "新創豁免的四年期間自發行人提交 Form NOR 依賴通知之後起算，至「提交後滿四年」與「發行人提交 Form TR 過渡報告之日」兩者較早者為止。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ending on the date that is the earlier of:\n    (i) Four years after the date of such filing; and\n    (ii) The date on which the issuer files a transition report pursuant to paragraph (e) of this section."
+  },
+  {
+   "fact": "新創豁免的募集上限：本次交易的 aggregate offering price 加上先前及期間內所有 covered transaction 的毛收入，合計不得超過 5,000,000 美元。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "must not exceed $5,000,000"
+  },
+  {
+   "fact": "新創豁免的發行人資格條款（Rule 200(b)(2)）明文允許發行人是「一個實體、一個自然人，或一群個人或實體」。規則原文沒有要求發行人須在美國設立或登記。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The issuer may be an entity, an individual, or a group of individuals or entities."
+  },
+  {
+   "fact": "釋義文字說明，容許非法人團體使用新創豁免，是因為加密專案早期的開發者或開發團隊可能還沒諮詢律師、也還沒花錢設立法人。註 205 另外說明：使用新創豁免並不要求發行人本身是「新創」或早期階段公司，只要符合條件即可。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "There is no requirement, however, that an issuer be a “startup” or early-stage in order to use the startup exemption, so long as the issuer satisfies the exemption's conditions."
+  },
+  {
+   "fact": "註 194 說明：依新創豁免發行的適用投資契約不會是限制性證券、也不受規則層次的轉售限制；新創豁免不限制發行人向散戶出售（例如不禁止賣給非合格投資人、也不限制金額）；一般招攬（general solicitation）在新創豁免下也被允許。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Covered investment contracts issued pursuant to the startup exemption would not be restricted securities or otherwise subject to rule-based resale restrictions, and the startup exemption would not limit an issuer's ability to sell covered investment contracts to retail investors ... General solicitation also would be permitted under the startup exemption."
+  },
+  {
+   "fact": "新創豁免的一次性使用條款（Rule 200(b)(3)）規定：發行人及其關係企業就同一個或實質相似的加密資產，不得先前已經用過這項豁免。釋義說這是為了避免以續用四年或以多家關係企業分開募資的方式規避四年期限與募集上限。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "新創豁免的程序要求：發行人須在任何 covered transaction 開始前向委員會提交 Form NOR 依賴通知；須在提交通知時或之前，於通知所載網址免費公開 Rule 103 所列資訊，並在四年期間內持續保持公開；若年度結束時先前揭露的資訊有重大變動，須於每一曆年結束後 30 個曆日內更新；並須在提交依賴通知後滿四年前提交 Form TR 過渡報告。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "釋義說明新創豁免不要求提供財務資訊或在向委員會的申報文件中敘述財務狀況，理由是要讓使用負擔與 500 萬美元的募集上限相稱，且該豁免本身有期間限制。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "提案在第 49 題與第 50 題公開徵詢：是否應該把 Rule 200 限於實體（排除自然人）、是否應該要求該實體在美國設立或登記、是否應該比照募資豁免要求多數高階主管或董事為美國公民或居民、逾 50% 資產位於美國、業務主要在美國管理。也就是說，這些美國連結要件目前不在新創豁免的條文裡。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "49. Should we include an issuer eligibility requirement that would limit use of Rule 200 only to entities (i.e., excluding natural persons)? If so, should we require that such entity be formed or incorporated in the United States?"
+  },
+  {
+   "fact": "募資豁免（subpart C）分兩級：Tier 1 是發行人及其關係企業的 aggregate offering price 與 aggregate sales 合計不超過 20,000,000 美元，其中由發行人關係企業之出售證券持有人提出的部分不超過 6,000,000 美元；Tier 2 是合計不超過 75,000,000 美元，其中關係企業出售部分不超過 22,500,000 美元。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(1) Tier 1. Offerings under this subpart in which the sum of the aggregate offering price and aggregate sales by the issuer and its affiliates does not exceed $20,000,000, including not more than $6,000,000 offered by all selling securityholders that are affiliates of the issuer"
+  },
+  {
+   "fact": "募資豁免對第一年的次級出售另有限制：在發行人第一次依本條的募集、或在第一次募集取得核准（qualification）後一年內取得核准的後續募集中，出售證券持有人的部分不得超過該次募集 aggregate offering price 的 30%。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "shall not exceed 30 percent of the aggregate offering price of a particular offering"
+  },
+  {
+   "fact": "募資豁免的發行人資格：必須是依美國或其任一州、領地或哥倫比亞特區法律設立並受其規範的實體，且 (i) 多數高階主管或董事須為美國公民或居民、(ii) 逾 50% 資產須位於美國、(iii) 業務須主要在美國管理。釋義說這些要件取材自「foreign private issuer」定義的一部分。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(1) Is an entity organized under, and subject to, the laws of the United States, or any State or territory of the United States or the District of Columbia; provided further that (i) a majority of the issuer's executive officers or directors must be U.S. citizens or residents, (ii) more than 50 percent of the issuer's assets must be located in the United States, and (iii) the issuer's business must be administered principally in the United States;"
+  },
+  {
+   "fact": "募資豁免另排除：沒有具體營業計畫或以併購未特定公司為計畫的開發階段公司；依 1940 年投資公司法登記或應登記的投資公司與商業發展公司；在提交募集說明文件前五年內受過交易法第 12(j) 條命令的發行人（但最終規則生效日前的命令不算）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "募資豁免的出售條件（Rule 300(c)(2)(i)(C)）：購買人必須是 Regulation D Rule 501 定義的合格投資人，否則其支付的總價不得超過「年收入或淨資產（法人為營收或淨資產）兩者較高者」的 10%。釋義明載，與 Regulation A 不同的是，這項投資限額適用於 Tier 1 與 Tier 2 所有募集，而且沒有針對在全國性證券交易所掛牌的 Tier 2 證券的排除條款。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the investment limitation in the proposed fundraising exemption would apply to all offerings irrespective of whether the offering is a Tier 1 offering or a Tier 2 offering"
+  },
+  {
+   "fact": "釋義說明，發行人可以依賴購買人的聲明來判斷是否符合 10% 投資限額，但以出售當時不知道該聲明不實為限。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "募資豁免的出售另有兩項時點條件：募集說明文件（offering statement）取得核准前不得出售；對尚未負 Rule 305(a) 申報義務的發行人，須在出售前至少 48 小時把初步募集說明書交付給在核准前曾表示購買意願的人。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "財報與查核要求：Tier 1 沒有財報查核（assurance）要求，未經查核的財報必須標明未經查核；Tier 2 募集說明文件內的財報必須依美國一般公認審計準則（U.S. GAAS）或 PCAOB 準則查核，且查核人須符合 Regulation S-X Rule 2-01 的獨立性規定。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For Tier 2 offerings, the financial statements included in the offering statement must be audited in accordance with either U.S. GAAS or PCAOB standards by an auditor that is independent under 17 CFR 210.2-01 (“Rule 2-01”) of Regulation S-X."
+  },
+  {
+   "fact": "募資豁免的持續申報義務（Rule 305）：年度報告用 Form 1-KC、半年度報告用 Form 1-SC、臨時報告用 Form 1-UC；另有特別財務報告的規定（Form 1-KC 須於核准日後 120 個曆日內提交並含經查核財報；Form 1-SC 須於核准日後 90 個曆日內提交，半年度財報可未經查核）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Rule 305(d)(2) 規定：若發行人在應申報期間內滿足 Rule 400 安全港條件、或適用投資契約以其他方式消滅，其申報義務於向委員會提交 Form TR 過渡報告時立即終止。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Rule 301(b) 規定：提交或申報 Form 1-CRYPTO 募集說明文件及其任何修正，都不需要向委員會繳費。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "No fee is payable to the Commission upon either the submission or filing of an offering statement on Form 1-CRYPTO, or any amendment to an offering statement."
+  },
+  {
+   "fact": "Rule 301(d) 允許發行人先以非公開方式送交草稿供委員會職員審查，但募集說明文件在公開提交後未滿 15 個曆日不得取得核准；Rule 301(e) 規定募集說明文件及其修正只能在委員會決定的日期與時間取得核准。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "An offering statement and any amendment thereto can be qualified only at such date and time as the Commission may determine."
+  },
+  {
+   "fact": "投資契約安全港（Rule 400）的條件只有兩項：(a) 該適用投資契約的發行人已完成或永久停止其在該契約下承諾投入的全部重要經營努力，且未在、也不打算就該加密資產作出任何新的重要經營努力承諾；(b) 該發行人向委員會提交載有 Form TR 所要求資訊的過渡報告。條件滿足時，該適用投資契約被視為已消滅，該加密資產被視為不構成、不代表也不受該投資契約拘束（就證券法第 2(a)(1) 條與交易法第 3(a)(10) 條的「證券」定義而言）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(a) The issuer of the covered investment contract has completed or otherwise permanently ceased all essential managerial efforts that it represented or promised it would engage in under the covered investment contract and is not making and does not intend to make any new representations or promises to engage in essential managerial efforts with respect to the crypto asset; and (b) The issuer of the covered investment contract files a transition report containing the information required by Form TR"
+  },
+  {
+   "fact": "釋義說明安全港對任何滿足條件的發行人都開放，包括從未使用過新創豁免或募資豁免的發行人。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The safe harbor also would be available to issuers that have not utilized these proposed exemptions."
+  },
+  {
+   "fact": "釋義同時說明安全港的三個界線：委員會不因此喪失事後質疑發行人是否真的符合條件的權力（舉例：若發行人在 Form TR 上不實陳述，委員會可主張該投資契約並未消滅、聯邦證券法的申報與註冊要求仍然適用）；即使沒有滿足安全港，某個加密資產仍可能依 Howey 測試本來就不受投資契約拘束；而且安全港只拘束委員會執行聯邦證券法的立場，不能阻止其他人主張該加密資產受投資契約拘束或屬於證券。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "while the investment contract safe harbor would control with respect to the Commission's administration of the Federal securities laws, it would not prevent other parties from asserting that a crypto asset is subject to an investment contract (or is otherwise a security)."
+  },
+  {
+   "fact": "釋義提到，安全港所依據的判斷標準來自 2026 年的解釋令：加密資產是否受投資契約拘束，取決於購買人的獲利期待是否依賴發行人承諾投入的重要經營努力；而且「是否達成去中心化」要看發行人自己怎麼定義與描述，不是看市場對去中心化的一般想像。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "whether the issuer has achieved decentralization would be based on how the issuer defined or otherwise described decentralization, not a general market conception of decentralization"
+  },
+  {
+   "fact": "Rule 500 把證券法第 18(b)(3) 條的「qualified purchaser（合格買方）」定義為：依 Regulation Crypto Assets 之募集被要約或出售證券之人，以及在特定次級交易中（由非發行人、承銷商或交易商之人所為）取得適用投資契約之人（後者須以發行人已符合本規章某項豁免、且持續遵守並及時履行該豁免之揭露、申報或定期報告義務為條件）。效果是排除各州證券法的註冊與資格核准要求。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "提案新增六種表格，條號位於 17 CFR 239.600 至 239.605：Form 1-CRYPTO（募集說明文件）、Form 1-KC（年報）、Form 1-SC（半年報）、Form 1-UC（臨時報告）、Form TR（過渡報告）、Form NOR（依賴通知）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Form 1-CRYPTO, Form 1-KC, Form 1-SC, Form 1-UC, Form TR, and Form NOR (Sec. Sec. 239.600 through 605 of this chapter)"
+  },
+  {
+   "fact": "Rule 101(c) 規定：依 Regulation Crypto Assets 向委員會提交的文件必須依 Regulation S-T 以電子格式透過 EDGAR 提交。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "註 192 明載：Peirce 委員曾建議對交易法「exchange」「broker」「dealer」定義提供豁免，「這份提案不處理那些建議」；委員會將持續考慮是否需要在本提案之外採取進一步行動。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This proposal does not address those recommendations. We will continue to consider whether further action with respect to covered investment contracts beyond the proposed rules in this release is warranted."
+  },
+  {
+   "fact": "註 192 同時載明委員會的看法：適用投資契約不是交易法第 3(a)(11) 條所稱的「equity security」，因此不受交易法第 12(g) 條的類別登記要求拘束。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "釋義敘述背景：加密資產工作小組（Crypto Task Force）於 2025 年 1 月 21 日成立，目的是「發展一套完整而清楚的加密資產監理架構」；由當時的代理主席 Mark T. Uyeda 設立。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Crypto Task Force was established on January 21, 2025 to “develop[] a comprehensive and clear regulatory framework for crypto assets.”"
+  },
+  {
+   "fact": "釋義敘述：成立一個月後，委員 Hester M. Peirce 於 2025 年 2 月 21 日發表聲明公開徵詢意見，題目分成十類：(1) 證券地位、(2) 排除適用、(3) 公開募集、(4) 註冊安全港、(5) 交易、(6) 保管、(7) 加密借貸、(8) 加密資產 ETP、(9) 代幣化證券、(10) 沙盒與相關國際議題。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "釋義載明：截至本提案，加密資產工作小組已收到超過 300 封意見書，來自發行人、投資人、律師事務所、會計查核業者、學者、公會、投資公司與顧問、市場中介機構、服務商、網路基金會、外國機構等。本提案最相關的是其中四類題目：證券地位、排除適用、公開募集、註冊安全港。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "To date, the Crypto Task Force has received over 300 comment letters."
+  },
+  {
+   "fact": "釋義提到 2025 年 1 月 23 日的行政命令「Strengthening American Leadership in Digital Financial Technology」設立了「President's Working Group on Digital Asset Markets」，並要求該工作小組提出數位資產發行與運作的聯邦監理架構建議。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "釋義提到 SEC 公司財務部（Division of Corporation Finance）自 2025 年 2 月起陸續發布一系列職員聲明，主題包括迷因幣、工作量證明挖礦、穩定幣、加密資產市場的募集與註冊、協議質押、加密資產 ETP、流動性質押與代幣化證券；文件同時註明職員聲明不是委員會的規則或指引，沒有法律效力。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "釋義多次引用並比較 2026 年的解釋令：Release No. 33-11412（2026 年 3 月 17 日）［91 FR 13714（2026 年 3 月 23 日）］，文中簡稱「2026 Interpretation」。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets, Release No. 33-11412 (Mar. 17, 2026) [91 FR 13714 (Mar. 23, 2026)] (“2026 Interpretation”)."
+  },
+  {
+   "fact": "聯邦公報 API 顯示該 2026 年 3 月解釋令（文件編號 2026-05635）的機關欄是 Commodity Futures Trading Commission 與 Securities and Exchange Commission 兩個機關，type 是「Rule」，action 是「Final rule; interpretation; guidance」，刊登日與生效日都是 2026-03-23，案號 Release Nos. 33-11412、34-105020、File No. S7-2026-09，引註 91 FR 13714。這與本次 8 月的提案在機關數、文件性質與效力上都不同。",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-05635.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"type\":\"Rule\",\"action\":\"Final rule; interpretation; guidance\",\"publication_date\":\"2026-03-23\",\"effective_on\":\"2026-03-23\""
+  },
+  {
+   "fact": "委員會在文書減量法分析中估計：每年會有 130 件依 Regulation Crypto Assets 進行的募集，其中 99 件走新創豁免（99 家不同發行人）、31 件走募資豁免（31 家不同發行人）。這個估計是以 2024 年 Regulation D、Regulation A 與 Regulation Crowdfunding 市場中涉及加密資產的募集件數為基礎（募得 500 萬美元以下者 99 件，超過 500 萬但不超過 7,500 萬美元者 31 件）。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "we estimate that there would be 130 offerings per year"
+  },
+  {
+   "fact": "委員會另估計每年會有 475 家發行人使用投資契約安全港，估法是假設 2024 年推出的 3,165 個加密專案中有 15% 會在規則通過後尋求使用安全港。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We also estimate that 475 issuers would rely on the investment contract safe harbor annually. ... by assuming that 15 percent of the estimated 3,165 crypto projects that were launched in 2024 would seek to rely on the investment contract safe harbor, once adopted."
+  },
+  {
+   "fact": "《規制彈性法》初步分析中，委員會認為每年至少會有 89 家小型實體依提案規則進行募集。該法對非投資公司之發行人的「小型企業」定義是：最近一個會計年度最後一日總資產 500 萬美元以下，且從事或擬從事不超過 500 萬美元的證券募集。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "we believe that at least 89 small entities will conduct offerings under the proposed rules per year."
+  },
+  {
+   "fact": "經濟分析的基準資料顯示：2016 至 2024 年間，有 581 家發行人在 Regulation D 下進行涉及加密資產的募集、14 家在 Regulation A 下、41 家在 Regulation Crowdfunding 下，合計 636 家發行人曾用現有豁免在美國進行加密資產相關募集。Regulation D 的加密資產相關募集件數以 2018 年最高（282 件），其後下滑，近年回升，2024 年 75 件、2023 年 51 件。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "委員會就失格揭露要求估計的每案遵循成本是每次募集 1,270 美元。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "「III. Other Matters」一節載明：這份提案是行政命令 12866 第 3(f)(1) 條所稱「具重大經濟影響的管制行為」，並依行政命令 14215 已由管理及預算局（OMB）審查。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This proposing release is an economically significant regulatory action under section 3(f)(1) of Executive Order 12866 and has been reviewed by the Office of Management and Budget (“OMB”), consistent with Executive Order 14215."
+  },
+  {
+   "fact": "國會審查法（Congressional Review Act）一節載明：委員會必須就最終規則是否構成「major rule」徵詢 OMB 的認定，並就三項判準（對美國經濟的年度影響是否達 1 億美元以上、是否造成成本或價格重大上升、是否對競爭、投資或創新有顯著不利影響）公開徵求意見與資料。文件並未說明最終規則是否會是 major rule。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "這份提案全文含 24 個「Request for Comment」區塊，問題連續編號到第 154 題；第 154 題請各界提供對適用投資契約市場規模、提案整體經濟影響與經濟分析其他面向的意見、看法、估計與資料。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "公開意見的提交方式：委員會的網路意見表單（sec.gov/comments/s7-2026-27/regulation-crypto-assets）、電子郵件（主旨須註明 File Number S7-2026-27），或寄紙本至 Vanessa A. Countryman, Secretary, Securities and Exchange Commission, 100 F Street NE, Washington, DC 20549-1090。文件並提醒不要在意見中放入個人可識別資訊。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Do not include personal identifiable information in submissions; you should submit only information that you wish to make available publicly."
+  },
+  {
+   "fact": "以 2026-09-16 查詢聯邦公報 API，搜尋「Regulation Crypto Assets」且刊登日在 2026-08-21 之後的文件，count 為 1，就是 2026-17183 這一份提案本身。也就是說截至查核日，聯邦公報上沒有延長意見期的公告，也沒有任何最終規則。",
+   "url": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=%22Regulation+Crypto+Assets%22&conditions[publication_date][gte]=2026-08-21",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"count\":1,...,\"document_number\":\"2026-17183\",\"comments_close_on\":\"2026-10-20\""
+  },
+  {
+   "fact": "以 2026-09-16 查詢聯邦公報 API，SEC 在 2026-08-22 之後刊登且含「crypto」字樣的文件只有三筆，全是 FINRA 規則變更通知、Nasdaq Texas 規則變更通知與 Transfer Agent Rules 提案，沒有任何與 Regulation Crypto Assets 有關的後續文件。",
+   "url": "https://www.federalregister.gov/api/v1/documents.json?conditions[term]=%22Regulation+Crypto+Assets%22&conditions[publication_date][gte]=2026-08-21",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "提案 SUMMARY 說明制度目的：在促進資本形成與容納加密資產市場創新的同時，確保投資人受到適當保護、並取得作成知情投資判斷所需的資訊。這是 SEC 自己的說法，不是本站的評價。",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/08/21/2026-17183.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The proposed offering regime is intended to facilitate capital formation and accommodate innovation within the crypto asset markets while, at the same time, ensuring that investors are adequately protected and provided with the information they need to make informed investment decisions."
+  },
+  {
+   "fact": "GovInfo 上的官方 PDF 第一頁抽出的文字與聯邦公報全文一致，逐字包含「AGENCY: Securities and Exchange Commission. ACTION: Proposed rule.」、「[Release Nos. 33-11434; 34-106150; File No. S7-2026-27] RIN 3235-AN38」，以及 DATES 欄的刊登日與 2026 年 10 月 20 日意見截止日。",
+   "url": "https://www.govinfo.gov/content/pkg/FR-2026-08-21/pdf/2026-17183.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "54510 Federal Register / Vol. 91, No. 161 / Friday, August 21, 2026 / Proposed Rules"
+  }
+ ],
+ "not_said": [
+  "文件沒有寫任何生效日或遵循期限。DATES 欄只寫刊登日與意見截止日；規則原文在失格條款處留的是佔位字串「[INSERT EFFECTIVE DATE OF FINAL RULE, IF ADOPTED]」。注意：聯邦公報 API 的 effective_on 欄位雖然填了 2026-08-21，但那不是規則生效日，撰稿時絕對不能寫成「2026 年 8 月 21 日生效」。",
+  "文件沒有說委員會何時、或是否會通過最終規則。沒有預計表決日、沒有時程表。",
+  "聯邦公報版本沒有記載表決結果、票數、贊成或反對的委員名單，也沒有收錄任何委員的個別聲明或不同意見書。（SEC 官方 RSS 顯示 8 月 18 日有三份委員聲明，但內容頁在本容器回 403，未讀到內容，因此不得引用。）",
+  "文件沒有說意見期會不會延長。截至 2026-09-16，聯邦公報上沒有任何延長公告。",
+  "文件沒有處理交易所、券商、交易商的登記義務。註 192 明說「這份提案不處理那些建議」。",
+  "文件沒有處理加密資產的保管（custody）規範、交易平台規範或次級市場交易場所的監理。",
+  "文件完全沒有提到 GENIUS Act（全文 0 次），也沒有處理穩定幣發行的許可制度。「stablecoin」全文只出現 9 次，主要是引用 2025 年公司財務部職員聲明的註腳。",
+  "文件沒有提到台灣（全文 0 次），也沒有提到任何其他司法管轄區的加密資產法規會不會因此改變。",
+  "文件沒有說「加密資產不是證券」這種概括結論。提案適用的對象是「covered investment contract」，而該定義本身以「該加密資產本身不是證券」為要件之一。",
+  "文件沒有規定購買人的國籍或居住地要件。募資豁免限制的是發行人的美國連結，不是購買人；新創豁免的條文則完全沒有發行人國籍要件，委員會反而在第 49、50 題徵詢要不要加。所以不能寫成「台灣使用者可以依這套規則參與美國的代幣募集」。",
+  "文件沒有提供任何幣價、市值、漲跌幅、報酬率或殖利率數字，也沒有評價任何具體加密資產。",
+  "文件沒有說現有已經流通的代幣會自動適用安全港或自動脫離證券法；安全港要件是發行人完成或永久停止其承諾的重要經營努力並提交 Form TR。",
+  "文件沒有說使用豁免的發行人就不會被追究責任；相反地 SUMMARY 明載反詐欺與反操縱條款仍然適用，Rule 101(d) 也保留委員會的執法權。",
+  "文件沒有說明 3,165 個「2024 年推出的加密專案」這個數字的出處註腳；那是委員會在文書減量法分析裡自己採用的推估基礎。",
+  "SEC 新聞稿本文、SEC 規則頁與三份委員聲明的內容，本容器都讀不到（403），因此本篇不得出現任何來自那些頁面的引述或數字。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "SEC 於 2026 年 8 月 18 日「提出」本提案、聯邦公報 8 月 21 日刊登，兩個日期不同。",
+   "seen_where": "docs/news-2026-batch-4/candidates-crypto.md 的 C4 條目（來自更早的整理，非一手）",
+   "why_excluded": "沒有排除——已經回到一手來源驗證：文件署名區寫「By the Commission. Dated: August 18, 2026.」、公報註記寫「Filed 8-20-26 8:45 am」、SEC 官方新聞稿 RSS 的 2026-76 一則 pubDate 為 2026-08-18。三個日期（核准 8/18、送存 8/20、刊登 8/21）都可指到一手來源，撰稿時要分清楚。"
+  },
+  {
+   "claim": "意見期是 60 天。",
+   "seen_where": "由 2026-08-21 到 2026-10-20 自行推算",
+   "why_excluded": "文件本身只寫「Comments should be received on or before October 20, 2026」，沒有用「60 天」這個說法。要寫天數只能寫成「自刊登日起至 10 月 20 日」，不要寫成官方說的 60 天。"
+  },
+  {
+   "claim": "三位委員（Atkins、Peirce、Uyeda）對提案的具體立場與說法。",
+   "seen_where": "https://www.sec.gov/news/statements.rss 只給標題、作者與時間；內文頁 sec.gov/newsroom/speeches-statements/... 在本容器回 HTTP 403",
+   "why_excluded": "只讀到標題，沒讀到內文。可以寫「同日有三位委員各發表一份聲明」這個事實（RSS 是 sec.gov 一手管道），但不得引述、摘要或推測其內容或立場。"
+  },
+  {
+   "claim": "是否有委員投下反對票、或有委員未參與。",
+   "seen_where": "RSS 上只看到三位委員的聲明，沒看到第四位",
+   "why_excluded": "「RSS 上沒有」不等於「沒有反對意見」。聯邦公報版本沒有票數紀錄，SEC 新聞稿本文讀不到。不寫。"
+  },
+  {
+   "claim": "全球有 9,746 個加密資產在各交易所掛牌或交易、2013 至 2024 年的逐年新增掛牌數。",
+   "seen_where": "本提案經濟分析第 IV.A 節，委員會自己引用 CoinMarketCap 的資料",
+   "why_excluded": "雖然出現在一手文件裡，但它是行情／掛牌市場數據，落在 crypto.md 明文禁止的「市值、交易量」界線內，而且原始出處是白名單明文排除的 CoinMarketCap。不寫進文章。"
+  },
+  {
+   "claim": "ICO 市場募資規模、失敗率等統計。",
+   "seen_where": "本提案註 437 引用 CoinLaw 的「ICO Market Statistics 2025」",
+   "why_excluded": "同上：原始出處是幣圈整理站，且屬市場行情類數據，即使被官方文件引用也不寫。"
+  },
+  {
+   "claim": "regulations.gov 上這份提案目前收到幾則公眾意見。",
+   "seen_where": "聯邦公報 API 的 regulations_dot_gov_info 顯示 comments_count 為 0，但 checked_regulationsdotgov_at 是 2026-08-22T15:55:04Z",
+   "why_excluded": "那是 8 月 22 日的快照，不是查核日的現況；regulations.gov 網站本身在本容器回 403，無法核對現值。不寫意見件數。"
+  },
+  {
+   "claim": "這套規則對台灣使用者、台灣交易所或台灣《虛擬資產服務法》的影響。",
+   "seen_where": "無一手來源",
+   "why_excluded": "提案全文沒有提到台灣，也沒有任何官方文件把兩者連在一起。只能寫「這是美國國內的募集制度提案」，不得推論對台灣的影響。"
+  },
+  {
+   "claim": "這份提案若通過，某些代幣就「不算證券可以買」。",
+   "seen_where": "這是這類新聞最常見的坊間解讀",
+   "why_excluded": "提案自己說安全港只拘束委員會執行聯邦證券法的立場，不能阻止其他人主張該加密資產是證券；而且法律地位不是投資評價。crypto.md 明文禁止這種寫法。"
+  },
+  {
+   "claim": "本提案的主要推動者是誰、與 2025 年政策轉向的政治背景。",
+   "seen_where": "提案背景章節提到 Crypto Task Force、代理主席 Uyeda、委員 Peirce、2025-01-23 行政命令與 President's Working Group",
+   "why_excluded": "這些機構事實有一手出處可以寫，但任何「誰主導」「政策轉向的政治動機」的評價都沒有一手依據，不寫。"
+  }
+ ],
+ "must_not_write": [
+  "不可寫成「SEC 通過新規則」「美國通過加密資產新法」。這是 Proposed Rule（提案規則），還沒有生效、也還沒有最終規則。",
+  "不可寫「2026 年 8 月 21 日生效」。聯邦公報 API 的 effective_on 欄位雖填 2026-08-21，文件 DATES 欄沒有任何生效日，規則原文用的是「[INSERT EFFECTIVE DATE OF FINAL RULE, IF ADOPTED]」佔位字串。",
+  "不可寫成「SEC 與 CFTC 聯名」。這一份的機關欄只有 SEC 一個機關；2026 年 3 月那份解釋令才是兩機關聯名，兩者不能混為一談。",
+  "不可出現任何幣價、漲跌幅、市值、交易量、ETF 資金流、報酬率、質押報酬或空投獎勵數字。可以說明規則把「airdrops」納入 covered transaction 的定義，但不得寫任何空投可以拿到多少的內容。",
+  "不可把 500 萬美元、7,500 萬美元、2,000 萬美元、2,250 萬美元寫成「投資機會」或「可以參與的額度」。那是發行人端的募集上限，不是給讀者的額度。",
+  "不可寫哪些代幣會因此「變成合法可買」、哪些專案會受惠。不點名任何具體加密資產、交易所、錢包或發行方。",
+  "不可寫「台灣使用者可以依這套規則參與」。提案沒有規定購買人國籍，也沒有提到台灣；募資豁免限制的是發行人的美國連結。",
+  "不可引述、摘要或推測 Atkins、Peirce、Uyeda 三份委員聲明的內容，也不可寫票數或反對意見——那些頁面在本容器讀不到。",
+  "不可寫「意見期為 60 天」為官方說法。文件只寫截止日 2026 年 10 月 20 日。",
+  "不可使用提案經濟分析裡引用 CoinMarketCap 的 9,746 個掛牌加密資產、或引用 CoinLaw 的 ICO 統計。那是行情類數據且出處在白名單外。",
+  "不可寫「本站實測」「我們試用」。本文不做任何實測。",
+  "不可下投資建議、不可寫買賣時機或值不值得持有。幣圈篇必須另帶免責 callout，且「不是投資建議」六個字逐字不可改。",
+  "不可把「安全港」寫成「保證不會被告」。提案自己說委員會保留質疑權，且不能阻止其他人主張該資產是證券。",
+  "不可猜測或改寫案號。正確寫法是 File No. S7-2026-27、Release Nos. 33-11434 與 34-106150、RIN 3235-AN38、聯邦公報引註 91 FR 54510。",
+  "不可把聯邦公報網頁版網址（.../documents/2026/08/21/2026-17183/regulation-crypto-assets）當成已查證來源列進 sources——本容器抓到的是攔截頁，不是文件。"
+ ],
+ "overlaps_existing_article": "apps/api/app/guides/content/ 下目前沒有任何 crypto-news-* 內容包（970 個檔案裡只有 finance-glossary-50-terms.json 與 personal-finance-first-steps.json 屬理財類），所以沒有已發布文章重疊。\n同批次內會重疊的是 candidates-crypto.md 的 C3「crypto-news-sec-crypto-interpretation-20260323」。分界建議如下：\nC3 寫的是已生效的解釋令——CFTC 與 SEC 兩機關聯名、type 是 Rule、action 是「Final rule; interpretation; guidance」、刊登日與生效日都是 2026-03-23、引註 91 FR 13714、案號 33-11412／34-105020／S7-2026-09。它回答的是「什麼情況下加密資產受投資契約拘束」。\nC4（本篇）寫的是還在草案階段的募集制度——SEC 單一機關、type 是 Proposed Rule、還沒生效、意見期到 2026-10-20。它回答的是「如果要在美國合法發行這種代幣，要走什麼程序、揭露什麼」。\n本篇可以、也應該提到 3 月那份解釋令（提案自己在註 9 與註 193 引用它，稱為 2026 Interpretation），但只用一兩句交代關係，細節留給 C3；反過來 C3 不應該把兩項豁免的金額與條件寫進去。\n另外 C6–C9 是穩定幣（GENIUS Act）的落地規則，本提案全文 0 次提到 GENIUS、9 次提到 stablecoin 且都在註腳，兩邊完全不重疊，不要互相牽引。",
+ "corrections_to_candidate_list": [
+  "C4 的「一手來源」只列了聯邦公報的網頁版網址 https://www.federalregister.gov/documents/2026/08/21/2026-17183/regulation-crypto-assets。該網址在本容器回 HTTP 200 但 body 是「Federal Register :: Request Access」攔截頁，抓不到文件。實際可取得全文的是 .../documents/full_text/text/2026/08/21/2026-17183.txt 與 GovInfo 的官方 PDF https://www.govinfo.gov/content/pkg/FR-2026-08-21/pdf/2026-17183.pdf。",
+  "C4 寫「線索說 8/18 提出」——已驗證為真，而且不需要靠線索：文件署名區自己寫「Dated: August 18, 2026」，SEC 官方新聞稿 RSS 的 2026-76 也是 8/18。可以把這條從「⚠ 待釐清」升級為已驗。",
+  "C4 的事件日訂在刊登日 2026-08-21，與 BRIEF「日期是事件日，不是發布日」以及批次 3 把 20260709 改成 20260708 的先例不一致。若照該先例，slug 應為 crypto-news-sec-regulation-crypto-assets-20260818。這篇我照指派沿用 20260821，但建議站主統一裁示（C3 若也沿用刊登日 20260323，至少兩篇之間是一致的）。",
+  "C4 沒有記到一件重要的事：這一份是 SEC 單一機關提出，和 C3 的 CFTC+SEC 聯名不同。C3 條目已經特別提醒「寫成 SEC 發布就是錯的」，C4 反過來若寫成兩機關聯名也一樣錯，建議在候選清單補一句。",
+  "C4 只寫了評論截止日，沒有記下提案的實質內容。實際上這份提案的骨架是兩項豁免（四年 500 萬美元的 startup exemption、每 12 個月 7,500 萬美元且分 Tier 1 2,000 萬／Tier 2 7,500 萬的 fundraising exemption）＋一個投資契約安全港（Rule 400）＋州法優先排除（Rule 500），建議補進候選清單以免下一個代理又要重讀 146 頁。",
+  "candidates-crypto.md 說「Federal Register 有 API，是 sec.gov 被 403 擋掉時的官方刊登管道」——補充一項本次新發現：sec.gov 的 /news/pressreleases.rss 與 /news/statements.rss 兩個路徑回 200 且是活的（各 25 則、最新 2026-09-16），可以拿到 SEC 官方新聞稿與委員聲明的標題與日期（只有標題與日期，內文頁仍 403）。但 /rss/rules/proposed.xml 與 /rss/news/speeches.xml 是 403。",
+  "regulations.gov（www.regulations.gov/document/... 與 /docket/...）在本容器回 403，不能用來查即時意見件數。聯邦公報 API 的 regulations_dot_gov_info.comments_count 是 2026-08-22 的快照，不是現況。",
+  "C3 的「⚠ 開稿時要釐清：法律事務所的整理說 SEC 是 3/17 發布」也已由本次查證附帶確認：本提案註 9 逐字寫「Release No. 33-11412 (Mar. 17, 2026) [91 FR 13714 (Mar. 23, 2026)]」，即 3/17 發布、3/23 刊登並生效，兩者皆有一手出處。"
+ ],
+ "editorial_brief": "讀者：在台灣、對加密資產有基本概念、會看到「美國 SEC 出新規」這種標題但分不清草案與生效的一般使用者。\n本篇的角度只有一個核心任務：把「提出」和「通過」分開。全文第一句就要寫出事件日與「這是提案規則、還沒生效」，第二段寫查核日 2026-09-16 與「本文不做實測、不評價任何加密資產」的界線。\n五節建議：\n1) 發生了什麼——SEC 單一機關於 2026-08-18 核准提案、2026-08-21 刊在聯邦公報、意見期到 2026-10-20；名稱 Regulation Crypto Assets，案號 File No. S7-2026-27，共 146 頁。特別點出它和 3 月那份 CFTC 與 SEC 聯名、已生效的解釋令不是同一件事。\n2) 草案想做什麼——兩項豁免（四年 500 萬美元的新創豁免、每 12 個月 7,500 萬美元的募資豁免，後者分 Tier 1 2,000 萬與 Tier 2 7,500 萬）加一個投資契約安全港，以及州法優先排除。節尾放表格：3–4 欄，比較「新創豁免／募資豁免 Tier 1／募資豁免 Tier 2」的上限、財報要求、申報表格，caption 寫查核日 2026-09-16。\n3) 發行人要揭露什麼——Rule 103 那十類揭露，挑對一般讀者有意義的幾類講：風險因子必須寫個案特有的、原始碼與白皮書要免費公開、代幣配置與釋出時程要寫、治理機制要寫。節尾放圖解 /guides/crypto-news-sec-regulation-crypto-assets-20260821/diagram-1.svg。\n4) 還沒發生的事——沒有生效日（規則原文留的是佔位字串）、沒有最終規則、沒有延長公告、不處理交易所與券商登記、不處理保管、不涉及穩定幣、不提台灣。也寫清楚安全港的三個界線（委員會仍可事後質疑、沒安全港也可能本來就不是投資契約、擋不住其他人主張是證券）。\n5) 一般人可以怎麼看——公開意見怎麼提（網路表單、email 註明案號、紙本地址），以及「看到這類新聞時先看 type 欄是 Proposed Rule 還是 Rule」這種可遷移的判讀方法。提醒不要在意見裡放個人可識別資訊（文件自己這樣提醒）。\n生活情境如果要寫，必須標明是編輯設計的例子。\n刻意不談：任何代幣的價格與是否值得持有、哪些專案會受惠、對台灣法規的影響推論、三位委員的立場。\n免責 callout 照 crypto.md 逐字，查核日填 2026-09-16。"
+}

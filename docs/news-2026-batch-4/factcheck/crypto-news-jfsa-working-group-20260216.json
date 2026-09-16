@@ -1,0 +1,75 @@
+{
+ "slug": "crypto-news-jfsa-working-group-20260216",
+ "verdict": "needs_fixes",
+ "confirmed_count": 17,
+ "source_reachability": "All statuses observed by me on 2026-09-16 with curl -A \"Mokaair-editorial\", bodies inspected (no Access Denied / challenge pages). SOURCES: https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html -> 200 text/html 17,948 B, real content (h1 matches the claimed title). https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf -> 200 application/pdf 821,835 B, 62 pages, Last-Modified Mon 03 Aug 2026 08:00:09 GMT, internal /ModDate D:20260731100610+09'00'. https://www.fsa.go.jp/common/diet/index.html -> 200, 70,051 B, real content. https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/keika/1DE278A.htm -> 200, Shift_JIS, 10,536 B, real content (閣法 221回 第57号). OTHER URLs CITED IN FACTS: /en/news/index.html -> 200 31,559 B; /singi/singi_kinyu/tosin/20251210.html -> 200 36,224 B; /singi/singi_kinyu/angoshisanseido_wg/angoshisanseido_wg_index.html -> 200 35,888 B; 20260216/02.pdf -> 200 283,441 B 5 pages LM Fri 03 Jul 2026 09:00:02 GMT ModDate D:20260703175426; 20260216/03.pdf -> 200 274,808 B 6 pages LM Fri 03 Jul 2026 09:00:02 GMT ModDate D:20260703175445. URLs I ADDED: https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/kaiji221.htm -> 200 102,003 B (proves keika/1DE278A.htm was found, not guessed); https://www.fsa.go.jp/news/r8/shouken/20260729/20260729.html -> 200 35,895 B; https://www.fsa.go.jp/common/diet/221/02/02.pdf -> 200 277,011 B 1 page; https://www.fsa.go.jp/common/diet/221/02/04.pdf -> 200 138,818 B 7 pages. DEAD/NEGATIVE: https://www.fsa.go.jp/news/r8/index.html -> 404; https://www.fsa.go.jp/news/past.html -> 404 (the researcher's \"no JA archive index\" note holds); https://www.fsa.go.jp/news/index.html -> 200 but covers only 令和8年7月-令和9年6月, so April 2026 JA releases are genuinely not reachable there; https://laws.e-gov.go.jp/api/2/laws?law_num_era=Reiwa&law_num_year=8&law_num=64 -> 200 but total_count 0, so I could NOT independently corroborate 令和8年法律第64号 outside shugiin.go.jp.",
+ "refuted": [
+  {
+   "fact": "Fact 15: 報告引用 FSA 自己 2024-07-05 的調查 ... 持有暗號資產的最主要理由（86.6%）是期待長期價格上漲",
+   "why": "01.pdf p.8 attaches footnote 13 (Source: FSA, 'the Results of the Awareness Survey of Customers Regarding Risk-Involving Financial Instruments Sales' (July 5, 2024)) ONLY to the 7.3 percent figure. The 86.6 percent sentence carries footnote 14, which reads verbatim 'See footnote 10.', and footnote 10 is 'Source: Japan Cryptoasset Business Association, Survey Results on Tax Filing for Crypto-Assets and Proposals for Tax Reform'. The 86.6% figure is a JCBA figure, not an FSA figure. Recording it as FSA's own survey is wrong and would put a fabricated attribution in the article."
+  },
+  {
+   "fact": "Fact 13 (cited to 02.pdf): ④確保價格形成與交易的公正（IOSCO 建議、歐盟與韓國已立法）",
+   "why": "02.pdf p.1 says 'Recommendations by IOSCO on insider trading regulations and legislation in Europe and other regions'. It does not name Korea. Korea (footnote 21, 'The Act on the Protection of Virtual Asset Users') appears only in 01.pdf p.11. The fact as written is not in the page it cites."
+  },
+  {
+   "fact": "Fact 13 (cited to 02.pdf): ③處理投資講座與線上社群等投資管理面的不當行為, with verbatim_quote listing six slash-separated items",
+   "why": "02.pdf's bullet is 'Addressing Inappropriate Conduct in Investment Advice' (投資助言), not Investment Management - that wording is 01.pdf's heading. The two PDFs differ and the record silently merges them. The verbatim_quote is also not verbatim: it concatenates six strings, while 02.pdf has FIVE bullets (item 2 is one bullet, 'Ensuring Appropriate Transaction / Addressing Unregistered Operators'), so the quote reads as six challenges against a fact that says five."
+  }
+ ],
+ "unsupported": [
+  {
+   "fact": "Fact 4: 01.pdf 62 頁、02.pdf 5 頁、03.pdf 6 頁，PDF 內部 ModDate 2026-07-31 — url = the 20260216.html announcement page",
+   "why": "The announcement page carries none of this. It lists three PDF links with no page counts and no ModDate. I confirmed 62/5/6 pages and ModDate D:20260731100610+09'00' from the PDFs themselves, so the values are right but the url attached to them is wrong. Under the batch rule (one fetched url per fact) this must be re-attached to the PDFs."
+  },
+  {
+   "fact": "Fact 10: 報告同時建議把 PSA 裡的暗號資產相關條文刪除，避免法規重疊 — url = 02.pdf",
+   "why": "02.pdf does not say this. It is in 01.pdf p.12, III.2(4): 'Accordingly, to avoid regulatory complexity, it would be appropriate to remove the crypto-asset-related provisions from the PSA.' True fact, wrong source."
+  },
+  {
+   "fact": "Fact 11: 穩定幣（digital-money type）繼續依 PSA 以電子決濟手段管理，理由是以與法定貨幣連動的價格發行、可按發行價等額贖回，目前一般不被當成投資標的 — url = 02.pdf",
+   "why": "02.pdf only says NFTs and stablecoins remain outside the amended FIEA definition. The whole rationale is in 01.pdf p.12 III.2(3). True fact, wrong source."
+  },
+  {
+   "fact": "Fact 15: 概要 PDF 把後者寫成 87% — url = 01.pdf",
+   "why": "01.pdf contains 86.6 percent and no 87%. The 87% is in 02.pdf p.1 ('The predominant motivation of crypto-asset holders (87%) is price appreciation in the long term'). Wrong source."
+  },
+  {
+   "fact": "Fact 18: 參考資料進一步註明「無償配發、以及挖礦或質押獎勵自動產生的配發」都豁免 — url = 02.pdf",
+   "why": "02.pdf names mining only ('a reward for mining (validation of transactions)'). Staking appears only in 03.pdf p.1's asterisk note. Wrong source for the staking half."
+  },
+  {
+   "fact": "Fact 17: 揭露制度分兩類對象 — ①有可辨識發行人（發行人募資時公表）②其他暗號資產（CASP 自行編製）",
+   "why": "Materially incomplete against the cited page. 02.pdf p.3 states a THIRD case under the identifiable-issuer row: 'CASPs should disclose information to users when they handle crypto-assets without fundraising by the issuer', with disclosure items including issuer information, planned use of offering proceeds and the project. 03.pdf p.1 shows the same three-column split. The two-bucket framing drops a whole regulatory case."
+  },
+  {
+   "fact": "Fact 20: 有發行人但未募資者，法定即時揭露加自律規則下的定期揭露；其他暗號資產由 CASP 負責",
+   "why": "Cannot be read off the table that way. Coordinate extraction of 03.pdf p.2 shows the Ongoing-Disclosure Frequency row has exactly two body cells, at x=153.9 and x=517.7 - the same two-cell split as p.1, where the right-hand cell demonstrably spans BOTH 'the issuer does NOT raise funds' and 'Other crypto-assets'. So 'Timely (by law) + Periodic (under self-regulatory rules)' covers other crypto-assets as well, which the fact leaves unstated."
+  },
+  {
+   "fact": "Fact 20: 揭露義務的終止條件 ... 發行人端在暗號資產「去中心化」後終止",
+   "why": "01.pdf p.25-26 D(i) says it is for the competent authority to APPROVE the termination, and that CASPs remain subject to ongoing disclosure after it. The record states the 03.pdf table line ('Terminated if the crypto-asset is decentralized') as if it were automatic."
+  },
+  {
+   "fact": "event_date_basis: 2026-08-12 只有「無登記業罰則提高與 SESC 犯則調查權」的部分先施行",
+   "why": "No url is attached to it anywhere in the record - it appears only in prose. It happens to be exactly right: https://www.fsa.go.jp/news/r8/shouken/20260729/20260729.html (200) states 令和８年８月12日（水曜）and uses that same wording. It must be cited, not left as an arithmetic-looking claim."
+  },
+  {
+   "fact": "Facts 10, 11, 17, 20 phrased as settled regulatory design (e.g. 「在修法後的 FIEA 下仍然不在暗號資產定義之內」, 「揭露制度分兩類對象」)",
+   "why": "The source is a December 2025 advisory-council report making recommendations, translated provisionally. These are proposals; the Act that followed is a separate document. The article must keep 「報告建議」 framing or the reader will read a recommendation as enacted law."
+  }
+ ],
+ "additional_findings": [
+  "The 2026-08-12 partial commencement is officially stated and should be a source, not a footnote: https://www.fsa.go.jp/news/r8/shouken/20260729/20260729.html (200, 令和8年7月29日) - '公布の日から起算して20日を経過した日（令和８年８月12日（水曜））から施行されます' for 無登録業に対する罰則の引上げ及び証券取引等監視委員会の犯則調査権限の追加, and the related 政令 was 閣議決定 令和8年7月24日 and published that day. This is an fsa.go.jp url, so it also relieves some of the reliance on shugiin.go.jp.",
+  "The 法律案要綱 (https://www.fsa.go.jp/common/diet/221/02/04.pdf, 200, 7 pages) 第３ 施行期日等 sets FOUR commencement tranches; the record has one. In principle: a date set by Cabinet Order within one year of promulgation. (1) 20 days after promulgation for 無登録業者に対する罰則の引上げ and 犯則事件の定義の拡大 - but EXPLICITLY EXCLUDING the part adding 暗号等資産の売買その他の取引に係る事件, i.e. the crypto slice of the SESC expansion is NOT in the early tranche. (2) 令和9年4月1日 (2027-04-01) for the sustainability disclosure/assurance and growth-capital disclosure provisions. (3) 令和9年10月1日 (2027-10-01) for SESC 犯則調査手続のデジタル化.",
+  "Do not conflate the report's recommended penalty with the enacted one. 03.pdf p.3 shows unregistered business 3 years -> 5 years; 01.pdf footnote 83 adds the fines (3 million yen -> 5 million yen) and explains the 5-year figure is the existing FIEA level; footnote 84 records a suggestion to raise the FIEA figure to 10 years; and the enacted bill's 要綱 第1-4(4)イ does exactly that - 十年以下の拘禁刑若しくは千万円以下の罰金. Writing '3年提高到5年' as the outcome of the 2026 Act would be wrong.",
+  "The FSA's own diet page (already source 3) states 令和８年４月10日提出、令和８年７月15日成立 for this Act. That is a cleaner FSA-domain cite for the submission date than shugiin's 衆議院議案受理年月日, which literally means the date the House received the bill, not a cabinet decision date.",
+  "Allow-list issue for the editor, not a fabrication: crypto.md's Japan allow-list is literally '日本 FSA 與 JVCEA' and shugiin.go.jp is outside it. Nothing was guessed - the 議案一覧 at https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/kaiji221.htm (200) lists bill 57 and links to ./keika/1DE278A.htm - but 公布日 2026-07-23 and 法律第64号 exist only there among the sources, and e-Gov's law API returned total_count 0 for my query, so those two numbers have a single non-allow-listed source.",
+  "Material content in the sources that the reviewed facts never touch: 03.pdf p.5 sets out the whole insider-trading design (covered assets = crypto-assets admitted or under application for admission at domestic CASPs, irrespective of venue, including DEX and P2P; material facts include issuer bankruptcy, commencement or discontinuation of handling, outflows, and large-volume trades such as transactions involving 20% or more of the outstanding crypto-assets; publication limited to CASP or SRO websites, with social media expressly NOT a means of publication). 03.pdf p.6 is the DEX response. 02.pdf p.4 has the unhosted-wallet deliberation period, liability reserves, regulation of borrowing/staking, treatment of banks and insurers, and new rules for vendors of critical systems.",
+  "03.pdf p.4 keeps JVCEA as the accredited SRO with the qualifier 'substantial enhancement of organizational frameworks is necessary' - directly on point given JVCEA is on the crypto.md allow-list, and absent from the reviewed facts.",
+  "Live-document warning re-confirmed today: the English report is a Provisional Translation of a Japanese report dated 2025-12-10, and the English PDF was revised AFTER the Act passed (Last-Modified 2026-08-03, internal ModDate 2026-07-31). 02.pdf and 03.pdf are both 2026-07-03. Any quote in the article must name the version read.",
+  "The same English index lists 'Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses (July 23, 2026)' - the C11 candidate - on the same day as this Act's promulgation (令和8年7月23日). Two different 2026-07-23 events; keep them apart.",
+  "Sourcing passes the disqualifying test: no news outlet, aggregator, law-firm blog or search snippet appears anywhere in the record, and every url resolves to the document claimed with a real body. The researcher's claim that the FSA English index has no April 2026 cabinet-bill entry is correct - I read the whole 2026 index and the April block contains no such item.",
+  "Scope limit on this review: the researcher output handed to me was truncated mid-fact 25 (at '資本要求由現行 1,000 萬日圓提高到 5,000 萬...'). I verified fact 25's content against 03.pdf p.4 (Capital requirements 10 million yen -> 50 million yen, capital adequacy, advance notification for nonancillary businesses, liability reserves, sales representative framework, prohibited acts moving from self-regulation to laws and regulations - all confirmed), but any fact after it was not reviewed and must not be treated as checked."
+ ]
+}

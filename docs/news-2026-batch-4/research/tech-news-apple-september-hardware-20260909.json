@@ -1,0 +1,683 @@
+{
+ "slug": "tech-news-apple-september-hardware-20260909",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "全部一手來源都抓到了，沒有一項關鍵事實卡在封鎖後面。實測全部用 curl -A \"Mokaair-editorial\"，查核日 2026-09-16。\n\n1) https://www.apple.com/newsroom/rss-feed.rss → HTTP 200，Atom（<entry>/<updated>），20 個 entry，最新一筆 2026-09-16。確認 2026-09-09 當天六篇的正式標題與 canonical 網址，四個指派的線索網址全部命中、沒有一個是猜的。\n2) 四篇美國版新聞稿全部 HTTP 200 且拿到完整正文與註腳（iPhone 298 KB、Watch Series 12 408 KB、Ultra 4 344 KB、AirPods 5 197 KB），canonical 已逐頁核對。\n3) 額外發現並確認：Apple 台灣 Newsroom 有同四篇的繁體中文版。先抓 https://www.apple.com/tw/newsroom/rss-feed.rss → HTTP 200、20 個 entry，從 feed 裡讀出四個台灣網址再抓（AirPods 5 的台灣 slug 是 ...-featuring-...，與美國版的 ...-with-... 不同，用猜的會 404）。四頁都 HTTP 200，canonical 已核對。\n4) https://www.apple.com/tw/watchos/feature-availability/ → HTTP 200，用來交叉確認高血壓通知在台灣的狀態。此頁為動態頁、會隨時間改動，本次讀的是 2026-09-16 版本。\n5) https://support.apple.com/zh-tw/118210 → HTTP 200，但內容是「可搭配 Apple Fitness+ 使用的裝置」，不是台灣版註腳所指的功能供應狀態說明（見 unverified_or_excluded）。\n6) 活頁面複查：交稿前重抓台灣版 Series 12 與 AirPods 5 兩頁，高血壓註腳與 NT$4,490／NT$5,190 兩組數字與首次抓取一致。但台灣版 Ultra 4 在台灣 feed 裡的 <updated> 是 2026-09-11T21:53:40Z，晚於發布日，代表該頁發布後被改過——引用前建議重抓。\n\nsources 只放四篇台灣版新聞稿，理由：本站是繁體中文站，台灣版給的是 NT$ 官方定價、明確把台灣列入首波地區，而且獨有那條高血壓通知的法規註腳；美國版多出來的內容（Audio Intelligence、重新設計的「健康」App、Quest 檢驗）本來就屬於軟體／AI 範圍，不在這篇硬體文的守備範圍。\n\n注意：verified_facts 裡有數條掛的是美國版網址（www.apple.com/newsroom/...），那些事實只能在把對應的美國版網址換進 sources 時才可以寫進文章。最值得為它換一個 source 位的是 iPhone 18 Pro 電池那一條（美國版 36／45 小時 + 「eSIM 專用機型」限定語 vs 台灣版 34／43 小時），其次是 C2 的 mmWave 那一條。若不換，就照台灣版寫 34／43 小時，並寫明官方台灣版沒有說明與其他版本數字的差異。",
+ "sources": [
+  {
+   "title": "Apple 推出 iPhone 18 Pro 和 iPhone 18 Pro Max",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "publisher": "Apple Newsroom（台灣）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "全新推出 Apple Watch Series 12，配備全新「健康感測系統」",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "publisher": "Apple Newsroom（台灣）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Apple 推出 Apple Watch Ultra 4",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "publisher": "Apple Newsroom（台灣）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Apple 推出 AirPods 5，帶來實力頂尖的開放式耳機「主動式降噪」設計",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "publisher": "Apple Newsroom（台灣）",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-09-09",
+ "event_date_basis": "發表日＝發布日＝2026-09-09，三者一致，沒有分歧。\n\n根據一：四個頁面的日期列都印「2026 年 9 月 9 日 / September 9, 2026」，內文都用「Apple 今日發表」。\n根據二：官方 Atom feed 的 <updated> 為 2026-09-09T17:30:06Z（iPhone 18 Pro）、17:34:55Z（AirPods 5）、17:50:47Z（Watch Series 12）、17:51:18Z（Ultra 4），同一個發表會的四篇稿子在 22 分鐘內陸續上線。\n\n上市日期與事件日不同，不可混用：Apple Watch Series 12／Ultra 4／AirPods 5 當天（9/9）就開放預購；iPhone 18 Pro 系列預購是台灣時間 9/12 晚上 8 點；四項產品都在 9/18 開始供貨；iPhone 18 Pro 第二波 20 個地區是 9/25。軟體（iOS 27／watchOS 27）是 9/14，屬於既有那篇 Siri AI 文章的日期，不是本文的事件日。\n\n警告：台灣版 Apple Watch Ultra 4 條目在台灣 feed 裡的 <updated> 是 2026-09-11T21:53:40Z，代表該頁在發布後被改過（頁面日期列仍是 9 月 9 日）。這幾頁要當成會變動的活頁面，引用前重抓。",
+ "verified_facts": [
+  {
+   "fact": "Apple 台灣 Newsroom 在 2026 年 9 月 9 日同日刊出四篇硬體新聞稿，頁面日期列均為「2026 年 9 月 9 日」：iPhone 18 Pro 與 iPhone 18 Pro Max、Apple Watch Series 12、Apple Watch Ultra 4、AirPods 5。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "2026 年 9 月 9 日"
+  },
+  {
+   "fact": "Apple Newsroom 官方 Atom feed 顯示 2026-09-09 當天共六篇：iPhone 18 Pro/Pro Max（17:30:06Z）、AirPods 5（17:34:55Z）、Apple Watch Series 12（17:50:47Z）、Apple Watch Ultra 4（17:51:18Z），另有 Apple unveils iPhone Duo（18:15:40Z）與 Apple advances health and fitness capabilities using Apple Intelligence（17:52:05Z）。當天沒有 Apple Watch SE 的新聞稿。",
+   "url": "https://www.apple.com/newsroom/rss-feed.rss",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Apple 台灣 Newsroom 的 Atom feed 收錄同四篇的繁體中文版；AirPods 5 的台灣網址 slug 用的是 featuring（apple-introduces-airpods-5-featuring-...），與美國版的 with 不同；台灣版 Apple Watch Ultra 4 條目的 <updated> 是 2026-09-11T21:53:40Z，晚於發布日，代表該頁在發布後被改過，但頁面日期列仍是 2026 年 9 月 9 日。",
+   "url": "https://www.apple.com/tw/newsroom/rss-feed.rss",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "iPhone 18 Pro 台灣售價 NT$44,900 起、iPhone 18 Pro Max NT$49,900 起；兩款都提供 256GB、512GB、1TB、2TB 四種容量。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "iPhone 18 Pro 和 iPhone 18 Pro Max 提供 256GB、512GB、1TB、2TB 容量選項。iPhone 18 Pro 提供勃根地紅色、冰川藍色、銀色、黑色，售價 NT$44,900 起，，iPhone 18 Pro Max 售價 NT$49,900 起"
+  },
+  {
+   "fact": "美國售價：iPhone 18 Pro 起價 1,199 美元（或 24 期每期 49.95 美元）、iPhone 18 Pro Max 起價 1,299 美元（或 24 期每期 54.12 美元）。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "iPhone 18 Pro starts at $1,199 (U.S.) or $49.95 (U.S.) per month, and iPhone 18 Pro Max starts at $1,299 (U.S.) or $54.12 (U.S.) per month for 24 months."
+  },
+  {
+   "fact": "iPhone 18 Pro 提供四種外觀：黑色、銀色、冰川藍色，以及全新的勃根地紅色。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "台灣被官方列名：澳洲、巴西、加拿大、中國大陸、哥倫比亞、法國、德國、印度、日本、馬來西亞、墨西哥、新加坡、韓國、台灣、阿拉伯聯合大公國、英國、美國、越南等 65 個以上國家和地區，可於台灣時間 2026 年 9 月 12 日（星期六）晚上 8 點開始預訂，9 月 18 日（星期五）開始供貨；其他 20 個國家和地區自 9 月 25 日（星期五）起供貨。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "65 個以上國家和地區的顧客，將可於台灣時間 9 月 12 日 (星期六) 晚上 8 點開始預訂"
+  },
+  {
+   "fact": "美國版新聞稿列出的 65 個以上首波地區名單裡沒有提到台灣（名單為 Australia, Brazil, Canada, China, Colombia, France, Germany, India, Japan, Malaysia, Mexico, Singapore, South Korea, Türkiye, the UAE, the UK, the U.S., and Vietnam），預購時間寫成太平洋時間 9 月 12 日早上 5 點。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "beginning at 5 a.m. PT this Saturday, September 12"
+  },
+  {
+   "fact": "A20 Pro 以 2 奈米製程打造；6 核心 CPU 內建神經網路加速器、記憶體頻寬較 A19 Pro 提升 50%；7 核心 GPU 最高較 A19 Pro 快 40%；雙 16 核心神經網路引擎、合計 32 核心，Apple 表示 AI 運算能力是 A19 Pro 的兩倍。以上倍數與百分比都是 Apple 的宣稱。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "A20 Pro 以最新的 2 奈米製程技術打造"
+  },
+  {
+   "fact": "兩款 iPhone 18 Pro 都搭載 Apple 自研的 N1 無線網路晶片，支援 Wi-Fi 7、藍牙 6 與 Thread；行動網路用 Apple 新一代數據機系統 C2，Apple 表示 C2 上傳速度較 C1X 顯著加快、耗電量降低 15%。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "相較於 C1X，C2 的上傳速度顯著加快，耗電量則降低 15%。"
+  },
+  {
+   "fact": "美國版新聞稿多寫了一句台灣版沒有的內容：C2「now supports mmWave in the U.S.」（在美國支援毫米波）。台灣版只寫上傳更快與省電 15%，沒有毫米波。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "C2 delivers meaningfully faster uploads when compared to C1X while consuming 15 percent less energy, and now supports mmWave in the U.S."
+  },
+  {
+   "fact": "A20 Pro 採用 M 系列風格的客製封裝，把記憶體移出晶片散熱路徑，直接接合新一代均溫板；均溫板散熱面積是 iPhone 17 Pro 上一代設計的三倍，Apple 表示持續效能最高較上一代提升 40%。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "散熱面積達上一代 iPhone 17 Pro 設計的三倍，大幅提升持續效能，最高比上一代提升 40%"
+  },
+  {
+   "fact": "全新 4800 萬像素融合主相機首次為 iPhone 帶來可變光圈，由六片雷射切割葉片在不同光圈間切換；使用者可在「相機」App 手動選擇四種光圈設定，Apple 另提供 API 讓開發者在 App 中更精細地控制光圈。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "六片雷射切割葉片可在不同光圈之間流暢切換"
+  },
+  {
+   "fact": "官方圖說寫出三個具體光圈值：低光源下可開大至 ƒ/1.48、人像以 ƒ/1.8 拍攝、團體照可縮小至 ƒ/4。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "全新 4800 萬像素融合主相機能智慧地將光圈開大至 ƒ/1.48，在低光源環境下拍出令人驚豔的照片。"
+  },
+  {
+   "fact": "「專業級控制項目」（Pro controls）讓使用者手動調整光圈、快門速度、白平衡，並可用直方圖檢查曝光。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "影片端：可對最高 60 fps 拍攝的影片於拍攝後套用「電影級」效果；「縮時攝影」可錄 4K 與杜比視界 HDR；「混音」新演算法可單獨分離音樂。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "「Apple 參考影像」由主相機的新感光元件對每個像素加上數位簽章，以「參考影像」模式拍照時記錄帶簽章的感光元件資料，再由「私密雲端運算」顯影成無法更改的參考影像，可在「照片」App 中與主影像並列比對；iOS、iPadOS、macOS 27 提供檢視用 API。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "「Apple 參考影像」是使用者自行選擇是否啟用的功能；因法規要求，推出初期無法於中國使用；在歐盟地區 iPhone 18 Pro 機型推出初期不支援拍攝，但 iOS 27／iPadOS 27／macOS 27 使用者仍可顯影及檢視參考影像。官方只列出中國與歐盟兩項限制，沒有說台灣可不可用。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "由於法規要求，「Apple 參考影像」推出初期將無法於中國使用。在歐盟地區，iPhone 18 Pro 機型推出初期將不支援拍攝「Apple 參考影像」"
+  },
+  {
+   "fact": "「動態島」改為更小巧的設計，最多可同時顯示三項「即時動態」，並繼續支援 Face ID（解鎖、驗證購買、登入 App）。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "升級版「動態島」最多可同時顯示三項「即時動態」"
+  },
+  {
+   "fact": "台灣版新聞稿的電池數字：iPhone 18 Pro 影片播放最長 34 小時、iPhone 18 Pro Max 最長 43 小時；iPhone 18 Pro 有線充電約 15 分鐘可充到 50%、無線充電 30 分鐘充到 50%；iPhone 18 Pro Max 有線充電 5 分鐘約可提供 7 小時影片播放，依全新電池用量模型充滿電後最長可使用 29 小時。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "iPhone 18 Pro 機型影片播放時間最長可達 34 小時；iPhone 18 Pro Max 則最長可達 43 小時。"
+  },
+  {
+   "fact": "美國版新聞稿的同一段數字不同，而且加了 eSIM 專用機型的限定語：eSIM-only 機型 iPhone 18 Pro 影片播放最長 36 小時、Pro Max 最長 45 小時，Pro Max 充滿電最長可用 30 小時。美國版另寫 eSIM 專用機型有更大的電池，利用原本實體 SIM 佔用的空間多提供兩小時影片播放。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "eSIM-only models deliver up to 36 hours of video playback on iPhone 18 Pro and up to 45 hours of video playback on iPhone 18 Pro Max."
+  },
+  {
+   "fact": "美國版列出 eSIM 專用機型的販售地區：Bahrain、Canada、Guam、Japan、Kuwait、Mexico、Oman、Qatar、Saudi Arabia、the UAE、the U.S.、the U.S. Virgin Islands。台灣不在這份名單裡。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "eSIM-only models of iPhone 18 Pro and iPhone 18 Pro Max will be available in Bahrain, Canada, Guam, Japan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, the UAE, the U.S., and the U.S. Virgin Islands."
+  },
+  {
+   "fact": "eSIM 為業界標準，全球超過 500 家電信業者支援；台灣版新聞稿點名的業者是中華電信、台灣大哥大和遠傳電信（美國版點名的是 AT&T、T-Mobile、Verizon）。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "全世界有超過 500 家電信業者支援，包括中華電信、台灣大哥大和遠傳電信。"
+  },
+  {
+   "fact": "台灣 Apple Trade In：以 iPhone 13 或後續機型換購 iPhone 18 Pro，可獲 NT$5,400 至 NT$36,200 折抵。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "獲享 NT$5,400 至 NT$36,200 折抵優惠"
+  },
+  {
+   "fact": "台灣配件官方定價：MagSafe 科技織紋保護殼 NT$1,890、MagSafe 透明保護殼 NT$1,690、MagSafe 矽膠保護殼 NT$1,690、MagSafe 精細織紋卡套 NT$1,890、腕帶 NT$990、斜背掛繩 NT$1,890。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "全新腕帶以 100% 再生聚酯纖維紗線織成、內嵌彈性磁石，可用來攜帶 iPhone、AirPods Pro 2 或 AirPods Pro 3，共六色（黑色、淺褐色、橄欖色、清爽藍色、洋紅色、勃根地紅色）。透明保護殼改為新設計，可搭配斜背掛繩與腕帶。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "環境數據：iPhone 18 Pro 與 Pro Max 整體採用 40% 再生成分，電池使用 100% 再生鈷金屬、機身使用 85% 再生鋁金屬，製造供應鏈使用 50% 可再生能源，紙質包裝 100% 纖維材質。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "iOS 27 於 2026 年 9 月 14 日（星期一）以免費軟體更新形式推出；Apple Intelligence 同日隨 iOS 27 推出，支援英文、丹麥文、荷蘭文、法文、德文、義大利文、挪威文、葡萄牙文、西班牙文、瑞典文、土耳其文、越南文、簡體中文、繁體中文、日文、韓文共 16 種語言。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Siri AI 於 2026 年 9 月 14 日隨 iOS 27 推出 Beta 版，初期只支援設定為英文的裝置，法文、日文、韓文、葡萄牙文、西班牙文於 10 月推出；註腳載明在歐盟地區 Siri AI 推出初期不會於 iOS 上提供，且不適用於未滿 13 歲的使用者。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "在歐盟地區，Siri AI 推出初期不會於 iOS 上提供"
+  },
+  {
+   "fact": "衛星功能：Apple 將 iPhone 14、iPhone 15、iPhone 16 現有使用者的免費使用期限延長一年，條件是於太平洋時間 2026 年 9 月 9 日午夜前、在支援 Apple 衛星功能的國家啟用裝置。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "凡於太平洋時間 9 月 9 日午夜前，在支援 Apple 衛星功能的國家啟用裝置"
+  },
+  {
+   "fact": "iPhone 18 Pro 新聞稿的引言人為 Apple 全球行銷資深副總裁 Greg Joswiak。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Apple 註明測試條件：充電測試由 Apple 於 2026 年 7 月以預量產 iPhone 18 Pro／Pro Max 與預發行軟體進行，電池續航測試於 2026 年 8 月進行、使用代表性使用情境，實際結果可能不同。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Testing conducted by Apple in August 2026 using preproduction iPhone 18 Pro and iPhone 18 Pro Max units and software"
+  },
+  {
+   "fact": "美國版另有台灣版沒有的 iPhone Handoff：讓使用者以同一個電話號碼在兩支 iPhone 之間切換，註腳寫明推出時只在美國的 T-Mobile 與德國的 Telekom Germany 提供。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "iPhone Handoff will be available at launch with T-Mobile in the U.S. and Telekom Germany in Germany."
+  },
+  {
+   "fact": "Apple Watch Series 12 台灣售價 NT$13,900 起；美國起價 399 美元。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple Watch Series 12 售價 NT$13,900 起。"
+  },
+  {
+   "fact": "Apple Watch Series 12 即日（2026 年 9 月 9 日）起於澳洲、加拿大、法國、德國、印度、日本、台灣、英國、美國等超過 50 個國家和地區開放預訂，9 月 18 日（星期五）開始供貨。台灣有被官方列名。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "即日起，Apple Watch Series 12 將於澳洲、加拿大、法國、德國、印度、日本、台灣、英國、美國等超過 50 個國家和地區開放預訂"
+  },
+  {
+   "fact": "Apple Watch Series 12 提供 42 公釐與 46 公釐兩種尺寸。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple Watch Series 12 提供 42 公釐和 46 公釐兩種尺寸。"
+  },
+  {
+   "fact": "Series 12 外觀：鋁金屬有深古銅色、黑色、淺金色、太空灰色；鈦金屬有燦金色與原色鈦金屬；另有陶瓷材質的珍珠白色與夜藍色（陶瓷款附的沙色與海軍藍色運動型錶帶採用陶瓷針扣設計）。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "鋁金屬錶款採用超瓷晶盾 2（Ceramic Shield 2），Apple 表示堅固度勝過任何智慧型手錶玻璃，並較 Apple Watch Series 11 的 Ion-X 玻璃提升 60%。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "與 Apple Watch Series 11 配備的 Ion-X 玻璃相比，堅固程度提升 60%。"
+  },
+  {
+   "fact": "「健康感測系統」的組成：全新的光學心率感測器與電子心率感測器，搭配 S11 晶片，Apple 稱之為「持續進行高傳真度的健康監測」的全新架構。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "配備全新的光學與電子心率感測器，可透過「健康感測系統」持續進行高傳真度的健康監測"
+  },
+  {
+   "fact": "光學心率感測器改用尺寸更大且節能的綠色 LED，Apple Watch Series 12 全天候每五秒測量一次心率，並新增心率錶面複雜功能可隨時查看即時心率；Apple 表示這種持續被動測量也讓「運動」與「活動記錄」圓圈更準確。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "光學心率感測器採用尺寸更大且節能的綠色 LED，讓 Apple Watch Series 12 現在可全天候每五秒測量一次心率。"
+  },
+  {
+   "fact": "心率變異（HRV）測量頻率最高可達以往的 24 倍，可在「心率」App 的新區塊查看；Apple 提供兩種變異指標：「恢復心率變異」用於日常壓力與恢復訊號，「整體心率變異」用於較全面的健康情形（含心血管健康）。Apple 說明一般而言變異值愈高代表恢復情形愈好，較低則可能反映壓力。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "現在測量頻率最高可達以往的 24 倍"
+  },
+  {
+   "fact": "整夜生命徵象新增以個人基準值分析的恢復心率變異；新增日間生命徵象檢視，可切換夜間與日間指標，Apple 表示有機會在整夜指標顯示異狀前早一步察覺變化。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Apple 宣稱 Apple Watch Series 12 提供「穿戴式裝置中最精準的心率感測功能」，依據是 Apple 自行進行、涵蓋逾 1,000 名不同背景參與者的研究，於 2026 年 7 月與 8 月進行，比較對象為截至 2026 年 6 月市面上最暢銷的穿戴式裝置。這是 Apple 自己的研究，不是第三方評測。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "根據 Apple 於 2026 年 7 月與 8 月所進行的心率準確度研究數據，採用截至 2026 年 6 月市面上最暢銷的穿戴式裝置進行比較。"
+  },
+  {
+   "fact": "全新「準備指數」（readiness）分析使用者的近期活動、訓練負荷、生命徵象和睡眠分數，提供 0 至 10 分的單一評分，搭配四種建議：「恢復」、「量力而為」、「準備就緒」、「全力以赴」；分數會隨全天新資料更新，並列出影響分數的因素。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "提供 0 至 10 分的單一評分，並搭配明確可執行的實用建議：「恢復」、「量力而為」、「準備就緒」或「全力以赴」"
+  },
+  {
+   "fact": "「準備指數」的評分演算法運用 Apple Heart and Movement Study 的資料開發，並由 Apple 的運動科學家和醫師共同參與。官方沒有說這套演算法經過任何主管機關審查或核准。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "這套評分演算法運用 Apple Heart and Movement Study 的資料開發，並由 Apple 的運動科學家和醫師共同參與。"
+  },
+  {
+   "fact": "Apple Watch Series 12 電池：日常續航最長 24 小時；室外體能訓練最長 10 小時，Apple 表示較上一代增加 25%；充電 15 分鐘可增加最長 12 小時續航，Apple 表示較上一代提升 50%。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "現在充電 15 分鐘即可增加最長 12 小時的電池續航力，較上一代提升 50%"
+  },
+  {
+   "fact": "Apple 註明 Series 12 的 24 小時續航測試方式：24 小時內查看時間 300 次、接收通知 90 次、使用 App 15 分鐘、一次 60 分鐘體能訓練並以藍牙播放音樂，以及睡眠追蹤；GPS + 行動網路款包含 4 小時行動網路連線與 20 小時藍牙連線。測試於 2026 年 7、8 月以預量產裝置與測試版軟體進行。",
+   "url": "https://www.apple.com/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "All-day battery life testing includes 300 time checks, 90 notifications, 15 minutes of app use, a 60-minute workout with music playback from Apple Watch via Bluetooth, and six hours of sleep tracking over the course of 24 hours"
+  },
+  {
+   "fact": "計步器模型全面重新設計、採用新的機器學習演算法，Apple 宣稱 Apple Watch Series 12 提供「智慧型手錶當中最精準的步數追蹤」，依據是 Apple 自行用 1,000 步精準度測試、以影片步數計數驗證，與 2026 年 7 月市面上最暢銷的智慧型手錶比較；S11 晶片也支援全新「步數」複雜功能。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "步數追蹤準確度由 Apple 採用 1,000 步的精準度測試，並透過影片步數計數驗證。"
+  },
+  {
+   "fact": "S11 晶片內建「安全隔離區」（Secure Exclave），是與硬體其他部分完全隔離的專用區域，獨立處理音訊後立即刪除；Apple 表示這些功能不會建立或儲存錄音，作業系統、App、使用者或 Apple 都無法存取用於處理的原始音訊。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "這是因為 Apple Watch Series 12 的 S11 晶片內建「安全隔離區」。"
+  },
+  {
+   "fact": "台灣版新聞稿把這一節命名為「聲音辨識與 Shazam 使用 S11 晶片」，底下只列出兩項功能：「聲音辨識」（提醒失聰或重聽使用者注意警笛、警報聲、門鈴、嬰兒哭聲等，裝置端處理，iPhone 不在身邊也可用）與 Shazam（在「智慧型堆疊」的「音樂辨識」小工具顯示歌曲與演出者）。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "聲音辨識與 Shazam 使用 S11 晶片"
+  },
+  {
+   "fact": "美國版同一節叫「Audio Intelligence」，除了 Sound Recognition 與 Shazam，還包含台灣版完全沒有提到的 Live Rewind（雙擊數位錶冠顯示對話前 15 秒的文字片段）與 Siri Recap（自動產生對話標題與重點）；美國版註腳寫明 Live Rewind 與 Siri Recap 於 2026 年稍晚推出 beta、需要支援 Apple Intelligence 的 iPhone 16 或後續機型（不含 iPhone 16e）、初期只支援英文、且推出初期不會在歐盟提供。",
+   "url": "https://www.apple.com/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Live Rewind and Siri Recap will be available in beta in late 2026 and require an Apple Intelligence-enabled iPhone 16 or later (excluding iPhone 16e). Will be available in English to start and will not initially be available in the EU."
+  },
+  {
+   "fact": "台灣版 watchOS 27 更新清單的第一項是美國版沒有的一句：「睡眠呼吸中止症通知功能現於菲律賓推出」，並說明呼吸紊亂資料每 30 天分析一次，若顯示持續的中度至重度跡象就會通知使用者，讓使用者與醫生討論後續。美國版全文沒有提到菲律賓。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "睡眠呼吸中止症通知功能現於菲律賓推出"
+  },
+  {
+   "fact": "watchOS 27 其餘更新：Siri 建議五款 App 的動態排列、單手雙指互點手勢開啟「智慧型堆疊」小工具、「智慧型堆疊」情境式小工具建議、「經期追蹤」與「健康」App 新增更年期前期與更年期支援、Workout Buddy 可在 iPhone 不在身邊時使用並新增西班牙文。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "watchOS 27 於 2026 年 9 月 14 日（星期一）推出，適用 Apple Watch Series 9 或後續錶款、Apple Watch SE 3、Apple Watch Ultra 2 或後續錶款，並須搭配搭載 iOS 27 或以上版本的 iPhone 11 或後續機型、或 iPhone SE（第 2 代或後續機型）。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "環境數據：Apple Watch Series 12 整體採用 40% 再生材料，鋁金屬錶殼使用 100% 再生鋁金屬、3D 列印鈦金屬錶殼使用 100% 再生鈦金屬；製造用電全部來自可再生能源。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Apple Watch Series 12 與 Ultra 4 兩篇新聞稿的引言人都是 Apple 全球 Apple Watch 產品行銷副總裁 Kaiann Drance。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "新訂閱者購買 Apple Watch Series 12、Apple Watch SE 3 或 Apple Watch Ultra 4 可免費享有三個月 Apple Fitness+ 和 Apple Music，優惠與服務適用狀況因區域而異。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "最關鍵的法規事實：台灣版 Apple Watch Series 12 新聞稿的註腳寫明高血壓通知功能在台灣不會一開始就推出，因為法規核准程序仍在進行中，預計明年推出。美國版新聞稿完全沒有出現 hypertension／blood pressure 字樣。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple Watch Series 12 或 Ultra 4 上的高血壓通知功能在台灣不會一開始就推出，因為該功能於這些型號的其他法規核准程序仍在進行中。預計將於明年推出。"
+  },
+  {
+   "fact": "同一段高血壓註腳也出現在台灣版 Apple Watch Ultra 4 新聞稿，文字完全相同。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple Watch Series 12 或 Ultra 4 上的高血壓通知功能在台灣不會一開始就推出，因為該功能於這些型號的其他法規核准程序仍在進行中。預計將於明年推出。"
+  },
+  {
+   "fact": "Apple 台灣的 watchOS 27 功能特色適用範圍頁把台灣列在「健康：高血壓通知」的地區清單中，但台灣後面帶註腳 7：「『高血壓通知』功能可能不適用於你所在地區的 Apple Watch Series 12 或 Apple Watch Ultra 4，這些裝置尚待監管機構進行額外的審核。」同頁「健康：睡眠呼吸中止症通知」清單中的台灣沒有帶這個註腳。此頁為會隨時間更動的動態頁面，2026-09-16 讀取。",
+   "url": "https://www.apple.com/tw/watchos/feature-availability/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "「高血壓通知」功能可能不適用於你所在地區的 Apple Watch Series 12 或 Apple Watch Ultra 4，這些裝置尚待監管機構進行額外的審核。"
+  },
+  {
+   "fact": "同一頁另有一則註腳：「『血氧濃度』app 僅為保健目的，並非提供醫療之用。」（四篇新聞稿都沒有提到血氧濃度。）",
+   "url": "https://www.apple.com/tw/watchos/feature-availability/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "「血氧濃度」app 僅為保健目的，並非提供醫療之用。"
+  },
+  {
+   "fact": "四篇新聞稿中唯一與醫療用途有關的宣告是註腳：「『生命徵象』App 僅為保健目的，並非提供醫療之用。」（美國版為 The Vitals app is for wellness purposes only and not for medical use.）Apple 沒有為「健康感測系統」、心率、心率變異或「準備指數」宣稱任何主管機關的核准或認證。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "「生命徵象」App 僅為保健目的，並非提供醫療之用。"
+  },
+  {
+   "fact": "「心電圖」App 的註腳：適用於 Apple Watch Series 4 與後續錶款（不含 SE 系列）與所有 Apple Watch Ultra 錶款，「能產生與單導程心電圖相近的心電圖」，適用於 22 歲或以上的使用者。新聞稿沒有寫這項功能在任何國家的核准狀態。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "能產生與單導程心電圖相近的心電圖。適用於 22 歲或以上的使用者。"
+  },
+  {
+   "fact": "睡眠呼吸中止症通知的註腳：適用 Apple Watch Series 9 或後續錶款、Apple Watch Ultra 2 或後續錶款、Apple Watch SE 3；可為「未被診斷患有睡眠呼吸中止症的 18 歲或以上人士」偵測中度至嚴重睡眠呼吸中止症的跡象。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "此功能可為未被診斷患有睡眠呼吸中止症的 18 歲或以上人士，偵測到中度至嚴重睡眠呼吸中止症的跡象。"
+  },
+  {
+   "fact": "「經期追蹤」App 註腳：不應作為避孕用途或診斷健康狀況；包含更年期前期的週期異常通知功能適用於 40 歲及以上人士。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "「經期追蹤」App 不應作為避孕用途或診斷健康狀況。包含更年期前期的週期異常通知功能適用於 40 歲及以上人士。"
+  },
+  {
+   "fact": "Apple Watch Ultra 4 台灣售價 NT$27,900 起；美國起價 799 美元。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple Watch Ultra 4 售價 NT$27,900 起。"
+  },
+  {
+   "fact": "Apple Watch Ultra 4 即日（2026 年 9 月 9 日）起於澳洲、加拿大、法國、德國、印度、日本、台灣、英國、美國等超過 50 個國家和地區開放訂購，9 月 18 日（星期五）開始供貨。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "即日起，Apple Watch Ultra 4 將於澳洲、加拿大、法國、德國、印度、日本、台灣、英國、美國等超過 50 個國家和地區開放訂購"
+  },
+  {
+   "fact": "Apple Watch Ultra 4 只提供原色鈦金屬與黑色鈦金屬兩種外觀。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple Watch Ultra 4 提供原色和黑色鈦金屬。"
+  },
+  {
+   "fact": "Ultra 4 與 Series 12 共用同一套「健康感測系統」與 S11 晶片，同樣有每五秒心率、最高 24 倍頻率的 HRV、兩種 HRV 指標，以及 0 至 10 分的「準備指數」（同樣四種建議語）。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Ultra 4 電池：日常續航長達 2 天、可達 50 小時；「低耗電模式」下可達 84 小時；充電 15 分鐘可獲得最長 18 小時額外續航。這些都是 Apple 的測試值。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Apple Watch Ultra 4 現在持續提供長達 2 天的電池續航力，可長達 50 小時。在「低耗電模式」下，電池續航力可長達 84 小時"
+  },
+  {
+   "fact": "Ultra 4 的兩個體能訓練模式：「長時間體能訓練」開啟完整 GPS 與心率偵測時最長 25 小時，Apple 表示比先前機型提升 25%；「長時間體能訓練上限」可追蹤室外跑步、步行、健行長達 45 小時，且每秒讀取 GPS 定位，Apple 形容「一般足夠完成 100 哩的競賽」。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "可以追蹤室外跑步、步行和健行長達 45 小時，一般足夠完成 100 哩的競賽，且每秒讀取 GPS 定位"
+  },
+  {
+   "fact": "美國版註腳補充兩種模式的代價：Extended Workout 與 Max Extended Workout 都會在訓練期間開啟低耗電模式，Extended Workout 下無法取得跑步姿勢指標，Max Extended Workout 會關閉提示與分段、部分指標不可用。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Extended Workout turns on Low Power Mode during the workout; running form metrics will be unavailable. Max Extended Workout turns on Low Power Mode during the workout, and turns off alerts and splits; certain metrics will be unavailable."
+  },
+  {
+   "fact": "Apple 宣稱 Ultra 4 配備「運動手錶中最精準的裝置端 GPS」，依據是以嚴峻都市環境中室外跑步與步行的路線地圖準確度為基準，與 2026 年 8 月測試當時業界領先的雙頻 GPS 運動錶比較，資料在裝置端處理。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GPS 的效能評估以在嚴峻都市環境中進行室外跑步和步行體能訓練的路線地圖準確度為基準"
+  },
+  {
+   "fact": "衛星功能註腳：啟用 Apple Watch Ultra 3 或後續錶款可免費使用「SOS 緊急服務」、「尋找」與衛星訊息兩年；「尋找」與衛星訊息需要電信業者方案；以行動網路款 Apple Watch 透過衛星收發簡訊時，配對的 iPhone 須開機並連上 Wi-Fi 或行動網路，但不必在身邊；衛星連線由 Globalstar 及其關係企業提供。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Emergency SOS, Find My, and Messages via satellite are included for free for two years with the activation of Apple Watch Ultra 3 or later."
+  },
+  {
+   "fact": "Ultra 4 錶帶：Trail Loop 新增 dark umber、sand、burgundy；Alpine Loop 新增 desert、dark olive、burgundy；Ocean Band 改用半透明矽膠，推出 translucent gray、translucent kelp、translucent black 三色。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Apple Watch Hermès Ultra 4 推出 Grand H 鈦金屬錶帶，內建延長機構可調整以套在潛水衣外，並有全新「Fathom and Wonder」錶面，轉動數位錶冠可在四種海洋深度的錶面選項間切換。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "環境數據：Ultra 4 整體採用 45% 再生材料，3D 列印鈦金屬錶殼使用 100% 再生鈦金屬、電池使用 100% 再生鈷金屬。（Series 12 是 40%，Ultra 4 是 45%。）",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "台灣版 Ultra 4 的開頭段把美國版的 Audio Intelligence 描述換成只講一件事：S11 晶片支援今年稍晚推出的新功能，「協助失聰或聽障使用者保持對重要聲音的警惕」。台灣版全文沒有 Live Rewind、Siri Recap、重新設計的「健康」App、Longevity 或 Health Age。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "協助失聰或聽障使用者保持對重要聲音的警惕"
+  },
+  {
+   "fact": "美國版 Series 12 與 Ultra 4 都有台灣版沒有的一段：重新設計的「健康」App 於今年稍晚推出、以美國英文開始，含 Insights 與 Longevity 分頁、Health Age；並可在美國約 2,000 家 Quest Diagnostics 據點以 119 美元購買超過 50 項生物標記的檢驗。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Users will be able to schedule and purchase new labs that feature over 50 key biomarkers for $119 directly through the Health app at approximately 2,000 Quest Diagnostics locations in the U.S. The redesigned Health app will arrive later this year, starting in U.S. English."
+  },
+  {
+   "fact": "AirPods 5 台灣售價 NT$4,490；搭配無線充電盒的 AirPods 5 售價 NT$5,190。美國售價分別為 129 美元與 149 美元。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AirPods 5 售價 NT$4,490"
+  },
+  {
+   "fact": "包括台灣在內超過 65 個國家與地區，即日（2026 年 9 月 9 日）起可預購 AirPods 5 與搭配無線充電盒的 AirPods 5，9 月 18 日（星期五）開始供貨。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "即日起，包括台灣在內等超過 65 個國家與地區的顧客可預購 AirPods 5"
+  },
+  {
+   "fact": "Apple 宣稱 AirPods 5 帶來「業界最佳的開放式耳機主動式降噪」，所消除的噪音量比 AirPods 4 主動式降噪款最高可多達 50%，靠的是全新多孔聲學架構與改良的運算音訊演算法。這是 Apple 的宣稱。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "所消除的噪音量比 AirPods 4 主動式降噪款最高可達 50%"
+  },
+  {
+   "fact": "降噪宣稱的測試條件：Apple 於 2026 年 7 月以 AirPods 5 搭配 iPhone 17、預發行 AirPods 韌體與 iOS 27 測試，降噪依 IEC 60268-24 標準量測，比較對象是測試當時最暢銷的無線開放式耳機。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Noise reduction was tested in accordance with IEC 60268-24. Comparison made against the bestselling wireless open-ear headphones commercially available at the time of testing."
+  },
+  {
+   "fact": "AirPods 5 其他音訊功能：更自然的「通透模式」、可動態融合通透與降噪的「適應性音訊」、使用者開口說話時降低媒體音量的「對話感知」；音質方面採用汲取 AirPods Pro 3 靈感的多孔聲學架構與新一代「適應性等化」，Apple 表示可涵蓋更多耳形並讓「個人化空間音訊」更具沉浸感。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "搭配無線充電盒的版本才有的差異：首度在開放式外型加入支援滑動調整音量的力度感測器；啟用主動式降噪時單次充電播放最長 5 小時（比 AirPods 4 主動式降噪款多一小時），搭配充電盒總聆聽時間最長 22 小時；無線充電盒支援 Apple Watch 充電器、Qi 相容充電器與 USB-C。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "啟用主動式降噪時，單次充電的播放時間最長可達 5 小時，比 AirPods 4 主動式降噪款多一小時。搭配充電盒並啟用「主動式降噪」聆聽時，總聆聽時間最長可達 22 小時。"
+  },
+  {
+   "fact": "「即時翻譯」由 Apple Intelligence 驅動，需先在「翻譯」App 設定並下載語言，可用同時按壓兩側耳機柄、說出「Siri，開始即時翻譯」或按下 iPhone 動作按鈕三種方式啟用；Apple 表示此功能現已支援全系列 AirPods。註腳寫明此功能未適用於所有語言或所有地區。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "此功能未適用於所有語言，或未在所有地區提供。"
+  },
+  {
+   "fact": "使用者可以頭部動作回應 Siri（美國版寫明是點頭表示是、搖頭表示否，稱為 Siri Interactions）。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "With Siri Interactions on AirPods, users can discreetly respond to Siri AI by simply nodding their head yes or shaking their head no."
+  },
+  {
+   "fact": "耐用度：官方只寫「防塵、抗汗、抗水功能更勝從前」，新聞稿全文沒有給出任何 IP 防護等級數字。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "經久耐用，防塵、抗汗、抗水功能更勝從前"
+  },
+  {
+   "fact": "環境數據：AirPods 5 整體採用 40% 再生材料，無線充電盒採用 70% 再生塑膠，電池採用 100% 再生鈷金屬，供應鏈使用 35% 可再生能源。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "AirPods 5 新聞稿的引言人為 Apple 硬體工程副總裁 Dave Pakula。台灣版引言比美國版短，少了美國版結尾那句關於 Siri AI 的話。",
+   "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "美國版 AirPods 5 註腳列出支援 Apple 最強大裝置端模型（含 expressive voices 與進階聽寫）的機型：iPhone 18 Pro、iPhone 18 Pro Max、iPhone Duo、iPhone 17 Pro、iPhone 17 Pro Max、iPhone Air，以及 M4 或後續且至少 12GB 統一記憶體的 iPad、M3 或後續且至少 12GB 統一記憶體的 Mac、Apple Vision Pro（M5）。",
+   "url": "https://www.apple.com/newsroom/2026/09/apple-introduces-airpods-5-with-best-in-class-open-ear-active-noise-cancellation/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple’s most powerful on-device model and the features it enables, like expressive voices and more advanced Dictation, are available on iPhone 18 Pro, iPhone 18 Pro Max, iPhone Duo, iPhone 17 Pro, iPhone 17 Pro Max, iPhone Air"
+  }
+ ],
+ "not_said": [
+  "iPhone 18 Pro 與 Pro Max 的螢幕尺寸、解析度、更新率（ProMotion）、亮度：四篇新聞稿與台灣版全文都沒有寫。只提到「動態島」用了先進顯示技術。",
+  "iPhone 18 Pro 的望遠鏡頭、超廣角鏡頭與前置鏡頭：新聞稿只描述 4800 萬像素融合主相機，完全沒有提到其他鏡頭的規格或存在。",
+  "iPhone 18 Pro 的機身材質（鈦金屬／鋁金屬）、Ceramic Shield 面板、IP 防水防塵等級、重量、尺寸、記憶體容量：新聞稿都沒有寫。",
+  "iPhone 18 Pro 新聞稿沒有寫實體 SIM 卡槽，也沒有說台灣販售的是哪一種機型；台灣版沒有 eSIM 專用機型的地區名單，也沒有解釋台灣版電池數字（34／43 小時）為何低於美國版（36／45 小時）。",
+  "Apple Watch Series 12 與 Ultra 4 的螢幕尺寸、亮度、儲存容量、防水深度、機身重量：新聞稿都沒有寫。Ultra 4 甚至沒有寫錶殼尺寸（Series 12 有寫 42／46 公釐）。",
+  "Apple Watch 的 GPS 版與行動網路版分別售價、各尺寸與各材質（鋁金屬／鈦金屬／陶瓷）的售價：官方只寫「NT$13,900 起」與「NT$27,900 起」，沒有價格表。陶瓷款與 Hermès 款的價格完全沒有寫。",
+  "「健康感測系統」的感測器規格細節（LED 數量、波長、取樣率以外的參數）、量測誤差範圍、比較對象的具體品牌名單：Apple 只說是自己做的研究，沒有公開研究方法、論文或第三方驗證。",
+  "Apple 沒有為「健康感測系統」、每五秒心率、心率變異或「準備指數」宣稱任何主管機關（美國 FDA、歐盟 CE、台灣 TFDA 等）的核准、許可或認證；四篇新聞稿全文沒有 FDA、clearance、regulatory approval 這類字樣。唯一的法規敘述是高血壓通知在台灣「法規核准程序仍在進行中」。",
+  "高血壓通知在台灣的預計上市時間，官方只寫「預計將於明年推出」，沒有月份，也沒有說是哪一個主管機關、審查到哪一階段、核准的法律依據是什麼。",
+  "高血壓通知這項功能本身在四篇新聞稿的正文中完全沒有介紹（只出現在台灣版註腳），所以本文不能描述它怎麼運作、量什麼、準不準。",
+  "血氧濃度功能：四篇新聞稿都沒有提到。",
+  "美國版提到的重新設計「健康」App、Longevity 分頁、Health Age，以及在美國約 2,000 家 Quest Diagnostics 據點以 119 美元購買超過 50 項生物標記檢驗——台灣版四篇新聞稿完全沒有這些內容，而且美國版寫明「starting in U.S. English」。台灣讀者不可推定可用。",
+  "美國版的 Audio Intelligence 品牌名、Live Rewind、Siri Recap：台灣版新聞稿完全沒有出現，官方也沒有說明台灣何時會有。",
+  "Siri AI 在台灣的可用性：新聞稿只說初期支援英文、10 月加五種語言、歐盟初期不提供，沒有針對台灣說明；繁體中文在 Apple Intelligence 支援語言清單內，但 Siri AI 的語言清單不含中文。",
+  "AirPods 5 的晶片名稱（例如 H2／H3）、驅動單體規格、IP 防護等級、重量、藍牙版本：新聞稿都沒有寫。",
+  "AirPods 5 不含無線充電盒版本的電池續航時間：官方只給了「搭配無線充電盒」版本的 5 小時／22 小時，沒有給基本款的數字。",
+  "「即時翻譯」支援哪些語言、在台灣能不能用：註腳只寫「未適用於所有語言，或未在所有地區提供」。",
+  "四篇新聞稿都沒有列出 iPhone 18 Pro 第二波 20 個國家和地區的名單，也沒有列出 Apple Watch「超過 50 個」與 AirPods「超過 65 個」地區的完整名單。",
+  "沒有任何一篇提到台灣的電信業者合作方案、分期方案或 Apple Upgrade（Klarna 租賃只在美國提供，台灣版新聞稿沒有這一段；美國版的 AppleCare One 與 AppleCare One Family 在台灣版也被改寫掉了）。",
+  "沒有提到 Apple Watch SE 的新機型；SE 3 只以既有機型身分出現在相容性與促銷清單中，2026-09-09 當天沒有 SE 的新聞稿。",
+  "四篇新聞稿都沒有提到晶片由哪家代工廠生產、供應鏈廠商或台灣廠商的角色。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "高血壓通知功能的運作方式、偵測原理與適用年齡",
+   "seen_where": "台灣版 Series 12 與 Ultra 4 新聞稿的註腳只有一句提到這個功能名稱",
+   "why_excluded": "四篇新聞稿正文都沒有介紹這個功能，無法從一手來源寫出它量什麼、怎麼運作、準確度如何。文章只能寫「官方說台灣初期不提供、法規核准程序進行中」。"
+  },
+  {
+   "claim": "美國 FDA 是否已核准 Apple Watch Series 12／Ultra 4 的高血壓通知，或台灣 TFDA 的審查案號與進度",
+   "seen_where": "台灣版註腳說「其他法規核准程序仍在進行中」，但沒有指名機關",
+   "why_excluded": "本次查證只讀 Apple 自己的頁面，沒有取得任何主管機關的一手公告；不得推定是哪一個機關或哪一種程序。文章只能寫 Apple 自己的說法，並寫明官方未指名機關。"
+  },
+  {
+   "claim": "台灣版 iPhone 18 Pro 電池數字（34／43 小時）低於美國版（36／45 小時）是因為台灣機型保留實體 SIM 卡槽",
+   "seen_where": "美國版寫 eSIM 專用機型「多兩小時影片播放」，兩組數字剛好差兩小時；美國版的 eSIM 專用地區名單也沒有台灣",
+   "why_excluded": "這是把兩頁的數字相減得到的推論，Apple 台灣版沒有這樣寫，也沒有說台灣賣的是哪一種機型。只能把兩組數字與各自的限定語如實並列，不能寫成因果。"
+  },
+  {
+   "claim": "iPhone 18 Pro 的螢幕尺寸、鈦金屬機身、望遠鏡頭倍率、記憶體等常被引用的規格",
+   "seen_where": "一般科技媒體的發表會報導",
+   "why_excluded": "Apple 新聞稿沒有寫；依 tech.md，產品行銷頁不能當能力宣稱的來源，媒體與整合站不是一手來源。查不到就不寫。"
+  },
+  {
+   "claim": "四項產品在台灣的實際到貨、庫存、通路或電信資費方案",
+   "seen_where": "無一手來源",
+   "why_excluded": "官方只給預購與供貨日期，本站沒有實測也沒有通路資料。"
+  },
+  {
+   "claim": "台灣版註腳指向的 support.apple.com/zh-tw/118210「功能供應狀態說明」",
+   "seen_where": "台灣版 Series 12 與 Ultra 4 高血壓註腳裡的連結",
+   "why_excluded": "2026-09-16 實際抓取該網址，回 HTTP 200，但頁面標題是「可搭配 Apple Fitness+ 使用的裝置」，內容是 Apple Fitness+ 相容裝置，全頁沒有「高血壓」三個字。這個連結在 Apple 自己的註腳裡指錯了（同頁 Apple Music／Fitness+ 註腳也用同一個編號）。文章不可以叫讀者去 118210 查高血壓通知；要查請用 apple.com/tw/watchos/feature-availability。"
+  },
+  {
+   "claim": "Apple 心率準確度研究的原始資料（apple.com/hraccuracy）",
+   "seen_where": "Series 12 與 Ultra 4 註腳都指向 apple.com/hraccuracy",
+   "why_excluded": "本次未抓取該頁，因此不寫該頁上的任何數字；只寫註腳本身寫明的研究時間（2026 年 7、8 月）、人數（逾 1,000 名）與比較對象（截至 2026 年 6 月最暢銷的穿戴式裝置）。"
+  },
+  {
+   "claim": "iPhone Duo 的規格（7.6 吋內螢幕、5.4 吋外螢幕、1,999 美元、10/16 預購、10/23 於 70 多個國家開賣等）",
+   "seen_where": "同日的 Apple unveils iPhone Duo 新聞稿（2026-09-09T18:15:40Z）",
+   "why_excluded": "依候選清單的分工，iPhone Duo 是另一篇（tech-news-iphone-duo-20260909），本文刻意不寫，最多在開場提一句同日還發表了 iPhone Duo。"
+  },
+  {
+   "claim": "Apple Watch Series 12 各版本（GPS／行動網路、42／46 公釐、鋁金屬／鈦金屬／陶瓷）的完整價格表",
+   "seen_where": "無一手來源",
+   "why_excluded": "官方新聞稿只給起價。要寫完整價格表就得引用 Apple Store 購買頁，那是行銷／商店頁，不是新聞稿，而且價格會變動。不寫。"
+  }
+ ],
+ "editorial_brief": "讀者：在台灣用 iPhone 或 Apple Watch、會在 9/18 之後考慮換機或換錶的一般使用者，以及想知道「台灣到底拿到什麼、拿不到什麼」的人。不是器材評測讀者。\n\n角度：這是一篇「硬體＋台灣可用性」的整理，不是開箱也不是推薦。全篇骨幹是「Apple 官方說了什麼、沒說什麼、台灣和其他地區差在哪」。最有新聞價值、也最該當成全文重心的是高血壓通知因為法規核准程序未完成、在台灣初期不會推出，Apple 說預計明年——這是 Apple 自己在繁體中文新聞稿註腳裡寫的，美國版新聞稿完全沒有這段，而且 Apple 台灣的 watchOS 27 功能適用範圍頁也用另一句話（「尚待監管機構進行額外的審核」）標注同一件事。這正好呼應 tech.md 說的「制度與條件差異，讓讀者自己判斷」。\n\n五節建議：\n一、9/9 發表了什麼、台灣的日期與官方定價（NT$44,900／NT$49,900／NT$13,900／NT$27,900／NT$4,490／NT$5,190），台灣被官方列名在首波地區。第一句要寫出「2026 年 9 月 9 日」。第二段依 BRIEF 寫「本文於 2026 年 9 月 16 日查核」並說明本站不做實測。\n二、iPhone 18 Pro：可變光圈（六片葉片、ƒ/1.48／ƒ/1.8／ƒ/4）與 A20 Pro（2 奈米、6 核心 CPU、7 核心 GPU、雙 16 核心神經網路引擎）、均溫板、電池。本節結尾放表格（3–4 欄、3–6 列，建議欄位：產品／台灣售價／預購日／供貨日，caption 寫查核日 2026 年 9 月 16 日）。\n三、「健康感測系統」是什麼：全新光學與電子心率感測器＋S11 晶片，每五秒心率、HRV 最高 24 倍頻率、0–10 分的「準備指數」（恢復／量力而為／準備就緒／全力以赴）。本節結尾放 /guides/tech-news-apple-september-hardware-20260909/diagram-1.svg 圖解。\n四、法規那一節：Apple 為這套系統宣稱了什麼、沒宣稱什麼；「生命徵象」App 只是保健用途、不提供醫療之用；心電圖 22 歲以上、睡眠呼吸中止症通知 18 歲以上；高血壓通知在台灣初期不提供、官方說法規核准程序進行中、預計明年。寫清楚「這是 Apple 的說法」，不替主管機關背書、不推測何時會過、不指名機關。\n五、Ultra 4 與 AirPods 5 的差異：Ultra 4 的 50／84 小時、充電 15 分鐘 18 小時、兩種長時間訓練模式（25 小時／45 小時）與裝置端 GPS 宣稱；AirPods 5 的開放式主動式降噪（比 AirPods 4 降噪款最高多消除 50% 噪音，是 Apple 宣稱、依 IEC 60268-24 量測）與「搭配無線充電盒」版本才有的力度感測器與 5／22 小時續航。\n\n原創情境（要標明是編輯設計的例子）：例如「假設你 9 月 18 日拿到 Apple Watch Series 12，當天能用的是每五秒心率、HRV、準備指數；高血壓通知則要等」。\n\n刻意不寫（很重要）：\n・軟體與 Siri：iOS 27、watchOS 27 的功能、Siri AI 的語言與歐盟限制，屬於既有的 ai-news-siri-ai-ios-27-20260914，本文只在需要時提一句並用 link 連過去。\n・iPhone Duo：同日發表但是另一篇（tech-news-iphone-duo-20260909）。\n・Audio Intelligence、Live Rewind、Siri Recap、重新設計的「健康」App、Longevity／Health Age、Quest Diagnostics 檢驗：Apple 台灣新聞稿都沒有，屬於軟體／服務，不寫。\n・購買建議：tech.md 明令禁止。可以並列規格與價格，不可以寫「值不值得買」「該不該升級」「哪一支比較好」。\n・本站沒有實測，所有效能與準確度數字一律寫成「Apple 表示」。\n\nhero_label 建議（≤12 字）：「9/9 硬體與台灣時程」。\ndiagram 建議（2×2 四格，圖上數字都要在正文出現）：標題「健康感測系統怎麼運作」；四格＝「光學感測器／每五秒量一次心率」、「電子感測器／心率變異多 24 倍」、「S11 晶片／算出 0–10 分準備指數」、「台灣限制／高血壓通知尚未推出」。",
+ "must_not_write": [
+  "不可以寫「該不該買」「值不值得升級」「哪一支比較好」或任何購買結論——tech.md 明令禁止。",
+  "不可以把 Apple 的宣稱寫成事實。「穿戴式裝置中最精準的心率感測」「智慧型手錶當中最精準的步數追蹤」「運動手錶中最精準的裝置端 GPS」「業界最佳的開放式耳機主動式降噪」「降噪多 50%」「持續效能提升 40%」「AI 運算能力兩倍」全部要寫成「Apple 表示」，並說明依據是 Apple 自己做的測試。",
+  "不可以寫本站實測、試用或比較過任何一項產品。",
+  "不可以說高血壓通知在台灣「已送件」「已通過」或指名任何主管機關（TFDA、FDA、CE）——Apple 只寫「其他法規核准程序仍在進行中」，沒有指名機關，也沒有說是哪一種程序。",
+  "不可以推測高血壓通知在台灣何時上線到月份；官方只有「預計將於明年推出」。",
+  "不可以描述高血壓通知怎麼運作、量什麼、準不準——四篇新聞稿正文都沒有介紹這個功能。",
+  "不可以把「健康感測系統」、心率、HRV 或「準備指數」寫成醫療器材、診斷工具或健康檢查，也不可以下任何醫療建議；官方只在「生命徵象」App 上寫「僅為保健目的，並非提供醫療之用」。",
+  "不可以寫 iPhone 18 Pro 的螢幕尺寸、望遠／超廣角鏡頭、機身材質、IP 等級、重量或記憶體——新聞稿全部沒有寫，媒體報導不是一手來源。",
+  "不可以寫 AirPods 5 的晶片型號或 IP 防護等級——新聞稿沒有寫。",
+  "不可以把 iPhone 18 Pro 台灣版的 34／43 小時和美國版的 36／45 小時混在一起當成同一組數字；若要並列，必須寫出美國版那組帶有「eSIM 專用機型」的限定語，而且該美國版網址要進 sources。",
+  "不可以把台灣電池數字較低直接寫成「因為台灣機型有實體 SIM 卡槽」——那是相減得到的推論，Apple 台灣版沒有這樣寫。",
+  "不可以推定 Audio Intelligence／Live Rewind／Siri Recap／重新設計的「健康」App／Health Age／Quest 檢驗在台灣可用；Apple 台灣新聞稿完全沒有這些內容，美國版寫明「starting in U.S. English」。",
+  "不可以叫讀者到 support.apple.com/zh-tw/118210 查高血壓通知——實測那個網址是 Apple Fitness+ 相容裝置頁。",
+  "不可以列出 iPhone 18 Pro 第二波 20 個地區、或 Apple Watch「超過 50 個」與 AirPods「超過 65 個」地區的完整名單——官方沒有列。",
+  "不可以在科技篇加投資免責 callout（tech.md 明令），科技篇也不帶 finance 主題。",
+  "不可以用簡體字、列表、Markdown 或 emoji；圖解不可畫任何商標、字標、圖示或介面截圖，產品一律用純文字寫名字。",
+  "不可以寫成四篇小新聞拼盤——候選清單要求做成一篇「9/9 發表會的硬體」，不要每個產品一篇。",
+  "summary 區塊不可以出現正文沒有寫過的數字；faq 不可以把小節標題改寫成問句充數，答案不可以放連結。"
+ ],
+ "overlaps_existing_article": "四處重疊，分工如下。\n\n1) apps/api/app/guides/content/ai-news-siri-ai-ios-27-20260914.json（zh-TW 正式 title：「Siri AI 隨 iOS 27 推出：先上英文 beta，台灣 iPhone 使用者能用到什麼？」）已經寫過 iOS 27 與 Siri AI。本文只寫硬體，軟體、Siri AI 的語言與歐盟限制一律不重寫，改用第二個 link 連過去。這也正好是 BRIEF 要求的「一則相關新聞」的最佳人選，link 的 text 必須逐字等於上面那個 title。\n\n2) 同批的 T1 tech-news-iphone-duo-20260909（Apple unveils iPhone Duo，同為 2026-09-09）。iPhone Duo 的折疊設計、7.6 吋／5.4 吋螢幕、1,999 美元、10/16 預購與 10/23 上市全歸那篇。本文最多在開場提一句「同日還發表了 iPhone Duo」，不展開規格。反過來，A20 Pro 的晶片細節（2 奈米、6 核心 CPU、7 核心 GPU、雙 16 核心神經網路引擎）兩篇都會碰到，建議由本文負責晶片那一段的完整說明，iPhone Duo 那篇只帶過並連回本文。\n\n3) 同日還有一篇 Apple advances health and fitness capabilities using Apple Intelligence（2026-09-09T17:52Z，美國版 feed 裡有、台灣版 feed 裡沒有），內容是重新設計的「健康」App、Longevity 分頁、Health Age 與 Quest Diagnostics 檢驗。那是 AI／軟體題目，若之後有人開稿就是另一篇；本文不碰這些，只寫錶上的感測硬體。\n\n4) 同批 T8（tech-news 的 Apple M6／M5 Ultra，2026-08-25）也會談 Apple 自研晶片與 2 奈米製程。兩篇要分工：T8 講 Mac 的 M 系列，本文講 iPhone 的 A20 Pro，彼此不要重述對方的製程說明。\n\n5) 索引連結：目前 apps/api/app/guides/content/ 底下沒有任何 tech 垂直的索引內容包（只有 ai-news-2026-january-september-index.json）。BRIEF 要求第一個 link 是本垂直的索引，所以撰稿時要確認科技索引篇是否已經產出；若尚未產出，需由編輯統一決定第一個 link 指向哪裡，不可自行猜一個不存在的 slug。",
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md 的 T2 只列了四個美國版網址。實際上 Apple 台灣 Newsroom 有這四篇的繁體中文版，而且不是單純翻譯：台灣版多了一條美國版沒有的高血壓通知法規註腳、多了「睡眠呼吸中止症通知功能現於菲律賓推出」一句，少了 Audio Intelligence（Live Rewind、Siri Recap）與重新設計的「健康」App 整段，iPhone 電池數字也不同（34／43 vs 36／45），C2 少了 mmWave 那一句。做台灣站的稿子應該以台灣版為 sources。",
+  "AirPods 5 的台灣版 slug 與美國版不同：台灣是 apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation，美國是 ...-airpods-5-with-best-in-class-...。候選清單沒有記這一點，照美國 slug 套 /tw/ 會 404，必須從台灣 Atom feed 取得。",
+  "美國版 AirPods 5 頁面內文的大標是「Apple introduces AirPods 5, featuring best-in-class open‑ear Active Noise Cancellation」（有逗號、用 featuring，且 open‑ear 的連字號是 U+2011 不斷行連字號），與 <title>／og:title／Atom feed 標題的「Apple introduces AirPods 5 with best-in-class open-ear Active Noise Cancellation」不一致。候選清單抄的是後者；抄標題時要確認抄的是哪一個，不要自己打一遍。",
+  "候選清單說「與既有文章的分工：ai-news-siri-ai-ios-27-20260914 已經寫過 iOS 27 與 Siri AI，這篇只寫硬體」，這一點正確且必須照做；但清單沒有提到同日還有第三篇 Apple advances health and fitness capabilities using Apple Intelligence（2026-09-09），重新設計的「健康」App／Longevity／Health Age／Quest 檢驗屬於那一篇，不屬於本文。",
+  "候選清單沒有提到 2026-09-09 當天沒有 Apple Watch SE 的新聞稿。SE 3 只是既有機型，出現在 watchOS 27 相容性與三個月 Fitness+／Music 促銷清單中，不可寫成新發表。",
+  "候選清單沒有記錄事件日以外的關鍵日期差異：Apple Watch Series 12、Ultra 4 與 AirPods 5 是 9/9 當天就開放預購，iPhone 18 Pro 系列則是台灣時間 9/12 晚上 8 點才開放預購，四項都在 9/18 供貨，iPhone 18 Pro 第二波 20 個地區是 9/25。",
+  "T2 的預設假設是「四篇美國新聞稿」都可入 sources，但 BRIEF 的 sources 上限是 4 條；若同時要用台灣版與美國版（例如為了寫電池數字差異或 mmWave）就會超過上限，開稿前要先決定取捨。",
+  "候選清單沒有提醒 Apple Newsroom 的頁面是會變動的活頁面：台灣版 Apple Watch Ultra 4 在台灣 feed 裡的 <updated> 是 2026-09-11T21:53:40Z，晚於 9/9 的發布日，代表該頁發布後被改過。引用前應重抓。"
+ ]
+}

@@ -1,0 +1,304 @@
+{
+ "slug": "tech-news-taiwan-6g-spectrum-20260910",
+ "checked_on": "2026-09-16",
+ "event_date": "2026-09-10",
+ "official_release_title_verbatim": "數發部舉辦「頻譜政策領航 邁向6G新世代」國際研討會 聚焦6G前瞻布局與AI應用",
+ "sourcing_verdict": "full",
+ "event_date_basis": "moda 新聞發布 /press/press-releases/20612 內文寫「數位發展部今（10）日舉辦」，頁尾「建立日期：2026-09-10」「更新日期：2026-09-10」。研討會舉行日、新聞稿發布日、頁面建立日三者同為 2026-09-10，沒有分歧。（注意：作為線索給的 https://moda.gov.tw/press/press-releases/372 是新聞發布『列表頁』，不是這篇文章，本身不帶事件日。）",
+ "sourcing_notes": "全部一手來源都在這個容器抓得到。實測（2026-09-16，User-Agent 一律 Mokaair-editorial）：moda.gov.tw 網頁 HTTP 200；www-api.moda.gov.tw/File/Get/... 的 PDF HTTP 200（檔名在 content-disposition，需 urldecode）；www.itu.int 網頁與 dms_pub PDF HTTP 200；www.ntia.gov HTTP 200；www.nera.com HTTP 200。擋住的：law.moda.gov.tw（數發部主管法規共用系統）整站 Cloudflare HTTP 403，LawContent.aspx 與 Download.ashx 都是 403；www.ofcom.org.uk Cloudflare HTTP 403；www.gsma.com Cloudflare HTTP 403；www.itu.int/online/mm/scripts/...（ITU 會員名錄查詢）回 F5 存取閘道頁，不是資料。moda 沒有這篇的英文版（/en/press/press-releases/20612 回 404，英文列表 /en/press/press-releases/372 最新只到 2026-09-01）。moda 的站內搜尋是導去 Google，沒有自家搜尋 API；新聞發布列表的分頁靠 JS（SearchJsonData），?page= 之類的參數無效，只能讀到第 1 頁的 15 筆（2026-06-18 至 2026-09-15）。容器內 python3 的 cryptography 套件壞掉（_cffi_backend 缺失），pypdf 要先用一個會丟 ImportError 的假 cryptography 套件 shim 掉才能載入；PDF 文字抽取全部靠 pypdf 3.17.4。建議放進內容包 sources 的 4 條是：(1) moda 新聞稿 20612、(2) moda 執行計畫頁 19090、(3) 無線電頻率供應計畫 114年2月修正 PDF、(4) ITU-R Study Group 5 頁。下面 verified_facts 裡凡是 url 不在這 4 條之內的（立法院業務概況報告、115／116 年度施政計畫、ITU-R 研究組手冊、NTIA、NERA），**要嘛不要寫進文章，要嘛把 sources 換掉**——BRIEF 規定每個數字都要指到 sources 裡的一條。",
+ "sources": [
+  {
+   "title": "數發部舉辦「頻譜政策領航 邁向6G新世代」國際研討會 聚焦6G前瞻布局與AI應用",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "publisher": "數位發展部（moda）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "6G 地空整合頻譜規劃計畫",
+   "url": "https://moda.gov.tw/digital-affairs/resource-management/programs/19090",
+   "publisher": "數位發展部 資源管理司",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "無線電頻率供應計畫（114年2月修正）",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/Mrbx00R7mtGIJje",
+   "publisher": "數位發展部",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Study Group 5 (SG 5)",
+   "url": "https://www.itu.int/en/ITU-R/study-groups/rsg5/Pages/default.aspx",
+   "publisher": "International Telecommunication Union (ITU-R)",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "2026 年 9 月 10 日，數位發展部舉辦「頻譜政策領航：邁向6G新世代」國際研討會。新聞稿標題把活動名寫成「頻譜政策領航 邁向6G新世代」（中間是半形空格），內文寫成「頻譜政策領航：邁向6G新世代」（有全形冒號），兩種寫法都出自同一頁。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": false,
+   "verbatim_quote": "因應全球6G布局，數位發展部今（10）日舉辦「頻譜政策領航：邁向6G新世代」國際研討會"
+  },
+  {
+   "fact": "這則新聞發布的發布單位是資源管理司，建立日期與更新日期都是 2026-09-10。頁面沒有任何附件（沒有議程、簡報或與會者名單的 PDF），只有兩張活動照片。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": false,
+   "verbatim_quote": "發布單位：資源管理司　建立日期：2026-09-10　更新日期：2026-09-10"
+  },
+  {
+   "fact": "代表數發部致詞的是葉寧次長。數發部官網「正副首長」頁把葉寧列為常務次長（該頁建立日期 2022-08-27、更新日期 2025-09-01），學歷為國立臺灣大學法律系學士（1989）與法律研究所碩士（1995），經歷含國家通訊傳播委員會專門委員（2006-2010）、法務處處長（2015-2016）、參事（2016-2022）。",
+   "url": "https://moda.gov.tw/aboutus/principal-officers/deputy-minister-yeh/999",
+   "is_vendor_claim": false,
+   "verbatim_quote": "葉寧 常務次長"
+  },
+  {
+   "fact": "葉寧表示，6G 改變的不只是網速，更是地面與非地面網路整合、實現通訊全域涵蓋的關鍵；6G 自帶 AI 的原生網路架構（AI-native）將成為支撐未來 AI 算力和龐大資料流量的核心基石。這是次長的說法，不是本站查證的結論。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "數發部葉寧次長表示，6G改變的不僅是網速，更是地面與非地面網路整合、實現通訊全域涵蓋的關鍵。此外，6G自帶AI的原生網路架構（AI-native）將成為支撐未來AI算力和龐大資料流量的核心基石。"
+  },
+  {
+   "fact": "葉寧致詞時說的原句（新聞稿逐字引述）：「我們今天聚集在這裡，正是要共同回答一個核心問題：『我們希望下一代網路，為我們打造一個怎樣的世界？』」",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "葉次長致詞時表示：「我們今天聚集在這裡，正是要共同回答一個核心問題：『我們希望下一代網路，為我們打造一個怎樣的世界？』」"
+  },
+  {
+   "fact": "「2030 年」這個時間點出自葉寧的說法：全球 6G 預計於 2030 年起逐步商轉，臺灣的 6G 布局不能等技術與應用成熟才開始，必須緊扣國際趨勢提前準備。新聞稿沒有給臺灣自己的 6G 商轉時間，也沒有給臺灣的釋照時程。務必寫成「葉寧指出／數發部表示」，不可寫成臺灣的時間表。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "葉次長指出，全球6G預計於2030年起逐步商轉，臺灣的6G布局絕不能等技術與應用成熟後才開始，必須緊扣國際趨勢提前準備。"
+  },
+  {
+   "fact": "新聞稿寫出的政策『方向』只有一句：6G 將深度整合地面行動通訊與衛星網路，數發部需建構頻譜和諧有效共用、避免跨系統干擾的治理框架。這是敘述需求，不是宣布任何已核定的措施、法規或時程。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "特別是6G將深度整合地面行動通訊與衛星網路，數發部需建構頻譜和諧有效共用、避免跨系統干擾的治理框架，以確保國人能享有無所不在且可靠的通訊服務。"
+  },
+  {
+   "fact": "葉寧就 6G 與 AI 的互動指出：生成式 AI 與各類 AI 應用快速普及使網路流量需求大幅飆升，深刻影響 6G 原生 AI 網路架構的設計方向；電信事業因網路覆蓋廣泛且貼近用戶，若能掌握 AI 價值鏈中的關鍵定位並轉化為新型態商業模式，可望開創全新的產業成長曲線。這整段是主張與期待，沒有任何數據、目標值或時程。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "隨著生成式AI與各類AI應用快速普及，網路流量需求大幅飆升，深刻影響6G原生AI網路架構的設計方向。"
+  },
+  {
+   "fact": "新聞稿點名的與會國際人士共五位：國際電信聯盟無線電通信部門（ITU-R）第5研究組主席 Kyu-Jin WEE 博士（新聞稿寫「再度來台與會」）、美國國家電信暨資訊管理局（NTIA）頻譜管理辦公室主管 Charles Cooper、英國通傳管理局（Ofcom）國際頻譜政策主管 Chris Woolford、全球行動通訊系統協會（GSMA）未來頻譜部門資深總監 Stuart Cooke、美國國家經濟研究協會經濟諮詢公司（NERA）亞太區頻譜主管 Hans-Martin Ihle，後面接「等人」。除 WEE 以外，新聞稿稱其餘為「多位首次訪台的國際專家」。頭銜與「首次訪台」的描述都是數發部給的。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "本次研討會邀請到國際電信聯盟無線電通信部門（ITU-R）第5研究組主席Kyu-Jin WEE博士再度來台與會，以及多位首次訪台的國際專家，包括美國國家電信暨資訊管理局（NTIA）頻譜管理辦公室主管Charles Cooper、英國通傳管理局（Ofcom）國際頻譜政策主管Chris Woolford、全球行動通訊系統協會（GSMA）未來頻譜部門資深總監Stuart Cooke，以及美國國家經濟研究協會經濟諮詢公司 （NERA）亞太區頻譜主管Hans-Martin Ihle等人。"
+  },
+  {
+   "fact": "數發部對研討會本身的定位：從 6G 發展願景出發，深入探討地空網路整合及 AI 創新應用帶來的頻譜需求，期盼透過國際交流掌握全球技術演進與政策發展趨勢，為我國 6G 頻譜整備與戰略布局奠定基礎。用詞全部是「探討」「期盼」「奠定基礎」——沒有任何「決定」「核定」「公告」「釋出」。",
+   "url": "https://moda.gov.tw/press/press-releases/20612",
+   "is_vendor_claim": true,
+   "verbatim_quote": "本次國際研討會從6G發展願景出發，深入探討地空網路整合及AI創新應用帶來的頻譜需求，期盼透過國際交流，精準掌握全球技術演進與政策發展趨勢，為我國6G頻譜整備與戰略布局奠定堅實基礎。"
+  },
+  {
+   "fact": "這類活動不是第一次。2025 年 9 月 17 日數發部辦過「次世代通信頻譜展望國際座談會」，由林宜敬部長出席，同樣邀到 ITU-R 第5研究組主席 Kyu-Jin WEE，另有亞太電信組織（APT）2027 世界無線電通信大會籌備小組主席河合宣行（Nobuyuki Kawai）、高通公司資深副總裁 John W. Kuzin、愛立信公司技術長 Magnus Ewerbring；該次聚焦頻譜規劃、非地面網路與動態共享，發布單位同樣是資源管理司。該篇並寫「本次會議延續去年成果」。",
+   "url": "https://moda.gov.tw/press/press-releases/17422",
+   "is_vendor_claim": false,
+   "verbatim_quote": "數發部表示，本次座談會邀請到ITU-R第5研究組主席Kyu-Jin WEE博士、APT 2027世界無線電通信大會籌備小組主席河合宣行（Nobuyuki Kawai）、高通公司資深副總裁John W. Kuzin、愛立信公司技術長Magnus Ewerbring"
+  },
+  {
+   "fact": "數發部資源管理司底下真正在做 6G 頻譜的執行計畫叫「6G 地空整合頻譜規劃計畫」，副標寫「6G頻譜政策領航計畫」——研討會名稱「頻譜政策領航」就是從這個計畫來的。該計畫頁建立日期 2026-03-05、更新日期 2026-09-15。",
+   "url": "https://moda.gov.tw/digital-affairs/resource-management/programs/19090",
+   "is_vendor_claim": false,
+   "verbatim_quote": "6G 地空整合頻譜規劃計畫 ／ 6G頻譜政策領航計畫"
+  },
+  {
+   "fact": "「6G 地空整合頻譜規劃計畫」自述的兩個目標，是新聞稿裡沒有的具體方向：推動完成 6G 地空整合頻譜釋出，以及 4G 屆期頻譜重耕釋出；並要強化跨機關協調、橫向串聯學界研究能量、凝聚產業共識並建立協作機制。計畫頁沒有給任何一個年份或頻段。",
+   "url": "https://moda.gov.tw/digital-affairs/resource-management/programs/19090",
+   "is_vendor_claim": false,
+   "verbatim_quote": "為接軌國際6G頻譜政策發展趨勢，透過本計畫持續關注並掌握國際頻譜政策與技術演進，並以推動完成6G地空整合頻譜釋出及4G屆期頻譜重耕釋出為目標。"
+  },
+  {
+   "fact": "同一個計畫頁掛了 9 份數發部委辦的頻譜趨勢報告：115年（2026年）第一至第七期「國際頻譜趨勢月報」，以及第一季、第二季「頻譜發展趨勢季報」，全部是 PDF。這些報告封面與封底都印有「本報告不必然代表數位發展部意見」。",
+   "url": "https://moda.gov.tw/digital-affairs/resource-management/programs/19090",
+   "is_vendor_claim": false,
+   "verbatim_quote": "本報告不必然代表數位發展部意見"
+  },
+  {
+   "fact": "數發部是「中華民國無線電頻率分配表」與「無線電頻率供應計畫」的管轄機關。依電信管理法第52條第3項，兩份文件由行政院指定機關擬訂、邀集相關機關協商訂定並定期檢討修正；配合數發部組織法規自民國111年8月27日（2022-08-27）施行，無線電頻率供應計畫的管轄機關自該日起變更為數發部。供應計畫本身屬「實質法規命令性質」，正式公告後對外產生一定法律效果。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/Mrbx00R7mtGIJje",
+   "is_vendor_claim": false,
+   "verbatim_quote": "本計畫屬實質法規命令性質，有別於以往為提供各界參考之行政計畫，內容將載明中長程頻率釋出、頻率重整、頻率共享及其他頻率供應之規劃，正式公告後對外將產生一定法律效果。"
+  },
+  {
+   "fact": "現行「無線電頻率供應計畫」是 114年2月修正版（封面印「114年2月修正」，PDF 建立時間 2025-02-06，隨 2025-02-13 的公告修正案發布）。它把 6425-7125 MHz 列為「特定實驗頻率」，實驗目的是「供行動通信、免執照低功率無線資訊傳輸設備等低功率射頻器材測試實驗網路之用」，特定實驗場域是「全國」，其他測試條件是「不得干擾合法通信且須忍受合法通信干擾之條件下使用」。也就是說：這個被國際上視為 6G 候選頻段的 Upper 6 GHz，在臺灣目前是實驗用途，不是商用釋照。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/Mrbx00R7mtGIJje",
+   "is_vendor_claim": false,
+   "verbatim_quote": "6425-7125 供行動通信、免執照低功率無線資訊傳輸設備等低功率射頻器材測試實驗網路之用 全國 不得干擾合法通信且須忍受合法通信干擾之條件下使用"
+  },
+  {
+   "fact": "同一份供應計畫的行動通信頻段表列出現有執照到期年（民國年）：703-748／758-803 MHz（總計 90 MHz）、885-915／930-960 MHz（總計 60 MHz）、1710-1775／1805-1870 MHz（總計 130 MHz）三組，執照期限都到 119 年（西元 2030 年），且都自 102 年 12 月起開放行動通信使用；1920-1980／2110-2170 MHz（120 MHz，自 106 年起）與 2500-2690 MHz（190 MHz，自 104 年起）到 122 年（2033 年）；3300-3570 MHz（270 MHz）與 27900-29500 MHz（1,600 MHz）都自 108 年 7 月起開放、到 129 年（2040 年）。前三組合計 280 MHz、2030 年到期，就是「4G 屆期頻譜重耕」指的東西。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/Mrbx00R7mtGIJje",
+   "is_vendor_claim": false,
+   "verbatim_quote": "703-748, 758-803 供行動寬頻業務使用，執照期限至119年，頻寬總計90MHz"
+  },
+  {
+   "fact": "供應計畫自己定義了頻段處理的「優先順序」三級：短期是已有國際標準規格、設備已可取得或預計可取得且使用需求明確、預計三年內釋出或政府已展開整備規劃的頻段；中期是政府將於三年內展開整備工作（例如技術規格定義、與既有使用者協調、定義清移頻方案）的頻段；長期是國際趨勢、設備可取得性或國內需求尚未明確、只持續追蹤觀察並納為候選、尚不會進行整備或釋出規劃的頻段。這組定義可以用來解釋「還在研討」和「已排入釋出」的差別。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/Mrbx00R7mtGIJje",
+   "is_vendor_claim": false,
+   "verbatim_quote": "1.短期：已建立國際標準規格、設備已可取得或預計可取得，且使用需求明確，預計將於三年內釋出或政府已展開相關整備規劃工作之頻段。"
+  },
+  {
+   "fact": "2023-08-25 數發部的「6GHz頻段」公告修正案說明了臺灣 6 GHz 的兩段處理：修正「中華民國無線電頻率分配表」開放 5945 至 6425 MHz 供 U-NII 等低功率射頻器材使用；修正「無線電頻率供應計畫」增加 6425 至 7125 MHz 供行動通信、免執照低功率無線資訊傳輸等低功率射頻器材的技術研發、產品開發及應用服務等測試實驗網路使用，並俟國際通信技術發展趨勢及服務使用需求更為明確後，滾動檢討開放釋出其他可用頻率。該頁依據是電信管理法第52條第4項，建立日期 2023-08-25、更新日期 2024-04-18。",
+   "url": "https://moda.gov.tw/digital-affairs/resource-management/resource-plan/plan001/6369",
+   "is_vendor_claim": false,
+   "verbatim_quote": "配合「中華民國無線電頻率分配表」修正草案開放 5945 至 6425 MHz 供 U-NII 設備等低功率射頻器材使用，爰修正「無線電頻率供應計畫」，增加 6425 至 7125 MHz 供行動通信、免執照低功率無線資訊傳輸等低功率射頻器材之技術研發、產品開發及應用服務等測試實驗網路使用，並俟國際通信技術發展趨勢及服務使用需求更為明確後，滾動檢討開放釋出其他可用頻率"
+  },
+  {
+   "fact": "ITU-R 第5研究組（Study Group 5, Terrestrial services）負責固定、行動、無線電定位、業餘與業餘衛星業務的系統與網路，下設 WP 5A、5B、5C、5D 四個工作組，其中 WP 5D 負責 IMT 系統。SG 5 頁面明寫「Study Group 5 is also responsible of the development of IMT and is currently working on IMT-2030 for the 6G」的同義敘述於 ITU-R 手冊，SG 5 頁自己的重點事項列出：2023-11-29「RA-23 (Dubai) confirmed 'IMT-2030' to be the name for 6G and also approved the 'Framework for IMT-2030'」，以及 2026-03-09「Draft new Report on the IMT-2030 technical performance requirements has been agreed by WP 5D and sent for approval to SG 5」。下次 SG 5 會議是 2026-11-30 至 2026-12-01 於瑞士日內瓦。",
+   "url": "https://www.itu.int/en/ITU-R/study-groups/rsg5/Pages/default.aspx",
+   "is_vendor_claim": false,
+   "verbatim_quote": "RA-23 (Dubai) confirmed “IMT-2030” to be the name for 6G and also approved the “Framework for IMT-2030”"
+  },
+  {
+   "fact": "ITU 官方刊物《ITU-R RADIOCOMMUNICATION STUDY GROUPS - 2025》的聯絡表列出 SG 5（Terrestrial services）的 Chair 是 Mr Kyu-Jin WEE，對應的 ITU 顧問是 Mr Uwe LOEWENSTEIN。這條獨立驗證了數發部對 WEE 頭銜的描述。該 PDF 內部 CreationDate 為 2024-12-19、ModDate 為 2025-01-14，是 2025 年版。",
+   "url": "https://www.itu.int/dms_pub/itu-r/opb/gen/R-GEN-SGB-2025-PDF-E.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "SG 5 – Terrestrial services  Mr Uwe LOEWENSTEIN ... Mr Kyu-Jin WEE"
+  },
+  {
+   "fact": "同一份 ITU 刊物寫明：Recommendation ITU-R M.2160 描述 IMT 於 2030 年及以後發展的框架與整體目標；ITU-R 是 IMT-2000（3G）、IMT-Advanced（4G）、IMT-2020（5G）、IMT-2030（6G）基本規格的主要來源。並列出 WRC-27 議程項目 1.10（Resolution 256 (WRC-23)）指派 WP 5D 為負責小組，就 4 400-4 800 MHz、7 125-8 400 MHz 及 14.8-15.35 GHz 三段頻率進行 IMT 地面成分的共用與相容性研究。注意：該文件寫的是「agenda item 1.10」，不要自行改成別的編號。",
+   "url": "https://www.itu.int/dms_pub/itu-r/opb/gen/R-GEN-SGB-2025-PDF-E.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "for the frequency bands: 4 400-4 800 MHz, 7 125-8 400 MHz and 14.8-15.35 GHz."
+  },
+  {
+   "fact": "數發部 2026 年 4 月向立法院第11屆第5會期交通委員會提出的業務概況報告（書面報告，部長林宜敬）寫到，針對重要 6G 候選頻段 Upper 6GHz，已完成電視臺傳輸鏈路、跨海微波鏈路分析與自由空間光通信（FSO）2 公里跨海測試，並依分析與量測成果研提 U6 頻段整備候選方案。【單位誤植警告：該報告原文把頻段範圍寫成「6425-7125 GHz頻段」，GHz 顯然是 MHz 之誤；不要照抄那個單位。】",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/b4RLKc8Mn5Y5Sj9",
+   "is_vendor_claim": false,
+   "verbatim_quote": "針對重要 6G候選頻段 （ Upper 6GHz ，指 6425 -7125 GHz頻段） ，已完成電視臺傳輸鏈路、跨海微波鏈路分析與自由空間光通信（ Free-Space Optics, FSO）2公里跨海測試，並依據分析與量測成果，研提 U6頻段整備候選方案。"
+  },
+  {
+   "fact": "同一份立法院報告的其他可查數字：累計至 115 年 2 月底，數發部已完成隴華電子、愛爾康、台亞衛星及中華電信等 4 家業者共 8 件衛星通信頻率申請案審查；中華電信於 114 年 6 月及 10 月啟用 OneWeb 與 SES O3b 服務，台亞衛星於 115 年 1 月啟用 Eutelsat 衛星服務。115 年度截至 3 月底計有 9 件產業研發頻譜申請案件，涵蓋低中高軌衛星、無人機反制雷達、車聯網及 5G。報告另提到已辦理 MWC 行前交流會、WRC-23 經驗分享會及第 2 屆「頻譜大未來」國際頻譜交流會議。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/b4RLKc8Mn5Y5Sj9",
+   "is_vendor_claim": false,
+   "verbatim_quote": "累計至 115年2月底，本部已完成隴華電子、愛爾康、台亞衛星及中華電信等 4家業者共 8件衛星通信頻率申請案之審查"
+  },
+  {
+   "fact": "數發部 115 年度（2026）施政計畫列了兩個 6G 相關工作計畫。「6G地空整合頻譜規劃計畫」（科技發展類）：觀測國際 6G 頻譜政策與技術趨勢、研擬頻譜整備及法規修正方案、驗證頻譜共存新技術、活化專用電信頻譜。另一個「6G頻譜釋出所涉議題盤點及潛在政策方案研析」（其他類）要盤點釋出 6G 頻譜涉及的產業發展（含 6G 發展進程、NTN 商業模式）、網路建設（含涵蓋義務、緊急電話及 PWS）及市場競爭（含頻寬上限及新進業者）等議題，分析現行釋出制度的釋出方式、頻寬上限規範、得標後建設義務，並就 6G 議題提出潛在政策方案與初步可行性評估。注意：這是「研析潛在政策方案」，不是已定案的制度。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/E5RrlYLBIF6IfLS",
+   "is_vendor_claim": false,
+   "verbatim_quote": "三、就6G相關議題提出潛在政策方案，並初步評估各項方案之可行性及對利害關係人之影響。"
+  },
+  {
+   "fact": "數發部 116 年度（2027）施政計畫（草案版，PDF 建立時間 2026-09-03）把「6G地空整合頻譜規劃計畫」的實施內容寫得更具體：一、研析國際頻譜政策與候選頻段趨勢，辦理潛在頻段之地空整合干擾耐受性實測，據以研訂我國適切之頻譜整備方案，並研擬無線電頻率分配表及頻率供應計畫修正草案；二、就我國 6G 頻譜之技術規範、商業模式發展方向、電信市場參進模式等議題研提具體政策提案；三、辦理第二階段專用電信普查以活化專用頻譜。同一份草案另列「推動我國衛星直連裝置服務管理法制化計畫」與「近地高空通訊平臺創新應用與技術驗證計畫」。務必標明這是『草案版』。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/CO53evdYhevAdZu",
+   "is_vendor_claim": false,
+   "verbatim_quote": "一、研析國際頻譜政策與候選頻段趨勢，辦理潛在頻段之地空整合干擾耐受性實測，據以研訂我國適切之頻譜整備方案，並研擬無線電頻率分配表及頻率供應計畫修正草案。"
+  },
+  {
+   "fact": "NTIA 官網的人事頁確認 Charles Cooper 的職稱是「Associate Administrator, Office of Spectrum Management, NTIA」，負責該署國內與國際頻譜政策工作並監督聯邦機關的頻譜管理事務。這與數發部寫的「NTIA 頻譜管理辦公室主管」相符。",
+   "url": "https://www.ntia.gov/personnel-profile/charles-cooper",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Charles Cooper is Associate Administrator for NTIA’s Office of Spectrum Management. He leads the agency’s work on national and international spectrum policy issues and oversees spectrum management efforts for federal agencies."
+  },
+  {
+   "fact": "NERA 官網的專家頁把 Hans-Martin Ihle 列為 Managing Director，辦公室在東京，專長為賽局理論與拍賣，主要領域是頻譜拍賣。NERA 自己的頁面**沒有**使用「亞太區頻譜主管」這個頭銜。若要提到他，用數發部的寫法並註明是數發部的說法，或直接用 NERA 自己的「董事總經理」。",
+   "url": "https://www.nera.com/experts/i/hans-martin-ihle.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Hans-Martin Ihle, MPhil  Managing Director ... Tokyo"
+  }
+ ],
+ "not_said": [
+  "新聞稿完全沒有提到任何頻段。沒有 6 GHz、沒有 U6／6425-7125 MHz、沒有 7-24 GHz、沒有毫米波、沒有任何 MHz 或 GHz 數字。全篇唯一的數字是「2030」與日期「10」。",
+  "沒有臺灣自己的 6G 時程。「2030 年起逐步商轉」是葉寧對『全球』的描述，不是臺灣的釋照日、商轉日或政策期程。",
+  "沒有宣布任何政策決定、法規修正、頻譜釋出、拍賣、公開諮詢或預告。這是一場研討會的紀實稿，通篇是「探討」「期盼」「奠定基礎」。",
+  "沒有說研討會在哪裡舉行、辦幾天、幾場次、有多少人出席、議程有哪些主題。",
+  "沒有列出任何國內與會者——沒有電信業者、沒有學研單位、沒有 NCC、沒有國科會，一個都沒點名。",
+  "沒有提到 NCC（國家通訊傳播委員會）在 6G 頻譜上的角色，也沒有提跨部會分工。",
+  "沒有提到 WRC-27、ITU-R WP 5D、IMT-2030 這些國際程序名稱（只出現「ITU-R 第5研究組」當作與會者頭銜）。",
+  "沒有提到 4G 執照屆期或頻譜重耕——那是計畫頁與施政計畫才寫的，新聞稿沒有。",
+  "沒有提到經費、預算、補助或任何金額。",
+  "沒有提到低軌衛星業者名稱（Starlink／OneWeb／Eutelsat 等），只寫「衛星網路」。",
+  "沒有說這是系列活動的第幾屆，也沒有回顧 2025 年的座談會。",
+  "沒有英文版新聞稿：/en/press/press-releases/20612 回 404。不可以宣稱有官方英文說法。",
+  "沒有公開議程、簡報或與會者名單的附件檔。",
+  "「無線電頻率供應計畫」把 6425-7125 MHz 寫成『測試實驗網路之用』，沒有寫它會被釋出給商用、也沒有寫任何釋出年份。不可以推論成「臺灣已規劃把 U6 給 6G 商用」。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Ofcom 國際頻譜政策主管 Chris Woolford 的正式職稱",
+   "seen_where": "數發部新聞稿；搜尋摘要提到 Ofcom 文件中出現 Director International Spectrum",
+   "why_excluded": "www.ofcom.org.uk 在本容器回 Cloudflare HTTP 403（連 /about-ofcom/international-work/spectrum 也是），無法讀到 Ofcom 自己的頁面確認現職。只能寫成「數發部表示」。"
+  },
+  {
+   "claim": "GSMA 未來頻譜部門資深總監 Stuart Cooke 的正式職稱",
+   "seen_where": "數發部新聞稿；搜尋結果指向 gsma.com 的個人頁",
+   "why_excluded": "www.gsma.com 在本容器回 Cloudflare HTTP 403，抓不到 GSMA 自己的頁面。只能寫成「數發部表示」。"
+  },
+  {
+   "claim": "NERA 的 Hans-Martin Ihle 是「亞太區頻譜主管」",
+   "seen_where": "數發部新聞稿",
+   "why_excluded": "NERA 官方專家頁（已抓到，HTTP 200）寫的是 Managing Director、東京辦公室，沒有這個頭銜。兩邊不一致，不可把數發部的譯稱寫成 NERA 的正式職稱。另外新聞稿把 NERA 譯為「美國國家經濟研究協會經濟諮詢公司」，NERA 是私人經濟顧問公司（National Economic Research Associates），不是協會；建議只寫英文簡稱 NERA。"
+  },
+  {
+   "claim": "Kyu-Jin WEE 之外的四位專家是「首次訪台」",
+   "seen_where": "數發部新聞稿",
+   "why_excluded": "無任何一手來源可以驗證某人是否首次入境臺灣。只能原樣引述為數發部的說法，不可寫成事實。"
+  },
+  {
+   "claim": "「全球 6G 預計於 2030 年起逐步商轉」",
+   "seen_where": "數發部新聞稿（葉寧發言）",
+   "why_excluded": "我讀到的 ITU-R 官方頁面（SG 5 頁、ITU-R 研究組手冊 2025）都沒有給任何商轉年份，只有 IMT-2030 的名稱、框架建議書 M.2160 與候選 RIT 的徵集時程（02/27-02/29）。所以 2030 只能寫成葉寧／數發部的說法，不可寫成 ITU 的官方時程。"
+  },
+  {
+   "claim": "日本 26 GHz 首次拍賣得標總價 67.6 億日圓、FCC 將於 2027 年 7 月前拍賣 3.98-4.14 GHz、Ofcom 把 6585-7125 MHz 留給行動通信等國際頻譜動態",
+   "seen_where": "數發部委辦的「115年第七期國際頻譜趨勢月報」與「115年第二季頻譜發展趨勢季報」PDF（掛在 moda 計畫頁上，已抓到）",
+   "why_excluded": "這兩份報告封面與封底都印「本報告不必然代表數位發展部意見」，而且內文的參考資料指向 Policy Tracker、EC 等第三方追蹤站，不是原始官方文件。依 BRIEF 的一手來源規則，不把這些數字寫成事實；要寫必須直接抓 FCC／Ofcom／日本總務省的原始公告，而 Ofcom 在本容器被 403 擋住。"
+  },
+  {
+   "claim": "立法院業務概況報告寫的「6425-7125 GHz頻段」",
+   "seen_where": "數位發展部 115 年 4 月立法院第11屆第5會期交通委員會業務概況報告第 6 頁",
+   "why_excluded": "單位誤植（應為 MHz）。不照抄；若要寫 U6 的範圍，用「無線電頻率供應計畫（114年2月修正）」的 6425-7125 MHz。"
+  },
+  {
+   "claim": "「無線電頻率供應計畫」114年2月修正版是不是目前最新版",
+   "seen_where": "moda 數位通傳資源規劃專區「衛星頻段」2025-02-13 公告修正案",
+   "why_excluded": "數發部主管法規共用系統 law.moda.gov.tw 在本容器整站 Cloudflare 403，無法比對法規系統上的現行版本。間接佐證：數位通傳資源規劃專區三個子區（6GHz頻段最新 2023-08-25、衛星頻段最新 2025-02-13、無人載具）之後沒有更新的公告，行政公告列表第 1 頁（2026-06-04 至 2026-09-03）也沒有頻率供應計畫的修正。文章若引用，請寫成「114 年 2 月修正版」而不是「現行版」。"
+  },
+  {
+   "claim": "2024 年也辦過同系列的頻譜國際活動",
+   "seen_where": "2025-09-17 新聞稿寫「本次會議延續去年成果」",
+   "why_excluded": "沒有找到 2024 年那一則的官方新聞發布頁（列表分頁靠 JS，抓不到第 2 頁以後）。不寫「第幾屆」「連續第幾年」。"
+  },
+  {
+   "claim": "各家媒體對這場研討會的描述（聯合新聞網、自由財經、風傳媒、Yahoo 股市、報新聞等）",
+   "seen_where": "WebSearch 結果",
+   "why_excluded": "全部是媒體與整合站，只當線索用來確認官方頁存在，依 BRIEF 不得進 sources、不得成為事實。實際比對後，媒體標題與數發部原文一致，沒有額外的官方資訊。"
+  },
+  {
+   "claim": "ITU 會員名錄查詢頁上的 SG 5 正副主席完整名單",
+   "seen_where": "ITU SG 5 頁面上的 gensel90 連結",
+   "why_excluded": "該連結回的是 F5 存取政策閘道頁，不是名單資料。改用 ITU 官方刊物《ITU-R RADIOCOMMUNICATION STUDY GROUPS - 2025》確認 SG 5 主席為 Kyu-Jin WEE。"
+  }
+ ],
+ "overlaps_existing_article": "目前 apps/api/app/guides/content/ 底下完全沒有 tech-news-* 內容包（只有 40 篇 ai-news-*），所以這一篇不會和既有文章重複；相對地，tech.md 要求的「本垂直的索引」連結在動筆時可能還不存在，撰稿代理必須先確認索引 slug 是否已建立，不要自己編一個網址。最近的既有題目是 ai-news-nvidia-rubin-20260105（硬體）與 ai-news-siri-ai-ios-27-20260914（裝置上的 AI），兩者都不碰電信與頻譜，不構成重複。真正要切清楚的是同批次的 tech-news-taiwan-sovereign-ai-corpus-20260915：那一篇也是數發部、也在 9 月，但主題是主權 AI 語料庫與資料政策；分工方式是——語料庫那篇寫『資料』，這篇寫『頻譜與電信制度』，兩篇互相當作第二個 link（相關新聞）。這篇不要寫 AI 模型能力，只在談 6G AI-native 架構時引述葉寧的說法。",
+ "editorial_brief": "讀者是會看國際科技新聞、但沒有電信背景的臺灣一般使用者。這篇的角色是把一場很容易被誤讀成『政策發布』的活動，還原成它實際的份量：2026 年 9 月 10 日數發部辦了一場國際研討會，請來 ITU-R 第5研究組主席與四位頻譜主管機關／產業組織的人，談 6G 的地空網路整合與 AI 帶來的頻譜需求——研討會結束後，臺灣的頻譜制度一個字都沒有改。文章的主軸應該是『研討 ≠ 決定』，並用官方文件把這條界線畫出來：新聞稿本身連一個頻段都沒提；而數發部真正在做的，是資源管理司底下的「6G 地空整合頻譜規劃計畫」，它自述目標是 6G 地空整合頻譜釋出與 4G 屆期頻譜重耕釋出；現行「無線電頻率供應計畫」（114年2月修正）把 6425-7125 MHz 列為全國可用的『測試實驗頻率』而不是商用頻段，而三組合計 280 MHz 的 4G 頻段執照期限到民國 119 年（2030 年）——正好撞上葉寧說的『全球 6G 預計 2030 年起逐步商轉』。這個時間上的巧合是全篇最有價值、也最能讓讀者記住的角度，而且每一個數字都有官方文件可指。五個小節建議：(1) 9/10 那天發生了什麼、誰說了什麼；(2) 研討會不是政策——用供應計畫的『短期／中期／長期』定義說明什麼叫已排程、什麼叫還在觀察，這一節結尾放表格（欄位建議：頻段／現況／執照到期年，4-6 列，儲存格要短）；(3) 地空整合與 AI-native 到底在講什麼，這一節結尾放圖解；(4) 2030 這個數字的兩層意思（全球商轉預期 vs 臺灣 4G 執照屆期）；(5) 一般使用者現在會不會有感——答案是不會，6G 手機、資費、涵蓋都還沒有任何官方資訊，這一節要明講官方未說明的項目。生活情境如果要寫（例如出海、離島、山區沒有訊號時靠衛星補位），必須標明是編輯設計的例子，不能寫成數發部的規劃。callout 放一句提醒：研討會的發言是方向，不是承諾，看到『臺灣 2030 上 6G』這種標題要回頭找官方文件。全篇不做任何購買或升級建議，不評論哪家電信比較好，也不預測釋照結果。",
+ "must_not_write": [
+  "不可寫成「臺灣宣布 6G 頻譜政策」「數發部公布 6G 時程」「數發部拍板」——9/10 只是辦了一場研討會，沒有任何決定。",
+  "不可寫任何頻段是「臺灣 6G 要用的頻段」。9/10 新聞稿一個頻段都沒提；6425-7125 MHz 在供應計畫裡的身分是『測試實驗網路之用』。",
+  "不可把「2030 年起逐步商轉」寫成臺灣的目標或 ITU 的官方時程，必須寫成葉寧／數發部的說法。",
+  "不可照抄立法院報告的「6425-7125 GHz」；那是官方文件的單位誤植，要寫 MHz。",
+  "不可寫研討會的地點、天數、場次、出席人數、議程題目——官方完全沒說。",
+  "不可寫國內有哪些電信業者、學者或機關參加；新聞稿沒有點名任何國內與會者。",
+  "不可把 Ofcom 的 Chris Woolford、GSMA 的 Stuart Cooke、NERA 的 Hans-Martin Ihle 的頭銜寫成事實；這三個頭銜只有數發部一個來源，其中 NERA 官網寫的是 Managing Director。",
+  "不可把 NERA 寫成「美國國家經濟研究協會」；它是私人經濟顧問公司，用英文簡稱 NERA 就好。",
+  "不可引用數發部委辦的「國際頻譜趨勢月報／季報」裡的國際數字（日本 26 GHz 拍賣金額、FCC C 頻段、Ofcom 6 GHz 分區等）當事實；那些報告印著「本報告不必然代表數位發展部意見」且轉引第三方追蹤站。",
+  "不可引用任何媒體（聯合新聞網、自由財經、風傳媒、Yahoo、報新聞等）作為來源或事實依據。",
+  "不可寫「我們試用」「本站實測」——這是政策題，沒有任何可實測的東西。",
+  "不可給購買或升級建議（tech.md 明文禁止），也不要寫「現在該不該換 5G 方案」。",
+  "不可加投資免責 callout（科技垂直不帶 finance 主題）。",
+  "不可自行編造 ITU 文件編號、議程項目編號或法規條號；WRC-27 的那組研究頻段若要寫，ITU 官方刊物寫的是 agenda item 1.10 與 Resolution 256 (WRC-23)，頻段是 4 400-4 800 MHz、7 125-8 400 MHz 及 14.8-15.35 GHz。",
+  "不可宣稱這篇新聞有官方英文版（/en 的對應頁是 404）。"
+ ],
+ "corrections_to_candidate_list": [
+  "線索給的 https://moda.gov.tw/press/press-releases/372 是新聞發布的**列表頁**，不是這篇文章。真正的文章網址是 https://moda.gov.tw/press/press-releases/20612。列表頁每頁只有 15 筆而且會隨新稿滾動，絕對不能當成 sources 裡的一條。",
+  "candidates-tech-and-ai.md 的 T4 只把這則列在四列表格裡，沒有任何查證過的內容，並且建議改寫主權 AI 語料庫那條線；這次 T4b 指定的就是表格裡的 6G 研討會那一列。表格裡的標題與官方 h1 逐字相符（中間是半形空格，不是全形空白），可以直接沿用。",
+  "候選清單的「台灣 NCC ncc.gov.tw 擋在安全驗證後」那一列成立，但要補三個同樣被 Cloudflare 擋住的官方站，這次實測到的：law.moda.gov.tw（數發部主管法規共用系統，LawContent 與 Download 都 403）、www.ofcom.org.uk（403）、www.gsma.com（403）。",
+  "候選清單沒有記到的可用管道：moda.gov.tw 本站對 curl 回 200；moda 的附件走 https://www-api.moda.gov.tw/File/Get/moda/zh-tw/<id>，回 200 PDF，真正的檔名要從 content-disposition 解 URL 編碼才看得到（頁面 HTML 上沒有檔名文字）；www.itu.int 的網頁與 dms_pub PDF 都回 200，但 www.itu.int/online/mm/scripts/... 的會員名錄查詢回的是 F5 登入閘道頁，不是資料。",
+  "容器環境要補一筆：python3 的 cryptography 套件是壞的（ModuleNotFoundError: _cffi_backend 後接 pyo3 panic），pypdf 會跟著載入失敗。解法是在 PYTHONPATH 前面放一個 cryptography/__init__.py 內容為 raise ImportError 的假套件，pypdf 就會走 fallback 正常載入。下一個要讀官方 PDF 的代理不必再花時間重新發現這件事。"
+ ]
+}

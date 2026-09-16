@@ -1,0 +1,726 @@
+{
+ "slug": "crypto-news-genius-act-occ-20260302",
+ "event_date": "2026-03-02",
+ "checked_on": "2026-09-16",
+ "title": "（撰稿者定）美國 OCC 提出 GENIUS Act 穩定幣發行規則草案",
+ "sourcing_verdict": "full",
+ "event_date_basis": "2026-03-02 is the Federal Register publication date of the notice of proposed rulemaking, cited as 91 FR 10202 (Vol. 91, No. 40, Monday, March 2, 2026), pages 10202-10303. The federalregister API returns publication_date 2026-03-02, type 'Proposed Rule', action 'Notice of proposed rulemaking.', effective_on null and signing_date null. There is therefore no separate OCC signing/announcement date recorded in the document or its Federal Register metadata, and no effective date: a proposed rule has none. The public_inspection_pdf_url carries a cache-buster query string (?1772199923) that decodes to 2026-02-27T13:45:23Z, which would be the pre-publication public-inspection posting time, but I could not confirm that from any official statement and have excluded it. occ.gov, which would carry any OCC news release announcing the proposal, is blocked in this container, so an announcement date earlier than 2026-03-02 could not be checked. Use 2026-03-02 (Federal Register publication) as the event date; the comment period closed 2026-05-01.",
+ "sourcing_notes": "WORKING: federalregister.gov API and full-text endpoints returned HTTP 200 and real content. I fetched and read the complete 102-page document text (800,323 bytes raw, 13,007 lines) from https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt, plus the document metadata JSON at https://www.federalregister.gov/api/v1/documents/2026-04089.json, plus three federalregister API searches (by docket_id OCC-2025-0372, by regulation_id_number 1557-AF41, and by term 'GENIUS Act' from 2026-03-02 onwards). uscode.house.gov returned HTTP 200 and I read 12 U.S.C. 5901 including its Effective Date and Short Title notes. govinfo.gov returned HTTP 200 for the official GPO PDF (695,807 bytes) but I did not read its body, so it is not listed as a source. BLOCKED, verified today: www.occ.gov and occ.treas.gov return 'HTTP/1.1 302 Security Redirect' to https://www.occ.treas.gov/ for every path I tried (news release index, a 2025 news release, RSS at /rss/occ_newsreleases.xml, topics pages), with and without a cookie jar, so an OCC news release or the application forms referenced in the rule could not be read; www.regulations.gov returns HTTP 403, so the docket itself could not be read; www.congress.gov returns HTTP 403. NEW BLOCKS TO RECORD FOR LATER RUNS: occ.gov / occ.treas.gov 302 security-redirect loop; regulations.gov 403; congress.gov 403. Everything recorded below comes from the Federal Register text of the rule itself or from the official US Code, both of which I read in full for the relevant parts.",
+ "sources": [
+  {
+   "title": "Implementing the Guiding and Establishing National Innovation for U.S. Stablecoins Act for the Issuance of Stablecoins by Entities Subject to the Jurisdiction of the Office of the Comptroller of the Currency",
+   "url": "https://www.federalregister.gov/documents/2026/03/02/2026-04089/implementing-the-guiding-and-establishing-national-innovation-for-us-stablecoins-act-for-the",
+   "publisher": "Office of the Comptroller of the Currency, Department of the Treasury (Federal Register)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Federal Register, Volume 91 Issue 40 (Monday, March 2, 2026) - full text of FR Doc. 2026-04089",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "publisher": "Office of the Federal Register / U.S. Government Publishing Office",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "12 U.S.C. 5901 - Definitions (GENIUS Act), with Effective Date and Short Title notes",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5901&num=0&edition=prelim",
+   "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "The document is a Notice of proposed rulemaking (Federal Register document type 'Proposed Rule'), NOT a final rule. Its ACTION line reads exactly 'Notice of proposed rulemaking.'",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ACTION: Notice of proposed rulemaking."
+  },
+  {
+   "fact": "Issuing agency is the Office of the Comptroller of the Currency (OCC), Treasury. Federal Register lists the agencies as Treasury Department (parent) and Comptroller of the Currency.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AGENCY: Office of the Comptroller of the Currency, Treasury."
+  },
+  {
+   "fact": "Federal Register publication date 2026-03-02 (Volume 91, Number 40, Monday, March 2, 2026); citation 91 FR 10202; pages 10202 to 10303; page_length 102.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Federal Register Volume 91, Number 40 (Monday, March 2, 2026)] [Proposed Rules] [Pages 10202-10303]"
+  },
+  {
+   "fact": "Document number 2026-04089; Docket ID OCC-2025-0372; RIN 1557-AF41.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Docket ID OCC-2025-0372]\nRIN 1557-AF41"
+  },
+  {
+   "fact": "The proposal would amend 12 CFR parts 3, 6, 8, 15 and 19, creating a new part 15 for payment stablecoins.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "12 CFR Parts 3, 6, 8, 15, and 19"
+  },
+  {
+   "fact": "Comments were due by May 1, 2026. The DATES line reads 'Comments must be received by May 1, 2026.' and the Federal Register metadata field comments_close_on is 2026-05-01.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "DATES: Comments must be received by May 1, 2026."
+  },
+  {
+   "fact": "Federal Register metadata field effective_on is null and signing_date is null for this document - a proposed rule has no effective date.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Comments could be submitted through Regulations.gov under Docket ID OCC-2025-0372, or by mail / hand delivery to Chief Counsel's Office, Attention: Comment Processing, Office of the Comptroller of the Currency, 400 7th Street SW, Suite 1E-216, Washington, DC 20219. The OCC states it will publish comments on Regulations.gov without change, including personal information, and warns commenters not to include confidential information.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Section III of the proposal poses 211 numbered questions for public comment (Question 1 through Question 211).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "As of 2026-09-16 the Federal Register carries only one document in docket OCC-2025-0372 and only one document under RIN 1557-AF41: this 2026-03-02 proposed rule. No extension of the comment period and no final rule had been published.",
+   "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bregulation_id_number%5D=1557-AF41&order=newest&per_page=20",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Federal Register's record of the Regulations.gov docket shows comments_count 257,601 and supporting_documents_count 26 for Docket ID OCC-2025-0372, with checked_regulationsdotgov_at 2026-07-30T22:55:04Z. This is the Federal Register's cached count, not an OCC statement, and regulations.gov itself returned HTTP 403 here.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The docket's supporting documents include OCC summaries of meetings with outside parties after the comment period closed, e.g. 'Summary of June 24, 2026, meeting with Coinbase' (OCC-2025-0372-0355) and 'Summary of May 22, 2026, meeting with Circle' (OCC-2025-0372-0350).",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The GENIUS Act is Public Law 119-27, enacted July 18, 2025, 139 Stat. 419, codified at 12 U.S.C. 5901 et seq.; the short title 'Guiding and Establishing National Innovation for U.S. Stablecoins Act' or 'GENIUS Act' is set by section 1 of the Act.",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5901&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Pub. L. 119–27, §1, July 18, 2025, 139 Stat. 419"
+  },
+  {
+   "fact": "The GENIUS Act's own effective date is set by statute as the earlier of (1) 18 months after the date of enactment (July 18, 2025), or (2) 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the Act.",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5901&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"(1) the date that is 18 months after the date of enactment of this Act [July 18, 2025]; or \"(2) the date that is 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing this Act.\""
+  },
+  {
+   "fact": "The OCC states the same effective-date rule in the proposal's Background section.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The GENIUS Act's effective date is the earlier of 18 months after the enactment date (July 18, 2025) or 120 days after the primary Federal payment stablecoin regulators issue final regulations implementing the Act."
+  },
+  {
+   "fact": "The Act generally prohibits any person other than a permitted payment stablecoin issuer from issuing a payment stablecoin in the United States. The separate prohibition on digital asset service providers offering or selling payment stablecoins that are not issued by permitted payment stablecoin issuers begins on July 18, 2028 (12 U.S.C. 5902(b)(1)); the parallel prohibition for foreign issuers takes effect on the GENIUS Act's effective date (12 U.S.C. 5902(b)(2)).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The prohibition against digital asset service providers offering or selling payment stablecoins that are not issued by permitted payment stablecoin issuers begins on July 18, 2028."
+  },
+  {
+   "fact": "'Payment stablecoin' is defined in the proposed rule text as a digital asset that is or is designed to be used as a means of payment or settlement and whose issuer is obligated to convert, redeem or repurchase it for a fixed amount of monetary value and represents or creates the reasonable expectation that it will maintain a stable value; it excludes a national currency, a deposit (including a deposit recorded using distributed ledger technology) and a security.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "'Outstanding issuance value' is defined in the proposed rule text as the total consolidated par value of all of a permitted payment stablecoin issuer's payment stablecoins.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Outstanding issuance value means the total consolidated par value of all of a permitted payment stablecoin issuer's payment stablecoins."
+  },
+  {
+   "fact": "Proposed Sec. 15.1(b) would apply part 15 to activities related to payment stablecoins and certain custody activities of: (1) national banks and their subsidiaries; (2) Federal savings associations and their subsidiaries; (3) Federal branches and their subsidiaries; (4) foreign payment stablecoin issuers; (5) nonbank entities that seek to be or are approved as Federal qualified payment stablecoin issuers; and (6) State qualified payment stablecoin issuers for whom the OCC has regulatory or enforcement authority under proposed Sec. 15.15 or Sec. 15.16.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC states that an insured national bank or a Federal savings association would not be approved to issue a payment stablecoin directly; it must do so through a subsidiary.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the OCC would not approve an insured national bank or a Federal savings association to issue a payment stablecoin directly (as opposed to through a subsidiary)"
+  },
+  {
+   "fact": "Proposed Sec. 15.30(a) would require prior OCC approval before issuing payment stablecoins: (a)(1) any insured national bank, Federal savings association or insured Federal branch seeking to issue through a subsidiary must file an application and receive prior approval; (a)(2) any nonbank entity, uninsured national bank or uninsured Federal branch seeking to issue as a Federal qualified payment stablecoin issuer must file an application and receive prior approval.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.30(b)(1) would require the applicant to submit all information required by an application form to be made available at www.occ.gov; each director, executive officer and principal shareholder (of the applicant, or of the subsidiary where the applicant is a bank) must submit the information prescribed in the Interagency Biographical and Financial Report; and the applicant must certify that the filing and supporting material contain no material misrepresentations or omissions, with a warning of criminal penalties under 18 U.S.C. 1001.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "'Principal shareholder' would be defined as a person who directly or indirectly, or acting in concert with others, or together with immediate family members, will own, control or hold 10 percent or more of the voting stock of the permitted payment stablecoin issuer or applicant.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "a person who directly or indirectly or acting in concert with one or more persons, or together with members of their immediate family, will own, control, or hold 10 percent or more of the voting stock of the permitted payment stablecoin issuer or applicant"
+  },
+  {
+   "fact": "Proposed Sec. 15.30(b)(4) would let the OCC examine or investigate facts relating to an application, and would let the OCC collect fingerprints of the directors, executive officers and principal shareholders for submission to the Federal Bureau of Investigation for a national criminal history background check.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Application timing: the OCC will notify an applicant not later than 30 days after receipt of an application whether it is substantially complete, and not later than 30 days after receipt of additional information whether it is then substantially complete. A substantially complete application is deemed approved as of the 120th day after the OCC receives it, unless the OCC denies it. The OCC proposes that the 120 days runs from the date the OCC receives the information that makes the application substantially complete, not from initial filing.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.30(c) sets four review factors: (1) the applicant's (or subsidiary's) ability, based on financial condition and resources, to meet the subpart B issuance requirements; (2) whether any officer or director has been convicted of a felony offense involving insider trading, embezzlement, cybercrime, money laundering, financing of terrorism or financial fraud; (3) the competence, experience and integrity of officers, directors and principal shareholders of the applicant, its subsidiaries and parent companies, including compliance record and ability to fulfil OCC-imposed commitments or conditions; and (4) whether the applicant's redemption policy meets the standards of Sec. 15.12. The OCC seeks comment on whether to add further factors.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Denial and appeal: the OCC may deny a substantially complete application only if the proposed activities would be unsafe or unsound based on the Sec. 15.30(c) factors. Written notice of denial must be provided within 30 days of denial, explaining the denial with specificity including material shortcomings and actionable recommendations. The applicant may request a written or oral hearing within 30 days of receiving the denial notice; if no timely request is made the OCC notifies the applicant within 10 days that the denial is final; if a timely request is made the OCC notifies the applicant of a hearing time and place within 30 days; the Comptroller or an authorized delegate conducts a de novo review and issues a written final determination within 60 days of the hearing. Denial does not bar a subsequent application.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.30(f) would implement the GENIUS Act section 5(f) safe harbor: an applicant with a pending substantially complete application on or before the Act's effective date may request in writing that the OCC waive the requirements of section 4 of the Act, and the OCC may grant a waiver for up to 12 months beginning on the Act's effective date if it finds the waiver to be in the public interest or that extraordinary circumstances justify it. The OCC may still deny the application even if it grants a waiver.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.30(g) would let the OCC nullify an approval if there was a material misrepresentation or omission in the application or supporting materials, if the decision was contrary to law or regulation, or if it was granted due to clerical or administrative error or a material mistake of law or fact. The OCC notes it rarely nullifies decisions under the parallel provision in 12 CFR 5.13 and only in extraordinary circumstances.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.33(a) would let the OCC revoke approval of a permitted payment stablecoin issuer's application if the issuer does not submit the AML/sanctions certification required by proposed Sec. 15.14(k), after notice and an opportunity for a hearing under the OCC's Rules of Practice and Procedure in 12 CFR part 19, with expedited action without a hearing possible where necessary to protect the public interest.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Foreign payment stablecoin issuers are exempt from the section 3 prohibition only if all four statutory conditions are met: the issuer is regulated by a foreign regulator whose regime the Secretary of the Treasury has determined comparable to the GENIUS Act; the issuer is registered with the OCC; the issuer holds reserves in a United States financial institution sufficient to meet the demands of United States customers (unless a Treasury reciprocal arrangement permits otherwise); and the issuer's home country is not under comprehensive US economic sanctions and is not a jurisdiction of primary money laundering concern.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.32(b)(4): a foreign payment stablecoin issuer's registration application is deemed approved as of the 30th day after the OCC receives the filing, unless the OCC notifies the filer in writing that it has been rejected.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.32(d) would require registered foreign issuers to give the OCC prompt and complete access to officers, directors, employees, agents and all relevant books and records in a form and location accessible to the OCC in the United States; to provide that information in English; to hold sufficient reserves in United States financial institutions; to file a monthly report to the OCC of total outstanding payment stablecoins held by United States customers and the amount, composition, geographic location and average tenor of reserves; to notify the OCC promptly on any day it fails the reserve requirement; and to consent to the jurisdiction of the Federal courts of the United States and of all United States government agencies.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.31(d) would have the OCC publish on www.occ.gov a list of foreign payment stablecoin issuers whose registrations the OCC has approved.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.33(b): the OCC, in consultation with the Secretary of the Treasury, may rescind a foreign issuer's registration approval; the decision is effective upon publication in the Federal Register unless the OCC specifies otherwise.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(a)(1) would require reserve assets that are identifiable; segregated from and not commingled with other assets of the issuer; at all times have a total fair value that equals or exceeds the issuer's outstanding issuance value; and are either held directly by the issuer or in the custody of an eligible financial institution.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The one-to-one test compares fair value of reserves to the par value of outstanding stablecoins, so that if a stablecoin de-pegs in the secondary market the issuer must still hold reserves whose fair value equals or exceeds par.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(b) would limit reserve assets exclusively to eight categories: (1) United States coins and currency or money credited to an account with a Federal Reserve Bank; (2) deposits or insured shares payable upon demand at an insured depository institution; (3) Treasury bills, notes or bonds with a remaining maturity of 93 days or less; (4) money received under repurchase agreements with no longer than overnight maturity backed by Treasury bills maturing in 93 days or less; (5) reverse repurchase agreements with no longer than overnight maturity collateralised by Treasuries, that are tri-party, centrally cleared through an SEC-registered clearing agency, or bilateral with a counterparty the issuer has determined adequately creditworthy even in severe market stress; (6) securities of a registered investment company or other registered Government money market fund invested solely in categories (1) to (5); (7) any other similarly liquid Federal Government-issued asset approved by the OCC; and (8) any of categories (1) to (3), (6) or (7) in tokenized form.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "A money market fund that invests in any other assets, including Treasury securities with a remaining maturity longer than 93 days, would not be eligible as a reserve asset.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A money market fund that invests in any other assets, including in Treasury securities with a remaining maturity longer than 93 days, would not be eligible to be held as a reserve asset."
+  },
+  {
+   "fact": "The OCC proposes two mutually exclusive drafting options for the diversification and concentration requirement in Sec. 15.11(c) and says only one will be selected in the final rule: Option A is a principles-based requirement with an optional quantitative safe harbor; Option B makes the same quantitative figures mandatory for all issuers.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the proposed rule includes two alternative options in proposed Sec. 15.11(c), only one of which would be selected in the final rule"
+  },
+  {
+   "fact": "The quantitative figures, identical under Option A's safe harbor and Option B's mandatory version, require an issuer on each business day to maintain: at least 10 percent of reserve assets as demand deposits, insured shares payable on demand, or money credited to an account with a Federal Reserve Bank; at least 30 percent as those assets plus amounts receivable and due unconditionally within five business days on pending sales, maturing reserve assets or other maturing transactions; no more than 40 percent of reserve assets at any one eligible financial institution; no more than 50 percent of the 10-percent daily-liquidity amount at any one eligible financial institution; and a weighted average maturity of no more than 20 days across the total stock of reserve assets.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC says the 10 percent daily-liquidity minimum 'would be in line with the largest 1-day redemption events experienced by stablecoin issuers' and that a 30 percent weekly-liquidity minimum 'would exceed the redemption volumes seen during these redemption runs'. These are OCC characterisations offered in support of the figures, and the OCC invites comment on alternative minimums.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(d) would require an issuer with an outstanding issuance value of $25 billion or more to maintain, on each business day, at least 0.5 percent of its reserve assets in the form of insured deposits or insured shares at an insured depository institution, up to a cap of $500 million.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(a)(3) would permit withdrawal of surplus reserve assets only once per month, upon publication of the monthly composition report, and only if the remaining reserves stay at or above the outstanding issuance value calculated on the day of withdrawal.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.10(c)(5) would prohibit pledging, rehypothecating or re-using reserve assets, directly or indirectly (including through a third-party custodian), with three exceptions: satisfying margin obligations in connection with permitted repo and reverse-repo reserves; satisfying obligations associated with standard custodial services; and creating liquidity to meet reasonable expectations of redemption requests by selling Treasury bills maturing in 93 days or less as purchased securities in repurchase agreements, provided the repo is cleared by an SEC-registered clearing agency or the issuer has prior OCC approval.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(g) sets automatic consequences for a reserve shortfall: the issuer must notify the OCC through its supervisory office on any day its reserve asset amount falls below the required minimum; it is immediately prohibited from issuing new payment stablecoins (except to move stablecoins between distributed ledgers without increasing net outstanding issuance value) until the shortfall is cured; and if it fails the requirement for 15 consecutive business days (extendable at the OCC's sole discretion) it must begin liquidating reserve assets and redeeming outstanding stablecoins and may not charge customers a redemption fee at any time during the liquidation.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Under proposed Sec. 15.11(g)(4) the OCC may require a compliance plan, and if it determines the issuer faces a significant risk of being unable to comply within a reasonable period, may order the issuer to initiate redemption of all outstanding payment stablecoins.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.12(b)(1)(i) would define 'timely' redemption as no later than two business days following the date of the requested redemption. The OCC describes this as an outer limit and says many issuers may choose a shorter timeframe.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.12(a)(5) would require an issuer to redeem any number greater than or equal to one payment stablecoin, subject to appropriate customer screening and onboarding, and to state any minimum redemption amount in its published redemption policy.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.12(c)(1) would extend the timely-redemption period to seven calendar days if the issuer faces redemption demands in excess of 10 percent of its outstanding issuance value in a single 24-hour period. The extension is non-discretionary; the issuer may redeem sooner only if the OCC determines it can do so in an orderly fashion through a fair and transparent process or otherwise notifies the issuer that the extension no longer applies. The issuer must notify the OCC through its supervisory office within 24 hours of crossing the 10 percent threshold.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.12(c)(5) would let the OCC extend the redemption period at its discretion if it determines the issuer poses a threat to safety and soundness or financial stability, or that an extension is otherwise in the public interest.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The redemption requirements apply only to redemption by the issuer (and entities acting on its behalf) and would not apply to secondary market trading.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The requirements of this section apply only to the redemption of a payment stablecoin by the permitted payment stablecoin issuer (and any entity acting on behalf of the permitted payment stablecoin issuer) and would not apply to secondary market trading."
+  },
+  {
+   "fact": "Proposed Sec. 15.12(d)(1) would require the issuer to disclose publicly, clearly and conspicuously, in plain language, in a format readily noticeable and understandable by customers and segregated from other information: the name of the issuer; that the issuer is the entity obligated to convert, redeem or repurchase the stablecoin for a fixed amount of monetary value; a link to the monthly reserve composition report; and all fees associated with purchasing or redeeming payment stablecoins. Fee changes require at least seven calendar days' prior notice to current customers, and the disclosures must appear on the issuer's website and in customer agreements.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Discretionary limitations on timely redemption could only be imposed by the OCC, or for a State qualified payment stablecoin issuer by the OCC, the Federal Reserve or the State payment stablecoin regulator - not by the issuer itself.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(e) would require the issuer to publish on its website, by noon on the last day of each month, the composition of its reserves as of noon on the last day of the previous month, in a format substantially similar to the OCC's Table 1 template, showing the total number of outstanding payment stablecoins and the amount (fair value) and composition of reserves including the average tenor and geographic location of custody of each category.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Table 1 monthly composition template has 16 numbered rows and columns for Amount (in thousands of U.S. Dollars), Geographic location and Average tenor, with separate rows for insured deposits, uninsured deposits, Treasuries, other OCC-approved Federal Government assets, money received under repurchase agreements, reverse repurchase agreements, registered investment company securities, tokenized reserves, total reserve assets, outstanding repurchase agreement liabilities, and total reserve assets net of those liabilities.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.11(f) would require, by noon on the last day of each month, that the previous month-end report be examined by a registered public accounting firm and that the examination report be published on the issuer's website at the same time as the month-end report; and would require the Chief Executive Officer and Chief Financial Officer (or equivalents) to submit a monthly certification of the report's accuracy to the OCC. Knowingly submitting a false certification carries the same criminal penalties as those in 18 U.S.C. 1350(c).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(l) would require an issuer with more than $50 billion in outstanding issuance value that is not subject to SEC reporting under section 13(a) or 15(d) of the Securities Exchange Act of 1934 to prepare an annual financial statement under GAAP disclosing related party transactions, have it audited by a registered public accounting firm under PCAOB standards, publish it on its website, and submit it to the OCC annually within 120 days of the end of its fiscal year, with a written notice of late filing required if it cannot file on time.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(h) would require every permitted payment stablecoin issuer to submit a confidential report to the OCC on a weekly basis, in a form to be made available at www.occ.gov, covering for each payment stablecoin it issues the blockchains it is listed on, outstanding issuance value, secondary market activity and price movement, redemption volume and times, detailed reserve asset information and other relevant information.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(i) would require a quarterly report of financial condition to the OCC within 30 days of the end of the prior quarter, in a standardized format, covering income statement, expenses, balance sheet, reserves, changes in equity, investments, capital, outstanding issuance value and assets under custody. It must carry a declaration by the Chief Financial Officer (or equivalent) that it is true and correct, attested by the signatures of the directors and senior management other than the declaring officer. The OCC states it intends to publish the information in the quarterly report.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(k) would require a permitted payment stablecoin issuer to submit, not later than 180 days after approval of its application and annually thereafter, a certification by its board of directors that it has implemented anti-money laundering and economic sanctions compliance programs reasonably designed to prevent it from facilitating money laundering, in particular for cartels and designated foreign terrorist organizations, and the financing of terrorist activities.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(a) would have the OCC conduct a full-scope examination of every supervised permitted payment stablecoin issuer at least once during each 12-month period. Proposed Sec. 15.14(d) would allow an 18- to 36-month cycle, at the OCC's sole discretion, only if all four conditions hold: the issuer is not subject to a formal enforcement proceeding or order; no person acquired control during the preceding 12-month period; the issuer has an outstanding issuance value of less than $1 billion or less than $25 billion in total monthly trading volume; and the issuer complies with all reserve requirements in Sec. 15.11 and the reporting requirements in Sec. 15.14. Proposed Sec. 15.14(e) preserves the OCC's ability to examine as frequently as it deems necessary, including limited-scope examinations.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(b), (c), (f) and (g) would require issuers to grant OCC examiners prompt and complete access on request to all officers, directors, employees, agents and relevant books, records or documents of any type - expressly including information retained on distributed ledgers - allow examinations on site or remotely, maintain a complete set of books and records in English, and implement a records retention policy.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.14(m) would require a person seeking to acquire control of a permitted payment stablecoin issuer to follow 12 CFR 5.50 as if the issuer were a national bank, which generally means 60 days' prior notice to the OCC.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.13 sets principles-based operational, compliance and information technology risk management standards adapted from 12 CFR part 30, appendices A and B, covering internal controls and information systems, internal audit, interest rate risk management with periodic reporting to management and the board, prudent asset growth, earnings monitoring, and insider and affiliate transactions.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.13(b) would require a comprehensive written information security risk and control framework approved by the board or an appropriate board committee, appointment of a qualified Information Technology and Security Officer, asset and data inventory and classification, processes to validate that key IT systems and controls including smart contracts operate as intended, periodic independent testing, an incident identification and response program, safeguards for nonpublic personal information, secure handling of digital assets including private key management, backup and recovery, and measures to ensure continuity of operations.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.13(b)(7) would require an issuer that becomes aware of unauthorized access to sensitive customer information, including a customer's private key, to conduct a reasonable investigation and, if misuse has occurred or is reasonably possible, to notify the affected customers and the OCC as soon as possible; customer notice must be delayed only on a written request from a law enforcement agency that notification would interfere with a criminal investigation. Where the issuer cannot identify which customers' information was accessed, it must notify all customers in the affected group.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Bank Secrecy Act and sanctions compliance standards are expressly excluded from this proposal and will be addressed in a different proposed rule.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Bank Secrecy Act and sanctions compliance requirements will be addressed in a different proposed rule."
+  },
+  {
+   "fact": "Proposed Sec. 15.10(c)(4) would prohibit a permitted payment stablecoin issuer from paying the holder of any payment stablecoin any form of interest or yield, whether in cash, tokens or other consideration, solely in connection with the holding, use or retention of the stablecoin. The OCC proposes a rebuttable presumption that an arrangement is a prohibited yield payment where the issuer has an arrangement to pay interest or yield to an affiliate or related third party and that affiliate or related third party has an arrangement to pay interest or yield to a holder of the issuer's stablecoin. The issuer may rebut the presumption with written materials.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC states the yield prohibition is not intended to prevent a merchant independently offering a discount to a stablecoin holder for using payment stablecoins, nor to prevent an issuer sharing profits with a non-affiliate partner in a white-label arrangement.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.10(c)(1) and (2) would prohibit using any combination of terms relating to the United States Government, including 'United States', 'United States Government' and 'USG', in the name of a payment stablecoin (abbreviations relating to the pegged currency such as 'USD' are not covered), and prohibit marketing a payment stablecoin so that a reasonable person would perceive it to be legal tender, issued by the United States, or guaranteed or approved by the United States Government. Proposed Sec. 15.10(c)(3) would prohibit representing, directly or by implication, that payment stablecoins are backed by the full faith and credit of the United States, guaranteed by the United States Government, or subject to Federal deposit insurance or Federal share insurance.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC states that misrepresentations by an issuer cannot be cured by a general disclaimer.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The OCC notes that misrepresentations by a permitted payment stablecoin issuer cannot be cured by a general disclaimer"
+  },
+  {
+   "fact": "The OCC is requesting comment on, but is not proposing, a prohibition on an issuer issuing more than one brand of payment stablecoin, and on whether to prohibit unsafe or unsound practices explicitly.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.15 would implement the GENIUS Act transition for a nonbank State qualified payment stablecoin issuer that crosses $10 billion in outstanding issuance value: written notice to the OCC within five calendar days of reaching the threshold; a capital analysis to the OCC within 270 days; a waiver request, if any, within 240 days; and transition to the Federal framework within 360 days or cease issuing new payment stablecoins on a net basis until it falls back under $10 billion. An issuer that transitions must undergo an initial examination at the OCC's request or no later than six months after it notifies the OCC of compliance.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.15(d)(2) would apply the statute's four exclusive waiver criteria for remaining solely State-supervised: the capital maintained by the issuer; its past operations and examination history; the State regulator's experience supervising payment stablecoin and digital asset activities; and the State regulator's supervisory framework including regulations and guidance.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.15(d)(3) would presumptively approve a waiver request if the State payment stablecoin regulator had established a prudential regulatory regime for the supervision of digital assets or payment stablecoins as of April 19, 2025 that has been certified under section 4(c) of the Act, and has approved one or more issuers. The presumption is lost if the OCC finds by clear and convincing evidence that the issuer does not substantially meet the waiver criteria or poses significant safety and soundness risks to the financial system of the United States.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed subpart C would define 'covered assets' to include payment stablecoin reserves, any payment stablecoin used as collateral, the private keys used to issue payment stablecoins, and cash or other property of a permitted payment stablecoin issuer received by the custodian in the course of providing custodial or safekeeping services.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.21 would require a covered custodian to account separately for each covered customer's covered assets, treat them as belonging to that customer and not as the custodian's property, take appropriate steps including written policies, procedures and internal controls to protect them from the claims of the custodian's and any sub-custodian's creditors, and maintain possession or control of directly held covered assets including the associated private keys. Control over a tokenized asset means the custodian can reasonably demonstrate that no other party, including the customer, can transfer it on a distributed ledger without the custodian's consent.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.22 would allow a covered custodian to commingle covered assets of multiple covered customers in one or more omnibus accounts, provided its protective steps are adequate for safe and sound use of omnibus accounts and such use is consistent with applicable law.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.23 would confirm that subpart C does not apply to a national bank, Federal savings association, Federal branch or permitted payment stablecoin issuer solely because it provides hardware or software to facilitate a person's own self-custody of payment stablecoins or private keys, unless it controls or holds itself out as controlling those assets or as providing safekeeping or custodial services.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed subpart E would limit regulatory capital for permitted payment stablecoin issuers to two elements, common equity tier 1 capital and additional tier 1 capital. The OCC expressly does not propose tier 2 capital elements, does not propose a specific ratio between capital elements or a minimum amount of any single element, and does not propose specific deductions from regulatory capital.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.41(a)(1) would set a de novo minimum capital requirement equal to the greater of the amount specified in the issuer's licensing or chartering conditions (or, for a transitioning State qualified issuer, the amount set under Sec. 15.15(b)(3)(ii)) and $5 million. A de novo issuer is one that received OCC approval, or transitioned to the Federal framework, within the prior three years, and must hold the minimum for 36 months unless the OCC specifies a shorter or longer period.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC states that its experience chartering de novo national trust banks seeking to provide stablecoin programs determined that minimum capital amounts ranging from $6.05 million to $25 million would be necessary to establish a viable business model, citing OCC News Release 2025-125, 'OCC Announces Conditional Approvals for Five National Trust Bank Charter Applications' (December 12, 2025).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 15.41(b) would require an operational backstop of assets equal to 12 months of total expenses, calculated each quarter from the four most recent quarterly reports, held only in United States coins and currency or money credited to an account with a Federal Reserve Bank, in fully insured demand deposits or insured shares at a U.S. insured depository institution, or in U.S. Treasuries with a remaining maturity of 93 days or less, and separately identified from reserve assets and other assets on reports filed under Sec. 15.14.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "If an issuer fails its minimum capital or backstop requirement at the end of a quarter it must make efforts to cure by the end of the following quarter and is restricted from issuing new stablecoins (except to move stablecoins between distributed ledgers without increasing net outstanding issuance value) until it does. If it fails for two consecutive quarters it must begin liquidating reserve assets and redeeming outstanding stablecoins at the start of the following month, may not issue any new payment stablecoins thereafter, and may not charge customers a redemption fee.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC describes but expressly does NOT propose several variable capital components: an operational-risk charge of 1.0 percent of reserves or outstanding issuance value up to $10 billion, 0.40 percent between $10 billion and $50 billion and 0.20 percent above $50 billion; a price and interest-rate-risk charge calibrated on the 12 CFR 3.37 repo-style haircuts (0.5 percent for Treasuries, or more granular 0.05 to 0.25 percent); a 0.40 percent charge on uninsured deposits; and a charge based on assets under custody. All are presented as alternatives on which comment is sought.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed amendments to 12 CFR part 8 would create subpart A (national banks, Federal savings associations, Federal branches and agencies) and a new subpart B for institutions newly subject to OCC jurisdiction under the GENIUS Act - nonbank Federal qualified payment stablecoin issuers, certain foreign payment stablecoin issuers and certain State qualified payment stablecoin issuers. Assessments remain semiannual, with fees due by March 31 and September 30.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Under proposed Sec. 8.10 the OCC would apply its existing asset-based bracket formula but reduce the amount attributable to minimum stablecoin reserve assets by 35 percent, or by another percentage up to 55 percent that the OCC may deem appropriate, published annually in the Notice of Fees. Because many of these institutions do not file Call Reports, assessments would be based on the total consolidated assets in the most recent quarterly report filed under proposed Sec. 15.14(i).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 8.10(b) and Sec. 8.11(b) would apply a surcharge multiplier of 1.5 to the semiannual assessment of an institution found to require rehabilitation at its most recent examination, and 2.0 for an institution found to have material financial or operational deficiencies threatening its viability.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed Sec. 8.11 would impose an additional assessment on institutions for which 50 percent or more of income is derived from GENIUS Act custodial or safekeeping activities, modelled on existing Sec. 8.6(c), with a minimum fee associated with the first $1 billion of custodial assets and an additional amount on assets above $1 billion.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Paperwork Reduction Act: the OCC is seeking a new OMB control number (listed as 1557-NEW) and estimates total annual burden of 61,573 hours, comprising 35,468 hours for initial setup and 26,105 hours for ongoing compliance. Most line items in the burden tables use 29 estimated respondents.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Regulatory Flexibility Act: the OCC states it supervises 997 institutions (national banks, Federal savings associations, and branches or agencies of foreign banks) based on data accessed on February 20, 2026, of which approximately 609 are small entities, and that 30 OCC-supervised small entities would constitute a substantial number. The OCC does not expect the proposed rule to have a significant impact on a substantial number of small entities.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Unfunded Mandates Reform Act: the OCC determined the proposed rule may result in an expenditure of $187 million or more annually by the private sector (the inflation-adjusted equivalent of the $100 million UMRA threshold), and prepared an impact analysis.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC states the proposal, if finalized as proposed, is expected to be a deregulatory action under Executive Order 14192, 'Unleashing Prosperity Through Deregulation'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "For its economic analysis the OCC assumes that in 2026 there will be 12 OCC-bank-affiliated permitted payment stablecoin issuers and 12 non-OCC-bank-affiliated permitted payment stablecoin issuers, 24 in total. This 24 does not match the 29 respondents used in most rows of the Paperwork Reduction Act burden tables in the same document.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC estimates the cost of equity capital in the banking industry at 8.37 percent, calculates the aggregate de novo capital requirement as 24 times $5 million = $120 million at a cost of roughly $10.0 million, estimates the operational backstop cost at $167.4 million, and after subtracting an assumed regulatory baseline arrives at a net capital cost of $8 million.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC estimates the incremental cost of moving from quarterly to monthly certification of reserve reports by a public accounting firm at $40,000 per issuer per year, total reserve-requirement costs of $555,456 in 2026, weekly reporting at one hour per week at $131.00 per hour ($81,744 a year across 12 issuers), examination costs of $131,000 per issuer a year, and total miscellaneous administrative and compliance costs of $1,653,744 a year.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The OCC estimates that the proposed assessment schedule will save permitted payment stablecoin issuers $11.9 million in assessment fees in 2026, and that issuers would save $1.720 million on a net basis in 2026, largely because of assessment relief.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "The document does NOT set an effective date or a compliance date for the OCC's own rule. It is a proposed rule; the Federal Register metadata field effective_on is null. Nothing in it is in force. The article must say so in the first paragraph.",
+  "The OCC does NOT say which of Option A (principles-based with an optional safe harbor) or Option B (mandatory quantitative requirements) it will adopt for the reserve diversification and concentration requirement in Sec. 15.11(c). The document says only one will be selected in the final rule. The 10 / 30 / 40 / 50 percent and 20-day figures are therefore proposed figures under both drafting options, not settled law.",
+  "The OCC does NOT propose the variable capital components it discusses (1.0 / 0.40 / 0.20 percent of outstanding issuance value; 0.5 percent or 0.05-0.25 percent haircuts; 0.40 percent on uninsured deposits; a charge on assets under custody). It says repeatedly that the capital requirement in the proposed rule text is its preferred approach and that these are alternatives on which it seeks comment. Writing them as requirements would be wrong.",
+  "The OCC does NOT state any dollar amount for the semiannual assessment under proposed Sec. 8.10 or the additional custody assessment under proposed Sec. 8.11. The bracket base amounts and marginal rates are published separately in the OCC's annual Notice of Fees, which is not in this document. The 35 percent (up to 55 percent) reserve-asset reduction is itself proposed and would be set annually in the Notice of Fees.",
+  "The OCC does NOT set Bank Secrecy Act, anti-money-laundering or sanctions programme standards here. The document states expressly that those requirements will be addressed in a different proposed rule. Only the board certification requirement in proposed Sec. 15.14(k) appears in this document.",
+  "The document does NOT name any company as an applicant, an approved permitted payment stablecoin issuer, or a registered foreign payment stablecoin issuer. The only issuer names that appear anywhere are in footnotes citing news coverage or third-party fund pages, and in the Federal Register's list of post-comment meeting summaries in the docket.",
+  "The OCC does NOT say how many applications it had received under proposed Sec. 15.30, nor how many entities are currently issuing payment stablecoins under its supervision. The 24 and 29 issuer figures in the document are the OCC's own analytical assumptions for the Paperwork Reduction Act and economic analysis, not counts.",
+  "The document does NOT mention Taiwan, Taipei, or any Asian jurisdiction's stablecoin regime. There is no official statement here about how the rule would apply to a Taiwanese user or a Taiwanese platform. Any Taiwan angle must be written as the editor's framing, not as something the OCC said.",
+  "The OCC does NOT say that payment stablecoins are or would become safe, insured or guaranteed. The opposite: proposed Sec. 15.10(c)(3) would prohibit an issuer from representing that its stablecoins are backed by the full faith and credit of the United States, guaranteed by the United States Government, or subject to Federal deposit insurance or Federal share insurance.",
+  "The document does NOT state that the comment period was extended, nor that a final rule has been issued. As checked on 2026-09-16, the Federal Register held exactly one document under Docket ID OCC-2025-0372 and exactly one under RIN 1557-AF41.",
+  "The OCC does NOT publish the application form, the weekly confidential report form, or the quarterly report of financial condition form in this document. All three are described as forms 'that will be available at www.occ.gov'. occ.gov was unreachable from this container, so nothing about the forms' actual contents can be written.",
+  "Nothing in the document states a redemption guarantee to a secondary-market buyer. The redemption requirements apply only between the issuer (and entities acting on its behalf) and the redeeming party, and the document says expressly that they do not apply to secondary market trading.",
+  "The OCC does NOT say the 12-month operational backstop matches its national trust bank practice exactly; it says the trust bank approach 'typically requires a pool of liquid assets sufficient to cover six to 12 months of expenses' while the proposed rule text sets 12 months. Do not collapse the two.",
+  "The OCC does NOT state a fee schedule, price or cost for a member of the public. Nothing in this rule imposes anything on a stablecoin holder."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The OCC issued a news release announcing this proposal, and that release would give an announcement date earlier than the 2026-03-02 Federal Register publication date.",
+   "seen_where": "Inferred from OCC practice; the rule itself cites OCC news releases such as OCC News Release 2025-125 (December 12, 2025).",
+   "why_excluded": "www.occ.gov and occ.treas.gov return 'HTTP/1.1 302 Security Redirect' to the site root for every path tried today, including the 2026 news release index, a specific 2025 release, and /rss/occ_newsreleases.xml, with and without a cookie jar. No OCC release could be read, so no announcement date other than the Federal Register publication date is recorded."
+  },
+  {
+   "claim": "The proposal was posted for public inspection on 2026-02-27 before its 2026-03-02 publication.",
+   "seen_where": "The cache-buster query string on the Federal Register public_inspection_pdf_url (?1772199923) decodes to 2026-02-27T13:45:23Z.",
+   "why_excluded": "That is a URL parameter, not a stated date. No official page states a public-inspection date. Excluded rather than presented as a fact; the event date remains the publication date, 2026-03-02."
+  },
+  {
+   "claim": "257,601 public comments were filed on Docket ID OCC-2025-0372.",
+   "seen_where": "federalregister.gov document metadata field regulations_dot_gov_info.comments_count, with checked_regulationsdotgov_at 2026-07-30T22:55:04Z.",
+   "why_excluded": "Kept as a recorded fact but flagged: it is the Federal Register's cached reading of the Regulations.gov docket as of 2026-07-30, not an OCC statement, and www.regulations.gov returns HTTP 403 from this container so the figure could not be confirmed at source. If used, attribute it as 'the Federal Register's record of the Regulations.gov docket as of 2026-07-30' and not as an OCC number."
+  },
+  {
+   "claim": "Circle is 'the second largest stablecoin issuer' and holds 99.5 percent of reserves in cash, short-term Treasuries and repos.",
+   "seen_where": "Footnote 143 of the OCC proposal, citing a BlackRock product page.",
+   "why_excluded": "This is a market-ranking and a specific issuer's reserve composition sourced to a third-party asset manager's marketing page. It is a named-asset market claim of exactly the kind crypto.md forbids, and the underlying source is not first-party for Circle. Excluded entirely."
+  },
+  {
+   "claim": "USDC broke its peg in March 2023 with $3.3 billion stuck at Silicon Valley Bank; a PayPal crypto partner minted $300 trillion of stablecoins in a technical error in October 2025.",
+   "seen_where": "Footnotes 50 and 60 of the OCC proposal, citing the Wall Street Journal and CNBC respectively.",
+   "why_excluded": "These are news-media citations inside an official document. The BRIEF forbids news media becoming a recorded fact or a source URL. The OCC's own drafting rationale (that concentration at one institution and uncontrolled minting are the risks the rule addresses) can be written from the OCC's text; the underlying media reports cannot."
+  },
+  {
+   "claim": "The GENIUS Act takes effect on 2027-01-18.",
+   "seen_where": "Arithmetic on the statutory formula (18 months after July 18, 2025).",
+   "why_excluded": "The statute sets the earlier of two dates and the second branch (120 days after final regulations) could arrive first. No official source states a calendar date. Write the formula, not a date."
+  },
+  {
+   "claim": "New York State's stablecoin regime requires two-business-day redemption and monthly reserve examination by an independent CPA, and NYDFS would have collected $24.1 million in fees absent the GENIUS Act.",
+   "seen_where": "The OCC's economic analysis, citing a 2022 NYDFS industry letter and NYDFS budget methodology.",
+   "why_excluded": "These are the OCC's characterisations of another regulator's rules, used as an economic baseline. They were not verified against NYDFS's own published text, which was not fetched. Excluded to avoid restating a second regulator's requirements at second hand."
+  },
+  {
+   "claim": "Five national trust bank charter applications tied to stablecoin programmes received conditional OCC approval on 2025-12-12, with minimum capital between $6.05 million and $25 million.",
+   "seen_where": "Footnotes 98 and 99 of the OCC proposal, citing OCC News Release 2025-125.",
+   "why_excluded": "The $6.05 million to $25 million range IS recorded as a verified fact because the OCC states it in this document. The underlying news release could not be opened (occ.gov blocked), so the number of institutions, their names and the approval conditions must not be written."
+  },
+  {
+   "claim": "The FDIC, NCUA, FinCEN, OFAC and Treasury proposals named alongside this one impose the same or comparable requirements.",
+   "seen_where": "Federal Register API search for 'GENIUS Act' documents published since 2026-03-02.",
+   "why_excluded": "Their titles, agencies, publication dates and comment-close dates were read from the Federal Register listing, but their texts were not read in this assignment. Do not describe what any of them require. They are assignments C7, C8 and C9."
+  }
+ ],
+ "must_not_write": [
+  "No prices, price movements, market capitalisation, trading volume or fund flows of any kind. In particular do NOT use the OCC's economic-analysis assumptions that the 2026 market 'upper-bound for market size, measured by the value of outstanding stablecoins, will be $500 billion', split $375 billion / $125 billion, nor the $425 billion baseline, nor the $50 billion bank-affiliated issuance projection. Those are market-size figures and crypto.md forbids them even though they sit inside a regulatory document.",
+  "Do not write the sentence from Section IV that the OCC 'expects the primary effect ... will be an increase in the aggregate market capitalization of payment stablecoins'. It is a market-cap statement.",
+  "Do not name any stablecoin, issuer, exchange, wallet or custodian as something a reader might hold, use or choose. Circle, USDC, Coinbase and BlackRock appear in footnotes and docket listings; none of them may appear as an option, a comparison or a recommendation.",
+  "Do not describe the yield prohibition in a way that reads as commentary on returns. State it as a legal prohibition on the issuer, with no figures about what yields were or could be.",
+  "Do not tell readers whether a stablecoin is safe, whether reserves are adequate, or whether they should hold, redeem or switch. The 1:1 reserve rule and the redemption windows are institutional design, not a safety rating.",
+  "Do not write 'the OCC has approved' or 'the rule requires' in the present tense for anything in this document. Every operative sentence must carry 'proposed' / '草案' / '擬'. This is the single most likely error, and it is the same error flagged for C4 in candidates-crypto.md.",
+  "Do not cite CNBC, the Wall Street Journal, BlackRock or NYDFS-at-second-hand even though they appear in the OCC's footnotes.",
+  "No affiliate or tracking links; no comparison of exchange, wallet or custodian fees.",
+  "Do not present the 211 comment questions, the 257,601 docket comment count or the burden hours as evidence that the rule is controversial or will or will not be finalised. Report them as facts about the process, not as prediction."
+ ],
+ "overlaps_existing_article": "No existing content pack overlaps. apps/api/app/guides/content/ contains 45 *news* packs, all ai-news-*, and only two finance packs (finance-glossary-50-terms.json, personal-finance-first-steps.json). There is no crypto news pack on the site yet, so this may be among the first in the vertical.\n\nWithin batch 4 the real overlap risk is with the three sibling GENIUS Act assignments, which share this document's statutory background and must not repeat it: C7 crypto-news-stablecoin-aml-20260410 (Treasury/OFAC/FinCEN, AML/CFT and sanctions programme requirements, comments close 2026-06-09), C8 crypto-news-fdic-genius-act-20260410 (FDIC, comments close 2026-06-09) and C9 crypto-news-ncua-genius-act-20260518 (NCUA, comments close 2026-07-17). Division of labour: THIS article owns the OCC's licensing and registration regime (proposed Sec. 15.30 to 15.33), the reserve asset rules (Sec. 15.11), redemption and disclosure (Sec. 15.12), the reporting cadence (Sec. 15.14) and the capital and operational backstop (subpart E). It should say in one sentence only that AML and sanctions programme standards are expressly carved out of this proposal and handled in separate rulemakings, and link rather than explain. It must not describe the FDIC or NCUA proposals at all.\n\nAlso adjacent, and to be kept to a single comparative sentence with a link: C1 crypto-news-taiwan-vasp-act-20260630, which covers Taiwan's Virtual Asset Service Act requirement that domestic stablecoin issuance be approved by the central bank and the FSC with full reserve assets placed in trust. The institutional comparison (a licence plus full reserves in both places) is legitimate framing; retelling Taiwan's timetable here is not.\n\nFinally, C3 and C4 (the CFTC/SEC interpretation and Regulation Crypto Assets) share this article's 'proposed versus in force' lesson. Do not re-explain how US rulemaking works from scratch; link to whichever runs first.",
+ "corrections_to_candidate_list": [
+  "candidates-crypto.md lists C6 under the heading 'C6-C9 - 美國 GENIUS Act 的落地：四個主管機關同時提規則' with a table giving 刊登日 2026-03-02, 機關 'Treasury / OCC', 評論截止 2026-05-01. All three are correct as published. The lead URL resolves and is the right document.",
+  "The table's 機關 column is slightly misleading: the Federal Register lists two agencies, Treasury Department as the parent and Comptroller of the Currency as the issuing agency. The proposal is the OCC's alone, not a joint Treasury/OCC action. Contrast C7, where the Federal Register genuinely lists Treasury / FinCEN and, in the 2026-04-10 sibling, Foreign Assets Control Office. Write 'OCC（隸屬美國財政部）', not 'Treasury 與 OCC 共同'.",
+  "The candidates file calls the four items '四個主管機關同時提規則'. They were not simultaneous: 2026-03-02 (OCC), 2026-04-10 (three separate documents from FinCEN, FDIC and OFAC), 2026-05-18 (NCUA). The word 同時 should not survive into the article.",
+  "The candidates file does not record that the OCC proposal is 102 Federal Register pages (10202-10303) and carries 211 numbered questions for comment, nor that it creates an entirely new 12 CFR part 15. Those are the things that make it the anchor piece of the four.",
+  "New container blocks to add to the batch-4 notes, verified 2026-09-16: www.occ.gov and www.occ.treas.gov return 'HTTP/1.1 302 Security Redirect' to the site root for every path, including RSS, so OCC news releases and the rule's referenced application forms cannot be read here. www.regulations.gov returns HTTP 403, so dockets cannot be browsed. www.congress.gov returns HTTP 403. Working substitutes: federalregister.gov API and its full_text/text/ endpoint (the whole 102-page document came back as plain text), govinfo.gov for the official GPO PDF, and uscode.house.gov for statutory text and the Effective Date / Short Title notes.",
+  "candidates-crypto.md says Federal Register is the official channel to use when sec.gov is 403. That holds here for a second reason: the Federal Register API also exposes the docket's comment count and supporting-document list, which is the only way to see docket activity when regulations.gov itself is 403."
+ ],
+ "editorial_brief": "讀者：在台灣使用跨境支付、儲值或海外平台的一般使用者，以及想知道「美元穩定幣在美國到底歸誰管、管什麼」的人。多數人不會去讀聯邦公報，也分不清楚「提案」與「生效」。\n\n角度：這篇的骨幹是一個問題——在美國，一家機構想發行支付型穩定幣，OCC 打算要求它做到什麼？答案有四段：先申請並取得事前核准（完備後 120 天視為核准、被駁回有聽證與上訴程序）；準備金必須一比一、只能是八類資產、短債不得超過 93 天、分散與集中度有門檻；贖回必須在兩個營業日內，單日贖回超過流通面額一成時自動延長為七個日曆日並須 24 小時內通報；然後是每週（保密）、每月（公開準備金組成並經會計師查核、CEO 與 CFO 具結）、每季（財務狀況並經董事會簽署）、每年（AML 與制裁法遵具結；逾 500 億美元者另有查核過的財報）的四層申報。\n\n全篇最重要的一件事：這是草案。2026 年 3 月 2 日刊登、5 月 1 日意見截止，到查核日 2026 年 9 月 16 日為止，聯邦公報上這個案號與 RIN 都只有這一份文件，沒有展延、沒有定案規則。文章每一個「要求」都必須帶「草案擬」。GENIUS Act 本身的生效日也還沒到，法條寫的是「立法後 18 個月」與「主管機關發布定案規則後 120 天」兩者取其早——寫公式，不要寫日期。\n\n五個小節的建議切法：一、這份文件是什麼（草案、機關、頁數、意見期、211 個徵詢問題）；二、想發行要先過哪一關（申請、30 天完備通知、120 天視為核准、四項審查因素、駁回與上訴、境外發行人的登記與 30 天視為核准）——本節結尾放表格；三、準備金怎麼算（一比一按面額、八類資產、93 天、Option A 與 Option B 兩案並陳、10/30/40/50 與 20 天、250 億美元以上者 0.5% 上限 5 億美元的存保存款、短缺 15 個營業日就要開始清償且不得收贖回費）——本節結尾放圖解；四、贖回與申報（兩個營業日、一成觸發七天、24 小時通報、每週每月每季每年四層、換手要 60 天前通知）；五、還沒定的部分（兩個選項擇一、多項資本附加費只是徵詢、AML 另案、費率要看年度費用公告、後續還有 FDIC／NCUA／FinCEN 三案）。\n\n刻意不談：任何幣價、市值、流通量與資金流；OCC 經濟分析裡的 5,000 億美元市場規模假設；哪一種穩定幣比較安全、值不值得持有、該不該換平台；FDIC、NCUA、FinCEN 三案的內容（那是 C7 到 C9）；台灣《虛擬資產服務法》的細節（那是 C1，這裡只用一句話做制度對照並連結）。\n\n生活情境如果要寫，必須標明是編輯設計的例子，而且只能用來解釋制度（例如「贖回要兩個營業日」是什麼意思），不能變成使用建議。免責 callout 照 crypto.md 逐字帶「不是投資建議」六個字，查核日寫 2026-09-16。",
+ "hero_label": "草案，還沒生效",
+ "diagram": {
+  "title": "美國穩定幣發行許可四步",
+  "caption": "依 OCC 2026 年 3 月 2 日草案整理，查核日 2026 年 9 月 16 日。",
+  "nodes": [
+   [
+    "先申請",
+    "銀行子公司或非銀行業者"
+   ],
+   [
+    "備齊才起算",
+    "完備後 120 天視為核准"
+   ],
+   [
+    "準備金",
+    "一比一、93 天內短債"
+   ],
+   [
+    "持續申報",
+    "每週、每月、每季"
+   ]
+  ]
+ }
+}

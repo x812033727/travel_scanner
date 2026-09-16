@@ -1,0 +1,70 @@
+{
+ "slug": "tech-news-taiwan-6g-spectrum-20260910",
+ "verdict": "needs_fixes",
+ "confirmed_count": 22,
+ "source_reachability": "I re-fetched every URL myself with -A \"Mokaair-editorial\". All 13 cited sources resolve, and to the document claimed; no fake 200s among them. (1) https://moda.gov.tw/press/press-releases/20612 -> 200, real article; title uses U+0020 half-width space, body uses U+FF1A; no File/Get attachments, 2 photos. (2) https://moda.gov.tw/digital-affairs/resource-management/programs/19090 -> 200, created 2026-03-05, updated 2026-09-15, 9 File/Get attachments. (3) https://www-api.moda.gov.tw/File/Get/moda/zh-tw/Mrbx00R7mtGIJje -> 200, PDF 25pp, content-disposition filename=無線電頻率供應計畫.pdf, cover 114年2月修正, CreationDate D:20250206161539 / ModDate D:20250206161547 (unchanged on today's re-fetch, so not a live doc). NOT guessed: linked from https://moda.gov.tw/digital-affairs/resource-management/resource-plan/plan002/15180 (2025-02-13). (4) https://www.itu.int/en/ITU-R/study-groups/rsg5/Pages/default.aspx -> 200. (5) .../aboutus/principal-officers/deputy-minister-yeh/999 -> 200, and linked by href from 20612, not guessed. (6) .../press/press-releases/17422 -> 200. (7) .../resource-plan/plan001/6369 -> 200. (8) https://www.itu.int/dms_pub/itu-r/opb/gen/R-GEN-SGB-2025-PDF-E.pdf -> 200, 68pp, CreationDate 2024-12-19 / ModDate 2025-01-14, matching the researcher's record. (9) File/Get/.../b4RLKc8Mn5Y5Sj9 -> 200, 54pp, filename=11-5書面報告_核定版_.pdf, listed on /information-service/govinfo/business-report/1177. (10) File/Get/.../E5RrlYLBIF6IfLS -> 200, 12pp and (11) File/Get/.../CO53evdYhevAdZu -> 200, 11pp, both listed on /information-service/govinfo/administrative-plans/1049. (12) https://www.ntia.gov/personnel-profile/charles-cooper -> 200. (13) https://www.nera.com/experts/i/hans-martin-ihle.html -> 200. Negative checks: https://moda.gov.tw/en/press/press-releases/20612 -> 404, confirming no official English version (/en/press/press-releases/372 -> 200, 15 items, newest 2026-09-01, no 6G item). Blocks I reproduced: law.moda.gov.tw 403 Cloudflare, www.ofcom.org.uk 403, www.gsma.com 403, www.ncc.gov.tw 403. One discrepancy: https://www.itu.int/online/mm/scripts/gensel90 returned HTTP 500 with an ITU \"HTTP Shell Gateway Version 1.9\" error page for me, not the \"HTTP 200 F5 gateway page\" recorded — same conclusion (no roster data), wrong status on record. No fact in the record is sourced to a news outlet, aggregator, law-firm blog or search snippet; every source URL is first-party (moda, ITU, NTIA, NERA) and every File/Get ID is discoverable from an official index page rather than guessed.",
+ "refuted": [
+  {
+   "fact": "F12: the program page 19090's \"card subtitle says 6G頻譜政策領航計畫\", with verbatim_quote \"6G 地空整合頻譜規劃計畫 ／ 6G頻譜政策領航計畫\".",
+   "why": "\"6G頻譜政策領航計畫\" occurs exactly twice on programs/19090 and both are HTML metadata — <meta name=\"description\"> and <meta property=\"og:description\">. It is nowhere in the visible page. The parent listing page /digital-affairs/resource-management/programs/462 renders the card as \"6G 地空整合頻譜規劃計畫\" plus the date 2026-03-05, with no subtitle. The recorded verbatim_quote (with the ／) exists on no page at all — it is an assembled string presented as an official quotation."
+  },
+  {
+   "fact": "F14: \"these reports print 本報告不必然代表數位發展部意見 on the cover and back cover\" (of the 9 reports on programs/19090), repeated in unverified_or_excluded for 115年第七期月報 and 115年第二季季報.",
+   "why": "I downloaded all 9 and extracted text. The 7 monthly reports (115年第一～七期國際頻譜趨勢月報) each contain the string exactly 2 times — correct. But both quarterly reports contain it 0 times: 115年第一季頻譜發展趨勢季報 (XZjBmXNhsjtwB0g) = 0 and 115年第二季頻譜發展趨勢季報 (ToY2YhnkXcOHSVT) = 0, and neither contains 不必然 / 免責 / 不代表 / 僅供參考 anywhere. The blanket claim is false, and the specific claim about 第二季季報 in unverified_or_excluded is false."
+  },
+  {
+   "fact": "sourcing_notes: \"the three sub-sections of 數位通傳資源規劃專區 (6GHz newest 2023-08-25, 衛星頻段 newest 2025-02-13, 無人載具) have no later announcement\", used as indirect evidence that the 114年2月 supply plan is current.",
+   "why": "The 無人載具 sub-section's newest item is plan003/15424 「公告修正案｜無人載具科技創新實驗條例」created 2025-02-27 — later than 2025-02-13. The researcher enumerated that sub-section without a date and missed it. The conclusion still survives (I pulled all 4 attachments of 15424: the 車聯網 5850-5925MHz experimental-field announcement and the 無人載具條例 frequency announcement plus their amendments — none revises 無線電頻率供應計畫), but the stated evidence is wrong and must not be reused."
+  },
+  {
+   "fact": "not_said: \"the only number in the whole release is 2030 and the date 10.\"",
+   "why": "The five body paragraphs contain the digits 10, 2030, 5 (第5研究組) and 6 (6G). The substantive point does hold and I verified it independently — the body contains zero occurrences of 決定 / 核定 / 公告 / 釋出 / 拍賣 / MHz / GHz / 頻段 — but the sentence as written is wrong and a reader can disprove it."
+  }
+ ],
+ "unsupported": [
+  {
+   "fact": "F17's closing claim \"the first three bands total 280 MHz, expire in 2030, and are what 4G屆期頻譜重耕 refers to\" — and the editorial_brief built on it, which calls \"三組合計 280 MHz 的 4G 頻段執照期限到民國 119 年（2030 年）\" the article's most valuable angle.",
+   "why": "Every cell of the table checks out (703-748/758-803 = 90MHz; 885-915/930-960 = 60MHz; 1710-1775/1805-1870 = 130MHz; all 執照期限至119年; all 自102年12月起開放). But the supply-plan PDF contains 4G / 5G / 6G / IMT / 重耕 exactly 0 times each — it only says 供行動寬頻業務使用 — and program page 19090 says 4G屆期頻譜重耕釋出 without naming any band. Joining the two, and calling these three \"4G 頻段\", is the researcher's own inference traceable to no source. \"280 MHz\" is also the researcher's arithmetic; no official document states the sum."
+  },
+  {
+   "fact": "F12's causal claim \"the seminar name 頻譜政策領航 comes from this plan\".",
+   "why": "Pure inference. Release 20612 never mentions the plan; program page 19090 never mentions the seminar; there is no link between them. The only place the phrase 頻譜政策領航計畫 exists is the program page's meta tag."
+  },
+  {
+   "fact": "F11: \"on 2025-09-17 moda held (辦過) the 次世代通信頻譜展望國際座談會\".",
+   "why": "Page 17422 says 數位發展部林宜敬部長今（17）日出席 (attended) and the headline is 成功舉行; nothing on the page says moda was the host. Contrast 20612, which explicitly says 數位發展部今（10）日舉辦. The two events must not be described with the same verb."
+  },
+  {
+   "fact": "F20 files the English sentence \"Study Group 5 is also responsible of the development of IMT and is currently working on IMT-2030 for the 6G\" under url = the ITU SG 5 web page.",
+   "why": "That sentence occurs 0 times in the SG 5 page HTML; it is on p.44 of R-GEN-SGB-2025-PDF-E.pdf. F20's own wording is self-contradictory (\"the SG 5 page states X … the equivalent statement is in the ITU-R handbook\"). What the SG 5 page actually states is \"Terrestrial services / Systems and networks for fixed, mobile, radiodetermination, amateur and amateur-satellite services\" and \"Working Party 5D (WP 5D) - IMT Systems\". If the sentence is used, the URL must be the PDF."
+  },
+  {
+   "fact": "F25 presents E5RrlYLBIF6IfLS as \"數發部 115 年度（2026）施政計畫\", reserving the 草案版 caveat for the 116 年度 file only (F26 insists on it).",
+   "why": "moda's own index /information-service/govinfo/administrative-plans/1049 labels the link 「數位發展部115年度施政計畫（草案版）」 — the same draft marking as the 116 年度 one, while the 114 / 113 / 112 年度 entries carry no such marking. Two different standards were applied to two files on the same page; both need the caveat."
+  },
+  {
+   "fact": "editorial_brief calls 6425-7125 MHz a nationwide 「測試實驗頻率」.",
+   "why": "The supply plan's term is 「特定實驗頻率」 (defined on p.3, and used as the table header 特定實驗頻率(MHz)). 「測試實驗」 is a fragment of that row's 實驗目的 cell (…測試實驗網路之用), not the category name. must_not_write repeats the same wrong term."
+  },
+  {
+   "fact": "editorial_brief section (2): explain 已排程 vs 還在觀察 using the plan's 短期／中期／長期 and close with a 頻段／現況／執照到期年 table.",
+   "why": "This design forces the writer to invent a column the document does not have. 6425-7125 MHz sits in the (四)實驗網路 table whose only columns are 特定實驗頻率／實驗目的／特定實驗場域／其他測試條件 — there is no priority column at all. The three bands expiring in 119年 are all marked \"-\" in the 優先順序 column, with footnote *2 explaining that already-assigned bands have no priority until their term expires. Neither of the article's two key bands carries a 短/中/長 marking."
+  },
+  {
+   "fact": "editorial_brief writes 「現行『無線電頻率供應計畫』（114年2月修正）」.",
+   "why": "The same research record's sourcing_notes and unverified_or_excluded both say law.moda.gov.tw is 403 so currency cannot be confirmed, and instruct the writer to say 114年2月修正版 rather than 現行版. The editorial_brief contradicts its own instruction, and a writing agent copying it will violate the record."
+  }
+ ],
+ "additional_findings": [
+  "The supply-plan PDF contains 6G and IMT exactly 0 times each. That is a stronger not_said than the one recorded: Taiwan's only spectrum document with statutory effect (the researcher himself quotes 本計畫屬實質法規命令性質…正式公告後對外將產生一定法律效果) does not contain the term 6G at all.",
+  "The researcher missed the one ground/space sharing rule already in force — exactly what Yeh described moda as still needing to build. Supply plan pp.21-22 (satellite fixed): 申請使用27900-29500MHz頻段設置同步／非同步衛星固定通信者，應與既有行動寬頻業者完成協議，包含頻率發生干擾之處理程序，並經主管機關核配, followed by 本次開放頻段保留供未來行動通信使用。既有同步／非同步衛星固定通信設置者不得干擾行動通信且須忍受行動通信干擾之條件下使用. p.18 carries the mobile-satellite equivalent. This is more on-topic than 6425-7125 MHz and it is current law, not seminar talk.",
+  "Also missed: the only 優先順序「短」 rows in the whole plan are the two satellite-communication rows (1518-1559 etc. mobile-satellite; 3610-4200 etc. fixed-satellite), and the only mobile-table row with any priority is 4700-4800／4900-5000 MHz marked 短/中 (currently 供公部門中繼微波系統使用, future plan 與既有使用者進行協商，進行清移頻規劃). Long-term examples: 632-652/678-698 MHz and 2300-2390 MHz, both 視國際發展及國內使用需求再作評估規劃. These are the rows that can actually carry a sourced 短/中/長 discussion.",
+  "Further sourceable detail absent from the record: satellite assignments run 使用期限最長為5年，屆期得依原核配內容申請核配; footnote *1 reserves 1775-1785MHz and 1870-1880MHz 作為政府重大施政計畫及其相關實驗網路之潛在使用頻率.",
+  "R-GEN-SGB-2025 is internally inconsistent about WRC-27 agenda numbering: it assigns \"WRC-27 agenda item 1.10 – Resolution 775 (WRC-23)\" to WP 5C (pfd/e.i.r.p. limits in 71-76 GHz and 81-86 GHz) AND \"WRC-27 agenda item 1.10 – Resolution 256 (WRC-23)\" to WP 5D (IMT terrestrial component in 4 400-4 800 MHz, 7 125-8 400 MHz, 14.8-15.35 GHz). The researcher's must_not_write records only the latter. Since one official document attaches the same item number to two different resolutions, the article should cite the bands and Resolution 256 (WRC-23) but not the agenda-item number.",
+  "Press release 17422 (2025-09-17) explicitly says 國內產官學研專家 took part, while 20612 (2026-09-10) names no domestic participant at all. The record notes only the second half. The year-on-year contrast is sourced, writable, and more informative than a bare \"not said\".",
+  "Better first-party URL for source #3: the opaque file endpoint www-api.moda.gov.tw/File/Get/... should be replaced by, or paired with, its landing page https://moda.gov.tw/digital-affairs/resource-management/resource-plan/plan002/15180 (公告修正案｜衛星頻段, created and updated 2025-02-13). That page lists all three PDFs (公告 / 無線電頻率供應計畫 / 無線電頻率供應計畫修正總說明及對照表) and explains why the revision exists: 依據電信管理法第52條第4項, 為促進我國衛星服務與產業發展…修正「無線電頻率供應計畫」之規定.",
+  "F03 minor mismatches: the bio page says 國立臺灣大學法律學系學士 and 國立臺灣大學法律學研究所碩士 (the record shortened both); the 參事（2016-2022） entry is 國家通訊傳播委員會參事, and the same page separately lists 蒙藏委員會參事 (2010) and 司法院參事兼主任 (2010-2013), so the compressed list is easy to misread. Also, the press release itself only says 葉寧次長 — 常務次長 comes from the bio page, not the release.",
+  "F02's verbatim_quote splices three separate HTML divs into one string with ideographic spaces the page does not contain. All three field values check out, but it is not a literal quotation and should not be used for string matching or translation.",
+  "Structured result written to /tmp/claude-0/-home-user-travel-scanner/7f63d65a-c509-5a16-8b56-4ffddc3bb57b/scratchpad/research/tech-news-taiwan-6g-spectrum-20260910.json; the researcher's original was preserved alongside it as tech-news-taiwan-6g-spectrum-20260910.researcher-backup.json."
+ ]
+}
