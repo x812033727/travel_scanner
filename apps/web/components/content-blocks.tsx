@@ -65,9 +65,9 @@ export function ImageCreditLine({ credit, prefix }: { credit: ImageCredit; prefi
  *  the article page's, so its speakable selector points here; the preview passes none. */
 export function SummaryCard({ items, heading, id }: { items: readonly string[]; heading?: string; id?: string }) {
   return (
-    <aside id={id} aria-label={heading} className="rounded-2xl border border-[var(--teal)] bg-[var(--paper)] p-4">
+    <aside id={id} aria-label={heading} className="app-summary-card rounded-2xl p-4 md:p-5">
       {heading ? <p className="text-xs font-bold uppercase tracking-wide text-[var(--muted)]">{heading}</p> : null}
-      <ul className="mt-2 list-disc space-y-1 pl-5 leading-7">
+      <ul className="mt-2 list-disc space-y-1.5 pl-5">
         {items.map((item, index) => <li key={index}>{item}</li>)}
       </ul>
     </aside>

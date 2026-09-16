@@ -114,8 +114,14 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
             <p className="mt-2 max-w-2xl leading-7 text-[var(--muted)]">{section.lead}</p>
             {section.rows.length ? (
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {section.rows.map((article) => (
-                  <GuideCard key={`${article.kind}:${article.slug}`} article={article} labels={cardLabels} />
+                {section.rows.map((article, index) => (
+                  <GuideCard
+                    key={`${article.kind}:${article.slug}`}
+                    article={article}
+                    labels={cardLabels}
+                    // The editor's first pick leads the hub as the one large card.
+                    variant={section.kind === "howto" && index === 0 ? "featured" : "default"}
+                  />
                 ))}
               </ul>
             ) : (

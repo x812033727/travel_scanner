@@ -21,11 +21,11 @@ export function RelatedGrid({
   const shown = items.filter((item) => !exclude.includes(item.slug)).slice(0, RELATED_GRID_LIMIT);
   if (!shown.length) return null;
   return (
-    <section data-testid="related-grid" aria-labelledby="related-grid-heading" className="border-t border-[var(--line)] pt-6">
-      <h2 id="related-grid-heading" className="text-lg font-semibold">{heading}</h2>
-      <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+    <section data-testid="related-grid" aria-labelledby="related-grid-heading" className="border-t border-[var(--line)] pt-8">
+      <h2 id="related-grid-heading" className="text-xl font-bold tracking-tight">{heading}</h2>
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
         {shown.map((item) => (
-          <li key={`${item.kind}:${item.slug}`} className="rounded-2xl border border-[var(--line)] p-4">
+          <li key={`${item.kind}:${item.slug}`} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
               <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">{kindLabels[item.kind]}</span>
             </p>
@@ -44,8 +44,8 @@ export function RelatedGrid({
 export function Backlinks({ heading, items }: { heading: string; items: readonly ArticleReference[] }) {
   if (!items.length) return null;
   return (
-    <section data-testid="backlinks" aria-labelledby="backlinks-heading" className="border-t border-[var(--line)] pt-6">
-      <h2 id="backlinks-heading" className="text-lg font-semibold">{heading}</h2>
+    <section data-testid="backlinks" aria-labelledby="backlinks-heading" className="border-t border-[var(--line)] pt-8">
+      <h2 id="backlinks-heading" className="text-xl font-bold tracking-tight">{heading}</h2>
       <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-1">
         {items.map((item) => (
           <li key={`${item.kind}:${item.slug}`}>

@@ -3570,3 +3570,32 @@ body:has(.planner-overlay) .premium-mobile-bar { display:none; }
     z-index: 20;
   }
 }
+
+/* Article reading. Tokens only, so the three palettes and both modes pick these up: the
+   in-text term link (dotted until hovered or focused, then solid), its definition card, and
+   the answer-first summary card, which sits a little larger than body text. */
+.app-term-link {
+  color: var(--teal);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: color-mix(in srgb, var(--teal) 70%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.app-term-link:hover,
+.app-term-link:focus-visible {
+  text-decoration-style: solid;
+  text-decoration-color: var(--teal);
+}
+.app-term-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--teal) 18%, transparent);
+}
+.app-summary-card {
+  border: 1px solid color-mix(in srgb, var(--teal) 55%, var(--line));
+  background: var(--teal-soft);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}

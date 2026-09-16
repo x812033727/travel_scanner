@@ -21,7 +21,7 @@ describe("TermLink", () => {
     draw();
     const link = screen.getByRole("link", { name: "微調" });
     expect(link.getAttribute("href")).toBe("/zh-TW/life/ai-term-fine-tuning");
-    expect(link.className).toContain("decoration-dotted");
+    expect(link.className).toContain("app-term-link");
     expect(link.getAttribute("aria-expanded")).toBe("false");
     const card = document.getElementById(link.getAttribute("aria-controls")!)!;
     expect(card.hidden).toBe(true);

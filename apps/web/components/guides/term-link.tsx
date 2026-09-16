@@ -73,7 +73,7 @@ export function TermLink({
     <span ref={root} className="relative inline">
       <a
         href={href}
-        className="text-[var(--teal)] underline decoration-dotted underline-offset-4"
+        className="app-term-link"
         aria-expanded={open}
         aria-controls={cardId}
         onPointerEnter={showSoon}
@@ -90,7 +90,7 @@ export function TermLink({
         role="note"
         aria-label={labels.card}
         hidden={!open}
-        className="absolute left-0 top-full z-50 mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3 text-sm leading-6 text-[var(--fg)] shadow-lg"
+        className="app-term-card absolute left-0 top-full z-50 mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-2xl p-3 text-sm leading-6"
       >
         <span className="block font-bold">{title}</span>
         <span className="mt-1 block text-[var(--muted)]">{description}</span>
