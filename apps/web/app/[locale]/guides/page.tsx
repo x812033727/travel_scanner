@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { DestinationGroups } from "@/components/guides/destination-groups";
+import { HubHero } from "@/components/guides/hub-hero";
+import { SeriesRow } from "@/components/guides/series-row";
+import { TopicTiles } from "@/components/guides/topic-tiles";
 import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { guideHref, guideListHref, guideTopicHref } from "@/lib/guides";
-import { getDestinationFacets, getGuideList, getGuideTopics, hubIsEmpty } from "@/lib/guides.server";
+import { guideHref, guideListHref } from "@/lib/guides";
+import {
+  getDestinationFacets, getGuideList, getGuideTopics, getSeriesIndex, guideSitemapSummary, hubIsEmpty, sectionArticleCount,
+} from "@/lib/guides.server";
 import { breadcrumbs, itemList } from "@/lib/structured-data";
 
 /** The same two reads the body makes, with the same arguments, so React's per-request cache
@@ -35,27 +40,35 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   };
 }
 
+/**
+ * The travel hub, top to bottom: what the section is and a search box scoped to it, the
+ * topics as tiles, the series it offers, the editor's featured guides, the newest intel,
+ * and every destination with something written, grouped by country.
+ */
 export default async function GuidesHubPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
-  const [[intel, howto], topics, facets, t, nav] = await Promise.all([
+  const [[intel, howto], topics, facets, series, summary, t, nav] = await Promise.all([
     hubLists(locale),
     getGuideTopics(locale, "travel"),
     getDestinationFacets(locale, "travel"),
+    getSeriesIndex(locale),
+    guideSitemapSummary(),
     getTranslations({ locale, namespace: "common" }),
     getTranslations({ locale, namespace: "navigation" }),
   ]);
-  // A topic nothing is published under in this language has no hub worth linking; one whose
-  // count an older API did not send is kept.
+  // A topic nothing is published under in this language has no hub worth counting; one
+  // whose count an older API did not send is kept.
   const browsable = topics.filter((topic) => !topic.parent && (topic.count === undefined || topic.count > 0));
+  const articleCount = sectionArticleCount(summary, "travel", locale);
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
   };
   const sections = [
-    { kind: "intel" as const, heading: t("guides.latestIntel"), lead: t("guides.intelLead"), rows: intel.articles },
     { kind: "howto" as const, heading: t("guides.featuredHowto"), lead: t("guides.howtoLead"), rows: howto.articles },
+    { kind: "intel" as const, heading: t("guides.latestIntel"), lead: t("guides.intelLead"), rows: intel.articles },
   ];
-  const everything = [...intel.articles, ...howto.articles];
+  const everything = [...howto.articles, ...intel.articles];
 
   return (
     <>
@@ -67,8 +80,28 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
         ]}
       />
       <main className="mx-auto max-w-5xl px-5 py-10 md:px-8">
-        <h1 className="text-4xl font-bold tracking-tight">{t("guides.hubTitle")}</h1>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">{t("guides.hubIntro")}</p>
+        <HubHero
+          title={t("guides.hubTitle")}
+          intro={t("guides.hubIntro")}
+          section="travel"
+          action={`/${locale}/search/articles`}
+          stats={[
+            articleCount ? t("guides.resultCount", { count: articleCount }) : null,
+            browsable.length ? t("guides.hubTopicCount", { count: browsable.length }) : null,
+          ]}
+          labels={{ label: t("guides.searchLabel"), placeholder: t("guides.searchPlaceholder"), submit: t("guides.searchSubmit") }}
+        />
+
+        <TopicTiles
+          section="travel"
+          topics={topics}
+          labels={{ heading: t("guides.browseTopics"), articles: t("guides.topicArticles"), more: t("guides.subtopicsMore") }}
+        />
+
+        <SeriesRow
+          series={series.filter((item) => item.section === "travel")}
+          labels={{ heading: t("guides.seriesRow"), lead: t("guides.seriesLead"), entries: t("guides.seriesEntries") }}
+        />
 
         {sections.map((section) => (
           <section key={section.kind} className="mt-10">
@@ -90,22 +123,6 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
             )}
           </section>
         ))}
-
-        {browsable.length ? (
-          <section className="mt-12 border-t border-[var(--line)] pt-8">
-            <h2 className="text-2xl font-bold tracking-tight">{t("guides.browseTopics")}</h2>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {browsable.map((topic) => (
-                <li key={topic.slug}>
-                  <Link className="app-filter-chip" href={guideTopicHref("travel", topic.slug)}>
-                    {topic.label}
-                    {topic.count ? <span className="app-filter-count">{topic.count}</span> : null}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
 
         <DestinationGroups
           destinations={facets.destinations}
