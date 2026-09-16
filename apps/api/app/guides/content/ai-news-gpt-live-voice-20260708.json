@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +40,23 @@
           "text": "邊聽邊說之後，對話節奏有什麼不同"
         },
         {
-          "type": "paragraph",
-          "text": "OpenAI 說明，最初的 ChatGPT 語音把語音轉文字、語言模型與文字轉語音三個模型串在一起，回應慢且生硬；後來的進階語音模式改在單一模型內處理音訊，但仍要等使用者說完才回應，而且以靜音判斷回合，短暫停頓或背景噪音都可能被當成說完了。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 說明，最初的 ChatGPT 語音把"
+            },
+            {
+              "type": "article",
+              "text": "語音轉文字",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            },
+            {
+              "type": "text",
+              "text": "、語言模型與文字轉語音三個模型串在一起，回應慢且生硬；後來的進階語音模式改在單一模型內處理音訊，但仍要等使用者說完才回應，而且以靜音判斷回合，短暫停頓或背景噪音都可能被當成說完了。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -182,14 +198,26 @@
           "text": "先更新 App，再到設定 → 語音查看是否有 Live（中文說明頁譯為「即時」）；可用選項可能受方案、工作區設定、地區、App 版本與家長控制影響。語音回答裡的日期、價格與地點，請回原始來源核對。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live 生產力更新：用語音處理郵件與待辦",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live 生產力更新：用語音處理郵件與待辦",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         }
       ],
       "sources": [
@@ -387,14 +415,26 @@
           "text": "Update the app first, then check Settings → Voice to see whether Live is listed (the English help page calls it Live as well). The options available to you may depend on your plan, workspace settings, region, app version, and parental controls. Check any dates, prices, and locations in spoken answers against the original sources."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live Productivity Update: Handling Emails and To-Dos with Voice",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live Productivity Update: Handling Emails and To-Dos with Voice",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         }
       ],
       "sources": [
@@ -592,14 +632,26 @@
           "text": "まずアプリを更新してから、設定 → 音声にLiveがあるか確認してください（日本語のヘルプページでもLiveと表記されています）。利用できるオプションは、プラン、ワークスペースの設定、地域、アプリのバージョン、ペアレンタルコントロールによって異なる場合があります。音声の回答に含まれる日付、価格、場所は、元の情報源で確認してください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live生産性アップデート：音声でメールとToDoを処理",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live生産性アップデート：音声でメールとToDoを処理",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         }
       ],
       "sources": [
@@ -797,14 +849,26 @@
           "text": "먼저 앱을 업데이트한 뒤 설정 → 음성에 Live가 있는지 확인하시기 바랍니다(한국어 도움말 페이지에서도 Live로 표기합니다). 사용할 수 있는 옵션은 요금제, 워크스페이스 설정, 지역, 앱 버전, 자녀 보호 설정에 따라 달라질 수 있습니다. 음성 답변에 나온 날짜, 가격, 장소는 원래 출처에서 확인하시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live 생산성 업데이트: 음성으로 메일과 할 일 처리하기",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live 생산성 업데이트: 음성으로 메일과 할 일 처리하기",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1002,14 +1066,26 @@
           "text": "先更新 App，再到设置 → 语音查看是否有 Live（简体中文帮助页面同样写作 Live）；可用选项可能受套餐、工作空间设置、地区、App 版本与家长控制影响。语音回答里的日期、价格与地点，请回到原始来源核对。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live 生产力更新：用语音处理邮件与待办",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live 生产力更新：用语音处理邮件与待办",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         }
       ],
       "sources": [

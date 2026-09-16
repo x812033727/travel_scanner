@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -151,8 +152,23 @@
           "text": "當長任務宣告完成時，真正的驗收工作才正要展開。為了方便社群志工團隊後續接手維護，交付成果不能隨意散置在暫存區。交接指令中必須預先指定清楚的儲存位置，例如要求產出的試算表歸檔於財務年度資料夾，而展示簡報則存放在活動對外發布目錄，並統一檔案命名規則以便日後檢索。"
         },
         {
-          "type": "paragraph",
-          "text": "更重要的是，任何整合性產出都必須附帶清晰的來源標記與未決問題清單。驗收時應檢查試算表是否為每筆歷史數據標註原始憑證編號，簡報每張圖表下方是否均註明取自工作簿的何處。如果遇到帳目短缺幾百元但缺乏單據的情況，系統應在獨立備忘錄中列出該項未決疑點，而不是私自平衡帳目，這樣才能讓接手的人員迅速展開人工覆核。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更重要的是，任何整合性產出都必須附帶清晰的來源"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與未決問題清單。驗收時應檢查試算表是否為每筆歷史數據標註原始憑證編號，簡報每張圖表下方是否均註明取自工作簿的何處。如果遇到帳目短缺幾百元但缺乏單據的情況，系統應在獨立備忘錄中列出該項未決疑點，而不是私自平衡帳目，這樣才能讓接手的人員迅速展開人工覆核。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -161,14 +177,26 @@
           "text": "在交付多工具整合任務時，務必以單一檔案作為核心數據基準，並在對外溝通前設置人工確認中斷點，以確保數據嚴謹與發布安全。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash 與 Flash-Lite：快速模型該如何分工？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash 與 Flash-Lite：快速模型該如何分工？",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         }
       ],
       "sources": [
@@ -335,14 +363,26 @@
           "text": "When delegating multi-tool integration tasks, always use a single file as the core data baseline and establish human confirmation checkpoints before external communications to ensure data rigor and publishing safety."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash and Flash-Lite: How to Divide Fast Model Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash and Flash-Lite: How to Divide Fast Model Tasks",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         }
       ],
       "sources": [
@@ -509,14 +549,26 @@
           "text": "複数のツールを横断するタスクを依頼する際は、必ず単一のファイルを中核のデータ基準とし、外部への発信前に人間の確認ポイントを設けることで、データの厳密性と発信の安全性を確保してください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 FlashとFlash-Lite：高速モデルはどう分担すべきか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 FlashとFlash-Lite：高速モデルはどう分担すべきか？",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         }
       ],
       "sources": [
@@ -683,14 +735,26 @@
           "text": "다중 도구 통합 작업을 맡길 때는 단일 파일을 핵심 데이터 기준으로 삼고, 대외 발송 전 인간 확인 중단점을 설정하여 데이터의 정확성과 배포 안전을 확보해야 합니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash와 Flash-Lite: 고속 모델의 역할 분담 전략",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash와 Flash-Lite: 고속 모델의 역할 분담 전략",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         }
       ],
       "sources": [
@@ -857,14 +921,26 @@
           "text": "在交付多工具整合任务时，务必以单一文件作为核心数据基准，并在对外沟通前设置人工确认中断点，以确保数据严谨与发布安全。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash 与 Flash-Lite：快速模型该如何分工？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash 与 Flash-Lite：快速模型该如何分工？",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         }
       ],
       "sources": [

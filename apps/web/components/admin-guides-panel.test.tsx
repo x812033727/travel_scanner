@@ -198,6 +198,20 @@ describe("hiding", () => {
     expect(screen.getByText(/這篇文章已隱藏/)).toBeTruthy();
   });
 
+  it("sends this locale's names and the related picks with the classification", async () => {
+    await open();
+    fireEvent.change(screen.getByLabelText("別名（此語言）"), { target: { value: "成田到東京, Skyliner 攻略，" } });
+    fireEvent.change(screen.getByLabelText("延伸閱讀"), { target: { value: "tokyo-transit-passes, jr-pass-guide" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存分類" }));
+    await waitFor(() => {
+      const call = mocks.api.mock.calls.find(([path, init]) => String(path).startsWith(`/admin/guides/${id}?`) && init?.method === "PUT");
+      expect(call).toBeTruthy();
+      const body = JSON.parse(call![1].body);
+      expect(body.aliases).toEqual({ "zh-TW": ["成田到東京", "Skyliner 攻略"] });
+      expect(body.related).toEqual(["tokyo-transit-passes", "jr-pass-guide"]);
+    });
+  });
+
   it("never sends visibility inside the classification form", async () => {
     await open();
     fireEvent.click(screen.getByRole("button", { name: "儲存分類" }));
@@ -216,6 +230,57 @@ describe("conflicts", () => {
     fireEvent.change(screen.getByLabelText("標題"), { target: { value: "改過的標題" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
     expect((await screen.findByRole("alert")).textContent).toContain("這篇文章已被更新，請重新載入後再操作。");
+  });
+});
+
+describe("topics", () => {
+  it("lets an editor add a topic and offers it as a checkbox at once", async () => {
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) => {
+      if (path.startsWith("/admin/guides/topics") && init?.method === "POST") {
+        const body = JSON.parse(init.body!);
+        return Promise.resolve({
+          slug: body.slug, label: body.names["zh-TW"], section: body.section, parent: body.parent_slug ?? null,
+          names: body.names, descriptions: {}, display_order: body.display_order, is_active: true, source: "admin",
+        });
+      }
+      return route(path, init);
+    });
+    window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=zh-TW`);
+    render(<AdminGuidesPanel />);
+    await screen.findByLabelText("標題");
+    fireEvent.click(screen.getByText("新增主題"));
+    fireEvent.change(screen.getByLabelText("主題代碼（slug）"), { target: { value: "budget" } });
+    const names: Record<string, string> = { English: "Budget", "日本語": "節約", "한국어": "예산", "繁體中文": "預算", "简体中文": "预算" };
+    for (const [language, name] of Object.entries(names)) {
+      fireEvent.change(screen.getByLabelText(`${language} 名稱`), { target: { value: name } });
+    }
+    fireEvent.change(screen.getByLabelText("排序（小的在前）"), { target: { value: "15" } });
+    fireEvent.click(screen.getByRole("button", { name: "建立主題" }));
+    // The new topic is a checkbox of this section's vocabulary now, unchecked, ready to tick.
+    const checkbox = await screen.findByLabelText("預算");
+    expect((checkbox as HTMLInputElement).checked).toBe(false);
+    expect(screen.getByRole("status").textContent).toContain("已新增主題 budget");
+    const call = mocks.api.mock.calls.find(([path, init]) => String(path).startsWith("/admin/guides/topics") && init?.method === "POST");
+    expect(JSON.parse(call![1].body)).toEqual({
+      slug: "budget", section: "travel", display_order: 15,
+      names: { en: "Budget", ja: "節約", ko: "예산", "zh-TW": "預算", "zh-CN": "预算" },
+    });
+  });
+
+  it("reports a slug either section already has, as the API refuses it", async () => {
+    mocks.api.mockImplementation((path: string, init?: { method?: string; body?: string }) => {
+      if (path.startsWith("/admin/guides/topics") && init?.method === "POST") {
+        return Promise.reject(new ApiError("taken", 409, "guide_topic_exists"));
+      }
+      return route(path, init);
+    });
+    window.history.replaceState(null, "", `/zh-TW/admin/guides?article=${id}&lang=zh-TW`);
+    render(<AdminGuidesPanel />);
+    await screen.findByLabelText("標題");
+    fireEvent.click(screen.getByText("新增主題"));
+    fireEvent.change(screen.getByLabelText("主題代碼（slug）"), { target: { value: "transport" } });
+    fireEvent.click(screen.getByRole("button", { name: "建立主題" }));
+    expect(await screen.findByRole("alert")).toBeTruthy();
   });
 });
 
@@ -307,6 +372,29 @@ describe("rich blocks", () => {
     const dialog = await screen.findByRole("dialog");
     expect(within(dialog).getAllByRole("columnheader").map((cell) => cell.textContent)).toEqual(["方式", "時間"]);
     expect(within(dialog).getAllByRole("cell").map((cell) => cell.textContent)).toEqual(["Skyliner", "41 分"]);
+  });
+
+  it("adds one summary and one FAQ, typed as lines and as question-answer pairs, and offers each only once", async () => {
+    await open();
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 重點摘要" }));
+    fireEvent.change(screen.getByLabelText("每行一句，2 到 5 句；放在第一個標題之前"), { target: { value: "先買票。\n再上車。" } });
+    expect(screen.queryByRole("button", { name: "新增區塊 · 重點摘要" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "新增區塊 · 常見問題" }));
+    const questions = screen.getAllByLabelText("問題");
+    const answers = screen.getAllByLabelText("答案");
+    expect(questions).toHaveLength(2);
+    fireEvent.change(questions[0], { target: { value: "要多久？" } });
+    fireEvent.change(answers[0], { target: { value: "四十一分鐘。" } });
+    fireEvent.change(questions[1], { target: { value: "多少錢？" } });
+    fireEvent.change(answers[1], { target: { value: "兩千五。" } });
+    expect(screen.queryByRole("button", { name: "新增區塊 · 常見問題" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "儲存草稿" }));
+    await waitFor(() => expect(savedDocument()).not.toBeNull());
+    const blocks = savedDocument()!.blocks;
+    expect(blocks.find((block: { type: string }) => block.type === "summary")).toEqual({ type: "summary", items: ["先買票。", "再上車。"] });
+    expect(blocks.at(-1)).toEqual({ type: "faq", items: [
+      { question: "要多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" },
+    ] });
   });
 
   it("sends a hero and a partner block in the draft it saves", async () => {

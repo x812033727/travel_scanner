@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 137,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "規則、Skills 與 Hooks 都能讓重複工作更有秩序，但它們介入工作的時機不同。本篇會用待辦清單專案，把「每次都遵守的要求」「需要時啟動的流程」「事件發生就執行的程式」分開，選出最小且容易維護的做法。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "規則、"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": " 與 Hooks 都能讓重複工作更有秩序，但它們介入工作的時機不同。本篇會用待辦清單專案，把「每次都遵守的要求」「需要時啟動的流程」「事件發生就執行的程式」分開，選出最小且容易維護的做法。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -218,8 +234,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "Hook 的事件資料可能包含路徑、提示與工具參數。第一個範例只寫入本機最小紀錄，別把完整事件直接送往公開服務。需要通知時再選必要欄位，並交代接收位置與停用方式，讓讀者知道資料會去哪裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hook 的事件資料可能包含路徑、提示與工具"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。第一個範例只寫入本機最小紀錄，別把完整事件直接送往公開服務。需要通知時再選必要欄位，並交代接收位置與停用方式，讓讀者知道資料會去哪裡。"
+            }
+          ]
         },
         {
           "type": "heading",

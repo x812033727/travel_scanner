@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +40,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "語言模型在訓練階段已接觸大量模式，有些還經過指令微調，學習依自然語言要求完成工作。Wei 等人的 FLAN 研究探討指令微調如何改善未見任務類型的零樣本表現。這項研究說明零樣本能力可能受訓練方式影響，不能把「這次沒給例子」理解為模型完全從零開始。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "語言模型在訓練階段已接觸大量模式，有些還經過指令"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，學習依自然語言要求完成工作。Wei 等人的 FLAN 研究探討指令微調如何改善未見任務類型的零樣本表現。這項研究說明零樣本能力可能受訓練方式影響，不能把「這次沒給例子」理解為模型完全從零開始。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -73,8 +89,23 @@
           "text": "比起只說「幫我看一下」，可寫成：「從以下除濕機說明中找出清潔濾網的步驟，依操作順序列出；保留停止使用的條件，未提到的部分不要補充。」這份提示沒有已完成示範，所以仍屬零樣本，但已告訴模型要看哪份資料、做什麼及如何輸出。"
         },
         {
-          "type": "paragraph",
-          "text": "Google 的提示設計文件強調明確指示、限制與回覆格式。套用在這個案例時，先決定你要的是步驟摘要、警示擷取，還是新手解說。若一次要求全面評測、故障診斷和購買建議，就把不同任務混在一起，容易讓模型離開文件範圍。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的提示設計文件強調明確指示、限制與回覆格式。套用在這個案例時，先決定你要的是步驟摘要、警示擷取，還是新手解說。若一次要求全面"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "、故障診斷和購買建議，就把不同任務混在一起，容易讓模型離開文件範圍。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -168,19 +199,37 @@
           "text": "判斷重點是有沒有已解答示範，不是提示詞有多長。"
         },
         {
-          "type": "link",
-          "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

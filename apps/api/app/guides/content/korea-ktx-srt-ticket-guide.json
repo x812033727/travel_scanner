@@ -112,7 +112,7 @@
         },
         {
           "type": "paragraph",
-          "text": "SRT 用 SR 公司的官網（etk.srail.kr）或 SRT app，有英文與繁體中文介面，外國人同樣用護照資料加入會員後訂票，付款方式與座位選擇以官網為準。SR 官網公布的票價表 2026-09-01 起生效：水西到釜山一般室 52,200 韓元、特室 75,700 韓元；到東大邱 37,000／53,600 韓元；到新慶州 42,400／61,500 韓元；到蔚山 46,400／67,300 韓元；到大田 20,100／29,100 韓元；到天安牙山 11,300／16,400 韓元。SRT 的票價設定得比同區間的 KTX 低一些，KTX 的票價以 Korail 官網查詢為準。"
+          "text": "SRT 用 SR 公司的官網（etk.srail.kr）或 SRT app，有英文與繁體中文介面，外國人同樣用護照資料加入會員後訂票，付款方式與座位選擇以官網為準。SR 官網公布的票價表 2026-09-01 起生效：水西到釜山一般室 52,200 韓元、特室 75,700 韓元；到東大邱 37,000／53,600 韓元；到新慶州 42,400／61,500 韓元；到蔚山 46,400／67,300 韓元；到大田 20,100／29,100 韓元；到天安牙山 11,300／16,400 韓元。SRT 的票價設定得比同區間的 KTX 低一些，KTX 的票價以 Korail 官網查詢為準。春節、中秋的專用預訂只認 Korail 整合會員，只有 SR 會員的人要先轉換，下一節會講。"
         },
         {
           "type": "heading",
@@ -121,7 +121,7 @@
         },
         {
           "type": "paragraph",
-          "text": "首爾站、水西站、釜山站的售票窗口和自動售票機都有英文介面，現場買當天的票通常沒問題，但週五晚上、週日下午、連假前後的熱門時段常常只剩很晚的班次或立席；春節、中秋前後韓國人會在開放預訂當天搶票，外國人一樣要提早。海外信用卡在窗口和售票機都能刷，行動支付以現場公告為準。"
+          "text": "首爾站、水西站、釜山站的售票窗口和自動售票機都有英文介面，現場買當天的票通常沒問題，但週五晚上、週日下午、連假前後的熱門時段常常只剩很晚的班次或立席；春節、中秋的車票不走平常的預訂：以 2026 年中秋為例，Korail 8 月 14 日的公告寫 9 月 23 到 27 日的車票在專用網頁預訂，交通弱勢者 9 月 3 到 4 日、一般民眾 9 月 7 到 11 日，只有 Korail 整合會員能訂，只加入 SR 的會員要先在公告的網頁轉成整合會員；每年的預訂日期以 Korail 公告為準，外國人一樣要提早。海外信用卡在窗口和售票機都能刷，行動支付以現場公告為準。"
         },
         {
           "type": "image",
@@ -236,24 +236,48 @@
           ]
         },
         {
-          "type": "link",
-          "text": "首爾四天三夜行程：明洞、弘大、景福宮怎麼排",
-          "url": "https://mokaair.com/zh-TW/guides/howto/seoul-4-day-itinerary"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "首爾四天三夜行程：明洞、弘大、景福宮怎麼排",
+              "kind": "howto",
+              "slug": "seoul-4-day-itinerary"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "釜山三天兩夜行程：海雲台、甘川、南浦洞",
-          "url": "https://mokaair.com/zh-TW/guides/howto/busan-3-day-itinerary"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "釜山三天兩夜行程：海雲台、甘川、南浦洞",
+              "kind": "howto",
+              "slug": "busan-3-day-itinerary"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "釜山出發慶州一日遊：KTX 或市外巴士、公車路線與夜景",
-          "url": "https://mokaair.com/zh-TW/guides/howto/gyeongju-day-trip-from-busan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "釜山出發慶州一日遊：KTX 或市外巴士、公車路線與夜景",
+              "kind": "howto",
+              "slug": "gyeongju-day-trip-from-busan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "首爾地鐵與 T-money 交通卡攻略",
-          "url": "https://mokaair.com/zh-TW/guides/howto/seoul-subway-t-money-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "首爾地鐵與 T-money 交通卡攻略",
+              "kind": "howto",
+              "slug": "seoul-subway-t-money-guide"
+            }
+          ]
         },
         {
           "type": "link",
@@ -321,6 +345,11 @@
           "title": "韓國觀光公社 VisitKorea：KORAIL PASS+（NAMANE 卡機台地點、加值 8,000 韓元）",
           "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=1563646",
           "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Korail 公告 2026-08-14：코레일, 추석 연휴 승차권 9월 3일부터 예매（專用預訂網頁、交通弱勢 9/3–4、一般 9/7–11、Korail+ 與官網、整合會員限定、SR 會員先轉換）",
+          "url": "https://info.korail.com/info/selectBbsNttView.do?bbsNo=199&key=911&nttNo=27180",
+          "checked_on": "2026-09-16"
         }
       ]
     }

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,17 +27,68 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "token、RAG、MCP、代理、開放權重，讀 AI 工具的說明時常會遇到這些名字。本篇保留原有 50 詞速查架構，於 2026 年 9 月 14 日重新查核定義，說明一般概念與容易誤解之處；產品功能只作示例，實際設定、供應範圍和費率應回到當期官方文件核對。這是本次整理範圍，不宣稱涵蓋所有新詞。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "token、"
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "、代理、"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "，讀 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工具的說明時常會遇到這些名字。本篇保留原有 50 詞速查架構，於 2026 年 9 月 14 日重新查核定義，說明一般概念與容易誤解之處；產品功能只作示例，實際設定、供應範圍和費率應回到當期官方文件核對。這是本次整理範圍，不宣稱涵蓋所有新詞。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這份表不照字母序，而是照你會遇到它們的場景分成五組：模型與訓練、使用與功能、推理與代理、生成與媒體、基礎設施與費用。第一次讀從頭掃一遍；之後遇到不懂的詞，用瀏覽器的搜尋功能（Ctrl+F 或 Cmd+F）跳到那一條就好。每組結尾都有連結，想把某個概念弄透再點進本系列的深入文章；文末另有十組最常被混用的詞對。"
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -61,8 +113,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "這一組是其他四組的地基。新聞說某個模型「參數更多、視窗更大、截止日更新」，指的都是這裡的東西。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一組是其他四組的地基。新聞說某個模型「"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "更多、視窗更大、截止日更新」，指的都是這裡的東西。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -86,14 +153,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "大型語言模型（Large Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型（Large Language Model）是什麼",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -121,14 +200,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -154,14 +245,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -169,8 +272,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "文字以外的生成涉及不同資料型態，也帶來聲音授權與內容來源的問題。生成方法、生成任務，以及事後的標記與查驗應分開理解。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文字以外的生成涉及不同資料型態，也帶來聲音授權與內容來源的問題。生成方法、生成任務，以及事後的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與查驗應分開理解。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -185,9 +303,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -216,9 +340,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",

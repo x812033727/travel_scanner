@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,17 +40,53 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "DeepSeek 的營運公司是杭州深度求索人工智能基础技术研究有限公司，官網中文首頁把產品分成四塊：DeepSeek 網頁版、DeepSeek 手機應用、API 開放平台，以及給開發者組裝 AI 代理用的開源工具 DeepSeek Harness。一般人會碰到的是前兩個，都是免費的對話助理；API 是給程式呼叫的付費服務，按 token 計價；Harness 這篇不展開。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "DeepSeek 的營運公司是杭州深度求索人工智能基础技术研究有限公司，官網中文首頁把產品分成四塊：DeepSeek 網頁版、DeepSeek 手機應用、API 開放平台，以及給開發者組裝 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "用的開源工具 DeepSeek Harness。一般人會碰到的是前兩個，都是免費的對話助理；API 是給程式呼叫的付費服務，按 token 計價；Harness 這篇不展開。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "官網首頁在 2026 年 9 月列出的現行主力是 DeepSeek-V4.1-Flash，官方更新記錄寫它在 2026 年 9 月 10 日發布，是新架構家族裡最小的模型，具備原生的圖像理解；更早的 V4 與 R1 等也列在首頁。V4.1-Flash 的權重放在 Hugging Face，模型卡寫明授權是 MIT，骨幹參數 552B，每個 token 在讀入提示詞（prefill）時只啟用其中 8B、生成（decode）時 16B，上下文最長 100 萬 token。MIT 授權的意思是任何人都可以下載、修改、商用，「開源」就是從這裡來的。但「開源權重」與「免費服務」是兩件事：前者是你自己拿模型去跑，後者是官方的伺服器幫你跑，資料流向完全不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官網首頁在 2026 年 9 月列出的現行主力是 DeepSeek-V4.1-Flash，官方更新記錄寫它在 2026 年 9 月 10 日發布，是新架構家族裡最小的模型，具備原生的圖像理解；更早的 V4 與 R1 等也列在首頁。V4.1-Flash 的權重放在 Hugging Face，模型卡寫明授權是 MIT，骨幹"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " 552B，每個 token 在讀入提示詞（prefill）時只啟用其中 8B、生成（decode）時 16B，上下文最長 100 萬 token。MIT 授權的意思是任何人都可以下載、修改、商用，「開源」就是從這裡來的。但「開源權重」與「免費服務」是兩件事：前者是你自己拿模型去跑，後者是官方的伺服器幫你跑，資料流向完全不同。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -57,8 +94,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "台灣 App Store 上的「DeepSeek - AI 智能助手」由杭州深度求索上架，價格是免費，年齡分級 13+，需要 iOS 15.0 以上；簡介把用途寫成搜尋、寫作、閱讀、解題、翻譯，2.5.1 版的更新說明寫著「新模型上線，快速、專家、識圖模式合併升級」，也就是 App 已經換上能看圖的新一代模型。網頁版在 chat.deepseek.com，功能相同。免費版的次數上限官網沒有公布，以登入後看到的為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣 App Store 上的「DeepSeek - "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 智能助手」由杭州深度求索上架，價格是免費，年齡分級 13+，需要 iOS 15.0 以上；簡介把用途寫成搜尋、寫作、閱讀、解題、翻譯，2.5.1 版的更新說明寫著「新模型上線，快速、專家、識圖模式合併升級」，也就是 App 已經換上能看圖的新一代模型。網頁版在 chat.deepseek.com，功能相同。免費版的次數上限官網沒有公布，以登入後看到的為準。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -100,9 +152,15 @@
           "text": "使用條款補了兩件事：條款受中華人民共和國大陸地區法律管轄，爭議由杭州深度求索註冊地的法院管；第 3.3 條寫 DeepSeek 有權用技術手段審查使用者的使用行為，包括建立風險過濾機制。App Store 的隱私標籤則列出位置、聯絡資訊、使用者內容、搜尋記錄、識別碼、使用資料與診斷資料會與你連結。放在一起看，結論很直接：你打進去的每一句話、貼的每一份檔案，預設會傳到位於中國的伺服器，並可能用來訓練模型，除非你關掉那個開關；關掉之後，資料仍然存放在那裡。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -131,9 +189,15 @@
           "text": "對一般使用者的意義是：問旅遊、寫作、程式、翻譯，通常不會碰到；問歷史、時事、兩岸與人權相關的問題，答案可能不完整或帶有特定立場，這類問題最好換一個工具再問一次，並以一手資料為準。幻覺怎麼查證另有一篇。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -200,14 +264,26 @@
           "text": "選法很簡單：資料不敏感、只是想試試或做日常的寫作翻譯，途徑一夠用，先關掉訓練開關；資料敏感又非用不可，途徑二給企業、途徑三給有電腦的人；兩者都沒有，就不要用 AI 處理這份資料。常被一起提到的 MiniMax，另有一篇用同樣方式整理。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
           "type": "callout",

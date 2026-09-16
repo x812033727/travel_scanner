@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -82,18 +83,20 @@
               "text": "Mac 使用者需要原生安裝、Option 加空白鍵與視窗分享時，請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Mac 桌面版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+              "kind": "life",
+              "slug": "gemini-mac-app-guide"
             },
             {
               "type": "text",
               "text": "。想在正在看的網頁旁邊直接提問，則屬於"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Chrome 內建 Gemini",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-chrome-guide"
+              "kind": "life",
+              "slug": "gemini-in-chrome-guide"
             },
             {
               "type": "text",
@@ -140,9 +143,10 @@
               "text": "附件顯示完成與模型正確理解是兩件事。文字檔可以直接核對；換成 PDF、掃描圖片或試算表時，要再看頁面、數字與欄位是否辨識正確。進一步的 OCR、跨檔比較與圖表核對方式，請接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "PDF、圖片與表格分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -158,9 +162,10 @@
               "text": "檔案大小、數量與當次可用額度會影響上傳。遇到限制先讀畫面訊息，改用一份較小且可辨識的公開練習檔，確認流程正常，再處理真正的檔案。不要只因上傳失敗就購買更高方案；檔案損壞、格式或組織權限也可能是原因，額度資訊集中在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -198,9 +203,10 @@
               "text": "複製結果時，先貼到自己的草稿，檢查表格欄位、專案符號及換行是否保持。生成的信件文字不會因複製而自動寄出；若要交由 Google 檔案持續編輯，可以使用介面提供的匯出功能或手動貼上，再確認目的檔案及分享權限。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gmail 與檔案工作流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+              "kind": "life",
+              "slug": "gemini-in-gmail-docs-sheets"
             },
             {
               "type": "text",
@@ -216,9 +222,10 @@
               "text": "常用任務可以儲存提示詞和一份測試資料，但不要把帳號密碼或 API 金鑰放進桌面便條。網頁版自訂助手使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -247,9 +254,10 @@
               "text": "「上傳後可以直接刪掉原始檔嗎？」不建議把對話當成唯一備份。保留原始檔案及已核對成果，尤其是需要追溯來源的工作。雲端對話與活動儲存的設定另依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "隱私及記錄管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -298,18 +306,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Mac 桌面版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+              "kind": "life",
+              "slug": "gemini-mac-app-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "讀 PDF、圖片與表格",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -318,9 +328,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

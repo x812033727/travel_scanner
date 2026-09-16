@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "marketing",
+    "content-marketing"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,23 @@
           "text": "陶笛體驗課要透過每週電子報、社群貼文和合作單位網站招生。三個人各自做連結，最後有人寫課程中文名、有人寫活動英文縮寫，連電子報來源都有大小寫差異。報表看起來像幾場活動，其實只是命名沒對齊。"
         },
         {
-          "type": "paragraph",
-          "text": "UTM 是附在網址上的活動參數，能協助分析工具辨識帶來流量的來源，但不會自行替網站安裝量測。本文依 2026 年 9 月 14 日查閱的 Google Analytics 官方文件整理；課程、命名與示範網址均為原創，沒有實際寄信、投放或收集報名資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "UTM 是附在網址上的活動"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，能協助分析工具辨識帶來流量的來源，但不會自行替網站安裝量測。本文依 2026 年 9 月 14 日查閱的 Google Analytics 官方文件整理；課程、命名與示範網址均為原創，沒有實際寄信、投放或收集報名資料。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -121,8 +137,23 @@
           "text": "若連結會經過短網址、合作平台或網站轉址，逐段確認目的地與 UTM 能否保留。原創團隊可先從測試信件點開，而不是只在網址列貼上最後一段長網址；這樣才會走到使用者真的經過的路徑。完成短網址也不等於已完成 GA4 接收驗證。"
         },
         {
-          "type": "paragraph",
-          "text": "已串接 Google Ads 等支援平台時，還要核對自動標記與帳戶整合。自動標記可提供較完整的廣告資料，UTM 與自動標記一起使用時，報表也有各自的維度與處理規則。不要為了讓自訂來源看起來一致，就刪除 gclid 或關閉既有整合；先依官方說明查明欄位用途。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "已串接 Google Ads 等支援平台時，還要核對自動"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與帳戶整合。自動標記可提供較完整的廣告資料，UTM 與自動標記一起使用時，報表也有各自的維度與處理規則。不要為了讓自訂來源看起來一致，就刪除 gclid 或關閉既有整合；先依官方說明查明欄位用途。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +237,37 @@
           "text": "UTM 不是身分證明，也不是秘密。保留原始標記有助追查活動，但不能保證使用者最後看見連結的平台與標記完全一致。"
         },
         {
-          "type": "link",
-          "text": "確認 GA4 有收到正確網站事件",
-          "url": "https://mokaair.com/zh-TW/life/ga4-site-measurement"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "確認 GA4 有收到正確網站事件",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 GTM 管理站內事件與版本",
-          "url": "https://mokaair.com/zh-TW/life/google-tag-manager-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 GTM 管理站內事件與版本",
+              "kind": "life",
+              "slug": "google-tag-manager-setup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排各通路活動的內容日程",
-          "url": "https://mokaair.com/zh-TW/life/content-marketing-calendar"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排各通路活動的內容日程",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
         }
       ],
       "sources": [

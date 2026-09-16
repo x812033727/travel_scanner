@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -181,14 +183,26 @@
           "text": "他人的優惠碼、舊價格與退款經驗，不能證明你的方案適用。若結帳內容不符合預期，先取得官方說明，再決定是否提交付款。"
         },
         {
-          "type": "link",
-          "text": "Bluehost 架站流程：購買前確認，到安裝後驗收",
-          "url": "https://mokaair.com/zh-TW/life/bluehost-wordpress-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Bluehost 架站流程：購買前確認，到安裝後驗收",
+              "kind": "life",
+              "slug": "bluehost-wordpress-setup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網域或主機到期會怎樣：續約與停用前的檢查表",
-          "url": "https://mokaair.com/zh-TW/life/domain-hosting-renewal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網域或主機到期會怎樣：續約與停用前的檢查表",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
         }
       ],
       "sources": [

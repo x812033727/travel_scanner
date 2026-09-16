@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -60,8 +61,23 @@
           "text": "這七個面向裡，媒材、光線、色彩、構圖就是這篇要列的風格詞，主體與環境則是你自己的內容。Google 的 Imagen 提示詞指南把同一件事壓成三段：主體、情境與背景、風格，並說風格可以很籠統（繪畫、照片、素描），也可以很具體（粉彩畫、炭筆素描、等距 3D），而且可以混用。同一頁也寫明提示詞長度上限是 480 個 token，建議先寫核心想法再逐輪加細節。"
         },
         {
-          "type": "paragraph",
-          "text": "OpenAI 說明中心的 ChatGPT 圖片文章講的是同一件事：描述你要的畫面時，把主體、顏色或風格這類細節寫清楚，官方舉的例子是把一張手繪草圖變成一棟被樹圍繞的紅色房子的水彩畫。三家說法一致，差別只在參數：Midjourney 的參數一律放在描述文字最後、破折號前留一個空格、參數裡不要有標點，風格詞則寫在描述文字裡面。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 說明中心的 ChatGPT 圖片文章講的是同一件事：描述你要的畫面時，把主體、顏色或風格這類細節寫清楚，官方舉的例子是把一張手繪草圖變成一棟被樹圍繞的紅色房子的水彩畫。三家說法一致，差別只在"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "：Midjourney 的參數一律放在描述文字最後、破折號前留一個空格、參數裡不要有標點，風格詞則寫在描述文字裡面。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -83,14 +99,26 @@
           }
         },
         {
-          "type": "link",
-          "text": "Midjourney 提示詞：風格、比例、參考圖",
-          "url": "https://mokaair.com/zh-TW/life/midjourney-prompt-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Midjourney 提示詞：風格、比例、參考圖",
+              "kind": "life",
+              "slug": "midjourney-prompt-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -325,9 +353,15 @@
           "code": "中文：一座小鎮的等距 3D 場景，45 度俯視，柔和材質，乾淨的單色背景\nEnglish: an isometric 3D scene of a small town, 45-degree top-down view, soft refined materials, clean minimal background\n\n中文：一隻戴斗笠的柴犬貼紙，粗黑外框，簡單的賽璐璐平塗，白色背景\nEnglish: a sticker of a shiba inu wearing a straw hat, bold clean outlines, simple cel-shading, white background\n\n中文：畫面右下只有一片楓葉，極簡構圖，大片米白空白，左上方柔和散射光\nEnglish: a minimalist composition with a single maple leaf in the bottom-right, vast off-white canvas, significant negative space, soft diffused lighting from the top left"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+              "kind": "life",
+              "slug": "chatgpt-image-generation-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -477,9 +511,15 @@
           "code": "中文：海邊坐著一個人，特寫，黃金時刻逆光，長長的暖色影子，比例 16:9\nEnglish: a man sitting on the beach, close up, golden hour lighting, backlit, long warm shadows --ar 16:9\n\n中文：雨後的巷口，霓虹燈，柏油路反光，洋紅與青色\nEnglish: a narrow alley after rain, neon lighting, wet asphalt reflections, magenta and cyan\n\n中文：清晨的山谷，薄霧，體積光束，冷調低飽和\nEnglish: a valley at dawn, morning mist, volumetric light shafts, cool pale palette"
         },
         {
-          "type": "link",
-          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
-          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -487,13 +527,34 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "這篇 50 條全部是通用的美術與攝影術語，沒有用任何在世創作者的名字，也沒有指名特定商業作品。Google 的 Imagen 指南其實有寫「參考特定藝術家或藝術運動會有幫助」，本篇仍只用媒材、時代、技法、光線、構圖、色彩這類詞，理由很實際：這些詞說得出哪裡不對，可以一次只改一個；指名一個人只能整包接受或整包放棄。Midjourney 的社群守則管的是內容，例如真實人物的影像、誤導與選舉用途，沒有一條專門管風格詞。著作權與平台條款怎麼看 AI 生成圖，站上有專篇。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇 50 條全部是通用的美術與攝影術語，沒有用任何在世創作者的名字，也沒有指名特定商業作品。Google 的 Imagen 指南其實有寫「參考特定藝術家或藝術運動會有幫助」，本篇仍只用媒材、時代、技法、光線、構圖、色彩這類詞，理由很實際：這些詞說得出哪裡不對，可以一次只改一個；指名一個人只能整包接受或整包放棄。Midjourney 的社群守則管的是內容，例如真實人物的影像、誤導與選舉用途，沒有一條專門管風格詞。著作權與平台條款怎麼看 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生成圖，站上有專篇。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -520,19 +581,37 @@
           "text": "用通用術語描述畫面只是讓提示詞更可控，不代表產出沒有爭議。輸出能不能商用、誰擁有它，看的是你用的工具條款；台灣主管機關怎麼看 AI 生成圖的著作權，站上另有專篇。文中描述詞的說明都照官方文件寫，撰稿環境無法生圖，實際畫面以你當下的工具版本為準。"
         },
         {
-          "type": "link",
-          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞工程（Prompt Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞工程（Prompt Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-engineering"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "沙盒，英文 Sandbox，在 AI 工具執行情境通常指一個受限制的執行環境：程式可以完成某些工作，但只能接觸指定的檔案、網路與系統資源。它不是模型的一種思考能力，而是模型之外的系統限制。即使模型輸出不合理指令，環境也應依既定政策允許或拒絕，而不是只靠模型自律。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "沙盒，英文 Sandbox，在 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工具執行情境通常指一個受限制的執行環境：程式可以完成某些工作，但只能接觸指定的檔案、網路與系統資源。它不是模型的一種思考能力，而是模型之外的系統限制。即使模型輸出不合理指令，環境也應依既定政策允許或拒絕，而不是只靠模型自律。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -152,24 +168,48 @@
           "text": "只放任務需要的內容與權限。不要因環境有沙盒，就把整份機密資料或正式憑證全部交進去。"
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+              "kind": "life",
+              "slug": "ai-term-human-in-the-loop"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

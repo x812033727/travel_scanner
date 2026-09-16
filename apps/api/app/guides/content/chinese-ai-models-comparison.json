@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -25,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "中國系的 AI 模型這兩年名字愈出愈多，但真正決定你能不能用、要付多少錢的，是幾個很具體的欄位：旗艦模型叫什麼、權重能不能下載、授權允許你做什麼、上下文視窗多大、API 每百萬 token 多少錢、台灣區的 App Store 有沒有上架，以及隱私政策寫資料存在哪一國。這篇把 DeepSeek、阿里巴巴的 Qwen、月之暗面的 Kimi、字節跳動的豆包與 MiniMax 五家，放進同一套欄位一次看完。搜「中國 AI」想找哪一家能用的，看這幾欄就夠。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "中國系的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 模型這兩年名字愈出愈多，但真正決定你能不能用、要付多少錢的，是幾個很具體的欄位：旗艦模型叫什麼、權重能不能下載、授權允許你做什麼、上下文視窗多大、API 每百萬 token 多少錢、台灣區的 App Store 有沒有上架，以及隱私政策寫資料存在哪一國。這篇把 DeepSeek、阿里巴巴的 Qwen、月之暗面的 Kimi、字節跳動的豆包與 MiniMax 五家，放進同一套欄位一次看完。搜「中國 AI」想找哪一家能用的，看這幾欄就夠。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -42,45 +58,105 @@
           "text": "DeepSeek 的營運主體是杭州深度求索人工智能基礎技術研究有限公司。官方 API 文件的定價頁目前只列兩個模型名：deepseek-flash（版本 DeepSeek-V4.1-Flash）與 deepseek-v4-pro（版本 DeepSeek-V4-Pro-0813），兩個都標上下文長度 1M、最大輸出 384K，flash 支援圖像理解、v4-pro 標示不支援。兩個版本的權重都放在官方的 Hugging Face 帳號上，模型卡標 MIT 授權，是五家裡附加條件最少的一種。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-chat-and-reasoner"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 對話與深度思考：哪些題目該開推理模式",
+              "kind": "life",
+              "slug": "deepseek-chat-and-reasoner"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Qwen（通義千問）是阿里巴巴的模型家族，消費者入口現在叫 Qwen Studio，國際站的 API 平台是 Qwen Cloud。旗艦 API 模型 qwen3.8-max 的模型頁標 Context 1M，輸入可以是文字、圖片與影片，輸出是文字；對應的開放權重是 Qwen3.8-2.4T-A95B，模型卡寫總參數 2.4T、啟用 95B，原生上下文 262,144 token、可延伸到 1,010,000 token。隱私政策寫這些服務由 Alibaba Cloud (Singapore) Private Limited 提供。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Qwen（通義千問）是阿里巴巴的模型家族，消費者入口現在叫 Qwen Studio，國際站的 API 平台是 Qwen Cloud。旗艦 API 模型 qwen3.8-max 的模型頁標 Context 1M，輸入可以是文字、圖片與影片，輸出是文字；對應的開放權重是 Qwen3.8-2.4T-A95B，模型卡寫總"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " 2.4T、啟用 95B，原生上下文 262,144 token、可延伸到 1,010,000 token。隱私政策寫這些服務由 Alibaba Cloud (Singapore) Private Limited 提供。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
-          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+              "kind": "life",
+              "slug": "qwen-alibaba-models-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Kimi 出自北京月之暗面科技股份有限公司，聊天入口是 kimi.com，開發者平台分成國際站與中國站兩套定價。旗艦是 Kimi K3，模型卡寫總參數 2.8T、啟用參數 104B、上下文長度 1,048,576 token，並寫明完整權重以 Kimi K3 License 釋出。同一張定價表上還有給程式任務用的 kimi-k2.7-code 與較便宜的 kimi-k2.6，這兩個的上下文都是 262,144 token。"
         },
         {
-          "type": "link",
-          "text": "Kimi（月之暗面）：長文件與 K 系列模型",
-          "url": "https://mokaair.com/zh-TW/life/kimi-moonshot-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Kimi（月之暗面）：長文件與 K 系列模型",
+              "kind": "life",
+              "slug": "kimi-moonshot-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "豆包是字節跳動的 AI 助理，軟體與服務由北京春田知韻科技有限公司及／或關聯方提供，模型線叫 Seed，API 賣在火山引擎的火山方舟。官方模型列表上的旗艦是 doubao-seed-2-1-pro-260628，上下文視窗 256k、最大輸入 256k、最大回答 256k。五家裡只有它的旗艦沒有公開權重，官方的 Hugging Face 組織上放的是另一批研究用模型。"
         },
         {
-          "type": "link",
-          "text": "豆包（字節跳動）：功能與台灣可用性",
-          "url": "https://mokaair.com/zh-TW/life/doubao-bytedance-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "豆包（字節跳動）：功能與台灣可用性",
+              "kind": "life",
+              "slug": "doubao-bytedance-guide"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "MiniMax 的國際站是 minimax.io，API 平台的隱私政策寫營運主體是新加坡公司 Nanonoble Pte. Ltd.。旗艦 MiniMax-M3 的模型卡寫它是原生多模態模型、約 428B 參數、啟用約 23B、上下文 1M，權重以 MiniMax Community License 釋出。它和另外四家最不一樣的地方是產品線：同一個定價頁上還有影片模型 MiniMax-H3、語音、音樂與圖片模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "MiniMax 的國際站是 minimax.io，API 平台的隱私政策寫營運主體是新加坡公司 Nanonoble Pte. Ltd.。旗艦 MiniMax-M3 的模型卡寫它是原生"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "模型、約 428B 參數、啟用約 23B、上下文 1M，權重以 MiniMax Community License 釋出。它和另外四家最不一樣的地方是產品線：同一個定價頁上還有影片模型 MiniMax-H3、語音、音樂與圖片模型。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -144,14 +220,26 @@
           "text": "看價格前有幾個規則要先知道。DeepSeek 的定價頁把價格分成離峰與高峰，離峰價是高峰價的一半，高峰時段是週一到週五、世界標準時間 01:00 到 04:00 與 06:00 到 10:00；同一頁還有快取命中價，deepseek-v4-pro 命中時每百萬輸入 token 只要 0.022 美元。Kimi 的國際站也分快取命中與未命中，kimi-k3 命中 0.30 美元、未命中 3.00 美元，中國站同一個模型寫 2.00 元與 20.00 元。火山方舟則是依輸入長度分段計價，表上寫的是輸入長度 0 到 256 千 token 這一段的單價。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -222,9 +310,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -247,14 +341,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -282,14 +388,26 @@
           "text": "DeepSeek、Kimi 與豆包的隱私政策都寫個人資料存在中華人民共和國境內，Qwen 寫存放或處理在新加坡與中國大陸，MiniMax 的 API 平台政策寫存在美國的資料中心。台灣的資通安全署公告是對公務機關的規範，同一份稿也寫明目前未進一步限制民眾下載及使用。一般使用者真正要自己判斷的是輸入的內容：公司機密、客戶名單、還沒公開的財務數字，不管用哪一家都不該直接貼進對話框。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "基準測試（Benchmark）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "基準測試（Benchmark）是什麼",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            }
+          ]
         }
       ],
       "sources": [

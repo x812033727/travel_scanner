@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "productivity",
-    "daily"
+    "daily",
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,17 +27,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "週回顧做不下去，多半不是因為懶，而是每次都得重新想「這次要回顧什麼」。寫成範本就解決了大半：輸入永遠是那幾份紀錄，輸出永遠是那幾個欄位，AI 只負責整理成同一種形狀，決定權留給你。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "週回顧做不下去，多半不是因為懶，而是每次都得重新想「這次要回顧什麼」。寫成範本就解決了大半：輸入永遠是那幾份紀錄，輸出永遠是那幾個欄位，"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 只負責整理成同一種形狀，決定權留給你。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇給你 6 段可以直接複製的範本，再把它們接上自動化：ChatGPT 排程任務、Gemini 排程動作與 Claude Cowork 各有各的方案門檻與上限，Notion 與 Obsidian 負責存放範本，Google 日曆的時間洞察補上一份你記不得的輸入。方案與上限都是 2026 年 9 月 15 日查官方說明頁的結果。回顧本身為什麼值得做，站上另有一篇。"
         },
         {
-          "type": "link",
-          "text": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
-          "url": "https://mokaair.com/zh-TW/life/weekly-review-reset-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
+              "kind": "life",
+              "slug": "weekly-review-reset-routine"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -171,9 +193,15 @@
           "text": "範本本身也該有個固定的家，散在對話紀錄裡的版本三週後就找不到。"
         },
         {
-          "type": "link",
-          "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
-          "url": "https://mokaair.com/zh-TW/life/ai-prompt-library-personal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+              "kind": "life",
+              "slug": "ai-prompt-library-personal"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -214,9 +242,15 @@
           "text": "三家都一樣：排程只是把提示詞按時送出去，抓不到你腦袋裡本週發生的事。正確用法是讓它在固定時間把範本推到你面前，你花五分鐘貼上這週的四份紀錄，它省下的是「想起來要做」。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜排程與重複任務",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-scheduled-tasks"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜排程與重複任務",
+              "kind": "life",
+              "slug": "claude-code-scheduled-tasks"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -244,9 +278,15 @@
           "text": "官方核心外掛清單裡沒有「每週筆記」，只有每日筆記；週回顧在 Obsidian 就是一份放在範本資料夾、每週手動插入的筆記，想自動出現得靠社群外掛或外部排程。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -280,9 +320,15 @@
           "text": "回顧的另一端是把挑出來的 3 件事放回行事曆與待辦。Google Tasks 的重複任務可設每天、每週、每月或每年，結束條件有不設結束日、指定日期結束、重複幾次後結束三種。官方列的限制先知道比較好：共用任務與子任務不能設重複、重複任務不能搬到其他清單，而且一旦停止就不能改回重複，只能重建一串。"
         },
         {
-          "type": "link",
-          "text": "AI 排程與行事曆助手：找時間、排工作區塊與定時提醒",
-          "url": "https://mokaair.com/zh-TW/life/ai-calendar-scheduling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 排程與行事曆助手：找時間、排工作區塊與定時提醒",
+              "kind": "life",
+              "slug": "ai-calendar-scheduling"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -304,17 +350,38 @@
           "text": "排程任務的標題與指示是可以分享出去的內容，而且分享連結建立之後，改動原任務不會自動更新連結裡的內容。習慣兩件事：敏感的人事物用代號，金額與健康數值寫區間或留在本機筆記，只把需要判斷的部分貼進去。"
         },
         {
-          "type": "paragraph",
-          "text": "權限也要壓到最小。讓 AI 讀行事曆、郵件或筆記資料庫最有效，也風險最大：接進來的內容如果夾帶了針對 AI 的指令，代理有可能照著做，這就是提示詞注入。Notion 自訂代理只存取你授權的頁面與應用程式並留下活動紀錄，正是該用的模式：先只給讀取、先接一個測試用的資料庫、跑完第一輪去看它到底讀了什麼，再決定要不要放寬。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "權限也要壓到最小。讓 AI 讀行事曆、郵件或筆記資料庫最有效，也風險最大：接進來的內容如果夾帶了針對 AI 的指令，代理有可能照著做，這就是"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "。Notion 自訂代理只存取你授權的頁面與應用程式並留下活動紀錄，正是該用的模式：先只給讀取、先接一個測試用的資料庫、跑完第一輪去看它到底讀了什麼，再決定要不要放寬。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "最後是自我檢查。本文不提供實測結果，官方文件寫得出來的只有功能與上限。自測法是連續 4 週用同一份範本與同樣四份輸入，第 5 週把 4 份輸出並排著讀；如果幾乎一樣，問題通常不在 AI，而在輸入太籠統。把「專案有進展」換成「專案完成了哪一個可以被別人接手的段落」，輸出馬上就不一樣。"
         },
         {
-          "type": "link",
-          "text": "每月收支回顧：30 分鐘看完一個月的錢去哪了",
-          "url": "https://mokaair.com/zh-TW/life/monthly-money-review"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "每月收支回顧：30 分鐘看完一個月的錢去哪了",
+              "kind": "life",
+              "slug": "monthly-money-review"
+            }
+          ]
         }
       ],
       "sources": [

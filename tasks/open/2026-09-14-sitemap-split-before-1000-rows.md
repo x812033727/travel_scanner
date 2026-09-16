@@ -1,20 +1,20 @@
 ---
 id: 2026-09-14-sitemap-split-before-1000-rows
 title: sitemap 拆成 sitemap index：已經 1,395 列，上限 1,000 已破
-status: open
+status: review
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-15T15:42:44Z
 created_at: 2026-09-14T23:07:00Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on:
   - 2026-09-14-claude-code-tutorial-center
   - 2026-09-14-pack-ingest-urlopen-scheme
 scope:
-  - apps/web/app/sitemap.ts
-  - apps/web/app/sitemap.test.ts
+  - apps/web/app/sitemaps
+  - apps/web/app/llms.txt/route.ts
   - apps/web/app/robots.ts
   - apps/web/app/robots.test.ts
   - apps/web/lib/guides.server.ts
@@ -27,6 +27,10 @@ scope:
   - apps/api/tests/test_guides_pack_ingest.py
   - docs/seo.md
   - docs/travel-guides.md
+  - apps/web/app/sitemap.xml
+  - apps/web/e2e/seo.spec.ts
+  - tools/e2e-runtime-api.mjs
+  - apps/api/tests/test_gemini_series.py
 ---
 
 # sitemap 拆成 sitemap index：已經 1,395 列，上限 1,000 已破
@@ -78,17 +82,17 @@ scope:
 
 ## Definition of done
 
-- [ ] `/sitemap.xml` 變成 sitemap index，靜態路由一個子 sitemap、文章依專區或依語系分成多個子 sitemap，每個子檔不超過 1,000 列，沒有文章被擠掉。
-- [ ] API 提供可分頁或依專區／語系篩選的 sitemap 讀法，web 端逐頁讀完；API 失敗時退回靜態子 sitemap，不出空檔。
-- [ ] `robots.ts` 指向 sitemap index；`e2e/seo.spec.ts` 與 `apps/web/app/sitemap.test.ts` 更新；`pack_ingest.py` 的 `SITEMAP_WARN_ROWS` 警語改成對子 sitemap 的上限說話。
-- [ ] `docs/seo.md`、`docs/travel-guides.md` 改寫預算段落。
+- [x] `/sitemap.xml` 變成 sitemap index，靜態路由一個子 sitemap、文章依專區或依語系分成多個子 sitemap，每個子檔不超過 1,000 列，沒有文章被擠掉。
+- [x] API 提供可分頁或依專區／語系篩選的 sitemap 讀法，web 端逐頁讀完；API 失敗時退回靜態子 sitemap，不出空檔。
+- [x] `robots.ts` 指向 sitemap index；`e2e/seo.spec.ts` 與 `apps/web/app/sitemap.test.ts` 更新；`pack_ingest.py` 的 `SITEMAP_WARN_ROWS` 警語改成對子 sitemap 的上限說話。
+- [x] `docs/seo.md`、`docs/travel-guides.md` 改寫預算段落。
 
 ## Steps
 
-- [ ] 決定切法（建議依專區：`guides`、`life`，再依語系）並寫進 `docs/seo.md`。
-- [ ] API：`SitemapEntry` 讀法加 `section`／`locale`／`cursor` 參數，保留舊呼叫相容。
-- [ ] Web：`sitemap.ts` 用 Next 的 `generateSitemaps` 或自訂 index route 產出多檔。
-- [ ] 測試與文件。
+- [x] 決定切法（建議依專區：`guides`、`life`，再依語系）並寫進 `docs/seo.md`。
+- [x] API：`SitemapEntry` 讀法加 `section`／`locale`／`cursor` 參數，保留舊呼叫相容。
+- [x] Web：`sitemap.ts` 用 Next 的 `generateSitemaps` 或自訂 index route 產出多檔。
+- [x] 測試與文件。
 
 ## How to verify
 
@@ -102,8 +106,21 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life
 
 ## Notes
 
+- 2026-09-15 落地（claude-fable-5-1）。實況比票面更急：repo 內容包已有 1,375 列（travel 185、life 1,190），不是 986。
+- 切法：`/sitemap.xml` 改為手寫 `<sitemapindex>`（`app/sitemap.xml/route.ts`），子檔 `app/sitemaps/sitemap.ts` + `generateSitemaps` 固定 11 個 id
+  （`static` + 專區×語系），URL `/sitemaps/sitemap/<id>.xml`。Next 16 不會產生 index；`app/sitemap.ts` 與 `app/sitemap.xml/route.ts` 同時存在時
+  `next build` 報 "Conflicting route and metadata at /sitemap.xml"（即使前者有 `generateSitemaps`），所以子檔模組搬到子資料夾。
+  id 常數化是因為 `next build` 會呼叫 `generateSitemaps` 而建置時沒有 API。
+- 每子檔上限提高到 5,000（Google 上限 50,000），API 每頁 500 逐 cursor 讀；`life-zh-TW` 今天 818 列，排隊的批次進來仍有餘裕。
+  lint 改為每子檔 4,000 警告並指名子檔（之前的算法把 `--kind` 篩過的清單和全部混用）。
+- `pack_ingest.py` 由 `2026-09-14-pack-ingest-urlopen-scheme`（review、claim 已過 24h、修正在 HEAD #496）持有，claim 時 `--force`。
+- 相依 `2026-09-14-guide-listing-curated-order` 也改 `service.py`；後合併者 rebase。
 - 2026-09-15 提到 P1：#515 財經系列一次加了 40 列、#516 批次 08 再加 20 列，986 已經離上限 14 列，任何一批 20 篇落地就會開始把最舊的文章擠出 sitemap。
 
 - `guides.server.ts` 與 `pack_ingest.py` 目前被 review 中的 `2026-09-14-claude-code-tutorial-center`、`2026-09-14-pack-ingest-urlopen-scheme` 持有，所以先 depends_on 那兩張。
 - `2026-09-14-guide-listing-curated-order` 也會改 `service.py`；先合併的那張，後面那張要 rebase。
 - 來源：`docs/travel-guides.md`「Both sections share one 1,000-row sitemap budget」；Google 單一 sitemap 上限 50,000 列，這裡的 1,000 是自訂預算。
+- 2026-09-16 站主要求把上限整個拿掉：每專區×語系的子檔改為 5,000 列一片、超過就自動編號（`life-zh-TW-2`、`-3`…），
+  片數由 `GET /guides/sitemap/summary` 在請求時算（`generateSitemaps` 每次請求都跑，Next 對它沒回傳的 id 回 404；建置時 API 讀不到就退回 11 個基本子檔）。
+  API `GET /guides/sitemap` 多 `offset`（第 n 片從 `(n-1)×5000` 進入同一個總排序，之後照 cursor 走）。`pack_cli lint` 的 `sitemap_budget` 警告與 `SITEMAP_WARN_ROWS` 刪除。
+  文件：`docs/seo.md`、`docs/travel-guides.md`、`docs/article-architecture.md`。

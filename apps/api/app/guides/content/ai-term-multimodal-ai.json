@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "多模態 AI（Multimodal AI）能處理不只一種資訊形式，例如文字、圖像、聲音或影片。它可以把不同形式的資訊放在同一任務中使用，例如根據照片回答文字問題。這裡的模態指資料形式，不是同一種文字換成不同語言，也不是同時開很多聊天視窗。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "多模態 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "（Multimodal AI）能處理不只一種資訊形式，例如文字、圖像、聲音或影片。它可以把不同形式的資訊放在同一任務中使用，例如根據照片回答文字問題。這裡的模態指資料形式，不是同一種文字換成不同語言，也不是同時開很多聊天視窗。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -111,8 +127,23 @@
           "text": "如果文字說明與照片衝突，也要讓模型指出衝突。例如文字說有長板，照片只拍到短板，合理回覆可能是照片未涵蓋全部零件，而不是直接判定商家少寄。資訊缺少和物件不存在不同，應先確認可見範圍再下結論。"
         },
         {
-          "type": "paragraph",
-          "text": "影片和音訊同樣需要對應位置。若你問某個操作在哪一段出現，應要求時間位置或可回查片段；若只拿一段摘要回答，很難知道它是否真的辨識到指定事件。多模態輸入越多，來源標記與交叉核對就越重要。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "影片和音訊同樣需要對應位置。若你問某個操作在哪一段出現，應要求時間位置或可回查片段；若只拿一段摘要回答，很難知道它是否真的辨識到指定事件。多模態輸入越多，來源"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與交叉核對就越重要。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -177,24 +208,48 @@
           "text": "畫面上可辨認的細節與模型推論的用途，應分開說明。"
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

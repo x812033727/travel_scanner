@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 168,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Skill 的參數不是可信任的程式碼，也不保證每次都有填。本篇為差異審查流程加入明確的輸入契約，用小型 Node 程式檢查缺值、路徑、檔案類型與特殊字元，再把驗證過的路徑交給 Skill。你會知道哪些條件能由程式保證，哪些仍需檢查模型的操作紀錄。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Skill 的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "不是可信任的程式碼，也不保證每次都有填。本篇為差異審查流程加入明確的輸入契約，用小型 Node 程式檢查缺值、路徑、檔案類型與特殊字元，再把驗證過的路徑交給 Skill。你會知道哪些條件能由程式保證，哪些仍需檢查模型的操作紀錄。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -145,8 +161,23 @@
           "code": "node skills/parse-input.mjs\nnode skills/parse-input.mjs --file\nnode skills/parse-input.mjs --file fixtures/missing.diff\nnode skills/parse-input.mjs --file fixtures/tasks.json\nnode skills/parse-input.mjs --unknown fixtures/toggle.diff\n"
         },
         {
-          "type": "paragraph",
-          "text": "接著執行 node --test tests/skills.test.mjs。測試會在自己的臨時資料夾建立中文目錄、含空格檔名及含分號的字面檔名，以程式參數陣列呼叫解析函式。它不會真的把分號後內容當成命令，也不需要讀取電腦上的私人資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接著執行 node --test tests/"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": ".test.mjs。測試會在自己的臨時資料夾建立中文目錄、含空格檔名及含分號的字面檔名，以程式參數陣列呼叫解析函式。它不會真的把分號後內容當成命令，也不需要讀取電腦上的私人資料。"
+            }
+          ]
         },
         {
           "type": "paragraph",

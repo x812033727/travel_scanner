@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "woocommerce"
   ],
   "valid_until": null,
   "featured": false,
@@ -196,14 +198,26 @@
           "text": "採先授權模式時，訂單動作或狀態變更可能觸發請款。客服與財務應共用操作說明，退款後也要比對金流紀錄，不能只看網站標籤。"
         },
         {
-          "type": "link",
-          "text": "先完成 WooCommerce 商店與測試訂單設定",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-store-launch"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先完成 WooCommerce 商店與測試訂單設定",
+              "kind": "life",
+              "slug": "woocommerce-store-launch"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "金物流通知與訂單狀態如何核對",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-payments-shipping"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "金物流通知與訂單狀態如何核對",
+              "kind": "life",
+              "slug": "woocommerce-payments-shipping"
+            }
+          ]
         }
       ],
       "sources": [

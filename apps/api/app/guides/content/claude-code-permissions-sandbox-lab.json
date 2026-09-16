@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 164,
@@ -99,8 +100,23 @@
           }
         },
         {
-          "type": "paragraph",
-          "text": "工具權限決定某項操作是否需要批准或應被拒絕；Sandbox 以支援的執行環境限制命令可接觸的檔案與網路；CLAUDE.md 提供工作指引。三者可能一起影響結果，但測試時要分開觀察。不能因為 Read 工具被拒絕，就直接宣稱所有命令、MCP 和外部服務都無法存取那份資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "工具權限決定某項操作是否需要批准或應被拒絕；Sandbox 以支援的執行環境限制命令可接觸的檔案與網路；CLAUDE.md 提供工作指引。三者可能一起影響結果，但測試時要分開觀察。不能因為 Read 工具被拒絕，就直接宣稱所有命令、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 和外部服務都無法存取那份資料。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -126,8 +142,23 @@
           "code": "{\n  \"permissions\": {\n    \"allow\": [\"Bash(node --test tests/model.test.mjs)\"],\n    \"deny\": [\"Read(./private/**)\"]\n  }\n}\n"
         },
         {
-          "type": "paragraph",
-          "text": "這份設定刻意很窄：允許一個固定的模型測試命令，拒絕 Read 工具讀取 private 下的檔案。它沒有宣稱建立完整檔案防火牆，也沒有允許任意 Bash。自然語言請求與工具最終提交的命令可能不同，因此應檢查實際工具名稱及參數，不只看你輸入了什麼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這份設定刻意很窄：允許一個固定的模型測試命令，拒絕 Read 工具讀取 private 下的檔案。它沒有宣稱建立完整檔案防火牆，也沒有允許任意 Bash。自然語言請求與工具最終提交的命令可能不同，因此應檢查實際工具名稱及"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，不只看你輸入了什麼。"
+            }
+          ]
         },
         {
           "type": "paragraph",

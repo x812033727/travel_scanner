@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 110,
@@ -141,8 +142,23 @@
           "text": "先認識專案再做小修改"
         },
         {
-          "type": "paragraph",
-          "text": "第一次任務先請 Claude 列出檔案與啟動方式，確認工具真的讀到你的材料。你可以點回覆中的檔案路徑，查看 README 或程式碼。若回覆說這是 React 專案，卻沒有 package.json 依賴作為依據，要求它回到檔案重新核對，因為本練習是原生 HTML、CSS 與 JavaScript。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次任務先請 Claude 列出檔案與啟動方式，確認工具真的讀到你的材料。你可以點回覆中的檔案路徑，查看 README 或程式碼。若回覆說這是 "
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": " 專案，卻沒有 package.json 依賴作為依據，要求它回到檔案重新核對，因為本練習是原生 HTML、CSS 與 JavaScript。"
+            }
+          ]
         },
         {
           "type": "code",

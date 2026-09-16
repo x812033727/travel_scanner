@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -112,8 +113,23 @@
           "text": "例如志工填表時寫了下週三但誤勾選了日期代碼，若排程系統缺乏嚴格的邏輯互驗機制，該錯誤便會持續潛伏在每週報表中，甚至被後續的自動化流程作為已知事實引用。當偏誤被背景排程反覆滾動放大，最終產出的匯總結論可能會與原始現況產生嚴重脫節，導致人工排查錯誤源頭時必須耗費數倍的精力與時間成本。"
         },
         {
-          "type": "paragraph",
-          "text": "防範錯誤放大的關鍵，在於為排程系統設定明確的異常中斷閥值與交叉檢驗條件。只要遇到來源資料衝突或無法確認的欄位，系統應主動將該項目標記為待釐清並暫停自動推論，而非勉強產出看似合理的推論結果。唯有將不確定性顯性化，才能確保自動化流程產出的成果始終具備可靠性與可驗證性。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "防範錯誤放大的關鍵，在於為排程系統設定明確的異常中斷閥值與交叉檢驗條件。只要遇到來源資料衝突或無法確認的欄位，系統應主動將該項目"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "為待釐清並暫停自動推論，而非勉強產出看似合理的推論結果。唯有將不確定性顯性化，才能確保自動化流程產出的成果始終具備可靠性與可驗證性。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -165,14 +181,26 @@
           "text": "背景代理能接手繁瑣的資料統整，但絕不可將對外決策權完全放手。務必僅連結必要應用、定期盤點排程規則，並落實重要動作前的人工授權。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5 的發布、暫停與恢復：AI 服務可用性也是選擇條件",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5 的發布、暫停與恢復：AI 服務可用性也是選擇條件",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         }
       ],
       "sources": [
@@ -348,14 +376,26 @@
           "text": "Background agents can handle tedious data synthesis, but external decision-making must never be fully relinquished. Always connect only necessary apps, periodically review scheduling rules, and enforce human authorization prior to critical actions."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5 Launch, Suspension, and Restoration: Availability Criteria",
-          "url": "https://mokaair.com/en/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5 Launch, Suspension, and Restoration: Availability Criteria",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         }
       ],
       "sources": [
@@ -531,14 +571,26 @@
           "text": "バックグラウンドエージェントは煩雑なデータ集約を代行できますが、対外的な意思決定権を完全に手放してはなりません。必要なアプリのみを連携し、スケジュールルールを定期的に棚卸しし、重要アクションの前には人間による承認を徹底してください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5の公開、一時停止、再開：AIサービスの可用性も選定条件に",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5の公開、一時停止、再開：AIサービスの可用性も選定条件に",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         }
       ],
       "sources": [
@@ -714,14 +766,26 @@
           "text": "백그라운드 에이전트는 번거로운 데이터 정리를 대신할 수 있지만 외부 결정권까지 완전히 넘겨주어서는 안 됩니다. 반드시 필요한 앱만 연결하고, 스케줄 규칙을 정기 점검하며, 중요 동작 전에는 사람이 승인하는 절차를 실행하십시오."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5의 출시, 중단 및 재개: AI 서비스 가용성도 선택 기준이다",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5의 출시, 중단 및 재개: AI 서비스 가용성도 선택 기준이다",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         }
       ],
       "sources": [
@@ -897,14 +961,26 @@
           "text": "后台代理能接手繁琐的数据统整，但绝不可将对外决策权完全放手。务必仅关联必要应用、定期盘点排程规则，并落实重要动作前的人工授权。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5 的发布、暂停与恢复：AI 服务可用性也是选择条件",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5 的发布、暂停与恢复：AI 服务可用性也是选择条件",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         }
       ],
       "sources": [

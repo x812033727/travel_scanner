@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -60,8 +61,23 @@
           "text": "編輯建議把修改需求寫成兩部分。第一部分說要調整的位置與目標，例如讓背景更簡潔、移除干擾物；第二部分說哪些內容不可改，例如主體姿勢、衣物顏色、商品尺寸關係與文字內容。這比只說「幫我修得更好」更容易判斷成敗。"
         },
         {
-          "type": "paragraph",
-          "text": "若需要更精確的指示，可以使用產品當前提供的選取或註解方式，指出你在意的區域。但介面標記不等於結果保證，仍要看整張圖片有沒有連帶變化。可以放大比較主體邊緣、陰影、文字和重複圖案，避免局部修改造成新的不一致。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若需要更精確的指示，可以使用產品當前提供的選取或註解方式，指出你在意的區域。但介面"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "不等於結果保證，仍要看整張圖片有沒有連帶變化。可以放大比較主體邊緣、陰影、文字和重複圖案，避免局部修改造成新的不一致。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -169,14 +185,26 @@
           "text": "功能描述依官方發布，使用情境由編輯設計；原創插圖只用來解釋工作方法。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 圖片生成與編輯入門",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 圖片生成與編輯入門",
+              "kind": "life",
+              "slug": "chatgpt-image-generation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "怎麼檢查 AI 內容的錯誤",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "怎麼檢查 AI 內容的錯誤",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         }
       ],
       "sources": [
@@ -346,14 +374,26 @@
           "text": "Feature descriptions are based on official announcements, while usage scenarios were designed by editors; original illustrations are used solely to explain workflows."
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5 Joins Gemini: New Options for AI Music Creation",
-          "url": "https://mokaair.com/en/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5 Joins Gemini: New Options for AI Music Creation",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "EU AI Transparency Rules Take Effect: How Are Chatbots and Generated Content Labeled?",
-          "url": "https://mokaair.com/en/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU AI Transparency Rules Take Effect: How Are Chatbots and Generated Content Labeled?",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         }
       ],
       "sources": [
@@ -523,14 +563,26 @@
           "text": "機能説明は公式発表に基づき、活用シーンは編集部が考案したものです。オリジナルイラストは作業手法を解説するためにのみ使用しています。"
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5がGeminiに登場：AI音楽制作の新たな選択肢とは？",
-          "url": "https://mokaair.com/ja/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5がGeminiに登場：AI音楽制作の新たな選択肢とは？",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "EUのAI透明性ルールが施行：チャットボットと生成コンテンツの表示はどうなる？",
-          "url": "https://mokaair.com/ja/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EUのAI透明性ルールが施行：チャットボットと生成コンテンツの表示はどうなる？",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         }
       ],
       "sources": [
@@ -700,14 +752,26 @@
           "text": "기능 설명은 공식 발표에 따랐으며 활용 시나리오는 에디터가 기획했습니다. 오리지널 일러스트는 작업 방식을 설명하기 위해 사용되었습니다."
         },
         {
-          "type": "link",
-          "text": "Gemini에 도입된 Lyria 3.5: AI 음악 창작의 새로운 선택지는?",
-          "url": "https://mokaair.com/ko/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini에 도입된 Lyria 3.5: AI 음악 창작의 새로운 선택지는?",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "EU AI 투명성 규정 시행: 챗봇과 생성 콘텐츠는 어떻게 표기해야 할까?",
-          "url": "https://mokaair.com/ko/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU AI 투명성 규정 시행: 챗봇과 생성 콘텐츠는 어떻게 표기해야 할까?",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         }
       ],
       "sources": [
@@ -877,14 +941,26 @@
           "text": "功能描述基于官方发布，使用场景由编辑设计；原创插图仅用于阐释工作方法。"
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5 接入 Gemini：AI 音乐创作有哪些新选择？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5 接入 Gemini：AI 音乐创作有哪些新选择？",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "欧盟 AI 透明度规则上路：聊天机器人与生成内容如何标示？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "欧盟 AI 透明度规则上路：聊天机器人与生成内容如何标示？",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         }
       ],
       "sources": [

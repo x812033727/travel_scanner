@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "daily"
+    "daily",
+    "ai-safety"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 進到詐騙裡，換掉的是外殼，不是骨架。內政部警政署刑事警察局在官方頁面上描述的手法有好幾類，這篇挑與 AI 最相關的五類：假投資、假客服、假親友、假名人影片與假交友；AI 讓影像與聲音更像真的、讓廣告鋪得更快，但要你加 LINE、下載 APP、把錢匯到指定帳戶的那一步從來沒變。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 進到詐騙裡，換掉的是外殼，不是骨架。內政部警政署刑事警察局在官方頁面上描述的手法有好幾類，這篇挑與 AI 最相關的五類：假投資、假客服、假親友、假名人影片與假交友；AI 讓影像與聲音更像真的、讓廣告鋪得更快，但要你加 LINE、下載 APP、把錢匯到指定帳戶的那一步從來沒變。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -70,18 +82,20 @@
               "text": "AI 最常出現在影像與聲音這一層。刑事警察局 115 年 2 月 15 日的公告寫，臉書、Instagram、YouTube、LINE 上充斥偽冒名人的廣告、影片、粉專與帳號，詐騙集團運用深偽或 AI 生成技術偽造知名企業家、財經名人、股票分析師的影像與聲音；同一則公告統計，114 年全年度通報平臺下架逾 8 萬則詐騙廣告。合成痕跡怎麼看，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+              "kind": "life",
+              "slug": "ai-term-deepfake"
             },
             {
               "type": "text",
               "text": "；聲音怎麼被複製，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "ElevenLabs 與語音克隆：配音、方案與同意規則怎麼看",
-              "url": "https://mokaair.com/zh-TW/life/ai-voice-cloning-elevenlabs"
+              "kind": "life",
+              "slug": "ai-voice-cloning-elevenlabs"
             },
             {
               "type": "text",
@@ -97,9 +111,10 @@
               "text": "假客服那一類最後都停在同一個動作：要你在網路銀行或 ATM 上操作。同一則公告補了新的包裝：先用偽造的物流或賣貨平臺釣魚連結騙個資，再跳出系統異常需實名驗證、未開通金流服務的假警示，引導民眾加入偽造的官方 LINE 客服與銀行專員。帳戶這端該先設好什麼，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "網銀與帳戶安全：裝置綁定、OTP 與常見詐騙手法",
-              "url": "https://mokaair.com/zh-TW/life/online-banking-security"
+              "kind": "life",
+              "slug": "online-banking-security"
             },
             {
               "type": "text",
@@ -148,9 +163,10 @@
               "text": "官方頁面給的是查證來源與管道的方法，不是教你用肉眼或某個工具判斷影片真假。偵測工具能不能當證據，站上另有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 偵測工具準不準：官方自己寫的限制與誤判",
-              "url": "https://mokaair.com/zh-TW/life/ai-detection-tools-reliability"
+              "kind": "life",
+              "slug": "ai-detection-tools-reliability"
             },
             {
               "type": "text",
@@ -189,18 +205,20 @@
               "text": "條文要求揭露「廣告使用深度偽造技術或人工智慧生成之個人影像」，對應到平臺端就是 AI 內容標示。各平臺怎麼做，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-              "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
             },
             {
               "type": "text",
               "text": "；檔案能不能帶著來源資訊，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-              "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
             },
             {
               "type": "text",
@@ -295,18 +313,20 @@
               "text": "家裡有小孩的話，年齡限制與家長端設定可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "家長指南：孩子用 AI 的年齡限制與設定",
-              "url": "https://mokaair.com/zh-TW/life/ai-for-kids-parent-guide"
+              "kind": "life",
+              "slug": "ai-for-kids-parent-guide"
             },
             {
               "type": "text",
               "text": "；帳號被盜後常被拿去當詐騙工具，帳號端要做的事在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "保護你的 AI 帳號：兩步驟驗證與金鑰外洩",
-              "url": "https://mokaair.com/zh-TW/life/ai-account-security-2fa-api-keys"
+              "kind": "life",
+              "slug": "ai-account-security-2fa-api-keys"
             },
             {
               "type": "text",
@@ -315,14 +335,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看",
-          "url": "https://mokaair.com/zh-TW/life/ai-avatar-video-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 虛擬主播與數位分身：HeyGen 的方案、同意規則與標示怎麼看",
+              "kind": "life",
+              "slug": "ai-avatar-video-tools"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +41,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 用 E-E-A-T 討論經驗、專業性、權威性與可信度，其中可信度最重要；它不是一個可直接購買或加上標記就獲得的單一排名分數。Google 也說明，品質評分者用來評估搜尋系統，並不直接控制個別頁面的排名。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 用 E-E-A-T 討論經驗、專業性、權威性與可信度，其中可信度最重要；它不是一個可直接購買或加上"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "就獲得的單一排名分數。Google 也說明，品質評分者用來評估搜尋系統，並不直接控制個別頁面的排名。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -64,8 +81,23 @@
           "text": "區分撰稿者、資料編輯與專業審閱者。某人檢查用字，不代表他已確認醫療或法律判斷；某專業人士只審閱一個段落，也不應讓整篇看起來都獲得同樣背書。審閱紀錄應寫明範圍、日期與實際完成的工作。"
         },
         {
-          "type": "paragraph",
-          "text": "如果網站以團隊署名，仍可公開說明內容如何製作、誰處理更正，以及何時需要外部審閱。使用 AI 協助整理時，交代它的角色和人員核對方式；不能把虛構人物寫成專家，也不能把自動檢查通過當作專業人士已同意內容。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果網站以團隊署名，仍可公開說明內容如何製作、誰處理更正，以及何時需要外部審閱。使用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 協助整理時，交代它的角色和人員核對方式；不能把虛構人物寫成專家，也不能把自動檢查通過當作專業人士已同意內容。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -206,14 +238,26 @@
           "text": "作者署名、專家審閱和查證日期，都應有可追溯的事實。尚未完成就保留待確認狀態，並限制文章承諾的範圍；不要用一個看似正式的標籤代替真正的研究與審閱。"
         },
         {
-          "type": "link",
-          "text": "建立文章來源與品質檢查流程",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立文章來源與品質檢查流程",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "避免標題做出超出證據的承諾",
-          "url": "https://mokaair.com/zh-TW/life/seo-title-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "避免標題做出超出證據的承諾",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
         }
       ],
       "sources": [

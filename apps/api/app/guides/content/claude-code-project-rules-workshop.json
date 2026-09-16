@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 161,
@@ -260,7 +261,17 @@
             },
             {
               "type": "text",
-              "text": " 寫入下面內容。請先看現有檔案再編輯，避免把自己先前加的規範一併覆蓋。這份課程範本加了辨識標記，目的是排錯時確認讀到哪一份，並不是 Claude Code 的保留欄位或特殊語法。"
+              "text": " 寫入下面內容。請先看現有檔案再編輯，避免把自己先前加的規範一併覆蓋。這份課程範本加了辨識"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，目的是排錯時確認讀到哪一份，並不是 Claude Code 的保留欄位或特殊語法。"
             }
           ]
         },
@@ -271,8 +282,23 @@
           "code": "# 待辦專案\n\n規則識別碼：MOKAAIR-LAB-61。\n\n- model.js 放資料操作，app.js 放 DOM 互動。\n- 用 id 辨認項目；同名待辦可以並存。\n- 不原地修改傳入陣列或項目。\n- 用 textContent 顯示使用者輸入的待辦標題。\n- 核心驗證：node --test tests/model.test.mjs。\n- 回報實際執行的檢查及未驗證項目。\n"
         },
         {
-          "type": "paragraph",
-          "text": "「不新增任何依賴」看似簡潔，卻可能讓後續 MCP 練習無法安裝必要 SDK。因此不要把一次任務的限制寫成永遠的專案規則。若團隊確實要求新依賴先評估，寫出評估的條件與交付物，例如用途、替代方案、維護成本與測試影響，會比含糊的「小心新增」更有幫助。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「不新增任何依賴」看似簡潔，卻可能讓後續 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 練習無法安裝必要 SDK。因此不要把一次任務的限制寫成永遠的專案規則。若團隊確實要求新依賴先評估，寫出評估的條件與交付物，例如用途、替代方案、維護成本與測試影響，會比含糊的「小心新增」更有幫助。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

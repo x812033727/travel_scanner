@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -177,19 +179,37 @@
           "text": "閱讀設定的搜尋可見性是對搜尋引擎的要求，不能保護私人頁面。測試站若含未公開資料，請使用主機提供的存取保護，並確認訪客真的無法閱讀。"
         },
         {
-          "type": "link",
-          "text": "CMS 與架站平台怎麼選：從更新方式決定網站的家",
-          "url": "https://mokaair.com/zh-TW/life/website-cms-choice"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CMS 與架站平台怎麼選：從更新方式決定網站的家",
+              "kind": "life",
+              "slug": "website-cms-choice"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
-          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
-          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
         }
       ],
       "sources": [

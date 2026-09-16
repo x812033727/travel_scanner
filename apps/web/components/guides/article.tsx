@@ -6,10 +6,11 @@ import { GeminiSeriesIndex } from "./series-index";
 import { geminiSeriesCopy as geminiCopy } from "@/lib/gemini-series-copy";
 import { visibleGeminiMember, type VisibleGeminiSeries } from "@/lib/gemini-series-projection";
 import { ArticleAdSlot } from "@/components/ads/article-ad-slot";
-import { ContentBlocks, ImageCreditLine, type ContentBlockLabels } from "@/components/content-blocks";
+import { ContentBlocks, FaqSection, ImageCreditLine, SummaryCard, type ContentBlockLabels } from "@/components/content-blocks";
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
+import type { TermLinkLabels } from "@/components/guides/term-link";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { contentBlockLink } from "@/lib/content-blocks";
@@ -17,6 +18,7 @@ import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlaceme
 import {
   guideHeadings, guideHref, guideListHref, partnerClickPath, splitGuideBlocks,
   type GuideArticleState, type GuideKind,
+  splitArticleExtras,
 } from "@/lib/guides";
 
 /** One label per kind (the badge above the title) plus the update-date word, sources and
@@ -39,6 +41,11 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   partnerDisclosure: string;
   partner: PartnerLinkLabels;
   blocks: ContentBlockLabels;
+  /** The definition card under a term link; without it a term is a plain link. */
+  term?: TermLinkLabels;
+  /** The heading over the summary card and over the FAQ section. */
+  summary?: string;
+  faq?: string;
 };
 
 /** Fewer level-2 headings than this and a table of contents is longer than the scroll it saves. */
@@ -79,8 +86,11 @@ export function GuideArticle({
   const modified = document.modified_at ? document.modified_at.slice(0, 10) : null;
   const others = state.published_locales.filter((value) => value !== state.locale);
   const placement = guideAffiliatePlacement(state.kind);
-  const segments = splitGuideBlocks(document.blocks);
-  const headings = guideHeadings(document.blocks);
+  // The answer goes under the description and the questions before the sources; the body
+  // is everything else.
+  const extras = splitArticleExtras(document.blocks);
+  const segments = splitGuideBlocks(extras.blocks);
+  const headings = guideHeadings(extras.blocks);
 
   // The editor's own buttons: each resolves its destination the way the end panel does
   // (its own city, else the article's; Kyoto folds into osaka-kyoto) and is dropped under
@@ -154,6 +164,8 @@ export function GuideArticle({
         ) : null}
       </header>
 
+      {extras.summary ? <SummaryCard id="article-summary" items={extras.summary.items} heading={labels.summary} /> : null}
+
       {document.hero ? (
         <figure>
           <GuideImage
@@ -219,7 +231,7 @@ export function GuideArticle({
                   />
                 ) : null}
                 {piece.blocks.length ? (
-                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} articleLinks={state.article_links} locale={state.locale} />
+                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} articleLinks={state.article_links} locale={state.locale} termLabels={labels.term} />
                 ) : null}
               </Fragment>
             ))}
@@ -276,6 +288,8 @@ export function GuideArticle({
           ))}
         </ul>
       ) : null}
+
+      {extras.faq ? <FaqSection id="article-faq" items={extras.faq.items} heading={labels.faq} /> : null}
 
       {document.sources.length ? (
         <section className="border-t border-[var(--line)] pt-6">

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,23 @@
           "text": "從 Claude 的網頁版跨到 API，第一件要弄清楚的事是：API 和 Pro、Max 訂閱是兩套帳。訂閱費不會折抵 API 的用量，API 的錢要另外在 Claude Console 儲值；一把金鑰等於一組可以直接刷你餘額的密碼；費用按 token 計價、輸入與輸出分開算，一次短問答通常只有零點幾美分。真正會出事的不是單次呼叫太貴，而是金鑰貼錯地方，或是程式寫了一個會一直重試的迴圈。"
         },
         {
-          "type": "paragraph",
-          "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心，帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要參數，另附一段 curl。後半講金鑰外洩怎麼處理、一次呼叫怎麼估價，以及四種新手最常遇到的錯誤。介面名稱與價格官網隨時會改，讀的時候以官網當下的頁面為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心，帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，另附一段 curl。後半講金鑰外洩怎麼處理、一次呼叫怎麼估價，以及四種新手最常遇到的錯誤。介面名稱與價格官網隨時會改，讀的時候以官網當下的頁面為準。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,17 +55,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "claude.ai 上的 Free、Pro、Max、Team 方案買的是聊天介面的使用權。Claude 說明中心寫得很直接：付費訂閱不包含 Claude API 與 Console 的使用權，兩邊都想要就得各自付費。API 的錢走另一條路，多數自助帳號是預付制——先在 Console 買「使用點數」，之後的 API 呼叫、Console 內建的 playground 與 Claude Code 都從這個餘額扣。說明中心寫明點數自購買日起一年到期，到期日不能延長，而且購買後不退費，所以第一次不必一口氣儲很多。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 上的 Free、Pro、Max、Team 方案買的是聊天介面的使用權。Claude 說明中心寫得很直接：付費訂閱不包含 Claude API 與 Console 的使用權，兩邊都想要就得各自付費。API 的錢走另一條路，多數自助帳號是預付制——先在 Console 買「使用點數」，之後的 API 呼叫、Console 內建的 playground 與 Claude Code 都從這個餘額扣。說明中心寫明點數自購買日起一年到期，到期日不能延長，而且購買後不退費，所以第一次不必一口氣儲很多。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "帳號同樣是兩個系統。claude.ai 的登入帳號不會自動變成 Console 的組織：要用 API 就到 Claude Console（platform.claude.com）建立自己的組織，填組織與用途的資料、綁付款方式、買點數。官方定價文件的常見問題寫著新使用者會拿到少量免費點數試用，但沒有寫明金額，以官網為準；要穩定跑起來還是得先儲值。"
         },
         {
-          "type": "link",
-          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
-          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+              "kind": "life",
+              "slug": "claude-plans-free-pro-max-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -161,9 +198,15 @@
           "text": "API 按 token 計價，輸入與輸出分開算，而且輸出貴很多。2026 年 9 月 14 日官網的標價（每百萬 token、美元）：Claude Opus 5 輸入 5、輸出 25；Claude Sonnet 5 輸入 2、輸出 10；Claude Haiku 4.5 輸入 1、輸出 5。整張價目表與各模型的定位、上下文視窗，模型篇有完整整理，這裡不重複。"
         },
         {
-          "type": "link",
-          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+              "kind": "life",
+              "slug": "claude-model-lineup-2026"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -178,9 +221,15 @@
           "text": "如果你的程式每次都送同一段很長的說明或同一份文件，提示快取可以把重複的部分壓到輸入價的一成，值不值得、怎麼算，另有一篇專門講。"
         },
         {
-          "type": "link",
-          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+              "kind": "life",
+              "slug": "claude-api-prompt-caching-cost"
+            }
+          ]
         },
         {
           "type": "heading",

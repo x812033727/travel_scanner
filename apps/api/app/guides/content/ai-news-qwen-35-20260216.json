@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "事件日期：2026-02-16；本文查核日期：2026-09-14。官方儲存庫 News 記載 2026 年 2 月 16 日發布首個 Qwen3.5 開放權重模型 Qwen3.5-397B-A17B。雲端 Plus 的版本日期 2 月 15 日不能當成這個開放模型的發布日。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "事件日期：2026-02-16；本文查核日期：2026-09-14。官方儲存庫 News 記載 2026 年 2 月 16 日發布首個 Qwen3.5 "
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型 Qwen3.5-397B-A17B。雲端 Plus 的版本日期 2 月 15 日不能當成這個開放模型的發布日。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "官方模型卡列總參數 397B、啟用 17B，為含視覺編碼器的混合架構，授權標示 Apache-2.0。官方同時區別自行部署權重與 Alibaba Cloud 的託管 Qwen3.5-Plus；後者有不同服務功能與上下文設定。啟用參數不等於整個模型檔案或記憶體需求，自行部署仍需硬體、軟體、維運及授權條件核對。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方模型卡列總"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " 397B、啟用 17B，為含視覺編碼器的混合架構，授權標示 Apache-2.0。官方同時區別自行部署權重與 Alibaba Cloud 的託管 Qwen3.5-Plus；後者有不同服務功能與上下文設定。啟用參數不等於整個模型檔案或記憶體需求，自行部署仍需硬體、軟體、維運及授權條件核對。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -43,12 +74,42 @@
           "text": "這款模型採用了稀疏混合專家技術，也就是模型總體擁有多達 397B 的龐大參數，但在每一次處理文本與視覺輸入時，僅會動態調用其中約 17B 的啟用參數。這種設計能有效提升推論時的運算效率，讓每次前向傳播的計算量大幅降低。然而，啟用參數的計算規模絕對不能拿來當作電腦硬體規格的唯一參考基準。"
         },
         {
-          "type": "paragraph",
-          "text": "完整權重仍需要足夠的儲存空間，執行時則可能依框架與設定分配到顯示記憶體、主記憶體或其他卸載方式。不能一概說全部權重必須在開機時放入同一塊記憶體，也不能說記憶體不足一定造成系統崩潰。實際可否載入、速度是否可接受，要連同精度、量化、上下文長度和硬體配置一起評估。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完整權重仍需要足夠的儲存空間，執行時則可能依框架與設定分配到顯示記憶體、主記憶體或其他卸載方式。不能一概說全部權重必須在開機時放入同一塊記憶體，也不能說記憶體不足一定造成系統崩潰。實際可否載入、速度是否可接受，要連同精度、量化、"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "和硬體配置一起評估。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "因此，企業在規劃地端人工智慧策略時，千萬不能看到「啟用 17B」就誤以為這只是一般輕量模型。官方文件未載明統一的終端硬體最低需求，正是因為企業級部署涉及框架最佳化、量化設定以及記憶體排程。對於未經架構規劃的團隊來說，盲目下載動輒數百 GB 的原始模型檔案，往往只會造成儲存空間的耗盡與頻寬的徒勞浪費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "因此，企業在規劃地端"
+            },
+            {
+              "type": "article",
+              "text": "人工智慧",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "策略時，千萬不能看到「啟用 17B」就誤以為這只是一般輕量模型。官方文件未載明統一的終端硬體最低需求，正是因為企業級部署涉及框架最佳化、量化設定以及記憶體排程。對於未經架構規劃的團隊來說，盲目下載動輒數百 GB 的原始模型檔案，往往只會造成儲存空間的耗盡與頻寬的徒勞浪費。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -60,8 +121,33 @@
           "text": "開放權重的一大優點是讓所有人都能在公開儲存庫取得檔案，但取得檔案與真正成功啟動服務之間，存在著相當嚴苛的工程門檻。模型卡雖然標示採用 Apache-2.0 授權，保障了權重取得與修改的法規彈性，但授權合法並不代表系統就能隨插即用。從底層驅動程式、張量並行運算函式庫到模型服務引擎，每一項環節都需要高度專業的系統調校。"
         },
         {
-          "type": "paragraph",
-          "text": "除了龐大的核心大型語言模型架構之外，該模型還內建了視覺編碼器，這代表推論管線必須同時處理圖像特徵擷取與跨模態張量對齊。當團隊嘗試在本地端組合多張運算卡進行分散式推論時，節點之間的通訊延遲、驅動程式版本相容性，以及推論框架對多模態混合專家架構的支援成熟度，都會直接決定系統是否能順利開機並穩定輸出文字。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "除了龐大的核心"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "架構之外，該模型還內建了視覺編碼器，這代表推論管線必須同時處理圖像特徵擷取與跨模態張量對齊。當團隊嘗試在本地端組合多張運算卡進行分散式推論時，節點之間的通訊延遲、驅動程式版本相容性，以及推論框架對"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "混合專家架構的支援成熟度，都會直接決定系統是否能順利開機並穩定輸出文字。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -169,14 +255,26 @@
           "text": "啟用參數不等於完整載入需求。先確認資料可否送往外部，再選擇合適測試環境；託管 Plus 的結果不能直接當作開放權重部署的驗收證據。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro 發布：複雜問題如何轉成可驗證的答案？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro 發布：複雜問題如何轉成可驗證的答案？",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         }
       ],
       "sources": [
@@ -351,14 +449,26 @@
           "text": "Activated parameters do not equal full loading requirements. First confirm whether data can be sent externally before choosing an appropriate testing environment; hosted Plus results cannot serve directly as acceptance evidence for open-weight deployments."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro Released: Turning Complex Questions into Verifiable Answers",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro Released: Turning Complex Questions into Verifiable Answers",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         }
       ],
       "sources": [
@@ -533,14 +643,26 @@
           "text": "アクティブパラメータ数は全ロード要件と同義ではありません。データ外部送信の可否を確認した上で適切なテスト環境を選択してください。ホスト版Plusの結果をオープンウェイト導入の受入証拠に流用することはできません。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro発表：複雑な問題を検証可能な回答へ変換する方法",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro発表：複雑な問題を検証可能な回答へ変換する方法",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         }
       ],
       "sources": [
@@ -715,14 +837,26 @@
           "text": "활성 파라미터가 전체 로드 요구사항과 일치하지는 않습니다. 데이터의 외부 전송 가능 여부를 먼저 확인한 뒤 적절한 테스트 환경을 선택하십시오. 호스팅 Plus의 결과를 오픈 가중치 배포의 직접적인 검수 근거로 삼아서는 안 됩니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro 발표: 복잡한 문제를 검증 가능한 답변으로 바꾸는 법",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro 발표: 복잡한 문제를 검증 가능한 답변으로 바꾸는 법",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         }
       ],
       "sources": [
@@ -897,14 +1031,26 @@
           "text": "激活参数不等于完整加载需求。先确认数据能否送往外部，再选择合适测试环境；托管 Plus 的结果不能直接当作开放权重部署的验收证据。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro 发布：复杂问题如何转为可验证的答案？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro 发布：复杂问题如何转为可验证的答案？",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         }
       ],
       "sources": [

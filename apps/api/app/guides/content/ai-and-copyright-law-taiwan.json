@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "ai-safety"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +26,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 生成的文字、圖片、音樂與程式，在台灣的著作權法底下會碰到三個問題：產出本身有沒有著作權、拿受保護的作品去訓練或輸入 AI 算不算合理使用、法院判過沒有。三個問題的官方答案密度差很多：第一個經濟部智慧財產局已用多則函釋講清楚，第二個只給判斷架構並明講要個案認定，第三個在 2026 年 9 月 15 日查證當天，司法院裁判書系統上查不到以 AI 生成物著作權為爭點的裁判。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生成的文字、圖片、音樂與程式，在台灣的著作權法底下會碰到三個問題：產出本身有沒有著作權、拿受保護的作品去訓練或輸入 AI 算不算合理使用、法院判過沒有。三個問題的官方答案密度差很多：第一個經濟部智慧財產局已用多則函釋講清楚，第二個只給判斷架構並明講要個案認定，第三個在 2026 年 9 月 15 日查證當天，司法院裁判書系統上查不到以 AI 生成物著作權為爭點的裁判。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -89,14 +100,26 @@
           "text": "圖片這一類的平台條款與商用條件，以及 Suno 的方案與下載授權怎麼算，站上各有一篇單獨處理。要提醒的是，平台條款寫「輸出歸你」處理的是你和平台之間的關係，和著作權法上這份產出有沒有著作權，是兩層不同的東西。"
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/suno-music-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Suno 做歌：從歌詞到成品，方案、下載與商用權怎麼算",
+              "kind": "life",
+              "slug": "suno-music-generation-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -124,12 +147,42 @@
           "code": "著作之合理使用，不構成著作財產權之侵害。\n著作之利用是否合於第四十四條至第六十三條所定之合理範圍或其他合理使用之情形，應審酌一切情狀，尤應注意下列事項，以為判斷之基準：\n一、利用之目的及性質，包括係為商業目的或非營利教育目的。\n二、著作之性質。\n三、所利用之質量及其在整個著作所占之比例。\n四、利用結果對著作潛在市場與現在價值之影響。\n著作權人團體與利用人團體就著作之合理使用範圍達成協議者，得為前項判斷之參考。\n前項協議過程中，得諮詢著作權專責機關之意見。"
         },
         {
-          "type": "paragraph",
-          "text": "後面幾則把邊界描得更細。電子郵件1120317（112-03-17）談訓練 AI 產生大量相同風格的圖片，寫明蒐集訓練資料的過程可能涉及重製。電子郵件1140829（114-08-29）談拿歷史照片訓練模型：訓練結果雖由數學參數與權重組成、與改作有別，但訓練過程包括資料收集、資料預處理、模型訓練及優化，都可能涉及重製原始資料。第 3 條第 1 項第 5 款的重製包含直接、間接、永久或暫時之重複製作，第 22 條則把重製權留給著作人。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "後面幾則把邊界描得更細。電子郵件1120317（112-03-17）談訓練 AI 產生大量相同風格的圖片，寫明蒐集訓練資料的過程可能涉及重製。電子郵件1140829（114-08-29）談拿歷史照片訓練模型：訓練結果雖由數學"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與權重組成、與改作有別，但訓練過程包括資料收集、資料預處理、模型訓練及優化，都可能涉及重製原始資料。第 3 條第 1 項第 5 款的重製包含直接、間接、永久或暫時之重複製作，第 22 條則把重製權留給著作人。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "把別人的作品丟進 AI 是另一組函釋。電子郵件1150427（115-04-27）寫將他人著作上傳 AI 網站下指令改作後在網路賣場使用，可能涉及重製、改作及公開傳輸；電子郵件1150504（115-05-04）寫用生成式 AI 把他人書籍設計成考題販售，可能涉及重製、改作、散布。反過來，電子郵件1140625（114-06-25）寫你用 AI 翻譯自己的文章不生侵害他人著作權的疑慮，同一則也提醒 AI 生成的課文仍不排除與原始著作構成實質近似。只模仿風格另有說法：第 10 條之 1 寫保護僅及於表達、不及於思想與概念，電子郵件1111212 因此寫，僅以特定藝術家的風格表現、與原作仍有不同者，尚不涉及著作權之侵害。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把別人的作品丟進 AI 是另一組函釋。電子郵件1150427（115-04-27）寫將他人著作上傳 AI 網站下指令改作後在網路賣場使用，可能涉及重製、改作及公開傳輸；電子郵件1150504（115-05-04）寫用"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 把他人書籍設計成考題販售，可能涉及重製、改作、散布。反過來，電子郵件1140625（114-06-25）寫你用 AI 翻譯自己的文章不生侵害他人著作權的疑慮，同一則也提醒 AI 生成的課文仍不排除與原始著作構成實質近似。只模仿風格另有說法：第 10 條之 1 寫保護僅及於表達、不及於思想與概念，電子郵件1111212 因此寫，僅以特定藝術家的風格表現、與原作仍有不同者，尚不涉及著作權之侵害。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -139,18 +192,20 @@
               "text": "公司要把這些變成可執行的規則，重點通常在流程：誰能把什麼資料貼進哪個模型、產出要不要留紀錄，可以接著看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "公司裡用 AI 的規範：資料外流與合規",
-              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
             },
             {
               "type": "text",
               "text": "。模型是開源還是閉源，會影響你拿得到什麼授權文件，這層差別在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開源 vs 閉源模型：對使用者的差別",
-              "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+              "kind": "life",
+              "slug": "ai-open-vs-closed-models"
             },
             {
               "type": "text",
@@ -293,36 +348,40 @@
               "text": "要標示、要留來源歷程，法律以外還有平台規則與技術做法：平台的標示規定看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-              "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
             },
             {
               "type": "text",
               "text": "，把生成與編輯歷程寫進檔案本身看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-              "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
             },
             {
               "type": "text",
               "text": "。上傳到 AI 的參考圖與素材自己要先有授權，做法在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "商用圖庫與圖示怎麼找：授權、作者與使用紀錄",
-              "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
             },
             {
               "type": "text",
@@ -351,9 +410,10 @@
               "text": "最後一句提醒：歐盟的 AI 法案與美國的登記實務常被當成「規定」，但它們不是台灣的規定，在台灣境內利用著作依的是我國著作權法，智財局在電子郵件1140310 也寫明著作權採屬地主義。兩邊差別可以參考 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
-              "url": "https://mokaair.com/zh-TW/life/ai-regulation-eu-act-taiwan"
+              "kind": "life",
+              "slug": "ai-regulation-eu-act-taiwan"
             },
             {
               "type": "text",

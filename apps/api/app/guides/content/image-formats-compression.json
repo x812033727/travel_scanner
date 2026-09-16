@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -201,19 +203,37 @@
           "text": "保留可重新輸出的來源，並記下裁切、尺寸與設定。檔案變小不代表細節仍足夠；改副檔名也不等於完成格式轉換。"
         },
         {
-          "type": "link",
-          "text": "先確認圖片素材的使用授權",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先確認圖片素材的使用授權",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "區分網頁與印刷色彩輸出",
-          "url": "https://mokaair.com/zh-TW/life/rgb-cmyk-export"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "區分網頁與印刷色彩輸出",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解響應式版面的顯示需求",
-          "url": "https://mokaair.com/zh-TW/life/responsive-layout-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解響應式版面的顯示需求",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
         }
       ],
       "sources": [

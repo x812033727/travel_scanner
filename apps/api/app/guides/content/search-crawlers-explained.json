@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -43,8 +45,23 @@
           "text": "抓取是向網站取得資料，索引是進一步分析與整理，搜尋呈現又是後續選擇結果的階段。Google 說明並非每個被抓取的頁面都會建立索引，也不保證符合條件就一定呈現。因此，紀錄中出現成功回應，不能當成文章已收錄的證據。"
         },
         {
-          "type": "paragraph",
-          "text": "有些工具會主動探索網址，有些則因使用者貼上連結或提出問題才取頁。兩者對 robots.txt 的處理可能不同。為自己的網站整理服務清單，逐一查看官方文件，不把所有來自 AI 產品的請求一律稱為訓練爬蟲。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有些工具會主動探索網址，有些則因使用者貼上連結或提出問題才取頁。兩者對 robots.txt 的處理可能不同。為自己的網站整理服務清單，逐一查看官方文件，不把所有來自 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 產品的請求一律稱為訓練爬蟲。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -77,8 +94,23 @@
           "text": "robots.txt 主要表達抓取規則，需要對方支援並遵循，不能強制所有程式停止取頁。它也不是密碼保護。不要把私人檔案路徑寫入規則後就認為安全，因為其他人仍可能直接開啟可公開存取的網址。"
         },
         {
-          "type": "paragraph",
-          "text": "想讓公開頁面不被 Google 編入索引，可使用適合的 noindex 中繼標記或回應標頭，並讓 Google 能抓取頁面讀到該指令。如果同時用 robots.txt 擋住，Google 可能看不到 noindex；被擋抓取的網址也可能因外部連結而仍出現在搜尋中。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想讓公開頁面不被 Google 編入索引，可使用適合的 noindex 中繼"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "或回應標頭，並讓 Google 能抓取頁面讀到該指令。如果同時用 robots.txt 擋住，Google 可能看不到 noindex；被擋抓取的網址也可能因外部連結而仍出現在搜尋中。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,14 +238,26 @@
           "text": "降低抓取負載、限制特定用途、移除搜尋結果和保護私人內容，需要不同方法。先選定目標，再用適合的設定與證據驗收，避免僅因工具名稱帶有 AI 或 Bot 就做過度寬廣的變更。"
         },
         {
-          "type": "link",
-          "text": "先了解 SEO 的學習與驗收順序",
-          "url": "https://mokaair.com/zh-TW/life/seo-learning-roadmap"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先了解 SEO 的學習與驗收順序",
+              "kind": "life",
+              "slug": "seo-learning-roadmap"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "保護 WordPress 網站與帳號",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "保護 WordPress 網站與帳號",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
         }
       ],
       "sources": [

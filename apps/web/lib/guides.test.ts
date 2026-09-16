@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
-import {
-  guideHeadings, guideHref, guideListHref, guideSection, isExpired, isGuideKind, isGuidePartnerLink,
-  isGuideSummary, isPublishedGuide, isTravelGuideKind, partnerClickPath, readingMinutes, splitGuideBlocks,
+import { splitArticleExtras,
+  articleSearchHref, guideHeadings, guideHref, guideListHref, guideSection, highlight, isExpired, isGuideKind,
+  isGuidePartnerLink, isGuideSearchHit, isGuideSearchResult, isGuideSummary, isPublishedGuide, isTravelGuideKind,
+  partnerClickPath, readingMinutes, splitGuideBlocks,
   type GuideBlock,
 } from "./guides";
 
@@ -237,5 +238,70 @@ describe("reading the body", () => {
     expect(readingMinutes(long)).toBe(3);
     const english = { ...short, blocks: [{ type: "paragraph" as const, text: Array(450).fill("word").join(" ") }] };
     expect(readingMinutes(english)).toBe(3);
+  });
+});
+
+describe("article search", () => {
+  it("builds the results URL from the query, the section and the offset only", () => {
+    expect(articleSearchHref("")).toBe("/search/articles");
+    expect(articleSearchHref(" JR Pass ")).toBe("/search/articles?q=JR+Pass");
+    expect(articleSearchHref("機器學習", { section: "life" })).toBe("/search/articles?q=%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92&section=life");
+    expect(articleSearchHref("x", { section: null, offset: 0 })).toBe("/search/articles?q=x");
+    expect(articleSearchHref("x", { offset: 20 })).toBe("/search/articles?q=x&offset=20");
+  });
+
+  it("guards a hit and a result the way the API shapes them", () => {
+    const hit = { ...summary, snippet: "…段落…", matched: ["jr"] };
+    expect(isGuideSearchHit(hit)).toBe(true);
+    expect(isGuideSearchHit({ ...hit, matched: [1] })).toBe(false);
+    expect(isGuideSearchHit(summary)).toBe(false);
+    const result = { query: "jr", total: 1, offset: 0, limit: 10, results: [hit], best_match: null, next_offset: null };
+    expect(isGuideSearchResult(result)).toBe(true);
+    expect(isGuideSearchResult({ ...result, best_match: summary })).toBe(true);
+    expect(isGuideSearchResult({ ...result, results: [summary] })).toBe(false);
+    expect(isGuideSearchResult({ ...result, total: "1" })).toBe(false);
+    expect(isGuideSearchResult(null)).toBe(false);
+  });
+
+  it("splits text into the runs that match and the runs between, folded like the API", () => {
+    expect(highlight("JR Pass 與 jr pass", ["jr pass"])).toEqual([
+      { text: "JR Pass", hit: true }, { text: " 與 ", hit: false }, { text: "jr pass", hit: true },
+    ]);
+    // Full-width input folds to ASCII, so a full-width title still marks an ASCII term.
+    expect(highlight("ＡＩ 工具", ["ai"])).toEqual([{ text: "ＡＩ", hit: true }, { text: " 工具", hit: false }]);
+    // The longer term wins where two overlap, and a term is never marked twice.
+    expect(highlight("machine learning", ["machine", "machine learning"])).toEqual([{ text: "machine learning", hit: true }]);
+    expect(highlight("沒有命中", ["jr"])).toEqual([{ text: "沒有命中", hit: false }]);
+    expect(highlight("", ["jr"])).toEqual([]);
+    expect(highlight("text", [])).toEqual([{ text: "text", hit: false }]);
+    // NFKC is not length-preserving (an ellipsis folds to three periods, `İ` to two code
+    // units); the runs still come from the original text, in the right place.
+    expect(highlight("…JR Pass…", ["jr pass"])).toEqual([
+      { text: "…", hit: false }, { text: "JR Pass", hit: true }, { text: "…", hit: false },
+    ]);
+    expect(highlight("İstanbul pass", ["pass"])).toEqual([{ text: "İstanbul ", hit: false }, { text: "pass", hit: true }]);
+    // A term inside one original character marks that character once, never three times.
+    expect(highlight("A…B", ["."])).toEqual([{ text: "A", hit: false }, { text: "…", hit: true }, { text: "B", hit: false }]);
+  });
+});
+
+describe("summary and FAQ blocks", () => {
+  const summary = { type: "summary" as const, items: ["先買票。", "再上車。"] };
+  const faq = { type: "faq" as const, items: [{ question: "要多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" }] };
+
+  it("are hoisted out of the body, first of each kind, leaving the rest in order", () => {
+    const body = { type: "paragraph" as const, text: "Skyliner 最快。" };
+    const split = splitArticleExtras([summary, body, faq, { ...faq, items: faq.items.slice(0, 2) }]);
+    expect(split.summary).toBe(summary);
+    expect(split.faq).toBe(faq);
+    expect(split.blocks).toEqual([body, { ...faq, items: faq.items.slice(0, 2) }]);
+    expect(splitArticleExtras([body])).toEqual({ summary: null, faq: null, blocks: [body] });
+  });
+
+  it("count towards the reading time", () => {
+    const base = { ...document, blocks: [{ type: "paragraph" as const, text: "短。" }] };
+    const long = Array.from({ length: 5 }, (_, i) => `${"很長的句子".repeat(20)}${i}`);
+    expect(readingMinutes({ ...base, blocks: [{ type: "summary", items: long }, ...base.blocks] }))
+      .toBeGreaterThan(readingMinutes(base));
   });
 });

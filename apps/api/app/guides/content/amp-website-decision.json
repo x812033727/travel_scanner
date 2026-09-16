@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +41,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "AMP 使用一套受規範的 HTML 與元件，由其執行環境管理部分資源和版面行為。它可以用來建立內容頁，也可在手機和桌機瀏覽。安裝相關外掛並不表示網站所有功能都自動相容，仍需檢查輸出的標記與元件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AMP 使用一套受規範的 HTML 與元件，由其執行環境管理部分資源和版面行為。它可以用來建立內容頁，也可在手機和桌機瀏覽。安裝相關外掛並不表示網站所有功能都自動相容，仍需檢查輸出的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與元件。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +218,37 @@
           "text": "先確認一般版可用，再驗證舊網址、內容和轉址。主要版本只有 AMP 的網站，需要另行規劃完整頁面轉換。"
         },
         {
-          "type": "link",
-          "text": "安排永久轉址與舊連結驗收",
-          "url": "https://mokaair.com/zh-TW/life/redirects-301-302"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排永久轉址與舊連結驗收",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "辨認網站效能的實際瓶頸",
-          "url": "https://mokaair.com/zh-TW/life/core-web-vitals-diagnosis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨認網站效能的實際瓶頸",
+              "kind": "life",
+              "slug": "core-web-vitals-diagnosis"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "核對主要網址與內容版本",
-          "url": "https://mokaair.com/zh-TW/life/canonical-url-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核對主要網址與內容版本",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -64,8 +65,23 @@
           "text": "沿用算式示例，如果資料顯示原本預測偏低，訓練程式可能調整權重或偏差，但如何調整要依所有樣本、損失與最佳化設定。不能只因一筆資料不符合，就隨意改到它答對。若為了記住單筆輸入而破壞其他資料，便失去面對新情況的泛化能力。"
         },
         {
-          "type": "paragraph",
-          "text": "有些調適方法只更新部分參數，其他權重保持固定；有些會新增少量可訓練元件。這和完整重新訓練不同。閱讀微調方法時，要確認哪些參數會變、哪些不變，以及更新後用哪些案例檢查。參數是否可訓練是設定與方法的一部分，不是所有數值都必然同時更新。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有些調適方法只更新部分參數，其他權重保持固定；有些會新增少量可訓練元件。這和完整重新訓練不同。閱讀"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "方法時，要確認哪些參數會變、哪些不變，以及更新後用哪些案例檢查。參數是否可訓練是設定與方法的一部分，不是所有數值都必然同時更新。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -128,8 +144,33 @@
           "text": "如果要挑選整理筆記的模型，可以用相同筆記測試是否保留否定、日期與未決事項，再比較等待時間及裝置資源。若小模型已能可靠處理需求，大模型多出的容量未必值得額外成本；若複雜情境反覆失敗，也不能只靠把提示詞寫長來補所有能力缺口。"
         },
         {
-          "type": "paragraph",
-          "text": "模型參數是理解技術規格的重要入口，但真正有用的閱讀方式，是將參數量、精度、啟用方式、資料與評測一起看。當你能分清楚「改輸入」、「改生成設定」和「改權重」，就能更準確描述問題，也更容易選擇合適的改善方法，而不會把所有調整都叫作訓練 AI。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型參數是理解技術規格的重要入口，但真正有用的閱讀方式，是將參數量、精度、啟用方式、資料與"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "一起看。當你能分清楚「改輸入」、「改生成設定」和「改權重」，就能更準確描述問題，也更容易選擇合適的改善方法，而不會把所有調整都叫作訓練 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -164,24 +205,48 @@
           "text": "改提示詞、降低溫度和微調權重並非同一件事。先確定問題來自資料、輸出控制還是能力，再選擇對應方法。"
         },
         {
-          "type": "link",
-          "text": "機器學習（Machine Learning）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-machine-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "機器學習（Machine Learning）是什麼",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合專家模型（Mixture of Experts）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合專家模型（Mixture of Experts）是什麼",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

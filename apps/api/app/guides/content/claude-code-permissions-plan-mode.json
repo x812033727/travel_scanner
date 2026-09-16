@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 130,
@@ -214,8 +215,23 @@
           "text": "拒絕一個操作後，可以附上具體原因，例如「這個命令會推送遠端，這輪只做本機驗證」。這能讓 Claude 改用符合範圍的方法。理由應指出真正邊界，不必只寫不准，否則它可能不知道應停止整個任務，還是繼續其他已允許的步驟。"
         },
         {
-          "type": "paragraph",
-          "text": "CLAUDE.md 表達希望模型怎麼工作；權限規則由 Claude Code 控制哪些工具操作可執行；沙箱則提供另一層檔案或網路隔離。三者用途不同，也有平台限制。寫一條「不要讀金鑰」的 MD 規則，不等於作業系統已封鎖所有讀取方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "CLAUDE.md 表達希望模型怎麼工作；權限規則由 Claude Code 控制哪些工具操作可執行；"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "則提供另一層檔案或網路隔離。三者用途不同，也有平台限制。寫一條「不要讀金鑰」的 MD 規則，不等於作業系統已封鎖所有讀取方式。"
+            }
+          ]
         },
         {
           "type": "callout",

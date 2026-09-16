@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "productivity"
+    "productivity",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "ChatGPT 搜尋和 Google 搜尋不是「誰取代誰」，而是兩種形狀不同的工具：Google 先給你一頁結果清單、地圖與商家卡片，ChatGPT 先給你一段整理好的回答再附引用。結論先講：匯率、天氣、店家營業時間、路線、比價這類「要的是一個當下正確的數字或地點」的問題，先開 Google 或 Google 地圖；「先解釋給我聽」「幫我整理好幾個來源」這類問題，先開 ChatGPT 搜尋；政府、銀行、醫療的規定兩邊都能起頭，但最後一步永遠是官方頁面。搜「搜尋 AI」想找 Google 替代品的人，先看這六類問題再決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 搜尋和 Google 搜尋不是「誰取代誰」，而是兩種形狀不同的工具：Google 先給你一頁結果清單、地圖與商家卡片，ChatGPT 先給你一段整理好的回答再附引用。結論先講：匯率、天氣、店家營業時間、路線、比價這類「要的是一個當下正確的數字或地點」的問題，先開 Google 或 Google 地圖；「先解釋給我聽」「幫我整理好幾個來源」這類問題，先開 ChatGPT 搜尋；政府、銀行、醫療的規定兩邊都能起頭，但最後一步永遠是官方頁面。搜「"
+            },
+            {
+              "type": "article",
+              "text": "搜尋 AI",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            },
+            {
+              "type": "text",
+              "text": "」想找 Google 替代品的人，先看這六類問題再決定。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇帶你做到四件事：把 ChatGPT 搜尋開起來、知道免費版能不能用、學會點開引用；分清 Google 的一般搜尋、AI 摘要與 AI 模式各是什麼；用六類台灣日常會遇到的問題決定先開哪個、為什麼、怎麼交叉驗證；最後用「捷運士林站到故宮怎麼走」做一次兩邊的實際比較。功能名稱與開法都在 2026 年 9 月依 OpenAI 說明中心、OpenAI 官方公告、Google 搜尋說明中心與 Google 官方部落格查證；本文不比較兩者的流量或市占，因為沒有一手來源。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇帶你做到四件事：把 ChatGPT 搜尋開起來、知道免費版能不能用、學會點開引用；分清 Google 的一般搜尋、"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 摘要與 AI 模式各是什麼；用六類台灣日常會遇到的問題決定先開哪個、為什麼、怎麼交叉驗證；最後用「捷運士林站到故宮怎麼走」做一次兩邊的實際比較。功能名稱與開法都在 2026 年 9 月依 OpenAI 說明中心、OpenAI 官方公告、Google 搜尋說明中心與 Google 官方部落格查證；本文不比較兩者的流量或市占，因為沒有一手來源。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -43,17 +74,38 @@
           "text": "ChatGPT 搜尋（OpenAI 的公告叫它 ChatGPT search，說明中心的頁面標題是「Searching the web with ChatGPT」）是讓 ChatGPT 在回答前先上網查，再把查到的內容整理成一段回答，並附上來源連結。它有兩種啟動方式：一是 ChatGPT 判斷你的問題需要最新資訊時自動去查；二是你手動指定：按輸入框的「+」打開工具選單，選「Search」（說明中心的步驟寫的是「View all tools」再選「Search」；介面上的中文名稱依帳號語言設定顯示，以官網為準），或直接在輸入框打「/」再選 Search，然後照常輸入問題。想確定它真的查過網路，就用手動方式；回答裡沒有引用，通常代表它是憑訓練資料回答的。"
         },
         {
-          "type": "paragraph",
-          "text": "免費版能用。說明中心寫明網路搜尋在 Free、Go、Plus、Pro、Business、Enterprise、Edu 都可以用，連沒登入的人也能用，網頁版、桌面版與手機版的應用程式都有；差別在各方案的用量上限不同，碰到上限它會提示你稍後再試，額度數字以官網為準。回答裡的引用怎麼看：有用到搜尋的回答會在句子後面帶引用標記，點一下就開啟原始網頁；在電腦版網頁上，滑鼠移到引用上會先預覽；回答旁若有「Sources」（來源）按鈕，點開可以看到所有被引用的頁面和其他相關連結。這個按鈕是整篇文章最重要的動作，後面每一類問題的「交叉驗證」都從這裡開始。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "免費版能用。說明中心寫明網路搜尋在 Free、Go、Plus、Pro、Business、Enterprise、Edu 都可以用，連沒登入的人也能用，網頁版、桌面版與手機版的應用程式都有；差別在各方案的用量上限不同，碰到上限它會提示你稍後再試，額度數字以官網為準。回答裡的引用怎麼看：有用到搜尋的回答會在句子後面帶引用"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，點一下就開啟原始網頁；在電腦版網頁上，滑鼠移到引用上會先預覽；回答旁若有「Sources」（來源）按鈕，點開可以看到所有被引用的頁面和其他相關連結。這個按鈕是整篇文章最重要的動作，後面每一類問題的「交叉驗證」都從這裡開始。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "兩個跟本篇有關的延伸功能。第一是位置：裝置定位預設關閉、由你決定要不要分享；沒分享時它可能用網路位址推估一個大概的位置，分享後會用較精確的位置回答附近店家、在地新聞與天氣，在 iOS 與 Android 上相關結果還可能附一張地圖。第二是購物：問題帶有購物意圖時，它可以顯示附圖片、規格與購買連結的商品卡片；說明中心寫明商品結果由 ChatGPT 自行挑選、不是廣告、不受 OpenAI 的合作關係影響；點進商品會列出販售的商家，排序考慮庫存、價格、品質與是否為原廠或主要賣家。至於直接在對話裡結帳的 Instant Checkout，查證時只開放美國使用者向美國商家購買，台灣能不能用以官網為準。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -61,8 +113,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 搜尋現在同一個輸入框後面有三種東西。第一是一般搜尋：你熟悉的結果清單，加上地圖與商家卡片、商品卡片，以及標示「贊助」的廣告。第二是 AI 摘要（Google 說明中心的名稱就是「AI 摘要」，英文 AI Overviews）：Google 說明它是「AI 生成的重要資訊與相關連結」，在系統判斷生成式 AI 能幫上忙時出現在結果最上方。它沒有關閉的開關，但搜尋後選「網頁」篩選器，就只會看到純文字連結、不會有 AI 摘要。Google 在同一頁寫明「AI 回覆可能有誤」，並要你「務必多方查證重要資訊」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 搜尋現在同一個輸入框後面有三種東西。第一是一般搜尋：你熟悉的結果清單，加上地圖與商家卡片、商品卡片，以及標示「贊助」的廣告。第二是 AI 摘要（Google 說明中心的名稱就是「AI 摘要」，"
+            },
+            {
+              "type": "article",
+              "text": "英文 AI",
+              "kind": "life",
+              "slug": "chatgpt-for-english-learning"
+            },
+            {
+              "type": "text",
+              "text": " Overviews）：Google 說明它是「AI 生成的重要資訊與相關連結」，在系統判斷"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 能幫上忙時出現在結果最上方。它沒有關閉的開關，但搜尋後選「網頁」篩選器，就只會看到純文字連結、不會有 AI 摘要。Google 在同一頁寫明「AI 回覆可能有誤」，並要你「務必多方查證重要資訊」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -73,9 +150,15 @@
           "text": "所以下面比較的「Google」其實有兩層：要清單、地圖、卡片時，用一般搜尋；要對話式的整理時，用 AI 模式。AI 摘要是自動出現的，你不用特別去開，但也不要把它當結論。Google 自家的對話式助理 Gemini 又是另一個入口，另有一篇介紹。"
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -99,9 +182,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-deep-research-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Deep Research：讓 AI 花十分鐘幫你做一份完整研究",
+              "kind": "life",
+              "slug": "chatgpt-deep-research-guide"
+            }
+          ]
         },
         {
           "type": "image",
@@ -130,13 +219,34 @@
           "text": "第二個坑：引用不點開等於沒有引用。引用只證明「這句話從某個網頁來」，不證明那個網頁是對的，也不證明 AI 沒有讀錯。點開後看三件事：這是官方網站還是轉載、原句是不是這樣寫、頁面日期是哪一年。ChatGPT 的「Sources」按鈕、Google AI 摘要與 AI 模式旁邊的連結，都是為這個動作設計的；Google 說明中心也把「點選連結查看網路上的佐證資訊」列為使用 AI 摘要的步驟之一。"
         },
         {
-          "type": "paragraph",
-          "text": "第三個坑：廣告與 SEO 內容混在裡面。Google 一般搜尋的廣告有「贊助」標示；Google Ads 說明寫明廣告可以出現在 AI 摘要的上方或下方，而出現在 AI 摘要內部的廣告查證時只在部分英語市場開放，台灣不在名單上；2026 年 5 月 Google 又公告了 AI 模式裡的廣告格式，同樣標示「Sponsored」。ChatGPT 的商品結果說明中心寫明不是廣告，但它引用的網頁本身可能是內容農場或帶聯盟連結的評測。看到「最推薦」「必買」而沒有規格與來源的，兩邊都跳過。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三個坑：廣告與 SEO 內容混在裡面。Google 一般搜尋的廣告有「贊助」標示；Google Ads 說明寫明廣告可以出現在 AI 摘要的上方或下方，而出現在 AI 摘要內部的廣告查證時只在部分英語市場開放，台灣不在名單上；2026 年 5 月 Google 又公告了 AI 模式裡的廣告格式，同樣標示「Sponsored」。ChatGPT 的商品結果說明中心寫明不是廣告，但它引用的網頁本身可能是內容農場或帶聯盟連結的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "。看到「最推薦」「必買」而沒有規格與來源的，兩邊都跳過。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -231,9 +341,15 @@
           "text": "最後補一句：這張對照表比的是「搜尋」這一件事，不是兩家公司的全部。要寫東西、改文件、分析檔案、看圖片，工具的選法又不一樣；哪類任務該開哪個工具，另有一篇總覽。"
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         }
       ],
       "sources": [

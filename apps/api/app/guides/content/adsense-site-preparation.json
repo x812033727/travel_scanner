@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "marketing",
+    "ads"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "生活收納網站累積了一些衣櫃整理與工具使用文章，想用廣告收入分攤維護成本。站長首先要確認的是網站是否已經能讓讀者完成任務，而不是找到一份號稱寫滿幾篇就能過關的清單。AdSense 審查與後續投放都有各自的條件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "生活收納網站累積了一些衣櫃整理與"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "文章，想用廣告收入分攤維護成本。站長首先要確認的是網站是否已經能讓讀者完成任務，而不是找到一份號稱寫滿幾篇就能過關的清單。AdSense 審查與後續投放都有各自的條件。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -60,8 +76,23 @@
           "text": "原創收納網站可以逐頁確認：讀者看完是否知道如何量衣櫃、選擇收納盒或安排換季順序。若多篇只把同一段建議換標題重複發布，應合併或補上不同的操作需求。Google 的準備指南重視獨特、相關內容與使用體驗，不能只計算篇數。"
         },
         {
-          "type": "paragraph",
-          "text": "自己的觀點與說明要有可理解的依據。操作步驟可用自行設計的例子與圖解，引用資料保留來源，照片確認授權；沒有實際使用過的產品，不寫成親身測試結論。把別人的文章換句話說，或把沒有核實的 AI 文字大量上傳，都不能替代內容責任。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自己的觀點與說明要有可理解的依據。操作步驟可用自行設計的例子與圖解，引用資料保留來源，照片確認授權；沒有實際使用過的產品，不寫成親身測試結論。把別人的文章換句話說，或把沒有核實的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 文字大量上傳，都不能替代內容責任。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +237,37 @@
           "text": "驗收應查看設定、顯示及管理報表。點自己的真實廣告、請朋友支持點擊或購買造假流量，都不是合適的測試方式。"
         },
         {
-          "type": "link",
-          "text": "檢查文章是否解決讀者問題",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查文章是否解決讀者問題",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在 WordPress 配置並驗收廣告版位",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-ad-placement"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在 WordPress 配置並驗收廣告版位",
+              "kind": "life",
+              "slug": "wordpress-ad-placement"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立網站事件與流量量測",
-          "url": "https://mokaair.com/zh-TW/life/ga4-site-measurement"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立網站事件與流量量測",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
         }
       ],
       "sources": [

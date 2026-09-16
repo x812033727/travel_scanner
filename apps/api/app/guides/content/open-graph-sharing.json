@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +32,23 @@
           "text": "文章在網站裡看起來正常，分享卡片卻出現網站標誌、舊標題或被裁掉一半的文字，讀者還沒點進來就可能誤解內容。分享預覽通常是平台讀取網頁提供的資訊後組合而成，不是直接截取你眼前的整個頁面。"
         },
         {
-          "type": "paragraph",
-          "text": "排查時可以從三份證據開始：目前網頁輸出的標記、標記指向的圖片檔，以及平台實際顯示的卡片。先找出哪一份與預期不同，再修改對應位置，能避免不停換封面卻始終沒有改到真正的資料來源。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "排查時可以從三份證據開始：目前網頁輸出的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、標記指向的圖片檔，以及平台實際顯示的卡片。先找出哪一份與預期不同，再修改對應位置，能避免不停換封面卻始終沒有改到真正的資料來源。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,8 +56,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "把實際貼到社群的網址完整記下來，包括 HTTPS、www、路徑和必要參數。文章網址、後台預覽連結與媒體附件頁是不同位置，不能拿其中一個測試後，就推論另一個會顯示相同內容。若網址會轉址，也要記錄最後抵達的頁面。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把實際貼到社群的網址完整記下來，包括 HTTPS、www、路徑和必要"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。文章網址、後台預覽連結與媒體附件頁是不同位置，不能拿其中一個測試後，就推論另一個會顯示相同內容。若網址會轉址，也要記錄最後抵達的頁面。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +233,37 @@
           "text": "記下頁面標記、實際圖片與平台卡片。三者各自正確才有完整的驗收依據；只清瀏覽器快取，無法證明社群平台已重新讀取。"
         },
         {
-          "type": "link",
-          "text": "先寫清楚文章標題的範圍",
-          "url": "https://mokaair.com/zh-TW/life/seo-title-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先寫清楚文章標題的範圍",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解結構化資料與搜尋驗證",
-          "url": "https://mokaair.com/zh-TW/life/structured-data-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解結構化資料與搜尋驗證",
+              "kind": "life",
+              "slug": "structured-data-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "確認主要網址與版本關係",
-          "url": "https://mokaair.com/zh-TW/life/canonical-url-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "確認主要網址與版本關係",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
         }
       ],
       "sources": [

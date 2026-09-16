@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "woocommerce"
   ],
   "valid_until": null,
   "featured": false,
@@ -196,14 +198,26 @@
           "text": "沒有費率可能是區域排序、商品資料、工具限制或預期的不配送結果。不要直接補零元方法；先確認該地址和商品組合原本應提供什麼服務。"
         },
         {
-          "type": "link",
-          "text": "先整理商品規格與運送資料",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-product-types"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先整理商品規格與運送資料",
+              "kind": "life",
+              "slug": "woocommerce-product-types"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "金物流串接與配送狀態驗收",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-payments-shipping"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "金物流串接與配送狀態驗收",
+              "kind": "life",
+              "slug": "woocommerce-payments-shipping"
+            }
+          ]
         }
       ],
       "sources": [

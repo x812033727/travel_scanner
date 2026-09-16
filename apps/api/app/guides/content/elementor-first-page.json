@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -87,8 +89,23 @@
           "text": "Gap 是同一容器內項目之間的空間；Padding 是內容與容器邊界的內部空間；Margin 則在元素外側。想讓流程卡片彼此分開，先看 Gap；想讓卡片文字不要貼著底色邊緣，應調整 Padding。對症設定能避免到處加空白元件。"
         },
         {
-          "type": "paragraph",
-          "text": "一般內距與外距可在 Advanced 找到，四個方向預設可能連動，需不同數值時先解除連結。按鈕也可能在自己的 Style 設定內有內距。以少量一致數值建立節奏，例如卡片內距統一，再按內容微調，不用每個元件各猜一個數字。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一般內距與外距可在 Advanced 找到，四個方向預設可能連動，需不同數值時先解除連結。按鈕也可能在自己的 Style 設定內有內距。以少量一致數值建立節奏，例如卡片內距統一，再按內容"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，不用每個元件各猜一個數字。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +218,26 @@
           "text": "完成編輯後，至少用獨立頁面與手機檢查一次。文字、按鈕、圖片與聯絡路徑都能使用，才算完成這個頁面；容器排列整齊只是其中一項。"
         },
         {
-          "type": "link",
-          "text": "了解 Astra 如何控制頁首與全域外觀",
-          "url": "https://mokaair.com/zh-TW/life/astra-theme-customization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "了解 Astra 如何控制頁首與全域外觀",
+              "kind": "life",
+              "slug": "astra-theme-customization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "管理網站字型與本機託管",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-fonts-self-hosting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "管理網站字型與本機託管",
+              "kind": "life",
+              "slug": "wordpress-fonts-self-hosting"
+            }
+          ]
         }
       ],
       "sources": [

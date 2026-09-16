@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "finance"
+    "finance",
+    "banking"
   ],
   "valid_until": null,
   "featured": false,
@@ -33,9 +34,15 @@
           "text": "這篇把「什麼情況會產生跨行費用」講清楚：分界怎麼看、費用裡有哪一段不是你的銀行收的、免費次數為什麼只能查不能背、約定與非約定轉帳怎麼取捨，以及排程轉帳與轉錯帳號這兩種容易出事的情況。全文不點名銀行，也不列費用金額。"
         },
         {
-          "type": "link",
-          "text": "跨行提款、匯款、帳戶管理費這些其他收費項目的總覽，在這一篇",
-          "url": "https://mokaair.com/zh-TW/life/bank-fee-audit"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跨行提款、匯款、帳戶管理費這些其他收費項目的總覽，在這一篇",
+              "kind": "life",
+              "slug": "bank-fee-audit"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -95,9 +102,15 @@
           "text": "臨櫃還多一層。依金融機構辦理國內匯款及無摺存款作業確認客戶身分原則，新臺幣三萬元以上的國內轉帳匯款，應留存匯款人姓名、身分證號碼及電話或地址，並要求出示身分證明文件核對相符；這佔掉的是櫃檯時間。"
         },
         {
-          "type": "link",
-          "text": "數位帳戶常把轉帳免費次數當成主要條件之一，開戶流程與使用限制在這一篇",
-          "url": "https://mokaair.com/zh-TW/life/digital-bank-account-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "數位帳戶常把轉帳免費次數當成主要條件之一，開戶流程與使用限制在這一篇",
+              "kind": "life",
+              "slug": "digital-bank-account-taiwan"
+            }
+          ]
         },
         {
           "type": "image",
@@ -131,9 +144,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "每個月要跨行幾次，其實是帳戶結構決定的",
-          "url": "https://mokaair.com/zh-TW/life/bank-account-separation-system"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "每個月要跨行幾次，其實是帳戶結構決定的",
+              "kind": "life",
+              "slug": "bank-account-separation-system"
+            }
+          ]
         },
         {
           "type": "heading",

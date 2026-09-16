@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "content-marketing"
   ],
   "valid_until": null,
   "featured": false,
@@ -115,8 +117,23 @@
           "text": "欄位需要標籤與適當說明，不只依靠輸入後會消失的提示文字。送出失敗時指出哪個欄位需要修正，盡量保留已填內容；成功時明確確認收到與下一步。W3C 的表單通知教學也要求結果清楚，錯誤說明應提供可理解的修正方法。"
         },
         {
-          "type": "paragraph",
-          "text": "在表單附近交代資料用途與可查閱的隱私資訊；若另有行銷訂閱，讓讀者知道它和詢價回覆的差別。不要把姓名、電話、電子郵件或完整留言放進一般分析事件或網址參數。送出後的通知、後台紀錄與回覆流程，也要列入實際驗收。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在表單附近交代資料用途與可查閱的隱私資訊；若另有行銷訂閱，讓讀者知道它和詢價回覆的差別。不要把姓名、電話、電子郵件或完整留言放進一般分析事件或網址"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。送出後的通知、後台紀錄與回覆流程，也要列入實際驗收。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -206,19 +223,37 @@
           "text": "先確認表單真的收到，再區分有效詢問與後續成交。把事件定義與分母寫清楚，才不會用不同數字誤判頁面成效。"
         },
         {
-          "type": "link",
-          "text": "把行銷文案寫成清楚的使用者利益",
-          "url": "https://mokaair.com/zh-TW/life/marketing-copywriting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把行銷文案寫成清楚的使用者利益",
+              "kind": "life",
+              "slug": "marketing-copywriting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排網頁資訊的視覺層級",
-          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排網頁資訊的視覺層級",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 GA4 設計網站量測",
-          "url": "https://mokaair.com/zh-TW/life/ga4-site-measurement"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 GA4 設計網站量測",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
         }
       ],
       "sources": [

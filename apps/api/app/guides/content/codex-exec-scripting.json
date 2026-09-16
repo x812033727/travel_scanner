@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 130,
   "locales": {
@@ -201,8 +202,23 @@
           "code": "codex exec --sandbox invalid 'Read tasks.md'\n"
         },
         {
-          "type": "paragraph",
-          "text": "這一行應在解析參數時被拒絕，不會取得新的模型答案。PowerShell 緊接著輸入 $LASTEXITCODE；macOS／Linux 緊接著輸入 echo $?，應為非 0。此時上一輪的 report-01.md 可能仍存在，但不能拿來宣稱本輪成功。修正為 read-only 後若要重跑，用新的輸出檔名並重新記錄狀態。不要為了消除錯誤改成略過權限或沙盒；參數錯誤、登入錯誤、額度不足與輸入不存在應分別處理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這一行應在解析"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "時被拒絕，不會取得新的模型答案。PowerShell 緊接著輸入 $LASTEXITCODE；macOS／Linux 緊接著輸入 echo $?，應為非 0。此時上一輪的 report-01.md 可能仍存在，但不能拿來宣稱本輪成功。修正為 read-only 後若要重跑，用新的輸出檔名並重新記錄狀態。不要為了消除錯誤改成略過權限或沙盒；參數錯誤、登入錯誤、額度不足與輸入不存在應分別處理。"
+            }
+          ]
         },
         {
           "type": "paragraph",

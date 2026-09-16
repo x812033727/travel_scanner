@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Claude 是 Anthropic 開發的 AI 助手，和 ChatGPT 一樣能聊天、寫作、讀檔案，差別在它把「放資料與指令的 Projects」「在對話旁邊直接做出網頁與圖表的 Artifacts」和「可以自己開關的思考模式」做成主要功能，而且免費版就能用到大部分；如果你已經有 ChatGPT 帳號，再開一個 Claude 免費帳號試一到兩週，成本只是一支能收簡訊的手機號碼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude 是 Anthropic 開發的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 助手，和 ChatGPT 一樣能聊天、寫作、讀檔案，差別在它把「放資料與指令的 Projects」「在對話旁邊直接做出網頁與圖表的 Artifacts」和「可以自己開關的思考模式」做成主要功能，而且免費版就能用到大部分；如果你已經有 ChatGPT 帳號，再開一個 Claude 免費帳號試一到兩週，成本只是一支能收簡訊的手機號碼。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,9 +63,15 @@
           "text": "Claude 不是單一模型，而是一個家族。2026 年 9 月官方文件列出的現役模型有四個：Fable 5.1 的定位是最艱難的推理與長時間自主任務；Opus 5 針對複雜的程式與企業工作；Sonnet 5 是速度與能力的平衡點；Haiku 4.5 最快、能力接近前緣。名稱後面的數字是世代，每一代都會換，本文其他地方只用系列名。一般使用者不用背這些，在 claude.ai 的模型選單裡挑一個就好；說明中心另外提醒，Fable 系列只在付費方案提供，而且消耗用量比其他模型快。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -144,26 +166,53 @@
           "text": "Projects 是每個主題一個獨立工作區，有自己的對話紀錄與知識庫。把合約範本、公司簡介、常用格式上傳進去，再寫一段「專案指令」（例如一律用繁體中文、回覆用條列），之後這個專案裡的每個對話都會帶著這些背景，不用每次重貼。免費版最多 5 個 Projects，付費方案無上限；知識庫每個檔案上限 30 MB，只抽取文字；付費方案在資料超過對話容量時會自動改用檢索模式，官網說容量最多可擴大 10 倍。"
         },
         {
-          "type": "paragraph",
-          "text": "Artifacts 是 Claude 把「夠大、可以獨立存在的東西」放到對話旁邊另一個視窗的機制，官網的門檻是大約 15 行以上、你之後會想修改或重複使用的內容：文件、程式碼、單頁網站、SVG 圖、圖表、可互動的 React 元件都算。你可以直接說「把這份行程表做成可以勾選的網頁」，做出來之後繼續用對話改、切換版本、複製、下載，免費版也能「發布」成任何人有連結就能打開的頁面。用之前先到設定裡確認「Code execution and file creation」（程式執行與檔案建立）是開著的。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Artifacts 是 Claude 把「夠大、可以獨立存在的東西」放到對話旁邊另一個視窗的機制，官網的門檻是大約 15 行以上、你之後會想修改或重複使用的內容：文件、程式碼、單頁網站、SVG 圖、圖表、可互動的 "
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": " 元件都算。你可以直接說「把這份行程表做成可以勾選的網頁」，做出來之後繼續用對話改、切換版本、複製、下載，免費版也能「發布」成任何人有連結就能打開的頁面。用之前先到設定裡確認「Code execution and file creation」（程式執行與檔案建立）是開著的。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "檔案上傳走輸入框左下角的加號，或直接把檔案拖進對話；支援 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX 與 JPEG、PNG、GIF、WebP 圖片，一個對話最多 20 個檔案、單檔 500 MB，圖片最大 8000 × 8000 像素。PDF 最多 1000 頁，前 100 頁會連圖表版面一起看，101 頁以後只讀文字。單一對話能裝多少內容取決於模型的脈絡視窗：付費方案上 Fable 5.1、Opus 5、Sonnet 5 是 1M token，Opus 4.8、4.7、4.6 與 Sonnet 4.6 是 500K，其餘 200K（官網換算約 500 頁文字）；免費版的數字官網沒有分開寫，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "延伸思考（介面上叫 Thinking 或 Extended）開啟後，Claude 會先花時間拆解問題、規劃步驟再回答，畫面上會出現帶計時器的 Thinking 指示，回答上方有一段可展開的思考摘要。免費版就能用，適合數學、規劃、多步驟分析；日常問答關掉比較快。要注意用 Fable 5.1 或 Opus 5 時思考模式關不掉，Fable 5.1 在每個 Effort 等級都會思考。"
         },
         {
-          "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -204,9 +253,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -230,9 +285,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -240,8 +301,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 在 2025 年更新消費者條款後，免費、Pro、Max 帳號的對話與 Claude Code 工作階段可以用來訓練新模型，但前提是你允許：隱私中心的說法是，除非你開啟這個設定、對話被安全系統標記，或你自願加入測試計畫，否則對話不會用於模型改善。新帳號在註冊流程中選一次，之後改變只影響往後的對話；刪除的對話會在 30 天內從後端移除，不會拿去訓練；無痕對話一律不用。開啟時資料會去識別化後保存最長 5 年，關閉時維持 30 天的一般保存期。Team、Enterprise 與 API 是另一套規則，不在這裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 在 2025 年更新消費者條款後，免費、Pro、Max 帳號的對話與 Claude Code 工作階段可以用來訓練新模型，但前提是你允許：隱私中心的說法是，除非你開啟這個設定、對話被安全系統"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，或你自願加入測試計畫，否則對話不會用於模型改善。新帳號在註冊流程中選一次，之後改變只影響往後的對話；刪除的對話會在 30 天內從後端移除，不會拿去訓練；無痕對話一律不用。開啟時資料會去識別化後保存最長 5 年，關閉時維持 30 天的一般保存期。Team、Enterprise 與 API 是另一套規則，不在這裡。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -250,9 +326,15 @@
           "text": "網頁與桌面版：點左下角的帳號名稱 → Settings（設定）→ Privacy（隱私）→ Help improve our AI models（協助改善我們的 AI 模型），把開關切掉就好；手機 App 走同一條路徑。關掉後新的對話不再用於訓練，但已經開始訓練的模型不會倒回去。開關名稱與預設狀態以說明中心為準，註冊時那一步請看清楚再按。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         }
       ],
       "sources": [

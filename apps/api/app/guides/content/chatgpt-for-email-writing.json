@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "productivity"
+    "productivity",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,17 +27,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "用 ChatGPT 寫商務信，成品好不好，多半在你送出前那一段提示詞就決定了：有沒有講清楚我是誰、寫給誰、要對方做什麼、語氣多重。只打「幫我寫一封催款信」，它只能給你一封誰都能寄、也誰都不會回的萬用信。OpenAI 自己的寫作教學講的也是同一件事：先給它原始材料，說清楚限制與格式，要它附主旨、簡短的開頭與明確的下一步，然後用具體的回饋一輪一輪修，而不是整封重來。不管你搜的是 Email AI 還是寫信 AI，決定成品的都是這段提示詞。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 ChatGPT 寫商務信，成品好不好，多半在你送出前那一段提示詞就決定了：有沒有講清楚我是誰、寫給誰、要對方做什麼、語氣多重。只打「幫我寫一封催款信」，它只能給你一封誰都能寄、也誰都不會回的萬用信。OpenAI 自己的寫作教學講的也是同一件事：先給它原始材料，說清楚限制與格式，要它附主旨、簡短的開頭與明確的下一步，然後用具體的回饋一輪一輪修，而不是整封重來。不管你搜的是 Email "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 還是寫信 AI，決定成品的都是這段提示詞。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇先給一個七部件的提示詞骨架，再照台灣上班族最常寫的六種信，各給一組「提示詞全文、示範產出、常見追問」：中文的請款或請假、向客戶道歉與補救，英文的詢價或詢問合作、催款或催進度、婉拒，以及寫給日本客戶的英文信該怎麼拿捏禮貌層級。後半講怎麼把自己以前寫過的信貼進去當範例、用 Canvas 逐段改、用專案或自訂指令固定簽名檔與語氣，還有哪些東西不該貼。所有範本都是依提示詞寫出的示範，收件人與公司一律用代號，寄出前請換成你自己的細節。還沒用過 ChatGPT 的人，先看入門篇把帳號與第一個對話弄好。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -244,41 +266,71 @@
           "text": "骨架寫得再細，還是不如一封你以前寫得不錯的信。OpenAI Academy 的自訂教學建議直接提供你的寫作樣本，要它「照這個風格寫新的草稿」，模仿語氣、節奏與結構。做法是在提示詞最後加一段：「下面是我之前寫給同一類客戶的信，請照它的語氣、開頭與結尾方式寫，內容照上面的三個點」，然後貼上舊信，客戶名稱與金額先換成代號。貼兩到三封效果更穩，但格式要一致，它會照範例的樣子回。提示詞篇的原則三講的就是這件事。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "第一版出來後，改信不要整封重來。ChatGPT 的 Canvas 是一個與對話並排的編輯區，依 OpenAI Academy 的說明，在對話框輸入 /canvas，或按加號選 Canvas 就能打開。你可以直接在裡面改字、選取某一段要它只改那一段，也有內建的「建議修改（Suggest edits）」「調整語氣與長度」「潤飾（Polish）」工具，還有版本紀錄可以退回前一版。寫信最實用的是選取一句話之後說「這句改得更委婉」，其他段落不會動。Canvas 的完整用法另有一篇。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+              "kind": "life",
+              "slug": "chatgpt-canvas-writing"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "每封信都要重打「我是誰」與簽名檔很煩，兩個地方可以固定。自訂指令（Custom instructions）是整個帳號的固定說明，依 OpenAI Academy，從個人頭像的「個人化（Personalize）」進去設定，每個新對話都會讀，適合放你的職稱、公司類型、慣用語言與「英文信一律簡短直接、簽名檔用這一段」這類通用偏好；專案（Projects）則是把指令、檔案與對話收在同一個工作區，從左側選單的 Projects 建立，專案指令只在這個專案內生效，適合放某一個客戶的背景、你們往來的舊信與這個客戶專用的簽名檔。建議的分法是：自訂指令放「我」，專案放「這個客戶」。設定路徑以你看到的介面為準，兩個功能各有專篇。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "但貼之前先想一件事：這些對話會離開你的電腦。客戶的姓名、電話、Email、身分證字號、合約金額、內部爭議的細節（誰的責任、誰說了什麼）都不需要出現在提示詞裡，信寫好再自己填回去。做法很簡單：用代號取代，「客戶 A 公司」「林小姐」「【金額】」「【發票號】」，這篇的六組範本全部這樣寫，ChatGPT 照樣能寫出通順的信。公司配發的帳號通常有自己的規定，先問清楚；個人帳號的資料訓練設定怎麼關，另有一篇檢查表。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",

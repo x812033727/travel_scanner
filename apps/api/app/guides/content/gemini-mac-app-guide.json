@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,9 +56,10 @@
               "text": "官方桌面下載頁列出 Apple Silicon Mac 與 macOS Sequoia 15.0 以上的需求；說明中心另列至少 8 GB 記憶體及 200 MB 可用安裝空間。先在「關於這臺 Mac」核對晶片、系統與記憶體，再檢查儲存空間。Intel Mac 或不符合條件的裝置，先使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 網頁入口",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
@@ -73,9 +75,10 @@
               "text": "準備個人 Google 帳號，或管理員已啟用 Gemini 的公司／學校帳號，並維持網路連線。安裝應用程式不會替帳號新增付費功能；模型與工具權益仍依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案條件",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -152,9 +155,10 @@
               "text": "若文字太小或只顯示一部分，先放大來源視窗、移到相關段落，再重新分享。需要完整檔案分析時，改用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案上傳與核對",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -179,9 +183,10 @@
               "text": "如果使用可在其他視窗插入文字的功能，先把遊標放到新的草稿，核對目標視窗，再開始說話。產出後檢查原文是否被取代、插入位置是否正確；整理好了也仍是草稿，需要自己確認才適合寄送或分享。持續語音、鏡頭及螢幕互動則可接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Live",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
@@ -206,18 +211,20 @@
               "text": "「Mac 上看不到本機 GEMINI.md 的規則？」桌面應用程式與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini CLI 的 GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "是不同設定入口。本機規則檔不會因為安裝桌面版就自動載入；需要可重複的介面助手，請使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -233,9 +240,10 @@
               "text": "「關閉視窗就是登出嗎？」不一定，應用程式可能仍保留帳號或在選單列提供入口。共用電腦上請檢查真正的登入狀態；要處理已儲存的對話，則另外檢視"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -284,18 +292,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "電腦網頁版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄與隱私",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -304,9 +314,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

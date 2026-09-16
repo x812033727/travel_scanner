@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 111,
   "locales": {
@@ -212,8 +213,23 @@
           "code": "/plan Plan a Clear completed button for this todo website. Do not implement it yet. Preserve active tasks and explain how to verify an empty list, mixed completion states, and reload behavior.\n"
         },
         {
-          "type": "paragraph",
-          "text": "合格計畫應指出相關檔案、按鈕位置、資料操作、儲存方式與測試案例，不能只有「修改、測試、完成」三個空泛步驟。檢查是否誤提不存在的 React 元件或資料庫。發現不符就補充限制，直到你能用計畫判斷成果。之後要實作，依目前介面的模式控制與提示交付；計畫本身不代表已改好網站。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "合格計畫應指出相關檔案、按鈕位置、資料操作、儲存方式與測試案例，不能只有「修改、測試、完成」三個空泛步驟。檢查是否誤提不存在的 "
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": " 元件或資料庫。發現不符就補充限制，直到你能用計畫判斷成果。之後要實作，依目前介面的模式控制與提示交付；計畫本身不代表已改好網站。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -381,8 +397,19 @@
           "text": "「不是內部或外部命令」或 command not found：這是 shell 找不到 codex，先檢查安裝位置與新的終端機環境。若 codex --help 能跑而 /plan 不能，通常是輸入介面不對，不是 CLI 沒裝好。"
         },
         {
-          "type": "paragraph",
-          "text": "參數不接受：確認一般半形連字號 --，不要使用文章排版的長破折號；空格與引號也要保留。不同子命令支援的旗標可能不同，主程式接受不表示每一個子命令都接受。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "不接受：確認一般半形連字號 --，不要使用文章排版的長破折號；空格與引號也要保留。不同子命令支援的旗標可能不同，主程式接受不表示每一個子命令都接受。"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "finance",
-    "software"
+    "software",
+    "finance-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -206,14 +207,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "還沒開始記帳的話，先用這一篇把第一個月記完",
-          "url": "https://mokaair.com/zh-TW/life/expense-tracking-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "還沒開始記帳的話，先用這一篇把第一個月記完",
+              "kind": "life",
+              "slug": "expense-tracking-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "發票載具怎麼申請、怎麼歸戶、能查到哪些消費",
-          "url": "https://mokaair.com/zh-TW/life/einvoice-carrier-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "發票載具怎麼申請、怎麼歸戶、能查到哪些消費",
+              "kind": "life",
+              "slug": "einvoice-carrier-taiwan"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -229,9 +242,15 @@
           "text": "試算表的弱點是輸入麻煩、在手機上難用，也沒有自動來源。折衷做法是分工：日常用最順手的工具把每一筆抓下來，月底匯出成 CSV，貼進同一張試算表做長期紀錄。工具可以換，長期紀錄不會斷。"
         },
         {
-          "type": "link",
-          "text": "月底怎麼把一整個月的紀錄變成幾個決定",
-          "url": "https://mokaair.com/zh-TW/life/monthly-money-review"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "月底怎麼把一整個月的紀錄變成幾個決定",
+              "kind": "life",
+              "slug": "monthly-money-review"
+            }
+          ]
         },
         {
           "type": "callout",

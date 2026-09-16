@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -189,14 +191,26 @@
           "text": "保存具體方案、查閱日期、測試條件與未確認事項。若需求或價格改變，更新同一張表；不要把一次評估寫成永久排名。"
         },
         {
-          "type": "link",
-          "text": "架站預算怎麼編",
-          "url": "https://mokaair.com/zh-TW/life/website-budget-worksheet"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "架站預算怎麼編",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "共享主機、VPS 與代管的差異",
-          "url": "https://mokaair.com/zh-TW/life/hosting-types-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共享主機、VPS 與代管的差異",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
         }
       ],
       "sources": [

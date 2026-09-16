@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Markdown 是用純文字標記檔案結構的寫法，副檔名通常是 .md。本篇會帶你建立一份能直接閱讀的專案說明，再用標題、清單、連結與程式碼表達規則。完成後，你就能讀懂 GEMINI.md 與 SKILL.md，也能分辨檔案內容和需要在終端機執行的命令。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Markdown 是用純文字"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "檔案結構的寫法，副檔名通常是 .md。本篇會帶你建立一份能直接閱讀的專案說明，再用標題、清單、連結與程式碼表達規則。完成後，你就能讀懂 GEMINI.md 與 SKILL.md，也能分辨檔案內容和需要在終端機執行的命令。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -111,9 +127,10 @@
               "text": "可以再加入「不要做的事」，例如不要改動原始公告。這是工作範圍的文字說明，不是作業系統權限控制。真正控制 Gemini CLI 能存取哪些檔案，需要另外理解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "可信任資料夾與沙箱",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -150,18 +167,20 @@
               "text": "建立 .md 後 Gemini 沒有套用，是因為副檔名不等於工具設定。普通 notes.md 不會自動變成專案指示。完成本篇後，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "放到指定位置，再透過"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "記憶載入檢查",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
@@ -210,18 +229,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -230,9 +251,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

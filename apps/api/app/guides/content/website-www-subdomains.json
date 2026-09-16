@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -56,8 +58,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "選 www 或不含 www 時，先查看架站平台支援、既有對外連結和目前的網站設定。若網站已穩定使用其中一種，沒有其他需求時，不必只因覺得另一種更像大公司就改。重點是主要連結、分享網址與搜尋標記保持一致。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "選 www 或不含 www 時，先查看架站平台支援、既有對外連結和目前的網站設定。若網站已穩定使用其中一種，沒有其他需求時，不必只因覺得另一種更像大公司就改。重點是主要連結、分享網址與搜尋"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "保持一致。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -121,8 +138,23 @@
           "text": "先核對 DNS 是否解析到預期服務，再看該服務是否接受這個主機名稱。接著檢查 HTTPS 憑證與實際頁面，最後才看路徑、轉址和內容。如果 DNS 正確卻出現供應商的未綁定畫面，重複刪除 DNS 通常不會解決平台內的綁定問題。"
         },
         {
-          "type": "paragraph",
-          "text": "測試網址至少包含主要首頁、另一個 www 版本、深層內容，以及新增的子網域或子目錄。確認需要保留的參數是否正常、圖片與連結沒有指回測試站。若是兩個不同服務，不要只看首頁樣式接近，還應逐一確認登入與回站連結的實際行為。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "測試網址至少包含主要首頁、另一個 www 版本、深層內容，以及新增的子網域或子目錄。確認需要保留的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "是否正常、圖片與連結沒有指回測試站。若是兩個不同服務，不要只看首頁樣式接近，還應逐一確認登入與回站連結的實際行為。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,19 +228,37 @@
           "text": "主機名稱解析、平台綁定、HTTPS 憑證、路徑回應與轉址各有自己的設定。逐層核對，才能找出問題是在名稱指向、服務接收，還是內容處理。"
         },
         {
-          "type": "link",
-          "text": "DNS 記錄與常見問題",
-          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 記錄與常見問題",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "HTTPS 憑證設定與確認",
-          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "HTTPS 憑證設定與確認",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "301 與 302 的設定驗收",
-          "url": "https://mokaair.com/zh-TW/life/redirects-301-302"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "301 與 302 的設定驗收",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
         }
       ],
       "sources": [

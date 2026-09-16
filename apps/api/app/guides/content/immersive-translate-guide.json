@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "園藝社讀書會找到一篇英文植物介紹、一份掃描講義與一段示範影片，三種資料都需要中文輔助，卻不適合用同一個按鈕判斷成敗。網頁可能漏翻圖中文字，掃描稿可能先辨識錯字，字幕則可能把講者的停頓切成不完整句子。把它當網頁翻譯 AI 來用之前，先分清楚這三種資料各自會在哪裡出錯。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "園藝社讀書會找到一篇英文植物介紹、一份掃描講義與一段示範影片，三種資料都需要中文輔助，卻不適合用同一個按鈕判斷成敗。網頁可能漏翻圖中文字，掃描稿可能先辨識錯字，字幕則可能把講者的停頓切成不完整句子。把它當網頁"
+            },
+            {
+              "type": "article",
+              "text": "翻譯 AI",
+              "kind": "life",
+              "slug": "claude-for-translation-zh-tw"
+            },
+            {
+              "type": "text",
+              "text": " 來用之前，先分清楚這三種資料各自會在哪裡出錯。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -73,8 +89,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "工具介面與實際翻譯引擎是兩個層次。官方政策指出，網頁翻譯內容會送往選定的翻譯引擎；因此使用瀏覽器擴充功能，不等於全部運算都在本機。選服務時應同時看語言效果、處理速度、用量與供應商規則，不能只比較名稱是否帶 AI。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "工具介面與實際翻譯引擎是兩個層次。官方政策指出，網頁翻譯內容會送往選定的翻譯引擎；因此使用瀏覽器擴充功能，不等於全部運算都在本機。選服務時應同時看語言效果、處理速度、用量與供應商規則，不能只比較名稱是否帶 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +232,26 @@
           "text": "分享或據此操作之前，回看原文的數字、否定詞與適用對象。對照模式的價值，在於讓你能查出差異。"
         },
         {
-          "type": "link",
-          "text": "用內容品質檢查表核對資訊",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用內容品質檢查表核對資訊",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "分享前整理圖片與素材授權",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分享前整理圖片與素材授權",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         }
       ],
       "sources": [

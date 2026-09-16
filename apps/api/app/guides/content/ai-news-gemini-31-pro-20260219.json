@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,23 @@
           "text": "事件日期：2026-02-19；本文查核日期：2026-09-14。2 月 19 日 Google 發布 Gemini 3.1 Pro，強調複雜推理、資料整合和程式產生視覺。"
         },
         {
-          "type": "paragraph",
-          "text": "當時開發者在 Gemini API 等入口取得 preview；消費者入口包含 Gemini app 與 NotebookLM。原文說 Gemini app 的 Pro／Ultra 有較高上限，NotebookLM 的 3.1 Pro 當時限 Pro／Ultra；不同入口條件不能混寫。ARC-AGI-2 等評測屬 Google 發表的結果，不代表日常答案的正確率。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "當時開發者在 Gemini API 等入口取得 preview；消費者入口包含 Gemini app 與 NotebookLM。原文說 Gemini app 的 Pro／Ultra 有較高上限，NotebookLM 的 3.1 Pro 當時限 Pro／Ultra；不同入口條件不能混寫。ARC-AGI-2 等"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "屬 Google 發表的結果，不代表日常答案的正確率。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,8 +55,23 @@
           "text": "多重條件比較時的結構化提問技巧"
         },
         {
-          "type": "paragraph",
-          "text": "以家庭規劃為例，許多家長常面臨在三個不同才藝課程之間做出抉擇的難題。這類決策通常牽涉到每期收費金額、每週上課時段、往返交通距離等多項客觀參數，若只是將招生簡章一股腦丟給系統並詢問哪一個最好，往往只會換來四平八穩但缺乏實質幫助的空泛公關辭令，難以解決個別家庭在時間分配上的具體衝突。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "以家庭規劃為例，許多家長常面臨在三個不同才藝課程之間做出抉擇的難題。這類決策通常牽涉到每期收費金額、每週上課時段、往返交通距離等多項客觀"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，若只是將招生簡章一股腦丟給系統並詢問哪一個最好，往往只會換來四平八穩但缺乏實質幫助的空泛公關辭令，難以解決個別家庭在時間分配上的具體衝突。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,8 +87,23 @@
           "text": "推理模型在生活決策中的核心價值與局限"
         },
         {
-          "type": "paragraph",
-          "text": "所謂推理模型的核心價值，並不在於它能用多快的速度輸出辭藻華麗的長篇文章，而在於它是否具備依序拆解難題的可核對的多步驟分析。在面對複雜的生活情境時，這類架構能夠循序漸進地處理互斥條件，例如在預算上限緊縮的前提下，如何兼顧接送路線與不同家庭成員的時間表，並試圖在多個約束中找出折衷方案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "所謂"
+            },
+            {
+              "type": "article",
+              "text": "推理模型",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "的核心價值，並不在於它能用多快的速度輸出辭藻華麗的長篇文章，而在於它是否具備依序拆解難題的可核對的多步驟分析。在面對複雜的生活情境時，這類架構能夠循序漸進地處理互斥條件，例如在預算上限緊縮的前提下，如何兼顧接送路線與不同家庭成員的時間表，並試圖在多個約束中找出折衷方案。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,14 +199,26 @@
           "text": "評測成績僅代表廠商實驗室數據。面對重要決策時，務必親自核對原始簡章之費用、時段與退費規定，切勿依賴未標註資料缺口的生成建議。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.4 把推理與電腦操作放在一起：一般工作者該怎麼看？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4 把推理與電腦操作放在一起：一般工作者該怎麼看？",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         }
       ],
       "sources": [
@@ -319,14 +377,26 @@
           "text": "Benchmark scores represent lab metrics from vendors. For major decisions, always check fees, schedules, and refund policies directly against original brochures, and never rely on generated advice that fails to mark data gaps."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.4 Combines Reasoning and Computer Use: What It Means for Everyday Workers",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4 Combines Reasoning and Computer Use: What It Means for Everyday Workers",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         }
       ],
       "sources": [
@@ -485,14 +555,26 @@
           "text": "ベンチマークスコアはメーカーのラボデータに過ぎません。重要な意思決定では、必ず元の募集要項にある費用、時間帯、返金規定を自ら照合し、情報の欠落が明記されていない生成された提案に依存しないでください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.4が推論とコンピュータ操作を統合：一般の実務者はどう向き合うべきか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4が推論とコンピュータ操作を統合：一般の実務者はどう向き合うべきか？",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         }
       ],
       "sources": [
@@ -651,14 +733,26 @@
           "text": "벤치마크 결과는 제조사 실험실 수치일 뿐입니다. 중요한 결정을 내릴 때는 반드시 원본 요강의 비용, 일정, 환불 규정을 직접 대조하고 누락 데이터가 미표시된 생성 제안에 의존하지 마십시오."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.4, 추론과 컴퓨터 조작을 하나로: 일반 실무자는 어떻게 바라봐야 할까?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4, 추론과 컴퓨터 조작을 하나로: 일반 실무자는 어떻게 바라봐야 할까?",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         }
       ],
       "sources": [
@@ -817,14 +911,26 @@
           "text": "评测成绩仅代表厂商实验室数据。面对重要决策时，务必亲自核对原始简章的费用、时段与退费规定，切勿依赖未标注数据缺口的生成建议。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.4 把推理与电脑操作放在一起：一般工作者该怎么看？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4 把推理与电脑操作放在一起：一般工作者该怎么看？",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         }
       ],
       "sources": [

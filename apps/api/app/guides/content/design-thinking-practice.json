@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "content-marketing"
   ],
   "valid_until": null,
   "featured": false,
@@ -64,8 +66,23 @@
           "text": "對象應包含和題目相關的不同角色，例如可能借傘的住戶、使用過借傘服務的人，以及負責整理傘架的人。不需要在入門練習中追求一個號稱適用所有研究的固定人數；先說明選擇哪些情境、漏掉哪些人，以及這些限制可能如何影響理解。"
         },
         {
-          "type": "paragraph",
-          "text": "研究開始前，說明目的、過程、是否錄音、資料用途與退出方式，取得相應同意。記錄時區分參與者實際說的內容、你觀察到的行為及自己的解讀。若只是和同學排演提問，就標記為練習訪談，不把同學扮演的住戶回答當成真正需求。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "研究開始前，說明目的、過程、是否錄音、資料用途與退出方式，取得相應同意。記錄時區分參與者實際說的內容、你觀察到的行為及自己的解讀。若只是和同學排演提問，就"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "為練習訪談，不把同學扮演的住戶回答當成真正需求。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +218,37 @@
           "text": "把自己想像成使用者有助提出問題，仍不能證明他人的需求。沒有研究資料時，明確保留假設，並安排能確認或推翻它的下一步。"
         },
         {
-          "type": "link",
-          "text": "分清 UI、UX 與研究的工作範圍",
-          "url": "https://mokaair.com/zh-TW/life/ui-ux-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分清 UI、UX 與研究的工作範圍",
+              "kind": "life",
+              "slug": "ui-ux-learning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理使用者旅程與接觸點",
-          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理使用者旅程與接觸點",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "將練習過程寫成可信案例",
-          "url": "https://mokaair.com/zh-TW/life/portfolio-case-study"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "將練習過程寫成可信案例",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 170,
@@ -93,8 +94,23 @@
           "text": "手動任務適合有明確起點、成本或副作用的流程；自動選用適合與使用者要求直接相關的可重用步驟；背景參考適合只有知識規範、沒有獨立任務的內容。本篇三種實驗都只使用本機假資料，不部署、不提交、不建立外部 PR。"
         },
         {
-          "type": "paragraph",
-          "text": "材料提供 skills/review-change 的手動版本，以及 skills/variants/automatic.md 和 background.md。variants 是教材素材目錄，不是 Claude 自動載入的位置。每次只安裝一種受測版本，避免三個相似名稱同時存在，讓結果難以解釋。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "材料提供 "
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/review-change 的手動版本，以及 skills/variants/automatic.md 和 background.md。variants 是教材素材目錄，不是 Claude 自動載入的位置。每次只安裝一種受測版本，避免三個相似名稱同時存在，讓結果難以解釋。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -187,8 +203,23 @@
           "text": "另開階段，先查看指令可用性，再要求解釋 toggleTodo 的資料契約。記錄背景內容是否被選用，以及實際回答是否符合程式。不要用「沒有出現在選單」推論它無法被模型使用；這正是需要區分使用者可呼叫與模型可選用的原因。"
         },
         {
-          "type": "paragraph",
-          "text": "如果專案 CLAUDE.md 已有相同規則，模型可能不需額外 Skill 也能回答。可以用來源標記協助辨認，但不要把測試問題直接寫成「請使用 data-conventions」，因為那已變成明確指定。需要測自動選擇時，輸入應保持一般使用者自然說法。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果專案 CLAUDE.md 已有相同規則，模型可能不需額外 Skill 也能回答。可以用來源"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "協助辨認，但不要把測試問題直接寫成「請使用 data-conventions」，因為那已變成明確指定。需要測自動選擇時，輸入應保持一般使用者自然說法。"
+            }
+          ]
         },
         {
           "type": "heading",

@@ -5,8 +5,10 @@ import {
   isImageCredit,
   isImageSize,
   isRichContentBlock,
+  type FaqBlock,
   type ImageCredit,
   type RichContentBlock,
+  type SummaryBlock,
 } from "./content-blocks";
 import type { Locale } from "@/i18n/routing";
 import type { ArticleReference, SeriesNavigation } from "./guide-series";
@@ -52,8 +54,58 @@ export function guideListHref(kind: GuideKind, topic?: string | null): string {
   return topic ? `${base}?topic=${encodeURIComponent(topic)}` : base;
 }
 
-/** `section` is optional on the wire so a catalogue served by an older API still parses. */
-export type GuideTopic = { slug: string; label: string; section?: GuideSection };
+/**
+ * The hub page of one topic: `/guides/topics/{topic}` for the travel vocabulary and
+ * `/life/topics/{topic}` for the lifestyle one. A `?topic=` listing is the same collection
+ * and canonicalizes here; a chip links here directly.
+ */
+export function guideTopicHref(section: GuideSection, topic: string): string {
+  return `${section === "life" ? "/life" : "/guides"}/topics/${encodeURIComponent(topic)}`;
+}
+
+/** The section hub a topic hub sits under, for its breadcrumb and its "all topics" chip. */
+export function sectionHubHref(section: GuideSection): string {
+  return section === "life" ? "/life" : "/guides";
+}
+
+/**
+ * `section` is optional on the wire so a catalogue served by an older API still parses; so
+ * are the two-level fields. `parent` names the parent topic of a sub-topic; `count` is how
+ * many articles the request locale publishes under the topic (a parent counts its children's
+ * too) and `counts` the same per locale, which is what a hub page decides its hreflang from.
+ */
+export type GuideTopic = {
+  slug: string;
+  label: string;
+  section?: GuideSection;
+  parent?: string | null;
+  description?: string | null;
+  count?: number;
+  counts?: Record<string, number>;
+};
+
+/** One destination with at least one published article, for the travel hub's country groups. */
+export type DestinationFacet = {
+  id: string;
+  label: string;
+  country: string;
+  country_label: string;
+  count: number;
+};
+
+export function isDestinationFacet(value: unknown): value is DestinationFacet {
+  if (!value || typeof value !== "object") return false;
+  const row = value as Record<string, unknown>;
+  return typeof row.id === "string" && typeof row.label === "string"
+    && typeof row.country === "string" && typeof row.country_label === "string"
+    && Number.isInteger(row.count) && Number(row.count) >= 0;
+}
+
+/** The locales a topic publishes in, in the site's own order, from the API's per-locale counts. */
+export function topicLocales(topic: Pick<GuideTopic, "counts">, all: readonly Locale[]): Locale[] {
+  const counts = topic.counts ?? {};
+  return all.filter((locale) => (counts[locale] ?? 0) > 0);
+}
 
 export type GuideSource = { title: string; url: string; checked_on: string | null };
 
@@ -190,6 +242,112 @@ export type GuideSummary = {
 
 export type GuideList = { articles: GuideSummary[]; next_cursor: string | null };
 
+/** How a listing is ordered. `latest` is publication time, newest first, right for dated
+ *  intel; `curated` is the editor's order (featured, then `display_order`, then newest),
+ *  which the lifestyle listing, the hub's featured guides and the how-to listing read. */
+export const guideListSorts = ["latest", "curated"] as const;
+export type GuideListSort = typeof guideListSorts[number];
+
+export function isGuideListSort(value: unknown): value is GuideListSort {
+  return typeof value === "string" && (guideListSorts as readonly string[]).includes(value);
+}
+
+/** One search result: the card fields plus the passage the match was found in, and the
+ *  folded terms the API matched so the card can mark them. */
+export type GuideSearchHit = GuideSummary & { snippet: string; matched: string[] };
+
+export type GuideSearchResult = {
+  query: string;
+  total: number;
+  offset: number;
+  limit: number;
+  results: GuideSearchHit[];
+  /** The article whose alias or title *is* the query; shown above the list, never in it. */
+  best_match: GuideSummary | null;
+  next_offset: number | null;
+};
+
+export type ArticleSearchOptions = { section?: GuideSection | null; offset?: number | null };
+
+/** The results page URL. Only what changes the result set goes in: the query, the section
+ *  and the offset, so two readers searching the same thing land on the same address. */
+export function articleSearchHref(q: string, options: ArticleSearchOptions = {}): string {
+  const params = new URLSearchParams();
+  const query = q.trim();
+  if (query) params.set("q", query);
+  if (options.section) params.set("section", options.section);
+  if (options.offset) params.set("offset", String(options.offset));
+  const suffix = params.toString();
+  return suffix ? `/search/articles?${suffix}` : "/search/articles";
+}
+
+export type HighlightSegment = { text: string; hit: boolean };
+
+/** The same fold the API applies to both the index and the query (NFKC, casefold). */
+function foldForMatch(text: string): string {
+  return text.normalize("NFKC").toLowerCase();
+}
+
+/**
+ * `text` folded character by character, with each folded position mapped back to the
+ * original character it came from. NFKC is not length-preserving -- an ellipsis becomes
+ * three periods, a ligature two letters -- so a match found in the folded copy has to be
+ * carried back through this map rather than by index.
+ */
+function foldWithMap(text: string): { folded: string; starts: number[]; stops: number[] } {
+  let folded = "";
+  const starts: number[] = [];
+  const stops: number[] = [];
+  let index = 0;
+  for (const char of text) {
+    const piece = foldForMatch(char) || char;
+    for (let offset = 0; offset < piece.length; offset += 1) {
+      starts.push(index);
+      stops.push(index + char.length);
+    }
+    folded += piece;
+    index += char.length;
+  }
+  return { folded, starts, stops };
+}
+
+/**
+ * Splits `text` into the runs that match one of `terms` and the runs between them, so a
+ * card can wrap the hits in `<mark>` without ever building HTML from a string. The match is
+ * made on the folded copy, so `ＡＩ` marks for `ai` and `JR PASS` for `jr pass`, and the
+ * runs are sliced from the original so the reader sees their own text. A term that lands
+ * inside one original character (a period inside an ellipsis) marks that character once.
+ */
+export function highlight(text: string, terms: readonly string[]): HighlightSegment[] {
+  if (!text) return [];
+  const needles = [...new Set(terms.map(foldForMatch).filter(Boolean))].sort((a, b) => b.length - a.length);
+  if (!needles.length) return [{ text, hit: false }];
+  const { folded, starts, stops } = foldWithMap(text);
+  const segments: HighlightSegment[] = [];
+  let foldCursor = 0;
+  let cursor = 0;
+  while (foldCursor < folded.length) {
+    let nextIndex = -1;
+    let nextLength = 0;
+    for (const needle of needles) {
+      const index = folded.indexOf(needle, foldCursor);
+      if (index >= 0 && (nextIndex < 0 || index < nextIndex)) { nextIndex = index; nextLength = needle.length; }
+    }
+    if (nextIndex < 0) break;
+    const from = Math.max(starts[nextIndex], cursor);
+    const to = stops[nextIndex + nextLength - 1];
+    if (to > from) {
+      if (from > cursor) segments.push({ text: text.slice(cursor, from), hit: false });
+      segments.push({ text: text.slice(from, to), hit: true });
+      cursor = to;
+    }
+    foldCursor = nextIndex + nextLength;
+  }
+  if (cursor < text.length) segments.push({ text: text.slice(cursor), hit: false });
+  return segments;
+}
+
+
 export type GuideArticleState = {
   slug: string;
   kind: GuideKind;
@@ -209,14 +367,33 @@ export type GuideArticleState = {
   partner_links?: GuidePartnerLink[];
   article_links?: ArticleReference[];
   series?: SeriesNavigation | null;
+  /** Further reading (the editor's picks, then the nearest neighbours), the articles whose
+   *  text links here, and the other names this article answers to. All optional, so an
+   *  article from an older API simply draws none of them. */
+  related?: ArticleReference[];
+  backlinks?: ArticleReference[];
+  aliases?: string[];
+  /** The glossary this article is an entry of, when it is one: the page marks it up as a
+   *  DefinedTerm in that set. */
+  term_set?: ArticleReference | null;
 };
 
+export function isGuideTopic(value: unknown): value is GuideTopic {
+  const topic = value as Record<string, unknown> | null;
+  if (!topic || typeof topic.slug !== "string" || typeof topic.label !== "string") return false;
+  if (topic.section !== undefined && !isGuideSection(topic.section)) return false;
+  if (topic.parent !== undefined && topic.parent !== null && typeof topic.parent !== "string") return false;
+  if (topic.description !== undefined && topic.description !== null && typeof topic.description !== "string") return false;
+  if (topic.count !== undefined && !Number.isInteger(topic.count)) return false;
+  if (topic.counts !== undefined) {
+    if (!topic.counts || typeof topic.counts !== "object") return false;
+    if (!Object.values(topic.counts as Record<string, unknown>).every(Number.isInteger)) return false;
+  }
+  return true;
+}
+
 function isTopicList(value: unknown): value is GuideTopic[] {
-  return Array.isArray(value) && value.every((row) => {
-    const topic = row as Record<string, unknown> | null;
-    return !!topic && typeof topic.slug === "string" && typeof topic.label === "string"
-      && (topic.section === undefined || isGuideSection(topic.section));
-  });
+  return Array.isArray(value) && value.every(isGuideTopic);
 }
 
 function isSourceList(value: unknown): value is GuideSource[] {
@@ -250,6 +427,23 @@ export function isGuideSummary(value: unknown): value is GuideSummary {
     && isTopicList(row.topics);
 }
 
+export function isGuideSearchHit(value: unknown): value is GuideSearchHit {
+  if (!isGuideSummary(value)) return false;
+  const row = value as unknown as Record<string, unknown>;
+  return typeof row.snippet === "string"
+    && Array.isArray(row.matched) && row.matched.every((term) => typeof term === "string");
+}
+
+export function isGuideSearchResult(value: unknown): value is GuideSearchResult {
+  if (!value || typeof value !== "object") return false;
+  const row = value as Record<string, unknown>;
+  return typeof row.query === "string" && Number.isInteger(row.total) && Number.isInteger(row.offset)
+    && Number.isInteger(row.limit)
+    && Array.isArray(row.results) && row.results.every(isGuideSearchHit)
+    && (row.best_match === null || row.best_match === undefined || isGuideSummary(row.best_match))
+    && (row.next_offset === null || row.next_offset === undefined || Number.isInteger(row.next_offset));
+}
+
 /** An `intel` notice past its own validity. It keeps its page; it just stops being current. */
 export function isExpired(validUntil: string | null, today: Date = new Date()): boolean {
   if (!validUntil) return false;
@@ -269,6 +463,25 @@ export function isExpired(validUntil: string | null, today: Date = new Date()): 
  * A partner link never stays inside `blocks`: the shared renderer would draw its URL as an
  * ordinary, unqualified link.
  */
+/** The summary and the FAQ are drawn in fixed places -- the answer under the description, the
+ *  questions before the sources -- so the body is rendered without them. The API allows one
+ *  of each; a document from an older draft that somehow carries two keeps the first. */
+export function splitArticleExtras(blocks: readonly GuideBlock[]): {
+  summary: SummaryBlock | null;
+  faq: FaqBlock | null;
+  blocks: GuideBlock[];
+} {
+  let summary: SummaryBlock | null = null;
+  let faq: FaqBlock | null = null;
+  const rest: GuideBlock[] = [];
+  for (const block of blocks) {
+    if (block.type === "summary" && !summary) summary = block;
+    else if (block.type === "faq" && !faq) faq = block;
+    else rest.push(block);
+  }
+  return { summary, faq, blocks: rest };
+}
+
 export type GuideSegment = {
   blocks: RichContentBlock[];
   headingStart: number;
@@ -326,6 +539,8 @@ export function readingMinutes(document: GuideDocument): number {
     if (block.type === "table") parts.push(...block.header, ...block.rows.flat());
     if (block.type === "image") parts.push(block.caption ?? "");
     if (block.type === "rich_paragraph") parts.push(...block.inlines.map(node => node.text));
+    if (block.type === "summary") parts.push(...block.items);
+    if (block.type === "faq") parts.push(...block.items.flatMap((item) => [item.question, item.answer]));
   }
   const text = parts.join(" ");
   const characters = (text.match(CJK) ?? []).length;

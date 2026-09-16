@@ -8,7 +8,7 @@ import { AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } fro
 import { Button, Dialog } from "@/components/community/ui";
 import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
-import { guideKinds, guideSections, isGuideKind, isGuideSection, type GuideTopic } from "@/lib/guides";
+import { type GuideTopic, guideKinds, guideSection, guideSections, isGuideKind, isGuideSection } from "@/lib/guides";
 import {
   articleStatuses, isArticleStatus, isPageNumber,
   type ArticleList, type ArticleStatus, type ArticleSummary, type BatchVisibilityResult,
@@ -183,9 +183,14 @@ export function AdminGuidesList({ onOpen, onCreate }: { onOpen: (id: string) => 
       onChange={(code) => updateAdminQuery({ status: code, page: "" })}
     />
 
+    {/* The filters' rule: independent ones (status, destination, keyword) never clear each
+        other; a dependent one clears when what it depends on changes. Kind and topic both
+        belong to one section, so choosing a section drops both, and the two dropdowns
+        offer only that section's values -- with the URL's own value kept in the list even
+        when it belongs elsewhere, so what the screen shows is always what the query sends. */}
     <AdminFilterBar>
       <label className="grid gap-2 text-sm font-semibold">{t("sectionFilter")}
-        <select className={control} value={section} onChange={(event) => updateAdminQuery({ section: event.target.value, kind: "", page: "" })}>
+        <select className={control} value={section} onChange={(event) => updateAdminQuery({ section: event.target.value, kind: "", topic: "", page: "" })}>
           <option value="">{t("sectionAll")}</option>
           {guideSections.map((value) => (
             <option key={value} value={value}>{value === "life" ? t("sectionLife") : t("sectionTravel")}</option>
@@ -195,13 +200,15 @@ export function AdminGuidesList({ onOpen, onCreate }: { onOpen: (id: string) => 
       <label className="grid gap-2 text-sm font-semibold">{t("kind")}
         <select className={control} value={kind} onChange={(event) => updateAdminQuery({ kind: event.target.value, page: "" })}>
           <option value="">{t("allKinds")}</option>
-          {guideKinds.map((value) => <option key={value} value={value}>{t(value)}</option>)}
+          {guideKinds.filter((value) => !section || guideSection(value) === section || value === kind)
+            .map((value) => <option key={value} value={value}>{t(value)}</option>)}
         </select>
       </label>
       <label className="grid gap-2 text-sm font-semibold">{t("topics")}
         <select className={control} value={topic} onChange={(event) => updateAdminQuery({ topic: event.target.value, page: "" })}>
           <option value="">{t("allTopics")}</option>
-          {topics.map((item) => <option key={item.slug} value={item.slug}>{item.label}</option>)}
+          {topics.filter((item) => !section || (item.section ?? "travel") === section || item.slug === topic)
+            .map((item) => <option key={item.slug} value={item.slug}>{item.label}</option>)}
         </select>
       </label>
       <form className="flex flex-wrap items-end gap-3" onSubmit={(event) => { event.preventDefault(); updateAdminQuery({ q: search.q.trim(), destination: search.destination.trim(), page: "" }); }}>

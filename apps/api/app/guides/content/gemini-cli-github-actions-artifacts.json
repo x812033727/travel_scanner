@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限與沙箱",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": " 及 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "可續跑批次程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+              "kind": "life",
+              "slug": "gemini-cli-resumable-batch-pipeline"
             },
             {
               "type": "text",
@@ -75,8 +78,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "2026-09-14 的驗證涵蓋 Windows、Python 3.13.15 的本機執行器、YAML 結構、參數限制及無憑證反例。Actions 版本與完整提交識別已由各官方 repository 查證，但尚未在 GitHub hosted runner 實際觸發，也沒有真實雲端模型用量；這兩項是發布前待驗工作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026-09-14 的驗證涵蓋 Windows、Python 3.13.15 的本機執行器、YAML 結構、"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "限制及無憑證反例。Actions 版本與完整提交識別已由各官方 repository 查證，但尚未在 GitHub hosted runner 實際觸發，也沒有真實雲端模型用量；這兩項是發布前待驗工作。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -88,8 +106,23 @@
           "text": "將 79 資料夾內的 runner.py、pipeline.py、no-tools.toml 及 docs/ 放在測試 repository 根目錄，再把 review.yml 放到 .github/workflows/review.yml。先確認 repository 只有教材需要的資料，README 清楚註明內容為合成範例。工作流檔若不在指定目錄，GitHub 不會把它當成可執行工作流。"
         },
         {
-          "type": "paragraph",
-          "text": "先在本機執行下面命令，預設會使用 fixture 模式處理 doc01.md。成功後打開 out/workflow.json 與 out/report/results，確認模式標記與文件 ID。這一步可以在沒有 API 金鑰時完成，也方便在未啟用 Actions 前發現路徑或程式錯誤。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先在本機執行下面命令，預設會使用 fixture 模式處理 doc01.md。成功後打開 out/workflow.json 與 out/report/results，確認模式"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與文件 ID。這一步可以在沒有 API 金鑰時完成，也方便在未啟用 Actions 前發現路徑或程式錯誤。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -189,9 +222,10 @@
               "text": "執行 live 時輸入帳號可用的模型名稱，先處理一份文件。程式使用前篇的外層 CLI 與內層內容契約驗證，失敗就留下狀態，不會替你自動留言、提交、合併或部署。使用 API 金鑰會走相應計費管道，需到 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 用量與費用教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -262,9 +296,10 @@
               "text": "接著做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件維護完整專案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+              "kind": "life",
+              "slug": "gemini-cli-docs-maintenance-project"
             },
             {
               "type": "text",
@@ -280,27 +315,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 權限：忽略檔案、可信任資料夾與沙箱",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 批次處理：JSONL、續跑與避免重複輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+              "kind": "life",
+              "slug": "gemini-cli-resumable-batch-pipeline"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 完整專案：文件更新、連結檢查與人工審查交付",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+              "kind": "life",
+              "slug": "gemini-cli-docs-maintenance-project"
             },
             {
               "type": "text",
@@ -319,9 +357,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-github-actions-artifacts/automation-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

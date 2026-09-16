@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +40,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Brown 等人的原始研究使用文字指示與示範，讓模型在沒有梯度更新或微調的情況下處理任務。少樣本提示沿用這個操作重點：例子作為當次輸入的一部分，幫助模型辨認任務與預期輸出。這與蒐集資料後重新調整模型參數的微調不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Brown 等人的原始研究使用文字指示與示範，讓模型在沒有梯度更新或"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "的情況下處理任務。少樣本提示沿用這個操作重點：例子作為當次輸入的一部分，幫助模型辨認任務與預期輸出。這與蒐集資料後重新調整模型"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的微調不同。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -73,8 +99,23 @@
           "text": "失物招領的普通例子可以包含明確物品與地點，但只放這類範例，模型可能誤以為每則留言都有完整資訊。第二種示範應處理缺漏，例如「剛剛撿到一張卡片」，預期地點欄位寫「未提供」，不能猜在車站或教室。"
         },
         {
-          "type": "paragraph",
-          "text": "邊界案例則能表達容易混淆的規則。像「我的耳機不見了」是尋物消息，不是拾獲消息；若你的系統只收拾獲資料，就要示範如何標記不適用。這比多放幾則雨傘和水壺的類似留言，更能讓模型知道分類的真正界線。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "邊界案例則能表達容易混淆的規則。像「我的耳機不見了」是尋物消息，不是拾獲消息；若你的系統只收拾獲資料，就要示範如何"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "不適用。這比多放幾則雨傘和水壺的類似留言，更能讓模型知道分類的真正界線。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -168,19 +209,37 @@
           "text": "如果已有很多普通案例，再加相似例子未必有用；先找模型一直判錯的情況。"
         },
         {
-          "type": "link",
-          "text": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-zero-shot-prompting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
+              "kind": "life",
+              "slug": "ai-term-zero-shot-prompting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文學習（In-context Learning）是什麼：當場適應新規則",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-in-context-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

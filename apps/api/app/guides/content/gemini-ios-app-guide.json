@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -63,9 +64,10 @@
               "text": "部分功能可在未登入時試用，但儲存活動及使用更多功能需要登入。練習建議先確認帳號，方便在電腦與手機核對同一段對話。安裝免費不等於所有功能都沒有用量限制，方案差異集中在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "免費與付費方案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -86,9 +88,10 @@
               "text": "打字使用鍵盤輸入區；麥克風用來說出一段提示詞；Live 則提供持續語音對話。先從打字開始，確定回覆能顯示，再試語音比較容易找出問題。需要了解鏡頭或即時螢幕分享時，接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Live",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
@@ -139,9 +142,10 @@
               "text": "拍攝現實中的選單、公告或時刻表時，另外看是否有有效日期、分店名稱與適用條件。照片裡的價格可能只適用當時的方案；模型讀得到數字，也不代表該價格今天仍有效。需要做多頁或跨檔比較，請看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析與來源驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -174,9 +178,10 @@
               "text": "重要通知另存到備忘錄或檔案，標明仍需確認的地方。若要在電腦接續處理，登入同一 Google 帳號並檢視是否能找到對話；儲存結果受活動設定與帳號政策影響。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -197,9 +202,10 @@
               "text": "「App Store 說裝置不相容？」先比對最新系統需求及裝置可升級的版本。若無法符合要求，可在支援的瀏覽器試用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "網頁入口",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
@@ -219,9 +225,10 @@
               "text": "「刪掉 App 後還會扣款嗎？」可能會。應用程式安裝、Google 帳號活動和付款訂閱是不同專案。從 App Store 購買的方案，到 Apple 訂閱管理檢視；其他付款管道則依收據處理，詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "訂閱管理教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -237,9 +244,10 @@
               "text": "「已經說請安排活動，日曆卻沒出現？」文字建議不等於已建立日曆。要操作 Google 服務，先確認"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "連結的應用程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -288,18 +296,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Live",
-              "url": "https://mokaair.com/zh-TW/life/gemini-live-voice-camera"
+              "kind": "life",
+              "slug": "gemini-live-voice-camera"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "讀 PDF、圖片與表格",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -308,9 +318,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

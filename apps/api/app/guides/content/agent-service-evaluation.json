@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "攝影棚每天收到時段、設備和費用詢問，業者希望 AI 先查空檔、整理需求，再讓店長確認預約。廠商說這叫 AI 代理服務，能替團隊完成工作。真正需要評估的卻是：它會停在建議，還是會占用時段、寄出通知，甚至收取費用？"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "攝影棚每天收到時段、設備和費用詢問，業者希望 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 先查空檔、整理需求，再讓店長確認預約。廠商說這叫 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "服務，能替團隊完成工作。真正需要評估的卻是：它會停在建議，還是會占用時段、寄出通知，甚至收取費用？"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +227,26 @@
           "text": "產生回覆、建立預約和成功通知是不同結果。請服務分開記錄，才能在中斷後只接續尚未完成的部分。"
         },
         {
-          "type": "link",
-          "text": "先理解 SaaS、PaaS 與 IaaS 的責任",
-          "url": "https://mokaair.com/zh-TW/life/saas-paas-iaas-responsibility"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先理解 SaaS、PaaS 與 IaaS 的責任",
+              "kind": "life",
+              "slug": "saas-paas-iaas-responsibility"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "自動回覆前先規劃聊天機器人流程",
-          "url": "https://mokaair.com/zh-TW/life/social-chatbot-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自動回覆前先規劃聊天機器人流程",
+              "kind": "life",
+              "slug": "social-chatbot-workflow"
+            }
+          ]
         }
       ],
       "sources": [

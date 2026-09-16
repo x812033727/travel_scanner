@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -186,14 +188,26 @@
           "text": "新增表單欄位後，同時檢查郵件範本與留存對應。只有畫面出現欄位，還不能證明站長收到的內容完整。"
         },
         {
-          "type": "link",
-          "text": "檢查網站使用者權限",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-user-roles"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查網站使用者權限",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "修正外掛介面的繁體中文用語",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-plugin-theme-translation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "修正外掛介面的繁體中文用語",
+              "kind": "life",
+              "slug": "wordpress-plugin-theme-translation"
+            }
+          ]
         }
       ],
       "sources": [

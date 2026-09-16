@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Google AI Studio 是試用模型與建立 Gemini API 金鑰的開發入口。本篇從一個簡單提示詞開始，帶你建立獨立專案環境，分別用 Python 與 JavaScript 呼叫 API。完成後，你會知道網頁試跑、程式執行與帳號用量各自在哪裡確認，不再把消費者版 Gemini 的操作直接套程式式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Studio 是試用模型與建立 Gemini API 金鑰的開發入口。本篇從一個簡單提示詞開始，帶你建立獨立專案環境，分別用 Python 與 JavaScript 呼叫 API。完成後，你會知道網頁試跑、程式執行與帳號用量各自在哪裡確認，不再把消費者版 Gemini 的操作直接套程式式。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -48,8 +64,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "準備可使用 AI Studio 的 Google 帳號與一臺能執行 Python 的電腦；JavaScript 範例另需 Node.js。本系列主要用 Python，查證日的範例套件為 google-genai 2.23.0，JavaScript 使用 @google/genai 2.22.0。本機範例採語法與模擬服務驗證，尚未使用讀者的真實金鑰呼叫 Google；以下步驟提供完整連線驗收方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "準備可使用 AI Studio 的 Google 帳號與一臺能執行 Python 的電腦；JavaScript 範例另需 Node.js。本系列主要用 Python，查證日的範例套件為 google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0，JavaScript 使用 @google/genai 2.22.0。本機範例採語法與模擬服務驗證，尚未使用讀者的真實金鑰呼叫 Google；以下步驟提供完整連線驗收方式。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -59,18 +90,20 @@
               "text": "先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞設計",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 計費",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -189,9 +222,10 @@
               "text": "「回傳模型不存在或權限不足」確認完整模型名稱、API 路線、專案與帳號資格。模型的顯示名稱不一定等於程式識別字；也不能把 Gemini 網頁的模式名稱直接填進 model。保留錯誤碼，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "錯誤分類",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -207,18 +241,20 @@
               "text": "第一次成功後，記下 SDK 版本、模型、日期與使用的提示詞。接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案輸入與結構化輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
               "text": "，把普通文字回覆改成可驗證的欄位；最後用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案助理實作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+              "kind": "life",
+              "slug": "gemini-api-document-assistant"
             },
             {
               "type": "text",
@@ -267,18 +303,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 認證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案與 JSON",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
@@ -287,9 +325,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

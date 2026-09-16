@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,28 +56,55 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI Studio 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": "，記下金鑰所屬專案與模型識別字。Gemini 消費者方案的月費不等於 API 儲值或用量，CLI 也會因"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "認證方式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
-              "text": "使用不同服務。你應在 AI Studio 的專案與用量頁核對，而不是從 Gemini 網頁的訂閱圖示推論程式已包含免費使用。"
+              "text": "使用不同服務。你應在 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Studio 的專案與用量頁核對，而不是從 Gemini 網頁的訂閱圖示推論程式已包含免費使用。"
             }
           ]
         },
         {
-          "type": "paragraph",
-          "text": "本文於二〇二六年九月十四日核對官方價格、額度與錯誤文件。Python 範例使用 google-genai 2.23.0；計算器是本地算術，沒有呼叫模型。正式支出仍以 Google 計費記錄為準，因為額外工具、快取、服務模式與適用期間都可能改變結果。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本文於二〇二六年九月十四日核對官方價格、額度與錯誤文件。Python 範例使用 google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0；計算器是本地算術，沒有呼叫模型。正式支出仍以 Google 計費記錄為準，因為額外工具、快取、服務模式與適用期間都可能改變結果。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -165,9 +193,10 @@
               "text": "每次模型或提示詞更新，都以固定檔案比較正確率、缺漏判斷與實際用量。最便宜的一次呼叫若常需要人工重做，未必是整體成本最低的流程。用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "結構與來源驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
@@ -196,9 +225,10 @@
               "text": "「發生逾時代表沒有計費嗎」不能這樣推論。客戶端沒收到完整回覆時，服務端可能已處理部分或全部工作。記下請求時間與識別資訊，核對用量，再判斷是否重送。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "完整檔案工具",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+              "kind": "life",
+              "slug": "gemini-api-document-assistant"
             },
             {
               "type": "text",
@@ -247,18 +277,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "免費與付費方案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI Studio 與第一個 Gemini API 呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
@@ -267,9 +299,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -124,8 +125,23 @@
           "text": "回收分類工具若是給一般住戶使用，介面應讓人知道它辨識的是照片外觀，實際回收規則仍可能因材質處理、汙染程度或地方規定而不同。模型能辨識物品，不等於已核對當地所有處置方式。若要提供處置建議，需另外接入適用且可查證的規則資料。"
         },
         {
-          "type": "paragraph",
-          "text": "深度學習與生成式 AI 也不是同義詞。分類照片是深度學習的一種應用，卻不必生成新圖片；文字生成模型也可能使用深度神經網路。前者按技術方法描述，後者按產出能力描述，理解這個差別，就不會把所有神經網路都當成聊天模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "深度學習與生成式 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 也不是同義詞。分類照片是深度學習的一種應用，卻不必生成新圖片；文字生成模型也可能使用深度神經網路。前者按技術方法描述，後者按產出能力描述，理解這個差別，就不會把所有神經網路都當成聊天模型。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +180,48 @@
           "text": "同一物品換背景就被判成不同類別，可能表示模型依賴了不適合的捷徑。這比只增加相似展示照片更能揭露資料問題。"
         },
         {
-          "type": "link",
-          "text": "機器學習（Machine Learning）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-machine-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "機器學習（Machine Learning）是什麼",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "生成式 AI（Generative AI）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成式 AI（Generative AI）是什麼",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

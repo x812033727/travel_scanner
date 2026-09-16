@@ -53,8 +53,18 @@ Three orthogonal axes, because no single one of them covers the content:
    `_resolve_topics` refuses a topic from the other section with `422
    guide_topic_section_mismatch` on both create and update. Without that column the seven
    lifestyle slugs would appear as filter chips on the travel hub and as checkboxes to a
-   travel editor. Adding a topic still needs a seed migration — there is no write endpoint
-   yet; `tasks/open/2026-09-12-guide-topic-admin-crud.md` holds that.
+   travel editor. An editor adds a topic without a deploy: `POST /admin/guides/topics`
+   (slug, section, a label in every locale, `display_order`, an optional `parent_slug` and
+   per-locale hub leads) and `PUT /admin/guides/topics/{slug}` (rename, reorder, re-file
+   under a top-level parent of the same section or clear the parent, retire with
+   `is_active`). Both need `content.manage`, write an `AdminAuditLog` row
+   (`guide_topic_created` / `guide_topic_updated`, target `guide_topic:{slug}`), and answer
+   with the topic as the editor sees it (`AdminTopic`: every label and lead). Slugs follow
+   the article rule and are global (`uq_guide_topic_slug`, 409 `guide_topic_exists`), the
+   vocabulary stays two levels deep (a parent with children cannot be re-filed, a sub-topic
+   cannot be a parent), and a row the editor made carries `source='admin'`, which the seed
+   migrations never overwrite. The admin panel's classification form has the matching
+   "add a topic" disclosure; the new topic is a checkbox of its section at once.
 
 Seven topic slugs (`culture`, `nature`, `family`, `nightlife`, `viewpoint`, `food`,
 `shopping`, `hotel`, `beach`) are shared verbatim with `app/discovery/taxonomy.py` so a
@@ -62,6 +72,22 @@ guide and an attraction that share a subject can find each other later. A test a
 labels stay byte-identical; nothing else stops two tables drifting. The lifestyle
 vocabulary (`ai`, `tutorial`, `software`, `gadgets`, `productivity`, `daily`, `misc`) shares
 nothing with either list on purpose, and a test holds the three sets disjoint.
+
+Since `0076_guide_topic_hierarchy` topics are **two levels deep**: a lifestyle parent such as
+`ai` holds sub-topics such as `ai-terms` (`guide_topics.parent_id`, nullable, SET NULL on
+delete; a parent never has a parent, which `admin_service` and the seed enforce rather than
+a CHECK). An article may carry the parent, the child or both; `?topic=<parent>` lists the
+children's articles too (`taxonomy.topic_ids_including_children`), and `GET /guides/topics`
+returns each topic's `parent`, its hub lead (`descriptions_json`, per locale) and how many
+articles each locale publishes under it (`count`, `counts`; a parent counts the distinct
+union of itself and its children). `tutorial` is deliberately not a parent: it marks the
+format of most lifestyle articles, not their subject. The travel vocabulary stays one level;
+its second axis is the destination, grouped by country (`?country=japan`, mapped to the
+catalog's cities by `service.destinations_in_country`, and `GET /guides/destinations` for
+the hub's country groups). Three slugs are refused as article slugs -- `topics`, `series`,
+`search` -- because the web routes own those path segments. The vocabulary, the rules that
+re-file existing packs (`app/guides/retopic.py`) and the phases that build on this live in
+[`docs/article-architecture.md`](article-architecture.md).
 
 ## Storage
 
@@ -189,9 +215,15 @@ only — for any path it does not recognise.
 Public, all `Cache-Control: no-store` (the web layer does the caching):
 
 ```
-GET /api/v1/guides?locale=&kind=&section=&destination=&topic=&cursor=&limit=
-GET /api/v1/guides/topics?locale=&section=
-GET /api/v1/guides/sitemap
+GET /api/v1/guides?locale=&kind=&section=&destination=&country=&topic=&cursor=&limit=
+GET /api/v1/guides/topics?locale=&section=          parents then children, with per-locale counts
+GET /api/v1/guides/destinations?locale=&section=    destinations with a published article, by country
+GET /api/v1/guides/series?locale=                   every registered series hub published in the locale
+GET /api/v1/guides/sitemap?section=&locale=&cursor=&limit=   one child sitemap's rows, paged
+GET /api/v1/guides/sitemap/summary                  published rows per kind and locale
+GET /api/v1/guides/search?locale=&q=&section=&kind=&topic=&destination=&country=&limit=&offset=
+                                                    ranked full-text search over published articles
+GET /api/v1/guides/series/{series_slug}?locale=
 GET /api/v1/guides/{kind}/{slug}?locale=
 POST /api/v1/guides/{kind}/{slug}/partner-links/{key}/click?locale=   count one partner-link click, 204
 ```
@@ -201,11 +233,51 @@ empty intersection (`?section=life&kind=intel`) returns an empty list rather tha
 unfiltered one — the natural "skip the filter when the tuple is empty" refactor is what
 would leak lifestyle articles into a travel-scoped response. The keyset cursor encodes only
 `published_at` and the slug, so a cursor minted on one section is accepted on the other;
-harmless, because the section predicate is re-applied to every page.
+harmless, because the section predicate is re-applied to every page. `topic` names a parent
+or a sub-topic and an unknown slug answers an empty list; `country` is a catalog country in
+URL form (`japan`, `south-korea`) and an unknown one answers an empty list too.
+
+`sort` picks the order. `latest` (the default) is publication time, newest first, with the
+slug as tiebreaker -- right for dated intel, and what `/guides/intel` and the hub's "latest
+intel" read; its cursor is unchanged, so a "see more" link minted before `sort` existed still
+works. `curated` is the editor's order: `featured` first, then `display_order` ascending,
+then newest, then the slug -- what `/life`, the hub's "featured guides" and `/guides/howto`
+read, so the lifestyle overview (`featured`, `display_order` 10) stays on page one however
+many batches follow it and the core airport-transfer guides lead the how-to list rather than
+the last batch imported. Both orders page by keyset; a `curated` cursor carries all four
+keys and a tag, and a cursor minted under one order is refused under the other with
+`guide_cursor_invalid` (422) rather than restarting the list -- the web then sends the reader
+to the listing's first page. `featured` and `display_order` are the content pack's
+(`content_pack.py`), so reordering a batch is a number change and a `guides-import`, not a
+code change.
+
+`GET /guides/series` reads `app/guides/series_registry.json`, the one list of series and
+tutorial hubs across the three mechanisms that hold one (the `series_data` catalogues, the
+web's Gemini projection, the editorial catalogues under `docs/`): a row names the hub
+article and the sub-topic a series belongs to, and the row shows in a locale only while
+that hub article is published there.
 
 `GET /guides/sitemap` is the publication-aware enumeration `apps/web/app/sitemap.ts` consumes:
-one row per published, non-expired article × locale, capped at 1,000 and ordered newest first. The article response carries `published_locales` so the web layer can emit
-hreflang for the translations that actually exist.
+one row per published, non-expired article × locale, newest first, with the slug and the
+locale as tiebreakers so rows published in the same second page cleanly. `section` and
+`locale` narrow it to one child sitemap, `limit` (default and maximum 1,000) is the page and
+`next_cursor` the keyset to follow; a call without parameters still answers the newest
+thousand rows in one page, as it did before paging. `offset` skips that many rows before the
+page (after the cursor's position when one is given), which is how the web's second child of
+a section starts at row 5,000 without paging through the first. Each row names every locale its article
+is published in (`locales`), which is what lets a one-language child carry the article's
+full hreflang set. `GET /guides/sitemap/summary` counts published rows per kind and locale
+for the sitemap index and the section hubs. The article response carries
+`published_locales` so the web layer can emit hreflang for the translations that actually
+exist.
+
+`GET /guides/search` is the reader's search box (see "Search" below): `q` is one to a
+hundred characters, `limit` at most 20 and `offset` at most 200, the other filters compose
+exactly as they do on the listing, and the answer is `{query, total, offset, limit,
+results, best_match, next_offset}` where each result is a `PublicSummary` plus `snippet`
+(the passage the first term was found in, or the description) and `matched` (the folded
+terms). A query with nothing searchable in it is a 422 `guide_search_query_invalid`; more
+than 120 queries a minute from one address is a 429.
 
 Admin (`content.manage` for writes):
 
@@ -232,6 +304,216 @@ Authoring lives in `app/guides/admin_service.py` and reading in `app/guides/serv
 The split is not only tidiness: `tests/test_error_localization.py` holds every non-operator
 module to a translated sentence for each error code it raises, so keeping operator errors
 out of the read path keeps that boundary honest.
+
+## Search
+
+The corpus is a few thousand documents in five languages, three of which `to_tsvector`
+cannot tokenise, so the search is a substring one over a flattened copy of each published
+translation, ranked by where the words were found. `app/guides/search.py` owns all of it;
+`admin_service._write_revision` calls it, nothing else does.
+
+**The index.** `guide_search_entries` holds one row per published (article, locale): the
+title and description as written, `title_norm`, `description_norm`, `headings_norm` and
+`aliases_norm` folded (NFKC, then casefold, whitespace collapsed), `body_text` readable
+(NFKC and whitespace only, for the snippet) and `search_text`, the folded concatenation the
+match runs on. `document_text` takes the prose block by block -- headings, paragraphs,
+rich-paragraph inlines, list items, link text, image alt and caption, table cells and
+caption, callout title and text, a code block's *label* (never its listing), offer
+headings, partner-link label and note, the hero alt and the source titles -- so a URL, a
+partner code or a line of shell can never match. Nothing else about the article is copied:
+kind, destination, topics, validity and the hidden switch stay on `guide_articles` and are
+joined at query time through `published_filters()`, so hiding or expiring an article takes
+it out of the results the moment it happens, and unhiding it needs no republication. The
+row also names the `revision_version` it was built from and the query requires it to equal
+`published_version`, so a row a failed hook left behind is invisible rather than stale.
+
+**Maintenance.** Publishing writes or rewrites the row and withdrawing deletes it, in the
+same transaction that moves the published pointer. Migration 0077 builds no rows: after
+deploying it, and after any bulk publish that bypassed the admin write path, run
+
+```bash
+cd apps/api && uv run python -m app.cli guides-search-reindex --dry-run   # then without the flag
+```
+
+which is idempotent (a row already at the published version is left alone) and drops rows
+no published translation backs. Hidden and expired articles are indexed too; the query
+decides.
+
+**Matching and ranking.** The query is folded the same way, split on whitespace and
+punctuation (`.`, `-`, `_`, `+` and `#` stay inside a term: `Next.js`, `GPT-4`, `C#`),
+stripped of lone ASCII characters (a lone CJK character is a word), and capped at six
+distinct terms. Every term must appear in `search_text` (`LIKE '%term%'` with the
+metacharacters escaped; never `ILIKE`, which SQLite lacks and whose `lower()` there stops
+at ASCII). Rows are ordered by the sum over terms of where each was found -- title 8,
+alias 6, description 4, heading 3, anywhere else 1 -- then newest first. On PostgreSQL the
+`LIKE` is served by a `pg_trgm` GIN index over `search_text` (`ix_guide_search_entries_search_text_trgm`,
+created by 0077 with `CREATE EXTENSION IF NOT EXISTS pg_trgm`; the extension is trusted,
+so the database owner can create it); without it the query is still correct, only slower.
+Trigrams over CJK need a UTF-8 `lc_ctype` (`SHOW lc_ctype;` after deploying). SQLite runs
+the same predicate as a scan.
+
+**Best match.** `guide_article_aliases` holds the other names an article answers to, per
+locale (`source`: `term` from the AI glossary, `series` from a catalogue's lesson keywords,
+`keyword` and `editor` reserved for the pack field and the admin panel). A folded query
+equal to an alias that exactly one visible article of the locale carries, or failing that
+to a title, is that article's exact match: it is returned as `best_match`, above the ranked
+list and left out of it. An alias several articles share ranks (weight 6) but names no
+best match. The seed:
+
+```bash
+cd apps/api && uv run python -m app.cli guides-aliases-seed --dry-run   # then without the flag
+```
+
+reads `docs/ai-terms-series/aliases.json` (a key names the `ai-term-<key>` pack, else the
+pack of that slug; one row per language the pack is written in) and the lesson `aliases`
+of every `series_data` catalogue, inserts only the rows that are not there yet, never
+deletes or rewrites, reports the slugs it could not find and the aliases several articles
+share, and refreshes the index rows it touched. `--terms-file` points it at a copy of the
+glossary list where the repository's `docs/` is not on disk. Two more sources feed the
+same table: the suffix-keyword table (`docs/ai-suffix-keywords.md`, `source="keyword"`,
+`--keywords-file`), whose keyword and variants become names of the row's primary landing
+article -- or of its `備` fallback while the primary has no pack -- for the Chinese locales
+the pack is written in; and the pack's own `aliases` field (`{locale: [name]}`, at most
+twelve per locale), imported through the taxonomy path as the editor's names
+(`source="editor"`) and editable in the admin panel. The editor's names for a locale are
+replaced whole on every write (`[]` clears them); the seeded ones are never touched.
+
+**Rate limit.** 120 queries a minute per address, counted with `over_named_rate_limit`,
+which fails *open*: a search that goes dark because Redis blinked is the worse outcome, and
+the hit is recorded (`record_rate_limit_hit`) so a threshold can be judged before it bites.
+
+**The web.** `/{locale}/search/articles?q=&section=&offset=` is the results page: a plain
+GET form, `noindex, follow`, the terms marked with `<mark>` in the title and the passage
+(`lib/guides.ts` `highlight`, which folds character by character so a full-width `ＡＩ` or
+an ellipsis that NFKC turns into three periods still marks the right characters). The
+header carries the same search as a combobox on wide screens and as a sheet that ⌘K /
+Ctrl+K and the phone header's icon open (`components/site-search`); the typeahead reads
+`/guides/search?limit=6` through the BFF after a 200 ms pause and treats a 422 as no match.
+
+## Summary and FAQ blocks
+
+Two guide-only blocks carry the answer-first shape an answer engine quotes and a reader
+skims. ``summary`` (``{"type": "summary", "items": [...]}``, two to five sentences) is the
+article's answer, drafted from the article's own text and never a fact the body does not
+state (see **summarize** below for who writes it); the model allows one per
+document and requires it before the first heading, so it is the opening rather than a
+recap, and ``pack_cli lint`` warns (``no_summary``) when a lifestyle or how-to article has
+none. ``faq`` (``{"type": "faq", "items": [{"question", "answer"}, ...]}``, two to ten
+pairs) is the questions readers actually ask, one per document. The web draws the summary
+as a card under the description (``#article-summary``) and the FAQ as ``<details>`` before
+the sources, hoisting both out of the body; the search index ranks summary sentences and
+FAQ questions like headings and FAQ answers like body text. In the graph the summary is
+the Article's ``abstract`` and its card the speakable passage, and the FAQ is an
+``FAQPage`` -- from this block only, never read out of headings (``docs/seo.md``).
+
+**Deploy order.** The web guard (``isPublishedGuide``) refuses a document with a block it
+does not know and renders the "unavailable" screen with ``noindex``, so the web renderer
+ships before any article carrying these blocks is published.
+
+**summarize.** ``pack_cli summarize [--kind k] [--prefix p]... [--slug s]... [--from
+batch.json] [--replace] [--digest out.md] [--dry-run|--apply]`` (``app/guides/summarize.py``)
+puts the blocks into packs that exist, the way ``relink`` and ``autolink`` do: a table of
+what would change, then ``--apply`` on the same rows, touching only ``locales.<locale>.blocks``.
+Two sources and no third. A paragraph that opens with 「先講結論」 (or 先看結論, 結論：,
+一句話, 用一句話) already is the summary: its sentences, at most five, marker stripped,
+never rephrased. A ``--from`` batch (``{slug: {locale: {"summary": [...], "faq"?: [...]}}}``)
+carries summaries the model drafted from the article and the owner read before applying,
+which is the owner's decision of 2026-09-16 in place of "never generated"; every entry is
+validated as the block it becomes, a summary already there is refused without
+``--replace``, an unknown slug or locale refuses the batch, and so does any figure a
+sentence carries that the document (its sources aside) does not carry as written --
+``1,100`` is not ``1100``, and the one thing an answer engine must never quote from here is
+a number the article does not state. A 「常見問題」 section becomes the ``faq`` block and
+leaves the body when it already is a single list of 問題：答案 pairs, or question headings
+each answered by exactly one plain paragraph and nothing else; anything richer is kept as
+it is (``FaqItem.answer`` is plain text, an answer with links would lose them), and so is a
+section whose removal would leave fewer than three level-2 headings. The summary goes to
+index 0, which satisfies "before the first heading"; the web hoists it anyway.
+``--digest`` writes, per document still without a summary, what one is written from: the
+description, the headings, the first two paragraphs, each table's header, the lead if any
+and the FAQ section's shape. ``_body_length`` counts summary and FAQ text, so a long
+article can newly trip ``text_length`` after the block lands; that is a warning to record,
+not a reason to shorten the summary.
+
+**Glossary entries.** ``PublicArticle.term_set`` names the hub of the catalogue-type series
+(``series_registry.json``, ``source: "catalogue"``) whose topic the article carries, when
+that hub is published in the locale; the web marks such an article up as a ``DefinedTerm``
+with its aliases as ``alternateName`` and the hub as ``inDefinedTermSet``.
+
+## Links
+
+Articles point at each other in one way the site controls -- an `article` inline
+(`{"type": "article", "kind", "slug", "text"}`) inside a `rich_paragraph` -- and one it
+merely tolerates, a raw `https://mokaair.com/{locale}/…` URL in a `link` block or inline. The
+inline renders as a link only while its target is published in the reader's language and
+is checked against the target's kind; the raw URL is a string that stays a link when its
+target is withdrawn, and is invisible to everything below. `pack_cli lint` warns about
+raw article URLs (`raw_internal_url`); `pack_cli relink` turns them into inlines.
+
+**The table.** `guide_article_links` (0078) holds `inline` rows -- written when a
+translation is published from the `article` inlines of its published text, in reading
+order, and deleted when it is withdrawn, in the transaction that moves the published
+pointer (`admin_service._write_revision`) -- and `related` rows, the editor's picks on the
+identity (`locale` NULL), replaced whole like topics. A link to an article that does not
+exist at all is recorded in the publish audit row (`unresolved_links`), not refused; a link
+to an article that is merely unpublished resolves and waits. Whether a target may *show* is
+decided at read time through `published_filters`, never by the table. The migration
+builds no rows: after deploying it run
+
+```bash
+cd apps/api && uv run python -m app.cli guides-links-rebuild --dry-run   # then without the flag
+cd apps/api && uv run python -m app.cli guides-links-check --locale zh-TW  # exit 1 on findings
+```
+
+The rebuild is idempotent and drops rows no published translation backs. The check walks
+every published translation and lists each in-text link a reader cannot follow --
+`missing`, `wrong_kind`, `unpublished`, `hidden`, `expired` -- and every raw article URL.
+
+**Further reading.** `PublicArticle.related` (`links.related_articles`) is at most four
+references, the editor's picks first and then, each tier newest first and skipping what
+an earlier tier chose: articles sharing a sub-topic, articles under the same parent topic
+(its own and its other sub-topics'), articles about the same destination, the other
+lessons of the same series group. Only visible articles count, so a withdrawn pick makes
+room for a neighbour. `backlinks` is the published articles whose text links here, newest
+first, at most eight. Both are ordinary links and stay under an expired notice. Every
+`ArticleReference` now carries the target's published `description`, which is what the
+web's definition card shows under a term link.
+
+**The pack fields.** `ArticlePack.related` (at most four slugs, in display order) goes
+through the taxonomy path and is applied after every pack of the run is written, so a
+pick may name a pack later in the same import; a pick that still names nothing is the one
+refusal the run ends on (`guide_related_unknown`). `ArticlePack.aliases` is described under
+"Search".
+
+**relink and autolink.** Both are pure rewrites of a pack's raw JSON in
+`app/guides/autolink.py`, run as `pack_cli relink|autolink [--kind] [--prefix]… [--slug]…
+[--dry-run|--apply]`, printing a Markdown table of what changes and writing only the
+`blocks` of the locales that changed (every shipped pack round-trips through
+`json.dumps(indent=2)`, so the diff is the links). `relink` converts a `link` block into a
+`rich_paragraph` holding one `article` inline and a `link` inline into an `article` inline
+when the URL names an article with a pack of that kind and nothing follows the slug but a
+query string (dropped); a self-link, a wrong-kind link, a link to a slug without a pack and
+any non-article site URL are kept and listed. `autolink` links the first mention of a name
+to the article it names: the names are the glossary, the keyword table and the packs'
+`aliases` fields (never a series catalogue's keyword hints), restricted to names that
+point at exactly one article of the locale and are at least two characters; only
+`paragraph` blocks and `text` inlines are touched (never a heading, list, table, callout or
+code); longest name first; an ASCII name needs word boundaries (`AI` never links inside
+`OpenAI`) and ignores case, a name with CJK in it is matched as written; each target links
+once per document, counting the inlines already there; at most eight per document; never
+the article itself. A second run is a no-op, since the linked words now sit inside an
+`article` inline. The first batch (`ai-term-`, `ai-search-`: 317 URLs converted, 220 names
+linked) is applied; the remaining batches are `tasks/open/2026-09-15-content-relink-autolink-*`.
+
+**The web.** A term link (`components/guides/term-link.tsx`) is the `article` inline whose
+target carries a description: a dotted-underline `<a>` that opens a definition card after a
+short hover, at once on focus, and on the first tap where there is no hover (the second
+tap follows the link); Escape, blur and a pointer elsewhere close it. Without JavaScript it
+is the link and nothing else. The end of an article shows `related` as "同主題延伸閱讀"
+(`components/guides/related-grid.tsx`, minus the lessons the series navigation already
+lists) and `backlinks` as "引用本文的文章"; a travel article's list replaces the same-city
+cards it used to end with, a lifestyle article keeps the travel handover after it.
+Level-3 headings carry `section-N-M` ids so a citation can point at a sub-answer.
 
 ## Verification
 
@@ -623,10 +905,13 @@ The other, a `link` block that published tracked URLs undisclosed and uncounted,
 by the partner-link work: tracked ordinary URLs are refused on write and paid links have a
 block of their own (see "Partner links").
 
-Both sections share one 1,000-row sitemap budget, newest first, with no per-section cap
-(`SITEMAP_LIMIT`, `SITEMAP_GUIDE_ENTRY_LIMIT`). That is 2% of Google's per-file limit and
-about 200 articles across five locales; an evicted article stays indexable, just
-unadvertised. Worth splitting only if the combined count approaches ~800.
+The sitemap is an index over children per section and locale (`docs/seo.md`), each child a
+slice of up to 5,000 (article, locale) rows read from `GET /guides/sitemap` in pages, and a
+section that outgrows one child gets a numbered second (`life-zh-TW-2`) from the row count
+the summary reports -- the shared 1,000-row budget the two sections used to compete for is
+gone, and so is any ceiling after it. `pack_cli lint` no longer warns about sitemap rows:
+`sitemap_children()` still counts them per section and locale for the curious, but there is
+no row a batch could push out.
 
 ## Advertising
 

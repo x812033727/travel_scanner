@@ -19,11 +19,12 @@ import restaurants from "./messages/zh-TW/restaurants.json";
 import foods from "./messages/zh-TW/foods.json";
 import foodAdmin from "./messages/zh-TW/foodAdmin.json";
 import catalogReview from "./messages/zh-TW/catalogReview.json";
+import metadata from "./messages/zh-TW/metadata.json";
 import newTrip from "./messages/zh-TW/newTrip.json";
 import stayAreas from "./messages/zh-TW/stayAreas.json";
 import travelServices from "./messages/zh-TW/travelServices.json";
 
-const catalogs: Record<string, unknown> = { community, account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, catalogReview, newTrip, stayAreas, travelServices };
+const catalogs: Record<string, unknown> = { community, account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, catalogReview, newTrip, stayAreas, travelServices, metadata };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;

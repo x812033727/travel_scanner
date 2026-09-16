@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ContentBlocks } from "@/components/content-blocks";
 import {
@@ -22,6 +22,39 @@ describe("tutorial content", () => {
     expect(screen.queryByRole("link", { name: "hidden tutorial" })).toBeNull();
     expect(screen.getByText("hidden tutorial")).toBeTruthy();
     expect(document.querySelector("script")).toBeNull();
+  });
+
+  it("draws a summary as a card and a FAQ as disclosures, headed by the words it is given", () => {
+    render(<ContentBlocks labels={{ imageCredit: "圖片：", tip: "小提醒", warning: "注意", info: "補充", summary: "重點摘要", faq: "常見問題" }} blocks={[
+      { type: "summary", items: ["第一句。", "第二句。"] },
+      { type: "faq", items: [{ question: "多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" }] },
+    ]} />);
+    const card = screen.getByRole("complementary", { name: "重點摘要" });
+    expect(within(card).getAllByRole("listitem").map((item) => item.textContent)).toEqual(["第一句。", "第二句。"]);
+    const faq = screen.getByRole("region", { name: "常見問題" });
+    expect(faq.querySelectorAll("details")).toHaveLength(2);
+    expect(within(faq).getByText("多久？").tagName).toBe("SUMMARY");
+    expect(within(faq).getByText("四十一分鐘。")).toBeTruthy();
+  });
+
+  it("shows a definition card only for a target with a published description, and only when it has the words for it", () => {
+    const blocks: RichContentBlock[] = [{ type: "rich_paragraph", inlines: [
+      { type: "article", kind: "life", slug: "described", text: "a term" },
+      { type: "article", kind: "life", slug: "bare", text: "a plain link" },
+    ] }];
+    const links = [
+      { kind: "life" as const, slug: "described", title: "The term", description: "What it means." },
+      { kind: "life" as const, slug: "bare", title: "Bare" },
+    ];
+    render(<ContentBlocks locale="en" articleLinks={links} blocks={blocks} termLabels={{ card: "名詞說明", readMore: "閱讀全文" }} />);
+    const term = screen.getByRole("link", { name: "a term" });
+    expect(term.getAttribute("href")).toBe("/en/life/described");
+    expect(term.getAttribute("aria-expanded")).toBe("false");
+    expect(screen.getByRole("link", { name: "a plain link" }).getAttribute("aria-expanded")).toBeNull();
+    cleanup();
+    // Without the labels (a caller that is not the article page) every target is a plain link.
+    render(<ContentBlocks locale="en" articleLinks={links} blocks={blocks} />);
+    expect(screen.getByRole("link", { name: "a term" }).getAttribute("aria-expanded")).toBeNull();
   });
   it("copies exact code including HTML, tabs, quotes and the final newline", async () => {
     const code = '<button>\n\tSave & "test"\n</button>\n';
@@ -205,6 +238,18 @@ describe("the rich block guard", () => {
     ])).toBe(true);
   });
 
+  it("accepts a summary of two to five sentences and a FAQ of two to ten answered questions", () => {
+    const faq = (count: number) => ({ type: "faq", items: Array.from({ length: count }, (_, i) => ({ question: `Q${i}?`, answer: `A${i}.` })) });
+    const summary = (count: number) => ({ type: "summary", items: Array.from({ length: count }, (_, i) => `S${i}.`) });
+    expect(isRichContentBlockList([summary(2), summary(5), faq(2), faq(10)])).toBe(true);
+    for (const block of [summary(1), summary(6), faq(1), faq(11), { type: "summary", items: ["ok", " "] },
+      { type: "faq", items: [{ question: "Q?", answer: "" }, { question: "Q2?", answer: "A" }] }]) {
+      expect(isRichContentBlockList([block]), JSON.stringify(block)).toBe(false);
+    }
+    // Still guide-only: the legal pages' guard refuses them.
+    expect(isContentBlockList([summary(2)])).toBe(false);
+  });
+
   it.each([
     ["an image hosted elsewhere", { ...image, src: "https://example.test/x.jpg" }],
     ["an image without a size", { ...image, width: undefined }],
@@ -275,6 +320,21 @@ describe("rendering the rich blocks", () => {
     render(<ContentBlocks blocks={blocks} labels={labels} headingStart={2} />);
     const headings = screen.getAllByRole("heading", { level: 2 });
     expect(headings.map((heading) => heading.id)).toEqual(["section-3", "section-4"]);
+  });
+
+  it("numbers level-3 headings within their section, restarting under every level-2", () => {
+    render(<ContentBlocks headingStart={0} blocks={[
+      { type: "heading", level: 2, text: "一" },
+      { type: "heading", level: 3, text: "一之一" },
+      { type: "heading", level: 3, text: "一之二" },
+      { type: "heading", level: 2, text: "二" },
+      { type: "heading", level: 3, text: "二之一" },
+    ]} />);
+    expect(screen.getAllByRole("heading", { level: 2 }).map((h) => h.id)).toEqual(["section-1", "section-2"]);
+    expect(screen.getAllByRole("heading", { level: 3 }).map((h) => h.id)).toEqual(["section-1-1", "section-1-2", "section-2-1"]);
+    cleanup();
+    render(<ContentBlocks blocks={[{ type: "heading", level: 2, text: "一" }, { type: "heading", level: 3, text: "一之一" }]} />);
+    expect(screen.getByRole("heading", { level: 3 }).id).toBe("");
   });
 
   it("gives headings no id at all when no start is given, which is what the legal pages want", () => {

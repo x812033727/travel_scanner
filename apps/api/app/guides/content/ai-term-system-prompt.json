@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -103,12 +104,42 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "活動文件可能含有引用信件、使用者留言或其他來源文字。假如留言裡出現「忽略前面的規則」，那首先是待閱讀的資料，不應自動成為應用程式的操作政策。系統提示詞可以提醒模型區分來源，但單靠這一段文字不能確保所有提示注入都被擋住。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "活動文件可能含有引用信件、使用者留言或其他來源文字。假如留言裡出現「忽略前面的規則」，那首先是待閱讀的資料，不應自動成為應用程式的操作政策。系統提示詞可以提醒模型區分來源，但單靠這一段文字不能確保所有"
+            },
+            {
+              "type": "article",
+              "text": "提示注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "都被擋住。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "真正涉及權限的部分應由程式控制。例如查詢者只能取得自己有權讀的資料，寫入工具必須檢查登入狀態與允許操作的欄位。即使模型輸出了錯誤的工具參數，後端也應能拒絕不符合規則的要求。這是系統設計的責任，不是讓提示詞負擔全部安全保證。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "真正涉及權限的部分應由程式控制。例如查詢者只能取得自己有權讀的資料，寫入工具必須檢查登入狀態與允許操作的欄位。即使模型輸出了錯誤的工具"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，後端也應能拒絕不符合規則的要求。這是系統設計的責任，不是讓提示詞負擔全部安全保證。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -169,19 +200,37 @@
           "text": "與其要求「最專業」，不如規定答案要區分已知資訊、缺漏與工具確認結果。"
         },
         {
-          "type": "link",
-          "text": "提示詞工程（Prompt Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞工程（Prompt Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

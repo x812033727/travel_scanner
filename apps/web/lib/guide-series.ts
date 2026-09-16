@@ -1,6 +1,9 @@
 import type { GuideKind } from "./guides";
 
-export type ArticleReference = { kind: GuideKind; slug: string; title: string };
+/** `description` is the target's published description, when the reference was built from
+ *  a published revision: what a definition card shows under a term link. Optional, so a
+ *  reference built elsewhere (a catalogue row, an older API) still parses. */
+export type ArticleReference = { kind: GuideKind; slug: string; title: string; description?: string | null };
 export type SeriesEntry = ArticleReference & {
   number: number; group: string; level: string; platforms: string[]; aliases: string[];
   description: string; minutes: number; operation_minutes?: number | null;
@@ -10,6 +13,11 @@ export type GuideSeries = {
   groups: { id: string; title: string }[];
   paths: { id: string; title: string; slugs: string[] }[];
   entries: SeriesEntry[];
+};
+/** One series or tutorial hub a section page can enter, from `GET /guides/series`. */
+export type SeriesSummary = {
+  slug: string; section: "travel" | "life"; hub: ArticleReference;
+  source: "api-series" | "web-gemini" | "catalogue"; topic: string | null; entries: number | null;
 };
 export type SeriesNavigation = {
   slug: string; hub: ArticleReference; current: SeriesEntry | null;
@@ -28,6 +36,13 @@ export function isSeriesEntry(v: unknown): v is SeriesEntry {
     && typeof v.group === "string" && typeof v.level === "string" && strings(v.platforms)
     && strings(v.aliases) && typeof v.description === "string" && Number.isInteger(v.minutes) && Number(v.minutes) > 0
     && (v.operation_minutes == null || (Number.isInteger(v.operation_minutes) && Number(v.operation_minutes) > 0)) && isArticleReference(v);
+}
+export function isSeriesSummary(v: unknown): v is SeriesSummary {
+  return object(v) && typeof v.slug === "string" && slugPattern.test(v.slug)
+    && (v.section === "travel" || v.section === "life") && isArticleReference(v.hub)
+    && ["api-series", "web-gemini", "catalogue"].includes(String(v.source))
+    && (v.topic === null || typeof v.topic === "string")
+    && (v.entries === null || (Number.isInteger(v.entries) && Number(v.entries) >= 0));
 }
 export function isGuideSeries(v: unknown): v is GuideSeries {
   return object(v) && typeof v.slug === "string" && slugPattern.test(v.slug) && typeof v.locale === "string"

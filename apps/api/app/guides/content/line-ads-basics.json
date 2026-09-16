@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "marketing",
+    "ads"
   ],
   "valid_until": null,
   "featured": false,
@@ -81,8 +82,33 @@
           "text": "LAP 刊登規範要求提供真實商家資訊並設有廣告主身分驗證。公司與個人的文件要求不同，應從官方入口確認當前需要的證明及授權資料，不能把朋友或其他商家的證件拿來代替。完成驗證也不是對廣告內容或商品品質的背書。"
         },
         {
-          "type": "paragraph",
-          "text": "LINE 二○二六年的廣告資訊揭露說明包含委刊者與出資者名稱、所在地區，以及是否使用 AI 或深偽產生的個人影像。原創店家若委外製作素材，應要求交付時一併說明人像來源；即使圖片看起來自然，也不能省略需要揭露的事實。各版位呈現位置依官方規範核對。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LINE 二○二六年的廣告資訊揭露說明包含委刊者與出資者名稱、所在地區，以及是否使用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 或"
+            },
+            {
+              "type": "article",
+              "text": "深偽",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            },
+            {
+              "type": "text",
+              "text": "產生的個人影像。原創店家若委外製作素材，應要求交付時一併說明人像來源；即使圖片看起來自然，也不能省略需要揭露的事實。各版位呈現位置依官方規範核對。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +227,37 @@
           "text": "好友增加、表單送出或報表轉換，都還需要後續服務。先安排回覆、資訊與資料處理，再決定廣告目標及投入。"
         },
         {
-          "type": "link",
-          "text": "安排線上到門市的服務接點",
-          "url": "https://mokaair.com/zh-TW/life/omo-channel-integration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排線上到門市的服務接點",
+              "kind": "life",
+              "slug": "omo-channel-integration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "先畫出顧客接觸與成交步驟",
-          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先畫出顧客接觸與成交步驟",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "依服務需求選擇廣告與自然內容",
-          "url": "https://mokaair.com/zh-TW/life/paid-vs-organic-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依服務需求選擇廣告與自然內容",
+              "kind": "life",
+              "slug": "paid-vs-organic-marketing"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -59,18 +60,20 @@
               "text": "電腦先用瀏覽器開啟 gemini.google.com，確認網址後登入。手機可以先用同一網址，或依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android 安裝教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+              "kind": "life",
+              "slug": "gemini-on-android-assistant"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone／iPad 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
             },
             {
               "type": "text",
@@ -86,9 +89,10 @@
               "text": "不必先付費才開始練習。先用目前帳號可用的模型完成文字任務，遇到具體限制再查"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案與額度",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -152,9 +156,10 @@
               "text": "如果結果太長，直接指出要刪減的部分，例如「保留地點與準備物品，其餘合併一句」。如果讀者不對，補上物件與語氣。一次修改一個主要條件，較容易判斷效果；更完整的設計方式可以接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞寫作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
@@ -175,9 +180,10 @@
               "text": "練習完成後，確認側邊清單能否找到這段對話，再重新開啟核對內容。若活動記錄設定、暫時性對話或帳號政策影響儲存，依畫面說明處理；重要稿件另存到自己管理的檔案。刪除對話、關閉活動儲存與取消訂閱是不同操作，請參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄與隱私設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -193,9 +199,10 @@
               "text": "第二次練習可以換成自己的公開活動文案，但先拿掉姓名、電話及不需要的識別資訊。提供的資料越貼近問題，越容易核對；一次塞入整個資料夾並不一定更有效。需要閱讀 PDF 時，先學"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -228,9 +235,10 @@
               "text": "「Gemini 說它已替我完成事情，就算完成嗎？」要看結果是否真的存在。寫好通知不等於寄出信件，排好行程不等於建立日曆活動。需要操作其他服務時，檢查具體目的地及完成狀態；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "連結的應用程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -279,18 +287,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄與隱私",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -299,9 +309,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

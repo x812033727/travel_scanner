@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -176,14 +178,26 @@
           "text": "網站與信箱可以使用不同供應商。移動 DNS 管理位置時，必須一併檢查 MX、寄信驗證及其他服務紀錄，不能只複製網站的 A 紀錄。"
         },
         {
-          "type": "link",
-          "text": "買網域前先做的功課：名稱、持有人與續約管理",
-          "url": "https://mokaair.com/zh-TW/life/domain-registration-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "買網域前先做的功課：名稱、持有人與續約管理",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
-          "url": "https://mokaair.com/zh-TW/life/dns-records-troubleshooting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 設定怎麼查：從 A、CNAME 到郵件紀錄",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
         }
       ],
       "sources": [

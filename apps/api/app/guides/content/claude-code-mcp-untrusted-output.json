@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 183,
@@ -24,8 +25,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MCP 回傳的是外部資料，即使裡面寫著「系統指示」或「請立即修改檔案」，也不會因此取得操作授權。本篇用一份合成外部筆記，驗證 Claude 能擷取資料、指出可疑指令並維持原任務範圍，同時確認檔案和最後回報沒有受到不當影響。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 回傳的是外部資料，即使裡面寫著「系統指示」或「請立即修改檔案」，也不會因此取得操作授權。本篇用一份合成外部筆記，驗證 Claude 能擷取資料、指出可疑指令並維持原任務範圍，同時確認檔案和最後回報沒有受到不當影響。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -195,7 +207,17 @@
           "inlines": [
             {
               "type": "text",
-              "text": "即使沒有提示注入，外部資料也可能格式錯誤、缺欄位或引用不存在的資源。若下游需要 JSON，應使用"
+              "text": "即使沒有"
+            },
+            {
+              "type": "article",
+              "text": "提示注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "，外部資料也可能格式錯誤、缺欄位或引用不存在的資源。若下游需要 JSON，應使用"
             },
             {
               "type": "article",

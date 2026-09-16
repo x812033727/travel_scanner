@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -186,14 +188,26 @@
           "text": "先確認語言、文字所屬外掛、檔案位置與載入方式，再檢查快取及更新後原文。保留可回復的檔案副本，讓每次改字都能被追蹤。"
         },
         {
-          "type": "link",
-          "text": "規劃多語系網站的內容與網址",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-multilingual-site"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃多語系網站的內容與網址",
+              "kind": "life",
+              "slug": "wordpress-multilingual-site"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立更新前的 WordPress 備份",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立更新前的 WordPress 備份",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
         }
       ],
       "sources": [

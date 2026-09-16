@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 124,
@@ -202,8 +203,23 @@
           "code": "claude --settings practice-settings.json\n"
         },
         {
-          "type": "paragraph",
-          "text": "比較有無這個啟動參數的 session，並記錄實際來源與可觀察行為。這個示例不表示 --settings 能超越組織管理限制；遇到管理政策控制的值，先查管理設定。若不確定鍵是否支援，查看當前版本的官方參考與 doctor 診斷，不要只以編輯器上色判斷。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "比較有無這個啟動"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的 session，並記錄實際來源與可觀察行為。這個示例不表示 --settings 能超越組織管理限制；遇到管理政策控制的值，先查管理設定。若不確定鍵是否支援，查看當前版本的官方參考與 doctor 診斷，不要只以編輯器上色判斷。"
+            }
+          ]
         },
         {
           "type": "heading",

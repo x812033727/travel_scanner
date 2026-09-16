@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -60,9 +61,15 @@
           "text": "輸入是一張圖還是好幾張圖也有差。Meshy 的方案比較表把多視角圖片轉 3D 列為付費方案才有的功能，模型比較表也把多視角放在 Meshy 7 這一欄；Tripo 則把多視角轉模型獨立成一種任務，用 P1 含貼圖同樣扣 50 點。貼圖品質也是分級收費：Meshy 的貼圖階段 2K/4K 扣 10 點、8K 扣 15 點，Tripo 的 texture_quality 設成 detailed 在 H2 與 H3 會多扣 10 點，官方文件也寫 P1 是單一價、這類加購不另計。"
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -74,8 +81,23 @@
           "text": "Meshy 的說明中心把個人方案列成四層：Free 是 $0、Pro $20、Premium $40、Ultra $100，每月點數分別是 100、1,000、3,000、8,000；團隊用的 Studio 方案是每席每月 $70、5,500 點共用池。官方定價頁另外寫新用戶首月五折、年繳打八折，點數每月重置且不累積。"
         },
         {
-          "type": "paragraph",
-          "text": "扣點在所有方案都一樣：模型階段 Meshy 7 扣 25 點、Meshy 6 扣 20 點、Meshy 6 Lite 扣 10 點；貼圖 2K/4K 是 10 點、8K 是 15 點；列印修復 10 點、多色列印的 AI 最佳化 16 點、自動綁骨 0 點、文字轉動作 3 點。真正要注意的是下載：官方說明寫免費方案每月只有 10 次下載額度，而且只限 Meshy 6 Lite 生成的模型，用 Meshy 6 或 Meshy 7 生的要升級才能下載，免費方案也沒有 API。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "扣點在所有方案都一樣：模型階段 Meshy 7 扣 25 點、Meshy 6 扣 20 點、Meshy 6 Lite 扣 10 點；貼圖 2K/4K 是 10 點、8K 是 15 點；列印修復 10 點、多色列印的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 最佳化 16 點、自動綁骨 0 點、文字轉動作 3 點。真正要注意的是下載：官方說明寫免費方案每月只有 10 次下載額度，而且只限 Meshy 6 Lite 生成的模型，用 Meshy 6 或 Meshy 7 生的要升級才能下載，免費方案也沒有 API。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -138,9 +160,15 @@
           "text": "三家的免費層各有各的閘門：Meshy 免費方案每月 100 點可以生成，但下載只給 Meshy 6 Lite 的 10 次，而且產出授權是 CC BY 4.0，商用時要標註 Meshy；Hyper3D 的免費方案是先看結果再扣點、工作區限 10 個私有資產；Tripo 的 API 有 300 點、兩週的免費額度。交件給客戶前，先確認手上這個檔案是用哪個方案、哪個模型生出來的。"
         },
         {
-          "type": "link",
-          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -180,8 +208,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "TripoSR 的 GitHub 說明寫它由 Tripo AI 與 Stability AI 合作開發，從單張圖片重建 3D，官方寫在 NVIDIA A100 上不到 0.5 秒就能產出一個模型，並且以 MIT 授權釋出原始碼、預訓練權重與線上示範。專案本身是命令列工具，指定一張圖與輸出資料夾就會跑。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "TripoSR 的 GitHub 說明寫它由 Tripo AI 與 Stability AI 合作開發，從單張圖片重建 3D，官方寫在 NVIDIA A100 上不到 0.5 秒就能產出一個模型，並且以 MIT 授權釋出原始碼、"
+            },
+            {
+              "type": "article",
+              "text": "預訓練",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "權重與線上示範。專案本身是命令列工具，指定一張圖與輸出資料夾就會跑。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -200,19 +243,37 @@
           "code": "python3 gradio_app.py \\\n  --model_path tencent/Hunyuan3D-2.1 \\\n  --subfolder hunyuan3d-dit-v2-1 \\\n  --texgen_model_path tencent/Hunyuan3D-2.1 \\\n  --low_vram_mode"
         },
         {
-          "type": "link",
-          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+              "kind": "life",
+              "slug": "local-ai-gpu-buying-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
-          "url": "https://mokaair.com/zh-TW/life/stable-diffusion-comfyui-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機跑 Stable Diffusion 與 Flux：ComfyUI 入門",
+              "kind": "life",
+              "slug": "stable-diffusion-comfyui-setup"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -244,8 +305,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "AI 生成的網格不會自動符合遊戲或動畫的規矩。Meshy 的遊戲資產文章給的三角面預算是：手機背景道具 100 到 500、手機主角 1,000 到 3,000、PC 與主機的場景道具 500 到 5,000、主角 10,000 到 50,000、VR 與 AR 的互動物件 500 到 2,000，並建議匯出時勾 Quad Mesh，之後到 Blender 用 Decimate 修改器減面。Tripo 這邊是用參數控制：生成時 face_limit 範圍是 48 到 20000，不設就自動判斷；轉檔時 face_limit 預設 10000，開 quad 重拓樸多扣 5 點，還有 force_symmetry 可以強制左右對稱。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AI 生成的網格不會自動符合遊戲或動畫的規矩。Meshy 的遊戲資產文章給的三角面預算是：手機背景道具 100 到 500、手機主角 1,000 到 3,000、PC 與主機的場景道具 500 到 5,000、主角 10,000 到 50,000、VR 與 AR 的互動物件 500 到 2,000，並建議匯出時勾 Quad Mesh，之後到 Blender 用 Decimate 修改器減面。Tripo 這邊是用"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "控制：生成時 face_limit 範圍是 48 到 20000，不設就自動判斷；轉檔時 face_limit 預設 10000，開 quad 重拓樸多扣 5 點，還有 force_symmetry 可以強制左右對稱。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -256,9 +332,15 @@
           "text": "至於台灣能不能用，各家官方方案頁都沒有列出服務的支援地區清單，以官網為準；Meshy 的定價頁問答有寫接受主要信用卡與 Cash App Pay、Apple Pay、Link、iDEAL。商用前建議把提示詞、參考圖與方案狀態一起留檔，萬一要證明流程時才找得到。"
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         }
       ],
       "sources": [

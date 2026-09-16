@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -43,8 +45,23 @@
           "text": "把第一版內容列成首頁、服務說明、作品與聯絡資訊，並為每頁寫一句目的。本例首頁協助判斷是否提供需要的修繕，服務頁說明評估方式，作品頁呈現有權使用的案例，聯絡頁提供地址與可用時段。選單名稱要讓第一次來的人看得懂。"
         },
         {
-          "type": "paragraph",
-          "text": "選擇範本時看內容量與閱讀順序，而不只看示意照片。若用 AI 產生初稿，仍要刪除虛構店史、未提供的服務、錯誤價格或不存在的顧客評價。範本展示的按鈕也應連到實際流程，不能留下外觀完整卻沒有用途的入口。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "選擇範本時看內容量與閱讀順序，而不只看示意照片。若用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 產生初稿，仍要刪除虛構店史、未提供的服務、錯誤價格或不存在的顧客評價。範本展示的按鈕也應連到實際流程，不能留下外觀完整卻沒有用途的入口。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +223,37 @@
           "text": "隱藏選單項目不等於建立存取權限，也不會自動阻止搜尋引擎找到頁面。發布前檢查未完成頁面的實際可見範圍。"
         },
         {
-          "type": "link",
-          "text": "先安排網站資訊架構",
-          "url": "https://mokaair.com/zh-TW/life/website-information-architecture"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先安排網站資訊架構",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查不同螢幕下的版面",
-          "url": "https://mokaair.com/zh-TW/life/responsive-layout-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查不同螢幕下的版面",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規劃網站製作與驗收流程",
-          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃網站製作與驗收流程",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
         }
       ],
       "sources": [

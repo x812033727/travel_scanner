@@ -24,6 +24,80 @@ def test_catalogue_is_complete_and_references_are_valid():
     assert catalogue.hub == "claude-code-tutorials"
 
 
+def test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve():
+    """A registry row is a promise the section page will keep: its hub is a shipped pack,
+    an ``api-series`` row has a catalogue, and its topic is in the lifestyle vocabulary."""
+    from app.guides.content_pack import load_packs
+    from app.guides.retopic import LIFE_VOCABULARY
+    from app.guides.series import registry
+
+    entries = registry()
+    assert [entry.slug for entry in entries] == [
+        "claude-code",
+        "codex",
+        "gemini",
+        "ai-terms",
+        "ai-search-terms",
+    ]
+    shipped = {pack.slug: pack.kind for pack in load_packs()}
+    catalogued = {item.slug for item in catalogues()}
+    for entry in entries:
+        assert shipped.get(entry.hub_slug) == entry.hub_kind, entry.slug
+        assert entry.section == "life"
+        assert entry.topic in LIFE_VOCABULARY, entry.slug
+        if entry.source == "api-series":
+            assert entry.slug in catalogued, entry.slug
+
+
+async def test_the_series_index_lists_only_hubs_published_in_the_locale(database, actor):
+    from app.guides.series import public_series_index
+
+    async with guides.client(guides.make_app(database, actor)) as api:
+        hub = await guides.create_article(
+            api, slug="claude-code-tutorials", kind="life", destination_id=None, topics=["ai"]
+        )
+        await guides.publish(api, hub["id"], "zh-TW", hub["version"])
+        terms = await guides.create_article(
+            api, slug="ai-terms-index", kind="life", destination_id=None, topics=["ai"]
+        )
+        assert terms["status"] == "draft"
+
+        response = await api.get("/guides/series", params={"locale": "zh-TW"})
+        assert response.status_code == 200, response.text
+        assert response.headers["cache-control"] == "no-store"
+        assert response.json() == {
+            "series": [
+                {
+                    "slug": "claude-code",
+                    "section": "life",
+                    "hub": {
+                        "kind": "life",
+                        "slug": "claude-code-tutorials",
+                        "title": "成田機場到東京車站怎麼走",
+                        "description": "三種交通方式的時間與票價比較",
+                    },
+                    "source": "api-series",
+                    "topic": "claude-code",
+                    "entries": 96,
+                }
+            ]
+        }
+        assert (await api.get("/guides/series", params={"locale": "ja"})).json() == {"series": []}
+        # Publishing the glossary hub adds its row, in registry order, with no catalogue count.
+        await guides.publish(api, terms["id"], "zh-TW", terms["version"])
+        rows = (await api.get("/guides/series", params={"locale": "zh-TW"})).json()["series"]
+        assert [(row["slug"], row["entries"]) for row in rows] == [
+            ("claude-code", 96),
+            ("ai-terms", None),
+        ]
+
+    async with database() as session:
+        assert [row.slug for row in (await public_series_index(session, "zh-TW")).series] == [
+            "claude-code",
+            "ai-terms",
+        ]
+
+
 def test_codex_catalogues_select_exact_locale_and_preserve_stable_routes():
     from app.guides.series import catalogue_for_article
 
@@ -323,3 +397,45 @@ async def test_inline_affiliate_link_cannot_bypass_partner_disclosure(database, 
         )
         assert response.status_code == 422
         assert response.json()["code"] == "content_link_affiliate"
+
+
+async def test_a_glossary_entry_names_its_set_and_the_hub_and_others_do_not(database, actor):
+    """An article filed under a catalogue-type series' topic is an entry of that glossary
+    (the web marks it up as a DefinedTerm); the hub itself and an article under another
+    topic are not, and the set is named only while the hub is published here."""
+    async with guides.client(guides.make_app(database, actor)) as api:
+        hub = await guides.create_article(
+            api, "ai-terms-index", "life", destination_id=None, topics=["ai", "ai-terms"],
+            document=guides.document(title="AI 名詞總索引", description="所有名詞"),
+        )
+        entry = await guides.create_article(
+            api, "ai-term-machine-learning", "life", destination_id=None, topics=["ai-terms"],
+            document=guides.document(title="機器學習"),
+        )
+        other = await guides.create_article(
+            api, "ai-news-today", "life", destination_id=None, topics=["ai-news"],
+        )
+        for created in (hub, entry, other):
+            await guides.publish(api, created["id"], "zh-TW", created["version"])
+
+        read = lambda slug: api.get(f"/guides/life/{slug}", params={"locale": "zh-TW"})  # noqa: E731
+        assert (await read("ai-term-machine-learning")).json()["term_set"] == {
+            "kind": "life",
+            "slug": "ai-terms-index",
+            "title": "AI 名詞總索引",
+            "description": "所有名詞",
+        }
+        assert (await read("ai-terms-index")).json()["term_set"] is None
+        assert (await read("ai-news-today")).json()["term_set"] is None
+
+        detail = (await api.get(f"/admin/guides/{hub['id']}")).json()
+        withdrawn = await api.post(
+            f"/admin/guides/{hub['id']}/zh-TW/unpublish",
+            json={
+                "expected_version": detail["locales"][0]["version"],
+                "confirmed": True,
+                "reason": "下架",
+            },
+        )
+        assert withdrawn.status_code == 200, withdrawn.text
+        assert (await read("ai-term-machine-learning")).json()["term_set"] is None

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,33 @@
           "text": "事件日期：2026-03-25；本文查核日期：2026-09-14。3 月 25 日 Google 發表 Lyria 3 Pro，公告可產生最長 3 分鐘的音樂，並用提示安排前奏、主歌、副歌與橋段。"
         },
         {
-          "type": "paragraph",
-          "text": "同次公告擴展至 Google 的創作與開發入口，Vertex AI 當時為 public preview；各產品資格需分開看。Google 表示輸出嵌入 SynthID，並採避免模仿既有歌手的措施；標記不是商用授權或版權保證。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同次公告擴展至 Google 的創作與開發入口，Vertex "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 當時為 public preview；各產品資格需分開看。Google 表示輸出嵌入 SynthID，並採避免模仿既有歌手的措施；"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "不是商用授權或版權保證。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -56,8 +82,23 @@
           "text": "入場前奏的核心在於營造舒適而不具侵略性的聆聽空間。在此階段的提示詞設定上，建議著重於溫暖的木質樂器、輕柔的弦樂長音或極簡的鋼琴單音，避免過早引入節奏強烈的大鼓或刺耳的電子合成器。由於活動剛開始時觀眾仍在交談與移動，過於複雜的旋律反而會造成聽覺疲勞。創作者應將提示重點放在音色的質地與空間殘響，使前奏聽起來開闊而安定，達到沉澱心靈的引導效果。"
         },
         {
-          "type": "paragraph",
-          "text": "逐段試聽前奏時，第一項驗收重點是基礎音量與動態範圍。若音訊一開頭就出現突發性的瞬態峰值，即使後續段落漸漸平緩，也已經破壞了迎賓的溫和氛圍。此時可檢查前奏與後續樂句的連接處是否過於生硬，觀察音色音量是否有不自然的突跳。若發現前奏過於單調，應微調提示中的背景環境質感，而不是增加打擊樂器，讓入場開頭維持克制且一致的敘事底調。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "逐段試聽前奏時，第一項驗收重點是基礎音量與動態範圍。若音訊一開頭就出現突發性的瞬態峰值，即使後續段落漸漸平緩，也已經破壞了迎賓的溫和氛圍。此時可檢查前奏與後續樂句的連接處是否過於生硬，觀察音色音量是否有不自然的突跳。若發現前奏過於單調，應"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "提示中的背景環境質感，而不是增加打擊樂器，讓入場開頭維持克制且一致的敘事底調。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -149,14 +190,26 @@
           "text": "模型內建的 SynthID 與防模仿措施屬於技術防護，並非商用版權背書。團隊應確實歸檔提示詞與原創素材，並依具體發布管道個別核實使用規範。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -306,14 +359,26 @@
           "text": "The model's built-in SynthID and anti-impersonation measures are technical safeguards, not commercial copyright endorsements. Teams should systematically archive prompts and original materials, verifying usage guidelines separately for each specific distribution channel."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
-          "url": "https://mokaair.com/en/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -463,14 +528,26 @@
           "text": "モデルに組み込まれたSynthIDや模倣防止策は技術的な保護措置であり、商用著作権の裏付けではありません。チームはプロンプトとオリジナル素材を確実に保管し、具体的な配信チャネルごとに利用規約を個別に確認する必要があります。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
-          "url": "https://mokaair.com/ja/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -620,14 +697,26 @@
           "text": "모델에 내장된 SynthID 및 모방 방지 조치는 기술적 보호 장치일 뿐 상업적 저작권 보증이 아닙니다. 팀은 프롬프트와 오리지널 소재를 철저히 보관하고 구체적인 배포 채널별 사용 규정을 개별 확인해야 합니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
-          "url": "https://mokaair.com/ko/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [
@@ -777,14 +866,26 @@
           "text": "模型内置的 SynthID 与防模仿措施属于技术防护，并非商用版权背书。团队应切实归档提示词与原创素材，并依具体发布渠道分别核实使用规范。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         }
       ],
       "sources": [

@@ -7,6 +7,13 @@ the task board; ``guides-import`` (the deploy-time import) stays there.
         [--dry-run] [--no-render]
     uv run python -m app.guides.pack_cli lint [--kind life] [--slug s]... \\
         [--render-dir <dir>] [--catalogue <md>]
+    uv run python -m app.guides.pack_cli retopic [--kind life] [--prefix p]... [--slug s]... \\
+        [--apply]
+    uv run python -m app.guides.pack_cli relink [--kind k] [--prefix p]... [--slug s]... [--apply]
+    uv run python -m app.guides.pack_cli autolink [--kind k] [--prefix p]... [--slug s]... \\
+        [--limit 8] [--apply]
+    uv run python -m app.guides.pack_cli summarize [--kind k] [--prefix p]... [--slug s]... \\
+        [--from batch.json] [--replace] [--digest out.md] [--apply]
 """
 
 from __future__ import annotations
@@ -16,6 +23,7 @@ import sys
 from pathlib import Path
 from typing import cast
 
+from app.guides import autolink, retopic, summarize
 from app.guides.content_pack import default_directory
 from app.guides.pack_ingest import (
     PackIngestError,
@@ -61,9 +69,122 @@ def main(argv: list[str] | None = None) -> int:
         "--warnings", action="store_true", help="Exit 1 on warnings too, not only errors"
     )
 
+    retopic_parser = commands.add_parser(
+        "retopic", help="Propose two-level topics for packs from their slugs and series"
+    )
+    retopic_parser.add_argument("--kind", choices=("intel", "howto", "life"), default="life")
+    retopic_parser.add_argument("--prefix", action="append", default=[])
+    retopic_parser.add_argument("--slug", action="append")
+    retopic_parser.add_argument(
+        "--apply", action="store_true", help="Rewrite the topics of the changed packs"
+    )
+    retopic_parser.add_argument("--dry-run", action="store_true", help="The default: print only")
+
+    for name, help_text in (
+        ("relink", "Turn raw site URLs to articles into article inlines"),
+        ("autolink", "Link the first mention of a glossary term or keyword to its article"),
+    ):
+        link_parser = commands.add_parser(name, help=help_text)
+        link_parser.add_argument("--kind", choices=("intel", "howto", "life"))
+        link_parser.add_argument("--prefix", action="append", default=[])
+        link_parser.add_argument("--slug", action="append")
+        link_parser.add_argument(
+            "--apply", action="store_true", help="Rewrite the blocks of the changed packs"
+        )
+        link_parser.add_argument("--dry-run", action="store_true", help="The default: print only")
+        if name == "autolink":
+            link_parser.add_argument(
+                "--limit", type=int, default=autolink.MAX_AUTOLINKS, help="Links per article"
+            )
+
+    summarize_parser = commands.add_parser(
+        "summarize", help="Propose or apply summary and FAQ blocks from the article's own text"
+    )
+    summarize_parser.add_argument("--kind", choices=("intel", "howto", "life"))
+    summarize_parser.add_argument("--prefix", action="append", default=[])
+    summarize_parser.add_argument("--slug", action="append")
+    summarize_parser.add_argument(
+        "--from", dest="batch", type=Path, help="A reviewed batch: slug → locale → summary/faq"
+    )
+    summarize_parser.add_argument(
+        "--replace", action="store_true", help="Overwrite a summary or FAQ already there"
+    )
+    summarize_parser.add_argument(
+        "--digest", type=Path, help="Write what a summary is written from, per document, here"
+    )
+    summarize_parser.add_argument(
+        "--apply", action="store_true", help="Rewrite the blocks of the changed packs"
+    )
+    summarize_parser.add_argument(
+        "--dry-run", action="store_true", help="The default: print only"
+    )
+
     args = parser.parse_args(argv)
     content_dir = args.content_dir or default_directory()
     public_dir = args.public_dir or default_public_dir()
+
+    if args.command in {"relink", "autolink"}:
+        proposals = autolink.proposals(
+            content_dir,
+            cast(autolink.Mode, args.command),
+            kind=cast(Kind | None, args.kind),
+            prefixes=tuple(args.prefix),
+            slugs=set(args.slug) if args.slug else None,
+            limit=getattr(args, "limit", autolink.MAX_AUTOLINKS),
+        )
+        print(autolink.render_table(proposals))
+        if args.apply and not args.dry_run:
+            for path in autolink.apply(proposals, content_dir):
+                print(f"wrote {path}")
+        else:
+            print("dry run: nothing written")
+        return 0
+
+    if args.command == "summarize":
+        kind = cast(Kind | None, args.kind)
+        prefixes = tuple(args.prefix)
+        slugs = set(args.slug) if args.slug else None
+        try:
+            batch = summarize.load_batch(args.batch) if args.batch else None
+            summary_rows = summarize.proposals(
+                content_dir,
+                kind=kind,
+                prefixes=prefixes,
+                slugs=slugs,
+                batch=batch,
+                replace=args.replace,
+            )
+        except summarize.SummarizeError as error:
+            print(f"error: {error}", file=sys.stderr)
+            return 1
+        if args.digest:
+            digest = summarize.render_digest(
+                content_dir, kind=kind, prefixes=prefixes, slugs=slugs
+            )
+            args.digest.write_text(digest, encoding="utf-8")
+            print(f"wrote {args.digest}")
+        print(summarize.render_table(summary_rows))
+        if args.apply and not args.dry_run:
+            for path in summarize.apply(summary_rows, content_dir):
+                print(f"wrote {path}")
+        else:
+            print("dry run: nothing written")
+        return 0
+
+    if args.command == "retopic":
+        rows = retopic.proposals(
+            content_dir,
+            kind=cast(Kind, args.kind),
+            prefixes=tuple(args.prefix),
+            slugs=set(args.slug) if args.slug else None,
+        )
+        print(retopic.render_table(rows))
+        if args.apply and not args.dry_run:
+            for path in retopic.apply(rows, content_dir):
+                print(f"wrote {path}")
+        else:
+            print("dry run: nothing written")
+        return 0
 
     if args.command == "ingest":
         try:
@@ -100,7 +221,7 @@ def main(argv: list[str] | None = None) -> int:
         if problems:
             print(slug)
             _print(problems, "  ")
-        if errors(problems) or (args.warnings and problems):
+        if errors(problems) or (args.warnings and any(p.level != "info" for p in problems)):
             failed = True
     print(f"{len(findings)} entries checked")
     return 1 if failed else 0

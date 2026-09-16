@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +32,23 @@
           "text": "文章明明有標題、作者和發布日期，為什麼還要另外提供結構化資料？因為人閱讀排版就能理解的關係，系統未必能同樣清楚辨認。結構化資料把這些資訊用一致的名稱與格式表達，讓頁面內容更容易被處理。"
         },
         {
-          "type": "paragraph",
-          "text": "開始之前先確認內容本身正確。如果作者不明、圖片不相關，或頁面沒有實際的商品價格，補幾個欄位不能解決根本問題。先從一種常見頁型整理資料，再測試輸出，比一次替全站開啟所有標記更容易維護。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開始之前先確認內容本身正確。如果作者不明、圖片不相關，或頁面沒有實際的商品價格，補幾個欄位不能解決根本問題。先從一種常見頁型整理資料，再測試輸出，比一次替全站開啟所有"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "更容易維護。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -47,8 +64,23 @@
           "text": "Google 一般建議使用容易維護的 JSON-LD，通常放在 type 為 application/ld+json 的 script 元素中。這段資料不會像正文一樣直接排版顯示，但描述的內容仍應與使用者可看到的資訊相符。不要因此把不存在的評分或作者塞進隱藏資料。"
         },
         {
-          "type": "paragraph",
-          "text": "也要區分詞彙有效和 Google 搜尋功能支援。Schema.org 的範圍比 Google 的複合式搜尋結果更廣；某個類型可以合法描述內容，不代表 Google 目前有相應特殊外觀。若目的是搜尋功能，應閱讀 Google 該功能的最新專用文件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "也要區"
+            },
+            {
+              "type": "article",
+              "text": "分詞",
+              "kind": "life",
+              "slug": "ai-term-tokenization"
+            },
+            {
+              "type": "text",
+              "text": "彙有效和 Google 搜尋功能支援。Schema.org 的範圍比 Google 的複合式搜尋結果更廣；某個類型可以合法描述內容，不代表 Google 目前有相應特殊外觀。若目的是搜尋功能，應閱讀 Google 該功能的最新專用文件。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +233,37 @@
           "text": "語法正確無法證明內容真實。請逐一對照作者、圖片、日期和其他標記資訊；沒有資料時回到內容流程補齊，不用假評分或虛構身分填欄位。"
         },
         {
-          "type": "link",
-          "text": "先整理文章內容品質",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先整理文章內容品質",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "辨識作者與敏感資訊的可信度",
-          "url": "https://mokaair.com/zh-TW/life/seo-trust-sensitive-topics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨識作者與敏感資訊的可信度",
+              "kind": "life",
+              "slug": "seo-trust-sensitive-topics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 Search Console 核對頁面狀態",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Search Console 核對頁面狀態",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         }
       ],
       "sources": [

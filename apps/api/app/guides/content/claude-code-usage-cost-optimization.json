@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 158,
@@ -164,8 +165,29 @@
           "text": "先執行受影響的測試，再依變更範圍擴大。若測試已通過且沒有新修改，不必為了多一份紀錄反覆跑完全相同的檢查。工具輸出過長時，保存原始紀錄並只讀取相關段落，避免同一份巨大 log 被多次塞回上下文。"
         },
         {
-          "type": "paragraph",
-          "text": "多代理、Agent Teams、排程與背景工作都會增加模型與工具使用。先確認每個角色能獨立推進，再分派；完成後正常停止。把同一個小問題交給多位代理並要求頻繁狀態更新，可能花更多時間在整合，而沒有更多有效證據。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多代理",
+              "kind": "life",
+              "slug": "ai-term-multi-agent-system"
+            },
+            {
+              "type": "text",
+              "text": "、Agent Teams、排程與背景工作都會增加模型與"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "。先確認每個角色能獨立推進，再分派；完成後正常停止。把同一個小問題交給多位代理並要求頻繁狀態更新，可能花更多時間在整合，而沒有更多有效證據。"
+            }
+          ]
         },
         {
           "type": "heading",

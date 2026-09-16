@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "本篇把工具呼叫做成能檢查、能停下來的程式：Gemini 提出訂單查詢要求，Python 驗證函式名稱與參數，讀取兩筆合成訂單，再把結果送回模型。完成後，你會分辨模型提出要求、本機執行成功與最終回答三個不同階段，並知道查無資料、非法參數和迴圈上限各自怎麼處理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇把工具呼叫做成能檢查、能停下來的程式：Gemini 提出訂單查詢要求，Python 驗證函式名稱與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，讀取兩筆合成訂單，再把結果送回模型。完成後，你會分辨模型提出要求、本機執行成功與最終回答三個不同階段，並知道查無資料、非法參數和迴圈上限各自怎麼處理。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,31 +71,44 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一次 API 呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "結構化輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "費用和錯誤處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
-              "text": "。本篇採 Python、google-genai 2.23.0，以及查證日官方示範的 gemini-3.8-flash；先在自己的專案確認模型可用。Windows 本機已做真實 SDK 對本機 HTTP 測試，沒有把合成回應當作 Google 雲端效果。"
+              "text": "。本篇採 Python、google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0，以及查證日官方示範的 gemini-3.8-flash；先在自己的專案確認模型可用。Windows 本機已做真實 SDK 對本機 HTTP 測試，沒有把合成回應當作 Google 雲端效果。"
             }
           ]
         },
@@ -212,18 +241,20 @@
               "text": "完成後依序測正常、查無資料、額外參數與反覆呼叫。前兩項可用真實模型觀察，後兩項用固定故障回應才能穩定重現。實際模型是否遵守要求另記，不把「這次沒出錯」當成程式已有防護。接著可做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "搜尋引用解析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+              "kind": "life",
+              "slug": "gemini-api-search-grounding-citations"
             },
             {
               "type": "text",
               "text": "，再把唯讀查詢整合進 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件助手專案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+              "kind": "life",
+              "slug": "gemini-api-document-service-capstone"
             },
             {
               "type": "text",
@@ -271,27 +302,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案與 JSON：結構化輸出及驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini API 搜尋引用：Grounding 結果解析與來源呈現",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-search-grounding-citations"
+              "kind": "life",
+              "slug": "gemini-api-search-grounding-citations"
             },
             {
               "type": "text",
@@ -310,9 +344,15 @@
           "url": "https://mokaair.com/guides/gemini-api-function-calling-workshop/api-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

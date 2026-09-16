@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -25,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "法國 Mistral AI 的 Le Chat 已經改名。官網產品頁的標題現在寫「Mistral Vibe (formerly Le Chat)」，說明中心也有一篇就叫「Le Chat is now Vibe」的公告，寫明帳號、方案與對話紀錄全部沿用，入口網址沒變。結論先說：它值得花時間的理由有兩個，一是資料預設存放在歐盟，二是它有一整批能自己下載回來跑的開放權重模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "法國 Mistral "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的 Le Chat 已經改名。官網產品頁的標題現在寫「Mistral Vibe (formerly Le Chat)」，說明中心也有一篇就叫「Le Chat is now Vibe」的公告，寫明帳號、方案與對話紀錄全部沿用，入口網址沒變。結論先說：它值得花時間的理由有兩個，一是資料預設存放在歐盟，二是它有一整批能自己下載回來跑的開放權重模型。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -51,13 +67,34 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "文件也把舊功能對應到新位置：Agents 對應 Work 的 Skills，Think mode 改由模型自動決定推理程度，Deep Research 只剩 Work 裡的一個 Skill，Code Interpreter 換成內建的 TypeScript 執行環境，Memories 對應 Knowledge Base。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件也把舊功能對應到新位置：Agents 對應 Work 的 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "，Think mode 改由模型自動決定推理程度，Deep Research 只剩 Work 裡的一個 Skill，Code Interpreter 換成內建的 TypeScript 執行環境，Memories 對應 Knowledge Base。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -125,9 +162,15 @@
           "text": "月繳年繳分開看：網頁定價頁只列月費。說明中心的手機訂閱那篇寫，App 內購買時可以選月繳或年繳，年繳金額官網沒有列，一樣以官網為準。Android 付款後還要回 Google Play 的「付款與訂閱」把購買確認掉，3 天內沒確認會被取消並退款。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -164,9 +207,15 @@
           "text": "文件列出一句好提示詞該有的四件事：你要的結果、它該參考的來源或工具、成品給誰看，以及長度、語氣、格式或期限。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -189,17 +238,38 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "其他類別：Voxtral Small 是 Apache 2.0，Voxtral TTS 是 CC BY-NC 4.0（禁止商業使用），Shieldstral 1.0 與 Leanstral 1.5 是 Apache 2.0；OCR 4.1、Codestral、Mistral Embed 標的是 Premier，只能透過官方服務用。過去常被提到的 Magistral、Devstral 與 Pixtral，在同一頁的「Deprecated」表裡已經是停用或退役，不要再照舊資料寫。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他類別：Voxtral Small 是 Apache 2.0，Voxtral "
+            },
+            {
+              "type": "article",
+              "text": "TTS",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            },
+            {
+              "type": "text",
+              "text": " 是 CC BY-NC 4.0（禁止商業使用），Shieldstral 1.0 與 Leanstral 1.5 是 Apache 2.0；OCR 4.1、Codestral、Mistral Embed 標的是 Premier，只能透過官方服務用。過去常被提到的 Magistral、Devstral 與 Pixtral，在同一頁的「Deprecated」表裡已經是停用或退役，不要再照舊資料寫。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "說明中心補了關鍵一句：多數開放模型用 Apache 2.0，可以任意用途使用、自由散布、修改與分享修改後的版本；另一部分用「modified MIT」，權限相同，但月營收超過 2,000 萬美元的公司必須另外取得商業授權，或改成透過 Studio 使用。實際條款以模型卡上寫的為準。想知道有多少能下載，看 Hugging Face 上的 mistralai 官方組織：撰稿當天用官方 API 數出 75 個模型庫，其中 65 個標 apache-2.0、9 個標 other、1 個標 cc-by-nc-4.0。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -266,28 +336,52 @@
           "text": "Memories 是 beta 功能，可以完全不開，開了也能隨時查看、編輯、刪除；說明中心特別提醒「關掉 Memories 不會自動刪掉已經存進去的內容」，要清乾淨得先按「Clear all Memories」再關。零資料留存只開放給隨用隨付的無狀態 API 呼叫，Work 與 Chat 不論方案都沒有，而且要申請、經審核才會出現在設定裡。輸入與輸出的所有權則寫明是使用者的。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "同一類的助手還有 ChatGPT、Gemini、Claude、Grok 與 Perplexity，各家的方案結構、資料流向與能不能下載都不一樣，這篇不做沒查過的比較；要對照就看以下幾篇。"
         },
         {
-          "type": "link",
-          "text": "三大助手日常比較：同題操作與評分方法",
-          "url": "https://mokaair.com/zh-TW/life/gemini-vs-chatgpt-vs-claude-daily"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "三大助手日常比較：同題操作與評分方法",
+              "kind": "life",
+              "slug": "gemini-vs-chatgpt-vs-claude-daily"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
-          "url": "https://mokaair.com/zh-TW/life/grok-xai-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Grok（xAI）怎麼用：三個入口、方案價格與資料訓練開關",
+              "kind": "life",
+              "slug": "grok-xai-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/perplexity-ai-search-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            }
+          ]
         }
       ],
       "sources": [

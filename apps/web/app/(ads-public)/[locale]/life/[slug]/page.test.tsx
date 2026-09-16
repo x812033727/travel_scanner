@@ -12,7 +12,7 @@ import LifeArticlePage, { generateMetadata } from "./page";
 const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn() }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }) }));
-vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list }));
+vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list, getGuideTopics: async () => [] }));
 vi.mock("@/components/destination-affiliate-options", () => ({
   DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[]; placement?: string; contextual?: boolean }) => (
     <div
@@ -70,7 +70,10 @@ describe("a published lifestyle article", () => {
 
   it("returns the reader to the lifestyle listing, not a /guides one", async () => {
     render(await LifeArticlePage({ params: params() }));
-    expect(screen.getByRole("link", { name: "生活分享" }).getAttribute("href")).toBe("/life");
+    // Twice: the breadcrumb's section crumb above the article and the return link below it.
+    const listing = screen.getAllByRole("link", { name: "生活分享" }).map((link) => link.getAttribute("href"));
+    expect(listing.length).toBeGreaterThanOrEqual(1);
+    expect(listing.every((href) => href === "/life")).toBe(true);
   });
 
   it("links its other languages at the lifestyle URL", async () => {

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -43,8 +44,23 @@
           "text": "Anthropic 的長任務研究以初始化、進度紀錄與增量開發支援跨工作階段的代理，並記錄了過早宣佈完成等失敗方式。GitHub 的編碼代理說明文件則呈現另一種實作：代理在可執行程式的環境裡修改專案，讓變更接受審查。兩者都說明工具與工作流程的重要，但不代表某一套產品等於這個工程領域。"
         },
         {
-          "type": "paragraph",
-          "text": "一次工具呼叫通常要經過提出請求、檢查參數及權限、實際執行、回傳結果等環節。模型輸出的「讀取檔案」只是請求，必須有執行器處理，才會拿到檔案內容。若執行器缺少工作目錄或相依套件，失敗首先是環境問題，不能只靠重新措辭期待程式突然能跑。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一次工具呼叫通常要經過提出請求、檢查"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "及權限、實際執行、回傳結果等環節。模型輸出的「讀取檔案」只是請求，必須有執行器處理，才會拿到檔案內容。若執行器缺少工作目錄或相依套件，失敗首先是環境問題，不能只靠重新措辭期待程式突然能跑。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +180,48 @@
           "text": "程式已修改、測試通過、瀏覽器驗證成功與正式上線，應各自有可核對的證據。不要讓單一完成旗標抹掉這些差別。"
         },
         {
-          "type": "link",
-          "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-loop-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+              "kind": "life",
+              "slug": "ai-term-loop-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文工程（Context Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文工程（Context Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-context-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

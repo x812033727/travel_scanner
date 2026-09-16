@@ -160,13 +160,31 @@ const server = createServer((request, response) => {
   // here. The notice is published without English and the how-to in English alone, so
   // e2e/seo.spec.ts can check <lastmod> and each article's own hreflang set in the real XML.
   // The lifestyle article proves a `life` row lands under /life/, not /guides/life/.
-  if (request.method === "GET" && request.url === "/api/v1/guides/sitemap") {
-    response.end(JSON.stringify({ entries: [
-      { kind: "intel", slug: "synthetic-fare-notice", locale: "zh-TW", published_at: "2026-09-08T09:30:00Z" },
-      { kind: "intel", slug: "synthetic-fare-notice", locale: "ja", published_at: "2026-09-07T01:00:00Z" },
-      { kind: "howto", slug: "synthetic-airport-transfer", locale: "en", published_at: "2026-09-01T00:00:00Z" },
-      { kind: "life", slug: "synthetic-ai-notes", locale: "zh-TW", published_at: "2026-09-05T08:00:00Z" },
-    ] }));
+  // The web reads one child sitemap at a time (`?section=&locale=`, paged by `cursor`) and the
+  // index reads `/summary`; both come from this one row list so they cannot disagree.
+  if (request.method === "GET" && request.url?.startsWith("/api/v1/guides/sitemap")) {
+    const sitemapRows = [
+      { kind: "intel", slug: "synthetic-fare-notice", locale: "zh-TW", published_at: "2026-09-08T09:30:00Z", locales: ["ja", "zh-TW"] },
+      { kind: "intel", slug: "synthetic-fare-notice", locale: "ja", published_at: "2026-09-07T01:00:00Z", locales: ["ja", "zh-TW"] },
+      { kind: "howto", slug: "synthetic-airport-transfer", locale: "en", published_at: "2026-09-01T00:00:00Z", locales: ["en"] },
+      { kind: "life", slug: "synthetic-ai-notes", locale: "zh-TW", published_at: "2026-09-05T08:00:00Z", locales: ["zh-TW"] },
+    ];
+    const sitemapUrl = new URL(request.url, "http://127.0.0.1:8000");
+    if (sitemapUrl.pathname === "/api/v1/guides/sitemap/summary") {
+      const counts = new Map();
+      for (const row of sitemapRows) {
+        const key = `${row.kind}:${row.locale}`;
+        counts.set(key, { kind: row.kind, locale: row.locale, count: (counts.get(key)?.count ?? 0) + 1 });
+      }
+      response.end(JSON.stringify({ counts: [...counts.values()] }));
+      return;
+    }
+    const section = sitemapUrl.searchParams.get("section");
+    const locale = sitemapUrl.searchParams.get("locale");
+    const sectionOf = (kind) => (kind === "life" ? "life" : "travel");
+    const entries = sitemapRows.filter((row) =>
+      (!section || sectionOf(row.kind) === section) && (!locale || row.locale === locale));
+    response.end(JSON.stringify({ entries, next_cursor: null }));
     return;
   }
   // The listing behind the section hubs, published exactly where /guides/sitemap above says

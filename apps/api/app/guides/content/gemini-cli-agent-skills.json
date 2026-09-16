@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Agent Skills（代理技能）把一套工作方法包成可重複使用的資料夾。你可以讓 Gemini CLI 在整理活動資料時，依固定步驟讀取來源、找出缺漏，再交付可核對的表格。本篇會建立一個不需要額外服務的技能，並教你確認它有被發現、啟用與正確使用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Agent "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "（代理技能）把一套工作方法包成可重複使用的資料夾。你可以讓 Gemini CLI 在整理活動資料時，依固定步驟讀取來源、找出缺漏，再交付可核對的表格。本篇會建立一個不需要額外服務的技能，並教你確認它有被發現、啟用與正確使用。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,18 +71,20 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝與首次使用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
             },
             {
               "type": "text",
               "text": "，並理解"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown 檔案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+              "kind": "life",
+              "slug": "gemini-markdown-basics"
             },
             {
               "type": "text",
@@ -82,18 +100,20 @@
               "text": "技能與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "不同：後者是專案持續使用的指示，技能則在需要特定工作方法時啟用。若只是把一段常用提示詞縮成快捷操作，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂斜線指令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
@@ -176,9 +196,10 @@
               "text": "「清單找不到技能」先檢查啟動位置、資料夾層級、檔案名稱與 YAML 縮排。檔案內容要有 name 與 description，不能把 frontmatter 包在程式碼區塊內。重新載入仍失敗時，保留錯誤行號，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "疑難排解流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+              "kind": "life",
+              "slug": "gemini-cli-troubleshooting"
             },
             {
               "type": "text",
@@ -198,9 +219,10 @@
               "text": "「每次都需要貼整份技能嗎」正常使用時不需要。將技能放在 CLI 能探索的位置，再由清單與啟用流程確認即可。若改用 Gemini 網頁上的"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -216,9 +238,10 @@
               "text": "技能交給同事前，附一組示範資料與核對清單。更新後若新增寫入檔案或呼叫外部服務，應在說明中清楚列出。當任務需要獨立上下文與不同工具範圍，可進一步閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Subagents",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagents"
+              "kind": "life",
+              "slug": "gemini-cli-subagents"
             },
             {
               "type": "text",
@@ -267,18 +290,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Markdown 基礎",
-              "url": "https://mokaair.com/zh-TW/life/gemini-markdown-basics"
+              "kind": "life",
+              "slug": "gemini-markdown-basics"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂斜線指令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
@@ -287,9 +312,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

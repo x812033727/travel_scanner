@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Veo 與 Flow 入門",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "圖片系列製作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-image-consistent-series"
+              "kind": "life",
+              "slug": "gemini-image-consistent-series"
             },
             {
               "type": "text",
@@ -161,9 +164,10 @@
               "text": "下載原檔後填 output_file、actual_seconds 和實際點數變化。點數依模型與功能變動，價格集中看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案與計費",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -206,18 +210,20 @@
               "text": "交付須包含三個採用片段、最終合片、素材與提示詞清單、實際用量和失敗紀錄。接點主體或動作不連貫時，進一步用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "影格與轉場修正",
-              "url": "https://mokaair.com/zh-TW/life/google-flow-shot-continuity"
+              "kind": "life",
+              "slug": "google-flow-shot-continuity"
             },
             {
               "type": "text",
               "text": "；整套活動交付則接 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "版本與素材清單",
-              "url": "https://mokaair.com/zh-TW/life/gemini-content-production-handoff"
+              "kind": "life",
+              "slug": "gemini-content-production-handoff"
             },
             {
               "type": "text",
@@ -265,27 +271,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Veo 與 Google Flow：影片、分鏡與匯出",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 圖片系列製作：參考圖、風格規格與一致性評分",
-              "url": "https://mokaair.com/zh-TW/life/gemini-image-consistent-series"
+              "kind": "life",
+              "slug": "gemini-image-consistent-series"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Google Flow 畫面連貫：起訖影格、參考素材與轉場修正",
-              "url": "https://mokaair.com/zh-TW/life/google-flow-shot-continuity"
+              "kind": "life",
+              "slug": "google-flow-shot-continuity"
             },
             {
               "type": "text",
@@ -304,9 +313,15 @@
           "url": "https://mokaair.com/guides/google-flow-storyboard-workshop/creative-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

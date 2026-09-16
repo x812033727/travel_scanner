@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "productivity",
-    "ai"
+    "ai",
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "試算表的 AI 現在分成兩層：一層是側邊欄或窗格裡的助理，你用一句話請它建表、畫圖、寫公式；另一層是寫在儲存格裡的 AI 函式，一列一列把文字分類或摘要。Google 試算表兩層都有，Excel 則從 2026 年 9 月 14 日起把儲存格裡的 COPILOT 函式下架，只留 Copilot 窗格這一層。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "試算表的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 現在分成兩層：一層是側邊欄或窗格裡的助理，你用一句話請它建表、畫圖、寫公式；另一層是寫在儲存格裡的 AI 函式，一列一列把文字分類或摘要。Google 試算表兩層都有，Excel 則從 2026 年 9 月 14 日起把儲存格裡的 COPILOT 函式下架，只留 Copilot 窗格這一層。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,8 +59,23 @@
           "text": "Google 試算表這邊有三樣東西。第一是 Gemini 側邊欄，在右上角點「Ask Gemini」開啟：官方說明頁寫它能建立表格、寫公式、產生資料分析與洞察、做圖表，也能摘要你雲端硬碟與 Gmail 裡的檔案與郵件；它還會代你執行動作，官方列的包括套用條件式格式設定、建立樞紐分析表、排序與篩選、尋找並取代、設定數字格式、插入或凍結列與欄、填滿範圍。"
         },
         {
-          "type": "paragraph",
-          "text": "第二是寫在儲存格裡的 AI 函式。官方頁寫 =AI() 與 =Gemini() 兩個名字都可以用，語法是 AI(\"prompt\",[optional range])，第一個參數是提示詞，第二個是選用的範圍。重點是它不像一般函式會自己算出答案：輸入之後要選取那些儲存格，再按「Generate and insert」才會真的產生內容，要重跑就按「Refresh and insert」。官方也提到在表格最右欄點「Insert AI column right」可以直接加一欄 AI 欄，第一個非標題列會自動帶出 AI 函式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二是寫在儲存格裡的 AI 函式。官方頁寫 =AI() 與 =Gemini() 兩個名字都可以用，語法是 AI(\"prompt\",[optional range])，第一個"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "是提示詞，第二個是選用的範圍。重點是它不像一般函式會自己算出答案：輸入之後要選取那些儲存格，再按「Generate and insert」才會真的產生內容，要重跑就按「Refresh and insert」。官方也提到在表格最右欄點「Insert AI column right」可以直接加一欄 AI 欄，第一個非標題列會自動帶出 AI 函式。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -88,14 +119,26 @@
           "text": "還有一個很常卡住人的條件寫在官方 FAQ 裡：Copilot in Excel 需要開啟自動儲存，也就是檔案必須存在 OneDrive，沒有存檔的檔案不能用。另一條是編輯功能只在「計算選項」設為自動時才支援。"
         },
         {
-          "type": "link",
-          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
-          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+              "kind": "life",
+              "slug": "microsoft-copilot-windows-office"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "小團隊使用 Workspace AI：帳號與管理",
-          "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小團隊使用 Workspace AI：帳號與管理",
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -149,9 +192,15 @@
           "text": "不論公式或腳本是誰寫的，貼上去之前自己看一遍：範圍對不對、有沒有會覆蓋原始資料的動作、錯誤怎麼處理。AI 寫的程式看起來很順，順不等於對。"
         },
         {
-          "type": "link",
-          "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-excel-formulas"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+              "kind": "life",
+              "slug": "chatgpt-for-excel-formulas"
+            }
+          ]
         },
         {
           "type": "image",
@@ -258,8 +307,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 的資料保護頁寫：Gemini 在文件、雲端硬碟、試算表等服務會使用你在 Google Workspace 的內容產生回應，但不會用來訓練或改進 Gemini 與其他生成式 AI 模型，未經允許也不會儲存你的提示詞與輸出。同一頁另提醒：用個人帳戶的 Workspace 使用者若把資料分享給 Gemini 應用程式或搜尋服務，那些資料會依各自的條款處理，可能被用於模型訓練。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的資料保護頁寫：Gemini 在文件、雲端硬碟、試算表等服務會使用你在 Google Workspace 的內容產生回應，但不會用來訓練或改進 Gemini 與其他"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 模型，未經允許也不會儲存你的提示詞與輸出。同一頁另提醒：用個人帳戶的 Workspace 使用者若把資料分享給 Gemini 應用程式或搜尋服務，那些資料會依各自的條款處理，可能被用於模型訓練。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -274,33 +338,63 @@
           "text": "驗證沒有捷徑。官方 FAQ 自己就寫 Copilot 產生的洞察與公式可能不正確，要在依賴之前檢查、編輯、驗證，也建議別用在財務、法律、醫療這類敏感決定。自測法是：先人工標好 20 到 30 列當答案，讓 AI 跑同一批比對不一致的比例；分類任務把類別定義寫進提示詞，摘要任務抽查原文有沒有被寫成沒說過的事。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+              "kind": "life",
+              "slug": "chatgpt-data-analysis-csv"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
-          "url": "https://mokaair.com/zh-TW/life/claude-file-analysis-pdf-excel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給 Claude 讀 PDF 與試算表：摘要、比對與抓數字",
+              "kind": "life",
+              "slug": "claude-file-analysis-pdf-excel"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "要讓資料自己流進試算表，那是自動化工具的守備範圍。"
         },
         {
-          "type": "link",
-          "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
-          "url": "https://mokaair.com/zh-TW/life/zapier-make-ai-automation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
+              "kind": "life",
+              "slug": "zapier-make-ai-automation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "n8n 入門：用 AI 節點做自動化工作流",
-          "url": "https://mokaair.com/zh-TW/life/n8n-ai-automation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "n8n 入門：用 AI 節點做自動化工作流",
+              "kind": "life",
+              "slug": "n8n-ai-automation-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "家裡用品一直重複買？用簡單庫存表記位置、數量與補貨狀態",
-          "url": "https://mokaair.com/zh-TW/life/household-inventory-spreadsheet"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "家裡用品一直重複買？用簡單庫存表記位置、數量與補貨狀態",
+              "kind": "life",
+              "slug": "household-inventory-spreadsheet"
+            }
+          ]
         }
       ],
       "sources": [

@@ -101,6 +101,22 @@ describe("the list", () => {
     await waitFor(() => expect(screen.queryByRole("button", { name: "怎麼走" })).toBeNull());
   });
 
+  it("drops the topic and kind filters when the section changes, since both belong to a section", async () => {
+    // Left alone, `section=life&topic=transport` is a query nothing can answer, shown as a
+    // filter the editor cannot see the fault in.
+    window.history.replaceState(null, "", "/zh-TW/admin/guides?topic=transport&kind=howto");
+    render(<AdminGuidesList onOpen={vi.fn()} onCreate={vi.fn()} />);
+    await screen.findAllByRole("row");
+    fireEvent.change(screen.getByLabelText("專區"), { target: { value: "life" } });
+    await waitFor(() => expect(window.location.search).toContain("section=life"));
+    expect(window.location.search).not.toContain("topic=");
+    expect(window.location.search).not.toContain("kind=");
+    // And the dropdowns now offer that section's values only.
+    const kinds = within(screen.getByLabelText("型態")).getAllByRole("option").map((option) => option.textContent);
+    expect(kinds).toEqual(["所有型態", "生活分享"]);
+    expect(within(screen.getByLabelText("主題標籤")).queryByRole("option", { name: "交通" })).toBeNull();
+  });
+
   it("opens an article through the caller, never by itself", async () => {
     const onOpen = vi.fn();
     render(<AdminGuidesList onOpen={onOpen} onCreate={vi.fn()} />);

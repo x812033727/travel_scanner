@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 143,
@@ -24,8 +25,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "MCP 讓 Claude Code 透過標準介面使用外部工具，例如搜尋文件或讀取服務資料。本篇會以官方文件列出的 Notion 遠端 MCP 為練習，連接一個只有假資料的測試頁，完成一次讀取並核對結果。你會學到連線、授權與工具操作是三個不同階段。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 讓 Claude Code 透過標準介面使用外部工具，例如搜尋文件或讀取服務資料。本篇會以官方文件列出的 Notion 遠端 MCP 為練習，連接一個只有假資料的測試頁，完成一次讀取並核對結果。你會學到連線、授權與工具操作是三個不同階段。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

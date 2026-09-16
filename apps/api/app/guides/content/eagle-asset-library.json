@@ -64,8 +64,23 @@
           "text": "標籤則記錄跨資料夾的特徵，例如陶杯、直式、自有攝影、待確認授權。選取素材後可使用右側標籤欄位，或按 T 開啟標籤輸入視窗。先搜尋既有名稱再新增，避免手作杯、陶製杯和陶杯只是同一個意思，卻被分成不同群。"
         },
         {
-          "type": "paragraph",
-          "text": "將標籤字典保持簡單，約定哪些描述物件、哪些代表流程狀態。例如待選、已採用與封存可以表示用途，但不要讓星等同時代表畫質、喜好和授權安全。評分是自己的管理標記，無法代替正式審核或作品權利證明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "將標籤字典保持簡單，約定哪些描述物件、哪些代表流程狀態。例如待選、已採用與封存可以表示用途，但不要讓星等同時代表畫質、喜好和授權安全。評分是自己的管理"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，無法代替正式審核或作品權利證明。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -206,19 +221,37 @@
           "text": "保留來源不明素材的待確認標記與取得線索，交付前再核對。不要讓整理完成或高星等變成可以直接商用的暗示。"
         },
         {
-          "type": "link",
-          "text": "建立可商用素材的授權紀錄",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立可商用素材的授權紀錄",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "分清圖片格式與輸出品質",
-          "url": "https://mokaair.com/zh-TW/life/image-formats-compression"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分清圖片格式與輸出品質",
+              "kind": "life",
+              "slug": "image-formats-compression"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理 Canva 設計的交付版本",
-          "url": "https://mokaair.com/zh-TW/life/canva-design-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理 Canva 設計的交付版本",
+              "kind": "life",
+              "slug": "canva-design-workflow"
+            }
+          ]
         }
       ],
       "sources": [

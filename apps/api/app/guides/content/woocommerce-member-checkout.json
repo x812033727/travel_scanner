@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "woocommerce"
   ],
   "valid_until": null,
   "featured": false,
@@ -196,14 +198,26 @@
           "text": "使用全新的買家、既有買家和忘記密碼的買家分別測試。確認郵件實際收到、訂單歸屬正確，並且復原帳號後仍能完成原本購買。"
         },
         {
-          "type": "link",
-          "text": "設計必要的結帳欄位",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-checkout-fields"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "設計必要的結帳欄位",
+              "kind": "life",
+              "slug": "woocommerce-checkout-fields"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查 WordPress 郵件是否能送達",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-smtp-delivery"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查 WordPress 郵件是否能送達",
+              "kind": "life",
+              "slug": "wordpress-smtp-delivery"
+            }
+          ]
         }
       ],
       "sources": [

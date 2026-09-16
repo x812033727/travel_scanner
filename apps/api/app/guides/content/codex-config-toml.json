@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 116,
   "locales": {
@@ -176,7 +177,17 @@
           "inlines": [
             {
               "type": "text",
-              "text": "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、MCP 與外部服務還有自己的權限和設定；需要控制這些範圍時讀"
+              "text": "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 與外部服務還有自己的權限和設定；需要控制這些範圍時讀"
             },
             {
               "type": "article",
@@ -220,8 +231,23 @@
           "text": "常見問題與下一步"
         },
         {
-          "type": "paragraph",
-          "text": "不能啟動時，先看錯誤指到哪份 TOML、哪一行，檢查引號、重複鍵與表格位置；能啟動但值沒變時，查檔案路徑、專案信任、啟動參數和較近的子目錄設定；編輯器與 CLI 不同時，查它們是否在相同 OS、使用者與工作目錄，尤其 Windows 和 WSL 不共享同一個使用者家目錄。這些問題需要逐一查來源，重裝程式通常不是第一個判斷。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不能啟動時，先看錯誤指到哪份 TOML、哪一行，檢查引號、重複鍵與表格位置；能啟動但值沒變時，查檔案路徑、專案信任、啟動"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "和較近的子目錄設定；編輯器與 CLI 不同時，查它們是否在相同 OS、使用者與工作目錄，尤其 Windows 和 WSL 不共享同一個使用者家目錄。這些問題需要逐一查來源，重裝程式通常不是第一個判斷。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

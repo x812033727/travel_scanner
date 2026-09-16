@@ -3558,3 +3558,44 @@ body:has(.planner-overlay) .premium-mobile-bar { display:none; }
     page-break-inside: avoid;
   }
 }
+
+/* The listing toolbar (topic chips, sort, result count) sticks under the site header from
+   md up, where the header is one row: 44px of content plus 2 × 16px padding, with the same
+   ad-anchor offset the header itself honours. On a phone the header may wrap, so the
+   toolbar simply scrolls there rather than guessing a height. */
+@media (min-width: 768px) {
+  .app-listing-toolbar {
+    position: sticky;
+    top: calc(var(--ad-anchor-top, 0px) + 4.75rem);
+    z-index: 20;
+  }
+}
+
+/* Article reading. Tokens only, so the three palettes and both modes pick these up: the
+   in-text term link (dotted until hovered or focused, then solid), its definition card, and
+   the answer-first summary card, which sits a little larger than body text. */
+.app-term-link {
+  color: var(--teal);
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: color-mix(in srgb, var(--teal) 70%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+.app-term-link:hover,
+.app-term-link:focus-visible {
+  text-decoration-style: solid;
+  text-decoration-color: var(--teal);
+}
+.app-term-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--teal) 18%, transparent);
+}
+.app-summary-card {
+  border: 1px solid color-mix(in srgb, var(--teal) 55%, var(--line));
+  background: var(--teal-soft);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}

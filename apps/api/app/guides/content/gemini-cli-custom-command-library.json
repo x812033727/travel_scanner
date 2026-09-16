@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "自訂斜線指令可以把常做的程式審查、測試規劃與文件比對保存成固定入口。本篇製作三個 TOML 指令，先定義輸入與輸出，再測空參數、中文空格路徑和特殊字元，讓指令庫能被檢查、修改與交接，而不是只收集一堆看似有用的提示詞。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自訂斜線指令可以把常做的程式審查、測試規劃與文件比對保存成固定入口。本篇製作三個 TOML 指令，先定義輸入與輸出，再測空"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "、中文空格路徑和特殊字元，讓指令庫能被檢查、修改與交接，而不是只收集一堆看似有用的提示詞。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,18 +71,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂指令基礎",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "共用規則範本",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+              "kind": "life",
+              "slug": "gemini-cli-modular-project-rules"
             },
             {
               "type": "text",
@@ -114,8 +132,23 @@
           "caption": ""
         },
         {
-          "type": "paragraph",
-          "text": "空參數不能默默變成「檢查整個專案」，所以三個提示詞都要求先索取範圍。這只是提示詞約定，不能取代執行層的讀取權限；需要更嚴格限制時，再搭配工具核准與沙箱。輸出順序讓人工容易比對，不表示模型生成的結論自然就會正確。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "空參數不能默默變成「檢查整個專案」，所以三個提示詞都要求先索取範圍。這只是提示詞約定，不能取代執行層的讀取權限；需要更嚴格限制時，再搭配工具核准與"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。輸出順序讓人工容易比對，不表示模型生成的結論自然就會正確。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -232,9 +265,10 @@
               "text": "可以將三份命令與操作表一起複製，先確認名稱不衝突，再做相同測試。若還有腳本、參考資料或技能觸發需求，接著讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "技能與擴充套件打包",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-skill-extension-package"
+              "kind": "life",
+              "slug": "gemini-cli-skill-extension-package"
             },
             {
               "type": "text",
@@ -250,27 +284,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂斜線指令：TOML、參數與重新載入",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 團隊範本：拆分規則、匯入與維護責任",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-modular-project-rules"
+              "kind": "life",
+              "slug": "gemini-cli-modular-project-rules"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "把 SKILL.md 打包成 Extension：安裝、更新與回退",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-skill-extension-package"
+              "kind": "life",
+              "slug": "gemini-cli-skill-extension-package"
             },
             {
               "type": "text",
@@ -289,9 +326,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-custom-command-library/md-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

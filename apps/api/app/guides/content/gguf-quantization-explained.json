@@ -4,14 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
   "display_order": 100,
   "locales": {
     "zh-TW": {
-      "title": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+      "title": "GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體",
       "description": "GGUF 檔名裡的 Q4_K_M、Q8_0、F16 是量化類型，決定檔案多大、要多少記憶體。這篇照 llama.cpp 與 ggml 官方文件講 GGUF 格式與命名規則、各類型的每權重位元數，用官方對照表（Llama 3.1 8B 從 14.96 GiB 到 4.58 GiB）與 Ollama、Hugging Face 上同一個模型的不同量化大小說明怎麼選，並附官方的轉檔與量化指令。",
       "hero": {
         "src": "/guides/gguf-quantization-explained/hero.jpg",
@@ -34,9 +35,15 @@
           "text": "這篇不重講量化的定義，而是把檔名讀懂、把數字對起來：GGUF 是什麼格式、Q4_K_M 這串字每一段代表什麼、llama.cpp 官方文件列出的每權重位元數與檔案大小、怎麼在 Ollama 標籤頁與 Hugging Face 檔案列表看到同一個模型的不同量化，最後照官方文件跑一次自己轉檔與量化的指令。名詞本身的定義在這篇："
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -119,9 +126,15 @@
           "text": "下限之外還有上下文。Ollama 的官方常見問題說預設上下文視窗是 4096 個 token，可以用 OLLAMA_CONTEXT_LENGTH 調整；而存放這些 token 的 K/V 快取本身也能量化，環境變數 OLLAMA_KV_CACHE_TYPE 預設是 f16，設成 q8_0 大約只用 f16 一半的記憶體、精度損失非常小，設成 q4_0 大約用四分之一、精度損失小到中等，在較長的上下文會比較明顯。權重的量化與上下文的量化是兩件事，記憶體要分開算。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "image",
@@ -137,9 +150,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -161,8 +180,23 @@
           "code": "# 不指定就是預設標籤，要指定量化就寫在冒號後面\nollama pull gemma3:4b-it-q8_0\nollama run gemma3:4b-it-q8_0\n\n# 看目前載入的模型放在哪裡：Processor 欄會顯示 100% GPU、100% CPU 或兩者混合\nollama ps"
         },
         {
-          "type": "paragraph",
-          "text": "Hugging Face 這邊看得更細。官方文件說可以用 library=gguf 的篩選瀏覽所有含 GGUF 的模型，而且模型頁與 Files 分頁都內建 GGUF 檢視器，可以看中繼資料與張量資訊（名稱、形狀、精度）；文件也提到撰寫當下 Hub 上有 45K 個公開的 GGUF 檔案。實際打開 llama.cpp 官方組織 ggml-org 的 gemma-3-4b-it-GGUF，檔案列表就是三個權重檔：Q4_K_M 2.49 GB、Q8_0 4.13 GB、f16 7.77 GB，另外一個 0.85 GB 的 mmproj-model-f16.gguf 是多模態投影器。同一個模型在 Ollama 與 Hugging Face 上的數字不會完全一樣，因為兩邊打包進去的內容不同，以各自頁面當天顯示的為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hugging Face 這邊看得更細。官方文件說可以用 library=gguf 的篩選瀏覽所有含 GGUF 的模型，而且模型頁與 Files 分頁都內建 GGUF 檢視器，可以看中繼資料與張量資訊（名稱、形狀、精度）；文件也提到撰寫當下 Hub 上有 45K 個公開的 GGUF 檔案。實際打開 llama.cpp 官方組織 ggml-org 的 gemma-3-4b-it-GGUF，檔案列表就是三個權重檔：Q4_K_M 2.49 GB、Q8_0 4.13 GB、f16 7.77 GB，另外一個 0.85 GB 的 mmproj-model-f16.gguf 是"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "投影器。同一個模型在 Ollama 與 Hugging Face 上的數字不會完全一樣，因為兩邊打包進去的內容不同，以各自頁面當天顯示的為準。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -175,19 +209,37 @@
           "text": "上面第一行與第二行的執行檔名稱不一樣，是因為 llama.cpp 專案現在的說明寫成 llama cli，Hugging Face 文件的範例則是 llama-cli；兩種寫法都出現在官方文件裡，以你安裝的版本為準。不想打指令的話，圖形介面的工具也會在下載頁直接標出量化類型與檔案大小。"
         },
         {
-          "type": "link",
-          "text": "Hugging Face 入門：找模型、看授權、下載",
-          "url": "https://mokaair.com/zh-TW/life/huggingface-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Hugging Face 入門：找模型、看授權、下載",
+              "kind": "life",
+              "slug": "huggingface-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -215,9 +267,15 @@
           "text": "參數規模與量化是兩個不同的旋鈕，不要混成一個。同樣是 8GB 上下的空間，你可以選 12B 的 q4_K_M（gemma3:12b-it-q4_K_M 是 8.1GB），也可以選 4B 的 fp16（gemma3:4b-it-fp16 是 8.6GB）；官方文件沒有說哪一邊比較好，只有大小是確定的。"
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
           "type": "table",
@@ -303,8 +361,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "如果 Hugging Face 上沒有你要的量化，或你微調過自己的模型，llama.cpp 官方文件把流程分成兩個階段：先把原始模型轉成 GGUF，再對 GGUF 做量化。文件強調第一步要先轉成高精度格式（F32 或 BF16），量化工具是吃這種高精度 GGUF 當輸入。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果 Hugging Face 上沒有你要的量化，或你"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "過自己的模型，llama.cpp 官方文件把流程分成兩個階段：先把原始模型轉成 GGUF，再對 GGUF 做量化。文件強調第一步要先轉成高精度格式（F32 或 BF16），量化工具是吃這種高精度 GGUF 當輸入。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -342,9 +415,15 @@
           "text": "不想在自己電腦裝環境的話，llama.cpp 文件指向 Hugging Face 上的 GGUF-my-repo 空間，可以在瀏覽器裡把模型轉成 GGUF 並量化；官方說明寫著它每 6 小時同步一次 llama.cpp 的 main 分支。轉好的檔案就跟你在 Hub 上下載的一樣，檔名照前面那套命名慣例讀就好。"
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         }
       ],
       "sources": [

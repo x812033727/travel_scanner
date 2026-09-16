@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "productivity",
-    "software"
+    "software",
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,17 +27,48 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "把 Obsidian 當第二大腦再接上 AI，要先回答的只有一個問題：你的筆記會走到哪裡去。官方說明寫得直白，筆記就是本機資料夾（vault）裡的 Markdown 純文字檔，軟體本身沒有內建 AI，AI 一定是你自己接上去的。結論先講：先決定資料流向，再從社群外掛、程式代理、MCP 三條路挑一條，不要同時開三條。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把 Obsidian 當第二大腦再接上 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，要先回答的只有一個問題：你的筆記會走到哪裡去。官方說明寫得直白，筆記就是本機資料夾（vault）裡的 Markdown 純文字檔，軟體本身沒有內建 AI，AI 一定是你自己接上去的。結論先講：先決定資料流向，再從社群外掛、程式代理、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 三條路挑一條，不要同時開三條。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇會走完三種接法各自要準備什麼、內容送到哪一家、授權與費用怎麼算，最後給一套每天 10 分鐘的流程與提示詞。價格與版本照 2026 年 9 月 15 日的官方頁面；本文無法登入實測，只寫官方文件寫得出來的能力與限制。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
-          "url": "https://mokaair.com/zh-TW/life/ai-note-taking-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做筆記：Notion AI、Obsidian 與 NotebookLM 怎麼分工",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -80,9 +112,15 @@
           "text": "屬性是結構化欄位，代理可以只讀 Daily 這個資料夾，而不是把整個 vault 倒進上下文視窗。原始出處與你自己的判斷請永遠手寫，一旦交給 AI，之後就分不出哪一句是你想的、哪一句是模型補的。"
         },
         {
-          "type": "link",
-          "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
-          "url": "https://mokaair.com/zh-TW/life/reading-notes-that-you-reuse"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讀完就忘怎麼整理筆記：用問題、自己的解釋與來源留下可用內容",
+              "kind": "life",
+              "slug": "reading-notes-that-you-reuse"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -116,8 +154,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "第二條路不裝外掛：直接在 vault 資料夾裡啟動 Claude Code 這類程式代理，把筆記當一個專案來改。官方安全說明寫，手動模式下代理只能寫入啟動時所在的資料夾與其子資料夾，讀取以外的路徑也會先問你，要擴充才用 --add-dir 參數或 /add-dir 指令；第一次在一個資料夾啟動會出現信任確認，這一步不要亂按。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二條路不裝外掛：直接在 vault 資料夾裡啟動 Claude Code 這類程式代理，把筆記當一個專案來改。官方安全說明寫，手動模式下代理只能寫入啟動時所在的資料夾與其子資料夾，讀取以外的路徑也會先問你，要擴充才用 --add-dir "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "或 /add-dir 指令；第一次在一個資料夾啟動會出現信任確認，這一步不要亂按。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -130,18 +183,30 @@
           "code": "# 這個資料夾是我的 Obsidian vault\n\n## 規則\n- 只在 `Inbox/` 與 `Daily/` 裡新增或修改檔案。\n- 不要碰 `.obsidian/`，不要改既有筆記的「出處」與「我的想法」段落。\n- 新筆記用 Markdown，檔名 `YYYY-MM-DD-主題.md`，開頭要有 `date` 與 `tags` 屬性。\n- 內部連結用 `[[雙中括號]]`，不要自己發明資料夾。\n- 摘要一律標出來源檔名，找不到出處就寫「找不到」。\n\n## 不要做的事\n- 不要刪檔案，要移除就搬到 `Trash/`。\n- 不要一次改超過 5 個檔案，先列清單給我看。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜CLAUDE.md 完整教學",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-claude-md-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜CLAUDE.md 完整教學",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "三個容易踩的坑：同步中的 vault 一邊被代理改、一邊被同步服務寫，衝突很難查，先在小的測試 vault 跑過；.obsidian 是設定不是筆記，用權限規則擋掉最省事；官方文件也提醒，寫在 CLAUDE.md 裡的「不要刪檔案」只是建議，權限規則才是工具真的會強制執行的那一層。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜提供檔案與專案上下文",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-files-and-context"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜提供檔案與專案上下文",
+              "kind": "life",
+              "slug": "claude-code-files-and-context"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -163,9 +228,15 @@
           "code": "claude mcp add --transport http obsidian https://127.0.0.1:27124/mcp/ \\\n  --header \"Authorization: Bearer <your-api-key>\""
         },
         {
-          "type": "link",
-          "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
-          "url": "https://mokaair.com/zh-TW/life/mcp-servers-for-everyone"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器",
+              "kind": "life",
+              "slug": "mcp-servers-for-everyone"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -182,9 +253,15 @@
           "text": "一個容易誤判的細節：Ollama 官方 FAQ 寫預設上下文視窗是 4096 個 token，可用 OLLAMA_CONTEXT_LENGTH 或 num_ctx 調大（Obsidian 說明頁寫的是 2048，以你的設定為準）。網頁太長超過上限時模型不會報錯，只會安靜地回出不相干的內容。"
         },
         {
-          "type": "link",
-          "text": "把本機模型接到編輯器：Continue、Cursor 與 Ollama",
-          "url": "https://mokaair.com/zh-TW/life/ollama-with-code-editors"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把本機模型接到編輯器：Continue、Cursor 與 Ollama",
+              "kind": "life",
+              "slug": "ollama-with-code-editors"
+            }
+          ]
         },
         {
           "type": "image",
@@ -254,9 +331,15 @@
           "text": "只要 AI 讀得到的內容不是你自己寫的，就有提示詞注入的風險：剪進來的網頁、別人寄來的附件，裡面都可能藏著一段對模型說話的指令，而代理與 MCP 工具有寫入、刪除甚至執行 Obsidian 指令的能力。三件事一定要做：權限先只給讀取；第一次在測試 vault 或備份過的副本上跑；每次動作後看一遍改了哪些檔案。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -295,9 +378,15 @@
           "text": "怎麼確認真的有用？隨機挑 5 則 AI 摘要逐句對回原始筆記，看有沒有出處對不上的句子；一個月後再問自己，有沒有哪一次是因為語意搜尋翻出舊筆記而省下重做的時間。"
         },
         {
-          "type": "link",
-          "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
-          "url": "https://mokaair.com/zh-TW/life/ai-prompt-library-personal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+              "kind": "life",
+              "slug": "ai-prompt-library-personal"
+            }
+          ]
         }
       ],
       "sources": [

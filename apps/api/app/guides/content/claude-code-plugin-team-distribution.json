@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 172,
@@ -99,8 +100,23 @@
           }
         },
         {
-          "type": "paragraph",
-          "text": "本篇的 plugin 目錄就是外掛根目錄。.claude-plugin 裡放身分描述 plugin.json；skills、hooks、scripts 則是與它並列的資料夾。不要把所有檔案放進 .claude-plugin，也不要把使用者的整個 .claude 目錄拿來當成 Plugin 發布。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇的 plugin 目錄就是外掛根目錄。.claude-plugin 裡放身分描述 plugin.json；"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "、hooks、scripts 則是與它並列的資料夾。不要把所有檔案放進 .claude-plugin，也不要把使用者的整個 .claude 目錄拿來當成 Plugin 發布。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -193,8 +209,23 @@
           "text": "搬移、升級與還原"
         },
         {
-          "type": "paragraph",
-          "text": "把完整 plugin 目錄複製到另一個含空格的新資料夾，以那個已確認的路徑重新啟動。再次手動呼叫技能及觸發一次假資料寫入。若仍引用舊資料夾，檢查設定中的絕對路徑、漏掉的附屬檔案，以及你實際啟動的參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把完整 plugin 目錄複製到另一個含空格的新資料夾，以那個已確認的路徑重新啟動。再次手動呼叫技能及觸發一次假資料寫入。若仍引用舊資料夾，檢查設定中的絕對路徑、漏掉的附屬檔案，以及你實際啟動的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",

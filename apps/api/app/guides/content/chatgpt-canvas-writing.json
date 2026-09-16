@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "ChatGPT 的 Canvas 是 2024 年 10 月推出的並排編輯視窗，讓你和 AI 在同一份文件上改稿、改程式。這篇回答的問題是：2026 年 9 月的現在，Canvas 還在嗎、改稿要怎麼做。結論是：Canvas 這個獨立視窗自 2026 年 5 月 28 日起從 GPT-5.5 移除，功能改由對話裡的「寫作區塊」與「程式區塊」接手；並排改稿的做法還在，只是入口與按鈕換了。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 的 Canvas 是 2024 年 10 月推出的並排編輯視窗，讓你和 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 在同一份文件上改稿、改程式。這篇回答的問題是：2026 年 9 月的現在，Canvas 還在嗎、改稿要怎麼做。結論是：Canvas 這個獨立視窗自 2026 年 5 月 28 日起從 GPT-5.5 移除，功能改由對話裡的「寫作區塊」與「程式區塊」接手；並排改稿的做法還在，只是入口與按鈕換了。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -51,9 +67,15 @@
           "text": "三件事沒有變。一是「只改選取的部分」：你可以選取區塊裡的文字，請 ChatGPT 只修那一段，或整份都改。二是「可以回頭」：區塊支援復原與重做最近一次 AI 協助的修改。三是「自己直接改」：區塊裡的文字可以像文件一樣打字修改，並支援粗體、斜體、標題、連結、項目與編號清單、核取清單。差別在畫面：舊 Canvas 固定在右側並排，現在的寫作區塊直接出現在對話裡，長文可以切到全螢幕編輯畫面，這時文件佔滿主畫面、對話退到旁邊，效果接近以前的並排視窗。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -116,9 +138,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -144,8 +172,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "程式區塊是 ChatGPT 放程式碼的地方，和文字分開，上面會標示語言（例如 Python、JavaScript、HTML）。help center 列出的動作有：複製、直接在區塊裡編輯、請 ChatGPT 修改、開成全螢幕、在 Code 與 Preview 之間切換、執行 Python 並看主控台輸出、分享唯讀連結。Preview 支援 HTML 網頁、React 元件、SVG 圖、Mermaid 圖表、Vega 或 Vega-Lite 圖表；看不到 Preview 就表示那段程式不支援預覽。執行與預覽都在沙箱裡，程式要連外部資源時 ChatGPT 會先問你。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "程式區塊是 ChatGPT 放程式碼的地方，和文字分開，上面會標示語言（例如 Python、JavaScript、HTML）。help center 列出的動作有：複製、直接在區塊裡編輯、請 ChatGPT 修改、開成全螢幕、在 Code 與 Preview 之間切換、執行 Python 並看主控台輸出、分享唯讀連結。Preview 支援 HTML 網頁、"
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": " 元件、SVG 圖、Mermaid 圖表、Vega 或 Vega-Lite 圖表；看不到 Preview 就表示那段程式不支援預覽。執行與預覽都在"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "裡，程式要連外部資源時 ChatGPT 會先問你。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -242,19 +295,37 @@
           "text": "從零請 ChatGPT 生一篇公告，用字與節奏都是它的，你得花更多時間改回自己的口吻，而且容易留下它自己編出來的細節。把自己寫的草稿貼進區塊，指令只講「改哪裡、怎麼改、什麼不要動」，改完的文章保留你的資訊與語氣，讀的人也看得出是你寫的。事實、日期、金額每一次修改後都要重新對一次：區塊改得越順手，越容易漏看它順手「修」掉的正確內容。"
         },
         {
-          "type": "link",
-          "text": "用 ChatGPT 寫 Email：中英文商務信件範本與提示詞",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-email-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 ChatGPT 寫 Email：中英文商務信件範本與提示詞",
+              "kind": "life",
+              "slug": "chatgpt-for-email-writing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 ChatGPT 改履歷與求職信：改得像自己寫的做法",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-resume-cover-letter"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 ChatGPT 改履歷與求職信：改得像自己寫的做法",
+              "kind": "life",
+              "slug": "chatgpt-for-resume-cover-letter"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         }
       ],
       "sources": [

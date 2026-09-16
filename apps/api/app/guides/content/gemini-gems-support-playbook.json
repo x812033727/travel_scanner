@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems 建立與設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
               "text": "，並完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞比較實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
@@ -115,8 +118,23 @@
           "text": "在 Gemini 網頁版開啟 Explore Gems，也就是探索自訂助手，建立 New Gem。名稱可填「海風收納包練習 v1」，貼上指示，再於 Knowledge 知識資料區加入 v1 手冊。用本機檔案時確認上傳的是正確版本；使用 Drive 檔案則另需符合活動記錄與 Workspace 連接條件。"
         },
         {
-          "type": "paragraph",
-          "text": "在右側預覽先問內容物，確認回答能提到一個布袋、兩枚扣環與操作卡。再問保固多久，預期指出手冊沒有期限資訊。保留知識引用顯示，方便回到手冊查核；若介面提供停用引用的選項，本練習先不要關閉。出現來源標記後仍要點開核對，標記本身不能證明內容完全受支持。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在右側預覽先問內容物，確認回答能提到一個布袋、兩枚扣環與操作卡。再問保固多久，預期指出手冊沒有期限資訊。保留知識引用顯示，方便回到手冊查核；若介面提供停用引用的選項，本練習先不要關閉。出現來源"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "後仍要點開核對，標記本身不能證明內容完全受支持。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -228,9 +246,10 @@
               "text": "可以，固定資料、版本與題庫的方式也適用內部操作手冊。若成果需要可點擊的小工具，可接著做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Canvas 活動預算計算器",
-              "url": "https://mokaair.com/zh-TW/life/gemini-canvas-budget-calculator"
+              "kind": "life",
+              "slug": "gemini-canvas-budget-calculator"
             },
             {
               "type": "text",
@@ -246,27 +265,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems 自訂助手：指令、資料與測試",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞改寫實驗：用固定題庫找出有效的修改",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Canvas 實作活動預算計算器：需求、除錯與驗收",
-              "url": "https://mokaair.com/zh-TW/life/gemini-canvas-budget-calculator"
+              "kind": "life",
+              "slug": "gemini-canvas-budget-calculator"
             },
             {
               "type": "text",
@@ -285,9 +307,15 @@
           "url": "https://mokaair.com/guides/gemini-gems-support-playbook/work-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -34,9 +35,15 @@
           "text": "這篇會帶你做完四件事：從官方網域把桌面版裝起來、設定好全域快捷鍵、在 iPhone 或 Android 上認出正版 App 並打開語音與拍照，以及搞清楚對話、專案與記憶在不同裝置上各自的行為。功能名稱、系統需求與方案限制在 2026 年 9 月依 Anthropic 說明中心與官方下載頁查證；App 常改版，設定選項的名稱以你手上的版本為準。還沒有帳號、沒用過 Claude 的話，先看新手入門那篇再回來裝。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -90,22 +97,49 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "桌面擴充功能（desktop extensions）是桌面版獨有的東西：像瀏覽器擴充一樣一鍵安裝本機 MCP 伺服器，讓 Claude 接上你電腦裡的檔案、行事曆、郵件與訊息 App，入口在 Settings 的 Extensions。設定裡標成敏感的欄位（例如 API 金鑰）會用作業系統的安全儲存區加密，Mac 是鑰匙圈、Windows 是認證管理員。MCP 到底是什麼、加裝連接器時要看哪些權限，另一篇有完整說明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "桌面擴充功能（desktop extensions）是桌面版獨有的東西：像瀏覽器擴充一樣一鍵安裝本機 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器，讓 Claude 接上你電腦裡的檔案、行事曆、郵件與訊息 App，入口在 Settings 的 Extensions。設定裡標成敏感的欄位（例如 API 金鑰）會用作業系統的安全儲存區加密，Mac 是鑰匙圈、Windows 是認證管理員。MCP 到底是什麼、加裝連接器時要看哪些權限，另一篇有完整說明。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
-          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+              "kind": "life",
+              "slug": "claude-mcp-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "付費方案在桌面版還有 Cowork。官方說明寫它在桌面版可以直接讀寫你的本機檔案、不必手動上傳下載，任務跑在你電腦上的一個獨立虛擬機裡，讀寫範圍限制在你連進去的那些資料夾。Cowork 預設也內建了瀏覽器，不必另外裝東西就能讓它上網查資料，想改用自己的 Chrome 也可以接 Claude in Chrome。另外從 2026 年 3 月起有「電腦操作」的研究預覽，讓它自己點畫面、開檔案、跑工具，官方寫的是 Pro 與 Max 方案、macOS 與 Windows，要自己到桌面版設定裡打開。網頁版與手機上也看得到 Cowork，但只要那個工作階段要碰本機檔案、用瀏覽器或操作電腦，就得有那台電腦的桌面版開著。"
         },
         {
-          "type": "link",
-          "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
-          "url": "https://mokaair.com/zh-TW/life/claude-in-chrome-browser-agent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 在瀏覽器裡：Chrome 擴充功能替你操作網頁",
+              "kind": "life",
+              "slug": "claude-in-chrome-browser-agent"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -143,17 +177,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "對話紀錄跟著帳號，登入哪一台都是同一份，不用手動同步。專案（Projects）所有方案都能建，免費方案最多 5 個，每個專案有自己的對話紀錄與知識庫；付費方案的專案知識多了 RAG 檢索。記憶在免費、Pro、Max 方案預設是開的，網頁、桌面版、手機都一樣，開關在 Settings 的 Memory，選項叫 Generate memory from chats，可以暫停或整個重設，而且每個專案有自己獨立的記憶空間，不會跟別的專案或一般對話混在一起；Team 與 Enterprise 則預設關閉，由管理者決定要不要開。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "對話紀錄跟著帳號，登入哪一台都是同一份，不用手動同步。專案（Projects）所有方案都能建，免費方案最多 5 個，每個專案有自己的對話紀錄與知識庫；付費方案的專案知識多了 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": " 檢索。記憶在免費、Pro、Max 方案預設是開的，網頁、桌面版、手機都一樣，開關在 Settings 的 Memory，選項叫 Generate memory from chats，可以暫停或整個重設，而且每個專案有自己獨立的記憶空間，不會跟別的專案或一般對話混在一起；Team 與 Enterprise 則預設關閉，由管理者決定要不要開。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "有兩個差別要記住。第一，用自然語言叫它去翻你以前的對話（chat search）是付費方案才有的功能，免費方案沒有，這三個版本都一樣。第二，Cowork 的工作階段在雲端跑的時候會跟著帳號走，可以在電腦上起頭、通勤時用手機看進度；但只要那個階段需要碰本機檔案，它就綁在當初起頭的那台電腦上，而且那台的桌面版要開著才連得上。"
         },
         {
-          "type": "link",
-          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
-          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+              "kind": "life",
+              "slug": "claude-plans-free-pro-max-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -172,9 +227,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-mobile-app-tips"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 手機 App 十個技巧：拍照提問、Siri、鎖定畫面語音與排程通知",
+              "kind": "life",
+              "slug": "chatgpt-mobile-app-tips"
+            }
+          ]
         },
         {
           "type": "table",

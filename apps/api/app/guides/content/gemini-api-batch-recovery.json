@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,22 +56,34 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 用量與錯誤處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "有限次工具流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-function-calling-workshop"
+              "kind": "life",
+              "slug": "gemini-api-function-calling-workshop"
             },
             {
               "type": "text",
-              "text": "，再下載本篇練習包。使用 Python 虛擬環境及 requirements.txt 的固定版本。本機驗證採 Windows、Python 3.13.15、google-genai 2.23.0，實際 SDK 請求只送往本機測試服務；沒有建立 Google 批次工作。"
+              "text": "，再下載本篇練習包。使用 Python 虛擬環境及 requirements.txt 的固定版本。本機驗證採 Windows、Python 3.13.15、google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0，實際 SDK 請求只送往本機測試服務；沒有建立 Google 批次工作。"
             }
           ]
         },
@@ -203,8 +216,23 @@
           "text": "故障練習先在本機把合成結果的一行複製一次，觀察 duplicate 錯誤；復原後再把 key 改成未知名稱，確認停止。最後將同一摘要合併兩次，確認不會重複採用。這些都是作者測試，不能當成真實 Batch 失敗與恢復的截圖。"
         },
         {
-          "type": "paragraph",
-          "text": "逐題把答案與 evaluation.csv 的標準值對照，記錄不符原因、模型及時間。清理前保存需要的輸入、結果、摘要與帳單資料；對已確認終止的每個工作執行 cleanup，僅刪除此帳本列出的工作與檔案。取消中的工作先查到終止狀態，不能把取消要求成功當作已停止計費。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "逐題把答案與 "
+            },
+            {
+              "type": "article",
+              "text": "evaluation",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": ".csv 的標準值對照，記錄不符原因、模型及時間。清理前保存需要的輸入、結果、摘要與帳單資料；對已確認終止的每個工作執行 cleanup，僅刪除此帳本列出的工作與檔案。取消中的工作先查到終止狀態，不能把取消要求成功當作已停止計費。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -220,18 +248,20 @@
               "text": "檔案刪除與費用結清各自記錄。接著可把題庫與採用規則帶入 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件助手的完整評測",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+              "kind": "life",
+              "slug": "gemini-api-document-service-capstone"
             },
             {
               "type": "text",
               "text": "；若要比較相同資料重複使用的成本，再讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "快取實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-context-cache-experiment"
+              "kind": "life",
+              "slug": "gemini-api-context-cache-experiment"
             },
             {
               "type": "text",
@@ -279,27 +309,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞改寫實驗：用固定題庫找出有效的修改",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件助手進階專案：有引用的問答服務、評測與交接",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+              "kind": "life",
+              "slug": "gemini-api-document-service-capstone"
             },
             {
               "type": "text",
@@ -318,9 +351,15 @@
           "url": "https://mokaair.com/guides/gemini-api-batch-recovery/api-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

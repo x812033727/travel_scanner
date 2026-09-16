@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "woocommerce"
   ],
   "valid_until": null,
   "featured": false,
@@ -94,8 +96,23 @@
           "text": "第一是 WordPress、WooCommerce、PHP 與主題版本。第二是購物車及結帳究竟採區塊或短代碼；外掛能在傳統結帳顯示，不代表區塊版也有相同功能。第三是訂單儲存方式 HPOS，這與前台結帳畫面是不同的相容性項目。"
         },
         {
-          "type": "paragraph",
-          "text": "作者的相容聲明與更新紀錄是起點，仍需用自己的組合測試。外掛名稱相同也可能因免費版、付費版或版本不同而有差異；付款、快速付款、折扣與額外欄位最好逐項核對，避免只看到一個支援標記就推定全部功能通過。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "作者的相容聲明與更新紀錄是起點，仍需用自己的組合測試。外掛名稱相同也可能因免費版、付費版或版本不同而有差異；付款、快速付款、折扣與額外欄位最好逐項核對，避免只看到一個支援"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "就推定全部功能通過。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,14 +213,26 @@
           "text": "保存作者的相容資訊，同時記錄自己使用的版本、結帳型態和驗收結果。換主題或更新關鍵外掛後，重做受影響的購物流程。"
         },
         {
-          "type": "link",
-          "text": "WooCommerce 開店：先完成一條訂單流程",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-store-launch"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WooCommerce 開店：先完成一條訂單流程",
+              "kind": "life",
+              "slug": "woocommerce-store-launch"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ThemeForest 主題購買與授權檢查",
-          "url": "https://mokaair.com/zh-TW/life/themeforest-license-purchase"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ThemeForest 主題購買與授權檢查",
+              "kind": "life",
+              "slug": "themeforest-license-purchase"
+            }
+          ]
         }
       ],
       "sources": [

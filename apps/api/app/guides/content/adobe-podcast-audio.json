@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -206,14 +207,26 @@
           "text": "降噪能協助理解，但重要用詞仍應回到原始錄音核對。保留無法確認的時間點，必要時請受訪者補充。"
         },
         {
-          "type": "link",
-          "text": "把音訊轉成可核對的逐字稿與字幕",
-          "url": "https://mokaair.com/zh-TW/life/transcription-desktop-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把音訊轉成可核對的逐字稿與字幕",
+              "kind": "life",
+              "slug": "transcription-desktop-tools"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理配樂與素材的使用授權",
-          "url": "https://mokaair.com/zh-TW/life/licensed-assets-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理配樂與素材的使用授權",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
         }
       ],
       "sources": [

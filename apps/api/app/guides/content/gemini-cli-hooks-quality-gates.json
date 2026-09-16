@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+              "kind": "life",
+              "slug": "gemini-cli-hooks"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json 除錯",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+              "kind": "life",
+              "slug": "gemini-cli-settings-debug-lab"
             },
             {
               "type": "text",
@@ -88,8 +91,23 @@
           "text": "教材允許寫入 docs/example.md 這樣的檔案，內容必須有主標題和「來源」章節，且不能留下 TODO。這是三條可以由程式判定的規則，沒有宣稱能證明資料正確或來源可信。先開啟 docs/example.md 看正常範例，再想清楚每條規則失敗時要讓使用者修哪裡。"
         },
         {
-          "type": "paragraph",
-          "text": "BeforeTool 會把事件資訊放進 stdin，其中包含工具名稱、參數、工作目錄與會話識別。程式從 tool_input 讀取 file_path 與 content；不要從模型的口頭描述猜它準備寫什麼。若欄位型別不符，直接回傳有原因的拒絕，避免把缺值當成空文件繼續處理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "BeforeTool 會把事件資訊放進 stdin，其中包含工具名稱、"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "、工作目錄與會話識別。程式從 tool_input 讀取 file_path 與 content；不要從模型的口頭描述猜它準備寫什麼。若欄位型別不符，直接回傳有原因的拒絕，避免把缺值當成空文件繼續處理。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -267,18 +285,20 @@
               "text": "先用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "子代理審查契約",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagent-review-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-subagent-review-workflow"
             },
             {
               "type": "text",
               "text": " 規定報告內容，再透過 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件維護完整專案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-docs-maintenance-project"
+              "kind": "life",
+              "slug": "gemini-cli-docs-maintenance-project"
             },
             {
               "type": "text",
@@ -294,27 +314,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks：在指定事件執行檢查",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks"
+              "kind": "life",
+              "slug": "gemini-cli-hooks"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json 設定除錯：來源優先順序與升級前後比較",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+              "kind": "life",
+              "slug": "gemini-cli-settings-debug-lab"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Subagents 審查工作流：任務契約、工具限制與結果整合",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-subagent-review-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-subagent-review-workflow"
             },
             {
               "type": "text",
@@ -333,9 +356,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-hooks-quality-gates/automation-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

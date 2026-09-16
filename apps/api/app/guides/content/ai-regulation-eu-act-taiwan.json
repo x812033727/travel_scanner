@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "ai-safety"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "歐盟 AI 法案與台灣的人工智慧基本法都已生效，但管的東西不一樣。歐盟那部帶罰則，把 AI 系統分成禁止、高風險、須透明、其他四層，直接對開發者與使用單位設義務；台灣那部是基本法，全文二十條，多數條文的主詞是「政府」，寫政策方向與主管機關該做什麼，沒有對一般使用者開罰的條文。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "歐盟 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 法案與台灣的人工智慧基本法都已生效，但管的東西不一樣。歐盟那部帶罰則，把 AI 系統分成禁止、高風險、須透明、其他四層，直接對開發者與使用單位設義務；台灣那部是基本法，全文二十條，多數條文的主詞是「政府」，寫政策方向與主管機關該做什麼，沒有對一般使用者開罰的條文。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -116,8 +131,33 @@
           "code": "50(1)  Providers shall ensure that AI systems intended to interact directly with natural persons are\ndesigned and developed in such a way that the natural persons concerned are informed that they are\ninteracting with an AI system, unless this is obvious from the point of view of a natural person who is\nreasonably well-informed, observant and circumspect, taking into account the circumstances and the\ncontext of use.\n\n50(2)  Providers of AI systems, including general-purpose AI systems, generating synthetic audio,\nimage, video or text content, shall ensure that the outputs of the AI system are marked in a\nmachine-readable format and detectable as artificially generated or manipulated.\n\n50(4)  Deployers of an AI system that generates or manipulates image, audio or video content\nconstituting a deep fake, shall disclose that the content has been artificially generated or manipulated.\n\n50(5)  The information referred to in paragraphs 1 to 4 shall be provided to the natural persons\nconcerned in a clear and distinguishable manner at the latest at the time of the first interaction or\nexposure. The information shall conform to the applicable accessibility requirements."
         },
         {
-          "type": "paragraph",
-          "text": "白話說，第 1 項是「你在跟 AI 說話要讓你知道」，除非對一個資訊充足、留心又謹慎的人本來就很明顯；第 2 項是生成聲音、圖片、影片、文字的系統，輸出要帶機器可讀標記；第 4 項是深偽要揭露；第 5 項規定這些資訊最晚要在第一次互動或接觸內容時以清楚可辨的方式給你，還要符合無障礙要求。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "白話說，第 1 項是「你在跟 AI 說話要讓你知道」，除非對一個資訊充足、留心又謹慎的人本來就很明顯；第 2 項是生成聲音、圖片、影片、文字的系統，輸出要帶機器可讀"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "；第 4 項是"
+            },
+            {
+              "type": "article",
+              "text": "深偽",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            },
+            {
+              "type": "text",
+              "text": "要揭露；第 5 項規定這些資訊最晚要在第一次互動或接觸內容時以清楚可辨的方式給你，還要符合無障礙要求。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -135,18 +175,20 @@
               "text": "AI 內容該不該標、各平台自己的規則怎麼寫，站上另有一篇整理過 YouTube、Meta 與台灣的做法，可以接著看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-              "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
             },
             {
               "type": "text",
               "text": "；深偽被拿來詐騙時的辨識與通報，則看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 詐騙與 Deepfake：台灣案例與防範",
-              "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+              "kind": "life",
+              "slug": "ai-scams-deepfake-taiwan"
             },
             {
               "type": "text",
@@ -197,8 +239,23 @@
           "code": "第 4 條（節錄）\n政府推動人工智慧之研發與應用，應在兼顧社會公益、數位平權、促進創新研發與強化國家競爭力之前提下，\n發展良善治理與基礎建設，並遵循下列原則：\n……\n五、透明與可解釋：人工智慧之產出應做適當資訊揭露或標記，以利評估可能風險，並瞭解對相關權益之影響，\n進而提升人工智慧可信任度。\n\n第 5 條第 2 項\n政府應以兒少最佳利益為原則，人工智慧產品或系統經中央目的事業主管機關會商數位發展部認定為高風險應用者，\n應明確標示注意事項或警語。\n\n第 16 條第 1 項\n數位發展部應參考國際標準或規範，推動與國際介接之人工智慧風險分類框架，並應協助各目的事業主管機關訂定\n以風險為基礎之管理規範。\n\n第 20 條\n本法自公布之日起施行。"
         },
         {
-          "type": "paragraph",
-          "text": "另外三條也值得記條號。第 3 條給了定義：「具自主運行能力之系統，該系統透過輸入或感測，經由機器學習及演算法，可為明確或隱含之目標實現預測、內容、建議或決策等影響實體或虛擬環境之產出」。第 17 條寫政府應就高風險應用明確責任歸屬及歸責條件，並建立救濟、補償或保險機制。第 18 條寫政府應自本法施行後二年內完成相關法規的制訂、修正或廢止。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另外三條也值得記條號。第 3 條給了定義：「具自主運行能力之系統，該系統透過輸入或感測，經由"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "及演算法，可為明確或隱含之目標實現預測、內容、建議或決策等影響實體或虛擬環境之產出」。第 17 條寫政府應就高風險應用明確責任歸屬及歸責條件，並建立救濟、補償或保險機制。第 18 條寫政府應自本法施行後二年內完成相關法規的制訂、修正或廢止。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -286,18 +343,20 @@
               "text": "在台灣要找規定，常用到的是既有法律：個人資料保護法第 3 條列出當事人五項權利（查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集處理或利用、請求刪除），且不得預先拋棄或以特約限制；廣告與代言看公平交易法第 21 條第 5 項的薦證者連帶損害賠償責任。著作權那一塊站上另有專篇："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 與著作權：台灣法規與判決整理",
-              "url": "https://mokaair.com/zh-TW/life/ai-and-copyright-law-taiwan"
+              "kind": "life",
+              "slug": "ai-and-copyright-law-taiwan"
             },
             {
               "type": "text",
               "text": "，圖片商用則看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-              "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
             },
             {
               "type": "text",
@@ -313,27 +372,30 @@
               "text": "公司內部要訂規範時，這個差別會直接影響政策怎麼寫：歐盟有可對照的義務清單，台灣要看各目的事業主管機關後續發的規範。檢查清單看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "公司裡用 AI 的規範：資料外流與合規",
-              "url": "https://mokaair.com/zh-TW/life/ai-at-work-policy-checklist"
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
             },
             {
               "type": "text",
               "text": "；資料送境外的取捨看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-              "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
             },
             {
               "type": "text",
               "text": "；模型開源或閉源會影響誰是條文裡的「提供者」，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開源 vs 閉源模型：對使用者的差別",
-              "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+              "kind": "life",
+              "slug": "ai-open-vs-closed-models"
             },
             {
               "type": "text",
@@ -348,9 +410,15 @@
           "text": "網路上很多「AI 生成內容一定要標示」的說法，來源是歐盟 AI 法案第 50 條，那是歐盟的法律義務，適用範圍寫在第 2 條，不及於在台灣、輸出也不在歐盟使用的情況。台灣查證當天可引的是人工智慧基本法的原則條文、第 5 條第 2 項限於被認定為高風險應用的標示要求，以及個資法、公平交易法這些既有法律。看到有人拿歐盟條號說「台灣規定要這樣」，先回查全國法規資料庫原文。"
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         }
       ],
       "sources": [

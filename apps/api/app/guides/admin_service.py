@@ -21,6 +21,8 @@ from app.admin.schemas import AdminAuditView
 from app.affiliates.content_links import affiliate_marker, partner_link_problem
 from app.db import escape_like
 from app.destinations.catalog import destination_for_id
+from app.guides import links, search
+from app.guides.alias_store import editor_aliases
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -39,6 +41,7 @@ from app.guides.publication import (
 from app.guides.schemas import (
     KINDS,
     SECTION_KINDS,
+    AdminTopic,
     ArticleCreate,
     ArticleDetail,
     ArticleFacets,
@@ -63,6 +66,8 @@ from app.guides.schemas import (
     RevisionSummary,
     RichParagraphBlock,
     Section,
+    TopicCreate,
+    TopicUpdate,
     VisibilityWrite,
     section_of,
 )
@@ -333,6 +338,25 @@ async def _write_revision(
         )
         if changed is None:
             raise AppError(409, "guide_version_conflict", "這篇文章已被更新，請重新載入後再操作")
+        # The search index and the link graph move with the published pointer, in the
+        # same transaction: a reader can never find a withdrawn translation or miss a
+        # published one, and a "cited by" list never names a link nobody can follow.
+        unresolved_links: list[str] = []
+        if action == "published":
+            await search.index_locale(
+                session,
+                article.id,
+                row.locale,
+                document,
+                version=new_version,
+                published_at=values["published_at"],
+            )
+            unresolved_links = await links.materialize_inline(
+                session, article.id, row.locale, document
+            )
+        elif action == "unpublished":
+            await search.drop_locale(session, article.id, row.locale)
+            await links.drop_inline(session, article.id, row.locale)
         session.add(
             GuideArticleRevision(
                 id=revision_id,
@@ -368,6 +392,10 @@ async def _write_revision(
                     "document_sha256": document_hash(encoded),
                     "source_revision_id": str(source_revision_id) if source_revision_id else None,
                     "operator_confirmed": action in {"published", "unpublished"},
+                    # In-text links to an article that does not exist at all. Recorded,
+                    # not refused: the editor publishes on a date, and a dangling link
+                    # renders as plain text until its target exists.
+                    "unresolved_links": unresolved_links,
                 },
             )
         )
@@ -381,9 +409,17 @@ async def _write_revision(
 # --- admin operations ---------------------------------------------------------
 
 
+# Path segments the web routes own under /guides and /life: a hub of topics, a series
+# directory and the search page. An article with one of these slugs would be unreachable,
+# shadowed by the static route, so the slug is refused before the row exists.
+RESERVED_SLUGS = frozenset({"topics", "series", "search"})
+
+
 async def create_article(
     session: AsyncSession, actor: User, payload: ArticleCreate
 ) -> ArticleDetail:
+    if payload.slug in RESERVED_SLUGS:
+        raise AppError(422, "guide_slug_reserved", "這個網址代稱是頁面路徑，不能當文章代稱")
     destination_id = _validate_destination(payload.destination_id)
     _validate_document(payload.document, destination_id)
     topics = await _resolve_topics(session, payload.topics, section_of(payload.kind))
@@ -469,6 +505,11 @@ async def update_article(
         if any(row.published_version is not None for row in rows):
             raise AppError(409, "guide_kind_locked", "已發布的文章不能換專區，請先撤下所有語言版本")
     topics = await _resolve_topics(session, payload.topics, section)
+    related = (
+        await links.resolve_related(session, article, payload.related)
+        if payload.related is not None
+        else None
+    )
     before = {
         "kind": article.kind,
         "destination_id": article.destination_id,
@@ -498,6 +539,13 @@ async def update_article(
         if changed is None:
             raise AppError(409, "guide_version_conflict", "這篇文章已被更新，請重新載入後再操作")
         await _set_topics(session, article, topics)
+        if related is not None:
+            await links.set_related(session, article, related)
+        aliases = (
+            await search.replace_editor_aliases(session, article.id, payload.aliases)
+            if payload.aliases is not None
+            else None
+        )
         session.add(
             AdminAuditLog(
                 actor_user_id=actor.id,
@@ -518,6 +566,9 @@ async def update_article(
                         "display_order": payload.display_order,
                     },
                     "topics": [topic.slug for topic in topics],
+                    # Only what the payload set: ``None`` means the editor did not touch it.
+                    "related": [item.slug for item in related] if related is not None else None,
+                    "aliases": aliases,
                 },
             )
         )
@@ -878,7 +929,9 @@ async def article_detail(session: AsyncSession, article_id: UUID, locale: Locale
         .limit(20)
     )
     return ArticleDetail(
-        **_summary(article, rows, topics, locale).model_dump(),
+        **_summary(article, rows, topics, locale).model_dump(exclude={"aliases", "related"}),
+        aliases=(await editor_aliases(session, [article.id])).get(article.id, {}),
+        related=(await links.related_slugs(session, [article.id])).get(article.id, []),
         locale=locale,
         draft=GuideDocument.model_validate(row.draft_json),
         published=await _published_document(session, row),
@@ -1009,3 +1062,143 @@ async def list_articles(
             kind=[FacetCount(code=value, count=int(kind_rows.get(value, 0))) for value in KINDS],
         ),
     )
+
+
+# --- topics --------------------------------------------------------------------------
+
+
+async def _find_topic(session: AsyncSession, slug: str) -> GuideTopic | None:
+    topic: GuideTopic | None = await session.scalar(
+        select(GuideTopic).where(GuideTopic.slug == slug)
+    )
+    return topic
+
+
+async def _resolve_parent(
+    session: AsyncSession, slug: str, section: str, *, child: GuideTopic | None = None
+) -> GuideTopic:
+    """The parent a topic may be filed under: active, in the same section and top-level,
+    because the vocabulary is two levels deep and stays that way."""
+    parent = await _find_topic(session, slug)
+    if parent is None or not parent.is_active:
+        raise AppError(422, "guide_topic_parent_unknown", "找不到父主題")
+    if child is not None and parent.id == child.id:
+        raise AppError(422, "guide_topic_parent_self", "主題不能是自己的父主題")
+    if parent.section != section:
+        raise AppError(422, "guide_topic_parent_section_mismatch", "父主題不屬於這個專區")
+    if parent.parent_id is not None:
+        raise AppError(422, "guide_topic_parent_not_top_level", "父主題必須是頂層主題")
+    return parent
+
+
+def _topic_state(topic: GuideTopic) -> dict[str, Any]:
+    return {
+        "names": dict(topic.names_json or {}),
+        "descriptions": dict(topic.descriptions_json or {}),
+        "display_order": topic.display_order,
+        "is_active": topic.is_active,
+        "parent_id": str(topic.parent_id) if topic.parent_id else None,
+    }
+
+
+async def _admin_topic(session: AsyncSession, topic: GuideTopic, locale: Locale) -> AdminTopic:
+    parent_slug = (
+        await session.scalar(select(GuideTopic.slug).where(GuideTopic.id == topic.parent_id))
+        if topic.parent_id
+        else None
+    )
+    option = topic_option(topic, locale, parent=parent_slug)
+    return AdminTopic(
+        **option.model_dump(),
+        names=dict(topic.names_json or {}),
+        descriptions=dict(topic.descriptions_json or {}),
+        display_order=topic.display_order,
+        is_active=topic.is_active,
+        source=topic.source,
+    )
+
+
+async def create_topic(
+    session: AsyncSession, actor: User, payload: TopicCreate, locale: Locale
+) -> AdminTopic:
+    """A new topic, live at once: the public vocabulary lists every active row, and an
+    article may carry it from the next save. Slugs are global (``uq_guide_topic_slug``),
+    so the two sections can never each have an ``ai``."""
+    if await _find_topic(session, payload.slug) is not None:
+        raise AppError(409, "guide_topic_exists", "這個主題代碼已存在")
+    parent = (
+        await _resolve_parent(session, payload.parent_slug, payload.section)
+        if payload.parent_slug
+        else None
+    )
+    topic = GuideTopic(
+        slug=payload.slug,
+        names_json=payload.names,
+        display_order=payload.display_order,
+        is_active=True,
+        source="admin",
+        section=payload.section,
+        parent_id=parent.id if parent else None,
+        descriptions_json=payload.descriptions or None,
+    )
+    session.add(topic)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="guide_topic_created",
+            target=f"guide_topic:{topic.slug}",
+            metadata_json={
+                "slug": topic.slug,
+                "section": topic.section,
+                "parent_slug": parent.slug if parent else None,
+                "after": _topic_state(topic),
+            },
+        )
+    )
+    await session.commit()
+    await session.refresh(topic)
+    return await _admin_topic(session, topic, locale)
+
+
+async def update_topic(
+    session: AsyncSession, actor: User, slug: str, payload: TopicUpdate, locale: Locale
+) -> AdminTopic:
+    """Rename, reorder, re-file or retire a topic. A seed topic edited here keeps
+    ``source='seed'``: the seeds never overwrite an existing slug, so the edit holds."""
+    topic = await _find_topic(session, slug)
+    if topic is None:
+        raise AppError(404, "guide_topic_not_found", "找不到這個主題")
+    before = _topic_state(topic)
+    if payload.names is not None:
+        topic.names_json = {str(locale): name for locale, name in payload.names.items()}
+    if payload.display_order is not None:
+        topic.display_order = payload.display_order
+    if payload.is_active is not None:
+        topic.is_active = payload.is_active
+    if payload.descriptions is not None:
+        leads = {str(locale): text for locale, text in payload.descriptions.items()}
+        topic.descriptions_json = leads or None
+    if payload.parent_slug is not None:
+        if payload.parent_slug == "":
+            topic.parent_id = None
+        else:
+            children = await session.scalar(
+                select(func.count()).select_from(GuideTopic).where(GuideTopic.parent_id == topic.id)
+            )
+            if children:
+                raise AppError(
+                    422, "guide_topic_has_children", "有子主題的主題不能再掛在別的主題下"
+                )
+            parent = await _resolve_parent(session, payload.parent_slug, topic.section, child=topic)
+            topic.parent_id = parent.id
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="guide_topic_updated",
+            target=f"guide_topic:{topic.slug}",
+            metadata_json={"slug": topic.slug, "before": before, "after": _topic_state(topic)},
+        )
+    )
+    await session.commit()
+    await session.refresh(topic)
+    return await _admin_topic(session, topic, locale)

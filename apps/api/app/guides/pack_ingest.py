@@ -48,17 +48,21 @@ from PIL import Image
 from pydantic import ValidationError
 
 from app.guides import admin_service
+from app.guides.autolink import SITE_LINK
 from app.guides.content_pack import ArticlePack, ContentPackError, load_packs
 from app.guides.schemas import (
     ArticleInline,
     CalloutBlock,
     CodeBlock,
+    FaqBlock,
     GuideDocument,
     ImageBlock,
     ImageCredit,
     Kind,
+    LinkInline,
     PartnerLinkBlock,
     RichParagraphBlock,
+    SummaryBlock,
     TableBlock,
     section_of,
 )
@@ -84,8 +88,6 @@ INTEL_TEXT_RANGE = (700, 3_000)
 DOCUMENT_JSON_LIMIT = 110_000
 MIN_LABEL_PX = 15
 DIAGRAM_VIEWBOX = "0 0 1600 900"
-#: Both sections share one 1,000-row sitemap (``docs/travel-guides.md``, "Still open").
-SITEMAP_WARN_ROWS = 800
 SITE_ORIGIN = "https://mokaair.com/"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MOKAAIR_CREDIT = ImageCredit(author="Mokaair", license="© Mokaair")
@@ -97,7 +99,8 @@ USER_AGENT = "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)"
 #: at both ends so "CC BY-NC 2.0" (starts with "CC BY") and KOGL are refused.
 ALLOWED_LICENSE = re.compile(r"^(cc0|public domain|pd|cc by(-sa)?)(\s+\d+(\.\d+)?)?$")
 
-Level = Literal["error", "warning"]
+#: ``info`` is for the record only: it never fails a run, not even under ``--warnings``.
+Level = Literal["error", "warning", "info"]
 
 
 @dataclass(frozen=True)
@@ -166,7 +169,21 @@ def _body_length(document: GuideDocument) -> int:
                 parts.extend(row)
         elif isinstance(block, CalloutBlock):
             parts.extend((block.title, block.text))
+        elif isinstance(block, SummaryBlock):
+            parts.extend(block.items)
+        elif isinstance(block, FaqBlock):
+            parts.extend(f"{item.question}{item.answer}" for item in block.items)
     return sum(len(re.sub(r"\s+", "", part)) for part in parts)
+
+
+def _raw_site_urls(document: GuideDocument) -> Iterator[str]:
+    for block in document.blocks:
+        if isinstance(block, LinkBlock):
+            yield block.url
+        elif isinstance(block, RichParagraphBlock):
+            for node in block.inlines:
+                if isinstance(node, LinkInline):
+                    yield node.url
 
 
 def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
@@ -207,6 +224,15 @@ def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
         )
     if not any(isinstance(b, ImageBlock) and b.src.endswith(".svg") for b in document.blocks):
         problems.append(Problem("warning", "no_diagram", "no self-drawn SVG diagram in the body"))
+    if kind != "intel" and not any(isinstance(b, SummaryBlock) for b in document.blocks):
+        problems.append(
+            Problem(
+                "warning",
+                "no_summary",
+                "no summary block: the answer in two to five sentences, before the first "
+                "section, is what a reader skims and an answer engine quotes",
+            )
+        )
     if not any(
         (isinstance(b, LinkBlock) and b.url.startswith(SITE_ORIGIN))
         or (
@@ -220,6 +246,20 @@ def lint_document(document: GuideDocument, kind: Kind) -> list[Problem]:
                 "warning",
                 "no_internal_link",
                 f"no link block into this site ({SITE_ORIGIN}...): readers have nowhere to go next",
+            )
+        )
+    raw_urls = [
+        url
+        for url in _raw_site_urls(document)
+        if SITE_LINK.match(url) is not None
+    ]
+    if raw_urls:
+        problems.append(
+            Problem(
+                "warning",
+                "raw_internal_url",
+                f"{len(raw_urls)} article link(s) as raw URLs; run `pack_cli relink` so they "
+                "become article inlines that follow the target's publication",
             )
         )
     encoded = len(json.dumps(document.model_dump(mode="json"), ensure_ascii=False))
@@ -873,9 +913,14 @@ def ingest(
             report.written.append(target / file.name)
         content_dir.mkdir(parents=True, exist_ok=True)
         pack_path = content_dir / f"{slug}.json"
+        encoded = pack.model_dump(mode="json")
+        # The optional link fields are left out while empty, so a pack reads as it did
+        # before they existed and a later ``relink``/``autolink`` diff is the links alone.
+        for optional in ("aliases", "related"):
+            if not encoded.get(optional):
+                encoded.pop(optional, None)
         pack_path.write_text(
-            json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n",
-            encoding="utf-8",
+            json.dumps(encoded, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         report.written.append(pack_path)
     return report
@@ -910,8 +955,9 @@ def lint_all(
     catalogue: Path | None = None,
 ) -> dict[str, list[Problem]]:
     """The rules over every pack that ships, keyed by slug. Two extra keys: ``catalogue`` for
-    the difference between the series list and the packs, and ``sitemap`` when the (article,
-    locale) rows approach the shared budget."""
+    the difference between the series list and the packs, and ``sitemap`` when one child
+    sitemap's (article, locale) rows approach its limit -- counted over every pack, whatever
+    ``kind`` or ``slugs`` narrowed the run to, because the budget is the site's."""
     findings: dict[str, list[Problem]] = {}
     try:
         packs = load_packs(content_dir)
@@ -975,20 +1021,33 @@ def lint_all(
         notes: list[Problem] = []
         for slug in sorted(listed - have):
             notes.append(Problem("warning", "catalogue_missing_pack", f"{slug}: not written yet"))
-        for pack in packs:
-            if pack.kind == "life" and pack.slug not in listed:
-                notes.append(
-                    Problem("warning", "pack_not_in_catalogue", f"{pack.slug}: add it to the list")
+        # A catalogue lists one series; the section holds articles outside it (the household
+        # and productivity pieces, the finance batches). Those are not gaps, so they get one
+        # line for the record rather than a warning each, which buried the real gaps.
+        outside = sorted(
+            pack.slug for pack in packs if pack.kind == "life" and pack.slug not in listed
+        )
+        if outside:
+            shown = ", ".join(outside[:5]) + (", …" if len(outside) > 5 else "")
+            notes.append(
+                Problem(
+                    "info",
+                    "packs_outside_catalogue",
+                    f"{len(outside)} life pack(s) are not in this list, which is fine: {shown}",
                 )
-        findings["catalogue"] = notes
-    rows = sum(len(pack.locales) for pack in packs)
-    if rows > SITEMAP_WARN_ROWS:
-        findings["sitemap"] = [
-            Problem(
-                "warning",
-                "sitemap_budget",
-                f"{rows} (article, locale) rows; the shared sitemap holds 1,000 -- split it "
-                "before adding another locale",
             )
-        ]
+        findings["catalogue"] = notes
     return findings
+
+
+def sitemap_children(packs: list[ArticlePack]) -> dict[str, int]:
+    """(article, locale) rows per section and locale, keyed ``{section}-{locale}`` as the
+    web names the first child sitemap of each. Informational only: the web slices a section
+    and locale into as many numbered children as its rows need (``SITEMAP_CHILD_LIMIT`` in
+    ``apps/web/lib/guides.server.ts``), so there is no ceiling for a lint to warn about."""
+    rows: dict[str, int] = {}
+    for pack in packs:
+        for locale in pack.locales:
+            key = f"{section_of(pack.kind)}-{locale}"
+            rows[key] = rows.get(key, 0) + 1
+    return rows

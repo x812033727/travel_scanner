@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一份保單條款 PDF、一張銀行對帳單、一份寫滿條件的政府公文，丟給 Claude 之後問一句「幫我看一下」，拿回來的多半是一段讀起來很順、但不能拿去做決定的摘要。這篇回答三件事：Claude 到底讀得了什麼檔案、怎麼問才會抓到你要的那一條、以及怎麼在三十秒內確認它沒有編。結論很短：文字型的 PDF 與乾淨的試算表它讀得穩，掃描成圖片的 PDF 在一定頁數內它也看得到，但只要答案裡有數字，就要它報出頁碼與欄位，然後自己回原檔對一次。無論你搜的是 PDF AI 還是 Excel AI，這條「有數字就要頁碼與欄位」的規則都一樣。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一份保單條款 PDF、一張銀行對帳單、一份寫滿條件的政府公文，丟給 Claude 之後問一句「幫我看一下」，拿回來的多半是一段讀起來很順、但不能拿去做決定的摘要。這篇回答三件事：Claude 到底讀得了什麼檔案、怎麼問才會抓到你要的那一條、以及怎麼在三十秒內確認它沒有編。結論很短：文字型的 PDF 與乾淨的試算表它讀得穩，掃描成圖片的 PDF 在一定頁數內它也看得到，但只要答案裡有數字，就要它報出頁碼與欄位，然後自己回原檔對一次。無論你搜的是 "
+            },
+            {
+              "type": "article",
+              "text": "PDF AI",
+              "kind": "life",
+              "slug": "ai-pdf-tools-summarize-translate"
+            },
+            {
+              "type": "text",
+              "text": " 還是 "
+            },
+            {
+              "type": "article",
+              "text": "Excel AI",
+              "kind": "life",
+              "slug": "chatgpt-for-excel-formulas"
+            },
+            {
+              "type": "text",
+              "text": "，這條「有數字就要頁碼與欄位」的規則都一樣。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,14 +83,26 @@
           "text": "PDF 怎麼被讀，是這篇最需要先講清楚的一件事。官網的說法是：100 頁以內的 PDF，Claude 會同時分析文字與視覺元素，也就是圖片、圖表與圖形；101 到 1000 頁只處理文字，不分析視覺元素；超過 1000 頁不能上傳。官方文件把機制寫得更白：系統會把文件的每一頁轉成圖片，再把那一頁抽出來的文字連同頁面圖片一起交給 Claude 分析。所以掃描成圖片的合約，在頁數不多的時候它其實「看得到」，這點跟只會抽文字的工具不一樣；但看得到不等於看得準，後面有一整節在講這件事。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -102,8 +140,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "試算表跟 PDF 走的是不同的路。官網寫 Claude 在 claude.ai 裡有一個私有的運算環境，可以寫並執行程式，舉的例子是 Python 或 JavaScript，也能做出 .xlsx、.docx、.pptx 與 PDF 檔讓你下載。這個功能叫「程式執行與檔案建立」，Free、Pro、Max、Team、Enterprise 都能用：Free、Pro、Max 自己到 Settings 的 Capabilities 把「Code execution and file creation」打開，Team 與 Enterprise 預設是開的，由擁有者在組織設定的 Capabilities 管理。這個模式下上傳與下載的單檔上限是 30 MB。早期那個只會跑 JavaScript 的分析工具，官網已註明由程式執行接手。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "試算表跟 PDF 走的是不同的路。官網寫 Claude 在 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 裡有一個私有的運算環境，可以寫並執行程式，舉的例子是 Python 或 JavaScript，也能做出 .xlsx、.docx、.pptx 與 PDF 檔讓你下載。這個功能叫「程式執行與檔案建立」，Free、Pro、Max、Team、Enterprise 都能用：Free、Pro、Max 自己到 Settings 的 Capabilities 把「Code execution and file creation」打開，Team 與 Enterprise 預設是開的，由擁有者在組織設定的 Capabilities 管理。這個模式下上傳與下載的單檔上限是 30 MB。早期那個只會跑 JavaScript 的分析工具，官網已註明由程式執行接手。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -118,14 +171,26 @@
           "text": "如果你的工作本來就長在 Excel 裡，Anthropic 另外有一個 Excel 增益集叫 Claude for Excel。官網寫它已正式開放給 Pro、Max、Team 與 Enterprise，支援 Excel 網頁版，以及 Windows 與 Mac 上的 Microsoft 365 Excel，有最低版本要求，確切版本以官網為準。它的答案會附儲存格層級的引用，點一下就跳到那一格；官網也明講不支援模擬運算表與巨集（VBA），並且不建議直接用在未經人工檢查的對外文件或稽核關鍵的計算上。"
         },
         {
-          "type": "link",
-          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+              "kind": "life",
+              "slug": "chatgpt-file-upload-analysis"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+              "kind": "life",
+              "slug": "chatgpt-data-analysis-csv"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -226,9 +291,15 @@
           "caption": "2026 年 9 月依 Anthropic 官網的 Claude 說明中心與官方文件整理；掃描檔的辨識結果依原檔品質而異。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -239,9 +310,15 @@
           "text": "訓練設定在哪裡：Free、Pro、Max 的個人帳號從設定進到 Settings 的 Privacy，找到「Help Improve our AI models」把它關掉；官網寫關掉之後，之後新的對話與程式編寫工作階段不會被用來訓練未來的模型。開著這個設定的話，資料可能以去識別化的形式在訓練管線裡保留最多 5 年。刪掉的對話會從對話紀錄中立即消失，並在 30 天內從後端儲存系統刪除。另外還有無痕對話（Incognito chat），Free 到 Enterprise 都能用，它不會存進對話紀錄與記憶、不會被用來訓練，預設保留 30 天；限制是目前只能在專案之外使用，而且關掉之後就再也打不開。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         }
       ],
       "sources": [

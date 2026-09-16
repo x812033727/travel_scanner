@@ -3,10 +3,12 @@ import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { locales, localeLabels } from "@/i18n/routing";
 import { getDestinations } from "@/lib/destinations.server";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
+import { guideHref, guideTopicHref, type GuideSection, type GuideTopic } from "@/lib/guides";
+import { getGuideTopics, getSeriesIndex } from "@/lib/guides.server";
 import { HREFLANG_DEFAULT, localeUrl, siteUrl } from "@/lib/seo";
 import { featureEnabled } from "@/lib/site-features";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
-import { SITEMAP_ROUTES } from "../sitemap";
+import { SITEMAP_ROUTES } from "../sitemaps/sitemap";
 
 /**
  * `/llms.txt` -- the short, annotated map of what this site authoritatively covers.
@@ -63,6 +65,26 @@ function openPaths(
   );
 }
 
+/**
+ * A parent topic's line: the hub in the language with the most under it, since an AI
+ * search engine reading this file wants the page with the articles, not the English hub
+ * that says "nothing here yet" while the section publishes in Chinese. English wins a tie,
+ * and a topic with nothing anywhere is left out. The note carries the count and language,
+ * then the hub's own lead where the vocabulary has one.
+ */
+function topicLine(section: GuideSection, topic: GuideTopic): string | null {
+  const counts = topic.counts ?? {};
+  let best: (typeof locales)[number] | null = null;
+  for (const locale of locales) {
+    const count = counts[locale] ?? 0;
+    if (count > 0 && (best === null || count > (counts[best] ?? 0))) best = locale;
+  }
+  if (best === null) return null;
+  const count = counts[best] ?? 0;
+  const note = `${count} ${count === 1 ? "article" : "articles"} in ${localeLabels[best]}${topic.description ? `: ${topic.description}` : ""}`;
+  return entry(topic.label, localeUrl(best, guideTopicHref(section, topic.slug)), note);
+}
+
 export async function GET(): Promise<Response> {
   const [visibility, discovery, t] = await Promise.all([
     getSiteVisibility(),
@@ -108,6 +130,33 @@ export async function GET(): Promise<Response> {
   ] as const) {
     if (open.has(path)) lines.push(entry(plain(t(title)), url(path), plain(t(note))));
   }
+
+  // The structure under the two hubs, which is what an answer engine needs to place a
+  // question: each top-level topic once, then every series and tutorial hub. Labels are
+  // English (the file's language); the links go where the articles are. The reads degrade
+  // to nothing on an outage, and the section above still stands.
+  const [travelTopics, lifeTopics, ...seriesByLocale] = await Promise.all([
+    getGuideTopics(HREFLANG_DEFAULT, "travel"),
+    getGuideTopics(HREFLANG_DEFAULT, "life"),
+    ...locales.map((locale) => getSeriesIndex(locale)),
+  ]);
+  const topicLines = ([["travel", travelTopics], ["life", lifeTopics]] as const).flatMap(([section, topics]) =>
+    topics.filter((topic) => !topic.parent).map((topic) => topicLine(section, topic)).filter((line): line is string => line !== null),
+  );
+  if (topicLines.length) lines.push("", "### Topics", "", ...topicLines);
+  const seen = new Set<string>();
+  const seriesLines: string[] = [];
+  seriesByLocale.forEach((rows, index) => {
+    const locale = locales[index];
+    for (const row of rows) {
+      if (seen.has(row.slug)) continue;
+      seen.add(row.slug);
+      const note = [row.entries ? `${row.entries} lessons` : null, localeLabels[locale], row.hub.description ?? null]
+        .filter(Boolean).join(", ");
+      seriesLines.push(entry(row.hub.title, localeUrl(locale, guideHref(row.hub.kind, row.hub.slug)), note));
+    }
+  });
+  if (seriesLines.length) lines.push("", "### Series", "", ...seriesLines);
 
   lines.push("", "## Tools", "");
   for (const [path, title, note] of [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 166,
@@ -103,8 +104,23 @@
           "text": "CLAUDE.md 描述專案知識與操作慣例，settings.json 控制支援的行為設定，settings.local.json 則適合保留本機差異。使用者層級與組織受管理設定還有不同的範圍。不要把所有檔案打包成一份，再期待每位同事覆蓋自己原有的設定。"
         },
         {
-          "type": "paragraph",
-          "text": "本篇共用內容只有固定模型測試命令、假資料目錄的 Read 拒絕範例，以及專案規則。個人終端機路徑、私人 MCP 權杖、帳號登入狀態和工作階段紀錄不放進設定包。設定檔看似只是 JSON，也可能包含敏感環境變數，因此要逐欄檢查內容。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇共用內容只有固定模型測試命令、假資料目錄的 Read 拒絕範例，以及專案規則。個人終端機路徑、私人 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 權杖、帳號登入狀態和工作階段紀錄不放進設定包。設定檔看似只是 JSON，也可能包含敏感環境變數，因此要逐欄檢查內容。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -193,8 +209,23 @@
           "code": "claude --setting-sources project\n"
         },
         {
-          "type": "paragraph",
-          "text": "啟動後查看 /status、/permissions 及相關設定來源。這個參數用於本篇控制變因，不代表能繞過組織受管理政策，也不會讓專案中的自然語言內容變成安全邊界。請記錄每份設定的來源，不要只截取一個看似正確的值。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "啟動後查看 /status、/permissions 及相關設定來源。這個"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "用於本篇控制變因，不代表能繞過組織受管理政策，也不會讓專案中的自然語言內容變成安全邊界。請記錄每份設定的來源，不要只截取一個看似正確的值。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -289,7 +320,17 @@
           "inlines": [
             {
               "type": "text",
-              "text": "小練習是請同事只照 README 套用版本 1，故意不提供口頭提示。記錄對方第一個卡住的位置，將實際缺少的檔案或說明補上，再重做一次乾淨解壓縮。當共用範圍擴大到多個 Skills 與 Hooks，可接著整理成"
+              "text": "小練習是請同事只照 README 套用版本 1，故意不提供口頭提示。記錄對方第一個卡住的位置，將實際缺少的檔案或說明補上，再重做一次乾淨解壓縮。當共用範圍擴大到多個 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": " 與 Hooks，可接著整理成"
             },
             {
               "type": "article",

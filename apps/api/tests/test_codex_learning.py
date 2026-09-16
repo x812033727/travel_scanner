@@ -284,8 +284,13 @@ def test_ready_lessons_have_five_locales_valid_images_and_existing_links():
                 if block.type == "image":
                     assert (ROOT / "apps/web/public" / block.src.lstrip("/")).is_file()
                 if block.type == "rich_paragraph":
+                    # A lesson links its siblings and the hub, and since the glossary term
+                    # links and the relink of raw site URLs any other shipped article too.
+                    shipped = ROOT / "apps/api/app/guides/content"
                     assert all(
-                        node.slug in known for node in block.inlines if node.type == "article"
+                        node.slug in known or (shipped / f"{node.slug}.json").is_file()
+                        for node in block.inlines
+                        if node.type == "article"
                     )
                 links = (
                     [block.url]

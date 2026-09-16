@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 114,
@@ -28,8 +29,23 @@
           "text": "iPhone 與 iPad 可以用 Claude App 查看和接續 Claude Code 工作，但手機本身不是程式執行主機。本篇會帶你安裝官方 App、確認帳號與 Code 入口，分別練習查看雲端任務和接續電腦上的工作。完成後，你能在離開桌面時補充指示，也知道哪些工作仍需要電腦保持運作。"
         },
         {
-          "type": "paragraph",
-          "text": "適用於 App Store 目前支援的 iOS／iPadOS 裝置。iPad 使用同一個 Claude App，不需要另找名為 Claude Code 的第三方程式。帳號需符合所選功能的資格；雲端與 Remote Control 使用 claude.ai 登入，不能把 Console API 金鑰當成手機登入方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "適用於 App Store 目前支援的 iOS／iPadOS 裝置。iPad 使用同一個 Claude App，不需要另找名為 Claude Code 的第三方程式。帳號需符合所選功能的資格；雲端與 Remote Control 使用 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 登入，不能把 Console API 金鑰當成手機登入方式。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -117,7 +133,17 @@
             },
             {
               "type": "text",
-              "text": "。如果工作依賴電腦上的檔案、MCP 或工具，選"
+              "text": "。如果工作依賴電腦上的檔案、"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 或工具，選"
             },
             {
               "type": "article",

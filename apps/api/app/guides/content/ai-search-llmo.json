@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,12 +40,42 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "LLMOps 是 Large Language Model Operations 的縮寫，中文說大型語言模型維運。依照 Microsoft 的 LLMOps 指引這份官方文件，它是管理 LLM 應用從開發、部署到維護的工具與流程，工作項目包含資料整理、實驗、評估、部署、監測與回饋收集。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LLMOps 是 Large Language Model Operations 的縮寫，中文說"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "維運。依照 Microsoft 的 LLMOps 指引這份官方文件，它是管理 LLM 應用從開發、部署到維護的工具與流程，工作項目包含資料整理、實驗、評估、部署、監測與回饋收集。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "LLMO 指的是另一件事：讓自己的內容出現在別人家模型的回答裡，兩者可用的證據完全不同。LLMOps 的對象是你能改的程式、提示詞與資料，好壞可以用自己的評測集量；LLMO 的對象是別人家的模型與檢索系統，你連它讀了什麼都看不到。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LLMO 指的是另一件事：讓自己的內容出現在別人家模型的回答裡，兩者可用的證據完全不同。LLMOps 的對象是你能改的程式、提示詞與資料，好壞可以用自己的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "集量；LLMO 的對象是別人家的模型與檢索系統，你連它讀了什麼都看不到。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -61,7 +92,17 @@
             },
             {
               "type": "text",
-              "text": "把維運的生命週期講得比較細；要找「自己的 AI 助理上線後怎麼管」，那一篇才是你要的。"
+              "text": "把維運的生命週期講得比較細；要找「自己的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 助理上線後怎麼管」，那一篇才是你要的。"
             }
           ]
         },
@@ -75,8 +116,23 @@
           "text": "檢索當下指模型在回答這一題時去查了網路或搜尋索引，再依查回來的內容組答案；訓練當下指你的文字在訓練階段被讀進去，成為模型權重的一部分。兩者發生的時間可以差上好幾個月，取證難度也完全不同；提案沒講清楚要影響哪一條，後面的說法就無從檢查。"
         },
         {
-          "type": "paragraph",
-          "text": "廠商的爬蟲文件把這條線畫得很清楚，以下都是官方文件說明的機制。OpenAI 的爬蟲說明把 GPTBot 寫成抓取可能用於訓練生成式 AI 基礎模型的內容；OAI-SearchBot 用於在 ChatGPT 的搜尋功能呈現網站，ChatGPT-User 是使用者提問時才訪問網頁。Anthropic 的爬蟲說明也分成訓練、回答個別提問、改善搜尋品質三種。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "廠商的爬蟲文件把這條線畫得很清楚，以下都是官方文件說明的機制。OpenAI 的爬蟲說明把 GPTBot 寫成抓取可能用於訓練"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 基礎模型的內容；OAI-SearchBot 用於在 ChatGPT 的搜尋功能呈現網站，ChatGPT-User 是使用者提問時才訪問網頁。Anthropic 的爬蟲說明也分成訓練、回答個別提問、改善搜尋品質三種。"
+            }
+          ]
         },
         {
           "type": "paragraph",

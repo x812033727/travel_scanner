@@ -6,10 +6,13 @@ flag is enabled. SQLite is not presented as evidence of PostgreSQL row races.
 
 from __future__ import annotations
 
+import base64
+import json
 import os
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
-from uuid import uuid4
+from unittest.mock import ANY, AsyncMock
+from uuid import UUID, uuid4
 
 import pytest
 from fastapi import FastAPI
@@ -23,16 +26,20 @@ from sqlalchemy.pool import NullPool
 from app.auth.service import current_user
 from app.config import get_settings
 from app.db import Base, get_session
+from app.guides import router as guides_router
 from app.guides.models import (
     GuideArticle,
+    GuideArticleAlias,
+    GuideArticleLink,
     GuideArticleLocale,
     GuideArticleRevision,
     GuideArticleTopic,
+    GuideSearchEntry,
     GuideTopic,
 )
 from app.guides.publication import today
 from app.guides.router import admin_router, public_router
-from app.guides.taxonomy import LIFE_SEED_TOPICS, SEED_TOPICS, seed_names
+from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS, seed_names
 from app.models import AdminAuditLog, AffiliateClick, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 
@@ -43,10 +50,31 @@ TABLES = [
     GuideArticleLocale.__table__,
     GuideArticleRevision.__table__,
     GuideArticleTopic.__table__,
+    # Publication writes the search row and withdrawal deletes it (tests/test_guides_search.py).
+    GuideSearchEntry.__table__,
+    GuideArticleAlias.__table__,
+    # Publication writes the inline link rows (tests/test_guides_links.py).
+    GuideArticleLink.__table__,
     AdminAuditLog.__table__,
     # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
     AffiliateClick.__table__,
 ]
+
+
+@pytest.fixture(autouse=True)
+def limiter(monkeypatch):
+    """The search limiter never touches Redis here.
+
+    ``get_redis`` is a process-wide ``lru_cache``; a real client created under one test's
+    event loop answers the next test with ``RuntimeError: Event loop is closed``, which the
+    fail-open limiter does not shrug at because it is not a ``RedisError``. The limiter's own
+    behaviour is proven in ``test_guides_search``, which flips this stub on purpose.
+    """
+    over = AsyncMock(return_value=False)
+    hit = AsyncMock()
+    monkeypatch.setattr(guides_router, "over_named_rate_limit", over)
+    monkeypatch.setattr(guides_router, "record_rate_limit_hit", hit)
+    return over, hit
 
 
 @pytest.fixture(params=["sqlite", "postgresql"])
@@ -93,6 +121,23 @@ async def database(request, tmp_path) -> AsyncIterator[async_sessionmaker[AsyncS
                     display_order=200 + order * 10,
                     section="life",
                     source="seed",
+                )
+            )
+        await session.flush()
+        # And the sub-topics under their parents, as 0076 seeds them.
+        parents = {
+            row.slug: row.id
+            for row in await session.scalars(select(GuideTopic).where(GuideTopic.section == "life"))
+        }
+        for order, (slug, parent, labels) in enumerate(LIFE_SEED_SUBTOPICS):
+            session.add(
+                GuideTopic(
+                    slug=slug,
+                    names_json=seed_names(labels),
+                    display_order=300 + order * 10,
+                    section="life",
+                    source="seed",
+                    parent_id=parents[parent],
                 )
             )
         await session.commit()
@@ -835,6 +880,133 @@ async def test_the_sitemap_lists_one_entry_per_published_locale(database, actor)
         assert all(entry["published_at"] for entry in entries)
 
 
+async def publish_sitemap_fixture(api: AsyncClient) -> dict[str, dict]:
+    """Five published rows over three articles: a how-to in zh-TW and ja, a notice in zh-TW,
+    a lifestyle article in zh-TW and en, all within the same second or two, plus a draft."""
+    guide = await create_article(api, slug="narita-to-tokyo")
+    await publish(api, guide["id"], "zh-TW", guide["version"])
+    japanese = await api.post(
+        f"/admin/guides/{guide['id']}/ja",
+        json=document(title="成田空港から東京駅まで", description="三つの行き方を比べます"),
+    )
+    assert japanese.status_code == 201
+    await publish(api, guide["id"], "ja", 1)
+    notice = await create_article(api, slug="jr-pass-sale", kind="intel")
+    await publish(api, notice["id"], "zh-TW", notice["version"])
+    life = await create_article(
+        api, slug="ai-notes", kind="life", destination_id=None, topics=["ai"]
+    )
+    await publish(api, life["id"], "zh-TW", life["version"])
+    english = await api.post(
+        f"/admin/guides/{life['id']}/en",
+        json=document(title="AI notes", description="Four tools and what each costs"),
+    )
+    assert english.status_code == 201
+    await publish(api, life["id"], "en", 1)
+    draft = await create_article(
+        api, slug="draft-only", kind="life", destination_id=None, topics=["ai"]
+    )
+    assert draft["status"] == "draft"
+    return {"guide": guide, "notice": notice, "life": life}
+
+
+async def test_the_sitemap_pages_by_section_and_locale_without_repeating_or_dropping_a_row(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        await publish_sitemap_fixture(api)
+
+        async def rows(**params):
+            seen, cursor = [], None
+            while True:
+                query = {**params, **({"cursor": cursor} if cursor else {})}
+                response = await api.get("/guides/sitemap", params=query)
+                assert response.status_code == 200, response.text
+                body = response.json()
+                seen.extend(body["entries"])
+                cursor = body["next_cursor"]
+                if cursor is None:
+                    return seen
+
+        everything = await rows()
+        keys = [(row["kind"], row["slug"], row["locale"]) for row in everything]
+        assert sorted(keys) == [
+            ("howto", "narita-to-tokyo", "ja"),
+            ("howto", "narita-to-tokyo", "zh-TW"),
+            ("intel", "jr-pass-sale", "zh-TW"),
+            ("life", "ai-notes", "en"),
+            ("life", "ai-notes", "zh-TW"),
+        ]
+        # One row per page: rows published in the same second must still page cleanly.
+        paged = await rows(limit=1)
+        assert [(row["kind"], row["slug"], row["locale"]) for row in paged] == keys
+        # A page that is not full carries no cursor; a full one carries one.
+        first = (await api.get("/guides/sitemap", params={"limit": 2})).json()
+        assert len(first["entries"]) == 2 and first["next_cursor"]
+        whole = (await api.get("/guides/sitemap")).json()
+        assert len(whole["entries"]) == 5 and whole["next_cursor"] is None
+
+        # Every row names all the locales its article is published in, whichever child asks.
+        by_key = {(row["kind"], row["slug"], row["locale"]): row for row in everything}
+        assert by_key[("howto", "narita-to-tokyo", "ja")]["locales"] == ["ja", "zh-TW"]
+        assert by_key[("life", "ai-notes", "en")]["locales"] == ["en", "zh-TW"]
+        assert by_key[("intel", "jr-pass-sale", "zh-TW")]["locales"] == ["zh-TW"]
+
+        life = await rows(section="life")
+        assert sorted(row["locale"] for row in life) == ["en", "zh-TW"]
+        assert {row["kind"] for row in life} == {"life"}
+        travel_zh = await rows(section="travel", locale="zh-TW")
+        assert sorted(row["slug"] for row in travel_zh) == ["jr-pass-sale", "narita-to-tokyo"]
+        assert await rows(locale="ko") == []
+
+        # ``offset`` is how a second child file starts where the first stopped without
+        # paging through it: the same total order, entered further down, then followed by
+        # cursor alone -- the offset is sent once. Past the end it is an empty page.
+        async def page(**params):
+            body = (await api.get("/guides/sitemap", params=params)).json()
+            found = [(r["kind"], r["slug"], r["locale"]) for r in body["entries"]]
+            return found, body["next_cursor"]
+
+        assert await page(offset=2) == (keys[2:], None)
+        third, cursor = await page(offset=2, limit=1)
+        assert third == keys[2:3] and cursor
+        assert await page(cursor=cursor, limit=1) == (keys[3:4], ANY)
+        assert await page(offset=5) == ([], None)
+        assert (await api.get("/guides/sitemap", params={"offset": -1})).status_code == 422
+        assert (await api.get("/guides/sitemap", params={"section": "recipes"})).status_code == 422
+
+        tampered = await api.get("/guides/sitemap", params={"cursor": "not-a-cursor"})
+        assert tampered.status_code == 422
+        assert tampered.json()["code"] == "guide_cursor_invalid"
+
+
+async def test_the_sitemap_summary_counts_published_rows_per_kind_and_locale(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        articles = await publish_sitemap_fixture(api)
+        response = await api.get("/guides/sitemap/summary")
+        assert response.status_code == 200, response.text
+        assert response.headers["Cache-Control"] == "no-store"
+        assert response.json()["counts"] == [
+            {"kind": "intel", "locale": "zh-TW", "count": 1},
+            {"kind": "howto", "locale": "ja", "count": 1},
+            {"kind": "howto", "locale": "zh-TW", "count": 1},
+            {"kind": "life", "locale": "en", "count": 1},
+            {"kind": "life", "locale": "zh-TW", "count": 1},
+        ]
+        # Hiding leaves the counts the moment it leaves the site.
+        life = articles["life"]
+        hidden = await set_hidden(api, life["id"], life["version"])
+        assert hidden.status_code == 200, hidden.text
+        counts = (await api.get("/guides/sitemap/summary")).json()["counts"]
+        assert {(row["kind"], row["locale"]) for row in counts} == {
+            ("intel", "zh-TW"),
+            ("howto", "ja"),
+            ("howto", "zh-TW"),
+        }
+
+
 async def test_a_translation_starts_empty_and_never_copies_another_locale(database, actor) -> None:
     async with client(make_app(database, actor)) as api:
         created = await create_article(api)
@@ -864,6 +1036,163 @@ async def test_topic_labels_follow_the_reader_language(database, actor) -> None:
         assert by_locale["en"]["transport"] == "Transport"
 
 
+TOPIC_NAMES = {"en": "Onsen", "ja": "温泉", "ko": "온천", "zh-TW": "溫泉", "zh-CN": "温泉"}
+
+
+async def test_an_editor_adds_a_topic_without_a_deploy_and_it_lists_at_once(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await api.post(
+            "/admin/guides/topics",
+            json={"slug": "Onsen", "section": "travel", "names": TOPIC_NAMES, "display_order": 15},
+        )
+        assert created.status_code == 201, created.text
+        body = created.json()
+        assert body["slug"] == "onsen" and body["label"] == "溫泉"
+        assert body["source"] == "admin" and body["parent"] is None and body["is_active"]
+        assert body["names"] == TOPIC_NAMES and body["display_order"] == 15
+        listed = (
+            await api.get("/admin/guides/topics", params={"section": "travel", "locale": "en"})
+        ).json()["topics"]
+        assert any(row["slug"] == "onsen" and row["label"] == "Onsen" for row in listed)
+        public = (await api.get("/guides/topics", params={"section": "travel"})).json()["topics"]
+        assert [row["slug"] for row in public if row["slug"] == "onsen"] == ["onsen"]
+        assert all(row["slug"] != "onsen" for row in
+                   (await api.get("/guides/topics", params={"section": "life"})).json()["topics"])
+        # An article may carry it from the next save.
+        article = await create_article(api, slug="tokyo-onsen-day-trip", topics=["onsen"])
+        assert [row["slug"] for row in article["topics"]] == ["onsen"]
+    async with database() as session:
+        audit = await session.scalar(
+            select(AdminAuditLog).where(AdminAuditLog.target == "guide_topic:onsen")
+        )
+        assert audit is not None and audit.action == "guide_topic_created"
+        assert audit.metadata_json["after"]["names"] == TOPIC_NAMES
+
+
+async def test_a_topic_refuses_a_taken_slug_a_missing_label_and_the_wrong_parent(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        payload = {"slug": "onsen", "section": "travel", "names": TOPIC_NAMES}
+        assert (await api.post("/admin/guides/topics", json=payload)).status_code == 201
+        duplicate = await api.post("/admin/guides/topics", json=payload)
+        assert duplicate.status_code == 409 and duplicate.json()["code"] == "guide_topic_exists"
+        # Slugs are global: the seed's own are taken too, and a life ``transport`` is refused.
+        seeded = await api.post(
+            "/admin/guides/topics", json={**payload, "slug": "transport", "section": "life"}
+        )
+        assert seeded.status_code == 409
+        missing = await api.post(
+            "/admin/guides/topics",
+            json={**payload, "slug": "cheap", "names": {**TOPIC_NAMES, "ko": " "}},
+        )
+        assert missing.status_code == 422
+        bad_slug = await api.post("/admin/guides/topics", json={**payload, "slug": "Bad Slug!"})
+        assert bad_slug.status_code == 422
+        crossed = await api.post(
+            "/admin/guides/topics",
+            json={
+                "slug": "ai-budget",
+                "section": "life",
+                "names": TOPIC_NAMES,
+                "parent_slug": "transport",
+            },
+        )
+        assert crossed.status_code == 422
+        assert crossed.json()["code"] == "guide_topic_parent_section_mismatch"
+        unknown = await api.post(
+            "/admin/guides/topics",
+            json={
+                "slug": "ai-budget",
+                "section": "life",
+                "names": TOPIC_NAMES,
+                "parent_slug": "nope",
+            },
+        )
+        assert unknown.status_code == 422
+        assert unknown.json()["code"] == "guide_topic_parent_unknown"
+        nested = await api.post(
+            "/admin/guides/topics",
+            json={
+                "slug": "ai-budget",
+                "section": "life",
+                "names": TOPIC_NAMES,
+                "parent_slug": "ai-terms",
+            },
+        )
+        assert nested.status_code == 422
+        assert nested.json()["code"] == "guide_topic_parent_not_top_level"
+
+
+async def test_a_topic_can_be_renamed_filed_under_a_parent_and_retired(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await api.post(
+            "/admin/guides/topics",
+            json={"slug": "ai-budget", "section": "life", "names": TOPIC_NAMES},
+        )
+        assert created.status_code == 201, created.text
+        renamed = await api.put(
+            "/admin/guides/topics/ai-budget",
+            json={
+                "names": {**TOPIC_NAMES, "zh-TW": "AI 預算"},
+                "parent_slug": "ai",
+                "display_order": 5,
+                "descriptions": {"zh-TW": "花在 AI 上的錢。", "en": "  "},
+            },
+        )
+        assert renamed.status_code == 200, renamed.text
+        body = renamed.json()
+        assert body["label"] == "AI 預算" and body["parent"] == "ai" and body["display_order"] == 5
+        assert body["descriptions"] == {"zh-TW": "花在 AI 上的錢。"}
+        assert body["description"] == "花在 AI 上的錢。"
+        public = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
+        row = next(item for item in public if item["slug"] == "ai-budget")
+        assert row["parent"] == "ai" and row["description"] == "花在 AI 上的錢。"
+
+        cleared = await api.put("/admin/guides/topics/ai-budget", json={"parent_slug": ""})
+        assert cleared.status_code == 200 and cleared.json()["parent"] is None
+        retired = await api.put("/admin/guides/topics/ai-budget", json={"is_active": False})
+        assert retired.status_code == 200 and retired.json()["is_active"] is False
+        public = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
+        assert all(item["slug"] != "ai-budget" for item in public)
+        assert (
+            await api.put("/admin/guides/topics/nope", json={"is_active": True})
+        ).status_code == 404
+        # A parent with children stays top-level: the vocabulary is two levels deep.
+        under = await api.put("/admin/guides/topics/ai", json={"parent_slug": "website"})
+        assert under.status_code == 422 and under.json()["code"] == "guide_topic_has_children"
+        # A seed topic keeps its source under an edit, and the edit holds against the seed.
+        seed = await api.put(
+            "/admin/guides/topics/transport", json={"names": {**TOPIC_NAMES, "zh-TW": "交通方式"}}
+        )
+        assert seed.status_code == 200, seed.text
+        assert seed.json()["source"] == "seed" and seed.json()["label"] == "交通方式"
+    async with database() as session:
+        audits = list(
+            await session.scalars(
+                select(AdminAuditLog).where(AdminAuditLog.target == "guide_topic:ai-budget")
+            )
+        )
+        assert [audit.action for audit in audits][:2] == [
+            "guide_topic_created",
+            "guide_topic_updated",
+        ]
+        assert audits[1].metadata_json["before"]["display_order"] == 100
+        assert audits[1].metadata_json["after"]["display_order"] == 5
+
+
+async def test_an_admin_without_content_capability_cannot_add_a_topic(database, actor) -> None:
+    actor._admin_roles_cache = {"support"}
+    async with client(make_app(database, actor)) as api:
+        payload = {"slug": "onsen", "section": "travel", "names": TOPIC_NAMES}
+        assert (await api.post("/admin/guides/topics", json=payload)).status_code == 403
+        assert (
+            await api.put("/admin/guides/topics/transport", json={"is_active": False})
+        ).status_code == 403
+
+
 async def test_an_admin_without_content_capability_cannot_write(database, actor) -> None:
     actor._admin_roles_cache = {"support"}
     async with client(make_app(database, actor)) as api:
@@ -876,8 +1205,14 @@ async def test_an_admin_without_content_capability_cannot_write(database, actor)
 
 async def test_public_reads_never_require_an_account(database) -> None:
     async with client(make_app(database)) as api:
-        for path in ("/guides", "/guides/topics", "/guides/sitemap"):
-            response = await api.get(path, params={"locale": "zh-TW"})
+        for path, params in (
+            ("/guides", {}),
+            ("/guides/topics", {}),
+            ("/guides/sitemap", {}),
+            ("/guides/sitemap/summary", {}),
+            ("/guides/search", {"q": "東京"}),
+        ):
+            response = await api.get(path, params={"locale": "zh-TW", **params})
             assert response.status_code == 200
             assert response.headers["Cache-Control"] == "no-store"
 
@@ -909,6 +1244,150 @@ async def test_the_listing_pages_without_repeating_or_dropping_an_article(databa
                 break
         assert sorted(seen) == sorted(f"deal-{index}" for index in range(7))
         assert len(seen) == len(set(seen))
+
+
+async def curate(
+    api: AsyncClient, created: dict, *, featured: bool = False, display_order: int = 100
+) -> dict:
+    """The editor's order on a fresh article, then its publication."""
+    saved = await api.put(
+        f"/admin/guides/{created['id']}",
+        json={
+            "expected_version": created["version"],
+            "kind": created["kind"],
+            "destination_id": created["destination_id"],
+            "topics": ["transport"],
+            "featured": featured,
+            "display_order": display_order,
+        },
+    )
+    assert saved.status_code == 200, saved.text
+    published = await publish(api, created["id"], "zh-TW", created["locales"][0]["version"])
+    assert published.status_code == 200, published.text
+    return published.json()
+
+
+async def stamp_publication(database, article_id: str, day: int) -> None:
+    """Pin a row's publication to a day of September 2026, so an order test does not depend
+    on the clock: a batch publishes within one second, and the tiebreak would decide."""
+    async with database() as session:
+        await session.execute(
+            update(GuideArticleLocale)
+            .where(GuideArticleLocale.article_id == UUID(article_id))
+            .values(published_at=datetime(2026, 9, day, tzinfo=UTC))
+        )
+        await session.commit()
+
+
+async def test_the_curated_order_puts_featured_first_then_display_order_then_newest(
+    database, actor
+) -> None:
+    """The editor's order, not the last batch imported: featured first, then display_order,
+    then newest, then the slug -- and ``latest`` is untouched by any of it."""
+    async with client(make_app(database, actor)) as api:
+        plan = [
+            ("late-add", False, 100, 10),
+            ("core-transit", False, 10, 3),
+            ("overview", True, 10, 5),
+            ("hub", True, 50, 4),
+            ("older-note", False, 100, 1),
+        ]
+        for slug, featured, order, day in plan:
+            created = await create_article(api, slug=slug)
+            await curate(api, created, featured=featured, display_order=order)
+            await stamp_publication(database, created["id"], day)
+
+        async def slugs(**params):
+            response = await api.get("/guides", params={"locale": "zh-TW", **params})
+            assert response.status_code == 200, response.text
+            return [item["slug"] for item in response.json()["articles"]]
+
+        assert await slugs(sort="curated") == [
+            "overview",
+            "hub",
+            "core-transit",
+            "late-add",
+            "older-note",
+        ]
+        assert await slugs() == ["late-add", "overview", "hub", "core-transit", "older-note"]
+        assert await slugs(sort="latest") == await slugs()
+        unknown = await api.get("/guides", params={"locale": "zh-TW", "sort": "random"})
+        assert unknown.status_code == 422
+
+
+async def test_the_curated_order_pages_without_repeating_or_dropping_an_article(
+    database, actor
+) -> None:
+    """Rows with the same display_order published in the same second is the shape a batch
+    import leaves; the keyset carries every sort key, so pages neither repeat nor skip."""
+    async with client(make_app(database, actor)) as api:
+        for index in range(9):
+            created = await create_article(api, slug=f"note-{index}")
+            await curate(
+                api,
+                created,
+                featured=index in (2, 6),
+                display_order=20 if index == 4 else 100,
+            )
+            await stamp_publication(database, created["id"], 1)
+        seen: list[str] = []
+        cursor = None
+        pages = 0
+        while True:
+            params = {"locale": "zh-TW", "limit": 2, "sort": "curated"}
+            if cursor:
+                params["cursor"] = cursor
+            page = (await api.get("/guides", params=params)).json()
+            seen.extend(item["slug"] for item in page["articles"])
+            pages += 1
+            cursor = page["next_cursor"]
+            if not cursor:
+                break
+        assert pages == 5
+        # Featured first (tied: same order, same second, so the slug), then the lowest
+        # display_order, then the rest of the batch by slug.
+        assert seen == [
+            "note-2",
+            "note-6",
+            "note-4",
+            "note-0",
+            "note-1",
+            "note-3",
+            "note-5",
+            "note-7",
+            "note-8",
+        ]
+
+
+async def test_a_cursor_minted_under_one_order_is_refused_under_the_other(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        for index in range(3):
+            created = await create_article(api, slug=f"note-{index}")
+            await publish(api, created["id"], "zh-TW", created["version"])
+        first = {"locale": "zh-TW", "limit": 1}
+        latest = (await api.get("/guides", params=first)).json()["next_cursor"]
+        curated = (await api.get("/guides", params={**first, "sort": "curated"})).json()[
+            "next_cursor"
+        ]
+        assert latest and curated and latest != curated
+        # The latest cursor is still ``[published_at, slug]``: a "see more" link minted
+        # before ``sort`` existed keeps working.
+        padded = latest + "=" * (-len(latest) % 4)
+        stamp, slug = json.loads(base64.urlsafe_b64decode(padded))
+        assert isinstance(datetime.fromisoformat(stamp), datetime)
+        assert slug.startswith("note-")
+
+        crossed = await api.get("/guides", params={**first, "sort": "curated", "cursor": latest})
+        assert crossed.status_code == 422
+        assert crossed.json()["code"] == "guide_cursor_invalid"
+        crossed = await api.get("/guides", params={**first, "cursor": curated})
+        assert crossed.status_code == 422
+        assert crossed.json()["code"] == "guide_cursor_invalid"
+        # Under its own order a curated cursor continues the listing.
+        page = await api.get("/guides", params={**first, "sort": "curated", "cursor": curated})
+        assert page.status_code == 200 and len(page.json()["articles"]) == 1
 
 
 async def test_published_at_records_the_first_publication_not_the_latest(database, actor) -> None:
@@ -1005,10 +1484,16 @@ async def test_topics_belong_to_one_section_and_are_refused_in_the_other(
             assert set(slugs) <= {row["slug"] for row in rows}
         life_rows = (await api.get("/guides/topics", params={"section": "life"})).json()["topics"]
         # Seeded display_order, so this is the reader's chip order, not an accident of slug
-        # sorting. New vocabulary is appended: 0075 put `finance` after 0074's seven.
-        assert [row["slug"] for row in life_rows] == [
+        # sorting. New vocabulary is appended: 0075 put `finance` after 0074's seven, 0076 its
+        # two parents after that, and each parent's children follow all the parents.
+        parents = [slug for slug, _ in LIFE_SEED_TOPICS]
+        assert parents[:8] == [
             "ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc", "finance",
         ]
+        children = [
+            slug for parent in parents for slug, owner, _ in LIFE_SEED_SUBTOPICS if owner == parent
+        ]
+        assert [row["slug"] for row in life_rows] == parents + children
         unfiltered = (await api.get("/guides/topics", params={"locale": "zh-TW"})).json()["topics"]
         assert len(unfiltered) == len(life_rows) + 19
 
@@ -1104,6 +1589,188 @@ def test_the_two_seed_vocabularies_stay_disjoint() -> None:
     assert life & travel == set()
     assert life & set(LABELS) == set()
     assert len(life) == len(LIFE_SEED_TOPICS)
+
+
+def test_the_seeded_sub_topics_hang_under_a_seeded_parent_and_collide_with_nothing() -> None:
+    """A sub-topic is a lifestyle slug like any other: global, disjoint from both other
+    vocabularies, labelled in every locale, and its parent is a top-level lifestyle topic."""
+    from app.discovery.taxonomy import LABELS
+    from app.i18n import LOCALES
+
+    parents = {slug for slug, _ in LIFE_SEED_TOPICS}
+    children = [slug for slug, _, _ in LIFE_SEED_SUBTOPICS]
+    assert len(set(children)) == len(children)
+    assert set(children) & parents == set()
+    assert set(children) & {slug for slug, _ in SEED_TOPICS} == set()
+    assert set(children) & set(LABELS) == set()
+    for slug, parent, labels in LIFE_SEED_SUBTOPICS:
+        assert parent in parents, slug
+        names = seed_names(labels)
+        assert set(names) == set(LOCALES) and all(value.strip() for value in names.values()), slug
+
+
+async def test_a_parent_topic_filter_includes_its_children(database, actor) -> None:
+    """An article filed under ``ai-terms`` answers the ``ai`` filter without also carrying
+    ``ai``; an unknown topic answers with nothing rather than with everything."""
+    async with client(make_app(database, actor)) as api:
+        term = await create_article(
+            api, slug="ai-term-quantization", kind="life", destination_id=None, topics=["ai-terms"]
+        )
+        await publish(api, term["id"], "zh-TW", term["version"])
+        parent_only = await create_article(
+            api, slug="ai-tools-overview", kind="life", destination_id=None, topics=["ai"]
+        )
+        await publish(api, parent_only["id"], "zh-TW", parent_only["version"])
+        travel = await create_article(api, slug="narita-to-tokyo")
+        await publish(api, travel["id"], "zh-TW", travel["version"])
+
+        async def slugs(**params):
+            response = await api.get("/guides", params={"locale": "zh-TW", **params})
+            assert response.status_code == 200, response.text
+            return sorted(item["slug"] for item in response.json()["articles"])
+
+        assert await slugs(topic="ai") == ["ai-term-quantization", "ai-tools-overview"]
+        assert await slugs(topic="ai-terms") == ["ai-term-quantization"]
+        assert await slugs(topic="ai-news") == []
+        assert await slugs(topic="no-such-topic") == []
+        assert await slugs() == ["ai-term-quantization", "ai-tools-overview", "narita-to-tokyo"]
+
+        # The chip on the card names its parent, so the reader's side can link it to a hub.
+        response = await api.get("/guides", params={"locale": "zh-TW", "topic": "ai-terms"})
+        chips = response.json()["articles"][0]["topics"]
+        assert chips == [
+            {
+                "slug": "ai-terms",
+                "label": "AI 名詞解釋",
+                "section": "life",
+                "parent": "ai",
+                "description": None,
+                "count": 0,
+                "counts": {},
+            }
+        ]
+
+
+async def test_the_vocabulary_counts_published_articles_per_locale(database, actor) -> None:
+    """A parent counts the distinct union of itself and its children, per locale, from the
+    published translations only -- a draft and an unpublished language both count zero."""
+    async with client(make_app(database, actor)) as api:
+        both = await create_article(
+            api, slug="ai-glossary", kind="life", destination_id=None, topics=["ai", "ai-terms"]
+        )
+        await publish(api, both["id"], "zh-TW", both["version"])
+        news = await create_article(
+            api, slug="ai-news-week", kind="life", destination_id=None, topics=["ai-news"]
+        )
+        await publish(api, news["id"], "zh-TW", news["version"])
+        draft = await create_article(
+            api, slug="ai-draft", kind="life", destination_id=None, topics=["ai-news"]
+        )
+        assert draft["status"] == "draft"
+
+        response = await api.get("/guides/topics", params={"locale": "zh-TW", "section": "life"})
+        assert response.status_code == 200, response.text
+        rows = {item["slug"]: item for item in response.json()["topics"]}
+        assert rows["ai"]["parent"] is None
+        assert rows["ai"]["count"] == 2 and rows["ai"]["counts"] == {"zh-TW": 2}
+        assert rows["ai-terms"] == {
+            **rows["ai-terms"],
+            "parent": "ai",
+            "count": 1,
+            "counts": {"zh-TW": 1},
+        }
+        assert rows["ai-news"]["count"] == 1
+        assert rows["tutorial"]["count"] == 0 and rows["tutorial"]["counts"] == {}
+        # Parents first in display order, then each parent's children in theirs.
+        order = [item["slug"] for item in response.json()["topics"]]
+        assert order.index("ai") < order.index("finance") < order.index("ai-terms")
+        assert order.index("ai-terms") < order.index("ai-news") < order.index("finance-basics")
+        # The travel vocabulary knows nothing of these.
+        travel = await api.get("/guides/topics", params={"locale": "zh-TW", "section": "travel"})
+        assert "ai-terms" not in {item["slug"] for item in travel.json()["topics"]}
+
+        japanese = await api.get("/guides/topics", params={"locale": "ja", "section": "life"})
+        rows = {item["slug"]: item for item in japanese.json()["topics"]}
+        assert rows["ai"]["count"] == 0 and rows["ai"]["counts"] == {"zh-TW": 2}
+        assert rows["ai"]["label"] == "AIツール"
+
+
+async def test_the_country_filter_maps_to_the_catalog_cities(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        tokyo = await create_article(api, slug="narita-to-tokyo")
+        await publish(api, tokyo["id"], "zh-TW", tokyo["version"])
+        seoul = await create_article(api, slug="incheon-to-seoul", destination_id="seoul")
+        await publish(api, seoul["id"], "zh-TW", seoul["version"])
+        nowhere = await create_article(api, slug="jr-pass-choice", destination_id=None)
+        await publish(api, nowhere["id"], "zh-TW", nowhere["version"])
+
+        async def slugs(**params):
+            response = await api.get("/guides", params={"locale": "zh-TW", **params})
+            assert response.status_code == 200, response.text
+            return sorted(item["slug"] for item in response.json()["articles"])
+
+        assert await slugs(country="japan") == ["narita-to-tokyo"]
+        assert await slugs(country="South-Korea") == ["incheon-to-seoul"]
+        assert await slugs(country="atlantis") == []
+        assert await slugs(country="japan", destination="seoul") == []
+
+
+async def test_destination_facets_count_only_what_the_locale_publishes(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        first = await create_article(api, slug="narita-to-tokyo")
+        await publish(api, first["id"], "zh-TW", first["version"])
+        second = await create_article(api, slug="tokyo-transit-passes")
+        await publish(api, second["id"], "zh-TW", second["version"])
+        draft = await create_article(api, slug="incheon-to-seoul", destination_id="seoul")
+        assert draft["status"] == "draft"
+        life = await create_article(
+            api, slug="ai-glossary", kind="life", destination_id=None, topics=["ai"]
+        )
+        await publish(api, life["id"], "zh-TW", life["version"])
+
+        response = await api.get("/guides/destinations", params={"locale": "zh-TW"})
+        assert response.status_code == 200, response.text
+        assert response.headers["cache-control"] == "no-store"
+        assert response.json()["destinations"] == [
+            {
+                "id": "tokyo",
+                "label": "東京",
+                "country": "japan",
+                "country_label": "日本",
+                "count": 2,
+            }
+        ]
+        english = await api.get("/guides/destinations", params={"locale": "en"})
+        assert english.json()["destinations"] == []
+        korean = await api.get("/guides/destinations", params={"locale": "ko", "section": "life"})
+        assert korean.json()["destinations"] == []
+        await publish(api, draft["id"], "zh-TW", draft["version"])
+        labels = (await api.get("/guides/destinations", params={"locale": "ja"})).json()
+        assert labels["destinations"] == []
+        rows = (await api.get("/guides/destinations", params={"locale": "zh-TW"})).json()
+        assert [(row["id"], row["country"], row["count"]) for row in rows["destinations"]] == [
+            ("tokyo", "japan", 2),
+            ("seoul", "south-korea", 1),
+        ]
+
+
+@pytest.mark.parametrize("slug", ["topics", "series", "search"])
+async def test_a_slug_the_routes_own_is_refused(database, actor, slug) -> None:
+    """``/life/topics/...`` is the topic hub, so an article at ``/life/topics`` would be
+    unreachable; refuse it before the row exists rather than let it be shadowed."""
+    async with client(make_app(database, actor)) as api:
+        response = await api.post(
+            "/admin/guides",
+            json={
+                "slug": slug,
+                "kind": "life",
+                "topics": ["ai"],
+                "document": document(),
+                "locale": "zh-TW",
+            },
+        )
+        assert response.status_code == 422, response.text
+        assert response.json()["code"] == "guide_slug_reserved"
 
 
 # --- rich blocks: images, tables, callouts, partner buttons ------------------------
@@ -1339,3 +2006,76 @@ async def test_modified_at_moves_on_republication_while_published_at_stays(
         assert entry["published_at"] == after["document"]["published_at"]
         assert entry["modified_at"] == after["document"]["modified_at"]
         assert entry["modified_at"] > entry["published_at"]
+
+
+def summarised_document(**overrides):
+    """A document that opens with its answer and ends with the questions readers ask."""
+    doc = document()
+    doc["blocks"] = [
+        {"type": "summary", "items": ["Skyliner 最快。", "利木津巴士最省力。", "JR 最便宜。"]},
+        *doc["blocks"],
+        {
+            "type": "faq",
+            "items": [
+                {"question": "深夜還有車嗎？", "answer": "末班車後只剩計程車。"},
+                {"question": "行李多怎麼辦？", "answer": "選利木津巴士。"},
+            ],
+        },
+    ]
+    doc.update(overrides)
+    return doc
+
+
+async def test_a_summary_and_a_faq_round_trip_to_the_reader(database, actor) -> None:
+    async with client(make_app(database, actor)) as api:
+        created = await create_article(api, document=summarised_document())
+        assert (await publish(api, created["id"], "zh-TW", created["version"])).status_code == 200
+        body = (await api.get("/guides/howto/narita-to-tokyo", params={"locale": "zh-TW"})).json()
+        types = [block["type"] for block in body["document"]["blocks"]]
+        assert types[0] == "summary" and types[-1] == "faq"
+        assert body["document"]["blocks"][-1]["items"][0] == {
+            "question": "深夜還有車嗎？", "answer": "末班車後只剩計程車。",
+        }
+
+
+@pytest.mark.parametrize(
+    "blocks",
+    [
+        # Two summaries.
+        [
+            {"type": "summary", "items": ["一", "二"]},
+            {"type": "summary", "items": ["三", "四"]},
+            {"type": "paragraph", "text": "內文"},
+        ],
+        # A summary after the first heading is a recap, not an opening.
+        [
+            {"type": "heading", "text": "一節", "level": 2},
+            {"type": "summary", "items": ["一", "二"]},
+        ],
+        # Two FAQ sections.
+        [
+            {"type": "paragraph", "text": "內文"},
+            {"type": "faq", "items": [
+                {"question": "一？", "answer": "一。"}, {"question": "二？", "answer": "二。"},
+            ]},
+            {"type": "faq", "items": [
+                {"question": "三？", "answer": "三。"}, {"question": "四？", "answer": "四。"},
+            ]},
+        ],
+        # Too few items.
+        [{"type": "summary", "items": ["只有一句"]}, {"type": "paragraph", "text": "內文"}],
+    ],
+)
+async def test_a_document_carries_at_most_one_opening_summary_and_one_faq(
+    database, actor, blocks
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        response = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "narita-to-tokyo", "kind": "howto", "destination_id": "tokyo",
+                "topics": ["transport"], "document": document() | {"blocks": blocks},
+                "locale": "zh-TW",
+            },
+        )
+        assert response.status_code == 422, response.text

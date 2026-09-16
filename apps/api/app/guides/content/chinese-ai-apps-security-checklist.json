@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "ai-safety"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "裝一個海外 AI App 之前，你能靠自己查清楚的只有四件事：官方政策把資料存在哪個國家、會不會拿去訓練、註冊要交出什麼、不用了以後怎麼刪。這篇把它拆成一份照著做就好的清單，每一項都寫「怎麼查」和「看到什麼就該怎麼做」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "裝一個海外 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " App 之前，你能靠自己查清楚的只有四件事：官方政策把資料存在哪個國家、會不會拿去訓練、註冊要交出什麼、不用了以後怎麼刪。這篇把它拆成一份照著做就好的清單，每一項都寫「怎麼查」和「看到什麼就該怎麼做」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,9 +62,15 @@
           "text": "一般使用者這邊能用的是個人資料保護法。第 5 條寫蒐集、處理或利用「不得逾越特定目的之必要範圍」；第 3 條列出查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集處理或利用、請求刪除五項權利，並寫明「不得預先拋棄或以特約限制之」；第 11 條寫特定目的消失或期限屆滿時，應主動或依當事人請求刪除、停止處理或利用。這三條是你後面寫信要求停用與刪除的依據。"
         },
         {
-          "type": "link",
-          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -71,9 +92,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -94,9 +121,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "豆包（字節跳動）：功能與台灣可用性",
-          "url": "https://mokaair.com/zh-TW/life/doubao-bytedance-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "豆包（字節跳動）：功能與台灣可用性",
+              "kind": "life",
+              "slug": "doubao-bytedance-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -117,9 +150,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -218,18 +257,45 @@
           "caption": "五家官方隱私政策原文整理，查證日期 2026 年 9 月。欄位寫「政策未寫」代表當天的政策全文沒有這項說明，不代表沒有這件事。"
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "覺得手機上那個 App 要的權限太多，還有三條路。只用網頁版：不必給鏡頭、麥克風與通訊錄權限，手機裡也不會多一個能在背景取用資料的程式，但註冊與資料流向的條款是同一份。改走 API：Kimi 的說明中心寫，透過 API 提交的使用者資料（包括輸入內容和模型輸出）不會被用於訓練或改進 Kimi 的模型，只用於完成當次請求；其他家要各自看文件，DeepSeek 的開放平台服務條款就沒寫 API 資料的存放地、留存期間或是否用於訓練，以官網為準。把開放權重下載回自己的電腦跑：輸入的內容不會離開你的機器，代價是要自備硬體，商用前先讀完模型授權。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "覺得手機上那個 App 要的權限太多，還有三條路。只用網頁版：不必給鏡頭、麥克風與通訊錄權限，手機裡也不會多一個能在背景取用資料的程式，但註冊與資料流向的條款是同一份。改走 API：Kimi 的說明中心寫，透過 API 提交的使用者資料（包括輸入內容和模型輸出）不會被用於訓練或改進 Kimi 的模型，只用於完成當次請求；其他家要各自看文件，DeepSeek 的開放平台服務條款就沒寫 API 資料的存放地、留存期間或是否用於訓練，以官網為準。把"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "下載回自己的電腦跑：輸入的內容不會離開你的機器，代價是要自備硬體，商用前先讀完模型授權。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -308,19 +374,37 @@
           "text": "五家的政策都只寫關閉之後不再把你的輸入與輸出用於訓練，沒有一家寫已經進入流程的資料會被取出來。刪帳號同樣不可逆。所以順序要反過來：先決定哪些內容永遠不輸入，開關和刪除只是補救。"
         },
         {
-          "type": "link",
-          "text": "Kimi（月之暗面）：長文件與 K 系列模型",
-          "url": "https://mokaair.com/zh-TW/life/kimi-moonshot-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Kimi（月之暗面）：長文件與 K 系列模型",
+              "kind": "life",
+              "slug": "kimi-moonshot-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
-          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+              "kind": "life",
+              "slug": "qwen-alibaba-models-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
-          "url": "https://mokaair.com/zh-TW/life/minimax-agent-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
+              "kind": "life",
+              "slug": "minimax-agent-guide"
+            }
+          ]
         }
       ],
       "sources": [

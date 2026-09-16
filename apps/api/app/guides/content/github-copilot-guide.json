@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -56,9 +57,15 @@
           "text": "官方文件把 Chat 的模式分成三種：詢問模式（Ask mode）回答問題並提供程式碼建議、規劃模式（Plan mode）先產出一份詳細的實作計畫、代理模式（Agent mode）自主完成指定任務。初學者可以先把詢問模式當成預設，等到看得懂它的產出再往上換。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -147,9 +154,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
-          "url": "https://mokaair.com/zh-TW/life/cursor-editor-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
+              "kind": "life",
+              "slug": "cursor-editor-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -169,14 +182,26 @@
           "text": "落到使用習慣上其實很好分：手上這個檔案要改，用代理模式；一件說得清楚、你暫時不想盯著的雜事，例如補測試、更新文件、修一個小 bug，就寫成 issue 指派給雲端代理，回頭再看它開的拉取請求。要注意雲端代理只對付費方案開放，免費方案的人先把代理模式用熟就好。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜VS Code 與 JetBrains 整合",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-ide-integration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜VS Code 與 JetBrains 整合",
+              "kind": "life",
+              "slug": "claude-code-ide-integration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+              "kind": "life",
+              "slug": "ai-coding-git-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -188,13 +213,34 @@
           "text": "2026 年 9 月的官網上，個人方案有四個：Copilot Free、Copilot Pro（每月 10 美元）、Copilot Pro+（每月 39 美元）、Copilot Max（每月 100 美元）；組織用的 Copilot Business 每人每月 19 美元、Copilot Enterprise 每人每月 39 美元。免費方案的限制是每月 2,000 次補全與 50 次 chat（含 Copilot Edits），而且只能用自動選擇的模型。"
         },
         {
-          "type": "paragraph",
-          "text": "額度的算法在 2026 年 6 月 1 日換過一次。現在官網用的單位是 AI credits，1 credit 等於 0.01 美元，而且分成兩塊：base credits 對應你付的訂閱價格、不會變動，flex 則是會隨模型價格與效率調整的浮動部分。Pro 是每月 1,000 加 500，共 1,500 credits；Pro+ 是 3,900 加 3,100，共 7,000；Max 是 10,000 加 10,000，共 20,000；Business 每人 1,900、Enterprise 每人 3,900。實際扣多少取決於你用哪個模型、來回幾次、送進去多少 token。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "額度的算法在 2026 年 6 月 1 日換過一次。現在官網用的單位是 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " credits，1 credit 等於 0.01 美元，而且分成兩塊：base credits 對應你付的訂閱價格、不會變動，flex 則是會隨模型價格與效率調整的浮動部分。Pro 是每月 1,000 加 500，共 1,500 credits；Pro+ 是 3,900 加 3,100，共 7,000；Max 是 10,000 加 10,000，共 20,000；Business 每人 1,900、Enterprise 每人 3,900。實際扣多少取決於你用哪個模型、來回幾次、送進去多少 token。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "token（Token）是什麼：AI 如何計算文字長度",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "kind": "life",
+              "slug": "ai-term-token"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -253,9 +299,15 @@
           "text": "免費資格有三種。通過驗證的學生可以使用 Copilot Student；通過驗證的教師，以及熱門開源專案的維護者，可能符合免費使用 Copilot Pro 的資格，GitHub 每個月重新評估一次。反過來說，已經從組織或企業拿到 Copilot 席次的人不能再申請 Copilot Free。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -287,9 +339,15 @@
           "text": "官方最佳實務的說法是，你應該永遠驗證它建議的程式碼。看得懂再收，跑得過測試再合併，並且搭配 linting 與程式碼掃描一起使用。設定裡另外有一個封鎖「與公開程式碼相符的建議」的選項，在意授權問題的人可以先開起來再開始寫。"
         },
         {
-          "type": "link",
-          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+              "kind": "life",
+              "slug": "ai-code-review-safety"
+            }
+          ]
         }
       ],
       "sources": [

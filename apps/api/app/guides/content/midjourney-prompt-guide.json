@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Midjourney 的提示詞不是越長越好。官方 Prompt Basics 直接寫著：短而簡單的提示詞通常效果最好，長清單或一連串指令反而會干擾生成。決定成品的是你有沒有把在意的面向講清楚，以及參數放對位置。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Midjourney 的提示詞不是越長越好。官方 Prompt Basics 直接寫著：短而簡單的提示詞通常效果最好，長清單或一連串指令反而會干擾生成。決定成品的是你有沒有把在意的面向講清楚，以及"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "放對位置。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -85,9 +101,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -109,9 +131,15 @@
           "text": "版本也是格式的一部分。官方 Version 頁寫著目前預設版本是 V8.2，2026 年 7 月 24 日起成為預設；V8.1 則在 2026 年 4 月 14 日推出。"
         },
         {
-          "type": "link",
-          "text": "Midjourney 入門：網頁版、參數與訂閱",
-          "url": "https://mokaair.com/zh-TW/life/midjourney-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Midjourney 入門：網頁版、參數與訂閱",
+              "kind": "life",
+              "slug": "midjourney-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -204,9 +232,15 @@
           "caption": "Midjourney 常用參數的官方定義與數值，2026 年 9 月 14 日查自官方說明文件。"
         },
         {
-          "type": "link",
-          "text": "AI 繪圖風格提示參考：50 種風格描述",
-          "url": "https://mokaair.com/zh-TW/life/ai-art-prompt-styles-reference"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 繪圖風格提示參考：50 種風格描述",
+              "kind": "life",
+              "slug": "ai-art-prompt-styles-reference"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -232,9 +266,15 @@
           "code": "（圖片提示）圖片網址 detailed portrait of a golden retriever, studio light --iw 2\n\n（風格參考）ballpoint pen sketch of a bunny in a meadow --sref 風格圖網址 --sw 400\n\n（Edit 模型）a boy meeting a monster in the wilderness --edit 第一張圖網址 第二張圖網址 --ar 16:9"
         },
         {
-          "type": "link",
-          "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
-          "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -301,19 +341,37 @@
           "code": "a cartoon drawing of a manual with the words \"read the docs\" in big text on the pages --raw\n\na {red, green, yellow} bird on a pier --ar 3:2\n\nminimalist travel poster of a lighthouse --ar {1:1, 2:3, 16:9}"
         },
         {
-          "type": "link",
-          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞工程（Prompt Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞工程（Prompt Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-engineering"
+            }
+          ]
         }
       ],
       "sources": [

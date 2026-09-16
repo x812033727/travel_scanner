@@ -4,15 +4,16 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
   "display_order": 100,
   "locales": {
     "zh-TW": {
-      "title": "逐字稿工具怎麼用：MacWhisper 與 Whisper 桌面工作流",
-      "description": "搜「逐字稿 AI」找到的工具，錄音變成文字後，還需要核對講者、繁體用字和時間碼。本文以原創社區口述訪談情境，介紹 MacWhisper 與 Const-me WhisperDesktop 的桌面轉寫流程，區分本機模型、雲端轉寫與 AI 摘要的資料流。附工具比較表、操作步驟及自繪圖解，協助你保留原始錄音、整理可追溯逐字稿，再輸出適合閱讀或影片使用的字幕檔。",
+      "title": "MacWhisper 與 WhisperDesktop 圖形介面逐字稿教學：不打指令的本機轉寫流程",
+      "description": "不想打指令的話，MacWhisper 與 WhisperDesktop 這兩個圖形介面工具能在自己電腦上把錄音變成文字；變成文字後，還需要核對講者、繁體用字和時間碼。本文以原創社區口述訪談情境，介紹 MacWhisper 與 Const-me WhisperDesktop 的桌面轉寫流程，區分本機模型、雲端轉寫與 AI 摘要的資料流。附工具比較表、操作步驟及自繪圖解，協助你保留原始錄音、整理可追溯逐字稿，再輸出適合閱讀或影片使用的字幕檔。",
       "hero": {
         "src": "/guides/transcription-desktop-tools/hero.jpg",
         "alt": "Mokaair 原創資料夾、文件與螢幕插圖，象徵保存音訊、校對逐字稿和回放字幕。",
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "社區口述訪談錄了兩位居民的故事，整理者想快速找出店名、年份與可剪進影片的段落。如果只有一份流暢摘要，卻不知道誰說了什麼、原話在幾分幾秒，後續仍得重聽整段錄音。逐字稿工具的價值，是幫你建立可回到聲音核對的文字。這也是挑逐字稿 AI 時最該看的一點：能不能回到聲音核對。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "社區口述訪談錄了兩位居民的故事，整理者想快速找出店名、年份與可剪進影片的段落。如果只有一份流暢摘要，卻不知道誰說了什麼、原話在幾分幾秒，後續仍得重聽整段錄音。逐字稿工具的價值，是幫你建立可回到聲音核對的文字。這也是挑逐字稿 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 時最該看的一點：能不能回到聲音核對。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -142,8 +158,23 @@
           "text": "把字幕載入播放器或剪輯軟體，從頭、中間、結尾各檢查一次，並特別回放快速對話與靜音段。看字幕出現和消失是否配合說話、是否遮住重要畫面，以及一行是否長到來不及讀。為了可讀性分段時，保留語意，不把一句限制條件切成容易誤解的兩句。"
         },
         {
-          "type": "paragraph",
-          "text": "最後交付原始音訊、校對版本及必要字幕，依已約定的範圍管理存取。聽不清楚的地方加上時間碼與待確認標記，不補成確定語句；摘要若提到某個結論，應能回到已核對的段落。這樣即使日後換工具，資料仍然能被重新理解與修正。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "最後交付原始音訊、校對版本及必要字幕，依已約定的範圍管理存取。聽不清楚的地方加上時間碼與待確認"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不補成確定語句；摘要若提到某個結論，應能回到已核對的段落。這樣即使日後換工具，資料仍然能被重新理解與修正。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -201,14 +232,45 @@
           "text": "Speaker 1 只是一個分組結果。命名之前回聽確認，遇到同時說話或被分錯的片段，保留疑問並人工調整。"
         },
         {
-          "type": "link",
-          "text": "翻譯後核對字幕與專有名詞",
-          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "翻譯後核對字幕與專有名詞",
+              "kind": "life",
+              "slug": "immersive-translate-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓短影片的內容與字幕更清楚",
-          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓短影片的內容與字幕更清楚",
+              "kind": "life",
+              "slug": "short-video-marketing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "偏好指令列或要用 Python 批次處理、輸出 SRT／VTT 字幕的話，看"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "whisper-local-transcription",
+              "text": "用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 安裝與 SRT 字幕輸出"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         }
       ],
       "sources": [

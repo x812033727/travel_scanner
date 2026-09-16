@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 139,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "有參數的 Skill 可以重用同一流程處理不同檔案，而附屬材料能讓主檔保持短而清楚。本篇延伸 todo-review，建立可指定檔案的 todo-check，加入一份固定報告範本，並示範參數為空、包含空白或指向不存在檔案時的處理方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的 Skill 可以重用同一流程處理不同檔案，而附屬材料能讓主檔保持短而清楚。本篇延伸 todo-review，建立可指定檔案的 todo-check，加入一份固定報告範本，並示範參數為空、包含空白或指向不存在檔案時的處理方式。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +26,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "陶土小物工作室常在 Instagram 收到客製尺寸與取件方式的問題。聊天機器人可以先提供公開資訊，但遇到特殊造型、交期變更或作品瑕疵時，仍需要知道誰來處理。只設定留言後自動私訊，還不算建立完整的服務流程。搜「客服 AI」或「聊天機器人 AI」找工具之前，先把這條界線畫出來。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "陶土小物工作室常在 Instagram 收到客製尺寸與取件方式的問題。聊天機器人可以先提供公開資訊，但遇到特殊造型、交期變更或作品瑕疵時，仍需要知道誰來處理。只設定留言後自動私訊，還不算建立完整的服務流程。搜「"
+            },
+            {
+              "type": "article",
+              "text": "客服 AI",
+              "kind": "life",
+              "slug": "ai-customer-service-line-bot"
+            },
+            {
+              "type": "text",
+              "text": "」或「聊天機器人 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」找工具之前，先把這條界線畫出來。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +226,37 @@
           "text": "Test chat 能檢查回覆設定，但不會套用所有平台訊息限制。正式使用前，以自控帳號驗證留言入口、時間窗與真人接手。"
         },
         {
-          "type": "link",
-          "text": "先規劃社群內容與回覆分工",
-          "url": "https://mokaair.com/zh-TW/life/social-media-planning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先規劃社群內容與回覆分工",
+              "kind": "life",
+              "slug": "social-media-planning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理顧客旅程中的服務問題",
-          "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理顧客旅程中的服務問題",
+              "kind": "life",
+              "slug": "customer-journey-funnel"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "評估行銷工具的整合與資料責任",
-          "url": "https://mokaair.com/zh-TW/life/martech-tool-stack"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "評估行銷工具的整合與資料責任",
+              "kind": "life",
+              "slug": "martech-tool-stack"
+            }
+          ]
         }
       ],
       "sources": [

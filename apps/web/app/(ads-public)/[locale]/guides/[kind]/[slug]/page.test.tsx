@@ -6,7 +6,7 @@ import GuideArticlePage, { generateMetadata } from "./page";
 const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn(), notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }) }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false }) }));
-vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list }));
+vi.mock("@/lib/guides.server", () => ({ getGuideArticle: mocks.article, getGuideList: mocks.list, getGuideTopics: async () => [] }));
 vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
 vi.mock("@/components/destination-affiliate-options", () => ({
   DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[] }) => (
@@ -76,7 +76,10 @@ describe("a published article", () => {
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("成田機場到東京車站怎麼走");
     expect(screen.getByText("Skyliner 最快。")).toBeTruthy();
     expect(screen.getByRole("link", { name: "京成電鐵時刻表" }).getAttribute("href")).toBe("https://www.keisei.co.jp/");
-    expect(screen.getByRole("link", { name: "交通" })).toBeTruthy();
+    // The topic chip under the body, and the breadcrumb's topic crumb above it.
+    expect(screen.getAllByRole("link", { name: "交通" }).map((link) => link.getAttribute("href"))).toEqual([
+      "/guides/topics/transport", "/guides/howto?topic=transport",
+    ]);
   });
 
   it("declares only the locales that are genuinely published", async () => {
@@ -231,8 +234,9 @@ describe("related reading", () => {
     expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "travel", destination: "tokyo" }, 4);
     expect(screen.getByRole("heading", { name: "延伸閱讀" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "東京交通票券怎麼選" }).getAttribute("href")).toBe("/guides/howto/tokyo-transit-passes");
-    // The article is on the page once, as the h1, and not again as a card.
-    expect(screen.getAllByText("成田機場到東京車站怎麼走")).toHaveLength(1);
+    // The article is on the page as the h1 and as the breadcrumb's current step, not as a card.
+    expect(screen.queryByRole("link", { name: "成田機場到東京車站怎麼走" })).toBeNull();
+    expect(screen.getAllByText("成田機場到東京車站怎麼走")).toHaveLength(2);
   });
 
   it("tops up from the first topic when the city has too few", async () => {

@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -206,19 +208,37 @@
           "text": "先確認樣式有載入、選取器有匹配，再查看哪條規則被覆蓋與最終計算值。尺寸問題則回到父容器、盒模型和內容檢查。"
         },
         {
-          "type": "link",
-          "text": "安排不同螢幕的響應式版面",
-          "url": "https://mokaair.com/zh-TW/life/responsive-layout-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排不同螢幕的響應式版面",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "建立文字與內容的視覺層級",
-          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立文字與內容的視覺層級",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查網站配色與文字對比",
-          "url": "https://mokaair.com/zh-TW/life/website-color-system"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查網站配色與文字對比",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
         }
       ],
       "sources": [

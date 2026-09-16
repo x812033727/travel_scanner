@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -94,8 +96,23 @@
           "text": "先選一個清楚的任務，例如確認衣物是否可取件，寫下開始條件與完成條件。接著列出資料已確認、處理中、查無訂單等狀態，畫簡單流程，再做能表達內容順序的畫面。範圍小一些，才能有時間檢查失敗與返回的情況。"
         },
         {
-          "type": "paragraph",
-          "text": "每次練習都留下三種資料：你想解決的問題、目前的設計，以及選擇這個做法的理由。若理由只是看起來比較好，可以補問視覺改動如何幫助閱讀或操作。若某項判斷尚待驗證，就標記假設，並說明需要觀察什麼才能決定是否修改。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每次練習都留下三種資料：你想解決的問題、目前的設計，以及選擇這個做法的理由。若理由只是看起來比較好，可以補問視覺改動如何幫助閱讀或操作。若某項判斷尚待驗證，就"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "假設，並說明需要觀察什麼才能決定是否修改。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +218,37 @@
           "text": "尚未訪談、測試或上線的部分應清楚標示。可把未驗證問題列為下一步，不能用虛構引言、人物誌或成果數字增加作品可信度。"
         },
         {
-          "type": "link",
-          "text": "安排資訊層級與版面閱讀順序",
-          "url": "https://mokaair.com/zh-TW/life/web-layout-hierarchy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排資訊層級與版面閱讀順序",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把學習成果寫成可信的作品案例",
-          "url": "https://mokaair.com/zh-TW/life/portfolio-case-study"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把學習成果寫成可信的作品案例",
+              "kind": "life",
+              "slug": "portfolio-case-study"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解網站從需求到驗收的合作流程",
-          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解網站從需求到驗收的合作流程",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
         }
       ],
       "sources": [

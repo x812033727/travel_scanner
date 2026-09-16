@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "marketing",
+    "content-marketing"
   ],
   "valid_until": null,
   "featured": false,
@@ -206,19 +207,37 @@
           "text": "只搬可寄送名單會漏掉退出限制。依通道保留必要排除狀態，並測試舊資料再次匯入時不會恢復成可寄送。"
         },
         {
-          "type": "link",
-          "text": "建立電子報訂閱與退出的完整流程",
-          "url": "https://mokaair.com/zh-TW/life/email-newsletter-planning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立電子報訂閱與退出的完整流程",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "核對 WordPress 表單與 Mailchimp 名單同步",
-          "url": "https://mokaair.com/zh-TW/life/mailchimp-wordpress-newsletter"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核對 WordPress 表單與 Mailchimp 名單同步",
+              "kind": "life",
+              "slug": "mailchimp-wordpress-newsletter"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理行銷工具之間的資料責任",
-          "url": "https://mokaair.com/zh-TW/life/martech-tool-stack"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理行銷工具之間的資料責任",
+              "kind": "life",
+              "slug": "martech-tool-stack"
+            }
+          ]
         }
       ],
       "sources": [

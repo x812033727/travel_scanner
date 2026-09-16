@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-plans"
   ],
   "valid_until": null,
   "featured": false,
@@ -47,9 +48,15 @@
           "text": "公司或團隊用的是另外兩種：Team 方案每人每月 20 美元起（年繳；月繳 25 美元），額度更高的 Premium 座位每人每月 100 美元起，至少 2 人；Enterprise 要聯絡業務。這兩種的細節不在這篇的範圍，以官網為準。另外要記得，所有個人方案都不含 API 用量，用程式串接 Claude 是另一個帳戶、另外計費。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -89,9 +96,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -113,9 +126,15 @@
           "text": "撞到 5 小時上限的人，多半是在同一個很長的對話裡一直用最高階的模型。先做三件事：把模型切到 Sonnet 或 Haiku 這種輕一階的模型、把 Effort 調低或關掉思考、把已經聊很長的對話收尾後開一個新對話，常用的資料放進 Projects，快取後不重複計算。三招都做了還是每週撞上限，才是 Max 5x 的客群；撞到 Max 5x 的上限，再看 Max 20x 或加購額度。升級前先到 設定 → Usage 看是 5 小時那條先滿還是每週那條先滿，前者換模型就能解，後者才需要更高的方案。"
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -131,14 +150,26 @@
           "text": "功能方面，免費版已經有大部分：Projects（最多 5 個）、Artifacts、檔案上傳、延伸思考、網頁搜尋、記憶、連接器、語音模式、無痕對話。Pro 加的是 Claude Code（終端機裡的程式代理）、Cowork（在桌面版委派多步驟任務）、Claude Design 與 Claude Science、無上限的 Projects、Research（多輪搜尋的深入研究）、更多模型、Microsoft 365 整合，以及搜尋過去的對話。Max 在功能上跟 Pro 一樣，多的是額度倍數、更高的輸出上限、新功能的早期存取，以及流量高峰時的優先權。"
         },
         {
-          "type": "link",
-          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+              "kind": "life",
+              "slug": "claude-model-lineup-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -146,8 +177,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "台灣在 Anthropic 的支援地區清單裡，claude.ai 與 API 都能用，註冊時要用台灣的手機號碼。網頁版付款只收信用卡與簽帳金融卡。說明中心對 Pro 的寫法是「美國 20 美元，支援的地區以當地幣別計價，各地區的月費不同，有些地區顯示的價格已含稅、有些在結帳時另加」，台灣會看到哪種幣別與價格，官方的答案是登入後到升級頁看，這篇不猜數字。稅是依帳單地址計算，帳單地址預設跟你信用卡的地址一樣，發票上會單獨列一行；發票在 設定 → Billing（帳單）可以下載，也會寄到信箱，主旨是「Your receipt from Anthropic」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣在 Anthropic 的支援地區清單裡，claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 與 API 都能用，註冊時要用台灣的手機號碼。網頁版付款只收信用卡與簽帳金融卡。說明中心對 Pro 的寫法是「美國 20 美元，支援的地區以當地幣別計價，各地區的月費不同，有些地區顯示的價格已含稅、有些在結帳時另加」，台灣會看到哪種幣別與價格，官方的答案是登入後到升級頁看，這篇不猜數字。稅是依帳單地址計算，帳單地址預設跟你信用卡的地址一樣，發票上會單獨列一行；發票在 設定 → Billing（帳單）可以下載，也會寄到信箱，主旨是「Your receipt from Anthropic」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -241,9 +287,15 @@
           "caption": "2026 年 9 月依 claude.com 定價頁與 Claude 說明中心整理；美國網頁版定價、不含稅，App 內購與各地幣別以官網為準。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,17 +27,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "要 AI 聊天工具給出能用的答案，關鍵不在背什麼「魔法咒語」，而是把問題問清楚：給背景與角色、說清楚要什麼、給範例、把大任務拆開、要它先問你缺什麼。OpenAI、Anthropic、Google 三家的官方提示指南講法各異，但這五件事全都寫在裡面，換哪一個工具都通用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 聊天工具給出能用的答案，關鍵不在背什麼「魔法咒語」，而是把問題問清楚：給背景與角色、說清楚要什麼、給範例、把大任務拆開、要它先問你缺什麼。OpenAI、Anthropic、Google 三家的官方提示指南講法各異，但這五件事全都寫在裡面，換哪一個工具都通用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這篇不談 API、不談程式，每個原則配一組台灣生活裡會遇到的情境，改前改後對照著看：寫信給房東、跟主管請假、幫小孩出數學題、排旅遊行程、比較兩台吸塵器。讀完你會知道一則提示詞該放哪五個部件、答案不對時怎麼在同一個對話裡修，以及四種一看就會失敗的問法。文中引用的原則全部來自三家在 2026 年 9 月的官方文件。還沒決定要用哪一個工具的人，可以先看總覽。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -181,28 +203,52 @@
           "text": "什麼時候該開新對話：對話已經很長、模型開始忘記前面的條件，或是你發現方向從一開始就錯了。原因在這篇有解釋：模型只看得到這個對話視窗裡的文字，塞太滿反而會漏。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型是什麼：用白話解釋 token、上下文與幻覺",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "常用的背景不必每次重打。ChatGPT 與 Claude 都有「專案」（Projects）功能，可以把說明與檔案放進去，之後在專案裡開的每個對話都會先讀到；Gemini 的對應做法是建立自訂的 Gem，Google 的說明頁直接寫著：Gem 指令的寫法跟寫好提示詞一樣，就是角色、任務、背景、格式四個部分。各工具怎麼設定，看各自的入門篇。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -273,9 +319,15 @@
           "text": "允許它說「不知道」、要它只用你給的資料，能大幅減少它亂編，但 Anthropic 的文件說得很清楚，這些方法只能減少、不能消除幻覺。任何它「從記憶裡」拿出來的具體事實，包括價格、營業時間、法規、藥物劑量、書名與網址，都要回到官方來源確認。怎麼查、查哪裡，另有一篇專門講。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         }
       ],
       "sources": [

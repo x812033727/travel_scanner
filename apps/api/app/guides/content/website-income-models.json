@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -98,8 +99,23 @@
           "text": "原創試算：假設紀錄表每份 NT$300，每單變動成本 NT$50，每月固定現金成本 NT$1,500，單份可貢獻 NT$250，需賣出 6 份才能覆蓋這些已列現金成本。若再計入每月 NT$1,500 的作者時間成本，需覆蓋總額 NT$3,000，則是 12 份。"
         },
         {
-          "type": "paragraph",
-          "text": "公式為固定成本除以售價減每單變動成本；售價低於或等於變動成本時，不能照這個例子期待多賣就回本。這是簡化情境，尚未納入初期製作回收、稅務、退款與需求變化，也不表示賣出 12 份就足以支持生活。應把不確定成本另外標記，逐步用真實資料更新。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "公式為固定成本除以售價減每單變動成本；售價低於或等於變動成本時，不能照這個例子期待多賣就回本。這是簡化情境，尚未納入初期製作回收、稅務、退款與需求變化，也不表示賣出 12 份就足以支持生活。應把不確定成本另外"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，逐步用真實資料更新。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -206,19 +222,37 @@
           "text": "收入減掉直接支出後，還要考慮作者工時、初期投入、售後與其他適用費用。試算只覆蓋已列出的假設，不能代替真實交易及需求驗證。"
         },
         {
-          "type": "link",
-          "text": "核對聯盟佣金與有效交易",
-          "url": "https://mokaair.com/zh-TW/life/affiliate-marketing-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核對聯盟佣金與有效交易",
+              "kind": "life",
+              "slug": "affiliate-marketing-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規劃自有網站與平台通路",
-          "url": "https://mokaair.com/zh-TW/life/independent-store-marketplace"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃自有網站與平台通路",
+              "kind": "life",
+              "slug": "independent-store-marketplace"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "釐清 ROI 與費用範圍",
-          "url": "https://mokaair.com/zh-TW/life/marketing-metrics-roi-roas"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "釐清 ROI 與費用範圍",
+              "kind": "life",
+              "slug": "marketing-metrics-roi-roas"
+            }
+          ]
         }
       ],
       "sources": [

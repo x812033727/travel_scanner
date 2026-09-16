@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AIO 這三個字母在中文的搜尋最佳化討論裡同時指三件事：Google 搜尋裡叫做 AI Overviews 的功能、行銷服務業造出來的 AI Optimization 服務，以及更早以前文案裡的 All-in-One 套裝方案。結論很直接：AIO 是一個命名碰撞，不是一門方法。看到它，先確認對方指的是哪一個。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AIO 這三個字母在中文的搜尋最佳化討論裡同時指三件事：Google 搜尋裡叫做 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Overviews 的功能、行銷服務業造出來的 AI Optimization 服務，以及更早以前文案裡的 All-in-One 套裝方案。結論很直接：AIO 是一個命名碰撞，不是一門方法。看到它，先確認對方指的是哪一個。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -39,8 +55,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "三個所指的來源與出現時間都不一樣，這正是它們會撞在一起的原因：一個是 Google 給自家功能取的產品名稱，一個是行銷服務業自己造的服務名稱，一個是用了很多年、跟生成式 AI 無關的通用縮寫。下面三節分別交代各自的出處。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三個所指的來源與出現時間都不一樣，這正是它們會撞在一起的原因：一個是 Google 給自家功能取的產品名稱，一個是行銷服務業自己造的服務名稱，一個是用了很多年、跟"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 無關的通用縮寫。下面三節分別交代各自的出處。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -71,8 +102,23 @@
           "text": "Google 搜尋中心的開發者文件用兩個名字稱呼搜尋裡的生成式 AI 體驗：AI Overviews 與 AI Mode。官方部落格在 2024 年 5 月 14 日的 Google I/O 公告裡寫下 AI Overviews 開始向美國所有使用者推出，AI Mode 則是 2025 年 3 月 5 日另一則公告宣布的 Labs 實驗。這是第一級：官方部落格自己寫的。"
         },
         {
-          "type": "paragraph",
-          "text": "重點在於 AI Overviews 是一個功能的名字，就像圖片搜尋是一個功能的名字，功能名稱本身不描述任何做法。Google 的開發者文件寫得很清楚：要出現在 AI Overviews 或 AI Mode 裡沒有額外要求，也不需要其他特別的最佳化，不必新增機器可讀的檔案、AI 專用文字檔或標記，也沒有哪一種 schema.org 結構化資料是為此而設的。這是第一級，官方文件說明的機制。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重點在於 AI Overviews 是一個功能的名字，就像圖片搜尋是一個功能的名字，功能名稱本身不描述任何做法。Google 的開發者文件寫得很清楚：要出現在 AI Overviews 或 AI Mode 裡沒有額外要求，也不需要其他特別的最佳化，不必新增機器可讀的檔案、AI 專用文字檔或"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，也沒有哪一種 schema.org 結構化資料是為此而設的。這是第一級，官方文件說明的機制。"
+            }
+          ]
         },
         {
           "type": "paragraph",

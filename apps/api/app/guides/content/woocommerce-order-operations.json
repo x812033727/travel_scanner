@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "woocommerce"
   ],
   "valid_until": null,
   "featured": false,
@@ -64,8 +66,23 @@
           "text": "依開發者文件完成官方帳號、Messaging API 憑證與 LINE Login 設定，再讓顧客帳號建立所需綁定。後續通知需要可識別的收件對象；顧客只在備註寫 LINE 暱稱，並不代表網站已取得能推播的識別資料。"
         },
         {
-          "type": "paragraph",
-          "text": "新增規則時分別選事件、條件、通知方式和內容。例如包裹交寄後才寄追蹤資訊，等待付款時只說明付款步驟。物流外掛提供的門市或追蹤欄位，要從支援的參數選取，再以測試訂單確認，不直接複製其他商店的變數名稱。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "新增規則時分別選事件、條件、通知方式和內容。例如包裹交寄後才寄追蹤資訊，等待付款時只說明付款步驟。物流外掛提供的門市或追蹤欄位，要從支援的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "選取，再以測試訂單確認，不直接複製其他商店的變數名稱。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -121,8 +138,23 @@
           "text": "在文件設定中填妥商店資訊、紙張尺寸與所需欄位，用中文姓名、長地址、多項商品及不同規格建立測試文件。中文缺字時查看外掛提供的 Unicode 或 CJK 字型擴充，不能以網頁顯示正常推論 PDF 也會正常。"
         },
         {
-          "type": "paragraph",
-          "text": "先下載 PDF 檢查分頁、數量與金額，再用實際印表機試印。確認縮放不會裁掉單號，雙面列印不會把兩位顧客的單據混在一起。批次列印時保留訂單範圍與份數，重印另外標記，減少重複包裝。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先下載 PDF 檢查分頁、數量與金額，再用實際印表機試印。確認縮放不會裁掉單號，雙面列印不會把兩位顧客的單據混在一起。批次列印時保留訂單範圍與份數，重印另外"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，減少重複包裝。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,14 +228,26 @@
           "text": "設定完成後，先走完接單、付款核對、列印、交寄與通知的完整演練，留下單號和每一步結果。批次操作前再確認篩選範圍，讓方便的批次工具不會把同一個錯誤放大到整天訂單。"
         },
         {
-          "type": "link",
-          "text": "設定 WooCommerce 訂單信與驗收寄送",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-order-email"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "設定 WooCommerce 訂單信與驗收寄送",
+              "kind": "life",
+              "slug": "woocommerce-order-email"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理配送區域與運費規則",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-shipping-rules"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理配送區域與運費規則",
+              "kind": "life",
+              "slug": "woocommerce-shipping-rules"
+            }
+          ]
         }
       ],
       "sources": [

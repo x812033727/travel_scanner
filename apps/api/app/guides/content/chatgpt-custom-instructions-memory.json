@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -47,9 +48,15 @@
           "text": "判斷方法：這件事你希望它一字不差照做，就寫進自訂指令；這件事你只是提過、之後可能會變，就交給記憶，但要定期檢查。兩者可以同時開，也可以只開自訂指令、關掉記憶，適合共用電腦或不想被累積偏好的人。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -93,9 +100,15 @@
           "text": "寫好之後開一個新對話，問一句「你知道我是誰、要怎麼回答我嗎」檢查它有沒有讀到；沒有生效就回設定頁看啟用開關。自訂指令的內容與對話一樣會用來改善模型，不希望的話到設定 → 資料控制（Data Controls）關掉「為所有人改善模型（Improve the model for everyone）」。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -121,9 +134,15 @@
           "text": "在對話裡直接講也可以：「記住這件事：我的報告一律用 Word 格式」它會存成一條記憶；「忘掉我的公司名稱」它會刪掉；「你記得我什麼」它會列出來。不想留下任何痕跡時用暫時對話：開新對話，點右上角膠囊狀的「暫時（Temporary）」按鈕，開始時要選「個人化」或「未個人化」，開始後不能改。個人化的暫時對話會讀既有記憶與自訂指令，但不會新增或更新記憶；未個人化的連自訂指令與記憶都不讀。暫時對話不進歷史紀錄、不用來訓練模型，OpenAI 為了安全可能保留最多 30 天。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -152,14 +171,26 @@
           "text": "還有一件事：OpenAI 的定價頁寫明系統指令與記憶會占掉共用上下文視窗的一部分，真正留給你貼資料的空間比總數小。自訂指令不要塞滿字數上限，寫必要的就好；長篇背景資料放進專案的檔案。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "heading",

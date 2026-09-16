@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "ai-safety"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +26,36 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 做的影片、聲音、圖片要不要標示，先分清楚兩件事：平台規範管的是你的帳號，法律管的是責任。三大平台的規則其實很一致——內容看起來像真的，而且是 AI 生成或大幅變造的，就要揭露；不像真的，或只是調色、美顏、裁切這類微調，就不用。台灣到今天為止沒有法律要求一般使用者為自己發布的 AI 內容加註標示，但深偽在選罷法與刑法裡各有規定。"
+          "type": "summary",
+          "items": [
+            "查到今天為止，台灣沒有一條法律要求一般使用者為自己發布的 AI 內容加註標示。",
+            "跟這題有關的規定分成三塊，都可以在全國法規資料庫讀到原文。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 做的影片、聲音、圖片要不要標示，先分清楚兩件事：平台規範管的是你的帳號，法律管的是責任。三大平台的規則其實很一致——內容看起來像真的，而且是 AI 生成或大幅變造的，就要揭露；不像真的，或只是調色、美顏、裁切這類"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，就不用。台灣到今天為止沒有法律要求一般使用者為自己發布的 AI 內容加註標示，但深偽在選罷法與刑法裡各有規定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,9 +84,15 @@
           "text": "第三層怎麼嵌、怎麼查、什麼時候會消失，站上有專篇。"
         },
         {
-          "type": "link",
-          "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -66,8 +100,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "YouTube 說明頁把必須揭露的範圍寫成三句話：讓真實人物看起來說了或做了他們沒說沒做的事、加工真實事件或地點的影片片段、生成看似真實但從未發生的場景。官方舉的例子包括 AI 生成的音樂、替真實地點補拍的 AI 畫面、讓某個人看起來給了他沒給過的建議、把真實人物拍成被逮捕的樣子。反過來，不需要揭露的是非寫實內容與微幅編輯：美顏濾鏡、色彩與亮度調整、背景模糊等特效、用生成式 AI 做大綱腳本縮圖標題、字幕製作、畫質提升或修復，以及複製自己的聲音做旁白或配音。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "YouTube 說明頁把必須揭露的範圍寫成三句話：讓真實人物看起來說了或做了他們沒說沒做的事、加工真實事件或地點的影片片段、生成看似真實但從未發生的場景。官方舉的例子包括 AI 生成的音樂、替真實地點補拍的 AI 畫面、讓某個人看起來給了他沒給過的建議、把真實人物拍成被逮捕的樣子。反過來，不需要揭露的是非寫實內容與微幅編輯：美顏濾鏡、色彩與亮度調整、背景模糊等特效、用"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 做大綱腳本縮圖標題、字幕製作、畫質提升或修復，以及複製自己的聲音做旁白或配音。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -84,17 +133,38 @@
           "text": "標籤出現在哪裡，看內容有多逼真：極為逼真的 AI 內容，影片播放器中也可能顯示標籤；非極為逼真或以動畫呈現的，標籤可能顯示在展開後的說明欄。同一頁寫明，揭露 AI 內容不會限制影片的觀眾群，也不影響營利資格；怕被降觸及所以不標，這個顧慮官方直接否認了。"
         },
         {
-          "type": "paragraph",
-          "text": "YouTube 也會自己加標籤：用 YouTube 自家生成式 AI 工具製作的內容、含有 C2PA 中繼資料的內容，以及系統判定為 AI 生成或變造的內容。自動加上時工作室會通知，多數情況創作者可以在揭露問卷裡改回「否」，但用 YouTube AI 工具製作、含 C2PA 中繼資料，或經人工審查後加上的標籤不能調整。持續選擇不揭露的風險寫在同一頁：可能被人工加上標籤，或受到移除內容、暫停 YouTube 合作夥伴計畫資格等處分。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "YouTube 也會自己加標籤：用 YouTube 自家生成式 AI 工具製作的內容、含有 C2PA 中繼資料的內容，以及系統判定為 AI 生成或變造的內容。自動加上時工作室會通知，多數情況創作者可以在揭露問卷裡改回「否」，但用 "
+            },
+            {
+              "type": "article",
+              "text": "YouTube AI",
+              "kind": "life",
+              "slug": "ai-for-youtube-creators"
+            },
+            {
+              "type": "text",
+              "text": " 工具製作、含 C2PA 中繼資料，或經人工審查後加上的標籤不能調整。持續選擇不揭露的風險寫在同一頁：可能被人工加上標籤，或受到移除內容、暫停 YouTube 合作夥伴計畫資格等處分。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "情況反過來，是別人拿你的臉做 AI 內容時，YouTube 另有相似度偵測功能：年滿 18 歲的頻道擁有者或管理員完成身分驗證後，可以查看疑似變造或生成自己臉孔的影片，再依隱私權或著作權程序要求移除。"
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -114,9 +184,15 @@
           "text": "廣告是另一套標準，也更嚴。Meta 的社會議題、選舉或政治廣告標準寫，廣告含有以第三方生成式 AI 工具製作或編輯的擬真圖片、影片或聽起來真實的音訊時必須揭露；判定為未依規定揭露的廣告會被退件，反覆未揭露可能對廣告主處分。同一頁寫，自 2026 年 6 月 1 日起 Meta 也會用自動偵測技術找出這類內容，偵測到就在廣告詳細資料顯示 AI Info 標籤，廣告主不必另外動作。"
         },
         {
-          "type": "link",
-          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
-          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+              "kind": "life",
+              "slug": "meta-ai-whatsapp-instagram"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -136,9 +212,15 @@
           "text": "自動辨識這一層 TikTok 走 C2PA。2024 年 5 月 9 日的官方文章寫，它是第一個導入內容憑證技術的影音分享平台，會讀內容憑證來辨識並標示 AI 生成內容。現行公約是 2025 年 8 月版、2025 年 9 月 13 日生效，頁面同時公告 2026 年 9 月 24 日換新版；新版頁面的 AI 生成內容一節文字與現行版相同，這一輪更新不影響上面的規則。App 裡開啟 AIGC 標籤的實際位置以官網當天版本為準。"
         },
         {
-          "type": "link",
-          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
-          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+              "kind": "life",
+              "slug": "short-video-marketing"
+            }
+          ]
         },
         {
           "type": "image",
@@ -199,8 +281,23 @@
           "text": "先講結論：查到今天為止，台灣沒有一條法律要求一般使用者為自己發布的 AI 內容加註標示。跟這題有關的規定分成三塊，都可以在全國法規資料庫讀到原文。"
         },
         {
-          "type": "paragraph",
-          "text": "第一塊是人工智慧基本法，民國 115 年 1 月 14 日公布，全文 20 條，依第 20 條自公布之日起施行。最常被引用的是第 4 條第 5 款「透明與可解釋」，裡面確實寫了「人工智慧之產出應做適當資訊揭露或標記」；但第 4 條整條的主詞是「政府推動人工智慧之研發與應用」，是政府自己要遵循的原則，不是對一般使用者課標示義務。另一條跟標示有關的第 5 條第 2 項，對象是經認定為高風險應用的產品或系統。第 2 條寫明中央主管機關是國家科學及技術委員會；第 18 條要求政府在施行後二年內完成相關法規的制定、修正或廢止。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一塊是人工智慧基本法，民國 115 年 1 月 14 日公布，全文 20 條，依第 20 條自公布之日起施行。最常被引用的是第 4 條第 5 款「透明與可解釋」，裡面確實寫了「人工智慧之產出應做適當資訊揭露或"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "」；但第 4 條整條的主詞是「政府推動人工智慧之研發與應用」，是政府自己要遵循的原則，不是對一般使用者課標示義務。另一條跟標示有關的第 5 條第 2 項，對象是經認定為高風險應用的產品或系統。第 2 條寫明中央主管機關是國家科學及技術委員會；第 18 條要求政府在施行後二年內完成相關法規的制定、修正或廢止。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -251,14 +348,26 @@
           "text": "接案或幫客戶做內容時，把「哪些素材是 AI 生成的、誰負責在平台上揭露」寫進需求單或合約，比事後補標省事得多。至於輸出的所有權與商用條件，那是另一個題目，站上有專篇。"
         },
         {
-          "type": "link",
-          "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-copyright-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         }
       ],
       "sources": [

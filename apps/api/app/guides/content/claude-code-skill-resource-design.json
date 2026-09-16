@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 169,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "當 SKILL.md 越寫越長，真正的問題常是每次都讀進不需要的背景，卻找不到當前任務要用的檢查表。本篇把差異審查 Skill 拆成入口、資料邏輯參考、畫面參考、報告範本與參數程式，並用兩種 diff 驗證資料選擇是否合理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "當 SKILL.md 越寫越長，真正的問題常是每次都讀進不需要的背景，卻找不到當前任務要用的檢查表。本篇把差異審查 Skill 拆成入口、資料邏輯參考、畫面參考、報告範本與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "程式，並用兩種 diff 驗證資料選擇是否合理。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -112,8 +128,23 @@
           "text": "寫一份短而完整的入口"
         },
         {
-          "type": "paragraph",
-          "text": "將材料中的 review-change 複製到 .claude/skills/review-change。先比較原始入口，再用下面段落改寫流程；保留原有 frontmatter。每一個參考連結使用相對 Skill 目錄的位置，不放作者電腦的絕對路徑。複製整個資料夾後，關係仍應成立。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "將材料中的 review-change 複製到 .claude/"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/review-change。先比較原始入口，再用下面段落改寫流程；保留原有 frontmatter。每一個參考連結使用相對 Skill 目錄的位置，不放作者電腦的絕對路徑。複製整個資料夾後，關係仍應成立。"
+            }
+          ]
         },
         {
           "type": "code",

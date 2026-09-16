@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Google Sheets 裡的 Gemini 能協助理解欄位、撰寫公式、整理資料與建立分析。本篇用三筆虛構活動報名資料練習，完成一張可核對的費用表。目標是知道公式為何得到某個數字，以及遇到空白、文字或重複資料時如何處理，不只把 AI 的答案貼進表格。把它當試算表 AI 用的前提，是每一條公式都能回頭核對。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google Sheets 裡的 Gemini 能協助理解欄位、撰寫公式、整理資料與建立分析。本篇用三筆虛構活動報名資料練習，完成一張可核對的費用表。目標是知道公式為何得到某個數字，以及遇到空白、文字或重複資料時如何處理，不只把 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的答案貼進表格。把它當試算表 AI 用的前提，是每一條公式都能回頭核對。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,9 +71,10 @@
               "text": "準備電腦瀏覽器、Google 試算表，以及具備相關 Gemini 功能的帳號。公司帳號另受管理設定影響，參閱"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "小團隊導入",
-              "url": "https://mokaair.com/zh-TW/life/google-workspace-ai-for-small-business"
+              "kind": "life",
+              "slug": "google-workspace-ai-for-small-business"
             },
             {
               "type": "text",
@@ -163,8 +180,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "「公式出現解析錯誤？」先看貼上內容是否含全形符號、彎引號或換行，再核對該試算表地區設定的參數分隔符號。保留原始錯誤訊息和儲存格位置，請 Gemini 針對同一公式修正，不要直接改成固定答案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「公式出現解析錯誤？」先看貼上內容是否含全形符號、彎引號或換行，再核對該試算表地區設定的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "分隔符號。保留原始錯誤訊息和儲存格位置，請 Gemini 針對同一公式修正，不要直接改成固定答案。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -178,9 +210,10 @@
               "text": "「AI 能把整張表清理好嗎？」先在副本測試並定義哪些欄不能改。分類、去重和合併各有不同判準，三者應分開驗收。若需定期批次處理，可以接著學"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 文件工具",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-assistant"
+              "kind": "life",
+              "slug": "gemini-api-document-assistant"
             },
             {
               "type": "text",
@@ -233,18 +266,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gmail、Docs 與 Slides",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+              "kind": "life",
+              "slug": "gemini-in-gmail-docs-sheets"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 檔案與 JSON",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
             },
             {
               "type": "text",
@@ -253,9 +288,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

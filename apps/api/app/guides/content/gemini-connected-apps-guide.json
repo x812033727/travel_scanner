@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -59,9 +60,10 @@
               "text": "Google 搜尋等公開資料、授權讀取的私人檔案、個人化資訊是不同來源。Gemini 能回答地圖或影片相關問題，不一定代表它已讀取你的私人地點清單或觀看紀錄。看來源與設定比從答案猜測權限可靠；"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動與隱私教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -97,18 +99,20 @@
               "text": "若在網頁看不到手機限定的通話或裝置功能，這通常是平臺差異。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Android 操作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-on-android-assistant"
+              "kind": "life",
+              "slug": "gemini-on-android-assistant"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "iPhone 操作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-ios-app-guide"
+              "kind": "life",
+              "slug": "gemini-ios-app-guide"
             },
             {
               "type": "text",
@@ -143,9 +147,10 @@
               "text": "搜尋不到時，先在 Drive 自己開啟檔案，確認權限及帳號；再檢查文件是否屬於支援類型，或剛建立仍需等待同步。不要不停擴大成「查我全部資料」。若只是要分析單一檔案，也可採"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "手動上傳檔案",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -180,9 +185,10 @@
               "text": "需要提醒時，注意 Calendar 事件與 Tasks 工作可能是不同服務。有多個動作的請求，如果其中一個必要服務未啟用，整個請求可能無法完成。先拆成建立事件與設定提醒，逐一核對；對排程型代理另見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark 任務與排程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
@@ -229,12 +235,23 @@
           "inlines": [
             {
               "type": "text",
-              "text": "「可以連自己的 MCP 嗎？」查證時自訂 Connected Apps 透過 MCP 連線的入口限定具 Spark 資格並用於 Spark 任務；它與"
+              "text": "「可以連自己的 "
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 嗎？」查證時自訂 Connected Apps 透過 MCP 連線的入口限定具 Spark 資格並用於 Spark 任務；它與"
+            },
+            {
+              "type": "article",
               "text": "Gemini CLI 的 MCP 設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+              "kind": "life",
+              "slug": "gemini-cli-mcp-extensions"
             },
             {
               "type": "text",
@@ -283,18 +300,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄與隱私",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini Spark",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
@@ -303,9 +322,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

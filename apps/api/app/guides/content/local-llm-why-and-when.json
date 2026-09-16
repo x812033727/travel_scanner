@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "在自己電腦跑 AI，換到的是三件具體的事：提示詞與檔案不離開這台機器、模型下載完成後可以離線使用、不必每個月付訂閱費。付出的則是硬體門檻、等待時間、品質落差，以及自己維護模型與軟體的工夫。這是一筆交易，不是升級，值不值得完全看你平常拿 AI 做什麼。搜「本機 AI」或「離線 AI」的人，先算這筆交易。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在自己電腦跑 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，換到的是三件具體的事：提示詞與檔案不離開這台機器、模型下載完成後可以離線使用、不必每個月付訂閱費。付出的則是硬體門檻、等待時間、品質落差，以及自己維護模型與軟體的工夫。這是一筆交易，不是升級，值不值得完全看你平常拿 AI 做什麼。搜「本機 AI」或「離線 AI」的人，先算這筆交易。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,14 +63,26 @@
           "text": "跟雲端服務的差別只在「運算發生在哪裡」。你在瀏覽器用雲端助理時，提示詞會送到對方的機房、由對方的硬體運算、再把答案送回來；本機模型則是提示詞從你的鍵盤進到同一台電腦的記憶體，答案也從那裡出來。這個位置差異同時決定了隱私、離線能力與費用三件事，下面三節分別談。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型（Large Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型（Large Language Model）是什麼",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -80,14 +108,26 @@
           "code": "{\n  \"disable_ollama_cloud\": true\n}"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -135,9 +175,15 @@
           "text": "兩種結構沒辦法用一個數字比高下，因為答案取決於用量：偶爾用幾次，雲端便宜得多；每天長時間重複同一種工作，一次性硬體才有機會攤平。這篇不列任何金額，各家的訂閱價、API 單價與硬體售價一律以官網當天的頁面為準，實際怎麼算同系列有一篇專門在算。"
         },
         {
-          "type": "link",
-          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -145,31 +191,79 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "硬體是第一道門檻，而且官方模型卡寫得很清楚。OpenAI 在 Hugging Face 上以 Apache 2.0 授權釋出的 gpt-oss 是個好例子：小的 gpt-oss-20b 是「21B parameters with 3.6B active parameters」，模型卡說它可以「run within 16GB of memory」，定位是「for lower latency, and local or specialized use cases」；大的 gpt-oss-120b 是「117B parameters with 5.1B active parameters」，要「fit into a single 80GB GPU」。一般家用電腦能碰的是前者那一類。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "硬體是第一道門檻，而且官方模型卡寫得很清楚。OpenAI 在 Hugging Face 上以 Apache 2.0 授權釋出的 gpt-oss 是個好例子：小的 gpt-oss-20b 是「21B "
+            },
+            {
+              "type": "article",
+              "text": "parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " with 3.6B active parameters」，模型卡說它可以「run within 16GB of memory」，定位是「for lower latency, and local or specialized use cases」；大的 gpt-oss-120b 是「117B parameters with 5.1B active parameters」，要「fit into a single 80GB GPU」。一般家用電腦能碰的是前者那一類。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "品質落差也可以只看官方數字。Google 的 Gemma 4 模型卡把同一代不同尺寸放進同一張評測表：MMLU Pro 這一項，最小的 E2B 是 60.0%、最大的 31B 是 85.2%；GPQA Diamond 差距更大，E2B 是 43.4%、31B 是 84.3%。官方對尺寸的定位也不同，E2B 與 E4B 寫的是給手機、邊緣裝置與瀏覽器用，31B 才是「bridges the gap between server-grade performance and local execution」。你在自己電腦上跑的，通常是這張表裡尺寸較小的那幾顆。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "品質落差也可以只看官方數字。Google 的 Gemma 4 模型卡把同一代不同尺寸放進同一張"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "表：MMLU Pro 這一項，最小的 E2B 是 60.0%、最大的 31B 是 85.2%；GPQA Diamond 差距更大，E2B 是 43.4%、31B 是 84.3%。官方對尺寸的定位也不同，E2B 與 E4B 寫的是給手機、邊緣裝置與瀏覽器用，31B 才是「bridges the gap between server-grade performance and local execution」。你在自己電腦上跑的，通常是這張表裡尺寸較小的那幾顆。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "速度與維護是另外兩筆帳。同一顆模型放在自己的顯示卡上跑，吐字速度取決於你的硬體，跟機房的規格不是同一個等級；模型更新、量化版本怎麼挑、軟體升級、出問題自己查，也全都變成你的工作，沒有客服可以問。願意花這些時間的人，才適合把主力搬到本機。"
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "小型語言模型（Small Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小型語言模型（Small Language Model）是什麼",
+              "kind": "life",
+              "slug": "ai-term-small-language-model"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -251,24 +345,48 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
-          "url": "https://mokaair.com/zh-TW/life/open-webui-chat-interface"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Open WebUI：給本機模型一個像 ChatGPT 的介面",
+              "kind": "life",
+              "slug": "open-webui-chat-interface"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         }
       ],
       "sources": [

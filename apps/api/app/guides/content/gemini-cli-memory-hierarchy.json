@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,9 +56,10 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "單一 GEMINI.md 的建立與驗證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
@@ -131,9 +133,10 @@
               "text": "匯入後執行 refresh，再用 show 檢查共用規則內容是否確實出現。接著把共用檔案的一句話修改，重做驗證；這能檢查路徑與更新流程，而不是只測模型是否剛好記得之前對話。若工具設定改過 context.fileName，應先到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
@@ -174,9 +177,10 @@
               "text": "「清除對話後規則還在」是因為對話歷史與檔案上下文是不同資料。/clear 不是刪除 GEMINI.md，也不是停用全域規則。需要整理對話時參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "對話與上下文管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-sessions-context"
+              "kind": "life",
+              "slug": "gemini-cli-sessions-context"
             },
             {
               "type": "text",
@@ -192,9 +196,10 @@
               "text": "「新增子目錄規則卻沒有變化」先確認工具是否真的存取該目錄，以及它是否在可信任的工作範圍內。你可以要求工具閱讀那個資料夾的一個公開測試檔，再檢視載入狀況。若仍不同，保留最小資料夾結構與版本資訊，依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "疑難排解",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+              "kind": "life",
+              "slug": "gemini-cli-troubleshooting"
             },
             {
               "type": "text",
@@ -243,18 +248,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
@@ -263,9 +270,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

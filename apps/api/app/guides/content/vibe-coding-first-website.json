@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "不會寫程式也想要一頁自己的網站，現在的做法不是先學 HTML，而是把想要的東西用中文描述清楚，讓 AI 產生一個單一的 HTML 檔，在瀏覽器打開來看，再用對話一次改一件事，最後放到免費的靜態網站服務上。這種做法通常稱為 vibe coding（氛圍編碼）。搜「做網站 AI」或「架站 AI」找到的工具，大多走的就是這條路。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不會寫程式也想要一頁自己的網站，現在的做法不是先學 HTML，而是把想要的東西用中文描述清楚，讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 產生一個單一的 HTML 檔，在瀏覽器打開來看，再用對話一次改一件事，最後放到免費的靜態網站服務上。這種做法通常稱為 vibe coding（氛圍編碼）。搜「做網站 AI」或「架站 AI」找到的工具，大多走的就是這條路。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -63,9 +79,15 @@
           "code": "請幫我做一個單一檔案的個人網站，檔名 index.html。\n\n目的：讓別人在半分鐘內知道我是誰、做什麼、怎麼找到我。\n內容：\n- 標題：（你的名字）\n- 一句話介紹：（你實際在做的事）\n- 三個作品連結：（你自己的三個網址與說明）\n- 聯絡方式：（你願意公開的信箱）\n風格：米白底、深綠色重點、圓角卡片、標題置中、字級大一點。\n不要：不要動畫、不要留言功能、不要廣告或追蹤程式碼、不要連外部圖片或字型。\n技術：只產生一個 HTML 檔，CSS 全部寫在同一個檔案裡，不要用任何框架。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -89,19 +111,37 @@
           "text": "Gemini 的 Canvas 在同一個面板裡做文件、簡報、程式與網頁，按右上角的程式碼可以直接改，旁邊就是預覽，出錯時能打開主控台看訊息，完成後用分享與匯出複製連結。缺點是官方說明只寫必須登入 Gemini 系列應用程式，沒有標示需要哪一種付費方案，免費帳號的實際額度以官網為準。"
         },
         {
-          "type": "link",
-          "text": "Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具",
-          "url": "https://mokaair.com/zh-TW/life/claude-artifacts-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Artifacts 教學：不會寫程式也能在對話裡做出網頁、圖表與小工具",
+              "kind": "life",
+              "slug": "claude-artifacts-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+              "kind": "life",
+              "slug": "chatgpt-canvas-writing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Canvas：編輯文章、簡報與製作小工具",
-          "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Canvas：編輯文章、簡報與製作小工具",
+              "kind": "life",
+              "slug": "gemini-canvas-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -256,24 +296,48 @@
           "text": "一頁網站做完，你已經走完描述、產出、檢查、修改、發布這一整圈，換到任何題目都適用。接下來想加頁面與文章列表，會碰到靜態網站產生器；想要自己的網域與主機，會碰到伺服器；想讓 AI 做比較大的功能，就要把需求拆成規劃、實作與驗證三段。"
         },
         {
-          "type": "link",
-          "text": "氛圍編碼（Vibe Coding）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "氛圍編碼（Vibe Coding）是什麼",
+              "kind": "life",
+              "slug": "ai-term-vibe-coding"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 做個人部落格：靜態網站產生器與部署",
-          "url": "https://mokaair.com/zh-TW/life/ai-build-personal-blog-tutorial"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做個人部落格：靜態網站產生器與部署",
+              "kind": "life",
+              "slug": "ai-build-personal-blog-tutorial"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
-          "url": "https://mokaair.com/zh-TW/life/deploy-ai-built-site-to-vps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把 AI 幫你寫的網站放上網：VPS、網域與 HTTPS 一次搞定",
+              "kind": "life",
+              "slug": "deploy-ai-built-site-to-vps"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -108,8 +109,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "LoRA 改變的是微調時更新哪些參數，量化改變的是數值表示，兩者可搭配。知識蒸餾則用教師訊號訓練學生，可能改變架構與能力分佈，也不是把同一組數值換成較少位元。模型可以經過多種處理，因此看到一個小檔案，不能單憑尺寸判定它是蒸餾、量化還是只有附加參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LoRA 改變的是"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "時更新哪些參數，量化改變的是數值表示，兩者可搭配。知識蒸餾則用教師訊號訓練學生，可能改變架構與能力分佈，也不是把同一組數值換成較少位元。模型可以經過多種處理，因此看到一個小檔案，不能單憑尺寸判定它是蒸餾、量化還是只有附加參數。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -152,24 +168,48 @@
           "text": "同時看品質、等待時間與峰值記憶體。模型檔較小只是其中一項，不足以證明部署更合適。"
         },
         {
-          "type": "link",
-          "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-lora"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+              "kind": "life",
+              "slug": "ai-term-knowledge-distillation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

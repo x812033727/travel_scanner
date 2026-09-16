@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "讓 AI 生成一個預約頁，很快就可能看到完整的按鈕與卡片；真正需要確認的卻是它用了哪些元件、是否改了既有規則，以及資料和操作是否符合預定用途。評估 Figma AI 時，先界定需要的是設計檔、互動應用，還是外部工具協助修改畫布。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生成一個預約頁，很快就可能看到完整的按鈕與卡片；真正需要確認的卻是它用了哪些元件、是否改了既有規則，以及資料和操作是否符合預定用途。評估 Figma AI 時，先界定需要的是設計檔、互動應用，還是外部工具協助修改畫布。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "以下以原創共享廚房預約頁為例，功能與供應狀態依 2026 年 9 月 14 日查閱的官方文件整理。本篇沒有實際呼叫 Figma AI、連接 MCP、修改設計檔或扣用點數；範例是可供讀者執行的評估流程，不是實測成果。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "以下以原創共享廚房預約頁為例，功能與供應狀態依 2026 年 9 月 14 日查閱的官方文件整理。本篇沒有實際呼叫 Figma AI、連接 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "、修改設計檔或扣用點數；範例是可供讀者執行的評估流程，不是實測成果。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -206,19 +237,37 @@
           "text": "回到實際檔案檢查元件、資料和變更範圍。保留待確認事項與生成參與紀錄，並在正式使用前重新核對 beta、點數和分享設定。"
         },
         {
-          "type": "link",
-          "text": "了解 Figma Frame、元件與交接",
-          "url": "https://mokaair.com/zh-TW/life/figma-design-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "了解 Figma Frame、元件與交接",
+              "kind": "life",
+              "slug": "figma-design-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "另外檢查外掛的資料與素材權限",
-          "url": "https://mokaair.com/zh-TW/life/figma-plugin-assets"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "另外檢查外掛的資料與素材權限",
+              "kind": "life",
+              "slug": "figma-plugin-assets"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排原型要驗證的使用者任務",
-          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排原型要驗證的使用者任務",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
         }
       ],
       "sources": [

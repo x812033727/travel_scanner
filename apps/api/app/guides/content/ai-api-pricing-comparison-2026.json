@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-plans"
   ],
   "valid_until": null,
   "featured": false,
@@ -60,18 +61,20 @@
               "text": "還沒搞清楚 token 怎麼數的，先看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "token（Token）是什麼：AI 如何計算文字長度",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+              "kind": "life",
+              "slug": "ai-term-token"
             },
             {
               "type": "text",
               "text": "；訂閱制與 API 額度的差別，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-              "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+              "kind": "life",
+              "slug": "ai-coding-cost-tokens-explained"
             },
             {
               "type": "text",
@@ -101,9 +104,15 @@
           "text": "再往下差距更明顯。MiniMax 的 MiniMax-M3 在 51.2 萬輸入 token 以內標著「永久五折」，折後輸入 0.30 美元、輸出 1.20 美元，快取讀取 0.06 美元；DeepSeek 的 deepseek-v4-pro 尖峰時段輸入 1.32 美元、輸出 3.96 美元，離峰再對折。換句話說，「旗艦」是各家自己的命名，不是同一個價位帶。"
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -156,18 +165,20 @@
               "text": "快取到底在快取什麼，可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
             },
             {
               "type": "text",
               "text": "；實際怎麼設斷點、怎麼跟批次一起用，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude API 省錢：提示快取與批次處理怎麼用",
-              "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+              "kind": "life",
+              "slug": "claude-api-prompt-caching-cost"
             },
             {
               "type": "text",
@@ -203,9 +214,15 @@
           "text": "幣別部分，八家定價頁上標的都是美元；Mistral 的頁面多一個美元與歐元的切換鈕，阿里雲百鍊則是分區計價，新加坡站用美元、中國站用人民幣，兩張表不能直接放在一起比。至於台灣能不能直接付款，官網查得到名單的有三家：OpenAI 的支援國家與地區頁、Anthropic 的支援國家頁、Google 的 Gemini API 可用地區頁都列了台灣。xAI、Mistral、MiniMax、DeepSeek 與阿里雲百鍊當天沒有可以直接引用的台灣付款說明，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "API 額度與錯誤：費用、重試與成本控制",
-          "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "API 額度與錯誤：費用、重試與成本控制",
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -245,18 +262,20 @@
               "text": "想把估算做得更細，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
-              "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
+              "kind": "life",
+              "slug": "ai-token-cost-estimation"
             },
             {
               "type": "text",
               "text": "；如果你在考慮乾脆把模型跑在自己機器上，成本要怎麼比可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-              "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
             },
             {
               "type": "text",
@@ -371,24 +390,48 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+              "kind": "life",
+              "slug": "claude-api-first-call"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenRouter：一把金鑰用遍各家模型",
-          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenRouter：一把金鑰用遍各家模型",
+              "kind": "life",
+              "slug": "openrouter-multi-model-api"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "只能訂一個的話訂哪個：ChatGPT、Claude、Gemini",
-          "url": "https://mokaair.com/zh-TW/life/ai-subscription-which-to-pay-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "只能訂一個的話訂哪個：ChatGPT、Claude、Gemini",
+              "kind": "life",
+              "slug": "ai-subscription-which-to-pay-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開源 vs 閉源模型：對使用者的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開源 vs 閉源模型：對使用者的差別",
+              "kind": "life",
+              "slug": "ai-open-vs-closed-models"
+            }
+          ]
         }
       ],
       "sources": [

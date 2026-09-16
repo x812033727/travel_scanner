@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -181,14 +183,26 @@
           "text": "提交前確認網域、目錄與既有資料。即使使用一鍵工具，選錯位置仍可能影響現有網站；先備份並理解操作範圍。"
         },
         {
-          "type": "link",
-          "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
-          "url": "https://mokaair.com/zh-TW/life/hosting-types-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共享主機、VPS 與雲端代管：小網站的選擇順序",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
-          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
         }
       ],
       "sources": [

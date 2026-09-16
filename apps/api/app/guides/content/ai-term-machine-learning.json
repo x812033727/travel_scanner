@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -111,8 +112,19 @@
           "text": "強化學習關心系統在環境中採取行動後得到的回饋，學習較有利的行動策略。它不等於每次有人按讚就立刻更新模型，也不只是任何形式的反覆練習。對一般備料預測，監督式方法可能已足夠，沒有必要因為名詞熱門就改成更複雜的學習形式。"
         },
         {
-          "type": "paragraph",
-          "text": "生成式 AI 也建立在機器學習之上，但生成描述與預測份數有不同驗證方法。文字建議看似合理，不表示內部數字已由可靠的需求模型算出。若系統同時使用數值預測與語言說明，應讓讀者能看出哪一部分來自模型估計，哪一部分是後續解釋。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 也建立在機器學習之上，但生成描述與預測份數有不同驗證方法。文字建議看似合理，不表示內部數字已由可靠的需求模型算出。若系統同時使用數值預測與語言說明，應讓讀者能看出哪一部分來自模型估計，哪一部分是後續解釋。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -164,24 +176,48 @@
           "text": "模型很準可能只是看到了事後資訊。把每個輸入欄位放回真正做決策的時間點，是檢查資料洩漏的實用方法。"
         },
         {
-          "type": "link",
-          "text": "人工智慧（Artificial Intelligence）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-artificial-intelligence"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工智慧（Artificial Intelligence）是什麼",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "深度學習（Deep Learning）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deep-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深度學習（Deep Learning）是什麼",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

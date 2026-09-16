@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 132,
   "locales": {
@@ -129,8 +130,23 @@
           "text": "步驟 3：檢查參考程式的保護位置"
         },
         {
-          "type": "paragraph",
-          "text": "以下是完整參考程式，存為 clean_contacts.py 可獨立執行；若你已讓 Codex 生成版本，先另存備份，再比較差異。csv 模組負責引號、逗號與換行，不能用 split(',') 替代。程式在全部輸入讀完後才用 x 模式建立輸出；已有目標檔就失敗。這能避免輸入格式錯誤時留下輸出，但磁碟在寫到一半失敗仍可能留下不完整檔案，該次必須標記失敗並檢查產物，不能聲稱這是完整交易系統。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "以下是完整參考程式，存為 clean_contacts.py 可獨立執行；若你已讓 Codex 生成版本，先另存備份，再比較差異。csv 模組負責引號、逗號與換行，不能用 split(',') 替代。程式在全部輸入讀完後才用 x 模式建立輸出；已有目標檔就失敗。這能避免輸入格式錯誤時留下輸出，但磁碟在寫到一半失敗仍可能留下不完整檔案，該次必須"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "失敗並檢查產物，不能聲稱這是完整交易系統。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -196,8 +212,23 @@
           "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
         },
         {
-          "type": "paragraph",
-          "text": "用這份新增輸入與尚不存在的 cleaned-first-valid.csv 執行同一程式，其他參數不變。預期 kept 1、duplicate 1、invalid 1：第一筆姓名空白而無效，不應先占住 email；第二筆才是第一筆有效資料；第三筆才算重複。若輸出沒有 First valid，檢查 seen 是在資料通過驗證後才加入，而不是先去重再驗證。原 contacts.csv 與 cleaned-01.csv 都保持原樣。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用這份新增輸入與尚不存在的 cleaned-first-valid.csv 執行同一程式，其他"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "不變。預期 kept 1、duplicate 1、invalid 1：第一筆姓名空白而無效，不應先占住 email；第二筆才是第一筆有效資料；第三筆才算重複。若輸出沒有 First valid，檢查 seen 是在資料通過驗證後才加入，而不是先去重再驗證。原 contacts.csv 與 cleaned-01.csv 都保持原樣。"
+            }
+          ]
         },
         {
           "type": "code",

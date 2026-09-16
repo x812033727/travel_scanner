@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -124,12 +125,42 @@
           "text": "如果模型或調整流程看過測試答案，成績可能反映記憶與針對題集最佳化，而不是真正面對新問題的能力。這通常稱為測試資料汙染或資料洩漏的一類問題。公開題集有利重現，也使題目更容易被取得，因此結果解讀需要考慮資料與訓練透明度。"
         },
         {
-          "type": "paragraph",
-          "text": "這不表示公開基準都沒用，而是需要搭配新案例、不同來源與實際任務。自己的館藏測試也應保留未用於調整的案例，避免每次提示詞修改都只對已知題目微調。當使用者發現新的失敗，核對後可以加入回歸集，再另補充未見情境探索能力。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這不表示公開基準都沒用，而是需要搭配新案例、不同來源與實際任務。自己的館藏測試也應保留未用於調整的案例，避免每次提示詞修改都只對已知題目"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "。當使用者發現新的失敗，核對後可以加入回歸集，再另補充未見情境探索能力。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "讀一張 AI 成績圖時，可以依序確認它測什麼、怎麼測、和誰在相同條件下比較，以及哪些能力沒測到。接著拿符合自己用途的資料驗證。當公開基準與任務評測各自承擔合適角色，分數就能成為有用證據，而不是替代思考的排行榜標籤。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讀一張 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 成績圖時，可以依序確認它測什麼、怎麼測、和誰在相同條件下比較，以及哪些能力沒測到。接著拿符合自己用途的資料驗證。當公開基準與任務評測各自承擔合適角色，分數就能成為有用證據，而不是替代思考的排行榜標籤。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -164,24 +195,48 @@
           "text": "若工作不能接受作者或版本混淆，就單獨評估這類案例。整體平均提高，不能抵銷對關鍵需求的退步。"
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+              "kind": "life",
+              "slug": "ai-term-llm-as-a-judge"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推論時計算（Test-time Compute）：把算力花在這一道題",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

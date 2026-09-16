@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "群組裡出現一段活動講者的影片，聲音與本人相似，內容卻說活動已經改期。你可能先盯著嘴形看有沒有破綻，但真正需要確認的是：這段素材從哪裡來、講者是否真的說過這段話，以及活動時間到底有沒有變更。深偽技術讓這些問題更難回答，卻不該讓我們只剩看畫面猜真假。換臉 AI 越普及，這個習慣就越重要。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "群組裡出現一段活動講者的影片，聲音與本人相似，內容卻說活動已經改期。你可能先盯著嘴形看有沒有破綻，但真正需要確認的是：這段素材從哪裡來、講者是否真的說過這段話，以及活動時間到底有沒有變更。深偽技術讓這些問題更難回答，卻不該讓我們只剩看畫面猜真假。換臉 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 越普及，這個習慣就越重要。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Deepfake 常譯為深偽或深度偽造，通常指使用深度學習等 AI 技術生成或操弄影音，造成近似真實人物、聲音或事件的呈現。用語範圍並非處處一致；本文聚焦可能讓人誤認為真人說話或行動的影音，而不把所有 AI 插畫都放進相同情境。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Deepfake 常譯為深偽或深度偽造，通常指使用"
+            },
+            {
+              "type": "article",
+              "text": "深度學習",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "等 AI 技術生成或操弄影音，造成近似真實人物、聲音或事件的呈現。用語範圍並非處處一致；本文聚焦可能讓人誤認為真人說話或行動的影音，而不把所有 AI 插畫都放進相同情境。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -111,8 +142,23 @@
           "text": "來源紀錄則嘗試保存內容的產生與編輯歷史，可以包含中繼資料、簽章或浮水印。NIST 的正式報告區分來源追蹤與內容偵測，並討論兩者的限制與互補作用。有可驗證的來源資訊，能支持關於製作過程的部分說法，卻不會自動證明畫面中的敘事全部正確。"
         },
         {
-          "type": "paragraph",
-          "text": "沒有標記也不直接代表造假，因為有些素材從未加入標記，或在流通中失去相關資訊。反過來，畫面角落的一行「官方認證」只是可見文字，還需要知道誰發出、如何驗證、它究竟認證什麼。不要把標籤外觀等同於可驗證的證明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "沒有"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "也不直接代表造假，因為有些素材從未加入標記，或在流通中失去相關資訊。反過來，畫面角落的一行「官方認證」只是可見文字，還需要知道誰發出、如何驗證、它究竟認證什麼。不要把標籤外觀等同於可驗證的證明。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -173,24 +219,48 @@
           "text": "活動是否改期可以先向可靠的既有管道確認；這個問題不必等到完整辨識造假模型後才能處理。"
         },
         {
-          "type": "link",
-          "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

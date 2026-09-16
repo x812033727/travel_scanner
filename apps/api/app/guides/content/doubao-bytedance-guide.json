@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -25,8 +26,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "豆包是字節跳動（ByteDance）推出的 AI 助理，官方入口在 doubao.com，另有手機 App、桌面客戶端與瀏覽器外掛。這篇的結論先講：功能清單與訂閱方案官網寫得很完整，但台灣使用者會卡在兩件事——本站在 2026 年 9 月 14 日實查，Apple App Store 台灣區查不到官方版豆包；而官方隱私政策明寫，境內營運收集的個人資料存放在中華人民共和國境內，個人版預設會把你輸入的內容用於模型訓練。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "豆包是字節跳動（ByteDance）推出的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 助理，官方入口在 doubao.com，另有手機 App、桌面客戶端與瀏覽器外掛。這篇的結論先講：功能清單與訂閱方案官網寫得很完整，但台灣使用者會卡在兩件事——本站在 2026 年 9 月 14 日實查，Apple App Store 台灣區查不到官方版豆包；而官方隱私政策明寫，境內營運收集的個人資料存放在中華人民共和國境內，個人版預設會把你輸入的內容用於模型訓練。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -127,8 +143,23 @@
           "text": "用關鍵字在台灣區搜尋「豆包」，前排出現的是其他開發者的近名 App，開發者名稱不是 Beijing Chuntian Zhiyun Technology Co., Ltd.。換句話說，台灣區 App Store 目前找得到的同名結果，並不是官網那一個豆包。"
         },
         {
-          "type": "paragraph",
-          "text": "Google Play 的情況不一樣。以 hl=zh_TW、gl=TW 參數讀取套件名 com.larus.nova 的商店頁，頁面開得起來，開發者寫 Beijing Chuntian Zhiyun Technology Co., Ltd.、開發者網站指向 www.doubao.com，頁面標示免費、更新日期 2025 年 3 月 31 日；但同樣參數的關鍵字搜尋，前排沒有出現這個套件。實際能不能安裝，仍以你 Google 帳號所在地區的商店顯示為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google Play 的情況不一樣。以 hl=zh_TW、gl=TW "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "讀取套件名 com.larus.nova 的商店頁，頁面開得起來，開發者寫 Beijing Chuntian Zhiyun Technology Co., Ltd.、開發者網站指向 www.doubao.com，頁面標示免費、更新日期 2025 年 3 月 31 日；但同樣參數的關鍵字搜尋，前排沒有出現這個套件。實際能不能安裝，仍以你 Google 帳號所在地區的商店顯示為準。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -182,9 +213,15 @@
           "text": "用關鍵字在台灣區 App Store 搜尋，跑出來的近名 App 開發者不是 Beijing Chuntian Zhiyun Technology Co., Ltd.。要確認是不是官方版，看開發者名稱與 App ID 6459478672，不要只看圖示和名字；同名不同家的 App 會自己寫一份隱私政策，資料流向和官方版完全是兩回事。"
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -192,17 +229,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "豆包背後的模型來自字節跳動的 Seed 團隊。Seed 官網寫這個團隊成立於 2023 年，研究方向涵蓋大型語言模型、語音、視覺、世界模型、基礎架構與下一代 AI 互動，在中國、新加坡、美國等地設有實驗室。對外開放的 API 走火山引擎旗下的火山方舟，模型代號以 doubao-seed-（語言）、doubao-seedance-（影片）、doubao-seedream-（圖片）命名。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "豆包背後的模型來自字節跳動的 Seed 團隊。Seed 官網寫這個團隊成立於 2023 年，研究方向涵蓋"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "、語音、視覺、世界模型、基礎架構與下一代 AI 互動，在中國、新加坡、美國等地設有實驗室。對外開放的 API 走火山引擎旗下的火山方舟，模型代號以 doubao-seed-（語言）、doubao-seedance-（影片）、doubao-seedream-（圖片）命名。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "火山方舟的模型價格頁（本站查證當天顯示的更新時間就是 2026 年 9 月 14 日）把價格寫成「元／百萬 token」，並且分段計價——同一個模型，輸入長度落在不同區間就換一組單價。以線上推理（常規）的第一段為例：doubao-seed-2.1-pro 輸入 6.00 元、輸出 30.00 元；doubao-seed-2.1-turbo 輸入 3.00 元、輸出 15.00 元；輕量的 doubao-seed-1.6-flash 輸入 0.15 元、輸出 1.50 元。圖片模型另外按張計價，例如 doubao-seedream-4-5 輸出每張 0.25 元。幣別照官網寫的「元」，本文不換算成台幣。"
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -232,24 +290,48 @@
           "text": "第一，用 App ID 或開發者名稱確認你裝的是官方版。第二，登入後先走一趟設定 → 隱私與權限，把「幫助模型改進效果」照自己的需求決定開或關。第三，把要問的內容分級：涉及身分證號、公司未公開資料、客戶名單的，不管哪一家 AI 都不要貼進對話框。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-models-comparison"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-privacy-and-data-flow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨",
+              "kind": "life",
+              "slug": "deepseek-privacy-and-data-flow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            }
+          ]
         }
       ],
       "sources": [

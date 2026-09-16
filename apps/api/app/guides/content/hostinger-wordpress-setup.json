@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "使用 Hostinger 架設 WordPress，先確認你要建立的是 WordPress 網站，以及目前方案支援的管理方式。hPanel、WordPress 後台與其他建站產品各有角色，看到 AI 建站選項也不代表所有產品的資料與外掛都相同。選對流程，會比安裝後才發現工具不符合需求更省事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "使用 Hostinger 架設 WordPress，先確認你要建立的是 WordPress 網站，以及目前方案支援的管理方式。hPanel、WordPress 後台與其他建站產品各有角色，看到 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 建站選項也不代表所有產品的資料與外掛都相同。選對流程，會比安裝後才發現工具不符合需求更省事。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -181,14 +198,26 @@
           "text": "Hostinger 已調整部分初始流程，佈景可在網站建立後選擇。先確認現有安裝與目前官方文件，再決定是否需要任何額外操作。"
         },
         {
-          "type": "link",
-          "text": "第一次架設 WordPress：從測試站到公開網站",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-first-site"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次架設 WordPress：從測試站到公開網站",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網域或主機到期會怎樣：續約與停用前的檢查表",
-          "url": "https://mokaair.com/zh-TW/life/domain-hosting-renewal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網域或主機到期會怎樣：續約與停用前的檢查表",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
         }
       ],
       "sources": [

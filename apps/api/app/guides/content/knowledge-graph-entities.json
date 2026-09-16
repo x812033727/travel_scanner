@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +32,33 @@
           "text": "一家手作用品品牌有商店名稱、登記公司名稱，還有創辦人的教學專欄。如果所有頁面都只寫同一個簡稱，讀者可能分不清楚誰賣商品、誰寫文章，以及聯絡誰處理問題。網站實體整理，就是先把這些對象與關係說清楚。"
         },
         {
-          "type": "paragraph",
-          "text": "本文依 2026 年 9 月 14 日查閱的 Google 官方文件，說明一般網站可以執行的內容與標記整理。品牌情境為原創示例，沒有建立真實知識圖譜項目，也不承諾修改後會出現搜尋知識面板。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本文依 2026 年 9 月 14 日查閱的 Google 官方文件，說明一般網站可以執行的內容與"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "整理。品牌情境為原創示例，沒有建立真實"
+            },
+            {
+              "type": "article",
+              "text": "知識圖譜",
+              "kind": "life",
+              "slug": "ai-term-knowledge-graph"
+            },
+            {
+              "type": "text",
+              "text": "項目，也不承諾修改後會出現搜尋知識面板。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -196,19 +223,37 @@
           "text": "結構化資料應描述頁面上的真實對象。語法通過、資料正確、搜尋呈現與知識面板出現，各需要不同證據。"
         },
         {
-          "type": "link",
-          "text": "建立值得信任且可查核的內容",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立值得信任且可查核的內容",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理商品規格與購買資訊",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-product-information"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理商品規格與購買資訊",
+              "kind": "life",
+              "slug": "woocommerce-product-information"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "改善 AI 搜尋中的內容辨識",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "改善 AI 搜尋中的內容辨識",
+              "kind": "life",
+              "slug": "ai-search-geo-content"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-work",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "小團隊導入 Workspace AI，最實用的第一步是選一個重複工作，讓幾位同事用相同資料和標準試做。本篇以三人團隊整理活動詢問信為例，完成帳號盤點、管理設定檢查、範本和一週試行紀錄。目標是知道誰可以用哪些資料、成果如何核對，以及是否真的減少返工。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小團隊導入 Workspace "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，最實用的第一步是選一個重複工作，讓幾位同事用相同資料和標準試做。本篇以三人團隊整理活動詢問信為例，完成帳號盤點、管理設定檢查、範本和一週試行紀錄。目標是知道誰可以用哪些資料、成果如何核對，以及是否真的減少返工。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -59,9 +76,10 @@
               "text": "先請負責人到管理控制檯查看組織目前的訂閱、使用者和可用功能。本文不代替團隊更改任何管理設定，也未登入企業帳號實測；功能條件依當日官方文件整理。個人方案價格可看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -77,9 +95,10 @@
               "text": "建立一份簡單盤點：每位成員的工作帳號、需要的產品、資料所在位置、誰負責核對。不要讓三個人共用一組登入資訊，也不要把私人 Gmail 的個人化設定當成公司政策。若目前只想整理文件，先從"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gmail、Docs、Slides 流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+              "kind": "life",
+              "slug": "gemini-in-gmail-docs-sheets"
             },
             {
               "type": "text",
@@ -112,8 +131,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "管理員可在管理控制檯的 Generative AI「生成式 AI」中找到 Gemini app，檢視服務狀態。依需要對指定組織單位或設定羣組配置，先記錄目前值與試行範圍，再儲存。設定可能需要時間生效，測試時重新整理並確認實際登入者。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "管理員可在管理控制檯的 Generative AI「"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "」中找到 Gemini app，檢視服務狀態。依需要對指定組織單位或設定羣組配置，先記錄目前值與試行範圍，再儲存。設定可能需要時間生效，測試時重新整理並確認實際登入者。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -140,9 +174,10 @@
               "text": "官方說明指出，Gemini 對 Workspace 資料的使用受使用者原有權限及內容擁有者控制影響；例如受限制的檔案或代管信箱可能另有存取限制。能在畫面看見某項資料，不一定等於 AI 可以跨產品讀取。相關入口參考"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -167,9 +202,10 @@
               "text": "把工作規則放入團隊共用文件，註明版本、維護人和修改日期。若使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
@@ -229,9 +265,10 @@
               "text": "「想自動整理每週來信？」先確認一次性流程穩定，再評估"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
@@ -280,18 +317,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gmail、Docs 與 Slides",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+              "kind": "life",
+              "slug": "gemini-in-gmail-docs-sheets"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "活動記錄與隱私",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -300,9 +339,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

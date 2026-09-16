@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "事件日期：2026-01-14；本文查核日期：2026-09-14。1 月 14 日 Gemini Personal Intelligence 在美國推出 beta，首批為符合資格的個人 Google AI Pro／Ultra 帳號。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "事件日期：2026-01-14；本文查核日期：2026-09-14。1 月 14 日 Gemini Personal Intelligence 在美國推出 beta，首批為符合資格的個人 Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Pro／Ultra 帳號。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -142,8 +158,23 @@
           "text": "另一項潛在隱患則是「過度個人化」。演算法可能會過度放大用戶在 YouTube 的偶爾瀏覽紀錄，或是某次特殊活動拍下的照片，將單一且短暫的隨機行為定型為不可撼動的長期喜好。當系統預設你對某項特定主題懷有強烈執念時，所推薦的建議便會迅速窄化，甚至屏除掉更多元的新選擇，形成無形而封閉的演算法同溫層。"
         },
         {
-          "type": "paragraph",
-          "text": "為了防範這類演算法偏誤，建立一套標準的驗收檢核流程至關重要。每當模型給出整合性分析時，使用者應要求系統標記資訊來源，並逐一核對關鍵數據。檢查項目應包括：這項偏好是否來自過時紀錄、代訂紀錄是否被誤認為自身需求，以及分析是否過度推論。透過嚴謹的事實求證，才能在演算法產生幻覺前精準導正。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "為了防範這類演算法偏誤，建立一套標準的驗收檢核流程至關重要。每當模型給出整合性分析時，使用者應要求系統"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "資訊來源，並逐一核對關鍵數據。檢查項目應包括：這項偏好是否來自過時紀錄、代訂紀錄是否被誤認為自身需求，以及分析是否過度推論。透過嚴謹的事實求證，才能在演算法產生幻覺前精準導正。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -169,14 +200,26 @@
           "text": "增強個人化預設關閉。請依照當前任務只開啟必要的單一來源，提問時清楚說明預算、日期與現況，並逐筆核對系統引用的舊信件或相片年份，不把歷史紀錄直接當作最新決定。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6 與長上下文：大量資料讀得進去，也要找得回來",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6 與長上下文：大量資料讀得進去，也要找得回來",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -351,14 +394,26 @@
           "text": "Enhanced personalization is off by default. Turn on only the necessary single source according to the task at hand, clearly specify budget, dates, and current circumstances in prompts, and audit the years of cited emails or photos line by line, rather than treating historical records as current decisions."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6 and Long Context: Reading Vast Data In, Retrieving It Accurately Out",
-          "url": "https://mokaair.com/en/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6 and Long Context: Reading Vast Data In, Retrieving It Accurately Out",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -533,14 +588,26 @@
           "text": "強化されたパーソナライズは初期状態でオフです。現在のタスクに必要な単一ソースのみをオンにし、質問時には予算・日付・現状を明確に伝え、システムが引用した古いメールや写真の撮影年を1件ずつ確認して、過去の記録をそのまま最新の決定と見なさないようにしましょう。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6と長文コンテキスト：大量のデータは読み込めても、正確に引き出せるか",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6と長文コンテキスト：大量のデータは読み込めても、正確に引き出せるか",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -715,14 +782,26 @@
           "text": "향상된 개인화는 기본적으로 꺼져 있습니다. 현재 작업에 필요한 단일 소스만 켜고, 질문 시 예산, 날짜, 현재 상황을 명확히 밝히며, 시스템이 인용한 이전 메일이나 사진의 연도를 건별로 대조하여 과거 기록을 최신 결정으로 직접 간주하지 마십시오."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6과 긴 컨텍스트: 방대한 데이터를 읽어 들였다면, 제대로 찾아낼 수도 있어야 한다",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6과 긴 컨텍스트: 방대한 데이터를 읽어 들였다면, 제대로 찾아낼 수도 있어야 한다",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         }
       ],
       "sources": [
@@ -897,14 +976,26 @@
           "text": "增强个性化默认关闭。请根据当前任务仅开启必要的单一来源，提问时清楚说明预算、日期与现状，并逐笔核对系统引用的旧邮件或照片年份，不把历史记录直接当作最新决定。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6 与长上下文：海量资料读得进去，也要找得回来",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6 与长上下文：海量资料读得进去，也要找得回来",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         }
       ],
       "sources": [

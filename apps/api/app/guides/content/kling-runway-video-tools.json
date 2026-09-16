@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -38,17 +39,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Kling 的營運主體在付費條款裡寫的是 Kling AI Pte. Ltd.，網域已從 klingai.com 換成 kling.ai。影片、圖片、音效與特效收在同一個創意工作室裡，另有 iOS、Android、macOS 與 Windows 版。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Kling 的營運主體在付費條款裡寫的是 Kling "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Pte. Ltd.，網域已從 klingai.com 換成 kling.ai。影片、圖片、音效與特效收在同一個創意工作室裡，另有 iOS、Android、macOS 與 Windows 版。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "Runway 的主體是 Runway AI, Inc.，網域同樣從 runwayml.com 換到 runway.com。它比較像一條製作流程：定價頁直接列出可在同一介面叫用的第三方模型，包含 Seedance 2.5、Kling 3.0 與 Nano Banana Pro。訂了 Runway 也用得到 Kling 的模型，但點數與條款各算各的。"
         },
         {
-          "type": "link",
-          "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
-          "url": "https://mokaair.com/zh-TW/life/ai-video-tools-compared"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
+              "kind": "life",
+              "slug": "ai-video-tools-compared"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -64,9 +86,15 @@
           "text": "Runway 的主力是 Gen-4.5，說明中心寫它現階段只有文生影片與圖生影片，長度 2 到 10 秒，需要 Standard 以上方案，影格率可選 24 或 25 fps。輸出一律 720p，要更高就按生成結果下方的 Upscale to 4K。比例方面文生影片只有 16:9 的 1280x720，圖生影片另有 9:16、1:1、4:3 等五種。"
         },
         {
-          "type": "link",
-          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -116,9 +144,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "Veo 與 Google Flow：影片、分鏡與匯出",
-          "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -231,9 +265,15 @@
           "text": "Runway 的方向不同。條款同樣寫官方不主張 Inputs 與 Outputs 的所有權，也寫不限制你商用 Outputs，說明中心列出可用在營利影片、社群短影片、影展投件與產品廣告，且不要求標註 Runway。代價寫在同一份條款：你授予官方非專屬、不可撤銷、永久、全球、免權利金且可再授權的授權，並承認 Inputs 與 Outputs 可用來訓練與改進它的模型，個人方案沒有退出機制；隱私權政策則寫資料會傳到美國等地處理。兩家最低年齡都是 13 歲。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -255,19 +295,37 @@
           "text": "要挑哪一個，先看成品。要人物講話、要中文對嘴、想一次拿到 15 秒或原生 4K，Kling 的規格寫得比較滿；素材已拍好、要的是換背景這類修改，Runway 的 Edit Studio 更直接。"
         },
         {
-          "type": "link",
-          "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
-          "url": "https://mokaair.com/zh-TW/life/sora-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Sora 影片生成教學：官方已停止服務，先匯出再挑替代工具",
+              "kind": "life",
+              "slug": "sora-video-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Frame.io 影片審稿：版本、時間碼與客戶回饋",
-          "url": "https://mokaair.com/zh-TW/life/frameio-video-review"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Frame.io 影片審稿：版本、時間碼與客戶回饋",
+              "kind": "life",
+              "slug": "frameio-video-review"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
-          "url": "https://mokaair.com/zh-TW/life/minimax-hailuo-video-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 海螺影片生成教學：從註冊到下載第一支 AI 影片",
+              "kind": "life",
+              "slug": "minimax-hailuo-video-guide"
+            }
+          ]
         }
       ],
       "sources": [

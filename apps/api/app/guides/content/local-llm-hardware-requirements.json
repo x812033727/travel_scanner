@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "gadgets"
+    "gadgets",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -43,13 +44,34 @@
           "text": "最容易被忽略的一件事是，模型的檔案大小本來就寫在官方頁面上，不需要推算。Ollama 模型庫的每個標籤旁邊都直接標出大小與上下文視窗長度，以 2026 年 9 月 14 日查到的數字為例：gemma3:4b 是 3.3GB、gemma3:12b 是 8.1GB、gemma3:27b 是 17GB；qwen3:8b 是 5.2GB、qwen3:14b 是 9.3GB、qwen3:32b 是 20GB；gpt-oss:20b 是 14GB、gpt-oss:120b 是 65GB。這些數字是權重本身的重量，執行時要整份搬進記憶體，所以是下限，不是答案。"
         },
         {
-          "type": "paragraph",
-          "text": "下限與實際需求差多少，官方也留了線索。Ollama 模型庫的 gpt-oss 說明頁寫，把混合專家（MoE）權重量化成 MXFP4 格式、每個參數 4.25 位元之後，「較小的模型可以在只有 16GB 記憶體的系統上執行，較大的模型則能裝進單張 80GB 的 GPU」。對照檔案大小就很清楚：14GB 的檔案配 16GB 記憶體、65GB 的檔案配單張 80GB 顯示記憶體，官方自己留的餘裕大約兩成。Hugging Face 上 openai 組織的 gpt-oss-20b 模型卡寫的是同一件事，說這個模型可以「在 16GB 記憶體內執行」。這種「模型卡直接寫需求」的情況並不多，遇不到的時候就只能從檔案大小往上推。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "下限與實際需求差多少，官方也留了線索。Ollama 模型庫的 gpt-oss 說明頁寫，把混合專家（"
+            },
+            {
+              "type": "article",
+              "text": "MoE",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            },
+            {
+              "type": "text",
+              "text": "）權重量化成 MXFP4 格式、每個參數 4.25 位元之後，「較小的模型可以在只有 16GB 記憶體的系統上執行，較大的模型則能裝進單張 80GB 的 GPU」。對照檔案大小就很清楚：14GB 的檔案配 16GB 記憶體、65GB 的檔案配單張 80GB 顯示記憶體，官方自己留的餘裕大約兩成。Hugging Face 上 openai 組織的 gpt-oss-20b 模型卡寫的是同一件事，說這個模型可以「在 16GB 記憶體內執行」。這種「模型卡直接寫需求」的情況並不多，遇不到的時候就只能從檔案大小往上推。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -74,14 +96,26 @@
           "text": "規律很好記：四位元版本大約是 16 位元版本的三分之一，八位元版本大約是一半。llama.cpp 的 README 列出它支援 1.5、2、3、4、5、6、8 位元的整數量化，用途寫得很白：加快推論並降低記憶體用量。LM Studio 的文件則給了選哪一個的一句話建議：如果機器跑得動，就選四位元或更高的選項。換句話說，決定要不要買更多記憶體之前，先試試看降一階量化，成本是零。"
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "kind": "life",
+              "slug": "gguf-quantization-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -116,9 +150,15 @@
           "text": "上下文吃掉的那份記憶體叫 K/V 快取，Ollama 文件也給了壓縮它的官方倍率：預設型別是 f16，改成 q8_0 大約使用 f16 一半的記憶體、精度損失非常小，改成 q4_0 大約使用四分之一、在長上下文時比較看得出差別。另外要注意並行請求：文件的例子是 2K 上下文配 4 個並行請求，結果等於 8K 上下文與相應的記憶體配置，所以如果你打算把本機模型接給全家人或多個工具用，記憶體要再往上抓。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -144,9 +184,15 @@
           "text": "消費級顯示卡的上限就寫在規格頁上。NVIDIA 官方比較頁 2026 年 9 月 14 日列的 GeForce RTX 50 系列標準記憶體配置是：RTX 5090 32GB、RTX 5080 與 RTX 5070 Ti 各 16GB、RTX 5070 12GB、RTX 5060 Ti 16GB 或 8GB、RTX 5060 8GB、RTX 5050 8GB；上一代的 RTX 4090 是 24GB。也就是說，在單張消費級顯示卡上，8GB 到 32GB 就是整個可用範圍，插再多系統記憶體也不會變成顯示記憶體。至於顯示卡本身認不認得，Ollama 的需求是 NVIDIA 運算能力（compute capability）5.0 以上、驅動程式 550 以上，5.0 到 6.2 的舊卡要 570 以上；RTX 50 系列的運算能力是 12.0。AMD 這邊是 Linux 需要 ROCm v7 驅動、Windows 需要 ROCm v7 或 HIP7 相容的驅動堆疊，Windows 支援清單比 Linux 短，另外還有 Vulkan 可以補上一部分顯示卡。"
         },
         {
-          "type": "link",
-          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+              "kind": "life",
+              "slug": "local-ai-gpu-buying-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -175,9 +221,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-on-mac-mini"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
+              "kind": "life",
+              "slug": "local-ai-on-mac-mini"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -234,28 +286,52 @@
           "text": "官方自己留的餘裕就是證據：gpt-oss 的 20B 版檔案是 14GB，官方寫的需求是 16GB 記憶體；120B 版檔案是 65GB，官方寫的是單張 80GB 的 GPU。加上上下文視窗要的那一份，把預算抓在「檔案大小再加兩成，上下文開多長再往上加」比較安全。不確定的時候，先用小模型與預設 4096 個 token 的上下文試跑，用 ollama ps 看 PROCESSOR 欄是不是 100% GPU，再決定要不要動硬體。"
         },
         {
-          "type": "link",
-          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
-          "url": "https://mokaair.com/zh-TW/life/gadget-purchase-needs-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+              "kind": "life",
+              "slug": "gadget-purchase-needs-checklist"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "最後提醒一件事：官方頁面上的檔案大小與規格會隨著版本更新而變動，上面所有數字都是 2026 年 9 月 14 日當天查到的。真要下單之前，請以你查看當天的官網與模型庫頁面為準，尤其是模型標籤的大小與 Mac 的記憶體選配範圍，這兩項改得最勤。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-plans"
   ],
   "valid_until": null,
   "featured": false,
@@ -56,14 +57,26 @@
           "text": "混在一起比較會失真，所以下面每一種先單獨列，再放進同一個情境裡對照。本機那一欄是新台幣、雲端那一欄是美元，兩欄分開列，要比較請自己用當天匯率換算。"
         },
         {
-          "type": "link",
-          "text": "token（Token）是什麼：AI 如何計算文字長度",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "kind": "life",
+              "slug": "ai-term-token"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+              "kind": "life",
+              "slug": "ai-coding-cost-tokens-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -75,8 +88,23 @@
           "text": "三家的入門付費方案都落在每月 20 美元上下，這是雲端那一欄的基準線。claude.com 定價頁今天寫 Pro 月繳 20 美元、年繳每月 17 美元（一次付 200 美元），Max 是「每月 100 美元起」，在同一方案裡選 5 倍或 20 倍用量。"
         },
         {
-          "type": "paragraph",
-          "text": "ChatGPT 的方案頁對這個環境回 403，改讀 OpenAI 說明中心：Plus 每月 20 美元，Pro 分 100 美元與 200 美元兩階，說明中心註明 2026 年 9 月 10 日起暫停 200 美元那階的新訂與升級；Go 的價格說明中心要你回方案頁看，以官網為準。gemini.google 訂閱頁則列 Google AI Plus 每月 4.99 美元、AI Pro 19.99 美元、AI Ultra 99.99 美元起；新台幣價格登入後看所在地區的方案頁，以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChatGPT 的方案頁對這個環境回 403，改讀 OpenAI 說明中心：Plus 每月 20 美元，Pro 分 100 美元與 200 美元兩階，說明中心註明 2026 年 9 月 10 日起暫停 200 美元那階的新訂與升級；Go 的價格說明中心要你回方案頁看，以官網為準。gemini.google 訂閱頁則列 Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Plus 每月 4.99 美元、AI Pro 19.99 美元、AI Ultra 99.99 美元起；新台幣價格登入後看所在地區的方案頁，以官網為準。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -109,24 +137,48 @@
           "caption": "2026 年 9 月 14 日查 claude.com 定價頁、OpenAI 說明中心與 gemini.google 訂閱頁；未稅，新台幣定價以官網為準。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
-          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+              "kind": "life",
+              "slug": "claude-plans-free-pro-max-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "免費與付費方案：功能、額度與訂閱選擇",
-          "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費與付費方案：功能、額度與訂閱選擇",
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -176,14 +228,26 @@
           "text": "還有兩個機制會改變帳單：提示快取讓重複送的內容用折扣價計費，批次處理把不趕時間的工作換折扣，兩者都不改單價。"
         },
         {
-          "type": "link",
-          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+              "kind": "life",
+              "slug": "claude-api-prompt-caching-cost"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenRouter：一把金鑰用遍各家模型",
-          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenRouter：一把金鑰用遍各家模型",
+              "kind": "life",
+              "slug": "openrouter-multi-model-api"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -232,14 +296,26 @@
           }
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-gpu-buying-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為 AI 選顯示卡：顯示記憶體優先與預算配置",
+              "kind": "life",
+              "slug": "local-ai-gpu-buying-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -331,14 +407,26 @@
           "text": "如果你本來就有一台夠力的電腦，硬體那筆錢已經花掉了，本機月成本就只剩電費，在這三個情境裡是 2 元到 35 元，怎麼算都比訂閱便宜。但如果你是為了跑 AI 才要買一台 29,900 元的機器，那筆錢就要完整攤提，每月 831 元必須進算式，不能只算電費——這是本機成本最常被少算的一項。"
         },
         {
-          "type": "link",
-          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
-          "url": "https://mokaair.com/zh-TW/life/local-ai-on-mac-mini"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定",
+              "kind": "life",
+              "slug": "local-ai-on-mac-mini"
+            }
+          ]
         }
       ],
       "sources": [

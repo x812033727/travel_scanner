@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -77,8 +79,23 @@
           "text": "先確認公開網站可以正常存取，WordPress 的 REST API 可用，並核對外掛當前系統要求。Site Kit 官方一般設定流程以正式公開網站為前提，測試環境另有專門方式；不要為了串接，把原本受保護的測試網站直接公開。"
         },
         {
-          "type": "paragraph",
-          "text": "從 WordPress 外掛目錄安裝 Google 的 Site Kit，啟用後開啟 Site Kit 儀表板，以預定帳號登入 Google。依畫面核對授權、網站所有權和 Search Console 設定。初始驗證可能新增驗證檔或標記，這是實際設定動作，不只是看一份公開報表。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "從 WordPress 外掛目錄安裝 Google 的 Site Kit，啟用後開啟 Site Kit 儀表板，以預定帳號登入 Google。依畫面核對授權、網站所有權和 Search Console 設定。初始驗證可能新增驗證檔或"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，這是實際設定動作，不只是看一份公開報表。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +218,37 @@
           "text": "找不到 Analytics 資源時，先確認 Google 帳號及權限。建立同名的新資源不會自動搬入舊資料，也可能讓後續報表來源更難辨識。"
         },
         {
-          "type": "link",
-          "text": "先理解 Search Console 的資料與權限",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先理解 Search Console 的資料與權限",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "核對 WordPress 人員角色",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-user-roles"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核對 WordPress 人員角色",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "分辨 PageSpeed 的分數與量測",
-          "url": "https://mokaair.com/zh-TW/life/pagespeed-performance-review"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分辨 PageSpeed 的分數與量測",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
         }
       ],
       "sources": [

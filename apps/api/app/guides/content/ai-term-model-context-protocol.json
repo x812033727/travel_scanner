@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "模型上下文協定（Model Context Protocol，MCP）是讓 AI 應用程式與外部系統交換工具能力與資料的開放協定。它定義共同的互動方式，降低每個應用都要為每個服務各做一套接法的負擔。MCP 不是語言模型，也不是接上後就自動具備可靠工作的代理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型上下文協定（Model Context Protocol，MCP）是讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 應用程式與外部系統交換工具能力與資料的開放協定。它定義共同的互動方式，降低每個應用都要為每個服務各做一套接法的負擔。MCP 不是語言模型，也不是接上後就自動具備可靠工作的代理。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -172,24 +188,48 @@
           "text": "至少核對實際工具結果與目標資料，才知道整合是否真的可用。"
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+              "kind": "life",
+              "slug": "ai-term-agent2agent-protocol"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-skills"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

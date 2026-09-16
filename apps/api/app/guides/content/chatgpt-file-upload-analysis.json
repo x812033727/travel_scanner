@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "把一份 PDF 或 Excel 拖進 ChatGPT，然後問「幫我整理重點」，是很多人第一次覺得它真的有用的時刻，也是最容易被它帶錯方向的時刻。這篇回答的問題是：檔案上傳到底能傳什麼、怎麼問才會抓到重點、它看不到什麼。結論是三句話：文字型的 PDF 與乾淨的試算表它讀得好，掃描檔與合併儲存格它讀不好；先問檔案的結構再問細節，要它附頁碼或儲存格；數字類的結論一定自己抽查一格。搜「PDF AI」找工具的人，先把這三句話記住，比換工具有用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把一份 PDF 或 Excel 拖進 ChatGPT，然後問「幫我整理重點」，是很多人第一次覺得它真的有用的時刻，也是最容易被它帶錯方向的時刻。這篇回答的問題是：檔案上傳到底能傳什麼、怎麼問才會抓到重點、它看不到什麼。結論是三句話：文字型的 PDF 與乾淨的試算表它讀得好，掃描檔與合併儲存格它讀不好；先問檔案的結構再問細節，要它附頁碼或儲存格；數字類的結論一定自己抽查一格。搜「"
+            },
+            {
+              "type": "article",
+              "text": "PDF AI",
+              "kind": "life",
+              "slug": "ai-pdf-tools-summarize-translate"
+            },
+            {
+              "type": "text",
+              "text": "」找工具的人，先把這三句話記住，比換工具有用。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,14 +73,26 @@
           "text": "免費版一天 3 個檔案的意思是：租屋合約、帳單、收支表各傳一次就用完了。同一個對話裡追問不用重傳，所以把要問的事在同一個對話裡問完；要反覆用同一批檔案，可以放進專案（Projects）。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -111,9 +139,15 @@
           "text": "只要答案裡有金額、筆數、百分比，就加一句「列出你怎麼算的：篩選了哪些列、相加的是哪一欄、排除了什麼」。它寫出來的算法可能跟你想的不一樣，例如把退款那幾列也加進支出。然後打開原檔挑一格對：一個月的結餘、一筆最大的支出，對得上再用它的結論；對不上就把那一格指給它看，要它重算並說明差在哪裡。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-data-analysis-csv"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+              "kind": "life",
+              "slug": "chatgpt-data-analysis-csv"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -172,14 +206,26 @@
           "text": "出錯的樣子通常有四種：條號或頁碼對不上原檔、引用了一段原檔裡找不到的文字、總和跟你用計算機加起來的不同、把表頭那一列當成資料算進去。看到任何一種，把錯的地方指出來要它重讀，或開新對話重傳乾淨的檔案。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "table",
@@ -247,9 +293,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-plans"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "用 AI 寫程式的費用只有兩套算法：訂閱制付固定月費，換一段時間區間裡的額度；API 按 token 計價，用多少算多少。兩邊共用同一個單位 token，而代理（Agent）比聊天視窗燒得快，是因為它每一輪都重送整段上下文，模型每用一次工具還會再送一次請求。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 寫程式的費用只有兩套算法：訂閱制付固定月費，換一段時間區間裡的額度；API 按 token 計價，用多少算多少。兩邊共用同一個單位 token，而代理（Agent）比聊天視窗燒得快，是因為它每一輪都重送整段上下文，模型每用一次工具還會再送一次請求。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,8 +59,23 @@
           "text": "按量計費的 AI 服務，帳單單位都是 token，不是字數也不是次數。OpenAI 的說明中心把 token 描述成「可以是一個字元、一個字的一部分、一整個字或標點符號」，並給了英文換算：1 個 token 大約 4 個字元、大約四分之三個英文單字，100 個 token 大約等於 75 個英文單字；Anthropic 的名詞表則寫，對 Claude 來說一個 token「大約代表 3.5 個英文字元」。"
         },
         {
-          "type": "paragraph",
-          "text": "中文呢。兩家都只給英文換算，也都加了但書：Anthropic 寫「確切數量會依使用的語言而不同」，OpenAI 寫「其他語言的字元、單字與 token 之間可能有不同的關係」。中文一個字算幾個 token 沒有官方比例，要準就得實際量。同一段文字換個模型數字也會變：Anthropic 的價格頁註明 Claude 4.7 之後的模型換了新分詞器，同樣的文字大約多出 30% 的 token。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "中文呢。兩家都只給英文換算，也都加了但書：Anthropic 寫「確切數量會依使用的語言而不同」，OpenAI 寫「其他語言的字元、單字與 token 之間可能有不同的關係」。中文一個字算幾個 token 沒有官方比例，要準就得實際量。同一段文字換個模型數字也會變：Anthropic 的價格頁註明 Claude 4.7 之後的模型換了新"
+            },
+            {
+              "type": "article",
+              "text": "分詞",
+              "kind": "life",
+              "slug": "ai-term-tokenization"
+            },
+            {
+              "type": "text",
+              "text": "器，同樣的文字大約多出 30% 的 token。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -56,9 +87,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "token（Token）是什麼：AI 如何計算文字長度",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "kind": "life",
+              "slug": "ai-term-token"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -66,8 +103,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "模型本身沒有記憶。OpenAI 的對話狀態文件寫得很直接：每一次生成請求都是獨立而且無狀態的，而且「這條鏈上所有先前的輸入 token 都會以輸入 token 計費」。Anthropic 的上下文視窗文件說同一件事：先前每一輪都被完整保留，系統提示詞、每一則訊息、工具結果與工具定義全部都算。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型本身沒有記憶。OpenAI 的對話狀態文件寫得很直接：每一次生成請求都是獨立而且無狀態的，而且「這條鏈上所有先前的輸入 token 都會以輸入 token 計費」。Anthropic 的上下文視窗文件說同一件事：先前每一輪都被完整保留，"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "、每一則訊息、工具結果與工具定義全部都算。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -91,14 +143,26 @@
           }
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+              "kind": "life",
+              "slug": "ai-term-context-compaction"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -132,14 +196,26 @@
           "text": "官方的建議很簡單：開頭就把模型與 effort 等級選定，壓縮留到兩個任務之間再做。"
         },
         {
-          "type": "link",
-          "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude API 省錢：提示快取與批次處理怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude API 省錢：提示快取與批次處理怎麼用",
+              "kind": "life",
+              "slug": "claude-api-prompt-caching-cost"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -237,9 +313,15 @@
           "caption": "2026 年 9 月 14 日於各供應商官網查得；額度單位照官網寫法，未列出的細項以官網為準。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -264,9 +346,15 @@
           "text": "同一家的旗艦與輕量模型可以差到 50 倍，這是省錢最大的槓桿：改命名、補測試交給輕量模型，架構決策才用旗艦模型。"
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -329,14 +417,26 @@
           "text": "按 token 計費沒有天然的煞車，一個沒停下來的代理任務可以在你去吃飯時把上下文推到上限。GitHub 的文件寫明額度用完後可以替額外用量設預算再繼續，額外用量本身也可能有上限；Cursor 的 on-demand 要自己到設定裡開啟；用 Claude API 則建議在 workspace 上設支出上限。做一次就好，比事後看帳單有用。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜用量、成本與效率調整",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-usage-cost-optimization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜用量、成本與效率調整",
+              "kind": "life",
+              "slug": "claude-code-usage-cost-optimization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-prompt-patterns"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "給程式代理的提示模式：先規劃、再實作、最後驗證",
+              "kind": "life",
+              "slug": "ai-coding-prompt-patterns"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -355,9 +455,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            }
+          ]
         }
       ],
       "sources": [

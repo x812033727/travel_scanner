@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這篇回答一個問題：生成式答案變多之後，搜尋引擎最佳化（SEO）還剩哪一半是確定的。結論是：可被抓取、可被索引、標準網址、網站地圖這條鏈沒有因為 AI 而改寫，而且整組新名詞裡只有這一段有數十年累積、隨時可查的一手官方文件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇回答一個問題：生成式答案變多之後，搜尋引擎最佳化（SEO）還剩哪一半是確定的。結論是：可被抓取、可被索引、標準網址、網站地圖這條鏈沒有因為 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 而改寫，而且整組新名詞裡只有這一段有數十年累積、隨時可查的一手官方文件。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -222,7 +238,17 @@
             },
             {
               "type": "text",
-              "text": "講的是標記能換到什麼資格；"
+              "text": "講的是"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "能換到什麼資格；"
             },
             {
               "type": "article",

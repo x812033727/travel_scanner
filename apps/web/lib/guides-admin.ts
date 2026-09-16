@@ -36,6 +36,9 @@ export type ArticleSummary = {
   version: number;
   locales: LocaleState[];
   updated_at: string;
+  /** Editor-written names per locale and the curated further reading; the list omits them. */
+  aliases?: Record<string, string[]>;
+  related?: string[];
 };
 
 export type ArticleDetail = ArticleSummary & {

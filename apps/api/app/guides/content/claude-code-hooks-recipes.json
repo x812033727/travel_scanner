@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 142,
@@ -132,8 +133,23 @@
           "text": "需要權限或其他注意事項時，可使用 Notification 事件，沿用前篇 log-edit.mjs 記錄事件時間。先不設定 matcher，觀察真正收到哪些事件，再依目前官方事件欄位縮小條件。Notification 的類型與支援情況可能隨版本改變，不能把一般聊天結束當成一定會觸發通知。"
         },
         {
-          "type": "paragraph",
-          "text": "這個本機紀錄不等於手機推播。若要接作業系統通知或外部服務，需自行提供接收程式、權限與連線，並測試失敗回報。第一版只保留最少事件資訊，不將完整提示、工具參數或路徑送到第三方。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個本機紀錄不等於手機推播。若要接作業系統通知或外部服務，需自行提供接收程式、權限與連線，並測試失敗回報。第一版只保留最少事件資訊，不將完整提示、工具"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "或路徑送到第三方。"
+            }
+          ]
         },
         {
           "type": "paragraph",

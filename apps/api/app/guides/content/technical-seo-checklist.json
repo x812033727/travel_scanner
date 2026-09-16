@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -73,8 +75,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "查看頁面的 robots 中繼標記、相關回應標頭及 robots.txt，確認它們與公開目的相符。測試站常有禁止索引設定，改版上線前若未重新檢查，可能連正式文章也一起排除。這類問題應查實際輸出，不能只相信後台某個選項已關閉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查看頁面的 robots 中繼"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、相關回應標頭及 robots.txt，確認它們與公開目的相符。測試站常有禁止索引設定，改版上線前若未重新檢查，可能連正式文章也一起排除。這類問題應查實際輸出，不能只相信後台某個選項已關閉。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,14 +223,26 @@
           "text": "即時測試、已索引資料、實際瀏覽與結構化資料驗證各有用途。報告中寫出使用哪個工具、何時檢查及看到了什麼，能避免把局部通過誤當成整站已完成或排名一定提升。"
         },
         {
-          "type": "link",
-          "text": "深入檢查抓取效率與網站紀錄",
-          "url": "https://mokaair.com/zh-TW/life/crawl-budget-diagnosis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深入檢查抓取效率與網站紀錄",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "改版前先建立網站備份",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-website-backup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "改版前先建立網站備份",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -47,14 +48,26 @@
           "text": "跟同系列另外兩篇講的功能相比：自訂指令是套用在你所有新對話的一段話，沒有檔案、不能分享；專案是一個資料夾，裡面有專案指令、參考檔案與多個對話，所有方案都能開，Business 以上可以分享給同事；自製 GPT 則是一個能獨立分享、甚至公開上架的成品。三者的字元與檔案上限整理在文末的表格。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -70,13 +83,34 @@
           "text": "使用：GPT 對所有 ChatGPT 使用者開放，登入後從側欄的 Explore GPTs、別人給的連結或工作區分享就能打開。GPT Store（網址 chatgpt.com/gpts）今天仍在線上，分成 Top Picks、Trending、By ChatGPT、Images、Programming、Research & Analysis、Productivity、Writing、Lifestyle、Education 等類別。"
         },
         {
-          "type": "paragraph",
-          "text": "退場時程：每一頁 GPT 相關的 help center 頂端都掛著同一段公告：OpenAI 計畫讓自製 GPT 退場，建議把工作流程搬到 Plugins；受影響的 Enterprise 工作區預定 2026 年 12 月 11 日退場，協助搬遷的工具預定 2026 年 9 月 17 日推出，不一定同時開放給每個帳號；既有的 GPT 在退場前都能用，其他方案的日期官網沒寫，以官網為準。Plugins 是 2026 年 7 月 9 日起在 Plugin Directory 上架的東西，一個 Plugin 可以包 Skills（可重用的指令與流程）、連接的 App 與 App 範本，Skills 目前只開放給 Business、Enterprise、Healthcare、Edu 使用者。個人帳號可以直接跳到最後一節。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "退場時程：每一頁 GPT 相關的 help center 頂端都掛著同一段公告：OpenAI 計畫讓自製 GPT 退場，建議把工作流程搬到 Plugins；受影響的 Enterprise 工作區預定 2026 年 12 月 11 日退場，協助搬遷的工具預定 2026 年 9 月 17 日推出，不一定同時開放給每個帳號；既有的 GPT 在退場前都能用，其他方案的日期官網沒寫，以官網為準。Plugins 是 2026 年 7 月 9 日起在 Plugin Directory 上架的東西，一個 Plugin 可以包 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "（可重用的指令與流程）、連接的 App 與 App 範本，Skills 目前只開放給 Business、Enterprise、Healthcare、Edu 使用者。個人帳號可以直接跳到最後一節。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -160,9 +194,15 @@
           "text": "兩份都刻意寫了「檔案裡沒有就說沒有」與「不要自己猜」，這是防亂編最有效的一句；也都用正面句寫要做什麼，help center 說這比一長串禁止事項更穩。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -245,9 +285,15 @@
           "caption": "2026 年 9 月依 OpenAI help center 整理；各方案的權限與上限之後可能變動，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         }
       ],
       "sources": [

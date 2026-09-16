@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂指令庫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-command-library"
+              "kind": "life",
+              "slug": "gemini-cli-custom-command-library"
             },
             {
               "type": "text",
@@ -88,8 +91,23 @@
           "text": "doc-check 只檢查兩項文字結構：有沒有一級標題，以及有沒有名為「來源」的二級標題。它不查引用真偽、不生成文章，也不自動修檔。這種明確範圍適合練習；如果要求「全面確保文章正確」，兩個正規表示式不可能提供足夠證據。"
         },
         {
-          "type": "paragraph",
-          "text": "開啟 skills/doc-check/SKILL.md，頂端 YAML 放 name 與 description，正文寫啟用後應怎麼工作。description 用來說明何時適合使用；它不是每次必然觸發的保證。一般 GEMINI.md 提供專案長期指示，技能則保存特定工作的步驟與資源，不能因為兩者都用 Markdown 就當成同一種檔案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開啟 "
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/doc-check/SKILL.md，頂端 YAML 放 name 與 description，正文寫啟用後應怎麼工作。description 用來說明何時適合使用；它不是每次必然觸發的保證。一般 GEMINI.md 提供專案長期指示，技能則保存特定工作的步驟與資源，不能因為兩者都用 Markdown 就當成同一種檔案。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -152,8 +170,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "回到 doc-check-1.0.0 根目錄，確認 gemini-extension.json、skills/ 與 CHANGELOG.md。最小清單只有名稱和版本，沒有 MCP 伺服器、Hooks 或額外的自動執行設定。安裝前仍要逐檔閱讀；套件一旦加入腳本或其他能力，應重新評估其用途與存取需求。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "回到 doc-check-1.0.0 根目錄，確認 gemini-extension.json、skills/ 與 CHANGELOG.md。最小清單只有名稱和版本，沒有 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器、Hooks 或額外的自動執行設定。安裝前仍要逐檔閱讀；套件一旦加入腳本或其他能力，應重新評估其用途與存取需求。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -179,9 +212,10 @@
               "text": "macOS／Linux 的子 shell 隔離方式見 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "載入實驗的環境準備",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-scope-lab"
+              "kind": "life",
+              "slug": "gemini-cli-memory-scope-lab"
             },
             {
               "type": "text",
@@ -196,8 +230,23 @@
           "code": "gemini extensions install ./extension-source\ngemini extensions list\ngemini extensions disable mokaair-doc-check --scope workspace\ngemini extensions list\ngemini extensions enable mokaair-doc-check --scope workspace\n"
         },
         {
-          "type": "paragraph",
-          "text": "閱讀安裝確認內容後再繼續。一般使用者不必加略過確認的參數。本文的模組測試只對自己建立、已讀取的最小本機套件提供同意，沒有對任意第三方擴充套件設定全面核准。重新開啟 CLI 後，核對套件與技能清單，再以指定樣本要求文件檢查，查看是否真的呼叫腳本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "閱讀安裝確認內容後再繼續。一般使用者不必加略過確認的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。本文的模組測試只對自己建立、已讀取的最小本機套件提供同意，沒有對任意第三方擴充套件設定全面核准。重新開啟 CLI 後，核對套件與技能清單，再以指定樣本要求文件檢查，查看是否真的呼叫腳本。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -287,9 +336,10 @@
               "text": "本教材只檢查單一文件，不包含批次修改。需要跨模組工作時，先依 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "大型專案上下文教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-large-project-context"
+              "kind": "life",
+              "slug": "gemini-cli-large-project-context"
             },
             {
               "type": "text",
@@ -305,27 +355,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills：建立可重用的 SKILL.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂 CLI 指令庫：程式審查、測試計畫與文件同步",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-command-library"
+              "kind": "life",
+              "slug": "gemini-cli-custom-command-library"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "大型專案的 CLI 上下文：分段任務、Git 差異與恢復",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-large-project-context"
+              "kind": "life",
+              "slug": "gemini-cli-large-project-context"
             },
             {
               "type": "text",
@@ -344,9 +397,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-skill-extension-package/md-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

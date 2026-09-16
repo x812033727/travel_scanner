@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Deep Research 是 Gemini 的多步驟研究功能，會先提出研究計畫，再蒐集來源與整理報告。本篇示範如何把模糊問題縮成可研究的範圍、挑選資料來源，並逐項核對報告。學完後，你應能交出附來源與待確認事項的研究筆記，而不只是一段看似完整的摘要。把它當研究 AI 用的重點，是報告裡每個來源都要打得開。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Deep Research 是 Gemini 的多步驟研究功能，會先提出研究計畫，再蒐集來源與整理報告。本篇示範如何把模糊問題縮成可研究的範圍、挑選資料來源，並逐項核對報告。學完後，你應能交出附來源與待確認事項的研究筆記，而不只是一段看似完整的摘要。把它當"
+            },
+            {
+              "type": "article",
+              "text": "研究 AI",
+              "kind": "life",
+              "slug": "chatgpt-deep-research-guide"
+            },
+            {
+              "type": "text",
+              "text": " 用的重點，是報告裡每個來源都要打得開。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,9 +71,10 @@
               "text": "官方目前要求登入 Gemini 且年滿十八歲，研究請求與同時執行數量另有用量限制。先確認自己的帳號是否提供 Deep Research，方案差異集中在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用量與訂閱",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -108,9 +125,10 @@
               "text": "如果研究需要參考自己的檔案，可透過當前提供的上傳或來源選項加入。使用 Gmail、Drive 等個人服務，須先符合"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -126,9 +144,10 @@
               "text": "需要只根據指定檔案研究時，除了在提示詞說明，也檢視是否能取消 Google 搜尋來源，並確認結果使用了哪些資料。提示詞是工作要求，來源選單則控制可選資料範圍，兩者都應核對。若主要是圍繞固定閱讀材料追查引用，可另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -174,9 +193,10 @@
               "text": "研究完成後，可依介面分享與匯出選項複製內容或匯出到 Google 檔案。開啟匯出檔，檢查表格、引用與連結是否保留。想把報告轉成視覺摘要，可使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Canvas",
-              "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+              "kind": "life",
+              "slug": "gemini-canvas-guide"
             },
             {
               "type": "text",
@@ -201,18 +221,20 @@
               "text": "接近額度時，把真正需要深入研究的問題留給此功能。簡短定義或一頁公告摘要，可以用一般對話或"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Chrome 閱讀協助",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-chrome-guide"
+              "kind": "life",
+              "slug": "gemini-in-chrome-guide"
             },
             {
               "type": "text",
               "text": "完成。需要做長期追蹤時，另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Spark 任務與排程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-spark-workflows-guide"
+              "kind": "life",
+              "slug": "gemini-spark-workflows-guide"
             },
             {
               "type": "text",
@@ -278,18 +300,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "讀 PDF、圖片與表格",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 入門",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-guide"
+              "kind": "life",
+              "slug": "notebooklm-guide"
             },
             {
               "type": "text",
@@ -298,9 +322,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 學習功能",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "引用查核",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
@@ -193,9 +196,10 @@
               "text": "交付題庫時附上每題章節與審閱狀態，將被剔除的題目另外保存。比較兩輪結果時說明題目是否變動、實際作答日期與有效題數，別直接拿不同題庫的分數宣稱能力提升。若要把教材改成其他格式，可接著學 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "講義、語音與影片一致性檢查",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-multiformat-lesson-pack"
+              "kind": "life",
+              "slug": "notebooklm-multiformat-lesson-pack"
             },
             {
               "type": "text",
@@ -243,27 +247,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 進階：測驗、語音與影片摘要",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 比較多篇研究：研究問題、方法與限制矩陣",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-paper-comparison-matrix"
+              "kind": "life",
+              "slug": "notebooklm-paper-comparison-matrix"
             },
             {
               "type": "text",
@@ -282,9 +289,15 @@
           "url": "https://mokaair.com/guides/notebooklm-study-retrieval-practice/research-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

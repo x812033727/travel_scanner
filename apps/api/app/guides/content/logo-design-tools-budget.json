@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "搜尋 Logo 設計，可能同時看到免費工具、套版服務、AI 生成和客製報價。這些選項提供的成果不一樣：有的只是下載一張圖片，有的包含字標調整、不同版本、使用規範與交接。比較之前，先把自己需要的內容寫清楚。Logo AI 生成的圖也在這些選項裡，它給的通常只是構想，不是可以註冊的商標。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "搜尋 Logo 設計，可能同時看到免費工具、套版服務、"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 生成和客製報價。這些選項提供的成果不一樣：有的只是下載一張圖片，有的包含字標調整、不同版本、使用規範與交接。比較之前，先把自己需要的內容寫清楚。Logo AI 生成的圖也在這些選項裡，它給的通常只是構想，不是可以註冊的商標。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +218,37 @@
           "text": "先確認圖形與字體來源、授權範圍及合約內容。素材可商用、成品可編輯、具有著作權及商標獲准，都是需要分別確認的狀態。"
         },
         {
-          "type": "link",
-          "text": "先寫完整的品牌識別需求",
-          "url": "https://mokaair.com/zh-TW/life/brand-identity-logo-brief"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先寫完整的品牌識別需求",
+              "kind": "life",
+              "slug": "brand-identity-logo-brief"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "區分網路與印刷輸出",
-          "url": "https://mokaair.com/zh-TW/life/rgb-cmyk-export"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "區分網路與印刷輸出",
+              "kind": "life",
+              "slug": "rgb-cmyk-export"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查網站配色與文字對比",
-          "url": "https://mokaair.com/zh-TW/life/website-color-system"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查網站配色與文字對比",
+              "kind": "life",
+              "slug": "website-color-system"
+            }
+          ]
         }
       ],
       "sources": [

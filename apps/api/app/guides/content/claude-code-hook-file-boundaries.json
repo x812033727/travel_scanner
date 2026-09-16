@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 176,
@@ -99,8 +100,23 @@
           }
         },
         {
-          "type": "paragraph",
-          "text": "受保護內容是 private/demo.txt，裡面只有虛構文字。一般寫入對照組是 fixtures/demo.json。Hook 僅處理 PreToolUse 中的 Write 與 Edit；它不攔截你手動操作的終端機，也不自動控制其他 MCP 伺服器。這份明確清單應放進完成報告，不能只寫「已保護專案」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "受保護內容是 private/demo.txt，裡面只有虛構文字。一般寫入對照組是 fixtures/demo.json。Hook 僅處理 PreToolUse 中的 Write 與 Edit；它不攔截你手動操作的終端機，也不自動控制其他 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器。這份明確清單應放進完成報告，不能只寫「已保護專案」。"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "重新排序，英文 Reranking，指在第一輪搜尋取得候選之後，再用另一個排序步驟判斷哪些資料應放前面。它常用於搜尋與 RAG，讓速度較快的檢索器先縮小範圍，再把有限的候選交給較深入的相關性模型。這是一種分階段的資源分配：先找得到，再花力氣判斷先看哪個。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重新排序，英文 Reranking，指在第一輪搜尋取得候選之後，再用另一個排序步驟判斷哪些資料應放前面。它常用於搜尋與 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "，讓速度較快的檢索器先縮小範圍，再把有限的候選交給較深入的相關性模型。這是一種分階段的資源分配：先找得到，再花力氣判斷先看哪個。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "重新排序不是保證更準的按鈕，也不只能使用大型語言模型。交叉編碼器、學習排序模型與其他評分方法都可能擔任這個角色。本篇以 Sentence Transformers 的 Retrieve and Re-Rank 文件及 Elastic 的排序說明為基礎，透過虛構圖書館規則示範機制，將預期行為與實際測試成績清楚分開。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重新排序不是保證更準的按鈕，也不只能使用"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "。交叉編碼器、學習排序模型與其他評分方法都可能擔任這個角色。本篇以 Sentence Transformers 的 Retrieve and Re-Rank 文件及 Elastic 的排序說明為基礎，透過虛構圖書館規則示範機制，將預期行為與實際測試成績清楚分開。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -152,24 +183,48 @@
           "text": "先確認正確段落已被檢索到。候選缺漏和排名失誤需要不同修正。"
         },
         {
-          "type": "link",
-          "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-chunking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-semantic-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

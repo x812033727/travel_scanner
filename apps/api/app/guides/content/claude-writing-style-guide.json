@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "productivity"
+    "productivity",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "用 AI 寫文章最常見的挫折不是它寫不出來，而是寫出來的東西一看就知道不是你寫的：句子長度一樣、每段開頭都在鋪陳、形容詞很滿、細節很空。這篇回答的問題是，怎麼讓 Claude 幫你寫出像自己寫的繁體中文長文。結論是三件事：先餵兩三篇自己的舊文當風格樣本，再把結構談清楚才動筆，最後逐段改而不是整篇重生。跟它說「活潑一點」「專業一點」幾乎沒有用。搜「寫作 AI」進來的人常期待一鍵成文，這篇給的是讓成品像你寫的方法。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 寫文章最常見的挫折不是它寫不出來，而是寫出來的東西一看就知道不是你寫的：句子長度一樣、每段開頭都在鋪陳、形容詞很滿、細節很空。這篇回答的問題是，怎麼讓 Claude 幫你寫出像自己寫的繁體中文長文。結論是三件事：先餵兩三篇自己的舊文當風格樣本，再把結構談清楚才動筆，最後逐段改而不是整篇重生。跟它說「活潑一點」「專業一點」幾乎沒有用。搜「寫作 AI」進來的人常期待一鍵成文，這篇給的是讓成品像你寫的方法。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -39,8 +55,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Claude 說明中心的個人化說明頁把「可以改變它怎麼回答」的設定分成三層。第一層是帳號層級的指令（Instructions for Claude）：點左下角自己的名字縮寫進設定，在指令欄位寫下規則，官網寫明這些指令會套用到你所有的對話。第二層是專案指令，只對那個專案裡的對話生效，官網舉的例子就是要它用比較正式的語氣，或用某個角色的角度回答。第三層是技能（Skills），官網寫的用途最直接：調整回答的語氣與格式，依你自己的寫作或偏好套用一套溝通方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude 說明中心的個人化說明頁把「可以改變它怎麼回答」的設定分成三層。第一層是帳號層級的指令（Instructions for Claude）：點左下角自己的名字縮寫進設定，在指令欄位寫下規則，官網寫明這些指令會套用到你所有的對話。第二層是專案指令，只對那個專案裡的對話生效，官網舉的例子就是要它用比較正式的語氣，或用某個角色的角度回答。第三層是技能（"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "），官網寫的用途最直接：調整回答的語氣與格式，依你自己的寫作或偏好套用一套溝通方式。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,14 +87,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -83,9 +126,15 @@
           "text": "這份描述本身就是你的風格指令：滿意之後貼進設定的指令欄位或專案指令，也可以請 Claude 照著做成一個技能，之後不必每次重貼原文。Claude Academy 的教材把這件事濃縮成三句話：講清楚格式、講清楚語氣、貼一篇你自己滿意的成品。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -146,9 +195,15 @@
           "text": "改完一定要問它動了什麼：「列出你剛剛改了哪幾處，一行一處，原句在前、改後在後。」自己比對一次，特別看日期、金額和專有名詞。逐段改、不整篇重生，這個習慣在別的工具上也一樣成立，只是入口不同。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+              "kind": "life",
+              "slug": "chatgpt-canvas-writing"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -213,9 +268,15 @@
           "text": "中文寫作最常被編出來的是這幾樣：法規的條號與名稱、機關的正式全名、新聞日期、書名與頁碼、人名的頭銜、統計數字與百分比。規則很簡單：凡是括號裡的東西和任何一個數字，發稿前自己點開原始頁面對一次。它附的網址也要點開，連結本身同樣可能是編的。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "table",

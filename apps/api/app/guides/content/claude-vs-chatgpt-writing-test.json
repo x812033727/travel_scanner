@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -38,8 +39,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "網路上的評測與排行榜不是沒有價值，只是它們回答的是「在那批題目上、那個時間點、那群評分者眼中誰比較好」，你的問題卻是「在我明天要交的那份稿子上誰比較好」。Anthropic 官方的評估設計文件第一條原則就寫著：評估要針對任務，設計成能反映你真實世界的任務分布。這句話原本寫給開發者，套在寫作上一樣成立。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網路上的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "與排行榜不是沒有價值，只是它們回答的是「在那批題目上、那個時間點、那群評分者眼中誰比較好」，你的問題卻是「在我明天要交的那份稿子上誰比較好」。Anthropic 官方的評估設計文件第一條原則就寫著：評估要針對任務，設計成能反映你真實世界的任務分布。這句話原本寫給開發者，套在寫作上一樣成立。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -152,9 +168,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
-          "url": "https://mokaair.com/zh-TW/life/claude-writing-style-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
+              "kind": "life",
+              "slug": "claude-writing-style-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -251,8 +273,23 @@
           "ordered": true
         },
         {
-          "type": "paragraph",
-          "text": "第四條最常被跳過，也最有效：人對自己已經在用、尤其是已經付錢的那一家會不自覺地寬容。公開的對戰排行榜也是這樣做的，arena.ai 讓你先看兩個匿名模型的回答，投完票才揭曉是誰。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第四條最常被跳過，也最有效：人對自己已經在用、尤其是已經付錢的那一家會不自覺地寬容。公開的對戰排行榜也是這樣做的，arena."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 讓你先看兩個匿名模型的回答，投完票才揭曉是誰。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -273,8 +310,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "這節只寫兩家官網在 2026 年 9 月寫得出來的東西。Anthropic 的官方文件把目前的模型列成四個：Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5 與 Claude Haiku 4.5；前三個的上下文視窗都是 100 萬 token，Haiku 4.5 是 20 萬 token。寫作相關的功能，官網產品頁列出 Artifacts、專案（Projects）與技能（Skills），說明中心把可以調整回答方式的設定分成三層：帳號層級的指令、專案指令與技能。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這節只寫兩家官網在 2026 年 9 月寫得出來的東西。Anthropic 的官方文件把目前的模型列成四個：Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5 與 Claude Haiku 4.5；前三個的上下文視窗都是 100 萬 token，Haiku 4.5 是 20 萬 token。寫作相關的功能，官網產品頁列出 Artifacts、專案（Projects）與技能（"
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "），說明中心把可以調整回答方式的設定分成三層：帳號層級的指令、專案指令與技能。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -285,9 +337,15 @@
           "text": "這些數字唯一的用途，是讓你知道兩邊規格大致落在同一個量級。它們不是寫作品質的證據：上下文視窗大不代表摘要做得好，版本新也不代表中文寫得順。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+              "kind": "life",
+              "slug": "chatgpt-canvas-writing"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -303,9 +361,15 @@
           "text": "還有一件事：你測的是今天這個版本。三個月後兩家都可能換過模型，這張表就得重測。與其每次發稿前重做一次，不如把這五題和你的材料存成一個資料夾，下次想換工具時拿出來再跑一次。"
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         },
         {
           "type": "table",

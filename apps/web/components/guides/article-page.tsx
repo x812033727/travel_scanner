@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { SeriesHub } from "./series-hub";
@@ -9,6 +10,8 @@ import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
+import { Breadcrumb } from "@/components/guides/breadcrumb";
+import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
 import { SiteHeader } from "@/components/site-header";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
@@ -18,14 +21,14 @@ import { localeLabels, type Locale } from "@/i18n/routing";
 import { citiesForCountry, countryKeys, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
-import {
+import { splitArticleExtras, guideTopicHref, guideSection,
   guideHeadings, guideHref, guideListHref, readingMinutes,
   type GuideArticleState, type GuideKind, type GuideSummary, type PublishedGuide,
 } from "@/lib/guides";
 import { getAdsenseSlot } from "@/lib/adsense.server";
-import { getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
+import { getGuideTopics, getGuideArticle, getGuideList, getGuideSeries } from "@/lib/guides.server";
 import { localeUrl } from "@/lib/seo";
-import { breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
+import { faqPage, definedTerm, breadcrumbs, guideArticle, type Crumb } from "@/lib/structured-data";
 
 /**
  * The one article page, shared by `/guides/[kind]/[slug]` and `/life/[slug]`.
@@ -51,9 +54,22 @@ function listingOf(kind: GuideKind, t: Translate): Crumb {
   return { name, path: guideListHref(kind) };
 }
 
+/**
+ * A slug is lowercase, and one article has one URL. An inbound link that capitalised it
+ * (`/guides/howto/Narita-To-Tokyo`) is sent to the canonical address for good rather than
+ * answered with the "temporarily unavailable" notice the loader's identity guard would
+ * otherwise produce: the article is live, only the address was wrong. `guideHref` builds
+ * the locale-less path; the `Link`-less redirect needs the locale on it.
+ */
+function canonicalSlugOrRedirect({ locale, kind, slug }: GuideArticleRoute): void {
+  const canonical = slug.toLowerCase();
+  if (canonical !== slug) permanentRedirect(`/${locale}${guideHref(kind, canonical)}`);
+}
+
 export async function guideArticleMetadata(
   { locale, kind, slug }: GuideArticleRoute, parent?: ResolvingMetadata,
 ): Promise<Metadata> {
+  canonicalSlugOrRedirect({ locale, kind, slug });
   const [state, t] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
@@ -166,6 +182,7 @@ async function relatedTravel(
 }
 
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
+  canonicalSlugOrRedirect({ locale, kind, slug });
   const [rawState, t, nav, ts] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
@@ -216,22 +233,46 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const kindLabels = { intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life") };
   // A card is labelled by its section and nothing else, so the kind labels are the whole set.
   const card: GuideCardLabels = kindLabels;
-  const related = kind === "life"
+  // What to read next comes from the API's ranked list when it has one (the editor's picks,
+  // then the nearest neighbours); a lesson's own related lessons are already listed by the
+  // series navigation just above and are not repeated. A lifestyle article keeps the travel
+  // handover after it; a travel article's list replaces the same-city cards it used to end
+  // with, which an API without the list still supplies.
+  const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
+  const grid = state.related?.length
+    ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />
+    : null;
+  const cited = state.backlinks?.length ? <Backlinks heading={t("guides.citedBy")} items={state.backlinks} /> : null;
+  const handover = kind === "life"
     ? await travelCrosslinks(locale, state.destination_id, {
       relatedTravel: t("guides.relatedTravel"),
       relatedDestinations: t("guides.relatedDestinations"),
       card,
     })
-    : await relatedTravel(locale, state, {
+    : grid ? null : await relatedTravel(locale, state, {
       relatedTravel: t("guides.related"),
       relatedDestinations: t("guides.relatedDestinations"),
       card,
     });
+  const related = grid || cited || handover ? <>{grid}{cited}{handover}</> : null;
   // Travel articles sit under the guides hub and then their kind; a lifestyle article sits
-  // directly under `/life`, which is both its hub and its only listing.
+  // directly under `/life`, which is both its hub and its only listing. Then the article's
+  // first topic: its parent hub and its own hub for a sub-topic, its own hub otherwise. The
+  // vocabulary read is what names a parent (the state carries only the parent's slug); when
+  // it is unavailable the topic still gets its crumb, its parent does not.
   const trail: Crumb[] = kind === "life"
     ? [{ name: nav("home"), path: "/" }, listing]
     : [{ name: nav("home"), path: "/" }, { name: t("guides.hubTitle"), path: "/guides" }, listing];
+  const section = guideSection(kind);
+  const topic = state.topics[0];
+  if (topic) {
+    const vocabulary = await getGuideTopics(locale, section);
+    const parentSlug = topic.parent ?? vocabulary.find((item) => item.slug === topic.slug)?.parent ?? null;
+    const parent = parentSlug ? vocabulary.find((item) => item.slug === parentSlug) ?? null : null;
+    if (parent) trail.push({ name: parent.label, path: guideTopicHref(section, parent.slug) });
+    trail.push({ name: topic.label, path: guideTopicHref(section, topic.slug) });
+  }
+  const extras = splitArticleExtras(state.document.blocks);
   const labels: GuideArticleLabels = {
     ...kindLabels,
     updated: t("guides.updated"),
@@ -246,6 +287,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       imageCredit: t("guides.imageCredit"),
       tip: t("guides.calloutTip"), warning: t("guides.calloutWarning"), info: t("guides.calloutInfo"),
     },
+    term: { card: t("guides.termCard"), readMore: t("guides.termReadMore") },
+    summary: t("guides.summary"),
+    faq: t("guides.faq"),
   };
   const hero = state.document.hero;
   const copy = seriesCopy(locale);
@@ -266,6 +310,18 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       <StructuredData
         data={[
           breadcrumbs(locale, [...trail, { name: state.document.title, path: guideHref(kind, slug) }]),
+          // The editor's questions, and the glossary entry, as their own graphs: each is
+          // present exactly when the page shows the thing it describes.
+          extras.faq ? faqPage(locale, guideHref(kind, slug), extras.faq.items) : null,
+          state.term_set
+            ? definedTerm(locale, {
+              path: guideHref(kind, slug),
+              name: state.document.title,
+              description: state.document.description,
+              aliases: state.aliases,
+              set: { name: state.term_set.title, path: guideHref(state.term_set.kind, state.term_set.slug) },
+            })
+            : null,
           // Honest because this page renders every part of it: the headline, the body, the
           // publication date, the topic chips, the reading time, and the source list with the
           // date each entry was checked. `guideArticle` records what is deliberately left out.
@@ -291,16 +347,14 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
               return href ? [{ title: source.title, url: href, checkedOn: source.checked_on }] : [];
             }),
             minutes: readingMinutes(state.document),
+            abstract: extras.summary?.items ?? null,
             collection: isHub,
             entries: series?.entries.map((item) => ({ name: item.title, path: guideHref(item.kind, item.slug) })),
           }),
         ]}
       />
       <main className={`mx-auto px-5 py-10 md:py-14 ${state.series ? "max-w-6xl" : "max-w-3xl"}`}>
-        {state.series ? <nav aria-label="Breadcrumb" className="mb-6 text-sm leading-7 text-[var(--muted)]"><ol className="flex flex-wrap gap-2">
-          {trail.filter(crumb => crumb.path !== "/").map(crumb => <li key={crumb.path}><Link className="underline" href={crumb.path}>{crumb.name}</Link><span aria-hidden="true"> / </span></li>)}
-          <li aria-current="page">{state.document.title}</li>
-        </ol></nav> : null}
+        <Breadcrumb trail={trail} current={state.document.title} label={t("guides.breadcrumb")} />
         <div className={state.series?.current ? "grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]" : ""}>
         <div className="min-w-0">
         <GuideArticle

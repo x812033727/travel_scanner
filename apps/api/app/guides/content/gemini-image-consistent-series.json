@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,36 +56,40 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "圖片生成與修圖入門",
-              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞比較實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
               "text": "。使用電腦瀏覽器登入 Gemini，確認帳號可使用圖片功能。本練習包含上傳參考與修改，依 2026-09-14 官方說明採十八歲以上帳號；學校帳號、地區和方案可能有不同條件，請核對實際入口。模型與額度集中參考 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+              "kind": "life",
+              "slug": "gemini-model-lineup-flash-pro"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案說明",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -220,18 +225,20 @@
               "text": "交付前檢查三張成品的尺寸、用途、來源、評分與輸入版本；失敗輸出另存，避免接手者誤用。需要處理局部文字或多輪品質下降時，接著讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "修圖除錯",
-              "url": "https://mokaair.com/zh-TW/life/gemini-image-editing-debugging"
+              "kind": "life",
+              "slug": "gemini-image-editing-debugging"
             },
             {
               "type": "text",
               "text": "；要把商品延伸成影片，先做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "三鏡頭分鏡",
-              "url": "https://mokaair.com/zh-TW/life/google-flow-storyboard-workshop"
+              "kind": "life",
+              "slug": "google-flow-storyboard-workshop"
             },
             {
               "type": "text",
@@ -250,8 +257,23 @@
           "level": 3
         },
         {
-          "type": "paragraph",
-          "text": "仍需核對形狀、把手與標記。配色只是其中一項，商品身份還由外觀和數量共同決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "仍需核對形狀、把手與"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。配色只是其中一項，商品身份還由外觀和數量共同決定。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -279,27 +301,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 圖片生成與修圖：提示詞與參考圖",
-              "url": "https://mokaair.com/zh-TW/life/nano-banana-image-editing"
+              "kind": "life",
+              "slug": "nano-banana-image-editing"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞改寫實驗：用固定題庫找出有效的修改",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 修圖除錯：局部修改、文字錯誤與多輪退化",
-              "url": "https://mokaair.com/zh-TW/life/gemini-image-editing-debugging"
+              "kind": "life",
+              "slug": "gemini-image-editing-debugging"
             },
             {
               "type": "text",
@@ -318,9 +343,15 @@
           "url": "https://mokaair.com/guides/gemini-image-consistent-series/creative-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

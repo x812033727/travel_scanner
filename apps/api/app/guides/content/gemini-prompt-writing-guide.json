@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,9 +56,10 @@
               "text": "先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "第一個對話",
-              "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
             },
             {
               "type": "text",
@@ -142,18 +144,20 @@
               "text": "需要查新資訊時，直接要求官方來源、查證日期與不確定專案；如果只是整理附件，明確限制來源為本次檔案。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
               "text": "適合多來源研究，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -182,18 +186,20 @@
               "text": "需要每次開啟就沿用同一組助手指示，可以接著建立"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gem",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
               "text": "；需要 CLI 專案規則，則學"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
@@ -222,18 +228,20 @@
               "text": "「指定扮演專家就能避免錯誤嗎？」角色能提示語氣與觀點，不能取代來源或驗證。重要數字仍要核對原文，缺少的資料仍要標明。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+              "kind": "life",
+              "slug": "gemini-model-lineup-flash-pro"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "日常任務比較",
-              "url": "https://mokaair.com/zh-TW/life/gemini-vs-chatgpt-vs-claude-daily"
+              "kind": "life",
+              "slug": "gemini-vs-chatgpt-vs-claude-daily"
             },
             {
               "type": "text",
@@ -282,18 +290,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gems 自訂助手",
-              "url": "https://mokaair.com/zh-TW/life/gemini-gems-custom-assistants"
+              "kind": "life",
+              "slug": "gemini-gems-custom-assistants"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "用 Gemini 規劃旅行",
-              "url": "https://mokaair.com/zh-TW/life/gemini-for-travel-planning"
+              "kind": "life",
+              "slug": "gemini-for-travel-planning"
             },
             {
               "type": "text",
@@ -302,9 +312,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "finance",
-    "tutorial"
+    "tutorial",
+    "banking"
   ],
   "valid_until": null,
   "featured": false,
@@ -113,9 +114,15 @@
           "text": "換完的外幣要留著（之後匯出、再換回或用外幣扣款），錢得有地方放，就需要外幣存款帳戶，適用即期匯率。換完就是要領現鈔出國用的，適用現金匯率；能不能直接從新臺幣帳戶扣款、要不要先開外幣帳戶，以各銀行公告為準。"
         },
         {
-          "type": "link",
-          "text": "外幣帳戶怎麼開、拿來做什麼，先把這件事弄清楚再談換匯",
-          "url": "https://mokaair.com/zh-TW/life/foreign-currency-account-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "外幣帳戶怎麼開、拿來做什麼，先把這件事弄清楚再談換匯",
+              "kind": "life",
+              "slug": "foreign-currency-account-taiwan"
+            }
+          ]
         },
         {
           "type": "list",
@@ -203,14 +210,26 @@
           "text": "台灣先換與到當地再換，差別在成本結構與可得性。台灣先換付的是現金賣出的價差，再加上可能發生的回換價差，換到的是出發前就確定的金額與面額；到當地再換的成本由當地銀行或匯兌業者的報價與收費決定，出發前看不到，還要遷就營業時間、地點與可兌換幣別。哪一邊划算取決於幣別、金額與行程。"
         },
         {
-          "type": "link",
-          "text": "到當地才換錢是什麼情況，韓國的換錢所與交通卡實例可以對照著看",
-          "url": "https://mokaair.com/zh-TW/guides/howto/korea-money-exchange-wowpass-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "到當地才換錢是什麼情況，韓國的換錢所與交通卡實例可以對照著看",
+              "kind": "howto",
+              "slug": "korea-money-exchange-wowpass-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "不換現鈔、直接在當地提款的成本結構是另一套",
-          "url": "https://mokaair.com/zh-TW/life/overseas-atm-withdrawal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "不換現鈔、直接在當地提款的成本結構是另一套",
+              "kind": "life",
+              "slug": "overseas-atm-withdrawal"
+            }
+          ]
         },
         {
           "type": "callout",

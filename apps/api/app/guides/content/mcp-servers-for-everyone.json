@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "知道 MCP 是一套讓 AI 應用連上外部工具的開放協定之後，下一個問題通常是：那到底有哪些伺服器值得接？答案比想像中少。官方參考伺服器只有七個，日常真正用得到的大致就是檔案、Google、Notion 與瀏覽器這四類，其餘多半是各家服務自己代管的遠端伺服器。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "知道 MCP 是一套讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 應用連上外部工具的開放協定之後，下一個問題通常是：那到底有哪些伺服器值得接？答案比想像中少。官方參考伺服器只有七個，日常真正用得到的大致就是檔案、Google、Notion 與瀏覽器這四類，其餘多半是各家服務自己代管的遠端伺服器。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,9 +63,15 @@
           "text": "同一件事各家取的名字不一樣。Claude 把接上去的伺服器叫連接器（connector），桌面版另外還有桌面擴充功能；ChatGPT 的官方說明中心叫它 app，而且自 2026 年 7 月 9 日起，原本的 app 目錄已經併進外掛（plugin）目錄；Claude Code 與 Gemini CLI 則直接叫 MCP 伺服器。名字不同，底下是同一套協定。"
         },
         {
-          "type": "link",
-          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -165,9 +187,15 @@
           "text": "工作區擁有者可以在 Notion 的設定與連線頁管理哪些 MCP 客戶端能存取，組織擁有者還能用 Admin API 列出與撤銷成員的連線。"
         },
         {
-          "type": "link",
-          "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
-          "url": "https://mokaair.com/zh-TW/life/notion-ai-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Notion AI 入門：哪個方案才有、能做什麼、資料怎麼處理",
+              "kind": "life",
+              "slug": "notion-ai-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -185,8 +213,23 @@
           "code": "{\n  \"mcpServers\": {\n    \"playwright\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"@playwright/mcp@latest\"\n      ]\n    }\n  }\n}"
         },
         {
-          "type": "paragraph",
-          "text": "Chrome DevTools MCP 由 Chrome DevTools 團隊維護，授權同樣是 Apache-2.0，需要 Node.js 的 LTS 版本與目前穩定版或更新的 Chrome，官方只保證支援 Google Chrome 與 Chrome for Testing。它能錄效能追蹤、看網路請求與主控台訊息。官方免責聲明直說：這台伺服器會把瀏覽器裡的內容暴露給 MCP 客戶端，不想分享的敏感或個人資料就不要放在那顆瀏覽器裡。使用統計預設是開的，加上關閉使用統計的參數可以停掉。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Chrome DevTools MCP 由 Chrome DevTools 團隊維護，授權同樣是 Apache-2.0，需要 Node.js 的 LTS 版本與目前穩定版或更新的 Chrome，官方只保證支援 Google Chrome 與 Chrome for Testing。它能錄效能追蹤、看網路請求與主控台訊息。官方免責聲明直說：這台伺服器會把瀏覽器裡的內容暴露給 MCP 客戶端，不想分享的敏感或個人資料就不要放在那顆瀏覽器裡。使用統計預設是開的，加上關閉使用統計的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "可以停掉。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -195,9 +238,15 @@
           "code": "{\n  \"mcpServers\": {\n    \"chrome-devtools\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"chrome-devtools-mcp@latest\", \"--no-usage-statistics\"]\n    }\n  }\n}"
         },
         {
-          "type": "link",
-          "text": "AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險",
-          "url": "https://mokaair.com/zh-TW/life/ai-browsers-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 瀏覽器怎麼選：Comet、Dia、Chrome 的 Gemini 與代理風險",
+              "kind": "life",
+              "slug": "ai-browsers-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -286,9 +335,15 @@
           "text": "第三，把伺服器回傳的內容當成資料，不是指令。Notion 的安全頁把情境寫得很具體：攻擊者可以把惡意指示藏進客戶端會讀到的內容裡，客戶端如果照做，就可能在你沒有意圖的情況下洩漏資料或改掉內容。對策是在會改動內容的動作前保留確認步驟，而且自己看過再按同意。"
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -301,9 +356,15 @@
           "text": "MCP 伺服器一接上，助理就能用它的工具，而工具多半不會每一步都問你。務實的做法：一次只啟用一台，第一次先指向測試資料夾、測試頁面或測試帳號，把這台能做什麼、哪些動作會跳出核准視窗看清楚，再換成真的資料。Claude 的官方說明也提醒，只有在你信任那台伺服器與那個工具、願意讓它無人監督地執行時，才按下一律允許；另外 Claude 的進階研究功能目前無法呼叫本機 MCP 伺服器的工具。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜MCP 回傳含有指令時：資料與操作權限分開",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-mcp-untrusted-output"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜MCP 回傳含有指令時：資料與操作權限分開",
+              "kind": "life",
+              "slug": "claude-code-mcp-untrusted-output"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -311,8 +372,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "這篇整理的是官方文件寫得出來的能力與限制，沒有替你實測。接上之後照這五步自己確認一遍，比看任何評測都準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇整理的是官方文件寫得出來的能力與限制，沒有替你實測。接上之後照這五步自己確認一遍，比看任何"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "都準。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -326,18 +402,30 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "Claude Code｜MCP 安裝、設定與排錯",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-mcp-setup-troubleshooting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜MCP 安裝、設定與排錯",
+              "kind": "life",
+              "slug": "claude-code-mcp-setup-troubleshooting"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "最後提醒：這份清單會過期。伺服器會改名、會封存、方案會調整，官方參考倉庫就把好幾台移進了封存區。要接哪一台之前，花一分鐘打開它的官方倉庫或說明頁看一眼維護狀態與授權，比照著任何一篇文章直接複製設定安全得多。"
         },
         {
-          "type": "link",
-          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
-          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+              "kind": "life",
+              "slug": "claude-mcp-explained"
+            }
+          ]
         }
       ],
       "sources": [

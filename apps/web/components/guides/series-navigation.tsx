@@ -17,12 +17,15 @@ export function SeriesStart({ series, locale }: { series: SeriesNavigation; loca
 }
 export function SeriesEnd({ series, locale }: { series: SeriesNavigation; locale: string }) {
   const copy = seriesCopy(locale);
-  return <section className="space-y-5 border-t border-[var(--line)] pt-6">
-    <nav aria-label={series.hub.title} className="grid gap-3 sm:grid-cols-3">
-      <div>{series.previous ? <ArticleLink target={series.previous} locale={locale} prefix={copy.previous} /> : null}</div>
-      <a href={`/${locale}${guideHref(series.hub.kind, series.hub.slug)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{copy.back}</a>
-      <div>{series.next ? <ArticleLink target={series.next} locale={locale} prefix={copy.next} /> : null}</div>
+  // Previous and next as two columns, each a box a thumb can land on; the way back to the
+  // directory sits beneath them rather than between, where it split the pair.
+  const box = "rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3";
+  return <section className="space-y-5 border-t border-[var(--line)] pt-8">
+    <nav aria-label={series.hub.title} className="grid gap-3 sm:grid-cols-2">
+      <div className={box}>{series.previous ? <ArticleLink target={series.previous} locale={locale} prefix={copy.previous} /> : null}</div>
+      <div className={`${box} sm:text-right`}>{series.next ? <ArticleLink target={series.next} locale={locale} prefix={copy.next} /> : null}</div>
     </nav>
+    <p><a href={`/${locale}${guideHref(series.hub.kind, series.hub.slug)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{copy.back}</a></p>
     {series.related.length ? <div><h2 className="text-lg font-semibold">{copy.related}</h2><ul>
       {series.related.slice(0, 3).map(target => <li key={target.slug}><ArticleLink target={target} locale={locale} /></li>)}
     </ul></div> : null}

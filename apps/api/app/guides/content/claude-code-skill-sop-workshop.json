@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 167,
@@ -156,8 +157,23 @@
           "text": "定義輸入、產物與停止條件"
         },
         {
-          "type": "paragraph",
-          "text": "輸入固定是一份 diff 檔案，產物是審查報告；這一版不修改檔案，也不提交變更。若沒有參數，應要求提供檔案；若檔案只有標題而沒有程式變更，應說明無法判讀；若找不到真正影響，不要為了填表製造問題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "輸入固定是一份 diff 檔案，產物是審查報告；這一版不修改檔案，也不提交變更。若沒有"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，應要求提供檔案；若檔案只有標題而沒有程式變更，應說明無法判讀；若找不到真正影響，不要為了填表製造問題。"
+            }
+          ]
         },
         {
           "type": "table",

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 152,
@@ -213,8 +214,23 @@
           "text": "雲端 Cloud routine"
         },
         {
-          "type": "paragraph",
-          "text": "在 claude.ai/code/routines 或桌面 Routines 建立 Cloud，指定雲端儲存庫、環境與提示，再設定排程。也可使用 CLI /schedule 管理支援的雲端例行工作。查證時 Pro、Max、Team、Enterprise 可用，但組織管理者可以停用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "/code/routines 或桌面 Routines 建立 Cloud，指定雲端儲存庫、環境與提示，再設定排程。也可使用 CLI /schedule 管理支援的雲端例行工作。查證時 Pro、Max、Team、Enterprise 可用，但組織管理者可以停用。"
+            }
+          ]
         },
         {
           "type": "paragraph",

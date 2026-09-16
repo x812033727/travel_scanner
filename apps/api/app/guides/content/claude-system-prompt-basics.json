@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,29 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "系統提示詞（system prompt）是你在對話開始前就先給好的一段指令：它是誰、管什麼、回答長什麼樣、什麼時候該說不知道。它不是什麼進階功能，一般使用者在 Claude 的設定裡、在專案指令裡填的那幾行字就是它，寫程式的人用 API 的 system 參數送出的也是同一段文字。結論很單純：同一種任務做超過三次，就把每次重打的要求寫成一段指令固定下來，Claude 才會穩定地扮演同一種角色。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "（system prompt）是你在對話開始前就先給好的一段指令：它是誰、管什麼、回答長什麼樣、什麼時候該說不知道。它不是什麼進階功能，一般使用者在 Claude 的設定裡、在專案指令裡填的那幾行字就是它，寫程式的人用 API 的 system "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "送出的也是同一段文字。結論很單純：同一種任務做超過三次，就把每次重打的要求寫成一段指令固定下來，Claude 才會穩定地扮演同一種角色。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,8 +65,23 @@
           "text": "差別在生效範圍。你在輸入框打的要求只影響這一題，下一則訊息、明天的新對話都不算數；系統提示詞則是在每一則訊息之前先套用一次，你不必重貼。Anthropic 的 API 文件把它定義成「提供背景與指令給 Claude 的方式，例如指定一個特定的目標或角色」；提示詞寫作指南裡「給 Claude 一個角色」那一節則寫明，在系統提示詞裡設定角色能把行為與語氣聚焦在你的用途上，即使只有一句話也有差別。"
         },
         {
-          "type": "paragraph",
-          "text": "一般使用者不會碰到參數，但同一件事在 claude.ai 有幾個介面。說明中心的個人化說明頁列出三項功能，差別只在生效範圍："
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一般使用者不會碰到參數，但同一件事在 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 有幾個介面。說明中心的個人化說明頁列出三項功能，差別只在生效範圍："
+            }
+          ]
         },
         {
           "type": "list",
@@ -61,14 +98,26 @@
           "text": "官網建議依範圍分工：所有對話都適用的寫在帳號層級，只有某件事適用的寫進那個專案，需要時才叫出來的做成技能。怎麼把一次性的問題問清楚是另一套功夫，本站另一篇提示詞入門有改前改後的對照。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -230,9 +279,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -270,18 +325,30 @@
           "text": "會寫程式的話，這段指令就是 Messages API 最上層的 system 參數。官方文件寫明輸入訊息裡沒有 system 這個角色，要給系統提示詞就用最上層的 system 參數，它接受一段字串，也接受一組文字區塊。你在 Instructions for Claude 或專案指令裡寫的東西，換到程式裡就是填進這個參數的同一段文字，六個部件照用，改法也一樣。差別只在程式裡同一段指令會套到成千上萬次呼叫，更值得花時間測穩。"
         },
         {
-          "type": "link",
-          "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-          "url": "https://mokaair.com/zh-TW/life/claude-api-first-call"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
+              "kind": "life",
+              "slug": "claude-api-first-call"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "習慣用 ChatGPT 的人，對應的功能在那邊叫自訂指令與記憶，位置與生效範圍不同，但六個部件、四個常見錯誤與測試方法一樣適用，換個介面照寫就是。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-instructions-memory"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 自訂指令與記憶功能：讓它記住你的偏好，每次都用台灣繁體中文回答",
+              "kind": "life",
+              "slug": "chatgpt-custom-instructions-memory"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 196,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這篇期末實作要交付的是一個可以從乾淨材料啟動、能驗證功能、能處理故障、也能讓下一位維護者接手的待辦專案。你會挑選真正需要的規則、Skill、Hook 或 MCP，完成三種篩選，處理一次指定錯誤，再整理成果與尚未驗證的範圍。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇期末實作要交付的是一個可以從乾淨材料啟動、能驗證功能、能處理故障、也能讓下一位維護者接手的待辦專案。你會挑選真正需要的規則、Skill、Hook 或 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": "，完成三種篩選，處理一次指定錯誤，再整理成果與尚未驗證的範圍。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -268,8 +284,23 @@
           "text": "第五階段：選用一個可重用流程"
         },
         {
-          "type": "paragraph",
-          "text": "如果你經常重複審查差異，可安裝 review-change Skill，讓它依固定欄位提出問題。先驗證參數與材料，再要求只讀審查。Skill 回報不是最終判決；每個採納發現仍由你重現，駁回的項目也要有理由，避免為了填表而捏造缺陷。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果你經常重複審查差異，可安裝 review-change Skill，讓它依固定欄位提出問題。先驗證"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與材料，再要求只讀審查。Skill 回報不是最終判決；每個採納發現仍由你重現，駁回的項目也要有理由，避免為了填表而捏造缺陷。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

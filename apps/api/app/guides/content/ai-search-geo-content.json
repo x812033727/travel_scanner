@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "手作教室已經有課程頁，卻發現 AI 回答把體驗課與長期班混在一起。這時最需要處理的，可能是兩種課程的條件寫得不清楚，而不是立刻再買一套名為 GEO 的服務。內容整理應先改善資訊本身，再決定用什麼工具觀察。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "手作教室已經有課程頁，卻發現 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 回答把體驗課與長期班混在一起。這時最需要處理的，可能是兩種課程的條件寫得不清楚，而不是立刻再買一套名為 GEO 的服務。內容整理應先改善資訊本身，再決定用什麼工具觀察。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -121,8 +137,23 @@
           "text": "Google 說明，作為 AI 搜尋支持連結的頁面需要能被索引，並符合顯示摘要的條件。技術檢查可以從重要網址開始，確認讀者與搜尋系統能取得主要內容。通過檢查只是具備參與條件，不等於平台一定抓取、收錄或顯示。"
         },
         {
-          "type": "paragraph",
-          "text": "查閱時，Search Console 已提供 Search generative AI 控制，管理指定搜尋 AI 功能的內容參與。設定可能繼承上層資源，應先查看實際狀態，再由網站負責人決定是否調整。這項控制與模型訓練的選擇不同，不應把它解讀成所有 AI 使用方式的總開關。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查閱時，Search Console 已提供 Search generative AI 控制，管理指定"
+            },
+            {
+              "type": "article",
+              "text": "搜尋 AI",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            },
+            {
+              "type": "text",
+              "text": " 功能的內容參與。設定可能繼承上層資源，應先查看實際狀態，再由網站負責人決定是否調整。這項控制與模型訓練的選擇不同，不應把它解讀成所有 AI 使用方式的總開關。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -134,8 +165,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "查閱時 Google 已有搜尋生成式 AI 成效報表，可觀察支援功能中的曝光；Bing Webmaster Tools 的 AI Performance 則提供支援體驗中的引用資料。兩者的範圍與單位不同，應各自保存，不能直接加成一個跨平台的排名。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查閱時 Google 已有搜尋"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 成效報表，可觀察支援功能中的曝光；Bing Webmaster Tools 的 AI Performance 則提供支援體驗中的引用資料。兩者的範圍與單位不同，應各自保存，不能直接加成一個跨平台的排名。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,19 +242,37 @@
           "text": "優先整理適用條件、原始來源與更新責任。任何格式、工具或內容修改，都不能單獨保證進入生成式回答。"
         },
         {
-          "type": "link",
-          "text": "整理可信而有用的網站內容",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理可信而有用的網站內容",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢查搜尋爬取與網站技術條件",
-          "url": "https://mokaair.com/zh-TW/life/technical-seo-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查搜尋爬取與網站技術條件",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用讀者任務理解搜尋意圖",
-          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用讀者任務理解搜尋意圖",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
         }
       ],
       "sources": [

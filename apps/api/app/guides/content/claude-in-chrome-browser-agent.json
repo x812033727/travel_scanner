@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Claude in Chrome 是 Anthropic 的瀏覽器擴充功能：裝進 Chrome 之後，Claude 讀得到你正開著的那一個分頁，也能替你點連結、填欄位。它省下的是複製貼上與重複填表的時間，代價是你讓一個會照指令行動的程式，坐在一台登入了你所有帳號的瀏覽器裡。任何瀏覽器 AI 都有這個代價，差別只在你有沒有看到。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude in Chrome 是 Anthropic 的瀏覽器擴充功能：裝進 Chrome 之後，Claude 讀得到你正開著的那一個分頁，也能替你點連結、填欄位。它省下的是複製貼上與重複填表的時間，代價是你讓一個會照指令行動的程式，坐在一台登入了你所有帳號的瀏覽器裡。任何"
+            },
+            {
+              "type": "article",
+              "text": "瀏覽器 AI",
+              "kind": "life",
+              "slug": "ai-browsers-guide"
+            },
+            {
+              "type": "text",
+              "text": " 都有這個代價，差別只在你有沒有看到。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -58,9 +74,15 @@
           "ordered": true
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -138,12 +160,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "提示詞注入在官網的定義是：藏在網頁、電子郵件或文件裡的惡意指令，可能騙 Claude 做出你沒要求的動作。對瀏覽器代理來說這是最要緊的一條：它讀得到的每一頁都可能藏著白底白字或被動過手腳的圖片。官網列的「Claude 不會做的事」有一條正是為此：不照電子郵件或網頁內容裡的指令做事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "在官網的定義是：藏在網頁、電子郵件或文件裡的惡意指令，可能騙 Claude 做出你沒要求的動作。對瀏覽器代理來說這是最要緊的一條：它讀得到的每一頁都可能藏著白底白字或被動過手腳的圖片。官網列的「Claude 不會做的事」有一條正是為此：不照電子郵件或網頁內容裡的指令做事。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 公布過自己的測試。正式推出的公告寫，在一套由專業紅隊提供攻擊的評測裡，攻擊打到模型時，對 Opus 4.5 的成功率是 17.6%、對 Opus 5 是 3.8%，這是還沒加額外防護的數字；加上 2025 年 11 月當時最強的防護（探針）之後，對 Opus 4.5 仍有 16.7%。從 Opus 4.8 之後的模型，在探針加上安全分類器一起跑時，對 Claude Sonnet 5、Claude Opus 5 與 Claude Mythos 5 沒有攻擊成功，對 Claude Fable 5 是 0.3%。官網同時寫著攻擊手法一直在變，防護並非萬無一失。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 公布過自己的測試。正式推出的公告寫，在一套由專業紅隊提供攻擊的"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "裡，攻擊打到模型時，對 Opus 4.5 的成功率是 17.6%、對 Opus 5 是 3.8%，這是還沒加額外防護的數字；加上 2025 年 11 月當時最強的防護（探針）之後，對 Opus 4.5 仍有 16.7%。從 Opus 4.8 之後的模型，在探針加上安全分類器一起跑時，對 Claude Sonnet 5、Claude Opus 5 與 Claude Mythos 5 沒有攻擊成功，對 Claude Fable 5 是 0.3%。官網同時寫著攻擊手法一直在變，防護並非萬無一失。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -172,23 +220,56 @@
           "text": "同一類的東西不只一個。OpenAI 那邊是 ChatGPT 的代理模式，官方說明寫它用 OpenAI 自己的虛擬瀏覽器、靠截圖看網頁，那台瀏覽器不在你電腦裡。Claude in Chrome 剛好相反，它在你自己的 Chrome 裡跑、用你自己的登入狀態，畫面上發生什麼你當場看得到。兩邊的風險面因此不同。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-agent-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 代理模式：讓它替你上網比價、填表、訂位",
+              "kind": "life",
+              "slug": "chatgpt-agent-mode-guide"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "再往外一層是操作電腦：Claude 直接看你的螢幕、控制應用程式。官方文件把先後順序寫得很清楚，Claude 會先挑最精準的工具，有 MCP 伺服器就走 MCP，是指令就用終端機，是瀏覽器上的事而且裝了 Claude in Chrome 就用擴充功能，都不行才動用螢幕控制。瀏覽器擴充功能是網頁專用的那一把，不是最大的那一把。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再往外一層是操作電腦：Claude 直接看你的螢幕、控制應用程式。官方文件把先後順序寫得很清楚，Claude 會先挑最精準的工具，有 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器就走 MCP，是指令就用終端機，是瀏覽器上的事而且裝了 Claude in Chrome 就用擴充功能，都不行才動用螢幕控制。瀏覽器擴充功能是網頁專用的那一把，不是最大的那一把。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
-          "url": "https://mokaair.com/zh-TW/life/claude-computer-use-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 操作電腦是怎麼回事：能力、限制與安全",
+              "kind": "life",
+              "slug": "claude-computer-use-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
-          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+              "kind": "life",
+              "slug": "claude-mcp-explained"
+            }
+          ]
         },
         {
           "type": "table",

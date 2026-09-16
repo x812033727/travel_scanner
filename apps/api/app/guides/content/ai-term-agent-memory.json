@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "代理記憶（Agent Memory）是 AI 系統保存資訊，並在之後工作中重新取用的機制。資訊可以存在對話狀態、檔案或資料庫，再由程式決定何時讀取。它不表示模型像人一樣記住所有經驗，也不表示每次保存都會改變模型參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "代理記憶（Agent Memory）是 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 系統保存資訊，並在之後工作中重新取用的機制。資訊可以存在對話狀態、檔案或資料庫，再由程式決定何時讀取。它不表示模型像人一樣記住所有經驗，也不表示每次保存都會改變模型"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -120,8 +146,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "檢索是從資料中找出相關內容的過程，可以用來取回記憶，也可以查公司文件。代理記憶關心哪些互動與狀態值得保存、如何更新及適用對象；兩者重疊但不相同。把資料放進向量資料庫，也不會自動建立合理的記憶政策。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檢索是從資料中找出相關內容的過程，可以用來取回記憶，也可以查公司文件。代理記憶關心哪些互動與狀態值得保存、如何更新及適用對象；兩者重疊但不相同。把資料放進"
+            },
+            {
+              "type": "article",
+              "text": "向量資料庫",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "，也不會自動建立合理的記憶政策。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -177,24 +218,48 @@
           "text": "使用者說過什麼，與模型推論使用者可能喜歡什麼，應有不同的記憶標記。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+              "kind": "life",
+              "slug": "ai-term-context-compaction"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "生成式 AI 是能依輸入條件產生內容的人工智慧，例如文章、圖片、音訊或影片。它通常從訓練資料學到模式，再依提示詞或其他輸入生成結果；不是每次都從某個資料庫找出一份現成成品。生成也不保證完全原創、事實正確或適合直接公開，這些都需要另外確認。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "生成式 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 是能依輸入條件產生內容的人工智慧，例如文章、圖片、音訊或影片。它通常從訓練資料學到模式，再依提示詞或其他輸入生成結果；不是每次都從某個資料庫找出一份現成成品。生成也不保證完全原創、事實正確或適合直接公開，這些都需要另外確認。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +180,48 @@
           "text": "日期、地點、費用、引言和實際參加情況應有來源。把這些欄位與創意部分分開核對，比只要求「不要產生幻覺」更容易執行。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型（Large Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型（Large Language Model）是什麼",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

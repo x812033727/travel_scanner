@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 112,
   "locales": {
@@ -332,8 +333,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷標記，不能把整份設定覆蓋成網路上的範本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不能把整份設定覆蓋成網路上的範本。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -484,8 +500,14 @@
           "type": "rich_paragraph",
           "inlines": [
             {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
               "type": "text",
-              "text": "MCP 設定存在但工具不可用: "
+              "text": " 設定存在但工具不可用: "
             },
             {
               "type": "article",
@@ -524,8 +546,14 @@
           "type": "rich_paragraph",
           "inlines": [
             {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
               "type": "text",
-              "text": "子代理說完成卻有衝突: "
+              "text": "說完成卻有衝突: "
             },
             {
               "type": "article",

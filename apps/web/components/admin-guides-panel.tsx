@@ -19,6 +19,7 @@ import {
 } from "@/lib/guides";
 import { isUuid, type ArticleDetail, type ArticleSummary } from "@/lib/guides-admin";
 import { sitePageLocales, type SitePageLocale } from "@/lib/site-pages";
+import { localeLabels } from "@/i18n/routing";
 
 const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,var(--line))] bg-[var(--surface)] px-3 py-2 text-[var(--ink)]";
 const languages: Record<SitePageLocale, string> = { "zh-TW": "繁體中文", "zh-CN": "简体中文", en: "English", ja: "日本語", ko: "한국어" };
@@ -29,7 +30,7 @@ const emptyDocument = (): GuideDocument => ({
 const isSiteLocale = (value: string): value is SitePageLocale => (sitePageLocales as readonly string[]).includes(value);
 
 /** Every block an editor can add, in the order the buttons appear. */
-const blockTypes = ["heading", "paragraph", "rich_paragraph", "code", "list", "link", "image", "table", "callout", "offer", "partner_link"] as const;
+const blockTypes = ["summary", "heading", "paragraph", "rich_paragraph", "code", "list", "link", "image", "table", "callout", "faq", "offer", "partner_link"] as const;
 type BlockType = typeof blockTypes[number];
 
 /** `partner` is the program a new partner link starts on: the first one the API lists. */
@@ -43,6 +44,8 @@ function newBlock(type: BlockType, partner = ""): GuideBlock {
     case "image": return { type, src: "", alt: "", width: 1600, height: 900, caption: "", credit: null };
     case "table": return { type, header: ["", ""], rows: [["", ""]], caption: "" };
     case "callout": return { type, tone: "tip", title: "", text: "" };
+    case "summary": return { type, items: ["", ""] };
+    case "faq": return { type, items: [{ question: "", answer: "" }, { question: "", answer: "" }] };
     case "offer": return { type, module: "activities", destination_id: null, heading: "" };
     case "partner_link": return { type, partner, url: "", label: "", note: "" };
     default: return { type: "paragraph", text: "" };
@@ -121,6 +124,10 @@ export function AdminGuidesPanel() {
   const [creating, setCreating] = useState(false);
   const [newSlug, setNewSlug] = useState("");
   const [newKind, setNewKind] = useState<GuideKind>("howto");
+  // The "add a topic" form: a slug, an optional parent, one name per language, an order.
+  const [newTopic, setNewTopic] = useState<{ slug: string; parent: string; order: string; names: Record<string, string> }>({
+    slug: "", parent: "", order: "100", names: {},
+  });
 
   const dirty = Boolean(draft && detail && JSON.stringify(draft) !== JSON.stringify(detail.draft));
   const requestLeave = useCallback((proceed: () => void) => {
@@ -142,6 +149,7 @@ export function AdminGuidesPanel() {
   const kindLocked = Boolean(detail?.locales.some((entry) => entry.published_version !== null));
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
   const blockLabels: ContentBlockLabels = {
+    summary: t("blocks.summary"), faq: t("blocks.faq"),
     imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
     code: seriesCopy(interfaceLocale),
   };
@@ -265,9 +273,31 @@ export function AdminGuidesPanel() {
         expected_version: detail.version, kind: detail.kind, destination_id: detail.destination_id,
         topics: detail.topics.map((topic) => topic.slug), valid_until: detail.valid_until,
         featured: detail.featured, display_order: detail.display_order,
+        // Only this locale's names travel: the other locales' stay as they are on the server.
+        aliases: { [detail.locale]: detail.aliases?.[detail.locale] ?? [] },
+        related: detail.related ?? [],
       }),
     }));
     setNotice(t("taxonomySaved"));
+  });
+
+  /** A topic the editor adds joins the vocabulary at once, as a checkbox of this section,
+   *  without a deploy: the API lists every active row. Slugs are global, so the API
+   *  answers 409 for one either section already has. */
+  const createTopic = () => run(async () => {
+    const created = await api<GuideTopic>("/admin/guides/topics" + suffix, {
+      method: "POST",
+      body: JSON.stringify({
+        slug: newTopic.slug.trim(),
+        section: detailSection,
+        names: newTopic.names,
+        display_order: Number.parseInt(newTopic.order, 10) || 100,
+        ...(newTopic.parent ? { parent_slug: newTopic.parent } : {}),
+      }),
+    });
+    setTopics((current) => [...current.filter((topic) => topic.slug !== created.slug), created]);
+    setNewTopic({ slug: "", parent: "", order: "100", names: {} });
+    setNotice(t("topicCreated", { slug: created.slug }));
   });
 
   const viewRevision = (id: string) => run(async () => {
@@ -366,6 +396,27 @@ export function AdminGuidesPanel() {
         return <label className="grid gap-2">{t("text")}
           <textarea className={control} rows={4} value={block.text} onChange={(event) => updateBlock(index, { ...block, text: event.target.value })} />
         </label>;
+      case "summary":
+        return <label className="grid gap-2">{t("summaryHelp")}
+          <textarea className={control} rows={4} value={block.items.join("\n")} onChange={(event) => updateBlock(index, { ...block, items: event.target.value.split("\n") })} />
+        </label>;
+      case "faq":
+        return <div className="space-y-3">
+          {block.items.map((item, position) => <div key={position} className="grid gap-2 rounded-xl border border-[var(--line)] p-3">
+            <label className="grid gap-2">{t("faqQuestion")}
+              <input className={control} value={item.question} onChange={(event) => updateBlock(index, {
+                ...block, items: block.items.map((entry, i) => i === position ? { ...entry, question: event.target.value } : entry),
+              })} />
+            </label>
+            <label className="grid gap-2">{t("faqAnswer")}
+              <textarea className={control} rows={3} value={item.answer} onChange={(event) => updateBlock(index, {
+                ...block, items: block.items.map((entry, i) => i === position ? { ...entry, answer: event.target.value } : entry),
+              })} />
+            </label>
+            <div><Button secondary disabled={block.items.length <= 2} onClick={() => updateBlock(index, { ...block, items: block.items.filter((_, i) => i !== position) })}>{t("removeFaqItem")}</Button></div>
+          </div>)}
+          <Button secondary disabled={block.items.length >= 10} onClick={() => updateBlock(index, { ...block, items: [...block.items, { question: "", answer: "" }] })}>{t("addFaqItem")}</Button>
+        </div>;
       case "list":
         return <>
           <label className="grid gap-2">{t("itemsHelp")}
@@ -528,6 +579,22 @@ export function AdminGuidesPanel() {
           <label className="flex min-h-11 items-center gap-3">
             <input type="checkbox" checked={detail.featured} onChange={(event) => setDetail({ ...detail, featured: event.target.checked })} />{t("featured")}
           </label>
+          <label className="grid gap-2">{t("aliases")}
+            <input className={control} value={(detail.aliases?.[detail.locale] ?? []).join(", ")}
+              placeholder={t("aliasesHelp")}
+              onChange={(event) => setDetail({
+                ...detail,
+                aliases: { ...(detail.aliases ?? {}), [detail.locale]: event.target.value.split(/[,，]/).map((name) => name.trim()).filter(Boolean) },
+              })} />
+          </label>
+          <label className="grid gap-2">{t("related")}
+            <input className={control} value={(detail.related ?? []).join(", ")}
+              placeholder={t("relatedHelp")}
+              onChange={(event) => setDetail({
+                ...detail,
+                related: event.target.value.split(/[,，\s]+/).map((slug) => slug.trim()).filter(Boolean),
+              })} />
+          </label>
           <fieldset className="grid gap-2 sm:col-span-2">
             <legend className="font-semibold">{t("topics")}</legend>
             <div className="flex flex-wrap gap-2">
@@ -544,6 +611,32 @@ export function AdminGuidesPanel() {
                 </label>;
               })}
             </div>
+            <details className="mt-2 rounded-2xl border border-[var(--line)] p-3">
+              <summary className="min-h-11 cursor-pointer font-semibold">{t("newTopic")}</summary>
+              <p className="mt-1 text-sm leading-7 text-[var(--muted)]">{t("newTopicHelp")}</p>
+              <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                <label className="grid gap-1">{t("newTopicSlug")}
+                  <input className="app-field" value={newTopic.slug} onChange={(event) => setNewTopic({ ...newTopic, slug: event.target.value })} />
+                </label>
+                <label className="grid gap-1">{t("newTopicParent")}
+                  <select className="app-field" value={newTopic.parent} onChange={(event) => setNewTopic({ ...newTopic, parent: event.target.value })}>
+                    <option value="">{t("newTopicNoParent")}</option>
+                    {sectionTopics.filter((topic) => !topic.parent).map((topic) => <option key={topic.slug} value={topic.slug}>{topic.label}</option>)}
+                  </select>
+                </label>
+                {sitePageLocales.map((code) => (
+                  <label key={code} className="grid gap-1">{t("newTopicName", { locale: localeLabels[code] })}
+                    <input className="app-field" value={newTopic.names[code] ?? ""} onChange={(event) => setNewTopic({ ...newTopic, names: { ...newTopic.names, [code]: event.target.value } })} />
+                  </label>
+                ))}
+                <label className="grid gap-1">{t("newTopicOrder")}
+                  <input className="app-field" type="number" min={0} max={100000} value={newTopic.order} onChange={(event) => setNewTopic({ ...newTopic, order: event.target.value })} />
+                </label>
+              </div>
+              <div className="mt-3">
+                <Button secondary disabled={busy || !manage.allowed || !newTopic.slug.trim()} onClick={() => void createTopic()}>{t("createTopic")}</Button>
+              </div>
+            </details>
           </fieldset>
         </fieldset>
         {detail.kind === "life" && <p className="text-sm leading-7 text-[var(--muted)]">{t("lifeDestinationHelp")}</p>}
@@ -586,7 +679,9 @@ export function AdminGuidesPanel() {
             </div>
           </fieldset>)}</div>
 
-          <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => type !== "partner_link" || partners.length > 0).map((type) =>
+          <div className="flex flex-wrap gap-2">{blockTypes.filter((type) => (type !== "partner_link" || partners.length > 0)
+            // One summary and one FAQ per article, which the API also refuses to exceed.
+            && ((type !== "summary" && type !== "faq") || !draft.blocks.some((block) => block.type === type))).map((type) =>
             <Button secondary key={type} onClick={() => setBlocks([...draft.blocks, newBlock(type, partners[0]?.code)])}>{t("addBlock")} · {blockName(type)}</Button>)}
           </div>
 

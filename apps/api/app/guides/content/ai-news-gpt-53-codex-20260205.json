@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "事件日期：2026-02-05；本文查核日期：2026-09-14。2 月 5 日發布 GPT-5.3-Codex，整合程式與專業知識工作能力，支援長任務中的研究和工具使用。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "事件日期：2026-02-05；本文查核日期：2026-09-14。2 月 5 日發布 GPT-5.3-Codex，整合程式與專業知識工作能力，支援長任務中的研究和"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "官方當時宣稱較前代快 25%；不能當成所有專案工時都少 25%。首發公告列付費 ChatGPT 方案的 Codex app、CLI、IDE extension 與 web，API 當時仍是後續計畫。公告展示可在執行中提問和調整方向，評測成績與自我開發案例均為 OpenAI 報告。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方當時宣稱較前代快 25%；不能當成所有專案工時都少 25%。首發公告列付費 ChatGPT 方案的 Codex app、CLI、IDE extension 與 web，API 當時仍是後續計畫。公告展示可在執行中提問和調整方向，"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "成績與自我開發案例均為 OpenAI 報告。以下生活與工作情境為編輯設計的例子，供讀者自行驗證，並非本站產品實測。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -161,14 +192,26 @@
           "text": "自動生成程式碼可大幅加快原型開發，但無法替代專業資安審查。涉及個資、金流或正式對外服務時，必須另行確認資料庫存取權限、輸入防護與主機安全設定，切勿直接部署未經審核的草稿程式。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -330,14 +373,26 @@
           "text": "Automated code generation significantly accelerates prototyping, but it cannot replace professional security reviews. When personal data, financial transactions, or public-facing services are involved, database access privileges, input sanitization, and host security configurations must be verified separately. Never deploy unvetted draft code directly into production."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
-          "url": "https://mokaair.com/en/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -499,14 +554,26 @@
           "text": "自動生成コードはプロトタイプ開発を大幅に加速できますが、専門的なセキュリティレビューの代わりにはなりません。個人情報、決済、または正式な対外サービスに関わる場合は、データベースのアクセス権限、入力保護、サーバーのセキュリティ設定を別途確認する必要があり、未審査のドラフトコードを直接デプロイすることは絶対に避けてください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
-          "url": "https://mokaair.com/ja/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -668,14 +735,26 @@
           "text": "코드 자동 생성은 프로토타입 개발 속도를 크게 높여주지만 전문적인 정보보안 검토를 대체할 수는 없습니다. 개인정보, 결제 또는 공식적인 대외 서비스와 관련된 경우 데이터베이스 접근 권한, 입력 방어, 호스트 보안 설정을 별도로 확인해야 하며, 검토되지 않은 초안 코드를 바로 배포해서는 안 됩니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
-          "url": "https://mokaair.com/ko/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [
@@ -837,14 +916,26 @@
           "text": "自动生成代码可大幅加快原型开发，但无法替代专业安全审查。涉及个人信息、金流或正式对外服务时，必须另行确认数据库访问权限、输入防护与主机安全设置，切勿直接部署未经审核的草稿程序。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         }
       ],
       "sources": [

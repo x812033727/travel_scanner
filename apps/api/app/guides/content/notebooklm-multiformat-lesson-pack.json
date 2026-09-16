@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,27 +56,30 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 學習功能",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "證據查核",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
               "text": "。使用電腦瀏覽器、可編輯筆記本並使用相關 Studio 功能的 Google 帳號。NotebookLM 在本次官方文件稱為 Gemini Notebook；操作依 2026-09-14 官方說明整理。功能是否可用與帳號、方案、年齡、來源限制有關，請以當下介面確認，額度集中參考 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案說明",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -197,9 +201,10 @@
               "text": "交付時保留原教材、三種實際產出、核對表與修改紀錄。檢查文字是否可讀、音量是否可聽、字幕有無裁切，以及每個事實的來源；缺少某種媒體就明列待辦。之後可把這套流程用在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "複習教材",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-study-retrieval-practice"
+              "kind": "life",
+              "slug": "notebooklm-study-retrieval-practice"
             },
             {
               "type": "text",
@@ -247,27 +252,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 進階：測驗、語音與影片摘要",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 引用查核：矛盾資料、缺證據與未知答案",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-conflicting-sources"
+              "kind": "life",
+              "slug": "notebooklm-conflicting-sources"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research 加 NotebookLM：完成有證據與更新紀錄的專題報告",
-              "url": "https://mokaair.com/zh-TW/life/gemini-research-report-workshop"
+              "kind": "life",
+              "slug": "gemini-research-report-workshop"
             },
             {
               "type": "text",
@@ -286,9 +294,15 @@
           "url": "https://mokaair.com/guides/notebooklm-multiformat-lesson-pack/research-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -191,14 +193,26 @@
           "text": "按鈕可能只打開帳號頁、安裝提示或預填訊息。驗收時追蹤到測試詢問實際送出並被負責人看見，再確認自動回覆沒有造成錯誤承諾。"
         },
         {
-          "type": "link",
-          "text": "建立能追蹤的 WordPress 聯絡表單",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-contact-forms"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立能追蹤的 WordPress 聯絡表單",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "社群內容嵌入失效的排查方式",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-social-embeds"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "社群內容嵌入失效的排查方式",
+              "kind": "life",
+              "slug": "wordpress-social-embeds"
+            }
+          ]
         }
       ],
       "sources": [

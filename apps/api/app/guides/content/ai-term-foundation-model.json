@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "基礎模型是經過廣泛資料訓練，可以再調適到多種下游任務的模型。本文採用 Stanford CRFM 報告提出的用法：它之所以「基礎」，是因為能成為許多應用的共同起點，而不是因為初學者容易使用，也不表示它本身已經是完整可靠的產品。規模常是背景之一，但不能只看參數數量來定義。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "基礎模型是經過廣泛資料訓練，可以再調適到多種下游任務的模型。本文採用 Stanford CRFM 報告提出的用法：它之所以「基礎」，是因為能成為許多應用的共同起點，而不是因為初學者容易使用，也不表示它本身已經是完整可靠的產品。規模常是背景之一，但不能只看"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "數量來定義。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -120,8 +136,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "大型語言模型主要按語言建模與規模描述；基礎模型強調廣泛訓練後可供多種任務調適。許多 LLM 同時是基礎模型，但基礎模型也可以涵蓋影像與其他模態。生成式 AI 則按產生內容的能力分類，因此不能把這些名詞當成完全相同的名稱。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "大型語言模型主要按語言建模與規模描述；基礎模型強調廣泛訓練後可供多種任務調適。許多 LLM 同時是基礎模型，但基礎模型也可以涵蓋影像與其他模態。"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 則按產生內容的能力分類，因此不能把這些名詞當成完全相同的名稱。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +195,48 @@
           "text": "分類答對不代表摘要忠實，摘要通順也不代表搜尋相關。共用模型可以省下部分建構工作，不能省略各自的驗收。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型（Large Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型（Large Language Model）是什麼",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

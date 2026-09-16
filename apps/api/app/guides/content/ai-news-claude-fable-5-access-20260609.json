@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -130,8 +131,23 @@
           "text": "當主要模型暫時無法連線時，切換至替代方案並非單純更換系統端點那麼簡單。不同語言模型在語意理解深度、安全限制防護層級與格式遵從度上存在細微差異，相同的提示詞在不同引擎運算下可能產生結構相左的答案。小型研究團隊若要在短時間內轉移工作流，就必須編列額外的人力與時間成本，針對替代模型的產出進行逐項重新驗證。"
         },
         {
-          "type": "paragraph",
-          "text": "這項重驗流程包含確認產出內容是否符合原先規格、關鍵論據有無產生幻覺，以及程式碼範例能否順利執行。為了降低切換時的適應摩擦力，團隊應在平時就維持一套小型基準測試集，挑選幾項具代表性的業務任務在不同備選工具上預先測試，藉此掌握各家模型的風格與短板，避免在被迫臨時轉移系統時陷入慌亂與品質失控。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這項重驗流程包含確認產出內容是否符合原先規格、關鍵論據有無產生幻覺，以及程式碼範例能否順利執行。為了降低切換時的適應摩擦力，團隊應在平時就維持一套小型"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "集，挑選幾項具代表性的業務任務在不同備選工具上預先測試，藉此掌握各家模型的風格與短板，避免在被迫臨時轉移系統時陷入慌亂與品質失控。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -143,8 +159,23 @@
           "text": "觀察服務異動時，細緻追蹤官方時間線是確保資源妥善配置的關鍵技能。以該歷史事件為例，從 6 月初發布、數日後暫停，到月底宣布解除並於隔日恢復，期間各種方案的優惠期程亦緊隨調整。許多使用者容易混淆初期的試用額度與後續的計費模式，忽略了宣傳期結束後必須使用 credits 付費的實際規範，導致專案營運支出超支。"
         },
         {
-          "type": "paragraph",
-          "text": "團隊在規劃長期預算時，必須明確區分短期促銷與常態定價。一旦服務轉為以 credits 機制扣抵，每一次查詢與文字生成都會直接連動帳戶餘額，不再享有試用期的寬鬆條件。定期檢視服務提供者的公告條款，隨時掌握使用權限與計費結構的更新，才能在確保核心研究不中斷的同時，有效控管團隊在人工智慧工具上的總持有成本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "團隊在規劃長期預算時，必須明確區分短期促銷與常態定價。一旦服務轉為以 credits 機制扣抵，每一次查詢與文字生成都會直接連動帳戶餘額，不再享有試用期的寬鬆條件。定期檢視服務提供者的公告條款，隨時掌握使用權限與計費結構的更新，才能在確保核心研究不中斷的同時，有效控管團隊在"
+            },
+            {
+              "type": "article",
+              "text": "人工智慧",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "工具上的總持有成本。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -153,14 +184,26 @@
           "text": "面對雲端服務的政策調整與可用性波動，研究團隊應將關鍵推論落實於通用格式文件，並保存提示詞與事實來源，同時平時準備好備選工具的基準測試，以最低成本承受服務更迭。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol 從有限預覽開始：模型發表與人人可用為何不同？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol 從有限預覽開始：模型發表與人人可用為何不同？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         }
       ],
       "sources": [
@@ -319,14 +362,26 @@
           "text": "Facing cloud service policy shifts and availability fluctuations, research teams should ground key deductions in neutral-format documents, retain prompts and factual sources, and maintain benchmark tests for candidate tools to weather service transitions at minimal cost."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol Starts from Limited Preview: Why Announcement Differs from General Availability",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol Starts from Limited Preview: Why Announcement Differs from General Availability",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         }
       ],
       "sources": [
@@ -485,14 +540,26 @@
           "text": "クラウドサービスのポリシー調整や可用性の変動に対し、研究チームは重要な推論を汎用形式のドキュメントに落とし込み、プロンプトと事実の根拠を保存するとともに、平時から候補ツールのベンチマークを準備して最小限のコストでサービス変更を乗り切るべきです。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol、限定プレビューから始動：モデル発表と一般提供の違いとは？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol、限定プレビューから始動：モデル発表と一般提供の違いとは？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         }
       ],
       "sources": [
@@ -651,14 +718,26 @@
           "text": "클라우드 서비스의 정책 조정과 가용성 변동에 직면하여, 연구팀은 핵심 추론을 범용 포맷 문서로 구체화하고 프롬프트와 사실 출처를 보존하는 한편, 평소 대체 도구에 대한 벤치마크 테스트를 준비하여 최소한의 비용으로 서비스 변화를 감당해야 합니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol, 제한된 프리뷰로 시작: 모델 발표와 전원 사용 가능은 왜 다를까?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol, 제한된 프리뷰로 시작: 모델 발표와 전원 사용 가능은 왜 다를까?",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         }
       ],
       "sources": [
@@ -817,14 +896,26 @@
           "text": "面对云端服务的政策调整与可用性波动，研究团队应将关键推论落实于通用格式文件，并保存提示词与事实来源，同时平时准备好备选工具的基准测试，以最低成本承受服务更迭。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol 从有限预览开始：模型发布与人人可用为何不同？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol 从有限预览开始：模型发布与人人可用为何不同？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         }
       ],
       "sources": [

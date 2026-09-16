@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -82,8 +83,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 是唯一在官方文件裡寫清楚的。它的生成式 AI 最佳化指南在破除迷思那一節寫：你不需要為了出現在 Google 搜尋而建立機器可讀檔案或 AI 文字檔，搜尋不使用它們；維護它們給其他服務用沒問題，但不會傷害也不會幫助你的能見度或排名。這是官方文件說明的機制；更新記錄把這段註記的日期寫成 2026 年 6 月 15 日。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 是唯一在官方文件裡寫清楚的。它的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 最佳化指南在破除迷思那一節寫：你不需要為了出現在 Google 搜尋而建立機器可讀檔案或 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 文字檔，搜尋不使用它們；維護它們給其他服務用沒問題，但不會傷害也不會幫助你的能見度或排名。這是官方文件說明的機制；更新記錄把這段註記的日期寫成 2026 年 6 月 15 日。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -233,7 +259,7 @@
           "items": [
             "給所有爬蟲的那一組允許整站，只擋機器用的端點與不該被猜到的 token 網址：API、後台、分享與轉址路徑。",
             "會員頁面刻意保持可被抓取，改用頁面上的 noindex，理由就是上一節那一條。",
-            "拒絕的抓取式爬蟲名單目前有 11 個 user-agent，包含 GPTBot、ClaudeBot、CCBot 等；ChatGPT-User 與 OAI-SearchBot 刻意不在名單上。"
+            "拒絕的名單只留訓練用爬蟲，目前 9 個 user-agent，包含 GPTBot、CCBot、Google-Extended 等；會引用來源的搜尋型爬蟲（PerplexityBot、ClaudeBot）與替使用者取頁的 ChatGPT-User、OAI-SearchBot 刻意不在名單上，政策可由環境變數切換。"
           ],
           "ordered": false
         },

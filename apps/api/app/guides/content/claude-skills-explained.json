@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Claude 的 Skills（技能）是一個資料夾：裡面有一份叫 SKILL.md 的檔案，用文字寫清楚某件事該怎麼做，旁邊可以再放範本、對照表與腳本。Anthropic 開發者文件的說法是，提示詞是一次性的對話層指令，技能則是按需載入，不必每次對話都把同一套規則重講一遍。結論很單純：每個月都要重做一次的事，寫成技能只要寫一次，之後 Claude 判斷用得上時會自己把它讀進來。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude 的 "
+            },
+            {
+              "type": "article",
+              "text": "Skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "（技能）是一個資料夾：裡面有一份叫 SKILL.md 的檔案，用文字寫清楚某件事該怎麼做，旁邊可以再放範本、對照表與腳本。Anthropic 開發者文件的說法是，提示詞是一次性的對話層指令，技能則是按需載入，不必每次對話都把同一套規則重講一遍。結論很單純：每個月都要重做一次的事，寫成技能只要寫一次，之後 Claude 判斷用得上時會自己把它讀進來。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇用兩個例子貫穿：每月都要整理的月結報表，和每篇都要套同一套格式的社群貼文改寫。讀完你會知道技能跟提示詞差在哪、哪些產品與方案能用、一個技能裡該有什麼、在 Claude 應用程式與 Claude Code 怎麼建立與開關、官方有哪些現成技能可以直接用，以及技能、專案、個人指令與 MCP 各自解決什麼問題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇用兩個例子貫穿：每月都要整理的月結報表，和每篇都要套同一套格式的社群貼文改寫。讀完你會知道技能跟提示詞差在哪、哪些產品與方案能用、一個技能裡該有什麼、在 Claude 應用程式與 Claude Code 怎麼建立與開關、官方有哪些現成技能可以直接用，以及技能、專案、個人指令與 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 各自解決什麼問題。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,17 +70,38 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 的工程部落格把技能定義成「指令、腳本與資源的資料夾，代理可以動態發現並載入，藉此把特定任務做得更好」。重點在載入的時機。官方把這個設計叫做漸進式揭露，分成三層：第一層是 SKILL.md 開頭的名稱與描述，每個技能大約 100 個 token，Claude 一開機就把它放進系統提示詞；第二層是 SKILL.md 的正文，只有 Claude 判斷這次用得上才讀進來，官方給的規模是 5k token 以內；第三層是附帶的參考檔與腳本，用到哪一份才讀哪一份，腳本執行時程式碼本身不進上下文視窗，只有輸出會。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 的工程部落格把技能定義成「指令、腳本與資源的資料夾，代理可以動態發現並載入，藉此把特定任務做得更好」。重點在載入的時機。官方把這個設計叫做漸進式揭露，分成三層：第一層是 SKILL.md 開頭的名稱與描述，每個技能大約 100 個 token，Claude 一開機就把它放進"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "；第二層是 SKILL.md 的正文，只有 Claude 判斷這次用得上才讀進來，官方給的規模是 5k token 以內；第三層是附帶的參考檔與腳本，用到哪一份才讀哪一份，腳本執行時程式碼本身不進上下文視窗，只有輸出會。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "跟每次重貼一段提示詞比起來，差別有三個。一是提示詞貼在對話裡，換一個對話就沒了，技能放在帳號或專案資料夾裡，相關的對話都叫得到。二是提示詞一貼就整段佔住上下文視窗，技能沒被叫用時只佔名稱與描述那一百個 token，官方文件因此說裝很多個技能也不會有上下文的代價。三是提示詞只能是文字，技能可以帶範本、對照表與可執行的腳本。官方形容它像給新同事的入職手冊：先看目錄，需要哪一章再翻哪一章。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -61,8 +113,23 @@
           "text": "技能在 Claude 應用程式、Claude Code、Claude API 與 Claude Agent SDK 都支援，另外也支援 AWS 與 Microsoft Foundry 上的 Claude 平台。方案的寫法兩邊不一致：說明中心寫 Free、Pro、Max、Team、Enterprise 都能用，前提是帳號開啟了程式執行；開發者文件講到應用程式時寫的卻是自訂技能限 Pro、Max、Team、Enterprise，2025 年 10 月 16 日的公告也是這四個方案。免費帳號實際能不能用，以你登入後設定裡看不看得到 Skills 為準。"
         },
         {
-          "type": "paragraph",
-          "text": "有三件事容易踩到。一是自訂技能不跨介面同步：在應用程式上傳的不會自動出現在 API，用 API 上傳的也不會出現在應用程式，Claude Code 的技能是電腦上的資料夾，跟前兩者各自獨立，要在哪裡用就在哪裡放一份。二是分享範圍不同：應用程式裡的自訂技能是個人的，同事要自己上傳一份，說明中心另外寫 Team 與 Enterprise 的擁有者可以佈署組織層級的技能；API 上傳的整個工作區共用；Claude Code 放專案目錄的那份會跟著程式碼一起交給同事。三是執行環境不同：API 的技能跑在沒有網路、不能安裝套件的沙箱裡，應用程式依設定可能有完整、部分或沒有網路，Claude Code 的技能跟你電腦上的其他程式一樣有完整網路。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有三件事容易踩到。一是自訂技能不跨介面同步：在應用程式上傳的不會自動出現在 API，用 API 上傳的也不會出現在應用程式，Claude Code 的技能是電腦上的資料夾，跟前兩者各自獨立，要在哪裡用就在哪裡放一份。二是分享範圍不同：應用程式裡的自訂技能是個人的，同事要自己上傳一份，說明中心另外寫 Team 與 Enterprise 的擁有者可以佈署組織層級的技能；API 上傳的整個工作區共用；Claude Code 放專案目錄的那份會跟著程式碼一起交給同事。三是執行環境不同：API 的技能跑在沒有網路、不能安裝套件的"
+            },
+            {
+              "type": "article",
+              "text": "沙箱",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "裡，應用程式依設定可能有完整、部分或沒有網路，Claude Code 的技能跟你電腦上的其他程式一樣有完整網路。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -139,9 +206,15 @@
           "text": "之後怎麼叫用：開一個新對話，把當月明細丟進去說「整理這個月的月結」。描述對得上，Claude 會自己讀 SKILL.md，要比對時才去讀基準檔，要輸出時才去讀範本。想確認它有沒有用到，說明中心建議把話講明白一點，例如「用我的月結報表技能整理這份明細」。明細與基準檔如果每個月都放在同一個地方，把資料放專案的知識庫、把步驟放技能，兩邊搭配最順。"
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -161,9 +234,15 @@
           "text": "之後怎麼叫用：貼上草稿說「改寫成這週的貼文」。多個技能可以疊著用，官方文件說 Claude 會自己判斷需要哪幾個並協調它們一起做事。技能該被叫到卻沒被叫到時，先回頭改描述，把你真的會講的詞寫進去，因為觸發靠的是語意比對，不是關鍵字比對。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（Agent）是什麼：從回答問題到替你完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -171,8 +250,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "這四樣常被混在一起，解決的卻是不同的問題。Claude Academy 的課程用一句話分開前兩個：專案存知識，技能做事。專案是一個工作區，放這件事的背景資料與專案指令，只在專案裡生效；技能是一份步驟說明，一般對話與專案裡都能用，Claude 判斷用得上才載入。個人指令是帳號層級的全域偏好，每個對話都套用；自訂樣式改的是語氣與輸出格式，說明中心現在把調整語氣與格式這件事也歸到技能底下。MCP 是一個開放標準，負責把 Claude 接到外部的工具與資料，官方把它比喻成 AI 的 USB-C。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這四樣常被混在一起，解決的卻是不同的問題。Claude Academy 的課程用一句話分開前兩個：專案存知識，技能做事。專案是一個工作區，放這件事的背景資料與專案指令，只在專案裡生效；技能是一份步驟說明，一般對話與專案裡都能用，Claude 判斷用得上才載入。個人指令是帳號層級的全域偏好，每個對話都套用；自訂樣式改的是語氣與輸出格式，說明中心現在把調整語氣與格式這件事也歸到技能底下。MCP 是一個開放標準，負責把 Claude 接到外部的工具與資料，官方把它比喻成 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的 USB-C。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -215,14 +309,26 @@
           "text": "它們是可以疊在一起的。技能的步驟裡可以指名要用哪個 MCP 工具，官方文件提醒這時候工具名稱要寫成「伺服器名稱冒號工具名稱」的完整寫法，只寫工具名稱，在你同時接了好幾個連接器時會找不到。夥伴技能就是這樣做的：Notion、Figma、Atlassian 的技能配上各自的 MCP 連接器一起用。"
         },
         {
-          "type": "link",
-          "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
-          "url": "https://mokaair.com/zh-TW/life/claude-mcp-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MCP 是什麼：讓 Claude 連上你的檔案、日曆與資料庫",
+              "kind": "life",
+              "slug": "claude-mcp-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
-          "url": "https://mokaair.com/zh-TW/life/claude-system-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "系統提示詞入門：讓 Claude 穩定扮演一種角色",
+              "kind": "life",
+              "slug": "claude-system-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",

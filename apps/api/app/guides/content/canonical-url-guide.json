@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一篇課程介紹可能從選單、電子報或廣告連結進入，網址也因此多出參數。若內容相同，網站需要清楚表達希望搜尋結果呈現哪個版本。canonical 處理的就是這種版本關係，使用前仍要先確認兩頁真的在回答同一件事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一篇課程介紹可能從選單、電子報或廣告連結進入，網址也因此多出"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。若內容相同，網站需要清楚表達希望搜尋結果呈現哪個版本。canonical 處理的就是這種版本關係，使用前仍要先確認兩頁真的在回答同一件事。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -64,8 +81,23 @@
           "text": "如果主網址準備維持 /classes/pottery/，網站選單、文章內連結與網站地圖也應朝同一版本整理。不要一邊透過 canonical 指向 A，一邊把 Sitemap 和主要連結都指向 B；這樣會讓管理者自己也難以判斷真正要保留哪一個。"
         },
         {
-          "type": "paragraph",
-          "text": "標準頁本身也應提供指向自己的 canonical，讓偏好更清楚。對照表不是一次寫完就不動：改網域、修改固定網址或重新安排內容時，都應更新關係。若永久淘汰舊版本並要訪客自動到新頁，還需要評估轉址，而不只是換標記。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "標準頁本身也應提供指向自己的 canonical，讓偏好更清楚。對照表不是一次寫完就不動：改網域、修改固定網址或重新安排內容時，都應更新關係。若永久淘汰舊版本並要訪客自動到新頁，還需要評估轉址，而不只是換"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,19 +233,37 @@
           "text": "每次修正都同時核對頁面標記、轉址、站內連結和 Sitemap。避免全站指向首頁，也不要把設定已儲存當成 Google 已採用的證明。"
         },
         {
-          "type": "link",
-          "text": "區分內容競爭與重複頁面",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-cannibalization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "區分內容競爭與重複頁面",
+              "kind": "life",
+              "slug": "seo-content-cannibalization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "維護一致的網站地圖",
-          "url": "https://mokaair.com/zh-TW/life/sitemap-website-submission"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "維護一致的網站地圖",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 Search Console 檢查處理狀態",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Search Console 檢查處理狀態",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         }
       ],
       "sources": [

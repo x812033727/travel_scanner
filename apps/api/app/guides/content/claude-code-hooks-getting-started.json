@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 141,
@@ -109,8 +110,23 @@
           "text": "PostToolUse 表示工具已執行完畢。matcher 用來比對工具名稱，本例只關心 Write 與 Edit；讀檔、一般聊天及手動在編輯器改檔不會因此觸發。Hook 不是檔案監控服務，也無法在事後撤銷已完成的工具操作。"
         },
         {
-          "type": "paragraph",
-          "text": "輸出選擇專案內的 .claude/hook-events.jsonl，每行是一個 JSON 物件，只保存時間、事件與工具。刻意不記錄完整提示、檔案內容或工具參數，讓新手能查看觸發證據而不累積不必要資料。請把此紀錄加入專案的 Git 忽略清單。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "輸出選擇專案內的 .claude/hook-events.jsonl，每行是一個 JSON 物件，只保存時間、事件與工具。刻意不記錄完整提示、檔案內容或工具"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，讓新手能查看觸發證據而不累積不必要資料。請把此紀錄加入專案的 Git 忽略清單。"
+            }
+          ]
         },
         {
           "type": "heading",

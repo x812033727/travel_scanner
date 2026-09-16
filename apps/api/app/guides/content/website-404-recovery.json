@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -77,8 +79,23 @@
           "text": "展覽網站可優先提供「查看目前展覽」、「瀏覽展覽回顧」及站內搜尋；首頁可作備用去處。選項應依網站實際內容存在與否決定，而不是放很多看似熱門的連結。只有真正能協助讀者縮小範圍的選項，才值得留在錯誤頁。"
         },
         {
-          "type": "paragraph",
-          "text": "若能從已知的舊網址對照推知分類，可以提供相近分類，但不要把任意網址片段當成已確認標題。站內搜尋需要有清楚標籤，搜尋失敗也要有可理解的結果。不要把網址中的私人參數直接帶進搜尋框、頁面文案或分析紀錄。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若能從已知的舊網址對照推知分類，可以提供相近分類，但不要把任意網址片段當成已確認標題。站內搜尋需要有清楚標籤，搜尋失敗也要有可理解的結果。不要把網址中的私人"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "直接帶進搜尋框、頁面文案或分析紀錄。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +223,37 @@
           "text": "內容有相對應的新位置才安排導向；沒有替代內容時，清楚的不存在頁面可以是正確結果。優先修復仍被使用的站內入口。"
         },
         {
-          "type": "link",
-          "text": "分清 301 與 302 的重新導向用途",
-          "url": "https://mokaair.com/zh-TW/life/redirects-301-302"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分清 301 與 302 的重新導向用途",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理網站分類與資訊架構",
-          "url": "https://mokaair.com/zh-TW/life/website-information-architecture"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理網站分類與資訊架構",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "使用 Search Console 查看索引狀態",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用 Search Console 查看索引狀態",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         }
       ],
       "sources": [

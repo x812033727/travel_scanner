@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 113,
   "locales": {
@@ -109,8 +110,23 @@
           "text": "步驟 2：建立兩個成果不同的任務"
         },
         {
-          "type": "paragraph",
-          "text": "從這個專案開第一個新任務，送出下面的清點要求。回覆後看它是否真的指出兩個檔案、PROJECT-LAB 與 Revision: 1，再將任務改名為「PROJECT-LAB — 清點教材」。利用任務選單的重新命名功能，保留共同標記與成果詞，之後只記得 PROJECT-LAB 也能搜尋。此任務只讀，不需要新增文件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "從這個專案開第一個新任務，送出下面的清點要求。回覆後看它是否真的指出兩個檔案、PROJECT-LAB 與 Revision: 1，再將任務改名為「PROJECT-LAB — 清點教材」。利用任務選單的重新命名功能，保留共同"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與成果詞，之後只記得 PROJECT-LAB 也能搜尋。此任務只讀，不需要新增文件。"
+            }
+          ]
         },
         {
           "type": "code",

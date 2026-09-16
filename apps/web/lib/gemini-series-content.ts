@@ -1,3 +1,4 @@
+import type { ArticleReference } from "@/lib/guide-series";
 import type { GuideArticleState, GuideBlock, PublishedGuide } from "./guides";
 import type { InlineNode } from "./content-blocks";
 import type { GeminiCatalogue, VisibleGeminiSeries } from "./gemini-series-projection";
@@ -40,5 +41,6 @@ export function projectGeminiArticleContent(state: GuideArticleState, catalogue:
   });
   const document: PublishedGuide = { ...state.document, title: cleanText(state.document.title), description: cleanText(state.document.description), blocks,
     sources: state.document.sources.filter(source => !hiddenUrl(source.url)) };
-  return { ...state, document, article_links: state.article_links?.filter(ref => ref.kind !== "life" || !hidden.has(ref.slug)) };
+  const shown = (refs?: ArticleReference[]) => refs?.filter(ref => ref.kind !== "life" || !hidden.has(ref.slug));
+  return { ...state, document, article_links: shown(state.article_links), related: shown(state.related), backlinks: shown(state.backlinks) };
 }

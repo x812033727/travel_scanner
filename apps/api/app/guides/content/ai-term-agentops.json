@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AgentOps，中文可稱代理系統維運，指向讓 AI 代理在日常服務中可觀測、可評估並可處理故障的工作。由於代理可能連續呼叫工具並改變外部狀態，只監測最後一句回答或模型 API 是否成功，往往不夠。需要知道它做過哪些動作、每一步的結果，以及整個任務是否達成。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AgentOps，中文可稱代理系統維運，指向讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "在日常服務中可觀測、可評估並可處理故障的工作。由於代理可能連續呼叫工具並改變外部狀態，只監測最後一句回答或模型 API 是否成功，往往不夠。需要知道它做過哪些動作、每一步的結果，以及整個任務是否達成。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,8 +63,23 @@
           "text": "在換貨示例裡，使用者提出需求後，代理先讀訂單、核對規則、查替換品庫存，再建立換貨申請。模型回答只是其中一部分。若最後顯示「申請完成」，維運人員仍須找到申請工具回傳的有效識別與外部狀態，才能確認有沒有真正建立紀錄。"
         },
         {
-          "type": "paragraph",
-          "text": "一條有用的紀錄應保留任務識別、工具名稱、必要參數摘要、起訖時間、結果狀態與版本資訊。這些欄位讓同一次任務中的多個模型呼叫有共同線索。不同框架的命名與完整能力仍可能不同，不能把某套 SDK 的欄位結構當成整個領域唯一標準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一條有用的紀錄應保留任務識別、工具名稱、必要"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "摘要、起訖時間、結果狀態與版本資訊。這些欄位讓同一次任務中的多個模型呼叫有共同線索。不同框架的命名與完整能力仍可能不同，不能把某套 SDK 的欄位結構當成整個領域唯一標準。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -64,8 +95,23 @@
           "text": "如果庫存工具回傳缺貨，代理卻建立了需要現貨的申請，這是流程或政策執行失敗。若工具成功建立申請，但模型顯示失敗，則是回覆與外部狀態不一致。兩者都可能傷害使用體驗，卻需要不同修正。只用「最後答案是否合理」評分，會把這些差異藏起來。"
         },
         {
-          "type": "paragraph",
-          "text": "因此可以分別評估意圖辨識、工具參數、政策遵循、外部操作與使用者回覆。模型有時能寫出合理解釋，卻把商品識別填錯；也可能操作正確但回覆漏掉後續步驟。讓評測讀取工具及外部結果，才能知道任務是否實際完成，而不是只在文字層看起來完成。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "因此可以分別評估意圖辨識、工具參數、政策遵循、外部操作與使用者回覆。模型有時能寫出合理解釋，卻把商品識別填錯；也可能操作正確但回覆漏掉後續步驟。讓"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "讀取工具及外部結果，才能知道任務是否實際完成，而不是只在文字層看起來完成。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -164,24 +210,48 @@
           "text": "涉及外部寫入時，逾時不等於動作沒發生。若工具沒有提供可靠查核與去重方式，應保留不確定狀態並安排接手。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型維運（LLMOps）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-llmops"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型維運（LLMOps）是什麼",
+              "kind": "life",
+              "slug": "ai-term-llmops"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

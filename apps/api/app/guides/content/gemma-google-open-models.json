@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -29,8 +30,23 @@
           "text": "Gemma 是 Google DeepMind 釋出的開放權重模型家族：權重檔案可以直接下載，放到自己的筆電或伺服器上離線執行。到 2026 年 9 月 14 日為止，官方文件把授權分成兩套——2026 年 4 月 2 日發表的 Gemma 4 採用 Apache 2.0，是 Open Source Initiative 核可清單上的開源授權；在那之前的 Gemma 3 與 Gemma 3n 仍然適用 Google 自訂的 Gemma Terms of Use，而且綁著一份禁止用途政策。同一個家族講「開源」成不成立，要看你下載的是哪一版。"
         },
         {
-          "type": "paragraph",
-          "text": "這篇會帶你看完當天官網列出的版本與尺寸、各自的上下文視窗與官方寫的語言支援、兩套授權原文裡真正會影響你的那幾條，還有三條把模型跑起來的路線：用 Ollama 拉到本機、在 Google AI Studio 直接試，或透過 Gemini API 呼叫。第一節先把 Gemma 和 Gemini 的關係講清楚。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇會帶你看完當天官網列出的版本與尺寸、各自的上下文視窗與官方寫的語言支援、兩套授權原文裡真正會影響你的那幾條，還有三條把模型跑起來的路線：用 Ollama 拉到本機、在 Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Studio 直接試，或透過 Gemini API 呼叫。第一節先把 Gemma 和 Gemini 的關係講清楚。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -53,18 +69,20 @@
               "text": "要先把兩個詞分開：能下載權重不等於開源。這條界線在系列裡有兩篇專門講，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+              "kind": "life",
+              "slug": "ai-term-open-weights"
             },
             {
               "type": "text",
               "text": "談的是拿到權重之後還要確認什麼，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
             },
             {
               "type": "text",
@@ -86,9 +104,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "Gemini 模型怎麼選：速度、能力與情境",
-          "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 模型怎麼選：速度、能力與情境",
+              "kind": "life",
+              "slug": "gemini-model-lineup-flash-pro"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -96,8 +120,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Gemma 4 在 2026 年 4 月 2 日發表，公告當天列出四種尺寸：E2B、E4B、26B 混合專家（Mixture of Experts，MoE）與 31B 稠密模型；2026 年 6 月 3 日再加入 12B。官方文件現在把 Gemma 4 寫成五種尺寸，整個家族都能讀文字與影像、輸出文字，E2B、E4B 與 12B 另外原生支援音訊輸入。模型卡列的參數與上下文視窗如下。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemma 4 在 2026 年 4 月 2 日發表，公告當天列出四種尺寸：E2B、E4B、26B 混合專家（Mixture of Experts，"
+            },
+            {
+              "type": "article",
+              "text": "MoE",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            },
+            {
+              "type": "text",
+              "text": "）與 31B 稠密模型；2026 年 6 月 3 日再加入 12B。官方文件現在把 Gemma 4 寫成五種尺寸，整個家族都能讀文字與影像、輸出文字，E2B、E4B 與 12B 另外原生支援音訊輸入。模型卡列的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "與上下文視窗如下。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -122,9 +171,10 @@
               "text": "這些「同時讀圖、聲音與文字」的說法，指的就是"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
             },
             {
               "type": "text",
@@ -220,14 +270,26 @@
           "text": "要把模型放進商用產品之前，先看你下載的那個倉庫上寫的 license 標籤，再讀它指向的授權頁，不要用「Gemma 都是 Apache 2.0」或「Gemma 都要簽條款」一句話帶過。禁止用途政策只綁在寫著 Gemma Terms of Use 的版本上；Gemma 4 的授權頁是純粹的 Apache License 2.0，沒有引用那份政策。"
         },
         {
-          "type": "link",
-          "text": "Llama 模型家族：授權與版本",
-          "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Llama 模型家族：授權與版本",
+              "kind": "life",
+              "slug": "llama-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/gpt-oss-openai-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 的開放權重模型 gpt-oss：怎麼跑、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "gpt-oss-openai-open-weights"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -269,14 +331,26 @@
           "text": "不想先裝軟體，可以在 Google AI Studio 直接開一個對話試。Gemini API 的定價頁把 Free 方案列成「免費的輸入與輸出 token」加「可使用 Google AI Studio」，同一欄也寫著免費層的內容會被用來改善 Google 的產品，付費層才寫明不會。要用程式呼叫的話，官方文件說 Gemini API 目前支援 gemma-4-31b-it 與 gemma-4-26b-a4b-it 兩個型號，API 金鑰同樣在 AI Studio 取得。除此之外，官方頁面點名的執行環境還有 LM Studio、Keras、llama.cpp、MLX、Kaggle，以及 Google Cloud 的 Vertex AI。介面步驟以官網當天版本為準。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI Studio 與第一個 Gemini API 呼叫",
-          "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Studio 與第一個 Gemini API 呼叫",
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -288,13 +362,34 @@
           "text": "模型卡本身沒有列硬體需求表，官方公告只給了兩個數字。Gemma 4 的發表公告寫 26B 與 31B 未量化的 bfloat16 權重可以放進單張 80GB 的 NVIDIA H100；Gemma 4 12B 的公告寫它只要 16GB 顯示記憶體或統一記憶體就能在筆電上跑，文中也寫成 16GB 記憶體的消費級筆電。其他尺寸官方沒有給明確數字。Ollama 列的下載大小是量化後的檔案體積，不等於執行時要的記憶體，實際需求以官網為準。"
         },
         {
-          "type": "paragraph",
-          "text": "語言支援也只能照官方寫的講。Gemma 4 的模型卡寫訓練資料涵蓋超過 140 種語言，並列出「35 種以上語言的開箱支援」；Gemma 3 與 3n 的模型卡同樣寫超過 140 種語言。但這三份文件都沒有逐一列出是哪些語言，也沒有針對繁體中文的單獨評測數字，官方唯一提到中文的地方，是 Gemma 4 模型卡評測表底下那行「不含中文」的註腳，標在兩項音訊評測上。所以中文寫出來像不像樣，只能自己拿題目試，官方說法以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "語言支援也只能照官方寫的講。Gemma 4 的模型卡寫訓練資料涵蓋超過 140 種語言，並列出「35 種以上語言的開箱支援」；Gemma 3 與 3n 的模型卡同樣寫超過 140 種語言。但這三份文件都沒有逐一列出是哪些語言，也沒有針對繁體中文的單獨"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "數字，官方唯一提到中文的地方，是 Gemma 4 模型卡評測表底下那行「不含中文」的註腳，標在兩項音訊評測上。所以中文寫出來像不像樣，只能自己拿題目試，官方說法以官網為準。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -310,9 +405,15 @@
           "text": "最後提醒一件事：模型會產生錯誤或不當內容，這一點 Google 在 Gemma 頁面底部自己也寫明了，並要你不要拿模型的輸出當醫療、法律或財務建議。在本機跑少了雲端服務的內容過濾，這個責任反而更完整地落在你身上。"
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：帳號、介面與第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：帳號、介面與第一個對話",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         }
       ],
       "sources": [

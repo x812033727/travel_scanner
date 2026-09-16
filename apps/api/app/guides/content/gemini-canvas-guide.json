@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Canvas 是 Gemini 中用來編輯成果的工作區，適合把對話中的構想變成文章、簡報或小型互動工具。本篇先做一份活動說明，再把同一份已核對內容改成簡報與清單工具。學完後，你會知道如何局部區域修改、檢查結果，以及分清楚預覽、匯出與公開分享。簡報 AI 產出的每一頁，內容都要先於排版核對。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Canvas 是 Gemini 中用來編輯成果的工作區，適合把對話中的構想變成文章、簡報或小型互動工具。本篇先做一份活動說明，再把同一份已核對內容改成簡報與清單工具。學完後，你會知道如何局部區域修改、檢查結果，以及分清楚預覽、匯出與公開分享。"
+            },
+            {
+              "type": "article",
+              "text": "簡報 AI",
+              "kind": "life",
+              "slug": "ai-slides-generation-tools"
+            },
+            {
+              "type": "text",
+              "text": " 產出的每一頁，內容都要先於排版核對。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,18 +71,20 @@
               "text": "登入 Gemini，準備一份已確認的短資料，例如活動目的、地點、已知日期及待決定事項。先完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞寫作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "；如果材料來自 PDF，先依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -75,8 +93,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "本篇以電腦網頁的官方流程整理，未以實際帳號測試 Canvas。手機也有相應入口，但選單與匯出位置可能不同。某些把檔案轉成其他形式或加入 AI 的功能有年齡、方案與帳號條件，請檢視目前介面，不把所有示範都當成每個帳號的標準配備。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本篇以電腦網頁的官方流程整理，未以實際帳號測試 Canvas。手機也有相應入口，但選單與匯出位置可能不同。某些把檔案轉成其他形式或加入 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的功能有年齡、方案與帳號條件，請檢視目前介面，不把所有示範都當成每個帳號的標準配備。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -123,8 +156,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "在對話中要求以目前已確認檔案製作四頁簡報：目的、流程、準備事項、待確認專案。每頁只放一個重點，流程仍保留草案標記。指定台灣讀者與投影閱讀情境，要求字型清楚、避免一頁塞滿長段落；若需要講者備註，也另外說明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在對話中要求以目前已確認檔案製作四頁簡報：目的、流程、準備事項、待確認專案。每頁只放一個重點，流程仍保留草案"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。指定台灣讀者與投影閱讀情境，要求字型清楚、避免一頁塞滿長段落；若需要講者備註，也另外說明。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -138,9 +186,10 @@
               "text": "需要正式協作與版面修訂時，可接著看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Docs 與 Slides 工作流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+              "kind": "life",
+              "slug": "gemini-in-gmail-docs-sheets"
             },
             {
               "type": "text",
@@ -197,9 +246,10 @@
               "text": "「預覽正常就可以當正式系統嗎？」還不行。練習只檢查三項清單的簡單行為，沒有證明多人使用、資料儲存與存取控制都正常。需要正式工具時，請依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "程式工作流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
             },
             {
               "type": "text",
@@ -252,18 +302,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gmail、Docs 與 Slides",
-              "url": "https://mokaair.com/zh-TW/life/gemini-in-gmail-docs-sheets"
+              "kind": "life",
+              "slug": "gemini-in-gmail-docs-sheets"
             },
             {
               "type": "text",
@@ -272,9 +324,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

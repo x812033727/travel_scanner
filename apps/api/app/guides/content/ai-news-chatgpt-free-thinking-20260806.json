@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +40,23 @@
           "text": "這次更新，最容易混淆的是哪兩件事"
         },
         {
-          "type": "paragraph",
-          "text": "第一件是模型的回答方式。發布稿表示，Sol 的日常聊天版本朝更聚焦、事實更可靠的方向調整，並讓付費使用者選擇投入多少思考。這是供應商對產品目標與評測的描述，使用者仍需要在自己的問題上確認效果，不能把它理解成從此不用看來源。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一件是模型的回答方式。發布稿表示，Sol 的日常聊天版本朝更聚焦、事實更可靠的方向調整，並讓付費使用者選擇投入多少思考。這是供應商對產品目標與"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "的描述，使用者仍需要在自己的問題上確認效果，不能把它理解成從此不用看來源。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -169,14 +185,26 @@
           "text": "此次官方公告保留檔案上傳、圖片及其他工具的限制。實際可用範圍以帳號當下顯示為準。"
         },
         {
-          "type": "link",
-          "text": "推理模型的基本概念",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型的基本概念",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 常見限制與錯誤排解",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-troubleshooting-common-errors"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 常見限制與錯誤排解",
+              "kind": "life",
+              "slug": "chatgpt-troubleshooting-common-errors"
+            }
+          ]
         }
       ],
       "sources": [
@@ -346,14 +374,26 @@
           "text": "This official announcement retained limits on file uploads, images, and other tools. Actual availability depends on what is currently displayed in your account."
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna and Terra Price Cut: Which Usage Costs Are Affected?",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna and Terra Price Cut: Which Usage Costs Are Affected?",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -523,14 +563,26 @@
           "text": "今回の公式発表でも、ファイル添付、画像、その他のツールの制限は維持されています。実際の利用枠は、現在アカウント上に表示されている内容をご確認ください。"
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna・Terra値下げ：どの利用コストに影響があるのか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna・Terra値下げ：どの利用コストに影響があるのか？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -700,14 +752,26 @@
           "text": "이번 공식 발표에서도 파일 업로드, 이미지 및 기타 도구의 제한은 유지되었습니다. 실제 이용 범위는 계정에 표시되는 현재 상태를 따릅니다."
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna·Terra 가격 인하: 어떤 사용 비용에 영향 미치나?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna·Terra 가격 인하: 어떤 사용 비용에 영향 미치나?",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [
@@ -877,14 +941,26 @@
           "text": "此次官方公告保留文件上传、图片及其他工具的限制。实际可用范围以账号当下显示为准。"
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna、Terra 降价：哪些使用成本受到影响？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna、Terra 降价：哪些使用成本受到影响？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         }
       ],
       "sources": [

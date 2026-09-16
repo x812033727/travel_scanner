@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "misc"
+    "ai-safety"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +26,48 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 偵測工具準不準，最誠實的答案寫在各家官方頁面上：GPTZero 寫「結果不應用來處罰學生」，Turnitin 寫 AI 寫作報告是「用來開啟一段對話，不是結束一段對話」，OpenAI 的教育工作者說明頁被問到偵測器有沒有用時，第一句回答是「就我們的經驗而言，沒有」。廠商自報的準確率很高，但同一批頁面也把誤判、改寫後失效、非英文較弱寫得很清楚：偵測結果只能當成要不要問一句的訊號。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 偵測工具準不準，最誠實的答案寫在各家官方頁面上：GPTZero 寫「結果不應用來處罰學生」，Turnitin 寫 AI 寫作報告是「用來開啟一段對話，不是結束一段對話」，OpenAI 的教育工作者說明頁被問到偵測器有沒有用時，第一句回答是「就我們的經驗而言，沒有」。廠商自報的準確率很高，但同一批頁面也把誤判、改寫後失效、非英文較弱寫得很清楚：偵測結果只能當成要不要問一句的訊號。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇把文字偵測與圖片影片偵測分開講，抄出各家官方自己寫的用途與限制，附一張對照表，再給一套自測法：拿自己在生成式 AI 普及前寫的舊文章去測，看會不會被標成 AI。本文沒有登入或實測任何工具，也不引用第三方評測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇把文字偵測與圖片影片偵測分開講，抄出各家官方自己寫的用途與限制，附一張對照表，再給一套自測法：拿自己在"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 普及前寫的舊文章去測，看會不會被標成 AI。本文沒有登入或實測任何工具，也不引用第三方"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -39,8 +75,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "第一種是文字偵測。GPTZero 的常見問題頁自己解釋過原理：偵測器找的是比較可能由機器寫出來的模式，最常看 perplexity（是不是過於好預測）、burstiness（句長與風格的變化幅度）與整體風格。文字本身沒有內建標記，所以這是統計上的猜測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一種是文字偵測。GPTZero 的常見問題頁自己解釋過原理：偵測器找的是比較可能由機器寫出來的模式，最常看 perplexity（是不是過於好預測）、burstiness（句長與風格的變化幅度）與整體風格。文字本身沒有內建"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，所以這是統計上的猜測。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -140,18 +191,20 @@
               "text": "內容憑證走的是另一條路：不猜像不像 AI，而是記錄誰做的、經過哪些軟體、改過什麼。C2PA 的官方常見問題寫，憑證是可被密碼學驗證、防竄改的資料結構，但也承認憑證可能被移除，所以才有靠隱形浮水印找回憑證的機制。Google 的說明頁則直接列出內容憑證不做什麼：它不會告訴你一個檔案一定是 AI 生成的。這兩件事站上各有專篇，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 圖片的浮水印與 C2PA：怎麼標示、怎麼辨識",
-              "url": "https://mokaair.com/zh-TW/life/ai-image-watermark-c2pa"
+              "kind": "life",
+              "slug": "ai-image-watermark-c2pa"
             },
             {
               "type": "text",
               "text": " 講各家怎麼標、怎麼查，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
             },
             {
               "type": "text",
@@ -195,18 +248,20 @@
               "text": "學生端該怎麼標示、怎麼留紀錄，站上另外寫在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
-              "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+              "kind": "life",
+              "slug": "ai-for-students-honest-use"
             },
             {
               "type": "text",
               "text": "；老師端把作業改成難以用 AI 一次生成的形式，可以參考 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "老師用 Claude：出題、教案與批改回饋",
-              "url": "https://mokaair.com/zh-TW/life/claude-for-teachers-lesson-plans"
+              "kind": "life",
+              "slug": "claude-for-teachers-lesson-plans"
             },
             {
               "type": "text",
@@ -268,28 +323,67 @@
           "text": "最後補一個常被混淆的方向：偵測工具回答的是這段文字是誰寫的，不是對不對，內容有沒有編造是另一套查證流程。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "什麼時候要主動標示 AI 內容、深偽詐騙怎麼防，以及 AI 到底能做到什麼，站上也各有專篇。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "什麼時候要主動標示 AI 內容、"
+            },
+            {
+              "type": "article",
+              "text": "深偽",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            },
+            {
+              "type": "text",
+              "text": "詐騙怎麼防，以及 AI 到底能做到什麼，站上也各有專篇。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 詐騙與 Deepfake：台灣案例與防範",
-          "url": "https://mokaair.com/zh-TW/life/ai-scams-deepfake-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 詐騙與 Deepfake：台灣案例與防範",
+              "kind": "life",
+              "slug": "ai-scams-deepfake-taiwan"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 能與不能：2026 年的誠實盤點",
-          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 能與不能：2026 年的誠實盤點",
+              "kind": "life",
+              "slug": "ai-hype-vs-reality-2026"
+            }
+          ]
         }
       ],
       "sources": [

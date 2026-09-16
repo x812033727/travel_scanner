@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 122,
@@ -184,8 +185,23 @@
           "code": "請先列出目前載入的規則來源。\n接著讀取 app.js，指出哪些額外指引適用於這個檔案。\n請引用實際規則路徑，先不要修改專案。\n"
         },
         {
-          "type": "paragraph",
-          "text": "成功判準是載入清單與回覆路徑能對上你建立的檔案，而且規則內容沒有被重複或遺漏。若 paths 沒作用，檢查 frontmatter、檔名、啟動目錄與設定來源。若 AGENTS.md 沒出現，檢查 @AGENTS.md 是否放在真正載入的 CLAUDE.md 中，且沒有被程式碼標記包住。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "成功判準是載入清單與回覆路徑能對上你建立的檔案，而且規則內容沒有被重複或遺漏。若 paths 沒作用，檢查 frontmatter、檔名、啟動目錄與設定來源。若 AGENTS.md 沒出現，檢查 @AGENTS.md 是否放在真正載入的 CLAUDE.md 中，且沒有被程式碼"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "包住。"
+            }
+          ]
         },
         {
           "type": "callout",

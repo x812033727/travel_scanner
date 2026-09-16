@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -29,8 +30,14 @@
           "type": "rich_paragraph",
           "inlines": [
             {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
               "type": "text",
-              "text": "AI 回答裡出現自己的網站，量不量得到？結論是：量得到的比想像中少。這篇不重複站上的 "
+              "text": " 回答裡出現自己的網站，量不量得到？結論是：量得到的比想像中少。這篇不重複站上的 "
             },
             {
               "type": "article",
@@ -84,8 +91,23 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "廠商有官方說明嗎？OpenAI 說明中心的發布者常見問題寫明，ChatGPT 會在推薦網址加上 utm_source=chatgpt.com 這個 UTM 參數。那是網址參數，不是 Referer 標頭，複製網址或重新導向就會消失。其他助理是否送出 referrer，查證時沒找到同等級的官方說明，以官方文件為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "廠商有官方說明嗎？OpenAI 說明中心的發布者常見問題寫明，ChatGPT 會在推薦網址加上 utm_source=chatgpt.com 這個 UTM "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。那是網址參數，不是 Referer 標頭，複製網址或重新導向就會消失。其他助理是否送出 referrer，查證時沒找到同等級的官方說明，以官方文件為準。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",
@@ -125,8 +147,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "日誌裡 AI 相關 user agent 的請求次數常被當成「被引用幾次」，這是兩件事。依照 OpenAI 的爬蟲官方文件，OAI-SearchBot 用於讓網站出現在 ChatGPT 搜尋結果，GPTBot 抓的內容可能用於訓練生成式 AI 基礎模型，ChatGPT-User 則是使用者提問時系統去造訪網頁的請求，官方寫明這類動作由使用者發起。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "日誌裡 AI 相關 user agent 的請求次數常被當成「被引用幾次」，這是兩件事。依照 OpenAI 的爬蟲官方文件，OAI-SearchBot 用於讓網站出現在 ChatGPT 搜尋結果，GPTBot 抓的內容可能用於訓練"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 基礎模型，ChatGPT-User 則是使用者提問時系統去造訪網頁的請求，官方寫明這類動作由使用者發起。"
+            }
+          ]
         },
         {
           "type": "paragraph",

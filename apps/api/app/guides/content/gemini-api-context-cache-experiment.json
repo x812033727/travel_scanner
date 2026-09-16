@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,22 +56,34 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "費用和額度",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
-              "text": "。本篇固定 Python 與 google-genai 2.23.0；參考模型為 gemini-3.8-flash，仍需確認專案可用性。查證日官方明確區分兩套接口：Interactions 支援隱含快取，手動建立及管理 cache 則使用 generateContent。"
+              "text": "。本篇固定 Python 與 google-"
+            },
+            {
+              "type": "article",
+              "text": "genai",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 2.23.0；參考模型為 gemini-3.8-flash，仍需確認專案可用性。查證日官方明確區分兩套接口：Interactions 支援隱含快取，手動建立及管理 cache 則使用 generateContent。"
             }
           ]
         },
@@ -79,8 +92,23 @@
           "text": "下載包提供長文件、三個相同問題、用量表與操作程式。文件有五百段帶獨立編號的合成文字，不包含私人資料。它的字數不等於 token 數；是否達模型要求的快取門檻，要看當日文件與實際計數，不能只因文字檔很大就宣稱一定命中。"
         },
         {
-          "type": "paragraph",
-          "text": "先設定自己的專案與成本上限。本篇的本機測試只驗證請求格式、快取 ID、用量欄位與清理呼叫，並未測得雲端節省比例。usage-log.csv 的實際輸入、命中與帳單欄位保持 not_run，沒有以固定假數字包裝成服務基準測試。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先設定自己的專案與成本上限。本篇的本機測試只驗證請求格式、快取 ID、用量欄位與清理呼叫，並未測得雲端節省比例。usage-log.csv 的實際輸入、命中與帳單欄位保持 not_run，沒有以固定假數字包裝成服務"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -214,21 +242,33 @@
           "inlines": [
             {
               "type": "text",
-              "text": "最後寫下哪些輪次確實命中、哪些沒有、哪些資訊仍不足，以及比較是否包含保存費用。若要大量評測相同題目，接著讀 "
+              "text": "最後寫下哪些輪次確實命中、哪些沒有、哪些資訊仍不足，以及比較是否包含保存費用。若要大量"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "相同題目，接著讀 "
+            },
+            {
+              "type": "article",
               "text": "Batch 與部分失敗處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-batch-recovery"
+              "kind": "life",
+              "slug": "gemini-api-batch-recovery"
             },
             {
               "type": "text",
               "text": "；需要把成本控制放進應用程式，則進入 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "文件助手交付",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-document-service-capstone"
+              "kind": "life",
+              "slug": "gemini-api-document-service-capstone"
             },
             {
               "type": "text",
@@ -276,27 +316,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI Studio 與第一個 Gemini API 呼叫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-ai-studio-first-call"
+              "kind": "life",
+              "slug": "gemini-api-ai-studio-first-call"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Batch API 批次評測：工作 ID、部分失敗與重送管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-batch-recovery"
+              "kind": "life",
+              "slug": "gemini-api-batch-recovery"
             },
             {
               "type": "text",
@@ -315,9 +358,15 @@
           "url": "https://mokaair.com/guides/gemini-api-context-cache-experiment/api-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Chrome 內建 Gemini 可以在瀏覽網頁時提供協助，適合摘要正在閱讀的頁面、比較幾個分頁及整理下一步問題。本篇先分清楚網址列捷徑與分頁分享，再用兩篇公開資料練習來源比較。操作依官方文件整理，未在本次環境以符合資格的 Gemini 帳號實測。瀏覽器 AI 摘要的每一句，都應該能回到原頁面對照。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Chrome 內建 Gemini 可以在瀏覽網頁時提供協助，適合摘要正在閱讀的頁面、比較幾個分頁及整理下一步問題。本篇先分清楚網址列捷徑與分頁分享，再用兩篇公開資料練習來源比較。操作依官方文件整理，未在本次環境以符合資格的 Gemini 帳號實測。"
+            },
+            {
+              "type": "article",
+              "text": "瀏覽器 AI",
+              "kind": "life",
+              "slug": "ai-browsers-guide"
+            },
+            {
+              "type": "text",
+              "text": " 摘要的每一句，都應該能回到原頁面對照。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -59,9 +75,10 @@
               "text": "先在 Chrome 設定中檢查版本並完成更新，再確認目前瀏覽器設定檔是要使用的帳號。不要為了找不到某個功能而變更不實年齡或地區。官方支援清單與你的帳號畫面應一起看；如果條件不符，仍可使用"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 網頁版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
@@ -86,9 +103,10 @@
               "text": "第三種是瀏覽器頂端的「問問 Gemini」或 Gemini 內建入口，會在瀏覽工作旁提供對話及分頁脈絡。下列步驟使用第三種。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Mac 原生應用程式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-mac-app-guide"
+              "kind": "life",
+              "slug": "gemini-mac-app-guide"
             },
             {
               "type": "text",
@@ -139,9 +157,10 @@
               "text": "若回覆顯示無法讀取某分頁，先檢視該頁是否需要登入、內容是否位於特殊檢視器，或分享範圍是否正確。必要時改用自己有權處理的短段落或下載檔案，接著依"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -166,9 +185,10 @@
               "text": "關閉一個 Chrome 分頁，不代表對話中已提供的資訊全部消失。要停止把某頁當作後續脈絡，使用介面上的分享管理控制並檢視目前狀態；要處理儲存的對話或活動，另看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "隱私與記錄",
-              "url": "https://mokaair.com/zh-TW/life/gemini-privacy-activity-settings"
+              "kind": "life",
+              "slug": "gemini-privacy-activity-settings"
             },
             {
               "type": "text",
@@ -184,18 +204,30 @@
               "text": "想擴大成多來源研究，可以把已核對的問題交給"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
-              "text": "，先審閱研究計畫及來源範圍。Chrome 摘要適合陪伴當前閱讀，研究報告則需要更清楚的問題與證據整理。至於 Google 搜尋結果中的 AI 模式與 AI 摘要，請看"
+              "text": "，先審閱研究計畫及來源範圍。Chrome 摘要適合陪伴當前閱讀，研究報告則需要更清楚的問題與證據整理。至於 Google 搜尋結果中的 "
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 模式與 AI 摘要，請看"
+            },
+            {
+              "type": "article",
               "text": "搜尋 AI 教學",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+              "kind": "life",
+              "slug": "google-ai-mode-search"
             },
             {
               "type": "text",
@@ -233,9 +265,10 @@
               "text": "「@gemini 和對話中的 @ 一樣嗎？」不一樣。網址列的 @gemini 是 Gemini 網頁捷徑；本篇內建對話中的 @ 用來選取分頁。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 的 @ 檔案引用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
@@ -288,18 +321,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "電腦網頁版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Google 搜尋 AI 模式",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+              "kind": "life",
+              "slug": "google-ai-mode-search"
             },
             {
               "type": "text",
@@ -308,9 +343,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

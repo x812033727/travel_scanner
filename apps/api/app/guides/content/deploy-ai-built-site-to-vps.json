@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,38 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 幫你把網站做出來之後，剩下的不是寫程式，是搬家：把檔案放到一台永遠開著的機器上，讓網域指過去，再讓瀏覽器願意顯示那個鎖頭。三件事都有標準做法，走過一次，下一個專案照抄。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 幫你把網站做出來之後，剩下的不是寫程式，是搬家：把檔案放到一台永遠開著的機器上，讓網域指過去，再讓瀏覽器願意顯示那個鎖頭。三件事都有標準做法，走過一次，下一個專案照抄。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇是通用流程，不綁主機商也不列價格：方案、地區與快照收費各家不同，以各家官網為準。從挑 VPS 走到 DNS 記錄與上線驗收，每一步都附一段可以交給 AI 代理的提示詞。指令讓它寫，按下 Enter 的人是你。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇是通用流程，不綁主機商也不列價格：方案、地區與快照收費各家不同，以各家官網為準。從挑 VPS 走到 DNS 記錄與上線驗收，每一步都附一段可以交給 "
+            },
+            {
+              "type": "article",
+              "text": "AI 代理",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            },
+            {
+              "type": "text",
+              "text": "的提示詞。指令讓它寫，按下 Enter 的人是你。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -56,9 +83,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "Vibe coding：不會寫程式也能做出第一個網站",
-          "url": "https://mokaair.com/zh-TW/life/vibe-coding-first-website"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Vibe coding：不會寫程式也能做出第一個網站",
+              "kind": "life",
+              "slug": "vibe-coding-first-website"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -123,9 +156,15 @@
           "text": "自動安全更新交給 unattended-upgrades。Ubuntu 文件說明，行為寫在 /etc/apt/apt.conf.d/ 的 50unattended-upgrades，開關寫在同一層的 20auto-upgrades，設成 1 就是每天執行。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜專案資料與操作安全",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-project-data-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜專案資料與操作安全",
+              "kind": "life",
+              "slug": "claude-code-project-data-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -147,9 +186,15 @@
           "text": "rsync 只傳有變動的部分，git 讓你知道線上跑的是哪一版。"
         },
         {
-          "type": "link",
-          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+              "kind": "life",
+              "slug": "ai-coding-git-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -241,14 +286,26 @@
           "code": "【選機器】我要把一個（靜態網站／Node.js 專案／Python 專案）放到 VPS，讀者主要在台灣。\n請列出最低的記憶體與磁碟需求並說明你怎麼估的，作業系統假設是 Ubuntu LTS。\n不要推薦主機商，也不要寫價格，我會自己去各家官網查。\n\n【加固】這台機器剛開好，系統是 Ubuntu LTS。請給我一份步驟清單：\n建立一般使用者、設定金鑰登入、關閉密碼登入、開啟 ufw、打開自動安全更新。\n每一步先寫出指令和它會改到哪個檔案，等我說「執行」再動手。\n\n【送檔案】我的網站在本機的 ~/site，伺服器上要放在 /var/www/site。\n請給我 rsync 指令，第一次不要加 --delete，並說明怎麼確認傳完是對的。\n\n【開 HTTPS】我要用 Caddy 提供 /var/www/site，網域是 example.com。\n請寫出 Caddyfile 的內容，並列出重新載入設定與查看記錄的指令。\n\n【跑應用程式】我的 Node.js 專案在 /home/deploy/app，用 node server.js 啟動、監聽 3000。\n請寫一個 systemd 服務單元，讓它開機自動啟動、掛掉自動重啟，並確認它只監聽本機。\n\n【指網域】我的網域要指到這台機器，位址是 203.0.113.10。\n請說明我該新增哪幾筆 DNS 記錄、TTL 先設多少，以及用什麼指令確認已經生效。\n\n【驗收】請列出一份上線檢查清單：HTTPS、憑證自動續發、防火牆、備份、記錄，\n每一項寫出我該執行哪一個指令、看到什麼才算通過。"
         },
         {
-          "type": "link",
-          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+              "kind": "life",
+              "slug": "ai-code-review-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -317,14 +374,26 @@
           "text": "DNS 還沒生效：改完記錄馬上測，看到的往往還是舊位置，先查一次再說。連接埠沒開：Let's Encrypt 的 HTTP-01 驗證從連接埠 80 進來抓 /.well-known/acme-challenge/ 底下的檔案，ufw 沒放行 80 一定失敗，443 沒開則是拿到憑證也連不上。憑證被限速：官方寫明每個註冊網域每 7 天最多 50 張憑證、完全相同的一組名稱每 7 天最多 5 張，反覆重試會把額度用光，先用 --dry-run 走通流程。"
         },
         {
-          "type": "link",
-          "text": "用 AI 做個人部落格：靜態網站產生器與部署",
-          "url": "https://mokaair.com/zh-TW/life/ai-build-personal-blog-tutorial"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 做個人部落格：靜態網站產生器與部署",
+              "kind": "life",
+              "slug": "ai-build-personal-blog-tutorial"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code 入門：認識工具與第一條學習路線",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code 入門：認識工具與第一條學習路線",
+              "kind": "life",
+              "slug": "claude-code-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

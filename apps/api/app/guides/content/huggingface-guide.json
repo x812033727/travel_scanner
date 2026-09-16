@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Hugging Face 的 Hub 是目前開放模型最集中的地方，官方文件說上面有超過 200 萬個模型、150 萬個資料集，以及 150 萬個 AI 應用。它比較像一間圖書館：你到這裡找權重、讀說明、確認授權，再把檔案抓回自己的電腦或伺服器執行。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hugging Face 的 Hub 是目前開放模型最集中的地方，官方文件說上面有超過 200 萬個模型、150 萬個資料集，以及 150 萬個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 應用。它比較像一間圖書館：你到這裡找權重、讀說明、確認授權，再把檔案抓回自己的電腦或伺服器執行。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -39,22 +55,59 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Hub 的內容分成三種倉庫：Models 放權重與設定檔，Datasets 放訓練或評測資料，Spaces 是能在瀏覽器裡直接執行的示範應用。官方文件說三種都是 Git 倉庫，所以模型頁有版本、提交紀錄與差異比較，你下載到的永遠是某一個提交的內容。一個模型倉庫裡通常有權重檔、設定檔、分詞器檔案，以及一份叫 README.md 的說明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hub 的內容分成三種倉庫：Models 放權重與設定檔，Datasets 放訓練或"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "資料，Spaces 是能在瀏覽器裡直接執行的示範應用。官方文件說三種都是 Git 倉庫，所以模型頁有版本、提交紀錄與差異比較，你下載到的永遠是某一個提交的內容。一個模型倉庫裡通常有權重檔、設定檔、"
+            },
+            {
+              "type": "article",
+              "text": "分詞",
+              "kind": "life",
+              "slug": "ai-term-tokenization"
+            },
+            {
+              "type": "text",
+              "text": "器檔案，以及一份叫 README.md 的說明。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "要先分清楚兩件事：檔案能不能下載，和下載之後能怎麼用。前者看倉庫有沒有上鎖，後者看授權條款，兩者不一定一致。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -99,14 +152,26 @@
           "code": "---\nlicense: other\nlicense_name: my-model-license\nlicense_link: LICENSE\nlibrary_name: transformers\npipeline_tag: text-generation\nbase_model: some-org/some-base-model\n---"
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-lora"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -123,9 +188,15 @@
           "text": "模型頁上的授權標籤來自模型卡開頭的 YAML，由上傳者自己填；代號是 other 的時候，真正的條款在倉庫裡的 LICENSE 檔或 license_link 指向的頁面。官方授權說明頁只留了一句提醒：要用別人的程式或資料之前，請自己找出並尊重那個專案的授權。服務條款也說，內容附帶的開源授權條款在後續取用與散布時仍然有效。要商用之前先讀原文，不要只看那一行標籤。"
         },
         {
-          "type": "link",
-          "text": "Llama 模型家族：授權與版本",
-          "url": "https://mokaair.com/zh-TW/life/llama-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Llama 模型家族：授權與版本",
+              "kind": "life",
+              "slug": "llama-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -133,8 +204,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Models 頁左側有一整排篩選欄：Tasks、Libraries、Languages、Licenses、Apps、Parameters 還有 Other。官方搜尋說明寫著篩選條件會寫進網址列，篩好可以直接複製分享。想找能給 llama.cpp、Ollama 或 LM Studio 用的量化檔，最直接的做法是用 GGUF 這個函式庫標籤篩選。Hub 另有全文搜尋，官方說它索引模型卡、資料集卡與 Spaces 的 app.py；習慣終端機的話，hf 指令一樣能搜尋、篩選並印出倉庫的檔案樹。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Models 頁左側有一整排篩選欄：Tasks、Libraries、Languages、Licenses、Apps、"
+            },
+            {
+              "type": "article",
+              "text": "Parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " 還有 Other。官方搜尋說明寫著篩選條件會寫進網址列，篩好可以直接複製分享。想找能給 llama.cpp、Ollama 或 LM Studio 用的量化檔，最直接的做法是用 GGUF 這個函式庫標籤篩選。Hub 另有全文搜尋，官方說它索引模型卡、資料集卡與 Spaces 的 app.py；習慣終端機的話，hf 指令一樣能搜尋、篩選並印出倉庫的檔案樹。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -143,14 +229,26 @@
           "code": "# 篩選條件會寫進網址，可以直接複製分享\n# https://huggingface.co/models?library=gguf\n\n# 搜尋、依作者篩選、只看不需要申請的倉庫\nhf models ls --search \"Qwen3\" --author Qwen\nhf models ls --no-gated --author google\nhf models ls --apps llama.cpp --sort downloads --limit 10\n\n# 看某個倉庫裡有哪些檔案、各佔多大\nhf models ls openai/gpt-oss-20b --tree -h"
         },
         {
-          "type": "link",
-          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "kind": "life",
+              "slug": "gguf-quantization-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -167,14 +265,26 @@
           "text": "舉例來說，2026 年 9 月 14 日查詢時，openai/gpt-oss-20b 的 createdAt 是 2025-08-04，tags 帶著 license:apache-2.0；meta-llama/Llama-3.1-8B-Instruct 的 createdAt 是 2024-07-18，gated 是 manual，授權標籤是 license:llama3.1。同一個模型的量化版本常由第三方重新上傳，建立日期與授權都要各自確認。"
         },
         {
-          "type": "link",
-          "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
-          "url": "https://mokaair.com/zh-TW/life/qwen-alibaba-models-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "通義千問 Qwen：開放權重模型家族與 Qwen Studio",
+              "kind": "life",
+              "slug": "qwen-alibaba-models-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -219,14 +329,26 @@
           "text": "下載回來的檔案交給誰執行取決於格式。官方 GGUF 說明頁列出四個能直接吃 GGUF 的開源工具：llama.cpp、LM Studio、GPT4All 與 Ollama；safetensors 這類檔案則常用 transformers 之類的函式庫載入。先決定用哪個工具再挑檔案，比先抓一堆權重省事。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "LM Studio 入門：圖形介面跑本機模型",
-          "url": "https://mokaair.com/zh-TW/life/lm-studio-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LM Studio 入門：圖形介面跑本機模型",
+              "kind": "life",
+              "slug": "lm-studio-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",

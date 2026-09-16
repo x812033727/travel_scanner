@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "完成"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 安裝",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-getting-started"
+              "kind": "life",
+              "slug": "gemini-cli-getting-started"
             },
             {
               "type": "text",
               "text": "，並在普通對話中測試你的提示詞。若直接提問都無法得到可驗證的結果，先改善"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞結構",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
@@ -129,8 +132,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "正式使用前，把一組固定公告與預期欄位另存成測試筆記。每次修改模板，只比較新增要求是否達成，並檢查原本的缺漏標記有沒有退步；不要只挑表現最好的一次當作驗收結果。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "正式使用前，把一組固定公告與預期欄位另存成測試筆記。每次修改模板，只比較新增要求是否達成，並檢查原本的缺漏"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "有沒有退步；不要只挑表現最好的一次當作驗收結果。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -144,9 +162,10 @@
               "text": "自訂指令也能使用檔案注入與 shell 執行等語法，但這些能力有不同風險與核准行為。本篇先維持純文字提示詞，不把任意引數串成 shell 命令。之後需要處理檔案時，先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案與 shell 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
@@ -179,9 +198,10 @@
               "text": "當同一個流程開始需要多個步驟、參考檔案與腳本，可以評估"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -230,18 +250,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Agent Skills",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-agent-skills"
+              "kind": "life",
+              "slug": "gemini-cli-agent-skills"
             },
             {
               "type": "text",
@@ -250,9 +272,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

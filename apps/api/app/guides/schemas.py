@@ -21,7 +21,7 @@ from app.admin.schemas import AdminAuditView
 from app.affiliates.content_links import ContentCategory
 from app.affiliates.schemas import AffiliateModule
 from app.guides.publication import ArticleStatus
-from app.i18n import Locale
+from app.i18n import LOCALES, Locale
 from app.site_pages.schemas import (
     HeadingBlock,
     LinkBlock,
@@ -42,6 +42,11 @@ KINDS: tuple[Kind, ...] = ("intel", "howto", "life")
 # section holds `life` articles at /life. Nothing else about an article differs.
 Section = Literal["travel", "life"]
 SECTION_KINDS: dict[Section, tuple[Kind, ...]] = {"travel": ("intel", "howto"), "life": ("life",)}
+# How a public listing is ordered. ``latest`` is publication time, newest first -- right for
+# dated intel. ``curated`` is the editor's order: featured first, then ``display_order``,
+# then newest, then the slug -- what a hub's "featured guides" and the lifestyle listing
+# want, so an overview piece stays on page one however many batches follow it.
+ListSort = Literal["latest", "curated"]
 RevisionAction = Literal["created", "draft_saved", "published", "unpublished", "restored"]
 
 
@@ -307,6 +312,35 @@ class PartnerLinkBlock(StrictModel):
     note: PlainText = Field(default="", max_length=200)
 
 
+class SummaryBlock(StrictModel):
+    """The article's answer, in two to five sentences a reader (or an answer engine) can
+    take away without reading further. One per article, ahead of the first section: it is
+    the opening, not a recap. Drafted from the article's own text -- lifted from a
+    「先講結論」 lead, or written by the model and read by the owner batch by batch before
+    ``pack_cli summarize --from`` applies it (the owner's decision of 2026-09-16) -- and
+    never a fact the body does not state: an article whose summary the text does not
+    support is worse than one without."""
+
+    type: Literal["summary"]
+    items: list[Annotated[NonemptyText, Field(max_length=300)]] = Field(
+        min_length=2, max_length=5
+    )
+
+
+class FaqItem(StrictModel):
+    question: NonemptyText = Field(max_length=200)
+    answer: NonemptyText = Field(max_length=1000)
+
+
+class FaqBlock(StrictModel):
+    """Questions readers actually ask, each with its answer, as a section of the article.
+    One per article. Google has shown FAQ rich results only for government and health
+    sites since 2023; the value here is the reader and the answer engines."""
+
+    type: Literal["faq"]
+    items: list[FaqItem] = Field(min_length=2, max_length=10)
+
+
 GuideBlock = Annotated[
     HeadingBlock
     | ParagraphBlock
@@ -318,7 +352,9 @@ GuideBlock = Annotated[
     | OfferBlock
     | PartnerLinkBlock
     | RichParagraphBlock
-    | CodeBlock,
+    | CodeBlock
+    | SummaryBlock
+    | FaqBlock,
     Field(discriminator="type"),
 ]
 
@@ -338,6 +374,23 @@ class GuideDocument(StrictModel):
             raise ValueError("document exceeds 120000 characters")
         return self
 
+    @model_validator(mode="after")
+    def one_summary_one_faq(self) -> Self:
+        """At most one summary and one FAQ, and the summary before the first section: a
+        summary halfway down is a recap, and two of them contradict each other."""
+        if sum(isinstance(block, SummaryBlock) for block in self.blocks) > 1:
+            raise ValueError("an article carries at most one summary block")
+        if sum(isinstance(block, FaqBlock) for block in self.blocks) > 1:
+            raise ValueError("an article carries at most one faq block")
+        for block in self.blocks:
+            if isinstance(block, HeadingBlock):
+                break
+            if isinstance(block, SummaryBlock):
+                return self
+        if any(isinstance(block, SummaryBlock) for block in self.blocks):
+            raise ValueError("the summary block belongs before the first heading")
+        return self
+
 
 class PublishedDocument(GuideDocument):
     version: int
@@ -355,10 +408,110 @@ class TopicOption(BaseModel):
     slug: str
     label: str
     section: Section
+    # The parent's slug for a sub-topic, or None at the top level. Optional on the wire so
+    # a web build older than the two-level vocabulary keeps parsing the list.
+    parent: str | None = None
+    # The topic hub's lead paragraph in the reader's language, when the topic has one.
+    description: str | None = None
+    # Published articles under this topic in the request locale, and in every locale, so a
+    # hub page can decide its own indexability and its hreflang set from one read. A parent
+    # counts the distinct union of itself and its children.
+    count: int = 0
+    counts: dict[str, int] = Field(default_factory=dict)
 
 
 class TopicList(BaseModel):
     topics: list[TopicOption]
+
+
+def _topic_names(value: dict[str, str]) -> dict[str, str]:
+    """Every locale, each a non-empty label. ``topic_label`` would show the slug where a
+    label is missing, which is honest but not what an editor meant to publish."""
+    cleaned = {locale: plain_text(text).strip() for locale, text in value.items()}
+    missing = [locale for locale in LOCALES if not cleaned.get(locale)]
+    if missing:
+        raise ValueError(f"a label is needed in every locale: {', '.join(missing)}")
+    return cleaned
+
+
+def _topic_descriptions(value: dict[str, str] | None) -> dict[str, str] | None:
+    """A lead per locale; a locale left out or emptied simply has none."""
+    if value is None:
+        return None
+    return {locale: plain_text(text).strip() for locale, text in value.items() if text.strip()}
+
+
+class TopicCreate(StrictModel):
+    """A topic an editor adds without a deploy: the seed migrations only ever insert slugs
+    that are absent, so a row with ``source='admin'`` survives every later seed."""
+
+    slug: str = Field(min_length=2, max_length=64)
+    section: Section
+    names: dict[Locale, str]
+    display_order: int = Field(default=100, ge=0, le=100_000)
+    # A top-level topic of the same section, for a sub-topic; None for a top-level one.
+    parent_slug: str | None = Field(default=None, max_length=64)
+    descriptions: dict[Locale, str] | None = None
+
+    @field_validator("slug")
+    @classmethod
+    def normalize_slug(cls, value: str) -> str:
+        return article_slug(value)
+
+    @field_validator("names")
+    @classmethod
+    def every_locale(cls, value: dict[str, str]) -> dict[str, str]:
+        return _topic_names(value)
+
+    @field_validator("descriptions")
+    @classmethod
+    def clean_descriptions(cls, value: dict[str, str] | None) -> dict[str, str] | None:
+        return _topic_descriptions(value)
+
+
+class TopicUpdate(StrictModel):
+    """Only what is given changes. The section never does: articles carry it."""
+
+    names: dict[Locale, str] | None = None
+    display_order: int | None = Field(default=None, ge=0, le=100_000)
+    is_active: bool | None = None
+    # ``None`` leaves the parent alone, ``""`` clears it, a slug sets it.
+    parent_slug: str | None = Field(default=None, max_length=64)
+    descriptions: dict[Locale, str] | None = None
+
+    @field_validator("names")
+    @classmethod
+    def every_locale(cls, value: dict[str, str] | None) -> dict[str, str] | None:
+        return None if value is None else _topic_names(value)
+
+    @field_validator("descriptions")
+    @classmethod
+    def clean_descriptions(cls, value: dict[str, str] | None) -> dict[str, str] | None:
+        return _topic_descriptions(value)
+
+
+class AdminTopic(TopicOption):
+    """A topic as the editor sees it: every label and lead, not only the reader's."""
+
+    names: dict[str, str]
+    descriptions: dict[str, str]
+    display_order: int
+    is_active: bool
+    source: str
+
+
+class DestinationFacet(BaseModel):
+    """One destination with at least one published article in the request locale."""
+
+    id: str
+    label: str
+    country: str
+    country_label: str
+    count: int
+
+
+class DestinationFacetList(BaseModel):
+    destinations: list[DestinationFacet]
 
 
 class ContentPartnerOption(BaseModel):
@@ -390,6 +543,17 @@ class ArticleCreate(StrictModel):
         return article_slug(value)
 
 
+# Another name a reader may type for an article (``ML``, ``機器學習``). Per locale, and few:
+# a dozen is a glossary entry's worth, more is a keyword list nobody reviews.
+Alias = Annotated[str, Field(min_length=1, max_length=120)]
+MAX_ALIASES_PER_LOCALE = 12
+# Editor-chosen further reading. Four is what the end of an article can show without the
+# grid reading as a listing.
+MAX_RELATED = 4
+AliasMap = dict[Locale, Annotated[list[Alias], Field(max_length=MAX_ALIASES_PER_LOCALE)]]
+RelatedSlugs = Annotated[list[str], Field(max_length=MAX_RELATED)]
+
+
 class ArticleUpdate(StrictModel):
     """Taxonomy only. The text of a translation is changed through its own draft, and
     whether the article is hidden through ``VisibilityWrite``: a classification save must
@@ -402,6 +566,19 @@ class ArticleUpdate(StrictModel):
     valid_until: date | None = None
     featured: bool = False
     display_order: int = Field(default=100, ge=0, le=100_000)
+    # ``None`` leaves the names alone; a locale listed here replaces that locale's
+    # editor-written names (``[]`` clears them). Names the seed wrote (glossary, keyword
+    # list, series catalogue) are not the editor's to lose and stay either way.
+    aliases: AliasMap | None = None
+    # ``None`` leaves the list alone; a list replaces it, in the order shown.
+    related: RelatedSlugs | None = None
+
+    @field_validator("related")
+    @classmethod
+    def normalize_related(cls, value: list[str] | None) -> list[str] | None:
+        if value is None:
+            return None
+        return list(dict.fromkeys(article_slug(slug) for slug in value if slug.strip()))
 
 
 class DraftWrite(StrictModel):
@@ -505,6 +682,10 @@ class ArticleSummary(BaseModel):
     version: int
     locales: list[LocaleState]
     updated_at: datetime
+    # The editor-written names per locale and the curated further reading, filled on the
+    # detail read (the list has no use for them and would pay a query per row).
+    aliases: dict[str, list[str]] = Field(default_factory=dict)
+    related: list[str] = Field(default_factory=list)
 
 
 class FacetCount(BaseModel):
@@ -564,6 +745,28 @@ class PublicList(BaseModel):
     next_cursor: str | None = None
 
 
+class GuideSearchHit(PublicSummary):
+    """A result card: the summary plus the passage the match was found in."""
+
+    # A passage of the body around the first matched term, or the description when the
+    # match sits in the title or the aliases only. Plain text; the web marks the terms.
+    snippet: str
+    # The terms the query was parsed into, folded, so the web can highlight them.
+    matched: list[str]
+
+
+class GuideSearchResult(BaseModel):
+    query: str
+    total: int
+    offset: int
+    limit: int
+    results: list[GuideSearchHit]
+    # The article whose alias or title *is* the query, shown above the ranked list and
+    # left out of it.
+    best_match: PublicSummary | None = None
+    next_offset: int | None = None
+
+
 class PublicPartnerLink(BaseModel):
     """One partner link the reader may see, resolved against the registry at read time.
 
@@ -582,6 +785,10 @@ class ArticleReference(BaseModel):
     kind: Kind
     slug: str
     title: str
+    # The published description, when the reference was built from a published revision:
+    # what a definition card shows under a term link. Optional so a reference built
+    # elsewhere (a catalogue row, an older API) still parses.
+    description: str | None = None
 
 
 class SeriesEntry(ArticleReference):
@@ -613,6 +820,25 @@ class PublicSeries(BaseModel):
     groups: list[SeriesGroup]
     paths: list[SeriesPath]
     entries: list[SeriesEntry]
+
+
+SeriesSource = Literal["api-series", "web-gemini", "catalogue"]
+
+
+class SeriesSummary(BaseModel):
+    """One series or tutorial hub the reader can enter from a section page. ``entries`` is
+    the catalogue's count where the API holds the catalogue, and unknown otherwise."""
+
+    slug: str
+    section: Section
+    hub: ArticleReference
+    source: SeriesSource
+    topic: str | None = None
+    entries: int | None = None
+
+
+class SeriesIndex(BaseModel):
+    series: list[SeriesSummary]
 
 
 class SeriesNavigation(BaseModel):
@@ -647,6 +873,18 @@ class PublicArticle(BaseModel):
     partner_links: list[PublicPartnerLink] = Field(default_factory=list)
     article_links: list[ArticleReference] = Field(default_factory=list)
     series: SeriesNavigation | None = None
+    # Further reading: the editor's picks first, then articles that share a sub-topic, a
+    # parent topic, a destination or a series group (``links.related_articles``). Ordinary
+    # links, so they stay under an expired notice where the partner buttons do not.
+    related: list[ArticleReference] = Field(default_factory=list)
+    # Published articles whose text links here, newest first.
+    backlinks: list[ArticleReference] = Field(default_factory=list)
+    # The other names this article answers to in this locale (glossary, keyword list and
+    # editor; not a series catalogue's keyword hints).
+    aliases: list[str] = Field(default_factory=list)
+    # The glossary this article is an entry of, when it belongs to a catalogue-type series
+    # (``series_registry.json``): the web marks such an article up as a DefinedTerm in that set.
+    term_set: ArticleReference | None = None
 
 
 class SitemapEntry(BaseModel):
@@ -654,10 +892,29 @@ class SitemapEntry(BaseModel):
     slug: str
     locale: Locale
     published_at: datetime
-    # The current public version's own timestamp: the honest ``lastmod``. Optional on the
-    # wire so a web layer built against the older shape keeps parsing the file.
+    # When the current public version went live -- the honest lastmod. None only when the
+    # published pointer is damaged, which costs the row its date, not its place.
     modified_at: datetime | None = None
+    # Every locale this article is published in, so a child sitemap that holds one locale can
+    # still name the article's other translations as alternates.
+    locales: list[Locale] = Field(default_factory=list)
 
 
 class SitemapList(BaseModel):
     entries: list[SitemapEntry]
+    # Present when the page was full and rows follow; absent (None) on the last page and from
+    # an API that predates paging. Same keyset shape as the listing, one key wider.
+    next_cursor: str | None = None
+
+
+class SitemapCount(BaseModel):
+    kind: Kind
+    locale: Locale
+    count: int
+
+
+class SitemapSummary(BaseModel):
+    """How many published rows each kind has in each locale: what the sitemap index and the
+    section hubs need, without paging through every row to learn it."""
+
+    counts: list[SitemapCount]

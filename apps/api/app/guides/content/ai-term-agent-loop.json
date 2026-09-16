@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +40,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "在語言模型代理中，模型可能產生「搜尋檔名」這個工具請求，並附上查詢參數。應用程式接收請求後，才由檔案工具執行搜尋。模型說想做什麼，和工具真的完成了什麼，是不同事件；兩者之間還可能有參數驗證、權限檢查或執行失敗。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在語言模型代理中，模型可能產生「搜尋檔名」這個工具請求，並附上查詢"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。應用程式接收請求後，才由檔案工具執行搜尋。模型說想做什麼，和工具真的完成了什麼，是不同事件；兩者之間還可能有參數驗證、權限檢查或執行失敗。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -177,24 +193,48 @@
           "text": "同樣輸入、同樣工具、同樣結果，通常需要改策略或停止，而不是無限重試。"
         },
         {
-          "type": "link",
-          "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-agents-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-loop-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+              "kind": "life",
+              "slug": "ai-term-loop-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

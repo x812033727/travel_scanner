@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-create"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "海螺 AI（Hailuo AI）是 MiniMax 的影片生成產品，網頁版和手機 App 都能用：登入之後打一段文字描述，或是上傳一張圖再寫要它怎麼動，等排隊生成完就能下載一支 MP4。免費帳號做得出來，但下載的影片帶浮水印、要排隊，而且服務條款把「這支片能不能拿去用」的責任放在使用者身上。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "海螺 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "（Hailuo AI）是 MiniMax 的影片生成產品，網頁版和手機 App 都能用：登入之後打一段文字描述，或是上傳一張圖再寫要它怎麼動，等排隊生成完就能下載一支 MP4。免費帳號做得出來，但下載的影片帶浮水印、要排隊，而且服務條款把「這支片能不能拿去用」的責任放在使用者身上。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -60,14 +76,26 @@
           "text": "條款裡有一段地域聲明：這是新加坡公司營運的服務，公司不保證在所有司法管轄區都適合或可以使用，從新加坡以外的地方連線是使用者自己的決定。官網沒有單獨列出台灣的限制，不過「台灣門號能不能順利收到簡訊驗證碼」本站撰稿時無法從台灣的網路環境實測，實際選項以官網登入畫面為準；想避開這一關，用第三方帳號登入最單純。另外隱私政策寫的使用年齡下限是 16 歲。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
-          "url": "https://mokaair.com/zh-TW/life/minimax-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 是什麼：海螺 AI、影片與語音生成，台灣使用者怎麼用",
+              "kind": "life",
+              "slug": "minimax-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "使用中國系 AI App 前的資安檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/chinese-ai-apps-security-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "使用中國系 AI App 前的資安檢查清單",
+              "kind": "life",
+              "slug": "chinese-ai-apps-security-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -230,14 +258,26 @@
           "code": "太籠統：一個人在跳舞\n互相矛盾：鏡頭快速環繞，同時人物完全靜止不動\n全部都要：主體奔跑加鏡頭推軌加爆炸加下雨加慢動作加換場"
         },
         {
-          "type": "link",
-          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -245,8 +285,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "現在網頁版與 App 上主打的模型叫 MiniMax H3，官方把它描述成一個原生多模態的生成模型，同一個模型處理文字、圖片、影片與音訊；2026 年 8 月 3 日另外以 MiniMax H3 Community License Agreement 開源了權重。官方公告寫的規格是 24 FPS、最長 15 秒、最高 2K（預設短邊 768 像素），而且直接生成 32 kHz 的立體聲，不必另外配音。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "現在網頁版與 App 上主打的模型叫 MiniMax H3，官方把它描述成一個原生"
+            },
+            {
+              "type": "article",
+              "text": "多模態",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "的生成模型，同一個模型處理文字、圖片、影片與音訊；2026 年 8 月 3 日另外以 MiniMax H3 Community License Agreement 開源了權重。官方公告寫的規格是 24 FPS、最長 15 秒、最高 2K（預設短邊 768 像素），而且直接生成 32 kHz 的立體聲，不必另外配音。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -263,14 +318,26 @@
           "text": "如果是要接程式而不是用網頁，API 走按量計費，影片以秒計價：MiniMax-H3 的 768P 每秒 0.08 美元、2K 每秒 0.13 美元，MiniMax-H3-Max 的 480P 每秒 0.05 美元、768P 每秒 0.08 美元，文字模型則另有一套 token 價目。"
         },
         {
-          "type": "link",
-          "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
-          "url": "https://mokaair.com/zh-TW/life/minimax-m-series-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax M 系列模型：開放權重、授權條款與 API 價格",
+              "kind": "life",
+              "slug": "minimax-m-series-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Veo 與 Google Flow：影片、分鏡與匯出",
-          "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Veo 與 Google Flow：影片、分鏡與匯出",
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -282,8 +349,23 @@
           "text": "除了浮水印與排隊，還有兩層限制會直接決定你做不做得出想要的東西。第一層是自動審核：服務條款寫公司會自動封鎖部分內容，並保留對任何投入內容或生成內容不予處理、移除、甚至停權的權利。內容沒通過審核時點數會退回，但影片拿不到，寫提示詞時貼近規範比較省時間。"
         },
         {
-          "type": "paragraph",
-          "text": "第二層是素材本身。內容規範禁止侵害他人的專利、商標、著作權，也禁止侵害他人的形象權與隱私權、冒充他人身分或做出足以欺騙他人的內容，另外明文禁止用於政治競選或影響選舉結果。這代表別人的臉、別人的聲音、有版權的角色與畫面都不要當參考素材上傳。條款同時要求不得移除、遮蔽或修改公司加在內容上的浮水印、metadata 或任何標示這是 AI 生成的標記。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二層是素材本身。內容規範禁止侵害他人的專利、商標、著作權，也禁止侵害他人的形象權與隱私權、冒充他人身分或做出足以欺騙他人的內容，另外明文禁止用於政治競選或影響選舉結果。這代表別人的臉、別人的聲音、有版權的角色與畫面都不要當參考素材上傳。條款同時要求不得移除、遮蔽或修改公司加在內容上的浮水印、metadata 或任何標示這是 AI 生成的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -292,14 +374,26 @@
           "text": "一、照片裡的人有沒有同意：條款要求你保證擁有上傳素材的全部權利，包含形象權、隱私權與個人資料，出事時責任在上傳的人身上。二、素材是不是別人的作品：有版權的劇照、角色造型、商標都在禁止範圍，模型不會替你判斷。三、做出來要放哪裡：法律有要求時你必須揭露內容是 AI 生成或加工的，而且不能把公司加上的浮水印或標示拿掉，免費帳號的浮水印本身就是這種標示的一種。"
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -323,14 +417,26 @@
           "text": "同一個帳號還能用到 MiniMax 的其他生成工具，做法各自不同。"
         },
         {
-          "type": "link",
-          "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
-          "url": "https://mokaair.com/zh-TW/life/minimax-agent-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax Agent 怎麼用：一句話做出網頁、報告與簡報",
+              "kind": "life",
+              "slug": "minimax-agent-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
-          "url": "https://mokaair.com/zh-TW/life/minimax-music-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 音樂生成怎麼用：從一段描述與歌詞做出一首歌",
+              "kind": "life",
+              "slug": "minimax-music-generation"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 144,
   "locales": {
@@ -137,8 +138,23 @@
           "text": "步驟 2：重現工具被停用的情況"
         },
         {
-          "type": "paragraph",
-          "text": "先用前篇的唯讀問題取得一次正常結果，保存原設定後，在既有練習區段加上 enabled = false。桌面按 MCP 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用前篇的唯讀問題取得一次正常結果，保存原設定後，在既有練習區段加上 enabled = false。桌面按 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -241,7 +257,17 @@
           "inlines": [
             {
               "type": "text",
-              "text": "完成標準是能解釋哪一層失敗、提供一次可重現的停用與恢復，以及新的唯讀工具證據；只看到程序、設定檔或正確答案都不夠。尚未取得連線時保留「未完成工具驗證」，不用把未測環境填成正常。本篇產品流程依官方文件查證，本機設定與直接 MCP 協定驗證另存紀錄；macOS、Linux、IDE、OAuth 與實體手機未因這些測試而自動取得實測標記。下一步進入 "
+              "text": "完成標準是能解釋哪一層失敗、提供一次可重現的停用與恢復，以及新的唯讀工具證據；只看到程序、設定檔或正確答案都不夠。尚未取得連線時保留「未完成工具驗證」，不用把未測環境填成正常。本篇產品流程依官方文件查證，本機設定與直接 MCP 協定驗證另存紀錄；macOS、Linux、IDE、OAuth 與實體手機未因這些測試而自動取得實測"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。下一步進入 "
             },
             {
               "type": "article",

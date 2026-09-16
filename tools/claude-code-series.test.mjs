@@ -41,7 +41,12 @@ test('all 97 native packs exist with source dates, code labels and valid referen
     for (const block of doc.blocks) {
       if (block.type === 'code') assert.ok(block.label && block.code.endsWith('\n'));
       if (block.type === 'rich_paragraph') for (const node of block.inlines) {
-        if (node.type === 'article') assert.ok(expected.has(node.slug), `${slug}: ${node.slug}`);
+        // A lesson links its siblings, and since the glossary term links and the relink of
+        // raw site URLs (docs/travel-guides.md, "Links") any other shipped article too.
+        if (node.type === 'article') {
+          const shipped = existsSync(path.join(root, `apps/api/app/guides/content/${node.slug}.json`));
+          assert.ok(expected.has(node.slug) || shipped, `${slug}: ${node.slug}`);
+        }
       }
     }
   }

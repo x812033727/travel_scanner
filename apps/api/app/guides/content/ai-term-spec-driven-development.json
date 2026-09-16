@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "規格驅動開發是把需求與預期行為放在開發工作的中心，再讓設計、實作與驗證對應這份規格。規格不是越厚越好，而是要讓參與者知道做什麼、為什麼做、哪些情況要怎麼處理，以及何時算完成。在 AI 輔助開發裡，它尤其有助於把容易含糊的自然語言請求變成可核對的工作依據。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "規格驅動開發是把需求與預期行為放在開發工作的中心，再讓設計、實作與驗證對應這份規格。規格不是越厚越好，而是要讓參與者知道做什麼、為什麼做、哪些情況要怎麼處理，以及何時算完成。在 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 輔助開發裡，它尤其有助於把容易含糊的自然語言請求變成可核對的工作依據。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -90,8 +106,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "實作任務可依資料狀態、時間判斷、通知介面與測試拆分，但每項都應指向它服務的需求。當代理說「排程完成」時，審查者應能追到相關程式與案例。任務勾選只代表工作流程中的標記；是否滿足需求，仍由可觀察結果與驗收條件決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "實作任務可依資料狀態、時間判斷、通知介面與測試拆分，但每項都應指向它服務的需求。當代理說「排程完成」時，審查者應能追到相關程式與案例。任務勾選只代表工作流程中的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "；是否滿足需求，仍由可觀察結果與驗收條件決定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -164,24 +195,48 @@
           "text": "尚未確認的提醒時區或補發規則，應明確列為未決事項。讓代理猜出一個答案再寫程式，會把需求問題隱藏成實作細節。"
         },
         {
-          "type": "link",
-          "text": "提示詞工程（Prompt Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞工程（Prompt Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理式工程（Agentic Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理式工程（Agentic Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-agentic-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,27 +56,30 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂指令庫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-command-library"
+              "kind": "life",
+              "slug": "gemini-cli-custom-command-library"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks 品質檢查",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks-quality-gates"
+              "kind": "life",
+              "slug": "gemini-cli-hooks-quality-gates"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "批次狀態管理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+              "kind": "life",
+              "slug": "gemini-cli-resumable-batch-pipeline"
             },
             {
               "type": "text",
@@ -123,9 +127,10 @@
               "text": "將 docs-plan.toml 放入練習專案 .gemini/commands/，先閱讀其中的提示詞，再依 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "自訂指令庫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-command-library"
+              "kind": "life",
+              "slug": "gemini-cli-custom-command-library"
             },
             {
               "type": "text",
@@ -169,8 +174,23 @@
           "code": "python prepare_review.py documents reference-proposals.json review-reference\n"
         },
         {
-          "type": "paragraph",
-          "text": "程式先確認提案只包含允許的十個檔名，讀取原稿後在記憶體組合候選內容。它檢查主標題、「來源」章節、本機目標檔案與明確定位點，所有條件通過才產生候選副本及差異。原始 documents 不會被寫入，報告也不會自動得到可發布標記。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "程式先確認提案只包含允許的十個檔名，讀取原稿後在記憶體組合候選內容。它檢查主標題、「來源」章節、本機目標檔案與明確定位點，所有條件通過才產生候選副本及差異。原始 documents 不會被寫入，報告也不會自動得到可發布"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -270,9 +290,10 @@
               "text": "需要自動保存報告時可接 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GitHub Actions 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-github-actions-artifacts"
+              "kind": "life",
+              "slug": "gemini-cli-github-actions-artifacts"
             },
             {
               "type": "text",
@@ -322,9 +343,10 @@
               "text": "先新增可重做的成功與失敗案例，再擴充檢查器。可以接回 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks 品質檢查",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks-quality-gates"
+              "kind": "life",
+              "slug": "gemini-cli-hooks-quality-gates"
             },
             {
               "type": "text",
@@ -340,27 +362,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks 品質檢查：事件輸入、退出碼與失敗時停止",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks-quality-gates"
+              "kind": "life",
+              "slug": "gemini-cli-hooks-quality-gates"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 批次處理：JSONL、續跑與避免重複輸出",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-resumable-batch-pipeline"
+              "kind": "life",
+              "slug": "gemini-cli-resumable-batch-pipeline"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini CLI 接 GitHub Actions：受控觸發與產生審查報告",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-github-actions-artifacts"
+              "kind": "life",
+              "slug": "gemini-cli-github-actions-artifacts"
             },
             {
               "type": "text",
@@ -379,9 +404,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-docs-maintenance-project/automation-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

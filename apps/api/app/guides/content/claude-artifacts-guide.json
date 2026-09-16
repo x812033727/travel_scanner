@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -43,17 +44,48 @@
           "text": "說明中心對 Artifact 的定義有四個條件：內容夠大且自成一體，通常超過 15 行；是你之後會想修改、反覆調整或拿到對話外面用的東西；不需要對話裡的其他內容也看得懂；以及你之後會想回頭找的內容。符合的時候，Claude 會自動把它放到主對話右邊的獨立視窗；不符合就只是一般回覆，這時直接說「請做成 Artifact」就好。"
         },
         {
-          "type": "paragraph",
-          "text": "官網列出的常見類型有六種：Markdown 或純文字的文件、程式碼片段、單頁 HTML 網站、SVG 圖、圖表與流程圖，以及可互動的 React 元件；Claude Academy 的課程另外提醒，Word、Excel、PowerPoint 與 PDF 不是 Artifact，那些是「建立檔案」功能做出來讓你下載的檔案。側欄的 Artifacts 專區與 AI 驅動的 Artifact 在免費版、Pro、Max、Team 與 Enterprise 都能用，定價頁的比較表也把 Artifacts 列在免費版。Claude Cowork 與 Claude Code 另有各自的用法，本文只講一般對話裡的。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官網列出的常見類型有六種：Markdown 或純文字的文件、程式碼片段、單頁 HTML 網站、SVG 圖、圖表與流程圖，以及可互動的 "
+            },
+            {
+              "type": "article",
+              "text": "React",
+              "kind": "life",
+              "slug": "ai-term-react-reasoning-acting"
+            },
+            {
+              "type": "text",
+              "text": " 元件；Claude Academy 的課程另外提醒，Word、Excel、PowerPoint 與 PDF 不是 Artifact，那些是「建立檔案」功能做出來讓你下載的檔案。側欄的 Artifacts 專區與 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 驅動的 Artifact 在免費版、Pro、Max、Team 與 Enterprise 都能用，定價頁的比較表也把 Artifacts 列在免費版。Claude Cowork 與 Claude Code 另有各自的用法，本文只講一般對話裡的。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "用之前先確認一個開關。說明中心寫明，沒有開啟「Code execution and file creation」（程式執行與檔案建立）就不再支援 Artifacts：點左下角的名字或頭像縮寫 → Settings → Capabilities，把它打開；Team 與 Enterprise 由 Owner 在 Organization settings → Capabilities 替整個組織開。Artifact 視窗右下角有三個動作：看程式碼、複製、下載；一個對話裡有好幾個 Artifact 時，用右上角的滑桿圖示切換，並指定要 Claude 更新哪一個。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "image",
@@ -78,9 +110,15 @@
           "text": "三個示範各對應一種類型：互動元件、SVG 圖、單頁網頁。提示詞的共同原則：先講用途與使用者，再列欄位與畫面，最後講樣式與語言，一次只要求一個東西。Claude Academy 的建議是先把問題講出來、讓 Claude 反問你幾個問題，再說「可以開始做了」，做出來的版本會比一句話丟過去準得多。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -139,9 +177,15 @@
           "url": "https://mokaair.com/zh-TW/guides"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-canvas-writing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Canvas 改版後怎麼改稿：用寫作區塊與程式區塊逐段修文章、改小腳本",
+              "kind": "life",
+              "slug": "chatgpt-canvas-writing"
+            }
+          ]
         },
         {
           "type": "table",
@@ -228,8 +272,23 @@
           "text": "額度算誰的：說明中心寫得很清楚，你分享出去的 AI 驅動 Artifact，別人是用自己的 Claude 帳號登入、跟自己的那一份互動，用量算在每個使用者自己的方案上限裡，不算你的；不管幫到 10 個人還是 10,000 個人，分享本身不花你的錢。反過來說，你自己試玩時用的是你的額度。官方公告列出的限制是它只能用文字問答的 API。"
         },
         {
-          "type": "paragraph",
-          "text": "付費方案還有兩個延伸。MCP 整合（Pro、Max、Team、Enterprise，網頁版與桌面版）讓 Artifact 透過 MCP 連接 Asana、Google Calendar、Slack 這類服務或自己設定的 MCP 伺服器，第一次使用會跳出授權，而且每個使用者都要登入自己的帳號，不會借用作者的。持久儲存（同樣是 Pro 以上，網頁版與桌面版）讓 Artifact 把資料存起來，做成日記或追蹤表，分成個人儲存與共用儲存（大家看同一份，第一次進入會有確認視窗）；上限是每個 Artifact 20 MB、只能存文字，而且只有發布之後才會真的存進去。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "付費方案還有兩個延伸。"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 整合（Pro、Max、Team、Enterprise，網頁版與桌面版）讓 Artifact 透過 MCP 連接 Asana、Google Calendar、Slack 這類服務或自己設定的 MCP 伺服器，第一次使用會跳出授權，而且每個使用者都要登入自己的帳號，不會借用作者的。持久儲存（同樣是 Pro 以上，網頁版與桌面版）讓 Artifact 把資料存起來，做成日記或追蹤表，分成個人儲存與共用儲存（大家看同一份，第一次進入會有確認視窗）；上限是每個 Artifact 20 MB、只能存文字，而且只有發布之後才會真的存進去。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -257,30 +316,51 @@
           "text": "另外，Artifact 也不是讓 Claude 記住你的資料的地方。要讓每次對話都帶著家庭預算的規則、旅行偏好、常用格式這類背景，放進 Projects 的知識庫與專案指令，之後在那個專案裡做 Artifact，它就會照你的規矩來。"
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-choose-by-task"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
         },
         {
-          "type": "heading",
-          "text": "常見問題：畫面空白、太長被截、改一處全變、手機上怎麼看",
-          "level": 2
-        },
-        {
-          "type": "list",
+          "type": "faq",
           "items": [
-            "畫面空白或一直轉圈：先確認 Settings → Capabilities 的「Code execution and file creation」是開的；再切到程式碼檢視看有沒有內容，有錯誤訊息就按「Try fixing with Claude」；還是不行就說「請改用最單純的單頁 HTML 重做」。",
-            "太長被截、做到一半停住：一次要求太多功能，程式碼超過一則回覆能寫的長度就會停在半路。拆成幾步：先要骨架，確認後再逐一加功能；已經停住的話，說明中心的建議是把前一個提示詞和它做到一半的回覆一起貼回去，請它接著完成。開了程式執行之後，對話接近上下文視窗上限時 Claude 會自動摘要前面的內容。",
-            "改一處全變：Claude 重寫整個 Artifact 時可能順手改掉你沒要求的地方。追問時明講範圍，例如「只改標題的顏色，其他都不要動」；文件類型用反白加「Edit with Claude」就地改；被改壞就用版本選單切回上一版。",
-            "手機上怎麼看：官方公告 2025 年 7 月起 iOS 與 Android App 都能用 Artifacts，但側欄的 Artifacts 專區手機 App 目前沒有。最省事的做法是在電腦上發布成連結，手機用瀏覽器開；做記帳工具時記得在提示詞裡寫「手機也能操作」，版面才會為小螢幕排。",
-            "別人能不能把我的 Artifact 存到自己的專區：登入 Claude 的人可以儲存與整理他們發現的 Artifact，也能複製程式碼做自己的版本；沒有帳號的人只能看和用，改不了你發布的那一份。"
-          ],
-          "ordered": false
+            {
+              "question": "畫面空白或一直轉圈",
+              "answer": "先確認 Settings → Capabilities 的「Code execution and file creation」是開的；再切到程式碼檢視看有沒有內容，有錯誤訊息就按「Try fixing with Claude」；還是不行就說「請改用最單純的單頁 HTML 重做」。"
+            },
+            {
+              "question": "太長被截、做到一半停住",
+              "answer": "一次要求太多功能，程式碼超過一則回覆能寫的長度就會停在半路。拆成幾步：先要骨架，確認後再逐一加功能；已經停住的話，說明中心的建議是把前一個提示詞和它做到一半的回覆一起貼回去，請它接著完成。開了程式執行之後，對話接近上下文視窗上限時 Claude 會自動摘要前面的內容。"
+            },
+            {
+              "question": "改一處全變",
+              "answer": "Claude 重寫整個 Artifact 時可能順手改掉你沒要求的地方。追問時明講範圍，例如「只改標題的顏色，其他都不要動」；文件類型用反白加「Edit with Claude」就地改；被改壞就用版本選單切回上一版。"
+            },
+            {
+              "question": "手機上怎麼看",
+              "answer": "官方公告 2025 年 7 月起 iOS 與 Android App 都能用 Artifacts，但側欄的 Artifacts 專區手機 App 目前沒有。最省事的做法是在電腦上發布成連結，手機用瀏覽器開；做記帳工具時記得在提示詞裡寫「手機也能操作」，版面才會為小螢幕排。"
+            },
+            {
+              "question": "別人能不能把我的 Artifact 存到自己的專區",
+              "answer": "登入 Claude 的人可以儲存與整理他們發現的 Artifact，也能複製程式碼做自己的版本；沒有帳號的人只能看和用，改不了你發布的那一份。"
+            }
+          ]
         }
       ],
       "sources": [

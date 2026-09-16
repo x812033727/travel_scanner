@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "混合搜尋，英文 Hybrid Search，是把不同搜尋方法的結果結合成一份排序清單。在 AI 應用中，常見組合是全文搜尋加上向量搜尋：前者保留精確名稱與詞彙訊號，後者處理近義或自然語言改寫。它不是讓兩套搜尋各顯示一欄就完成，核心還包括結果如何合併、重複資料如何處理，以及最後的順序如何決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "混合搜尋，英文 Hybrid Search，是把不同搜尋方法的結果結合成一份排序清單。在 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 應用中，常見組合是全文搜尋加上向量搜尋：前者保留精確名稱與詞彙訊號，後者處理近義或自然語言改寫。它不是讓兩套搜尋各顯示一欄就完成，核心還包括結果如何合併、重複資料如何處理，以及最後的順序如何決定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -56,8 +72,23 @@
           "text": "全文搜尋的分數和向量相似度通常不在同一尺度，不能隨意把兩個數字相加就當成公平比較。一種做法是校準或正規化後加權，另一種是利用排名資訊。官方文件常介紹的 Reciprocal Rank Fusion，簡稱 RRF，是按資料在各結果清單的位置累積排名訊號，避免要求原始分數必須直接可比。"
         },
         {
-          "type": "paragraph",
-          "text": "RRF 的直覺是，某份文件若在多條路徑都排得靠前，融合後就有機會向前；只在一條路徑找到的文件也不會自動消失。不過融合仍有候選範圍與參數選擇，結果不會憑空超出各路徑原本找到的資料。不同產品可能提供不同權重或融合選項，應看正在使用的實作文件，不要把一個演算法名稱理解成免調整的保證。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "RRF 的直覺是，某份文件若在多條路徑都排得靠前，融合後就有機會向前；只在一條路徑找到的文件也不會自動消失。不過融合仍有候選範圍與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "選擇，結果不會憑空超出各路徑原本找到的資料。不同產品可能提供不同權重或融合選項，應看正在使用的實作文件，不要把一個演算法名稱理解成免調整的保證。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -152,24 +183,48 @@
           "text": "先選擇有明確定義的融合方式，再用你的查詢資料驗證。RRF 用排名融合不同檢索訊號，也仍需要檢查實際結果。"
         },
         {
-          "type": "link",
-          "text": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-semantic-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-vector-database"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

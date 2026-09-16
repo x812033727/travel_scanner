@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -94,8 +96,23 @@
           "text": "Google 將以操控排名為目的的買賣連結、過量交換與自動製造連結列為垃圾連結手法。這不表示所有贊助宣傳都不能做，而是合作目的、呈現方式與連結標示必須清楚，不能把廣告包裝成獨立推薦來購買排名功勞。"
         },
         {
-          "type": "paragraph",
-          "text": "依 Google 文件，廣告或付費刊登連結宜用 rel=\"sponsored\"，既有 nofollow 也仍被接受；使用者產生內容可用 ugc。一般引用不需要為了看起來更有 SEO 價值而加上名為 dofollow 的特殊設定，重點是標記真實關係。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依 Google 文件，廣告或付費刊登連結宜用 rel=\"sponsored\"，既有 nofollow 也仍被接受；使用者產生內容可用 ugc。一般引用不需要為了看起來更有 SEO 價值而加上名為 dofollow 的特殊設定，重點是"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "真實關係。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +218,26 @@
           "text": "規劃站外曝光時，先檢查資源本身、引用情境及合作透明度。陌生連結不自動等於處罰，禁止連結也不會替代內容品質或正當宣傳；所有處置都應有具體證據與適用條件。"
         },
         {
-          "type": "link",
-          "text": "製作可查核的原創內容",
-          "url": "https://mokaair.com/zh-TW/life/seo-content-quality"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "製作可查核的原創內容",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "評估 SEO 公司提案與證據",
-          "url": "https://mokaair.com/zh-TW/life/seo-agency-selection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "評估 SEO 公司提案與證據",
+              "kind": "life",
+              "slug": "seo-agency-selection"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Ollama 把模型跑起來以後，對話只活在終端機的畫面裡：關掉視窗就沒了，也沒辦法把檔案丟進去問、沒辦法換一個模型再問一次同樣的問題。Open WebUI 是一套自己架的網頁介面，官方 README 把它寫成「自架的 AI 平台」，支援 Ollama 與任何 OpenAI 相容 API，一行 Docker 指令就能在瀏覽器裡得到聊天記錄、多模型切換、檔案上傳與多人帳號。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Ollama 把模型跑起來以後，對話只活在終端機的畫面裡：關掉視窗就沒了，也沒辦法把檔案丟進去問、沒辦法換一個模型再問一次同樣的問題。Open WebUI 是一套自己架的網頁介面，官方 README 把它寫成「自架的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 平台」，支援 Ollama 與任何 OpenAI 相容 API，一行 Docker 指令就能在瀏覽器裡得到聊天記錄、多模型切換、檔案上傳與多人帳號。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -96,13 +112,44 @@
           "code": "pip install open-webui\nopen-webui serve"
         },
         {
-          "type": "paragraph",
-          "text": "pip 這條路啟動後介面在埠 8080，跟 Docker 的 3000 不一樣。文件說用 open-webui serve 啟動時 PORT 環境變數不生效，要換埠得加 --port 參數，例如 open-webui serve --port 9999。資料位置用 DATA_DIR 指定，環境變數說明頁寫它的預設值是 ./data，上傳檔案、快取與向量資料庫都放在底下。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "pip 這條路啟動後介面在埠 8080，跟 Docker 的 3000 不一樣。文件說用 open-webui serve 啟動時 PORT 環境變數不生效，要換埠得加 --port "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，例如 open-webui serve --port 9999。資料位置用 DATA_DIR 指定，環境變數說明頁寫它的預設值是 ./data，上傳檔案、快取與"
+            },
+            {
+              "type": "article",
+              "text": "向量資料庫",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "都放在底下。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -128,9 +175,15 @@
           "text": "API 服務商的模型走另一條路：同一頁的 Manage OpenAI API Connections 按加號，填服務商的網址與金鑰後存檔，模型就會自動列出來。文件說 Open WebUI 是協定導向的，只實作 OpenAI Chat Completions 這類通用協定，不替個別服務商寫專用模組；有些服務商沒有 /models 端點，加連線時驗證會失敗，但對話仍然可用，只要手動把模型代號加進 Model IDs 允許清單。反過來，Open WebUI 自己也對外開一個 OpenAI 相容端點 /api/chat/completions，金鑰在 Settings → Account 產生，可以讓其他程式接進來。"
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
           "type": "image",
@@ -170,9 +223,15 @@
           "text": "Open WebUI 定義三種系統角色：admin 是超級使用者，預設繞過大部分權限檢查；user 是一般成員，能做什麼完全看全域預設權限與群組給了什麼；pending 是新註冊的預設狀態，在管理員核准前什麼都看不到、什麼都不能做。新帳號拿到哪一種由 DEFAULT_USER_ROLE 決定，文件寫預設值就是 pending，對開放給別人用的站台來說這是建議值。角色一改，那個帳號的連線會馬上被切斷。"
         },
         {
-          "type": "link",
-          "text": "在 VPS 上自架 AI 服務：Ollama＋Open WebUI",
-          "url": "https://mokaair.com/zh-TW/life/self-host-ai-on-vps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在 VPS 上自架 AI 服務：Ollama＋Open WebUI",
+              "kind": "life",
+              "slug": "self-host-ai-on-vps"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -188,14 +247,26 @@
           "text": "附件有兩種檢索模式，點一下已附加的項目就能切換。預設是 Focused Retrieval，用檢索增強生成只撈出跟問題相關的片段，適合大量文件；Full Context 則是把整份文件一字不漏塞進每一次訊息，適合短的參考文件或風格指南。模型預設裡還有一個 Citations 開關，文件寫它預設開啟，回答會把知識庫、網頁搜尋與內建工具找到的來源列出來。"
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機 RAG：跟自己的文件聊天",
-          "url": "https://mokaair.com/zh-TW/life/local-rag-chat-with-your-documents"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機 RAG：跟自己的文件聊天",
+              "kind": "life",
+              "slug": "local-rag-chat-with-your-documents"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -211,9 +282,15 @@
           "text": "Workspace → Models 是更上一層：挑一個基礎模型，綁上系統提示詞、知識庫、工具與參數，存成一個預設，等於一個專用助理。文件提醒系統提示詞是指示不是保證，模型聽不聽話跟基礎模型、服務商的對話樣板與整段上下文都有關；同一份提示詞在別的模型上照樣有效，就不是提示詞格式的問題。"
         },
         {
-          "type": "link",
-          "text": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-system-prompt"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            }
+          ]
         },
         {
           "type": "table",
@@ -318,14 +395,26 @@
           "text": "官方授權說明頁補上時間線與退路：這條品牌條款從 v0.6.6 開始生效，日期是 2025 年 4 月 19 日；v0.6.5 以前併入的程式碼仍然是 BSD-3-Clause，想要完全沒有限制的人可以從 v0.6.5 分支出去自己走。說明頁也直接寫了門檻的另一面：50 人以下的自架內部部署，要完全換成自己的品牌是可以的。一般人在家裡或小團隊自架，照原樣用就不會踩到這條。"
         },
         {
-          "type": "link",
-          "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-why-and-when"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "為什麼要在自己電腦跑 AI：隱私、離線與成本",
+              "kind": "life",
+              "slug": "local-llm-why-and-when"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         }
       ],
       "sources": [

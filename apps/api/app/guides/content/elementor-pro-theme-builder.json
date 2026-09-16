@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -201,14 +203,26 @@
           "text": "共用範本的好處是一次維護多處，錯誤也會同樣擴散。先用窄範圍驗證動態內容、裝置與顯示條件，再擴展到全站，並保存可回復的原始設定。"
         },
         {
-          "type": "link",
-          "text": "先掌握 Elementor 容器與手機排版",
-          "url": "https://mokaair.com/zh-TW/life/elementor-first-page"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先掌握 Elementor 容器與手機排版",
+              "kind": "life",
+              "slug": "elementor-first-page"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "比較 Astra 的主題設定與 Pro 功能",
-          "url": "https://mokaair.com/zh-TW/life/astra-theme-customization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比較 Astra 的主題設定與 Pro 功能",
+              "kind": "life",
+              "slug": "astra-theme-customization"
+            }
+          ]
         }
       ],
       "sources": [

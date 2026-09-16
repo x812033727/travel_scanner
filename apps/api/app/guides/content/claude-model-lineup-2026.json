@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -46,13 +47,34 @@
           "text": "第三個是 Claude Sonnet 5，2026 年 6 月 30 日上市，定位是「速度與智慧的最佳組合」，上市公告說它的表現接近 Opus 4.8 但價格更低；思考同樣預設開啟，但可以關掉，而且公告寫明它是免費版與 Pro 方案的預設模型。最後是 Claude Haiku 4.5，2025 年 10 月 15 日上市，定位是「最快、接近前緣智慧的模型」；它是四個裡唯一沒有自適應思考的，用的是舊式的延伸思考，要手動開、還要指定思考的 token 額度，官網也標明它不支援 Effort 等級。上下文視窗方面，Fable 5.1、Opus 5、Sonnet 5 都是 1M token，Haiku 4.5 是 200K token；官網換算 1M token 大約是 55.5 萬個英文單字，200K 大約是 15 萬個。"
         },
         {
-          "type": "paragraph",
-          "text": "過去的世代並沒有消失。官網把 Fable 5（2026 年 6 月 9 日上市，Fable 5.1 是它同價、更強的接班版）、Opus 4.8、4.7、4.6、4.5 與 Sonnet 4.6、4.5 列為 legacy，API 還叫得到，claude.ai 的選單點「More models」也看得到其中幾個，但官網建議新工作直接用現役四個；更早的 Opus 4、Sonnet 4、Opus 4.1 與整個 3 系列在 2026 年已陸續退役，節奏放在後面一節講。模型選單在介面的哪裡、免費版能做什麼，入門篇有說明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "過去的世代並沒有消失。官網把 Fable 5（2026 年 6 月 9 日上市，Fable 5.1 是它同價、更強的接班版）、Opus 4.8、4.7、4.6、4.5 與 Sonnet 4.6、4.5 列為 legacy，API 還叫得到，claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的選單點「More models」也看得到其中幾個，但官網建議新工作直接用現役四個；更早的 Opus 4、Sonnet 4、Opus 4.1 與整個 3 系列在 2026 年已陸續退役，節奏放在後面一節講。模型選單在介面的哪裡、免費版能做什麼，入門篇有說明。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -64,13 +86,34 @@
           "text": "四個模型的差別可以壓成一句話：越上面越聰明，也越慢、越貴。官網的比較表用四個相對速度描述它們：Fable 5.1「較慢」、Opus 5「中等」、Sonnet 5「快」、Haiku 4.5「最快」，並註明實際等待時間還取決於提示詞長度、輸出長度與思考的力氣。能力上，官網對 Fable 5.1 的建議是留給「用 Opus 5 開到更高 Effort 仍不夠」的任務，Opus 5 是多數工作的起點，Sonnet 5 是日常工作的主力，Haiku 4.5 則是接近前緣的輕量模型。"
         },
         {
-          "type": "paragraph",
-          "text": "費用最直接的比法是 API 每百萬 token 的標價（美元，2026 年 9 月 13 日官網）：Fable 5.1 輸入 10、輸出 50；Opus 5 輸入 5、輸出 25；Sonnet 5 輸入 2、輸出 10；Haiku 4.5 輸入 1、輸出 5。每往下一階大約便宜一半到六成，最上與最下差 10 倍；輸出一律是輸入的 5 倍，而思考用掉的 token 也按輸出計價，所以開思考、把 Effort 調高都會反映在帳單上。官網另有兩個常見折扣：批次 API 打五折，提示快取的讀取只收輸入價的 10%，Fable 5.1 更只收 2.5%。Sonnet 5 的 2 美元與 10 美元原本標為上市優惠價，官網已註明改為正式價，原定 2026 年 9 月 1 日調成 3 與 15 美元的計畫取消。另外，Opus 4.7 之後的模型換了新的分詞器，同一段文字會多出約 30% 的 token，跟舊模型比價時要算進去。這四階只是 Anthropic 自家的排法，OpenAI 與 Google 的分級怎麼對照，另有一篇整理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "費用最直接的比法是 API 每百萬 token 的標價（美元，2026 年 9 月 13 日官網）：Fable 5.1 輸入 10、輸出 50；Opus 5 輸入 5、輸出 25；Sonnet 5 輸入 2、輸出 10；Haiku 4.5 輸入 1、輸出 5。每往下一階大約便宜一半到六成，最上與最下差 10 倍；輸出一律是輸入的 5 倍，而思考用掉的 token 也按輸出計價，所以開思考、把 Effort 調高都會反映在帳單上。官網另有兩個常見折扣：批次 API 打五折，提示快取的讀取只收輸入價的 10%，Fable 5.1 更只收 2.5%。Sonnet 5 的 2 美元與 10 美元原本標為上市優惠價，官網已註明改為正式價，原定 2026 年 9 月 1 日調成 3 與 15 美元的計畫取消。另外，Opus 4.7 之後的模型換了新的"
+            },
+            {
+              "type": "article",
+              "text": "分詞",
+              "kind": "life",
+              "slug": "ai-term-tokenization"
+            },
+            {
+              "type": "text",
+              "text": "器，同一段文字會多出約 30% 的 token，跟舊模型比價時要算進去。這四階只是 Anthropic 自家的排法，OpenAI 與 Google 的分級怎麼對照，另有一篇整理。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -86,9 +129,15 @@
           "text": "Fable 的規則值得單獨講。說明中心寫明 Fable 5 與 Fable 5.1 只在付費方案提供：Max 與 Team、Enterprise 的進階席次把它當成方案的一部分，每週額度最多一半可以花在 Fable 上；Pro 與標準席次則是用隨用隨付的「用量點數」跑 Fable，點數按標準 API 價格計費，不算在方案內含的用量裡。至於預設模型，Anthropic 的上市公告寫明 Sonnet 5 是免費版與 Pro 的預設，Opus 5 是 Max 的預設；換模型的入口在輸入框送出鍵旁邊的模型名稱，點開可以換模型、調 Effort（低、中、高、特高、最高，預設是高）與開關思考，改了之後從下一則回覆生效。Enterprise 帳號如果少了某個模型或等級，可能是管理員替你的角色關掉了。方案細節與額度怎麼算，另有一篇比較。"
         },
         {
-          "type": "link",
-          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
-          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+              "kind": "life",
+              "slug": "claude-plans-free-pro-max-2026"
+            }
+          ]
         },
         {
           "type": "table",
@@ -158,9 +207,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "image",
@@ -182,9 +237,15 @@
           "text": "免費版與 Pro 的預設是 Sonnet 5，Max 的預設是 Opus 5，大多數問題用預設就答得好。同一個問題答得不理想，先把思考打開或把 Effort 往上調再問一次，還不行再換上一階的模型；只有寫程式與需要長時間推理的任務，才值得一開始就用 Opus 5 或 Fable 5.1。換模型的位置在送出鍵旁邊的模型名稱，改了之後從下一則回覆生效，前面的內容不會變。"
         },
         {
-          "type": "link",
-          "text": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
-          "url": "https://mokaair.com/zh-TW/life/claude-extended-thinking-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 延伸思考模式：什麼題目該開、怎麼看它的推理",
+              "kind": "life",
+              "slug": "claude-extended-thinking-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -213,17 +274,38 @@
           "text": "第一，貴的不一定適合。Fable 5.1 每百萬 token 的輸出價是 Sonnet 5 的 5 倍，速度標為「較慢」，拿它改一封信只是等更久、花更多，不會改得更好；官網自己就建議多數工作從 Opus 5 開始，而不是從最貴的開始。"
         },
         {
-          "type": "paragraph",
-          "text": "第二，換模型不會改變已經寫好的內容。說明中心寫明，模型、Effort 與思考都可以在對話中途改，改了之後從 Claude 的下一則回覆生效，前面的回覆原封不動，新模型會把整段對話當成上下文讀進去，不用重開對話、也不用重貼。要注意反過來的情況：用 Opus 5 時，如果訊息被安全分類器標記，Claude 會自動改用 Opus 4.8 回答並標示出來，之後整段對話的選單都停在那個模型；不想自動切換，可以到 設定 → Capabilities 關掉「Switch models when a message is flagged」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二，換模型不會改變已經寫好的內容。說明中心寫明，模型、Effort 與思考都可以在對話中途改，改了之後從 Claude 的下一則回覆生效，前面的回覆原封不動，新模型會把整段對話當成上下文讀進去，不用重開對話、也不用重貼。要注意反過來的情況：用 Opus 5 時，如果訊息被安全分類器"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，Claude 會自動改用 Opus 4.8 回答並標示出來，之後整段對話的選單都停在那個模型；不想自動切換，可以到 設定 → Capabilities 關掉「Switch models when a message is flagged」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "第三，長對話會多耗額度。說明中心寫明用量受「對話的長度與複雜度、使用的功能、聊天的模型與選的 Effort」影響，而且觸發自動上下文管理的長對話會消耗更多用量；每送一則訊息，模型都要把前面整段對話重讀一次，對話越長每一則越貴。換了主題就開新對話，需要舊內容再請它搜尋之前的對話；上下文視窗的原理另有一篇解釋。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗是什麼：為什麼聊久了 AI 會忘記前面說的話，六個做法讓它記住",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         }
       ],
       "sources": [

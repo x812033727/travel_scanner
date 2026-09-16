@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -197,14 +199,26 @@
           "text": "若手機鍵盤、選單或文字放大後出現遮擋，先停用該裝置的固定效果或改用一般排列，再修正位置與高度。"
         },
         {
-          "type": "link",
-          "text": "分類、標籤與選單整理",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分類、標籤與選單整理",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "WordPress 後台的工作分界",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-admin-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 後台的工作分界",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
         }
       ],
       "sources": [

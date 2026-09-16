@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "daily"
+    "daily",
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "社群貼文可以拆成五段：定主題、寫文案、做圖、排程、回顧。AI 真正省得下時間的是中間三段，定主題與發佈前的最後確認還是人的事。一次能排幾天、AI 生成的內容要不要標示是平台與主管機關的規則，照當天官方頁面走。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "社群貼文可以拆成五段：定主題、寫文案、做圖、排程、回顧。"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 真正省得下時間的是中間三段，定主題與發佈前的最後確認還是人的事。一次能排幾天、AI 生成的內容要不要標示是平台與主管機關的規則，照當天官方頁面走。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -76,14 +92,26 @@
           "text": "模型不知道你這個月要推什麼、哪些字不能寫。題目要自己定：把讀者反覆問的問題列出來，對照這個月要講的事，交集就是最該做的貼文。"
         },
         {
-          "type": "link",
-          "text": "社群內容怎麼安排：主題、互動與維護界線",
-          "url": "https://mokaair.com/zh-TW/life/social-media-planning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "社群內容怎麼安排：主題、互動與維護界線",
+              "kind": "life",
+              "slug": "social-media-planning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "內容行銷怎麼排：讀者問題、素材與更新節奏",
-          "url": "https://mokaair.com/zh-TW/life/content-marketing-calendar"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容行銷怎麼排：讀者問題、素材與更新節奏",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -112,14 +140,26 @@
           "text": "模型寫出來的一律當草稿。日期、價格、地址與活動辦法要回原始資料核對——模型會把不存在的細節寫得很自然，這就是幻覺。用字也看一遍，中國用語換成台灣用語。"
         },
         {
-          "type": "link",
-          "text": "行銷文案怎麼寫：說清楚價值、條件與下一步",
-          "url": "https://mokaair.com/zh-TW/life/marketing-copywriting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "行銷文案怎麼寫：說清楚價值、條件與下一步",
+              "kind": "life",
+              "slug": "marketing-copywriting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "品牌語氣與氛圍行銷：讓內容一致又能回答問題",
-          "url": "https://mokaair.com/zh-TW/life/brand-tone-vibe-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "品牌語氣與氛圍行銷：讓內容一致又能回答問題",
+              "kind": "life",
+              "slug": "brand-tone-vibe-marketing"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -131,14 +171,26 @@
           "text": "圖卡住多半不是工具，是沒有規格。先把尺寸、字級、品牌色與標誌位置定好做成範本，之後每篇只換字與照片。AI 生成圖適合當背景與情境，不適合畫價目表：生成圖裡的文字常常是錯的，要精確文字就讓 AI 出底圖、字自己排。設計工具的 AI 功能屬於哪個方案、免費額度怎麼算，以 canva.com 當天的說明頁為準。"
         },
         {
-          "type": "link",
-          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+              "kind": "life",
+              "slug": "canva-ai-features-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-image-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -208,9 +260,15 @@
           "text": "想把「表單進來就先寫一版草稿」接起來，自動化工具是另一條路。"
         },
         {
-          "type": "link",
-          "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
-          "url": "https://mokaair.com/zh-TW/life/zapier-make-ai-automation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Zapier 與 Make 的 AI 自動化：計費方式與 AI 功能對照",
+              "kind": "life",
+              "slug": "zapier-make-ai-automation"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -222,8 +280,23 @@
           "text": "AI 生成的圖或影片要不要標，平台有規則。Meta 透明度中心〈Labeling AI Content〉頁寫，2024 年 5 月起 Meta 為更多影片、音訊與圖片加上「AI Info」標籤，觸發情況是偵測到業界通用的 AI 圖片指標或發文者自行揭露。社群守則〈Misinformation〉頁寫成義務：張貼以數位方式製作或變造、具照片寫實感的影片或聽起來像真實錄音的音訊時，要用 Meta 的 AI 揭露工具揭露，未揭露可能受到處分。"
         },
         {
-          "type": "paragraph",
-          "text": "廣告那一側有一條和台灣有關。Meta Business 說明中心的廣告 AI info 頁寫：用 Meta 自家或第三方生成式 AI 工具製作、編輯的廣告素材會自動加上 AI info 標籤，Meta 以 C2PA 這類業界標準偵測；部分地區廣告主可自行揭露，該頁列的地區包含歐洲地區、加州、紐約、印度與台灣，並註明在台灣若偵測到 Meta 生成式 AI 工具做的圖片或影片含寫實 AI 人物，也可能自動加標籤。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "廣告那一側有一條和台灣有關。Meta Business 說明中心的廣告 AI info 頁寫：用 Meta 自家或第三方"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 工具製作、編輯的廣告素材會自動加上 AI info 標籤，Meta 以 C2PA 這類業界標準偵測；部分地區廣告主可自行揭露，該頁列的地區包含歐洲地區、加州、紐約、印度與台灣，並註明在台灣若偵測到 Meta 生成式 AI 工具做的圖片或影片含寫實 AI 人物，也可能自動加標籤。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -236,14 +309,26 @@
           "text": "平台規則管的是內容怎麼做的：Meta 要求自行揭露具照片寫實感的影片與聽起來像真實錄音的音訊。公平會的規範說明管的是關係：有非一般大眾可合理預期的利益關係而未充分揭露、且足以影響交易秩序者，涉及違反公平交易法第二十五條規定。一篇用 AI 生成配圖的合作貼文，兩件事都要處理。個案請諮詢專業人士。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta 廣告入門：Facebook、Instagram 與 Threads 的設定檢查",
-          "url": "https://mokaair.com/zh-TW/life/meta-ads-first-campaign"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta 廣告入門：Facebook、Instagram 與 Threads 的設定檢查",
+              "kind": "life",
+              "slug": "meta-ads-first-campaign"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -272,14 +357,26 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
-          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+              "kind": "life",
+              "slug": "short-video-marketing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "台灣小店的 AI 應用：客服、菜單、廣告",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-small-business-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台灣小店的 AI 應用：客服、菜單、廣告",
+              "kind": "life",
+              "slug": "ai-for-small-business-taiwan"
+            }
+          ]
         }
       ],
       "sources": [

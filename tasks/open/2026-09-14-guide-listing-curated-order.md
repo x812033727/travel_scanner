@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-guide-listing-curated-order
 title: 文章列表不看精選與排序：/life 總覽篇排第 29、「精選攻略」列的是最後匯入的那批
-status: open
+status: review
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-16T01:39:46Z
 created_at: 2026-09-14T00:41:44Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on: []
 scope:
   - apps/api/app/guides/service.py
@@ -23,6 +23,8 @@ scope:
   - apps/web/app/[locale]/guides/[kind]/page.tsx
   - apps/web/app/[locale]/guides/[kind]/page.test.tsx
   - docs/travel-guides.md
+  - apps/api/app/guides/schemas.py
+  - apps/web/lib/guides.ts
 ---
 
 # 文章列表不看精選與排序：/life 總覽篇排第 29、「精選攻略」列的是最後匯入的那批
@@ -57,31 +59,31 @@ scope:
 
 ## Definition of done
 
-- [ ] `/zh-TW/life` 第一頁第一篇是總覽篇 `ai-tools-2026-overview`。其餘照 `display_order`；同值時新發布的在前，
+- [x] `/zh-TW/life` 第一頁第一篇是總覽篇 `ai-tools-2026-overview`。其餘照 `display_order`；同值時新發布的在前，
       再同值照 slug。
-- [ ] `/zh-TW/guides` 的「精選攻略」與 `/{locale}/guides/howto` 列表照同一套規則：精選在前、`display_order` 小的在前。
-- [ ] 「最新情報」與 `/{locale}/guides/intel` 仍照發布時間排，因為情報有時效，新的在前才對。
+- [x] `/zh-TW/guides` 的「精選攻略」與 `/{locale}/guides/howto` 列表照同一套規則：精選在前、`display_order` 小的在前。
+- [x] 「最新情報」與 `/{locale}/guides/intel` 仍照發布時間排，因為情報有時效，新的在前才對。
       文章頁底部的延伸閱讀（`components/guides/article-page.tsx:128,151,154`）也不變。
-- [ ] 新排序跨頁不重複、不漏篇，包括大量並列的情況（40 篇同 `display_order`、兩秒內發布）。
-- [ ] 照發布時間排的列表，cursor 跟現在逐字相同，已經發出去的「看更多」連結照常能用。
-- [ ] 換成新排序的列表收到舊格式或模式不符的 `?cursor=` 時，不能回一頁 200 的「尚無內容」。
+- [x] 新排序跨頁不重複、不漏篇，包括大量並列的情況（40 篇同 `display_order`、兩秒內發布）。
+- [x] 照發布時間排的列表，cursor 跟現在逐字相同，已經發出去的「看更多」連結照常能用。
+- [x] 換成新排序的列表收到舊格式或模式不符的 `?cursor=` 時，不能回一頁 200 的「尚無內容」。
       今天 `fetchJson` 遇到 422 會回 null，頁面就顯示空的。導回不帶 cursor 的第一頁即可。
-- [ ] `docs/travel-guides.md` 寫明各列表的排序規則，以及 `featured`／`display_order` 在前台的作用。
+- [x] `docs/travel-guides.md` 寫明各列表的排序規則，以及 `featured`／`display_order` 在前台的作用。
 
 ## Steps
 
-- [ ] API：`GET /guides`（`router.py:43`）加 `sort=latest|curated`，預設 `latest`，行為不變。
+- [x] API：`GET /guides`（`router.py:43`）加 `sort=latest|curated`，預設 `latest`，行為不變。
       `curated` 的排序鍵是 `featured desc, display_order asc, published_at desc, slug asc`，cursor 帶上這四個值與排序模式。
       模式不符的 cursor 回既有的 `guide_cursor_invalid`（422）。
-- [ ] `tests/test_guides.py` 補四件事：
+- [x] `tests/test_guides.py` 補四件事：
   - `curated` 的順序。
   - 跨頁不重複不漏篇：仿 `test_the_listing_pages_without_repeating_or_dropping_an_article`，再加同 `display_order` 同時發布的並列。
   - 模式不符的 cursor 會被拒。
   - `latest` 的 cursor 跟改動前一樣。
-- [ ] web：`GuideFilters` 加 `sort`，由 `query()`（`lib/guides.server.ts:57`）帶出去。三個地方改用 `curated`：
+- [x] web：`GuideFilters` 加 `sort`，由 `query()`（`lib/guides.server.ts:57`）帶出去。三個地方改用 `curated`：
       `/life`（`life/page.tsx:19`）、hub 的 howto 區塊（`guides/page.tsx:16`）、`[kind]` 為 howto 時（`guides/[kind]/page.tsx:28`）。
-- [ ] web：換排序的列表如果讀取失敗、網址又帶 cursor，就導回第一頁，並補測試。
-- [ ] 更新 `docs/travel-guides.md`。
+- [x] web：換排序的列表如果讀取失敗、網址又帶 cursor，就導回第一頁，並補測試。
+- [x] 更新 `docs/travel-guides.md`。
 
 ## How to verify
 
@@ -113,3 +115,10 @@ curl -s https://mokaair.com/zh-TW/guides | grep -o 'href="/zh-TW/guides/intel/[a
   （`test_published_at_records_the_first_publication_not_the_latest`）。之後任何一篇單獨發布也會打亂順序。
 - 不採用：前台把精選文章另外抓出來疊在第一頁最上面。API 沒有 `featured` 篩選，而且同一篇會在後面的頁面再出現一次。
 - sitemap 走另一個端點（`/guides/sitemap`），不受影響。
+
+- 2026-09-16 落地（claude-fable-5-1，同分支 `claude/travel-article-structure-search-sr9jiq`）：
+  API `GET /guides?sort=latest|curated`（`ListSort`），curated 的 cursor 是 `["curated", featured, display_order, published_at, slug]`，
+  latest 的 cursor 逐字不變；跨模式的 cursor 回 422 `guide_cursor_invalid`。SQLite 下 `featured.is_(True)`／`.desc()` 與 Postgres 一致。
+  web `GuideFilters.sort`（不設就不送）；`/life`、hub「精選攻略」、`/guides/howto` 用 curated；`/guides/intel` 與 hub「最新情報」不變。
+  帶 `?cursor=` 而 API 拒絕（`available:false`）時 `redirect()` 回不帶 cursor 的列表（保留 `?topic=`）。
+  測試：順序、同秒同 display_order 分頁不重不漏、跨模式 cursor、latest cursor 形狀；web 三頁與 loader。`docs/travel-guides.md` 有「sort」段。

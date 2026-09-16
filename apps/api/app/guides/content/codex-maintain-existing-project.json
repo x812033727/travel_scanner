@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 157,
   "locales": {
@@ -197,8 +198,23 @@
           "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
         },
         {
-          "type": "paragraph",
-          "text": "檢查這裡的參數確實是 tasks。只有 Read 完成、Build 未完成時，Completed 的 shown 只有一筆；若誤傳 shown，會得到 0 active / 1 total，而正確畫面應仍為 1 active / 2 total。核心六項測試只驗 countTasks 的函式契約，仍可能全部通過，所以保留這個獨立的接線與畫面核對。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檢查這裡的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "確實是 tasks。只有 Read 完成、Build 未完成時，Completed 的 shown 只有一筆；若誤傳 shown，會得到 0 active / 1 total，而正確畫面應仍為 1 active / 2 total。核心六項測試只驗 countTasks 的函式契約，仍可能全部通過，所以保留這個獨立的接線與畫面核對。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -210,8 +226,23 @@
           "text": "若修改前的同一個練習服務仍在執行，直接重新整理該網址，不另啟動第二個；已停止才使用以下命令。在此資料夾啟動預覽：Windows 執行 py -3 -m http.server 4173 --bind 127.0.0.1；macOS／Linux 執行 python3 -m http.server 4173 --bind 127.0.0.1，瀏覽同一 http://127.0.0.1:4173。若已有人占用，先核對原服務，不直接終止它。在修改前後使用同一來源網址及虛構待辦，避免換連接埠後空白的 localStorage 被誤認為資料遺失。保留修改前建立的 Read、Build，不重設或重複新增；先比對儲存的兩筆 ID 與完成狀態，再依序選 All tasks、Active、Completed，三次統計都必須是 1 active / 2 total。"
         },
         {
-          "type": "paragraph",
-          "text": "重新整理確認兩筆資料、ID 與完成狀態保留。先用同一組兩筆資料，在 390px 與桌面寬度各檢查一次篩選與統計；接著選 All tasks，只刪除一次 Read，確認 1 active / 1 total。按 Tab 確認焦點仍可見。這是回歸驗收，不需要新的設計圖。若數字隨篩選改變，就回到 app.js 查函式引數；若純函式本身不對，用新測試的實際失敗案例定位。只有在確實觀察過後才填寫瀏覽器通過，未操作的系統另外標記。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重新整理確認兩筆資料、ID 與完成狀態保留。先用同一組兩筆資料，在 390px 與桌面寬度各檢查一次篩選與統計；接著選 All tasks，只刪除一次 Read，確認 1 active / 1 total。按 Tab 確認焦點仍可見。這是回歸驗收，不需要新的設計圖。若數字隨篩選改變，就回到 app.js 查函式引數；若純函式本身不對，用新測試的實際失敗案例定位。只有在確實觀察過後才填寫瀏覽器通過，未操作的系統另外"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "heading",

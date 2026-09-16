@@ -61,6 +61,10 @@ def good_document(**overrides: object) -> dict[str, object]:
         },
         "blocks": [
             {
+                "type": "summary",
+                "items": ["先註冊，用 Google 帳號最快。", "免費版夠日常用，付費版多額度與新模型。"],
+            },
+            {
                 "type": "paragraph",
                 "text": "先說結論：免費版每月 1000 次夠一般人用，早上 6:30 也能用。",
             },
@@ -83,10 +87,12 @@ def good_document(**overrides: object) -> dict[str, object]:
                 "height": 1,
                 "caption": "三種方式",
             },
+            # A site link that is not an article: an article link would be flagged as a
+            # raw URL (``raw_internal_url``), which the relink command turns into an inline.
             {
                 "type": "link",
-                "text": "AI 工具全景",
-                "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview",
+                "text": "生活分享",
+                "url": "https://mokaair.com/zh-TW/life",
             },
         ],
         "sources": [
@@ -118,6 +124,13 @@ def test_lint_document_accepts_a_complete_article_and_names_what_is_missing() ->
     )
     codes = {problem.code: problem.level for problem in lint_document(stripped, "life")}
     assert codes["too_few_headings"] == "error"
+    # The fixture keeps its summary, so the missing one is only reported without it -- and
+    # never for intel, whose notices are too short to summarise.
+    without = GuideDocument.model_validate(
+        good_document(blocks=[b for b in good_document()["blocks"] if b["type"] != "summary"])
+    )
+    assert {p.code for p in lint_document(without, "life")} >= {"no_summary"}
+    assert "no_summary" not in {p.code for p in lint_document(without, "intel")}
     assert codes["no_table"] == "error"
     assert codes["no_callout"] == "error"
     assert codes["no_hero"] == "error"
@@ -426,6 +439,43 @@ def test_lint_all_compares_the_packs_with_the_catalogue(tmp_path: Path) -> None:
     findings = lint_all(content, public, kind="life", catalogue=catalogue)
     assert not errors(findings["chatgpt-beginner-guide"])
     assert [p.message for p in findings["catalogue"]] == ["ai-tools-2026-overview: not written yet"]
+
+    # A section holds articles outside any one series. Those are not gaps: one line for the
+    # record, never a warning per slug, so the real gaps stay visible and ``--warnings`` holds.
+    catalogue.write_text(
+        "| # | slug | 標題 |\n|---|---|---|\n| 1 | `ai-tools-2026-overview` | 總覽 |\n",
+        encoding="utf-8",
+    )
+    findings = lint_all(content, public, kind="life", catalogue=catalogue)
+    assert [(p.level, p.code) for p in findings["catalogue"]] == [
+        ("warning", "catalogue_missing_pack"),
+        ("info", "packs_outside_catalogue"),
+    ]
+    assert findings["catalogue"][1].message.startswith(
+        "1 life pack(s) are not in this list, which is fine: chatgpt-beginner-guide"
+    )
+
+
+def test_lint_all_counts_sitemap_rows_but_has_no_ceiling_to_warn_about(tmp_path: Path) -> None:
+    """The web slices each section and locale into as many numbered child sitemaps as its
+    rows need, so the lint reports the count per section and locale for the curious and
+    never a budget warning: there is no row a batch could push out of the sitemap."""
+    from app.guides import pack_ingest
+    from app.guides.content_pack import load_packs
+
+    workdir, content, public = tmp_path / "work", tmp_path / "content", tmp_path / "public"
+    _write_workspace(workdir)
+    ingest(
+        workdir,
+        "chatgpt-beginner-guide",
+        content_dir=content,
+        public_dir=public,
+        renderer=fake_renderer,
+    )
+    assert pack_ingest.sitemap_children(load_packs(content)) == {"life-zh-TW": 1}
+    assert "sitemap" not in lint_all(content, public, kind="life")
+    assert "sitemap" not in lint_all(content, public, kind="howto")
+    assert not hasattr(pack_ingest, "SITEMAP_WARN_ROWS")
 
 
 # --- the Commons transport ------------------------------------------------------------------

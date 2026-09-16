@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Canvas 基本操作",
-              "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+              "kind": "life",
+              "slug": "gemini-canvas-guide"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "固定案例比較方法",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
@@ -234,9 +237,10 @@
               "text": "先確認分享內容與資料範圍。本篇以本機檔案交付；若新增登入、儲存或公開分享，需重新檢查資料行為。接著可用 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "會議信件交接流程",
-              "url": "https://mokaair.com/zh-TW/life/gemini-workspace-meeting-handoff"
+              "kind": "life",
+              "slug": "gemini-workspace-meeting-handoff"
             },
             {
               "type": "text",
@@ -252,27 +256,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Canvas：編輯文章、簡報與製作小工具",
-              "url": "https://mokaair.com/zh-TW/life/gemini-canvas-guide"
+              "kind": "life",
+              "slug": "gemini-canvas-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞改寫實驗：用固定題庫找出有效的修改",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gmail 到 Docs、Sheets：把會議信件整理成可交接的待辦",
-              "url": "https://mokaair.com/zh-TW/life/gemini-workspace-meeting-handoff"
+              "kind": "life",
+              "slug": "gemini-workspace-meeting-handoff"
             },
             {
               "type": "text",
@@ -291,9 +298,15 @@
           "url": "https://mokaair.com/guides/gemini-canvas-budget-calculator/work-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

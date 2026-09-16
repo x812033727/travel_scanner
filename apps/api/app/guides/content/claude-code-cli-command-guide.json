@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 125,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "學 Claude Code 指令，第一步是分清楚輸入位置。終端機命令啟動或管理程式，啟動參數調整這一次執行，對話內的斜線指令則操作目前工作階段。本篇會建立一份分類索引，帶你完成查說明、啟動、命名與找回的小練習，避免把所有文字都貼到同一個框。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "學 Claude Code 指令，第一步是分清楚輸入位置。終端機命令啟動或管理程式，啟動"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "調整這一次執行，對話內的斜線指令則操作目前工作階段。本篇會建立一份分類索引，帶你完成查說明、啟動、命名與找回的小練習，避免把所有文字都貼到同一個框。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

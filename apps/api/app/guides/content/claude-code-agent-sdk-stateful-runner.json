@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 194,
@@ -24,8 +25,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "把 Claude 放進程式後，除了收到回答，還要知道程序何時開始、是否真的完成、取消後留下什麼，以及下次能否接續。本篇使用官方 TypeScript Agent SDK，建立帶狀態檔、事件紀錄與停止上限的最小 runner，只處理一個合成標記，不連外部業務系統。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把 Claude 放進程式後，除了收到回答，還要知道程序何時開始、是否真的完成、取消後留下什麼，以及下次能否接續。本篇使用官方 TypeScript Agent SDK，建立帶狀態檔、事件紀錄與停止上限的最小 runner，只處理一個合成"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，不連外部業務系統。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

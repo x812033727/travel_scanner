@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -47,8 +49,23 @@
           "text": "列出十個真的想回答的問題，再將它們分成少量主題。像材料怎麼收、工具怎麼選、失敗作品如何調整，都是不同的讀者問題。若十個題目其實都在回答同一件事，可以先合成一篇完整內容，避免為了讓文章數量增加而拆成多篇薄弱短文。"
         },
         {
-          "type": "paragraph",
-          "text": "為每個題目標記自己已有的材料、仍需查證的資訊與需要補拍的圖片。沒有親自使用的工具，可以整理官方說明與選擇方法，但不要寫成自己的實測心得。日常記錄也要分清事實、推測與個人偏好，讓讀者知道建議適用到哪裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "為每個題目"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "自己已有的材料、仍需查證的資訊與需要補拍的圖片。沒有親自使用的工具，可以整理官方說明與選擇方法，但不要寫成自己的實測心得。日常記錄也要分清事實、推測與個人偏好，讓讀者知道建議適用到哪裡。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -202,14 +219,26 @@
           "text": "先寫出一篇完整文章，再決定分類、卡片與版型。示範內容僅用於測試，公開前刪除或換成可查證、具有用途的資料。"
         },
         {
-          "type": "link",
-          "text": "文章與頁面的選擇",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-posts-pages"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文章與頁面的選擇",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "分類與選單怎麼整理",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分類與選單怎麼整理",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
         }
       ],
       "sources": [

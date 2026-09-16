@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,23 @@
           "text": "Claude 的延伸思考（extended thinking，介面上的開關叫 Thinking 或 Extended）是讓模型在回答前先拆題、試幾種做法、檢查中間結果再作答的功能；它不是另一個更聰明的模型，而是同一個模型多出來的一段「先想再答」。值得開的題目只有一種：答案取決於中間步驟的題目，像分攤旅費、排有前後相依的準備清單、找程式錯誤的原因；翻譯、改信、查天氣這類題目開了只是慢，而且開了也不代表答案一定對。"
         },
         {
-          "type": "paragraph",
-          "text": "這篇依 2026 年 9 月 13 日在 Claude 說明中心、claude.com 定價頁與 Anthropic 開發者文件查到的內容，先講延伸思考和「推理模型」這個概念的關係，再說明它在 claude.ai 的開關位置、哪些方案與模型有、Effort 怎麼調，接著用五類題目各給一個範例提示，比較開與不開的差別，最後教你讀它的思考摘要、認識額度與速度的代價，以及最常見的幾種誤用。功能名稱與方案歸屬變動很快，細節以官網當下的頁面為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇依 2026 年 9 月 13 日在 Claude 說明中心、claude.com 定價頁與 Anthropic 開發者文件查到的內容，先講延伸思考和「推理模型」這個概念的關係，再說明它在 claude."
+            },
+            {
+              "type": "article",
+              "text": "ai",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的開關位置、哪些方案與模型有、Effort 怎麼調，接著用五類題目各給一個範例提示，比較開與不開的差別，最後教你讀它的思考摘要、認識額度與速度的代價，以及最常見的幾種誤用。功能名稱與方案歸屬變動很快，細節以官網當下的頁面為準。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -47,9 +63,15 @@
           "text": "名稱上有一點要先釐清。在 claude.ai 與定價頁，這個功能叫延伸思考，開關叫 Thinking 或 Extended；在開發者文件裡，現役的主力模型用的是「自適應思考」（adaptive thinking），由模型自己決定要不要想、想多深，「延伸思考」一詞專指舊模型手動給思考預算的模式。對一般使用者來說這是同一件事的兩個世代，本文統一叫延伸思考。OpenAI 的 Think、Google 的 Thinking level 也是同一類功能，各家的名稱與預設值整理在下面這篇，這裡不重複。"
         },
         {
-          "type": "link",
-          "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型是什麼：o 系列、延伸思考、Deep Think 的差別",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -75,18 +97,45 @@
           "text": "方案方面，claude.com 定價頁在免費版的功能清單裡列了「延伸思考」，Pro 與 Max 包含免費版的全部功能再加上更多用量與模型，所以不用付費就能試。模型方面，說明中心寫明 Claude Fable 5.1 的思考一律開著，Claude Opus 5 在網頁與 App 上也一律開著，兩者都關不掉；其他模型才有開關可切。Effort 等級只在 Fable 5.1、Opus 5、Sonnet 5、Fable 5、Opus 4.8、4.7、4.6 與 Sonnet 4.6 提供，說明中心對各級的說明是：Low 與 Medium 適合例行工作、也讓額度撐得更久，High 是建議的預設值、品質與速度最平衡，Extra high 給長時間的程式與代理任務，Max 留給需要最深推理的題目。免費版當下能選哪幾個模型會隨時間調整，Fable 系列只在付費方案提供，以官網為準。"
         },
         {
-          "type": "paragraph",
-          "text": "claude.ai 裡沒有「思考預算」這種數字可以填，能調的只有開關與 Effort。預算是 API 才有的東西：舊一代模型（例如 Claude Haiku 4.5）用 budget_tokens 參數指定思考的 token 上限，最低 1,024 個 token；現役的 Opus 5、Sonnet 5、Fable 5.1 改用 effort 參數控制深淺，不再接受預算。這篇不談 API 用法，知道有這個參數就好。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "claude.ai 裡沒有「思考預算」這種數字可以填，能調的只有開關與 Effort。預算是 API 才有的東西：舊一代模型（例如 Claude Haiku 4.5）用 budget_tokens "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "指定思考的 token 上限，最低 1,024 個 token；現役的 Opus 5、Sonnet 5、Fable 5.1 改用 effort 參數控制深淺，不再接受預算。這篇不談 API 用法，知道有這個參數就好。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/claude-model-lineup-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 模型家族：Fable、Opus、Sonnet、Haiku 怎麼選",
+              "kind": "life",
+              "slug": "claude-model-lineup-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
-          "url": "https://mokaair.com/zh-TW/life/claude-plans-free-pro-max-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 免費、Pro、Max 方案比較：額度怎麼算、值不值得",
+              "kind": "life",
+              "slug": "claude-plans-free-pro-max-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -204,9 +253,15 @@
           "text": "第二件事是思考內容不等於答案正確。Anthropic 在 2025 年公開可見的思考過程時就寫明，他們無法確定思考過程裡的內容真的代表模型內部發生的事，模型常常依據它沒有在思考裡明說的因素做決定。實際的用法是把摘要當檢查清單：看它有沒有把你給的每個條件都列出來、有沒有讀錯數字或單位、中途有沒有換過做法、最後有沒有回頭驗算。條件漏了或讀錯，答案再流暢也要重問，並把漏掉的條件寫進下一個提示；摘要看起來沒問題，答案仍然要自己驗算一次，怎麼查請看下面這篇。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -243,9 +298,15 @@
           "text": "如果你還沒用過 Claude，先從下面這篇把帳號、方案與六個主要功能走一遍，再回來開延伸思考；行程規劃類的題目，本站的旅遊攻略有各城市的範例可以拿來當練習題。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "link",

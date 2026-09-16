@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "daily"
+    "daily",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "台灣使用者在 LINE 裡能用到的 AI，比多數人想的少。把官方網站當天的頁面翻過一遍，結論是：台灣版沒有一個叫「AI 助理」的內建入口，日本版有的 Agent i、AI Friends 與吃到飽方案只有日文說明頁。台灣查得到繁體中文說明的，是社群的訊息摘要與翻譯自動程式，以及店家付費後才有的 AI 聊天機器人。搜「LINE AI」找到的功能清單，多半也就是這幾項。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣使用者在 LINE 裡能用到的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，比多數人想的少。把官方網站當天的頁面翻過一遍，結論是：台灣版沒有一個叫「AI 助理」的內建入口，日本版有的 Agent i、AI Friends 與吃到飽方案只有日文說明頁。台灣查得到繁體中文說明的，是社群的訊息摘要與翻譯自動程式，以及店家付費後才有的 AI 聊天機器人。搜「LINE AI」找到的功能清單，多半也就是這幾項。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇把每個項目拆成名稱、入口、免費或付費、台灣可用性，說清楚在哪個畫面點得到；也整理隱私權政策寫的資料存放地、哪些內容會拿去做機器學習，以及哪一個開關可以收回同意。官網沒寫台灣可用的，一律寫「以官網為準」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇把每個項目拆成名稱、入口、免費或付費、台灣可用性，說清楚在哪個畫面點得到；也整理隱私權政策寫的資料存放地、哪些內容會拿去做"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "，以及哪一個開關可以收回同意。官網沒寫台灣可用的，一律寫「以官網為準」。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -48,8 +79,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "LINE 社群（OpenChat）的訊息摘要，是台灣官方部落格明確寫出來的生成式 AI 功能，2023 年 11 月 6 日公告上線。官方說明寫得直白：訊息累積到足夠量時，AI 會在固定時間自動彙整摘要，不需要主動操作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LINE 社群（OpenChat）的訊息摘要，是台灣官方部落格明確寫出來的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 功能，2023 年 11 月 6 日公告上線。官方說明寫得直白：訊息累積到足夠量時，AI 會在固定時間自動彙整摘要，不需要主動操作。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -85,9 +131,15 @@
           "text": "支援中心沒有列出可選的 Bot 清單與語言對照，實際有哪幾組要在那個畫面上看。要翻整頁網頁或整份文件時，另外一套瀏覽器工具比較合適。"
         },
         {
-          "type": "link",
-          "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
-          "url": "https://mokaair.com/zh-TW/life/immersive-translate-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+              "kind": "life",
+              "slug": "immersive-translate-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -154,14 +206,26 @@
           "text": "LINE 台灣官方部落格 2026 年 1 月到 9 月之間沒有一篇 AI 功能的公告；台灣版 LINE Premium 的服務指南（2026 年 3 月 23 日公告）也沒有提到 AI。這是「日本有、台灣官網沒寫」，不是「台灣禁止使用」，之後會不會開放以官網為準。"
         },
         {
-          "type": "link",
-          "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
-          "url": "https://mokaair.com/zh-TW/life/meta-ai-whatsapp-instagram"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta AI：WhatsApp、Instagram 裡的 AI 與隱私",
+              "kind": "life",
+              "slug": "meta-ai-whatsapp-instagram"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
-          "url": "https://mokaair.com/zh-TW/life/apple-intelligence-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+              "kind": "life",
+              "slug": "apple-intelligence-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -192,23 +256,41 @@
           "text": "廣告端另外有一組。LINE Biz-Solutions 台灣站寫，成效型廣告的三個廣告智慧助手在 2026 年 3 月 9 日正式推出，分別負責自動建立廣告活動、生成圖文素材與一鍵生成報表。"
         },
         {
-          "type": "link",
-          "text": "LINE 廣告適合什麼需求：帳號、版位與轉換規劃",
-          "url": "https://mokaair.com/zh-TW/life/line-ads-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LINE 廣告適合什麼需求：帳號、版位與轉換規劃",
+              "kind": "life",
+              "slug": "line-ads-basics"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "這些後台功能跟自己寫程式做機器人是兩件事：AI 聊天機器人（β）在後台設定，回覆來源是你自己建的常見問答；Messaging API 是給開發者的介面，LINE Platform 把事件送到你的伺服器，要回什麼由你的程式決定。"
         },
         {
-          "type": "link",
-          "text": "用 AI 幫你做 LINE 機器人：從零到上線",
-          "url": "https://mokaair.com/zh-TW/life/ai-build-line-bot-tutorial"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 幫你做 LINE 機器人：從零到上線",
+              "kind": "life",
+              "slug": "ai-build-line-bot-tutorial"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "社群聊天機器人：Manychat、Chatfuel 與真人接手流程",
-          "url": "https://mokaair.com/zh-TW/life/social-chatbot-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "社群聊天機器人：Manychat、Chatfuel 與真人接手流程",
+              "kind": "life",
+              "slug": "social-chatbot-workflow"
+            }
+          ]
         },
         {
           "type": "table",
@@ -271,8 +353,23 @@
           "text": "LY Corporation 隱私權政策繁體中文版的最後更新日期是 2026 年 7 月 31 日。政策寫該公司於日本、歐洲經濟區、其個人資料保護適足性經歐盟執委會認可的國家或地區，或跨境隱私規則體系會員國設有資料中心據點；可以存取這些資料的人，可能位於法規與日本不同的第三國。分包移轉的國家裡也有台灣。"
         },
         {
-          "type": "paragraph",
-          "text": "跟 AI 最直接相關的一段，在「關於台端資訊的使用」這份台灣適用的說明裡：「我們計畫將用戶提供的資訊作為機器學習與深度學習的學習資料，以改善本公司各種服務的功能及品質。」"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "跟 AI 最直接相關的一段，在「關於台端資訊的使用」這份台灣適用的說明裡：「我們計畫將用戶提供的資訊作為機器學習與"
+            },
+            {
+              "type": "article",
+              "text": "深度學習",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "的學習資料，以改善本公司各種服務的功能及品質。」"
+            }
+          ]
         },
         {
           "type": "list",
@@ -299,9 +396,15 @@
           "text": "政策寫明這份同意是選擇性的：「您可自由選擇是否同意本公司使用您的資訊來完善服務，也可以隨時在 LINE 應用程式中透過隱私權設定變更您的同意。」"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -314,9 +417,15 @@
           "text": "不管是社群的摘要、店家的自動回覆，還是第三方機器人，產出的都是模型的猜測。官方公告自己就寫了訊息摘要的準確性可能不是百分之百，店家端的頁面也註明不保證準確性與適當性。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         }
       ],
       "sources": [

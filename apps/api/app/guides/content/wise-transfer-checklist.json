@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "banking"
   ],
   "valid_until": null,
   "featured": false,
@@ -201,14 +202,26 @@
           "text": "居住地、幣別、付款方式和收款銀行都要相容。沒有可用路徑時，低費率的宣傳數字也無法代表這筆交易的實際選項。"
         },
         {
-          "type": "link",
-          "text": "海外平台收款前，先核對 YouTube 付款與稅務資料",
-          "url": "https://mokaair.com/zh-TW/life/youtube-payment-tax-info"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "海外平台收款前，先核對 YouTube 付款與稅務資料",
+              "kind": "life",
+              "slug": "youtube-payment-tax-info"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "網站收款另看 PayPal 帳戶與退款流程",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-paypal-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站收款另看 PayPal 帳戶與退款流程",
+              "kind": "life",
+              "slug": "woocommerce-paypal-setup"
+            }
+          ]
         }
       ],
       "sources": [

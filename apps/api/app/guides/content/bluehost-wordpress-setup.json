@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -56,8 +58,23 @@
           "text": "依目前 Bluehost 安裝文件，登入 Portal 後進入左側 Websites，選擇 Add Website，再選 WordPress，系統會開始安裝。先確認你位於正確帳戶與可用方案，並使用能辨識用途的網站名稱。若已經有其他網站，不要選到刪除內容、移除 WordPress 或重建環境的功能。"
         },
         {
-          "type": "paragraph",
-          "text": "官方文件在安裝後提供 AI Site Creator 與 Import an Existing WordPress Site 等流程。新網站可以依引導整理初始頁面，既有網站則要依匯入流程處理來源及資料。兩者的目標不同：前者建立內容起點，後者涉及搬移既有資料。不要為了嘗試版型而覆蓋唯一的正式網站。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方文件在安裝後提供 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Site Creator 與 Import an Existing WordPress Site 等流程。新網站可以依引導整理初始頁面，既有網站則要依匯入流程處理來源及資料。兩者的目標不同：前者建立內容起點，後者涉及搬移既有資料。不要為了嘗試版型而覆蓋唯一的正式網站。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -181,14 +198,26 @@
           "text": "新增、刪除內容、移除 WordPress 與重建伺服器的影響不同。操作既有帳戶時，先確認網站名稱與功能範圍，並保有可還原的備份。"
         },
         {
-          "type": "link",
-          "text": "Bluehost 網域與帳務問題：加購、付款與續約逐項確認",
-          "url": "https://mokaair.com/zh-TW/life/bluehost-domain-billing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Bluehost 網域與帳務問題：加購、付款與續約逐項確認",
+              "kind": "life",
+              "slug": "bluehost-domain-billing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
-          "url": "https://mokaair.com/zh-TW/life/https-certificate-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "讓網站使用 HTTPS：憑證、轉址與混合內容檢查",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
         }
       ],
       "sources": [

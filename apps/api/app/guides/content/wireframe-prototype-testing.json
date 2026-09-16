@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "web-basics"
   ],
   "valid_until": null,
   "featured": false,
@@ -201,19 +203,37 @@
           "text": "練習畫面需標示不會成立預約，並使用合適的測試資料。正式產品的付款、資料處理與服務承諾，必須有相應實作及驗證。"
         },
         {
-          "type": "link",
-          "text": "從生活問題開始練習設計思考",
-          "url": "https://mokaair.com/zh-TW/life/design-thinking-practice"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "從生活問題開始練習設計思考",
+              "kind": "life",
+              "slug": "design-thinking-practice"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "補齊網站專案的正式驗收",
-          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "補齊網站專案的正式驗收",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解響應式畫面與實際裝置檢查",
-          "url": "https://mokaair.com/zh-TW/life/responsive-layout-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解響應式畫面與實際裝置檢查",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -51,14 +52,26 @@
           "text": "整個流程是 7 步：準備檔案、上傳、描述任務、它寫程式並執行、看圖與程式碼、驗證、下載；下面的圖解把這 7 步與上傳前的檢查清單畫在一起，後面各節對應其中幾步。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+              "kind": "life",
+              "slug": "chatgpt-file-upload-analysis"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -83,9 +96,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-for-excel-formulas"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 ChatGPT 寫 Excel 公式與 VBA：從問題描述到可貼上的公式",
+              "kind": "life",
+              "slug": "chatgpt-for-excel-formulas"
+            }
+          ]
         },
         {
           "type": "image",
@@ -236,9 +255,15 @@
           "text": "每個任務的提示詞都留著「列出你用的程式碼與假設」這一句。它跑完會把 Python 程式碼放在可以展開的區塊裡，看不懂程式碼沒關係，看它條列的假設：篩選了哪些列、怎麼處理缺值與重複、金額是哪一欄、日期用什麼格式解讀。假設裡有一條跟你的資料不合，結論就整個重來；假設都對，再抽 3 筆手算對照。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -254,9 +279,15 @@
           "text": "個人方案（Free、Go、Plus、Pro）預設會把對話內容用來改善模型，help center 明確說內容包含上傳的檔案。不想被拿去訓練，點個人頭像 → Settings → Data Controls，關掉「Improve the model for everyone」，整個帳號都會套用。只做一次分析就用暫時對話（Temporary chat，右上角的圖示）：不進歷史紀錄、不建立記憶、不用於訓練，檔案不會存進帳號或 Library，OpenAI 基於安全理由最多保留 30 天。Business 與 Enterprise 預設不訓練。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         }
       ],
       "sources": [

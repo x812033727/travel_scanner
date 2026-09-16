@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -206,14 +208,26 @@
           "text": "每組需求都留下對應頁面與處理結果：新增文章、改善既有內容、與其他主題合併，或因缺乏可靠資料而暫緩。這樣即使工具數據更新，團隊仍能理解當初為什麼選題。"
         },
         {
-          "type": "link",
-          "text": "先判斷每組查詢的搜尋意圖",
-          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先判斷每組查詢的搜尋意圖",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把選題變成可執行的文章內容",
-          "url": "https://mokaair.com/zh-TW/life/on-page-seo-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把選題變成可執行的文章內容",
+              "kind": "life",
+              "slug": "on-page-seo-workflow"
+            }
+          ]
         }
       ],
       "sources": [

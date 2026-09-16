@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,18 +56,20 @@
               "text": "準備 Gemini CLI 0.59.0、Python 與獨立練習資料夾，先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "settings.json 設定",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings"
+              "kind": "life",
+              "slug": "gemini-cli-settings"
             },
             {
               "type": "text",
               "text": "和"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "shell 命令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
@@ -82,9 +85,10 @@
               "text": "Hook 是會在電腦上執行的程式，與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "純文字自訂指令",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-custom-commands"
+              "kind": "life",
+              "slug": "gemini-cli-custom-commands"
             },
             {
               "type": "text",
@@ -113,9 +117,10 @@
               "text": "本例只檢查 tool_name 是否為 run_shell_command，不試圖分析每一種 shell 語法。若符合就回傳 decision 為 deny 與原因，否則回傳 allow。這個簡單規則容易驗證，也清楚表達限制：它只處理被指定的工具，不是所有檔案操作的完整防護，仍需搭配"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限與沙箱",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
@@ -199,9 +204,10 @@
               "text": "當你要把掛鉤用於正式流程，儲存事件樣本、預期輸出與錯誤測試，並記錄 CLI 版本。搭配"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 批次處理",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
@@ -250,18 +256,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 權限",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Headless 模式",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-headless-automation"
+              "kind": "life",
+              "slug": "gemini-cli-headless-automation"
             },
             {
               "type": "text",
@@ -270,9 +278,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

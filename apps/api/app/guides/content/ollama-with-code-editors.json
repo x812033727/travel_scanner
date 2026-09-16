@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "想讓 AI 幫你寫程式又不想把整份原始碼送上雲端，答案是把編輯器接到自己電腦上的模型；照官方文件當天的說法，Continue 的擴充有完整的 Ollama 設定，改一個 config.yaml 就能讓本機模型負責補全與聊天，而 Cursor 的說明頁只列了五家雲端供應商的金鑰、沒有任何自訂端點的寫法。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想讓 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 幫你寫程式又不想把整份原始碼送上雲端，答案是把編輯器接到自己電腦上的模型；照官方文件當天的說法，Continue 的擴充有完整的 Ollama 設定，改一個 config.yaml 就能讓本機模型負責補全與聊天，而 Cursor 的說明頁只列了五家雲端供應商的金鑰、沒有任何自訂端點的寫法。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇會帶你做完四件事：在 VS Code 或 JetBrains 裝好 Continue、把聊天、補全、嵌入三個模型角色寫進設定檔、在 Ollama 端把連線位址與上下文長度設對，最後看懂哪些編輯器的官方文件真的寫了 Ollama、以及本機模型在代理模式上被文件明白點出的限制。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇會帶你做完四件事：在 VS Code 或 JetBrains 裝好 Continue、把聊天、補全、嵌入三個模型角色寫進設定檔、在 Ollama 端把連線位址與"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "設對，最後看懂哪些編輯器的官方文件真的寫了 Ollama、以及本機模型在代理模式上被文件明白點出的限制。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -43,17 +74,38 @@
           "text": "Continue 官方文件把功能分成四項：代理（Agent）模式一起處理開發任務、聊天（Chat）模式問問題與解釋程式碼、編輯（Edit）模式不離開檔案就改一段程式、自動補全（Autocomplete）在你打字時給行內建議。這四項不是同一個模型都能做好，官方也沒有這樣建議。"
         },
         {
-          "type": "paragraph",
-          "text": "補全用的是另一種模型。官方文件寫得很直接：補全模型是用一種叫 fill-in-the-middle（FIM）的格式訓練的，把游標前後的程式碼餵給它、要它補中間那段，因為任務很專一，所以「即使是 3B 參數的模型也能表現不錯」，反過來說，聊天模型雖然大，「即使下很多提示詞通常也表現不好」。同一份文件還補了一句：目前最先進的補全模型「都不超過 10b 參數，再往上加也不會明顯變好」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "補全用的是另一種模型。官方文件寫得很直接：補全模型是用一種叫 fill-in-the-middle（FIM）的格式訓練的，把游標前後的程式碼餵給它、要它補中間那段，因為任務很專一，所以「即使是 3B "
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的模型也能表現不錯」，反過來說，聊天模型雖然大，「即使下很多提示詞通常也表現不好」。同一份文件還補了一句：目前最先進的補全模型「都不超過 10b 參數，再往上加也不會明顯變好」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "代理模式的門檻則在工具呼叫。Continue 的模型推薦頁在「Local Models」那一段直接寫：這些模型只要顯示記憶體夠就能在自己的電腦上跑，但是「有限的工具呼叫與推理能力，會讓代理模式用起來很吃力」。這句話是本機方案跟雲端方案最大的落差，先記著，後面的限制那一節還會用到。"
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -79,9 +131,15 @@
           "text": "三個欄位要對：provider 固定填 ollama，model 要跟 ollama list 印出來的名稱一字不差，apiBase 只有在 Ollama 跑在別台機器時才需要改成那台的位址。另外，Continue 舊的 config.json 格式在官方文件上已經標成 Deprecated（已淘汰），新寫的設定用 YAML 就好。"
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -89,8 +147,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Continue 的模型說明頁把角色列成六種：chat（聊天）、edit（編輯）、apply（套用）、autocomplete（自動補全）、embed（嵌入）、rerank（重新排序），在設定檔裡就是 roles 這個欄位。對本機模型來說，真正要自己指派的是下面三個。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Continue 的模型說明頁把角色列成六種：chat（聊天）、edit（編輯）、apply（套用）、autocomplete（自動補全）、embed（嵌入）、"
+            },
+            {
+              "type": "article",
+              "text": "rerank",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            },
+            {
+              "type": "text",
+              "text": "（重新排序），在設定檔裡就是 roles 這個欄位。對本機模型來說，真正要自己指派的是下面三個。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -153,14 +226,26 @@
           "text": "反過來也有調太大的問題。Continue 的 Ollama 供應商頁寫，Continue 設的預設上下文長度可能比其他 Ollama 工具高，所以同一個模型在別的地方跑得動、在編輯器裡卻跳出「Model requires more system memory」；文件給的解法是在那個模型底下加 defaultCompletionOptions 的 contextLength 把它調小，或者換小一號的模型。"
         },
         {
-          "type": "link",
-          "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
-          "url": "https://mokaair.com/zh-TW/life/local-llm-hardware-requirements"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/gguf-quantization-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "kind": "life",
+              "slug": "gguf-quantization-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -182,9 +267,15 @@
           "text": "把隱私當成理由的話，兩條路差很多：Continue 加 Ollama 的請求是從你的編輯器直接打到本機的 11434 埠，官方文件給的設定值就是 localhost，沒有第三方在中間；而 Cursor 的自備金鑰照官方說明仍然會經過 Cursor 的伺服器組裝提示詞，而且不再受 Zero Data Retention 政策保護。要的是「程式碼不離開這台電腦」，就不要把自備金鑰當成替代方案。"
         },
         {
-          "type": "link",
-          "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
-          "url": "https://mokaair.com/zh-TW/life/cursor-editor-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Cursor 編輯器入門：Tab 補全、Chat 與代理模式",
+              "kind": "life",
+              "slug": "cursor-editor-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -237,9 +328,15 @@
           "caption": "整理自 docs.ollama.com 的整合頁與 docs.continue.dev，2026 年 9 月查證；介面以官網當天版本為準。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -266,9 +363,15 @@
           "text": "還有一件跟錢有關的事值得順帶一提：本機模型不按 token 計費，電腦跑起來就沒有帳單，但這個好處要拿品質和速度去換。真的要比，先把雲端那邊的計費方式看懂再決定哪些工作留在本機。"
         },
         {
-          "type": "link",
-          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+              "kind": "life",
+              "slug": "ai-coding-cost-tokens-explained"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -277,14 +380,26 @@
           "text": "如果只想花十分鐘看到效果，順序是：拉 qwen2.5-coder:1.5b（986MB），在 config.yaml 裡給它一個 autocomplete 角色，存檔，回編輯器打幾行程式碼看有沒有灰字建議。這一段最不吃硬體也最容易成功，聊天與嵌入的模型可以之後再加；代理模式留到最後再試，官方文件已經先說了本機模型在那一塊很吃力。"
         },
         {
-          "type": "link",
-          "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
-          "url": "https://mokaair.com/zh-TW/life/deepseek-local-with-ollama"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在自己電腦跑 DeepSeek：Ollama 蒸餾版教學",
+              "kind": "life",
+              "slug": "deepseek-local-with-ollama"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
-          "url": "https://mokaair.com/zh-TW/life/github-copilot-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GitHub Copilot 入門：VS Code 裡的補全、Chat 與代理",
+              "kind": "life",
+              "slug": "github-copilot-guide"
+            }
+          ]
         }
       ],
       "sources": [

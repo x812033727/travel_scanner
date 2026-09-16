@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,36 +56,40 @@
               "text": "先完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞比較",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-evaluation-workshop"
+              "kind": "life",
+              "slug": "gemini-prompt-evaluation-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "三張圖片系列",
-              "url": "https://mokaair.com/zh-TW/life/gemini-image-consistent-series"
+              "kind": "life",
+              "slug": "gemini-image-consistent-series"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "三鏡頭短片",
-              "url": "https://mokaair.com/zh-TW/life/google-flow-storyboard-workshop"
+              "kind": "life",
+              "slug": "google-flow-storyboard-workshop"
             },
             {
               "type": "text",
               "text": "。本篇以電腦檔案管理與 Gemini／Flow 工作流程為主，介面依 2026-09-14 官方資料整理，模型與方案條件沿用各功能篇。需要公式報表時可搭配 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "資料報表",
-              "url": "https://mokaair.com/zh-TW/life/gemini-sheets-data-audit-dashboard"
+              "kind": "life",
+              "slug": "gemini-sheets-data-audit-dashboard"
             },
             {
               "type": "text",
@@ -256,27 +261,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 圖片系列製作：參考圖、風格規格與一致性評分",
-              "url": "https://mokaair.com/zh-TW/life/gemini-image-consistent-series"
+              "kind": "life",
+              "slug": "gemini-image-consistent-series"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Google Flow 三鏡頭短片：腳本、分鏡與逐鏡生成",
-              "url": "https://mokaair.com/zh-TW/life/google-flow-storyboard-workshop"
+              "kind": "life",
+              "slug": "google-flow-storyboard-workshop"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Gemini 與 Sheets 資料報表：清理 CSV、核對公式與圖表",
-              "url": "https://mokaair.com/zh-TW/life/gemini-sheets-data-audit-dashboard"
+              "kind": "life",
+              "slug": "gemini-sheets-data-audit-dashboard"
             },
             {
               "type": "text",
@@ -295,9 +303,15 @@
           "url": "https://mokaair.com/guides/gemini-content-production-handoff/creative-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

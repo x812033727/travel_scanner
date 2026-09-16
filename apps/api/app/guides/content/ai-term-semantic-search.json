@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -30,8 +31,33 @@
           "text": "語意搜尋，英文 Semantic Search，是嘗試根據查詢與內容的意思判斷相關性，而不只要求字詞相同的搜尋方式。使用者問「忘了登入用的那串字怎麼辦」，系統可能找到標題為「重設密碼」的說明。兩者的字面重疊有限，卻談到相近需求。能處理這類說法差異，是它在知識庫與客服搜尋裡的重要用途。"
         },
         {
-          "type": "paragraph",
-          "text": "不過，語意搜尋並不必然生成一段答案，也不是只有向量資料庫才能提供。它可以交付文件、段落或其他候選項目，後續再由讀者閱讀或由 RAG 整理。本篇以虛構的會員服務說明示範，所有排序都是預期情境，不宣稱特定模型一定找對。理解它的限制，才能知道搜尋「看起來懂我」與「真的找對文件」之間還缺哪些檢查。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不過，語意搜尋並不必然生成一段答案，也不是只有"
+            },
+            {
+              "type": "article",
+              "text": "向量資料庫",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "才能提供。它可以交付文件、段落或其他候選項目，後續再由讀者閱讀或由 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": " 整理。本篇以虛構的會員服務說明示範，所有排序都是預期情境，不宣稱特定模型一定找對。理解它的限制，才能知道搜尋「看起來懂我」與「真的找對文件」之間還缺哪些檢查。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -112,8 +138,23 @@
           "text": "建立測試集時，可涵蓋原句、自然改寫、錯字、同主題但不同條件，以及完全沒有答案的問題。先看應有文件是否進入候選，再看排名是否讓讀者容易找到。也要比較查詢延遲與文件更新後的可見時間，避免只提高語意測試分數，卻讓實際使用者等待太久或持續看到舊說明。"
         },
         {
-          "type": "paragraph",
-          "text": "若同義改寫明顯改善但代碼題退步，可以使用混合搜尋保留精確詞彙的力量；若候選齊全但順序不好，可評估重新排序。若文件本身沒寫清楚，再強的語意模型也只能找出模糊資料。最可靠的改善順序是先定位失敗層，再改變對應元件，而不是把「換成 AI 搜尋」當成一次性的解決方案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若同義改寫明顯改善但代碼題退步，可以使用混合搜尋保留精確詞彙的力量；若候選齊全但順序不好，可評估重新排序。若文件本身沒寫清楚，再強的語意模型也只能找出模糊資料。最可靠的改善順序是先定位失敗層，再改變對應元件，而不是把「換成 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 搜尋」當成一次性的解決方案。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -152,24 +193,48 @@
           "text": "加入沒有答案的測試題，檢查系統是否能顯示缺資料。相對最高分不代表已達到可用的相關程度。"
         },
         {
-          "type": "link",
-          "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-embedding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

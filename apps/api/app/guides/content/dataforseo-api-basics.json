@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -60,8 +62,23 @@
           "text": "SERP 指搜尋結果頁。查詢時需要決定搜尋引擎、字詞、語言、地區與裝置，必要時還有取得深度。台灣課程站若要觀察手機搜尋，應在設定中明確指定，不能把官方英文範例的美國地區代碼照貼後，將結果當成台灣市場。"
         },
         {
-          "type": "paragraph",
-          "text": "地區與語言值應從該產品支援的清單核對，不憑一般國碼猜測。結果也可能受到搜尋當時的版位與拼字修正影響。保存請求參數、結果時間和實際回傳字詞，才知道兩次報表是否真的在比較同一件事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "地區與語言值應從該產品支援的清單核對，不憑一般國碼猜測。結果也可能受到搜尋當時的版位與拼字修正影響。保存請求"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "、結果時間和實際回傳字詞，才知道兩次報表是否真的在比較同一件事。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -107,8 +124,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Sandbox 是免費的技術測試環境，回傳模擬內容，用來檢查程式能否讀取欄位與接續流程。它不是免費查真實排名的方法，結果不能放進市場報告。測試紀錄應清楚標記環境，避免模擬數字被誤當成網站現況。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Sandbox 是免費的技術測試環境，回傳模擬內容，用來檢查程式能否讀取欄位與接續流程。它不是免費查真實排名的方法，結果不能放進市場報告。測試紀錄應清楚"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "環境，避免模擬數字被誤當成網站現況。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +233,37 @@
           "text": "先核對任務狀態、地區、時間和資料定義，再交給編輯判斷。模擬資料、部分結果與真實完整結果要有清楚標示。"
         },
         {
-          "type": "link",
-          "text": "先建立關鍵字研究任務",
-          "url": "https://mokaair.com/zh-TW/life/seo-keyword-research"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先建立關鍵字研究任務",
+              "kind": "life",
+              "slug": "seo-keyword-research"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "比較 Semrush 的介面研究與追蹤",
-          "url": "https://mokaair.com/zh-TW/life/semrush-research-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比較 Semrush 的介面研究與追蹤",
+              "kind": "life",
+              "slug": "semrush-research-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "辨認市場流量估計的限制",
-          "url": "https://mokaair.com/zh-TW/life/similarweb-traffic-estimates"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨認市場流量估計的限制",
+              "kind": "life",
+              "slug": "similarweb-traffic-estimates"
+            }
+          ]
         }
       ],
       "sources": [

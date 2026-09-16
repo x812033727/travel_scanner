@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一個 AI 助手可以把二手物品資料整理成刊登草稿，但你可能不希望它公開私人電話、替賣家編造保固，或在未確認前直接上架。這些要求不只是一句「請小心」，而是需要在流程中安排可執行的檢查與限制。Guardrails 常譯為防護欄或安全防護機制，指的就是讓系統在既定範圍內工作的這些安排。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一個 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 助手可以把二手物品資料整理成刊登草稿，但你可能不希望它公開私人電話、替賣家編造保固，或在未確認前直接上架。這些要求不只是一句「請小心」，而是需要在流程中安排可執行的檢查與限制。Guardrails 常譯為防護欄或安全防護機制，指的就是讓系統在既定範圍內工作的這些安排。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -157,24 +173,48 @@
           "text": "能補資料就補資料，能修正就提出可審閱草稿，需要授權就交回有權限的人。清楚的後續處理也是防護品質的一部分。"
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "越獄提示（Jailbreak）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-jailbreak"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "越獄提示（Jailbreak）是什麼",
+              "kind": "life",
+              "slug": "ai-term-jailbreak"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "productivity"
+    "productivity",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "老師用 Claude 的規則只有一句：它產出草稿，你做專業判斷。備課教案、出考題、批改回饋、家長聯絡與行政公文這四件每週固定要做的事，它都能給你一份可以改的初稿；但目標訂得對不對、難度合不合這個班，只有你知道。還有一條不能退讓的底線：學生的姓名、學號、成績與輔導紀錄，一律不要貼進任何 AI 工具。任何老師 AI 或教學 AI 工具都適用這條規則。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "老師用 Claude 的規則只有一句：它產出草稿，你做專業判斷。備課教案、出考題、批改回饋、家長聯絡與行政公文這四件每週固定要做的事，它都能給你一份可以改的初稿；但目標訂得對不對、難度合不合這個班，只有你知道。還有一條不能退讓的底線：學生的姓名、學號、成績與輔導紀錄，一律不要貼進任何 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工具。任何老師 AI 或教學 AI 工具都適用這條規則。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,9 +73,15 @@
           "text": "設定好之後，下面四節的提示詞都不必再交代背景。"
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -84,8 +106,23 @@
           "text": "「依專案裡的課本目錄，針對（章節）出一份小考：基礎題 6 題、應用題 3 題、挑戰題 1 題。每題附正確答案、完整解析，以及每個錯誤選項是針對哪個常見迷思設計的。若有題目超出（年級與課綱範圍）或需要沒教過的先備知識，請在該題下標註『可能超綱』並說明理由。最後說明整份的難度分布。」"
         },
         {
-          "type": "paragraph",
-          "text": "分層看得出層次，但三件事要自己確認：多步計算的答案它會算錯，逐題算一次；它沒讀過台灣的十二年國民基本教育課程綱要，「超綱」標記只能當提醒，要對照國家教育研究院的課綱與你的進度；選項偶爾兩個都對。教育部給國中小的注意事項也提醒採多元評量，避免 AI 過度取代評量形式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "分層看得出層次，但三件事要自己確認：多步計算的答案它會算錯，逐題算一次；它沒讀過台灣的十二年國民基本教育課程綱要，「超綱」"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "只能當提醒，要對照國家教育研究院的課綱與你的進度；選項偶爾兩個都對。教育部給國中小的注意事項也提醒採多元評量，避免 AI 過度取代評量形式。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -114,13 +151,34 @@
           "text": "通知單、聯絡簿短文與行政簽呈格式固定，最適合讓它寫草稿，但語氣要寫死。提示詞：「把下面的要點寫成一則給家長的聯絡簿短文，一百字以內：（要點條列）。語氣平實、尊重、不責備，先說事實再說希望家長協助的事，最後留一句歡迎聯絡。不要用驚嘆號，不要用『務必』『切勿』，也不要替學生下性格評語。」"
         },
         {
-          "type": "paragraph",
-          "text": "行政文書把前半句換成「寫成一則校內公告的本文，依我放在專案裡的格式範例」，把舊公告放進專案當樣本比形容詞準。三件事要改：日期、金額與人名自己核對；用語與職稱照學校既有的；正式公文格式以學校與上級機關規定為準。行政院民國 112 年 8 月通過的使用生成式 AI 參考指引寫明，製作機密文書不得使用生成式 AI。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "行政文書把前半句換成「寫成一則校內公告的本文，依我放在專案裡的格式範例」，把舊公告放進專案當樣本比形容詞準。三件事要改：日期、金額與人名自己核對；用語與職稱照學校既有的；正式公文格式以學校與上級機關規定為準。行政院民國 112 年 8 月通過的使用"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 參考指引寫明，製作機密文書不得使用生成式 AI。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
-          "url": "https://mokaair.com/zh-TW/life/claude-writing-style-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
+              "kind": "life",
+              "slug": "claude-writing-style-guide"
+            }
+          ]
         },
         {
           "type": "image",
@@ -159,9 +217,15 @@
           "text": "帳號層級還有一層：對話會不會拿去改進模型，是可以自己調的設定。三家怎麼關，另有一篇。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -183,9 +247,15 @@
           "text": "教育部的注意事項也寫著：對生成式 AI 的結果與建議應多方查證，進行批判性思考。"
         },
         {
-          "type": "link",
-          "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 為什麼會一本正經地胡說：幻覺的成因與查證方法",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -201,9 +271,15 @@
           "text": "作業設計也能調整：把「寫一篇心得」改成「附上你和 AI 的對話紀錄與你改了哪裡」；把一鍵可生成的題目換成要用課堂資料或自己的實驗數據才寫得出來的。國中小的注意事項還提醒，班上不是都拿得到軟硬體或具備操作能力時，不宜使用該 AI 工具，以維持評量公平性。"
         },
         {
-          "type": "link",
-          "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-students-honest-use"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "學生怎麼用 AI 不踩線：學習、整理筆記與學術誠信",
+              "kind": "life",
+              "slug": "ai-for-students-honest-use"
+            }
+          ]
         },
         {
           "type": "heading",

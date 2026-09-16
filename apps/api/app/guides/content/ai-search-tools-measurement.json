@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "活動網站收到一張 AI 回答截圖，裡面出現自己的名稱，團隊便想宣布「AI 曝光成長」。然而沒有前期紀錄、問題範圍與來源網址，這張截圖最多證明當次回答提到名稱。要評估變化，先讓觀察方式可以被另一個人重做。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "活動網站收到一張 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 回答截圖，裡面出現自己的名稱，團隊便想宣布「AI 曝光成長」。然而沒有前期紀錄、問題範圍與來源網址，這張截圖最多證明當次回答提到名稱。要評估變化，先讓觀察方式可以被另一個人重做。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -100,8 +116,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 的搜尋生成式 AI 成效報表，查閱時提供 AI Overviews 與 AI Mode 的曝光資料，可依頁面、國家、日期及裝置觀察；Discover 有另外的報表。這份報表不是所有 AI 產品的使用紀錄，也不要自行補上文件未提供的提示問題或點擊欄位。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的搜尋"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 成效報表，查閱時提供 AI Overviews 與 AI Mode 的曝光資料，可依頁面、國家、日期及裝置觀察；Discover 有另外的報表。這份報表不是所有 AI 產品的使用紀錄，也不要自行補上文件未提供的提示問題或點擊欄位。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -196,19 +227,37 @@
           "text": "先定義問題集與有效回答，再計算樣本內比例。單次截圖可以支持當次觀察，不能代替市場能見度或成長率。"
         },
         {
-          "type": "link",
-          "text": "先整理 AI 搜尋可核對的網站內容",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先整理 AI 搜尋可核對的網站內容",
+              "kind": "life",
+              "slug": "ai-search-geo-content"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解搜尋曝光與 CTR 的分母",
-          "url": "https://mokaair.com/zh-TW/life/search-results-clickthrough"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解搜尋曝光與 CTR 的分母",
+              "kind": "life",
+              "slug": "search-results-clickthrough"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "依研究任務選擇 SEO 工具",
-          "url": "https://mokaair.com/zh-TW/life/seo-tool-selection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依研究任務選擇 SEO 工具",
+              "kind": "life",
+              "slug": "seo-tool-selection"
+            }
+          ]
         }
       ],
       "sources": [

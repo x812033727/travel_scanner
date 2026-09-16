@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "剛接觸 SEO，容易同時聽到關鍵字、外部連結、網站速度和 AI 搜尋等名詞，最後每個都看過一點，卻不知道網站今天該改什麼。比較有用的學法，是選一個真實頁面，依它目前遇到的問題逐步練習。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "剛接觸 SEO，容易同時聽到關鍵字、外部連結、網站速度和 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 搜尋等名詞，最後每個都看過一點，卻不知道網站今天該改什麼。比較有用的學法，是選一個真實頁面，依它目前遇到的問題逐步練習。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -117,8 +134,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "把問題分成阻擋使用、內容缺口和效率改善。重要頁面無法開啟、結帳壞掉或主要內容被遮住，通常優先於微調一句摘要；已被讀者反覆詢問、但網站沒有回答的問題，則值得安排內容補充。這是工作排序方法，不是 Google 官方排名權重表。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把問題分成阻擋使用、內容缺口和效率改善。重要頁面無法開啟、結帳壞掉或主要內容被遮住，通常優先於"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "一句摘要；已被讀者反覆詢問、但網站沒有回答的問題，則值得安排內容補充。這是工作排序方法，不是 Google 官方排名權重表。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -138,8 +170,23 @@
           "text": "把 Google 搜尋中心當作原理與規則的主要參考，Search Console 說明用來理解工具指標；實際網站遇到問題時再找對應技術文件。課程或第三方文章可以協助理解，但應檢查發布時間、引用來源和是否把個案結果說成所有網站都有效。"
         },
         {
-          "type": "paragraph",
-          "text": "暫時不需要的進階題目先記下來。只有少量靜態頁面的網站，未必需要立刻研究大型站抓取資源；沒有多語內容時，也不必先背完所有國際網站標記。當你的網站出現對應需求，再深入該主題，學到的知識更容易留下。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "暫時不需要的進階題目先記下來。只有少量靜態頁面的網站，未必需要立刻研究大型站抓取資源；沒有多語內容時，也不必先背完所有國際網站"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。當你的網站出現對應需求，再深入該主題，學到的知識更容易留下。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,14 +248,26 @@
           "text": "今天解決什麼讀者或網站問題？改動後如何確認功能正確？還要觀察哪些資料才能判斷成效？把這三個答案寫進紀錄，能減少只看完教學卻沒有實際成果的情況。"
         },
         {
-          "type": "link",
-          "text": "先建立能正常使用的 WordPress 網站",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-first-site"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先建立能正常使用的 WordPress 網站",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排網站日常維護",
-          "url": "https://mokaair.com/zh-TW/life/website-maintenance-routine"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排網站日常維護",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
         }
       ],
       "sources": [

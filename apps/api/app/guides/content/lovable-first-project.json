@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "社區想建立工具借用網站，讓住戶查看器材、提出申請，再由管理員核准。用一句話請 AI 做出網站，可能很快看見列表和按鈕；但借用是否重複、誰能看申請人資料，以及重新整理後紀錄是否仍在，還需要逐一確認。這是用任何架站 AI 都要走的驗收。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "社區想建立工具借用網站，讓住戶查看器材、提出申請，再由管理員核准。用一句話請 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 做出網站，可能很快看見列表和按鈕；但借用是否重複、誰能看申請人資料，以及重新整理後紀錄是否仍在，還需要逐一確認。這是用任何架站 AI 都要走的驗收。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -43,8 +59,23 @@
           "text": "先列出訪客、借用者與管理員各自要做的事。本例訪客可看公開器材，借用者只能查看自己的申請，管理員可核准或拒絕。每項功能都寫出輸入、結果和失敗情境，例如器材不可借時應顯示原因，不能只讓送出按鈕變成成功樣式。"
         },
         {
-          "type": "paragraph",
-          "text": "第一輪只做器材列表與詳情，用明確標記的假資料確認資訊結構；第二輪才加入登入與申請，再加入管理功能。提示詞可寫成：建立繁體中文工具列表，顯示可借狀態，未接後端時明確標示示範資料。這比同時要求所有功能完成更容易看出差異。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一輪只做器材列表與詳情，用明確"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "的假資料確認資訊結構；第二輪才加入登入與申請，再加入管理功能。提示詞可寫成：建立繁體中文工具列表，顯示可借狀態，未接後端時明確標示示範資料。這比同時要求所有功能完成更容易看出差異。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -206,19 +237,37 @@
           "text": "檢查每次測試實際連接的資料環境。以假資料與可辨識的測試帳號操作，重大資料修改前保留可還原備份。"
         },
         {
-          "type": "link",
-          "text": "把 AI 設計需求寫成可檢查的提示",
-          "url": "https://mokaair.com/zh-TW/life/ai-design-prompt-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把 AI 設計需求寫成可檢查的提示",
+              "kind": "life",
+              "slug": "ai-design-prompt-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排網站製作與驗收階段",
-          "url": "https://mokaair.com/zh-TW/life/web-design-project-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排網站製作與驗收階段",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "先用原型確認操作流程",
-          "url": "https://mokaair.com/zh-TW/life/wireframe-prototype-testing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先用原型確認操作流程",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
         }
       ],
       "sources": [

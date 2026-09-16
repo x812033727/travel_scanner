@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -196,14 +198,26 @@
           "text": "管理員後台新增帳號可能走不同的核准規則。請使用未登入的瀏覽器及新的測試電子郵件，完整走過訪客實際看到的流程。"
         },
         {
-          "type": "link",
-          "text": "設定 WordPress 會員與編輯角色",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-user-roles"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "設定 WordPress 會員與編輯角色",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排 WordPress 登入安全與復原",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排 WordPress 登入安全與復原",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
         }
       ],
       "sources": [

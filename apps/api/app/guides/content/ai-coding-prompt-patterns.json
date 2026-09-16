@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-coding"
   ],
   "valid_until": null,
   "featured": false,
@@ -63,14 +64,26 @@
           "code": "目標：在結帳頁加上「輸入折扣碼」的欄位，送出後顯示折抵後金額。\n背景：前端在 src/checkout/、折扣規則在 src/pricing/discount.ts，\n      表單元件請照 src/checkout/AddressForm.tsx 既有的寫法。\n限制：不要新增第三方套件；沿用現有的錯誤訊息元件；不要改動 API 介面。\n完成條件：\n  1. 輸入有效折扣碼會顯示折抵後金額。\n  2. 輸入無效折扣碼會顯示既有樣式的錯誤訊息。\n  3. npm test 全部通過，npm run lint 沒有新的警告。"
         },
         {
-          "type": "link",
-          "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
-          "url": "https://mokaair.com/zh-TW/life/ai-chat-prompt-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞入門：把問題問清楚的五個原則，改前改後對照著學",
+              "kind": "life",
+              "slug": "ai-chat-prompt-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜如何把需求交代清楚",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-task-prompts"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜如何把需求交代清楚",
+              "kind": "life",
+              "slug": "claude-code-task-prompts"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -118,19 +131,37 @@
           "text": "不是每件事都要規劃。Anthropic 特別提醒規劃有成本：改錯字、加一行紀錄、改個變數名稱這種小事直接叫它做就好，你能用一句話描述這個 diff 就跳過規劃。划算的時機是你不確定做法、改動橫跨多個檔案、或你不熟這段程式。"
         },
         {
-          "type": "link",
-          "text": "Claude Code｜Plan Mode 與權限模式",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-permissions-plan-mode"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜Plan Mode 與權限模式",
+              "kind": "life",
+              "slug": "claude-code-permissions-plan-mode"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜CLAUDE.md 完整教學",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-claude-md-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜CLAUDE.md 完整教學",
+              "kind": "life",
+              "slug": "claude-code-claude-md-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "CLI 寫程式：理解、規劃、修改與測試",
-          "url": "https://mokaair.com/zh-TW/life/gemini-cli-coding-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CLI 寫程式：理解、規劃、修改與測試",
+              "kind": "life",
+              "slug": "gemini-cli-coding-workflow"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -156,14 +187,26 @@
           "text": "還有一件常被忽略的事：一個對話只做一件事。OpenAI 的常見錯誤清單就有「整個專案共用同一個對話」，建議每個完整的成果各開一個對話。Anthropic 說的是同一件事的另一面：不相關的任務之間用 /clear 清掉上下文，因為上下文視窗塞滿無關內容之後，代理的表現會下降。"
         },
         {
-          "type": "link",
-          "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-git-basics"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 寫程式前該懂的 Git：分支、提交與還原",
+              "kind": "life",
+              "slug": "ai-coding-git-basics"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文工程（Context Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文工程（Context Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-context-engineering"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -190,8 +233,23 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "兩邊都有現成的審查入口。Claude Code 內建 /code-review，會在全新的子代理上下文裡審目前的 diff 再回報；Codex 輸入 /review 會開一個專門的審查者，讓你選擇比對基準分支或審未提交的改動，回報排好優先序的發現，而且不會動你的工作目錄。用新的上下文審查的好處是：審的那一方沒看過寫的那一方的推理過程，比較不會替自己剛寫的程式辯護。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "兩邊都有現成的審查入口。Claude Code 內建 /code-review，會在全新的"
+            },
+            {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "上下文裡審目前的 diff 再回報；Codex 輸入 /review 會開一個專門的審查者，讓你選擇比對基準分支或審未提交的改動，回報排好優先序的發現，而且不會動你的工作目錄。用新的上下文審查的好處是：審的那一方沒看過寫的那一方的推理過程，比較不會替自己剛寫的程式辯護。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -213,9 +271,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
-          "url": "https://mokaair.com/zh-TW/life/ai-code-review-safety"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫的程式能信嗎：審查、測試與安全檢查清單",
+              "kind": "life",
+              "slug": "ai-code-review-safety"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -299,14 +363,26 @@
           "text": "三段跑順之後，值得投資的是把重複交代的東西沉澱下來：每次都要講的規則寫進專案規則檔，固定的驗收條件整理成清單，跑得久的工作先寫成規格再開新對話實作。提示詞會愈寫愈短，因為該讓代理知道的事，已經不必每次重講。"
         },
         {
-          "type": "link",
-          "text": "規格驅動開發（Spec-driven Development）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規格驅動開發（Spec-driven Development）是什麼",
+              "kind": "life",
+              "slug": "ai-term-spec-driven-development"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
-          "url": "https://mokaair.com/zh-TW/life/codex-cli-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Codex CLI 入門：在終端機裡讓 OpenAI 幫你改程式",
+              "kind": "life",
+              "slug": "codex-cli-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

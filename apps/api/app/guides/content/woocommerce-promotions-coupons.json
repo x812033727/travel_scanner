@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "woocommerce"
   ],
   "valid_until": null,
   "featured": false,
@@ -196,14 +198,26 @@
           "text": "設定適用品項、期間和使用限制，再測不符合條件時的提示。單獨使用只處理其支援的併用範圍，其他促銷外掛仍需另外核對。"
         },
         {
-          "type": "link",
-          "text": "免運門檻與運送方法的設定",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-shipping-rules"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免運門檻與運送方法的設定",
+              "kind": "life",
+              "slug": "woocommerce-shipping-rules"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "付款退款和銀行對帳如何核對",
-          "url": "https://mokaair.com/zh-TW/life/woocommerce-paypal-setup"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "付款退款和銀行對帳如何核對",
+              "kind": "life",
+              "slug": "woocommerce-paypal-setup"
+            }
+          ]
         }
       ],
       "sources": [

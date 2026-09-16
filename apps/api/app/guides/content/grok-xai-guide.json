@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -51,8 +52,23 @@
           "ordered": false
         },
         {
-          "type": "paragraph",
-          "text": "台灣可用性是當天實查的：本站環境可以正常開啟 grok.com；Apple 官方查詢介面在台灣區查得到「Grok - AI 助理」，標示免費、分級 17+、語言含中文；Google Play 台灣商店頁面也開得起來。能不能用台灣門號註冊、付款方式支援到哪裡，官方沒有逐國說明，以官網為準。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "台灣可用性是當天實查的：本站環境可以正常開啟 grok.com；Apple 官方查詢介面在台灣區查得到「Grok - "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 助理」，標示免費、分級 17+、語言含中文；Google Play 台灣商店頁面也開得起來。能不能用台灣門號註冊、付款方式支援到哪裡，官方沒有逐國說明，以官網為準。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -139,9 +155,15 @@
           "caption": "2026 年 9 月官方定價頁與 help.x.com 逐國定價表；X Premium 為網頁版月費，未計稅金與手續費。"
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -157,9 +179,15 @@
           "text": "消費端比較表的模型那一列寫的是 Grok 4.6。至於介面上那顆多想幾步的按鈕現在叫什麼、DeepSearch 這類名稱還在不在，消費端說明頁沒有列，以官網為準。"
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -190,8 +218,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "先看 X 這一側。help.x.com 寫，X 可能把你的公開 X 資料，以及你和 Grok 的互動、輸入與結果分享給 xAI，用來訓練與微調 Grok 和其他生成式 AI 模型；公開 X 資料指公開貼文、貼文的互動與轉發等中繼資料、公開的 Spaces 與公開個人檔案。那一節標題用的字是「如何退出模型訓練」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先看 X 這一側。help.x.com 寫，X 可能把你的公開 X 資料，以及你和 Grok 的互動、輸入與結果分享給 xAI，用來訓練與"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": " Grok 和其他"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 模型；公開 X 資料指公開貼文、貼文的互動與轉發等中繼資料、公開的 Spaces 與公開個人檔案。那一節標題用的字是「如何退出模型訓練」。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -216,9 +269,15 @@
           "text": "留存時間兩份文件都寫了：打開 Private Chat 的對話不會進紀錄，並在 30 天內從系統刪除；你要求刪除的對話或整個帳號同樣是 30 天內刪除。隱私政策還有一句值得抄下來：不要把個人資料放進提示詞與輸入裡。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -240,38 +299,74 @@
           "text": "圖片生成有一條很具體：官方說明頁寫，Grok Imagine 產生的圖片與影片都會帶浮水印，沒有設定可以拿掉，理由是標示 AI 生成內容，且部分司法管轄區本來就要求標示。看到別人的影片時，也可以先找找有沒有這個訊號。"
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+              "kind": "life",
+              "slug": "ai-term-content-credentials"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "最後是準確度。help.x.com 的 Grok 說明頁自己寫著：這是早期版本，可能很有自信地提供事實上錯誤的資訊、摘要失準或漏掉脈絡，建議獨立查證收到的任何資訊，也請不要在對話裡提供個人資料或機密資訊。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/perplexity-ai-search-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Perplexity 入門：附引用的 AI 搜尋、方案與隱私設定",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放",
-          "url": "https://mokaair.com/zh-TW/life/mistral-le-chat-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Mistral Vibe（原 Le Chat）：歐洲 AI 助手的方案、功能與資料存放",
+              "kind": "life",
+              "slug": "mistral-le-chat-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         }
       ],
       "sources": [

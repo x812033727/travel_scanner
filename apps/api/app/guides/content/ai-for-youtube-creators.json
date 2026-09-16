@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "productivity"
+    "productivity",
+    "ai-work"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一支影片從想題目到按下發布，AI 能幫的分成兩半：一半 YouTube 已經做進工作室，開啟就有；另一半得自己接外部工具。先弄清楚哪幾段內建、資格條件寫什麼，再決定買哪些工具；順序反過來容易買重複，也會漏掉真正卡關的語言與地區限制。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一支影片從想題目到按下發布，"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 能幫的分成兩半：一半 YouTube 已經做進工作室，開啟就有；另一半得自己接外部工具。先弄清楚哪幾段內建、資格條件寫什麼，再決定買哪些工具；順序反過來容易買重複，也會漏掉真正卡關的語言與地區限制。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -91,9 +107,15 @@
           "code": "你是我的影片企劃夥伴。\n主題：<一句話寫清楚這支影片要回答什麼>\n觀眾：<誰、他們已經知道什麼、想解決什麼問題>\n片長：<分鐘>\n語氣：<口語／教學／評論>\n\n請依序輸出：\n1. 三個不同切角的標題，各附一句「為什麼選它」\n2. 選定切角後的大綱，每段標上預估秒數\n3. 開場鉤子的兩種寫法\n4. 需要我自己查證的事實清單（數字、日期、產品名）\n\n限制：不要編造數字與引用；不確定的地方直接寫「待查」。"
         },
         {
-          "type": "link",
-          "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
-          "url": "https://mokaair.com/zh-TW/life/ai-prompt-library-personal"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立自己的提示詞庫：固定欄位、放在哪裡、怎麼管版本",
+              "kind": "life",
+              "slug": "ai-prompt-library-personal"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -101,8 +123,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "自動字幕靠語音辨識產生，官方列出的支援語言有 67 種，中文、粵語（香港）、日語、韓語都在內。官方對品質的說法很直白：自動字幕由機器學習演算法產生，可能因發音、口音、方言或背景噪音出錯，建議先放專業字幕，並一定要自己檢查再修。生不出字幕的常見原因包括語言不支援、影片太長、音質差、開頭長時間靜默。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "自動字幕靠語音辨識產生，官方列出的支援語言有 67 種，中文、粵語（香港）、日語、韓語都在內。官方對品質的說法很直白：自動字幕由"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "演算法產生，可能因發音、口音、方言或背景噪音出錯，建議先放專業字幕，並一定要自己檢查再修。生不出字幕的常見原因包括語言不支援、影片太長、音質差、開頭長時間靜默。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -115,14 +152,26 @@
           "code": "以下是 YouTube 自動字幕匯出的逐字稿，語音辨識常把專有名詞聽錯。\n請做三件事，不要改寫我的語氣：\n1. 只修正錯字、專有名詞與標點，逐行對照輸出\n2. 你不確定的行標上「?」，並列出原文與你的猜測\n3. 最後列出整份稿子重複出現的贅詞\n\n專有名詞對照表：\n<地名／品牌／人名，一行一個>\n---\n<貼上逐字稿>"
         },
         {
-          "type": "link",
-          "text": "AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路",
-          "url": "https://mokaair.com/zh-TW/life/ai-video-subtitles-translation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路",
+              "kind": "life",
+              "slug": "ai-video-subtitles-translation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
-          "url": "https://mokaair.com/zh-TW/life/whisper-local-transcription"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Whisper 本機轉錄逐字稿：會議與訪談的離線做法",
+              "kind": "life",
+              "slug": "whisper-local-transcription"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -137,9 +186,15 @@
           "text": "要在配音上線前先聽過，到工作室的設定、頻道、進階設定勾選「允許自動配音」，再勾「發布前手動審查配音」，同一頁也能整個關掉。實驗性的對嘴功能會改變唇形去對上配音，官方寫明只開放部分頻道搶先體驗。想控制配音的聲音與語氣，得用外部工具另做音軌。"
         },
         {
-          "type": "link",
-          "text": "MiniMax 語音合成：中文配音、有聲書與影片旁白",
-          "url": "https://mokaair.com/zh-TW/life/minimax-speech-tts-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "MiniMax 語音合成：中文配音、有聲書與影片旁白",
+              "kind": "life",
+              "slug": "minimax-speech-tts-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -169,14 +224,26 @@
           "code": "影片主題：<一句話>\n目標觀眾：<誰>\n影片裡最強的一個畫面：<描述>\n\n請給我 6 組縮圖上的字，每組不超過 8 個中文字，\n並標明各自訴求的是好奇、實用還是對比。\n再給我 3 個搭配的標題。\n\n限制：不要用與影片內容不符的說法；不要用驚嘆號。"
         },
         {
-          "type": "link",
-          "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/canva-ai-features-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Canva 的 AI 功能怎麼用：免費能做什麼、額度怎麼算",
+              "kind": "life",
+              "slug": "canva-ai-features-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-image-generation-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 畫圖教學：圖片生成、修圖與風格提示詞怎麼寫",
+              "kind": "life",
+              "slug": "chatgpt-image-generation-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -196,14 +263,26 @@
           "text": "資料保存同樣寫在官方頁上：YouTube AI 功能活動預設開啟，提示詞與輸出跟著 YouTube 帳戶保存最長 18 個月，未連結 Google 帳戶的最長 3 年，自己刪掉的還會再保存最多 30 天。官方也要求不要在提示詞裡輸入機密資訊。"
         },
         {
-          "type": "link",
-          "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
-          "url": "https://mokaair.com/zh-TW/life/ai-video-tools-compared"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 影片工具比較：Veo、Sora、海螺、Kling 的方案與規格",
+              "kind": "life",
+              "slug": "ai-video-tools-compared"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
-          "url": "https://mokaair.com/zh-TW/life/short-video-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "短影音企劃：Reels 的腳本、製作與成效回顧",
+              "kind": "life",
+              "slug": "short-video-marketing"
+            }
+          ]
         },
         {
           "type": "table",
@@ -269,8 +348,23 @@
           "text": "AI 揭露的規定很短：創作者使用 AI 實質變造或生成擬真內容就必須揭露。官方列出三種情形，原文是「呈現真實人物的言論與動作，但其實並非本人所為」「實際事件或地點的影片片段經過加工」「生成看似真實但從未發生的場景」。操作位置在上傳流程的「屬性」專區，在「使用 AI 技術」下面選「是」。"
         },
         {
-          "type": "paragraph",
-          "text": "不用揭露的清單正好涵蓋大部分日常工作流：美顏濾鏡、色彩與亮度調整、背景模糊或復古特效、用生成式 AI 建立或改善大綱、腳本、縮圖、標題或資訊圖表、字幕製作、畫質修復、構思點子、複製自己的聲音用於旁白。要揭露的例子則包括 AI 生成音樂、用 AI 生成實際地點的額外片段、讓人說出從未說過的建議。兩份清單官方都註明不完整。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不用揭露的清單正好涵蓋大部分日常工作流：美顏濾鏡、色彩與亮度調整、背景模糊或復古特效、用"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 建立或改善大綱、腳本、縮圖、標題或資訊圖表、字幕製作、畫質修復、構思點子、複製自己的聲音用於旁白。要揭露的例子則包括 AI 生成音樂、用 AI 生成實際地點的額外片段、讓人說出從未說過的建議。兩份清單官方都註明不完整。"
+            }
+          ]
         },
         {
           "type": "callout",
@@ -279,9 +373,15 @@
           "text": "官方寫明，用 YouTube 生成式 AI 工具製作的 Shorts 或貼文，工具會自動揭露。相對地，用 YouTube AI 工具做的內容、帶有 C2PA 資訊的內容，以及經人工審查加上標籤的內容，創作者無法自行調整揭露設定；其他情形誤判時，多數可以在工作室「屬性」下把 AI 揭露問卷改成「否」。官方也寫明揭露不會限制影片的觀眾範圍，也不影響營利資格，持續不揭露才會被手動加標籤，或被移除內容、暫停合作夥伴計畫資格。"
         },
         {
-          "type": "link",
-          "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
-          "url": "https://mokaair.com/zh-TW/life/ai-generated-content-disclosure"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 內容標示：YouTube、Meta 與台灣的規定",
+              "kind": "life",
+              "slug": "ai-generated-content-disclosure"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -296,9 +396,15 @@
           "text": "這些條文是拿來審整個頻道的：官方寫明審查人員會看頻道主題、觀看次數最高與最新的影片、影片中繼資料與「關於」欄位。加入合作夥伴計畫的門檻沒有因為 AI 而改變：1,000 位訂閱者加上過去 12 個月 4,000 小時有效公開觀看時數，或 1,000 位訂閱者加上過去 90 天 1,000 萬次有效 Shorts 觀看次數。"
         },
         {
-          "type": "link",
-          "text": "YouTube 收款設定：AdSense 付款資料與稅務表單查核",
-          "url": "https://mokaair.com/zh-TW/life/youtube-payment-tax-info"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "YouTube 收款設定：AdSense 付款資料與稅務表單查核",
+              "kind": "life",
+              "slug": "youtube-payment-tax-info"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "website",
+    "wordpress"
   ],
   "valid_until": null,
   "featured": false,
@@ -186,14 +188,26 @@
           "text": "重要錨點盡量保持穩定。文章更新時同步檢查相關引用，並用未登入視窗直接開啟帶錨點網址，確認讀者真的能到達目標段落。"
         },
         {
-          "type": "link",
-          "text": "整理 WordPress 文章與頁面",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-posts-pages"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理 WordPress 文章與頁面",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規劃網站分類與導覽",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-taxonomy-navigation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規劃網站分類與導覽",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
         }
       ],
       "sources": [

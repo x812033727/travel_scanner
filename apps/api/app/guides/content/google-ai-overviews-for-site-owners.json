@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-search",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "網站經營者觀察 Google AI 摘要，應同時看內容是否清楚、頁面能否被搜尋系統讀取，以及實際曝光和流量。這篇提供一個可重複的檢查流程，並說明 Search Console 新增的生成式 AI 報表與控制。完成後可以用紀錄判斷變化，避免只靠自己搜尋時的一張截圖。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "網站經營者觀察 Google "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 摘要，應同時看內容是否清楚、頁面能否被搜尋系統讀取，以及實際曝光和流量。這篇提供一個可重複的檢查流程，並說明 Search Console 新增的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 報表與控制。完成後可以用紀錄判斷變化，避免只靠自己搜尋時的一張截圖。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -59,9 +86,10 @@
               "text": "準備自己網站的 Search Console 存取權，以及一個確定已公開的文章網址。本篇依官方文件整理，沒有讀取本站私人成效報表，也沒有更改搜尋控制。搜尋使用者角度的操作可先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 模式與摘要",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+              "kind": "life",
+              "slug": "google-ai-mode-search"
             },
             {
               "type": "text",
@@ -110,18 +138,20 @@
               "text": "例如「建立 GEMINI.md」的文章，應說清楚檔案放哪裡、如何確認載入、哪些設定不在這份檔案裡。相關概念第一次出現時連到"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "專案指示檔",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "記憶載入檢查",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-memory-hierarchy"
+              "kind": "life",
+              "slug": "gemini-cli-memory-hierarchy"
             },
             {
               "type": "text",
@@ -196,8 +226,33 @@
           "text": "完成後應有一筆頁面索引檢查、內容缺漏清單、固定期間的曝光觀察，以及目前控制設定紀錄。最重要的成果是知道哪些已確認、哪些尚無證據，而不是保證文章明天被引用。Google 的官方建議也不保證抓取、索引或展示。"
         },
         {
-          "type": "paragraph",
-          "text": "「需要特殊 AI 結構化資料嗎？」官方沒有要求為了出現在搜尋 AI 功能新增特殊 schema 或 AI 文字檔。先維持符合可見內容的標記、可讀正文與正常站內連結，再對照最新 AI 最佳化指南。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「需要特殊 AI 結構化資料嗎？」官方沒有要求為了出現在"
+            },
+            {
+              "type": "article",
+              "text": "搜尋 AI",
+              "kind": "life",
+              "slug": "perplexity-ai-search-guide"
+            },
+            {
+              "type": "text",
+              "text": " 功能新增特殊 schema 或 AI 文字檔。先維持符合可見內容的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、可讀正文與正常站內連結，再對照最新 AI 最佳化指南。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -252,18 +307,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Google 搜尋 AI 模式",
-              "url": "https://mokaair.com/zh-TW/life/google-ai-mode-search"
+              "kind": "life",
+              "slug": "google-ai-mode-search"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Deep Research",
-              "url": "https://mokaair.com/zh-TW/life/gemini-deep-research-guide"
+              "kind": "life",
+              "slug": "gemini-deep-research-guide"
             },
             {
               "type": "text",
@@ -272,9 +329,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

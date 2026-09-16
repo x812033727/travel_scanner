@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -206,14 +208,26 @@
           "text": "如果教學缺少前置條件、比較沒有選擇依據，或連結打開後無法完成下一步，再多關鍵字也不能補上這些缺口。先讓內容可以被理解和執行，再用工具檢查設定是否正確。"
         },
         {
-          "type": "link",
-          "text": "先了解文章與固定頁面的用途",
-          "url": "https://mokaair.com/zh-TW/life/wordpress-posts-pages"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先了解文章與固定頁面的用途",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "頁面有技術異常時使用稽核清單",
-          "url": "https://mokaair.com/zh-TW/life/technical-seo-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "頁面有技術異常時使用稽核清單",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
         }
       ],
       "sources": [

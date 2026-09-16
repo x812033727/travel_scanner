@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "finance",
-    "tutorial"
+    "tutorial",
+    "banking"
   ],
   "valid_until": null,
   "featured": false,
@@ -47,9 +48,15 @@
           "text": "帳戶分開之後，問題變成看餘額：生活費帳戶的餘額就是這個月還能花的錢，儲蓄帳戶的餘額就是累積到現在的成果，固定支出的帳戶只要確認扣款成功沒有。預算從每天要做的判斷，變成一個月做一次的轉帳動作。"
         },
         {
-          "type": "link",
-          "text": "比例要怎麼抓、要不要分到那麼細，各種預算法的差別整理在這裡",
-          "url": "https://mokaair.com/zh-TW/life/household-budget-methods"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比例要怎麼抓、要不要分到那麼細，各種預算法的差別整理在這裡",
+              "kind": "life",
+              "slug": "household-budget-methods"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -145,9 +152,15 @@
           "text": "要診斷的是分配比例，不是這個月怎麼補。見底有三種原因：生活費預算本來就低於實際需要，那要調高生活費比例並同時調低儲蓄；本來屬於固定支出或年度支出的款項被算進了生活費，那要把它移回對應的帳戶；真的發生一次性的意外，那是緊急預備金的用途。共同點是答案在下個月的分配裡，不在這個月的搬錢動作裡。"
         },
         {
-          "type": "link",
-          "text": "一次性的意外要用緊急預備金支應，這筆錢該準備多少、放在哪裡",
-          "url": "https://mokaair.com/zh-TW/life/emergency-fund-how-much"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "一次性的意外要用緊急預備金支應，這筆錢該準備多少、放在哪裡",
+              "kind": "life",
+              "slug": "emergency-fund-how-much"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -226,9 +239,15 @@
           "text": "第一個月不要追求把比例調到最準。把帳戶開好、自動轉帳設好，照著跑一個月，月底只看兩件事：有沒有哪一筆扣款失敗、哪一個帳戶提早見底。比例是照這兩個結果調的，不是一開始想得出來的。"
         },
         {
-          "type": "link",
-          "text": "在分帳戶之前，先確認理財的順序有沒有排對",
-          "url": "https://mokaair.com/zh-TW/life/personal-finance-first-steps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在分帳戶之前，先確認理財的順序有沒有排對",
+              "kind": "life",
+              "slug": "personal-finance-first-steps"
+            }
+          ]
         },
         {
           "type": "callout",

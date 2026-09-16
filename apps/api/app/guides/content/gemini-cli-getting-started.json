@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Gemini CLI 是在終端機使用的 AI 工具，可以讀取專案檔案、協助修改程式與執行工作流程。本篇帶你在 Windows、macOS 或 Linux 完成安裝，確認版本，建立獨立練習資料夾並完成第一次對話。它與 Gemini 網頁、手機 App 的入口不同，適合需要處理本機檔案與程式的人。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini CLI 是在終端機使用的 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工具，可以讀取專案檔案、協助修改程式與執行工作流程。本篇帶你在 Windows、macOS 或 Linux 完成安裝，確認版本，建立獨立練習資料夾並完成第一次對話。它與 Gemini 網頁、手機 App 的入口不同，適合需要處理本機檔案與程式的人。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -59,9 +75,10 @@
               "text": "先選一種安裝方式即可。跨平臺可用 npm，macOS 與 Linux 也可依官方文件使用 Homebrew。混用多個安裝方式時，可能出現同名命令指向不同版本的情況。若只是日常聊天，"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "電腦網頁版",
-              "url": "https://mokaair.com/zh-TW/life/gemini-web-desktop-guide"
+              "kind": "life",
+              "slug": "gemini-web-desktop-guide"
             },
             {
               "type": "text",
@@ -77,9 +94,10 @@
               "text": "準備一個空白練習資料夾，裡面只放虛構文字。CLI 可以接觸本機工具，因此第一次啟動前要看清楚所在目錄，避免直接在含有大量私人檔案的家目錄練習。認證與費用另見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 登入篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
@@ -110,9 +128,10 @@
               "text": "預期 gemini --version 顯示 0.59.0，help 顯示啟動方式與可用引數。這證明目前入口可以執行，還不代表 Google 登入或模型服務已成功。若你採最新穩定版，先把版本記錄下來，後面的指令差異以"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "版本化指令總表",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-command-reference"
+              "kind": "life",
+              "slug": "gemini-cli-command-reference"
             },
             {
               "type": "text",
@@ -188,9 +207,10 @@
               "text": "Windows 的 PowerShell 與 Bash 指令不完全相同，例如列檔案可用 Get-ChildItem，而 Unix 類系統通常用 ls。看到教學標籤再複製，不要把每段命令都貼進同一個視窗。"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案與 shell 教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-files-and-shell"
+              "kind": "life",
+              "slug": "gemini-cli-files-and-shell"
             },
             {
               "type": "text",
@@ -219,9 +239,10 @@
               "text": "「啟動後一直要求登入」確認登入完成的帳號與 CLI 選擇的認證方式一致，並檢視是否有地區或組織資格錯誤。安裝命令成功與登入成功是不同階段；詳細處理方式在"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "認證篇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
@@ -237,27 +258,30 @@
               "text": "「第一次就能修改整個專案嗎」工具可能具備這種能力，但練習應從一個檔案開始。先理解讀取、修改與核准畫面，再加入"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "GEMINI.md 規則",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-gemini-md"
+              "kind": "life",
+              "slug": "gemini-cli-gemini-md"
             },
             {
               "type": "text",
               "text": "與"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "權限控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-permissions-sandbox"
+              "kind": "life",
+              "slug": "gemini-cli-permissions-sandbox"
             },
             {
               "type": "text",
               "text": "。若遇到 PATH、憑證或設定不生效，儲存原始錯誤後沿"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "疑難排解",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-troubleshooting"
+              "kind": "life",
+              "slug": "gemini-cli-troubleshooting"
             },
             {
               "type": "text",
@@ -306,18 +330,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 認證",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 指令總表",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-command-reference"
+              "kind": "life",
+              "slug": "gemini-cli-command-reference"
             },
             {
               "type": "text",
@@ -326,9 +352,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

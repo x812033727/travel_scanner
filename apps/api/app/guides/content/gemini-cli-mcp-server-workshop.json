@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "gemini-dev"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "當資料只存在自己電腦的 CSV，Gemini 不會自動知道檔案裡的商品與價格。本篇用 MCP 建立一個唯讀查詢工具，讓助手以商品編號取回指定資料。你會得到一個可啟動的本機伺服器、明確的輸入格式，以及能分辨連線問題與資料問題的測試紀錄。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "當資料只存在自己電腦的 CSV，Gemini 不會自動知道檔案裡的商品與價格。本篇用 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 建立一個唯讀查詢工具，讓助手以商品編號取回指定資料。你會得到一個可啟動的本機伺服器、明確的輸入格式，以及能分辨連線問題與資料問題的測試紀錄。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,18 +71,20 @@
               "text": "先讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP 與 Extensions 入門",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+              "kind": "life",
+              "slug": "gemini-cli-mcp-extensions"
             },
             {
               "type": "text",
               "text": "，並完成 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 認證教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
@@ -94,8 +112,23 @@
           "code": "python -m venv .venv\n.venv/Scripts/python.exe -m pip install -r requirements.txt\n.venv/Scripts/python.exe -m pip show mcp\n"
         },
         {
-          "type": "paragraph",
-          "text": "server.py 的工具只接受 SKU 加三位數字，例如 SKU-001。資料路徑由程式固定在 server.py 旁的 products.csv，查詢參數不能指定其他檔案。這個區分很重要：工具接受的是商品身分，不是讓模型自由選擇要打開哪個本機路徑。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "server.py 的工具只接受 SKU 加三位數字，例如 SKU-001。資料路徑由程式固定在 server.py 旁的 products.csv，查詢"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "不能指定其他檔案。這個區分很重要：工具接受的是商品身分，不是讓模型自由選擇要打開哪個本機路徑。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -248,9 +281,10 @@
               "text": "它控制工具確認，工作區信任則控制是否能啟動本機程序。核對自己正在使用的設定位置與工作根目錄；有需要再讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "設定除錯實驗",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-settings-debug-lab"
+              "kind": "life",
+              "slug": "gemini-cli-settings-debug-lab"
             },
             {
               "type": "text",
@@ -271,9 +305,10 @@
               "text": "工具本身必須驗證 SKU 與資料範圍；若還要依事件執行檢查，可接著做 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks 品質檢查",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks-quality-gates"
+              "kind": "life",
+              "slug": "gemini-cli-hooks-quality-gates"
             },
             {
               "type": "text",
@@ -289,27 +324,30 @@
               "text": "延伸閱讀："
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "MCP 與 Extensions：安裝、驗證與停用",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-mcp-extensions"
+              "kind": "life",
+              "slug": "gemini-cli-mcp-extensions"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "CLI 認證：Google 帳號、API Key 與計費",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-authentication"
+              "kind": "life",
+              "slug": "gemini-cli-authentication"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Hooks 品質檢查：事件輸入、退出碼與失敗時停止",
-              "url": "https://mokaair.com/zh-TW/life/gemini-cli-hooks-quality-gates"
+              "kind": "life",
+              "slug": "gemini-cli-hooks-quality-gates"
             },
             {
               "type": "text",
@@ -328,9 +366,15 @@
           "url": "https://mokaair.com/guides/gemini-cli-mcp-server-workshop/automation-verification.zip"
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

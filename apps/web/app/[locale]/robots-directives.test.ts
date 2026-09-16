@@ -32,7 +32,7 @@ const covered = (route: string) => chain(route).some((file) => declaresNoindex(r
 
 // Signed-in surfaces, auth forms, and URLs whose only key is an unguessable token.
 const PRIVATE = [
-  "/search", "/search/new",
+  "/search", "/search/new", "/search/articles",
   "/login", "/register", "/forgot-password",
   "/account", "/account/confirm",
   "/my",

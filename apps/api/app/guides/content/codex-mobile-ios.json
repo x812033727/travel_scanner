@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "codex"
   ],
   "display_order": 114,
   "locales": {
@@ -295,8 +296,23 @@
           ]
         },
         {
-          "type": "paragraph",
-          "text": "練習結束，回主機只移除這次由你新增的 remote-check.txt，保留五個網站程式檔。原本就存在的檔案不刪除、不覆寫。新增的標記練習與前面的程式分析都只要求讀取；未實際配對或操作的部分，要在紀錄中保留未實測。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "練習結束，回主機只移除這次由你新增的 remote-check.txt，保留五個網站程式檔。原本就存在的檔案不刪除、不覆寫。新增的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "練習與前面的程式分析都只要求讀取；未實際配對或操作的部分，要在紀錄中保留未實測。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

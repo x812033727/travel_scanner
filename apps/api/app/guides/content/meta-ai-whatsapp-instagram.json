@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "daily"
+    "daily",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Meta AI 是 Meta 放進自家產品的 AI 助理，出現在 WhatsApp、Instagram、Messenger、Facebook，以及 meta.ai 網頁版與 Meta AI App。先說結論：Meta 的說明中心寫得很清楚，只有提及 @Meta AI、或你主動分享給它的訊息，Meta 才讀得到；但只要你開始跟它對話，那段內容就不在端對端加密的保護範圍裡，規則和你跟朋友的私訊完全不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Meta "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 是 Meta 放進自家產品的 AI 助理，出現在 WhatsApp、Instagram、Messenger、Facebook，以及 meta.ai 網頁版與 Meta AI App。先說結論：Meta 的說明中心寫得很清楚，只有提及 @Meta AI、或你主動分享給它的訊息，Meta 才讀得到；但只要你開始跟它對話，那段內容就不在端對端加密的保護範圍裡，規則和你跟朋友的私訊完全不同。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -58,9 +74,15 @@
           "text": "台灣每天用得更多的其實是 LINE，它的 AI 功能與可用範圍是另一套規則，同系列另有一篇。"
         },
         {
-          "type": "link",
-          "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
-          "url": "https://mokaair.com/zh-TW/life/line-ai-features-taiwan"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LINE 裡的 AI：聊天、翻譯與台灣可用功能",
+              "kind": "life",
+              "slug": "line-ai-features-taiwan"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -140,9 +162,15 @@
           "text": "如果你想一次把常用的幾家 AI 的訓練開關都檢查一遍，這份清單可以照著做。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -235,42 +263,78 @@
           "text": "生圖怎麼運作、合成影像怎麼分辨，系列裡各有一篇。"
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "模型方面，Meta 在 2026 年 4 月 8 日的官方部落格宣布 Muse Spark，寫明它當天就在 meta.ai 與 Meta AI App 上線，並把前一代的 Llama 4 Maverick 稱為先前的模型。Llama 系列是 Meta 對外釋出、可以自己下載的那一支；「可以下載模型」到底代表什麼、下載之後還要確認哪些條款，開放權重那篇整理得比較完整。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "如果你要做的不是自己用助理，而是用聊天機器人接客服訊息，那是另一個題目；其他平台的內建 AI 也各有一篇可以對照著讀。"
         },
         {
-          "type": "link",
-          "text": "社群聊天機器人：Manychat、Chatfuel 與真人接手流程",
-          "url": "https://mokaair.com/zh-TW/life/social-chatbot-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "社群聊天機器人：Manychat、Chatfuel 與真人接手流程",
+              "kind": "life",
+              "slug": "social-chatbot-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
-          "url": "https://mokaair.com/zh-TW/life/apple-intelligence-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple Intelligence：iPhone、Mac 上的 AI 功能與中文支援",
+              "kind": "life",
+              "slug": "apple-intelligence-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
-          "url": "https://mokaair.com/zh-TW/life/microsoft-copilot-windows-office"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Microsoft Copilot：Windows 與 Office 裡的 AI 怎麼分、怎麼買、怎麼關",
+              "kind": "life",
+              "slug": "microsoft-copilot-windows-office"
+            }
+          ]
         }
       ],
       "sources": [

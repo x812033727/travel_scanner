@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "finance",
-    "tutorial"
+    "tutorial",
+    "banking"
   ],
   "valid_until": null,
   "featured": false,
@@ -64,9 +65,15 @@
           "text": "同樣把錢轉出去，走 App、走機器、走櫃檯，在費率表上是三行不同的項目；而有收費項目不等於一定收費，免費次數與減免條件是各家自己的政策。"
         },
         {
-          "type": "link",
-          "text": "手續費只是支出結構的一小塊，理財的先後順序可以先確認一次",
-          "url": "https://mokaair.com/zh-TW/life/personal-finance-first-steps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "手續費只是支出結構的一小塊，理財的先後順序可以先確認一次",
+              "kind": "life",
+              "slug": "personal-finance-first-steps"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -180,14 +187,26 @@
           "text": "最有效的是合併與對時。同一個月往同一個帳戶轉三次小額，併成一次就少兩次費用；錢分散在好幾家，先歸整再一次轉出也比各轉一次便宜。對時是指：免費次數若按月或按期計算，就要知道週期從哪天開始、還剩幾次，把不急的排在還沒用完的時候。"
         },
         {
-          "type": "link",
-          "text": "帳戶分流會直接決定你每個月要跨行幾次，先把帳戶結構排好再談省手續費",
-          "url": "https://mokaair.com/zh-TW/life/bank-account-separation-system"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "帳戶分流會直接決定你每個月要跨行幾次，先把帳戶結構排好再談省手續費",
+              "kind": "life",
+              "slug": "bank-account-separation-system"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "把對帳單健檢變成每個月固定會做的一件事",
-          "url": "https://mokaair.com/zh-TW/life/monthly-money-review"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把對帳單健檢變成每個月固定會做的一件事",
+              "kind": "life",
+              "slug": "monthly-money-review"
+            }
+          ]
         },
         {
           "type": "table",

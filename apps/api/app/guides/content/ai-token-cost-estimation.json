@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-plans"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "估一筆 AI 的 API 費用只需要三個數字：輸入 token、輸出 token，以及該模型每百萬 token 的單價。難的從來不是乘法，是知道一次對話到底把多少 token 送了出去。系統提示詞每一輪都重送、歷史對話每一輪都變長，帳單就是這樣長出來的。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "估一筆 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的 API 費用只需要三個數字：輸入 token、輸出 token，以及該模型每百萬 token 的單價。難的從來不是乘法，是知道一次對話到底把多少 token 送了出去。"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "每一輪都重送、歷史對話每一輪都變長，帳單就是這樣長出來的。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -46,18 +72,20 @@
               "text": "token 是模型處理文字的計量單位，一段話進模型之前會先被切成一串 token，這件事的細節在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "token（Token）是什麼：AI 如何計算文字長度",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+              "kind": "life",
+              "slug": "ai-term-token"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "分詞（Tokenization）是什麼：文字進入模型前的切分",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-tokenization"
+              "kind": "life",
+              "slug": "ai-term-tokenization"
             },
             {
               "type": "text",
@@ -136,12 +164,23 @@
           "inlines": [
             {
               "type": "text",
-              "text": "API 的每一次請求都是獨立的。OpenAI 的對話狀態文件寫明每一次文字生成請求都是獨立且無狀態的，要做多輪對話就得把先前的訊息一起當參數送進去。Anthropic 的上下文視窗文件把範圍列得更清楚：系統提示詞、messages 裡的每一則訊息（含工具結果、圖片與文件）以及你的工具定義，全部都算進這一次請求；每一輪的輸入包含所有先前的對話歷史加上這一輪的新訊息，而這一輪的輸出會變成下一輪輸入的一部分。容量本身怎麼看，可以對照 "
+              "text": "API 的每一次請求都是獨立的。OpenAI 的對話狀態文件寫明每一次文字生成請求都是獨立且無狀態的，要做多輪對話就得把先前的訊息一起當"
             },
             {
-              "type": "link",
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "送進去。Anthropic 的上下文視窗文件把範圍列得更清楚：系統提示詞、messages 裡的每一則訊息（含工具結果、圖片與文件）以及你的工具定義，全部都算進這一次請求；每一輪的輸入包含所有先前的對話歷史加上這一輪的新訊息，而這一輪的輸出會變成下一輪輸入的一部分。容量本身怎麼看，可以對照 "
+            },
+            {
+              "type": "article",
               "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-              "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+              "kind": "life",
+              "slug": "ai-context-window-explained"
             },
             {
               "type": "text",
@@ -180,18 +219,20 @@
               "text": "重複的那一段前綴可以不用重算，這就是提示快取存在的理由。OpenAI 的提示快取文件寫快取的輸入 token 最多可折 90%，預設就對支援的模型開啟，GPT-5.6 以後的模型可快取前綴最短是 1,024 個 token。Anthropic 的定價頁寫快取讀取是基礎輸入價的 0.1 倍，並直接給出回本條件：5 分鐘快取的寫入是 1.25 倍，讀一次就回本；1 小時快取的寫入是 2 倍，要讀兩次。Google 的定價頁把 Context caching 列在付費層，除了較低的輸入價還另外收每百萬 token 每小時的儲存費。三家的機制差異與實際省法，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞快取（Prompt Caching）：重用相同字首的計算",
-              "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching"
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
             },
             {
               "type": "text",
               "text": " 與 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Claude API 省錢：提示快取與批次處理怎麼用",
-              "url": "https://mokaair.com/zh-TW/life/claude-api-prompt-caching-cost"
+              "kind": "life",
+              "slug": "claude-api-prompt-caching-cost"
             },
             {
               "type": "text",
@@ -267,9 +308,10 @@
               "text": "三個情境放在一起會看到一件事：一次性的大批文字其實不貴，貴的是每天重複跑的對話。翻譯一本 10 萬字的書花不到 1 美元，走批次 API 再打對折；但同一段系統提示詞每天被重送 1,500 次的客服，一個月就是 360 美元，把它放進快取之後降到 267 美元，省下的 93 美元全部來自那段重複的前綴。各家當天的每百萬 token 價可以對照 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 價格比較：每百萬 token 各家多少",
-              "url": "https://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026"
+              "kind": "life",
+              "slug": "ai-api-pricing-comparison-2026"
             },
             {
               "type": "text",
@@ -278,14 +320,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-cost-tokens-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
+              "kind": "life",
+              "slug": "ai-coding-cost-tokens-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
-          "url": "https://mokaair.com/zh-TW/life/local-vs-cloud-ai-cost"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算",
+              "kind": "life",
+              "slug": "local-vs-cloud-ai-cost"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -308,9 +362,10 @@
               "text": "Google 這邊是 Cloud Billing 的預算與快訊。官方文件寫明第一次建立預算時的預設快訊門檻是預算金額的 50%、90% 與 100%，以實際支出計算，百分比與規則都可以自己改。同一頁也放了最重要的那句警告：只有快訊的預算不會自動為 Google Cloud 或 Google Maps Platform 的用量或支出設上限，快訊只是讓你知道趨勢，不會阻止服務被使用或計費。官方的建議是把預算金額設得比可用資金低，並在有支援的服務上考慮改用支出上限預算，該功能頁面標示為預覽。Gemini 這一側的錯誤碼與重試，站上有 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "API 額度與錯誤：費用、重試與成本控制",
-              "url": "https://mokaair.com/zh-TW/life/gemini-api-cost-errors-guide"
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
             },
             {
               "type": "text",
@@ -336,18 +391,20 @@
               "text": "估完費用不代表估完成本。訂閱與 API 之間怎麼選可以看 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "只能訂一個的話訂哪個：ChatGPT、Claude、Gemini",
-              "url": "https://mokaair.com/zh-TW/life/ai-subscription-which-to-pay-2026"
+              "kind": "life",
+              "slug": "ai-subscription-which-to-pay-2026"
             },
             {
               "type": "text",
               "text": "；同一批 token 在機房那一端的代價則寫在 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "AI 的用電與用水：一次對話的成本",
-              "url": "https://mokaair.com/zh-TW/life/ai-energy-water-footprint"
+              "kind": "life",
+              "slug": "ai-energy-water-footprint"
             },
             {
               "type": "text",

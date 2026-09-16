@@ -3,7 +3,8 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "ai"
+    "ai",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -55,9 +56,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "基準測試（Benchmark）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "基準測試（Benchmark）是什麼",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -77,9 +84,15 @@
           "text": "有兩件事會讓你誤讀這個分數。第一，版面會影響人類的偏好。官方 2024 年 8 月 29 日發表的風格控制文章，把回答長度、Markdown 標題數、粗體數與清單數這四個特徵加進迴歸，排名確實動了；但同一篇的限制段落寫得很老實，這仍是觀察性分析，可能有沒被觀察到的干擾因子。第二，2026 年 7 月 30 日上線的 AutoEval：人類票還沒夠時，官方會用一個學人類偏好的獎勵模型自動投票先給分，榜上標成 AutoEval，等人票夠了才更新；看到這個標籤，你看的就不是純人類投票的結果。"
         },
         {
-          "type": "link",
-          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+              "kind": "life",
+              "slug": "ai-term-llm-as-a-judge"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -95,21 +108,72 @@
           "text": "SWE-bench 的題目不是選擇題，是真的壞掉的程式。官方文件寫的任務是：給定一個程式庫與一個 issue，語言模型要產生一個能解決該問題的修補檔。判對錯完全機械化，把修補檔套進真實的程式庫，在 Docker 容器裡跑該專案自己的測試，測試轉綠才算解決，所以這個榜不容易被文筆影響。"
         },
         {
-          "type": "paragraph",
-          "text": "榜單上的分數只有一個欄位叫 % Resolved，官方圖例寫的是解決的題目占全部題目的百分比。原始題庫是十二個 Python 專案的 2,294 題；最常被引用的 Verified 是人工篩過的 500 題子集，官方頁面寫它是與 OpenAI 合作做出來的，由人工逐題檢查問題描述是否清楚、測試修補是否正確、在現有資訊下是否解得出來。官方另有 Lite 300 題、Multilingual 300 題與 Multimodal 480 題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "榜單上的分數只有一個欄位叫 % Resolved，官方圖例寫的是解決的題目占全部題目的百分比。原始題庫是十二個 Python 專案的 2,294 題；最常被引用的 Verified 是人工篩過的 500 題子集，官方頁面寫它是與 OpenAI 合作做出來的，由人工逐題檢查問題描述是否清楚、測試修補是否正確、在現有資訊下是否解得出來。官方另有 Lite 300 題、Multilingual 300 題與 "
+            },
+            {
+              "type": "article",
+              "text": "Multimodal",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": " 480 題。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "同樣是那 500 題，還分兩種看法。完整榜放的是各式各樣的系統，從最陽春的模型迴圈到多次重跑再挑一份交出去的都有；Bash Only 榜則把所有模型放進同一個極簡環境，官方寫的是用 mini-SWE-agent，沒有工具、沒有特殊外框。要比模型本身看後者，要比整套產品看前者。官方也提醒 mini-SWE-agent 1.x 與 2.x 的結果不一定可比，因為 2.x 改用工具呼叫執行動作，也不再設定溫度參數。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同樣是那 500 題，還分兩種看法。完整榜放的是各式各樣的系統，從最陽春的模型迴圈到多次重跑再挑一份交出去的都有；Bash Only 榜則把所有模型放進同一個極簡環境，官方寫的是用 mini-SWE-agent，沒有工具、沒有特殊外框。要比模型本身看後者，要比整套產品看前者。官方也提醒 mini-SWE-agent 1.x 與 2.x 的結果不一定可比，因為 2.x 改用工具呼叫執行動作，也不再設定溫度"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "榜上還有一個打勾標記值得認得，官方圖例寫的是由 SWE-bench 團隊執行或直接查核過的結果；沒有打勾的就是投稿者自己跑的。投稿規則要求把預測檔、每題的執行紀錄與推理軌跡放在公開倉庫裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "榜上還有一個打勾"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "值得認得，官方圖例寫的是由 SWE-bench 團隊執行或直接查核過的結果；沒有打勾的就是投稿者自己跑的。投稿規則要求把預測檔、每題的執行紀錄與推理軌跡放在公開倉庫裡。"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
-          "url": "https://mokaair.com/zh-TW/life/ai-coding-tools-overview-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 寫程式工具總覽：Claude Code、Codex、Gemini CLI、Cursor、Copilot",
+              "kind": "life",
+              "slug": "ai-coding-tools-overview-2026"
+            }
+          ]
         },
         {
           "type": "image",
@@ -148,9 +212,15 @@
           "text": "Hugging Face 也把這些分數的來歷寫清楚了：模型作者把結果以檔案放進自己的模型庫，平台依中繼資料給標記，跑在官方環境、帶有效驗證憑證的標成已驗證，以 Pull Request 投稿、還沒合併的標成社群提供。官方文件直接寫，如果分數有爭議，模型作者可以把 Pull Request 關掉讓分數消失；文件最上面還掛著「這是進行中的功能」的警告。"
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -274,38 +344,74 @@
           "text": "自測時順手記一件事：它有沒有把不確定的內容講得很肯定。"
         },
         {
-          "type": "link",
-          "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
-          "url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "跑分是篩選工具，不是決策工具。它幫你把候選名單從十個縮到三個，剩下的靠你自己那五題。看到漂亮的數字，先問三個問題：哪個子集、什麼跑法、哪一天的榜。三個都答得出來，那個數字才值得放進你的判斷。"
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 能與不能：2026 年的誠實盤點",
-          "url": "https://mokaair.com/zh-TW/life/ai-hype-vs-reality-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 能與不能：2026 年的誠實盤點",
+              "kind": "life",
+              "slug": "ai-hype-vs-reality-2026"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "開源 vs 閉源模型：對使用者的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-open-vs-closed-models"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開源 vs 閉源模型：對使用者的差別",
+              "kind": "life",
+              "slug": "ai-open-vs-closed-models"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-release-timeline-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸",
+              "kind": "life",
+              "slug": "ai-model-release-timeline-2026"
+            }
+          ]
         }
       ],
       "sources": [

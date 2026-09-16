@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -39,8 +40,23 @@
           "text": "水箱進出水模型：定義單位與容量邊界"
         },
         {
-          "type": "paragraph",
-          "text": "若要理解動態圖表的運作邏輯，可以設定一個水箱進出水情境。我們首先明確指定蓄水槽最大容量為一千公升，進水管每分鐘流入三十公升，而出水閥每分鐘流出二十公升。在建立互動滑桿前，必須嚴格定義這些參數的度量單位與數值範圍，確保拖動控制條時，模型不會輸出毫無物理意義的負容量，讓整體運算基礎保持透明與嚴謹。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若要理解動態圖表的運作邏輯，可以設定一個水箱進出水情境。我們首先明確指定蓄水槽最大容量為一千公升，進水管每分鐘流入三十公升，而出水閥每分鐘流出二十公升。在建立互動滑桿前，必須嚴格定義這些"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的度量單位與數值範圍，確保拖動控制條時，模型不會輸出毫無物理意義的負容量，讓整體運算基礎保持透明與嚴謹。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -64,8 +80,23 @@
           "text": "進行比對時必須要求系統完整交代各項假設數值。例如當模擬暴雨天候導致車速降至每小時十五公里時，駕車曲線是否同步計入尋找停車位所需的額外十分鐘變數。如果互動圖表只片面調降車速卻忽略停車成本，呈現出的耗時推估就會產生嚴重失真。因此逐一檢驗變數聯動邏輯，遠比單純觀賞圖表切換過程來得更加務實且必要。"
         },
         {
-          "type": "paragraph",
-          "text": "透過微調控制滑桿，使用者可以清晰找出兩者耗時相等的臨界閾值。例如在特定延遲條件下，開車總耗時恰好等於四十分鐘，此處即為轉移交通決策的分水嶺。情境比對的核心在於變數敏感度分析，唯有完整交代各項情境假設與極端設定，互動圖表才能成為具備參考價值的決策輔助工具，而非缺乏現實脈絡的片面示意圖。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "透過"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "控制滑桿，使用者可以清晰找出兩者耗時相等的臨界閾值。例如在特定延遲條件下，開車總耗時恰好等於四十分鐘，此處即為轉移交通決策的分水嶺。情境比對的核心在於變數敏感度分析，唯有完整交代各項情境假設與極端設定，互動圖表才能成為具備參考價值的決策輔助工具，而非缺乏現實脈絡的片面示意圖。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -161,14 +192,26 @@
           "text": "動態圖表的直觀性建立在嚴密的數值假設之上。操作滑桿時應優先確認座標零點、極端邊界防護與變數完整度，確保視覺動效如實呈現推導邏輯而非掩蓋計算盲點。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro 延長 AI 音樂創作：從短片段到有段落的作品",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro 延長 AI 音樂創作：從短片段到有段落的作品",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         }
       ],
       "sources": [
@@ -335,14 +378,26 @@
           "text": "The intuitiveness of dynamic charts is built upon rigorous numerical assumptions. When manipulating sliders, prioritize checking the coordinate zero point, extreme boundary protections, and variable completeness to ensure visual animations faithfully represent deductive logic rather than masking computational blind spots."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January 1 to September 14",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro Extends AI Music Creation: From Short Clips to Structured Compositions",
-          "url": "https://mokaair.com/en/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro Extends AI Music Creation: From Short Clips to Structured Compositions",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         }
       ],
       "sources": [
@@ -509,14 +564,26 @@
           "text": "動的グラフの直感的なわかりやすさは、厳密な数値的前提の上に成り立っている。スライダーを操作する際は、座標のゼロ点、極値の境界保護、変数の完全性を優先して確認し、視覚的なアニメーションが計算の盲点を覆い隠すのではなく、推導ロジックを忠実に表現しているかを確かめるべきである。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月1日から9月14日までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Proが広げるAI音楽制作：短い断片から構成ある楽曲へ",
-          "url": "https://mokaair.com/ja/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Proが広げるAI音楽制作：短い断片から構成ある楽曲へ",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         }
       ],
       "sources": [
@@ -683,14 +750,26 @@
           "text": "동적 차트의 직관성은 엄밀한 수치적 가정을 기반으로 합니다. 슬라이더를 조작할 때는 좌표의 영점, 극단적 경계 방어, 변수의 완전성을 우선적으로 확인하여 시각적 효과가 계산의 맹점을 가리지 않고 추론 논리를 충실히 전달하도록 해야 합니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월 1일부터 9월 14일까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro, AI 음악 창작 확장: 짧은 조각에서 구조를 갖춘 작품으로",
-          "url": "https://mokaair.com/ko/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro, AI 음악 창작 확장: 짧은 조각에서 구조를 갖춘 작품으로",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         }
       ],
       "sources": [
@@ -857,14 +936,26 @@
           "text": "动态图表的直观性建立在严密的数值假设之上。操作滑块时应优先确认坐标零点、极端边界防护与变量完整度，确保视觉动效如实呈现推导逻辑而非掩盖计算盲点。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月 1 日至 9 月 14 日的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro 延长 AI 音乐创作：从短片段到有段落的作品",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro 延长 AI 音乐创作：从短片段到有段落的作品",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         }
       ],
       "sources": [

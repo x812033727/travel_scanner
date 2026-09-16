@@ -16,13 +16,15 @@ from typing import Any, Literal, cast
 from urllib.parse import urlsplit
 from uuid import UUID
 
-from sqlalchemy import and_, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.affiliates.content_links import PARTNERS_BY_CODE, link_key, partner_link_problem
 from app.affiliates.sub_id import coarse_sub_id
-from app.destinations.catalog import destination_for_id
-from app.destinations.localized import city_name
+from app.destinations.catalog import DESTINATIONS, DestinationProfile, destination_for_id
+from app.destinations.localized import city_name, country_label
+from app.guides import links
+from app.guides.alias_store import public_aliases as search_aliases
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -32,9 +34,13 @@ from app.guides.models import (
 )
 from app.guides.publication import article_is_live, published_filters
 from app.guides.schemas import (
+    KINDS,
     SECTION_KINDS,
+    DestinationFacet,
+    DestinationFacetList,
     GuideDocument,
     Kind,
+    ListSort,
     PartnerLinkBlock,
     PublicArticle,
     PublicList,
@@ -42,16 +48,21 @@ from app.guides.schemas import (
     PublicSummary,
     PublishedDocument,
     Section,
+    SitemapCount,
     SitemapEntry,
     SitemapList,
+    SitemapSummary,
+    TopicOption,
 )
-from app.guides.series import article_navigation, resolve_article_links
-from app.guides.taxonomy import topic_option
+from app.guides.series import article_navigation, resolve_article_links, term_set_for
+from app.guides.taxonomy import parent_slugs, topic_ids_including_children, topic_option
 from app.i18n import LOCALES, Locale
 from app.models import AffiliateClick
 from app.problems import AppError
 
 MAX_PAGE = 50
+# The largest page ``GET /guides/sitemap`` answers, and its default: a caller that predates
+# paging still gets the newest thousand rows in one call, and a paging caller asks for less.
 SITEMAP_LIMIT = 1000
 
 
@@ -68,6 +79,21 @@ def kind_filter(kind: Kind | None, section: Section | None) -> tuple[Kind, ...] 
     if kind is None:
         return kinds
     return (kind,) if kind in kinds else ()
+
+
+def country_slug(country: str) -> str:
+    """The URL form of a catalog country name: ``South Korea`` -> ``south-korea``."""
+    return "-".join(country.strip().casefold().split())
+
+
+def destinations_in_country(country: str) -> list[DestinationProfile]:
+    """Every catalog destination whose country has this slug; empty for an unknown one.
+
+    Empty is what the caller must answer with -- a filter on a country the catalog does not
+    know is a request for nothing, not for everything.
+    """
+    wanted = country_slug(country)
+    return [profile for profile in DESTINATIONS if country_slug(profile.country) == wanted]
 
 
 def _target(article_id: UUID, locale: str | None = None) -> str:
@@ -105,6 +131,25 @@ async def _topics_for(
     for article_id, topic in rows:
         grouped.setdefault(article_id, []).append(topic)
     return grouped
+
+
+async def _topic_options_for(
+    session: AsyncSession, article_ids: list[UUID], locale: Locale
+) -> dict[UUID, list[TopicOption]]:
+    """The topic chips of each article, with a sub-topic naming its parent so the reader's
+    side can link the chip to the right hub. Counts are not filled in here: a chip on a
+    card is a label, and the numbers belong to the vocabulary read."""
+    grouped = await _topics_for(session, article_ids)
+    parents = await parent_slugs(session, [topic for items in grouped.values() for topic in items])
+    return {
+        article_id: [
+            topic_option(
+                item, locale, parent=parents.get(item.parent_id) if item.parent_id else None
+            )
+            for item in items
+        ]
+        for article_id, items in grouped.items()
+    }
 
 
 async def _locale_rows(
@@ -172,6 +217,37 @@ def _decode_cursor(cursor: str | None) -> tuple[datetime, str] | None:
         raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
 
 
+def _encode_curated_cursor(
+    featured: bool, display_order: int, published_at: datetime, slug: str
+) -> str:
+    """The curated order's keyset: every key it sorts by, tagged so a cursor minted under
+    one order is refused under the other instead of silently restarting the list."""
+    raw = json.dumps(
+        ["curated", featured, display_order, published_at.isoformat(), slug],
+        separators=(",", ":"),
+    )
+    return base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
+
+
+def _decode_curated_cursor(cursor: str | None) -> tuple[bool, int, datetime, str] | None:
+    if not cursor:
+        return None
+    try:
+        padded = cursor + "=" * (-len(cursor) % 4)
+        tag, featured, order, stamp, slug = json.loads(
+            base64.urlsafe_b64decode(padded.encode()).decode()
+        )
+        if tag != "curated" or not isinstance(featured, bool) or not isinstance(order, int):
+            raise ValueError("not a curated cursor")
+        if isinstance(order, bool):
+            raise ValueError("not a curated cursor")
+        return featured, order, datetime.fromisoformat(stamp), str(slug)
+    except (ValueError, TypeError):
+        # A ``latest`` cursor lands here too (two parts, no tag): a "see more" link minted
+        # before a listing changed its order is a stale request, not page one of the new.
+        raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
+
+
 async def public_list(
     session: AsyncSession,
     locale: Locale,
@@ -179,14 +255,20 @@ async def public_list(
     kind: Kind | None = None,
     section: Section | None = None,
     destination: str | None = None,
+    country: str | None = None,
     topic: str | None = None,
     cursor: str | None = None,
     limit: int = 20,
+    sort: ListSort = "latest",
 ) -> PublicList:
     kinds = kind_filter(kind, section)
     if kinds is not None and not kinds:
         return PublicList(articles=[], next_cursor=None)
     size = min(max(limit, 1), MAX_PAGE)
+    topic_ids = await topic_ids_including_children(session, topic) if topic else None
+    if topic_ids is not None and not topic_ids:
+        # An unknown topic, like an impossible kind/section pair, is a request for nothing.
+        return PublicList(articles=[], next_cursor=None)
     query = (
         select(GuideArticle, GuideArticleLocale)
         .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
@@ -196,31 +278,60 @@ async def public_list(
         query = query.where(GuideArticle.kind.in_(kinds))
     if destination:
         query = query.where(GuideArticle.destination_id == destination.casefold())
-    if topic:
+    if country:
+        ids = [profile.id for profile in destinations_in_country(country)]
+        if not ids:
+            return PublicList(articles=[], next_cursor=None)
+        query = query.where(GuideArticle.destination_id.in_(ids))
+    if topic_ids:
+        # The parent's id and its children's: an article filed under ``ai-terms`` answers
+        # the ``ai`` filter without also having to carry ``ai``.
         query = query.where(
             GuideArticle.id.in_(
-                select(GuideArticleTopic.article_id)
-                .join(GuideTopic, GuideTopic.id == GuideArticleTopic.topic_id)
-                .where(GuideTopic.slug == topic.casefold())
+                select(GuideArticleTopic.article_id).where(
+                    GuideArticleTopic.topic_id.in_(topic_ids)
+                )
             )
         )
-    position = _decode_cursor(cursor)
-    if position is not None:
-        stamp, slug = position
-        query = query.where(
-            (GuideArticleLocale.published_at < stamp)
-            | ((GuideArticleLocale.published_at == stamp) & (GuideArticle.slug > slug))
+    ordering: tuple[Any, ...]
+    if sort == "curated":
+        curated = _decode_curated_cursor(cursor)
+        if curated is not None:
+            featured, order, stamp, slug = curated
+            same_featured = GuideArticle.featured.is_(featured)
+            same_order = and_(same_featured, GuideArticle.display_order == order)
+            after = [
+                and_(same_featured, GuideArticle.display_order > order),
+                and_(same_order, GuideArticleLocale.published_at < stamp),
+                and_(
+                    same_order,
+                    GuideArticleLocale.published_at == stamp,
+                    GuideArticle.slug > slug,
+                ),
+            ]
+            if featured:
+                # Featured rows sort first, so after the last featured one come the rest.
+                after.append(GuideArticle.featured.is_(False))
+            query = query.where(or_(*after))
+        ordering = (
+            GuideArticle.featured.desc(),
+            GuideArticle.display_order,
+            GuideArticleLocale.published_at.desc(),
+            GuideArticle.slug,
         )
-    rows = list(
-        await session.execute(
-            query.order_by(GuideArticleLocale.published_at.desc(), GuideArticle.slug).limit(
-                size + 1
+    else:
+        position = _decode_cursor(cursor)
+        if position is not None:
+            stamp, slug = position
+            query = query.where(
+                (GuideArticleLocale.published_at < stamp)
+                | ((GuideArticleLocale.published_at == stamp) & (GuideArticle.slug > slug))
             )
-        )
-    )
+        ordering = (GuideArticleLocale.published_at.desc(), GuideArticle.slug)
+    rows = list(await session.execute(query.order_by(*ordering).limit(size + 1)))
     has_more = len(rows) > size
     rows = rows[:size]
-    topics = await _topics_for(session, [article.id for article, _ in rows])
+    topics = await _topic_options_for(session, [article.id for article, _ in rows], locale)
     articles: list[PublicSummary] = []
     for article, row in rows:
         published = await _published_document(session, row)
@@ -232,7 +343,7 @@ async def public_list(
                 kind=cast(Kind, article.kind),
                 destination_id=article.destination_id,
                 destination_label=destination_label(article.destination_id, locale),
-                topics=[topic_option(item, locale) for item in topics.get(article.id, [])],
+                topics=topics.get(article.id, []),
                 title=published.title,
                 description=published.description,
                 hero=published.hero,
@@ -242,14 +353,18 @@ async def public_list(
             )
         )
     last = rows[-1] if rows and has_more else None
-    return PublicList(
-        articles=articles,
-        next_cursor=(
-            _encode_cursor(last[1].published_at or last[1].updated_at, last[0].slug)
-            if last is not None
-            else None
-        ),
-    )
+    next_cursor: str | None = None
+    if last is not None:
+        last_article, last_row = last
+        last_stamp = last_row.published_at or last_row.updated_at
+        next_cursor = (
+            _encode_curated_cursor(
+                last_article.featured, last_article.display_order, last_stamp, last_article.slug
+            )
+            if sort == "curated"
+            else _encode_cursor(last_stamp, last_article.slug)
+        )
+    return PublicList(articles=articles, next_cursor=next_cursor)
 
 
 async def public_article(
@@ -275,7 +390,7 @@ async def public_article(
             status="unpublished",
             published_locales=[item for item in LOCALES if item in set(published_locales)],
         )
-    topics = (await _topics_for(session, [article.id])).get(article.id, [])
+    topics = (await _topic_options_for(session, [article.id], locale)).get(article.id, [])
     expired = not article_is_live(article)
     document = await _published_document(session, row)
     return PublicArticle(
@@ -285,7 +400,7 @@ async def public_article(
         status="published",
         destination_id=article.destination_id,
         destination_label=destination_label(article.destination_id, locale),
-        topics=[topic_option(item, locale) for item in topics],
+        topics=topics,
         valid_until=article.valid_until,
         expired=expired,
         document=document,
@@ -295,7 +410,55 @@ async def public_article(
         if document is None
         else await resolve_article_links(session, locale, document),
         series=None if expired else await article_navigation(session, kind, slug, locale),
+        related=[] if document is None else await links.related_articles(session, article, locale),
+        backlinks=[] if document is None else await links.backlinks(session, article.id, locale),
+        aliases=await search_aliases(session, article.id, locale),
+        term_set=await term_set_for(
+            session, locale, article.slug, [topic.slug for topic in topics]
+        ),
     )
+
+
+async def destination_facets(
+    session: AsyncSession, locale: Locale, section: Section | None = None
+) -> DestinationFacetList:
+    """Every destination with a published article in ``locale``, with its country and how
+    many articles it has, for the travel hub's "browse by destination" block.
+
+    Counted per locale rather than per article: a city whose only guide is Japanese has
+    nothing to show a Korean reader, and a pill that leads to an empty list is worse than
+    no pill. Ordered by catalog position, which already groups cities by country.
+    """
+    kinds = kind_filter(None, section)
+    query = (
+        select(GuideArticle.destination_id, GuideArticle.id)
+        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .where(
+            GuideArticleLocale.locale == locale,
+            GuideArticle.destination_id.is_not(None),
+            *published_filters(),
+        )
+    )
+    if kinds is not None:
+        if not kinds:
+            return DestinationFacetList(destinations=[])
+        query = query.where(GuideArticle.kind.in_(kinds))
+    rows = await session.execute(query)
+    articles: dict[str, set[UUID]] = {}
+    for destination_id, article_id in rows:
+        articles.setdefault(destination_id, set()).add(article_id)
+    facets = [
+        DestinationFacet(
+            id=profile.id,
+            label=city_name(profile, locale),
+            country=country_slug(profile.country),
+            country_label=country_label(profile, locale),
+            count=len(articles[profile.id]),
+        )
+        for profile in DESTINATIONS
+        if profile.id in articles
+    ]
+    return DestinationFacetList(destinations=facets)
 
 
 # --- partner links ------------------------------------------------------------
@@ -388,17 +551,79 @@ async def record_partner_click(
     await session.commit()
 
 
-async def sitemap_entries(session: AsyncSession) -> SitemapList:
-    """Publication-aware enumeration for ``apps/web/app/sitemap.ts``.
+def _encode_sitemap_cursor(published_at: datetime, slug: str, locale: str) -> str:
+    """The sitemap's row grain is (article, locale), so its keyset carries one key more than
+    the listing's; the encoding is otherwise the same, and just as opaque to the caller."""
+    raw = json.dumps([published_at.isoformat(), slug, locale], separators=(",", ":"))
+    return base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
+
+
+def _decode_sitemap_cursor(cursor: str | None) -> tuple[datetime, str, str] | None:
+    if not cursor:
+        return None
+    try:
+        padded = cursor + "=" * (-len(cursor) % 4)
+        stamp, slug, locale = json.loads(base64.urlsafe_b64decode(padded.encode()).decode())
+        return datetime.fromisoformat(stamp), str(slug), str(locale)
+    except (ValueError, TypeError):
+        raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
+
+
+async def _published_locales(
+    session: AsyncSession, article_ids: set[UUID]
+) -> dict[UUID, list[Locale]]:
+    """Every locale each article is published in, in the site's own locale order."""
+    if not article_ids:
+        return {}
+    rows = await session.execute(
+        select(GuideArticleLocale.article_id, GuideArticleLocale.locale)
+        .join(GuideArticle, GuideArticle.id == GuideArticleLocale.article_id)
+        .where(GuideArticleLocale.article_id.in_(article_ids), *published_filters())
+    )
+    found: dict[UUID, set[str]] = {}
+    for article_id, locale in rows:
+        found.setdefault(article_id, set()).add(locale)
+    return {
+        article_id: [item for item in LOCALES if item in locales]
+        for article_id, locales in found.items()
+    }
+
+
+async def sitemap_entries(
+    session: AsyncSession,
+    *,
+    section: Section | None = None,
+    locale: Locale | None = None,
+    cursor: str | None = None,
+    offset: int = 0,
+    limit: int = SITEMAP_LIMIT,
+) -> SitemapList:
+    """Publication-aware enumeration for ``apps/web/app/sitemaps/sitemap.ts``, one page at
+    a time.
 
     Only rows that the list and the article page would also serve. Expired intel and
     withdrawn translations leave here at the same moment they leave the site.
+
+    The web splits the sitemap into children per section and locale, so both filters exist;
+    a page holds at most ``SITEMAP_LIMIT`` rows and the caller follows ``next_cursor`` until
+    it is None. Newest first, with the slug and the locale as tiebreakers: a batch import
+    publishes dozens of rows in the same second, and a keyset on the timestamp alone would
+    repeat or skip them across pages.
+
+    ``offset`` skips that many rows before the page -- after the cursor's position when one
+    is given. It is what lets a section that outgrew one child file start its second child
+    at row 5,000 without paging through the first: the order is total, so an offset into it
+    is as stable as the keyset, and a sitemap is rebuilt from the top whenever it is read.
     """
+    kinds = kind_filter(None, section)
+    size = min(max(limit, 1), SITEMAP_LIMIT)
+    skip = max(offset, 0)
     # The current public version's own timestamp rides along as ``modified_at``: the same
     # predicate ``_published_document`` resolves the pointer with, as an outer join so a
     # damaged pointer costs that row its lastmod rather than its place in the file.
-    rows = await session.execute(
+    query = (
         select(
+            GuideArticle.id,
             GuideArticle.kind,
             GuideArticle.slug,
             GuideArticleLocale.locale,
@@ -414,20 +639,72 @@ async def sitemap_entries(session: AsyncSession) -> SitemapList:
                 GuideArticleRevision.action == "published",
             ),
         )
-        .where(*published_filters())
-        .order_by(GuideArticleLocale.published_at.desc())
-        .limit(SITEMAP_LIMIT)
+        .where(GuideArticleLocale.published_at.is_not(None), *published_filters())
     )
-    return SitemapList(
-        entries=[
-            SitemapEntry(
-                kind=cast(Kind, kind),
-                slug=slug,
-                locale=cast(Locale, locale),
-                published_at=published_at,
-                modified_at=modified_at or published_at,
+    if kinds:
+        query = query.where(GuideArticle.kind.in_(kinds))
+    if locale:
+        query = query.where(GuideArticleLocale.locale == locale)
+    position = _decode_sitemap_cursor(cursor)
+    if position is not None:
+        stamp, after_slug, after_locale = position
+        query = query.where(
+            or_(
+                GuideArticleLocale.published_at < stamp,
+                and_(GuideArticleLocale.published_at == stamp, GuideArticle.slug > after_slug),
+                and_(
+                    GuideArticleLocale.published_at == stamp,
+                    GuideArticle.slug == after_slug,
+                    GuideArticleLocale.locale > after_locale,
+                ),
             )
-            for kind, slug, locale, published_at, modified_at in rows
-            if published_at is not None
-        ]
+        )
+    rows = list(
+        await session.execute(
+            query.order_by(
+                GuideArticleLocale.published_at.desc(),
+                GuideArticle.slug,
+                GuideArticleLocale.locale,
+            )
+            .offset(skip)
+            .limit(size + 1)
+        )
     )
+    has_more = len(rows) > size
+    rows = rows[:size]
+    locales = await _published_locales(session, {article_id for article_id, *_ in rows})
+    entries = [
+        SitemapEntry(
+            kind=cast(Kind, kind),
+            slug=slug,
+            locale=cast(Locale, row_locale),
+            published_at=published_at,
+            modified_at=modified_at or published_at,
+            locales=locales.get(article_id, [cast(Locale, row_locale)]),
+        )
+        for article_id, kind, slug, row_locale, published_at, modified_at in rows
+    ]
+    last = rows[-1] if rows and has_more else None
+    return SitemapList(
+        entries=entries,
+        next_cursor=_encode_sitemap_cursor(last[4], last[2], last[3]) if last else None,
+    )
+
+
+async def sitemap_summary(session: AsyncSession) -> SitemapSummary:
+    """Published rows per kind and locale, from the same predicate the enumeration uses, so
+    the index can list only the children that have something and a section hub can tell
+    which languages publish it -- one grouped query instead of paging every row."""
+    rows = await session.execute(
+        select(GuideArticle.kind, GuideArticleLocale.locale, func.count())
+        .join(GuideArticleLocale, GuideArticleLocale.article_id == GuideArticle.id)
+        .where(GuideArticleLocale.published_at.is_not(None), *published_filters())
+        .group_by(GuideArticle.kind, GuideArticleLocale.locale)
+    )
+    counts = [
+        SitemapCount(kind=cast(Kind, kind), locale=cast(Locale, locale), count=count)
+        for kind, locale, count in rows
+    ]
+    order = {kind: index for index, kind in enumerate(KINDS)}
+    counts.sort(key=lambda item: (order[item.kind], LOCALES.index(item.locale)))
+    return SitemapSummary(counts=counts)

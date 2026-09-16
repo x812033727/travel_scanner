@@ -1,19 +1,20 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import GuideListPage, { generateMetadata } from "./page";
 
 const mocks = vi.hoisted(() => ({
-  list: vi.fn(), topics: vi.fn(),
+  list: vi.fn(), topics: vi.fn(), summary: vi.fn(),
   notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }),
+  redirect: vi.fn(() => { throw new Error("NEXT_REDIRECT"); }),
 }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 // Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
 // an empty listing is exercising the indexing decision rather than restating it.
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
-  getGuideList: mocks.list, getGuideTopics: mocks.topics,
+  getGuideList: mocks.list, getGuideTopics: mocks.topics, guideSitemapSummary: mocks.summary,
 }));
-vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
+vi.mock("next/navigation", () => ({ notFound: mocks.notFound, redirect: mocks.redirect }));
 
 const summary = {
   slug: "jr-pass-sale", kind: "intel" as const, destination_id: "tokyo", destination_label: "東京",
@@ -22,12 +23,14 @@ const summary = {
 };
 
 const params = (kind = "intel") => Promise.resolve({ locale: "zh-TW" as const, kind });
-const search = (over: { topic?: string; destination?: string; cursor?: string } = {}) => Promise.resolve(over);
+const search = (over: { topic?: string; destination?: string; country?: string; cursor?: string; sort?: string } = {}) =>
+  Promise.resolve(over);
 
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.list.mockResolvedValue({ articles: [summary], next_cursor: null, available: true });
   mocks.topics.mockResolvedValue([{ slug: "transport", label: "交通" }]);
+  mocks.summary.mockResolvedValue({ counts: [], available: false });
 });
 
 describe("the section listing", () => {
@@ -49,15 +52,67 @@ describe("the section listing", () => {
     expect(mocks.list).toHaveBeenCalledWith("zh-TW", expect.objectContaining({ topic: "transport" }), 24);
   });
 
-  it("marks the active topic chip so the reader can see the filter", async () => {
+  it("marks the active topic chip so the reader can see the filter, and links it to the topic hub", async () => {
     render(await GuideListPage({ params: params(), searchParams: search({ topic: "transport" }) }));
-    expect(screen.getByRole("link", { name: "交通" }).getAttribute("aria-current")).toBe("page");
+    const chip = screen.getByRole("link", { name: "交通" });
+    expect(chip.getAttribute("aria-current")).toBe("page");
+    expect(chip.getAttribute("href")).toBe("/guides/topics/transport");
   });
 
-  it("says the section is empty rather than showing a bare heading", async () => {
+  it("lists how-to guides in the editor's order and intel newest first", async () => {
+    await GuideListPage({ params: params("howto"), searchParams: search() });
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ kind: "howto", sort: "curated" }), 24);
+    await GuideListPage({ params: params("intel"), searchParams: search() });
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ kind: "intel", sort: "latest" }), 24);
+  });
+
+  it("lets the reader flip the order with ?sort=, keeps the filters on the order links, and ignores nonsense", async () => {
+    render(await GuideListPage({ params: params("howto"), searchParams: search({ sort: "latest", topic: "transport" }) }));
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ kind: "howto", sort: "latest" }), 24);
+    const latest = screen.getByRole("link", { name: "最新優先" });
+    expect(latest.getAttribute("aria-current")).toBe("page");
+    expect(latest.getAttribute("href")).toBe("/guides/howto?topic=transport&sort=latest");
+    // The kind's own default order is the canonical address: no `sort` on it.
+    expect(screen.getByRole("link", { name: "精選優先" }).getAttribute("href")).toBe("/guides/howto?topic=transport");
+    await GuideListPage({ params: params("howto"), searchParams: search({ sort: "random" }) });
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ sort: "curated" }), 24);
+  });
+
+  it("shows how many articles the kind has from the summary, on the unfiltered view only", async () => {
+    mocks.summary.mockResolvedValue({
+      counts: [{ kind: "intel", locale: "zh-TW", count: 19 }, { kind: "intel", locale: "ja", count: 2 }, { kind: "howto", locale: "zh-TW", count: 106 }],
+      available: true,
+    });
+    render(await GuideListPage({ params: params("intel"), searchParams: search() }));
+    expect(screen.getByText("19 篇文章")).toBeTruthy();
+    cleanup();
+    render(await GuideListPage({ params: params("intel"), searchParams: search({ topic: "transport" }) }));
+    expect(screen.queryByText(/篇文章/)).toBeNull();
+  });
+
+  it("sends a reader whose cursor the API refused to the first page, never to an empty 200", async () => {
+    // A "see more" link minted before how-to changed its order carries a cursor the new
+    // order refuses (422), which the loader reports as unavailable.
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: false });
+    await expect(GuideListPage({ params: params("howto"), searchParams: search({ cursor: "stale", topic: "transport" }) }))
+      .rejects.toThrow("NEXT_REDIRECT");
+    expect(mocks.redirect).toHaveBeenCalledWith("/guides/howto?topic=transport");
+    // Without a cursor an unavailable listing is the ordinary empty page, not a redirect.
+    mocks.redirect.mockClear();
+    render(await GuideListPage({ params: params("howto"), searchParams: search() }));
+    expect(mocks.redirect).not.toHaveBeenCalled();
+  });
+
+  it("resolves a country filter on the server too", async () => {
+    await GuideListPage({ params: params("howto"), searchParams: search({ country: "japan" }) });
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", expect.objectContaining({ country: "japan" }), 24);
+  });
+
+  it("says the section is empty rather than showing a bare heading, and offers the search", async () => {
     mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
     render(await GuideListPage({ params: params(), searchParams: search() }));
     expect(screen.getByText("這裡還沒有已發布的內容。")).toBeTruthy();
+    expect(screen.getByRole("search").getAttribute("action")).toBe("/zh-TW/search/articles");
   });
 
   it("offers the next page only when the API says there is one", async () => {
@@ -76,7 +131,12 @@ describe("indexing", () => {
     expect(metadata.robots).toBeUndefined();
   });
 
-  it.each([{ topic: "transport" }, { destination: "tokyo" }, { cursor: "abc" }])(
+  it("names the topic hub as canonical for a ?topic= view", async () => {
+    const metadata = await generateMetadata({ params: params(), searchParams: search({ topic: "transport" }) });
+    expect(metadata.alternates).toEqual({ canonical: "http://localhost:3000/zh-TW/guides/topics/transport" });
+  });
+
+  it.each([{ topic: "transport" }, { destination: "tokyo" }, { country: "japan" }, { cursor: "abc" }, { sort: "latest" }])(
     "keeps a filtered view out of the index (%o)",
     async (filters) => {
       const metadata = await generateMetadata({ params: params(), searchParams: search(filters) });

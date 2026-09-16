@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AI 代理（AI Agent）通常指能依目標與環境回饋選擇行動的軟體系統。在目前語言模型應用裡，模型常負責判斷下一步，工具負責讀取或改變外部狀態，周圍的程式則管理執行、權限與停止條件。它可以協助完成多步驟工作，但不代表具有人的意識或無限能力。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 代理（AI Agent）通常指能依目標與環境回饋選擇行動的軟體系統。在目前語言模型應用裡，模型常負責判斷下一步，工具負責讀取或改變外部狀態，周圍的程式則管理執行、權限與停止條件。它可以協助完成多步驟工作，但不代表具有人的意識或無限能力。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -120,8 +132,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "一份清楚交辦至少應說明目標、輸入範圍、交付形式與完成標準。活動資料例子還可以補充哪些欄位能用來比對、哪些修改需要另外核準，以及無法確認時如何標記。這些資訊讓代理知道什麼叫做好，也讓使用者能判斷是否真的完成。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一份清楚交辦至少應說明目標、輸入範圍、交付形式與完成標準。活動資料例子還可以補充哪些欄位能用來比對、哪些修改需要另外核準，以及無法確認時如何"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "。這些資訊讓代理知道什麼叫做好，也讓使用者能判斷是否真的完成。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -168,24 +195,48 @@
           "text": "把「整理好了」改成可檢查的檔案、欄位、來源與未完成清單。"
         },
         {
-          "type": "link",
-          "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

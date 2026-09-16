@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-create",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +28,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "這篇用一張自製杯子商品概念圖，練習 Gemini 的圖片生成、參考圖與局部修改。學完可以把主體、背景、構圖和要保留的細節寫清楚，並用前後對照檢查修改是否符合需求。本篇的提示詞與預期結果是教學範例，沒有冒充實際由 Gemini 生成的作品。修圖 AI 改得準不準，多半取決於你有沒有說清楚要保留什麼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇用一張自製杯子商品概念圖，練習 Gemini 的圖片生成、參考圖與局部修改。學完可以把主體、背景、構圖和要保留的細節寫清楚，並用前後對照檢查修改是否符合需求。本篇的提示詞與預期結果是教學範例，沒有冒充實際由 Gemini 生成的作品。修圖 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 改得準不準，多半取決於你有沒有說清楚要保留什麼。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -55,9 +72,10 @@
               "text": "依 2026 年 9 月 14 日官方文件，Flash-Lite 的圖片請求對應 Nano Banana 2 Lite，Flash 或 Pro 的一般圖片請求對應 Nano Banana 2；符合條件的訂閱者可再用 Nano Banana Pro 重新生成。文字對話模型的選擇會影響圖片路線，詳見"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "模型選擇",
-              "url": "https://mokaair.com/zh-TW/life/gemini-model-lineup-flash-pro"
+              "kind": "life",
+              "slug": "gemini-model-lineup-flash-pro"
             },
             {
               "type": "text",
@@ -73,9 +91,10 @@
               "text": "本篇採電腦網頁，手機介面請對照實際可用控制。圖片編輯目前不適用未滿十八歲使用者，個人與 Workspace 帳號還有各自的功能條件。先準備自己拍攝或有權使用的圖片，並確認"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "生成額度",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -195,9 +214,10 @@
               "text": "「為什麼沒有 Google 相簿連接？」查證時圖片個人化與相簿相關入口有美國、年齡及帳號限制；台灣讀者不能把那些步驟當成普遍可用。一般手動上傳和"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Connected Apps",
-              "url": "https://mokaair.com/zh-TW/life/gemini-connected-apps-guide"
+              "kind": "life",
+              "slug": "gemini-connected-apps-guide"
             },
             {
               "type": "text",
@@ -213,9 +233,10 @@
               "text": "「想讓杯子動起來？」先保留已核對的主體圖，再閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "影片生成與分鏡",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
@@ -264,18 +285,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "提示詞怎麼寫",
-              "url": "https://mokaair.com/zh-TW/life/gemini-prompt-writing-guide"
+              "kind": "life",
+              "slug": "gemini-prompt-writing-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "Veo 與 Google Flow",
-              "url": "https://mokaair.com/zh-TW/life/veo-video-generation-guide"
+              "kind": "life",
+              "slug": "veo-video-generation-guide"
             },
             {
               "type": "text",
@@ -284,9 +307,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

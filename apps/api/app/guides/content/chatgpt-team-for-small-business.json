@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "先講名字：OpenAI 在 2025 年 8 月 29 日把 ChatGPT Team 改名為 ChatGPT Business，help center 寫明這只是改名，功能、價格與上限都沒變，你在舊文章或同事口中聽到的 Team 方案就是現在的 Business。這篇只回答一個問題：台灣 3 到 30 人的小公司，例如設計工作室、代理商、會計事務所、電商小團隊或診所，該讓每個人各買每月 20 美元的 Plus，還是公司統一買 Business？依 help center 2026 年 9 月的說明，結論是：只要公司裡有人會把客戶資料貼進 ChatGPT，而且人數在三人以上，Business 預設不拿工作區資料訓練模型、加上集中付款與管理成員這兩件事，就值得每人每月多付 5 美元（年繳的話跟 Plus 同價）；只有一兩個人，各買 Plus 再自己關掉訓練設定就好。搜「小公司 AI」或「企業 AI」找方案的人，先回答這三個問題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先講名字：OpenAI 在 2025 年 8 月 29 日把 ChatGPT Team 改名為 ChatGPT Business，help center 寫明這只是改名，功能、價格與上限都沒變，你在舊文章或同事口中聽到的 Team 方案就是現在的 Business。這篇只回答一個問題：台灣 3 到 30 人的小公司，例如設計工作室、代理商、會計事務所、電商小團隊或診所，該讓每個人各買每月 20 美元的 Plus，還是公司統一買 Business？依 help center 2026 年 9 月的說明，結論是：只要公司裡有人會把客戶資料貼進 ChatGPT，而且人數在三人以上，Business 預設不拿工作區資料訓練模型、加上集中付款與管理成員這兩件事，就值得每人每月多付 5 美元（年繳的話跟 Plus 同價）；只有一兩個人，各買 Plus 再自己關掉訓練設定就好。搜「小公司 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」或「企業 AI」找方案的人，先回答這三個問題。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -47,9 +63,15 @@
           "text": "和 Plus 的差別不在模型，而在三件事：資料預設不拿去訓練、共用（專案與連接器可以分享給同事）、管理（集中帳單、成員與角色、SSO 與網域驗證）。和 Enterprise 的差別則是 Enterprise 要找 OpenAI 業務簽約、沒有公開價格，多了 SCIM 自動開帳號、可自訂的資料保留期限（例如 90 天或 180 天）、合規 API 與稽核紀錄、依角色細分權限（RBAC）、資料存放地區、發票與匯款付款，也才能在整個工作區關掉分享連結；help center 直接寫，座位超過 200 個或需要這些條件的公司才看 Enterprise。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-plans-plus-pro-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Plus、Pro 與其他方案差在哪：2026 年怎麼選",
+              "kind": "life",
+              "slug": "chatgpt-plans-plus-pro-2026"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -78,9 +100,15 @@
           "text": "工作區裡誰看得到誰的對話？help center 的答案是：每個成員有自己的對話與 Codex 紀錄，其他成員、管理員與擁有者預設都看不到；用量分析只看得到用了多少、花了多少 credits，看不到對話內容。成員要分享對話得自己產生分享連結，而且連結只有同一個工作區的人打得開，外人點了會被導回首頁。管理員能控制的是功能：可以整個工作區關掉記憶（關掉會刪掉成員已存的記憶）、關掉某個 App 或連接器。不能設定的也要說清楚：Business 不能設資料保留期限（對話與檔案預設無限期保留，自訂保留期是 Enterprise 才有）、不能整個工作區禁用分享連結、也沒有資料匯出功能，這點跟個人帳號可以匯出全部對話不同。"
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -96,14 +124,26 @@
           "text": "自製 GPT 要看兩件事。第一，個人帳號已經不能建立或發布新的 GPT，Business 工作區的成員可以建，還能只分享給工作區內的人；第二，OpenAI 已預告自製 GPT 會退場、改由 Plugins 接手，Enterprise 工作區預定 2026 年 12 月 11 日退場，搬遷工具預定 2026 年 9 月 17 日推出，help center 寫其他方案預計比照同一時程。所以不要為了共用 GPT 買 Business，要共用同一套指令與檔案，用共用專案就好。連接器（官網現在叫 Apps）在 Business 預設全部開啟：Google Drive、SharePoint 與 OneDrive、Slack、Gmail、Notion、GitHub、HubSpot 等，成員各自用自己的帳號連，只讀得到自己本來就有權限的檔案；管理員可以在 Workspace settings → Apps 關掉個別 App、限制能做的動作、限制只能用公司網域的帳號連。Business 另外有 Company Knowledge（公司知識）外掛，能跨連接的 App 找答案並附上來源。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-projects-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Projects：把檔案、指令與對話收在一個工作區",
+              "kind": "life",
+              "slug": "chatgpt-projects-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-custom-gpts-build"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自製 GPT：不用寫程式做出自己的專用助手（2026 年誰能建、怎麼替代）",
+              "kind": "life",
+              "slug": "chatgpt-custom-gpts-build"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -173,9 +213,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
-          "url": "https://mokaair.com/zh-TW/life/ai-free-vs-paid-plans-2026"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "免費版夠不夠用：ChatGPT、Claude、Gemini 付費方案比較（2026）",
+              "kind": "life",
+              "slug": "ai-free-vs-paid-plans-2026"
+            }
+          ]
         },
         {
           "type": "table",
@@ -238,9 +284,15 @@
           "caption": "2026 年 9 月依 OpenAI help center 整理；價格為官網美元定價，台灣結帳幣別與金額以登入後的結帳頁為準。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-shared-links-privacy"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 分享連結與隱私：哪些對話可能被搜尋到",
+              "kind": "life",
+              "slug": "chatgpt-shared-links-privacy"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 178,
@@ -122,8 +123,23 @@
           "text": "使用中文與空格路徑重跑"
         },
         {
-          "type": "paragraph",
-          "text": "把同一份 starter 解壓縮到「Claude 練習 78」資料夾，先在編輯器確認檔案完整，再由該位置執行模型與 Hook 測試。不要只把終端機提示文字改成中文；真正的絕對路徑需要含有這些字元，才能測到參數傳遞與路徑解析。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把同一份 starter 解壓縮到「Claude 練習 78」資料夾，先在編輯器確認檔案完整，再由該位置執行模型與 Hook 測試。不要只把終端機提示文字改成中文；真正的絕對路徑需要含有這些字元，才能測到"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "傳遞與路徑解析。"
+            }
+          ]
         },
         {
           "type": "code",

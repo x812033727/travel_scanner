@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "低秩適應，英文 Low-Rank Adaptation，常用縮寫 LoRA，是一種參數效率微調方法。它保留基礎模型的主要權重不變，在選定位置加入較小、可訓練的更新，使模型適應新的任務。省下的重點是需要訓練與儲存的更新參數，而不是把原本的大模型直接縮成一個很小的完整模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "低秩適應，英文 Low-Rank Adaptation，常用縮寫 LoRA，是一種"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "效率微調方法。它保留基礎模型的主要權重不變，在選定位置加入較小、可訓練的更新，使模型適應新的任務。省下的重點是需要訓練與儲存的更新參數，而不是把原本的大模型直接縮成一個很小的完整模型。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -152,24 +168,48 @@
           "text": "執行模型通常仍要載入基礎權重與相關狀態。估算部署資源時，檢視整個組合而不是只看 LoRA 檔案。"
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "監督式微調（SFT）：用好示範教模型完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "監督式微調（SFT）：用好示範教模型完成任務",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

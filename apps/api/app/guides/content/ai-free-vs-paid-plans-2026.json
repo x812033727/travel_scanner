@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-plans"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "「我需要付錢嗎？」是台灣使用者問 AI 工具最常見的一句。答案先講：只是偶爾問問題、改改文字，ChatGPT、Claude、Gemini 三家的免費版都夠用；真正該付費的是每天大量使用、常常撞到額度，或工作上需要旗艦模型、長文件與影片生成的人，而且第一筆錢通常付入門方案就夠，不必一開始就買上一階。搜「免費 AI」找替代品之前，先看免費版到底卡在哪裡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「我需要付錢嗎？」是台灣使用者問 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工具最常見的一句。答案先講：只是偶爾問問題、改改文字，ChatGPT、Claude、Gemini 三家的免費版都夠用；真正該付費的是每天大量使用、常常撞到額度，或工作上需要旗艦模型、長文件與影片生成的人，而且第一筆錢通常付入門方案就夠，不必一開始就買上一階。搜「免費 AI」找替代品之前，先看免費版到底卡在哪裡。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -52,9 +68,15 @@
           "ordered": false
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -74,19 +96,37 @@
           "text": "Gemini 是三家裡唯一在台灣頁直接標台幣的。入門有兩級：Google AI Plus 每月新台幣 165 元（美國定價 4.99 美元），用量是免費版的 2 倍、上下文視窗 128k token、開放影片生成、Google Flow 200 點、400 GB 雲端空間；Google AI Pro 每月新台幣 650 元（美國定價 19.99 美元），用量是免費版的 4 倍、上下文視窗放大到 100 萬 token、Gemini 3 Pro 與深度搜尋的權限更高、Flow 1,000 點、5 TB 空間，還附 YouTube Premium Lite。兩級官網都只列月費、沒有年繳；用量用完可以再買 AI 點數。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
-          "url": "https://mokaair.com/zh-TW/life/gemini-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 新手入門：有 Google 帳號就能用，Gmail、Docs 裡怎麼叫出來",
+              "kind": "life",
+              "slug": "gemini-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -144,9 +184,15 @@
           }
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
-          "url": "https://mokaair.com/zh-TW/life/ai-tools-2026-overview"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 工具全景：ChatGPT、Claude、Gemini、Codex、MiniMax 一次看懂",
+              "kind": "life",
+              "slug": "ai-tools-2026-overview"
+            }
+          ]
         },
         {
           "type": "heading",

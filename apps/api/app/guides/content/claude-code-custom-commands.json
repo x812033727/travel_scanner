@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 140,
@@ -24,8 +25,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "舊專案可能把自訂指令放在 .claude/commands/，新教學則使用 .claude/skills/。本篇會保留既有呼叫習慣，將一個簡單審查指令移轉成 Skill，並檢查名稱、參數、附屬檔案與工具授權，避免移動檔案後表面可用、實際流程卻不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "舊專案可能把自訂指令放在 .claude/commands/，新教學則使用 .claude/"
+            },
+            {
+              "type": "article",
+              "text": "skills",
+              "kind": "life",
+              "slug": "ai-term-agent-skills"
+            },
+            {
+              "type": "text",
+              "text": "/。本篇會保留既有呼叫習慣，將一個簡單審查指令移轉成 Skill，並檢查名稱、"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "、附屬檔案與工具授權，避免移動檔案後表面可用、實際流程卻不同。"
+            }
+          ]
         },
         {
           "type": "rich_paragraph",

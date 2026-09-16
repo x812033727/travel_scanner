@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "productivity"
+    "productivity",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "機器翻譯把句子換成另一種語言，但不會問你這封信要寄給誰、公司名該用哪個譯法、整份文件裡同一個詞有沒有統一。Claude 做得到，前提是你在提示詞裡講清楚三件事：語氣層級、不翻或固定譯法的詞，以及一份所有段落共用的術語表。很多人搜「翻譯 AI」想找的是一個按下去就好的工具，但真正決定譯文品質的，是這三件事有沒有講清楚。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "機器翻譯把句子換成另一種語言，但不會問你這封信要寄給誰、公司名該用哪個譯法、整份文件裡同一個詞有沒有統一。Claude 做得到，前提是你在提示詞裡講清楚三件事：語氣層級、不翻或固定譯法的詞，以及一份所有段落共用的術語表。很多人搜「翻譯 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "」想找的是一個按下去就好的工具，但真正決定譯文品質的，是這三件事有沒有講清楚。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -51,9 +67,15 @@
           "text": "第三件是前後一致。三十頁的說明書分十次翻，第一次把 setting 翻成「設定」、第七次變成「設置」，讀者會以為是兩個功能。解法是讓每一段都看得到同一份術語表，而不是靠它自己記得上一段怎麼翻的。"
         },
         {
-          "type": "link",
-          "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
-          "url": "https://mokaair.com/zh-TW/life/claude-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 新手入門：Anthropic 的 AI 助手怎麼用、和 ChatGPT 差在哪",
+              "kind": "life",
+              "slug": "claude-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -96,9 +118,15 @@
           "text": "最後一句很重要：要它列出不確定的地方，而不是自己補。幻覺最常出現在它想幫你把句子補完整的時候，尤其是縮寫與內部代號。"
         },
         {
-          "type": "link",
-          "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
-          "url": "https://mokaair.com/zh-TW/life/claude-writing-style-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Claude 寫作：設定風格、長文結構與潤稿，寫出像自己寫的中文",
+              "kind": "life",
+              "slug": "claude-writing-style-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -156,9 +184,15 @@
           "text": "短文件直接把這張表貼在提示詞裡。同一批文件要翻好幾天，就把表存成檔案放進專案的知識，專案裡每個對話都讀得到；說明中心寫明專案的知識檔案單檔上限 30 MB，數量不限，但全部內容要放得進上下文視窗，免費帳號最多可以建 5 個專案。每份文件都適用的固定譯法，寫進帳號層級的個人指令也行。"
         },
         {
-          "type": "link",
-          "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
-          "url": "https://mokaair.com/zh-TW/life/claude-projects-knowledge-base"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Projects：把資料與指令放進專案，越用越懂你",
+              "kind": "life",
+              "slug": "claude-projects-knowledge-base"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -4,7 +4,7 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "misc"
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -73,8 +73,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "官方說明廣告會有清楚標示，並與回答分開；廣告主不能藉購買廣告改寫、排列或控制模型回答。看到付費版位也不代表 OpenAI 推薦該商品。品牌不應把廣告採購包裝成保證被 AI 回答引用，更不能把一般回答中出現品牌當作已投放證明。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方說明廣告會有清楚標示，並與回答分開；廣告主不能藉購買廣告改寫、排列或控制模型回答。看到付費版位也不代表 OpenAI 推薦該商品。品牌不應把廣告採購包裝成保證被 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 回答引用，更不能把一般回答中出現品牌當作已投放證明。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +216,37 @@
           "text": "台灣未列在本次查閱的自助可用名單；未來是否開放請回到官方名單確認。商品、資格與投放功能分開記錄，避免把預期當成現況。"
         },
         {
-          "type": "link",
-          "text": "區分 AI 搜尋曝光與內容整理",
-          "url": "https://mokaair.com/zh-TW/life/ai-search-geo-content"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "區分 AI 搜尋曝光與內容整理",
+              "kind": "life",
+              "slug": "ai-search-geo-content"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安排付費廣告與自然內容的工作",
-          "url": "https://mokaair.com/zh-TW/life/paid-vs-organic-marketing"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排付費廣告與自然內容的工作",
+              "kind": "life",
+              "slug": "paid-vs-organic-marketing"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理商品頁的可驗證資訊",
-          "url": "https://mokaair.com/zh-TW/life/ecommerce-product-seo"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理商品頁的可驗證資訊",
+              "kind": "life",
+              "slug": "ecommerce-product-seo"
+            }
+          ]
         }
       ],
       "sources": [

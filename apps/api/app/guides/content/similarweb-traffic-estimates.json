@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -111,8 +113,23 @@
           "text": "Similarweb 提供公開與私人 GA4 連接方式。依查閱文件，公開連接適用於免費與付費使用者，其他查看該網站的人也能看見相關驗證資料；私人連接則是付費方案功能，資料供有該帳戶存取權的人查看。這是資料分享選擇，不只是消除空白圖表的按鈕。"
         },
         {
-          "type": "paragraph",
-          "text": "串接前應由網站資料負責人確認資源範圍、帳戶權限和分享目的。官方說明，連接後可在 GA4 與估計資料間切換，並不直接改寫自家網站原本的 Similarweb 估計。網站排名仍依平台估計計算，不能把驗證標記當成排名提升的方法。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "串接前應由網站資料負責人確認資源範圍、帳戶權限和分享目的。官方說明，連接後可在 GA4 與估計資料間切換，並不直接改寫自家網站原本的 Similarweb 估計。網站排名仍依平台估計計算，不能把驗證"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "當成排名提升的方法。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +218,37 @@
           "text": "若查不到台灣篩選、對照站資料或相同裝置範圍，就縮小結論。缺少資料是研究限制，不應用零值或猜測填滿。"
         },
         {
-          "type": "link",
-          "text": "用 Search Console 核對自家搜尋資料",
-          "url": "https://mokaair.com/zh-TW/life/google-search-console-workflow"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Search Console 核對自家搜尋資料",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解 Google Trends 的相對尺度",
-          "url": "https://mokaair.com/zh-TW/life/google-trends-research"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解 Google Trends 的相對尺度",
+              "kind": "life",
+              "slug": "google-trends-research"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "研究搜尋意圖與頁面用途",
-          "url": "https://mokaair.com/zh-TW/life/seo-search-intent"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "研究搜尋意圖與頁面用途",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "監督式微調，英文 Supervised Fine-tuning，常縮寫為 SFT，是利用輸入與期望輸出的示範，在既有模型上繼續訓練。以語言模型為例，輸入可能是使用者的要求及資料，期望輸出則是符合規則的回答。模型在訓練中調整參數，使示範答案更可能被產生，逐漸學習任務格式、說法與處理方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "監督式微調，英文 Supervised Fine-tuning，常縮寫為 SFT，是利用輸入與期望輸出的示範，在既有模型上繼續訓練。以語言模型為例，輸入可能是使用者的要求及資料，期望輸出則是符合規則的回答。模型在訓練中調整"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，使示範答案更可能被產生，逐漸學習任務格式、說法與處理方式。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -152,24 +168,48 @@
           "text": "資料沒有指定負責人或日期時，示範應保留未知。若訓練集總是把空格補滿，模型可能把猜測學成習慣。"
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-direct-preference-optimization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
+              "kind": "life",
+              "slug": "ai-term-direct-preference-optimization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

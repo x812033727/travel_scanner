@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "claude-code"
   ],
   "featured": false,
   "display_order": 184,
@@ -113,8 +114,43 @@
           "text": "fixtures/issue.json 是本課的固定 Issue 資料，編號一〇四，要求全部、未完成、已完成三種篩選，切換時保留原始資料。它明列不做帳號、雲端同步與正式部署。先把這些條件轉成檢查表，避免模型在實作時擴大成完整產品。"
         },
         {
-          "type": "paragraph",
-          "text": "真實 Issue 可以從你已授權的 GitHub MCP 工具讀取，但工具名稱與參數依安裝的伺服器而定。先列工具與確認儲存庫，再做一次唯讀查詢；不要憑文章猜某個 MCP 名稱一定存在。將結果保存成相同的需求摘要，與本課 fixture 分開標記來源。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "真實 Issue 可以從你已授權的 GitHub "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 工具讀取，但工具名稱與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "依安裝的伺服器而定。先列工具與確認儲存庫，再做一次唯讀查詢；不要憑文章猜某個 MCP 名稱一定存在。將結果保存成相同的需求摘要，與本課 fixture 分開"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "來源。"
+            }
+          ]
         },
         {
           "type": "paragraph",

@@ -4,7 +4,9 @@
   "destination_id": null,
   "topics": [
     "tutorial",
-    "software"
+    "software",
+    "marketing",
+    "seo"
   ],
   "valid_until": null,
   "featured": false,
@@ -121,8 +123,23 @@
           "text": "Bing Webmaster Tools 的成效報表是 Bing 所定義範圍的搜尋資料，不能直接改名成 Yahoo 專屬流量報告。若要知道網站收到多少 Yahoo 相關造訪，可以到 GA4 的流量開發報表，選擇 Session source / medium，核對帳戶實際出現的來源與媒介值。"
         },
         {
-          "type": "paragraph",
-          "text": "先搜尋與 Yahoo 相關的來源，再看媒介是否屬於自然搜尋、推薦連結或付費活動。不要把所有含 yahoo 的字串相加就稱為 Yahoo 搜尋，因為來源可能來自不同產品或標記方式。保留原始值與分類規則，才方便下次用相同方式整理。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先搜尋與 Yahoo 相關的來源，再看媒介是否屬於自然搜尋、推薦連結或付費活動。不要把所有含 yahoo 的字串相加就稱為 Yahoo 搜尋，因為來源可能來自不同產品或"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "方式。保留原始值與分類規則，才方便下次用相同方式整理。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -201,19 +218,37 @@
           "text": "保存結果連結與區塊類型，比只說搜尋不到更有用。每次修正後記錄日期，以便區分已完成的設定與仍待觀察的搜尋結果。"
         },
         {
-          "type": "link",
-          "text": "檢查網站 Sitemap 的公開網址",
-          "url": "https://mokaair.com/zh-TW/life/sitemap-website-submission"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢查網站 Sitemap 的公開網址",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "整理網址重新導向的用途",
-          "url": "https://mokaair.com/zh-TW/life/redirects-301-302"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理網址重新導向的用途",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "理解搜尋版位與點擊率",
-          "url": "https://mokaair.com/zh-TW/life/search-results-clickthrough"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解搜尋版位與點擊率",
+              "kind": "life",
+              "slug": "search-results-clickthrough"
+            }
+          ]
         }
       ],
       "sources": [

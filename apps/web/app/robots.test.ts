@@ -1,8 +1,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { siteUrl } from "@/lib/seo";
-import robots from "./robots";
+import robots, { SEARCH_CRAWLERS, TRAINING_CRAWLERS, aiCrawlerPolicy } from "./robots";
 
 const LOCALE_APP = join(import.meta.dirname, "[locale]");
 
@@ -55,7 +55,7 @@ describe("robots", () => {
     }
   });
 
-  it("refuses the content harvesters without touching what an ordinary crawler may read", () => {
+  it("refuses the training crawlers without touching what an ordinary crawler may read", () => {
     const rules = robots().rules;
     const groups = Array.isArray(rules) ? rules : [rules];
     // The catch-all has to stay first: disallows() above reads rules[0], and a group that
@@ -74,6 +74,45 @@ describe("robots", () => {
     expect(refused.map((rule) => rule.userAgent)).not.toEqual(
       expect.arrayContaining(["ChatGPT-User", "OAI-SearchBot", "Googlebot"]),
     );
+  });
+
+  describe("the AI crawler policy", () => {
+    afterEach(() => vi.unstubAllEnvs());
+    const refused = () => {
+      const rules = robots().rules;
+      return (Array.isArray(rules) ? rules : [rules]).slice(1).map((rule) => rule.userAgent);
+    };
+
+    it("lets the citing search crawlers in by default, and refuses the training ones", () => {
+      vi.stubEnv("AI_CRAWLER_POLICY", "");
+      expect(aiCrawlerPolicy()).toBe("allow-search");
+      expect(refused()).toEqual(TRAINING_CRAWLERS);
+      expect(refused()).not.toEqual(expect.arrayContaining(SEARCH_CRAWLERS));
+      // The agents that fetch for a person are never listed under any policy.
+      expect([...TRAINING_CRAWLERS, ...SEARCH_CRAWLERS]).not.toEqual(
+        expect.arrayContaining(["ChatGPT-User", "OAI-SearchBot"]),
+      );
+    });
+
+    it("refuses both groups under block, and neither under allow", () => {
+      vi.stubEnv("AI_CRAWLER_POLICY", "block");
+      expect(refused()).toEqual([...TRAINING_CRAWLERS, ...SEARCH_CRAWLERS]);
+      vi.stubEnv("AI_CRAWLER_POLICY", "allow");
+      expect(refused()).toEqual([]);
+      // The catch-all group is untouched either way.
+      expect(disallows("/en/admin")).toBe(true);
+      expect(disallows("/zh-TW/life")).toBe(false);
+    });
+
+    it("falls back to the default on a value it does not know, and reads the value per request", () => {
+      vi.stubEnv("AI_CRAWLER_POLICY", "everything");
+      expect(aiCrawlerPolicy()).toBe("allow-search");
+      expect(aiCrawlerPolicy(" BLOCK ")).toBe("block");
+      vi.stubEnv("AI_CRAWLER_POLICY", "block");
+      expect(refused()).toContain("PerplexityBot");
+      vi.stubEnv("AI_CRAWLER_POLICY", "allow-search");
+      expect(refused()).not.toContain("PerplexityBot");
+    });
   });
 
   it("leaves public content crawlable", () => {

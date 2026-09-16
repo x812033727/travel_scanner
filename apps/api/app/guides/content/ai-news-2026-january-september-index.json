@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "software"
+    "software",
+    "ai-news"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "2026-01-01 至 2026-09-14，AI 新聞從資料中心算力一路延伸到個人資料、文件工作、圖片、影片與音樂。這份索引於 2026-09-14 查核、2026-09-15 增補，收錄三十八則重要事件的完整解析，並依一月至九月排列。每篇都保留新聞日期與官方來源，說明當時宣布了什麼、有哪些實際用途，以及哪些功能仍受方案、地區或開放階段限制。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2026-01-01 至 2026-09-14，"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 新聞從資料中心算力一路延伸到個人資料、文件工作、圖片、影片與音樂。這份索引於 2026-09-14 查核、2026-09-15 增補，收錄三十八則重要事件的完整解析，並依一月至九月排列。每篇都保留新聞日期與官方來源，說明當時宣布了什麼、有哪些實際用途，以及哪些功能仍受方案、地區或開放階段限制。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "本專輯面向台灣一般讀者，不要求先熟悉模型規格。你可以先看月份重點，再選擇與自己生活相關的文章。廠商評測都歸因給發布者；工作、旅行與創作案例則是編輯設計的示例，供讀者自行核對。原先七月底至九月的十篇新聞也納入索引，與這次補齊的一月至七月二十一篇形成可連續閱讀的時間線。2026-09-15 再補上七則：七月的 GPT-Live 語音，以及九月的 Google 助理改由 Gemini 接手、Anthropic 濫用威脅報告、OpenAI Agents API、DeepSeek V4.1-Flash、Amodei 呼籲放慢前沿 AI 與 Siri AI。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本專輯面向台灣一般讀者，不要求先熟悉模型規格。你可以先看月份重點，再選擇與自己生活相關的文章。廠商"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "都歸因給發布者；工作、旅行與創作案例則是編輯設計的示例，供讀者自行核對。原先七月底至九月的十篇新聞也納入索引，與這次補齊的一月至七月二十一篇形成可連續閱讀的時間線。2026-09-15 再補上七則：七月的 GPT-Live 語音，以及九月的 Google 助理改由 Gemini 接手、Anthropic 濫用威脅報告、OpenAI Agents API、DeepSeek V4.1-Flash、Amodei 呼籲放慢前沿 AI 與 Siri AI。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -52,16 +83,46 @@
           "text": "二月至三月：更長的資料，與更完整的工作"
         },
         {
-          "type": "paragraph",
-          "text": "二月的 GPT-5.3-Codex、Claude Opus 4.6、Qwen3.5 與 Gemini 3.1 Pro，分別帶出工作交付、長上下文、開放權重與預覽模型等議題。三月再接上 GPT-5.4、Claude 對話內互動圖像及 Lyria 3 Pro。這些消息並非同一張排行榜上的先後名次：一個模型適合處理長文件，不表示它同時提供你需要的應用程式權限。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "二月的 GPT-5.3-Codex、Claude Opus 4.6、Qwen3.5 與 Gemini 3.1 Pro，分別帶出工作交付、長上下文、"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "與預覽模型等議題。三月再接上 GPT-5.4、Claude 對話內互動圖像及 Lyria 3 Pro。這些消息並非同一張排行榜上的先後名次：一個模型適合處理長文件，不表示它同時提供你需要的應用程式權限。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "閱讀這段時間的文章，可以帶著一個固定任務比較。例如同一份社團活動資料，要整理名單、找出日期衝突、產生說明圖，最後配一段介紹音樂，每一步的驗收方式都不一樣。名單要核對漏列，圖解要確認因果沒有畫反，音樂要聽完整段落。把「生成成功」與「可以交付」分開，才能看出模型更新是否改善了真正耗時的部分。"
         },
         {
-          "type": "paragraph",
-          "text": "開放權重也值得單獨看待。能下載檔案，不等於一般筆電能順暢執行；總參數、每次啟用參數、記憶體需求和使用授權，不能用同一個數字代替。長上下文同樣不代表模型必定記住每一段資料。文章會把這些規格轉成可理解的限制，方便你決定要繼續用雲端服務，或再研究本機部署。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開放權重也值得單獨看待。能下載檔案，不等於一般筆電能順暢執行；總"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "、每次啟用參數、記憶體需求和使用授權，不能用同一個數字代替。長上下文同樣不代表模型必定記住每一段資料。文章會把這些規格轉成可理解的限制，方便你決定要繼續用雲端服務，或再研究本機部署。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -204,19 +265,37 @@
           "text": "2026 年 1 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-nvidia-rubin-20260105"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？",
+              "kind": "life",
+              "slug": "ai-news-nvidia-rubin-20260105"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Health 年初登場：整理健康資料之前先看懂用途與界線",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-health-20260107"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Health 年初登場：整理健康資料之前先看懂用途與界線",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-health-20260107"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Personal Intelligence：AI 連結郵件與相簿後，便利從哪裡來？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-personal-intelligence-20260114"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Personal Intelligence：AI 連結郵件與相簿後，便利從哪裡來？",
+              "kind": "life",
+              "slug": "ai-news-gemini-personal-intelligence-20260114"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -224,24 +303,48 @@
           "text": "2026 年 2 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6 與長上下文：大量資料讀得進去，也要找得回來",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6 與長上下文：大量資料讀得進去，也要找得回來",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro 發布：複雜問題如何轉成可驗證的答案？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro 發布：複雜問題如何轉成可驗證的答案？",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -249,19 +352,37 @@
           "text": "2026 年 3 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "GPT-5.4 把推理與電腦操作放在一起：一般工作者該怎麼看？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4 把推理與電腦操作放在一起：一般工作者該怎麼看？",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 對話開始畫互動圖：看懂概念之前，先看懂圖的假設",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-interactive-visuals-20260312"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 對話開始畫互動圖：看懂概念之前，先看懂圖的假設",
+              "kind": "life",
+              "slug": "ai-news-claude-interactive-visuals-20260312"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro 延長 AI 音樂創作：從短片段到有段落的作品",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro 延長 AI 音樂創作：從短片段到有段落的作品",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -269,24 +390,48 @@
           "text": "2026 年 4 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing 與 Mythos Preview：AI 找到漏洞後，真正的工作才開始",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-meta-muse-spark-20260408"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？",
+              "kind": "life",
+              "slug": "ai-news-meta-muse-spark-20260408"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.0：圖像開始加入思考，設計需求也要更清楚",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-images-20-20260421"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.0：圖像開始加入思考，設計需求也要更清楚",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-20-20260421"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.5 走向多步驟工作：把模糊需求變成能驗收的交付",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-55-20260423"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 走向多步驟工作：把模糊需求變成能驗收的交付",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-20260423"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -294,14 +439,26 @@
           "text": "2026 年 5 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "Gemini Omni 在 I/O 亮相：用對話改影片，素材與連續性仍要自己把關",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-omni-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Omni 在 I/O 亮相：用對話改影片，素材與連續性仍要自己把關",
+              "kind": "life",
+              "slug": "ai-news-gemini-omni-20260519"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Spark 與 Daily Brief：AI 從晨間摘要走向背景辦事",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-spark-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Spark 與 Daily Brief：AI 從晨間摘要走向背景辦事",
+              "kind": "life",
+              "slug": "ai-news-gemini-spark-20260519"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -309,19 +466,37 @@
           "text": "2026 年 6 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5 的發布、暫停與恢復：AI 服務可用性也是選擇條件",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5 的發布、暫停與恢復：AI 服務可用性也是選擇條件",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol 從有限預覽開始：模型發表與人人可用為何不同？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol 從有限預覽開始：模型發表與人人可用為何不同？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5：能力與成本之間，怎麼找日常工作的平衡？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力與成本之間，怎麼找日常工作的平衡？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -329,29 +504,59 @@
           "text": "2026 年 7 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "GPT-Live 讓 ChatGPT 語音邊聽邊說：插話、方案用量與錄音設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-live-voice-20260708"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 讓 ChatGPT 語音邊聽邊說：插話、方案用量與錄音設定",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-voice-20260708"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash 與 Flash-Lite：快速模型該如何分工？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash 與 Flash-Lite：快速模型該如何分工？",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna、Terra 降價：哪些使用成本受到影響？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna、Terra 降價：哪些使用成本受到影響？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -359,19 +564,37 @@
           "text": "2026 年 8 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 免費版與思考功能更新：日常使用有什麼不同？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-free-thinking-20260806"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 免費版與思考功能更新：日常使用有什麼不同？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-free-thinking-20260806"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live 生產力更新：用語音處理郵件與待辦",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live 生產力更新：用語音處理郵件與待辦",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -379,59 +602,125 @@
           "text": "2026 年 9 月新聞解析"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 與 Mythos 5.1：功能、開放對象與限制",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 與 Mythos 5.1：功能、開放對象與限制",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.8 Flash 推出：模型升級對日常工具意味著什麼？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-38-flash-20260902"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Flash 推出：模型升級對日常工具意味著什麼？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-flash-20260902"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 發布：從回答問題到完成電腦工作",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 發布：從回答問題到完成電腦工作",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5 進入 Gemini：AI 音樂創作有哪些新選擇？",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google Assistant 退場、Gemini 接手：手機、手錶與車上換手前後要檢查什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-google-assistant-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Assistant 退場、Gemini 接手：手機、手錶與車上換手前後要檢查什麼",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.5：圖片生成、局部修改與草圖功能更新",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-images-25-20260908"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.5：圖片生成、局部修改與草圖功能更新",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-25-20260908"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-anthropic-threat-report-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰",
+              "kind": "life",
+              "slug": "ai-news-anthropic-threat-report-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-openai-agents-api-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置",
+              "kind": "life",
+              "slug": "ai-news-openai-agents-api-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek-V4.1-Flash 上線、V4-Pro 去留有兩種說法：模型換手時該注意什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-deepseek-v41-flash-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek-V4.1-Flash 上線、V4-Pro 去留有兩種說法：模型換手時該注意什麼",
+              "kind": "life",
+              "slug": "ai-news-deepseek-v41-flash-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Amodei 呼籲放慢前沿 AI：〈We Must Pace the Frontier〉的主張與界線",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-pace-the-frontier-20260912"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei 呼籲放慢前沿 AI：〈We Must Pace the Frontier〉的主張與界線",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Siri AI 隨 iOS 27 推出：先上英文 beta，台灣 iPhone 使用者能用到什麼？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-siri-ai-ios-27-20260914"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Siri AI 隨 iOS 27 推出：先上英文 beta，台灣 iPhone 使用者能用到什麼？",
+              "kind": "life",
+              "slug": "ai-news-siri-ai-ios-27-20260914"
+            }
+          ]
         }
       ],
       "sources": [
@@ -676,19 +965,37 @@
           "text": "January 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "NVIDIA Rubin Unveiled at CES: How Will AI Compute Upgrades Affect Daily Services?",
-          "url": "https://mokaair.com/en/life/ai-news-nvidia-rubin-20260105"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA Rubin Unveiled at CES: How Will AI Compute Upgrades Affect Daily Services?",
+              "kind": "life",
+              "slug": "ai-news-nvidia-rubin-20260105"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Health Launches Early This Year: Understanding Its Purpose and Boundaries Before Organizing Health Data",
-          "url": "https://mokaair.com/en/life/ai-news-chatgpt-health-20260107"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Health Launches Early This Year: Understanding Its Purpose and Boundaries Before Organizing Health Data",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-health-20260107"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Personal Intelligence: Where Does Convenience Come from After AI Connects Emails and Photos?",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-personal-intelligence-20260114"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Personal Intelligence: Where Does Convenience Come from After AI Connects Emails and Photos?",
+              "kind": "life",
+              "slug": "ai-news-gemini-personal-intelligence-20260114"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -696,24 +1003,48 @@
           "text": "February 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6 and Long Context: Reading Vast Data In, Retrieving It Accurately Out",
-          "url": "https://mokaair.com/en/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6 and Long Context: Reading Vast Data In, Retrieving It Accurately Out",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex Launched: How AI Coding Moves Toward Deliverable Work",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex Launched: How AI Coding Moves Toward Deliverable Work",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
-          "url": "https://mokaair.com/en/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 Open Weights: What Is the Difference Between a Downloadable Model and Running It on Your Own PC?",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro Released: Turning Complex Questions into Verifiable Answers",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro Released: Turning Complex Questions into Verifiable Answers",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -721,19 +1052,37 @@
           "text": "March 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "GPT-5.4 Combines Reasoning and Computer Use: What It Means for Everyday Workers",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4 Combines Reasoning and Computer Use: What It Means for Everyday Workers",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Starts Drawing Interactive Visuals: Understand the Assumptions Before the Concept",
-          "url": "https://mokaair.com/en/life/ai-news-claude-interactive-visuals-20260312"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Starts Drawing Interactive Visuals: Understand the Assumptions Before the Concept",
+              "kind": "life",
+              "slug": "ai-news-claude-interactive-visuals-20260312"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro Extends AI Music Creation: From Short Clips to Structured Compositions",
-          "url": "https://mokaair.com/en/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro Extends AI Music Creation: From Short Clips to Structured Compositions",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -741,24 +1090,48 @@
           "text": "April 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
-          "url": "https://mokaair.com/en/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing and Mythos Preview: After AI Finds Vulnerabilities, the Real Work Begins",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta Muse Spark Debuts: How In-App AI Assistants Reshape Search and Inquiry",
-          "url": "https://mokaair.com/en/life/ai-news-meta-muse-spark-20260408"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta Muse Spark Debuts: How In-App AI Assistants Reshape Search and Inquiry",
+              "kind": "life",
+              "slug": "ai-news-meta-muse-spark-20260408"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.0: Thinking Enters Image Generation, Demanding Clearer Design Needs",
-          "url": "https://mokaair.com/en/life/ai-news-chatgpt-images-20-20260421"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.0: Thinking Enters Image Generation, Demanding Clearer Design Needs",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-20-20260421"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.5 Moves Toward Multi-Step Work: Turning Vague Needs into Verifiable Deliverables",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-55-20260423"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 Moves Toward Multi-Step Work: Turning Vague Needs into Verifiable Deliverables",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-20260423"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -766,14 +1139,26 @@
           "text": "May 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "Gemini Omni Debuts at I/O: Conversational Video Edits Still Demand Care",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-omni-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Omni Debuts at I/O: Conversational Video Edits Still Demand Care",
+              "kind": "life",
+              "slug": "ai-news-gemini-omni-20260519"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Spark and Daily Brief: AI Moves from Morning Summaries to Background Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-spark-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Spark and Daily Brief: AI Moves from Morning Summaries to Background Tasks",
+              "kind": "life",
+              "slug": "ai-news-gemini-spark-20260519"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -781,19 +1166,37 @@
           "text": "June 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5 Launch, Suspension, and Restoration: Availability Criteria",
-          "url": "https://mokaair.com/en/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5 Launch, Suspension, and Restoration: Availability Criteria",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol Starts from Limited Preview: Why Announcement Differs from General Availability",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol Starts from Limited Preview: Why Announcement Differs from General Availability",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5: Balancing Capability and Cost in Daily Work",
-          "url": "https://mokaair.com/en/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5: Balancing Capability and Cost in Daily Work",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -801,29 +1204,59 @@
           "text": "July 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "GPT-Live Lets ChatGPT Voice Listen as It Talks: Interruptions, Plan Limits, Recordings",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-live-voice-20260708"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live Lets ChatGPT Voice Listen as It Talks: Interruptions, Plan Limits, Recordings",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-voice-20260708"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work Officially Debuts: How to Clearly Delegate Cross-File Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work Officially Debuts: How to Clearly Delegate Cross-File Tasks",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash and Flash-Lite: How to Divide Fast Model Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash and Flash-Lite: How to Divide Fast Model Tasks",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 Released: What Changes Matter Most for Everyday Work Users?",
-          "url": "https://mokaair.com/en/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 Released: What Changes Matter Most for Everyday Work Users?",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna and Terra Price Cut: Which Usage Costs Are Affected?",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna and Terra Price Cut: Which Usage Costs Are Affected?",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -831,19 +1264,37 @@
           "text": "August 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "EU AI Transparency Rules Take Effect: How Are Chatbots and Generated Content Labeled?",
-          "url": "https://mokaair.com/en/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU AI Transparency Rules Take Effect: How Are Chatbots and Generated Content Labeled?",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Free Tier and Thinking Feature Updates: What Changes in Daily Use?",
-          "url": "https://mokaair.com/en/life/ai-news-chatgpt-free-thinking-20260806"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Free Tier and Thinking Feature Updates: What Changes in Daily Use?",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-free-thinking-20260806"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live Productivity Update: Handling Emails and To-Dos with Voice",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live Productivity Update: Handling Emails and To-Dos with Voice",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -851,59 +1302,125 @@
           "text": "September 2026 News Analyses"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
-          "url": "https://mokaair.com/en/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 and Mythos 5.1: Capabilities, Access, and Limits",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.8 Flash Launched: What Model Upgrades Mean for Everyday Tools",
-          "url": "https://mokaair.com/en/life/ai-news-gemini-38-flash-20260902"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Flash Launched: What Model Upgrades Mean for Everyday Tools",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-flash-20260902"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
-          "url": "https://mokaair.com/en/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra Announced: From Answering Questions to Completing Computer Tasks",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5 Joins Gemini: New Options for AI Music Creation",
-          "url": "https://mokaair.com/en/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5 Joins Gemini: New Options for AI Music Creation",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google Assistant Exits, Gemini Takes Over: Phone, Watch, and Car Checks Before and After",
-          "url": "https://mokaair.com/en/life/ai-news-google-assistant-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Assistant Exits, Gemini Takes Over: Phone, Watch, and Car Checks Before and After",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.5: Image Generation, Inpainting, and Sketch Updates",
-          "url": "https://mokaair.com/en/life/ai-news-chatgpt-images-25-20260908"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.5: Image Generation, Inpainting, and Sketch Updates",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-25-20260908"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Anthropic's September Threat Report: Seven Kinds of AI Misuse and Targeted API Keys",
-          "url": "https://mokaair.com/en/life/ai-news-anthropic-threat-report-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic's September Threat Report: Seven Kinds of AI Misuse and Targeted API Keys",
+              "kind": "life",
+              "slug": "ai-news-anthropic-threat-report-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI Agents API Public Beta: Know Billing and Data Location Before Commissioning AI Work",
-          "url": "https://mokaair.com/en/life/ai-news-openai-agents-api-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Agents API Public Beta: Know Billing and Data Location Before Commissioning AI Work",
+              "kind": "life",
+              "slug": "ai-news-openai-agents-api-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek-V4.1-Flash Launches, Mixed Word on V4-Pro: What to Watch When Models Switch",
-          "url": "https://mokaair.com/en/life/ai-news-deepseek-v41-flash-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek-V4.1-Flash Launches, Mixed Word on V4-Pro: What to Watch When Models Switch",
+              "kind": "life",
+              "slug": "ai-news-deepseek-v41-flash-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Amodei Urges Pacing Frontier AI: What “We Must Pace the Frontier” Proposes and Its Limits",
-          "url": "https://mokaair.com/en/life/ai-news-pace-the-frontier-20260912"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei Urges Pacing Frontier AI: What “We Must Pace the Frontier” Proposes and Its Limits",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Siri AI Arrives with iOS 27 as an English Beta: What Can iPhone Users in Taiwan Use?",
-          "url": "https://mokaair.com/en/life/ai-news-siri-ai-ios-27-20260914"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Siri AI Arrives with iOS 27 as an English Beta: What Can iPhone Users in Taiwan Use?",
+              "kind": "life",
+              "slug": "ai-news-siri-ai-ios-27-20260914"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1148,19 +1665,37 @@
           "text": "2026年1月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "NVIDIA RubinがCESで登場：AI計算能力の向上が日常サービスに及ぼす影響とは？",
-          "url": "https://mokaair.com/ja/life/ai-news-nvidia-rubin-20260105"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA RubinがCESで登場：AI計算能力の向上が日常サービスに及ぼす影響とは？",
+              "kind": "life",
+              "slug": "ai-news-nvidia-rubin-20260105"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Health年初登場：健康データの整理前に知る用途と境界線",
-          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-health-20260107"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Health年初登場：健康データの整理前に知る用途と境界線",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-health-20260107"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Personal Intelligence：AIがメールや写真と連携した時、利便性はどこから生まれるか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-personal-intelligence-20260114"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Personal Intelligence：AIがメールや写真と連携した時、利便性はどこから生まれるか？",
+              "kind": "life",
+              "slug": "ai-news-gemini-personal-intelligence-20260114"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1168,24 +1703,48 @@
           "text": "2026年2月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6と長文コンテキスト：大量のデータは読み込めても、正確に引き出せるか",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6と長文コンテキスト：大量のデータは読み込めても、正確に引き出せるか",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex登場：AIプログラミングは実用的な成果物へどう進むか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex登場：AIプログラミングは実用的な成果物へどう進むか？",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
-          "url": "https://mokaair.com/ja/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5オープンウェイト：DL可能モデルと手元PCでの動作の違い",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro発表：複雑な問題を検証可能な回答へ変換する方法",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro発表：複雑な問題を検証可能な回答へ変換する方法",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1193,19 +1752,37 @@
           "text": "2026年3月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "GPT-5.4が推論とコンピュータ操作を統合：一般の実務者はどう向き合うべきか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4が推論とコンピュータ操作を統合：一般の実務者はどう向き合うべきか？",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claudeの対話がインタラクティブ図を描き始める：概念を理解する前に、まず図の前提を理解する",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-interactive-visuals-20260312"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claudeの対話がインタラクティブ図を描き始める：概念を理解する前に、まず図の前提を理解する",
+              "kind": "life",
+              "slug": "ai-news-claude-interactive-visuals-20260312"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Proが広げるAI音楽制作：短い断片から構成ある楽曲へ",
-          "url": "https://mokaair.com/ja/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Proが広げるAI音楽制作：短い断片から構成ある楽曲へ",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1213,24 +1790,48 @@
           "text": "2026年4月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
-          "url": "https://mokaair.com/ja/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project GlasswingとMythos Preview：AIが脆弱性を発見した後に始まる真の作業",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta Muse Spark登場：SNS内のAIアシスタントは検索と質問をどう変えるか？",
-          "url": "https://mokaair.com/ja/life/ai-news-meta-muse-spark-20260408"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta Muse Spark登場：SNS内のAIアシスタントは検索と質問をどう変えるか？",
+              "kind": "life",
+              "slug": "ai-news-meta-muse-spark-20260408"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.0：画像生成に「思考」が加わる、設計要件の明確化が不可欠に",
-          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-images-20-20260421"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.0：画像生成に「思考」が加わる、設計要件の明確化が不可欠に",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-20-20260421"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.5が拓く多段階ワークフロー：曖昧な要件を検収可能な成果物へ",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-55-20260423"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5が拓く多段階ワークフロー：曖昧な要件を検収可能な成果物へ",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-20260423"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1238,14 +1839,26 @@
           "text": "2026年5月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "Google I/OでGemini Omni発表：対話で動画を編集、素材と連続性の管理は自己責任で",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-omni-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google I/OでGemini Omni発表：対話で動画を編集、素材と連続性の管理は自己責任で",
+              "kind": "life",
+              "slug": "ai-news-gemini-omni-20260519"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini SparkとDaily Brief：朝の要約からバックグラウンド処理へ進化するAI",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-spark-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini SparkとDaily Brief：朝の要約からバックグラウンド処理へ進化するAI",
+              "kind": "life",
+              "slug": "ai-news-gemini-spark-20260519"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1253,19 +1866,37 @@
           "text": "2026年6月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5の公開、一時停止、再開：AIサービスの可用性も選定条件に",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5の公開、一時停止、再開：AIサービスの可用性も選定条件に",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol、限定プレビューから始動：モデル発表と一般提供の違いとは？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol、限定プレビューから始動：モデル発表と一般提供の違いとは？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5：能力とコストの間で日常業務のバランスをどう取るか？",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力とコストの間で日常業務のバランスをどう取るか？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1273,29 +1904,59 @@
           "text": "2026年7月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "GPT-LiveでChatGPTの音声が聞きながら話せるように：割り込み、プラン別の利用枠、録音の設定",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-live-voice-20260708"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-LiveでChatGPTの音声が聞きながら話せるように：割り込み、プラン別の利用枠、録音の設定",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-voice-20260708"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 正式登場：複数ファイルをまたぐタスクを明確に指示する方法",
-          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 正式登場：複数ファイルをまたぐタスクを明確に指示する方法",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 FlashとFlash-Lite：高速モデルはどう分担すべきか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 FlashとFlash-Lite：高速モデルはどう分担すべきか？",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5登場：一般のデスクワーカーが注目すべき変化とは？",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5登場：一般のデスクワーカーが注目すべき変化とは？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna・Terra値下げ：どの利用コストに影響があるのか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna・Terra値下げ：どの利用コストに影響があるのか？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1303,19 +1964,37 @@
           "text": "2026年8月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "EUのAI透明性ルールが施行：チャットボットと生成コンテンツの表示はどうなる？",
-          "url": "https://mokaair.com/ja/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EUのAI透明性ルールが施行：チャットボットと生成コンテンツの表示はどうなる？",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT無料版と思考機能の更新：日常利用で何が変わるのか？",
-          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-free-thinking-20260806"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT無料版と思考機能の更新：日常利用で何が変わるのか？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-free-thinking-20260806"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live生産性アップデート：音声でメールとToDoを処理",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live生産性アップデート：音声でメールとToDoを処理",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1323,59 +2002,125 @@
           "text": "2026年9月のニュース解説"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1とMythos 5.1：機能、対象ユーザー、制限事項",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.8 Flash登場：モデル刷新は日常のツールに何をもたらすか？",
-          "url": "https://mokaair.com/ja/life/ai-news-gemini-38-flash-20260902"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Flash登場：モデル刷新は日常のツールに何をもたらすか？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-flash-20260902"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
-          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra発表：質問への回答からコンピュータ作業の完遂へ",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5がGeminiに登場：AI音楽制作の新たな選択肢とは？",
-          "url": "https://mokaair.com/ja/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5がGeminiに登場：AI音楽制作の新たな選択肢とは？",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google アシスタント終了、Gemini が後継に：スマホ、ウォッチ、車で切り替え前後に確認すること",
-          "url": "https://mokaair.com/ja/life/ai-news-google-assistant-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google アシスタント終了、Gemini が後継に：スマホ、ウォッチ、車で切り替え前後に確認すること",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.5：画像生成、部分編集、スケッチ機能のアップデート",
-          "url": "https://mokaair.com/ja/life/ai-news-chatgpt-images-25-20260908"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.5：画像生成、部分編集、スケッチ機能のアップデート",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-25-20260908"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Anthropicの9月版脅威インテリジェンスレポート：7種類のAI悪用と狙われるAPIキー",
-          "url": "https://mokaair.com/ja/life/ai-news-anthropic-threat-report-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropicの9月版脅威インテリジェンスレポート：7種類のAI悪用と狙われるAPIキー",
+              "kind": "life",
+              "slug": "ai-news-anthropic-threat-report-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI Agents APIがパブリックベータに：AI自動化を委託する前に課金とデータの保存場所を理解する",
-          "url": "https://mokaair.com/ja/life/ai-news-openai-agents-api-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Agents APIがパブリックベータに：AI自動化を委託する前に課金とデータの保存場所を理解する",
+              "kind": "life",
+              "slug": "ai-news-openai-agents-api-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek-V4.1-Flash公開、V4-Proの扱いに二通りの説明：モデルが入れ替わるときの注意点",
-          "url": "https://mokaair.com/ja/life/ai-news-deepseek-v41-flash-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek-V4.1-Flash公開、V4-Proの扱いに二通りの説明：モデルが入れ替わるときの注意点",
+              "kind": "life",
+              "slug": "ai-news-deepseek-v41-flash-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Amodei氏、フロンティアAIの減速を呼びかけ：「We Must Pace the Frontier」の主張と線引き",
-          "url": "https://mokaair.com/ja/life/ai-news-pace-the-frontier-20260912"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei氏、フロンティアAIの減速を呼びかけ：「We Must Pace the Frontier」の主張と線引き",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Siri AIがiOS 27とともに登場：まず英語ベータ版から、台湾のiPhoneユーザーは何を使える？",
-          "url": "https://mokaair.com/ja/life/ai-news-siri-ai-ios-27-20260914"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Siri AIがiOS 27とともに登場：まず英語ベータ版から、台湾のiPhoneユーザーは何を使える？",
+              "kind": "life",
+              "slug": "ai-news-siri-ai-ios-27-20260914"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1620,19 +2365,37 @@
           "text": "2026년 1월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "CES에서 공개된 NVIDIA Rubin: AI 연산력 업그레이드는 일상 서비스에 어떤 영향을 미칠까?",
-          "url": "https://mokaair.com/ko/life/ai-news-nvidia-rubin-20260105"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CES에서 공개된 NVIDIA Rubin: AI 연산력 업그레이드는 일상 서비스에 어떤 영향을 미칠까?",
+              "kind": "life",
+              "slug": "ai-news-nvidia-rubin-20260105"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Health 연초 출시: 건강 자료 정리 전 용도와 한계 확인하기",
-          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-health-20260107"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Health 연초 출시: 건강 자료 정리 전 용도와 한계 확인하기",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-health-20260107"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Personal Intelligence: AI가 메일과 사진을 연결할 때 생기는 편의성은 어디서 오는가?",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-personal-intelligence-20260114"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Personal Intelligence: AI가 메일과 사진을 연결할 때 생기는 편의성은 어디서 오는가?",
+              "kind": "life",
+              "slug": "ai-news-gemini-personal-intelligence-20260114"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1640,24 +2403,48 @@
           "text": "2026년 2월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6과 긴 컨텍스트: 방대한 데이터를 읽어 들였다면, 제대로 찾아낼 수도 있어야 한다",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6과 긴 컨텍스트: 방대한 데이터를 읽어 들였다면, 제대로 찾아낼 수도 있어야 한다",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex 출시: AI 코딩은 어떻게 납품 가능한 결과물로 이어지는가?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex 출시: AI 코딩은 어떻게 납품 가능한 결과물로 이어지는가?",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
-          "url": "https://mokaair.com/ko/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 오픈 가중치: 다운로드 가능한 모델과 내 컴퓨터 구동의 차이는?",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro 발표: 복잡한 문제를 검증 가능한 답변으로 바꾸는 법",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro 발표: 복잡한 문제를 검증 가능한 답변으로 바꾸는 법",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1665,19 +2452,37 @@
           "text": "2026년 3월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "GPT-5.4, 추론과 컴퓨터 조작을 하나로: 일반 실무자는 어떻게 바라봐야 할까?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4, 추론과 컴퓨터 조작을 하나로: 일반 실무자는 어떻게 바라봐야 할까?",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "대화에서 인터랙티브 다이어그램 그리는 Claude: 개념 전 가정부터 파악하기",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-interactive-visuals-20260312"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대화에서 인터랙티브 다이어그램 그리는 Claude: 개념 전 가정부터 파악하기",
+              "kind": "life",
+              "slug": "ai-news-claude-interactive-visuals-20260312"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro, AI 음악 창작 확장: 짧은 조각에서 구조를 갖춘 작품으로",
-          "url": "https://mokaair.com/ko/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro, AI 음악 창작 확장: 짧은 조각에서 구조를 갖춘 작품으로",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1685,24 +2490,48 @@
           "text": "2026년 4월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
-          "url": "https://mokaair.com/ko/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing과 Mythos Preview: AI가 취약점을 찾은 뒤에야 진짜 작업이 시작된다",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta Muse Spark 등장: 소셜 미디어 속 AI 비서는 검색과 질문을 어떻게 바꿀까?",
-          "url": "https://mokaair.com/ko/life/ai-news-meta-muse-spark-20260408"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta Muse Spark 등장: 소셜 미디어 속 AI 비서는 검색과 질문을 어떻게 바꿀까?",
+              "kind": "life",
+              "slug": "ai-news-meta-muse-spark-20260408"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.0: 이미지 생성에 사고 과정이 도입되다, 디자인 요구사항도 더 명확해야",
-          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-images-20-20260421"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.0: 이미지 생성에 사고 과정이 도입되다, 디자인 요구사항도 더 명확해야",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-20-20260421"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.5 다단계 업무로 확장: 모호한 요구사항을 검수 가능한 납품물로 전환하기",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-55-20260423"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 다단계 업무로 확장: 모호한 요구사항을 검수 가능한 납품물로 전환하기",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-20260423"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1710,14 +2539,26 @@
           "text": "2026년 5월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "Gemini Omni, I/O에서 공개: 대화로 영상을 편집하되 소재와 연속성은 직접 검증해야",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-omni-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Omni, I/O에서 공개: 대화로 영상을 편집하되 소재와 연속성은 직접 검증해야",
+              "kind": "life",
+              "slug": "ai-news-gemini-omni-20260519"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Spark와 Daily Brief: 모닝 브리핑에서 백그라운드 업무로 나아가는 AI",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-spark-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Spark와 Daily Brief: 모닝 브리핑에서 백그라운드 업무로 나아가는 AI",
+              "kind": "life",
+              "slug": "ai-news-gemini-spark-20260519"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1725,19 +2566,37 @@
           "text": "2026년 6월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5의 출시, 중단 및 재개: AI 서비스 가용성도 선택 기준이다",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5의 출시, 중단 및 재개: AI 서비스 가용성도 선택 기준이다",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol, 제한된 프리뷰로 시작: 모델 발표와 전원 사용 가능은 왜 다를까?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol, 제한된 프리뷰로 시작: 모델 발표와 전원 사용 가능은 왜 다를까?",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5: 역량과 비용 사이, 일상 업무의 균형을 찾는 방법은?",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5: 역량과 비용 사이, 일상 업무의 균형을 찾는 방법은?",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1745,29 +2604,59 @@
           "text": "2026년 7월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "GPT-Live로 들으면서 말하는 ChatGPT 음성: 끼어들기, 요금제별 사용량, 녹음 설정",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-live-voice-20260708"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live로 들으면서 말하는 ChatGPT 음성: 끼어들기, 요금제별 사용량, 녹음 설정",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-voice-20260708"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 공식 공개: 파일 간 작업을 명확하게 인계하는 법",
-          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 공식 공개: 파일 간 작업을 명확하게 인계하는 법",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash와 Flash-Lite: 고속 모델의 역할 분담 전략",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash와 Flash-Lite: 고속 모델의 역할 분담 전략",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 출시: 일반 직장인은 어떤 변화에 주목해야 할까?",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 출시: 일반 직장인은 어떤 변화에 주목해야 할까?",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna·Terra 가격 인하: 어떤 사용 비용에 영향 미치나?",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna·Terra 가격 인하: 어떤 사용 비용에 영향 미치나?",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1775,19 +2664,37 @@
           "text": "2026년 8월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "EU AI 투명성 규정 시행: 챗봇과 생성 콘텐츠는 어떻게 표기해야 할까?",
-          "url": "https://mokaair.com/ko/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU AI 투명성 규정 시행: 챗봇과 생성 콘텐츠는 어떻게 표기해야 할까?",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 무료 버전 및 생각하기 기능 업데이트: 일상적 사용은 어떻게 달라지나?",
-          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-free-thinking-20260806"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 무료 버전 및 생각하기 기능 업데이트: 일상적 사용은 어떻게 달라지나?",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-free-thinking-20260806"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live 생산성 업데이트: 음성으로 메일과 할 일 처리하기",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live 생산성 업데이트: 음성으로 메일과 할 일 처리하기",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -1795,59 +2702,125 @@
           "text": "2026년 9월 뉴스 분석"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 및 Mythos 5.1: 기능, 제공 대상 및 제한 사항",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.8 Flash 출시: 모델 업그레이드가 일상 도구에 미치는 의미",
-          "url": "https://mokaair.com/ko/life/ai-news-gemini-38-flash-20260902"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Flash 출시: 모델 업그레이드가 일상 도구에 미치는 의미",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-flash-20260902"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
-          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 발표: 질문 답변을 넘어 컴퓨터 작업 완수로",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini에 도입된 Lyria 3.5: AI 음악 창작의 새로운 선택지는?",
-          "url": "https://mokaair.com/ko/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini에 도입된 Lyria 3.5: AI 음악 창작의 새로운 선택지는?",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google 어시스턴트 퇴장, Gemini가 대체: 휴대전화·스마트워치·차량 전환 전후 점검할 것",
-          "url": "https://mokaair.com/ko/life/ai-news-google-assistant-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google 어시스턴트 퇴장, Gemini가 대체: 휴대전화·스마트워치·차량 전환 전후 점검할 것",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.5: 이미지 생성, 부분 수정 및 스케치 기능 업데이트",
-          "url": "https://mokaair.com/ko/life/ai-news-chatgpt-images-25-20260908"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.5: 이미지 생성, 부분 수정 및 스케치 기능 업데이트",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-25-20260908"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Anthropic 9월 위협 인텔리전스 보고서: 일곱 가지 AI 악용과 표적이 된 API 키",
-          "url": "https://mokaair.com/ko/life/ai-news-anthropic-threat-report-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic 9월 위협 인텔리전스 보고서: 일곱 가지 AI 악용과 표적이 된 API 키",
+              "kind": "life",
+              "slug": "ai-news-anthropic-threat-report-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI Agents API 공개 베타: AI 자동화를 맡기기 전에 과금과 데이터 위치부터 이해하기",
-          "url": "https://mokaair.com/ko/life/ai-news-openai-agents-api-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Agents API 공개 베타: AI 자동화를 맡기기 전에 과금과 데이터 위치부터 이해하기",
+              "kind": "life",
+              "slug": "ai-news-openai-agents-api-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek-V4.1-Flash 출시, V4-Pro 존속 여부는 설명이 엇갈려: 모델이 교체될 때 주의할 점",
-          "url": "https://mokaair.com/ko/life/ai-news-deepseek-v41-flash-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek-V4.1-Flash 출시, V4-Pro 존속 여부는 설명이 엇갈려: 모델이 교체될 때 주의할 점",
+              "kind": "life",
+              "slug": "ai-news-deepseek-v41-flash-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Amodei, 프런티어 AI 속도 조절 촉구: 〈We Must Pace the Frontier〉의 주장과 경계",
-          "url": "https://mokaair.com/ko/life/ai-news-pace-the-frontier-20260912"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei, 프런티어 AI 속도 조절 촉구: 〈We Must Pace the Frontier〉의 주장과 경계",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Siri AI, iOS 27과 함께 출시: 영어 베타부터, 대만 iPhone 사용자는 무엇을 쓸 수 있을까?",
-          "url": "https://mokaair.com/ko/life/ai-news-siri-ai-ios-27-20260914"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Siri AI, iOS 27과 함께 출시: 영어 베타부터, 대만 iPhone 사용자는 무엇을 쓸 수 있을까?",
+              "kind": "life",
+              "slug": "ai-news-siri-ai-ios-27-20260914"
+            }
+          ]
         }
       ],
       "sources": [
@@ -2092,19 +3065,37 @@
           "text": "2026 年 1 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "NVIDIA Rubin 在 CES 亮相：AI 算力升级会如何影响日常服务？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-nvidia-rubin-20260105"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA Rubin 在 CES 亮相：AI 算力升级会如何影响日常服务？",
+              "kind": "life",
+              "slug": "ai-news-nvidia-rubin-20260105"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Health 年初登场：整理健康资料之前先看懂用途与界限",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-health-20260107"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Health 年初登场：整理健康资料之前先看懂用途与界限",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-health-20260107"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Personal Intelligence：AI 连接邮件与相册后，便利从何而来？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-personal-intelligence-20260114"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Personal Intelligence：AI 连接邮件与相册后，便利从何而来？",
+              "kind": "life",
+              "slug": "ai-news-gemini-personal-intelligence-20260114"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2112,24 +3103,48 @@
           "text": "2026 年 2 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "Claude Opus 4.6 与长上下文：海量资料读得进去，也要找得回来",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-opus-46-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 4.6 与长上下文：海量资料读得进去，也要找得回来",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-46-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.3-Codex 发布：AI 写代码如何走向可交付的工作？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-53-codex-20260205"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.3-Codex 发布：AI 写代码如何走向可交付的工作？",
+              "kind": "life",
+              "slug": "ai-news-gpt-53-codex-20260205"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-qwen-35-20260216"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qwen3.5 开放权重：可下载模型，与能在自己电脑运行差在哪？",
+              "kind": "life",
+              "slug": "ai-news-qwen-35-20260216"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.1 Pro 发布：复杂问题如何转为可验证的答案？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-31-pro-20260219"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.1 Pro 发布：复杂问题如何转为可验证的答案？",
+              "kind": "life",
+              "slug": "ai-news-gemini-31-pro-20260219"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2137,19 +3152,37 @@
           "text": "2026 年 3 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "GPT-5.4 把推理与电脑操作放在一起：一般工作者该怎么看？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-54-20260305"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.4 把推理与电脑操作放在一起：一般工作者该怎么看？",
+              "kind": "life",
+              "slug": "ai-news-gpt-54-20260305"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude 对话开始绘制交互图：读懂概念前，先读懂图表的假设",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-interactive-visuals-20260312"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude 对话开始绘制交互图：读懂概念前，先读懂图表的假设",
+              "kind": "life",
+              "slug": "ai-news-claude-interactive-visuals-20260312"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3 Pro 延长 AI 音乐创作：从短片段到有段落的作品",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-lyria-3-pro-20260325"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3 Pro 延长 AI 音乐创作：从短片段到有段落的作品",
+              "kind": "life",
+              "slug": "ai-news-lyria-3-pro-20260325"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2157,24 +3190,48 @@
           "text": "2026 年 4 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-project-glasswing-20260407"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Project Glasswing 与 Mythos Preview：AI 找到漏洞后，真正的工作才开始",
+              "kind": "life",
+              "slug": "ai-news-project-glasswing-20260407"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Meta Muse Spark 登场：社交平台里的 AI 助手如何改变搜索与提问？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-meta-muse-spark-20260408"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Meta Muse Spark 登场：社交平台里的 AI 助手如何改变搜索与提问？",
+              "kind": "life",
+              "slug": "ai-news-meta-muse-spark-20260408"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.0：图像开始加入思考，设计需求也要更清楚",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-images-20-20260421"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.0：图像开始加入思考，设计需求也要更清楚",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-20-20260421"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.5 走向多步骤工作：把模糊需求变成能验收的交付",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-55-20260423"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 走向多步骤工作：把模糊需求变成能验收的交付",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-20260423"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2182,14 +3239,26 @@
           "text": "2026 年 5 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "Gemini Omni 亮相 I/O：用对话改视频，素材与连续性仍需自己把关",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-omni-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Omni 亮相 I/O：用对话改视频，素材与连续性仍需自己把关",
+              "kind": "life",
+              "slug": "ai-news-gemini-omni-20260519"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Spark 与 Daily Brief：AI 从晨间摘要走向后台办事",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-spark-20260519"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Spark 与 Daily Brief：AI 从晨间摘要走向后台办事",
+              "kind": "life",
+              "slug": "ai-news-gemini-spark-20260519"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2197,19 +3266,37 @@
           "text": "2026 年 6 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5 的发布、暂停与恢复：AI 服务可用性也是选择条件",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-5-access-20260609"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5 的发布、暂停与恢复：AI 服务可用性也是选择条件",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-5-access-20260609"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Sol 从有限预览开始：模型发布与人人可用为何不同？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-56-sol-preview-20260626"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Sol 从有限预览开始：模型发布与人人可用为何不同？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-sol-preview-20260626"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5：能力与成本之间，如何寻找日常工作的平衡？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力与成本之间，如何寻找日常工作的平衡？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2217,29 +3304,59 @@
           "text": "2026 年 7 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "GPT-Live 让 ChatGPT 语音边听边说：插话、套餐用量与录音设置",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-live-voice-20260708"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 让 ChatGPT 语音边听边说：插话、套餐用量与录音设置",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-voice-20260708"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Work 正式亮相：如何把跨文件工作交代清楚？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-work-20260709"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Work 正式亮相：如何把跨文件工作交代清楚？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-work-20260709"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.6 Flash 与 Flash-Lite：快速模型该如何分工？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-36-flash-20260721"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.6 Flash 与 Flash-Lite：快速模型该如何分工？",
+              "kind": "life",
+              "slug": "ai-news-gemini-36-flash-20260721"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Opus 5 发布：普通办公用户值得关注哪些变化？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-opus-5-20260724"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 发布：普通办公用户值得关注哪些变化？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-5.6 Luna、Terra 降价：哪些使用成本受到影响？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-56-price-cut-20260730"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.6 Luna、Terra 降价：哪些使用成本受到影响？",
+              "kind": "life",
+              "slug": "ai-news-gpt-56-price-cut-20260730"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2247,19 +3364,37 @@
           "text": "2026 年 8 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "欧盟 AI 透明度规则上路：聊天机器人与生成内容如何标示？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-eu-transparency-20260802"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "欧盟 AI 透明度规则上路：聊天机器人与生成内容如何标示？",
+              "kind": "life",
+              "slug": "ai-news-eu-transparency-20260802"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT 免费版与思考功能更新：日常使用有什么不同？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-free-thinking-20260806"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 免费版与思考功能更新：日常使用有什么不同？",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-free-thinking-20260806"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini Live 生产力更新：用语音处理邮件与待办",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-live-20260826"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini Live 生产力更新：用语音处理邮件与待办",
+              "kind": "life",
+              "slug": "ai-news-gemini-live-20260826"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -2267,59 +3402,125 @@
           "text": "2026 年 9 月新闻解析"
         },
         {
-          "type": "link",
-          "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-fable-51-20260901"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Fable 5.1 与 Mythos 5.1：功能、开放对象与限制",
+              "kind": "life",
+              "slug": "ai-news-claude-fable-51-20260901"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.8 Flash 推出：模型升级对日常工具意味着什么？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gemini-38-flash-20260902"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Flash 推出：模型升级对日常工具意味着什么？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-flash-20260902"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-gpt-6-astra-20260903"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-6 Astra 发布：从回答问题到完成电脑工作",
+              "kind": "life",
+              "slug": "ai-news-gpt-6-astra-20260903"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Lyria 3.5 接入 Gemini：AI 音乐创作有哪些新选择？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-lyria-35-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Lyria 3.5 接入 Gemini：AI 音乐创作有哪些新选择？",
+              "kind": "life",
+              "slug": "ai-news-lyria-35-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Google Assistant 退场、Gemini 接手：手机、手表与车上切换前后要检查什么",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-google-assistant-gemini-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Assistant 退场、Gemini 接手：手机、手表与车上切换前后要检查什么",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "ChatGPT Images 2.5：图像生成、局部修改与草图功能更新",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-chatgpt-images-25-20260908"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Images 2.5：图像生成、局部修改与草图功能更新",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-images-25-20260908"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Anthropic 九月威胁情报报告：七类 AI 滥用与被盯上的 API 密钥",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-anthropic-threat-report-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic 九月威胁情报报告：七类 AI 滥用与被盯上的 API 密钥",
+              "kind": "life",
+              "slug": "ai-news-anthropic-threat-report-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI Agents API 公开 beta：委托 AI 自动化前，先看懂计费与数据位置",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-openai-agents-api-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Agents API 公开 beta：委托 AI 自动化前，先看懂计费与数据位置",
+              "kind": "life",
+              "slug": "ai-news-openai-agents-api-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "DeepSeek-V4.1-Flash 上线、V4-Pro 去留有两种说法：模型换手时该注意什么",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-deepseek-v41-flash-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DeepSeek-V4.1-Flash 上线、V4-Pro 去留有两种说法：模型换手时该注意什么",
+              "kind": "life",
+              "slug": "ai-news-deepseek-v41-flash-20260910"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Amodei 呼吁放慢前沿 AI：《We Must Pace the Frontier》的主张与边界",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-pace-the-frontier-20260912"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei 呼吁放慢前沿 AI：《We Must Pace the Frontier》的主张与边界",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Siri AI 随 iOS 27 推出：先上英文 beta，台湾 iPhone 用户能用到什么？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-siri-ai-ios-27-20260914"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Siri AI 随 iOS 27 推出：先上英文 beta，台湾 iPhone 用户能用到什么？",
+              "kind": "life",
+              "slug": "ai-news-siri-ai-ios-27-20260914"
+            }
+          ]
         }
       ],
       "sources": [

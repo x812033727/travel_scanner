@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "daily"
+    "daily",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -34,9 +35,15 @@
           "text": "每個技巧會寫怎麼開、什麼情境好用、一個台灣生活裡的例子，iPhone 與 Android 的路徑分開寫，最後有一張技巧、開法與免費版能否使用的對照表，以及手機與網頁版的功能差異。功能名稱、開關位置與方案限制在 2026 年 9 月依 OpenAI help center 與 ChatGPT 發布記錄查證；App 介面常改版，設定名稱以你手上的版本為準。還沒裝 App 或還沒有帳號，先看新手入門那篇。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-beginner-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 新手入門：註冊、免費與付費差別、第一個對話",
+              "kind": "life",
+              "slug": "chatgpt-beginner-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -56,9 +63,15 @@
           "text": "技巧 3：語音模式與聽寫。輸入框右側有兩個「用講的」按鈕：聲波圖示是語音模式（ChatGPT Voice），你講它也講；麥克風圖示是聽寫，把你講的話轉成文字放進輸入框，可以修改再送出。免費版可以用 GPT-Live-1 mini 的語音，額度有限；想每次開新對話就直接講，到設定 → Voice 打開 Start with Voice。聽寫這半年改了兩件事：iPhone 從 2026 年 8 月 7 日起，聽寫因為網路問題失敗時會自動重試 1 次；Android 從 8 月 14 日起，加了文字或附件之後聽寫鍵仍然可以按，一則訊息可以講一段、打幾個字、再講一段。走路、騎車停紅燈、手上在切菜時，用講的比打字順手得多；練英文與旅行口譯的完整做法在語音模式那篇。"
         },
         {
-          "type": "link",
-          "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-voice-mode-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 語音模式：練英文、口說翻譯與免手打的完整做法",
+              "kind": "life",
+              "slug": "chatgpt-voice-mode-guide"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -132,9 +145,15 @@
           "url": "https://mokaair.com/zh-TW/guides"
         },
         {
-          "type": "link",
-          "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
-          "url": "https://mokaair.com/zh-TW/life/ai-for-seniors-first-steps"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "長輩的第一堂 AI 課：用語音跟 AI 聊天、查資料、寫訊息",
+              "kind": "life",
+              "slug": "ai-for-seniors-first-steps"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -150,14 +169,26 @@
           "text": "檔案上傳兩邊都有：手機 App 也能把 PDF、Word、Excel 丟進去，免費版每天 3 個檔案，付費方案每 3 小時最多 80 個，單檔上限 512MB，免費版的 Library 有 500 MB 空間。手機上通常是先用相機或相簿把東西丟進去問個大概，回到電腦再做需要反覆比對的整理；檔案分析的完整做法在檔案上傳那篇。隱私設定跟著帳號走，手機或網頁關一次就全部生效，可以照隱私清單那篇一次關好。"
         },
         {
-          "type": "link",
-          "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
-          "url": "https://mokaair.com/zh-TW/life/chatgpt-file-upload-analysis"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上傳 PDF、Excel 給 ChatGPT：分析、摘要與抓重點",
+              "kind": "life",
+              "slug": "chatgpt-file-upload-analysis"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
-          "url": "https://mokaair.com/zh-TW/life/ai-privacy-settings-checklist"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 前先關這些：ChatGPT、Claude、Gemini 的資料訓練與隱私設定",
+              "kind": "life",
+              "slug": "ai-privacy-settings-checklist"
+            }
+          ]
         },
         {
           "type": "table",

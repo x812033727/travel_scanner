@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-chat"
   ],
   "valid_until": null,
   "featured": false,
@@ -26,8 +27,33 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "NotebookLM 適合把一組有明確範圍的資料整理成可追查引用的筆記本。本篇從兩份短公告開始，練習上傳、限定來源、找出差異和檢查引用。完成後，你應能分辨「來源真的有寫」與「回答看起來合理」，並知道何時該補資料，而不是反覆要求 AI 猜答案。搜「筆記 AI」找到它的人，先記住它只回答你給的資料。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "NotebookLM 適合把一組有明確範圍的資料整理成可追查引用的筆記本。本篇從兩份短公告開始，練習上傳、限定來源、找出差異和檢查引用。完成後，你應能分辨「來源真的有寫」與「回答看起來合理」，並知道何時該補資料，而不是反覆要求 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 猜答案。搜「"
+            },
+            {
+              "type": "article",
+              "text": "筆記 AI",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            },
+            {
+              "type": "text",
+              "text": "」找到它的人，先記住它只回答你給的資料。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -59,9 +85,10 @@
               "text": "準備電腦瀏覽器、符合使用資格的 Google 帳號，以及自己撰寫或有權使用的資料。公司、學校與未成年帳號的可用功能不同，來源數量和產出額度依方案而定，先看"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "方案與額度教學",
-              "url": "https://mokaair.com/zh-TW/life/gemini-plans-ai-pro-ultra-2026"
+              "kind": "life",
+              "slug": "gemini-plans-ai-pro-ultra-2026"
             },
             {
               "type": "text",
@@ -77,9 +104,10 @@
               "text": "第一次請用下方虛構資料，不要直接丟進整學期講義或所有工作文件。短資料能讓你逐句比對，之後才逐步增加內容。如果還不熟悉檔案、頁碼與引用的基本核對方式，可先讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "檔案分析",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
@@ -135,8 +163,23 @@
           "text": "預期日期會從十月十日改成十一日，名額從預估二十人改為二十四人；兩份都沒給出截止日期。這是人依原文整理的驗收答案，不是模型測試結果。若回答把時間也說成更改，應點回兩份來源確認都是下午兩點，再要求修正比較。"
         },
         {
-          "type": "paragraph",
-          "text": "引用標記的功能是讓你追查支持內容，不代表每個結論自動正確。點開引用後，看它是否真的支持該欄，還是隻出現在同一段附近。對數字、否定詞和條件要多看前後句，例如「未提供日期」不能簡化成「沒有截止期限」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "引用"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "的功能是讓你追查支持內容，不代表每個結論自動正確。點開引用後，看它是否真的支持該欄，還是隻出現在同一段附近。對數字、否定詞和條件要多看前後句，例如「未提供日期」不能簡化成「沒有截止期限」。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -172,9 +215,10 @@
               "text": "YouTube 來源主要依可用字幕逐字稿處理，不能假設它看見全部畫面細節。圖上的數字若沒有出現在語音中，應另加可讀資料。若你的目標是生成讀書用語音、測驗和影片摘要，接著閱讀"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 進階練習",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
             },
             {
               "type": "text",
@@ -257,18 +301,20 @@
               "text": "接著可以閱讀 "
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "讀 PDF、圖片與表格",
-              "url": "https://mokaair.com/zh-TW/life/gemini-file-analysis-guide"
+              "kind": "life",
+              "slug": "gemini-file-analysis-guide"
             },
             {
               "type": "text",
               "text": "、"
             },
             {
-              "type": "link",
+              "type": "article",
               "text": "NotebookLM 進階",
-              "url": "https://mokaair.com/zh-TW/life/notebooklm-for-study-notes"
+              "kind": "life",
+              "slug": "notebooklm-for-study-notes"
             },
             {
               "type": "text",
@@ -277,9 +323,15 @@
           ]
         },
         {
-          "type": "link",
-          "text": "返回 Gemini 教學總目錄",
-          "url": "https://mokaair.com/zh-TW/life/gemini-guide"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "返回 Gemini 教學總目錄",
+              "kind": "life",
+              "slug": "gemini-guide"
+            }
+          ]
         }
       ],
       "sources": [

@@ -4,7 +4,8 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial"
+    "tutorial",
+    "ai-terms"
   ],
   "valid_until": null,
   "featured": false,
@@ -56,8 +57,23 @@
           "text": "固定長度分塊容易實作，可以按字元或 token 計算，搭配重疊避免邊界太突兀。但字元與 token 並不相同，中文、英文和特殊符號的對應也不固定。若模型限制以 token 計，不能只用字數猜測是否會超出。工具提供的預設值通常是起點，不是它已替你的中文文件找出最佳長度。"
         },
         {
-          "type": "paragraph",
-          "text": "依結構切割會優先利用章節、段落、句子或標題。LangChain 的遞迴切割器按分隔符逐步拆分，盡量讓較完整的單位保留下來，文件也提醒沒有空白分詞的語言需要合適的標點分隔符。更進一步的語意切割會嘗試按主題變化分段，但增加判斷與運算，不保證每次都比清楚的章節切法更可靠。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依結構切割會優先利用章節、段落、句子或標題。LangChain 的遞迴切割器按分隔符逐步拆分，盡量讓較完整的單位保留下來，文件也提醒沒有空白"
+            },
+            {
+              "type": "article",
+              "text": "分詞",
+              "kind": "life",
+              "slug": "ai-term-tokenization"
+            },
+            {
+              "type": "text",
+              "text": "的語言需要合適的標點分隔符。更進一步的語意切割會嘗試按主題變化分段，但增加判斷與運算，不保證每次都比清楚的章節切法更可靠。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -108,16 +124,46 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "可以建立跨句、跨段、表格、否定與例外的測試問題，人工標記答案所需的原文位置，再檢查這些內容是否一起進入候選。比較策略時，盡量固定嵌入模型、資料版本與候選數，才知道改善是否來自切法。只有檢視每塊平均長度，無法判斷讀者的重要問題是否回答得更好。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "可以建立跨句、跨段、表格、否定與例外的測試問題，人工"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "答案所需的原文位置，再檢查這些內容是否一起進入候選。比較策略時，盡量固定嵌入模型、資料版本與候選數，才知道改善是否來自切法。只有檢視每塊平均長度，無法判斷讀者的重要問題是否回答得更好。"
+            }
+          ]
         },
         {
           "type": "paragraph",
           "text": "長文更新後也要處理識別碼與索引。新增一段文字可能讓後面的固定長度切塊全部位移，若以位置當唯一識別，舊塊可能殘留或對錯來源。需要可追查的文件版本及重建流程，確保修訂條文出現、撤回條文離開適用範圍。檢索到片段時，最好能回到同一版本的完整原文，避免引用位置與內容不同步。"
         },
         {
-          "type": "paragraph",
-          "text": "對一般使用者而言，上傳文件後若 AI 回答漏條件，可以要求它列出實際引用段落，檢查例外是否根本沒被看到。若能控制資料整理，先修復標題、表格與段落結構，再討論調整切塊大小。文件分塊做得好，是把完整意思變成可取得的單位；不是把所有內容切成一樣大小就算完成。另外，測試集應包含原文沒有答案的問題，觀察系統是否因切得很碎而把不相干句子拼成結論。保留片段的位置與章節關係，能協助辨認這類拼接錯誤，也讓讀者看出不同來源其實談的是不同條件。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "對一般使用者而言，上傳文件後若 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 回答漏條件，可以要求它列出實際引用段落，檢查例外是否根本沒被看到。若能控制資料整理，先修復標題、表格與段落結構，再討論調整切塊大小。文件分塊做得好，是把完整意思變成可取得的單位；不是把所有內容切成一樣大小就算完成。另外，測試集應包含原文沒有答案的問題，觀察系統是否因切得很碎而把不相干句子拼成結論。保留片段的位置與章節關係，能協助辨認這類拼接錯誤，也讓讀者看出不同來源其實談的是不同條件。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -152,24 +198,48 @@
           "text": "最適合的長度，要能讓一般規則與適用例外一起被理解。只測查單一名詞，容易看不出切塊造成的失真。"
         },
         {
-          "type": "link",
-          "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-embedding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [
