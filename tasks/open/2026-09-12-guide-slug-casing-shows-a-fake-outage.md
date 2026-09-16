@@ -1,20 +1,22 @@
 ---
 id: 2026-09-12-guide-slug-casing-shows-a-fake-outage
 title: A capitalised guide slug shows a fake outage instead of the article
-status: open
+status: review
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-16T02:39:28Z
 created_at: 2026-09-12T02:41:22Z
 completed_at:
-branch:
+branch: claude/travel-article-structure-search-sr9jiq
 depends_on: []
 scope:
   - apps/web/lib/guides.server.ts
   - apps/web/lib/guides.server.test.ts
   - apps/web/app/[locale]/guides/[kind]/[slug]/page.tsx
   - apps/web/app/[locale]/guides/[kind]/[slug]/page.test.tsx
+  - apps/web/components/guides/article-page.tsx
+  - apps/web/components/guides/article-page.test.tsx
 ---
 
 # A capitalised guide slug shows a fake outage instead of the article
@@ -44,18 +46,18 @@ Found while comparing PR #401 against the merged PR #404; it predates both and a
 
 ## Definition of done
 
-- [ ] A mixed-case slug either reaches the article or answers 404, never the "temporarily
+- [x] A mixed-case slug either reaches the article or answers 404, never the "temporarily
       unavailable" alert.
-- [ ] The guard still rejects a response that is genuinely for another article, locale or kind.
-- [ ] A test covers the casing case, so the guard cannot regress into accepting anything.
+- [x] The guard still rejects a response that is genuinely for another article, locale or kind.
+- [x] A test covers the casing case, so the guard cannot regress into accepting anything.
 
 ## Steps
 
-- [ ] Decide between redirecting to the canonical URL and answering 404. A redirect keeps the
+- [x] Decide between redirecting to the canonical URL and answering 404. A redirect keeps the
       inbound link working; a 404 is simpler and honest. Either beats the current message.
-- [ ] Implement in `loadGuideArticle` or in the page, keeping the mismatch guard for the other
+- [x] Implement in `loadGuideArticle` or in the page, keeping the mismatch guard for the other
       fields.
-- [ ] Test.
+- [x] Test.
 
 ## How to verify
 
@@ -72,3 +74,7 @@ Then, against a running stack, open `/en/guides/howto/<a published slug, capital
   available to the web layer: `apps/api/app/guides/service.py` folds "no such article" and
   "inactive article" into one response with an empty `published_locales`. Fix that in the API
   first if this task wants to tell the two apart.
+
+2026-09-16 落地（claude-fable-5-1）：選 redirect。`components/guides/article-page.tsx` 的 `guideArticleMetadata` 與 `renderGuideArticle`
+開頭 `canonicalSlugOrRedirect`：slug 含大寫就 `permanentRedirect` 到小寫的正典網址（含語系前綴），在任何 API 讀取之前；兩個文章路由（旅遊、生活）都經過它。
+loader 的身分守門（slug／locale／kind 不符 → unavailable）維持不變。Notes 提到的「不存在的 slug 回 200『沒有這個語言版本』」需要 API 先分出 not-found，另開票。

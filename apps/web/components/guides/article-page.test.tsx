@@ -1,10 +1,14 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { renderGuideArticle } from "./article-page";
+import { guideArticleMetadata, renderGuideArticle } from "./article-page";
 import type { LearningEntry } from "@/lib/codex-learning";
 
 const mocks = vi.hoisted(() => ({
   article: vi.fn(), series: vi.fn(), topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
+  permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
+}));
+vi.mock("next/navigation", async (original) => ({
+  ...await original<typeof import("next/navigation")>(), permanentRedirect: mocks.permanentRedirect,
 }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false }) }));
@@ -34,6 +38,21 @@ const state = { ...reference, locale: "en", status: "published", destination_id:
 beforeEach(() => { vi.clearAllMocks(); mocks.article.mockResolvedValue(state); mocks.series.mockResolvedValue({
   slug: "codex", locale: "en", hub: reference, groups: [], paths: [], entries: [current],
 }); });
+
+describe("a capitalised slug", () => {
+  it("is sent to the canonical lowercase address for good, before anything is fetched", async () => {
+    const route = { locale: "en" as const, kind: "howto" as const, slug: "Narita-To-Tokyo" };
+    await expect(renderGuideArticle(route)).rejects.toThrow("NEXT_REDIRECT /en/guides/howto/narita-to-tokyo");
+    await expect(guideArticleMetadata(route)).rejects.toThrow("NEXT_REDIRECT /en/guides/howto/narita-to-tokyo");
+    expect(mocks.permanentRedirect).toHaveBeenCalledTimes(2);
+    expect(mocks.article).not.toHaveBeenCalled();
+    // A lifestyle slug lands under /life, and a lowercase slug is left alone.
+    await expect(renderGuideArticle({ locale: "zh-TW", kind: "life", slug: "AI-Notes" })).rejects.toThrow("/zh-TW/life/ai-notes");
+    mocks.permanentRedirect.mockClear();
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: "codex-learning-hub" }));
+    expect(mocks.permanentRedirect).not.toHaveBeenCalled();
+  });
+});
 
 describe("Codex articles on the shared page", () => {
   it("renders the Codex directory and CollectionPage from current locale publication", async () => {

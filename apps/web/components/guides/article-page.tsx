@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { SeriesHub } from "./series-hub";
@@ -53,9 +54,22 @@ function listingOf(kind: GuideKind, t: Translate): Crumb {
   return { name, path: guideListHref(kind) };
 }
 
+/**
+ * A slug is lowercase, and one article has one URL. An inbound link that capitalised it
+ * (`/guides/howto/Narita-To-Tokyo`) is sent to the canonical address for good rather than
+ * answered with the "temporarily unavailable" notice the loader's identity guard would
+ * otherwise produce: the article is live, only the address was wrong. `guideHref` builds
+ * the locale-less path; the `Link`-less redirect needs the locale on it.
+ */
+function canonicalSlugOrRedirect({ locale, kind, slug }: GuideArticleRoute): void {
+  const canonical = slug.toLowerCase();
+  if (canonical !== slug) permanentRedirect(`/${locale}${guideHref(kind, canonical)}`);
+}
+
 export async function guideArticleMetadata(
   { locale, kind, slug }: GuideArticleRoute, parent?: ResolvingMetadata,
 ): Promise<Metadata> {
+  canonicalSlugOrRedirect({ locale, kind, slug });
   const [state, t] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
@@ -168,6 +182,7 @@ async function relatedTravel(
 }
 
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
+  canonicalSlugOrRedirect({ locale, kind, slug });
   const [rawState, t, nav, ts] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
