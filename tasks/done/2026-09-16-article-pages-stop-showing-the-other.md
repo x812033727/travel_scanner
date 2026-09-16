@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-article-pages-stop-showing-the-other
 title: Article pages stop showing the other-language list
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-16T13:49:39Z
 created_at: 2026-09-16T13:48:48Z
-completed_at:
+completed_at: 2026-09-16T15:25:24Z
 branch: claude/jolly-dirac-yg32tb
 depends_on: []
 scope:
@@ -67,11 +67,13 @@ Then open any article published in more than one language (for example
 
 ## Notes
 
-- Pushed to `claude/jolly-dirac-yg32tb`; no pull request was asked for. Full web suite green
-  (288 files, 3110 tests), plus `lint:web`, `check:i18n`, `typecheck:web`, `test:tools`.
-
-- `docs/travel-guides.md:734` still lists "other languages" as the last thing an article
-  draws. That file is held by `2026-09-16-news-date-field-and-news-list`, so the one-line
-  correction is filed separately as `2026-09-16-travel-guides-doc-article-ending`.
+- Merged as #538 (squash, `9d1257d7`). Locally green before the push — full web suite
+  (288 files, 3110 tests), `lint:web`, `check:i18n`, `typecheck:web`, `test:tools` — and every
+  CI job green on the merge head, `web` included.
+- `docs/travel-guides.md` still lists "other languages" as the last thing an article draws,
+  in "What a travel article looks like" (line 734 when this was written, 766 after #536 grew
+  the file — the section name is the stable reference). That file is held by
+  `2026-09-16-news-date-field-and-news-list`, so the one-line correction is filed separately
+  as `2026-09-16-travel-guides-doc-article-ending`.
 - The unavailable/untranslated screen in `article-page.tsx` keeps its own list of published
   locales; it is the only place a reader is offered another language by link.
