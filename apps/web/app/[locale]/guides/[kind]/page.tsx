@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { GuideFilters } from "@/components/guides/filters";
@@ -24,10 +24,13 @@ async function resolve(params: Promise<Params>) {
 }
 
 /** One listing read, shared by the metadata and the body through React's per-request cache:
- *  same arguments, one call to the API. */
+ *  same arguments, one call to the API. How-to guides list in the editor's order (featured,
+ *  then `display_order`), so the core airport and transit guides lead however many batches
+ *  follow; intel stays newest first, because a notice is dated. */
 const listFor = (locale: Locale, kind: TravelGuideKind, search: Search) =>
   getGuideList(locale, {
     kind, topic: search.topic, destination: search.destination, country: search.country, cursor: search.cursor,
+    ...(kind === "howto" ? { sort: "curated" as const } : {}),
   }, 24);
 
 export async function generateMetadata(
@@ -64,12 +67,17 @@ export default async function GuideListPage(
     getTranslations({ locale, namespace: "navigation" }),
   ]);
 
+  const listing = guideListHref(kind, search.topic);
+  // A `?cursor=` the API refused -- a "see more" link minted before the listing changed its
+  // order, or a hand-edited one -- must not render as a 200 saying nothing is published.
+  // The first page is the honest answer, and it is one click from where the reader was.
+  if (search.cursor && !list.available) redirect(listing);
+
   const heading = kind === "intel" ? t("guides.intelTitle") : t("guides.howtoTitle");
   const lead = kind === "intel" ? t("guides.intelLead") : t("guides.howtoLead");
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
   };
-  const listing = guideListHref(kind, search.topic);
   const next = `${listing}${listing.includes("?") ? "&" : "?"}cursor=`;
 
   return (

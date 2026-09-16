@@ -14,7 +14,8 @@ import { breadcrumbs, itemList } from "@/lib/structured-data";
  *  answers both from one call to the API. */
 const hubLists = (locale: Locale) => Promise.all([
   getGuideList(locale, { kind: "intel" }, 6),
-  getGuideList(locale, { kind: "howto" }, 6),
+  // "Featured guides" means it: the editor's order, not the last batch imported.
+  getGuideList(locale, { kind: "howto", sort: "curated" }, 6),
 ]);
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {

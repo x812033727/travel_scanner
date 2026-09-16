@@ -42,6 +42,11 @@ KINDS: tuple[Kind, ...] = ("intel", "howto", "life")
 # section holds `life` articles at /life. Nothing else about an article differs.
 Section = Literal["travel", "life"]
 SECTION_KINDS: dict[Section, tuple[Kind, ...]] = {"travel": ("intel", "howto"), "life": ("life",)}
+# How a public listing is ordered. ``latest`` is publication time, newest first -- right for
+# dated intel. ``curated`` is the editor's order: featured first, then ``display_order``,
+# then newest, then the slug -- what a hub's "featured guides" and the lifestyle listing
+# want, so an overview piece stays on page one however many batches follow it.
+ListSort = Literal["latest", "curated"]
 RevisionAction = Literal["created", "draft_saved", "published", "unpublished", "restored"]
 
 

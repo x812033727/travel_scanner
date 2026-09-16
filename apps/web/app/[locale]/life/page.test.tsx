@@ -7,8 +7,12 @@ import LifeHubPage, { generateMetadata } from "./page";
  * vocabulary, and its own filtered-view robots rule.
  */
 
-const mocks = vi.hoisted(() => ({ list: vi.fn(), topics: vi.fn(), article: vi.fn() }));
+const mocks = vi.hoisted(() => ({
+  list: vi.fn(), topics: vi.fn(), article: vi.fn(),
+  redirect: vi.fn(() => { throw new Error("NEXT_REDIRECT"); }),
+}));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
+vi.mock("next/navigation", () => ({ redirect: mocks.redirect }));
 // Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
 // an empty listing is exercising the indexing decision rather than restating it.
 vi.mock("@/lib/guides.server", async (original) => ({
@@ -67,6 +71,20 @@ describe("the lifestyle listing", () => {
     expect(screen.getByText("這裡還沒有已發布的內容。")).toBeTruthy();
   });
 
+  it("lists in the editor's order, so the overview leads whatever batch came last", async () => {
+    await LifeHubPage({ params, searchParams: search() });
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", expect.objectContaining({ sort: "curated" }), 24);
+  });
+
+  it("sends a reader whose cursor the API refused to the first page, never to an empty 200", async () => {
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: false });
+    await expect(LifeHubPage({ params, searchParams: search({ cursor: "stale" }) })).rejects.toThrow("NEXT_REDIRECT");
+    expect(mocks.redirect).toHaveBeenCalledWith("/life");
+    mocks.redirect.mockClear();
+    render(await LifeHubPage({ params, searchParams: search() }));
+    expect(mocks.redirect).not.toHaveBeenCalled();
+  });
+
   it("carries the cursor on the same listing URL as the filter", async () => {
     mocks.list.mockResolvedValue({ articles: [summary], next_cursor: "abc==", available: true });
     render(await LifeHubPage({ params, searchParams: search({ topic: "ai" }) }));
@@ -112,7 +130,7 @@ describe("what the lifestyle listing tells search engines", () => {
   it("reads the listing once for the metadata and the body together", async () => {
     // Both call getGuideList with identical arguments, which is what lets React's per-request
     // cache answer the second from the first instead of asking the API twice per crawl.
-    const arguments_ = { kind: "life", topic: undefined, cursor: undefined };
+    const arguments_ = { kind: "life", topic: undefined, cursor: undefined, sort: "curated" };
     await generateMetadata({ params, searchParams: search() });
     render(await LifeHubPage({ params, searchParams: search() }));
     for (const call of mocks.list.mock.calls) expect(call).toEqual(["zh-TW", arguments_, 24]);

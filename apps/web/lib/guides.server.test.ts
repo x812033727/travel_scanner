@@ -421,6 +421,15 @@ describe("the two-level vocabulary and the hubs around it", () => {
     expect(await loadGuideTopicList("zh-TW", "life")).toEqual({ topics: [], available: true });
   });
 
+  it("sends the sort only when a page asks for one, so the API's default stays the API's", async () => {
+    const fetchMock = respond({ articles: [], next_cursor: null });
+    vi.stubGlobal("fetch", fetchMock);
+    await loadGuideList("zh-TW", { kind: "life", sort: "curated" }, 24);
+    expect(new URL(fetchMock.mock.calls[0][0]).searchParams.get("sort")).toBe("curated");
+    await loadGuideList("zh-TW", { kind: "intel" }, 24);
+    expect(new URL(fetchMock.mock.calls[1][0]).searchParams.get("sort")).toBeNull();
+  });
+
   it("passes a country filter through as a query parameter", async () => {
     const fetchMock = respond({ articles: [], next_cursor: null });
     vi.stubGlobal("fetch", fetchMock);

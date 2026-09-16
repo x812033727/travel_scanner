@@ -5,6 +5,7 @@ import GuideListPage, { generateMetadata } from "./page";
 const mocks = vi.hoisted(() => ({
   list: vi.fn(), topics: vi.fn(),
   notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }),
+  redirect: vi.fn(() => { throw new Error("NEXT_REDIRECT"); }),
 }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 // Only the two reads are stubbed: `hubIsEmpty` stays the real rule, so a test that fakes
@@ -13,7 +14,7 @@ vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
   getGuideList: mocks.list, getGuideTopics: mocks.topics,
 }));
-vi.mock("next/navigation", () => ({ notFound: mocks.notFound }));
+vi.mock("next/navigation", () => ({ notFound: mocks.notFound, redirect: mocks.redirect }));
 
 const summary = {
   slug: "jr-pass-sale", kind: "intel" as const, destination_id: "tokyo", destination_label: "東京",
@@ -54,6 +55,26 @@ describe("the section listing", () => {
     const chip = screen.getByRole("link", { name: "交通" });
     expect(chip.getAttribute("aria-current")).toBe("page");
     expect(chip.getAttribute("href")).toBe("/guides/topics/transport");
+  });
+
+  it("lists how-to guides in the editor's order and intel newest first", async () => {
+    await GuideListPage({ params: params("howto"), searchParams: search() });
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ kind: "howto", sort: "curated" }), 24);
+    await GuideListPage({ params: params("intel"), searchParams: search() });
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.not.objectContaining({ sort: expect.anything() }), 24);
+  });
+
+  it("sends a reader whose cursor the API refused to the first page, never to an empty 200", async () => {
+    // A "see more" link minted before how-to changed its order carries a cursor the new
+    // order refuses (422), which the loader reports as unavailable.
+    mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: false });
+    await expect(GuideListPage({ params: params("howto"), searchParams: search({ cursor: "stale", topic: "transport" }) }))
+      .rejects.toThrow("NEXT_REDIRECT");
+    expect(mocks.redirect).toHaveBeenCalledWith("/guides/howto?topic=transport");
+    // Without a cursor an unavailable listing is the ordinary empty page, not a redirect.
+    mocks.redirect.mockClear();
+    render(await GuideListPage({ params: params("howto"), searchParams: search() }));
+    expect(mocks.redirect).not.toHaveBeenCalled();
   });
 
   it("resolves a country filter on the server too", async () => {

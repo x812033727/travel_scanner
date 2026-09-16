@@ -24,6 +24,7 @@ from app.guides.schemas import (
     GuideDocument,
     GuideSearchResult,
     Kind,
+    ListSort,
     PublicArticle,
     PublicList,
     PublicSeries,
@@ -64,6 +65,7 @@ async def list_public(
     topic: str | None = Query(default=None, max_length=64),
     cursor: str | None = Query(default=None, max_length=512),
     limit: int = Query(default=20, ge=1, le=50),
+    sort: ListSort = "latest",
 ) -> PublicList:
     response.headers["Cache-Control"] = "no-store"
     return await service.public_list(
@@ -76,6 +78,7 @@ async def list_public(
         topic=topic,
         cursor=cursor,
         limit=limit,
+        sort=sort,
     )
 
 

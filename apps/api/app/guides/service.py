@@ -40,6 +40,7 @@ from app.guides.schemas import (
     DestinationFacetList,
     GuideDocument,
     Kind,
+    ListSort,
     PartnerLinkBlock,
     PublicArticle,
     PublicList,
@@ -216,6 +217,37 @@ def _decode_cursor(cursor: str | None) -> tuple[datetime, str] | None:
         raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
 
 
+def _encode_curated_cursor(
+    featured: bool, display_order: int, published_at: datetime, slug: str
+) -> str:
+    """The curated order's keyset: every key it sorts by, tagged so a cursor minted under
+    one order is refused under the other instead of silently restarting the list."""
+    raw = json.dumps(
+        ["curated", featured, display_order, published_at.isoformat(), slug],
+        separators=(",", ":"),
+    )
+    return base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
+
+
+def _decode_curated_cursor(cursor: str | None) -> tuple[bool, int, datetime, str] | None:
+    if not cursor:
+        return None
+    try:
+        padded = cursor + "=" * (-len(cursor) % 4)
+        tag, featured, order, stamp, slug = json.loads(
+            base64.urlsafe_b64decode(padded.encode()).decode()
+        )
+        if tag != "curated" or not isinstance(featured, bool) or not isinstance(order, int):
+            raise ValueError("not a curated cursor")
+        if isinstance(order, bool):
+            raise ValueError("not a curated cursor")
+        return featured, order, datetime.fromisoformat(stamp), str(slug)
+    except (ValueError, TypeError):
+        # A ``latest`` cursor lands here too (two parts, no tag): a "see more" link minted
+        # before a listing changed its order is a stale request, not page one of the new.
+        raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
+
+
 async def public_list(
     session: AsyncSession,
     locale: Locale,
@@ -227,6 +259,7 @@ async def public_list(
     topic: str | None = None,
     cursor: str | None = None,
     limit: int = 20,
+    sort: ListSort = "latest",
 ) -> PublicList:
     kinds = kind_filter(kind, section)
     if kinds is not None and not kinds:
@@ -260,20 +293,42 @@ async def public_list(
                 )
             )
         )
-    position = _decode_cursor(cursor)
-    if position is not None:
-        stamp, slug = position
-        query = query.where(
-            (GuideArticleLocale.published_at < stamp)
-            | ((GuideArticleLocale.published_at == stamp) & (GuideArticle.slug > slug))
+    ordering: tuple[Any, ...]
+    if sort == "curated":
+        curated = _decode_curated_cursor(cursor)
+        if curated is not None:
+            featured, order, stamp, slug = curated
+            same_featured = GuideArticle.featured.is_(featured)
+            same_order = and_(same_featured, GuideArticle.display_order == order)
+            after = [
+                and_(same_featured, GuideArticle.display_order > order),
+                and_(same_order, GuideArticleLocale.published_at < stamp),
+                and_(
+                    same_order,
+                    GuideArticleLocale.published_at == stamp,
+                    GuideArticle.slug > slug,
+                ),
+            ]
+            if featured:
+                # Featured rows sort first, so after the last featured one come the rest.
+                after.append(GuideArticle.featured.is_(False))
+            query = query.where(or_(*after))
+        ordering = (
+            GuideArticle.featured.desc(),
+            GuideArticle.display_order,
+            GuideArticleLocale.published_at.desc(),
+            GuideArticle.slug,
         )
-    rows = list(
-        await session.execute(
-            query.order_by(GuideArticleLocale.published_at.desc(), GuideArticle.slug).limit(
-                size + 1
+    else:
+        position = _decode_cursor(cursor)
+        if position is not None:
+            stamp, slug = position
+            query = query.where(
+                (GuideArticleLocale.published_at < stamp)
+                | ((GuideArticleLocale.published_at == stamp) & (GuideArticle.slug > slug))
             )
-        )
-    )
+        ordering = (GuideArticleLocale.published_at.desc(), GuideArticle.slug)
+    rows = list(await session.execute(query.order_by(*ordering).limit(size + 1)))
     has_more = len(rows) > size
     rows = rows[:size]
     topics = await _topic_options_for(session, [article.id for article, _ in rows], locale)
@@ -298,14 +353,18 @@ async def public_list(
             )
         )
     last = rows[-1] if rows and has_more else None
-    return PublicList(
-        articles=articles,
-        next_cursor=(
-            _encode_cursor(last[1].published_at or last[1].updated_at, last[0].slug)
-            if last is not None
-            else None
-        ),
-    )
+    next_cursor: str | None = None
+    if last is not None:
+        last_article, last_row = last
+        last_stamp = last_row.published_at or last_row.updated_at
+        next_cursor = (
+            _encode_curated_cursor(
+                last_article.featured, last_article.display_order, last_stamp, last_article.slug
+            )
+            if sort == "curated"
+            else _encode_cursor(last_stamp, last_article.slug)
+        )
+    return PublicList(articles=articles, next_cursor=next_cursor)
 
 
 async def public_article(

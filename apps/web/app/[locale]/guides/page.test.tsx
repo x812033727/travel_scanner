@@ -121,8 +121,8 @@ describe("what the guides hub tells search engines", () => {
     await generateMetadata({ params });
     render(await GuidesHubPage({ params }));
     expect(mocks.list.mock.calls).toEqual([
-      ["zh-TW", { kind: "intel" }, 6], ["zh-TW", { kind: "howto" }, 6],
-      ["zh-TW", { kind: "intel" }, 6], ["zh-TW", { kind: "howto" }, 6],
+      ["zh-TW", { kind: "intel" }, 6], ["zh-TW", { kind: "howto", sort: "curated" }, 6],
+      ["zh-TW", { kind: "intel" }, 6], ["zh-TW", { kind: "howto", sort: "curated" }, 6],
     ]);
   });
 });

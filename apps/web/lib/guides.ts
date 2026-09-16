@@ -242,6 +242,16 @@ export type GuideSummary = {
 
 export type GuideList = { articles: GuideSummary[]; next_cursor: string | null };
 
+/** How a listing is ordered. `latest` is publication time, newest first, right for dated
+ *  intel; `curated` is the editor's order (featured, then `display_order`, then newest),
+ *  which the lifestyle listing, the hub's featured guides and the how-to listing read. */
+export const guideListSorts = ["latest", "curated"] as const;
+export type GuideListSort = typeof guideListSorts[number];
+
+export function isGuideListSort(value: unknown): value is GuideListSort {
+  return typeof value === "string" && (guideListSorts as readonly string[]).includes(value);
+}
+
 /** One search result: the card fields plus the passage the match was found in, and the
  *  folded terms the API matched so the card can mark them. */
 export type GuideSearchHit = GuideSummary & { snippet: string; matched: string[] };

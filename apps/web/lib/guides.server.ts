@@ -17,6 +17,7 @@ import {
   type GuideArticleState,
   type GuideKind,
   type GuideList,
+  type GuideListSort,
   type GuideSection,
   type GuideTopic,
 } from "./guides";
@@ -73,6 +74,10 @@ export type GuideFilters = {
   /** A topic slug. A parent topic lists its sub-topics' articles too. */
   topic?: string;
   cursor?: string;
+  /** Left unset, the parameter is not sent and the API's default (`latest`) applies. A
+   *  cursor minted under one order is refused (422) under the other, which `loadGuideList`
+   *  reports as `available: false`; the page then sends the reader to its first page. */
+  sort?: GuideListSort;
 };
 
 function query(locale: string, filters: GuideFilters, limit: number): string {
@@ -83,6 +88,7 @@ function query(locale: string, filters: GuideFilters, limit: number): string {
   if (filters.country) params.set("country", filters.country);
   if (filters.topic) params.set("topic", filters.topic);
   if (filters.cursor) params.set("cursor", filters.cursor);
+  if (filters.sort) params.set("sort", filters.sort);
   return params.toString();
 }
 

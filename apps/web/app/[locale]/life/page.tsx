@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
 import { GuideFilters } from "@/components/guides/filters";
@@ -20,9 +21,11 @@ type Params = { locale: Locale };
 type Search = { topic?: string; cursor?: string };
 
 /** One listing read, shared by the metadata and the body through React's per-request cache:
- *  same arguments, one call to the API. */
+ *  same arguments, one call to the API. The editor's order (featured, then `display_order`,
+ *  then newest): the overview every other article links back to stays on page one however
+ *  many batches follow it. */
 const listFor = (locale: Locale, search: Search) =>
-  getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor }, 24);
+  getGuideList(locale, { kind: "life", topic: search.topic, cursor: search.cursor, sort: "curated" }, 24);
 
 /**
  * The lifestyle section: the same article system as `/guides`, with its own hub, its own
@@ -62,10 +65,14 @@ export default async function LifeHubPage(
     getTranslations({ locale, namespace: "navigation" }),
   ]);
 
+  const listing = guideListHref("life", search.topic);
+  // A `?cursor=` the API refused (minted under the old order, or hand-edited) must not
+  // render as a 200 saying nothing is published; the first page is the honest answer.
+  if (search.cursor && !rawList.available) redirect(listing);
+
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
   };
-  const listing = guideListHref("life", search.topic);
   const tutorialHub = await getGuideArticle("life", "claude-code-tutorials", locale);
   const geminiReference = getGeminiHubReference(locale);
   const geminiHub = geminiReference ? await getGuideArticle("life", geminiReference.slug, locale) : null;

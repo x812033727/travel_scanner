@@ -227,6 +227,20 @@ harmless, because the section predicate is re-applied to every page. `topic` nam
 or a sub-topic and an unknown slug answers an empty list; `country` is a catalog country in
 URL form (`japan`, `south-korea`) and an unknown one answers an empty list too.
 
+`sort` picks the order. `latest` (the default) is publication time, newest first, with the
+slug as tiebreaker -- right for dated intel, and what `/guides/intel` and the hub's "latest
+intel" read; its cursor is unchanged, so a "see more" link minted before `sort` existed still
+works. `curated` is the editor's order: `featured` first, then `display_order` ascending,
+then newest, then the slug -- what `/life`, the hub's "featured guides" and `/guides/howto`
+read, so the lifestyle overview (`featured`, `display_order` 10) stays on page one however
+many batches follow it and the core airport-transfer guides lead the how-to list rather than
+the last batch imported. Both orders page by keyset; a `curated` cursor carries all four
+keys and a tag, and a cursor minted under one order is refused under the other with
+`guide_cursor_invalid` (422) rather than restarting the list -- the web then sends the reader
+to the listing's first page. `featured` and `display_order` are the content pack's
+(`content_pack.py`), so reordering a batch is a number change and a `guides-import`, not a
+code change.
+
 `GET /guides/series` reads `app/guides/series_registry.json`, the one list of series and
 tutorial hubs across the three mechanisms that hold one (the `series_data` catalogues, the
 web's Gemini projection, the editorial catalogues under `docs/`): a row names the hub

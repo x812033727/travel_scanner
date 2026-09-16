@@ -6,11 +6,13 @@ flag is enabled. SQLite is not presented as evidence of PostgreSQL row races.
 
 from __future__ import annotations
 
+import base64
+import json
 import os
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
 from unittest.mock import ANY
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from fastapi import FastAPI
@@ -1068,6 +1070,150 @@ async def test_the_listing_pages_without_repeating_or_dropping_an_article(databa
                 break
         assert sorted(seen) == sorted(f"deal-{index}" for index in range(7))
         assert len(seen) == len(set(seen))
+
+
+async def curate(
+    api: AsyncClient, created: dict, *, featured: bool = False, display_order: int = 100
+) -> dict:
+    """The editor's order on a fresh article, then its publication."""
+    saved = await api.put(
+        f"/admin/guides/{created['id']}",
+        json={
+            "expected_version": created["version"],
+            "kind": created["kind"],
+            "destination_id": created["destination_id"],
+            "topics": ["transport"],
+            "featured": featured,
+            "display_order": display_order,
+        },
+    )
+    assert saved.status_code == 200, saved.text
+    published = await publish(api, created["id"], "zh-TW", created["locales"][0]["version"])
+    assert published.status_code == 200, published.text
+    return published.json()
+
+
+async def stamp_publication(database, article_id: str, day: int) -> None:
+    """Pin a row's publication to a day of September 2026, so an order test does not depend
+    on the clock: a batch publishes within one second, and the tiebreak would decide."""
+    async with database() as session:
+        await session.execute(
+            update(GuideArticleLocale)
+            .where(GuideArticleLocale.article_id == UUID(article_id))
+            .values(published_at=datetime(2026, 9, day, tzinfo=UTC))
+        )
+        await session.commit()
+
+
+async def test_the_curated_order_puts_featured_first_then_display_order_then_newest(
+    database, actor
+) -> None:
+    """The editor's order, not the last batch imported: featured first, then display_order,
+    then newest, then the slug -- and ``latest`` is untouched by any of it."""
+    async with client(make_app(database, actor)) as api:
+        plan = [
+            ("late-add", False, 100, 10),
+            ("core-transit", False, 10, 3),
+            ("overview", True, 10, 5),
+            ("hub", True, 50, 4),
+            ("older-note", False, 100, 1),
+        ]
+        for slug, featured, order, day in plan:
+            created = await create_article(api, slug=slug)
+            await curate(api, created, featured=featured, display_order=order)
+            await stamp_publication(database, created["id"], day)
+
+        async def slugs(**params):
+            response = await api.get("/guides", params={"locale": "zh-TW", **params})
+            assert response.status_code == 200, response.text
+            return [item["slug"] for item in response.json()["articles"]]
+
+        assert await slugs(sort="curated") == [
+            "overview",
+            "hub",
+            "core-transit",
+            "late-add",
+            "older-note",
+        ]
+        assert await slugs() == ["late-add", "overview", "hub", "core-transit", "older-note"]
+        assert await slugs(sort="latest") == await slugs()
+        unknown = await api.get("/guides", params={"locale": "zh-TW", "sort": "random"})
+        assert unknown.status_code == 422
+
+
+async def test_the_curated_order_pages_without_repeating_or_dropping_an_article(
+    database, actor
+) -> None:
+    """Rows with the same display_order published in the same second is the shape a batch
+    import leaves; the keyset carries every sort key, so pages neither repeat nor skip."""
+    async with client(make_app(database, actor)) as api:
+        for index in range(9):
+            created = await create_article(api, slug=f"note-{index}")
+            await curate(
+                api,
+                created,
+                featured=index in (2, 6),
+                display_order=20 if index == 4 else 100,
+            )
+            await stamp_publication(database, created["id"], 1)
+        seen: list[str] = []
+        cursor = None
+        pages = 0
+        while True:
+            params = {"locale": "zh-TW", "limit": 2, "sort": "curated"}
+            if cursor:
+                params["cursor"] = cursor
+            page = (await api.get("/guides", params=params)).json()
+            seen.extend(item["slug"] for item in page["articles"])
+            pages += 1
+            cursor = page["next_cursor"]
+            if not cursor:
+                break
+        assert pages == 5
+        # Featured first (tied: same order, same second, so the slug), then the lowest
+        # display_order, then the rest of the batch by slug.
+        assert seen == [
+            "note-2",
+            "note-6",
+            "note-4",
+            "note-0",
+            "note-1",
+            "note-3",
+            "note-5",
+            "note-7",
+            "note-8",
+        ]
+
+
+async def test_a_cursor_minted_under_one_order_is_refused_under_the_other(
+    database, actor
+) -> None:
+    async with client(make_app(database, actor)) as api:
+        for index in range(3):
+            created = await create_article(api, slug=f"note-{index}")
+            await publish(api, created["id"], "zh-TW", created["version"])
+        first = {"locale": "zh-TW", "limit": 1}
+        latest = (await api.get("/guides", params=first)).json()["next_cursor"]
+        curated = (await api.get("/guides", params={**first, "sort": "curated"})).json()[
+            "next_cursor"
+        ]
+        assert latest and curated and latest != curated
+        # The latest cursor is still ``[published_at, slug]``: a "see more" link minted
+        # before ``sort`` existed keeps working.
+        padded = latest + "=" * (-len(latest) % 4)
+        stamp, slug = json.loads(base64.urlsafe_b64decode(padded))
+        assert isinstance(datetime.fromisoformat(stamp), datetime)
+        assert slug.startswith("note-")
+
+        crossed = await api.get("/guides", params={**first, "sort": "curated", "cursor": latest})
+        assert crossed.status_code == 422
+        assert crossed.json()["code"] == "guide_cursor_invalid"
+        crossed = await api.get("/guides", params={**first, "cursor": curated})
+        assert crossed.status_code == 422
+        assert crossed.json()["code"] == "guide_cursor_invalid"
+        # Under its own order a curated cursor continues the listing.
+        page = await api.get("/guides", params={**first, "sort": "curated", "cursor": curated})
+        assert page.status_code == 200 and len(page.json()["articles"]) == 1
 
 
 async def test_published_at_records_the_first_publication_not_the_latest(database, actor) -> None:
