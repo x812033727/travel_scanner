@@ -394,7 +394,8 @@ Ctrl+K and the phone header's icon open (`components/site-search`); the typeahea
 
 Two guide-only blocks carry the answer-first shape an answer engine quotes and a reader
 skims. ``summary`` (``{"type": "summary", "items": [...]}``, two to five sentences) is the
-article's answer, written by the editor and never generated; the model allows one per
+article's answer, drafted from the article's own text and never a fact the body does not
+state (see **summarize** below for who writes it); the model allows one per
 document and requires it before the first heading, so it is the opening rather than a
 recap, and ``pack_cli lint`` warns (``no_summary``) when a lifestyle or how-to article has
 none. ``faq`` (``{"type": "faq", "items": [{"question", "answer"}, ...]}``, two to ten
@@ -408,6 +409,31 @@ the Article's ``abstract`` and its card the speakable passage, and the FAQ is an
 **Deploy order.** The web guard (``isPublishedGuide``) refuses a document with a block it
 does not know and renders the "unavailable" screen with ``noindex``, so the web renderer
 ships before any article carrying these blocks is published.
+
+**summarize.** ``pack_cli summarize [--kind k] [--prefix p]... [--slug s]... [--from
+batch.json] [--replace] [--digest out.md] [--dry-run|--apply]`` (``app/guides/summarize.py``)
+puts the blocks into packs that exist, the way ``relink`` and ``autolink`` do: a table of
+what would change, then ``--apply`` on the same rows, touching only ``locales.<locale>.blocks``.
+Two sources and no third. A paragraph that opens with 「先講結論」 (or 先看結論, 結論：,
+一句話, 用一句話) already is the summary: its sentences, at most five, marker stripped,
+never rephrased. A ``--from`` batch (``{slug: {locale: {"summary": [...], "faq"?: [...]}}}``)
+carries summaries the model drafted from the article and the owner read before applying,
+which is the owner's decision of 2026-09-16 in place of "never generated"; every entry is
+validated as the block it becomes, a summary already there is refused without
+``--replace``, an unknown slug or locale refuses the batch, and so does any figure a
+sentence carries that the document (its sources aside) does not carry as written --
+``1,100`` is not ``1100``, and the one thing an answer engine must never quote from here is
+a number the article does not state. A 「常見問題」 section becomes the ``faq`` block and
+leaves the body when it already is a single list of 問題：答案 pairs, or question headings
+each answered by exactly one plain paragraph and nothing else; anything richer is kept as
+it is (``FaqItem.answer`` is plain text, an answer with links would lose them), and so is a
+section whose removal would leave fewer than three level-2 headings. The summary goes to
+index 0, which satisfies "before the first heading"; the web hoists it anyway.
+``--digest`` writes, per document still without a summary, what one is written from: the
+description, the headings, the first two paragraphs, each table's header, the lead if any
+and the FAQ section's shape. ``_body_length`` counts summary and FAQ text, so a long
+article can newly trip ``text_length`` after the block lands; that is a warning to record,
+not a reason to shorten the summary.
 
 **Glossary entries.** ``PublicArticle.term_set`` names the hub of the catalogue-type series
 (``series_registry.json``, ``source: "catalogue"``) whose topic the article carries, when

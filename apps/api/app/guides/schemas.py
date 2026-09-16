@@ -315,8 +315,11 @@ class PartnerLinkBlock(StrictModel):
 class SummaryBlock(StrictModel):
     """The article's answer, in two to five sentences a reader (or an answer engine) can
     take away without reading further. One per article, ahead of the first section: it is
-    the opening, not a recap. Written by the editor, never generated -- an article whose
-    summary the text does not support is worse than one without."""
+    the opening, not a recap. Drafted from the article's own text -- lifted from a
+    「先講結論」 lead, or written by the model and read by the owner batch by batch before
+    ``pack_cli summarize --from`` applies it (the owner's decision of 2026-09-16) -- and
+    never a fact the body does not state: an article whose summary the text does not
+    support is worse than one without."""
 
     type: Literal["summary"]
     items: list[Annotated[NonemptyText, Field(max_length=300)]] = Field(

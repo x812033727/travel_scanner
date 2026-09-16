@@ -12,6 +12,8 @@ the task board; ``guides-import`` (the deploy-time import) stays there.
     uv run python -m app.guides.pack_cli relink [--kind k] [--prefix p]... [--slug s]... [--apply]
     uv run python -m app.guides.pack_cli autolink [--kind k] [--prefix p]... [--slug s]... \\
         [--limit 8] [--apply]
+    uv run python -m app.guides.pack_cli summarize [--kind k] [--prefix p]... [--slug s]... \\
+        [--from batch.json] [--replace] [--digest out.md] [--apply]
 """
 
 from __future__ import annotations
@@ -21,7 +23,7 @@ import sys
 from pathlib import Path
 from typing import cast
 
-from app.guides import autolink, retopic
+from app.guides import autolink, retopic, summarize
 from app.guides.content_pack import default_directory
 from app.guides.pack_ingest import (
     PackIngestError,
@@ -95,6 +97,28 @@ def main(argv: list[str] | None = None) -> int:
                 "--limit", type=int, default=autolink.MAX_AUTOLINKS, help="Links per article"
             )
 
+    summarize_parser = commands.add_parser(
+        "summarize", help="Propose or apply summary and FAQ blocks from the article's own text"
+    )
+    summarize_parser.add_argument("--kind", choices=("intel", "howto", "life"))
+    summarize_parser.add_argument("--prefix", action="append", default=[])
+    summarize_parser.add_argument("--slug", action="append")
+    summarize_parser.add_argument(
+        "--from", dest="batch", type=Path, help="A reviewed batch: slug → locale → summary/faq"
+    )
+    summarize_parser.add_argument(
+        "--replace", action="store_true", help="Overwrite a summary or FAQ already there"
+    )
+    summarize_parser.add_argument(
+        "--digest", type=Path, help="Write what a summary is written from, per document, here"
+    )
+    summarize_parser.add_argument(
+        "--apply", action="store_true", help="Rewrite the blocks of the changed packs"
+    )
+    summarize_parser.add_argument(
+        "--dry-run", action="store_true", help="The default: print only"
+    )
+
     args = parser.parse_args(argv)
     content_dir = args.content_dir or default_directory()
     public_dir = args.public_dir or default_public_dir()
@@ -111,6 +135,37 @@ def main(argv: list[str] | None = None) -> int:
         print(autolink.render_table(proposals))
         if args.apply and not args.dry_run:
             for path in autolink.apply(proposals, content_dir):
+                print(f"wrote {path}")
+        else:
+            print("dry run: nothing written")
+        return 0
+
+    if args.command == "summarize":
+        kind = cast(Kind | None, args.kind)
+        prefixes = tuple(args.prefix)
+        slugs = set(args.slug) if args.slug else None
+        try:
+            batch = summarize.load_batch(args.batch) if args.batch else None
+            summary_rows = summarize.proposals(
+                content_dir,
+                kind=kind,
+                prefixes=prefixes,
+                slugs=slugs,
+                batch=batch,
+                replace=args.replace,
+            )
+        except summarize.SummarizeError as error:
+            print(f"error: {error}", file=sys.stderr)
+            return 1
+        if args.digest:
+            digest = summarize.render_digest(
+                content_dir, kind=kind, prefixes=prefixes, slugs=slugs
+            )
+            args.digest.write_text(digest, encoding="utf-8")
+            print(f"wrote {args.digest}")
+        print(summarize.render_table(summary_rows))
+        if args.apply and not args.dry_run:
+            for path in summarize.apply(summary_rows, content_dir):
                 print(f"wrote {path}")
         else:
             print("dry run: nothing written")
