@@ -95,11 +95,12 @@ describe("a published article", () => {
     expect(metadata.alternates!.languages!["x-default"]).toContain("/en/guides/howto/narita-to-tokyo");
   });
 
-  it("links the other languages from the page itself, not only from the head", async () => {
-    render(await GuideArticlePage({ params: params() }));
-    const link = screen.getByRole("link", { name: "日本語" });
-    expect(link.getAttribute("href")).toBe("/ja/guides/howto/narita-to-tokyo");
-    expect(link.getAttribute("hreflang")).toBe("ja");
+  it("leaves the other languages to the head, listing none under the article", async () => {
+    const metadata = await generateMetadata({ params: params() }, emptyParent);
+    expect(metadata.alternates!.languages!.ja).toContain("/ja/guides/howto/narita-to-tokyo");
+    const { container } = render(await GuideArticlePage({ params: params() }));
+    expect(screen.queryByRole("link", { name: "日本語" })).toBeNull();
+    expect(container.querySelector("a[hreflang]")).toBeNull();
   });
 
   it("claims no image and leaves the site's share card alone when it has no hero", async () => {

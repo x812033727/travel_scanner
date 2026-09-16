@@ -277,7 +277,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     ...kindLabels,
     updated: t("guides.updated"),
     sources: t("guides.sources"), checkedOn: t("guides.checkedOn"),
-    destination: t("guides.destination"), otherLanguages: t("guides.otherLanguages"),
+    destination: t("guides.destination"),
     contents: state.series?.current ? seriesCopy(locale).contents : t("guides.contents"),
     adLabel: t("guides.adLabel"),
     disclosure: ts("disclosure"),

@@ -12,11 +12,10 @@ import { DestinationAffiliateOptions } from "@/components/destination-affiliate-
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
 import type { TermLinkLabels } from "@/components/guides/term-link";
 import { Link } from "@/i18n/navigation";
-import { localeLabels, type Locale } from "@/i18n/routing";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination, guideAffiliateModules, guideAffiliatePlacement } from "@/lib/guide-affiliate";
 import {
-  guideHeadings, guideHref, guideListHref, partnerClickPath, splitGuideBlocks,
+  guideHeadings, guideListHref, partnerClickPath, splitGuideBlocks,
   type GuideArticleState, type GuideKind,
   splitArticleExtras,
 } from "@/lib/guides";
@@ -28,7 +27,6 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   sources: string;
   checkedOn: string;
   destination: string;
-  otherLanguages: string;
   /** The table of contents heading. */
   contents: string;
   /** Above an ad unit. Policy allows "廣告"/"Advertisements" and nothing softer. */
@@ -60,7 +58,9 @@ export const CONTENTS_MIN_HEADINGS = 3;
  * The body is drawn in slices around the editor's partner buttons (`offer` blocks) and partner
  * links (`partner_link` blocks), each a client island between two runs of the shared renderer.
  * The end of the article runs: end
- * panel (if any), `related`, topic chips, sources, other languages. `related` is whatever
+ * panel (if any), `related`, topic chips, sources. A translation of the article is not
+ * offered in the body: the published set is declared in `alternates.languages` for search
+ * engines, and the reader switches language from the header. `related` is whatever
  * the page fetched to hand the reader on and stays a plain node so this component remains
  * synchronous and renders directly under React Testing Library.
  */
@@ -84,7 +84,6 @@ export function GuideArticle({
   // means anything, since `modified_at` equals it until the article is republished.
   const published = document.published_at.slice(0, 10);
   const modified = document.modified_at ? document.modified_at.slice(0, 10) : null;
-  const others = state.published_locales.filter((value) => value !== state.locale);
   const placement = guideAffiliatePlacement(state.kind);
   // The answer goes under the description and the questions before the sources; the body
   // is everything else.
@@ -310,25 +309,6 @@ export function GuideArticle({
                 </li>
               ) : null;
             })}
-          </ul>
-        </section>
-      ) : null}
-
-      {others.length ? (
-        <section className="border-t border-[var(--line)] pt-6">
-          <h2 className="text-lg font-semibold">{labels.otherLanguages}</h2>
-          <ul className="mt-3 flex flex-wrap gap-3">
-            {others.map((value) => (
-              <li key={value}>
-                <a
-                  className="inline-flex min-h-11 items-center text-[var(--teal)] underline"
-                  href={`/${value}${guideHref(state.kind, state.slug)}`}
-                  hrefLang={value}
-                >
-                  {localeLabels[value as Locale]}
-                </a>
-              </li>
-            ))}
           </ul>
         </section>
       ) : null}
