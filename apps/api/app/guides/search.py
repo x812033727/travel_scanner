@@ -443,6 +443,7 @@ def _summary(
         "hero": HeroImage.model_validate(entry.hero_json) if entry.hero_json else None,
         "published_at": entry.published_at,
         "valid_until": article.valid_until,
+        "news_date": article.news_date,
         "featured": article.featured,
     }
 

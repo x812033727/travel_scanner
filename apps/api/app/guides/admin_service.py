@@ -200,6 +200,7 @@ def _summary(
         destination_label=destination_label(article.destination_id, locale),
         topics=[topic_option(topic, locale) for topic in topics],
         valid_until=article.valid_until,
+        news_date=article.news_date,
         expired=article.valid_until is not None and article.valid_until < today(),
         featured=article.featured,
         display_order=article.display_order,
@@ -433,6 +434,7 @@ async def create_article(
         kind=payload.kind,
         destination_id=destination_id,
         valid_until=payload.valid_until,
+        news_date=payload.news_date,
         created_at=now,
         updated_at=now,
     )
@@ -510,10 +512,13 @@ async def update_article(
         if payload.related is not None
         else None
     )
+    # Left out of the payload, the stored day stays (see ``ArticleUpdate.news_date``).
+    news_date = payload.news_date if "news_date" in payload.model_fields_set else article.news_date
     before = {
         "kind": article.kind,
         "destination_id": article.destination_id,
         "valid_until": article.valid_until.isoformat() if article.valid_until else None,
+        "news_date": article.news_date.isoformat() if article.news_date else None,
         "featured": article.featured,
         "display_order": article.display_order,
     }
@@ -528,6 +533,7 @@ async def update_article(
                 kind=payload.kind,
                 destination_id=destination_id,
                 valid_until=payload.valid_until,
+                news_date=news_date,
                 featured=payload.featured,
                 display_order=payload.display_order,
                 version=payload.expected_version + 1,
@@ -562,6 +568,7 @@ async def update_article(
                         "valid_until": (
                             payload.valid_until.isoformat() if payload.valid_until else None
                         ),
+                        "news_date": news_date.isoformat() if news_date else None,
                         "featured": payload.featured,
                         "display_order": payload.display_order,
                     },

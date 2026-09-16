@@ -28,6 +28,8 @@ export type ArticleSummary = {
   destination_label: string | null;
   topics: GuideTopic[];
   valid_until: string | null;
+  /** The day the news happened, on a dated news story. Optional so an older API still parses. */
+  news_date?: string | null;
   expired: boolean;
   featured: boolean;
   display_order: number;

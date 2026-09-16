@@ -106,6 +106,7 @@
 | `article-reading-polish-web` | `GuideCard` `compact`／`featured`；`.app-term-link`／`.app-term-card`／`.app-summary-card` 以 token 寫；延伸閱讀格距；系列上下篇雙欄 |
 | `llms-txt-topic-hubs-and-series` | `/llms.txt` 多 `### Topics`（父主題、篇數最多的語系）與 `### Series` |
 | 篇數與課序（2026-09-16） | 讀者看得到的地方一律不顯示目錄大小與課程序號：站主的理由是「會一直增加」，顯示出來就一直是錯的。`TopicOption.count`／`counts`、`SeriesEntry.number`、`GuideSearchResult.total`、`DestinationFacet.count`、`SitemapSummary.counts` 全部留在 wire 上，因為可見性、`noindex`、hreflang、sitemap、排序、上下篇與分頁都靠它們 —— 拿掉的只有畫面 |
+| 新聞日期與新聞清單（2026-09-16） | `guide_articles.news_date`（migration `0079_guide_news_date`）＋`GET /guides?sort=news`（新聞日期由新到舊、無日期排最後）。生活分享首頁「最新新聞」改為依新聞日期最新 20 條、一條一行（日期＋標題）、不顯示主題描述；`/life/topics/ai-news` 同樣一條一行、沒有排序切換。顯示的是新聞發生的日期，不是發布或更新時間 —— 新聞分批匯入，同批發布時間幾乎一樣 |
 | 系列搬進主題（2026-09-16） | `SeriesRow` 從兩個 hub 移到 `renderTopicHub`：每個系列在 `series_registry.json` 都指定一個（子）主題，子主題頁顯示自己的，父主題頁蒐集底下所有子主題的 |
 | sitemap 上限 | 每專區×語系超過 5,000 列自動編號子檔，API `offset`；lint 不再預警 |
 
@@ -116,6 +117,8 @@
 ## 分類詞彙（0076 種子；標籤在 `app/guides/taxonomy.py`，改種子即可）
 
 **生活分享**：`software`、`gadgets`、`productivity`、`daily`、`misc` 維持單層；`tutorial` 保留於資料但不作導覽。
+
+0079 又加了兩個新聞垂直：`crypto` 掛在 `finance` 底下（同一個 YMYL 主題、同一條免責規則），`tech-news` 掛在新父主題 `tech` 底下。`tech` 沒有拿 `gadgets` 或 `software` 改造：前者是 3C 裝置、後者是 App，而晶片、電信與平台法規兩邊都不是，上面那句「維持單層」也因此仍然成立。
 
 | 父主題 | 子主題 | 吸收（`retopic` 規則摘要） |
 | --- | --- | --- |
@@ -131,7 +134,8 @@
 | | `ai-plans` AI 方案與費用 | `ai-free-vs-paid-*`、`ai-api-pricing-*`、`openrouter-*`… |
 | `website` 架站與電商（新） | `wordpress` / `woocommerce` / `web-basics` | `wordpress-*` 與主題、主機前綴；`woocommerce-*`；`domain-*`、`dns-*`、`website-*`、`css-*`… |
 | `marketing` 行銷與 SEO（新） | `seo` / `ads` / `content-marketing` | `seo-*`、SEO 工具、技術 SEO；`google-ads-*`、`adsense-*`、`affiliate-*`；`content-marketing-*`、`brand-*`、`marketing-*`… |
-| `finance` 理財與金錢 | `finance-basics` / `banking` / `credit` / `tax-insurance` / `investing` | 財經批次 01／02／02／03–04／05–06 |
+| `finance` 理財與金錢 | `finance-basics` / `banking` / `credit` / `tax-insurance` / `investing` / `crypto`（0079） | 財經批次 01／02／02／03–04／05–06；`crypto-news-*`、`bitcoin-*`、`stablecoin-*` |
+| `tech` 科技與產業（0079 新增） | `tech-news` | `tech-news-*` |
 
 **旅遊**：主題不加子層；第二軸為國家 → 目的地（`DestinationProfile.country` → `japan`、`south-korea`、`taiwan`、`thailand`、`vietnam`、`singapore`、`hong-kong`）。
 

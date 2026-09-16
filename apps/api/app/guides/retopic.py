@@ -453,6 +453,13 @@ RULES: tuple[Rule, ...] = (
         prefixes=("labor-insurance-", "labor-pension-", "payslip-"),
         slugs=frozenset({"youtube-payment-tax-info", "taiwan-company-registration"}),
     ),
+    # The two 0079 verticals. ``tech`` is a new parent, so an article filed under
+    # ``tech-news`` is given it automatically (the rule below only skips the original eight);
+    # ``crypto``'s parent ``finance`` is one of those eight, so a crypto article carries it
+    # only because the writer put it there -- which is why ``pack_ingest.FINANCE_TOPICS``
+    # names ``crypto`` in its own right rather than trusting the parent to arrive.
+    Rule("tech-news", prefixes=("tech-news-",)),
+    Rule("crypto", prefixes=("crypto-news-", "crypto-", "bitcoin-", "stablecoin-")),
 )
 
 

@@ -45,8 +45,10 @@ SECTION_KINDS: dict[Section, tuple[Kind, ...]] = {"travel": ("intel", "howto"), 
 # How a public listing is ordered. ``latest`` is publication time, newest first -- right for
 # dated intel. ``curated`` is the editor's order: featured first, then ``display_order``,
 # then newest, then the slug -- what a hub's "featured guides" and the lifestyle listing
-# want, so an overview piece stays on page one however many batches follow it.
-ListSort = Literal["latest", "curated"]
+# want, so an overview piece stays on page one however many batches follow it. ``news`` is
+# the day the news happened, newest first, undated rows last -- what a news list wants,
+# since a batch import gives a week of stories the same publication time.
+ListSort = Literal["latest", "curated", "news"]
 RevisionAction = Literal["created", "draft_saved", "published", "unpublished", "restored"]
 
 
@@ -534,6 +536,7 @@ class ArticleCreate(StrictModel):
     destination_id: str | None = Field(default=None, max_length=64)
     topics: list[str] = Field(default_factory=list, max_length=10)
     valid_until: date | None = None
+    news_date: date | None = None
     document: GuideDocument
     locale: Locale = "zh-TW"
 
@@ -564,6 +567,10 @@ class ArticleUpdate(StrictModel):
     destination_id: str | None = Field(default=None, max_length=64)
     topics: list[str] = Field(default_factory=list, max_length=10)
     valid_until: date | None = None
+    # Left out, the stored date stays; ``null`` clears it. Unlike ``valid_until``, which an
+    # editor always sends: this field arrived after the form did, and a save from a form
+    # that does not know it must not wipe every news article's date.
+    news_date: date | None = None
     featured: bool = False
     display_order: int = Field(default=100, ge=0, le=100_000)
     # ``None`` leaves the names alone; a locale listed here replaces that locale's
@@ -674,6 +681,7 @@ class ArticleSummary(BaseModel):
     destination_label: str | None
     topics: list[TopicOption]
     valid_until: date | None
+    news_date: date | None = None
     expired: bool
     featured: bool
     display_order: int
@@ -737,6 +745,8 @@ class PublicSummary(BaseModel):
     hero: HeroImage | None = None
     published_at: datetime
     valid_until: date | None
+    # The day the news happened (see ``GuideArticle.news_date``); null off the news topics.
+    news_date: date | None = None
     featured: bool
 
 
@@ -860,6 +870,7 @@ class PublicArticle(BaseModel):
     destination_label: str | None = None
     topics: list[TopicOption] = Field(default_factory=list)
     valid_until: date | None = None
+    news_date: date | None = None
     # An expired notice keeps its page. Withdrawing the URL would 404 every link already
     # pointing at it; the page says plainly what date it applied until instead. It leaves
     # the listings and the sitemap, which is where "current" is what the reader expects.

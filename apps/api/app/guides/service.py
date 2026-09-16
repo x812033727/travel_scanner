@@ -11,7 +11,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any, Literal, cast
 from urllib.parse import urlsplit
 from uuid import UUID
@@ -248,6 +248,34 @@ def _decode_curated_cursor(cursor: str | None) -> tuple[bool, int, datetime, str
         raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
 
 
+def _encode_news_cursor(news_date: date | None, published_at: datetime, slug: str) -> str:
+    """The news order's keyset, tagged like the curated one. The day is null past the last
+    dated row, where the undated pieces of a news topic follow."""
+    raw = json.dumps(
+        ["news", news_date.isoformat() if news_date else None, published_at.isoformat(), slug],
+        separators=(",", ":"),
+    )
+    return base64.urlsafe_b64encode(raw.encode()).decode().rstrip("=")
+
+
+def _decode_news_cursor(cursor: str | None) -> tuple[date | None, datetime, str] | None:
+    if not cursor:
+        return None
+    try:
+        padded = cursor + "=" * (-len(cursor) % 4)
+        tag, day, stamp, slug = json.loads(base64.urlsafe_b64decode(padded.encode()).decode())
+        if tag != "news" or not (day is None or isinstance(day, str)):
+            raise ValueError("not a news cursor")
+        return (
+            date.fromisoformat(day) if day is not None else None,
+            datetime.fromisoformat(stamp),
+            str(slug),
+        )
+    except (ValueError, TypeError):
+        # A ``latest`` or ``curated`` cursor has a different length and lands here too.
+        raise AppError(422, "guide_cursor_invalid", "分頁資訊無效，請重新瀏覽") from None
+
+
 async def public_list(
     session: AsyncSession,
     locale: Locale,
@@ -319,6 +347,33 @@ async def public_list(
             GuideArticleLocale.published_at.desc(),
             GuideArticle.slug,
         )
+    elif sort == "news":
+        news = _decode_news_cursor(cursor)
+        if news is not None:
+            day, stamp, slug = news
+            later_in_day = or_(
+                GuideArticleLocale.published_at < stamp,
+                and_(GuideArticleLocale.published_at == stamp, GuideArticle.slug > slug),
+            )
+            if day is None:
+                # Already among the undated rows: only the rest of them follow.
+                query = query.where(GuideArticle.news_date.is_(None), later_in_day)
+            else:
+                query = query.where(
+                    or_(
+                        GuideArticle.news_date < day,
+                        GuideArticle.news_date.is_(None),
+                        and_(GuideArticle.news_date == day, later_in_day),
+                    )
+                )
+        # ``IS NULL`` first is false for every dated row, so they lead and the undated rows
+        # follow -- NULLS LAST spelled so SQLite and PostgreSQL agree on it.
+        ordering = (
+            GuideArticle.news_date.is_(None),
+            GuideArticle.news_date.desc(),
+            GuideArticleLocale.published_at.desc(),
+            GuideArticle.slug,
+        )
     else:
         position = _decode_cursor(cursor)
         if position is not None:
@@ -349,6 +404,7 @@ async def public_list(
                 hero=published.hero,
                 published_at=published.published_at,
                 valid_until=article.valid_until,
+                news_date=article.news_date,
                 featured=article.featured,
             )
         )
@@ -357,13 +413,14 @@ async def public_list(
     if last is not None:
         last_article, last_row = last
         last_stamp = last_row.published_at or last_row.updated_at
-        next_cursor = (
-            _encode_curated_cursor(
+        if sort == "curated":
+            next_cursor = _encode_curated_cursor(
                 last_article.featured, last_article.display_order, last_stamp, last_article.slug
             )
-            if sort == "curated"
-            else _encode_cursor(last_stamp, last_article.slug)
-        )
+        elif sort == "news":
+            next_cursor = _encode_news_cursor(last_article.news_date, last_stamp, last_article.slug)
+        else:
+            next_cursor = _encode_cursor(last_stamp, last_article.slug)
     return PublicList(articles=articles, next_cursor=next_cursor)
 
 
@@ -402,6 +459,7 @@ async def public_article(
         destination_label=destination_label(article.destination_id, locale),
         topics=topics,
         valid_until=article.valid_until,
+        news_date=article.news_date,
         expired=expired,
         document=document,
         published_locales=[item for item in LOCALES if item in set(published_locales)],
