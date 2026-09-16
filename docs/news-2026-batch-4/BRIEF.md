@@ -48,6 +48,22 @@
   官方 RSS、或各國 newsroom（如 `apple.com/<國家>/newsroom`）。**不要改用整合站充數。**
   查到的事實如果只存在於被擋的頁面後面，那就不寫。
 
+### 先找官方 feed，再抓網頁
+
+廠商的官方 RSS/Atom **比抓網頁可靠**，而且日期是官方給的，不必從版面猜。
+2026-09-16 實測：`openai.com` 的網頁對 `curl` 與 WebFetch 都回 **403**，
+但 **`https://openai.com/news/rss.xml` 回 200**，裡面 1,193 筆帶 `pubDate` 的項目。
+
+可用的 feed 與格式差異整理在
+[`candidates-tech-and-ai.md`](candidates-tech-and-ai.md) 開頭那張表
+（注意 Apple Newsroom 是 **Atom**：`<entry>`／`<updated>`，不是 `<item>`／`<pubDate>`；
+Anthropic 兩個常見位址都 404，沒有 feed）。
+沒有 feed 的主管機關，找它的結構化管道：美國的 Federal Register 有公開 API，
+是 `sec.gov` 被 403 擋掉時的官方刊登管道。
+
+**feed 給的是日期與標題，不是內容。** 開稿時仍要讀該篇原文，
+`sources` 放的是文章頁的網址，不是 feed 的網址。
+
 ## 內容包格式
 
 檔案 `apps/api/app/guides/content/<slug>.json`。

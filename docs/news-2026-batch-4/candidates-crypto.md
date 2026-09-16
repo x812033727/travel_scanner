@@ -16,6 +16,12 @@
 
 查核日：2026-09-16。
 
+先讀 [`candidates-tech-and-ai.md`](candidates-tech-and-ai.md) 開頭那張**官方 feed 對照表**：
+廠商的官方 RSS/Atom 比抓網頁可靠（`openai.com` 網頁 403、feed 200），
+而且日期是官方給的。幣圈這邊的主管機關多數沒有 feed，
+但 Federal Register 有 API（見 C3、C4），是同一個道理：
+**找官方的結構化管道，比猜網址可靠。**
+
 ---
 
 ## ✅ 已驗：可以直接開稿

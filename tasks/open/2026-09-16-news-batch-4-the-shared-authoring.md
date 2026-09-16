@@ -40,8 +40,11 @@ scope:
 - [x] 驗證幣圈一手來源真的連得到，並實際查成一則候選當範例。
 - [x] 量出索引改標題的波及範圍，把實測數字寫進 `ai.md`。
 - [x] 幣圈候選清單起頭：5 則已回一手來源驗過，可直接開稿（`candidates-crypto.md`）。
-- [ ] 科技與 AI 的候選清單只有線索，還沒回一手來源（`candidates-tech-and-ai.md`）。
-- [ ] 三個垂直各要 10–12 則重要 + 4–6 則次要，目前幣圈 5 則、科技 0 則、AI 0 則。
+- [x] 科技與 AI 的候選清單改寫：科技 3 則已驗、AI 1 則已驗（9/15 缺口），
+      另有 14 則已由官方 feed 確認日期、待讀原文（`candidates-tech-and-ai.md`）。
+- [x] 官方 feed 對照表寫進 `BRIEF.md` 的查證章節與兩份候選清單。
+- [ ] 三個垂直各要 10–12 則重要 + 4–6 則次要，目前幣圈 5、科技 3、AI 1（已驗）。
+      還沒掃過：Anthropic、Meta、DeepSeek、Qwen、Samsung、標準組織、台灣主管機關。
 
 ## How to verify
 
@@ -78,3 +81,36 @@ BRIEF 的 fallback（官方 RSS、同一官站其他頁、各國 newsroom）涵�
 留給各自的批次票。`check_article.py` 從批次 3 複製時要注意：它的
 `["callout","link","link"]` 與 `["paragraph","paragraph"]` 斷言早於 relink／autolink，
 直接複製會在正確的文章上失敗。
+
+## 第二輪：科技與 AI 候選（claude-opus-5, 2026-09-16）
+
+**最有用的發現是官方 feed。** `openai.com` 的網頁對 `curl` 與 WebFetch 都回 403，
+但 `https://openai.com/news/rss.xml` 回 200，裡面 1,193 筆帶 `pubDate` 的項目、
+2026 年就有 407 筆。這是 `BRIEF.md` 本來就寫的 fallback，但用來做候選清單特別好：
+**日期是官方給的，不必從版面猜，也不必猜網址。**
+
+實測可用：OpenAI、Google（`blog.google/rss/`）、Apple Newsroom（**Atom 格式**）、
+Apple Developer、Windows。**Anthropic 兩個常見位址都 404，沒有 feed**，要抓網頁。
+台灣 NCC 擋在安全驗證後面，要換管道。沒有 feed 的主管機關找結構化管道：
+Federal Register 的公開 API 就是 `sec.gov` 被 403 擋掉時的官方刊登管道。
+
+**查證結果：**
+
+- **AI 的 9/15 缺口填掉了**：Google 在 2026-09-15 發布 Gemini 3.8 Live 與
+  3.8 Live Extended Thinking，官方頁載明 97 種語言、開放範圍與方案限制，
+  但**沒說地區**，要照實寫「官方未說明」。
+- **OpenAI 在 9/15–9/16 沒有任何發布**（feed 最後一筆是 9/14）。整合站說的
+  「Microsoft MAI」與「Altman 談 IPO」兩則都查不到合格的一手來源：
+  前者官方貼文是 JS 算繪、拿不到日期，後者是 Fortune 專訪的轉述。
+- **科技驗成三則**：Apple iPhone Duo（9/9，規格／售價／上市日都抄了原文）、
+  9/9 發表會其餘硬體、歐盟 CRA 通報義務上路（9/11，24／72／14 小時天數都抄了原文）。
+- **CRA 有一處要注意**：整合站寫「主要義務自 2027-12-11 起適用」，
+  但執委會的頁面把 2027-12-11 寫成**開源軟體管理者**的通報起始日。
+  開稿要讀 EUR-Lex 原文釐清，不可照抄。
+- **AI 補漏的空間比想像大**：站上覆蓋最薄的三個月（3 月 3 篇、5 月 2 篇、6 月 3 篇）
+  正好是 OpenAI 官方發布最密的區間（38／56／55 筆）。清單列了 10 則，
+  含 3/19 併購 Astral（`uv`／`ruff` 的開發商，本站 API 就在用）與
+  6/8 的 S-1 送件（**角度必須是對使用者的意義，不可寫成投資題材**）。
+
+**寫進檔案的每一個日期與標題都對著 live feed 重驗過一次**，
+含兩則同日不同篇的 5/5 項目與帶非 ASCII 連字號的 `GPT‑Live‑1`。
