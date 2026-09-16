@@ -43,7 +43,8 @@ scope:
 - [x] 科技與 AI 的候選清單改寫：科技 3 則已驗、AI 1 則已驗（9/15 缺口），
       另有 14 則已由官方 feed 確認日期、待讀原文（`candidates-tech-and-ai.md`）。
 - [x] 官方 feed 對照表寫進 `BRIEF.md` 的查證章節與兩份候選清單。
-- [x] 幣圈的重要新聞已到量（11 則已驗）。科技 8 則、AI 2 則已驗，夠站主圈第一批。
+- [x] 幣圈 11 則、科技 11 則已驗，**兩個垂直的重要新聞都到量**；AI 2 則已驗＋13 則已確認日期。
+- [ ] 各垂直還缺 4–6 則「次要新聞」（科技已有第一則：Pixel Drop）。
       仍未掃過：Anthropic（無 feed）、Meta AI 產品線、DeepSeek、Qwen、Samsung（被擋）、台積電（403）、NCC。
 
 ## How to verify
@@ -156,3 +157,32 @@ CISA（403）、**MAS（這個容器完全連不到，MAS 那則穩定幣諮詢�
 OCC、FDIC、NCUA，而且帶 `comments_close_on`。
 
 寫進檔案的每個日期、機關與評論截止日都對著 live 來源重驗過一次。
+## 第四輪：科技補到量（claude-opus-5, 2026-09-16）
+
+科技從 8 則補到 **11 則已驗，到量**。三個垂直的重要新聞候選現在都夠站主圈選。
+
+**新來源：Apple Developer News feed**（`developer.apple.com/news/rss/news.rss`，
+142 筆、2026 年 57 筆）。上一輪只記了「可用」，這一輪才真的拿它掃——
+**它是 Apple 平台政策變動的一手來源，比 Newsroom 更早也更具體**，T5 就是從這裡找到的。
+
+三則新增：
+
+- **T5 Apple 調整歐盟 App 商業條款**（8/18 公告、10/1 生效）是這批最強的一則。
+  Core Technology Fee 改為 **5% 的 Core Technology Commission**、
+  取消 Initial Acquisition Fee 與 Store Services Fee、允許並行替代支付。
+  **最關鍵的是：Apple 全文沒有提到 DMA。** 這是一則對監理的回應，但官方沒這樣說，
+  所以文章不可以把 DMA 寫成原因——候選清單裡特別標了這一點，
+  它正是「廠商說了什麼就寫什麼、沒說的不補」的典型案例。
+- **T6 Windows Project Zenith**（9/4）：開發者機種的 Windows 11 預設組態，
+  本機不限流量跑 30B+ 模型，機器條件 64 GB 統一記憶體、250 GB/s 頻寬。
+  官方沒說價格、日期、地區與 OEM 名單。
+- **T7 September Pixel Drop**（9/15）：份量偏輕，**標成建議放「次要新聞」那一格**，
+  不要當重要新聞充數。次要新聞每垂直要 4–6 則，這是科技的第一則。
+
+順帶確認了幾件省時間的事：**USB-IF 的 feed 是死的（停在 2018）、
+IETF 的多半是組織事務**，兩個都從「還沒查的方向」拿掉了，不要再花時間。
+Apple Developer feed 裡還有四則平台政策（中國商店調整、醫材 App、
+新增 11 種語言、巴西博弈執照）日期已確認、內容未讀，留在清單裡。
+其中中國商店那則要小心政治敏感度，且要確認官方到底說了什麼。
+
+T5／T6／T7 的日期與標題都對著 live feed 重驗過一次。

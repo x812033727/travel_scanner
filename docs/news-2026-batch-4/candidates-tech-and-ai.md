@@ -22,7 +22,7 @@
 | OpenAI | `https://openai.com/news/rss.xml` | ✅ 200（網頁本身 403，feed 可用） |
 | Google | `https://blog.google/rss/` | ✅ 200 |
 | Apple Newsroom | `https://www.apple.com/newsroom/rss-feed.rss` | ✅ 200，**Atom**（`<entry>`／`<updated>`，不是 `<item>`／`<pubDate>`） |
-| Apple Developer | `https://developer.apple.com/news/rss/news.rss` | ✅ 200 |
+| Apple Developer | `https://developer.apple.com/news/rss/news.rss` | ✅ 142 筆、2026 年 57 筆。**平台政策變動的一手來源**，比 Newsroom 更早也更具體（T5 就是從這裡找到的） |
 | Windows | `https://blogs.windows.com/feed/` | ✅ 200 |
 | Anthropic | `/rss.xml`、`/news/rss.xml` | ❌ 都 404，**沒找到 feed**，要抓 `anthropic.com/news`（回 200） |
 | 台灣 NCC | `ncc.gov.tw` | ⚠️ 擋在安全驗證後，搜尋引擎讀不到內文，要換管道 |
@@ -209,13 +209,80 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
 2026-05-25 完成緊急修復」——**數發部的新聞發布頁上沒有這一則**，
 只有 6/23 的**臺馬四號**海纜建設。要寫海纜必須自己找到那則公告，不能照抄。
 
+### T5 — Apple 調整歐盟的 App 商業條款（✅ 已驗）
+
+- **事件日** 2026-08-18，**生效日 2026-10-01**
+- **建議 slug** `tech-news-apple-eu-business-terms-20260818`
+- **一手來源** `https://developer.apple.com/news/?id=gmws0jgp`
+- **官方原文載明**：Apple「following close collaboration with the European Commission」，
+  把歐盟的開發者**全部移到單一套商業條款**。具體變動：
+  - **Core Technology Fee（按安裝次數收的費用）改為 Core Technology Commission**，
+    對「digital transactions in apps distributed outside the App Store」收 **5%**。
+  - **取消 Initial Acquisition Fee 與 Store Services Fee**。
+  - 調整 App Store、替代支付與替代散布 App 的抽成比率。
+  - 允許 App 在 Apple In-App Purchase 之外**並行提供替代支付**。
+  - App Store 的替代支付加上兒少保護措施。
+  - 放寬經營替代 App 市集與透過網路散布 App 的資格。
+- **⚠️ 最關鍵的一點：Apple 全文沒有提到《數位市場法》（DMA）。**
+  這是一則對監理的回應，但官方沒有這樣說。
+  **文章不可以把 DMA 寫成原因**，只能寫「Apple 表示是與歐盟執委會密切合作後的調整」。
+  這正是 `BRIEF.md`「廠商說了什麼就寫什麼、沒說的不補」那條規則的典型案例。
+- **官方也沒說**：調整後的各項抽成是多少、「extraordinary scale」的門檻怎麼算、
+  兒少保護的細節。三項都要寫成「官方未說明」。
+- **讀者角度**：台灣使用者不在歐盟，所以重點是**「為什麼同一個 App 在不同地區的條款不一樣」**，
+  以及這對開發者定價的連動。**不要寫成「台灣也會這樣」。**
+
+### T6 — Windows Project Zenith（✅ 已驗）
+
+- **事件日** 2026-09-04，**建議 slug** `tech-news-windows-project-zenith-20260904`
+- **一手來源**
+  `https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/`
+- **官方原文載明**：給開發者機種的 Windows 11 預設組態，預裝語言、執行環境、
+  版本控制與生產力工具；預設顯示副檔名與隱藏檔、關閉同步提供者提示、啟用 Command Palette；
+  整合 WSL 容器跑 Linux 工作負載；**可在本機不限流量跑 30B+ 參數模型**；
+  機器條件是 **64 GB 以上統一記憶體、250 GB/s 以上記憶體頻寬**；
+  「first become available with AMD's Ryzen AI Halo, with more devices from our OEM and
+  silicon partners available in the coming months」。
+- **官方沒說**：價格、預覽或正式推出日期、地區、具體 OEM 名單、
+  Windows 11 以外的版本需求。
+- **讀者角度**：與站上既有的本機模型題材直接相扣，但這篇寫的是
+  **硬體門檻與作業系統組態**，不是模型本身，兩者要分清楚。
+- 界線：`tech.md` 禁止購買建議，不寫「該不該買這種機器」。
+
+### T7 — September Pixel Drop（✅ 已驗，**建議當次要新聞**）
+
+- **事件日** 2026-09-15，**建議 slug** `tech-news-pixel-drop-20260915`
+- **一手來源** `https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/`
+- **官方原文載明**：Pixel 手機端有 VIP 首頁小工具（單擊撥號或傳訊）、底部浮動導覽選單、
+  新的訊息通知標記、**美國**的 Gboard 行內詐騙警示、
+  聊天 App 通知的詐騙偵測擴及更多地區、Harry Potter 有聲書套件、
+  符合資格者兩個月 Audible 免費試用；Pixel Watch 有 Raise to Talk 改進、
+  One Handed 手勢支援更多 App、錯誤修正。
+- **官方沒說**：除了美國以外**哪些地區拿得到哪些功能**、適用哪些 Pixel 機型、分批時程。
+- **這則份量偏輕，建議放「8/1 起的次要新聞」那一格**，不要當重要新聞。
+  次要新聞每個垂直要 4–6 則，這是第一則。
+
+### ⚠️ Apple Developer feed 裡還沒展開的平台政策
+
+日期與標題已由 feed 確認，內容未讀：
+
+| 事件日 | 官方標題 |
+| --- | --- |
+| 2026-03-12 | Adjustments to the China storefront of the App Store on iOS and iPadOS |
+| 2026-03-26 | Update on regulated medical device apps in the European Economic Area, United Kingdom, and United States |
+| 2026-03-31 | App Store expands support to 11 new languages |
+| 2026-05-08 | Brazilian betting license requirement for App Store availability |
+
+中國商店調整（3/12）對台灣讀者可能有參考價值，但**要小心政治敏感度**，
+而且要確認官方到底說了什麼、沒說什麼，不要替它補上理由。
+
 ## ⚠️ 待驗（有官方日期，內容還沒讀原文）
+
+（Pixel Drop 與 Project Zenith 已經驗完，移到上面的 T6、T7。）
 
 | 事件日 | 題目 | 來源狀態 |
 | --- | --- | --- |
-| 2026-09-15 | September Pixel Drop：Pixel VIP、Pixel Watch 功能 | Google feed 已確認日期與標題，連結 `https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/` |
-| 2026-09-14 | More choice and possibility with Windows PCs at IFA | `blogs.windows.com` feed 已確認 |
-| 2026-09-04 | Project Zenith：開發者機種的開箱即用 Windows 環境 | 同上 |
+| 2026-09-14 | More choice and possibility with Windows PCs at IFA | `blogs.windows.com` feed 已確認日期與標題 |
 | 2026-06-24 | OpenAI 與 Broadcom 的 LLM 推論晶片 | OpenAI feed 已確認日期，**與 AI 垂直擇一** |
 
 ## 還沒查的方向
@@ -224,12 +291,13 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
   整合站給的累計數字（「追加 1,000 億、累計約 2,650 億美元」）不可信。
 - **SIA 的半導體銷售統計**：**很容易寫成行情**。找不到產業結構的角度就跳過，
   不要寫成「景氣好不好」。
-- **台灣 NCC 與數位發展部**：NCC 網站擋在安全驗證後面，要換管道
-  （公報、法規查詢系統，或 NCC 的國際焦點 PDF）。
-- **標準組織**：USB-IF、Wi-Fi Alliance、3GPP、IETF 在 2026 年的發布。
+- **台灣 NCC**：網站擋在安全驗證後面，要換管道（公報、法規查詢系統，或 NCC 的國際焦點 PDF）。
+  數位發展部已經掃過，見 T4。
+- **標準組織**：Wi-Fi Alliance、3GPP 在 2026 年的發布。
+  **USB-IF 的 feed 是死的（停在 2018），IETF 的多半是組織事務**，兩者都別再花時間。
 - **資安**：2026 年具名的重大漏洞與事件（CVE Program、NVD、CISA advisories）。
-- **歐盟 DMA／DSA** 在 2026 年的執行動作。
-- **Samsung、Google Pixel** 的硬體發表（Apple 以外的消費電子，避免整份都是 Apple）。
+- **歐盟 DMA／DSA** 在 2026 年的執行動作（T5 是 Apple 那一側，還缺執委會那一側）。
+- **Samsung** 的硬體發表（**feed 被擋，要換管道**）。Google Pixel 已有 T7。
 
 ---
 
@@ -239,9 +307,12 @@ Meta、DeepSeek、Qwen 都還沒逐月掃過，開票前要補。
 
 | 垂直 | ✅ 已驗 | ⚠️ 有日期、待讀原文 | 距離 10–12 則 |
 | --- | --- | --- | --- |
-| 幣圈 | **11**（C1–C11） | 1（MAS，此容器連不到） | 已到量 |
-| 科技 | **8**（Apple 3、NVIDIA 1、moda 4） | 7 | 差 2–4 |
+| 幣圈 | **11**（C1–C11） | 1（MAS，此容器連不到） | **已到量** |
+| 科技 | **11**（Apple 3、NVIDIA 1、moda 4、T5–T7） | 6 | **已到量** |
 | AI | **2**（Gemini 3.8 Live、NVIDIA×HF） | 13（OpenAI feed 10、NVIDIA 3） | 視站主選題 |
+
+**三個垂直的重要新聞候選都夠站主圈選了。** 接下來缺的是各垂直 **4–6 則的「次要新聞」**
+（T7 Pixel Drop 是科技的第一則），以及 Anthropic／Meta／DeepSeek／Qwen 的逐月掃描。
 
 **幣圈的重要新聞已經到量。** 科技與 AI 的「已驗」也夠站主圈第一批了。
 還沒掃過的：Anthropic（沒有 feed，要抓網頁）、Meta 的 AI 產品消息、DeepSeek、
