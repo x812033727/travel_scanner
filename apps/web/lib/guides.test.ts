@@ -82,8 +82,17 @@ describe("response guards", () => {
     ["a missing title", { ...summary, title: undefined }],
     ["topics that are not labelled", { ...summary, topics: [{ slug: "transport" }] }],
     ["a numeric published_at", { ...summary, published_at: 20260901 }],
+    ["a numeric news_date", { ...summary, news_date: 20260914 }],
   ])("rejects %s", (_label, row) => {
     expect(isGuideSummary(row)).toBe(false);
+  });
+
+  it("accepts a news day, a null one, and none at all from an older API", () => {
+    expect(isGuideSummary({ ...summary, news_date: "2026-09-14" })).toBe(true);
+    expect(isGuideSummary({ ...summary, news_date: null })).toBe(true);
+    const older: Record<string, unknown> = { ...summary };
+    delete older.news_date;
+    expect(isGuideSummary(older)).toBe(true);
   });
 
   it("accepts a published document", () => {

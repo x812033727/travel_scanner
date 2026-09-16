@@ -5,12 +5,14 @@ import type { GuideListSort, GuideSection, GuideTopic } from "@/lib/guides";
 
 export type ListingToolbarLabels = TopicChipLabels & { sortLabel: string; sortCurated: string; sortLatest: string };
 
+/** Featured first is the reader's default on the lists that offer a choice, so it leads.
+ *  `news` is not a choice: a news list has that one order and draws no toggle. */
+const SORTS = ["curated", "latest"] as const;
+type ToggleSort = typeof SORTS[number];
+
 /** The order the list is in and where each order's link goes, cursor dropped: a reader
  *  who changes the order starts from the top of it. */
-export type ListingSort = { current: GuideListSort; hrefs: Record<GuideListSort, string> };
-
-/** Featured first is the reader's default on the lists that offer a choice, so it leads. */
-const SORTS: readonly GuideListSort[] = ["curated", "latest"];
+export type ListingSort = { current: GuideListSort; hrefs: Record<ToggleSort, string> };
 
 /**
  * What sits between a listing's heading and its cards, on the section listings and the
@@ -33,7 +35,7 @@ export function ListingToolbar({
   sort?: ListingSort | null;
   labels: ListingToolbarLabels;
 }) {
-  const sortLabel = (value: GuideListSort) => (value === "curated" ? labels.sortCurated : labels.sortLatest);
+  const sortLabel = (value: ToggleSort) => (value === "curated" ? labels.sortCurated : labels.sortLatest);
   return (
     <div
       className="app-listing-toolbar -mx-5 mt-6 border-b border-[var(--line)] bg-[var(--surface)] px-5 py-3 md:-mx-8 md:px-8"

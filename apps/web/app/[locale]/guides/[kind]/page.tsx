@@ -30,7 +30,7 @@ async function resolve(params: Promise<Params>) {
  *  because a notice is dated. `?sort=` is the reader's override of either. */
 const defaultSort = (kind: TravelGuideKind): GuideListSort => (kind === "howto" ? "curated" : "latest");
 const sortOf = (kind: TravelGuideKind, search: Search): GuideListSort =>
-  (isGuideListSort(search.sort) ? search.sort : defaultSort(kind));
+  (isGuideListSort(search.sort) && search.sort !== "news" ? search.sort : defaultSort(kind));
 
 /** One listing read, shared by the metadata and the body through React's per-request cache:
  *  same arguments, one call to the API. */

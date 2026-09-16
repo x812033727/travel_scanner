@@ -106,6 +106,7 @@
 | `article-reading-polish-web` | `GuideCard` `compact`／`featured`；`.app-term-link`／`.app-term-card`／`.app-summary-card` 以 token 寫；延伸閱讀格距；系列上下篇雙欄 |
 | `llms-txt-topic-hubs-and-series` | `/llms.txt` 多 `### Topics`（父主題、篇數最多的語系）與 `### Series` |
 | 篇數與課序（2026-09-16） | 讀者看得到的地方一律不顯示目錄大小與課程序號：站主的理由是「會一直增加」，顯示出來就一直是錯的。`TopicOption.count`／`counts`、`SeriesEntry.number`、`GuideSearchResult.total`、`DestinationFacet.count`、`SitemapSummary.counts` 全部留在 wire 上，因為可見性、`noindex`、hreflang、sitemap、排序、上下篇與分頁都靠它們 —— 拿掉的只有畫面 |
+| 新聞日期與新聞清單（2026-09-16） | `guide_articles.news_date`（migration `0079_guide_news_date`）＋`GET /guides?sort=news`（新聞日期由新到舊、無日期排最後）。生活分享首頁「最新新聞」改為依新聞日期最新 20 條、一條一行（日期＋標題）、不顯示主題描述；`/life/topics/ai-news` 同樣一條一行、沒有排序切換。顯示的是新聞發生的日期，不是發布或更新時間 —— 新聞分批匯入，同批發布時間幾乎一樣 |
 | 系列搬進主題（2026-09-16） | `SeriesRow` 從兩個 hub 移到 `renderTopicHub`：每個系列在 `series_registry.json` 都指定一個（子）主題，子主題頁顯示自己的，父主題頁蒐集底下所有子主題的 |
 | sitemap 上限 | 每專區×語系超過 5,000 列自動編號子檔，API `offset`；lint 不再預警 |
 

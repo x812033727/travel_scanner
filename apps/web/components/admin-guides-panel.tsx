@@ -272,6 +272,8 @@ export function AdminGuidesPanel() {
       body: JSON.stringify({
         expected_version: detail.version, kind: detail.kind, destination_id: detail.destination_id,
         topics: detail.topics.map((topic) => topic.slug), valid_until: detail.valid_until,
+        // Sent only when the API told us the field: an older API rejects an unknown key.
+        ...(detail.news_date !== undefined ? { news_date: detail.news_date } : {}),
         featured: detail.featured, display_order: detail.display_order,
         // Only this locale's names travel: the other locales' stay as they are on the server.
         aliases: { [detail.locale]: detail.aliases?.[detail.locale] ?? [] },
@@ -576,6 +578,10 @@ export function AdminGuidesPanel() {
             <input type="date" className={control} value={detail.valid_until ?? ""}
               onChange={(event) => setDetail({ ...detail, valid_until: event.target.value || null })} />
           </label>
+          <label className="grid gap-2">{t("newsDate")}
+            <input type="date" className={control} value={detail.news_date ?? ""}
+              onChange={(event) => setDetail({ ...detail, news_date: event.target.value || null })} />
+          </label>
           <label className="flex min-h-11 items-center gap-3">
             <input type="checkbox" checked={detail.featured} onChange={(event) => setDetail({ ...detail, featured: event.target.checked })} />{t("featured")}
           </label>
@@ -642,6 +648,7 @@ export function AdminGuidesPanel() {
         {detail.kind === "life" && <p className="text-sm leading-7 text-[var(--muted)]">{t("lifeDestinationHelp")}</p>}
         {kindLocked && <p className="text-sm leading-7 text-[var(--muted)]">{t("kindLocked")}</p>}
         <p className="text-sm leading-7 text-[var(--muted)]">{t("validUntilHelp")}</p>
+        <p className="text-sm leading-7 text-[var(--muted)]">{t("newsDateHelp")}</p>
         <Button secondary disabled={busy || !manage.allowed} onClick={() => void saveTaxonomy()}>{t("saveTaxonomy")}</Button>
       </section>
 

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { renderTopicHub, topicHubMetadata } from "./topic-hub-page";
 
@@ -96,6 +96,31 @@ describe("the topic hub", () => {
     mocks.list.mockResolvedValue({ articles: [], next_cursor: null, available: true });
     render(await renderTopicHub(route({ topic: "ai-news" })));
     expect(screen.queryByTestId("series-row")).toBeNull();
+  });
+
+  it("lists a news topic by the day the news happened, one line each, with no order toggle", async () => {
+    const newer = { ...summary, slug: "ai-news-siri-20260914", title: "Siri AI 隨 iOS 27 推出", news_date: "2026-09-14" };
+    const evergreen = { ...summary, slug: "ai-news-sources-to-follow", title: "追新聞的來源", news_date: null };
+    mocks.list.mockResolvedValue({ articles: [newer, evergreen], next_cursor: "c1", available: true });
+    render(await renderTopicHub(route({ topic: "ai-news" })));
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", { section: "life", topic: "ai-news", cursor: undefined, sort: "news" }, 24);
+    const rows = within(screen.getByTestId("news-list")).getAllByRole("listitem");
+    expect(rows[0].querySelector("time")?.getAttribute("dateTime")).toBe("2026-09-14");
+    expect(within(rows[1]).getByRole("link", { name: "追新聞的來源" })).toBeTruthy();
+    expect(rows[1].querySelector("time")).toBeNull();
+    // One order only: no toggle, and `?sort=` does not change what is read.
+    expect(screen.queryByRole("navigation", { name: "排序" })).toBeNull();
+    expect(screen.getByRole("link", { name: "看更多" }).getAttribute("href")).toBe("/life/topics/ai-news?cursor=c1");
+    await renderTopicHub(route({ topic: "ai-news", sort: "curated" }));
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ topic: "ai-news", sort: "news" }), 24);
+  });
+
+  it("keeps cards and both orders on every other topic, and does not offer the news order there", async () => {
+    render(await renderTopicHub(route()));
+    expect(screen.queryByTestId("news-list")).toBeNull();
+    expect(screen.getByRole("navigation", { name: "排序" })).toBeTruthy();
+    await renderTopicHub(route({ sort: "news" }));
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", expect.objectContaining({ topic: "ai-terms", sort: "latest" }), 24);
   });
 
   it("walks the breadcrumb home › section › parent › topic, and marks the topic chip current", async () => {

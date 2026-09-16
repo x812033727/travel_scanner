@@ -68,6 +68,20 @@ export function sectionHubHref(section: GuideSection): string {
   return section === "life" ? "/life" : "/guides";
 }
 
+/** The lifestyle section's news topic: the hub opens with it, and its own hub is a list. */
+export const LIFE_NEWS_TOPIC = "ai-news";
+
+/**
+ * Topics whose hub is a news list: one line per story, the day the news happened and its
+ * title, newest day first (`sort=news`). Add a topic here when it starts carrying dated
+ * news packs with `news_date`; every other topic keeps its cards.
+ */
+export const NEWS_TOPICS: readonly string[] = [LIFE_NEWS_TOPIC];
+
+export function isNewsTopic(section: GuideSection, topic: string): boolean {
+  return section === "life" && NEWS_TOPICS.includes(topic);
+}
+
 /**
  * `section` is optional on the wire so a catalogue served by an older API still parses; so
  * are the two-level fields. `parent` names the parent topic of a sub-topic; `count` is how
@@ -237,6 +251,9 @@ export type GuideSummary = {
   hero?: GuideHero | null;
   published_at: string;
   valid_until: string | null;
+  /** The day the news happened (`YYYY-MM-DD`) on a dated news story; null or absent elsewhere,
+   *  and absent from an older API. Not the publication time: news is imported in batches. */
+  news_date?: string | null;
   featured: boolean;
 };
 
@@ -244,8 +261,9 @@ export type GuideList = { articles: GuideSummary[]; next_cursor: string | null }
 
 /** How a listing is ordered. `latest` is publication time, newest first, right for dated
  *  intel; `curated` is the editor's order (featured, then `display_order`, then newest),
- *  which the lifestyle listing, the hub's featured guides and the how-to listing read. */
-export const guideListSorts = ["latest", "curated"] as const;
+ *  which the lifestyle listing, the hub's featured guides and the how-to listing read;
+ *  `news` is the day the news happened, newest first, undated rows last, which the news lists read. */
+export const guideListSorts = ["latest", "curated", "news"] as const;
 export type GuideListSort = typeof guideListSorts[number];
 
 export function isGuideListSort(value: unknown): value is GuideListSort {
@@ -423,6 +441,7 @@ export function isGuideSummary(value: unknown): value is GuideSummary {
     && (row.destination_id === null || typeof row.destination_id === "string")
     && (row.destination_label === null || typeof row.destination_label === "string")
     && (row.valid_until === null || typeof row.valid_until === "string")
+    && (row.news_date === undefined || row.news_date === null || typeof row.news_date === "string")
     && isOptionalHero(row.hero)
     && isTopicList(row.topics);
 }
