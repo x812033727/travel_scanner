@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "提示詞工程是有系統地設計、測試與修正給 AI 的指令，讓同一類任務更穩定地符合需求。它的成果不只是漂亮的一段話，還包括哪些輸入適用、怎樣才算答對，以及遇到資料不足時應如何回應。對一般使用者而言，最實用的改變是從「猜一句好問法」轉成「交代工作，檢查結果」。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "提示詞工程是有系統地設計、測試與修正給 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的指令，讓同一類任務更穩定地符合需求。它的成果不只是漂亮的一段話，還包括哪些輸入適用、怎樣才算答對，以及遇到資料不足時應如何回應。對一般使用者而言，最實用的改變是從「猜一句好問法」轉成「交代工作，檢查結果」。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -125,8 +140,23 @@
           "text": "如果主辦單位根本沒有提供日期，再好的提示詞也無法把日期變成已知事實。這時要補資料或保留未決事項。若資料存在但沒有送進模型，就涉及上下文工程；若任務需要先查資料再寫文，就可能適合提示詞串接。不要把每一種錯誤都歸因於自己不會問。"
         },
         {
-          "type": "paragraph",
-          "text": "可以從一個經常重複、結果容易核對的任務開始：整理會議待辦、標記表單缺漏或改寫通知。使用前仍須遵守資料的可分享範圍，避免把完整個資當成測試素材。成熟的提示詞工程，會同時留下可重用的指令與可重現的檢查方法，讓下一位使用者知道如何判斷這份指令是否適合自己的工作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "可以從一個經常重複、結果容易核對的任務開始：整理會議待辦、"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "表單缺漏或改寫通知。使用前仍須遵守資料的可分享範圍，避免把完整個資當成測試素材。成熟的提示詞工程，會同時留下可重用的指令與可重現的檢查方法，讓下一位使用者知道如何判斷這份指令是否適合自己的工作。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -161,24 +191,48 @@
           "text": "在調整指令前，先儲存一筆失敗案例並寫下它違反哪項條件。沒有可核對的失敗，往往也無法確定修改是否有幫助。"
         },
         {
-          "type": "link",
-          "text": "上下文工程（Context Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文工程（Context Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-context-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞串接（Prompt Chaining）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-chaining"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞串接（Prompt Chaining）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-chaining"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

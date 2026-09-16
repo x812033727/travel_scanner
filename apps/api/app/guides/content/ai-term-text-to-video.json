@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "「桌上的陶杯緩慢轉動，讓觀眾看見側面的葉片圖案。」把這樣的文字交給生成工具，輸出一段動態影像，就是文字生影片常見的使用方式。Text-to-Video 描述的是從文字條件產生影片的任務，不代表系統真的拍過陶杯，也不表示每個影格都符合物理世界。不管是哪一家的影片生成 AI，這一點都一樣。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「桌上的陶杯緩慢轉動，讓觀眾看見側面的葉片圖案。」把這樣的文字交給生成工具，輸出一段動態影像，就是文字生影片常見的使用方式。Text-to-Video 描述的是從文字條件產生影片的任務，不代表系統真的拍過陶杯，也不表示每個影格都符合物理世界。不管是哪一家的影片"
+            },
+            {
+              "type": "article",
+              "text": "生成 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": "，這一點都一樣。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -178,24 +193,48 @@
           "text": "挑一個能辨識物件身分的特徵，例如把手與葉片圖案的相對位置，從開頭追到結尾，比只檢查畫面是否漂亮更能發現問題。"
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+              "kind": "life",
+              "slug": "ai-term-diffusion-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

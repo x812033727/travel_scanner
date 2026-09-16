@@ -57,8 +57,23 @@
           "text": "除了輸出分佈，也可讓學生對齊教師的某些中間表示；語言模型情境則常用教師生成的回答或解題示範作訓練資料。這些方法都屬教師引導學習的範圍，但能取得的訊號不同。只有文字輸出的 API 通常不等於可以取得完整機率分佈或內部表示，因此蒸餾資料的形式會受存取方式限制。"
         },
         {
-          "type": "paragraph",
-          "text": "用教師產生資料再做 SFT，可以是一種蒸餾路徑；但 SFT 也能使用人工示範，所以兩者不是同義詞。量化則是在數值表示上降低精度，不需要教師把行為教給學生。區分這些名詞有助於讀懂模型報告：它可能同時蒸餾、微調與量化，而每一步改善和損失的來源也不同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用教師產生資料再做 SFT，可以是一種蒸餾路徑；但 SFT 也能使用人工示範，所以兩者不是同義詞。量化則是在數值表示上降低精度，不需要教師把行為教給學生。區分這些名詞有助於讀懂模型報告：它可能同時蒸餾、"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "與量化，而每一步改善和損失的來源也不同。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -96,8 +111,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "學生模型若架構較小，可能降低權重儲存、推論記憶體與運算需求，適合需要大量重複處理或受限裝置的工作。但實際速度還受硬體、批次、序列長度與推論引擎影響，不能只靠參數比較推算。教師產生資料與學生訓練本身也有成本，應把前期投入和後續使用量一起計算。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "學生模型若架構較小，可能降低權重儲存、推論記憶體與運算需求，適合需要大量重複處理或受限裝置的工作。但實際速度還受硬體、批次、序列長度與推論引擎影響，不能只靠"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "比較推算。教師產生資料與學生訓練本身也有成本，應把前期投入和後續使用量一起計算。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,24 +183,48 @@
           "text": "用獨立標註的答案檢查兩者，才能看出一致是保留能力，還是複製錯誤。"
         },
         {
-          "type": "link",
-          "text": "監督式微調（SFT）：用好示範教模型完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "監督式微調（SFT）：用好示範教模型完成任務",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "小型語言模型（Small Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "小型語言模型（Small Language Model）是什麼",
+              "kind": "life",
+              "slug": "ai-term-small-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "上下文品質衰退（Context Rot）是研究與工程討論中，用來描述模型處理較長上下文時，資訊使用或回答表現變得不可靠的說法。它不是模型參數因聊天太久而腐壞，也不是一個有通用數值門檻的診斷名稱。判斷時仍要看具體任務、輸入與錯誤證據。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上下文品質衰退（Context Rot）是研究與工程討論中，用來描述模型處理較長上下文時，資訊使用或回答表現變得不可靠的說法。它不是模型"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "因聊天太久而腐壞，也不是一個有通用數值門檻的診斷名稱。判斷時仍要看具體任務、輸入與錯誤證據。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -169,24 +184,48 @@
           "text": "固定問題、保留答案依據，再分別改變長度與位置；先排除資料根本沒送入。"
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+              "kind": "life",
+              "slug": "ai-term-context-compaction"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文工程（Context Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文工程（Context Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-context-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "LLMOps 是管理大型語言模型應用從開發到日常運作的一組工具與流程，中文可稱大型語言模型維運。它既包含部署與監測，也包含資料整理、提示詞版本、實驗和評測。應用能回覆第一個問題只是起點；之後更新規章、調整提示詞或更換模型，都可能改變原本看似穩定的行為。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LLMOps 是管理"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "應用從開發到日常運作的一組工具與流程，中文可稱大型語言模型維運。它既包含部署與監測，也包含資料整理、提示詞版本、實驗和評測。應用能回覆第一個問題只是起點；之後更新規章、調整提示詞或更換模型，都可能改變原本看似穩定的行為。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -44,8 +59,23 @@
           "text": "Microsoft 的 LLMOps 指引把資料、實驗、評估、部署、推論、監測與回饋放在同一個生命週期；MLflow 文件則提供追蹤、提示詞管理與評估等可實作能力。這代表維運不只追蹤模型檔案，也要關注周圍資料與流程。即使使用外部 API，不自行訓練模型，仍然有這些工作要做。"
         },
         {
-          "type": "paragraph",
-          "text": "圖書館助理可能由網站、查詢服務、規章索引、提示詞和模型組成。答案錯誤可以發生在任一環節：資料過期、檢索錯館別、提示詞省略例外，或模型把條文解讀錯。把所有問題統稱「AI 不準」，很難找到可修正的位置，也無法比較調整前後的真正差異。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "圖書館助理可能由網站、查詢服務、規章索引、提示詞和模型組成。答案錯誤可以發生在任一環節：資料過期、檢索錯館別、提示詞省略例外，或模型把條文解讀錯。把所有問題統稱「"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 不準」，很難找到可修正的位置，也無法比較調整前後的真正差異。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -57,8 +87,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "這個示例的基本任務是依館方資料回答借閱規則。評測案例應涵蓋一般館藏、特殊館藏、沒有指定館別、資料沒有寫明的問題，以及規章互相衝突的情況。每題除了預期內容，也可標記應引用哪份來源、哪些條件不可省略，以及何時應回覆待確認。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個示例的基本任務是依館方資料回答借閱規則。評測案例應涵蓋一般館藏、特殊館藏、沒有指定館別、資料沒有寫明的問題，以及規章互相衝突的情況。每題除了預期內容，也可"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "應引用哪份來源、哪些條件不可省略，以及何時應回覆待確認。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -165,24 +210,48 @@
           "text": "先核對規章，再把失敗輸入、正確條件與版本記入評測。回饋若只停留在客服對話，很難防止下一次更新重犯。"
         },
         {
-          "type": "link",
-          "text": "代理系統維運（AgentOps）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agentops"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理系統維運（AgentOps）是什麼",
+              "kind": "life",
+              "slug": "ai-term-agentops"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞工程（Prompt Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞工程（Prompt Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

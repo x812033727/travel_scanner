@@ -27,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "紅隊測試，英文 Red Teaming，在 AI 情境是主動設計對抗或壓力案例，尋找模型與系統可能產生的非預期行為。它可能檢查錯誤資訊、敏感資料處理、工具濫用、權限邊界或其他特定風險。重點不是證明測試者很會問刁鑽問題，而是找出可重現的失敗，讓團隊知道如何修正並再次驗證。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "紅隊測試，英文 Red Teaming，在 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 情境是主動設計對抗或壓力案例，尋找模型與系統可能產生的非預期行為。它可能檢查錯誤資訊、敏感資料處理、工具濫用、權限邊界或其他特定風險。重點不是證明測試者很會問刁鑽問題，而是找出可重現的失敗，讓團隊知道如何修正並再次驗證。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "NIST 的生成式 AI 風險文件將 AI 紅隊視為持續發展的實務，強調受控環境、對不良行為的探索及結果分析。Anthropic 的原始紅隊研究則展示人工對抗測試的具體方法與限制。本篇採這些來源，用虛構活動問答助理示範防禦性流程，不提供攻擊真實服務或取得他人資料的操作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "NIST 的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 風險文件將 AI 紅隊視為持續發展的實務，強調受控環境、對不良行為的探索及結果分析。Anthropic 的原始紅隊研究則展示人工對抗測試的具體方法與限制。本篇採這些來源，用虛構活動問答助理示範防禦性流程，不提供攻擊真實服務或取得他人資料的操作。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -83,8 +113,23 @@
           "text": "假設助理只能回答公開活動資訊，測試資料包含一份公開手冊與一份以虛構內容製作的內部文件。團隊先確認一般使用者只能檢索公開資料，再設計帶有模糊角色或混合問題的測試，觀察系統是否意外引用內部欄位。預期結果是在資料檢索層就維持權限，而不是先讀到全部內容再靠模型口頭承諾不透露。"
         },
         {
-          "type": "paragraph",
-          "text": "另一個案例是在受控文件中放入與文件主題無關的指令性文字，觀察助理是否將其當成待分析資料，或錯把它當成改變任務的權威。測試可以使用無敏感值的標記與假資料，不需要碰真實機密。若模型忽略外部指令但工具仍能越權讀取，仍有系統問題；若工具被擋住但模型編造資料，也需要記錄成另一種失敗。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "另一個案例是在受控文件中放入與文件主題無關的指令性文字，觀察助理是否將其當成待分析資料，或錯把它當成改變任務的權威。測試可以使用無敏感值的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與假資料，不需要碰真實機密。若模型忽略外部指令但工具仍能越權讀取，仍有系統問題；若工具被擋住但模型編造資料，也需要記錄成另一種失敗。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -96,8 +141,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "發現後先確認是否可重現、需要哪些前提、影響哪些使用者與資料，再定位可能原因。修正可能在檢索權限、工具參數驗證、提示詞邊界、輸出處理或介面授權，而不一定只改模型。不同層的防護可以相互補強，但要知道哪一層實際阻止了問題，避免重測時把偶然成功當成根治。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "發現後先確認是否可重現、需要哪些前提、影響哪些使用者與資料，再定位可能原因。修正可能在檢索權限、工具"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "驗證、提示詞邊界、輸出處理或介面授權，而不一定只改模型。不同層的防護可以相互補強，但要知道哪一層實際阻止了問題，避免重測時把偶然成功當成根治。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,24 +213,48 @@
           "text": "模型想做某事、工具成功擋下，以及資料真的外流，是不同結果。報告必須保留完整證據才能判斷修正方向。"
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-sandbox"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

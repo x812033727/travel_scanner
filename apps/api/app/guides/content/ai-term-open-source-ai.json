@@ -27,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "開源 AI，英文 Open Source AI，在不同討論中可能被用來指權重公開、程式可讀或更完整的開放系統，因此必須先說明採用誰的定義。本篇依 Open Source Initiative，簡稱 OSI，發布的 Open Source AI Definition 1.0 來解釋。這是一套明確的開源判準，不是僅憑產品自稱開放就自動成立的標籤。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開源 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "，英文 Open Source AI，在不同討論中可能被用來指權重公開、程式可讀或更完整的開放系統，因此必須先說明採用誰的定義。本篇依 Open Source Initiative，簡稱 OSI，發布的 Open Source AI Definition 1.0 來解釋。這是一套明確的開源判準，不是僅憑產品自稱開放就自動成立的標籤。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "依這份定義，核心包含使用、研究、修改與分享的自由，以及實際行使這些自由所需的修改形式。對機器學習系統，相關內容不只是一份權重檔，還涉及程式與資料資訊。本篇用虛構社群文件分類專案作檢查示範，並以 Ai2 的 Olmo 官方發布頁展示多種元件可共同提供的形式，不替任何未逐項審核的專案宣稱通過認證。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依這份定義，核心包含使用、研究、修改與分享的自由，以及實際行使這些自由所需的修改形式。對"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "系統，相關內容不只是一份權重檔，還涉及程式與資料資訊。本篇用虛構社群文件分類專案作檢查示範，並以 Ai2 的 Olmo 官方發布頁展示多種元件可共同提供的形式，不替任何未逐項審核的專案宣稱通過認證。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -53,8 +83,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "OSI 定義把機器學習系統的修改所需內容分為資料資訊、程式與參數。資料資訊需要足夠詳盡，讓具備能力的人能建立實質相當的系統，包含資料來源、範圍、取得與選擇方式、標註、處理及過濾等說明。參數則包括權重與相關設定；程式需涵蓋實際訓練與執行所用內容，而不只是展示用的簡短推論範例。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OSI 定義把機器學習系統的修改所需內容分為資料資訊、程式與"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。資料資訊需要足夠詳盡，讓具備能力的人能建立實質相當的系統，包含資料來源、範圍、取得與選擇方式、標註、處理及過濾等說明。參數則包括權重與相關設定；程式需涵蓋實際訓練與執行所用內容，而不只是展示用的簡短推論範例。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,24 +198,48 @@
           "text": "OSI 1.0 要求足夠詳盡的資料資訊與可取得資料清單；不能把例外解讀成完全不需說明資料來源。"
         },
         {
-          "type": "link",
-          "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-weights"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-pretraining"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

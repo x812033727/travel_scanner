@@ -129,8 +129,23 @@
           "text": "模型中專家的名稱不保證專業認證或領域可靠性。即使某篇分析發現特定專家對某類輸入較活躍，也不能直接推論它能獨立完成那個領域的完整任務。使用者應把「專家」理解為結構中的角色，避免把人類職業語意直接套到網路元件上。"
         },
         {
-          "type": "paragraph",
-          "text": "閱讀 MoE 規格時，可依序確認總參數、啟用參數的定義、記憶體需求、硬體條件與任務評測。若檔案只強調巨大容量而沒有說明適用環境，就還缺少部署判斷所需資訊。瞭解路由與稀疏運算，能幫助你讀懂取捨，而不是只被模型大小吸引。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "閱讀 MoE 規格時，可依序確認總參數、啟用參數的定義、記憶體需求、硬體條件與任務"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "。若檔案只強調巨大容量而沒有說明適用環境，就還缺少部署判斷所需資訊。瞭解路由與稀疏運算，能幫助你讀懂取捨，而不是只被模型大小吸引。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -165,24 +180,48 @@
           "text": "未啟用的專家仍屬於模型，權重儲存與資料搬移都有成本。部署需求應以官方文件和實際環境量測核對。"
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Transformer 架構（Transformer）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-transformer"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Transformer 架構（Transformer）是什麼",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+              "kind": "life",
+              "slug": "ai-term-multi-agent-system"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "人工介入，英文 Human-in-the-loop，是把人的判斷、修正或批准安排進 AI 工作流程，使某些步驟在人參與後才繼續。它可以用於標註、訓練、內容審查或代理執行，不只是一種固定介面。在代理情境，常見做法是先提出行動與內容，暫停流程，等有權限的人審閱後再執行。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "人工介入，英文 Human-in-the-loop，是把人的判斷、修正或批准安排進 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 工作流程，使某些步驟在人參與後才繼續。它可以用於標註、訓練、內容審查或代理執行，不只是一種固定介面。在代理情境，常見做法是先提出行動與內容，暫停流程，等有權限的人審閱後再執行。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,24 +168,48 @@
           "text": "內容或目標變了，就不能沿用對舊版本的模糊同意。執行後也要核對實際結果。"
         },
         {
-          "type": "link",
-          "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-rlhf"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+              "kind": "life",
+              "slug": "ai-term-rlhf"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

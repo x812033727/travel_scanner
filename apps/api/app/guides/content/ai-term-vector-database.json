@@ -109,8 +109,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "匯入前可先做小型人工標記集，把問題和應出現的器材清單配對，加入語意改寫、精確代碼、沒有合適器材與權限受限案例。測量候選是否找齊、排名是否實用，以及查詢與更新的等待時間。若小資料集用既有資料庫的精確查詢已足夠，就沒有必要為了名詞新穎而增加額外服務。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "匯入前可先做小型人工"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "集，把問題和應出現的器材清單配對，加入語意改寫、精確代碼、沒有合適器材與權限受限案例。測量候選是否找齊、排名是否實用，以及查詢與更新的等待時間。若小資料集用既有資料庫的精確查詢已足夠，就沒有必要為了名詞新穎而增加額外服務。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,24 +168,48 @@
           "text": "先確認查詢計算有沒有找到應有近鄰，再確認那些近鄰是不是任務真正需要的資料。兩種品質要分別檢查。"
         },
         {
-          "type": "link",
-          "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-embedding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+              "kind": "life",
+              "slug": "ai-term-embedding"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

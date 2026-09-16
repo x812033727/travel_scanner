@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "請 AI 閱讀一封活動報名郵件，整理姓名、場次與特殊需求，看似只是把檔案變成表格。如果郵件內藏著一句要求助手改寫所有報名名單的文字，模型卻把它當成操作指令，任務就可能被內容本身改道。提示詞注入談的正是這種界線問題：原本只是要被閱讀的資料，取得了影響模型行為的機會。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "請 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 閱讀一封活動報名郵件，整理姓名、場次與特殊需求，看似只是把檔案變成表格。如果郵件內藏著一句要求助手改寫所有報名名單的文字，模型卻把它當成操作指令，任務就可能被內容本身改道。提示詞注入談的正是這種界線問題：原本只是要被閱讀的資料，取得了影響模型行為的機會。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -61,8 +76,23 @@
           "text": "可以分三個位置觀察結果。第一，摘要是否只是如實標示備註有異常內容；第二，輸出的名單是否被改寫成全部額滿；第三，若助手連著管理工具，實際場次狀態是否被變更。第一種處理保留了資料與指令的界線，後兩種則分別涉及回答汙染與外部狀態變更，修正方式及影響程度不能混在一起。"
         },
         {
-          "type": "paragraph",
-          "text": "這個例子中的郵件與活動都是教學設定。實務測試可以使用同樣無害的目標，例如讓測試名單出現預先指定的標記，並在隔離資料上驗證。重點是確認未授權內容能否改變任務，而不是對真實使用者寄送攻擊郵件。記錄輸入來源、模型輸出與工具執行結果，才能知道防護究竟攔在哪一層。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這個例子中的郵件與活動都是教學設定。實務測試可以使用同樣無害的目標，例如讓測試名單出現預先指定的"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，並在隔離資料上驗證。重點是確認未授權內容能否改變任務，而不是對真實使用者寄送攻擊郵件。記錄輸入來源、模型輸出與工具執行結果，才能知道防護究竟攔在哪一層。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -100,8 +130,29 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "檢索增強生成會幫助手找到相關檔案，卻不代表檔案作者可信，也不代表內文都應被當成指令。來源可能本身被修改，或者只是與問題相關但包含誘導文字。OWASP 也指出，檢索與微調無法完全解決提示詞注入。引用能幫讀者追查來源，不能把第三方文字升級成應用的管理規則。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "會幫助手找到相關檔案，卻不代表檔案作者可信，也不代表內文都應被當成指令。來源可能本身被修改，或者只是與問題相關但包含誘導文字。OWASP 也指出，檢索與"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "無法完全解決提示詞注入。引用能幫讀者追查來源，不能把第三方文字升級成應用的管理規則。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -113,8 +164,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "面對一個能瀏覽與使用工具的助手，可以先列出它會讀哪些外部內容、能操作哪些系統，以及什麼行為需要明確確認。若只是回傳摘要，重點會落在來源與內容正確性；若可以刪除資料或寄出訊息，就要把工具參數、收件對象與授權範圍納入檢查。不能因為兩種產品都使用同一個模型，就假設承受同樣風險。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "面對一個能瀏覽與使用工具的助手，可以先列出它會讀哪些外部內容、能操作哪些系統，以及什麼行為需要明確確認。若只是回傳摘要，重點會落在來源與內容正確性；若可以刪除資料或寄出訊息，就要把工具"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "、收件對象與授權範圍納入檢查。不能因為兩種產品都使用同一個模型，就假設承受同樣風險。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -158,24 +224,48 @@
           "text": "檔案作者可以提出要求，但不能只靠一句文字就取得使用者或系統的權限。這個界線也應存在於工具程式中。"
         },
         {
-          "type": "link",
-          "text": "越獄提示（Jailbreak）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-jailbreak"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "越獄提示（Jailbreak）是什麼",
+              "kind": "life",
+              "slug": "ai-term-jailbreak"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "安全防護機制（Guardrails）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）是什麼",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

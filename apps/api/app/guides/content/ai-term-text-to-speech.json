@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "一篇地方展覽導覽稿寫好了，想讓參觀者戴耳機收聽，可以使用語音合成把文字轉成聲音。Text-to-Speech 常縮寫為 TTS，也叫文字轉語音。它的任務是根據文字產生可聽的語音，不是辨識錄音中原本說過的話；後者屬於語音辨識。搜「配音 AI」找到的工具，多半就是在做這件事。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一篇地方展覽導覽稿寫好了，想讓參觀者戴耳機收聽，可以使用語音合成把文字轉成聲音。Text-to-Speech 常縮寫為 TTS，也叫文字轉語音。它的任務是根據文字產生可聽的語音，不是辨識錄音中原本說過的話；後者屬於語音辨識。搜「"
+            },
+            {
+              "type": "article",
+              "text": "配音 AI",
+              "kind": "life",
+              "slug": "minimax-speech-tts-guide"
+            },
+            {
+              "type": "text",
+              "text": "」找到的工具，多半就是在做這件事。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -78,8 +93,23 @@
           "text": "示意流程是先整理朗讀稿，選擇工具支援的音色，再產生一小段試聽。期待的結果是聽眾能辨認樓層、地點、編號與時間；若聲音很溫柔卻把編號念成另一個意思，就應修正文字或使用支援的發音控制，而不只更換音色。"
         },
         {
-          "type": "paragraph",
-          "text": "若工具可接受發音字典或標記語法，應依它的實際格式使用；有些工具只接受一般文字，額外標籤可能被直接念出。每次修改後都重新試聽相關段落，確認修正真的進入音訊，也確認沒有順帶改壞前後句子的停頓。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "若工具可接受發音字典或"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "語法，應依它的實際格式使用；有些工具只接受一般文字，額外標籤可能被直接念出。每次修改後都重新試聽相關段落，確認修正真的進入音訊，也確認沒有順帶改壞前後句子的停頓。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -178,24 +208,48 @@
           "text": "包含地名、編號、多音字與時間的短段落，比一段普通問候更能揭露導覽稿需要調整的地方。"
         },
         {
-          "type": "link",
-          "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-deepfake"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+              "kind": "life",
+              "slug": "ai-term-deepfake"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Transformer 是一種神經網路架構，利用注意力機制在序列元素之間交換資訊，讓模型建立與當前上下文有關的表示。它不是單一聊天產品，也不等於所有人工智慧。許多語言模型以它或相關變體為基礎，影像與其他資料也能使用相近思路，但具體元件與用途不一定相同。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Transformer 是一種神經網路架構，利用注意力機制在序列元素之間交換資訊，讓模型建立與當前上下文有關的表示。它不是單一聊天產品，也不等於所有"
+            },
+            {
+              "type": "article",
+              "text": "人工智慧",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "。許多語言模型以它或相關變體為基礎，影像與其他資料也能使用相近思路，但具體元件與用途不一定相同。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -165,24 +180,48 @@
           "text": "交換句中兩個名字，或加入一個否定詞，再確認答案是否跟著改變。這比單看模型能否背出架構定義，更能測到實際任務能力。"
         },
         {
-          "type": "link",
-          "text": "大型語言模型（Large Language Model）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型語言模型（Large Language Model）是什麼",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

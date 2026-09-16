@@ -31,8 +31,23 @@
           "text": "預訓練，英文 Pretraining，是在特定任務的調整之前，先讓模型從資料學得可重用規律與表示的訓練階段。在語言模型裡，常見做法是預測接下來的 token，或根據上下文還原被遮住的內容。模型透過反覆比較預測與目標來更新參數，逐漸形成可用於多種任務的能力，而不是先由人逐條寫好所有語言規則。"
         },
         {
-          "type": "paragraph",
-          "text": "「預」是相對後續用途而言，不代表這個階段比較簡單或只做暖身。它可能佔模型建置的大部分工作，資料整理與計算都很重要。本篇以 BERT 原始論文和 Hugging Face 的語言建模文件說明常見訓練目標，範例都是簡化的教學情境，不把某一個模型的流程當成所有 AI 都必經的唯一道路。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「預」是相對後續用途而言，不代表這個階段比較簡單或只做暖身。它可能佔模型建置的大部分工作，資料整理與計算都很重要。本篇以 BERT 原始論文和 Hugging Face 的語言建模文件說明常見訓練目標，範例都是簡化的教學情境，不把某一個模型的流程當成所有 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 都必經的唯一道路。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -153,24 +168,48 @@
           "text": "預測目標讓模型學習語言規律。要確認某個活動是否延期，仍應提供或檢索有效來源。"
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文學習（In-context Learning）是什麼：當場適應新規則",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-in-context-learning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

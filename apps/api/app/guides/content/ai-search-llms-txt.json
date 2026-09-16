@@ -83,8 +83,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Google 是唯一在官方文件裡寫清楚的。它的生成式 AI 最佳化指南在破除迷思那一節寫：你不需要為了出現在 Google 搜尋而建立機器可讀檔案或 AI 文字檔，搜尋不使用它們；維護它們給其他服務用沒問題，但不會傷害也不會幫助你的能見度或排名。這是官方文件說明的機制；更新記錄把這段註記的日期寫成 2026 年 6 月 15 日。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 是唯一在官方文件裡寫清楚的。它的"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 最佳化指南在破除迷思那一節寫：你不需要為了出現在 Google 搜尋而建立機器可讀檔案或 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 文字檔，搜尋不使用它們；維護它們給其他服務用沒問題，但不會傷害也不會幫助你的能見度或排名。這是官方文件說明的機制；更新記錄把這段註記的日期寫成 2026 年 6 月 15 日。"
+            }
+          ]
         },
         {
           "type": "paragraph",

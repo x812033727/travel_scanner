@@ -27,12 +27,42 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "推論時計算，英文 Test-time Compute，指模型在使用或評估時，為處理當前輸入投入的計算。它與訓練時更新參數的運算不同。增加推論時計算，可以是讓單一路徑推導更久，也可以產生多個候選、讓驗證器比較，或根據錯誤反覆修正。這個詞描述資源和策略，不是一個固定的模型名稱。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "推論時計算，英文 Test-time Compute，指模型在使用或評估時，為處理當前輸入投入的計算。它與訓練時更新"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的運算不同。增加推論時計算，可以是讓單一路徑推導更久，也可以產生多個候選、讓驗證器比較，或根據錯誤反覆修正。這個詞描述資源和策略，不是一個固定的模型名稱。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "多花計算可能改善某些推理任務，但不是保證越久越正確。Snell 等人的研究討論如何按問題特性分配計算，Self-Consistency 研究則以多條推導和答案一致性展示一種路徑。本篇用虛構活動排程解釋這些方向，沒有重現論文實驗，也不把數學評測上的發現直接當成所有日常任務的結果。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "多花計算可能改善某些推理任務，但不是保證越久越正確。Snell 等人的研究討論如何按問題特性分配計算，Self-Consistency 研究則以多條推導和答案一致性展示一種路徑。本篇用虛構活動排程解釋這些方向，沒有重現論文實驗，也不把數學"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "上的發現直接當成所有日常任務的結果。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -153,24 +183,48 @@
           "text": "平行做更多候選可能很快，但不一定便宜。比較方案時同時記錄品質、延遲和總體資源。"
         },
         {
-          "type": "link",
-          "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+              "kind": "life",
+              "slug": "ai-term-knowledge-distillation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+              "kind": "life",
+              "slug": "ai-term-llm-as-a-judge"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -31,8 +31,23 @@
           "text": "開放權重，英文 Open Weights，在常見用法中表示模型已訓練的權重可供取得，使用者有機會在自己的環境執行或調整。它描述的是模型元件的可取得程度，不是單一標準授權名稱。可下載、有沒有使用限制、能否分享修改版，以及是否公開訓練程式和資料資訊，都需要分開確認。"
         },
         {
-          "type": "paragraph",
-          "text": "權重是模型學得的參數，還要配合架構、設定與推論程式才能處理輸入。這篇以 Hugging Face 的模型下載與授權文件，以及 OSI 對開源 AI 的定義作對照，用虛構本機筆記摘要情境說明。讀者可以依序核對元件是否完整、目標環境能否執行，以及實際用途是否符合發布條件，再決定採用方式。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "權重是模型學得的參數，還要配合架構、設定與推論程式才能處理輸入。這篇以 Hugging Face 的模型下載與授權文件，以及 OSI 對開源 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 的定義作對照，用虛構本機筆記摘要情境說明。讀者可以依序核對元件是否完整、目標環境能否執行，以及實際用途是否符合發布條件，再決定採用方式。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -153,24 +168,48 @@
           "text": "把權重、程式、資料資訊和授權各自核對。下載成功不能替代相容性、用途與品質檢查。"
         },
         {
-          "type": "link",
-          "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+              "kind": "life",
+              "slug": "ai-term-open-source-ai"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型參數（Model Parameters）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型參數（Model Parameters）是什麼",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "量化（Quantization）：用較少位元執行模型的取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-quantization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用較少位元執行模型的取捨",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

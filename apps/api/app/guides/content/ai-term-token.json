@@ -48,8 +48,23 @@
           "text": "Google 的 token 文件用字元或完整單字說明這種單位；Hugging Face 的分詞文件則解釋，子詞方法能保留常見片段並拆開較少見的詞。兩者共同支持的重點是：token 的大小不固定。不要把英文估算比例直接套在中文、程式碼、表情符號或混合語言訊息上。"
         },
         {
-          "type": "paragraph",
-          "text": "例如你想請 AI 整理「週六臺北見，帶雨傘」這句話，可以想像它被分成數個片段，但本文不替任何實際分詞器指定切法。直接畫成「週六／臺北／見」容易讓人誤以為那是工具的測量結果；真正需要數量時，應對指定模型使用相應的計數功能。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "例如你想請 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 整理「週六臺北見，帶雨傘」這句話，可以想像它被分成數個片段，但本文不替任何實際分詞器指定切法。直接畫成「週六／臺北／見」容易讓人誤以為那是工具的測量結果；真正需要數量時，應對指定模型使用相應的計數功能。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -165,19 +180,37 @@
           "text": "附件、規則與歷史訊息可能一起進入模型；不要只量最後一行問題。"
         },
         {
-          "type": "link",
-          "text": "分詞（Tokenization）是什麼：文字進入模型前的切分",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-tokenization"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+              "kind": "life",
+              "slug": "ai-term-tokenization"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
-          "url": "https://mokaair.com/zh-TW/life/ai-context-window-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

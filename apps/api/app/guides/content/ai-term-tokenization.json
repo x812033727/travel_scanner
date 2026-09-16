@@ -112,8 +112,23 @@
           "text": "不過清理不代表把所有空白都刪掉。英文名稱中的空格、品項與註記的分隔、表格欄位之間的界線，都可能承載必要結構。較好的做法是保留原稿，訂出明確規則，例如只合併 PDF 產生的異常斷行，並人工檢查幾筆邊界案例，再進行整批轉換。"
         },
         {
-          "type": "paragraph",
-          "text": "正規化也需要目的。如果你要找同一種餐點，把部分字形差異合併可能方便比對；若要逐字轉錄合約、序號或原文引句，改寫字元可能造成損失。分詞工具提供的能力與你的資料保真需求，要分別確認，不能用「AI 看得懂就好」取代資料品質檢查。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "正規化也需要目的。如果你要找同一種餐點，把部分字形差異合併可能方便比對；若要逐字轉錄合約、序號或原文引句，改寫字元可能造成損失。分詞工具提供的能力與你的資料保真需求，要分別確認，不能用「"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 看得懂就好」取代資料品質檢查。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -165,19 +180,37 @@
           "text": "PDF 排版或字元編碼若先出錯，再好的分詞器也只能處理已損壞的輸入。"
         },
         {
-          "type": "link",
-          "text": "token（Token）是什麼：AI 如何計算文字長度",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-token"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token（Token）是什麼：AI 如何計算文字長度",
+              "kind": "life",
+              "slug": "ai-term-token"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-chunking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

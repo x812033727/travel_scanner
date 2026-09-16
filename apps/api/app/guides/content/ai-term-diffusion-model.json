@@ -40,8 +40,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "在典型的影像訓練流程裡，系統從訓練圖片製作帶有不同程度雜訊的版本，要求模型學習與去噪有關的預測，並用誤差更新參數。清楚與模糊的圖片都會出現，目的在於讓模型面對各種中間狀態，而不是只會處理接近完成的圖。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在典型的影像訓練流程裡，系統從訓練圖片製作帶有不同程度雜訊的版本，要求模型學習與去噪有關的預測，並用誤差更新"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。清楚與模糊的圖片都會出現，目的在於讓模型面對各種中間狀態，而不是只會處理接近完成的圖。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -174,24 +189,48 @@
           "text": "以海報留白是否足夠作為驗收條件，固定其他相關設定再改提示詞，才能知道哪一項調整真正有用。"
         },
         {
-          "type": "link",
-          "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "生成式 AI（Generative AI）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成式 AI（Generative AI）是什麼",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

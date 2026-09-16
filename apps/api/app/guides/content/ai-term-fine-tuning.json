@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "微調，英文 Fine-tuning，是從已訓練的模型出發，使用較聚焦的資料繼續訓練，使它更適合某種任務或領域。它承接既有能力，而不是從隨機參數重新開始。對語言模型而言，微調可能用來改善分類、固定輸出格式或領域文書處理；具體能改善什麼，取決於訓練目標與資料，不能只憑「客製模型」的名稱推定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "微調，英文 Fine-tuning，是從已訓練的模型出發，使用較聚焦的資料繼續訓練，使它更適合某種任務或領域。它承接既有能力，而不是從隨機"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "重新開始。對語言模型而言，微調可能用來改善分類、固定輸出格式或領域文書處理；具體能改善什麼，取決於訓練目標與資料，不能只憑「客製模型」的名稱推定。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -44,8 +59,23 @@
           "text": "假設客服需要把信件分成帳號、付款和其他類別，通用模型雖理解大意，卻常輸出一長段說明，或使用不一致的類別名稱。這時微調的目標可以是穩定完成分類與指定格式。若問題是資料庫剛更新的訂單狀態，微調就不是合適的即時更新管道，應該查詢有權限的系統，再由模型處理結果。"
         },
         {
-          "type": "paragraph",
-          "text": "微調也不是只能模仿口吻。它可針對分類、序列標記、生成等任務調整，但每一種都需要對應的資料與評估。訓練資料越貼近真正使用情境，越能檢驗目標是否達成；若只收集好看、標準化的示範，模型可能在錯字、混合需求與模糊信件上表現不穩。先把成功和失敗條件寫清楚，才知道訓練是否值得做。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "微調也不是只能模仿口吻。它可針對分類、序列"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、生成等任務調整，但每一種都需要對應的資料與評估。訓練資料越貼近真正使用情境，越能檢驗目標是否達成；若只收集好看、標準化的示範，模型可能在錯字、混合需求與模糊信件上表現不穩。先把成功和失敗條件寫清楚，才知道訓練是否值得做。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -153,24 +183,48 @@
           "text": "若沒有保留測試集，訓練成功只能證明模型更會處理練習內容，無法證明實際任務有改善。"
         },
         {
-          "type": "link",
-          "text": "監督式微調（SFT）：用好示範教模型完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "監督式微調（SFT）：用好示範教模型完成任務",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-lora"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

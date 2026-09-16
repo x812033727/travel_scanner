@@ -82,8 +82,23 @@
           "text": "有些檢查適合程式，例如欄位型別、必要欄位或日期格式；有些需要語意判斷，例如「建議」是否被誤當成「決議」。語意檢查可以由模型協助，但仍須有明確準則與抽樣人工核對。檢查者如果和產生者共享相同誤解，就可能互相認可錯誤。"
         },
         {
-          "type": "paragraph",
-          "text": "可以刻意加入模糊會議紀錄來測流程：有人說「我可以問問看」，但沒有名字；另一段則撤回先前決定。期待系統標記未確認與撤回，而不是一律產生完整待辦。測試焦點是資料狀態有沒有被保留，而不是每次都成功走到最後一格。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "可以刻意加入模糊會議紀錄來測流程：有人說「我可以問問看」，但沒有名字；另一段則撤回先前決定。期待系統"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "未確認與撤回，而不是一律產生完整待辦。測試焦點是資料狀態有沒有被保留，而不是每次都成功走到最後一格。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -125,8 +140,23 @@
           "text": "比較單次提示詞與串接時，應使用相同會議資料與驗收條件，觀察決議保留、缺漏標記、錯誤通知及等待時間。不要只挑一份串接表現最好的紀錄展示。若串接只是讓文句更漂亮，卻增加負責人錯配，就需要調整切分方式或回到較簡單的流程。"
         },
         {
-          "type": "paragraph",
-          "text": "提示詞串接通常由預先安排的路徑決定下一步；代理迴圈則讓模型根據工具回饋選擇行動。兩者可以組合，例如代理查到資料後交給固定的抽取與校對鏈，但仍應清楚標示哪一段可自主決定、哪一段有固定輸入輸出。多次呼叫並不自動等於多代理系統。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "提示詞串接通常由預先安排的路徑決定下一步；代理迴圈則讓模型根據工具回饋選擇行動。兩者可以組合，例如代理查到資料後交給固定的抽取與校對鏈，但仍應清楚標示哪一段可自主決定、哪一段有固定輸入輸出。多次呼叫並不自動等於"
+            },
+            {
+              "type": "article",
+              "text": "多代理",
+              "kind": "life",
+              "slug": "ai-term-multi-agent-system"
+            },
+            {
+              "type": "text",
+              "text": "系統。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -165,24 +195,48 @@
           "text": "中間資料應保留待確認狀態和原始依據。若期限未決，通知就應呈現未決，而不是要求下一步寫得完整時順手補出日期。"
         },
         {
-          "type": "link",
-          "text": "上下文工程（Context Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文工程（Context Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-context-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

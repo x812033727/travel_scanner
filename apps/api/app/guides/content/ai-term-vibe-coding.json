@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "氛圍編碼是以自然語言和反覆試用推進 AI 產生程式的做法；在較狹義的用法中，使用者不會仔細閱讀或理解生成的程式，而是依畫面和操作感覺繼續調整。這個詞沒有統一技術標準，也常被廣義地拿來指各種 AI 輔助開發，因此討論時先說清楚用法很重要。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "氛圍編碼是以自然語言和反覆試用推進 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 產生程式的做法；在較狹義的用法中，使用者不會仔細閱讀或理解生成的程式，而是依畫面和操作感覺繼續調整。這個詞沒有統一技術標準，也常被廣義地拿來指各種 AI 輔助開發，因此討論時先說清楚用法很重要。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -44,8 +59,23 @@
           "text": "Willison 把不閱讀生成程式的做法稱為 vibe coding，並主張經過理解、測試與審查的 AI 輔助開發應另外看待。這是作者明確提出的區分，並不表示市場上的所有工具都遵循它。本文不把氛圍編碼當作特定產品、程式語言或模型種類，也不以是否親手打字判定。"
         },
         {
-          "type": "paragraph",
-          "text": "這種探索之所以有吸引力，是因為使用者可以直接描述想看到的效果：把書籍排成卡片、加入已讀標記、讓搜尋欄更容易使用。畫面回饋很快，能幫你確認自己到底需要什麼。它特別適合需求仍在形成、產物可以替換、錯誤後果有限的原型階段。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這種探索之所以有吸引力，是因為使用者可以直接描述想看到的效果：把書籍排成卡片、加入已讀"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "、讓搜尋欄更容易使用。畫面回饋很快，能幫你確認自己到底需要什麼。它特別適合需求仍在形成、產物可以替換、錯誤後果有限的原型階段。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -165,24 +195,48 @@
           "text": "請記下操作順序、輸入和預期結果，再交給 AI 修正。只說「剛才怪怪的」，容易得到改動很多卻無法核對原因的修補。"
         },
         {
-          "type": "link",
-          "text": "代理式工程（Agentic Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agentic-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理式工程（Agentic Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-agentic-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規格驅動開發（Spec-driven Development）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規格驅動開發（Spec-driven Development）是什麼",
+              "kind": "life",
+              "slug": "ai-term-spec-driven-development"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+              "kind": "life",
+              "slug": "ai-term-human-in-the-loop"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

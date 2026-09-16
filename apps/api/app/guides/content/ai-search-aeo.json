@@ -27,12 +27,52 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "AEO 是 answer engine optimization 的縮寫，答案引擎最佳化，指把內容寫成能被搜尋介面直接拿去當答案。行銷文章常說它是生成式 AI 帶來的新學問，但官方文件擺在那裡：Google 自家部落格寫明精選摘要 2014 年 1 月就推出，「其他人也問」展開後顯示的就是精選摘要。答案引擎比大型語言模型更早。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "AEO 是 answer engine optimization 的縮寫，答案引擎最佳化，指把內容寫成能被搜尋介面直接拿去當答案。行銷文章常說它是"
+            },
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 帶來的新學問，但官方文件擺在那裡：Google 自家部落格寫明精選摘要 2014 年 1 月就推出，「其他人也問」展開後顯示的就是精選摘要。答案引擎比"
+            },
+            {
+              "type": "article",
+              "text": "大型語言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "更早。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這篇不再給一個定義，而是分開三件事：答案引擎在生成式 AI 之前長什麼樣、擷取式與生成式答案差在哪（這正是 AEO 與 GEO 吵不完的原因），以及為什麼被選為答案和拿到流量是兩回事。本文不教你怎麼被選上，也不保證任何結果；官方文件自己就寫著，站長無法指定精選摘要。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這篇不再給一個定義，而是分開三件事：答案引擎在生成式 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 之前長什麼樣、擷取式與生成式答案差在哪（這正是 AEO 與 GEO 吵不完的原因），以及為什麼被選為答案和拿到流量是兩回事。本文不教你怎麼被選上，也不保證任何結果；官方文件自己就寫著，站長無法指定精選摘要。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -44,8 +84,23 @@
           "text": "Google 搜尋中心把精選摘要定義成一種特殊方框：它把一般搜尋結果的格式反過來，先顯示描述片段，內容是從某一個頁面抓出來的一小段文字。Google 自家部落格 2018 年 1 月 30 日的回顧文章寫明，精選摘要是 2014 年 1 月推出的。"
         },
         {
-          "type": "paragraph",
-          "text": "「其他人也問」不是另一套系統。官方的搜尋外觀元件說明寫著：相關問題群組是一串與原始查詢相關的問題，使用者展開問題時看到的就是精選摘要。語音也有文件：官方說明寫精選摘要在用手機或對裝置說話時特別有用，而 speakable 結構化資料文件說明 Google 助理用這個標記在智慧音箱回答主題新聞，唸出段落時會標示出處；該文件仍標示為 beta，只適用美國與英文內容。再往前看：微軟 2009 年 5 月 28 日的新聞稿就把 Bing 稱為 Decision Engine、說要超越搜尋——那是微軟自己的行銷用語。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「其他人也問」不是另一套系統。官方的搜尋外觀元件說明寫著：相關問題群組是一串與原始查詢相關的問題，使用者展開問題時看到的就是精選摘要。語音也有文件：官方說明寫精選摘要在用手機或對裝置說話時特別有用，而 speakable 結構化資料文件說明 Google 助理用這個"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "在智慧音箱回答主題新聞，唸出段落時會標示出處；該文件仍標示為 beta，只適用美國與英文內容。再往前看：微軟 2009 年 5 月 28 日的新聞稿就把 Bing 稱為 Decision Engine、說要超越搜尋——那是微軟自己的行銷用語。"
+            }
+          ]
         },
         {
           "type": "heading",

@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "上下文工程是安排 AI 每一次工作時所能看到的資訊：哪些要先給、哪些需要時再讀、哪些已經過時，以及哪些資料根本不應進入這次任務。它包含提示詞，但還會處理檔案、對話歷史、工具結果與持續儲存的工作狀態。核心問題不是一次塞多少資料，而是當下做決定需要什麼證據。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上下文工程是安排 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 每一次工作時所能看到的資訊：哪些要先給、哪些需要時再讀、哪些已經過時，以及哪些資料根本不應進入這次任務。它包含提示詞，但還會處理檔案、對話歷史、工具結果與持續儲存的工作狀態。核心問題不是一次塞多少資料，而是當下做決定需要什麼證據。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -82,8 +97,23 @@
           "text": "資料沒找到也應是一種可辨識的結果。搜尋沒有命中、來源連線失敗與條文沒有規定，代表不同狀態。把這些全部壓成「無資料」，模型就可能把技術故障誤讀為沒有任何限制。工具介面保留狀態及原因，能讓後續回答清楚說出目前還不能確定什麼。"
         },
         {
-          "type": "paragraph",
-          "text": "外部檔案也可能夾帶與任務無關的指令，例如要求忽略原先規則或把資料送往另一個地方。上下文設計要標示哪些文字只是待分析的內容，不能因為出現在搜尋結果裡就得到系統權限。分隔與標記能降低混淆，真正可執行的動作仍需搭配工具授權和輸入檢查。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "外部檔案也可能夾帶與任務無關的指令，例如要求忽略原先規則或把資料送往另一個地方。上下文設計要標示哪些文字只是待分析的內容，不能因為出現在搜尋結果裡就得到系統權限。分隔與"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "能降低混淆，真正可執行的動作仍需搭配工具授權和輸入檢查。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -165,24 +195,48 @@
           "text": "資料在雲端、已上傳或曾經出現在對話裡，都不等於它進入這次模型呼叫。先核對實際輸入，再判斷是資料流還是模型回答出了問題。"
         },
         {
-          "type": "link",
-          "text": "提示詞工程（Prompt Engineering）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞工程（Prompt Engineering）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-engineering"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+              "kind": "life",
+              "slug": "ai-term-context-compaction"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

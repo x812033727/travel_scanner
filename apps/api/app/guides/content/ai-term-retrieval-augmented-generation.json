@@ -27,8 +27,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "檢索增強生成，英文 Retrieval-Augmented Generation，常縮寫為 RAG，是把外部資料檢索接到文字生成的做法。模型訓練時不可能讀過你昨天才修改的活動辦法，但若系統先找出那份辦法，模型便能依照取回的文字回答。外部資料在這裡是當次作答依據，不必先變成模型參數。這讓資料更新與模型訓練可以分開處理，也使讀者有機會追查回答的來源。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "檢索增強生成，英文 Retrieval-Augmented Generation，常縮寫為 RAG，是把外部資料檢索接到文字生成的做法。模型訓練時不可能讀過你昨天才修改的活動辦法，但若系統先找出那份辦法，模型便能依照取回的文字回答。外部資料在這裡是當次作答依據，不必先變成模型"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。這讓資料更新與模型訓練可以分開處理，也使讀者有機會追查回答的來源。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -40,12 +55,42 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Lewis 等人的原始論文把預訓練語言模型的參數記憶，與外部文件索引的非參數記憶結合，並研究可訓練的檢索與生成架構。今天開發文件裡的 RAG 用法更廣，常指先檢索、再把內容放進提示詞的應用流程；這些系統不一定重做原論文的聯合訓練。因此看到名稱相同，仍需確認資料從哪裡來，以及檢索器是否會隨訓練改變。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lewis 等人的原始論文把"
+            },
+            {
+              "type": "article",
+              "text": "預訓練",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "語言模型的參數記憶，與外部文件索引的非參數記憶結合，並研究可訓練的檢索與生成架構。今天開發文件裡的 RAG 用法更廣，常指先檢索、再把內容放進提示詞的應用流程；這些系統不一定重做原論文的聯合訓練。因此看到名稱相同，仍需確認資料從哪裡來，以及檢索器是否會隨訓練改變。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "搜尋工具通常交付文件清單或片段，RAG 則增加根據片段組織答案的步驟。向量資料庫只是可能使用的儲存與相似度查詢元件，全文索引、結構化查詢也能扮演檢索角色。有精確課程代碼的題目，未必適合只靠語意相近。沒有生成答案的向量搜尋仍是搜尋，不能單憑用了向量便稱為完整 RAG。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "搜尋工具通常交付文件清單或片段，RAG 則增加根據片段組織答案的步驟。"
+            },
+            {
+              "type": "article",
+              "text": "向量資料庫",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "只是可能使用的儲存與相似度查詢元件，全文索引、結構化查詢也能扮演檢索角色。有精確課程代碼的題目，未必適合只靠語意相近。沒有生成答案的向量搜尋仍是搜尋，不能單憑用了向量便稱為完整 RAG。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -149,24 +194,48 @@
           "text": "把檢索失誤與解讀失誤分開。正確條文沒有進入上下文時，重寫回答提示詞通常無法根治問題。"
         },
         {
-          "type": "link",
-          "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-chunking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-reranking"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：從找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

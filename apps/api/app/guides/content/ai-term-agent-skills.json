@@ -40,8 +40,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "你可以把技能看成供代理閱讀與使用的工作手冊。月報技能可能規定先核對來源、再整理本月事件、最後依既定欄位輸出。代理讀取後依指示處理，並不代表模型參數因此永久更新，也不代表換到不相容產品就一定會自動生效。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "你可以把技能看成供代理閱讀與使用的工作手冊。月報技能可能規定先核對來源、再整理本月事件、最後依既定欄位輸出。代理讀取後依指示處理，並不代表模型"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "因此永久更新，也不代表換到不相容產品就一定會自動生效。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -108,8 +123,23 @@
           "text": "以下是示意操作。準備一份虛構本月活動紀錄，包含已舉辦活動、延期活動與尚未確認的下月計畫。月報技能要求分開這些狀態，保留來源位置，輸出標題、摘要與待確認事項。預期產物是一份可編輯草稿，而不是直接發布的文章。"
         },
         {
-          "type": "paragraph",
-          "text": "先用完整資料測試，再刻意移除一個活動日期，觀察代理是否標記缺漏。接著提供一份舊月報當版面參考，確認它只沿用結構，沒有把上月事件搬到本月。這些案例能檢查技能是否保留了真正的工作規則，而不只是要求語氣一致。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先用完整資料測試，再刻意移除一個活動日期，觀察代理是否"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "缺漏。接著提供一份舊月報當版面參考，確認它只沿用結構，沒有把上月事件搬到本月。這些案例能檢查技能是否保留了真正的工作規則，而不只是要求語氣一致。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -178,24 +208,48 @@
           "text": "確認環境、依賴與操作範圍，才能知道這份工作方法實際能執行到哪裡。"
         },
         {
-          "type": "link",
-          "text": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-system-prompt"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+              "kind": "life",
+              "slug": "ai-term-agent2agent-protocol"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

@@ -121,8 +121,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "在 Willison 的用法裡，氛圍編碼側重不閱讀生成程式、以試用感覺推進的原型探索；代理式工程則把需求、工具和驗證當成工程工作的一部分。同一個人、同一套工具都可能採取兩種方式，差別不是誰按鍵比較少，也不是是否由 AI 寫了全部程式碼。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在 Willison 的用法裡，氛圍編碼側重不閱讀生成程式、以試用感覺推進的原型探索；代理式工程則把需求、工具和驗證當成工程工作的一部分。同一個人、同一套工具都可能採取兩種方式，差別不是誰按鍵比較少，也不是是否由 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 寫了全部程式碼。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -165,24 +180,48 @@
           "text": "「改善借用系統」無法直接驗收；「重疊時段拒絕重複借用，相鄰時段仍可接受」才能形成具體的檢查案例。"
         },
         {
-          "type": "link",
-          "text": "氛圍編碼（Vibe Coding）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "氛圍編碼（Vibe Coding）是什麼",
+              "kind": "life",
+              "slug": "ai-term-vibe-coding"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "規格驅動開發（Spec-driven Development）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "規格驅動開發（Spec-driven Development）是什麼",
+              "kind": "life",
+              "slug": "ai-term-spec-driven-development"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "代理系統維運（AgentOps）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-agentops"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理系統維運（AgentOps）是什麼",
+              "kind": "life",
+              "slug": "ai-term-agentops"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

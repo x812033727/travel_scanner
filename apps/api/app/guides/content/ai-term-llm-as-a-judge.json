@@ -27,8 +27,19 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "LLM-as-a-Judge 是用大型語言模型擔任評審，依明確條件檢查回答、比較候選內容或給出評分。它能協助處理難以用單純字串比對判斷的語意問題，例如摘要是否遺漏重要條件、說明是否符合讀者需求。但評審本身仍是模型，也可能誤解、偏好某種風格或被待評內容影響。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "-as-a-Judge 是用大型語言模型擔任評審，依明確條件檢查回答、比較候選內容或給出評分。它能協助處理難以用單純字串比對判斷的語意問題，例如摘要是否遺漏重要條件、說明是否符合讀者需求。但評審本身仍是模型，也可能誤解、偏好某種風格或被待評內容影響。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -165,24 +176,48 @@
           "text": "「不要新增販售狀態」比「內容要專業」更容易核對。請評審指出依據，再用人工樣本檢查它是否真的照準則判斷。"
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "基準測試（Benchmark）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-benchmark"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "基準測試（Benchmark）是什麼",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞注入（Prompt Injection）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [

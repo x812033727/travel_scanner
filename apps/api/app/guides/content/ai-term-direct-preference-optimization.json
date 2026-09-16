@@ -53,8 +53,33 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "可以把 DPO 的核心理解為：相對參考模型，調整目前模型對較佳回答與較差回答的偏好關係。參考模型提供比較基準，避免把訓練看成無限制提高某段文字機率。實際目標使用回答的序列機率與偏好標記，並含控制偏離程度的參數；它不是「好答案加分、壞答案刪除」這麼簡單的文字操作。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "可以把 DPO 的核心理解為：相對參考模型，調整目前模型對較佳回答與較差回答的偏好關係。參考模型提供比較基準，避免把訓練看成無限制提高某段文字機率。實際目標使用回答的序列機率與偏好"
+            },
+            {
+              "type": "article",
+              "text": "標記",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "，並含控制偏離程度的"
+            },
+            {
+              "type": "article",
+              "text": "參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "；它不是「好答案加分、壞答案刪除」這麼簡單的文字操作。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -153,24 +178,48 @@
           "text": "加入短而完整、長卻無根據的對照，避免模型把長度或固定措辭當成偏好捷徑。"
         },
         {
-          "type": "link",
-          "text": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-rlhf"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+              "kind": "life",
+              "slug": "ai-term-rlhf"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "監督式微調（SFT）：用好示範教模型完成任務",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "監督式微調（SFT）：用好示範教模型完成任務",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-lora"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
-          "url": "https://mokaair.com/zh-TW/life/ai-terms-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名詞總索引：81 個概念，從 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
         }
       ],
       "sources": [
