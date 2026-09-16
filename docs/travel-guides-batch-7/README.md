@@ -132,7 +132,7 @@ slug、kind、destination_id、topics、featured、display_order、valid_until�
 - 法規類的事實回到主管機關的頁面或法規原文；媒體轉述不當定論。
 - 幣別用當地幣別：日圓、韓元、港元、澳門元、新加坡幣、越南盾、泰銖。日期寫完整。
 - 規劃時這台機器讀不到、或讀到的內容不能直接用的站，規格裡都已寫了替代來源或「以官網為準」：
-  - 泰國：喀比機場（DOA 的三個網域）、transport.co.th、Greenbus、BEM 的 MRT 首末班（Incapsula）、nps.dnp.go.th、watrongkhun.org、doitung.org、thawan-duchanee.com、singhapark.com、chiangraicity.go.th、tourismthailand.org（含 thai.）、air4thai、pcd.go.th、tmd.go.th。portal.dnp.go.th 只有 WebFetch 讀得到；news.dnp.go.th 下午常回 503。
+  - 泰國：喀比機場（DOA 的三個網域）、transport.co.th、Greenbus、BEM 的 MRT 首末班（Incapsula）、nps.dnp.go.th、watrongkhun.org、doitung.org、thawan-duchanee.com、singhapark.com、chiangraicity.go.th、tourismthailand.org（含 thai.）、air4thai、pcd.go.th、tmd.go.th。portal.dnp.go.th 只有 WebFetch 讀得到；news.dnp.go.th 下午常回 503。泰國的季節月份用泰國觀光局東京辦事處的天氣頁 thailandtravel.or.jp/about/weather/，它有 8 個地區乘 12 個月的官方月份表，比各城市頁完整。
   - 日本：jreast.co.jp、jr-odekake.net、jr-central.co.jp 都 403，但 JR 東海的訂票網站 smart-ex.jp 讀得到（トピックス頁有黃金週、盂蘭盆節、年末年始三大尖峰期 のぞみ 全席指定席的通則）。內閣府祝日頁除了網頁還有 syukujitsu.csv 可以直接讀；法令用 e-Gov 的 API。仙台空港鉄道的真正網域是 senat.co.jp；city.sendai.jp 只有 WebFetch 讀得到；zao-fox-village.com 只有 http。
   - 韓國：korail.com（letskorail 轉過去後只剩載入頁）、kobus.co.kr、twayair.com、donghwasa.net 讀不到；korea.kr 用 curl 讀不到，改讀發布機關 kasa.go.kr；tour.daegu.go.kr 只能 curl；dtro.or.kr 要帶 cookie；tour.jeonju.go.kr 的 /eng/ 深層頁用 WebFetch 讀得到。
   - 越南：futabus.vn 全站 403；dalat.gov.vn、thuathienhue.gov.vn、acv.vn 讀不到；hueworldheritage.org.vn 主站讀不到但 eticket 子站的 API 讀得到；halongbay.com.vn 首頁不穩、文章頁讀得到；dsvn.vn 的時刻票價要用 giotaugiave.dsvn.vn 的表單；vietjetair.com 只有 WebFetch 讀得到；chinhphu.vn 只有 WebFetch 讀得到。
