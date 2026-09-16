@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-news-batch-4-0-crypto-and
 title: News batch 4.0: crypto and tech-news topics, migration 0079 and retopic rules
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-16T11:27:59Z
 created_at: 2026-09-16T11:27:54Z
-completed_at:
+completed_at: 2026-09-16T14:16:09Z
 branch: claude/brave-hopper-8ezxba
 depends_on: []
 scope:
