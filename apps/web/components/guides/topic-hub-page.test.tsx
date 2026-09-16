@@ -42,6 +42,17 @@ beforeEach(() => {
 });
 
 describe("the topic hub", () => {
+  it("offers both orders as links, newest first by default, and reads a ?sort= view as reordered", async () => {
+    render(await renderTopicHub(route()));
+    const latest = screen.getByRole("link", { name: "最新優先" });
+    expect(latest.getAttribute("aria-current")).toBe("page");
+    expect(latest.getAttribute("href")).toBe("/life/topics/ai-terms");
+    expect(screen.getByRole("link", { name: "精選優先" }).getAttribute("href")).toBe("/life/topics/ai-terms?sort=curated");
+    await renderTopicHub(route({ sort: "curated" }));
+    expect(mocks.list).toHaveBeenLastCalledWith("zh-TW", { section: "life", topic: "ai-terms", cursor: undefined, sort: "curated" }, 24);
+    expect((await topicHubMetadata(route({ sort: "curated" }))).robots).toEqual({ index: false, follow: true });
+  });
+
   it("titles itself with the topic, falls back to the parent's lead, and lists the articles", async () => {
     render(await renderTopicHub(route()));
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("AI 名詞解釋");
@@ -49,7 +60,7 @@ describe("the topic hub", () => {
     expect(screen.getByText("2 篇文章")).toBeTruthy();
     expect(screen.getByRole("link", { name: "量化（Quantization）是什麼" }).getAttribute("href"))
       .toBe("/life/ai-term-quantization");
-    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-terms", cursor: undefined }, 24);
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-terms", cursor: undefined, sort: "latest" }, 24);
     expect(mocks.vocabulary).toHaveBeenCalledWith("zh-TW", "life");
   });
 
@@ -117,7 +128,7 @@ describe("what the topic hub tells search engines", () => {
   it("keeps a paged view out of the index", async () => {
     const metadata = await topicHubMetadata(route({ cursor: "abc" }));
     expect(metadata.robots).toEqual({ index: false, follow: true });
-    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-terms", cursor: "abc" }, 24);
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "life", topic: "ai-terms", cursor: "abc", sort: "latest" }, 24);
   });
 
   it("keeps an unreachable vocabulary out of the index rather than claiming the topic is gone", async () => {
@@ -141,8 +152,8 @@ describe("what the topic hub tells search engines", () => {
     await topicHubMetadata(route());
     render(await renderTopicHub(route()));
     expect(mocks.list.mock.calls).toEqual([
-      ["zh-TW", { section: "life", topic: "ai-terms", cursor: undefined }, 24],
-      ["zh-TW", { section: "life", topic: "ai-terms", cursor: undefined }, 24],
+      ["zh-TW", { section: "life", topic: "ai-terms", cursor: undefined, sort: "latest" }, 24],
+      ["zh-TW", { section: "life", topic: "ai-terms", cursor: undefined, sort: "latest" }, 24],
     ]);
   });
 });

@@ -23,13 +23,15 @@ export type TopicChipLabels = {
  * whose count the API did not send (an older API) is kept.
  */
 export function TopicChips({
-  section, topics, active, allHref, labels,
+  section, topics, active, allHref, labels, className = "mt-6 grid gap-2",
 }: {
   section: GuideSection;
-  topics: GuideTopic[];
+  topics: readonly GuideTopic[];
   active: string | null;
   allHref: string;
   labels: TopicChipLabels;
+  /** The nav's own classes; the toolbar supplies its spacing itself. */
+  className?: string;
 }) {
   const shown = (topic: GuideTopic) => topic.count === undefined || topic.count > 0 || topic.slug === active;
   const parents = topics.filter((topic) => !topic.parent && shown(topic));
@@ -60,7 +62,7 @@ export function TopicChips({
     </Link>
   );
   return (
-    <nav aria-label={labels.topicsLabel} className="mt-6 grid gap-2">
+    <nav aria-label={labels.topicsLabel} className={className}>
       <ChipRow
         leading={leading}
         chips={parents.map((topic) => chip(topic, topic.slug === active, family?.slug === topic.slug))}

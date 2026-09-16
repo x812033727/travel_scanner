@@ -3558,3 +3558,15 @@ body:has(.planner-overlay) .premium-mobile-bar { display:none; }
     page-break-inside: avoid;
   }
 }
+
+/* The listing toolbar (topic chips, sort, result count) sticks under the site header from
+   md up, where the header is one row: 44px of content plus 2 × 16px padding, with the same
+   ad-anchor offset the header itself honours. On a phone the header may wrap, so the
+   toolbar simply scrolls there rather than guessing a height. */
+@media (min-width: 768px) {
+  .app-listing-toolbar {
+    position: sticky;
+    top: calc(var(--ad-anchor-top, 0px) + 4.75rem);
+    z-index: 20;
+  }
+}
