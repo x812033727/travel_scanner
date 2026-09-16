@@ -81,7 +81,7 @@ H2 順序：怎麼去 → 門票怎麼買 → 一天怎麼走 → 當天來回�
 | 明命陵 Lăng Minh Mạng、嗣德陵 Lăng Tự Đức、啟定陵 Lăng Khải Định（各一座） | 150,000 | 30,000 | 單點票 |
 | 嘉隆陵 Lăng Gia Long | 150,000 | 免費 | 兒童不收票 |
 | 同慶陵 Lăng Đồng Khánh | 100,000 | 免費 | 兒童不收票 |
-| 紹治陵、殿婆錢、安定宮、南郊壇、宮廷古物博物館、育德陵 | 50,000 | 免費 | 2025 年 1 月 1 日起的價（文化體育觀光部） |
+| 紹治陵 Lăng Thiệu Trị、Điện Hòn Chén、安定宮 Cung An Định、南郊壇 Đàn Nam Giao、宮廷古物博物館、育德陵 Lăng Dục Đức | 50,000 | 免費 | 2025 年 1 月 1 日起的價（文化體育觀光部） |
 | 3 點聯票：皇城＋兩座陵（三種組合） | 420,000 | 80,000 | 2 天 |
 | 4 點聯票：皇城＋明命＋嗣德＋啟定 | 530,000 | 100,000 | 2 天 |
 | 全區聯票（12 個點） | 600,000 | 120,000 | 5 天 |
@@ -100,8 +100,8 @@ H2 順序：怎麼去 → 門票怎麼買 → 一天怎麼走 → 當天來回�
 
 - 皇城：越南國家旅遊局寫裡面有宮殿、亭榭與戲樓，值得慢慢走，實務上排半天（早上進去，中午前後出來）。從午門進，售票口就在午門兩側。**不寫官方沒寫的參觀分鐘數與必看順序**。
 - 陵墓怎麼挑：越南國家旅遊局點名的是嗣德陵、明命陵、啟定陵這三座，官方的 3 點與 4 點聯票也是配這三座，所以第一次來就從這三座挑。挑的方法用位置分群（地址來自順化市文化體育觀光廳的票價頁）：嗣德陵與同慶陵在水春（Thủy Xuân）一帶、啟定陵與紹治陵在水朋（Thủy Bằng）社、明命陵與嘉隆陵在香壽（Hương Thọ）社，同一群的兩座順路，官方也剛好有那兩張 2 點聯票。一天最多兩座，包車或計程車比較省事，越南國家旅遊局寫參觀陵墓可以搭計程車，也可以騎腳踏車。**三座陵的建築風格沒有讀得到的官方描述，不要寫「啟定陵最華麗」這種話**，也不要寫公里數（沒有官方數字）。
-- 天姥寺（Chùa Thiên Mụ）：越南國家旅遊局寫它有標誌性的七層塔，在香江邊。**它不在順化遺跡保護中心的電子售票清單裡**（那張清單是皇城、各陵、南郊壇、殿婆錢、安定宮、宮廷古物博物館這 12 個點），所以寫「不在售票清單中，要不要買票以現場為準」，不要寫「免費」。
-- 東巴市場（Chợ Đông Ba）：只寫名稱與它在香江北岸、皇城東邊，越南國家旅遊局把它列成順化必逛的市場；**不寫營業時間、攤位與價格**。吃的只寫國家旅遊局點名的 bánh khoái 與 bánh bèo，其他交給文末的美食目錄連結。
+- 天姥寺（Chùa Thiên Mụ）：越南國家旅遊局寫它有標誌性的七層塔，在香江邊。**它不在順化遺跡保護中心的電子售票系統裡**（那個系統賣的是皇城、各座陵、南郊壇、Điện Hòn Chén、安定宮、宮廷古物博物館與海雲關，全區聯票涵蓋其中 12 個點），所以寫「不在官方售票系統裡，要不要買票以現場為準」，不要寫「免費」。
+- 東巴市場（Chợ Đông Ba）：只寫名稱與它在香江北岸、皇城東邊，越南國家旅遊局的順化必做清單裡寫了逛東巴市場的生鮮攤位；**不寫營業時間、攤位與價格**。吃的只寫國家旅遊局點名的 bánh khoái 與 bánh bèo，其他交給文末的美食目錄連結。
 - 一天的順序寫成 list（4 到 5 條）：早上到順化先進皇城；中午在皇城東邊或香江邊吃飯，順路看東巴市場；下午挑同一個方向的一到兩座陵；回程前補天姥寺（在往陵墓的同一側河岸）；搭火車的人要對回程班次，包車的人跟司機講好回峴港的時間。
 
 ### (6) H2-4「當天來回還是住一晚」
@@ -141,7 +141,7 @@ checked_on 填撰稿當天。以下是 2026-09-16 研究代理與本規格撰寫
 （6）順化市文化體育觀光廳 visithue.vn 票價頁 https://visithue.vn/gia-ve-tham-quan-cac-diem-di-tich-tai-tinh-thua-thien-hue/?pid=MjMwNjB8Y3NkbGRs0（curl＋WebFetch 200；頁上寫「cập nhật tháng 12/2023」）：各點票價與**地址**——Đại Nội「Đường 23 tháng 8」、Lăng Gia Long 與 Lăng Minh Mạng「Xã Hương Thọ」、Lăng Thiệu Trị 與 Lăng Khải Định「Xã Thủy Bằng」、Lăng Tự Đức「Thôn Thượng」、Lăng Đồng Khánh「Phường Thủy Xuân」、Cung An Định「179 Phan Đình Phùng」、Bảo tàng「03 Lê Trực」；聯票「từ 420.000vnđ」「từ 530.000vnđ」；「Bạn có thể mua vé trực tiếp tại địa điểm tham quan hoặc mua tại website: https://eticket.hueworldheritage.org.vn」；中心地址「23 Tống Duy Tân」。**陵墓分群（水春／水朋／香壽）就是引這一頁的地址欄。** 首頁會 302 迴圈，只能直接開這個子頁。
 （7）越南鐵路時刻查詢 https://giotaugiave.dsvn.vn/giotau/thongnhat.aspx（curl GET 只有表單；要 POST 帶 `__VIEWSTATE`／`__EVENTVALIDATION`，先對 `ddlMacTau` 做一次 postback 再送 `btnTraTim`）。查詢日 20-09-2026 出發，逐字（表上是「Giờ đi／Giờ đến」）：SE8 峴港 23:41 發、順化 02:12 到（隔日）；SE6 峴港 02:01 發、順化 04:44 到；SE4 峴港 12:28 發（12:13 到站）、順化 15:05 到（15:10 發）；SE2 峴港 13:21 發（13:06 到站）、順化 15:49 到；SE3 順化 07:55 發、峴港 10:28 到；SE1 順化 10:30 發、峴港 13:14 到；SE7 順化 19:43 發、峴港 22:15 到；SE5 順化 21:40 發、峴港 00:21 到（隔日）。里程欄北上是峴港 935、順化 1038（差 103 公里）。
 （8）越南鐵路票價查詢 https://giotaugiave.dsvn.vn/giave/thongnhat.aspx：**表單會忽略出發站**，查「Đà Nẵng → Huế」回來的是西貢出發的價，不可信，不引用、不寫金額。
-（9）鐵路運輸股份公司 票價政策與退換票規定 https://cophanvantaiduongsat.vn/2025/11/18/chinh-sach-gia-ve-quy-dinh-doi-tra-ve-tau-va-huong-dan-.../（curl＋WebFetch 200）：第 1.5 條「Áp dụng hành khách mua vé tập thể tàu Kết nối Di sản miền Trung (Huế – Đà Nẵng)」的團體票折扣表，另寫「Vận tải Hè: từ ngày 20/5 đến hết 16/8 năm 2026 và 2027」。**這是「順化－峴港觀光列車確實存在」的唯一官方依據**；時刻與票價不在這一頁。
+（9）鐵路運輸股份公司 2026 年票價政策與退換票規定 https://cophanvantaiduongsat.vn/2026/01/01/chinh-sach-gia-ve-quy-dinh-doi-tra-ve-tau-va-huong-dan-tai-hoa-don-ve-tau-hoa-nam-2025/（curl 200；研究代理抓到的 `/2025/11/18/…` 舊網址現在 301 轉到這個 canonical 網址，sources 要填這一個）：第 1.5 條「Áp dụng hành khách mua vé tập thể tàu Kết nối Di sản miền Trung (Huế – Đà Nẵng)」的團體票折扣表，另寫「Vận tải Hè: từ ngày 20/5 đến hết 16/8 năm 2026 và 2027」。**這是「順化－峴港觀光列車確實存在」的唯一官方依據**；時刻與票價不在這一頁。
 （10）鐵路運輸股份公司 2026-08-27 新聞 https://cophanvantaiduongsat.vn/2026/08/27/tau-co-do-hue-phong-nha-chinh-thuc-khai-truong-giam-50-gia-ve/（curl＋WebFetch 200）：「Từ ngày 29/8/2026… đôi tàu HQ1/HQ2 kết nối Cố đô Huế với Phong Nha qua hành trình dài khoảng 190 km」「Hơn 4 giờ trên tàu」，開行週 8/29 到 9/5 有 50% 優惠。**這是順化往北到峰牙的線，不是順化－峴港**。
 （11）越南國家旅遊局英文站 順化頁 https://vietnam.travel/places-to-go/central-vietnam/hue（curl＋WebFetch 200）：「their 143-year reign」「Roam the palaces, pavilions and theatres of the Hue Citadel and make time to visit the tombs of emperors Tu Duc, Minh Mang and Khai Dinh」「Nose around the flapping-fresh produce at Dong Ba Market… such as Banh Khoai and Banh Beo」「the iconic seven-tiered tower of Thien Mụ Pagoda」；交通「Domestic flights from Hanoi and Ho Chi Minh City touchdown in Hue's Phu Bai Airport, a 30-minute drive from the city. Travellers also can hitch a train to Hue on the Reunification Express line, ride the open bus or hire a private car from the international airport in Da Nang, two hours away.」「For visiting the Imperial Tombs, taxis are available, or you can hop on a bicycle.」；天氣「Hue's springtime months, from February to the end of April… In June and July, prepare for scorching days… The rains come in August and can last through January… flooding, usually from October to late in the year.」
 （12）越南國家旅遊局英文站 峴港頁 https://vietnam.travel/places-to-go/central-vietnam/da-nang（curl 200，本規格新讀）：「the fabled Hai Van Pass」「Popular trips from Da Nang are easily arranged, whether heading to Marble Mountain, Son Tra Peninsula, Hoi An, or Hai Van Pass, motorbike or car tours are readily available.」海雲關要走公路、包車或機車團的依據。
@@ -210,10 +210,11 @@ sources 最多 20 筆，本篇列 10 到 14 筆即可。**不能當來源**：`l
 （12）峴港端的東西一律不重寫：機場 T1／T2、離市中心約 3 公里、計程車 70,000 到 120,000 越南盾與 10,000 到 30,000 越南盾進場費、巴拿山、會安、五行山、美溪海灘，都是 `da-nang-hoi-an-4-day-itinerary` 的內容，本篇只用一句 article inline 帶過。要引用峴港機場的數字時，必須和那篇逐字相同。
 （13）季節只用越南國家旅遊局的順化頁（2 月到 4 月底最好、6 到 7 月酷熱、8 月起下雨到隔年 1 月、10 月到年底常淹水）。峴港篇寫的是峴港與會安的月份（峴港 3 到 5 月與 9 到 10 月最舒服、11 月到隔年 2 月是雨季），**兩篇是不同頁、不要互改也不要合併**；本篇不要說「和峴港一樣」。
 （14）地名照目的地目錄（`apps/api/app/destinations/catalog.py` 的 `hue`、`apps/api/app/foods/area_catalog.py`）：**皇城**（不寫「大內」「紫禁城」「順化故宮」，「大內」放 `aliases`）、香江、東巴市場、新城區。陵墓第一次出現時寫中文加越南文：明命陵（Lăng Minh Mạng）、嗣德陵（Lăng Tự Đức）、啟定陵（Lăng Khải Định）、嘉隆陵（Lăng Gia Long）、同慶陵（Lăng Đồng Khánh）、紹治陵（Lăng Thiệu Trị）。行政區寫「順化市」，**不要寫「承天順化省」**（省市已合併，舊網域都停了）。
-（15）幣別一律寫越南盾、三位一撇（200,000 越南盾），和峴港篇一致；不要換算台幣。
-（16）聯票的算術只能用正文表裡的數字，不要引進「省 X%」這種自己算的比例，也不要把 2 天有效期寫成「兩天一夜行程」的保證（一日遊當天用完就好）。全區聯票 600,000、5 天，只寫一句「排兩三天才划算」。
-（17）不寫沒有官方來源的評語與建築描述（「啟定陵最華麗」「明命陵最對稱」「順化很悠閒」）。陵墓怎麼挑只能講位置分群（水春／水朋／香壽，出處是順化市文化體育觀光廳票價頁的地址欄）與官方聯票組合。
-（18）數字四處一致（正文、summary、表格、FAQ、圖解）：200,000／40,000、150,000／30,000、100,000、50,000、70,000、420,000／80,000、530,000／100,000、600,000／120,000、240,000、200,000（2 點聯票）、350,000、500,000、650,000、103、2 小時半、2 小時、12:28、13:21、07:55、10:30、19:43、15:05、143 年。改一處要全改，並檢查第 18 篇有沒有同一個數字。
+（15）Điện Hòn Chén 沒有通行的中文譯名（Hòn Chén 是純越南語地名），門票表與正文一律寫越南文原名，不要自創譯名；其餘各點照目錄與漢越對應寫（皇城、明命陵、嗣德陵、啟定陵、嘉隆陵、同慶陵、紹治陵、育德陵、安定宮、南郊壇、宮廷古物博物館、海雲關）。
+（16）幣別一律寫越南盾、三位一撇（200,000 越南盾），和峴港篇一致；不要換算台幣。
+（17）聯票的算術只能用正文表裡的數字，不要引進「省 X%」這種自己算的比例，也不要把 2 天有效期寫成「兩天一夜行程」的保證（一日遊當天用完就好）。全區聯票 600,000、5 天，只寫一句「排兩三天才划算」。
+（18）不寫沒有官方來源的評語與建築描述（「啟定陵最華麗」「明命陵最對稱」「順化很悠閒」）。陵墓怎麼挑只能講位置分群（水春／水朋／香壽，出處是順化市文化體育觀光廳票價頁的地址欄）與官方聯票組合。
+（19）數字四處一致（正文、summary、表格、FAQ、圖解）：200,000／40,000、150,000／30,000、100,000、50,000、70,000、420,000／80,000、530,000／100,000、600,000／120,000、240,000、200,000（2 點聯票）、350,000、500,000、650,000、103、2 小時半、2 小時、12:28、13:21、07:55、10:30、19:43、15:05、143 年。改一處要全改，並檢查第 18 篇有沒有同一個數字。
 
 ## 上線後與交叉檢查
 
