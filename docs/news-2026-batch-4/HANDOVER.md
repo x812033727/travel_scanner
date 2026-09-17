@@ -1,4 +1,4 @@
-# 交接：新聞批次 4（2026-09-17 第二次收工時的狀態）
+# 交接：新聞批次 4（2026-09-17 幣圈發布後的狀態）
 
 這份文件給接手的人或模型。它記的是 **PR #544 的分支 `claude/brave-hopper-8ezxba` 上現在有什麼、
 還缺什麼、怎麼接著做**。規格在 [`BRIEF.md`](BRIEF.md)、[`crypto.md`](crypto.md)、[`tech.md`](tech.md)、
@@ -6,7 +6,7 @@
 
 站主的指示是「幣圈和科技的先全部寫，AI 挑補漏那幾則」，並指定**先交幣圈這批驗收**。
 2026-09-17 兩個 session 都只做幣圈（批次 4.1）：第一個寫完十一篇並查核、翻好十篇；第二個補齊缺的語系、
-做完逐語審稿、出圖、互連與驗證。**幣圈這批現在等的是站主驗收與發布**，機器能做的都做完了。
+做完逐語審稿、出圖、互連與驗證。**站主當天指示合併並匯入發布，幣圈十二個內容包已在正式站上線**（部署、匯入與驗證紀錄在 4.1 那張票）。
 科技 13 篇與 AI 12 篇**還沒有任何文章**，研究、獨立查核與逐篇修正清單都已在這個目錄裡。
 
 ## 1. 幣圈十一篇加索引的現況
@@ -34,14 +34,13 @@
 [`translation-corrections.json`](translation-corrections.json)，退回的 1 筆在
 [`translation-corrections-rejected.json`](translation-corrections-rejected.json)，協調者自己的 54 筆在
 [`coordinator-corrections.json`](coordinator-corrections.json)。
-十一篇都過 `check_article.py --full --assets`，索引五語過 schema 與 lint；**沒有任何一篇被匯入或發布**。
+十一篇都過 `check_article.py --full --assets`，索引五語過 schema 與 lint；**十二篇已於 2026-09-17 以 `guides-import --slug` ×12 匯入發布**（60 個語系全數 created＋published、`failed: null`）。
 
 ## 2. 還沒做完的事
 
-### 2.1 站主逐篇驗收（YMYL，機器擋不住的那一半）
+### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）
 
-4.1 那張票 Definition of done 的一部分：逐篇看「有沒有變相推薦標的、風險講得夠不夠、這句會不會被讀成建議」。
-審稿代理回報、需要站主或下一位協調者裁示的原稿（zh-TW）疑點，沒有一項是事實錯誤：
+站主已指示發布；下面是審稿代理回報、日後修訂時可以一併處理的原稿（zh-TW）疑點。要改就改內容包、跑 `check_article.py`，再 `guides-import --slug <那一篇>` 更新：
 
 - **FDIC 篇的「清理程序」**：來源原文是 `insolvency proceedings`（GENIUS Act 第 11 條）。en、ja、ko、zh-CN 四個譯文已改用各語言的
   無力清償／倒產用語（insolvency proceedings、倒産手続、도산 절차、破产程序）；zh-TW 的「清理程序」可解作債務清理程序，沒有動，
@@ -56,7 +55,7 @@
 - **MiCA 篇 callout 標題寫「四個日期」，內文列了五個日曆日期**；同篇 block5 的「該日」最近的先行詞是 2024-12-30（四個譯文已寫明 7 月 1 日）。
 - 歐盟兩篇對 CASP（加密資產服務商／服務提供者）與 MiCA 第 63 條 authorisation（許可／核准／執照／授權）的繁中寫法不一致。
 
-### 2.2 出刊當天要重查的活資料
+### 2.2 會變動的活資料（發布日 2026-09-17 即查核日；日後更新文章時重查）
 
 - C1：金管會證期局名單（10／1／18 家，中文頁標 2026-09-03 更新；**英文版是另一頁**，只列一類、名單標 22 September 2025，
   en 譯文已寫明三類名單與更新日出自中文頁）；全國法規資料庫的「最後生效日期：未定」。
@@ -68,9 +67,9 @@
 - C10：金融廳「国会提出法案等」頁第 221 回國會那一區；01.pdf 的 bytes。
 - 美國五份草案若出現定案規則或展延公告，文中「未見／草案」的句子要一起改。
 
-### 2.3 匯入與發布（不在這個 PR 的範圍）
+### 2.3 匯入與發布（幣圈已完成；科技與 AI 兩個垂直照做）
 
-- 一律 `guides-import --slug …`，先跑不帶 slug 的 `--dry-run` 看有沒有別人的積壓；部署前查分段發布狀態。
+- 一律 `guides-import --slug …`；先 `--dry-run --publish` 核對計畫只有自己的 slug、動作符合預期，再 `--publish`；部署前查分段發布狀態與 hold 檔。
 - **sitemap 不再是阻礙**：上一版交接寫的「1,000 列上限」在 2026-09-16 就由 `2026-09-14-sitemap-split-before-1000-rows`（PR #531）解掉了，
   `/sitemap.xml` 現在是 sitemap index。這批是 12 個內容包 × 5 語系 = 60 列。
 - 同一群文章的互連用內容包的 `related`（延伸閱讀）：`guides-import` 會在該次匯入的文章都存在後第二輪套用，所以十二篇要同一次匯入。

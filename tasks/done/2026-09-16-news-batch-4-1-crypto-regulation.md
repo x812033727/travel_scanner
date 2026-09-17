@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-news-batch-4-1-crypto-regulation
 title: News batch 4.1: crypto regulation, technology and industry news
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-17T10:39:10Z
 created_at: 2026-09-16T13:21:39Z
-completed_at:
+completed_at: 2026-09-17T12:02:20Z
 branch: claude/brave-hopper-8ezxba
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
@@ -147,12 +147,19 @@ npm run check:tasks
 - [x] 同群文章互連用內容包的 `related`；`pack_cli relink` 已套用（165 條）；`autolink` 只找到法條引文裡的「澳門」→ 澳門一日遊，不套用。
 - [x] 全垂直的 `manifest.json` 與 contact sheet，五語逐張看過，審稿改過圖上短字後重出一次。
 - [x] 驗證：十一篇 `check_article.py --full --assets` OK、索引五語過 schema 與 lint、`pack_cli lint --kind life` 0 error、內容包測試 53 passed。
-- [ ] 站主逐篇驗收（YMYL：有沒有變相推薦標的、風險講得夠不夠）；審稿代理回報的繁中原稿疑點列在 HANDOVER 2.1，沒有一項是事實錯誤。
-- [ ] 出刊當天重查活資料（HANDOVER 2.2），再 `guides-import --slug …` 匯入發布。十二篇要同一次匯入，`related` 才接得起來。
-      **sitemap 不再是阻礙**：`2026-09-14-sitemap-split-before-1000-rows` 已在 2026-09-16 完成（PR #531，sitemap index），上一版交接的那一條過期了。
+- [x] 站主 2026-09-17 指示合併 PR #544 並「匯入發布這十二篇」，視為驗收；審稿代理回報的繁中用詞疑點仍列在 HANDOVER 2.1 供日後修訂，沒有一項是事實錯誤。
+- [x] 部署、匯入與發布（2026-09-17，UTC）：
+      - 勘查：沒有 hold 檔、沒有進行中的分段發布、正式站只落後 main 一個 commit（#544 的 `f8938dc6`）、沒有 migration。
+      - 部署：`/root/deploy-travel-scanner.sh`，11:53–11:56，health 3/3、alembic `0080_crypto_and_tech_topics (head)`，log `deploy_20260917_115306`。
+      - 匯入：`guides-import --slug` ×12。先 `--dry-run --publish` 由腳本核對計畫剛好是 12 篇、60 個 `create`、沒有別的 slug，才執行 `--publish`：
+        12 篇 × 5 語系全數 created＋published，`taxonomy_updated` 10 篇（`related` 第二輪套用），`failed: null`。
+      - 公開站驗證：60 個網址（12 篇 × zh-TW／en／ja／ko／zh-CN）全部 HTTP 200、沒有 `noindex`、有 `#article-summary`；
+        OCC 篇頁面連到另外三篇 GENIUS Act 文章與索引；`FAQPage` 與 `abstract` 結構化資料都在；主圖與圖解 200；
+        五個語系的 `life-<locale>.xml` 子 sitemap 都收錄十二篇；`/zh-TW/life` 最新新聞列出現幣圈文章。
+      - 活資料：C2–C11 的查核日就是發布當天（2026-09-17），C1 是前一天；沒有另外重抓。之後若五份美國草案出現定案規則或展延，要照 HANDOVER 2.2 回頭改。
 
 第一個 session 停手的原因是帳號用量上限；第二個 session（2026-09-17，同為 `claude-fable-5-1`）重新認領並做到這裡。
-這張票留在 `in-progress` 等站主驗收；要交給別人接就 `release`。
+發布完成後結案。
 
 ### 規格衝突（`BRIEF.md` 要求記進 tasks/）
 
