@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">仙台機場進市區與市區繞行 / From Sendai Airport to the city and the Loople Sendai loop</title>
+  <desc id="desc">左邊是仙台空港駅，與航廈二樓直結、走連絡橋約兩分鐘；一條實線代表仙台空港アクセス線，中間畫出六個中途站節點、只標名取，通往右邊的仙台駅，線上標六百八十日圓、IC 卡六百七十二日圓，白天每二十分一班。左下一條虛線代表定額計程車，一車單程六千五百日圓、預約制。中間的方塊提醒機場沒有往仙台市區的巴士，只有鐵道與計程車。右邊是るーぷる仙台的單向環線，依序停仙台駅前、瑞鳳殿前、仙台城跡、大崎八幡宮前、定禅寺通市役所前，箭頭只有一個方向；環線下方的方塊寫單程二百六十日圓、一日券六百三十日圓、加地鐵的共通券九百二十日圓，以及地鐵一日券八百四十日圓、週末假日六百二十日圓。示意圖，距離非比例。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowGrey" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">仙台機場進市區，與市區怎麼繞</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Sendai Airport to the city, and the Loople Sendai loop</text>
+
+  <!-- 鐵道 -->
+  <rect x="60" y="180" width="300" height="132" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="210" y="222" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">仙台空港駅</text>
+  <text x="210" y="250" font-size="16" fill="#5C6B6B" text-anchor="middle">Sendai Airport Sta.</text>
+  <text x="210" y="284" font-size="16" fill="#102A2B" text-anchor="middle">與航廈 2 樓直結，連絡橋走 2 分</text>
+
+  <rect x="620" y="180" width="240" height="132" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="740" y="236" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">仙台駅</text>
+  <text x="740" y="264" font-size="16" fill="#5C6B6B" text-anchor="middle">Sendai Sta.</text>
+
+  <text x="490" y="212" font-size="17" fill="#102A2B" text-anchor="middle">仙台空港アクセス線</text>
+  <line x1="360" y1="246" x2="614" y2="246" stroke="#0D6B68" stroke-width="6" marker-end="url(#arrow)"/>
+  <circle cx="386" cy="246" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <circle cx="420" cy="246" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <circle cx="454" cy="246" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <circle cx="488" cy="246" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <circle cx="522" cy="246" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <circle cx="556" cy="246" r="8" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="454" y="284" font-size="16" fill="#5C6B6B" text-anchor="middle">名取</text>
+  <text x="490" y="336" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">680／IC 672 日圓</text>
+  <text x="490" y="364" font-size="17" fill="#5C6B6B" text-anchor="middle">白天每 20 分一班</text>
+
+  <!-- 計程車 -->
+  <path d="M 210 312 L 210 452 L 740 452 L 740 318" fill="none" stroke="#5C6B6B" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowGrey)"/>
+  <text x="440" y="492" font-size="18" fill="#102A2B" text-anchor="middle">定額計程車 6,500 日圓（預約制、一車）</text>
+
+  <!-- 沒有巴士 -->
+  <rect x="60" y="596" width="700" height="104" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="410" y="638" font-size="22" font-weight="bold" fill="#B8442D" text-anchor="middle">機場沒有往仙台市區的巴士路線</text>
+  <text x="410" y="672" font-size="17" fill="#102A2B" text-anchor="middle">進市區只有鐵道與計程車兩種</text>
+
+  <!-- るーぷる仙台 -->
+  <path d="M 1200 240 A 160 160 0 0 1 1352 351" fill="none" stroke="#2F6F9F" stroke-width="6" marker-end="url(#arrowBlue)"/>
+  <path d="M 1352 351 A 160 160 0 0 1 1294 529" fill="none" stroke="#2F6F9F" stroke-width="6" marker-end="url(#arrowBlue)"/>
+  <path d="M 1294 529 A 160 160 0 0 1 1106 529" fill="none" stroke="#2F6F9F" stroke-width="6" marker-end="url(#arrowBlue)"/>
+  <path d="M 1106 529 A 160 160 0 0 1 1048 351" fill="none" stroke="#2F6F9F" stroke-width="6" marker-end="url(#arrowBlue)"/>
+  <path d="M 1048 351 A 160 160 0 0 1 1200 240" fill="none" stroke="#2F6F9F" stroke-width="6" marker-end="url(#arrowBlue)"/>
+
+  <circle cx="1200" cy="240" r="11" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="1352" cy="351" r="11" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="1294" cy="529" r="11" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="1106" cy="529" r="11" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <circle cx="1048" cy="351" r="11" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+
+  <text x="1200" y="214" font-size="17" fill="#102A2B" text-anchor="middle">仙台駅前</text>
+  <text x="1378" y="357" font-size="17" fill="#102A2B">瑞鳳殿前</text>
+  <text x="1318" y="566" font-size="17" fill="#102A2B">仙台城跡</text>
+  <text x="1082" y="566" font-size="17" fill="#102A2B" text-anchor="end">大崎八幡宮前</text>
+  <text x="1022" y="357" font-size="17" fill="#102A2B" text-anchor="end">定禅寺通市役所前</text>
+
+  <text x="1200" y="392" font-size="22" font-weight="bold" fill="#102A2B" text-anchor="middle">るーぷる仙台</text>
+  <text x="1200" y="418" font-size="16" fill="#5C6B6B" text-anchor="middle">Loople Sendai</text>
+  <text x="1200" y="446" font-size="16" fill="#2F6F9F" text-anchor="middle">單向環線，沒有逆向班次</text>
+
+  <rect x="940" y="596" width="540" height="104" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1210" y="638" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">單程 260／一日券 630／共通券 920 日圓</text>
+  <text x="1210" y="674" font-size="17" fill="#102A2B" text-anchor="middle">地鐵一日券 840 日圓（週六日與假日 620）</text>
+
+  <text x="1540" y="800" font-size="16" fill="#5C6B6B" text-anchor="end">圖例：實線＝鐵道、虛線＝計程車</text>
+  <text x="1540" y="830" font-size="16" fill="#5C6B6B" text-anchor="end">示意圖，距離非比例</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
