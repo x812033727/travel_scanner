@@ -4,8 +4,8 @@
 每篇一張原創主圖與一張 2×2 圖解。站上目前一篇幣圈文章都沒有，這是第一批。
 
 > **現況與未完成事項（2026-09-17）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md)。
-> 十一篇 zh-TW 都已獨立查核；十篇五語齊全，`crypto-news-stablecoin-aml-20260410` 缺 ja 與 ko，
-> 索引 `crypto-news-2026-index` 缺 ja、ko、zh-CN；逐語審稿、relink／autolink、manifest 與 contact sheet 都還沒做。
+> 十一篇加索引都是五語、都經過獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet 與 relink 都做完了；
+> 還沒匯入、還沒發布，等站主逐篇驗收（YMYL）與出刊當天的活資料重查。
 
 ## 這個目錄放什麼
 
@@ -39,14 +39,16 @@
 
 ## 工具
 
-六個腳本都在 [`docs/news-2026-batch-4/`](../news-2026-batch-4)，都從 `apps/api` 用 API 虛擬環境跑：
+腳本都在 [`docs/news-2026-batch-4/`](../news-2026-batch-4)，都從 `apps/api` 用 API 虛擬環境跑：
 
 ```bash
 cd apps/api
 uv run python ../../docs/news-2026-batch-4/check_article.py <slug> --full --assets
 uv run python ../../docs/news-2026-batch-4/build_assets.py crypto [--svg-only]
 uv run python ../../docs/news-2026-batch-4/merge_locale.py <slug> <en|ja|ko|zh-CN> <document.json>
+uv run python ../../docs/news-2026-batch-4/review_dumps.py crypto <out-dir>      # 審稿代理讀的逐段對照檔
 uv run python ../../docs/news-2026-batch-4/apply_corrections.py <corrections.json>...
+uv run python ../../docs/news-2026-batch-4/align_links.py --apply                # 標題改過之後對齊連結文字
 uv run python ../../docs/news-2026-batch-4/update_index.py crypto
 ```
 

@@ -1,136 +1,65 @@
-# 交接：新聞批次 4（2026-09-17 收工時的狀態）
+# 交接：新聞批次 4（2026-09-17 第二次收工時的狀態）
 
 這份文件給接手的人或模型。它記的是 **PR #544 的分支 `claude/brave-hopper-8ezxba` 上現在有什麼、
 還缺什麼、怎麼接著做**。規格在 [`BRIEF.md`](BRIEF.md)、[`crypto.md`](crypto.md)、[`tech.md`](tech.md)、
 [`ai.md`](ai.md)；工具的取捨在 [`PORT-NOTES.md`](PORT-NOTES.md)。
 
 站主的指示是「幣圈和科技的先全部寫，AI 挑補漏那幾則」，並指定**先交幣圈這批驗收**。
-所以這個 session 只做了幣圈（批次 4.1）。科技 13 篇與 AI 12 篇**還沒有任何文章**，
-研究、獨立查核與逐篇修正清單都已在這個目錄裡。
-
-收工的原因不是做完，是**帳號用量上限**：Opus 的子代理在 2026-09-17 下午連續被月用量與週用量上限切斷
-（週上限 2026-09-19 07:00 台北時間重置），最後幾步由協調者自己在主對話裡收尾。
+2026-09-17 兩個 session 都只做幣圈（批次 4.1）：第一個寫完十一篇並查核、翻好十篇；第二個補齊缺的語系、
+做完逐語審稿、出圖、互連與驗證。**幣圈這批現在等的是站主驗收與發布**，機器能做的都做完了。
+科技 13 篇與 AI 12 篇**還沒有任何文章**，研究、獨立查核與逐篇修正清單都已在這個目錄裡。
 
 ## 1. 幣圈十一篇加索引的現況
 
 「查核」欄是獨立查核代理核對的主張數與改動處數；兩個數字的是做了第二輪。
-五語指 zh-TW、en、ja、ko、zh-CN。
+十二個內容包都是五語（zh-TW、en、ja、ko、zh-CN）、五語圖檔齊全、都經過逐語審稿。
 
-| 代號 | slug | 查核 | 語系 | 圖檔 | 狀態 |
-| --- | --- | --- | --- | --- | --- |
-| C1 | `crypto-news-taiwan-vasp-act-20260630` | 87 條／改 7 | 五語 | 五語 | 待逐語審稿 |
-| C2 | `crypto-news-mica-transition-ends-20260701` | 86／18 | 五語 | 五語 | 待逐語審稿 |
-| C3 | `crypto-news-sec-crypto-interpretation-20260323` | 107／9 | 五語 | 五語 | 待逐語審稿 |
-| C4 | `crypto-news-sec-regulation-crypto-assets-20260821` | 108／20，第二輪再改 9 件 | 五語 | 五語 | 待逐語審稿；zh-CN 見 2.4 |
-| C5 | `crypto-news-eba-psd2-mica-20260212` | 96／9 | 五語 | 五語 | 待逐語審稿 |
-| C6 | `crypto-news-genius-act-occ-20260302` | 98／12 | 五語 | 五語 | 待逐語審稿 |
-| C7 | `crypto-news-stablecoin-aml-20260410` | 96／13，第二輪 41／12 | **zh-TW、en、zh-CN** | 三語 | **缺 ja、ko**（見 2.1） |
-| C8 | `crypto-news-fdic-genius-act-20260410` | 96／6 | 五語 | 五語 | 待逐語審稿 |
-| C9 | `crypto-news-ncua-genius-act-20260518` | 92／13，第二輪 58／10 | 五語 | 五語 | 待逐語審稿 |
-| C10 | `crypto-news-jfsa-working-group-20260216` | 111／10 | 五語 | 五語 | 待逐語審稿 |
-| C11 | `crypto-news-jfsa-cybersecurity-20260723` | 104／12 | 五語 | 五語 | 待逐語審稿 |
-| 索引 | `crypto-news-2026-index` | 約 160 條／14 條發現已全數套用 | **zh-TW、en** | 二語 | **缺 ja、ko、zh-CN**（見 2.2） |
+| 代號 | slug | 查核 | 逐語審稿採用的修正（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- |
+| C1 | `crypto-news-taiwan-vasp-act-20260630` | 87 條／改 7 | 16／26／15／8 |
+| C2 | `crypto-news-mica-transition-ends-20260701` | 86／18 | 17／4／5／5 |
+| C3 | `crypto-news-sec-crypto-interpretation-20260323` | 107／9 | 5／11／19／16 |
+| C4 | `crypto-news-sec-regulation-crypto-assets-20260821` | 108／20，第二輪再改 9 件 | 11／5／7／31 |
+| C5 | `crypto-news-eba-psd2-mica-20260212` | 96／9 | 8／4／43／0 |
+| C6 | `crypto-news-genius-act-occ-20260302` | 98／12 | 6／11／15／28 |
+| C7 | `crypto-news-stablecoin-aml-20260410` | 96／13，第二輪 41／12 | 16／6／8／8 |
+| C8 | `crypto-news-fdic-genius-act-20260410` | 96／6 | 9／20／20／21 |
+| C9 | `crypto-news-ncua-genius-act-20260518` | 92／13，第二輪 58／10 | 8／10／4／39 |
+| C10 | `crypto-news-jfsa-working-group-20260216` | 111／10，逐語審稿後再訂正 1 處事實（見第 4 節） | 12／34／14／45 |
+| C11 | `crypto-news-jfsa-cybersecurity-20260723` | 104／12 | 11／29／10／14 |
+| 索引 | `crypto-news-2026-index` | 約 160 條／14 條發現已全數套用 | 30／8／8／6 |
 
 每篇的查核報告在 [`factcheck-draft/`](factcheck-draft)，研究紀錄（含 `factcheck` 欄位、每條事實的逐字引文）
-在 [`../crypto-news-2026/research/`](../crypto-news-2026/research)。
-十一篇的 zh-TW 都過了 `check_article.py`；**沒有任何一篇被匯入或發布**。
+在 [`../crypto-news-2026/research/`](../crypto-news-2026/research)。逐語審稿採用的 706 筆修正全文在
+[`translation-corrections.json`](translation-corrections.json)，退回的 1 筆在
+[`translation-corrections-rejected.json`](translation-corrections-rejected.json)，協調者自己的 54 筆在
+[`coordinator-corrections.json`](coordinator-corrections.json)。
+十一篇都過 `check_article.py --full --assets`，索引五語過 schema 與 lint；**沒有任何一篇被匯入或發布**。
 
-## 2. 還沒做完的事（依順序）
+## 2. 還沒做完的事
 
-### 2.1 C7 的 ja 與 ko
+### 2.1 站主逐篇驗收（YMYL，機器擋不住的那一半）
 
-zh-TW 經兩輪查核定稿；en 與 zh-CN 已併入。ja、ko 還沒翻。研究紀錄的 `translation_status` 寫了同一件事。
+4.1 那張票 Definition of done 的一部分：逐篇看「有沒有變相推薦標的、風險講得夠不夠、這句會不會被讀成建議」。
+審稿代理回報、需要站主或下一位協調者裁示的原稿（zh-TW）疑點，沒有一項是事實錯誤：
 
-```bash
-cd apps/api
-# 做法一：照 agents/TRANSLATE.md 派翻譯代理。
-# 做法二：協調者自己翻——l10n.py 把 zh-TW 的字串依序編號，譯文照同樣順序寫成 JSON 陣列再組回去，
-#         區塊、表格形狀、摘要句數與 FAQ 題數由程式保證一致（zh-CN 就是這樣做的）。
-uv run python ../../docs/news-2026-batch-4/l10n.py dump  crypto-news-stablecoin-aml-20260410
-uv run python ../../docs/news-2026-batch-4/l10n.py build crypto-news-stablecoin-aml-20260410 ja strings-ja.json
-uv run python ../../docs/news-2026-batch-4/merge_locale.py crypto-news-stablecoin-aml-20260410 ja crypto-news-stablecoin-aml-20260410.ja.json
-```
+- **FDIC 篇的「清理程序」**：來源原文是 `insolvency proceedings`（GENIUS Act 第 11 條）。en、ja、ko、zh-CN 四個譯文已改用各語言的
+  無力清償／倒產用語（insolvency proceedings、倒産手続、도산 절차、破产程序）；zh-TW 的「清理程序」可解作債務清理程序，沒有動，
+  要不要改成「破產（無力清償）程序」請站主決定。
+- **美國四篇有幾段整段沒有「擬議」字樣**（FDIC 第 4 節的 10% 門檻那句、OCC 第 2 節的 30 天／120 天那句、AML 第 2 節末段、NCUA 第 3 節第 2 段）。
+  每篇開頭都有「下面每一項要求都是草案擬議」的總聲明，所以不算錯；四個譯文在這些句子上已補回提案語氣（would／提案／제안），比原稿保守。
+- **日本審議會那篇依英文暫譯本寫的三個地方與日文原文有出入**：「逾八成」「超過 350 件」（日文是「以上」）、「犯則調查權限」（日文是「調査権限」）；
+  資安那篇的「CSSA…或視需要對話」（日文是「含め…必要な対話」）。zh-TW 照它引的英文來源沒有動，ja 版改依日文原文。
+- **兩篇 SEC 文章的繁中用詞不一致**：「Howey 判準」對「Howey 測試」、「必要管理努力」對「重要經營努力」（來源同為 essential managerial efforts）、
+  「支付穩定幣」對其他篇的「支付型穩定幣」；permitted payment stablecoin issuer 在美國四篇有「經核准／已許可／獲准／核照」四種寫法；
+  outstanding issuance value 三篇三種寫法。要統一得從 zh-TW 起五語一起改。
+- **MiCA 篇 callout 標題寫「四個日期」，內文列了五個日曆日期**；同篇 block5 的「該日」最近的先行詞是 2024-12-30（四個譯文已寫明 7 月 1 日）。
+- 歐盟兩篇對 CASP（加密資產服務商／服務提供者）與 MiCA 第 63 條 authorisation（許可／核准／執照／授權）的繁中寫法不一致。
 
-合併後在研究紀錄補 `translations.ja`／`translations.ko`（hero_label、圖解 title、caption 逐字等於該語言
-image 區塊的 caption、四組 nodes），再跑 2.5 的出圖。用語對齊同批已完成的 FDIC、OCC 兩篇
-（決済用ステーブルコイン／지급결제용 스테이블코인、金融犯罪取締ネットワーク（FinCEN）、外国資産管理室（OFAC）、
-금융범죄단속네트워크(FinCEN)、해외자산통제국(OFAC)）。
+### 2.2 出刊當天要重查的活資料
 
-### 2.2 索引的 ja、ko、zh-CN
-
-**三個語言的標題已經定案，不可更動**——其他十一篇的第一個結尾連結已經逐字引用它們。
-標題存在研究紀錄 `docs/crypto-news-2026/research/crypto-news-2026-index.json` 的 `planned_titles`：
-
-- ja `2026年 暗号資産ニュース総まとめ：法規制・技術・業界の重要動向`
-- ko `2026년 가상자산 뉴스 총정리: 규제·기술·산업의 핵심`
-- zh-CN `2026 年加密货币新闻总整理：法规、技术与产业的重点`
-
-索引的 zh-TW 是產生器 [`build_crypto_index.py`](build_crypto_index.py) 寫的（連結標題與 `sources[]` 直接讀十一篇內容包），
-**要改繁中正文就改產生器再重跑，不要直接改內容包**。索引不在 `check_article.py` 的清單裡；
-翻完用 `merge_locale.py` 併入，再以 `ArticlePack.model_validate` 與 `lint_document` 檢查
-（只允許 `raw_internal_url` 與 `text_length` 兩種 warning）。讀者看得到的地方不寫篇數（站主規則）。
-
-**在索引補齊之前，十一篇的 `check_article.py --full` 都會多出三條
-「ja／ko／zh-CN link text must be the title of crypto-news-2026-index」**——那是索引缺語系造成的，
-不是文章壞了；索引一補齊就回到 `OK`（補齊前 C1–C6、C8–C11 都是 `--full --assets OK`）。CI 不受影響。
-
-### 2.3 逐語審稿（整個階段還沒開始，這是剩下最重要的一關）
-
-規格 [`agents/REVIEW.md`](agents/REVIEW.md)：每語言一位審稿代理，**只交修正清單**，
-由 `apply_corrections.py` 統一套用（避免多個代理同時寫同一個 JSON）。翻譯階段已經知道要看的點：
-
-- **ko**：C3 把 crypto system／network 譯成「가상 시스템／가상 네트워크」，存疑；
-  `암호자산`（歐盟、日本法語境）與 `가상자산`（台灣法、美國法語境、索引標題）會同頁出現，確認是否照語境區分即可；
-  IDI 有「부보예금취급기관」與「예금취급기관」兩種寫法。
-- **ja／ko**：share insurance 在 FDIC 篇是「持分保険／지분보험」，在 OCC、NCUA 兩篇是「出資金保険／출자금보험」，要統一。
-- **ja**：C1 同時用「仮想資産」（台灣那部法與它定義的七種業者）與「暗号資産」（一般語境）——譯者是刻意的
-  （寫成「暗号資産交換業者」會撞上日本資金決済法自己的法定類別），請確認；C10 表格的刑名用了「拘禁刑」、
-  工作小組名稱是從英文名回譯的，來源頁沒有日文名。
-- **en**：C1 標題 `Third Reading for Taiwan's Virtual Asset Service Act: …` 與主圖標語 `56 articles, start unset`
-  （articles 指條文）可以更自然；C10 表格把來源的 `1 years` 寫成 `1 year`。
-- **zh-CN**：見 2.4。
-- 審稿建議改介面名、機關名時，先查該語言的官方頁再決定（批次 3 的教訓：12 筆不採用的建議多數是
-  把只對繁中讀者有用的註記塞回其他語言）。
-
-### 2.4 兩個語系是在翻譯代理被切斷的情況下併入的
-
-- **C4 的 zh-CN**：譯者在「最後一輪大陸用語微調」途中被切斷，併入的是微調前的版本（結構與事實無虞，用語待審）。
-  研究紀錄的 `translations` 四語由協調者補寫。
-- **C7 的 en**：譯者修完 en 並重新合併後、開始 ja 之前被切斷；en 沒有經過它自己的 `--full` 自檢
-  （協調者讀過全文，限定詞與歸因都在）。zh-CN 是協調者用 `l10n.py` 翻的。
-- **索引的 en**：譯者併入 en 後被切斷，沒有回報；協調者只做了 schema 與 lint 檢查，沒有逐句對讀。
-
-### 2.5 出圖、manifest 與 contact sheet
-
-```bash
-cd apps/api
-export CHROMIUM_BIN=<Chromium 或 Edge 的路徑>          # Windows 上必須設；容器裡 /opt/pw-browsers 會自動找到
-uv run python ../../docs/news-2026-batch-4/build_assets.py crypto --slug=<slug>   # 局部
-uv run python ../../docs/news-2026-batch-4/build_assets.py crypto                 # 全部補齊後跑一次
-```
-
-主圖是 `build_assets.py` 裡逐篇的原創構圖（`_DRAWINGS`，十一篇加索引都有），`hero.alt` 已改寫成實際畫面。
-**全垂直的 `manifest.json` 與 contact sheet 還沒產生**（`--slug` 局部執行不寫這兩樣）。
-協調者逐張看過的是：C1–C3、C5、C6、C8、C10、C11 八篇的 en／ja／ko 圖解與 en 主圖，
-以及索引 en、C7 en 圖解與 zh-CN 主圖；**zh-TW／zh-CN 的圖解、ja／ko 的主圖、C4 與 C9 的圖沒有人看過**，
-全部補齊後請看一次 contact sheet（`BRIEF.md`：代理看不到自己畫的圖）。
-
-### 2.6 relink 與 autolink
-
-`BRIEF.md` 要求內容定稿後才跑，所以還沒跑：
-
-```bash
-cd apps/api
-uv run python -m app.guides.pack_cli relink   --prefix crypto-news- --dry-run   # 先看 diff，再 --apply
-uv run python -m app.guides.pack_cli autolink --prefix crypto-news- --dry-run
-```
-
-跑完結尾的 `link` 會變成帶 `article` inline 的 `rich_paragraph`（`check_article.py` 與 `align_links.py` 兩種形狀都認得）。
-標題若再改，用 [`align_links.py`](align_links.py) `--apply` 把所有結尾連結的文字對齊到目標文章的現行標題。
-
-### 2.7 出刊當天要重查的活資料
-
-- C1：金管會證期局名單（10／1／18 家，頁面標 2026-09-03 更新）；全國法規資料庫的「最後生效日期：未定」。
+- C1：金管會證期局名單（10／1／18 家，中文頁標 2026-09-03 更新；**英文版是另一頁**，只列一類、名單標 22 September 2025，
+  en 譯文已寫明三類名單與更新日出自中文頁）；全國法規資料庫的「最後生效日期：未定」。
 - C2：ESMA 各國過渡期對照表（PDF 內部修改時間 2026-05-19，文章逐列清點 27 列）。
 - C7：`sources[3]` 是聯邦公報依案號的官方查詢（2026-09-17 回 1 筆、Proposed Rule）。
 - C8：FDIC 刊登清單頁上 RIN 3064–AG19 只有 2026-04-10 那一列（該頁用 en dash）。
@@ -139,21 +68,23 @@ uv run python -m app.guides.pack_cli autolink --prefix crypto-news- --dry-run
 - C10：金融廳「国会提出法案等」頁第 221 回國會那一區；01.pdf 的 bytes。
 - 美國五份草案若出現定案規則或展延公告，文中「未見／草案」的句子要一起改。
 
-### 2.8 匯入與發布（不在這個 PR 的範圍，但接手的人一定會碰到）
+### 2.3 匯入與發布（不在這個 PR 的範圍）
 
-- 一律 `guides-import --slug …`，先跑不帶 slug 的 `--dry-run` 看有沒有別人的積壓。
-- **sitemap 上限**：`SITEMAP_LIMIT` 是 1,000 列，2026-09-15 線上已約 980 列；這批是 12 個內容包 × 5 語系 = 60 列，
-  超過時最舊的頁面會**無聲地**從 sitemap 消失。先做完 `tasks/open/2026-09-14-sitemap-split-before-1000-rows` 再發。
-- 幣圈是 YMYL：站主逐篇看過「有沒有變相推薦標的、風險講得夠不夠」是 4.1 那張票 Definition of done 的一部分，機器擋不住。
+- 一律 `guides-import --slug …`，先跑不帶 slug 的 `--dry-run` 看有沒有別人的積壓；部署前查分段發布狀態。
+- **sitemap 不再是阻礙**：上一版交接寫的「1,000 列上限」在 2026-09-16 就由 `2026-09-14-sitemap-split-before-1000-rows`（PR #531）解掉了，
+  `/sitemap.xml` 現在是 sitemap index。這批是 12 個內容包 × 5 語系 = 60 列。
+- 同一群文章的互連用內容包的 `related`（延伸閱讀）：`guides-import` 會在該次匯入的文章都存在後第二輪套用，所以十二篇要同一次匯入。
 
-### 2.9 科技 13 篇與 AI 12 篇
+### 2.4 科技 13 篇與 AI 12 篇
 
 沒有開始。照幣圈同一條線跑：撰稿 → 獨立查核（改超過十處或動到骨幹就第二輪）→ 協調者讀全文、改 `hero.alt`
-→ 翻譯 → 逐語審稿 → 出圖 → 索引 → relink／autolink → 驗證。`check_article.py` 的 `RELATED`、
+→ 翻譯 → 逐語審稿 → 出圖 → 索引 → `related`／relink → 驗證。`check_article.py` 的 `RELATED`、
 `build_assets.py` 的 `_DRAWINGS` 與 `verticals.py` 的 `order_base`（科技還是 `None`）要先填。
-`agents/` 裡的四份規格換掉工作區與補充規格的檔名就能用。
+`agents/` 裡的四份規格換掉工作區與補充規格的檔名就能用。**先看第 4 節的用量數字再決定一次開幾個代理。**
 
-## 3. 這一輪定下來、接手的人不要再翻案的決定
+## 3. 定下來、接手的人不要再翻案的決定
+
+第一個 session 定的：
 
 - **`checked_on`**：`corrections-crypto.md` 寫「一律填 2026-09-16」，`BRIEF.md` 寫「實際查證當天」。
   依「BRIEF > 修正清單」：C2–C11 的撰稿代理當天重抓每一條 `sources[]` 並讀到 body，所以是 **2026-09-17**；
@@ -175,22 +106,42 @@ uv run python -m app.guides.pack_cli autolink --prefix crypto-news- --dry-run
 - **主管機關文件裡的行情數字一律不寫**（市場規模、市值、交易量、轉引 CoinMarketCap／TRM 的數字）；
   開戶數、帳戶分布、罰鍰、資本額門檻這類不是行情，可以寫。
 
-## 4. 這一輪學到的（寫給下一個協調者）
+第二個 session 定的：
+
+- **全批統一用語**（審稿代理照這張表改，表在 [`agents/REVIEW.md`](agents/REVIEW.md)）：payment stablecoin＝決済用ステーブルコイン／
+  지급결제용 스테이블코인／支付型稳定币；NCUA share insurance＝出資金保険／출자금보험／股金保险；IDI＝付保預金取扱機関／부보예금취급기관／受保存款机构；
+  final rule＝最終規則／최종 규칙／最终规则；洗錢的日文用金融庁的「マネー・ローンダリング」；no-action letter 的韓文是金融委員會的「비조치의견서」；
+  日本法律在 zh-CN 用通行譯名《资金结算法》《金融商品交易法》並在首次出現附日文原名。
+- **「本站沒有實測」**：ja「当サイトは実地の検証を行っておらず」（「実機検証」會被讀成在講機器）；
+  ko「본 사이트는 직접 시험해 보지 않았고」——**不要用「검증」**，它會被讀成「本站沒有查證」，與文章自己的「확인일」打架；查核一律「확인」。
+- **免責 callout 的「當期公告」**：ja「その時点の」（「当期」是會計用語）、ko「그때그때의 공고」（「당시」是過去那時、「당기」是會計期間）。
+- **日本兩篇的日文版以金融庁日文原文為準**：機關名、會議名、報告用語（情報提供、事務ガイドライン、一定の熟慮期間、お墨付き、記述子…）
+  都對回日文報告與取組方針別紙１，不從英文或中文回譯；數量限定詞也照日文原文（「以上」）。
+- **同群文章的互連用 `related`，不用 autolink**：`pack_cli autolink` 對這批只找到一條——台灣那篇法條引文裡的「澳門」連到澳門一日遊——不套用。
+  GENIUS Act 四篇互連，SEC 兩篇、歐盟兩篇、日本兩篇各自互連；台灣那篇與索引不設。
+- **標題可以改，改完跑 `align_links.py --apply`**；只有索引的五個標題不動。這一輪依審稿建議改了 11 個譯文標題（清單在 `coordinator-corrections.json`）。
+- **譯文不新增原稿沒有的句子**：退回的那 1 筆就是這個原因；但把一句原稿拆開後掉了提案標記的，補回「would／提案条文では／제안된」是該做的。
+
+## 4. 學到的（寫給下一個協調者）
 
 - **第二輪查核不是形式。** NCUA 第二輪推翻的，正是第一輪自己新寫進去、沒人查過的那一句；
   SEC 提案第二輪抓到三個「第一輪報告寫對、套進內容包時沒套滿」的限定詞。
-- **翻譯是第三道查核。** 三篇是譯者回頭抓到的：FDIC 的 subpart B 在中文有歧義（英譯照字面變成「提供準備金的業者」，
-  條文是「以提供保管服務為業者」）；OCC 摘要的「單日…一成」比條文的「單一 24 小時期間…10%」鬆；
-  日本審議會那篇的摘要與圖解寫了正文沒有的兩項建議。請譯者回報「我懷疑原稿有錯的地方」，並真的去查。
-- **`check_article.py` 看不到的兩件事**：摘要裡的中文數字（「一成」躲過數字比對）；
-  摘要的事實有沒有出現在正文（只比對阿拉伯數字）。十一篇的「摘要 ⊆ 正文」是協調者人工對過的。
+- **翻譯是第三道查核，逐語審稿是第四道。** 審稿這一關抓到一個**兩輪查核都放過的原稿事實錯誤**：日本審議會那篇把揭露三種情形的義務主體
+  照參考資料的表逐欄對應，寫成「發行人未募資時由業者公表發行人編製的資訊」；日文審稿代理對照日文報告提出異議，協調者回英文版第 18、57 頁查證屬實
+  （那種情形是業者自行編製並公表），五語一起改、研究紀錄加註。**PDF 表格抽出來的文字順序不等於欄位對應，要回正文找同一件事的句子。**
+- **審稿代理要讀逐段對照檔，不要讀內容包 JSON。** [`review_dumps.py`](review_dumps.py) 把每一格印成「ZH／譯文」一組，`old` 可以直接複製；
+  一個語言分三組（一組四篇，約 9–10 萬 tokens 的閱讀量），比一位代理讀十二篇穩，也比較便宜。跨組一致靠事先發下去的統一用語表，
+  收件後用 `term_grep` 類的腳本掃一次殘留（這輪掃出 ko 的 15 處站方語氣、5 處免責句、FDIC 的 insolvency 用語）。
+- **審稿建議不要照單全收地統一站方語氣**：協調者發下去的 ko「직접 검증하지 않았고」被一位審稿代理指出會讀成「沒有查證」，最後全批改掉。
+- **`check_article.py` 看不到的兩件事**：摘要裡的中文數字（「一成」躲過數字比對）；摘要的事實有沒有出現在正文（只比對阿拉伯數字）。
 - **撰稿者系統性地壓掉但書來湊字數**（每篇都卡在 2,9xx／3,000）。查核規格要明寫「字數爆了就精簡敘述，不可刪但書」，
   第二輪專門回頭掃 `except`／`unless`／`or`／`may`／`in its discretion`。
-- **環境**：`pypdf` 在系統 Python，不在 `apps/api/.venv`；多個代理同時跑不要用 `uv run`（搶鎖），直接用 venv 的 python；
+- **環境**：`pypdf` 在系統 Python（`python`），不在 `apps/api/.venv`；多個代理同時跑不要用 `uv run`（搶鎖），直接用 venv 的 python；
   Windows 上 `CHROMIUM_BIN` 要指到 Playwright 的 headless shell 或 Edge；聯邦公報正規頁回 `Request Access` 擋阻頁，
   全文用 `federalregister.gov/documents/full_text/text/…txt` 或 govinfo 的 PDF；`sec.gov` 對 curl 回 403。
-- **用量**：一篇走完撰稿、查核、翻譯約 90–130 萬 subagent tokens（第二輪另加 25–30 萬）。
-  十個代理同時跑會在幾小時內撞到用量上限；被切斷的代理用 `SendMessage` 對原 id 續跑，比重開便宜
-  （C9 的譯者續跑 13 次工具呼叫就收完）。要求譯者「每完成一個語言就先合併存檔」，被切斷時才不會白做。
+  重跑 `build_assets.py` 不會動到沒改字的 JPG（位元組相同）；`git status` 裡一整排 SVG「修改」只是工作樹的 CRLF，`git add` 後就消失。
+- **用量**：一篇走完撰稿、查核、翻譯約 90–130 萬 subagent tokens（第二輪另加 25–30 萬）。逐語審稿 12 位代理每位 29–39 萬 tokens、各跑約 25 分鐘，
+  **平行跑會在 25 分鐘內吃掉 Max 方案 5 小時額度的七成**（7% → 74%）。開工前用 `get_usage` 看額度；一次開 4–6 位、分兩波比較安全；
+  額度逼近時先叫所有代理「現在就把已確認的寫檔、照實回報沒看完的地方」，比被切斷後續跑划算。被切斷的代理用 `SendMessage` 對原 id 續跑。
 - **代理遇到「Output blocked by content filtering policy」**（兩次，都在大段逐字貼來源原文的時候）：
   檔案通常已經寫好，重派或續跑時要求它用「位置＋前後十來個字」描述，不要整段貼。

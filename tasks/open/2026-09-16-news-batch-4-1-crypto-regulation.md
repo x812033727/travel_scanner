@@ -1,11 +1,11 @@
 ---
 id: 2026-09-16-news-batch-4-1-crypto-regulation
 title: News batch 4.1: crypto regulation, technology and industry news
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-17T10:39:10Z
 created_at: 2026-09-16T13:21:39Z
 completed_at:
 branch: claude/brave-hopper-8ezxba
@@ -140,16 +140,19 @@ npm run check:tasks
 - [x] 十一篇 zh-TW 全部撰稿並經獨立查核（C4、C7、C9 做了第二輪）；報告在 `docs/news-2026-batch-4/factcheck-draft/`。
 - [x] 十篇五語併入、主圖與圖解五語產出（C1–C6、C8–C11）。
 - [x] 索引 `crypto-news-2026-index` 的 zh-TW（另由獨立代理拿十一篇逐句核對，14 條發現全數套用）與 en。
-- [ ] **C7 `crypto-news-stablecoin-aml-20260410` 缺 ja、ko**（zh-TW、en、zh-CN 已併入）。
-- [ ] **索引缺 ja、ko、zh-CN**；三個標題已定案、不可更動（研究紀錄的 `planned_titles`）。
-      補齊前十一篇的 `check_article.py --full` 都會多三條索引連結的 FAIL，CI 不受影響。
-- [ ] **逐語審稿整個階段還沒做**（`docs/news-2026-batch-4/agents/REVIEW.md`，修正由 `apply_corrections.py` 套用）。
-- [ ] `pack_cli relink`／`autolink`（內容定稿後才跑）。
-- [ ] 全垂直的 `manifest.json` 與 contact sheet（`build_assets.py crypto` 不帶 `--slug` 跑一次，並由人逐張看過）。
-- [ ] 站主逐篇驗收（YMYL：有沒有變相推薦標的、風險講得夠不夠）。
-- [ ] 匯入與發布：先解 `2026-09-14-sitemap-split-before-1000-rows`（這批是 60 列，線上已約 980／1,000）。
+- [x] C7 `crypto-news-stablecoin-aml-20260410` 的 ja、ko，索引的 ja、ko、zh-CN（第二個 session，協調者用 `l10n.py` 逐格翻，再交獨立審稿）。
+- [x] 逐語審稿：4 語言 × 3 組共 12 位代理，採用 706 筆、退回 1 筆（`docs/news-2026-batch-4/translation-corrections*.json`），
+      協調者另有 54 筆（`coordinator-corrections.json`：跨組用語、韓文站方語氣、免責句、11 個譯文標題）。
+- [x] 審稿抓到一個兩輪查核都放過的**原稿事實錯誤**（日本審議會那篇：發行人未募資時是業者自行編製並公表），回金融廳 PDF 查證後五語改正、研究紀錄加註。
+- [x] 同群文章互連用內容包的 `related`；`pack_cli relink` 已套用（165 條）；`autolink` 只找到法條引文裡的「澳門」→ 澳門一日遊，不套用。
+- [x] 全垂直的 `manifest.json` 與 contact sheet，五語逐張看過，審稿改過圖上短字後重出一次。
+- [x] 驗證：十一篇 `check_article.py --full --assets` OK、索引五語過 schema 與 lint、`pack_cli lint --kind life` 0 error、內容包測試 53 passed。
+- [ ] 站主逐篇驗收（YMYL：有沒有變相推薦標的、風險講得夠不夠）；審稿代理回報的繁中原稿疑點列在 HANDOVER 2.1，沒有一項是事實錯誤。
+- [ ] 出刊當天重查活資料（HANDOVER 2.2），再 `guides-import --slug …` 匯入發布。十二篇要同一次匯入，`related` 才接得起來。
+      **sitemap 不再是阻礙**：`2026-09-14-sitemap-split-before-1000-rows` 已在 2026-09-16 完成（PR #531，sitemap index），上一版交接的那一條過期了。
 
-停手的原因是帳號用量上限（Opus 子代理的週上限 2026-09-19 07:00 台北時間重置），不是卡在技術問題，所以 `release`。
+第一個 session 停手的原因是帳號用量上限；第二個 session（2026-09-17，同為 `claude-fable-5-1`）重新認領並做到這裡。
+這張票留在 `in-progress` 等站主驗收；要交給別人接就 `release`。
 
 ### 規格衝突（`BRIEF.md` 要求記進 tasks/）
 
