@@ -16,7 +16,9 @@
 | daegu-2-day-itinerary | 前山纜車只在狀態列看到「정비중」 | 撰稿當天官網首頁掛出兩張公告圖：設施改善工程 2026-08-31 到 09-22 暫停營業，以及 2026 中秋連假 9/24–27 的運行時間。文章已寫進方案 B，並在上線票列了 09-22 之後回頭確認復駛 | 前山纜車官網 |
 | chiang-rai-2-day-itinerary | AOT 清萊機場交通頁回 000（讀不到） | 今天 curl 回 200，但內容是動態載入、渲染後是空的，只看得到 Taxi 與 Car Rental 兩個分類。文章只寫「AOT 交通頁只列得出計程車與租車兩類」，沒有寫固定價或接駁巴士 | AOT 清萊機場 |
 | sendai-matsushima-2-day-itinerary | Day 1 的段落順序是仙台城跡在博物館前面 | 官網的巴士停靠順序是瑞鳳殿前、博物館、仙台城跡，而且單向；文章的動線句與圖解改成官網順序，表格列序仍照規格 | るーぷる仙台官網 || hue-day-trip-from-da-nang | 正文段落寫「嗣德陵與同慶陵在水春（Thủy Xuân）一帶」 | 同一份規格的來源 (6) 與 visithue 票價頁都寫嗣德陵在 Thôn Thượng、同慶陵才在 Phường Thủy Xuân。文章照官方頁寫（明命陵與嘉隆陵香壽、啟定陵與紹治陵水朋、嗣德陵 Thôn Thượng、同慶陵水春坊），圖上標籤同 | visithue 票價頁 |
-| sentosa-day-guide | 纜車聖淘沙線的票價 | 聖淘沙官網寫 15／10、營運者 Mount Faber Leisure 寫 17／12，兩個官方頁互相衝突，文章兩組都不寫。另外 Wings of Time 的官方票券名稱已改成「Wings of Time Fireworks Symphony」（頁面標題仍是舊名），文章沿用舊名 | 兩個官方頁 |
+| sentosa-day-guide | 纜車聖淘沙線的票價 | 聖淘沙官網寫 15／10、營運者 Mount Faber Leisure 寫 17／12，兩個官方頁互相衝突，文章兩組都不寫。另外 Wings of Time 的官方票券名稱已改成「Wings of Time Fireworks Symphony」（頁面標題仍是舊名），文章沿用舊名 | 兩個官方頁 || vietnam-domestic-flights-train-guide、hue-day-trip-from-da-nang | 「統一線的票價表單會忽略出發站」，所以中途站的票價不能寫 | **今天不成立，兩位撰稿者各自實測推翻。** 表單確實有吃出發站：同一班 SE1、同一天，河內→西貢軟座 1,161,000、峴港→西貢 726,000、順化→西貢 814,000、順化→峴港 145,000 ₫，隨距離遞減。規格拿來當證據的 2,096,000 是河內到西貢那一段的價。真正的坑有兩個：查完一次之後站別的下拉選單會跳回這條線的端點，畫面上看不出剛才算的是哪一段（實測：選峴港到順化，回來顯示的是 728,000＝峴港到河內，重選才拿到 143,000，差五倍）；方向選錯回傳空白。兩篇都改寫成這兩個坑，「中途站票價不寫數字、回訂票流程查」的結論不變 | giotaugiave.dsvn.vn 實測 |
+| bangkok-where-to-stay | 兩機場之間的免費接駁巴士 | AOT 頁今天多了「only for passengers transferring between Suvarnabhumi and Don Mueang」、要出示機票與護照、一般旅客不適用。文章照新頁寫；既有 `bangkok-airport-to-city` 沒有這個限制，已列入待修 | AOT 官網 |
+| vietnam-domestic-flights-train-guide | 退換票手續費「10% 到 20%」 | 實際是三個級距：開車前 24 小時以上 10%、4 到 24 小時 20%、不到 4 小時不退。另外「春節 30%」不在 2026 年政策頁（該頁的 30% 是河內–老街團體票欄），真正出處是 2026-09-08 的丁未年 2027 春節專頁 | 越南鐵路官網 |
 ## 字數：README 的上限比站上實際出貨嚴
 
 普吉跳島篇的撰稿者用 `pack_ingest._body_length` 量了 main 上 88 篇 zh-TW `howto`：**中位數 3,183 字、最長 4,178 字**，而 `pack_cli lint` 的機械區間是 1,500 到 6,000。
