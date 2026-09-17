@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">仙台到藏王狐狸村的三段路與巴士時刻 / Sendai to Zao Fox Village</title>
+  <desc id="desc">由左到右三個節點：仙台站、白石蔵王駅、藏王狐狸村。仙台站到白石蔵王駅是東北新幹線，畫成虛線，票價與車程以 JR 官網為準，圖上不放數字。白石蔵王駅到狐狸村有兩條：實線是白石蔵王山麓循環線，大人 1,000 日圓、約 34 分；點線是計程車，約 20 分。右下的時刻框列出四個班次，去程白石蔵王駅 10:15 到狐狸村 10:49、白石蔵王駅 13:05 到狐狸村 13:39，回程狐狸村 12:10 到白石蔵王駅 12:46、狐狸村 15:00 到白石蔵王駅 15:36，每週三停駛。狐狸村旁的小框寫門票大人 1,500 日圓、9:00 到 16:30、冬季 16:00、每週三休園。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#5C6B6B"/>
+    </marker>
+    <marker id="arrowteal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">仙台到藏王狐狸村：三段路，和巴士的四個時刻</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Sendai to Zao Fox Village: three legs, four bus departures</text>
+  <text x="60" y="118" font-size="17" fill="#5C6B6B">示意圖，距離非比例</text>
+
+  <!-- nodes -->
+  <rect x="80" y="180" width="250" height="110" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="205" y="222" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">仙台站</text>
+  <text x="205" y="256" font-size="16" fill="#5C6B6B" text-anchor="middle">Sendai Sta.</text>
+
+  <rect x="590" y="180" width="270" height="110" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="725" y="222" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">白石蔵王駅</text>
+  <text x="725" y="256" font-size="16" fill="#5C6B6B" text-anchor="middle">Shiroishi-Zao Sta.</text>
+
+  <rect x="1120" y="180" width="270" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1255" y="222" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">藏王狐狸村</text>
+  <text x="1255" y="256" font-size="16" fill="#5C6B6B" text-anchor="middle">Zao Fox Village</text>
+
+  <!-- shinkansen: dashed -->
+  <line x1="336" y1="235" x2="578" y2="235" stroke="#2F6F9F" stroke-width="4" stroke-dasharray="16 10" marker-end="url(#arrow)"/>
+  <text x="457" y="205" font-size="18" font-weight="bold" fill="#2F6F9F" text-anchor="middle">東北新幹線</text>
+  <text x="457" y="266" font-size="15" fill="#5C6B6B" text-anchor="middle">票價與車程</text>
+  <text x="457" y="288" font-size="15" fill="#5C6B6B" text-anchor="middle">以 JR 官網為準</text>
+
+  <!-- bus: solid -->
+  <line x1="866" y1="215" x2="1108" y2="215" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowteal)"/>
+  <text x="987" y="190" font-size="17" font-weight="bold" fill="#0D6B68" text-anchor="middle">白石蔵王山麓循環線</text>
+  <text x="987" y="243" font-size="17" fill="#102A2B" text-anchor="middle">1,000 日圓・約 34 分</text>
+
+  <!-- taxi: dotted -->
+  <line x1="866" y1="278" x2="1108" y2="278" stroke="#D97A2B" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="987" y="312" font-size="17" fill="#D97A2B" text-anchor="middle">計程車 約 20 分</text>
+
+  <!-- fox info box -->
+  <rect x="1120" y="360" width="400" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1150" y="402" font-size="19" font-weight="bold" fill="#0D6B68">藏王狐狸村</text>
+  <text x="1150" y="444" font-size="17" fill="#102A2B">門票 大人 1,500 日圓</text>
+  <text x="1150" y="480" font-size="17" fill="#102A2B">9:00 到 16:30（冬季 16:00）</text>
+  <text x="1150" y="516" font-size="17" fill="#B8442D">每週三休園</text>
+
+  <!-- legend -->
+  <rect x="80" y="360" width="980" height="180" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="112" y="404" font-size="19" font-weight="bold" fill="#102A2B">圖例</text>
+  <line x1="112" y1="464" x2="192" y2="464" stroke="#0D6B68" stroke-width="4"/>
+  <text x="208" y="471" font-size="17" fill="#102A2B">實線＝路線巴士</text>
+  <line x1="430" y1="464" x2="510" y2="464" stroke="#2F6F9F" stroke-width="4" stroke-dasharray="16 10"/>
+  <text x="526" y="471" font-size="17" fill="#102A2B">虛線＝新幹線</text>
+  <line x1="720" y1="464" x2="800" y2="464" stroke="#D97A2B" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>
+  <text x="816" y="471" font-size="17" fill="#102A2B">點線＝計程車</text>
+  <text x="112" y="516" font-size="16" fill="#5C6B6B">新幹線那一段，官網沒有仙台出發的車程與票價，圖上不放數字</text>
+
+  <!-- timetable -->
+  <rect x="80" y="590" width="1440" height="230" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="120" y="636" font-size="20" font-weight="bold" fill="#2F6F9F">去程（往狐狸村）</text>
+  <text x="120" y="682" font-size="18" fill="#102A2B">白石蔵王駅 10:15 → 狐狸村 10:49</text>
+  <text x="120" y="722" font-size="18" fill="#102A2B">白石蔵王駅 13:05 → 狐狸村 13:39</text>
+  <text x="820" y="636" font-size="20" font-weight="bold" fill="#2F6F9F">回程（往白石蔵王駅）</text>
+  <text x="820" y="682" font-size="18" fill="#102A2B">狐狸村 12:10 → 白石蔵王駅 12:46</text>
+  <text x="820" y="722" font-size="18" fill="#102A2B">狐狸村 15:00 → 白石蔵王駅 15:36</text>
+  <text x="120" y="782" font-size="18" font-weight="bold" fill="#B8442D">每週三停駛，不接受預約，客滿要等下一班</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

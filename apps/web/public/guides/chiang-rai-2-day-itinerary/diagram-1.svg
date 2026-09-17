@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans Thai','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">清萊市區與四個景點的方位 / Where the four sights sit around Chiang Rai</title>
+  <desc id="desc">以清萊市區為中心的方位示意圖。中央色塊是清萊市區，裡面標著鐘樓、夜市與美功河。往南是白廟 Wat Rong Khun，門票 200 泰銖、離市區約 14 公里。往西南是辛哈公園 Singha Park，入園免費、離市區約 12 公里。往北是藍廟 Wat Rong Suea Ten，免費參拜、離市區約 4 公里，在往機場的方向上。北邊偏右是黑屋 Baan Dam Museum，市區車程約 20 到 30 分，不定休。再往北一支箭頭出圖，是董山 Doi Tung 與金三角的方向，兩份官方頁的公里數不一致所以不標。左下角一支箭頭往西南出圖，是清邁方向，巴士約 3 小時 20 分。實線箭頭代表開車方向，色塊代表市區。開放時間與門票見內文表格。示意圖，方向與距離非比例。</desc>
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker>
+    <marker id="arrowNavy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2F6F9F"/></marker>
+    <marker id="arrowMocha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6B4A3A"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#D97A2B"/></marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="40" y="52" font-size="30" font-weight="bold" fill="#102A2B">清萊市區與四個景點的方位</text>
+  <text x="40" y="84" font-size="18" fill="#5C6B6B">Where the four sights sit around Chiang Rai</text>
+  <text x="1560" y="52" font-size="17" text-anchor="end" fill="#5C6B6B">開放時間與門票見內文表格</text>
+  <text x="1560" y="80" font-size="15" text-anchor="end" fill="#5C6B6B">示意圖，方向與距離非比例</text>
+
+  <!-- further north, off frame -->
+  <line x1="920" y1="360" x2="920" y2="116" stroke="#D97A2B" stroke-width="4" marker-end="url(#arrowOrange)"/>
+  <text x="920" y="104" font-size="17" font-weight="bold" text-anchor="middle" fill="#D97A2B">董山 Doi Tung、金三角 方向</text>
+
+  <!-- blue temple, north -->
+  <rect x="540" y="160" width="320" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="700" y="200" font-size="18" font-weight="bold" text-anchor="middle" fill="#102A2B">藍廟 Wat Rong Suea Ten</text>
+  <text x="700" y="228" font-size="16" text-anchor="middle" fill="#5C6B6B">วัดร่องเสือเต้น</text>
+  <text x="700" y="258" font-size="17" font-weight="bold" text-anchor="middle" fill="#2F6F9F">免費・約 4 公里</text>
+  <text x="700" y="286" font-size="15" text-anchor="middle" fill="#5C6B6B">往機場方向</text>
+  <line x1="855" y1="364" x2="772" y2="318" stroke="#2F6F9F" stroke-width="4" marker-end="url(#arrowNavy)"/>
+
+  <!-- black house, north-east -->
+  <rect x="990" y="170" width="320" height="130" rx="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="1150" y="212" font-size="18" font-weight="bold" text-anchor="middle" fill="#102A2B">黑屋 Baan Dam Museum</text>
+  <text x="1150" y="246" font-size="17" font-weight="bold" text-anchor="middle" fill="#6B4A3A">車程約 20 到 30 分</text>
+  <text x="1150" y="276" font-size="15" text-anchor="middle" fill="#5C6B6B">不定休</text>
+  <line x1="1046" y1="372" x2="1120" y2="308" stroke="#6B4A3A" stroke-width="4" marker-end="url(#arrowMocha)"/>
+
+  <!-- city -->
+  <rect x="740" y="370" width="320" height="210" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="900" y="410" font-size="24" font-weight="bold" text-anchor="middle" fill="#102A2B">清萊市區</text>
+  <text x="900" y="438" font-size="16" text-anchor="middle" fill="#5C6B6B">เชียงราย Chiang Rai</text>
+  <text x="900" y="476" font-size="16" text-anchor="middle" fill="#102A2B">鐘樓 หอนาฬิกา</text>
+  <text x="900" y="504" font-size="16" text-anchor="middle" fill="#102A2B">夜市 Night Bazaar</text>
+  <text x="900" y="532" font-size="16" text-anchor="middle" fill="#102A2B">美功河 แม่น้ำกก</text>
+
+  <!-- white temple, south -->
+  <line x1="900" y1="586" x2="900" y2="684" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <text x="920" y="646" font-size="15" fill="#5C6B6B">南</text>
+  <rect x="700" y="690" width="380" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="890" y="730" font-size="18" font-weight="bold" text-anchor="middle" fill="#102A2B">白廟 Wat Rong Khun</text>
+  <text x="890" y="764" font-size="17" font-weight="bold" text-anchor="middle" fill="#0D6B68">200 泰銖・約 14 公里</text>
+
+  <!-- singha park, south-west -->
+  <line x1="734" y1="566" x2="552" y2="648" stroke="#2E7D5B" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="610" y="592" font-size="15" fill="#5C6B6B">西南</text>
+  <rect x="180" y="620" width="360" height="110" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="360" y="660" font-size="18" font-weight="bold" text-anchor="middle" fill="#102A2B">辛哈公園 Singha Park</text>
+  <text x="360" y="694" font-size="17" font-weight="bold" text-anchor="middle" fill="#2E7D5B">免費・約 12 公里</text>
+
+  <!-- chiang mai, off frame to the south-west -->
+  <line x1="380" y1="756" x2="120" y2="848" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrowTeal)"/>
+  <text x="410" y="782" font-size="18" font-weight="bold" fill="#102A2B">清邁 Chiang Mai 方向</text>
+  <text x="410" y="812" font-size="17" font-weight="bold" fill="#0D6B68">巴士約 3 小時 20 分</text>
+
+  <text x="1560" y="836" font-size="15" text-anchor="end" fill="#5C6B6B">實線箭頭＝開車方向，色塊＝市區</text>
+  <text x="1540" y="870" font-size="15" text-anchor="end" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>
