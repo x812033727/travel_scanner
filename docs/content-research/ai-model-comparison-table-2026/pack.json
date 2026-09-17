@@ -174,6 +174,25 @@
           "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.6 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。"
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這些欄位背後還有三件會改變帳單的事——快取命中價、長上下文加價門檻，以及各家 tokenizer 切出來的 token 數不一樣——寫在"
+            },
+            {
+              "type": "article",
+              "text": "單價之外",
+              "kind": "life",
+              "slug": "ai-pricing-beyond-list-price"
+            },
+            {
+              "type": "text",
+              "text": "那篇。"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "中階級：多數正式產品實際在用的一層"

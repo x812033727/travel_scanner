@@ -110,6 +110,12 @@ blocks = [
      "caption": "十家官網 2026 年 9 月 16 日當天的標準價，未套用快取、批次與離峰折扣。分數為廠商自報、測試條件不同，不可直接相減排名次。"},
     {"type": "paragraph", "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.6 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。"},
 
+    {"type": "rich_paragraph", "inlines": [
+        txt("這些欄位背後還有三件會改變帳單的事——快取命中價、長上下文加價門檻，以及各家 tokenizer 切出來的 token 數不一樣——寫在"),
+        art("單價之外", "ai-pricing-beyond-list-price"),
+        txt("那篇。"),
+    ]},
+
     {"type": "heading", "level": 2, "text": "中階級：多數正式產品實際在用的一層"},
     {"type": "paragraph", "text": "中階是實際流量最常落在的一層，因為它通常已經夠用，而價格只有旗艦的幾分之一。這一級的價差比旗艦收斂，輸出價大致落在每百萬 token 1.20 到 12 美元之間。"},
     {"type": "table", "header": TIER_HEADER, "rows": mid,
