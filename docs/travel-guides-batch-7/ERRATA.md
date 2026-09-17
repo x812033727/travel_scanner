@@ -9,7 +9,10 @@
 | sendai-airport-access-loople-bus-guide | 台灣直飛四條航線寫到每週哪幾天 | 班表欄位的 1–7 對不到星期，長榮官網 403、台灣虎航是 SPA 殼，無法確認。文章寫「每日／每日／每週三班／每週三班」，並註明確切星期以航空公司官網為準 | evaair.com 403、tigerairtw.com 無可讀頁 |
 | sendai-airport-access-loople-bus-guide | 傍晚班距「25 到 36 分」 | 逐班算出來是 23 到 45 分，文章改寫成「17 時之後拉長到每小時兩班」 | 仙台空港鉄道時刻表 |
 | sendai-airport-access-loople-bus-guide | 規格要求的內容量（4 句 summary、6 個 H2、3 張表、2 個 callout、3 題 FAQ、6 個站內連結，外加まるごとパス、icsca 兩組限制與計程車適用區域）寫不進 README 的 1,800–3,000 字 | 文章正文 4,035 字。`pack_cli lint` 的字數區間是 1,500–6,000，不會警告；兩輪刪修之後再刪就要砍規格點名的事實，協調者決定接受這個長度 | `docs/travel-guides-batch-7/README.md` 的字數規則 |
-
+| zao-fox-village-from-sendai | 冬季「みやぎ蔵王山麓アクセス線」從白石蔵王駅經狐狸村到遠刈田、青根 | 規格用的是舊網域（令和 3 年）那版。タケヤ交通現行頁（時刻表更新日 2025-12-26）寫的是「連結遠刈田溫泉與宮城藏王狐狸村、只在週六日與假日行駛」，運賃表裡沒有白石蔵王駅。文章照現行頁寫，並寫明三邊說法對不上、期間班次以官網為準 | takeyakotsu.jp/miyagizao-access/ |
+| zao-fox-village-from-sendai | 團體票「15 人以上」 | 官網沒有定義人數門檻，那個括號是規格的推測，文章不寫人數 | 狐狸村官網 |
+| zao-fox-village-from-sendai | GTFS 說明頁的網址 `gtfs_jp/` | 今天 404，現行是 `gtfs-jp/`（連字號）；資料檔網址不變 | 同上 |
+| zao-fox-village-from-sendai | 規格來源 (8) 把 `calendar_dates.txt` 的幾個週三加開日讀成循環線的例外日 | 那些日期掛的 service_id 是「毎日」，只被仙台西部ライナー 用；循環線四班全掛「月火木金土日」，沒有例外日。正文本來就不列這些日期，結論不變 | 同一份 GTFS |
 ## 字數：README 的上限比站上實際出貨嚴
 
 普吉跳島篇的撰稿者用 `pack_ingest._body_length` 量了 main 上 88 篇 zh-TW `howto`：**中位數 3,183 字、最長 4,178 字**，而 `pack_cli lint` 的機械區間是 1,500 到 6,000。
