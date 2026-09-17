@@ -66,13 +66,15 @@ from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS  # noqa: E
 # Crypto, batch 4.1. The site had no crypto article before this batch, so the vertical has no
 # earlier news to point back at. The Taiwan act is written first and is the anchor: it is the
 # one story a reader here is actually governed by, and every international piece ends by
-# linking to what Taiwan did. Its own second link is the closest existing evergreen -- the
-# regulatory classification of Taiwan's payment instruments -- which is the one place this
-# batch bends "the second link is a news story", for want of a news story to point at.
+# linking to what Taiwan did. Its own second link is the MiCA piece: the end of the EU's
+# transitional period is the closest story this batch has to the 12- and 21-month transition
+# in article 55. While the act was the only crypto article it pointed at an evergreen,
+# `epayment-vs-ewallet-taiwan`, but that pack carries zh-TW only, so the four translations had
+# no title to link to and `--full` could never pass; a link target has to exist in all five.
 # Cross-links within a cluster (the four GENIUS Act rules, the two JFSA pieces) are not wired
 # here: `pack_cli autolink` adds them once all eleven exist, which is what that pass is for.
 RELATED: dict[str, str] = {
-    "crypto-news-taiwan-vasp-act-20260630": "epayment-vs-ewallet-taiwan",
+    "crypto-news-taiwan-vasp-act-20260630": "crypto-news-mica-transition-ends-20260701",
     "crypto-news-mica-transition-ends-20260701": "crypto-news-taiwan-vasp-act-20260630",
     "crypto-news-sec-crypto-interpretation-20260323": "crypto-news-taiwan-vasp-act-20260630",
     "crypto-news-sec-regulation-crypto-assets-20260821": "crypto-news-taiwan-vasp-act-20260630",

@@ -1,0 +1,682 @@
+{
+  "slug": "crypto-news-sec-crypto-interpretation-20260323",
+  "event_date": "2026-03-23",
+  "event_date_basis": "三個互相獨立、都在一手文件裡的日期，本文全部在 2026-09-17 重讀確認。（1）作成日 2026-03-17：署名欄「By the Commissions. Dated: March 17, 2026.」在兩位秘書長姓名之上——是兩個委員會作成、秘書長具名認證（依修正清單 must_fix 7，不寫成「秘書長簽署」）；同一天填進本文件新增到 17 CFR 第 231 部與第 241 部的兩份解釋令表格（Release No. 33-11412 與 34-105020）；CFTC 新聞稿 9198-26 也標 March 17, 2026 並寫 CFTC「today」與 SEC 一起作成。（2）送存日 2026-03-20：文件結尾「[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]」，.txt 端點與已刊登 PDF 兩處都有。依修正清單 must_fix 1，前期研究拿 PDF 的「D:20260320231147Z」當送存日佐證那一句已整段刪除：我今天用 pypdf 讀出這份 PDF 的 metadata 是 /CreationDate = D:20260321130445Z、/ModDate = D:20260321090452-04'00'，兩個都是 3 月 21 日，不能拿來佐證 3 月 20 日，本篇任何一句都不依賴它。（3）刊登兼生效日 2026-03-23：聯邦公報第 91 卷第 55 期、91 FR 13714，DATES 欄「Effective Date: March 23, 2026.」，FR API 的 publication_date 與 effective_on 都是 2026-03-23。刊登日與生效日是同一天，不是兩個日期。slug 尾碼與 news_date 都取 2026-03-23（刊登兼生效），與 C4（2026-08-21 刊登）一致處理；文章把 03-17 與 03-23 兩個日期都明寫，03-20 也寫在表格裡。依修正清單 must_fix 5，文章不寫「生效日等於刊登日是因為它是解釋性規則」這個因果推論，只寫來源實際說的那句（OMB 認定為 major rule，但依 5 U.S.C. 808(2) 可立即生效，因為它是解釋性規則、免除通知評論程序），並明寫文件本身沒有說明 DATES 欄為何填 3 月 23 日。",
+  "title": "美國 SEC 與 CFTC 聯名解釋令：五類加密資產，刊登當天生效",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "Federal Register 全文：Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets（91 FR 13714）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "publisher": "Office of the Federal Register, U.S. National Archives and Records Administration",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "govinfo（美國政府出版局）：聯邦公報 2026-03-23 已刊登版本 PDF，FR Doc 2026-05635",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "publisher": "U.S. Government Publishing Office (govinfo)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "CFTC 新聞稿 9198-26：CFTC Joins SEC to Clarify the Application of Federal Securities Laws to Crypto Assets",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+      "publisher": "U.S. Commodity Futures Trading Commission",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Federal Register 文件資料（API）：FR Doc 2026-05635 的機關、型別、生效日與更正紀錄",
+      "url": "https://www.federalregister.gov/api/v1/documents/2026-05635.json",
+      "publisher": "Office of the Federal Register, U.S. National Archives and Records Administration",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條 sources 全部在 2026-09-17 以 `curl -sL -A \"Mokaair-editorial\"` 親自重抓並讀 body，沒有任何請求帶入 email、姓名或個人資料。可重現的配方與當天量測：（1）`curl -sL -A \"Mokaair-editorial\" https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt` → HTTP 200、170,238 bytes，body 是 20 頁釋令全文（含 `[Federal Register Volume 91, Number 55 (Monday, March 23, 2026)]`、`[Pages 13714-13733]`、報頭、DATES、Table of Contents 到 IX. Commission Economic Considerations、署名欄與 `[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]`）。該端點是 HTML 包裹的（`pre`、`a href`、`[[Page NNNNN]]` 標記與句中註腳號），抄字串前要把 tag、頁碼標記與換行正規化，且 SEC 的意見信箱被 Cloudflare 的 `__cf_email__` span 取代、從這個端點還原不出來（PDF 裡是 rule-comments@sec.gov）。（2）`curl -sL -A \"Mokaair-editorial\" -o govinfo.pdf https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf` → HTTP 200、353,096 bytes、content-type application/pdf、md5 e5613cb395282b5c52a3a694605d779a。**這份 PDF 今天真的讀到正文了**：`pypdf.PdfReader` 抽出 20 頁、165,092 字元（我用的是系統 Python 3.14 的 pypdf 6.16.2；`apps/api/.venv` 裡沒有 pypdf，所以修正清單 must_fix 2 所稱「本容器無法抽 PDF 文字」在這台機器上的正確說法是：venv 沒裝，系統 Python 有裝且可用）。第 1 頁開頭是前一則 FAA 文件的尾段（聯邦公報同一頁可容多份文件），釋令從報頭 `COMMODITY FUTURES TRADING COMMISSION 17 CFR Part 1 RIN 3038-AF67 ...` 起算。PDF 與 .txt 的內容互相吻合，包括報頭多出來的 `li`。（3）`curl -sL -A \"Mokaair-editorial\" https://www.cftc.gov/PressRoom/PressReleases/9198-26` → HTTP 200、37,594 bytes，`<title>` 為 `CFTC Joins SEC to Clarify the Application of Federal Securities Laws to Crypto Assets | CFTC`，body 有 Release Number 9198-26、March 17, 2026、兩位主席的引述、四點摘要，頁尾 RELATED LINKS 掛著標籤為 `91 FR 13714` 的 PDF 與 `Fact Sheet`。（4）`curl -sL -A \"Mokaair-editorial\" https://www.federalregister.gov/api/v1/documents/2026-05635.json` → HTTP 200、3,468 bytes，body 是該文件的 metadata：`agencies` = [Commodity Futures Trading Commission, Securities and Exchange Commission]、`type` = \"Rule\"、`action` = \"Final rule; interpretation; guidance\"、`citation` = \"91 FR 13714\"、`dates` = \"Effective Date: March 23, 2026.\"、`publication_date` = `effective_on` = 2026-03-23、`comments_close_on` = null、`corrections` = []、`correction_of` = null、`docket_ids` = [Release Nos. 33-11412, 34-105020, File No. S7-2026-09]、`regulation_id_numbers` = [3038-AF67, 3235-AN56]、`cfr_references` = 17 CFR 1/231/241、`start_page` 13714、`end_page` 13733、`signing_date` = null、`topics` = [\"Securities\"]。這一條是依修正清單 source_list_fix 新增的第 4 條，讓「型別 Rule」「agencies 兩個機關」「截至查核日沒有更正」三句話追溯得到網址。**API 回應的 bytes 數與 `page_views` 都是活資料，不寫進文章。** 沒有任何識別碼是猜的：govinfo 網址＝API 的 `pdf_url`、.txt 網址＝API 的 `raw_text_url`、CFTC 9198-26 的 PDF 與 fact sheet 網址都是新聞稿裡的 href。聯邦公報的正規文件頁（/documents/2026/03/23/2026-05635/...）刻意不放進 sources：`curl -L` 落在 https://unblock.federalregister.gov/、HTTP 200 但 body 只有 10,596 bytes 的「Request Access」，是 200 而非文件。sec.gov 一律不引：本文沒有任何一句依賴 sec.gov 後面的內容，CFTC 新聞稿連的 SEC fact sheet 也沒有讀到。這些取得過程只留在本紀錄，文章裡沒有任何一句寫容器或工具行為。",
+  "verified_facts": [
+    {
+      "fact": "本文件刊登於聯邦公報第 91 卷第 55 期（2026 年 3 月 23 日星期一）Rules and Regulations，頁次 13714 至 13733，引註 91 FR 13714。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Federal Register Volume 91, Number 55 (Monday, March 23, 2026)]"
+    },
+    {
+      "fact": "本文件是兩個機關聯名，不是 SEC 單方面的公告：AGENCY 欄同時列出兩個委員會。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AGENCY: Securities and Exchange Commission; Commodity Futures Trading Commission"
+    },
+    {
+      "fact": "報頭同時有兩個機關區塊與各自的 RIN、CFR 部別與文號。已刊登文本在 File No. 之後多出一個 `li`，那是已刊登版本自帶的排版雜訊（不是抓取錯誤，也不是我的錯字）：聯邦公報 .txt 端點與 govinfo 已刊登 PDF 兩處都有，我今天在兩處各確認一次。依修正清單 must_fix 3，引文照原樣保留 `li`，不清理。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "COMMODITY FUTURES TRADING COMMISSION 17 CFR Part 1 RIN 3038-AF67 SECURITIES AND EXCHANGE COMMISSION 17 CFR Parts 231 and 241 [Release Nos. 33-11412; 34-105020; File No. S7-2026-09]li RIN 3235-AN56"
+    },
+    {
+      "fact": "ACTION 欄寫的是「Final rule; interpretation; guidance」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ACTION: Final rule; interpretation; guidance"
+    },
+    {
+      "fact": "聯邦公報把這份文件的型別（type）標為 Rule，並把兩個機關列為 agencies。這兩項 metadata 來自 FR API，不在 .txt 端點上（.txt 只印章節標題 [Rules and Regulations]），所以掛在 API 網址（依修正清單 must_fix 6）。 FR API 的回應是最小化 JSON（鍵值之間沒有空白），引文照該回應原樣。",
+      "url": "https://www.federalregister.gov/api/v1/documents/2026-05635.json",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"type\":\"Rule\""
+    },
+    {
+      "fact": "DATES 欄只有生效日一行，沒有意見截止日；FR API 的 comments_close_on 是 null。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Effective Date: March 23, 2026."
+    },
+    {
+      "fact": "本文件由兩個委員會作成、日期為 2026 年 3 月 17 日，並由兩位秘書長具名認證（不是「秘書長簽署」）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By the Commissions. Dated: March 17, 2026. Vanessa A. Countryman, Secretary, Securities and Exchange Commission. Christopher Kirkpatrick, Secretary, Commodity Futures Trading Commission."
+    },
+    {
+      "fact": "本文件於 2026 年 3 月 20 日上午 8 時 45 分送存聯邦公報辦公室，比刊登日早三天。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]"
+    },
+    {
+      "fact": "分工：SEC 作成解釋，CFTC 就該解釋提供指引，且釋令中的「we」與「our」只指 SEC。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The references in this release to \"we\" and \"our\" are to the Commission. The Commodity Futures Trading Commission (\"CFTC\") provides herein guidance relating to that interpretation."
+    },
+    {
+      "fact": "CFTC 的指引內容：CFTC 與其人員將以與該解釋一致的方式施行《商品交易法》，且某些非證券加密資產可能符合《商品交易法》裡「commodity」的定義。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Further, the CFTC provides herein guidance that the CFTC and its staff will administer the Commodity Exchange Act"
+    },
+    {
+      "fact": "註 48 把 commodity 那句收窄：除了 GENIUS Act 第 2 條所定義「由許可支付穩定幣發行人發行的支付穩定幣」以外的非證券加密資產，才可能符合《商品交易法》的 commodity 定義（7 U.S.C. 1a(9)）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "However, any non-security crypto asset, other than a \"payment stablecoin issued by a permitted payment stablecoin issuer,\" as such terms are defined in section 2 of the GENIUS Act, could meet the definition of \"commodity\" under the Commodity Exchange Act."
+    },
+    {
+      "fact": "釋令不改變兩個機關各自的法定職權。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Nothing in this release should be construed as altering the respective statutory authorities of the SEC or CFTC."
+    },
+    {
+      "fact": "釋令自己寫明不創設任何新的法律義務。（引文在此截斷：接下去的 crypto asset-related securities 在 .txt 端點上被換行拆成 \"crypto asset- related\"，續抄就不是逐字。）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The interpretation does not itself create any new legal obligations for issuers of, and investors in, digital securities"
+    },
+    {
+      "fact": "釋令沒有取代 Howey 判準，該判準是有拘束力的法院先例。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The interpretation in this release does not supersede or replace the Howey test, which is binding legal precedent."
+    },
+    {
+      "fact": "國會審查法下的程序狀態：OMB 已把本解釋認定為 5 U.S.C. 804(2) 的 major rule；儘管有此認定，該解釋依 5 U.S.C. 808(2) 可立即生效，因為它是解釋性規則、免除行政程序法的通知評論要求。釋令本身沒有解釋 DATES 欄為何寫 3 月 23 日（must_fix 5）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the Office of Management and Budget (''OMB'') has designated the interpretation in this release as a ''major rule,'' as defined by 5 U.S.C. 804(2). Notwithstanding such designation, the interpretation in this release may take effect immediately pursuant to 5 U.S.C. 808(2) because it is an interpretive rule and thus exempt from the Administrative Procedure Act's notice and comment requirements."
+    },
+    {
+      "fact": "釋令把加密資產分成五類。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we classify crypto assets into five categories based on their characteristics, uses, and functions: (i) digital commodities; (ii) digital collectibles; (iii) digital tools; (iv) stablecoins; and (v) digital securities."
+    },
+    {
+      "fact": "各類的法律定位：數位商品、數位收藏品與數位工具本身不是證券；穩定幣視特徵而定；數位證券是證券。非證券加密資產仍可能在附帶投資契約的情形下被要約與銷售，而投資契約本身是證券。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Digital commodities, digital collectibles, and digital tools, each as further described below, are not themselves securities. However, as with any asset that is not a security, a non-security crypto asset can be offered and sold subject to an investment contract, which is a security."
+    },
+    {
+      "fact": "分類不是窮盡的：可能有不屬於這五類任一類的加密資產，也可能有具混合特徵、同時落在一類以上的。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "there may be crypto assets that do not fall within any of these five categories, as well as crypto assets with hybrid characteristics that may fall within more than one category."
+    },
+    {
+      "fact": "具名例子只出現在五類中的三類：數位商品（Examples of digital commodities include …，註 51 帶「Based on our understanding of their characteristics, terms, and functions as of the date of this release」）、數位收藏品與數位工具（這兩類把同一段限定語寫在句子裡）。穩定幣與數位證券兩節沒有列任何具名資產（以 include／such as／example 三個字在該兩節內查核，2026-09-17 未見）。三份清單都以 include 起頭，是舉例不是全清單。文章因此不轉錄任何具名資產。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Examples of digital tools available in the markets today, based on our understanding of their characteristics, terms, and functions as of the date of this release, include"
+    },
+    {
+      "fact": "五類的法律定位在同一段裡逐句寫明，穩定幣那一句是「很寬的類別、可能是也可能不是證券，視其特徵而定」，數位證券那一句是「是證券」。兩句都帶「as further described below」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Stablecoins, as further described below, are a broad category of crypto assets that may or may not be securities depending on their characteristics. Digital securities, as further described below, are securities."
+    },
+    {
+      "fact": "迷因幣是釋令自己舉的例子，寫在數位收藏品那一節的「Some digital collectibles have limited or no functionality」之後。它舉的轉類例子附三個條件，一個都不能省：該加密資產起初以迷因幣形式要約與銷售、在相關的功能性加密系統裡「沒有」功能（不是「功能有限」）、且沒有要創設該功能或該系統的相關陳述或承諾，價值來自其藝術、娛樂、社會或文化意義；這樣的資產日後若在相關的功能性加密系統裡變得有功能，「可能」成為數位商品。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a crypto asset may be offered and sold initially as a meme coin that has no functionality within an associated functional crypto system (and no related representations or promises to create such functionality or crypto system) and that derives its value from the asset's artistic, entertainment, social, or cultural significance, but later become a digital commodity because it becomes functional within an associated functional crypto system."
+    },
+    {
+      "fact": "GENIUS Act 第 17 條把「由許可支付穩定幣發行人發行的支付穩定幣」排除在「證券」的定義之外。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act excludes from the definition of ''security'' any ''payment stablecoin issued by a permitted payment stablecoin issuer,'' as such terms are defined in section 2 of the GENIUS Act."
+    },
+    {
+      "fact": "穩定幣的結論有時間條件：那個「當然不是證券」的效果要在 GENIUS Act 生效之後才依法發生（修正清單 must_add 6）。同段並寫明，非「由許可支付穩定幣發行人發行的支付穩定幣」的穩定幣，是不是證券要看事實與情形。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These crypto assets categorically will not be securities by operation of statute after the effective date of the GENIUS Act."
+    },
+    {
+      "fact": "GENIUS Act 的生效日只寫公式，沒有日曆日期：制定日（2025 年 7 月 18 日）起 18 個月，或主要聯邦支付穩定幣主管機關發布任何最終施行規則後 120 天，取其早。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act will become effective on the earlier of 18 months after its date of enactment (July 18, 2025) or the date that is 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the GENIUS Act."
+    },
+    {
+      "fact": "因為 GENIUS Act 尚未生效，委員會解釋：依幕僚 2025 年 4 月 4 日 Staff Statement on Stablecoins 所述理由，Covered Stablecoins 的要約與銷售不涉及證券的要約與銷售；該解釋不處理 Covered Stablecoins 以外的穩定幣。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the Commission interprets that, for the reasons set forth in the Staff Stablecoin Statement, the offer and sale of Covered Stablecoins does not involve the offer and sale of securities"
+    },
+    {
+      "fact": "註 81（修正清單 must_add 2，對台灣讀者最直接相關）：雖然不在 GENIUS Act 第 17 條的法定排除裡，由在通貨監理局登記的「foreign permitted stablecoin issuer」所發行的支付穩定幣，一般不會符合「證券」的定義，因為一般會被認為是 Covered Stablecoins（GENIUS Act 第 18 條）。「generally」的限定詞原樣保留。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "payment stablecoins issued by a ''foreign permitted stablecoin issuer'' (as the term is defined in the GENIUS Act) registered with the Comptroller of the Currency will generally not meet the definition of ''security,'' as such payment stablecoins will generally be considered ''Covered Stablecoins.''"
+    },
+    {
+      "fact": "GENIUS Act 第 4(a)(11) 條禁止許可支付穩定幣發行人單純因持有、使用或保留該支付穩定幣而對持有人支付任何形式的利息或收益（現金、代幣或其他對價皆然）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A permitted payment stablecoin issuer is prohibited under the GENIUS Act from paying any form of interest or yield to the permitted stablecoin holders (whether in cash, tokens, or other consideration) solely in connection with the holding, use, or retention of the payment stablecoin."
+    },
+    {
+      "fact": "非證券加密資產何時附帶投資契約：發行人以誘使他人在共同事業中投入金錢、並以陳述或承諾表示將從事必要管理努力、使購買人合理期待因此獲利的方式要約該資產時。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A non-security crypto asset becomes subject to an investment contract when an issuer offers it by inducing an investment of money in a common enterprise with representations or promises to undertake essential managerial efforts from which a purchaser would reasonably expect to derive profits."
+    },
+    {
+      "fact": "誰的陳述算數：由發行人所為或代其所為、並傳達給購買人的明示陳述或承諾，可使購買人合理期待獲利；第三人（例如與該加密系統無關的支持者或該加密資產的持有人）所為的則不合理，除非那些陳述或承諾經發行人授權並傳達給購買人。「unless」這個限定詞原樣保留。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "it would not be reasonable for a purchaser to expect profits based on representations or promises made by third parties,89 such as unaffiliated proponents of the relevant crypto system or holders of the relevant crypto asset, unless the representations or promises are authorized by the issuer and conveyed to purchasers."
+    },
+    {
+      "fact": "註 89（修正清單 must_add 4）：第三人陳述不算數的原則有例外——第三人與發行人串通傳達陳述或承諾時，購買人依那些明示陳述或承諾期待獲利就是合理的。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "However, where the third party and the issuer collude to convey representations or promises, it would be reasonable for a purchaser to expect profits based on those explicit representations or promises."
+    },
+    {
+      "fact": "發行人在銷售之後才作的陳述或承諾，不會把先前那次銷售變成投資契約的要約或銷售。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the issuer's post-sale representations or promises would not convert the prior sale into an offer or sale of an investment contract."
+    },
+    {
+      "fact": "「分離」徵象是非窮盡的（non-exclusive），釋令自己編號的兩節分別是「1. Fulfillment of the Issuer's Representations or Promises」（發行人已完成所承諾的必要管理努力，即使仍繼續提供非必要的努力）與「2. Failure To Satisfy Issuer's Representations or Promises」（購買人已不再合理期待發行人能履行或繼續那些努力）；這裡的「兩」是釋令自己的小節編號，不是清點出來的。（掛在已刊登 PDF：.txt 端點把 non-exclusive 換行拆成 \"non- exclusive\"，逐字引文只在 PDF 上連續。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As discussed below, we would not expect a non-security crypto asset to be subject to an investment contract when any of the following non-exclusive indicia of separation is present."
+    },
+    {
+      "fact": "附帶投資契約不會讓該加密資產本身變成證券。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the fact that a non-security crypto asset is subject to an investment contract does not transform the non-security crypto asset itself into a security"
+    },
+    {
+      "fact": "分離不抹掉過去的責任：當初未登記該投資契約的發行、也不符合可用豁免者仍違反《證券法》，投資人保有權利；重大不實陳述或遺漏仍可能構成反詐欺條款的責任，即使該加密資產之後與投資契約分離、該投資契約已不存在。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "even if the non-security crypto asset subsequently separates from the associated investment contract and that investment contract ceases to exist"
+    },
+    {
+      "fact": "第五節處理的兩種行為：在採用工作量證明共識機制的公開、無需許可網路上挖取數位商品（Protocol Mining），以及在採用權益證明的同類網路上質押數位商品（Protocol Staking）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) certain digital commodity activities known as \"mining\" on public, permissionless crypto networks that use proof-of-work (\"PoW\") as a consensus mechanism (\"PoW Networks\"); and (2) certain digital commodity activities known as \"staking\" on public, permissionless crypto networks that use proof-of-stake (\"PoS\") as a consensus mechanism (\"PoS Networks\")"
+    },
+    {
+      "fact": "納入範圍的挖礦只有釋令逐項指名的形態：自行（單獨）挖礦與礦池。（釋令用「Only … the following types … are addressed in this release」把清單關起來，但**沒有印出數量**，所以不寫「兩種」，照它指名的項目寫。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Only Protocol Mining Activities undertaken in connection with the following types of Protocol Mining are addressed in this release: Self (or Solo) Mining"
+    },
+    {
+      "fact": "納入範圍的質押只有釋令逐項指名的安排：自行（單獨）質押、以自我保管方式直接與第三方質押、託管安排、流動性質押。（同上，釋令沒有印出數量，所以不寫「四種」。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Only Protocol Staking Activities undertaken in connection with the following types of Protocol Staking are addressed in this release: Self (or Solo) Staking"
+    },
+    {
+      "fact": "挖礦的解釋結論：在本釋令所述方式與情形下，Protocol Mining Activities 不涉及《證券法》第 2(a)(1) 條與《證券交易法》第 3(a)(10) 條意義下的證券要約與銷售。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Protocol Mining Activities, in the manner and under the circumstances described in this release, do not involve the offer and sale of a security within the meaning of section 2(a)(1) of the Securities Act and section 3(a)(10) of the Exchange Act."
+    },
+    {
+      "fact": "質押的解釋結論：在本釋令所述方式與情形下，Protocol Staking Activities 不涉及《證券法》第 2(a)(1) 條或《證券交易法》第 3(a)(10) 條意義下的證券要約與銷售。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Protocol Staking Activities, in the manner and under the circumstances described in this release, do not involve the offer and sale of a security within the meaning of section 2(a)(1) of the Securities Act or section 3(a)(10) of the Exchange Act."
+    },
+    {
+      "fact": "釋令指名的附隨服務（Ancillary Services）被列為「merely administrative or ministerial in nature」：削減保障、提前解除質押鎖定、替代的獎勵給付時程與金額、為達到協議質押門檻而彙總數位商品；不論分開提供或整組提供都不構成必要管理努力。（釋令沒有印出數量，所以不寫「四項」。）替代獎勵那一項附帶但書，獎勵金額不得固定、不得保證、也不得高於權益證明網路軟體協議所給。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "provided the reward amounts are not fixed, guaranteed, or greater than those awarded by the PoS Network's software protocol"
+    },
+    {
+      "fact": "註 127（修正清單 must_add 5）：範圍限制比四項具名的附隨服務更廣——服務提供者提供未在該節討論的服務時，其行為在本釋令範圍之外。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To the extent that Service Providers provide services not discussed below, their activities are outside the scope of this release."
+    },
+    {
+      "fact": "註 131：流動性質押提供者提供讓質押收據代幣得以產生額外報酬的方法時，那些行為在本釋令範圍之外。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Where a Liquid Staking Provider provides the means by which such a Staking Receipt Token can be used to generate such returns, those activities are outside the scope of this release."
+    },
+    {
+      "fact": "第六節的「包裝」定義：把加密資產存入託管業者或跨鏈橋（Wrapped Token Provider），對方以一對一生成等量的 Redeemable Wrapped Tokens，且不直接或間接提供任何報酬、收益、獲利機會或額外商品服務；存入的資產被鎖住、不得移轉、出借、質押或再抵押，持有人可一對一贖回，贖回時包裝代幣被銷毀。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "without directly or indirectly offering any return, yield, profit opportunity, or additional good or service"
+    },
+    {
+      "fact": "第七節的空投只處理一個窄口徑：發行人對未向其提供金錢、商品、服務或其他對價之受領人所為的非證券加密資產空投。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "this interpretation addresses only airdrops of non-security crypto assets by issuers to recipients who do not provide the issuer with money, goods, services, or other consideration in exchange for the airdropped non-security crypto assets"
+    },
+    {
+      "fact": "空投的排除情形：受領人以提供服務換取空投時該解釋不適用；註 141 並列出公告空投之後還要買特定加密資產、買商品或服務、或執行特定任務等後續條件的情形也不適用。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "such as where the recipient performs a service in exchange for the airdropped non-security crypto asset"
+    },
+    {
+      "fact": "註 142（修正清單 must_add 3）：空投的解釋不適用於、也不影響委員會或其幕僚就涉及發行或授予證券的員工報酬與福利安排既有的立場。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The interpretation does not apply to or otherwise affect existing Commission or staff positions regarding employee compensation and benefit arrangements involving the issuance or award of securities."
+    },
+    {
+      "fact": "註 107：本釋令沒有處理再質押（restaking）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This release does not address ''restaking,'' which is a process that allows digital commodities staked on their associated crypto network to be used on additional crypto systems."
+    },
+    {
+      "fact": "明文排除的其他法律體系：《國內稅收法典》下的聯邦稅法、1970 年《銀行保密法》與 2020 年《反洗錢法》。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "No interference is intended with respect to any other legal regime, including the Federal tax laws under the Internal Revenue Code or the Bank Secrecy Act of 1970 and the Anti-Money Laundering Act of 2020, which are outside the scope of the interpretation in this release."
+    },
+    {
+      "fact": "釋令就自己所載的見解（包括其中對加密資產與加密資產交易的描述）徵詢公眾意見；意見檔號為 File No. S7-2026-09。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we are soliciting public comment on the views set forth in the interpretation, including the descriptions of the crypto assets and crypto asset transactions contained herein."
+    },
+    {
+      "fact": "註 7（修正清單 must_add 1，前期研究 70 條裡一次都沒出現）：委員會明文推翻自己 2004 年 In re Barkate 的立場，認定並闡明依法院在 Barkate 之後的判決，Howey 的共同事業要件必須滿足。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the Commission concludes and clarifies that, based on courts' post-Barkate decisions, the common enterprise element must be satisfied."
+    },
+    {
+      "fact": "釋令取代 SEC 幕僚 2019 年 4 月 3 日的《Framework for \"Investment Contract\" Analysis of Digital Assets》。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The interpretation supersedes the Commission staff's Framework for ''Investment Contract'' Analysis of Digital Assets (Apr. 3, 2019)"
+    },
+    {
+      "fact": "本釋令的法律依據是《證券法》第 2(a)(1) 條與第 19 條、《證券交易法》第 3(a)(10) 條與第 23 條；修正的是 17 CFR 第 231 部與第 241 部，List of Subjects 只列 Securities。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The interpretation in this release is being adopted pursuant to sections 2(a)(1) and 19 of the Securities Act and sections 3(a)(10) and 23 of the Exchange Act."
+    },
+    {
+      "fact": "文件裡只有 CFTC 的表決紀錄：主席 Selig 贊成，沒有委員反對。SEC 的表決情形文件未載。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On this matter, Chairman Selig voted in the affirmative. No Commissioner voted in the negative."
+    },
+    {
+      "fact": "背景日期（皆為釋令自述）：2025 年 1 月 21 日代理主席 Mark T. Uyeda 設立 Crypto Task Force；該小組辦過 2025 年 3 月 21 日題為「How We Got Here and How We Get Out—Defining Security Status」的圓桌；截至釋令作成已收到逾 300 份書面意見。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On January 21, 2025, Acting Chairman Mark T. Uyeda established the Crypto Task Force to help provide greater clarity on the application of the Federal securities laws to the crypto asset markets."
+    },
+    {
+      "fact": "背景（修正清單 must_fix 4 的正確寫法）：總統數位資產市場工作小組 2025 年 7 月 30 日發布報告；主席 Paul S. Atkins 是「與該報告的發布相關聯地」啟動 Project Crypto，釋令沒有給啟動日期，2025 年 7 月 31 日是註 18 所引那場演講的日期；2026 年 1 月 29 日 Atkins 與 CFTC 主席 Michael S. Selig 宣布 Project Crypto 改為 SEC 與 CFTC 共同推動。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In connection with the release of the report, Chairman Paul S. Atkins launched ''Project Crypto,''"
+    },
+    {
+      "fact": "SEC 表示它與其人員將以與該解釋一致的方式施行聯邦證券法，包括在執法行動中，並稱這是委員會走向更清楚監理架構的第一步。（機關對自己作為的說法。）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Commission and its staff will administer the Federal securities laws consistent with the interpretation, including with respect to enforcement actions. The interpretation is the Commission's first step toward developing a clearer regulatory framework for the treatment of crypto assets under the Federal securities laws."
+    },
+    {
+      "fact": "CFTC 表示這是兩機關為加密資產處理方式提供更多明確性的重大一步，並補充立法機關把完整市場結構架構入法的努力。（機關自己的定性。）",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This is a major step in the agencies’ efforts to provide greater clarity regarding the treatment of crypto assets, and complements Congressional endeavors to codify a comprehensive market structure framework into statute."
+    },
+    {
+      "fact": "CFTC 於 2026 年 3 月 17 日發布新聞稿 9198-26，表示它「今天」與 SEC 一起作成這份解釋，且當時文件尚未刊登（新聞稿寫「將」刊登在 CFTC.gov 與聯邦公報）。",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Commodity Futures Trading Commission joined the Securities and Exchange Commission today in issuing an interpretation clarifying how the federal securities laws apply to certain crypto assets and transactions involving crypto assets."
+    },
+    {
+      "fact": "CFTC 新聞稿寫 CFTC 與其人員將以與 SEC 的解釋一致的方式施行《商品交易法》，且某些非證券加密資產可能符合該法的 commodity 定義；新聞稿頁尾把已刊登 PDF 以「91 FR 13714」為標籤連出，可與 govinfo 的 PDF 互相對照。",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The CFTC provides guidance the CFTC and its staff will administer the CEA consistent with the SEC’s interpretation, and that certain non-security crypto assets could meet the definition of “commodity” under the CEA."
+    },
+    {
+      "fact": "截至 2026-09-17，聯邦公報對 FR Doc 2026-05635 登記的 corrections 是空陣列、correction_of 是 null（修正清單 must_add 7 的一手做法；當日我另以 FR 全文搜尋「91 FR 13714」得 7 份文件，六份是自律機構的 Notice、一份是 2026-08-21 的 Proposed Rule 2026-17183，沒有一份是更正或國會審查法的否決決議——搜尋端點不在 sources[]，所以文章只寫更正清單是空的這一句）。",
+      "url": "https://www.federalregister.gov/api/v1/documents/2026-05635.json",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"corrections\":[],\"dates\":\"Effective Date: March 23, 2026.\""
+    }
+  ],
+  "not_said": [
+    "沒有意見截止日。釋令徵詢公眾意見，但 DATES 欄只有「Effective Date: March 23, 2026.」一行，FR API 的 comments_close_on 是 null。不可寫或暗示任何截止日。",
+    "沒有 SEC 的表決紀錄。文件裡只有 CFTC Voting Summary（主席 Selig 贊成、無委員反對）。文件沒有寫 SEC 委員如何表決、幾位表決或有無不同意見，不可寫「SEC 全票通過」。",
+    "2026-03-17 這個日期不是來自 metadata 欄位：FR API 的 signing_date 對本文件是 null。它只在文件正文（署名欄與兩份 CFR 表格）與 CFTC 新聞稿裡。",
+    "不是投資判斷。釋令從未說任何具名資產安全、獲准、可持有、值得買或適合誰。分類只是美國證券法上的法律地位，且明寫結論基於作成日的理解、類別可能改變、存在混合特徵的資產。",
+    "不拘束法院。釋令說它沒有取代 Howey 判準，該判準是有拘束力的法院先例；它傳達的是委員會的見解，沒有聲稱拘束任何法院或解決任何繫屬中的訴訟。",
+    "沒有新義務。釋令自己寫明不創設任何新的法律義務；它不是新法、也不是實體規則，儘管聯邦公報的文件型別是 Rule。",
+    "與非美國法律無關。以本篇四條 sources 查核到 2026-09-17，未見任何提及台灣、台灣主管機關，或台灣使用者與服務台灣使用者的平台會受何影響的文字。",
+    "明文在範圍外：《國內稅收法典》下的聯邦稅法、1970 年《銀行保密法》、2020 年《反洗錢法》；釋令也沒有處理或改變《證券法》第 2(a)(3) 條與《證券交易法》第 3(a)(14) 條意義下何謂「sale」。",
+    "沒有處理（而不是「認定為證券」也不是「認定可以做」）：數位證券的空投；Covered Stablecoins 以外的穩定幣；受領人提供對價的空投；託管業者或流動性質押提供者自行決定是否／何時／多少質押或保證、固定獎勵金額的安排；流動性質押提供者提供讓質押收據代幣產生額外報酬的方法；服務提供者提供未在該節討論的服務；再質押（restaking）；涉及發行或授予證券的員工報酬與福利安排。",
+    "沒有名單。釋令沒有寫哪些交易所、券商、託管業者或錢包業者已登記、已取得許可或被允許，也沒有任何費率。",
+    "GENIUS Act 沒有日曆生效日。只有公式（制定日 2025-07-18 起 18 個月，或最終施行規則後 120 天，取其早），不可自行換算成日期。",
+    "沒有 CFTC 的規則條文。17 CFR 第 1 部出現在 CFTC 報頭與 FR 的 cfr_references，但 Text of Amendments 只修 17 CFR 第 231 部與第 241 部，List of Subjects 也只列這兩部；文件沒有提出任何 CFTC 規則的修正。",
+    "沒有下一步的時程。釋令說這是「first step」、可能精修、修訂或擴充該解釋，但沒有給日期、沒有指名下一份文件、也沒有承諾任何法規制定。",
+    "沒有 SEC 自己的新聞稿或事實摘要內容。CFTC 新聞稿頁尾連了一份 sec.gov 上的 Fact Sheet，本篇沒有讀到它，文章也沒有任何一句引用或改寫 SEC 自己的公告。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "SEC 自己為這份解釋令發布的新聞稿與事實摘要（CFTC 新聞稿頁尾連出的 sec.gov Fact Sheet）。",
+      "seen_where": "CFTC 新聞稿 9198-26 的 RELATED LINKS。",
+      "why_excluded": "sec.gov 在本篇的取得環境回 HTTP 403（修正清單 live_data_warnings 也記著同樣結果），讀不到 body。SEC 對這份釋令的自我定性因此不在本篇任何一句話裡，也沒有放進 sources[]。"
+    },
+    {
+      "claim": "釋令在每一類底下具名列出的加密資產（數位商品、數位收藏品、數位工具各有具名例子）。",
+      "seen_where": "釋令第三節各小節，我今天在 .txt 與 PDF 兩處都讀到完整清單。",
+      "why_excluded": "事實本身完全查證無誤，但依 crypto.md「任何具體標的只能以法規或技術的對象出現、不能寫成選項」與本篇指派指示「不點名評價任何具體代幣」，文章刻意不轉錄那些名字，並在正文說明為什麼（清單以 include 起頭、是舉例不是全清單、結論基於作成日的理解）。要補的話，補的是「解釋令有具名例子」這個性質，不是名單。"
+    },
+    {
+      "claim": "「全世界／美國第一份聯名的加密資產文件」「首次認定多數加密資產不是證券」這類說法。",
+      "seen_where": "坊間整理常見的框架。",
+      "why_excluded": "四條 sources 都沒有這樣寫。釋令自稱的是委員會走向更清楚架構的「first step」，CFTC 自稱的是「a major step」與「joint agency action」。文章只用這兩種說法，並標明是機關自己的定性。"
+    },
+    {
+      "claim": "SEC 主席 Atkins 所說「most crypto assets are not themselves securities」。",
+      "seen_where": "CFTC 新聞稿 9198-26 的引述。",
+      "why_excluded": "釋令本身沒有對「多少比例的加密資產是證券」作任何量化陳述，這只是主席的定性。文章沒有引用這句，只在第一段把「美國宣布多數加密資產不是證券」當成讀者看到的標題來處理，不當成文件的結論。"
+    },
+    {
+      "claim": "任何市場後果：價格、漲跌幅、市值、交易量、ETF 資金流、上下架、某家業者在 2026-03-23 之後怎麼調整服務。",
+      "seen_where": "不在四條 sources 裡，只會來自行情媒體或行情 API。",
+      "why_excluded": "crypto.md 明文禁止，且無一手來源。本篇一個數字都沒有寫。"
+    },
+    {
+      "claim": "2026-08-21 刊登的 SEC「Regulation Crypto Assets」提案（FR Doc 2026-17183、91 FR 54510）的內容，包括它的登記豁免金額與安全港。",
+      "seen_where": "我今天以 FR 全文搜尋「91 FR 13714」時，那份提案出現在結果裡。",
+      "why_excluded": "它的事實只在另一個 FR API 網址上，而本篇 sources[] 已用滿 4 條、都用在本解釋令自己。指不到 sources[] 的事就不寫，所以文章連一句提及都沒有（前期研究的 editorial_brief 建議「用一句話提一下」，本篇因為來源範圍而不寫）。那是 C4 自己的題材。"
+    },
+    {
+      "claim": "本解釋令在 2026-03-23 之後有沒有被國會依《國會審查法》否決、或被法院挑戰。",
+      "seen_where": "未查。",
+      "why_excluded": "只用一手方式關掉這個缺口：FR API 對本文件回 corrections []、correction_of null（2026-09-17）。文章只寫「截至本文查核日，聯邦公報對它登記的更正清單是空的」，不對國會或法院作任何斷言。"
+    },
+    {
+      "claim": "釋令註 70 引為「CoinDesk Microcosms NFT Consensus Ticket」出處的 coindesk.com 網址。",
+      "seen_where": "釋令註 70（SEC 在一手文件裡引 CoinDesk）。",
+      "why_excluded": "依 crypto.md，coindesk.com 一律不是來源、也不連結。文章連這個數位工具的例子都沒有寫（見上面關於具名例子的那一條）。"
+    },
+    {
+      "claim": "PDF 的內部時間戳可以佐證 2026-03-20 送存日。",
+      "seen_where": "前期研究第 70 條與 event_date_basis。",
+      "why_excluded": "修正清單 must_fix 1 判定為假，我今天用 pypdf 覆核：/CreationDate = D:20260321130445Z、/ModDate = D:20260321090452-04'00'，都是 3 月 21 日。整句刪除，送存日只憑「[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]」。PDF 的 ModDate 本身是活資料型別的量測，不寫進文章。"
+    },
+    {
+      "claim": "文章曾寫過但因字數（paragraph 1,800–3,000 上限）刪掉的查證過內容。",
+      "seen_where": "本篇第一版草稿共 6,392 字，超過上限一倍。",
+      "why_excluded": "刪的都是可另行補回的延伸事實，不是條件或限制：註 7 推翻 In re Barkate、取代 2019 年幕僚 Framework、挖礦結論的理由（行政或事務性、獎勵是對網路提供服務的報酬）、四項附隨服務的完整名稱、數位收藏品的權利金與分割兩個細節、法律依據條號、CFTC 表決紀錄、Crypto Task Force 與 Project Crypto 的背景日期、再質押未處理。以上全部留在本紀錄的 verified_facts 裡，查核者若認為該補，字數還有約 110 字的餘裕（定稿 2,890）。包裝與空投的條件、註 81 的外國許可穩定幣發行人、註 142 的員工報酬安排則移到 faq 裡，沒有刪。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，不是法遵人員：看到「美國宣布多數加密資產不是證券」的標題，想知道那句話到底決定了什麼。全篇回答五件事——這是什麼文件、現在什麼狀態、管到誰、跟台灣讀者什麼關係、怎麼自己去官方頁查。三個軸：（1）這是 SEC 與 CFTC 聯名，不是 SEC 的公告，分工是 SEC 作成解釋、CFTC 就該解釋提供指引；（2）三個日期分開寫——2026-03-17 作成、2026-03-20 送存、2026-03-23 刊登兼生效，並照來源原話寫 OMB 的 major rule 認定與 5 U.S.C. 808(2)，同時明寫文件沒有解釋 DATES 欄為何是 3 月 23 日（不寫因果推論）；（3）「不是證券」是管轄與登記的答案，不是安全的答案——同一份文件保留反詐欺條款、保留過去未登記發行的責任、說類別會變，並明文不碰稅法、洗錢防制與任何非美國的法律。五節：文件是什麼／三個日期（表格）／五個類別與「本身不是證券」的射程（圖解）／投資契約的開始與結束，以及挖礦、質押、包裝、空投／它自己寫明沒有處理的事。原創情境（已標明是編輯設計的例子）：有人在境外平台用了質押功能，看到「質押不是證券交易」的標題，問這是不是代表平台受到監理——答案是釋令處理的是一組指名安排、沒有說任何業者有沒有登記、也明文把保證或固定獎勵的安排排除在範圍外。刻意不談：行情與市場反應；哪些資產可以持有；業者比較；GENIUS Act 的施行機制（那是 C6 至 C9 的題材，本篇只寫到釋令自己寫的部分）；2026-08-21 的「Regulation Crypto Assets」提案（來源範圍之外，見 unverified_or_excluded）。",
+  "must_not_write": [
+    "不要寫成 SEC 單方面發布。AGENCY 欄是兩個機關，署名欄是「By the Commissions」。分工要寫出來：SEC 作成解釋，CFTC 就該解釋提供指引。",
+    "不要把三個日期混在一起。2026-03-17 作成、2026-03-20 送存、2026-03-23 刊登兼生效；不要把刊登日說成宣布日，也不要把作成日說成生效日。",
+    "不要把釋令具名的任何加密資產寫成安全、獲准、可持有、值得買或彼此比較。本篇的做法是不轉錄那些名字。",
+    "不要寫任何價格、漲跌幅、市值、交易量、ETF 資金流或歷史報酬；也不要寫任何殖利率、質押獎勵率、空投數量或獎勵金額——釋令討論質押獎勵與空投，但沒有給數字，文章也不能給。",
+    "不要比較、評分或推薦交易所、錢包、託管業者或流動性質押提供者，也不要放任何聯盟或追蹤連結。",
+    "不要把「在本釋令範圍之外」寫成「所以是證券」或「所以現在可以做」。",
+    "不要寫成美國讓加密貨幣合法、消除了證券法風險或終結執法。釋令保留過去的責任、保留反詐欺條款，也不拘束法院。",
+    "不要寫它適用於台灣或改變台灣平台與使用者的處境；四條 sources 都沒有這樣寫。",
+    "不要寫或暗示任何意見徵詢截止日。",
+    "不要把它稱為新法、新規則或規則變更。它是解釋性釋令，自己寫明不創設新的法律義務，即使聯邦公報的型別是 Rule。",
+    "不要引用、引述或連結 sec.gov（本篇讀不到），也不要引用或連結 coindesk.com（釋令註 70 引了它，但 crypto.md 禁止）。不要自創任何 SEC 新聞稿編號、fact sheet 網址或文號；可用的識別碼只有 33-11412、34-105020、S7-2026-09、RIN 3038-AF67、RIN 3235-AN56、FR Doc 2026-05635、91 FR 13714。",
+    "不要把聯邦公報的正規文件頁（/documents/2026/03/23/2026-05635/...）放進 sources：它在本環境落在 unblock.federalregister.gov 的 Request Access 頁。",
+    "不要寫「我們試用」或任何實測宣稱。免責 callout 必須逐字含「不是投資建議」六個字（不是「不構成投資建議」、不是「非投資建議」）。",
+    "不要在內容包裡寫簡體字、列表、Markdown 或 emoji。不要把容器或工具行為寫進文章。"
+  ],
+  "live_data_warnings": [
+    "「截至 2026-09-17 沒有更正」是查核日快照。FR API 的 corrections／correction_of 會變，文章已把日期寫在句子裡，定稿當天要再抓一次 https://www.federalregister.gov/api/v1/documents/2026-05635.json 確認仍是 [] 與 null。",
+    "FR API 的回應大小不是穩定量測：修正清單記查核日為 3,468 bytes、前期研究記 2,811 bytes，我今天也是 3,468 bytes。這個數字不寫進文章，也不能用來宣稱讀到的是同一版。同一份回應裡的 page_views.count（今天 5,600）是活資料，一律不寫。",
+    "https://www.sec.gov/news/pressreleases.rss 是 25 筆的滾動視窗，對 2026 年 3 月的事完全無用，不可用它論證「SEC 沒有發布相關消息」。本篇沒有使用它。",
+    "sec.gov 的 fact sheet 與意見頁在本環境回 HTTP 403。這些頁面後面的內容一律不寫，且這個事實只留在本紀錄、不進文章。",
+    "聯邦公報的正規文件頁以 curl -L 會落在 https://unblock.federalregister.gov/、HTTP 200、約 10,596 bytes 的 Request Access——200 但不是文件。刻意不列入 sources[]。",
+    "PDF 的 /ModDate 與 /CreationDate 是檔案層級的時間戳，不是事件日期，也可能隨 govinfo 重新產製而變；不寫進文章。",
+    "FR 全文搜尋「91 FR 13714」的命中數（今天 7 份）是活計數，不寫進文章；文章只寫更正清單是空的。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（PDF 時間戳）：已整段刪除。我今天用 pypdf 覆核 govinfo PDF 的 metadata 為 /CreationDate D:20260321130445Z、/ModDate D:20260321090452-04'00'，都是 3 月 21 日，不能佐證 3 月 20 日送存。event_date_basis 改寫，送存日只憑文件結尾「[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]」，文章與本紀錄都沒有任何一句依賴那個時間戳。",
+    "must_fix 2（「本容器無法抽 PDF 文字」）：已刪除並改寫。今天實際讀到了——`apps/api/.venv` 沒有 pypdf，但系統 Python（pypdf 6.16.2）有，`PdfReader` 抽出 20 頁、165,092 字元，內容與 .txt 端點吻合（含報頭的 `li`）。sources[] 第二條不再是沒讀過的文件，多條 verified_facts 直接掛在它上面。整段敘述只留在 sourcing_notes，寫成可重現的配方，文章裡沒有任何工具敘事。",
+    "must_fix 3（報頭 `li` 不是逐字）：已修正。報頭那條 verified_fact 的 verbatim_quote 照原樣保留 `[Release Nos. 33-11412; 34-105020; File No. S7-2026-09]li`，並在 fact 裡註明那是已刊登版本自帶的排版雜訊、.txt 與 PDF 兩處都有、是來源的瑕疵不是我的錯字。文章不逐字引用報頭（改寫成敘述），所以正文沒有這個問題；曾寫進正文的「報頭多一個 li」那一句在最後一輪縮字時刪掉了。",
+    "must_fix 4（Project Crypto 啟動日）：已修正。本紀錄寫成「與該報告的發布相關聯地啟動」，並註明釋令沒有給啟動日期、2025 年 7 月 31 日只是註 18 那場演講的日期；PWG 報告 2025-07-30 與 2026-01-29 的聯合宣布照原樣保留。文章因字數沒有寫這段背景。",
+    "must_fix 5（生效日的因果推論）：已修正。event_date_basis 與 editorial_brief 都不再寫「因為它是解釋性規則所以生效日等於刊登日」。文章只寫來源實際說的那句（OMB 認定為 major rule，但依 5 U.S.C. 808(2) 可立即生效，因為它是解釋性規則、免除通知評論要求），並緊接一句「文件沒有說明 DATES 欄為什麼填 3 月 23 日」。",
+    "must_fix 6（type 與 agencies metadata 掛錯網址）：已採用「加第 4 條 source」那個選項。https://www.federalregister.gov/api/v1/documents/2026-05635.json 成為 sources[3]，type = Rule 與 agencies 兩個機關的那條 verified_fact 掛在它上面；文章第二段也把「聯邦公報對這份文件的文件資料」列為讀過的來源之一。",
+    "must_fix 7（「秘書長簽署」過度解讀）：已修正。本紀錄與文章都寫「由兩個委員會作成、日期為 2026 年 3 月 17 日，並由兩位秘書長具名（認證）」，沒有寫成秘書長簽署。",
+    "must_add 1（註 7 推翻 In re Barkate）：已補進 verified_facts（逐字引文）。文章因 paragraph 字數上限沒有寫，列在 unverified_or_excluded 的最後一條，是查核者最值得優先補的一項。",
+    "must_add 2（註 81 外國許可穩定幣發行人）：已補進 verified_facts，並寫進文章的 faq（穩定幣那一題），保留「generally」的限定詞。它是本篇對台灣讀者最相關的一條，所以沒有被字數砍掉。",
+    "must_add 3（註 142 員工報酬與福利安排）：已補進 verified_facts，並寫進文章 faq 的「包裝與空投的條件是什麼？」那一題。",
+    "must_add 4（註 89 第三人與發行人串通的例外）：已補進 verified_facts，並寫進文章第四節的第一段正文。",
+    "must_add 5（註 127 範圍比四項附隨服務更廣）：已補進 verified_facts，並寫進文章第五節第一段正文，緊接著「不在範圍內」不等於「是證券」或「可以做」那一句。",
+    "must_add 6（穩定幣結論的時間條件）：已補進 verified_facts（after the effective date 那句逐字），並寫進文章第三節第三段與 faq，明寫現階段的依據是委員會對 Covered Stablecoins 適用 Howey 判準的解釋、不是法條本身。",
+    "must_add 7（用 FR API 關掉國會審查法的缺口）：已在 2026-09-17 自己重跑。corrections = []、correction_of = null；另以 FR 全文搜尋「91 FR 13714」得 7 份、沒有更正或否決決議，但搜尋端點不在 sources[]，所以文章只寫「截至本文查核日，聯邦公報對它登記的更正清單是空的」。命中數不寫。",
+    "must_add 8（釋令註 70 引 coindesk.com 的撰稿陷阱）：已遵守。文章沒有連結或引用 coindesk.com，也沒有寫那個數位工具的具名例子。",
+    "must_add 9（.txt 端點的處理流程）：已照做。抄字串前把 HTML tag、`[[Page NNNNN]]` 標記與換行正規化，並以 govinfo PDF 的獨立抽文互相比對；引文在兩份文本擇一或兩者皆命中才收。意見信箱無法從 .txt 還原，本篇沒有寫任何電子郵件位址。",
+    "source_list_fix：三條原有的一手來源全部保留、今天全部重抓且 body 是真文件，並依建議把 FR API 加為第 4 條（仍在 4 條上限內）。聯邦公報正規文件頁照舊排除。CFTC 的 PDF（與 govinfo 位元組相同）沒有另列，因為同一份文件不需要兩條。",
+    "編務問題（slug 尾碼是作成日還是刊登日）：本篇依指派採 2026-03-23（刊登兼生效），news_date 同為 2026-03-23，與 C4 的 2026-08-21（刊登日）一致；文章把 2026-03-17 與 2026-03-23 都明寫，2026-03-20 也寫在表格與正文。",
+    "跨篇共通型態 6（提案與已生效）：本篇是這批唯一已生效的文件，但它是解釋而非新法規，所以每個操作性句子都寫成「解釋令說／釋令寫明」，並在第一節說清楚它自己寫明不創設新義務、沒有取代 Howey 判準。",
+    "跨篇共通型態 9（一手文件裡的市場數字仍是市場數字）：釋令第九節的經濟考量有預測與成本敘述，本篇完全沒有引用，也沒有任何市場規模或市值數字。"
+  ],
+  "hero_label": "解釋令，刊登當天生效",
+  "diagram": {
+    "title": "五類加密資產與投資契約",
+    "caption": "解釋令把加密資產分成五類；數位商品、數位收藏品與數位工具本身不是證券，穩定幣視特徵而定，數位證券是證券；非證券加密資產仍可能附帶投資契約，也可能與它分離。",
+    "nodes": [
+      [
+        "五個類別",
+        "解釋令自己的分法"
+      ],
+      [
+        "本身不是證券",
+        "講的是證券法地位"
+      ],
+      [
+        "附帶投資契約",
+        "看發行人的承諾"
+      ],
+      [
+        "也可能分離",
+        "履行或無法履行時"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Effective on publication",
+      "diagram": {
+        "title": "Five categories, investment contracts",
+        "caption": "The release sorts crypto assets into five categories: digital commodities, digital collectibles and digital tools are not themselves securities, stablecoins depend on their characteristics, digital securities are securities; a non-security asset may carry an investment contract or separate from it.",
+        "nodes": [
+          [
+            "Five categories",
+            "The release's own scheme"
+          ],
+          [
+            "Not itself a security",
+            "Securities-law standing"
+          ],
+          [
+            "Investment contract",
+            "What the issuer promised"
+          ],
+          [
+            "Or separation",
+            "Fulfilled or not fulfilled"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "解釈、掲載日に発効",
+      "diagram": {
+        "title": "暗号資産の五分類と投資契約",
+        "caption": "解釈は暗号資産を五つに分類し、デジタルコモディティ、デジタルコレクティブル、デジタルツールはそれ自体は証券ではなく、ステーブルコインは特性によって決まり、デジタル証券は証券です。証券でない暗号資産も投資契約を伴い得て、そこから分離することもあります。",
+        "nodes": [
+          [
+            "五つの分類",
+            "解釈自身の分け方"
+          ],
+          [
+            "それ自体は証券でない",
+            "証券法上の位置づけ"
+          ],
+          [
+            "投資契約が付く",
+            "発行者の表明次第"
+          ],
+          [
+            "分離もあり得る",
+            "履行または不履行時"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "해석, 게재일에 발효",
+      "diagram": {
+        "title": "가상자산 다섯 분류와 투자계약",
+        "caption": "해석은 가상자산을 다섯 가지로 분류합니다. 디지털 상품·디지털 수집품·디지털 도구는 그 자체로 증권이 아니고, 스테이블코인은 특성에 따라 달라지며, 디지털 증권은 증권입니다. 증권이 아닌 가상자산도 투자계약을 수반할 수 있고 그것과 분리될 수도 있습니다.",
+        "nodes": [
+          [
+            "다섯 가지 분류",
+            "해석 자체의 분류"
+          ],
+          [
+            "자체로는 증권 아님",
+            "증권법상 지위 문제"
+          ],
+          [
+            "투자계약 수반",
+            "발행인의 약속에 달림"
+          ],
+          [
+            "분리될 수도 있음",
+            "이행 또는 불이행 시"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "解释令，刊登当天生效",
+      "diagram": {
+        "title": "五类加密资产与投资合同",
+        "caption": "解释令把加密资产分成五类；数字商品、数字收藏品与数字工具本身不是证券，稳定币视特征而定，数字证券是证券；非证券加密资产仍可能附带投资合同，也可能与它分离。",
+        "nodes": [
+          [
+            "五个类别",
+            "解释令自己的分法"
+          ],
+          [
+            "本身不是证券",
+            "讲的是证券法地位"
+          ],
+          [
+            "附带投资合同",
+            "看发行人的承诺"
+          ],
+          [
+            "也可能分离",
+            "履行或无法履行时"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "獨立查核代理（未參與撰稿）",
+    "checked_on": "2026-09-17",
+    "method": "四條 sources 全部在 2026-09-17 以 `curl -sL -A \"Mokaair-editorial\"` 重抓並讀 body（任何請求都沒有帶入 email、姓名或個人資料）；聯邦公報 .txt 端點先剝 HTML tag 與 `[[Page NNNNN]]` 標記再正規化空白，govinfo PDF 以系統 Python 3.14.6 的 pypdf 6.16.2 抽 20 頁全文，兩份文本互相比對；CFTC 新聞稿剝 tag 後全文比對；FR API 的 metadata 逐欄讀。文章的 99 個句級主張加圖解 8 段節點字串（共 107 條）逐條回到這四條來源找支撐句。沒有使用任何 sources[] 以外的新網址替文章補事實。",
+    "verdict": "ok（改了 6 處事實、2 處編務；骨幹論述——聯名、三個日期、五類、投資契約的開始與結束、明文不處理的事——逐條成立）",
+    "edits_to_the_pack": [
+      "第 3 節第 2 段「它在每一類底下都列了具名例子」→「它只在數位商品、數位收藏品與數位工具三類底下列了具名例子」。釋令的具名例子只出現在這三節；穩定幣與數位證券兩節沒有任何具名資產（以 include／such as／example 在該兩節內查核，2026-09-17 未見）。原句是超出來源的全稱句。",
+      "第 4 節第 3 段「納入的挖礦只有自行單獨挖礦與礦池兩種、質押只有四種指名安排」→改成逐項指名（挖礦：自行挖礦、礦池；質押：自行質押、自我保管直接與第三方質押、託管安排、流動性質押），刪掉「兩種」「四種」。釋令用「Only … the following types … are addressed in this release」把清單關起來，但全文沒有印出數量，清點出來的數字不是來源的事實（BRIEF 型態 9）。FAQ「挖礦兩種、質押四種」同步改成逐項指名。",
+      "第 4 節第 3 段補回網路的限定詞：「在工作量證明網路上」→「在公開、無需許可的工作量證明網路上」，質押那半句補「同類的」。原文是「on public, permissionless crypto networks that use proof-of-work」，少了這兩個詞會把結論擴張到許可制網路。",
+      "第 4 節第 1 段補回「明示」：「發行人所為或代其所為並傳達給購買人的算數」→「發行人所為或代其所為、並傳達給購買人的明示陳述或承諾算數」。原文是「the explicit representations or promises … made by or on behalf of the issuer and conveyed to purchasers」。第三人那半句的 unless 與註 89 的串通例外原本就都在，複驗無誤。",
+      "第 5 節第 2 段「自行決定是否、何時、以多少比例質押，或保證獎勵金額的安排」→「自行決定是否、何時、質押多少，或保證、另行訂定獎勵金額的安排」。註 123／125 是「whether, when, or how much … to stake」（數量，不是比例），註 124／126 是「guarantee or otherwise set the amount of rewards」；漏掉 otherwise set 會把被排除的情形寫窄，方向上剛好偏向「所以現在可以做」。FAQ 的「保證或固定」同步改成「保證或另行訂定」。",
+      "FAQ「本身不是證券是不是代表可以安心持有？」的迷因幣例子補回三個條件：原文是「has no functionality」（沒有功能，不是「功能有限」）、「(and no related representations or promises to create such functionality or crypto system)」、以及價值來自藝術／娛樂／社會／文化意義。原句把條件放寬成「功能有限」又刪掉整個括號，例子會被讀成比釋令寬。",
+      "編務：title 由「美國證管會與商品期貨交易委員會聯名解釋令：五類加密資產，刊登當天生效」改為「美國 SEC 與 CFTC 聯名解釋令：五類加密資產，刊登當天生效」（33 字），研究紀錄的 title 同步。理由是正文與 description 用的是「美國證券交易委員會（SEC）」與「商品期貨交易委員會（CFTC）」，標題的「證管會」與正文不一致，而且「證管會」在台灣是本地機關的舊稱（同批 JFSA 那篇的 must_fix 1 就是機關名混寫）。查核時確認 content 目錄裡目前只有本篇自己帶這個標題字串，沒有別的內容包連到本篇，改名不會弄壞任何 link 比對。",
+      "編務：第 5 節第 3 段刪掉與下方 callout 逐字重複的識別碼串（文件編號與意見檔號），只留「聯邦公報引註 91 FR 13714」。兩處識別碼完全相同，callout 保留完整三組，資訊沒有損失；騰出的字數用來補上面那些限定詞（段落字數 2,939 → 2,948，上限 3,000）。",
+      "編務：第 5 節第 1 段的分號改句號，「「不在範圍內」的意思是沒有處理，不是…」改寫成「範圍之外就是沒有處理的意思，本文因此不把它讀成…」。原句以分號接在「另有註腳寫明」之後，可能被讀成註腳自己這樣寫；釋令只寫 activities are outside the scope，那個推論界線是本文的閱讀。"
+    ],
+    "checked_and_correct": [
+      "四條 sources 今天全部 HTTP 200 且 body 是真文件，位元組數與紀錄一致：.txt 170,238、govinfo PDF 353,096（md5 e5613cb395282b5c52a3a694605d779a、20 頁、以 pypdf 抽出 165,092 字元，與紀錄的數字可重現）、CFTC 新聞稿 37,594、FR API 3,468。",
+      "FR API 今天的關鍵欄位：type = Rule、action = Final rule; interpretation; guidance、citation = 91 FR 13714、publication_date = effective_on = 2026-03-23、comments_close_on = null、corrections = []、correction_of = null、signing_date = null、start_page 13714／end_page 13733、agencies = [CFTC, SEC]、cfr_references = 17 CFR 1／231／241、regulation_id_numbers = [3038-AF67, 3235-AN56]。「更正清單是空的」與「沒有意見截止日」在定稿當天複驗仍成立。",
+      "三個日期全部複驗：署名欄「By the Commissions. Dated: March 17, 2026.」在兩位秘書長姓名之上、17 CFR 第 231／241 兩份表格的 Release No. 33-11412 與 34-105020 日期欄都填 March 17, 2026、文件結尾「[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]」、DATES 欄只有「Effective Date: March 23, 2026.」一行。文章沒有把任何一個日期寫成另一個。",
+      "「不創設新義務」與「沒有取代 Howey」逐字無誤：「The interpretation does not itself create any new legal obligations for issuers of, and investors in, digital securities and crypto asset-related securities」（第九節）與「The interpretation in this release does not supersede or replace the Howey test, which is binding legal precedent.」（第一節）。",
+      "第八節 Other Matters 那一段逐字無誤，而且文章照來源的話寫、沒有補因果：「Pursuant to the Congressional Review Act, the Office of Management and Budget (OMB) has designated the interpretation in this release as a major rule, as defined by 5 U.S.C. 804(2). Notwithstanding such designation, the interpretation in this release may take effect immediately pursuant to 5 U.S.C. 808(2) because it is an interpretive rule and thus exempt from the Administrative Procedure Act's notice and comment requirements.」；「may」寫成「可」，並緊接一句「文件沒有說明 DATES 欄為什麼填 3 月 23 日」（該段確實沒有解釋 DATES）。",
+      "五類的英文原名與各自的限定詞全部核對：digital commodities、digital collectibles、digital tools、stablecoins、digital securities（「we classify crypto assets into five categories based on their characteristics, uses, and functions」，「five」是釋令自己印的）。前三類是「Digital commodities, digital collectibles, and digital tools, each as further described below, are not themselves securities.」；穩定幣是「a broad category of crypto assets that may or may not be securities depending on their characteristics」（文章的「很寬的類別」「視特徵而定」逐句對得上）；數位證券是「are securities」。",
+      "穩定幣那一段的時間條件與生效公式照釋令自己印的寫，沒有自行換算成日期：「These crypto assets categorically will not be securities by operation of statute after the effective date of the GENIUS Act.」、「Given that the GENIUS Act is not yet effective」、註 80「The GENIUS Act will become effective on the earlier of 18 months after its date of enactment (July 18, 2025) or the date that is 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the GENIUS Act.」。文章與 FAQ 都寫明現階段的依據是委員會對 Covered Stablecoins 適用 Howey 判準的解釋、不是法條本身，沒有任何一句會被讀成「穩定幣現在已經不是證券」。",
+      "註 81 兩個 generally 都在：「payment stablecoins issued by a foreign permitted stablecoin issuer … registered with the Comptroller of the Currency will generally not meet the definition of security, as such payment stablecoins will generally be considered Covered Stablecoins.」FAQ 的「一般不會」「一般會被認為」兩處都保留。",
+      "註 89、註 127、註 142 三條逐字複驗無誤，且文章把它們放在正確的位置：註 89 的串通例外在第 4 節第 1 段、註 127「To the extent that Service Providers provide services not discussed below, their activities are outside the scope of this release.」在第 5 節第 1 段、註 142 的員工報酬與福利安排在 FAQ 的包裝與空投那一題。",
+      "第 5 節第 1 段的界線句逐字無誤：「The interpretation in this release concerns the Federal securities laws and the guidance included herein concerns the administration of the Commodity Exchange Act by the CFTC. No interference is intended with respect to any other legal regime, including the Federal tax laws under the Internal Revenue Code or the Bank Secrecy Act of 1970 and the Anti-Money Laundering Act of 2020, which are outside the scope of the interpretation in this release.」including 寫成「包括」，沒有被寫成全清單。",
+      "包裝與空投的條件都對：包裝是存入 Custodian 或 cross-chain bridge、一對一生成 Redeemable Wrapped Tokens、「without directly or indirectly offering any return, yield, profit opportunity, or additional good or service」、鎖住不得移轉出借質押再抵押、一對一贖回並銷毀；空投只處理受領人未提供金錢、商品、服務或其他對價者，「such as where the recipient performs a service」即不適用，服務例子（追蹤社群帳號、轉發、撰文、推薦他人、修正程式瑕疵）是釋令自己舉的、文章用「包括」保留了舉例性質。",
+      "分離的兩節與過去責任：「any of the following non-exclusive indicia of separation」的 non-exclusive 有保留；第 2 節的條件是「if a purchaser would not reasonably expect the issuer to be able to fulfill or to continue to engage in the essential managerial efforts」；未登記又不符豁免的發行「the issuer will violate the Securities Act」與反詐欺條款的責任「even if the non-security crypto asset subsequently separates … and that investment contract ceases to exist」都在。",
+      "「就所載見解徵詢公眾意見」與「may refine, revise, or expand upon the interpretation」逐字無誤，may 寫成「可能」；DATES 欄沒有截止日、FR API comments_close_on 為 null，文章與 FAQ 都沒有暗示任何截止日。",
+      "台灣那句的否定範圍正確：Taiwan／Taipei／China 在 .txt、PDF 與 CFTC 新聞稿三處都是 0 次（詞界比對），文章寫成「以本文使用的……查核到 2026 年 9 月 17 日，未見」，沒有寫成「官方沒有」或「從未」。",
+      "界線（crypto.md）：全文沒有幣價、漲跌幅、市值、交易量、ETF 資金流、殖利率、質押獎勵率、空投數量或任何獎勵金額；沒有比較或推薦任何交易所、錢包、託管業者或流動性質押提供者；釋令在三類底下列的具名資產一個都沒有轉錄，第 3 節第 2 段並寫明為什麼不轉錄；註 70 的 coindesk.com 沒有被引用或連結；CFTC 新聞稿裡 Atkins 主席「most crypto assets are not themselves securities」那句沒有進文章。第 5 節第 2 段的情境句明標「以下是編輯設計的例子，不是實測」，答案是否定的，沒有點名任何平台，也沒有寫成平台已受監理。",
+      "文件定性沒有被寫成新法：ACTION 欄與 FR API 的 type 都照抄，文章同時寫出「聯邦公報把型別標成 Rule」與「它自己寫明不創設新義務」「這不是新法」；每一個操作性句子都寫成「解釋令說／釋令寫明」。",
+      "免責 callout 與 crypto.md 的樣板逐字相同（tone、title、text 全等），含「不是投資建議」六個字，查核日 2026-09-17；本文提醒 callout 另計，共兩個。checked_on 在內容包四條 source、研究紀錄、第二段、表格 caption 與免責 callout 五處一致，都是 2026-09-17，本次沒有改動它。",
+      "摘要四句的每一個數字（2026、3、17、23、五）都在正文出現過；圖解四段節點與 caption 與正文一致、caption 與研究紀錄逐字相同；FAQ 七題的答案都是純文字、沒有網址；全文沒有簡體字、列表、Markdown 或 emoji；沒有任何一句寫容器或工具行為。"
+    ],
+    "left_for_the_owner": [
+      "五類的英文原名（digital commodities、digital collectibles、digital tools、stablecoins、digital securities）在文章裡沒有印，只有中文譯名。五個譯名都與原文相符，但讀者要回頭搜原文會少一組關鍵詞。段落字數現在是 2,948／3,000，全部補上約需 80 字，補不進去；要補就得再砍別處的敘述，這是編輯取捨，查核代理沒有代決定。",
+      "註 7（委員會明文推翻自己 2004 年 In re Barkate 的立場、認定 Howey 的共同事業要件必須滿足）仍只在研究紀錄裡，沒有進文章。修正清單 must_add 1 把它列為整份釋令法律動作最大的一步；受同一個字數上限限制。",
+      "本篇的第一條 link 指向 crypto-news-2026-index，check_article.py 今天已經通過（索引內容包已存在、title 對得上）。但索引目前還沒有列到本篇：等它列進去時，連到本篇的 link text 必須逐字用改過後的新 title「美國 SEC 與 CFTC 聯名解釋令：五類加密資產，刊登當天生效」，否則 check_article.py 會在索引那一篇報錯。索引是另一個檔案，本代理沒有動。",
+      "「截至 2026-09-17 沒有更正」是快照：FR API 的 corrections／correction_of 出刊當天要再抓一次 https://www.federalregister.gov/api/v1/documents/2026-05635.json 確認仍是 [] 與 null。",
+      "slug 尾碼與 news_date 都取刊登兼生效日 2026-03-23（不是作成日 2026-03-17），與 C4 的處理一致；修正清單說「選哪一個都行，但兩篇要一致」。若站主改採作成日，本篇與 C4 要一起改，文章內文兩個日期都已明寫，不必改寫敘述。"
+    ]
+  }
+}

@@ -1,0 +1,676 @@
+{
+  "slug": "crypto-news-fdic-genius-act-20260410",
+  "event_date": "2026-04-10",
+  "event_date_basis": "Four distinct first-party dates, all re-read on 2026-09-17. (1) The FDIC Board of Directors approved the NPRM on 2026-04-07: the FDIC press release is headed \"April 7, 2026\", carries \"Last Updated: April 7, 2026\" and says the Board \"today approved\". (2) The document's signature block reads \"Dated at Washington, DC, on April 8, 2026. Debra A. Decker, Executive Secretary.\" (3) It was filed 4-9-26 at 8:45 am (\"[FR Doc. 2026-06974 Filed 4-9-26; 8:45 am]\"). (4) Federal Register publication is 2026-04-10, 91 FR 18534. Per WRITER.md section 2 (\"slug 尾碼＝news_date＝聯邦公報刊登日\", applied consistently across the four US federal rules of this batch), the slug date and news_date are the PUBLICATION date 2026-04-10, and the article states both 04-07 (board approval) and 04-10 (publication) explicitly. corrections-crypto.md raises the opposite reading of BRIEF.md (that the slug should be 20260407) and refers it to the owner; WRITER.md outranks the corrections list, so 2026-04-10 stands and the conflict is reported. There is NO effective date: this is a proposal, and the April document contains no effective-date clause of its own.",
+  "title": "美國 FDIC 穩定幣草案：準備金存款保給發行人，不穿透到持有人",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions（91 FR 18534，提案全文）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "publisher": "Office of the Federal Register / U.S. Government Publishing Office（文件由 Federal Deposit Insurance Corporation 發布）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "FDIC 新聞稿：FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+      "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+      "publisher": "Federal Deposit Insurance Corporation",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "FDIC Federal Register Publications and Public Comments（聯邦公報刊登與公眾意見清單）",
+      "url": "https://www.fdic.gov/federal-register-publications",
+      "publisher": "Federal Deposit Insurance Corporation",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers（91 FR 45274，申報表格公告）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+      "publisher": "Office of the Federal Register / U.S. Government Publishing Office（文件由 Federal Deposit Insurance Corporation 發布）",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "取得配方，全部在 2026-09-17 重跑一次，指令一律 `curl -sL -A \"Mokaair-editorial\" -w \"%{http_code} %{url_effective}\" -o <檔> <網址>`。任何請求（UA、查詢字串、標頭）都沒有放入 email、姓名或其他個人資料。\n\n今天實際讀到的四條（＝sources[] 的四條，順序相同）：\n1. https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt → HTTP 200、352,322 bytes、無轉址。body 是 GPO 的 <pre> 包裹全文：<title> 為 \"Federal Register, Volume 91 Issue 69 (Friday, April 10, 2026)\"，開頭 \"[Federal Register Volume 91, Number 69 (Friday, April 10, 2026)] [Proposed Rules] [Pages 18534-18579]\"，結尾 \"Dated at Washington, DC, on April 8, 2026. Debra A. Decker, Executive Secretary. [FR Doc. 2026-06974 Filed 4-9-26; 8:45 am] BILLING CODE 6714-01-P\"。46 頁全文，本紀錄每一條掛在這個網址的事實都出自這一份。\n2. https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards → HTTP 200、66,697 bytes、text/html。<title> 為 \"FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards | FDIC.gov\"；正文標日期 \"April 7, 2026\"、頁尾 \"Last Updated: April 7, 2026\"、內文 \"WASHINGTON – The Federal Deposit Insurance Corporation (FDIC) Board of Directors today approved …\"。以剝除標籤後的純文字計數，\"June 9\" 出現 0 次（意見截止日只能從聯邦公報原文取得），\"April 7\" 出現 2 次。\n3. https://www.fdic.gov/federal-register-publications → HTTP 200、181,821 bytes、text/html。<title> 為 \"FDIC Federal Register Publications and Public Comments | FDIC.gov\"。真正的清單表格；04/10/26 那一列的各儲存格為 \"GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions\"｜\"12 CFR Parts 324, 330, and 350 RIN 3064–AG19\"（en dash U+2013）｜\"Notice of proposed rulemaking\"｜\"Comment Period End:\" \"June 9, 2026\"｜\"91 FR 18534\"。這一頁也是 sources[0] 的 ADDRESSES 欄列出的意見遞送管道之一。\n4. https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt → HTTP 200、23,283 bytes。<title> 為 \"Federal Register, Volume 91 Issue 137 (Monday, July 20, 2026)\"，開頭 \"[Federal Register Volume 91, Number 137 (Monday, July 20, 2026)] [Notices] [Pages 45274-45277]\"，標題 \"Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers\"、\"[OMB No. 3064-0225]\"。\n\n引文的比對基準（重要）：聯邦公報的 .txt 是硬斷行（約 70 欄）的排版文本。本紀錄每一條 verbatim_quote 都用 `\" \".join(text.split())` 把來源與引文各自的連續空白壓成單一空格後比對，全部命中、且在該頁只出現一次（原紀錄此處寫「55 條」，實際條數是 54 條——那個 55 是撰稿者的清點錯誤，由獨立查核於 2026-09-17 訂正；同日補了 4 條後現為 58 條，58 條在重抓的來源上全部命中）（\"RIN 3064-AG19\"、\"12 CFR Parts 324, 330, and 350\"、\"June 9, 2026\" 這類短識別字串除外）。也就是說，差異只可能是來源自己的換行，不含刪節、不含接合、不含改字：凡引文若跨越 `[[Page NNNNN]]` 分頁標記或 `\\NN\\` 註腳標記，這個比對就會失敗，而它沒有失敗。兩個 HTML 來源是先剝標籤、unescape 後再壓空白，等同瀏覽器頁內搜尋看到的字串。比對腳本與四份原始檔留在本次工作的 scratchpad，不進 repo。\n\n刻意避開的兩個不逐字陷阱（前期研究踩過）：(a) 報頭的 \"12 CFR Parts 324, 330, and 350\" 與 \"RIN 3064-AG19\" 在原文相隔約 39 行，本紀錄拆成兩條事實、各引各自那一行，沒有用 \" / \" 接起來；(b) FDIC 清單頁的那一列是 HTML 表格，本紀錄只取單一儲存格的字串，並保留頁面上的 en dash \"RIN 3064–AG19\"。\n\n擋阻頁：federalregister.gov 的正規 HTML 文件頁（/documents/2026/04/10/2026-06974/...）今天仍是先 302 到 https://unblock.federalregister.gov/、再回 HTTP 200 的約 10.6 KB \"Federal Register :: Request Access\" 攔阻頁，不是文件本身，因此不放進 sources[]。未被擋的官方管道：/api/v1/...、/documents/full_text/text/...、govinfo.gov、fdic.gov（HTML 與 PDF 都正常）。\n\n沒有猜任何網址或識別碼：四條都是先從 fdic.gov 的清單頁與新聞稿頁上實際存在的連結、以及聯邦公報的 full_text 端點取得。",
+  "verified_facts": [
+    {
+      "fact": "文件類別是規則制定提案（Notice of proposed rulemaking），不是已生效的規則。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ACTION: Notice of proposed rulemaking."
+    },
+    {
+      "fact": "刊登卷期與日期：聯邦公報第 91 卷第 69 期，2026 年 4 月 10 日（星期五），Proposed Rules。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Federal Register Volume 91, Number 69 (Friday, April 10, 2026)]"
+    },
+    {
+      "fact": "頁碼 18534 至 18579（即 91 FR 18534 起）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Pages 18534-18579]"
+    },
+    {
+      "fact": "文號 RIN 3064-AG19（報頭那一行的原文，ASCII 連字號）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "RIN 3064-AG19"
+    },
+    {
+      "fact": "涉及的法規部別：12 CFR 第 324、330、350 部。報頭裡這一串與上一條的 RIN 相隔約 39 行，是兩行不同的文字。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "12 CFR Parts 324, 330, and 350"
+    },
+    {
+      "fact": "官方 SUMMARY 欄說明提案要做三件事：對受 FDIC 監理的獲准支付型穩定幣發行人與受保存款機構實施 GENIUS Act 的部分要求、釐清作為支付型穩定幣準備資產的存款之存款保險範圍、釐清代幣化存款的處理方式。原文用的是 is soliciting comment on a proposal（徵詢意見）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SUMMARY: The Federal Deposit Insurance Corporation (FDIC) is soliciting comment on a proposal that would implement certain requirements pursuant to the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act) applicable to FDIC-supervised permitted payment stablecoin issuers and insured depository institutions, clarify deposit insurance coverage for deposits held as reserve assets for payment stablecoins, and clarify the treatment of tokenized deposits."
+    },
+    {
+      "fact": "意見截止日：意見須於 2026 年 6 月 9 日前送達 FDIC。這個日期只在聯邦公報原文，新聞稿沒有印。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Comments must be received by the FDIC no later than June 9, 2026."
+    },
+    {
+      "fact": "提案自己把 FDIC 的聯邦公報刊登頁列為意見遞送管道之一（ADDRESSES 欄，並以 RIN 3064-AG19 作為識別）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ADDRESSES: You may submit comments, identified by RIN 3064-AG19, by any of the following methods:"
+    },
+    {
+      "fact": "ADDRESSES 欄列出的第一個管道就是 FDIC 自家那個聯邦公報刊登頁（與 sources[2] 同一個網址）。獨立查核於 2026-09-17 補上此條：文章 FAQ 第 8 題寫「那一頁同時也是這份提案 ADDRESSES 欄列出的意見遞送管道之一」，原紀錄只引了 ADDRESSES 的起首句，沒有引到印出網址的那一行。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FDIC Website: https://www.fdic.gov/federal-register-publications"
+    },
+    {
+      "fact": "生效規定是法律自己的，不是這份草案的：GENIUS Act 於 2027 年 1 月 18 日生效，或在各聯邦支付型穩定幣主管機關發布任何實施本法的最終規則後 120 天生效，以較早者為準。「以較早者為準」這個限定原樣保留；這個日期是來源自己印的，不是本站換算。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act will become effective on January 18, 2027, or 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the Act, if earlier."
+    },
+    {
+      "fact": "四個聯邦支付型穩定幣主管機關：FDIC、OCC、聯準會理事會（FRB）與 NCUA。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The primary Federal payment stablecoin regulators are the FDIC, the Office of the Comptroller of the Currency (OCC), the Board of Governors of the Federal Reserve System (FRB), and the National Credit Union Administration (NCUA)."
+    },
+    {
+      "fact": "FDIC 這份提案的射程：FDIC 是「受保州立非會員銀行與州立儲蓄機構」（文件合稱 FDIC-supervised IDIs）獲准發行支付型穩定幣之子公司的主管機關。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The FDIC is the primary Federal payment stablecoin regulator of subsidiaries of insured State nonmember banks and State savings associations (collectively, ``FDIC-supervised IDIs'') approved to issue payment stablecoins."
+    },
+    {
+      "fact": "硬條件：受 FDIC 監理的獲准支付型穩定幣發行人（PPSI）必須是受保存款機構（IDI）的子公司。後半句是 FDIC 自己的預期，寫成「FDIC 表示」：它預期最早採用者很可能是具備法遵基礎與資本的較大型機構。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Because an FDIC-supervised PPSI must be a subsidiary of an IDI, the FDIC expects that the initial adopters of this technology will likely be larger institutions with the compliance infrastructure and capital necessary to support payment stablecoin issuance."
+    },
+    {
+      "fact": "保管那一半（擬議 subpart B，350.100 的目的與範圍）適用於受 FDIC 監理者，原文以 including 起頭列舉受保州立非會員銀行、外國銀行的受保州立分行、州立儲蓄機構與獲准支付型穩定幣發行人——including 的清單不是全清單。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This subpart B sets forth requirements applicable to persons subject to supervision and regulation by the FDIC, including insured State nonmember banks, insured State-licensed branches of foreign banks, insured State savings associations, and permitted payment stablecoin issuers"
+    },
+    {
+      "fact": "FDIC 自己畫出與 OCC 的邊界：OCC 的提案比這份提案更廣，因為 OCC 是國民銀行子公司與聯邦合格支付型穩定幣發行人的主管機關。（原文緊接著的破折號插語為 --including nonbank entities--，本紀錄未併入引文。）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the OCC's proposed rule is more expansive than this proposed rule because the OCC is the primary Federal payment stablecoin regulator for subsidiaries of national banks and Federal qualified payment stablecoin issuers"
+    },
+    {
+      "fact": "直接適用對象共三類，第三類比「FDIC 監理的機構」更寬：所有維持代幣化存款、或維持作為支付型穩定幣準備金之存款的受保存款機構（IDI）。獨立查核於 2026-09-17 補上此條——原紀錄與草稿的「管到誰」只寫了 FDIC 監理的發行人與保管業者兩類，漏掉這一類，而存款保險那兩個擬議條文正是掛在它上面（擬議 330.11(a)(3) 與 330.3(k) 的條文主語都是 an insured depository institution，沒有限定於受 FDIC 監理者）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The entities that fall under the direct scope of the proposed rule are all FDIC-supervised PPSIs, all FDIC-supervised PPSIs and IDIs that provide payment stablecoin-related custodial and safekeeping services, referred to as FDIC-supervised custodians, and all IDIs maintaining tokenized deposits or deposits held as reserves backing a payment stablecoin."
+    },
+    {
+      "fact": "前言自己把存款保險那一段的對象寫成「所有 IDI」：提案的目的之一，是就存放於受保存款機構、作為發行人支付型穩定幣準備資產的存款，向所有 IDI 釐清聯邦存款保險法下的保險範圍，並釐清代幣化存款的處理。成本效益分析段另有一句同義的敘述。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the proposed rule also aims to provide clarity to all IDIs with respect to deposit insurance coverage under the Federal Deposit Insurance Act (FDI Act) for deposits held at IDIs that serve as reserve assets of a PPSI's payment stablecoin, as well as clarify the treatment of tokenized deposits."
+    },
+    {
+      "fact": "以 2025 年 9 月 30 日季末為基準時點，FDIC 監理的獲准支付型穩定幣發行人是零家。（同一句還有 4,388 與 2,778 兩個數字，但那一句被 [[Page 18562]] 分頁標記與 \\51\\ 註腳切開，無法逐字連續引用，故本紀錄與文章都不印那兩個數字。）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "and supervises zero PPSIs"
+    },
+    {
+      "fact": "核心命題：作為支付型穩定幣準備金存放在受保存款機構的存款，會依 FDIC 的法人存款規則保給獲准發行人，而不以穿透方式保給穩定幣持有人。這是「擬議」，不是現行規定。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "deposits held as reserves backing a payment stablecoin would be insured to the PPSI under the FDIC's coverage rules for corporate deposits, but would not be insured to payment stablecoin holders on a pass-through basis"
+    },
+    {
+      "fact": "條號與方向的第二個佐證（獨立查核於 2026-09-17 補上，因為「擬議新增的 12 CFR 330.11(a)(3) 就是這個機制」是全文最容易被讀反的一句）：前言明寫新段落是加在 12 CFR 330.11(a) 下的第 (3) 段，該小節的標題也印成 Description of the Proposed Rule (Proposed Sec. 330.11(a)(3))，而條文修正指示那一段印的是 Amend Sec. 330.11(a) by adding paragraph (3)。方向是「保給發行人、不穿透給持有人」，三處一致。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposed rule would add a new paragraph (3) to 12 CFR 330.11(a)."
+    },
+    {
+      "fact": "SMDIA 的金額，文件用的字是「目前」：currently $250,000。這個限定詞原樣保留——它是當期金額，不是固定不變的數字。該字串在全文出現兩次，兩處都是逐字連續。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "currently $250,000"
+    },
+    {
+      "fact": "標準最高存款保險額（SMDIA）目前為 25 萬美元，計算基礎是按存款人、按受保機構、按所有權類別。（同一段另有一句把 SMDIA 與 currently $250,000 連在一起，但被 [[Page 18559]] 分頁標記切開，故改引這一句。）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category."
+    },
+    {
+      "fact": "發行人在同一家受保機構的存款會全部加總後適用保險上限，不論那些存款是穩定幣準備金還是其他用途（例如支付發行人的營運開銷）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Under the proposed rule, all deposits maintained by a PPSI at an IDI would be added together for purposes of the deposit insurance limit, regardless of whether those deposits consist of reserves backing payment stablecoins or serve some other purpose"
+    },
+    {
+      "fact": "存款保險只及於「存款」：FDIC 的存款保險不適用於發行人依 GENIUS Act 可以持有的其他類別準備資產。原文的 may maintain 是可能、不是必然，限定詞照留。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The FDIC's deposit insurance coverage does not apply to other types of reserve assets that a PPSI may maintain pursuant to the GENIUS Act."
+    },
+    {
+      "fact": "法律本身的禁止規定（FDIC 給的第一個理由）：支付型穩定幣不受美國完全信用擔保、不受美國政府保證、不受 FDIC 的存款保險、也不受 NCUA 的股金保險。文件並寫作相反陳述是違法的。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "shall not be backed by the full faith and credit of the United States, guaranteed by the United States Government, subject to deposit insurance by the Federal Deposit Insurance Corporation, or subject to share insurance by the National Credit Union Administration"
+    },
+    {
+      "fact": "FDIC 給的第二個理由：持有人通常以移轉穩定幣的方式交易，資金從未離開那個受 FDIC 保險的存款帳戶，這使它有別於既有的穿透安排。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "without funds ever leaving the FDIC-insured deposit account"
+    },
+    {
+      "fact": "機制條文：擬議新增 12 CFR 330.11(a)(3)。原文的 issuer's and 是已刊登文本的樣子（來源自己的排印），照抄未訂正。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(3) Notwithstanding any other provision of this part, deposits at an insured depository institution held as reserves for a payment stablecoin, as defined in the Guiding and Establishing National Innovation for U.S. Stablecoins Act, are deposits of the permitted payment stablecoin issuer's and insured as corporate deposits for purposes of this part."
+    },
+    {
+      "fact": "代幣化存款走相反方向：擬議新增 12 CFR 330.3(k)，明定記帳所用的技術或方式不影響一筆負債是不是「存款」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(k) Technology used to record deposits. The technology or type of recordkeeping utilized by an insured depository institution to record deposit liabilities does not affect whether those liabilities constitute ``deposits.''"
+    },
+    {
+      "fact": "因此使用代幣化存款的存款人，享有的聯邦存款保險與使用非代幣化存款的存款人相同。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a depositor using tokenized deposits is afforded the same Federal deposit insurance coverage under the FDI Act as a depositor using non-tokenized deposits"
+    },
+    {
+      "fact": "但並非每一種代幣化的銀行負債都是存款：不論當事人的意圖或陳述如何，不符合法定存款定義的就是非存款商品。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "there may be tokenized bank liabilities that are not deposits, irrespective of an intention or representation that such constitute a deposit"
+    },
+    {
+      "fact": "準備資產至少一比一：準備資產價值在任何時候都必須等於或超過發行人已發行在外的支付型穩定幣總額。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the reserve asset value of which must at all times meet or exceed the total outstanding issuance value of payment stablecoins issued by the PPSI"
+    },
+    {
+      "fact": "集中度上限：擬議 350.4(f) 要求發行人每個營業日限制對任一合格金融機構的曝險，不論工具類型，不得超過準備資產的 40%。這是擬議數字。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(f) Asset diversification and concentration. A permitted payment stablecoin issuer shall on each business day limit its exposure to any one eligible financial institution, regardless of instrument type, to no more than 40 percent of its reserve assets."
+    },
+    {
+      "fact": "月報：擬議 350.4(g) 要求發行人在每月最後一日收盤前，依表 1 的範本在自家網站公布「上一個月最後一日收盤時」的準備資產內容。公布時點與所報時點是不同的兩個月底。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "shall by close of business on the last day of each month, prepare and publish on its website using a format substantially similar to the template provided in table 1 a report containing as of close of business on the last day of the previous month"
+    },
+    {
+      "fact": "月報須經註冊會計師事務所查核，事務所出具書面報告給發行人的審計委員會（無審計委員會者為董事會）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "examined by a registered public accounting firm which will issue a written report of findings to the PPSI's audit committee, or board of directors if there is no audit committee"
+    },
+    {
+      "fact": "贖回時限：FDIC 提議把「及時」定義為不遲於贖回請求日後兩個營業日（擬議 350.5(b)(1)）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The FDIC is proposing to define ``timely'' to mean that a PPSI shall redeem a payment stablecoin no later than two business days following the date of the requested redemption in proposed Sec. 350.5(b)(1)."
+    },
+    {
+      "fact": "兩個營業日是上限而非目標，FDIC 並自陳市場可能期待遠快於此，因此就天數是否合適徵詢意見。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The FDIC recognizes that the market may expect redemptions to occur far more quickly than two business days."
+    },
+    {
+      "fact": "重大贖回請求的定義：單一 24 小時內贖回請求合計超過發行人在外發行額的 10%。10% 與 24 小時都是擬議數字，FDIC 明言就這兩者徵詢意見。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "``significant redemption request'' to mean a circumstance in which aggregate redemption requests exceed 10 percent of a PPSI's outstanding issuance value within a single 24-hour period"
+    },
+    {
+      "fact": "最低贖回量：擬議條文要求發行人應贖回大於或等於一枚支付型穩定幣的任何數量，但附有「須經適當的篩查與開戶程序」這個限定，不是無條件。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the permitted payment stablecoin issuer shall redeem any number greater than or equal to one payment stablecoin, subject to appropriate screening and onboarding"
+    },
+    {
+      "fact": "費用調漲：須至少提前七個日曆日通知，並對留有聯絡方式的現有客戶以安全方式送達。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "provide at least seven calendar days' prior notice of the change, including by securely delivering the notice to current customers for whom the PPSI has contact information"
+    },
+    {
+      "fact": "利息禁止：擬議 350.3(b)(4) 禁止發行人僅因持有、使用或保留穩定幣而付給持有人任何形式的利息或收益（現金、代幣或其他對價）。限定語「僅因持有、使用或保留」照留；它禁的是發行人，不是所有交易所或錢包。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "would prohibit a PPSI from paying the holder of any payment stablecoin any form of interest or yield (whether in cash, tokens, or other consideration) solely in connection with the holding, use, or retention of such payment stablecoin"
+    },
+    {
+      "fact": "清理順位（查核清單 must_add 第 1 條）：FDIC 的核准權限僅限於那些在 GENIUS Act 第 11 條所述清理程序中不會危及支付型穩定幣持有人債權的活動，而這些債權的順位優先於非穩定幣債權人。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "would not jeopardize the claims of payment stablecoin holders, which would rank senior to claims of non-payment stablecoin creditors"
+    },
+    {
+      "fact": "「持有人」還沒有定義：第 13 題指出 GENIUS Act 多處提到 payment stablecoin holders、尤其在債權順位上，但該法未定義該詞，FDIC 在問是否應由它定義。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Question 13: The GENIUS Act refers to ``payment stablecoin holders'' across various provisions, particularly with respect to priority of claims, but the Act does not define the term. Should the FDIC define the term?"
+    },
+    {
+      "fact": "存款保險這一段本身還在徵詢意見：第 125 題直接問這個擬議處理是否妥當、是不是對 GENIUS Act 與聯邦存款保險法最好的解讀。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Question 125: Is the FDIC's proposed treatment of deposits that comprise reserves for a payment stablecoin under section 4 of the GENIUS Act (12 U.S.C. 5903(a)(1)(A)(ii)) appropriate? Is this the best reading of the GENIUS Act and FDI Act?"
+    },
+    {
+      "fact": "文件的編號問題最後一題是第 144 題。文章寫「一路編到第 144 題」，依據是這一行；沒有另行清點題數。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Question 144: What else could the FDIC do to make the proposed rule easier to understand?"
+    },
+    {
+      "fact": "理事會通過日：FDIC 新聞稿寫理事會「今天」通過這份規則制定提案，該頁標示的日期與更新戳記都是 2026 年 4 月 7 日。",
+      "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Federal Deposit Insurance Corporation (FDIC) Board of Directors today approved a notice of proposed rulemaking"
+    },
+    {
+      "fact": "該頁的更新戳記是 2026 年 4 月 7 日。這是頁面更新日，不是事件日，也不是刊登日。",
+      "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Last Updated: April 7, 2026"
+    },
+    {
+      "fact": "新聞稿對意見期只寫「刊登後接受 60 天」，沒有印 6 月 9 日這個日期。",
+      "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Comments on the proposed rule will be accepted for 60 days after publication in the Federal Register."
+    },
+    {
+      "fact": "新聞稿自稱這是 FDIC 實施 GENIUS Act 的第二件規則制定。「第二件」是 2026-04-07 當時的說法，不得寫成「第二件也是最新的一件」。",
+      "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The proposed rule announced today is the FDIC’s second rulemaking implementing provisions of the GENIUS Act."
+    },
+    {
+      "fact": "第一件規則制定是 2025 年 12 月 19 日發布的提案，處理受保存款機構申請透過子公司發行支付型穩定幣的程序。",
+      "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On December 19, 2025, the FDIC issued a proposed rule that would establish application procedures for IDIs seeking approval to issue payment stablecoins through a subsidiary."
+    },
+    {
+      "fact": "FDIC 自家清單頁上該案的標題儲存格（用於獨立核對標題與 04/10/26 那一列的存在）。",
+      "url": "https://www.fdic.gov/federal-register-publications",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions"
+    },
+    {
+      "fact": "同一列的法規／文號儲存格，頁面上用的是 en dash（U+2013）：12 CFR Parts 324, 330, and 350 RIN 3064–AG19。與聯邦公報原文的 ASCII 連字號寫法不同，兩者都照各自頁面原樣記錄。",
+      "url": "https://www.fdic.gov/federal-register-publications",
+      "is_vendor_claim": false,
+      "verbatim_quote": "12 CFR Parts 324, 330, and 350 RIN 3064–AG19"
+    },
+    {
+      "fact": "同一列標示的意見截止日欄位與值，與聯邦公報原文的 2026 年 6 月 9 日一致。（兩個字串在該頁分別出現 44 次與 3 次，是清單各列共用的欄名與日期，只作為該列的欄位值使用。）",
+      "url": "https://www.fdic.gov/federal-register-publications",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Comment Period End:"
+    },
+    {
+      "fact": "同一列標示的卷期頁碼 91 FR 18534，在該頁只出現一次。以此頁查核到 2026-09-17，RIN 3064–AG19 在該頁只出現一次（即 04/10/26 那一列），未見同文號的最終規則列。",
+      "url": "https://www.fdic.gov/federal-register-publications",
+      "is_vendor_claim": false,
+      "verbatim_quote": "91 FR 18534"
+    },
+    {
+      "fact": "GENIUS Act 的制定日 2025 年 7 月 18 日：只在 FDIC 2026 年 7 月 20 日這份公告印出，四月那份提案全文裡 July 18, 2025 出現 0 次。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(GENIUS Act or the Act) was enacted on July 18, 2025."
+    },
+    {
+      "fact": "申報表格公告的意見截止日是 2026 年 9 月 18 日，與四月提案的 6 月 9 日是兩段不同的意見期。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Comments must be submitted on or before September 18, 2026."
+    },
+    {
+      "fact": "該公告的 OMB 控制號是 3064-0225。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[OMB No. 3064-0225]"
+    },
+    {
+      "fact": "該公告的卷期頁碼為 91 FR 45274 起（頁 45274 至 45277）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Pages 45274-45277]"
+    },
+    {
+      "fact": "七月這份公告也獨立確認四月提案的刊登日與擬議新增的部別：2026 年 4 月 10 日刊登、要在 12 CFR 新增第 350 部。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On April 10, 2026, the FDIC published the proposal that would add Part 350 to Title 12 of the CFR"
+    }
+  ],
+  "not_said": [
+    "文件沒有說銀行子公司發行的支付型穩定幣受存款保險保障。它提議的是相反：持有人不會因此成為受保存款人，受保的是作為準備金存款之存款人的發行人。",
+    "這份提案沒有生效日，文件裡沒有任何屬於它自己的生效條款。不可寫成 2026-04-10 起「上路」「生效」「施行」，也不可稱它為法律或已生效的規則。",
+    "FDIC 沒有說最終規則會在什麼時候發、會不會發，也沒有給定案時程。唯一的時點是法律自己的生效規定（2027 年 1 月 18 日，或最終規則後 120 天，以較早者為準）。",
+    "文件沒有點名任何穩定幣、發行人、銀行或品牌，通篇用「brand of payment stablecoin」這種一般性說法。不可把任何真實產品名掛到任何一項要求上。",
+    "文件沒有訂一般性的最低資本比率或最低資本金額。研究到的唯一硬數字是 de novo 期間的 500 萬美元下限，本文因篇幅未寫；若要寫，不可描述成永久或一般性的最低資本。",
+    "文件並非說持有人完全沒有保障：它訂了準備資產、贖回、揭露、查核、保管與監理要求，並寫明持有人債權在第 11 條清理程序中優先於非穩定幣債權人；但它沒有存款保險式的還款保證，也沒有寫發行人倒閉時如何補償持有人。這兩件事要分開寫。",
+    "以這份提案全文查核到 2026-09-17，未見任何關於非美國使用者、非美國居民、跨境提供，或美國境外的人能否持有、贖回受 FDIC 監理發行人所發穩定幣的規定；也未見任何適用於台灣業者或台灣使用者的內容。",
+    "文件沒有把穩定幣與銀行存款拿來當儲蓄選項比較，也沒有對任何人該不該持有穩定幣表示意見。",
+    "文件沒有定案那份機密週報的內容，FDIC 明言是在徵詢「應該要求什麼」，只列了可能性。",
+    "所謂 circuit breaker（自動緊急暫停機制）在文件裡是第 73 題的提問，不是擬議要求。不可寫成 FDIC 將要求設置。",
+    "40% 集中度上限、兩個營業日的贖回時限、10%／24 小時的重大贖回門檻、500 萬美元的 de novo 資本下限與 500 億美元的查核門檻都是擬議數字，FDIC 明白就每一項徵詢意見，最終規則可能改變。",
+    "文件沒有說支付型穩定幣發行人現在有幾家或將有幾家。它寫的是以 2025-09-30 為時點監理零家，並以 5 到 30 家作為最初幾年的估計，且自陳高度不確定。",
+    "文件沒有實質規範洗錢防制方案本身，只要求年度聲明（擬議 350.6(c)）。AML／CFT 與制裁方案的規則是同日由其他機關發布的另外幾份文件，FDIC 自己也在 2026-06-05 另發過 BSA／制裁提案（91 FR 34171、FR Doc 2026-11342、RIN 3064-AG29、12 CFR part 350，意見期 2026-08-04 截止）。不可把那些併進本篇。",
+    "文件裡沒有任何幣價、市值、交易量、資金流或報酬數字，本垂直也禁止寫這些。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "聯邦公報的正規 HTML 文件頁 https://www.federalregister.gov/documents/2026/04/10/2026-06974/…",
+      "seen_where": "FR API 的 html_url 欄位，以及前期研究的引導網址。",
+      "why_excluded": "文件是真的，但這個網址今天（2026-09-17）仍先 302 到 unblock.federalregister.gov、再回 HTTP 200 的約 10.6 KB 「Federal Register :: Request Access」攔阻頁，body 不是文件。依 BRIEF「sources[] 只放自己讀到正文的網址」，改列 /documents/full_text/text/ 端點。"
+    },
+    {
+      "claim": "FDIC 理事會附件 PDF（/board/federal-register-notice-genius-act-requirements-and-standards-fdic-supervised-permitted）與 govinfo 的 FR-2026-04-10 PDF。",
+      "seen_where": "FDIC 新聞稿的 Attachment(s) 連結；前期研究已比對兩檔位元組相同。",
+      "why_excluded": "不是排除為假，而是排除為來源：它與 sources[0] 是同一份文件，承載不了任何額外事實，而 sources[] 上限四條。依修正清單 source_list_fix 的建議，把這個位置讓給 2026-07-20 的公告，讓制定日與申報表格兩條事實可追溯。"
+    },
+    {
+      "claim": "「FDIC 禁止了計息型穩定幣」「交易所不得再對穩定幣餘額發放獎勵」。",
+      "seen_where": "一般報導常見的框架。",
+      "why_excluded": "文件禁的是發行人「僅因持有、使用或保留」而付息或給收益，並對關係人與相關第三方的安排設可推翻的推定；它沒有規範所有交易所或錢包，推定也可被推翻。寫成「禁止」是放大。另外本垂直本來就不寫收益率與獎勵數字。"
+    },
+    {
+      "claim": "「FDIC 已決定穩定幣準備金不適用穿透型存款保險」。",
+      "seen_where": "這份提案標題最自然但錯誤的讀法。",
+      "why_excluded": "它是提案，FDIC 在第 125 至 130 題還在問這是不是對 GENIUS Act 與聯邦存款保險法最好的解讀、以及若準備金「可以」適用穿透會發生什麼。每一句談這件事的話都要帶「擬議」。"
+    },
+    {
+      "claim": "把 2026-04-08 當成理事會通過日。",
+      "seen_where": "文件署名欄「Dated at Washington, DC, on April 8, 2026」。",
+      "why_excluded": "不是排除為假，而是不可混用：新聞稿寫理事會 4 月 7 日「today approved」，4 月 8 日是執行秘書為送存而署的日期，4 月 9 日送存。文章寫 04-07 通過、04-10 刊登。"
+    },
+    {
+      "claim": "同一句裡的 4,388 家受保機構與 2,778 家受監理機構。",
+      "seen_where": "sources[0] 的成本分析基準段。",
+      "why_excluded": "命題為真，但那一句被 [[Page 18562]] 分頁標記與 \\51\\ 註腳切開，取不到含這兩個數字又逐字連續的引文；為了不違反引文規則而整組不寫，只保留同句後半可連續引用的「零家」。"
+    },
+    {
+      "claim": "FDIC 估計最初幾年會有 5 到 30 家受它監理的存款機構獲准發行，以及約 30 家提供相關保管服務。",
+      "seen_where": "sources[0] 的經濟分析段，引文本身可連續取得。",
+      "why_excluded": "事實成立且引文可用，但因正文字數上限（1,800–3,000 字）取捨掉；文章只留「零家」這個時點事實。若查核者要補，引文為 \"the FDIC estimates that between 5 and 30 FDIC-supervised IDIs would apply for and receive approval to issue payment stablecoins through FDIC-supervised PPSIs in the first few years after the enactment of the proposed rule.\"，並須寫成「FDIC 估計」。"
+    },
+    {
+      "claim": "七類準備資產、資本與作業備援、每週與每季申報、500 億美元查核門檻、保管與資訊安全條文、嚴重性條款等其餘擬議內容。",
+      "seen_where": "sources[0] 全文。",
+      "why_excluded": "都已讀到，但本篇的角度是「存款保險保到誰」與「持有人看得到的要求」，正文字數不容納；未寫入正文，因此也不在本紀錄以事實條列。"
+    },
+    {
+      "claim": "這份提案收到幾件意見、意見說了什麼。",
+      "seen_where": "regulations.gov（文件編號 FDIC-2026-0696-0001）。",
+      "why_excluded": "意見件數是活資料，今天沒有從官方頁重數到可引用的數字，所以不印。"
+    },
+    {
+      "claim": "OCC、聯準會或 NCUA 是否對穿透型存款保險或股金保險做了相同結論。",
+      "seen_where": "sources[0] 引了 OCC 提案（91 FR 10202）與 NCUA 提案（91 FR 6531）。",
+      "why_excluded": "本篇沒有讀那兩份文件，因此只寫 FDIC 提議了什麼，不對其他機關的結論作任何陳述。這也是與同批 OCC、NCUA、AML 三篇的分工界線。"
+    },
+    {
+      "claim": "這份規則對穩定幣市場規模、成長或競爭的影響。",
+      "seen_where": "sources[0] 的 Expected Benefits 段落（以 could、potentially 對沖）。",
+      "why_excluded": "本垂直禁止市場規模與行情數字，且那是機關對未來的預期而非事實。整段不寫。"
+    },
+    {
+      "claim": "以 FR API 依 RIN 3064-AG19 查詢回 count: 1，作為「沒有最終規則」的依據。",
+      "seen_where": "前期研究與查核紀錄的做法。",
+      "why_excluded": "API 查詢網址不是可讀的公告頁，不適合放進 sources[]；本篇改用 sources[2]（FDIC 自家刊登清單頁）作可追溯依據，並把否定句限縮成「以該頁查核到 2026-09-17，RIN 3064–AG19 只出現在 04/10/26 那一列，未見同文號的最終規則列」。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，可能透過跨境支付、匯款或儲值服務接觸到美元穩定幣，也聽過「美國的銀行要發穩定幣了」。角度是制度而非市場：一個主管機關提議要求誰做什麼，以及它明白告訴一般持有人「你有的不是存款保險」。\n\n這份文件對讀者最有價值的，是它乾淨地回答了一個大家默默猜錯方向的問題——如果美國銀行的子公司發穩定幣，我的餘額有存款保險嗎？FDIC 擬議的答案是沒有：躺在銀行裡的準備金依法人存款規則保給發行人、與發行人其他法人存款加總、上限是目前的 SMDIA 25 萬美元，而且不穿透給每一位持有人；同時對代幣化存款提議剛好相反的結論——記在分散式帳本上的存款還是存款，存款人的保險不變。這兩半並排就是本文。它也正好落在本垂直免責 callout 已經寫著的那句「部分服務不受存款保險或投資人保護制度保障」。\n\n五節：(1) 這是提案不是規則——通過日、刊登日、法律的生效公式、意見截止日、查核日仍未見最終規則；(2) 管到誰——四個主管機關、FDIC 只管受保州立非會員銀行與州立儲蓄機構獲准發行的子公司、必須是子公司這個硬條件、保管那一半、與 OCC 的邊界、時點上零家；表格放這一節結尾；(3) 存款保險完整說明，圖解放這一節結尾；(4) 持有人會看到的擬議要求——一比一、40% 集中度、月報＋會計師查核、兩個營業日、最低一枚但須經篩查與開戶、費用七日前通知、不得付息、清理順位；(5) 還沒定案的部分與怎麼自己查。\n\n刻意不談：同日由 Treasury／FinCEN／OFAC 與 OCC＋FDIC＋NCUA 聯名發布的 AML 與制裁方案規則（同批另一篇）、OCC 與 NCUA 的提案（同批另兩篇）、FDIC 2025-12 的申請程序提案與 2026-06-05 的 BSA 提案，以及任何真實穩定幣之間的比較。每個數字都要帶「擬議」。生活情境明寫是編輯設計的例子。",
+  "must_not_write": [
+    "不寫任何幣價、匯率、市值、交易量、資金流或歷史報酬。本垂直禁止，而且這份文件裡本來就沒有。",
+    "不把收益率、質押報酬、空投或付給持有人的利率寫成數字或機會。利息禁止只能寫成對發行人的法規限制。",
+    "不點名或比較任何穩定幣、交易所、錢包或保管商，也不暗示哪一個更安全、監理更好或值得持有。文件本身沒有點名任何一個。",
+    "不寫這份規則已生效、已施行，或有任何東西從 2026-04-10 開始。它是規則制定提案，沒有生效日。",
+    "不寫「SEC」「美國監管機關」或「美國政府」決定了這件事。是 FDIC 單獨行動，身分是受保州立非會員銀行與州立儲蓄機構之子公司的聯邦支付型穩定幣主管機關。",
+    "不寫穩定幣受或將受存款保險保障，也不寫穩定幣「和銀行存款一樣安全」。",
+    "不寫 FDIC 禁止銀行發行穩定幣，或禁止了計息型穩定幣。兩者都超出文本。",
+    "不把 25 萬美元的 SMDIA 說成穩定幣持有人可以用的保障。它是發行人在單一受保機構之法人存款的上限。",
+    "不陳述或暗示這些規定適用於台灣業者、台灣使用者，或透過台灣服務持有的穩定幣。文件對此完全沒有寫。",
+    "不猜聯邦公報文件編號、RIN、任何 CFR 條號或美國法典引註。可用的都在 verified_facts 裡並各自附來源。",
+    "不引 CoinDesk、Cointelegraph、The Block、Decrypt、任何律師事務所客戶快訊或新聞整理。本篇一條都沒用，sources 裡也不得出現。",
+    "不寫「我們實測」「我們試用」。這是文件閱讀。",
+    "兩個營業日的贖回時限、40% 集中度上限、10%／24 小時的重大贖回門檻、500 萬美元 de novo 資本下限與 500 億美元查核門檻，只要寫就必須帶「擬議」。",
+    "不得出現簡體字；法規語境用「虛擬資產」，一般語境用「加密貨幣」（依 crypto.md）。"
+  ],
+  "live_data_warnings": [
+    "sources[2]（FDIC 聯邦公報刊登與公眾意見清單頁）是活清單，今天 181,821 bytes、逐月增列。文章對它的用法只有兩種：該案那一列的欄位值，以及「以該頁查核到 2026-09-17，RIN 3064–AG19 只出現在 04/10/26 那一列，未見同文號的最終規則列」。不要寫「該頁共列出 N 件」這類計數；定稿當天要重抓一次，若已出現最終規則列，第 1 節與 callout、FAQ 的那兩句都必須改寫。",
+    "「未見同文號的最終規則」是查核日的快照，不是永久狀態，句型必須維持「以 X 查核到 2026-09-17 未見」，不得寫成「FDIC 沒有發布最終規則」。",
+    "新聞稿自稱「第二件規則制定」是 2026-04-07 當時的狀態；到查核日已被 FDIC 2026-06-05 的 BSA／制裁提案（91 FR 34171）取代，因此可以寫「第二件」，不得寫「第二件也是最新的一件」。",
+    "FDIC 新聞稿頁的「Last Updated: April 7, 2026」是頁面更新戳記，不是事件日；該頁純文字裡「June 9」出現 0 次，意見截止日只能取自聯邦公報原文。",
+    "2026-07-20 那份申報表格公告的意見期到 2026-09-18，也就是查核日的隔天。文章只寫「該公告印的截止日是 2026 年 9 月 18 日」，沒有寫它現在開著或關著；定稿或翻譯若在 9 月 18 日之後，這一句仍成立（它是公告印的日期），但不要改寫成「目前仍可提交意見」。",
+    "本紀錄不記任何 feed 筆數、名冊列數或 API 的 count 作為事實；前期研究用的 FR API count: 1 只是取得方法，已移入 unverified_or_excluded。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（第 2 條 verbatim_quote 用 \" / \" 把相隔 39 行的兩串接起來）：已套用。拆成兩條事實，一條引報頭那一行的 \"RIN 3064-AG19\"，另一條引另一行的 \"12 CFR Parts 324, 330, and 350\"，並在事實文字裡寫明兩串在原文相隔約 39 行。沒有再出現自製分隔符。",
+    "must_fix 2（第 4 條把 HTML 表格壓平、用 ... 省略、把 en dash 打成 ASCII 連字號）：已套用。清單頁的引文全部改成單一儲存格字串（標題欄、法規／文號欄、Comment Period End: 欄名、日期值、91 FR 18534），並保留頁面上的 en dash \"RIN 3064–AG19\"（U+2013）；同時記下聯邦公報原文用的是 ASCII 連字號，兩者各依其頁面照抄。",
+    "must_fix 3（制定日 2025-07-18 與 7/20 公告掛在不在 sources[] 的網址）：已套用 source_list_fix 的建議，把 https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt 放進 sources[3]，制定日與申報表格公告兩條事實因此可追溯；文章也明寫「四月這份文件沒有印這部法的制定日」。FR API 查詢網址沒有進 sources[]，改以 sources[2] 承載「未見最終規則」並限縮句型。",
+    "must_fix 4（最低贖回量漏掉 subject to appropriate screening and onboarding）：已套用。引文改採擬議 350.5(a)(5) 的條文原句並含該限定；正文與 FAQ 都寫「但原文接著加一個限定：須經適當的篩查與開戶程序」。",
+    "must_fix 5（七類準備資產漏掉兩個法定條件）：本篇正文因字數未寫七類準備資產清單，故該條無對象可套用；為免後人照舊稿補寫，已在 unverified_or_excluded 記明七類準備資產屬於讀過但未寫入的範圍。若查核者要補，須同時補回第 (3) 類的 \"(including any foreign branches or agents, including correspondent banks, of an IDI)\" 與第 (5) 類的 \"received consistent with one or more of the allowable exceptions to rehypothecation, reuse, or pledging as circumscribed in 12 U.S.C. 5903(a)(2)\"。",
+    "must_fix 6（「第二個」不得寫成「第二個也是最新的」）：已套用。正文只寫「新聞稿把這次稱為第二件」，並在 live_data_warnings 記下 2026-06-05 的第三案。",
+    "must_fix 7（not_said 第 7 項誇大缺口）：已套用並改寫。not_said 現在寫「沒有存款保險式的還款保證，但持有人債權在第 11 條清理程序中優先於非穩定幣債權人」，正文第 4 節與 FAQ 都照此寫，第 13 題的定義未定也寫進 FAQ。",
+    "must_fix 8（not_said 第 14 項引註空白）：已套用。FDIC 自己 2026-06-05 的 BSA／制裁提案填上完整引註：91 FR 34171、FR Doc 2026-11342、RIN 3064-AG29、12 CFR part 350、2026-06-05 刊登、意見期 2026-08-04 截止。該提案本身未在今天重抓，故只作為 not_said 的界線引註，不當事實、不進 sources[]。",
+    "must_fix 9（三份 AML 文件的機關歸屬，第三份是 OCC＋FDIC＋NCUA 聯名）：屬於 corrections_to_candidate_list 與 C7 的範圍，本篇不寫任何 AML 方案內容，故無對象可套用；已在 not_said 寫成「同日由其他機關發布的另外幾份文件」，沒有指定機關組合。今天在 sources[2] 的清單頁上另見 04/10/26 的 \"Anti-Money Laundering and Countering the Financing of Terrorism Programs\"（12 CFR Part 326、RIN 3064–AF34）一列，其 Summary 自述為 OCC、FDIC 與 NCUA 三家共同提出，與修正清單的更正一致；本篇不引用這一列。",
+    "must_add 1（清理順位獨立成一條事實）：已套用。verified_facts 有獨立一條，引文為 \"would not jeopardize the claims of payment stablecoin holders, which would rank senior to claims of non-payment stablecoin creditors\"，正文第 4 節最後一段與 FAQ 第 5 題都寫到。",
+    "must_add 2（第一案曾延長意見期，補引註）：引註已記錄——RIN 3064-AG20／90 FR 59409（2025-12-19）的延長公告是 91 FR 6138、FR Doc 2026-02665、2026-02-11 刊登、意見期改到 2026-05-18；本案 RIN 3064-AG19 則沒有延長、沒有重新提案。因為那兩份文件今天沒有重抓，且不在 sources[]，所以只記在此處，未寫進正文。",
+    "must_add 3（37 條 verbatim_quote 空白、近半數紀錄不能自我追溯）：已套用且加嚴。本紀錄每一條引文都非空，並用壓空白後的字串比對逐條驗證在來源頁只出現一次（此處原寫「55 條」，實際是 54 條，已由獨立查核於 2026-09-17 訂正並補到 58 條）；凡今天找不到可連續引用字串的命題（例如 4,388 與 2,778 那一句被分頁標記切開）一律不寫，移入 unverified_or_excluded。",
+    "source_list_fix：已套用。sources[] 改為 (0) 四月提案全文、(1) FDIC 新聞稿、(2) FDIC 聯邦公報刊登清單頁、(3) 2026-07-20 申報表格公告。被換掉的是理事會附件 PDF（承載 0 條事實，且與 (0) 是同一份文件）。四條今天都重抓並讀 body，checked_on 一律 2026-09-17。",
+    "事件日的編務問題：corrections-crypto.md 指出依 BRIEF.md 的「slug 尾碼＝事件日」，FDIC 案的 slug 與 news_date 可能應為 20260407（理事會通過日）。本篇依 WRITER.md 第 2 節的明文（四篇美國聯邦規則一致以聯邦公報刊登日為事件日）採 2026-04-10，並在第 1 段與 callout 把 04-07 與 04-10 兩個日期都明寫。此衝突已寫進回報，仍待站主定案；若站主改採 04-07，slug、news_date、display_order 與兩處日期敘述要一起改。",
+    "生效日的規格衝突：WRITER.md 要求「生效日一律寫公式，不寫日期（制定日 2025-07-18 起 18 個月，或最終規則後 120 天，取其早）」，但 sources[0] 自己印的是 \"The GENIUS Act will become effective on January 18, 2027, or 120 days after … if earlier.\"，而「18 個月」這個算法在本篇四條來源裡都沒有印。為免違反 BRIEF 第 9 條（研究者自己算出來的數字），正文照來源印的寫，保留兩個分支與「以較早者為準」，並明寫那是法律的生效規定、這份草案自己沒有生效日。此衝突已寫進回報。"
+  ],
+  "hero_label": "保的是發行人，不是持有人",
+  "diagram": {
+    "title": "存款保險走到哪一層",
+    "caption": "四格圖解：準備金存款保給發行人、不穿透到持有人、代幣化存款仍是存款，以及清理程序中持有人債權順位優先於非穩定幣債權人；四格都是擬議內容。",
+    "nodes": [
+      [
+        "準備金存款",
+        "保給發行人的法人存款"
+      ],
+      [
+        "持有人",
+        "不以穿透方式受保"
+      ],
+      [
+        "代幣化存款",
+        "仍是存款，保險不變"
+      ],
+      [
+        "發行人倒閉",
+        "債權順位優先於非穩定幣"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Insured to the issuer",
+      "diagram": {
+        "title": "Where deposit insurance stops",
+        "caption": "Four-panel diagram: reserve deposits insured to the issuer, no pass-through to holders, tokenized deposits still deposits, and holders' claims ranking senior to non-payment stablecoin creditors in liquidation proceedings; all four panels are proposed.",
+        "nodes": [
+          [
+            "Reserve deposits",
+            "Corporate deposits of issuer"
+          ],
+          [
+            "Holders",
+            "Not insured pass-through"
+          ],
+          [
+            "Tokenized deposits",
+            "Still deposits, same cover"
+          ],
+          [
+            "Issuer fails",
+            "Senior to non-stablecoin"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "付保されるのは発行者",
+      "diagram": {
+        "title": "預金保険はどこまで届くか",
+        "caption": "4コマの図解：準備預金は発行者に付保、保有者にはパススルーしない、トークン化預金は預金のまま、そして清算手続において保有者の債権が決済用ステーブルコイン以外の債権者より優先するという4点。4コマはいずれも提案されている内容です。",
+        "nodes": [
+          [
+            "準備預金",
+            "発行者の法人預金"
+          ],
+          [
+            "保有者",
+            "パススルーされない"
+          ],
+          [
+            "トークン化預金",
+            "預金のまま、保険不変"
+          ],
+          [
+            "発行者の破綻",
+            "債権順位が優先する"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "보장되는 쪽은 발행자",
+      "diagram": {
+        "title": "예금보험은 어디까지 미치나",
+        "caption": "4컷 도해: 준비금 예금은 발행자에게 보장, 보유자에게 패스스루되지 않음, 토큰화 예금은 여전히 예금, 그리고 청산 절차에서 보유자 채권이 지급결제용 스테이블코인 외 채권자보다 우선한다는 네 가지. 네 컷 모두 제안된 내용입니다.",
+        "nodes": [
+          [
+            "준비금 예금",
+            "발행자의 법인예금"
+          ],
+          [
+            "보유자",
+            "패스스루되지 않음"
+          ],
+          [
+            "토큰화 예금",
+            "여전히 예금, 보험 그대로"
+          ],
+          [
+            "발행자 파산",
+            "채권 순위가 우선"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "保的是发行人，不是持有人",
+      "diagram": {
+        "title": "存款保险走到哪一层",
+        "caption": "四格图解：准备金存款保给发行人、不穿透到持有人、代币化存款仍是存款，以及清算程序中持有人债权顺位优先于非稳定币债权人；四格都是拟议内容。",
+        "nodes": [
+          [
+            "准备金存款",
+            "保给发行人的法人存款"
+          ],
+          [
+            "持有人",
+            "不以穿透方式受保"
+          ],
+          [
+            "代币化存款",
+            "仍是存款，保险不变"
+          ],
+          [
+            "发行人倒闭",
+            "债权顺位优先于非稳定币"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent（未參與撰稿）",
+    "checked_on": "2026-09-17",
+    "method": "sources[] 四條全部以 `curl -sL -A \"Mokaair-editorial\"` 於 2026-09-17 重抓並讀 body（沒有任何請求帶入 email、姓名或其他個人資料）；58 條 verbatim_quote 以壓空白後的連續字串逐條回抓到的檔案比對，58 條全部命中；正文每一句、摘要 4 句、FAQ 8 題的答句、表格 5 列與 caption、圖解 caption、兩個 callout、title 與 description 共 96 條主張逐條回原文核對。條號以「前言敘述＋小節標題＋條文修正指示」三處互相驗證（330.11(a)(3)、330.3(k)、350.4(f)、350.4(g)、350.4(h)(1)、350.5(a)(5)、350.5(b)(1)、350.5(d)(2)、350.3(b)(4)）。否定句各自重跑：sources[2] 的活清單頁今天 181,821 bytes、列到 09/15/26，頁面印的是 en dash 的 \"RIN 3064–AG19\"（ASCII 連字號在該頁 0 次，但該頁本身混用兩種寫法，例如另一列印的是 \"3064-AG28\"），以 \"AG19\" 子字串比對全頁只出現 1 次，即 04/10/26 那一列，未見同文號的最終規則列（全頁唯一的 \"Final rule\" 屬於 RIN 3064–AG12）；「未見非美國使用者／跨境／台灣」另查 Taiwan、cross-border、non-U.S.、outside the United States、abroad、offshore、extraterritorial 各 0 次，foreign 的 15 次逐條讀過、全部是外國銀行的受保州立分行、外國央行發行的貨幣、IDI 的境外分行與代理行、外國恐怖組織，沒有一處在講境外使用者；\"July 18, 2025\" 在四月那份文件 0 次；編號問題以詞界比對為 Question 1 至 144、無缺號、最大為 144。沒有使用任何 sources[] 以外的新網址替文章補事實。",
+    "verdict": "ok（96 條主張中改了 6 處，其中 1 處是事實性的範圍更正，5 處是補上擬議標記或收緊限定語；骨幹論述「準備金存款保給發行人、不穿透到持有人」查證後成立，未動）",
+    "edits_to_the_pack": [
+      "第 2 節第 1 段末補一句：「存款保險那一段的射程更寬：文件在影響範圍那一節，把所有維持代幣化存款或穩定幣準備金存款的受保存款機構都列為直接適用對象。」——原稿把射程整段寫成只有「FDIC 監理的存款機構＋它們的穩定幣子公司＋FDIC 監理的保管業者」，漏掉來源自己列的第三類；擬議 330.11(a)(3) 與 330.3(k) 的條文主語都是 an insured depository institution，沒有限定於受 FDIC 監理者，前言並兩次寫 provide clarity to all IDIs。這是把來源的範圍收窄（BRIEF 型態 3），而且收窄的正好是本文的骨幹段落。",
+      "摘要第一句同步補上「存款保險那一段還及於所有維持這類存款的受保存款機構」，以免摘要與正文不一致（摘要只能重述正文）。",
+      "FAQ 第 6 題（台灣）同步補上「存款保險那一段還及於所有維持代幣化存款或穩定幣準備金存款的美國受保存款機構」——這一句同時讓「不及於台灣」更清楚，因為 IDI 的定義本身就把非美國機構排除在外。",
+      "第 3 節第 2 段「不論那是準備金還是營運開銷，發行人在同一家機構的存款都會加總」前加「依擬議條文，」——原文是 Under the proposed rule, all deposits maintained by a PPSI at an IDI would be added together…，原稿這個操作性句子沒有帶提案標記，會被讀成現行規定（corrections-crypto.md 跨篇型態 6）。",
+      "第 5 節第 2 段的編輯情境「照這份草案的提議，」後加「在它管得到的範圍內，」——原稿以「透過某個跨境服務拿到一筆美元穩定幣」起頭，緊接著就說「受保的是發行人存在銀行裡的那筆準備金」，會被讀成任何一枚美元穩定幣的準備金都有美國存款保險。加上射程限定後，這句不再跨出文件的範圍。",
+      "FAQ 第 3 題：「發行人在同一家受保機構的法人存款會全部加總後適用這個上限」前加「依擬議條文，」；末句「持有人不是那家銀行的存款人，也不會各自獲得一份上限」改成「依這份草案的提議，持有人不會被當成那家銀行的受保存款人，也不會各自獲得一份上限」——原句是無限定的絕對句，而文件講的是「不以穿透方式把持有人當成受保存款人」，不是「持有人在那家銀行沒有任何存款關係」。"
+    ],
+    "edits_to_this_record": [
+      "sourcing_notes 與 corrections_applied 的 must_add 3 兩處都寫「55 條」引文，實際只有 54 條。已訂正並註明是撰稿者的清點錯誤（BRIEF 型態 9：自己清點出來的數字）。",
+      "補 4 條 verified_facts，都是今天在 sources[0] 上重新讀到、且引文連續唯一的：(a) 直接適用對象三類（含 all IDIs maintaining tokenized deposits…）；(b) 前言的 provide clarity to all IDIs 那一句；(c) 前言寫 The proposed rule would add a new paragraph (3) to 12 CFR 330.11(a).，作為 330.11(a)(3) 條號與方向的第二個佐證；(d) ADDRESSES 欄印出 FDIC Website: https://www.fdic.gov/federal-register-publications 那一行，讓 FAQ 第 8 題「那一頁也是 ADDRESSES 的遞送管道之一」可追溯。"
+    ],
+    "checked_and_correct": [
+      "三個高風險句全部成立。(1) 擬議 330.11(a)(3)：前言小節標題、前言敘述、條文修正指示三處一致，方向是「保給發行人（法人存款）、不以穿透方式保給持有人」；加總與 SMDIA 也對，文件印的是 per depositor, per IDI, per ownership category 與 currently $250,000（該字串全文兩次），\"In other words, the SMDIA is …\" 那一句逐字存在且只出現一次。擬議 330.3(k) 同樣三處一致，方向相反（記帳技術不影響是不是存款）。",
+      "(2) 活清單上的否定句今天重跑仍成立：頁面列到 09/15/26，\"AG19\" 全頁 1 次、在 04/10/26 那一列，該列印著 Notice of proposed rulemaking 與 Comment Period End: June 9, 2026、91 FR 18534，沒有同文號的最終規則列。",
+      "(3) 生效日是來源自己印的，不是換算：那一句在 sources[0] 的註 5，逐字含 January 18, 2027、120 days after … 與 if earlier 兩個分支，並註 See 12 U.S.C. 5901 note。文章歸因給法律、並明寫這份草案自己沒有生效日——查核另確認全文 \"2027\" 只出現 1 次（即該註）、\"Effective date\"／\"EFFECTIVE DATE\" 0 次，DATES 欄只有意見截止日，唯一的 \"effective date\" 出現在 RCDRIA 那一段的一般性義務，不是本案的生效日。",
+      "四個主管機關：文件的註 4 用的是 are（不是 include），列 FDIC、OCC、FRB、NCUA 並引 12 U.S.C. 5901(25)，所以寫「四個」成立（同批 NCUA 那份用的是 which include，不可互抄）。",
+      "「零家」的基準時點成立：經濟分析段先寫這份分析用的是 2025 年 9 月 30 日季末的資料，同一句接著寫 supervises zero PPSIs。同句的 4,388 與 2,778 被 [[Page 18562]] 與註 51 切開，文章沒有印，這個取捨正確。",
+      "40% 集中度：擬議 350.4(f) 條文含 on each business day、any one eligible financial institution、regardless of instrument type，分母是 its reserve assets。文章的「每個營業日」「任一合格金融機構」「準備資產的 40%」三個要素都對。（前言另加了 across all brands of payment stablecoins issued by the PPSI，那是條文之外的補充，未寫進文章不構成誤述。）",
+      "重大贖回請求：定義段與擬議條文第 (24) 款兩處都是 aggregate redemption requests exceed 10 percent … within a single 24-hour period，文章的「單一 24 小時內合計超過在外發行額的 10%」對；FDIC 並在第 12 題就 10% 與 24 小時徵詢意見。",
+      "贖回時限與最低贖回量：不遲於贖回請求日後兩個營業日（擬議 350.5(b)(1)）、兩個營業日是上限而非目標、FDIC 自陳市場可能期待遠快於此並就天數徵詢意見（第 71 題），三項都在；最低贖回量的擬議 350.5(a)(5) 確實帶 subject to appropriate screening and onboarding，文章與 FAQ 兩處都寫了這個限定，表格的「不得高於一枚」對應前言的 may not be greater than one payment stablecoin。",
+      "費用：擬議條文寫的是「費用有變動就要至少提前七個日曆日通知，但調降除外」，文章寫「調漲須至少提前七個日曆日通知」，與前言的 any increases in the fees 一致，沒有把調降也寫成要通知。",
+      "月報：擬議 350.4(g) 的公布時點是每月最後一日收盤前、所報時點是上一個月最後一日收盤，文章沒有把兩個月底寫混；擬議 350.4(h)(1) 要求上一個月月末報告揭露的資訊經 registered public accounting firm 查核、出具書面報告給審計委員會（無者為董事會），文章的「須經註冊會計師事務所查核」對。",
+      "利息禁止：擬議 350.3(b)(4)，文章保留了 solely in connection with the holding, use, or retention 這個限定，也沒有延伸成「禁止計息型穩定幣」或「交易所不得發獎勵」，符合 unverified_or_excluded 的界線。",
+      "清理順位：文章與 FAQ 第 5 題都照 must_fix 7 的改寫寫成「沒有存款保險式的還款保證，但持有人債權在第 11 條清理程序中優先於非穩定幣債權人」，並帶上第 13 題「持有人」尚未定義；原文的 would rank senior to claims of non-payment stablecoin creditors 逐字存在。兩個方向都沒有被寫過頭。",
+      "編號問題與後續公告：第 144 題確實是最後一題（其後是 E. Executive Orders 12866 and 14192），第 125 題與第 13 題的內容與文章敘述一致；2026-07-20 那份公告的 OMB 控制號 3064-0225、截止日 2026-09-18、weekly and quarterly reporting forms、\"was enacted on July 18, 2025.\" 與 91 FR 45274（頁 45274-45277）全部對得上，文章也明寫這是與四月提案不同的另一段意見期。",
+      "日期沒有混用：理事會通過 2026-04-07（新聞稿 today approved、頁面日期與 Last Updated 都是 4 月 7 日、該頁 \"June 9\" 0 次）、署名 04-08、送存 04-09、刊登 04-10，文章只用 04-07 與 04-10 並各自標明身分，callout 也把「通過、刊登、生效是三件事」講開。",
+      "界線：全文沒有幣價、市值、交易量、資金流或報酬；唯一的數字是法規數字（25 萬美元 SMDIA、40%、10%、24 小時、兩個營業日、七個日曆日、一枚、零家、題號、卷期頁碼、OMB 控制號）。沒有點名任何穩定幣、交易所、錢包或發行方，「推薦」與「漲跌」兩個詞只出現在否定句裡。免責 callout 與 crypto.md 樣板逐字相同（含「不是投資建議」），查核日 2026-09-17。全文無簡體字；FAQ 答案都是純文字、沒有網址；摘要的每個數字都在正文出現過。",
+      "checked_on 一致：內容包四條 source、第 2 段、表格 caption、免責 callout 與本紀錄都是 2026-09-17，且撰稿者所讀的內容與今天重抓的一致（四條 bytes 分別為 352,322／66,698／181,821／23,283，與紀錄寫的相同，僅新聞稿頁 1 byte 漂移），因此沒有改動。",
+      "兩條站內 link 的 text 與目標內容包的 zh-TW title 逐字相同（幣圈索引與台灣 VASP 那篇都已存在）。"
+    ],
+    "left_for_the_owner": [
+      "事件日仍未定案：corrections-crypto.md 認為依 BRIEF.md 的「slug 尾碼＝事件日」應為 20260407（理事會通過日），WRITER.md 第 2 節則要四篇美國聯邦規則一致採刊登日。本篇維持 2026-04-10，文章兩個日期都明寫。查核代理不代站主定案；若改採 04-07，slug、news_date、display_order 與第 1 段、callout 的敘述要一起改。",
+      "生效日的規格衝突也維持原判斷：WRITER.md 要「寫公式不寫日期」，但 sources[0] 的註 5 自己印了日期與兩個分支，照 BRIEF 第 9 條「來源自己印出日期就照印的寫」處理。若站主要改成純公式，注意「制定日起 18 個月」這個算法在本篇四條來源裡都沒有印，不能寫。",
+      "sources[2] 是活清單：出刊當天要再抓一次。若屆時出現同文號的最終規則列，摘要第 4 句、第 1 節第 3 段、FAQ 第 1 題與第 1 個 callout 四處的否定句都要改寫。搜尋時請用 \"AG19\" 或 en dash 的 \"3064–AG19\"——該頁這一列印的是 en dash。",
+      "文章正文與 FAQ 提到 RIN 時用的是聯邦公報原文的 ASCII 連字號 3064-AG19，而 FDIC 清單頁那一列印的是 en dash。兩者指同一個文號，查核已用兩種寫法各驗一次；若站主希望讀者能直接在該頁 Ctrl+F 找到，第 5 節最後一段可以改成只叫讀者找 2026 年 4 月 10 日那一列。",
+      "第 1 段的「三天前的 2026 年 4 月 7 日」是兩個已刊日期之間的日差（編輯換算，數值正確）。若要完全避免任何換算，可刪掉「三天前的」四個字，句意不變。",
+      "2026-07-20 那份公告的意見期到 2026-09-18，也就是查核日的隔天。文章只寫「印的截止日是 2026 年 9 月 18 日」，沒有寫它現在開著或關著，這個寫法在 9 月 18 日之後仍成立，翻譯與審稿不要改寫成「目前仍可提交意見」。",
+      "zh-TW 段落字數改後為 2,973／3,000，只剩 27 字空間。之後若要補內容（例如 unverified_or_excluded 裡「FDIC 估計最初幾年 5 到 30 家」那條），必須從別處刪等量的字，且不可以刪但書或限定詞。"
+    ]
+  }
+}

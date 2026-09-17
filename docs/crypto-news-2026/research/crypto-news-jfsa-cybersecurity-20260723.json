@@ -1,0 +1,609 @@
+{
+  "slug": "crypto-news-jfsa-cybersecurity-20260723",
+  "event_date": "2026-07-23",
+  "event_date_basis": "事件日 2026-07-23 是金融庁在官網公布這份委外研究報告的日子，等於 slug 尾碼與 news_date。本次（2026-09-17）能從 sources[] 裡的網址直接證實的依據有兩條：（1）日文 /policy/bgin/innovationtop.html 頁首右上的日期區塊印著三行獨立的 <p>：「令和４年11月４日」「令和８年７月23日更新」「金融庁」，而該頁「―最新情報［随時更新］―」的 2026 年第一項就是本報告；（2）/news/r7/sonota/20260403/20260403.html 的正文寫「令和８年７月23日、以下の英語版を公表しました。」，接著列出別紙３（03.pdf）與別紙４（04.pdf）。所以 7 月 23 日這一天金融庁做的是兩件事：公布研究報告，以及補登 2026-04-03 取組方針的英文版。 必須分開寫的另外三個日期：報告封面日期 2026-06-30（rp_en.pdf 第 1 頁）；取組方針的訂定日 2026-04-03（20260403.html 頁首與 03.pdf 文首「April 3, 2026」）；草案意見徵詢期間令和８年２月10日至令和８年３月11日（20260403.html）。 不可當成公布日依據的是 PDF 內建時間戳：rp_en.pdf CreationDate D:20260721113802+09'00'／ModDate D:20260721114825+09'00'，03.pdf CreationDate D:20260706150955+09'00'／ModDate D:20260722091407+09'00'，都早於 7 月 23 日，而且改版就會變。",
+  "title": "日本金融廳公布加密資產資安研究報告：有一類外流不是金鑰被偷，而是簽章前的系統被竄改",
+  "checked_on": "2026-09-17",
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 重抓全部四條 sources 並讀 body，全部用 `curl -sS -L -A \"Mokaair-editorial\"`，任何請求（UA、查詢字串、標頭）都沒有放入 email、姓名或其他個人資料。取得配方與當天實測值：（1）`curl -sS -L -A \"Mokaair-editorial\" -o ja.html -w '%{http_code} %{size_download} %{content_type} %{url_effective}' https://www.fsa.go.jp/policy/bgin/innovationtop.html` → 200、42,889 bytes、text/html、無轉址；body 是真的政策頁，頁內 <h1> 為「イノベーション推進に向けた<br>金融庁の取組み」，日期區塊三行 <p>（令和４年11月４日／令和８年７月23日更新／金融庁），最新情報清單第一項的 <li> 內含三個 PDF 連結（ResearchPaper_dtc_20260630_ja.pdf、_en.pdf、_ja_summary.pdf）與「（合同会社デロイトトーマツとの合同研究）」，下一個 <li> 是「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」。頁首右上另有 <a lang=\"en\" href=\"/en/policy/bgin/innovationtop.html\">English</a>。（2）同一指令抓 https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf → 200、3,337,715 bytes、application/pdf；用 pypdf 讀出 125 頁、/Company=Deloitte、CreationDate D:20260721113802+09'00'、ModDate D:20260721114825+09'00'，全文抽出 290,590 字元，第 1 頁是封面、第 2 頁是 Acknowledgments and Disclaimer、第 5 頁是目次。（3）https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html → 200、38,261 bytes、text/html；body 有 <h1>「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について，頁首兩行日期（令和８年４月３日／令和８年７月23日更新），意見徵詢段落，別紙１〜４的 <dl>。（4）https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf → 200、258,085 bytes、application/pdf；pypdf 讀出 9 頁（未編號封面＋印刷正文 1-8）、CreationDate D:20260706150955+09'00'、ModDate D:20260722091407+09'00'，抽出 23,478 字元。四條全部 HTTP 200、無轉址、無 Access Denied、無挑戰頁，body 都是正文，所以 checked_on 一律記 2026-09-17。 引文慣例（請查核者照這個方式複驗）：PDF 的引文一律寫成該段文字在頁面上「讀過去」的樣子，也就是把 PDF 換行處還原成一個半形空格，其餘一字不動——來源自己的註腳編號（cold wallets.4）與破折號都照抄。本機 pypdf 的抽取結果會在少數地方插入不存在的空格（ha s become、A s shown、large- scale、F rom Program Year、( Delta)、widely -used），那是抽取器的瑕疵、不是 PDF 印出來的字，所以引文一律避開這些字串，改取同一段裡乾淨的連續片段，並在該條 fact 裡寫明為什麼避開。複驗時請用去除多餘空白後的比對（把連續空白壓成一個空格），或直接在 PDF 閱讀器裡搜尋。 PDF 文字抽取用 `PYTHONPATH=<scratchpad>/pl <ROOT>/apps/api/.venv/Scripts/python.exe` 加 pypdf；註記一個可重現的環境細節：本 worktree 的 apps/api/.venv 沒有 pypdf，用 `pip install --target` 裝到 scratchpad 即可，但目標目錄的絕對路徑若超過 Windows 的 260 字元上限，pypdf 會在 import 時報 `No module named 'pypdf._text_extraction._layout_mode._fixed_width_page'`（檔案其實存在），把 --target 改到較短的路徑就好。 讀過但未列入 sources[]（4 條上限）的一手文件：英文 /en/policy/bgin/innovationtop.html（200、22,354 bytes，頁首 'March 17, 2023' + '(Updated July&nbsp;23, 2026)' + 'Financial Services Agency'，What's New 2026 第一項為 Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses 加一個 Research Report PDF 連結）、/news/r7/sonota/20260403/04.pdf（200、120,695 bytes、1 頁）、/policy/bgin/ResearchPaper_dtc_20260630_ja_summary.pdf（200、1,311,887 bytes、9 頁、CreationDate D:20260722232854+09'00'、ModDate D:20260723085213+09'00'）。掛在這三個網址上的事實只留在本紀錄，沒有成為文章裡的句子。",
+  "sources": [
+    {
+      "title": "金融庁：イノベーション推進に向けた金融庁の取組み（研究報告刊登頁，日文版）",
+      "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+      "publisher": "金融庁（Financial Services Agency, Japan）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses（研究報告英文版，封面日期 2026 年 6 月 30 日）",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "publisher": "Deloitte Tohmatsu LLC（受金融庁委託，刊載於金融庁網站）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "金融庁：「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+      "publisher": "金融庁",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services（取組方針英文版，別紙三）",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "publisher": "金融庁",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "日本金融廳（金融庁）的日文政策頁「イノベーション推進に向けた金融庁の取組み」在最新情報清單的 2026 年第一項寫，已公布「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」報告書。",
+      "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」報告書について公表しました。"
+    },
+    {
+      "fact": "同一頁在該項底下提供日文報告、英文報告與日文概要版三個 PDF 連結，並把它註明為與合同会社デロイトトーマツ的合同研究（該頁把公司名寫成不帶空格的「合同会社デロイトトーマツ」）。",
+      "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "（合同会社デロイトトーマツとの合同研究）"
+    },
+    {
+      "fact": "同一頁在報告連結的下一個列項印著免責語：上述研究報告不代表金融庁的見解、意見等。這句話只在日文頁上；英文版 /en/policy/bgin/innovationtop.html 沒有這一行。",
+      "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。"
+    },
+    {
+      "fact": "該日文頁頁首右上的日期區塊有三行各自獨立的段落：令和４年11月４日、令和８年７月23日更新、金融庁。文章只用得到更新日這一行，而它是會隨頁面再更新而變動的活值。",
+      "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "令和８年７月23日更新"
+    },
+    {
+      "fact": "研究報告英文版封面（第 1 頁）印的是標題 Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses、副標 Research paper、日期 June 30, 2026、作者 Deloitte Tohmatsu LLC，頁首另有一行 © 2026. For information, contact Deloitte Tohmatsu Group.（封面是四行獨立文字，本欄位只逐字引其中的日期行與作者行，不把它們接成一句）。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cybersecurity Issues and Countermeasures"
+    },
+    {
+      "fact": "報告第 2 頁的 Disclaimer 明寫，本報告的內容不代表金融庁的官方見解。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The contents of this report do not represent the official views of the Financial Services Agency."
+    },
+    {
+      "fact": "報告第 2 頁同時寫，報告中的任何錯誤由承包商 Deloitte Tohmatsu LLC 自負。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Nevertheless, any errors in this report are the sole responsibility of Deloitte Tohmatsu LLC, the contractor."
+    },
+    {
+      "fact": "報告第 2 頁的 Disclaimer 另寫，本報告的個案研究是依各案的公開資料與撰寫當時可得的資訊為研究目的整理，不表示對個別案件的責任歸屬或任何法律評價。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "do not indicate the attribution of responsibility or any legal assessment"
+    },
+    {
+      "fact": "報告第 2 頁的 Acknowledgments 除了學界與觀察員之外，也列出金融庁的官員曾提供建議與意見。這一條是本文主軸（報告不代表金融庁見解）的另一面，必須一起寫。原文是 including 起頭的舉例清單，不是全名單。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "as well as officials from the Financial Services Agency"
+    },
+    {
+      "fact": "報告第 2 頁的 Acknowledgments 寫，報告採納了京都大學一位名譽教授與喬治城大學一位研究教授的建議與意見，日本銀行與數位廳以觀察員身分提供建議；並說採用了與數家公司個別訪談得到的分析報告與見解，其中包括 Fireblocks、Thales DIS Japan K.K. 與 DFNS。英文報告只印羅馬字姓名，沒有這兩位學者的日文姓名，所以文章不寫人名。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we drew upon analysis reports and insights obtained through individual interviews with several companies, including"
+    },
+    {
+      "fact": "報告第 8 頁的研究發現摘要指出，攻擊者愈來愈不只針對系統本身，也針對營運基礎設施，並以簽章金鑰、錢包、存取控制、CI/CD、雲端 IAM/KMS 與簽章服務為例（e.g. 起頭是舉例，不是全清單）。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Attackers are increasingly targeting not only systems themselves, but also operational infrastructure (e.g. signing keys, wallets, access controls, CI/CD, cloud IAM/KMS, and signing services)"
+    },
+    {
+      "fact": "報告第 8 頁寫，分析近期事件後確認有一類攻擊並未竊取簽章金鑰本身，而是竄改了元件（舉例為 UI、API、CI/CD、未簽章交易的產生邏輯與正式環境程式），藉由濫用合法的簽章流程造成資金流出。這是本文標題與圖解的依據。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we confirmed attacks that did not involve the theft of signing keys themselves, but instead tampered with components (e.g., UI, APIs, CI/CD, unsigned transaction generation logic, and production programs), causing fund outflows by abusing legitimate signing processes"
+    },
+    {
+      "fact": "報告第 8 頁寫，現實世界的加密資產相關服務並不是在純粹去中心化的模式下運作，而是同時承載中心化與自律「去中心化」兩種風險的架構；基於這個結構前提，風險評估必須涵蓋鏈上程式碼與協議之外的鏈下元件、營運控制、外部依賴與治理。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "it is necessary to conduct comprehensive risk assessments that encompass not only on-chain code and protocols, but also off-chain components, operational controls, external dependencies, and governance."
+    },
+    {
+      "fact": "報告第 9 頁寫，與既有規範比對之後抽出五個優先領域：強化第三方風險管理、防止惡意程式碼植入或程式竄改、防止加密資產遭未授權移轉、針對智慧合約與 DeFi 的措施，以及善用外部評估。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "five areas were extracted and examined as priority areas: enhancement of third-party risk management; measures to prevent malicious code injection or program tampering; measures to prevent unauthorized transfers of crypto-assets; measures for smart contracts and DeFi; and leveraging external assessments."
+    },
+    {
+      "fact": "報告第 5 頁的目次把個案研究從 (1) 編到 (10)：(1) Bybit、(2) SwissBorg、(3) Radiant Capital、(4) Balancer v2、(5) Euler Finance、(6) Kokomo Finance、(7) Resolv、(8) Drift、(9) Litecoin、(10) Kelp DAO / LayerZero（目次是兩欄排版，(1) 與 (6)、(2) 與 (7) 各在同一列，所以逐字引文是同一列上的兩個編號）。依 2026-09-17 的編輯決定，文章只寫「從 (1) 編到 (10)」這個編號與報告自己的攻擊手法分類，不點名任何個案的業者或協議，也不寫損失金額。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) Bybit (6) Kokomo Finance"
+    },
+    {
+      "fact": "報告第 8 頁的研究發現摘要寫，這份研究分析的是針對含 DeFi 在內的加密資產相關服務的近期攻擊案例，聚焦造成重大損失的主要攻擊手法，並以第三方遭攻破、智慧合約弱點、rug pull、閃電貸攻擊與惡意程式攻擊為例（such as 起頭是舉例，不是全清單）。這是文章第 3 節不具名描述十個個案的依據；報告第 30、31 頁把這些攻擊手法當成欄位標題各挑代表性案例（Third-party Vulnerability 對應個案 (1)(2)、Contract vulnerability 對應 (4)、Rug pull 對應 (6)、Flash loan attack 對應 (5)、Malware attack 對應 (3)），第 32 頁另收 2026 年 2 月之後的事件，所以報告自己的分類軸是攻擊手法，不是業者類型。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "focusing on major attack methods that resulted in large losses, such as third-party compromises, smart contract vulnerabilities, rug pulls, flash loan attacks, and malware attacks"
+    },
+    {
+      "fact": "報告第 65 頁是「Lessons learned from case study (3/4)」整頁，頁首那句寫，重要的是在簽章當下透過多種措施確認交易細節，包括改善訊息可讀性的錢包功能。文章因此寫成「報告有一頁專門談簽章當下的確認與『盲簽』」，而不是「報告用一整節講盲簽」——報告沒有任何一節以盲簽為標題（blind sign 出現在第 36、37、39、41、42、53、65、66、72 頁，都不是節名）。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It is important to verify transaction details at the time of signing through multiple measures, including wallet functions that improve message readability."
+    },
+    {
+      "fact": "報告第 4 頁的研究背景與目的寫，這份研究是為了（i）呈現供應鏈、對應風險，並提出強化整體資安管理與控制的建議，並從實務角度整理對策、導出修訂監督指引的洞見；（ii）促進業者與主管機關的合作；（iii）讓業者能用標準與指引建立適當的資安架構。這是文章與 FAQ 寫「報告的對象是業者與監理機關」的依據，也是報告第 4 頁自稱取材「representative domestic and international cyberattack cases」的位置。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "it aims to facilitate cooperation between service providers and authorities"
+    },
+    {
+      "fact": "報告第 63 頁的個案教訓表格寫，UI/API 被竄改使簽署人難以察覺交易是偽造的，於是照著簽了下去。同一頁另一個儲存格（獨立元素，未與本引文相接）寫這些事件的起點是以社交工程或釣魚攻破開發者權限、或投放惡意程式：The starting point of these incidents is the compromise of developer privileges through social engineering or phishing, or the deployment of malware.",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Tampering with UIs/APIs made it difficult for signers to notice that the transaction is fraudulent, and thus they proceeded with signing."
+    },
+    {
+      "fact": "報告第 63 頁寫，業者的錢包系統若使用第三方服務，即使沒有把簽章金鑰交給第三方，也必須確認該第三方已適當建立並落實防範網路攻擊、正式環境存取管理與程式／變更管理等控制。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "even if signing keys are not entrusted to the third party— to confirm that the third party has appropriately established and operates controls such as cyberattack countermeasures, production-environment access management, and program/change management."
+    },
+    {
+      "fact": "報告第 9 頁寫，外部服務商被攻破可能外溢到業者自家服務或使用者資產，因此業者必須建立自保措施，舉的例子是追加核可、使用上限、異常偵測、自動停止與備援安排。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "it is important to establish self-protective measures (e.g., additional approvals, usage limits, anomaly detection, automated suspension, and alternative arrangements)."
+    },
+    {
+      "fact": "報告第 65 頁的盲簽專節寫，像 DeFi 協議或錢包相關的智慧合約更新這類複雜交易，錢包可能無法以人類可讀的格式呈現交易細節，calldata 或 EIP-712 訊息可能顯示成十六進位字串或人類難以判讀的資料；硬體錢包因螢幕大小與 UI 設計等限制，呈現複雜交易細節的能力尤其有限。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Hardware wallets, in particular, may have limited ability to clearly present complex transaction details due to constraints such as screen size and UI design."
+    },
+    {
+      "fact": "報告第 65 頁寫，簽署涉及智慧合約的複雜交易時，簽署人不能只理解收款地址與轉帳金額，還要理解這筆交易會執行什麼操作、授予什麼權限、授予給誰。這是全篇唯一直接落在「簽章的那個人」身上的句子，文章把它寫成報告寫給簽署人的話，不是金融庁給使用者的建議。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "signers should understand not only the recipient address and transfer amount, but also what operation the transaction will perform, what privileges it will grant, and to whom."
+    },
+    {
+      "fact": "報告第 65 頁記載，2026 年 5 月 12 日以太坊基金會與錢包開發者、資安公司等生態系參與者發表 Clear Signing，作為在簽章當下達成「What You See Is What You Sign」、以減少盲簽為目標的框架。這一條寫的是報告的記載，不是以太坊基金會公告本身（該公告不在 sources[] 內，其細節一律不寫）。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On May 12, 2026, the Ethereum Foundation, together with wallet developers, security firms, and other ecosystem participants, announced Clear Signing"
+    },
+    {
+      "fact": "報告第 65 頁寫，Clear Signing 的核心技術 ERC-7730 是以 JSON 為基礎的描述檔標準，用來把智慧合約呼叫與 EIP-712 訊息這類結構化資料以人類可讀的格式呈現。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ERC-7730, the core technology of Clear Signing, is a JSON-based descriptor standard"
+    },
+    {
+      "fact": "報告第 65 頁同時寫，Clear Signing 的效果取決於顯示資訊是否正確、描述檔是否可信，以及各家錢包採用的模型；描述檔錯誤或發布管道被入侵都可能造成誤導顯示，因此不可把 Clear Signing 呈現的資訊當成無條件安全，必須與雙重核可、防惡意程式、第三方風險管理、職務分離與異常偵測等其他措施一起使用。",
+      "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the information presented through Clear Signing should not be treated as unconditionally safe"
+    },
+    {
+      "fact": "金融庁 2026-04-03 的公布頁寫，取組方針草案在令和８年２月10日（星期二）至令和８年３月11日（星期三）公開徵詢意見，共收到 18 件意見。該頁未印徵詢截止的時刻（17 時 00 分只在 2026-02-10 的草案頁上，而該頁不在 sources[]），所以文章不寫時刻。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "計18件のコメントをいただきました"
+    },
+    {
+      "fact": "同一頁寫，金融庁依收到的意見做必要的增補與修正後，才把「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針」定案為該頁的別紙一。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "お寄せいただいたコメントを踏まえ、必要な追記・修正を行い、"
+    },
+    {
+      "fact": "同一頁在別紙一、別紙二之後寫，令和８年７月23日公布了以下的英語版，並列出別紙三 Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services（03.pdf）與別紙四同名的 Summary（04.pdf）。這是 7 月 23 日官方的第二個動作。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "令和８年７月23日、以下の英語版を公表しました。"
+    },
+    {
+      "fact": "同一頁頁首右上是兩行各自獨立的段落：令和８年４月３日、令和８年７月23日更新（其後另有一行「金融庁」）。因為是三個獨立元素，本欄位只逐字引第一行，不把兩行接成一句。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "令和８年４月３日"
+    },
+    {
+      "fact": "取組方針英文版（別紙三）文首三行分別是標題 Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services、April 3, 2026、Financial Services Agency。該 PDF 共 9 頁：一頁未編號封面加上印刷頁碼 1-8 的正文。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Policy Approaches to Strengthen Cybersecurity for"
+    },
+    {
+      "fact": "取組方針印刷第 1 頁寫，近年涉及加密資產外流的案件不一定是簽章金鑰遭竊造成的，而是包括社交工程攻擊與入侵外包商等間接攻擊在內的各種巧妙手法愈來愈明顯（including 起頭是舉例，不是全清單）。本欄位只逐字引該句前半；後半在本機的 pypdf 抽取結果裡帶有抽取器造成的斷字（ha s become prominent）與行內註腳編號 2、3，為免把抽取器的瑕疵當成來源的錯字，不納入引文。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Recent cases involving the outflow of cryptoassets are not necessarily caused by the theft of signing"
+    },
+    {
+      "fact": "取組方針印刷第 1 頁寫，在這種情況下，光靠使用冷錢包無法確保加密資產的安全保管，必須強化包含外包商在內的整條供應鏈的資安管理體制。這是全篇唯一能寫成「金融廳表示」的關鍵句。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the safe management of cryptoassets cannot be ensured only by the use of cold wallets.4 Rather, it is definitely necessary to strengthen the cybersecurity management systems of the entire supply chain, including outsourcees."
+    },
+    {
+      "fact": "取組方針印刷第 2 頁寫，日本已要求業者針對加密資產外流風險採取措施並妥善管理系統風險，因為曾實際發生使用者寄存的加密資產外流的事案。這一句推翻「官方沒有說日本業者發生過同型事件」的寫法。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "as a case of an outflow of cryptoassets deposited by users had actually occurred"
+    },
+    {
+      "fact": "取組方針印刷第 3 頁在談重點監理時寫，鑑於過去發生過大規模的加密資產外流（In light of the occurrence of the large-scale outflow of cryptoassets in the past），金融庁一直密集監控各業者的外流風險對策與系統風險管理，並促請業者強化資安能力。前半句在本機的 pypdf 抽取結果裡被斷成 large- scale，所以引文只取後半這段乾淨的連續字串。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "intensively monitored countermeasures against outflow risks and system risk management of individual cryptoasset exchange service providers"
+    },
+    {
+      "fact": "取組方針印刷第 3 頁寫，自 Program Year 2026 起，金融庁將要求全部加密資產交換業者實施原本要求其他類型金融業者做的資安自我評估（CSSA），或視需要與業者進行對話。原文是 or otherwise 的選項句，限定詞要保留。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the FSA will request all cryptoasset exchange service providers to conduct cybersecurity self-assessment (CSSA),"
+    },
+    {
+      "fact": "取組方針的註 10 說明 CSSA 是什麼：要求業者以與《Guidelines on Cybersecurity for the Financial Sector》一致的問題做自我評估，目的是讓業者了解自己在業界中的位置，藉此提供自助努力的機會並鼓勵自主改善。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CSSA aims to provide them with opportunities for self-help efforts and encourage them to make improvements autonomously by enabling them to understand the position of their own organization within the industry."
+    },
+    {
+      "fact": "取組方針印刷第 3 至 4 頁寫，金融庁將依重點監理掌握的實況與 PY2025 的 Blockchain Multilateral Joint Research Project 成果，設法藉由修訂監督指引提高對加密資產交換業者期待的資安水準，並「舉例」列出三個檢討方向：資安相關人力配置的要件、外部稽核的要件、外包商應滿足的資安要件。原文用 For example 起頭，不是全清單，也沒有列出條號或生效日。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the FSA will endeavor to raise the levels of cybersecurity expected for cryptoasset exchange service providers by revising the Guidelines for Supervision."
+    },
+    {
+      "fact": "取組方針的共助章本文只寫「自律規範機構」（the self-regulatory organization），沒有在本文點名任何協會；JVCEA 這個名字只出現在註 11，該註連向 jvcea.or.jp 上的組織圖，並把它寫成 Japan Virtual and Crypto Assets Exchange Association (JVCEA)。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Organizational chart of the Japan Virtual and Crypto Assets Exchange Association (JVCEA)"
+    },
+    {
+      "fact": "取組方針印刷第 5 頁寫，金融庁將鼓勵業者參加 JPCrypto-ISAC 這類資訊共享機構，並與該機構積極交換意見。原文是 such as 起頭的舉例，不是全清單；JPCrypto-ISAC 的官網位址在註 13。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the FSA will encourage individual service providers to participate in information sharing organizations, such as JPCrypto-ISAC,"
+    },
+    {
+      "fact": "取組方針印刷第 7 頁寫，金融庁會持續要求加密資產交換業者定期參加金融業界橫向資安演習 Delta Wall，目標是三年內全部業者都參加。文件沒有寫這三年從哪一天起算，也沒有寫未參加的後果。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "aiming to achieve the participation of all service providers within three years."
+    },
+    {
+      "fact": "取組方針印刷第 7 頁寫，金融庁將在 2026 年內對數家加密資產交換業者的實際運作環境實施威脅導向滲透測試（TLPT），把評估結果個別回饋給受測業者，並把抽取出的共通課題回饋給整個業界。文件沒有寫是哪幾家、幾家，也沒有寫結果是否公開。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "within 2026, the FSA will conduct TLPT targeting several service providers regarding their actual operational environments"
+    },
+    {
+      "fact": "取組方針的註 1 定義簽章金鑰：預先對交易資料附加電子簽章、用以證明交易由有正當權限者所為的秘密金鑰，金鑰資訊外洩會造成資產被非法移轉的風險；該註並說金融庁的事務指引用的詞是 secret key，但因 ISO/IEC 14888 規定應使用 signing key，所以本文件改用 signing key。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A signing key is a secret key to be used for proving that a transaction was conducted by a person with the legitimate authority by assigning an electronic signature to transaction data in advance."
+    },
+    {
+      "fact": "取組方針印刷第 6 頁寫，金融庁自 PY2017 起推動 Blockchain Multilateral Joint Research Project，PY2025 做的就是這份加密資產相關業者資安研究調查，並說該調查取材於日本國內外發生的代表性網路攻擊事例、分析攻擊手法、風險與對策。注意：此處 03.pdf 用的英文專案名是 multilateral（多邊），不是「國際共同研究」；後者是日文版的說法，而日文版不在 sources[] 內。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "picked up representative cyberattacks that had occurred in and outside Japan"
+    },
+    {
+      "fact": "取組方針印刷第 1 頁寫，也有人指出存在疑似有某些國家政府涉入、以取得外匯為目的的網路攻擊；保護加密資產不只是保護使用者財產，也涉及防止國家財富被這類攻擊者當成取得外匯的手段而奪走。該句的註 6 只印英文形式的兩份報告名稱與機關名（Cyber Police Agency, National Police Agency 與 Public Security Intelligence Agency），沒有日文書名，所以文章不寫日文書名。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "from the perspective of preventing national wealth from being robbed by attackers with the suspected involvement of foreign governments as a means for the acquisition of foreign currencies."
+    },
+    {
+      "fact": "取組方針的註 5 舉例說明供應鏈風險：如 2025 年 9 月發生的、惡意程式碼被混入廣泛使用的 JavaScript 函式庫的案例，攻擊者以標的式郵件等方式攻破開源軟體開發者、污染相依函式庫，進而整體影響許多公司的資訊系統。（這一條查證過，但因篇幅未寫進文章。）引文只取後半，因為前半在本機抽取結果裡被斷成 A s shown 與 widely -used。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "there have been cases wherein attackers infringe OSS developers by sending targeted email or by other means and contaminate dependent libraries"
+    },
+    {
+      "fact": "取組方針把政策架構分成自助（Self-help）、共助（Mutual Assistance）、公助（Public Assistance）三章，並在第 2 頁寫，個別業者未必能單靠自己因應近期的網路風險，因此需要結合自助、共助、公助的官民共同努力。",
+      "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "joint government and private-sector efforts combining self-help, mutual assistance, and public assistance are required."
+    }
+  ],
+  "not_said": [
+    "這一頁沒有寫：以 sources[] 四條查核到 2026-09-17，研究報告裡未見任何針對一般使用者的自保清單或操作步驟。報告的對象是加密資產相關業者與監理機關，建議都寫成業者的控制項目。文章不可以把給業者的控制清單改寫成對讀者的操作指示並說成是金融庁的建議。",
+    "這一頁沒有寫：金融庁沒有背書這份報告的內容。日文刊登頁與報告第 2 頁都明寫報告不代表金融庁的見解，所以文章一律寫「報告指出／報告建議」，只有取組方針寫「金融廳表示」。",
+    "這一頁沒有寫：研究報告與取組方針都沒有提到台灣，也沒有說日本的規定適用於台灣的使用者或台灣的平台（以 sources[] 四條查核到 2026-09-17 未見）。",
+    "這一頁沒有寫：2026-07-23 的公布沒有新增法定義務、沒有罰則，也沒有已修正並載明生效日的指引條文——取組方針對監督指引只寫 revising／endeavor to raise the levels，沒有條號也沒有生效日。但**不可**因此寫成「沒有訂出任何時程」：同一份文件訂了三個有日期的期待（PY2026 起的 CSSA、2026 年內的 TLPT、Delta Wall 三年內全業者參加）。",
+    "這一頁沒有寫：TLPT 只寫「2026 年內對數家業者實施」，沒有寫是哪幾家、幾家、何時開始，也沒有寫結果是否公開；CSSA 同樣沒有寫結果是否公開或逐家揭露。",
+    "這一頁沒有寫：Delta Wall 的「三年內全部業者參加」沒有起算基準日，也沒有寫未參加的後果。",
+    "這一頁沒有寫（2026-09-17 由查核代理改寫，原本的寫法被推翻）：取組方針全文未見保險或賠償（以 insurance、compensat 查核到 2026-09-17 各 0 次）。研究報告則有提到，只是都不是使用者的求償制度——第 20 頁把保險公司列為供應鏈上的參與者、第 112 頁把 Insurance Coverage 列在業者的 Accounting & Reporting 控制項目下、第 124 頁的外包契約檢查項目有「Company's right to be compensated in certain circumstances」，第 46 頁與第 61 頁的個案敘述裡也出現賠償。所以只能寫成「兩份文件都未見存款保險或投資人保護制度」（deposit insurance、investor protection 在兩份文件各 0 次），不可以寫成「報告沒有提到賠償或保險」。文章沒有寫這一類句子。",
+    "這一頁沒有寫：報告沒有對任何交易所、錢包、保管商、稽核公司或資安廠商做優劣評比或推薦，也沒有說哪一種錢包比較安全；報告第 2 頁並明寫個案研究不表示對個別案件的責任歸屬或法律評價。",
+    "這一頁沒有寫：報告裡的損失金額與件數統計都是引用外部機構（報告自己標註資料來源與資料時點），不是金融庁或承包商自行測量的數字，報告也沒有說這些數字經過官方查核。",
+    "這一頁沒有寫：Clear Signing／ERC-7730 的採用時程、哪些錢包已經支援、台灣使用者何時會在自己的錢包上看到，報告第 65 頁都沒有寫。",
+    "這一頁沒有寫：報告提到 AI 加速漏洞挖掘與 AI 相關詐騙，但沒有給一般人辨識深偽詐騙的步驟；深偽相關的查證程序（報告第 83 頁）是寫給業者對高階主管與員工做教育訓練用的。",
+    "這一頁沒有寫（2026-09-17 由查核代理收緊）：取組方針（金融廳署名的那一份）全文未見任何金額、幣價、市值、交易量或報酬數字——以 2026-09-17 抽出的全文查核，$ 與円、JPY 各 0 次，四位數以上的數字只有年份、ISO/IEC 14888 與註腳網址；也未見對任何加密資產投資價值的意見。唯一與投資有關的句子是印刷第 2 頁「domestic and foreign investors have come to position cryptoassets as investment targets」，那是對投資人行為的描述。研究報告相反，它轉引大量外部機構的損失與犯罪統計，但報告不代表金融廳見解，而且依 crypto.md 這些數字一律不寫。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "報告轉引 TRM Labs 的市場統計：2025 年非法加密資產交易量創 1,580 億美元的歷史新高；約 150 起駭客與漏洞利用事件造成 28.7 億美元遭竊；前十大事件占全年總額 81%；Bybit 一案占 51%。",
+      "seen_where": "rp_en.pdf 第 13 頁（報告轉引 TRM Labs《2026 Crypto Crime Report》）。",
+      "why_excluded": "crypto.md 明令不寫交易量、市值這類市場數字，而且 corrections-crypto.md 跨篇共通第 9 條指明「一手文件裡的市場數字仍然是市場數字」。這些數字連同 SlowMist 的累計損失、Chainalysis 的年度總額與比率、TRM 的逐年件數與金額一律不寫，文章只留一句「報告引用的損失金額與件數統計全部來自外部機構，本文不寫」。"
+    },
+    {
+      "claim": "各個案的損失金額（例如 Bybit 表列 1,460 M$、SwissBorg 42 M$、Kelp DAO/LayerZero 鑄出約 116,500 或 116,000 枚代幣）。",
+      "seen_where": "rp_en.pdf 第 30、32、58 頁。",
+      "why_excluded": "三個理由疊在一起：（a）全部是 SlowMist 等外部機構的數字；（b）報告內部自相矛盾——同一事件在第 32 頁的表寫 approximately 116,000 tokens，第 58 頁的個案時序寫 approximately 116,500 rsETH，SwissBorg 表列 42 M$ 而報告所引來源標題寫 $41M；（c）Bybit 在同一份報告裡同時有 TRM/SlowMist 與 Chainalysis 兩個口徑。擇一寫會被自己的來源打臉，全寫又是市場數字，所以整批不寫。"
+    },
+    {
+      "claim": "英文版政策頁 /en/policy/bgin/innovationtop.html 頁首的「March 17, 2023」與「(Updated July 23, 2026)」，以及它與日文頁「令和４年11月４日」的矛盾。",
+      "seen_where": "今天實抓的英文頁（200、22,354 bytes），原始 HTML 是 `March 17, 2023<br>   (Updated July&nbsp;23, 2026)`，中間的空格是不斷行空格 U+00A0。",
+      "why_excluded": "兩個語系都是官方、基準日互相矛盾，只有更新日一致。sources[] 上限 4 條，這一版把名額給了日文頁（免責語與報告公布只有日文頁支撐）與 2026-04-03 公布頁（7 月 23 日的第二個動作），英文頁沒進來。既然不能同時列出兩個基準日並各自註明出處，文章就兩個基準日都不寫，只寫兩頁一致的更新日 2026-07-23，並把出處掛在日文頁。若之後的版本要寫這個矛盾，必須把英文頁補進 sources[]。"
+    },
+    {
+      "claim": "報告取樣的十個個案「全部是海外業者與協議」、「沒有任何日本國內業者的個案」。",
+      "seen_where": "日文概要版 rp_ja_sum.pdf 寫「海外の代表的な流出事例を選定し」；英文報告全文 grep 不到 in Japan。",
+      "why_excluded": "兩個問題：（a）日文概要版不在 sources[]；（b）這是從關鍵字過濾推論出來的否定句，BRIEF 明令不可寫成官方陳述。而且官方文件之間本身就矛盾——03.pdf 第 6 頁說這個專案 picked up representative cyberattacks that had occurred in and outside Japan，rp_en.pdf 第 4 頁也寫 representative domestic and international cyberattack cases。文章只寫 03.pdf 的說法並明白標為取組方針的描述，不寫任何「全部是海外案例」的句子。"
+    },
+    {
+      "claim": "以太坊基金會 2026-05-12 公告〈Clear Signing〉的實質內容：發布者是包含錢包開發者、資安公司與 EF 的 Ethereum Working Group、公告致謝 Ledger 發起 ERC-7730、參與者名單、clearsigning.org、盲簽「已造成數十億美元使用者損失，包括 Bybit 事件」。",
+      "seen_where": "corrections-crypto.md must_add 2 轉述的 blog.ethereum.org 公告內容。",
+      "why_excluded": "sources[] 4 條全給了金融庁側的文件，以太坊基金會的公告沒有進來，所以本文關於 Clear Signing 的每一句都只寫 rp_en.pdf 第 65 頁的記載，不寫公告本身的細節（尤其不寫組成要素的數量與 Ledger 的致謝——前者研究紀錄前版誤寫成「四個部分」而原文並未給數，後者會讓廠商名出現在無法以事件當事人身分處理的位置）。"
+    },
+    {
+      "claim": "報告對照表裡的規範識別碼與版本，例如 ISO/TR 23576:2020、FISC 安全對策基準第 14 版。",
+      "seen_where": "rp_en.pdf 第 69、70、72-73 頁。",
+      "why_excluded": "報告自己前後不一致：第 70 頁的表印的是 ISO/TC 23576:2020（報告自己的錯字），ISO/TR 23576（不帶 :2020）另外出現在第 72-73 頁；FISC 版本則是第 69 頁寫 Edition 14、第 72-73 頁的註腳寫 Version 13。要寫就必須逐一標明取自報告的哪一部分並註明是來源自己的不一致，篇幅不允許，因此整段不寫。"
+    },
+    {
+      "claim": "報告第 82 頁引述某 AI 廠商宣布其前沿模型在主要作業系統與瀏覽器等關鍵軟體中發現高嚴重度漏洞。",
+      "seen_where": "rp_en.pdf 第 82 頁 AI 時代資安建議的開頭。",
+      "why_excluded": "這是報告轉述第三方廠商的公告，我沒有回到該廠商自己的公告頁查證，模型名稱與公告日期都無法確認；與本文主旨也無關。"
+    },
+    {
+      "claim": "取組方針印刷第 2 頁的「日本是最早對加密資產交換業導入規範的國家」。",
+      "seen_where": "03.pdf 印刷第 2 頁：Japan was the first nation to introduce regulations on cryptoasset exchange services。",
+      "why_excluded": "查證過，逐字存在，但這是機關自報的「第一」，BRIEF 第 2 條特別提醒不要讓「第一份／唯一」這類句子進文章；而且它對台灣讀者理解本案沒有作用，所以刻意不寫。"
+    },
+    {
+      "claim": "報告的頁數（英文版 125 頁）、03.pdf 的頁數（9 頁，封面外正文 8 頁）、各 PDF 的 CreationDate／ModDate。",
+      "seen_where": "今天用 pypdf 讀出的檔案屬性，數值記在 sourcing_notes 與 event_date_basis。",
+      "why_excluded": "檔案時間戳是活資料、改版就會變，頁數也是當下抓到那一版的屬性。它們是取得成敗的判準，不是可以寫進文章的事實，所以只留在本紀錄。"
+    },
+    {
+      "claim": "整合站與事務所對這份報告與取組方針的整理與評論。",
+      "seen_where": "搜尋線索。",
+      "why_excluded": "依 crypto.md 的白名單，這些不是一手來源。本次查證的每一個事實都回到 fsa.go.jp 的頁面與 PDF 讀取。"
+    }
+  ],
+  "editorial_brief": "讀者是在台灣用交易所帳號或自持錢包接觸加密貨幣的一般使用者，不是法遵或資安從業人員。角度：這份委外研究報告把近年的重大失竊重新歸因——錢不是從「私鑰被偷」流走的，而是從「送到簽章那一步之前的系統與流程被動手腳」流走的；金融廳自己的取組方針則把它濃縮成一句讀者記得住的話：光靠冷錢包無法確保安全保管。全篇的軸線是「誰在說話」：報告是承包商寫的、金融庁明寫不代表本廳見解，取組方針才是金融庁署名的文件，所以敘述動詞必須分開。資安題目的處理界線：寫影響範圍與業者／使用者該做什麼，不寫攻擊手法的可操作細節與入侵指標——個案不點名，只寫報告自己的編號 (1) 到 (10) 與報告自己的攻擊手法分類，不寫時序、不寫被竄改的具體檔案或端點（2026-09-17 的編輯決定：原稿列出十個個案的業者與協議名稱，依 crypto.md「協議與資產只能以法規或技術的對象出現」與報告第 2 頁「不表示對個別案件的責任歸屬或法律評價」整串刪除，因為一串被點名的平台會被讀成黑名單或比較，而本文的論點不需要它）。給讀者的自保提示只能來自報告或金融廳頁面明寫的內容（報告第 65 頁寫給簽署人的那一句），任何延伸都標明是編輯設計的一般性提醒。本文刻意不談：任何價格、漲跌、市值、交易量、報酬、質押收益；任何交易所或錢包的比較與建議；台灣《虛擬資產服務法》的內容（同批次另一篇，只用站內連結帶過）；金融庁 2026-08-06 與警察庁對業者的防詐要求（另一個事件日、另一則新聞）。用語（2026-09-17 由協調者定案，取代原本「法規語境寫虛擬資產」的寫法）：日本法律用語「暗号資産」一律譯成「加密資產」，「暗号資産交換業者」第一次出現寫「加密資產交換業者（日文『暗号資産交換業者』）」、之後一律「加密資產交換業者」——「虛擬資產」是台灣《虛擬資產服務法》的用語，用在日本法上會讓讀者以為兩地是同一套制度。日文專有名詞（文件日文標題、機關日文名）照原文保留；機關第一次出現寫「日本金融廳（金融庁, Financial Services Agency）」，並在全篇避免與台灣金管會混寫。全篇唯一剩下的「虛擬資產」是第二個站內連結的文字，那是台灣那篇的正式 title，check_article.py 會逐字比對，不可改。",
+  "must_not_write": [
+    "不可寫成「金融庁指出／金融廳認為」來引用研究報告的分析與建議。報告作者是承包商，日文刊登頁與報告第 2 頁都明寫不代表金融庁見解。",
+    "不可把研究報告與取組方針的說話者混寫，也不可把 2026-04-03 訂定的取組方針寫成 2026-07-23 才出現的新政策。",
+    "不可寫成「金管會」。這是日本的金融庁，不是台灣的金融監督管理委員會。",
+    "不可寫任何幣價、漲跌幅、市值、交易量、ETF 資金流、歷史報酬、質押或空投報酬數字；報告轉引 TRM Labs 的 1,580 億美元非法交易量即使印在官方網站的 PDF 上也一樣不寫。",
+    "不可寫個案的損失金額。報告內同一事件有兩套口徑（Bybit 的兩個來源、Kelp DAO/LayerZero 的 116,000 與 116,500、SwissBorg 的 42 M$ 與所引來源標題的 $41M）。",
+    "不可寫攻擊手法的可操作細節、逐步時序或入侵指標（例如被竄改的檔案、端點、時間戳、憑證取得方式）。個案只以報告自己的編號與報告的歸因層次出現。",
+    "不可點名報告十個個案的任何業者、協議或資產（2026-09-17 的編輯決定）。正文、摘要、FAQ、圖解、hero 標語一律只寫「從 (1) 編到 (10)」與報告自己的攻擊手法分類。以太坊基金會、Clear Signing、ERC-7730 是技術標準，可以寫，但只能寫報告第 65 頁的記載。",
+    "不可把日本法上的「暗号資産交換業者」寫成台灣用語「虛擬資產交換業者」。一律「加密資產交換業者」，第一次出現附日文原詞。",
+    "不可比較或推薦任何交易所、錢包、保管商、稽核公司或資安廠商，包括報告訪談名單上的公司；它們只能以「報告訪談對象」或「事件當事人」的身分出現。",
+    "不可寫「本站實測」「我們試用」。本文沒有任何實測。",
+    "不可寫「官方沒有」「從未」「第一份」「唯一」。否定句一律限縮成「以 sources[] 四條查核到 2026-09-17 未見」。特別是不可寫「官方沒有說日本業者發生過同型事件」——取組方針第 2、3 頁明寫日本曾實際發生使用者寄存的加密資產外流事案。",
+    "不可寫「這次公布沒有訂出任何時程」。正確寫法是沒有新增法定義務、沒有罰則、沒有已修正並載明生效日的指引條文。",
+    "不可猜測監督指引修正的條號、內容或生效日；取組方針只寫到檢討與設法提高水準。",
+    "不可把 ISO/TC 23576:2020（報告第 70 頁的錯字）安靜訂正成 ISO/TR 23576:2020，也不可把 FISC 第 14 版與第 13 版兩說合成一個版本。",
+    "不可用日文概要版或以太坊基金會公告的內容當依據——兩者都不在 sources[] 內。特別是不可寫「Clear Signing 需要四個部分」（原文未給數量），也不可寫以太坊基金會公告的致謝名單。",
+    "不可寫英文政策頁的基準日「2023 年 3 月 17 日」。該頁不在 sources[]，而且它與日文頁的「令和４年11月４日」矛盾，只有更新日一致。",
+    "不可把 2026-08-06 金融庁與警察庁對業者的防詐要求寫進這篇，那是另一個事件日的另一則新聞。",
+    "不可猜測或自行拼出任何 fsa.go.jp 的網址；本檔列出的每一個網址都是 2026-09-17 實際抓過並回 200、讀過 body 的。",
+    "簡體字、列表、Markdown、emoji、商標或介面截圖描述一律不可出現。"
+  ],
+  "live_data_warnings": [
+    "兩個 HTML 頁面的「更新日」是滾動值：日文政策頁與 2026-04-03 公布頁在 2026-09-17 都標「令和８年７月23日更新」，頁面再更新就會變。文章已寫成「頁面在本文查核日標示……那是頁面的更新日，頁面再更新就會換一個日期」，定稿當天要再看一次。",
+    "PDF 的內建時間戳是活資料，不是公布日：rp_en.pdf CreationDate D:20260721113802+09'00'／ModDate D:20260721114825+09'00'；03.pdf CreationDate D:20260706150955+09'00'／ModDate D:20260722091407+09'00'；04.pdf CreationDate D:20260706140539+09'00'／ModDate D:20260706140541+09'00'；日文概要版 CreationDate D:20260722232854+09'00'／ModDate D:20260723085213+09'00'。這些只留在紀錄，文章一個都沒寫。",
+    "PDF 的位元組數與頁數同樣是當下版本的屬性（rp_en.pdf 3,337,715 bytes／125 頁；03.pdf 258,085 bytes／9 頁）。改版就會變，文章沒有引用。",
+    "報告裡所有損失金額、件數與比率都是外部機構的數字且各有資料時點（報告自己在圖表下標註 As of January 2026、As of May 2026 等）。文章一律不寫，只寫「報告引用的損失金額與件數統計全部來自外部機構」。",
+    "「計18件のコメント」是 2026-04-03 已結案的靜態計數，不是活清單，可以寫；但它是意見件數，不是業者家數，不可拿去推論任何名冊規模。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（機關名寫成「金管會日本」）：已改。全篇寫「日本金融廳（金融庁, Financial Services Agency）」，並在 must_not_write 加一條禁止寫成「金管會」。",
+    "must_fix 2（not_said 第 10 項後半被推翻）：已改。not_said 只保留「這一頁沒有寫」型的句子，並新增一條 verified_fact 記錄 03.pdf 第 2 頁「as a case of an outflow of cryptoassets deposited by users had actually occurred」與第 3 頁的大規模外流句；文章第 4 節明寫「日本曾實際發生使用者寄存的加密資產外流事案」。「全部是海外案例」整句刪除，改列入 unverified_or_excluded。",
+    "must_fix 3（「沒有對業者訂出遵循期限」說過頭）：已改。not_said 與文章都改寫成「沒有新增法定義務、沒有罰則、也沒有已修正並載明生效日的指引條文」，並在同一段與 FAQ 明寫三個有日期的期待（PY2026 起的 CSSA、2026 年內的 TLPT、Delta Wall 三年內全業者參加）。",
+    "must_fix 4（英文 PDF 時間戳掛在日文概要版網址上）：已改。四份 PDF 的 CreationDate／ModDate 全部今天自己重讀，並改列在 live_data_warnings 與 sourcing_notes，各自標明是哪一個檔案；不再有任何時間戳事實掛在錯誤的網址上，文章也沒有引用時間戳。",
+    "must_fix 5（註 6 的日文書名不在所引頁面上）：已改。相關 verified_fact 改用 03.pdf 實際印出的英文形式，並明寫該註只有英文形式、日文書名在不屬於 sources[] 的 01.pdf 裡；文章只寫「也有人指出存在疑似某些國家政府涉入……」的實質內容，沒有寫任何書名。",
+    "must_fix 6（ISO/TR 23576:2020 被安靜訂正）：已改。整條規範對照表的識別碼與版本全部不寫，改列入 unverified_or_excluded 並說明報告第 70 頁印的是 ISO/TC、第 72-73 頁印的是 ISO/TR。",
+    "must_fix 7（FISC 第 14 版 vs 第 13 版）：已改，與上一條合併處理——版本號整個不寫，並在 unverified_or_excluded 記明報告第 69 頁與第 72-73 頁互相矛盾。",
+    "must_fix 8（「2017 年度（平成29年度）」的年號是研究者補的）：已改。文章與紀錄都沒有寫年號；PY2017 只以 03.pdf 印出的 Program Year 形式出現在 verified_facts 裡。",
+    "must_fix 9（Clear Signing「需要四個部分」）：已改。以太坊基金會的公告不在 sources[]，文章只寫 rp_en.pdf 第 65 頁的記載，完全不寫組成要素的數量。",
+    "must_fix 10（SwissBorg 第 38 頁與第 39 頁互相矛盾）：已改。個案的內部細節整批不寫，SwissBorg 只以案名出現在個案研究清單裡。",
+    "must_fix 11（Kelp DAO / LayerZero 的 116,500 與 116,000）：已改。數字不寫，並在 unverified_or_excluded 寫明是同一份報告第 32 頁與第 58 頁的兩個值。",
+    "must_fix 12（03.pdf 的 8 頁與 9 頁自相矛盾）：已改。sourcing_notes 與 verified_facts 統一寫成「9 頁（未編號封面＋印刷正文 1-8）」，今天用 pypdf 重新確認。",
+    "must_fix 13（把專案稱為「國際共同研究」卻引 03.pdf）：已改。文章不用「國際共同研究」；verified_fact 照 03.pdf 寫 Blockchain Multilateral Joint Research Project 並註明 multilateral 與日文版說法的差異。",
+    "must_fix 14（自律規範機構直接寫成 JVCEA）：已改。文章第 4 節寫「方針本文只寫『自律規範機構』，註十一才連向 JVCEA 的組織圖」，verified_fact 亦同。",
+    "must_fix 15（TRM Labs 的 1,580 億美元交易量）：已改。該數字與所有外部機構統計一律不寫，列入 unverified_or_excluded 與 must_not_write，文章只留一句說明這些統計來自外部機構。",
+    "must_add 1（兩份官方文件對案例地域範圍的矛盾沒標）：已處理。文章只寫 03.pdf 的說法並明白標成「取組方針把這個研究專案描述成……」，不寫「全部是海外案例」；矛盾本身記在 unverified_or_excluded。",
+    "must_add 2（以太坊基金會公告的實質內容）：**未寫進文章**，理由是 sources[] 4 條名額已滿且該公告未列入。相關資訊記在 unverified_or_excluded，並在 must_not_write 明令不得使用。",
+    "must_add 3（報告第 2 頁致謝也列出金融庁官員）：已加，成為 verified_facts 的一條，也寫進文章第 1 節與 FAQ 第 1 題——因為本篇主軸正是「這份報告不代表金融庁的見解」。",
+    "must_add 4（免責語只在日文頁）：已處理。sources[] 用日文 innovationtop.html 取代英文版，免責語的 verified_fact 掛日文網址，並註明英文頁沒有這一行。",
+    "must_add 5（兩個語言版的頁面基準日不同）：**部分處理**。文章兩個基準日都不寫，只寫兩頁一致的更新日並掛日文頁；差異與原因（英文頁不在 sources[]、原始 HTML 用 U+00A0）記在 unverified_or_excluded 與 must_not_write。",
+    "must_add 6（TRM 與 Chainalysis 的 2025 年度總額不同、Bybit 占 51%）：已處理。全部外部機構統計不寫，理由記在 unverified_or_excluded。",
+    "must_add 7（註 10 的 CSSA 定義）：已成為 verified_facts 的一條；但 2026-09-17 的獨立查核發現它其實沒有寫進文章（原稿第 4 節只寫「資安自我評估（CSSA）」而沒有任何說明），已由查核代理補上一句「註十寫 CSSA 是用與金融業資安指引一致的問題自評，讓業者看到自己在業界中的位置、藉此自主改善」。",
+    "must_add 8（日文概要版把個案重新編號）：已處理。日文概要版不在 sources[]，文章只引英文報告第 5 頁目次的 (1)-(10)，不引任何「事例②」。",
+    "must_add 9（SwissBorg 損失金額兩說）：已處理，與 must_fix 11 同——個案金額整批不寫。",
+    "must_add 10（事件日推理予以保留）：已照用並在今天重新複驗兩條（日文頁的令和８年７月23日更新、20260403.html 的英語版公布句）。原推理引用的英文索引頁與日文概要版 ModDate 因為不在 sources[] 而未寫進 event_date_basis 的主論證，只留下可從 sources[] 直接讀到的兩條。",
+    "source_list_fix：已改。英文 /en/policy/bgin/innovationtop.html 換成日文 /policy/bgin/innovationtop.html（免責語與報告公布只有日文頁支撐，這正是全篇主軸）。以太坊基金會的公告未納入，因此 Clear Signing 只寫報告的記載。日文概要版、01.pdf、04.pdf、英文索引頁、2026-02-10 草案頁、2025-12-10 審議會頁都未納入，掛在它們上面的事實一句都沒有進文章——包括日文書名、「國際共同研究」說法、意見徵詢截止時刻 17 時 00 分、以及金融審議会報告的 2025-12-10 日期。"
+  ],
+  "translations": {
+    "en": {
+      "hero_label": "Tampered before signing",
+      "diagram": {
+        "title": "The outflow route the report describes",
+        "caption": "The route the report describes: first the privileges of a developer or an outsourcee are compromised, then the interfaces and programs before signing are tampered with, so that someone with legitimate authority signs the tampered transaction and the funds flow out.",
+        "nodes": [
+          [
+            "Developer breached",
+            "Social engineering or phishing"
+          ],
+          [
+            "Pre-sign tampering",
+            "UI, APIs and programs altered"
+          ],
+          [
+            "Signed with rights",
+            "The signer cannot tell"
+          ],
+          [
+            "Funds flow out",
+            "Legitimate signing abused"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "署名前が改ざんされた",
+      "diagram": {
+        "title": "報告書が示す資金流出の経路",
+        "caption": "報告書が示す経路：まず開発者または委託先の権限が侵害され、次に署名前のインターフェースとプログラムが改ざんされ、正当な権限を持つ者が改ざんされた取引に署名し、そこから資金が流出します。",
+        "nodes": [
+          [
+            "開発者の侵害",
+            "ソーシャルエンジニアリング等"
+          ],
+          [
+            "署名前の改ざん",
+            "UI・API・プログラム"
+          ],
+          [
+            "正当な権限で署名",
+            "署名者は気づけない"
+          ],
+          [
+            "資金の流出",
+            "正当な署名プロセスの悪用"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "서명 전 시스템의 조작",
+      "diagram": {
+        "title": "보고서가 제시한 자금 유출 경로",
+        "caption": "보고서가 제시한 경로: 먼저 개발자나 수탁처의 권한이 침해되고, 다음으로 서명 전 인터페이스와 프로그램이 조작되어, 정당한 권한을 가진 사람이 조작된 거래에 서명하고 그로 인해 자금이 흘러 나갑니다.",
+        "nodes": [
+          [
+            "개발자 권한 침해",
+            "사회공학이나 피싱으로 시작"
+          ],
+          [
+            "서명 전 조작",
+            "UI·API·프로그램 변경"
+          ],
+          [
+            "정당한 권한으로 서명",
+            "서명자는 알기 어렵다"
+          ],
+          [
+            "자금 유출",
+            "정당한 서명 절차 악용"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "签名前那一步被篡改",
+      "diagram": {
+        "title": "报告描述的资金外流路径",
+        "caption": "报告指出的路径：先攻破开发者或外包商的权限，再篡改签名前的界面与程序，让有正当权限的人签下被篡改的交易，资金因此流出。",
+        "nodes": [
+          [
+            "攻破开发者",
+            "社会工程或钓鱼起手"
+          ],
+          [
+            "篡改签名前",
+            "动界面、API 与程序"
+          ],
+          [
+            "正当权限签下",
+            "签署人难以察觉"
+          ],
+          [
+            "资金外流",
+            "合法签名流程被滥用"
+          ]
+        ]
+      }
+    }
+  },
+  "hero_label": "簽章前那一步被竄改",
+  "diagram": {
+    "title": "報告描述的資金外流路徑",
+    "caption": "報告指出的路徑：先攻破開發者或外包商的權限，再竄改簽章前的介面與程式，讓有正當權限的人簽下被竄改的交易，資金因此流出。",
+    "nodes": [
+      [
+        "攻破開發者",
+        "社交工程或釣魚起手"
+      ],
+      [
+        "竄改簽章前",
+        "動介面、API 與程式"
+      ],
+      [
+        "正當權限簽下",
+        "簽署人難以察覺"
+      ],
+      [
+        "資金流出",
+        "合法簽章流程被濫用"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "獨立查核代理（未參與撰稿）",
+    "checked_on": "2026-09-17",
+    "method": "四條 sources 全部以 `curl -sS -L -A \"Mokaair-editorial\"` 重抓並讀 body（請求裡沒有放入任何 email、姓名或個人資料），兩份 PDF 用系統 Python 的 pypdf 重新抽文字並逐頁核對：rp_en.pdf 125 頁、03.pdf 9 頁（未編號封面＋印刷正文 1-8）。03.pdf 讀完全文；rp_en.pdf 核對第 1-9、29-34、38-40、46、61、63、65、79、83、112、124 頁。47 條 verified_facts 的 verbatim_quote 全部以「只壓縮空白、其餘一字不動」的方式重新比對，47/47 命中，且每一條的 url 都在 sources[] 四條之內。負面句一律以詞界比對重驗（Taiwan／Taipei／台湾 在兩份文件各 0 次；03.pdf 的 penalt／sanction／amend／article／provision／effective date／2027 各 0 次；rp_en.pdf 的 users should 0 次）。沒有使用任何 sources[] 以外的新網址替文章補事實。",
+    "verdict": "ok（文章側 104 條主張、紀錄側 59 條逐條核對；改了 12 處，其中 3 處是協調者的編輯決定、4 處是事實或範圍問題、其餘是用語統一、補回 must_add 7 與紀錄自身的兩個否定句；骨幹論述沒有被推翻）",
+    "edits_to_the_pack": [
+      "title 與研究紀錄 title：「不是金鑰被偷，是簽章前的系統被動手腳」→「有一類外流不是金鑰被偷，而是簽章前的系統被竄改」。報告第 8 頁只寫 we confirmed attacks that did not involve the theft of signing keys themselves，是確認「有這一類」，不是說近年外流都不是金鑰被偷；03.pdf 印刷第 1 頁同樣寫 not necessarily caused by the theft of signing keys。原標題把限定詞吃掉了。",
+      "description：「說明報告怎麼重新解釋近年的資產外流」→「說明報告把哪一類資產外流重新歸因到簽章前的系統」，同一個限定詞問題。摘要第二句原本就寫「有一類」，不必改。",
+      "第 3 節第 3 段刪掉十個個案的具名清單（原文「依序是 Bybit、SwissBorg、Radiant Capital、Balancer v2、Euler Finance、Kokomo Finance、Resolv、Drift、Litecoin、Kelp DAO／LayerZero；本文只把它們當成報告記載的資安事件列出。」）。依 crypto.md「協議與資產只能以法規或技術的對象出現」與報告第 2 頁「不表示對個別案件的責任歸屬或法律評價」，一串被點名的平台會被讀成黑名單或比較。改成報告自己撐得住的描述：「從 (1) 編到 (10)」對回第 5 頁目次，分類照報告自己的軸線（第 8 頁 focusing on major attack methods … such as third-party compromises, smart contract vulnerabilities, rug pulls, flash loan attacks, and malware attacks；第 30、31 頁把這些手法當欄位標題各挑代表性案例，第 32 頁另收 2026 年 2 月之後的事件）。注意：協調者示意的「中心化交易業者與 DeFi 協議」不是報告對這十個個案的分類，報告的分類軸是攻擊手法，所以沒有照抄那個寫法。",
+      "第 1 節第 1 段刪掉「這一則不是以獨立新聞稿發布的。」，改成「報告是掛在政策專頁的最新情報清單裡公布的」。那個否定句的依據是 /news/index.html 與 /en/news/index.html，兩者都不在 sources[] 裡，而且寫成了無範圍的否定。",
+      "第 4 節第 3 段的四個否定句逐句對過 03.pdf 全文，只有第四個要改：「TLPT 也沒有寫是哪幾家或結果是否公開」→「TLPT 沒有寫是哪幾家，只寫結果個別回饋受測業者、共通課題回饋業界」。印刷第 7 頁確實寫了結果怎麼分送（provide assessment results to the targeted service providers individually and extracted common issues to the industry as a whole），原句會被讀成文件對結果一字未提。另外三個成立：penalt／sanction／fine 各 0 次（沒有罰則）、amend／article／provision／effective date 各 0 次而只有 revising the Guidelines for Supervision 與 For example … deliberate（沒有修正條文也沒有生效日）、within three years 只出現一次且沒有起算基準日。",
+      "第 5 節第 1 段拆開一個跨頁的因果接合：原文「仍應確認該第三方……等控制，因為外部服務商被攻破可能外溢到業者自家服務或使用者資產」把第 63 頁的「確認第三方控制」與第 9 頁的「外溢」接成一個因果。第 63 頁的原文是 it is important … to confirm（重要，不是應），第 9 頁的外溢句是「因此要建立自保措施」的理由。已改成「……等控制仍然重要；報告另外寫，外部服務商被攻破可能外溢到……」。",
+      "第 5 節第 2 段：「報告用一整節講「盲簽」」→「報告有一頁專門談簽章當下的確認與「盲簽」」；FAQ 第 4 題的「報告用一整節說明」→「報告在個案教訓的其中一頁說明」。報告沒有任何一節以盲簽為標題，第 65 頁是 Lessons learned from case study (3/4)。",
+      "第 4 節第 2 段補上 CSSA 的內容（corrections-crypto.md must_add 7 說這是全篇唯一能讓讀者知道 CSSA 是什麼的一段，但紀錄的 corrections_applied 聲稱已寫進文章，實際上沒有）：「註十寫 CSSA 是用與金融業資安指引一致的問題自評，讓業者看到自己在業界中的位置、藉此自主改善」，依 03.pdf 註 10。",
+      "用語統一（協調者決定）：第 4 節第 2 段、第 5 節第 1 段、FAQ 第 2、6、7 題的「虛擬資產」全部改成「加密資產」，第一次出現寫「加密資產交換業者（日文『暗号資産交換業者』）」。其中 FAQ 第 6 題的「防止虛擬資產遭未授權移轉」對回報告第 9 頁 measures to prevent unauthorized transfers of crypto-assets，本來就該是加密資產。全篇唯一剩下的「虛擬資產」是第二個站內連結的文字，那是台灣那篇的正式 title，不可改。",
+      "摘要第四句「取組方針對監督指引只寫到檢討」→「只寫到檢討與設法提高水準」，與正文一致，也才對得起 endeavor to raise the levels 這半句。",
+      "hero_label「簽章前那一步被動手腳」→「簽章前那一步被竄改」，與改過的 title 一致（圖解標題、四格與 caption 不必改，它們原本就沒有具名、也沒有超出報告第 8、63 頁）。",
+      "研究紀錄 not_said 第 7 項被推翻並改寫：原本寫「研究報告與取組方針都沒有提到使用者資產被盜時的賠償、保險或求償機制」，但報告第 20 頁把保險公司列為供應鏈參與者、第 112 頁把 Insurance Coverage 列為業者控制項目、第 124 頁有 Company's right to be compensated in certain circumstances，第 46、61 頁的個案敘述也出現賠償。能寫的只有「兩份文件都未見存款保險或投資人保護制度」。文章沒有寫這一類句子，所以只動紀錄。",
+      "研究紀錄 not_said 第 12 項收緊成「取組方針全文未見任何金額、幣價、市值、交易量或報酬數字」（$、円、JPY 各 0 次），並寫明研究報告相反、但它不代表金融廳見解。原本的「這次公布沒有任何……官方意見」把兩份文件混成一個主體。"
+    ],
+    "checked_and_correct": [
+      "四條 sources 2026-09-17 全部 HTTP 200、無轉址、body 是正文，位元組數與撰稿當天完全相同（42,889／3,337,715／38,261／258,085），PDF 的 CreationDate／ModDate 也一字不差，所以 checked_on 維持 2026-09-17，沒有改。",
+      "五個日期的區分全部復驗通過，而且四個都寫進了文章與表格：草案徵詢令和８年２月10日至令和８年３月11日與「計18件のコメント」（20260403.html 逐字）、取組方針訂定 2026-04-03（該頁頁首與 03.pdf 文首 April 3, 2026）、報告封面 June 30, 2026（rp_en.pdf 第 1 頁）、公布與英文版補登 2026-07-23（日文政策頁「令和８年７月23日更新」＋20260403.html「令和８年７月23日、以下の英語版を公表しました。」後接別紙３、別紙４）。文章沒有把頁面更新日當成事件日，反而明寫「那是頁面的更新日，頁面再更新就會換一個日期」。",
+      "「誰在說話」這條主軸站得住：日文刊登頁的「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」在頁上出現三次（每個研究報告一次），報告第 2 頁的 The contents of this report do not represent the official views of the Financial Services Agency. 與 any errors in this report are the sole responsibility of Deloitte Tohmatsu LLC, the contractor. 都逐字存在，致謝也真的列了 as well as officials from the Financial Services Agency。全篇沒有一處把報告的分析寫成「金融廳指出」。",
+      "「五個優先領域」這個數字是報告自己印的：第 9 頁 five areas were extracted and examined as priority areas，五項名稱與 FAQ 第 6 題逐項對得上，不是查核者或撰稿者數出來的。",
+      "03.pdf 的專有名詞逐一對回：From Program Year 2026 onward、within three years、within 2026 … TLPT targeting several service providers、Delta Wall（註 17 解釋 Delta 是自助／共助／公助的三位一體加上 Wall）、information sharing organizations, such as JPCrypto-ISAC（註 13 是官網）、本文只寫 the self-regulatory organization 而 JVCEA 只在註 11 的組織圖連結裡。文章的寫法與這個區分一致。",
+      "資安界線：文章停在報告的摘要與歸因層次，元件名（UI、API、CI/CD、未簽章交易產生邏輯、正式環境程式、雲端 IAM／KMS）都有，但沒有任何一步一步的手法、時序、被竄改的檔案或端點、也沒有入侵指標。報告第 34 頁那種逐分鐘的攻擊時序、第 40-42 頁的惡意程式細節一句都沒有進文章，FAQ 第 3 題還自己寫明「本文不寫更細的手法，也不寫入侵跡象」。",
+      "行情界線：全文沒有幣價、漲跌幅、市值、交易量、ETF 資金流、殖利率、質押或空投報酬。報告轉引的外部統計（TRM、SlowMist、Chainalysis）一個數字都沒有出現，文章只留「報告引用的損失金額與件數統計全部來自外部機構，本文不寫」。刪掉具名清單之後，全篇也不再有任何交易所、錢包、託管商的名字，更沒有比較或推薦；剩下的專名是主管機關、業界演習、自律機構、資訊共享機構、承包商，以及技術標準（Clear Signing、ERC-7730）與發表者以太坊基金會，都只作為報告記載的技術標準出現。",
+      "Clear Signing 三條全部對回報告第 65 頁：On May 12, 2026, the Ethereum Foundation, together with wallet developers, security firms, and other ecosystem participants, announced Clear Signing、ERC-7730, the core technology of Clear Signing, is a JSON-based descriptor standard、以及 the information presented through Clear Signing should not be treated as unconditionally safe。日期 2026-05-12 正確，而且文章沒有寫以太坊基金會公告本身的細節（那份公告不在 sources[]）。",
+      "「草案／建議／尚未生效」這一類操作性字樣：這篇的兩份文件都不是法規草案，文章也沒有把任何一句寫成已生效的義務——取組方針的定位寫成「方向」與「有日期的期待」，監督指引寫成「檢討與設法提高水準」，研究報告寫成「建議」。03.pdf 全文沒有 shall、obligat、mandator、penalt。",
+      "免責 callout 與 crypto.md 的樣板逐字相同（tone、title、text 全等），含「不是投資建議」六個字，查核日 2026-09-17；文章另有一個「哪一句話出自哪一份文件」的提醒 callout，共兩個，符合幣圈規定。",
+      "摘要四句的每一個數字都在正文出現過；FAQ 八題的答案都是純文字、沒有網址；「以下是編輯設計的例子，不是官方建議」那句仍在第 5 節第 3 段；全文沒有簡體字、列表、Markdown 或 emoji。",
+      "兩個站內連結的 text 與目標內容包的 zh-TW title 逐字相同（幣圈索引與台灣《虛擬資產服務法》那篇），索引內容包在查核日已經存在。"
+    ],
+    "left_for_the_owner": [
+      "報告本身的公布日只能從日文政策頁的「令和８年７月23日更新」加上「2026 年第一項就是它」推出來——sources[] 四條裡沒有一條印出「本報告於 2026-07-23 公布」。（20260403.html 印的 7 月 23 日是取組方針英文版的公布日。）文章已經把依據寫在第 1 節，但若站主要更硬的依據，英文索引頁 /en/news/index.html 的清單項目印著 (July 23, 2026)，那要佔掉 sources[] 的第五個名額。",
+      "hero.alt 沒有查、也沒有改（依 FACTCHECK.md，主圖由協調者繪製後改寫）。hero_label 已同步成「簽章前那一步被竄改」。",
+      "第 3 節現在寫「舉的例子是第三方遭攻破、智慧合約弱點、閃電貸攻擊與惡意程式攻擊」，報告第 8 頁的 such as 清單還有一項 rug pulls，刻意沒譯進來（中文沒有穩定的對應詞，自己造詞會變成編輯的歸類）。清單前有「舉的例子是」，所以不是全清單；若站主要補，請照報告的英文原詞寫。",
+      "報告第 4 頁寫這個研究取材 representative domestic and international cyberattack cases、03.pdf 印刷第 5 頁寫 picked up representative cyberattacks that had occurred in and outside Japan，但英文報告十個個案裡沒有日本的受害者。文章兩邊都沒寫，這個官方文件之間的張力留在 unverified_or_excluded；要寫必須同時說明是哪一份文件這樣寫。",
+      "zh-TW 段落字數 2,959／3,000，只剩 41 字的空間。翻譯與審稿階段若要補回任何條件或限制，得從別處刪等量的字，不可以刪但書來湊。"
+    ]
+  }
+}

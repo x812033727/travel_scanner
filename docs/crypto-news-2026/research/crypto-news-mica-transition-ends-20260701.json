@@ -1,0 +1,566 @@
+{
+  "slug": "crypto-news-mica-transition-ends-20260701",
+  "title": "歐盟 MiCA 過渡期 7 月 1 日屆滿：各國緩衝長度不一，申請中不算延期",
+  "event_date": "2026-07-01",
+  "checked_on": "2026-09-17",
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條 sources 全部在 2026-09-17 由本代理親自重抓並讀完 body（curl -sL -A \"Mokaair-editorial\"，請求中沒有任何 email、姓名或個人資料），不是只看狀態碼。（1）1710 公開聲明 PDF：HTTP 200、139,018 bytes、2 頁，報頭「23 June 2026 / ESMA75-113276571-1710」，PDF 內部 /CreationDate 與 /ModDate 皆 D:20260623143240+02'00'。（2）1679 聲明 PDF：200、162,253 bytes、3 頁，/Title 為 ESMA75-113276571-1679 Statement on the end of transitional periods under MiCA，/CreationDate D:20260417161500+02'00'。（3）各國過渡期對照表 PDF：200、252,095 bytes、3 頁，第 1 頁同時印出第 143 條第 3 項三段全文與 27 個會員國、3 個 EEA 國家的表，/ModDate D:20260519140606+02'00'（網址路徑寫 2024-12，但它是活文件）。（4）Q&A 2220 頁面：200、53,493 bytes、text/html，伺服器端渲染，Original question／ESMA Answer（答覆日期 04-07-2024）／Additional Legal Reference 143(3) 全部在 body 裡。 取得路徑（今天各驗一次，不是猜的）：1710 的網址是 https://www.esma.europa.eu/newsletter 上的 <a href>（該頁 200、57,222 bytes，伺服器端渲染，列出九份電子報 PDF 與這一條）；1679 的網址是 1710 PDF 第 1 頁註腳 1 的連結註解（同一個 URI 出現兩次）；對照表 PDF 的網址是 ESMA MiCA 活動頁（200、88,601 bytes）上的 <a href>；Q&A 2220 是 Interactive Single Rulebook 第 143 條頁面（200、57,739 bytes）上九個 Q&A 連結（2005、2068、2070、2085、2086、2220、2221、2295、2404）之一。 PDF 取文字用 pypdf：apps/api/.venv 裡沒有 pypdf（也沒有 pdfminer／PyMuPDF），本次以 python -m pip install --target <scratchpad>/pl pypdf 安裝到暫存目錄再用 PYTHONPATH 載入，沒有動到共用 venv；注意 --target 路徑若超過 Windows 的 260 字元上限，檔案會列得出來卻讀不到（本次先踩到一次，換短路徑後正常）。 引文核對：pypdf 會在連字號與少數字中插入空白（本批實測到 'crypto -asset'、'C ustody'、'M iCA'、're ly'、'befo re'、'2026 ,'），所以本紀錄每一條 verbatim_quote 都先以「把連字號前後空白與連續空白正規化」比對，43 條裡 37 條完全命中；其餘 6 條在忽略所有空白後唯一命中，差異全部是抽取雜訊，頁面上印的是正常拼寫——分別是 1710 的 While a number of CASPs…（抽出來是 2026 , other）與 limit the provision of services…（positions . C ustody）、1679 的 ESMA also expects authorised CASPs…（2026 . In）、Scrutinise client migration strategies…（strategies , ensuring）與註腳 4（re ly、befo re）、對照表的保加利亞註腳（of M iCA）。查核者用同一個正規化即可重現。 沒有放進 sources[] 但今天讀過的一手網址：ESMA MiCA 活動頁、Interactive Single Rulebook 第 143 條、ESMA 電子報列表頁、Q&A 2068／2070／2085／2086／2221／2295。掛在這些網址上的事實只留在本紀錄，沒有成為文章裡的句子。",
+  "sources": [
+    {
+      "title": "ESMA 公開聲明：MiCA 過渡期結束，ESMA 要求未取得許可的加密資產服務商有秩序收攤（ESMA75-113276571-1710，2026 年 6 月 23 日）",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "publisher": "ESMA (European Securities and Markets Authority)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "ESMA 聲明：MiCA 過渡期的結束（ESMA75-113276571-1679，2026 年 4 月 17 日）",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "publisher": "ESMA (European Securities and Markets Authority)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "ESMA：各會員國依 MiCA 第 143 條決定的過渡期長度對照表",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "publisher": "ESMA (European Securities and Markets Authority)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "ESMA 官方問答 ESMA_QA_2220：過渡期結束時仍未取得 CASP 許可的機構",
+      "url": "https://www.esma.europa.eu/publications-data/questions-answers/2220",
+      "publisher": "ESMA (European Securities and Markets Authority)",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "event_date_basis": "事件日 2026-07-01 是 MiCA 第 143 條第 3 項第一段寫在法條裡的日期（until 1 July 2026），該條文全文印在 sources[2] 的對照表 PDF 第 1 頁，也被 sources[3] 的 Q&A 2220 逐字引用；sources[1] 的 2026-04-17 聲明並寫明 The MiCA transitional period will officially expire across the EU on 1 July 2026。要分開的四個日期：(1) 過渡期屆滿日 2026-07-01（事件日、slug 尾碼、news_date）；(2) ESMA 收攤公開聲明的發布日 2026-06-23（PDF 報頭與內部時間戳）；(3) 更早一份聲明的日期 2026-04-17；(4) 2024-12-30，祖父條款判斷「舊制底下已經在做」的分界。過渡期是自動屆滿，沒有另一個「生效日」。文章第一段寫 2026 年 7 月 1 日，第二段寫查核日 2026 年 9 月 17 日，兩份聲明的日期在正文中各自標明，沒有互相取代。",
+  "verified_facts": [
+    {
+      "fact": "MiCA 第 143 條第 3 項第一段：在 2024 年 12 月 30 日之前依當時適用法律提供服務的加密資產服務商，得繼續提供服務至 2026 年 7 月 1 日，或至其依第 63 條被核准或被拒絕核准為止，以較早者為準。條文全文印在對照表 PDF 第 1 頁的表格上方。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Crypto-asset service providers that provided their services in accordance with applicable law before 30 December 2024, may continue to do so until 1 July 2026 or until they are granted or refused an authorisation pursuant to Article 63, whichever is sooner."
+    },
+    {
+      "fact": "同條第二段：會員國認為其在 2024 年 12 月 30 日之前適用的國內監理架構寬於本規則時，得決定不適用第一段的過渡制度，或縮短其期間。這是各國長度不一的法律依據。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Member States may decide not to apply the transitional regime for crypto-asset service providers provided for in the first subparagraph or to reduce its duration where they consider that their national regulatory framework applicable before 30 December 2024 is less strict than this Regulation."
+    },
+    {
+      "fact": "同條第三段：會員國應於 2024 年 6 月 30 日前，向執委會與 ESMA 通知是否行使第二段的選擇權以及過渡制度的期間長度。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By 30 June 2024, Member States shall notify to the Commission and ESMA whether they have exercised the option provided for in the second subparagraph and the duration of the transitional regime."
+    },
+    {
+      "fact": "對照表 PDF 的表頭是「List of grandfathering periods decided by Member States under Article 143 of Regulation (EU) 2023/1114 Markets in Crypto-Assets Regulation (MiCA)*」，Member state 欄逐列列出歐盟會員國，另有一個 EEA country 區塊。本次以 2026-09-17 取得的檔案逐列清點：會員國欄 27 列，緩衝長度只有 18／12／9／6 四種（18 個月 15 國：比利時、保加利亞、捷克、丹麥、愛沙尼亞、希臘、西班牙、法國、克羅埃西亞、義大利、賽普勒斯、盧森堡、馬爾他、葡萄牙、羅馬尼亞；12 個月 5 國：德國、愛爾蘭、立陶宛、奧地利、斯洛伐克；9 個月 1 國：瑞典；6 個月 6 國：拉脫維亞、匈牙利、荷蘭、波蘭、斯洛維尼亞、芬蘭）。15+5+1+6=27。這個分組是本紀錄逐列整理的結果，ESMA 沒有印出任何分組家數。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "List of grandfathering periods decided by Member States under Article 143 of Regulation (EU) 2023/1114 Markets in Crypto-Assets Regulation (MiCA)*"
+    },
+    {
+      "fact": "同一份 PDF 在會員國表之後另起一個標題為「EEA country」的區塊，列出冰島 18 個月、列支敦斯登 18 個月、挪威 12 個月。EEA 三國與 27 個歐盟會員國在文件中是分開的兩個區塊。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "EEA country Grandfathering period"
+    },
+    {
+      "fact": "對照表的通則註腳（掛在標題的單星號上）自己聲明：其中部分過渡期是各國主管機關通知 ESMA 的、反映其當時對國內過渡期的預期，有些期間可能尚未納入該國國內法；這份清單是為了便於業界在 MiCA 上路前準備而分享。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Please note that some of these grandfathering periods have been communicated to ESMA by national competent authorities, reflecting their current expectations on national grandfathering period, but that some of these periods may not have been incorporated into national law yet."
+    },
+    {
+      "fact": "對照表上有四個會員國各掛一則自己的註腳，寫的是申請期限而不是緩衝長度：保加利亞（**）、捷克（***）、丹麥（****）、義大利（*****）。丹麥那一則的內容是申請人須在 2024 年 12 月 30 日前提出申請才能享有緩衝期。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To be able to benefit from the grandfathering period, applicant CASPs must apply before 30 December 2024."
+    },
+    {
+      "fact": "捷克（***）的註腳：申請人須在 2025 年 7 月 31 日前提出申請才能享有緩衝期。文章只寫「四國各掛一則註腳、寫的是申請期限」與丹麥那一例，其餘三國的日期留在本紀錄。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To be able to benefit from the grandfathering period, applicant CASPs must apply before 31 July 2025."
+    },
+    {
+      "fact": "保加利亞（**）的註腳：在 2024 年 12 月 30 日至 2025 年 7 月 8 日（保加利亞該法生效日）之間登錄於 VASP 名冊的機構，應於 2025 年 10 月 8 日前依 MiCA 第 63 條提出許可申請，即該法生效後 3 個月內。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The entities listed in the VASP register between 30 December 2024 and 08 July 2025 (the date of entry into force of the Bulgarian Act) shall submit an application for authorization under art. 63 of MiCA before 08 October 2025 (i.e. within 3 months of entry into force of the Bulgarian Act)."
+    },
+    {
+      "fact": "義大利（*****）的註腳：登錄於義大利 AML/TF 名冊的 VASP，或屬於同一集團的機構，須在 2025 年 12 月 30 日前提出 MiCA 許可申請，才能享有緩衝期。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Entities registered as VASPs in the Italian AML/TF register, or entities belonging to the same group, must file their application for MICA authorisation by 30 December 2025 to benefit from the grandfathering period."
+    },
+    {
+      "fact": "對照表上另有一則以單星號標示、內容為「申請人須在 2025 年 10 月 8 日前提出申請」的註腳。以 2026-09-17 取得的這一版而言，表格中沒有任何一個國家列掛單星號（唯一的另一個單星號在標題上，對應的是通則註腳），因此這則註腳指向哪一國無法從文件本身判斷。這個日期與保加利亞 ** 註腳的申請期限同日，但本紀錄不從這個巧合推論任何事，文章也沒有寫這一則。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To be able to benefit from the grandfathering period, applicant CASPs must apply before 8 October 2025."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明：MiCA 過渡期在全歐盟於 2026 年 7 月 1 日正式屆期；在那之後，任何未取得 MiCA 執照而向歐盟客戶提供加密資產服務的機構都違反歐盟法，必須停止提供該等服務。（PDF 上這句以 services.45 結尾，4 與 5 是兩個註腳標記，引文取到 services 為止。）",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The MiCA transitional period will officially expire across the EU on 1 July 2026. After this date, any entity providing crypto-asset services to EU clients without a MiCA licence will be in breach of EU law and must cease offering such services"
+    },
+    {
+      "fact": "2026-04-17 聲明的註腳 5：上一條的結論不論 MiCA 在某個會員國是否已經落實，都同樣適用。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This applies irrespective whether the MiCA has been implemented in a Member State or not."
+    },
+    {
+      "fact": "2026-04-17 聲明的註腳 4：有兩類機構在 2026 年 7 月 1 日之前就已經不得提供加密資產服務——一是在 2024 年 12 月 30 日之前未依該國適用法律提供加密資產服務、因而無法依賴過渡制度者；二是在過渡期已於 2026 年 7 月 1 日之前結束的會員國中營運者。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Two categories of entities were not permitted to provide crypto-asset services even before 1 July 2026: first, entities that did not provide crypto-asset services in accordance with applicable national law before 30 December 2024 and therefore could not rely on the transitional regime; and second, entities active in Member States where the transitional period had already ended before 1 July 2026."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明對收攤計畫訂的門檻（第一項）：計畫要能讓業者有秩序退出而不對客戶造成不當的經濟損害，包括安排客戶移出；原文接著舉的例子是把代客戶持有的加密資產移轉給一家已取得許可的 CASP 或移到自管錢包。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Wind-down plans enable an orderly exit without causing undue economic harm to clients, including by arranging the offboarding of clients"
+    },
+    {
+      "fact": "同一項的下一句，也是受影響的使用者唯一能拿自己的信箱對照的一點：業者應在實施收攤計畫之前先通知既有客戶。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CASPs should provide existing clients with prior notice before implementing the wind-down plan."
+    },
+    {
+      "fact": "同一項的末句：收攤計畫應可操作、可信、可立即執行，並依所有相關的歐盟行為、審慎與 AML/CFT 義務設計。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Plans should be operational, credible, and immediately executable and designed in accordance with all relevant EU conduct, prudential and AML/CFT obligations."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明：到 2026 年 7 月 1 日、過渡期在全歐盟結束時，任何未取得許可的 CASP 都必須已經執行其收攤計畫。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By 1 July 2026, when the transitional period ends across the EU, any unauthorised CASP must have implemented its wind-down plan."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明對已取得許可的 CASP 的期待：積極管理既有客戶的移轉，在 2026 年 7 月 1 日之前採取必要步驟承接既有的歐盟客戶，並採用健全的開戶程序以完全符合適用的 AML/CFT 要求。這是同一個期限機制的另一半，研究前案完全沒有寫到。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ESMA also expects authorised CASPs to actively manage the migration of existing clients ahead of 1 July 2026."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明對各國主管機關（NCA）的期待之一：在過渡期結束後，對未經許可提供加密資產服務者採取行動，並於適當時與其他主管機關合作。where appropriate 是原文的限定詞，照留。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Take action against the unauthorised provision of crypto-asset services following the end of the transitional period, in cooperation with other competent authorities where appropriate."
+    },
+    {
+      "fact": "對 NCA 的另一點期待：查核未取得許可 CASP 的有秩序收攤計畫是否存在且適足，並確保其及時執行、不對客戶造成不當的經濟損害。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Verify the existence and adequacy of orderly wind-down plans for unauthorised CASPs, and ensure these are implemented in a timely manner without causing undue economic harm to clients."
+    },
+    {
+      "fact": "對 NCA 的第三點期待：檢視客戶移轉策略，確保已取得許可的 CASP 及時承接目前或先前由未取得許可者（包括未取得許可的集團內機構）服務的歐盟客戶，並確保未取得許可者不會在過渡期之後照常營業。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Scrutinise client migration strategies, ensuring that authorised CASPs take timely steps to onboard EU clients currently or previously serviced by unauthorised CASPs (including unauthorised group entities), ensuring unauthorised CASPs do not continue business-as-usual activities beyond the transitional period."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明「Warning for Consumers」的開頭：ESMA 要警告從事加密資產活動的投資人，2026 年 7 月 1 日之後並非所有服務商都取得 MiCA 許可，而你的保護取決於你面對的是誰。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ESMA wishes to warn investors engaging with crypto assets that not all providers are authorised under MiCA after 1 July 2026, and that your protections depend on who you are dealing with."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明對消費者的第一步：在投入資金或移轉之前，確認自己使用的公司在 ESMA 的 Interim MiCA Register 上被列為已取得許可。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Check that the company you are using is listed as authorised in the ESMA Interim MiCA Register before you invest or transfer funds."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明對消費者的第二步：MiCA 的保護只適用於那一家在歐盟取得許可的特定法人，不及於同集團的其他公司，也不及於非歐盟機構；同一份聲明並說明業者可能以同一個品牌在多家公司或多個國家營運，要仔細看合約確認實際提供服務的是哪一家。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "MiCA protections only apply to the specific authorised legal entity in the EU – not to other companies of the same group, and not to non-EU entities."
+    },
+    {
+      "fact": "ESMA 2026-04-17 聲明對消費者的第三步（末句）：繼續留在未取得許可的服務商，可能意味著較少的法律保護，以及更高的失去資產取用權的風險。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-04/ESMA75-113276571-1679_Statement_on_the_end_of_transitional_periods_under_MiCA.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Staying with an unauthorised provider may mean less legal protection and a greater risk of losing access to your assets."
+    },
+    {
+      "fact": "ESMA 2026-06-23 公開聲明的情勢描述：會有一部分 CASP 在 2026 年 7 月 1 日前取得許可，但其他機構，包括目前依各國國內制度服務歐盟客戶的重要業者，可能在期限前仍未取得許可。原文用 including 起頭，是舉例不是全清單。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "While a number of CASPs will have obtained authorisation by 1 July 2026, other entities, including significant providers currently servicing EU clients under national regimes, may not be authorised by the deadline."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明要求未取得許可的 CASP 做的第一件事：立即停止承接新的歐盟客戶，不再開立新的客戶關係或帳戶，並停止行銷與招攬行為。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "immediately stop onboarding new EU clients, refrain from opening new client relationships or accounts, and cease marketing activities and solicitation."
+    },
+    {
+      "fact": "第二件事：把服務限縮到賣出或移轉加密資產、重新配置資產或平倉所必要的行為；客戶加密資產的保管只能持續到完成有秩序退出所嚴格必要的期間。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "limit the provision of services to actions necessary to sell or transfer crypto-assets, reallocate assets, or close positions. Custody of clients’ crypto-assets can only continue for the period strictly necessary to complete an orderly exit."
+    },
+    {
+      "fact": "第三件事：清楚、及時且重複地與客戶（零售與法人）溝通已採取的資產保全措施與收攤計畫，讓客戶知道處分、移轉、重新配置或平倉的時間表。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "communicate clearly, promptly and repeatedly with clients (retail and institutional) about the measures taken to safeguard their assets and the wind-down plans so that clients know the timeline to dispose of, transfer, reallocate or close their positions."
+    },
+    {
+      "fact": "同一則要求的下一句：業者的溝通內容應包含一個殘餘部位會被自動平倉的截止日，以及客戶保護規定的資訊。截止日由業者自己訂，ESMA 沒有訂一個統一的日期。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CASPs’ communications should include a deadline by which any residual positions would be closed automatically and information about client protection requirements."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明：收攤安排的執行仍須遵守所有相關的歐盟或國內行為法規與 AML/CFT 義務。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Wind-down arrangements should be implemented in compliance with all relevant EU or national conduct laws and AML/CFT obligations."
+    },
+    {
+      "fact": "同一段的下一句：ESMA 特別要求 CASP 在整個收攤過程中維持有效的 AML/CFT 控制。原文接著以 including 起頭列出客戶審查、交易監控、比對限制措施與制裁名單、可疑交易與活動申報、紀錄保存，以及資金移轉與加密資產移轉可追溯性義務——那是舉例不是全清單。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CASPs should maintain effective AML/CFT controls throughout the wind-down process"
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明：客戶被移轉到一家已取得 MiCA 許可的 CASP 時，承接方應執行所有必要的開戶程序，包括客戶審查與適用法律架構所要求的其他 AML/CFT 檢查。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Where clients are transferred to a MiCA-authorised CASP, the onboarding CASP should carry out all necessary onboarding procedures, including customer due diligence and any other AML/CFT checks required under the applicable legal framework."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明的最後一句提醒：MiCA 禁止 CASP 把特定服務、特別是保管，外包或委任給未取得 CASP 許可的機構。這一條查證無誤，但為了正文字數上限沒有寫進文章。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ESMA reminds that MiCA prohibits CASPs from outsourcing or delegating certain services, notably custody, to entities that are not authorised as CASPs."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明對設立於歐盟以外的 CASP：不得向歐盟客戶提供 MiCA 服務，也不得招攬歐盟客戶，這一點在企業對企業情境同樣適用。引文中的 3 是原文的行內註腳標記，照抄。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ESMA also reminds CASPs established outside the EU that they cannot provide MiCA services to EU clients or solicit EU clients 3. This also applies in a business-to-business context."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明的消費者警語：ESMA 提醒未取得許可 CASP 的客戶（不論該機構在歐盟境內或境外），他們不享有 MiCA 的保障，包括對客戶資產的保護。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ESMA reminds clients of unauthorised CASPs, whether EU or non-EU entities, that they do not benefit from MiCA safeguards, including protections for client assets."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明對客戶的建議：在歐盟使用加密資產服務的客戶，被請到 ESMA 的名冊確認自己的服務商是否已依 MiCA 取得許可，若否應儘快行動，包括把加密資產移轉到一家已取得許可的 CASP（若找得到）或移到自管錢包；遇到困難應先聯絡自己的服務商。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Clients using crypto-asset services in the EU are invited to verify whether their provider is authorised under MiCA in the ESMA Register and act promptly where this is not the case, including by transferring their crypto-assets to an authorised CASP, where one is identified, or to a self-hosted wallet."
+    },
+    {
+      "fact": "ESMA 2026-06-23 聲明的監理協調段落：在 ESMA 的合作架構下，各國主管機關必要時得在過渡期結束後對未經許可的 CASP 採取協同行動。原文是 may, where necessary 的未來式措辭，不是已經採取行動的敘述。",
+      "url": "https://www.esma.europa.eu/sites/default/files/2026-06/ESMA75-113276571-1710_Public_Statement_MiCA_transitional_period_ends.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Within the ESMA cooperation framework, NCAs may, where necessary, take coordinated action against unauthorised CASPs after the transitional period."
+    },
+    {
+      "fact": "ESMA 官方問答 ESMA_QA_2220 的 Subject Matter 欄；同一頁另標示頁面日期 21/06/2024、ESMA Answer 日期 04-07-2024、Level 1 Regulation 為 MiCA、Additional Legal Reference 為 143(3)。",
+      "url": "https://www.esma.europa.eu/publications-data/questions-answers/2220",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Entities not authorised as CASPs by the end of the transition period"
+    },
+    {
+      "fact": "Q&A 2220 的原始問題：已提出申請但到期仍未被核准或被拒絕者，可否繼續提供服務至被核准或被拒絕為止。",
+      "url": "https://www.esma.europa.eu/publications-data/questions-answers/2220",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Where an entity providing crypto-asset services in accordance with applicable law before 30 December 2024 has applied for but has not been granted or refused authorisation by the end of the transition period, can this entity continue providing services until it is granted or refused authorisation?"
+    },
+    {
+      "fact": "Q&A 2220 的答覆：在相關會員國適用的過渡期結束時仍未取得 CASP 許可的機構，必須停止提供加密資產服務，直到其依 MiCA 取得 CASP 許可為止。也就是「申請中」不延長過渡期。",
+      "url": "https://www.esma.europa.eu/publications-data/questions-answers/2220",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Where an entity providing crypto-asset services in accordance with applicable law before 30 December 2024 has not been authorised as a CASP by the end of the transition period applicable in the relevant Member State, they must cease providing crypto-asset services until they are granted authorisation as a CASP under MiCA."
+    },
+    {
+      "fact": "Q&A 2220 的第二段答覆：希望在 MiCA 之下繼續提供服務的業者，應盡早提出 CASP 許可申請，好讓各國主管機關有時間審查而不中斷其服務。",
+      "url": "https://www.esma.europa.eu/publications-data/questions-answers/2220",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An entity providing crypto-asset services in accordance with applicable law before 30 December 2024 and wishing to continue providing services under MiCA should therefore apply for authorisation as a CASP as early as possible in order to ensure NCAs have the time to assess their applications without disrupting their services."
+    }
+  ],
+  "not_said": [
+    "ESMA 沒有在這四份文件裡公布「共有幾家 CASP 取得 MiCA 許可」或「名冊上有幾家」。文章完全不寫名冊家數，本紀錄也不記任何 CSV 的列數。",
+    "對照表只給月數，沒有給任何一國的起算日與到期日。以 2026-09-17 讀到的這一版查核，未見任何一個像「拉脫維亞的過渡期在某年某月某日結束」的日曆日期；把月數加在 2024-12-30 上是換算，不是 ESMA 的說法。",
+    "對照表的通則註腳自己說部分期間只是各國主管機關通知 ESMA 的當時預期，可能尚未納入該國國內法。ESMA 沒有說這份清單等同各國法律。",
+    "ESMA 兩份 2026 年聲明的用語是 across the EU。以這四份文件查核到 2026-09-17，未見冰島、列支敦斯登、挪威的過渡期何時結束的說明，也未見 2026-07-01 適用於這三國的說明。",
+    "以這四份文件查核到 2026-09-17，未見任何一家未取得許可、正在收攤的業者被點名，也未見有幾家業者在收攤、涉及多少客戶或多少資產的數字。",
+    "殘餘部位自動平倉的截止日由各業者自己訂。以這四份文件查核到 2026-09-17，未見 ESMA 統一訂定的截止日。",
+    "以這四份文件查核到 2026-09-17，未見客戶資產拿不回來時的救濟說明，也未見任何賠償基金、存款保險或投資人保護機制會補償的說明。",
+    "這四份文件講的都是 EU clients。以它們查核到 2026-09-17，未見任何關於非歐盟居民（例如台灣使用者）使用歐盟業者的說明，也未見台灣或金管會。",
+    "以這四份文件查核到 2026-09-17，未見 MiCA 許可的申請費用、審查時間或任何費率表。",
+    "2026-06-23 聲明對過渡期之後的行動用的是 NCAs may, where necessary, take coordinated action 的措辭。以這四份文件查核到 2026-09-17，未見各國主管機關實際採取了哪些裁罰或行動的說明。",
+    "反向招攬在 2026-06-23 聲明裡是以註腳形式出現的狹義例外（strictly provided at the client's own exclusive initiative under the narrow reverse solicitation regime），該註腳指向另一份指引。以這四份文件查核到 2026-09-17，未見任何「歐盟居民因此可以繼續使用境外平台」的說法。",
+    "這四份文件裡沒有任何價格、漲跌幅、市值、交易量、報酬率或資金流數字，文章也不寫。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "ESMA 的 Interim MiCA Register 目前列有幾家已取得許可的 CASP、幾家不合規機構，以及各國分別有幾家。",
+      "seen_where": "https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica 上的 CASPS.csv／NCASP.csv 等下載檔（2026-09-16 的獨立查核記載為 CASPS 352 列、NCASP 174 列）",
+      "why_excluded": "活檔，網址固定、舊版不可回溯：2026-09-16 的查核記錄到這兩個檔在查核當天 15:58 UTC 被換版，前一版的 346／167 因此作廢，而前一版的 346 列對 342 個 LEI 在算術上本來就不可能。本篇決定完全不印名冊統計（sources[] 四個名額也因此不必給 CSV 與 MiCA 活動頁），文章並明寫不列家數的理由。"
+    },
+    {
+      "claim": "祖父條款下的業者沒有歐盟通行證（passporting），只能在其登記的會員國內提供服務；過渡期內的業者不算 MiCA 第 3(1)(15) 條定義下的 CASP，MiCA 的要求對它們不適用。",
+      "seen_where": "ESMA Q&A 2086、Q&A 2068（執委會答覆）、Q&A 2295，三頁今天各回 HTTP 200 並讀到全文",
+      "why_excluded": "都是紮實的一手來源，但 sources[] 上限 4 條已經給了兩份 2026 年聲明、對照表與 Q&A 2220。文章因此不寫「沒有通行證」與「過渡期業者不是 MiCA 定義下的 CASP」這兩點；讀者需要的同一個結論（未取得許可就不享有 MiCA 保障）改由 2026-06-23 與 2026-04-17 兩份聲明直接支撐。要補寫這兩點的話，Q&A 2068 的措辭最乾淨（The entities authorised under national law before 30 December 2024 do not benefit from a passporting regime under MiCA but can provide crypto-asset services within the jurisdiction they are registered in.），但要占一個來源名額。"
+    },
+    {
+      "claim": "MiCA 第 143 條第 6 項的簡化許可程序（適用 2024-12-30 至 2026-07-01 之間提出的申請）。",
+      "seen_where": "Interactive Single Rulebook 第 143 條頁面；ESMA Q&A 2070（執委會答覆）",
+      "why_excluded": "寫這一項就必須同時寫 Q&A 2070 的界線——僅限在 2024-12-30 當日已依國內法「取得許可」者，AML/CFT 架構下的 VASP「登記」不符合資格——否則會暗示每一家受祖父條款保護的業者都有快速通道。兩者都不在 sources[] 的四條裡，所以整個題目不寫。"
+    },
+    {
+      "claim": "MiCA 第 143 條第 3 項的條文以 EUR-Lex 的官方公報版本為來源。",
+      "seen_where": "eur-lex.europa.eu 的 CELEX:32023R1114",
+      "why_excluded": "2026-09-16 的研究與查核都記錄 EUR-Lex 對本容器回 HTTP 202 且 body 0 bytes（AWS WAF）。本次不需要動用它：第 143 條第 3 項三段全文就印在 sources[2] 的對照表 PDF 第 1 頁，Q&A 2220 也逐字引用第一、二段，兩份都是 ESMA 自己的文件。"
+    },
+    {
+      "claim": "ESMA 的臨時名冊會在 2026 年年中正式整合進 ESMA 的資訊系統。",
+      "seen_where": "ESMA MiCA 活動頁（今天 200、88,601 bytes）寫著 until mid-2026 when it will be formally integrated into ESMA's IT systems",
+      "why_excluded": "那是 2024 年寫下的前瞻句；2026 年年中已過，查核日該頁提供的仍是 CSV 下載。這一頁不在 sources[] 裡，文章也沒有描述名冊的形式或更新頻率，只寫 ESMA 要客戶去名冊上確認（這句本身出自兩份聲明）。"
+    },
+    {
+      "claim": "MiCA 過渡期結束「逼走了幾家大型交易所」「讓歐洲使用者被迫換平台」這類因果敘述，以及任何被點名的業者。",
+      "seen_where": "幣圈媒體與整合站對這則新聞的標題（僅作為找官方文件的線索）",
+      "why_excluded": "ESMA 的文件只說「部分重要業者可能未在期限前取得許可」，沒有點名任何公司、也沒有給任何數量。依 crypto.md 的一手來源白名單，媒體說法不得成為事實或來源。"
+    },
+    {
+      "claim": "2026-06-23 聲明中「MiCA 禁止 CASP 把特定服務、特別是保管，外包或委任給未取得 CASP 許可的機構」這一句。",
+      "seen_where": "sources[0]（1710 PDF 第 2 頁）",
+      "why_excluded": "這一條查證無誤，是為了字數上限（正文 1,800–3,000 字）而從正文拿掉的，不是查不到。它與一般讀者的距離最遠（是對業者的外包限制），所以優先讓位。原文：ESMA reminds that MiCA prohibits CASPs from outsourcing or delegating certain services, notably custody, to entities that are not authorised as CASPs."
+    },
+    {
+      "claim": "把 18／12／9／6 個月加在 2024-12-30 上換算出來的各國到期日。",
+      "seen_where": "由對照表的月數自行推算",
+      "why_excluded": "ESMA 沒有印出這些日期。文章只寫月數與 2026-07-01 這個上限，並明寫「把月數加上去得到的日期是讀者自己的換算」。"
+    },
+    {
+      "claim": "ESMA 的新聞列表頁上有這份 2026-06-23 公開聲明的獨立新聞稿落地頁。",
+      "seen_where": "https://www.esma.europa.eu/press-news/esma-news",
+      "why_excluded": "2026-09-16 的查核記錄該頁回 200 但零個新聞連結（前端渲染）。本次沒有再依賴它：1710 的落地管道改用 https://www.esma.europa.eu/newsletter（今天 200、57,222 bytes、伺服器端渲染）上的 <a href>，那是實際可重現的取得路徑。"
+    }
+  ],
+  "editorial_brief": "讀者是在用歐洲註冊平台、或人在歐洲、或單純想知道「有牌照」代表什麼的台灣一般使用者，不是法遵人員。角度：把 2026-07-01 講清楚——它不是新規上路日，而是一段「舊制可以繼續用」的緩衝的最後一天，而緩衝長度是各會員國自己決定的，所以同一家業者在不同國家面對的期限本來就不一樣。五個小節：一、7 月 1 日結束的是什麼（第 143 條第 3 項第一段＋2026-04-17 的屆期句＋註腳 4 的兩類機構）；二、27 國四種長度（第二、三段的選擇權＋對照表，表放在節末）；三、緩衝不等於保護（Q&A 2220 的『申請中不算延期』＋兩份聲明對保護範圍的說明，圖解放在節末）；四、ESMA 要求怎麼收攤（2026-06-23 的三件事＋2026-04-17 的計畫門檻與事前通知＋已取得許可業者的承接義務＋對 NCA 的期待）；五、使用者能做什麼（兩份聲明對客戶說的話＋台灣讀者的界線＋為什麼不印名冊家數）。四條 sources 的分工：1710 管收攤與消費者提醒，1679 管屆期日、計畫門檻、NCA 期待與消費者三步，對照表 PDF 同時承載第 143 條第 3 項條文與各國月數，Q&A 2220 管「申請中不算延期」。刻意不談：幣價與任何行情、平台比較、第 143 條第 6 項的簡化程序、passporting、名冊統計、台灣自己的制度（那是 C1）。",
+  "must_not_write": [
+    "不寫任何幣價、漲跌幅、市值、交易量、ETF 資金流、質押或獎勵報酬數字。",
+    "不寫任何交易所、錢包或託管商的名字當成「可以改用」的選項，不做費率或安全性比較、不放聯盟連結。",
+    "不寫「該不該換平台」「要不要提前出場」這類行動建議。ESMA 對客戶的話一律寫成「ESMA 請客戶／ESMA 表示」，不是本站建議。",
+    "不把 18／12／9／6 個月換算成日曆到期日。只寫月數與 2026-07-01 這個上限。",
+    "不把任何一國的長度說成「歐盟的過渡期是 X 個月」——27 國有四種長度。",
+    "不寫「歐盟過渡期結束等於冰島／列支敦斯登／挪威也同日結束」。ESMA 說的是 across the EU，EEA 三國在對照表中是分開的區塊。",
+    "不寫任何一家業者「因此退出歐洲」或「已經停止服務」——這四份文件沒有點名任何公司。",
+    "不寫 ESMA 名冊上的家數、列數或各國分布；不寫名冊的更新頻率或檔案形式（那些出自不在 sources[] 的頁面，而且是活資料）。",
+    "不把祖父條款寫成一種保障：未取得許可就不享有 MiCA 的保障，是兩份聲明自己寫的。",
+    "不寫任何沒有實際抓到的網址，特別是 EUR-Lex；條文引對照表 PDF 與 Q&A 2220。",
+    "不使用任何幣圈媒體或整合站的說法或網址。"
+  ],
+  "live_data_warnings": [
+    "最高風險項是 ESMA 的 Interim MiCA Register（CASPS.csv／NCASP.csv 等）：2026-09-16 的獨立查核實測它在查核當天 15:58 UTC 被換版，網址固定、舊版不可回溯。本篇的處置是完全不印名冊統計，文章並寫出理由。2026-09-17 重看 ESMA MiCA 活動頁（200、88,601 bytes），全頁只有一個 Last update 字串，內容是 Last update: 16 September 2026（與 09-16 相同，本週尚未再換版）。這個字串沒有寫進文章，也沒有進 verified_facts。",
+    "各國過渡期對照表 PDF 是活文件：網址路徑寫 /2024-12/，但今天取得的這一份內部 /ModDate 是 D:20260519140606+02'00'。本篇引用的 27 列／15／5／1／6 與 EEA 三國是 2026-09-17 逐列清點的結果；獨立查核同日重抓重數一次，結果完全相同。文章、摘要、表格 caption 與 FAQ 現在都寫明是「逐列清點查核當天取得的那一版」，並在正文與 caption 印出 PDF 內部修改時間 2026 年 5 月 19 日作為版本依據。定稿當天請再重抓重數一次；若清點結果變動，title 不受影響（已不帶清點數字），但正文、摘要、表格四列、FAQ 第三題與 diagram 的四格必須一起改。",
+    "兩份聲明 PDF 與 Q&A 2220 是靜態文件：1710 與 1679 的內部時間戳與報頭日期一致（2026-06-23、2026-04-17），今天的位元組數與 2026-09-16 查核記錄相同（139,018／162,253）；Q&A 2220 頁面 53,493 bytes。這三條沒有漂移跡象。",
+    "Interactive Single Rulebook 第 143 條頁面今天 57,739 bytes，2026-09-16 查核記錄為 57,730，差 9 bytes——動態頁面的正常漂移，不要拿位元組數當版本識別。",
+    "ESMA 的 /press-news/esma-news 與 /publications-data/questions-answers 列表頁是前端渲染，curl 取不到項目；不可把「抓不到項目」寫成「沒有這則消息」。單一 Q&A 頁（/publications-data/questions-answers/<id>）則是伺服器端渲染，可直接讀。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（Last update: 9 September 2026 的引文已失效）：文章完全不寫名冊版本日期，也不寫名冊統計。今天重看該頁只有一個 Last update 字串、內容為 16 September 2026，這一點只記在 live_data_warnings，沒有變成文章裡的句子。",
+    "must_fix 2、3、4、6（CASPS.csv 的 346／342／344、各國筆數、NCASP.csv 的 167 與國家清單、逐月統計）：全部不寫。本篇決定不印任何名冊統計，三個 CSV 與 MiCA 活動頁因此都不必占 sources[] 名額，也沒有任何一條 verified_facts 掛在它們上面。",
+    "must_fix 5（『2026 年年中整合進 ESMA 資訊系統』被讀成已完成）：不寫。文章沒有描述名冊的形式、更新頻率或整合進度，只寫兩份聲明要客戶去名冊上確認。該前瞻句與查核日實況記在 unverified_or_excluded。",
+    "must_fix 7（sourcing_notes 對兩個網址的來歷描述錯誤）：本紀錄的 sourcing_notes 改寫成今天逐條驗過的取得路徑——1710 來自 esma.europa.eu/newsletter 的 <a href>，1679 來自 1710 PDF 第 1 頁的連結註解，對照表來自 MiCA 活動頁的 <a href>，Q&A 2220 來自 Interactive Single Rulebook 第 143 條頁面的九個 Q&A 連結之一（並列出那九個編號）。",
+    "must_fix 8（第 3 條第 1 項第 16 款十項服務的兩處譯反）：本篇沒有列舉那十項服務，該條也不在 sources[] 裡，因此不會重蹈；記此一筆以便查核者知道是刻意不寫。",
+    "must_fix 9（引文吃掉行內註腳標記 3）：verified_facts 裡該條引文改為原樣包含註腳標記（… or solicit EU clients 3. This also applies …），並在 fact 欄註明 3 是原文的註腳標記。",
+    "must_add 1（Q&A 2220）：已採用，而且把它放進 sources[]（取代前案的 Q&A 2086），第 3 節整節建立在它上面，FAQ 也有一題。這是本篇最重要的一條補充：申請中不延長過渡期。",
+    "must_add 2（Q&A 2221）、must_add 3（Q&A 2070 與第 143 條第 6 項）、must_add 4（Q&A 2068）、must_add 5（Q&A 2085）：因 sources[] 上限 4 條而未寫。今天四頁都抓過（各 HTTP 200），內容確認無誤，但文章不引用不在 sources[] 的網址，所以整個題目不寫，理由記在 unverified_or_excluded。要補就必須換掉現有四條之一。",
+    "must_add 6（2026-04-17 對已取得許可 CASP 的期待）：已寫進第 4 節最後一段與 verified_facts。",
+    "must_add 7（收攤計畫的品質門檻與事前通知）：已寫進第 4 節第二段，事前通知單獨成句。",
+    "must_add 8（消費者警語的頭尾兩句與註腳 5）：註腳 5 寫進第 1 節第二段，警語首句與末句寫進 verified_facts，末句（較少的法律保護與更高的失去資產取用權風險）寫進第 5 節。",
+    "must_add 9（祖父條款對照表照用、孤兒單星號註腳只記不推論）：對照表的分組已在今天重新逐列清點後採用（15／5／1／6＝27，EEA 三國分開）；孤兒單星號註腳記在 verified_facts 並明寫無法歸屬、不從它與保加利亞同日的巧合推論，文章沒有寫這一則。",
+    "source_list_fix：照建議改配置。前案四條中的 Q&A 2086 換成 Q&A 2220；第 143 條第 3 項的條文改指對照表 PDF（該 PDF 第 1 頁就印著三段全文），因此不必另占一個名額給 Interactive Single Rulebook；因為不寫名冊統計，三個 CSV 與 MiCA 活動頁都不進 sources[]。四條全部在 2026-09-17 讀到 body。",
+    "跨篇共通型態 12（事件日 vs 發布日）：slug 尾碼、news_date 與事件日都是 2026-07-01（法條寫的日期），兩份聲明的日期 2026-06-23 與 2026-04-17 在正文與 callout 中分別寫出，沒有混用。",
+    "與 BRIEF 的衝突一處：corrections-crypto.md 開頭要求免責 callout 的查核日一律填 2026-09-16，但 WRITER.md 與 BRIEF 要求 checked_on 寫實際重讀的那一天。本篇今天（2026-09-17）重抓並重讀了四條 sources，因此全篇一致使用 2026-09-17。"
+  ],
+  "hero_label": "舊制緩衝的最後一天",
+  "diagram": {
+    "title": "MiCA 過渡期的四個重點",
+    "caption": "四格圖解：2024 年 12 月 30 日之前的舊制得以續做、各會員國自訂 18、12、9、6 個月的緩衝、2026 年 7 月 1 日的共同上限，以及到期沒有許可就必須停止服務。",
+    "nodes": [
+      [
+        "舊制可續做",
+        "2024 年 12 月 30 日前"
+      ],
+      [
+        "各國自訂",
+        "18、12、9、6 個月"
+      ],
+      [
+        "共同上限",
+        "2026 年 7 月 1 日"
+      ],
+      [
+        "沒許可就停",
+        "要到取得許可為止"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Grandfathering ends here",
+      "diagram": {
+        "title": "The MiCA transition in four points",
+        "caption": "Four-panel diagram: business under the old regime before December 30, 2024 could continue, each Member State set a grandfathering period of 18, 12, 9 or 6 months, July 1, 2026 is the common outer limit, and a provider without an authorisation when the period ends must stop providing services.",
+        "nodes": [
+          [
+            "Old regime goes on",
+            "Before December 30, 2024"
+          ],
+          [
+            "Each state decides",
+            "18, 12, 9 or 6 months"
+          ],
+          [
+            "Common outer limit",
+            "July 1, 2026"
+          ],
+          [
+            "No licence, stop",
+            "Until authorisation is granted"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "旧制度の猶予の最終日",
+      "diagram": {
+        "title": "MiCA移行期間の4つの要点",
+        "caption": "4コマの図解：2024年12月30日より前の旧制度による営業は継続可能、各加盟国が18・12・9・6か月の猶予を設定、2026年7月1日という共通の上限、そして期限時に許可がなければサービスを停止しなければならないこと。",
+        "nodes": [
+          [
+            "旧制度は継続可能",
+            "2024年12月30日より前"
+          ],
+          [
+            "各国が設定",
+            "18・12・9・6か月"
+          ],
+          [
+            "共通の上限",
+            "2026年7月1日"
+          ],
+          [
+            "許可なしは停止",
+            "許可を取得するまで"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "옛 제도 유예의 마지막 날",
+      "diagram": {
+        "title": "MiCA 전환기간의 네 가지 요점",
+        "caption": "네 칸 도해: 2024년 12월 30일 전 옛 제도에서 하던 영업은 계속 가능, 각 회원국이 정한 18·12·9·6개월의 유예, 2026년 7월 1일이라는 공통 상한, 그리고 기한에 인가가 없으면 서비스를 중단해야 한다는 점.",
+        "nodes": [
+          [
+            "옛 제도 계속 가능",
+            "2024년 12월 30일 전"
+          ],
+          [
+            "회원국이 정함",
+            "18·12·9·6개월"
+          ],
+          [
+            "공통 상한",
+            "2026년 7월 1일"
+          ],
+          [
+            "인가 없으면 중단",
+            "인가를 받을 때까지"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "旧制缓冲的最后一天",
+      "diagram": {
+        "title": "MiCA 过渡期的四个重点",
+        "caption": "四格图解：2024 年 12 月 30 日之前的旧制得以续做、各成员国自定 18、12、9、6 个月的缓冲、2026 年 7 月 1 日的共同上限，以及到期没有许可就必须停止服务。",
+        "nodes": [
+          [
+            "旧制可续做",
+            "2024 年 12 月 30 日前"
+          ],
+          [
+            "各国自定",
+            "18、12、9、6 个月"
+          ],
+          [
+            "共同上限",
+            "2026 年 7 月 1 日"
+          ],
+          [
+            "没许可就停",
+            "要到取得许可为止"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-17",
+    "method": "四條 sources 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（請求裡沒有任何 email、姓名或個人資料），三份 PDF 用系統 python 的 pypdf 6.16.2 抽文字：1710 200／139,018 bytes／2 頁、1679 200／162,253 bytes／3 頁、對照表 200／252,095 bytes／3 頁、Q&A 2220 200／53,496 bytes text/html（伺服器端渲染，Original question／ESMA Answer 04-07-2024／Additional Legal Reference 143(3) 都在 body 裡）。對照表的會員國欄今天逐列重數，並逐國核對長度；本紀錄 43 條 verbatim_quote 全部以「連字號前後空白與連續空白正規化」比對今天抽出來的文字，37 條完全命中、6 條在忽略所有空白後唯一命中、0 條找不到，與撰稿紀錄自述的數字一致。詞頻用詞界比對複驗：across the EU 在 1679 出現 3 次、在 1710 出現 0 次；less strict 在對照表與 Q&A 2220 各 1 次、stricter 四份皆 0 次；Iceland／Liechtenstein／Norway／EEA 只在對照表各出現 1 次；Taiwan 四份皆 0 次；passport 四份皆 0 次；European Securities and Markets Authority 四份（含 Q&A 頁原始 HTML）皆 0 次。沒有使用任何 sources[] 以外的新網址替文章補事實。",
+    "verdict": "needs_owner（三個高風險句子今天全部重驗成立：對照表 27 列與 15／5／1／6 分組逐國核對無誤、across the EU 的否定句成立、Q&A 2220 的「申請中不算延期」逐字無誤。改了 18 處，全部是歸因、語氣強度、活文件版本依據與 sources[] 涵蓋範圍，沒有任何一條事實被推翻。留給站主的是兩個名稱的取捨與定稿當天的重數。）",
+    "edits_to_the_pack": [
+      "title：「27 國四種緩衝」→「各國緩衝長度不一」（研究紀錄 title 同步）。27 與「四種」是本文自己從活文件逐列清點出來的，ESMA 沒有印出任何分組家數（BRIEF 型態 9＋型態 4）；標題不帶清點數字，正文保留清點但寫明版本依據。",
+      "description：「27 個會員國為何有四種緩衝長度」→「各會員國為何有不同的緩衝長度」（同上，178→176 字，仍在 120–200）。",
+      "第 1 段：刪掉 ESMA 的英文全名「European Securities and Markets Authority」——四份 sources（含 Q&A 頁的原始 HTML）逐一搜尋皆 0 次；改印四份文件都印著的規則英文名「Markets in Crypto-Assets Regulation」，中文名「歐洲證券及市場管理局（ESMA）」保留。",
+      "第 2 節標題：「27 個會員國，四種緩衝長度」→「緩衝長度由各會員國自己決定」。標題不該以斷言形式印出自行清點的數字；新標題直接對應第 143 條第 3 項第二段給會員國的選擇權。",
+      "第 2 節第 2 段開頭：「本文查核的這一版對照表會員國欄共 27 列，整理後只有四種長度」→「逐列清點本文查核當天取得的這一版對照表（PDF 內部修改時間 2026 年 5 月 19 日）：會員國欄共 27 列，長度是四種」。活文件要標版本時點（型態 4、8），且「只有」是型態 6 的絕對語。",
+      "表格 caption：加上版本依據「依當天取得的那一版 ESMA 第 143 條過渡期長度對照表（PDF 內部修改時間 2026 年 5 月 19 日）逐列整理」。",
+      "摘要第二句：「ESMA 的對照表上 27 個歐盟會員國分成…」→「本文逐列清點查核當天取得的那一版 ESMA 對照表，27 個歐盟會員國分成…」。原句把本文的清點寫成 ESMA 印出來的分組。",
+      "FAQ 第三題：「ESMA 的對照表把 27 個歐盟會員國分成四種緩衝長度」→「本文逐列清點查核當天取得的那一版 ESMA 對照表，27 個歐盟會員國共有四種緩衝長度」。同上。",
+      "第 3 節第 2 段：「唯一的例外是…狹義反向招攬」→「例外是…狹義反向招攬」。BRIEF 型態 6 禁止「唯一」；1710 註腳 3 的原文是 Except where services are strictly provided at the client's own exclusive initiative under the narrow reverse solicitation regime，1679 的措辭是 the narrow exception of reverse solicitation——都只說「狹義例外」，沒有說它是唯一的例外。",
+      "第 4 節第 2 段：「4 月 17 日的聲明補上收攤計畫的門檻」→「補上 ESMA 對收攤計畫的期待」。原文的框架是 ESMA expects that:，三項條件的動詞是 enable／should，不是硬性門檻。",
+      "第 4 節第 3 段：「期待它們積極管理既有客戶的移轉，在 7 月 1 日之前承接既有的歐盟客戶」→「期待它們在 7 月 1 日之前積極管理既有客戶的移轉，並在過渡期結束之前承接既有的歐盟客戶」。原文兩句的時點不同：migration 掛 ahead of 1 July 2026，onboard 掛 before the end of the transitional period，而本篇整篇的論點正是各國過渡期結束日不同，不能把後者也寫成 7 月 1 日。",
+      "第 4 節第 3 段：「6 月 23 日的聲明要求收攤過程仍須遵守…」→「表示，收攤安排仍應遵守…」。原文是 Wind-down arrangements should be implemented in compliance with…，CASPs should maintain…，兩處都是 should；「要求…須」把 should 譯成了強制。順手把同句後半的「並表示」改成分號，避免一句兩個「並表示」。",
+      "第 5 節第 2 段：「這四份文件講的都是「歐盟客戶」」→「兩份聲明講的都是「歐盟客戶」」，後句的依據改寫成「以這四份文件查核到…」。EU client(s) 只出現在 1710（4 次）與 1679（6 次）；對照表與 Q&A 2220 完全沒有這個詞，原句對四份中的兩份不成立。",
+      "第 5 節第 2 段末：「而不是看品牌或網站語系」→「而不是看品牌」。1679 說的是 they may operate under the same brand across multiple companies or countries 與 Review your contract carefully，沒有提到網站語系；那是掛在「照 ESMA 的說法」後面的自行延伸。",
+      "摘要第四句：「ESMA 要求未取得許可的業者立即停止承接新的歐盟客戶，並在實施收攤計畫前先通知既有客戶」→「…，並表示業者應在實施收攤計畫前先通知既有客戶」。前半出自 1710 的 unauthorised CASPs must:，後半出自 1679 的 CASPs should provide existing clients with prior notice，兩個強度不同，不能共用一個「要求」。",
+      "FAQ 第五題：「4 月 17 日的聲明要求服務商在實施收攤計畫之前先通知既有客戶」→「表示服務商應在…」。同上（should）。同題後半「6 月 23 日的聲明要求清楚、及時且重複地與客戶溝通」不動——那一項在原文是 unauthorised CASPs must 底下的第三點。",
+      "FAQ 第四題：「4 月 17 日的聲明並要求在投入資金或移轉之前先確認」→「並請讀者在投入資金或移轉之前先確認」。那句在原文是 Warning for Consumers 底下對消費者說的 Check that…before you invest or transfer funds，ESMA 不會「要求」消費者。",
+      "FAQ 第七題：「這四份文件講的都是歐盟客戶」→「兩份 ESMA 聲明講的都是歐盟客戶」，依據改寫成「以這四份文件查核到…」。與第 5 節第 2 段同一個理由。"
+    ],
+    "checked_and_correct": [
+      "對照表逐列重數與撰稿紀錄完全一致：會員國欄 27 列，18 個月 15 國（比利時、保加利亞、捷克、丹麥、愛沙尼亞、希臘、西班牙、法國、克羅埃西亞、義大利、賽普勒斯、盧森堡、馬爾他、葡萄牙、羅馬尼亞）、12 個月 5 國（德國、愛爾蘭、立陶宛、奧地利、斯洛伐克）、9 個月僅瑞典、6 個月 6 國（拉脫維亞、匈牙利、荷蘭、波蘭、斯洛維尼亞、芬蘭），15+5+1+6=27；EEA 區塊冰島 18、列支敦斯登 18、挪威 12。pypdf 的抽取順序會把標題與條文文字框插在會員國欄中間（希臘與法國之間），逐列重數時要把那一段跳過，不能當成表格列。",
+      "第 143 條第 3 項第二段的方向沒有譯反：對照表 PDF 第 1 頁與 Q&A 2220 引用的原文都是 is less strict than this Regulation，四份文件裡 stricter 出現 0 次。文章寫的「認為其國內監理架構寬於本規則時」正確——less strict 就是較寬鬆。第一段的「以較早者為準」對 whichever is sooner、第三段的「2024 年 6 月 30 日前通知執委會與 ESMA」對 By 30 June 2024 … notify to the Commission and ESMA，逐句無誤。",
+      "本篇唯一的關鍵否定句成立：across the EU 在 1679 出現 3 次、在 1710 出現 0 次；Iceland、Liechtenstein、Norway、EEA 四個字串只在對照表各出現 1 次，而對照表只印月數。四份文件裡確實找不到這三國過渡期結束日的說明，句型也已限縮成「以這四份文件查核到 2026 年 9 月 17 日，未見」。European Economic Area 這個全稱四份皆 0 次（來源只印 EEA）。",
+      "Q&A 2220 逐字無誤：頁面日期 21/06/2024、ESMA Answer 04-07-2024、Level 1 Regulation MiCA、Additional Legal Reference 143(3)、Subject Matter Entities not authorised as CASPs by the end of the transition period；關鍵句 they must cease providing crypto-asset services until they are granted authorisation as a CASP under MiCA 與文章的「必須停止提供加密資產服務，直到其依 MiCA 取得許可為止」一致，第二段的 should therefore apply … as early as possible 也對得上（文章寫「應盡早提出申請」）。",
+      "1710 的三項收攤要求對回原文無誤，而且強度正確：三項掛在 unauthorised CASPs must 底下（文章寫「必須做的三件事」），而第三項裡的截止日一句原文是 CASPs' communications should include a deadline by which any residual positions would be closed automatically（文章寫「內容應包含」，沒有把 should 寫成必須，也沒有說 ESMA 訂了一個統一的日期）。Custody … can only continue for the period strictly necessary 也照留了「只能」。",
+      "1679 的收攤計畫三項門檻（orderly exit without causing undue economic harm／CASPs should provide existing clients with prior notice／Plans should be operational, credible, and immediately executable）、對已許可業者的期待、對 NCA 的三點期待（含 where appropriate 譯成「於適當時」）、註腳 4 的兩類機構、註腳 5 的 irrespective whether the MiCA has been implemented、消費者三步與末句 may mean less legal protection，逐句對回原文無誤。1710 的 NCAs may, where necessary 也照留成「必要時得」。",
+      "反向招攬那句的限定照留：strictly provided at the client's own exclusive initiative under the narrow reverse solicitation regime 對「嚴格在客戶自身完全主動之下提供服務的狹義反向招攬」，business-to-business context 對「企業對企業同樣適用」。",
+      "名冊的界線守住了：全文沒有任何名冊列數、版本日期、Last update 字串或各國家數，第 2 段與第一個 callout 都寫明為什麼不寫。四份文件裡也沒有任何業者被點名（Taiwan 0 次、passport 0 次）。",
+      "界線檢查：全文沒有幣價、漲跌幅、市值、交易量、資金流或報酬數字（四份來源本身也沒有），沒有把任何資產、交易所、錢包或發行商寫成選項，ESMA 對客戶的話一律寫成「ESMA 請／ESMA 表示」而不是本站建議；沒有任何提案或草案被寫成已生效的規則（四份都是已發布的聲明、清單與官方問答，沒有草案）。",
+      "免責 callout 的 tone、title、text 與 crypto.md 的樣板逐字相同（174 字元全等），含「不是投資建議」六個字，查核日 2026-09-17；本文另有一個提醒 callout，共兩個，符合幣圈規定。",
+      "checked_on 2026-09-17 在五處一致（四條 source、研究紀錄、第 2 段、表格 caption、免責 callout），且是撰稿者真的讀到來源的那一天，本代理沒有改它。四個日期（2026-07-01 事件日／2026-04-17／2026-06-23 兩份聲明日／2024-12-30 分界）在正文與 callout 中分開寫，沒有混用。",
+      "研究紀錄 43 條 verbatim_quote 的 url 全部在 sources[] 裡，引文全部在今天抽出來的原文裡找得到（37 條正規化後完全命中、6 條忽略空白後唯一命中，差異全是 pypdf 在連字號與字中插空白的抽取雜訊，紀錄已自行列出那 6 條）。"
+    ],
+    "left_for_the_owner": [
+      "定稿當天要再重數一次對照表。它是活文件：網址路徑寫 /2024-12/，但今天取得的這一份 PDF 內部修改時間是 2026 年 5 月 19 日。清點結果若變動，title 與 description 不受影響（已不帶清點數字），但正文第 2 節第 2 段、摘要第二句、表格四列與 caption、FAQ 第三題、以及研究紀錄 diagram 的第二格「18、12、9、6 個月」必須一起改，圖解 SVG 上的數字也要跟著重畫。",
+      "「歐洲證券及市場管理局」這個中文名稱，以及「歐洲經濟區（EEA）」這個全稱，都不印在四份 sources 上（ESMA 的英文全名四份皆 0 次，已從文章移除；來源只印縮寫 EEA）。本代理保留了這兩個台灣慣用的機關／區域中文名，理由是它們不是事實主張而是譯名；若站主希望嚴格到連譯名都要指得到來源，可改成只寫「ESMA」與「EEA 國家」。",
+      "跨篇用語不一致（不影響本篇正確性，是編輯取捨）：本篇寫「歐盟加密資產市場規則（Markets in Crypto-Assets Regulation，MiCA）」與「第 143 條第 3 項」，同批 crypto-news-eba-psd2-mica-20260212 寫「Regulation (EU) 2023/1114（MiCA）」與「第 143(3) 條」。四份來源都印 Markets in Crypto-Assets Regulation，其中 1679 與對照表另印 (EU) 2023/1114，兩種寫法都有依據。",
+      "zh-TW 段落字數現在是 2,961／3,000，只剩 39 字。unverified_or_excluded 裡「MiCA 禁止把保管外包給未取得許可者」那一條（1710 第 2 頁，查證無誤、只是為字數讓位）若要補進正文，必須從別處刪等量的字，而且不可以刪但書或限定詞來湊字數。",
+      "圖解 SVG 與 hero 還沒繪製。diagram 的四格與 hero_label 本次未改（今天重數的結果與紀錄相同），但畫出來之後 check_article.py --assets 會用 missing_diagram_numbers 再驗一次圖上的數字是否都在正文裡。"
+    ]
+  }
+}

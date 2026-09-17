@@ -1,0 +1,1195 @@
+{
+  "slug": "crypto-news-jfsa-cybersecurity-20260723",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "finance",
+    "crypto"
+  ],
+  "valid_until": null,
+  "news_date": "2026-07-23",
+  "featured": false,
+  "display_order": 210,
+  "locales": {
+    "zh-TW": {
+      "title": "日本金融廳公布加密資產資安研究報告：有一類外流不是金鑰被偷，而是簽章前的系統被竄改",
+      "description": "2026 年 7 月 23 日日本金融廳在官網公布委外研究報告，封面日期是 6 月 30 日，官方同時明寫報告不代表本廳見解。本文依金融廳的刊登頁、報告英文版，以及金融廳自己的取組方針，說明報告把哪一類資產外流重新歸因到簽章前的系統，這次公布沒有新增什麼義務，以及四個日期為什麼不能互相代換。",
+      "hero": {
+        "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/hero.jpg",
+        "alt": "原創插圖：左邊三個相連的方塊代表一連串系統，最後一個方塊上方有警示三角形；中間是一面帶鎖頭的盾牌，右邊是一把鑰匙與一份文件",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 7 月 23 日，日本金融廳（金融庁, Financial Services Agency）在官網的創新政策專頁上，公布了一份關於加密資產相關業者資安課題與對策的研究報告。報告封面標示的日期是 2026 年 6 月 30 日，署名作者是合同会社デロイトトーマツ（Deloitte Tohmatsu LLC）。同一天，金融廳也在另一則公布頁補登了自己在 2026 年 4 月 3 日訂定的資安取組方針的英文版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是這個政策專頁的日文版、研究報告英文版 PDF、金融廳 4 月 3 日那則公布頁，以及該頁別紙三的英文版取組方針。一件事要先講清楚：這份報告不是金融廳的見解。金融廳在刊登頁明寫「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」，報告第二頁也寫內容不代表金融廳的官方見解、錯誤由承包商自負。所以本文寫報告時一律用「報告指出」，只有取組方針才寫「金融廳表示」；本站沒有實測，也不提供投資或法律意見。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "日本金融廳在 2026 年 7 月 23 日於官網公布一份委外研究報告，封面日期是 2026 年 6 月 30 日，作者是承包商合同会社デロイトトーマツ，金融廳在刊登頁與報告內都明寫報告不代表本廳的見解。",
+            "報告指出，它分析的近期事件裡有一類並未竊取簽章金鑰本身，而是竄改使用者介面、API、CI/CD、未簽章交易的產生邏輯與正式環境程式等元件，藉由濫用合法的簽章流程造成資金流出。",
+            "金融廳自己的取組方針則寫，在這種情況下光靠使用冷錢包無法確保加密資產的安全保管，必須強化包含外包商在內的整條供應鏈的資安管理體制。",
+            "這次公布沒有新增法定義務也沒有罰則，取組方針對監督指引只寫到檢討與設法提高水準；但它訂了有日期的期待，自 2026 事務年度起要求全部業者做資安自我評估，並在 2026 年內對數家業者實施威脅導向滲透測試。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "7 月 23 日公布了什麼：一份委外研究報告"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告是掛在政策專頁的最新情報清單裡公布的，2026 年的第一項就是它，底下同時提供日文報告、英文報告與日文概要版三個 PDF，連結下方緊接著那行免責語。頁面在本文查核日標示「令和８年７月23日更新」，也就是 2026 年 7 月 23 日；那是頁面的更新日，頁面再更新就會換一個日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告自己的免責也值得讀。報告第二頁寫，任何錯誤由承包商自負，個案研究是依公開資料為研究目的整理，不表示對個別案件的責任歸屬或法律評價；同一頁的致謝還寫到金融廳的官員曾提供建議與意見——這恰好說明委外研究與官方見解的界線在哪裡。金融廳自己署名的文件是取組方針，文首寫著 April 3, 2026 與 Financial Services Agency。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四個日期分開看：草案、訂定、封面、公布"
+        },
+        {
+          "type": "paragraph",
+          "text": "取組方針不是 7 月 23 日才有的。金融廳 2026 年 4 月 3 日那則公布頁寫，方針草案在令和８年２月10日到令和８年３月11日之間徵詢意見，收到「計18件のコメント」，也就是 18 件意見；金融廳依意見做必要的增補與修正後才定案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁頁首標示「令和８年４月３日」與「令和８年７月23日更新」，並在別紙一、別紙二之後寫著「令和８年７月23日、以下の英語版を公表しました。」，接著列出別紙三與別紙四。所以取組方針的訂定日是 2026 年 4 月 3 日，英文版公布日才是 2026 年 7 月 23 日，而報告封面的 2026 年 6 月 30 日是報告本身的日期。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "日期",
+            "這一天的動作",
+            "出處"
+          ],
+          "rows": [
+            [
+              "2026-02-10 至 03-11",
+              "方針草案徵詢意見，收到 18 件",
+              "金融廳 4 月 3 日公布頁"
+            ],
+            [
+              "2026-04-03",
+              "金融廳訂定取組方針（別紙一）",
+              "同一頁頁首標示的日期"
+            ],
+            [
+              "2026-06-30",
+              "研究報告封面標示的日期",
+              "報告 PDF 封面"
+            ],
+            [
+              "2026-07-23",
+              "研究報告公布，方針英文版補登",
+              "政策專頁更新日、4 月 3 日公布頁"
+            ]
+          ],
+          "caption": "2026 年 9 月 17 日查核；日期依金融廳頁面與報告封面整理，四個日期不可互相代換。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "報告怎麼重新解釋近年的資產外流"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告的研究發現摘要指出，近年針對加密資產相關業者的攻擊持續發生且規模擴大，攻擊路徑逐年更多樣、更精密、更有組織。報告寫，攻擊者愈來愈不只針對系統本身，也針對營運基礎設施，它舉的例子是簽章金鑰、錢包、存取控制、CI/CD、雲端 IAM／KMS 與簽章服務。簽章金鑰就是取組方針註一定義的秘密金鑰，用來證明交易由有正當權限者所為。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最關鍵的一句緊接在後。報告說，分析近期事件後確認有一類攻擊並未竊取簽章金鑰本身，而是竄改了使用者介面、API、CI/CD、未簽章交易的產生邏輯與正式環境程式等元件，藉由濫用合法的簽章流程造成資金流出。報告的個案教訓進一步寫，這些事件的起點是以社交工程或釣魚攻破開發者權限、或投放惡意程式；介面與 API 被竄改之後，簽署人難以察覺交易是偽造的，於是照著簽了下去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告也提出一個結構上的判斷：現實世界的加密資產相關服務並不是在純粹去中心化的模式下運作，因此風險評估必須涵蓋鏈上程式碼與協議以外的鏈下元件、營運控制、外部依賴與治理。報告的個案研究從 (1) 編到 (10)，依報告自述，它分析的是含 DeFi 在內的加密資產相關服務近期案例，聚焦造成重大損失的主要攻擊手法，舉的例子是第三方遭攻破、智慧合約弱點、閃電貸攻擊與惡意程式攻擊。本文不點名個案的業者與協議，報告引用的損失金額與件數統計也全部來自外部機構，本文不寫。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/diagram-1.svg",
+          "alt": "四格圖解：攻破開發者權限、竄改簽章前的介面與程式、由有正當權限的人簽下、資金流出",
+          "width": 1600,
+          "height": 900,
+          "caption": "報告指出的路徑：先攻破開發者或外包商的權限，再竄改簽章前的介面與程式，讓有正當權限的人簽下被竄改的交易，資金因此流出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "金融廳自己的取組方針：光靠冷錢包不夠"
+        },
+        {
+          "type": "paragraph",
+          "text": "取組方針的第一章寫，近年涉及加密資產外流的案件不一定是簽章金鑰遭竊造成的，而是包括社交工程攻擊與入侵外包商等間接攻擊在內的各種巧妙手法愈來愈明顯，也有攻擊者花時間事前準備而未被業者察覺的案例。在這種情況下，這份文件寫下關鍵的一句：光靠使用冷錢包無法確保加密資產的安全保管，必須強化包含外包商在內的整條供應鏈的資安管理體制。方針也寫到，日本曾實際發生使用者寄存的加密資產外流事案；在談重點監理的段落它另寫，鑑於過去發生過大規模的外流，金融廳一直密集監控業者的外流風險對策與系統風險管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方針把政策架構分成自助、共助、公助。自助方面，金融廳表示自 2026 事務年度（文件寫 Program Year 2026）起，將要求全部加密資產交換業者（日文『暗号資産交換業者』）實施原本要求其他金融業者做的資安自我評估（CSSA），或視需要與業者對話；註十寫 CSSA 是用與金融業資安指引一致的問題自評，讓業者看到自己在業界中的位置、藉此自主改善。金融廳也會檢討提高監督指引要求的資安水準，方向包括人力配置、外部稽核與外包商要件。公助方面，金融廳會持續要求業者參加業界橫向演習 Delta Wall，目標三年內全部業者參加，並在 2026 年內對數家業者的實際運作環境實施威脅導向滲透測試（TLPT）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共助方面，方針本文只寫「自律規範機構」，註十一才連向 JVCEA 的組織圖；金融廳也鼓勵業者參加 JPCrypto-ISAC 這類資訊共享機構。但這些都不是新增的法定義務：取組方針沒有罰則，對監督指引只寫到檢討與設法提高水準，沒有列出修正條文也沒有寫生效日；三年內全部參加沒有寫起算基準日；TLPT 沒有寫是哪幾家，只寫結果個別回饋受測業者、共通課題回饋業界。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這件事跟台灣讀者有什麼關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "先畫界線。取組方針的對象是日本的加密資產交換業者，兩份文件都沒有提到台灣，也沒有說日本的規定適用於台灣的使用者或平台。能帶走的是問題的形狀。報告寫，業者的錢包系統若使用第三方服務，即使沒有把簽章金鑰交給第三方，確認該第三方已適當建立並落實防範網路攻擊、正式環境存取管理與程式變更管理等控制仍然重要；報告另外寫，外部服務商被攻破可能外溢到業者自家服務或使用者資產。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一層是自持錢包的人每天在做的事。報告有一頁專門談簽章當下的確認與「盲簽」：複雜的智慧合約交易，錢包可能無法以人類看得懂的格式呈現細節，硬體錢包又受螢幕大小與介面設計限制。報告因此寫給簽署人一句話：簽署涉及智慧合約的複雜交易時，簽署人應該理解的不只是收款地址與轉帳金額，還有這筆交易會執行什麼操作、授予什麼權限、授予給誰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告記載，2026 年 5 月 12 日以太坊基金會與錢包開發者、資安公司等生態系參與者發表了 Clear Signing，核心技術 ERC-7730 是以 JSON 為基礎的描述檔標準；但報告同時提醒，它的效果取決於顯示的資訊是否正確、描述檔是否可信與各家錢包採用的模型，描述檔錯誤或發布管道被入侵都可能造成誤導顯示，不能當成無條件安全。還有一個邊界：這份報告是寫給業者與監理機關的，本文查核到的版本沒有給一般使用者的自保清單。以下是編輯設計的例子，不是官方建議：手機錢包跳出一筆看不懂的授權時，可以先問這筆交易要我授權什麼、授權給誰。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這份報告是日本金融廳的立場嗎？",
+              "answer": "不是。金融廳在刊登報告的政策專頁上明寫「上述研究報告不代表本廳的見解、意見等」，報告第二頁的免責聲明也寫本報告的內容不代表金融廳的官方見解，並說報告中的任何錯誤由承包商自負。同一頁的致謝同時提到，金融廳的官員曾對報告提供建議與意見。要引用金融廳自己的立場，該看的是金融廳在 2026 年 4 月 3 日訂定、7 月 23 日補登英文版的取組方針，那才是金融廳署名的文件。"
+            },
+            {
+              "question": "這次公布有沒有新增業者要遵守的義務？",
+              "answer": "沒有新增法定義務，也沒有罰則。取組方針寫的是金融廳會檢討提高監督指引對加密資產交換業者要求的資安水準，用的字是檢討與設法提高，文件本身沒有列出修正條文，也沒有寫生效日。不過它確實寫下了有日期的期待：自 2026 事務年度起要求全部業者做資安自我評估、2026 年內對數家業者實施威脅導向滲透測試，以及業界橫向演習目標三年內全部業者參加。所以說「沒有任何時程」並不準確，準確的說法是沒有新的法律義務與罰則。"
+            },
+            {
+              "question": "報告說錢是怎麼被弄走的？",
+              "answer": "報告指出，它分析的近期事件裡有一類並未竊取簽章金鑰本身，而是竄改使用者介面、API、CI/CD、未簽章交易的產生邏輯與正式環境程式等元件，藉由濫用合法的簽章流程造成資金流出。報告的個案教訓寫，這些事件的起點是以社交工程或釣魚攻破開發者權限、或投放惡意程式；介面與 API 被竄改之後，簽署人難以察覺交易是偽造的而照著簽了。本文不寫更細的手法，也不寫入侵跡象。"
+            },
+            {
+              "question": "什麼是盲簽？",
+              "answer": "報告在個案教訓的其中一頁說明：像 DeFi 協議或錢包合約更新這類複雜的智慧合約交易，錢包可能無法以人類看得懂的格式呈現交易細節，calldata 或 EIP-712 訊息可能只顯示成十六進位字串或難以判讀的資料；硬體錢包又受螢幕大小與介面設計的限制，更難清楚呈現複雜的交易細節。報告因此寫，簽署涉及智慧合約的複雜交易時，簽署人應該理解的不只是收款地址與轉帳金額，還有這筆交易會執行什麼操作、授予什麼權限、授予給誰。"
+            },
+            {
+              "question": "有了 Clear Signing，錢包顯示的東西就可以信了嗎？",
+              "answer": "報告明確說不行。報告記載 2026 年 5 月 12 日以太坊基金會與錢包開發者、資安公司等生態系參與者發表 Clear Signing，核心技術 ERC-7730 是以 JSON 為基礎的描述檔標準，目標是在簽章當下做到看到什麼就簽什麼。但報告同時寫，它的效果取決於顯示的資訊是否正確、描述檔是否可信，以及各家錢包採用的模型；描述檔錯誤或發布管道被入侵都可能造成誤導顯示，所以不能把它顯示的資訊當成無條件安全，必須搭配其他措施一起用。報告也沒有說哪些錢包已經支援、什麼時候會普及。"
+            },
+            {
+              "question": "報告有給一般使用者的自保清單嗎？",
+              "answer": "沒有。報告的對象是加密資產相關業者與監理機關，建議寫的是業者的控制項目；報告從既有規範的比對中抽出五個優先領域，分別是強化第三方風險管理、防止惡意程式碼植入或程式竄改、防止加密資產遭未授權移轉、針對智慧合約與 DeFi 的措施，以及善用外部評估。本文查核到的版本裡沒有「使用者應該怎麼做」的章節，所以不要把給業者的控制清單讀成金融廳對使用者的操作指示。"
+            },
+            {
+              "question": "日本的這些要求管得到台灣的平台或我的帳號嗎？",
+              "answer": "這兩份文件都沒有這樣寫。取組方針的對象是日本的加密資產交換業者，報告與取組方針都沒有提到台灣，也沒有說日本的規定適用於台灣的使用者或平台。台灣自己的制度是另一件事，本文結尾的第二個連結有一篇專門談。"
+            },
+            {
+              "question": "我要怎麼自己去看原始文件？",
+              "answer": "研究報告掛在金融廳網站那個推動創新的政策專頁的最新情報清單裡，底下同時提供日文報告、英文報告與日文概要版三個 PDF，免責語就印在連結下方。金融廳自己的取組方針在 2026 年 4 月 3 日那則公布頁上，別紙一是日文全文、別紙二是日文概要，別紙三與別紙四是 2026 年 7 月 23 日補登的英文版。兩個頁面標示的更新日期都會隨著頁面再次更新而變動，看的時候要一併記下自己讀到的日期。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "哪一句話出自哪一份文件",
+          "text": "這一篇有兩份文件，說話的人不一樣。研究報告「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」是金融廳委外的研究成果，作者是承包商合同会社デロイトトーマツ，金融廳在刊登頁與報告內都明寫它不代表本廳見解，所以本文寫成「報告指出」或「報告建議」。取組方針「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針」是金融廳自己署名的文件，本文才寫成「金融廳表示」。日期也要分開看：取組方針訂定日 2026 年 4 月 3 日、報告封面日期 2026 年 6 月 30 日、公布日 2026 年 7 月 23 日是三個不同的日期，不要互相代換。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇是資訊整理，不是投資建議",
+          "text": "本文說明的是法規、技術與產業運作，不推薦任何加密資產、交易所、錢包或發行方，也不是投資建議，不含價格、漲跌幅與買賣時機。監理規定、登記狀態、上線時程與服務條件依主管機關與業者當期公告為準，本文查核日為 2026-09-17。加密資產價格波動大、可能全額損失，且部分服務不受存款保險或投資人保護制度保障；實際適用請以官方公告或合格專業人員的意見為準。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年加密貨幣新聞總整理：法規、技術與產業的重點",
+          "url": "https://mokaair.com/zh-TW/life/crypto-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "虛擬資產服務法三讀通過：七種服務商、穩定幣許可與仍未定的施行日",
+          "url": "https://mokaair.com/zh-TW/life/crypto-news-taiwan-vasp-act-20260630"
+        }
+      ],
+      "sources": [
+        {
+          "title": "金融庁：イノベーション推進に向けた金融庁の取組み（研究報告刊登頁，日文版）",
+          "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses（研究報告英文版，封面日期 2026 年 6 月 30 日）",
+          "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "金融庁：「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services（取組方針英文版，別紙三）",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "Japan's FSA Publishes a Crypto-Asset Cybersecurity Research Paper: One Class of Outflow Was Not Key Theft but Tampering Before Signing",
+      "description": "On July 23, 2026 Japan's Financial Services Agency published a commissioned research paper. The cover is dated June 30, 2026, and the FSA states plainly that the paper does not represent its own views. Working from the FSA's publication page, the paper's English version and its own policy approaches, this article explains which class of outflow the paper re-attributes to the systems before signing, what obligations this publication does not add, and why the four dates cannot be swapped.",
+      "hero": {
+        "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/hero-en.jpg",
+        "alt": "Original illustration: three linked blocks stand for a chain of systems, a warning triangle above the last one; in the middle a shield with a padlock; on the right a key and a document",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On July 23, 2026, Japan's Financial Services Agency (金融庁, the FSA) published a research paper on cybersecurity issues and countermeasures in crypto-asset-related businesses, on the innovation policy page of its website. The date printed on the paper's cover is June 30, 2026, and the author named on it is Deloitte Tohmatsu LLC (合同会社デロイトトーマツ). On the same day, on a separate announcement page, the FSA also added the English version of the cybersecurity policy approaches it had itself set out on April 3, 2026."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 17, 2026, against the Japanese version of that policy page, the English PDF of the research paper, the FSA's announcement page of April 3, and the English policy approaches filed as Annex 3 on that page. One thing has to be settled first: this paper is not the FSA's view. On the publication page the FSA states plainly 「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」 — the research paper above does not represent the views or opinions of the agency — and page 2 of the paper says its contents do not represent the official views of the Financial Services Agency and that any errors in it are the sole responsibility of the contractor. So this article writes “the report says” throughout for the paper, and “the FSA says” only for the policy approaches; we have tested nothing ourselves, and this is not investment or legal advice."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On July 23, 2026 Japan's FSA published a commissioned research paper on its website; the cover is dated June 30, 2026, the author is the contractor Deloitte Tohmatsu LLC, and both the publication page and the paper state plainly that it does not represent the agency's views.",
+            "The report says one class of the recent incidents it analyzed did not involve the theft of signing keys themselves but tampered with components — the UI, APIs, CI/CD, the unsigned transaction generation logic, production programs — causing fund outflows by abusing legitimate signing processes.",
+            "The FSA's own policy approaches say that in this situation the safe management of cryptoassets cannot be ensured only by the use of cold wallets, and that the cybersecurity management systems of the entire supply chain, including outsourcees, have to be strengthened.",
+            "This publication adds no statutory obligation and no penalty; on the Guidelines for Supervision the document only speaks of revising them and raising the levels. It does set dated expectations: the self-assessment for all providers from Program Year 2026, and TLPT at several providers within 2026."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What was published on July 23: one commissioned research paper"
+        },
+        {
+          "type": "paragraph",
+          "text": "The paper was published in the latest-information list on that policy page, as the first item under 2026, with three PDFs beneath it — the Japanese paper, the English paper and a Japanese summary — and the disclaimer line printed immediately below the links. On the day this article was checked the page was marked 「令和８年７月23日更新」, that is, updated July 23, 2026. That is the page's update date: update the page again and the date changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The paper's own disclaimer is worth reading too. Page 2 says any errors in the report are the sole responsibility of the contractor, and that its case studies were compiled for research purposes from information published about each case and do not indicate the attribution of responsibility or any legal assessment. The acknowledgments on the same page also record advice and comments from officials of the Financial Services Agency — which is exactly where the line between commissioned research and an official view sits. The document the FSA signs itself is the policy approaches, and it opens with the lines April 3, 2026 and Financial Services Agency."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Four dates, kept apart: draft, adoption, cover, publication"
+        },
+        {
+          "type": "paragraph",
+          "text": "The policy approaches did not appear on July 23. The FSA's announcement page of April 3, 2026 says the draft was put out for public comment from 令和８年２月10日 to 令和８年３月11日, that is from February 10 to March 11, 2026, and that 「計18件のコメント」, 18 comments in all, were received; the FSA then made the necessary additions and corrections in the light of those comments before settling the document."
+        },
+        {
+          "type": "paragraph",
+          "text": "The head of that same page carries 「令和８年４月３日」 and 「令和８年７月23日更新」, and after Annex 1 and Annex 2 it says 「令和８年７月23日、以下の英語版を公表しました。」 — on July 23, 2026 the following English versions were published — and then lists Annex 3 and Annex 4. So the policy approaches were set out on April 3, 2026, July 23, 2026 is the date the English version was published, and the June 30, 2026 on the paper's cover is the date of the paper itself."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Date",
+            "What happened that day",
+            "Where it is printed"
+          ],
+          "rows": [
+            [
+              "February 10 to March 11, 2026",
+              "Public comment on the draft; 18 comments received",
+              "The FSA's announcement page of April 3"
+            ],
+            [
+              "April 3, 2026",
+              "The FSA sets out the policy approaches (Annex 1)",
+              "The date at the head of that same page"
+            ],
+            [
+              "June 30, 2026",
+              "The date printed on the research paper's cover",
+              "The cover of the paper's PDF"
+            ],
+            [
+              "July 23, 2026",
+              "The paper is published; the English policy approaches are added",
+              "The policy page's update date; the April 3 announcement page"
+            ]
+          ],
+          "caption": "Checked on September 17, 2026. The dates are taken from the FSA's pages and the paper's cover; the four cannot be swapped for one another."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How the report re-reads the asset outflows of recent years"
+        },
+        {
+          "type": "paragraph",
+          "text": "The paper's summary of findings says attacks on crypto-asset-related businesses have continued and grown in scale in recent years, and that the routes taken have become more varied, more sophisticated and more organized year by year. Attackers, the report says, are increasingly targeting not only systems themselves but also operational infrastructure, and the examples it gives are signing keys, wallets, access controls, CI/CD, cloud IAM/KMS and signing services. A signing key is the secret key defined in note 1 of the policy approaches: the key used for proving that a transaction was conducted by a person with the legitimate authority."
+        },
+        {
+          "type": "paragraph",
+          "text": "The most important sentence comes straight after it. Having analyzed recent incidents, the report says, it confirmed attacks that did not involve the theft of signing keys themselves, but instead tampered with components — the user interface, APIs, CI/CD, unsigned transaction generation logic and production programs — causing fund outflows by abusing legitimate signing processes. The lessons it draws from the case studies go on to say that the starting point of these incidents is the compromise of developer privileges through social engineering or phishing, or the deployment of malware, and that tampering with UIs and APIs made it difficult for signers to notice that the transaction is fraudulent, and thus they proceeded with signing."
+        },
+        {
+          "type": "paragraph",
+          "text": "The report also makes a structural judgement: crypto-asset-related services in the real world do not operate in a purely decentralized model, so a risk assessment has to encompass not only on-chain code and protocols but also off-chain components, operational controls, external dependencies and governance. Its case studies are numbered (1) to (10); by the report's own account it analyzed recent cases of crypto-asset-related services including DeFi, focusing on major attack methods that resulted in large losses, and the examples it gives are third-party compromises, smart contract vulnerabilities, flash loan attacks and malware attacks. This article does not name the businesses or protocols in those cases, and the loss amounts and incident counts the report cites all come from outside organisations, so they are not written here either."
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/diagram-1-en.svg",
+          "alt": "Four panels: developer privileges compromised; the interfaces and programs before signing are tampered with; someone with legitimate authority signs; funds flow out",
+          "width": 1600,
+          "height": 900,
+          "caption": "The route the report describes: first the privileges of a developer or an outsourcee are compromised, then the interfaces and programs before signing are tampered with, so that someone with legitimate authority signs the tampered transaction and the funds flow out.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The FSA's own policy approaches: cold wallets alone are not enough"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chapter 1 of the policy approaches says recent cases involving the outflow of cryptoassets are not necessarily caused by the theft of signing keys, and that various sophisticated methods have become prominent instead, including indirect attacks such as social engineering and intrusions into outsourcees, with cases where attackers spent time preparing in advance without the provider noticing. Against that background the document writes its key sentence: the safe management of cryptoassets cannot be ensured only by the use of cold wallets; rather, it is definitely necessary to strengthen the cybersecurity management systems of the entire supply chain, including outsourcees. The policy approaches also record that a case of an outflow of cryptoassets deposited by users had actually occurred in Japan, and in the passage on focused supervision they say that, in light of the large-scale outflow of cryptoassets in the past, the FSA has intensively monitored countermeasures against outflow risks and system risk management at individual providers."
+        },
+        {
+          "type": "paragraph",
+          "text": "The document divides its policy framework into self-help, mutual assistance and public assistance. On self-help, the FSA says that from Program Year 2026 onward it will request all cryptoasset exchange service providers (暗号資産交換業者) to conduct the cybersecurity self-assessment (CSSA) it has asked other types of financial institution to do, or otherwise hold dialogue with them as needed; note 10 explains that the CSSA is a self-assessment against questions consistent with the Guidelines on Cybersecurity for the Financial Sector, which lets a provider understand the position of its own organization within the industry and improve autonomously. The FSA also says it will endeavor to raise the levels of cybersecurity expected of these providers by revising the Guidelines for Supervision, and the directions it gives as examples are requirements for cybersecurity staffing, for external audits and for outsourcees. On public assistance, the FSA will keep requesting providers to take part in Delta Wall, the cross-industry exercise, aiming to achieve the participation of all service providers within three years, and within 2026 it will conduct threat-led penetration testing (TLPT) targeting several providers regarding their actual operational environments."
+        },
+        {
+          "type": "paragraph",
+          "text": "On mutual assistance, the body of the document says only the self-regulatory organization; JVCEA appears in note 11, which links to that association's organizational chart. The FSA also encourages providers to participate in information sharing organizations, such as JPCrypto-ISAC. None of this is a newly added statutory obligation, though: the policy approaches carry no penalty, on the Guidelines for Supervision they go no further than revising them and endeavoring to raise the levels, and they set out neither an amended provision nor an effective date; the participation of all providers within three years has no stated starting point; and the TLPT does not say which providers, only that the assessment results go to the targeted providers individually and the common issues extracted from them go back to the industry as a whole."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What this has to do with readers in Taiwan"
+        },
+        {
+          "type": "paragraph",
+          "text": "The boundary first. The policy approaches are addressed to Japan's cryptoasset exchange service providers; neither document mentions Taiwan, and neither says Japan's rules apply to users or platforms in Taiwan. What a reader here can take away is the shape of the problem. The report says that where a provider's wallet system uses a third-party service, it remains important — even if signing keys are not entrusted to the third party — to confirm that the third party has appropriately established and operates controls such as cyberattack countermeasures, production-environment access management and program/change management. Separately, the report says a compromise at an outside service provider may spill over into the provider's own service or its users' assets."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other layer is what people who hold their own wallets do every day. One page of the report is given to verifying transaction details at the time of signing and to blind signing: with a complex smart contract transaction a wallet may not be able to present the details in a human-readable format, and a hardware wallet is further constrained by screen size and UI design. So the report writes one sentence for the person doing the signing: when signing a complex transaction involving a smart contract, signers should understand not only the recipient address and transfer amount, but also what operation the transaction will perform, what privileges it will grant, and to whom."
+        },
+        {
+          "type": "paragraph",
+          "text": "The report records that on May 12, 2026 the Ethereum Foundation, together with wallet developers, security firms and other ecosystem participants, announced Clear Signing, and that ERC-7730, the core technology of Clear Signing, is a JSON-based descriptor standard. It warns in the same breath that the effect depends on whether the information displayed is correct, whether the descriptor is trustworthy and which model each wallet adopts; an error in a descriptor or a compromised distribution channel could produce a misleading display, so what it shows cannot be treated as unconditionally safe. One more boundary: this report is written for businesses and regulators, and the version checked for this article carries no self-protection checklist for ordinary users. The following is an example designed by the editors, not official advice: when a phone wallet raises an approval you cannot read, one question to start with is what this transaction is asking me to authorize, and to whom."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is this report the Japanese FSA's position?",
+              "answer": "No. On the policy page where the paper is published, the FSA states plainly that the research paper above does not represent the views or opinions of the agency, and the disclaimer on page 2 of the paper says its contents do not represent the official views of the Financial Services Agency and that any errors in it are the sole responsibility of the contractor. The acknowledgments on the same page also record advice and comments on the paper from officials of the Financial Services Agency. For the FSA's own position, the document to read is the policy approaches it set out on April 3, 2026 and whose English version it added on July 23 — that is the document the FSA signs."
+            },
+            {
+              "question": "Does this publication add obligations providers have to meet?",
+              "answer": "It adds no statutory obligation and no penalty. What the policy approaches say is that the FSA will endeavor to raise the level of cybersecurity the Guidelines for Supervision expect of cryptoasset exchange service providers; the words used are revising and endeavoring to raise the levels, and the document itself sets out no amended provision and no effective date. It does write down expectations with dates attached: all providers to conduct the cybersecurity self-assessment from Program Year 2026 onward, threat-led penetration testing at several providers within 2026, and the cross-industry exercise aiming for the participation of all providers within three years. So saying there is no timetable at all is not accurate; the accurate statement is that there is no new legal obligation and no penalty."
+            },
+            {
+              "question": "How does the report say the money was taken?",
+              "answer": "The report says that among the recent incidents it analyzed there was a class of attack that did not involve the theft of signing keys themselves, but instead tampered with components — the user interface, APIs, CI/CD, unsigned transaction generation logic and production programs — causing fund outflows by abusing legitimate signing processes. The lessons it draws from the case studies say the starting point of these incidents is the compromise of developer privileges through social engineering or phishing, or the deployment of malware; once the interfaces and APIs had been tampered with, signers found it difficult to notice that the transaction is fraudulent and proceeded with signing. This article does not write the finer methods, and does not write indicators of compromise."
+            },
+            {
+              "question": "What is blind signing?",
+              "answer": "One page of the lessons learned from the case studies explains it: with complex smart contract transactions, such as a DeFi protocol or an update to a wallet-related contract, a wallet may not be able to present the transaction details in a human-readable format, and calldata or an EIP-712 message may appear only as a hexadecimal string or as data a person finds hard to read; hardware wallets, in particular, may have limited ability to clearly present complex transaction details due to constraints such as screen size and UI design. So the report writes that when signing a complex transaction involving a smart contract, signers should understand not only the recipient address and transfer amount, but also what operation the transaction will perform, what privileges it will grant, and to whom."
+            },
+            {
+              "question": "With Clear Signing in place, can what the wallet shows be trusted?",
+              "answer": "The report says plainly that it cannot. It records that on May 12, 2026 the Ethereum Foundation, together with wallet developers, security firms and other ecosystem participants, announced Clear Signing, and that ERC-7730, its core technology, is a JSON-based descriptor standard whose goal is that at the moment of signing what you see is what you sign. But the report also says the effect depends on whether the information displayed is correct, whether the descriptor is trustworthy, and which model each wallet adopts; an error in a descriptor or a compromised distribution channel could produce a misleading display, so the information presented through Clear Signing should not be treated as unconditionally safe and has to be used together with other measures. The report also does not say which wallets already support it, or when it will be widespread."
+            },
+            {
+              "question": "Does the report give ordinary users a self-protection checklist?",
+              "answer": "No. The report is addressed to crypto-asset-related businesses and regulators, and its recommendations are written as controls for the businesses; from a comparison with existing standards it extracted five priority areas: enhancement of third-party risk management; measures to prevent malicious code injection or program tampering; measures to prevent unauthorized transfers of crypto-assets; measures for smart contracts and DeFi; and leveraging external assessments. The version checked for this article has no section on what users should do, so do not read a list of controls written for businesses as the FSA's instructions to users."
+            },
+            {
+              "question": "Do Japan's requirements reach platforms in Taiwan, or my account?",
+              "answer": "Neither document says so. The policy approaches are addressed to Japan's cryptoasset exchange service providers, and neither the report nor the policy approaches mentions Taiwan or says Japan's rules apply to users or platforms in Taiwan. Taiwan's own regime is a separate matter, and the second link at the end of this article goes to an article about it."
+            },
+            {
+              "question": "How do I read the original documents myself?",
+              "answer": "The research paper sits in the latest-information list on the FSA's policy page about promoting innovation, with three PDFs beneath it — the Japanese paper, the English paper and a Japanese summary — and the disclaimer printed right below the links. The FSA's own policy approaches are on the announcement page of April 3, 2026: Annex 1 is the full Japanese text, Annex 2 the Japanese summary, and Annexes 3 and 4 are the English versions added on July 23, 2026. The update date shown on both pages moves whenever the page is updated again, so note the date on which you read it as well."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Which sentence comes from which document",
+          "text": "There are two documents in this article, and they do not speak with the same voice. The research paper 「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」, in English Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses, is research the FSA commissioned; the author is the contractor Deloitte Tohmatsu LLC, and both the publication page and the paper itself state plainly that it does not represent the agency's views, which is why this article writes “the report says” or “the report recommends”. The policy approaches 「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針」, in English Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services, is the document the FSA signs itself, and only there does this article write “the FSA says”. Keep the dates apart too: April 3, 2026 for the adoption of the policy approaches, June 30, 2026 on the paper's cover and July 23, 2026 for the publication are three different dates and should not be swapped."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "This article is an information summary and is not investment advice",
+          "text": "What this article explains is regulation, technology and how the industry works. It recommends no crypto-asset, exchange, wallet or issuer, it is not investment advice, and it carries no prices, no percentage moves and no timing of buying or selling. Supervisory rules, registration status, launch timing and service conditions follow the current announcements of the authorities and the providers concerned; this article was fact-checked on 2026-09-17. Crypto-asset prices move sharply and the whole amount can be lost, and some services are not covered by deposit insurance or investor protection schemes; for what actually applies, rely on official announcements or the opinion of a qualified professional."
+        },
+        {
+          "type": "link",
+          "text": "2026 Crypto News Roundup: Key Developments in Regulation, Technology and Industry",
+          "url": "https://mokaair.com/en/life/crypto-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Third Reading for Taiwan's Virtual Asset Service Act: Seven Provider Types, Stablecoin License, No Start Date",
+          "url": "https://mokaair.com/en/life/crypto-news-taiwan-vasp-act-20260630"
+        }
+      ],
+      "sources": [
+        {
+          "title": "FSA: イノベーション推進に向けた金融庁の取組み — the FSA's initiatives to promote innovation (the page where the research paper is published, Japanese version)",
+          "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses (the research paper, English version, cover dated June 30, 2026)",
+          "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FSA: 「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について — publication of the results of the public comment on the draft policy approaches",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services (the policy approaches, English version, Annex 3)",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "金融庁が暗号資産のサイバーセキュリティのリサーチペーパーを公表：鍵が盗まれたのではない流出の類型があり、署名前のシステムが改ざんされていた",
+      "description": "2026年7月23日、金融庁がウェブサイトで委託によるリサーチペーパーを公表しました。表紙の日付は2026年6月30日で、当庁の見解を示すものではないことも明記されています。本稿は金融庁の掲載ページ、リサーチペーパーの英語版、そして金融庁自身の取組方針に基づき、報告書がどの類型の資産流出を署名前のシステムに帰属させ直したのか、今回の公表で何が義務として追加されていないのか、四つの日付をなぜ置き換えてはいけないのかを説明します。",
+      "hero": {
+        "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/hero-ja.jpg",
+        "alt": "オリジナルのイラスト：左側には連なった三つのブロックが一連のシステムを表し、最後のブロックの上に警告の三角形があります。中央には錠のついた盾、右側には鍵と一通の文書があります",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年7月23日、金融庁はウェブサイトのイノベーション推進に関する政策ページで、暗号資産関連業者におけるサイバーセキュリティの課題と対策に関するリサーチペーパーを公表しました。報告書の表紙に記された日付は2026年6月30日で、著者として記名されているのは合同会社デロイトトーマツ（Deloitte Tohmatsu LLC）です。同じ日、金融庁は別の公表ページで、自ら2026年4月3日に策定したサイバーセキュリティの取組方針の英語版も公表しました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月17日に確認しており、読んだのはこの政策ページの日本語版、リサーチペーパー英語版のPDF、金融庁の4月3日の公表ページ、およびそのページの別紙３である英語版の取組方針です。先に一つ整理しておきます。このリサーチペーパーは金融庁の見解ではありません。金融庁は掲載ページに「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」と明記しており、報告書の2ページ目にも、内容は金融庁の公式見解を示すものではなく、報告書中の誤りは受託者が責任を負うと書かれています。そのため本稿は、報告書について述べるときは一貫して「報告書は〜としている」と書き、「金融庁は〜としている」と書くのは取組方針についてだけです。本サイトは実際の検証を行っておらず、投資や法律に関する助言も行いません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "金融庁は2026年7月23日にウェブサイトで委託によるリサーチペーパーを公表しました。表紙の日付は2026年6月30日、著者は受託者である合同会社デロイトトーマツで、金融庁は掲載ページと報告書の中の両方で、報告書が当庁の見解を示すものではないと明記しています。",
+            "報告書は、分析した近年の事例のうちに、署名鍵そのものを盗むのではなく、ユーザーインターフェース、API、CI/CD、未署名取引の生成ロジック、本番環境のプログラムといった構成要素を改ざんし、正当な署名プロセスを悪用して資金を流出させた類型があったとしています。",
+            "金融庁自身の取組方針は、こうした状況ではコールドウォレットの利用だけでは暗号資産の安全な管理を確保できず、委託先を含むサプライチェーン全体のサイバーセキュリティ管理体制を強化する必要があるとしています。",
+            "今回の公表で法令上の義務が追加されたわけではなく、罰則もありません。取組方針は監督指針について改正の検討と水準の引き上げに努めることしか書いていません。ただし日付のある期待は示しており、2026事務年度以降は全事業者にサイバーセキュリティセルフアセスメントを求め、2026年中に数社へ脅威ベースのペネトレーションテストを実施するとしています。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "7月23日に公表されたもの：委託によるリサーチペーパー"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告書は政策ページの最新情報の一覧で公表されました。2026年の一項目目がこれで、その下に日本語版の報告書、英語版の報告書、日本語の概要版という三つのPDFが並び、リンクのすぐ下にあの免責の一行が続いています。ページには本稿の確認日の時点で「令和８年７月23日更新」と記されており、2026年7月23日にあたります。これはページの更新日で、ページが再び更新されれば別の日付に変わります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告書自身の免責も読む価値があります。2ページ目には、報告書中の誤りは受託者が責任を負うこと、個別事例の分析は各事例について公表された情報をもとに調査研究の目的で整理したものであり、個別の事案についての責任の所在や法的評価を示すものではないことが書かれています。同じページの謝辞には、金融庁の職員から助言や意見を得たことも記されています。委託による調査と公式見解の境界がどこにあるかを、これがそのまま示しています。金融庁自身が名前を出している文書は取組方針で、その冒頭にはApril 3, 2026とFinancial Services Agencyと記されています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四つの日付を分けて見る：案、策定、表紙、公表"
+        },
+        {
+          "type": "paragraph",
+          "text": "取組方針は7月23日に初めて現れたものではありません。金融庁の2026年4月3日の公表ページには、方針案について令和８年２月10日から令和８年３月11日まで意見募集を行い、「計18件のコメント」を受け取ったことが書かれています。金融庁は、お寄せいただいたコメントを踏まえ、必要な追記・修正を行ったうえで取りまとめました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じページの冒頭には「令和８年４月３日」と「令和８年７月23日更新」が記され、別紙１、別紙２に続いて「令和８年７月23日、以下の英語版を公表しました。」と書かれ、その後に別紙３と別紙４が並んでいます。したがって取組方針の策定日は2026年4月3日、英語版の公表日が2026年7月23日で、報告書の表紙にある2026年6月30日は報告書そのものの日付です。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "日付",
+            "その日に行われたこと",
+            "出典"
+          ],
+          "rows": [
+            [
+              "2026年2月10日〜3月11日",
+              "方針案の意見募集、計18件のコメント",
+              "金融庁4月3日の公表ページ"
+            ],
+            [
+              "2026年4月3日",
+              "金融庁が取組方針を策定（別紙１）",
+              "同じページの冒頭に記された日付"
+            ],
+            [
+              "2026年6月30日",
+              "リサーチペーパーの表紙に記された日付",
+              "報告書PDFの表紙"
+            ],
+            [
+              "2026年7月23日",
+              "報告書の公表と方針英語版の公表",
+              "政策ページの更新日、4月3日の公表ページ"
+            ]
+          ],
+          "caption": "2026年9月17日に確認。日付は金融庁のページと報告書の表紙に基づいて整理したもので、四つの日付は互いに置き換えられません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "報告書は近年の資産流出をどう読み替えたか"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告書の調査結果の要旨は、近年、暗号資産関連業者を狙った攻撃が続き規模も拡大しており、攻撃の経路は年々多様化し、高度化し、組織化していると述べています。報告書は、攻撃者がシステムそのものだけでなく運用基盤も狙うようになっているとし、その例として署名鍵、ウォレット、アクセス制御、CI/CD、クラウドのIAM／KMS、署名サービスを挙げています。署名鍵とは、取組方針の注1が定義する秘密鍵で、取引データにあらかじめ電子署名を付すことにより、その取引が正当な権限を持つ者によって行われたことを証明するために用いられるものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最も重要な一文はその直後にあります。報告書は、近年の事例を分析した結果、署名鍵そのものを盗むのではなく、ユーザーインターフェース、API、CI/CD、未署名取引の生成ロジック、本番環境のプログラムといった構成要素を改ざんし、正当な署名プロセスを悪用して資金を流出させた攻撃の類型を確認したとしています。事例から得られた教訓では、これらの事案の起点はソーシャルエンジニアリングやフィッシングによる開発者権限の侵害、あるいはマルウェアの投入であり、UIやAPIが改ざんされた後は、署名者が取引が偽造されたものであると気づくことが難しく、そのまま署名に進んでしまったとも書かれています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告書は構造についての判断も示しています。現実の暗号資産関連サービスは純粋に分散化されたモデルで動いているわけではないため、リスク評価はオンチェーンのコードやプロトコルだけでなく、オフチェーンの構成要素、運用上の統制、外部への依存、ガバナンスまで含めて行う必要があるとしています。報告書の事例研究は(1)から(10)まで番号が振られており、報告書自身の説明によれば、DeFiを含む暗号資産関連サービスの近年の事例を対象に、大きな損失につながった主要な攻撃手法に着目したもので、例として第三者の侵害、スマートコントラクトの脆弱性、フラッシュローン攻撃、マルウェア攻撃が挙げられています。本稿は事例の事業者やプロトコルを名指ししません。報告書が引用している損失額や件数の統計はいずれも外部機関のものであり、本稿では扱いません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/diagram-1-ja.svg",
+          "alt": "四つの枠の図解：開発者権限の侵害、署名前のインターフェースとプログラムの改ざん、正当な権限を持つ者による署名、資金の流出",
+          "width": 1600,
+          "height": 900,
+          "caption": "報告書が示す経路：まず開発者または委託先の権限が侵害され、次に署名前のインターフェースとプログラムが改ざんされ、正当な権限を持つ者が改ざんされた取引に署名し、そこから資金が流出します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "金融庁自身の取組方針：コールドウォレットだけでは足りない"
+        },
+        {
+          "type": "paragraph",
+          "text": "取組方針の第1章は、近年の暗号資産の流出に関する事案は必ずしも署名鍵の盗取によるものではなく、ソーシャルエンジニアリング攻撃や委託先への侵入といった間接的な攻撃を含む、さまざまな巧妙な手法が顕著になっていると述べ、攻撃者が時間をかけて事前準備を行い、事業者に気づかれていなかった事例もあるとしています。こうした状況のもとで、この文書は重要な一文を記しています。コールドウォレットの利用だけでは暗号資産の安全な管理を確保することはできず、委託先を含むサプライチェーン全体のサイバーセキュリティ管理体制を強化することがぜひとも必要である、という一文です。方針は、利用者から預かった暗号資産が流出する事案が実際に発生したことにも触れており、重点的な監督について述べた箇所では、過去に大規模な暗号資産の流出が発生したことを踏まえ、個々の事業者の流出リスクへの対応とシステムリスク管理を集中的にモニタリングしてきたとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方針は政策の枠組みを自助・共助・公助に分けています。自助について金融庁は、2026事務年度（文書ではProgram Year 2026）以降、他の業態の金融機関に求めてきたサイバーセキュリティセルフアセスメント（CSSA）を暗号資産交換業者すべてに実施するよう求め、あるいは必要に応じて対話を行うとしています。注10は、CSSAが金融分野のサイバーセキュリティに関するガイドラインと整合した質問による自己評価であり、業界の中での自組織の位置づけを把握できるようにすることで自助努力の機会を与え、自律的な改善を促すものだと説明しています。金融庁は、監督指針を改正することで暗号資産交換業者に期待されるサイバーセキュリティの水準を引き上げるよう努めるとも述べており、例として挙げられている方向は、サイバーセキュリティに関する人員配置の要件、外部監査の要件、委託先が満たすべき要件です。公助については、金融庁は業界横断的な演習であるDelta Wallへの参加を引き続き求め、3年以内にすべての事業者が参加することを目指すとしており、さらに2026年中に数社の事業者の実際の運用環境を対象として脅威ベースのペネトレーションテスト（TLPT）を実施するとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共助について、方針の本文は「自主規制機関」としか書いておらず、JVCEAという名称は注11に現れ、その注が同協会の組織図にリンクしています。金融庁は、JPCrypto-ISACのような情報共有機関への参加を事業者に促すとも述べています。ただし、これらはいずれも新たに追加された法令上の義務ではありません。取組方針に罰則はなく、監督指針については改正の検討と水準の引き上げに努めることしか書かれておらず、改正条文も施行日も示されていません。3年以内に全事業者が参加するという目標には起算日が書かれていません。TLPTについては対象がどの事業者かは書かれておらず、評価結果を対象事業者に個別にフィードバックし、抽出した共通の課題を業界全体に還元することだけが書かれています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "この話が台湾の読者にとって持つ意味"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず境界を引きます。取組方針の対象は日本の暗号資産交換業者であり、二つの文書はいずれも台湾に言及しておらず、日本の規定が台湾の利用者やプラットフォームに適用されるとも述べていません。持ち帰れるのは問題の形です。報告書は、事業者のウォレットシステムが第三者のサービスを利用している場合、署名鍵を第三者に預けていなくても、その第三者がサイバー攻撃への対策、本番環境へのアクセス管理、プログラムや変更の管理といった統制を適切に整備し運用していることを確認することが重要だとしています。報告書はまた、外部のサービス提供者が侵害されると、その影響が事業者自身のサービスや利用者の資産に波及しうるとも述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つの層は、自分でウォレットを保有している人が毎日行っていることです。報告書には、署名の時点での取引内容の確認と「ブラインド署名」について述べた1ページがあります。複雑なスマートコントラクト取引では、ウォレットが取引の詳細を人が読める形式で示せないことがあり、ハードウェアウォレットは画面の大きさやUIの設計といった制約も受けます。そこで報告書は、署名する人に向けて一文を書いています。スマートコントラクトを伴う複雑な取引に署名するとき、署名者が理解すべきなのは受取アドレスと送金額だけではなく、その取引がどのような操作を実行し、どのような権限を、誰に与えるのかまでである、という一文です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告書は、2026年5月12日にイーサリアム財団がウォレット開発者やセキュリティ企業などのエコシステム参加者とともにClear Signingを発表したこと、その中核技術であるERC-7730がJSONを基礎とした記述ファイルの標準であることを記しています。ただし報告書は同時に、その効果は表示される情報が正しいか、記述ファイルが信頼できるか、各ウォレットが採用するモデルによって左右されると注意しており、記述ファイルの誤りや配布経路への侵入は誤解を招く表示につながりうるため、無条件に安全とみなしてはならないとしています。もう一つ境界があります。この報告書は事業者と規制当局に向けて書かれたもので、本稿が確認した版には一般の利用者向けの自衛のチェックリストはありません。以下は編集部が考えた例であり、公式の助言ではありません。スマートフォンのウォレットに内容のわからない承認が表示されたときは、この取引は何を承認させようとしているのか、誰に与えるのかを先に尋ねてみることができます。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "このリサーチペーパーは金融庁の立場ですか。",
+              "answer": "いいえ。金融庁は報告書を掲載した政策ページに「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」と明記しており、報告書の2ページ目の免責にも、本報告書の内容は金融庁の公式見解を示すものではなく、報告書中の誤りは受託者が責任を負うと書かれています。同じページの謝辞には、金融庁の職員が報告書について助言や意見を提供したことも記されています。金融庁自身の立場を引用するなら、見るべきなのは金融庁が2026年4月3日に策定し、7月23日に英語版を公表した取組方針です。それが金融庁自身が名前を出している文書です。"
+            },
+            {
+              "question": "今回の公表で事業者が守るべき義務は追加されましたか。",
+              "answer": "法令上の義務は追加されておらず、罰則もありません。取組方針が書いているのは、監督指針が暗号資産交換業者に期待するサイバーセキュリティの水準を引き上げるよう努めるということで、用いられている言葉は改正の検討と水準の引き上げへの努力です。文書自体に改正条文は示されておらず、施行日も書かれていません。ただし日付のある期待は確かに書かれています。2026事務年度以降は全事業者にサイバーセキュリティセルフアセスメントを求めること、2026年中に数社へ脅威ベースのペネトレーションテストを実施すること、そして業界横断的な演習について3年以内に全事業者の参加を目指すことです。ですから「時期は何も示されていない」という言い方は正確ではなく、正確には新たな法的義務と罰則がないということです。"
+            },
+            {
+              "question": "報告書は資金がどのように持ち出されたとしていますか。",
+              "answer": "報告書は、分析した近年の事例のうちに、署名鍵そのものを盗むのではなく、ユーザーインターフェース、API、CI/CD、未署名取引の生成ロジック、本番環境のプログラムといった構成要素を改ざんし、正当な署名プロセスを悪用して資金を流出させた類型があったとしています。事例から得られた教訓では、これらの事案の起点はソーシャルエンジニアリングやフィッシングによる開発者権限の侵害、あるいはマルウェアの投入であり、UIやAPIが改ざんされた後は、署名者が取引が偽造されたものであると気づくことが難しく、そのまま署名したとされています。本稿はより細かい手法を書かず、侵害の痕跡も書きません。"
+            },
+            {
+              "question": "ブラインド署名とは何ですか。",
+              "answer": "報告書は事例から得られた教訓の1ページで説明しています。DeFiのプロトコルやウォレット関連のコントラクトの更新のような複雑なスマートコントラクト取引では、ウォレットが取引の詳細を人が読める形式で示せないことがあり、calldataやEIP-712のメッセージは16進数の文字列や人には判読しにくいデータとしてしか表示されないことがあります。ハードウェアウォレットはとくに、画面の大きさやUIの設計といった制約により、複雑な取引の詳細を明確に示す能力が限られる場合があります。そこで報告書は、スマートコントラクトを伴う複雑な取引に署名するとき、署名者が理解すべきなのは受取アドレスと送金額だけではなく、その取引がどのような操作を実行し、どのような権限を、誰に与えるのかまでであるとしています。"
+            },
+            {
+              "question": "Clear Signingがあれば、ウォレットの表示は信頼できますか。",
+              "answer": "報告書はできないと明確に述べています。報告書は、2026年5月12日にイーサリアム財団がウォレット開発者やセキュリティ企業などのエコシステム参加者とともにClear Signingを発表したこと、その中核技術であるERC-7730がJSONを基礎とした記述ファイルの標準であり、署名の時点で見たものに署名する状態を目指すものであることを記しています。しかし同時に、その効果は表示される情報が正しいか、記述ファイルが信頼できるか、各ウォレットが採用するモデルによって左右されるとし、記述ファイルの誤りや配布経路への侵入は誤解を招く表示につながりうるため、Clear Signingを通じて示された情報を無条件に安全とみなしてはならず、他の措置と組み合わせて用いる必要があるとしています。報告書は、どのウォレットがすでに対応しているのか、いつ普及するのかも書いていません。"
+            },
+            {
+              "question": "報告書には一般の利用者向けの自衛のチェックリストがありますか。",
+              "answer": "ありません。報告書の対象は暗号資産関連業者と規制当局であり、提言は事業者の統制項目として書かれています。報告書は既存の基準との比較から五つの優先領域を抽出しており、第三者リスク管理の強化、悪意あるコードの混入やプログラムの改ざんの防止、暗号資産の不正な移転の防止、スマートコントラクトとDeFiに対する措置、外部評価の活用です。本稿が確認した版には利用者が何をすべきかという章はありませんので、事業者向けに書かれた統制の一覧を、金融庁が利用者に対して示した操作の指示として読まないでください。"
+            },
+            {
+              "question": "日本のこうした要請は台湾のプラットフォームや自分の口座にも及びますか。",
+              "answer": "二つの文書はいずれもそのようには書いていません。取組方針の対象は日本の暗号資産交換業者であり、報告書も取組方針も台湾に言及しておらず、日本の規定が台湾の利用者やプラットフォームに適用されるとも述べていません。台湾自身の制度は別の話で、本稿の末尾にある二つ目のリンクがそれを扱った記事です。"
+            },
+            {
+              "question": "原文の文書を自分で読むにはどうすればよいですか。",
+              "answer": "リサーチペーパーは、金融庁のウェブサイトにあるイノベーション推進に関する政策ページの最新情報の一覧に掲載されており、その下に日本語版の報告書、英語版の報告書、日本語の概要版という三つのPDFが並び、免責の一文はリンクのすぐ下に印字されています。金融庁自身の取組方針は2026年4月3日の公表ページにあり、別紙１が日本語の全文、別紙２が日本語の概要、別紙３と別紙４が2026年7月23日に公表された英語版です。どちらのページも表示されている更新日はページが再び更新されれば変わりますので、読んだときの日付も併せて記録しておいてください。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "どの一文がどの文書から来ているか",
+          "text": "本稿には二つの文書があり、話している主体が異なります。リサーチペーパー「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」は金融庁が委託した調査の成果で、著者は受託者である合同会社デロイトトーマツです。金融庁は掲載ページと報告書の中の両方で、それが当庁の見解を示すものではないと明記しているため、本稿では「報告書は〜としている」または「報告書は〜を提言している」と書いています。取組方針「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針」は金融庁自身が名前を出している文書で、本稿が「金融庁は〜としている」と書くのはこちらについてだけです。日付も分けて見る必要があります。取組方針の策定日である2026年4月3日、報告書の表紙の日付である2026年6月30日、公表日である2026年7月23日は三つの異なる日付であり、互いに置き換えられません。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本稿は情報の整理であり、投資助言ではありません",
+          "text": "本稿が説明しているのは法規制、技術、業界の運用であり、暗号資産、取引所、ウォレット、発行者のいずれも推奨しておらず、投資助言ではありません。価格、騰落率、売買のタイミングも扱いません。規制の内容、登録の状況、提供開始の時期、サービスの条件は、所管当局と事業者の当期の公表内容に従ってください。本稿の事実確認日は2026-09-17です。暗号資産の価格は変動が大きく、全額を失う可能性があり、一部のサービスは預金保険や投資者保護の制度で保護されません。実際の適用については、公式発表または適格な専門家の意見に従ってください。"
+        },
+        {
+          "type": "link",
+          "text": "2026年 暗号資産ニュース総まとめ：法規制・技術・業界の重要動向",
+          "url": "https://mokaair.com/ja/life/crypto-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "台湾の仮想資産サービス法が三読通過：7種類のサービス業者、ステーブルコイン許可、施行日は未定",
+          "url": "https://mokaair.com/ja/life/crypto-news-taiwan-vasp-act-20260630"
+        }
+      ],
+      "sources": [
+        {
+          "title": "金融庁：イノベーション推進に向けた金融庁の取組み（リサーチペーパーの掲載ページ、日本語版）",
+          "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses（リサーチペーパー英語版、表紙の日付は2026年6月30日）",
+          "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "金融庁：「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services（取組方針の英語版、別紙３）",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "일본 금융청, 암호자산 사이버보안 연구 보고서 공개: 한 유형의 유출은 키를 훔친 것이 아니라 서명 전 시스템이 조작된 것",
+      "description": "2026년 7월 23일 일본 금융청이 홈페이지에 위탁 연구 보고서를 공개했습니다. 표지 날짜는 2026년 6월 30일이며, 금융청은 이 보고서가 자기 기관의 견해가 아니라는 점도 함께 명시했습니다. 이 글은 금융청의 게재 페이지와 보고서 영어판, 그리고 금융청 자신의 대응 방침에 근거해 보고서가 어떤 유형의 자산 유출을 서명 전 시스템으로 다시 귀속시켰는지, 이번 공개로 어떤 의무가 추가되지 않았는지, 네 개의 날짜를 왜 서로 바꿔 쓸 수 없는지를 설명합니다.",
+      "hero": {
+        "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/hero-ko.jpg",
+        "alt": "자체 제작 일러스트: 왼쪽에는 이어진 세 개의 블록이 일련의 시스템을 나타내고 마지막 블록 위에는 경고 삼각형이 있으며, 가운데에는 자물쇠가 달린 방패, 오른쪽에는 열쇠 하나와 문서 한 부가 있습니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 7월 23일 일본 금융청(金融庁, Financial Services Agency)은 홈페이지의 혁신 추진 정책 페이지에 암호자산 관련 사업자의 사이버보안 과제와 대책에 관한 연구 보고서를 공개했습니다. 보고서 표지에 적힌 날짜는 2026년 6월 30일이고, 저자로 기명된 곳은 합동회사 딜로이트 토마츠(合同会社デロイトトーマツ, Deloitte Tohmatsu LLC)입니다. 같은 날 금융청은 다른 공표 페이지에서 자신이 2026년 4월 3일에 마련한 사이버보안 대응 방침의 영어판도 올렸습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 17일에 확인했으며, 읽은 것은 이 정책 페이지의 일본어판, 연구 보고서 영어판 PDF, 금융청 4월 3일 공표 페이지, 그리고 그 페이지의 별지 3인 영어판 대응 방침입니다. 먼저 한 가지를 분명히 해 두겠습니다. 이 보고서는 금융청의 견해가 아닙니다. 금융청은 게재 페이지에 「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」, 곧 위 연구 보고서는 본청의 견해나 의견 등을 나타내는 것이 아니라고 명시했고, 보고서 2쪽에도 내용이 금융청의 공식 견해를 나타내지 않으며 보고서의 오류는 수탁자가 책임진다고 적혀 있습니다. 그래서 이 글은 보고서를 다룰 때는 한결같이 보고서는 〜라고 밝혔다라고 쓰고, 금융청은 〜라고 밝혔다라고 쓰는 것은 대응 방침에 대해서만입니다. 이 사이트는 직접 시험해 본 것이 없으며 투자나 법률에 관한 조언도 하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "일본 금융청은 2026년 7월 23일 홈페이지에 위탁 연구 보고서를 공개했습니다. 표지 날짜는 2026년 6월 30일, 저자는 수탁자인 합동회사 딜로이트 토마츠이며, 금융청은 게재 페이지와 보고서 안 양쪽에서 이 보고서가 본청의 견해가 아니라고 명시했습니다.",
+            "보고서는 자신이 분석한 최근 사건 가운데, 서명키 자체를 훔친 것이 아니라 사용자 인터페이스와 API, CI/CD, 미서명 거래 생성 로직, 운영 환경 프로그램 같은 구성 요소를 조작하고 정당한 서명 절차를 악용해 자금을 유출시킨 유형이 있었다고 밝혔습니다.",
+            "금융청 자신의 대응 방침은 이런 상황에서는 콜드월렛 사용만으로 암호자산의 안전한 보관을 확보할 수 없고, 수탁처를 포함한 공급망 전체의 사이버보안 관리 체제를 강화해야 한다고 밝혔습니다.",
+            "이번 공개로 법령상 의무가 추가된 것은 아니고 벌칙도 없습니다. 대응 방침은 감독지침에 대해 개정 검토와 수준 인상 노력만 적었습니다. 다만 날짜가 있는 기대는 적어 두었습니다. 2026 사무연도부터 모든 사업자에게 사이버보안 자기평가를 요구하고, 2026년 안에 몇 개 사업자를 대상으로 위협 기반 침투 테스트를 실시한다는 것입니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "7월 23일에 공개된 것: 위탁 연구 보고서 한 편"
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서는 정책 페이지의 최신 정보 목록에서 공개됐습니다. 2026년의 첫 항목이 바로 이것이고, 그 아래에 일본어판 보고서, 영어판 보고서, 일본어 요약본이라는 세 개의 PDF가 놓여 있으며 링크 바로 아래에 그 면책 한 줄이 이어집니다. 페이지에는 이 글의 확인일 기준으로 「令和８年７月23日更新」이라고 적혀 있고, 2026년 7월 23일에 해당합니다. 이것은 페이지의 갱신일이어서, 페이지가 다시 갱신되면 다른 날짜로 바뀝니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서 자체의 면책도 읽어 볼 만합니다. 2쪽에는 보고서의 오류는 수탁자가 책임지고, 개별 사례 분석은 각 사례에 대해 공개된 정보를 바탕으로 연구 목적으로 정리한 것이어서 개별 사안의 책임 소재나 법적 평가를 나타내는 것이 아니라고 적혀 있습니다. 같은 쪽의 감사의 말에는 금융청 직원에게서 조언과 의견을 받았다는 내용도 있습니다. 위탁 연구와 공식 견해의 경계가 어디인지를 이것이 그대로 보여 줍니다. 금융청이 자기 이름을 내건 문서는 대응 방침이고, 그 첫머리에는 April 3, 2026과 Financial Services Agency가 적혀 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "네 개의 날짜를 따로 보기: 초안, 제정, 표지, 공개"
+        },
+        {
+          "type": "paragraph",
+          "text": "대응 방침이 7월 23일에 처음 나온 것은 아닙니다. 금융청의 2026년 4월 3일 공표 페이지에는 방침 초안에 대해 令和８年２月10日부터 令和８年３月11日까지, 곧 2026년 2월 10일부터 3월 11일까지 의견을 모았고 「計18件のコメント」, 곧 모두 18건의 의견을 받았다고 적혀 있습니다. 금융청은 받은 의견을 반영해 필요한 추가와 수정을 한 뒤에 문서를 확정했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 페이지 머리에는 「令和８年４月３日」과 「令和８年７月23日更新」이 적혀 있고, 별지 1과 별지 2에 이어 「令和８年７月23日、以下の英語版を公表しました。」, 곧 2026년 7월 23일에 아래의 영어판을 공표했다고 적힌 뒤 별지 3과 별지 4가 나옵니다. 그러므로 대응 방침의 제정일은 2026년 4월 3일이고, 영어판 공개일이 2026년 7월 23일이며, 보고서 표지의 2026년 6월 30일은 보고서 자체의 날짜입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "날짜",
+            "그날 있었던 일",
+            "출처"
+          ],
+          "rows": [
+            [
+              "2026년 2월 10일 ~ 3월 11일",
+              "방침 초안 의견 수렴, 모두 18건",
+              "금융청 4월 3일 공표 페이지"
+            ],
+            [
+              "2026년 4월 3일",
+              "금융청이 대응 방침을 제정(별지 1)",
+              "같은 페이지 머리에 적힌 날짜"
+            ],
+            [
+              "2026년 6월 30일",
+              "연구 보고서 표지에 적힌 날짜",
+              "보고서 PDF 표지"
+            ],
+            [
+              "2026년 7월 23일",
+              "보고서 공개, 방침 영어판 게재",
+              "정책 페이지 갱신일, 4월 3일 공표 페이지"
+            ]
+          ],
+          "caption": "2026년 9월 17일 확인. 날짜는 금융청 페이지와 보고서 표지에 따라 정리한 것이며, 네 날짜는 서로 바꿔 쓸 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "보고서는 최근의 자산 유출을 어떻게 다시 읽었는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서의 연구 결과 요지는 최근 몇 년간 암호자산 관련 사업자를 겨냥한 공격이 계속되고 규모도 커졌으며, 공격 경로가 해마다 더 다양하고 더 정교하고 더 조직적으로 바뀌었다고 밝혔습니다. 보고서는 공격자가 시스템 자체만이 아니라 운영 기반도 점점 더 겨냥하고 있다고 적으면서 그 예로 서명키, 지갑, 접근 통제, CI/CD, 클라우드 IAM/KMS, 서명 서비스를 들었습니다. 서명키는 대응 방침의 주 1이 정의한 비밀키로, 거래 데이터에 미리 전자서명을 붙여 그 거래가 정당한 권한을 가진 사람에 의해 이루어졌음을 증명하는 데 쓰입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 중요한 한 문장이 바로 뒤에 옵니다. 보고서는 최근 사건을 분석한 결과, 서명키 자체를 훔치지 않고 사용자 인터페이스와 API, CI/CD, 미서명 거래 생성 로직, 운영 환경 프로그램 같은 구성 요소를 조작해 정당한 서명 절차를 악용하는 방식으로 자금을 유출시킨 공격 유형을 확인했다고 밝혔습니다. 보고서가 사례에서 얻은 교훈에서는 이런 사건의 출발점이 사회공학이나 피싱으로 개발자 권한을 침해하는 것, 또는 악성코드를 투입하는 것이며, 인터페이스와 API가 조작된 뒤에는 서명자가 거래가 위조된 것임을 알아차리기 어려워 그대로 서명에 나아갔다고 적었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서는 구조에 관한 판단도 내놓았습니다. 현실의 암호자산 관련 서비스는 순수하게 분산된 모델로 움직이지 않으므로, 위험 평가는 온체인 코드와 프로토콜뿐 아니라 오프체인 구성 요소, 운영 통제, 외부 의존, 거버넌스까지 포괄해야 한다는 것입니다. 보고서의 사례 연구는 (1)부터 (10)까지 번호가 붙어 있고, 보고서 자신의 설명으로는 DeFi를 포함한 암호자산 관련 서비스의 최근 사례를 대상으로 큰 손실을 낳은 주요 공격 수법에 초점을 맞춘 것이며, 예로 든 것은 제3자 침해, 스마트 계약 취약점, 플래시 론 공격, 악성코드 공격입니다. 이 글은 사례의 사업자나 프로토콜을 이름으로 밝히지 않습니다. 보고서가 인용한 손실 금액과 건수 통계는 모두 외부 기관의 것이므로 이 글에서는 다루지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/diagram-1-ko.svg",
+          "alt": "네 칸 도해: 개발자 권한 침해, 서명 전 인터페이스와 프로그램 조작, 정당한 권한을 가진 사람의 서명, 자금 유출",
+          "width": 1600,
+          "height": 900,
+          "caption": "보고서가 제시한 경로: 먼저 개발자나 수탁처의 권한이 침해되고, 다음으로 서명 전 인터페이스와 프로그램이 조작되어, 정당한 권한을 가진 사람이 조작된 거래에 서명하고 그로 인해 자금이 흘러 나갑니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "금융청 자신의 대응 방침: 콜드월렛만으로는 부족하다"
+        },
+        {
+          "type": "paragraph",
+          "text": "대응 방침 제1장은 최근 암호자산 유출과 관련된 사안이 반드시 서명키 도난으로 일어난 것은 아니고, 사회공학 공격이나 수탁처 침입 같은 간접적인 공격을 포함해 여러 교묘한 수법이 두드러지게 됐다고 적었으며, 공격자가 시간을 들여 사전에 준비했는데도 사업자가 알아차리지 못한 사례도 있다고 밝혔습니다. 이런 상황에서 이 문서는 핵심 문장을 적었습니다. 콜드월렛 사용만으로는 암호자산의 안전한 보관을 확보할 수 없고, 오히려 수탁처를 포함한 공급망 전체의 사이버보안 관리 체제를 강화하는 것이 반드시 필요하다는 문장입니다. 방침은 이용자가 맡긴 암호자산이 유출된 사안이 일본에서 실제로 일어났다는 점도 적었고, 중점적인 감독을 다룬 대목에서는 과거에 대규모 암호자산 유출이 발생한 점을 고려해 금융청이 개별 사업자의 유출 위험 대응과 시스템 위험 관리를 집중적으로 모니터링해 왔다고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "방침은 정책의 틀을 자조(self-help), 상호 지원(mutual assistance), 공적 지원(public assistance)으로 나눕니다. 자조에 대해 금융청은 2026 사무연도(문서에는 Program Year 2026)부터 다른 업종의 금융기관에 요구해 온 사이버보안 자기평가(CSSA)를 암호자산 교환업자(일본어 「暗号資産交換業者」) 전부에 실시하도록 요구하거나, 필요에 따라 사업자와 대화하겠다고 밝혔습니다. 주 10은 CSSA가 금융 분야 사이버보안 지침과 정합된 질문으로 하는 자기평가이며, 사업자가 업계 안에서 자기 조직의 위치를 파악하게 함으로써 자조 노력의 기회를 주고 자율적인 개선을 유도하는 것이라고 설명합니다. 금융청은 감독지침을 개정해 암호자산 교환업자에게 기대되는 사이버보안 수준을 높이도록 노력하겠다고도 밝혔고, 예로 든 방향은 사이버보안 인력 배치 요건, 외부 감사 요건, 수탁처가 충족해야 할 요건입니다. 공적 지원에 대해서는 업계 횡단 훈련인 Delta Wall 참가를 계속 요구하며 3년 안에 모든 사업자가 참가하는 것을 목표로 하고, 2026년 안에 몇 개 사업자의 실제 운영 환경을 대상으로 위협 기반 침투 테스트(TLPT)를 실시한다고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "상호 지원에 대해 방침 본문은 「자율규제기관」이라고만 적었고, JVCEA라는 이름은 주 11에 나오며 그 주가 해당 협회의 조직도로 연결됩니다. 금융청은 JPCrypto-ISAC 같은 정보 공유 기관에 참가하도록 사업자에게 권장하겠다고도 밝혔습니다. 다만 이것들은 모두 새로 추가된 법령상 의무가 아닙니다. 대응 방침에는 벌칙이 없고, 감독지침에 대해서는 개정 검토와 수준을 높이기 위한 노력만 적혀 있으며 개정 조문도 시행일도 제시되지 않았습니다. 3년 안에 모든 사업자가 참가한다는 목표에는 기산 기준일이 적혀 있지 않습니다. TLPT에 대해서는 어느 사업자인지 적혀 있지 않고, 평가 결과를 대상 사업자에게 개별로 전달하고 뽑아낸 공통 과제를 업계 전체에 돌려준다는 것만 적혀 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 일이 대만 독자와 어떤 관계가 있는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 경계를 긋겠습니다. 대응 방침의 대상은 일본의 암호자산 교환업자이고, 두 문서 모두 대만을 언급하지 않았으며 일본의 규정이 대만의 이용자나 플랫폼에 적용된다고도 적지 않았습니다. 가져올 수 있는 것은 문제의 모양입니다. 보고서는 사업자의 지갑 시스템이 제3자 서비스를 쓰는 경우, 서명키를 제3자에게 맡기지 않았더라도 그 제3자가 사이버 공격 대책, 운영 환경 접근 관리, 프로그램과 변경 관리 같은 통제를 적절히 마련하고 운영하고 있는지 확인하는 것이 여전히 중요하다고 밝혔습니다. 보고서는 또 외부 서비스 제공자가 침해되면 그 영향이 사업자 자신의 서비스나 이용자 자산으로 번질 수 있다고 적었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또 한 겹은 지갑을 스스로 보관하는 사람이 매일 하는 일입니다. 보고서에는 서명하는 순간의 거래 내용 확인과 「블라인드 서명」을 다룬 한 쪽이 있습니다. 복잡한 스마트 계약 거래에서는 지갑이 거래의 세부를 사람이 읽을 수 있는 형식으로 보여 주지 못할 수 있고, 하드웨어 지갑은 화면 크기와 인터페이스 설계 같은 제약도 받습니다. 그래서 보고서는 서명하는 사람에게 한 문장을 남겼습니다. 스마트 계약이 걸린 복잡한 거래에 서명할 때 서명자가 이해해야 하는 것은 수취 주소와 송금액만이 아니라, 그 거래가 어떤 동작을 실행하고 어떤 권한을 누구에게 주는지까지라는 문장입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서는 2026년 5월 12일 이더리움 재단이 지갑 개발자와 보안 기업 등 생태계 참여자와 함께 Clear Signing을 발표했고, 그 핵심 기술인 ERC-7730이 JSON을 기반으로 한 기술서 표준이라고 적었습니다. 다만 보고서는 동시에 그 효과가 표시되는 정보가 정확한지, 기술서를 신뢰할 수 있는지, 지갑마다 채택하는 모델에 따라 달라진다고 주의를 주며, 기술서의 오류나 배포 경로 침해는 오해를 부르는 표시로 이어질 수 있어 무조건 안전하다고 봐서는 안 된다고 밝혔습니다. 경계가 하나 더 있습니다. 이 보고서는 사업자와 규제 당국을 향해 쓴 것이고, 이 글이 확인한 판에는 일반 이용자를 위한 자기 방어 점검표가 없습니다. 아래는 편집부가 만든 예이고 공식 권고가 아닙니다. 휴대전화 지갑에 내용을 알 수 없는 승인 요청이 떴을 때는 이 거래가 무엇을 승인하라는 것인지, 누구에게 주는 것인지를 먼저 물어볼 수 있습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이 보고서는 일본 금융청의 입장입니까?",
+              "answer": "아닙니다. 금융청은 보고서를 게재한 정책 페이지에 위 연구 보고서는 본청의 견해나 의견 등을 나타내는 것이 아니라고 명시했고, 보고서 2쪽의 면책 조항에도 이 보고서의 내용이 금융청의 공식 견해를 나타내지 않으며 보고서의 어떤 오류든 수탁자가 책임진다고 적혀 있습니다. 같은 쪽의 감사의 말에는 금융청 직원이 보고서에 조언과 의견을 제공했다는 내용도 함께 있습니다. 금융청 자신의 입장을 인용하려면 봐야 할 것은 금융청이 2026년 4월 3일에 제정하고 7월 23일에 영어판을 올린 대응 방침입니다. 그것이 금융청이 자기 이름을 내건 문서입니다."
+            },
+            {
+              "question": "이번 공개로 사업자가 지켜야 할 의무가 추가됐습니까?",
+              "answer": "법령상 의무는 추가되지 않았고 벌칙도 없습니다. 대응 방침이 적은 것은 금융청이 감독지침이 암호자산 교환업자에게 요구하는 사이버보안 수준을 높이도록 노력한다는 내용이고, 쓰인 말은 개정 검토와 수준을 높이기 위한 노력입니다. 문서 자체에 개정 조문은 없고 시행일도 적혀 있지 않습니다. 다만 날짜가 붙은 기대는 분명히 적혀 있습니다. 2026 사무연도부터 모든 사업자에게 사이버보안 자기평가를 요구하는 것, 2026년 안에 몇 개 사업자를 대상으로 위협 기반 침투 테스트를 실시하는 것, 그리고 업계 횡단 훈련에 3년 안에 모든 사업자가 참가하는 것을 목표로 하는 것입니다. 그러므로 시기가 전혀 없다는 말은 정확하지 않고, 정확한 표현은 새로운 법적 의무와 벌칙이 없다는 것입니다."
+            },
+            {
+              "question": "보고서는 돈이 어떻게 빠져나갔다고 밝혔습니까?",
+              "answer": "보고서는 자신이 분석한 최근 사건 가운데 서명키 자체를 훔치지 않고 사용자 인터페이스와 API, CI/CD, 미서명 거래 생성 로직, 운영 환경 프로그램 같은 구성 요소를 조작해 정당한 서명 절차를 악용하는 방식으로 자금을 유출시킨 공격 유형이 있었다고 밝혔습니다. 보고서가 사례에서 얻은 교훈에서는 이런 사건의 출발점이 사회공학이나 피싱으로 개발자 권한을 침해하는 것 또는 악성코드를 투입하는 것이며, 인터페이스와 API가 조작된 뒤에는 서명자가 거래가 위조된 것임을 알아차리기 어려워 그대로 서명했다고 적었습니다. 이 글은 더 세부적인 수법을 쓰지 않고 침해 지표도 쓰지 않습니다."
+            },
+            {
+              "question": "블라인드 서명이란 무엇입니까?",
+              "answer": "보고서는 사례에서 얻은 교훈 가운데 한 쪽에서 설명합니다. DeFi 프로토콜이나 지갑 관련 계약 갱신 같은 복잡한 스마트 계약 거래에서는 지갑이 거래의 세부를 사람이 읽을 수 있는 형식으로 보여 주지 못할 수 있고, calldata나 EIP-712 메시지가 16진수 문자열이나 사람이 판독하기 어려운 데이터로만 표시될 수 있습니다. 특히 하드웨어 지갑은 화면 크기와 인터페이스 설계 같은 제약 때문에 복잡한 거래의 세부를 분명히 보여 주는 능력이 제한될 수 있습니다. 그래서 보고서는 스마트 계약이 걸린 복잡한 거래에 서명할 때 서명자가 이해해야 하는 것은 수취 주소와 송금액만이 아니라 그 거래가 어떤 동작을 실행하고 어떤 권한을 누구에게 주는지까지라고 적었습니다."
+            },
+            {
+              "question": "Clear Signing이 있으면 지갑이 보여 주는 것을 믿을 수 있습니까?",
+              "answer": "보고서는 그럴 수 없다고 분명히 밝혔습니다. 보고서는 2026년 5월 12일 이더리움 재단이 지갑 개발자와 보안 기업 등 생태계 참여자와 함께 Clear Signing을 발표했고, 핵심 기술인 ERC-7730이 JSON을 기반으로 한 기술서 표준이며 서명하는 순간에 보이는 것에 서명하도록 하는 것이 목표라고 적었습니다. 그러나 보고서는 그 효과가 표시되는 정보가 정확한지, 기술서를 신뢰할 수 있는지, 지갑마다 채택하는 모델에 따라 달라진다고도 밝혔습니다. 기술서의 오류나 배포 경로 침해는 오해를 부르는 표시로 이어질 수 있어 Clear Signing이 보여 주는 정보를 무조건 안전하다고 다루어서는 안 되고 다른 조치와 함께 써야 합니다. 보고서는 어떤 지갑이 이미 지원하는지, 언제 널리 쓰일지도 적지 않았습니다."
+            },
+            {
+              "question": "보고서에 일반 이용자를 위한 자기 방어 점검표가 있습니까?",
+              "answer": "없습니다. 보고서의 대상은 암호자산 관련 사업자와 규제 당국이고, 권고는 사업자의 통제 항목으로 적혀 있습니다. 보고서는 기존 기준과 비교해 다섯 개 우선 영역을 뽑았는데, 제3자 위험 관리 강화, 악성코드 삽입이나 프로그램 조작 방지, 암호자산의 무단 이전 방지, 스마트 계약과 DeFi에 대한 조치, 그리고 외부 평가의 활용입니다. 이 글이 확인한 판에는 이용자가 무엇을 해야 하는가에 관한 장이 없으므로, 사업자를 위해 쓰인 통제 목록을 금융청이 이용자에게 내린 조작 지시로 읽지 마십시오."
+            },
+            {
+              "question": "일본의 이런 요구가 대만의 플랫폼이나 제 계정에도 미칩니까?",
+              "answer": "두 문서 모두 그렇게 적지 않았습니다. 대응 방침의 대상은 일본의 암호자산 교환업자이고, 보고서와 대응 방침 모두 대만을 언급하지 않았으며 일본의 규정이 대만의 이용자나 플랫폼에 적용된다고도 적지 않았습니다. 대만 자신의 제도는 별개의 일이고, 이 글 끝에 있는 두 번째 링크가 그것을 다룬 글입니다."
+            },
+            {
+              "question": "원문 문서를 직접 보려면 어떻게 해야 합니까?",
+              "answer": "연구 보고서는 금융청 홈페이지에서 혁신 추진을 다루는 그 정책 페이지의 최신 정보 목록에 걸려 있고, 그 아래에 일본어판 보고서, 영어판 보고서, 일본어 요약본이라는 세 개의 PDF가 함께 있으며 면책 문구는 링크 바로 아래에 찍혀 있습니다. 금융청 자신의 대응 방침은 2026년 4월 3일 공표 페이지에 있고, 별지 1이 일본어 전문, 별지 2가 일본어 요약, 별지 3과 별지 4가 2026년 7월 23일에 올린 영어판입니다. 두 페이지에 표시된 갱신 날짜는 페이지가 다시 갱신되면 바뀌므로, 볼 때 자신이 읽은 날짜도 함께 적어 두십시오."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "어느 문장이 어느 문서에서 나왔는가",
+          "text": "이 글에는 두 문서가 있고 말하는 주체가 다릅니다. 연구 보고서 「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」, 영어 제목 Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses는 금융청이 위탁한 연구의 결과이고 저자는 수탁자인 합동회사 딜로이트 토마츠입니다. 금융청은 게재 페이지와 보고서 안 양쪽에서 그것이 본청의 견해가 아니라고 명시했으므로 이 글은 보고서는 〜라고 밝혔다 또는 보고서는 〜라고 제언했다라고 씁니다. 대응 방침 「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針」, 영어 제목 Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services는 금융청이 자기 이름을 내건 문서이고, 이 글이 금융청은 〜라고 밝혔다라고 쓰는 것은 이쪽뿐입니다. 날짜도 따로 봐야 합니다. 대응 방침 제정일인 2026년 4월 3일, 보고서 표지 날짜인 2026년 6월 30일, 공개일인 2026년 7월 23일은 서로 다른 세 날짜이므로 바꿔 쓸 수 없습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 글은 정보 정리이며 투자 조언이 아닙니다",
+          "text": "이 글이 설명하는 것은 법규와 기술, 산업의 운영 방식이며 어떤 암호자산이나 거래소, 지갑, 발행사도 추천하지 않고 투자 조언이 아닙니다. 가격과 등락률, 매매 시점도 다루지 않습니다. 규제 내용과 등록 상태, 출시 시기와 서비스 조건은 관할당국과 사업자의 당기 공지를 따릅니다. 이 글의 사실 확인일은 2026-09-17입니다. 암호자산 가격은 변동이 크고 전액을 잃을 수 있으며, 일부 서비스는 예금보험이나 투자자 보호 제도의 보호를 받지 않습니다. 실제 적용은 공식 발표나 자격을 갖춘 전문가의 의견을 따르십시오."
+        },
+        {
+          "type": "link",
+          "text": "2026년 가상자산 뉴스 총정리: 규제·기술·산업의 핵심",
+          "url": "https://mokaair.com/ko/life/crypto-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "대만 가상자산서비스법 3독회 통과: 서비스 사업자 7종, 스테이블코인 허가, 시행일은 미정",
+          "url": "https://mokaair.com/ko/life/crypto-news-taiwan-vasp-act-20260630"
+        }
+      ],
+      "sources": [
+        {
+          "title": "금융청: イノベーション推進に向けた金融庁の取組み(혁신 추진을 향한 금융청의 대응, 연구 보고서 게재 페이지, 일본어판)",
+          "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses(연구 보고서 영어판, 표지 날짜 2026년 6월 30일)",
+          "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "금융청: 「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について(대응 방침 초안에 대한 의견 수렴 결과 등의 공표)",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services(대응 방침 영어판, 별지 3)",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "日本金融厅公布加密资产网络安全研究报告：有一类外流不是密钥被偷，而是签名前的系统被篡改",
+      "description": "2026 年 7 月 23 日日本金融厅在官网公布委托研究报告，封面日期是 6 月 30 日，官方同时明写报告不代表本厅见解。本文依金融厅的刊载页、报告英文版，以及金融厅自己的对应方针，说明报告把哪一类资产外流重新归因到签名前的系统，这次公布没有新增什么义务，以及四个日期为什么不能互相代换。",
+      "hero": {
+        "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/hero-zh-cn.jpg",
+        "alt": "原创插图：左边三个相连的方块代表一连串系统，最后一个方块上方有警示三角形；中间是一面带锁头的盾牌，右边是一把钥匙与一份文件",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 7 月 23 日，日本金融厅（金融庁, Financial Services Agency）在官网的创新政策专页上，公布了一份关于加密资产相关业者网络安全课题与对策的研究报告。报告封面标注的日期是 2026 年 6 月 30 日，署名作者是合同会社デロイトトーマツ（Deloitte Tohmatsu LLC）。同一天，金融厅也在另一则公布页补登了自己在 2026 年 4 月 3 日制定的网络安全对应方针的英文版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日核查，读的是这个政策专页的日文版、研究报告英文版 PDF、金融厅 4 月 3 日那则公布页，以及该页别纸三的英文版对应方针。一件事要先讲清楚：这份报告不是金融厅的见解。金融厅在刊载页明写「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」，意思是上述研究报告不代表本厅的见解、意见等；报告第二页也写内容不代表金融厅的官方见解、错误由承包商自负。所以本文写报告时一律用「报告指出」，只有对应方针才写「金融厅表示」；本站没有实测，也不提供投资或法律意见。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "日本金融厅在 2026 年 7 月 23 日于官网公布一份委托研究报告，封面日期是 2026 年 6 月 30 日，作者是承包商合同会社デロイトトーマツ，金融厅在刊载页与报告内都明写报告不代表本厅的见解。",
+            "报告指出，它分析的近期事件里有一类并未窃取签名密钥本身，而是篡改用户界面、API、CI/CD、未签名交易的生成逻辑与生产环境程序等组件，借由滥用合法的签名流程造成资金流出。",
+            "金融厅自己的对应方针则写，在这种情况下光靠使用冷钱包无法确保加密资产的安全保管，必须强化包含外包商在内的整条供应链的网络安全管理体制。",
+            "这次公布没有新增法定义务也没有罚则，对应方针对监督指引只写到检讨与设法提高水平；但它订了有日期的期待，自 2026 事务年度起要求全部业者做网络安全自我评估，并在 2026 年内对数家业者实施威胁导向渗透测试。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "7 月 23 日公布了什么：一份委托研究报告"
+        },
+        {
+          "type": "paragraph",
+          "text": "报告是挂在政策专页的最新信息列表里公布的，2026 年的第一项就是它，底下同时提供日文报告、英文报告与日文概要版三个 PDF，链接下方紧接着那行免责语。页面在本文核查日标注「令和８年７月23日更新」，也就是 2026 年 7 月 23 日；那是页面的更新日，页面再更新就会换一个日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "报告自己的免责也值得读。报告第二页写，任何错误由承包商自负，个案研究是依公开资料为研究目的整理，不表示对个别案件的责任归属或法律评价；同一页的致谢还写到金融厅的官员曾提供建议与意见——这恰好说明委托研究与官方见解的界线在哪里。金融厅自己署名的文件是对应方针，文首写着 April 3, 2026 与 Financial Services Agency。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四个日期分开看：草案、制定、封面、公布"
+        },
+        {
+          "type": "paragraph",
+          "text": "对应方针不是 7 月 23 日才有的。金融厅 2026 年 4 月 3 日那则公布页写，方针草案在令和８年２月10日到令和８年３月11日之间征求意见，也就是 2026 年 2 月 10 日到 3 月 11 日，收到「計18件のコメント」，也就是 18 件意见；金融厅依意见做必要的增补与修正后才定案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一页页首标注「令和８年４月３日」与「令和８年７月23日更新」，并在别纸一、别纸二之后写着「令和８年７月23日、以下の英語版を公表しました。」，也就是 2026 年 7 月 23 日公布了以下英文版，接着列出别纸三与别纸四。所以对应方针的制定日是 2026 年 4 月 3 日，英文版公布日才是 2026 年 7 月 23 日，而报告封面的 2026 年 6 月 30 日是报告本身的日期。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "日期",
+            "这一天的动作",
+            "出处"
+          ],
+          "rows": [
+            [
+              "2026-02-10 至 03-11",
+              "方针草案征求意见，收到 18 件",
+              "金融厅 4 月 3 日公布页"
+            ],
+            [
+              "2026-04-03",
+              "金融厅制定对应方针（别纸一）",
+              "同一页页首标注的日期"
+            ],
+            [
+              "2026-06-30",
+              "研究报告封面标注的日期",
+              "报告 PDF 封面"
+            ],
+            [
+              "2026-07-23",
+              "研究报告公布，方针英文版补登",
+              "政策专页更新日、4 月 3 日公布页"
+            ]
+          ],
+          "caption": "2026 年 9 月 17 日核查；日期依金融厅页面与报告封面整理，四个日期不可互相代换。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "报告怎么重新解释近年的资产外流"
+        },
+        {
+          "type": "paragraph",
+          "text": "报告的研究发现摘要指出，近年针对加密资产相关业者的攻击持续发生且规模扩大，攻击路径逐年更多样、更精密、更有组织。报告写，攻击者越来越不只针对系统本身，也针对运营基础设施，它举的例子是签名密钥、钱包、访问控制、CI/CD、云 IAM／KMS 与签名服务。签名密钥就是对应方针注一定义的秘密密钥，用来证明交易由有正当权限者所为。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最关键的一句紧接在后。报告说，分析近期事件后确认有一类攻击并未窃取签名密钥本身，而是篡改了用户界面、API、CI/CD、未签名交易的生成逻辑与生产环境程序等组件，借由滥用合法的签名流程造成资金流出。报告的个案教训进一步写，这些事件的起点是以社会工程或钓鱼攻破开发者权限、或投放恶意软件；界面与 API 被篡改之后，签署人难以察觉交易是伪造的，于是照着签了下去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "报告也提出一个结构上的判断：现实世界的加密资产相关服务并不是在纯粹去中心化的模式下运作，因此风险评估必须涵盖链上代码与协议以外的链下组件、运营控制、外部依赖与治理。报告的个案研究从 (1) 编到 (10)，依报告自述，它分析的是含 DeFi 在内的加密资产相关服务近期案例，聚焦造成重大损失的主要攻击手法，举的例子是第三方遭攻破、智能合约漏洞、闪电贷攻击与恶意软件攻击。本文不点名个案的业者与协议，报告引用的损失金额与件数统计也全部来自外部机构，本文不写。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-jfsa-cybersecurity-20260723/diagram-1-zh-cn.svg",
+          "alt": "四格图解：攻破开发者权限、篡改签名前的界面与程序、由有正当权限的人签下、资金流出",
+          "width": 1600,
+          "height": 900,
+          "caption": "报告指出的路径：先攻破开发者或外包商的权限，再篡改签名前的界面与程序，让有正当权限的人签下被篡改的交易，资金因此流出。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "金融厅自己的对应方针：光靠冷钱包不够"
+        },
+        {
+          "type": "paragraph",
+          "text": "对应方针的第一章写，近年涉及加密资产外流的案件不一定是签名密钥遭窃造成的，而是包括社会工程攻击与入侵外包商等间接攻击在内的各种巧妙手法越来越明显，也有攻击者花时间事前准备而未被业者察觉的案例。在这种情况下，这份文件写下关键的一句：光靠使用冷钱包无法确保加密资产的安全保管，必须强化包含外包商在内的整条供应链的网络安全管理体制。方针也写到，日本曾实际发生用户寄存的加密资产外流事案；在谈重点监管的段落它另写，鉴于过去发生过大规模的外流，金融厅一直密集监控业者的外流风险对策与系统风险管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "方针把政策架构分成自助、共助、公助。自助方面，金融厅表示自 2026 事务年度（文件写 Program Year 2026）起，将要求全部加密资产交换业者（日文『暗号資産交換業者』）实施原本要求其他金融业者做的网络安全自我评估（CSSA），或视需要与业者对话；注十写 CSSA 是用与金融业网络安全指引一致的问题自评，让业者看到自己在业界中的位置、借此自主改善。金融厅也会检讨提高监督指引要求的网络安全水平，方向包括人力配置、外部审计与外包商要件。公助方面，金融厅会持续要求业者参加业界横向演练 Delta Wall，目标三年内全部业者参加，并在 2026 年内对数家业者的实际运营环境实施威胁导向渗透测试（TLPT）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共助方面，方针本文只写「自律规范机构」，注十一才连向 JVCEA 的组织图；金融厅也鼓励业者参加 JPCrypto-ISAC 这类信息共享机构。但这些都不是新增的法定义务：对应方针没有罚则，对监督指引只写到检讨与设法提高水平，没有列出修正条文也没有写生效日；三年内全部参加没有写起算基准日；TLPT 没有写是哪几家，只写结果个别反馈受测业者、共通课题反馈业界。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这件事跟台湾读者有什么关系"
+        },
+        {
+          "type": "paragraph",
+          "text": "先画界线。对应方针的对象是日本的加密资产交换业者，两份文件都没有提到台湾，也没有说日本的规定适用于台湾的用户或平台。能带走的是问题的形状。报告写，业者的钱包系统若使用第三方服务，即使没有把签名密钥交给第三方，确认该第三方已适当建立并落实防范网络攻击、生产环境访问管理与程序变更管理等控制仍然重要；报告另外写，外部服务商被攻破可能外溢到业者自家服务或用户资产。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一层是自持钱包的人每天在做的事。报告有一页专门谈签名当下的确认与「盲签」：复杂的智能合约交易，钱包可能无法以人类看得懂的格式呈现细节，硬件钱包又受屏幕大小与界面设计限制。报告因此写给签署人一句话：签署涉及智能合约的复杂交易时，签署人应该理解的不只是收款地址与转账金额，还有这笔交易会执行什么操作、授予什么权限、授予给谁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "报告记载，2026 年 5 月 12 日以太坊基金会与钱包开发者、安全公司等生态系统参与者发表了 Clear Signing，核心技术 ERC-7730 是以 JSON 为基础的描述文件标准；但报告同时提醒，它的效果取决于显示的信息是否正确、描述文件是否可信与各家钱包采用的模型，描述文件错误或发布渠道被入侵都可能造成误导显示，不能当成无条件安全。还有一个边界：这份报告是写给业者与监管机构的，本文核查到的版本没有给一般用户的自保清单。以下是编辑设计的例子，不是官方建议：手机钱包跳出一笔看不懂的授权时，可以先问这笔交易要我授权什么、授权给谁。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这份报告是日本金融厅的立场吗？",
+              "answer": "不是。金融厅在刊载报告的政策专页上明写「上述研究报告不代表本厅的见解、意见等」，报告第二页的免责声明也写本报告的内容不代表金融厅的官方见解，并说报告中的任何错误由承包商自负。同一页的致谢同时提到，金融厅的官员曾对报告提供建议与意见。要引用金融厅自己的立场，该看的是金融厅在 2026 年 4 月 3 日制定、7 月 23 日补登英文版的对应方针，那才是金融厅署名的文件。"
+            },
+            {
+              "question": "这次公布有没有新增业者要遵守的义务？",
+              "answer": "没有新增法定义务，也没有罚则。对应方针写的是金融厅会检讨提高监督指引对加密资产交换业者要求的网络安全水平，用的字是检讨与设法提高，文件本身没有列出修正条文，也没有写生效日。不过它确实写下了有日期的期待：自 2026 事务年度起要求全部业者做网络安全自我评估、2026 年内对数家业者实施威胁导向渗透测试，以及业界横向演练目标三年内全部业者参加。所以说「没有任何时程」并不准确，准确的说法是没有新的法律义务与罚则。"
+            },
+            {
+              "question": "报告说钱是怎么被弄走的？",
+              "answer": "报告指出，它分析的近期事件里有一类并未窃取签名密钥本身，而是篡改用户界面、API、CI/CD、未签名交易的生成逻辑与生产环境程序等组件，借由滥用合法的签名流程造成资金流出。报告的个案教训写，这些事件的起点是以社会工程或钓鱼攻破开发者权限、或投放恶意软件；界面与 API 被篡改之后，签署人难以察觉交易是伪造的而照着签了。本文不写更细的手法，也不写入侵迹象。"
+            },
+            {
+              "question": "什么是盲签？",
+              "answer": "报告在个案教训的其中一页说明：像 DeFi 协议或钱包合约更新这类复杂的智能合约交易，钱包可能无法以人类看得懂的格式呈现交易细节，calldata 或 EIP-712 消息可能只显示成十六进制字符串或难以判读的数据；硬件钱包又受屏幕大小与界面设计的限制，更难清楚呈现复杂的交易细节。报告因此写，签署涉及智能合约的复杂交易时，签署人应该理解的不只是收款地址与转账金额，还有这笔交易会执行什么操作、授予什么权限、授予给谁。"
+            },
+            {
+              "question": "有了 Clear Signing，钱包显示的东西就可以信了吗？",
+              "answer": "报告明确说不行。报告记载 2026 年 5 月 12 日以太坊基金会与钱包开发者、安全公司等生态系统参与者发表 Clear Signing，核心技术 ERC-7730 是以 JSON 为基础的描述文件标准，目标是在签名当下做到看到什么就签什么。但报告同时写，它的效果取决于显示的信息是否正确、描述文件是否可信，以及各家钱包采用的模型；描述文件错误或发布渠道被入侵都可能造成误导显示，所以不能把它显示的信息当成无条件安全，必须搭配其他措施一起用。报告也没有说哪些钱包已经支持、什么时候会普及。"
+            },
+            {
+              "question": "报告有给一般用户的自保清单吗？",
+              "answer": "没有。报告的对象是加密资产相关业者与监管机构，建议写的是业者的控制项目；报告从既有规范的比对中抽出五个优先领域，分别是强化第三方风险管理、防止恶意代码植入或程序篡改、防止加密资产遭未授权转移、针对智能合约与 DeFi 的措施，以及善用外部评估。本文核查到的版本里没有「用户应该怎么做」的章节，所以不要把给业者的控制清单读成金融厅对用户的操作指示。"
+            },
+            {
+              "question": "日本的这些要求管得到台湾的平台或我的账号吗？",
+              "answer": "这两份文件都没有这样写。对应方针的对象是日本的加密资产交换业者，报告与对应方针都没有提到台湾，也没有说日本的规定适用于台湾的用户或平台。台湾自己的制度是另一件事，本文结尾的第二个链接有一篇专门谈。"
+            },
+            {
+              "question": "我要怎么自己去看原始文件？",
+              "answer": "研究报告挂在金融厅网站那个推动创新的政策专页的最新信息列表里，底下同时提供日文报告、英文报告与日文概要版三个 PDF，免责语就印在链接下方。金融厅自己的对应方针在 2026 年 4 月 3 日那则公布页上，别纸一是日文全文、别纸二是日文概要，别纸三与别纸四是 2026 年 7 月 23 日补登的英文版。两个页面标注的更新日期都会随着页面再次更新而变动，看的时候要一并记下自己读到的日期。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "哪一句话出自哪一份文件",
+          "text": "这一篇有两份文件，说话的人不一样。研究报告「暗号資産関連業者におけるサイバーセキュリティの課題と対策に関する研究調査」，英文名 Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses，是金融厅委托的研究成果，作者是承包商合同会社デロイトトーマツ，金融厅在刊载页与报告内都明写它不代表本厅见解，所以本文写成「报告指出」或「报告建议」。对应方针「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針」，英文名 Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services，是金融厅自己署名的文件，本文才写成「金融厅表示」。日期也要分开看：对应方针制定日 2026 年 4 月 3 日、报告封面日期 2026 年 6 月 30 日、公布日 2026 年 7 月 23 日是三个不同的日期，不要互相代换。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇是信息整理，不是投资建议",
+          "text": "本文说明的是法规、技术与行业运作，不推荐任何加密资产、交易所、钱包或发行方，也不是投资建议，不含价格、涨跌幅与买卖时机。监管规定、登记状态、上线时间与服务条件以主管当局与服务商当期公告为准，本文核查日为 2026-09-17。加密资产价格波动大、可能全额损失，且部分服务不受存款保险或投资者保护制度保障；实际适用请以官方公告或合格专业人员的意见为准。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年加密货币新闻总整理：法规、技术与产业的重点",
+          "url": "https://mokaair.com/zh-CN/life/crypto-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "台湾虚拟资产服务法三读通过：七种服务商、稳定币许可与仍未定的施行日",
+          "url": "https://mokaair.com/zh-CN/life/crypto-news-taiwan-vasp-act-20260630"
+        }
+      ],
+      "sources": [
+        {
+          "title": "金融庁：イノベーション推進に向けた金融庁の取組み（研究报告刊载页，日文版）",
+          "url": "https://www.fsa.go.jp/policy/bgin/innovationtop.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses（研究报告英文版，封面日期 2026 年 6 月 30 日）",
+          "url": "https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "金融庁：「暗号資産交換業等におけるサイバーセキュリティ強化に向けた取組方針（案）」に対するパブリック・コメントの結果等の公表について",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Policy Approaches to Strengthen Cybersecurity for Cryptoasset Exchange Services（对应方针英文版，别纸三）",
+          "url": "https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}
