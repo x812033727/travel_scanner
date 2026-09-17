@@ -1,7 +1,7 @@
 ---
 id: 2026-09-16-launch-articles-batch-7
 title: 撰寫並上線第七批旅遊文章：二十篇 zh-TW 攻略與情報
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-opus-5
@@ -115,7 +115,7 @@ uv run python -m app.guides.pack_cli lint --kind intel
 
 ## 撰稿進度（2026-09-17）
 
-**二十篇已經寫完、ingest 進 repo、推上 `claude/new-travel-guide-k2q5h3`。** 還沒做的只有部署與正式站發布。
+**二十篇已經寫完、ingest 進 repo，PR #543 已開。** 還沒做的只有部署與正式站發布。
 
 - `pack_cli ingest` 二十篇全部成功，`tests/test_guides_content_pack.py` 9 passed 5 skipped，
   `lint --kind howto` 與 `--kind intel` 對這二十篇**零 error 零 warning**（站上既有文章的舊 error 不在本批範圍）。
