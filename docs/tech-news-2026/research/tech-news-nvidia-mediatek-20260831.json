@@ -1,0 +1,544 @@
+{
+  "slug": "tech-news-nvidia-mediatek-20260831",
+  "event_date": "2026-08-31",
+  "event_date_basis": "2026-08-31 是 slug 與 news_date 都採用的事件日。NVIDIA 新聞室頁面只印『August 31, 2026』，整頁沒有出現發稿地（'Santa Clara' 以子字串查核到 2026-09-18 為 0 次）；聯發科技中文新聞稿的發稿行同時印出日期與發稿地，同樣是 8 月 31 日。發稿行在 HTML 裡是兩個相鄰的行內元素（</strong><span>），彼此之間沒有任何字元，所以頁面實際呈現的是『2026 年 8 月 31 日美國聖塔克拉拉訊』，中間沒有空格；把文字抽取工具在標籤邊界補出來的空格當成頁面內容是錯的（corrections-tech.md 的 must_add 曾如此記載，本次查核推翻）。緊接其後的破折號前後各有一個不斷行空格（&nbsp;）。MOPS 定價公告本身標示『Date of announcement 2026/08/31』『Time of announcement 20:25:52』，是同一天稍晚向主管機關提出的法定申報，不是另一個事件日。可轉換公司債的暫定發行日 2026/09/08 與暫定到期日 2031/09/08 是申報書寫的未來時點，不是本文的事件日，正文與 FAQ 都標明『暫定』。",
+  "title": "NVIDIA 投資聯發科技 35 億美元：合作深化公告與可轉債申報書各寫了什麼",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "publisher": "NVIDIA Newsroom",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "publisher": "聯發科技（MediaTek）新聞室",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Announcement of the completion of pricing for the Company's First Issuance of Unsecured Overseas Convertible Bonds（聯發科技，2026/08/31 20:25:52）",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "publisher": "公開資訊觀測站 MOPS（臺灣證券交易所）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "MediaTek Collaborates with NVIDIA on RTX Spark to Power the Next Wave of Windows PC Experiences",
+      "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+      "publisher": "MediaTek Press Room",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "撰稿者於 2026-09-17 用 curl -sL -A \"Mokaair-editorial\" 抓四條來源並直接讀到 body，未使用 WebFetch。(1) NVIDIA 新聞室：HTTP 200，82,927 bytes；(2) 聯發科技中文新聞室：HTTP 200，96,271 bytes；(3) MOPS 定價公告：HTTP 200，11,273 bytes，curl 直接讀到完整申報書正文（更早的查核紀錄曾記載這個網址對 curl 回 800 bytes 的安全阻擋頁，需要 WebFetch；撰稿者與查核者兩次都沒有觸發阻擋，阻擋規則看來不是每次都生效）；(4) 聯發科技 6 月 RTX Spark 新聞稿：HTTP 200，101,749 bytes。獨立查核者於 2026-09-18 以同一條指令重抓，四條的位元組數與 2026-09-17 完全相同，body 都是正文。MOPS 那一頁是 big5／cp950 編碼，申報書正文包在 <pre> 區塊裡、換行是版面的一部分，所以本紀錄的 MOPS verbatim_quote 一律只取單一行的連續字串，不跨行拼接。第二輪查核（2026-09-18）再加一條規則並套用到三個新聞稿頁：verbatim_quote 也不得跨過行內元素邊界（</strong>、</span>），因為瀏覽器算連續、原始碼不連續，換一個抽取工具就驗不出來；兩條跨邊界的引文（NVLink-C2C 那條、聯發科技中文『邊緣 AI 運算：』那條）已縮短成邊界之內的連續字串，縮短前的整句寫在各自的 fact 欄。",
+  "verified_facts": [
+    {
+      "fact": "NVIDIA 新聞室頁面的發稿日期只印 August 31, 2026。以子字串 'Santa Clara'、'SANTA'、'Calif' 查核到 2026-09-18，這一頁各出現 0 次，因此這一頁沒有印出發稿地。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 31, 2026"
+    },
+    {
+      "fact": "聯發科技中文新聞稿的發稿行寫出發稿地是美國聖塔克拉拉。頁面實際呈現的字串是「2026 年 8 月 31 日美國聖塔克拉拉訊」，日期與發稿地之間沒有空格（HTML 是 </strong> 直接接 <span>），其後的破折號前後各有一個不斷行空格。因此本紀錄只引『美國聖塔克拉拉訊』這一段連續字串，正文也不逐字引電頭。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "美國聖塔克拉拉訊"
+    },
+    {
+      "fact": "官方英文標題是 NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA and MediaTek Deepen Long-Standing Partnership to Build AI Edge to Cloud Computing Platforms"
+    },
+    {
+      "fact": "聯發科技官方中文標題是「NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台」，不是英文標題的逐字翻譯。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA 與聯發科技深化長期合作夥伴關係共同打造從邊緣到雲端的 AI 運算平台"
+    },
+    {
+      "fact": "這次公告的核心是既有合作的深化，不是新夥伴關係或產品發表。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA and MediaTek today announced a deepening of their longstanding collaboration to build the next generations of AI computing platforms — spanning AI infrastructure, local AI computing and automotive."
+    },
+    {
+      "fact": "新聞稿本身寫出的投資金額是 NVIDIA 投資 35 億美元於聯發科技發行的可轉換公司債。以 '$'、'billion'、'million' 查核到 2026-09-18，NVIDIA 新聞稿的正文各出現 1／1／0 次，因此這是新聞稿唯一的金額。（整頁原始碼另有一次 'million'，出現在側欄一則不相干新聞的網址 aws-and-nvidia-to-deliver-2-million-additional-gpus… 裡，不是本則新聞稿的內容。）",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA has also invested $3.5 billion in convertible bonds issued by MediaTek."
+    },
+    {
+      "fact": "聯發科技中文用語把這筆投資寫成美金 35 億元、海外可轉換公司債（ECB）。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA 同時投資美金 35 億元於聯發科技發行的海外可轉換公司債（ECB）。"
+    },
+    {
+      "fact": "NVIDIA 表示 NVLink Fusion 平台為超大規模雲端服務商、雲端服務供應商與前沿模型開發商提供一條預先驗證路徑，可將客製化 XPU 接入 NVIDIA NVLink 連結的機櫃級 AI 工廠。這是廠商對一個尚未出貨平台的自我描述。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MediaTek will adopt the NVIDIA NVLink Fusion™ platform to provide hyperscalers, cloud service providers and frontier model developers with a prevalidated path to develop custom XPUs and bring them into NVIDIA NVLink™-connected, rack-scale AI factories."
+    },
+    {
+      "fact": "NVIDIA 與聯發科技在新聞稿裡把合作分成三大領域：AI infrastructure、Local AI computing、Automotive。這是新聞稿自己的分節方式，不是能力宣稱。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA and MediaTek are collaborating in three major areas:"
+    },
+    {
+      "fact": "NVIDIA 英文稿以 including 引出三項具名技術：NVLink Fusion chiplet、NVLink-C2C、NVHBM；including 明示這不是窮舉清單。聯發科技中文稿同一句寫的是「NVLink Fusion 平台結合客製化 XPU 相關的關鍵技術:」，沒有對應 including 的字眼，兩個語系的對沖詞不同，正文因此把 including 歸因給 NVIDIA 英文稿。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The NVLink Fusion platform brings together the critical technologies surrounding a custom XPU, including:"
+    },
+    {
+      "fact": "NVIDIA 英文稿的 chiplet，聯發科技中文稿自己的譯法是「小晶片」（該頁寫 NVIDIA NVLink Fusion Chiplet（小晶片））；同一頁把 multi-die 譯成「多晶粒」，所以「晶粒」在這家公司的中文用語裡對應的是 die，不是 chiplet。正文照官方中文用語寫「小晶片」。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA NVLink Fusion Chiplet（小晶片）"
+    },
+    {
+      "fact": "NVLink-C2C 的說明提到 NVIDIA Rosa CPU 一詞，兩份新聞稿都只寫出名稱，沒有解釋世代或推出時間。整句是 'NVIDIA NVLink-C2C, providing high-bandwidth, energy-efficient connectivity between XPUs, NVIDIA Rosa CPUs and other compatible processors.'，但原始碼是 <strong>NVIDIA NVLink-C2C</strong>, providing…，技術名稱與其後的說明分屬兩個行內元素，跨過 </strong> 就不是原始碼裡的連續字串，因此本欄只引該邊界之後的一段。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "providing high-bandwidth, energy-efficient connectivity between XPUs, NVIDIA Rosa CPUs and other compatible processors."
+    },
+    {
+      "fact": "邊緣／本地 AI 運算部分，雙方將持續合作開發未來數代 RTX Spark 與 DGX Spark 電腦晶片，新聞稿沒有點名具體世代、規格或時間。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The companies will continue to collaborate on multiple generations of NVIDIA RTX Spark™ and DGX Spark™ PC chips, powering consumer PCs, AI developer supercomputers and enterprise-class workstations, that integrate NVIDIA GPUs with MediaTek SoCs."
+    },
+    {
+      "fact": "聯發科技中文版把這一塊小標寫成邊緣 AI 運算，是英文版 Local AI computing 的同一個項目，不是兩個不同計畫。原始碼是 <span style=\"font-weight: bold;\">邊緣 AI 運算：</span>雙方將持續合作開發…，粗體小標與其後的句子分屬兩個行內元素，所以本欄只引小標之後的一段；正文引用的也是同一段。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "雙方將持續合作開發未來數代 RTX Spark™ 與 DGX Spark™ 電腦晶片"
+    },
+    {
+      "fact": "既有基礎：聯發科技與 NVIDIA 先前已合作開發 GB10 Grace Blackwell 超級晶片，用於 NVIDIA DGX Spark。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "MediaTek collaborated with NVIDIA on the GB10 Grace Blackwell Superchip that powers NVIDIA DGX Spark, which combines an NVIDIA Blackwell GPU and Grace CPU connected by NVLink-C2C to bring powerful AI capabilities to edge systems."
+    },
+    {
+      "fact": "聯發科技 2026 年 6 月 1 日新聞稿（發稿行 TAIPEI, Taiwan – June 1, 2026，頁面結構化資料的 datePublished 是 2026-06-01T06:30:00.000Z、dateModified 是 2026-07-15T20:25:17.931Z）宣布自己在 NVIDIA RTX Spark 上的角色，當時寫明第一批搭載的筆電將於 Fall 2026 推出。該句完整是 'The first wave of laptops powered by NVIDIA RTX Spark will be available Fall 2026.'，其中 Spark 與 will 之間是不斷行空格（HTML 原始碼為 &nbsp;），所以本欄只引不跨該空格的連續片段。",
+      "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+      "is_vendor_claim": false,
+      "verbatim_quote": "will be available Fall 2026."
+    },
+    {
+      "fact": "以 'Fall 2026' 與「秋季」查核到 2026-09-18：這個時程只出現在 6 月 1 日那一頁（各 1 次與 0 次），8 月 31 日的 NVIDIA 頁與聯發科技中文頁都是 0 次，因此 8 月 31 日這兩份公告沒有重複或更新這個時程。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 31, 2026"
+    },
+    {
+      "fact": "6 月 1 日新聞稿已列出既有合作：車用 C-X1 平台、資料中心 AI 基礎建設的 NVLink Fusion，以及 GB10 SoC，證明這些不是 8 月 31 日才開始的新項目。",
+      "url": "https://www.mediatek.com/press-room/mediatek-collaborates-with-nvidia-on-rtx-spark-to-power-the-next-wave-of-windows-pc-experiences",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This new lineup expands already robust existing collaborations between MediaTek and NVIDIA; in automotive with the C-X1 platform, in data center AI infrastructure with NVLink Fusion, and on the GB10 SoC."
+    },
+    {
+      "fact": "車用部分，兩家公司表示聯發科技 Dimensity Auto 平台整合 NVIDIA 技術，可搭配 NVIDIA DRIVE AGX 平台協同運作。這句同時出現在 NVIDIA 頁與聯發科技中文頁，是雙方對平台能力的共同描述。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MediaTek Dimensity Auto platforms integrate NVIDIA technologies to deliver advanced AI and NVIDIA RTX™ graphics for intelligent vehicle cockpits and can work alongside NVIDIA DRIVE AGX™."
+    },
+    {
+      "fact": "兩份新聞稿的公司簡介都印出聯發科技的台灣證券交易所代號 2454（NVIDIA 頁的英文版與聯發科技中文頁的中文版）。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "MediaTek（TWSE：2454）"
+    },
+    {
+      "fact": "MOPS 申報書的主旨是《Announcement of the completion of pricing for the Company's First Issuance of Unsecured Overseas Convertible Bonds》，頁面列出的發言日期是 2026/08/31、發言時間是 20:25:52，Provided by 欄位是 MediaTek Inc.（網址參數 co_id=2454）。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "1.Date of occurrence of the event:2026/08/31"
+    },
+    {
+      "fact": "申報書寫明這次發行是依金融監督管理委員會 2026 年 8 月 25 日的函生效，函號在申報書英文頁印為 Jin-Guan-Zheng-Fa No.1150352832（跨兩行：'…the letter (Jin-Guan-Zheng-Fa' 換行 'No.1150352832), issued by the Financial Supervisory Commission on August 25,' 換行 '2026:'）。本紀錄不把這個函號回譯成中文文號，以免造出來源沒有印的字串。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The issuance became effective pursuant to the letter (Jin-Guan-Zheng-Fa"
+    },
+    {
+      "fact": "發行總額為美金 3,900,000 仟元；正文寫成 39 億美元是同一個金額的單位換寫，正文並保留申報書原印的 US$3,900,000 thousand 字串。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A. Issue Amount: US$3,900,000 thousand"
+    },
+    {
+      "fact": "面額是每張美金 20 萬元，超過的部分以美金 10 萬元的整數倍計。這個但書在申報書裡跨行（下一行是 'thousand in excess thereof'），正文保留了整個條件，不寫成單一的「每張 20 萬美元」。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "B. Denomination: US$200 thousand or in any integral multiples of US$100"
+    },
+    {
+      "fact": "NVIDIA Corporation 認購 17,500 張，合計美金 3,500,000 仟元（35 億美元）。申報書的這兩行分別是張數與金額，本欄只引第一行。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA Corporation has subscribed for 17,500 certificates,"
+    },
+    {
+      "fact": "申報書把特定人認購的目的寫為長期策略合作。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A. Purpose of subscription by specific persons: Long-term strategic"
+    },
+    {
+      "fact": "申報書把 NVIDIA 與公司的關係列為非關係人。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Non-related party."
+    },
+    {
+      "fact": "票面利率年息 0%。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(2) Coupon Interest: 0% per annum"
+    },
+    {
+      "fact": "發行價格為面額 100%。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "C. Issue Price: 100% of par value"
+    },
+    {
+      "fact": "暫定發行日 2026/09/08。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "D. Tentative Issue Date: 2026/09/08"
+    },
+    {
+      "fact": "暫定到期日 2031/09/08，是發行日的五週年（該行在申報書換行，'Date.' 在下一行）。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "B. Tentative Maturity Date: 2031/09/08, the 5th anniversary of the Issue"
+    },
+    {
+      "fact": "轉換價格為每股新台幣 4,513.75 元，申報書寫這是聯發科技普通股 2026 年 8 月 31 日在台灣證券交易所收盤價新台幣 3,925 元的 115%，8 月 31 日是定價日。這段在申報書跨四行，本欄只引第一行。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "C. Conversion Price: The Conversion Price of the Bond is NT$4,513.75 per"
+    },
+    {
+      "fact": "轉換標的是公司新發行的普通股，轉換權暫定自發行日起算滿三個月後之次日起才能行使，且申報書列出的閉鎖期間（停止過戶期間、股利或現金增資的停止過戶前十五個營業日至基準日、減資期間、面額變更期間）不能請求轉換。'tentatively' 與 Closed Period 兩個限定詞都在原文裡，正文都保留。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "separately agreed in the Indenture, the Bondholders may, tentatively,"
+    },
+    {
+      "fact": "銷售與交易地點是新加坡證券交易所。這是 (5) Place of Offering and Trading 欄位的內容，與資金用途是兩個不同欄位，不可拼成一句。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Singapore Exchange Securities Trading Limited"
+    },
+    {
+      "fact": "申報書寫，假設今年內全數轉換，對現有股東的最大稀釋比率約為 1.67%，並據此表示不預期對現有股東權益造成重大稀釋影響。這個比率涵蓋整批債券，申報書沒有印 NVIDIA 單獨部分的持股或稀釋比率。最後一句是公司自己的評估，正文有歸因給申報書。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": true,
+      "verbatim_quote": "within the current year, the maximum dilution of shareholding would be"
+    },
+    {
+      "fact": "債權人可要求公司買回的情形有兩種：公司普通股不再於台灣證券交易所上市或連續停止交易 30 個營業日以上；以及發生債券信託契約（Indenture）所定義的經營權變動。申報書在 'Common Shares' 兩側都用了同一個右雙引號（頁面原樣如此），本欄因此只引不含引號的一行。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(b) Upon the occurrence of a change of control of the Company as"
+    },
+    {
+      "fact": "公司可提前贖回的情形也有兩種：已贖回、轉換或買回並經註銷的債券超過發行總額 90%；或發行日之後中華民國稅法變動，導致公司稅負增加、或必須就本債券支付額外費用或成本。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(a) In the event that more than 90% of the Bonds issued have been"
+    },
+    {
+      "fact": "資金用途寫的是支應以外幣採購原物料，這個欄位（Use of Proceeds and Anticipated Benefits）在申報書只有這一句。",
+      "url": "https://emops.twse.com.tw/server-java/t05st01_e?step=1&co_id=2454&spoke_date=20260831&spoke_time=202552&seq_no=3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "fund the procurement of raw materials in foreign currencies."
+    },
+    {
+      "fact": "NVIDIA 新聞室刊登的英文稿末有一段標題為 MediaTek Forward-Looking Statements 的聲明，寫明內容不構成、也不應被解讀為台灣相關法令下的任何營運、財務、營收、獲利或其他預測資訊。原文寫的是 Taiwan laws and regulations，不是 ROC 或中華民國，正文照原文寫「台灣」。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It does not constitute, and should not be construed as, any business, operational, financial, revenue, earnings, or other forecast information under applicable Taiwan laws and regulations."
+    },
+    {
+      "fact": "同一段聲明提醒投資人應自行判斷、自行評估後再做投資決定，並說投資決定不應僅依據這份新聞稿的內容。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Investors are advised to exercise independent judgment and conduct their own evaluation before making any investment decision."
+    },
+    {
+      "fact": "以 2026-09-18 重讀聯發科技中文新聞稿全文的方式核對：正文在「###」之後接「關於聯發科技」與「關於 NVIDIA」兩段公司簡介即結束，逐段讀到頁尾，這一頁沒有前瞻性聲明文字，與 NVIDIA 頁刊出的英文版不同。頁尾最後一句如引文。",
+      "url": "https://www.mediatek.com/zh-tw/press-room/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA（NASDAQ：NVDA）是 AI 與加速運算領域的全球領導者。"
+    },
+    {
+      "fact": "NVIDIA 自己也在稿末附上另一段就美國 1933 年證券法第 27A 條與 1934 年證券交易法第 21E 條而言的前瞻性聲明。原文的 NVIDIA’s 用的是 U+2019 撇號（HTML 原始碼 &rsquo;），不是 ASCII 的 '。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-and-mediatek-deepen-long-standing-partnership-to-build-ai-edge-to-cloud-computing-platforms",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Certain statements in this press release including, but not limited to, statements as to: expectations with respect to NVIDIA’s partnership with MediaTek, and the benefits and impact thereof"
+    }
+  ],
+  "not_said": [
+    "兩份新聞稿都沒有給出未來世代產品的規格、價格、上市地區或上市時間；被點名的 GB10 Grace Blackwell 超級晶片、RTX Spark、DGX Spark、Dimensity Auto 與 NVIDIA Rosa CPU 都只有名稱，沒有規格或時程。",
+    "新聞稿與申報書都沒有點名任何客戶、雲端服務商、車廠或車型。",
+    "新聞稿沒有寫可轉換公司債的總額、票面利率、面額、到期日、轉換價格、銷售與交易地點或稀釋比率，這些只出現在 MOPS 申報書。",
+    "申報書沒有印 NVIDIA 換股後單獨的持股比例；1.67% 是整批債券全數轉換的最大稀釋比率。",
+    "申報書沒有寫 NVIDIA 認購以外的部分由誰認購，也沒有印出發行總額與 NVIDIA 認購金額相減的差額；本文因此不自行相減，只寫 NVIDIA 認購的是這批債券的其中一部分。",
+    "本文查到的兩份新聞稿與這份申報書，都沒有記載 NVIDIA 持有聯發科技普通股的情形——這是「這幾份文件沒有寫」，不是「NVIDIA 沒有持股」。",
+    "兩份新聞稿都沒有解釋 NVIDIA Rosa CPU 是什麼世代或何時推出，只出現名稱。",
+    "本文四條來源不含聯發科技英文版新聞稿與 NVIDIA 官方 releases.xml feed，因此不採用只有這兩處才有的時間戳排序細節。",
+    "本文四條來源不含 MOPS 2026 年度公告清單，因此不對『8 月 31 日之後是否已有公告確認發行完成』做出判斷；FAQ 已寫明查核日已在暫定發行日之後、但來源不涵蓋之後的公告。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "NVIDIA newsroom feed（releases.xml）與 MediaTek 英文版新聞稿的精確時間戳，用來判斷新聞稿與 MOPS 申報孰先孰後、相差幾分鐘。",
+      "seen_where": "既有研究紀錄與獨立查核紀錄都記錄了這兩個時間戳，並指出兩者矛盾。聯發科技中文頁本身也有一個機器可讀時間戳 2026-08-31 12:30:00。",
+      "why_excluded": "releases.xml 與聯發科技英文新聞稿都不在本文四條 sources[] 內；releases.xml 在既有查核紀錄裡被記為不可重現（?page= 參數伺服不一致）。中文頁那個時間戳沒有標時區，無法與 MOPS 的台北時間 20:25:52 直接比較。本文只寫 MOPS 申報書自己頁面顯示的發言時間，不做跨文件的分秒先後比較。"
+    },
+    {
+      "claim": "MOPS 2026 年度公告清單頁，用來判斷 8/31 之後是否已有公告確認可轉換公司債發行完成。",
+      "seen_where": "既有研究紀錄引用過這個網址。",
+      "why_excluded": "該網址不在本文四條 sources[] 內，本文不引用；正文與 FAQ 只寫申報書自己印的『暫定』字樣，並明說本文不對後續狀態下判斷。獨立查核判定：這一項不寫不會誤導讀者，因為文章已經把限制寫出來。"
+    },
+    {
+      "claim": "聯發科技 2026-07-31 董事會決議公告的細節（上限 40 億美元、暫定五年期、暫定 0% 票息、與同日普通公司債合計上限 50 億美元等）。",
+      "seen_where": "既有研究紀錄與獨立查核紀錄都記錄了這份公告。",
+      "why_excluded": "網址不在本文四條 sources[] 內。獨立查核判定：這是背景資訊，文章沒有任何一句話需要它才不致誤導；8/31 定價公告本身已完整交代這次發行的條件。"
+    },
+    {
+      "claim": "NVIDIA 認購後換算出的個別持股百分比，或發行總額減去 NVIDIA 認購金額得到的差額。",
+      "seen_where": "由 MOPS 申報書的 1.67% 最大稀釋比率、39 億與 35 億美元兩個金額，理論上都可以算出約略數字。",
+      "why_excluded": "申報書沒有印出這些數字，是編輯自己換算才會得到的推論；依規格，加總或相除出來的數字不寫成事實。這一篇涉及上市公司交易金額與定價，換算出來的數字最容易被讀成投資訊息，因此一律不寫。"
+    },
+    {
+      "claim": "股價當日反應、市值變化或分析師評論。",
+      "seen_where": "一般常識判斷新聞會有市場反應；6 月 1 日那份新聞稿裡另有一段外部分析師（Creative Strategies 的 Ben Bajarin）談話。",
+      "why_excluded": "四條來源都沒有股價資料；分析師談話不是一手事實，且與本文題目無關。依 tech.md，本文不做任何買賣建議、股價預測或利多利空判斷。"
+    },
+    {
+      "claim": "NVIDIA Rosa CPU 是什麼架構、世代或何時推出。",
+      "seen_where": "NVIDIA 新聞室與聯發科技中文頁都只寫出 NVIDIA Rosa CPUs 這個名稱。",
+      "why_excluded": "兩份來源都沒有解釋，只能記錄名稱本身被提到，不能進一步描述其定義或時程。"
+    },
+    {
+      "claim": "NVIDIA 副標題把 NVLink Fusion 稱為 New NVIDIA NVLink Fusion Platform。",
+      "seen_where": "NVIDIA 新聞室頁面的第二行副標：'MediaTek to Adopt New NVIDIA NVLink Fusion Platform, Helping Customers Take Custom XPUs to NVIDIA NVLink-Connected, Rack-Scale AI Factories'。",
+      "why_excluded": "草稿原本寫成「NVIDIA 新推出的 NVLink Fusion 平台」，但同一篇文章引用的 6 月 1 日新聞稿已把 NVLink Fusion 列為既有合作項目，兩者衝突。'New' 是 NVIDIA 副標題的自我描述，沒有歸因就寫成事實會與正文自相矛盾，因此正文改為不帶形容詞的「NVIDIA 的 NVLink Fusion 平台」。"
+    }
+  ],
+  "editorial_brief": "讀者是不懂晶片工程的台灣一般讀者，關心的是這則合作公告『到底是什麼』。角度：新聞稿與聯發科技同一天向公開資訊觀測站（MOPS）申報的法定文件，兩者涵蓋的範圍不同——新聞稿講合作方向與唯一一項金額（35 億美元），MOPS 申報書才有完整的發行條件（總額、面額、票息、轉換價格、到期日、銷售與交易地點、稀釋比率、買回與贖回條款、主管機關核准函）；把兩者分開讀，才不會誤以為 NVIDIA 已經是聯發科技的股東，或誤以為有新產品發表。兩份文件並不互相矛盾，只是範圍不同，標題與內文都不寫成『兩種說法』。結構依 BRIEF 五節：(1) 公告本身與唯一金額，以及發稿地的來源差異；(2) 三大合作領域＋表格；(3) 申報書揭露的發行條件＋圖解；(4) 目前還不是什麼（不是產品發表、不是股權，前瞻性聲明只在英文稿）；(5) 怎麼讀懂＋可觀察但來源未寫的後續。故意不寫的範圍：股價反應、NVIDIA 換算後個別持股、兩個金額相減的差額、7/31 董事會決議與 MOPS 年度清單頁（不在 sources 內）、releases.xml 與聯發科技英文頁時間戳排序（不可重現或不在 sources 內）、任何買賣或升級建議。",
+  "must_not_write": [
+    "不寫這是新產品發表或晶片發表；兩份新聞稿沒有給出未來世代產品的規格、價格或時間。",
+    "不寫 NVIDIA 已成為聯發科技的股東或持有股權，也不寫『NVIDIA 還不是股東』這種超出來源的否定句；只能寫這次交易認購的是可轉換公司債、轉換權暫定尚未開始，以及這幾份文件沒有記載持股情形。",
+    "不把 1.67% 寫成 NVIDIA 的持股或稀釋比例；那是整批 39 億美元債券全數轉換的最大稀釋比率。",
+    "不把 39 億美元總額、0% 票息、面額、轉換價格、到期日、交易地點等條件歸給新聞稿；這些只出現在 MOPS 申報書。表格的欄名因此用「新聞稿未說明」而不是「官方未說明」。",
+    "不把發行總額與 NVIDIA 認購金額相減，也不寫相減得到的差額；申報書沒有印這個數字。",
+    "不把 NVIDIA／聯發科技對 NVLink Fusion、平台能力的描述寫成事實，一律寫『NVIDIA 表示』『聯發科技表示』或『兩份新聞稿都寫』。",
+    "不點名任何客戶、車廠或車型；新聞稿與申報書都沒有寫。",
+    "不使用不在 sources[] 內的網址得出的事實（7/31 董事會決議、MOPS 年度清單、releases.xml、聯發科技英文版新聞稿）；前瞻性聲明只能說它出現在 NVIDIA 新聞室刊登的英文稿，不能說它也在聯發科技英文頁。",
+    "不對『可轉換公司債是否已完成發行』下判斷；本文查核的來源不涵蓋 8/31 之後的公告，而查核日已在暫定發行日之後，這個限制要寫出來。",
+    "不逐字引用聯發科技中文稿的電頭；該行在頁面上日期與發稿地之間沒有空格，逐字引用容易引進抽取工具補出來的空格。",
+    "不畫任何商標、字標或介面截圖；圖解只用幾何圖形與文字。",
+    "不寫任何購買、升級或投資建議，不做股價預測，也不用『利多／利空』式的判斷；官方定價與申報數字可以寫，但要連幣別、日期與出處一起寫。",
+    "表格、圖解與 FAQ 的欄名與標籤也不可以預設 NVIDIA 有持股：不寫『NVIDIA 持股比例』這種措辭，因為那已經假定有一個比例、只是沒公布。表格第四列改寫成『發行總額與條件、其餘認購人』，說的是新聞稿沒寫的東西本身。",
+    "前瞻性聲明的歸屬，summary 與 callout 也要跟正文一致寫成『NVIDIA 新聞室刊登的英文稿末』；不可以寫成『聯發科技在英文新聞稿附註』，那會指向不在 sources[] 內的聯發科技英文頁。"
+  ],
+  "live_data_warnings": [
+    "MOPS 申報書頁面（sources[2]）在更早的查核紀錄裡曾對 curl 回 800 bytes 的安全阻擋頁，需要 WebFetch 才能讀到；2026-09-17 與 2026-09-18 兩次 curl 都直接讀到 11,273 bytes 的完整正文，阻擋行為看來不是每次都觸發。之後的代理若重抓時遇到阻擋頁，應改用能讀到 body 的工具，不要把阻擋頁內容當成正文。該頁是 big5／cp950 編碼，申報書正文在 <pre> 區塊內，換行是版面的一部分，引文不可跨行拼接。",
+    "NVIDIA newsroom 的 releases.xml 是 20 筆的滾動視窗，且對 ?page= 參數的伺服不穩定（既有查核紀錄：同一 page=3 有時給預設窗、有時才給到八月的項目），本文未使用這個位址。",
+    "聯發科技新聞室 RSS（press-room/rss.xml）只有 10 筆，本文未使用。",
+    "四個頁面的位元組數（NVIDIA 82,927／聯發科技中文頁 96,271／聯發科技 6 月新聞稿 101,749／MOPS 申報書 11,273）是 2026-09-17 與 2026-09-18 兩次一致的快照，之後重抓不保證相同。",
+    "聯發科技 6 月 1 日那一頁的結構化資料 dateModified 是 2026-07-15T20:25:17.931Z，也就是發布後被改過；本紀錄引用的『Fall 2026』是 2026-09-18 讀到的版本。",
+    "可轉換公司債的暫定發行日 2026/09/08 與暫定到期日 2031/09/08，到本文查核日為止仍是申報書上的『暫定』字樣；查核日已經在暫定發行日之後，但本文四條來源不含之後的公告，因此不對是否已完成發行下判斷。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（Santa Clara 發稿地誤植成 NVIDIA 頁內容）：已修正。正文與研究紀錄都寫成 NVIDIA 頁只印日期、整頁查不到發稿地；發稿地改引自聯發科技中文頁（在 sources[] 內）。",
+    "must_fix 2（releases.xml?page=3 不可重現）：已排除。本文不使用 NVIDIA feed 的 pubDate／modDate 做時間排序，相關細節記入 unverified_or_excluded。",
+    "must_fix 3（MOPS 7/31 董事會決議與年度公告清單不在 sources 內）：已排除，並由獨立查核確認這兩項不寫不會誤導。",
+    "must_fix 4（is_vendor_claim 標記不可信）：已修正。NVLink Fusion 平台能力、prevalidated path、Dimensity Auto 座艙能力、以及申報書『不預期造成重大稀釋影響』的評估，本紀錄都自行標成 is_vendor_claim=true，正文一律歸因。",
+    "must_fix 5（' | ' 誤把兩個副標接成一句）：未重複。本紀錄的引文一律只取單一連續片段，不跨行也不跨元素拼接。",
+    "must_fix 6（SGX 引文與募資用途誤接成一句）：已修正，兩者拆成兩條事實、兩段引文。",
+    "must_fix 7（轉換期間引文被截短，漏掉 tentatively 與 Closed Period 排除）：已修正。正文、FAQ 與 verified_facts 都保留『暫定』與『閉鎖期間』。",
+    "must_fix 8（NVLink Fusion 三項技術被寫成窮舉清單）：已修正，並補記中文版沒有對應 including 的字眼。",
+    "must_fix 9（verbatim_quote 留空字串）：已修正，改引該頁真正的最後一句，並在 fact 寫出查證方法。",
+    "must_add（MOPS 把 NVIDIA 列為 Non-related party、認購目的 Long-term strategic collaboration）：已加入正文與 verified_facts。",
+    "must_add（賣回權觸發條件應逐條列出）：已加入；提前贖回的兩種情形也逐條列出，並補回原文的『並經註銷』與『發行日之後』兩個條件。",
+    "must_add（7/31 董事會決議與同一清單頁另兩筆公告）：刻意未寫入正文，網址不在四條 sources 內；記入 unverified_or_excluded。",
+    "must_add（『相差約五分鐘』的角度需要講清楚用哪個時間戳）：已改寫角度，不做跨文件的分秒先後比較。",
+    "must_add（三次獨立比對一致的 MOPS 定價數字可以放心使用）：已採用，並由獨立查核於 2026-09-18 第四次逐行核對。",
+    "must_add（不要把兩個英文頁的小差異寫成兩件事）：不適用，本文不使用聯發科技英文頁。",
+    "must_add（zh-TW 發稿行『美國』前有一個空格）：**未採用，且經獨立查核推翻**。頁面 HTML 是 </strong><span> 兩個相鄰元素、中間沒有任何字元，實際呈現沒有空格；那個空格是文字抽取工具在標籤邊界補出來的。正文改為不逐字引電頭。",
+    "live_data_warnings：已處理，見 live_data_warnings 欄位。",
+    "source_list_fix 1（MOPS 網址曾回阻擋頁）：已處理，sourcing_notes 與 live_data_warnings 都寫明兩次 curl 的結果與重現配方。",
+    "source_list_fix 2（5 條事實掛在表外網址）：已處理，本紀錄每一條 verified_fact 的 url 都在 sources[] 內。",
+    "source_list_fix 3（聯發科技英文頁不在 sources）：已處理，發稿地與前瞻性聲明都改用 sources 內的頁面。",
+    "source_list_fix 4（四條全一手）：維持不變。"
+  ],
+  "hero_label": "合作公告，不是新產品",
+  "diagram": {
+    "title": "一則公告的兩個版本",
+    "caption": "依 NVIDIA 與聯發科技 2026 年 8 月 31 日的聯合公告，以及聯發科技同日向公開資訊觀測站申報的定價公告整理，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "三大領域",
+        "基建、邊緣運算、車用"
+      ],
+      [
+        "新聞稿金額",
+        "35億美元可轉債"
+      ],
+      [
+        "申報才有條件",
+        "9月8日暫定發行"
+      ],
+      [
+        "這幾份文件沒寫",
+        "客戶、車廠、確切時程"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "先讀 BRIEF.md、tech.md 與 corrections-tech.md 本 slug 段落＋跨篇通則，再用 curl -sL -A \"Mokaair-editorial\" 把四條 sources 全部重抓一次並讀 body（NVIDIA 200／82,927 bytes、聯發科技中文 200／96,271、MOPS 200／11,273 big5、聯發科技 6 月稿 200／101,749，四者與撰稿者 2026-09-17 記錄的位元組數完全相同）。MOPS 那一頁另以 cp950 解碼、抽出兩個 <pre> 區塊逐行比對，所有 MOPS 引文都改成單行連續字串。把正文 14 段、summary 4 句、FAQ 7 題、兩個 callout 與表格 12 格、圖解四格與 caption、title、description 拆成 96 條主張逐條回原文核對，另以詞界比對查核 'Santa Clara'／'Calif'／'Fall 2026'／'秋季'／'$'／'billion'／'2454'／'chiplet'／'晶粒' 等 29 個字串在四頁的出現次數。",
+    "verdict": "fixed_in_place",
+    "edits_to_the_pack": [
+      "title 由「…的兩種說法」改為「…各寫了什麼」：兩份文件並不互相矛盾，只是涵蓋範圍不同，原標題會讓讀者以為兩邊說法打架；研究紀錄 title 同步。",
+      "第一段不再逐字引用聯發科技中文電頭。頁面 HTML 是 <strong>2026 年 8 月 31 日</strong><span>美國聖塔克拉拉訊</span>，兩個相鄰元素之間沒有任何字元，實際呈現是「2026 年 8 月 31 日美國聖塔克拉拉訊」，沒有空格；corrections-tech.md must_add 說『美國前面有一個空格』是抽取工具的產物，本次推翻。改為敘述發稿行寫出日期與發稿地。",
+      "刪掉「NVIDIA 新推出的 NVLink Fusion 平台」的『新推出的』。'New' 只出現在 NVIDIA 副標題，是廠商自我描述，而同一篇引用的 6 月 1 日新聞稿已把 NVLink Fusion 列為既有合作項目，兩者衝突。",
+      "「NVLink Fusion 晶粒」改為「NVLink Fusion 小晶片（chiplet）」：聯發科技中文稿自己把 chiplet 譯成小晶片，同頁把 multi-die 譯成多晶粒，原譯法與官方用語相反。",
+      "「NVLink Fusion 整合的技術包括（原文用字是 including…）」改為明寫這是 NVIDIA 英文稿的 including，因為聯發科技中文稿同一句沒有對應的對沖詞。",
+      "「每張面額 20 萬美元」補回但書：面額是每張 20 萬美元，超過的部分以 10 萬美元的整數倍計（原文 'or in any integral multiples of US$100 thousand in excess thereof'）。",
+      "發行總額同時寫出申報書原印的 US$3,900,000 thousand 與 39 億美元，讓單位換寫透明。",
+      "FAQ 第三題刪掉「39 億減 35 億…約 4 億美元差額」。兩個數字同一份文件、同一幣別、同一日期，相減本身有定義，但申報書沒有印這個差額，依 BRIEF 第 9 條屬於編輯自行換算；這一篇涉及上市公司金額與定價，換算出來的數字最容易被讀成投資訊息，因此改寫成「NVIDIA 認購的是這批債券的其中一部分，其餘部分由誰認購這份公告沒有寫」，並註明本文不自行換算。not_said 同步改寫。",
+      "轉換權補回『暫定』（原文 'the Bondholders may, tentatively,'）：正文與 FAQ 原本都漏掉，會把暫定期間寫成固定期間。",
+      "提前贖回補回『並經註銷』與『發行日之後』；經營權變動的定義從『申報書定義』改為『債券信託契約（Indenture）所定義』，照原文。",
+      "「掛牌地」改為「銷售與交易地點」，照申報書欄名 Place of Offering and Trading。",
+      "補上申報書寫的主管機關核准依據：金融監督管理委員會 2026 年 8 月 25 日的函（申報書英文印為 Jin-Guan-Zheng-Fa No.1150352832），放在 FAQ「這則公告跟台灣有什麼關係」。不回譯成中文文號，以免造出來源沒印的字串。",
+      "補上申報書自己的評估「不預期對現有股東權益造成重大稀釋影響」，並歸因給申報書，避免只挑 1.67% 而漏掉同一句的後半。",
+      "「NVIDIA 也還不是聯發科技的股東」「還沒有」改成範圍內的說法：這次交易認購的是可轉換公司債、不是股份，轉換權暫定尚未開始，且這幾份文件都沒有記載 NVIDIA 持有普通股的情形。原句是把『來源沒說』寫成『來源說沒有』。",
+      "「沒有晶片世代名稱」改為「沒有未來世代產品的規格與價格」：新聞稿其實點名了 GB10、RTX Spark、DGX Spark、Dimensity Auto 與 Rosa CPU，原句被自己的內文推翻。summary 第三句與 FAQ 第二題同步。",
+      "前瞻性聲明的歸因改成「NVIDIA 新聞室刊登的英文稿」，刪掉「與聯發科技的英文稿」——聯發科技英文頁不在四條 sources 內；同時把「依中華民國相關法令」改成「台灣相關法令」，照原文 'applicable Taiwan laws and regulations'。",
+      "表格欄名由「官方點名的技術／官方未說明」改為「新聞稿點名的技術／新聞稿未說明」，並把「35 億美元可轉換公司債，年息 0%」的 0% 移出表格：caption 把整張表歸給 8/31 聯合公告，而 0% 只在 MOPS 申報書。",
+      "「車用部分，聯發科技表示…」改為「兩份新聞稿都寫…」：那一句同時出現在兩份稿子，不是聯發科技單方說法；同時把繪圖能力改為官方中文用語「圖形處理能力」。",
+      "邊緣 AI 運算那一段的中文引文改為只歸給聯發科技中文稿（原句寫「雙方新聞稿都寫」卻附中文引文）；Fall 2026 併記英文原字。",
+      "FAQ 第五題補上「查核日已在暫定發行日之後、但四條來源不含之後的公告」，避免讀者以為 9 月 8 日仍是未來。",
+      "多處否定句限縮到來源範圍：「官方都還沒寫」→「本文四條來源都沒有寫」、「不是新產品發表」→「兩份新聞稿都沒有發表新產品」等。",
+      "為了守住 1,800–3,000 字上限，刪掉三處與其他段落重複的句子（第三節標題已含的三大領域列舉、第四節重複的 1.67% 說明、第五節重複的轉換期間說明），沒有刪掉任何但書或限定詞。",
+      "研究紀錄重寫：42 條 verified_facts 的 verbatim_quote 全部改成來源頁原樣搜尋得到的連續字串（MOPS 的一律單行、不跨行；NVIDIA 的 NVIDIA’s 改回 U+2019；Fall 2026 那句因 Spark 與 will 之間是不斷行空格而只引後半），空引文補上查證方法，event_date_basis 改寫，not_said／unverified_or_excluded／must_not_write／live_data_warnings 同步更新。"
+    ],
+    "checked_and_correct": [
+      "四條 sources 今天全部 HTTP 200 且 body 是正文，位元組數與撰稿者 2026-09-17 的紀錄完全一致；MOPS 這次沒有回安全阻擋頁，讀到的公司是 MediaTek Inc.、公告日期 2026/08/31、時間 20:25:52、主旨為第一次無擔保海外轉換公司債訂價完成公告，與 sources[2] 宣稱的那一則完全對得上。",
+      "MOPS 的十一個數字逐行核對無誤：US$3,900,000 thousand、US$200 thousand／US$100 thousand、100% of par value、0% per annum、2026/09/08、2031/09/08、NT$4,513.75、NT$3,925、115%、17,500 certificates、US$3,500,000 thousand、1.67%、90%、30 consecutive business days。",
+      "NVIDIA 頁 'Santa Clara'／'SANTA'／'Calif' 均 0 次，'$' 與 'billion' 各 1 次、'million' 0 次，所以 35 億美元確實是這一頁唯一的金額。",
+      "聯發科技中文頁在「關於 NVIDIA」簡介後結束，沒有前瞻性聲明；NVIDIA 頁則同時有 MediaTek 與 NVIDIA 兩段前瞻性聲明。",
+      "黃仁勳（NVIDIA 創辦人暨執行長）與蔡力行（聯發科技副董事長暨執行長）的職稱與談話要旨與兩份稿子相符。",
+      "2026 年 6 月 1 日那一頁的發稿行是 TAIPEI, Taiwan – June 1, 2026，datePublished 2026-06-01，'Fall 2026' 與 C-X1／NVLink Fusion／GB10 既有合作句都在。",
+      "checked_on 2026-09-17 在內容包四條 source、研究紀錄、第二段與表格 caption 四處一致，未因本次重查而更動。",
+      "界線檢查：全文沒有購買或升級建議、沒有推薦式價格比較、沒有股價預測或利多利空判斷，也沒有科技篇不該有的投資免責 callout（只有一個 info callout）。"
+    ],
+    "left_for_the_owner": [
+      "可轉換公司債的暫定發行日 2026/09/08 已經過去，但四條 sources 不含之後的公告，文章因此不對是否完成發行下判斷。若站主希望文章寫出最新狀態，需要把 MOPS 年度公告清單頁（或該筆發行完成公告）加進 sources[]，那會動到來源名單，不在本次查核可改的範圍。",
+      "「合作深化」與「NVIDIA 副標題稱 NVLink Fusion 為 New platform」之間的張力已在研究紀錄記下；若站主認為應該把副標題的 New 寫進文章，需要以歸因方式加一句。",
+      "第一個站內連結指向尚未存在的 tech-news-2026-index，第二個連結的 text 也還沒對上目標文章標題，兩者依規格留給索引階段處理。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "scope": "第一輪改了 22 處（超過十處），因此做第二輪。範圍不是整篇重做，而是：(a) 覆核第一輪改動過的每一個段落與新寫進去的每一句（新句沒有人查過）；(b) 投資訊息界線；(c) 新聞稿／申報書三份文件的歸屬是否分開；(d) 42 條 verbatim_quote 獨立重驗；(e) 回掃有沒有為了字數刪掉但書，以及 summary 與 FAQ 是否守在正文範圍內。",
+      "method": "四條 sources 全部自己重抓（curl -sL -A \"Mokaair-editorial\"）：NVIDIA 200／82,927 bytes、聯發科技中文 200／96,271、MOPS 200／11,273、聯發科技 6 月稿 200／101,749，與 2026-09-17 及第一輪的紀錄完全相同。MOPS 那一頁自行以 cp950 解碼、把 <pre> 區塊逐行印出核對，確認讀到的是 Provided by: MediaTek Inc.（網址 co_id=2454）、Date of announcement 2026/08/31、Time of announcement 20:25:52、主旨為第一次無擔保海外轉換公司債訂價完成公告的那一則，(1)–(8) 全部條文逐行比對。另寫一支程式把 42 條 verbatim_quote 全部回四份自己抓的原始檔比對，並逐條確認 url 在 sources[] 內。覆核 78 條主張＋42 條引文，共 120 條。",
+      "quote_recheck": "42 條引文的 url 全部在 sources[] 內。逐字比對結果：40 條在原始碼裡就是連續字串；2 條只有在瀏覽器算繪之後才連續，因為它們跨過行內元素邊界——NVIDIA 頁的 <strong>NVIDIA NVLink-C2C</strong>, providing…，以及聯發科技中文頁的 <span …>邊緣 AI 運算：</span>雙方將持續…。第一輪記的『42/42 命中』是用不補空白的抽取法得到的，方向沒錯，但換一個工具就驗不出來。兩條都已縮短成邊界之內的連續字串，整句寫進各自的 fact；sourcing_notes 也補上這條規則。這正是第一輪處理電頭時採用的同一個判準，本輪把它一致地套用到全部引文。",
+      "dateline_recheck": "獨立確認第一輪推翻 corrections-tech.md must_add 的判斷是對的。聯發科技中文頁原始碼是 <strong>2026 年 8 月 31 日</strong><span style=\"font-weight: bold;\">美國聖塔克拉拉訊</span><span>&nbsp;</span>—<span>&nbsp;</span>NVIDIA …，</strong> 與 <span> 之間沒有任何字元，『美國』前面沒有空格；破折號前後才各有一個不斷行空格。",
+      "boundary_recheck": "全文（title、description、summary、正文、表格、FAQ、callout、圖解 nodes 與 caption）沒有買賣或升級建議、沒有股價或營收預測、沒有『利多／利空』式判斷，只有一個 info callout，沒有科技篇不該有的投資免責 callout。第二段『本站沒有做測試或效能實測，也不提供投資建議』與本批其他 12 篇科技稿的第二段同一個寫法（各篇都有一句『本站沒有實測，也不提供 X 建議』），屬於 BRIEF 的方法段慣例，不是 tech.md 禁止的『自己加一段投資免責』，因此保留。稀釋與持股：只保留申報書自己印的 1.67%（含同一句後半的評估並歸因），沒有任何相除、相減或換算出來的數字。",
+      "edits": [
+        "summary 第四句與 callout 的前瞻性聲明歸屬：原本寫『聯發科技也在英文新聞稿附註…』，指向不在 sources[] 內的聯發科技英文頁，且與第一輪已改好的正文（『NVIDIA 新聞室刊登的英文稿末』）不一致，也違反本紀錄自己的 must_not_write。兩處都改成『NVIDIA 新聞室刊登的英文稿末，附有一段聯發科技的聲明』。這是本輪最重的一處：第一輪只改了正文，沒有把同一個修正帶到 summary 與 callout。",
+        "表格第四列『新聞稿未說明』欄由『發行條件、NVIDIA 持股比例』改為『發行總額與條件、其餘認購人』。原措辭預設 NVIDIA 有一個持股比例、只是新聞稿沒公布，與正文『這幾份文件都沒有記載 NVIDIA 持有聯發科技普通股的情形』相牴觸，也最容易被讀成投資訊息。『其餘認購人』有據：申報書 (6) 的欄名是 If a portion thereof shall be subscribed to by specific person(s)，只列 NVIDIA 一家，沒寫其餘部分由誰認購。",
+        "提前贖回第二種情形補回被刪的限定語。原文是 any change in the tax laws and regulations of the ROC after the Issue Date resulting in an increase in the Company's tax burden, or requiring the Company to pay additional expenses or costs, in each case arising from the Bonds，草稿寫成『增加公司稅負或額外費用』，掉了『因本債券而生』這個把兩個分支都框住的條件。已改為『使公司因本債券增加稅負或須支付額外費用』。",
+        "否定句範圍再收一次：第四節開頭『以本文查到的新聞稿與申報書為準』改為『以 8 月 31 日這兩份新聞稿與同日申報書為準』——四條來源裡的 6 月 1 日新聞稿其實寫了上市時程（Fall 2026），原來的範圍會把那一句一起否定掉。",
+        "同段『這兩份文件都沒有記載 NVIDIA 持有聯發科技普通股的情形』改為『這兩份新聞稿與這份申報書都沒有記載…』：8 月 31 日的公告有中英兩份、加上申報書是三份文件，原本的『兩份』指不清楚；FAQ 第一題本來就是寫『兩份新聞稿與這份申報書』，兩處現在一致。第五節『對照本文查到的兩份文件』同理改成『這幾份文件』。",
+        "第一節第二段的承諾句與正文對不上：原本寫『一律標明「NVIDIA 表示」或「聯發科技表示」』，但第一輪已把車用那句改成『兩份新聞稿都寫』、申報書的部分寫『申報書寫』。改為『一律標明是誰說的、出自哪一份文件』，涵蓋三種歸屬。",
+        "FAQ 第五題（發行日）把時間落差講得更死：在『本文不對是否已完成發行下判斷』後面加上『這不表示已經發行，也不表示沒有發行，而是本文引用的文件沒有寫到那一天』，避免讀者把『不下判斷』讀成任一邊。",
+        "description 的『公告還沒有交代的部分』改為『這幾份文件沒有交代的部分』：『還沒有』暗示官方之後會交代，超出來源範圍。",
+        "圖解第四格標籤由『官方未說明』改為『這幾份文件沒寫』，內容包的圖解 alt 同步（『官方目前未說明的部分』→『這幾份文件沒有說明的部分』）。理由與表格欄名第一輪由『官方未說明』改成『新聞稿未說明』相同：範圍要剛好等於本文引用的文件。圖檔尚未繪製，改標籤不影響既有素材。",
+        "verified_facts 兩條引文縮短為行內元素邊界之內的連續字串（見 quote_recheck），整句寫進 fact 欄。",
+        "verified_facts 第 6 條的字串統計改寫：'million' 在 NVIDIA 新聞稿正文是 0 次，但整頁原始碼有 1 次，出現在側欄一則不相干新聞的網址裡。原本寫『這一頁…0 次』，範圍說得太滿。",
+        "must_not_write 增加兩條：表格／圖解／FAQ 的標籤不得預設 NVIDIA 有持股比例；前瞻性聲明的歸屬在 summary 與 callout 也要跟正文一致。sourcing_notes 增加行內元素邊界那條引文規則。"
+      ],
+      "checked_and_still_correct": [
+        "MOPS 申報書的每一個條件與數字第二次逐行核對，全部無誤且都連著幣別、日期與出處：發行總額 US$3,900,000 thousand、面額 US$200 thousand 與『超過部分以 US$100 thousand 整數倍計』（原文跨行 thousand in excess thereof）、發行價格 100% of par value、票面利率 0% per annum、暫定發行日 2026/09/08、暫定到期日 2031/09/08（發行日五週年）、轉換價 NT$4,513.75＝8/31 收盤價 NT$3,925 的 115%（8/31 為定價日）、NVIDIA 認購 17,500 certificates／US$3,500,000 thousand、非關係人、認購目的長期策略合作、銷售與交易地點新加坡證券交易所、資金用途以外幣採購原物料、最大稀釋 1.67% 與同一句後半的『不預期造成重大稀釋影響』、贖回門檻 90%、停止交易 30 or more consecutive business days。",
+        "金管會核准函：The issuance became effective pursuant to the letter (Jin-Guan-Zheng-Fa No.1150352832), issued by the Financial Supervisory Commission on August 25, 2026 —— 機關、日期、文號三項與 FAQ 第四題寫的完全一致，且刻意未回譯成中文文號。",
+        "『NVIDIA 認購的是其中一部分』有直接依據：申報書 (6) 的欄名本身就是 If a portion thereof shall be subscribed to by specific person(s)。『其餘由誰認購公告沒寫』成立——該欄只列 NVIDIA 一家。文章沒有把 39 億減 35 億，第一輪刪掉的『約 4 億美元差額』確認沒有回流到任何一處（正文、summary、FAQ、表格、圖解都沒有）。",
+        "『暫定』與『閉鎖期間』兩個限定詞仍在正文與 FAQ；轉換權起算日『發行滿三個月後的隔天』與原文 the day immediately following the date falling three (3) months after the issuance of the Bonds 相符。",
+        "四頁的字串統計自行重跑：'Santa Clara'／'SANTA'／'Calif' 在四頁各 0 次、『聖塔克拉拉』只在聯發科技中文頁 1 次；'Fall 2026' 只在 6 月 1 日那頁 1 次，8 月 31 日兩頁與申報書都是 0 次，『秋季』四頁皆 0 次；'New NVIDIA NVLink Fusion Platform' 只在 NVIDIA 副標 1 次（依第一輪決定不寫進正文）；'chiplet' 只在 NVIDIA 頁、'Chiplet（小晶片）'與『多晶粒』只在聯發科技中文頁，第一輪的譯法修正成立。",
+        "『這幾份文件沒有記載 NVIDIA 持股』再驗一次：'stake'、'equity'、『持股』、『股權』在兩份 8/31 新聞稿正文都是 0 次（中文頁的『股東』4 次全部在網站導覽列，不在新聞稿正文），申報書只有 (8) Impact on Shareholders' Equity 這個欄名與 Non-related party，沒有任何一句寫 NVIDIA 持有多少普通股。",
+        "為了字數刪掉但書：沒有。第一輪刪的三句都是與別處重複的敘述。本輪淨增 17 字後，paragraph 合計 2,992 字，仍在 1,800–3,000 內。",
+        "summary 的每個數字都在正文（自檢的 number 規則也過）；FAQ 七題的事實都回得到 sources[]。唯一只在 FAQ、不在正文的細節是金管會核准函，那是第一輪為了補上台灣法規依據而加的，來源明確且正文已無字數空間，刻意保留在 FAQ。",
+        "checked_on 2026-09-17 未動，內容包四條 source、研究紀錄、第二段、表格 caption 四處仍一致。",
+        "兩個結尾連結依規格未動。"
+      ],
+      "verdict": "fixed_in_place",
+      "conclusion": "needs_owner —— 本輪又改 17 處（11 處在內容包、6 處在研究紀錄），全部是歸屬、範圍與限定詞，沒有動到骨幹論述。最重的是 summary 與 callout 的前瞻性聲明歸屬（第一輪只修了正文）、表格預設 NVIDIA 有持股比例的欄名，以及提前贖回稅務條款漏掉的『因本債券而生』。自檢只剩規格允許的兩條 FAIL。不需要第三輪；留給站主的仍是暫定發行日已過、要不要為此換 sources[]。"
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Deal, Not a New Product",
+      "diagram": {
+        "title": "One Announcement, Two Documents",
+        "caption": "Compiled from NVIDIA's and MediaTek's joint announcement of August 31, 2026, and MediaTek's pricing announcement filed with the Market Observation Post System the same day. Checked on September 17, 2026.",
+        "nodes": [
+          ["Three Areas", "Infrastructure, edge, auto"],
+          ["Press Release", "$3.5 billion bond"],
+          ["Filing Only", "Tentative Sept. 8 issue"],
+          ["Not in Sources", "Customers, automakers, timing"]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "提携公表、新製品ではない",
+      "diagram": {
+        "title": "提携発表と2つの文書",
+        "caption": "NVIDIAとMediaTekによる2026年8月31日の共同発表、および同日にMediaTekが公開情報観測サイトへ提出した価格決定の届出書に基づき作成。査読日は2026年9月17日。",
+        "nodes": [
+          ["3つの分野", "基盤・エッジ・車載"],
+          ["発表の金額", "35億ドルの社債"],
+          ["届出書だけ", "9月8日暫定発行"],
+          ["文書になし", "顧客・車種・確定時期"]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "제휴 발표, 신제품 아님",
+      "diagram": {
+        "title": "발표 하나, 문서 둘",
+        "caption": "NVIDIA와 MediaTek의 2026년 8월 31일 공동 발표, 그리고 같은 날 MediaTek이 공개정보관측시스템에 제출한 가격 결정 신고서를 바탕으로 작성. 검증일 2026년 9월 17일.",
+        "nodes": [
+          ["3대 분야", "인프라·엣지·차량용"],
+          ["보도자료 금액", "35억 달러 사채"],
+          ["신고서 전용", "9월 8일 잠정 발행"],
+          ["출처에 없음", "고객·완성차·정확한 시점"]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "合作公告，不是新产品",
+      "diagram": {
+        "title": "一则公告的两个版本",
+        "caption": "依 NVIDIA 与联发科技 2026 年 8 月 31 日的联合公告，以及联发科技同日向公开信息观测站申报的定价公告整理，核查日 2026 年 9 月 17 日。",
+        "nodes": [
+          ["三大领域", "基建、边缘计算、车用"],
+          ["新闻稿金额", "35亿美元可转债"],
+          ["申报才有条件", "9月8日暂定发行"],
+          ["这几份文件没写", "客户、车厂、确切时程"]
+        ]
+      }
+    }
+  }
+}

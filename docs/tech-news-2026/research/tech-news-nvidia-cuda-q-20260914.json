@@ -1,0 +1,430 @@
+{
+  "slug": "tech-news-nvidia-cuda-q-20260914",
+  "event_date": "2026-09-14",
+  "event_date_basis": "2026-09-14 是 NVIDIA 新聞稿頁面本身印出的刊頭日期「September 14, 2026」，正文開頭也寫「NVIDIA today announced」，即發布日＝宣布日。本輪查核只採用頁面上印出的這個日期字串，不使用 RSS（releases.xml）的 pubDate／modDate 欄位，也不推論「發布後幾小時修訂過」——這是修正清單 must_fix 7 的處理方式，因為 pubDate／modDate 是 feed 的欄位，不是文章頁上的陳述，一條事實只能掛一個網址。PyPI 上 cudaq-logical 0.1.1 與 cudaq 0.16.0 都是 2026-09-12 上傳（早兩天，軟體先上架、公告後發），以及 arXiv:2609.12146 是 2026-09-10 投稿，這兩組日期本輪沒有引用，也沒有寫進文章，避免和事件日混用。",
+  "title": "NVIDIA 開源 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "NVIDIA Newsroom 新聞稿：NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "publisher": "NVIDIA Newsroom",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NVIDIA CUDA-Q 技術文件：CUDA-Q Logical 說明頁（0.16.0 版）",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+      "publisher": "NVIDIA CUDA-Q documentation",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NVIDIA CUDA-Q 技術文件：Capabilities and status（0.16.0 版）",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+      "publisher": "NVIDIA CUDA-Q documentation",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NVIDIA CUDA-Q 技術文件：CUDA-Q Releases 版本紀錄頁",
+      "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+      "publisher": "NVIDIA CUDA-Q documentation",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 本人用 curl -sL -A \"Mokaair-editorial\" 把前期研究紀錄（2026-09-16）與獨立查核（2026-09-16）用過的四條來源全部重抓一次，存在 SCRATCH\\agents\\tech\\tech-news-nvidia-cuda-q-20260914\\，並用 Grep／Read 讀了 body 才登記 checked_on，不是只看狀態碼。結果：(1) 新聞稿頁 press-release.html，HTTP 200，81,400 bytes，與前兩輪紀錄的位元組數完全一致；grep 逐條核對本篇引用的每一句都存在，包括 dateline「September 14, 2026」（第 855 行）、Costa 引言（第 886 行）、六個機構名單與 QCDesign／Quantum Motion 中間漏逗號的問題（第 888 行，Quantum Motion 是獨立超連結）、Iceberg／Diraq 的 1,000／150,000／10x 數字（第 890 行）、Grassellino 的兩句引言（第 897 行）、QUOPS 定義與 Proctor 引言（第 900、904 行）、Sandia 預印本與 Google／IBM／Quantinuum 初步結果（第 906 行，body 用字是「A QUOPS reference implementation is available in NVIDIA CUDA-Q」，本輪採這句而非摘要條列的措辭）、Availability 一句「CUDA-Q Logical is now available through GitHub」（第 938 行）、公司前瞻性聲明第一項是「expectations with respect to quantum computing」（第 951 行）。(2) CUDA-Q Logical 說明頁改用版本鎖定網址 https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html，HTTP 200，50,833 bytes，與前兩輪讀到 /latest/ 版本的位元組數相同，確認今天仍是同一份內容；preview 提示框（admonition，標題「Preview release」，非導覽選單標題——修正 F22 的錯誤）在第 252～255 行，pip install 一行指令在第 273～274 行（單字被 <span class=\"w\"> 標籤斷開，人工核對後確認就是 pip install cudaq），Apache License 2.0 字樣在範例程式檔頭第 292～293 行。(3) capabilities 頁同樣改版本鎖定網址，HTTP 200，37,029 bytes，位元組數相同；「resource-estimation toolkit」定義句在第 262 行，「不送實體排程到硬體、不提供執行服務」在第 355～357 行，「No simulator plugin surface」在第 358～359 行，「no detector, observable, detector-error-model, decoder, or sampling semantics」在第 347～348 行。(4) releases.html 維持 /latest/（見 live_data_warnings），HTTP 200，144,916 bytes，位元組數相同；「This release integrates CUDA-Q Logical version 0.1.1」在第 1127 行，同段可見 0.16.0 版與其技術文件連結。四條全部是本人今天讀到 body 之後才登記 checked_on 的網址，本篇沒有再引用任何表外網址（quickstart 頁、PyPI JSON、raw.githubusercontent.com、research.nvidia.com、arXiv、IEEE 官網等前一輪列為「EXTRA URL」的頁面本篇一概不用，因此也不寫這些頁面上的任何細節，包括 cu13／cu12 安裝路徑與 GitHub 分支命名）。",
+  "verified_facts": [
+    {
+      "fact": "事件日：新聞稿頁面印出的刊頭日期是 2026 年 9 月 14 日。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 14, 2026"
+    },
+    {
+      "fact": "NVIDIA 對這次更新的正式描述：是既有 CUDA-Q 開源平台新增的協調層，不是新的量子電腦。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA today announced an expansion of the NVIDIA CUDA-Q™ open source platform with CUDA-Q Logical, an orchestration layer that provides a programmable, verifiable approach to developing useful applications for fault-tolerant quantum computers."
+    },
+    {
+      "fact": "NVIDIA 說明開發容錯系統應用程式為何困難：換一項元件就可能大幅改變所需資源。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "However, developing applications for such systems is a tedious, time-consuming codesign challenge: A change to an algorithm, error-correction code, hardware architecture or other QPU component can significantly change the resources needed to run any given application."
+    },
+    {
+      "fact": "NVIDIA 說明 CUDA-Q Logical 讓研究者能做的事：設計並協調多項元件、切換選項找最佳系統組合。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With CUDA-Q Logical, researchers can now design and orchestrate the many components required for fault-tolerant quantum computing applications, easily switching between options to identify optimal system configurations for performance with logical qubits."
+    },
+    {
+      "fact": "具名發言人 Timothy Costa（NVIDIA 量子事業部副總裁暨總經理）的引言，包含「大幅縮短時程」這句沒有附年份的宣稱。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "“Quantum computing is maturing into an era of logical qubits, and researchers need an open, customizable platform capable of representing all aspects of a fault-tolerant system,” said Timothy Costa, vice president and general manager of quantum at NVIDIA. “The addition of CUDA-Q Logical provides power and flexibility to explore fully integrated, co-optimized systems regardless of qubit type and architecture — drastically shortening the timeline to useful quantum-GPU supercomputing.”"
+    },
+    {
+      "fact": "NVIDIA 具名列出的採用機構名單，用「including」帶出、非完整清單；原文在 QCDesign 與 Quantum Motion 之間漏了逗號，兩者是各自超連結到不同公司網站的獨立機構。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "CUDA-Q Logical is already being used by QPU makers and labs including Fermi National Accelerator Laboratory, Infleqtion, IQM Quantum Computers, QCDesign Quantum Motion and Sandia National Laboratories."
+    },
+    {
+      "fact": "NVIDIA 說明容錯與邏輯量子位元為何重要：讓系統克服物理量子位元本身的錯誤。三個應用領域是「例如」帶出，非窮舉。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Fault-tolerant quantum processors with logical qubits are essential for useful quantum computing, allowing systems to overcome the errors inherent in physical qubits so they can execute the larger computations needed for practical applications such as drug discovery, financial modeling and materials development."
+    },
+    {
+      "fact": "本文最具體的數字：Iceberg Quantum 用 CUDA-Q Logical，針對 Diraq 的量子位元為「自家的」容錯架構建模（原文 modeled its fault-tolerant architecture for Diraq's qubits，被建模的架構是 Iceberg 的，不是 Diraq 的），估算 1,000 個邏輯量子位元只需要 150,000 個物理量子位元，比 Diraq 自己先前的估計少了大約 10 倍。這是模型估算，不是已建成的硬體；比較對象是 Diraq 自己先前的估計，不是其他公司的硬體。不做「150,000 除以 1,000」這類本文沒有引用的衍生換算。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Using CUDA-Q Logical, Iceberg Quantum modeled its fault-tolerant architecture for Diraq’s qubits, showing how 1,000 logical qubits can be created with just 150,000 physical qubits, roughly 10x fewer than Diraq’s previous estimates."
+    },
+    {
+      "fact": "費米實驗室「早期工作」的描述：驗證先前結果、評估不同錯誤更正方式與硬體下的資源需求。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In early work, Fermilab researchers used CUDA-Q Logical to validate prior results and evaluate physical qubits, runtimes and other resource requirements across different error-correction approaches and quantum hardware."
+    },
+    {
+      "fact": "具名發言人 Anna Grassellino（費米實驗室技術長暨超導量子材料與系統中心主任）的兩句引言：容錯量子運算需要協同設計，以及「通常大約需要五個月」對照「只花三週」——她自己的用詞是對照估計（would have typically taken），不是一次計時測量，本文與研究紀錄都不使用新聞稿摘要句裡「7x speedup」這個未加註條件的講法。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "“Fault-tolerant quantum computing is the path to unlocking new scientific discovery, but getting there will require researchers to codesign algorithm, error correction, architectures and hardware together,” said Anna Grassellino, chief technology officer at Fermilab and director of the Superconducting Quantum Materials and Systems Center. “Using CUDA-Q Logical, our team explored combinations of these resources in just three weeks, compared with what would have typically taken about five months of building specialized infrastructure.”"
+    },
+    {
+      "fact": "QUOPS 是桑迪亞國家實驗室開發的獨立跨平台基準，量測量子運算系統朝實用規模邁進的程度；不是 NVIDIA 自己的基準測試。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "QUOPS is a new, independent cross-platform benchmark developed by Sandia National Laboratories that measures the progress quantum computing systems are making toward utility-scale applications."
+    },
+    {
+      "fact": "為什麼需要 QUOPS：過去主要用物理量子位元的進步（數量、保真度、同調時間）衡量進展。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Historically, progress in quantum computing has been measured primarily through advances in physical qubits — increasing qubit counts, improving fidelity and extending coherence."
+    },
+    {
+      "fact": "具名發言人 Timothy Proctor（桑迪亞國家實驗室量子效能實驗室共同主持人）說明開發 QUOPS 的動機：他自己的主詞是「我們與其他量子運算相關方」（we, and other quantum computing stakeholders），不是泛稱的「業界」，必須能追蹤並預測量子電腦能力的成長。引文是從句子中段開始擷取的連續字串，前面還有「Our mission right now is to bring that about sooner… To do that,」這個前提。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we, and other quantum computing stakeholders, have to be able to track and forecast the growth of quantum computer abilities. We created QUOPS to do exactly that, and we’re excited to see it used by quantum computing vendors and customers."
+    },
+    {
+      "fact": "桑迪亞在 IEEE Quantum Week 前發布的預印本報告了 Google、IBM、Quantinuum 量子處理器的初步 QUOPS 結果；NVIDIA 提供的是參考實作，公告沒有附上任何分數或排名。用內文這句而非新聞摘要條列句（後者寫法是「Developed by Sandia National Laboratories, QUOPS is now available in NVIDIA CUDA-Q」）。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Sandia shared early results in a preprint posted ahead of IEEE Quantum Week, reporting initial QUOPS benchmarks for QPUs from Google, IBM and Quantinuum. A QUOPS reference implementation is available in NVIDIA CUDA-Q."
+    },
+    {
+      "fact": "新聞稿裡形容可用性的完整句子：只說透過 GitHub 提供，沒有價格、方案、地區，也沒有「preview」這個字。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CUDA-Q Logical is now available through GitHub."
+    },
+    {
+      "fact": "NVIDIA 公司前瞻性聲明第一項列出的不確定事項就是「與量子運算相關的期待」——NVIDIA 自己把這次公告的內容列為非歷史事實。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Certain statements in this press release including, but not limited to, statements as to: expectations with respect to quantum computing"
+    },
+    {
+      "fact": "技術文件的預覽提示框：cudaq-logical 套件標示為 preview，API、行為與文件都可能大幅變動。頁面上方是一個標題為「Preview release」的提示框（admonition），不是側邊導覽選單的標題——修正前一輪誤記的地方。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cudaq-logical is in preview. Its APIs, behavior, and documentation may change substantially in upcoming versions."
+    },
+    {
+      "fact": "技術文件對隨附範例檔案標示的授權：Apache License 2.0；這個授權名稱沒有出現在新聞稿裡（以 Apache 對新聞稿頁查核到 2026-09-18 命中 0 次）。注意這段文字印在頁面內嵌的範例程式碼（examples/02_surface_code_resource_estimate.py）的註解框裡，每一行前後各有一個 #、行尾補滿空白，所以只有單行的片段才是可原樣搜尋到的連續字串；跨兩行的完整句子在頁面上搜尋不到。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the terms of the Apache License 2.0 which accompanies this distribution."
+    },
+    {
+      "fact": "技術文件描述目前預覽階段能做到的動作，止於「產生估算」與「輸出程式」，不含「執行」。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In this preview, you can start from a CUDA-Q kernel or author a portable logical program directly; configure codes, gadgets, placement, and distillation protocols; generate resource estimates; and emit realized programs for simulation and further analysis in tools such as Stim."
+    },
+    {
+      "fact": "技術文件對產品的邊界定義：是容錯量子運算的資源估算工具。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CUDA-Q Logical is a resource-estimation toolkit for fault-tolerant quantum computing."
+    },
+    {
+      "fact": "技術文件明寫這套件不會把實體排程送上硬體執行，也不提供執行服務。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It remains a compiler and estimation artifact: CUDA-Q Logical does not submit a physical schedule to hardware or provide a runtime execution service for it."
+    },
+    {
+      "fact": "技術文件明寫套件裡沒有任何東西會執行或進行物理模擬。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "No simulator plugin surface. Nothing in the package consumes or executes physical simulations."
+    },
+    {
+      "fact": "技術文件明寫套件不含偵測器、可觀測量、偵測器錯誤模型、解碼器或取樣語意，這些分析留待 Stim 生態系的下游工具。",
+      "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "There are no detector, observable, detector-error-model, decoder, or sampling semantics."
+    },
+    {
+      "fact": "CUDA-Q Logical 的版本號：0.1.1，整合進 CUDA-Q 0.16.0 這個例行版本更新裡。",
+      "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This release integrates CUDA-Q Logical version 0.1.1."
+    }
+  ],
+  "not_said": [
+    "新聞稿沒有出現「preview」這個字，也沒有提到版本號；預覽狀態與 0.1.1 版號只出現在技術文件裡。",
+    "NVIDIA 沒有在任何一條來源裡表示自己打造、出貨、銷售或展示過一台容錯量子電腦；每一次提到硬體都是別人的機器（Fermilab、Iceberg Quantum、Diraq、Google、IBM、Quantinuum、桑迪亞）。",
+    "沒有任何來源給容錯量子電腦「何時會成熟或普及」附上年份或期程；Costa 只說「大幅縮短時程」，沒有數字；Proctor 用的是未來式語氣。",
+    "1,000 個邏輯量子位元與 150,000 個物理量子位元是 Iceberg Quantum 的建模結果，來源沒有說這些量子位元已經做成硬體。",
+    "QUOPS 段落沒有附上任何分數、排名或勝負，只說「初步結果」；也沒有說 NVIDIA 自己的硬體被拿去測試。",
+    "新聞稿沒有提到售價、方案、地區或語言；技術文件的授權訊息（Apache License 2.0）也沒有出現在新聞稿裡。",
+    "四個來源頁以 Taiwan、Taipei、TSMC 逐詞查核到 2026-09-18 均未見（各 0 次）。但新聞稿頁面右側「More News」區塊裡有一則 2026-08-31 的其他公告標題含 MediaTek，所以「沒有提到聯發科」只在新聞稿正文成立，不能寫成整頁沒有；文章因此只寫「本文查核到的來源沒有提到台灣」。",
+    "技術文件沒有說 CUDA-Q Logical 會執行、模擬或解碼任何東西；三句都是文件自己的明文否定。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "CUDA-Q Logical 的獨立安裝路徑（pip install cudaq-logical[cu13] 或 [cu12]）與裸裝套件缺相依套件的警語。",
+      "seen_where": "前一輪研究紀錄掛在說明頁，但那段文字實際在 quickstart 頁（getting-started/quickstart.html）。",
+      "why_excluded": "quickstart 頁不在本輪收斂後的四條 sources[] 裡；本輪沒有把任何安裝步驟寫進文章或本記錄，避免重蹈修正清單 must_fix 4 的錯誤（事實有一半追溯不到自己的網址）。"
+    },
+    {
+      "claim": "NVIDIA/cuda-quantum 這個 GitHub 倉庫沒有任何分支以 logical／ftqc／fault 命名。",
+      "seen_where": "前一輪研究紀錄用 git ls-remote 查證，但掛在 LICENSE 網址上，而且字面主張本身有誤——獨立查核用 git ls-remote --heads 找到 refs/heads/debug_seg_fault 與 refs/heads/test_seg_fault，兩者都含 'fault'。",
+      "why_excluded": "本輪完全不寫 GitHub 分支命名這件事，也不引用 raw.githubusercontent.com 的 LICENSE 或 README。這個細節對文章沒有必要，寫了只有風險沒有價值。"
+    },
+    {
+      "claim": "QUOPS 預印本裡，Google／IBM／Quantinuum 的量測是直接在物理量子位元上做的，只有另一組使用 Quantinuum Helios-1 的八個 [[7,1,3]] 實驗用到邏輯量子位元；以及預印本摘要「必須成長 5 個數量級」這個現實查核句。",
+      "seen_where": "獨立查核指出的材料缺漏，來源是 arXiv:2609.12146。",
+      "why_excluded": "arXiv 頁面不在本輪四條 sources[] 之內（新聞稿＋兩個版本鎖定文件頁＋版本紀錄頁已經用滿）。本文因此完全不寫 QUOPS 的量測對象是物理還是邏輯量子位元，只維持「初步結果、沒有分數」這個安全範圍，避免暗示跨平台結果來自容錯機器。"
+    },
+    {
+      "claim": "CUDA-Q 主頁（nvidia.github.io/cuda-quantum/latest/index.html）上『CUDA-Q also provides an open, extensible logical layer for fault-tolerant fault-tolerant workloads...』這句話，NVIDIA 自己的文件重複了一次 fault-tolerant。",
+      "seen_where": "前一輪研究紀錄的 verbatim_quote 把重複字悄悄清成一個，被獨立查核抓到。",
+      "why_excluded": "本輪不引用這句話，也不把 CUDA-Q 主頁列進 sources[]，避免需要在 verbatim_quote 裡保留來源自己的重複字而增加出錯機會。"
+    },
+    {
+      "claim": "NVQLink、NVIDIA Ising、以及 Anyon Computing／Quandela／Quantum Machines／BlueQubit／Qedma／QCentroid／IonQ／MITRE／Phasecraft／UCLA 與 Caltech 等生態系夥伴名單。",
+      "seen_where": "同一份新聞稿的其他段落。",
+      "why_excluded": "這些是與 CUDA-Q（非 CUDA-Q Logical）或 NVQLink 相關的名單，和本篇指派的主題（CUDA-Q Logical／QUOPS）不同，寫進來容易被誤讀成 CUDA-Q Logical 的採用者。指派訊息也要求本篇只負責解釋 CUDA-Q Logical、邏輯量子位元與容錯，篇幅留給這個主題。"
+    },
+    {
+      "claim": "新聞媒體或整合站對這次公告的報導與下標方式。",
+      "seen_where": "未查詢。",
+      "why_excluded": "BRIEF 與 tech.md 都禁止把新聞媒體與整合站當來源；本篇沒有進行任何新聞搜尋，事實全部來自 NVIDIA 自己的新聞稿與技術文件。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，聽過「量子運算」但不知道邏輯量子位元或容錯是什麼，也不會安裝這套軟體。角度：這是一則容易被過度誇大的新聞，誠實版本要講清楚——2026 年 9 月 14 日 NVIDIA 沒有宣布造出一台量子電腦，而是釋出一套免費、採用開放原始碼授權的軟體，幫助別人的研究者在紙上與 GPU 上，先算出一台未來的量子電腦要多大才能跑完某個運算。文章的任務就是把這個界線講清楚。骨架依內容包的五個小節：一、這次公告了什麼（既有平台新增一層，不是新機器，附具名使用機構）；二、為什麼要談邏輯量子位元（物理位元會出錯、容錯與協同設計的概念，結尾放物理位元 vs. 邏輯位元對照表）；三、工具實際在做什麼（Iceberg／Diraq 的建模數字、費米實驗室的例子，都清楚標成模型或對照估計而非量測，結尾放四格圖解）；四、QUOPS（強調是桑迪亞的基準、NVIDIA 只提供參考實作、沒有分數）；五、公告與技術文件對不上的地方（用詞落差：available 對 preview、沒提版號對 0.1.1、沒提授權對 Apache 2.0、以及技術文件三句明文否定「不執行、不模擬、不解碼」）。刻意不談：任何加密風險或破解時間表（RSA-2048 只是文件裡的編譯器範例，任何來源都沒有做資安宣稱）；QUOPS 的技術細節與物理／邏輯量子位元量測對象的區分（因為佐證的 arXiv 論文不在這次四條 sources 之內）；NVQLink、NVIDIA Ising 及其他生態系夥伴名單（不屬於這次指派的主題）；2026-09-03 的 Hugging Face 收購案與 2026-09-15 的 Vera Rubin／AI Infra Summit（各自是別篇的範圍，第二篇由另一位代理同時撰寫，本篇第二個連結指向它）。callout 只有一個，不加投資免責（tech.md：科技篇不帶 finance 主題）。",
+  "must_not_write": [
+    "不寫或暗示 NVIDIA 已經打造、出貨、銷售或展示過一台容錯量子電腦，它發布的是軟體。",
+    "不寫 CUDA-Q Logical 會「執行」「模擬」或「解碼」任何東西，技術文件明寫它不做這些事。",
+    "不把 1,000 個邏輯量子位元／150,000 個物理量子位元寫成已經存在的硬體；那是 Iceberg Quantum 用這套工具建模的結果，比較對象是 Diraq 自己先前的估計，不是其他公司的硬體。",
+    "不把「每顆邏輯量子位元需要 150 顆物理量子位元」這種除法寫進文章；來源沒有印出這個數字。",
+    "不把費米實驗室的「五個月變三週」寫成一次計時測量，也不使用新聞稿摘要句的「7x speedup」；Grassellino 自己的用詞是「通常大約需要」，是對照估計。",
+    "不把 QUOPS 稱為 NVIDIA 的基準測試；那是桑迪亞國家實驗室開發、NVIDIA 只提供參考實作，公告也沒有附上任何 QUOPS 分數或排名。",
+    "不把 QCDesign 與 Quantum Motion 寫成同一家公司；新聞稿原文在兩者之間漏了一個逗號。",
+    "不說這套軟體在台灣是否能取得、售價多少；來源沒有提到任何地區或價格。",
+    "不給容錯量子電腦「什麼時候會成熟或普及」附上任何年份或期程；沒有來源提供。",
+    "不把這則新聞連到破解加密、後量子密碼或任何資安時間表；沒有來源做這樣的陳述。",
+    "不比較 CUDA-Q 與 Qiskit、Cirq 或其他家的量子軟體工具；沒有來源做這樣的比較。",
+    "不做任何採購、升級建議或「NVIDIA 是否在量子競賽中領先」這類評論（tech.md 紅線）。",
+    "不使用新聞媒體或整合站的說法；本篇事實全部來自 NVIDIA 新聞稿與 CUDA-Q 技術文件這四條來源。"
+  ],
+  "live_data_warnings": [
+    "CUDA-Q Logical 說明頁與能力頁這次已經改用 0.16.0 版本鎖定網址，但只代表這兩頁在 0.17.0 之類新版釋出後仍會保留現在讀到的內容；技術文件仍在持續更新，下次查核還是要重新讀取這兩頁確認內容沒有變。",
+    "版本紀錄頁 releases.html 仍指向 /latest/，屬於會持續往下增加條目的活頁面；本文只引用其中「CUDA-Q 0.16.0 整合 CUDA-Q Logical 0.1.1」這一則，不代表這是目前最新版本，之後查核需要重新確認版本號。",
+    "NVIDIA Newsroom 的 releases.xml 摘要 feed 是 20 筆的捲動視窗，查核當下最新一筆會持續往前滾動；本文與本記錄都沒有引用 feed 的 pubDate、modDate 或項目筆數。",
+    "技術文件裡「已測試（exercised）／未測試」的功能清單、以及能力頁列出的各項邊界說明，都是查核當天版本的狀態，之後版本可能改變；本文只引用其中「預覽版、API 可能大幅變動」這句整體性提醒，不逐條列出各項未測試功能。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（F22：「Preview」是導覽選單標題的說法查無此頁，該標題其實在不屬於 sources 的主頁上）：已套用。本輪改寫成「說明頁最上方有一個標題為 Preview release 的提示框（admonition）」，這是今天在 0.16.0 版本鎖定的 logical/index.html 第 252～255 行親自核對過的內容，不再提「導覽選單」。",
+    "must_fix 2（F44：fault-tolerant fault-tolerant 的重複字被 verbatim_quote 悄悄清掉）：已套用，用迴避處理——本輪完全不引用這句話，也沒有把 CUDA-Q 主頁列進 sources[]，改用其他已核實、不需要謹慎處理重複字的句子。",
+    "must_fix 3（F45：分支命名的網址錯誤、字面主張也錯）：已套用，用迴避處理——本輪完全不寫 GitHub 分支命名這件事，不引用 LICENSE 或 raw.githubusercontent.com。",
+    "must_fix 4（F12：cu13／cu12 安裝路徑其實在 quickstart 頁，不在 sources 裡）：已套用，用迴避處理——本輪不把任何安裝步驟寫進文章，quickstart 頁也沒有列進 sources[]。",
+    "must_fix 5（F30：150 物理位元／邏輯位元是研究者自己除出來的數字）：已套用。文章與摘要都只寫 NVIDIA 印出來的 150,000、1,000 與「大約 10 倍」，沒有再做除法。",
+    "must_fix 6（F32：「恰好六家在用」把 including 的例示清單當成完整清單）：已套用。改寫成「NVIDIA 表示，包括……在內」，並把 QCDesign 與 Quantum Motion 分開列出，正文與研究紀錄都附註原文漏了逗號。",
+    "must_fix 7（F0：RSS 的 pubDate／modDate 掛在文章頁網址上，而且『發布後 3.5 小時修訂過』是推論）：已套用。event_date_basis 只採用文章頁面上印出的刊頭日期，不使用 RSS 欄位，也不寫『修訂過』這個推論。",
+    "must_fix 8（七條事實掛在表外網址，沒有標記 EXTRA URL）：已套用。本輪把 sources[] 收斂到四條（新聞稿＋兩個版本鎖定文件頁＋版本紀錄頁），文章與本記錄裡的每一條事實都只掛在這四條網址其中之一，沒有再引用任何表外網址。",
+    "must_add（sources 2、3 改用版本鎖定網址）：已套用，今天重抓 0.16.0 版的 logical/index.html 與 capabilities.html，位元組數與前兩輪讀到 /latest/ 版本時完全相同（50,833／37,029 bytes）。",
+    "must_add（QUOPS 摘要與內文用字不一致，要用內文寫法）：已套用，全文採用內文句「A QUOPS reference implementation is available in NVIDIA CUDA-Q」，沒有使用新聞摘要條列句「Developed by Sandia National Laboratories, QUOPS is now available in NVIDIA CUDA-Q」。",
+    "must_add（漏掉 Grassellino 第一句引言，讓協同設計的前提能掛在具名的 Fermilab 主管身上）：已套用，H3 第二段已經納入這句引言並具名歸給 Anna Grassellino。",
+    "must_add（QUOPS 預印本裡 Google／IBM／Quantinuum 量測的是物理量子位元，只有另一組實驗用到邏輯量子位元）：未套用，用迴避處理——因為佐證的 arXiv 論文不在本輪四條 sources 之內，本文完全不寫這個技術性區分，只維持『初步結果、沒有分數』的安全描述，理由已記進 unverified_or_excluded。",
+    "must_add（NVIDIA 前瞻性聲明第一項列的就是『量子運算』，比文章自己的但書更有力）：已套用，H5 第三段已經寫入這個細節。",
+    "live_data_warnings（/latest/ 是活網址，Preview 三分法與未測試功能清單都是當前版本狀態）：已套用，寫進本記錄的 live_data_warnings，文章裡也只用『以本文查核到 2026 年 9 月 17 日的技術文件為準』這種有時點的講法。",
+    "source_list_fix（11 條事實掛在 9 個表外網址；沒有媒體或整合站來源）：已套用，本輪的 sources[] 只有四條，且都是今天本人親自重新讀到 body 的網址；沒有新聞媒體、整合站或搜尋摘要進入 sources 或 verified_facts。",
+    "第二個連結的目標：BRIEF.md 建議這篇第二個連結指向既有的 ai-news-nvidia-rubin-20260105（該研究紀錄寫於批次分工定案之前）；本輪撰稿指派訊息明確指定第二個連結改指向同一批次、由另一位代理同時撰寫的 tech-news-nvidia-vera-rubin-20260915，本記錄以撰稿指派為準，並將這個差異記進回報。"
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent（未參與撰稿）",
+    "checked_on": "2026-09-18",
+    "method": "四條 sources 於 2026-09-17 深夜以 curl -sL -A 「Mokaair-editorial」 全部重抓一次（任何請求都沒有帶 email、姓名或其他個人資料），報告寫於 2026-09-18：新聞稿 HTTP 200／81,400 bytes、logical/index.html（0.16.0）200／50,833 bytes、capabilities.html（0.16.0）200／37,029 bytes、releases.html（latest）200／144,916 bytes，四份都沒有轉址、body 都是正文，位元組數與撰稿紀錄完全一致。HTML 以正規表示式去標籤、折疊空白後比對；文章正文 36 句、摘要 5 句、FAQ 6 題（答句 14 句）、callout、表格 13 格與 caption、圖解 caption 與 alt、title 與 description，以及研究紀錄的 24 條 verbatim_quote、8 條 not_said、4 條 live_data_warnings、圖解四格與 hero_label，合計 123 條主張逐條回到原文核對。24 條 verbatim_quote 另以程式做「原樣搜尋得到嗎」的檢查：23 條在頁面呈現文字裡是連續字串（其中 F01、F05、F13、F14 跨了 <a>／<sup> 等行內標籤，原始 HTML 搜尋不到，複製時要從呈現文字取），只有 Apache 授權那條不是，已改。沒有使用任何 sources[] 以外的新網址。",
+    "verdict": "needs_second_round（123 條主張裡改了 30 處：內容包 26 處、本紀錄 4 處。骨幹論述——這是估算工具不是量子電腦、新聞稿與技術文件用詞有落差——逐條查證後成立，沒有更動；但被改掉的事實超過十處，依規格要再過一輪，重點放在覆核這 30 處改寫本身，不需要再抓新來源。）",
+    "edits_to_the_pack": [
+      "表格第 3 列（物理量子位元欄）原寫「不是它的估算對象」——推翻。新聞稿寫 Fermilab 用它 evaluate physical qubits, runtimes and other resource requirements，Iceberg 的例子估的也正是 150,000 個物理量子位元，物理量子位元是估算對象。已改成「估算要用掉多少顆、多少時間」，邏輯量子位元欄改成「固定住程式再比較不同方案」（文件：keeps the workload fixed while these system choices change）。",
+      "「Iceberg Quantum 用 CUDA-Q Logical 替 Diraq 的量子位元架構建模」——建模對象寫反。原文是 modeled its fault-tolerant architecture for Diraq's qubits：被建模的是 Iceberg 自家的容錯架構，Diraq 提供的是量子位元。摘要第 3 句、第 3 節第 1 段、FAQ 第 3 題三處都已改成「針對 Diraq 的量子位元替自家容錯架構建模」。",
+      "「新聞稿原文在 QCDesign 與 Quantum Motion 間漏了逗號，依兩者的連結分開列出」——原始 HTML 裡只有 Quantum Motion 是超連結（連到 quantummotion.com），QCDesign 是純文字。已改寫成「原文中 Quantum Motion 是連往該公司網站的超連結，本文因此分開列出」，並補上「NVIDIA 沒有說總共有幾家」。",
+      "刪掉 Iceberg Quantum 的「新創公司」——新聞稿沒有給它任何公司規模或階段的描述。",
+      "「本身帶有雜訊」→「本身帶有固有的錯誤」（表格、圖解 alt、本紀錄圖解節點）。新聞稿用的是 the errors inherent in physical qubits；noise 在新聞稿 0 次，在 capabilities 頁唯一一次是 that is a parameter surface, not a noise model，語意相反。",
+      "「都會改變同一個運算需要多少顆量子位元」→「都可能改變」。文件原文是 can all change，限定詞不能刪。這一段的歸屬也從「NVIDIA 表示」改成「技術文件說明」——解碼與「多少量子位元與多少執行時間」出自說明頁，不在新聞稿裡。",
+      "第 1 節引文補回 useful：「協助開發適用於容錯量子電腦的有用應用程式」（developing useful applications）。",
+      "第 1 節引文補回限定語：「找出在邏輯量子位元上效能最佳的系統組合」（optimal system configurations for performance with logical qubits）。",
+      "第 5 節引文補回 in upcoming versions：「API、行為與文件都可能在之後的版本大幅變動」。",
+      "「CUDA-Q Logical 目前的版本號是 0.1.1」→ 綁回來源的說法：版本紀錄頁寫的是 CUDA-Q 0.16.0 這一版整合 CUDA-Q Logical 0.1.1；頁面上方另有 latest（main 分支的每夜建置），所以不能寫成「目前的版本號」。摘要第 5 句、第 5 節、FAQ 第 5 題、callout 四處同步。",
+      "「NVIDIA 只提供 CUDA-Q 裡的參考實作」→「公告只寫到「NVIDIA CUDA-Q 裡可以取得 QUOPS 的參考實作」」。內文原句是 A QUOPS reference implementation is available in NVIDIA CUDA-Q，沒有說 NVIDIA 的角色僅止於此。摘要第 4 句與 FAQ 第 4 題同步。",
+      "「量子效能基準 QUOPS」→「跨平台基準 QUOPS」（description 與第一段）。來源的自稱是 a new, independent cross-platform benchmark；「效能」是 Sandia 實驗室的名字，不是 QUOPS 的定義。第 4 節引文另補回「一個新的、獨立的跨平台基準」的「新的」。",
+      "「新聞稿形容可用性只有一句」→「新聞稿描述可用性的只有一句」，並把「也沒出現「預覽」兩個字」改成「全文也沒有出現 preview（預覽）這個字」（Availability 段其實有三句，其中兩句講 QUOPS 倉庫與論文；preview 在新聞稿頁 0 次已逐詞確認）。",
+      "Grassellino 的「只花三週」補回它的對象：原文是 explored combinations of these resources in just three weeks，已改成「團隊用 CUDA-Q Logical 探索這些資源的組合「只花三週」，相較之下自行建置專屬基礎設施「通常大約需要五個月」」；她第一句引言的前提也改成「要走到容錯量子運算」（but getting there will require…）。",
+      "Proctor 的主詞：「業界需要能追蹤與預測…」→「他們與其他量子運算相關方必須能追蹤並預測…」（we, and other quantum computing stakeholders）。同段的初步結果補成「初步 QUOPS 結果」。",
+      "表格第 2 列「目前多數運算依賴的基礎單位」沒有來源，改成「過去衡量進展主要看它」（Historically, progress … measured primarily through advances in physical qubits）；邏輯量子位元欄改成「用錯誤更正克服物理位元的錯誤」。",
+      "第 3 節第 3 段補回文件列出的另一個入口與正確的元件名：「或直接撰寫可攜的邏輯程式」「設定錯誤更正碼、元件與擺放方式、蒸餾（distillation）協定」，並把「估算完的程式」改成「展開後的程式」（emit realized programs）。",
+      "第 3 節第 2 段補上費米實驗室評估的具體項目：「需要多少物理量子位元、執行時間等資源」（evaluate physical qubits, runtimes and other resource requirements）。",
+      "第 5 節第 2 段三句引文重譯得更貼原文：「它仍然是編譯與估算的產物：CUDA-Q Logical 不會把實體排程送上硬體，也不為它提供執行期服務」「套件裡沒有任何東西會取用或執行物理模擬」（consumes or executes），以及把「留到 Stim 這類下游工具」改成文件自己的界線「這些要在輸出的 Stim 文字之後、於 Stim 生態系裡才開始」，並補上文件明列的四件事（標註偵測器與可觀測量、產生偵測器錯誤模型、取樣、解碼）。",
+      "前瞻性聲明的結論改成照原文說：「NVIDIA 自己把這類陳述歸為非歷史事實，不保證日後的結果」，不再寫成「把這次公告的內容列為還沒定案的事」。",
+      "第一段與摘要第 1 句補上「設計」這個用途（researchers can now design and orchestrate…），並把「不是推出新的量子電腦」改成可查證的寫法「公告裡沒有出現新的量子電腦或硬體產品」。",
+      "「廠商與實驗室」→「QPU 製造商與實驗室」（QPU makers and labs）。",
+      "為了讓上述補回的限定詞放得進 1,800–3,000 字，精簡了九處贅語（重複的機構全名、「資料來源是…官方新聞稿全文」等），沒有刪掉任何但書、限定詞或條件。最終 zh-TW 段落字數 2,999。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-14 是新聞稿頁面自己印的刊頭日期，文章第一句、news_date 與 slug 尾碼一致；文章沒有引用 RSS 的 pubDate／modDate，也沒有寫「發布後修訂過」。",
+      "1,000 個邏輯量子位元、150,000 個物理量子位元、「大約 10 倍」三個數字逐字對回新聞稿，文章與紀錄都沒有出現 150,000÷1,000 的除法，也沒有出現摘要條列句的 7x speedup。",
+      "採用機構名單寫成「包括…在內」，沒有寫成「共六家」或「名單為」；QCDesign 與 Quantum Motion 分開列出的判斷正確（原始 HTML 中 Quantum Motion 帶有 quantummotion.com 的錨點）。",
+      "QUOPS 的歸屬正確：桑迪亞開發、NVIDIA 側只有參考實作、公告沒有任何分數或排名（已逐頁確認新聞稿沒有任何 QUOPS 數值），也沒有寫進 arXiv 預印本裡物理／邏輯量子位元的區分（該頁不在 sources）。",
+      "技術文件那三句明文否定（不送硬體、不執行物理模擬、沒有偵測器與解碼語意）逐字命中 capabilities 頁；「資源估算工具」定義句命中。",
+      "negative 句都限縮到具體文件：preview、Apache、price／pricing 在新聞稿頁逐詞查核均為 0 次，Taiwan／Taipei／TSMC 在四頁均為 0 次，2027 年以後的年份四頁均為 0 次，所以「沒有時間表」「沒有提到台灣」成立。",
+      "checked_on 2026-09-17 四處一致（四條 source、研究紀錄、第二段、表格與圖解 caption），本輪沒有因為重查而改動它。",
+      "界線：全文沒有購買、升級或機型比較建議，沒有把官方定價做成推薦（來源根本沒有價格），沒有投資免責 callout，callout 只有一個；所有能力、效能與時程敘述都掛在「NVIDIA 表示／技術文件說明／Costa 表示／Grassellino 表示／Proctor 表示」之下。",
+      "預覽狀態沒有被寫成已上市：文章四處（摘要、第 5 節、FAQ、callout）都寫出預覽版與 0.1.1，並標明是查核當天的技術文件狀態。",
+      "兩個結尾連結依指派未動；第二個連結指向 tech-news-nvidia-vera-rubin-20260915 是協調者指派的結果。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍有兩條 FAIL，都不是本文造成的：tech 垂直索引內容包 tech-news-2026-index 還不存在，以及第二個連結的 text 要等 tech-news-nvidia-vera-rubin-20260915 定稿後換成它的正式 title。兩者都在協調者的索引與相關文章階段處理。",
+      "zh-TW 段落字數 2,999／3,000，只剩 1 個字的餘裕。之後任何補字（例如把新聞稿內文那句 accelerating fault-tolerant algorithm development from five months to three weeks, a 7x speedup 補進來，或補上 QUOPS 預印本量測對象的區分）都必須同時刪掉等量的字，這是編輯取捨，查核代理不代決定。",
+      "新聞稿的 News Summary 條列與內文有兩處不一致（architecture 對 algorithm；QUOPS is now available in NVIDIA CUDA-Q 對 A QUOPS reference implementation is available in NVIDIA CUDA-Q）。本文一律採內文寫法，沒有在文章裡點出這個矛盾；要不要寫進文章是編輯決定。",
+      "sources 第 4 條 releases.html 仍指 /latest/，是會一直往上長的活頁面；0.17.0 一出，「CUDA-Q 0.16.0 整合 CUDA-Q Logical 0.1.1」這一則仍會留在頁面上，但頁面描述的最新版會變。出刊前值得再抓一次確認。",
+      "翻譯階段注意：24 條引文在頁面「呈現文字」上全部是連續字串，但其中 12 條（新聞稿的 Costa、機構名單、Iceberg、Grassellino、QUOPS 定義、Historically、Proctor、Sandia 預印本、Availability 那幾條，以及說明頁的預覽提示框與 Apache 授權、能力頁的 No simulator plugin surface）中間夾著 <a>／<sup>／<span> 等行內標籤或跨了原始碼換行，直接對原始 HTML 做字串搜尋會找不到；要從瀏覽器呈現的文字複製。第一輪只列了四條，數目不對，已於第二輪更正。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "claims_checked": 68,
+      "edits": 15,
+      "edits_note": "15 處文字改動（內容包 13 處、本紀錄 2 處），歸納成 10 個問題——同一個毛病在摘要、正文、FAQ 重複出現時算多處但只記一條。",
+      "method": "四條 sources 再次以 curl -sL -A \"Mokaair-editorial\" 重抓（HTTP 200；81,400／50,833／37,029／144,916 bytes，與第一輪及撰稿紀錄完全相同，無轉址，body 都是正文；任何請求都沒有帶入 email、姓名或其他個人資料），並用本輪自己寫的去標籤程式重新產生呈現文字，不沿用第一輪的抽取結果。範圍依第二輪指派收窄為：第一輪改動過的 30 處段落與新寫進去的每一句（逐句回原文）、24 條 verbatim_quote 的字串比對、全篇否定句的範圍、summary ⊆ 正文與 FAQ ⊆ 正文、預覽狀態與「估算工具不是量子電腦」兩條骨幹的全文一致性，以及第一輪為了字數是否刪過但書。",
+      "verdict": "ok（骨幹論述兩條都成立且全文一致，沒有更動；第一輪 30 處改寫覆核下來 24 處無誤，又改的 15 處全部是第一輪新寫進去、沒有人查過的句子，集中在同一個毛病——否定句的範圍寫得比來源撐得住的還寬，其中三處被新聞稿自己的 News Summary 條列推翻。沒有為了字數刪掉任何但書或限定詞；zh-TW 段落字數 2,999→2,984。不需要第三輪。）",
+      "edits_made": [
+        "P1「公告裡沒有出現新的量子電腦或硬體產品」→「公告裡沒有出現新的量子電腦」。同一份新聞稿寫了 NVIDIA NVQLink（the open system architecture…）與 NVIDIA Ising，「沒有硬體產品」這個範圍會被自己的來源推翻；第一輪為了寫成「可查證」反而擴大了否定範圍。P3「新的量子電腦或硬體產品線」同樣收窄。",
+        "P12／SUM4／FAQ4「公告只寫到『NVIDIA CUDA-Q 裡可以取得 QUOPS 的參考實作』」→「公告內文寫的是…」。同一頁的 News Summary 條列寫著「Developed by Sandia National Laboratories, QUOPS is now available in NVIDIA CUDA-Q」，所以「只寫到」在整份公告的層次不成立。第一輪把這個矛盾記進 left_for_the_owner，卻在正文寫成了「只」。",
+        "P13「新聞稿描述可用性的只有一句」→「新聞稿描述這套工具可用性的只有一句」。Availability 段有三句（另兩句講 QUOPS 倉庫與論文），News Summary 也有一句 QUOPS 的可用性；限縮到 CUDA-Q Logical 才成立。",
+        "P5「NVIDIA 沒有說總共有幾家」→「新聞稿沒有說總共有幾家」；P8「NVIDIA 沒有說這些量子位元已做成硬體」→「新聞稿沒有說…」。兩句都是第一輪新寫的無界否定，依規格限縮到本文引用的文件。",
+        "P7「固定住要跑的應用程式」→「固定住同一個運算」。說明頁同一段把 the application 列為「會改變」的選項之一，再說 keeps the workload fixed…for the same computation；寫成「應用程式」會和來源自己的句子打架。",
+        "P7 刪掉「不必真的換一台機器來試」。四條來源都沒有這個對照，是第一輪新寫進去的推論；刪的是未經查證的敘述，不是但書。",
+        "P14 句末補「這些界線新聞稿都沒有寫。」——SUM2 的「但這些說明都沒有出現在新聞稿裡」原本在正文找不到對應的說法（summary ⊆ 正文）。已逐詞確認新聞稿頁沒有 resource-estimation 定義句，也沒有那三句明文否定。",
+        "表格第 3 列邏輯量子位元欄「固定住程式再比較不同方案」→「固定住運算再比較不同方案」，與 P7 的用詞一致，並貼回 keeps the workload fixed。",
+        "FAQ6「NVIDIA 的新聞稿與技術文件都沒有提到價格、地區限制或申請方式，只說明可以透過 GitHub 取得」→「…；新聞稿只說可以透過 GitHub 取得」。技術文件的安裝說明寫的是 pip install cudaq，不是 GitHub，把兩份文件綁在同一個「只」底下並不成立。",
+        "本紀錄 Proctor 那條 fact 仍寫「業界需要能追蹤與預測…」，是第一輪已在正文改掉、卻沒有同步到紀錄的舊說法；已改成原文的主詞「we, and other quantum computing stakeholders」，並註明引文是從句子中段擷取。",
+        "本紀錄 left_for_the_owner 的「F01、F05、F13、F14 四條引文在原始 HTML 搜尋不到」數目不對；本輪程式比對出 12 條，已更正。"
+      ],
+      "rechecked_and_correct": [
+        "24 條 verbatim_quote 全部通過字串比對：以本輪自己去標籤後的呈現文字為準，24 條都是連續字串，沒有一條是拼湊的；另外做了「是否落在同一個可見行」的嚴格測試，Apache 授權那條（第一輪改過的）確認就印在說明頁內嵌範例 examples/02_surface_code_resource_estimate.py 註解框的同一行，不是跨行拼接。24 條的 url 也全部在 sources[] 內。",
+        "Iceberg／Diraq 的關係在摘要第 3 句、第 3 節第 1 段、FAQ 第 3 題三處完全一致，且都符合原文 Iceberg Quantum modeled its fault-tolerant architecture for Diraq's qubits——被建模的是 Iceberg 自家架構、Diraq 提供量子位元。後一句 CUDA-Q Logical gave an unprecedented way to rapidly assess potential implementations of Iceberg's architecture 再次確認 its 指向 Iceberg。",
+        "150,000 這個數字：估的人是 Iceberg Quantum（用 CUDA-Q Logical 建模）、估的是要幾個物理量子位元才能做出 1,000 個邏輯量子位元、前提是模型估算而非已建成的硬體且比較對象是 Diraq 自己先前的估計——三件事在正文、摘要與 FAQ 三處都寫齊了。新聞稿正文只出現 1,000、150,000、10x、7x、14、2026 六組數字，文章沒有做任何來源沒印的換算。",
+        "表格第 3 列兩格覆核通過：物理欄「估算要用掉多少顆、多少時間」對應 evaluate physical qubits, runtimes and other resource requirements 與 can all change the qubits and runtime required；邏輯欄對應 keeps the workload fixed while these system choices change, so you can compare results directly，並由新聞稿 identify optimal system configurations for performance with logical qubits 支撐它放在邏輯欄。",
+        "第一輪補回的四個限定詞逐一回原文，都沒有變強或變弱：can all change →「都可能改變」；developing useful applications →「有用應用程式」；optimal system configurations for performance with logical qubits →「在邏輯量子位元上效能最佳的系統組合」；may change substantially in upcoming versions →「都可能在之後的版本大幅變動」。",
+        "合作夥伴名單那一句：原始 HTML 確認 QCDesign 是純文字、Quantum Motion 帶 quantummotion.com 的錨點（Infleqtion 也是超連結，但文章沒有宣稱 Quantum Motion 是唯一的連結），所以「分開列出」的理由寫法成立。",
+        "預覽骨幹全文一致：摘要第 5 句、第 5 節第 1 段、FAQ 第 5 題、callout 四處都寫「預覽版＋API 可能在之後的版本大幅變動＋CUDA-Q 0.16.0 這一版整合 CUDA-Q Logical 0.1.1」，沒有任何一處寫成「目前的版本號」。版本紀錄頁今天確認 0.16.0 條目上方仍有 latest（main 分支每夜建置）條目，所以這個寫法是必要的。",
+        "「估算工具、不是量子電腦、不執行也不模擬」骨幹在 title、description、摘要第 2 句、第 3 節第 3 段、第 5 節第 2 段、FAQ 第 1 題、圖解四格與 hero_label 八處說法一致，沒有互相矛盾。",
+        "否定句逐詞重驗：preview 在新聞稿整頁 0 次（不只正文）、Apache 0 次、price／pricing 0 次、任何 x.y 版本號 0 次；Taiwan／Taipei／TSMC 在四頁各 0 次；MediaTek 只在新聞稿頁右側 More News 的另一則 2026-08-31 標題出現 1 次，第一輪對 not_said 的限縮正確。新聞稿內文 9 次 QUOPS 附近沒有任何分數或排名。",
+        "第一輪沒有為了字數刪掉但書：Costa「沒有附上具體年份或期程」、三個應用領域「不代表用途只限這三項」、Grassellino「這是她形容的對照估計，不是一次計時測量」、Iceberg「這是模型估算的結果」、「文件列出的動作停在產生估算與輸出程式，沒有包含執行」五處但書本輪逐一確認都還在。本輪也沒有刪任何但書，騰出的字數來自一句未經查證的推論與五處收窄後變短的否定句。",
+        "界線再確認：沒有購買或升級建議、沒有推薦式比價（來源根本沒有價格）、沒有投資免責 callout、callout 仍只有一個；所有能力與時程敘述都掛在具名歸屬之下。",
+        "checked_on 2026-09-17 四處仍一致，本輪沒有因為重查而改動它；兩個結尾連結未動。"
+      ],
+      "left_for_the_owner": [
+        "hero.alt 仍寫「邊緣帶著雜訊紋理的小圓點」，而第一輪已把表格、圖解與本紀錄裡的「雜訊」全部改成來源用語「固有的錯誤」（noise 在新聞稿 0 次，在能力頁唯一一次是 that is a parameter surface, not a noise model，語意相反）。依規格 hero.alt 由協調者依實際畫面改寫，本輪沒有動它——但協調者改寫時請避開「雜訊」。",
+        "zh-TW 段落字數從 2,999 降到 2,984，多出 16 字的餘裕。第一輪列的兩項「值得補但沒有位置」的內容（新聞稿內文的 7x speedup 那句、QUOPS 預印本量測對象的物理／邏輯區分）仍然放不下，且後者的佐證頁不在 sources[] 內，要補就得換一條 source。",
+        "sources 第 4 條 releases.html 仍指 /latest/，是會一直往上長的活頁面；今天 0.16.0 條目上方的 latest 區塊仍在，出刊前值得再抓一次確認 0.17.0 有沒有出。"
+      ]
+    }
+  },
+  "hero_label": "算資源的工具，非量子電腦",
+  "diagram": {
+    "title": "CUDA-Q Logical 在算什麼",
+    "caption": "整理自 NVIDIA 2026 年 9 月 14 日新聞稿與技術文件，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "物理量子位元",
+        "本身帶有固有的錯誤"
+      ],
+      [
+        "邏輯量子位元",
+        "多顆物理位元合併而成"
+      ],
+      [
+        "估算工具",
+        "算需要多少硬體"
+      ],
+      [
+        "只估算",
+        "不執行、不模擬"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "A hardware-sizing tool",
+      "diagram": {
+        "title": "What CUDA-Q Logical Estimates",
+        "caption": "Compiled from NVIDIA's September 14, 2026 press release and technical documentation. Checked September 17, 2026.",
+        "nodes": [
+          ["Physical qubits", "Carry errors inherent to them"],
+          ["Logical qubits", "Combine physical qubits"],
+          ["Estimation tool", "Counts hardware needed"],
+          ["Estimate only", "Not run, not simulated"]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "見積もる道具であり機械でない",
+      "diagram": {
+        "title": "CUDA-Q Logicalは何を見積もるか",
+        "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。査読日は2026年9月17日。",
+        "nodes": [
+          ["物理量子ビット", "本来備わる誤りがある"],
+          ["論理量子ビット", "物理量子ビットが組み合わさる"],
+          ["見積もりツール", "必要なハードウェア量を算出"],
+          ["見積もりのみ", "実行も模擬もしない"]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "추정 도구이지 기계가 아님",
+      "diagram": {
+        "title": "CUDA-Q Logical이 추정하는 것",
+        "caption": "NVIDIA의 2026년 9월 14일 보도자료와 기술 문서를 바탕으로 정리. 확인일 2026년 9월 17일.",
+        "nodes": [
+          ["물리 큐비트", "본래 오류가 있음"],
+          ["논리 큐비트", "물리 큐비트가 결합"],
+          ["추정 도구", "필요한 하드웨어 추정"],
+          ["추정뿐", "실행도 모의도 아님"]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "估算工具，非量子计算机",
+      "diagram": {
+        "title": "CUDA-Q Logical在算什么",
+        "caption": "整理自 NVIDIA 2026 年 9 月 14 日新闻稿与技术文档，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          ["物理量子比特", "本身带有固有的错误"],
+          ["逻辑量子比特", "多个物理比特合并而成"],
+          ["估算工具", "算需要多少硬件"],
+          ["只估算", "不执行、不模拟"]
+        ]
+      }
+    }
+  }
+}

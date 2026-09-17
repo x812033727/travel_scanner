@@ -1,0 +1,1106 @@
+{
+  "slug": "tech-news-nvidia-cuda-q-20260914",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news",
+    "software"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-14",
+  "featured": false,
+  "display_order": 310,
+  "locales": {
+    "zh-TW": {
+      "title": "NVIDIA 開源 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
+      "description": "2026 年 9 月 14 日，NVIDIA 宣布為開源的 CUDA-Q 平台新增 CUDA-Q Logical，這是一個協調層，用來幫助研究者估算容錯量子運算應用程式需要多少硬體，而不是新的量子電腦。本文依 NVIDIA 新聞稿與技術文件，說明這個工具能做與不能做的事、新聞稿和技術文件用詞的落差，以及桑迪亞國家實驗室開發的跨平台基準 QUOPS。查核日 2026 年 9 月 17 日。",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero.jpg",
+        "alt": "原創插圖：左邊虛線框裡排著十二個小圓點，其中幾個是虛線輪廓，代表容易出錯的物理量子位元；箭頭指向一個工整的同心大圓，代表一個邏輯量子位元；右邊是一份文件，下方橫著一把帶刻度的尺，代表這是估算工具，而不是實際運轉的機器",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 14 日，NVIDIA 宣布為開源的 CUDA-Q 平台新增 CUDA-Q Logical，這是一個協調層，用來幫助研究者設計容錯量子運算應用程式，並估算它們需要多少硬體資源。NVIDIA 把這次更新形容為既有平台的擴充，公告裡沒有出現新的量子電腦；同一份公告也介紹了另一項新東西——桑迪亞國家實驗室開發、可在 NVIDIA CUDA-Q 取得參考實作的跨平台基準 QUOPS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，資料來源是 NVIDIA Newsroom 新聞稿全文，以及 CUDA-Q 技術文件的 CUDA-Q Logical 說明頁、能力與現況頁、版本紀錄頁。本站沒有安裝或操作這套軟體，也不提供採購、升級或比較建議；下文每項說法都會註明出自新聞稿或技術文件。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 14 日，NVIDIA 宣布為開源的 CUDA-Q 平台新增 CUDA-Q Logical，這是一個協調層，用來幫助研究者設計容錯量子運算應用程式，並估算它們需要多少硬體資源，而不是推出新的量子電腦。",
+            "NVIDIA 的技術文件把 CUDA-Q Logical 定義為容錯量子運算的資源估算工具，並說明它不會把實體排程送上硬體執行、套件本身也不執行物理模擬，但這些說明都沒有出現在新聞稿裡。",
+            "NVIDIA 表示，Iceberg Quantum 用這套工具針對 Diraq 的量子位元替自家容錯架構建模，估算 1,000 個邏輯量子位元只需要 150,000 個物理量子位元，比 Diraq 自己先前的估計少了大約 10 倍，但這是模型估算，不是已經做出來的硬體。",
+            "公告介紹的 QUOPS，是桑迪亞國家實驗室開發的獨立跨平台基準，不是 NVIDIA 自己的基準測試；公告內文寫的是在 NVIDIA CUDA-Q 裡可以取得 QUOPS 的參考實作。",
+            "技術文件把 CUDA-Q Logical 標示為預覽版，說明 API、行為與文件內容都可能在之後的版本大幅變動；版本紀錄頁寫明 CUDA-Q 0.16.0 這一版整合的是 CUDA-Q Logical 0.1.1 版。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "NVIDIA 公告了什麼：既有平台多一層，不是新機器"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 自己的說法是，這次「為 NVIDIA CUDA-Q 開源平台新增了 CUDA-Q Logical，這是一個協調層，用可程式化、可驗證的方式，協助開發適用於容錯量子電腦的有用應用程式」。也就是說，CUDA-Q Logical 是加在既有 CUDA-Q 平台上的新功能，平台本身在公告前就存在；NVIDIA 沒有在公告裡表示自己推出了新的量子電腦。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 說明，替容錯系統開發應用程式是一項「繁瑣、耗時的協同設計挑戰」：只要更動演算法、錯誤更正碼或硬體架構，執行同一個應用程式所需的資源就可能大幅改變。有了 CUDA-Q Logical，研究者可以「在不同選項之間切換，找出在邏輯量子位元上效能最佳的系統組合」。NVIDIA 量子事業部副總裁暨總經理 Timothy Costa 表示，量子運算正邁入「邏輯量子位元的時代」，這項工具能「大幅縮短通往有用的量子－GPU 超級運算的時程」——但沒有附上具體年份或期程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 表示，包括費米國家加速器實驗室（Fermilab）、Infleqtion、IQM Quantum Computers、QCDesign、Quantum Motion 與桑迪亞國家實驗室在內的 QPU 製造商與實驗室，已經在使用 CUDA-Q Logical。原文用的是「包括」，代表這不是完整清單，新聞稿沒有說總共有幾家。新聞稿原文在 QCDesign 與 Quantum Motion 之間漏了一個逗號；原文中 Quantum Motion 是連往該公司網站的超連結，本文因此分開列出，避免誤讀成一家公司。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼要談「邏輯量子位元」：容錯是什麼意思"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 說明，搭配邏輯量子位元的容錯量子處理器，是量子運算要真正派上用場的關鍵：它能讓系統「克服物理量子位元本身固有的錯誤，才能執行藥物開發、金融建模與材料開發等實際應用所需要的更大型運算」——NVIDIA 用「例如」帶出這三個領域，不代表用途只限這三項。簡單說，做法是把多顆容易出錯的物理量子位元組合起來，用量子錯誤更正湊出一顆更可靠的「邏輯」量子位元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文件說明，這中間的困難在於協同設計：換一種錯誤更正碼、換一種硬體架構，甚至換一種解碼方式，都可能改變同一個運算需要多少顆量子位元與多少執行時間。CUDA-Q Logical 要做的，是讓研究者固定住同一個運算、只改變這些系統選項，直接比較結果、檢查每個組合背後的假設。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "物理量子位元",
+            "邏輯量子位元"
+          ],
+          "rows": [
+            [
+              "特性",
+              "本身帶有固有的錯誤",
+              "由多顆物理位元合併而成"
+            ],
+            [
+              "角色",
+              "過去衡量進展主要看它",
+              "用錯誤更正克服物理位元的錯誤"
+            ],
+            [
+              "CUDA-Q Logical 的工作",
+              "估算要用掉多少顆、多少時間",
+              "固定住運算再比較不同方案"
+            ]
+          ],
+          "caption": "整理自 NVIDIA 2026 年 9 月 14 日新聞稿與技術文件，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這次工具實際在做什麼：估算，不是打造硬體"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 舉的最具體例子，是 Iceberg Quantum 用 CUDA-Q Logical 針對 Diraq 的量子位元替自家容錯架構建模，結果顯示 1,000 個邏輯量子位元只需要 150,000 個物理量子位元，比 Diraq 先前的估計少了大約 10 倍。這是模型估算的結果：新聞稿沒有說這些量子位元已做成硬體，比較對象是 Diraq 自己先前的估計，不是其他公司做出來的機器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個例子來自費米實驗室。NVIDIA 表示，這屬於該實驗室的「早期工作」：研究人員用 CUDA-Q Logical 驗證先前的結果，並評估不同錯誤更正方式與量子硬體下需要多少物理量子位元、執行時間等資源。費米實驗室技術長 Anna Grassellino 表示，要走到容錯量子運算「需要研究者把演算法、錯誤更正、架構與硬體放在一起共同設計」；團隊用 CUDA-Q Logical 探索這些資源的組合「只花三週」，相較之下自行建置專屬基礎設施「通常大約需要五個月」——這是她形容的對照估計，不是一次計時測量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文件說明，在目前這個預覽階段，使用者可以從一段 CUDA-Q 程式碼出發，或直接撰寫可攜的邏輯程式，設定錯誤更正碼、元件與擺放方式、蒸餾（distillation）協定，產生資源估算結果，並把展開後的程式輸出給 Stim 這類工具做進一步模擬與分析。文件列出的動作停在「產生估算」與「輸出程式」，沒有包含「執行」。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-cuda-q-20260914/diagram-1.svg",
+          "width": 1600,
+          "height": 900,
+          "alt": "四格圖解：物理量子位元本身帶有固有的錯誤、多顆物理位元合併成邏輯量子位元、CUDA-Q Logical 估算需要多少硬體、結果只是估算不是實際執行",
+          "caption": "整理自 NVIDIA 2026 年 9 月 14 日新聞稿與技術文件，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "QUOPS：另一把量尺，不是 NVIDIA 自己的基準"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 在公告中說明，過去衡量量子運算的進展，主要看物理量子位元本身的進步，例如數量增加、保真度提升與同調時間拉長。QUOPS 想提供的是另一種量尺：NVIDIA 形容它是「一個新的、獨立的跨平台基準，用來衡量量子運算系統朝具備實用規模的應用邁進了多少」，而且不綁定特定硬體架構。"
+        },
+        {
+          "type": "paragraph",
+          "text": "QUOPS 是桑迪亞國家實驗室開發的，不是 NVIDIA 自己的基準測試；公告內文寫的是「NVIDIA CUDA-Q 裡可以取得 QUOPS 的參考實作」。桑迪亞量子效能實驗室共同主持人 Timothy Proctor 表示，他們與其他量子運算相關方必須能追蹤並預測量子電腦能力的成長，QUOPS 就是為此而做。NVIDIA 表示，桑迪亞在 IEEE Quantum Week 前發布的預印本，公布了 Google、IBM 與 Quantinuum 量子處理器的初步 QUOPS 結果；公告沒有附上任何分數或排名。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公告和技術文件對不上的地方"
+        },
+        {
+          "type": "paragraph",
+          "text": "新聞稿和技術文件放在一起看會出現落差。新聞稿描述這套工具可用性的只有一句：「CUDA-Q Logical 現已透過 GitHub 提供」，沒有提到價格、方案或地區，全文也沒有出現 preview（預覽）這個字。技術文件不一樣：說明頁開頭有個標題為「Preview release」的提示框，寫著套件「還在預覽階段，API、行為與文件都可能在之後的版本大幅變動」；版本紀錄頁則寫明 CUDA-Q 0.16.0 整合的是 CUDA-Q Logical 0.1.1 版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文件把這個工具的邊界說得很清楚：它把 CUDA-Q Logical 定義為「容錯量子運算的資源估算工具」，並且明寫「它仍然是編譯與估算的產物：CUDA-Q Logical 不會把實體排程送上硬體，也不為它提供執行期服務」，還有「套件裡沒有任何東西會取用或執行物理模擬」。文件也寫明，標註偵測器與可觀測量、產生偵測器錯誤模型、取樣與解碼，CUDA-Q Logical 都不做；這些要在輸出的 Stim 文字之後、於 Stim 生態系裡才開始。這些界線新聞稿都沒有寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文件另外指出，隨附的範例程式碼採用 Apache License 2.0 這種開放原始碼授權——這個名稱同樣沒有出現在新聞稿裡。新聞稿附的公司前瞻性聲明，把「與量子運算相關的期待」列為第一項——NVIDIA 自己把這類陳述歸為非歷史事實，不保證日後的結果。本文查核到的來源沒有提到台灣，也沒有給出容錯量子電腦何時成熟或普及的時間表。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "CUDA-Q Logical 是量子電腦嗎？",
+              "answer": "不是。NVIDIA 的技術文件把它定義為容錯量子運算的資源估算工具，用來估算某個運算需要多少硬體資源；文件也寫明它不會把實體排程送上硬體執行，套件本身也不執行物理模擬。NVIDIA 這次公告裡沒有表示自己打造、銷售或展示過一台容錯量子電腦。"
+            },
+            {
+              "question": "這是 NVIDIA 全新推出的產品嗎？",
+              "answer": "不是全新的產品線，是既有 CUDA-Q 開源平台新增的一層。NVIDIA 形容 CUDA-Q Logical 是一個協調層，讓研究者可以替容錯量子運算應用程式設計、評估並切換不同的錯誤更正方式與系統架構組合；CUDA-Q 平台本身在這次公告之前就已經存在。"
+            },
+            {
+              "question": "NVIDIA 提到「1,000 個邏輯量子位元只需要 150,000 個物理量子位元」，代表已經有這樣的硬體了嗎？",
+              "answer": "沒有。NVIDIA 說明這是 Iceberg Quantum 用 CUDA-Q Logical，針對 Diraq 的量子位元替自家容錯架構建模後得到的估算結果，比較的對象是 Diraq 自己先前的估計，不是任何已經做出來的機器，也不是跟其他公司的硬體比較。"
+            },
+            {
+              "question": "QUOPS 是 NVIDIA 推出的基準測試嗎？",
+              "answer": "不是。NVIDIA 在公告裡說明，QUOPS 是桑迪亞國家實驗室開發的獨立跨平台基準；公告內文對 NVIDIA 的角色寫的是在 NVIDIA CUDA-Q 裡可以取得 QUOPS 的參考實作。桑迪亞在 IEEE Quantum Week 前發布的預印本報告了 Google、IBM 與 Quantinuum 量子處理器的初步 QUOPS 結果，但公告裡沒有附上任何分數或排名。"
+            },
+            {
+              "question": "CUDA-Q Logical 現在是正式版，還是測試階段？",
+              "answer": "以本文查核到 2026 年 9 月 17 日的技術文件為準，它標示為預覽版，NVIDIA 自己寫明 API、行為與文件內容都可能在之後的版本大幅變動；版本紀錄頁寫明 CUDA-Q 0.16.0 這一版整合的是 CUDA-Q Logical 0.1.1 版。這個狀態沒有出現在新聞稿裡，新聞稿只說它現已透過 GitHub 提供。"
+            },
+            {
+              "question": "台灣的使用者或公司可以怎麼取得？",
+              "answer": "NVIDIA 的新聞稿與技術文件都沒有提到價格、地區限制或申請方式；新聞稿只說可以透過 GitHub 取得，技術文件並標示隨附範例採用 Apache License 2.0 這種開放原始碼授權。本文查核到的來源沒有出現任何台灣相關的敘述，也沒有提到容錯量子電腦何時會成熟或普及。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "「已提供」和「預覽版」是兩回事",
+          "text": "NVIDIA 這次的新聞稿只說 CUDA-Q Logical「現已透過 GitHub 提供」，沒有提到價格、地區或方案，全文也沒有出現 preview 這個字；這些限定詞都寫在 NVIDIA 自己的技術文件裡：頁面標示為預覽版、API 與行為都可能在之後的版本大幅變動、CUDA-Q 0.16.0 整合的是 CUDA-Q Logical 0.1.1 版。本文提到的每一項規格與說法，都各自標明出自新聞稿還是技術文件，沒有來源印出的數字或期程一律不寫。想看目前的狀態，可以自行到 NVIDIA CUDA-Q 的官方技術文件查對應版本的頁面；本文查核日為 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA AI Infra Summit 談電力效率：Vera Rubin 與 DSX 新增了什麼",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-nvidia-vera-rubin-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA Newsroom 新聞稿：NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 技術文件：CUDA-Q Logical 說明頁（0.16.0 版）",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 技術文件：Capabilities and status（0.16.0 版）",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 技術文件：CUDA-Q Releases 版本紀錄頁",
+          "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "NVIDIA Open-Sources CUDA-Q Logical: A Resource Estimator, Not a Quantum Computer",
+      "description": "On September 14, 2026, NVIDIA announced CUDA-Q Logical, an orchestration layer for its open-source CUDA-Q platform that helps researchers estimate the hardware a fault-tolerant quantum application would need, not a new quantum computer. Based on NVIDIA's press release and technical documentation, this article explains what the tool can and cannot do, where the two sources differ, and QUOPS, the cross-platform benchmark built by Sandia National Laboratories. Checked September 17, 2026.",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-en.jpg",
+        "alt": "Original illustration: dashed circles in a box, for error-prone physical qubits; an arrow to a large circle, a logical qubit; at right, a document above a ruled scale, for an estimator, not a machine",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 14, 2026, NVIDIA announced CUDA-Q Logical, a new addition to its open-source CUDA-Q platform. It is an orchestration layer meant to help researchers design fault-tolerant quantum computing applications and estimate how much hardware they would need. NVIDIA described the update as an expansion of its existing platform, and no new quantum computer appears anywhere in the announcement. The same announcement also introduced something else: QUOPS, a cross-platform benchmark developed by Sandia National Laboratories, whose reference implementation is available in NVIDIA CUDA-Q."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 17, 2026, against the full text of the NVIDIA Newsroom press release and three pages of the CUDA-Q technical documentation: the CUDA-Q Logical overview page, the capabilities and status page, and the release notes page. This site has not installed or operated the software, and does not offer purchasing, upgrade or comparison advice; every claim below is marked as coming from either the press release or the documentation."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 14, 2026, NVIDIA announced CUDA-Q Logical, a new orchestration layer for its open-source CUDA-Q platform that helps researchers design fault-tolerant quantum computing applications and estimate how much hardware they need — not a new quantum computer.",
+            "NVIDIA's documentation defines CUDA-Q Logical as a resource-estimation toolkit for fault-tolerant quantum computing; it does not submit a physical schedule to hardware for execution and does not itself execute physical simulations, but none of this appears in the press release.",
+            "NVIDIA says Iceberg Quantum used the tool to model its own fault-tolerant architecture for Diraq's qubits, estimating 1,000 logical qubits from just 150,000 physical qubits, roughly 10x fewer than Diraq's own prior estimates. This is a modeling result, not built hardware.",
+            "QUOPS, also introduced in the announcement, is an independent cross-platform benchmark developed by Sandia National Laboratories, not a benchmark of NVIDIA's own; the announcement's body text says a QUOPS reference implementation is available in NVIDIA CUDA-Q.",
+            "The technical documentation labels CUDA-Q Logical a preview release, noting that its API, behavior and documentation may change substantially in upcoming versions; the release notes page states that CUDA-Q 0.16.0 integrates CUDA-Q Logical version 0.1.1."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What NVIDIA Announced: A New Layer on an Existing Platform, Not a New Machine"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA's own description is that this was “an expansion of the NVIDIA CUDA-Q™ open source platform with CUDA-Q Logical, an orchestration layer that provides a programmable, verifiable approach to developing useful applications for fault-tolerant quantum computers.” In other words, CUDA-Q Logical is a new capability added to the existing CUDA-Q platform, which existed before this announcement; NVIDIA does not say anywhere in the announcement that it has released a new quantum computer."
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA explains that developing applications for such systems is “a tedious, time-consuming codesign challenge: A change to an algorithm, error-correction code, hardware architecture or other QPU component can significantly change the resources needed to run any given application.” With CUDA-Q Logical, NVIDIA says, “researchers can now design and orchestrate the many components required for fault-tolerant quantum computing applications, easily switching between options to identify optimal system configurations for performance with logical qubits.” Timothy Costa, vice president and general manager of quantum at NVIDIA, said quantum computing “is maturing into an era of logical qubits,” and that the addition of CUDA-Q Logical is “drastically shortening the timeline to useful quantum-GPU supercomputing” — without attaching a specific year or timeframe."
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA says CUDA-Q Logical is already being used by QPU makers and labs including Fermi National Accelerator Laboratory (Fermilab), Infleqtion, IQM Quantum Computers, QCDesign, Quantum Motion and Sandia National Laboratories. The press release's own text uses the word “including,” which means this is not a complete list, and it does not say how many organizations in total are using the tool. The press release's own text is also missing a comma between QCDesign and Quantum Motion; in the original, Quantum Motion is a hyperlink to that company's own website, so this article lists the two separately to avoid the misreading that they are one company."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why “Logical Qubits” Matter: What Fault Tolerance Means"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA explains that fault-tolerant quantum processors with logical qubits are key to making quantum computing genuinely useful: they let systems “overcome the errors inherent in physical qubits so they can execute the larger computations needed for practical applications such as drug discovery, financial modeling and materials development.” NVIDIA introduces these three fields with “such as,” meaning applications are not limited to them. In simple terms, the approach combines multiple error-prone physical qubits, using quantum error correction to assemble a more reliable “logical” qubit."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation explains that the difficulty lies in codesign: changing the error-correction code, changing the hardware architecture, or even changing the decoding method, can all change how many qubits and how much runtime the same computation needs. What CUDA-Q Logical does is let researchers keep the same computation fixed while changing only these system choices, so they can compare results directly and check the assumptions behind each combination."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Comparison",
+            "Physical Qubits",
+            "Logical Qubits"
+          ],
+          "rows": [
+            [
+              "Trait",
+              "Carries errors inherent to itself",
+              "Formed by combining multiple physical qubits"
+            ],
+            [
+              "Role",
+              "Historically the main measure of progress",
+              "Uses error correction to overcome physical qubits' errors"
+            ],
+            [
+              "What CUDA-Q Logical does",
+              "Estimates how many are needed and how long it takes",
+              "Keeps the computation fixed, then compares different approaches"
+            ]
+          ],
+          "caption": "Compiled from NVIDIA's September 14, 2026 press release and technical documentation. Checked September 17, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the Tool Actually Does: Estimating, Not Building Hardware"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA's most concrete example is Iceberg Quantum, which used CUDA-Q Logical to model its own fault-tolerant architecture for Diraq's qubits, showing that 1,000 logical qubits could be created with just 150,000 physical qubits — roughly 10x fewer than Diraq's previous estimates. This is a modeling result: the press release does not say these qubits have been built as hardware, and the comparison is against Diraq's own earlier estimate, not against another company's machine."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other example comes from Fermilab. NVIDIA describes this as the lab's “early work”: researchers used CUDA-Q Logical to validate prior results and evaluate physical qubits, runtimes and other resource requirements across different error-correction approaches and quantum hardware. Anna Grassellino, chief technology officer at Fermilab, said that getting to fault-tolerant quantum computing “will require researchers to codesign algorithm, error correction, architectures and hardware together”; using CUDA-Q Logical, her team explored combinations of these resources “in just three weeks,” compared with what building specialized infrastructure “would have typically taken about five months” — her own words describe this as a comparative estimate, not a single timed measurement."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation explains that in this preview, users can start from a CUDA-Q kernel or author a portable logical program directly; configure error-correction codes, gadgets and placement, and distillation protocols; generate resource estimates; and emit realized programs for simulation and further analysis in tools such as Stim. The actions the documentation lists stop at “generating estimates” and “emitting programs” — they do not include “running” them."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-cuda-q-20260914/diagram-1-en.svg",
+          "width": 1600,
+          "height": 900,
+          "alt": "Four-panel diagram: physical qubits carry inherent errors; several combine into one logical qubit; CUDA-Q Logical estimates the hardware needed; the result is only an estimate, not an actual run",
+          "caption": "Compiled from NVIDIA's September 14, 2026 press release and technical documentation. Checked September 17, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "QUOPS: A Different Yardstick, Not NVIDIA's Own Benchmark"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA explains in the announcement that progress in quantum computing has historically been measured primarily through advances in physical qubits — increasing qubit counts, improving fidelity and extending coherence. QUOPS is meant to offer a different yardstick: NVIDIA describes it as “a new, independent cross-platform benchmark developed by Sandia National Laboratories that measures the progress quantum computing systems are making toward utility-scale applications,” and it is not tied to any particular hardware architecture."
+        },
+        {
+          "type": "paragraph",
+          "text": "QUOPS was developed by Sandia National Laboratories, not by NVIDIA itself; the announcement's body text says “a QUOPS reference implementation is available in NVIDIA CUDA-Q.” Timothy Proctor, co-lead of Sandia's Quantum Performance Laboratory, said that he and other quantum computing stakeholders have to be able to track and forecast the growth of quantum computers' abilities, and that QUOPS was created to do exactly that. NVIDIA says Sandia shared early results in a preprint posted ahead of IEEE Quantum Week, reporting initial QUOPS benchmarks for QPUs from Google, IBM and Quantinuum; the announcement does not include any scores or rankings."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where the Announcement and the Documentation Disagree"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reading the press release and the documentation side by side reveals a gap. The press release has only one sentence describing the tool's availability: “CUDA-Q Logical is now available through GitHub,” with no mention of price, plan or region, and the word “preview” does not appear anywhere in it. The documentation is different: the overview page opens with an admonition box titled “Preview release,” stating that “cudaq-logical is in preview. Its APIs, behavior, and documentation may change substantially in upcoming versions.” The release notes page states that CUDA-Q 0.16.0 integrates CUDA-Q Logical version 0.1.1."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation states the tool's boundaries clearly: it defines CUDA-Q Logical as “a resource-estimation toolkit for fault-tolerant quantum computing,” and states explicitly that “it remains a compiler and estimation artifact: CUDA-Q Logical does not submit a physical schedule to hardware or provide a runtime execution service for it,” and that “nothing in the package consumes or executes physical simulations.” The documentation also states that CUDA-Q Logical does not label detectors and observables, generate detector error models, or handle sampling and decoding; those steps begin only after the emitted Stim output, inside the Stim ecosystem. None of these boundaries are written in the press release."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation also notes that the accompanying example code is released under the Apache License 2.0, an open-source license — a name that likewise does not appear in the press release. The press release's own forward-looking statements list “expectations with respect to quantum computing” as the first item — NVIDIA itself classifies these statements as non-historical, with no guarantee of future results. None of the sources checked for this article mention Taiwan, or give any timeline for when fault-tolerant quantum computers will mature or become widespread."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is CUDA-Q Logical a quantum computer?",
+              "answer": "No. NVIDIA's technical documentation defines it as a resource-estimation toolkit for fault-tolerant quantum computing, used to estimate how much hardware resource a given computation needs; the documentation also states that it does not submit a physical schedule to hardware for execution, and the package itself does not execute physical simulations. Nowhere in this announcement does NVIDIA say it has built, sold or demonstrated a fault-tolerant quantum computer."
+            },
+            {
+              "question": "Is this a brand-new product from NVIDIA?",
+              "answer": "It is not a brand-new product line; it is a new layer added to the existing open-source CUDA-Q platform. NVIDIA describes CUDA-Q Logical as an orchestration layer that lets researchers design, evaluate and switch between different error-correction methods and system-architecture combinations for fault-tolerant quantum computing applications; the CUDA-Q platform itself already existed before this announcement."
+            },
+            {
+              "question": "NVIDIA mentions that “1,000 logical qubits can be created with just 150,000 physical qubits” — does that mean this hardware already exists?",
+              "answer": "No. NVIDIA explains this is an estimate that Iceberg Quantum obtained by using CUDA-Q Logical to model its own fault-tolerant architecture for Diraq's qubits. The comparison is against Diraq's own earlier estimate, not against any machine that has actually been built, and not against another company's hardware."
+            },
+            {
+              "question": "Is QUOPS a benchmark that NVIDIA created?",
+              "answer": "No. NVIDIA states in the announcement that QUOPS is an independent cross-platform benchmark developed by Sandia National Laboratories; the announcement's own text describes NVIDIA's role as making a QUOPS reference implementation available in NVIDIA CUDA-Q. A preprint Sandia posted ahead of IEEE Quantum Week reported initial QUOPS results for quantum processors from Google, IBM and Quantinuum, but the announcement does not include any scores or rankings."
+            },
+            {
+              "question": "Is CUDA-Q Logical a finished release, or still in testing?",
+              "answer": "As of the technical documentation this article checked on September 17, 2026, it is labeled a preview release; NVIDIA itself states that the API, behavior and documentation content may change substantially in later versions, and the release notes page states that CUDA-Q 0.16.0 integrates CUDA-Q Logical version 0.1.1. This status does not appear in the press release, which only says the tool is now available through GitHub."
+            },
+            {
+              "question": "How could users or companies in Taiwan get access?",
+              "answer": "Neither NVIDIA's press release nor its technical documentation mentions price, regional restrictions or an application process; the press release only says it can be obtained through GitHub, and the documentation notes that the accompanying examples are released under the Apache License 2.0, an open-source license. None of the sources checked for this article mention Taiwan in any way, or say when fault-tolerant quantum computers will mature or become widespread."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "“Available” and “Preview” Are Two Different Things",
+          "text": "NVIDIA's press release only says CUDA-Q Logical “is now available through GitHub,” with no mention of price, region or plan, and the word “preview” does not appear anywhere in it. Those qualifiers are all in NVIDIA's own technical documentation: the page is labeled a preview release, the API and behavior may change substantially in later versions, and CUDA-Q 0.16.0 integrates CUDA-Q Logical version 0.1.1. Every specification and claim in this article is marked as coming from either the press release or the documentation, and any number or timeframe not printed in a source is left out. To check the current status yourself, visit NVIDIA CUDA-Q's own technical documentation for the corresponding version's page; this article was checked on September 17, 2026."
+        },
+        {
+          "type": "link",
+          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA's AI Infra Summit Power Efficiency Talk: What's New With Vera Rubin and DSX",
+          "url": "https://mokaair.com/en/life/tech-news-nvidia-vera-rubin-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA Newsroom press release: NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q documentation: CUDA-Q Logical overview page (version 0.16.0)",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q documentation: Capabilities and status (version 0.16.0)",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q documentation: CUDA-Q Releases page",
+          "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "NVIDIA、CUDA-Q Logicalをオープンソース化――誤り耐性量子コンピュータの規模を見積もるツール、量子コンピュータ本体ではない",
+      "description": "2026年9月14日、NVIDIAはオープンソースのCUDA-Qプラットフォームに新しいオーケストレーション層CUDA-Q Logicalを追加すると発表しました。これは研究者が誤り耐性量子コンピューティング向けアプリケーションに必要なハードウェア量を見積もるのを助けるものであり、新しい量子コンピュータではありません。本記事はNVIDIAのプレスリリースと技術文書に基づき、このツールにできることとできないこと、両者の記述の食い違い、そしてサンディア国立研究所が開発したクロスプラットフォームベンチマークQUOPSについて説明します。査読日は2026年9月17日です。",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側の破線の枠に小さな丸が並び、一部は破線の輪郭で描かれ、誤りが起きやすい物理量子ビットを表す。矢印は整った同心円の大きな丸を指し、一つの論理量子ビットを表す。右側には文書があり、下に目盛り付きの定規が横たわり、実際に稼働する機械ではなく見積もりのためのツールであることを表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月14日、NVIDIAはオープンソースのCUDA-Qプラットフォームに新機能CUDA-Q Logicalを追加すると発表しました。これはオーケストレーション層であり、研究者が誤り耐性量子コンピューティング向けのアプリケーションを設計し、必要となるハードウェア量を見積もるのを助けるものです。NVIDIAはこの更新を既存プラットフォームの拡張だと説明しており、発表の中に新しい量子コンピュータは登場しません。同じ発表ではもう一つの新機軸も紹介されました。サンディア国立研究所（Sandia National Laboratories）が開発し、NVIDIA CUDA-Q上でリファレンス実装を利用できる、クロスプラットフォームのベンチマークQUOPSです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日に、NVIDIA Newsroomのプレスリリース全文と、CUDA-Q技術文書の3ページ――CUDA-Q Logicalの概要ページ、Capabilities and status（機能と現状）ページ、リリースノートページ――を突き合わせて査読しました。当サイトはこのソフトウェアをインストールしたり操作したりしておらず、実地の検証を行っておりません。購入やアップグレード、比較の助言も行いません。以下の記述にはそれぞれ、プレスリリースと技術文書のどちらに基づくかを明記しています。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月14日、NVIDIAはオープンソースのCUDA-Qプラットフォームに新しいオーケストレーション層CUDA-Q Logicalを追加すると発表しました。研究者が誤り耐性量子コンピューティング向けアプリケーションを設計し、必要なハードウェア量を見積もるのを助けるもので、新しい量子コンピュータではありません。",
+            "NVIDIAの技術文書はCUDA-Q Logicalを誤り耐性量子コンピューティングのための資源見積もりツールと定義し、実機への物理的なスケジュール送信も、物理シミュレーションの実行も行わないと明記していますが、これらの説明はプレスリリースには一切登場しません。",
+            "NVIDIAによれば、Iceberg QuantumはこのツールでDiraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化し、論理量子ビット1,000個をわずか物理量子ビット150,000個で作れると見積もりました。これはDiraq自身の従来の見積もりよりおよそ10分の1少ない数字ですが、あくまでモデルによる見積もりであり、実際に作られたハードウェアではありません。",
+            "発表で紹介されたQUOPSは、サンディア国立研究所が開発した独立系のクロスプラットフォームベンチマークであり、NVIDIA自身のベンチマークではありません。発表本文が書いているのは、NVIDIA CUDA-Q上でQUOPSのリファレンス実装を利用できるということです。",
+            "技術文書はCUDA-Q Logicalをプレビュー版と位置づけ、APIや挙動、文書の内容が今後のバージョンで大幅に変わり得ると説明しています。リリースノートページには、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合していると明記されています。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "NVIDIAが発表したこと――既存プラットフォームへの新しい層であり、新しい機械ではない"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA自身の説明によれば、今回のことは「NVIDIAのCUDA-Q™オープンソースプラットフォームを拡張し、CUDA-Q Logicalを追加するものであり、これは誤り耐性量子コンピュータ向けの有用なアプリケーション開発への、プログラム可能で検証可能なアプローチを提供するオーケストレーション層である」というものです。つまりCUDA-Q Logicalは、既存のCUDA-Qプラットフォームに追加された新機能であり、プラットフォーム自体は今回の発表より前から存在していました。NVIDIAは発表のどこにおいても、新しい量子コンピュータを世に出したとは述べていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAの説明では、こうしたシステム向けにアプリケーションを開発することは「面倒で時間のかかる協調設計（コデザイン）の課題」であり、「アルゴリズム、誤り訂正符号、ハードウェアアーキテクチャ、その他のQPU構成要素のいずれかを変更するだけで、特定のアプリケーションを実行するのに必要な資源は大きく変わりうる」としています。CUDA-Q Logicalがあれば、NVIDIAいわく「研究者は誤り耐性量子コンピューティング向けアプリケーションに必要な多数の構成要素を設計・調整できるようになり、選択肢を切り替えながら論理量子ビットでの性能について最適なシステム構成を見つけられる」といいます。NVIDIAの量子事業担当バイスプレジデント兼ゼネラルマネージャーであるTimothy Costa氏は、量子コンピューティングは「論理量子ビットの時代」に成熟しつつあり、CUDA-Q Logicalの追加は「有用な量子－GPUスーパーコンピューティングへの道のりを大幅に短縮する」と述べています――ただし具体的な年や時期は示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAによれば、CUDA-Q Logicalはすでに、フェルミ国立加速器研究所（Fermilab）、Infleqtion、IQM Quantum Computers、QCDesign、Quantum Motion、サンディア国立研究所を含むQPUメーカーや研究機関で使われています。プレスリリースの原文は「含む（including）」という語を使っており、これは完全なリストではないことを意味し、全体で何社が使っているかは書かれていません。またプレスリリースの原文ではQCDesignとQuantum Motionの間のカンマが抜けており、原文ではQuantum Motionだけがその会社のウェブサイトへのハイパーリンクになっているため、本記事では両者を別の組織として並べ、一つの会社と誤読されないようにしています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "なぜ「論理量子ビット」の話をするのか――誤り耐性とは何か"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAの説明では、論理量子ビットを備えた誤り耐性量子プロセッサは、量子コンピューティングを実際に役立てるための鍵であり、「物理量子ビットに本来備わる誤りを克服し、創薬、金融モデリング、材料開発など実用的な用途に必要な、より大規模な計算を実行できるようにする」ものです。NVIDIAはこの3分野を「例えば（such as）」という語で挙げており、用途をこの3つに限定しているわけではありません。簡単に言えば、その手法は誤りが起きやすい物理量子ビットを複数組み合わせ、量子誤り訂正を用いてより信頼性の高い一つの「論理」量子ビットを作り上げるというものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文書の説明によれば、この間の難しさは協調設計にあります。誤り訂正符号を変える、ハードウェアアーキテクチャを変える、あるいは復号方式を変えることさえも、同じ計算に必要な量子ビット数と実行時間をともに変えてしまう可能性があります。CUDA-Q Logicalが行うのは、研究者が同じ計算を固定したまま、これらのシステム上の選択肢だけを変えられるようにすることで、結果を直接比較し、それぞれの組み合わせの前提を確認できるようにすることです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "物理量子ビット",
+            "論理量子ビット"
+          ],
+          "rows": [
+            [
+              "特性",
+              "本来備わる誤りを抱えている",
+              "複数の物理量子ビットを組み合わせて構成"
+            ],
+            [
+              "役割",
+              "従来は進捗を測る主な指標だった",
+              "誤り訂正で物理量子ビットの誤りを克服"
+            ],
+            [
+              "CUDA-Q Logicalの役目",
+              "必要な数と時間を見積もる",
+              "計算を固定して異なる方式を比較する"
+            ]
+          ],
+          "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。査読日は2026年9月17日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "このツールが実際に行っていること――見積もりであり、ハードウェアの製造ではない"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAが挙げる最も具体的な例は、Iceberg QuantumがCUDA-Q Logicalを使い、Diraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化したというものです。その結果、論理量子ビット1,000個をわずか物理量子ビット150,000個で作れることが示され、これはDiraqの従来の見積もりよりおよそ10分の1少ない数字です。これはモデルによる見積もり結果であり、プレスリリースはこれらの量子ビットがすでにハードウェアとして作られたとは述べていません。比較対象はDiraq自身の従来の見積もりであり、他社が実際に作ったハードウェアではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つの例はフェルミ研究所によるものです。NVIDIAはこれを同研究所の「初期段階の取り組み」と説明しています。研究者はCUDA-Q Logicalを使って以前の結果を検証し、異なる誤り訂正方式や量子ハードウェアのもとで必要となる物理量子ビット数、実行時間などの資源を評価しました。フェルミ研究所の最高技術責任者であるAnna Grassellino氏は、誤り耐性量子コンピューティングに到達するには「研究者がアルゴリズム、誤り訂正、アーキテクチャ、ハードウェアを一緒に協調設計する必要がある」と述べています。同氏によれば、チームはCUDA-Q Logicalを使ってこれらの資源の組み合わせを「わずか3週間で」検討でき、専用のインフラを自前で構築する場合と比べると「通常はおよそ5か月かかっていた」といいます――これは同氏自身の言葉による比較上の見積もりであり、一度の計測結果ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文書の説明では、現在のこのプレビュー段階では、利用者はCUDA-Qのカーネルから出発するか、あるいは移植可能な論理プログラムを直接記述して、誤り訂正符号、ガジェットと配置、蒸留（distillation）プロトコルを設定し、資源見積もりを生成し、展開後のプログラムをStimのようなツールでのシミュレーションやさらなる分析のために出力できます。文書が挙げている動作は「見積もりの生成」と「プログラムの出力」で止まっており、「実行」は含まれていません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-cuda-q-20260914/diagram-1-ja.svg",
+          "width": 1600,
+          "height": 900,
+          "alt": "4コマの図解：物理量子ビットには本来備わる誤りがある。複数の物理量子ビットが組み合わさって一つの論理量子ビットになる。CUDA-Q Logicalは必要なハードウェア量を見積もる。結果はあくまで見積もりであり、実際の実行ではない",
+          "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。査読日は2026年9月17日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "QUOPS――もう一つの物差し、NVIDIA自身のベンチマークではない"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAは発表の中で、量子コンピューティングの進捗はこれまで主に物理量子ビット自体の進歩――量子ビット数の増加、忠実度の向上、コヒーレンス時間の延長――によって測られてきたと説明しています。QUOPSが提供しようとしているのは、もう一つの物差しです。NVIDIAはこれを「サンディア国立研究所が開発した、量子コンピューティングシステムが実用規模のアプリケーションに向けてどれだけ進歩しているかを測る、新しい独立系のクロスプラットフォームベンチマーク」と説明しており、特定のハードウェアアーキテクチャに縛られないとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "QUOPSはサンディア国立研究所が開発したものであり、NVIDIA自身のベンチマークテストではありません。発表本文が書いているのは「NVIDIA CUDA-Q上でQUOPSのリファレンス実装を利用できる」ということです。サンディアの量子性能研究所の共同リーダーであるTimothy Proctor氏は、自分たちや他の量子コンピューティング関係者は量子コンピュータの能力の成長を追跡し予測できなければならず、QUOPSはまさにそのために作ったと述べています。NVIDIAによれば、サンディアがIEEE Quantum Weekに先立って発表したプレプリントは、Google、IBM、Quantinuumの量子プロセッサについての初期のQUOPS結果を報告していますが、発表にはスコアや順位は一切示されていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "発表と技術文書とで食い違う点"
+        },
+        {
+          "type": "paragraph",
+          "text": "プレスリリースと技術文書を並べて読むと、隔たりが見えてきます。プレスリリースがこのツールの利用可能性について書いているのはたった一文、「CUDA-Q Logicalは現在GitHubを通じて利用できる」だけで、価格やプラン、地域については触れておらず、全文を通じてpreview（プレビュー）という語も登場しません。技術文書は違います。概要ページの冒頭には「Preview release」と題した注意書きの枠があり、「cudaq-logicalはプレビュー段階にあり、そのAPI、挙動、文書は今後のバージョンで大幅に変わる可能性がある」と書かれています。リリースノートページには、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合していると明記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文書はこのツールの境界をはっきりと述べています。CUDA-Q Logicalを「誤り耐性量子コンピューティングのための資源見積もりツール」と定義し、「それはあくまでコンパイラであり見積もりの成果物である。CUDA-Q Logicalは物理的なスケジュールをハードウェアに送信することも、そのための実行時サービスを提供することもない」と明記し、さらに「このパッケージ内のいかなるものも、物理シミュレーションを取り込んだり実行したりしない」とも述べています。文書はまた、検出器と観測量のラベル付け、検出器誤りモデルの生成、サンプリングと復号は、CUDA-Q Logicalが行う範囲ではなく、出力されたStimのテキストより後、Stimのエコシステムの中で初めて始まると説明しています。これらの境界線はプレスリリースには一切書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術文書はさらに、付属のサンプルコードがApache License 2.0というオープンソースライセンスのもとで提供されていると記していますが、この名称もやはりプレスリリースには登場しません。プレスリリースに付された会社の将来予測に関する記述は、その第一項目に「量子コンピューティングに関する期待」を挙げています。NVIDIA自身がこの種の記述を、将来の結果を保証しない、歴史的事実ではないものと位置づけています。本記事が査読した情報源には、台湾についての言及は一切なく、誤り耐性量子コンピュータがいつ成熟し普及するかという時期も示されていません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "CUDA-Q Logicalは量子コンピュータですか。",
+              "answer": "いいえ。NVIDIAの技術文書はこれを、ある計算にどれだけのハードウェア資源が必要かを見積もるための、誤り耐性量子コンピューティング向けの資源見積もりツールと定義しています。文書はまた、物理的なスケジュールを実機に送って実行させることはなく、パッケージ自体が物理シミュレーションを実行することもないと明記しています。今回の発表のどこにも、NVIDIAが誤り耐性量子コンピュータを製造・販売・実演したとは書かれていません。"
+            },
+            {
+              "question": "これはNVIDIAが新たに売り出した製品ですか。",
+              "answer": "まったく新しい製品系列ではなく、既存のオープンソースCUDA-Qプラットフォームに追加された新しい層です。NVIDIAはCUDA-Q Logicalを、研究者が誤り耐性量子コンピューティング向けアプリケーションについて、異なる誤り訂正方式やシステムアーキテクチャの組み合わせを設計・評価し、切り替えられるようにするオーケストレーション層と説明しています。CUDA-Qプラットフォーム自体は、この発表より前からすでに存在していました。"
+            },
+            {
+              "question": "NVIDIAは「論理量子ビット1,000個がわずか物理量子ビット150,000個で作れる」と述べていますが、これはすでにそのようなハードウェアが存在するという意味ですか。",
+              "answer": "いいえ。NVIDIAの説明によれば、これはIceberg QuantumがCUDA-Q Logicalを使い、Diraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化して得た見積もり結果です。比較対象はDiraq自身の従来の見積もりであり、実際に作られたどの機械とも、他社のハードウェアとも比較していません。"
+            },
+            {
+              "question": "QUOPSはNVIDIAが打ち出したベンチマークテストですか。",
+              "answer": "いいえ。NVIDIAは発表の中で、QUOPSはサンディア国立研究所が開発した独立系のクロスプラットフォームベンチマークであると説明しています。発表本文がNVIDIAの役割について書いているのは、NVIDIA CUDA-Q上でQUOPSのリファレンス実装を利用できるということだけです。サンディアがIEEE Quantum Weekに先立って発表したプレプリントは、Google、IBM、Quantinuumの量子プロセッサについての初期のQUOPS結果を報告していますが、発表にはスコアや順位は示されていません。"
+            },
+            {
+              "question": "CUDA-Q Logicalは現在、正式版ですか、それともテスト段階ですか。",
+              "answer": "本記事が2026年9月17日に確認した技術文書によれば、プレビュー版と位置づけられており、NVIDIA自身がAPI、挙動、文書の内容は今後のバージョンで大幅に変わりうると明記しています。リリースノートページには、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合していると記されています。この状態はプレスリリースには書かれておらず、プレスリリースは現在GitHubを通じて利用できるとしか述べていません。"
+            },
+            {
+              "question": "台湾の利用者や企業はどのように入手できますか。",
+              "answer": "NVIDIAのプレスリリースにも技術文書にも、価格、地域制限、申請方法についての記載はありません。プレスリリースはGitHubを通じて入手できるとしか述べておらず、技術文書は付属のサンプルがApache License 2.0というオープンソースライセンスのもとで提供されているとしています。本記事が査読した情報源には、台湾に関する記述は一切なく、誤り耐性量子コンピュータがいつ成熟し普及するかについても示されていません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "「提供している」と「プレビュー版」は別の話",
+          "text": "NVIDIA今回のプレスリリースは、CUDA-Q Logicalが「現在GitHubを通じて利用できる」としか述べておらず、価格や地域、プランには触れていませんし、全文を通じてpreviewという語も登場しません。こうした限定条件はすべて、NVIDIA自身の技術文書に書かれています。ページはプレビュー版と位置づけられ、APIや挙動は今後のバージョンで大幅に変わりうるとされ、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合しているとされています。本記事で触れている仕様や記述はすべて、プレスリリースと技術文書のどちらに基づくかを明記しており、情報源に印字されていない数字や時期は書いていません。現在の状況を自分で確認したい場合は、NVIDIA CUDA-Qの公式技術文書で該当バージョンのページを参照してください。本記事の査読日は2026年9月17日です。"
+        },
+        {
+          "type": "link",
+          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIAのAI Infra Summit講演から：Vera RubinとDSXに何が加わったか",
+          "url": "https://mokaair.com/ja/life/tech-news-nvidia-vera-rubin-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA Newsroomのプレスリリース：NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q技術文書：CUDA-Q Logical概要ページ（0.16.0版）",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q技術文書：Capabilities and status（0.16.0版）",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q技術文書：CUDA-Q Releasesリリースノートページ",
+          "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "NVIDIA, CUDA-Q Logical 오픈소스 공개 — 결함 허용 양자컴퓨터 규모를 추정하는 도구, 양자컴퓨터 자체는 아니다",
+      "description": "2026년 9월 14일, NVIDIA는 오픈소스 CUDA-Q 플랫폼에 새로운 오케스트레이션 계층인 CUDA-Q Logical을 추가한다고 발표했습니다. 이는 연구자가 결함 허용 양자컴퓨팅 애플리케이션에 필요한 하드웨어 규모를 추정하도록 돕는 도구이며, 새로운 양자컴퓨터가 아닙니다. 본 기사는 NVIDIA의 보도자료와 기술 문서를 근거로, 이 도구가 할 수 있는 일과 할 수 없는 일, 두 자료 사이의 표현 차이, 그리고 샌디아 국립연구소가 개발한 크로스플랫폼 벤치마크 QUOPS를 설명합니다. 확인일은 2026년 9월 17일입니다.",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽 점선 상자 안에 작은 원 여러 개가 늘어서 있고 일부는 점선 윤곽으로 그려져 오류가 나기 쉬운 물리 큐비트를 나타낸다. 화살표는 가지런한 동심원 모양의 큰 원을 가리키며 이는 하나의 논리 큐비트를 나타낸다. 오른쪽에는 문서가 있고 그 아래에 눈금 달린 자가 가로놓여, 실제로 작동하는 기계가 아니라 추정 도구임을 나타낸다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 14일, NVIDIA는 오픈소스 CUDA-Q 플랫폼에 CUDA-Q Logical을 추가한다고 발표했습니다. 이는 오케스트레이션 계층으로, 연구자가 결함 허용 양자컴퓨팅 애플리케이션을 설계하고 필요한 하드웨어 규모를 추정하도록 돕습니다. NVIDIA는 이번 업데이트를 기존 플랫폼의 확장이라고 설명했으며, 발표문 어디에도 새로운 양자컴퓨터는 등장하지 않습니다. 같은 발표에서는 또 다른 새로운 것도 소개되었습니다. 샌디아 국립연구소(Sandia National Laboratories)가 개발했고 NVIDIA CUDA-Q에서 참조 구현을 이용할 수 있는 크로스플랫폼 벤치마크 QUOPS입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 17일에 NVIDIA Newsroom 보도자료 전문과 CUDA-Q 기술 문서 세 페이지 — CUDA-Q Logical 개요 페이지, Capabilities and status(기능과 현황) 페이지, 릴리스 노트 페이지 — 를 대조해 확인했습니다. 본 사이트는 직접 시험해 보지 않았고, 이 소프트웨어를 설치하거나 실행하지도 않았습니다. 구매나 업그레이드, 비교를 권하지 않습니다. 아래 서술은 각각 보도자료와 기술 문서 중 어디에서 나온 내용인지 표시했습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 14일, NVIDIA는 오픈소스 CUDA-Q 플랫폼에 새로운 오케스트레이션 계층 CUDA-Q Logical을 추가한다고 발표했습니다. 연구자가 결함 허용 양자컴퓨팅 애플리케이션을 설계하고 필요한 하드웨어 규모를 추정하도록 돕는 도구로, 새로운 양자컴퓨터가 아닙니다.",
+            "NVIDIA의 기술 문서는 CUDA-Q Logical을 결함 허용 양자컴퓨팅을 위한 자원 추정 도구로 정의하며, 물리적 스케줄을 하드웨어에 전달해 실행시키지 않고 패키지 자체가 물리 시뮬레이션을 실행하지도 않는다고 명시합니다. 하지만 이런 설명은 보도자료에는 전혀 나오지 않습니다.",
+            "NVIDIA에 따르면 Iceberg Quantum은 이 도구로 Diraq의 큐비트를 대상으로 자사의 결함 허용 아키텍처를 모델링해, 논리 큐비트 1,000개를 물리 큐비트 150,000개만으로 만들 수 있다고 추정했습니다. 이는 Diraq 자체의 이전 추정치보다 약 10배 적은 숫자이지만, 어디까지나 모델 추정치이며 실제로 만들어진 하드웨어가 아닙니다.",
+            "발표에서 함께 소개된 QUOPS는 샌디아 국립연구소가 개발한 독립적인 크로스플랫폼 벤치마크로, NVIDIA 자체의 벤치마크가 아닙니다. 발표 본문에 적힌 내용은 NVIDIA CUDA-Q에서 QUOPS의 참조 구현을 이용할 수 있다는 것입니다.",
+            "기술 문서는 CUDA-Q Logical을 프리뷰(미리보기) 버전으로 표시하며, API와 동작, 문서 내용이 이후 버전에서 크게 바뀔 수 있다고 설명합니다. 릴리스 노트 페이지에는 CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 명시되어 있습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "NVIDIA가 발표한 것 — 기존 플랫폼 위의 새 계층, 새로운 기계가 아니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 자신의 설명에 따르면 이번 일은 “NVIDIA CUDA-Q™ 오픈소스 플랫폼을 확장해 CUDA-Q Logical을 추가한 것으로, 이는 결함 허용 양자컴퓨터를 위한 유용한 애플리케이션 개발에 프로그래밍 가능하고 검증 가능한 접근법을 제공하는 오케스트레이션 계층”입니다. 다시 말해 CUDA-Q Logical은 기존 CUDA-Q 플랫폼에 추가된 새 기능이며, 플랫폼 자체는 이번 발표 이전부터 존재했습니다. NVIDIA는 발표문 어디에서도 새로운 양자컴퓨터를 내놓았다고 말하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA의 설명에 따르면 이런 시스템을 위한 애플리케이션 개발은 “번거롭고 시간이 많이 드는 공동설계(코디자인) 과제”이며, “알고리즘, 오류 정정 코드, 하드웨어 아키텍처, 그 밖의 QPU 구성 요소 중 하나만 바뀌어도 특정 애플리케이션을 실행하는 데 필요한 자원이 크게 달라질 수 있다”고 합니다. CUDA-Q Logical이 있으면 NVIDIA의 말대로 “연구자는 결함 허용 양자컴퓨팅 애플리케이션에 필요한 여러 구성 요소를 설계하고 조율할 수 있게 되며, 여러 선택지를 오가며 논리 큐비트 성능에 최적인 시스템 구성을 찾아낼 수 있다”고 합니다. NVIDIA의 양자 사업 부문 부사장 겸 총괄매니저인 Timothy Costa는 양자컴퓨팅이 “논리 큐비트의 시대”로 성숙해 가고 있으며, CUDA-Q Logical의 추가가 “유용한 양자-GPU 슈퍼컴퓨팅에 이르는 시간을 크게 단축한다”고 말했습니다 — 다만 구체적인 연도나 시기는 제시하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA에 따르면 CUDA-Q Logical은 이미 페르미 국립가속기연구소(Fermilab), Infleqtion, IQM Quantum Computers, QCDesign, Quantum Motion, 샌디아 국립연구소를 포함한 QPU 제조사와 연구기관에서 쓰이고 있습니다. 보도자료 원문은 “포함(including)”이라는 단어를 사용했는데, 이는 전체 목록이 아니라는 뜻이며 보도자료는 전체가 몇 곳인지는 밝히지 않았습니다. 또한 보도자료 원문에는 QCDesign과 Quantum Motion 사이에 쉼표가 빠져 있고, 원문에서 Quantum Motion만 그 회사 웹사이트로 연결되는 하이퍼링크로 되어 있어, 본 기사는 두 조직을 하나의 회사로 오해하지 않도록 따로 나열합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "왜 “논리 큐비트”를 이야기하는가 — 결함 허용이란 무엇인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA의 설명에 따르면 논리 큐비트를 갖춘 결함 허용 양자 프로세서는 양자컴퓨팅을 실제로 쓸모 있게 만드는 핵심입니다. 이를 통해 시스템은 “물리 큐비트에 본래 존재하는 오류를 극복해, 신약 개발, 금융 모델링, 소재 개발 같은 실용적 응용에 필요한 더 큰 규모의 연산을 수행할 수 있게 된다”고 합니다. NVIDIA는 이 세 분야를 “예를 들어(such as)”라는 표현으로 제시했으며, 용도가 이 세 가지에 한정된다는 뜻은 아닙니다. 간단히 말해 이 방식은 오류가 나기 쉬운 물리 큐비트 여러 개를 결합해, 양자 오류 정정을 통해 더 안정적인 하나의 “논리” 큐비트를 만들어내는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기술 문서의 설명에 따르면 이 과정의 어려움은 공동설계에 있습니다. 오류 정정 코드를 바꾸거나 하드웨어 아키텍처를 바꾸거나, 심지어 디코딩 방식을 바꾸는 것만으로도 같은 연산에 필요한 큐비트 수와 실행 시간이 함께 달라질 수 있습니다. CUDA-Q Logical이 하는 일은 연구자가 같은 연산을 고정한 채 이런 시스템 선택지만 바꿀 수 있게 해서, 결과를 직접 비교하고 각 조합 이면의 전제를 확인할 수 있게 하는 것입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "비교 항목",
+            "물리 큐비트",
+            "논리 큐비트"
+          ],
+          "rows": [
+            [
+              "특성",
+              "본래 오류를 지니고 있음",
+              "여러 물리 큐비트를 결합해 구성"
+            ],
+            [
+              "역할",
+              "과거에는 진전을 재는 주요 척도였음",
+              "오류 정정으로 물리 큐비트의 오류를 극복"
+            ],
+            [
+              "CUDA-Q Logical의 역할",
+              "필요한 개수와 시간을 추정",
+              "연산을 고정한 뒤 여러 방안을 비교"
+            ]
+          ],
+          "caption": "NVIDIA의 2026년 9월 14일 보도자료와 기술 문서를 바탕으로 정리. 확인일 2026년 9월 17일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 도구가 실제로 하는 일 — 추정이지, 하드웨어 제작이 아니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA가 제시한 가장 구체적인 사례는 Iceberg Quantum이 CUDA-Q Logical을 사용해 Diraq의 큐비트를 대상으로 자사의 결함 허용 아키텍처를 모델링한 것입니다. 그 결과 논리 큐비트 1,000개를 물리 큐비트 150,000개만으로 만들 수 있다는 것이 나타났으며, 이는 Diraq의 기존 추정치보다 약 10배 적은 숫자입니다. 이는 모델링을 통한 추정 결과이며, 보도자료는 이 큐비트들이 이미 하드웨어로 만들어졌다고 말하지 않습니다. 비교 대상은 Diraq 자체의 이전 추정치이지, 다른 회사가 실제로 만든 하드웨어가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또 다른 사례는 페르미연구소에서 나왔습니다. NVIDIA는 이를 그 연구소의 “초기 작업”이라고 설명합니다. 연구자들은 CUDA-Q Logical을 사용해 이전 결과를 검증하고, 서로 다른 오류 정정 방식과 양자 하드웨어에서 필요한 물리 큐비트 수, 실행 시간 등 자원을 평가했습니다. 페르미연구소 최고기술책임자인 Anna Grassellino는 결함 허용 양자컴퓨팅에 이르려면 “연구자들이 알고리즘, 오류 정정, 아키텍처, 하드웨어를 함께 공동설계해야 한다”고 말했습니다. 그에 따르면 팀은 CUDA-Q Logical을 사용해 이런 자원의 조합을 “단 3주 만에” 검토할 수 있었고, 전용 인프라를 직접 구축했다면 “보통 약 5개월이 걸렸을 것”이라고 했습니다 — 이는 본인이 밝힌 비교 추정치이며 한 번의 시간 측정이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기술 문서의 설명에 따르면 지금의 프리뷰 단계에서 사용자는 CUDA-Q 커널에서 시작하거나 이식 가능한 논리 프로그램을 직접 작성해, 오류 정정 코드와 게젯 및 배치, 증류(distillation) 프로토콜을 설정하고, 자원 추정치를 생성하고, 전개된 프로그램을 Stim 같은 도구로 내보내 시뮬레이션과 추가 분석에 사용할 수 있습니다. 문서가 나열한 동작은 “추정치 생성”과 “프로그램 내보내기”에서 멈추며, “실행”은 포함되지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-cuda-q-20260914/diagram-1-ko.svg",
+          "width": 1600,
+          "height": 900,
+          "alt": "네 칸짜리 도해: 물리 큐비트에는 본래 오류가 있다, 여러 물리 큐비트가 결합해 하나의 논리 큐비트가 된다, CUDA-Q Logical은 필요한 하드웨어 규모를 추정한다, 결과는 어디까지나 추정치일 뿐 실제 실행이 아니다",
+          "caption": "NVIDIA의 2026년 9월 14일 보도자료와 기술 문서를 바탕으로 정리. 확인일 2026년 9월 17일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "QUOPS — 또 다른 잣대, NVIDIA 자체의 벤치마크가 아니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA는 발표에서 양자컴퓨팅의 진전이 그동안 주로 물리 큐비트 자체의 발전 — 큐비트 수 증가, 충실도 향상, 결맞음 시간 연장 — 으로 측정되어 왔다고 설명합니다. QUOPS가 제공하려는 것은 또 다른 잣대입니다. NVIDIA는 이를 “샌디아 국립연구소가 개발한, 양자컴퓨팅 시스템이 실용 규모의 응용에 얼마나 다가가고 있는지를 측정하는 새롭고 독립적인 크로스플랫폼 벤치마크”라고 설명하며, 특정 하드웨어 아키텍처에 얽매이지 않는다고 밝힙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "QUOPS는 샌디아 국립연구소가 개발한 것이며, NVIDIA 자체의 벤치마크 테스트가 아닙니다. 발표 본문에 적힌 내용은 “NVIDIA CUDA-Q에서 QUOPS의 참조 구현을 이용할 수 있다”는 것입니다. 샌디아 양자성능연구소의 공동 책임자인 Timothy Proctor는 자신들과 다른 양자컴퓨팅 관계자들이 양자컴퓨터 성능의 성장을 추적하고 예측할 수 있어야 하며, QUOPS는 바로 그것을 위해 만들었다고 말했습니다. NVIDIA에 따르면 샌디아가 IEEE Quantum Week에 앞서 발표한 프리프린트는 Google, IBM, Quantinuum의 양자 프로세서에 대한 초기 QUOPS 결과를 보고했지만, 발표문에는 점수나 순위가 전혀 담겨 있지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "발표문과 기술 문서가 어긋나는 지점"
+        },
+        {
+          "type": "paragraph",
+          "text": "보도자료와 기술 문서를 나란히 놓고 보면 차이가 드러납니다. 보도자료가 이 도구의 이용 가능성에 대해 적은 것은 단 한 문장, “CUDA-Q Logical은 현재 GitHub를 통해 이용할 수 있다”뿐이며, 가격이나 요금제, 지역에 대한 언급이 없고 전체 글에 preview(프리뷰)라는 단어도 등장하지 않습니다. 기술 문서는 다릅니다. 개요 페이지 맨 위에는 “Preview release”라는 제목의 안내 상자가 있고, “cudaq-logical은 프리뷰 상태이며, 그 API와 동작, 문서는 앞으로 나올 버전에서 크게 바뀔 수 있다”고 적혀 있습니다. 릴리스 노트 페이지에는 CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 명시되어 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기술 문서는 이 도구의 경계를 분명하게 밝힙니다. CUDA-Q Logical을 “결함 허용 양자컴퓨팅을 위한 자원 추정 도구”로 정의하고, “그것은 어디까지나 컴파일러이자 추정 산출물이다. CUDA-Q Logical은 물리적 스케줄을 하드웨어에 제출하지도, 그것을 위한 런타임 실행 서비스를 제공하지도 않는다”고 명시하며, 더 나아가 “이 패키지 안의 어떤 것도 물리 시뮬레이션을 사용하거나 실행하지 않는다”고도 밝힙니다. 문서는 또한 검출기와 관측량 표시, 검출기 오류 모델 생성, 샘플링과 디코딩은 CUDA-Q Logical이 하는 일이 아니며, 이런 작업은 출력된 Stim 결과 이후 Stim 생태계 안에서야 시작된다고 설명합니다. 이런 경계는 보도자료에는 전혀 쓰여 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기술 문서는 또한 함께 제공되는 예제 코드가 Apache License 2.0이라는 오픈소스 라이선스로 제공된다고 밝히는데, 이 이름 역시 보도자료에는 등장하지 않습니다. 보도자료에 첨부된 회사의 미래 전망 진술은 그 첫 항목으로 “양자컴퓨팅에 관한 기대”를 꼽습니다 — NVIDIA 스스로 이런 진술을 역사적 사실이 아니며 향후 결과를 보장하지 않는 것으로 분류합니다. 본 기사가 확인한 출처에는 대만에 대한 언급이 전혀 없으며, 결함 허용 양자컴퓨터가 언제 성숙하거나 널리 쓰이게 될지에 대한 시간표도 제시되어 있지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "CUDA-Q Logical은 양자컴퓨터인가요?",
+              "answer": "아닙니다. NVIDIA의 기술 문서는 이를 특정 연산에 얼마나 많은 하드웨어 자원이 필요한지 추정하는, 결함 허용 양자컴퓨팅을 위한 자원 추정 도구로 정의합니다. 문서는 또한 물리적 스케줄을 실제 하드웨어에 보내 실행시키지 않으며, 패키지 자체가 물리 시뮬레이션을 실행하지도 않는다고 명시합니다. 이번 발표 어디에도 NVIDIA가 결함 허용 양자컴퓨터를 만들거나 판매하거나 시연했다는 내용은 없습니다."
+            },
+            {
+              "question": "이것은 NVIDIA가 새롭게 내놓은 제품인가요?",
+              "answer": "완전히 새로운 제품군이 아니라 기존 오픈소스 CUDA-Q 플랫폼에 추가된 새로운 계층입니다. NVIDIA는 CUDA-Q Logical을 연구자가 결함 허용 양자컴퓨팅 애플리케이션에 대해 서로 다른 오류 정정 방식과 시스템 아키텍처 조합을 설계, 평가하고 전환할 수 있게 하는 오케스트레이션 계층이라고 설명합니다. CUDA-Q 플랫폼 자체는 이번 발표 이전부터 이미 존재했습니다."
+            },
+            {
+              "question": "NVIDIA는 “논리 큐비트 1,000개를 물리 큐비트 150,000개만으로 만들 수 있다”고 언급했는데, 이는 이미 그런 하드웨어가 존재한다는 뜻인가요?",
+              "answer": "아닙니다. NVIDIA의 설명에 따르면 이는 Iceberg Quantum이 CUDA-Q Logical을 사용해 Diraq의 큐비트를 대상으로 자사의 결함 허용 아키텍처를 모델링해 얻은 추정치입니다. 비교 대상은 Diraq 자체의 이전 추정치이며, 실제로 만들어진 어떤 기계나 다른 회사의 하드웨어와 비교한 것이 아닙니다."
+            },
+            {
+              "question": "QUOPS는 NVIDIA가 내놓은 벤치마크 테스트인가요?",
+              "answer": "아닙니다. NVIDIA는 발표에서 QUOPS가 샌디아 국립연구소가 개발한 독립적인 크로스플랫폼 벤치마크라고 설명합니다. 발표 본문이 NVIDIA의 역할에 대해 적은 내용은 NVIDIA CUDA-Q에서 QUOPS의 참조 구현을 이용할 수 있다는 것뿐입니다. 샌디아가 IEEE Quantum Week에 앞서 발표한 프리프린트는 Google, IBM, Quantinuum의 양자 프로세서에 대한 초기 QUOPS 결과를 보고했지만, 발표문에는 점수나 순위가 담겨 있지 않습니다."
+            },
+            {
+              "question": "CUDA-Q Logical은 지금 정식 버전인가요, 아니면 아직 테스트 단계인가요?",
+              "answer": "본 기사가 2026년 9월 17일에 확인한 기술 문서에 따르면 프리뷰 버전으로 표시되어 있으며, NVIDIA 스스로 API와 동작, 문서 내용이 이후 버전에서 크게 바뀔 수 있다고 명시합니다. 릴리스 노트 페이지에는 CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 적혀 있습니다. 이런 상태는 보도자료에는 쓰여 있지 않으며, 보도자료는 현재 GitHub를 통해 이용할 수 있다고만 말합니다."
+            },
+            {
+              "question": "대만의 이용자나 기업은 어떻게 이용할 수 있나요?",
+              "answer": "NVIDIA의 보도자료와 기술 문서 어디에도 가격, 지역 제한, 신청 방법에 대한 언급이 없습니다. 보도자료는 GitHub를 통해 이용할 수 있다고만 말하며, 기술 문서는 함께 제공되는 예제가 Apache License 2.0이라는 오픈소스 라이선스로 제공된다고 밝힙니다. 본 기사가 확인한 출처에는 대만과 관련된 서술이 전혀 없으며, 결함 허용 양자컴퓨터가 언제 성숙하거나 널리 쓰이게 될지도 제시되어 있지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "“이용할 수 있다”와 “프리뷰 버전”은 다른 이야기",
+          "text": "NVIDIA의 이번 보도자료는 CUDA-Q Logical이 “현재 GitHub를 통해 이용할 수 있다”고만 말할 뿐, 가격이나 지역, 요금제는 언급하지 않고 전체 글에 preview라는 단어도 등장하지 않습니다. 이런 단서 조건은 모두 NVIDIA 자체의 기술 문서에 적혀 있습니다. 페이지는 프리뷰 버전으로 표시되어 있고, API와 동작이 이후 버전에서 크게 바뀔 수 있으며, CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 되어 있습니다. 본 기사에서 언급한 모든 사양과 서술은 보도자료와 기술 문서 중 어디에서 나온 것인지 표시했으며, 출처에 나오지 않는 숫자나 시기는 쓰지 않았습니다. 지금 상태를 직접 확인하려면 NVIDIA CUDA-Q의 공식 기술 문서에서 해당 버전 페이지를 찾아보시기 바랍니다. 본 기사의 확인일은 2026년 9월 17일입니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA의 AI Infra Summit 전력 효율 강연: Vera Rubin과 DSX에 새로 추가된 것",
+          "url": "https://mokaair.com/ko/life/tech-news-nvidia-vera-rubin-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA Newsroom 보도자료: NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 기술 문서: CUDA-Q Logical 개요 페이지(0.16.0 버전)",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 기술 문서: Capabilities and status(0.16.0 버전)",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 기술 문서: CUDA-Q Releases 릴리스 노트 페이지",
+          "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "NVIDIA 开源 CUDA-Q Logical：估算容错量子计算机规模，不是量子计算机本身",
+      "description": "2026 年 9 月 14 日，NVIDIA 宣布为开源的 CUDA-Q 平台新增 CUDA-Q Logical，这是一个协调层，用来帮助研究者估算容错量子计算应用需要多少硬件，而不是新的量子计算机。本文依据 NVIDIA 新闻稿与技术文档，说明这个工具能做与不能做的事、新闻稿和技术文档用词的落差，以及桑迪亚国家实验室（Sandia National Laboratories）开发的跨平台基准 QUOPS。查核日 2026 年 9 月 17 日。",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-zh-cn.jpg",
+        "alt": "原创插图：左边虚线框里排着十二个小圆点，其中几个是虚线轮廓，代表容易出错的物理量子比特；箭头指向一个工整的同心大圆，代表一个逻辑量子比特；右边是一份文件，下方横着一把带刻度的尺，代表这是估算工具，而不是实际运转的机器",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 14 日，NVIDIA 宣布为开源的 CUDA-Q 平台新增 CUDA-Q Logical，这是一个协调层，用来帮助研究者设计容错量子计算应用，并估算它们需要多少硬件资源。NVIDIA 把这次更新形容为既有平台的扩充，公告里没有出现新的量子计算机；同一份公告也介绍了另一项新东西——桑迪亚国家实验室（Sandia National Laboratories）开发、可在 NVIDIA CUDA-Q 中获取参考实现的跨平台基准 QUOPS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日查核，资料来源是 NVIDIA Newsroom 新闻稿全文，以及 CUDA-Q 技术文档的 CUDA-Q Logical 说明页、Capabilities and status（功能与现状）页、版本记录页。本站没有安装或操作这套软件，也不提供采购、升级或比较建议；下文每项说法都会标明出自新闻稿还是技术文档。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 14 日，NVIDIA 宣布为开源的 CUDA-Q 平台新增 CUDA-Q Logical，这是一个协调层，用来帮助研究者设计容错量子计算应用，并估算它们需要多少硬件资源，而不是推出新的量子计算机。",
+            "NVIDIA 的技术文档把 CUDA-Q Logical 定义为容错量子计算的资源估算工具，并说明它不会把物理排程提交给硬件执行、软件包本身也不执行物理模拟，但这些说明都没有出现在新闻稿里。",
+            "NVIDIA 表示，Iceberg Quantum 用这套工具针对 Diraq 的量子比特为自家容错架构建模，估算 1,000 个逻辑量子比特只需要 150,000 个物理量子比特，比 Diraq 自己先前的估计少了大约 10 倍，但这是模型估算，不是已经做出来的硬件。",
+            "公告介绍的 QUOPS，是桑迪亚国家实验室开发的独立跨平台基准，不是 NVIDIA 自己的基准测试；公告正文写的是在 NVIDIA CUDA-Q 中可以获取 QUOPS 的参考实现。",
+            "技术文档把 CUDA-Q Logical 标记为预览版，说明 API、行为与文档内容都可能在之后的版本中大幅变动；版本记录页写明 CUDA-Q 0.16.0 这一版整合的是 CUDA-Q Logical 0.1.1 版。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "NVIDIA 公告了什么：既有平台多了一层，不是新机器"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 自己的说法是，这次“为 NVIDIA CUDA-Q™ 开源平台新增了 CUDA-Q Logical，这是一个协调层，用可编程、可验证的方式，帮助为容错量子计算机开发有用的应用”。也就是说，CUDA-Q Logical 是加在既有 CUDA-Q 平台上的新功能，平台本身在公告之前就已存在；NVIDIA 没有在公告里表示自己推出了新的量子计算机。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 说明，为容错系统开发应用是一项“繁琐、耗时的协同设计（codesign）挑战”：“只要更改算法、纠错码、硬件架构或其他 QPU 组件，运行任意一个应用所需的资源就可能大幅改变”。有了 CUDA-Q Logical，按 NVIDIA 的说法，“研究者现在可以设计并协调容错量子计算应用所需的众多组件，在不同选项之间轻松切换，找出在逻辑量子比特上性能最佳的系统配置”。NVIDIA 量子事业部副总裁兼总经理 Timothy Costa 表示，量子计算正在走向“逻辑量子比特的时代”，CUDA-Q Logical 的加入“大幅缩短了通往实用量子－GPU 超级计算的时间线”——但没有附上具体年份或时间表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 表示，CUDA-Q Logical 已经在包括费米国家加速器实验室（Fermilab）、Infleqtion、IQM Quantum Computers、QCDesign、Quantum Motion 与桑迪亚国家实验室在内的 QPU 制造商与实验室中使用。新闻稿原文用的是“包括（including）”，说明这不是完整名单，新闻稿没有说总共有多少家。新闻稿原文在 QCDesign 与 Quantum Motion 之间漏了一个逗号；原文中 Quantum Motion 是链接到该公司网站的超链接，本文因此将两者分开列出，避免被误读成一家公司。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "为什么要谈“逻辑量子比特”：容错是什么意思"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 说明，搭配逻辑量子比特的容错量子处理器，是量子计算真正派上用场的关键：它能让系统“克服物理量子比特固有的错误，从而执行新药研发、金融建模与材料开发等实际应用所需要的更大规模运算”——NVIDIA 用“例如（such as）”带出这三个领域，不代表用途仅限于这三项。简单说，做法是把多个容易出错的物理量子比特组合起来，用量子纠错拼出一个更可靠的“逻辑”量子比特。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技术文档说明，这中间的难点在于协同设计：换一种纠错码、换一种硬件架构，甚至换一种解码方式，都可能同时改变某个运算需要多少个量子比特、需要多少运行时间。CUDA-Q Logical 要做的，是让研究者固定住同一个运算、只改变这些系统选项，从而直接比较结果、检查每种组合背后的假设。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "比较项目",
+            "物理量子比特",
+            "逻辑量子比特"
+          ],
+          "rows": [
+            [
+              "特性",
+              "本身带有固有的错误",
+              "由多个物理量子比特组合而成"
+            ],
+            [
+              "角色",
+              "过去衡量进展主要看它",
+              "用纠错克服物理量子比特的错误"
+            ],
+            [
+              "CUDA-Q Logical 的工作",
+              "估算要用掉多少个、多少时间",
+              "固定住运算再比较不同方案"
+            ]
+          ],
+          "caption": "整理自 NVIDIA 2026 年 9 月 14 日新闻稿与技术文档，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这次工具实际在做什么：估算，不是打造硬件"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 举的最具体例子，是 Iceberg Quantum 用 CUDA-Q Logical 针对 Diraq 的量子比特为自家容错架构建模，结果显示 1,000 个逻辑量子比特只需要 150,000 个物理量子比特，比 Diraq 先前的估计少了大约 10 倍。这是模型估算的结果：新闻稿没有说这些量子比特已经做成硬件，比较对象是 Diraq 自己先前的估计，不是其他公司做出来的机器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一个例子来自费米实验室。NVIDIA 表示，这属于该实验室的“早期工作”：研究人员用 CUDA-Q Logical 验证先前的结果，并评估在不同纠错方式与量子硬件下，需要多少物理量子比特、运行时间等资源。费米实验室首席技术官 Anna Grassellino 表示，要走到容错量子计算“需要研究者把算法、纠错、架构与硬件放在一起协同设计”；据她介绍，团队用 CUDA-Q Logical 探索这些资源的组合“只花了三周”，相比之下自行搭建专用基础设施“通常大约需要五个月”——这是她自己描述的对照估计，不是一次计时测量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技术文档说明，在目前这个预览阶段，用户可以从一段 CUDA-Q 内核出发，或直接编写可移植的逻辑程序，配置纠错码、部件与布局、蒸馏（distillation）协议，生成资源估算结果，并将展开后的程序输出给 Stim 这类工具做进一步模拟与分析。文档列出的动作止步于“生成估算”与“输出程序”，不包含“运行”。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-cuda-q-20260914/diagram-1-zh-cn.svg",
+          "width": 1600,
+          "height": 900,
+          "alt": "四格图解：物理量子比特本身带有固有的错误、多个物理量子比特合并成逻辑量子比特、CUDA-Q Logical 估算需要多少硬件、结果只是估算不是实际运行",
+          "caption": "整理自 NVIDIA 2026 年 9 月 14 日新闻稿与技术文档，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "QUOPS：另一把量尺，不是 NVIDIA 自己的基准"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 在公告中说明，过去衡量量子计算的进展，主要看物理量子比特本身的进步，例如数量增加、保真度提升与相干时间延长。QUOPS 想提供的是另一种量尺：NVIDIA 形容它是“桑迪亚国家实验室开发的一个新的、独立的跨平台基准，用来衡量量子计算系统在多大程度上朝具备实用规模的应用迈进”，而且不绑定特定硬件架构。"
+        },
+        {
+          "type": "paragraph",
+          "text": "QUOPS 是桑迪亚国家实验室开发的，不是 NVIDIA 自己的基准测试；公告正文写的是“NVIDIA CUDA-Q 中可以获取 QUOPS 的参考实现”。桑迪亚量子性能实验室共同负责人 Timothy Proctor 表示，他们与其他量子计算相关方必须能够追踪并预测量子计算机能力的增长，QUOPS 就是为此而做。NVIDIA 表示，桑迪亚在 IEEE Quantum Week 之前发布的预印本，公布了 Google、IBM 与 Quantinuum 量子处理器的初步 QUOPS 结果；公告没有附上任何分数或排名。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公告和技术文档对不上的地方"
+        },
+        {
+          "type": "paragraph",
+          "text": "新闻稿和技术文档放在一起看会出现落差。新闻稿描述这套工具可用性的只有一句：“CUDA-Q Logical 现已通过 GitHub 提供”，没有提到价格、方案或地区，全文也没有出现 preview（预览）这个词。技术文档不一样：说明页开头有一个标题为“Preview release”的提示框，写着软件包“仍处于预览阶段，其 API、行为与文档可能在之后的版本中大幅变动”；版本记录页则写明 CUDA-Q 0.16.0 整合的是 CUDA-Q Logical 0.1.1 版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技术文档把这个工具的边界说得很清楚：它把 CUDA-Q Logical 定义为“容错量子计算的资源估算工具”，并且明确写道“它仍然是编译与估算的产物：CUDA-Q Logical 不会把物理排程提交给硬件，也不为其提供运行时执行服务”，还有“软件包里没有任何东西会使用或执行物理模拟”。文档也写明，标注探测器与可观测量、生成探测器错误模型、采样与解码，CUDA-Q Logical 都不做；这些要在输出的 Stim 文本之后、在 Stim 生态系统里才开始。这些界线新闻稿都没有写。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技术文档另外指出，随附的示例代码采用 Apache License 2.0 这种开源许可证——这个名称同样没有出现在新闻稿里。新闻稿附带的公司前瞻性声明，把“与量子计算相关的预期”列为第一项——NVIDIA 自己把这类陈述归为非历史事实，不保证日后的结果。本文查核到的信息来源没有提到台湾，也没有给出容错量子计算机何时成熟或普及的时间表。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "CUDA-Q Logical 是量子计算机吗？",
+              "answer": "不是。NVIDIA 的技术文档把它定义为容错量子计算的资源估算工具，用来估算某个运算需要多少硬件资源；文档也写明它不会把物理排程提交给硬件执行，软件包本身也不执行物理模拟。NVIDIA 这次公告里没有表示自己打造、销售或演示过一台容错量子计算机。"
+            },
+            {
+              "question": "这是 NVIDIA 全新推出的产品吗？",
+              "answer": "不是全新的产品线，而是既有 CUDA-Q 开源平台新增的一层。NVIDIA 形容 CUDA-Q Logical 是一个协调层，让研究者可以为容错量子计算应用设计、评估并切换不同的纠错方式与系统架构组合；CUDA-Q 平台本身在这次公告之前就已经存在。"
+            },
+            {
+              "question": "NVIDIA 提到“1,000 个逻辑量子比特只需要 150,000 个物理量子比特”，是不是说已经有这样的硬件了？",
+              "answer": "没有。NVIDIA 说明这是 Iceberg Quantum 用 CUDA-Q Logical，针对 Diraq 的量子比特为自家容错架构建模后得到的估算结果，比较的对象是 Diraq 自己先前的估计，不是任何已经做出来的机器，也不是跟其他公司的硬件比较。"
+            },
+            {
+              "question": "QUOPS 是 NVIDIA 推出的基准测试吗？",
+              "answer": "不是。NVIDIA 在公告里说明，QUOPS 是桑迪亚国家实验室开发的独立跨平台基准；公告正文对 NVIDIA 角色的描述是，在 NVIDIA CUDA-Q 中可以获取 QUOPS 的参考实现。桑迪亚在 IEEE Quantum Week 之前发布的预印本报告了 Google、IBM 与 Quantinuum 量子处理器的初步 QUOPS 结果，但公告里没有附上任何分数或排名。"
+            },
+            {
+              "question": "CUDA-Q Logical 现在是正式版，还是测试阶段？",
+              "answer": "以本文查核到 2026 年 9 月 17 日的技术文档为准，它被标记为预览版，NVIDIA 自己写明 API、行为与文档内容都可能在之后的版本中大幅变动；版本记录页写明 CUDA-Q 0.16.0 这一版整合的是 CUDA-Q Logical 0.1.1 版。这个状态没有出现在新闻稿里，新闻稿只说它现已通过 GitHub 提供。"
+            },
+            {
+              "question": "台湾的用户或公司可以怎么获取？",
+              "answer": "NVIDIA 的新闻稿与技术文档都没有提到价格、地区限制或申请方式；新闻稿只说可以通过 GitHub 获取，技术文档标明随附示例采用 Apache License 2.0 这种开源许可证。本文查核到的信息来源没有出现任何与台湾相关的表述，也没有提到容错量子计算机何时会成熟或普及。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "“已提供”和“预览版”是两回事",
+          "text": "NVIDIA 这次的新闻稿只说 CUDA-Q Logical“现已通过 GitHub 提供”，没有提到价格、地区或方案，全文也没有出现 preview 这个词；这些限定词都写在 NVIDIA 自己的技术文档里：页面标记为预览版、API 与行为都可能在之后的版本中大幅变动、CUDA-Q 0.16.0 整合的是 CUDA-Q Logical 0.1.1 版。本文提到的每一项规格与说法，都各自标明出自新闻稿还是技术文档，信息来源没有印出的数字或时间表一律不写。想看目前的状态，可以自行前往 NVIDIA CUDA-Q 的官方技术文档查看对应版本的页面；本文查核日为 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA AI Infra Summit 谈电力效率：Vera Rubin 与 DSX 新增了什么",
+          "url": "https://mokaair.com/zh-CN/life/tech-news-nvidia-vera-rubin-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA Newsroom 新闻稿：NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 技术文档：CUDA-Q Logical 说明页（0.16.0 版）",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/index.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 技术文档：Capabilities and status（0.16.0 版）",
+          "url": "https://nvidia.github.io/cuda-quantum/0.16.0/preview/logical/reference/capabilities.html",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA CUDA-Q 技术文档：CUDA-Q Releases 版本记录页",
+          "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

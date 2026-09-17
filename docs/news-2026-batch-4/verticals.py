@@ -82,7 +82,9 @@ VERTICALS = (
         topics=("tech", "tech-news"),
         eyebrow="MOKAAIR  /  TECH NEWS",
         accent="#2F6F9F",  # BLUE
-        order_base=None,
+        # The band the crypto comment above already names for this vertical: 300-312 in the
+        # order of `check_article.RELATED`, the index at 299.
+        order_base=300,
     ),
     Vertical(
         name="ai",

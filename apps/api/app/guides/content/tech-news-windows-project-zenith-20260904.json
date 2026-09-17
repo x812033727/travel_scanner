@@ -1,0 +1,1171 @@
+{
+  "slug": "tech-news-windows-project-zenith-20260904",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news",
+    "software"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-04",
+  "featured": false,
+  "display_order": 307,
+  "locales": {
+    "zh-TW": {
+      "title": "微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻",
+      "description": "2026 年 9 月 4 日，微軟在 Windows Developer Blog 宣布 Project Zenith，為統一記憶體 64GB 以上、頻寬 250GB/s 以上的「開發者等級裝置」預先安裝工具並調整介面預設，並表示這類裝置能在本機執行 30B 參數以上模型。本文依微軟三篇官方文章與 AMD 部落格，說明這套設定實際改了什麼、門檻怎麼定，以及兩篇公告都沒有寫的價格、時程與地區。",
+      "hero": {
+        "src": "/guides/tech-news-windows-project-zenith-20260904/hero.jpg",
+        "alt": "原創插圖：左邊一台桌上型螢幕，畫面裡排著三欄橫線，代表預先安裝的三類工具清單；右邊上方一條分成四格的長條代表記憶體，下方一支向右的箭頭中途被一條直線與圓點標記，代表頻寬門檻",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 4 日，微軟在 Windows Developer Blog 發布公告，宣布 Project Zenith——微軟稱為「隨開即寫程式」的 Windows 使用體驗，鎖定「開發者等級裝置」：統一記憶體 64GB 以上、頻寬 250GB/s 以上。微軟表示 Zenith 會先隨 AMD 的 Ryzen AI Halo 推出，其他 OEM 與晶片夥伴的裝置「未來幾個月內」跟進。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是微軟三篇官方部落格文章與 AMD 官方部落格文章全文。本站沒有實測任何 Project Zenith 裝置，也不提供購買或升級建議；下文規格與效能數字全部是微軟或 AMD 官方所述。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 4 日，微軟宣布 Project Zenith，將一套預先設定好的 Windows 使用體驗，用於統一記憶體 64GB 以上、頻寬 250GB/s 以上的「開發者等級裝置」。",
+            "微軟表示，這類裝置可以在本機執行 30B 參數以上模型，且 Zenith 會先隨 AMD 的 Ryzen AI Halo 推出。",
+            "微軟在公告圖表中列出預先安裝的工具，本站清點共 18 項，分成生產力與編輯（5 項）、終端機與原始碼控制（7 項）、語言與執行環境（6 項）三類；公告另外調整了檔案總管、搜尋、開始功能表與工作列的預設值。",
+            "微軟這兩篇公告都沒有寫出 Project Zenith 的價格、上市時程或適用地區，也沒有說明現有電腦能不能取得同樣的設定。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "微軟宣布了什麼：一套收整好的 Windows 開發設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟自己的一句話定義是：裝置出廠就附上先設定好的 Windows 開發環境，以及一組為了讓開發者最先用到而挑選的工具。公告說微軟從年初以來持續改善 Windows 11 的搜尋、檔案總管與日常記憶體使用，並表示 Zenith 裝置會從這些既有改善中受惠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟也說明跨裝置差異：透過 OEM 夥伴合作，開發者在不同裝置與效能等級間仍有選擇，「硬體可能不同，但開發者體驗的承諾一致」——可見 Zenith 涵蓋的是多款裝置與效能等級，不是單一機型。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「開發者等級裝置」的門檻：統一記憶體與頻寬"
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟把「開發者等級裝置」定義成兩個數字：統一記憶體 64GB 以上，記憶體頻寬 250GB/s 以上。統一記憶體是 CPU 與 GPU 共用同一塊記憶體，理論上能放進更大的模型；頻寬是資料進出這塊記憶體的速度，數字愈高，模型計算時愈不容易卡在等資料。微軟用記憶體規格而非處理器規格當門檻，公告把這兩個數字和「在本機執行模型」綁在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟表示，Zenith 裝置上開發者可在本機執行 30B 參數以上模型，而且是「不計量」（unmetered）的——微軟拿它和「按量計費的雲端 token」對照，說有助於降低 token 成本；公告沒有指名模型，也沒有給執行速度或跑分數字。微軟的定位是：頂尖模型處理最難的問題，其餘工作大量放在本機執行——這是官方說法，不是測試結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "十天後，微軟裝置部落格報導 IFA 展會時同樣寫「64GB+ 統一記憶體」，但頻寬寫成「250gbps」——是微軟自己兩篇公告用詞不一致，不是同一數字換寫法。本文頻寬數字以 9 月 4 日公告的「250+ GB/s」為準。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "資料來源",
+            "統一記憶體",
+            "本機模型規模的說法",
+            "備註"
+          ],
+          "rows": [
+            [
+              "Windows 開發者部落格 9/4",
+              "64GB 以上",
+              "30B 參數以上",
+              "微軟表示"
+            ],
+            [
+              "微軟裝置部落格 9/14",
+              "64GB 以上",
+              "未提參數",
+              "微軟表示，頻寬寫成 250gbps"
+            ],
+            [
+              "AMD Ryzen AI Halo 5/20",
+              "最高 128GB",
+              "最高 2,000 億",
+              "AMD 表示"
+            ],
+            [
+              "AMD 次世代平台 Q3 預告",
+              "最高 192GB",
+              "3,000 億（4 位元量化）",
+              "AMD 表示"
+            ]
+          ],
+          "caption": "整理自微軟與 AMD 2026 年官方部落格文章，四列是各文件各自的說法，分屬不同廠商與產品，不是同一規格的比較，也不是效能排名；查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "18 項預先安裝的工具，藏在一張圖表裡"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告內文只點名工作列預設固定的兩項工具（Windows Terminal 與 Visual Studio Code），完整清單只印在內嵌圖表裡，本站清點共 18 項。三欄是：生產力與編輯 5 項（Visual Studio Code、GitHub Copilot、PowerToys、WinAppCLI、Windows Dev Skills）、終端機與原始碼控制 7 項（Intelligent Terminal、PowerShell 7、Git、GitHub CLI、Azure CLI、Core Utils、Oh My Posh）、語言與執行環境 6 項（Python 3.14+、uv、NVM、Node 24+、WSL 2+ Ubuntu、.NET 10）。標了版本號的只有 5 項：語言欄除 uv 與 NVM 外的四項，加上 PowerShell 7。"
+        },
+        {
+          "type": "paragraph",
+          "text": "圖表的終端機欄第一項是 Intelligent Terminal，內文說固定在工作列的卻是 Windows Terminal，微軟未說明兩者是否相同。微軟 6 月 2 日的 Build 2026 文章把它描述成建立在 Windows Terminal 之上、再加代理程式整合的介面，當時狀態是「實驗性預覽」；那篇把名稱相近的 Coreutils for Windows 與 Windows Development Skills 標為正式推出。9 月 4 日公告未重新交代這些狀態，本文引用的一律是 6 月的說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟另外列出預先套用的介面預設：檔案總管顯示副檔名、隱藏檔案、標題列完整路徑與詳細資料窗格並開啟長路徑支援，關閉最近使用清單與同步供應商提示；搜尋與開始功能表開啟 Command Palette，關閉開始功能表提示與帳號通知。微軟強調這不是強制的單一工作流程，開發者仍可繼續設定、擴充或客製化；公告的說法是從一個更好的起點開始。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-windows-project-zenith-20260904/diagram-1.svg",
+          "alt": "四格圖解：生產力與編輯、終端機與版控、語言與執行環境、介面預設",
+          "width": 1600,
+          "height": 900,
+          "caption": "依微軟 2026 年 9 月 4 日發布的 Project Zenith 公告整理：預先安裝工具圖表的三個分類與介面預設變更，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先隨 AMD Ryzen AI Halo 推出，其他夥伴還沒點名"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 4 日公告未提其他 OEM 或晶片廠商，只用「我們的 OEM 與晶片夥伴」帶過；9 月 14 日 IFA 報導雖列出宏碁、戴爾、聯想等夥伴電腦，卻沒把其中任何一款和 Zenith 連在一起。同篇轉述 AMD：Ryzen AI Halo 系統將開箱即支援 Zenith，並舉出 Visual Studio Code、WSL、GitHub Copilot CLI、PowerShell——原文用的是「包含」，不是完整清單，也不是圖表那 18 項。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD 2026 年 5 月 20 日的部落格文章，比 Zenith 公告早三個半月，全文未提 Project Zenith。AMD 表示 Ryzen AI Halo 是自家第一款輕巧 AI 開發者平台，採 Ryzen AI Max+ 395 處理器，最高 128GB 統一記憶體，能執行最高 2,000 億參數模型；預購自 2026 年 6 月起，通路只有 Micro Center，未提地區，也沒有頻寬數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD 同篇預告 2026 年第三季推出新一代 Ryzen AI Max PRO 400 系列處理器，最高 192GB 統一記憶體與 160GB 顯示記憶體，並表示這是全球第一批能在本機執行 3,000 億參數模型的 x86 用戶端處理器，但須 4 位元量化才成立，註腳標的是 2026 年 5 月 11 日的狀態；OEM 夥伴含 HP、Lenovo，於第三季推出——這是晶片系列的夥伴，非 Zenith 夥伴。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "微軟沒有講的部分：價格、時程、地區與怎麼自己嘗試"
+        },
+        {
+          "type": "paragraph",
+          "text": "查核到 2026 年 9 月 17 日，兩篇公告全文都沒有 Zenith 的價格、出貨日、預覽日或正式推出日；9 月 4 日公告裡唯一的未來時間「未來幾個月內」指後續裝置，不是第一款。兩篇公告都沒有提到台灣，也沒說 Zenith 會在哪些國家或市場推出，更沒說明它技術上是出廠影像、Windows 版本、可下載設定包還是行銷代稱，也沒說既有機器能否事後取得。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微軟 6 月 2 日的 Build 2026 文章公布過兩個不必買新機器的做法：WinGet 設定檔 dev-config.winget，一指令即可在任何 Windows 11 裝置套用含 WSL、PowerShell 7、Git、GitHub CLI、Visual Studio Code 等工具的設定；以及 Windows 365 with Developer configuration，預先套用同設定的雲端 PC，截至 6 月 2 日為公開預覽，兩者皆非 Zenith 本身。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇 6 月文章還提到一款微軟自家裝置 Surface RTX Spark Dev Box，具備 128GB 統一記憶體，當時說今年稍晚在美國僅透過 Microsoft.com 銷售，並註記這是先行釋出產品，實際銷售與交付要視法規核准與相關要求而定。本文讀到的四篇來源都沒有把這款裝置和 Zenith 畫上等號。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Project Zenith 現在買得到嗎？",
+              "answer": "本文查核的兩篇微軟公告都沒有價格、上市時程或地區。微軟只說 Zenith 先隨 AMD 的 Ryzen AI Halo 推出，其他 OEM 與晶片夥伴的裝置「未來幾個月內」跟進，但沒有點名廠商，也沒有給日期。AMD 自己的部落格說 Ryzen AI Halo 的預購自 2026 年 6 月起、通路僅限 Micro Center，AMD 沒有提到任何地區；這是 AMD 產品的預購資訊，不是 Project Zenith 本身的上市資訊。"
+            },
+            {
+              "question": "我現在用的電腦沒有 64GB 統一記憶體，還能取得類似的開發環境嗎？",
+              "answer": "微軟在 2026 年 6 月的 Build 開發者大會公布了兩個做法：一是 WinGet 設定檔 dev-config.winget，微軟說在任何一台 Windows 11 裝置執行一個指令即可套用；二是 Windows 365 with Developer configuration，一種預先套用同樣開發者設定的雲端 PC，微軟說可以從任何裝置存取，截至 2026 年 6 月 2 日為公開預覽階段。兩者都不是 Project Zenith 本身，微軟也沒有說它們和 Zenith 的硬體條件是什麼關係，狀態同樣是 6 月時的說法。"
+            },
+            {
+              "question": "統一記憶體、記憶體頻寬是什麼意思？",
+              "answer": "統一記憶體是指 CPU 與 GPU 共用同一塊記憶體，不必各自保留一份，理論上能容納更大的模型；記憶體頻寬是資料進出這塊記憶體的速度，數字愈高，執行模型時愈不容易卡在等資料上。微軟把「開發者等級裝置」寫成統一記憶體 64GB 以上、頻寬 250GB/s 以上，用的是記憶體規格而不是處理器規格，公告把這兩個數字和「在本機執行模型」綁在一起。微軟沒有說這兩個數字是認證或強制規範，也沒有說低於這個數字的機器會怎樣。"
+            },
+            {
+              "question": "這件事和台灣有關係嗎？",
+              "answer": "以本文查核到 2026 年 9 月 17 日的來源，微軟兩篇公告都沒有提到台灣，也沒有說 Project Zenith 會在哪些國家或市場推出；AMD 那篇部落格只說 Ryzen AI Halo 的通路僅限 Micro Center，全文沒有提到任何地區。本文的來源沒有出現任何和台灣上市與否有關的資訊，讀者不能從本文推論台灣已經買得到或已經推送。"
+            },
+            {
+              "question": "Project Zenith 到底是什麼——一顆晶片、一個 Windows 版本，還是一套設定？",
+              "answer": "微軟沒有明講。公告把它描述成已經先設定好的 Windows 開發環境，以及一組為了讓開發者最先用到而挑選的工具，並提到跨 OEM 夥伴會有裝置與效能等級的選擇，但沒有說它是出廠影像、Windows 版本、可下載的安裝包，還是單純的行銷代稱，也沒有說符合硬體門檻的舊機器能不能事後取得。"
+            },
+            {
+              "question": "微軟說可以在本機跑 30B 參數以上的模型，是實測出來的嗎？",
+              "answer": "不是。微軟表示在 Project Zenith 裝置上可以在本機執行 30B 參數以上模型，而且是「不計量」（unmetered）的——微軟是拿它和按量計費的雲端 token 對照，說有助於降低 token 成本，這不是在說微軟另外提供免費的服務。公告沒有指名是哪一個模型，也沒有提供任何執行速度、跑分或基準測試數字。本站同樣沒有對任何 Project Zenith 裝置做過實測，這句話是微軟官方的說法，不是任何一方的量測結果。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "門檻公告，不是上市公告",
+          "text": "Project Zenith 是微軟為「開發者等級裝置」寫出的設定與硬體條件，不是已經有價格與上市日的產品。文中所有效能、記憶體與頻寬數字都是微軟或 AMD 官方所述，本站沒有實測，也不做該不該升級、該買哪一台的建議。微軟兩篇公告都沒有提到台灣，也沒有說 Zenith 會在哪些國家或市場推出；AMD 那篇部落格只說 Ryzen AI Halo 的通路僅限 Micro Center，沒有提到任何地區。本文查核日為 2026 年 9 月 17 日，實際規格、價格與上市時程請以微軟與 AMD 官方公告的最新版本為準。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Google 9 月 Pixel Drop 更新：機型、地區語言與 Pixel Watch 5 的條件",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-pixel-drop-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "More choice and possibility with Windows PCs at IFA",
+          "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Build 2026: Furthering Windows as the trusted platform for development",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+          "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "Microsoft Unveils Project Zenith: A Unified Memory and Bandwidth Baseline for Windows Dev Machines",
+      "description": "On September 4, 2026, Microsoft announced Project Zenith on the Windows Developer Blog: preinstalled tools and interface defaults for \"developer-class devices\" with 64GB+ unified memory and 250GB/s+ bandwidth, said to run 30B+ parameter models locally. Based on three Microsoft posts and one AMD post, this article explains what actually changes, how the baseline is defined, and the price, timeline, and regions both announcements leave unstated.",
+      "hero": {
+        "src": "/guides/tech-news-windows-project-zenith-20260904/hero-en.jpg",
+        "alt": "Original illustration: a monitor on the left shows three rows of preinstalled tool categories; on the right, a segmented bar for memory sits above an arrow marked with a line and dot for bandwidth",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 4, 2026, Microsoft published a post on the Windows Developer Blog announcing Project Zenith — what Microsoft calls the \"ready-to-code\" Windows experience, aimed at \"developer-class devices\": 64GB or more of unified memory and 250GB/s or more of bandwidth. Microsoft says Zenith will first become available with AMD's Ryzen AI Halo, with devices from other OEM and silicon partners following \"in the coming months.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 17, 2026, against the full text of three official Microsoft blog posts and one official AMD blog post. This site has not tested any Project Zenith device and offers no purchase or upgrade advice; every specification and performance figure below is stated by Microsoft or AMD."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 4, 2026, Microsoft announced Project Zenith, a preconfigured Windows experience for \"developer-class devices\" with 64GB or more of unified memory and 250GB/s or more of bandwidth.",
+            "Microsoft says such devices can run 30B+ parameter models locally, and that Zenith will first become available with AMD's Ryzen AI Halo.",
+            "Microsoft's announcement chart lists preinstalled tools; this site counted 18, split into Productivity & edit tools (5), Terminal & source control (7), and Languages & runtimes (6); the announcement also changes defaults for File Explorer, Search, the Start menu, and the Taskbar.",
+            "Neither Microsoft announcement gives Project Zenith's price, launch timeline, or eligible regions, nor whether an existing computer can get the same setup."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Microsoft Announced: A Bundled Windows Development Setup"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft's own one-line definition: devices ship with a preconfigured Windows development environment plus a curated set of tools chosen to get developers up and running fastest. The announcement says Microsoft has been improving Windows 11 search, File Explorer, and everyday memory use since the start of the year, and says Zenith devices will benefit from these existing improvements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft also addresses what differs across devices: through OEM partnerships, developers still have a choice among devices and performance tiers — \"the hardware may vary, but the developer promise is consistent\" — which suggests Zenith spans multiple devices and performance tiers rather than a single model."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Baseline for a \"Developer-Class Device\": Unified Memory and Bandwidth"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft defines a \"developer-class device\" by two numbers: 64GB or more of unified memory, and 250GB/s or more of memory bandwidth. Unified memory means the CPU and GPU share the same pool of memory, which in theory allows larger models to fit; bandwidth is the speed at which data moves in and out of that memory — the higher the number, the less likely a model is to stall waiting for data during computation. Microsoft uses memory specifications rather than processor specifications as the bar, and the announcement ties these two numbers to running models locally."
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft states that on Zenith devices, developers can run 30B+ parameter models locally, and that this is \"unmetered\" — Microsoft contrasts this with metered cloud tokens, saying it helps lower token costs; the announcement does not name a model, and gives no figures for running speed or benchmark scores. Microsoft's framing is that top-tier models handle the hardest problems while the rest of the work runs mostly on-device — that is Microsoft's own description, not a test result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ten days later, Microsoft's devices blog, reporting from IFA, again wrote \"64GB+ unified memory,\" but wrote the bandwidth as \"250gbps\" — that is Microsoft's own two announcements using inconsistent wording, not the same figure written a different way. This article uses the bandwidth figure from the September 4 announcement, \"250+ GB/s.\""
+        },
+        {
+          "type": "table",
+          "header": [
+            "Source",
+            "Unified memory",
+            "Stated local model scale",
+            "Notes"
+          ],
+          "rows": [
+            [
+              "Windows Developer Blog, 9/4",
+              "64GB or more",
+              "30B+ parameters",
+              "Microsoft states"
+            ],
+            [
+              "Microsoft Devices Blog, 9/14",
+              "64GB or more",
+              "No parameter figure given",
+              "Microsoft states; bandwidth written as 250gbps"
+            ],
+            [
+              "AMD Ryzen AI Halo, 5/20",
+              "Up to 128GB",
+              "Up to 200 billion",
+              "AMD states"
+            ],
+            [
+              "AMD next-gen platform, Q3 preview",
+              "Up to 192GB",
+              "300 billion (4-bit quantization)",
+              "AMD states"
+            ]
+          ],
+          "caption": "Compiled from Microsoft's and AMD's 2026 blog posts. Each row states what that document says, for a different vendor and product, not a spec comparison or ranking. Checked September 17, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "18 Preinstalled Tools, Tucked Inside a Chart"
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement's body text names only the two tools pinned to the Taskbar by default — Windows Terminal and Visual Studio Code. The full list appears only in an embedded chart; this site counted 18 items in it. The three columns are: Productivity & edit tools, 5 items (Visual Studio Code, GitHub Copilot, PowerToys, WinAppCLI, Windows Dev Skills); Terminal & source control, 7 items (Intelligent Terminal, PowerShell 7, Git, GitHub CLI, Azure CLI, Core Utils, Oh My Posh); and Languages & runtimes, 6 items (Python 3.14+, uv, NVM, Node 24+, WSL 2+ Ubuntu, .NET 10). Only 5 of the 18 carry a version number: the four items in the languages column other than uv and NVM, plus PowerShell 7."
+        },
+        {
+          "type": "paragraph",
+          "text": "The first item in the chart's terminal column is Intelligent Terminal, yet the body text says the tool pinned to the Taskbar is Windows Terminal; Microsoft does not say whether the two are the same. Microsoft's June 2 Build 2026 post described Intelligent Terminal as an interface built on the existing Windows Terminal experience with agentic integration added, with its status at the time being \"experimental preview\"; that same post marked the similarly named Coreutils for Windows and Windows Development Skills as generally available. The September 4 announcement does not restate these statuses, so this article cites only what the June post said."
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft also lists interface defaults applied ahead of time: File Explorer shows file extensions, hidden files, the full path in the title bar, and the details pane, with long-path support enabled, while the recent-files list and sync-provider prompts are turned off; Search and the Start menu have Command Palette turned on, with Start menu tips and account notifications turned off. Microsoft stresses this is not about prescribing a single workflow — developers can still configure, extend, or customize their setup; the announcement frames it as starting from a better baseline."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-windows-project-zenith-20260904/diagram-1-en.svg",
+          "alt": "Four-panel diagram: Productivity and editing, Terminal and version control, Languages and runtimes, Interface defaults",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from Microsoft's Project Zenith announcement published September 4, 2026: the three categories in the preinstalled-tools chart and the interface default changes. Checked on September 17, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "First With AMD's Ryzen AI Halo; Other Partners Not Yet Named"
+        },
+        {
+          "type": "paragraph",
+          "text": "The September 4 announcement does not name any other OEM or silicon maker, referring only to \"our OEM and silicon partners\"; the September 14 IFA report lists computers from partners such as Acer, Dell, and Lenovo, but does not tie any specific model to Zenith. That same article relays AMD's statement that Ryzen AI Halo systems will support Zenith out of the box, citing Visual Studio Code, WSL, GitHub Copilot CLI, and PowerShell — the original wording is \"includes,\" not a complete list, and not the chart's 18 items."
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD's blog post from May 20, 2026 — three and a half months before the Zenith announcement — never mentions Project Zenith. AMD states that Ryzen AI Halo is its first compact AI developer platform, built on the Ryzen AI Max+ 395 processor, with up to 128GB of unified memory and capable of running models of up to 200 billion parameters; pre-orders began in June 2026, available exclusively through Micro Center, with no region named and no bandwidth figure given."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same AMD post previews a next-generation Ryzen AI Max PRO 400 series of processors due in the third quarter of 2026, with up to 192GB of unified memory and 160GB of dedicated graphics memory, and states that these are the world's first x86 client processors capable of running 300 billion-parameter models locally — though that holds only with 4-bit quantization, per a footnote dated May 11, 2026; OEM partners include HP and Lenovo, launching in the third quarter — partners for this chip series, not for Zenith."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Microsoft Hasn't Said: Price, Timeline, Region, and How to Try It Yourself"
+        },
+        {
+          "type": "paragraph",
+          "text": "As checked through September 17, 2026, neither announcement gives a price, a ship date, a preview date, or a general-availability date for Zenith; the only future timing in the September 4 announcement, \"in the coming months,\" refers to later devices, not the first one. Neither announcement mentions Taiwan, and neither says which countries or markets Zenith will launch in; nor do they explain whether it is, technically, a factory image, a Windows edition, a downloadable configuration package, or simply a marketing name, or whether an existing machine could get the same setup after the fact."
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft's June 2 Build 2026 post described two ways to get a similar setup without buying new hardware: the WinGet configuration file dev-config.winget, which applies a setup including WSL, PowerShell 7, Git, GitHub CLI, Visual Studio Code, and more with a single command on any Windows 11 device; and Windows 365 with Developer configuration, a cloud PC pre-configured with the same setup, which was in public preview as of June 2. Neither of these is Project Zenith itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "That same June post also mentioned a Microsoft-made device, the Surface RTX Spark Dev Box, with 128GB of unified memory; at the time it said the device would be sold later this year, exclusively through Microsoft.com in the U.S., and noted that it was a pre-release product whose actual sale and delivery would depend on regulatory certification/approval and compliance with applicable requirements. None of the four sources read for this article equates this device with Zenith."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is Project Zenith available to buy yet?",
+              "answer": "Neither of the two Microsoft announcements checked for this article gives a price, a launch timeline, or a region. Microsoft only says Zenith will first become available with AMD's Ryzen AI Halo, with devices from other OEM and silicon partners following \"in the coming months\" — without naming those makers or giving a date. AMD's own blog says pre-orders for Ryzen AI Halo began in June 2026 through Micro Center exclusively, and AMD does not mention any region; that is pre-order information for an AMD product, not launch information for Project Zenith itself."
+            },
+            {
+              "question": "My current computer doesn't have 64GB of unified memory — can I still get a similar development environment?",
+              "answer": "At its Build developer conference in June 2026, Microsoft described two approaches: the WinGet configuration file dev-config.winget, which Microsoft says can be applied on any Windows 11 device by running a single command; and Windows 365 with Developer configuration, a cloud PC pre-configured with the same developer setup, which Microsoft says can be accessed from any device and was in public preview as of June 2, 2026. Neither one is Project Zenith itself, and Microsoft has not said how either relates to Zenith's hardware requirements; both statuses are still only what Microsoft said in June."
+            },
+            {
+              "question": "What do unified memory and memory bandwidth mean?",
+              "answer": "Unified memory means the CPU and GPU share the same pool of memory instead of each reserving its own, which in theory allows larger models to fit; memory bandwidth is the speed at which data moves in and out of that memory — the higher the number, the less likely a model is to stall waiting for data while running. Microsoft defines a \"developer-class device\" as having 64GB or more of unified memory and 250GB/s or more of bandwidth, using memory specifications rather than processor specifications as the bar, and the announcement ties these two numbers to running models locally. Microsoft does not say these two numbers amount to a certification or a mandatory standard, nor does it say what happens on a machine below them."
+            },
+            {
+              "question": "Does this have anything to do with Taiwan?",
+              "answer": "Based on the sources checked for this article through September 17, 2026, neither Microsoft announcement mentions Taiwan, and neither says which countries or markets Project Zenith will launch in; the AMD blog post only says Ryzen AI Halo's channel is limited to Micro Center and does not mention any region anywhere in the text. None of this article's sources contain any information about whether this has launched in Taiwan, and readers should not conclude from this article that it is already available or has already been rolled out in Taiwan."
+            },
+            {
+              "question": "What exactly is Project Zenith — a chip, a Windows edition, or just a configuration?",
+              "answer": "Microsoft doesn't spell it out. The announcement describes it as a preconfigured Windows development environment together with a curated set of tools chosen to get developers up and running fastest, and mentions that there will be a choice of devices and performance tiers across OEM partners, but it does not say whether it is a factory image, a Windows edition, a downloadable installer, or simply a marketing name, nor does it say whether an older machine that meets the hardware bar could get it after the fact."
+            },
+            {
+              "question": "Microsoft says it's possible to run 30B-plus-parameter models locally — is that based on actual testing?",
+              "answer": "No. Microsoft states that on Project Zenith devices, developers can run 30B+ parameter models locally, and that this is \"unmetered\" — Microsoft contrasts this with metered cloud tokens, saying it helps lower token costs; that is not the same as saying Microsoft is separately providing a free service. The announcement does not name which model, and provides no figures for running speed, benchmark scores, or performance tests. This site likewise has not tested any Project Zenith device itself; this is Microsoft's own official statement, not a measurement made by any party."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "A Baseline Announcement, Not a Launch Announcement",
+          "text": "Project Zenith is a configuration and a set of hardware conditions Microsoft has written for \"developer-class devices,\" not a product that already has a price and a launch date. Every performance, memory, and bandwidth figure in this article is stated by Microsoft or AMD; this site has not tested any of it and does not offer advice on whether to upgrade or which device to buy. Neither Microsoft announcement mentions Taiwan or says which countries or markets Zenith will launch in; the AMD blog post only says Ryzen AI Halo's channel is limited to Micro Center and does not mention any region. This article was checked on September 17, 2026 — for the actual specifications, pricing, and launch timeline, refer to the latest official announcements from Microsoft and AMD."
+        },
+        {
+          "type": "link",
+          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Google's September Pixel Drop: Model, Region, Language, and Pixel Watch 5 Conditions",
+          "url": "https://mokaair.com/en/life/tech-news-pixel-drop-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "More choice and possibility with Windows PCs at IFA",
+          "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Build 2026: Furthering Windows as the trusted platform for development",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+          "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "マイクロソフトが Project Zenith を発表：Windows 開発機の統合メモリと帯域幅の基準",
+      "description": "2026年9月4日、マイクロソフトは Windows Developer Blog で Project Zenith を発表し、統合メモリ64GB以上・帯域幅250GB/s以上の「開発者クラスのデバイス」向けにツールを事前インストールし、インターフェースの既定値を調整したと説明しました。あわせて、この種のデバイスではローカルで30B超のパラメータを持つモデルを実行できるとしています。本記事はマイクロソフトの公式記事3本と AMD のブログ記事をもとに、この設定が実際に何を変えるのか、基準がどう定められているのか、両発表が触れていない価格・時期・地域について整理します。",
+      "hero": {
+        "src": "/guides/tech-news-windows-project-zenith-20260904/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側の画面に事前インストールされた3種類のツール一覧を表す3本の横線が並び、右側上部には4分割された帯がメモリを表し、下側では途中を線と点で区切られた右向きの矢印が帯域幅の基準を表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月4日、マイクロソフトは Windows Developer Blog で発表を行い、Project Zenith を発表しました。マイクロソフトが「すぐにコーディングを始められる」Windows 体験と呼ぶもので、対象は「開発者クラスのデバイス」——統合メモリ64GB以上、帯域幅250GB/s以上のデバイスです。マイクロソフトは、Zenith はまず AMD の Ryzen AI Halo と共に提供が始まり、その他の OEM やシリコンパートナーのデバイスは「今後数か月のうちに」続くとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日時点で、マイクロソフトの公式ブログ記事3本と AMD の公式ブログ記事の全文を確認して執筆しています。当サイトは Project Zenith のデバイスを実機での検証を行っておらず、購入や買い替えを勧めるものではありません。以下の仕様と性能に関する数値はすべてマイクロソフトまたは AMD が発表したものです。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月4日、マイクロソフトは Project Zenith を発表しました。統合メモリ64GB以上、帯域幅250GB/s以上の「開発者クラスのデバイス」向けに、あらかじめ設定された Windows 体験を提供するものです。",
+            "マイクロソフトは、この種のデバイスではローカルで30B超のパラメータを持つモデルを実行できるとしており、Zenith はまず AMD の Ryzen AI Halo とともに提供が始まるとしています。",
+            "マイクロソフトの発表に添えられた図表には事前インストールされるツールが列挙されており、当サイトで数えたところ合計18個、生産性・編集ツール(5個)、ターミナルとソースコード管理(7個)、言語と実行環境(6個)の3分類でした。発表ではエクスプローラー、検索、スタートメニュー、タスクバーの既定値も変更されています。",
+            "マイクロソフトの2本の発表はいずれも、Project Zenith の価格、発売時期、対象地域を明らかにしておらず、既存のパソコンで同じ設定を後から利用できるかどうかも説明していません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "マイクロソフトが発表した内容：まとめられた Windows 開発設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "マイクロソフト自身による一言での定義は、あらかじめ設定された Windows 開発環境と、開発者が最も早く使い始められるよう選ばれたツール一式を備えた状態でデバイスが出荷される、というものです。発表によれば、マイクロソフトは年初から Windows 11 の検索、エクスプローラー、日常的なメモリ使用を改善し続けており、Zenith デバイスはこうした既存の改善の恩恵を受けるとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マイクロソフトはデバイス間の違いについても説明しています。OEM パートナーとの連携により、開発者はデバイスや性能クラスの間で選択肢を持ち続けられるとしたうえで、「ハードウェアは異なっても、開発者に対する約束は一貫している」としています——これは Zenith が単一機種ではなく、複数のデバイスと性能クラスにまたがるものであることを示しています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「開発者クラスのデバイス」の基準：統合メモリと帯域幅"
+        },
+        {
+          "type": "paragraph",
+          "text": "マイクロソフトは「開発者クラスのデバイス」を2つの数値で定義しています。統合メモリ64GB以上、メモリ帯域幅250GB/s以上です。統合メモリとは CPU と GPU が同じメモリを共有する仕組みで、理論上はより大きなモデルを収められます。帯域幅はデータがこのメモリに出入りする速度で、数値が高いほど、モデルの計算中にデータ待ちで止まりにくくなります。マイクロソフトはプロセッサの仕様ではなくメモリの仕様を基準に用いており、発表はこの2つの数値をモデルのローカル実行と結び付けています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マイクロソフトによれば、Zenith デバイス上で開発者はローカルで30B超のパラメータを持つモデルを実行でき、しかも「従量制ではない」（unmetered）としています——マイクロソフトはこれを「従量課金のクラウドトークン」と対比させ、トークンのコスト削減に役立つとしています。発表はモデル名を挙げておらず、実行速度やベンチマークの数値も示していません。マイクロソフトの位置付けは、最も難しい問題は最上位のモデルが処理し、それ以外の作業の多くはローカルで実行する、というものです——これは公式の説明であり、検証結果ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "10日後、マイクロソフトのデバイス部門のブログは IFA の様子を伝える記事で、同じく「64GB+ 統合メモリ」と書きましたが、帯域幅は「250gbps」と表記しました——これはマイクロソフト自身の2本の発表で表記が一致していないだけであり、同じ数値を書き方だけ変えたものではありません。本記事の帯域幅の数値は、9月4日の発表にある「250+ GB/s」を採用しています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "出典",
+            "統合メモリ",
+            "ローカルモデル規模の記載",
+            "備考"
+          ],
+          "rows": [
+            [
+              "Windows Developer Blog 9/4",
+              "64GB以上",
+              "30B超",
+              "マイクロソフトの発表"
+            ],
+            [
+              "マイクロソフト デバイスブログ 9/14",
+              "64GB以上",
+              "パラメータ数の記載なし",
+              "マイクロソフトの発表、帯域幅は250gbpsと表記"
+            ],
+            [
+              "AMD Ryzen AI Halo 5/20",
+              "最大128GB",
+              "最大2,000億",
+              "AMDの発表"
+            ],
+            [
+              "AMD 次世代プラットフォーム Q3予告",
+              "最大192GB",
+              "3,000億（4ビット量子化）",
+              "AMDの発表"
+            ]
+          ],
+          "caption": "マイクロソフトと AMD の2026年公式ブログ記事をもとに作成。4行はそれぞれの文書自身の記載で、異なるメーカー・製品についてのものであり、同一基準での比較や性能順位ではありません。確認日2026年9月17日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "18個の事前インストールツール、図表の中に"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表の本文で名指しされているのは、タスクバーに既定でピン留めされる2つのツール（Windows Terminal と Visual Studio Code）だけです。完全なリストは埋め込まれた図表にのみ掲載されており、当サイトで数えたところ合計18個でした。3つの列は、生産性・編集ツール5個(Visual Studio Code、GitHub Copilot、PowerToys、WinAppCLI、Windows Dev Skills)、ターミナルとソースコード管理7個(Intelligent Terminal、PowerShell 7、Git、GitHub CLI、Azure CLI、Core Utils、Oh My Posh)、言語と実行環境6個(Python 3.14+、uv、NVM、Node 24+、WSL 2+ Ubuntu、.NET 10)です。バージョン番号が付いているのは18個のうち5個だけで、言語の列のうち uv と NVM を除く4個に PowerShell 7を加えたものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "図表のターミナル列の最初の項目は Intelligent Terminal ですが、本文でタスクバーに固定されると書かれているのは Windows Terminal であり、マイクロソフトは両者が同じものかどうかを説明していません。マイクロソフトの6月2日付 Build 2026の記事は、これを既存の Windows Terminal の体験の上にエージェント統合を加えたインターフェースだと説明しており、当時の状態は「実験的プレビュー」でした。同じ記事は、名前の似た Coreutils for Windows と Windows Development Skills を正式提供と位置付けています。9月4日の発表はこれらの状態を改めて説明しておらず、本記事が引用しているのはあくまで6月の記事の内容です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マイクロソフトはさらに、あらかじめ適用されるインターフェースの既定値も挙げています。エクスプローラーではファイルの拡張子、隠しファイル、タイトルバーのフルパス、詳細ウィンドウを表示し、長いパスのサポートを有効化する一方、最近使用したファイルの一覧と同期プロバイダーの通知はオフにします。検索とスタートメニューでは Command Palette がオンになり、スタートメニューのヒントとアカウント通知はオフになります。マイクロソフトは、これが単一のワークフローを押し付けるものではないと強調しており、開発者は引き続き自分の設定、拡張、カスタマイズを行えます。発表はこれをより良い出発点から始めるものと位置付けています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-windows-project-zenith-20260904/diagram-1-ja.svg",
+          "alt": "4分割の図解：生産性と編集、ターミナルとバージョン管理、言語と実行環境、インターフェースの既定値",
+          "width": 1600,
+          "height": 900,
+          "caption": "マイクロソフトが2026年9月4日に発表した Project Zenith の内容をもとに作成：事前インストールツールの図表にある3分類とインターフェースの既定値の変更。確認日2026年9月17日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まず AMD の Ryzen AI Halo とともに提供開始、他のパートナーはまだ未定"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月4日の発表は他の OEM やシリコンメーカーを一切名指ししておらず、「私たちの OEM およびシリコンパートナー」とだけ述べています。9月14日の IFA の記事は Acer、Dell、Lenovo などパートナーのパソコンを挙げていますが、そのいずれも Zenith と結び付けてはいません。同じ記事はマイクロソフトが伝える AMD の発言として、Ryzen AI Halo システムは Zenith を標準でサポートするとし、Visual Studio Code、WSL、GitHub Copilot CLI、PowerShell を挙げていますが、原文は「含む」であり、完全なリストでも図表の18個でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD が2026年5月20日に公開したブログ記事は、Zenith の発表より3か月半前のもので、全文を通じて Project Zenith には一切触れていません。AMD によれば、Ryzen AI Halo は自社初の小型 AI 開発者向けプラットフォームで、Ryzen AI Max+ 395 プロセッサーを採用し、統合メモリは最大128GB、最大2,000億パラメータのモデルを実行できるとしています。予約注文は2026年6月に始まり、販売チャネルは Micro Center のみで、地域については触れておらず、帯域幅の数値も示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ AMD の記事は、2026年第3四半期に登場する新世代の Ryzen AI Max PRO 400シリーズのプロセッサーも予告しており、統合メモリは最大192GB、専用グラフィックスメモリは最大160GBで、これらは世界初、ローカルで3,000億パラメータのモデルを実行できる x86クライアント向けプロセッサーだとしています——ただしこれが成り立つのは4ビット量子化を行った場合のみで、脚注の時点は2026年5月11日です。OEM パートナーには HP や Lenovo が含まれ、第3四半期に発売されるとしていますが、これはこのチップシリーズ自体のパートナーであり、Zenith のパートナーではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "マイクロソフトが語っていないこと：価格、時期、地域、そして自分で試す方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年9月17日時点で確認した限り、2本の発表本文はいずれも Zenith の価格、出荷日、プレビュー日、正式提供日を示していません。9月4日の発表にある唯一の将来の時期を示す表現「今後数か月のうちに」は、後続のデバイスを指しており、最初のデバイスのことではありません。2本の発表はいずれも台湾に触れておらず、Zenith がどの国や市場で展開されるかも述べていません。さらに、これが技術的に出荷時のイメージなのか、Windows のエディションなのか、ダウンロード可能な設定パッケージなのか、それとも単なるマーケティング上の名称なのかも説明しておらず、既存のマシンが後からこの設定を取得できるかどうかも述べていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マイクロソフトの6月2日付 Build 2026の記事では、新しいハードウェアを購入しなくても済む2つの方法が紹介されていました。1つは WinGet の設定ファイル dev-config.winget で、WSL、PowerShell 7、Git、GitHub CLI、Visual Studio Code などのツールを含む設定を、任意の Windows 11 デバイス上でコマンド1つで適用できるとしています。もう1つは Windows 365 with Developer configuration で、同じ設定があらかじめ適用されたクラウド PC であり、6月2日時点でパブリックプレビューの段階でした。いずれも Project Zenith そのものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ6月の記事では、マイクロソフト自身のデバイスである Surface RTX Spark Dev Box にも触れており、統合メモリは128GBです。当時の説明では、今年後半に米国内で Microsoft.com を通じてのみ販売されるとされ、これは先行リリース製品であり、実際の販売と提供は規制当局の認証・承認および該当する要件への準拠状況に左右されると注記されていました。本記事が確認した4つの情報源のいずれも、このデバイスを Zenith と同一視してはいません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Project Zenith は今すぐ購入できますか。",
+              "answer": "本記事で確認した2本のマイクロソフトの発表はいずれも、価格、発売時期、対象地域を示していません。マイクロソフトは、Zenith はまず AMD の Ryzen AI Halo とともに提供が始まり、他の OEM やシリコンパートナーのデバイスは「今後数か月のうちに」続くとしているだけで、メーカー名も日付も示していません。AMD 自身のブログによれば、Ryzen AI Halo の予約注文は2026年6月に始まり、販売チャネルは Micro Center のみで、AMD は地域について触れていません。これは AMD 製品の予約注文に関する情報であり、Project Zenith 自体の発売情報ではありません。"
+            },
+            {
+              "question": "今使っているパソコンには統合メモリが64GBありませんが、それでも似たような開発環境を利用できますか。",
+              "answer": "マイクロソフトは2026年6月の Build 開発者会議で、2つの方法を発表しています。1つは WinGet の設定ファイル dev-config.winget で、マイクロソフトによれば任意の Windows 11 デバイスでコマンドを1つ実行するだけで適用できます。もう1つは Windows 365 with Developer configuration で、同じ開発者向け設定があらかじめ適用されたクラウド PC であり、マイクロソフトによればどのデバイスからでもアクセスでき、2026年6月2日時点でパブリックプレビューの段階でした。どちらも Project Zenith そのものではなく、マイクロソフトはこれらと Zenith のハードウェア要件との関係についても説明していません。いずれも6月時点の情報にとどまります。"
+            },
+            {
+              "question": "統合メモリやメモリ帯域幅とはどういう意味ですか。",
+              "answer": "統合メモリとは、CPU と GPU がそれぞれ別々に確保するのではなく、同じメモリを共有する仕組みで、理論上はより大きなモデルを収められます。メモリ帯域幅は、データがこのメモリに出入りする速度のことで、数値が高いほど、実行中にデータ待ちで止まりにくくなります。マイクロソフトは「開発者クラスのデバイス」を、統合メモリ64GB以上、帯域幅250GB/s以上と定義しており、プロセッサの仕様ではなくメモリの仕様を基準にしたうえで、発表はこの2つの数値をモデルのローカル実行と結び付けています。マイクロソフトは、この2つの数値が認証や強制的な規格であるとは述べておらず、これを下回るマシンがどうなるかについても述べていません。"
+            },
+            {
+              "question": "これは台湾と関係がありますか。",
+              "answer": "本記事が2026年9月17日時点で確認した情報源では、マイクロソフトの2本の発表はいずれも台湾に触れておらず、Project Zenith がどの国や市場で展開されるかも述べていません。AMD のブログ記事は、Ryzen AI Halo の販売チャネルが Micro Center に限られるとだけ述べており、本文全体を通じてどの地域にも触れていません。本記事の情報源には、台湾での発売の有無に関する情報は一切含まれておらず、読者は本記事から台湾ですでに購入可能になっている、あるいはすでに提供が始まっていると判断すべきではありません。"
+            },
+            {
+              "question": "Project Zenith とは結局何なのですか——チップなのか、Windows のエディションなのか、それとも単なる設定なのでしょうか。",
+              "answer": "マイクロソフトは明言していません。発表はこれを、あらかじめ設定された Windows 開発環境と、開発者が最も早く使い始められるよう選ばれたツール一式だと説明し、OEM パートナー間でデバイスや性能クラスの選択肢があるとも述べていますが、それが出荷時のイメージなのか、Windows のエディションなのか、ダウンロード可能なインストーラーなのか、それとも単なるマーケティング上の名称なのかは述べていません。ハードウェアの基準を満たす既存のマシンが後からこれを取得できるかどうかについても述べていません。"
+            },
+            {
+              "question": "マイクロソフトはローカルで30B超のパラメータを持つモデルを実行できるとしていますが、これは実機での検証に基づくものですか。",
+              "answer": "いいえ。マイクロソフトは、Project Zenith のデバイス上で開発者はローカルで30B超のパラメータを持つモデルを実行でき、しかも「従量制ではない」（unmetered）としています——マイクロソフトはこれを従量課金のクラウドトークンと対比させ、トークンのコスト削減に役立つとしていますが、これはマイクロソフトが別途無料のサービスを提供しているという意味ではありません。発表はどのモデルかを明示しておらず、実行速度やベンチマーク、性能テストの数値も一切示していません。当サイトも Project Zenith のデバイスを実機で検証したことはなく、この記述はマイクロソフトの公式な説明であって、いずれか一方が測定した結果ではありません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "これは基準の発表であり、発売の発表ではありません",
+          "text": "Project Zenith は、マイクロソフトが「開発者クラスのデバイス」向けに定めた設定とハードウェア条件であり、すでに価格と発売日が決まった製品ではありません。本記事中のすべての性能・メモリ・帯域幅の数値はマイクロソフトまたは AMD の発表によるものであり、当サイトはいずれも実機での検証を行っておらず、買い替えの是非やどの機種を選ぶべきかについての助言も行いません。マイクロソフトの2本の発表はいずれも台湾に触れておらず、Zenith がどの国や市場で展開されるかも述べていません。AMD のブログ記事は、Ryzen AI Halo の販売チャネルが Micro Center に限られるとだけ述べており、地域については触れていません。本記事の確認日は2026年9月17日です。実際の仕様、価格、発売時期については、マイクロソフトと AMD の最新の公式発表を確認してください。"
+        },
+        {
+          "type": "link",
+          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Google の9月Pixel Drop：対象機種・地域・言語とPixel Watch 5の条件",
+          "url": "https://mokaair.com/ja/life/tech-news-pixel-drop-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "More choice and possibility with Windows PCs at IFA",
+          "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Build 2026: Furthering Windows as the trusted platform for development",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+          "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "마이크로소프트, Project Zenith 발표: Windows 개발용 기기의 통합 메모리·대역폭 기준",
+      "description": "2026년 9월 4일, 마이크로소프트는 Windows Developer Blog에서 Project Zenith를 발표했습니다. 통합 메모리 64GB 이상, 대역폭 250GB/s 이상인 \"개발자급 기기\"를 대상으로 도구를 미리 설치하고 인터페이스 기본값을 조정했으며, 이런 기기에서는 로컬로 30B 이상 매개변수 모델을 실행할 수 있다고 밝혔습니다. 이 기사는 마이크로소프트 공식 게시글 3건과 AMD 블로그 게시글을 바탕으로, 이 설정이 실제로 무엇을 바꾸는지, 기준이 어떻게 정해졌는지, 두 발표 모두 밝히지 않은 가격·시기·지역을 정리합니다.",
+      "hero": {
+        "src": "/guides/tech-news-windows-project-zenith-20260904/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽에는 화면에 미리 설치된 세 가지 도구 목록을 나타내는 가로선 세 줄이 나란히 있고, 오른쪽 위에는 네 칸으로 나뉜 막대가 메모리를 나타내며, 아래쪽에는 선과 점으로 중간이 표시된 오른쪽 화살표가 대역폭 기준을 나타낸다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 4일, 마이크로소프트는 Windows Developer Blog에 게시글을 올려 Project Zenith를 발표했습니다. 마이크로소프트가 \"바로 코딩을 시작할 수 있는\" Windows 경험이라고 부르는 것으로, 대상은 \"개발자급 기기\"—통합 메모리 64GB 이상, 대역폭 250GB/s 이상인 기기입니다. 마이크로소프트는 Zenith가 AMD의 Ryzen AI Halo와 함께 먼저 제공되며, 다른 OEM 및 실리콘 파트너의 기기는 \"앞으로 몇 달 안에\" 뒤따를 것이라고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 기사는 2026년 9월 17일 기준으로 마이크로소프트의 공식 블로그 게시글 3건과 AMD의 공식 블로그 게시글 전문을 확인하여 작성했습니다. 본 사이트는 Project Zenith 기기를 직접 시험해 보지 않았고, 구매나 업그레이드를 권하지 않습니다. 아래의 사양과 성능 관련 수치는 모두 마이크로소프트 또는 AMD가 밝힌 내용입니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 4일, 마이크로소프트는 Project Zenith를 발표했습니다. 통합 메모리 64GB 이상, 대역폭 250GB/s 이상인 \"개발자급 기기\"를 위해 미리 설정해 둔 Windows 경험을 제공합니다.",
+            "마이크로소프트는 이런 기기에서 로컬로 30B 이상 매개변수 모델을 실행할 수 있다고 밝혔으며, Zenith는 AMD의 Ryzen AI Halo와 함께 먼저 제공된다고 밝혔습니다.",
+            "마이크로소프트 발표에 실린 도표에는 미리 설치되는 도구가 나열되어 있으며, 본 사이트가 집계한 결과 총 18개로, 생산성·편집 도구(5개), 터미널과 소스 관리(7개), 언어와 실행 환경(6개) 세 범주로 나뉩니다. 발표는 파일 탐색기, 검색, 시작 메뉴, 작업 표시줄의 기본값도 함께 바꿉니다.",
+            "마이크로소프트의 두 발표 모두 Project Zenith의 가격, 출시 시기, 해당 지역을 밝히지 않았으며, 기존 컴퓨터가 나중에 같은 설정을 받을 수 있는지도 설명하지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "마이크로소프트가 발표한 내용: 하나로 묶은 Windows 개발 설정"
+        },
+        {
+          "type": "paragraph",
+          "text": "마이크로소프트가 스스로 내린 한 줄 정의는, 기기가 출고 시점부터 미리 설정된 Windows 개발 환경과 개발자가 가장 먼저 사용할 수 있도록 선별된 도구 모음을 갖춘다는 것입니다. 발표에 따르면 마이크로소프트는 연초부터 Windows 11의 검색, 파일 탐색기, 일상적인 메모리 사용을 계속 개선해 왔으며, Zenith 기기는 이런 기존 개선 사항의 혜택을 받는다고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마이크로소프트는 기기 간 차이도 설명합니다. OEM 파트너와의 협력을 통해 개발자는 여러 기기와 성능 등급 사이에서 여전히 선택할 수 있으며, \"하드웨어는 다를 수 있지만 개발자에게 하는 약속은 일관됩니다\"라고 밝혔습니다—이는 Zenith가 단일 기종이 아니라 여러 기기와 성능 등급에 걸쳐 있음을 보여줍니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「개발자급 기기」의 기준: 통합 메모리와 대역폭"
+        },
+        {
+          "type": "paragraph",
+          "text": "마이크로소프트는 「개발자급 기기」를 두 가지 수치로 정의합니다. 통합 메모리 64GB 이상, 메모리 대역폭 250GB/s 이상입니다. 통합 메모리란 CPU와 GPU가 같은 메모리를 함께 쓰는 방식으로, 이론적으로 더 큰 모델을 담을 수 있습니다. 대역폭은 데이터가 이 메모리를 드나드는 속도로, 수치가 높을수록 모델 연산 중 데이터를 기다리다 멈출 가능성이 낮아집니다. 마이크로소프트는 프로세서 사양이 아니라 메모리 사양을 기준으로 삼았으며, 발표는 이 두 수치를 모델의 로컬 실행과 연결짓습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마이크로소프트는 Zenith 기기에서 개발자가 로컬로 30B 이상 매개변수 모델을 실행할 수 있으며, 이것이 \"종량제가 아니다\"(unmetered)라고 밝혔습니다—마이크로소프트는 이를 \"종량제 클라우드 토큰\"과 대비시키며 토큰 비용을 낮추는 데 도움이 된다고 밝혔습니다. 발표는 모델명을 지목하지 않았으며, 실행 속도나 벤치마크 수치도 제시하지 않았습니다. 마이크로소프트의 설명은 가장 어려운 문제는 최상위 모델이 처리하고 나머지 작업의 상당 부분은 로컬에서 처리한다는 것입니다—이는 공식 설명일 뿐 테스트 결과가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "열흘 뒤, 마이크로소프트 디바이스 블로그는 IFA 소식을 전하는 글에서 마찬가지로 \"64GB+ 통합 메모리\"라고 썼지만, 대역폭은 \"250gbps\"로 표기했습니다—이는 마이크로소프트 자신의 두 발표가 표현을 통일하지 않은 것일 뿐, 같은 수치를 다르게 표기한 것이 아닙니다. 이 기사의 대역폭 수치는 9월 4일 발표에 나온 \"250+ GB/s\"를 기준으로 삼습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "출처",
+            "통합 메모리",
+            "로컬 모델 규모 표기",
+            "비고"
+          ],
+          "rows": [
+            [
+              "Windows Developer Blog 9/4",
+              "64GB 이상",
+              "30B 이상",
+              "마이크로소프트 발표"
+            ],
+            [
+              "마이크로소프트 디바이스 블로그 9/14",
+              "64GB 이상",
+              "매개변수 수치 없음",
+              "마이크로소프트 발표, 대역폭은 250gbps로 표기"
+            ],
+            [
+              "AMD Ryzen AI Halo 5/20",
+              "최대 128GB",
+              "최대 2,000억",
+              "AMD 발표"
+            ],
+            [
+              "AMD 차세대 플랫폼 3분기 예고",
+              "최대 192GB",
+              "3,000억(4비트 양자화)",
+              "AMD 발표"
+            ]
+          ],
+          "caption": "마이크로소프트와 AMD의 2026년 공식 블로그 게시글을 바탕으로 정리했습니다. 네 행은 각 문서 자체의 표기이며 서로 다른 제조사·제품에 관한 것으로, 동일 기준의 비교나 성능 순위가 아닙니다. 확인일 2026년 9월 17일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "도표 속에 숨은 미리 설치된 도구 18개"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표 본문에서 지목한 도구는 작업 표시줄에 기본으로 고정되는 두 가지, Windows Terminal과 Visual Studio Code뿐입니다. 전체 목록은 삽입된 도표에만 실려 있으며, 본 사이트가 집계한 결과 총 18개입니다. 세 열은 생산성·편집 도구 5개(Visual Studio Code, GitHub Copilot, PowerToys, WinAppCLI, Windows Dev Skills), 터미널과 소스 관리 7개(Intelligent Terminal, PowerShell 7, Git, GitHub CLI, Azure CLI, Core Utils, Oh My Posh), 언어와 실행 환경 6개(Python 3.14+, uv, NVM, Node 24+, WSL 2+ Ubuntu, .NET 10)입니다. 18개 중 버전 번호가 붙은 것은 5개뿐으로, 언어 열에서 uv와 NVM을 제외한 네 개에 PowerShell 7을 더한 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도표의 터미널 열 첫 번째 항목은 Intelligent Terminal이지만, 본문에서 작업 표시줄에 고정된다고 밝힌 것은 Windows Terminal이며, 마이크로소프트는 둘이 같은 것인지 설명하지 않습니다. 마이크로소프트의 6월 2일자 Build 2026 게시글은 이를 기존 Windows Terminal 경험 위에 에이전트 통합을 더한 인터페이스로 설명했으며, 당시 상태는 \"실험적 프리뷰\"였습니다. 같은 글은 이름이 비슷한 Coreutils for Windows와 Windows Development Skills를 정식 출시로 표시했습니다. 9월 4일 발표는 이런 상태를 다시 설명하지 않으므로, 이 기사가 인용하는 것은 어디까지나 6월 게시글의 내용입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마이크로소프트는 미리 적용되는 인터페이스 기본값도 나열합니다. 파일 탐색기는 파일 확장자, 숨김 파일, 제목 표시줄의 전체 경로와 세부 정보 창을 표시하고 긴 경로 지원을 켜는 한편, 최근 사용 목록과 동기화 공급자 알림은 끕니다. 검색과 시작 메뉴는 Command Palette를 켜고, 시작 메뉴 팁과 계정 알림은 끕니다. 마이크로소프트는 이것이 단일 워크플로를 강제하는 것이 아니라고 강조하며, 개발자는 계속해서 자신의 설정을 구성, 확장, 맞춤화할 수 있습니다. 발표는 이를 더 나은 출발점에서 시작하는 것이라고 설명합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-windows-project-zenith-20260904/diagram-1-ko.svg",
+          "alt": "네 칸으로 나눈 도해: 생산성과 편집, 터미널과 버전 관리, 언어와 실행 환경, 인터페이스 기본값",
+          "width": 1600,
+          "height": 900,
+          "caption": "마이크로소프트가 2026년 9월 4일 발표한 Project Zenith 내용을 바탕으로 정리: 미리 설치된 도구 도표의 세 범주와 인터페이스 기본값 변경. 확인일 2026년 9월 17일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "AMD Ryzen AI Halo와 먼저 제공, 다른 파트너는 아직 미정"
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 4일 발표는 다른 OEM이나 실리콘 제조사를 전혀 지목하지 않고 \"우리의 OEM 및 실리콘 파트너\"라고만 언급합니다. 9월 14일 IFA 보도는 Acer, Dell, Lenovo 등 파트너의 컴퓨터를 나열하지만, 그중 어떤 모델도 Zenith와 연결짓지 않습니다. 같은 기사는 마이크로소프트가 전한 AMD의 발언으로, Ryzen AI Halo 시스템이 기본으로 Zenith를 지원하며 Visual Studio Code, WSL, GitHub Copilot CLI, PowerShell을 예로 든다고 전합니다—원문은 \"포함한다\"이며, 완전한 목록도 아니고 도표의 18개 항목도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD가 2026년 5월 20일에 게시한 블로그 글은 Zenith 발표보다 석 달 반 앞선 것으로, 전체 글에서 Project Zenith를 전혀 언급하지 않습니다. AMD는 Ryzen AI Halo가 자사 최초의 소형 AI 개발자 플랫폼이며 Ryzen AI Max+ 395 프로세서를 탑재하고, 통합 메모리 최대 128GB, 최대 2,000억 매개변수 모델을 실행할 수 있다고 밝힙니다. 사전 주문은 2026년 6월부터 시작했고 판매처는 Micro Center뿐이며, 지역은 언급하지 않았고 대역폭 수치도 제시하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 AMD 글은 2026년 3분기에 나올 차세대 Ryzen AI Max PRO 400 시리즈 프로세서도 예고합니다. 통합 메모리 최대 192GB, 전용 그래픽 메모리 최대 160GB이며, 로컬로 3,000억 매개변수 모델을 실행할 수 있는 세계 최초의 x86 클라이언트 프로세서라고 밝힙니다—다만 이는 4비트 양자화를 적용해야 성립하며, 각주에 표시된 시점은 2026년 5월 11일입니다. OEM 파트너로는 HP와 Lenovo가 포함되며 3분기에 출시된다고 밝혔지만, 이는 이 칩 시리즈 자체의 파트너이지 Zenith의 파트너가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "마이크로소프트가 밝히지 않은 것: 가격, 시기, 지역, 그리고 직접 써 보는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 17일까지 확인한 바로는, 두 발표 모두 Zenith의 가격, 출고일, 프리뷰일, 정식 출시일을 밝히지 않았습니다. 9월 4일 발표에 나온 유일한 미래 시점 표현인 \"앞으로 몇 달 안에\"는 이후에 나올 기기를 가리키며, 첫 번째 기기를 뜻하지 않습니다. 두 발표 모두 대만을 언급하지 않았고, Zenith가 어떤 국가나 시장에 출시될지도 밝히지 않았습니다. 또한 이것이 기술적으로 출고 시 이미지인지, Windows 에디션인지, 다운로드 가능한 구성 패키지인지, 아니면 단순한 마케팅 명칭인지도 설명하지 않았으며, 기존 기기가 나중에 같은 설정을 받을 수 있는지도 밝히지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마이크로소프트의 6월 2일자 Build 2026 게시글은 새 기기를 사지 않고도 비슷한 환경을 갖추는 두 가지 방법을 소개했습니다. 하나는 WinGet 구성 파일 dev-config.winget으로, WSL, PowerShell 7, Git, GitHub CLI, Visual Studio Code 등을 포함한 설정을 어떤 Windows 11 기기에서도 명령 하나로 적용할 수 있다고 밝혔습니다. 다른 하나는 Windows 365 with Developer configuration으로, 같은 설정을 미리 적용해 둔 클라우드 PC이며 6월 2일 기준 퍼블릭 프리뷰 단계였습니다. 둘 다 Project Zenith 자체는 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 6월 게시글은 마이크로소프트 자체 기기인 Surface RTX Spark Dev Box도 언급합니다. 통합 메모리는 128GB이며, 당시 설명으로는 올해 하반기에 미국에서 Microsoft.com을 통해서만 판매되고, 이는 선행 출시 제품으로 실제 판매와 인도는 규제 인증·승인 및 해당 요건 준수 여부에 따라 달라진다고 명시했습니다. 이 기사가 확인한 네 개 출처 중 어느 것도 이 기기를 Zenith와 같은 것으로 취급하지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Project Zenith는 지금 구매할 수 있나요?",
+              "answer": "이 기사에서 확인한 마이크로소프트의 두 발표 모두 가격, 출시 시기, 해당 지역을 밝히지 않았습니다. 마이크로소프트는 Zenith가 AMD의 Ryzen AI Halo와 함께 먼저 제공되고, 다른 OEM 및 실리콘 파트너의 기기는 \"앞으로 몇 달 안에\" 뒤따른다고만 밝혔을 뿐, 제조사명도 날짜도 제시하지 않았습니다. AMD 자체 블로그에 따르면 Ryzen AI Halo 사전 주문은 2026년 6월부터 시작했고 판매처는 Micro Center뿐이며, AMD는 지역을 언급하지 않았습니다. 이는 AMD 제품의 사전 주문 정보이지 Project Zenith 자체의 출시 정보가 아닙니다."
+            },
+            {
+              "question": "지금 쓰는 컴퓨터에 통합 메모리 64GB가 없는데, 비슷한 개발 환경을 쓸 수 있나요?",
+              "answer": "마이크로소프트는 2026년 6월 Build 개발자 콘퍼런스에서 두 가지 방법을 밝혔습니다. 하나는 WinGet 구성 파일 dev-config.winget으로, 마이크로소프트에 따르면 어떤 Windows 11 기기에서도 명령 하나만 실행하면 적용됩니다. 다른 하나는 Windows 365 with Developer configuration으로, 같은 개발자 설정을 미리 적용해 둔 클라우드 PC이며, 마이크로소프트에 따르면 어떤 기기에서도 접속할 수 있고 2026년 6월 2일 기준 퍼블릭 프리뷰 단계였습니다. 둘 다 Project Zenith 자체는 아니며, 마이크로소프트는 이 둘이 Zenith의 하드웨어 요구 사항과 어떤 관계인지도 밝히지 않았습니다. 두 가지 모두 여전히 6월 시점의 설명일 뿐입니다."
+            },
+            {
+              "question": "통합 메모리와 메모리 대역폭은 무슨 뜻인가요?",
+              "answer": "통합 메모리란 CPU와 GPU가 각자 따로 확보하는 대신 같은 메모리를 함께 쓰는 방식으로, 이론적으로 더 큰 모델을 담을 수 있습니다. 메모리 대역폭은 데이터가 이 메모리를 드나드는 속도로, 수치가 높을수록 실행 중 데이터를 기다리다 멈출 가능성이 낮아집니다. 마이크로소프트는 「개발자급 기기」를 통합 메모리 64GB 이상, 대역폭 250GB/s 이상으로 정의하며, 프로세서 사양이 아니라 메모리 사양을 기준으로 삼고, 발표는 이 두 수치를 모델의 로컬 실행과 연결짓습니다. 마이크로소프트는 이 두 수치가 인증이나 강제 규격이라고 밝히지 않았으며, 이보다 낮은 기기에서는 어떻게 되는지도 밝히지 않았습니다."
+            },
+            {
+              "question": "이 일이 대만과 관련이 있나요?",
+              "answer": "이 기사가 2026년 9월 17일까지 확인한 출처에서는, 마이크로소프트의 두 발표 모두 대만을 언급하지 않았고 Project Zenith가 어떤 국가나 시장에 출시될지도 밝히지 않았습니다. AMD 블로그 글은 Ryzen AI Halo의 판매처가 Micro Center로 한정된다고만 밝혔을 뿐, 글 전체에서 어떤 지역도 언급하지 않습니다. 이 기사의 출처에는 대만 출시 여부와 관련된 정보가 전혀 없으며, 독자는 이 기사를 근거로 대만에서 이미 구매할 수 있다거나 이미 출시되었다고 판단해서는 안 됩니다."
+            },
+            {
+              "question": "Project Zenith는 정확히 무엇인가요—칩인가요, Windows 에디션인가요, 아니면 그냥 설정인가요?",
+              "answer": "마이크로소프트는 명확히 밝히지 않았습니다. 발표는 이를 미리 설정된 Windows 개발 환경과, 개발자가 가장 먼저 사용할 수 있도록 선별된 도구 모음이라고 설명하고, OEM 파트너에 따라 기기와 성능 등급을 선택할 수 있다고 언급하지만, 이것이 출고 시 이미지인지, Windows 에디션인지, 다운로드 가능한 설치 프로그램인지, 아니면 단순한 마케팅 명칭인지는 밝히지 않았습니다. 하드웨어 기준을 충족하는 기존 기기가 나중에 이를 받을 수 있는지도 밝히지 않았습니다."
+            },
+            {
+              "question": "마이크로소프트는 로컬로 30B 이상 매개변수 모델을 실행할 수 있다고 했는데, 이는 실제 테스트로 확인된 건가요?",
+              "answer": "아닙니다. 마이크로소프트는 Project Zenith 기기에서 개발자가 로컬로 30B 이상 매개변수 모델을 실행할 수 있으며, 이것이 \"종량제가 아니다\"(unmetered)라고 밝혔습니다—마이크로소프트는 이를 종량제 클라우드 토큰과 대비시키며 토큰 비용을 낮추는 데 도움이 된다고 밝혔을 뿐, 이는 마이크로소프트가 별도로 무료 서비스를 제공한다는 뜻이 아닙니다. 발표는 어떤 모델인지 밝히지 않았고, 실행 속도나 벤치마크, 성능 테스트 수치도 전혀 제시하지 않았습니다. 본 사이트 역시 Project Zenith 기기를 직접 시험해 본 적이 없으며, 이는 마이크로소프트의 공식 설명일 뿐 어느 쪽이 측정한 결과가 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "출시 발표가 아니라 기준 발표입니다",
+          "text": "Project Zenith는 마이크로소프트가 「개발자급 기기」를 위해 정한 설정과 하드웨어 조건이며, 이미 가격과 출시일이 정해진 제품이 아닙니다. 이 기사의 모든 성능·메모리·대역폭 수치는 마이크로소프트 또는 AMD가 밝힌 것이며, 본 사이트는 직접 시험해 보지 않았고 업그레이드 여부나 어떤 기기를 사야 할지에 대한 조언도 하지 않습니다. 마이크로소프트의 두 발표 모두 대만을 언급하지 않았고 Zenith가 어떤 국가나 시장에 출시될지도 밝히지 않았습니다. AMD 블로그 글은 Ryzen AI Halo의 판매처가 Micro Center로 한정된다고만 밝혔을 뿐 지역은 언급하지 않았습니다. 이 기사의 확인일은 2026년 9월 17일이며, 실제 사양·가격·출시 시기는 마이크로소프트와 AMD의 최신 공식 발표를 확인하시기 바랍니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Google 9월 Pixel Drop 업데이트: 기종·지역·언어와 Pixel Watch 5의 조건",
+          "url": "https://mokaair.com/ko/life/tech-news-pixel-drop-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "More choice and possibility with Windows PCs at IFA",
+          "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Build 2026: Furthering Windows as the trusted platform for development",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+          "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "微软发布 Project Zenith：Windows 开发机的统一内存与带宽门槛",
+      "description": "2026 年 9 月 4 日，微软在 Windows Developer Blog 宣布 Project Zenith，为统一内存 64GB 以上、带宽 250GB/s 以上的“开发者级设备”预装工具并调整界面默认设置，并表示这类设备能在本地运行 30B 参数以上模型。本文依微软三篇官方文章与 AMD 博客，说明这套设置实际改了什么、门槛怎么定，以及两篇公告都没有写的价格、时间与地区。",
+      "hero": {
+        "src": "/guides/tech-news-windows-project-zenith-20260904/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一台桌面显示器，画面里排着三栏横线，代表预装的三类工具列表；右边上方一条分成四格的长条代表内存，下方一支向右的箭头中途被一条直线与圆点标记，代表带宽门槛",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 4 日，微软在 Windows Developer Blog 发布公告，宣布 Project Zenith——微软称为“开箱即写代码”的 Windows 使用体验，锁定“开发者级设备”：统一内存 64GB 以上、带宽 250GB/s 以上。微软表示 Zenith 会先随 AMD 的 Ryzen AI Halo 推出，其他 OEM 与芯片伙伴的设备“未来几个月内”跟进。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日查核，读的是微软三篇官方博客文章与 AMD 官方博客文章全文。本站没有实测任何 Project Zenith 设备，也不提供购买或升级建议；下文规格与性能数字全部是微软或 AMD 官方所述。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 4 日，微软宣布 Project Zenith，将一套预先设置好的 Windows 使用体验，用于统一内存 64GB 以上、带宽 250GB/s 以上的“开发者级设备”。",
+            "微软表示，这类设备可以在本地运行 30B 参数以上模型，且 Zenith 会先随 AMD 的 Ryzen AI Halo 推出。",
+            "微软在公告图表中列出预装的工具，本站清点共 18 项，分成生产力与编辑（5 项）、终端与源代码控制（7 项）、语言与运行环境（6 项）三类；公告另外调整了文件资源管理器、搜索、开始菜单与任务栏的默认设置。",
+            "微软这两篇公告都没有写出 Project Zenith 的价格、上市时间或适用地区，也没有说明现有电脑能不能取得同样的设置。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "微软宣布了什么：一套整理好的 Windows 开发设置"
+        },
+        {
+          "type": "paragraph",
+          "text": "微软自己的一句话定义是：设备出厂就带有预先设置好的 Windows 开发环境，以及一组为了让开发者最先用到而挑选的工具。公告说微软从年初以来持续改进 Windows 11 的搜索、文件资源管理器与日常内存使用，并表示 Zenith 设备会从这些既有改进中受益。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微软也说明了跨设备的差异：通过 OEM 伙伴合作，开发者在不同设备与性能等级间仍有选择，“硬件可能不同，但开发者体验的承诺一致”——可见 Zenith 涵盖的是多款设备与性能等级，不是单一机型。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "“开发者级设备”的门槛：统一内存与带宽"
+        },
+        {
+          "type": "paragraph",
+          "text": "微软把“开发者级设备”定义成两个数字：统一内存 64GB 以上，内存带宽 250GB/s 以上。统一内存是 CPU 与 GPU 共用同一块内存，理论上能放进更大的模型；带宽是数据进出这块内存的速度，数字越高，模型计算时越不容易卡在等数据。微软用内存规格而非处理器规格当门槛，公告把这两个数字和“在本地运行模型”绑在一起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微软表示，Zenith 设备上开发者可在本地运行 30B 参数以上模型，而且是“不计量”（unmetered）的——微软拿它和“按量计费的云端 token”对照，说有助于降低 token 成本；公告没有指名模型，也没有给运行速度或跑分数字。微软的定位是：顶尖模型处理最难的问题，其余工作大量放在本地运行——这是官方说法，不是测试结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "十天后，微软设备博客报道 IFA 展会时同样写“64GB+ 统一内存”，但带宽写成“250gbps”——是微软自己两篇公告用词不一致，不是同一数字换了写法。本文带宽数字以 9 月 4 日公告的“250+ GB/s”为准。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "数据来源",
+            "统一内存",
+            "本地模型规模的说法",
+            "备注"
+          ],
+          "rows": [
+            [
+              "Windows 开发者博客 9/4",
+              "64GB 以上",
+              "30B 参数以上",
+              "微软表示"
+            ],
+            [
+              "微软设备博客 9/14",
+              "64GB 以上",
+              "未提参数",
+              "微软表示，带宽写成 250gbps"
+            ],
+            [
+              "AMD Ryzen AI Halo 5/20",
+              "最高 128GB",
+              "最高 2,000 亿",
+              "AMD 表示"
+            ],
+            [
+              "AMD 次世代平台 Q3 预告",
+              "最高 192GB",
+              "3,000 亿（4 位量化）",
+              "AMD 表示"
+            ]
+          ],
+          "caption": "整理自微软与 AMD 2026 年官方博客文章，四行是各文件各自的说法，分属不同厂商与产品，不是同一规格的比较，也不是性能排名；查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "18 项预装工具，藏在一张图表里"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告内文只点名任务栏默认固定的两项工具（Windows Terminal 与 Visual Studio Code），完整列表只印在内嵌图表里，本站清点共 18 项。三栏是：生产力与编辑 5 项（Visual Studio Code、GitHub Copilot、PowerToys、WinAppCLI、Windows Dev Skills）、终端与源代码控制 7 项（Intelligent Terminal、PowerShell 7、Git、GitHub CLI、Azure CLI、Core Utils、Oh My Posh）、语言与运行环境 6 项（Python 3.14+、uv、NVM、Node 24+、WSL 2+ Ubuntu、.NET 10）。标了版本号的只有 5 项：语言栏除 uv 与 NVM 外的四项，加上 PowerShell 7。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图表的终端栏第一项是 Intelligent Terminal，内文说固定在任务栏的却是 Windows Terminal，微软未说明两者是否相同。微软 6 月 2 日的 Build 2026 文章把它描述成建立在 Windows Terminal 之上、再加代理程序集成的界面，当时状态是“实验性预览”；那篇把名称相近的 Coreutils for Windows 与 Windows Development Skills 标为正式推出。9 月 4 日公告未重新交代这些状态，本文引用的一律是 6 月的说法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微软另外列出预先套用的界面默认设置：文件资源管理器显示扩展名、隐藏文件、标题栏完整路径与详细信息窗格并开启长路径支持，关闭最近使用的文件列表与同步服务商提示；搜索与开始菜单开启 Command Palette，关闭开始菜单提示与账号通知。微软强调这不是强制的单一工作流程，开发者仍可继续设置、扩展或定制；公告的说法是从一个更好的起点开始。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-windows-project-zenith-20260904/diagram-1-zh-cn.svg",
+          "alt": "四格图解：生产力与编辑、终端与版本控制、语言与运行环境、界面默认设置",
+          "width": 1600,
+          "height": 900,
+          "caption": "依微软 2026 年 9 月 4 日发布的 Project Zenith 公告整理：预装工具图表的三个分类与界面默认设置变更，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先随 AMD Ryzen AI Halo 推出，其他伙伴还没点名"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 4 日公告未提其他 OEM 或芯片厂商，只用“我们的 OEM 与芯片伙伴”带过；9 月 14 日 IFA 报道虽列出宏碁、戴尔、联想等伙伴电脑，却没把其中任何一款和 Zenith 连在一起。同篇转述 AMD：Ryzen AI Halo 系统将开箱即支持 Zenith，并举出 Visual Studio Code、WSL、GitHub Copilot CLI、PowerShell——原文用的是“包含”，不是完整列表，也不是图表那 18 项。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD 2026 年 5 月 20 日的博客文章，比 Zenith 公告早三个半月，全文未提 Project Zenith。AMD 表示 Ryzen AI Halo 是自家第一款轻巧 AI 开发者平台，采用 Ryzen AI Max+ 395 处理器，最高 128GB 统一内存，能运行最高 2,000 亿参数模型；预购自 2026 年 6 月起，渠道只有 Micro Center，未提地区，也没有带宽数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AMD 同篇预告 2026 年第三季度推出新一代 Ryzen AI Max PRO 400 系列处理器，最高 192GB 统一内存与 160GB 显存，并表示这是全球第一批能在本地运行 3,000 亿参数模型的 x86 客户端处理器，但须 4 位量化才成立，脚注标的是 2026 年 5 月 11 日的状态；OEM 伙伴含 HP、Lenovo，于第三季度推出——这是芯片系列的伙伴，非 Zenith 伙伴。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "微软没有讲的部分：价格、时间、地区与怎么自己尝试"
+        },
+        {
+          "type": "paragraph",
+          "text": "查核到 2026 年 9 月 17 日，两篇公告全文都没有 Zenith 的价格、出货日、预览日或正式推出日；9 月 4 日公告里唯一的未来时间“未来几个月内”指后续设备，不是第一款。两篇公告都没有提到台湾，也没说 Zenith 会在哪些国家或市场推出，更没说明它技术上是出厂镜像、Windows 版本、可下载配置包还是营销代称，也没说既有机器能否事后取得。"
+        },
+        {
+          "type": "paragraph",
+          "text": "微软 6 月 2 日的 Build 2026 文章公布过两个不必买新机器的做法：WinGet 配置文件 dev-config.winget，一条命令即可在任何 Windows 11 设备套用含 WSL、PowerShell 7、Git、GitHub CLI、Visual Studio Code 等工具的设置；以及 Windows 365 with Developer configuration，预先套用同设置的云端 PC，截至 6 月 2 日为公开预览，两者皆非 Zenith 本身。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇 6 月文章还提到一款微软自家设备 Surface RTX Spark Dev Box，具备 128GB 统一内存，当时说今年稍晚在美国仅通过 Microsoft.com 销售，并注明这是先行发布产品，实际销售与交付要视监管认证与相关要求而定。本文读到的四篇来源都没有把这款设备和 Zenith 画上等号。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Project Zenith 现在买得到吗？",
+              "answer": "本文查核的两篇微软公告都没有价格、上市时间或地区。微软只说 Zenith 先随 AMD 的 Ryzen AI Halo 推出，其他 OEM 与芯片伙伴的设备“未来几个月内”跟进，但没有点名厂商，也没有给日期。AMD 自己的博客说 Ryzen AI Halo 的预购自 2026 年 6 月起、渠道仅限 Micro Center，AMD 没有提到任何地区；这是 AMD 产品的预购信息，不是 Project Zenith 本身的上市信息。"
+            },
+            {
+              "question": "我现在用的电脑没有 64GB 统一内存，还能取得类似的开发环境吗？",
+              "answer": "微软在 2026 年 6 月的 Build 开发者大会公布了两个做法：一是 WinGet 配置文件 dev-config.winget，微软说在任何一台 Windows 11 设备执行一条命令即可套用；二是 Windows 365 with Developer configuration，一种预先套用同样开发者设置的云端 PC，微软说可以从任何设备访问，截至 2026 年 6 月 2 日为公开预览阶段。两者都不是 Project Zenith 本身，微软也没有说它们和 Zenith 的硬件条件是什么关系，状态同样是 6 月时的说法。"
+            },
+            {
+              "question": "统一内存、内存带宽是什么意思？",
+              "answer": "统一内存是指 CPU 与 GPU 共用同一块内存，不必各自保留一份，理论上能容纳更大的模型；内存带宽是数据进出这块内存的速度，数字越高，运行模型时越不容易卡在等数据上。微软把“开发者级设备”写成统一内存 64GB 以上、带宽 250GB/s 以上，用的是内存规格而不是处理器规格，公告把这两个数字和“在本地运行模型”绑在一起。微软没有说这两个数字是认证或强制规范，也没有说低于这个数字的机器会怎样。"
+            },
+            {
+              "question": "这件事和台湾有关系吗？",
+              "answer": "以本文查核到 2026 年 9 月 17 日的来源，微软两篇公告都没有提到台湾，也没有说 Project Zenith 会在哪些国家或市场推出；AMD 那篇博客只说 Ryzen AI Halo 的渠道仅限 Micro Center，全文没有提到任何地区。本文的来源没有出现任何和台湾上市与否有关的信息，读者不能从本文推断台湾已经买得到或已经推送。"
+            },
+            {
+              "question": "Project Zenith 到底是什么——一颗芯片、一个 Windows 版本，还是一套设置？",
+              "answer": "微软没有明说。公告把它描述成已经预先设置好的 Windows 开发环境，以及一组为了让开发者最先用到而挑选的工具，并提到跨 OEM 伙伴会有设备与性能等级的选择，但没有说它是出厂镜像、Windows 版本、可下载的安装包，还是单纯的营销代称，也没有说符合硬件门槛的旧机器能不能事后取得。"
+            },
+            {
+              "question": "微软说可以在本地跑 30B 参数以上的模型，是实测出来的吗？",
+              "answer": "不是。微软表示在 Project Zenith 设备上可以在本地运行 30B 参数以上模型，而且是“不计量”（unmetered）的——微软是拿它和按量计费的云端 token 对照，说有助于降低 token 成本，这不是在说微软另外提供免费的服务。公告没有指名是哪一个模型，也没有提供任何运行速度、跑分或基准测试数字。本站同样没有对任何 Project Zenith 设备做过实测，这句话是微软官方的说法，不是任何一方的测量结果。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "门槛公告，不是上市公告",
+          "text": "Project Zenith 是微软为“开发者级设备”写出的设置与硬件条件，不是已经有价格与上市日的产品。文中所有性能、内存与带宽数字都是微软或 AMD 官方所述，本站没有实测，也不做该不该升级、该买哪一台的建议。微软两篇公告都没有提到台湾，也没有说 Zenith 会在哪些国家或市场推出；AMD 那篇博客只说 Ryzen AI Halo 的渠道仅限 Micro Center，没有提到任何地区。本文查核日为 2026 年 9 月 17 日，实际规格、价格与上市时间请以微软与 AMD 官方公告的最新版本为准。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Google 9 月 Pixel Drop 更新：机型、地区语言与 Pixel Watch 5 的条件",
+          "url": "https://mokaair.com/zh-CN/life/tech-news-pixel-drop-20260915"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "More choice and possibility with Windows PCs at IFA",
+          "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Build 2026: Furthering Windows as the trusted platform for development",
+          "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+          "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

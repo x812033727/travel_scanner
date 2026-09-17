@@ -1,0 +1,1090 @@
+{
+  "slug": "tech-news-nvidia-vera-rubin-20260915",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-15",
+  "featured": false,
+  "display_order": 312,
+  "locales": {
+    "zh-TW": {
+      "title": "NVIDIA AI Infra Summit 談電力效率：Vera Rubin 與 DSX 新增了什麼",
+      "description": "2026 年 9 月 15 日，NVIDIA 在加州聖塔克拉拉的 AI Infra Summit 上介紹 Vera Rubin 平台與 DSX 機房電力管理軟體，並表示衡量 AI 機房的指標正從尖峰效能轉向每百萬瓦的 token 產出。本文依 NVIDIA 當天發布的官方部落格與 1 月、8 月的新聞稿查核，說明這天新增了什麼、哪些數字是實測、哪些官方自己標成投影，並整理官方還沒有說明的部分。",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-vera-rubin-20260915/hero.jpg",
+        "alt": "原創插圖：由左到右依序是一顆晶片、一座裝著四層設備的機櫃、一棟排著九扇窗的機房，三者以箭頭相連；機房再以一條兩端有圓點的虛線連到最右邊的輸電鐵塔，代表晶片、機櫃、機房與電網四個層級",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日，依 NVIDIA 官方部落格當天刊出的彙整文章，NVIDIA 副總裁 Ian Buck 在美國加州聖塔克拉拉會議中心舉行的 AI Infra Summit 上，以 AI 機房效率為題發表基礎設施主題演講。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是 NVIDIA 當天發布的兩篇官方部落格全文，以及 1 月 5 日、8 月 24 日兩則官方新聞稿作為對照基準線。本站沒有做任何實測，也不提供採購或升級建議；下文數字皆標明是 NVIDIA 自己測到的、自己投影的，或官方轉述第三方測試機構的結果。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 15 日，NVIDIA 副總裁 Ian Buck 在美國加州聖塔克拉拉的 AI Infra Summit 上以 AI 機房效率為題演講，NVIDIA 表示衡量 AI 基礎設施的指標正從尖峰效能轉向每百萬瓦能產出多少 token。",
+            "兩篇 9 月 15 日公告裡沒有新晶片，新增的是電力管理軟體 DSX MaxLPS 與 DSX Flex 的第一批夥伴實測與商用示範。",
+            "NVIDIA 表示，Lambda 讓 19 個節點跑在原本 16 個滿載節點的電力預算內，測到叢集整體 token 吞吐量多 24%、每瓦效能多 23%，但那是在 Blackwell 世代的 HGX B200 伺服器上測的，不是 Vera Rubin，Lambda 自己稱為概念驗證。",
+            "NVIDIA 用兩種說法描述矽谷電力公司的降載示範：正文寫從 4 百萬瓦降到 3 百萬瓦，官方另一份數字表則把同一場示範寫成一分鐘內降低 40% 的電力需求。",
+            "查核到的官方公告沒有公布 Vera Rubin 的出貨數量、客戶名單或任何售價；1 月新聞稿寫夥伴產品 2026 年下半年提供，9 月的資料也沒有更新這個時程。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 15 日發生了什麼：從尖峰效能到每百萬瓦的 token"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 在這篇彙整文章裡表示，衡量 AI 基礎設施的方式正快速從尖峰效能轉向經驗證的代理式（agentic）每百萬瓦 token 數，AI 機房須從晶片到電網整體協同設計；這句話把 9 月 15 日和 1 月的 CES 發表分開來——1 月談晶片規格與每個 token 的成本，9 月談機房整體能從每百萬瓦電力擠出多少產出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇 9 月 15 日公告裡沒有新的晶片發表，NVIDIA 列出的是生態系合作與夥伴實測：NVIDIA 表示 Amazon 旗下 Annapurna Labs 正與它合作開發 NVHBM 客製高頻寬記憶體技術；d-Matrix 正整合 NVLink Fusion，讓 Vera CPU 與自家 Raptor XPU 搭配做大規模的超低延遲推論；Pinterest 採用 Blackwell 平台與 Dynamo 推論軟體，把對話式 AI 帶進視覺探索。這三項官方各只給一句話，沒有規格或時程；同一篇公告另有多家新創的 Vera CPU 測試結果與一段 NVLink 6 可靠度說明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "跟 1 月比，換了什麼：晶片沒變，量測的指標變了"
+        },
+        {
+          "type": "paragraph",
+          "text": "1 月 5 日，NVIDIA 在 CES 發表 Rubin 平台，稱之為六顆新晶片（Vera CPU、Rubin GPU 等）。頭條數字是效能面：比 Blackwell 平台最高省 10 倍推論每 token 成本、訓練混合專家模型最高少用 4 倍 GPU，新聞稿用未來式寫相關產品預計 2026 年下半年由夥伴提供。8 月 24 日 Hot Chips 大會，NVIDIA 宣布 Groq 3 LPX 全面量產，稱平台橫跨七顆晶片、五款專用機櫃；商標聲明只寫 Groq 與 LPU 名稱經 Groq, Inc. 授權使用，查核到的官方文件沒有併購或收購 Groq 的說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到了 9 月 15 日，兩篇官方部落格都沒有再出現新的晶片名稱；1 月的新聞稿整篇沒有用百萬瓦當衡量單位，9 月 15 日的兩篇則反覆以每百萬瓦能產出多少 token 描述成果。換句話說，9 月 15 日新增的不是硬體，而是把 DSX 電力管理軟體推到第一批夥伴實測與商用示範的階段。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "時間點",
+            "官方說的主體",
+            "官方給的數字與條件"
+          ],
+          "rows": [
+            [
+              "2026-01-05",
+              "CES：Rubin 六晶片平台發表",
+              "官方稱比 Blackwell 平台最高省 10 倍每 token 推論成本、少 4 倍訓練 GPU"
+            ],
+            [
+              "2026-08-24",
+              "Hot Chips：Groq 3 LPX 宣布量產",
+              "官方稱平台合計七顆晶片、五款機櫃；Groq、LPU 名稱授權自 Groq, Inc."
+            ],
+            [
+              "2026-09-15",
+              "AI Infra Summit：DSX 電力軟體與夥伴實測",
+              "官方稱 Lambda 測到吞吐量多 24%；Vera Rubin 的 40% 是官方投影"
+            ],
+            [
+              "2026-09-16",
+              "同一篇公告追加 MLPerf v6.1 預覽結果",
+              "官方稱 Vera Rubin NVL72 吞吐量最高是 GB300 NVL72 的 3.7 倍"
+            ]
+          ],
+          "caption": "依 NVIDIA 於 2026 年 1 月 5 日、8 月 24 日、9 月 15 日與 9 月 16 日發布的公告整理，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "電力為什麼是瓶頸：DSX MaxLPS 與 DSX Flex 在做什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 引創辦人暨執行長黃仁勳的話解釋電力為何是瓶頸：一座十億瓦的機房永遠不會變成一座二十億瓦的機房；NVIDIA 在同一篇裡寫電力就是 AI 機房經濟裡的限制條件。DSX 軟體不是 9 月 15 日才推出，官方寫 DSX 是 5 月在 GTC Taipei（NVIDIA 在台灣的活動）發表的，沒有寫年份；兩篇 9 月 15 日公告都沒有再提到台灣的部署、夥伴或供應鏈，本文不替官方延伸。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX MaxLPS 處理機房內部電力調度：NVIDIA 表示在廠級，MaxLPS 會隨需求動態調度機櫃間電力，在同一場地電力額度內最高多出 40% 的 GPU，且不必新建輸電線路就最高多出 35% 的 token 吞吐量；機櫃層級另有削峰軟體與擴充儲能吸收短暫尖峰，官方在這一層沒有給百分比。這組電力數字裡有夥伴實測的是 Lambda：19 個節點在 85% 電力政策下跑在原本 16 個滿載節點的電力預算內，NVIDIA 稱叢集吞吐量多 24%、每瓦效能多 23%，但測的是 Blackwell 世代 HGX B200 伺服器，不是 Vera Rubin，Lambda 雲端服務總裁稱這是概念驗證。上面那個 40% 掛到 Vera Rubin NVL72 時，配套那篇官方文章標明它依 NVIDIA 自己的投影、限於合適的部署環境，同篇數字表還寫明要搭配機房電力規劃，不是量測結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX Flex 處理機房與電網之間的溝通：接收降載請求、需量反應事件與電價訊號，在預設工作優先順序內自動反應，讓最重要工作持續運作、其餘暫停後再恢復。NVIDIA 舉的例子是自家 Eos 機房參與矽谷電力公司彈性負載互聯方案，搭配 Emerald AI 的 Conductor：內文寫某個 8 月夜晚電力自動從 4 百萬瓦降到 3 百萬瓦，同頁一張照片說明也寫同樣兩個數字；但同文數字一覽表卻把同一場示範寫成一分鐘內降低 40% 的電力需求，NVIDIA 未說明兩者關係。官方稱之後已送出超過兩百次需求訊號、每次都成功，但這場示範還不是正式的 DSX Flex 安裝，只是證明概念可行。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-vera-rubin-20260915/diagram-1.svg",
+          "alt": "四格圖解：晶片、機櫃、機房、電網四個層級的電力與效率調度",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 NVIDIA 2026 年 9 月 15 日發布的兩篇部落格文章整理，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼讀 NVIDIA 給的數字：哪些是實測、哪些是投影"
+        },
+        {
+          "type": "paragraph",
+          "text": "接上 Groq 3 LPX 後，NVIDIA 的頭條數字是：對兩兆參數以上、長上下文模型，合併平台每百萬瓦 token 吞吐量最高是 GB200 NVL72 的 35 倍；較具體的是 Groq 3 LPX 在 10 萬 token 上下文的 Qwen 3.8 27B 負載下，每位使用者每秒測到 2,529 個輸出 token，兩者都帶著比較基準，拿掉條件單獨引用會失真。NVIDIA 也轉述第三方機構 SemiAnalysis 用 AgentX 方法量到的結果：DeepSeek V4 Pro 模型上，Vera Rubin NVL72 相對 GB300 NVL72 每百萬瓦吞吐量最高 30 倍，這是 NVIDIA 轉述別家機構的測試，本站未取得原始數據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對供貨狀態，兩篇 9 月 15 日部落格給的只有一句：Vera Rubin 已全面生產，並持續在生態系中擴大部署，效能會隨軟體最佳化改善，沒有出貨數量、客戶名單或雲端地區清單。這篇部落格是持續更新的動態文章：它在 9 月 16 日（活動隔天）新增一段 MLPerf Inference v6.1 結果，NVIDIA 稱這是 Vera Rubin NVL72 首次 MLPerf 預覽提交，吞吐量最高是 GB300 NVL72 的 3.7 倍；這段內容屬於 9 月 16 日，不是 9 月 15 日當天發生的事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "對用雲端服務的人代表什麼、以及官方沒說什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "以上數字量的都是機房層級指標：每百萬瓦 token 產出、每瓦效能、同電力額度下能放多少 GPU，沒有一項是對終端雲端服務速度、費率或供貨時間的承諾。硬體效率會不會反映到訂閱月費，先前 CES 報導已拆解過推論成本與終端定價的落差，這裡不重複；兩篇 9 月 15 日公告通篇沒有提到 Vera Rubin、Groq 3 LPX 或 DSX 任何一項的售價或授權費，只在描述電網訊號時出現過電價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇公告以 Taiwan 與 TSMC 查核到 2026 年 9 月 17 日都未見，沒有台灣部署、台灣夥伴或供應鏈的說明；與台灣有關的只有前一節提到 DSX 是在 GTC Taipei 發表的。想自己確認現況，可回到這兩篇部落格本身——高峰會那篇的最後更新時間在查核期間又往後移動過。讀者之後若看到更新版本，應以官方頁面當時內容為準。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這場 AI Infra Summit 有發表新晶片嗎？",
+              "answer": "沒有。Vera Rubin 平台是 2026 年 1 月 5 日發表，Groq 3 LPX 是 8 月 24 日宣布量產；9 月 15 日這天，NVIDIA 官方部落格談的是電力管理軟體、夥伴的第一批實測數字，以及多家新創在 Vera CPU 上跑出來的測試結果，本文查核到的兩篇公告裡都沒有出現新的晶片名稱。"
+            },
+            {
+              "question": "DSX MaxLPS 讓 Vera Rubin 機房多出 40% 的 GPU，這是量測出來的結果嗎？",
+              "answer": "不是。這個 40% 指的是在同一電力預算內多放 40% 的 GPU，而在《從百萬瓦到 token》那篇官方文章裡，NVIDIA 標明它是依 NVIDIA 自己的投影、限於合適的部署環境，同篇的數字一覽表還寫明那是 MaxLPS 搭配機房電力規劃的結果；同一件事在同日的高峰會彙整文裡沒有標上投影兩個字。這兩篇裡有量測數字的是 Lambda 的測試，吞吐量多 24%、每瓦效能多 23%，用的是 Blackwell 世代的 HGX B200 伺服器，不是 Vera Rubin，Lambda 雲端服務總裁自己把這稱為概念驗證。"
+            },
+            {
+              "question": "矽谷電力公司那場降載示範，電力到底降了多少？",
+              "answer": "NVIDIA 在同一篇公告裡用了兩種說法：內文與同頁一張照片說明都寫電力自動從 4 百萬瓦降到 3 百萬瓦，另一份數字一覽表格把同一場示範寫成一分鐘內降低 40% 的電力需求。官方沒有自己說明這兩個數字之間的關係，本文把兩個數字都列出來，不替官方選一個當作唯一答案。"
+            },
+            {
+              "question": "這件事跟台灣有關係嗎？",
+              "answer": "本文查核的兩篇 9 月 15 日公告裡，沒有出現台灣或台積電。唯一的關聯是，DSX 這套電力管理軟體本身是 5 月在 GTC Taipei（NVIDIA 在台灣舉辦的活動）發表的，但公告沒有進一步說明任何台灣的部署、夥伴或供應鏈細節，本文也不替官方補上。"
+            },
+            {
+              "question": "Vera Rubin 現在買得到嗎、多少錢？",
+              "answer": "官方說法是已進入全面生產，並持續在生態系中擴大部署，但沒有公布出貨數量、客戶名單或雲端地區清單；1 月的新聞稿寫夥伴產品預計 2026 年下半年提供，9 月 15 日的材料沒有更新這個時程。本文查核到的兩篇 9 月 15 日公告都沒有寫出 Vera Rubin、Groq 3 LPX 或 DSX 任何一項的售價或授權費，本文也不做應不應該採用的建議。"
+            },
+            {
+              "question": "SemiAnalysis 說的 30 倍是什麼意思？",
+              "answer": "那是 NVIDIA 轉述第三方測試機構 SemiAnalysis 用 AgentX 方法量到的結果：在 DeepSeek V4 Pro 模型上，Vera Rubin NVL72 相對 GB300 NVL72 每百萬瓦吞吐量最高 30 倍。這是 NVIDIA 引用別家機構的測試，本站沒有取得 SemiAnalysis 的原始數據，只能記錄 NVIDIA 是怎麼引用的。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇裡的數字都是資料中心指標",
+          "text": "本文所有效率數字都是 NVIDIA 自己或其轉述第三方測試的結果，衡量的是機房層級的產出與效率，沒有一項是對消費者服務速度、費率或供貨時間的承諾。NVIDIA 這篇 9 月 15 日的公告是會持續追加內容的動態文章，本文查核時（2026 年 9 月 17 日）讀到的版本標示最後修改於 9 月 16 日，其中 MLPerf 那一段是隔天（9 月 16 日）才加上的預覽提交結果，並非 9 月 15 日當天發生的事。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA 開源 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-nvidia-cuda-q-20260914"
+        }
+      ],
+      "sources": [
+        {
+          "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+          "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+          "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+          "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "NVIDIA's AI Infra Summit Power Efficiency Talk: What's New With Vera Rubin and DSX",
+      "description": "On September 15, 2026, at the AI Infra Summit in Santa Clara, California, NVIDIA presented the Vera Rubin platform and DSX data-center power-management software, saying the metric for AI data centers is shifting from peak performance to tokens produced per megawatt. Based on NVIDIA's blog posts from that day and its January and August press releases, this article checks what was actually new, which numbers are measured, which NVIDIA labels as projections, and what remains unstated.",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-vera-rubin-20260915/hero-en.jpg",
+        "alt": "Original illustration: a chip, a rack, and a data-center building linked by arrows, then connected by a dashed line to a transmission tower, showing four layers: chip, rack, data center, and grid.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 15, 2026, according to a roundup post NVIDIA's official blog published that same day, NVIDIA vice president Ian Buck spoke on AI data center efficiency at the AI Infra Summit, held at the Santa Clara Convention Center in California, making it the centerpiece of his infrastructure keynote."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 17, 2026, against the full text of the two official NVIDIA blog posts published that day, plus two official press releases from January 5 and August 24 used as a baseline for comparison. This site has not run any tests of its own, and offers no purchasing or upgrade advice; every number below is labeled as either something NVIDIA measured itself, something NVIDIA projects, or a result NVIDIA attributes to a third-party testing organization."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 15, 2026, NVIDIA vice president Ian Buck spoke on AI data center efficiency at the AI Infra Summit in Santa Clara, California, where NVIDIA said the metric for measuring AI infrastructure is shifting from peak performance to how many tokens can be produced per megawatt.",
+            "The two September 15 announcements introduced no new chips; what's new is the first round of partner testing and commercial demonstrations for the DSX MaxLPS and DSX Flex power-management software.",
+            "NVIDIA says Lambda ran 19 nodes within the power budget of 16 nodes at full power, measuring 24% more cluster-wide token throughput and 23% better performance per watt, but that test ran on Blackwell-generation HGX B200 servers, not Vera Rubin, and Lambda itself calls it a proof of concept.",
+            "NVIDIA describes the Silicon Valley Power load-shedding demonstration two ways: the text says power automatically dropped from 4 megawatts to 3 megawatts, while a separate NVIDIA figures table describes the same demonstration as a 40% reduction in power demand within one minute.",
+            "The official announcements reviewed do not disclose Vera Rubin shipment volumes, customer names, or any pricing; the January press release said partner products would arrive in the second half of 2026, and the September materials did not update that timeline."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Happened on September 15: From Peak Performance to Tokens per Megawatt"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA states in this roundup post that the metric for AI infrastructure is quickly shifting from peak performance to validated agentic tokens per megawatt, and that data centers must now be codesigned from chip to grid. That statement is what separates September 15 from the January CES announcement: January was about chip specifications and the cost per token, while September is about how much output an entire data center can squeeze from each megawatt of power."
+        },
+        {
+          "type": "paragraph",
+          "text": "Neither of the two September 15 announcements introduced a new chip; instead, NVIDIA listed ecosystem partnerships and partner test results. NVIDIA says Amazon's Annapurna Labs is working with it on the NVHBM custom high-bandwidth memory technology; d-Matrix is integrating NVLink Fusion to combine NVIDIA Vera CPUs with its own Raptor XPUs for ultra-low-latency inference at scale; and Pinterest is using the Blackwell platform and Dynamo inference software to bring conversational AI to visual discovery. NVIDIA gives each of these three items only a single sentence, with no specifications or timeline; the same post also includes Vera CPU test results from several startups and a section on NVLink 6 reliability."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Compared With January: The Chips Haven't Changed, the Metric Has"
+        },
+        {
+          "type": "paragraph",
+          "text": "On January 5, NVIDIA unveiled the Rubin platform at CES, describing it as six new chips, including the Vera CPU and Rubin GPU. The headline numbers were about performance: up to a 10x reduction in per-token inference cost and a 4x reduction in the number of GPUs needed to train mixture-of-experts models, both compared with the Blackwell platform; the press release used future tense, saying partner products were expected in the second half of 2026. At the Hot Chips conference on August 24, NVIDIA announced that Groq 3 LPX had reached full production, describing the platform as spanning seven chips and five purpose-built racks; the only trademark note states that the Groq and LPU names are used under license from Groq, Inc., and the official documents checked for this article make no mention of NVIDIA acquiring or merging with Groq."
+        },
+        {
+          "type": "paragraph",
+          "text": "By September 15, neither official blog post introduced any new chip name; the January press release never used megawatts as a unit of measurement anywhere in its text, while the two September 15 posts repeatedly describe results in terms of tokens produced per megawatt. In other words, what's new on September 15 isn't hardware — it's that the DSX power-management software has reached the stage of its first round of partner testing and commercial demonstrations."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Date",
+            "What the Announcement Covered",
+            "The Numbers and Conditions NVIDIA Gave"
+          ],
+          "rows": [
+            [
+              "2026-01-05",
+              "CES: Rubin six-chip platform unveiled",
+              "NVIDIA said up to a 10x cut in per-token inference cost and 4x fewer GPUs for training, vs. Blackwell"
+            ],
+            [
+              "2026-08-24",
+              "Hot Chips: Groq 3 LPX reaches full production",
+              "NVIDIA said the platform spans seven chips and five racks in total; Groq and LPU are licensed from Groq, Inc."
+            ],
+            [
+              "2026-09-15",
+              "AI Infra Summit: DSX power software and partner tests",
+              "NVIDIA said Lambda measured 24% more throughput; the 40% figure for Vera Rubin NVL72 is NVIDIA's own projection"
+            ],
+            [
+              "2026-09-16",
+              "Same post updated with MLPerf Inference v6.1 preview results",
+              "NVIDIA said Vera Rubin NVL72 throughput is up to 3.7x that of GB300 NVL72"
+            ]
+          ],
+          "caption": "Compiled from NVIDIA announcements published January 5, August 24, September 15, and September 16, 2026. Fact-checked September 17, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why Power Is the Bottleneck: What DSX MaxLPS and DSX Flex Do"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA quotes founder and CEO Jensen Huang to explain why power is the bottleneck: “A one-gigawatt factory will never become a two-gigawatt factory,” Huang has said. NVIDIA writes in the same post that power is the constraint in AI data center economics. DSX software was not launched on September 15 — NVIDIA states that DSX was introduced at GTC Taipei, an NVIDIA event held in Taiwan, in May, without giving a year; neither of the two September 15 announcements says anything further about deployments, partners, or supply chains in Taiwan, and this article does not extend the record on NVIDIA's behalf."
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX MaxLPS handles power dispatch within a data center. NVIDIA says that at the data-center level, MaxLPS dynamically shifts power across racks as demand rises and falls, delivering up to 40% more GPUs within the same site-power envelope, and up to 35% higher token throughput without requiring new power lines; at the rack level, separate power-smoothing software and expanded energy buffering absorb short spikes, though NVIDIA gives no percentage figure at that level. The one partner-measured result in this set of power figures is Lambda's: running 19 nodes under an 85% power policy within the power budget of 16 nodes at full power, NVIDIA says the cluster measured 24% more throughput and 23% better performance per watt — but that test ran on Blackwell-generation HGX B200 servers, not Vera Rubin, and Lambda's president of cloud services calls it a proof of concept. When that same 40% figure is attached to the Vera Rubin NVL72, the companion post states that it is based on NVIDIA's own projections and limited to suitable deployment environments; that post's figures table further notes it requires pairing MaxLPS with data center power planning, and is not a measured result."
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX Flex handles communication between a data center and the power grid: it receives load-shedding requests, demand-response events, and pricing signals from the grid, and reacts automatically within a predefined workload hierarchy, keeping the most critical jobs running while everything else pauses and later resumes. NVIDIA's example is its own Eos data center, which took part in a flexible load interconnect program with Silicon Valley Power, paired with Emerald AI's Conductor: the text says power automatically dropped from 4 megawatts to 3 megawatts one August evening, and a photo caption on the same page states the same two figures; but a separate figures table in the same post describes that same demonstration as a 40% reduction in power demand within one minute, and NVIDIA does not explain the relationship between the two. NVIDIA says Silicon Valley Power has since sent more than 200 demand signals, every one of them successful, but this demonstration is not yet a formal DSX Flex installation — only proof that the concept works."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-vera-rubin-20260915/diagram-1-en.svg",
+          "alt": "Four-panel diagram: power and efficiency dispatch at four layers — chip, rack, data center, and grid",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from two NVIDIA blog posts published September 15, 2026. Fact-checked September 17, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Read NVIDIA's Numbers: What's Measured, What's Projected"
+        },
+        {
+          "type": "paragraph",
+          "text": "With Groq 3 LPX attached, NVIDIA's headline number is that for models with more than two trillion parameters at long context, the combined platform delivers up to 35 times the token throughput per megawatt of the GB200 NVL72; a more specific figure is that on a 100,000-token-context Qwen 3.8 27B workload, Groq 3 LPX measured 2,529 output tokens per second per user — both figures carry their own comparison baseline, and quoting either without its conditions would distort it. NVIDIA also cites a result from third-party firm SemiAnalysis, measured with its AgentX methodology: on the DeepSeek V4 Pro model, the Vera Rubin NVL72 delivers up to 30 times the throughput per megawatt of the GB300 NVL72 — this is NVIDIA relaying another organization's test, and this site has not obtained the underlying data."
+        },
+        {
+          "type": "paragraph",
+          "text": "On availability, the two September 15 blog posts give only one sentence: Vera Rubin is in full production and scaling across the ecosystem, and performance will keep improving with ongoing software optimization, with no shipment volume, customer list, or list of cloud regions. This particular post is a living document that keeps being updated: on September 16, the day after the event, it added a section of MLPerf Inference v6.1 results, which NVIDIA describes as the Vera Rubin NVL72's first MLPerf preview submission, delivering up to 3.7 times the throughput of the GB300 NVL72. That content belongs to September 16, not to what happened on September 15 itself."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What This Means for Cloud Service Users, and What NVIDIA Didn't Say"
+        },
+        {
+          "type": "paragraph",
+          "text": "Every number above is a data-center-level metric — tokens produced per megawatt, performance per watt, how many GPUs fit within a given power allotment — and none of them is a promise about end-user cloud service speed, pricing, or delivery timing. Whether hardware efficiency ever shows up in a lower monthly subscription bill is a gap between inference cost and end-user pricing this site's earlier CES coverage already broke down, and it will not be repeated here; neither of the two September 15 announcements mentions a price or licensing fee for Vera Rubin, Groq 3 LPX, or DSX at any point, and the word “price” only appears when describing grid pricing signals."
+        },
+        {
+          "type": "paragraph",
+          "text": "As checked on September 17, 2026, neither post contains the words “Taiwan” or “TSMC”; there is no description of any Taiwan deployment, Taiwan partner, or supply chain. The only Taiwan connection is the one noted in the previous section — that DSX was introduced at GTC Taipei. Readers who want to confirm the current state for themselves can go back to the two blog posts directly; the summit post's last-updated timestamp moved forward again during the course of fact-checking. If readers later see an updated version, they should treat whatever the official page says at that time as authoritative."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Did NVIDIA announce a new chip at this AI Infra Summit?",
+              "answer": "No. The Vera Rubin platform was unveiled on January 5, 2026, and Groq 3 LPX was announced as reaching full production on August 24. On September 15, NVIDIA's official blog posts covered power-management software, the first round of partner test results, and test results several startups ran on the Vera CPU; neither of the two announcements checked for this article contains a new chip name."
+            },
+            {
+              "question": "Does DSX MaxLPS's 40% more GPUs for a Vera Rubin data center come from a measurement?",
+              "answer": "No. That 40% figure refers to fitting 40% more GPUs within the same power budget, and in the official post “From Megawatts to Tokens,” NVIDIA labels it as based on NVIDIA's own projections and limited to suitable deployment environments; that post's figures table further states it is the result of pairing MaxLPS with data center power planning. The same claim, made in the summit roundup post published the same day, is not labeled as a projection there. The one measured figure between the two posts is Lambda's test, which found 24% more throughput and 23% better performance per watt, but that ran on Blackwell-generation HGX B200 servers, not Vera Rubin, and Lambda's president of cloud services calls it a proof of concept."
+            },
+            {
+              "question": "In the Silicon Valley Power load-shedding demonstration, how much did power actually drop?",
+              "answer": "NVIDIA describes it two different ways in the same post: the body text and a photo caption on the same page both say power automatically dropped from 4 megawatts to 3 megawatts, while a separate figures table describes the same demonstration as a 40% reduction in power demand within one minute. NVIDIA does not explain the relationship between the two figures itself, and this article lists both rather than choosing one as the single answer."
+            },
+            {
+              "question": "Does this have anything to do with Taiwan?",
+              "answer": "The two September 15 announcements checked for this article do not mention Taiwan or TSMC anywhere. The only connection is that the DSX power-management software itself was introduced at GTC Taipei, an NVIDIA event held in Taiwan, in May; the announcements give no further detail about any Taiwan deployment, partner, or supply chain, and this article does not fill that in on NVIDIA's behalf."
+            },
+            {
+              "question": "Can you buy Vera Rubin now, and how much does it cost?",
+              "answer": "NVIDIA's own statement is that it is in full production and scaling across the ecosystem, but it has not disclosed shipment volumes, a customer list, or which cloud regions carry it; the January press release said partner products were expected in the second half of 2026, and the September 15 materials did not update that timeline. Neither of the two September 15 announcements checked for this article states a price or licensing fee for Vera Rubin, Groq 3 LPX, or DSX, and this article offers no advice on whether to adopt any of them."
+            },
+            {
+              "question": "What does the 30x figure from SemiAnalysis mean?",
+              "answer": "That's a result NVIDIA attributes to third-party testing firm SemiAnalysis, measured using its AgentX methodology: on the DeepSeek V4 Pro model, the Vera Rubin NVL72 delivers up to 30 times the throughput per megawatt of the GB300 NVL72. This is NVIDIA citing another organization's test; this site has not obtained SemiAnalysis's underlying data, and can only report how NVIDIA cites it."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Every Number Here Is a Data Center Metric",
+          "text": "Every efficiency figure in this article is a result NVIDIA measured itself or attributes to a third-party test, and each one measures output and efficiency at the data-center level; none of them is a promise about consumer-facing service speed, pricing, or delivery timing. NVIDIA's September 15 post is a living document that keeps being updated; the version read for this fact-check (September 17, 2026) was marked as last modified on September 16, and the MLPerf section within it was added as a preview submission the following day, September 16, not something that happened on September 15 itself."
+        },
+        {
+          "type": "link",
+          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA Open-Sources CUDA-Q Logical: A Resource Estimator, Not a Quantum Computer",
+          "url": "https://mokaair.com/en/life/tech-news-nvidia-cuda-q-20260914"
+        }
+      ],
+      "sources": [
+        {
+          "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+          "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+          "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+          "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "NVIDIAのAI Infra Summit講演から：Vera RubinとDSXに何が加わったか",
+      "description": "2026年9月15日、NVIDIAは米カリフォルニア州サンタクララで開催されたAI Infra Summitで、Vera Rubinプラットフォームとデータセンター向け電力管理ソフトウェアDSXを紹介し、AIデータセンターを測る指標がピーク性能から1メガワットあたりのトークン生産量へと移りつつあると述べました。本記事はNVIDIAが同日公開した公式ブログ記事、および1月と8月の公式プレスリリースを査読し、この日に新しく加わったもの、実測値と言えるもの、NVIDIA自身が投影値だと明記しているもの、そして公式がまだ説明していない部分を整理します。",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-vera-rubin-20260915/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左から順にチップ、ラック、データセンターの建物を矢印でつなぎ、さらにデータセンターから破線で送電鉄塔へとつなぐことで、チップ・ラック・データセンター・電力網という4つの階層を表現",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月15日、NVIDIA公式ブログが同日公開したまとめ記事によると、NVIDIA副社長のIan Buck氏は米カリフォルニア州サンタクララ・コンベンションセンターで開催されたAI Infra Summitで、AIデータセンターの効率をテーマに講演し、これを自身のインフラ基調講演の中心に据えました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日に査読しており、NVIDIAが同日公開した公式ブログ記事2本の全文、および比較の基準として参照した1月5日と8月24日の公式プレスリリース2本を根拠にしています。当サイトは実地の検証を行っておらず、購入や買い替えを勧めるものでもありません。以下の数値はすべて、NVIDIA自身が実測したもの、NVIDIA自身が投影したもの、あるいは公式が転載した第三者機関のテスト結果のいずれかであることを明記します。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月15日、NVIDIA副社長のIan Buck氏は米カリフォルニア州サンタクララのAI Infra Summitで、AIデータセンターの効率をテーマに講演し、NVIDIAはAIインフラを測る指標がピーク性能から1メガワットあたりのトークン生産量へと移りつつあると述べました。",
+            "9月15日付の2本の発表に新しいチップはなく、新たに加わったのはDSX MaxLPSとDSX Flexという電力管理ソフトウェアの初のパートナー実測結果と商用実証です。",
+            "NVIDIAによれば、Lambdaは19ノードを、フル稼働時の16ノードと同じ電力予算の範囲内で稼働させ、クラスター全体のトークンスループットが24%、ワットあたり性能が23%向上したとしていますが、これはVera RubinではなくBlackwell世代のHGX B200サーバーでのテストであり、Lambda自身もこれを概念実証と呼んでいます。",
+            "NVIDIAはシリコンバレー電力会社との負荷遮断の実証実験について2通りの説明をしており、本文ではある8月の夜に電力が自動的に4メガワットから3メガワットへ下がったとする一方、別の数値一覧表では同じ実証を1分以内に電力需要を40%削減したものと記しています。",
+            "査読した公式発表には、Vera Rubinの出荷台数、顧客名、価格のいずれも記載がなく、1月のプレスリリースはパートナー製品を2026年後半に提供予定としていましたが、9月の資料でもこの時期は更新されていません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月15日に何があったのか：ピーク性能から1メガワットあたりのトークン数へ"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAはこのまとめ記事で、AIインフラを測る指標がピーク性能から、検証済みのエージェント型（agentic）の1メガワットあたりトークン数へと急速に移りつつあり、AIデータセンターはチップから電力網まで一体で設計する必要があると述べています。この一文が9月15日と1月のCES発表を分ける境目です。1月はチップの仕様と1トークンあたりのコストの話で、9月はデータセンター全体が1メガワットの電力からどれだけの生産量を引き出せるかという話になっています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月15日付の2本の発表に新しいチップの発表はなく、NVIDIAが挙げたのはエコシステムでの提携とパートナーによる実測結果です。NVIDIAによれば、Amazon傘下のAnnapurna LabsはNVIDIAとカスタム高帯域幅メモリ技術NVHBMを共同開発中であり、d-MatrixはNVLink Fusionを統合してNVIDIA Vera CPUと自社のRaptor XPUを組み合わせ、大規模な超低遅延推論を実現しようとしており、Pinterestはブラックウェル・プラットフォームと推論ソフトウェアDynamoを採用して対話型AIをビジュアル探索に取り入れているとのことです。この3件について公式はそれぞれ一文しか触れておらず、仕様やスケジュールはありません。同じ発表には、複数のスタートアップによるVera CPUのテスト結果や、NVLink 6の信頼性に関する一節も含まれています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1月と比べて何が変わったのか：チップは同じ、測る指標が変わった"
+        },
+        {
+          "type": "paragraph",
+          "text": "1月5日、NVIDIAはCESでRubinプラットフォームを発表し、これを6種類の新しいチップ（Vera CPU、Rubin GPUなど）と呼びました。目玉となる数値は性能面のもので、Blackwellプラットフォームと比べて推論の1トークンあたりコストを最大10分の1に、混合エキスパート（MoE）モデルの学習に必要なGPU数を最大4分の1に削減できるとし、プレスリリースは未来形で、関連製品はパートナーから2026年後半に提供される見込みだと記していました。8月24日のHot Chipsカンファレンスでは、NVIDIAはGroq 3 LPXが完全量産段階に入ったと発表し、プラットフォーム全体で7種類のチップと5種類の専用ラックにまたがるとしました。商標に関する注記にはGroqとLPUの名称がGroq, Inc.からライセンスを受けて使用されているとあるのみで、本記事が確認した公式文書にはNVIDIAがGroqを買収・合併したという記述はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月15日になると、2本の公式ブログ記事にはもはや新しいチップ名は登場しません。1月のプレスリリースは全文を通じてメガワットを測定単位として使っていなかったのに対し、9月15日の2本の記事は成果を1メガワットあたりのトークン生産量で繰り返し表現しています。つまり9月15日に新しく加わったのはハードウェアではなく、電力管理ソフトウェアDSXが初のパートナー実測と商用実証の段階に進んだという点です。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "時期",
+            "発表の主な内容",
+            "NVIDIAが示した数値と条件"
+          ],
+          "rows": [
+            [
+              "2026-01-05",
+              "CES：Rubin 6チップ・プラットフォームを発表",
+              "NVIDIAは、Blackwellと比べ推論コストを最大10分の1、学習GPU数を最大4分の1に削減できるとした"
+            ],
+            [
+              "2026-08-24",
+              "Hot Chips：Groq 3 LPXが量産段階入りを発表",
+              "NVIDIAはプラットフォーム全体で計7チップ・5ラックに及ぶとし、GroqとLPUの名称はGroq, Inc.からのライセンスとした"
+            ],
+            [
+              "2026-09-15",
+              "AI Infra Summit：DSX電力ソフトウェアとパートナー実測",
+              "NVIDIAはLambdaがスループット24%増を測定したとし、Vera Rubin NVL72の40%はNVIDIA自身の投影値とした"
+            ],
+            [
+              "2026-09-16",
+              "同記事にMLPerf Inference v6.1のプレビュー結果を追記",
+              "NVIDIAはVera Rubin NVL72のスループットがGB300 NVL72の最大3.7倍としている"
+            ]
+          ],
+          "caption": "NVIDIAが2026年1月5日、8月24日、9月15日、9月16日に発表した内容をもとに作成。査読日 2026年9月17日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "なぜ電力がボトルネックなのか：DSX MaxLPSとDSX Flexは何をしているのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIAは創業者兼CEOのジェンスン・フアン氏の言葉を引いて、電力がなぜボトルネックなのかを説明しています。「1ギガワットの工場が2ギガワットの工場になることは決してない」とフアン氏は述べています。NVIDIAは同じ記事の中で、電力こそがAIデータセンターの経済における制約条件だと記しています。DSXというソフトウェア自体は9月15日に初めて登場したものではなく、公式によれば、DSXは5月にGTC Taipei（NVIDIAが台湾で開催するイベント）で発表されたとのことで、年は明記されていません。9月15日付の2本の発表はいずれも台湾での展開、パートナー、サプライチェーンについてそれ以上は触れておらず、本記事も公式に代わって補うことはしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX MaxLPSはデータセンター内部の電力配分を担うソフトウェアです。NVIDIAによれば、データセンター単位では、MaxLPSが需要の増減に応じてラック間で動的に電力を振り分け、同じサイト電力枠（site-power envelope）の中で最大40%多くのGPUを収容でき、新たな送電線を敷設しなくても最大35%高いトークンスループットを実現できるとしています。ラック単位では別に、電力平滑化ソフトウェアと拡張されたエネルギー蓄積が短時間のピークを吸収しますが、公式はこの階層では数値を示していません。この一連の電力に関する数値のうち、パートナーによる実測があるのはLambdaのケースです。85%の電力ポリシーの下で19ノードを、フル稼働時16ノードと同じ電力予算内で稼働させ、NVIDIAによればクラスターのスループットが24%、ワットあたり性能が23%向上したとのことですが、これはVera RubinではなくBlackwell世代のHGX B200サーバーでのテストであり、Lambdaのクラウドサービス部門プレジデントはこれを概念実証と呼んでいます。この40%という数値がVera Rubin NVL72に当てはめられる際には、対になる公式記事の方で、NVIDIA自身の投影値に基づくものであり適切な導入環境に限られると明記されており、同記事の数値一覧表にはさらに、MaxLPSとデータセンターの電力計画を組み合わせた結果であって実測値ではないと記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX Flexはデータセンターと電力網との間のやり取りを担うソフトウェアです。負荷遮断要請、デマンドレスポンスのイベント、電力価格シグナルを受け取り、あらかじめ定めた作業優先順位の範囲内で自動的に反応し、最も重要な処理は稼働を続けさせ、それ以外はいったん停止してから再開させます。NVIDIAが挙げる例は、自社のEosデータセンターがシリコンバレー電力会社の柔軟な負荷連系プログラムに参加し、Emerald AIのConductorと組み合わせたケースです。本文では、ある8月の夜に電力が自動的に4メガワットから3メガワットへ下がったと記されており、同じページの写真キャプションにも同じ2つの数値が記されています。ところが同記事の別の数値一覧表では、同じ実証が1分以内に電力需要を40%削減したものとして記されており、NVIDIAは両者の関係を説明していません。公式によれば、その後シリコンバレー電力会社から200回を超える需要シグナルが送られ、いずれも成功したとのことですが、この実証はまだ正式なDSX Flexの導入ではなく、概念が成り立つことを示したに過ぎません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-vera-rubin-20260915/diagram-1-ja.svg",
+          "alt": "4コマ図解：チップ・ラック・データセンター・電力網という4つの階層での電力とスループットの調整",
+          "width": 1600,
+          "height": 900,
+          "caption": "NVIDIAが2026年9月15日に公開した2本のブログ記事をもとに作成。査読日 2026年9月17日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "NVIDIAが示す数値をどう読むか：どれが実測でどれが投影か"
+        },
+        {
+          "type": "paragraph",
+          "text": "Groq 3 LPXを組み合わせた場合のNVIDIAの目玉数値は、2兆パラメータ超の長コンテキストモデルにおいて、統合プラットフォームの1メガワットあたりトークンスループットがGB200 NVL72の最大35倍になるというものです。より具体的な数値としては、10万トークンのコンテキストを持つQwen 3.8 27Bという負荷において、Groq 3 LPXが1ユーザーあたり毎秒2,529個の出力トークンを記録したというものがあります。いずれも比較の基準を伴う数値であり、条件を外して単独で引用すると実態と異なって伝わります。NVIDIAはまた、第三者機関SemiAnalysisが独自のAgentX手法で測定した結果も転載しています。DeepSeek V4 Proモデルにおいて、Vera Rubin NVL72はGB300 NVL72に対して1メガワットあたりスループットが最大30倍になるというもので、これはNVIDIAが他機関のテストを転載しているものであり、当サイトは元データを入手していません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "供給状況について、9月15日付の2本のブログ記事が述べているのは一文だけです。Vera Rubinはすでに完全量産段階にあり、エコシステム全体で導入が拡大しており、性能はソフトウェアの最適化に伴って今後も向上する、というもので、出荷台数、顧客リスト、対応するクラウドのリージョン一覧は示されていません。この記事は更新が続く生きた記事であり、イベント翌日の9月16日にはMLPerf Inference v6.1の結果が一節追加されました。NVIDIAはこれをVera Rubin NVL72にとって初めてのMLPerfプレビュー提出だとし、スループットはGB300 NVL72の最大3.7倍としています。この内容は9月16日のものであり、9月15日当日に起きたことではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "クラウドサービスの利用者にとって何を意味するのか、そして公式が語っていないこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここまでの数値はいずれもデータセンター単位の指標であり、1メガワットあたりのトークン生産量、ワットあたり性能、同じ電力枠の中でどれだけのGPUを収容できるかを示すもので、末端のクラウドサービスの速度や料金、提供時期を約束するものは一つもありません。ハードウェアの効率化が月額料金に反映されるかどうかについては、以前のCES関連記事ですでに推論コストと末端価格のギャップを取り上げているため、ここでは繰り返しません。9月15日付の2本の発表には、Vera Rubin、Groq 3 LPX、DSXのいずれについても価格やライセンス料への言及は一切なく、価格という言葉が出てくるのは電力網の価格シグナルを説明する箇所だけです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年9月17日時点で査読した限り、2本の発表には「Taiwan」も「TSMC」も登場せず、台湾での展開やパートナー、サプライチェーンについての説明もありません。台湾に関連するのは前の節で触れたとおり、DSXがGTC Taipeiで発表されたという点のみです。読者が自分で最新状況を確認したい場合は、この2本のブログ記事そのものに立ち返ることができますが、サミットのまとめ記事の最終更新時刻は査読期間中にさらに後ろへ動いています。読者が今後さらに更新された版を目にした場合は、その時点の公式ページの内容を優先してください。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "このAI Infra Summitで新しいチップは発表されましたか。",
+              "answer": "いいえ。Vera Rubinプラットフォームは2026年1月5日に発表されたもので、Groq 3 LPXは8月24日に量産段階入りが発表されたものです。9月15日、NVIDIA公式ブログが取り上げたのは電力管理ソフトウェア、パートナーによる初の実測結果、そして複数のスタートアップがVera CPUで行ったテスト結果であり、本記事が査読した2本の発表に新しいチップ名は登場しません。"
+            },
+            {
+              "question": "DSX MaxLPSによってVera Rubinのデータセンターで最大40%多くのGPUを収容できるとされていますが、これは実測結果ですか。",
+              "answer": "いいえ。この40%は、同じ電力予算の中でGPUを40%多く収容できるという意味です。「From Megawatts to Tokens」という公式記事では、NVIDIA自身の投影値に基づくものであり適切な導入環境に限られると明記されており、同記事の数値一覧表ではさらに、MaxLPSとデータセンターの電力計画を組み合わせた結果だとされています。一方、同日公開されたサミットのまとめ記事では、同じ内容に「投影」という言葉は付いていません。この2本の記事のうち実測値と言えるのはLambdaのテストで、スループットが24%、ワットあたり性能が23%向上したというものですが、使われたのはVera RubinではなくBlackwell世代のHGX B200サーバーであり、Lambdaのクラウドサービス部門プレジデント自身がこれを概念実証と呼んでいます。"
+            },
+            {
+              "question": "シリコンバレー電力会社との負荷遮断の実証実験で、電力は実際にどれだけ下がったのですか。",
+              "answer": "NVIDIAは同じ記事の中で2通りの説明をしています。本文と同じページの写真キャプションはいずれも、電力が自動的に4メガワットから3メガワットへ下がったとしていますが、別の数値一覧表では同じ実証を1分以内に電力需要を40%削減したものとして記しています。NVIDIAはこの2つの数値の関係を自ら説明しておらず、本記事もどちらか一方を唯一の答えとせず、両方を併記しています。"
+            },
+            {
+              "question": "この件は台湾と関係がありますか。",
+              "answer": "本記事が査読した9月15日付の2本の発表には、台湾も台湾積体電路製造（TSMC）も登場しません。唯一の関連は、DSXという電力管理ソフトウェア自体が、NVIDIAが台湾で開催するイベントGTC Taipeiで5月に発表されたという点だけです。発表はそれ以上、台湾での展開やパートナー、サプライチェーンの詳細には触れておらず、本記事も公式に代わって補うことはしません。"
+            },
+            {
+              "question": "Vera Rubinは今すぐ購入できますか。価格はいくらですか。",
+              "answer": "公式の説明では、すでに完全量産段階にあり、エコシステム全体で導入が拡大しているとされていますが、出荷台数、顧客リスト、対応するクラウドのリージョン一覧は公表されていません。1月のプレスリリースはパートナー製品を2026年後半に提供予定としていましたが、9月15日の資料でもこの時期は更新されていません。本記事が査読した9月15日付の2本の発表には、Vera Rubin、Groq 3 LPX、DSXのいずれについても価格やライセンス料は記載されておらず、本記事は導入すべきかどうかの助言も行いません。"
+            },
+            {
+              "question": "SemiAnalysisが示したという30倍とはどういう意味ですか。",
+              "answer": "これはNVIDIAが第三者機関SemiAnalysisの測定結果として転載しているもので、同機関独自のAgentX手法によるものです。DeepSeek V4 Proモデルにおいて、Vera Rubin NVL72はGB300 NVL72に対して1メガワットあたりスループットが最大30倍になるとされています。これはNVIDIAが他機関のテスト結果を引用しているものであり、当サイトはSemiAnalysisの元データを入手していないため、NVIDIAがどのように引用しているかを記録するにとどめます。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "この記事の数値はすべてデータセンター単位の指標です",
+          "text": "本記事に登場する効率に関する数値はすべて、NVIDIA自身が測定した結果か、NVIDIAが転載した第三者機関のテスト結果のいずれかであり、測っているのはデータセンター単位の生産量と効率です。消費者向けサービスの速度や料金、提供時期を約束するものは一つもありません。NVIDIAのこの9月15日付の記事は今後も内容が追加され続ける生きた記事であり、本記事が査読した時点(2026年9月17日)で読んだ版には最終更新日が9月16日と表示されていました。そのうちMLPerfに関する一節は、翌日(9月16日)に追加されたプレビュー提出結果であり、9月15日当日に起きたことではありません。"
+        },
+        {
+          "type": "link",
+          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA、CUDA-Q Logicalをオープンソース化――誤り耐性量子コンピュータの規模を見積もるツール、量子コンピュータ本体ではない",
+          "url": "https://mokaair.com/ja/life/tech-news-nvidia-cuda-q-20260914"
+        }
+      ],
+      "sources": [
+        {
+          "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+          "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+          "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+          "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "NVIDIA의 AI Infra Summit 전력 효율 강연: Vera Rubin과 DSX에 새로 추가된 것",
+      "description": "2026년 9월 15일, NVIDIA는 미국 캘리포니아주 산타클라라에서 열린 AI Infra Summit에서 Vera Rubin 플랫폼과 데이터센터 전력 관리 소프트웨어 DSX를 소개하며, AI 데이터센터를 측정하는 지표가 피크 성능에서 메가와트당 토큰 생산량으로 옮겨가고 있다고 밝혔습니다. 본 기사는 NVIDIA가 같은 날 공개한 공식 블로그 게시물과 1월, 8월 보도자료를 근거로 이날 새로 추가된 내용, 실측값과 투영값으로 명시된 수치, 그리고 공식적으로 아직 밝히지 않은 부분을 정리합니다.",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-vera-rubin-20260915/hero-ko.jpg",
+        "alt": "원본 일러스트: 왼쪽부터 칩, 랙, 데이터센터 건물을 화살표로 연결하고, 데이터센터를 다시 점선으로 송전탑과 연결해 칩·랙·데이터센터·전력망이라는 네 단계를 표현",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 15일, NVIDIA 공식 블로그가 같은 날 게재한 정리 게시물에 따르면, NVIDIA 부사장 Ian Buck은 미국 캘리포니아주 산타클라라 컨벤션 센터에서 열린 AI Infra Summit에서 AI 데이터센터 효율을 주제로 발표했으며, 이는 그의 인프라 기조연설의 핵심이었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 17일에 사실을 확인했으며, NVIDIA가 같은 날 공개한 공식 블로그 게시물 2건 전문과, 비교 기준으로 삼은 1월 5일 및 8월 24일 공식 보도자료 2건을 근거로 합니다. 본 사이트는 직접 시험해 보지 않았고, 구매나 업그레이드를 권하지 않습니다. 아래의 모든 수치는 NVIDIA가 직접 측정한 값인지, NVIDIA 자체의 투영값인지, 아니면 NVIDIA가 인용한 제3의 시험 기관의 결과인지를 명시합니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 15일, NVIDIA 부사장 Ian Buck은 미국 캘리포니아주 산타클라라의 AI Infra Summit에서 AI 데이터센터 효율을 주제로 발표했으며, NVIDIA는 AI 인프라를 측정하는 지표가 피크 성능에서 메가와트당 토큰 생산량으로 옮겨가고 있다고 밝혔습니다.",
+            "9월 15일에 발표된 두 건에는 새로운 칩이 없었으며, 새로 추가된 것은 전력 관리 소프트웨어 DSX MaxLPS와 DSX Flex의 첫 파트너 실측 결과와 상용 실증입니다.",
+            "NVIDIA에 따르면 Lambda는 19개 노드를, 전력을 100% 사용하는 16개 노드와 같은 전력 예산 안에서 가동해 클러스터 전체 토큰 처리량이 24%, 와트당 성능이 23% 향상됐다고 하지만, 이는 Vera Rubin이 아니라 Blackwell 세대 HGX B200 서버에서 진행한 테스트이며 Lambda 스스로도 이를 개념 증명이라 부릅니다.",
+            "NVIDIA는 실리콘밸리 전력회사와의 부하 차단 실증 실험을 두 가지 방식으로 설명하는데, 본문에서는 어느 8월 밤 전력이 자동으로 4메가와트에서 3메가와트로 줄었다고 하는 반면, 별도의 수치 요약표에서는 같은 실증을 1분 이내에 전력 수요를 40% 줄인 사례로 적고 있습니다.",
+            "확인된 공식 발표에는 Vera Rubin의 출하량, 고객 명단, 가격이 전혀 공개되어 있지 않으며, 1월 보도자료는 파트너 제품이 2026년 하반기에 제공될 예정이라고 했지만 9월 자료에서도 이 일정은 갱신되지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 15일에 있었던 일: 피크 성능에서 메가와트당 토큰 수로"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA는 이 정리 게시물에서, AI 인프라를 측정하는 방식이 피크 성능에서 검증된 에이전트형(agentic) 메가와트당 토큰 수로 빠르게 옮겨가고 있으며, AI 데이터센터는 칩부터 전력망까지 전체를 함께 설계해야 한다고 밝혔습니다. 이 문장이 9월 15일과 1월 CES 발표를 가르는 기준입니다. 1월에는 칩 사양과 토큰당 비용을 이야기했다면, 9월에는 데이터센터 전체가 메가와트당 전력에서 얼마나 많은 결과물을 뽑아낼 수 있는지를 이야기합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 15일에 발표된 두 건에는 새로운 칩 발표가 없었으며, NVIDIA가 제시한 것은 생태계 협력과 파트너 실측 결과입니다. NVIDIA에 따르면 아마존 산하 Annapurna Labs는 NVIDIA와 함께 커스텀 고대역폭 메모리 기술 NVHBM을 공동 개발 중이고, d-Matrix는 NVLink Fusion을 통합해 NVIDIA Vera CPU와 자사의 Raptor XPU를 결합, 대규모 초저지연 추론을 구현하고 있으며, Pinterest는 Blackwell 플랫폼과 추론 소프트웨어 Dynamo를 도입해 대화형 AI를 시각 탐색에 접목하고 있습니다. 이 세 가지에 대해 공식 자료는 각각 한 문장만 언급했을 뿐 사양이나 일정은 없으며, 같은 게시물에는 여러 스타트업이 Vera CPU로 진행한 테스트 결과와 NVLink 6 신뢰성에 관한 내용도 함께 실려 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1월과 비교해 달라진 점: 칩은 그대로, 측정 지표가 바뀌었다"
+        },
+        {
+          "type": "paragraph",
+          "text": "1월 5일, NVIDIA는 CES에서 Rubin 플랫폼을 발표하며 이를 여섯 가지 신규 칩(Vera CPU, Rubin GPU 등)이라고 불렀습니다. 핵심 수치는 성능 관련 수치로, Blackwell 플랫폼 대비 추론 토큰당 비용을 최대 10분의 1로, 혼합 전문가(MoE) 모델 학습에 필요한 GPU 수를 최대 4분의 1로 줄일 수 있다고 했으며, 보도자료는 미래형으로 관련 제품이 2026년 하반기에 파트너를 통해 제공될 예정이라고 적었습니다. 8월 24일 Hot Chips 콘퍼런스에서 NVIDIA는 Groq 3 LPX가 완전 양산 단계에 들어섰다고 발표하며, 플랫폼 전체가 칩 7종과 전용 랙 5종에 걸쳐 있다고 밝혔습니다. 상표 관련 안내에는 Groq와 LPU라는 이름이 Groq, Inc.로부터 라이선스를 받아 사용된다는 내용만 있을 뿐, 본 기사가 확인한 공식 문서 어디에도 NVIDIA가 Groq를 인수하거나 합병했다는 내용은 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 15일이 되자 두 건의 공식 블로그 게시물 모두 새로운 칩 이름은 등장하지 않았습니다. 1월 보도자료는 전체를 통틀어 메가와트를 측정 단위로 사용하지 않았던 반면, 9월 15일 게시물 두 건은 메가와트당 토큰 생산량이라는 표현으로 성과를 반복해서 설명합니다. 다시 말해 9월 15일에 새로 추가된 것은 하드웨어가 아니라, 전력 관리 소프트웨어 DSX가 첫 파트너 실측과 상용 실증 단계에 들어섰다는 점입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "시점",
+            "발표의 핵심 내용",
+            "NVIDIA가 제시한 수치와 조건"
+          ],
+          "rows": [
+            [
+              "2026-01-05",
+              "CES: Rubin 6칩 플랫폼 발표",
+              "NVIDIA는 Blackwell 대비 추론 토큰당 비용 최대 10분의 1, 학습 GPU 수 최대 4분의 1이라고 밝힘"
+            ],
+            [
+              "2026-08-24",
+              "Hot Chips: Groq 3 LPX 양산 발표",
+              "NVIDIA는 플랫폼 전체가 칩 7종·랙 5종에 걸쳐 있으며 Groq·LPU 명칭은 Groq, Inc.로부터 라이선스받았다고 밝힘"
+            ],
+            [
+              "2026-09-15",
+              "AI Infra Summit: DSX 전력 소프트웨어와 파트너 실측",
+              "NVIDIA는 Lambda가 처리량 24% 증가를 측정했다고 밝혔으며, Vera Rubin NVL72의 40%는 NVIDIA 자체 투영값"
+            ],
+            [
+              "2026-09-16",
+              "같은 게시물에 MLPerf Inference v6.1 프리뷰 결과 추가",
+              "NVIDIA는 Vera Rubin NVL72 처리량이 GB300 NVL72의 최대 3.7배라고 밝힘"
+            ]
+          ],
+          "caption": "NVIDIA가 2026년 1월 5일, 8월 24일, 9월 15일, 9월 16일에 발표한 내용을 바탕으로 정리. 확인일 2026년 9월 17일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "전력이 왜 병목인가: DSX MaxLPS와 DSX Flex는 무엇을 하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA는 창업자 겸 CEO인 젠슨 황의 말을 인용해 전력이 왜 병목인지 설명합니다. 젠슨 황은 “1기가와트 공장이 2기가와트 공장이 되는 일은 결코 없다”고 말했습니다. NVIDIA는 같은 게시물에서 전력이야말로 AI 데이터센터 경제의 제약 조건이라고 적었습니다. DSX라는 소프트웨어 자체는 9월 15일에 처음 나온 것이 아니며, 공식 자료에 따르면 DSX는 5월 GTC Taipei(NVIDIA가 대만에서 여는 행사)에서 발표됐다고 하는데, 연도는 적혀 있지 않습니다. 9월 15일에 발표된 두 건 모두 대만에서의 배포, 파트너, 공급망에 대해서는 더 이상 언급하지 않으며, 본 기사도 공식 자료를 대신해 내용을 덧붙이지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX MaxLPS는 데이터센터 내부의 전력 배분을 처리하는 소프트웨어입니다. NVIDIA에 따르면 데이터센터 단위에서 MaxLPS는 수요 변화에 따라 랙 사이의 전력을 동적으로 배분해, 동일한 사이트 전력 한도(site-power envelope) 안에서 GPU를 최대 40% 더 수용할 수 있고, 새로운 송전선을 새로 깔지 않고도 토큰 처리량을 최대 35% 더 높일 수 있다고 합니다. 랙 단위에서는 별도로 전력 평활화 소프트웨어와 확장된 에너지 저장 장치가 짧은 순간의 급증을 흡수하지만, 공식 자료는 이 단계에서는 구체적인 수치를 제시하지 않습니다. 이 일련의 전력 수치 가운데 파트너의 실측이 있는 것은 Lambda의 사례입니다. 85% 전력 정책 아래 19개 노드를, 전력을 100% 사용하는 16개 노드와 같은 전력 예산 안에서 가동한 결과, NVIDIA에 따르면 클러스터 처리량이 24%, 와트당 성능이 23% 향상됐다고 하지만, 이는 Vera Rubin이 아니라 Blackwell 세대 HGX B200 서버에서 진행한 테스트이며 Lambda의 클라우드 서비스 부문 사장은 이를 개념 증명이라고 부릅니다. 이 40%라는 수치가 Vera Rubin NVL72에 적용될 때는, 짝을 이루는 다른 공식 게시물에서 이를 NVIDIA 자체의 투영값에 근거한 것이며 적합한 도입 환경으로 한정된다고 명시하고 있고, 같은 게시물의 수치 요약표에는 이것이 MaxLPS와 데이터센터 전력 계획을 결합한 결과이지 실측값이 아니라고 적혀 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX Flex는 데이터센터와 전력망 사이의 소통을 처리하는 소프트웨어입니다. 부하 차단 요청, 수요 반응 이벤트, 전력 요금 신호를 전력망으로부터 받아 미리 정해둔 작업 우선순위 안에서 자동으로 반응하며, 가장 중요한 작업은 계속 가동하고 나머지는 잠시 멈췄다가 이후 재개합니다. NVIDIA가 든 예시는 자사의 Eos 데이터센터가 실리콘밸리 전력회사의 유연 부하 연계 프로그램에 참여해 Emerald AI의 Conductor와 함께 작동한 사례입니다. 본문에는 어느 8월 밤 전력이 자동으로 4메가와트에서 3메가와트로 줄었다고 적혀 있고, 같은 페이지의 사진 설명에도 같은 두 수치가 적혀 있습니다. 그런데 같은 게시물의 별도 수치 요약표에서는 같은 실증을 1분 이내에 전력 수요를 40% 줄인 사례로 적고 있으며, NVIDIA는 이 둘의 관계를 설명하지 않습니다. NVIDIA에 따르면 이후 실리콘밸리 전력회사가 200회가 넘는 수요 신호를 보냈고 매번 성공했다고 하지만, 이 실증은 아직 정식 DSX Flex 설치가 아니라 개념이 통한다는 것을 보여준 것일 뿐입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-vera-rubin-20260915/diagram-1-ko.svg",
+          "alt": "4단 구성 도해: 칩·랙·데이터센터·전력망 네 단계에서의 전력과 처리량 조정",
+          "width": 1600,
+          "height": 900,
+          "caption": "NVIDIA가 2026년 9월 15일 공개한 블로그 게시물 2건을 바탕으로 작성. 확인일 2026년 9월 17일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "NVIDIA가 제시한 수치를 어떻게 읽어야 하나: 실측과 투영값의 구분"
+        },
+        {
+          "type": "paragraph",
+          "text": "Groq 3 LPX를 결합했을 때 NVIDIA의 핵심 수치는, 매개변수 2조 개 이상의 롱 컨텍스트 모델을 기준으로 통합 플랫폼의 메가와트당 토큰 처리량이 GB200 NVL72의 최대 35배에 달한다는 것입니다. 좀 더 구체적인 수치로는, 10만 토큰 컨텍스트의 Qwen 3.8 27B 워크로드에서 Groq 3 LPX가 사용자 1인당 초당 2,529개의 출력 토큰을 기록했다는 것이 있습니다. 두 수치 모두 각자의 비교 기준을 함께 갖고 있으며, 조건을 떼어내고 단독으로 인용하면 실제와 다르게 전달됩니다. NVIDIA는 또한 제3의 기관인 SemiAnalysis가 자체 AgentX 방법으로 측정한 결과도 인용하는데, DeepSeek V4 Pro 모델에서 Vera Rubin NVL72가 GB300 NVL72 대비 메가와트당 처리량이 최대 30배에 달한다는 것입니다. 이는 NVIDIA가 다른 기관의 테스트를 인용한 것으로, 본 사이트는 원본 데이터를 확보하지 못했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공급 상태에 대해 9월 15일 게시물 두 건이 밝힌 것은 한 문장뿐입니다. Vera Rubin은 이미 완전 양산 단계에 들어섰으며 생태계 전반에서 도입이 확대되고 있고, 성능은 소프트웨어 최적화에 따라 계속 개선될 것이라는 내용으로, 출하량이나 고객 명단, 지원 클라우드 리전 목록은 없습니다. 이 게시물은 계속 갱신되는 살아 있는 문서로, 행사 다음 날인 9월 16일에는 MLPerf Inference v6.1 결과가 한 단락 추가됐습니다. NVIDIA는 이를 Vera Rubin NVL72의 첫 MLPerf 프리뷰 제출이라고 설명하며, 처리량이 GB300 NVL72의 최대 3.7배라고 밝혔습니다. 이 내용은 9월 16일에 해당하는 것이며 9월 15일 당일에 있었던 일이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "클라우드 서비스 이용자에게 의미하는 것, 그리고 공식이 말하지 않은 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "위의 수치는 모두 데이터센터 단위의 지표, 즉 메가와트당 토큰 생산량, 와트당 성능, 같은 전력 한도 안에 GPU를 얼마나 넣을 수 있는지를 나타낼 뿐, 최종 클라우드 서비스의 속도나 요금, 제공 시기를 약속하는 것은 하나도 없습니다. 하드웨어 효율이 월 구독료에 반영될지에 대해서는 이전 CES 관련 기사에서 이미 추론 비용과 최종 가격 사이의 차이를 다룬 바 있어 여기서 반복하지 않습니다. 9월 15일에 발표된 두 건 어디에도 Vera Rubin, Groq 3 LPX, DSX의 가격이나 라이선스 비용에 대한 언급은 전혀 없으며, 가격이라는 단어는 전력망의 요금 신호를 설명할 때만 등장합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 17일 기준으로 확인한 두 건의 발표 어디에도 “Taiwan”이나 “TSMC”라는 표현은 등장하지 않으며, 대만에서의 배포나 대만 파트너, 공급망에 대한 설명도 없습니다. 대만과 관련된 부분은 앞 절에서 언급한, DSX가 GTC Taipei에서 발표됐다는 사실뿐입니다. 최신 상황을 직접 확인하고 싶은 독자는 이 두 블로그 게시물 자체로 돌아가면 되는데, 서밋 정리 게시물의 최종 수정 시각은 확인 작업이 진행되는 동안에도 계속 뒤로 밀렸습니다. 이후 독자가 갱신된 버전을 보게 된다면, 그 시점의 공식 페이지 내용을 기준으로 삼아야 합니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이번 AI Infra Summit에서 새로운 칩이 발표됐나요?",
+              "answer": "아닙니다. Vera Rubin 플랫폼은 2026년 1월 5일에 발표됐고, Groq 3 LPX는 8월 24일에 양산 단계 진입이 발표됐습니다. 9월 15일, NVIDIA 공식 블로그가 다룬 것은 전력 관리 소프트웨어, 파트너의 첫 실측 결과, 그리고 여러 스타트업이 Vera CPU로 진행한 테스트 결과였으며, 본 기사가 확인한 두 건의 발표에는 새로운 칩 이름이 등장하지 않습니다."
+            },
+            {
+              "question": "DSX MaxLPS로 Vera Rubin 데이터센터에서 GPU를 최대 40% 더 쓸 수 있다는데, 이건 실측 결과인가요?",
+              "answer": "아닙니다. 이 40%는 같은 전력 예산 안에서 GPU를 40% 더 수용할 수 있다는 의미입니다. 《From Megawatts to Tokens》라는 공식 게시물에서는 이를 NVIDIA 자체의 투영값에 근거한 것이며 적합한 도입 환경으로 한정된다고 명시하고 있고, 같은 게시물의 수치 요약표에는 MaxLPS와 데이터센터 전력 계획을 결합한 결과라고 적혀 있습니다. 같은 날 공개된 서밋 정리 게시물에서는 같은 내용에 투영값이라는 표현이 붙어 있지 않습니다. 이 두 게시물 중 실측값이라 할 수 있는 것은 Lambda의 테스트로, 처리량이 24%, 와트당 성능이 23% 향상됐다는 것인데, 이는 Vera Rubin이 아니라 Blackwell 세대 HGX B200 서버에서 진행한 테스트이며 Lambda의 클라우드 서비스 부문 사장 스스로 이를 개념 증명이라고 부릅니다."
+            },
+            {
+              "question": "실리콘밸리 전력회사와의 부하 차단 실증 실험에서 전력은 실제로 얼마나 줄었나요?",
+              "answer": "NVIDIA는 같은 게시물 안에서 두 가지 방식으로 설명합니다. 본문과 같은 페이지의 사진 설명 모두 전력이 자동으로 4메가와트에서 3메가와트로 줄었다고 적었지만, 별도의 수치 요약표에서는 같은 실증을 1분 이내에 전력 수요를 40% 줄인 사례로 적고 있습니다. NVIDIA는 이 두 수치의 관계를 스스로 설명하지 않았으며, 본 기사도 둘 중 하나를 유일한 답으로 고르지 않고 두 수치를 함께 제시합니다."
+            },
+            {
+              "question": "이 일이 대만과 관련이 있나요?",
+              "answer": "본 기사가 확인한 9월 15일 발표 두 건 어디에도 대만이나 TSMC(대만적체전로제조)는 등장하지 않습니다. 유일한 연결 고리는 DSX라는 전력 관리 소프트웨어 자체가 NVIDIA가 대만에서 여는 행사인 GTC Taipei에서 5월에 발표됐다는 것뿐입니다. 발표 자료는 그 이상으로 대만에서의 배포나 파트너, 공급망에 대해 설명하지 않으며, 본 기사도 공식 자료를 대신해 내용을 덧붙이지 않습니다."
+            },
+            {
+              "question": "Vera Rubin은 지금 구매할 수 있나요? 가격은 얼마인가요?",
+              "answer": "공식 설명에 따르면 이미 완전 양산 단계에 들어섰고 생태계 전반에서 도입이 확대되고 있다고 하지만, 출하량이나 고객 명단, 지원 클라우드 리전 목록은 공개되지 않았습니다. 1월 보도자료는 파트너 제품이 2026년 하반기에 제공될 예정이라고 했지만, 9월 15일 자료에서도 이 일정은 갱신되지 않았습니다. 본 기사가 확인한 9월 15일 발표 두 건 어디에도 Vera Rubin, Groq 3 LPX, DSX의 가격이나 라이선스 비용은 나와 있지 않으며, 본 기사는 도입 여부에 대한 조언도 하지 않습니다."
+            },
+            {
+              "question": "SemiAnalysis가 말했다는 30배는 무슨 뜻인가요?",
+              "answer": "이는 NVIDIA가 제3의 시험 기관인 SemiAnalysis가 자체 AgentX 방법으로 측정한 결과라고 인용한 것입니다. DeepSeek V4 Pro 모델에서 Vera Rubin NVL72는 GB300 NVL72 대비 메가와트당 처리량이 최대 30배에 달한다는 내용입니다. 이는 NVIDIA가 다른 기관의 테스트를 인용한 것으로, 본 사이트는 SemiAnalysis의 원본 데이터를 확보하지 못했기 때문에 NVIDIA가 이를 어떻게 인용했는지만 기록합니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 기사의 수치는 모두 데이터센터 단위 지표입니다",
+          "text": "이 기사에 나오는 모든 효율 수치는 NVIDIA가 직접 측정했거나 NVIDIA가 인용한 제3의 시험 기관의 결과이며, 측정 대상은 데이터센터 단위의 생산량과 효율입니다. 소비자 대상 서비스의 속도나 요금, 제공 시기를 약속하는 내용은 하나도 없습니다. NVIDIA의 이 9월 15일자 게시물은 앞으로도 내용이 계속 추가되는 살아 있는 문서로, 본 기사가 사실을 확인한 시점(2026년 9월 17일)에 읽은 버전에는 최종 수정일이 9월 16일로 표시되어 있었습니다. 그중 MLPerf 관련 내용은 다음 날(9월 16일)에 추가된 프리뷰 제출 결과이며, 9월 15일 당일에 있었던 일이 아닙니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA, CUDA-Q Logical 오픈소스 공개 — 결함 허용 양자컴퓨터 규모를 추정하는 도구, 양자컴퓨터 자체는 아니다",
+          "url": "https://mokaair.com/ko/life/tech-news-nvidia-cuda-q-20260914"
+        }
+      ],
+      "sources": [
+        {
+          "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+          "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+          "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+          "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "NVIDIA AI Infra Summit 谈电力效率：Vera Rubin 与 DSX 新增了什么",
+      "description": "2026 年 9 月 15 日，NVIDIA 在加州圣塔克拉拉的 AI Infra Summit 上介绍 Vera Rubin 平台与 DSX 机房电力管理软件，并表示衡量 AI 机房的指标正从峰值性能转向每兆瓦的 token 产出。本文依 NVIDIA 当天发布的官方博客与 1 月、8 月的新闻稿查核，说明这天新增了什么、哪些数字是实测、哪些官方自己标为投影，并整理官方尚未说明的部分。",
+      "hero": {
+        "src": "/guides/tech-news-nvidia-vera-rubin-20260915/hero-zh-cn.jpg",
+        "alt": "原创插图：从左到右依次是一颗芯片、一座装有四层设备的机柜、一栋排着九扇窗户的机房，三者以箭头相连；机房再以一条两端带圆点的虚线连到最右边的输电铁塔，代表芯片、机柜、机房与电网四个层级",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日，据 NVIDIA 官方博客当天刊出的汇总文章，NVIDIA 副总裁 Ian Buck 在美国加州圣塔克拉拉会议中心举行的 AI Infra Summit 上，以 AI 机房效率为题发表基础设施主题演讲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日查核，读的是 NVIDIA 当天发布的两篇官方博客全文，以及 1 月 5 日、8 月 24 日两则官方新闻稿作为对照基准线。本站没有做任何实测，也不提供采购或升级建议；下文数字皆标明是 NVIDIA 自己测到的、自己投影的，或官方转述第三方测试机构的结果。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 15 日，NVIDIA 副总裁 Ian Buck 在美国加州圣塔克拉拉的 AI Infra Summit 上以 AI 机房效率为题演讲，NVIDIA 表示衡量 AI 基础设施的指标正从峰值性能转向每兆瓦能产出多少 token。",
+            "两篇 9 月 15 日公告里没有新芯片，新增的是电力管理软件 DSX MaxLPS 与 DSX Flex 的第一批合作伙伴实测与商用示范。",
+            "NVIDIA 表示，Lambda 让 19 个节点跑在原本 16 个满载节点的电力预算内，测到集群整体 token 吞吐量多 24%、每瓦性能多 23%，但那是在 Blackwell 世代的 HGX B200 服务器上测的，不是 Vera Rubin，Lambda 自己称为概念验证。",
+            "NVIDIA 用两种说法描述硅谷电力公司的降载示范：正文写从 4 兆瓦降到 3 兆瓦，官方另一份数字表则把同一场示范写成一分钟内降低 40% 的电力需求。",
+            "查核到的官方公告没有公布 Vera Rubin 的出货数量、客户名单或任何售价；1 月新闻稿写合作伙伴产品 2026 年下半年提供，9 月的资料也没有更新这个时程。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 15 日发生了什么：从峰值性能到每兆瓦的 token"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 在这篇汇总文章里表示，衡量 AI 基础设施的方式正快速从峰值性能转向经验证的代理式（agentic）每兆瓦 token 数，AI 机房须从芯片到电网整体协同设计；这句话把 9 月 15 日和 1 月的 CES 发布分开来——1 月谈芯片规格与每个 token 的成本，9 月谈机房整体能从每兆瓦电力挤出多少产出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇 9 月 15 日公告里没有新的芯片发布，NVIDIA 列出的是生态系合作与合作伙伴实测：NVIDIA 表示亚马逊旗下 Annapurna Labs 正与它合作开发 NVHBM 定制高带宽内存技术；d-Matrix 正整合 NVLink Fusion，让 Vera CPU 与自家 Raptor XPU 搭配做大规模的超低延迟推理；Pinterest 采用 Blackwell 平台与 Dynamo 推理软件，把对话式 AI 带进视觉探索。这三项官方各只给一句话，没有规格或时程；同一篇公告另有多家初创公司的 Vera CPU 测试结果与一段 NVLink 6 可靠性说明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "跟 1 月比，换了什么：芯片没变，测量的指标变了"
+        },
+        {
+          "type": "paragraph",
+          "text": "1 月 5 日，NVIDIA 在 CES 发布 Rubin 平台，称之为六颗新芯片（Vera CPU、Rubin GPU 等）。头条数字是性能面：比 Blackwell 平台最高省 10 倍推理每 token 成本、训练混合专家模型最高少用 4 倍 GPU，新闻稿用未来式写相关产品预计 2026 年下半年由合作伙伴提供。8 月 24 日 Hot Chips 大会，NVIDIA 宣布 Groq 3 LPX 全面量产，称平台横跨七颗芯片、五款专用机柜；商标声明只写 Groq 与 LPU 名称经 Groq, Inc. 授权使用，查核到的官方文件没有并购或收购 Groq 的说法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到了 9 月 15 日，两篇官方博客都没有再出现新的芯片名称；1 月的新闻稿整篇没有用兆瓦当衡量单位，9 月 15 日的两篇则反复以每兆瓦能产出多少 token 描述成果。换句话说，9 月 15 日新增的不是硬件，而是把 DSX 电力管理软件推到第一批合作伙伴实测与商用示范的阶段。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "时间点",
+            "官方说的主体",
+            "官方给的数字与条件"
+          ],
+          "rows": [
+            [
+              "2026-01-05",
+              "CES：Rubin 六芯片平台发布",
+              "官方称比 Blackwell 平台最高省 10 倍每 token 推理成本、少 4 倍训练 GPU"
+            ],
+            [
+              "2026-08-24",
+              "Hot Chips：Groq 3 LPX 宣布量产",
+              "官方称平台合计七颗芯片、五款机柜；Groq、LPU 名称授权自 Groq, Inc."
+            ],
+            [
+              "2026-09-15",
+              "AI Infra Summit：DSX 电力软件与合作伙伴实测",
+              "官方称 Lambda 测到吞吐量多 24%；Vera Rubin 的 40% 是官方投影"
+            ],
+            [
+              "2026-09-16",
+              "同一篇公告追加 MLPerf v6.1 预览结果",
+              "官方称 Vera Rubin NVL72 吞吐量最高是 GB300 NVL72 的 3.7 倍"
+            ]
+          ],
+          "caption": "根据 NVIDIA 于 2026 年 1 月 5 日、8 月 24 日、9 月 15 日与 9 月 16 日发布的公告整理，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "电力为什么是瓶颈：DSX MaxLPS 与 DSX Flex 在做什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 引创始人兼首席执行官黄仁勋的话解释电力为何是瓶颈：一座一吉瓦（GW）的机房永远不会变成一座二吉瓦的机房；NVIDIA 在同一篇里写电力就是 AI 机房经济里的限制条件。DSX 软件不是 9 月 15 日才推出，官方写 DSX 是 5 月在 GTC Taipei（NVIDIA 在台湾的活动）发布的，没有写年份；两篇 9 月 15 日公告都没有再提到台湾的部署、合作伙伴或供应链，本文不替官方延伸。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX MaxLPS 处理机房内部的电力调度：NVIDIA 表示在厂级，MaxLPS 会随需求动态调度机柜间电力，在同一场地电力额度内最高多出 40% 的 GPU，且不必新建输电线路就最高多出 35% 的 token 吞吐量；机柜层级另有削峰软件与扩充储能吸收短暂尖峰，官方在这一层没有给百分比。这组电力数字里有合作伙伴实测的是 Lambda：19 个节点在 85% 电力政策下跑在原本 16 个满载节点的电力预算内，NVIDIA 称集群吞吐量多 24%、每瓦性能多 23%，但测的是 Blackwell 世代 HGX B200 服务器，不是 Vera Rubin，Lambda 云服务总裁称这是概念验证。上面那个 40% 挂到 Vera Rubin NVL72 时，配套那篇官方文章标明它依 NVIDIA 自己的投影、限于合适的部署环境，同篇数字表还写明要搭配机房电力规划，不是测量结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSX Flex 处理机房与电网之间的沟通：接收降载请求、需求响应事件与电价信号，在默认工作优先顺序内自动反应，让最重要的工作持续运行、其余暂停后再恢复。NVIDIA 举的例子是自家 Eos 机房参与硅谷电力公司弹性负载互联方案，搭配 Emerald AI 的 Conductor：正文写某个 8 月夜晚电力自动从 4 兆瓦降到 3 兆瓦，同页一张照片说明也写同样两个数字；但同文数字一览表却把同一场示范写成一分钟内降低 40% 的电力需求，NVIDIA 未说明两者关系。官方称之后已送出超过两百次需求信号、每次都成功，但这场示范还不是正式的 DSX Flex 安装，只是证明概念可行。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-nvidia-vera-rubin-20260915/diagram-1-zh-cn.svg",
+          "alt": "四格图解：芯片、机柜、机房、电网四个层级的电力与效率调度",
+          "width": 1600,
+          "height": 900,
+          "caption": "根据 NVIDIA 2026 年 9 月 15 日发布的两篇博客文章整理，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎么读 NVIDIA 给的数字：哪些是实测、哪些是投影"
+        },
+        {
+          "type": "paragraph",
+          "text": "接上 Groq 3 LPX 后，NVIDIA 的头条数字是：对两万亿参数以上、长上下文模型，合并平台每兆瓦 token 吞吐量最高是 GB200 NVL72 的 35 倍；较具体的是 Groq 3 LPX 在 10 万 token 上下文的 Qwen 3.8 27B 负载下，每位用户每秒测到 2,529 个输出 token，两者都带着比较基准，拿掉条件单独引用会失真。NVIDIA 也转述第三方机构 SemiAnalysis 用 AgentX 方法量到的结果：DeepSeek V4 Pro 模型上，Vera Rubin NVL72 相对 GB300 NVL72 每兆瓦吞吐量最高 30 倍，这是 NVIDIA 转述别家机构的测试，本站未取得原始数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对供货状态，两篇 9 月 15 日博客给的只有一句：Vera Rubin 已全面生产，并持续在生态系中扩大部署，性能会随软件优化改善，没有出货数量、客户名单或云端地区清单。这篇博客是持续更新的动态文章：它在 9 月 16 日（活动隔天）新增一段 MLPerf Inference v6.1 结果，NVIDIA 称这是 Vera Rubin NVL72 首次 MLPerf 预览提交，吞吐量最高是 GB300 NVL72 的 3.7 倍；这段内容属于 9 月 16 日，不是 9 月 15 日当天发生的事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "对用云端服务的人代表什么、以及官方没说什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "以上数字量的都是机房层级指标：每兆瓦 token 产出、每瓦性能、同电力额度下能放多少 GPU，没有一项是对终端云端服务速度、费率或供货时间的承诺。硬件效率会不会反映到订阅月费，先前 CES 报道已拆解过推理成本与终端定价的落差，这里不重复；两篇 9 月 15 日公告通篇没有提到 Vera Rubin、Groq 3 LPX 或 DSX 任何一项的售价或授权费，只在描述电网信号时出现过电价。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇公告以 Taiwan 与 TSMC 查核到 2026 年 9 月 17 日都未见，没有台湾部署、台湾合作伙伴或供应链的说明；与台湾有关的只有前一节提到 DSX 是在 GTC Taipei 发布的。想自己确认现况，可回到这两篇博客本身——峰会那篇的最后更新时间在查核期间又往后移动过。读者之后若看到更新版本，应以官方页面当时内容为准。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这场 AI Infra Summit 有发布新芯片吗？",
+              "answer": "没有。Vera Rubin 平台是 2026 年 1 月 5 日发布，Groq 3 LPX 是 8 月 24 日宣布量产；9 月 15 日这天，NVIDIA 官方博客谈的是电力管理软件、合作伙伴的第一批实测数字，以及多家初创公司在 Vera CPU 上跑出来的测试结果，本文查核到的两篇公告里都没有出现新的芯片名称。"
+            },
+            {
+              "question": "DSX MaxLPS 让 Vera Rubin 机房多出 40% 的 GPU，这是测量出来的结果吗？",
+              "answer": "不是。这个 40% 指的是在同一电力预算内多放 40% 的 GPU，而在《从兆瓦到 token》那篇官方文章里，NVIDIA 标明它是依 NVIDIA 自己的投影、限于合适的部署环境，同篇的数字一览表还写明那是 MaxLPS 搭配机房电力规划的结果；同一件事在同日的峰会汇总文里没有标上投影两个字。这两篇里有测量数字的是 Lambda 的测试，吞吐量多 24%、每瓦性能多 23%，用的是 Blackwell 世代的 HGX B200 服务器，不是 Vera Rubin，Lambda 云服务总裁自己把这称为概念验证。"
+            },
+            {
+              "question": "硅谷电力公司那场降载示范，电力到底降了多少？",
+              "answer": "NVIDIA 在同一篇公告里用了两种说法：正文与同页一张照片说明都写电力自动从 4 兆瓦降到 3 兆瓦，另一份数字一览表格把同一场示范写成一分钟内降低 40% 的电力需求。官方没有自己说明这两个数字之间的关系，本文把两个数字都列出来，不替官方选一个当作唯一答案。"
+            },
+            {
+              "question": "这件事跟台湾有关系吗？",
+              "answer": "本文查核的两篇 9 月 15 日公告里，没有出现台湾或台积电。唯一的关联是，DSX 这套电力管理软件本身是 5 月在 GTC Taipei（NVIDIA 在台湾举办的活动）发布的，但公告没有进一步说明任何台湾的部署、合作伙伴或供应链细节，本文也不替官方补上。"
+            },
+            {
+              "question": "Vera Rubin 现在能买到吗、多少钱？",
+              "answer": "官方说法是已进入全面生产，并持续在生态系中扩大部署，但没有公布出货数量、客户名单或云端地区清单；1 月的新闻稿写合作伙伴产品预计 2026 年下半年提供，9 月 15 日的材料没有更新这个时程。本文查核到的两篇 9 月 15 日公告都没有写出 Vera Rubin、Groq 3 LPX 或 DSX 任何一项的售价或授权费，本文也不做应不应该采用的建议。"
+            },
+            {
+              "question": "SemiAnalysis 说的 30 倍是什么意思？",
+              "answer": "那是 NVIDIA 转述第三方测试机构 SemiAnalysis 用 AgentX 方法量到的结果：在 DeepSeek V4 Pro 模型上，Vera Rubin NVL72 相对 GB300 NVL72 每兆瓦吞吐量最高 30 倍。这是 NVIDIA 引用别家机构的测试，本站没有取得 SemiAnalysis 的原始数据，只能记录 NVIDIA 是怎么引用的。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇里的数字都是数据中心指标",
+          "text": "本文所有效率数字都是 NVIDIA 自己或其转述第三方测试的结果，衡量的是机房层级的产出与效率，没有一项是对消费者服务速度、费率或供货时间的承诺。NVIDIA 这篇 9 月 15 日的公告是会持续追加内容的动态文章，本文查核时（2026 年 9 月 17 日）读到的版本标示最后修改于 9 月 16 日，其中 MLPerf 那一段是隔天（9 月 16 日）才加上的预览提交结果，并非 9 月 15 日当天发生的事。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "NVIDIA 开源 CUDA-Q Logical：估算容错量子计算机规模，不是量子计算机本身",
+          "url": "https://mokaair.com/zh-CN/life/tech-news-nvidia-cuda-q-20260914"
+        }
+      ],
+      "sources": [
+        {
+          "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+          "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+          "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+          "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

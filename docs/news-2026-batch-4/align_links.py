@@ -1,10 +1,12 @@
-"""Make every closing link of the crypto batch carry its target's title in that locale.
+"""Make every closing link of the batch's three verticals carry its target's title in that locale.
 
-usage: align_links.py [--apply]
+usage: align_links.py [--apply] [--only=<part of a slug>,...]
 A link's text is frozen into the pack, so a title that changed in fact-checking or a
 translation that landed after the link was written leaves stale text behind. Handles both the
 plain ``link`` block and the relinked ``rich_paragraph`` holding one ``article`` inline.
-Without --apply it only prints what it would change.
+Without --apply it only prints what it would change. ``--only`` limits which packs are
+rewritten -- for the days when other packs of the batch are still open in someone's editor --
+while every pack's title is still read as a target.
 """
 import json
 import sys
@@ -13,9 +15,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "apps/api/app/guides/content"
 APPLY = "--apply" in sys.argv
+ONLY = [part for a in sys.argv[1:] if a.startswith("--only=") for part in a.split("=", 1)[1].split(",") if part]
+# The three verticals of the batch; the AI index keeps its frozen slug, so it is matched by prefix too.
+PACKS = sorted(p for prefix in ("crypto-news-", "tech-news-", "ai-news-") for p in CONTENT.glob(prefix + "*.json"))
 
 titles = {}
-for path in CONTENT.glob("crypto-news-*.json"):
+for path in PACKS:
     pack = json.loads(path.read_text(encoding="utf-8"))
     titles[pack["slug"]] = {loc: doc.get("title") for loc, doc in pack["locales"].items()}
 
@@ -26,9 +31,11 @@ def target_of(url: str, locale: str):
 
 
 changed = 0
-for path in sorted(CONTENT.glob("crypto-news-*.json")):
+for path in PACKS:
     pack = json.loads(path.read_text(encoding="utf-8"))
     if "_stub" in pack:
+        continue
+    if ONLY and not any(part in pack["slug"] for part in ONLY):
         continue
     dirty = False
     for locale, doc in pack["locales"].items():

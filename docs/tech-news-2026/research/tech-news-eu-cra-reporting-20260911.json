@@ -1,0 +1,493 @@
+{
+  "slug": "tech-news-eu-cra-reporting-20260911",
+  "event_date": "2026-09-11",
+  "event_date_basis": "Regulation (EU) 2024/2847 (Cyber Resilience Act) Article 71(2) fixes 11 September 2026 as the date from which Article 14 (manufacturer reporting obligations) applies. The Commission's cra-reporting page and ENISA's launch press release are both dated/last-updated 11 September 2026, and ENISA's release states the platform is live 'From today'. Other dates that are NOT the event date: signed 23 October 2024 (Strasbourg), published in OJ L 2024/2847 on 20.11.2024, Chapter IV already applied from 11 June 2026, the general application date is 11 December 2027, and the Commission's implementation guidance (C(2026) 5252) was published 27 July 2026.",
+  "title": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "歐盟執委會：《網路韌性法》通報義務頁面",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "publisher": "European Commission (Shaping Europe's digital future, DG CONNECT)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "ENISA 新聞稿：單一通報平台正式啟用",
+      "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+      "publisher": "ENISA (European Union Agency for Cybersecurity)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "ENISA：單一通報平台常見問答",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "publisher": "ENISA (European Union Agency for Cybersecurity)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "EUR-Lex：《歐盟公報》刊登的 Regulation (EU) 2024/2847（網路韌性法）全文",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "publisher": "EUR-Lex, Publications Office of the European Union",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "全部四條於 2026-09-17 用 curl -sL -A \"Mokaair-editorial\" 重新抓取並讀 body（無任何請求帶使用者 email 或個人資料）。狀態：(1) cra-reporting 頁 HTTP 200、52,986 bytes，body 內含 'Last update' 後接 '11 September 2026'，與研究紀錄前一輪完全相同，未變動；grep 確認 'As of 11 September 2026, manufacturers are required to report...' 與 'open-source software stewards are subject to reporting obligations (Article 24(3)) from 11 December 2027.' 兩句逐字仍在。(2) ENISA 新聞稿 HTTP 200、49,879 bytes（前一輪 49,815 bytes，差異在版面微調，正文未變）。(3) ENISA 常見問答 HTTP 200、79,220 bytes（前一輪 78,755 bytes）；頁面的 'Updated:' 字串已從前一輪的 '12 September 2026' 變成 '17 September 2026'。**獨立查核更正：這一頁的內容確實有變，不只是重新發布。** 第 9 題的標題今天印著 '9. [UPDATED] How do I access and register on the SRP, and what are the roles of Primary and Secondary ARs?'，內文改成主要與次要指定代表都能檢視與更新該製造商的通報，只有草稿留在各自帳號；其餘被引用的句子（英文介面、無 API、自願通報未開放、20 位次要代表、無企業身分驗證、72 小時計時器瑕疵、FAQ 12「自 2026 年 9 月 11 日起適用於 2027 年前已上市產品」）逐字仍在。(4) CELLAR 端點 https://publications.europa.eu/resource/celex/32024R2847：撰稿當日（2026-09-17 稍早）以 curl -sL -A \"Mokaair-editorial\" -H \"Accept-Language: eng\" -H \"Accept: application/xhtml+xml\" 取得 HTTP 200、710,696 bytes，body 開頭可見 'L_202402847EN.000101.fmx.xml'／'Official Journal of the European Union'，是 Regulation (EU) 2024/2847 全文（非 RDF 中繼資料），並據以核對第 3(42)、14、16、17、24(3)、64、69、71 條。**必須加上 Accept-Language: eng**，否則三種 Accept 都回 HTTP 400。**獨立查核當日（2026-09-17 稍晚）出版局整體中斷，同一條網址連續八次回 HTTP 500／502（body 是 'Unable to acquire JDBC Connection' 的 Hibernate 例外），op.europa.eu 的 download-handler（xhtml／pdfa2a、語言 en，網址取自紀錄頁的 data-uri）回 204／0 bytes，law-tracker.europa.eu 回 503，eur-lex.europa.eu 用瀏覽器開啟直接轉到 TodayOJ 並印出 'EUR-Lex is temporarily not fully available.'。因此 sources[3] 的條文在查核當下無法重讀，第 64 條罰鍰金額、第 14 條各項分項與第 13 條支援期條文都只能靠前兩輪的讀取紀錄。** 中斷期間查核者改用執委會自己的兩份實施文件（均自 ec.europa.eu 取得、不在 sources[] 內，只寫進本紀錄與查核報告）：'FAQs on the CRA Implementation'（PDF，66 頁，169,657 字）與 'Commission guidance on the application of the CRA' C(2026) 5252 Annex（PDF，84 頁，251,378 字）。**同日稍後出版局恢復，sources[3] 再次回 HTTP 200、710,696 bytes，位元組數與撰稿者記錄完全相同**，查核者據以逐條核對第 2(1)、3(42)、13(8)-(9)、14(1)-(8)、15、16(1)-(2)、17(4)-(6)、24(3)、64(1)-(2)與(10)、69(2)-(3)、71(1)-(2) 條並全部命中。原文含大量 U+00A0 不斷行空格（例如 'Article\\xa014'、'2,5\\xa0%'），比對時先還原為一般空格；第 64 條第 2 項原文印的是 'up to 2,5 % of the its total worldwide annual turnover'，'of the its' 是《歐盟公報》本身的錯字，照抄不訂正。EUR-Lex 系列網址在本容器對 curl 一律回 HTTP 202、0 bytes。 **【第二輪查核 2026-09-17：sources[3] 已換網址】** 原本的 CELLAR 端點 https://publications.europa.eu/resource/celex/32024R2847 不能留給讀者：協調者用真實瀏覽器（語言偏好 zh-TW）開啟，得到的是純文字錯誤頁「None of the requests returned successfully a redirection … Not found work … language(s) [zho]」——本站四個語系（繁中、簡中、日、韓）的讀者點下去全部會看到錯誤，而不是法規。sources[3] 因此改為《歐盟公報》自己印出的 ELI 永久識別碼所對應的 EUR-Lex 網址 https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng。**兩個網址是同一份文件的一手依據，就在 CELLAR 讀到的全文裡：**公報在附件六的註腳逐字印出「OJ L, 2024/2847, 20.11.2024, ELI: http://data.europa.eu/eli/reg/2024/2847/oj .」，全文最末的版權行再印一次「ELI: http://data.europa.eu/eli/reg/2024/2847/oj」，卷首另印「Official Journal of the European Union / EN / L series / 2024/2847 / 20.11.2024」。條文內容本身是 2026-09-17 經 CELLAR（curl -sL -A \"Mokaair-editorial\"、-H \"Accept-Language: eng\"、CELEX 32024R2847）讀到全文複驗的：當天第二輪重抓仍為 HTTP 200、710,696 bytes，與撰稿者與第一輪記錄的位元組數完全相同，第 2(1)、3(42)、13(8)-(9)、14(1)-(8)、15、16(1)-(3)、17(5)、24(3)、64(1)-(2)與(10)、69(2)-(3)、71(1)-(2) 條全部逐字重新命中。**EUR-Lex 當天自己部分停擺**（站上掛著「EUR-Lex is temporarily not fully available.」，ELI 網址被導到 TodayOJ），對本容器的 curl 也照舊是 HTTP 202、0 bytes（第二輪收工前再抓一次仍是 202／0 bytes，見 live_data_warnings），所以查核者當天讀不到 EUR-Lex 供應的正文，是預期中的事；**出刊當天要重開這個網址確認讀者看得到法規正文**。",
+  "verified_facts": [
+    {
+      "fact": "第 71 條第 2 項一次訂了三個適用日期：整部規則原則上自 2027 年 12 月 11 日起適用，但第 14 條自 2026 年 9 月 11 日起提前適用，第四章（第 35 條至第 51 條）自 2026 年 6 月 11 日起提前適用。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Regulation shall apply from 11 December 2027. However, Article 14 shall apply from 11 September 2026 and Chapter IV (Articles 35 to 51) shall apply from 11 June 2026."
+    },
+    {
+      "fact": "歐盟執委會的通報頁面用同樣的三段式寫法，並把開源軟體維護者承接的義務明確定在 2027 年 12 月 11 日（依第 24 條第 3 項、第 71 條第 2 項）。",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As of 11 September 2026, manufacturers are required to report actively exploited vulnerabilities and severe incidents impacting the security of products with digital elements. In accordance with Article 71(2) of the CRA, open-source software stewards are subject to reporting obligations (Article 24(3)) from 11 December 2027."
+    },
+    {
+      "fact": "《網路韌性法》2024 年 10 月 23 日在史特拉斯堡簽署（全文末尾印「Done at Strasbourg, 23 October 2024.」），同年 11 月 20 日刊登於《歐盟公報》L 系列 2024/2847。獨立查核第二輪更正：原引文只撐得住簽署日，公告日改引公報自己在附件六註腳與卷首印的出處行；同一行也印出這份法規的 ELI 永久識別碼 http://data.europa.eu/eli/reg/2024/2847/oj，那正是 sources[3] 這個 EUR-Lex ELI 網址指向的同一份文件。全文卷首另獨立印出「Official Journal of the European Union / EN / L series / 2024/2847 / 20.11.2024」。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OJ L, 2024/2847, 20.11.2024, ELI: http://data.europa.eu/eli/reg/2024/2847/oj"
+    },
+    {
+      "fact": "第 71 條第 1 項：規則於公告後第 20 天生效（未印出換算後的日曆日期）。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union"
+    },
+    {
+      "fact": "第 3 條第 42 項定義「遭積極利用的漏洞」：須有可靠證據顯示惡意行為者已在未經系統所有人許可下利用它。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "'actively exploited vulnerability' means a vulnerability for which there is reliable evidence that a malicious actor has exploited it in a system without permission of the system owner"
+    },
+    {
+      "fact": "第 14 條第 2 項：遭積極利用的漏洞須於知悉後 24 小時內送早期警訊、72 小時內送完整通報、修補或緩解措施備妥後 14 天內送最終報告。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "an early warning notification of an actively exploited vulnerability, without undue delay and in any event within 24 hours of the manufacturer becoming aware of it"
+    },
+    {
+      "fact": "第 14 條第 4 項：重大資安事故一樣是 24 小時早期警訊、72 小時完整通報，但最終報告是在完整通報送出後 1 個月內，不是知悉後 14 天。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a final report, within one month after the submission of the incident notification under point (b)"
+    },
+    {
+      "fact": "ENISA 常見問答確認時限起算點是「知悉」那一刻，不是漏洞或事故發生的時間點。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The reporting process starts when a manufacturer or open-source steward becomes aware of an actively exploited vulnerability or severe incident."
+    },
+    {
+      "fact": "第 14 條第 6 項：CSIRT 認為必要時，可要求製造商補送中間報告說明狀態更新。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Where necessary, the CSIRT designated as coordinator initially receiving the notification may request manufacturers to provide an intermediate report on relevant status updates"
+    },
+    {
+      "fact": "第 14 條第 7 項：通報透過單一通報平台送出，送到製造商歐盟主要營業地 CSIRT 的電子窗口，並同步讓 ENISA 看到；主要營業地先看決策所在國，無法判斷則看雇用人數最多的會員國。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "shall be submitted using the electronic notification end-point of the CSIRT designated as coordinator of the Member State where the manufacturers have their main establishment in the Union and shall be simultaneously accessible to ENISA"
+    },
+    {
+      "fact": "歐盟執委會通報頁面：通報寄給製造商主要營業地的 CSIRT，並在「除非有特別例外情形」的前提下同步讓 ENISA 取得。獨立查核第二輪新增：第 14 條第 7 項本身只寫「shall be simultaneously accessible to ENISA」，沒有寫例外；例外在第 16 條第 2 項（特別例外情形下 ENISA 先只拿到部分資訊）。正文第三節第一段原本把這個例外掛在第 14 條第 7 項底下，已改成由執委會的說法帶出。",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The notification is addressed to the Computer Security Incident Response Team (CSIRT) where they have their main establishment and, unless particularly exceptional circumstances apply, the information is made available simultaneously to ENISA."
+    },
+    {
+      "fact": "沒有歐盟主要營業地的製造商，依序改用四種身分之一判斷窗口：代理其最多產品的授權代表所在國、把其最多產品投放市場的進口商所在國、供貨其最多產品的經銷商所在國、使用者人數最多的會員國。獨立查核第二輪更正：條文 (b) 款的判準是進口商「placing on the market the highest number of products」，不是進口量最多；正文原本寫成「進口其最多產品的進口商」，已改為「在市場上投放其最多產品的進口商」（ENISA 常見問答第 18 題同樣寫 places the highest number of your products on the market）。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(a) the Member State in which the authorised representative acting on behalf of the manufacturer for the highest number of products with digital elements of that manufacturer is established; (b) the Member State in which the importer placing on the market the highest number of products with digital elements of that manufacturer is established;"
+    },
+    {
+      "fact": "ENISA 常見問答提醒：選錯協調 CSIRT，通報可能被視為無效，須重新送到正確窗口。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the wrong CDaC is selected, the notification may be invalidated and will need to be resubmitted to the correct CDaC."
+    },
+    {
+      "fact": "第 16 條第 1 項：ENISA 依此條建立單一通報平台，管理其日常運作。第 16 條第 2 項：收到通報的 CSIRT 應無延遲轉發給產品有上市的其他成員國 CSIRT。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a single reporting platform shall be established by ENISA. The day-to-day operations of that single reporting platform shall be managed and maintained by ENISA."
+    },
+    {
+      "fact": "第 16 條第 2 項：例外情形下，CSIRT 可基於資安理由延後轉發通報，並須立即通知 ENISA 理由與預計轉發時間。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the dissemination of the notification may be delayed based on justified cybersecurity-related grounds for a period of time that is strictly necessary"
+    },
+    {
+      "fact": "歐盟執委會通報頁面確認：ENISA 依第 16 條、並與 CSIRT 網路密切合作，已建立單一通報平台，自 2026 年 9 月 11 日起可運作。",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Pursuant to Article 16 of the CRA, and in close cooperation with the CSIRT Network, ENISA has established the CRA Single Reporting Platform (SRP), operational as of 11 September 2026."
+    },
+    {
+      "fact": "歐盟執委會 2025 年 12 月 11 日通過一項授權法案（Commission Delegated Regulation (EU) 2026/881），補充第 16 條延後轉發的資安理由要件；本文只引用採認日期，未細談該法案第 3 條的四項條件，因為該法案全文網址不在本文 sources[] 之內。",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "on 11 December 2025, the Commission adopted a delegated act"
+    },
+    {
+      "fact": "第 14 條第 8 項：製造商知悉後須把該漏洞或事故告知受影響使用者（適當時也通知所有使用者），並於「必要時」（where necessary）一併告知使用者可自行採取的風險緩解與更正措施，適當時用結構化、機器可讀格式。獨立查核第二輪更正兩點：(1) 通知的主要標的是漏洞或事故本身，緩解與更正措施是「必要時」才加的，正文與 FAQ 第 3 題原本都把主標的寫掉、也把 where necessary 寫掉，已補回；(2) 條文沒有訂出通知期限、語言或管道，但並非完全不談時間——同項後段寫「Where the manufacturer fails to inform the users of the product with digital elements in a timely manner, the notified CSIRTs designated as coordinators may provide such information to the users」，因此 FAQ 第 3 題的否定句已限縮成「條文只寫未『及時』告知時 CSIRT 可代為通知，沒有訂出通知要多快送出」。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the manufacturer shall inform the impacted users of the product with digital elements, and where appropriate all users, of that vulnerability or incident and, where necessary, of any risk mitigation and corrective measures that the users can deploy"
+    },
+    {
+      "fact": "第 13 條第 8 項第三款：支援期至少 5 年，但產品預期使用時間不到 5 年時，支援期等於預期使用時間。第 13 條第 9 項：支援期內提供給使用者的每一項安全更新，發布後至少保留 10 年，或保留到支援期剩餘期間結束，取其長。第 13 條不在第 71 條第 2 項列出的提前適用條文裡；ENISA 新聞稿（sources[1]）自己寫規則的主要資安要求義務自 2027 年 12 月 11 日起適用。獨立查核註記：原紀錄的 5 年寫法漏了但書、10 年寫法漏了「取其長」，兩者都已補上並在 2026-09-17 出版局恢復後逐字核對。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "remains available after it has been issued for a minimum of 10 years or for the remainder of the support period, whichever is longer"
+    },
+    {
+      "fact": "第 17 條第 5 項：修補或緩解措施備妥後，且經製造商同意，ENISA 才會把已公開的漏洞加進依 (EU) 2022/2555 建立的歐洲漏洞資料庫。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ENISA shall, in agreement with the manufacturer of the product with digital elements concerned, add the publicly known vulnerability notified pursuant to Article 14(1) or Article 15(1) of this Regulation to the European vulnerability database"
+    },
+    {
+      "fact": "第 64 條第 2 項：違反附件一資安要求與第 13、14 條義務者，最高可罰 1500 萬歐元，或違規企業全球前一會計年度總營業額 2.5%，兩者取其高。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Non-compliance with the essential cybersecurity requirements set out in Annex I and the obligations set out in Articles 13 and 14 shall be subject to administrative fines of up to EUR 15 000 000 or, if the offender is an undertaking, up to 2,5 % of the its total worldwide annual turnover for the preceding financial year, whichever is higher."
+    },
+    {
+      "fact": "第 64 條第 1 項：實際罰則規則由各會員國自訂，罰則須有效、合乎比例並具嚇阻力，且會員國須無延遲通知歐盟執委會。獨立查核第二輪更正：原引文只到「ensure that they are implemented」，撐不住「通知執委會」那半句，已延長到條文印出通知義務的地方；同時把「並通知執委會」補進正文第四節第三段，讓 FAQ 第 6 題的說法在正文找得到。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Member States shall lay down the rules on penalties applicable to infringements of this Regulation and shall take all measures necessary to ensure that they are implemented. The penalties provided for shall be effective, proportionate and dissuasive. Member States shall, without delay, notify the Commission of those rules and measures"
+    },
+    {
+      "fact": "第 64 條不在第 71 條第 2 項列出的提前適用條文裡（清單只有第 14 條與第四章），且依執委會摘要頁的章節表，第 64 條屬第七章而非第四章；本文查到的三個官方頁面（執委會通報頁、ENISA 新聞稿、ENISA 常見問答）以 penalty／fine／sanction／金額字串搜尋皆 0 次，都沒有提到罰鍰，也沒有討論 2026 年 9 月 11 日到 2027 年 12 月 11 日之間違反第 14 條通報義務是否／如何受罰。獨立查核註記：撰稿版本再往前推論成「第 64 條依文義要到 2027 年 12 月 11 日才適用」，該推論已從文章刪除——執委會實施指引 C(2026) 5252 附件第 210 段以「In accordance with Article 69(3) and 71(2), second sentence」說明第 14 條自 2026-09-11 起及於舊產品，可見第 69 條第 3 項雖同樣不在提前清單裡卻已在運作，「不在清單＝尚未適用」不是安全的推論。文章現在只寫「第 64 條不在提前適用條文裡」與「這三頁沒有寫」。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Article 14 shall apply from 11 September 2026 and Chapter IV (Articles 35 to 51) shall apply from 11 June 2026"
+    },
+    {
+      "fact": "第 69 條第 3 項：以但書排除第 2 項的過渡規定，第 14 條的通報義務適用於所有落在規則範圍內、在 2027 年 12 月 11 日前已上市的產品。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the obligations laid down in Article 14 shall apply to all products with digital elements that fall within the scope of this Regulation that have been placed on the market before 11 December 2027"
+    },
+    {
+      "fact": "ENISA 常見問答用機關自己的話講同一件事：第 14 條義務自 2026 年 9 月 11 日起適用於落在規則範圍內的所有連網產品，包括 2027 年 12 月 11 日前已上市者——本文引用這句 ENISA 自己的陳述，取代直接引第 69 條第 3 項的條文推論，避免把一條沒有被第 71 條第 2 項提前的條文寫成「已生效」。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "will apply from 11 September 2026 to all products with digital elements falling within the scope of the CRA, including products that were placed on the market before 11 December 2027"
+    },
+    {
+      "fact": "第 24 條第 3 項：開源軟體維護者依第 14 條第 1 項承接的義務，限於其涉入產品開發的範圍；依第 14 條第 3 項與第 8 項承接的義務則涉及該維護者為開發此類產品所提供之網路與資訊系統。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The obligations laid down in Article 14(1) shall apply to open-source software stewards to the extent that they are involved in the development of the products with digital elements."
+    },
+    {
+      "fact": "第 2 條第 1 項：規則適用於在（歐盟）市場上販售、且其預期用途或可合理預見之使用涉及直接或間接連接裝置或網路的連網產品。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Regulation applies to products with digital elements made available on the market, the intended purpose or reasonably foreseeable use of which includes a direct or indirect logical or physical data connection to a device or network."
+    },
+    {
+      "fact": "第 15 條：任何人都可以就漏洞、資安威脅（第 1 項）或事故、未遂事故（第 2 項）向 CSIRT 或 ENISA 自願通報；ENISA 的常見問答表示，平台目前的版本還沒有開放這個自願通報功能。",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Manufacturers as well as other natural or legal persons may notify any vulnerability contained in a product with digital elements as well as cyber threats that could affect the risk profile of a product with digital elements on a voluntary basis to a CSIRT designated as coordinator or ENISA."
+    },
+    {
+      "fact": "ENISA 常見問答：第 15 條的自願通報「將於平台未來階段開放」，目前尚未實作。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Voluntary reporting under Art. 15 will be introduced in a future phase of the platform."
+    },
+    {
+      "fact": "ENISA 常見問答第 24 題：平台上線時只支援英文介面。獨立查核第二輪補記：同題第二句寫的是「This availability of additional language versions of the platform itself will be reviewed in the next phase of the project.」——ENISA 只說下一階段會「評估」其他語言版本，沒有承諾一定會做；第 15 題的應用程式介面同樣只寫「API functionality may be considered in a future phase of the SRP.」。只有第 15 條自願通報是承諾（第 4 題「will be introduced in a future phase」、第 27 題「The platform will be enhanced at a later stage to support voluntary reporting under Art.15.」）。正文原本一律寫成「ENISA 說會在『未來階段』陸續補上」，已按這三種不同語氣改寫。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At launch, the platform will be available in English only."
+    },
+    {
+      "fact": "ENISA 常見問答：平台初始版本沒有應用程式介面（API），通報須透過平台介面送出，API 功能可能於未來階段評估。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "no Application Programming Interface (API) will be provided at the initial release of the SRP, so notifications must be submitted through the platform interface"
+    },
+    {
+      "fact": "ENISA 常見問答第 30 題：現行版本只支援製造商依第 14 條送出的強制通報；非製造商送出的通報可能被標記為無效，應改聯絡自己國家的 CSIRT。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your submission might be marked as ‘invalid’ in the SRP."
+    },
+    {
+      "fact": "ENISA 自行揭露一項已知瑕疵：現行版本的 72 小時計時器，實際上是從 24 小時早期警訊送出起算 48 小時就顯示逾期，而不是從知悉那一刻起算的 72 小時；ENISA 說明這項邏輯會於未來版本更新，且計時器顯示不能取代法定義務本身。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In the current release, the 72-hour counter displays a due date/time 48hrs after submission of the 24-hour Early Warning. As a result, in some cases, a notification may be displayed as overdue before 72 hours have elapsed since the manufacturer or open-source software steward became aware of the event."
+    },
+    {
+      "fact": "ENISA 常見問答：每家製造商只能有一位主要指定代表（Primary AR），另外最多可有 20 位次要指定代表（Secondary AR），身分須以具多重要素驗證的 EU Login 帳號登入；平台目前沒有額外的企業身分驗證機制。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "There can be only one Primary AR per manufacturer and up to 20 Secondary ARs."
+    },
+    {
+      "fact": "ENISA 常見問答第 9 題（2026-09-17 當天標示 [UPDATED]）：同一家製造商的主要與次要指定代表都可以存取、檢視與更新該製造商的通報，不論原本由誰送出；唯一例外是草稿，草稿存在個別代表的帳號裡、其他代表看不到。目前沒有額外的企業身分驗證機制。獨立查核註記：撰稿版本寫的是「次要代表只能檢視自己送出的通報」，那是這一頁 9 月 17 日更新前的說法，已被現行頁面推翻，文章與本紀錄都已改。",
+      "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "No additional corporate entity authentication mechanism is currently used by the SRP."
+    },
+    {
+      "fact": "ENISA 新聞稿：平台上線是「初始運作量能」（initial operating capability），ENISA 表示會依營運經驗與使用者需求持續擴充功能。",
+      "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The EU Agency for Cybersecurity (ENISA) has deployed the initial operating capability of the Single Reporting Platform (SRP)."
+    }
+  ],
+  "not_said": [
+    "沒有任何官方頁面公布平台上線以來收到幾件通報，或有幾家製造商／指定代表註冊，本文因此完全不寫這類數字。",
+    "沒有任何官方頁面點名特定漏洞、事故、產品或製造商已透過平台通報，本文不編造範例個案。",
+    "沒有官方頁面說通報內容會公開或可查詢；唯一的公開管道是第 17 條第 5 項——須修補措施備妥、且經製造商同意，ENISA 才會把漏洞加進歐洲漏洞資料庫，本文不暗示讀者可以查到自己裝置的通報紀錄。",
+    "ENISA 常見問答明確排除消費者當成報修管道使用：非製造商的通報可能被標記無效，本文不建議讀者拿這個平台通報自己發現的漏洞。",
+    "三個官方頁面都沒有提到罰鍰金額；EUR 1500 萬／2.5% 的上限出自《歐盟公報》第 64 條本文，且第 64 條依文義不在第 71 條第 2 項的提前清單內，本文因此不主張現在到 2027 年 12 月 11 日之間違反第 14 條會不會被罰、怎麼罰。",
+    "ENISA 說自願通報、應用程式介面、其他語言版本會在「未來階段」或「下一階段」補上，沒有給任何時間表，本文不猜測日期。",
+    "沒有官方頁面討論台灣或歐盟以外市場的連網產品是否受規則拘束；第 2 條第 1 項的範圍是在（歐盟）市場上販售的連網產品，本文只引用條文本身的範圍描述，不替讀者判斷特定裝置算不算。",
+    "第 14 條第 8 項要求製造商通知使用者，但沒有訂通知期限、語言或管道，本文不替它補一個期限。",
+    "沒有任何頁面提到使用平台是否需要付費，本文不猜測。",
+    "沒有任何頁面公布平台的可用率、容量或回應時間，本文不引用。",
+    "通報義務上路本身不會讓裝置更快拿到修補更新——修補與維護支援期是第 13 條的內容，依文義自 2027 年 12 月 11 日起才適用，本文不暗示 9 月 11 日之後修補會變快。",
+    "沒有任何頁面估計第 14 條實際拘束多少家製造商，本文不引用任何家數。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "《網路韌性法》於 2024 年 12 月 10 日生效（entry into force 的確切日曆日期）。",
+      "seen_where": "歐盟執委會另一個頁面『Cyber Resilience Act - Summary of the legal text』（https://digital-strategy.ec.europa.eu/en/policies/cra-summary）逐字寫出這個日期；上一輪查核也確認該頁存在且可讀。",
+      "why_excluded": "本文的 sources[] 已用滿 4 條（cra-reporting、ENISA 新聞稿、ENISA 常見問答、《歐盟公報》全文；第四條的網址已於第二輪從 CELLAR 端點換成 EUR-Lex 的 ELI 網址，文件同一份），而 cra-summary 頁面不在其中，本文規則要求『每一句事實都要指得到 sources[] 的其中一條』。第 71 條第 1 項只印出「公告後第 20 天生效」的公式與 2024-11-20 的公告日，本文選擇只寫公式與公告日（兩者都出自 sources[3]），不寫換算後的 12 月 10 日，以免需要新增第 5 條來源，或把換算結果當成一手事實。獨立查核認可這個取捨：BRIEF 第 9 條就寫『生效日一律寫公式，不寫日期』，且 BRIEF 優先於修正清單。查核當日重抓 cra-summary（HTTP 200、123,150 bytes）確認『The CRA entered into force on 10 December 2024.』仍逐字在該頁，若站主日後願意用滿第 5 條來源或換掉 sources[3]，可以直接引用。另外，2024-11-20 這個公告日當日已在出版局紀錄頁（https://op.europa.eu/en/publication-detail/-/publication/21b7d4eb-a6e2-11ef-85f0-01aa75ed71a1，HTTP 200、552,233 bytes）的『Published: 2024-11-20』欄位獨立核對無誤。"
+    },
+    {
+      "claim": "Commission Delegated Regulation (EU) 2026/881 第 3 條列出可延後轉發通報的四項具體條件細節。",
+      "seen_where": "該法案全文 https://publications.europa.eu/resource/celex/32026R0881（上一輪查核已確認 HTTP 200，可讀到全文）。",
+      "why_excluded": "同樣是第 5 條來源的問題：這個網址不在本文 4 條 sources[] 之內。本文只寫『2025 年 12 月 11 日通過一項授權法案，補充延後轉發的資安理由要件』，這件事本身出自 sources[0]（cra-reporting 頁），但不細寫該法案第 3 條的四項條件。"
+    },
+    {
+      "claim": "ENISA 的『協調 CSIRT 清單』上有 27 個會員國各一筆聯絡窗口。",
+      "seen_where": "ENISA 頁面 list-of-csirts-designated-as-coordinators（上一輪查核記錄：頁面沒有印出『27』這個數字，是查核者自己數的）。",
+      "why_excluded": "『27』不是頁面印出的數字，是清點結果；而且第 16 條第 2 項規定通報只轉發到製造商指明產品有上市的會員國 CSIRT，不是自動送達全部會員國。本文選擇完全不提會員國／CSIRT 數量，只在正文寫『其他成員國 CSIRT』，避免這個数字被誤讀成『每件通報都送到全部會員國』。"
+    },
+    {
+      "claim": "歐盟執委會的通報頁面提到『Section 9.1 of the Commission guidance』與『Section 5 of the Commission's FAQs on the CRA implementation』分別涵蓋通報義務。",
+      "seen_where": "cra-reporting 頁面本身確實有這句話；但那兩份文件（非拘束性指引 C(2026) 5252 與另一份 FAQ PDF）本身沒有被本文讀取或列為來源。",
+      "why_excluded": "本文沒有讀過那兩份被引用的文件，只是 cra-reporting 頁提到它們存在，寫進正文容易讓讀者以為本文查證過那兩份文件的內容。因此本文完全不提『Section 9.1』或『Section 5』這兩個章節編號。"
+    },
+    {
+      "claim": "第 64 條第 10 項排除微型或小型企業因第 14 條第 2 項 (a) 款或第 4 項 (a) 款（24 小時早期警訊）逾期而受罰，並整體排除開源軟體維護者受本規則罰鍰拘束。",
+      "seen_where": "《歐盟公報》全文第 64 條第 10 項。",
+      "why_excluded": "條文原文寫的是「by way of derogation from paragraphs 3 to 9」，但第 13、14 條的最高罰則其實訂在第 2 項，不在第 3 到 9 項的範圍內——這是條文本身可能的用字瑕疵，不易改寫成一句乾淨的規則，也超出本文『不做法律意見』的界線。本文選擇完全不寫這兩項除外規定，只寫第 64 條第 2 項的罰鍰上限與第 1 項『規則由會員國自訂』。"
+    },
+    {
+      "claim": "《網路韌性法》第四章自 2026 年 6 月 11 日起適用之後，符合性評估機構的通知實際上已經如何運作。",
+      "seen_where": "第 71 條第 2 項本身只給日期，沒有描述後續運作情形；本文 4 條來源都沒有進一步說明。",
+      "why_excluded": "本文主題是通報義務（第 14 條），第四章屬於題外範圍，只用來說明『不是所有提前適用的條文都跟通報有關』，不深入介紹。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，家裡可能有路由器、攝影機、智慧穿戴或其他連網裝置，不是法遵或資安從業人員。指派訊息點名的重點——條號、適用日、通報時限、罰則，且要分清楚哪些 2026-09-11 已適用、哪些要等 2027-12-11——是全文骨架：第一節先把第 71 條第 2 項的三個日期講清楚並反覆強調『今天只有第 14 條』；第二節講四個時限（24 小時、72 小時、14 天或 1 個月）並用表格收尾；第三節講通報怎麼從製造商送到 CSIRT 再到 ENISA，並特別註明第 16、17 條本身不在提前清單裡（只有平台『已經蓋好、已經在動』是事實，法條文義仍是 2027 年的事）；第四節講對使用者與舊裝置的意義，收在第 64 條罰則，並清楚寫出：罰則上限存在，但條文本身也不在提前清單裡，是否適用於現在到 2027 年底這段期間的第 14 條違規，本文查到的官方頁面沒有講；第五節講平台現在完成到哪裡（初始運作量能、英文介面、沒有 API、沒有自願通報、已知的計時器瑕疵），提醒讀者這是一個剛上線、還在擴充的系統，不是成品。刻意不深入的範圍：符合性評估、CE 標記、附件一逐項技術要求、第 13 條之外的產品規範細節、Delegated Regulation (EU) 2026/881 第 3 條的四項延後轉發條件——這些要嘛屬於 2027 年 12 月的故事，要嘛需要本文 sources[] 之外的第 5 條來源。",
+  "must_not_write": [
+    "不寫開源軟體維護者自 2026 年 9 月 11 日起要通報——他們的義務是 2027 年 12 月 11 日（第 24 條第 3 項經第 71 條第 2 項）。",
+    "不寫『《網路韌性法》9 月 11 日起生效』或『今天全面上路』——只有第 14 條與更早的第四章適用，其餘要到 2027 年 12 月 11 日。",
+    "不把第 16、17 條的內容寫成『自 2026 年 9 月 11 日起適用』的法律陳述——這兩條不在第 71 條第 2 項的提前清單裡；本文用『平台已經依第 16 條建好並在運作』與條文本身的適用日分開講。",
+    "不寫 14 天的最終報告期限適用於重大資安事故——14 天只給遭積極利用的漏洞，重大資安事故是 72 小時通報後 1 個月。",
+    "不寫時限從漏洞或事故『發生』那一刻起算——起算點一律是製造商『知悉』的那一刻。",
+    "不告訴讀者可以透過這個平台通報自己發現的漏洞——ENISA 明確表示現行版本只受理製造商依第 14 條送出的強制通報。",
+    "不暗示裝置會因為通報義務上路而更快拿到修補——修補與維護支援期屬於第 13 條，依文義是 2027 年 12 月 11 日才適用。",
+    "不寫平台已經是完成品——ENISA 自稱『初始運作量能』，且自行揭露英文介面、無 API、無自願通報、72 小時計時器顯示邏輯的瑕疵。",
+    "不寫任何通報件數、註冊製造商數或會員國 CSIRT 數量——官方頁面沒有印出這些數字。",
+    "不寫台灣或歐盟以外市場的裝置是否受拘束——官方頁面只講『在（歐盟）市場上販售』的範圍，本文不替讀者下判斷。",
+    "不寫攻擊手法、惡意程式名稱或可操作的入侵細節——tech.md 的資安紅線，本文主題也用不到。",
+    "不做『該不該升級』『哪家廠商比較安全』的購買或選擇建議——tech.md 的另一條紅線。",
+    "不引用新聞媒體、整合站或未列在 sources[] 的網址當事實依據，包括讀過但未列為來源的 cra-summary 與 Delegated Regulation (EU) 2026/881 全文。"
+  ],
+  "live_data_warnings": [
+    "ENISA 常見問答頁面的『Updated:』字串在查核期間往前移動：上一輪查核記錄是 2026 年 9 月 12 日，本次（2026-09-17）重讀變成 2026 年 9 月 17 日。**而且這一次不只是重新發布：第 9 題當天標示 [UPDATED]，指定代表能看到哪些通報的說法整段改寫，把文章原本寫的『次要代表只能看到自己送出的通報』推翻。** 這一頁描述的是一個上線第一週、還在改的系統，每一次定稿都必須逐題重讀，不能沿用上一輪的比對結論。",
+    "歐盟執委會 cra-reporting 頁面的『Last update』維持 2026 年 9 月 11 日，與上一輪相同，未再更新。",
+    "**第二輪已換掉 sources[3]（2026-09-17）。** 現在的第四條來源是 EUR-Lex 的 ELI 網址 https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng，換掉原本的 CELLAR celex/32024R2847 端點——後者對繁中／簡中／日／韓語言偏好的真實瀏覽器只回一段純文字錯誤（Not found work … language(s) [zho]），讀者點下去看不到法規。條文全文已於同日經 CELLAR（Accept-Language: eng）逐條複驗無誤，兩個網址是同一份文件的依據是公報自己印出的 ELI 字串（見 sourcing_notes）。**但查核者當天讀不到 EUR-Lex 供應的正文**：EUR-Lex 自己掛著維護訊息、ELI 網址被導到 TodayOJ，對 curl 則是 HTTP 202、0 bytes（第二輪收工前 2026-09-17 再抓一次：HTTP 202、0 bytes、未讀到正文）。出刊當天必須重開這個網址，確認讀者真的看得到 Regulation (EU) 2024/2847 的條文；若 EUR-Lex 仍不可用，備案是執委會 cra-reporting 頁自己掛的 https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R2847，但那也是 EUR-Lex，同一個站倒了就一起倒。",
+    "（第一輪紀錄，保留備查）sources[3] 原本的 CELLAR celex/32024R2847 端點在 2026-09-17 當天有數十分鐘完全不可用：連續八次 HTTP 500／502（body 是 Hibernate 的 'Unable to acquire JDBC Connection'），op.europa.eu download-handler 回 204／0 bytes，law-tracker 回 503，EUR-Lex 用瀏覽器開啟直接印出『EUR-Lex is temporarily not fully available.』，同一段時間內整個出版局都取不到條文；稍後恢復並回 HTTP 200、710,696 bytes。**這條來源的可用性不穩定，而且平時只對帶 Accept-Language: eng 的請求供應條文，一般瀏覽器拿到的是約 2 MB 的 RDF 中繼資料，不是法規。** 定稿當天要重測；若不可讀或仍只供應 RDF，可換成執委會 cra-reporting 頁自己掛的法規連結（https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R2847），但該網址在本容器對 curl 回 HTTP 202、0 bytes，換之前要先確認自己讀得到正文。",
+    "平台的『現況』（英文介面、無 API、無自願通報、72 小時計時器顯示邏輯）都是上線初期的快照，ENISA 自己說會在『未來階段』調整，沒有給時間表；本文用『查核到 2026 年 9 月 17 日為止』的語氣，不寫成永久性事實。",
+    "『上線以來收到幾件通報、幾家製造商註冊』沒有任何官方數字，本文完全不寫，日後若有人要補這個數字，必須當天重新查證並標明時點。",
+    "Delegated Regulation (EU) 2026/881 的全文與 ENISA 協調 CSIRT 清單頁本次沒有重新抓取（本文未把它們列為 sources[]），若日後要引用其內容，需要重新查核並考慮是否要換掉本文現有的第四條來源。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（CRA 生效日 2024-12-10 被錯誤排除）：部分套用。認可『生效日可以從一手來源直接引用，不必自己算』這個原則是對的，但本文的 4 條 sources[] 沒有 cra-summary 頁面，改寫成只引用第 71 條第 1 項的公式（公告後第 20 天生效）與公告日（2024-11-20），兩者都出自 sources[3]，不寫換算後的 12 月 10 日，也不新增第 5 條來源。記為與修正清單的差異。",
+    "must_fix 2（CELLAR 端點需要 Accept-Language: eng 才能重現）：已套用。sourcing_notes 已寫明完整配方，今天重新測試確認同樣的結果（不帶標頭三種 Accept 皆 400，帶 Accept-Language: eng 才如預期回應）。",
+    "must_fix 3（Section 9.1／Section 5 掛錯網址）：已套用但方式不同——不是『改掛正確網址』，而是完全不在正文或研究紀錄提這兩個章節編號，因為那兩份被引用的文件本身不在本文 sources[] 內，見 unverified_or_excluded。",
+    "must_fix 4（Delegated Regulation (EU) 2026/881 細節需要額外來源名額）：已套用。本文只寫『2025 年 12 月 11 日通過一項授權法案』（出自 sources[0]），不寫第 3 條的四項條件，見 unverified_or_excluded。",
+    "must_fix 5（『27 個會員國』是研究者自己數的，且不能寫成『每件通報都送達全部 27 個』）：已套用，做法更保守——本文完全不提會員國或 CSIRT 的數量，只寫『其他成員國 CSIRT』。",
+    "must_fix 6（verbatim_quote 的 HTML 抽取殘留：標點前多空格、把兩個分項併成一句、'(EU) 2019/1020' 應為 '(EU) No 2019/1020'）：已套用。本研究紀錄的 verbatim_quote 全部是今天（2026-09-17）重新抓取後，用程式化搜尋在正規化文字（把 U+00A0 還原成一般空格）裡找到的連續字串，沒有用刪節號或斜線拼接跨段落的內容；沒有引用第 64 條第 10 項或第 53 條標題，因此不涉及那兩處具體瑕疵。",
+    "must_fix 7（第 16、17、69 條的適用日被寫得不一致）：已套用，是本篇處理最仔細的一條。正文第三節明確寫出『第 16 條依文義要到 2027 年 12 月 11 日才輪到，只是 ENISA 已經把平台建好並依此運作』；第 69 條第 3 項的『舊裝置也算』改成引用 ENISA 常見問答自己的陳述（見 verified_facts），不是直接主張『第 69 條第 3 項已生效』；第四節罰則段落明寫『第 64 條不在提前清單裡，依文義是 2027 年 12 月 11 日才適用，官方頁面沒有講這之前違反第 14 條會不會被罰』。",
+    "must_add（ENISA FAQ 12 的引句取代直接引第 69 條第 3 項推論）：已套用，見 verified_facts 與 FAQ 第四題。",
+    "must_add（source swap：cra-reporting/cra-summary 換掉 CELLAR 端點）：**第二輪以另一種方式套用**——沒有換成 cra-reporting／cra-summary（那會讓第 64 條的 1500 萬歐元與 2.5%、第 3 條第 42 項定義、第 14 條各項分項編號全部失去依據），而是把 CELLAR 端點換成《歐盟公報》自己印出的 ELI 所對應的 EUR-Lex 網址 https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng：同一份文件、同樣承載得起上述條文，但讀者點得進去看到的是法規頁而不是 RDF 或錯誤訊息。以下是第一輪不換的理由，保留備查——指派訊息明確要求本文的罰則、條號與適用日『以 EUR-Lex 的法規原文與歐盟執委會／ENISA 的官方頁為準』，而第 64 條罰鍰金額、第 3 條定義、第 16／17／69 條的具體文字都不在 cra-reporting、cra-summary 或 ENISA 常見問答上（sourcing_notes 與上一輪查核都確認官方通報頁面沒有提到罰則金額），只有 CELLAR 端點的全文能承載這些內容。為了兼顧『不可刊』的疑慮，本文把來源標題寫清楚是《歐盟公報》官方全文，讓讀者點進去前就知道會看到法規原文而非說明頁。",
+    "must_add（cra-summary 頁面的過時自願通報說法）：不適用，本文未引用 cra-summary。",
+    "must_add（ENISA FAQ 9 的次要代表僅能檢視自己通報／無額外企業身分驗證）：已套用，見第五節第三段與 verified_facts。",
+    "must_add（ENISA FAQ 11/19 的 EUVD CVE／EUVD ID 細節、『manufacturers and, once applicable, open-source software stewards』的謹慎寫法）：部分套用——本文用『製造商』搭配『（日後適用的）開源軟體維護者』的括號寫法傳達同樣的謹慎區分，但因篇幅沒有寫 CVE／EUVD ID 欄位細節。",
+    "live_data_warnings（ENISA 常見問答『Updated:』字串在查核期間持續往前移動）：已延續並更新——本次查核當天（2026-09-17）該字串本身就再度變動（從上一輪的 12 日變成 17 日），已記入本研究紀錄與正文『查核到 2026 年 9 月 17 日為止』的寫法。"
+  ],
+  "hero_label": "通報義務部分上路",
+  "diagram": {
+    "title": "通報怎麼送到主管機關",
+    "caption": "通報平台的收送流程，依官方頁面與《網路韌性法》整理，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "知悉當下",
+        "24 小時內送早期警訊"
+      ],
+      [
+        "72 小時內",
+        "完整通報送單一平台"
+      ],
+      [
+        "單一窗口",
+        "送 CSIRT 並同步 ENISA"
+      ],
+      [
+        "跨國轉發",
+        "轉給其他上市國 CSIRT"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-17",
+    "method": "未參與撰稿。sources[] 四條全部於 2026-09-17 以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（任何請求都沒有放入 email、姓名或個人資料）。逐條核對正文 17 段、summary 4 句、FAQ 6 題答句、表格 4 列與 caption、圖解 caption 與四格、callout、title 與 description，共 96 條主張。sources[3] 的條文在查核中段因出版局中斷無法讀取（連續八次 HTTP 500／502），期間改以執委會自己的兩份實施文件（CRA 實施常見問答 66 頁 PDF、實施指引 C(2026) 5252 附件 84 頁 PDF，均自 ec.europa.eu 取得）與執委會 cra-summary 頁反駁條文相關敘述；出版局恢復後，所有條文敘述再以 710,696 bytes 的《歐盟公報》全文逐條複驗。三份補充文件都只寫進本紀錄與查核報告，沒有進 sources[]，文章也沒有引用它們獨有的內容。",
+    "verdict": "needs_owner：96 條主張中 1 條被現行來源推翻、16 處改寫，改完 check_article.py 只剩索引與相關文章兩條既有 FAIL。條文敘述已全部回《歐盟公報》全文複驗無誤；擋住的是 sources[3] 這條端點的可用性（查核當天曾整段時間 500／502，平時對瀏覽器也只供應 RDF），要由站主決定是否換連結。",
+    "edits_to_the_pack": [
+      "第五節第三段「次要代表只能看到自己送出的通報，主要代表能看到該製造商全部通報」被現行 ENISA 常見問答第 9 題（當天標示 [UPDATED]）推翻，改成「主要與次要代表都看得到該製造商的通報，不分原本是誰送出，只有尚未送出的草稿留在各自帳號裡」。",
+      "第三節第三段刪掉「第 16 條依文義要到 2027 年 12 月 11 日才輪到」這個推論，改成「第 71 條第 2 項列出的提前適用條文只有第 14 條與第四章，第 16 條不在其中；不過執委會與 ENISA 都寫明，平台就是依第 16 條建立、自 9 月 11 日起運作」。",
+      "第四節第三段與 FAQ 第 6 題刪掉「第 64 條依文義要到 2027 年 12 月 11 日才適用」這個推論，只留「不在提前適用條文裡」，並把否定句限縮成「本文查到的三個官方頁面都沒有提到罰鍰」；同時把罰鍰上限的「或全球前一會計年度總營業額 2.5%」補回「違規企業」這個條件。",
+      "FAQ 第 5 題替第 13 條的兩個數字補回條文的但書：5 年支援期加上「產品預期使用時間不到 5 年時支援期等於預期使用時間」（第 13 條第 8 項第三款），安全更新的 10 年加上「或保留到支援期結束為止，取其長」（第 13 條第 9 項）；開源軟體維護者的義務補上「以其涉入產品開發的範圍為限」。",
+      "第二節第二段補回第 14 條第 2 項的「不得無故延遲」；第四節第一段把「遇到漏洞或事故」改成「遇到遭積極利用的漏洞或重大資安事故」。",
+      "第三節第二段把「第 14 條第 7 項第 3 款」降成可驗證的「第 14 條第 7 項」，並替經銷商補回「供貨其最多產品的」；FAQ 第 1 題把「第 14 條第 7 項只處理『製造商沒有在歐盟設主要營業地』的情形」改成正確敘述。",
+      "第一節標題「今天只有一個生效」改成「9 月 11 日只輪到第 14 條」（原文把生效與適用混用，和同節第三段自己的區分互相矛盾），第一節第二段的「今天（2026 年 9 月 11 日）」改成日期本身。",
+      "第五節第二段把 72 小時計時器的瑕疵補上 ENISA 原文的「in some cases」；同段「通報只能透過介面手動送出」改成「通報須透過平台介面送出」（常見問答第 15 題沒有寫手動，且同題允許組織自動化內部流程）。",
+      "summary 第 4 句、第四節第二段、FAQ 第 3 題的「官方沒有」「官方目前沒有」全部限縮成「本文查到的官方頁面沒有」。",
+      "研究紀錄：sourcing_notes 更正「ENISA 常見問答內容沒有變動」的結論，補記出版局中斷的完整重現配方；第 30 題的 verbatim_quote 從殘句 \"might be marked as\" 換成頁面上的完整句子。"
+    ],
+    "checked_and_correct": [
+      "四個通報時限（24 小時、72 小時、漏洞 14 天、事故 1 個月）與起算點在執委會通報頁與 ENISA 常見問答第 7 題兩處逐字相符，表格四列與正文一致，且 14 天只掛在漏洞、1 個月只掛在事故。",
+      "第 71 條第 2 項的三個日期（2027-12-11、2026-09-11、2026-06-11）在執委會頁、ENISA 新聞稿、常見問答第 4／29 題四處一致；第四章＝第 35 至 51 條、第 64 條屬第七章，另在執委會 cra-summary 的章節表獨立確認。",
+      "第 14 條第 7 項的窗口判斷（主要營業地→四種身分依序）逐項與常見問答第 18 題相符，含「選錯窗口可能被判定無效」的『可能』。",
+      "上線狀態四條逐字無誤：只有英文（第 24 題）、沒有 API（第 15 題）、自願通報未開放（第 4／27 題）、72 小時計時器瑕疵（第 26 題）；『初始運作量能』出自 ENISA 新聞稿。",
+      "第 3 條第 42 項的定義編號另在執委會 CRA 實施常見問答獨立確認為 Article 3(42)；2024-11-20 的公告日在出版局紀錄頁的『Published』欄位獨立確認。",
+      "舊產品也要通報的說法改引 ENISA 常見問答第 12 題是對的：執委會實施指引第 210 段用同一個意思寫成『In accordance with Article 69(3) and 71(2), second sentence』，文章沒有自己主張第 69 條第 3 項已生效。",
+      "界線：全文沒有購買或升級建議、沒有推薦式比價、沒有攻擊手法或惡意程式名稱；廠商／機關宣稱都有歸因（ENISA 說明、ENISA 表示、執委會說明）；只有一個 callout，沒有投資免責段落；沒有任何通報件數或註冊家數；沒有簡體字。",
+      "checked_on 2026-09-17 在四條 source、研究紀錄、第二段、表格 caption、圖解 caption 六處一致，未因本次重查而更動。"
+    ],
+    "left_for_the_owner": [
+      "sources[3]（CELLAR celex/32024R2847）在 2026-09-17 有數十分鐘完全不可用（八次 500／502，同時 EUR-Lex、law-tracker、download-handler 全倒），稍後才恢復；而且它平時對一般瀏覽器供應的是約 2 MB 的 RDF 檔而不是法規。文章的條文敘述已在恢復後全部複驗無誤，所以這不是事實問題，是讀者點進去會看到什麼的問題。定稿當天要重測；若不可讀或仍是 RDF，可換成執委會 cra-reporting 頁自己掛的法規連結 https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R2847（查核當日 EUR-Lex 自己也在維護、對 curl 又是 202／0 bytes，查核者讀不到正文，因此沒有代為替換）。",
+      "若改用執委會 cra-summary 當第四條來源，第 64 條的 1500 萬歐元與 2.5% 就沒有來源（該頁只寫第七章訂罰則、不印金額），第 3 條第 42 項定義與第 14 條各項分項編號也會失去依據——換來源等於要重寫第四節罰則段與 FAQ 第 6 題，不是純粹換連結。",
+      "第 64 條第 10 項（微型與小型企業不因逾 24 小時早期警訊受罰、開源軟體維護者不受罰）仍刻意沒寫；執委會 cra-summary 也寫了同一件事，若站主想補，字數上限只剩 29 字（目前段落合計 2,971／3,000）。",
+      "ENISA 常見問答是上線第一週的活文件：查核當天第 9 題就被改寫並推翻文章一句話。出刊當天與每次改版都要逐題重讀，不能沿用任何一輪的比對結論。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-17",
+      "scope": "第一輪改了 16 處（超過十處），因此依規格做第二輪。範圍不是整篇重做，而是：(1) 覆核第一輪改動過的每一個段落與新寫進去的每一句——新句沒有人查過，逐句回一手來源；(2) 回掃第一輪有沒有為了字數刪掉但書；(3) summary 與 FAQ 答句是否都能在正文找到同樣條件的說法；(4) 每一個生效日、適用日與通報時限，連同起算點、對誰、哪一類事件一起回條文原文核對；(5) 執行協調者決定的 sources[3] 換網址。",
+      "claims_checked": 61,
+      "edits": 14,
+      "method": "四條 sources[] 全部於 2026-09-17 再次以 curl -sL -A \"Mokaair-editorial\" 重抓（任何請求都沒有放入 email、姓名或個人資料）：cra-reporting 200／52,986 bytes、ENISA 新聞稿 200／49,879 bytes、ENISA 常見問答 200／79,220 bytes、CELLAR（Accept-Language: eng）200／710,696 bytes——四條的位元組數與第一輪完全相同。常見問答 31 題逐題重讀（第 9 題仍標 [UPDATED]，內容與第一輪讀到的相同，沒有再變）。研究紀錄 35 條 verbatim_quote 以程式化搜尋在正規化後的原文裡逐條比對，34 條命中、1 條未命中並已更正。sources[3] 的新網址 https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng 在收工前再抓一次：HTTP 202、0 bytes、未讀到正文（EUR-Lex 當天自己掛著維護訊息，屬預期；出刊當天要重測）。",
+      "verdict": "needs_owner：第二輪沒有推翻任何事實，13 處全部是限定詞、歸因與範圍的收緊，以及協調者決定的來源換網址。文章可刊；擋住的是 sources[3] 這條新網址出刊當天讀者能不能讀到正文，要站主在出刊當天重測。",
+      "edits_to_the_pack": [
+        "sources[3] 換網址（協調者決定，內容包與研究紀錄同步）：https://publications.europa.eu/resource/celex/32024R2847 → https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng；title 改成「EUR-Lex：《歐盟公報》刊登的 Regulation (EU) 2024/2847（網路韌性法）全文」，publisher 改成「EUR-Lex, Publications Office of the European Union」。兩個網址是同一份文件的一手依據，是公報自己在全文裡印出的 ELI 字串，已逐字記進 sourcing_notes 與 verified_facts。",
+        "第五節第一段：「ENISA 說會在『未來階段』陸續補上」把三件事寫成同一種承諾，已改成「自願通報會在『未來階段』開放，應用程式介面與其他語言版本則只說會在下一階段評估」——常見問答第 4／27 題對自願通報是 will be introduced／will be enhanced，第 15 題對 API 是 may be considered，第 24 題對語言是 will be reviewed，三種語氣不同。",
+        "第四節第二段與 FAQ 第 3 題：第 14 條第 8 項的通知義務補回主要標的與「必要時」——條文是「inform the impacted users … of that vulnerability or incident and, where necessary, of any risk mitigation and corrective measures」，原文把「告知漏洞或事故本身」寫掉、把 where necessary 寫掉。",
+        "FAQ 第 3 題：「條文沒有訂通知要多快送出」超出條文範圍，已限縮——同項後段確實寫了「fails to inform … in a timely manner」時 CSIRT 可代為通知，條文並非完全不談時間，只是沒有訂出期限。",
+        "FAQ 第 1 題（第一輪新寫的句子）：「第 14 條第 7 項…判斷的仍然是產品有沒有在歐盟市場上架」把判準掛錯條——第 14 條第 7 項判的是通報送到哪一國的窗口，產品在不在歐盟市場是第 2 條的範圍問題。已改寫成兩件事分開講。",
+        "第三節第二段：進口商的判準抄成「進口其最多產品」，條文 (b) 款寫的是「the importer placing on the market the highest number of products」，已改成「在市場上投放其最多產品的進口商所在國」。",
+        "第三節第一段：「並同步讓 ENISA 看到——除非有特別例外情形」把例外掛在第 14 條第 7 項底下，但該項只寫 shall be simultaneously accessible to ENISA、沒有例外，例外在第 16 條第 2 項。已改成由執委會的說法帶出（新增一條 verified_fact）。",
+        "第四節第三段：補上「並通知執委會」，讓 FAQ 第 6 題的「由各會員國自訂並通知歐盟執委會」在正文找得到（第 64 條第 1 項）。",
+        "第二節第三段：刪掉整句重複的執委會時限清單（與同節第二段和表格三度重複），改寫成「歐盟執委會的通報頁面把上面這四個時限濃縮成同樣一句話」。**這是為了騰出字數給上面那些補回來的但書，刪的是重複敘述、不是但書**；段落合計仍是 2,971／3,000，與第一輪相同。",
+        "研究紀錄 verified_facts：公告日那條的引文從「Done at Strasbourg, 23 October 2024.」（只撐得住簽署日）換成公報自己印的出處行「OJ L, 2024/2847, 20.11.2024, ELI: http://data.europa.eu/eli/reg/2024/2847/oj」。",
+        "研究紀錄 verified_facts：第 71 條第 1 項的引文結尾多了一個句號——公報原文把《歐盟公報》刊名排成斜體，句號前有一個空格，「… European Union.」不是頁面上找得到的連續字串，已改成到 Union 為止。這是 35 條引文裡唯一沒命中的一條。",
+        "研究紀錄 verified_facts：第 14 條第 7 項四種備位身分的引文從只有 (a) 款延長到 (b) 款、第 64 條第 1 項的引文延長到印出通知執委會義務的地方、第 14 條第 8 項的引文延長到 where necessary 那一段，讓引文撐得住各自的 fact。",
+        "研究紀錄 verified_facts：常見問答第 24 題那條事實補記語氣——原本只記「上線時只支援英文介面」，補上同題第二句（其他語言 will be reviewed in the next phase）與第 15 題的 API（may be considered），作為上面第 2 點改寫的依據。",
+        "研究紀錄：sourcing_notes、live_data_warnings、corrections_applied 三處關於 sources[3] 的敘述全部改寫，第一輪的中斷紀錄標明「保留備查」而不是刪除。"
+      ],
+      "checked_and_correct": [
+        "四個時限連同起算點、對誰、哪一類事件逐一回條文原文：第 14 條第 2 項 (a)(b)(c) 與第 4 項 (a)(b)(c) 的原文都印著「without undue delay and in any event within 24 hours／72 hours of the manufacturer becoming aware」，漏洞最終報告是「no later than 14 days after a corrective or mitigating measure is available」，事故最終報告是「within one month after the submission of the incident notification under point (b)」。表格四列的期限、起算點與依據欄全部正確，14 天只掛漏洞、1 個月只掛事故，起算點一律是「知悉」而不是「發生」。",
+        "三個適用日回第 71 條原文：第 1 項是「shall enter into force on the twentieth day following that of its publication」（只有公式、沒有日曆日期，文章也只寫公式），第 2 項是「This Regulation shall apply from 11 December 2027.」＋「However, Article 14 shall apply from 11 September 2026 and Chapter IV (Articles 35 to 51) shall apply from 11 June 2026.」第 64 條位在 CHAPTER VII（CONFIDENTIALITY AND PENALTIES，自第 63 條起，第 65 條之後才是 CHAPTER VIII），不是被提前的第四章——這次直接在公報全文的章節標題上確認，不必再靠 cra-summary。",
+        "第一輪最重的那處改寫（ENISA 常見問答第 9 題）今天再讀一次仍然成立：第 9 題仍標 [UPDATED]，仍寫「Primary and Secondary ARs associated with the same manufacturer can access, view, and update notifications associated with that manufacturer, regardless of with AR originally submitted them.」（with 是來源自己的錯字）與「The only exception concerns draft notifications. Drafts are stored locally in the individual AR's account…」，文章第五節第三段與之相符。",
+        "第一輪刪掉「第 16 條／第 64 條依文義要到 2027」之後換上的句子逐句回來源：第 71 條第 2 項的提前清單確實只有第 14 條與第四章（公報原文）；執委會寫「Pursuant to Article 16 of the CRA … ENISA has established the CRA SRP, operational as of 11 September 2026.」；ENISA 則分兩題寫同一件事（第 2 題「The legal basis for the operation of the SRP is the CRA, which states in Art. 16(1)」、第 4 題「The platform has become operational on 11 September 2026」）。「執委會與 ENISA 都寫明」兩邊都站得住。",
+        "限定範圍的否定句今天重新實測：cra-reporting、ENISA 新聞稿、ENISA 常見問答三頁以 penalt／fine／sanction／「15 000 000」／「15 million」／「2,5」／「2.5 %」逐一搜尋，全部 0 次。正文與 FAQ 第 6 題寫的「本文查到的三個官方頁面都沒有提到罰鍰」範圍剛好，沒有寫成「官方沒有」。",
+        "執委會指引 C(2026) 5252 第 210 段沒有進 sources[]，文章正文也沒有點名它——第二輪逐字確認正文、summary、FAQ、callout、表格與圖解都沒有出現「C(2026) 5252」「第 210 段」「Section 9.1」「Section 5」等字樣，它只留在研究紀錄與查核報告裡，符合規格。",
+        "summary 四句逐句回正文：第 1 句的 9 月 11 日、第 14 條、單一通報平台、24／72 小時在正文第一節與第二節；第 2 句的開源軟體維護者與 2027-12-11 在第一節第二段；第 3 句的初始運作量能、英文介面、無 API、自願通報未開放在第五節第一段；第 4 句的「沒有公布收到幾件通報」在第五節第三段、「不提供是否該升級裝置的建議」在第二段與 callout。沒有任何數字只出現在 summary。",
+        "FAQ 六題的答句與正文條件比對：第 2、4、5 題與正文完全一致；第 1、3、6 題的落差已在本輪改掉（見 edits）。",
+        "第 13 條的兩個但書今天回公報全文重驗，第一輪補的字沒有寫過頭：第 8 項第三款是「Without prejudice to the second subparagraph, the support period shall be at least five years. Where the product with digital elements is expected to be in use for less than five years, the support period shall correspond to the expected use time.」，第 9 項是「remains available after it has been issued for a minimum of 10 years or for the remainder of the support period, whichever is longer」。",
+        "沒有為了字數刪掉任何但書：段落合計 2,971 字，與第一輪相同；本輪補回的限定詞（必要時、投放市場、只說會評估、通知執委會、及時）所需的字數，是從第二節第三段那句三度重複的時限清單騰出來的。",
+        "界線再查一次：全文沒有購買或升級建議、沒有推薦式比價、沒有攻擊手法或惡意程式名稱；ENISA 與執委會的說法都有歸因；只有一個 callout、沒有投資免責段落；沒有任何通報件數或註冊家數；沒有簡體字。checked_on 2026-09-17 在四條 source、研究紀錄、第二段、表格 caption、圖解 caption 六處仍然一致，沒有因為第二輪重查而更動。"
+      ],
+      "left_for_the_owner": [
+        "**出刊當天必須重開 sources[3] 的新網址 https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng，確認讀者看得到 Regulation (EU) 2024/2847 的條文。** 2026-09-17 當天 EUR-Lex 自己掛著「EUR-Lex is temporarily not fully available.」、ELI 網址被導到 TodayOJ，對 curl 是 HTTP 202、0 bytes，查核者讀不到正文——這是那天整個網站的狀況，不是這個網址本身的問題，但也表示沒有人在當天親眼確認過讀者會看到什麼。條文內容本身不受影響：已於同日經 CELLAR（Accept-Language: eng）讀到 710,696 bytes 的全文逐條複驗無誤。",
+        "ENISA 常見問答仍然是活文件。第二輪（同日稍晚）重讀 31 題，內容與第一輪相同、沒有再變，但第 9 題仍掛著 [UPDATED]，代表這一頁還在改。出刊當天要再逐題重讀一次，不能沿用第一輪或第二輪的比對結論。",
+        "第 64 條第 10 項（微型與小型企業不因逾 24 小時早期警訊受罰、開源軟體維護者整體不受本規則罰鍰拘束）仍刻意沒寫。第二輪已在公報全文確認原文是「By way of derogation from paragraphs 3 to 9」，而第 13、14 條的罰鍰上限訂在第 2 項、不在第 3 到 9 項之內——這個對不上是條文本身的用字瑕疵，寫進文章需要做法律判斷，查核代理不代決定。段落字數只剩 29 字，要補得從別處等量刪字。",
+        "ENISA 常見問答第 13 題寫著：製造商在 2026-09-11 之前就已知悉的積極利用漏洞，不必回溯通報（依執委會 FAQ 5.1 與 5.3）；該日之後才知悉的則要通報，即使漏洞本身早就存在。文章沒有寫錯（第四節只講「遇到」新的漏洞或事故），但這一點對讀者其實有用，站主若想補是編輯取捨。"
+      ]
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Only Article 14 Is Live",
+      "diagram": {
+        "title": "How a Report Reaches the Authorities",
+        "caption": "How the reporting platform receives and relays notifications, compiled from the official pages and the Cyber Resilience Act; fact-checked September 17, 2026.",
+        "nodes": [
+          ["Awareness", "Early warning within 24 hrs"],
+          ["Within 72 Hours", "Full notice to the platform"],
+          ["Single Window", "To CSIRT, copied to ENISA"],
+          ["Cross-Border Relay", "Forwarded to other CSIRTs"]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "通報義務は一部始動",
+      "diagram": {
+        "title": "通報が当局に届くまでの流れ",
+        "caption": "通報プラットフォームの受付と転送の流れ。公式ページとサイバーレジリエンス法をもとに整理。査読日 2026年9月17日。",
+        "nodes": [
+          ["知悉した瞬間", "24時間以内に早期警戒"],
+          ["72時間以内", "プラットフォームへ完全通報"],
+          ["単一窓口", "CSIRTとENISAへ同時提出"],
+          ["越境転送", "他の販売国のCSIRTへ転送"]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "통보 의무 일부 시행",
+      "diagram": {
+        "title": "통보가 당국에 전달되는 과정",
+        "caption": "통보 플랫폼의 접수와 전달 흐름. 공식 페이지와 사이버복원력법을 바탕으로 정리. 사실 확인일 2026년 9월 17일.",
+        "nodes": [
+          ["인지한 순간", "24시간 내 조기경보"],
+          ["72시간 이내", "플랫폼에 전체 통보"],
+          ["단일 창구", "CSIRT·ENISA 동시제출"],
+          ["국가 간 전달", "다른 판매국 CSIRT로"]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "通报义务部分上线",
+      "diagram": {
+        "title": "通报怎么送到主管机关",
+        "caption": "通报平台的收送流程，依官方页面与《网络弹性法案》整理，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          ["知悉当下", "24 小时内送早期预警"],
+          ["72 小时内", "完整通报送单一平台"],
+          ["单一窗口", "送 CSIRT 同步 ENISA"],
+          ["跨国转发", "转给其他上市国 CSIRT"]
+        ]
+      }
+    }
+  }
+}
