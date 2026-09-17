@@ -1,14 +1,14 @@
 ---
 id: 2026-09-16-news-batch-4-2-non-ai
 title: News batch 4.2: non-AI technology news
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-17T03:43:21Z
 created_at: 2026-09-16T13:21:40Z
 completed_at:
-branch:
+branch: claude/brave-hopper-8ezxba
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
 scope:
