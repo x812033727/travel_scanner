@@ -8,6 +8,10 @@ this batch's image directories under ``apps/web/public/guides`` and, inside each
 workspace, ``manifest.json``, ``renders/`` with the ``.gitignore`` that keeps it and any
 ``__pycache__`` out of the repository, and the contact sheets.
 
+``--slug=<slug>`` (repeatable) draws only those articles, for the weeks in which a vertical's
+workspace holds research records whose articles have no drawing yet. A partial run leaves the
+manifest and the contact sheets alone: both describe the whole vertical.
+
 Rendering goes through ``app.guides.pack_ingest``: ``chromium_binary()`` finds the headless
 shell this container installs under ``/opt/pw-browsers`` when there is rendering to do, and
 ``fit_bytes`` is what keeps a published hero at 1600×900 under the byte cap the site enforces.
@@ -23,6 +27,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -160,11 +165,244 @@ def tower(x, y, color=BLUE, h=260):
     return body + circle(x, y, 16, color, "none")
 
 
+def coin(x, y, r=52, color=ORANGE):
+    """A token as an object of regulation: two plain rings, never a currency sign or a
+    project's mark."""
+    return circle(x, y, r, "#FFFFFF", color) + circle(x, y, r * 0.6, PALE, color)
+
+
+def dashed(x1, y1, x2, y2, color=TEAL, width=12):
+    """``line``, broken: something announced and not yet in force, or a date nobody has set."""
+    return f'<path d="M{x1} {y1} L{x2} {y2}" fill="none" stroke="{color}" stroke-width="{width}" stroke-linecap="round" stroke-dasharray="26 22"/>'
+
+
+def pending(x, y, r, color=ORANGE):
+    """A milestone that has no date yet: the same node as the others, outlined in dashes."""
+    return f'<circle cx="{x}" cy="{y}" r="{r}" fill="#FFFFFF" stroke="{color}" stroke-width="8" stroke-dasharray="18 14"/>'
+
+
+def sheet(x, y, w=220, h=270, color=BLUE, rows=4, broken=False):
+    """``document`` in the vertical's own colour. ``broken`` draws the outline in dashes: a
+    proposal, a recommendation, a rule that is not one yet."""
+    dash = ' stroke-dasharray="22 16"' if broken else ""
+    body = f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="24" fill="#FFFFFF" stroke="{color}" stroke-width="6"{dash}/>'
+    return body + "".join(line(x + 35, y + 55 + i * 44, x + w - 35 - (i % 2) * 30, y + 55 + i * 44, "#C4CCCC", 12) for i in range(rows))
+
+
+def slot(x, y, size=120, color=BLUE, broken=False):
+    """One provider. Dashed while it runs on a national regime or a transitional period."""
+    dash = ' stroke-dasharray="20 14"' if broken else ""
+    return f'<rect x="{x}" y="{y}" width="{size}" height="{size}" rx="22" fill="#FFFFFF" stroke="{color}" stroke-width="6"{dash}/>'
+
+
+def arrow(x1, x2, y, color=BLUE, width=12, broken=False):
+    shaft = dashed(x1, y, x2 - 14, y, color, width) if broken else line(x1, y, x2 - 14, y, color, width)
+    return shaft + f'<path d="M{x2-36} {y-30} L{x2} {y} L{x2-36} {y+30}" fill="none" stroke="{color}" stroke-width="{width}" stroke-linecap="round" stroke-linejoin="round"/>'
+
+
+def tick(x, y, r=56, color=BLUE):
+    """``check`` in the vertical's own colour: in force, authorised, done."""
+    return circle(x, y, r, "#FFFFFF", color) + f'<path d="M{x-r*0.45} {y} l{r*0.33} {r*0.36} l{r*0.65} {-r*0.77}" stroke="{color}" fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>'
+
+
+def bank(x, y, w=320, color=BLUE):
+    """A pediment on four columns: a chartered institution. Nobody's building in particular."""
+    h = w * 0.78
+    body = f'<path d="M{x} {y+h*0.3} L{x+w/2} {y} L{x+w} {y+h*0.3} Z" fill="{PALE}" stroke="{color}" stroke-width="8" stroke-linejoin="round"/>'
+    body += line(x + 10, y + h * 0.4, x + w - 10, y + h * 0.4, color, 12)
+    for i in range(4):
+        cx = x + w * (0.17 + i * 0.22)
+        body += line(cx, y + h * 0.5, cx, y + h * 0.86, color, 16)
+    return body + line(x - 10, y + h, x + w + 10, y + h, color, 14)
+
+
+def ward(x, y, s=1.0, color=BLUE):
+    """``shield`` in the vertical's own colour."""
+    return f'<path d="M{x} {y-200*s} L{x+180*s} {y-135*s} V{y} Q{x+180*s} {y+150*s} {x} {y+230*s} Q{x-180*s} {y+150*s} {x-180*s} {y} V{y-135*s} Z" fill="{PALE}" stroke="{color}" stroke-width="10" stroke-linejoin="round"/>'
+
+
+def padlock(x, y, s=1.0, color=ORANGE):
+    body = f'<path d="M{x-46*s} {y-10*s} V{y-60*s} a{46*s} {46*s} 0 0 1 {92*s} 0 V{y-10*s}" fill="none" stroke="{color}" stroke-width="12" stroke-linecap="round"/>'
+    return body + rect(x - 75 * s, y - 10 * s, 150 * s, 120 * s, "#FFFFFF", color, 20) + circle(x, y + 40 * s, 14 * s, color, "none") + line(x, y + 50 * s, x, y + 78 * s, color, 10)
+
+
+def letter(x, y, w=220, h=150, color=BLUE):
+    """``envelope`` in the vertical's own colour: a public comment on its way in."""
+    return rect(x, y, w, h, "#FFFFFF", color) + f'<path d="M{x+10} {y+12} L{x+w/2} {y+h*.57} L{x+w-10} {y+12}" fill="none" stroke="{color}" stroke-width="8" stroke-linejoin="round"/>'
+
+
+def month(x, y, w=250, h=230, color=BLUE):
+    """``calendar`` in the vertical's own colour: a deadline, a comment period."""
+    body = rect(x, y, w, h, "#FFFFFF", color) + rect(x + 4, y + 4, w - 8, 54, PALE, "none", 18)
+    body += line(x + 65, y - 18, x + 65, y + 22, color) + line(x + w - 65, y - 18, x + w - 65, y + 22, color)
+    return body + "".join(circle(x + 55 + c * 70, y + 107 + r * 61, 10, color, "none") for c in range(3) for r in range(2))
+
+
+def _taiwan_vasp_act(accent: str) -> str:
+    # The regulator on the left, the seven kinds of provider it licenses on the right with the
+    # stablecoin in the eighth slot, and underneath the article's spine: read, promulgated,
+    # and a commencement date that is still open.
+    other = second_colour(accent)
+    b = scales(470, 400, other) + line(745, 400, 845, 400, accent)
+    slots = [(880 + c * 130, 230 + r * 130) for r in range(2) for c in range(4)]
+    b += "".join(rect(x, y, 100, 100, "#FFFFFF", accent if i % 2 == 0 else other, 20) for i, (x, y) in enumerate(slots[:7]))
+    b += coin(slots[7][0] + 50, slots[7][1] + 50, 50, accent)
+    b += line(400, 640, 800, 640, other, 10) + dashed(800, 640, 1200, 640, accent, 10)
+    return b + circle(400, 640, 30, other, "none") + circle(800, 640, 30, accent, "none") + pending(1200, 640, 30, accent)
+
+
+def _mica_transition(accent: str) -> str:
+    # One date splits the picture: providers on national regimes to its left, in dashes, and
+    # authorised ones to its right, each with its seal. The track underneath does the same.
+    other = second_colour(accent)
+    b = "".join(slot(250 + i * 160, 290, 120, other, broken=True) for i in range(3))
+    for i in range(3):
+        x = 910 + i * 160
+        b += slot(x, 290, 120, accent) + circle(x + 92, 382, 22, PALE, accent)
+    b += dashed(250, 560, 770, 560, other, 12) + arrow(830, 1350, 560, accent)
+    return b + line(800, 235, 800, 610, INK, 10) + circle(800, 560, 28, INK, "none")
+
+
+def _sec_cftc_interpretation(accent: str) -> str:
+    # Two commissions, one release, and it is in force: the only solid tick of the batch.
+    other = second_colour(accent)
+    b = line(410, 310, 670, 400, other, 10) + line(410, 550, 670, 460, accent, 10)
+    b += circle(330, 310, 84, "#FFFFFF", other) + circle(330, 310, 30, other, "none")
+    b += circle(330, 550, 84, "#FFFFFF", accent) + circle(330, 550, 30, accent, "none")
+    b += sheet(680, 255, 270, 350, INK, rows=6)
+    return b + arrow(985, 1110, 430, other) + tick(1215, 430, 84, other)
+
+
+def _sec_regulation_crypto_assets(accent: str) -> str:
+    # A proposal, so the rule itself is drawn in dashes; comments arrive from the left and the
+    # comment period runs on the right.
+    other = second_colour(accent)
+    b = letter(215, 265, 220, 150, other) + letter(215, 470, 220, 150, other)
+    b += arrow(465, 610, 340, other) + arrow(465, 610, 545, other)
+    b += sheet(645, 225, 310, 410, accent, rows=8, broken=True)
+    return b + arrow(990, 1090, 430, accent, broken=True) + month(1120, 320, 250, 230, other)
+
+
+def _eba_psd2_mica(accent: str) -> str:
+    # Two regimes and the services that fall under both: the overlap is the opinion's subject.
+    other = second_colour(accent)
+    b = rect(710, 245, 180, 390, PALE, "none", 0)
+    b += f'<rect x="330" y="245" width="560" height="390" rx="36" fill="none" stroke="{other}" stroke-width="8"/>'
+    b += f'<rect x="710" y="245" width="560" height="390" rx="36" fill="none" stroke="{accent}" stroke-width="8"/>'
+    b += rect(405, 370, 230, 140, "#FFFFFF", other, 18) + line(419, 415, 621, 415, other, 22) + line(440, 470, 530, 470, "#C4CCCC", 12)
+    b += chain(965, 385, 2, accent, 110, 50)
+    return b + coin(800, 440, 56, accent)
+
+
+def _genius_act_occ(accent: str) -> str:
+    # The chartering regulator's draft: a bank, a rule in dashes, and a token that stands on
+    # its reserves, bar for bar.
+    other = second_colour(accent)
+    b = bank(215, 290, 350, other) + arrow(610, 700, 430, other)
+    b += sheet(725, 245, 260, 360, accent, rows=6, broken=True)
+    b += coin(1240, 300, 62, accent) + line(1200, 395, 1280, 395, INK, 10) + line(1200, 425, 1280, 425, INK, 10)
+    return b + "".join(rect(1130, 460 + i * 62, 220, 46, PALE, other, 14) for i in range(3))
+
+
+def _stablecoin_aml(accent: str) -> str:
+    # A checkpoint on the track: most transfers pass, one is held. The rule is a draft, so the
+    # checkpoint's own base line is dashed.
+    other = second_colour(accent)
+    b = line(215, 400, 600, 400, other, 12) + arrow(1000, 1390, 400, other)
+    b += coin(330, 400, 50, accent) + coin(500, 400, 50, accent) + coin(1130, 400, 50, accent)
+    b += ward(800, 400, 0.9, other) + padlock(800, 370, 0.8, accent)
+    b += dashed(800, 607, 800, 660, accent, 10) + dashed(800, 660, 1010, 660, accent, 10)
+    return b + coin(1075, 660, 44, accent) + warning(1200, 655, 48)
+
+
+def _fdic_genius_act(accent: str) -> str:
+    # Deposits sit inside the insurer's shield; the token and the draft rule about it sit
+    # outside, joined to the bank by a dashed line.
+    other = second_colour(accent)
+    b = bank(200, 300, 330, other) + line(560, 430, 640, 430, other, 12)
+    b += ward(800, 420, 0.85, other) + "".join(rect(715, 330 + i * 62, 170, 44, "#FFFFFF", other, 12) for i in range(3))
+    b += dashed(965, 430, 1075, 430, accent, 12)
+    return b + sheet(1090, 295, 220, 270, accent, rows=4, broken=True) + coin(1395, 430, 52, accent)
+
+
+def _ncua_genius_act(accent: str) -> str:
+    # A credit union is its members: a ring of them round one institution, and the draft that
+    # would let its subsidiary issue a token.
+    other = second_colour(accent)
+    b = circle(450, 430, 190, "none", "#C4CCCC")
+    for i in range(8):
+        angle = math.radians(i * 45 - 90)
+        b += circle(round(450 + 190 * math.cos(angle)), round(430 + 190 * math.sin(angle)), 34, "#FFFFFF", other)
+    b += rect(385, 365, 130, 130, PALE, other, 26) + arrow(680, 790, 430, other)
+    b += sheet(820, 250, 250, 350, accent, rows=6, broken=True)
+    return b + dashed(1100, 430, 1190, 430, accent, 12) + coin(1275, 430, 66, accent)
+
+
+def _jfsa_working_group(accent: str) -> str:
+    # A council's table, the report it produced, and the legislation that report asks for --
+    # which does not exist yet, so it is drawn in dashes.
+    other = second_colour(accent)
+    b = circle(400, 430, 105, PALE, other)
+    for i in range(6):
+        angle = math.radians(i * 60 - 90)
+        b += circle(round(400 + 190 * math.cos(angle)), round(430 + 190 * math.sin(angle)), 36, "#FFFFFF", other)
+    b += arrow(640, 740, 430, other) + sheet(770, 265, 240, 330, other, rows=6)
+    return b + arrow(1040, 1140, 430, accent, broken=True) + sheet(1170, 265, 240, 330, accent, rows=6, broken=True)
+
+
+def _jfsa_cybersecurity(accent: str) -> str:
+    # A chain with one link flagged, the defence in the middle, and the keys it protects.
+    other = second_colour(accent)
+    b = chain(185, 365, 3, other, 110, 50) + warning(560, 300, 46)
+    b += line(680, 420, 615, 420, other, 12)
+    b += ward(800, 420, 0.9, other) + padlock(800, 395, 0.85, accent)
+    return b + line(985, 420, 1050, 420, other, 12) + key(1120, 360, accent) + sheet(1090, 440, 250, 180, other, rows=3)
+
+
+def _crypto_index(accent: str) -> str:
+    # Four jurisdictions feeding one reading list. Each panel holds one plain object of this
+    # batch's vocabulary -- a law, a bank, a licence, a lock -- and none of them is a flag.
+    other = second_colour(accent)
+    panels = [(230, 215), (470, 215), (230, 455), (470, 455)]
+    b = "".join(rect(x, y, 200, 200, "#FFFFFF", accent if i in (0, 3) else other, 28) for i, (x, y) in enumerate(panels))
+    b += "".join(line(270, 270 + i * 45, 390 - (i % 2) * 30, 270 + i * 45, "#C4CCCC", 12) for i in range(3)) + pending(385, 375, 18, accent)
+    b += bank(505, 262, 130, other)
+    b += circle(330, 555, 52, PALE, other) + line(330, 607, 312, 640, other, 10) + line(330, 607, 348, 640, other, 10)
+    b += padlock(570, 545, 0.6, accent)
+    b += "".join(line(690, y, 860, 430, "#C4CCCC", 8) for y in (315, 555))
+    b += sheet(890, 215, 430, 440, INK, rows=0)
+    for i in range(4):
+        y = 290 + i * 95
+        b += circle(950, y, 16, accent if i % 2 == 0 else other, "none") + line(995, y, 1255 - (i % 2) * 50, y, "#C4CCCC", 14)
+    return b
+
+
+# slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
+# word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
+# would hand one article another's picture.
+_DRAWINGS = {
+    "crypto-news-taiwan-vasp-act-20260630": _taiwan_vasp_act,
+    "crypto-news-mica-transition-ends-20260701": _mica_transition,
+    "crypto-news-sec-crypto-interpretation-20260323": _sec_cftc_interpretation,
+    "crypto-news-sec-regulation-crypto-assets-20260821": _sec_regulation_crypto_assets,
+    "crypto-news-eba-psd2-mica-20260212": _eba_psd2_mica,
+    "crypto-news-genius-act-occ-20260302": _genius_act_occ,
+    "crypto-news-stablecoin-aml-20260410": _stablecoin_aml,
+    "crypto-news-fdic-genius-act-20260410": _fdic_genius_act,
+    "crypto-news-ncua-genius-act-20260518": _ncua_genius_act,
+    "crypto-news-jfsa-working-group-20260216": _jfsa_working_group,
+    "crypto-news-jfsa-cybersecurity-20260723": _jfsa_cybersecurity,
+    "crypto-news-2026-index": _crypto_index,
+}
+
+
 def drawing(slug: str, accent: str) -> str:
-    """The hero composition of one article. One branch per article, added as it is written --
+    """The hero composition of one article. One entry per article, added as it is written --
     an original drawing per article is the point, so an unknown slug stops the run rather than
     quietly reusing someone else's picture."""
-    raise SystemExit(f"no drawing for {slug}; add a branch to drawing() in {Path(__file__).name}")
+    if slug not in _DRAWINGS:
+        raise SystemExit(f"no drawing for {slug}; add one to _DRAWINGS in {Path(__file__).name}")
+    return _DRAWINGS[slug](accent)
 
 
 # --- the build ------------------------------------------------------------------------------
@@ -236,6 +474,9 @@ def build(vertical) -> list[dict]:
         # listed here.
         ignore.write_text("renders/\n__pycache__/\n", encoding="utf-8")
     research = sorted((json.loads(p.read_text(encoding="utf-8")) for p in records), key=lambda r: (r["event_date"], r["slug"]))
+    only = only_slugs()
+    if only:
+        research = [item for item in research if item["slug"] in only]
     manifest = []
     for item in research:
         slug = item["slug"]
@@ -281,7 +522,8 @@ def build(vertical) -> list[dict]:
             print("rendered", slug, locale, flush=True)
         manifest.append({"slug": slug, "title": item["title"], "event_date": item["event_date"], "url": f"https://mokaair.com/zh-TW/life/{slug}",
                          "locales": {loc: {"title": d["title"], "url": f"https://mokaair.com/{loc}/life/{slug}"} for loc, d in pack["locales"].items()}})
-    (workspace / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if not only:
+        (workspace / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return manifest
 
 
@@ -302,18 +544,25 @@ def sheets(vertical, manifest: list[dict]) -> None:
                 sheet.save(workspace / f"{kind}-sheet-{start // 4 + 1}-{locale}.jpg", quality=90)
 
 
+def only_slugs() -> set[str]:
+    """The articles named with ``--slug=``, or nothing for the whole vertical."""
+    return {a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--slug=")}
+
+
 def main() -> None:
     named = [a for a in sys.argv[1:] if not a.startswith("--")]
     unknown = [name for name in named if name not in BY_NAME]
     if unknown:
         raise SystemExit(f"unknown vertical {unknown}; one of " + ", ".join(BY_NAME))
+    for slug in only_slugs():
+        vertical_of(slug)  # a mistyped slug is named here, not skipped in silence below
     chosen = [BY_NAME[name] for name in named] if named else list(VERTICALS)
     for vertical in chosen:
         manifest = build(vertical)
         if not manifest:
-            print("no research records yet:", vertical.workspace, flush=True)
+            print("nothing to draw:" if only_slugs() else "no research records yet:", vertical.workspace, flush=True)
             continue
-        if "--svg-only" not in sys.argv:
+        if "--svg-only" not in sys.argv and not only_slugs():
             sheets(vertical, manifest)
 
 
