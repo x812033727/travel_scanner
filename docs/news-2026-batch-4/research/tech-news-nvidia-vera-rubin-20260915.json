@@ -1,0 +1,440 @@
+{
+ "slug": "tech-news-nvidia-vera-rubin-20260915",
+ "sourcing_verdict": "full",
+ "event_date": "2026-09-15",
+ "event_date_basis": "NVIDIA's own blog post carries the byline 'September 15, 2026 by NVIDIA Writers'; its <meta property=\"article:published_time\"> and JSON-LD datePublished are both 2026-09-15T16:55:40+00:00, and the official RSS item (nvidianews.nvidia.com/releases.xml) gives pubDate 'Tue, 15 Sep 2026 16:55:40 GMT'. The underlying event is Ian Buck's infrastructure keynote at the AI Infra Summit, Santa Clara Convention Center, on 'Tuesday' = 2026-09-15; the in-page section timestamps read 'Tuesday, Sept. 15, 9:55 a.m. PT'. ANNOUNCEMENT DATE AND PUBLICATION DATE ARE THE SAME DAY. CAUTION: this is a LIVE POST. Its own dateModified is 2026-09-16T14:57:15+00:00 and it has since gained a section headed 'Wednesday, Sept. 16, 8:00 a.m. PT' covering MLPerf Inference v6.1 - that MLPerf material is dated 2026-09-16, NOT the event date. The RSS feed's modDate for the same item still said 'Tue, 15 Sep 2026 16:57:47 GMT', i.e. the feed modDate was stale and must not be trusted. Version read: the one served to curl at 2026-09-16 ~15:53 UTC.",
+ "sourcing_notes": "All fetches with curl -A \"Mokaair-editorial\" on 2026-09-16 via the agent proxy. Everything I needed returned HTTP 200 with a real body; nothing relevant was blocked, so the verdict is full. Fetched and read in full: (1) nvidianews.nvidia.com/releases.xml - 200, 20 <item>, newest 2026-09-16, channel lastBuildDate Wed, 16 Sep 2026 15:02:09 GMT, so the feed is alive and current; (2) blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/ - 200, 134,585 bytes, the assignment's target release; (3) blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/ - 200, same-day companion feature; (4) nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer - 200, the 2026-01-05 CES press release, used as the January baseline for the delta; (5) nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai - 200, 2026-08-24; (6) blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/ - 200, published 2026-08-24, dateModified 2026-09-15T23:52:27+00:00, carries an explicit editor's note about the update; (7) blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/ - 200, dated 2026-09-16; (8) developer.nvidia.com/blog/how-nvidia-groq-3-lpx-deterministic-execution-drives-power-efficient-high-interactivity-inference-on-nvidia-vera-rubin/ - 200, Sep 15 2026; (9) developer.nvidia.com/blog/how-nvidia-nvlink-6-delivers-multi-layer-resiliency-for-ai-factories/ - 200, Sep 15 2026; (10) developer.nvidia.com/blog/maximizing-ai-factory-performance-per-watt-with-nvidia-dsx-maxlps/ - 200, Aug 24 2026; (11) developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/ - 200, Aug 26 2026; (12) www.nvidia.com/en-us/case-studies/lambda/ - 200; (13) www.nvidia.com/en-us/data-center/lpx/ - 200 (PRODUCT MARKETING PAGE - per tech.md it may not be used as the source of a capability claim, so its numbers are only recorded here where an engineering blog or press release repeats them); (14) docs.nvidia.com/dsx/maxlps/overview and its .md variant - 200, undated live documentation. TRAPS ACTUALLY HIT: (a) the RSS modDate disagreed with the page's own article:modified_time by a day - use the page, not the feed; (b) the target post is a running liveblog that keeps gaining dated sections under one URL; (c) NVIDIA developer blogs open with a machine-written block explicitly labelled 'AI-Generated Summary ... Powered by NVIDIA Nemotron', and on the Groq 3 LPX post that block states the power saving differently from the human-written body - I used the body only; (d) the page's LinkedIn share string says 'DSX Platform Advances' while the <title>/h1 says 'DSX Platform Advancements'. SOURCE SELECTION: the content pack is capped at 4 sources. I chose the two 2026-09-15 blog posts plus the two press releases that establish the baseline (2026-01-05 Rubin, 2026-08-24 Groq 3 LPX) because between them they carry every figure the article needs. Available first-party swap-ins if the writer needs a different emphasis: the Lambda case study (nvidia.com/en-us/case-studies/lambda/), the DSX MaxLPS documentation (docs.nvidia.com/dsx/maxlps/overview), the NVLink 6 resiliency blog, and the 2026-09-16 MLPerf blog. I did NOT fetch the third-party pages NVIDIA links for the Vera CPU startup benchmarks (Perplexity/LinkedIn, Daytona/X, ClickHouse, DeepInfra, Prime Intellect, Redpanda, Starburst, Kinetica), nor SemiAnalysis, MLCommons or Artificial Analysis - every number from those is recorded below strictly as something NVIDIA says.",
+ "sources": [
+  {
+   "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "publisher": "NVIDIA (NVIDIA Blog)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "publisher": "NVIDIA (NVIDIA Blog)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+   "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+   "publisher": "NVIDIA Newsroom",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+   "publisher": "NVIDIA Newsroom",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "THE EVENT. On Tuesday 2026-09-15, Ian Buck, NVIDIA's vice president of hyperscale and high-performance computing, spoke on AI factory efficiency at the AI Infra Summit at the Santa Clara Convention Center. NVIDIA published the round-up post the same day.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Ian Buck, vice president of hyperscale and high-performance computing at NVIDIA, Tuesday spoke on AI factory efficiency at the AI Infra Summit, the Santa Clara Convention Center event that has morphed into a Coachella of infrastructure tech."
+  },
+  {
+   "fact": "NVIDIA says the AI Infra Summit drew more than 8,000 attendees this year, up from 3,500 last year. This is NVIDIA's statement about a third-party event; I did not verify it with the organiser.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Before a packed audience — with more than 8,000 attendees this year, up from 3,500 last year — Buck discussed new collaborations across NVIDIA platforms and more."
+  },
+  {
+   "fact": "THE FRAMING NVIDIA ITSELF PUTS ON THE DAY: the measure of AI infrastructure is shifting from peak performance to validated agentic tokens per megawatt, and AI factories must be codesigned 'from silicon to grid'. This is the single sentence that separates 2026-09-15 from the 2026-01-05 launch, which was framed around chips and cost per token.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The metric for AI infrastructure is fast shifting from peak performance to validated agentic tokens per megawatt. AI factories must now be codesigned from silicon to grid."
+  },
+  {
+   "fact": "NEW ON 2026-09-15 (1): NVIDIA says Amazon's Annapurna Labs is working with NVIDIA on NVHBM, NVIDIA's custom high-bandwidth memory technology. The post gives no volumes, chips, dates or contract terms.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Amazon’s Annapurna Labs is working with NVIDIA on the NVHBM custom high-bandwidth memory technology."
+  },
+  {
+   "fact": "NEW ON 2026-09-15 (2): NVIDIA says d-Matrix is integrating with NVLink Fusion to combine NVIDIA Vera CPUs with d-Matrix Raptor XPUs for what it calls ultra low-latency inference at scale. (A separate NVIDIA blog on the d-Matrix/NVLink Fusion tie-up carries feed pubDate Thu, 10 Sep 2026 13:00:21 GMT, so the pairing itself predates the summit; the Vera CPU combination is what the summit post adds.)",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "d-Matrix is integrating with NVLink Fusion to combine NVIDIA Vera CPUs with d-Matrix Raptor XPUs to deliver ultra low-latency inference at scale."
+  },
+  {
+   "fact": "NEW ON 2026-09-15 (3): NVIDIA says Emerald AI and NVIDIA demonstrated a commercial AI factory flexible-load programme working with Silicon Valley Power; Lambda improved performance per watt by 23% with NVIDIA DSX MaxLPS; and Pinterest is using the NVIDIA Blackwell platform and NVIDIA Dynamo inference software to bring conversational AI to visual discovery. Pinterest gets one sentence and no figures.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Emerald AI and NVIDIA demonstrated a commercial AI factory flexible-load program, working with Silicon Valley Power. Lambda improved performance per watt by 23% with NVIDIA DSX MaxLPS. Pinterest is using the NVIDIA Blackwell platform and NVIDIA Dynamo inference software to bring conversational AI to visual discovery."
+  },
+  {
+   "fact": "NVIDIA describes its full-stack AI factory platform as spanning Vera Rubin systems, Dynamo inference software, NeMo libraries and NVIDIA networking - NVLink for scale-up computing, Spectrum-X Ethernet and ConnectX SuperNICs for connecting thousands of nodes, BlueField-powered context-memory storage and BlueField DPUs for infrastructure security.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA addresses that challenge with a full-stack AI factory platform spanning Vera Rubin systems, Dynamo inference software, NeMo libraries and NVIDIA networking — including NVIDIA NVLink for scale-up computing, Spectrum-X Ethernet and ConnectX SuperNICs for connecting thousands of nodes, BlueField-powered context-memory storage and BlueField DPUs for infrastructure security."
+  },
+  {
+   "fact": "VENDOR CLAIM: NVIDIA says DSX MaxLPS can deliver up to 1.4x more tokens per megawatt through factory-wide power optimisation.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA DSX MaxLPS can deliver up to 1.4x more tokens per megawatt through factory-wide power optimization, while NVLink helps unite large-scale accelerated computing into a single high-performance system."
+  },
+  {
+   "fact": "LAMBDA / DSX MaxLPS, the hard numbers as NVIDIA states them: Lambda ran 19 nodes inside the power budget normally allocated to 16 full-power nodes, raising cluster-wide token throughput by 24% - from about 4 million to 5 million tokens per second - while improving performance per watt by 23%. NVIDIA calls this the first validation of DSX MaxLPS on NVIDIA Blackwell servers.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Lambda ran 19 nodes within the same power budget typically allocated to 16 full-power nodes, increasing cluster-wide token throughput by 24% — from about 4 million to 5 million tokens per second — while improving performance per watt by 23%."
+  },
+  {
+   "fact": "VENDOR PROJECTION, NOT A MEASUREMENT: NVIDIA says that for next-generation Vera Rubin NVL72 AI factories, DSX MaxLPS 'can enable up to 40% more GPU capacity within the same megawatt budget in the right deployment environments'. The conditional clause is part of the claim and must be kept.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "For next-generation NVIDIA Vera Rubin NVL72 AI factories, DSX MaxLPS can enable up to 40% more GPU capacity within the same megawatt budget in the right deployment environments."
+  },
+  {
+   "fact": "How NVIDIA says DSX MaxLPS works: it continuously monitors power consumption across GPUs and racks, dynamically shifts available power to where it is needed most, and reclaims capacity that static provisioning leaves unused; because training and inference have different power profiles, it optimises allocation across mixed-workload AI factories.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "DSX MaxLPS continuously monitors power consumption across GPUs and racks, dynamically shifting available power where it’s needed most and reclaiming capacity that static provisioning leaves unused."
+  },
+  {
+   "fact": "DSX FLEX, the grid-response product: NVIDIA says DSX Flex can receive grid signals - load-shedding requests, demand-response events and pricing signals - and act automatically within a predefined workload hierarchy, so the most critical jobs keep going while everything else pauses temporarily and then resumes.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "DSX Flex can receive grid signals — load-shedding requests, demand-response events and pricing signals — and automatically act within a predefined workload hierarchy. The most critical jobs keep going, while everything else pauses temporarily and then resumes."
+  },
+  {
+   "fact": "NVIDIA says Emerald AI's system responded to hundreds of demand signals from Silicon Valley Power while protecting AI workload performance, and that Emerald AI is planning to use NVIDIA DSX Flex for its Conductor grid-responsive power management software.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The system successfully responded to hundreds of demand signals from Silicon Valley Power while protecting AI workload performance."
+  },
+  {
+   "fact": "GROQ 3 LPX + VERA RUBIN, headline vendor claim: NVIDIA says the combined platform delivers up to 35X higher token throughput per megawatt than GB200 NVL72 for models with more than 2 trillion parameters at long context. Every qualifier (GB200 NVL72 as the baseline, 2T+ parameters, long context) belongs in any restatement.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The combined platform delivers up to 35X higher token throughput per megawatt than GB200 NVL72 for 2-trillion-plus-parameter models at long context."
+  },
+  {
+   "fact": "The single most concrete per-user figure NVIDIA gave on 2026-09-15: on a 100K-context Qwen 3.8 27B workload, Groq 3 LPX hit 2,529 output tokens per second per user.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "On a 100K-context Qwen 3.8 27B workload, Groq 3 LPX hit 2,529 output tokens per second per user."
+  },
+  {
+   "fact": "Rack-level power claims NVIDIA made on the day: up to 40% more GPUs within the same site-power envelope and up to 35% higher token throughput with 'no new power lines required'; inside each rack, Intelligent Power Smoothing software and expanded energy buffering absorb short spikes so systems run closer to sustained demand.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Up to 40% more GPUs within the same site-power envelope ... Up to 35% higher token throughput — no new power lines required"
+  },
+  {
+   "fact": "SEMIANALYSIS AGENTX, as NVIDIA reports it: on the DeepSeek V4 Pro model, Vera Rubin NVL72 delivers up to 30x higher throughput per megawatt than NVIDIA GB300 NVL72, and the AgentX results show up to 45x lower cost per million tokens. NVIDIA describes AgentX as measuring inference on recorded real-world agentic coding sessions rather than single requests. SemiAnalysis is a third party; I did not fetch its dashboard.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "On the DeepSeek V4 Pro model, Vera Rubin NVL72 delivers up to 30x higher throughput per megawatt than NVIDIA GB300 NVL72."
+  },
+  {
+   "fact": "NVIDIA says a single agentic session can accumulate hundreds of thousands of input tokens as agents reason, call tools and spawn sub-agents - roughly 15x the token volume of a simple chat request. This is the plain-language reason NVIDIA gives for the whole power story.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "A single session can accumulate hundreds of thousands of input tokens as agents reason, call tools and spawn sub-agents — roughly 15x the token volume of a simple chat request"
+  },
+  {
+   "fact": "STATUS AS OF THE EVENT: NVIDIA states 'Vera Rubin is in full production and scaling across the ecosystem, and performance will continue to improve with ongoing software optimization.' It gives no unit numbers, no customer shipment dates and no cloud-region list.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Vera Rubin is in full production and scaling across the ecosystem, and performance will continue to improve with ongoing software optimization."
+  },
+  {
+   "fact": "VERA CPU STARTUP BENCHMARKS relayed by NVIDIA on 2026-09-15: Perplexity benchmarked the Vera CPU for its SPACE secure sandbox platform showing 1.9x faster sandbox starts; DeepInfra reported 2.2x faster orchestration step latency; Redpanda reported 5.5x lower latencies and 73% higher throughput than other CPUs; Starburst reported 3x faster query throughput than other CPUs; Kinetica saw 2.7x faster analytical query performance versus traditional CPUs; ClickHouse said Vera was the fastest machine its team had measured so far on ClickBench; Daytona cited 'serious gains for agentic execution'; Prime Intellect reported high bandwidth and low, consistent memory latency as more workloads ran in parallel. Each is a third party's own number, relayed by NVIDIA; I did not fetch the third-party posts.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Redpanda said its benchmark of the Vera CPU showed 5.5x lower latencies and 73% higher throughput than other CPUs."
+  },
+  {
+   "fact": "NVLINK 6 RESILIENCY, announced the same day: NVIDIA describes a multilayer resiliency architecture that detects, contains and recovers from faults before they affect applications - at the physical layer custom forward error correction, physical layer retry and universal physical layer recovery; at the network layer credit-based flow control, dynamic routing and link rebalancing.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA NVLink 6 addresses these challenges with a multilayer resiliency architecture designed to detect, contain and recover from faults before they affect applications."
+  },
+  {
+   "fact": "DATED 2026-09-16, NOT THE EVENT DATE - the same live post later gained a section headed 'Wednesday, Sept. 16, 8:00 a.m. PT': in its first MLPerf Inference preview submission the Vera Rubin NVL72 system delivered up to 3.7x higher throughput than GB300 NVL72; a 288-GPU GB300 NVL72 submission spanning four racks achieved 99% scaling efficiency; and NVIDIA's v6.1 submissions delivered up to 1.6x higher performance than v6.0 through software optimisations alone. If the article uses these, it must date them 9/16 and call the Vera Rubin entry a preview submission.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In its first MLPerf Inference preview submission, the NVIDIA Vera Rubin NVL72 system delivered up to 3.7x higher throughput than NVIDIA GB300 NVL72"
+  },
+  {
+   "fact": "DSX IS NOT NEW ON 2026-09-15. NVIDIA states DSX was introduced at GTC Taipei in May 2026. The summit was about early deployment results, not a launch.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Introduced at GTC Taipei in May, NVIDIA DSX is that answer for the AI factory — and the early deployments are already proving it out."
+  },
+  {
+   "fact": "THE DSX SUITE, as NVIDIA defines it in its own sidebar: DSX MaxLPS (optimises throughput per megawatt, includes dynamic power allocation software); DSX Flex (receives grid load-shedding, demand-response and pricing signals and adapts workload priorities); DSX OS (open-source modular software for AI factory lifecycle management, runtime consistency, health automation and resiliency); DSX Sim (simulation tools to model and validate factory designs before physical deployment); DSX Reference Designs (generation-specific validated architectures spanning compute, networking, storage and facilities).",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA DSX Flex\nReceives grid signals (load-shedding, demand-response, pricing events) and adapts AI workload priorities in response, protecting high-priority jobs while reducing overall power draw."
+  },
+  {
+   "fact": "THE SILICON VALLEY POWER DEMONSTRATION, concrete: on an August evening, NVIDIA's own Eos AI factory - running Emerald AI's Conductor platform as a participant in Silicon Valley Power's Flexible Load Interconnect Program - cut its draw from four megawatts to three automatically while every high-priority job kept running. NVIDIA says Silicon Valley Power has since sent more than 200 demand signals to that AI factory and that it worked every time, with Conductor responding in under a minute.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Silicon Valley Power has since sent more than 200 demand signals to that AI factory. It worked every single time."
+  },
+  {
+   "fact": "NVIDIA describes Silicon Valley Power's Flexible Load Interconnect Program as the first commercial grid utility programme designed to treat AI factories as dispatchable resources, and says the Santa Clara deployment is NOT a DSX Flex installation but proof the concept works at commercial scale, with Emerald AI Conductor 'integrating into DSX Flex as the platform matures'. This distinction must survive into the article.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The Santa Clara story isn’t a DSX Flex installation — it’s something earlier and more important: proof that the concept works at commercial scale."
+  },
+  {
+   "fact": "FIRST DEDICATED DSX FLEX DEPLOYMENT, named and sized: a 96-megawatt Vera Rubin AI factory at NVIDIA's AI Factory Research Center in Manassas, Virginia, building on five prior demonstrations across two continents. NVIDIA gives no opening date.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The first dedicated DSX Flex commercial deployment will be the Manassas, Virginia, facility: a 96-megawatt Vera Rubin AI factory at NVIDIA’s AI Factory Research Center, building on five prior demonstrations across two continents."
+  },
+  {
+   "fact": "LAMBDA TEST SETUP, as NVIDIA describes it: Lambda is a GPU cloud provider serving more than 10,000 customers; it ran the software on a five-rack, 19-node cluster, and NVIDIA calls this the first validation of DSX MaxLPS on NVIDIA HGX B200 GPU servers - i.e. Blackwell hardware, not Vera Rubin.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Lambda’s results, released at the AI Infra Summit, are the first validation of DSX MaxLPS on NVIDIA HGX B200 GPU Servers."
+  },
+  {
+   "fact": "LAMBDA CALLS IT A PROOF OF CONCEPT. Dave Ward, president of cloud services at Lambda, is quoted: 'With our proof of concept, we believe we've moved beyond the limitation of fixed power budgets. NVIDIA DSX MaxLPS paves the way to reclaiming stranded capacity and converting it into real-world usage, with significantly more compute density in the same footprint.' The article must not describe this as a production rollout.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "“With our proof of concept, we believe we’ve moved beyond the limitation of fixed power budgets."
+  },
+  {
+   "fact": "NVIDIA's own 'Numbers at a glance' table on 2026-09-15 attaches these conditions: +24% cluster token throughput = 19 nodes at 85% power vs 16 nodes at full power, same facility budget, Lambda/HGX B200/DSX MaxLPS; +23% performance per watt = same comparison; 40% power demand reduction in under a minute = SVP automated response, Flexible Load Interconnect Program, Emerald AI / future DSX Flex; up to +40% more GPU capacity = Vera Rubin NVL72, MaxLPS combined with data centre power planning, same power budget; 3-5% end-to-end efficiency gain (projected) = 800V DC vs 54V distribution, available with Vera Rubin NVL72 in 2027.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "3–5%\nend-to-end efficiency gain (projected)\n\n800V DC vs. 54V distribution; available with Vera Rubin NVL72 2027"
+  },
+  {
+   "fact": "NVIDIA quotes founder and CEO Jensen Huang as the framing for why power management matters: 'A one-gigawatt factory will never become a two-gigawatt factory.'",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "“A one-gigawatt factory will never become a two-gigawatt factory,” NVIDIA founder and CEO Jensen Huang has said."
+  },
+  {
+   "fact": "A cooling figure with a hard number: NVIDIA says GB200 NVL72 racks running direct liquid cooling carry roughly 120 kW of heat that has to go somewhere before that power reaches compute.",
+   "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GB200 NVL72 racks running direct liquid cooling carry ~120 kW of heat that has to go somewhere before that power reaches compute."
+  },
+  {
+   "fact": "JANUARY BASELINE (the delta anchor): on 2026-01-05 at CES, NVIDIA launched the Rubin platform as SIX new chips - Vera CPU, Rubin GPU, NVLink 6 Switch, ConnectX-9 SuperNIC, BlueField-4 DPU and Spectrum-6 Ethernet Switch. The headline claims were up to 10x reduction in inference token cost and 4x fewer GPUs to train MoE models, both versus the Blackwell platform.",
+   "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The Rubin platform harnesses extreme codesign across hardware and software to deliver up to 10x reduction in inference token cost and 4x reduction in number of GPUs to train MoE models, compared with the NVIDIA Blackwell platform."
+  },
+  {
+   "fact": "JANUARY SPECS, exact: NVLink 6 gives each GPU 3.6TB/s of bandwidth and the Vera Rubin NVL72 rack 260TB/s; the Vera CPU is built with 88 NVIDIA custom Olympus cores with full Armv9.2 compatibility and NVLink-C2C; the Rubin GPU has a third-generation Transformer Engine and delivers 50 petaflops of NVFP4 compute for AI inference; the rack's modular, cable-free tray design enables up to 18x faster assembly and servicing than Blackwell.",
+   "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Each GPU offers 3.6TB/s of bandwidth, while the Vera Rubin NVL72 rack provides 260TB/s — more bandwidth than the entire internet."
+  },
+  {
+   "fact": "JANUARY CONFIGURATIONS: Vera Rubin NVL72 combines 72 Rubin GPUs, 36 Vera CPUs, NVLink 6, ConnectX-9 SuperNICs and BlueField-4 DPUs. NVIDIA also offers HGX Rubin NVL8, a server board linking eight Rubin GPUs over NVLink for x86-based platforms.",
+   "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA Vera Rubin NVL72 offers a unified, secure system that combines 72 NVIDIA Rubin GPUs, 36 NVIDIA Vera CPUs, NVIDIA NVLink 6, NVIDIA ConnectX-9 SuperNICs and NVIDIA BlueField-4 DPUs."
+  },
+  {
+   "fact": "JANUARY AVAILABILITY LANGUAGE, verbatim, and it has not been superseded by a firmer date: 'NVIDIA Rubin is in full production, and Rubin-based products will be available from partners the second half of 2026.' Among the first cloud providers to deploy Vera Rubin-based instances in 2026 were named as AWS, Google Cloud, Microsoft and OCI, plus NVIDIA Cloud Partners CoreWeave, Lambda, Nebius and Nscale.",
+   "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+   "is_vendor_claim": true,
+   "verbatim_quote": "NVIDIA Rubin is in full production, and Rubin-based products will be available from partners the second half of 2026."
+  },
+  {
+   "fact": "The January release also introduced the NVIDIA Inference Context Memory Storage Platform powered by BlueField-4, plus ASTRA (Advanced Secure Trusted Resource Architecture), and said Spectrum-X Ethernet Photonics co-packaged optical switch systems deliver 10x greater reliability, 5x longer uptime and 5x better power efficiency. None of the January material used 'tokens per megawatt' as its metric - the phrase 'megawatt' does not appear in the January release at all (verified by grep on the fetched page).",
+   "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Built on the Spectrum-6 architecture, Spectrum-X Ethernet Photonics co-packaged optical switch systems deliver 10x greater reliability and 5x longer uptime for AI applications while achieving 5x better power efficiency"
+  },
+  {
+   "fact": "THE SEVENTH CHIP WAS ANNOUNCED ON 2026-08-24, NOT AT THE SUMMIT. At Hot Chips NVIDIA announced that NVIDIA Groq 3 LPX, the interactive AI inference accelerator, was in full production, describing it as an extension of the Vera Rubin platform, with Nebius the first AI cloud to adopt it. The same release says the Vera Rubin platform now spans seven chips and five purpose-built racks.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Through extreme codesign across seven chips and five purpose-built racks, NVIDIA Vera Rubin is the most extensive AI factory platform."
+  },
+  {
+   "fact": "CRITICAL NAMING/OWNERSHIP FACT: the trademark footer of NVIDIA's own press release states 'Groq and LPU are used under license from Groq, Inc.' NVIDIA does not state that it owns or acquired Groq anywhere in the material I read. The product is 'NVIDIA Groq 3 LPX' (the rack-scale accelerator) and the chip inside it is the 'NVIDIA Groq 3 LPU'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Groq and LPU are used under license from Groq, Inc."
+  },
+  {
+   "fact": "AUGUST VENDOR CLAIMS for Groq 3 LPX, relaying a third-party benchmark: NVIDIA says it delivered a record 3,400 output tokens per second in Artificial Analysis benchmarking running Gemma 4 31B, an open-source agentic model, with a 100,000-token context, and that it provides 4x faster responsiveness for agents and latency-sensitive workloads than the nearest alternative platform. Artificial Analysis is a third party; I did not fetch it.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "It delivered a record 3,400 output tokens per second in Artificial Analysis benchmarking running Gemma 4 31B, an open source agentic model, with a 100,000-token context critical for agentic systems — the fastest performance ever recorded for the model."
+  },
+  {
+   "fact": "August rack composition statement: the Vera Rubin rack platforms feature BlueField-4 DPUs and work with NVIDIA Vera CPU racks, NVIDIA Vera BlueField-4 STX storage and NVIDIA Spectrum-6 SPX Ethernet. Nebius plans to bring Groq 3 LPX to Nebius Token Factory, its production inference platform; NVIDIA says the inference cloud Groq plans to be among the earliest adopters after Nebius.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "These rack platforms feature NVIDIA BlueField®-4 DPUs and work in combination with NVIDIA Vera CPU racks, NVIDIA Vera BlueField-4 STX storage and NVIDIA Spectrum™-6 SPX Ethernet to optimize multi-agent systems for the highest throughput per watt and the lowest-latency inference."
+  },
+  {
+   "fact": "SUPPORTING (not in the 4 chosen sources, available as a swap-in): NVIDIA's engineering blog of 2026-09-15 states that Groq 3 LPX brings its determinism-enabled power controls to the Vera Rubin platform 'in H2 2026' - the only availability window given for the seventh chip's power features. The same post says the deterministic execution model extends to all 256 LPU chips in a rack, that internal testing showed >60% less voltage drop from PEP and CPS, and that this is estimated to give a high single-digit percentage decrease in baseline voltage and a potentially low-double-digit percentage power reduction versus a similarly specified non-deterministic system.",
+   "url": "https://developer.nvidia.com/blog/how-nvidia-groq-3-lpx-deterministic-execution-drives-power-efficient-high-interactivity-inference-on-nvidia-vera-rubin/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Groq 3 LPX brings these determinism-enabled power controls to the NVIDIA Vera Rubin platform in H2 2026."
+  },
+  {
+   "fact": "SUPPORTING (swap-in): NVIDIA's own DSX documentation says the illustrative Vera Rubin NVL72 inference scenario reaches 400 GPUs per fixed 1 MW power basis at MaxLPS with token throughput 1.35x relative to MaxP, assumes PUE 1.1 - and states outright that 'Vera Rubin testing remains in progress'. It also gives an approved Vera Rubin MaxP rack Thermal Design Power of 227 kW. This is the strongest evidence that the Vera Rubin power figures are projections.",
+   "url": "https://docs.nvidia.com/dsx/maxlps/overview",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Illustrative Vera Rubin NVL72 inference scenario from Sizing DSX AI Factory Infrastructure for MaxLPS (NVOnline #1161311). Values assume PUE 1.1. Vera Rubin testing remains in progress."
+  },
+  {
+   "fact": "SUPPORTING (swap-in): the Lambda case study gives the workload behind the 24% figure - inference throughput on GPT-OSS-120B at 40 QPS per node, baseline 16 nodes with no policy at about 4.04M tokens/sec versus a 19-node run under an 85% DSX MaxLPS policy at about 5M tokens/sec. It also reports +20% hybrid inference throughput and +17% hybrid training throughput at an 80% policy running 10 inference and 10 training nodes, and says Lambda 'may be well positioned to deploy DSX MaxLPS across its diverse and expansive fleet as plans and timelines become clearer'.",
+   "url": "https://www.nvidia.com/en-us/case-studies/lambda/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Baseline (16 nodes, no policy): ~4.04M tokens/sec"
+  },
+  {
+   "fact": "SUPPORTING (swap-in): NVIDIA's DSX MaxLPS engineering blog of 2026-08-24 states that Dynamic Power Software (DPS) is 'currently in Developer Preview', as is DSX Exchange. It also reports measured MaxLPS results reducing provisioned rack power from 125 kW to 90 kW on GB200 NVL72 and from 136 kW to 101 kW on Vera Rubin NVL72, enabling 39% and 35% more racks respectively, with performance per watt improving approximately 1.5x on GB200 NVL72 and 1.3-1.4x on Vera Rubin NVL72 - which is where the summit post's 'up to 1.4x' comes from.",
+   "url": "https://developer.nvidia.com/blog/maximizing-ai-factory-performance-per-watt-with-nvidia-dsx-maxlps/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Performance per watt improves approximately 1.5x on GB200 NVL72 and 1.3–1.4x on Vera Rubin NVL72."
+  },
+  {
+   "fact": "SUPPORTING (swap-in): the NVLink 6 resiliency blog of 2026-09-15 gives the one recovery number worth quoting - in benchmarked deployments on NVIDIA B200 GPUs, Shadow Engine Recovery in NVIDIA Dynamo reduced inference downtime from 283 seconds to 7.3 seconds. It also says software-driven transaction recovery executes in roughly 1.5 seconds, and that NCCL has prototype support for cuda-checkpoint with general availability expected by the end of the year.",
+   "url": "https://developer.nvidia.com/blog/how-nvidia-nvlink-6-delivers-multi-layer-resiliency-for-ai-factories/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In benchmarked deployments on NVIDIA B200 GPUs, shadow engine recovery reduced inference downtime from 283 seconds to just 7.3 seconds."
+  },
+  {
+   "fact": "SUPPORTING (swap-in, dated 2026-09-16): the MLPerf blog names the benchmarks - Vera Rubin NVL72 preview results were submitted on DeepSeek-R1 and Qwen3-VL; it is up to 3.7x higher than GB300 NVL72 on Qwen3-VL using vLLM with NVIDIA Dynamo, and up to 2.5x higher on DeepSeek-R1 using TensorRT-LLM. The 99% scaling figure is the DeepSeek-R1 offline scenario scaling from 72 to 288 GPUs. NVIDIA notes post-submission gains on GPT-OSS-120B and DLRMv3 are 'not yet verified by MLCommons', and lists 19 partners that also submitted, including Lambda, Nebius, CoreWeave, Dell, HPE, Oracle Cloud Infrastructure and Supermicro.",
+   "url": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Post-submission results, not yet verified by MLCommons, on GPT-OSS-120B and DLRMv3 show further performance gains."
+  },
+  {
+   "fact": "LIVE-DOCUMENT EVIDENCE, worth one line in the article's verification paragraph: the related NVIDIA blog carrying the 30x AgentX claim opens with an editor's note - 'This blog, originally published on Aug. 24, 2026, was updated on Sept. 15, 2026, to reflect the latest performance data.' Its JSON-LD confirms datePublished 2026-08-24T15:00:19+00:00 and dateModified 2026-09-15T23:52:27+00:00. So the 30x figure was not first published on the event date; it was restated/refreshed on it.",
+   "url": "https://blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Editor’s note: This blog, originally published on Aug. 24, 2026, was updated on Sept. 15, 2026, to reflect the latest performance data."
+  },
+  {
+   "fact": "THE DELTA, stated plainly and traceable to the two press releases above: January 2026 = six chips, cost per token and training-GPU count as the headline metrics, 'full production', partner products in H2 2026. August 2026 = a seventh chip (Groq 3 LPU inside the Groq 3 LPX rack) in full production, platform described as seven chips and five racks. September 15 2026 = no new silicon at all; the announcements are power-and-grid software (DSX MaxLPS, DSX Flex), the first partner validation numbers (Lambda), the first commercial grid-flexibility demonstration (Emerald AI with Silicon Valley Power), new ecosystem tie-ups (Annapurna Labs on NVHBM, d-Matrix on NVLink Fusion, Pinterest on Blackwell plus Dynamo) and a metric change to tokens per megawatt.",
+   "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "NO PRICE, ANYWHERE. The word 'price' does not appear in either 2026-09-15 post (verified by grep on the fetched pages; 'pricing' appears once each, and only in the phrase 'pricing signals' from the electricity grid). NVIDIA gives no price, licence fee or subscription cost for Vera Rubin NVL72, Groq 3 LPX, DSX MaxLPS, DSX Flex or any DSX component. Write '官方未說明價格'.",
+  "NO GENERAL AVAILABILITY DATE FOR THE DSX SOFTWARE. NVIDIA's own engineering blog says Dynamic Power Software (DPS), the component that does the dynamic power allocation, is 'currently in Developer Preview', as is DSX Exchange. No GA date is given for either, nor for DSX MaxLPS as a whole.",
+  "NO DELIVERY NUMBERS FOR VERA RUBIN. 'In full production and scaling across the ecosystem' is the whole statement. NVIDIA does not say how many Vera Rubin NVL72 systems have shipped, to whom, when, or which cloud regions they are in. The only dated commitment anywhere is January's 'available from partners the second half of 2026', which has not been narrowed.",
+  "NOTHING ABOUT TAIWAN AND NOTHING ABOUT TSMC. Neither word appears in either 2026-09-15 post (verified by grep). There is no Taiwanese deployment, no Taiwanese partner, no manufacturing or supply-chain statement in this material. Do not import a Taiwan angle from elsewhere.",
+  "NO END-USER EFFECT IS CLAIMED. Nothing in the 2026-09-15 material says any consumer AI service will become faster, cheaper, less rate-limited or more available as a result. All the figures are data-centre metrics (tokens per megawatt, throughput per watt, GPU capacity per site-power envelope).",
+  "THE VERA RUBIN POWER FIGURES ARE PROJECTIONS AND NVIDIA SAYS SO. The 'up to 40% more GPU capacity' claim is hedged three ways: 'in the right deployment environments' in the summit post, 'Based on NVIDIA's projections' in the companion post, and 'Vera Rubin testing remains in progress' in NVIDIA's own DSX documentation. The measured Lambda result is on Blackwell HGX B200 hardware, not on Vera Rubin.",
+  "NO OWNERSHIP STATEMENT ABOUT GROQ. NVIDIA's press release footer says only 'Groq and LPU are used under license from Groq, Inc.' Nothing in the material I read says NVIDIA acquired Groq, took a stake in it, or what the licence covers or costs.",
+  "NO OPENING DATE FOR THE MANASSAS FACILITY. NVIDIA names it as the first dedicated DSX Flex commercial deployment and gives its size (96 megawatts) but no construction, commissioning or operating date.",
+  "NO DETAIL ON WHO ELSE CAN USE THE GRID PROGRAMME. NVIDIA does not say when or whether DSX Flex will be available to other operators, which other utilities run comparable programmes, or what the commercial terms of Silicon Valley Power's Flexible Load Interconnect Program are.",
+  "NO ABSOLUTE RACK POWER FIGURE IN THE EVENT POST ITSELF. The summit post gives no watts for a Vera Rubin NVL72 rack. The 227 kW MaxP TDP and the 136 kW-to-101 kW figures live in the DSX documentation and the August engineering blog respectively - cite the page the number came from, not the summit post.",
+  "NO ENERGY OR EMISSIONS TOTALS. Nothing states an AI factory's annual consumption, carbon intensity, water use or any environmental metric beyond the efficiency ratios and the one 4 MW-to-3 MW demand-response episode.",
+  "THE MLPERF ENTRY IS A PREVIEW SUBMISSION AND IS DATED THE DAY AFTER. NVIDIA calls it 'its first MLPerf Inference preview submission', notes post-submission gains are 'not yet verified by MLCommons', and the section is timestamped 'Wednesday, Sept. 16, 8:00 a.m. PT'. Do not present it as a 2026-09-15 announcement or as a full verified result.",
+  "NO IMPACT ON CONSUMER GEFORCE OR RTX PRODUCTS is mentioned. This is entirely data-centre material; the summit post says nothing about desktop or laptop hardware.",
+  "NO STATEMENT THAT THE EMERALD AI DEMAND RESPONSE WAS INVISIBLE TO USERS. NVIDIA says high-priority jobs kept running and that lower-priority jobs 'yielded'/were 'slowed or rescheduled'. It does not say whether anyone using a service on that factory noticed."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "NVIDIA acquired Groq, or Groq is now an NVIDIA subsidiary.",
+   "seen_where": "A natural but wrong inference from the product name 'NVIDIA Groq 3 LPX' and from NVIDIA hiring an ex-Groq architect (Santosh Raghavan's author bio on the NVIDIA developer blog says he 'spent nearly half a decade at Groq').",
+   "why_excluded": "The only ownership language NVIDIA publishes is the trademark footer 'Groq and LPU are used under license from Groq, Inc.', and the August press release separately describes 'purpose-built AI inference cloud Groq' as a prospective adopter of the platform - i.e. as a distinct company. No first-party statement of an acquisition exists in anything I fetched. The article must say NVIDIA licenses the Groq and LPU names, and nothing more."
+  },
+  {
+   "claim": "The AI Infra Summit had more than 8,000 attendees, up from 3,500 last year.",
+   "seen_where": "NVIDIA's own summit blog post.",
+   "why_excluded": "Not excluded, but it is NVIDIA's characterisation of a third-party conference. I did not fetch ai-infra-summit.com to confirm. If used, attribute it: 'NVIDIA 表示'."
+  },
+  {
+   "claim": "The Vera CPU startup benchmark numbers (Perplexity 1.9x faster sandbox starts, DeepInfra 2.2x, Redpanda 5.5x lower latency and 73% higher throughput, Starburst 3x, Kinetica 2.7x, ClickHouse 'fastest machine measured so far').",
+   "seen_where": "Relayed in NVIDIA's summit post, each linking out to a LinkedIn post, an X post or the company's own blog.",
+   "why_excluded": "Not excluded from the record, but I did not fetch any of the eight third-party pages, so I cannot confirm the wording, the comparison baseline ('other CPUs' is undefined in every case) or the test conditions. If the article uses any of them it must be doubly attributed - 'NVIDIA 轉述 Redpanda 的測試結果' - and should probably use at most one as an illustration rather than listing all eight."
+  },
+  {
+   "claim": "SemiAnalysis AgentX results (30x throughput per megawatt, 45x lower cost per million tokens) and Artificial Analysis results (3,400 output tokens/sec on Gemma 4 31B).",
+   "seen_where": "NVIDIA summit post, NVIDIA agents blog, NVIDIA August press release.",
+   "why_excluded": "Third-party benchmark dashboards that I did not fetch (inferencex.semianalysis.com was linked but not retrieved). Recorded as NVIDIA's reporting of a third-party benchmark, never as a measured fact. Note also that the 30x figure was first published on 2026-08-24 and only refreshed on 2026-09-15, so calling it 'new on 9/15' would be wrong."
+  },
+  {
+   "claim": "MLPerf Inference v6.1 results as independently verified figures.",
+   "seen_where": "NVIDIA's 2026-09-16 blog, citing MLCommons entries 6.1-0106, 6.1-0074 and 6.1-0073.",
+   "why_excluded": "I did not fetch mlcommons.org to confirm the entries. NVIDIA itself labels the Vera Rubin entry a 'preview submission' and the post-submission gains as 'not yet verified by MLCommons'. Also outside the event date."
+  },
+  {
+   "claim": "Groq 3 LPX per-rack specifications: 128 GB of SRAM and 12 TB of DDR5 per rack, 40 PB/s SRAM bandwidth per rack, 640 TB/s scale-up bandwidth, and per-LPU 500 MB SRAM / 150 TB/s SRAM bandwidth / 2.5 TB/s scale-up bandwidth; also '10x more revenue per watt'.",
+   "seen_where": "https://www.nvidia.com/en-us/data-center/lpx/ (fetched, HTTP 200).",
+   "why_excluded": "tech.md forbids using a product marketing page as the source of a capability claim, and this page is exactly that - it even footnotes its own headline chart as 'Projected performance subject to change' and its revenue claim as 'Projected revenue based on ... estimated cost-per-million-tokens tiered pricing model'. The only number from it I would let through is '256 interconnected LPU accelerators per LPX rack', because the 2026-09-15 engineering blog independently states 'all 256 LPU chips in the rack'. Everything else stays out."
+  },
+  {
+   "claim": "The Groq 3 LPX power saving is a 'low-double-digit percentage power reduction' arising from a >60% droop reduction.",
+   "seen_where": "The block labelled 'AI-Generated Summary ... Powered by NVIDIA Nemotron' at the top of NVIDIA's own developer blog.",
+   "why_excluded": "The machine-written summary compresses two different numbers. The human-written body says internal testing showed '>60% less voltage drop', that this is 'estimated' to give 'a high single-digit percentage decrease in the baseline voltage', and separately that determinism 'can reduce the power required to run the same workload by a potentially low-double-digit percentage compared with a similarly specified, nondeterministic system'. Use the body wording, with 'NVIDIA 表示' and the word 'estimated' preserved. Every NVIDIA developer blog I fetched carries one of these AI-generated blocks - treat them as not-quotable."
+  },
+  {
+   "claim": "Amazon's Annapurna Labs / NVHBM collaboration details, d-Matrix Raptor XPU specifications, and Pinterest's conversational visual discovery product.",
+   "seen_where": "One sentence each in NVIDIA's summit post.",
+   "why_excluded": "I found no Amazon, d-Matrix or Pinterest first-party page confirming any of them, and NVIDIA gives no figures, dates or scope for any of the three. They can be named as things NVIDIA said it announced, with no elaboration. The underlying NVHBM technology blog exists (developer.nvidia.com, 2026-08-26) but it is about NVHBM generally and does not mention Annapurna Labs."
+  },
+  {
+   "claim": "The AI Infra Summit announcements were covered by trade press with additional detail (attendee quotes, roadmap speculation, 'Rubin Ultra' timing, competitive comparisons).",
+   "seen_where": "Not used. I did not consult any news media or aggregator for this assignment; the assignment's only lead was NVIDIA's own RSS feed and every source is NVIDIA's own publication.",
+   "why_excluded": "BRIEF.md forbids media and aggregators from becoming recorded facts or source URLs. Recorded here so the absence is explicit rather than implied."
+  },
+  {
+   "claim": "The RSS feed's modDate for the summit item ('Tue, 15 Sep 2026 16:57:47 GMT') as the article's last-modified time.",
+   "seen_where": "nvidianews.nvidia.com/releases.xml, fetched 2026-09-16.",
+   "why_excluded": "Contradicted by the page itself, whose article:modified_time and JSON-LD dateModified both read 2026-09-16T14:57:15+00:00 and which visibly contains a section dated 'Wednesday, Sept. 16'. Do not date anything from the feed's modDate; the pubDate was correct, the modDate was a day stale."
+  },
+  {
+   "claim": "'DSX Platform Advances' as part of the official title.",
+   "seen_where": "The LinkedIn share URL embedded in the page.",
+   "why_excluded": "The <title> element and the on-page h1 both say 'DSX Platform Advancements'. BRIEF.md warns that link text must match the target title exactly, so the correct string is 'Advancements'. Full official title: 'AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories'."
+  },
+  {
+   "claim": "Lambda has deployed DSX MaxLPS across its fleet / in production.",
+   "seen_where": "An easy misreading of 'Lambda improved performance per watt by 23%'.",
+   "why_excluded": "Lambda's own quoted words are 'With our proof of concept', and NVIDIA's case study says Lambda 'may be well positioned to deploy DSX MaxLPS across its diverse and expansive fleet as plans and timelines become clearer'. It was a five-rack, 19-node test cluster."
+  }
+ ],
+ "editorial_brief": "科技垂直（tech-news-），讀者是「會用雲端 AI 服務、但不管機房」的一般台灣讀者。角度不是「NVIDIA 又發表了什麼」，而是「從 1 月到 9 月，這家公司拿來衡量自己產品的尺規換了」——1 月 5 日 CES 講的是六顆晶片、每個 token 的成本、訓練要幾張 GPU；9 月 15 日 AI Infra Summit 上 Ian Buck 講的是每一百萬瓦能產出多少 token、以及機房怎麼跟電網對話。9 月 15 日這天沒有任何新晶片（第七顆 Groq 3 LPU 是 8 月 24 日 Hot Chips 宣布的，Rubin 平台本身是 1 月 5 日），新的是三件事：DSX 的電力管理軟體（MaxLPS 與 Flex）拿到了第一份合作夥伴實測數字（Lambda，19 節點跑在 16 節點的電力預算內，NVIDIA 說吞吐量多 24%、每瓦效能多 23%——但那是 Blackwell HGX B200 硬體，不是 Vera Rubin）；Emerald AI 與 Silicon Valley Power 做出第一個商用規模的電網彈性負載示範（4 MW 降到 3 MW，NVIDIA 說一分鐘內完成、至今超過 200 次訊號都成功）；以及新的生態系合作（Annapurna Labs 的 NVHBM、d-Matrix 的 NVLink Fusion、Pinterest 的 Dynamo）。\n\n五個小節建議：(1) 9 月 15 日發生了什麼、地點與講者；(2) 和 1 月那篇的差別到底在哪（六顆晶片→七顆晶片→零顆新晶片，指標從每 token 成本換成每百萬瓦 token）；(3) 電力為什麼變成瓶頸、DSX MaxLPS 與 DSX Flex 分別在做什麼（這節放圖解）；(4) 廠商數字的讀法——哪些是實測、在什麼硬體上測的、哪些是投影（NVIDIA 自己的 DSX 文件寫著 Vera Rubin testing remains in progress）；(5) 這對用雲端服務的人代表什麼、以及官方沒說什麼。表格放在第 2 節結尾，建議三欄「時間點／官方說的主體／官方給的數字與條件」，四列：2026-01-05 六晶片平台、2026-08-24 第七顆晶片 Groq 3 LPX 量產、2026-09-15 電力軟體與夥伴實測、2026-09-16 MLPerf v6.1 預覽提交。caption 寫查核日 2026 年 9 月 16 日。\n\nhero 標語建議：「算力的新單位是電」（9 字）。圖解建議標題「每一百萬瓦能產出多少 token」，四格：晶片（Vera Rubin NVL72，72 顆 GPU）→機櫃（Intelligent Power Smoothing 削峰）→機房（MaxLPS 動態調度，NVIDIA 說可多 40% GPU）→電網（DSX Flex 依訊號降載，4 MW 降到 3 MW）。圖上所有數字都必須先出現在正文。\n\n刻意不談：買不買、值不值得、股價與市值、NVIDIA 與競爭對手的比較、Rubin 之後的產品路線圖、以及「你的 ChatGPT 會不會變便宜」——最後這一點 1 月那篇已經寫透了，本篇只用一句話連過去。也不寫攻擊性或投資性的結論，科技篇不加免責 callout。一般 callout 寫：這些全是資料中心指標，沒有任何一項是對終端服務速度或費率的承諾，而且 NVIDIA 這篇公告是一則會被追加更新的動態文章（9 月 16 日就長出了一段 MLPerf）。",
+ "overlaps_existing_article": "主要重疊是站上既有的 apps/api/app/guides/content/ai-news-nvidia-rubin-20260105.json，標題「NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？」，news_date 2026-01-05，topics ['ai','software','ai-news']，來源是 nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer 與 blogs.nvidia.com/blog/2026-ces-special-presentation/。那篇已經寫完的、本篇絕對不可以重寫的東西有四塊：什麼是推論（inference）的基本解釋、硬體效率改善不會等比反映到訂閱月費、雲端定價由授權費與維運攤提決定、以及那個一萬筆電商規格整理的成本試算情境。本篇的分工是「1 月是發表，9 月是這套東西實際插進電網與機房之後的第一批數字與第一批限制」，兩篇的交集只需要一句話帶過並互連。\n\n分工原則依 tech.md：1 月那篇被歸在 AI 垂直（topics 有 'ai'），因為它談的是算力對 AI 服務的影響；本篇歸在科技垂直（topics ['tech','tech-news']），因為主體是硬體、機房與電力基礎設施，不是 AI 模型或 AI 服務。兩邊都沾到，用「讀者搜尋時會想到哪一個」判斷——搜「Vera Rubin 效能」「AI 機房 電力」會來這篇。BRIEF 要求的第二條 link 就指回 ai-news-nvidia-rubin-20260105，text 必須逐字等於「NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？」。第一條 link 指本垂直索引；但本站目前 apps/api/app/guides/content/ 底下只有 ai-news-* 的內容包與一篇 ai-news-2026-january-september-index，尚無 tech-news-* 索引，撰稿前必須確認科技索引是否已建立，否則第一條 link 要暫時指 ai-news-2026-january-september-index（text：「2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用」）並在交稿時註明。\n\n其他可能撞題但不會重複的：candidates-tech-and-ai.md 列的 NVIDIA CUDA-Q（2026-09-14，量子運算，科技垂直）、NVIDIA 併購 Hugging Face（2026-09-03，AI 垂直）、NVIDIA 與聯發科（2026-08-31）、Sparks Fly IFA 2026（2026-09-03）、Perplexity Portable Computer on Windows（2026-09-14）都是不同主體，不衝突。唯一要小心的是 2026-09-16 的「Emerald AI, Google and NVIDIA Launch Alliance to Advance Flexible AI Data Centers」（AI Energy Management Alliance, AEMA）——它和本篇的 Emerald AI 段落是同一條線但是隔天的獨立事件，如果之後要另外寫一篇，本篇就只寫到 9 月 15 日的示範為止，不要把 AEMA 併進來。",
+ "must_not_write": [
+  "不可寫 NVIDIA 併購或收購了 Groq。官方唯一的說法是 'Groq and LPU are used under license from Groq, Inc.'，而且同一份新聞稿把 Groq 公司列為未來的採用者。只能寫「NVIDIA 表示 Groq 與 LPU 名稱為授權使用」。",
+  "不可把 9 月 15 日寫成 Vera Rubin 或 Groq 3 LPX 的發表日。Rubin 平台是 2026-01-05 發表，Groq 3 LPX 是 2026-08-24 宣布量產。這天沒有新晶片。",
+  "不可寫 DSX 是這場峰會推出的。NVIDIA 自己說 DSX 是 5 月 GTC Taipei 推出的（'Introduced at GTC Taipei in May'）。",
+  "不可把 35x、30x、45x、3.7x、1.4x、40%、35%、24%、23%、2,529 tokens/sec 任何一個寫成事實或本站測得的結果。一律「NVIDIA 表示」「NVIDIA 轉述 Lambda 的測試」，並且保留比較基準（對 GB200 NVL72、對 GB300 NVL72、2 兆參數以上模型、長上下文、同一電力預算）。",
+  "不可把 Lambda 的 24%／23% 說成 Vera Rubin 的成績。那是在 NVIDIA HGX B200（Blackwell）五機櫃 19 節點上測的，Lambda 自己稱為 proof of concept。Vera Rubin 的 40% 是投影，NVIDIA 自家 DSX 文件明寫 'Vera Rubin testing remains in progress'。",
+  "不可寫 Lambda 已經在正式營運環境全面導入 MaxLPS。官方說法是首次驗證、概念驗證，未來「may be well positioned to deploy」。",
+  "不可把 MLPerf Inference v6.1 的數字掛在 2026-09-15。那一段是同一篇動態文章在 2026-09-16 追加的，而且 NVIDIA 自稱是 preview submission、部分結果 'not yet verified by MLCommons'。",
+  "不可寫任何價格、資費、台幣換算或「現在買划算」。官方完全沒有給價格，科技垂直也禁止購買建議與價格推薦。",
+  "不可寫「該不該升級」「哪一家比較強」「值不值得」這類結論，也不可做競品比較式的推薦。可以並列官方公布的規格與條件，讓讀者自己判斷。",
+  "不可寫本站做過實測、跑過 benchmark 或看過機房。所有數字都是官方或官方轉述的第三方 benchmark（SemiAnalysis AgentX、Artificial Analysis、MLCommons），本站沒有驗證來源。",
+  "不可推測這些效率改善會讓 ChatGPT、Gemini 或任何服務降價、變快、放寬額度。官方一個字都沒說，1 月那篇也已經處理過這個推論陷阱。",
+  "不可引用 NVIDIA 開發者部落格開頭那段標示 'AI-Generated Summary / Powered by NVIDIA Nemotron' 的內容，它和人寫的正文有出入。要引就引正文。",
+  "不可引用 https://www.nvidia.com/en-us/data-center/lpx/ 的效能或營收宣稱（35x、10x more revenue per watt、各項 SRAM 頻寬）。tech.md 明文規定產品行銷頁不能當能力宣稱的來源，而且該頁自己標註 'Projected performance subject to change'。",
+  "不可自行補上台灣、台積電、聯發科或任何在來源裡不存在的在地角度。兩篇 9 月 15 日的公告裡 Taiwan 與 TSMC 都是零次出現（已 grep 驗證）。",
+  "不可把 Annapurna Labs、d-Matrix、Pinterest 三項寫得比官方一句話更多。官方沒給規格、沒給日期、沒給規模。",
+  "不可寫攻擊手法或資安操作細節——本篇雖非資安題，但 NVLink 6 的容錯段落只寫影響與復原時間（283 秒降到 7.3 秒），不寫故障注入或利用方式。",
+  "不可加投資免責 callout。科技篇不帶 finance 主題，BRIEF 與 tech.md 都明文禁止。",
+  "不可用簡體字、列表、Markdown 或 emoji；產品名一律用官方英文原名（Vera Rubin NVL72、Groq 3 LPX、DSX MaxLPS、DSX Flex、NVLink 6、Dynamo），不要自創中文譯名。",
+  "圖解不可畫 NVIDIA 商標、字標或任何介面截圖；產品名用純文字寫。"
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md 第 116 行把標題截斷成「AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements…」。完整官方標題是 'AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories'。注意頁面內嵌的 LinkedIn 分享字串寫的是 'DSX Platform Advances'，而 <title> 與 h1 是 'Advancements'——以後者為準。",
+  "同一行的備註「接既有的 ai-news-nvidia-rubin-20260105」方向正確，但 delta 不是直覺會猜的那個：Vera Rubin 的第七顆晶片（Groq 3 LPU／Groq 3 LPX）是 2026-08-24 在 Hot Chips 宣布量產的，不是 9 月 15 日。9 月 15 日完全沒有新硬體，新的是 DSX 電力軟體的實測數字與電網示範。撰稿前一定要把 8/24 那則納入基準線，否則會把舊消息寫成新消息。",
+  "候選清單漏了一則和 T11 直接相關、且份量足夠獨立成篇的 2026-08-24 新聞稿：'NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI'（https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai）。它是七晶片說法、Nebius 首家採用、以及 Groq 名稱授權關係的唯一一手來源。",
+  "候選清單第 29 行「NVIDIA Newsroom releases.xml ✅ 20 筆，最新 2026-09-16」在 2026-09-16 複查仍然成立（channel lastBuildDate Wed, 16 Sep 2026 15:02:09 GMT，最新一筆是同日的 MLPerf v6.1）。但要補一條警告：該 feed 的 modDate 欄位不可信——T11 這一則的 feed modDate 停在 Tue, 15 Sep 2026 16:57:47 GMT，而頁面本身的 article:modified_time 已是 2026-09-16T14:57:15+00:00。feed 的 pubDate 可用，modDate 不可用。",
+  "候選清單把 Australia 那則記為 2026-09-10（feed pubDate Thu, 10 Sep 2026 00:00:00 GMT），但 nvidianews 頁面的 More News 區塊把同一則列為 September 9, 2026。這是 UTC 與美西時間的差，兩者都不算錯，但依 BRIEF「slug 日期是事件日」的規定，這類跨午夜的項目要另外確認官方頁面上的日期再定 slug。",
+  "候選清單第 405–406 行把 'Sparks Fly: NVIDIA Accelerates Local AI at IFA 2026'（9/3）與 'Perplexity Portable Computer Is Now Available on Windows'（9/14）列為科技次要新聞，兩則都與 T11 不衝突，可以保留。但要注意 9/16 還有一則 'Emerald AI, Google and NVIDIA Launch Alliance to Advance Flexible AI Data Centers'（AI Energy Management Alliance／AEMA，feed pubDate Wed, 16 Sep 2026 13:00:33 GMT），候選清單完全沒有列到。它和 T11 的 Emerald AI 段落是同一條線的隔天續集，若要另開一篇必須先跟 T11 劃清界線。",
+  "候選清單沒有記錄一個會影響所有 NVIDIA 題目的陷阱：blogs.nvidia.com 的多篇文章是會被就地改寫的動態文件。T11 的目標文章在 9/16 長出一整段 MLPerf；blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/ 更明寫 'originally published on Aug. 24, 2026, was updated on Sept. 15, 2026'。引用 NVIDIA 部落格的數字時要記下讀取時間，並在查核階段重抓。",
+  "候選清單沒有提到 NVIDIA developer.nvidia.com 的每篇技術文章都以一段標示 'AI-Generated Summary … Powered by NVIDIA Nemotron' 的機器摘要開頭，而且該摘要至少在 Groq 3 LPX 那篇與人寫正文的數字表述不一致。這應該寫進 feed 表的陷阱欄，讓後續代理不要引到機器摘要。"
+ ]
+}

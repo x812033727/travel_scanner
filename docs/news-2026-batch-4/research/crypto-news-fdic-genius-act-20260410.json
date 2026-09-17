@@ -1,0 +1,601 @@
+{
+ "slug": "crypto-news-fdic-genius-act-20260410",
+ "sourcing_verdict": "full",
+ "event_date": "2026-04-10",
+ "event_date_basis": "Four distinct dates, all first-party. (1) FDIC Board of Directors approved the NPRM on 2026-04-07 - the FDIC press release is headed 'April 7, 2026' and says the Board 'today approved'. (2) The document's signature block reads 'Dated at Washington, DC, on April 8, 2026. Debra A. Decker, Executive Secretary.' (3) The document was filed 4-9-26 at 8:45 am ('[FR Doc. 2026-06974 Filed 4-9-26; 8:45 am]'). (4) Federal Register publication date is 2026-04-10, citation 91 FR 18534. The slug date 2026-04-10 is the publication date, which is the date that starts the comment clock (60 days after publication = 2026-06-09). The article must not collapse these: say the Board approved it on 7 April and it was published on 10 April. There is NO effective date - the Federal Register API returns effective_on: null because this is a proposal, not a rule.",
+ "sourcing_notes": "Everything below was read today (2026-09-16) with curl -A \"Mokaair-editorial\". No personal data was put in any request.\n\nWHAT I ACTUALLY READ, and therefore what the fact URLs point at:\n- https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt -> HTTP 200, 352,322 bytes, the complete 46-page document (91 FR 18534-18579). I read it end to end and every fact tagged with this URL comes from that text.\n- https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt -> HTTP 200, 23,283 bytes, the FDIC's follow-on reporting-forms notice.\n- https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards -> HTTP 200, real body, dated April 7, 2026.\n- https://www.fdic.gov/federal-register-publications -> HTTP 200, real listing; its 04/10/26 row independently confirms RIN 3064-AG19, 'Notice of proposed rulemaking', 'Comment Period End: June 9, 2026' and '91 FR 18534'.\n- https://www.federalregister.gov/api/v1/documents/2026-06974.json -> HTTP 200, metadata (type Proposed Rule, comments_close_on 2026-06-09, effective_on null, page_length 46, RIN 3064-AG19, CFR parts 324/330/350, regulations.gov document_id FDIC-2026-0696-0001).\n- https://www.federalregister.gov/api/v1/documents.json?conditions[regulation_id_number]=3064-AG19 -> HTTP 200, count: 1.\n\nSAME DOCUMENT, TWO OTHER OFFICIAL COPIES I ALSO FETCHED, either is fine to cite instead of source 1 if the writer prefers a page a reader can open:\n- https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06974.pdf -> HTTP 200, application/pdf, 424,633 bytes.\n- https://www.fdic.gov/board/federal-register-notice-genius-act-requirements-and-standards-fdic-supervised-permitted -> HTTP 200, application/pdf, 424,633 bytes; this is the attachment the FDIC's own press release links to. I ran cmp on the two files: they are BYTE-IDENTICAL, and the PDF metadata reads /Creator(govinfo, U. S. Gove...) /CreationDate(D:20260410052832Z). So the FDIC's official attachment and the GPO publication are literally the same file. I could not extract text from either (no pdftotext or pypdf in this container), which is why the facts are tagged to the full-text endpoint rather than to a PDF.\n- For the July 20 notice the equivalent PDF is https://www.govinfo.gov/content/pkg/FR-2026-07-20/pdf/2026-14589.pdf -> HTTP 200, 251,029 bytes.\n\nNEW BLOCK FOUND TODAY - RECORD IT SO THE NEXT RUN DOES NOT RE-DISCOVER IT: federalregister.gov's canonical HTML document pages (https://www.federalregister.gov/documents/2026/04/10/2026-06974/... and the July one) return HTTP 200 with a 10,596-byte interstitial whose <title> is 'Federal Register :: Request Access'. That is a bot wall, not the document - exactly the '200 does not mean you got the document' trap the BRIEF warns about. The API, the /documents/full_text/text/ endpoints and govinfo.gov are NOT blocked. fdic.gov serves both HTML and PDF normally.\n\nI guessed nothing. My first attempt at an FDIC press-release URL (.../fdic-board-approves-two-notices-proposed-rulemaking) returned 404; I discarded it and found the real slug by listing /news/press-releases/2026 and reading the hrefs actually on the page.\n\nCHECKED AND FOUND ABSENT: the Federal Register API query on regulation_id_number=3064-AG19 returns count: 1 - only the 2026-04-10 proposed rule. As of 2026-09-16 there is no final rule, no re-proposal and no comment-period extension under this RIN.",
+ "sources": [
+  {
+   "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions (91 FR 18534, Proposed Rule, RIN 3064-AG19) - Federal Register full text",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "publisher": "Office of the Federal Register / U.S. Government Publishing Office (document issued by the Federal Deposit Insurance Corporation)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+   "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+   "publisher": "Federal Deposit Insurance Corporation",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Notice of Proposed Rulemaking to Establish GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions (PDF)",
+   "url": "https://www.fdic.gov/board/federal-register-notice-genius-act-requirements-and-standards-fdic-supervised-permitted",
+   "publisher": "Federal Deposit Insurance Corporation",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "FDIC Federal Register Publications and Public Comments",
+   "url": "https://www.fdic.gov/federal-register-publications",
+   "publisher": "Federal Deposit Insurance Corporation",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "The document is a Notice of proposed rulemaking (NPRM) issued by the Federal Deposit Insurance Corporation (FDIC) alone. The agency field is 'Federal Deposit Insurance Corporation' and the ACTION line reads 'Notice of proposed rulemaking.' It is a PROPOSAL, not a rule in force.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AGENCY: Federal Deposit Insurance Corporation. ACTION: Notice of proposed rulemaking."
+  },
+  {
+   "fact": "Title: 'GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions'. RIN 3064-AG19. It would amend 12 CFR parts 324, 330 and 350.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "12 CFR Parts 324, 330, and 350 / RIN 3064-AG19"
+  },
+  {
+   "fact": "Federal Register citation 91 FR 18534; Volume 91, Number 69, Friday, April 10, 2026; pages 18534-18579 (46 pages).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Federal Register Volume 91, Number 69 (Friday, April 10, 2026)] [Proposed Rules] [Pages 18534-18579]"
+  },
+  {
+   "fact": "The FDIC's own Federal Register publications page lists the item under date 04/10/26 with 'RIN 3064-AG19', 'Notice of proposed rulemaking', 'Comment Period End: June 9, 2026' and volume/page '91 FR 18534'.",
+   "url": "https://www.fdic.gov/federal-register-publications",
+   "is_vendor_claim": false,
+   "verbatim_quote": "04/10/26 GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions 12 CFR Parts 324, 330, and 350 RIN 3064-AG19 Notice of proposed rulemaking ... Comment Period End: June 9, 2026 ... 91 FR 18534"
+  },
+  {
+   "fact": "The official SUMMARY states the proposal would do three things: implement certain GENIUS Act requirements for FDIC-supervised permitted payment stablecoin issuers and insured depository institutions; clarify deposit insurance coverage for deposits held as reserve assets for payment stablecoins; and clarify the treatment of tokenized deposits.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Federal Deposit Insurance Corporation (FDIC) is soliciting comment on a proposal that would implement certain requirements pursuant to the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act) applicable to FDIC-supervised permitted payment stablecoin issuers and insured depository institutions, clarify deposit insurance coverage for deposits held as reserve assets for payment stablecoins, and clarify the treatment of tokenized deposits."
+  },
+  {
+   "fact": "Comment deadline: comments must be received by the FDIC no later than June 9, 2026.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "DATES: Comments must be received by the FDIC no later than June 9, 2026."
+  },
+  {
+   "fact": "The FDIC press release announcing the proposal is dated April 7, 2026 and says the FDIC Board of Directors 'today approved' the notice of proposed rulemaking. The press release also says comments 'will be accepted for 60 days after publication in the Federal Register' - it does not itself state the June 9 date.",
+   "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+   "is_vendor_claim": false,
+   "verbatim_quote": "WASHINGTON - The Federal Deposit Insurance Corporation (FDIC) Board of Directors today approved a notice of proposed rulemaking that would implement certain requirements and standards under the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act). ... Comments on the proposed rule will be accepted for 60 days after publication in the Federal Register."
+  },
+  {
+   "fact": "The document's signature block is dated April 8, 2026 and signed by Debra A. Decker, Executive Secretary, by order of the Board of Directors; the document was filed on 4-9-26 at 8:45 am.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By order of the Board of Directors. Dated at Washington, DC, on April 8, 2026. Debra A. Decker, Executive Secretary. [FR Doc. 2026-06974 Filed 4-9-26; 8:45 am]"
+  },
+  {
+   "fact": "The GENIUS Act is Public Law 119-27, 139 Stat. 419, codified at 12 U.S.C. 5901-5916.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Public Law 119-27, 139 Stat. 419 (codified at 12 U.S.C. 5901-5916)."
+  },
+  {
+   "fact": "The GENIUS Act will become effective on January 18, 2027, or 120 days after the primary Federal payment stablecoin regulators issue any final implementing regulations, whichever is earlier.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The GENIUS Act will become effective on January 18, 2027, or 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the Act, if earlier. See 12 U.S.C. 5901 note."
+  },
+  {
+   "fact": "A later FDIC Federal Register notice (published 2026-07-20, FR Doc 2026-14589) states that the GENIUS Act 'was enacted on July 18, 2025'. The April 10 proposal itself does not state the enactment date.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Guiding and Establishing National Innovation for U.S. Stablecoins Act (12 U.S.C. 5901 et seq.) (GENIUS Act or the Act) was enacted on July 18, 2025."
+  },
+  {
+   "fact": "The FDIC is the primary Federal payment stablecoin regulator of subsidiaries of insured State nonmember banks and State savings associations ('FDIC-supervised IDIs') that are approved to issue payment stablecoins. The four primary Federal payment stablecoin regulators are the FDIC, the OCC, the Federal Reserve Board and the NCUA (12 U.S.C. 5901(25)).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The primary Federal payment stablecoin regulators are the FDIC, the Office of the Comptroller of the Currency (OCC), the Board of Governors of the Federal Reserve System (FRB), and the National Credit Union Administration (NCUA)."
+  },
+  {
+   "fact": "An FDIC-supervised permitted payment stablecoin issuer (PPSI) must be a SUBSIDIARY of an insured depository institution. The FDIC writes 'Because an FDIC-supervised PPSI must be a subsidiary of an IDI'. Subpart B (custody) applies to insured State nonmember banks, insured State-licensed branches of foreign banks, insured State savings associations and PPSIs.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Because an FDIC-supervised PPSI must be a subsidiary of an IDI, the FDIC expects that the initial adopters of this technology will likely be larger institutions with the compliance infrastructure and capital necessary to support payment stablecoin issuance."
+  },
+  {
+   "fact": "This is the FDIC's second GENIUS Act rulemaking. The first, on application procedures for FDIC-supervised IDIs seeking approval to issue payment stablecoins through a subsidiary, was issued December 19, 2025 (90 FR 59409) and was still not finalized when this proposal was published.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In December 2025, the FDIC issued a notice of proposed rulemaking under section 5 of the GENIUS Act that would establish application procedures for FDIC-supervised IDIs to request approval to issue payment stablecoins through a subsidiary. ... Because the regulations governing the application and approval of FDIC-supervised PPSIs are currently under development and have not yet been finalized"
+  },
+  {
+   "fact": "CENTRAL POINT - deposit insurance. The FDIC proposes that deposits held at an insured depository institution as reserves backing a payment stablecoin would be insured to the PPSI as CORPORATE deposits, and would NOT be insured to payment stablecoin holders on a pass-through basis.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the FDIC is proposing to amend its deposit insurance rules, found in part 330 of the FDIC's regulations, to provide that deposits held as reserves for a payment stablecoin would be insured to the PPSI under the FDIC's coverage rules for corporate deposits, but would not be insured to payment stablecoin holders on a pass-through basis."
+  },
+  {
+   "fact": "Because the reserve deposits would be corporate deposits of the issuer, they would be aggregated with the issuer's other corporate deposits at the same insured depository institution and insured up to the Standard Maximum Deposit Insurance Amount (SMDIA), currently $250,000 - that is $250,000 per depositor, per insured institution, per ownership category, for the ISSUER, not per stablecoin holder.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As corporate deposits of the PPSI, such deposits would be aggregated with other corporate deposits maintained by the PPSI at the same IDI and insured for up to the Standard Maximum Deposit Insurance Amount (SMDIA), currently $250,000. ... In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category."
+  },
+  {
+   "fact": "The FDIC's reasoning: the GENIUS Act itself says payment stablecoins 'shall not be backed by the full faith and credit of the United States, guaranteed by the United States Government, subject to deposit insurance by the Federal Deposit Insurance Corporation, or subject to share insurance by the National Credit Union Administration', and making a contrary representation is unlawful (12 U.S.C. 5903(e)(1), (2)). The FDIC says pass-through coverage 'appear[s] to be inconsistent' with those provisions because pass-through treats end customers as depositors.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The GENIUS Act expressly provides that payment stablecoins ``shall not be backed by the full faith and credit of the United States, guaranteed by the United States Government, subject to deposit insurance by the Federal Deposit Insurance Corporation, or subject to share insurance by the National Credit Union Administration,'' and it is unlawful to make contrary representations. ... These provisions appear to be inconsistent with providing deposit insurance to payment stablecoin holders on a pass-through basis."
+  },
+  {
+   "fact": "A second reason the FDIC gives: a stablecoin holder generally transacts by transferring the stablecoin, without funds ever leaving the FDIC-insured deposit account, which differentiates it from existing pass-through arrangements where funds are withdrawn from the deposit account when transactions are made.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Moreover, the fact that a payment stablecoin holder would generally engage in transactions by transferring payment stablecoins, without funds ever leaving the FDIC-insured deposit account, further differentiates payment stablecoin arrangements from existing pass-through arrangements in which funds generally are withdrawn from the deposit account when transactions are made."
+  },
+  {
+   "fact": "The mechanism would be a new 12 CFR 330.11(a)(3). Proposed text: 'Notwithstanding any other provision of this part, deposits at an insured depository institution held as reserves for a payment stablecoin, as defined in the Guiding and Establishing National Innovation for U.S. Stablecoins Act, are deposits of the permitted payment stablecoin issuer's and insured as corporate deposits for purposes of this part.' (The apostrophe-s is in the published text.)",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(3) Notwithstanding any other provision of this part, deposits at an insured depository institution held as reserves for a payment stablecoin, as defined in the Guiding and Establishing National Innovation for U.S. Stablecoins Act, are deposits of the permitted payment stablecoin issuer's and insured as corporate deposits for purposes of this part."
+  },
+  {
+   "fact": "All of a PPSI's deposits at one insured institution would be added together for the insurance limit, whether they are stablecoin reserves or ordinary operating money.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Under the proposed rule, all deposits maintained by a PPSI at an IDI would be added together for purposes of the deposit insurance limit, regardless of whether those deposits consist of reserves backing payment stablecoins or serve some other purpose (such as paying the PPSI's operating expenses). The PPSI's deposits would not be insured to payment stablecoin holders on a pass-through basis."
+  },
+  {
+   "fact": "FDIC deposit insurance does not reach the other permitted reserve asset types at all - only deposits are insurable.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The FDIC only insures ``deposits,'' as that term is defined in section 3(l) of the FDI Act (12 U.S.C. 1813(l)). ... The FDIC's deposit insurance coverage does not apply to other types of reserve assets that a PPSI may maintain pursuant to the GENIUS Act."
+  },
+  {
+   "fact": "The three existing conditions for pass-through insurance, which the FDIC restates: (1) the institution's deposit account records must expressly disclose a basis for pass-through coverage, such as a custodial or agency relationship; (2) the identities and interests of the owners must be ascertainable from the institution's records or from records kept in good faith in the regular course of business; (3) the relationship must be genuine, with the deposited funds actually owned by the named owners (12 CFR 330.5(b), 330.3(h)).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FDIC has NOT decided this - it is asking. Questions 125 to 130 all ask about the pass-through treatment, including 'Is the FDIC's proposed treatment ... appropriate? Is this the best reading of the GENIUS Act and FDI Act?' and what the market, the composition of reserves, the Deposit Insurance Fund and a PPSI's risk of failure would look like if pass-through insurance were or were not available.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Question 125: Is the FDIC's proposed treatment of deposits that comprise reserves for a payment stablecoin under section 4 of the GENIUS Act (12 U.S.C. 5903(a)(1)(A)(ii)) appropriate? Is this the best reading of the GENIUS Act and FDI Act?"
+  },
+  {
+   "fact": "The FDIC press release describes the same point more softly than the document: it says the proposal 'would address the applicability of pass-through insurance to deposits held as reserves backing payment stablecoins'.",
+   "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In addition, the proposed rule would address the applicability of pass-through insurance to deposits held as reserves backing payment stablecoins and would clarify that tokenized deposits that satisfy the statutory definition of “deposit” would be treated no differently under the Federal Deposit Insurance Act than any other types of deposits."
+  },
+  {
+   "fact": "Tokenized deposits are treated the opposite way to stablecoins. The FDIC proposes to codify that the technology used to record a deposit does not change whether it is a deposit, so a depositor holding a tokenized deposit gets the same federal deposit insurance as one holding an ordinary deposit.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A tokenized product that meets the statutory definition of ``deposit'' is a deposit, and as such, is treated no differently under the FDI Act than other forms of deposits. Accordingly, a depositor using tokenized deposits is afforded the same Federal deposit insurance coverage under the FDI Act as a depositor using non-tokenized deposits."
+  },
+  {
+   "fact": "Proposed new 12 CFR 330.3(k) reads: 'Technology used to record deposits. The technology or type of recordkeeping utilized by an insured depository institution to record deposit liabilities does not affect whether those liabilities constitute \"deposits.\"' A conforming edit to 12 CFR 330.1(e) adds the words 'regardless of the technology or type of recordkeeping utilized' to the definition of 'deposit account records'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(k) Technology used to record deposits. The technology or type of recordkeeping utilized by an insured depository institution to record deposit liabilities does not affect whether those liabilities constitute ``deposits.''"
+  },
+  {
+   "fact": "The FDIC warns that not every tokenized bank liability is a deposit: 'there may be tokenized bank liabilities that are not deposits, irrespective of an intention or representation that such constitute a deposit. If a product does not meet the statutory definition of \"deposit,\" it is, by definition, a non-deposit product.'",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Although a tokenized deposit is a deposit, there may be tokenized bank liabilities that are not deposits, irrespective of an intention or representation that such constitute a deposit. If a product does not meet the statutory definition of ``deposit,'' it is, by definition, a non-deposit product."
+  },
+  {
+   "fact": "The FDIC's regulatory definition of a non-deposit product (12 CFR 328.1) covers insurance products, annuities, mutual funds, securities and crypto-assets; the FDIC states it would not interpret 'crypto-asset' to include deposits in tokenized form.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The FDIC defines a non-deposit product as any product that is not a ``deposit,'' including, but not limited to, insurance products, annuities, mutual funds, securities, and crypto-assets. 12 CFR 328.1. Although ``crypto-asset'' is not defined by regulation, the FDIC would not interpret it to include deposits in tokenized form."
+  },
+  {
+   "fact": "The FDIC defines 'tokenized deposit' in a footnote as a tokenized form of an IDI's deposit liability recorded in an on-chain or off-chain account enabled with distributed ledger technology, and says the term is intended to include 'deposit token' as well.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The term ``tokenized deposit'' generally refers to a tokenized form of an IDI's deposit liability recorded in an on-chain or off-chain account enabled with distributed ledger technology."
+  },
+  {
+   "fact": "Nine questions (131 to 139) are asked on tokenized deposits, including Question 138, which asks how the FDIC should view a digital asset that only represents an interest in or a claim on a deposit rather than being the tokenized deposit itself, and when such a product would instead be a payment stablecoin backed by tokenized deposits.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Reserves must be at least 1:1. Proposed 12 CFR 350.4(a)(1) would require the issuer to maintain identifiable reserves whose reserve asset value 'must at all times meet or exceed the total outstanding issuance value of payment stablecoins issued by the PPSI'. The issuer must monitor value throughout the day, but only has to notify the FDIC if reserves are short at the close of business.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the reserve asset value of which must at all times meet or exceed the total outstanding issuance value of payment stablecoins issued by the PPSI"
+  },
+  {
+   "fact": "Permitted reserve assets (proposed 12 CFR 350.4(e)), seven categories only: (1) US coins and currency including Federal Reserve notes; (2) money credited to an account at a Federal Reserve Bank; (3) demand deposits or other withdrawable-on-demand deposits at an insured depository institution, or insured shares at an insured credit union; (4) Treasury bills, notes or bonds with a remaining maturity of 93 days or less, or issued with a maturity of 93 days or less; (5) money received under overnight repurchase agreements backed by Treasury bills maturing in 93 days or less; (6) overnight reverse repurchase agreements collateralized by Treasuries, tri-party, centrally cleared, or bilateral with an adequately creditworthy counterparty; (7) shares of registered Government money market funds invested solely in the assets in (1) to (6).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Reserve assets are valued at fair value, except United States coins and currency, which are valued at FACE value. The FDIC explains that valuing coins at fair value could let gold or silver coins back a stablecoin, which it believes is not consistent with Congressional intent.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Valuing coins at fair rather than par value could lead to gold or silver, in coin form, backing payment stablecoins, which the FDIC believes is not consistent with Congressional intent."
+  },
+  {
+   "fact": "Concentration limit: proposed 12 CFR 350.4(f) would require an issuer to limit its exposure to any one eligible financial institution, regardless of instrument type, to no more than 40 percent of its reserve assets, checked on each business day. The FDIC says it 'selected 40 percent so no single eligible financial institution custodies a majority of the PPSI's reserve assets.'",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(f) Asset diversification and concentration. A permitted payment stablecoin issuer shall on each business day limit its exposure to any one eligible financial institution, regardless of instrument type, to no more than 40 percent of its reserve assets."
+  },
+  {
+   "fact": "If an issuer runs more than one brand of stablecoin, each brand must have its own segregated pool of reserves, kept, maintained and recorded separately, unless the FDIC approves commingling in writing. Reserves satisfying the 1:1 requirement for one brand cannot be used to meet redemptions of another brand; only genuinely excess reserves above 1:1 may be moved.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "if a PPSI issues more than one brand of distinct payment stablecoin, each payment stablecoin must have a segregated pool of reserves, kept, maintained, and recorded separately, unless the FDIC approves in writing that the PPSI may comingle reserves."
+  },
+  {
+   "fact": "Monthly public reserve report: by close of business on the last day of each month, for each publicly distinguishable brand, the issuer must publish on its website the composition of reserves as of the close of business on the last day of the PREVIOUS month, using a template in table 1 to proposed 12 CFR 350.4(g), including the total number of outstanding stablecoins and the average tenor and geographic location of custody of each reserve asset category. The report is not required to name the institutions, branches or counterparties holding the reserves.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "That monthly report must be examined by a registered public accounting firm, which issues a written report to the issuer's audit committee (or board), and the issuer must publish that firm's report on its website at the same time. The CEO and CFO must certify the monthly report's accuracy to the FDIC; a person who knowingly submits a false certification is subject to the same criminal penalties as those in 18 U.S.C. 1350(c).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Pledging, rehypothecating or reusing required reserve assets is prohibited, with three narrow exceptions: margin obligations on permitted repo/reverse-repo positions; obligations tied to standard custodial services; and creating liquidity to meet expected redemptions by selling Treasury bills maturing in 93 days or less into repurchase agreements that are either cleared through an SEC-registered clearing agency or approved in writing by the FDIC in advance.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "If reserves fall short, the FDIC may in its sole discretion direct the issuer to suspend or reduce issuance, to take measures to increase reserves, or, in exigent circumstances, to begin orderly redemption of the stablecoin. The issuer must also maintain a written contingency plan (proposed 350.4(j)) to restore compliance, and must notify the FDIC if it decides to take actions that would result in orderly redemption of all outstanding stablecoins (proposed 350.4(k)).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Redemption timing: the FDIC proposes to define 'timely' as no later than TWO BUSINESS DAYS after the redemption request is made. Two business days is a maximum, not a target; an issuer may choose shorter. The FDIC acknowledges 'the market may expect redemptions to occur far more quickly than two business days' and asks (Question 71) whether a different period, anywhere from less than one calendar day to seven calendar days, would be better.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The FDIC is proposing to define ``timely'' to mean that a PPSI shall redeem a payment stablecoin no later than two business days following the date of the requested redemption in proposed Sec. 350.5(b)(1)."
+  },
+  {
+   "fact": "Discretionary limitations on timely redemption can only be imposed by the FDIC, and the issuer's published redemption policy must say so.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In addition, consistent with the Act, the FDIC is proposing that discretionary limitations on timely redemptions can only be imposed by the FDIC."
+  },
+  {
+   "fact": "'Significant redemption request' is defined as aggregate redemption requests exceeding 10 percent of the issuer's outstanding issuance value within a single 24-hour period. The issuer must notify the FDIC IMMEDIATELY on crossing the 10 percent threshold, not at the end of the 24 hours, and may at that point ask the FDIC to extend the two-business-day redemption window. The FDIC may grant, deny, or grant a different amount of time.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Redemption minimum: the issuer must disclose the minimum number of stablecoins it will redeem, and that minimum 'may not be greater than one payment stablecoin'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Under proposed Sec. 350.5(a)(5) the PPSI must disclose the minimum number of payment stablecoins that it will redeem, but the minimum number the PPSI will redeem may not be greater than one payment stablecoin."
+  },
+  {
+   "fact": "Required public disclosures (proposed 350.5(d)(1)), in plain language, readily noticeable, readily understandable and segregated from other information: the name of the issuer of that brand; that the issuer is the entity obligated to convert, redeem or repurchase the stablecoin for a fixed amount of monetary value; a link to the monthly reserve composition report; and all fees for purchasing or redeeming. Any fee INCREASE requires at least seven calendar days' prior notice, including secure delivery to current customers for whom the issuer has contact details.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FDIC asks (Question 73) whether it should require issuers to include an automated emergency safety mechanism, 'commonly known as a \"circuit breaker,\" designed to pause trading, redemptions, or minting when extreme price volatility or a de-pegging event occurs'. It is a question, not a proposed requirement.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Prohibited: paying the holder of a payment stablecoin any form of interest or yield, whether in cash, tokens or other consideration, solely in connection with holding, using or retaining the stablecoin. The FDIC adds a rebuttable PRESUMPTION of violation where the issuer has an arrangement with an affiliate or 'related third party' that pays yield to holders; a 'related third party' includes a person offering to pay yield to holders as a service, and any person on whose behalf or under whose branding the issuer issues the stablecoin. The issuer may rebut by submitting written materials to the FDIC.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Prohibited: using any combination of terms related to the United States Government, including but not limited to 'United States', 'United States Government' and 'USG', in the name of a payment stablecoin; and marketing a stablecoin so that a reasonable person would perceive it to be legal tender, issued by the United States, or guaranteed or approved by the United States Government. Currency abbreviations that the issuer is obligated to redeem for are carved out.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Prohibited: directly or by implication representing that payment stablecoins are backed by the full faith and credit of the United States, guaranteed by the US Government, or subject to Federal deposit insurance or Federal share insurance. The FDIC says disclaimers may be part of compliance but it also expects representations, marketing materials and disclosures to be clear and consistent so as to avoid implications 'likely to cause confusion'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Prohibited (an FDIC addition, not a statutory command): a PPSI may not provide credit to its customers to purchase payment stablecoins. The FDIC's stated reason is that lending to buy stablecoins 'could result in a highly leveraged balance sheet in which the reserve assets do not provide the intended resiliency'. The FDIC expressly seeks comment on whether this is an appropriate prohibition.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This could result in a highly leveraged balance sheet in which the reserve assets do not provide the intended resiliency. The FDIC seeks comment on whether this is an appropriate prohibition, and whether other alternatives would better achieve the Act's objectives."
+  },
+  {
+   "fact": "Permitted activities are narrow: issuing stablecoins, redeeming them, managing the related reserves, and custody/safekeeping limited to payment stablecoins, required reserves, or private keys of payment stablecoins - explicitly NOT custody of non-payment-stablecoin digital assets, unless separately authorised by the FDIC under the Act's digital-asset-service-provider rule of construction.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Capital: regulatory capital for a PPSI would consist of only common equity tier 1 capital and additional tier 1 capital. The FDIC is NOT proposing tier 2 capital for PPSIs, because allowing subordinated debt to count 'may incentivize a PPSI to take on material leverage beyond its payment stablecoin liabilities'. No deductions from regulatory capital are proposed, and unlike the bank capital rule, no neutralization of accumulated other comprehensive income is permitted.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "De novo minimum capital: a de novo PPSI must hold minimum capital equal to the GREATER of the amount specified in its approval conditions and $5 million. A 'de novo' PPSI is one that received FDIC approval to issue within the prior 3 years, and the requirement is held for 36 months, longer or shorter as the FDIC specifies.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(A) the amount specified as part of its approval conditions; and (B) $5 million."
+  },
+  {
+   "fact": "Beyond the de novo floor, the FDIC is NOT proposing a specific minimum capital amount or ratio by regulation. Capital would be set by individualised evaluation of each issuer, with the FDIC able to impose an individual additional requirement under proposed 350.10. The FDIC expects capital requirements to be 'relatively low' for an issuer narrowly focused on issuing and redeeming, and higher where it holds riskier assets or has material or volatile intangible assets.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Although the FDIC is not currently proposing to establish any specific minimum capital amount or ratio by regulation, or a framework for determining a minimum capital requirement, the FDIC is seeking comment on whether to implement such a framework for determining more objective capital requirements."
+  },
+  {
+   "fact": "Operational backstop (proposed 350.9(b)): a separate designated pool of highly liquid assets, independent of capital and separate from reserve assets, sized on the issuer's ACTUAL TOTAL EXPENSES over the past 12 months (from the four most recent quarterly reports), recalculated each quarter. It must be held as US currency directly or at a Federal Reserve Bank, as demand deposits at an insured depository institution, or in qualifying Treasuries, and must be separately identified in reports.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "If an issuer misses the minimum capital requirement or the operational backstop at quarter end, it must notify the FDIC in writing with the measures it intends to take. If the FDIC finds those measures not viable it may direct other steps, including issuing additional capital instruments, acquiring additional liquid assets, suspending or reducing issuance, or executing an orderly redemption of all outstanding payment stablecoins.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Bank capital rule change (proposed 12 CFR 324.22(i)): an FDIC-supervised institution consolidated with a PPSI must (1) deconsolidate the PPSI from its balance sheet for capital purposes, (2) deduct from common equity tier 1 any positive retained earnings originating from the PPSI not paid out as dividends, and (3) exclude remaining investments in and receivables from the PPSI from risk-weighted assets, average total consolidated assets and total leverage exposure. This implements the GENIUS Act's bar on requiring a parent to hold more capital for the PPSI than the PPSI itself must hold.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FDIC flags the resulting incentive risk itself: a parent bank might over-contribute assets to its PPSI subsidiary to inflate its own capital ratios, and the FDIC says it would expect to require additional regulatory capital of the parent if it sees that.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Examinations would follow the parent bank's cycle under 12 CFR 337.12 - generally at least once every 12 months, or at least once every 18 months if the parent meets the conditions in 337.12(b). The FDIC may examine as frequently as it deems necessary, on-site or remotely, and must be granted prompt and complete access to officers, directors, employees, agents and records 'of any type, including distributed ledgers'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Reporting cadence proposed: a CONFIDENTIAL WEEKLY report to the FDIC (content still open for comment); QUARTERLY reports of financial condition in a standardized FDIC format, due within 30 days of quarter end, covering income statement, balance sheet, reserves, statement of changes in equity, issuance value and assets under custody, which the FDIC intends to publish for public use, with CFO attestation plus attestation by directors and senior management; and other reports on request.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Audit threshold: a PPSI with more than $50,000,000,000 in consolidated total outstanding issuance value that is not already an SEC reporting company must prepare annual GAAP financial statements including related party transaction disclosure, have them audited by a registered public accounting firm, publish them on its website and submit them to the FDIC within 120 days after fiscal year end. The FDIC proposes to allow the audit under either generally accepted auditing standards or PCAOB standards, which it describes as additional flexibility relative to the statute.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "AML and sanctions certification: an FDIC-supervised PPSI must file with the FDIC a certification that it has implemented anti-money-laundering and economic sanctions compliance programs reasonably designed to prevent it facilitating money laundering, in particular for cartels and designated foreign terrorist organizations, and terrorist financing. The initial certification is due within 180 days of approval, and by April 1 of each year thereafter.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Custody (new subpart B, proposed 12 CFR 350.100 to 350.104): a custodian must treat customers' payment stablecoin reserves, stablecoins used as collateral, private keys, cash and other property as belonging to the customer and not as property of the custodian, and must take appropriate steps to protect them from the claims of the custodian's creditors AND any sub-custodian's creditors.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Control standard: for a payment stablecoin or tokenized reserve asset, a custodian or sub-custodian maintains control if it can reasonably demonstrate that no other party - including the customer or any affiliate of the custodian - can control or transfer the asset without the custodian's affirmative consent. The custodian must have technical safeguards to prevent unauthorized access by its own personnel.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Commingling with the custodian's own assets is prohibited, with three exceptions: an omnibus account holding several customers' assets so long as the reserves remain identifiable; holding customer payment stablecoin reserves that are in cash form as a deposit liability where applicable law allows; and withdrawing the share necessary to settle transactions or pay commissions, taxes, storage and other lawful charges.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Subpart B does not apply to a firm solely on the basis that it provides hardware or software to facilitate a customer's SELF-custody of payment stablecoins or private keys, consistent with GENIUS Act section 10(e) (12 U.S.C. 5909(e)).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FDIC is NOT proposing separate reporting requirements for custodians at this stage; it notes Call Report Schedule RC-T does not currently capture payment stablecoin custody and asks whether it should revise RC-T or create a separate form.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Information technology requirements include controls for testing, storage and deployment of the code base 'including the smart contract code'; validation that smart contracts operate as intended; periodic independent testing of controls; an incident identification, assessment and response program; and a customer notification program for unauthorized access to sensitive customer information, with mandatory delay if a law enforcement agency makes a written request because notice would interfere with a criminal investigation.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "On key handling, the FDIC lists as examples of appropriate layered security: private key security via multi-party computation or multi-signature technology to avoid single points of failure alongside cold/offline storage; geographically dispersed, encrypted and regularly tested recovery keys; and monitoring for technical, legal and material on-chain updates such as blockchain forks or smart contract vulnerabilities. These are examples the FDIC gives, not a prescribed list.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FDIC names the risks it is trying to address in operational resilience: ransomware, service provider outages and smart contract exploits, which 'can cause severe de-pegging, transaction delays, or loss of access to reserves', and notes the challenge of the 24/7 nature of blockchain networks.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Scope figures, all as of the quarter ending September 30, 2025: the FDIC insures 4,388 insured depository institutions and supervises 2,778 of them, and supervises ZERO permitted payment stablecoin issuers. Of the insured institutions 3,062 are 'small' for Regulatory Flexibility Act purposes; of the supervised ones 2,064 are 'small'. SBA defines a small banking organization as having $850 million or less in assets.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As of this date, the FDIC insures 4,388 IDIs, supervises 2,778 of these IDIs, and supervises zero PPSIs."
+  },
+  {
+   "fact": "The FDIC ESTIMATES that between 5 and 30 FDIC-supervised IDIs would apply for and receive approval to issue payment stablecoins through FDIC-supervised PPSIs in the first few years, and assumes roughly 30 FDIC-supervised IDIs would provide payment-stablecoin-related custody. The FDIC repeatedly states that these are estimates under significant uncertainty and could be higher or lower.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the FDIC estimates that between 5 and 30 FDIC-supervised IDIs would apply for and receive approval to issue payment stablecoins through FDIC-supervised PPSIs in the first few years after the enactment of the proposed rule."
+  },
+  {
+   "fact": "The FDIC certified that the proposal would not have a significant economic impact on a substantial number of small entities: even assuming all 30 potential issuers were small, that would be less than 1.5 percent of all FDIC-supervised small entities, which the FDIC does not consider a substantial number. No initial regulatory flexibility analysis was required.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Paperwork burden: the proposal creates a new information collection, OMB Control No. 3064-NEW, titled 'Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions', with a Total Annual Burden of 22,110 hours across 58 listed reporting, recordkeeping and third-party disclosure items.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OIRA determined the rulemaking is a 'significant regulatory action' under section 3(f) of Executive Order 12866, and the draft was submitted to OIRA for review. The FDIC says the proposal, if finalized as proposed, is not expected to be a regulatory action under Executive Order 14192.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The document contains 144 numbered questions for comment (Question 1 through Question 144). The FDIC also states it has not developed any alternative proposals and did not consider a 'no action' alternative because the amendments are statutorily mandated.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The FDIC says it 'has endeavored, in many areas, to align this proposed rule with the OCC's proposed rule', and asks for comment on how far the primary Federal payment stablecoin regulators should further align in their final rules. The OCC's proposal is cited as 91 FR 10202 (March 2, 2026) and the NCUA's as 91 FR 6531 (February 12, 2026).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Severability clauses are proposed in both subpart A (350.2) and subpart B (350.102): if a court stays or invalidates any provision, the FDIC intends the rest to continue in effect.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "On July 20, 2026 the FDIC published a follow-on Federal Register notice, 'Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers' (FR Doc 2026-14589, 91 FR 45274), inviting comment by September 18, 2026 on the weekly and quarterly reporting forms under OMB Control No. 3064-0225. This is a separate comment period from the April proposal's.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "DATES: Comments must be submitted on or before September 18, 2026."
+  },
+  {
+   "fact": "As of 2026-09-16 there is no final rule. A Federal Register API query by regulation_id_number 3064-AG19 returns exactly one document - the April 10, 2026 proposed rule. No comment-period extension and no final rule has been published under that RIN.",
+   "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bregulation_id_number%5D=3064-AG19",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"count\": 1"
+  }
+ ],
+ "not_said": [
+  "The document does NOT say payment stablecoins issued by a bank subsidiary are covered by deposit insurance. It proposes the opposite. Write it as: the holder of the stablecoin would not be an insured depositor; the insurance, if any, runs to the issuer as a corporate depositor of the bank holding the reserves.",
+  "The proposal has NO effective date. The Federal Register API returns effective_on: null. It is a proposal open for comment. Do not write that anything 'took effect' or 'came into force' on 2026-04-10, and do not call it a law or a rule already in force.",
+  "The FDIC does not say when, or whether, a final rule will be issued. It gives no target date for finalisation. (The only related date is the statutory one: the GENIUS Act becomes effective on 2027-01-18, or 120 days after final implementing regulations if that is earlier.)",
+  "The document names no stablecoin, no issuer, no bank and no brand. It uses the generic term 'brand of payment stablecoin'. Do not attach any real product name to any requirement.",
+  "The document does not state the GENIUS Act's enactment date. That date (July 18, 2025) comes from the FDIC's separate 2026-07-20 notice, so cite that notice if the date is used.",
+  "It does not set a minimum capital ratio or a general minimum capital amount. The only hard number is the $5 million floor during the de novo period. Do not describe the $5 million as a permanent or general minimum.",
+  "It does not say that stablecoin holders get no protection at all. It sets out reserve, redemption, disclosure, audit, custody and supervision requirements. But it contains no deposit-insurance-style guarantee of repayment, and says nothing about compensating holders if an issuer fails.",
+  "It says nothing about non-US users, non-US residents, cross-border availability, or whether people outside the United States could hold or redeem a stablecoin issued by an FDIC-supervised issuer. Nothing in it applies in Taiwan or to Taiwanese platforms.",
+  "It does not compare stablecoins with bank deposits as a choice for savers, and gives no view on whether anyone should hold a stablecoin.",
+  "It does not fix the content of the required confidential weekly report. The FDIC says it 'is seeking comment on what the FDIC should require' and merely lists possibilities.",
+  "The 'circuit breaker' is a QUESTION (Question 73), not a proposed requirement. Do not write that the FDIC would require one.",
+  "The 40 percent concentration limit, the two-business-day redemption window, the 10 percent / 24-hour significant-redemption threshold and the $5 million floor are all PROPOSED figures on which the FDIC expressly invites comment. They can change in a final rule.",
+  "The FDIC does not state how many stablecoin issuers exist or will exist. It says it supervises ZERO PPSIs as of 2025-09-30 and gives 5 to 30 as an ESTIMATE for the first few years, with explicit caveats.",
+  "The document does not address anti-money-laundering PROGRAM requirements in substance. It only requires an annual certification (proposed 350.6(c)). The AML/CFT and sanctions program rules are separate rulemakings by other agencies published the same day, and the FDIC published its own separate BSA/sanctions proposal on 2026-06-05 (91 FR, comments closed 2026-08-04). Do not fold those into this article.",
+  "Nothing in the document addresses stablecoin prices, market size, trading volume, yields or returns. There is no such figure in it to quote, and the vertical rules forbid them anyway."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The FDIC press release URL 'fdic-board-approves-two-notices-proposed-rulemaking'.",
+   "seen_where": "My own first guess at a plausible FDIC press-release slug.",
+   "why_excluded": "Returned HTTP 404. A guessed URL is fabrication even if it resolves, so I discarded it and found the real slug by listing /news/press-releases/2026 and reading the hrefs actually present on the page."
+  },
+  {
+   "claim": "The canonical Federal Register HTML page for the document at https://www.federalregister.gov/documents/2026/04/10/2026-06974/...",
+   "seen_where": "The lead URL in the assignment and the html_url field returned by the Federal Register API.",
+   "why_excluded": "NOT excluded as a fact - the document is real and the API confirms that URL - but excluded as a SOURCE URL because in this container it returns HTTP 200 with a 10,596-byte 'Federal Register :: Request Access' interstitial rather than the document. I read the document through the /full_text/text/ endpoint and the govinfo PDF, so I cite those. A writing agent in another environment may prefer the canonical URL; it is legitimate, I simply could not render it here."
+  },
+  {
+   "claim": "That the FDIC 'banned' interest-bearing stablecoins, or that exchanges may no longer pay rewards on stablecoin balances.",
+   "seen_where": "A common framing in general coverage of GENIUS Act rulemaking.",
+   "why_excluded": "The document prohibits the ISSUER from paying interest or yield solely in connection with holding, use or retention, and creates a rebuttable presumption where an affiliate or 'related third party' does so. It does not purport to regulate every exchange or wallet, and a presumption can be rebutted. Writing 'banned' overstates it. Also, the vertical rules forbid writing about yields and rewards figures at all."
+  },
+  {
+   "claim": "That the FDIC decided stablecoin reserves are ineligible for pass-through deposit insurance.",
+   "seen_where": "The natural but wrong reading of the proposal's headline.",
+   "why_excluded": "It is a PROPOSAL and the FDIC explicitly asks in Questions 125 to 130 whether it is the best reading of the GENIUS Act and the FDI Act and what would happen if reserves WERE eligible. 'Proposed' must stay in every sentence about this."
+  },
+  {
+   "claim": "The FDIC Board approval date being 2026-04-08.",
+   "seen_where": "The document's own signature block, 'Dated at Washington, DC, on April 8, 2026'.",
+   "why_excluded": "Not excluded, but do not conflate it with board approval. The FDIC press release is dated April 7, 2026 and says the Board 'today approved'; April 8 is the Executive Secretary's dating of the document for filing. Article should use 4/7 for board approval, 4/10 for publication."
+  },
+  {
+   "claim": "Details of the December 19, 2025 FDIC application-procedures proposal (90 FR 59409) and its extended comment period to 2026-05-18.",
+   "seen_where": "Footnotes 6 and 52 of this document, and the FDIC press release of 2026-02-06 which I fetched.",
+   "why_excluded": "Verified and usable as one sentence of background, but deliberately kept thin: it is a different rulemaking with its own record, and reporting it in detail would be a second article rather than this one."
+  },
+  {
+   "claim": "Anything about how many comments were filed on the proposal, or what commenters said.",
+   "seen_where": "The Federal Register API's regulations_dot_gov_info block shows comments_count: 0, checked 2026-04-11T14:55:05Z - i.e. a count taken the day after publication, before the comment period ran.",
+   "why_excluded": "That figure is stale by five months and does not represent the final tally. I could not reach a current regulations.gov count from this container, so no comment count is recorded."
+  },
+  {
+   "claim": "Whether the OCC, Federal Reserve or NCUA reached the same conclusion on pass-through deposit insurance or share insurance.",
+   "seen_where": "This document cites the OCC proposal (91 FR 10202) and NCUA proposals (91 FR 6531, and 91 FR published 2026-05-18) but does not summarise their insurance treatment.",
+   "why_excluded": "I did not read those documents in this pass. Do not assert that the other regulators took the same position; say only what the FDIC proposed."
+  },
+  {
+   "claim": "Any characterisation of what the rule means for the stablecoin market's size, growth or competitiveness.",
+   "seen_where": "The FDIC's own 'Expected Benefits' section speculates about market expansion and lower remittance costs.",
+   "why_excluded": "Those are the agency's forward-looking expectations, hedged as 'could' and 'potentially', and the FDIC states it does not have the data to estimate the net effect on deposits. If used at all they must be attributed as 'the FDIC expects' and must not become a market forecast."
+  }
+ ],
+ "editorial_brief": "Reader: a Taiwanese general reader who already uses, or is offered, US-dollar stablecoins through a cross-border payment, remittance or storage service, and who has heard that American banks are about to issue them. The angle the spec asks for is institutional, not market: what a regulator is proposing to require of whom, and what it says the ordinary holder does and does not get.\n\nThe single most useful thing this document gives a reader is a clean answer to the question everyone quietly assumes the wrong way round: if a US bank's subsidiary issues a stablecoin, is my balance protected by deposit insurance? The FDIC's proposed answer is no. The reserves sitting in a bank account are insured to the ISSUER as a corporate depositor, aggregated with the issuer's other corporate money at that bank and capped at the current SMDIA of USD 250,000 for the issuer - not passed through to each holder. Meanwhile the FDIC proposes the mirror image for tokenized deposits: a deposit recorded on a distributed ledger is still a deposit, and its depositor keeps the same insurance. Those two halves next to each other are the article. It also lands squarely on the disclaimer this vertical already carries, that some services are not covered by deposit insurance.\n\nStructure suggestion for five sections: (1) what was published and when, and that it is a proposal with a comment period that closed on 2026-06-09 and no final rule as of the check date; (2) who it covers - only subsidiaries of insured State nonmember banks and State savings associations, plus FDIC-supervised custodians, with the FDIC supervising zero such issuers at the time; put the comparison table here (suggested table, 3 columns x 4-5 rows: item / what the FDIC proposes / status, covering stablecoin reserve deposits, tokenized deposits, redemption window, reserve concentration); (3) the deposit insurance answer in full, with the diagram here; (4) the operating requirements a holder would actually notice - 1:1 reserves, monthly public reserve report examined by an accounting firm, redemption within two business days at a minimum of one coin, fee changes with seven days' notice, no interest or yield from the issuer; (5) what is still open - 144 questions, figures that can change, and the statutory effective date of 2027-01-18 or 120 days after final rules.\n\nDeliberately out of scope: the AML and sanctions programme rulemakings published the same day by Treasury, FinCEN, OFAC and the OCC (a sibling article), the OCC and NCUA proposals (sibling articles), the FDIC's separate December 2025 application-procedures proposal and its separate June 2026 BSA proposal, and any comparison between real stablecoins. Every figure must carry the word 'proposed'. Any everyday scenario must be flagged as an editorial illustration.",
+ "must_not_write": [
+  "Do not write any price, exchange rate, market capitalisation, trading volume, fund flow or historical return. The vertical bans it and the document contains none of it anyway.",
+  "Do not write about yield, staking rewards, airdrops or interest rates paid to holders as a number or as an opportunity. The interest prohibition can only be described as a regulatory restriction on the issuer.",
+  "Do not name or compare specific stablecoins, exchanges, wallets or custodians, and do not suggest any is safer, better regulated or worth holding. The document names none.",
+  "Do not write that the rule is in force, effective, or that anything 'starts' on 2026-04-10. It is a Notice of proposed rulemaking with no effective date.",
+  "Do not write 'the SEC', 'US regulators' or 'the US government' decided this. It is the FDIC alone, acting as primary Federal payment stablecoin regulator for subsidiaries of insured State nonmember banks and State savings associations.",
+  "Do not write that stablecoins are or will be covered by deposit insurance, and do not write that stablecoins are 'as safe as bank deposits'.",
+  "Do not write that the FDIC banned banks from issuing stablecoins, or that it banned yield-bearing stablecoins outright. Both overstate the text.",
+  "Do not present the $250,000 SMDIA as protection available to a stablecoin holder. It is the limit applicable to the ISSUER's corporate deposits at one insured institution.",
+  "Do not state or imply that any of this applies to Taiwanese platforms, Taiwanese users, or stablecoins held through Taiwanese services. The document is silent on all of it.",
+  "Do not guess the Federal Register document number, the RIN, any CFR section number or any US Code citation. Everything usable is in verified_facts with its source.",
+  "Do not cite CoinDesk, Cointelegraph, The Block, Decrypt, any law-firm client alert or any news roundup. None was used here and none may appear in sources.",
+  "Do not say 'we tested' or 'we tried' anything. This is a document reading.",
+  "Do not omit the 'proposed' qualifier from the two-business-day redemption window, the 40 percent concentration limit, the 10 percent / 24-hour redemption trigger, the $5 million de novo capital floor or the USD 50 billion audit threshold.",
+  "Simplified Chinese characters are forbidden; in a regulatory context use 虛擬資產, in general context 加密貨幣, per crypto.md."
+ ],
+ "overlaps_existing_article": "No existing content pack overlaps: apps/api/app/guides/content/ contains 45 *-news-* packs and all are AI news; the only finance packs are finance-glossary-50-terms.json and personal-finance-first-steps.json, neither of which touches stablecoin regulation. docs/crypto-news-2026/ does not exist yet.\n\nThe real overlap risk is with sibling assignments in this same batch, all four of which implement the same statute:\n- C6 crypto-news-genius-act-occ-20260302 (OCC, 91 FR 10202, comments closed 2026-05-01): covers national banks and, importantly, Federal qualified payment stablecoin issuers INCLUDING NONBANKS. This FDIC article must stay inside its narrow perimeter - subsidiaries of insured State nonmember banks and State savings associations - and should say so explicitly, which is also the cleanest way to divide the two. The FDIC document itself says the OCC proposal 'is more expansive than this proposed rule'.\n- C7 crypto-news-stablecoin-aml-20260410 (published the SAME DAY, 2026-04-10, with the SAME comment deadline 2026-06-09, on AML/CFT and sanctions programmes). This is the sharpest collision: same date, same deadline, same statute. Division: C7 owns everything about AML programmes, customer identification and sanctions compliance. This article mentions the FDIC's annual AML/sanctions CERTIFICATION requirement (proposed 350.6(c), initial within 180 days of approval, then by April 1 each year) in one sentence only, as a supervisory filing obligation, and hands the substance to C7. If both articles are published, each should carry a link to the other rather than repeating.\n- C9 crypto-news-ncua-genius-act-20260518 (NCUA, credit unions, comments closed 2026-07-17): NCUA share insurance is a different insurance system. Do not let 'deposit insurance' bleed into 'share insurance'; this article should mention NCUA only where the GENIUS Act text does, in the quoted prohibition.\n- Separately, Treasury published 'GENIUS Act Regulations on Payment Stablecoin Issuance, Offer, and Sale' on 2026-08-18 (comments close 2026-10-19) and 'GENIUS Act Broad-Based Principles for Determining Whether a State-Level Regulatory Regime Is Substantially Similar' on 2026-04-03 (comments closed 2026-06-02). Neither is assigned here; do not summarise them, and do not imply this FDIC proposal is the whole GENIUS Act framework.\n\nThe thing that makes THIS article non-duplicative is the deposit insurance and tokenized deposit half (proposed 12 CFR 330.11(a)(3), 330.3(k) and 330.1(e)). No sibling assignment covers it, and it is the part with a direct consequence for an ordinary holder. Lead with it.",
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-crypto.md, table row C8: the lead URL and the 2026-06-09 comment deadline both check out. Confirmed today: publication 2026-04-10, 91 FR 18534, RIN 3064-AG19, Notice of proposed rulemaking, comments close 2026-06-09.",
+  "The C8 row gives the agency as 'FDIC' with no date qualifier. Add that the FDIC BOARD approved it on 2026-04-07 (FDIC press release) - three days before publication. The candidates file already warns about announcement-vs-publication date confusion for C3 and C4; C8 has the same gap and the file does not flag it.",
+  "The header of the C6-C9 section says the four regulators proposed rules and lists C7 as 'Treasury / OFAC / FinCEN'. On 2026-04-10 there were in fact THREE separate AML documents with the same 2026-06-09 deadline, from FinCEN, from OFAC (FR Doc 2026-06963, the one cited) and from the OCC. Whoever writes C7 should not describe it as a single joint document without checking.",
+  "New, not in the candidates file: on 2026-06-05 the FDIC published its OWN proposal, 'Bank Secrecy Act and Sanctions Compliance Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers' (comments closed 2026-08-04). It is distinct from both C7 and C8 and is a candidate in its own right.",
+  "New, not in the candidates file: on 2026-07-20 the FDIC published 'Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers' (FR Doc 2026-14589, 91 FR 45274, OMB 3064-0225), comments closing 2026-09-18 - two days after the check date. It is the operational follow-on to C8 and worth a line in the C8 article.",
+  "New, not in the candidates file: Treasury published 'GENIUS Act Regulations on Payment Stablecoin Issuance, Offer, and Sale' on 2026-08-18 (comments close 2026-10-19) and 'GENIUS Act Broad-Based Principles for Determining Whether a State-Level Regulatory Regime Is Substantially Similar' on 2026-04-03 (comments closed 2026-06-02). Both are first-party Federal Register documents and both are unassigned.",
+  "Status of C8 as of 2026-09-16: still a proposal. A Federal Register query by RIN 3064-AG19 returns exactly one document. No final rule, no extension.",
+  "Network note for the whole crypto vertical, to be added next to the existing block list: federalregister.gov's HTML document pages now return HTTP 200 with a 'Federal Register :: Request Access' interstitial to curl. The API (/api/v1/...), the full-text endpoints (/documents/full_text/text/...) and govinfo.gov PDFs are NOT blocked. fdic.gov serves both HTML and PDF normally."
+ ]
+}

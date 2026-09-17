@@ -1,0 +1,1285 @@
+{
+  "slug": "crypto-news-fdic-genius-act-20260410",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "finance",
+    "crypto"
+  ],
+  "valid_until": null,
+  "news_date": "2026-04-10",
+  "featured": false,
+  "display_order": 206,
+  "related": [
+    "crypto-news-genius-act-occ-20260302",
+    "crypto-news-ncua-genius-act-20260518",
+    "crypto-news-stablecoin-aml-20260410"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "美國 FDIC 穩定幣草案：準備金存款保給發行人，不穿透到持有人",
+      "description": "2026 年 4 月 7 日美國聯邦存款保險公司（FDIC）理事會通過一份 GENIUS Act 實施草案，4 月 10 日刊登於聯邦公報（91 FR 18534）。本文依聯邦公報全文與 FDIC 自家公告，說明這份提案管到誰、擬議的準備資產與贖回要求，以及它為什麼把準備金存款的存款保險算在發行人身上，而不是每一位穩定幣持有人。",
+      "hero": {
+        "src": "/guides/crypto-news-fdic-genius-act-20260410/hero.jpg",
+        "alt": "原創插圖：左邊是一棟銀行建築，連到中間一面盾牌，盾牌裡的三層長條代表受保的存款；盾牌右側以虛線連到一份虛線外框的草案文件與一枚硬幣，兩者都在盾牌之外",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 4 月 10 日，美國聯邦存款保險公司（Federal Deposit Insurance Corporation，FDIC）的一份規則草案刊登在聯邦公報，卷期頁碼 91 FR 18534、文號 RIN 3064-AG19，類別欄寫的是 Notice of proposed rulemaking，也就是規則制定提案。FDIC 理事會是在三天前的 2026 年 4 月 7 日通過它，當天的新聞稿寫理事會「today approved」。本文以刊登日為事件日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是聯邦公報上這份提案全文、FDIC 同案新聞稿、FDIC 網站的聯邦公報刊登與公眾意見清單頁，以及 FDIC 在 2026 年 7 月 20 日另外刊登的申報表格公告。本站沒有實測，也不提供投資或法律意見；以下每一項都還在草案階段，最終規則可能與提案不同。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "美國 FDIC 在 2026 年 4 月 7 日通過、4 月 10 日刊登一份 GENIUS Act 實施草案，管的是它監理的存款機構與這些機構獲准發行支付型穩定幣的子公司；存款保險那一段還及於所有維持這類存款的受保存款機構。",
+            "草案提議把作為穩定幣準備金的存款，依法人存款規則保給發行人，不以穿透方式保給每一位穩定幣持有人。",
+            "代幣化存款則相反：只要符合法定的存款定義就仍然是存款，存款人享有的聯邦存款保險不變。",
+            "意見截止日依聯邦公報原文是 2026 年 6 月 9 日；以 FDIC 的刊登清單頁查核到 2026 年 9 月 17 日，RIN 3064-AG19 只出現在刊登當日那一列，未見同文號的最終規則。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這是一份提案，不是已經生效的規則"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件的 ACTION 欄寫著 Notice of proposed rulemaking，SUMMARY 欄第一句是 FDIC 正就一份提案徵詢意見，要做三件事：對受它監理的獲准支付型穩定幣發行人與受保存款機構實施 GENIUS Act 的部分要求、釐清作為準備資產的存款之存款保險範圍，以及釐清代幣化存款的處理方式。提案本身沒有生效日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 何時適用，提案引的是法律自己的規定：於 2027 年 1 月 18 日生效，或在各主管機關發布任何實施本法的最終規則後 120 天生效，以較早者為準——那是法律的生效規定，不是這份草案的。四月這份文件沒有印這部法的制定日，是 FDIC 在 7 月 20 日另一份公告才寫它「was enacted on July 18, 2025」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "意見截止日照原文寫：DATES 欄要求意見須於 2026 年 6 月 9 日前送達 FDIC。以 FDIC 的刊登清單頁查核到 2026 年 9 月 17 日，RIN 3064-AG19 只出現在 2026 年 4 月 10 日那一列，該列標著 Comment Period End: June 9, 2026，未見同文號的最終規則列。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "管到誰：FDIC 監理的存款機構，以及它們的穩定幣子公司"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 設了四個聯邦支付型穩定幣主管機關，文件列為 FDIC、通貨監理局（OCC）、聯邦準備理事會（FRB）與全國信用合作社管理局（NCUA）。FDIC 只處理自己那一塊：它是受保州立非會員銀行與州立儲蓄機構獲准發行支付型穩定幣之子公司的主管機關，而文件寫明，這類發行人必須是受保存款機構的子公司。另一半是保管：擬議的 subpart B 適用於受 FDIC 監理、以替穩定幣準備金、作為擔保品的穩定幣或發行用私鑰提供保管服務為業者。存款保險那一段的射程更寬：文件在影響範圍那一節，把所有維持代幣化存款或穩定幣準備金存款的受保存款機構都列為直接適用對象。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件自己也把邊界說清楚：OCC 在 2026 年 3 月 2 日刊登的提案「is more expansive than this proposed rule」，管的範圍依文件所述還包含非銀行機構。文件以 2025 年 9 月 30 日為基準時點，寫 FDIC 當時「supervises zero PPSIs」，受它監理的這類發行人是零家。以這份提案全文查核到 2026 年 9 月 17 日，未見任何關於非美國使用者、跨境提供或台灣業者的規定。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "草案怎麼提",
+            "狀態"
+          ],
+          "rows": [
+            [
+              "準備金存款",
+              "保給發行人，算法人存款",
+              "提案"
+            ],
+            [
+              "代幣化存款",
+              "仍是存款，保險不變",
+              "提案"
+            ],
+            [
+              "贖回時限",
+              "不遲於兩個營業日",
+              "提案"
+            ],
+            [
+              "準備資產集中度",
+              "單一機構不逾 40%",
+              "提案"
+            ],
+            [
+              "最低贖回量",
+              "不得高於一枚",
+              "提案"
+            ]
+          ],
+          "caption": "2026 年 9 月 17 日查核，依 91 FR 18534 的擬議條文整理；表中每一項都還是提案，最終規則可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "存款保險：保的是發行人，不是每一位持有人"
+        },
+        {
+          "type": "paragraph",
+          "text": "FDIC 提議修改第 330 部的存款保險規則，使作為支付型穩定幣準備金而存放在受保存款機構的存款，依法人存款規則保給獲准發行人，而不以穿透（pass-through）方式保給持有人；擬議新增的 12 CFR 330.11(a)(3) 就是這個機制。文件說明，法人存款規則會把同一家受保機構裡同一存款人的法人存款加總，保到標準最高存款保險額（SMDIA），金額寫「currently $250,000」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件寫「In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category.」——此處的存款人是發行人，不是每位持有人各自享有 25 萬美元；依擬議條文，不論那是準備金還是營運開銷，發行人在同一家機構的存款都會加總，而 FDIC 只保「存款」，其他類別的準備資產不在範圍內。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理由有兩個：一是文件引 GENIUS Act 明文，支付型穩定幣不受美國完全信用擔保與美國政府保證，也不受 FDIC 的存款保險或 NCUA 的股金保險，而且作相反陳述是違法的；二是持有人通常靠移轉穩定幣完成交易，資金從未離開那個受保帳戶。代幣化存款的結論則相反：擬議 12 CFR 330.3(k) 要明定記帳技術不影響一筆負債是不是「存款」，因此存款人享有的聯邦存款保險不變——但 FDIC 提醒，並非每一種代幣化的銀行負債都是存款。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-fdic-genius-act-20260410/diagram-1.svg",
+          "alt": "四格圖解：準備金存款保給發行人、持有人不以穿透方式受保、代幣化存款仍是存款、清理時持有人債權順位優先於非穩定幣債權人",
+          "width": 1600,
+          "height": 900,
+          "caption": "四格圖解：準備金存款保給發行人、不穿透到持有人、代幣化存款仍是存款，以及清理程序中持有人債權順位優先於非穩定幣債權人；四格都是擬議內容。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "持有人會看到的擬議要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備資產的擬議規定是至少一比一：發行人須維持可辨識的準備資產，其價值在任何時候都要等於或超過已發行在外的支付型穩定幣總額，且每個營業日對任一合格金融機構的曝險不得超過準備資產的 40%。發行人還要按月在自家網站公布上一個月最後一日收盤時的在外幣數與準備資產組成，該月報須經註冊會計師事務所查核。"
+        },
+        {
+          "type": "paragraph",
+          "text": "贖回方面，FDIC 提議把「及時」定義為不遲於贖回請求日後兩個營業日，並寫明那是上限、發行人可以更短，同時承認市場可能期待遠快於此，因此就天數是否合適徵詢意見。重大贖回請求定義為單一 24 小時內合計超過在外發行額的 10%。擬議條文要求發行人應贖回大於或等於一枚穩定幣的任何數量，但原文接著加一個限定：須經適當的篩查與開戶程序。費用要揭露，調漲須至少提前七個日曆日通知；發行人也不得僅因持有、使用或保留穩定幣而付給持有人任何形式的利息或收益。"
+        },
+        {
+          "type": "paragraph",
+          "text": "那發行人倒了呢？提案沒有給持有人存款保險式的還款保證，但它寫到清償順位：FDIC 的核准權限僅限於那些在 GENIUS Act 第 11 條所述清理程序中不會危及支付型穩定幣持有人債權的活動，而這些債權的順位優先於非穩定幣債權人。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還沒定案的部分，以及怎麼自己查現況"
+        },
+        {
+          "type": "paragraph",
+          "text": "草案裡幾乎每個數字都還在徵詢意見，文件的提問一路編到第 144 題，第 125 題就問 FDIC 對準備金存款的擬議處理是否妥當、是不是對 GENIUS Act 與聯邦存款保險法最好的解讀。後續也有動作：FDIC 在 2026 年 7 月 20 日另外刊登公告，就本案擬議的每週與每季申報表格徵詢意見，OMB 控制號 3064-0225，印的截止日是 2026 年 9 月 18 日，和四月提案的 6 月 9 日不是同一段意見期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是編輯設計的例子，不是實測。假設有人透過某個跨境服務拿到一筆美元穩定幣，以為那筆餘額像銀行存款一樣有保險：照這份草案的提議，在它管得到的範圍內，受保的是發行人存在銀行裡的那筆準備金，以法人存款計算並與發行人其他法人存款加總，不是每位持有人各自受保。要查草案走到哪裡，可以到 FDIC 的聯邦公報刊登與公眾意見清單頁，找 2026 年 4 月 10 日、RIN 3064-AG19 那一列，看旁邊有沒有多出同文號的最終規則。本站不比較也不推薦任何穩定幣、交易所、錢包或發行方。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這份規則已經生效了嗎？",
+              "answer": "沒有。它是 Notice of proposed rulemaking，也就是規則制定提案，文件本身沒有生效日。意見截止日依聯邦公報原文是 2026 年 6 月 9 日；以 FDIC 的聯邦公報刊登與公眾意見清單頁查核到 2026 年 9 月 17 日，RIN 3064-AG19 只出現在刊登當日那一列，未見同文號的最終規則。最終規則會不會發、什麼時候發、內容和提案差多少，文件沒有寫。"
+            },
+            {
+              "question": "我手上的美元穩定幣有沒有美國的存款保險？",
+              "answer": "依這份草案的提議，穩定幣持有人不會因為準備金放在受保銀行而受保。文件引 GENIUS Act 明文，支付型穩定幣不受美國完全信用擔保、不受美國政府保證、不受 FDIC 的存款保險、也不受 NCUA 的股金保險，而且作相反陳述是違法的。草案提議把準備金存款依法人存款規則保給發行人，不以穿透方式保給持有人。"
+            },
+            {
+              "question": "那 25 萬美元的上限是保我的嗎？",
+              "answer": "不是。文件寫標準最高存款保險額是按存款人、按受保機構、按所有權類別計算，這裡的存款人是發行人。依擬議條文，發行人在同一家受保機構的法人存款會全部加總後適用這個上限，不論那筆錢是穩定幣準備金還是營運開銷。依這份草案的提議，持有人不會被當成那家銀行的受保存款人，也不會各自獲得一份上限。"
+            },
+            {
+              "question": "代幣化存款和穩定幣是同一件事嗎？",
+              "answer": "在這份草案裡是相反的兩件事。代幣化存款只要符合法定的存款定義就仍然是存款，擬議條文要明定記帳技術不影響一筆負債是不是存款，因此存款人享有的聯邦存款保險不變。但 FDIC 也提醒，並非每一種代幣化的銀行負債都是存款；不符合法定定義的，依定義就是非存款商品。"
+            },
+            {
+              "question": "如果發行人倒了，持有人拿得回錢嗎？",
+              "answer": "文件沒有提供存款保險式的還款保證。它寫的是清償順位：FDIC 的核准權限僅限於那些在 GENIUS Act 第 11 條所述清理程序中不會危及支付型穩定幣持有人債權的活動，而這些債權順位在非穩定幣債權人之前。要注意 FDIC 在第 13 題還在徵詢意見，問「持有人」究竟該怎麼定義，是實質受益所有人，還是以數位錢包的持有或私鑰的控制來認定。"
+            },
+            {
+              "question": "這份草案管得到台灣的平台或台灣使用者嗎？",
+              "answer": "以這份提案全文查核到 2026 年 9 月 17 日，未見任何關於非美國使用者、跨境提供或台灣業者的規定。它管的是受 FDIC 監理的存款機構、這些機構獲准發行支付型穩定幣的子公司，以及受 FDIC 監理的相關保管業者；存款保險那一段還及於所有維持代幣化存款或穩定幣準備金存款的美國受保存款機構。台灣自己的制度是另一回事，本文結尾的連結有整理。"
+            },
+            {
+              "question": "兩個營業日內贖回是已經確定的保障嗎？",
+              "answer": "不是，那是擬議的定義。草案把及時贖回定義為不遲於贖回請求日後兩個營業日，並說明兩個營業日是上限、發行人可以更短，同時承認市場可能期待遠快於此，因此就天數是否合適徵詢意見。擬議的最低贖回量則規定發行人應贖回一枚以上的任何數量，但附有須經適當篩查與開戶程序的限定。"
+            },
+            {
+              "question": "我要去哪裡看這件事最新的狀態？",
+              "answer": "到 FDIC 網站的聯邦公報刊登與公眾意見清單頁，找 RIN 3064-AG19 那一列。那一頁會列出 FDIC 送到聯邦公報的文件、文件類別與意見截止日，如果之後發布最終規則，同一個文號會再出現一列。那一頁同時也是這份提案 ADDRESSES 欄列出的意見遞送管道之一。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "通過、刊登、生效是三件事",
+          "text": "FDIC 理事會通過是 2026 年 4 月 7 日，聯邦公報刊登是 2026 年 4 月 10 日，兩者都不是生效日——這份文件是規則制定提案，本身沒有生效日。意見截止日依聯邦公報原文是 2026 年 6 月 9 日；以 FDIC 的聯邦公報刊登與公眾意見清單頁查核到 2026 年 9 月 17 日，RIN 3064-AG19 只有刊登當日那一列，未見同文號的最終規則。看到「美國已經規定穩定幣如何如何」的說法，先確認講的是法律、最終規則，還是一份還在徵詢意見的草案。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇是資訊整理，不是投資建議",
+          "text": "本文說明的是法規、技術與產業運作，不推薦任何加密資產、交易所、錢包或發行方，也不是投資建議，不含價格、漲跌幅與買賣時機。監理規定、登記狀態、上線時程與服務條件依主管機關與業者當期公告為準，本文查核日為 2026-09-17。加密資產價格波動大、可能全額損失，且部分服務不受存款保險或投資人保護制度保障；實際適用請以官方公告或合格專業人員的意見為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年加密貨幣新聞總整理：法規、技術與產業的重點",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "虛擬資產服務法三讀通過：七種服務商、穩定幣許可與仍未定的施行日",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions（91 FR 18534，提案全文）",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC 新聞稿：FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+          "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC Federal Register Publications and Public Comments（聯邦公報刊登與公眾意見清單）",
+          "url": "https://www.fdic.gov/federal-register-publications",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers（91 FR 45274，申報表格公告）",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "FDIC Stablecoin Proposal: Reserve Deposits Insured to the Issuer, Not Passed Through to Holders",
+      "description": "On April 7, 2026 the board of the U.S. Federal Deposit Insurance Corporation (FDIC) approved a proposal implementing the GENIUS Act, published in the Federal Register on April 10 at 91 FR 18534. Working from that full text and the FDIC's own press release, this article sets out whom the proposal would reach, the proposed reserve asset and redemption requirements, and why it would count the deposit insurance on reserve deposits as the issuer's rather than each stablecoin holder's.",
+      "hero": {
+        "src": "/guides/crypto-news-fdic-genius-act-20260410/hero-en.jpg",
+        "alt": "Original illustration: a bank building connects to a central shield whose three bars stand for insured deposits; a dashed line runs from it to a draft document and a coin, both outside the shield",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On April 10, 2026 a proposed rule from the Federal Deposit Insurance Corporation (FDIC) was published in the Federal Register at volume and page 91 FR 18534 under RIN 3064-AG19, its category field reading Notice of proposed rulemaking, that is, a rulemaking proposal. The FDIC Board of Directors had approved it three days earlier, on April 7, 2026; the press release that day said the Board \"today approved\" it. This article treats the publication date as the event date."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 17, 2026, reading the full text of the proposal in the Federal Register, the FDIC press release issued with it, the FDIC website's page listing its Federal Register publications and public comments, and a separate reporting forms notice the FDIC published on July 20, 2026. We have tested nothing ourselves and we give no investment or legal advice; every item below is still at the proposal stage, and a final rule may differ from what is proposed."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "The FDIC approved a GENIUS Act proposal on April 7, 2026 and published it on April 10; it covers the depository institutions it supervises and their subsidiaries approved to issue payment stablecoins, and its deposit insurance section reaches every insured depository institution with such deposits.",
+            "The proposal would insure deposits held as reserves backing a stablecoin to the issuer under the rules for corporate deposits, and would not insure them to each stablecoin holder on a pass-through basis.",
+            "Tokenized deposits run the other way: as long as they meet the statutory definition of a deposit they remain deposits, and the federal deposit insurance the depositor enjoys is unchanged.",
+            "The comment deadline, as printed in the Federal Register, is June 9, 2026; checked against the FDIC's publications page on September 17, 2026, RIN 3064-AG19 appears only in the row for the day of publication, with no final rule under the same RIN."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "This is a proposal, not a rule already in force"
+        },
+        {
+          "type": "paragraph",
+          "text": "The document's ACTION field reads Notice of proposed rulemaking, and the first sentence of its SUMMARY field is that the FDIC is soliciting comment on a proposal that would do three things: implement certain requirements of the GENIUS Act applicable to FDIC-supervised permitted payment stablecoin issuers and insured depository institutions, clarify deposit insurance coverage for deposits held as reserve assets for payment stablecoins, and clarify the treatment of tokenized deposits. The proposal itself carries no effective date."
+        },
+        {
+          "type": "paragraph",
+          "text": "For when the GENIUS Act applies, the proposal cites the statute's own provision: it will become effective on January 18, 2027, or 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the Act, if earlier — that is the law's effective date provision, not this proposal's. The April document does not print the date the Act was enacted; it was a separate FDIC notice of July 20, 2026 that wrote it \"was enacted on July 18, 2025\"."
+        },
+        {
+          "type": "paragraph",
+          "text": "The comment deadline is given as printed: the DATES field requires comments to be received by the FDIC no later than June 9, 2026. Checked against the FDIC's publications page on September 17, 2026, RIN 3064-AG19 appears only in the row for April 10, 2026, a row marked Comment Period End: June 9, 2026, with no row for a final rule under the same RIN."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Whom it reaches: the depository institutions the FDIC supervises, and their stablecoin subsidiaries"
+        },
+        {
+          "type": "paragraph",
+          "text": "The GENIUS Act sets up four primary Federal payment stablecoin regulators, which the document lists as the FDIC, the Office of the Comptroller of the Currency (OCC), the Board of Governors of the Federal Reserve System (FRB) and the National Credit Union Administration (NCUA). The FDIC handles only its own part of that: it is the primary Federal payment stablecoin regulator of subsidiaries of insured State nonmember banks and State savings associations approved to issue payment stablecoins, and the document states that such an issuer must be a subsidiary of an insured depository institution (IDI). The other half is custody: the proposed subpart B would apply to persons supervised by the FDIC that are engaged in the business of providing custodial or safekeeping services for payment stablecoin reserves, payment stablecoins used as collateral, or private keys used to issue payment stablecoins. The deposit insurance section has a wider reach: in its impact section, the document lists every insured depository institution maintaining tokenized deposits or deposits held as stablecoin reserves as falling within the direct scope of the proposed rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "The document also draws its own boundary: the OCC's proposal, published on March 2, 2026, \"is more expansive than this proposed rule\", and its reach, as the document describes it, also takes in nonbank entities. Using September 30, 2025 as its reference point, the document says the FDIC at that time \"supervises zero PPSIs\" — it supervises none of these issuers. Checked against the full text of this proposal on September 17, 2026, we saw no provision at all about non-U.S. users, cross-border offering or operators in Taiwan."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "What the proposal would do",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Reserve deposits",
+              "Insured to the issuer, as corporate deposits",
+              "Proposed"
+            ],
+            [
+              "Tokenized deposits",
+              "Still deposits, insurance unchanged",
+              "Proposed"
+            ],
+            [
+              "Redemption deadline",
+              "No later than two business days",
+              "Proposed"
+            ],
+            [
+              "Reserve asset concentration",
+              "No more than 40% at any one institution",
+              "Proposed"
+            ],
+            [
+              "Minimum redemption amount",
+              "May not be greater than one coin",
+              "Proposed"
+            ]
+          ],
+          "caption": "Checked on September 17, 2026; compiled from the proposed provisions in 91 FR 18534. Every item in this table is still a proposal, and a final rule may differ."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Deposit insurance: the issuer is the insured party, not each holder"
+        },
+        {
+          "type": "paragraph",
+          "text": "The FDIC proposes to amend its deposit insurance rules in part 330 so that deposits placed at an insured depository institution as reserves backing a payment stablecoin would be insured to the permitted payment stablecoin issuer (PPSI) under the rules for corporate deposits, and would not be insured to holders on a pass-through basis; the proposed new 12 CFR 330.11(a)(3) is that mechanism. The document explains that the corporate deposit rules add together the corporate deposits of the same depositor at the same insured institution and insure them up to the standard maximum deposit insurance amount (SMDIA), an amount the document writes as \"currently $250,000\"."
+        },
+        {
+          "type": "paragraph",
+          "text": "The document writes: \"In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category.\" — the depositor here is the issuer, and it is not that each holder enjoys $250,000 of their own; under the proposed rule, all deposits a PPSI maintains at the same institution would be added together, whether they are reserves or operating expenses, and the FDIC insures only \"deposits\", so other types of reserve assets fall outside the coverage."
+        },
+        {
+          "type": "paragraph",
+          "text": "There are two reasons. The first is the statute's own words, which the document quotes: a payment stablecoin shall not be backed by the full faith and credit of the United States, guaranteed by the United States Government, subject to deposit insurance by the Federal Deposit Insurance Corporation, or subject to share insurance by the National Credit Union Administration, and representing otherwise is unlawful. The second is that holders usually settle by transferring the stablecoin, without funds ever leaving that insured deposit account. For tokenized deposits the conclusion runs the other way: the proposed 12 CFR 330.3(k) would state that the technology used for recordkeeping does not affect whether a liability constitutes a \"deposit\", so the federal deposit insurance the depositor enjoys is unchanged — but the FDIC cautions that not every tokenized bank liability is a deposit."
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-fdic-genius-act-20260410/diagram-1-en.svg",
+          "alt": "Four-panel diagram: reserve deposits insured to the issuer, holders not insured on a pass-through basis, tokenized deposits still deposits, holders' claims senior to non-stablecoin creditors",
+          "width": 1600,
+          "height": 900,
+          "caption": "Four-panel diagram: reserve deposits insured to the issuer, no pass-through to holders, tokenized deposits still deposits, and holders' claims ranking senior to non-payment stablecoin creditors in insolvency proceedings; all four panels are proposed.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The proposed requirements a holder would see"
+        },
+        {
+          "type": "paragraph",
+          "text": "The proposed reserve asset requirement is at least one-to-one: an issuer would have to maintain identifiable reserve assets whose value at all times meets or exceeds the total outstanding issuance value of its payment stablecoins, and on each business day it could not let its exposure to any one eligible financial institution exceed 40 percent of its reserve assets. The issuer would also have to publish monthly, on its own website, the number of coins outstanding and the composition of its reserve assets as of the close of business on the last day of the previous month, and that monthly report would have to be examined by a registered public accounting firm."
+        },
+        {
+          "type": "paragraph",
+          "text": "On redemption, the FDIC proposes to define \"timely\" as no later than two business days following the date of the requested redemption, states plainly that this is a ceiling and that an issuer may be faster, and at the same time acknowledges that the market may expect redemptions far more quickly than that, so it seeks comment on whether the number of days is appropriate. A significant redemption request would be defined as aggregate redemption requests exceeding 10 percent of an issuer's outstanding issuance value within a single 24-hour period. The proposed provision would require an issuer to redeem any number greater than or equal to one payment stablecoin, but the text then adds one qualifier: subject to appropriate screening and onboarding. Fees would have to be disclosed, and an increase would require at least seven calendar days' prior notice; an issuer also could not pay a holder any form of interest or yield solely in connection with the holding, use or retention of the stablecoin."
+        },
+        {
+          "type": "paragraph",
+          "text": "And if the issuer fails? The proposal gives holders no deposit insurance style guarantee of repayment, but it does address priority of claims: the FDIC's approval authority extends only to activities that would not jeopardize the claims of payment stablecoin holders in the insolvency proceedings described in section 11 of the GENIUS Act, and those claims would rank senior to claims of non-payment stablecoin creditors."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What is still unsettled, and how to check the current status yourself"
+        },
+        {
+          "type": "paragraph",
+          "text": "Almost every number in the proposal is still out for comment: the document's questions run all the way to Question 144, and Question 125 asks whether the FDIC's proposed treatment of deposits comprising stablecoin reserves is appropriate and whether it is the best reading of the GENIUS Act and the Federal Deposit Insurance Act. There has been follow-up as well: on July 20, 2026 the FDIC separately published a notice seeking comment on the weekly and quarterly reporting forms proposed in this rulemaking, under OMB control number 3064-0225, with a printed deadline of September 18, 2026 — a different comment period from the April proposal's June 9 deadline."
+        },
+        {
+          "type": "paragraph",
+          "text": "What follows is an editorially designed example, not a test. Suppose someone receives a dollar stablecoin through some cross-border service and assumes the balance is insured the way a bank deposit is: under what this proposal would do, and within the scope it reaches, what is insured is the reserve deposit the issuer holds at the bank, counted as a corporate deposit and added together with the issuer's other corporate deposits there, rather than each holder being insured separately. To see how far the proposal has got, go to the FDIC's page of Federal Register publications and public comments, find the row for April 10, 2026 with RIN 3064-AG19, and look at whether an additional row for a final rule under the same RIN has appeared beside it. We do not compare or recommend any stablecoin, exchange, wallet or issuer."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is this rule already in force?",
+              "answer": "No. It is a Notice of proposed rulemaking, that is, a rulemaking proposal, and the document itself carries no effective date. The comment deadline, as printed in the Federal Register, is June 9, 2026; checked against the FDIC's page of Federal Register publications and public comments on September 17, 2026, RIN 3064-AG19 appears only in the row for the day of publication, with no final rule under the same RIN. Whether a final rule will be issued, when, and how far it would differ from the proposal is not stated in the document."
+            },
+            {
+              "question": "Is the dollar stablecoin I hold covered by U.S. deposit insurance?",
+              "answer": "Under what this proposal would do, a stablecoin holder would not be insured merely because the reserves sit at an insured bank. The document quotes the express words of the GENIUS Act: a payment stablecoin shall not be backed by the full faith and credit of the United States, guaranteed by the United States Government, subject to deposit insurance by the Federal Deposit Insurance Corporation, or subject to share insurance by the National Credit Union Administration, and representing otherwise is unlawful. The proposal would insure reserve deposits to the issuer under the rules for corporate deposits, and would not insure them to holders on a pass-through basis."
+            },
+            {
+              "question": "Is that $250,000 limit there to protect me?",
+              "answer": "No. The document says the standard maximum deposit insurance amount is calculated per depositor, per insured institution, for deposits held in each ownership category, and the depositor here is the issuer. Under the proposed provision, all of the issuer's corporate deposits at the same insured institution would be added together before that limit is applied, whether the money is stablecoin reserves or operating expenses. Under what this proposal would do, holders would not be treated as insured depositors of that bank and would not each receive a limit of their own."
+            },
+            {
+              "question": "Are tokenized deposits and stablecoins the same thing?",
+              "answer": "In this proposal they are two opposite things. A tokenized deposit remains a deposit as long as it meets the statutory definition of a deposit, and the proposed provision would state that the recordkeeping technology does not affect whether a liability is a deposit, so the federal deposit insurance the depositor enjoys is unchanged. But the FDIC also cautions that not every tokenized bank liability is a deposit; one that does not meet the statutory definition is, by definition, a non-deposit product."
+            },
+            {
+              "question": "If the issuer fails, do holders get their money back?",
+              "answer": "The document provides no deposit insurance style guarantee of repayment. What it does set out is priority of claims: the FDIC's approval authority extends only to activities that would not jeopardize the claims of payment stablecoin holders in the insolvency proceedings described in section 11 of the GENIUS Act, and those claims would rank ahead of the claims of non-payment stablecoin creditors. Note that in Question 13 the FDIC is still seeking comment on how \"holder\" should be defined at all — as the beneficial owner, or by possession of a digital wallet or control of a private key."
+            },
+            {
+              "question": "Does this proposal reach platforms in Taiwan or users in Taiwan?",
+              "answer": "Checked against the full text of this proposal on September 17, 2026, we saw no provision at all about non-U.S. users, cross-border offering or operators in Taiwan. What it covers is the depository institutions supervised by the FDIC, those institutions' subsidiaries approved to issue payment stablecoins, and the related custodians supervised by the FDIC; the deposit insurance section also reaches every U.S. insured depository institution that maintains tokenized deposits or deposits held as stablecoin reserves. Taiwan's own regime is a separate matter, and the link at the end of this article covers it."
+            },
+            {
+              "question": "Is redemption within two business days a protection that is already settled?",
+              "answer": "No, that is a proposed definition. The proposal defines timely redemption as no later than two business days following the date of the requested redemption, and explains that two business days is a ceiling and that an issuer may be faster, while acknowledging that the market may expect redemptions far more quickly than that, so it seeks comment on whether the number of days is appropriate. The proposed minimum redemption amount would require an issuer to redeem any number of one coin or more, but it comes with the qualifier that this is subject to appropriate screening and onboarding."
+            },
+            {
+              "question": "Where do I go to see the latest status of this?",
+              "answer": "Go to the FDIC website's page of Federal Register publications and public comments and find the row for RIN 3064-AG19. That page lists the documents the FDIC sends to the Federal Register, the category of each document and the comment deadline, and if a final rule is issued later, another row will appear under the same RIN. That page is also one of the channels for submitting comments listed in the ADDRESSES field of this proposal."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Approval, publication and taking effect are three different things",
+          "text": "The FDIC Board approved this on April 7, 2026 and the Federal Register published it on April 10, 2026, and neither of those is an effective date — this document is a rulemaking proposal and carries no effective date of its own. The comment deadline, as printed in the Federal Register, is June 9, 2026; checked against the FDIC's page of Federal Register publications and public comments on September 17, 2026, RIN 3064-AG19 has only the row for the day of publication, with no final rule under the same RIN. When you see a claim that the United States has already set rules for how stablecoins must work, check first whether it is talking about the statute, a final rule, or a proposal still out for comment."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "This article is an information summary, not investment advice",
+          "text": "This article explains regulation, technology and how the industry works. It does not recommend any crypto asset, exchange, wallet or issuer, and it is not investment advice; it contains no prices, price movements or buy and sell timing. Regulatory requirements, registration status, launch timing and service terms follow the current announcements of the competent authorities and the operators, and this article was checked on 2026-09-17. Crypto asset prices are volatile and a total loss is possible, and some services are not covered by deposit insurance or investor protection schemes; for what actually applies, rely on official announcements or the advice of a qualified professional."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Crypto News Roundup: Key Developments in Regulation, Technology and Industry",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Taiwan's Virtual Asset Service Act Clears Third Reading: Seven Kinds of Provider, Stablecoin Licensing, No Commencement Date Yet",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions (91 FR 18534, full text of the proposal)",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC press release: FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+          "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC Federal Register Publications and Public Comments (the list of Federal Register publications and public comments)",
+          "url": "https://www.fdic.gov/federal-register-publications",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers (91 FR 45274, the reporting forms notice)",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "米FDICのステーブルコイン規則案：準備預金は発行者に付保、保有者にはパススルーしない",
+      "description": "2026年4月7日、米連邦預金保険公社（FDIC）理事会がGENIUS Actの実施に向けた規則案を承認し、4月10日に連邦官報（91 FR 18534）に掲載されました。本記事は連邦官報の全文とFDIC自身の公表資料に基づき、この提案が誰を対象とするのか、提案されている準備資産と償還の要件、そしてなぜ準備預金の預金保険を保有者一人一人ではなく発行者に対して計算するのかを説明します。",
+      "hero": {
+        "src": "/guides/crypto-news-fdic-genius-act-20260410/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左に銀行の建物があり、中央の盾につながっている。盾の中の三段の帯は付保された預金を表す。盾の右側からは破線が伸び、破線の枠で描かれた規則案の文書とコインに至るが、どちらも盾の外にある",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年4月10日、米連邦預金保険公社（Federal Deposit Insurance Corporation、FDIC）の規則案が連邦官報に掲載されました。巻号と頁は91 FR 18534、規制識別番号（RIN）は3064-AG19で、区分欄にはNotice of proposed rulemaking、すなわち規則制定提案と記されています。FDIC理事会がこれを承認したのは3日前の2026年4月7日で、当日の公表資料には理事会が「today approved」と書かれています。本記事は掲載日を事件の日付として扱います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日に確認しました。読んだのは連邦官報に掲載されたこの提案の全文、同じ案件のFDIC公表資料、FDICサイトの連邦官報掲載とパブリックコメントの一覧ページ、そしてFDICが2026年7月20日に別途掲載した報告フォームに関する公告です。当サイトは実地の検証を行っておらず、投資や法律の助言も提供しません。以下の各項目はいずれもまだ規則案の段階であり、最終規則は提案と異なる可能性があります。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "米FDICは2026年4月7日にGENIUS Actの実施に向けた規則案を承認し、4月10日に掲載しました。対象はFDICが監督する預金取扱機関と、それらの機関が認可を受けて決済用ステーブルコインを発行する子会社です。預金保険の部分はさらに広く、この種の預金を維持するすべての付保預金取扱機関に及びます。",
+            "規則案は、ステーブルコインの準備金として置かれた預金を、法人預金の規則により発行者に対して付保し、保有者一人一人にパススルー方式で付保することはしないと提案しています。",
+            "トークン化預金は逆です。法律上の預金の定義を満たす限り預金のままであり、預金者が受ける連邦預金保険は変わりません。",
+            "意見の締切は連邦官報の原文では2026年6月9日です。FDICの掲載一覧ページで2026年9月17日時点まで確認したところ、RIN 3064-AG19は掲載当日の行にのみ現れ、同じRINの最終規則は見当たりませんでした。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "これは提案であり、すでに発効した規則ではありません"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書のACTION欄にはNotice of proposed rulemakingと記され、SUMMARY欄の最初の一文は、FDICが一つの提案について意見を募っているというものです。その提案は三つのことを行おうとしています。FDICが監督する認可を受けた決済用ステーブルコイン発行者と付保預金取扱機関に対してGENIUS Actの一部の要件を実施すること、準備資産として保有される預金の預金保険の範囲を明確にすること、そしてトークン化預金の取扱いを明確にすることです。提案そのものに施行日はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Actがいつ適用されるかについて、提案が引いているのは法律自身の規定です。2027年1月18日に発効する、または主要な連邦決済用ステーブルコイン規制当局が本法を実施する何らかの最終規則を発布した日から120日後に発効し、いずれか早い方によるというものです。これは法律の発効規定であって、この規則案自身のものではありません。4月のこの文書には同法の制定日は印刷されておらず、それを「was enacted on July 18, 2025」と書いたのは、FDICが7月20日に出した別の公告です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "意見の締切は原文どおりに記します。DATES欄は、意見が2026年6月9日までにFDICに到達することを求めています。FDICの掲載一覧ページで2026年9月17日時点まで確認したところ、RIN 3064-AG19は2026年4月10日の行にのみ現れ、その行にはComment Period End: June 9, 2026と付されており、同じRINの最終規則の行は見当たりませんでした。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰が対象か：FDICが監督する預金取扱機関と、そのステーブルコイン子会社"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Actは主要な連邦決済用ステーブルコイン規制当局を四つ定めており、文書はFDIC、通貨監督庁（OCC）、連邦準備制度理事会（FRB）、全米信用組合管理庁（NCUA）を挙げています。FDICが扱うのは自らの持ち分だけです。すなわちFDICは、付保州法非加盟銀行および州法貯蓄機関が認可を受けて決済用ステーブルコインを発行する子会社を所管する規制当局であり、文書はこの種の発行者が付保預金取扱機関（IDI）の子会社でなければならないと明記しています。もう半分は保管です。提案されているsubpart Bは、FDICの監督を受け、ステーブルコインの準備資産、担保として用いられるステーブルコイン、または発行に用いる秘密鍵について、保管（カストディ）サービスの提供を業とする者に適用されます。預金保険の部分の射程はさらに広く、文書は影響の範囲を述べた節で、トークン化預金またはステーブルコインの準備預金を維持するすべての付保預金取扱機関を、規則案が直接適用される対象として挙げています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書は自ら境界も明らかにしています。OCCが2026年3月2日に掲載した提案は「is more expansive than this proposed rule」であり、その対象範囲には、文書の記述によれば銀行以外の事業者も含まれます。文書は2025年9月30日を基準時点として、FDICが当時「supervises zero PPSIs」、つまり監督下にこの種の発行者は一社もないと書いています。この提案の全文で2026年9月17日時点まで確認したところ、米国外の利用者、国境を越えた提供、台湾の事業者に関する規定は見当たりませんでした。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "規則案の提案内容",
+            "状態"
+          ],
+          "rows": [
+            [
+              "準備預金",
+              "法人預金として発行者に付保",
+              "提案"
+            ],
+            [
+              "トークン化預金",
+              "預金のまま、保険は不変",
+              "提案"
+            ],
+            [
+              "償還期限",
+              "2営業日を超えない",
+              "提案"
+            ],
+            [
+              "準備資産の集中度",
+              "単一機関に40%を超えない",
+              "提案"
+            ],
+            [
+              "最低償還数量",
+              "1枚を超えて設定不可",
+              "提案"
+            ]
+          ],
+          "caption": "2026年9月17日に確認し、91 FR 18534の提案条文に基づいて整理しました。表中の各項目はいずれもまだ提案であり、最終規則は異なる可能性があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "預金保険：付保されるのは発行者であり、保有者一人一人ではありません"
+        },
+        {
+          "type": "paragraph",
+          "text": "FDICは第330部の預金保険規則を改正し、決済用ステーブルコインの準備金として付保預金取扱機関に置かれた預金を、法人預金の規則により認可を受けた発行者に対して付保し、保有者にパススルー（pass-through）方式では付保しないことを提案しています。新設が提案されている12 CFR 330.11(a)(3)がこの仕組みです。文書は、法人預金の規則が同一の付保機関における同一預金者の法人預金を合算し、標準最高預金保険金額（SMDIA）まで付保すると説明しており、その金額は「currently $250,000」と記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書は「In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category.」と書いています。ここでの預金者は発行者であり、保有者一人一人がそれぞれ25万ドルを享受するわけではありません。提案条文によれば、それが準備金であれ運営経費であれ、同一機関における発行者の預金はすべて合算されます。そしてFDICが付保するのは「預金」だけであり、それ以外の種類の準備資産は範囲に入りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理由は二つあります。一つは、文書がGENIUS Actの明文を引いていることです。決済用ステーブルコインは米国の完全な信用による裏付けを受けず、米国政府の保証も受けず、FDICの預金保険もNCUAの出資金保険も受けない、そして反対の表示を行うことは違法であるというものです。もう一つは、保有者は通常ステーブルコインを移転することで取引を完結させ、資金がその付保口座から出ることは一度もないという点です。トークン化預金についての結論は逆です。提案されている12 CFR 330.3(k)は、記録に用いる技術が、ある負債が「預金」であるかどうかに影響しないことを明定しようとしており、したがって預金者が受ける連邦預金保険は変わりません。ただしFDICは、トークン化された銀行負債のすべてが預金であるわけではないと注意を促しています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-fdic-genius-act-20260410/diagram-1-ja.svg",
+          "alt": "4コマの図解：準備預金は発行者に付保、保有者はパススルー方式では付保されない、トークン化預金は預金のまま、倒産手続では保有者の債権がステーブルコイン保有者以外の債権者より優先する",
+          "width": 1600,
+          "height": 900,
+          "caption": "4コマの図解：準備預金は発行者に付保、保有者にはパススルーしない、トークン化預金は預金のまま、そして倒産手続において保有者の債権が決済用ステーブルコイン保有者以外の債権者より優先するという4点。4コマはいずれも提案されている内容です。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "保有者が目にすることになる提案中の要件"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備資産について提案されているのは、少なくとも1対1です。発行者は識別可能な準備資産を維持し、その価値はいかなる時点でも、すでに発行済みで流通している決済用ステーブルコインの総額と等しいか、それを上回らなければなりません。さらに毎営業日、いずれか一つの適格金融機関に対するエクスポージャーを、準備資産の40%を超えないようにしなければなりません。発行者はまた、前月末日の営業終了時点における流通枚数と準備資産の構成を、毎月自社サイトで公表する必要があります。この月次報告は登録会計事務所の検査を受けなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "償還については、FDICは「適時」を償還請求の日の後2営業日を超えないことと定義することを提案し、それが上限であって発行者はより短くできると明記する一方、市場がそれよりはるかに速い償還を期待しうることも認め、日数が適切かどうかについて意見を募っています。重大な償還請求は、単一の24時間内に償還請求が合計で流通発行額の10%を超える場合と定義されています。提案条文は、発行者が1枚以上の決済用ステーブルコインのいかなる数量についても償還すべきことを求めていますが、原文はそれに続けて一つの限定を加えています。適切なスクリーニングと口座開設の手続を経ることが条件です。手数料は開示しなければならず、引き上げには少なくとも7暦日前の通知が必要です。発行者はまた、ステーブルコインの保有、使用または保持のみを理由として、保有者にいかなる形の利息や収益も支払ってはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "では発行者が破綻したらどうなるのでしょうか。提案は保有者に預金保険のような返済の保証を与えていませんが、弁済の順位については書いています。FDICの承認権限は、GENIUS Act第11条に定める倒産手続において決済用ステーブルコイン保有者の債権を危うくしない活動に限られ、そしてこれらの債権の順位は、決済用ステーブルコイン保有者以外の債権者より優先するというものです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まだ確定していない部分と、現状を自分で確かめる方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則案の中のほぼすべての数字が、まだ意見募集の対象です。文書の質問は第144問まで続いており、第125問では、準備預金についてFDICが提案している取扱いが妥当か、GENIUS Actと連邦預金保険法の最良の解釈であるかを問うています。その後の動きもあります。FDICは2026年7月20日に別途公告を掲載し、本案で提案されている週次と四半期の報告フォームについて意見を募りました。OMB管理番号は3064-0225で、印刷されている締切は2026年9月18日です。4月の提案の6月9日とは、同じ意見募集期間ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は編集部が設計した例であり、実地の検証ではありません。ある人が何らかの国境を越えたサービスを通じて米ドル建てステーブルコインを受け取り、その残高が銀行預金のように保険で守られていると思い込んだとします。この規則案の提案によれば、そしてそれが及ぶ範囲の中では、付保されるのは発行者が銀行に置いているその準備金であり、法人預金として計算され、その発行者の他の法人預金と合算されます。保有者一人一人がそれぞれ付保されるわけではありません。規則案がどこまで進んだかを確かめるには、FDICの連邦官報掲載とパブリックコメントの一覧ページに行き、2026年4月10日、RIN 3064-AG19の行を探して、その隣に同じRINの最終規則が増えていないかを見てください。当サイトはいかなるステーブルコイン、取引所、ウォレット、発行者も比較せず、推奨もしません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "この規則はすでに発効したのですか。",
+              "answer": "いいえ。これはNotice of proposed rulemaking、すなわち規則制定提案であり、文書そのものに施行日はありません。意見の締切は連邦官報の原文では2026年6月9日です。FDICの連邦官報掲載とパブリックコメントの一覧ページで2026年9月17日時点まで確認したところ、RIN 3064-AG19は掲載当日の行にのみ現れ、同じRINの最終規則は見当たりませんでした。最終規則が出るのか、いつ出るのか、提案とどれだけ内容が異なるのかは、文書には書かれていません。"
+            },
+            {
+              "question": "私が持っている米ドル建てステーブルコインに、米国の預金保険はありますか。",
+              "answer": "この規則案の提案によれば、ステーブルコインの保有者は、準備金が付保銀行に置かれているからといって付保されることはありません。文書はGENIUS Actの明文を引き、決済用ステーブルコインは米国の完全な信用による裏付けを受けず、米国政府の保証も受けず、FDICの預金保険もNCUAの出資金保険も受けない、そして反対の表示を行うことは違法であると述べています。規則案は、準備預金を法人預金の規則により発行者に対して付保し、保有者にパススルー方式では付保しないことを提案しています。"
+            },
+            {
+              "question": "あの25万ドルの上限は、私を守るものですか。",
+              "answer": "いいえ。文書は、標準最高預金保険金額が預金者ごと、付保機関ごと、所有形態の区分ごとに計算されると書いており、ここでの預金者は発行者です。提案条文によれば、同一の付保機関における発行者の法人預金はすべて合算された後にこの上限が適用され、その資金がステーブルコインの準備金であるか運営経費であるかは問われません。この規則案の提案によれば、保有者はその銀行の付保預金者として扱われず、それぞれが一つずつ上限を得ることもありません。"
+            },
+            {
+              "question": "トークン化預金とステーブルコインは同じものですか。",
+              "answer": "この規則案の中では、正反対の二つのものです。トークン化預金は法律上の預金の定義を満たす限り預金のままであり、提案条文は、記録に用いる技術がある負債が預金であるかどうかに影響しないことを明定しようとしています。したがって預金者が受ける連邦預金保険は変わりません。ただしFDICは、トークン化された銀行負債のすべてが預金であるわけではないとも注意を促しています。法律上の定義を満たさないものは、定義上、預金ではない商品です。"
+            },
+            {
+              "question": "発行者が破綻したら、保有者はお金を取り戻せますか。",
+              "answer": "文書は預金保険のような返済の保証を提供していません。書かれているのは弁済の順位です。FDICの承認権限は、GENIUS Act第11条に定める倒産手続において決済用ステーブルコイン保有者の債権を危うくしない活動に限られ、これらの債権の順位は決済用ステーブルコイン保有者以外の債権者より前に来ます。なおFDICは第13問で、「保有者」をどう定義すべきか、実質的な所有者（beneficial owner）とするのか、デジタルウォレットの所持や秘密鍵の支配で判定するのかについて、なお意見を募っています。"
+            },
+            {
+              "question": "この規則案は台湾のプラットフォームや台湾の利用者に及びますか。",
+              "answer": "この提案の全文で2026年9月17日時点まで確認したところ、米国外の利用者、国境を越えた提供、台湾の事業者に関する規定は見当たりませんでした。対象となるのはFDICの監督を受ける預金取扱機関、それらの機関が認可を受けて決済用ステーブルコインを発行する子会社、そしてFDICの監督を受ける関連の保管業者です。預金保険の部分はさらに、トークン化預金またはステーブルコインの準備預金を維持する米国のすべての付保預金取扱機関に及びます。台湾自身の制度は別の話で、本記事末尾のリンクに整理があります。"
+            },
+            {
+              "question": "2営業日以内の償還は、すでに確定した保護ですか。",
+              "answer": "いいえ、それは提案されている定義です。規則案は適時の償還を、償還請求の日の後2営業日を超えないことと定義し、2営業日は上限であって発行者はより短くできると説明しつつ、市場がそれよりはるかに速い償還を期待しうることも認め、日数が適切かどうかについて意見を募っています。提案されている最低償還数量は、発行者が1枚以上のいかなる数量についても償還すべきことを定めていますが、適切なスクリーニングと口座開設の手続を経ることという限定が付いています。"
+            },
+            {
+              "question": "この件の最新の状況はどこで見られますか。",
+              "answer": "FDICサイトの連邦官報掲載とパブリックコメントの一覧ページに行き、RIN 3064-AG19の行を探してください。そのページには、FDICが連邦官報に送った文書、文書の区分、意見の締切が並びます。後に最終規則が公表されれば、同じRINでもう一行現れます。そのページは同時に、この提案のADDRESSES欄に挙げられた意見提出の経路の一つでもあります。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "承認、掲載、発効は三つの別のこと",
+          "text": "FDIC理事会の承認は2026年4月7日、連邦官報への掲載は2026年4月10日で、どちらも施行日ではありません。この文書は規則制定提案であり、それ自身に施行日はないからです。意見の締切は連邦官報の原文では2026年6月9日です。FDICの連邦官報掲載とパブリックコメントの一覧ページで2026年9月17日時点まで確認したところ、RIN 3064-AG19は掲載当日の行だけで、同じRINの最終規則は見当たりませんでした。「米国はもうステーブルコインについてこう定めている」という言い方を見たら、まずそれが法律の話か、最終規則の話か、それともまだ意見募集中の規則案の話かを確かめてください。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "この記事は情報整理であり、投資助言ではありません",
+          "text": "本記事が説明しているのは法規制、技術、そして業界の運営であり、いかなる暗号資産、取引所、ウォレット、発行者も推奨せず、投資助言ではありません。価格、騰落率、売買のタイミングも含みません。規制上の要件、登録の状況、提供開始の時期、サービスの条件は、主管当局と事業者のその時点の公表内容によります。本記事の確認日は2026-09-17です。暗号資産は価格の変動が大きく全額を失う可能性があり、一部のサービスは預金保険や投資者保護の制度で保護されません。実際の適用については、公式の公表内容または資格のある専門家の意見によってください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年 暗号資産ニュース総まとめ：法規制・技術・業界の重要動向",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台湾の仮想資産サービス法が三読通過：7種類のサービス業者、ステーブルコイン許可、施行日は未定",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions（91 FR 18534、提案全文）",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC公表資料：FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+          "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC Federal Register Publications and Public Comments（連邦官報掲載とパブリックコメントの一覧）",
+          "url": "https://www.fdic.gov/federal-register-publications",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers（91 FR 45274、報告フォームに関する公告）",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "미국 FDIC 스테이블코인 규칙안: 준비금 예금은 발행자에게 보장, 보유자에게는 패스스루되지 않습니다",
+      "description": "2026년 4월 7일 미국 연방예금보험공사(FDIC) 이사회가 GENIUS Act 시행을 위한 규칙안을 의결했고, 4월 10일 연방관보(91 FR 18534)에 게재됐습니다. 이 글은 연방관보 전문과 FDIC 자체 보도자료를 바탕으로, 이 제안이 누구를 대상으로 하는지, 제안된 준비자산과 상환 요건은 무엇인지, 그리고 왜 준비금 예금의 예금보험을 보유자 개개인이 아니라 발행자에게 계산하는지를 설명합니다.",
+      "hero": {
+        "src": "/guides/crypto-news-fdic-genius-act-20260410/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽의 은행 건물이 가운데 방패로 이어지고, 방패 안의 3단 막대는 보장되는 예금을 나타냅니다. 방패 오른쪽에서는 점선이 뻗어 점선 테두리의 규칙안 문서와 코인에 닿지만, 둘 다 방패 밖에 있습니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 4월 10일 미국 연방예금보험공사(Federal Deposit Insurance Corporation, FDIC)의 규칙안이 연방관보에 게재됐습니다. 권호와 면수는 91 FR 18534, 문서번호는 RIN 3064-AG19이고, 분류 항목에는 Notice of proposed rulemaking, 즉 규칙제정 제안이라고 적혀 있습니다. FDIC 이사회가 이를 의결한 것은 사흘 앞선 2026년 4월 7일로, 그날 보도자료에는 이사회가 'today approved'했다고 적혀 있습니다. 이 글은 게재일을 사건일로 봅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 17일에 확인했습니다. 읽은 것은 연방관보에 실린 이 제안의 전문, 같은 사안의 FDIC 보도자료, FDIC 웹사이트의 연방관보 게재 및 공개 의견 목록 페이지, 그리고 FDIC가 2026년 7월 20일 별도로 게재한 보고 서식 공고입니다. 본 사이트는 직접 시험해 보지 않았고 투자나 법률 의견도 제공하지 않습니다. 아래의 모든 항목은 아직 규칙안 단계이며, 최종 규칙은 제안과 다를 수 있습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "미국 FDIC는 2026년 4월 7일 GENIUS Act 시행을 위한 규칙안을 의결하고 4월 10일 게재했습니다. 대상은 FDIC가 감독하는 예금취급기관과, 이들 기관이 인가를 받아 지급결제용 스테이블코인을 발행하는 자회사입니다. 예금보험 부분은 더 넓어, 이런 예금을 유지하는 모든 부보예금취급기관에까지 미칩니다.",
+            "규칙안은 스테이블코인 준비금으로 예치된 예금을 법인예금 규칙에 따라 발행자에게 보장하고, 보유자 개개인에게 패스스루 방식으로 보장하지는 않겠다고 제안하고 있습니다.",
+            "토큰화 예금은 반대입니다. 법정 예금 정의를 충족하는 한 여전히 예금이며, 예금자가 받는 연방예금보험은 달라지지 않습니다.",
+            "의견 마감일은 연방관보 원문으로는 2026년 6월 9일입니다. FDIC의 게재 목록 페이지로 2026년 9월 17일까지 확인한 결과, RIN 3064-AG19는 게재 당일 행에만 나타났고 같은 문서번호의 최종 규칙은 보이지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이것은 제안이며, 이미 발효된 규칙이 아닙니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "문서의 ACTION 항목에는 Notice of proposed rulemaking이라고 적혀 있고, SUMMARY 항목의 첫 문장은 FDIC가 하나의 제안에 대해 의견을 구하고 있다는 것입니다. 그 제안은 세 가지를 하려고 합니다. FDIC가 감독하는 인가받은 지급결제용 스테이블코인 발행자와 부보예금취급기관에 GENIUS Act의 일부 요건을 시행하는 것, 준비자산으로 보유되는 예금의 예금보험 범위를 분명히 하는 것, 그리고 토큰화 예금의 취급 방식을 분명히 하는 것입니다. 제안 자체에는 시행일이 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act가 언제 적용되는지에 대해 제안이 인용하는 것은 법률 자신의 규정입니다. 2027년 1월 18일에 발효하거나, 각 주요 연방 지급결제용 스테이블코인 규제기관이 이 법을 시행하는 최종 규칙을 발표한 날로부터 120일 후에 발효하며, 둘 중 이른 쪽을 따른다는 것입니다. 그것은 법률의 발효 규정이고, 이 규칙안 자신의 것이 아닙니다. 4월의 이 문서에는 이 법의 제정일이 인쇄되어 있지 않고, 그것을 'was enacted on July 18, 2025'라고 적은 것은 FDIC가 7월 20일에 낸 별도의 공고입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "의견 마감일은 원문대로 적습니다. DATES 항목은 의견이 2026년 6월 9일까지 FDIC에 도달해야 한다고 요구합니다. FDIC의 게재 목록 페이지로 2026년 9월 17일까지 확인한 결과, RIN 3064-AG19는 2026년 4월 10일 행에만 나타났고, 그 행에는 Comment Period End: June 9, 2026이라고 표시되어 있으며, 같은 문서번호의 최종 규칙 행은 보이지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "누구에게 미치는가: FDIC가 감독하는 예금취급기관과 그 스테이블코인 자회사"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act는 주요 연방 지급결제용 스테이블코인 규제기관을 넷으로 두었고, 문서는 FDIC, 통화감독청(OCC), 연방준비제도이사회(FRB), 전국신용조합감독청(NCUA)을 열거합니다. FDIC는 자기 몫만 다룹니다. 즉 FDIC는 부보 주법 비회원은행과 주법 저축기관이 인가를 받아 지급결제용 스테이블코인을 발행하는 자회사의 규제기관이며, 문서는 이런 발행자가 부보예금취급기관(IDI)의 자회사여야 한다고 명시합니다. 나머지 절반은 보관입니다. 제안된 subpart B는 FDIC의 감독을 받으면서 스테이블코인 준비금, 담보로 쓰이는 스테이블코인 또는 발행에 쓰이는 개인키에 대한 보관·수탁 서비스 제공을 업으로 하는 자에게 적용됩니다. 예금보험 부분의 사정거리는 더 넓습니다. 문서는 영향 범위를 다룬 절에서, 토큰화 예금이나 스테이블코인 준비금 예금을 유지하는 모든 부보예금취급기관을 규칙안이 직접 적용되는 대상으로 열거합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서는 스스로 경계도 분명히 합니다. OCC가 2026년 3월 2일 게재한 제안은 'is more expansive than this proposed rule'이며, 그 범위에는 문서의 서술에 따르면 은행이 아닌 기관도 포함됩니다. 문서는 2025년 9월 30일을 기준 시점으로 삼아, FDIC가 당시 'supervises zero PPSIs', 즉 감독하는 이런 발행자가 한 곳도 없다고 적었습니다. 이 제안 전문으로 2026년 9월 17일까지 확인한 결과, 미국 외 이용자, 국경을 넘는 제공, 대만 사업자에 관한 규정은 보이지 않았습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "규칙안의 제안 내용",
+            "상태"
+          ],
+          "rows": [
+            [
+              "준비금 예금",
+              "법인예금으로 발행자에게 보장",
+              "제안"
+            ],
+            [
+              "토큰화 예금",
+              "여전히 예금, 보험 그대로",
+              "제안"
+            ],
+            [
+              "상환 기한",
+              "2영업일을 넘기지 않음",
+              "제안"
+            ],
+            [
+              "준비자산 집중도",
+              "한 기관에 40% 초과 불가",
+              "제안"
+            ],
+            [
+              "최소 상환 수량",
+              "1개보다 높게 둘 수 없음",
+              "제안"
+            ]
+          ],
+          "caption": "2026년 9월 17일 확인, 91 FR 18534의 제안 조문에 따라 정리했습니다. 표의 각 항목은 모두 아직 제안이며, 최종 규칙은 다를 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "예금보험: 보장되는 쪽은 발행자이고, 보유자 개개인이 아닙니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "FDIC는 제330부의 예금보험 규칙을 개정해, 지급결제용 스테이블코인 준비금으로 부보예금취급기관에 예치된 예금을 법인예금 규칙에 따라 인가받은 발행자에게 보장하고, 보유자에게 패스스루(pass-through) 방식으로는 보장하지 않겠다고 제안하고 있습니다. 신설이 제안된 12 CFR 330.11(a)(3)이 바로 이 장치입니다. 문서는 법인예금 규칙이 같은 부보기관에 있는 같은 예금자의 법인예금을 합산해 표준 최고 예금보험한도(SMDIA)까지 보장한다고 설명하며, 그 금액은 'currently $250,000'이라고 적었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서는 'In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category.'라고 적었습니다. 여기서 예금자는 발행자이고, 보유자 개개인이 각자 25만 달러를 누리는 것이 아닙니다. 제안 조문에 따르면 그것이 준비금이든 운영 경비든, 같은 기관에 있는 발행자의 예금은 모두 합산됩니다. 그리고 FDIC가 보장하는 것은 '예금'뿐이어서, 그 밖의 종류의 준비자산은 범위에 들어가지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이유는 두 가지입니다. 하나는 문서가 GENIUS Act의 명문을 인용한 것입니다. 지급결제용 스테이블코인은 미국의 완전한 신용으로 뒷받침되지 않고, 미국 정부의 보증도 받지 않으며, FDIC의 예금보험도 NCUA의 출자금보험도 받지 않고, 반대되는 표시를 하는 것은 위법이라는 내용입니다. 다른 하나는 보유자가 보통 스테이블코인을 이전하는 방식으로 거래를 마치고, 자금이 그 부보 계좌를 떠나는 일이 한 번도 없다는 점입니다. 토큰화 예금에 대한 결론은 반대입니다. 제안된 12 CFR 330.3(k)는 기장에 쓰는 기술이 어떤 부채가 '예금'인지 여부에 영향을 주지 않는다고 명시하려는 것이어서, 예금자가 받는 연방예금보험은 달라지지 않습니다. 다만 FDIC는 토큰화된 은행 부채가 모두 예금인 것은 아니라고 주의를 줍니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-fdic-genius-act-20260410/diagram-1-ko.svg",
+          "alt": "4컷 도해: 준비금 예금은 발행자에게 보장, 보유자는 패스스루 방식으로 보장되지 않음, 토큰화 예금은 여전히 예금, 도산 절차에서 보유자 채권이 스테이블코인 외 채권자보다 우선",
+          "width": 1600,
+          "height": 900,
+          "caption": "4컷 도해: 준비금 예금은 발행자에게 보장, 보유자에게 패스스루되지 않음, 토큰화 예금은 여전히 예금, 그리고 도산 절차에서 보유자 채권이 지급결제용 스테이블코인 외 채권자보다 우선한다는 네 가지. 네 컷 모두 제안된 내용입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "보유자가 보게 될 제안된 요건"
+        },
+        {
+          "type": "paragraph",
+          "text": "준비자산에 대해 제안된 것은 최소 1대 1입니다. 제안에 따르면 발행자는 식별 가능한 준비자산을 유지해야 하고, 그 가치는 어느 때든 이미 발행되어 유통 중인 지급결제용 스테이블코인 총액과 같거나 그보다 많아야 합니다. 또 매 영업일 어느 한 적격 금융기관에 대한 노출을 준비자산의 40%를 넘지 않게 해야 한다는 것도 제안된 내용입니다. 발행자는 아울러 전월 말일 영업 종료 시점의 유통 수량과 준비자산 구성을 매월 자사 웹사이트에 공표해야 하며, 이 월간 보고는 등록 회계법인의 검사를 받아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "상환에 대해 FDIC는 '적시'를 상환 청구일 이후 2영업일을 넘기지 않는 것으로 정의하겠다고 제안하고, 그것이 상한이며 발행자는 더 짧게 할 수 있다고 명시하면서, 동시에 시장이 그보다 훨씬 빠른 상환을 기대할 수 있다는 점도 인정해 일수가 적절한지에 대해 의견을 구하고 있습니다. 제안에서 중대한 상환 청구는 단일 24시간 안에 상환 청구가 합계로 유통 발행액의 10%를 넘는 경우로 정의됩니다. 제안 조문은 발행자가 1개 이상의 지급결제용 스테이블코인이라면 어떤 수량이든 상환해야 한다고 요구하지만, 원문은 이어서 한 가지 한정을 붙입니다. 적절한 심사와 계좌 개설 절차를 거쳐야 한다는 것입니다. 수수료는 공개해야 하고, 인상에는 최소 7역일 전 통지가 필요합니다. 발행자는 또한 스테이블코인의 보유, 사용 또는 보관만을 이유로 보유자에게 어떤 형태의 이자나 수익도 지급할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그러면 발행자가 파산하면 어떻게 될까요. 제안은 보유자에게 예금보험 같은 상환 보증을 주지 않지만, 변제 순위는 적고 있습니다. FDIC의 인가 권한은 GENIUS Act 제11조에 정한 도산 절차에서 지급결제용 스테이블코인 보유자의 채권을 위태롭게 하지 않는 활동에만 한정되며, 이들 채권의 순위는 지급결제용 스테이블코인 외 채권자보다 우선한다는 것입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "아직 확정되지 않은 부분과, 현재 상태를 스스로 확인하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙안 속 거의 모든 숫자가 아직 의견 수렴 대상입니다. 문서의 질문은 제144문까지 이어지며, 제125문은 준비금 예금에 대한 FDIC의 제안된 취급이 타당한지, GENIUS Act와 연방예금보험법의 가장 좋은 해석인지를 묻습니다. 이후의 움직임도 있습니다. FDIC는 2026년 7월 20일 별도로 공고를 게재해, 이 사안에서 제안된 주간 및 분기 보고 서식에 대해 의견을 구했습니다. OMB 관리번호는 3064-0225이고, 인쇄된 마감일은 2026년 9월 18일입니다. 4월 제안의 6월 9일과 같은 의견 수렴 기간이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래는 편집부가 설계한 예시이고 직접 시험해 본 결과가 아닙니다. 어떤 사람이 어떤 국경 간 서비스를 통해 미국 달러 스테이블코인을 받고, 그 잔액이 은행 예금처럼 보험으로 보호된다고 여겼다고 해봅시다. 이 규칙안의 제안에 따르면, 그리고 그것이 미치는 범위 안에서는, 보장되는 것은 발행자가 은행에 둔 그 준비금이고, 법인예금으로 계산되어 그 발행자의 다른 법인예금과 합산됩니다. 보유자 개개인이 각자 보장되는 것이 아닙니다. 규칙안이 어디까지 갔는지 확인하려면 FDIC의 연방관보 게재 및 공개 의견 목록 페이지에 가서 2026년 4월 10일, RIN 3064-AG19 행을 찾아, 그 옆에 같은 문서번호의 최종 규칙이 하나 더 늘었는지 보면 됩니다. 본 사이트는 어떤 스테이블코인, 거래소, 지갑, 발행자도 비교하지 않고 추천하지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이 규칙은 이미 발효됐습니까?",
+              "answer": "아닙니다. 이것은 Notice of proposed rulemaking, 즉 규칙제정 제안이고, 문서 자체에는 시행일이 없습니다. 의견 마감일은 연방관보 원문으로는 2026년 6월 9일입니다. FDIC의 연방관보 게재 및 공개 의견 목록 페이지로 2026년 9월 17일까지 확인한 결과, RIN 3064-AG19는 게재 당일 행에만 나타났고 같은 문서번호의 최종 규칙은 보이지 않았습니다. 최종 규칙이 나올지, 언제 나올지, 제안과 내용이 얼마나 다를지는 문서에 적혀 있지 않습니다."
+            },
+            {
+              "question": "제가 가진 미국 달러 스테이블코인에 미국 예금보험이 있습니까?",
+              "answer": "이 규칙안의 제안에 따르면, 스테이블코인 보유자는 준비금이 부보 은행에 있다는 이유로 보장되지 않습니다. 문서는 GENIUS Act의 명문을 인용해, 지급결제용 스테이블코인은 미국의 완전한 신용으로 뒷받침되지 않고, 미국 정부의 보증도 받지 않으며, FDIC의 예금보험도 NCUA의 출자금보험도 받지 않고, 반대되는 표시를 하는 것은 위법이라고 밝힙니다. 규칙안은 준비금 예금을 법인예금 규칙에 따라 발행자에게 보장하고, 보유자에게 패스스루 방식으로는 보장하지 않겠다고 제안하고 있습니다."
+            },
+            {
+              "question": "그 25만 달러 한도는 저를 보장하는 것입니까?",
+              "answer": "아닙니다. 문서는 표준 최고 예금보험한도가 예금자별, 부보기관별, 소유 유형 구분별로 계산된다고 적었고, 여기서 예금자는 발행자입니다. 제안 조문에 따르면 같은 부보기관에 있는 발행자의 법인예금은 모두 합산된 뒤 이 한도가 적용되며, 그 돈이 스테이블코인 준비금인지 운영 경비인지는 따지지 않습니다. 이 규칙안의 제안에 따르면 보유자는 그 은행의 부보 예금자로 취급되지 않고, 각자 한도를 하나씩 받지도 않습니다."
+            },
+            {
+              "question": "토큰화 예금과 스테이블코인은 같은 것입니까?",
+              "answer": "이 규칙안에서는 정반대인 두 가지입니다. 토큰화 예금은 법정 예금 정의를 충족하는 한 여전히 예금이고, 제안 조문은 기장 기술이 어떤 부채가 예금인지 여부에 영향을 주지 않는다고 명시하려 합니다. 그래서 예금자가 받는 연방예금보험은 달라지지 않습니다. 다만 FDIC는 토큰화된 은행 부채가 모두 예금인 것은 아니라고도 주의를 줍니다. 법정 정의를 충족하지 못하는 것은 정의상 예금이 아닌 상품입니다."
+            },
+            {
+              "question": "발행자가 파산하면 보유자는 돈을 돌려받습니까?",
+              "answer": "문서는 예금보험 같은 상환 보증을 제공하지 않습니다. 적혀 있는 것은 변제 순위입니다. FDIC의 인가 권한은 GENIUS Act 제11조에 정한 도산 절차에서 지급결제용 스테이블코인 보유자의 채권을 위태롭게 하지 않는 활동에만 한정되며, 이들 채권의 순위는 지급결제용 스테이블코인 외 채권자보다 앞섭니다. 다만 FDIC는 제13문에서 '보유자'를 어떻게 정의해야 하는지, 실제 소유자(beneficial owner)로 볼 것인지, 디지털 지갑의 보유나 개인키의 지배로 판단할 것인지에 대해 아직 의견을 구하고 있습니다."
+            },
+            {
+              "question": "이 규칙안이 대만 플랫폼이나 대만 이용자에게 미칩니까?",
+              "answer": "이 제안 전문으로 2026년 9월 17일까지 확인한 결과, 미국 외 이용자, 국경을 넘는 제공, 대만 사업자에 관한 규정은 보이지 않았습니다. 대상은 FDIC의 감독을 받는 예금취급기관, 이들 기관이 인가를 받아 지급결제용 스테이블코인을 발행하는 자회사, 그리고 FDIC의 감독을 받는 관련 보관 사업자입니다. 예금보험 부분은 여기에 더해, 토큰화 예금이나 스테이블코인 준비금 예금을 유지하는 미국의 모든 부보예금취급기관에까지 미칩니다. 대만 자체의 제도는 별개의 이야기이며, 이 글 끝의 링크에 정리가 있습니다."
+            },
+            {
+              "question": "2영업일 안 상환은 이미 확정된 보호입니까?",
+              "answer": "아닙니다, 그것은 제안된 정의입니다. 규칙안은 적시 상환을 상환 청구일 이후 2영업일을 넘기지 않는 것으로 정의하고, 2영업일은 상한이며 발행자는 더 짧게 할 수 있다고 설명하면서, 시장이 그보다 훨씬 빠른 상환을 기대할 수 있다는 점도 인정해 일수가 적절한지에 대해 의견을 구하고 있습니다. 제안된 최소 상환 수량은 발행자가 1개 이상이라면 어떤 수량이든 상환해야 한다고 정하지만, 적절한 심사와 계좌 개설 절차를 거쳐야 한다는 한정이 붙어 있습니다."
+            },
+            {
+              "question": "이 일의 최신 상태는 어디에서 봅니까?",
+              "answer": "FDIC 웹사이트의 연방관보 게재 및 공개 의견 목록 페이지에 가서 RIN 3064-AG19 행을 찾으십시오. 그 페이지에는 FDIC가 연방관보에 보낸 문서, 문서 분류, 의견 마감일이 나옵니다. 이후 최종 규칙이 발표되면 같은 문서번호로 한 행이 더 나타납니다. 그 페이지는 동시에 이 제안의 ADDRESSES 항목에 열거된 의견 제출 경로 중 하나이기도 합니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "의결, 게재, 발효는 서로 다른 세 가지입니다",
+          "text": "FDIC 이사회의 의결은 2026년 4월 7일, 연방관보 게재는 2026년 4월 10일이고, 둘 다 시행일이 아닙니다. 이 문서는 규칙제정 제안이어서 그 자체에 시행일이 없기 때문입니다. 의견 마감일은 연방관보 원문으로는 2026년 6월 9일입니다. FDIC의 연방관보 게재 및 공개 의견 목록 페이지로 2026년 9월 17일까지 확인한 결과, RIN 3064-AG19는 게재 당일 행만 있고 같은 문서번호의 최종 규칙은 보이지 않았습니다. '미국은 이미 스테이블코인을 이렇게 규정했다'는 말을 보면, 먼저 그것이 법률 이야기인지, 최종 규칙 이야기인지, 아니면 아직 의견을 수렴하고 있는 규칙안 이야기인지 확인하십시오."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 글은 정보 정리이며, 투자 조언이 아닙니다",
+          "text": "이 글이 설명하는 것은 법규제, 기술, 그리고 업계의 운영 방식이며, 어떤 가상자산, 거래소, 지갑, 발행자도 추천하지 않고 투자 조언이 아닙니다. 가격, 등락률, 매매 시점도 담지 않습니다. 감독 규정, 등록 상태, 서비스 개시 시점과 서비스 조건은 주관 당국과 사업자의 그때그때의 공고를 따르며, 이 글의 확인일은 2026-09-17입니다. 가상자산 가격은 변동이 크고 전액 손실이 가능하며, 일부 서비스는 예금보험이나 투자자 보호 제도의 보호를 받지 않습니다. 실제 적용은 공식 공고나 자격을 갖춘 전문가의 의견을 따르십시오."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 가상자산 뉴스 총정리: 규제·기술·산업의 핵심",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대만 가상자산서비스법 3독회 통과: 서비스 사업자 7종, 스테이블코인 허가, 시행일은 미정",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions(91 FR 18534, 제안 전문)",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC 보도자료: FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+          "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC Federal Register Publications and Public Comments(연방관보 게재 및 공개 의견 목록)",
+          "url": "https://www.fdic.gov/federal-register-publications",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers(91 FR 45274, 보고 서식 공고)",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "美国 FDIC 稳定币草案：准备金存款保给发行人，不穿透到持有人",
+      "description": "2026 年 4 月 7 日美国联邦存款保险公司（FDIC）理事会通过一份 GENIUS Act 实施草案，4 月 10 日刊登于《联邦公报》（91 FR 18534）。本文依《联邦公报》全文与 FDIC 自家公告，说明这份提案管到谁、拟议的准备资产与赎回要求，以及它为什么把准备金存款的存款保险算在发行人身上，而不是每一位稳定币持有人。",
+      "hero": {
+        "src": "/guides/crypto-news-fdic-genius-act-20260410/hero-zh-cn.jpg",
+        "alt": "原创插图：左边是一栋银行建筑，连到中间一面盾牌，盾牌里的三层长条代表受保的存款；盾牌右侧以虚线连到一份虚线外框的草案文件与一枚硬币，两者都在盾牌之外",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 4 月 10 日，美国联邦存款保险公司（Federal Deposit Insurance Corporation，FDIC）的一份规则草案刊登在《联邦公报》，卷期页码 91 FR 18534、文号 RIN 3064-AG19，类别栏写的是 Notice of proposed rulemaking，也就是规则制定提案。FDIC 理事会是在三天前的 2026 年 4 月 7 日通过它，当天的新闻稿写理事会“today approved”。本文以刊登日为事件日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日核查，读的是《联邦公报》上这份提案全文、FDIC 同案新闻稿、FDIC 网站的《联邦公报》刊登与公众意见清单页，以及 FDIC 在 2026 年 7 月 20 日另外刊登的申报表格公告。本站没有实测，也不提供投资或法律意见；以下每一项都还在草案阶段，最终规则可能与提案不同。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "美国 FDIC 在 2026 年 4 月 7 日通过、4 月 10 日刊登一份 GENIUS Act 实施草案，管的是它监管的存款机构与这些机构获准发行支付型稳定币的子公司；存款保险那一段还及于所有维持这类存款的受保存款机构。",
+            "草案提议把作为稳定币准备金的存款，依法人存款规则保给发行人，不以穿透方式保给每一位稳定币持有人。",
+            "代币化存款则相反：只要符合法定的存款定义就仍然是存款，存款人享有的联邦存款保险不变。",
+            "意见截止日依《联邦公报》原文是 2026 年 6 月 9 日；以 FDIC 的刊登清单页核查到 2026 年 9 月 17 日，RIN 3064-AG19 只出现在刊登当日那一行，未见同文号的最终规则。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这是一份提案，不是已经生效的规则"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件的 ACTION 栏写着 Notice of proposed rulemaking，SUMMARY 栏第一句是 FDIC 正就一份提案征求意见，要做三件事：对受它监管的获准支付型稳定币发行人与受保存款机构实施 GENIUS Act 的部分要求、厘清作为准备资产的存款之存款保险范围，以及厘清代币化存款的处理方式。提案本身没有生效日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 何时适用，提案引的是法律自己的规定：于 2027 年 1 月 18 日生效，或在各监管机关发布任何实施本法的最终规则后 120 天生效，以较早者为准——那是法律的生效规定，不是这份草案的。四月这份文件没有印这部法的制定日，是 FDIC 在 7 月 20 日另一份公告才写它“was enacted on July 18, 2025”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "意见截止日照原文写：DATES 栏要求意见须于 2026 年 6 月 9 日前送达 FDIC。以 FDIC 的刊登清单页核查到 2026 年 9 月 17 日，RIN 3064-AG19 只出现在 2026 年 4 月 10 日那一行，该行标着 Comment Period End: June 9, 2026，未见同文号的最终规则行。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "管到谁：FDIC 监管的存款机构，以及它们的稳定币子公司"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 设了四个联邦支付型稳定币监管机关，文件列为 FDIC、货币监理署（OCC）、美联储理事会与全国信用合作社管理局（NCUA）。FDIC 只处理自己那一块：它是受保州立非会员银行与州立储蓄机构获准发行支付型稳定币之子公司的监管机关，而文件写明，这类发行人必须是受保存款机构的子公司。另一半是保管：拟议的 subpart B 适用于受 FDIC 监管、以替稳定币准备金、作为担保品的稳定币或发行用私钥提供保管服务为业的机构。存款保险那一段的适用范围更宽：文件在影响范围那一节，把所有维持代币化存款或稳定币准备金存款的受保存款机构都列为直接适用对象。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件自己也把边界说清楚：OCC 在 2026 年 3 月 2 日刊登的提案“is more expansive than this proposed rule”，管的范围依文件所述还包含非银行机构。文件以 2025 年 9 月 30 日为基准时点，写 FDIC 当时“supervises zero PPSIs”，受它监管的这类发行人是零家。以这份提案全文核查到 2026 年 9 月 17 日，未见任何关于非美国用户、跨境提供或台湾机构的规定。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "草案怎么提",
+            "状态"
+          ],
+          "rows": [
+            [
+              "准备金存款",
+              "保给发行人，算法人存款",
+              "提案"
+            ],
+            [
+              "代币化存款",
+              "仍是存款，保险不变",
+              "提案"
+            ],
+            [
+              "赎回时限",
+              "不迟于两个营业日",
+              "提案"
+            ],
+            [
+              "准备资产集中度",
+              "单一机构不逾 40%",
+              "提案"
+            ],
+            [
+              "最低赎回量",
+              "不得高于一枚",
+              "提案"
+            ]
+          ],
+          "caption": "2026 年 9 月 17 日核查，依 91 FR 18534 的拟议条文整理；表中每一项都还是提案，最终规则可能不同。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "存款保险：保的是发行人，不是每一位持有人"
+        },
+        {
+          "type": "paragraph",
+          "text": "FDIC 提议修改第 330 部的存款保险规则，使作为支付型稳定币准备金而存放在受保存款机构的存款，依法人存款规则保给获准发行人，而不以穿透（pass-through）方式保给持有人；拟议新增的 12 CFR 330.11(a)(3) 就是这个机制。文件说明，法人存款规则会把同一家受保机构里同一存款人的法人存款加总，保到标准最高存款保险额（SMDIA），金额写“currently $250,000”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件写“In other words, the SMDIA is $250,000 per depositor, per IDI, for deposits held in each ownership category.”——此处的存款人是发行人，不是每位持有人各自享有 25 万美元；依拟议条文，不论那是准备金还是运营开支，发行人在同一家机构的存款都会加总，而 FDIC 只保“存款”，其他类别的准备资产不在范围内。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理由有两个：一是文件引 GENIUS Act 明文，支付型稳定币不受美国完全信用担保与美国政府保证，也不受 FDIC 的存款保险或 NCUA 的股金保险，而且作相反陈述是违法的；二是持有人通常靠转移稳定币完成交易，资金从未离开那个受保账户。代币化存款的结论则相反：拟议 12 CFR 330.3(k) 要明确规定记账技术不影响一笔负债是不是“存款”，因此存款人享有的联邦存款保险不变——但 FDIC 提醒，并非每一种代币化的银行负债都是存款。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-fdic-genius-act-20260410/diagram-1-zh-cn.svg",
+          "alt": "四格图解：准备金存款保给发行人、持有人不以穿透方式受保、代币化存款仍是存款、清算时持有人债权顺位优先于非稳定币债权人",
+          "width": 1600,
+          "height": 900,
+          "caption": "四格图解：准备金存款保给发行人、不穿透到持有人、代币化存款仍是存款，以及破产程序中持有人债权顺位优先于非稳定币债权人；四格都是拟议内容。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "持有人会看到的拟议要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "准备资产的拟议规定是至少一比一：发行人须维持可辨识的准备资产，其价值在任何时候都要等于或超过已发行在外的支付型稳定币总额，且每个营业日对任一合格金融机构的风险暴露不得超过准备资产的 40%。发行人还要按月在自家网站公布上一个月最后一日收盘时已发行在外的稳定币数量与准备资产构成，该月报须经注册会计师事务所核查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "赎回方面，FDIC 提议把“及时”定义为不迟于赎回请求日后两个营业日，并写明那是上限、发行人可以更短，同时承认市场可能期待远快于此，因此就天数是否合适征求意见。重大赎回请求定义为单一 24 小时内合计超过在外发行额的 10%。拟议条文要求发行人应赎回大于或等于一枚稳定币的任何数量，但原文接着加一个限定：须经适当的筛查与开户程序。费用要披露，上调须至少提前七个日历日通知；发行人也不得仅因持有、使用或保留稳定币而向持有人支付任何形式的利息或收益。"
+        },
+        {
+          "type": "paragraph",
+          "text": "那发行人倒了呢？提案没有给持有人存款保险式的还款保证，但它写到清偿顺位：FDIC 的核准权限仅限于那些在 GENIUS Act 第 11 条所述破产程序中不会危及支付型稳定币持有人债权的活动，而这些债权的顺位优先于非稳定币债权人。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "还没定案的部分，以及怎么自己查现况"
+        },
+        {
+          "type": "paragraph",
+          "text": "草案里几乎每个数字都还在征求意见，文件的提问一路编到第 144 问，第 125 问就问 FDIC 对准备金存款的拟议处理是否妥当、是不是对 GENIUS Act 与《联邦存款保险法》最好的解读。后续也有动作：FDIC 在 2026 年 7 月 20 日另外刊登公告，就本案拟议的每周与每季申报表格征求意见，OMB 控制号 3064-0225，印的截止日是 2026 年 9 月 18 日，和四月提案的 6 月 9 日不是同一段意见期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是编辑设计的例子，不是实测。假设有人通过某个跨境服务拿到一笔美元稳定币，以为那笔余额像银行存款一样有保险：照这份草案的提议，在它管得到的范围内，受保的是发行人存在银行里的那笔准备金，以法人存款计算并与发行人其他法人存款加总，不是每位持有人各自受保。要查草案走到哪里，可以到 FDIC 的《联邦公报》刊登与公众意见清单页，找 2026 年 4 月 10 日、RIN 3064-AG19 那一行，看旁边有没有多出同文号的最终规则。本站不比较也不推荐任何稳定币、交易所、钱包或发行方。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这份规则已经生效了吗？",
+              "answer": "没有。它是 Notice of proposed rulemaking，也就是规则制定提案，文件本身没有生效日。意见截止日依《联邦公报》原文是 2026 年 6 月 9 日；以 FDIC 的《联邦公报》刊登与公众意见清单页核查到 2026 年 9 月 17 日，RIN 3064-AG19 只出现在刊登当日那一行，未见同文号的最终规则。最终规则会不会发、什么时候发、内容和提案差多少，文件没有写。"
+            },
+            {
+              "question": "我手上的美元稳定币有没有美国的存款保险？",
+              "answer": "依这份草案的提议，稳定币持有人不会因为准备金放在受保银行而受保。文件引 GENIUS Act 明文，支付型稳定币不受美国完全信用担保、不受美国政府保证、不受 FDIC 的存款保险、也不受 NCUA 的股金保险，而且作相反陈述是违法的。草案提议把准备金存款依法人存款规则保给发行人，不以穿透方式保给持有人。"
+            },
+            {
+              "question": "那 25 万美元的上限是保我的吗？",
+              "answer": "不是。文件写标准最高存款保险额是按存款人、按受保机构、按所有权类别计算，这里的存款人是发行人。依拟议条文，发行人在同一家受保机构的法人存款会全部加总后适用这个上限，不论那笔钱是稳定币准备金还是运营开支。依这份草案的提议，持有人不会被当成那家银行的受保存款人，也不会各自获得一份上限。"
+            },
+            {
+              "question": "代币化存款和稳定币是同一件事吗？",
+              "answer": "在这份草案里是相反的两件事。代币化存款只要符合法定的存款定义就仍然是存款，拟议条文要明确规定记账技术不影响一笔负债是不是存款，因此存款人享有的联邦存款保险不变。但 FDIC 也提醒，并非每一种代币化的银行负债都是存款；不符合法定定义的，依定义就是非存款产品。"
+            },
+            {
+              "question": "如果发行人倒了，持有人拿得回钱吗？",
+              "answer": "文件没有提供存款保险式的还款保证。它写的是清偿顺位：FDIC 的核准权限仅限于那些在 GENIUS Act 第 11 条所述破产程序中不会危及支付型稳定币持有人债权的活动，而这些债权顺位在非稳定币债权人之前。要注意 FDIC 在第 13 问还在征求意见，问“持有人”究竟该怎么定义，是受益所有人，还是以数字钱包的持有或私钥的控制来认定。"
+            },
+            {
+              "question": "这份草案管得到台湾的平台或台湾用户吗？",
+              "answer": "以这份提案全文核查到 2026 年 9 月 17 日，未见任何关于非美国用户、跨境提供或台湾机构的规定。它管的是受 FDIC 监管的存款机构、这些机构获准发行支付型稳定币的子公司，以及受 FDIC 监管的相关保管机构；存款保险那一段还及于所有维持代币化存款或稳定币准备金存款的美国受保存款机构。台湾自己的制度是另一回事，本文结尾的链接有整理。"
+            },
+            {
+              "question": "两个营业日内赎回是已经确定的保障吗？",
+              "answer": "不是，那是拟议的定义。草案把及时赎回定义为不迟于赎回请求日后两个营业日，并说明两个营业日是上限、发行人可以更短，同时承认市场可能期待远快于此，因此就天数是否合适征求意见。拟议的最低赎回量则规定发行人应赎回一枚以上的任何数量，但附有须经适当筛查与开户程序的限定。"
+            },
+            {
+              "question": "我要去哪里看这件事最新的状态？",
+              "answer": "到 FDIC 网站的《联邦公报》刊登与公众意见清单页，找 RIN 3064-AG19 那一行。那一页会列出 FDIC 送到《联邦公报》的文件、文件类别与意见截止日，如果之后发布最终规则，同一个文号会再出现一行。那一页同时也是这份提案 ADDRESSES 栏列出的意见递送渠道之一。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "通过、刊登、生效是三件事",
+          "text": "FDIC 理事会通过是 2026 年 4 月 7 日，《联邦公报》刊登是 2026 年 4 月 10 日，两者都不是生效日——这份文件是规则制定提案，本身没有生效日。意见截止日依《联邦公报》原文是 2026 年 6 月 9 日；以 FDIC 的《联邦公报》刊登与公众意见清单页核查到 2026 年 9 月 17 日，RIN 3064-AG19 只有刊登当日那一行，未见同文号的最终规则。看到“美国已经规定稳定币如何如何”的说法，先确认讲的是法律、最终规则，还是一份还在征求意见的草案。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇是信息整理，不是投资建议",
+          "text": "本文说明的是法规、技术与产业运作，不推荐任何加密资产、交易所、钱包或发行方，也不是投资建议，不含价格、涨跌幅与买卖时机。监管规定、登记状态、上线时间与服务条件以主管机关与服务商当期公告为准，本文核查日为 2026-09-17。加密资产价格波动大、可能全额损失，且部分服务不受存款保险或投资者保护制度保障；实际适用请以官方公告或合格专业人员的意见为准。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年加密货币新闻总整理：法规、技术与产业的重点",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台湾虚拟资产服务法三读通过：七种服务商、稳定币许可与仍未定的施行日",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "GENIUS Act Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers and Insured Depository Institutions（91 FR 18534，提案全文）",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06974.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC 新闻稿：FDIC Approves Proposal to Implement GENIUS Act Requirements and Standards",
+          "url": "https://www.fdic.gov/news/press-releases/2026/fdic-approves-proposal-implement-genius-act-requirements-and-standards",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "FDIC Federal Register Publications and Public Comments（《联邦公报》刊登与公众意见清单）",
+          "url": "https://www.fdic.gov/federal-register-publications",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Reporting Forms and Instructions Associated With Requirements and Standards for FDIC-Supervised Permitted Payment Stablecoin Issuers（91 FR 45274，申报表格公告）",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/07/20/2026-14589.txt",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

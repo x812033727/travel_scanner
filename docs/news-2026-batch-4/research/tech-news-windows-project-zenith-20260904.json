@@ -1,0 +1,368 @@
+{
+ "slug": "tech-news-windows-project-zenith-20260904",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All four recorded sources were fetched successfully from this container with curl -A \"Mokaair-editorial\". (1) The lead URL https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/ returned HTTP 200, 121,061 bytes, full article body present, no paywall or bot wall. (2) https://blogs.windows.com/windowsdeveloper/feed returned HTTP 200 with 10 <item> entries, newest 2026-09-14 - a live feed, not a dead one - and it carries the Zenith item with pubDate 'Fri, 04 Sep 2026 10:00:29 +0000'. (3) https://blogs.windows.com/feed returned HTTP 200, 10 items, newest 2026-09-14; both feeds agree on the Zenith date and title. (4) https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/ HTTP 200, 140,491 bytes. (5) https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/ HTTP 200, 158,245 bytes. (6) https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html HTTP 200, 183,253 bytes. IMPORTANT: the actual names of the pre-installed tools exist ONLY inside a chart image embedded in the 2026-09-04 post, not in its body text. I downloaded the full-resolution asset https://blogs.windows.com/wp-content/uploads/sites/3/2026/09/Preinstalled-tools-2.png (HTTP 200, 580,648 bytes, 3756x2292 PNG), cropped it into its three columns and read each one at full resolution, so the 18 tool names below are read off the official asset, not inferred. The WordPress REST record for the post (https://blogs.windows.com/windowsdeveloper/wp-json/wp/v2/posts/57883) returned HTTP 401, so no API cross-check of the body was possible; the meta tags in the served HTML were used instead. No block was hit for this assignment.",
+ "sources": [
+  {
+   "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "publisher": "Windows Developer Blog (Microsoft)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "More choice and possibility with Windows PCs at IFA",
+   "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+   "publisher": "Microsoft Devices Blog",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Build 2026: Furthering Windows as the trusted platform for development",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "publisher": "Windows Developer Blog (Microsoft)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "publisher": "AMD",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-09-04",
+ "event_date_basis": "The announcement post carries <meta property=\"article:published_time\" content=\"2026-09-04T10:00:29+00:00\" /> and its visible dateline reads 'September 4, 2026'. Both official RSS feeds (blogs.windows.com/windowsdeveloper/feed and blogs.windows.com/feed) give the same item a pubDate of 'Fri, 04 Sep 2026 10:00:29 +0000'. So announcement date = publication date = 2026-09-04. The same page also carries <meta property=\"article:modified_time\" content=\"2026-09-04T13:17:30+00:00\" />, i.e. it was edited about three hours later on the same day; that does not move the event date. There is NO effective date and no availability date of any kind: Microsoft gives no ship date, no preview date and no general-availability date anywhere in the post. Nothing in the post is dated forward except the phrase 'in the coming months' for additional devices.",
+ "verified_facts": [
+  {
+   "fact": "Microsoft published the Project Zenith announcement on the Windows Developer Blog on 2026-09-04 at 10:00:29 UTC, under the title 'Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices'. The page was last modified the same day at 13:17:30 UTC.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<meta property=\"article:published_time\" content=\"2026-09-04T10:00:29+00:00\" /> ... <meta property=\"article:modified_time\" content=\"2026-09-04T13:17:30+00:00\" />"
+  },
+  {
+   "fact": "The named author is Logan Iyer, Corporate Vice President, Windows Platform + Developer.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Logan Iyer, Corporate Vice President, Windows Platform + Developer"
+  },
+  {
+   "fact": "Microsoft defines Project Zenith as a ready-to-code, distraction-free Windows experience on developer-class devices, and states the device class as 64 GB or more of unified memory and 250 GB/s or more of memory bandwidth.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Today, we're taking the next step with Project Zenith, a ready-to-code distraction-free Windows experience on developer-class devices with 64 GB+ unified memory and 250+ GB/s memory bandwidth, so developers can jump right in."
+  },
+  {
+   "fact": "The same two hardware figures are repeated later in the post in a slightly different word order (64 GB+ of unified memory, 250 GB/s+ of memory bandwidth). The numbers are identical in both places; only the placement of the plus sign differs.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "With 64 GB+ of unified memory and 250 GB/s+ of memory bandwidth, Project Zenith devices enable developers to run capable coding models locally and unmetered, helping lower token costs."
+  },
+  {
+   "fact": "Microsoft says Project Zenith will first become available with AMD's Ryzen AI Halo, with more devices from its OEM and silicon partners 'in the coming months'. No OEM or silicon partner other than AMD is named anywhere in the post.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Project Zenith will first become available with AMD's Ryzen AI Halo, with more devices from our OEM and silicon partners available in the coming months."
+  },
+  {
+   "fact": "Microsoft says that on Project Zenith devices developers can run models of 30 billion parameters or more locally and unmetered, which it frames as reducing reliance on metered cloud tokens. No specific model is named, no throughput figure, no quantisation and no benchmark is given.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "On these devices, developers can run 30B+ parameter models locally and unmetered - accelerating experimentation while helping reduce reliance on metered cloud tokens."
+  },
+  {
+   "fact": "Microsoft says Project Zenith ships with a set of pre-installed tools spanning languages and runtimes, source control, and productivity tools, and that Windows Terminal and Visual Studio Code are pinned to the Taskbar by default.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Project Zenith comes with a set of pre-installed tools spanning languages and runtimes, source control, and productivity tools. Windows Terminal and Visual Studio Code are pinned to the Taskbar by default, putting your favorite tools within immediate reach."
+  },
+  {
+   "fact": "The actual pre-installed tool names appear ONLY in a chart image embedded in the post (alt text 'Chart showing pre-installed tools', asset Preinstalled-tools-2.png). The chart is headed 'Preinstalled tools' and has exactly three columns. Column 1, 'Productivity & edit tools' (5 items): Visual Studio Code, GitHub Copilot, PowerToys, WinAppCLI, Windows Dev Skills.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Preinstalled tools / Productivity & edit tools / Visual Studio Code / GitHub Copilot / PowerToys / WinAppCLI / Windows Dev Skills"
+  },
+  {
+   "fact": "Same chart, column 2, 'Terminal & source control' (7 items): Intelligent Terminal, PowerShell 7, Git, GitHub CLI, Azure CLI, Core Utils, Oh My Posh.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Terminal & source control / Intelligent Terminal / PowerShell 7 / Git / GitHub CLI / Azure CLI / Core Utils / Oh My Posh"
+  },
+  {
+   "fact": "Same chart, column 3, 'Languages & runtimes' (6 items): Python 3.14+, uv, NVM, Node 24+, WSL 2+ Ubuntu, .NET 10. These six are the only entries in the whole chart that carry version markers, apart from PowerShell 7 in column 2.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Languages & runtimes / Python 3.14+ / uv / NVM / Node 24+ / WSL 2+ Ubuntu / .NET 10"
+  },
+  {
+   "fact": "Internal inconsistency inside the same post, worth flagging rather than resolving: the body text says 'Windows Terminal' is pinned to the Taskbar, while the pre-installed-tools chart on the same page lists 'Intelligent Terminal'. Microsoft does not reconcile the two names anywhere on the page.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Microsoft lists the pre-configured File Explorer defaults: file extensions shown, hidden files shown, the full path in the title bar, the details pane shown, and long-path support enabled. Two things are turned OFF in File Explorer: recently used files and folders, and sync provider tips.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "File Explorer shows file extensions, hidden files, the full path in the title bar, and the details pane, with long-path support enabled. Recently used files and folders and sync provider tips are turned off for a cleaner workspace."
+  },
+  {
+   "fact": "Microsoft lists the pre-configured Search and Start defaults: Command Palette is enabled, while Start menu tips and account notifications are turned off.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In Search and Start, Command Palette is enabled, while Start menu tips and account notifications are turned off to reduce distractions."
+  },
+  {
+   "fact": "Microsoft states the settings were pre-configured across four surfaces: File Explorer, Search, Start, and the Taskbar.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We've also pre-configured Windows Settings for coding across File Explorer, Search, Start, and the Taskbar."
+  },
+  {
+   "fact": "On WSL, the post states that Microsoft open-sourced WSL 'last year' and that at Build 2026 it integrated WSL more deeply into Windows with WSL containers, described as a built-in way to create, run and interact with Linux containers directly on Windows. The Zenith post does NOT say WSL containers are already generally available on Zenith devices; it only recounts the Build 2026 work.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Building on that momentum at Build 2026, we integrated WSL more deeply into Windows with WSL containers to provide a built-in way to create, run, and interact with Linux containers directly on Windows."
+  },
+  {
+   "fact": "Microsoft explicitly says Project Zenith does not prescribe a workflow and that users can keep configuring, extending and personalising the environment. This is the post's own framing of the configuration as a starting baseline, not a lock-in.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Project Zenith is not about prescribing a single workflow. You can continue to configure, extend, and personalize your environment around the tools, languages, and frameworks you prefer. It is about beginning from a better baseline"
+  },
+  {
+   "fact": "Microsoft says Project Zenith devices will benefit 'from day one' from the Build 2026 agent-security platform work: OS-enforced identity, containment with Microsoft Execution Containers (MXC), and enterprise-grade manageability for agents.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "combining OS-enforced identity, containment with Microsoft Execution Containers (MXC), and enterprise-grade manageability for agents.  Project Zenith devices will benefit from these platform investments from day one"
+  },
+  {
+   "fact": "Microsoft positions Zenith against cloud token cost with a split-workload argument: frontier models handle frontier problems while everything else runs locally at scale. This is Microsoft's stated rationale, not a measured result.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "By shifting some of that intelligence to the edge, we are achieving token economics and transforming the developer experience: frontier models tackle frontier problems, while everything else runs locally at scale."
+  },
+  {
+   "fact": "The post frames Zenith as built on top of Windows 11 baseline work done 'since the beginning of this year' across Search, File Explorer and everyday memory usage, and says Zenith devices will benefit from those improvements. Windows 11 is the only Windows version named in the post.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Project Zenith devices will benefit from all these improvements, while delivering an optimized developer environment you've been asking for."
+  },
+  {
+   "fact": "The post lists the Windows work Zenith is said to bring together: WSL, Windows Developer Configurations, Intelligent Terminal, and expanded on-device AI capabilities.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "From WSL and Windows Developer Configurations to Intelligent Terminal and expanded on-device AI capabilities, each investment is focused on helping developers stay in control and build faster."
+  },
+  {
+   "fact": "Ten days later, on 2026-09-14 at 17:00:39 UTC, Microsoft's Devices Blog restated Project Zenith in a post by Mark Linton, Corporate Vice President, Windows & Devices, covering IFA. It repeats the same device-class figures but writes the bandwidth as '250gbps' rather than '250+ GB/s' - the two Microsoft posts use inconsistent units for the same figure.",
+   "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "By pre-installing the essential tools and pre-configuring Windows settings for development on developer class devices with 64GB+ unified memory and 250gbps memory bandwidth, developers can jump right in."
+  },
+  {
+   "fact": "In the same IFA post Microsoft reports that AMD announced at IFA that Ryzen AI Halo systems will support Project Zenith out of the box, and names four things in that experience: Visual Studio Code, WSL, GitHub Copilot CLI, and PowerShell. Note this is Microsoft reporting AMD's announcement, and 'GitHub Copilot CLI' here differs from 'GitHub Copilot' in the 2026-09-04 chart.",
+   "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "AMD announced that Ryzen AI Halo systems will support Microsoft's Project Zenith out of the box, providing developers with a ready-to-code Windows experience that includes Visual Studio Code, WSL, GitHub Copilot CLI, and PowerShell."
+  },
+  {
+   "fact": "The IFA post lists many partner PCs (Acer, ASUS, Dell, Lenovo, MSI, AMD, NVIDIA) but does NOT attach any of those named machines to Project Zenith. AMD is still the only silicon partner tied to Zenith, and no Zenith OEM model name appears.",
+   "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The IFA post also says AMD previewed the Threadripper Halo Station, described as a prototype desktop workstation designed to bring datacenter-class AI compute to developers. It is a separate product from Ryzen AI Halo and is not linked to Project Zenith.",
+   "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "AMD also previewed the Threadripper Halo Station, a prototype desktop workstation designed to bring datacenter-class AI compute to developers."
+  },
+  {
+   "fact": "At Build 2026 (2026-06-02, post by Pavan Davuluri, Executive Vice President, Windows + Devices) Microsoft announced the developer-optimized Windows 11 experience that Zenith builds on, and described Windows Developer Configurations as generally available, powered by WinGet, setting up a distraction-free dev environment with VS Code, GitHub Copilot, WSL, PowerShell 7 and developer-optimized settings with ONE COMMAND on ANY Windows 11 device.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Windows Developer Configurations - powered by WinGet, sets up a distraction-free dev environment with VS Code, GitHub Copilot, WSL, PowerShell 7 and developer-optimized settings with one command on any Windows 11 device, now generally available."
+  },
+  {
+   "fact": "The Build 2026 post says the Windows Developer Configurations file is called dev-config.winget and that it applies developer-optimized settings such as Git version control in File Explorer, file extensions visible and hidden files shown - the same class of defaults Zenith ships pre-applied. This is the documented route to a comparable configuration on an existing Windows 11 PC.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "dev-config.winget - a WinGet configuration file, to get an optimized, distraction free development environment with the right versions of essential developer tools installed - WSL, PowerShell 7, Git, GitHub CLI, Visual Studio Code, Python and more. It also applies developer-optimized settings - like Git version control in File Explorer, file extensions visible and hidden files shown. It's fully customizable"
+  },
+  {
+   "fact": "Build 2026 status of the components that appear in the Zenith tool chart: Coreutils for Windows was 'now generally available'; WSL containers were 'coming soon to public preview'; Windows Development Skills was 'now generally available'; Intelligent Terminal was 'available in experimental preview'; MXC SDK was 'available in early preview'.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Coreutils for Windows - a set of Linux-like command line utilities that run natively on Windows, now generally available. ... WSL containers - a built-in way to create, run and interact with Linux containers using familiar CLI & API, coming soon to public preview. ... Intelligent Terminal - ... available in experimental preview."
+  },
+  {
+   "fact": "Microsoft says Coreutils for Windows was built from the uutils open-source project, a cross-platform reimplementation of GNU Coreutils in Rust, and that they run natively on Windows. This is the 'Core Utils' entry in the Zenith chart.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we've built Coreutils for Windows from the uutils open-source project, a cross-platform reimplementation of GNU Coreutils in Rust. These are Linux-like command-line utilities that run natively on Windows."
+  },
+  {
+   "fact": "On WSL containers, the Build 2026 post says WSL was open-sourced at Build 2025, that community contributions have grown to over 200 pull requests per month, that WSL containers ship as a CLI and an API, and that WSL containers 'will be available in public preview in the coming months as a regular update to WSL'. It also says IT admins gain visibility into which Linux containers run on developer machines and can control image sources.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "WSL containers will be available in public preview in the coming months as a regular update to WSL."
+  },
+  {
+   "fact": "Microsoft describes Intelligent Terminal as based on the existing Windows Terminal experience (tabs, profiles, themes, settings, shells) plus native agent CLI integration in an agent pane, providing context to agents via ACP (Agent Communication Protocol), with GitHub Copilot available if no agent is installed. This explains the 'Intelligent Terminal' entry in the Zenith chart.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "It is based on the existing Windows Terminal experience, so you get everything it offers (tabs, profiles, themes, settings, shells) plus native agent CLI integration in the agent pane. If no agent is installed, GitHub Copilot is available for you to get started."
+  },
+  {
+   "fact": "Microsoft describes Windows Development Skills as giving agents structured knowledge to build native Windows apps end-to-end using WinUI3 skills and winapp CLI. These correspond to the 'Windows Dev Skills' and 'WinAppCLI' entries in the Zenith chart, though the spelling differs between the two Microsoft posts.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Windows Development Skills - gives agents structured knowledge to build great native Windows apps end-to-end using WinUI3 skills and WinApp CLI, now generally available."
+  },
+  {
+   "fact": "Microsoft describes MXC (Microsoft Execution Containers) as a cross-platform, policy-driven execution layer for agents across Windows and WSL, where developers declare what an agent can access (files, networking) and MXC enforces those boundaries at runtime. Process isolation and session isolation were to reach Windows Insiders shortly after Build.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we are introducing Microsoft Execution Containers (MXC), a cross-platform, policy-driven execution layer for agents across Windows and WSL. Developers declare what an agent can access, like files and networking related policies configured in Intune, and MXC enforces those boundaries at runtime."
+  },
+  {
+   "fact": "Context on what 'unified memory' developer hardware Microsoft had already shipped before Zenith: at Build 2026 Microsoft announced the Surface RTX Spark Dev Box with 128 GB of unified memory shared dynamically across CPU and GPU in a single memory address space, and said it would be available later this year in the U.S. exclusively on Microsoft.com. Its '1 petaflop of AI compute' figure is footnoted as sourced from NVIDIA and based on theoretical FP4 TOPS using the sparsity feature.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Source: NVIDIA. Based on 1 Theoretical FP4 TOPS using the sparsity feature."
+  },
+  {
+   "fact": "AMD's own blog on Ryzen AI Halo is dated May 20, 2026 - about three and a half months BEFORE the Project Zenith announcement - and it does not mention Project Zenith at all.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "May 20, 2026"
+  },
+  {
+   "fact": "AMD describes Ryzen AI Halo as the first compact AI developer platform engineered by AMD, powered by Ryzen AI Max+ 395 processors with up to 128 GB of unified system memory, and says it 'capably runs models of up to 200 billion parameters' locally. That is AMD's claim, and the 200B figure is well above the 30B+ floor Microsoft quotes for Zenith devices generally.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The new AMD Ryzen AI Halo capably runs models of up to 200 billion parameters, allowing developers to build, test and operate agentic AI applications locally; pre-orders begin June 2026."
+  },
+  {
+   "fact": "AMD says Ryzen AI Halo powered by Ryzen AI Max+ 395 is available exclusively at Micro Center with pre-orders starting in June 2026. Micro Center is a United States retailer; AMD names no other region or retailer in this blog.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "To expand access to AI developers, Ryzen AI Halo powered by Ryzen AI Max+ 395 will be available exclusively at Micro Center with pre-orders starting in June 2026."
+  },
+  {
+   "fact": "AMD says a next-generation Ryzen AI Halo developer platform arrives in the third quarter of 2026, powered by Ryzen AI Max PRO 400 Series processors with higher clock speeds, up to 192 GB of unified memory and 160 GB of VRAM, and that OEM partners are expected to introduce their own Ryzen AI Halo developer platforms starting this year.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In the third quarter of 2026, we'll step up the Ryzen AI Halo developer platform. The next-generation platform will be powered by new Ryzen AI Max PRO 400 Series processors, featuring higher clock speeds, up to 192GB of unified memory and 160GB of VRAM."
+  },
+  {
+   "fact": "AMD claims the Ryzen AI Max PRO 400 Series are the world's first x86 client processors capable of running 300 billion parameter models locally, footnoted (GRHP-01) as: as of 5/11/2026 the Ryzen AI Max+ 495 PRO supports up to 160 GB dedicated graphics memory, capable of running 300 billion+ parameters at 4-bit quantization. The quantisation condition is essential and must not be dropped.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GRHP-01: As of 5/11/2026, the AMD Ryzen AI Max+ 495 PRO processor supports up to 160 GB dedicated graphics memory which is capable of running 300 billion+ parameters at 4-bit quantization."
+  },
+  {
+   "fact": "AMD's published Ryzen AI Max PRO 400 Series table: Ryzen AI Max+ PRO 495 - 16 cores / 32 threads, up to 5.2 GHz boost / 3.1 GHz base, 80 MB total cache, Radeon 8065S graphics, 45-120 W cTDP, up to 55 NPU TOPS, 40 graphics CUs, 192 GB unified memory. Ryzen AI Max PRO 490 - 12C/24T, 5.0/3.2 GHz, 76 MB, Radeon 8050S, 45-120 W, up to 50 TOPS, 32 CUs, 192 GB. Ryzen AI Max PRO 485 - 8C/16T, 5.0/3.6 GHz, 40 MB, Radeon 8050S, 45-120 W, up to 50 TOPS, 32 CUs, 192 GB. AMD notes TOPS is a maximum in an optimal scenario and may not be typical (GD-243).",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Trillions of Operations per Second (TOPS) for an AMD Ryzen processor is the maximum number of operations per second that can be executed in an optimal scenario and may not be typical."
+  },
+  {
+   "fact": "AMD says Ryzen AI Max PRO 400 Series processors will be available from leading OEM partners including HP and Lenovo in the third quarter of 2026. These are named as Ryzen AI Max PRO 400 Series partners, NOT as Project Zenith partners.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Ryzen AI Max PRO 400 Series processors will be available from leading OEM partners including HP and Lenovo in the third quarter of 2026."
+  },
+  {
+   "fact": "AMD says the Ryzen AI Halo developer platform works with PyTorch, vLLM, llama.cpp, Ollama, ComfyUI and LM Studio, is optimized for AMD ROCm software, and supports both Windows and Linux - AMD frames it as taking a developer from Linux prototyping and fine-tuning through to Windows deployment on one system.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The Ryzen AI Halo developer platform works with the frameworks and tools developers already use - PyTorch, vLLM, llama.cpp, Ollama, ComfyUI and LM Studio - and is optimized for AMD ROCm software"
+  },
+  {
+   "fact": "AMD's Ryzen AI Halo blog contains NO memory-bandwidth figure at all: a case-insensitive search of the extracted page text for 'bandwidth' and 'GB/s' returns zero matches. So the 250 GB/s+ floor is stated only by Microsoft, and is not corroborated on AMD's own page for the first Zenith device.",
+   "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Both official Windows feeds are live and were used to confirm the date rather than reading it off the page layout: https://blogs.windows.com/windowsdeveloper/feed returned 10 items with the newest dated 2026-09-14, and it lists the Zenith item as 'Fri, 04 Sep 2026 10:00:29 +0000'.",
+   "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Fri, 04 Sep 2026 10:00:29 +0000"
+  }
+ ],
+ "not_said": [
+  "PRICE. Neither the 2026-09-04 Zenith post nor the 2026-09-14 IFA post contains any price, price range, currency symbol or the words 'price'/'pricing' at all (verified by grep: 0 matches for 'price', 'pricing' and '$'). Microsoft does not say what a Project Zenith device costs, and does not say whether Project Zenith itself carries any charge on top of the device.",
+  "AVAILABILITY DATE. Microsoft gives NO ship date, NO preview date and NO general-availability date for Project Zenith. The words 'preview' and 'general availability' do not appear in the post at all. The only forward-looking phrase is 'in the coming months', and that applies to additional devices, not to the first one.",
+  "REGIONS AND MARKETS. Microsoft names no country, no region and no market. The words 'region' and 'market' do not appear. Nothing is said about Taiwan or Asia. Do not infer availability in Taiwan from anything in these sources. (Note separately that AMD's own blog says Ryzen AI Halo pre-orders were exclusive to Micro Center, a United States retailer - that is AMD's statement about its own product, not a Microsoft statement about Zenith's regions.)",
+  "OEM LIST. Microsoft names no OEM. It says only 'more devices from our OEM and silicon partners available in the coming months'. Acer, ASUS, Dell, HP, Lenovo, MSI, Intel, NVIDIA and Qualcomm are not mentioned in the Zenith post (grep: 0 matches for each). The 2026-09-14 IFA post lists many partner machines but attaches none of them to Project Zenith.",
+  "WINDOWS EDITION, VERSION OR BUILD. The post says Windows 11 but never names an edition (Home, Pro, Enterprise), a version (25H2 etc.) or a build number, and sets no minimum OS build for Project Zenith.",
+  "WHAT PROJECT ZENITH IS, TECHNICALLY. Microsoft never says whether Project Zenith is an OEM factory image, a Windows SKU, a first-boot configuration, a downloadable package, or a marketing programme name. It never says whether an existing PC that meets the 64 GB / 250 GB/s bar can obtain it, and never says whether it can be applied after purchase.",
+  "WHETHER THE HARDWARE FIGURES ARE A REQUIREMENT. Microsoft describes the devices as having 64 GB+ unified memory and 250 GB/s+ memory bandwidth, but never states these as a certification requirement, a minimum spec Microsoft enforces, or a badge programme. It does not say what happens on a machine below that bar.",
+  "WHICH 30B+ MODELS. No model name, family, vendor, quantisation, context length, tokens-per-second figure or benchmark is given for the '30B+ parameter models locally and unmetered' claim. Microsoft gives no measured result of any kind.",
+  "WHAT 'UNMETERED' MEANS. Microsoft uses 'unmetered' to contrast with metered cloud tokens but never defines any licensing, subscription or entitlement terms. In particular it does not say whether the bundled GitHub Copilot requires a paid subscription, nor what is included with the device.",
+  "TOOL VERSIONS AND PROVENANCE. Apart from Python 3.14+, Node 24+, PowerShell 7, WSL 2+ Ubuntu and .NET 10, the chart gives no version for any tool. Microsoft does not expand 'uv' or 'NVM', does not say whose distribution of them is installed, and does not say which Ubuntu release the WSL distro is. Do not fill these in.",
+  "WHETHER PREINSTALLED TOOLS CAN BE REMOVED. Microsoft says the environment can be configured, extended and personalised, but says nothing about uninstalling the bundled tools or opting out of any of them.",
+  "SUPPORT, LIFECYCLE, LICENSING, ENTERPRISE TERMS. Nothing is said about update cadence, support lifetime, volume licensing, or how Project Zenith behaves under enterprise management.",
+  "NO COMPARISON WITH OTHER VENDORS. Microsoft makes no comparison to Apple, NVIDIA, Qualcomm or Intel silicon anywhere in the Zenith post. Any side-by-side with, for example, Apple M6 unified-memory bandwidth would be the writer's construction, not Microsoft's, and must not be presented as an official comparison.",
+  "STATUS OF THE INDIVIDUAL COMPONENTS ON ZENITH. The Zenith post does not restate whether WSL containers, Intelligent Terminal or MXC are in preview or generally available on Zenith devices. The preview/GA labels in this record come from the separate Build 2026 post dated 2026-06-02 and describe status as of that date, not as of 2026-09-04."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Ryzen AI Halo is priced at US$3,999.99 for both the Windows and Linux versions.",
+   "seen_where": "A web-search result summary citing VideoCardz ('AMD launches $3,999 Ryzen AI Halo PC, limited to one US retailer') and a Yahoo/TechPowerUp write-up.",
+   "why_excluded": "Media only. I fetched AMD's own blog in full and it contains no price at all - a search of the extracted text for '$' and 'price' returns nothing. I did not find and did not guess an AMD page carrying a price, so no price is recorded. If the article wants to say anything about cost it must say Microsoft and AMD did not publish one in the sources used."
+  },
+  {
+   "claim": "Ryzen AI Halo supports up to 192 GB of unified memory and can run models up to 300 billion parameters.",
+   "seen_where": "A web-search result summary that merged two different AMD products.",
+   "why_excluded": "Wrong as stated, and I caught it by reading AMD's page. AMD's blog attributes 128 GB and 'up to 200 billion parameters' to the Ryzen AI Halo shipping with pre-orders in June 2026, and attributes 192 GB / 160 GB VRAM / 300 billion+ (at 4-bit quantization) to the NEXT-GENERATION platform with Ryzen AI Max PRO 400 Series arriving in Q3 2026. The two must not be collapsed."
+  },
+  {
+   "claim": "AMD's own IFA text about Project Zenith support on Ryzen AI Halo systems.",
+   "seen_where": "Reported inside Microsoft's own Devices Blog IFA post (2026-09-14).",
+   "why_excluded": "I have Microsoft's paraphrase of AMD's announcement, not AMD's own words. I did not locate and did not guess an AMD newsroom URL for an IFA Project Zenith statement. So this is recorded strictly as 'Microsoft's Devices Blog says AMD announced...', never as 'AMD said'."
+  },
+  {
+   "claim": "Specifications and capability claims from the AMD Ryzen AI Halo product page (amd.com/en/products/processors/desktops/ryzen/ryzen-ai-halo.html).",
+   "seen_where": "The URL appears as the target inside a Microsoft safelinks-wrapped link in the 2026-09-14 IFA post.",
+   "why_excluded": "tech.md explicitly bars vendor product marketing pages as a source for capability claims. I did not fetch it and recorded nothing from it. The AMD engineering/news blog was used instead."
+  },
+  {
+   "claim": "AMD's CES 2026 press release (2026-01-05) on Ryzen / Ryzen AI / ROCm, and its ir.amd.com mirror.",
+   "seen_where": "Web search results.",
+   "why_excluded": "Not fetched. Nothing from it is recorded. It is listed here only so a later agent knows it exists and was deliberately not used - the May 2026 AMD blog was closer to the Ryzen AI Halo launch and was read in full instead."
+  },
+  {
+   "claim": "'uv' in the Zenith chart is Astral's Python package and project manager, and 'NVM' is Node Version Manager.",
+   "seen_where": "Inference from the chart's 'Languages & runtimes' column, where 'uv' sits next to 'Python 3.14+' and 'NVM' next to 'Node 24+'.",
+   "why_excluded": "Microsoft does not expand either name anywhere on the page. It is almost certainly what a reader would assume, but it is an inference, not something the official source states, so it is not recorded as a fact. If the writer explains them, it must be flagged as the site's own explanation, not Microsoft's."
+  },
+  {
+   "claim": "Cross-checking the Zenith post body through the WordPress REST API.",
+   "seen_where": "https://blogs.windows.com/windowsdeveloper/wp-json/wp/v2/posts/57883, discovered from a link rel in the page head.",
+   "why_excluded": "Returned HTTP 401. No API cross-check was possible. The served HTML and both RSS feeds were used instead, and they agree on title and date."
+  },
+  {
+   "claim": "Any figure for how fast a 30B+ model actually runs on a Project Zenith device, or any independent test of the configuration.",
+   "seen_where": "Nowhere in any first-party source.",
+   "why_excluded": "Microsoft publishes no number and this site does no testing. The article must not imply a performance level."
+  },
+  {
+   "claim": "That 'Windows Terminal' and 'Intelligent Terminal' are the same thing on a Zenith device.",
+   "seen_where": "The 2026-09-04 post's body text says Windows Terminal is pinned to the Taskbar; the chart on the same page lists Intelligent Terminal.",
+   "why_excluded": "Microsoft does not reconcile the two names. The Build 2026 post says Intelligent Terminal is 'based on the existing Windows Terminal experience', which is suggestive but does not settle what is pinned on a Zenith machine. Recorded as an unreconciled inconsistency rather than resolved either way."
+  }
+ ],
+ "overlaps_existing_article": "There is no tech-news pack on disk yet (40 packs, all ai-news-*), so nothing duplicates this directly. Three adjacencies to manage. (1) ai-news-qwen-35-20260216 ('Qwen3.5 開放權重：可下載模型，與能在自己電腦運作差在哪？') already covers the open-weights side - what a downloadable model is and what hardware burden running one imposes. That article owns the MODEL side. This article must own the OPERATING-SYSTEM CONFIGURATION and the DEVICE-CLASS FLOOR that Microsoft published, and must not re-explain open weights, quantisation or how to pick a local model. The natural second link is to this piece. (2) ai-news-nvidia-rubin-20260105 covers datacenter AI compute and the cloud cost chain; Zenith's 'lower token costs' argument touches it, but Rubin owns the cloud side and this piece must stay on the client device. (3) The batch-4 candidate list plans a separate tech-news pack on Apple M6 / M5 Ultra (2026-08-25) whose hook is unified-memory bandwidth. Zenith's 64 GB / 250 GB/s floor and Apple's silicon figures come from different vendors' own claims and Microsoft makes no comparison - so the two packs may cross-link on the CONCEPT of unified memory bandwidth, but neither may build a head-to-head spec table. Division: Apple piece = what the silicon does; Zenith piece = what an OS vendor now treats as the minimum machine for local model work.",
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md line 241 and the assignment brief both say 'sync provider notifications off' / '關閉同步提供者提示'. The post says sync provider TIPS are turned off ('Recently used files and folders and sync provider tips are turned off'). The things called notifications that are turned off are ACCOUNT NOTIFICATIONS, and those are in Start, not File Explorer. Two different settings, do not merge them.",
+  "The candidate entry's settings list is incomplete. The same paragraph also states: the full path is shown in the title bar, the details pane is shown, long-path support is enabled, recently used files and folders are turned off, and Start menu tips are turned off. All five are missing from the candidate note and all five are usable detail.",
+  "The candidate entry misses the single most useful thing on the page: the pre-installed tool names exist ONLY in an embedded chart image (Preinstalled-tools-2.png), not in the body text. Eighteen tools in three columns. Anyone working from the body text alone will conclude Microsoft named no tools, which is wrong.",
+  "'Windows 11 以外的版本需求' in the candidate's 'not said' list is imprecise. Microsoft DOES name Windows 11 as the baseline. What it does not give is an edition, a version or a build number. Phrase it that way.",
+  "The candidate list treats T6 as settled from one URL. Two further first-party Microsoft items materially extend it and were not noted: the Devices Blog IFA post of 2026-09-14 restates Zenith and reports AMD's IFA statement that Ryzen AI Halo systems will support Project Zenith out of the box (naming VS Code, WSL, GitHub Copilot CLI and PowerShell), and the Build 2026 post of 2026-06-02 defines Intelligent Terminal, WSL containers, Coreutils, Windows Development Skills and MXC - i.e. most of the chart's contents - with their preview/GA status as of June.",
+  "Candidates line 286-287 proposes writing the 64 GB / 250 GB/s floor 'against' the Apple M6 piece. Safe only as a conceptual link. Microsoft makes no comparison to Apple or to any other vendor anywhere in the post, so a spec-versus-spec pairing would be the site's own construction and would also drift towards the buying advice tech.md forbids.",
+  "Add to the candidate's 'not said': Microsoft never says what Project Zenith technically IS (factory image, SKU, configuration, programme), and never says whether an existing machine meeting the hardware bar can get it. That gap is the most likely thing a reader will ask and the article must state it as unanswered.",
+  "Minor but worth recording: the two Microsoft posts state the bandwidth figure inconsistently - '250+ GB/s' on 2026-09-04 and '250gbps' on 2026-09-14. Quote the 2026-09-04 form, which is the one on the announcement itself."
+ ],
+ "editorial_brief": "Audience per tech.md: Taiwanese general readers, not developers who already know Windows. The subject is an operating-system configuration plus a hardware floor an OS vendor has published - it is NOT an AI model launch, so it belongs in the tech vertical and must stay off the model itself. Reader angle in three moves. First, what actually changed on 2026-09-04: Microsoft gave a name to a shipping configuration of Windows 11 in which a set of defaults developers used to flip by hand - showing file extensions, showing hidden files, showing the full path, turning off tips and recently-used lists, turning on the Command Palette - now arrive already set, together with a fixed list of eighteen pre-installed tools. That is a small, concrete, checkable change, and it is the part of the story a non-developer can actually understand: what a machine looks like on first boot is a decision someone makes. Second, the more interesting half: Microsoft has put a number on what it now considers a developer-class machine - 64 GB or more of unified memory and 250 GB/s or more of memory bandwidth - and tied that number to a capability, running 30-billion-parameter-plus models locally without paying per token. Explain what unified memory and memory bandwidth are in plain Taiwanese Chinese and why a memory figure, not a processor figure, is the one being quoted. Third, the honest gap: Microsoft announced a name and a spec floor and published neither price nor date nor region nor OEM list, and never said whether Project Zenith is an image, a SKU or something you could obtain for a machine you already own. Say that plainly; it is the most useful sentence in the piece for a Taiwanese reader, because it means nobody can yet say whether or when this reaches Taiwan. Strict boundaries. Every capability sentence is '微軟表示' or '超微（AMD）表示' - this site ran no test and there is no measured number in any source. No buying advice of any kind: no '該不該買', no '值不值得升級', no ranking of machines, and no head-to-head with Apple or NVIDIA silicon even though the temptation is obvious, because Microsoft made no such comparison. Keep the AMD material contained: Ryzen AI Halo is relevant only as the first device Microsoft names, its own specs are AMD's claims from a blog that predates Zenith by three months and never mentions it, and the Micro Center pre-order detail is a US retail fact about AMD's product, not a statement about where Zenith will be sold - do not let it become an availability claim. Deliberately out of scope: how to choose or run a local model (that is the existing Qwen3.5 article), cloud inference economics (that is the NVIDIA Rubin article), and the agent-security machinery (MXC, agent identity) beyond one sentence, since it is a June announcement carried forward rather than news from 2026-09-04. Also resist tidying the two inconsistencies inside Microsoft's own material - Windows Terminal versus Intelligent Terminal, and 250+ GB/s versus 250gbps - the accurate move is to quote the announcement's own wording and not to reconcile them."
+}

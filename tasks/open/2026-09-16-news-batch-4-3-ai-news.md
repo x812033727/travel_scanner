@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-16T13:21:40Z
 completed_at:
-branch:
+branch: claude/brave-hopper-8ezxba
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
 scope:
@@ -77,7 +77,7 @@ EDGAR 全文檢索 API、`cdn.openai.com` 的資產路徑、`platform.openai.com
 | B5 | 2026-05-28 | `ai-news-frontier-governance-20260528` | OpenAI Frontier Governance Framework |
 | B6 | 2026-06-08 | `ai-news-openai-s1-20260608` | 保密送件 S-1（不可寫成投資題材） |
 | B7 | 2026-06-24 | `ai-news-openai-broadcom-chip-20260624` | OpenAI 與 Broadcom 的推論晶片 |
-| B8 | 2026-09-10 | `ai-news-chatgpt-financial-services-20260910` | ChatGPT for Financial Services（帶 finance，必附免責） |
+| B8 | 2026-09-10 | `ai-news-chatgpt-financial-services-20260910` | ChatGPT for Financial Services（**不掛 finance**，理由見 `ai.md`） |
 | B9 | 2026-09-10 | `ai-news-gpt-live-1-api-20260910` | GPT-Live-1 進 API |
 | B10 | 2026-09-11 | `ai-news-chatgpt-storage-scale-20260911` | 十億使用者的儲存架構 |
 | A1 | 2026-09-15 | `ai-news-gemini-38-live-20260915` | Gemini 3.8 Live 與 Extended Thinking（併入開發者側那篇） |
@@ -148,3 +148,12 @@ uv run python -m app.guides.pack_cli lint --kind life    # 0 error
 uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py
 npm run check:tasks
 ```
+
+## 交接（2026-09-17）
+
+還沒開始寫任何一篇。站主指定先交幣圈（4.1）驗收，幣圈目前的狀態與整條流程踩過的坑在
+[`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md)；這張票照同一條線跑。
+AI 垂直的索引是既有的 `ai-news-2026-january-september-index`（網址不變、原地改標題），`update_index.py` 裡 AI 那幾條
+`TODO` 要先寫好；三篇 `partial` 的研究（`openai.com/index/*` 對所有客戶端回 403）開稿時若撐不起完整文章要回報站主。
+代理規格在 `docs/news-2026-batch-4/agents/`。研究、獨立查核與 `corrections-ai.md` 都在 PR #544 裡，要等它合併。
+因為停手而 `release`，不是做完。

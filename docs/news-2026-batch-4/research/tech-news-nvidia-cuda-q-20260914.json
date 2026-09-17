@@ -1,0 +1,424 @@
+{
+ "slug": "tech-news-nvidia-cuda-q-20260914",
+ "event_date": "2026-09-14",
+ "checked_on": "2026-09-16",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All four recorded sources were fetched with curl -A \"Mokaair-editorial\" on 2026-09-16 and returned HTTP 200 with real bodies (not challenge or Access-Denied pages). (1) nvidianews.nvidia.com press release page: HTTP 200, 81,400 bytes, full release text present including the dateline 'September 14, 2026'. The feed https://nvidianews.nvidia.com/releases.xml also returned HTTP 200 with 20 <item> elements, newest pubDate Wed, 16 Sep 2026 15:02:09 GMT, and it carries the FULL release body in a <content> CDATA block (pubDate Mon, 14 Sep 2026 13:00:00 GMT, modDate Mon, 14 Sep 2026 16:31:03 GMT); I used the feed only to locate the item and then read the article page itself, and the two bodies match word for word. (2) https://nvidia.github.io/cuda-quantum/latest/preview/logical/index.html HTTP 200, 50,833 bytes. (3) .../preview/logical/reference/capabilities.html HTTP 200, 37,029 bytes. (4) https://nvidia.github.io/cuda-quantum/latest/releases.html HTTP 200, 144,916 bytes. BLOCKED / FAILED in this container: github.com HTML pages return HTTP 403 (so the repo page, releases.atom and api.github.com are unreadable); the GitHub MCP tool is scoped to this repo only and refused NVIDIA/cuda-quantum. WORKING GitHub fallbacks I used instead: raw.githubusercontent.com returns 200 (LICENSE and README.md read successfully) and `git ls-remote` over HTTPS works (201 branches listed; no branch matching 'logical', 'ftqc' or 'fault'). One guessed URL failed and was discarded: .../preview/logical/getting_started/install.html returned 404; the real path is .../preview/logical/getting-started/quickstart.html (hyphen, not underscore) and it returned 200. EXTRA FIRST-PARTY URLS fetched and verified but deliberately NOT placed in the 4-source list (the schema caps sources at 4): https://research.nvidia.com/publication/2026-09_cuda-q-logical-retargetable-compilation-fault-tolerant-quantum-computing (200), https://arxiv.org/abs/2609.12146 (200), https://pypi.org/pypi/cudaq-logical/json (200), https://pypi.org/pypi/cudaq/json (200), https://raw.githubusercontent.com/NVIDIA/cuda-quantum/main/README.md and /LICENSE (200), https://raw.githubusercontent.com/sandialabs/PRAQTICE/quops/quops/README.md (200), https://qce.quantum.ieee.org/2026/ (200), https://nvidia.github.io/cuda-quantum/latest/preview/logical/getting-started/quickstart.html (200), https://nvidia.github.io/cuda-quantum/latest/index.html (200), https://developer.nvidia.com/cuda-q (200), https://developer.nvidia.com/blog/feed/ (200, Atom, 100 entries, newest 2026-09-15T17:00:11Z). Facts drawn from those URLs are tagged with those URLs below. IF THE WRITER USES ONE OF THEM, SWAP IT INTO sources AND DROP ONE OF MINE - do not cite a fact to a URL that is not in the pack's sources array. The developer.nvidia.com/cuda-q page is a PRODUCT MARKETING PAGE and tech.md forbids using it as the source of a capability claim, so nothing load-bearing is taken from it.",
+ "event_date_basis": "2026-09-14. The press release page carries the dateline 'September 14, 2026' directly under the headline, and the official RSS item gives pubDate 'Mon, 14 Sep 2026 13:00:00 GMT' (= 2026-09-14 21:00 Taiwan time). The release opens 'NVIDIA today announced...', so announcement date = publication date = 2026-09-14. Two nearby dates are NOT the event date and must not be substituted: the cudaq-logical 0.1.1 package and the cudaq 0.16.0 package were both uploaded to PyPI on 2026-09-12 (software shipped two days before the announcement), and the Sandia QUOPS preprint was submitted to arXiv on 2026-09-10. The feed also shows a modDate of 'Mon, 14 Sep 2026 16:31:03 GMT' - the release was revised about 3.5 hours after publication, still the same day. The announcement lands inside IEEE Quantum Week 2026 (13-18 September 2026), which the release itself alludes to.",
+ "overlaps_existing_article": "Only one existing pack touches NVIDIA: apps/api/app/guides/content/ai-news-nvidia-rubin-20260105.json ('NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？', news_date 2026-01-05, topics ai/software/ai-news). That is GPU hardware for AI, a different subject; no overlap of facts. Nothing on site mentions quantum computing, CUDA-Q, logical qubits, QEC, Fermilab, Sandia or QUOPS - checked by listing all 970 content packs and grepping for nvidia/quantum/tech-news. Two OTHER NVIDIA items from the same candidate list must be kept separate from this one: the 2026-09-03 'NVIDIA to Acquire Hugging Face' (candidate A3, AI vertical) and the 2026-09-15 'AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements' (AI vertical). Division of labour: this piece is the ONLY one that may explain CUDA-Q, logical qubits and fault tolerance; it must not restate Rubin/GPU-for-AI material beyond one sentence of context, and it must not touch the Hugging Face acquisition at all. The second of the two required links should point at ai-news-nvidia-rubin-20260105 (exact zh-TW title, copy verbatim: 'NVIDIA Rubin 在 CES 亮相：AI 算力升級會如何影響日常服務？'). NOTE FOR THE ORCHESTRATOR: there is no tech vertical index pack yet - the only index is ai-news-2026-january-september-index ('2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用'). BRIEF.md requires the first link to be this vertical's index, so whoever assembles batch 4 has to create or nominate the tech index before this pack can pass check_article.py.",
+ "sources": [
+  {
+   "title": "NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "publisher": "NVIDIA Newsroom",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "CUDA-Q Logical — Develop and evaluate fault-tolerant quantum applications",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/index.html",
+   "publisher": "NVIDIA CUDA-Q documentation",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Capabilities and status",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "publisher": "NVIDIA CUDA-Q documentation",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "CUDA-Q Releases",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+   "publisher": "NVIDIA CUDA-Q documentation",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "The press release page carries the dateline 'September 14, 2026' directly under the headline; the official RSS item for it gives pubDate 'Mon, 14 Sep 2026 13:00:00 GMT' and modDate 'Mon, 14 Sep 2026 16:31:03 GMT'. The release text begins 'NVIDIA today announced', so the announcement date is 2026-09-14.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "September 14, 2026"
+  },
+  {
+   "fact": "The official headline, to be copied character for character if quoted, is 'NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing"
+  },
+  {
+   "fact": "What is new is ONE named thing: CUDA-Q Logical, described by NVIDIA as an orchestration layer added to the existing CUDA-Q open source platform. It is an addition to an existing product, not a new product line and not new hardware.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NVIDIA today announced an expansion of the NVIDIA CUDA-Q™ open source platform with CUDA-Q Logical, an orchestration layer that provides a programmable, verifiable approach to developing useful applications for fault-tolerant quantum computers."
+  },
+  {
+   "fact": "NVIDIA's own one-line summary of the change: the CUDA-Q platform 'now includes the CUDA-Q Logical orchestration layer, giving the quantum industry an open, programmable way to design and test fault-tolerant quantum computing applications in areas such as drug discovery, financial modeling and materials development.' The three application areas named are exactly drug discovery, financial modeling and materials development - no others.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The NVIDIA CUDA-Q platform now includes the CUDA-Q Logical orchestration layer, giving the quantum industry an open, programmable way to design and test fault-tolerant quantum computing applications in areas such as drug discovery, financial modeling and materials development."
+  },
+  {
+   "fact": "NVIDIA's own plain-language definition of why fault tolerance matters, usable as the explainer spine of the article: fault-tolerant processors with logical qubits let a system 'overcome the errors inherent in physical qubits so they can execute the larger computations needed for practical applications'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Fault-tolerant quantum processors with logical qubits are essential for useful quantum computing, allowing systems to overcome the errors inherent in physical qubits so they can execute the larger computations needed for practical applications such as drug discovery, financial modeling and materials development."
+  },
+  {
+   "fact": "NVIDIA states the problem CUDA-Q Logical is meant to solve: developing applications for fault-tolerant systems is 'a tedious, time-consuming codesign challenge', because changing an algorithm, an error-correction code, a hardware architecture or any other QPU component 'can significantly change the resources needed to run any given application'. This is the sentence that explains why a planning tool, rather than a machine, is the news.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "However, developing applications for such systems is a tedious, time-consuming codesign challenge: A change to an algorithm, error-correction code, hardware architecture or other QPU component can significantly change the resources needed to run any given application."
+  },
+  {
+   "fact": "NVIDIA says researchers can use CUDA-Q Logical to 'design and orchestrate the many components required for fault-tolerant quantum computing applications, easily switching between options to identify optimal system configurations for performance with logical qubits.'",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "With CUDA-Q Logical, researchers can now design and orchestrate the many components required for fault-tolerant quantum computing applications, easily switching between options to identify optimal system configurations for performance with logical qubits."
+  },
+  {
+   "fact": "Named NVIDIA spokesperson and exact title: Timothy Costa, vice president and general manager of quantum at NVIDIA. His quoted claim is that 'Quantum computing is maturing into an era of logical qubits' and that CUDA-Q Logical explores 'fully integrated, co-optimized systems regardless of qubit type and architecture - drastically shortening the timeline to useful quantum-GPU supercomputing.' The phrase 'drastically shortening the timeline' is an NVIDIA claim with no figure attached and must be written as 'NVIDIA 表示'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "“Quantum computing is maturing into an era of logical qubits, and researchers need an open, customizable platform capable of representing all aspects of a fault-tolerant system,” said Timothy Costa, vice president and general manager of quantum at NVIDIA."
+  },
+  {
+   "fact": "Availability as stated by NVIDIA, in full: 'CUDA-Q Logical is now available through GitHub.' The hyperlink behind the word GitHub points to https://github.com/NVIDIA/cuda-quantum. The release names NO licence, NO price, NO subscription, NO tier and NO region.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "CUDA-Q Logical is now available through GitHub."
+  },
+  {
+   "fact": "CUDA-Q's official documentation states the licence that the press release omits: the shipped CUDA-Q Logical example files carry the header 'Copyright (c) 2026 NVIDIA Corporation & Affiliates. All rights reserved. This source code and the accompanying materials are made available under the terms of the Apache License 2.0 which accompanies this distribution.' So the licence is Apache License 2.0.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This source code and the accompanying materials are made available under the terms of the Apache License 2.0 which accompanies this distribution."
+  },
+  {
+   "fact": "Corroboration of the licence from the repository itself (raw.githubusercontent.com works in this container although github.com HTML returns 403): the NVIDIA/cuda-quantum README says under a 'License' heading, 'The code in this repository is licensed under Apache License 2.0', and the repository LICENSE file is the 11,358-byte Apache License Version 2.0, January 2004 text.",
+   "url": "https://raw.githubusercontent.com/NVIDIA/cuda-quantum/main/README.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The code in this repository is licensed under [Apache License 2.0](./LICENSE)."
+  },
+  {
+   "fact": "Corroboration of the licence from the official distribution channel: the PyPI metadata for the cudaq-logical package carries license_expression 'Apache-2.0' and the summary 'Fault-tolerant logical resource estimation for CUDA-Q (cudaq.logical).'",
+   "url": "https://pypi.org/pypi/cudaq-logical/json",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apache-2.0"
+  },
+  {
+   "fact": "Installation, per NVIDIA's documentation: CUDA-Q Logical 'comes pre-installed with cudaq, so one command is enough: pip install cudaq'. The quick start adds a standalone route, 'pip install cudaq-logical[cu13]' (or [cu12] for CUDA 12), and warns that the bare cudaq-logical package 'does not include the required dependencies'.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "CUDA-Q Logical comes pre-installed with cudaq, so one command is enough:"
+  },
+  {
+   "fact": "The standalone install command and its caveat, verbatim from the quick start page: 'To install CUDA-Q Logical on its own instead, run: pip install cudaq-logical[cu13]' and 'If you install cudaq-logical standalone, always suffix it with [cu13] or [cu12], defaulting to [cu13] if your machine has no CUDA installation. The bare package does not include the required dependencies.'",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/getting-started/quickstart.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The bare package does not include the required dependencies."
+  },
+  {
+   "fact": "Version numbers, from NVIDIA's own release notes: 'This release integrates CUDA-Q Logical version 0.1.1.' The host release is CUDA-Q 0.16.0. A 0.1.1 version number is the clearest single fact showing how early this software is.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This release integrates CUDA-Q Logical version 0.1.1."
+  },
+  {
+   "fact": "NVIDIA's release notes describe CUDA-Q Logical as providing 'additional language tools to express and compose quantum error correction gadget and understand the resources they need to run across different system architectures' (the grammatical slip 'gadget' is NVIDIA's own).",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+   "is_vendor_claim": true,
+   "verbatim_quote": "It provides additional language tools to express and compose quantum error correction gadget and understand the resources they need to run across different system architectures."
+  },
+  {
+   "fact": "The same CUDA-Q 0.16.0 release notes list the other changes in that release: support for Python 3.14, improved quantum optimization and qubit mapping, support for static rotation synthesis, and 'atomic quantum regions'. Useful only as context that CUDA-Q Logical shipped inside a routine version bump.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/releases.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "0.16.0 also adds support for Python 3.14."
+  },
+  {
+   "fact": "Both packages were uploaded to PyPI on 2026-09-12, two days before the 2026-09-14 announcement: cudaq-logical 0.1.1 at 2026-09-12T09:46:22 (its only release ever) and cudaq 0.16.0 at 2026-09-12T09:46:42. The article should NOT call 2026-09-12 the event date, but it is honest supporting detail that the code was already published.",
+   "url": "https://pypi.org/pypi/cudaq-logical/json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "THE BOUNDARY SENTENCE. NVIDIA's own documentation defines the thing narrowly: 'CUDA-Q Logical is a resource-estimation toolkit for fault-tolerant quantum computing.' Not a quantum computer, not a quantum cloud service - a toolkit for working out how much hardware a given calculation would need.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "CUDA-Q Logical is a resource-estimation toolkit for fault-tolerant quantum computing."
+  },
+  {
+   "fact": "NVIDIA's documentation states that CUDA-Q Logical does not run anything on real hardware: 'It remains a compiler and estimation artifact: CUDA-Q Logical does not submit a physical schedule to hardware or provide a runtime execution service for it.' The heading over this is 'Stages stop at P3.'",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "P3 represents physical carriers, routing, native events, and schedules. It remains a compiler and estimation artifact: CUDA-Q Logical does not submit a physical schedule to hardware or provide a runtime execution service for it."
+  },
+  {
+   "fact": "NVIDIA's documentation states it does not even simulate: under the heading 'No simulator plugin surface', 'Nothing in the package consumes or executes physical simulations.' And of the headline RSA-2048 example, 'Neither path simulates or executes the workload.'",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "No simulator plugin surface. Nothing in the package consumes or executes physical simulations."
+  },
+  {
+   "fact": "NVIDIA's documentation lists further things the package deliberately does not do: 'There are no detector, observable, detector-error-model, decoder, or sampling semantics.' and 'CUDA-Q Logical does not annotate detectors or observables, generate or compose detector error models, sample circuits, or decode results. Those studies begin downstream of the emitted Stim text, in the Stim ecosystem.'",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "There are no detector, observable, detector-error-model, decoder, or sampling semantics."
+  },
+  {
+   "fact": "PREVIEW STATUS, which the press release never mentions. The documentation carries a 'Preview release' admonition at the top of the CUDA-Q Logical landing page: 'cudaq-logical is in preview. Its APIs, behavior, and documentation may change substantially in upcoming versions.' The whole section sits under a docs navigation heading literally labelled 'Preview'.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "cudaq-logical is in preview. Its APIs, behavior, and documentation may change substantially in upcoming versions."
+  },
+  {
+   "fact": "The documentation repeats the preview framing in its own description of scope: 'In this preview, you can start from a CUDA-Q kernel or author a portable logical program directly; configure codes, gadgets, placement, and distillation protocols; generate resource estimates; and emit realized programs for simulation and further analysis in tools such as Stim.' Note what the verb list stops at: generate estimates and emit programs - it does not include run.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In this preview, you can start from a CUDA-Q kernel or author a portable logical program directly; configure codes, gadgets, placement, and distillation protocols; generate resource estimates; and emit realized programs for simulation and further analysis in tools such as Stim."
+  },
+  {
+   "fact": "NVIDIA publishes a three-way honesty scheme for its own feature claims that is unusually quotable: a capability is 'shipped' when it is in the installed package, 'exercised' only when a shipped test or example actually executes it, and anything that is neither is 'out of scope: a deliberate boundary, stated here, that fails closed instead of approximating past an implemented edge.'",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A capability is shipped when it is part of the installed cudaq.logical package, and exercised only when a shipped test or example executes it"
+  },
+  {
+   "fact": "NVIDIA names, in its own documentation, parts of CUDA-Q Logical that exist but are untested: dynamic codes (MeasurementPhase, EncodingEpoch), code switching (PatchTransform), concatenation (cudaq.logical.codes.Concatenated), meta-checks (cudaq.logical.codes.MetaChecks) and P2 block requests (cudaq.logical.codes.qec_block). Its instruction to users: 'Treat them as preview surface: use them at your own risk until exercised evidence lands.'",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Treat them as preview surface: use them at your own risk until exercised evidence lands."
+  },
+  {
+   "fact": "For a general reader, the structure NVIDIA describes is four stages, P0 to P3: 'P0 unplaced logical, P1 placed logical, P2 QEC realization, and P3 physical event graph and schedule', with a four-tier estimation ladder Tier.LOGICAL, Tier.STATIC, Tier.ANALYTICAL and Tier.SCHEDULE. Use at most one sentence of this - it is jargon - but it shows concretely that the output is a plan and a cost, not a result.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/preview/logical/reference/capabilities.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A program is refined through four strict semantic stages — P0 unplaced logical, P1 placed logical, P2 QEC realization, and P3 physical event graph and schedule."
+  },
+  {
+   "fact": "Fermilab figure, as stated twice in the release: CUDA-Q Logical accelerated the work 'from five months to three weeks, a 7x speedup'. CAUTION: the release is internally inconsistent about WHAT was accelerated - the News Summary bullet says 'fault-tolerant architecture development', the body says 'fault-tolerant algorithm development'. Write it the way the quoted researcher puts it, or describe it neutrally as design work; do not pick one of the two nouns and present it as settled.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Fermilab transformed complicated fault-tolerant system designs into a repeatable and verifiable computational workflow, accelerating fault-tolerant algorithm development from five months to three weeks, a 7x speedup."
+  },
+  {
+   "fact": "Named Fermilab spokesperson and exact title: Anna Grassellino, chief technology officer at Fermilab and director of the Superconducting Quantum Materials and Systems Center. Her quoted version of the figure is more hedged than NVIDIA's bullet: 'our team explored combinations of these resources in just three weeks, compared with what would have typically taken about five months of building specialized infrastructure.' Note 'about five months' and 'would have typically taken' - it is a counterfactual estimate, not a measured before-and-after.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Using CUDA-Q Logical, our team explored combinations of these resources in just three weeks, compared with what would have typically taken about five months of building specialized infrastructure."
+  },
+  {
+   "fact": "What Fermilab actually did, per the release: 'In early work, Fermilab researchers used CUDA-Q Logical to validate prior results and evaluate physical qubits, runtimes and other resource requirements across different error-correction approaches and quantum hardware.' The words 'In early work' and 'validate prior results' are important - this is reproducing and costing known results faster, not a new scientific finding.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In early work, Fermilab researchers used CUDA-Q Logical to validate prior results and evaluate physical qubits, runtimes and other resource requirements across different error-correction approaches and quantum hardware."
+  },
+  {
+   "fact": "The most concrete number in the whole release, and the one a general reader can grasp: using CUDA-Q Logical, Iceberg Quantum modelled its fault-tolerant architecture for Diraq's qubits, 'showing how 1,000 logical qubits can be created with just 150,000 physical qubits, roughly 10x fewer than Diraq's previous estimates.' That is 150 physical qubits per logical qubit. CRITICAL: this is a MODELLED result from a design tool - the release does not say any of these qubits were built, and the comparison baseline is Diraq's own earlier estimate, not another company's hardware.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Using CUDA-Q Logical, Iceberg Quantum modeled its fault-tolerant architecture for Diraq’s qubits, showing how 1,000 logical qubits can be created with just 150,000 physical qubits, roughly 10x fewer than Diraq’s previous estimates."
+  },
+  {
+   "fact": "NVIDIA's editorialising around that figure, which must be attributed and not restated as fact: 'CUDA-Q Logical gave an unprecedented way to rapidly assess potential implementations of Iceberg's architecture, helping dramatically reduce the hardware needed for useful, fault-tolerant quantum computing.'",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "CUDA-Q Logical gave an unprecedented way to rapidly assess potential implementations of Iceberg’s architecture, helping dramatically reduce the hardware needed for useful, fault-tolerant quantum computing."
+  },
+  {
+   "fact": "The list of organisations NVIDIA says are ALREADY USING CUDA-Q Logical, exactly six entries: Fermi National Accelerator Laboratory, Infleqtion, IQM Quantum Computers, QCDesign, Quantum Motion, and Sandia National Laboratories. WARNING ABOUT THE SOURCE TEXT: NVIDIA's release is missing a comma and reads 'QCDesign Quantum Motion'. The underlying HTML hyperlinks 'Quantum Motion' separately to quantummotion.com, so these are two separate companies. Do NOT write a company called 'QCDesign Quantum Motion'.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "CUDA-Q Logical is already being used by QPU makers and labs including Fermi National Accelerator Laboratory, Infleqtion, IQM Quantum Computers, QCDesign Quantum Motion and Sandia National Laboratories."
+  },
+  {
+   "fact": "Separate, wider ecosystem lists in the same release, which are about CUDA-Q or NVQLink and NOT about CUDA-Q Logical - do not merge them into the CUDA-Q Logical user list. Using NVQLink: Anyon Computing (a new quantum control system), Quandela (a QPU-GPU architecture), and Quantum Machines (a demo integrating supercomputing resources with qubits at the Israeli Quantum Computing Center). Adopting CUDA-Q: BlueQubit (the Quantum Flywheel grant programme for researchers) and Qedma Quantum Computing plus QCentroid (error correction and mitigation, and deployment of quantum applications). Building applications: IonQ (DQAOA-GPT, a quantum generative AI framework), MITRE (GPU-accelerated digital twins of quantum sensors), Phasecraft (using NVIDIA cuQuantum for the largest-known variational quantum eigensolver emulated molecular database), and UCLA with Caltech (control sequence design).",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "NVQLink is described by NVIDIA as 'the open system architecture for tightly coupling quantum processors with GPU supercomputers'. NVIDIA Ising is described as 'the world's first family of open models for building and deploying AI for useful quantum computing', and Diraq is said to have used it to calibrate its silicon-based qubit processor. 'World's first' is an NVIDIA claim and must be attributed.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Diraq used NVIDIA Ising, the world’s first family of open models for building and deploying AI for useful quantum computing, to calibrate its silicon-based qubit processor."
+  },
+  {
+   "fact": "The second new thing in the release is a benchmark, not an NVIDIA product: QUOPS, 'a new, independent cross-platform benchmark developed by Sandia National Laboratories that measures the progress quantum computing systems are making toward utility-scale applications.' NVIDIA's role is distribution: 'A QUOPS reference implementation is available in NVIDIA CUDA-Q.'",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "QUOPS is a new, independent cross-platform benchmark developed by Sandia National Laboratories that measures the progress quantum computing systems are making toward utility-scale applications."
+  },
+  {
+   "fact": "Why a new benchmark is news, in NVIDIA's framing: 'Historically, progress in quantum computing has been measured primarily through advances in physical qubits - increasing qubit counts, improving fidelity and extending coherence.' QUOPS is offered as 'a hardware-agnostic, open method to benchmark progress toward shared goals for fault-tolerant quantum computers.' This is the cleanest hook for explaining to a general reader why 'how many qubits' is a poor headline number.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Historically, progress in quantum computing has been measured primarily through advances in physical qubits — increasing qubit counts, improving fidelity and extending coherence."
+  },
+  {
+   "fact": "Named Sandia spokesperson and exact title: Timothy Proctor, co-director of Sandia National Laboratories' Quantum Performance Laboratory. He frames QUOPS as forecasting rather than achievement: 'we, and other quantum computing stakeholders, have to be able to track and forecast the growth of quantum computer abilities. We created QUOPS to do exactly that, and we're excited to see it used by quantum computing vendors and customers.' He also says 'At Sandia, we can't wait to see fault-tolerant quantum computers helping to solve problems of national importance for the Department of Energy and the United States' - i.e. Sandia itself speaks of fault-tolerant machines in the future tense.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "At Sandia, we can’t wait to see fault-tolerant quantum computers helping to solve problems of national importance for the Department of Energy and the United States"
+  },
+  {
+   "fact": "Which machines QUOPS has been run on, per NVIDIA: 'Sandia shared early results in a preprint posted ahead of IEEE Quantum Week, reporting initial QUOPS benchmarks for QPUs from Google, IBM and Quantinuum.' Note the word 'initial' and note that NVIDIA's own hardware is not in that list.",
+   "url": "https://nvidianews.nvidia.com/news/nvidia-expands-open-source-cuda-q-platform-for-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Sandia shared early results in a preprint posted ahead of IEEE Quantum Week, reporting initial QUOPS benchmarks for QPUs from Google, IBM and Quantinuum."
+  },
+  {
+   "fact": "The QUOPS code repository the release links to is real and reachable via raw.githubusercontent.com: sandialabs/PRAQTICE, branch 'quops', folder 'quops', whose README reads 'This folder includes code and data for the paper \"Benchmarking the computational power of quantum computers\", by Proctor et al, that introduces QUOPS.'",
+   "url": "https://raw.githubusercontent.com/sandialabs/PRAQTICE/quops/quops/README.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This folder includes code and data for the paper \"Benchmarking the computational power of quantum computers\", by Proctor et al, that introduces QUOPS."
+  },
+  {
+   "fact": "EXTRA URL, NOT IN sources. The QUOPS preprint is arXiv:2609.12146, 'Benchmarking the computational power of quantum computers', submitted 10 September 2026, 30 authors led by Timothy Proctor and including Robin Blume-Kohout and Andrew D. Baczewski (Sandia), Charles H. Baldwin and Joan M. Dreiling (Quantinuum) and Zohim Chandani and Jin-Sung Kim (NVIDIA). QUOPS stands for 'quantum universal operation performance system'. The abstract's headline finding is sobering and is the single best reality check in this story: 'computational capability must grow by 5 orders of magnitude' to reach recognised challenge problems. It also reports a fault-tolerant logical processor 'implemented on up to eight [[7,1,3]]-encoded logical qubits using Quantinuum Helios-1'. USE ONLY IF YOU SWAP THIS URL INTO sources.",
+   "url": "https://arxiv.org/abs/2609.12146",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Translating state-of-the-art resource requirements for recognized challenge problems that represent useful quantum computation into effective QUOPS circuit sizes shows that computational capability must grow by 5 orders of magnitude, motivating fault-tolerant approaches."
+  },
+  {
+   "fact": "EXTRA URL, NOT IN sources. NVIDIA Research publishes the CUDA-Q Logical paper 'CUDA-Q Logical: Retargetable Compilation for Fault Tolerant Quantum Computing', publication date Monday, September 14, 2026, research area Quantum Computing, PDF 1.05 MB. Eleven NVIDIA authors: Alexander McCaskey, Justin Lietz, Adam Holmes, Kohei Nakaji, Vadym Kliuchnikov, Yifan Hong, Amalee Wilson, Andres Paz, Bettina Heim, Bruno Schmitt and Krysta M. Svore. This independently confirms the 2026-09-14 date from a second NVIDIA property. USE ONLY IF YOU SWAP THIS URL INTO sources.",
+   "url": "https://research.nvidia.com/publication/2026-09_cuda-q-logical-retargetable-compilation-fault-tolerant-quantum-computing",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Publication Date Monday, September 14, 2026"
+  },
+  {
+   "fact": "EXTRA URL, NOT IN sources. The paper's abstract frames the contribution as a compiler, not a machine: 'We present CUDA-Q Logical, an extensible compiler infrastructure for retargetable fault-tolerant compilation, analysis, and execution.' Its claimed validation is modest: 'we show that schedule-derived estimates reconcile with established independent models' - i.e. the tool agrees with existing published models, which is what you would want from an estimator. USE ONLY IF YOU SWAP THIS URL INTO sources.",
+   "url": "https://research.nvidia.com/publication/2026-09_cuda-q-logical-retargetable-compilation-fault-tolerant-quantum-computing",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We present CUDA-Q Logical, an extensible compiler infrastructure for retargetable fault-tolerant compilation, analysis, and execution."
+  },
+  {
+   "fact": "EXTRA URL, NOT IN sources. Timing context: IEEE Quantum Week 2026 (the IEEE International Conference on Quantum Computing and Engineering) ran 13-18 September 2026 at the Metro Toronto Convention Centre, Toronto, Canada, so the 14 September announcement fell on the conference's second day. The organisers state attendance 'exceeded 2,222 participants'. USE ONLY IF YOU SWAP THIS URL INTO sources.",
+   "url": "https://qce.quantum.ieee.org/2026/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "IEEE Quantum Week 2026 13 - 18 September 2026 Metro Toronto Convention Centre Toronto, Ontario, Canada"
+  },
+  {
+   "fact": "Background needed to explain the word 'expands': CUDA-Q's own documentation describes the platform as a hybrid quantum-classical toolkit with 'Python and C++ interfaces for quantum programming, compiler toolchains for optimization and hardware support and low-level QPU runtimes for detailed hardware control', and then adds the new layer: 'CUDA-Q also provides an open, extensible logical layer for fault-tolerant workloads, Quantum Error Correction (QEC) codes and QPU architecture co-design, currently in preview.' The phrase 'currently in preview' appears on the main CUDA-Q landing page too.",
+   "url": "https://nvidia.github.io/cuda-quantum/latest/index.html",
+   "is_vendor_claim": false,
+   "verbatim_quote": "CUDA-Q also provides an open, extensible logical layer for fault-tolerant workloads, Quantum Error Correction (QEC) codes and QPU architecture co-design, currently in preview."
+  },
+  {
+   "fact": "Repository shape, verified with git ls-remote over HTTPS (github.com HTML is 403 here): NVIDIA/cuda-quantum has 201 branches and none is named for 'logical', 'ftqc' or 'fault' - CUDA-Q Logical lives inside the main repository under preview/logical/, which is consistent with the documentation's example paths such as preview/logical/examples/00_logical_resource_estimate.py.",
+   "url": "https://raw.githubusercontent.com/NVIDIA/cuda-quantum/main/LICENSE",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "NO PRICE, NO TIER, NO REGION, NO LANGUAGE. The release says only 'CUDA-Q Logical is now available through GitHub.' It names no price, no free/paid tier, no country or region, no launch window and no eligibility condition. Write '官方未說明' for all of these. Because it is an Apache-2.0 package on PyPI and GitHub, there is no reason to imply a Taiwan-specific availability question at all - but equally, do not assert 'anyone worldwide can use it', because NVIDIA never says that and export-control questions are outside what the sources cover.",
+  "THE WORD 'PREVIEW' IS ABSENT FROM THE PRESS RELEASE. The release calls CUDA-Q Logical 'available' with no qualifier. The preview status ('cudaq-logical is in preview. Its APIs, behavior, and documentation may change substantially in upcoming versions.') and the 0.1.1 version number come from NVIDIA's documentation and release notes, not from the announcement. The article should state this gap plainly: the announcement and the manual describe the same software differently.",
+  "NVIDIA DOES NOT CLAIM TO HAVE BUILT OR SHIPPED A FAULT-TOLERANT QUANTUM COMPUTER. Nowhere does the release say NVIDIA makes a QPU, sells quantum hardware, or has run a useful fault-tolerant computation. Every hardware reference is to somebody else's machine (Fermilab, Infleqtion, IQM, QCDesign, Quantum Motion, Sandia, Diraq, Google, IBM, Quantinuum). NVIDIA's contribution is software plus GPUs.",
+  "NO TIMELINE. Neither the release nor the documentation gives any date, year or range for when fault-tolerant quantum computers will be useful. Costa says only 'drastically shortening the timeline' with no number. Sandia's Proctor speaks in the future tense ('we can't wait to see'). Do not write or imply any 'quantum computers will be ready by 20XX' statement.",
+  "THE 1,000 LOGICAL / 150,000 PHYSICAL QUBIT RESULT IS MODELLED, NOT BUILT. The release says Iceberg Quantum 'modeled' the architecture and that the figure 'shows how' those qubits 'can be created'. It does not say any physical qubits were fabricated, that the design was tested, or that Diraq has a machine with 150,000 qubits. The '10x fewer' comparison is against Diraq's OWN previous estimates - not against any competitor and not against built hardware.",
+  "THE FERMILAB 7x IS A COUNTERFACTUAL, NOT A MEASUREMENT. Grassellino's own words are 'compared with what would have typically taken about five months' - an estimate of the alternative, not a timed control run. The release also disagrees with itself about whether the accelerated work was 'architecture development' (summary bullet) or 'algorithm development' (body).",
+  "NO BENCHMARK NUMBERS FOR QUOPS IN THE RELEASE. NVIDIA says Sandia reported 'initial QUOPS benchmarks for QPUs from Google, IBM and Quantinuum' but gives no scores, no ranking and no winner. Do not manufacture a league table. It also does not say NVIDIA hardware was benchmarked.",
+  "QUOPS IS NOT AN NVIDIA BENCHMARK. It was developed by Sandia National Laboratories and is described as 'independent'. NVIDIA ships a reference implementation. Do not write 'NVIDIA's benchmark'.",
+  "NO LICENCE NAMED IN THE ANNOUNCEMENT. The release uses the words 'open source' and 'open' repeatedly but never names Apache 2.0, never states contribution terms and never says which parts of the wider CUDA-Q stack are or are not open. (Separately, the repository's Contributing notes require a Contributor License Agreement, and the marketing page mentions cuQuantum as a separate SDK - neither is discussed in the release.)",
+  "NO CUSTOMER, REVENUE, VOLUME OR HARDWARE-REQUIREMENT FIGURES. The release gives no number of users, downloads, installations or partners beyond the named lists, and no GPU model, memory or system requirement for running CUDA-Q Logical. The documentation's install instructions mention CUDA 12 or CUDA 13 extras but state no minimum hardware.",
+  "NO TAIWAN ANGLE EXISTS IN THESE SOURCES. No Taiwanese company, agency or university is named in the release, and nothing in it is Taiwan-specific. Do not invent one, and do not reach for TSMC, MediaTek or NCC - none of them appears. If the article wants a local hook it must be an explicitly editorial framing, labelled as such per BRIEF.md.",
+  "NOTHING ABOUT CRYPTOGRAPHY RISK. The documentation mentions a Gidney-Ekerå RSA-2048 example, but the press release says nothing about breaking encryption, post-quantum cryptography migration or any security timeline. Do NOT turn this into a 'quantum will break your bank password' story - that claim is not in any source read here.",
+  "NO COMPARISON WITH OTHER VENDORS' SOFTWARE. The release does not compare CUDA-Q or CUDA-Q Logical with Qiskit, Cirq, Stim or any other toolkit. (Stim appears in the documentation only as an output format CUDA-Q Logical emits to.) Do not construct a comparison.",
+  "CUDA-Q LOGICAL'S OWN DOCS SAY IT DOES NOT RUN, SIMULATE OR DECODE. 'CUDA-Q Logical does not submit a physical schedule to hardware or provide a runtime execution service for it'; 'Nothing in the package consumes or executes physical simulations'; 'There are no detector, observable, detector-error-model, decoder, or sampling semantics.' These sentences must survive into the article - they are the boundary the assignment asks for."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "That CUDA-Q 'integrates with 75% of publicly available QPUs'.",
+   "seen_where": "https://developer.nvidia.com/cuda-q (Key Features, 'Write Once, Run Everywhere')",
+   "why_excluded": "developer.nvidia.com/cuda-q is a product marketing page, which tech.md explicitly bars as the source of a capability claim. The figure has no methodology, no date and no definition of 'publicly available', and the FAQ on the same page restates it without the number as 'most publicly available QPUs'. Not written."
+  },
+  {
+   "claim": "Named partner write-ups that NVIDIA's release hyperlinks to: Infleqtion 'advances fault-tolerant quantum computing with NVIDIA CUDA-Q Logical'; Quantum Motion on 'automating fault-tolerant compilation for silicon spin architectures'; Iceberg Quantum's blog on working with NVIDIA and Diraq; Diraq's 'Iceberg Quantum and Diraq confirm Pinnacle's logical advantage for spin qubits'; Anyon Computing, Quandela, BlueQubit, Qedma, QCentroid, Phasecraft and UCLA posts.",
+   "seen_where": "Outbound links inside the NVIDIA press release",
+   "why_excluded": "Each is a first-party page for a DIFFERENT company, and each would be a separate source. With a hard cap of 4 sources I did not fetch or verify them, so no figure from any of them is recorded. The article may state only what NVIDIA's own release says about these partners, attributed to NVIDIA. If a checker wants the Diraq/Iceberg qubit numbers confirmed independently, those two URLs are the place to look."
+  },
+  {
+   "claim": "A company or product called 'QCDesign Quantum Motion'.",
+   "seen_where": "The partner sentence in the NVIDIA press release, which reads 'IQM Quantum Computers, QCDesign Quantum Motion and Sandia National Laboratories'",
+   "why_excluded": "This is a missing comma in NVIDIA's own copy. The source HTML hyperlinks 'Quantum Motion' on its own to quantummotion.com while 'QCDesign' is plain text, so they are two separate organisations. Recorded here so no writer or translator reproduces the merged name."
+  },
+  {
+   "claim": "That NVIDIA published a companion CUDA-Q Logical post on its technical blog on 2026-09-14.",
+   "seen_where": "Expectation from NVIDIA's usual launch pattern",
+   "why_excluded": "Checked and false. I read all 100 entries of https://developer.nvidia.com/blog/feed/ (Atom, newest 2026-09-15T17:00:11Z, oldest 2026-07-02) and there is no CUDA-Q Logical post. The nearest quantum items are 'NVIDIA Ising Enables Fully Automated Quantum Computer Calibration' (2026-07-27) and 'NVIDIA Ising Decoding Cuts Color Code Logical Error Rates by Over 300x' (2026-07-13), both outside this story. The '300x' figure in that second headline is a vendor claim about a different product and is NOT written."
+  },
+  {
+   "claim": "Any release-note or changelog text describing CUDA-Q Logical 0.1.0.",
+   "seen_where": "Inferred from the 0.1.1 version number",
+   "why_excluded": "PyPI shows exactly one cudaq-logical release ever, 0.1.1 on 2026-09-12. There is no published 0.1.0. Do not write 'the first version, 0.1.0'."
+  },
+  {
+   "claim": "Reported context that this announcement was made 'at IEEE Quantum Week' or 'at GTC'.",
+   "seen_where": "General expectation; the release mentions IEEE Quantum Week only in the Sandia paragraph",
+   "why_excluded": "The release says the Sandia PREPRINT was 'posted ahead of IEEE Quantum Week'. It does NOT say the CUDA-Q Logical announcement itself was made at the conference, and it names no venue, keynote or session. The conference dates (13-18 Sep 2026, Toronto) are verified separately at qce.quantum.ieee.org, so the article may say the announcement fell during that week, but must not say NVIDIA announced it on stage there."
+  },
+  {
+   "claim": "Any statement about what CUDA-Q Logical costs NVIDIA, what business it is meant to win, or its relation to NVIDIA's GPU revenue.",
+   "seen_where": "Obvious reader question",
+   "why_excluded": "Nothing in any source addresses it. The release's forward-looking-statements block is boilerplate securities language and says nothing specific. Not written - and tech.md bars turning this into an investment angle."
+  },
+  {
+   "claim": "Media and aggregator coverage of the announcement (headline framings such as 'NVIDIA pushes into quantum').",
+   "seen_where": "Not fetched",
+   "why_excluded": "BRIEF.md forbids news media and aggregators as recorded facts or source URLs. I deliberately ran no news search for this item; every fact above came from an NVIDIA, Sandia, arXiv, PyPI or IEEE page I fetched myself."
+  }
+ ],
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-tech-and-ai.md lists this item in the '⚠️ NVIDIA 的其餘三則' table as date-confirmed but content-unread. It can now be marked ✅ 已驗: the press release page itself returns HTTP 200 and was read in full on 2026-09-16.",
+  "That same table's note says only '量子運算，放科技垂直'. It should record the two things the release actually contains, because they are different stories with different owners: (a) CUDA-Q Logical, NVIDIA's own new software layer, and (b) QUOPS, a benchmark developed by Sandia National Laboratories that NVIDIA merely redistributes. Writing this as 'NVIDIA launched a quantum benchmark' would be wrong.",
+  "The candidates file's feed table records 'NVIDIA Newsroom https://nvidianews.nvidia.com/releases.xml ✅ 20 筆'. Confirmed on 2026-09-16 (20 <item> elements, newest pubDate Wed, 16 Sep 2026 15:02:09 GMT) - but it should ALSO record the far more useful property that this feed carries the FULL press-release body in a <content> CDATA block, not just a title and date. That is unusual among the feeds in that table and saves a fetch.",
+  "The candidates file does not warn that github.com HTML returns HTTP 403 in this container while raw.githubusercontent.com returns 200 and `git ls-remote` works. Worth adding to the blocks list, since several tech stories will need repository evidence.",
+  "BRIEF.md requires the first of the two links to be the vertical index, but no tech vertical index content pack exists yet (only ai-news-2026-january-september-index). This pack cannot pass check_article.py until that index exists or a substitute is nominated."
+ ],
+ "editorial_brief": "READER: a Taiwanese general reader who has heard 'quantum computing' in headlines, does not know what a logical qubit or fault tolerance is, and will never install this software. ANGLE: the honest version of a story that is easy to over-sell. On 2026 年 9 月 14 日 NVIDIA did not announce a quantum computer; it released a piece of free, openly licensed software (Apache License 2.0) that helps other people's researchers work out, on paper and on GPUs, how big a future quantum computer would have to be to run a given calculation. The article's job is to make that distinction land. STRUCTURE THAT FITS THE FACTS: (1) what was announced on 9/14 and what CUDA-Q Logical literally is, in NVIDIA's own words, an 'orchestration layer' added to an existing open source platform; (2) the explainer a general reader needs - physical qubits make errors, error correction ties many physical qubits into one reliable 'logical' qubit, and NVIDIA's own sentence that this is what lets a machine 'execute the larger computations needed for practical applications'; end this section with the required table; (3) what the tool actually does, with the one striking number (Iceberg Quantum's model of 1,000 logical qubits from 150,000 physical qubits, roughly 10x fewer than Diraq's own previous estimates) and the Fermilab five-months-to-three-weeks figure, both clearly labelled as modelled or counterfactual and attributed; put the diagram here; (4) QUOPS - why 'how many qubits' is a bad headline number and why Sandia built a different yardstick, being scrupulous that this is Sandia's benchmark and not NVIDIA's; (5) THE BOUNDARY SECTION, which is the point of the piece: NVIDIA's own manual calls CUDA-Q Logical 'a resource-estimation toolkit', says it 'does not submit a physical schedule to hardware or provide a runtime execution service for it', says 'nothing in the package consumes or executes physical simulations', labels it a preview whose 'APIs, behavior, and documentation may change substantially', and numbers it 0.1.1 - and none of that appears in the press release. TONE: plain, unexcited, no hype verbs. Every NVIDIA figure carries '英偉達表示' or '官方表示'; this site ran no tests. OUT OF SCOPE ON PURPOSE: any prediction of when quantum computers will be useful (no source gives one); anything about quantum computers breaking encryption (the RSA-2048 item is a compiler example in the docs, and no source makes a security claim - this is the single most likely way for a writer to go off the rails); any comparison with Qiskit, Cirq or other vendors' toolkits; any share-price, investment or 'is NVIDIA winning quantum' framing, which tech.md forbids; the separate 2026-09-03 Hugging Face acquisition and the 2026-09-15 Vera Rubin AI Infra Summit items, which belong to other articles. EDITORIAL EXAMPLES: if the piece uses an everyday analogy for error correction or for resource estimation (e.g. costing a building from blueprints before laying a brick), BRIEF.md requires it to be marked as the editors' own illustration. CALLOUT: one only, no finance disclaimer (tech.md). The natural content is the gap between announcement language and manual language - 'available' versus 'in preview, version 0.1.1'. DIAGRAM IDEA (2x2, every number must also appear in the body): 物理位元會出錯 / 錯誤更正組成邏輯位元 / CUDA-Q Logical 算資源 / 結果是估算不是執行.",
+ "must_not_write": [
+  "Do not write or imply that NVIDIA has built, shipped, sold or demonstrated a fault-tolerant quantum computer. It has released software.",
+  "Do not write that CUDA-Q Logical runs, simulates, executes or decodes anything. Its own documentation says it does none of those.",
+  "Do not present the 1,000 logical / 150,000 physical qubit figure as hardware that exists. It is a model produced by the tool, compared against Diraq's own earlier estimates.",
+  "Do not present the Fermilab '7x' or 'five months to three weeks' as a measured benchmark. Grassellino describes what work 'would have typically taken'.",
+  "Do not call QUOPS an NVIDIA benchmark. Sandia National Laboratories developed it; NVIDIA ships a reference implementation.",
+  "Do not write a company called 'QCDesign Quantum Motion'. QCDesign and Quantum Motion are two organisations; NVIDIA's copy is missing a comma.",
+  "Do not say the software is available in Taiwan, or anywhere specific. The release names no region. Equally, do not assert global availability - it is not stated.",
+  "Do not attach any date, year or range to 'when quantum computing becomes useful'. No source read here gives one.",
+  "Do not connect this to breaking encryption or post-quantum cryptography. The RSA-2048 mention is a compiler example in the documentation and no source makes a security claim.",
+  "Do not use developer.nvidia.com/cuda-q as the source of any capability claim - tech.md bars product marketing pages - and in particular do not repeat its '75% of publicly available QPUs' figure.",
+  "Do not compare CUDA-Q with Qiskit, Cirq, Stim or any competing toolkit. No source makes that comparison.",
+  "Do not frame any part of this as investment, share-price or 'who is winning' commentary, and do not give purchase or upgrade advice (tech.md).",
+  "Do not say the announcement was made on stage at IEEE Quantum Week. The release says only that Sandia's preprint was posted ahead of it.",
+  "Do not describe 0.1.1 as 'the first version 0.1.0' - PyPI has exactly one cudaq-logical release, 0.1.1, uploaded 2026-09-12.",
+  "Do not use any news-media or aggregator wording; none was consulted and none may enter the pack."
+ ],
+ "hero_label": "量子運算的工具而非機器",
+ "diagram": {
+  "title": "CUDA-Q Logical 算的是什麼",
+  "caption": "本圖依 2026 年 9 月 16 日查核的官方資料繪製",
+  "nodes": [
+   [
+    "物理位元",
+    "本身會出錯"
+   ],
+   [
+    "邏輯位元",
+    "多個湊成一個"
+   ],
+   [
+    "算資源",
+    "需要多少硬體"
+   ],
+   [
+    "只估算",
+    "不實際執行"
+   ]
+  ]
+ },
+ "title_suggestions_zh_TW": [
+  "NVIDIA 開放 CUDA-Q Logical：這是量子運算的設計工具，不是量子電腦",
+  "英偉達 9 月 14 日開源 CUDA-Q Logical：它算的是未來量子電腦要多大"
+ ],
+ "title_suggestions_note": "Both are ≤ 60 characters and avoid claiming NVIDIA shipped a quantum computer. The writer picks or replaces; this field is advisory, not a verified fact."
+}

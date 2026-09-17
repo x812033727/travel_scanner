@@ -1,0 +1,535 @@
+{
+ "slug": "crypto-news-sec-crypto-interpretation-20260323",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "Fetched 2026-09-16 with curl -A 'Mokaair-editorial'. WORKING: https://www.federalregister.gov/api/v1/documents/2026-05635.json HTTP 200 (2,811 bytes; gave agencies, publication_date, signing_date=null, effective_on, dates, citation, docket_ids, RINs, cfr_references); https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt HTTP 200, 170,238 bytes, 2,829 lines - the complete 20-page release, read end to end and the basis of almost every fact below; https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf HTTP 200, 353,096 bytes, application/pdf (md5 e5613cb395282b5c52a3a694605d779a); https://www.cftc.gov/sites/default/files/2026/03/2026-05635a.pdf HTTP 200, byte-identical md5 to the govinfo PDF - i.e. the CFTC hosts the same published document, so the govinfo PDF and the CFTC copy corroborate each other; https://www.cftc.gov/ and https://www.cftc.gov/PressRoom/PressReleases HTTP 200 (the listing is paginated; ?page=2 covers Mar-Apr 2026); https://www.cftc.gov/PressRoom/PressReleases/9198-26 HTTP 200, 37,594 bytes, full press-release text. NEW BLOCK FOUND TODAY, not in the brief: the federalregister.gov DOCUMENT HTML PAGE is not retrievable here. Plain curl on https://www.federalregister.gov/documents/2026/03/23/2026-05635/... returns HTTP 200 with a 10,596-byte body whose <title> is 'Federal Register :: Request Access' and which contains none of the document text; WebFetch on the same URL reports a 302 to https://unblock.federalregister.gov/. This is the trap the brief warns about - 200 without the document. The API, the full_text/text endpoint and govinfo are unaffected. CONFIRMED BLOCKS: https://www.sec.gov/newsroom/press-releases HTTP 403; https://www.sec.gov/files/33-11412-fact-sheet.pdf HTTP 403 (this is the SEC fact sheet the CFTC press release links to, so the SEC's own summary exists but cannot be read here); https://www.sec.gov/rss/news/press.xml HTTP 403. PARTIAL NEW ROUTE: https://www.sec.gov/news/pressreleases.rss returns HTTP 200 with a valid 25-item RSS feed, but its oldest item is 2026-07-08, so it does not reach March 2026, and every item link (sec.gov/newsroom/press-releases/...) is itself 403. No PDF text extraction is possible in this container (pdftotext and pdftoppm are both absent), so the govinfo/CFTC PDFs were verified by fetch, size, content-type and md5 identity, while the text was read from the Federal Register full-text endpoint for the same FR Doc number. Verdict is 'full': the complete official text plus an agency press release are in hand.",
+ "sources": [
+  {
+   "title": "Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets (91 FR 13714)",
+   "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+   "publisher": "U.S. Government Publishing Office (govinfo), Federal Register Vol. 91 No. 55",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "CFTC Joins SEC to Clarify the Application of Federal Securities Laws to Crypto Assets (Release Number 9198-26)",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "publisher": "U.S. Commodity Futures Trading Commission",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Federal Register full text of FR Doc 2026-05635 (Rules and Regulations, pages 13714-13733)",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "publisher": "Office of the Federal Register, U.S. National Archives and Records Administration",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-03-23",
+ "event_date_basis": "Three distinct dates, all first-party. (1) ISSUANCE / SIGNATURE = 2026-03-17: the document's own signature block reads 'By the Commissions. / Dated: March 17, 2026.' over Vanessa A. Countryman, Secretary, SEC and Christopher Kirkpatrick, Secretary, CFTC; the two CFR interpretative-release tables it adds also carry 'March 17, 2026' for Release Nos. 33-11412 and 34-105020; and the CFTC's own press release 9198-26 is dated March 17, 2026 and says the CFTC 'joined the Securities and Exchange Commission today in issuing an interpretation'. So the 3/17 date the law-firm summaries used is NOT media-only - it is in the official text. (2) FILING with the Office of the Federal Register = 2026-03-20: the closing line reads '[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am]' (the PDF's internal creation timestamp is D:20260320231147Z, consistent). (3) PUBLICATION AND EFFECT = 2026-03-23: Federal Register Vol. 91, No. 55 (Monday, March 23, 2026), 91 FR 13714, and 'DATES: Effective Date: March 23, 2026.' The effective date is therefore NOT separate from the publication date - they are the same day. Note for the writing agent: the federalregister.gov API 'signing_date' field is null for this document; the 3/17 date must be taken from the document text and the CFTC press release, not from that field. The assigned slug fixes the event date at 2026-03-23 (publication + effect); this is defensible, but BRIEF.md says the slug date is the event day and batch 3 renamed a slug for exactly this reason, so if the orchestrator prefers the day the agencies acted, the slug would be ...-20260317. Flagged, not decided here. Whichever is chosen, news_date must equal the slug tail, and the article must state both dates explicitly.",
+ "verified_facts": [
+  {
+   "fact": "The document is FR Doc. 2026-05635, published in the Federal Register Volume 91, Number 55 (Monday, March 23, 2026), Rules and Regulations, pages 13714-13733 (20 pages); the Federal Register citation is 91 FR 13714.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Federal Register Volume 91, Number 55 (Monday, March 23, 2026)] [Rules and Regulations] [Pages 13714-13733] ... [FR Doc No: 2026-05635]"
+  },
+  {
+   "fact": "Its full title is 'Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets"
+  },
+  {
+   "fact": "It is a JOINT document of two agencies, not an SEC-only release: the AGENCY line names both.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AGENCY: Securities and Exchange Commission; Commodity Futures Trading Commission"
+  },
+  {
+   "fact": "The masthead carries two separate agency blocks: 'COMMODITY FUTURES TRADING COMMISSION / 17 CFR Part 1 / RIN 3038-AF67' and 'SECURITIES AND EXCHANGE COMMISSION / 17 CFR Parts 231 and 241 / [Release Nos. 33-11412; 34-105020; File No. S7-2026-09] / RIN 3235-AN56'. The Federal Register's own agencies metadata for the document likewise lists Commodity Futures Trading Commission and Securities and Exchange Commission.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "COMMODITY FUTURES TRADING COMMISSION 17 CFR Part 1 RIN 3038-AF67 SECURITIES AND EXCHANGE COMMISSION 17 CFR Parts 231 and 241 [Release Nos. 33-11412; 34-105020; File No. S7-2026-09] RIN 3235-AN56"
+  },
+  {
+   "fact": "The ACTION line is 'Final rule; interpretation; guidance'. The Federal Register classifies the document type as 'Rule'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ACTION: Final rule; interpretation; guidance"
+  },
+  {
+   "fact": "The DATES section contains one date and nothing else - no comment closing date.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "DATES: Effective Date: March 23, 2026."
+  },
+  {
+   "fact": "The interpretation was signed on 2026-03-17 by the secretaries of both agencies.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By the Commissions. Dated: March 17, 2026. Vanessa A. Countryman, Secretary, Securities and Exchange Commission. Christopher Kirkpatrick, Secretary, Commodity Futures Trading Commission."
+  },
+  {
+   "fact": "It was filed with the Office of the Federal Register on 2026-03-20 at 8:45 am, three days before publication.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[FR Doc. 2026-05635 Filed 3-20-26; 8:45 am] BILLING CODE 8011-01-6351-01-P"
+  },
+  {
+   "fact": "The two CFR tables the document amends both record the release date as March 17, 2026: part 231 gains an entry for Release No. 33-11412 and part 241 an entry for Release No. 34-105020, each dated 'March 17, 2026' with the Federal Register citation to be inserted.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets. | 33-11412 | March 17, 2026 | [INSERT Federal Register DOCUMENT CITATION]"
+  },
+  {
+   "fact": "The CFTC announced the interpretation on March 17, 2026 in press release 9198-26, titled 'CFTC Joins SEC to Clarify the Application of Federal Securities Laws to Crypto Assets', which states the agencies issued it that day.",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Commodity Futures Trading Commission joined the Securities and Exchange Commission today in issuing an interpretation clarifying how the federal securities laws apply to certain crypto assets and transactions involving crypto assets."
+  },
+  {
+   "fact": "On 2026-03-17 the CFTC said the document had not yet appeared in the Federal Register.",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The interpretation will be published on CFTC.gov and in the Federal Register."
+  },
+  {
+   "fact": "The two agencies play different roles inside the one document: the SEC issues the interpretation, and the CFTC provides guidance alongside it. The SUMMARY also states that 'we' and 'our' in the release mean the SEC only.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "SUMMARY: The Securities and Exchange Commission (\"Commission\" or \"SEC\") issues herein an interpretation regarding the application of the Federal securities laws to certain types of crypto assets and certain transactions involving crypto assets. The references in this release to \"we\" and \"our\" are to the Commission. The Commodity Futures Trading Commission (\"CFTC\") provides herein guidance relating to that interpretation."
+  },
+  {
+   "fact": "The CFTC's guidance is that it and its staff will administer the Commodity Exchange Act consistent with the SEC's interpretation, and that certain non-security crypto assets could meet the Commodity Exchange Act definition of 'commodity'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Further, the CFTC provides herein guidance that the CFTC and its staff will administer the Commodity Exchange Act consistent with the interpretation, and that certain non-security crypto assets could meet the definition of \"commodity\" under the Commodity Exchange Act."
+  },
+  {
+   "fact": "A footnote states the release changes neither agency's statutory authority.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Nothing in this release should be construed as altering the respective statutory authorities of the SEC or CFTC."
+  },
+  {
+   "fact": "A further footnote limits the commodity point: any non-security crypto asset OTHER THAN a payment stablecoin issued by a permitted payment stablecoin issuer could meet the Commodity Exchange Act definition of 'commodity' (7 U.S.C. 1a(9)).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "However, any non-security crypto asset, other than a \"payment stablecoin issued by a permitted payment stablecoin issuer,\" as such terms are defined in section 2 of the GENIUS Act, could meet the definition of \"commodity\" under the Commodity Exchange Act. See 7 U.S.C. 1a(9)."
+  },
+  {
+   "fact": "The release sorts crypto assets into five categories.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For purposes of this release, we classify crypto assets into five categories based on their characteristics, uses, and functions: (i) digital commodities; (ii) digital collectibles; (iii) digital tools; (iv) stablecoins; and (v) digital securities."
+  },
+  {
+   "fact": "The legal status attached to each category: digital commodities, digital collectibles and digital tools are not themselves securities; stablecoins may or may not be, depending on their characteristics; digital securities are securities. A non-security crypto asset can still be offered and sold subject to an investment contract, which is a security.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Digital commodities, digital collectibles, and digital tools, each as further described below, are not themselves securities. However, as with any asset that is not a security, a non-security crypto asset can be offered and sold subject to an investment contract, which is a security. Stablecoins, as further described below, are a broad category of crypto assets that may or may not be securities depending on their characteristics. Digital securities, as further described below, are securities."
+  },
+  {
+   "fact": "The release warns its own taxonomy is not exhaustive: there may be crypto assets that fall in none of the five categories, and hybrid assets that fall in more than one.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Given the variations in crypto assets and the constantly evolving nature of the crypto asset markets, including the underlying technology, there may be crypto assets that do not fall within any of these five categories, as well as crypto assets with hybrid characteristics that may fall within more than one category."
+  },
+  {
+   "fact": "Definition of a digital commodity: a crypto asset intrinsically linked to and deriving its value from the programmatic operation of a 'functional' crypto system and from supply and demand, rather than from the expectation of profits from the essential managerial efforts of others, and which has no intrinsic economic properties or rights such as generating a passive yield or conveying rights to future income, profits or assets of a business enterprise.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A digital commodity is a crypto asset that is intrinsically linked to and derives its value from the programmatic operation of a crypto system that is \"functional,\" as well as supply and demand dynamics, rather than from the expectation of profits from the essential managerial efforts of others."
+  },
+  {
+   "fact": "The release names 16 assets as examples of digital commodities.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Examples of digital commodities include Aptos (APT); Avalanche (AVAX); Bitcoin (BTC); Bitcoin Cash (BCH); Cardano (ADA); Chainlink (LINK); Dogecoin (DOGE); Ether (ETH); Hedera (HBAR); Litecoin (LTC); Polkadot (DOT); Shiba Inu (SHIB); Solana (SOL); Stellar (XLM); Tezos (XTZ); and XRP (XRP)."
+  },
+  {
+   "fact": "The naming is time-bound and explained: the conclusion rests on the Commission's understanding of each asset's characteristics, terms and functions 'as of the date of this release'; those 16 were chosen because each underlies a futures contract made available to trade on a CFTC-regulated designated contract market, which the release says is NOT a requirement; Algorand (ALGO) and LBRY Credits (LBC) are given as digital commodities that do not underlie such a futures contract.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Based on our understanding of their characteristics, terms, and functions as of the date of this release, the Commission concludes that each of these crypto assets is a digital commodity ... To be clear, it is not necessary that a crypto asset underlie such a futures contract to be a digital commodity; rather, the fact that these digital commodities underlie such a futures contract explains their selection as examples for this release."
+  },
+  {
+   "fact": "Definition of a digital collectible: a crypto asset designed to be collected and/or used, which may represent or convey rights to artwork, music, videos, trading cards, in-game items, or digital representations of internet memes, characters, current events or trends. Named examples: CryptoPunks, Chromie Squiggles, Fan Tokens, WIF and VCOIN. A meme coin is treated as a type of digital collectible with limited or no functionality.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A digital collectible is a crypto asset that is designed to be collected and/or used and may represent or convey rights to artwork, music, videos, trading cards, in-game items, or digital representations or references to internet memes, characters, current events, or trends, among other things."
+  },
+  {
+   "fact": "Two qualifications on digital collectibles: an automated creator royalty paid on each resale does not turn a digital collectible into a security, but the offer and sale of a FRACTIONALISED digital collectible could be the offer or sale of a security because it may involve essential managerial efforts from which a purchaser would reasonably expect profits.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the offer and sale of a digital collectible that either is fractionalized or otherwise enables individuals to acquire a fractional ownership interest of a single digital collectible, could constitute the offer or sale of a security"
+  },
+  {
+   "fact": "The release also says a crypto asset first sold as a meme coin with no functionality can LATER become a digital commodity if it becomes functional within an associated functional crypto system - the categories are not permanent.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "a crypto asset may be offered and sold initially as a meme coin ... but later become a digital commodity because it becomes functional within an associated functional crypto system"
+  },
+  {
+   "fact": "Definition of a digital tool: a crypto asset that performs a practical function such as a membership, ticket, credential, title instrument or identity badge; often non-transferrable or 'soul-bound'. Named examples: Ethereum Name Service domain names and CoinDesk's 'Microcosms' NFT Consensus Ticket.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A digital tool is a crypto asset that performs a practical function, such as a membership, ticket, credential, title instrument, or identity badge."
+  },
+  {
+   "fact": "Stablecoins: the GENIUS Act (Guiding and Establishing National Innovation for U.S. Stablecoins Act, Public Law 119-27, 139 Stat. 419 (2025)) was enacted in July 2025; its section 17 excludes a 'payment stablecoin issued by a permitted payment stablecoin issuer' from the definition of 'security'; section 2(22) defines 'payment stablecoin'; section 2(23) defines 'permitted payment stablecoin issuer' as a person formed in the United States that is a subsidiary of an insured depository institution approved under section 5, a Federal qualified payment stablecoin issuer, or a State qualified payment stablecoin issuer.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The GENIUS Act excludes from the definition of \"security\" any \"payment stablecoin issued by a permitted payment stablecoin issuer,\" as such terms are defined in section 2 of the GENIUS Act."
+  },
+  {
+   "fact": "Section 4(a)(11) of the GENIUS Act bars a permitted payment stablecoin issuer from paying any form of interest or yield to holders, in cash, tokens or other consideration, solely in connection with holding, using or retaining the payment stablecoin.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A permitted payment stablecoin issuer is prohibited under the GENIUS Act from paying any form of interest or yield to the permitted stablecoin holders (whether in cash, tokens, or other consideration) solely in connection with the holding, use, or retention of the payment stablecoin."
+  },
+  {
+   "fact": "The GENIUS Act was still not in force when the interpretation issued: it becomes effective on the earlier of 18 months after its date of enactment (stated as July 18, 2025) or 120 days after the primary Federal payment stablecoin regulators issue any final implementing regulations. No fixed calendar date is given.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The GENIUS Act will become effective on the earlier of 18 months after its date of enactment (July 18, 2025) or the date that is 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing the GENIUS Act."
+  },
+  {
+   "fact": "Because the GENIUS Act was not yet effective, the Commission interpreted that the offer and sale of 'Covered Stablecoins' as described in the Division of Corporation Finance's Staff Statement on Stablecoins (April 4, 2025) does not involve the offer and sale of securities under Securities Act section 2(a)(1) or Exchange Act section 3(a)(10), so issuance and redemption need not be registered; the interpretation expressly does not address stablecoins other than Covered Stablecoins.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the Commission interprets that, for the reasons set forth in the Staff Stablecoin Statement, the offer and sale of Covered Stablecoins does not involve the offer and sale of securities ... The foregoing interpretation does not address stablecoins other than Covered Stablecoins as described in the Staff Stablecoin Statement."
+  },
+  {
+   "fact": "Definition of a digital security (commonly called a tokenized security): a financial instrument enumerated in the definition of 'security' that is formatted as or represented by a crypto asset, with ownership recorded in whole or in part on one or more crypto networks. The release states the format does not matter.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A security is a security regardless of whether it is issued, or otherwise represented, offchain or onchain. All devices and instruments that have the economic characteristics of a security are securities regardless of format or label."
+  },
+  {
+   "fact": "Section IV sets out when a non-security crypto asset becomes subject to an investment contract: when an issuer offers it by inducing an investment of money in a common enterprise with representations or promises to undertake essential managerial efforts from which a purchaser would reasonably expect to derive profits.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A non-security crypto asset becomes subject to an investment contract when an issuer offers it by inducing an investment of money in a common enterprise with representations or promises to undertake essential managerial efforts from which a purchaser would reasonably expect to derive profits."
+  },
+  {
+   "fact": "Whose words count: representations or promises made by or on behalf of the issuer and conveyed to purchasers can create reasonable profit expectations; those made by third parties such as unaffiliated proponents or holders cannot, unless authorised by the issuer and conveyed to purchasers. Timing also matters - the issuer's POST-sale representations do not convert a prior sale into the sale of an investment contract.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As such, the issuer's post-sale representations or promises would not convert the prior sale into an offer or sale of an investment contract."
+  },
+  {
+   "fact": "Channels that count for such representations include written or oral agreements, public communications through which the issuer has established a regular pattern of communicating (its website or official social media accounts), direct private communications, regulatory filings publicly available to purchasers, and documents clearly attributable to the issuer such as a whitepaper.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "public communications through which the issuer has established a regular pattern of communicating (such as the issuer's website or official social media accounts)"
+  },
+  {
+   "fact": "Detail matters: representations with detailed milestones, a timeline, personnel, funding and an explanation of how holders will profit likely create a reasonable expectation of profit; vague statements with no semblance of an actionable business plan likely do not.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In contrast, representations or promises that are vague or contain no semblance of an actionable business plan, such as those lacking milestones, funding, or other plans for needed resources, likely would not create reasonable expectations of profit."
+  },
+  {
+   "fact": "Being subject to an investment contract does not make the crypto asset itself a security.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the fact that a non-security crypto asset is subject to an investment contract does not transform the non-security crypto asset itself into a security"
+  },
+  {
+   "fact": "Secondary market rule: a non-security crypto asset does not stay subject to the investment contract in secondary market transactions where purchasers would not reasonably expect the issuer's representations to remain connected to it; where they would, secondary market offers and sales are securities transactions that must be registered under the Securities Act or done under an available exemption.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Under such circumstances, secondary market offers and sales of such a non-security crypto asset would constitute securities transactions that must be registered under the Securities Act or conducted pursuant to an available exemption from registration."
+  },
+  {
+   "fact": "Two non-exclusive indicia of 'separation' from an investment contract: (1) FULFILMENT - the issuer has completed the essential managerial efforts it promised, even if it keeps doing non-essential work; (2) FAILURE - a purchaser would no longer reasonably expect the issuer to be able to fulfil or continue those efforts, for example after enough time has passed with nothing done, or where the issuer publicly announces it is abandoning development. The release says such an announcement must be widely disseminated and unambiguous.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As discussed below, we would not expect a non-security crypto asset to be subject to an investment contract when any of the following non-exclusive indicia of separation is present."
+  },
+  {
+   "fact": "Separation does not erase past liability: if the offering of the investment contract was never registered or exempt, the issuer still violated the Securities Act and investors keep their rights, and the issuer may still be liable under the anti-fraud provisions for material misstatements or omissions, even after the investment contract ceases to exist.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "even if the non-security crypto asset subsequently separates from the associated investment contract and that investment contract ceases to exist"
+  },
+  {
+   "fact": "Section V covers two activities: 'Protocol Mining' means mining digital commodities on public, permissionless proof-of-work networks, and 'Protocol Staking' means staking digital commodities on public, permissionless proof-of-stake networks.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(1) certain digital commodity activities known as \"mining\" on public, permissionless crypto networks that use proof-of-work (\"PoW\") as a consensus mechanism (\"PoW Networks\"); and (2) certain digital commodity activities known as \"staking\" on public, permissionless crypto networks that use proof-of-stake (\"PoS\") as a consensus mechanism (\"PoS Networks\")"
+  },
+  {
+   "fact": "Covered Protocol Mining is limited to two forms - Self (or Solo) Mining and Mining Pool, including the roles of mining pools and pool operators in earning and distributing rewards.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Only Protocol Mining Activities undertaken in connection with the following types of Protocol Mining are addressed in this release: Self (or Solo) Mining ... Mining Pool"
+  },
+  {
+   "fact": "The interpretation on mining: Protocol Mining Activities, in the manner and circumstances described, do not involve the offer and sale of a security under Securities Act section 2(a)(1) or Exchange Act section 3(a)(10), so participants need not register those transactions or find an exemption. The reasoning is that mining is an administrative or ministerial activity and rewards are payments for services to the network, not profits from the essential managerial efforts of others.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Protocol Mining Activities, in the manner and under the circumstances described in this release, do not involve the offer and sale of a security within the meaning of section 2(a)(1) of the Securities Act and section 3(a)(10) of the Exchange Act."
+  },
+  {
+   "fact": "Covered Protocol Staking is limited to four arrangements: Self (or Solo) Staking; Self-Custodial Staking Directly with a Third Party; Custodial Arrangement; and Liquid Staking. Covered participants include third-party Node Operators, Validators, Custodians, Delegates, Nominators and Liquid Staking Providers, collectively 'Service Providers'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(2) the activities undertaken by third parties involved in the Protocol Staking process--including, but not limited to, third-party Node Operators, Validators, Custodians, Delegates, Nominators, and Liquid Staking Providers (collectively, \"Service Providers\")"
+  },
+  {
+   "fact": "The interpretation on staking: Protocol Staking Activities, in the manner and circumstances described, do not involve the offer and sale of a security under Securities Act section 2(a)(1) or Exchange Act section 3(a)(10), so participants need not register those transactions or find an exemption.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Protocol Staking Activities, in the manner and under the circumstances described in this release, do not involve the offer and sale of a security within the meaning of section 2(a)(1) of the Securities Act or section 3(a)(10) of the Exchange Act."
+  },
+  {
+   "fact": "Four 'Ancillary Services' are named as administrative or ministerial and therefore inside the interpretation: Slashing Coverage (the provider reimburses or indemnifies against slashing loss); Early Unbonding (returning assets before the protocol's unbonding period ends); Alternate Rewards Payment Schedules and Amounts; and Aggregation of Digital Commodities to meet a protocol staking minimum.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Slashing Coverage ... Early Unbonding ... Alternate Rewards Payment Schedules and Amounts ... Aggregation of Digital Commodities"
+  },
+  {
+   "fact": "The staking interpretation carries explicit boundary conditions. Alternate reward schedules are inside the release only 'provided the reward amounts are not fixed, guaranteed, or greater than those awarded by the PoS Network's software protocol'. Footnotes state that if a Custodian or a Liquid Staking Provider decides whether, when or how much of a depositor's digital commodities to stake, or guarantees or sets the amount of rewards owed, its activities are OUTSIDE the scope of the release. The release does not say such arrangements are securities - it says it does not address them.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "provided the reward amounts are not fixed, guaranteed, or greater than those awarded by the PoS Network's software protocol"
+  },
+  {
+   "fact": "Staking Receipt Tokens: a receipt for a non-security crypto asset that is not subject to an investment contract is not a security, and that covers generating, issuing, redeeming and secondary market offers and sales; BUT a Staking Receipt Token that is a receipt for a digital security, or for a non-security crypto asset that IS subject to an investment contract, is a security.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In contrast, the offer or sale of a Staking Receipt Token that is a receipt for a digital security or a non-security crypto asset that is subject to an investment contract is an offer or sale of a security within the meaning of section 2(a)(1) of the Securities Act or section 3(a)(10) of the Exchange Act."
+  },
+  {
+   "fact": "A footnote limits it further: where a Liquid Staking Provider provides the means by which a Staking Receipt Token can be used to generate additional returns, those activities are outside the scope of the release.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Where a Liquid Staking Provider provides the means by which such a Staking Receipt Token can be used to generate such returns, those activities are outside the scope of this release."
+  },
+  {
+   "fact": "Section VI covers 'wrapping': depositing a crypto asset with a Custodian or cross-chain bridge (the 'Wrapped Token Provider') which issues an equivalent amount of 'Redeemable Wrapped Tokens' one-for-one 'without directly or indirectly offering any return, yield, profit opportunity, or additional good or service'. The deposited asset is locked up and cannot be transferred, lent, pledged or rehypothecated, and the holder can redeem one-for-one, whereupon the wrapped tokens are burned. Same receipt logic as staking receipt tokens: a receipt for a non-security asset not subject to an investment contract is not a security; a receipt for a digital security or for an asset subject to an investment contract is.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "without directly or indirectly offering any return, yield, profit opportunity, or additional good or service"
+  },
+  {
+   "fact": "Section VII covers airdrops, and only a narrow slice of them: airdrops of non-security crypto assets to recipients who give the issuer no money, goods, services or other consideration in exchange. In those circumstances the first element of the Howey test - an investment of money - is not met, so the asset does not become subject to an investment contract and the issuer need not register the transaction.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "this interpretation addresses only airdrops of non-security crypto assets by issuers to recipients who do not provide the issuer with money, goods, services, or other consideration in exchange for the airdropped non-security crypto assets"
+  },
+  {
+   "fact": "The airdrop carve-outs are precise: the interpretation does NOT pertain where the recipient performs a service in exchange (the release gives following the issuer on social media, reposting, writing an article, referring someone, or fixing bugs as examples of such services); it DOES pertain where consideration was given before the airdrop was announced and no further consideration is required afterwards; if the issuer requires action after the announcement - buying a specified crypto asset, buying a good or service, or performing a task - the interpretation does not apply. It also does not address airdrops of digital securities.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The interpretation does not pertain to any airdrops of non-security crypto assets where the recipient provides the issuer with money, goods, services, or other consideration in exchange for the airdropped non-security crypto asset, such as where the recipient performs a service in exchange for the airdropped non-security crypto asset."
+  },
+  {
+   "fact": "The airdrop interpretation is also limited going forward: a footnote notes an investment contract may exist in connection with other transactions involving the same asset before or after the airdrop, in which case a later transaction such as the recipient's secondary market sale could be a securities transaction requiring registration or an exemption.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the non-security crypto asset disseminated in the airdrop may become subject to that investment contract in a subsequent transaction, which would constitute a securities transaction, such as where the airdrop recipient sells the non-security crypto asset in a secondary market transaction"
+  },
+  {
+   "fact": "The interpretation is not a substitute for case law.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The interpretation in this release does not supersede or replace the Howey test, which is binding legal precedent."
+  },
+  {
+   "fact": "The SEC states it and its staff will administer the Federal securities laws consistent with the interpretation, including in enforcement actions, and calls this a first step.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Commission and its staff will administer the Federal securities laws consistent with the interpretation, including with respect to enforcement actions. The interpretation is the Commission's first step toward developing a clearer regulatory framework for the treatment of crypto assets under the Federal securities laws."
+  },
+  {
+   "fact": "The interpretation supersedes the SEC staff's 2019 'Framework for \"Investment Contract\" Analysis of Digital Assets' (April 3, 2019), and repeated footnotes state that the Commission's views in this release supersede any prior statements by the Commission or its staff on these topics; staff statements are said to have no legal force or effect.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The interpretation supersedes the Commission staff's Framework for \"Investment Contract\" Analysis of Digital Assets (Apr. 3, 2019)"
+  },
+  {
+   "fact": "Procedural status under the Congressional Review Act: OMB designated the interpretation a 'major rule' under 5 U.S.C. 804(2), yet it could take effect immediately under 5 U.S.C. 808(2) because it is an interpretive rule exempt from the Administrative Procedure Act's notice-and-comment requirements. It is also a significant regulatory action under section 3(f) of Executive Order 12866 and was reviewed by OMB. This is why the effective date equals the publication date.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Pursuant to the Congressional Review Act, the Office of Management and Budget (\"OMB\") has designated the interpretation in this release as a \"major rule,\" as defined by 5 U.S.C. 804(2). Notwithstanding such designation, the interpretation in this release may take effect immediately pursuant to 5 U.S.C. 808(2) because it is an interpretive rule and thus exempt from the Administrative Procedure Act's notice and comment requirements."
+  },
+  {
+   "fact": "Explicitly outside the release: other legal regimes, naming the Federal tax laws under the Internal Revenue Code and the Bank Secrecy Act of 1970 and the Anti-Money Laundering Act of 2020.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "No interference is intended with respect to any other legal regime, including the Federal tax laws under the Internal Revenue Code or the Bank Secrecy Act of 1970 and the Anti-Money Laundering Act of 2020, which are outside the scope of the interpretation in this release."
+  },
+  {
+   "fact": "The release states it creates no new legal obligations.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The interpretation does not itself create any new legal obligations for issuers of, and investors in, digital securities and crypto asset-related securities (i.e., when a crypto asset is subject to an investment contract)."
+  },
+  {
+   "fact": "Public comment is invited on the interpretation itself, including the descriptions of crypto assets and transactions in it, and the SEC says it may refine, revise or expand the interpretation based on the feedback. Comments go to File Number S7-2026-09, by the SEC's internet comment form, by email, or on paper to Vanessa A. Countryman, Secretary, Securities and Exchange Commission, 100 F Street NE, Washington, DC 20549-1090. The release warns commenters not to include personally identifiable information.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "To help inform the Commission's ongoing consideration of the topics addressed in this release, we are soliciting public comment on the views set forth in the interpretation, including the descriptions of the crypto assets and crypto asset transactions contained herein."
+  },
+  {
+   "fact": "Statutory authority for the interpretation: sections 2(a)(1) and 19 of the Securities Act and sections 3(a)(10) and 23 of the Exchange Act. The amendments add entries to 17 CFR part 231 (Securities Act interpretative releases) and 17 CFR part 241 (Exchange Act interpretative releases); the sole 'List of Subjects' topic is 'Securities'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The interpretation in this release is being adopted pursuant to sections 2(a)(1) and 19 of the Securities Act and sections 3(a)(10) and 23 of the Exchange Act."
+  },
+  {
+   "fact": "Only one voting record appears, and it is the CFTC's.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "CFTC Appendix to Application of the Federal Securities Laws to Certain Types of Crypto Assets and Certain Transactions Involving Crypto Assets--CFTC Voting Summary. On this matter, Chairman Selig voted in the affirmative. No Commissioner voted in the negative."
+  },
+  {
+   "fact": "Background dates the release gives for itself: the Crypto Task Force was established on January 21, 2025 by Acting Chairman Mark T. Uyeda; it held a March 21, 2025 roundtable titled 'How We Got Here and How We Get Out--Defining Security Status'; and it had received over 300 written submissions by the date of the release.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "To date, the Crypto Task Force has received over 300 written submissions from issuers, investors (both individual and institutional), law firms and legal professionals, audit and accounting professionals and firms, academics, professional and investor associations and organizations, investment companies and advisors, market intermediaries, service providers, network foundations, foreign entities, other crypto asset market participants, and other members of the public."
+  },
+  {
+   "fact": "Further background: the President's Working Group on Digital Asset Markets released 'Strengthening American Leadership in Digital Financial Technology' on July 30, 2025, recommending that the SEC and CFTC use existing authorities; SEC Chairman Paul S. Atkins launched 'Project Crypto' on July 31, 2025; and on January 29, 2026 Atkins and CFTC Chairman Michael S. Selig announced that Project Crypto, previously SEC-led, would proceed as a joint SEC-CFTC effort to harmonise federal oversight of crypto asset markets.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "On January 29, 2026, Chairman Atkins and CFTC Chairman Michael S. Selig announced that Project Crypto--previously an SEC-led initiative--will proceed as a joint effort between the SEC and the CFTC to harmonize federal oversight of crypto asset markets."
+  },
+  {
+   "fact": "Named contacts: for the SEC, Andrew Schoeffler, Office of Chief Counsel, Division of Corporation Finance, (202) 551-3500; for the CFTC, Mark Fajfar, Senior Assistant General Counsel, Office of the General Counsel, (202) 418-6636.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "FOR FURTHER INFORMATION CONTACT: SEC: Andrew Schoeffler, Office of Chief Counsel, at (202) 551-3500, Division of Corporation Finance ... CFTC: Mark Fajfar, Senior Assistant General Counsel, Office of the General Counsel, at (202) 418-6636"
+  },
+  {
+   "fact": "The definition of 'crypto asset' used in the release - 'any digital representation of value that is recorded on a cryptographically secured distributed ledger' - is stated to be identical to the definition of 'Digital Asset' in section 2(6) of the GENIUS Act. The release also defines 'crypto network', 'crypto application', 'crypto system', 'onchain' and 'offchain' for its own purposes.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The foregoing definition of \"crypto asset\" is identical to the definition of \"Digital Asset\" in section 2(6) of the Guiding and Establishing National Innovation for U.S. Stablecoins Act, Public Law 119-27, 139 Stat. 419 (2025) (\"GENIUS Act\")."
+  },
+  {
+   "fact": "CFTC CLAIM (agency characterisation, not an independent fact): the CFTC's press release calls the interpretation 'a major step in the agencies' efforts to provide greater clarity regarding the treatment of crypto assets' that 'complements Congressional endeavors to codify a comprehensive market structure framework into statute'.",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "is_vendor_claim": true,
+   "verbatim_quote": "This is a major step in the agencies' efforts to provide greater clarity regarding the treatment of crypto assets, and complements Congressional endeavors to codify a comprehensive market structure framework into statute."
+  },
+  {
+   "fact": "CFTC CHAIRMAN'S CLAIM: Michael S. Selig is quoted saying builders had long awaited clear guidance and that 'With today's interpretation, the wait is over', and that he and Chairman Atkins are 'committed to fostering a regulatory environment that allows the crypto industry to flourish in the United States'.",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "is_vendor_claim": true,
+   "verbatim_quote": "For far too long, American builders, innovators, and entrepreneurs have awaited clear guidance on the status of crypto assets under the federal securities and commodity laws ... With today's interpretation, the wait is over."
+  },
+  {
+   "fact": "SEC CHAIRMAN'S CLAIM: Paul S. Atkins is quoted saying the interpretation 'acknowledges what the former administration refused to recognize - that most crypto assets are not themselves securities' and 'reflects the reality that investment contracts can come to an end', and calls it a bridge while Congress advances bipartisan market structure legislation. This is his characterisation, and 'most crypto assets' is not a figure the interpretation itself states.",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "is_vendor_claim": true,
+   "verbatim_quote": "It also acknowledges what the former administration refused to recognize - that most crypto assets are not themselves securities. And it reflects the reality that investment contracts can come to an end."
+  },
+  {
+   "fact": "The CFTC press release's own four-bullet summary of what the SEC's interpretation does: interprets 'security' as applied to crypto assets; provides 'a coherent token taxonomy for digital commodities, digital collectibles, digital tools, stablecoins, and digital securities'; addresses how a non-security crypto asset may become and cease to be subject to an investment contract; and clarifies the application of federal securities laws to airdrops, protocol mining, protocol staking and wrapping.",
+   "url": "https://www.cftc.gov/PressRoom/PressReleases/9198-26",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Provides a coherent token taxonomy for digital commodities, digital collectibles, digital tools, stablecoins, and digital securities."
+  },
+  {
+   "fact": "AGENCY FORECAST (claim, not fact): the release's economic considerations predict the interpretation could enhance pricing efficiency, increase capital formation, improve competition and reduce legal costs, while conceding the impact is limited where parties already act consistently with it and that some issuers may have to change business practices and incur costs.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The main effect of the interpretation will be to reduce uncertainty by finally providing clarity about the Commission's views on the application of the Federal securities laws to certain types of crypto assets and certain transactions in crypto assets."
+  },
+  {
+   "fact": "The published PDF of 91 FR 13714 is served both by GPO's govinfo and by the CFTC itself; the two files are byte-identical (md5 e5613cb395282b5c52a3a694605d779a, 353,096 bytes), and the CFTC press release links its copy under the label '91 FR 13714'. The PDF's internal creation timestamp is D:20260320231147Z, matching the 2026-03-20 filing.",
+   "url": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "NO COMMENT DEADLINE. The release solicits public comment on the interpretation but the DATES section contains only 'Effective Date: March 23, 2026', and the Federal Register's comments_close_on field for this document is null. Do not write or imply a closing date. (Contrast the separate August 2026 'Regulation Crypto Assets' proposal, which does have one.)",
+  "NO SEC VOTING RECORD. Only a CFTC Voting Summary appears (Chairman Selig in favour, no Commissioner against). The document does not say how the SEC Commissioners voted, how many voted, or whether anyone dissented. Do not write 'SEC 全票通過' or anything like it.",
+  "The Federal Register API's signing_date field is null for this document. The 2026-03-17 date exists only in the document text ('Dated: March 17, 2026', and the two CFR table entries) and in the CFTC press release. Do not attribute it to a metadata field.",
+  "NOT AN INVESTMENT JUDGEMENT. The release never says any named asset is safe, approved, permitted, recommended or suitable to buy or hold. Classification is legal status under US securities law only. It explicitly says the conclusions rest on the Commission's understanding 'as of the date of this release', that categories can change over time (a meme coin can later become a digital commodity), and that hybrid assets exist.",
+  "NOT BINDING ON COURTS. The release says it does not supersede or replace the Howey test, which is binding legal precedent, and that it conveys the Commission's views. It does not claim to bind any court, nor to settle pending litigation.",
+  "NO NEW OBLIGATIONS. The release states it does not itself create any new legal obligations. It is not a new statute and not a substantive rule, despite the Federal Register type 'Rule'.",
+  "NOTHING ABOUT NON-US LAW. There is no mention of Taiwan, of Taiwan's FSC, or of any foreign regulator's treatment of these assets. It says nothing about whether a Taiwanese user, or a platform serving Taiwanese users, is affected.",
+  "OUT OF SCOPE BY ITS OWN TERMS: Federal tax laws under the Internal Revenue Code; the Bank Secrecy Act of 1970; the Anti-Money Laundering Act of 2020. It also does not address or alter what constitutes a 'sale' under Securities Act section 2(a)(3) or Exchange Act section 3(a)(14).",
+  "DOES NOT ADDRESS: airdrops of digital securities; stablecoins other than 'Covered Stablecoins' as described in the April 4, 2025 staff statement; airdrops where the recipient gives consideration; staking arrangements where the Custodian or Liquid Staking Provider decides whether/when/how much to stake or guarantees or fixes rewards; arrangements where a Liquid Staking Provider provides the means to generate additional returns on a Staking Receipt Token. In each case the release says these are outside its scope - it does NOT say they are securities, and the article must not turn 'not addressed' into 'is a security' or into 'is fine'.",
+  "NO LICENSING OR REGISTRATION LIST. The release says nothing about which exchanges, brokers, custodians or wallet providers are registered, licensed or permitted, and nothing about fees.",
+  "NO FIXED GENIUS ACT DATE. The effective date is described only as the earlier of 18 months after enactment (July 18, 2025) or 120 days after final implementing regulations. Do not compute or assert a calendar date.",
+  "NO CFTC RULE TEXT. 17 CFR Part 1 appears in the CFTC masthead and in the Federal Register's CFR references, but the 'Text of Amendments' amends only 17 CFR parts 231 and 241 and the 'List of Subjects' names only those two parts. The document does not set out any amendment to CFTC regulations.",
+  "NO TIMETABLE FOR WHAT COMES NEXT. The release says it is a 'first step' and that the Commission may refine, revise or expand the interpretation, but gives no date, no next document and no promised rulemaking.",
+  "NO SEC PRESS RELEASE NUMBER OR LINK is recorded here. The CFTC press release links an SEC fact sheet at sec.gov, but sec.gov returns HTTP 403 in this container, so nothing from the SEC's own announcement is recorded."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The SEC's own press release and fact sheet for the interpretation (the CFTC press release links a 'Fact Sheet' at https://www.sec.gov/files/33-11412-fact-sheet.pdf).",
+   "seen_where": "Link in CFTC press release 9198-26.",
+   "why_excluded": "https://www.sec.gov/files/33-11412-fact-sheet.pdf returned HTTP 403 on 2026-09-16, as did https://www.sec.gov/newsroom/press-releases. The SEC's own framing of the release could not be read, so no fact in this record depends on it, and the article must not quote or paraphrase an SEC press release."
+  },
+  {
+   "claim": "'Law-firm summaries say the agencies issued it 2026-03-17.'",
+   "seen_where": "docs/news-2026-batch-4/candidates-crypto.md, C3, which flags it as a lead from law-firm blogs.",
+   "why_excluded": "Not excluded as a date - the date is now traced to first-party text - but excluded as a SOURCE. Nothing from any law-firm summary is recorded; the 3/17 date rests on the document's own signature block, its two CFR table entries, and CFTC press release 9198-26. No law-firm page was fetched or is cited."
+  },
+  {
+   "claim": "Related CFTC items visible on the CFTC press-release listing around the same week: 'CFTC Staff Issues FAQs Concerning Registrant and Registered Entity Activities Relating to Crypto Assets and Blockchain Technologies' (9200-26, 2026-03-20) and 'CFTC Staff Issues No-Action Position to Self-Custodial Crypto Asset Wallet Software Provider' (9197-26, 2026-03-17).",
+   "seen_where": "https://www.cftc.gov/PressRoom/PressReleases?page=2 (fetched, HTTP 200).",
+   "why_excluded": "I saw only the titles and dates in the listing; I did not open either release. They are separate actions with their own content, so nothing about them is recorded as fact and the article must not describe what they say. Flagged as possible separate batch-4 items."
+  },
+  {
+   "claim": "Chairman Atkins's statement that 'most crypto assets are not themselves securities'.",
+   "seen_where": "CFTC press release 9198-26.",
+   "why_excluded": "Recorded only as his quoted characterisation, never as a finding of the interpretation. The release itself makes no quantitative statement about what share of crypto assets are securities. Write it as '美國證管會主席艾金斯表示' or omit it."
+  },
+  {
+   "claim": "Any market consequence - prices, trading volumes, market capitalisation, ETF flows, listings or delistings, or how any exchange changed its offering after 2026-03-23.",
+   "seen_where": "Not in either source; would only come from market media or price APIs.",
+   "why_excluded": "Outside the crypto.md boundary (no prices, no market data, no aggregator sources) and unsourced. Nothing of the kind is recorded or may be written."
+  },
+  {
+   "claim": "That this is the first-ever joint SEC-CFTC action on crypto assets.",
+   "seen_where": "Implied by phrasing in various secondary write-ups.",
+   "why_excluded": "The sources do not say it. The release calls itself 'the Commission's first step toward developing a clearer regulatory framework'; the CFTC calls it 'a major step' and 'joint agency action'. Use only those words."
+  },
+  {
+   "claim": "Whether the interpretation survived Congressional Review Act scrutiny, or whether Congress acted on it after 2026-03-23.",
+   "seen_where": "Not checked.",
+   "why_excluded": "Only the OMB 'major rule' designation and the 5 U.S.C. 808(2) immediate-effect basis are on the record as of the document's own date. Nothing about later Congressional action was verified, so the article must not say the rule is settled or unchallenged. If the writer wants the current status, it needs a fresh check."
+  },
+  {
+   "claim": "The exact rendered text of the govinfo / CFTC PDF.",
+   "seen_where": "https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf (HTTP 200, 353,096 bytes).",
+   "why_excluded": "Neither pdftotext nor pdftoppm exists in this container, so the PDF could not be converted to text. It is cited as the authoritative published version, verified by fetch, size, content type and byte-identity with the CFTC's own hosted copy; every quoted word comes from the Federal Register full-text endpoint for the same FR Doc number."
+  }
+ ],
+ "must_not_write": [
+  "Do not write '美國證管會（SEC）發布' as if it were an SEC-only act. The AGENCY line is 'Securities and Exchange Commission; Commodity Futures Trading Commission' and the signature line is 'By the Commissions' over both secretaries. Write it as a joint SEC + CFTC document, with the division of labour stated: the SEC issues the interpretation, the CFTC issues guidance that it will administer the Commodity Exchange Act consistently with it.",
+  "Do not collapse the dates. Say 2026-03-17 signed and announced, 2026-03-20 filed with the Office of the Federal Register, 2026-03-23 published at 91 FR 13714 and effective the same day. Do not call the publication date the 'announcement' or the signature date the 'effective date'.",
+  "Do not present the 16 named assets (Aptos, Avalanche, Bitcoin, Bitcoin Cash, Cardano, Chainlink, Dogecoin, Ether, Hedera, Litecoin, Polkadot, Shiba Inu, Solana, Stellar, Tezos, XRP) - or Algorand and LBRY Credits - as safe, approved, permitted, recommended or worth holding. They appear only as examples of a legal classification, stated to be based on the Commission's understanding as of the date of the release. Do not rank them, do not compare them, do not imply 'not a security' means 'safe to buy'.",
+  "Do not write any price, percentage change, market capitalisation, trading volume, ETF flow or historical return. Do not write any yield, staking reward rate, airdrop amount or reward figure - even though the release discusses staking rewards and airdrops, it gives no numbers and neither may the article.",
+  "Do not compare, rate or recommend exchanges, wallets, custodians or liquid staking providers, and do not include any affiliate or tracking link.",
+  "Do not turn 'outside the scope of this release' into either 'is a security' or 'is now allowed'. The release repeatedly says certain arrangements are simply not addressed.",
+  "Do not say the interpretation makes crypto legal in the United States, removes securities-law risk, or ends enforcement. The release preserves past liability, keeps the anti-fraud provisions, and does not bind courts.",
+  "Do not say it applies in Taiwan or changes anything for Taiwanese platforms or users. Nothing in the sources says so.",
+  "Do not state or imply a comment deadline for this interpretation.",
+  "Do not call it a new law, a new rule, or a rule change. It is an interpretive release that states it creates no new legal obligations, even though the Federal Register document type is 'Rule'.",
+  "Do not cite, quote or link sec.gov: it is HTTP 403 in this container and nothing from it was read. Do not invent an SEC press release number, a fact sheet URL, a release date for an SEC statement, or any document number beyond those recorded here (33-11412, 34-105020, S7-2026-09, RIN 3038-AF67, RIN 3235-AN56, FR Doc 2026-05635, 91 FR 13714).",
+  "Do not link https://www.federalregister.gov/documents/2026/03/23/2026-05635/... as a source: it is blocked here (302 to unblock.federalregister.gov; curl gets a 'Request Access' page). Use the three URLs recorded in sources.",
+  "Do not write '我們試用' or any first-hand testing claim. The disclaimer callout must contain the exact string 不是投資建議 (not 不構成投資建議, not 非投資建議).",
+  "Do not write simplified Chinese characters, lists, Markdown or emoji in the content pack."
+ ],
+ "editorial_brief": "READER: Taiwanese readers who hold or use crypto through overseas platforms and keep seeing the headline '美國宣布多數加密資產不是證券', and who need to know what that sentence does and does not mean. They are not US lawyers and will not read a 20-page Federal Register release. ANGLE: three things the headline hides. (1) It is a JOINT SEC + CFTC document, not an SEC announcement - the SEC issues the interpretation and the CFTC issues guidance that it will administer the Commodity Exchange Act consistently with it, and the CFTC's own press release is the proof. (2) The date everyone quotes depends on which date they mean: signed 2026-03-17, filed 2026-03-20, published and effective 2026-03-23 - and the reason publication and effect fall on the same day is a procedural one worth one clear sentence (an interpretive rule, exempt from notice and comment, so it took effect immediately under 5 U.S.C. 808(2) despite OMB's 'major rule' designation). (3) '不是證券' is a jurisdiction-and-registration answer, not a safety answer: the same release keeps the anti-fraud provisions alive, keeps past registration failures actionable, says the categories can change, and expressly does not touch tax, anti-money-laundering rules, or any non-US law. STRUCTURE THAT FITS THE FIVE SECTIONS: what was issued and by whom; the three dates and what each one means (this is also where the table goes - a 3-4 column, 4-5 row table of date / what happened / what it is called in the document / where it appears); the five-category taxonomy and what 'not itself a security' actually decides (diagram section); the four activities the release covers - protocol mining, protocol staking, wrapping, airdrops - and the conditions attached to each; and what the release deliberately leaves alone. ORIGINAL SCENARIO (must be labelled as an editorially constructed example): a reader who uses an overseas platform's staking function reads that staking 'is not a securities transaction' and asks whether that means the platform is now supervised - the answer being that the release addresses a narrow set of arrangements, says nothing about whether any particular provider is registered or licensed, and expressly excludes arrangements where the provider guarantees or fixes rewards. DELIBERATELY NOT COVERED: prices and market reaction; which assets to hold; exchange comparisons; the GENIUS Act's implementation mechanics (that belongs to the C6-C9 articles); the August 2026 'Regulation Crypto Assets' proposal beyond one sentence pointing to it as a separate, later, still-only-proposed regime.",
+ "overlaps_existing_article": "NO EXISTING ARTICLE TO OVERLAP. /home/user/travel_scanner/apps/api/app/guides/content holds 970 packs and none is a crypto-news-* pack; the only finance packs are finance-glossary-50-terms.json and personal-finance-first-steps.json, and docs/crypto-news-2026/ does not exist yet. So this is greenfield against published content. WITHIN BATCH 4 the one real adjacency is C4, crypto-news-sec-regulation-crypto-assets-20260821. I checked it: Federal Register 2026-17183, 'Regulation Crypto Assets', 91 FR 54510, type 'Proposed Rule', SEC ONLY (no CFTC in the agencies field), published 2026-08-21, comments close 2026-10-20, Release Nos. 33-11434 / 34-106150, File No. S7-2026-27; it proposes two Securities Act registration exemptions (up to $5 million over a four-year period, and up to $75 million in each 12-month period) plus a conditional safe harbour from the term 'investment contract'. THE DIVIDING LINE: C3 is about what a crypto asset IS under the law as it already stands - an interpretation, joint, in force since 2026-03-23, creating no new obligations. C4 is about a NEW regime that WOULD apply to offerings - a proposal, SEC alone, not in force, still open for comment. C3 should mention C4 in one sentence only, as the later and separate proposal, and should use C4 as its second link. C3 must not describe the $5m/$75m exemptions or the safe harbour - those are C4's material. Conversely C3 owns the five-category taxonomy, the investment-contract separation doctrine, and the mining/staking/wrapping/airdrop interpretations. C6-C9 (GENIUS Act implementation by OCC, FinCEN/OFAC, FDIC, NCUA) own stablecoin mechanics; C3 should touch the GENIUS Act only as far as the release itself does - the section 17 exclusion of payment stablecoins from 'security', the section 4(a)(11) ban on paying interest or yield, and the fact that the Act was not yet effective when the interpretation issued.",
+ "corrections_to_candidate_list": [
+  "C3's '⚠️ 開稿時要釐清' can now be closed and should be rewritten. The 2026-03-17 date is NOT only a law-firm claim: it is in the document's own signature block ('By the Commissions. / Dated: March 17, 2026.'), in both CFR table entries the document adds (Release Nos. 33-11412 and 34-105020, each dated March 17, 2026), and in CFTC press release 9198-26 of March 17, 2026 which says the agencies issued the interpretation 'today'. The document was then filed on 2026-03-20 ('Filed 3-20-26; 8:45 am') and published on 2026-03-23. Effective date is NOT separate from publication: DATES reads 'Effective Date: March 23, 2026.'",
+  "C3 lists only one first-party source, the federalregister.gov document HTML page - and that URL does not work in this container. Plain curl returns HTTP 200 with a 10,596-byte 'Federal Register :: Request Access' page containing none of the document; WebFetch reports a 302 to https://unblock.federalregister.gov/. This is a NEW block, not in BRIEF.md's list, and the candidates file should record it. Working official routes for the same document: the API JSON (https://www.federalregister.gov/api/v1/documents/2026-05635.json), the full text (https://www.federalregister.gov/documents/full_text/text/2026/03/23/2026-05635.txt), the GPO PDF (https://www.govinfo.gov/content/pkg/FR-2026-03-23/pdf/2026-05635.pdf) and the CFTC's byte-identical hosted copy (https://www.cftc.gov/sites/default/files/2026/03/2026-05635a.pdf).",
+  "C3 has no CFTC source at all, which is odd for an item whose headline correction is 'this is joint, not SEC-only'. Add CFTC press release 9198-26, https://www.cftc.gov/PressRoom/PressReleases/9198-26, 2026-03-17, 'CFTC Joins SEC to Clarify the Application of Federal Securities Laws to Crypto Assets'. Note for other agents: cftc.gov is fully reachable here (HTTP 200), and its press-release listing paginates with ?page=N - page 2 covers March-April 2026.",
+  "Slug / event-date tension that the candidates file does not flag. BRIEF.md says the slug date is the event day rather than the publication day, and cites batch 3 renaming ...-20260709 to ...-20260708 for exactly that reason. The agencies acted on 2026-03-17. Keeping ...-20260323 is defensible because that is when the interpretation was officially published and took effect, but it should be a conscious decision recorded somewhere, not an accident - and whichever is chosen, news_date must equal the slug tail and the article must state both dates.",
+  "C3 says 'type: Rule', which is correct as Federal Register metadata but misleading as description. The ACTION line is 'Final rule; interpretation; guidance' and the release itself says it 'does not itself create any new legal obligations'. The candidates file should warn writers not to describe it as a new rule.",
+  "BRIEF.md's block list for sec.gov needs one refinement: https://www.sec.gov/news/pressreleases.rss returns HTTP 200 with a valid 25-item RSS feed, but its oldest item is 2026-07-08 and every item link (sec.gov/newsroom/press-releases/...) is still HTTP 403, so the feed is useless for anything before July 2026 and cannot be used to reach article text at all. https://www.sec.gov/rss/news/press.xml is 403.",
+  "Two neighbouring CFTC items surfaced while paging the press-release listing and are not in candidates-crypto.md: 9200-26, 2026-03-20, 'CFTC Staff Issues FAQs Concerning Registrant and Registered Entity Activities Relating to Crypto Assets and Blockchain Technologies', and 9197-26, 2026-03-17, 'CFTC Staff Issues No-Action Position to Self-Custodial Crypto Asset Wallet Software Provider'. I did not open either; both look like candidates for the missing secondary items."
+ ],
+ "checked_on": "2026-09-16"
+}

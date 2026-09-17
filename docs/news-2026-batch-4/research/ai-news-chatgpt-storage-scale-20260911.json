@@ -1,0 +1,338 @@
+{
+ "slug": "ai-news-chatgpt-storage-scale-20260911",
+ "sourcing_verdict": "full",
+ "event_date": "2026-09-11",
+ "event_date_basis": "Two independent official signals agree on 2026-09-11. (1) The OpenAI News RSS feed (https://openai.com/news/rss.xml, fetched 2026-09-16, HTTP 200, 1,194 <item> entries, channel lastBuildDate 'Wed, 16 Sep 2026 14:30:47 GMT', newest item 2026-09-16) carries <pubDate>Fri, 11 Sep 2026 10:00:00 GMT</pubDate> for this post. (2) The article page itself prints 'September 11, 2026' above the headline, with the section label 'Engineering'. Announcement date and publication date are the same here; there is no separate effective date because nothing in the post ships to users. Two later timestamps exist and must NOT be mistaken for the event date: the official engineering sitemap gives <lastmod>2026-09-12T02:19:32.976Z</lastmod> for this URL (a site-build timestamp, not a republication), and the Internet Archive capture I actually read is dated 2026-09-14T18:53:23Z. Because the sitemap lastmod (09-12) predates the capture (09-14), the capture is not older than the last recorded change to the page.",
+ "sourcing_notes": "READ THIS BEFORE WRITING. The article body was NOT retrieved directly from openai.com. Verified in this container on 2026-09-16: https://openai.com/index/scaling-storage-one-billion-users-part-one/ returns HTTP 403 with a 9,869-byte OpenAI edge challenge page (the '<meta http-equiv=\"refresh\" content=\"360\">' interstitial) to curl with -A 'Mokaair-editorial', to curl with browser-like Accept headers, to curl with an 'RSC: 1' header, and to WebFetch. Three retries, identical. The block is path-shaped, not article-shaped: every /index/<anything>/ path 403s, including a deliberately nonexistent slug (/index/this-slug-does-not-exist-abc123/), /index/scaling-postgresql/, /index/harness-engineering/, /news/engineering/, /news/engineering/rss.xml, /llms.txt, /llms-full.txt and platform.openai.com/docs/overview. Paths ending .xml and .json pass the edge: /robots.txt 200, /sitemap.xml 200, /sitemap.xml/engineering/ 200 (22 <url> entries), /news/rss.xml 200, and /index/<slug>.json returns a genuine 139 KB Next.js 404 page from the origin. There is no .json or RSC route that yields the article payload, and the origin 404 page exposes no build id or API route. ROUTES THAT DID WORK, in order of strength: (a) https://openai.com/news/rss.xml — official OpenAI feed, HTTP 200, gives the title, link, category 'Engineering', pubDate and the official one-line description; (b) https://x.com/OpenAIDevs/status/2098502006935814272 — OpenAI's own verified developer account, HTTP 200, server-rendered, containing the full three-post thread OpenAI wrote to launch the article; (c) https://openai.com/sitemap.xml/engineering/ — official sitemap, HTTP 200, listing the 22 engineering posts and their lastmod values; (d) https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/ — a verbatim Internet Archive capture of the official page, HTTP 200, 552,850 bytes, captured 2026-09-14T18:53:23Z. Every body fact below is tagged with route (d). ARCHIVE CAVEATS: web.archive.org is flaky here — archive.org/wayback/available returns HTTP 429 and the CDX API (web.archive.org/cdx/search/cdx) is 'Blocked by egress policy' (HTTP 403, 24 bytes), and two of my capture fetches died with 'Recv failure: Connection reset by peer' before one succeeded on retry. Requesting the newest capture (/web/20260916235959/...) redirects back to the same 20260914185323 snapshot at the identical 552,850-byte size, so that capture is the latest one the Archive holds. I did NOT use fxtwitter, HackerNoon, daily.dev, YouTube, braindetox.kr, dotnetramblings.com or aiposthub.com; they surfaced in search and are excluded entirely. IF YOUR EDITORIAL STANDARD REJECTS THE INTERNET ARCHIVE ROUTE, then only the facts tagged openai.com/news/rss.xml, openai.com/sitemap.xml/engineering/ and x.com/OpenAIDevs survive, and the verdict drops from 'full' to 'partial' — that residue is Habitat's name, its role, '10x year over year', 'more than 20 million requests per second at peak' before the Rust rewrite, the asyncio/connection-pooling framing, the publication date, and the fact that part two is not out. Say so rather than padding.",
+ "sources": [
+  {
+   "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+   "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "OpenAI News (official RSS feed)",
+   "url": "https://openai.com/news/rss.xml",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "OpenAI Developers: \"Habitat is OpenAI's online storage platform…\"",
+   "url": "https://x.com/OpenAIDevs/status/2098502006935814272",
+   "publisher": "OpenAI (@OpenAIDevs)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "OpenAI sitemap: Engineering",
+   "url": "https://openai.com/sitemap.xml/engineering/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "The post is titled 'Rapidly scaling online storage to serve over 1 billion ChatGPT users'. The page prints the date 'September 11, 2026' and the section label 'Engineering' immediately above the headline.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "September 11, 2026"
+  },
+  {
+   "fact": "The standfirst under the headline reads: 'How we adapted our application storage platform, Habitat, in Python to manage unprecedented growth.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "How we adapted our application storage platform, Habitat, in Python to manage unprecedented growth."
+  },
+  {
+   "fact": "The byline names three authors: 'By Jon Lee, Chaomin Yu, and Ben Ries, Members of Technical Staff'.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By Jon Lee, Chaomin Yu, and Ben Ries, Members of Technical Staff"
+  },
+  {
+   "fact": "OpenAI's own news feed dates the post Fri, 11 Sep 2026 10:00:00 GMT, files it under category 'Engineering', and links to https://openai.com/index/scaling-storage-one-billion-users-part-one . The feed carried 1,194 items with a channel lastBuildDate of 'Wed, 16 Sep 2026 14:30:47 GMT' and a newest item dated 2026-09-16, so it is live, not stale.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<pubDate>Fri, 11 Sep 2026 10:00:00 GMT</pubDate>"
+  },
+  {
+   "fact": "The official feed/meta description is: 'Learn how OpenAI evolved Habitat from a Python library into a globally distributed storage platform serving 1 billion ChatGPT users and 22M requests per second.' CRITICAL: the figure '22M requests per second' appears ONLY in this description (and in the identical og:description / meta description / X link-card on the page). It appears NOWHERE in the article body. Searching the 552 KB capture for '22M' finds only meta tags, and '22 million' occurs zero times. The body's own throughput numbers are 'more than 70 million requests every second' (today) and 'more than 20 million requests every second' (Python at its peak). Do not headline 22M.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Learn how OpenAI evolved Habitat from a Python library into a globally distributed storage platform serving 1 billion ChatGPT users and 22M requests per second."
+  },
+  {
+   "fact": "OpenAI describes Habitat as 'the online storage platform we built so OpenAI products can quickly and reliably access needed information'. The opening paragraph frames the stakes: 'Every OpenAI product depends on fast, reliable access to data, whether someone is logging in, checking their Codex settings, or starting a new conversation in ChatGPT. Each of those actions may require many separate data lookups before the product can respond. If those requests are slow, the product feels slow. If those requests fail, the product stops working entirely.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "If those requests fail, the product stops working entirely."
+  },
+  {
+   "fact": "Headline scale sentence: 'Habitat now handles more than 70 million requests every second, supporting products used by over 1 billion people each week, across almost 40 geographic regions.' Note the wording is 'products used by over 1 billion people each week', i.e. OpenAI products in aggregate and a weekly figure — it is not stated as 1 billion registered ChatGPT accounts, nor as daily users. The page title's phrase '1 billion ChatGPT users' is looser than the body sentence.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Habitat now handles more than 70 million requests every second, supporting products used by over 1 billion people each week, across almost 40 geographic regions."
+  },
+  {
+   "fact": "The page carries three stat tiles, rendered as '70M+ requests per second', '1B+ people each week' and '500 PB+ data'.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "70M+ requests per second 1B+ people each week 500 PB+ data"
+  },
+  {
+   "fact": "Origin and current size: 'Habitat first launched to support GPTs at DevDay 2023, starting as a simple Python client-side library connected to a single database. Today, it's a complex distributed system that serves more than 500 petabytes of data.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Habitat first launched to support GPTs at DevDay 2023, starting as a simple Python client-side library connected to a single database."
+  },
+  {
+   "fact": "Growth rate: 'Often, system engineers build for 10x scale, and hope for it to hold for a few years while preparing for the next 10x. In our case, we've grown more than 10x year-over-year for the last three years.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we've grown more than 10x year-over-year for the last three years"
+  },
+  {
+   "fact": "OpenAI's framing of the difficulty: 'Building and operating infrastructure at this scale is no easy feat, but also not particularly challenging. What made our situation unique is the unprecedented rate at which we've had to scale to support staggering user growth and product demand while simultaneously building out a mature platform.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Building and operating infrastructure at this scale is no easy feat, but also not particularly challenging."
+  },
+  {
+   "fact": "This is part one of two: 'This post is the first in a two-part series on how we scaled online storage.' Part one covers how Habitat evolved, why it moved from a library to a service, and how OpenAI stretched a Python service into a storage platform layer.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This post is the first in a two-part series on how we scaled online storage."
+  },
+  {
+   "fact": "What part two is promised to cover, in OpenAI's own words: 'In a future post, we'll go into detail about how we made multi-tenancy reliability at scale, our layered strategy for optimizing read performance, and how we scaled our partnership with Azure Cosmos DB to reliably handle unprecedented demand.' The closing section repeats this: 'In part II of this series … we'll talk about the storage layer and how Habitat serves more than 500 petabytes and over 70 million requests every second.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In a future post, we'll go into detail about how we made multi-tenancy reliability at scale, our layered strategy for optimizing read performance, and how we scaled our partnership with Azure Cosmos DB to reliably handle unprecedented demand."
+  },
+  {
+   "fact": "Part two had NOT been published as of 2026-09-16. Checked two ways: (1) the official Engineering sitemap lists 22 URLs and contains only .../scaling-storage-one-billion-users-part-one/ , with no part-two entry; (2) the official news feed, built at 2026-09-16 14:30:47 GMT, contains the part-one item and no part-two item. OpenAI gives no date for part two anywhere on the page.",
+   "url": "https://openai.com/sitemap.xml/engineering/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Engineering sitemap records <lastmod>2026-09-12T02:19:32.976Z</lastmod> for the part-one URL, the only timestamp OpenAI publishes for this page after the 2026-09-11 publication date.",
+   "url": "https://openai.com/sitemap.xml/engineering/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<lastmod>2026-09-12T02:19:32.976Z</lastmod>"
+  },
+  {
+   "fact": "Why Habitat stopped being a library: 'By the middle of 2025, Habitat had reached its limits as a client-side implementation. As the Habitat layer had grown more complex and OpenAI's services count increased, backward-compatible protocol changes had become infeasible.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "By the middle of 2025, Habitat had reached its limits as a client-side implementation."
+  },
+  {
+   "fact": "OpenAI recounts an outage it caused while trying to prevent one. To 'reduce the blast radius of any single region outage for our most critical data sets' it migrated them to regionally distributed Azure Cosmos DB accounts. Rolling the client-side routing change out 'across dozens of services' took days per step — days for the flag rollout, 'another couple of days' for shadowing, 'another couple of days' for a bug fix — and then 'one of the teams to roll back their service for unrelated reasons to a previously buggy client, causing the outage we had worked so hard to avoid.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "causing the outage we had worked so hard to avoid"
+  },
+  {
+   "fact": "Security rationale for centralising: 'A centralized service also gives us a single chokepoint to provide the strongest data security and privacy primitives. Habitat service is where we can centrally enforce access control policies, perform audit logging, and limit access to underlying storage resources like Azure Cosmos DB. Habitat plays a critical role in protecting user data and preventing unauthorized access from external, internal, and agent actors.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "preventing unauthorized access from external, internal, and agent actors"
+  },
+  {
+   "fact": "Why OpenAI knowingly kept Python: 'Using Python for a high-throughput service increased network latency and added substantial CPU and memory scaling costs compared to local library execution. Moreover, we recognized that the inefficiencies of Python would not be acceptable at 100x scale, making an eventual rewrite almost certain.' OpenAI calls this 'a strategic incursion of technical debt' whose objective 'was not cost or resource optimization, but rather unblocking product developers and achieving platform stability.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we recognized that the inefficiencies of Python would not be acceptable at 100x scale"
+  },
+  {
+   "fact": "OpenAI says it deliberately bet on its own AI coding tools to pay the debt later: 'We also made a calculated wager that the rapid advancement of our own coding models would simplify the technical path in the future. We bet that by the time a full migration off Python was required, Codex and GPT would make that migration achievable. That bet eventually proved correct.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "That bet eventually proved correct."
+  },
+  {
+   "fact": "Why tail latency is the user-visible metric: 'When the average user request results in hundreds of database calls, the slowest database call is the one the user feels.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "When the average user request results in hundreds of database calls, the slowest database call is the one the user feels."
+  },
+  {
+   "fact": "Measured asyncio scheduling delay: 'At high utilization, with many expensive tasks, even modest numbers of concurrent requests per process are enough to produce significant scheduling jitter, up to hundreds of milliseconds and in some edge cases several seconds.' The mitigation was 'keeping each process serving only a small number of concurrent requests and instead massively scale out the number of Python worker processes.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "up to hundreds of milliseconds and in some edge cases several seconds"
+  },
+  {
+   "fact": "Concrete tail-latency bug, feature flags: Statsig (named in the post as 'a tool that manages feature flags, and can be used to run A/B tests and more') 'was configured to poll for refreshed configs every minute with no jitter, and the config included every production rule across every service', while an architectural decision ran 'up to 8 Python processes per pod'. Result: 'every minute each pod would have some moment where all of its workers stalled processing in-flight requests and instead would spend their CPU cycles parsing a giant configuration file.' Fix: 'deploy a smaller targeted config, lengthen the refresh interval, and add some jitter to background tasks like these.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "up to 8 Python processes per pod"
+  },
+  {
+   "fact": "Concrete load-balancing bug: 'Prior to adjusting how we do load balancing, our service had a wide variance of utilization with some tail processes serving 5-10x the number of concurrent requests as the average.' The cause was that 'Python's aiohttp TCPConnector defaults to LIFO connection reuse', which during a burst 'gradually concentrat[ed] more traffic on the pods already struggling'. OpenAI links this to a known 'metastable failure' pattern (link target: a 2014 Meta/Facebook engineering post). 'Patching the connection pool to use FIFO reuse broke this feedback loop and even reduced our steady state request variance as well.' Today OpenAI says it 'mostly depend[s] on Istio and Envoy to provide connection pooling and better server-load-aware balancing strategies'.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "some tail processes serving 5-10x the number of concurrent requests as the average"
+  },
+  {
+   "fact": "Downstream protection: running many Python processes makes it 'very easy to overwhelm downstream dependencies with the vast number of connections (known as a \"thundering herd\")'; an untuned daily deploy 'can cause significant CPU churn from connection cycling' and 'a connection leak can take out the network by saturating the NAT gateway'. OpenAI uses Envoy 'to upgrade Python's HTTP/1 connections to HTTP/2 to take advantage of multiplexing', to pool and extend connections, and as 'a central place to implement rate limits and circuit breakers'.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "known as a “thundering herd”"
+  },
+  {
+   "fact": "Habitat's API is deliberately limited: 'Rather than allowing clients to construct arbitrary SQL queries that could result in large table scans or joins across many tables, Habitat exposes a simple NoSQL API. The lack of a powerful API is an explicit tradeoff in Habitat's design.' It is 'modeled around client-defined object and edge types, inspired by TAO' (link target: the USENIX ATC'13 TAO paper). 'There are no unbounded queries that can overload Habitat.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The lack of a powerful API is an explicit tradeoff in Habitat's design."
+  },
+  {
+   "fact": "Before Habitat, 'most of OpenAI's online data was stored on Postgres', and as the team and products grew reviewing every query 'quickly became unmanageable and was a frequent cause of outages where a single expensive new query on a hot path took out the database.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "a frequent cause of outages where a single expensive new query on a hot path took out the database"
+  },
+  {
+   "fact": "Data placement, in OpenAI's own words: 'We partition this graph so that each object and its corresponding edges are colocated in a storage-level partition, but we make no concerted database-level effort to colocate objects and the remote objects to which their edges point. The result is that the model easily partitions for horizontal scalability, but graph traversals are inefficient since any particular hop between objects may require fetching from two entirely different Azure Cosmos DB accounts stored in different regions.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "any particular hop between objects may require fetching from two entirely different Azure Cosmos DB accounts stored in different regions"
+  },
+  {
+   "fact": "Escape hatch for complex queries: 'we do provide an offline secondary view of Habitat exposed via Rockset. We use change data capture (CDC) to stream changes from the online storage out to isolated Rockset instances in near-real-time. Each client team is responsible for scaling their own Rockset instance.' OpenAI calls the friction 'the right tradeoff to make at this particular moment' and says it 'isolates our online storage from read-heavy analytical and search workloads.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Each client team is responsible for scaling their own Rockset instance for their complex querying needs."
+  },
+  {
+   "fact": "Habitat's footprint inside OpenAI: it is 'the second largest service by core count at OpenAI (and fourth for our Envoy footprint)'.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "being the second largest service by core count at OpenAI (and fourth for our Envoy footprint)"
+  },
+  {
+   "fact": "Python's peak throughput: 'At its peak, Python helped us serve more than 20 million requests every second.'",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "At its peak, Python helped us serve more than 20 million requests every second."
+  },
+  {
+   "fact": "The Rust rewrite, verbatim: 'In Q2 2026, with just 2 engineers, Codex, and GPT-5.5, we were able to rewrite the entire service in Rust. This new Rust service is now handling 95% of our production requests; we'll be deprecating Python entirely in the coming weeks. Our data shows the Rust service is 6x more CPU efficient and 15x more memory efficient than the Python version, with significantly lower average and tail latencies.' Note the hyphen in 'GPT-5.5' on the page is the non-ASCII U+2011 non-breaking hyphen. The 6x / 15x / 95% figures are OpenAI's own measurements, published without methodology, benchmark, workload definition or third-party verification.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In Q2 2026, with just 2 engineers, Codex, and GPT‑5.5, we were able to rewrite the entire service in Rust."
+  },
+  {
+   "fact": "Named components in the page's Figure 01 ('What is Habitat?'): clients are ChatGPT, API, Codex, internal services 'and more'; Habitat's own labelled functions are caching, ACL policies (authorization), placement & data residency, encryption (data security), isolation (multi-tenancy), rate limiting (request shaping), routing, and schema lookup (data residency); storage resources are Azure Cosmos DB (online storage), Nanobase (online storage), Valkey (caches) and blob storage; change-data-capture consumers are Databricks, Rockset, Kafka 'and more'. 'Nanobase' appears only inside this diagram and is never explained anywhere in the body text.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Nanobase"
+  },
+  {
+   "fact": "Named components in Figure 02 ('Habitat service'): habitat client sdk, envoy, three habitat-service processes, habitat-envoy, and three database endpoints labelled habitat-cosmos-db-us0, habitat-cosmos-db-us1 and habitat-cosmos-db-eu0. Those three labels are the only region-specific identifiers anywhere on the page, and they are illustrative diagram labels, not a published region list.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "habitat-cosmos-db-us0 habitat-cosmos-db-us1 habitat-cosmos-db-eu0"
+  },
+  {
+   "fact": "The post ends with recruiting, not with a user-facing announcement: 'If you want to work on OLTP systems at frontier scale and are interested in this kind of engineering, check out this open role on our team', linking to https://openai.com/careers/software-engineer-habitat-(online-data)-seattle/ . The page is tagged '2026' and 'ChatGPT'.",
+   "url": "https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "If you want to work on OLTP systems at frontier scale and are interested in this kind of engineering"
+  },
+  {
+   "fact": "OpenAI's own launch thread on its official developer account, three posts, posted 2026-09-11 (the attached media carries uploadDate 2026-09-11T20:00:41.000Z). Post 1: 'Habitat is OpenAI's online storage platform that powers everything from ChatGPT to Codex. It has grown over 10x year over year. Before the Rust rewrite, its Python service handled more than 20 million requests per second at peak.' Post 2: 'Python allowed for rapid prototyping of our platform to support all of OpenAI's product use cases. But making Python work at this scale meant tackling challenges in event-loop management and connection pooling.' Post 3: 'While we've now launched a Rust rewrite, we're sharing those lessons for others going through a similar Python scaling journey.' This is the only figure set I could reach on a live, directly-fetchable first-party surface.",
+   "url": "https://x.com/OpenAIDevs/status/2098502006935814272",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Before the Rust rewrite, its Python service handled more than 20 million requests per second at peak."
+  },
+  {
+   "fact": "The alt text OpenAI attached to its own social preview image says 'nearly 1 billion', not 'over 1 billion': 'Social preview graphic for the article, with a storage network icon and the title “Rapidly scaling online storage to serve nearly 1 billion ChatGPT users.”' The published headline says 'over 1 billion'. OpenAI is inconsistent with itself here, which is one more reason to quote the body sentence ('over 1 billion people each week') rather than the headline.",
+   "url": "https://x.com/OpenAIDevs/status/2098502006935814272",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Rapidly scaling online storage to serve nearly 1 billion ChatGPT users."
+  }
+ ],
+ "not_said": [
+  "DURABILITY. The post never states a durability target, replication factor, backup or restore policy, RPO/RTO, or how many copies of a record exist. The words durability, backup, restore, replica and disaster recovery do not appear. It says Habitat moved critical data sets to 'regionally distributed Azure Cosmos DB accounts' to 'reduce the blast radius of any single region outage', and nothing more concrete than that. Write 'OpenAI did not state' — do not infer a guarantee from Azure Cosmos DB's own product documentation.",
+  "AVAILABILITY / SLA. No uptime number, no error-budget figure, no availability SLA for Habitat or for the products on top of it. The post describes outages it caused (the rollback-to-buggy-client incident, the Postgres hot-path query incident, the metastable connection-pool incident) but gives no count, no duration, no date and no user impact for any of them.",
+  "DATA LOCATION. 'Almost 40 geographic regions' is the only geographic figure. OpenAI does not list the regions, does not name a single country, and does not say whether any of them is in Taiwan or elsewhere in Asia. The only region-ish strings on the page are three illustrative diagram labels (habitat-cosmos-db-us0, -us1, -eu0). The post lists 'placement & data residency' and 'schema lookup / data residency' as things Habitat does, but never states what residency guarantee any user or customer actually gets, nor how it maps to plans (Free / Plus / Business / Enterprise / API).",
+  "WHAT IS ACTUALLY STORED IN HABITAT. The post says logging in, checking Codex settings and starting a ChatGPT conversation each need data lookups, and that Habitat 'plays a critical role in protecting user data', but it never states whether chat message content itself lives in Habitat, or only metadata, settings and pointers. Do not assert that your conversations are stored in Habitat.",
+  "ENCRYPTION AND RETENTION DETAIL. 'Encryption' and 'data security' appear as diagram labels and 'encryption' is listed among the things product engineers no longer handle; there is no statement about encryption at rest versus in transit, key management, who holds keys, retention periods, or deletion timelines.",
+  "WHAT '1 BILLION' COUNTS. The body says 'products used by over 1 billion people each week'. It does not define the metric, does not say it is ChatGPT alone, does not say whether it is accounts or people, does not break it down by product or region, does not give a date for the measurement, and gives no comparison figure for any earlier period.",
+  "THE 22M FIGURE. '22M requests per second' exists only in OpenAI's own feed and meta description for this post. The body never uses it and never reconciles it with 70M+ (today) or 20M+ (Python peak). OpenAI does not explain what 22M refers to.",
+  "RUST REWRITE METHODOLOGY. The 6x CPU, 15x memory and 95%-of-production figures come with no benchmark description, no workload, no hardware, no measurement window and no third-party check. 'Significantly lower average and tail latencies' is given with no number at all. OpenAI does not say which two engineers, how many Codex/GPT-5.5 runs, how much of the Rust code the models wrote, or what review process was used.",
+  "NO DATE FOR THE PYTHON SHUTDOWN. 'We'll be deprecating Python entirely in the coming weeks' — no date, and as of 2026-09-16 no follow-up announcement exists in the official feed.",
+  "NO DATE FOR PART TWO. Neither the post, the feed nor the sitemap gives a publication date for part II.",
+  "NOTHING CHANGES FOR USERS. The post announces no product, no price, no plan, no region opening and no setting. There is no action for a ChatGPT user to take and no reason to say anything got faster or cheaper for them — OpenAI does not claim any user-visible improvement from the Rust rewrite.",
+  "NO COST FIGURES. Despite discussing 'substantial CPU and memory scaling costs' and core counts, the post gives no dollar figure, no percentage cost saving and no capacity number (no server, core, pod or cluster counts).",
+  "NANOBASE IS UNEXPLAINED. It is named once, inside a diagram, as an 'online storage' resource alongside Azure Cosmos DB. The post never says what it is. Do not describe it.",
+  "NO REGULATOR, NO THIRD PARTY. Nothing in the post is audited, certified or corroborated by anyone outside OpenAI. Microsoft/Azure, Statsig, Rockset, Databricks and Valkey are named as components, not as sources confirming any figure."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The article body's figures (70M+ req/s, 1B+ people weekly, ~40 regions, 500 PB+, 6x/15x, 95%, Q2 2026, 2 engineers).",
+   "seen_where": "Reached only through the Internet Archive capture https://web.archive.org/web/20260914185323/https://openai.com/index/scaling-storage-one-billion-users-part-one/ (HTTP 200, 552,850 bytes, captured 2026-09-14T18:53:23Z). The live openai.com page returns HTTP 403 to every client tried in this container.",
+   "why_excluded": "NOT excluded — recorded and used, but flagged. The capture is byte-for-byte the official OpenAI page, and the official sitemap's lastmod for that URL (2026-09-12T02:19:32.976Z) predates the capture, so the capture is not stale. If the desk rules the Internet Archive out of bounds, every fact tagged with that URL must be dropped and the verdict becomes 'partial'."
+  },
+  {
+   "claim": "'OpenAI evolved Habitat ... serving 1 billion ChatGPT users and 22M requests per second.'",
+   "seen_where": "OpenAI's own RSS/meta description and the X link card.",
+   "why_excluded": "Recorded as a publication fact, but must NOT be used as the article's scale figure. The number is absent from the body; presenting it as OpenAI's throughput would put a number in print that the source article itself never states."
+  },
+  {
+   "claim": "Prose summaries of the article on daily.dev, HackerNoon ('Your Load Test Won't Find These Four Gaps'), dotnetramblings.com, braindetox.kr ('The 2-Engineer Rust Rewrite'), aiposthub.com and a YouTube explainer ('Why They Ran Python at 20 Million Requests/Sec'), plus two GitHub 'AI digest' issues.",
+   "seen_where": "WebSearch results for 'OpenAI Habitat storage platform 22M requests per second'.",
+   "why_excluded": "Aggregators and commentary. Used only as a lead to confirm the article exists and to guess at which figures to hunt for; never opened as evidence, never a source, and every number in them was independently re-read from the official capture before being recorded."
+  },
+  {
+   "claim": "Full tweet JSON for the @OpenAIDevs thread.",
+   "seen_where": "api.fxtwitter.com returned the tweet object as JSON (HTTP 200).",
+   "why_excluded": "Third-party Twitter mirror. Discarded in favour of x.com itself, which serves the same text server-rendered in the page (og:description, the <h1 class=\"sr-only\">, the visible tweet <span>, and the embedded full_text fields all agree)."
+  },
+  {
+   "claim": "Any part-two article, and any figure that might be in it (multi-tenancy reliability, read-path optimisation, the Azure Cosmos DB partnership).",
+   "seen_where": "Promised twice inside part one.",
+   "why_excluded": "Not published as of 2026-09-16 — absent from both the official Engineering sitemap (22 URLs) and the official news feed (built 2026-09-16 14:30:47 GMT). Nothing about the storage layer may be written."
+  },
+  {
+   "claim": "Precise creation timestamp of the @OpenAIDevs thread.",
+   "seen_where": "x.com page.",
+   "why_excluded": "The server-rendered payload exposes no created_at for the tweet; the only timestamp is uploadDate 2026-09-11T20:00:41.000Z on the attached image. Recorded as 'posted 2026-09-11' and nothing finer."
+  },
+  {
+   "claim": "Anything about OpenAI's API-side data residency or zero-data-retention options.",
+   "seen_where": "developers.openai.com is reachable here (HTTP 200) and the existing site article ai-news-openai-agents-api-20260910 already cites those docs.",
+   "why_excluded": "Deliberately not researched or written. It is a different subject (developer API controls) and is already covered on the site; mixing it in would both duplicate that article and risk implying the engineering post says something about residency that it does not."
+  },
+  {
+   "claim": "Independent confirmation of Habitat's existence, scale or the Rust rewrite's gains.",
+   "seen_where": "Nowhere.",
+   "why_excluded": "None exists. Every number in this file is OpenAI describing its own internal system. Every sentence in the article must be attributed ('OpenAI 表示', 'OpenAI 在工程部落格寫道'), never stated as established fact, and the article must not claim any hands-on testing."
+  }
+ ],
+ "editorial_brief": "READER AND ANGLE. Written for the Taiwanese general reader who uses ChatGPT daily and has never thought about what sits under it — not for engineers. The hook is the one sentence OpenAI puts at the top: the thing you type into is backed by a storage platform that OpenAI says handles more than 70 million requests every second for products used by more than a billion people a week, across almost 40 geographic regions, holding more than 500 petabytes. The article's job is to make that concrete and then to be honest about its edges: OpenAI published this to recruit engineers and to share Python scaling lessons, not to tell users anything about their own data. STRUCTURE THIS SUPPORTS (five H2 sections, per BRIEF). 1) What OpenAI actually published on 2026-09-11 and what it is not (an engineering post, part one of two, ends with a job advert, nothing ships to users). 2) The numbers, stated as OpenAI's own — 70M+ req/s, 1B+ people weekly, ~40 regions, 500 PB+, 10x growth a year for three years — with the table at the end of this section comparing what OpenAI states, in what wording, against what it leaves undefined; the table is where the 22M/70M/20M discrepancy gets laid out honestly. 3) Why a single slow lookup is something you can feel: OpenAI's own line that an average user request can mean hundreds of database calls and the slowest one is the one the user feels; the asyncio and connection-pool stories told plainly (a config file re-read every minute on the same second by every process; a connection pool that kept sending work to the machine already struggling). The 2x2 diagram belongs here. 4) What OpenAI does NOT say — durability, backups, SLA, which countries, what data Habitat actually holds, encryption and retention detail. This is the section that earns the piece. 5) What a reader should and should not take away: an availability question to ask of any service you depend on, and an explicit note that scale figures published by an operator about itself are not independently verifiable. ORIGINAL SCENARIOS (must be labelled as our own examples, per BRIEF). Editor-designed illustrations only: a user opening ChatGPT and waiting on the spinner; a small team asking whether their notes live somewhere they can name; deciding what to do when a service you depend on has no published SLA. No invented OpenAI figures inside them. TONE. Attribution on every claim ('OpenAI 在工程部落格表示'). No hands-on testing. No investment or security advice. No emoji, no lists, no Markdown. Traditional Chinese, Taiwanese usage (使用者／帳號／軟體). OUT OF SCOPE ON PURPOSE. Part two's storage-layer content; anything about the Agents API's data residency or zero-data-retention settings (already covered on the site); any comparison with AWS/Google/Anthropic infrastructure; any judgement about whether Rust or Python is the better language; Azure Cosmos DB's own product guarantees. SUMMARY BLOCK. Lead with the answer — on 2026-09-11 OpenAI described Habitat, which it says now handles more than 70 million requests a second for products used by more than a billion people a week. Then the conditions (all figures are OpenAI's own, part one of two, nothing changes for users). Close on the caveat: OpenAI does not state durability, an SLA, or where the data sits. Every number in the summary must already appear in the body, verbatim. FAQ CANDIDATES that this research can actually answer: does this change anything for me as a ChatGPT user (no); what is the 1 billion figure actually counting (products, weekly, people); is my data in Taiwan (OpenAI does not say, only 'almost 40 geographic regions'); did OpenAI really rewrite it with AI (OpenAI says Q2 2026, 2 engineers plus Codex and GPT-5.5, now 95% of production requests — its own claim, no methodology); when is part two (no date given). DIAGRAM (2x2, numbers must also appear in the body): 儲存平台 / Habitat 承接資料存取; 每秒請求 / OpenAI 稱逾七千萬次; 分散區域 / 官方稱近 40 個地區; 官方未說 / 耐久性與資料所在地.",
+ "must_not_write": [
+  "Do not write that Habitat handles 22 million requests per second. That number is only in OpenAI's feed/meta blurb; the article body says more than 70 million per second today and more than 20 million per second at Python's peak.",
+  "Do not write '10 億 ChatGPT 使用者' as a flat fact. The body sentence is 'products used by over 1 billion people each week' — OpenAI products in aggregate, weekly, people not accounts. Quote that, and note the headline uses the looser phrasing.",
+  "Do not state or imply any durability, backup or data-loss guarantee, and do not borrow one from Microsoft's Azure Cosmos DB documentation. OpenAI says nothing about durability in this post.",
+  "Do not name a country or say Taiwanese users' data is or is not in a given region. OpenAI publishes only 'almost 40 geographic regions' and three illustrative diagram labels (us0, us1, eu0).",
+  "Do not say the Rust rewrite made ChatGPT faster or cheaper for users. OpenAI claims lower average and tail latencies for its own service and makes no user-facing claim at all.",
+  "Do not present 6x CPU / 15x memory / 95% as measured or verified. They are OpenAI's own unpublished-methodology numbers: write 'OpenAI 表示'.",
+  "Do not describe Nanobase. It is a single unexplained label in a diagram.",
+  "Do not write that conversation content is stored in Habitat. OpenAI does not say what data types Habitat holds.",
+  "Do not report the part-two contents, and do not give part two a date.",
+  "Do not claim we tested anything, and do not link to or quote CoinDesk/TechCrunch-style coverage, HackerNoon, daily.dev, YouTube or any of the summary blogs that came up in search.",
+  "Do not say OpenAI 'announced' a product on 2026-09-11. This is an engineering blog post that ends with a job advert; nothing shipped to users.",
+  "Do not turn the outage anecdotes into a claim that ChatGPT suffered an outage on a particular date — the post gives no dates, durations or user impact for any of them."
+ ],
+ "overlaps_existing_article": "Two existing packs are adjacent and one genuinely collides. (1) COLLISION RISK: ai-news-openai-agents-api-20260910 ('OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置') already devotes a whole section to '資料放在哪裡，零資料保留為什麼重要' and cites developers.openai.com's data-controls docs. Division: that article is about the developer-facing contract (US-only residency, zero data retention, billing) for people commissioning automation. THIS article must stay on the engineering post itself — Habitat as a system, the scale numbers, and what OpenAI declines to disclose about durability and location. Do not restate the Agents API residency rules, do not cite developers.openai.com, and if a sentence needs the developer-side contrast, use the site link rather than re-reporting it. (2) ADJACENT, NO OVERLAP: ai-news-gpt-6-astra-20260903 and ai-news-gpt-56-price-cut-20260730 cover model releases; this piece touches GPT-5.5 and Codex only as the tools OpenAI says it used for its own Rust rewrite, which no existing pack covers. (3) Nothing on the site covers OpenAI infrastructure, storage, Azure Cosmos DB or the Rust migration — checked against all 38 ai-news-* titles in docs/news-2026-batch-4/ai.md. The subject is new. (4) Suggested second site link (the first must be the AI index ai-news-2026-january-september-index): ai-news-openai-agents-api-20260910, which is the closest neighbour on 'where does my data sit'. Copy its zh-TW title exactly from the pack; check_article.py asserts link.text equals the target title.",
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-tech-and-ai.md line 139 says of this item 「『十億使用者』這個數字要回原文確認」. Answered: the original body says 'supporting products used by over 1 billion people each week', i.e. OpenAI products in aggregate, weekly, 'people' not accounts. Only the headline and the meta blurb say '1 billion ChatGPT users'. OpenAI's own social-image alt text says 'nearly 1 billion'. The candidate line should be updated to record this, so no later agent re-litigates it.",
+  "The same candidates table gives the official title without noting that the feed/meta description's '22M requests per second' is absent from the article. That is the single most likely error in this piece and belongs in the candidate note.",
+  "The candidates file does not record that openai.com/index/* is unreachable here while openai.com/sitemap.xml/<section>/ returns 200. The sitemap route is worth adding to the feed table at the top of that file: it gives per-article lastmod timestamps and is the cheapest way to prove a promised follow-up post has not appeared yet.",
+  "ai.md names the workspace as docs/ai-news-2026-09-late/ while this batch's files live in docs/news-2026-batch-4/. Whoever files the content pack should confirm which directory the research record belongs in before writing it; I wrote mine to the scratchpad path the assignment specified.",
+  "ai.md says display_order continues after 148 (ai-news-siri-ai-ios-27-20260914). With an event date of 2026-09-11 this piece sits before 9/14 chronologically, so whoever assigns display_order should decide explicitly whether the sequence is by order-of-writing or by news_date; news_date must be \"2026-09-11\" either way."
+ ]
+}

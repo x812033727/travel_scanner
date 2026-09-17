@@ -1,0 +1,785 @@
+{
+ "slug": "crypto-news-stablecoin-aml-20260410",
+ "event_date": "2026-04-10",
+ "event_date_basis": "2026-04-10 is the Federal Register publication date of the joint proposed rule, cited as 91 FR 18582 (Vol. 91, No. 69, Friday, April 10, 2026, pages 18582-18667, FR Doc 2026-06963), and the date from which the 60-day comment period to 9 June 2026 runs. The announcement date is two days earlier: Treasury's press release (sb0435) and FinCEN's news release are both dated 8 April 2026, and the Treasury release says the rule 'will be published in the Federal Register in the coming days.' There is no effective date - the Federal Register API returns effective_on null because this is a proposed rule, and the agencies propose that the final rules would take effect 12 months after the final rules are issued. The slug date 20260410 therefore matches the publication date, and the article must distinguish 4/8 (announced) from 4/10 (published, comment clock starts).",
+ "checked_on": "2026-09-16",
+ "title": "美國提出穩定幣發行人防洗錢與制裁法遵草案",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All first-party material for this assignment was reachable. What I fetched, with the status I actually saw:\n- https://www.federalregister.gov/api/v1/documents/2026-06963.json -> 200 (metadata: citation, dates, docket, RIN, agencies, page range).\n- https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt -> 200, 712,054 bytes, the complete 86-page NPRM. This is the copy I read end to end and it is the url attached to every fact drawn from the rule text.\n- https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf -> 200, 765,284 bytes, verified as a real 86-page PDF whose page 18583 text matches the .txt. This is the better reader-facing link and the writer may swap it in for the .txt in sources.\n- https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf -> 200, 5-page FinCEN fact sheet, text extracted successfully.\n- https://home.treasury.gov/news/press-releases/sb0435 -> 200, Treasury press release dated 8 April 2026.\n- https://www.fincen.gov/news/news-releases/treasury-proposes-rule-implement-genius-acts-requirements-counter-illicit -> 200, FinCEN release dated 8 April 2026.\n- https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903 (and -5901, -5905) -> 200, statutory text current through 15 September 2026, used to verify the GENIUS Act mandate, the felony bar, the penalty tiers and the Act's effective-date formula rather than relying on the NPRM's paraphrase.\n- https://www.federalregister.gov/api/v1/documents.json?conditions[docket_id]=FINCEN-2026-0100 -> 200, count 1, confirming no final rule as of the check date.\n- https://www.federalregister.gov/api/v1/documents/2026-12460.json -> 200, the later customer identification programme NPRM.\n\nBlocks actually hit, for the next agent:\n- The canonical federalregister.gov HTML page for this document (https://www.federalregister.gov/documents/2026/04/10/2026-06963/...) returns 302 to https://unblock.federalregister.gov/ for curl with the Mokaair-editorial agent. The API, the full-text .txt and the govinfo PDF are all unaffected.\n- https://www.regulations.gov/docket/FINCEN-2026-0100 returns HTTP 403 (CloudFront 'Request blocked'). The comment count and comment-period status on regulations.gov therefore could not be verified at first hand.\n- https://www.fincen.gov/news/news-releases and /resources/statutes-and-regulations/federal-register-notices are 404; the working listings are https://www.fincen.gov/newsroom and https://www.fincen.gov/news/press-releases (paginated with ?page=N).\n- pdftotext is not installed and system pypdf fails on the cryptography backend; 'uv run --with pypdf python' inside apps/api works and is how the PDFs were read.\n\nVersion note: the NPRM is a fixed Federal Register publication, not a live document, and the govinfo PDF and the FR .txt agree. The uscode.house.gov pages state 'Text contains those laws in effect on September 15, 2026', which is the version of the statute I read.",
+ "sources": [
+  {
+   "title": "Permitted Payment Stablecoin Issuer Anti-Money Laundering/Countering the Financing of Terrorism Program and Sanctions Compliance Program Requirements (91 FR 18582) - full text",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "publisher": "Office of the Federal Register / U.S. Government Publishing Office",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Fact Sheet: Proposed Rule to Implement the GENIUS Act's Anti-Money Laundering Obligations and Sanctions Compliance Program Requirements",
+   "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+   "publisher": "Financial Crimes Enforcement Network (FinCEN), U.S. Department of the Treasury",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Treasury Proposes Rule to Implement the GENIUS Act's Requirements to Counter Illicit Finance",
+   "url": "https://home.treasury.gov/news/press-releases/sb0435",
+   "publisher": "U.S. Department of the Treasury",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "12 U.S.C. 5903 - Requirements for issuing payment stablecoins (GENIUS Act)",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903&num=0&edition=prelim",
+   "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "The document is a joint proposed rule (notice of proposed rulemaking, NPRM) titled 'Permitted Payment Stablecoin Issuer Anti-Money Laundering/Countering the Financing of Terrorism Program and Sanctions Compliance Program Requirements', published in the Federal Register on Friday, 10 April 2026, Volume 91, Number 69, pages 18582-18667, cited as 91 FR 18582.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Federal Register Volume 91, Number 69 (Friday, April 10, 2026)] [Proposed Rules] [Pages 18582-18667] ... [FR Doc No: 2026-06963]"
+  },
+  {
+   "fact": "The issuing agencies are named in the document as 'Financial Crimes Enforcement Network, Office of Foreign Assets Control, Treasury' - i.e. two Treasury bureaus, FinCEN and OFAC, issuing one joint proposed rule. The ACTION line reads 'Joint proposed rule.'",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "AGENCY: Financial Crimes Enforcement Network, Office of Foreign Assets Control, Treasury. ACTION: Joint proposed rule."
+  },
+  {
+   "fact": "The docket number is 'Docket No. FINCEN-2026-0100' and the regulatory identifier number (RIN) is 1506-AB73.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "[Docket No. FINCEN-2026-0100] RIN 1506-AB73"
+  },
+  {
+   "fact": "The proposal touches three parts of Title 31 of the Code of Federal Regulations: OFAC's new 31 CFR part 502, and FinCEN's 31 CFR parts 1010 and 1033.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Office of Foreign Assets Control 31 CFR Part 502 ... Financial Crimes Enforcement Network 31 CFR Parts 1010 and 1033"
+  },
+  {
+   "fact": "The comment deadline stated in the DATES section is 9 June 2026.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "DATES: Comments must be received by June 9, 2026."
+  },
+  {
+   "fact": "Comments may be submitted in only one of two ways: electronically at https://www.regulations.gov under Docket FINCEN-2026-0100, or by post to Regulatory and Strategic Affairs Division, Financial Crimes Enforcement Network, P.O. Box 39, Vienna, VA 22183. Mailed comments must arrive by the close of the comment period, comments are public records displayed exactly as received, and comments may be submitted anonymously.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The Federal Register API record for the document gives publication_date 2026-04-10, type 'Proposed Rule', comments_close_on 2026-06-09, citation '91 FR 18582', page_length 86, and effective_on null.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-06963.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Treasury announced the proposal two days before Federal Register publication: the Treasury press release is dated 8 April 2026 and says the proposal 'will be published in the Federal Register in the coming days.'",
+   "url": "https://home.treasury.gov/news/press-releases/sb0435",
+   "is_vendor_claim": false,
+   "verbatim_quote": "FinCEN and OFAC welcome public comments on the proposal, which will be published in the Federal Register in the coming days."
+  },
+  {
+   "fact": "FinCEN's own news release announcing the same proposal is dated 'Immediate Release April 08, 2026'.",
+   "url": "https://www.fincen.gov/news/news-releases/treasury-proposes-rule-implement-genius-acts-requirements-counter-illicit",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Immediate Release April 08, 2026"
+  },
+  {
+   "fact": "Treasury Secretary Scott Bessent is quoted in the Treasury press release saying 'President Trump is strengthening American leadership in digital financial technology' and that the proposal 'will protect the U.S. financial system from national security threats without hindering American companies' ability to forge ahead in the payment stablecoin ecosystem.'",
+   "url": "https://home.treasury.gov/news/press-releases/sb0435",
+   "is_vendor_claim": true,
+   "verbatim_quote": "“President Trump is strengthening American leadership in digital financial technology,” said Secretary of the Treasury Scott Bessent."
+  },
+  {
+   "fact": "The statute behind the rule is the Guiding and Establishing National Innovation for U.S. Stablecoins Act (GENIUS Act), Public Law 119-27, 139 Stat. 419 (2025), codified at 12 U.S.C. 5901-5916.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "GENIUS Act, Public Law 119-27, 139 Stat. 419 (2025) (codified at 12 U.S.C. 5901-5916)."
+  },
+  {
+   "fact": "12 U.S.C. 5903(a)(5)(A) states that a permitted payment stablecoin issuer 'shall be treated as a financial institution for purposes of the Bank Secrecy Act, and as such, shall be subject to all Federal laws applicable to a financial institution located in the United States relating to economic sanctions, prevention of money laundering, customer identification, and due diligence', and lists six specific obligations in clauses (i) to (vi).",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A permitted payment stablecoin issuer shall be treated as a financial institution for purposes of the Bank Secrecy Act, and as such, shall be subject to all Federal laws applicable to a financial institution located in the United States relating to economic sanctions, prevention of money laundering, customer identification, and due diligence"
+  },
+  {
+   "fact": "The six statutory clauses are: (i) an effective anti-money laundering programme including appropriate risk assessments and designation of an officer to supervise it; (ii) retention of appropriate records; (iii) monitoring and reporting of any suspicious transaction relevant to a possible violation of law or regulation; (iv) technical capabilities, policies and procedures to block, freeze and reject specific or impermissible transactions that violate Federal or State laws, rules or regulations; (v) an effective customer identification programme including identification and verification of account holders, high-value transactions and appropriate enhanced due diligence; and (vi) an effective economic sanctions compliance programme including verification of sanctions lists.",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(vi) maintenance of an effective economic sanctions compliance program, including verification of sanctions lists, consistent with Federal law."
+  },
+  {
+   "fact": "12 U.S.C. 5903(a)(5)(B) directs that the Secretary of the Treasury 'shall adopt rules, tailored to the size and complexity of permitted payment stablecoin issuers, to implement subparagraph (A).'",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Secretary of the Treasury shall adopt rules, tailored to the size and complexity of permitted payment stablecoin issuers, to implement subparagraph (A)."
+  },
+  {
+   "fact": "12 U.S.C. 5903(a)(6)(B) provides that a permitted payment stablecoin issuer 'may issue payment stablecoins only if the issuer has the technological capability to comply, and will comply, with the terms of any lawful order.'",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A permitted payment stablecoin issuer may issue payment stablecoins only if the issuer has the technological capability to comply, and will comply, with the terms of any lawful order."
+  },
+  {
+   "fact": "12 U.S.C. 5903(f) bars any individual convicted of a felony offence involving insider trading, embezzlement, cybercrime, money laundering, financing of terrorism or financial fraud from serving as an officer or a director of a payment stablecoin issuer; knowing participation in a violation carries a fine of up to $1,000,000 per violation, imprisonment of up to 5 years, or both.",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Whoever knowingly participates in a violation of paragraph (1) shall be fined not more than $1,000,000 for each such violation, imprisoned for not more than 5 years, or both."
+  },
+  {
+   "fact": "12 U.S.C. 5905(b)(5)(B) and (C) set civil money penalties of not more than $100,000 for each day a permitted payment stablecoin issuer materially violates the Act or a regulation or order under it, plus an additional not more than $100,000 for each day of a knowing violation.",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5905&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "shall be liable for a civil penalty of not more than $100,000 for each day during which the violation continues"
+  },
+  {
+   "fact": "The GENIUS Act's own effective date is set by Pub. L. 119-27 section 20: the Act takes effect on the earlier of (1) 18 months after the date of enactment (enacted 18 July 2025), or (2) 120 days after the primary Federal payment stablecoin regulators issue any final regulations implementing the Act.",
+   "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5901&num=0&edition=prelim",
+   "is_vendor_claim": false,
+   "verbatim_quote": "shall take effect on the earlier of “(1) the date that is 18 months after the date of enactment of this Act [July 18, 2025]; or “(2) the date that is 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing this Act."
+  },
+  {
+   "fact": "The Treasury delegations relied on are Treasury Order 101-05 and 31 U.S.C. 321(b)(2): the GENIUS Act authority over money laundering / terrorist financing rules is delegated to the Director of FinCEN, and the authority over economic sanctions to the Director of OFAC.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed rule cites Treasury Order 180-01 (14 January 2020) as the delegation of Bank Secrecy Act administration and enforcement to the Director of FinCEN.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN proposes to exercise its authority under 31 U.S.C. 5312(a)(2)(Y) to expressly define permitted payment stablecoin issuers (PPSIs) as a type of 'financial institution' under the Bank Secrecy Act, on the basis that PPSIs engage in activities 'similar to' and 'related to' those of financial institutions already listed.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Stablecoin issuers are currently regulated under the BSA as money transmitters, a type of money services business (MSB). FinCEN proposes to carve PPSIs out of the MSB definition to avoid overlapping obligations; issuers of tokens that are not payment stablecoins would remain subject to the MSB framework.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed 31 CFR 1010.100(ttt) definition of 'permitted payment stablecoin issuer' covers an entity formed in the United States that is (1)(A) a subsidiary of an insured depository institution approved to issue payment stablecoins by a primary Federal payment stablecoin regulator, or (1)(B) a subsidiary of an insured credit union so approved; (2) a Federal qualified payment stablecoin issuer; or (3) a State qualified payment stablecoin issuer.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed 31 CFR 1010.100(sss) definition of 'payment stablecoin' excludes a national currency, a deposit as defined in section 3 of the Federal Deposit Insurance Act (including a deposit recorded using distributed ledger technology), and a security as defined in the Securities Act of 1933, the Securities Exchange Act of 1934 or the Investment Company Act of 1940.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed 31 CFR 1010.100(rrr) definition of 'lawful order' means any final and valid writ, process, order, rule, decree, command or other requirement issued under Federal law by a court of competent jurisdiction or an authorised Federal agency that (1) requires the issuer to seize, freeze, burn or prevent the transfer of payment stablecoins it issued; (2) specifies the payment stablecoins or accounts subject to blocking with reasonable particularity; and (3) is subject to judicial or administrative review or appeal as provided by law.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN states it believes 'burn' is generally understood to mean taking action such that the payment stablecoin is permanently removed from circulation, and that wallet addresses named in lawful orders fall within the meaning of 'account'; it has NOT proposed regulatory text defining either 'burn' or 'account' and asks for comment on that approach.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The fact sheet says the proposal would amend four existing definitions and add nine new definitions to 31 CFR part 1010.",
+   "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the proposed rule would amend four existing definitions and add nine new definitions to 31 CFR part 1010."
+  },
+  {
+   "fact": "The nine proposed new definitions in 31 CFR 1010.100 are: (ppp) digital asset, (qqq) distributed ledger, (rrr) lawful order, (sss) payment stablecoin, (ttt) permitted payment stablecoin issuer, (uuu) primary Federal payment stablecoin regulator, (vvv) Federal qualified payment stablecoin issuer, (www) State payment stablecoin regulator, (xxx) State qualified payment stablecoin issuer. The four amended definitions are (t) financial institution, (ff) money services business, (bbb) transaction and (eee) transmittal order.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal defines 'primary market' as a PPSI interacting directly with a user or holder - issuing, converting, redeeming, repurchasing, burning and reissuing payment stablecoins and associated services such as custody - and 'secondary market' as payment stablecoin activity that does not directly involve the PPSI as a party other than via a smart contract, for example an individual buying from an intermediary, sending from a self-hosted wallet to a vendor, swapping on a digital asset exchange, or person-to-person transfers.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Only two of the proposed obligations would reach the secondary market: the block/freeze/reject technical-capability obligation and the lawful-order compliance obligation. Both are imposed on PPSIs directly by the GENIUS Act.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN is NOT proposing to require a PPSI's AML/CFT programme to monitor secondary market activity, and is NOT proposing to require PPSIs to file suspicious activity reports on secondary market transactions; it states the burden could potentially outweigh the benefits.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OFAC's proposed sanctions internal-controls requirement does apply to all payment stablecoin-related activity 'whether on the primary or secondary market'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.210 would require a PPSI to have an effective AML/CFT programme, which it satisfies by (1) establishing a programme under paragraph (b) and (2) maintaining it by implementing it, in all material respects, under paragraph (c).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed AML/CFT programme has four minimum elements: (1) internal policies, procedures and controls; (2) an independent audit function to test the programme; (3) a designated compliance officer; and (4) an ongoing employee training programme.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed internal policies, procedures and controls must be risk-based and reasonably designed to (1) identify, assess and document money laundering and terrorist financing risks through risk assessment processes that evaluate the PPSI's business activities, review and as appropriate incorporate the AML/CFT Priorities, and are updated promptly on any change the PPSI knows or has reason to know significantly changes its risks; (2) mitigate those risks, including by directing more attention and resources to higher-risk customers and activities; and (3) conduct ongoing customer due diligence.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Ongoing customer due diligence under proposed 1033.210(b)(1)(iii) means understanding the nature and purpose of customer relationships to develop a customer risk profile, and conducting ongoing monitoring to identify and report suspicious transactions and, on a risk basis, to maintain and update customer information, including beneficial owners of legal entity customers.",
+   "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Independent testing must be independent of the functions tested: the AML/CFT officer, and anyone reporting directly (and in some cases indirectly) to that officer, would generally not be considered sufficiently independent. PPSIs without auditors or internal audit departments may use internal staff not involved in the function being tested. Government agencies such as a PPSI's primary Federal or State payment stablecoin regulator do not count as outside parties for this purpose.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The designated AML/CFT officer must be responsible for establishing and implementing the programme and coordinating and monitoring day-to-day compliance, must be located in the United States, and must be accessible to and subject to oversight and supervision by FinCEN and its designee, including the appropriate primary Federal payment stablecoin regulator. Staff outside the United States may still perform certain AML/CFT functions.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 1033.210(b)(3)(iv) would apply the GENIUS Act felony bar to the AML/CFT officer: the officer cannot have been convicted of a felony offence involving insider trading, embezzlement, cybercrime, money laundering, financing of terrorism or financial fraud. FinCEN expects PPSIs to check before designating someone, to require the individual to report any such conviction, and to monitor for one.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 1033.210(d) would require the AML/CFT programme to be in writing, to be made available to FinCEN or its designee on request, and to be approved by the PPSI's board of directors, an equivalent governing body, or appropriate senior management - with approval covering each component of the programme.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 1033.210(e) would require a PPSI to make available to FinCEN or its designee, on request, any and all certifications it has submitted to its primary Federal or State payment stablecoin regulator certifying that it has implemented an AML/CFT programme.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN says the proposed PPSI programme is consistent with the AML/CFT programme it has separately proposed for the 11 types of financial institution already covered by BSA programme rules, with modifications for the GENIUS Act's specific provisions.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Where a PPSI is a subsidiary of an insured depository institution, FinCEN says an enterprise may elect to extend a single AML/CFT programme to both entities, provided the programme is reasonably designed to identify and mitigate the risks of each entity's business and satisfies every requirement to which both are subject; where obligations differ, the PPSI must comply with the PPSI-specific provision.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN proposes to delegate BSA examination authority over PPSIs to the agency that examines the same entity for safety and soundness. The primary Federal payment stablecoin regulators are the OCC, the Federal Reserve Board, the FDIC and the NCUA; a new paragraph would be added to 31 CFR 1010.810(b) for federally supervised PPSIs.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "For PPSIs not examined by a primary Federal payment stablecoin regulator for safety and soundness - typically State qualified payment stablecoin issuers - FinCEN proposes that BSA examination authority falls to the IRS under the existing 31 CFR 1010.810(b)(8), which FinCEN says needs no textual change.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Under the GENIUS Act a State qualified payment stablecoin issuer with consolidated total outstanding issuance of not more than $10 billion in payment stablecoins may stay under a State regime that is substantially similar to the Federal framework; above $10 billion it must move to the primary Federal payment stablecoin regulator's framework or obtain a waiver to remain solely State-supervised.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.221(b) would state that, except for a significant or systemic failure to implement an effective AML/CFT programme, a PPSI that has properly established a programme would not face an AML/CFT enforcement action or a significant AML/CFT supervisory action based on a violation of proposed 1033.210. The policy does not restrict action for failure to properly establish a programme, and expressly does not affect criminal enforcement liability under the BSA.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.221(c) would require a primary Federal payment stablecoin regulator acting under delegated authority to give the Director of FinCEN written notice at least 30 days before initiating a significant AML/CFT supervisory action, together with the underlying AML/CFT information, unless a shorter period is necessary in the regulator's sole discretion to address an unsafe or unsound practice or condition.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.221(d) lists factors the FinCEN Director would weigh, including the extent to which the PPSI has advanced the AML/CFT Priorities by providing highly useful information to law enforcement or national security officials or by conducting proactive analytics or other innovative activities with demonstrable outputs, expressly including effective use of artificial intelligence, federated learning or other advanced monitoring tools.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.240(a) would require PPSIs to have technical capabilities, policies and procedures to block, freeze and reject specific or impermissible transactions that violate Federal or State laws, rules or regulations, with added language making clear the duty extends beyond the PPSI's own customers and accounts to secondary market activity.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal does not prescribe how the block/freeze/reject capability must be built and does not require a PPSI to make an independent determination that a transaction violates law: when the capability must be used is dictated by other Federal or State law, rules, regulations and court orders. A PPSI is not required to block, freeze or reject a transaction when it is under no legal obligation to act.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal notes that U.S. sanctions administered by OFAC are a strict liability regime, so U.S. persons including PPSIs may be held civilly liable for sanctions violations even without knowledge or reason to know, and that PPSIs' capabilities should therefore cover identifying and blocking stablecoins issued to or redeemed by blocked persons, and stablecoins traded by blocked persons on the secondary market when the PPSI exercises possession or control, including through smart contracts.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.240(b) would implement the lawful-order requirement and make it ongoing rather than a one-time test at the moment of issuance. PPSIs would be required to consider and comply with all terms in lawful orders; FinCEN gives a seizure warrant as the quintessential example and notes that Federal court orders 'with some regularity' require stablecoin issuers to burn and reissue an equivalent amount of stablecoins to a government-controlled wallet.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN states it believes the vast majority of lawful orders currently relate to secondary market activity and are likely to continue to do so, and that law enforcement has used lawful orders to seize hundreds of millions of dollars' worth of stablecoins involved in illicit activity.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN acknowledges that some stablecoin issuers can already block, freeze or reject transactions by programming the stablecoin's smart contracts, including banning specific wallet addresses from interacting with the contract (freezing) or permanently removing stablecoins from circulation (burning).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.310 to 1033.315 would apply the currency transaction report (CTR) rules to PPSIs by cross-reference to 31 CFR 1010.310 to 1010.315, including the threshold of transactions in currency of more than $10,000 in a single business day and the prohibition on structuring.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The CTR obligation would NOT require reporting of transactions in payment stablecoins: 'currency' in 31 CFR 1010.100(m) is coin and paper money and does not include a payment stablecoin, and 'transaction in currency' means a physical transfer of currency from one person to another. FinCEN says stablecoin issuers rarely transact in physical currency today and that a PPSI that does not would file no CTRs and would not be expected to write policies for the filing obligation.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.320(a)(2) would require a PPSI to report suspicious transactions conducted or attempted by, at or through the PPSI that involve or aggregate at least $5,000 in funds or other assets.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The $5,000 SAR threshold is higher than the $2,000 threshold that currently applies to stablecoin issuers regulated as MSBs under 31 CFR 1022.320(a)(2). FinCEN says $5,000 is the threshold it uses for institution types subject to customer identification programme requirements, that primary market transactions below $5,000 are rare, and that the PPSI ecosystem has no transmitter/agent relationships.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The four proposed SAR triggers are that the PPSI knows, suspects or has reason to suspect the transaction (i) involves funds derived from illegal activity or is intended to hide or disguise such funds as part of a plan to violate or evade Federal law or avoid a reporting requirement; (ii) is designed, whether through structuring or other means, to evade the BSA; (iii) has no business or apparent lawful purpose and the PPSI knows of no reasonable explanation after examining available facts; or (iv) involves use of the PPSI to facilitate criminal activity.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.320(g) would clarify that 'A transaction is not conducted or attempted by, at, or through a permitted payment stablecoin issuer only because a transfer by third parties results in an interaction with a permitted payment stablecoin issuer's smart contract.'",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "A transaction is not conducted or attempted by, at, or through a permitted payment stablecoin issuer only because a transfer by third parties results in an interaction with a permitted payment stablecoin issuer's smart contract."
+  },
+  {
+   "fact": "SAR filing deadlines under proposed 1033.320(b): file within 30 days of initial detection of facts that may constitute a basis for filing; if no suspect has been identified, filing may be delayed a further 30 days to identify one. For matters requiring immediate attention such as suspected terrorist financing or ongoing money laundering, the PPSI must telephone the appropriate law enforcement authority immediately in addition to filing a timely SAR.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 1033.320(b)(5) gives FinCEN's Financial Institutions Hotline for voluntary reports that may relate to terrorist activity as 1-866-556-3974.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 1033.320(c) would require PPSIs to keep copies of filed SARs and the underlying supporting documentation for five years from the date of filing, available on request to FinCEN, any Federal, State or local law enforcement agency, or any Federal regulatory authority that examines the PPSI for BSA compliance.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 1033.320(d) would make a SAR, and any information revealing its existence, confidential: no PPSI and no current or former director, officer, employee or agent may disclose it, and a PPSI that is subpoenaed must decline to produce it and notify FinCEN of the request and its response. Voluntary reports are covered by the same prohibition.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Where more than one financial institution with a separate SAR obligation is involved in the same transaction, proposed 1033.320(a)(3) would allow a single jointly filed report, so a parent insured depository institution could file on behalf of its PPSI subsidiary and vice versa, provided the joint report contains all relevant facts and each institution keeps a copy.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PPSIs would be permitted to file voluntary SARs on transactions not otherwise required to be reported, including secondary market transactions, with the associated protection from liability.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.400 would subject PPSIs to the recordkeeping requirements of subpart D of part 1010, which includes 31 CFR 1010.430's five-year record retention, and proposed 1033.410 would cross-reference 31 CFR 1010.410.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PPSIs would have to create and retain records for extensions of credit in excess of $10,000 and for cross-border transfers of currency, monetary instruments, funds, checks, investment securities and credit worth more than $10,000, and to keep records related to any order issued under 31 CFR 1010.370(a) for up to five years.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PPSIs would be subject to the Recordkeeping Rule (31 CFR 1010.410(e)), which requires collecting and retaining records for funds transfers and transmittals of funds of $3,000 or more, and to the Travel Rule (31 CFR 1010.410(f)), which requires transmitting information on certain transfers to the next financial institution in the payment chain.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN proposes amending the definition of 'transmittal order' at 31 CFR 1010.100(eee) to expressly include payment stablecoins in addition to 'money', to remove any doubt that the Recordkeeping and Travel Rules cover payment stablecoin transmittals. FinCEN says this is a clarification consistent with its 2019 CVC guidance, and that it is also independently using its authority under 12 U.S.C. 1953 and 31 U.S.C. 5318(a)(2).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN proposes adding PPSIs to the list in 31 CFR 1010.410(e)(6) of entities exempt from the Recordkeeping Rule when both the transmittor and the recipient are a PPSI, bank, broker-dealer, futures commission merchant, introducing broker in commodities or mutual fund.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.500, 1033.520 and 1033.540 would apply the USA PATRIOT Act information-sharing regime to PPSIs: under section 314(a) a PPSI must, on a FinCEN request, expeditiously search its records for named individuals, entities or organisations and report any matches to FinCEN; under section 314(b) a PPSI may, after notifying FinCEN, voluntarily share information with other financial institutions.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 1033.610 and 1033.620 would adopt by reference 31 CFR 1010.610 and 1010.620, applying the special due-diligence and enhanced due-diligence standards for correspondent accounts for foreign financial institutions and for private banking accounts to PPSIs.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The existing definition of 'private banking account' at 31 CFR 1010.605(m) - an account or collection of accounts with minimum aggregate assets of more than $1 million established on behalf of a non-U.S. person and assigned to or administered by the covered financial institution - would be left unchanged, and FinCEN asks for comment on that approach.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "By adding PPSIs to the definition of 'covered financial institution' at 31 CFR 1010.605(e)(1), the proposal would subject them to the existing section 311 special measures codified at 31 CFR 1010.658 (FBME Bank), 1010.659 (North Korea), 1010.660 (Bank of Dandong), 1010.661 (Iran), 1010.663 (Al-Huda Bank) and 1010.664 (Huione Group), and FinCEN proposes amending 1010.651 (Burma) and 1010.653 (Commercial Bank of Syria) to apply to PPSIs as well. PPSIs would also have to comply with special measures issued under section 311 (31 U.S.C. 5318A), section 9714(a) of the Combating Russian Money Laundering Act and 21 U.S.C. 2313a.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN proposes amending 31 CFR 1010.230 so that PPSIs must collect beneficial ownership information about legal entity customers, using verification procedures with the same elements as 31 CFR 1022.220(a)(2) (the bank customer identification programme rule), and clarifying that for a PPSI an 'account' is a formal relationship between a customer and the PPSI established to provide or engage in services, dealings or other financial transactions. Beneficial ownership collection would NOT extend to secondary market activity.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OFAC proposes a new 31 CFR part 502 entitled the 'Permitted Payment Stablecoin Issuer Effective Sanctions Compliance Program Regulations'.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OFAC is proposing a new part 502 to chapter V of the CFR entitled the ``Permitted Payment Stablecoin Issuer Effective Sanctions Compliance Program Regulations''"
+  },
+  {
+   "fact": "The proposal states that the GENIUS Act's sanctions compliance programme requirement 'represents the first time that Federal law has explicitly mandated that a particular U.S. person have an effective sanctions compliance program.'",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The sanctions compliance program requirement in the GENIUS Act, however, represents the first time that Federal law has explicitly mandated that a particular U.S. person have an effective sanctions compliance program"
+  },
+  {
+   "fact": "Because the GENIUS Act requires a PPSI to be formed in the United States, PPSIs are U.S. persons under OFAC's existing regulations once the Act takes effect, and so are already required to block the property and interests in property of blocked persons, reject prohibited transactions, and keep records and file reports with OFAC.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 502.102(a) would apply OFAC's standard recordkeeping and reporting requirements in 31 CFR part 501 to PPSIs, and proposed 502.102(b) would require a PPSI to give OFAC on request any and all certifications submitted to its primary Federal or State payment stablecoin regulator certifying that it has implemented an effective sanctions compliance programme.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 502.201(b) sets five minimum elements of an effective sanctions compliance programme, in line with OFAC's 2019 'A Framework for OFAC Compliance Commitments': (1) senior management and organisational commitment; (2) risk assessment; (3) internal controls; (4) testing and auditing; and (5) training.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Element 1, proposed 502.201(b)(1): senior management must review and approve the programme and support its effective implementation by ensuring it at a minimum (i) applies to all payment stablecoin-related activity; (ii) has sufficient resources including human capital, expertise and information technology; (iii) is fully integrated into ongoing stablecoin-related operations; (iv) routinely provides risk updates including test results to senior management and other appropriate personnel; and (v) gives the compliance function sufficient authority and autonomy to manage U.S. sanctions risk for the entire PPSI. OFAC does not prescribe a cadence for the routine risk updates.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Element 2, proposed 502.201(b)(2): a PPSI must conduct sanctions-related risk assessments by (i) conducting holistic assessments of U.S. sanctions risks at appropriate intervals; (ii) using them to inform the operation of the programme, including revising internal controls and training; and (iii) revising them to account for identified U.S. sanctions violations or deficiencies, new products, services, mergers or acquisitions, and any other factors affecting the risk profile.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Element 3, proposed 502.201(b)(3): a PPSI must establish and maintain a system of risk-based internal controls - including technical capabilities and written policies and procedures - applicable to all payment stablecoin-related activity, whether primary or secondary market, that identifies, blocks and/or rejects transactions that may violate or would violate U.S. sanctions, and retains relevant records under OFAC regulations.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "On sanctions screening, the proposal says that at a minimum such screening 'should include tools sufficient to identify and block transactions associated with digital currency addresses included on OFAC's SDN List', and that internal controls must be continually updated to keep pace with new OFAC designations, prohibitions, requirements and guidance. OFAC does not require any specific tool or software and notes the digital assets industry routinely uses blockchain analysis, open-source intelligence, geolocation and media monitoring tools.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "at a minimum, such sanctions screening should include tools sufficient to identify and block transactions associated with digital currency addresses included on OFAC's SDN List"
+  },
+  {
+   "fact": "The written policies and procedures must be documented, clearly communicated to all relevant personnel and stakeholders (for example clients, business partners, counterparties), and routinely reviewed and revised so that compliance gaps or deficiencies are remediated in a timely and appropriate way.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Element 4, proposed 502.201(b)(4): a PPSI must establish and maintain an independent testing or audit function accountable to senior management with sufficient resources, expertise and authority to identify sanctions compliance weaknesses; ensure qualified personnel routinely perform comprehensive, independent and objective testing; use the results to update the programme; and keep and provide to OFAC on request records of the testing results and enhancements.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Element 5, proposed 502.201(b)(5): a PPSI must run a risk-based sanctions compliance training programme that is (i) performed at least annually and with a frequency appropriate to its risk assessments and risk profile; (ii) provided to all relevant personnel and stakeholders; (iii) tailored to each trainee's role and responsibilities; (iv) modified to reflect risk assessment findings and identified deficiencies including testing and audit findings; and (v) designed to include easily accessible resources and materials. OFAC views annual training as the appropriate minimum.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OFAC proposes four definitions in part 502: 'knowingly' (502.301), 'OFAC' (502.302), 'payment stablecoin-related activity' (502.303) and 'permitted payment stablecoin issuer' (502.304). 'Knowingly' would mean a person has actual knowledge, or should have known, of the conduct, circumstance or result.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "'Payment stablecoin-related activity' would be defined to include issuing, trading, holding, transacting, transferring, redeeming or any other activity involving a payment stablecoin issued by a PPSI, from issuance until removal from circulation, whether on the primary or secondary market. OFAC gives as examples that a PPSI is prohibited from issuing payment stablecoins to a blocked person and from allowing blocked persons to engage with its smart contracts to facilitate trades of its payment stablecoins.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Proposed 31 CFR 502.401(a) would impose civil monetary penalties of not more than $100,000 per day on a PPSI that materially violates the requirement to maintain an effective sanctions compliance programme, and 502.401(b) an additional $100,000 for each day a PPSI knowingly participates in such a violation. Proposed 502.402 would let OFAC refer unpaid penalties to Treasury for administrative collection or to the Department of Justice for a civil suit in Federal district court.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal notes these penalties sit alongside IEEPA civil penalties of the greater of $377,700 or twice the amount of the underlying transaction per violation, and Trading with the Enemy Act penalties of up to $111,308 per violation, both as adjusted for inflation.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Under Executive Order 14294 on fighting overcriminalization, the proposal states that willful violations of the proposed chapter X (FinCEN) regulations may carry criminal penalties under 31 U.S.C. 5322, with a mens rea of willfulness, and that willful violations of the proposed chapter V (OFAC) regulations may carry criminal penalties under 50 U.S.C. 1705, 50 U.S.C. 4315, 19 U.S.C. 3907 and 21 U.S.C. 1906, also requiring willfulness. Both statements were drafted in consultation with the Department of Justice.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN and OFAC propose that their respective final rules would become effective 12 months after issuance of the final rules, to give PPSIs time to review and implement, and they seek comment on that proposed effective date.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "FinCEN and OFAC are proposing that their respective rules will become effective 12 months after issuance of final rules to allow sufficient time for PPSIs to review and implement the requirements of the proposed rule."
+  },
+  {
+   "fact": "Treasury issued an advance notice of proposed rulemaking on the GENIUS Act in September 2025 (GENIUS Act Implementation, 90 FR 45159, 19 September 2025) and received approximately 450 timely comments from banks and credit unions, stablecoin issuers, digital asset exchanges, analytics companies, law firms, trade associations, non-governmental organisations, technology firms, academics and members of the public.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal lists the other GENIUS Act rulemakings that preceded it: FDIC, Approval Requirements for Issuance of Payment Stablecoins by Subsidiaries of FDIC-Supervised Insured Depository Institutions, 90 FR 59409 (19 December 2025); NCUA, Investments in and Licensing of Permitted Payment Stablecoins Issuers, 91 FR 6531 (12 February 2026); OCC, Implementing the GENIUS Act for the Issuance of Stablecoins by Entities Subject to OCC Jurisdiction, 91 FR 10202 (2 March 2026); and Treasury, GENIUS Act Broad-Based Principles for Determining Whether a State-Level Regulatory Regime Is Substantially Similar to the Federal Regulatory Framework, 91 FR 16844 (3 April 2026).",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The customer identification programme obligation is expressly excluded from this proposal and is stated to be the subject of a separate rulemaking.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Although specifically enumerated in the GENIUS Act, this proposed rule does not impose a customer identification program obligation, which is the subject of a separate rulemaking."
+  },
+  {
+   "fact": "That separate rulemaking was later published: 'Permitted Payment Stablecoin Issuer Customer Identification Program', a joint proposed rule by FinCEN with the OCC, the Federal Reserve Board, the FDIC and the NCUA, 91 FR 37234, published 22 June 2026, RIN 1506-AB74, with comments due 21 August 2026.",
+   "url": "https://www.federalregister.gov/api/v1/documents/2026-12460.json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "As of 16 September 2026 the Federal Register's docket search for Docket FINCEN-2026-0100 returns exactly one document - the 10 April 2026 proposed rule. No final rule, correction, extension or reopening has been published in that docket.",
+   "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bdocket_id%5D=FINCEN-2026-0100",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Between 1 January 2015 and 21 November 2025 FinCEN received approximately 55,000 suspicious activity reports that referenced one or more specific stablecoins in the narrative, plus approximately 8,400 reports containing a general reference to the term 'stablecoin'. Over the same period OFAC received approximately 5,800 reports on blocked property and 3,000 reports on rejected transactions referencing one or more specific stablecoins, plus about six with a general reference.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal states the U.S. government has linked stablecoins to scammers and fraudsters, DPRK information technology workers and cybercriminal groups and related money laundering networks, drug traffickers, terrorist groups, and sanctions evasion and money laundering networks.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal quotes the Financial Action Task Force's June 2025 targeted update as saying that 'estimates suggest that a majority of all on-chain illicit activity is now transacted in stablecoins'. This is an estimate quoted by Treasury, not a Treasury measurement.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": "[e]stimates suggest that a majority of all on-chain illicit activity is now transacted in stablecoins"
+  },
+  {
+   "fact": "FinCEN and OFAC anticipate the proposed rule could apply to an average of approximately 50 PPSIs in each of the first three years the GENIUS Act is effective, of which roughly 60 percent would be subsidiaries of insured depository institutions and 40 percent other PPSIs. Summing the OCC, FDIC and NCUA projections yields up to 42 new PPSIs initially registering as entities affiliated with insured depository institutions. The agencies stress this is a best-efforts projection given limited information and ask for data to improve it.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "FinCEN and OFAC estimate the total incremental cost of the proposed rule for PPSIs at approximately $1.8 million in the first year (about $24,983 per PPSI that is a subsidiary of an insured depository institution and about $52,453 per non-subsidiary PPSI) and about $1 million a year thereafter (about $10,249 and $36,760 respectively). For smaller PPSIs the first-year figures are about $13,737 and $22,987. Up to 19 of the 50 potential PPSIs could be small entities.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The agencies estimate the cost to government at $1.7 million in the year before the final rule's effective date, $5.9 million in the first year and $2.9 million each year after, and the cost to customers at about $1.2 million a year, for total quantified economic costs averaging approximately $6.5 million a year once a final rule takes effect.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": true,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposed rule has been determined to be a 'significant regulatory action' under section 3(f) of Executive Order 12866, and FinCEN and OFAC included an Initial Regulatory Flexibility Analysis because the rule may have a significant economic impact on a substantial number of certain types of small entities. Under the Unfunded Mandates Reform Act they conclude it is unlikely to produce novel annual expenditure of more than $193 million by State, local and Tribal governments or by the private sector.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "The proposal notes that FinCEN issued an order on 13 February 2026 granting covered financial institutions exceptive relief from the requirement in 31 CFR 1010.230(b) to identify and verify beneficial owners of legal entity customers at each new account opening.",
+   "url": "https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "The document is a PROPOSAL. It does not say that any of these obligations are in force. Nothing in it takes effect on 10 April 2026; the agencies propose that final rules would become effective 12 months after the final rules are issued, and as of 16 September 2026 no final rule exists in Docket FINCEN-2026-0100.",
+  "It does not name a single permitted payment stablecoin issuer. The document says expressly that because the GENIUS Act framework is not yet in place, 'it is not yet determined which specific stablecoins will be payment stablecoins and which specific issuers will be PPSIs.' Do not name any company as a PPSI.",
+  "It does not say when a final rule will be issued, nor whether the 9 June 2026 comment deadline was extended, nor what the comments said. No timetable for finalisation appears anywhere in the document.",
+  "It does not impose a customer identification programme requirement. That obligation is expressly carved out and left to a separate rulemaking (later published at 91 FR 37234 on 22 June 2026).",
+  "It does not set reserve, capital, liquidity or licensing requirements for stablecoin issuers. The document says the GENIUS Act tasks those to the OCC, the Federal Reserve Board, the FDIC, the NCUA and State payment stablecoin regulators. Those are the subject of the sibling articles C6, C8 and C9, not this one.",
+  "It does not require PPSIs to monitor secondary market transactions as part of an AML/CFT programme, and it does not require SARs on secondary market transactions.",
+  "It does not prescribe HOW the block/freeze/reject or lawful-order technical capability must be built, and it does not require any particular sanctions screening tool, vendor or software.",
+  "It does not define 'burn' or 'account' for lawful-order purposes in regulatory text; FinCEN only explains its current understanding and asks for comment.",
+  "It does not set a cadence for the routine sanctions risk updates to senior management, nor prescribe resourcing levels for a sanctions compliance programme.",
+  "It does not require CTRs for payment stablecoin transactions: 'currency' excludes payment stablecoins, so the $10,000 CTR threshold bites only on physical cash.",
+  "It does not say anything about consumers, retail holders or how an ordinary person should behave. Every obligation in the proposal falls on the issuer, not on a holder of a stablecoin.",
+  "It says nothing about Taiwan, Taiwanese users, or any non-U.S. regulator's treatment of the same issuers. Do not extrapolate.",
+  "It does not state a price, exchange rate, yield, market capitalisation or trading volume as a fact the reader should act on, and crypto.md forbids reproducing the market-size figures that do appear in the economic analysis.",
+  "It does not say that PPSIs are newly subject to U.S. sanctions. The document says PPSIs will be U.S. persons and therefore were already subject to the same sanctions obligations as any other U.S. person; what is new is the explicit statutory mandate to maintain an effective sanctions COMPLIANCE PROGRAMME.",
+  "The proposal does not say the comment deadline is 10 June 2026. The DATES section and the fact sheet both say 9 June; only mirrored regulations.gov metadata carried 10 June, and regulations.gov could not be reached to confirm."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The regulations.gov docket FINCEN-2026-0100 had received 89 comments, with a comment end date of 10 June 2026.",
+   "seen_where": "The 'dockets' block mirrored inside the Federal Register API record for FR Doc 2026-06963 (https://www.federalregister.gov/api/v1/documents/2026-06963.json), whose own updated_at is 2026-06-18.",
+   "why_excluded": "regulations.gov itself returns HTTP 403 to this container, so the count could not be confirmed at first hand and may be stale; it also contradicts the 9 June deadline printed in the rule. Do not write a comment count."
+  },
+  {
+   "claim": "The NPRM's Executive Order number for 'Fighting Overcriminalization in Federal Regulations'.",
+   "seen_where": "Section XI of the NPRM text: the headings and body say 'Executive Order 14294', but footnote 320 cites 'E.O. 14292, Fighting Overcriminalization in Federal Regulations, 90 FR 20363, 20364 (May 14, 2025)'.",
+   "why_excluded": "The document is internally inconsistent and I did not fetch the Executive Order itself, so I will not assert which number is correct. Write the substance (willfulness mens rea, DOJ consultation) without the E.O. number, or verify the number first."
+  },
+  {
+   "claim": "Market-size figures for stablecoins that appear inside the NPRM's regulatory impact analysis (market capitalisation shares, dollar totals in circulation).",
+   "seen_where": "Section XII.A of the NPRM and footnote 33 (the White House E.O. 14178 report's statement about the share of outstanding stablecoin value pegged to the U.S. dollar).",
+   "why_excluded": "crypto.md forbids prices, market capitalisation, trading volume and fund flows even when they sit inside a regulatory document."
+  },
+  {
+   "claim": "Dollar amounts from the enforcement and forfeiture cases cited in the NPRM's footnotes (for example seizures of approximately $225.3 million, $36.9 million, $7.74M, $2 million, and 'hundreds of millions of dollars' worth of stablecoins').",
+   "seen_where": "Footnotes 48 to 52 and 207 of the NPRM, which cite DOJ press releases and court filings.",
+   "why_excluded": "These are DOJ court and press-release figures reached only through the NPRM's footnotes; I did not fetch justice.gov. The general statement that law enforcement has used lawful orders to seize hundreds of millions of dollars' worth of stablecoins is recorded as a FinCEN statement, but the individual case figures should not be written as facts without fetching the DOJ source."
+  },
+  {
+   "claim": "Third-party and vendor material cited in the NPRM's footnotes, including a TRM Labs blog post and the FATF stablecoin report.",
+   "seen_where": "Hyperlinks embedded in the govinfo PDF of the NPRM.",
+   "why_excluded": "Analytics firms are on crypto.md's never-a-source list, and the FATF report was not fetched; the one FATF sentence recorded above is recorded as a quotation the NPRM makes, not as a verified FATF finding."
+  },
+  {
+   "claim": "That the OCC proposed rule of 24 June 2026 (91 FR 37840, 'Permitted Payment Stablecoin Issuer Anti-Money Laundering/Countering the Financing of Terrorism and ...') and the FDIC proposed rule of 5 June 2026 (91 FR 34171, 'Bank Secrecy Act and Sanctions Compliance Standards for FDIC-Supervised Permitted Payment Stablecoin ...') build on this NPRM.",
+   "seen_where": "A Federal Register API full-text search for 'permitted payment stablecoin issuer' with publication_date >= 2026-04-11.",
+   "why_excluded": "Only the titles, dates and citations came back from the search; I did not fetch either document, so their content and their relationship to this NPRM are unverified. Mention them only as 'later proposed rules with these titles exist' if at all, or leave them out."
+  },
+  {
+   "claim": "An exact public-inspection (pre-publication filing) timestamp for the NPRM.",
+   "seen_where": "The public_inspection_pdf_url in the Federal Register API record carries a cache-busting query string ?1775738715.",
+   "why_excluded": "That is a cache buster, not a published timestamp. Decoding it would be a guess. The announcement date is established instead from the Treasury and FinCEN releases, both dated 8 April 2026."
+  }
+ ],
+ "must_not_write": [
+  "Never write any of these obligations in the present tense as if in force. Every single one is proposed. Use wording such as 'the draft would require' throughout; the agencies' own text is uniformly 'would require'.",
+  "No prices, price movements, market capitalisation, trading volume, fund flows, yields, staking returns or airdrops - crypto.md forbids them even when they sit inside a Federal Register document. In particular do not reproduce the market-size or market-share figures in section XII of the NPRM, nor footnote 33's statement about the share of outstanding stablecoin value pegged to the U.S. dollar.",
+  "Do not name any stablecoin, issuer, exchange, wallet or custodian as something a reader could hold, use or choose. No company is identified as a PPSI in the document, and the document says it is not yet determined which issuers will be PPSIs.",
+  "Do not turn 'issuers can freeze and burn stablecoins' into advice, reassurance or alarm about whether a reader's holdings are safe. State it as a capability the draft would require issuers to have, and note it is exercised only when another law or a lawful order requires it.",
+  "Do not write that the rule makes stablecoins legal, regulated or safe in the United States. This proposal is only about AML/CFT and sanctions programmes; licensing, reserves and capital sit with other agencies in other rulemakings.",
+  "Do not say the comment period is open. It closed on 9 June 2026, more than three months before the check date.",
+  "Do not write a comment count for the docket, and do not characterise what commenters said about this NPRM. Only the ANPRM comment count (approximately 450) is stated in the document, and that was about the earlier advance notice.",
+  "Do not describe the FDIC, NCUA or OCC prudential rules in this article - those are C6, C8 and C9.",
+  "Do not state the Executive Order number for the overcriminalization statement; the document contradicts itself (14294 in the text, 14292 in the footnote) and it was not independently verified.",
+  "Do not write 'we tested', 'we checked with the regulator' or anything implying first-hand contact. The site does no testing.",
+  "Do not give tax, legal, compliance or investment advice, and do not tell a business whether it needs to register as a PPSI.",
+  "Taiwanese terminology: in the regulatory context write 虛擬資產, in general context 加密貨幣, per crypto.md. Traditional characters only, no simplified."
+ ],
+ "overlaps_existing_article": "apps/api/app/guides/content/ currently contains no crypto-news-* pack at all (the only finance packs are finance-glossary-50-terms.json and personal-finance-first-steps.json), so there is no published article to duplicate. The real overlap is inside batch 4. C6 crypto-news-genius-act-occ-20260302 (OCC, 91 FR 10202) owns licensing, reserve assets, redemption and prudential reporting. C8 crypto-news-fdic-genius-act-20260410 (FDIC, 91 FR 18582's same-day sibling 91 FR ... FR Doc 2026-06974) and C9 crypto-news-ncua-genius-act-20260518 (NCUA, 91 FR 28956) own their respective supervisory regimes. THIS article owns exactly one thing: the Treasury-level AML/CFT and sanctions compliance layer - FinCEN's proposed 31 CFR part 1033 plus its amendments to part 1010, and OFAC's proposed new 31 CFR part 502. Division rule: this article may say in one sentence that reserves, capital and licensing are handled by the OCC, FDIC and NCUA in separate proposals, and link, but must not explain them. Conversely C6/C8/C9 should say only that AML and sanctions are handled here. C1 crypto-news-taiwan-vasp-act-20260630 (Taiwan's Virtual Asset Service Act) is the natural comparative link for a Taiwanese reader - one sentence and a link, not an explanation. Sibling note recorded by the C6 research agent: FinCEN's supervision-and-enforcement framework and the AML carve-out were expressly deferred by the OCC proposal to this rulemaking, so this article is where that promise is cashed.",
+ "corrections_to_candidate_list": [
+  "candidates-crypto.md's table row for C7 gives only the publication date 2026-04-10 and comment close 2026-06-09. Both are correct, but the row omits that Treasury and FinCEN announced the proposal on 2026-04-08; the slug date 20260410 is the Federal Register publication date, not the announcement date. Keep the slug, but the article's first sentence should be written around 2026-04-10 (publication and start of the comment clock) and mention the 4/8 announcement.",
+  "candidates-crypto.md lists the agency column for C7 as 'Treasury / OFAC / FinCEN'. The document's own AGENCY line orders them 'Financial Crimes Enforcement Network, Office of Foreign Assets Control, Treasury' - i.e. two Treasury bureaus issuing jointly, not three separate agencies. Do not write 'three agencies'.",
+  "candidates-crypto.md says the four GENIUS Act rules could be merged into one article. C7 should not be merged: it is the only one of the four about AML/CFT and sanctions, it has its own docket and RIN, and it creates an entirely new OFAC CFR part.",
+  "The candidate list does not record that the customer identification programme piece was deliberately left out of this NPRM and published separately on 2026-06-22 as 91 FR 37234 (RIN 1506-AB74, comments closed 2026-08-21). Worth adding to the list so a later assignment does not treat it as part of C7.",
+  "The candidate list does not record that a Federal Register docket search for FINCEN-2026-0100 as of 2026-09-16 returns exactly one document, i.e. no final rule yet. That is the single most important status fact for this article and belongs in the list."
+ ],
+ "editorial_brief": "讀者：台灣使用者中會用到跨境支付、海外平台或穩定幣計價服務的人，以及想知道「發美元穩定幣的公司到底被要求做哪些防洗錢與制裁法遵」的人。這群人不會去讀聯邦公報，也常分不清「草案」與「生效」。\n\n角度：這篇回答一個問題——美國財政部底下的 FinCEN 與 OFAC 在 2026 年 4 月 10 日共同提出的草案，打算要求一家「經核准的支付型穩定幣發行人」（PPSI）做到什麼？答案有四層：第一，把 PPSI 直接寫進《銀行保密法》的「金融機構」定義（援引 31 U.S.C. 5312(a)(2)(Y)），並把它從現行的 MSB 框架拉出來；第二，完整的 AML/CFT 計畫四大要件（內控與風險評估、獨立稽核、指定法遵主管、持續教育訓練），加上書面化與董事會核准；第三，報告與紀錄（可疑交易報告門檻 5,000 美元、保存五年、3,000 美元以上的紀錄規則與旅行規則、314(a) 與 314(b) 資訊分享）；第四，OFAC 新增的 31 CFR part 502，五個制裁法遵要素與每日 10 萬美元的罰款。\n\n全篇最重要的一件事：這是草案。意見期已於 2026 年 6 月 9 日截止，到查核日 2026 年 9 月 16 日為止，該案號（FINCEN-2026-0100）與 RIN 1506-AB73 在聯邦公報上只有這一份文件，沒有定案規則。而且機關自己寫明，定案規則要在發布後 12 個月才生效。每一個「要求」都必須帶「草案擬」。\n\n五個小節的建議切法：一、這份文件是什麼（草案、兩個機關、六項法定義務、意見期、發布日與刊登日的差別）；二、誰管誰、誰查誰（FinCEN 負責 BSA、OFAC 負責制裁；OCC、聯準會、FDIC、NCUA 受委檢查，其他交給國稅局；100 億美元的州級門檻）——本節結尾放表格；三、AML/CFT 計畫要求一項一項說（風險評估、持續審查、獨立測試、法遵主管必須在美國且不得有特定重罪前科、書面與核准）——本節結尾放圖解；四、技術能力與報告（block/freeze/reject、lawful order 的 seize/freeze/burn、這兩項是唯一延伸到次級市場的義務；5,000 美元 SAR、3,000 美元紀錄與旅行規則；現金報告門檻 1 萬美元但不包含穩定幣本身）；五、制裁法遵與還沒定的部分（OFAC 五要素、SDN 名單上的數位貨幣位址篩檢、完全負責任制、每日 10 萬美元罰款；客戶身分辨識另案、定案時間未定）。\n\n生活情境如果要寫，必須標明是編輯設計的例子，而且只能用來解釋制度（例如「次級市場」指的是什麼），不能變成使用建議。免責 callout 照 crypto.md 逐字帶「不是投資建議」六個字，查核日寫 2026-09-16。\n\n刻意不談：任何幣價、市值、流通量與資金流；哪一種穩定幣比較安全、該不該持有；OCC、FDIC、NCUA 三案的準備金與許可內容（那是 C6、C8、C9）；客戶身分辨識計畫的內容（那是 2026-06-22 的另一份草案）；台灣《虛擬資產服務法》的細節（那是 C1，這裡只用一句話做制度對照並連結）。",
+ "hero_label": "草案，尚未生效",
+ "diagram": {
+  "title": "草案要求發行人做四件事",
+  "caption": "資料來源：FinCEN 與 OFAC 聯合草案（91 FR 18582），查核日 2026 年 9 月 16 日。",
+  "nodes": [
+   [
+    "列為金融機構",
+    "適用銀行保密法"
+   ],
+   [
+    "防洗錢計畫",
+    "四大要件加書面核准"
+   ],
+   [
+    "報告與紀錄",
+    "五千美元、三千美元"
+   ],
+   [
+    "制裁法遵",
+    "五要素、每日十萬"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "slug": "tech-news-taiwan-matsu-cable-20260623",
+ "verdict": "needs_fixes",
+ "confirmed_count": 38,
+ "source_reachability": "All fetched myself on 2026-09-16 with curl -A \"Mokaair-editorial\"; bodies inspected, not just status codes. The 4 declared sources: https://moda.gov.tw/press/press-releases/19976 -> 200, 90,686 bytes, full server-rendered body, title \"數發部積極推動臺馬四號海纜及馬祖4鄉微波站建設 強化離島通訊韌性\", 建立日期/更新日期 both 2026-06-23. https://moda.gov.tw/press/press-releases/19778 -> 200, 84,980 bytes, 建立日期 2026-05-26. https://moda.gov.tw/press/press-releases/15082 -> 200, 86,197 bytes, 建立日期 2025-01-22. https://moda.gov.tw/major-policies/subseacable/fault/1749 -> 200, 97,510 bytes, table is server-rendered, page self-dates 日期：115/9/16, 建立日期 2025-12-09, 更新日期 2026-09-16. Other cited URLs: 19582 200 (2026-04-29), 19338 200 (2026-04-01), 15210 200 (2025-02-17), 19392 200 (2026-04-07), /subseacable/1747 200 (no page-level date at all - the only 更新日期 is the site footer written by JS via <span id=\"spanDateNow\">, so the researcher's characterisation is correct), /subseacable/maintenance/1751 200 (日期：115/6/22, 更新日期 2026-06-22), /subseacable/report/1805 200 (建立 2026-04-07, 更新 2026-09-02), /operations/312 200 (更新 2026-05-28), /programs/6613 200 (更新 2026-02-13), /programs/17418 200 but 更新日期 is 2025-10-02, NOT 2026. https://www.ey.gov.tw/Page/88F151FFCE5C741E/2fb5a49c-2e54-4a3d-89b1-643ef416f209 -> 200, 122,895 bytes, 日期：115-06-23, 資料來源：數位發展部, paragraphs verbatim identical to moda 19976 (photo captions absent). https://www.cht.com.tw/zh-tw/home/cht/messages/2026/msg-260726-172559 -> 200, title 台馬第二海纜(TDM2)障礙說明, dated 2026/07/26; this URL is hyperlinked from moda fault/1749, so it was not guessed. https://www.cht.com.tw/en/home/cht/messages/2026/0123-1900 -> 200, \"Chunghwa Telecom Reports 2026 Guidance\", dated 2026/01/23. Supporting channels: https://www-api.moda.gov.tw/File/Get/moda/zh-tw/kj9vSvBw5wUeqla -> 200, 426,921 bytes, application/pdf, 40 pages, ModDate D:20260326184906+08'00' (link present in /1805's HTML). https://www-api.moda.gov.tw/OpenData/csv/9 -> 200, text/csv, 392 rows, 2022-08-26 to 2026-09-16. Blocks confirmed: https://www.ncc.gov.tw/ -> 403 Cloudflare; https://moda.gov.tw/robots.txt -> 404. Block NOT confirmed: https://www.cht.com.tw/robots.txt -> 200 and names https://www.cht.com.tw/home/eshop/sitemap/sitemap.xml -> 200, 721,791 bytes, 6,826 <loc> entries including 386 2026 message URLs, so CHT's announcement list IS obtainable. Verbatim audit: 43 of 44 recorded verbatim_quote strings matched the fetched body exactly after whitespace normalisation; the one miss is a researcher-assembled string, not a fabricated fact.",
+ "refuted": [
+  {
+   "fact": "sourcing_notes: the 114年度 cable report PDF downloaded but could not be read - 'pypdf 也因 cryptography 的 _cffi_backend 匯入失敗而不可用，無法抽文字，報告數字一律改引 2026-04-07 新聞稿'",
+   "why": "Refuted. I fetched the same URL (https://www-api.moda.gov.tw/File/Get/moda/zh-tw/kj9vSvBw5wUeqla, 200, 40 pages) and pypdf imported and extracted 24,883 characters with no error. The report is fully readable in this container and carries materially more first-party detail than the press release, so the whole 'report numbers unavailable' premise of the research record is wrong."
+  },
+  {
+   "fact": "not_said: '新聞稿用的是「海纜七法」這個統稱，沒有逐一列出七部法律名稱與條號，不要自行補'",
+   "why": "True of press release 19392 but refuted as a gap. The official report - linked from the /1805 page the researcher already cited - states 「海纜七法」內容涵蓋電信、電業、天然氣、自來水、氣象、商港及船舶法；業經立法院於114年12月三讀通過，並於115/01/05經總統公布實施, and separately 電信管理法第72條、第72條之1修正案於112/06/28經總統公布實施. Names, reading date and the exact promulgation date are officially available; the instruction not to name them is over-restrictive."
+  },
+  {
+   "fact": "sourcing_notes: 'https://www.cht.com.tw/zh-tw/home/cht/messages 列表 200 但前端渲染…等於取不到清單'",
+   "why": "Refuted. cht.com.tw/robots.txt (200) names https://www.cht.com.tw/home/eshop/sitemap/sitemap.xml, which returns 200 with 6,826 URLs including every 2026 message page. Through it I reached CHT's own notices for 2026-03-07 TDM2, 2026-03-31 and 2026-04-29 TM3 (東引至北竿區段), 2026-05-25 TDM2 修復, and 2026-06-05 TM3-D (南竿-北竿區段)."
+  },
+  {
+   "fact": "sources[] note: 15082 supplies '臺馬四號的補助計畫名稱' (普及偏鄉寬頻接取環境計畫)",
+   "why": "Over-read and contradicted by two other official texts. 15082 names 普及偏鄉寬頻接取環境計畫 for the 12.6 Gbps microwave expansion, then says 『並補助中華電信建置臺馬4號海纜』 without repeating the programme. 19976 says TM4 is funded 『透過前瞻預算』; the 114年度報告 says 『本部自113年起藉由前瞻計畫預算補助海纜業者新建臺馬4號海纜』. Do not name 普及偏鄉寬頻接取環境計畫 as TM4's funding programme."
+  },
+  {
+   "fact": "programs/17418 treated as current 2026 policy material in the swap list",
+   "why": "Its 更新日期 is 2025-10-02, not 2026. The researcher dated /6613 correctly (2026-02-13) but gave no date for /17418; any 'as of 2026' framing built on it would be wrong."
+  }
+ ],
+ "unsupported": [
+  {
+   "fact": "Gloss on fact 2: '官方寫的是「鄉間」微波通訊系統，指馬祖四鄉之間的微波，和台灣本島—馬祖之間的微波備援是不同的東西'",
+   "why": "The researcher's reading, not the source. 19976 says 『馬祖東引、北竿、南竿與莒光鄉間微波通訊系統』 and 『每個鄉都至少有2組微波系統可對外聯繫』; 對外聯繫 does not restrict the links to inter-township. moda's own 114年度報告 describes the 臺馬間 microwave (12.6 Gbps since 113/01/15) as fully backing up Taiwan-Matsu traffic. The official text never distinguishes the two systems; the article must not assert the distinction."
+  },
+  {
+   "fact": "'2026-04-29 全斷的推定原因是船難殘骸移動' recorded with is_vendor_claim: false",
+   "why": "Mis-classified vendor claim. 19582 attributes it explicitly to Chunghwa Telecom: 『經該公司初步推估，故障原因疑似海象不佳，導致原擱淺船隻殘骸移動』. It is a carrier's preliminary estimate relayed by moda and must be written as 中華電信初步推估, never as a determined cause."
+  },
+  {
+   "fact": "15210 fact (2025-02-16 12:49 全斷於新北市外海；臺馬三號 1月15日已全斷) paired with the quote about 芯線老化 / 113年10月3日、114年1月22日通報",
+   "why": "Quote does not contain the asserted numbers. They sit in other sentences of the same page (『114年2月16日中午12時49分，位於我國新北市外海的臺馬二號海纜發生全斷障礙』; 『臺馬三號海纜在1月15日已經發生全斷障礙』), so the claim is verifiable but its recorded traceability is broken. Re-pair the quote."
+  },
+  {
+   "fact": "19392 fact '114 年 7 起障礙事件中有 3 起為船錨勾損（42.9%）' paired with the 38.3% four-year-average quote",
+   "why": "Two defects. (a) Quote/fact mismatch: the 42.9% figure comes from 『114年7起障礙事件中有3起「船錨勾損」，占比上升至42.9%，且有2起肇因為外籍「權宜輪」（FOC）非法下錨』. (b) Material omission: the 7 起 is scoped to 近岸（24海浬內）國內及國際海纜, confirmed by 表7 of the report. Unqualified it reads as Taiwan's total 2025 cable faults, which the same release contradicts (6 international cables damaged beyond 24 nm by the year-end earthquake)."
+  },
+  {
+   "fact": "report/1805 fact (建立日期 2026-04-07、更新日期 2026-09-02、中英文 PDF) paired with the quote 『其重要性如同我們的「數位生命線」』",
+   "why": "The quote supports none of the asserted facts. The dates and the two PDF links are on the page and I confirmed them, but the recorded quote must be replaced."
+  },
+  {
+   "fact": "/1747 國內海纜清單 verbatim_quote '1 臺金二號海纜 TK2 / 2 臺馬一號海纜 TM1-D / …'",
+   "why": "Not verbatim - the ' / ' separators are the researcher's construction and appear nowhere on the page. The underlying data is right (TK2, TM1-D, TDM2, TM3, TP2, TP3, PK1, PK3, LLV1, LLU2; TM4 absent). Re-label as a table summary, not a quote."
+  },
+  {
+   "fact": "19778 fact '地點距沙崙約 23.6 公里'",
+   "why": "The source has no 約 here: 『於距沙崙23.6公里處發生全斷障礙』 (it does use 約 for the 180 公里 fault). Drop 約, and note the source writes 沙崙, not 淡水沙崙, for the 2026-03-07 fault."
+  },
+  {
+   "fact": "19392 fact repeating '均經司法機關判刑確定' as background",
+   "why": "The press release says 判刑確定; moda's own 114年度報告 describes the same two cases as first-instance sentences (臺南地院 114年6月 3年有期徒刑; 福建連江地院 114/12/04 3個月得易科罰金) and says 迄115年2月止已移送4案、2起遭判刑, without the word 確定. Attribute moda's wording; do not assert finality."
+  },
+  {
+   "fact": "Structural: 44 facts hang on about 17 distinct URLs while sources[] holds at most 4",
+   "why": "As submitted, most quantitative material (38.3%, 42.9%, 19 組衛星頻率, 海纜七法, 1500 人, 有線電視無法走微波, 16/10 條海纜, 核定補助1案, NT$4.07bn) traces to no chosen source, which BRIEF.md forbids ('每一個日期、價格、百分比…都要能指到一條 source 的原文'). The writer must pick one fact set that four sources actually cover rather than rely on the after-the-fact swap list."
+  }
+ ],
+ "additional_findings": [
+  "moda press release 16356 (2025-06-03, 部長就任週年), present in moda's own open-data CSV, states 『補助臺馬4號海纜（預計115/6完工）與離島微波建置』 - a second official statement of the June-2026 target, plus 『已在政府重要節點布建700個非同步衛星站點』. Missed by the researcher.",
+  "The 114年度 report states 『本部自113年起藉由前瞻計畫預算補助海纜業者新建臺馬4號海纜，114年補助其新建臺澎4號及澎金4號海纜，均預計於115年完工』 - TM4 is one of three island cables due in 2026, with an official funding start year (113) and instrument (前瞻計畫預算).",
+  "The same report dates the Taiwan-Matsu microwave capacity: 『擴增臺馬間微波通訊頻寬於113/01/15已大幅擴容為12.6Gbps，可完全備援臺馬間全部通訊需求』. 15082 gives the 12.6 Gbps figure without the 2024-01-15 date.",
+  "The same report says 『112~113年，全國及離島地區設置770個非同步軌道衛星終端設備』 and elsewhere 『770個非同步衛星（OneWeb、SES）站點』. Three official satellite counts now exist - 9 (連江, 15082), 700 (16356), 770 (report). Do not mix them; state the scope with each.",
+  "The same report gives the two criminal cases in full: TP3 斷纜案 (114/02/25) 多哥共和國籍貨船「宏泰58號」中國籍王姓船長, 臺南地方法院 114年6月判 3 年有期徒刑 (首例); TDM2 斷纜案 (114/10/07) 中國籍漁船「閩連漁60138」吳姓船長, 福建連江地方法院 114/12/04 判 3 個月得易科罰金; 迄115年2月止已移送4案. Note the TDM2 case date 114/10/07 is the same fault still listed as unrepaired on the 2026-09-16 fault table.",
+  "The report's 表1 lists 15 international cables 『資料截至115年2月26日止』 and does NOT include TPU 臺美菲海纜, which is item 16 on the live /1747 page. The 15-vs-16 difference the researcher called unexplained is a dated-snapshot vs live-page difference traceable to one added cable; it should not be written up as an official inconsistency.",
+  "Chunghwa Telecom's own notices (reached via the official sitemap) add detail the moda releases omit: 2026-03-07 TDM2 『訊務已於第一時間疏轉至台馬第三海纜』 (moved to TM3, not microwave); 2026-05-25 『已於05月25日完成部分芯線搶通並恢復雙海纜運作』 - a PARTIAL fibre restoration, consistent with two TDM2 faults still open on 9/16, so moda's headline 『海纜修復』 must not be paraphrased as a full repair; 2026-04-29 TM3 東引至北竿區段 『訊務已於第一時間全數切換疏轉至微波電路』; 2026-06-05 TM3-D 南竿-北竿區段.",
+  "moda's open-data CSV (392 rows, newest 2026-09-16) independently supports the researcher's key negative: after 2026-06-23 there is no moda release announcing TM4 completion or service entry, and the only 2026 cable releases are 19338, 19392, 19582, 19778, 19976. CHT's 2026-06-23 messages are unrelated (MOD content, CSR, an award). The 2026-03-07 TDM2 break never had its own moda release - it surfaced only in the 5/26 release and CHT's own notice.",
+  "event_date 2026-06-23 is defensible (press-release 建立日期, the EY reprint's 日期：115-06-23, and the CSV 發布日期 2026-06-23T15:20:31 all agree), but the inspection the release reports took place 2026-06-16 to 06-17. The article's opening sentence must not date the inspection to 6/23.",
+  "The research record uses a not_said field where BRIEF.md's research-record schema calls for unverified_or_excluded, and the not_said list arrived truncated mid-sentence at its final item ('6/23 新聞稿裡「日前臺馬二號、三號海纜在東引地區同時...'), so that item could not be checked. Full audit written to /tmp/claude-0/-home-user-travel-scanner/7f63d65a-c509-5a16-8b56-4ffddc3bb57b/scratchpad/research/tech-news-taiwan-matsu-cable-20260623.json"
+ ]
+}

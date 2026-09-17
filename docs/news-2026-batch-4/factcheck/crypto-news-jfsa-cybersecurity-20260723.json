@@ -1,0 +1,78 @@
+{
+ "slug": "crypto-news-jfsa-cybersecurity-20260723",
+ "verdict": "needs_fixes",
+ "confirmed_count": 75,
+ "source_reachability": "All four declared sources fetched by me with curl -A \"Mokaair-editorial\" on 2026-09-16, no personal data in any request.\n1) https://www.fsa.go.jp/en/policy/bgin/innovationtop.html -> HTTP 200, 22,354 bytes, text/html, real FSA page (h1 \"Financial Services Agency's Efforts to Promote Innovation\", date block \"March 17, 2023\" + \"(Updated July 23, 2026)\").\n2) https://www.fsa.go.jp/policy/bgin/ResearchPaper_dtc_20260630_en.pdf -> HTTP 200, 3,337,715 bytes, application/pdf, 125 pages, /Company=Deloitte, CreationDate D:20260721113802+09'00', ModDate D:20260721114825+09'00'.\n3) https://www.fsa.go.jp/news/r7/sonota/20260403/20260403.html -> HTTP 200, 38,261 bytes, text/html, header 令和８年４月３日 + 令和８年７月23日更新.\n4) https://www.fsa.go.jp/news/r7/sonota/20260403/03.pdf -> HTTP 200, 258,085 bytes, application/pdf, 9 PDF pages (unnumbered cover + printed pages 1-8), CreationDate D:20260706150955+09'00', ModDate D:20260722091407+09'00'.\nOther URLs cited inside verified_facts, also fetched by me: /en/news/index.html 200 (31,559 B); /policy/bgin/innovationtop.html 200 (42,889 B); ResearchPaper_dtc_20260630_ja.pdf 200 (3,368,705 B, 125 p); ResearchPaper_dtc_20260630_ja_summary.pdf 200 (1,311,887 B, 9 p, ModDate D:20260723085213+09'00'); /news/r7/sonota/20260403/01.pdf 200 (760,799 B, 7 p); /news/r7/sonota/20260403/04.pdf 200 (120,695 B, 1 p); /news/r7/sonota/20260210-2/20260210-2.html 200 (38,360 B); /singi/singi_kinyu/tosin/20251210.html 200 (36,224 B); /news/r8/sonota/20260806/20260806.html 200 (36,973 B); /news/index.html 200 (56,901 B); https://blog.ethereum.org/en/2026/05/12/clear-signing-announcement 200 (164,444 B, byline \"Posted by Hester Bruikman on May 12, 2026\"); https://blog.ethereum.org/en/feed.xml 200 (527,621 B, 639 <item>, newest pubDate Wed, 09 Sep 2026).\nNo 403, no challenge page, no \"Access Denied\" body anywhere. Every source is first-party (FSA / Ethereum Foundation); no news outlet, aggregator, law-firm blog or search snippet is used as a source anywhere in the record.",
+ "refuted": [
+  {
+   "fact": "verified_facts[0] opens with 「金管會日本（金融庁, Financial Services Agency）英文新聞索引…」",
+   "why": "Wrong institution name. 金管會 is Taiwan's Financial Supervisory Commission; the page described is Japan's 金融庁. The substance is right — I read line 192 of /en/news/index.html: <li><a href=\"/en/policy/bgin/innovationtop.html\">Cybersecurity Issues and Countermeasures in Crypto-Asset-Related Businesses (July 23, 2026)</a></li> — but the label must be corrected to 日本金融廳（金融庁）before a writer copies it. crypto.md keeps 金管會 and 日本 FSA as separate regulators and this article is read in Taiwan."
+  },
+  {
+   "fact": "not_said[9]: 「報告取樣的 10 個個案全部是海外業者與協議…也沒有說日本業者發生過同型事件。」",
+   "why": "First half true of the research report (I grepped rp_en.txt: zero occurrences of 'in Japan', no Japanese victim among the 10 cases). Second half refuted by another source in the same record: 03.pdf p.3 says Japan 'has requested service providers to take measures against the risks of an outflow of cryptoassets and properly manage system risks, as a case of an outflow of cryptoassets deposited by users had actually occurred', and p.4 says 'In light of the occurrence of the large-scale outflow of cryptoassets in the past, the FSA has intensively monitored…' (JA 01.pdf: 「これまでの大規模な流出事案を踏まえ」). As a blanket 官方未說明 this will make the article claim the FSA is silent about domestic incidents when it is not."
+  },
+  {
+   "fact": "not_said[3]: 「2026-07-23 的公布…沒有對業者訂出遵循期限。」",
+   "why": "Overstated. 03.pdf sets dated expectations on operators: 'From Program Year 2026 onward, the FSA will request all cryptoasset exchange service providers to conduct cybersecurity self-assessment (CSSA)' (p.4), 'within 2026, the FSA will conduct TLPT targeting several service providers' (p.8), 'aiming to achieve the participation of all service providers within three years' for Delta Wall (p.8). The correct statement is that there is no new statutory obligation, no penalty and no amended guideline text with an effective date — not that there is no timeline."
+  }
+ ],
+ "unsupported": [
+  {
+   "fact": "verified_facts[7] — English report PDF CreationDate 2026-07-21 11:38 / ModDate 2026-07-21 11:48",
+   "why": "Traceability defect. I confirmed both timestamps myself (rp_en.pdf CreationDate D:20260721113802+09'00', ModDate D:20260721114825+09'00'; ja_summary ModDate D:20260723085213+09'00'), but the fact is attached to the ja_summary URL, which cannot support a claim about the English PDF. Split into two facts with their own URLs. Also omitted: ja_summary CreationDate D:20260722232854+09'00'."
+  },
+  {
+   "fact": "verified_facts[68] — Japanese titles 《令和7年上半期におけるサイバー空間をめぐる脅威の情勢等について》,《内外情勢の回顧と展望（2026）》 and names 警察庁サイバー警察局 / 公安調査庁",
+   "why": "Not on the cited page. 03.pdf note 6 carries only English forms: '\"Status of Threats in Cyberspace in the Upper Half of 2025\" (September 2025), Cyber Police Agency, National Police Agency' and '\"Review and Prospect of Internal and External Situations (2026),\" Public Security Intelligence Agency'. The Japanese titles are in 01.pdf, which is not in sources: 警察庁サイバー警察局「令和７年上半期におけるサイバー空間をめぐる脅威の情勢等について」（令和７年（2025 年）９月）and 公安調査庁「令和８年（2026 年）内外情勢の回顧と展望」. The second real title is 「令和８年（2026年）内外情勢の回顧と展望」, not 「内外情勢の回顧と展望（2026）」."
+  },
+  {
+   "fact": "verified_facts[58] — identifier 'ISO/TR 23576:2020'",
+   "why": "That exact string is nowhere in the cited PDF. The guidelines table on p.70 prints 'ISO/TC 23576:2020' (a typo in the report); 'ISO/TR 23576' without ':2020' appears separately on pp.72-73. The researcher silently merged them. The merged form happens to be the real ISO document, which is exactly the quiet identifier-correction the BRIEF bans."
+  },
+  {
+   "fact": "verified_facts[58] — 'FISC 安全對策基準第 14 版（2026-03-25）' as the single edition",
+   "why": "The report contradicts itself. Table p.69 says '2026.3.25 / Edition 14'; the mapping footnotes pp.72-73 say 'FISC, Standard and Manual for Security Measures for Computer Systems of Financial Institutions (Version 13)' (JA report: 「第13版」). If the article names an edition it must say which part of the report it came from."
+  },
+  {
+   "fact": "verified_facts[11] — 「2017 年度（平成29年度）」",
+   "why": "「平成29年度」 is not on the cited page. rp_ja_sum.pdf p.2 says only 「2017年度より毎年金融庁が実施するブロックチェーン「国際共同研究」プロジェクト」. Arithmetically right but supplied by the researcher, not printed by the source."
+  },
+  {
+   "fact": "verified_facts[29] — 「Clear Signing 需要四個部分」",
+   "why": "The EF post never says 'four'. It says: 'Achieving this requires a shared format for these descriptions (ERC-7730), a registry to store and distribute them, a way to verify that they are accurate, and tools that make it easy for wallets and developers to adopt this approach, alongside a credibly neutral party to support the infrastructure.' The fifth element (EF's 1TS as 'credibly neutral steward of the Clear Signing registry') is dropped."
+  },
+  {
+   "fact": "verified_facts[43] — SwissBorg 「該交易被解碼並在未確認的情況下簽署」",
+   "why": "Matches p.38 ('The tampered transaction was decoded and signed without confirmation') but p.39 of the same PDF says the opposite: 'SwissBorg signers signed and executed transactions received from the tampered API without decoding and verifying them', and lists 'Blind signing' as the vulnerability. Recording one side only will produce a sentence the report contradicts two pages later."
+  },
+  {
+   "fact": "verified_facts[50] — 「鑄出約 116,500 枚 rsETH」",
+   "why": "The case-study timeline (p.58) says 'approximately 116,500 rsETH'; the 2026 incident table (p.32) for the same event says 'approximately 116,000 tokens'. Same report, two figures. Pick one and name the page, or drop the number."
+  },
+  {
+   "fact": "verified_facts[64] 「正文共 8 頁」 vs sourcing_notes 「03.pdf（英文全文，9 頁）」",
+   "why": "Both are in the record and disagree on their face. I measured: 9 PDF pages, unnumbered cover, printed body 1-8. Not an error but it will confuse the writer; state it as 封面外正文 8 頁（PDF 共 9 頁）."
+  },
+  {
+   "fact": "verified_facts[75] — 「2025 年度區塊鏈「國際共同研究」的結果」 cited to 03.pdf",
+   "why": "03.pdf calls it the 'Blockchain Multilateral Joint Research Project' (multilateral, not international) throughout, including 別紙４. 「国際共同研究」 is the Japanese form, found in 01.pdf and rp_ja_sum.pdf. If the article uses 「國際共同研究」 the citation must point at a Japanese page."
+  }
+ ],
+ "additional_findings": [
+  "CONFLICT between two official documents, unflagged: 03.pdf 別紙４ says the Blockchain Multilateral Joint Research Project conducts 'analytical surveys of past cyberattacks against cryptoasset exchange service providers inside and outside Japan', and JA 01.pdf p.6 says 「国内外で発生した代表的なサイバー攻撃事例を取り上げ」 — while the report's own JA summary says 「海外の代表的な流出事例を選定し」 and the English report has zero Japanese cases. The writer must not put 「國內外案例」 and 「全部是海外案例」 in the same article without saying which document says which.",
+  "Ethereum Foundation post, material and missing: the launch is by 'An Ethereum Working Group consisting of wallet developers, security firms and the Ethereum Foundation's Trillion Dollar Security Initiative', not by the EF alone; the post explicitly credits Ledger ('We want to credit and acknowledge Ledger for initiating ERC-7730 and early tooling, infrastructure, and educational efforts'); it names ZKnox, Sourcify, Cyfrin, Zama, WalletConnect, Fireblocks, Trezor, Keycard, MetaMask, Argot as contributors; it points to clearsigning.org; and it says blind signing 'has contributed to billions in user losses, including the Bybit hack'. The Ledger credit is load-bearing because the Bybit and Radiant signers used Ledger hardware wallets (rp_en.pdf pp.35, 37, 40), and because crypto.md bans product recommendation the writer needs to know these names are in the source so they are handled as participants, not endorsements.",
+  "rp_en.pdf p.2 Acknowledgments also names 'officials from the Financial Services Agency' as having given suggestions and advice. verified_facts[9] omits this, and it matters precisely because the article's spine is 'this report is not the FSA's view'.",
+  "The English /en/policy/bgin/innovationtop.html carries NO disclaimer and NO link to the Japanese report or summary (I grepped: 0 hits for 'official views', 0 hits for ResearchPaper_dtc_20260630_ja). 「※上記リサーチペーパーは、当庁の見解、意見等を示すものではありません。」 exists only on the Japanese page, so that claim must cite the Japanese URL.",
+  "The two language versions of the innovation page carry different base dates: EN 'March 17, 2023 (Updated July 23, 2026)', JA 「令和４年11月４日」(2022-11-04) + 「令和８年７月23日更新」. Only the update date matches; do not present 'March 17, 2023' as the page's origin date in a Chinese article without saying it is the English version's date.",
+  "rp_en.pdf p.13 (TRM Labs): 'The Bybit breach in February accounted for USD 1.46 billion (51%) of all funds stolen in 2025.' The 51% share is not in the record, only the top-10 81%. Also unflagged: the report carries two different 2025 annual totals from two vendors — TRM USD 2.87 billion (p.13) and Chainalysis 'over $3.4 billion' (p.16). The record flags the two Bybit figures but not the two annual totals; both must be attributed by vendor.",
+  "03.pdf note 10 defines CSSA and is missing: it uses 'questions consistent with the Guidelines on Cybersecurity for the Financial Sector' and 'aims to provide them with opportunities for self-help efforts and encourage them to make improvements autonomously by enabling them to understand the position of their own organization within the industry'. This is the one concrete thing a reader can be told CSSA actually is.",
+  "03.pdf names the self-regulatory organization as JVCEA only via note 11 (link to the JVCEA org chart on jvcea.or.jp) and JPCrypto-ISAC via note 13 (crypto-isac.jp); the body says only 'the self-regulatory organization'. verified_facts[76] writes 自律規範機構（JVCEA）as if the body named it — keep the footnote as the basis.",
+  "/singi/singi_kinyu/tosin/20251210.html also gives the working group chair: 「座長：森下哲朗　上智大学法学部教授」. Useful for the C10 article, not recorded.",
+  "rp_ja_sum.pdf renumbers the cases: its five 事例 are ①Bybit ②Euler Finance ③Resolv ④Kelp DAO/LayerZero ⑤Litecoin, whereas the full report's case study (2) is SwissBorg and (5) is Euler. Quoting 「事例②」 from the summary and 'case study (2)' from the report describes two different incidents.",
+  "SwissBorg loss: the report's table says 42 M$ (p.30) but the source it cites in the same document is titled 'SwissBorg's $41M Exploit (Detailed Breakdown)' (QuillAudits, p.38). The record carries only 4,200 萬美元.",
+  "Editorial risk under crypto.md, not a factual error: verified_facts[31] records 「2025 年非法加密資產交易量創 1,580 億美元的歷史新高」. crypto.md bans 交易量 outright. The underlying phrase is 'illicit crypto volume reached an all-time high of USD 158 billion in 2025' (TRM Labs, via the report). If used at all it must be framed as a crime statistic the report quotes from TRM Labs, never as a market-volume figure.",
+  "Confirmed sound and worth keeping: the event_date reasoning. I re-verified all three legs — EN index row '(July 23, 2026)', EN page '(Updated July 23, 2026)' plus JA 「令和８年７月23日更新」, and ja_summary ModDate D:20260723085213+09'00'. I also confirmed the second 7/23 action (the 20260403 page says 「令和８年７月23日、以下の英語版を公表しました。」 with 別紙３/別紙４) and that there is no standalone press release: /news/index.html under 令和８年７月23日 lists only 「中小・地域金融機関向けの総合的な監督指針」等の一部改正（案）に対するパブリックコメントの結果等の公表, and 'Policy Approaches' appears 0 times in /en/news/index.html. The five-date separation (draft 2026-02-10, consultation close 2026-03-11 17:00, policy formulated 2026-04-03, report cover 2026-06-30, publication 2026-07-23) is correct and is the strongest part of this record.",
+  "Case-study numbers I re-verified against rp_en.pdf and found correct as recorded: Bybit 1,460 M$ / Feb 2025 with the full UTC timeline (Feb 4 phishing, Feb 19 15:29 S3 JS tamper, Feb 21 13:30/14:11/14:13/14:15/14:16); SwissBorg 42 M$ / Sep 2025 with 2025-08-31 09:55 and 2025-09-08 12:02; Radiant 50 M$ / Oct 2024 with 2024-09-11 and 2024-10-16 14:47; Euler 197 M$ / Mar 2023 incl. the audit firm paying compensation; Kokomo 4 M$ with 2023-03-26 09:00; Resolv 25 M$ / Mar 2026; Drift 285 M$ / Apr 2026; Litecoin 0.6 M$ / Apr 2026 with 85,000 LTC, 13 blocks and 2026-04-25 08:40:16; Kelp/LayerZero 293 M$ / Apr 2026 with 17:33:35 and 17:35:35. SlowMist ~$36.9bn cumulative (As of March 2026) and the 17-event third-party line; TRM 179/$3.71B, 180/$1.85B, 159/$2.20B, 147/$2.87B, $19.5M avg vs $1.3M median, 45/$2.2B/76%/$48.5M, 52/$350M/12.1%/$6.7M, 25/$277M/9.6%/$11.1M; Chainalysis 7.3%→44%→37%, 1,000x, 69%, $3.2M vs $719,000 (4.5x), 35.1 vs 3.89 transfers/day. All verbatim quotes in the record appear word-for-word in the PDFs and pages cited."
+ ]
+}

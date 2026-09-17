@@ -1,0 +1,1180 @@
+{
+  "slug": "crypto-news-genius-act-occ-20260302",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "finance",
+    "crypto"
+  ],
+  "valid_until": null,
+  "news_date": "2026-03-02",
+  "featured": false,
+  "display_order": 204,
+  "related": [
+    "crypto-news-stablecoin-aml-20260410",
+    "crypto-news-fdic-genius-act-20260410",
+    "crypto-news-ncua-genius-act-20260518"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "美國 OCC 穩定幣發行規則草案：一比一準備金、兩個營業日贖回與定期申報",
+      "description": "2026 年 3 月 2 日，美國通貨監理局在聯邦公報刊登實施 GENIUS Act 的支付型穩定幣規則草案，引註 91 FR 10202、篇幅 102 頁，意見徵詢 2026 年 5 月 1 日截止。本文依聯邦公報全文與 GENIUS Act 公法原文，說明這份草案新增的 12 CFR part 15 打算管到誰、準備金與贖回怎麼訂，以及它為什麼還不是生效的規則。",
+      "hero": {
+        "src": "/guides/crypto-news-genius-act-occ-20260302/hero.jpg",
+        "alt": "原創插圖：左邊是一棟山牆加四根柱子的銀行建築，箭頭指向中間一份虛線外框的草案文件；右邊一枚硬幣下方有等號與三層長條，代表代幣面額與準備資產一比一",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 3 月 2 日，美國通貨監理局（Office of the Comptroller of the Currency，OCC，隸屬美國財政部）把一份支付型穩定幣規則草案刊登在聯邦公報，引註 91 FR 10202，篇幅 102 頁，要落實的是 GENIUS Act。作法是新增一個 12 CFR part 15，並修正既有的 part 3、part 6、part 8 與 part 19。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是聯邦公報提供的這份文件全文純文字檔、同一份文件的後設資料，以及美國政府出版局 govinfo 上 GENIUS Act 的公法原文。本站沒有做任何實測，也不提供投資或法律意見；下文每一項要求都出自草案文本，定案前仍可能更動。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 3 月 2 日，美國通貨監理局在聯邦公報刊登一份支付型穩定幣的規則草案，引註 91 FR 10202，要新增 12 CFR part 15。",
+            "草案要求發行前先取得核准，準備金按面額一比一足額、只能是八類資產，其中美國國債的剩餘到期日不得超過 93 天。",
+            "草案把贖回的時限訂為不超過兩個營業日，單一 24 小時期間的贖回需求超過流通發行面額 10% 時自動延長為七個日曆日。",
+            "意見徵詢在 2026 年 5 月 1 日截止；草案本身沒有生效日，GENIUS Act 的生效時點是制定日起 18 個月或定案規則後 120 天，兩者較早者。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這是一份草案，不是已經生效的規則"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份文件的案號是 Docket ID OCC-2025-0372，法規識別號 1557-AF41，文件印的意見截止日是 2026 年 5 月 1 日。聯邦公報的後設資料把類型記為 Proposed Rule，文件的 ACTION 欄是 Notice of proposed rulemaking，而生效日與署名日兩個欄位都是空值。文件第三節是一整節的徵詢問題，從 Question 1 編到 Question 211。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 自己的進度要分開算：公法編號 119-27，公法原文末尾記的核准日是 2025 年 7 月 18 日，第 20 條給的是公式——自制定日起 18 個月，與主要聯邦支付穩定幣主管機關發布任何實施本法之定案規則後 120 天，兩者較早者起生效。草案註 12 另分開兩個時點：數位資產服務提供者不得提供或銷售非由已許可發行人發行的支付型穩定幣，自 2028 年 7 月 18 日起適用；不是由符合一定要件之境外發行人所發行者，同類禁令自 GENIUS Act 生效日起適用。兩款拘束的都是數位資產服務提供者，而發行人若本身也是數位資產服務提供者，這些禁令同樣適用於它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "草案管到誰，發行前要先過哪一關"
+        },
+        {
+          "type": "paragraph",
+          "text": "擬議 15.1(b) 的適用對象有六類：國民銀行、聯邦儲貸機構、聯邦分行及其各自的子公司；境外支付型穩定幣發行人；尋求或已取得聯邦合格發行人核准的非銀行業者；以及 OCC 依擬議 15.15 或 15.16 對其有監理或執行權限的州級合格發行人。草案註 93 寫明 OCC 不會核准受保國民銀行或聯邦儲貸機構直接發行，要透過子公司。擬議定義裡還有一個關鍵排除：發行人須負有兌換、贖回或買回為固定貨幣金額之義務，而該金額不包含以固定貨幣金額計價的數位資產。"
+        },
+        {
+          "type": "paragraph",
+          "text": "擬議 15.30(a) 要求事前核准：受保銀行端要透過子公司，非銀行端以聯邦合格發行人身分申請。OCC 於收件後 30 天內通知申請是否實質完備；完備的申請自 OCC 收到使其完備的資料當日起算，第 120 天視為核准，除非 OCC 駁回。境外發行人另走登記制，擬議 15.31(a) 定了四項要件，包含經財政部長認定其境外主管機關的制度與該法相當，以及在美國金融機構持有足夠準備（互惠安排另有許可者除外）。州級合格的非銀行發行人流通發行面額超過 100 億美元時，擬議 15.15(b) 要求限期轉入聯邦架構，否則不得再淨增發。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "事項",
+            "草案條號",
+            "期間"
+          ],
+          "rows": [
+            [
+              "申請是否實質完備",
+              "擬議 15.30(b)(3)",
+              "收件後 30 天內通知"
+            ],
+            [
+              "視為核准",
+              "擬議 15.30(b)(5)",
+              "完備後第 120 天"
+            ],
+            [
+              "境外發行人登記",
+              "擬議 15.32(b)(4)",
+              "收件後第 30 天"
+            ],
+            [
+              "駁回後請求聽證",
+              "擬議 15.30(e)(1)",
+              "收到通知後 30 天內"
+            ],
+            [
+              "洗錢防制法遵具結",
+              "擬議 15.14(k)",
+              "核准後 180 天內，之後每年"
+            ]
+          ],
+          "caption": "依 OCC 2026 年 3 月 2 日刊登的規則草案整理，查核日 2026 年 9 月 17 日；表中都是草案擬訂的期間，不是現行規定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "草案的準備金：按面額一比一，只能是八類資產"
+        },
+        {
+          "type": "paragraph",
+          "text": "擬議 15.11(a)(1) 要求準備資產可辨識、與發行人其他資產分離不得混同，且任何時候的總公允價值都等於或高於發行人的流通發行面額；流通發行面額指該發行人所有支付型穩定幣的合併面額總額。可用的準備資產被擬議 15.11(b) 限於八類，核心是聯邦準備銀行帳戶款項或美國現金、受保存款機構可隨時提取的存款或受保股金，以及剩餘到期日 93 天以內的美國國債；其餘幾類多是這些資產的衍生形式，例如不超過隔夜的附買回與附賣回，另有一類是 OCC 認可的其他同等流動聯邦政府發行資產。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分散與集中度並列兩個版本，草案說定案規則只會選一個：Option A 是原則性要求加一組可選的安全港，Option B 把同一組數字變成強制。兩案數字相同——每個營業日至少 10% 是可隨時提取的存款、受保股金或聯邦準備銀行帳戶款項，至少 30% 是上述再加五個營業日內無條件到期的應收款，在任一家合格金融機構不超過 40%，前述 10% 那一塊在任一家不超過 50%，加權平均到期日不超過 20 天。準備金不足時，擬議 15.11(g) 要當日通報、立即停止新發行（跨帳本移轉且淨額不增加者除外），連續 15 個營業日未達標（OCC 得自行決定延長）就要開始清算並贖回，且不得收取贖回費用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-genius-act-occ-20260302/diagram-1.svg",
+          "alt": "四格圖解：先申請、準備金、贖回、持續申報",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OCC 2026 年 3 月 2 日刊登的規則草案整理：先申請、準備金、贖回與持續申報，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "贖回時限、揭露與定期申報"
+        },
+        {
+          "type": "paragraph",
+          "text": "擬議 15.12(b)(1)(i) 把及時贖回訂為不得超過請求日之後兩個營業日，OCC 說明這是外側上限；同款 (ii) 的裁量性限制只能由主管機關課加：一般是 OCC，州級合格發行人則視情形是 OCC、聯準會或該州支付穩定幣主管機關。草案也寫明，這些要求只適用於發行人及代其行事者的贖回，不適用於次級市場交易。壓力情境另有自動條款：擬議 15.12(c)(1) 規定單一 24 小時期間的贖回需求超過流通發行面額 10% 時，及時贖回的期間立即延長為七個日曆日，發行人並須在跨過門檻後 24 小時內通報。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另有一條權限要一起看：擬議 15.16 落實 GENIUS Act 第 7 條，OCC 認定有異常且緊急情事、且有合理理由相信某家非銀行的州級合格發行人繼續其活動（包含不作為）對其財務安全、穩健或穩定構成重大風險時，將以具有終局停止命令效力的指令課加必要限制，而列舉的限制第一項就是支付型穩定幣的贖回。申報則不只一個週期，草案至少要求以下幾項：每週向 OCC 提交保密報告；每月最後一日中午前公布上月月底的準備金組成，並由登記會計師事務所查核、執行長與財務長具結；每季結束後 30 天內提交財務狀況報告；核准後 180 天內、之後每年由董事會具結已建立洗錢防制與經濟制裁法遵計畫。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還沒定下來的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "OCC 在資本一節描述了幾種可變的附加成分，但明確表示不在擬議條文之內；擬議 15.42 另給 OCC 個案的權限，得視個別發行人的情況加課額外資本或後備，並列出七種示例情形。擬議條文寫的是新設發行人最低資本取許可條件所定金額與 500 萬美元之較高者，另須備有相當於 12 個月總費用的營運後備；季末未達標者自次月第一日起不得新發行，連續兩季未達標則須開始清算並贖回。擬議 15.41(d) 還讓未受保的國民信託銀行得選擇適用這套要求，以取代 12 CFR part 3 的資本與槓桿要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用的金額還沒有訂：草案在修正後的 8.2 與擬議 8.10 兩處提出同一個穩定幣準備資產減除，實際比率逐年在 OCC 的年度費用公告發布。銀行端則有擬議 3.22(i)：與已許可發行人合併報表的受保國民銀行或聯邦儲貸機構，計算資本比率時要把該發行人解除合併。洗錢防制與制裁法遵的標準，草案留給另一個提案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份草案拘束的是擬議 15.1(b) 那幾類美國機構，不是台灣的讀者；但它要求公開的東西讀者看得到。擬議 15.12(d)(1) 要發行人用淺白文字公開自己的名稱、由誰負兌換義務、前面那份每月準備金組成報告的連結，以及購買與贖回的所有費用；擬議 15.10(c)(3) 另禁止發行人直接或暗示表示穩定幣有美國全額信用擔保、受美國政府保證，或受聯邦存款保險或股金保險保障。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這份規則已經生效了嗎？",
+              "answer": "還沒有。這份文件的 ACTION 欄寫的是 Notice of proposed rulemaking，聯邦公報把它歸為 Proposed Rule，後設資料裡的生效日欄位是空值，文件印的意見截止日是 2026 年 5 月 1 日。GENIUS Act 自己的生效時點也還是一個公式：自制定日起 18 個月，與主要聯邦支付穩定幣主管機關發布任何實施該法之定案規則後 120 天，兩者較早者。要看有沒有出現定案規則，請到聯邦公報用案號 OCC-2025-0372 或法規識別號 1557-AF41 查詢。"
+            },
+            {
+              "question": "這和我在台灣用的平台有關係嗎？",
+              "answer": "這份草案是美國通貨監理局對它所管轄機構發行支付型穩定幣所提的規則，適用對象寫在擬議 15.1(b)：國民銀行、聯邦儲貸機構、聯邦分行及其子公司，境外支付型穩定幣發行人，尋求成為聯邦合格發行人的非銀行業者，以及 OCC 對其有監理或執行權限的州級合格發行人。以本文查核到 2026 年 9 月 17 日的草案文本，課加義務的對象是發行人、保管人與主管機關，未見對持有人課加義務的條文。台灣自己的規定要看台灣的法，本文的來源不涵蓋，文末第二個連結整理了那一部。"
+            },
+            {
+              "question": "兩個營業日內贖回是保證嗎？",
+              "answer": "草案寫的是義務的上限，不是保證。擬議 15.12(b)(1)(i) 把及時贖回訂為不超過請求日之後兩個營業日，但擬議 15.12(c)(1) 規定單一 24 小時期間的贖回需求超過流通發行面額 10% 時，期間自動延長為七個日曆日，除經 OCC 認定發行人能以有序方式、經公平透明的程序提前贖回，或 OCC 另行通知延長期間不再適用；擬議 15.12(c)(5) 讓 OCC 在認定發行人對安全穩健或金融穩定構成威脅、或延長符合公共利益時再行延長；擬議 15.16 則讓 OCC 在異常且緊急情事下對非銀行的州級合格發行人課加限制，列舉的第一項就是贖回。而且這些都還是草案。"
+            },
+            {
+              "question": "準備金一比一是什麼意思？",
+              "answer": "擬議 15.11(a)(1) 要求準備資產在任何時候的總公允價值都等於或高於發行人的流通發行面額，而流通發行面額是該發行人所有支付型穩定幣的合併面額總額。比較的兩邊是公允價值對面額。準備資產另外被擬議 15.11(b) 限於八類，其中美國國債的剩餘到期日不得超過 93 天；草案並明寫，投資於其他資產的貨幣市場基金，包含剩餘到期日超過 93 天的國債，不符合準備資產資格。以下是編輯設計的例子：假設一枚穩定幣的面額是一美元、發行一百萬枚，草案要求的準備資產公允價值就要在一百萬美元以上，而不是看它在市場上換到多少。另外，擬議 15.11(d) 要求流通發行面額達 250 億美元以上者，每個營業日至少 0.5% 放在受保存款或受保股金，上限 5 億美元。"
+            },
+            {
+              "question": "為什麼文章裡每一句都寫草案或擬議？",
+              "answer": "因為這份文件是提案。條號前面加擬議是要提醒：OCC 提出了條文並徵求意見，定案規則可能不同。草案裡最明顯的一處是準備金的分散與集中度，它並列了 Option A 與 Option B 兩個版本，文件自己說定案規則只會選一個，所以 10%、30%、40%、50% 與 20 天這些數字目前都還是提案中的數字。"
+            },
+            {
+              "question": "怎麼自己查這個案子的現況？",
+              "answer": "用三個識別碼：案號 Docket ID OCC-2025-0372、法規識別號 1557-AF41，以及引註 91 FR 10202 或文件編號 2026-04089。在聯邦公報以案號或法規識別號查詢，會列出同一個案子底下的所有文件，包含日後的展延公告或定案規則。順帶一提，這份文件裡新增的 part 15 標題印了兩種寫法：修正指示寫 PART 15--PAYMENT STABLECOINS，授權引註清單寫 PART 15--STABLECOIN，本文照來源並列。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三個時點不要混在一起",
+          "text": "刊登日是 2026 年 3 月 2 日，意見徵詢截止日是 2026 年 5 月 1 日，而 GENIUS Act 自己的生效時點是自制定日起 18 個月與定案規則後 120 天兩者較早者，法條沒有印出日曆日期。這份 OCC 文件是草案，本文寫到的每一項要求都是草案擬訂的內容。要確認現況，可以到聯邦公報用案號 OCC-2025-0372 或法規識別號 1557-AF41 查同一個案子的後續文件。台灣自己的規定不在本文的來源範圍內，文末第二個連結整理了《虛擬資產服務法》。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇是資訊整理，不是投資建議",
+          "text": "本文說明的是法規、技術與產業運作，不推薦任何加密資產、交易所、錢包或發行方，也不是投資建議，不含價格、漲跌幅與買賣時機。監理規定、登記狀態、上線時程與服務條件依主管機關與業者當期公告為準，本文查核日為 2026-09-17。加密資產價格波動大、可能全額損失，且部分服務不受存款保險或投資人保護制度保障；實際適用請以官方公告或合格專業人員的意見為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年加密貨幣新聞總整理：法規、技術與產業的重點",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "虛擬資產服務法三讀通過：七種服務商、穩定幣許可與仍未定的施行日",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Federal Register, Volume 91 Issue 40 (Monday, March 2, 2026)：FR Doc. 2026-04089 全文",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Federal Register API：文件 2026-04089 的後設資料",
+          "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "govinfo：Public Law 119-27（GENIUS Act）公法原文",
+          "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "The OCC's Proposed Stablecoin Rules: One-to-One Reserves, Redemption in Two Business Days and Periodic Reporting",
+      "description": "On March 2, 2026 the U.S. Office of the Comptroller of the Currency published a proposed rule on payment stablecoins implementing the GENIUS Act in the Federal Register, cited as 91 FR 10202 and running to 102 pages, with comments due by May 1, 2026. Working from the Federal Register full text and the public law text of the GENIUS Act, this article sets out whom the new 12 CFR part 15 would reach, what it would require on reserves and redemption, and why it is not yet a rule in force.",
+      "hero": {
+        "src": "/guides/crypto-news-genius-act-occ-20260302/hero-en.jpg",
+        "alt": "Original illustration: on the left a bank building with a pediment and four columns, an arrow pointing to a dashed-outline draft document; on the right a coin above an equals sign and three bars",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On March 2, 2026 the Office of the Comptroller of the Currency (OCC), a bureau of the U.S. Department of the Treasury, published a proposed rule on payment stablecoins in the Federal Register, cited as 91 FR 10202 and running to 102 pages, to implement the GENIUS Act. It would do that by adding a new 12 CFR part 15 and amending the existing parts 3, 6, 8 and 19."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 17, 2026, reading the plain-text full text of the document as the Federal Register serves it, the metadata for that same document, and the public law text of the GENIUS Act on the U.S. Government Publishing Office's govinfo. We have tested nothing ourselves and we give no investment or legal advice; every requirement below comes from the text of the proposal and may still change before a final rule."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On March 2, 2026 the Office of the Comptroller of the Currency published a proposed rule on payment stablecoins in the Federal Register, cited as 91 FR 10202, which would add a new 12 CFR part 15.",
+            "The proposal would require approval before issuance, and reserves that match par value one for one and consist exclusively of eight categories of asset, among them U.S. Treasury securities with a remaining maturity of no more than 93 days.",
+            "The proposal would set the redemption deadline at no more than two business days, automatically extended to seven calendar days once redemption requests in a single 24-hour period exceed 10 percent of the outstanding issuance value.",
+            "The comment deadline is May 1, 2026; the proposal itself has no effective date, and the GENIUS Act takes effect on the earlier of 18 months after the date of enactment or 120 days after any final regulations implementing it."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "This is a proposal, not a rule already in force"
+        },
+        {
+          "type": "paragraph",
+          "text": "The document carries Docket ID OCC-2025-0372 and RIN 1557-AF41, and the comment deadline the document prints is May 1, 2026. The Federal Register's metadata records the type as Proposed Rule, the document's ACTION field reads Notice of proposed rulemaking, and the fields for the effective date and the signing date are both null. Section III of the document is a whole section of questions for comment, numbered from Question 1 to Question 211."
+        },
+        {
+          "type": "paragraph",
+          "text": "The GENIUS Act's own timetable has to be counted separately. It is Public Law 119-27; the approval date printed at the end of the public law text is July 18, 2025, and section 20 gives a formula rather than a date, the Act becoming effective on the earlier of 18 months after the date of enactment, or 120 days after the primary Federal payment stablecoin regulators issue any final regulations implementing the Act. Footnote 12 of the proposal keeps two further dates apart: the prohibition on a digital asset service provider offering or selling a payment stablecoin not issued by a permitted payment stablecoin issuer begins on July 18, 2028, while the same kind of prohibition for stablecoins not issued by foreign payment stablecoin issuers that meet certain requirements applies from the GENIUS Act's effective date. Both provisions bind digital asset service providers, and the prohibitions apply to an issuer too, to the extent that the issuer is a digital asset service provider."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Whom the proposal would reach, and the gate to clear before issuing"
+        },
+        {
+          "type": "paragraph",
+          "text": "Proposed § 15.1(b) lists six categories of covered entity: national banks, Federal savings associations and Federal branches, together with their respective subsidiaries; foreign payment stablecoin issuers; nonbank entities seeking or holding approval as a Federal qualified payment stablecoin issuer; and State qualified payment stablecoin issuers over which the OCC would have supervisory or enforcement authority under proposed § 15.15 or § 15.16. Footnote 93 states that the OCC would not approve an insured national bank or Federal savings association to issue directly, as opposed to through a subsidiary. The proposed definition also carries one key exclusion: the issuer must be obligated to convert, redeem or repurchase for a fixed amount of monetary value, and that amount does not include a digital asset denominated in a fixed amount of monetary value."
+        },
+        {
+          "type": "paragraph",
+          "text": "Proposed § 15.30(a) would require approval in advance: on the insured bank side through a subsidiary, and on the nonbank side by applying as a Federal qualified payment stablecoin issuer. The OCC would notify an applicant not later than 30 days after receipt whether the application is substantially complete; a substantially complete application would be deemed approved as of the 120th day after the OCC received the information that made it complete, unless the OCC denies it. Foreign issuers would register instead, and proposed § 15.31(a) sets four requirements, among them that the Secretary of the Treasury has determined the regime of the issuer's home-country regulator to be comparable to the Act, and that the issuer holds reserves at a United States financial institution sufficient to meet the demands of its U.S. customers (unless otherwise permitted under a reciprocal arrangement). Where a State qualified nonbank issuer has an outstanding issuance value of more than $10 billion, proposed § 15.15(b) would require it to move into the Federal framework within a set period, failing which it could not increase its outstanding issuance value on a net basis."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Proposed section",
+            "Period"
+          ],
+          "rows": [
+            [
+              "Whether an application is substantially complete",
+              "Proposed § 15.30(b)(3)",
+              "Notice not later than 30 days after receipt"
+            ],
+            [
+              "Deemed approved",
+              "Proposed § 15.30(b)(5)",
+              "The 120th day after the application is complete"
+            ],
+            [
+              "Foreign issuer registration",
+              "Proposed § 15.32(b)(4)",
+              "The 30th day after the filing is received"
+            ],
+            [
+              "Requesting a hearing after a denial",
+              "Proposed § 15.30(e)(1)",
+              "Within 30 days of receiving the notice"
+            ],
+            [
+              "Anti-money laundering compliance certification",
+              "Proposed § 15.14(k)",
+              "Not later than 180 days after approval, annually thereafter"
+            ]
+          ],
+          "caption": "Compiled from the proposed rule the OCC published on March 2, 2026; checked on September 17, 2026. Every period in this table is one the proposal would set, not a rule now in force."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The proposed reserves: one for one against par value, and only eight categories of asset"
+        },
+        {
+          "type": "paragraph",
+          "text": "Proposed § 15.11(a)(1) would require reserve assets to be identifiable, held separately from the issuer's other assets and not commingled with them, and at all times to have a total fair value that equals or exceeds the issuer's outstanding issuance value; outstanding issuance value means the total consolidated par value of all of that issuer's payment stablecoins. Proposed § 15.11(b) would limit eligible reserve assets to eight categories; at their core are funds in an account at a Federal Reserve Bank or United States coins and currency, demand deposits or insured shares at insured depository institutions, and U.S. Treasury bills, notes and bonds with a remaining maturity of 93 days or less. Most of the remaining categories are derivative forms of those assets, such as repurchase and reverse repurchase agreements with a term of not more than overnight, and one of them is any other similarly liquid Federal Government-issued asset approved by the OCC."
+        },
+        {
+          "type": "paragraph",
+          "text": "On diversification and concentration the proposal sets out two versions side by side and says only one of them would be selected for a final rule: Option A is a principles-based requirement with an optional set of safe harbors, and Option B turns the same figures into mandatory limits. The figures are the same in both: on each business day at least 10 percent in demand deposits, insured shares or funds in an account at a Federal Reserve Bank, at least 30 percent in those plus receivables maturing unconditionally within five business days, no more than 40 percent at any one eligible financial institution, no more than 50 percent of that 10 percent tranche at any one institution, and a weighted average maturity of no more than 20 days. Where reserves fall short, proposed § 15.11(g) would require notice the same day and an immediate halt to new issuance (except as necessary to facilitate a transfer of payment stablecoins from one distributed ledger to another and provided that the net outstanding issuance value does not increase), and after 15 consecutive business days below the minimum, which the OCC may extend in its discretion, the issuer would have to begin liquidating reserve assets and redeeming, charging no redemption fee."
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-genius-act-occ-20260302/diagram-1-en.svg",
+          "alt": "Four-panel diagram: apply first, reserves, redemption, ongoing reporting",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from the proposed rule the OCC published on March 2, 2026: apply first, reserves, redemption and ongoing reporting; checked on September 17, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Redemption deadlines, disclosure and periodic reporting"
+        },
+        {
+          "type": "paragraph",
+          "text": "Proposed § 15.12(b)(1)(i) would set timely redemption at no more than two business days following the date of the requested redemption, and the OCC explains that this is an outer limit. The discretionary limitations in (ii) of the same paragraph could be imposed only by the OCC, or, for a State qualified payment stablecoin issuer, by the OCC, the Federal Reserve or the State payment stablecoin regulator, as applicable. The proposal also states that these requirements would apply only to redemptions by the issuer and those acting on its behalf, and would not apply to secondary market trading. For stressed conditions there is an automatic provision: under proposed § 15.12(c)(1), when redemption requests in a single 24-hour period exceed 10 percent of the outstanding issuance value, the timely redemption period is immediately extended to seven calendar days by operation of that paragraph, and the issuer must report within 24 hours of crossing the threshold."
+        },
+        {
+          "type": "paragraph",
+          "text": "One further authority belongs beside that. Proposed § 15.16 would implement section 7 of the GENIUS Act: where the OCC finds unusual and exigent circumstances and has reasonable cause to believe that a nonbank State qualified payment stablecoin issuer's continuation of an activity, including a failure to act, poses a substantial risk to its financial safety, soundness or stability, the OCC would impose the limitations it considers necessary through a directive with the effect of a final cease-and-desist order, and the first limitation on the list is redemptions of payment stablecoins. Reporting runs on more than one cycle, and the proposal would require at least the following: a confidential report to the OCC each week; publication, before noon on the last day of each month, of the composition of the reserves as of the end of the previous month, examined by a registered public accounting firm and certified by the chief executive officer and the chief financial officer; a report of condition within 30 days after the end of each quarter; and a certification by the board of directors, not later than 180 days after approval and annually thereafter, that anti-money laundering and economic sanctions compliance programs are in place."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The parts that are not settled yet"
+        },
+        {
+          "type": "paragraph",
+          "text": "In the capital section the OCC describes several variable add-on components but states expressly that they are not part of the proposed text; proposed § 15.42 would separately give the OCC case-by-case authority to impose additional capital or backstop requirements in the light of an individual issuer's circumstances, and lists seven example situations. What the proposed text does set is a minimum capital for a de novo issuer of the greater of the amount set as a condition of its charter or license and $5 million, plus an operational backstop equal to 12 months of total expenses. An issuer below those levels at the end of a quarter could not issue new payment stablecoins from the first day of the following month, and one below them at the end of two consecutive quarters would have to begin liquidating and redeeming. Proposed § 15.41(d) would also let an uninsured national trust bank elect these requirements in place of the capital and leverage requirements of 12 CFR part 3."
+        },
+        {
+          "type": "paragraph",
+          "text": "The fee amounts are not set yet: the proposal puts the same stablecoin reserve asset deduction in two places, amended § 8.2 and proposed § 8.10, and the actual percentage is published each year in the OCC's annual Notice of Fees. On the bank side there is proposed § 3.22(i): an insured national bank or Federal savings association that consolidates a permitted payment stablecoin issuer would have to deconsolidate that issuer when it calculates its capital ratios. The standards for anti-money laundering and sanctions compliance are left by the proposal to a different proposed rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "What this proposal would bind is the categories of U.S. institution in proposed § 15.1(b), not readers in Taiwan; but what it would have them publish is something a reader can see. Proposed § 15.12(d)(1) would require an issuer to disclose in plain language its own name, the entity obligated to convert, a link to the monthly report on the composition of the reserves described above, and all fees associated with purchasing or redeeming; proposed § 15.10(c)(3) would separately prohibit an issuer from representing, directly or through implication, that its payment stablecoin is backed by the full faith and credit of the United States, guaranteed by the United States Government, or subject to Federal deposit insurance or share insurance."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is this rule already in force?",
+              "answer": "Not yet. The document's ACTION field reads Notice of proposed rulemaking, the Federal Register classifies it as a Proposed Rule, the effective date field in the metadata is null, and the comment deadline the document prints is May 1, 2026. The GENIUS Act's own effective date is still a formula as well: the earlier of 18 months after the date of enactment, or 120 days after the primary Federal payment stablecoin regulators issue any final regulations implementing the Act. To see whether a final rule has appeared, search the Federal Register by Docket ID OCC-2025-0372 or RIN 1557-AF41."
+            },
+            {
+              "question": "Does this have anything to do with the platforms I use in Taiwan?",
+              "answer": "This is a rule the Office of the Comptroller of the Currency proposes for the issuance of payment stablecoins by the institutions it supervises, and proposed § 15.1(b) says whom it would cover: national banks, Federal savings associations, Federal branches and their subsidiaries; foreign payment stablecoin issuers; nonbank entities seeking to become Federal qualified payment stablecoin issuers; and State qualified payment stablecoin issuers over which the OCC would have supervisory or enforcement authority. In the text of the proposal as checked for this article on September 17, 2026, obligations are imposed on issuers, custodians and regulators, and we saw no provision imposing an obligation on holders. Taiwan's own rules are a matter for Taiwan's law, which this article's sources do not cover; the second link at the end sets that act out."
+            },
+            {
+              "question": "Is redemption within two business days a guarantee?",
+              "answer": "What the proposal sets is a ceiling on the obligation, not a guarantee. Proposed § 15.12(b)(1)(i) sets timely redemption at no more than two business days after the request, but under proposed § 15.12(c)(1), once redemption requests in a single 24-hour period exceed 10 percent of the outstanding issuance value, the period is automatically extended to seven calendar days, unless the OCC determines the issuer can redeem earlier in an orderly manner through a fair and transparent process, or the OCC gives notice that the extended period no longer applies; proposed § 15.12(c)(5) would let the OCC extend it again where it finds a threat to safety and soundness or to financial stability, or that an extension is in the public interest; and proposed § 15.16 would let the OCC impose limitations on a nonbank State qualified issuer in unusual and exigent circumstances, the first of them being redemptions. All of this is still a proposal."
+            },
+            {
+              "question": "What does one-to-one reserves mean?",
+              "answer": "Proposed § 15.11(a)(1) would require reserve assets at all times to have a total fair value that equals or exceeds the issuer's outstanding issuance value, which is the total consolidated par value of that issuer's payment stablecoins. The comparison is fair value against par value. Proposed § 15.11(b) would also limit reserve assets to eight categories, in which U.S. Treasury securities may have a remaining maturity of 93 days or less; a money market fund that invests in any other assets, including such securities maturing in more than 93 days, would not qualify. Here is an editorially designed example: if a coin's par value is one dollar and a million are issued, the reserve assets would need a fair value of at least a million dollars, not what it fetches in the market. Proposed § 15.11(d) would also require an issuer with $25 billion or more outstanding to keep at least 0.5 percent of reserve assets, up to $500 million, in insured deposits or insured shares each business day."
+            },
+            {
+              "question": "Why does every sentence in this article say proposed?",
+              "answer": "Because the document is a proposal. Writing proposed in front of a section number is a reminder that the OCC has put the text forward and asked for comment, and that a final rule may differ. The clearest case in the proposal is reserve diversification and concentration: it sets Option A and Option B side by side, the document itself says only one of them would be selected for a final rule, and so 10 percent, 30 percent, 40 percent, 50 percent and 20 days are all, for now, figures in a proposal."
+            },
+            {
+              "question": "How do I check the current status of this case myself?",
+              "answer": "Use three identifiers: Docket ID OCC-2025-0372, RIN 1557-AF41, and the citation 91 FR 10202 or document number 2026-04089. Searching the Federal Register by the docket ID or the RIN lists every document filed under the same case, including any later extension notice or final rule. Incidentally, the title of the part 15 this document would add is printed two ways: the amendatory instruction reads PART 15--PAYMENT STABLECOINS and the authority citation list reads PART 15--STABLECOIN, and this article gives both as the source does."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Three dates that should not be run together",
+          "text": "The publication date is March 2, 2026, the comment deadline is May 1, 2026, and the GENIUS Act's own effective date is the earlier of 18 months after the date of enactment and 120 days after a final rule, with no calendar date printed in the statute. This OCC document is a proposal, and every requirement described in this article is one the proposal would set. To check where the case now stands, search the Federal Register by Docket ID OCC-2025-0372 or RIN 1557-AF41 for later documents filed under it. Taiwan's own rules are outside this article's sources; the second link at the end sets out the Virtual Asset Service Act (虛擬資產服務法)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "This article is an information summary, not investment advice",
+          "text": "This article explains regulation, technology and how the industry works. It does not recommend any crypto asset, exchange, wallet or issuer, and it is not investment advice; it contains no prices, price movements or buy and sell timing. Regulatory requirements, registration status, launch timing and service terms follow the current announcements of the competent authorities and the operators, and this article was checked on 2026-09-17. Crypto asset prices are volatile and a total loss is possible, and some services are not covered by deposit insurance or investor protection schemes; for what actually applies, rely on official announcements or the advice of a qualified professional."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Crypto News Roundup: Key Developments in Regulation, Technology and Industry",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Taiwan's Virtual Asset Service Act Clears Third Reading: Seven Kinds of Provider, Stablecoin Licensing, No Commencement Date Yet",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Federal Register, Volume 91 Issue 40 (Monday, March 2, 2026): the full text of FR Doc. 2026-04089",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Federal Register API: the metadata for document 2026-04089",
+          "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "govinfo: Public Law 119-27 (GENIUS Act), the text of the public law",
+          "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "米OCCのステーブルコイン発行規則案：1対1の準備金、2営業日の償還、定期的な報告",
+      "description": "2026年3月2日、米通貨監督庁（OCC）がGENIUS Actを実施するための決済用ステーブルコイン規則案を連邦官報に掲載しました。引用は91 FR 10202、分量は102ページで、意見の締切は2026年5月1日です。本記事は連邦官報の全文とGENIUS Actの公法原文に基づき、この規則案が新設する12 CFR part 15が誰を対象とするのか、準備金と償還をどう定めようとしているのか、そしてなぜこれがまだ発効した規則ではないのかを説明します。",
+      "hero": {
+        "src": "/guides/crypto-news-genius-act-occ-20260302/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左に破風と4本の柱を持つ銀行の建物があり、矢印が中央の破線枠で描かれた規則案の文書を指している。右にはコインがあり、その下に等号と三段の帯が並び、トークンの額面と準備資産が1対1であることを表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年3月2日、米通貨監督庁（Office of the Comptroller of the Currency、OCC、米財務省に属します）が、決済用ステーブルコインの規則案を連邦官報に掲載しました。引用は91 FR 10202、分量は102ページで、実施しようとしているのはGENIUS Actです。やり方は12 CFR part 15を新設し、既存のpart 3、part 6、part 8、part 19を改正するというものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日に確認しました。読んだのは、連邦官報が提供するこの文書の全文テキストファイル、同じ文書のメタデータ、そして米国政府出版局govinfoに掲載されたGENIUS Actの公法原文です。当サイトは実地の検証を行っておらず、投資や法律の助言も提供しません。以下の各要件はいずれも規則案の文面から取ったものであり、最終規則が定まる前に変更される可能性があります。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年3月2日、米通貨監督庁が決済用ステーブルコインの規則案を連邦官報に掲載しました。引用は91 FR 10202で、12 CFR part 15を新設するというものです。",
+            "規則案は発行前に承認を得ることを求め、準備金は額面に対して1対1で満額とし、使える資産は8種類に限り、そのうち米国国債の残存期間は93日を超えてはならないとしています。",
+            "規則案は償還の期限を2営業日を超えないものと定め、単一の24時間に償還の請求が発行残高の額面総額の10%を超えた場合は自動的に7暦日に延長されるとしています。",
+            "意見の締切は2026年5月1日です。規則案自体に施行日はなく、GENIUS Actの発効時点は制定日から18か月後と、最終規則の公表から120日後のいずれか早い方です。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "これは規則案であり、すでに発効した規則ではありません"
+        },
+        {
+          "type": "paragraph",
+          "text": "この文書の案件番号はDocket ID OCC-2025-0372、規制識別番号は1557-AF41で、文書に印刷された意見の締切は2026年5月1日です。連邦官報のメタデータは区分をProposed Ruleと記録し、文書のACTION欄はNotice of proposed rulemakingとなっており、施行日と署名日の二つの欄はいずれも空値です。文書の第3節は意見募集の質問が丸ごと一節を占め、Question 1からQuestion 211まで番号が振られています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act自体の進み方は分けて数える必要があります。公法番号は119-27、公法原文の末尾に記された承認日は2025年7月18日で、第20条が示すのは日付ではなく算式です。すなわち、制定日から18か月後と、主要な連邦決済用ステーブルコイン規制当局が同法を実施する何らかの最終規則を公表してから120日後の、いずれか早い方から発効します。規則案の脚注12はさらに二つの時点を分けています。デジタル資産サービス提供者が、認可を受けた発行者以外が発行した決済用ステーブルコインを提供または販売してはならないという禁止は2028年7月18日から適用され、一定の要件を満たす外国決済用ステーブルコイン発行者が発行したものでない場合の同種の禁止は、GENIUS Actの発効日から適用されます。いずれの規定も拘束するのはデジタル資産サービス提供者であり、発行者自身がデジタル資産サービス提供者である範囲では、これらの禁止は発行者にも適用されます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "規則案は誰を対象とし、発行前にどの関門を通るのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則案の15.1条(b)が挙げる対象は6種類です。国法銀行、連邦貯蓄機関、連邦支店とそれぞれの子会社、外国決済用ステーブルコイン発行者、連邦適格決済用ステーブルコイン発行者としての承認を求めているか既に得ている非銀行の事業者、そして規則案の15.15条または15.16条によりOCCが監督上または執行上の権限を持つ州適格決済用ステーブルコイン発行者です。規則案の脚注93は、OCCが付保国法銀行または連邦貯蓄機関に直接の発行を承認することはなく、子会社を通すことになると明記しています。提案されている定義にはもう一つ重要な除外があります。発行者は固定された通貨額での交換、償還または買戻しの義務を負う必要があり、その額には固定された通貨額で表示されたデジタル資産は含まれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則案の15.30条(a)は事前の承認を求めます。付保銀行側は子会社を通じて、非銀行側は連邦適格決済用ステーブルコイン発行者として申請します。OCCは申請の受領後30日以内に、申請が実質的に完備しているかどうかを通知します。実質的に完備した申請は、完備させる情報をOCCが受領した日から数えて120日目に承認されたものとみなされ、OCCが却下した場合は別です。外国の発行者は登録の仕組みを通り、規則案の15.31条(a)は四つの要件を定めています。そこには、当該発行者の母国の規制当局の制度が同法と同等であると財務長官が認定していること、そして米国の顧客の需要に応えるのに十分な準備を米国の金融機関に保有していること（財務長官が設ける互恵的な取決めにより別に許容される場合を除きます）が含まれます。州適格の非銀行発行者の発行残高の額面総額が100億ドルを超えた場合、規則案の15.15条(b)は期限を定めて連邦の枠組みに移ることを求め、そうしない限り純増となる新規発行はできません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "事項",
+            "規則案の条番号",
+            "期間"
+          ],
+          "rows": [
+            [
+              "申請が実質的に完備しているか",
+              "規則案の15.30条(b)(3)",
+              "受領後30日以内に通知"
+            ],
+            [
+              "承認されたものとみなす",
+              "規則案の15.30条(b)(5)",
+              "完備から120日目"
+            ],
+            [
+              "外国発行者の登録",
+              "規則案の15.32条(b)(4)",
+              "受領後30日目"
+            ],
+            [
+              "却下後に聴聞を請求",
+              "規則案の15.30条(e)(1)",
+              "通知の受領後30日以内"
+            ],
+            [
+              "マネー・ローンダリング対策の遵守に関する証明",
+              "規則案の15.14条(k)",
+              "承認後180日以内、その後は毎年"
+            ]
+          ],
+          "caption": "OCCが2026年3月2日に掲載した規則案に基づいて整理し、2026年9月17日に確認しました。表中の期間はいずれも規則案が定めようとしているもので、現行の規定ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "規則案の準備金：額面に対して1対1、資産は8種類だけ"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則案の15.11条(a)(1)は、準備資産が識別可能であり、発行者の他の資産と分離されて混同されないこと、そしていかなる時点でも公正価値の合計が発行者の発行残高の額面総額と等しいかそれを上回ることを求めています。発行残高の額面総額とは、その発行者のすべての決済用ステーブルコインの連結された額面の合計です。使える準備資産は規則案の15.11条(b)により8種類に限られ、その中心は、連邦準備銀行の口座にある資金または米国の硬貨と紙幣、付保預金取扱機関の要求払預金または付保出資金、そして残存期間93日以内の米国国債です。残りの数種類はこれらの資産から派生した形が多く、たとえば翌日物を超えないレポとリバースレポがあり、もう一つはOCCが認めるその他の同等に流動性の高い連邦政府発行資産です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分散と集中度については二つの案が並べられており、規則案は最終規則ではそのうち一つだけを選ぶと述べています。Option Aは原則に基づく要件に選択可能なセーフハーバーを組み合わせたもので、Option Bは同じ数字を義務にしたものです。数字は両案で同じです。各営業日に少なくとも10%を要求払預金、付保出資金または連邦準備銀行の口座にある資金とし、少なくとも30%をこれらに5営業日以内に無条件で満期となる債権を加えたものとし、一つの適格金融機関に40%を超えて置かず、前述の10%の部分は一つの機関に50%を超えて置かず、加重平均残存期間は20日を超えないこととされています。準備金が不足した場合、規則案の15.11条(g)は当日の通報と新規発行の即時停止（一つの分散型台帳から別の台帳へ決済用ステーブルコインを移転させるために必要で、かつ純発行残高の額面総額が増加しない場合を除きます）を求め、15営業日連続で基準を満たさないとき（OCCは自らの裁量で延長できます）は準備資産の清算と償還を始めなければならず、償還手数料を受け取ってはならないとしています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-genius-act-occ-20260302/diagram-1-ja.svg",
+          "alt": "4コマの図解：まず申請、準備金、償還、継続的な報告",
+          "width": 1600,
+          "height": 900,
+          "caption": "OCCが2026年3月2日に掲載した規則案に基づく整理です。まず申請、準備金、償還、そして継続的な報告の4点で、2026年9月17日に確認しました。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "償還の期限、開示、そして定期的な報告"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則案の15.12条(b)(1)(i)は、適時の償還を請求のあった日の後2営業日を超えないものと定め、OCCはこれが外側の上限であると説明しています。同項(ii)の裁量による制限を課せるのはOCCだけで、州適格決済用ステーブルコイン発行者の場合は状況に応じてOCC、連邦準備制度または当該州の決済用ステーブルコイン規制当局です。規則案は、これらの要件が発行者およびその代わりに行為する者による償還にのみ適用され、流通市場の取引には適用されないとも明記しています。ストレス時については自動的な条項があります。規則案の15.12条(c)(1)は、単一の24時間に償還の請求が発行残高の額面総額の10%を超えた場合、適時の償還の期間は同項の作用により直ちに7暦日に延長されると定め、発行者は閾値を超えてから24時間以内に通報しなければならないとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つ併せて見るべき権限があります。規則案の15.16条はGENIUS Actの第7条を実施するもので、OCCが異常かつ緊急の事態があると認め、かつ非銀行の州適格決済用ステーブルコイン発行者がその活動（行為をしないことを含みます）を続けることがその財務上の安全性、健全性または安定性に重大なリスクをもたらすと信じる合理的な理由があるときは、確定した停止命令と同じ効力を持つ指示によって必要と考える制限を課すとしており、列挙された制限の第一項が決済用ステーブルコインの償還です。報告は一つの周期だけではなく、規則案は少なくとも次のものを求めています。毎週、OCCに非公開の報告を提出すること。毎月最後の日の正午までに前月末時点の準備金の構成を公表し、登録会計事務所の検査を受け、最高経営責任者と最高財務責任者が証明すること。各四半期の終了後30日以内に財務状況報告を提出すること。そして承認後180日以内、その後は毎年、マネー・ローンダリング対策と経済制裁の遵守プログラムを整備したことを取締役会が証明することです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まだ定まっていない部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "OCCは自己資本の節でいくつかの可変的な上乗せ要素を説明していますが、それらは提案されている条文には含まれないと明確に述べています。規則案の15.42条は別に、個別の発行者の状況に応じて追加の自己資本またはバックストップを課す個別判断の権限をOCCに与え、7つの例となる状況を挙げています。提案されている条文が定めているのは、新設の発行者の最低自己資本を、許可の条件で定められた金額と500万ドルのいずれか高い方とし、さらに12か月分の総費用に相当する運営上のバックストップを備えることです。四半期末に基準を満たさない発行者は翌月の初日から新規発行ができず、2四半期連続で満たさない場合は清算と償還を始めなければなりません。規則案の15.41条(d)はさらに、付保されていない国法信託銀行がこの一連の要件を選択して適用し、12 CFR part 3の自己資本とレバレッジの要件に代えることを認めています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手数料の金額はまだ定まっていません。規則案は改正後の8.2条と規則案の8.10条の二か所で同じステーブルコイン準備資産の控除を提案しており、実際の率は毎年OCCの年次の手数料公告で公表されます。銀行側には規則案の3.22条(i)があります。認可を受けた発行者を連結する付保国法銀行または連邦貯蓄機関は、自己資本比率を計算する際にその発行者を連結から除外しなければなりません。マネー・ローンダリング対策と制裁の遵守の基準は、規則案が別の提案に委ねています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この規則案が拘束するのは規則案の15.1条(b)に挙げられた米国の機関であり、台湾の読者ではありません。ただし、公表を求めている内容は読者にも見えます。規則案の15.12条(d)(1)は、発行者が平易な言葉で自らの名称、交換の義務を負うのは誰か、先に述べた毎月の準備金構成報告へのリンク、そして購入と償還に伴うすべての手数料を公表することを求めています。規則案の15.10条(c)(3)は別に、発行者が自らのステーブルコインについて、米国の完全な信用による裏付けがある、米国政府に保証されている、または連邦の預金保険もしくは出資金保険で保護されていると、直接または暗示によって表示することを禁じています。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "この規則はもう発効しているのですか",
+              "answer": "まだです。この文書のACTION欄はNotice of proposed rulemakingであり、連邦官報はこれをProposed Ruleに分類し、メタデータの施行日欄は空値で、文書に印刷された意見の締切は2026年5月1日です。GENIUS Act自体の発効時点も算式のままです。制定日から18か月後と、主要な連邦決済用ステーブルコイン規制当局が同法を実施する何らかの最終規則を公表してから120日後の、いずれか早い方です。最終規則が出ているかどうかを見るには、連邦官報で案件番号OCC-2025-0372または規制識別番号1557-AF41を検索してください。"
+            },
+            {
+              "question": "これは私が台湾で使っているプラットフォームと関係がありますか",
+              "answer": "この規則案は、米通貨監督庁が自らの監督下にある機関による決済用ステーブルコインの発行について提案した規則です。対象は規則案の15.1条(b)に書かれています。国法銀行、連邦貯蓄機関、連邦支店とその子会社、外国決済用ステーブルコイン発行者、連邦適格決済用ステーブルコイン発行者になろうとしている非銀行の事業者、そしてOCCが監督上または執行上の権限を持つ州適格決済用ステーブルコイン発行者です。本記事が2026年9月17日時点で確認した規則案の文面では、義務を課されるのは発行者、カストディアンと規制当局であり、保有者に義務を課す条文は見当たりませんでした。台湾自身の規定は台湾の法律を見る必要があり、本記事の情報源はそれを含みません。記事末尾の二つ目のリンクがその法律を整理しています。"
+            },
+            {
+              "question": "2営業日以内の償還は保証されているのですか",
+              "answer": "規則案が書いているのは義務の上限であり、保証ではありません。規則案の15.12条(b)(1)(i)は適時の償還を請求のあった日の後2営業日を超えないものと定めていますが、規則案の15.12条(c)(1)は、単一の24時間に償還の請求が発行残高の額面総額の10%を超えた場合、期間が自動的に7暦日に延長されると定めています。ただし、発行者が秩序ある方法で公正かつ透明な手続を通じて早く償還できるとOCCが認定した場合、またはOCCが延長された償還期間はもう適用されないと別に通知した場合は除きます。規則案の15.12条(c)(5)は、発行者が安全性と健全性または金融の安定に脅威をもたらすとOCCが認定したとき、あるいは延長が公共の利益に合致するときに、さらに延長することを認めています。規則案の15.16条は、異常かつ緊急の事態において非銀行の州適格発行者に制限を課すことをOCCに認めており、列挙された第一項が償還です。そしてこれらはいずれもまだ規則案です。"
+            },
+            {
+              "question": "準備金が1対1とはどういう意味ですか",
+              "answer": "規則案の15.11条(a)(1)は、準備資産のいかなる時点の公正価値の合計も、発行者の発行残高の額面総額と等しいかそれを上回ることを求めています。発行残高の額面総額とは、その発行者のすべての決済用ステーブルコインの連結された額面の合計です。比べているのは公正価値と額面です。準備資産はさらに規則案の15.11条(b)により8種類に限られ、そのうち米国国債の残存期間は93日を超えてはなりません。規則案は、他の資産に投資するマネー・マーケット・ファンド（残存期間が93日を超える国債を含みます）は準備資産の要件を満たさないとも明記しています。以下は編集部が設計した例です。あるステーブルコインの額面が1ドルで100万枚発行されているとすると、規則案が求める準備資産の公正価値は100万ドル以上でなければならず、市場でいくらと交換されるかを見るのではありません。なお規則案の15.11条(d)は、発行残高の額面総額が250億ドル以上の発行者に、各営業日に準備資産の少なくとも0.5%、上限5億ドルを付保預金または付保出資金に置くことを求めています。"
+            },
+            {
+              "question": "なぜ記事のどの文にも規則案と書いてあるのですか",
+              "answer": "この文書が提案だからです。条番号の前に規則案と付けているのは、OCCが条文を提示して意見を募っている段階であり、最終規則は異なる可能性があると示すためです。規則案の中で最も分かりやすいのは準備金の分散と集中度です。そこにはOption AとOption Bという二つの案が並べられ、文書自身が最終規則では一つだけを選ぶと述べているので、10%、30%、40%、50%と20日というこれらの数字は今のところどれも提案中の数字です。"
+            },
+            {
+              "question": "この案件の現状を自分で調べるにはどうしますか",
+              "answer": "三つの識別子を使います。案件番号Docket ID OCC-2025-0372、規制識別番号1557-AF41、そして引用91 FR 10202または文書番号2026-04089です。連邦官報で案件番号か規制識別番号を検索すると、同じ案件の下にあるすべての文書が一覧され、後の期間延長の公告や最終規則も含まれます。ついでに一つ、この文書が新設するpart 15の表題は二通りに印刷されています。改正の指示はPART 15--PAYMENT STABLECOINS、権限の引用一覧はPART 15--STABLECOINで、本記事は情報源のとおり両方を並べています。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三つの時点を混ぜないでください",
+          "text": "掲載日は2026年3月2日、意見の締切は2026年5月1日、そしてGENIUS Act自体の発効時点は制定日から18か月後と最終規則から120日後のいずれか早い方で、法律には暦の日付が印刷されていません。このOCCの文書は規則案であり、本記事が書いた要件はいずれも規則案が定めようとしている内容です。現状を確かめるには、連邦官報で案件番号OCC-2025-0372または規制識別番号1557-AF41を使い、同じ案件の後続の文書を調べられます。台湾自身の規定は本記事の情報源の範囲に入りません。記事末尾の二つ目のリンクが台湾の「仮想資産サービス法」を整理しています。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "この記事は情報整理であり、投資助言ではありません",
+          "text": "本記事が説明しているのは法規制、技術、そして業界の運営であり、いかなる暗号資産、取引所、ウォレット、発行者も推奨せず、投資助言ではありません。価格、騰落率、売買のタイミングも含みません。規制上の要件、登録の状況、提供開始の時期、サービスの条件は、主管当局と事業者のその時点の公表内容によります。本記事の確認日は2026-09-17です。暗号資産は価格の変動が大きく全額を失う可能性があり、一部のサービスは預金保険や投資者保護の制度で保護されません。実際の適用については、公式の公表内容または資格のある専門家の意見によってください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年 暗号資産ニュース総まとめ：法規制・技術・業界の重要動向",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台湾の仮想資産サービス法が三読通過：7種類のサービス業者、ステーブルコイン許可、施行日は未定",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Federal Register, Volume 91 Issue 40（2026年3月2日月曜日）：FR Doc. 2026-04089の全文",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Federal Register API：文書2026-04089のメタデータ",
+          "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "govinfo：Public Law 119-27（GENIUS Act）の公法原文",
+          "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "미국 OCC 스테이블코인 발행 규칙안: 1대1 준비자산, 2영업일 상환, 정기 보고",
+      "description": "2026년 3월 2일 미국 통화감독청(OCC)이 GENIUS Act를 시행하기 위한 지급결제용 스테이블코인 규칙안을 연방관보에 게재했습니다. 인용은 91 FR 10202, 분량은 102쪽이고 의견 제출 기한은 2026년 5월 1일입니다. 이 기사는 연방관보 전문과 GENIUS Act 공법 원문을 근거로, 규칙안이 신설하는 12 CFR part 15가 누구를 대상으로 하는지, 준비자산과 상환을 어떻게 정하려 하는지, 그리고 왜 아직 발효된 규칙이 아닌지를 설명합니다.",
+      "hero": {
+        "src": "/guides/crypto-news-genius-act-occ-20260302/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽에는 박공과 기둥 4개가 있는 은행 건물이 있고 화살표가 가운데 점선 테두리의 규칙안 문서를 가리킵니다. 오른쪽에는 코인이 있고 그 아래 등호와 3단 막대가 놓여 토큰 액면과 준비자산이 1대1임을 나타냅니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 3월 2일 미국 통화감독청(Office of the Comptroller of the Currency, OCC, 미국 재무부 소속)이 지급결제용 스테이블코인 규칙안을 연방관보에 게재했습니다. 인용은 91 FR 10202, 분량은 102쪽이며 시행하려는 것은 GENIUS Act입니다. 방식은 12 CFR part 15를 신설하고 기존의 part 3, part 6, part 8, part 19를 개정하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 기사는 2026년 9월 17일에 확인했습니다. 읽은 자료는 연방관보가 제공하는 이 문서의 전문 텍스트 파일, 같은 문서의 메타데이터, 그리고 미국 정부출판국 govinfo에 실린 GENIUS Act 공법 원문입니다. 본 사이트는 어떤 것도 직접 시험해 보지 않았고 투자나 법률 자문도 제공하지 않습니다. 아래의 모든 요건은 규칙안 문면에서 가져온 것이며 최종 규칙이 확정되기 전에 달라질 수 있습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 3월 2일 미국 통화감독청이 지급결제용 스테이블코인 규칙안을 연방관보에 게재했습니다. 인용은 91 FR 10202이고 12 CFR part 15를 신설하는 내용입니다.",
+            "규칙안은 발행 전에 승인을 받도록 하고, 준비자산은 액면에 대해 1대1로 전액, 쓸 수 있는 자산은 8가지로 한정하며 그 가운데 미국 국채의 잔존만기는 93일을 넘지 못하도록 하고 있습니다.",
+            "규칙안은 상환 기한을 2영업일을 넘지 않도록 정하고, 단일 24시간 동안 상환 청구가 유통 발행 액면총액의 10%를 넘으면 자동으로 7역일로 연장된다고 하고 있습니다.",
+            "의견 제출 기한은 2026년 5월 1일입니다. 규칙안 자체에는 시행일이 없고, GENIUS Act의 발효 시점은 제정일부터 18개월 후와 최종 규칙 공표 후 120일 중 이른 쪽입니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이것은 규칙안이며, 이미 발효된 규칙이 아닙니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 문서의 사건번호는 Docket ID OCC-2025-0372, 규제식별번호는 1557-AF41이고 문서에 인쇄된 의견 제출 기한은 2026년 5월 1일입니다. 연방관보 메타데이터는 유형을 Proposed Rule로 기록하고 있고, 문서의 ACTION 항목은 Notice of proposed rulemaking이며, 시행일과 서명일 두 항목은 모두 빈 값입니다. 문서 제3절은 의견을 구하는 질문이 한 절을 통째로 채우고 있으며 Question 1부터 Question 211까지 번호가 붙어 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 자체의 진행은 따로 계산해야 합니다. 공법 번호는 119-27이고, 공법 원문 끝에 적힌 승인일은 2025년 7월 18일이며, 제20조가 제시하는 것은 날짜가 아니라 산식입니다. 즉 제정일부터 18개월 후와, 주요 연방 지급결제용 스테이블코인 규제기관이 이 법을 시행하는 최종 규칙을 공표한 후 120일 중 이른 쪽부터 발효합니다. 규칙안 각주 12는 두 시점을 따로 적고 있습니다. 디지털자산 서비스 제공자가 인가받은 발행자가 발행하지 않은 지급결제용 스테이블코인을 제공하거나 판매하지 못한다는 금지는 2028년 7월 18일부터 적용되고, 일정한 요건을 갖춘 국외 지급결제용 스테이블코인 발행자가 발행한 것이 아닌 경우의 같은 금지는 GENIUS Act 발효일부터 적용됩니다. 두 조항이 구속하는 대상은 모두 디지털자산 서비스 제공자이며, 발행자 자신이 디지털자산 서비스 제공자인 범위에서는 이 금지가 발행자에게도 적용됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "규칙안은 누구를 대상으로 하고, 발행 전에 어떤 관문을 통과해야 하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙안 15.1(b)이 드는 대상은 여섯 가지입니다. 국법은행, 연방저축기관, 연방지점과 각각의 자회사, 국외 지급결제용 스테이블코인 발행자, 연방적격 지급결제용 스테이블코인 발행자 승인을 구하고 있거나 이미 받은 비은행 사업자, 그리고 규칙안 15.15 또는 15.16에 따라 OCC가 감독 또는 집행 권한을 갖는 주적격 지급결제용 스테이블코인 발행자입니다. 규칙안 각주 93은 OCC가 부보 국법은행이나 연방저축기관의 직접 발행은 승인하지 않고 자회사를 통하도록 한다고 명시하고 있습니다. 제안된 정의에는 또 하나 중요한 제외가 있습니다. 발행자는 고정된 화폐금액으로 교환, 상환 또는 매입할 의무를 져야 하며, 그 금액에는 고정된 화폐금액으로 표시된 디지털자산은 포함되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙안 15.30(a)은 사전 승인을 요구합니다. 규칙안에서 부보 은행 쪽은 자회사를 통해, 비은행 쪽은 연방적격 지급결제용 스테이블코인 발행자로서 신청하게 됩니다. OCC는 신청서를 받은 뒤 30일 이내에 신청이 실질적으로 완비되었는지를 통지합니다. 실질적으로 완비된 신청은 완비시키는 자료를 OCC가 받은 날부터 계산해 120일째에 승인된 것으로 보며, OCC가 거부하는 경우는 예외입니다. 국외 발행자는 등록 절차를 따르고, 규칙안 15.31(a)은 네 가지 요건을 두고 있습니다. 여기에는 해당 발행자 본국 규제기관의 제도가 이 법과 동등하다고 재무장관이 인정하는 것, 그리고 미국 고객의 수요를 충족할 만큼 충분한 준비자산을 미국 금융기관에 보유하는 것(재무장관이 만들어 시행하는 상호주의 약정에 따라 달리 허용되는 경우는 제외)이 포함됩니다. 주적격 비은행 발행자의 유통 발행 액면총액이 100억 달러를 넘으면, 규칙안 15.15(b)은 기한을 정해 연방 체계로 옮기도록 하고 그렇게 하지 않으면 순증 발행을 할 수 없도록 하고 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "규칙안 조항",
+            "기간"
+          ],
+          "rows": [
+            [
+              "신청의 실질적 완비 여부",
+              "규칙안 15.30(b)(3)",
+              "접수 후 30일 이내 통지"
+            ],
+            [
+              "승인된 것으로 간주",
+              "규칙안 15.30(b)(5)",
+              "완비 후 120일째"
+            ],
+            [
+              "국외 발행자 등록",
+              "규칙안 15.32(b)(4)",
+              "접수 후 30일째"
+            ],
+            [
+              "거부 후 청문 요청",
+              "규칙안 15.30(e)(1)",
+              "통지를 받은 후 30일 이내"
+            ],
+            [
+              "자금세탁방지 준수 인증",
+              "규칙안 15.14(k)",
+              "승인 후 180일 이내, 그 후 매년"
+            ]
+          ],
+          "caption": "OCC가 2026년 3월 2일 게재한 규칙안을 정리했으며 확인일은 2026년 9월 17일입니다. 표의 기간은 모두 규칙안이 정하려는 것이고 현행 규정이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "규칙안의 준비자산: 액면에 1대1, 자산은 여덟 가지뿐"
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙안 15.11(a)(1)은 준비자산이 식별 가능하고 발행자의 다른 자산과 분리되어 섞이지 않아야 하며, 어느 때에도 공정가치 합계가 발행자의 유통 발행 액면총액과 같거나 그보다 커야 한다고 하고 있습니다. 유통 발행 액면총액은 그 발행자의 모든 지급결제용 스테이블코인의 연결 액면 합계를 말합니다. 쓸 수 있는 준비자산은 규칙안 15.11(b)에 따라 8가지로 한정되고, 그 핵심은 연방준비은행 계좌의 자금 또는 미국의 주화와 지폐, 부보예금취급기관의 요구불예금이나 부보 출자금, 그리고 잔존만기 93일 이내의 미국 국채입니다. 나머지 몇 가지는 대체로 이 자산들에서 파생된 형태이며, 예를 들어 익일물을 넘지 않는 환매조건부매도와 환매조건부매수가 있고, 또 하나는 OCC가 인정하는 그 밖의 동등하게 유동적인 연방정부 발행 자산입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "분산과 집중도는 두 가지 안이 나란히 제시되어 있고, 규칙안은 최종 규칙에서 그중 하나만 고른다고 말합니다. Option A는 원칙 중심의 요건에 선택적인 세이프하버를 붙인 것이고, Option B는 같은 숫자를 의무로 만든 것입니다. 숫자는 두 안이 같습니다. 두 안 모두 매 영업일에 최소 10%를 요구불예금, 부보 출자금 또는 연방준비은행 계좌의 자금으로 두고, 최소 30%는 여기에 5영업일 이내에 무조건 만기가 되는 채권을 더한 것으로 하며, 한 적격 금융기관에 40%를 넘게 두지 않고, 앞의 10% 부분은 한 기관에 50%를 넘게 두지 않으며, 가중평균 만기는 20일을 넘지 않도록 합니다. 준비자산이 부족하면 규칙안 15.11(g)은 당일 보고와 신규 발행의 즉시 중단(하나의 분산원장에서 다른 원장으로 지급결제용 스테이블코인을 이전하기 위해 필요하고 순 유통 발행 액면총액이 늘어나지 않는 경우는 제외)을 요구하고, 15영업일 연속으로 기준에 미달하면(OCC가 재량으로 연장할 수 있습니다) 준비자산 청산과 상환을 시작해야 하며 상환 수수료를 받아서는 안 된다고 하고 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-genius-act-occ-20260302/diagram-1-ko.svg",
+          "alt": "네 칸 도해: 먼저 신청, 준비자산, 상환, 지속적인 보고",
+          "width": 1600,
+          "height": 900,
+          "caption": "OCC가 2026년 3월 2일 게재한 규칙안을 정리한 것으로 먼저 신청, 준비자산, 상환과 지속적인 보고 네 가지이며 확인일은 2026년 9월 17일입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "상환 기한, 공시, 그리고 정기 보고"
+        },
+        {
+          "type": "paragraph",
+          "text": "규칙안 15.12(b)(1)(i)은 적시 상환을 청구일 이후 2영업일을 넘지 않도록 정하고, OCC는 이것이 바깥쪽 상한이라고 설명합니다. 규칙안의 같은 항 (ii)에 따르면 재량적 제한은 OCC만 부과할 수 있고, 주적격 지급결제용 스테이블코인 발행자의 경우에는 해당되는 바에 따라 OCC, 연방준비제도 또는 해당 주의 지급결제용 스테이블코인 규제기관이 부과할 수 있습니다. 규칙안은 이 요건들이 발행자와 그를 대리해 행위하는 자의 상환에만 적용되고 2차 시장 거래에는 적용되지 않는다고도 명시하고 있습니다. 스트레스 상황에는 자동 조항이 따로 있습니다. 규칙안 15.12(c)(1)은 단일 24시간 동안 상환 청구가 유통 발행 액면총액의 10%를 넘으면 적시 상환 기간이 그 항의 작용으로 즉시 7역일(달력 기준 7일)로 연장되고, 발행자는 기준선을 넘은 뒤 24시간 이내에 보고해야 한다고 정하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "함께 보아야 할 권한이 하나 더 있습니다. 규칙안 15.16은 GENIUS Act 제7조를 시행하는 것으로, OCC가 이례적이고 긴급한 사정이 있다고 인정하고 비은행인 주적격 지급결제용 스테이블코인 발행자가 그 활동(행위를 하지 않는 것을 포함합니다)을 계속하는 것이 그 재무적 안전성, 건전성 또는 안정성에 중대한 위험을 초래한다고 믿을 합리적인 이유가 있을 때, 확정된 중지명령과 같은 효력을 갖는 지시로 필요한 제한을 부과한다고 하고 있으며, 열거된 제한의 첫 번째가 지급결제용 스테이블코인의 상환입니다. 보고는 한 주기만이 아니며 규칙안은 적어도 다음을 요구합니다. 매주 OCC에 비공개 보고서를 제출하는 것, 매월 마지막 날 정오까지 전월 말 기준 준비자산 구성을 공표하고 등록 회계법인의 검사를 받아 최고경영자와 최고재무책임자가 인증하는 것, 매 분기가 끝난 뒤 30일 이내에 재무상태 보고서를 제출하는 것, 그리고 승인 후 180일 이내와 그 후 매년 자금세탁방지와 경제제재 준수 프로그램을 갖추었음을 이사회가 인증하는 것입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "아직 정해지지 않은 부분"
+        },
+        {
+          "type": "paragraph",
+          "text": "OCC는 자본 부분에서 변동할 수 있는 몇 가지 추가 요소를 설명하면서도, 그것들이 제안된 조문에 들어 있지 않다고 분명히 밝히고 있습니다. 규칙안 15.42는 따로 개별 발행자의 사정에 따라 추가 자본이나 백스톱을 부과할 수 있는 개별 권한을 OCC에 주고 일곱 가지 예시 상황을 열거합니다. 제안된 조문이 정한 것은 신설 발행자의 최저 자본을 인가 조건으로 정한 금액과 500만 달러 중 더 큰 쪽으로 하고, 여기에 12개월 총비용에 상당하는 운영 백스톱을 갖추는 것입니다. 또 제안된 조문에 따르면 분기 말에 기준에 미달한 발행자는 다음 달 첫날부터 신규 발행을 할 수 없고, 두 분기 연속 미달하면 청산과 상환을 시작해야 합니다. 규칙안 15.41(d)은 부보되지 않은 국법신탁은행이 이 요건들을 선택해 적용하여 12 CFR part 3의 자본과 레버리지 요건을 대체할 수 있도록 하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수수료 금액은 아직 정해지지 않았습니다. 규칙안은 개정된 8.2와 규칙안 8.10 두 곳에서 같은 스테이블코인 준비자산 공제를 제안하고 있고, 실제 비율은 매년 OCC의 연간 수수료 공고에서 공표됩니다. 은행 쪽에는 규칙안 3.22(i)가 있습니다. 이 안에 따르면 인가받은 발행자를 연결하는 부보 국법은행이나 연방저축기관은 자본비율을 계산할 때 그 발행자를 연결에서 제외해야 합니다. 자금세탁방지와 제재 준수의 기준은 규칙안이 다른 제안에 맡기고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 규칙안이 구속하는 것은 규칙안 15.1(b)에 열거된 미국 기관들이고 대만 독자가 아닙니다. 다만 공개하도록 요구하는 것은 독자도 볼 수 있습니다. 규칙안 15.12(d)(1)은 발행자가 평이한 문구로 자신의 명칭, 교환 의무를 지는 주체, 앞에서 말한 매월 준비자산 구성 보고서의 링크, 그리고 매수와 상환에 따르는 모든 수수료를 공개하도록 요구합니다. 규칙안 15.10(c)(3)은 따로, 발행자가 자신의 스테이블코인에 미국의 완전한 신용이 뒷받침된다거나 미국 정부가 보증한다거나 연방 예금보험 또는 출자금보험으로 보호된다고 직접 또는 암시적으로 표시하는 것을 금지합니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이 규칙은 이미 발효되었습니까?",
+              "answer": "아직 아닙니다. 이 문서의 ACTION 항목은 Notice of proposed rulemaking이고, 연방관보는 이를 Proposed Rule로 분류하며, 메타데이터의 시행일 항목은 빈 값이고 문서에 인쇄된 의견 제출 기한은 2026년 5월 1일입니다. GENIUS Act 자체의 발효 시점도 여전히 산식입니다. 제정일부터 18개월 후와, 주요 연방 지급결제용 스테이블코인 규제기관이 이 법을 시행하는 최종 규칙을 공표한 후 120일 중 이른 쪽입니다. 최종 규칙이 나왔는지 보려면 연방관보에서 사건번호 OCC-2025-0372 또는 규제식별번호 1557-AF41로 검색하십시오."
+            },
+            {
+              "question": "이것이 제가 대만에서 쓰는 플랫폼과 관계가 있습니까?",
+              "answer": "이 규칙안은 미국 통화감독청이 자신이 감독하는 기관의 지급결제용 스테이블코인 발행에 대해 제안한 규칙이고, 대상은 규칙안 15.1(b)에 적혀 있습니다. 국법은행, 연방저축기관, 연방지점과 그 자회사, 국외 지급결제용 스테이블코인 발행자, 연방적격 지급결제용 스테이블코인 발행자가 되려는 비은행 사업자, 그리고 OCC가 감독 또는 집행 권한을 갖는 주적격 지급결제용 스테이블코인 발행자입니다. 이 기사가 2026년 9월 17일까지 확인한 규칙안 문면에서는 의무를 지는 대상이 발행자, 수탁기관과 규제기관이었고 보유자에게 의무를 지우는 조문은 보이지 않았습니다. 대만 자체의 규정은 대만의 법을 보아야 하며 이 기사의 출처는 그것을 포함하지 않습니다. 기사 끝의 두 번째 링크가 그 법을 정리했습니다."
+            },
+            {
+              "question": "2영업일 안의 상환은 보장입니까?",
+              "answer": "규칙안이 적은 것은 의무의 상한이고 보장이 아닙니다. 규칙안 15.12(b)(1)(i)은 적시 상환을 청구일 이후 2영업일을 넘지 않도록 정하지만, 규칙안 15.12(c)(1)은 단일 24시간 동안 상환 청구가 유통 발행 액면총액의 10%를 넘으면 기간이 자동으로 7역일로 연장된다고 정합니다. 발행자가 질서 있는 방식으로 공정하고 투명한 절차를 통해 더 일찍 상환할 수 있다고 OCC가 인정한 경우, 또는 연장된 상환 기간이 더는 적용되지 않는다고 OCC가 따로 통지한 경우는 제외됩니다. 규칙안 15.12(c)(5)은 발행자가 안전성과 건전성 또는 금융안정에 위협이 된다고 OCC가 인정할 때, 또는 연장이 공익에 부합할 때 다시 연장할 수 있게 합니다. 규칙안 15.16은 이례적이고 긴급한 사정에서 비은행인 주적격 발행자에게 제한을 부과할 수 있게 하는데, 열거된 첫 번째가 상환입니다. 그리고 이 모두가 아직 규칙안입니다."
+            },
+            {
+              "question": "준비자산 1대1은 무슨 뜻입니까?",
+              "answer": "규칙안 15.11(a)(1)은 준비자산의 어느 때 공정가치 합계도 발행자의 유통 발행 액면총액과 같거나 그보다 커야 한다고 요구하고, 유통 발행 액면총액은 그 발행자의 모든 지급결제용 스테이블코인의 연결 액면 합계입니다. 비교하는 두 쪽은 공정가치와 액면입니다. 준비자산은 또 규칙안 15.11(b)에 따라 8가지로 한정되고 그 가운데 미국 국채의 잔존만기는 93일을 넘지 못합니다. 규칙안은 잔존만기가 93일을 넘는 국채를 포함해 다른 자산에 투자하는 머니마켓펀드는 준비자산 요건을 충족하지 못한다고도 명시합니다. 다음은 편집부가 설계한 예입니다. 어떤 스테이블코인의 액면이 1달러이고 100만 개가 발행되었다고 하면, 규칙안이 요구하는 준비자산의 공정가치는 100만 달러 이상이어야 하며 시장에서 얼마와 교환되는지를 보는 것이 아닙니다. 또 규칙안 15.11(d)은 유통 발행 액면총액이 250억 달러 이상인 발행자에게 매 영업일 준비자산의 최소 0.5%, 최대 5억 달러를 부보예금이나 부보 출자금에 두도록 요구합니다."
+            },
+            {
+              "question": "왜 기사의 모든 문장에 규칙안이라고 쓰여 있습니까?",
+              "answer": "이 문서가 제안이기 때문입니다. 조항 번호 앞에 규칙안이라고 붙이는 것은 OCC가 조문을 내놓고 의견을 구하는 단계이며 최종 규칙은 다를 수 있다는 것을 알리기 위한 것입니다. 규칙안에서 가장 분명한 곳은 준비자산의 분산과 집중도입니다. 거기에는 Option A와 Option B 두 안이 나란히 있고 문서 스스로 최종 규칙에서는 하나만 고른다고 말하므로, 10%, 30%, 40%, 50%와 20일이라는 숫자는 지금은 모두 제안 중인 숫자입니다."
+            },
+            {
+              "question": "이 사건의 현재 상태를 직접 확인하려면 어떻게 합니까?",
+              "answer": "식별자 세 개를 쓰십시오. 사건번호 Docket ID OCC-2025-0372, 규제식별번호 1557-AF41, 그리고 인용 91 FR 10202 또는 문서번호 2026-04089입니다. 연방관보에서 사건번호나 규제식별번호로 검색하면 같은 사건 아래의 모든 문서가 나오고 나중의 기간 연장 공고나 최종 규칙도 포함됩니다. 덧붙이면 이 문서가 신설하는 part 15의 제목은 두 가지로 인쇄되어 있습니다. 개정 지시는 PART 15--PAYMENT STABLECOINS, 권한 인용 목록은 PART 15--STABLECOIN이며 이 기사는 출처대로 둘을 나란히 적었습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "세 시점을 섞지 마십시오",
+          "text": "게재일은 2026년 3월 2일, 의견 제출 기한은 2026년 5월 1일이고, GENIUS Act 자체의 발효 시점은 제정일부터 18개월 후와 최종 규칙 후 120일 중 이른 쪽이며 법조문에는 달력 날짜가 인쇄되어 있지 않습니다. 이 OCC 문서는 규칙안이고, 이 기사가 적은 요건은 모두 규칙안이 정하려는 내용입니다. 현재 상태를 확인하려면 연방관보에서 사건번호 OCC-2025-0372 또는 규제식별번호 1557-AF41로 같은 사건의 후속 문서를 찾아보면 됩니다. 대만 자체의 규정은 이 기사의 출처 범위에 들어 있지 않고, 기사 끝의 두 번째 링크가 '가상자산서비스법'을 정리했습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 기사는 정보 정리이며 투자 조언이 아닙니다",
+          "text": "이 기사가 설명하는 것은 법규제, 기술과 산업의 운영이며, 어떤 가상자산, 거래소, 지갑, 발행자도 추천하지 않고 투자 조언이 아닙니다. 가격, 등락률, 매매 시점도 담지 않았습니다. 규제 요건, 등록 상태, 서비스 개시 시기와 서비스 조건은 주관 당국과 사업자의 그때그때 공고에 따르며, 이 기사의 확인일은 2026-09-17입니다. 가상자산은 가격 변동이 크고 전액을 잃을 수 있으며 일부 서비스는 예금보험이나 투자자 보호 제도의 보호를 받지 않습니다. 실제 적용은 공식 공고나 자격을 갖춘 전문가의 의견에 따르십시오."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 가상자산 뉴스 총정리: 규제·기술·산업의 핵심",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대만 가상자산서비스법 3독회 통과: 서비스 사업자 7종, 스테이블코인 허가, 시행일은 미정",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Federal Register, Volume 91 Issue 40(2026년 3월 2일 월요일): FR Doc. 2026-04089 전문",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Federal Register API: 문서 2026-04089의 메타데이터",
+          "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "govinfo: Public Law 119-27(GENIUS Act) 공법 원문",
+          "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "美国 OCC 稳定币发行规则草案：一比一准备金、两个营业日赎回与定期报送",
+      "description": "2026 年 3 月 2 日，美国货币监理署在《联邦公报》刊登实施 GENIUS Act 的支付型稳定币规则草案，引注 91 FR 10202、篇幅 102 页，意见征询 2026 年 5 月 1 日截止。本文依《联邦公报》全文与 GENIUS Act 公法原文，说明这份草案新增的 12 CFR part 15 打算管到谁、准备金与赎回怎么定，以及它为什么还不是生效的规则。",
+      "hero": {
+        "src": "/guides/crypto-news-genius-act-occ-20260302/hero-zh-cn.jpg",
+        "alt": "原创插图：左边是一栋山墙加四根柱子的银行建筑，箭头指向中间一份虚线外框的草案文件；右边一枚硬币下方有等号与三层长条，代表代币面额与准备资产一比一",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 3 月 2 日，美国货币监理署（Office of the Comptroller of the Currency，OCC，隶属美国财政部）把一份支付型稳定币规则草案刊登在《联邦公报》，引注 91 FR 10202，篇幅 102 页，要落实的是 GENIUS Act。做法是新增一个 12 CFR part 15，并修正既有的 part 3、part 6、part 8 与 part 19。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日核查，读的是《联邦公报》提供的这份文件全文纯文本文件、同一份文件的元数据，以及美国政府出版局 govinfo 上 GENIUS Act 的公法原文。本站没有做任何实测，也不提供投资或法律意见；下文每一项要求都出自草案文本，定案前仍可能变动。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 3 月 2 日，美国货币监理署在《联邦公报》刊登一份支付型稳定币的规则草案，引注 91 FR 10202，要新增 12 CFR part 15。",
+            "草案要求发行前先取得核准，准备金按面额一比一足额、只能是八类资产，其中美国国债的剩余到期日不得超过 93 天。",
+            "草案把赎回的时限定为不超过两个营业日，单一 24 小时期间的赎回需求超过流通发行面额 10% 时自动延长为七个日历日。",
+            "意见征询在 2026 年 5 月 1 日截止；草案本身没有生效日，GENIUS Act 的生效时点是制定日起 18 个月或最终规则后 120 天，两者较早者。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这是一份草案，不是已经生效的规则"
+        },
+        {
+          "type": "paragraph",
+          "text": "这份文件的案号是 Docket ID OCC-2025-0372，法规识别号 1557-AF41，文件印的意见截止日是 2026 年 5 月 1 日。《联邦公报》的元数据把类型记为 Proposed Rule，文件的 ACTION 栏是 Notice of proposed rulemaking，而生效日与签署日两个字段都是空值。文件第三节是一整节的征询问题，从 Question 1 编到 Question 211。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GENIUS Act 自己的进度要分开算：公法编号 119-27，公法原文末尾记的核准日是 2025 年 7 月 18 日，第 20 条给的是公式——自制定日起 18 个月，与主要联邦支付型稳定币监管机关发布任何实施本法之最终规则后 120 天，两者较早者起生效。草案脚注 12 另分开两个时点：数字资产服务提供者不得提供或销售非由已许可发行人发行的支付型稳定币，自 2028 年 7 月 18 日起适用；不是由符合一定要件之境外发行人所发行者，同类禁令自 GENIUS Act 生效日起适用。两款约束的都是数字资产服务提供者，而发行人若本身也是数字资产服务提供者，这些禁令同样适用于它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "草案管到谁，发行前要先过哪一关"
+        },
+        {
+          "type": "paragraph",
+          "text": "拟议 15.1(b) 的适用对象有六类：国民银行、联邦储贷机构、联邦分行及其各自的子公司；境外支付型稳定币发行人；寻求或已取得联邦合格发行人核准的非银行机构；以及 OCC 依拟议 15.15 或 15.16 对其有监管或执法权限的州级合格发行人。草案脚注 93 写明 OCC 不会核准受保国民银行或联邦储贷机构直接发行，要通过子公司。拟议定义里还有一个关键排除：发行人须负有兑换、赎回或买回为固定货币金额之义务，而该金额不包含以固定货币金额计价的数字资产。"
+        },
+        {
+          "type": "paragraph",
+          "text": "拟议 15.30(a) 要求事前核准：受保银行端要通过子公司，非银行端以联邦合格发行人身份申请。OCC 于收件后 30 天内通知申请是否实质完备；完备的申请自 OCC 收到使其完备的资料当日起算，第 120 天视为核准，除非 OCC 驳回。境外发行人另走登记制，拟议 15.31(a) 定了四项要件，包含经财政部长认定其境外监管机关的制度与该法相当，以及在美国金融机构持有足够准备（互惠安排另有许可者除外）。州级合格的非银行发行人流通发行面额超过 100 亿美元时，拟议 15.15(b) 要求限期转入联邦架构，否则不得再净增发。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "事项",
+            "草案条号",
+            "期间"
+          ],
+          "rows": [
+            [
+              "申请是否实质完备",
+              "拟议 15.30(b)(3)",
+              "收件后 30 天内通知"
+            ],
+            [
+              "视为核准",
+              "拟议 15.30(b)(5)",
+              "完备后第 120 天"
+            ],
+            [
+              "境外发行人登记",
+              "拟议 15.32(b)(4)",
+              "收件后第 30 天"
+            ],
+            [
+              "驳回后请求听证",
+              "拟议 15.30(e)(1)",
+              "收到通知后 30 天内"
+            ],
+            [
+              "反洗钱合规证明",
+              "拟议 15.14(k)",
+              "核准后 180 天内，之后每年"
+            ]
+          ],
+          "caption": "依 OCC 2026 年 3 月 2 日刊登的规则草案整理，核查日 2026 年 9 月 17 日；表中都是草案拟定的期间，不是现行规定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "草案的准备金：按面额一比一，只能是八类资产"
+        },
+        {
+          "type": "paragraph",
+          "text": "拟议 15.11(a)(1) 要求准备资产可辨识、与发行人其他资产分离不得混同，且任何时候的总公允价值都等于或高于发行人的流通发行面额；流通发行面额指该发行人所有支付型稳定币的合并面额总额。可用的准备资产被拟议 15.11(b) 限于八类，核心是联邦储备银行账户款项或美国现金、受保存款机构可随时提取的存款或受保股金，以及剩余到期日 93 天以内的美国国债；其余几类多是这些资产的衍生形式，例如不超过隔夜的回购与逆回购，另有一类是 OCC 认可的其他同等流动联邦政府发行资产。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分散与集中度并列两个版本，草案说最终规则只会选一个：Option A 是原则性要求加一组可选的安全港，Option B 把同一组数字变成强制。两案数字相同——每个营业日至少 10% 是可随时提取的存款、受保股金或联邦储备银行账户款项，至少 30% 是上述再加五个营业日内无条件到期的应收款，在任一家合格金融机构不超过 40%，前述 10% 那一块在任一家不超过 50%，加权平均到期日不超过 20 天。准备金不足时，拟议 15.11(g) 要当日通报、立即停止新发行（跨账本转移且净额不增加者除外），连续 15 个营业日未达标（OCC 可自行决定延长）就要开始清算并赎回，且不得收取赎回费用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/crypto-news-genius-act-occ-20260302/diagram-1-zh-cn.svg",
+          "alt": "四格图解：先申请、准备金、赎回、持续报送",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OCC 2026 年 3 月 2 日刊登的规则草案整理：先申请、准备金、赎回与持续报送，核查日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "赎回时限、披露与定期报送"
+        },
+        {
+          "type": "paragraph",
+          "text": "拟议 15.12(b)(1)(i) 把及时赎回定为不得超过请求日之后两个营业日，OCC 说明这是外侧上限；同款 (ii) 的裁量性限制只能由监管机关施加：一般是 OCC，州级合格发行人则视情形是 OCC、美联储或该州支付型稳定币监管机关。草案也写明，这些要求只适用于发行人及代其行事者的赎回，不适用于二级市场交易。压力情境另有自动条款：拟议 15.12(c)(1) 规定单一 24 小时期间的赎回需求超过流通发行面额 10% 时，及时赎回的期间立即延长为七个日历日，发行人并须在跨过门槛后 24 小时内通报。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另有一条权限要一起看：拟议 15.16 落实 GENIUS Act 第 7 条，OCC 认定有异常且紧急情形、且有合理理由相信某家非银行的州级合格发行人继续其活动（包含不作为）对其财务安全、稳健或稳定构成重大风险时，将以具有最终停止命令效力的指令施加必要限制，而列举的限制第一项就是支付型稳定币的赎回。报送则不只一个周期，草案至少要求以下几项：每周向 OCC 提交保密报告；每月最后一日中午前公布上月月底的准备金组成，并由注册会计师事务所核查、首席执行官与首席财务官签署证明；每季结束后 30 天内提交财务状况报告；核准后 180 天内、之后每年由董事会出具证明，说明已建立反洗钱与经济制裁合规计划。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "还没定下来的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "OCC 在资本一节描述了几种可变的附加成分，但明确表示不在拟议条文之内；拟议 15.42 另给 OCC 个案的权限，可视个别发行人的情况要求额外资本或后备，并列出七种示例情形。拟议条文写的是新设发行人最低资本取许可条件所定金额与 500 万美元之较高者，另须备有相当于 12 个月总费用的运营后备；季末未达标者自次月第一日起不得新发行，连续两季未达标则须开始清算并赎回。拟议 15.41(d) 还让未受保的国民信托银行可以选择适用这套要求，以取代 12 CFR part 3 的资本与杠杆要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "费用的金额还没有定：草案在修正后的 8.2 与拟议 8.10 两处提出同一个稳定币准备资产扣减，实际比率逐年在 OCC 的年度费用公告发布。银行端则有拟议 3.22(i)：与已许可发行人合并报表的受保国民银行或联邦储贷机构，计算资本比率时要把该发行人解除合并。反洗钱与制裁合规的标准，草案留给另一个提案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这份草案约束的是拟议 15.1(b) 那几类美国机构，不是台湾的读者；但它要求公开的东西读者看得到。拟议 15.12(d)(1) 要发行人用通俗文字公开自己的名称、由谁负兑换义务、前面那份每月准备金组成报告的链接，以及购买与赎回的所有费用；拟议 15.10(c)(3) 另禁止发行人直接或暗示表示稳定币有美国全额信用担保、受美国政府保证，或受联邦存款保险或股金保险保障。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这份规则已经生效了吗？",
+              "answer": "还没有。这份文件的 ACTION 栏写的是 Notice of proposed rulemaking，《联邦公报》把它归为 Proposed Rule，元数据里的生效日字段是空值，文件印的意见截止日是 2026 年 5 月 1 日。GENIUS Act 自己的生效时点也还是一个公式：自制定日起 18 个月，与主要联邦支付型稳定币监管机关发布任何实施该法之最终规则后 120 天，两者较早者。要看有没有出现最终规则，请到《联邦公报》用案号 OCC-2025-0372 或法规识别号 1557-AF41 查询。"
+            },
+            {
+              "question": "这和我在台湾用的平台有关系吗？",
+              "answer": "这份草案是美国货币监理署对它所管辖机构发行支付型稳定币所提的规则，适用对象写在拟议 15.1(b)：国民银行、联邦储贷机构、联邦分行及其子公司，境外支付型稳定币发行人，寻求成为联邦合格发行人的非银行机构，以及 OCC 对其有监管或执法权限的州级合格发行人。以本文核查到 2026 年 9 月 17 日的草案文本，施加义务的对象是发行人、托管人与监管机关，未见对持有人施加义务的条文。台湾自己的规定要看台湾的法，本文的来源不涵盖，文末第二个链接整理了那一部。"
+            },
+            {
+              "question": "两个营业日内赎回是保证吗？",
+              "answer": "草案写的是义务的上限，不是保证。拟议 15.12(b)(1)(i) 把及时赎回定为不超过请求日之后两个营业日，但拟议 15.12(c)(1) 规定单一 24 小时期间的赎回需求超过流通发行面额 10% 时，期间自动延长为七个日历日，除经 OCC 认定发行人能以有序方式、经公平透明的程序提前赎回，或 OCC 另行通知延长期间不再适用；拟议 15.12(c)(5) 让 OCC 在认定发行人对安全稳健或金融稳定构成威胁、或延长符合公共利益时再行延长；拟议 15.16 则让 OCC 在异常且紧急情形下对非银行的州级合格发行人施加限制，列举的第一项就是赎回。而且这些都还是草案。"
+            },
+            {
+              "question": "准备金一比一是什么意思？",
+              "answer": "拟议 15.11(a)(1) 要求准备资产在任何时候的总公允价值都等于或高于发行人的流通发行面额，而流通发行面额是该发行人所有支付型稳定币的合并面额总额。比较的两边是公允价值对面额。准备资产另外被拟议 15.11(b) 限于八类，其中美国国债的剩余到期日不得超过 93 天；草案并明写，投资于其他资产的货币市场基金，包含剩余到期日超过 93 天的国债，不符合准备资产资格。以下是编辑设计的例子：假设一枚稳定币的面额是一美元、发行一百万枚，草案要求的准备资产公允价值就要在一百万美元以上，而不是看它在市场上换到多少。另外，拟议 15.11(d) 要求流通发行面额达 250 亿美元以上者，每个营业日至少 0.5% 放在受保存款或受保股金，上限 5 亿美元。"
+            },
+            {
+              "question": "为什么文章里每一句都写草案或拟议？",
+              "answer": "因为这份文件是提案。条号前面加拟议是要提醒：OCC 提出了条文并征求意见，最终规则可能不同。草案里最明显的一处是准备金的分散与集中度，它并列了 Option A 与 Option B 两个版本，文件自己说最终规则只会选一个，所以 10%、30%、40%、50% 与 20 天这些数字目前都还是提案中的数字。"
+            },
+            {
+              "question": "怎么自己查这个案子的现况？",
+              "answer": "用三个识别码：案号 Docket ID OCC-2025-0372、法规识别号 1557-AF41，以及引注 91 FR 10202 或文件编号 2026-04089。在《联邦公报》以案号或法规识别号查询，会列出同一个案子底下的所有文件，包含日后的延期公告或最终规则。顺带一提，这份文件里新增的 part 15 标题印了两种写法：修正指示写 PART 15--PAYMENT STABLECOINS，授权引注清单写 PART 15--STABLECOIN，本文照来源并列。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三个时点不要混在一起",
+          "text": "刊登日是 2026 年 3 月 2 日，意见征询截止日是 2026 年 5 月 1 日，而 GENIUS Act 自己的生效时点是自制定日起 18 个月与最终规则后 120 天两者较早者，法条没有印出日历日期。这份 OCC 文件是草案，本文写到的每一项要求都是草案拟定的内容。要确认现况，可以到《联邦公报》用案号 OCC-2025-0372 或法规识别号 1557-AF41 查同一个案子的后续文件。台湾自己的规定不在本文的来源范围内，文末第二个链接整理了《虚拟资产服务法》。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇是信息整理，不是投资建议",
+          "text": "本文说明的是法规、技术与产业运作，不推荐任何加密资产、交易所、钱包或发行方，也不是投资建议，不含价格、涨跌幅与买卖时机。监管规定、登记状态、上线时间与服务条件以主管机关与服务商当期公告为准，本文核查日为 2026-09-17。加密资产价格波动大、可能全额损失，且部分服务不受存款保险或投资者保护制度保障；实际适用请以官方公告或合格专业人员的意见为准。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年加密货币新闻总整理：法规、技术与产业的重点",
+              "kind": "life",
+              "slug": "crypto-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台湾虚拟资产服务法三读通过：七种服务商、稳定币许可与仍未定的施行日",
+              "kind": "life",
+              "slug": "crypto-news-taiwan-vasp-act-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Federal Register, Volume 91 Issue 40 (Monday, March 2, 2026)：FR Doc. 2026-04089 全文",
+          "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Federal Register API：文件 2026-04089 的元数据",
+          "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "govinfo：Public Law 119-27（GENIUS Act）公法原文",
+          "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

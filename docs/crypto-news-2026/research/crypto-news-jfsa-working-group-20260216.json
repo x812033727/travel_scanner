@@ -1,0 +1,608 @@
+{
+  "slug": "crypto-news-jfsa-working-group-20260216",
+  "title": "日本金融審議會報告：建議加密資產改依金融商品取引法，相關法案已成立、施行日未見",
+  "event_date": "2026-02-16",
+  "checked_on": "2026-09-17",
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 由撰稿代理重抓四條 sources，全部 `curl -sSL -A \"Mokaair-editorial\"`，逐條看過 body（不是狀態碼）：\n\n1. https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html — HTTP 200、text/html、17,948 bytes。body 是正文：`<h1>Publication of the Report by the Working Group on Crypto-asset Systems&nbsp;of the Financial System Council</h1>`，上方四個 `<p>` 依序是 `February 16, 2026`／`Updated on August&nbsp;3, 2026`／`Financial Services Agency`／`(Japanese version: published December 10, 2025)`，下方掛三個 PDF 連結與承辦單位 Financial Markets Division, Policy and Markets Bureau。不是拒絕頁、不是轉址殼。**注意 h1 的 `Systems` 與 `of` 之間、`August` 與 `3` 之間都是不斷行空格（HTML 原始碼為 `&nbsp;`，U+00A0）**，照抄標題或該行時要連這個字元一起抄。\n\n2. https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf — HTTP 200、application/pdf、821,835 bytes、`Last-Modified: Mon, 03 Aug 2026 08:00:09 GMT`。用系統 python 的 pymupdf 抽文字：62 頁、內部 `/ModDate D:20260731100610+09'00'`、`/CreationDate D:20260731100602+09'00'`、`/Title` 為空字串。第 1 頁（封面）印 `Report by the Working Group on Crypto-asset Systems` / `of the Financial System Council` / `December 10, 2025` / `Provisional Translation`。\n\n3. https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf — HTTP 200、application/pdf、274,808 bytes、`Last-Modified: Fri, 03 Jul 2026 09:00:02 GMT`、6 頁、內部 `/ModDate D:20260703175445+09'00'`。六頁依序是揭露架構（兩頁）、業者規範對照表（兩頁）、內線交易架構、DEX 對應方式。\n\n4. https://www.fsa.go.jp/common/diet/index.html — HTTP 200、text/html、70,051 bytes、`Last-Modified: Tue, 15 Sep 2026 17:31:49 GMT`。body 是正文：頁內依國會屆次分區，`国会提出法案（第221回国会）`／`提出した法律` 底下第一筆就是 `金融商品取引法及び資金決済に関する法律の一部を改正する法律`，緊接一行 `（令和８年４月10日提出、令和８年７月15日成立）`，再接該法的立法理由敘述與「概要／説明資料／法律案要綱／新旧対照条文／参照条文」五個 PDF 連結。**這一頁是活頁**（見 live_data_warnings）。\n\n工具環境：本容器的 `apps/api/.venv` **沒有** pypdf；系統 python（Git Bash 的 `python`）有 pypdf 6.16.2 與 pymupdf，抽文字用後者。前一位研究者記的「pip install cffi 之後 pypdf 可用」在這個 venv 不成立，不要照抄那條配方。\n\n**verbatim_quote 的判準（本紀錄一律照此）**：以 PDF／HTML 檢視器的搜尋行為為準——同一個句子或同一個表格儲存格內的換行，以一個空格接起（PDF 文字層有硬換行），並在 fact 裡註明接過行；**沒有**跨儲存格、跨段落、跨頁或跨檔拼接，也沒有省略號。來源自己的錯字、雙空格、彎引號與不斷行空格一律照抄。\n\n刻意沒有放進 sources[] 的官方頁（都抓過、都 200，但四條名額用完）：`20260216/02.pdf`（報告概要，5 頁，283,441 bytes，Last-Modified 2026-07-03）、`/en/news/index.html`、`/singi/singi_kinyu/tosin/20251210.html`（日文公告頁）、`/singi/singi_kinyu/angoshisanseido_wg/angoshisanseido_wg_index.html`（六次會議日期）、`/news/r8/shouken/20260729/20260729.html`、`/common/diet/221/02/04.pdf`（法律案要綱）。文章沒有一句依賴這些頁面。\n\n2026-09-17 以程式把 44 條 verbatim_quote 逐條比對上面四個來源檔：37 條在來源文字層逐字命中（引文本身沒有跨行），7 條（第 8、21、22、30、31、40、41 條）在同一個句子或同一個表格儲存格內把換行接成一個空格後命中，已在各該條註明。沒有任何一條需要跨儲存格、跨段落、跨頁或跨檔拼接，也沒有省略號。",
+  "sources": [
+    {
+      "title": "金融廳：Publication of the Report by the Working Group on Crypto-asset Systems of the Financial System Council",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+      "publisher": "Financial Services Agency, The Japanese Government",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "金融審議會加密資產制度工作小組報告全文（英文暫譯本，62 頁）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "publisher": "Financial Services Agency, The Japanese Government",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "金融審議會加密資產制度工作小組報告參考資料（英文暫譯本，6 頁）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "publisher": "Financial Services Agency, The Japanese Government",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "金融廳：国会提出法案等",
+      "url": "https://www.fsa.go.jp/common/diet/index.html",
+      "publisher": "金融庁",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "event_date_basis": "三個日期分開，寫錯就是錯的文章。（1）**2025-12-10** 是報告本體的日期：英文報告封面印 December 10, 2025，英文公告頁也印 `(Japanese version: published December 10, 2025)`。（2）**2026-02-16** 是金融廳把英文暫譯本公布在英文網站的日子，公告頁自己標 `February 16, 2026`；批次 4 的區間自 2026-01-01 起，這是這件事落在區間內的官方動作，所以 slug 尾碼與 news_date 都用 2026-02-16。（3）**2026-08-03** 是英文公告頁另標的更新日（`Updated on August 3, 2026`），而報告全文 PDF 的 HTTP Last-Modified 正是 2026-08-03，代表英文檔案在法案成立之後又換過版。\n\n第一段**不可以**寫成「2026 年 2 月 16 日金融審議會提出報告」，本文寫的是「金融廳於 2026 年 2 月 16 日在英文網站公布報告的英文暫譯本，報告本體日期是 2025 年 12 月 10 日」。若站主希望事件日對齊報告本體，要改 slug 為 ...-20251210，但那個日期在批次 4 的區間之外。\n\n後續法案是**另一組日期，不要跟報告日期混用**：金融廳「国会提出法案等」頁寫 令和８年４月10日提出、令和８年７月15日成立（＝2026-04-10、2026-07-15）。公布日、法律編號與施行日**不在本文四條 sources 涵蓋的範圍內，文章一律沒寫**（見 unverified_or_excluded）。",
+  "verified_facts": [
+    {
+      "fact": "金融廳英文公告頁在 2026-09-17 印著四行頁首：日期 February 16, 2026、`Updated on August 3, 2026`（August 與 3 之間為不斷行空格 U+00A0）、發布機關 Financial Services Agency，以及括號說明日文版於 2025 年 12 月 10 日公布。也就是 2026-02-16 是英文版公布日、2025-12-10 是日文版公布日、2026-08-03 是這個英文頁的更新日。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(Japanese version: published December 10, 2025)"
+    },
+    {
+      "fact": "同一頁另外單獨印出更新日那一行；HTML 原始碼是 `Updated on August&nbsp;3, 2026`，所以逐字抄寫時 August 與 3 之間是 U+00A0，不是普通空格。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Updated on August 3, 2026"
+    },
+    {
+      "fact": "公告頁的內文只有一句話：金融審議會加密資產制度工作小組（主席為上智大學法學部教授 MORISHITA Tetsuo）已彙整並公布報告。頁面只給這個羅馬字拼寫，沒有漢字姓名；本文因此寫 MORISHITA Tetsuo，沒有寫漢字。承辦單位印為 Financial Markets Division, Policy and Markets Bureau。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Working Group on Crypto-asset Systems of the Financial System Council (Chaired by Professor MORISHITA Tetsuo, Faculty of Law, Sophia University) has compiled and published a report."
+    },
+    {
+      "fact": "公告頁掛三個 PDF 連結：報告全文、報告概要（Overview）與參考資料（Reference）。**頁面本身沒有印任何頁數、也沒有印 ModDate**——本文寫的 62 頁與 6 頁是 2026-09-17 由 PDF 檔案本身數出來的，掛在各自的 PDF 網址上（見下兩條）。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Report by the Working Group on Crypto-asset Systems of the Financial System Council (Overview)"
+    },
+    {
+      "fact": "報告全文 PDF 於 2026-09-17 下載：821,835 bytes、62 頁、HTTP `Last-Modified: Mon, 03 Aug 2026 08:00:09 GMT`、PDF 內部 `/ModDate D:20260731100610+09'00'`。封面印報告名稱、December 10, 2025 與 Provisional Translation（暫譯本）。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Provisional Translation"
+    },
+    {
+      "fact": "參考資料 PDF 於 2026-09-17 下載：274,808 bytes、6 頁、HTTP `Last-Modified: Fri, 03 Jul 2026 09:00:02 GMT`、內部 `/ModDate D:20260703175445+09'00'`。第 6 頁的標題就是「（Reference） Response to DEXs」。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "（Reference） Response to DEXs"
+    },
+    {
+      "fact": "報告緣起（第 2 頁）：金融廳在 2025 年 4 月 10 日發表討論文件並公布其檢討結果，指出加密資產在日本與海外愈來愈被使用者視為投資標的、詐騙型投資勸誘也出現，因此有進一步強化使用者保護框架的必要。（引文在同一行內，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "published its findings in a discussion paper on April 10, 2025"
+    },
+    {
+      "fact": "報告緣起（第 3 頁）：2025 年 6 月 25 日，在金融審議會第 55 回總會與第 43 回金融分科會的合同會合上，金融擔當大臣要求審議會在兼顧使用者保護與促進創新的前提下檢討加密資產的適當監理架構；審議會因此設立本工作小組，自 2025 年 7 月起開了六次會。（「六次會」為報告自述，本文照寫為「報告寫它自 2025 年 7 月起開了六次會」。）（引文把同一句內的一個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "which held six meetings beginning in July 2025"
+    },
+    {
+      "fact": "報告第 1 頁回顧：日本為回應國際上強化洗錢與資恐防制（AML/CFT）的要求，並在一家從事加密資產與法定貨幣交換的業者出事之後，於 2016 年修正資金決済法及相關法律，報告自述這是世界上最早的加密資產監理框架之一（2017 年 4 月施行），內容包括交換業者的登記制與使用者保護框架。（引文在同一行內、未接行；「世界上最早之一」是報告的自述，本文寫成「報告稱」。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "and related laws were amended in 2016, thereby introducing one of the world’s first regulatory"
+    },
+    {
+      "fact": "報告第 1 頁：2019 年的修正（2020 年 5 月施行）把交換業者變更經手加密資產的通報由事後改為事前、導入廣告與勸誘規範，並原則上要求交換業者以冷錢包保管使用者的加密資產。報告第 2 頁：2022 年依 FATF 建議修正犯罪收益移轉防止法（2023 年 6 月施行）導入所謂 Travel Rule。（引文在同一行內，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CASPs to manage users’ crypto-assets in cold wallets"
+    },
+    {
+      "fact": "報告第 4 頁引用的國內數字：國內加密資產交換業者的開戶數超過 13 million（本文換算寫「超過 1,300 萬戶」），註 9 標明來源為 JVCEA「Members’ Crypto-Asset Trading Status (Monthly)」（updated December 3, 2025），時點為 2025 年 10 月。**這是報告轉引 JVCEA 的數字，不是金融廳的即時統計。**",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the number of accounts opened with domestic CASPs exceeds 13 million"
+    },
+    {
+      "fact": "報告第 4 頁：逾八成個人帳戶持有的資產不到 JPY 0.1 million（本文寫「不到 10 萬日圓」），註 11 標明來源為 JVCEA「Annual Report on Crypto-Asset Trading, FY2024」。（引文從原句的後半行取起、本身未接行，`more than 80` 在前一行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "percent of individual accounts hold assets of less than JPY 0.1 million"
+    },
+    {
+      "fact": "報告第 4 頁：有投資經驗者當中持有加密資產的比例（7.3 percent）高於外匯保證金交易者與公司債投資人，註 13 標明來源為金融廳「the Results of the Awareness Survey of Customers Regarding Risk-Involving Financial Instruments Sales」（July 5, 2024）。**註 13 只掛在 7.3% 這個數字上。**（引文從原句的後半行取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "among those with investment experience (7.3 percent) exceeds the proportions of FX traders and"
+    },
+    {
+      "fact": "報告第 4 頁（PDF 第 8 頁）：持有加密資產的最主要理由（86.6 percent）是期待長期價格上漲。這一句掛的是**註 14**，而註 14 的全文逐字就只有 `See footnote 10.` 這一句；註 10 印的來源是 `Japan Cryptoasset Business Association`。**86.6% 是這個業界團體的數字，不是金融廳的**（金融廳的調查是註 13，只掛在 7.3% 上）——這是修正清單 must_fix 1 的內容，2026-09-17 由獨立查核代理重讀 01.pdf 第 8 頁逐字複驗。**注意：四條 sources 都只印英文名稱，`日本暗号資産ビジネス協会` 與 `JCBA` 兩個字串在四個檔案裡各 0 次**，所以正文寫成「報告列出的業界團體」，不印任何一方沒有印的名稱。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "See footnote 10."
+    },
+    {
+      "fact": "承上：註 10 的來源逐字為 Japan Cryptoasset Business Association 的「Survey Results on Tax Filing for Crypto-Assets and Proposals for Tax Reform」；同一個註 10 也支撐報告第 4 頁「約七成持有人年所得在 JPY 7 million 以下」那句（本文沒有寫這一項）。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Source: Japan Cryptoasset Business Association"
+    },
+    {
+      "fact": "報告第 5 頁：金融廳的金融服務使用者諮詢室平均每月收到超過 350 件與加密資產有關的詢問與申訴，多數與詐騙型投資勸誘或交易有關。註 17 補充 2025 年 7–9 月共 1,487 件、約占該類別 10%，以及國民生活中心 FY2024 收到 7,227 件（本文只寫每月 350 件那一項）。（引文從原句的後半行取起、本身未接行，`currently receives, on` 在前一行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "average, more than 350 crypto-asset-related inquiries and complaints per month"
+    },
+    {
+      "fact": "報告第 6–7 頁列出五項迫切課題，標題逐字為：① Enhancing Disclosure ② Ensuring Appropriate Transactions and Addressing Unregistered Operators ③ Addressing Inappropriate Conduct in Investment Management ④ Ensuring Fairness in Price Formation and Trading ⑤ Strengthening Cybersecurity。**本文的五項用語照 01.pdf 的標題譯**（第三項是「投資管理」而非「投資助言」——「投資助言／Investment Advice」是概要 02.pdf 的用語，02.pdf 不在 sources 裡，本文不用它）。第四項報告寫的是 IOSCO 的建議，以及 EU（註 20 MiCA）與韓國（註 21）已有立法、美國有執法案例；**本文沒有展開這些法域**。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "③ Addressing Inappropriate Conduct in Investment Management"
+    },
+    {
+      "fact": "報告第 8 頁「修法目的」一節主動聲明：這些修正不應被解讀成官方對投資加密資產的背書。報告接著寫，應以使用者充分理解風險與商品特性、在可承受的風險範圍內交易為前提建立健全的交易環境。（引文從原句的後半行取起、本身未接行，`it should be made clear that such regulatory` 在前一行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "revisions should not be interpreted as an official endorsement of investment in crypto-assets"
+    },
+    {
+      "fact": "報告第 12 頁 III.2(4)：為避免法規重疊，應把資金決済法裡的加密資產相關條文刪除。同節也寫把加密資產納入金融商品取引法不會限制其支付用途。（引文從原句的後半行取起、本身未接行，`Accordingly, to avoid regulatory complexity, it would be appropriate` 在前一行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "to remove the crypto-asset-related provisions from the PSA."
+    },
+    {
+      "fact": "報告第 11 頁 III.2(2)：加密資產一般不表彰收取分配的法律權利，與金融商品取引法下的有價證券性質不同，因此應把加密資產定位成與有價證券有別的受規範商品。報告第 8 頁的修法目的則寫成「把加密資產當成金融商品（financial instruments）處理」。（引文從原句的後半行取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "to position crypto-assets as a regulated instrument distinct from securities."
+    },
+    {
+      "fact": "報告第 11–12 頁 III.2(3)：加密資產在金融商品取引法下的範圍建議沿用現行定義。理由兩條——不屬於資金決済法加密資產定義的所謂 NFT 實務上常涉及商品或服務的提供、性質差異也大，是否一律納入金融監理需審慎考慮；所謂穩定幣（digital-money type）則是在「以與法定貨幣連動的價格發行、可按發行價或等額贖回」的前提下依資金決済法作為電子決済手段（electronic payment instruments）管理，報告寫它目前一般不被視為投資標的。**這段理由在 01.pdf，不在概要。**（引文把同一句內的一個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "they are not currently generally regarded as investment targets"
+    },
+    {
+      "fact": "參考資料第 1 頁的揭露架構表把對象切成**三欄**：有可辨識發行人且發行人透過募集募資、有可辨識發行人但發行人未募資、以及其他加密資產。「Entities subject to the regulation」那一列印了三段文字，但對應的是**兩組**欄位（與同表只有兩格的「Acts subject to the regulation」「Method and Timing」兩列一致）：發行人募資那一欄是發行人（編製並公表）**加上**經手的交換業者（公表發行人編製的資訊）；發行人未募資與「其他加密資產」兩欄都是交換業者（自行編製並公表）。報告第 18 頁 D 節（`even where the issuer does not raise funds … a CASP that handles the relevant crypto-asset should disclose the necessary information … based on publicly available sources or information obtained from the issuer`）與第 57 頁對照表（`Obligation to disclose information (that the issuer prepared)` 只列在發行人自己販賣的那一組）寫的是同一件事。**2026-09-17 訂正：原先把三段文字逐欄對應，寫成「發行人未募資時由業者公表發行人編製的資訊」，是讀錯了表。****兩類的寫法會漏掉一整個監理情形（修正清單 must_fix 8），本文寫三種情形。**（引文把同一個儲存格內的一個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The issuer does NOT raise funds through the offering"
+    },
+    {
+      "fact": "參考資料第 1 頁的揭露項目：加密資產的特性與功能、發行總量、底層技術、附隨的權利義務與相關風險（三欄共通）；發行人資訊、募資款項的預定用途與專案內容只列在「有可辨識發行人」的兩欄，「其他加密資產」欄印的是「―」。（引文為儲存格內的一整行，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "underlying technology, rights and obligations attached to the crypto-assets, and associated risks"
+    },
+    {
+      "fact": "參考資料第 1 頁的豁免欄：相當於私募或私募性質再次售出的情形（向少數投資人或合格機構投資人的勸誘）豁免；頁尾星號註另外寫明無償配發、以及作為挖礦或質押獎勵自動產生的配發也豁免。**「質押」只出現在 03.pdf 的星號註（修正清單 must_fix 7）。** 引文照來源印的 `a rewards`（來源自己的單複數錯誤，未修正）。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "*Offers provided free of charge, and distributions created automatically as a rewards for mining or staking, are exempt from this regulation."
+    },
+    {
+      "fact": "報告第 18 頁 E 節寫出私募豁免的門檻：向 49 人以下（不含合格機構投資人）的勸誘；報告同節並要求課以適當的轉讓限制以防規避（本文把轉讓限制寫在括號裡，沒有刪掉這個條件）。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When crypto-assets are solicited for sale to a small number of persons (49 or fewer), those persons"
+    },
+    {
+      "fact": "參考資料第 2 頁：虛偽記載與漏未揭露要負刑事責任、民事責任與課徵金（administrative monetary penalty）；發行人違反揭露義務時可由全部國內交換業者停止經手。本文的「虛偽記載或漏未揭露要負刑事責任、民事賠償責任與課徵金」出自這一格。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "・Criminal penalty, civil liability, and administrative monetary penalty for material misstatements and omissions"
+    },
+    {
+      "fact": "報告第 6 頁 ①：發行時的白皮書常有說明不清、或與底層程式碼有出入的問題，且這類揭露至今只在自律規範下要求交換委者為之，因此有強化揭露的必要。本文「白皮書常有說明不清、或與實際程式碼不一致」出自這一段。（引文從原句的後半行取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "often contain unclear descriptions or discrepancies between their stated features and the underlying"
+    },
+    {
+      "fact": "報告第 26 頁 4(1)：從事加密資產買賣的業者原則上應比照第一種金融商品取引業（Type I Financial Instruments Business）管理；現行由自律規則規範、具一般適用性的要求應提升到法令層級。（引文從原句的後半行取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "should, in principle, be subject to regulations equivalent to those applicable to Type I Financial"
+    },
+    {
+      "fact": "參考資料第 4 頁的業者規範對照表（左欄 Current、右欄 Proposed Directions）：資本要求一列的左格印 `10 million yen`、右格印 `50 million yen`（**兩格是不同儲存格，不可接成一句**）；禁止行為一列左格 `Under self-regulation`、右格 `By laws and regulations`；責任準備金一列左格為 `-`、右格為 `✓`；外務員制度同樣左格 `-`、右格 `✓`。本文表格的「最低資本額 1,000 萬→5,000 萬日圓」「禁止行為 自律規則→提升到法令」「責任準備金 —→新增」出自這一頁，表中「—」對應來源印的 `-`。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "50 million yen"
+    },
+    {
+      "fact": "參考資料第 4 頁最下一列：認定自律規範機構仍是 JVCEA，但右欄的儲存格加了但書「需要實質強化組織架構」。頁尾星號註把 JVCEA 展開為 Japan Virtual and Crypto Assets Exchange Association。（引文把同一個儲存格內的三個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "JVCEA (substantial enhancement of organizational frameworks is necessary)"
+    },
+    {
+      "fact": "參考資料第 3 頁的未登記業者對照表：無登記經營一列，左欄 `Imprisonment for not more than 3 years`、右欄 `Imprisonment for not more than 5 years`；無登記勸誘一列左欄為 `-`、右欄印的是 `Imprisonment for not more than 1 years`——**`1 years` 是來源自己的寫法，本紀錄照印不修**。同表也列出由 SESC 聲請的法院禁止命令、投資運用業與投資助言業的納管，以及轉出到非託管錢包時的警示與審慎期間。（三格各為一個儲存格，引文只取其中一格，並把格內的一個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Imprisonment for not more than 1 years"
+    },
+    {
+      "fact": "報告註 83（第 35 頁）：現行法下無登記經營加密資產交換業為三年以下有期徒刑、三百萬日圓以下罰金或併科；金融商品取引法下無登記經營金融商品取引業為五年以下有期徒刑、五百萬日圓以下罰金或併科。**這是報告記載的現行與比照後水準，不是 2026 年那部法律的結果。**（引文從原句的後半行取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "imprisonment for up to three years, a fine of up to three million yen, or both."
+    },
+    {
+      "fact": "報告註 84（第 35 頁）：另有意見建議把無登記經營金融商品取引業的有期徒刑上限提高到 10 年。本文寫成「另有意見主張把上限提高到十年」，並明寫那是報告記下的討論、不是最終立法結果。（引文從原句的後半行取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "business without registration be increased to 10 years."
+    },
+    {
+      "fact": "報告第 35 頁 A 節：對未登記業者，建議準用金融商品取引法的手段——禁止未登記業者表示有意從事該業務、由法院發緊急禁止命令、賦予 SESC 聲請該命令並為此進行犯則調查的權限；並考慮設民事條文，讓與未登記業者訂立的買賣契約在一定情形下得認為無效（註 85 以現行金融商品取引法第 171 條之 2 對未上市股票的規定為參照）。報告用的字是 `may nevertheless be appropriate`／`may be deemed void`，本文保留「考慮」與「得認為」。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "provisions under which such contracts may be deemed void."
+    },
+    {
+      "fact": "報告第 36 頁 C 節：為預防加密資產被當成詐騙投資勸誘的付款手段，建議以法令要求交換業者採取三類措施——(i) 使用者把加密資產轉到非託管錢包（unhosted wallets）或未登記業者經營的錢包時，發出詐騙風險警示並確認轉出目的；(ii) 進行適當的交易監控；(iii) 在新開戶後、以及轉到新指定錢包之前設置冷靜期或其他審慎期間。**報告沒有寫這個期間有多長。**（引文在同一行內，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "establishing a cooling-off period or other deliberation period immediately after account opening"
+    },
+    {
+      "fact": "參考資料第 5 頁的內線交易架構：適用對象是「已在國內交換業者上架、或已申請上架」的加密資產，且不問交易場所（包含在 DEX 上進行的交易與 P2P 交易）。重大事實分三類並另設概括條款，第三類的例子是「涉及已發行量 20% 以上」的買賣決定或其取消。公表方法限於交換業者或自律規範機構的網站，社群媒體上的發布明文不算公表。（本文只寫適用範圍那一句；20% 與社群媒體那兩項沒有寫進正文。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "• Crypto-assets admitted or under application for admission to trading on domestic CASPs"
+    },
+    {
+      "fact": "報告第 37 頁 B 節：由銀行與保險公司「自己」發行、買賣加密資產仍須審慎檢討，理由包含洗錢風險、管理加密資產的系統風險、持有加密資產的價格波動風險與風險實現時的聲譽風險，以及有些客戶可能只因為是銀行或保險公司提供就在未充分評估加密資產風險或自身風險承受度的情況下交易；銀行與保險公司自行從事投資運用業務應維持禁止。同頁另寫在具備適當風險管理與治理架構的前提下，可允許它們為自身投資目的持有加密資產。",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Allowing banks and insurance companies themselves to issue, purchase, or sell crypto-assets"
+    },
+    {
+      "fact": "報告第 25 頁 B(i)：發行人未經會計師事務所財務稽核而向散戶廣泛募資時，報告認為可比照股權型群眾募資設投資上限。**報告沒有給加密資產的上限金額**；註 60 寫的是現行股權型群眾募資投資人（不含專業投資人）的公式：淨資產（不含自用住宅）的 5%、年所得的 5% 或 50 萬日圓三者取高者，計算結果超過 200 萬日圓時以 200 萬日圓為上限。本文只寫「沒寫加密資產的金額」，沒有把群眾募資的公式當成加密資產的上限。（引文從註 60 的中段取起，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "greater of: (i) 5% of net assets (excluding residential real estate), (ii) 5% of annual income, or (iii)"
+    },
+    {
+      "fact": "報告第 30 頁 D 節（責任準備金）：現行只對熱錢包保管部分要求持有同種同量的履行保證加密資產，但冷錢包同樣有遭駭外流風險，因此建議在不造成過度負擔的前提下要求業者提列「適當水準」的責任準備金，並考量過去的外流事件與適用的資安標準。**報告沒有寫比率或金額。**（引文在同一行內，未接行。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "it may be appropriate to require them to set aside liability reserves at an"
+    },
+    {
+      "fact": "參考資料第 6 頁（DEX）：報告寫明確的監理方式尚未確立，適當的作法是繼續研議與現行交換業者規範有別、在技術上相稱的監理架構，並密切觀察其他法域的監理與監督發展；同頁也寫部分 DEX 在歐洲與美國被認為不在監理範圍內。眼前的措施是：使用者透過 DEX 或未在日本登記的業者交易時，政府與已登記的交換業者應充分告知這可能使他們承受無法預見的損失。（引文把同一句內的兩個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/03.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "although a clear regulatory approach to DEXs has not yet been established, it is appropriate to continue examining proportionate regulatory frameworks that are technically aligned and distinct from those currently applied to CASPs"
+    },
+    {
+      "fact": "報告第 38 頁 5(1)：交換業者不得以過度強調過去績效或未來預測等方式，作出妨礙正確風險認知或鼓勵投機交易的表示，並應建立確保客戶在其風險承受度內交易的架構。本文的 FAQ 第 4 題用的是這一段。（引文把同一句內的一個換行接成空格。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CASPs should be prohibited from making representations that impede proper risk recognition or encourage speculative trading"
+    },
+    {
+      "fact": "報告第 49 頁結論：這次檢討主要針對透過國內交換業者進行的交易，報告自己寫「應認識到本次檢討只涵蓋全球加密資產交易的一部分」，也不能單憑本次檢討確保整個市場健全；DEX 等高度匿名的區塊目前無法在全球範圍有效監理，仍需跨國監理合作。（引文只取到 `global` 為止：下一個詞在報告裡是用 U+2011 不斷行連字號寫的 `crypto‑asset`，為免逐字比對失敗而不納入引文。）",
+      "url": "https://www.fsa.go.jp/en/refer/councils/singie_kinyu/20260216/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It should therefore be recognized that this review covers only a portion of global"
+    },
+    {
+      "fact": "金融廳「国会提出法案等」頁在 2026-09-17 的第 221 回國會區列出『金融商品取引法及び資金決済に関する法律の一部を改正する法律』，並在其下一行以括號註明提出與成立的日期，即令和 8 年（2026 年）4 月 10 日提出、同年 7 月 15 日成立。**該頁沒有寫公布日、法律編號，也沒有寫施行日。**",
+      "url": "https://www.fsa.go.jp/common/diet/index.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "（令和８年４月10日提出、令和８年７月15日成立）"
+    },
+    {
+      "fact": "同一頁在該法案下方寫出立法目的：為因應我國金融與資本市場的變化、擴大成長資金供給，並確保市場的公正性與透明性及投資者保護，就「暗号資産」「サステナビリティ情報の開示・保証」「スタートアップへの資金供給」「不公正取引規制」等建立制度。也就是加密資產只是這部法的一部分。該頁另掛概要、說明資料、法律案要綱、新舊對照條文與參照條文五個 PDF，並註明它們是為國會審議參考而作成。",
+      "url": "https://www.fsa.go.jp/common/diet/index.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "「暗号資産」、「サステナビリティ情報の開示・保証」、「スタートアップへの資金供給」、「不公正取引規制」等に関する制度を整備"
+    }
+  ],
+  "not_said": [
+    "報告是審議會工作小組的建議，不是法律、不是內閣府令。報告本身沒有寫任何條文的生效日，也沒有寫國會何時審議。",
+    "四條 sources 都沒有寫這部法的公布日與法律編號。**以這四頁查核到 2026-09-17 未見**——「公布日 2026-07-23／令和 8 年法律第 64 號」只在 shugiin.go.jp 這個非白名單來源上讀到過（前一輪紀錄），本文一律沒寫。",
+    "四條 sources 都沒有寫加密資產相關條文的施行日。文章寫成「以本文所引的四個金融廳頁面查核到 2026 年 9 月 17 日，未見加密資產相關條文的施行日」，沒有寫「官方尚未公布」，也沒有推算任何日期。",
+    "「国会提出法案等」頁只寫「提出」與「成立」，沒有寫閣議決定日。文章因此寫「提出」與「成立」，沒有寫「內閣通過」。",
+    "報告沒有給加密資產的投資上限金額或公式；註 60 的 5%／5%／50 萬日圓／200 萬日圓是現行股權型群眾募資的規定。",
+    "報告沒有寫新開戶後的冷靜期／審慎期間有多長，也沒有寫適用哪些轉出情境的細節。",
+    "報告沒有寫責任準備金的提列比率或金額，只寫「適當水準」。",
+    "報告沒有對 DEX 給出結論，明確寫「明確的監理方式尚未確立」。",
+    "報告沒有說 NFT 與穩定幣會被納入加密資產規範；報告建議的是沿用現行定義，並各給一段理由。",
+    "報告全文沒有任何關於申報、稅率或分離課稅的建議（唯一出現 tax 的地方是註 10 那個資料來源的標題）。文章沒有寫稅務。",
+    "報告沒有點名任何一家交易所、錢包或發行方，也沒有列出受影響的業者名單。",
+    "報告沒有說日本或境外使用者何時會看到這些變化落到自己的帳戶上。",
+    "英文公告頁只有一句話介紹，沒有新聞稿式說明、沒有大臣談話、沒有 Q&A。",
+    "01.pdf、03.pdf 內都沒有出現 `23576`（以字串搜尋，兩份各 0 次）。修正清單提到的 `ISO/TC 23576:2020` 錯字**不在本文的來源裡**，文章沒有寫這個編號；01.pdf 出現 ISO 的唯一一處是註 5 的 `ISO/IEC 14888`。",
+    "本文沒有讀最終公布的法律條文，也沒有讀法律案要綱與新舊對照條文（四條 sources 之外），所以沒有寫最終條文與報告建議的逐條對照。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "全球加密資產市值超過 3 兆美元",
+      "seen_where": "報告全文第 9 頁（註 26 標明來源為 CoinMarketCap，as of November 30, 2025）",
+      "why_excluded": "crypto.md 明令不寫市值，CoinMarketCap 也在禁用名單上。印在主管機關的報告裡不會讓它變成法規事實（修正清單跨篇型態 9）。**一個字都沒寫。**"
+    },
+    {
+      "claim": "國內交換業者的使用者存放資產超過 5 兆日圓（2025 年 10 月，報告註 9 引 JVCEA）",
+      "seen_where": "報告全文第 4 頁與第 9 頁",
+      "why_excluded": "這是市場規模數字，而且在第 9 頁與被禁的全球市值同句對比出現。修正清單允許它只在說明「為什麼要修法」時出現，但本文改用開戶數（1,300 萬戶）與帳戶分布（逾八成不到 10 萬日圓）承擔同樣的論證，**刻意不寫 5 兆日圓**，以免被讀成市場規模。"
+    },
+    {
+      "claim": "比特幣 ETF 在多國掛牌、資金持續透過這些工具流入；美國投資比特幣 ETF 的機構投資人（含退休基金）增加；野村控股與 Laser Digital 的調查顯示日本機構投資人投資意願升高",
+      "seen_where": "報告全文第 4–5 頁與註 15、註 16（註 15 的來源是日本經濟新聞、註 16 是業者自行發布的調查）",
+      "why_excluded": "crypto.md 明令不寫 ETF 資金流與投資意願；其中兩項的原始來源是新聞媒體與業者。01.pdf 裡 Bitcoin 只出現三次，全部在 ETF 語境，**所以文章也沒有把比特幣寫成「其他加密資產」的例子**（那個例子在概要 02.pdf，02.pdf 不在 sources 裡）。"
+    },
+    {
+      "claim": "「其他加密資產（例如比特幣）」這個舉例、概要把 86.6% 寫成 87%、五項課題第三項寫成 Investment Advice、以及「NFT 與穩定幣在修法後的 FIEA 下仍然不在加密資產定義之內」這句斷語",
+      "seen_where": "報告概要 20260216/02.pdf 第 1、3 頁",
+      "why_excluded": "02.pdf 抓過（HTTP 200、283,441 bytes、5 頁）但**沒有放進 sources[]**（四條名額用在公告頁、全文、參考資料與国会提出法案等）。凡是只有 02.pdf 支撐的說法一律不寫；相同內容改引 01.pdf 的版本（86.6%、Investment Management、沿用現行定義的兩段理由）。"
+    },
+    {
+      "claim": "工作小組六次會議的各次日期（第 1 回 2025-07-31 至第 6 回 2025-11-26）、成員 13 人與 19 個觀察員單位名單、日文公告頁「今後將在金融審議會總會・金融分科會報告」",
+      "seen_where": "工作小組開催實績頁、01.pdf 第 4 頁成員名單、日文公告頁 /singi/singi_kinyu/tosin/20251210.html",
+      "why_excluded": "開催實績頁與日文公告頁不在 sources[]；成員名單雖在 01.pdf，但對一般讀者無用且會吃掉字數。文章只寫 01.pdf 自述的「自 2025 年 7 月起開了六次會」。"
+    },
+    {
+      "claim": "2026-08-12 起「無登記業罰則提高與 SESC 犯則調查權追加」部分先施行；施行期日共四段；最終立法的無登記經營罰則是十年以下拘禁刑、一千萬日圓以下罰金",
+      "seen_where": "金融廳 2026-07-29 新聞稿與法律案要綱 /common/diet/221/02/04.pdf（兩者都抓過、都 200）",
+      "why_excluded": "兩頁都不在本文的 sources[]（source_list_fix 要求把名額留給公告頁、全文、參考資料與国会提出法案等）。文章因此**只寫報告記載的罰則水準（三年→五年、另有意見主張十年），並明寫那不是最終立法結果**，沒有寫任何施行日與最終條文的罰則。要寫必須另外把那兩個網址放進 sources[]。"
+    },
+    {
+      "claim": "報告提到歐盟 MiCA 與韓國《虛擬資產使用者保護法》已就內線交易立法、美國已有執法案例",
+      "seen_where": "報告全文第 7 頁與註 20、21、22",
+      "why_excluded": "可以寫「報告指出歐盟與韓國已立法」這個層次，但不能寫成本站查證過那些法的條文內容；為省字數與避免污染同批次的 MiCA 與 SEC 篇，文章連這個層次都沒有展開，只在研究紀錄留存。"
+    },
+    {
+      "claim": "日本已登記加密資產交換業者家數、JVCEA 會員家數",
+      "seen_where": "未查",
+      "why_excluded": "四條 sources 都沒有這些數字，也沒有去查金融庁的登錄一覽或 JVCEA 名冊。那是活清單，要寫必須當天重數並標明版本時點。"
+    },
+    {
+      "claim": "本文所讀的英文 PDF 與 2026-02-16 當天掛上去的版本相同",
+      "seen_where": "HTTP Last-Modified 與 PDF ModDate",
+      "why_excluded": "01.pdf 的 Last-Modified 是 2026-08-03（頁面也標 Updated on August 3, 2026）、內部 ModDate 是 2026-07-31，03.pdf 是 2026-07-03，都晚於 2026-02-16。文章明寫「本文引的就是這一版」，沒有宣稱與首發版一致。"
+    },
+    {
+      "claim": "工作小組主席的漢字姓名",
+      "seen_where": "英文公告頁只印 `MORISHITA Tetsuo`；漢字寫法出現在不在 sources[] 的日文公告頁",
+      "why_excluded": "四條 sources 都沒有漢字姓名，所以文章照公告頁寫羅馬字 MORISHITA Tetsuo。這一條是刻意的：前一輪紀錄把漢字姓名寫進來，來源卻是另一個頁面。"
+    }
+  ],
+  "must_not_write": [
+    "任何幣價、漲跌幅、市值（含報告轉引 CoinMarketCap 的 3 兆美元）、交易量、ETF 資金流、質押或借出報酬、空投獎勵數字。",
+    "報告轉引的 5 兆日圓使用者存放資產（本文刻意排除，見 unverified_or_excluded）。",
+    "任何把某個加密資產寫成可以持有的選項，或暗示日本修法後「比較安全所以可以買」。",
+    "把「日本把加密資產移到金融商品取引法」寫成「官方承認它是投資商品所以背書投資」——報告第 8 頁明文否認這個解讀，文章必須保留這一句（已寫進正文與 FAQ）。",
+    "把報告的建議寫成已生效的法律義務。每一個操作性句子都要帶「報告建議／報告認為」。",
+    "公布日、法律編號（令和 8 年法律第 64 號）與任何施行年月——不在本文四條 sources 的涵蓋範圍內。",
+    "「2026 年 4 月內閣通過法案」這種模糊講法；只能寫「提出」（2026-04-10）與「成立」（2026-07-15），因為「国会提出法案等」頁只寫這兩個。",
+    "把報告建議的罰則（三年→五年）寫成 2026 年那部法律的結果。",
+    "把 86.6% 寫成金融廳的調查（註 14 指回註 10，那是 JCBA 的調查）；把 7.3% 與 86.6% 的出處混在一起。",
+    "把揭露制度寫成兩類對象——參考資料是三欄切分。",
+    "把「去中心化後終止揭露義務」寫成自動發生；報告第 21 頁寫的是由主管機關核准終止，且交換業者的義務不隨之消滅。（本文沒有寫這一段，若查核者要補，必須照這個寫法。）",
+    "`ISO/TC 23576:2020` 這個編號——它不在本文的三份 PDF 裡（各 0 次）。",
+    "從整合站抄任何日本監理的數字；本篇每一句都要指回上面四條 sources。",
+    "「本站實測」「我們試用」；也不要寫成投資、稅務或法律意見。",
+    "簡體字、列表、Markdown、emoji、商標或介面截圖描述。"
+  ],
+  "live_data_warnings": [
+    "**英文報告 PDF 是活文件，而且在法案成立之後才改版**：01.pdf 的 HTTP `Last-Modified` 是 2026-08-03、內部 `ModDate` 是 2026-07-31；英文頁自己也標 `Updated on August 3, 2026`。03.pdf 的 `Last-Modified` 是 2026-07-03。文章已寫明「本文引的就是這一版」。定稿當天要重抓並比對 bytes 與 ModDate：2026-09-17 的值是 01.pdf 821,835 bytes、03.pdf 274,808 bytes，與 2026-09-16 的前一輪紀錄相同。",
+    "**`/common/diet/index.html` 是活頁**：它依國會屆次累積，`Last-Modified` 在 2026-09-17 為 `Tue, 15 Sep 2026 17:31:49 GMT`、70,051 bytes。第 221 回國會那一區的標題是「提出した法律」（更早的屆次寫「成立した法律」），下一屆國會開議後版面與順序都可能變。文章只依賴「該頁在第 221 回區列出這部法，並註明提出與成立日期」這件事，沒有依賴頁面的筆數或排序。",
+    "報告引用的國內統計（1,300 萬戶開戶數、逾八成帳戶不到 10 萬日圓、7.3%、86.6%、每月 350 件）**全部是報告轉引** JVCEA、JCBA 或金融廳自己的調查，一律寫成「報告引用的數字」，不是即時統計；其中三個帶時點（2025 年 10 月、2024 年 7 月 5 日調查、註 17 的 2025 年 7–9 月）。",
+    "**金融廳日文新聞稿沒有年度封存索引**：`/news/r8/index.html` 與 `/news/past.html` 回 404，`/news/index.html` 只涵蓋令和 8 年 7 月至令和 9 年 6 月（前一輪實測）。不要把「在那裡找不到」寫成「官方沒有發布」。本篇不依賴任何日文新聞稿。",
+    "英文公告頁的 h1 與更新日那一行含 U+00A0；比對字串時若用純 ASCII 空格會查無此項。"
+  ],
+  "corrections_applied": [
+    "must_fix 0（範圍限制）：前一輪研究紀錄第 26 條之後未經查核。本篇**沒有**照抄任何一條——四條 sources 於 2026-09-17 全部重抓、三份 PDF 以 pymupdf 重抽文字，文章用到的每一句都回到當天讀到的頁面重新確認，並在本紀錄重寫成新的 verified_facts（含第 26 條以後涵蓋的責任準備金、銀行與保險公司、未登記業者、內線交易適用範圍、DEX、結論）。",
+    "must_fix 1：86.6% 改寫成報告轉引業界團體的調查。2026-09-17 重讀 01.pdf 第 8 頁確認註 14 逐字為 `See footnote 10.`、註 10 印的來源是 `Japan Cryptoasset Business Association`。正文寫「這個數字的註腳指回報告列出的業界團體調查，不是金融廳的統計」（查核代理改：修正清單建議的 `日本暗号資産ビジネス協会（JCBA）` 兩個字串在四條 sources 裡各 0 次，不能印），7.3% 則單獨掛註 13 的金融廳 2024-07-05 調查。",
+    "must_fix 2：87% 是概要 02.pdf 的數字，02.pdf 不在 sources[]，因此**完全不寫 87%**，只寫 01.pdf 的 86.6%。",
+    "must_fix 3：五項迫切課題改照 01.pdf 第 6–7 頁的標題逐項寫（第三項為「投資管理」，不是概要的「投資助言」），第四項不點名韓國。前一輪那個把六段字串接起來的引文已棄用，本紀錄改用單一標題行 `③ Addressing Inappropriate Conduct in Investment Management` 作為引文。",
+    "must_fix 4：62 頁／6 頁與 ModDate 改掛到各自的 PDF 網址（verified_facts 第 5、6 條），公告頁那一條只承載「掛三個 PDF 連結」並明寫該頁沒有印頁數與 ModDate。",
+    "must_fix 5：「刪除資金決済法的加密資產條文」改掛 01.pdf，引文用第 12 頁 III.2(4) 的 `to remove the crypto-asset-related provisions from the PSA.`。",
+    "must_fix 6：NFT 與穩定幣的理由改掛 01.pdf 第 11–12 頁 III.2(3)，並寫成「報告建議沿用現行定義」，不寫概要那句斷語。",
+    "must_fix 7：質押獎勵豁免改掛 03.pdf 第 1 頁的星號註，引文照印來源的 `a rewards`。",
+    "must_fix 8：揭露對象改寫成**三種情形**（發行人募資／發行人未募資而業者經手／其他加密資產），依 03.pdf 第 1 頁的三欄切分，正文與 verified_facts 都是三類。",
+    "must_fix 9、10（持續揭露頻率的兩格切分、終止須經主管機關核准且業者義務不隨之消滅）：本文**沒有寫持續揭露與義務終止**，所以不承載這兩條；must_not_write 已寫下正確寫法，供查核者若要補寫時遵守。",
+    "must_fix 11：全篇保留「報告建議／報告認為／報告寫」的框架，並在第 1 節第 3 段明寫「這是工作小組的建議，不是法律、也不是內閣府令，下面所有『應』與『要求』都是報告建議的方向」。",
+    "must_fix 12：2026-08-12 部分施行的唯一官方出處（2026-07-29 新聞稿）不在本文 sources[]，因此**這個日期一個字都沒寫**，不留成看起來像算出來的日期。",
+    "must_add 1（施行期日四段）：來源是法律案要綱 04.pdf，不在 sources[]，因此不寫。正文改寫成「以本文所引的四個金融廳頁面查核到 2026 年 9 月 17 日，未見加密資產相關條文的施行日」。",
+    "must_add 2（不可混淆報告建議的罰則與實際立法的罰則）：正文第 5 節明寫「報告裡的罰則水準同樣是建議」，列出註 83 的三年／三百萬與五年／五百萬、註 84 的十年意見，並收尾「那是報告記下的討論，不是最終立法結果」。最終立法的十年／一千萬出自 04.pdf，不在 sources[]，沒有寫。",
+    "must_add 3（優先引金融廳自己的頁面）：採用。sources[3] 是金融廳「国会提出法案等」，`shugiin.go.jp` 已從 sources[] 移除，提出／成立兩個日期都引金融廳自己那一行。",
+    "must_add 4：03.pdf 第 5 頁的內線交易設計已進 verified_facts（適用範圍、20%、社群媒體不算公表），正文只寫適用範圍那一句（摘要與圖解用的也是這一句）；03.pdf 第 6 頁的 DEX 對應方式已進正文第 4 節。02.pdf 第 4 頁那一組（非託管錢包審慎期間、責任準備金、借入與質押、銀行保險、關鍵系統供應商）改由 01.pdf 第 30、36、37 頁承擔，關鍵系統供應商因字數未寫。",
+    "must_add 5（JVCEA 的但書）：已進 verified_facts 與正文表格最後一列（「JVCEA，須強化組織」）。",
+    "must_add 6（座長）：英文公告頁只印羅馬字，因此寫 MORISHITA Tetsuo；漢字姓名只在不在 sources[] 的日文頁上，刻意不寫（見 unverified_or_excluded 最後一條）。",
+    "must_add 7（C11 的資安篇同在 2026-07-23）：本篇完全不碰資安手法，只寫報告把強化資安列為五項課題之一；也沒有寫 2026-07-23 這個日期，不會與 C11 互相污染。",
+    "source_list_fix：照建議改。`shugiin.go.jp` 換成金融廳網域的頁面，四條全部在 crypto.md 的日本白名單（FSA）內；並按建議把名額給參考資料 03.pdf。**但公告頁 20260216.html 保留**——它是唯一同時承載 2026-02-16、2026-08-03 與「日文版 2025-12-10 公布」三個日期的官方頁，事件日本身需要它；must_fix 4 指出的問題（頁數與 ModDate）已改掛 PDF。依此換法，公布日與法律編號改由「提出／成立」兩個日期取代，**公布日 2026-07-23 與法律第 64 號都沒有寫**，符合 source_list_fix 的條件。",
+    "跨篇型態 9（一手文件裡的市場數字仍是市場數字）：3 兆美元市值與 5 兆日圓存放資產都排除，記進 unverified_or_excluded。",
+    "跨篇型態 4（安靜訂正識別碼）：`1 years`、`a rewards`、`obliged  to prepare`（雙空格）等來源自己的寫法照印並註明；`ISO/TC 23576:2020` 不在本文來源裡，不寫。",
+    "2026-09-17 逐語審稿後訂正（ja 審稿代理提出、協調者回 01.pdf 第 18、57 頁與 03.pdf 第 1 頁查證）：揭露三種情形裡，「發行人未募資而業者要經手」時是業者**自行編製並公表**（內容另含發行人資訊，來源為公開資訊或向發行人取得的資訊）；「公表發行人編製的資訊」是發行人有募資時經手業者的義務。內容包五語的那一句已一併改正，其餘句子不受影響。"
+  ],
+  "editorial_brief": "讀者：在台灣、可能會用到日本或其他境外加密平台的一般使用者，以及想知道「主管機關到底在管什麼」的財經讀者。角度：用一份審議會報告，說明一個國家怎麼把加密資產從「支付工具」重新定位成「金融商品」，以及這個轉換會改到使用者看得見的哪幾個地方——同時把「這只是建議」講到不可能誤讀。\n\n主線三段：① 日本自 2016 年起以資金決済法管加密資產（登記制、AML/CFT、後來的冷錢包規定）；② 但使用者已經把它當投資標的（開戶數超過 1,300 萬戶、逾八成個人帳戶不到 10 萬日圓、持有的最主要理由是期待長期上漲，而金融廳每月收到超過 350 件多半與詐騙勸誘有關的申訴）；③ 所以報告建議換法源，並補上三件原本沒有的東西——開始經手前的資訊揭露、比照第一種金融商品取引業的業者規範、內線交易與市場濫用規範。\n\n五節：（一）報告是誰寫的與三個日期；（二）為什麼要改＋現行與建議方向的對照表；（三）一般使用者看得到的三件事（揭露、轉出前的警示、遇到未登記業者），結尾放圖解；（四）報告刻意沒有給答案的地方（DEX、投資上限與責任準備金的數字、銀行與保險公司）；（五）報告之後的法案（2026-04-10 提出、2026-07-15 成立），以及為什麼本文不寫公布日、法律編號與施行日。\n\n生活情境（已標明是編輯設計的例子）：一個人在日本平台上看到沒聽過的代幣要上架，現在能讀的多半只有專案自己的白皮書；照報告建議的制度，發行人或業者要在開始經手前公表特性、發行總量、底層技術、附隨權利義務與風險，寫錯要負責。這是「資訊從哪裡來」的改變，不是「所以可以買」。\n\n刻意不談：幣價、市值、ETF、存放資產總額、哪個平台會受影響、稅務（報告沒談）、資安手法（留給 C11 crypto-news-jfsa-cybersecurity-20260723）、台灣法規（留給 C1 crypto-news-taiwan-vasp-act-20260630）——**第 5 節最後一段刻意不寫任何關於台灣法的事實**，因為那指不到本文的四條 sources；那一段只寫「先分清楚報告／成立／施行三種狀態」與查核方法，並寫明台灣自己的規定另有一篇專講、本文不做兩地比較、MiCA 與韓國法的條文（留給 C2 與同批次的歐美篇）。",
+  "overlaps_existing_article": "站上既有的 crypto-news-* 只有索引與 C1（台灣虛擬資產服務法），沒有重複題材。要避開的是同批次兄弟篇：（a）C11 `crypto-news-jfsa-cybersecurity-20260723`——資安細節留給它，本篇只寫報告把強化資安列為五項課題之一，一個資安手法都沒展開，也沒寫 2026-07-23。（b）C1 `crypto-news-taiwan-vasp-act-20260630`——台灣的許可制細節留給它；本篇**一句台灣法的事實都沒有寫**（指不到本文的四條 sources），只在最後一段寫「台灣自己的規定與時程，本站另有一篇專講，本文不做兩地比較」。（c）C2 MiCA、C3／C4 美國 SEC——報告只是「指出歐盟與韓國已就內線交易立法」，本篇連這個層次都沒有展開。",
+  "hero_label": "建議改依金融商品取引法",
+  "diagram": {
+    "title": "報告建議的四個方向",
+    "caption": "報告建議的四個方向：法律依據從資金決済法移到金融商品取引法、開始經手前先公表資訊、內線交易規範涵蓋已上架與申請中的加密資產，以及去中心化交易所的監理方式尚未確立。",
+    "nodes": [
+      [
+        "換法源",
+        "資金決済法→金融商品取引法"
+      ],
+      [
+        "先揭露",
+        "開始經手前公表特性與風險"
+      ],
+      [
+        "管內線",
+        "已上架或申請中都納入"
+      ],
+      [
+        "未定案",
+        "DEX 的監理方式未確立"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Report: move to the FIEA",
+      "diagram": {
+        "title": "Four directions the report recommends",
+        "caption": "The four directions the report recommends: moving the legal basis from the Payment Services Act to the FIEA, disclosure before a crypto-asset is first handled, insider trading rules covering assets admitted to trading or under application, and no established approach to DEXs.",
+        "nodes": [
+          [
+            "New legal basis",
+            "From the PSA to the FIEA"
+          ],
+          [
+            "Disclose first",
+            "Before handling begins"
+          ],
+          [
+            "Insider trading",
+            "Admitted or under application"
+          ],
+          [
+            "Not settled",
+            "No clear approach to DEXs"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "金融商品取引法へ移す提言",
+      "diagram": {
+        "title": "報告書が提言する四つの方向",
+        "caption": "報告書が提言する四つの方向：法的根拠を資金決済法から金融商品取引法へ移すこと、取扱いを始める前に情報を公表すること、インサイダー取引規制が取扱い済みと取扱い申請中の暗号資産を対象とすること、そして分散型取引所の規制の在り方が確立していないことです。",
+        "nodes": [
+          [
+            "法的根拠の移行",
+            "資金決済法→金融商品取引法"
+          ],
+          [
+            "先に情報提供",
+            "取扱い開始前に公表"
+          ],
+          [
+            "インサイダー規制",
+            "取扱い済みと申請中が対象"
+          ],
+          [
+            "未確立",
+            "DEXの規制は未確立"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "금융상품거래법으로 이전 제언",
+      "diagram": {
+        "title": "보고서가 제언한 네 가지 방향",
+        "caption": "보고서가 제언한 네 가지 방향: 법적 근거를 자금결제법에서 금융상품거래법으로 옮기는 것, 취급을 시작하기 전에 정보를 공표하는 것, 내부자거래 규제가 취급 중이거나 취급을 신청한 암호자산을 포함하는 것, 그리고 탈중앙화 거래소의 규제 방식이 확립되지 않았다는 것입니다.",
+        "nodes": [
+          [
+            "법적 근거 이전",
+            "자금결제법→금융상품거래법"
+          ],
+          [
+            "먼저 공시",
+            "취급 시작 전에 공표"
+          ],
+          [
+            "내부자거래 규제",
+            "취급 중과 신청 중 포함"
+          ],
+          [
+            "미확립",
+            "DEX 규제 방식 미확립"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "建议改依金融商品交易法",
+      "diagram": {
+        "title": "报告建议的四个方向",
+        "caption": "报告建议的四个方向：法律依据从《资金结算法》移到《金融商品交易法》、开始经手前先公布信息、内幕交易规范涵盖已上架与申请中的加密资产，以及去中心化交易所的监管方式尚未确立。",
+        "nodes": [
+          [
+            "换法源",
+            "资金结算法→金融商品交易法"
+          ],
+          [
+            "先披露",
+            "开始经手前公布特性与风险"
+          ],
+          [
+            "管内幕",
+            "已上架或申请中都纳入"
+          ],
+          [
+            "未定案",
+            "DEX 的监管方式未确立"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent（未參與撰稿）",
+    "checked_on": "2026-09-17",
+    "method": "四條 sources 於 2026-09-17 全部以 `curl -sSL -A \"Mokaair-editorial\"` 重抓並逐條讀 body（不是只看狀態碼），另以 `curl -sSI` 取 HTTP 標頭；兩份 PDF 以系統 python 的 pymupdf 重抽全文（01.pdf 62 頁／158,652 字元、03.pdf 6 頁／10,035 字元），逐頁對照。四個檔的 bytes 與 Last-Modified 與撰稿者記的完全相同：01.pdf 821,835／`Mon, 03 Aug 2026 08:00:09 GMT`、03.pdf 274,808／`Fri, 03 Jul 2026 09:00:02 GMT`、公告頁 17,948／`Mon, 03 Aug 2026 18:34:26 GMT`、`/common/diet/index.html` 70,051／`Tue, 15 Sep 2026 17:31:49 GMT`。核對範圍共 111 條主張：正文 46 句、summary 5 句、FAQ 6 題的 14 句答句、兩個 callout、表格 6 列 18 格＋表頭＋caption、圖解 caption 與 alt、diagram 四格、title、description、兩條 link 的 text、四條 sources。沒有使用任何 sources[] 以外的新網址，沒有猜任何網址或識別碼；所有請求只帶 User-Agent `Mokaair-editorial`，未放入任何 email、姓名或個人資料。",
+    "verdict": "needs_owner：111 條主張逐條核對後文章可刊，`check_article.py` 通過（zh-TW paragraphs 2,990）。改了 7 處事實或限定詞，另有 title 改寫、用語說明與小節標題各 1 處，以及協調者 2026-09-17 指定的全篇用語替換（暗號資產→加密資產）。骨幹論述的三個狀態——報告是建議、相關法案已成立、施行日在四個官方頁上未見——全部成立且已收緊。留給站主的是確認題，不是阻擋出刊的缺陷。",
+    "edits_to_the_pack": [
+      "**title**：「日本金融審議會報告：建議虛擬資產改依金融商品取引法，這還不是法律」→「日本金融審議會報告：建議加密資產改依金融商品取引法，相關法案已成立、施行日未見」（39 字）。舊標題只講「還不是法律」，而文章自己的 sources[3] 寫著相關法案已於 2026-07-15 成立，只看標題的讀者會以為日本還沒立法。新標題每一段都指得到 sources[]：「建議…改依金融商品取引法」出自 01.pdf 第 11–12 頁；「相關法案已成立」出自 `/common/diet/index.html` 的「（令和８年４月10日提出、令和８年７月15日成立）」；「施行日未見」是限縮到那四個頁面的否定句。**刻意寫「相關法案」而不是「法案」**，以免暗示成立的法律逐條等於報告建議——同一頁自己寫這部法涵蓋「暗号資産」、「サステナビリティ情報の開示・保証」、「スタートアップへの資金供給」、「不公正取引規制」等四塊。研究紀錄 title 同步，description 的「虛擬資產」同步改成「加密資產」（147 字，仍在 120–200）。",
+      "**第 1 段刪掉工作小組的日文名稱**：`暗号資産制度に関するワーキング・グループ` 在四條 sources 裡各 **0 次**（它在不在 sources[] 的日文公告頁 `/singi/singi_kinyu/tosin/20251210.html` 上）。改寫成「金融審議會加密資產制度工作小組」，公告頁印的英文名 `Working Group on Crypto-asset Systems of the Financial System Council` 已在 sources[0] 的 title 裡。",
+      "**第 1 段補上台灣讀者看得懂的用語說明**（協調者要求）：新增「「加密資產」是報告英文版 crypto-assets 的中譯，金融廳日文頁寫的是「暗号資産」。」——`crypto-assets` 見 01.pdf 全篇，`暗号資産` 見 `/common/diet/index.html`（2 次）。",
+      "**第 1 節第 3 段刪掉「（日文原文「暗号資産交換業者」…）」**：`暗号資産交換業者` 在四條 sources 裡各 **0 次**。只留有印出來的「英文版縮寫 CASP」（01.pdf 第 1 頁 `crypto-asset exchange service providers (hereinafter, \"CASPs\")`）。",
+      "**第 2 節第 2 段的出處名稱**：「註腳指回日本暗号資産ビジネス協会的調查」→「註腳指回報告列出的業界團體調查」。01.pdf 註 10 印的是英文 `Source: Japan Cryptoasset Business Association, \"Survey Results on Tax Filing for Crypto-Assets and Proposals for Tax Reform\"`；`日本暗号資産ビジネス協会` 與 `JCBA` 兩個字串在四個檔裡**各 0 次**（修正清單 must_fix 1 建議的寫法本身不可印）。**承重的部分（86.6% 不是金融廳的數字）完全保留。** 名稱本身留在本紀錄與報告裡，見 left_for_the_owner 第 1 條。",
+      "**第 2 節第 1 段補上 2022 年修的是哪一部法**：「2022 年的修正導入 Travel Rule」→「2022 年修正的是犯罪收益移轉防止法，導入 Travel Rule」。01.pdf 第 1–2 頁寫 2016 與 2019 修的是資金決済法與金融商品取引法，2022 年修的是 `the Act on Prevention of Transfer of Criminal Proceeds (hereinafter, the \"APTCP\")`；壓縮成「2022 年的修正」會被讀成又修了一次資金決済法，而同頁註 6 另有一個 2022 年的資金決済法修正，內容是穩定幣、不是 Travel Rule。",
+      "**第 4 節第 2 段補回被刪掉的 `may`**：「報告認為可以允許它們為自身投資目的持有」→「報告認為或許可以允許…」。01.pdf 第 33 頁原文是 `it may be appropriate to permit them to hold crypto-assets for their own investment purposes, provided that adequate risk management and governance frameworks are in place`——限定詞刪掉一個就換了一個主張。",
+      "**第 5 節第 2 段補上收尾**：「另有意見主張把上限提高到十年」→「…提高到十年，那是報告記下的討論，不是最終立法結果」。這是本篇最高風險的一句——十年正好是修正清單 must_add 2 指出的實際立法水準，而那個水準唯一的出處（法律案要綱 04.pdf）不在 sources[]。**本紀錄原本就宣稱正文有這個收尾，實際上沒有**，現已補上；紀錄與內容包因此一致。",
+      "**FAQ 第 3 題**：「繼續依資金決済法作為電子決済手段管理」→「現行是依資金決済法作為電子決済手段管理」。01.pdf 第 12 頁是現在式的現行描述（`So-called stablecoins (digital-money type) are regulated under the PSA as electronic payment instruments`），報告沒有寫修法後會繼續如此。",
+      "**第 5 節小節標題**：「報告之後：法案在 2026 年提出並成立」→「報告之後：相關法案在 2026 年提出並成立」，與新 title 的「相關法案」一致。",
+      "**用語替換（協調者 2026-09-17 的決定，不是事實修正）**：內容包與研究紀錄的「暗號資產」全部改成「加密資產」（內容包 18 處＋研究紀錄 56 處），字數中性。**刻意不動的「虛擬資產」三處**：第二條 link 的 text（必須逐字等於 `crypto-news-taiwan-vasp-act-20260630` 的 zh-TW title）、本紀錄裡韓國《虛擬資產使用者保護法》與台灣虛擬資產服務法兩個專有名詞。FAQ 第 1 題的「加密貨幣」保留，那是 crypto.md 允許的一般語境用語。日文專有名詞（`資金決済に関する法律`、`金融商品取引法`、`国会提出法案等`、`暗号資産`）照原文保留，且四者都在 sources[3] 的 body 裡逐字命中。"
+    ],
+    "checked_and_correct": [
+      "**五個日期全部複驗。** 公告頁頁首四行逐字：`February 16, 2026`／`Updated on August 3, 2026`（August 與 3 之間為 U+00A0）／`Financial Services Agency`／`(Japanese version: published December 10, 2025)`；01.pdf 第 1 頁封面印 `December 10, 2025` 與 `Provisional Translation`；`/common/diet/index.html` 的「（令和８年４月10日提出、令和８年７月15日成立）」在頁內出現 1 次且逐字相同（括號與年號為全形 U+FF08／U+FF18／U+FF14／U+FF17，10 與 15 為半角數字）。文章把三個報告日期與兩個法案日期分開寫，callout 也逐一列出。",
+      "**「未見施行日」這個限縮否定句成立。** `施行`、`公布`、`法律第`、`政令`、`令和９`、`令和9` 在 `/common/diet/index.html` 各 **0 次**；`effective date`／`Effective Date`／`enter into force`／`entry into force`／`enforcement date` 在 01.pdf 與 03.pdf 各 **0 次**。01.pdf 全篇唯一的 `come into force` 在第 2 頁，講的是 2025 年 6 月另一次資金決済法修正，而且只寫公式（`scheduled to come into force within one year of promulgation`）不寫日期——文章沒有引用它，也沒有自行換算任何日期。句型是「以本文所引的四個金融廳頁面查核到 2026 年 9 月 17 日，未見」，不是「官方尚未公布」。",
+      "**diet 頁今天仍在，該區未被下一屆國會擠掉。** `国会提出法案（第221回国会）`／`提出した法律` 各 1 次，其下第一筆逐字為 `金融商品取引法及び資金決済に関する法律の一部を改正する法律`（1 次），立法理由逐字含「「暗号資産」、「サステナビリティ情報の開示・保証」、「スタートアップへの資金供給」、「不公正取引規制」等に関する制度を整備」，另掛概要／説明資料／法律案要綱／新旧対照条文／参照条文五個 PDF 與「あくまで国会審議の参考用」的註。文章只依賴這幾件事，沒有依賴頁面的筆數或排序。",
+      "**86.6% 與 7.3% 的歸屬（本篇最高風險的一條）逐字複驗 01.pdf 第 8 頁。** 註 13 是 `Source: FSA, \"the Results of the Awareness Survey of Customers Regarding Risk-Involving Financial Instruments Sales\" (July 5, 2024)`，掛的是 `among those with investment experience (7.3 percent)`；86.6 percent 那句 `Moreover, the predominant reason for holding crypto-assets (86.6 percent) is the expectation of long-term price appreciation.` 掛的是註 14，而**註 14 的全文就只有 `See footnote 10.` 一句**；註 10 印的來源是 `Japan Cryptoasset Business Association`。文章的兩個歸屬都對，而且整段被「報告引用的數字是」框住。",
+      "**罰則那一段每個數字逐字對得上，而且沒有一處會被讀成 2026 年那部法律的結果。** 01.pdf 註 83 原文：`Under current law, providing crypto-asset exchange services without registration is punishable by imprisonment for up to three years, a fine of up to three million yen, or both. By contrast, under the FIEA, conducting financial instruments business without registration is punishable by imprisonment for up to five years, a fine of up to five million yen, or both.`——兩個水準**都是現行水準**，文章的「現行」涵蓋兩者；註 84 原文 `It has been suggested that the maximum term of imprisonment for conducting financial instruments business without registration be increased to 10 years.` 對應「另有意見主張」。段首有「報告裡的罰則水準同樣是建議」，段尾（本次新增）有「那是報告記下的討論，不是最終立法結果」。表格兩列取自 03.pdf 第 3 頁 Current／Proposed Directions 兩欄，caption 已明寫「右欄是報告建議的方向，不是已生效的規定」，來源的錯字 `Imprisonment for not more than 1 years` 照印不修。",
+      "**緣起三個日期與六次會議。** 01.pdf 第 2 頁 `published its findings in a discussion paper on April 10, 2025`；第 3 頁 `at the joint session of the 55th General Meeting of the Financial System Council and the 43rd Meeting of the Sectional Committee on the Financial System, held on June 25, 2025, the Minister of State for Financial Services requested`；`which held six meetings beginning in July 2025`（「六次會」是報告自述，文章寫成「報告寫它…」）。",
+      "**三次修法的描述。** 2016 年（01.pdf 第 1 頁：AML/CFT 的國際要求＋一家交換業者出事、登記制與使用者保護框架、`one of the world's first` 已寫成「報告稱」）；2019 年（`in principle, required CASPs to manage users' crypto-assets in cold wallets`——「原則上」保留）；2022 年（APTCP、Travel Rule，本次補上法律名稱）。",
+      "**報告引用的國內數字逐字命中，且都寫成「報告引用的數字」。** `the number of accounts opened with domestic CASPs exceeds 13 million`（同句寫 `both figures as of October 2025`）、`more than 80 percent of individual accounts hold assets of less than JPY 0.1 million`、`the FSA's Financial Services User Consultation Office currently receives, on average, more than 350 crypto-asset-related inquiries and complaints per month, the majority of which concern fraudulent investment solicitations or transactions`。13 million→1,300 萬戶、JPY 0.1 million→10 萬日圓只是數詞改寫，不是加總或換算。",
+      "**五項迫切課題的標題逐字（01.pdf 第 6–7 頁）**：① `Enhancing Disclosure` ② `Ensuring Appropriate Transactions and Addressing Unregistered Operators` ③ `Addressing Inappropriate Conduct in Investment Management` ④ `Ensuring Fairness in Price Formation and Trading` ⑤ `Strengthening Cybersecurity`。第三項用的是 01.pdf 的「投資管理」而不是概要 02.pdf 的 Investment Advice；第四項沒有點名韓國（韓國在第 7 頁註 21，文章沒展開）。",
+      "**私募豁免與無償配發。** 01.pdf 第 18 頁 `When crypto-assets are solicited for sale to a small number of persons (49 or fewer)` 與 `To prevent regulatory circumvention, appropriate transfer restrictions should be imposed.`——「49 人以下」與「轉讓限制」都在，限定詞沒有掉。無償配發與挖礦／質押獎勵的豁免取自 03.pdf 第 1 頁星號註，來源自己的 `a rewards` 照印。",
+      "**表格六列逐格對回 03.pdf。** 第 4 頁：`10 million yen`／`50 million yen`（兩格分屬 Current 與 Proposed Directions，沒有接成一句）、`Under self-regulation`／`By laws and regulations`、Liability reserves `-`／`✓`、`JVCEA⁑`／`JVCEA (substantial enhancement of organizational frameworks is necessary)`；第 3 頁：兩列罰則。caption 的「「—」是該表在現行欄印的「-」」成立（兩處 `-` 都在 Current 欄）。",
+      "**揭露三種情形沒有退回兩類寫法。** 03.pdf 第 1 頁三欄的義務主體逐字為 `Issuer obliged to prepare and disclose information`／`CASPs (crypto-asset exchange service providers) obliged to disclose information prepared by the issuer`／`CASPs obliged  to prepare and disclose information`（來源在 `obliged` 後有兩個空格）。揭露項目與「其他加密資產」欄印 `―` 也對。",
+      "**四個「報告刻意沒給答案」的地方都照來源限縮。** 內線交易適用範圍（03.pdf 第 5 頁 `Crypto-assets admitted or under application for admission to trading on domestic CASPs`、`Irrespective of trading venues (including transactions taking place on DEX and P2P transactions)`）；DEX（03.pdf 第 6 頁與 01.pdf 第 37 頁兩處都寫 `has not yet been established`，眼前措施只有那一項告知義務）；責任準備金只寫 `at an appropriate level`（01.pdf 第 30 頁）；投資上限只寫比照股權型群眾募資、沒給加密資產的金額（01.pdf 第 25 頁，註 60 的 5%／5%／50 萬／200 萬是現行股權型群眾募資的規定，文章沒有拿它當加密資產的上限）。",
+      "**界線（crypto.md）乾淨。** 全篇 `市值`／`兆美元`／`兆日圓`／`ETF`／`交易量`／`比特幣`／`Bitcoin`／`殖利率`／`空投`／`報酬率` 各 **0 次**；`漲跌` 唯一 1 次在免責樣板裡。報告轉引 CoinMarketCap 的 3 兆美元市值（01.pdf 第 9 頁註 26）、JVCEA 的 5 兆日圓使用者存放資產（第 4、9 頁）、Bitcoin ETF 與野村／Laser Digital 的機構投資意願調查（第 4–5 頁註 15、16）一個字都沒有進文章。「期待長期價格上漲」寫在「報告引用的數字是」這個框裡、緊接著出處更正，沒有任何鼓勵語氣；報告第 8 頁 `such regulatory revisions should not be interpreted as an official endorsement of investment in crypto-assets` 在正文與 FAQ 第 4 題各出現一次。沒有任何一句把某個資產、交易所、錢包或發行商寫成選項。",
+      "**免責 callout 與 crypto.md 樣板逐字相同**（tone／title／text 三者全等），含「不是投資建議」六個字。`checked_on` 2026-09-17 在四條 sources、本紀錄、第 2 段、表格 caption 與免責 callout **五處一致**，本代理沒有改它。",
+      "**主席姓名。** 只印公告頁上的羅馬字 `MORISHITA Tetsuo`（01.pdf 第 4 頁成員名單印的是帶逗號的 `MORISHITA, Tetsuo`，文章引的是公告頁那一版）。`森下` 在四條 sources 裡 0 次、在文章裡 0 次。",
+      "**結論一節的射程限縮逐字對得上**（01.pdf 第 49 頁）：`this regulatory review focuses primarily on transactions conducted through domestic CASPs`、`It should therefore be recognized that this review covers only a portion of global crypto‑asset trading.`（`crypto‑asset` 用的是 U+2011 不斷行連字號，所以引文只取到 `global` 為止的做法正確）。",
+      "**形式。** `check_article.py` 通過；兩條 link 的 text 逐字等於目標內容包的 zh-TW title；全篇無簡體字、無列表／Markdown／emoji、無商標或介面描述、沒有「本站實測」；生活情境已標明「以下是編輯設計的例子，不是實測」。"
+    ],
+    "left_for_the_owner": [
+      "**業界團體的名稱沒有印在正文。** 正文只寫「報告列出的業界團體」，因為 01.pdf 註 10 只印英文 `Japan Cryptoasset Business Association`，而 `日本暗号資産ビジネス協会` 與 `JCBA` 在四條 sources 裡各 0 次。要把英文名（37 個字元）印進正文，段落字數得從別處挪出約 33 字（現在 2,990／3,000）。若站主要印，建議從第 5 節最後一段的敘述裡挪，不要動任何但書。",
+      "**段落字數只剩 10 字（2,990／3,000）。** 後續審稿或翻譯要補任何一句，必須同時精簡別處，且不得刪任何但書或限定詞——本篇承重的限定詞是「原則上」（冷錢包）、「或許」（銀行持有）、「得認為無效」與「考慮」（民事條文）、「轉讓限制」（私募豁免）、「適當水準」（責任準備金）、「同樣是建議」與「不是最終立法結果」（罰則）。",
+      "**`checked_on` 用 2026-09-17，而 corrections-crypto.md 寫「所有查核與研究的 checked_on 都是 2026-09-16」。** 本篇的 09-17 是撰稿者真的讀到來源那一天，而且五處一致，依 FACTCHECK.md 第 1 節不改。若站主要全批統一成 09-16，這篇五處要一起改，而那會與「當天重抓」的事實不符——建議維持 09-17。",
+      "**索引的回鏈文字。** 幣圈索引 `crypto-news-2026-index` 的 zh-TW title 目前是「2026 年加密貨幣新聞總整理：法規、技術與產業的重點」，且該索引目前還沒有連回本篇（grep 過整個 content 目錄，只有本檔自己提到這個 slug）。索引之後加上本篇的 link 時，`text` 必須逐字用今天改過的新 title。",
+      "**「逾八成個人帳戶持有的資產不到 10 萬日圓」的界線判斷。** 這是 JVCEA 的帳戶分布數字（01.pdf 註 11），撰稿者刻意用它取代被禁的 5 兆日圓存放資產。它不是市場規模、不是交易量，本代理判定可刊；但若站主認為帳戶持有分布也該一併排除，刪掉之後第 2 節第 2 段的論證只剩開戶數與申訴件數，需要補一句。",
+      "**01.pdf 仍是活文件。** HTTP `Last-Modified` 2026-08-03、內部 `ModDate D:20260731100610+09'00'`，都晚於 2026-02-16 首發；03.pdf 的內部 `CreationDate` 是 `D:20260630160654+09'00'`（本紀錄原本只記了 `ModDate D:20260703175445+09'00'`）。文章已寫明「本文引的就是這一版」。出刊當天要再抓一次比對 bytes（今天的值：01.pdf 821,835、03.pdf 274,808、公告頁 17,948、diet 頁 70,051）。",
+      "**title 的措辭請協調者確認。** 協調者提的例子是「…法案已成立、施行日未見」，本代理改成「…相關法案已成立、施行日未見」（多兩個字），理由是 diet 頁那部法同時涵蓋四個主題，寫「法案」會被讀成「報告建議變成了法律」。39 字，仍在 60 字內。"
+    ],
+    "post_review_corrections": [
+      {
+        "date": "2026-09-17",
+        "found_by": "ja 逐語審稿代理（對照日文報告），協調者以英文版 01.pdf p.18、p.57 與 03.pdf p.1 查證",
+        "what": "block13 揭露三種情形的義務主體：第二種情形由業者自行編製並公表，不是公表發行人編製的資訊。",
+        "locales_fixed": [
+          "zh-TW",
+          "en",
+          "ja",
+          "ko",
+          "zh-CN"
+        ]
+      }
+    ]
+  }
+}

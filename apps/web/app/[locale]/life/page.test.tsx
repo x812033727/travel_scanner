@@ -1,6 +1,7 @@
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import catalogue from "@/lib/guide-series.json";
+import { NEWS_TOPICS } from "@/lib/guides";
 import LifeHubPage, { generateMetadata } from "./page";
 
 /**
@@ -170,6 +171,49 @@ describe("the lifestyle listing", () => {
     expect(mocks.list).not.toHaveBeenCalledWith("zh-TW", expect.objectContaining({ topic: "ai-news" }), 20);
   });
 
+  it("merges the three news topics into one row, ordered across them by the news day", async () => {
+    const ai = { slug: "ai-news", label: "AI 新聞與趨勢", section: "life" as const };
+    const crypto = { slug: "crypto", label: "加密貨幣與區塊鏈", section: "life" as const };
+    const tech = { slug: "tech-news", label: "科技新聞", section: "life" as const };
+    const aiStory = { ...summary, slug: "ai-news-siri-20260914", title: "Siri AI 隨 iOS 27 推出", topics: [ai], news_date: "2026-09-14" };
+    const techStory = { ...summary, slug: "tech-news-iphone-duo-20260909", title: "Apple 推出 iPhone Duo", topics: [tech], news_date: "2026-09-09" };
+    const cryptoStory = { ...summary, slug: "crypto-news-taiwan-vasp-act-20260630", title: "虛擬資產服務法三讀通過", topics: [{ slug: "finance", label: "理財", section: "life" as const }, crypto], news_date: "2026-06-30" };
+    // A pack may carry two news topics, so it comes back in two reads and must still be one row.
+    const both = { ...summary, slug: "ai-news-nvidia-hugging-face-20260903", title: "NVIDIA 併購 Hugging Face", topics: [ai, tech], news_date: "2026-09-03" };
+    mocks.list.mockImplementation(async (_locale: string, filters: { topic?: string }) => {
+      const byTopic: Record<string, unknown[]> = {
+        "ai-news": [aiStory, both],
+        "tech-news": [techStory, both],
+        crypto: [cryptoStory],
+      };
+      return { articles: byTopic[filters.topic ?? ""] ?? [summary], next_cursor: null, available: true };
+    });
+    mocks.topics.mockResolvedValue([
+      { slug: "ai-news", label: "AI 新聞與趨勢", section: "life", parent: "ai", count: 2 },
+      { slug: "crypto", label: "加密貨幣與區塊鏈", section: "life", parent: "finance", count: 1 },
+      { slug: "tech-news", label: "科技新聞", section: "life", parent: "tech", count: 2 },
+    ]);
+    render(await LifeHubPage({ params, searchParams: search() }));
+    // One read per news topic: the API's `topic` takes a single slug.
+    for (const topic of ["ai-news", "crypto", "tech-news"]) {
+      expect(mocks.list).toHaveBeenCalledWith("zh-TW", { kind: "life", topic, sort: "news" }, 20);
+    }
+    const block = screen.getByTestId("life-news");
+    const rows = within(within(block).getByTestId("news-list")).getAllByRole("listitem");
+    // Across topics by the news day, and the two-topic story appears once.
+    expect(rows.map((row) => row.textContent)).toEqual([
+      "2026-09-14Siri AI 隨 iOS 27 推出",
+      "2026-09-09Apple 推出 iPhone Duo",
+      "2026-09-03NVIDIA 併購 Hugging Face",
+      "2026-06-30虛擬資產服務法三讀通過",
+    ]);
+    // With more than one vertical publishing, "see all" names each hub instead.
+    expect(within(block).queryByRole("link", { name: "看全部" })).toBeNull();
+    for (const [label, slug] of [["AI 新聞與趨勢", "ai-news"], ["加密貨幣與區塊鏈", "crypto"], ["科技新聞", "tech-news"]]) {
+      expect(within(block).getByRole("link", { name: label }).getAttribute("href")).toBe(`/life/topics/${slug}`);
+    }
+  });
+
   it("draws no news block while no story carries a news day", async () => {
     // What the page shows between a deploy and the import that writes the days.
     const undated = { ...summary, slug: "ai-news-thing", title: "某則新聞", news_date: null };
@@ -241,8 +285,9 @@ describe("what the lifestyle listing tells search engines", () => {
     const arguments_ = { kind: "life", topic: undefined, cursor: undefined, sort: "curated" };
     await generateMetadata({ params, searchParams: search() });
     render(await LifeHubPage({ params, searchParams: search() }));
-    // The news block is the body's own read; the section listing is the shared one.
-    const listing = mocks.list.mock.calls.filter((call) => call[1].topic !== "ai-news");
+    // The news block is the body's own read -- one per news topic -- and the section listing
+    // is the shared one. Filtered by the constant so a fourth news topic does not break this.
+    const listing = mocks.list.mock.calls.filter((call) => !NEWS_TOPICS.includes(call[1].topic));
     expect(listing).toEqual([["zh-TW", arguments_, 24], ["zh-TW", arguments_, 24]]);
   });
 });

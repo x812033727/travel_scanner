@@ -1,0 +1,519 @@
+{
+ "slug": "tech-news-taiwan-sovereign-ai-corpus-20260915",
+ "event_date": "2026-09-15",
+ "event_date_basis": "moda's own press-release page /press/press-releases/20640 carries 建立日期：2026-09-15 and 更新日期：2026-09-15, and the body says 數位發展部今（15）日宣布正式啟動. The attached deck PDF is dated 2026.09.15 on its cover and its PDF CreationDate is D:20260915152311+08'00'. Announcement date and event date are the same day (the launch press conference). The Hakka strand has its own event date 2026-07-24 (建立日期/更新日期 2026-07-24 on /press/press-releases/20230); the English version of that same release shows Update Date 2026-07-30, i.e. the English page was revised later. No effective date or deadline is given for the collection drive.",
+ "checked_on": "2026-09-16",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "moda.gov.tw is fully reachable from this container with curl -A \"Mokaair-editorial\": listing /press/press-releases/372 HTTP 200 (15 items, newest 2026-09-15), /press/press-releases/20640 HTTP 200, /press/press-releases/20230 HTTP 200, /en/press/press-releases/20230 HTTP 200, /major-policies/ai/1781 HTTP 200. The two PDFs attached to the 9/15 release download HTTP 200 from www-api.moda.gov.tw (booklist 72,187 bytes / 1 page; press-conference deck 1,395,393 bytes / 8 pages); I rendered the deck to PNG and read every slide visually as well as extracting its text. IMPORTANT FOR THE FACT-CHECKER: taic.moda.gov.tw is a Nuxt app, so https://taic.moda.gov.tw/content/license, /content/application-guidelines and /contribute return HTTP 200 with an EMPTY article body to curl - the text is fetched client-side from https://taic.moda.gov.tw/api/v1/page-content.info?type=license | application_guidelines | about | contribute (all HTTP 200, JSON). The 語料提供原則 (dated 115.05.20) is a modal on /contribute and lives in the page's own JS bundle (/_nuxt/DRODNAlq.js), not in the SSR HTML. Live corpus totals come from the site's own public endpoint https://taic.moda.gov.tw/api/v1/no-auth/export/dataset/summary (used by the homepage 目前累積Token數量 counter). Two things I could NOT get: (a) moda's site keyword search API (POST https://www-api.moda.gov.tw/WebsiteList/NewsList) answers HTTP 200 but returns 查無任何資訊 for every query I tried, so I could not pull moda's own announcement of the corpus launch at the end of 2025 - the launch is only attested by the 9/15 release's own sentence; (b) https://moda.gov.tw/en/press/press-releases/20640 is HTTP 404, i.e. there is NO English version of the 2026-09-15 release yet (the newest English release on /en/press/press-releases/372 is 2026-09-01). The 2026-07-24 Hakka release DOES have an English version. I did not use, and did not need, any news media or aggregator.",
+ "sources": [
+  {
+   "title": "數發部啟動主權AI語料庫民間語料徵集 號召作家與出版業共襄盛舉",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "publisher": "數位發展部（moda）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "數發部「臺灣主權AI訓練語料庫」新增2000萬tokens客語語料 充實本土AI語言資料基礎",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "publisher": "數位發展部（moda）",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "提供語料",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "publisher": "數位發展部 臺灣主權AI訓練語料庫",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "臺灣主權AI訓練語料授權條款-第1版",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "publisher": "數位發展部 臺灣主權AI訓練語料庫",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "note_on_sources": "Facts below tagged with a url outside those four (the deck PDF, /content/application-guidelines, the summary endpoint, the AI 專區 page) are still first-party moda material, but if the article uses them the writer must swap one of the four sources - BRIEF.md requires every figure to point at a listed source.",
+ "hero_label": "臺灣語料，餵給臺灣的 AI",
+ "diagram": {
+  "title": "民間語料怎麼進到語料庫",
+  "caption": "資料來源：數位發展部 2026 年 9 月 15 日新聞發布與臺灣主權AI訓練語料庫網站，2026 年 9 月 16 日查核",
+  "nodes": [
+   [
+    "誰能提供",
+    "出版業與電子書平臺優先"
+   ],
+   [
+    "提供什麼",
+    "授權出版品、簡介、試閱"
+   ],
+   [
+    "條件",
+    "無償授權、可申請下架"
+   ],
+   [
+    "誰能取用",
+    "審核通過後僅限AI訓練"
+   ]
+  ]
+ },
+ "title": "（撰稿時填入 zh-TW title）",
+ "verified_facts": [
+  {
+   "fact": "2026 年 9 月 15 日，數位發展部（moda）宣布正式啟動「臺灣主權AI訓練語料庫」民間語料徵集行動；新聞發布頁的建立日期與更新日期都是 2026-09-15，發布單位為資料創新司。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "為了讓AI模型更加理解臺灣的語言、文化、歷史與社會脈絡，數位發展部今（15）日宣布正式啟動「臺灣主權AI訓練語料庫」民間語料徵集行動。"
+  },
+  {
+   "fact": "這則新聞發布的官方標題逐字為「數發部啟動主權AI語料庫民間語料徵集 號召作家與出版業共襄盛舉」（抄標題時請連空格一起照抄）。",
+   "url": "https://moda.gov.tw/press/press-releases/372",
+   "is_vendor_claim": false,
+   "verbatim_quote": "數發部啟動主權AI語料庫民間語料徵集 號召作家與出版業共襄盛舉"
+  },
+  {
+   "fact": "數發部部長林宜敬以作家身分率先捐出個人著作《幸福的鬼島》和《流寇與創新者》。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "數發部林宜敬部長率先以作家身分捐出個人著作《幸福的鬼島》和《流寇與創新者》"
+  },
+  {
+   "fact": "同日舉辦「啟動民間語料徵集記者會」，秀威資訊、印刻文學、Readmoo讀墨、食力、巨思文化等出版及電子書平臺業者，以及作家藍弋丰、李魁賢（家屬代表）現場簽署授權同意書。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "包括秀威資訊、印刻文學、Readmoo讀墨、食力、巨思文化等出版及電子書平臺業者，以及藍弋丰、李魁賢(家屬代表)等作家皆親自出席簽署授權同意書"
+  },
+  {
+   "fact": "作家陳明忠、連明偉、朱國珍、朱和之「亦提供著作響應」，官方原文把他們與現場簽署者分開敘述。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "陳明忠、連明偉、朱國珍、朱和之等作家亦提供著作響應"
+  },
+  {
+   "fact": "林宜敬部長「指出」，AI模型對民主、權力制衡等概念的理解會受訓練語料的社會與文化脈絡影響，且目前國際大型語言模型的中文訓練資料仍多以簡體中文內容為主——這是部長的論述，不是本站查證過的事實。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": true,
+   "verbatim_quote": "目前國際大型語言模型的中文訓練資料仍多以簡體中文內容為主"
+  },
+  {
+   "fact": "數發部表示，臺灣主權AI訓練語料庫自民國 114 年（2025 年）年底上線，初期以中央及地方政府語料為主。官方只寫「去（114）年底」，沒有給精確上線日期。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": true,
+   "verbatim_quote": "臺灣主權AI訓練語料庫自去（114）年底上線，初期以中央及地方政府語料為主"
+  },
+  {
+   "fact": "數發部表示，截至 2026 年 8 月底，語料庫規模已達約 22 億 Tokens。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": true,
+   "verbatim_quote": "截至今年8月底規模已達約22億Tokens"
+  },
+  {
+   "fact": "現階段的合作對象是「具豐富語料資源的出版業及電子書平臺」，並「採無償授權方式推動」——官方明寫無償，沒有任何報酬或授權金。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "現階段以具豐富語料資源的出版業及電子書平臺為合作對象，採無償授權方式推動"
+  },
+  {
+   "fact": "作者若有意願提供個人著作，官方寫的路徑是「可由其出版社協助上架至語料庫」，而不是作者自行上架。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "作者如有意願提供個人著作，可由其出版社協助上架至語料庫"
+  },
+  {
+   "fact": "重點徵集內容四大類：經同意授權之出版品、出版品簡介、出版品試閱內容、已逾著作權保護期間並可作為公共財活化運用之典籍與創作。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "重點徵集內容包含四大類：經同意授權之出版品、出版品簡介、出版品試閱內容、已逾著作權保護期間並可作為公共財活化運用之典籍與創作。"
+  },
+  {
+   "fact": "數發部強調語料徵集採「自願參與、明確授權、可退出」三大原則，並稱「設有完善的退出下架申請管道」；新聞稿沒有說明這個管道長什麼樣子。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": true,
+   "verbatim_quote": "語料徵集採「自願參與、明確授權、可退出」三大原則。除建立明確授權機制外，亦設有完善的退出下架申請管道"
+  },
+  {
+   "fact": "數發部邀請的對象寫成「作者、出版社、文化機構、法人單位及各領域內容提供者」。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "數發部誠摯邀請作者、出版社、文化機構、法人單位及各領域內容提供者共同參與"
+  },
+  {
+   "fact": "新聞稿末尾給的窗口：語料庫網址 https://taic.moda.gov.tw/ 、諮詢專線 0800-023-300、服務信箱 tsaitc@moda.gov.tw（信箱在網頁原始碼中被 Cloudflare 混淆，解碼後與申請須知頁的明文一致）。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺灣主權AI訓練語料庫：https://taic.moda.gov.tw/ 諮詢專線：0800-023-300"
+  },
+  {
+   "fact": "新聞發布頁附了兩份官方 PDF：「民間單位提供之語料書單」與「主權AI語料庫民間語料徵集記者會簡報」。",
+   "url": "https://moda.gov.tw/press/press-releases/20640",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "官方書單 PDF 逐筆列出民間單位提供的著作：林宜敬《流寇與創新者》《幸福的鬼島》；李魁賢《我的新世紀詩路─李魁賢回憶錄》；藍弋丰《橡皮推翻了滿清》；陳明忠《造自己的船，環我們的島》；連明偉《番茄街游擊戰》；朱和之《半個媽媽半個女兒》；朱國珍《夢之眼》。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/MXH8xGP8UD6Awlf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "官方書單 PDF 顯示讀墨電子書平臺提供《犢月刊》共 157 冊、《百年千書的前世今生》《胡適文選》《賴和先生全集》《臺灣紀事》《劉半農文選》《郁達夫南洋隨筆》《重返一九二○黃金年代：一世紀前的台灣風華》；秀威資訊提供的是《名流詩叢》58 本的「作品簡介」（不是全文）；巨思文化提供《成長駭客行銷術》《快樂工作指南》；食力提供《食力08：早餐吃了沒？》《食力專題報導vol.63：台灣地酒復興革命》《食力04：一杯手搖飲 你到底喝了什麼？》。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/MXH8xGP8UD6Awlf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "記者會簡報第 3 頁標題為「語料規模成長逾3倍，累積臺灣AI發展關鍵能量」，四張數字卡各有一個舊值與一個新值：政府機關參與 200→250、資料量(GB) 50→200、資料集數量 2000→5000、Tokens 6億→21億。簡報沒有標明這兩個值各自對應哪一天。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/7kSm8t10Nmtktpr",
+   "is_vendor_claim": true,
+   "verbatim_quote": "語料規模成長逾3倍，累積臺灣AI發展關鍵能量"
+  },
+  {
+   "fact": "記者會簡報第 4 頁寫「優先邀請具豐富語料資源之出版業、電子書平臺參與」，四類分別標為 01 自願授權（經作者自願授權提供AI訓練使用之著作）、02 書籍簡介（出版品之書籍簡介）、03 試閱內容（出版品提供之試閱內容）、04 逾越保護期間之著作（著作財產權因存續期間屆滿而消滅之著作），底部標語為專業深度／品質可靠／在地觀點／脈絡完整。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/7kSm8t10Nmtktpr",
+   "is_vendor_claim": false,
+   "verbatim_quote": "優先邀請具豐富語料資源之出版業、電子書平臺參與："
+  },
+  {
+   "fact": "記者會簡報第 5 頁畫出流程：資料提供方（民間單位，圖上出現印刻出版、Readmoo讀墨、秀威資訊）自願提供給 TAIC（標示自願參與／明確授權／可退出），再以高品質語料提供給資料應用端（政府機關、民間團體、學研單位），用途寫成模型訓練、微調、RAG、知識萃取等；合規利用舉例為教育學習、行政輔助、智慧客服、專業諮詢。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/7kSm8t10Nmtktpr",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "記者會簡報第 6 頁把出版社端的流程寫成三步驟：步驟1 申請帳號、步驟2 上架資料集、步驟3 發布資料集。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/7kSm8t10Nmtktpr",
+   "is_vendor_claim": false,
+   "verbatim_quote": "出版社三步驟完成語料提供"
+  },
+  {
+   "fact": "記者會簡報第 2 頁把政策目標寫成「豐富正體中文、臺灣在地文化訓練語料」與「強化『自主選擇、安全可控、應變韌性』的AI能力」。",
+   "url": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/7kSm8t10Nmtktpr",
+   "is_vendor_claim": true,
+   "verbatim_quote": "強化「自主選擇、安全可控、應變韌性」的AI能力"
+  },
+  {
+   "fact": "2026 年 7 月 24 日，數發部發布「臺灣主權AI訓練語料庫」與客家委員會合作，正式上架客家語言資源、出版品、文史典藏及研究報告，首度新增約 2000 萬 tokens 的高品質訓練語料。建立日期與更新日期皆為 2026-07-24，發布單位資料創新司。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": false,
+   "verbatim_quote": "近日與客家委員會合作，正式上架客家語言資源、出版品、文史典藏及研究報告等多項珍貴內容，首度新增約2000萬tokens的高品質訓練語料"
+  },
+  {
+   "fact": "7 月 24 日那則的官方標題逐字為「數發部「臺灣主權AI訓練語料庫」新增2000萬tokens客語語料 充實本土AI語言資料基礎」。",
+   "url": "https://moda.gov.tw/press/press-releases/372",
+   "is_vendor_claim": false,
+   "verbatim_quote": "數發部「臺灣主權AI訓練語料庫」新增2000萬tokens客語語料 充實本土AI語言資料基礎"
+  },
+  {
+   "fact": "客委會提供的語料內容：詩集創作、客家風情及客語教學圖書等政府出版品；客語能力認證各級詞彙教材與題庫、口語採錄文本、文化典藏；以及學術與政策研究資料（如客語復振、政策發展與文化治理）。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": false,
+   "verbatim_quote": "主要涵蓋：詩集創作、客家風情及客語教學圖書等政府出版品；客語能力認證各級詞彙教材與題庫、口語採錄文本、文化典藏，以及學術與政策研究資料，如客語復振、政策發展與文化治理等。"
+  },
+  {
+   "fact": "官方把客語定位為「我國國家語言之一」。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": false,
+   "verbatim_quote": "客語作為我國國家語言之一，承載著深厚的歷史與文化底蘊。"
+  },
+  {
+   "fact": "數發部表示，截至 2026 年 7 月 24 日，語料庫自上線以來已累積「逾15億tokens」語料量。與 9 月 15 日的「約22億」相比，可看出兩個月內的成長，但官方沒有給逐月數字。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": true,
+   "verbatim_quote": "「臺灣主權AI訓練語料庫」自上線以來，已累積逾15億tokens語料量"
+  },
+  {
+   "fact": "數發部表示客語語料「有助於提升AI模型對客語不同腔調、語意及文化脈絡的理解與生成能力」，未來可應用於客語智慧客服、本土文化知識服務及公共政策——這是官方的期待，不是實測結果。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": true,
+   "verbatim_quote": "更有助於提升AI模型對客語不同腔調、語意及文化脈絡的理解與生成能力"
+  },
+  {
+   "fact": "早在 7 月 24 日，數發部就已預告「規劃推動民間語料徵集」，9 月 15 日的啟動是同一條政策線的後續。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": false,
+   "verbatim_quote": "同時深化公私協力，規劃推動民間語料徵集，逐步建構具臺灣主權代表性與專業知識的資料基石"
+  },
+  {
+   "fact": "客語語料已「正式上架」，數發部歡迎AI模型開發團隊、學研機構及相關單位至語料庫官網（https://taic.moda.gov.tw）申請使用。",
+   "url": "https://moda.gov.tw/press/press-releases/20230",
+   "is_vendor_claim": false,
+   "verbatim_quote": "目前該批客語語料已正式上架，數發部歡迎AI模型開發團隊、學研機構及相關單位至「臺灣主權AI訓練語料庫」官網（https://taic.moda.gov.tw）申請使用"
+  },
+  {
+   "fact": "7 月 24 日那則有官方英文版，官方英文用語為 Taiwan Sovereign AI Training Corpus、Hakka Affairs Council (HAC)、Approximately 20 million tokens、more than 1.5 billion tokens；英文版的 Update Date 是 2026-07-30（中文版是 2026-07-24）。",
+   "url": "https://moda.gov.tw/en/press/press-releases/20230",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Approximately 20 million tokens of high-quality training data have been added for the first time"
+  },
+  {
+   "fact": "語料庫網站「提供語料」頁寫出徵集原則與優先對象：秉持「自願參與、明確授權、可退出」的原則；民間語料徵集優先與出版業及電子書平臺等內容提供者合作；四類優先內容為經同意授權供AI訓練使用之出版品、出版品之書籍簡介、出版品提供之試閱內容、已逾越著作權保護期間之出版品。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "秉持「自願參與、明確授權、可退出」的原則，尊重作者與權利人的意願，讓大家安心參與、放心提供。"
+  },
+  {
+   "fact": "「提供語料」頁說明數發部提供《臺灣主權AI訓練語料同意書》供出版社參考，作者可透過簽署授權同意書、由其出版社協助辦理上架。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "我們也提供《臺灣主權AI訓練語料同意書》供出版社參考；作者如有意願提供個人著作，也可以透過簽署授權同意書，由其出版社協助辦理上架"
+  },
+  {
+   "fact": "「提供語料」頁的兩個按鈕是「我已準備好提供語料」（連往語料庫的 CMS 系統）與「我想要諮詢提供語料」（開啟諮詢表單，欄位包含聯絡人、電話、電子郵件、語料範圍與想法）；頁面內容的建立時間為 2026-08-27、最後修改時間 2026-09-14（記者會前一天）。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "上架前必須先同意的《臺灣主權AI訓練語料庫語料提供原則》文本日期標為 115.05.20（2026 年 5 月 20 日），也就是原則比記者會早約四個月訂定。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺灣主權AI訓練語料庫語料提供原則 115.05.20"
+  },
+  {
+   "fact": "語料提供原則第二點列出品質門檻四項：人工撰寫或創作並經編輯審核；反映臺灣在地文化與歷史脈絡；語言以《國家語言發展法》所稱之國家語言為原則（如臺灣華語、臺語、客語及原住民族語等）；具知識價值與訓練效益。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "語料所涉語言以《國家語言發展法》所稱之國家語言為原則，如臺灣華語、臺語、客語及原住民族語等"
+  },
+  {
+   "fact": "語料提供原則第三點列出七項不得涉及的內容：危害國家安全或社會、財政、經濟安定之爭議性內容；以商業行銷、廣告推廣或產品銷售為主要目的；資訊密度低、重複性高或缺乏訓練價值；文本結構破碎、缺乏完整脈絡；虛假訊息或惡意製造拼接重複張貼；違反公序良俗或法令；其他不符合建置目的或品質要求者。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "（二）以商業行銷、廣告推廣或產品銷售為主要目的之內容。"
+  },
+  {
+   "fact": "語料提供原則第四點把「無償」寫死：資料提供者須擁有合法權利，並願意採用《臺灣主權AI訓練語料授權條款》（第1版及其後續更新條款）無償提供上架。注意它同時綁住「後續更新條款」。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "願意採用《臺灣主權AI訓練語料授權條款》（第1版及其後續更新條款）無償提供上架至語料庫"
+  },
+  {
+   "fact": "語料提供原則第五、六點寫下架情形：提供者上架前要自行確認符合個人資料保護法與第二至四點，違反或侵害第三人權益時「應立即辦理下架」；語料庫維運管理單位對違規上架或有管理必要者，「得逕予調整或下架」。這兩條都是違規或管理下架，不是作者反悔的一般退出程序。",
+   "url": "https://taic.moda.gov.tw/contribute",
+   "is_vendor_claim": false,
+   "verbatim_quote": "語料庫維運管理單位就臺灣主權AI訓練語料庫具管理權限，對違反第五點規定上架之語料資料，或有其他管理語料資料之必要，得逕予調整或下架。"
+  },
+  {
+   "fact": "授權條款的正式名稱是「臺灣主權AI訓練語料授權條款-第1版」，官方英文名為 Taiwan Sovereign AI Training Corpus License - Version 1；條款內文自稱的標示字串是「臺灣主權AI訓練語料授權條款-1.0」與 SAITD-Lic-Taiwan-1.0，授權有效期間可由授權人指定為特定年份或永久（例：有效期間至2030年／有效期間為永久）。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "「臺灣主權AI訓練語料授權條款-1.0－有效期間至2030年」、「臺灣主權AI訓練語料授權條款-1.0－有效期間為永久」"
+  },
+  {
+   "fact": "授權範圍：授權人授予被授權人重製、改作、編輯及其他著作權相關權利上必要之使用權，使其合法用於AI訓練；「此項授權不得再授權與轉讓」。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "此項授權不得再授權與轉讓，有效期間得由授權人或其代表人指定為特定年份或永久。"
+  },
+  {
+   "fact": "授權條款明訂訓練成果（模型、權重、程式碼、文件或其他輸出）若具著作權保護要件，歸屬於被授權人或模型操作者；而且「即使原語料資料後續停止提供使用，不影響已完成之訓練成果」。這是「可退出」最重要的界線。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "即使原語料資料後續停止提供使用，不影響已完成之訓練成果，包括但不限於所產出之模型、權重，以及程式碼、文件或其他型態之輸出。"
+  },
+  {
+   "fact": "授權條款保留一個例外：當成果在內容上與原語料實質近似，且對原語料市場或價值造成負面影響、超出合理學習範疇時，仍可能受原著作權拘束。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "惟當該等成果在內容上與原語料實質近似，且對原語料資料市場或價值造成負面影響，並超出合理學習範疇時，仍可能受原著作權拘束。"
+  },
+  {
+   "fact": "標示義務：被授權人須標示語料平臺提供的識別資訊（資料集名稱、版本號、提供者、發布年份、申請頁面或官方網站）與本授權條款名稱；但「毋須就本授權語料資料內含個別素材…進行逐項標示」，也就是不會逐本書列出來。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "毋須就本授權語料資料內含個別素材，如語文、音樂、美術、攝影、圖形、視聽、錄音等客體進行逐項標示"
+  },
+  {
+   "fact": "授權條款的使用政策列出十項應自負其責的爭議行為，包括違反國際或當地法規、傷害未成年人、製造虛假資訊、用於個人資訊追蹤、污蔑誹謗或騷擾、偽裝他人身份、侵犯他人合法權利、對特定族群歧視或傷害、分析並傷害特定群體的弱點、用於法律禁止的專業用途。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(3) 製造虛假資訊；(4) 用於個人資訊追蹤；"
+  },
+  {
+   "fact": "授權條款的免責聲明寫明這是「免授權金之授權基礎」，授權人不保證資料的商業性、適用性或無侵權爭議狀態，且對使用資料引發的直接或間接損失不負責任。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "基於免授權金之授權基礎，授權人僅對語料資料所擁有的著作權和著作相關權利地位進行明確主張"
+  },
+  {
+   "fact": "授權條款其他事項：正體中文與英文版皆為正式文本、具同等法律效力；本條款「不預立準據法與管轄法院」；發生爭議時橋接資料的語料平臺不參與任何一方發動的爭議程序；條款文本本身不主張著作權、歸於公眾領域。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "本授權條款不預立準據法與管轄法院，如發生爭議，授權人與被授權人雙方應本於誠信原則共同協議解決"
+  },
+  {
+   "fact": "授權條款可與其他資料授權條款搭配使用，官方舉例的標示寫法包括「CC授權-姓名標示-非商業性 + 臺灣主權AI訓練語料授權條款-1.0」與 CC-BY-ND-with-Taiwan-AI-training-exception-1.0。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": "「CC授權-姓名標示-非商業性 + 臺灣主權AI訓練語料授權條款-1.0」、\"CC-BY-ND-with-Taiwan-AI-training-exception-1.0\""
+  },
+  {
+   "fact": "授權條款頁面內容的建立時間為 2025-10-16、最後修改時間為 2026-09-03（民間徵集啟動前十二天）。",
+   "url": "https://taic.moda.gov.tw/content/license",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "取用端的資格（《申請須知及使用規範》）：從事AI訓練及學習之開發、應用或相關研究之國內外政府機關(構)、公私法人、研究機構、學校、非法人團體或自然人皆可申請，注意包含「國內外」與「自然人」。",
+   "url": "https://taic.moda.gov.tw/content/application-guidelines",
+   "is_vendor_claim": false,
+   "verbatim_quote": "從事人工智慧(AI)訓練及學習之開發、應用或相關研究之國內外政府機關(構)、公私法人、研究機構、學校、非法人團體或自然人。"
+  },
+  {
+   "fact": "申請下載要交的文件：說明AI訓練或研究的專案應用情境、使用模型、預計使用算力資源、所需語料資料集類型與預期效益，並上傳研究計畫書、專案計畫書或模型訓練說明文件等佐證。",
+   "url": "https://taic.moda.gov.tw/content/application-guidelines",
+   "is_vendor_claim": false,
+   "verbatim_quote": "請具體說明從事AI訓練及學習之開發、應用或相關研究內容，包含專案應用情境、使用模型、預計使用算力資源、所需訓練語料資料集類型（如客服諮詢問答、法規資料）及預期效益等。"
+  },
+  {
+   "fact": "審查規則：原則於收受申請案後 7 個工作日內完成審查並以電子郵件通知帳號啟用；帳號啟用後每 3 個月須重新進行憑證驗證；曾提供語料予語料庫者、以及數位發展部數位產業署「數位產業跨域軟體基盤暨數位服務躍升計畫」算力平臺入選名單，得優先審查。",
+   "url": "https://taic.moda.gov.tw/content/application-guidelines",
+   "is_vendor_claim": false,
+   "verbatim_quote": "語料庫維運管理單位原則於收受申請案後7個工作日內完成審查，並以電子郵件通知帳號啟用；為確保帳號安全性及有效性，帳號啟用後每3個月，須重新進行憑證驗證。"
+  },
+  {
+   "fact": "使用規範限制：下載的語料「僅得作為AI模型訓練與學習之用途」，使用者同意語料庫得揭露其產出成果；不得進行任何意圖重新識別個人身分之行為，發現語料涉及個人資訊應通報並主動刪除；違法或不當使用時維運管理單位得暫停或終止下載權限，已下載者應配合停止使用。",
+   "url": "https://taic.moda.gov.tw/content/application-guidelines",
+   "is_vendor_claim": false,
+   "verbatim_quote": "僅得作為AI模型訓練與學習之用途，並應遵守各該語料資料所採用之授權條款及語料庫相關使用規範，並同意語料庫得揭露其使用語料資料所產出或輸出之相關成果。"
+  },
+  {
+   "fact": "語料庫的資料依授權分兩類：一類「僅授權AI訓練使用（申請下載）」採《臺灣主權AI訓練語料授權條款－第1版》，要先申請帳號並審核通過；另一類「開放資料（自由下載）」自政府資料開放平臺同步，採《政府資料開放授權條款－第1版》，不限目的、時間與地域，無須申請帳號。",
+   "url": "https://taic.moda.gov.tw/content/about",
+   "is_vendor_claim": false,
+   "verbatim_quote": "自政府資料開放平臺同步之文本資料，採《政府資料開放授權條款－第1版》授權，允許不限目的、時間與地域範圍之自由利用"
+  },
+  {
+   "fact": "下載方式分單筆與批次：批次下載須先申請帳號登入後提出申請，語料庫於申請後 1 日內以電子郵件提供下載連結，連結自申請日起 7 日內有效。",
+   "url": "https://taic.moda.gov.tw/content/about",
+   "is_vendor_claim": false,
+   "verbatim_quote": "語料庫將於申請後1日內，以電子郵件提供下載連結；該連結自申請日起7日內有效"
+  },
+  {
+   "fact": "語料庫的建置順序是「優先由中央二級機關先行」，提供具臺灣文化特色與觀點之正體中文語料。",
+   "url": "https://taic.moda.gov.tw/content/about",
+   "is_vendor_claim": true,
+   "verbatim_quote": "優先由中央二級機關先行，提供具臺灣文化特色與觀點之正體中文語料"
+  },
+  {
+   "fact": "2026-09-16 查核當天，語料庫網站自己的公開統計端點回報：檔案 50,769 筆、資料量 318.59 GB（342,086,455,518 bytes）、資料集 6,417 個、estimated_tokens 2,200,397,354（約 22 億）。官方欄位名稱寫的是 estimated（推估），不是實測計數。",
+   "url": "https://taic.moda.gov.tw/api/v1/no-auth/export/dataset/summary",
+   "is_vendor_claim": true,
+   "verbatim_quote": "\"estimated_tokens\":2200397354,\"dataset_sum\":6417"
+  },
+  {
+   "fact": "語料庫網站的頁面標題仍標示為「臺灣主權 AI 訓練語料庫(Beta 版)」，也就是平臺自稱仍在 Beta 階段。",
+   "url": "https://taic.moda.gov.tw/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺灣主權 AI 訓練語料庫(Beta 版)"
+  },
+  {
+   "fact": "語料庫「合作夥伴」頁的資料顯示中央機關 34 個、地方政府 22 個、民間單位 5 個（巨思文化、印刻、秀威資訊、食力、讀墨），5 個民間單位的建檔時間都是 2026-09-15。",
+   "url": "https://taic.moda.gov.tw/api/v1/logo.list?type=NGO",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "數發部「moda x AI」AI 專區頁（頁面標示更新日期 2026/09/10）的儀表板把「AI 訓練資料量」寫成 2,161,123,541，並連往 taic.moda.gov.tw。這個數字比新聞稿的「約22億」低、比 9/16 端點的 2,200,397,354 低，可見這是不同時點的快照。",
+   "url": "https://moda.gov.tw/major-policies/ai/1781",
+   "is_vendor_claim": true,
+   "verbatim_quote": "AI 訓練資料量"
+  }
+ ],
+ "not_said": [
+  "兩則新聞發布都沒有給民間語料徵集的截止日期或徵集期間；「提供語料」頁與語料提供原則也沒有。這是一個沒有期限的持續徵集，不能寫成限期活動。",
+  "官方沒有給民間語料的目標量（要徵到多少 tokens 或多少本書），也沒有公布 9 月 15 日這一批民間語料本身有多少 tokens。書單 PDF 只有書名，沒有字數或 token 數。",
+  "官方沒有提到任何報酬、授權金、分潤或回饋機制。相反地，新聞稿寫「採無償授權方式推動」、語料提供原則第四點寫「無償提供上架」。所以不是「未說明報酬」，而是明確寫了無償；但官方也沒有說未來會不會有其他形式的回饋。",
+  "「設有完善的退出下架申請管道」只有這一句。官方沒有給這個管道的網址、表單、申請人資格（作者本人還是出版社）、處理時間、是否需要理由，本站在語料庫網站上也找不到對應頁面。",
+  "官方沒有說退出下架之後，已經被下載的語料副本會怎麼處理。授權條款只說已完成的訓練成果不受影響（模型、權重、程式碼、輸出），使用規範只在帳號被停權時要求「已下載之語料資料，使用者應配合停止使用」。",
+  "沒有任何一則官方文件說哪些 AI 開發團隊已經下載過語料庫、訓練出哪些模型、核准過幾件申請。",
+  "官方沒有給語料庫的精確上線日期，只寫「去（114）年底上線」。",
+  "7 月 24 日那則沒有說客語語料是幾個資料集、幾個檔案，也沒有列出個別書名，更沒有說涵蓋哪些客語腔調（只說有助於理解「不同腔調」）。",
+  "官方沒有宣布臺語或原住民族語語料已經上架。語料提供原則只把國家語言寫成品質原則，客語是目前唯一被新聞稿點名新增的非華語語料。",
+  "徵集端沒有說國外出版社或非臺灣權利人能不能提供語料。取用端的申請須知明寫「國內外」，但這是下載資格，不能推定到提供端。",
+  "官方沒有說作者可以不透過出版社自行上架個人著作；新聞稿與「提供語料」頁寫的都是「由其出版社協助上架／協助辦理上架」。",
+  "記者會簡報那四組數字（200→250、50→200 GB、2000→5000、6億→21億）沒有標示各自的時間點，所以不能寫成「目前是 21 億」或「現在有 5000 個資料集」。",
+  "官方文件從頭到尾沒有指名「語料庫維運管理單位」是哪一個單位或哪一家廠商。",
+  "官方沒有說上架前會不會由數發部對民間語料做去識別化或內容過濾；語料提供原則把符合個資法的確認責任放在資料提供者身上。",
+  "官方沒有說下載語料要不要付費（申請須知與授權條款都沒有提到費用，授權條款只說是免授權金的授權基礎）。",
+  "官方沒有說任何一項政府 AI 服務已經使用了這個語料庫的資料。",
+  "9 月 15 日那則到查核日為止沒有官方英文版（https://moda.gov.tw/en/press/press-releases/20640 回 HTTP 404）。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "語料庫目前的 token 數是 21 億。",
+   "seen_where": "記者會簡報 PDF 第 3 頁的數字卡",
+   "why_excluded": "簡報沒有標示這個數字對應哪一天；同一週期內新聞稿寫「截至今年8月底…約22億」、AI 專區頁（更新 2026/09/10）寫 2,161,123,541、語料庫端點在 2026-09-16 回 2,200,397,354。四個數字互不一致，所以只採用新聞稿自己帶日期的「截至今年8月底約22億」，其餘只作為佐證記錄。"
+  },
+  {
+   "claim": "語料庫有 250 個政府機關參與。",
+   "seen_where": "記者會簡報 PDF 第 3 頁「政府機關參與 200→250」",
+   "why_excluded": "語料庫合作夥伴頁的資料只有中央 34 筆、地方 22 筆 logo，計算基礎顯然不同（簡報可能算到機關構層級）。官方沒有解釋 250 怎麼算出來的，寫進文章會誤導。"
+  },
+  {
+   "claim": "朱和之著有《半個媽媽半個女兒》。",
+   "seen_where": "官方「民間單位提供之語料書單」PDF 的配對",
+   "why_excluded": "書單 PDF 就是這樣配對，但本站沒有以其他一手來源核對作者與書名的對應關係。如果要寫書名，只能寫「官方書單所列」，不可另行斷言誰寫了哪一本。"
+  },
+  {
+   "claim": "印刻文學提供了哪些著作。",
+   "seen_where": "新聞稿列印刻文學為現場簽署單位；合作夥伴清單也有「印刻」",
+   "why_excluded": "官方書單 PDF 裡沒有印刻的任何條目，官方也沒有說明原因。所以只能寫印刻文學出席並簽署，不能寫它提供了什麼。"
+  },
+  {
+   "claim": "記者會影片在 YouTube 上。",
+   "seen_where": "記者會簡報 PDF 第 8 頁印了 youtu.be/lhLEBnsPcQw",
+   "why_excluded": "本站沒有抓這個網址，無法確認它是不是數發部官方頻道，因此不列為來源、也不據以寫任何內容。"
+  },
+  {
+   "claim": "數發部在 2025 年某月某日發布語料庫上線公告。",
+   "seen_where": "9/15 新聞稿的「自去（114）年底上線」",
+   "why_excluded": "moda 的站內搜尋 API（POST https://www-api.moda.gov.tw/WebsiteList/NewsList）在本容器對每一組查詢都回 HTTP 200 但內容是「查無任何資訊」，新聞列表頁只顯示最近 15 筆（最舊 2026-06-18），所以找不到那則原始公告。上線時間只能照抄「去（114）年底」。"
+  },
+  {
+   "claim": "數發部 2026-09-02 公布臺灣主權AI評測結果。",
+   "seen_where": "moda AI 專區頁的相關新聞清單，連往 /ADI/news/latest-news/20538",
+   "why_excluded": "這是另一條線（主權AI評測，不是語料庫），而且本站只看到標題與日期、沒有打開那一頁。不寫進本文，也不要把評測與語料庫混為一談。"
+  },
+  {
+   "claim": "客家委員會自己也發布了合作公告。",
+   "seen_where": "hakka.gov.tw 首頁可連（HTTP 200，https://www.hakka.gov.tw/chhakka/index）",
+   "why_excluded": "客委會新聞模組用不透明的 serno 參數，本站沒有找到對應的那一則，因此本文所有客語語料內容一律以數發部新聞稿為準，不引用客委會的說法。"
+  },
+  {
+   "claim": "語料庫網站的『消息專區』有公告可引用。",
+   "seen_where": "https://taic.moda.gov.tw/api/v1/no-auth/news.list 回 HTTP 200，pagination.total = 0",
+   "why_excluded": "查核當天該欄目沒有任何一則已發布消息，所以沒有東西可引。也不要反過來寫成「官方沒有公告」——那只是站內欄目是空的。"
+  },
+  {
+   "claim": "臺馬二號海纜 2026-03-07 全斷、2026-05-25 完成緊急修復（候選清單裡的整合站說法）。",
+   "seen_where": "candidates-tech-and-ai.md 的 T4 註記",
+   "why_excluded": "不是本篇題目。但順帶記錄：moda 英文新聞列表確實有 2026-05-26 的 Communications in Dongyin Return to Normal After Repair of Taiwan-Matsu Subsea Cable No.2（/en/press/press-releases/19778），本站沒有打開，日期與細節仍須自行查證。"
+  }
+ ],
+ "must_not_write": [
+  "不可寫任何截止日期、徵件期限或名額——官方完全沒有給。",
+  "不可寫作者提供語料可以獲得報酬、稿費、分潤或任何回饋；官方寫的是無償授權。也不要反過來寫成「官方未說明是否有報酬」，那會漏掉官方明寫的無償。",
+  "不可寫「退出後作品就會從 AI 模型裡移除」。授權條款明寫『即使原語料資料後續停止提供使用，不影響已完成之訓練成果』。",
+  "不可把『可退出』寫成已經備妥的一鍵功能——官方只說設有申請管道，沒有公布任何細節。",
+  "不可把林宜敬部長對『國際大型語言模型中文訓練資料多以簡體中文為主』的說法寫成事實，一律寫成「林宜敬部長指出」。",
+  "不可把記者會簡報的 21億／5000／200GB／250 寫成現況數字，也不可把這些數字放進圖解。",
+  "不可寫「任何人都能下載語料庫」。下載要申請帳號、備齊佐證文件、通過審查（原則 7 個工作日），且每 3 個月要重新憑證驗證；只有從政府資料開放平臺同步的開放資料才免帳號。",
+  "不可指名『語料庫維運管理單位』是誰，官方沒有寫。",
+  "不可寫成購物或投資建議，不推薦任何出版社、電子書平臺或 AI 服務（tech.md 明文禁止購買建議）。",
+  "不可另外加投資免責 callout——科技篇不帶 finance 主題。",
+  "圖解不可畫 TAIC 標誌、出版社標誌或任何介面截圖；產品與機構一律純文字。",
+  "不可推定臺語、原住民族語語料也已上架，官方只公布客語。",
+  "不可寫本站做過任何實測或試用。",
+  "英文版一律用官方英文名 Taiwan Sovereign AI Training Corpus 與 Hakka Affairs Council，不要自己翻。",
+  "不可把這篇寫成台灣著作權法或 AI 基本法的解說——那是既有文章的範圍，只能連過去。"
+ ],
+ "editorial_brief": "讀者是會寫字、出書、或只是讀中文的臺灣一般使用者。這一篇要回答的是：政府在蓋一座「主權 AI 語料庫」，2026 年 9 月 15 日開始向民間收語料，如果我的書、或我出版社的書進去了，會發生什麼事。主體是公共資料基礎建設與權利條件，不是某個 AI 模型的能力，所以放科技垂直（topics: tech, tech-news），並在文末連到 AI 垂直的索引。建議五節：(1) 9 月 15 日發生什麼、誰到場簽了什麼；(2) 這座語料庫本來是什麼、怎麼長到今天的規模，第 2 節結尾放表格（欄位建議：時間點／官方說的規模／語料來源／查核日在 caption）；(3) 誰能提供、能提供哪四類東西、三步驟怎麼走，第 3 節結尾放圖解；(4) 授權條款實際上動到權利人的什麼——無償、不得再授權轉讓、標示只標到資料集層級、以及『可退出』碰到的那道界線（已完成的訓練成果不受影響）；(5) 誰能把語料拿走、拿走要過什麼關（資格、佐證文件、7 個工作日、每 3 個月重新驗證、僅限 AI 訓練用途）。客語那 2000 萬 tokens 寫成第 2 節或第 1 節的前情，不要另開一篇。刻意不談：臺灣著作權法本身、AI 基本法、2026-09-02 的主權AI評測那條線、以及『作者到底該不該參加』的價值判斷——本文只整理官方寫了什麼、沒寫什麼，讓讀者自己判斷。生活情境如果要舉例（例如一位自費出版的作者要不要問出版社），必須標明是編輯設計的例子。",
+ "overlaps_existing_article": "既有內容包（BRIEF 記為 845 篇 life）裡沒有任何一篇寫過數位發展部或臺灣主權AI訓練語料庫，38 篇 ai-news-* 也沒有；以 grep 掃過 apps/api/app/guides/content 的全部 json，命中『語料／主權AI／數位發展部』的都是主題文章而非新聞。最接近的是 ai-image-copyright-taiwan.json（AI 生成圖片的版權：台灣法規與商用注意事項）與 ai-regulation-eu-act-taiwan.json（歐盟 AI 法案與台灣 AI 基本法：對使用者的影響），兩篇都掛 topics [ai, ai-safety]。分工：本篇只寫數發部自己訂的條款對投稿者的效果（無償、標示、可退出的界線、下載資格），不重講著作權法的合理使用、也不重講 AI 基本法；需要背景時用站內連結指過去。另外 ai-news-2026-january-september-index.json（2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用）是 AI 垂直的索引，可作為兩個 link 之一；科技垂直若尚無索引，需由編輯決定第一個 link 指向哪裡。",
+ "corrections_to_candidate_list": [
+  "候選清單 T4 的日期與標題都正確，但沒有寫出真正的文章 id。實際網址（2026-09-16 由 /press/press-releases/372 的清單逐筆解析取得，不是猜的）：2026-09-15 = /press/press-releases/20640；2026-07-24 = /press/press-releases/20230；2026-09-10 的 6G 研討會 = /press/press-releases/20612；2026-06-23 的臺馬四號海纜 = /press/press-releases/19976。",
+  "候選清單把 https://moda.gov.tw/press/press-releases/372 當成數發部的完整新聞管道，這不成立：數位產業署另有自己的公告區 /ADI/news/latest-news/（例如 2026-09-02「讓你的AI懂臺灣！數位發展部公布臺灣主權AI評測結果」在 /ADI/news/latest-news/20538，2026-09-12 在 /ADI/news/latest-news/20626）。只看 372 那張清單就下「數發部沒有公布 X」的結論並不安全。",
+  "候選清單對臺馬二號海纜的疑問可以往下追：moda 英文新聞列表有 2026-05-26 的 Communications in Dongyin Return to Normal After Repair of Taiwan-Matsu Subsea Cable No.2（/en/press/press-releases/19778）。本站沒有打開該頁，只確認標題與日期存在於官方列表。",
+  "候選清單建議的 slug tech-news-taiwan-sovereign-ai-corpus-20260915 正確，事件日 2026-09-15 與新聞發布頁的建立日期一致，不需要像批次 3 那樣改日期。",
+  "翻譯階段要注意：2026-07-24 那則有官方英文版（/en/press/press-releases/20230），2026-09-15 那則沒有（/en/.../20640 回 404，英文列表最新是 2026-09-01）。英文 locale 的專有名詞要照 7/24 英文版的寫法。",
+  "查核者注意：taic.moda.gov.tw 是 Nuxt 前端，/content/license、/content/application-guidelines、/contribute 用 curl 抓到的 HTML 內文是空的。真正的文本在 https://taic.moda.gov.tw/api/v1/page-content.info?type=license|application_guidelines|about|contribute。不要因為 curl 抓不到就判定查無此頁。"
+ ]
+}

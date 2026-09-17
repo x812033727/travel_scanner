@@ -1,0 +1,427 @@
+{
+ "slug": "crypto-news-eba-psd2-mica-20260212",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "全部一手來源都在 2026-09-16 實際抓到並讀完內文，沒有任何一條事實來自媒體或整合站。實測結果：(1) EBA 2026-02-12 新聞稿頁 HTTP 200、57,330 bytes，內文完整（含日期標記「Press Release / 12 February 2026」）。(2) 意見書 PDF HTTP 200、162,135 bytes、4 頁，文字以 pypdf 完整抽出（10,531 字元），封面文號 EBA/OP/2026/01、簽署「Done at Paris, 12 February 2026」。(3) 2025 年 NAL 新聞稿頁 HTTP 200、58,227 bytes，日期標記「Press Release / 10 June 2025」。(4) NAL 原文 PDF HTTP 200、498,051 bytes、33 頁，完整抽文（99,919 字元）。另外抓到但未列入 sources（用於交叉驗證）：ESMA 各會員國 MiCA 第 143(3) 條過渡期清單 PDF（HTTP 200、3 頁，內嵌 ModDate 2026-05-19，證實 BRIEF 所說『活文件』陷阱屬實）；歐盟執委會 2024 年 12 月致 EBA／ESMA 原信（由 eba.europa.eu 代管，HTTP 200、3 頁）；EBA 新聞稿清單以 text=MiCa 與 text=PSD2 兩組關鍵字過濾（均 HTTP 200，伺服器端確實有過濾），用來確認 2026-02-12 之後沒有後續官方公告。版本警告：NAL PDF 掛在 /2025-06/ 路徑下，但檔案內嵌 CreationDate/ModDate 都是 2026-02-17，是 2026 年意見書公布之後才產生的檔案；本紀錄引用 NAL 一律限定為『2026-09-16 於該網址讀到的版本』。逐字引文說明：PDF 抽文會在字中插入多餘空白（如 'end s on'、'advi se'），本紀錄的 verbatim_quote 已把明顯的抽取空白正規化為單一空格，未更動任何用字。可用性：EBA 官網對 curl（-A Mokaair-editorial）完全開放，沒有遇到 403／WAF。不可用：https://www.eba.europa.eu/publications-and-media/press-releases/rss.xml 回 404；https://www.eba.europa.eu/rss.xml 回 200 但只有 10 筆、全是『EBA E-mail alert』摘要（最新 2026-09-14），不能當新聞 feed 用；https://www.eba.europa.eu/search?keys=... 回 200 但完全忽略關鍵字（回傳全站 27,234 筆），不可依賴。要在 EBA 站內查條目，用 /publications-and-media/press-releases?text=<關鍵字>&topic=All&date= 這個清單頁。",
+ "sources": [
+  {
+   "title": "The EBA advises national authorities on actions to take at the end of the transition period under its No-Action Letter on the interplay between PSD2 and MiCA",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "publisher": "European Banking Authority (EBA)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Opinion on the end of the No-action Letter transition period (EBA/OP/2026/01)",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "publisher": "European Banking Authority (EBA)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "EBA publishes No Action letter on the interplay between Payment Services Directive (PSD2/3) and Markets in Crypto-Assets Regulation (MiCA)",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-no-action-letter-interplay-between-payment-services-directive-psd23-and-markets-crypto",
+   "publisher": "European Banking Authority (EBA)",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Opinion on the interplay between PSD2 and MiCA in relation to crypto-asset service providers that transact electronic money tokens (EBA/Op/2025/08)",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "publisher": "European Banking Authority (EBA)",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "event_date": "2026-02-12",
+ "event_date_basis": "事件日 = 意見書發布日 2026-02-12，與 slug 尾巴一致。依據有三：EBA 新聞稿頁面本身標示「Press Release / 12 February 2026」並寫「published today an Opinion」；意見書 PDF 封面標示「EBA/OP/2026/01　12 February 2026」；文末署名「Done at Paris, 12 February 2026」。要分清楚的其他日期：PDF 內嵌製作時間是 2026-02-11（檔案產生日，不是發布日，不可用）；2026-03-02 是 No-Action Letter 過渡期的結束日，是這篇文章的主題但不是事件日，不可拿來當 slug 或 news_date；2025-06-10 是 No-Action Letter 本身的日期（EBA 2026 年新聞稿誤寫為 2025-06-02）；2026-07-01 是 MiCA 第 143(3) 條各國過渡期的法定上限日，只在條件 D 與第 12 段出現，屬於另一篇文章的事件日。",
+ "verified_facts": [
+  {
+   "fact": "EBA 於 2026 年 2 月 12 日發布一份意見書（Opinion），向 PSD2 下的各國主管機關（NCAs）說明在其 No-Action Letter 所訂的過渡期於 2026 年 3 月 2 日結束後應如何處理。新聞稿頁面標示為「Press Release / 12 February 2026」。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The European Banking Authority (EBA) published today an Opinion advising national competent authorities (NCAs) under the Revised Payment Services Directive (PSD2) on how to proceed once the transition period that is set in the EBA's No-Action Letter of 2 June 2025 (EBA/Op/2025/08) comes to an end on 2 March 2026."
+  },
+  {
+   "fact": "這份意見書的正式文號是 EBA/OP/2026/01，封面日期 12 February 2026。文號只出現在 PDF 封面，新聞稿本文沒有寫出這個文號。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "EBA/OP/2026/01 12 February 2026"
+  },
+  {
+   "fact": "意見書全名：Opinion of the European Banking Authority on the supervisory priorities at the end of the transition period under the EBA's No Action letter on the interplay between PSD2 and MiCA。EBA 網站上的文件連結標題則是「Opinion on the end of the No-action Letter transition period」，新聞稿標示檔案大小為 158.33 KB、格式 PDF。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Opinion of the European Banking Authority on the supervisory priorities at the end of the transition period under the EBA's No Action letter on the interplay between PSD2 and MiCA"
+  },
+  {
+   "fact": "意見書由監理委員會（Board of Supervisors）依其議事規則第 14(7) 條通過，收件對象是依 PSD2 第 22(1) 條及 MiCA 第 93(1) 條指定的各國主管機關。文末署名「Done at Paris, 12 February 2026」，簽署人為主席 José Manuel Campa（For the Board of Supervisors）。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In accordance with Article 14(7) of the Rules of Procedure of the Board of Supervisors, the Board of Supervisors has adopted this Opinion, which is addressed to NCAs designated under Article 22(1) of PSD2 and Article 93(1) of MiCA."
+  },
+  {
+   "fact": "EBA 發布這份意見書的職權依據是 Regulation (EU) No 1093/2010 第 29(1)(a) 條（建立共同監理文化與一致監理實務、對各國主管機關發布意見）。該規則的完整引註為 2010 年 11 月 24 日的 Regulation (EU) No 1093/2010（OJ L 331, 15.12.2010, p. 12）。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The EBA competence to deliver this Opinion is based on Article 29(1)(a) of Regulation (EU) No 1093/2010"
+  },
+  {
+   "fact": "意見書 PDF 的內嵌中繼資料顯示 CreationDate 與 ModDate 都是 D:20260211140319+01'00'（2026-02-11），亦即檔案在公布前一天產生；產生工具為 Microsoft Word for Microsoft 365。這是檔案製作時間，不是發布日。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "過渡期結束日是 2026 年 3 月 2 日。意見書第 2 段寫 NAL 當初建議各國主管機關「只在一段於 2026 年 3 月 2 日結束的過渡期之後」才要求 PSD2 授權；第 4 段與第 13 段也都以 2026 年 3 月 2 日為界。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "to require such authorisation only after a transition period that ends on 2 March 2026, and to apply a streamlined authorisation process that makes full use of information already submitted by legal entities during their CASP authorisation process."
+  },
+  {
+   "fact": "EBA 表示，NAL 的過渡期「刻意限制為九個月」，目的是把未取得授權的機構在歐盟提供支付服務的時間壓到最短；又因為各會員國的授權案件量會不同，所以才發這份意見書，指導各國主管機關在過渡期結束時如何排定審查優先順序。（這是 EBA 自己的說明，不是可獨立查證的統計）",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "As the transition period in the NAL was intentionally limited to nine months to minimise the time during which unauthorised entities could provide payment services in the EU, and given that the authorisation workload will differ between Member States, the EBA is issuing this Opinion to advise NCAs how to prioritise their authorisation efforts when the transition period ends on 2 March 2026."
+  },
+  {
+   "fact": "EBA 新聞稿也寫「過渡期讓加密資產服務提供者有九個月的時間，可以在提出 PSD2 授權申請並等待結果的期間，繼續進行屬於支付服務的電子貨幣代幣交易」。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The transition period allows crypto asset service providers (CASPs) nine months to continue transacting electronic money tokens that qualify as payment services while submitting, and awaiting the response to, their application for authorisation under PSD2."
+  },
+  {
+   "fact": "2026-02-12 新聞稿把 No-Action Letter 的日期寫成 2025 年 6 月 2 日（兩處：「No-Action Letter of 2 June 2025 (EBA/Op/2025/08)」與「published on 2 June 2025」）。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Opinion follows the EBA's No-Action Letter published on 2 June 2025"
+  },
+  {
+   "fact": "意見書本文第 1 段卻寫 No-Action Letter 是 2025 年 6 月 10 日發出的：「On 10 June 2025, the EBA issued a No Action letter (NAL) in the form of an Opinion (EBA/Op/2025/08)」。同一件事在新聞稿與意見書本文出現兩個不同日期。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "On 10 June 2025, the EBA issued a No Action letter (NAL) in the form of an Opinion (EBA/Op/2025/08)"
+  },
+  {
+   "fact": "No-Action Letter 原文 PDF 封面標示「EBA/Op/2025/08　10/06/2025」，文末署名「Done at Paris, 10 June 2025」。以原文為準，NAL 的日期是 2025 年 6 月 10 日。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Done at Paris, 10 June 2025"
+  },
+  {
+   "fact": "EBA 宣布 No-Action Letter 的新聞稿頁面本身標示為「Press Release / 10 June 2025」，標題為「EBA publishes No Action letter on the interplay between Payment Services Directive (PSD2/3) and Markets in Crypto-Assets Regulation (MiCA)」。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-no-action-letter-interplay-between-payment-services-directive-psd23-and-markets-crypto",
+   "is_vendor_claim": false,
+   "verbatim_quote": "EBA publishes No Action letter on the interplay between Payment Services Directive (PSD2/3) and Markets in Crypto-Assets Regulation (MiCA)"
+  },
+  {
+   "fact": "EBA 表示，自 NAL 發布以來，已有超過 100 家加密資產服務提供者（CASP）非正式接觸各國主管機關，或已提出支付服務提供者（PSP）的授權申請。新聞稿與意見書第 4 段用的是同一句話。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The EBA is aware that, since the publication of the NAL, more than 100 CASPs have approached NCAs informally or have submitted an application for authorisation as payment service providers."
+  },
+  {
+   "fact": "EBA 新聞稿的同一段補充：由於過渡期將屆、且各會員國的申請量可能不同，EBA 才發布這份意見書指導各國主管機關排定授權審查的優先順序。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "is_vendor_claim": true,
+   "verbatim_quote": "With the end of the transition period approaching, and given that application volumes are likely to vary across Member States, the EBA is issuing this Opinion to advise NCAs how to prioritise their authorisation efforts when the transition period ends."
+  },
+  {
+   "fact": "意見書第 7 段說明，2026 年 3 月 2 日過渡期結束時，想繼續進行屬於支付服務之電子貨幣代幣（EMT）交易的 CASP（或享有 MiCA 所指各國過渡機制的機構）會落在三種情境之一。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "By the time the NAL transition period comes to an end on 2 March 2026, three scenarios may arise for a given CASP under MiCA"
+  },
+  {
+   "fact": "情境一（第 8 段）：CASP 已取得支付機構（PI）或電子貨幣機構（EMI）授權，或已與取得相應服務授權的 PSP 建立合作關係；此時該 CASP 可以在與其（或合作 PSP）授權範圍相稱的範圍內繼續進行 EMT 交易。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the CASP has successfully obtained an authorisation as a PI/EMI or has partnered with a PSP authorised to provide the respective services"
+  },
+  {
+   "fact": "情境二（第 9 段）：CASP 已提出申請但尚未取得 PI/EMI 授權。EBA 建議 PSD2 主管機關在作成決定前，允許該 CASP 繼續進行屬於支付服務的 EMT 交易（包含跨境提供），但必須「以下條件全部滿足」。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the EBA advises that the NCA under PSD2 allows the CASP to continue carrying out EMT transactions that qualify as payment services (which includes the continuation of such services on a cross-border basis) pending its decision on the application for authorisation under PSD2, provided all of the following conditions are met"
+  },
+  {
+   "fact": "條件 A：申請已正式送交 PSD2 主管機關，且該機關已取得 PSD2 第 5 條與 EBA「支付機構授權指引」（EBA-GL-2017-09）所要求的全部資訊與文件，不論是申請人直接提供，或（在適用時）由 MiCA 主管機關提供，以便該機關評估申請。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The application has been duly submitted to the NCA under PSD2 and said NCA has obtained all information and documents required under Article 5 of PSD2 and the EBA Guidelines on the authorisation of payment institutions (EBA-GL-2017-09)"
+  },
+  {
+   "fact": "條件 B：申請人以詳盡、透明且迅速的方式回覆 PSD2 主管機關的詢問。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the applicant responds to queries from the NCA under PSD2 in an exhaustive, transparent and expeditious manner"
+  },
+  {
+   "fact": "條件 C：PSD2 主管機關已查核申請人未受任何監理措施處分，亦未違反 MiCA（或各國 VASP 制度）或其他歐盟法（例如洗錢防制）中對 PSD2 授權具重大相關性的要求；必要時應與 MiCA（或各國 VASP 制度）主管機關聯繫確認。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the NCA under PSD2 has checked that the applicant has not been subject to any supervisory measures, nor has it infringed any requirements under MiCA (or national VASP regimes) or other EU law (such as on anti-money laundering) that would be material and relevant for an authorisation under PSD2"
+  },
+  {
+   "fact": "條件 D：PSD2 主管機關依初步評估，沒有理由預期申請人無法遵循 PSD2，且有合理依據預期申請會「在極短時間內」獲准。意見書並在同一段加註：這項初步評估不妨礙主管機關最終仍駁回申請。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "based on its preliminary assessment, the NCA under PSD2 has no reason to expect the applicant is not able to comply with PSD2, and there are reasonable grounds to expect that the application will be approved within a very short time frame."
+  },
+  {
+   "fact": "條件 D 的特別規定：若某國把 MiCA 第 143(3) 條的（另一個）過渡期訂到法定上限 2026 年 7 月 1 日，則該國 PSD2 主管機關應確保上述「極短時間」無論如何不超過 2026 年 7 月 1 日，或該機構依 MiCA 第 63 條被准予或被駁回授權之日，以較早者為準。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the respective NCA under PSD2 is advised to ensure that aforementioned very short time frame does in any case not extend beyond said 1 July 2026 deadline, or the date on which such entities are granted or refused authorisation pursuant to Article 63 MiCA, whichever occurs earlier."
+  },
+  {
+   "fact": "第 10 段：主管機關若決定讓情境二的 CASP 繼續營運，應確保該 CASP 在等待授權結果期間（A）停止所有與「屬於支付服務之 EMT」有關的行銷活動，且（B）不對任何新客戶提供屬於支付服務的 EMT 服務。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ceases all marketing activities related to EMTs that qualify as a payment service, and does not provide to any new clients services with EMT that qualify as a payment service."
+  },
+  {
+   "fact": "第 11 段：PSD2 主管機關應與 MiCA 主管機關協調這些限制的施加方式，例如在既有的 CASP 授權中加入相應限制，或把案件轉交各自的執法部門。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NCAs under PSD2 are advised to coordinate the possible imposition of these restrictions with NCAs under MICA, for example by inserting corresponding restrictions to existing CASP authorisations and/or by referring the case to the respective enforcement departments."
+  },
+  {
+   "fact": "第 12 段的例外：第 10 段的兩項限制不適用於依各國轉換 MiCA 第 143(3) 條之國內法、獲准營業至 2026 年 7 月 1 日（或依 MiCA 第 63 條被准予或被駁回授權之日，以較早者為準）的加密資產服務提供者。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The restrictions specified in paragraph 10 do not apply to crypto-asset service providers that are permitted under national law transposing Article 143(3) MiCA to continue providing their services until 1 July 2026, or the date on which such entities are granted or refused authorisation pursuant to Article 63 MiCA, whichever occurs earlier."
+  },
+  {
+   "fact": "情境三（第 13 段）：CASP 沒有提出申請，或雖提出申請但未滿足情境二的一項以上條件。EBA 建議 PSD2 主管機關（必要時與 MiCA 主管機關及／或其他國內執法機關協調）自 2026 年 3 月 2 日起要求該 CASP（A）停止提供在 PSD2 下屬於支付服務的 EMT 服務，並（B）對這些服務的客戶進行下架（offboard）。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "to cease the activity of providing EMT services that qualify as a payment service under PSD2; and to offboard clients of EMT services that qualify as a payment service under PSD2."
+  },
+  {
+   "fact": "EBA 新聞稿的對應說法：主管機關並被建議，對未滿足全部條件的 CASP 要求停止提供這類 EMT 服務；必要時與 MiCA 主管機關及／或其他國內執法機關合作以確保遵法。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NCAs are further advised to require CASPs that do not meet all of these conditions to discontinue the provision of such EMT services. Where necessary, NCAs are advised to cooperate with the relevant national authority under the Markets in Crypto-Assets Regulation (MiCA) and/or other national enforcement authorities to ensure compliance."
+  },
+  {
+   "fact": "第 14 段：要符合 PSD2 要求，CASP 要嘛自己取得提供支付服務的授權，要嘛（例如）擔任已獲授權之 PSP 的代理人（agent）。採後者時，主管機關應評估該合作 PSP 是否需要 MiCA 第 59 條下的授權。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "a CASP would need either to obtain authorisation to provide payment services itself, or for example to act as an agent of a PSP that is authorised to provide the respective payment services. In the latter case, NCAs are advised to assess whether the partner PSP requires authorisation under Article 59 of MiCA."
+  },
+  {
+   "fact": "第 15 段：EBA 提醒各國主管機關，涉及 EMT 的移轉之執行可能構成支付服務（例如 PSD2 附件一第 3 項「支付交易之執行」），不論 CASP 提供的託管錢包是否構成支付帳戶。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the execution of transfers involving EMTs may qualify as a payment service (e.g., payment service 3 of Annex I to PSD2 (execution of payment transactions)), regardless of whether the custodial wallets offered by the CASP qualify as payment accounts."
+  },
+  {
+   "fact": "第 15 段引用 NAL 第 71 段：PSD2 對「同一支付服務使用者名下不同支付帳戶之間、且由同一 PSP 服務」的支付交易並未設例外，因此 EMT 的「自己轉給自己」（first-party transfers）仍屬支付交易、仍受 PSD2 規範。舉例：CASP 提供 EMT 的保管與管理並代客戶執行 EMT 移轉（包含保管服務出金環節中轉回同一客戶的移轉），這些移轉本身就可能構成需要 PSD2 授權的支付交易。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "PSD2 does not make an exception for payment transactions executed from/to different payment accounts held by the same payment service user, even if they are serviced by the same PSP. Therefore, first-party transfers of EMTs would still qualify as payment transactions and therefore be subject to PSD2 rules"
+  },
+  {
+   "fact": "意見書第 3 段明白把 NAL 的結果描述為「對 CASP 比較不繁重」：相對於另一種同樣說得通的 PSD2／MiCA 解讀（該解讀會要求所有型態的 EMT 交易立即取得雙重授權，且取得 PSD2 授權後全部要求一體適用），EBA 的建議負擔較輕；EBA 並說 NAL 讓 NAL 發布時已在進行 EMT 交易的 CASP 得以維持業務連續性。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The result of the EBA's advice was less burdensome for CASPs compared to another plausible interpretation of PSD2 and MiCA that would have required a dual authorisation for all types of EMT transactions, immediately so, and whereby, once the PSD2 authorisation was received, all requirements would have applied in full."
+  },
+  {
+   "fact": "EBA 新聞稿同樣把 NAL 描述為減輕負擔：NAL 建議各國主管機關只把 EMT 相關加密資產服務中的一部分視為支付服務，藉此減少需要第二張執照的 CASP 數量，並建議採用「充分運用 MiCA 下 CASP 授權程序中已提供之資訊」的簡化授權流程，以降低 CASP 的行政負擔。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-advises-national-authorities-actions-take-end-transition-period-under-its-no-action-letter",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It also advised national competent authorities to apply a streamlined authorisation process that makes full use of information already provided during the CASP authorisation process under MiCA, reducing the administrative burden for CASPs."
+  },
+  {
+   "fact": "在 2026 年的意見書全文與 2026-02-12 新聞稿全文中，完全沒有出現任何成本金額、費用、或「加倍／雙倍成本」的敘述。全文唯一與負擔有關的用字是 burdensome／burden，且方向都是「比較不繁重」。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "NAL 的適用期間：意見書第 1 段說 NAL 的建議涵蓋「自 2025 年 6 月 NAL 發布起，至未來的支付服務規則（PSR）適用日與未來 PSD3 的轉換期限為止」。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The advice covers the period between the publication of said NAL in June 2025 and the application date of the forthcoming Payment Services Regulation (PSR) and the transposition deadline of the forthcoming PSD3."
+  },
+  {
+   "fact": "NAL 的另一層建議（意見書第 2 段）：一旦 CASP（或享有 MiCA 所指各國過渡機制的機構）取得 PSP 授權，PSD2 下若干要求的監理與執法不應列為優先，例如 EMT 的資產隔離保管（safeguarding），以及關於適用費用水準之消費者資訊揭露的特定要求。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2026-02/3b8b6f18-ca26-4ce1-83eb-d060276f3301/Opinion%20on%20the%20end%20of%20the%20NAL%20transition%20period.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "supervision and enforcement of several requirements under PSD2 should not be prioritised, (e.g., on the safeguarding of EMTs and specified requirements for the disclosure of information to consumers pertaining to the level of applicable charges)."
+  },
+  {
+   "fact": "NAL 新聞稿列出不列為優先的 PSD2 項目：資產隔離保管、對消費者揭露資訊（適用費用水準、支付交易最長執行時間、IBAN 之類的唯一識別碼、開放銀行）；同時列出仍須堅持遵循的項目：存取構成支付帳戶之託管錢包與發動 EMT 移轉時的強客戶驗證（SCA）、支付詐欺通報、以及自有資金要求的累計計算。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-no-action-letter-interplay-between-payment-services-directive-psd23-and-markets-crypto",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NCAs are advised not to prioritise the supervision and enforcement of several elements of PSD2, such as safeguarding, the disclosure of information to consumers (pertaining to the level of applicable charges, the maximum execution time of payment transactions, the unique identifier such as IBAN, and open banking)."
+  },
+  {
+   "fact": "NAL 新聞稿明載哪些服務「不是」支付服務：MiCA 所定義的「加密資產兌換法定貨幣」與「加密資產兌換其他加密資產」不視為支付服務；此外 CASP 居間仲介以 EMT 購買任何加密資產的情形，也不視為支付服務、不要求 PSD2 授權。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-no-action-letter-interplay-between-payment-services-directive-psd23-and-markets-crypto",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NCAs are advised not to consider as payment services (and therefore not to subject to the application of PSD2, including its provisions on licensing) the 'exchange of crypto-assets for funds' and 'exchange of crypto-assets for other crypto-assets' as defined in MiCA."
+  },
+  {
+   "fact": "NAL 新聞稿說明起源與職權：EBA 是回應歐盟執委會 2024 年 12 月的請求而發出此信，並與 ESMA 密切合作；發出「意見書形式」的職權依據是 Regulation (EU) No 1093/2010 第 9c 條。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-no-action-letter-interplay-between-payment-services-directive-psd23-and-markets-crypto",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The EBA has issued the letter in response to a request received from the European Commission in December 2024 to address, in close cooperation with ESMA, issues arising from the interplay between MiCA and PSD2. The EBA's competence to deliver the letter in the form of an Opinion is based on Article 9c of Regulation (EU) No 1093/2010."
+  },
+  {
+   "fact": "NAL 原文第 3、4 段：歐盟執委會於 2024 年 12 月 6 日致函 EBA，邀請 EBA 與 ESMA 密切協調、研議依 Regulation (EU) No 1093/2010 第 9c 條發出意見書（No Action letter）；EBA 於 2024 年 12 月 10 日回覆，並承諾以加速方式發布。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "on 6 December 2024, the European Commission sent a letter to the EBA"
+  },
+  {
+   "fact": "NAL 原文第 23 段列出對各國主管機關的核心建議：把 MiCA 第 3(1)(26) 條所定義的加密資產移轉視為 PSD2 下的支付服務（前提是涉及 EMT 且由機構代客戶提供與執行）；把 EMT 的保管與管理視為支付服務、把託管錢包視為支付帳戶（前提是可與第三方收付 EMT）；不把 MiCA 第 3(1) 條第 19、20 款的兩種兌換服務視為支付服務；對託管錢包不優先監理與執行支付帳戶指令（Directive 2014/92/EU，PAD）。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "to regard the custody and administration of EMTs as a payment service andthe custodial wallet as a payment account under the PSD2, where they allow to send and receive transfers of EMTs to and from third parties"
+  },
+  {
+   "fact": "NAL 原文第 18 段：各國主管機關被建議在法人取得 PSP 執照或與 PSP 建立合作關係後即依建議辦理，「但不得晚於 2026 年 3 月 2 日」；該日之後，主管機關應阻止未取得 PSP 執照、也未與 PSP 合作的機構提供屬於支付服務的 EMT 相關服務。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NCAs are recommended to follow the advice once a legal entity has obtained a licence as a PSP, or has entered into a partnership with a PSP, but no later than 2 March 2026."
+  },
+  {
+   "fact": "NAL 原文第 45、46 段：EBA 建議各國主管機關在 2026 年 3 月 2 日前不優先監理與執行 PSD2 第 97、98 條的強客戶驗證要求（適用於存取 CASP 持有之 EMT 託管錢包、以及發動 EMT 移轉之前），以及 PSD2 第 96(6) 條的支付詐欺通報要求；該日之後詐欺通報只需提供 EBA/GL/2018/05 附件中特定標題下的資料。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the EBA advises NCAs not to prioritise the supervision and enforcement of these requirements until 2 March 2026"
+  },
+  {
+   "fact": "NAL 原文本身存在一處日期不一致：執行摘要寫「各國主管機關被建議給予申請人一段到 2026 年 3 月 1 日為止的過渡期」，但同一份文件第 18 段與 EBA 其餘所有文件都寫 2026 年 3 月 2 日。以 2026 年 3 月 2 日為準。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "NCAs are advised to grant applicants a transition period until 1 March 2026 before the authorisation needs to be held."
+  },
+  {
+   "fact": "NAL 原文第 6 段：EBA 在意見書定稿前兩個月舉辦專門工作坊，向超過 100 家加密資產服務提供者、支付機構與信用機構徵詢初步想法。這個「超過 100」與 2026 年意見書所說「超過 100 家 CASP 接觸主管機關或提出申請」是兩件不同的事，不可混用。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "At a dedicated workshop held two months prior to the finalisation of the Opinion, the EBA sought views on its emerging thinking from more than 100 crypto-asset service providers, payment institutions and credit institutions."
+  },
+  {
+   "fact": "NAL 原文執行摘要說明 EMT 的雙重性質問題：MiCA 規範加密資產服務與 CASP 的授權，PSD2 規範支付服務；EMT 同時是 MiCA 下的加密資產與 PSD2 下的「資金」，因此 CASP 以 EMT 提供支付服務時，需要另外持有 PSP 授權或與 PSP 合作。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This No Action letter aims to clarify the interplay by providing advice"
+  },
+  {
+   "fact": "NAL 原文 PDF 的內嵌中繼資料顯示 CreationDate 與 ModDate 均為 D:20260217105634+01'00'（2026-02-17），亦即這個掛在 /2025-06/ 路徑下的檔案是在 2026 年 2 月 17 日（2026 年意見書公布之後）產生的版本。本次查核讀到的就是這個版本。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2025-06/e2958c99-a1b0-4b07-9d31-bcba0a28dbe7/Opinion%20on%20the%20interplay%20between%20PSD2%20and%20MiCA.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "以 EBA 官網新聞稿清單（關鍵字 MiCa）查核：2026-02-12 之後，EBA 沒有再發布任何重新檢視 No-Action Letter 過渡期的新聞稿。該清單上 2026-02-12 之後與 MiCA 有關的新聞稿依序是 2026-06-02（與紐約州金融服務署簽署 MoU）、2026-06-16（2025 年年報）、2026-06-26（MiCA 罰鍰計算方法論諮詢文件）、2026-06-29（2025 年監理一致性報告）。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases?text=MiCa&topic=All&date=",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "以 EBA 官網新聞稿清單（關鍵字 PSD2）查核：宣布 No-Action Letter 的新聞稿在清單上標示的日期是 10 JUNE 2025，本次意見書的新聞稿標示為 12 FEBRUARY 2026；兩者之間與之後都沒有其他與此過渡期有關的新聞稿。",
+   "url": "https://www.eba.europa.eu/publications-and-media/press-releases?text=PSD2&topic=All&date=",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "（交叉驗證，未列入 sources）MiCA 第 143 條第 3 項原文：2024 年 12 月 30 日之前依適用法律提供服務的加密資產服務提供者，得繼續提供服務至 2026 年 7 月 1 日，或至其依第 63 條被准予或被駁回授權為止，以較早者為準。此段取自 ESMA 公布的各會員國過渡期清單 PDF，該檔內嵌 ModDate 為 2026-05-19（掛在 /2024-12/ 路徑下卻是後來改版的活文件）。",
+   "url": "https://www.esma.europa.eu/sites/default/files/2024-12/List_of_MiCA_grandfathering_periods_art._143_3.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Crypto-asset service providers that provided their services in accordance with applicable law before 30 December 2024, may continue to do so until 1 July 2026 or until they are granted or refused an authorisation pursuant to Article 63, whichever is sooner."
+  },
+  {
+   "fact": "（交叉驗證，未列入 sources）歐盟執委會致 EBA 與 ESMA 的原信（由 EBA 官網代管）由 DG FISMA 總署長 John BERRIGAN 具名，電子簽章時間為 2024 年 12 月 5 日 19:09（UTC+01）；信中請 EBA 與 ESMA 密切協調研議 no action letter，並表示該信函效力應持續到 PSR 適用日／PSD3 轉換期限。信件電子簽章日（12/5）與 NAL 所述收文日（12/6）相差一天。",
+   "url": "https://www.eba.europa.eu/sites/default/files/2024-12/3225040c-5f3d-410f-9156-f06a43231938/Letter%20to%20EBA%20and%20ESMA%20on%20the%20interplay%20between%20MiCA%20and%20PSD2.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Such no action letter should take effect until the application date of the PSR/ transposition deadline of the PSD3"
+  }
+ ],
+ "not_said": [
+  "官方未說明：意見書沒有延長過渡期。2026 年 3 月 2 日這個日期在意見書中沒有被改動，也沒有任何「順延」「展延」的字眼。",
+  "官方未說明：條件 D 所稱「極短時間（a very short time frame）」沒有給出天數或月數的定義，唯一的外部界線只出現在 MiCA 第 143(3) 條過渡期訂到 2026 年 7 月 1 日的那些國家。",
+  "官方未說明：意見書沒有點名任何一家 CASP、任何一個會員國、任何一個主管機關。「各會員國申請量可能不同」是唯一的地區差異敘述，沒有任何國別數字。",
+  "官方未說明：沒有說截至 2026 年 3 月 2 日有幾家 CASP 真的取得 PI/EMI 授權、幾件申請被駁回、幾家被要求停業或對客戶下架。「超過 100 家」指的是「接觸主管機關或提出申請」，不是核准數。",
+  "官方未說明：沒有任何成本、費用、規費、資本額或人力數字。所謂「合規成本加倍」不是 EBA 的說法（見 unverified_or_excluded）。",
+  "官方未說明：意見書沒有說它對業者具有直接法律拘束力。全文用的是「advises／is advised to（建議）」，收件對象是各國主管機關，不是 CASP；文件本身沒有說明不遵循的法律效果。",
+  "官方未說明：客戶被「下架（offboard）」時，帳上的 EMT 會如何處理、有無通知期、有無最低緩衝時間、資產如何返還，意見書都沒有寫。",
+  "官方未說明：沒有提到存款保險、投資人保護制度或任何客戶賠償機制。",
+  "官方未說明：沒有提到歐盟以外的使用者（包含台灣使用者）會受到什麼影響，也沒有提到歐盟以外地區的服務。這份意見書處理的是歐盟境內 PSD2 授權。",
+  "官方未說明：意見書只處理「屬於支付服務的 EMT 交易」，沒有處理資產參考型代幣（ART）、其他加密資產，也沒有處理不屬於支付服務的 EMT 用途。",
+  "官方未說明：新聞稿本文沒有寫出文號 EBA/OP/2026/01，這個文號只在 PDF 封面。寫稿時不要說「新聞稿指出文號為…」。",
+  "官方未說明：沒有說明 PSD3／PSR 的實際適用日或轉換期限是哪一天，只說建議適用到「未來 PSR 的適用日與未來 PSD3 的轉換期限」為止。",
+  "官方未說明：沒有任何幣價、市值、交易量、資金流或報酬率資料（本垂直本來就不寫，這裡一併記錄官方也沒有）。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "這份意見書「等於讓合規成本加倍」。",
+   "seen_where": "整合站／評論（見 candidates-crypto.md C5 的警語）。搜尋結果中也有多家法律事務所的整理文章使用類似框架。",
+   "why_excluded": "已逐字檢查 2026-02-12 新聞稿全文與 EBA/OP/2026/01 全文，兩者都沒有任何成本敘述；唯一與負擔有關的字是 burdensome／burden，而且方向相反——第 3 段說 EBA 的建議「比另一種會要求所有 EMT 交易立即雙重授權的解讀『比較不繁重』」，新聞稿則說簡化流程「降低 CASP 的行政負擔」。這是評論，不是 EBA 的說法，一律不寫。"
+  },
+  {
+   "claim": "No-Action Letter 的日期是 2025 年 6 月 2 日。",
+   "seen_where": "EBA 自己 2026-02-12 的新聞稿（兩處），以及 candidates-crypto.md C5 的要點。",
+   "why_excluded": "與一手原文不符：NAL 原文 PDF 封面寫 10/06/2025、文末寫「Done at Paris, 10 June 2025」；EBA 宣布 NAL 的新聞稿頁面標示 10 June 2025；EBA 新聞稿清單（關鍵字 PSD2）也列為 10 JUNE 2025；2026 年意見書本文第 1 段同樣寫 10 June 2025。因此不可單寫「2025 年 6 月 2 日」。建議寫法：以 2025 年 6 月 10 日為 NAL 日期，並註明 EBA 2026 年的新聞稿寫成 6 月 2 日、與原文不一致。"
+  },
+  {
+   "claim": "過渡期「剛好是九個月」。",
+   "seen_where": "EBA 新聞稿與意見書第 4 段都用 nine months；candidates-crypto.md C5 亦寫「九個月」。",
+   "why_excluded": "EBA 確實寫了九個月，可以寫成「EBA 表示過渡期為九個月」；但若 NAL 日期是 2025-06-10、結束日是 2026-03-02，實際長度略短於九個月，EBA 沒有列出計算方式。不要寫成「自發布日起整整九個月」或自行推算。"
+  },
+  {
+   "claim": "2026 年 3 月 2 日之後實際有多少家業者停止服務／多少家取得授權。",
+   "seen_where": "無一手來源；搜尋結果中的法律事務所整理也只重述意見書內容。",
+   "why_excluded": "EBA 在 2026-02-12 之後沒有再發布相關新聞稿（已用 EBA 新聞稿清單以 MiCa 與 PSD2 兩組關鍵字查核到 2026-09-16）。沒有一手數字就不寫，文章要明講「官方未公布後續統計」。"
+  },
+  {
+   "claim": "NAL 原文於 2025 年 6 月發布後未曾更動。",
+   "seen_where": "推定。",
+   "why_excluded": "掛在 /2025-06/ 路徑下的 NAL PDF，其內嵌 CreationDate／ModDate 都是 2026-02-17，晚於 2026 年意見書的公布日。無法從檔案本身判斷實質內容是否修訂過，因此本紀錄中凡引用 NAL 者，一律以「2026-09-16 於該網址讀到的版本」為限，不宣稱「2025 年 6 月當時的文字就是如此」。"
+  },
+  {
+   "claim": "各會員國 MiCA 過渡期長度、以及哪些國家把過渡期訂到 2026 年 7 月 1 日。",
+   "seen_where": "ESMA 的 List of MiCA grandfathering periods art. 143(3) PDF（已實際抓取，HTTP 200，3 頁，內嵌 ModDate 2026-05-19）。",
+   "why_excluded": "資料本身可信且是一手，但屬於候選題 C2（crypto-news-mica-transition-ends-20260701）的範圍，本篇不重複整理各國表格，以免兩篇打架。本篇只在意見書自己提到的地方（條件 D 與第 12 段）出現 2026 年 7 月 1 日。"
+  },
+  {
+   "claim": "各家法律事務所與媒體對本案的整理（Morgan Lewis、Hogan Lovells、William Fry、Fenech & Fenech、Global Regulation Tomorrow、Dudkowiak & Putyra、decripto.org 等）。",
+   "seen_where": "WebSearch 結果。",
+   "why_excluded": "依 crypto.md 的白名單，這些一律不是來源。只用來確認我沒有漏掉官方文件，事實全部回到 eba.europa.eu 的原文讀取。"
+  },
+  {
+   "claim": "歐盟執委會請求函的日期是 2024 年 12 月 6 日。",
+   "seen_where": "NAL 原文第 3 段。",
+   "why_excluded": "可以寫，但要知道原信（EBA 代管 PDF）的電子簽章時間是 2024-12-05 19:09 (UTC+01)，兩者差一天。若文章要寫這個日期，建議直接寫「EBA 表示執委會於 2024 年 12 月來函」，或寫 12 月 6 日並註明依 EBA 敘述。"
+  }
+ ],
+ "editorial_brief": "讀者是台灣一般使用者，不是法遵人員。寫作角度：歐盟同時用兩部法律看同一件事——把穩定幣（電子貨幣代幣，EMT）從一個帳戶轉到另一個帳戶，在 MiCA 眼中是加密資產服務，在 PSD2 眼中是支付服務，於是同一家業者可能要拿兩張執照。EBA 在 2025 年 6 月用 No-Action Letter 給了一段緩衝，2026 年 2 月 12 日這份意見書則是在緩衝到期（2026 年 3 月 2 日）前，告訴各國主管機關『誰可以繼續做、誰要停、停了要怎麼處理客戶』。文章主線就是這三種情境與四個條件，讓讀者理解『一個過渡期結束』在監理上實際長什麼樣子，以及為什麼有些歐盟平台會突然停掉某些轉帳功能、停止收新客戶、或不再行銷該功能。刻意不談：各會員國 MiCA 過渡期長短與各國名單（留給 crypto-news-mica-transition-ends-20260701）；台灣《虛擬資產服務法》的制度（留給 crypto-news-taiwan-vasp-act-20260630，只在最後的相關新聞連結出現）；任何幣種、平台、費率、行情與持有建議；以及 3 月 2 日之後的實際執行結果（官方未公布，文章要明說這一點）。生活情境一律標明是編輯設計的例子，例如『一位在歐洲平台上把穩定幣轉給朋友的使用者，可能會在某天發現該功能只剩查詢與提領』，並說清楚這是舉例、不是對特定業者的描述。查核界線要寫在第二段：本文於 2026 年 9 月 16 日查核，只依 EBA 公布的文件說明，本站未做任何實測，也無法代各國主管機關判斷個別業者的狀態。",
+ "must_not_write": [
+  "不得寫任何幣價、漲跌幅、市值、交易量、資金流、殖利率、質押報酬或空投數字——本題完全用不到，也沒有官方數字。",
+  "不得把任何交易所、錢包、託管商寫成可選項、可比較或值得使用；不得做費率比較；不得放聯盟或追蹤連結。",
+  "不得寫「3 月 2 日前要把資產轉出」「該換平台」「該不該繼續使用某服務」之類的行動建議——那是投資／理財建議，也超出意見書內容。",
+  "不得把 No-Action Letter 的日期單寫成 2025 年 6 月 2 日；原文是 2025 年 6 月 10 日，寫到時必須一併說明 EBA 2026 年新聞稿的寫法不同。",
+  "不得寫「EBA 新聞稿指出文號 EBA/OP/2026/01」——文號只在 PDF 封面。",
+  "不得寫「合規成本加倍」或任何成本金額；EBA 全文沒有成本敘述。",
+  "不得把意見書寫成法律、禁令或處分。它是 Opinion，對象是各國主管機關，用字是「建議（advises）」；不得寫成「歐盟禁止…」「歐盟規定業者必須…」。",
+  "不得寫或暗示過渡期後來被延長、或 3 月 2 日之後發生了什麼——查到 2026-09-16 為止 EBA 沒有再發布相關新聞稿。",
+  "不得推定台灣使用者受到何種具體影響；意見書隻字未提歐盟以外使用者。要寫影響只能寫成編輯設計的假設情境並明確標示。",
+  "不得搬用 ESMA 各會員國過渡期對照表（屬於 crypto-news-mica-transition-ends-20260701 一篇）。",
+  "不得寫「我們實測」「本站試用」；本站沒有任何實測。",
+  "法規語境用「虛擬資產」、一般語境用「加密貨幣」；第一次出現可括號附英文（例如 電子貨幣代幣（EMT）、加密資產服務提供者（CASP））。不得出現簡體字。",
+  "免責 callout 必須逐字包含「不是投資建議」六個字，且查核日寫 2026-09-16。"
+ ],
+ "overlaps_existing_article": "站上目前沒有任何幣圈內容包（apps/api/app/guides/content 共 970 個檔案，沒有 crypto-news-* ，也沒有任何一篇談 MiCA 或 PSD2；grep 到的三篇 ai-news-* 是 dynamically／algorithmically 之類字串的誤判）。真正的重疊風險在同批次的候選題：(1) C2 crypto-news-mica-transition-ends-20260701 — 它擁有 MiCA 第 143(3) 條的祖父條款、各會員國過渡期長短、2026-07-01 全歐結束、以及『沒有 passporting』。本篇只在 EBA 意見書自己引用的兩處（條件 D、第 12 段）提到 2026-07-01，而且要寫成『這是 MiCA 那條過渡期的上限，跟 PSD2 這條 3 月 2 日的過渡期是兩件事』，不重做各國表格。(2) C1 crypto-news-taiwan-vasp-act-20260630 — 不同法域，沒有內容重疊，適合當第二個 link（相關新聞）。分工的一句話：C2 寫『能不能繼續當加密資產服務商』，本篇寫『當加密資產服務商還要不要再拿一張支付執照』。",
+ "corrections_to_candidate_list": [
+  "candidates-crypto.md C5 寫「2025-06-02 的 No-Action Letter」——這是照抄 EBA 2026 年新聞稿的錯誤。NAL 原文封面是 EBA/Op/2025/08　10/06/2025、文末「Done at Paris, 10 June 2025」，EBA 宣布 NAL 的新聞稿頁與新聞稿清單都標 10 June 2025，2026 年意見書本文第 1 段也寫 10 June 2025。候選清單這一行要改，並保留『新聞稿寫 6/2』這個不一致作為寫稿時必須交代的點。",
+  "C5 寫的文號 EBA/OP/2026/01 正確，已在 PDF 封面確認。但要補一句：文號只在 PDF 上，新聞稿本文沒有。",
+  "C5 給的兩條網址在 2026-09-16 都有效（新聞稿 HTTP 200；PDF HTTP 200、4 頁、162,135 bytes，與新聞稿標示的 158.33 KB 相符）。",
+  "C5 寫「意見書列出各國主管機關可以讓 CASP 在尚未取得 PSD2 授權時繼續提供 EMT 服務的條件」正確，可補上精確結構：三種情境、四個累積條件（A–D）、兩項附加限制（停止行銷、不收新客）、一項排除（MiCA 143(3) 過渡期業者不受那兩項限制）、以及未達標者自 2026-03-02 起停止服務並對客戶下架。",
+  "C5 的警語「某整合站寫這等於讓合規成本加倍——那是評論」已驗證為真：EBA 兩份文件全文都沒有成本敘述，且第 3 段的方向相反（less burdensome）。建議把這一行從『不要照抄的說法』升級為『已查否』。",
+  "應補記到候選清單：NAL 原文自身有一處日期不一致——執行摘要寫 until 1 March 2026，第 18 段寫 no later than 2 March 2026。以 2 March 2026 為準。",
+  "應補記到候選清單（影響 C2）：ESMA 的 List_of_MiCA_grandfathering_periods_art._143_3.pdf 雖然掛在 /2024-12/ 路徑下，內嵌 ModDate 已是 2026-05-19，確實是活文件，C2 開稿時必須重新抓、並在稿子裡寫明讀的是哪一版。",
+  "應補記到候選清單：EBA 沒有可用的新聞 feed。https://www.eba.europa.eu/publications-and-media/press-releases/rss.xml 回 404；https://www.eba.europa.eu/rss.xml 回 200 但只有 10 筆 EBA E-mail alert 摘要（最新 2026-09-14），不是新聞稿 feed。EBA 站內 /search?keys=... 回 200 但忽略關鍵字（回全站 27,234 筆）。可用的結構化管道是 /publications-and-media/press-releases?text=<關鍵字>&topic=All&date= ，伺服器端會過濾。",
+  "兩則候選清單沒有、但在 EBA 新聞稿清單上查到的幣圈題目（均為 EBA 官方新聞稿，未逐篇讀內文，開票前要自己查）：2026-06-02「The EBA and the New York State Department of Financial Services sign a Memorandum of Understanding to foster cooperation in the supervision of international stablecoin activities」；2026-06-26「The European Banking Authority consults on a draft methodology for setting fines under the Markets in Crypto-Assets Regulation (MiCA)」。兩則都落在 crypto.md 的界線內。",
+  "應補記：截至 2026-09-16，EBA 在 2026-02-12 之後沒有再發布任何重新檢視此過渡期的新聞稿，所以『3 月 2 日之後實際發生什麼』沒有一手來源，文章必須明寫官方未公布後續。"
+ ]
+}

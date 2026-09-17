@@ -1,0 +1,359 @@
+{
+ "slug": "ai-news-openai-astral-20260319",
+ "checked_on": "2026-09-16",
+ "event_date": "2026-03-19",
+ "event_date_basis": "Astral's own post carries frontmatter \"date\":\"2026-03-19\" and renders \"March 19, 2026\" above the headline (https://astral.sh/blog/openai). OpenAI's official news feed carries the matching item with pubDate \"Thu, 19 Mar 2026 00:00:00 GMT\" (https://openai.com/news/rss.xml). Announcement date and publication date are therefore the same day, 2026-03-19. The EFFECTIVE date is different and unknown: Astral writes \"after the deal closes\", i.e. the transaction was not closed on the announcement date, and no first-party page reachable from this container states a closing date or says the deal has since closed. OpenAI's own sitemap shows the announcement page with <lastmod>2026-08-31T19:59:25.765Z</lastmod>, which is a page-revision timestamp, not a deal date.",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "Astral's own announcement is fully readable and is a first-party source for its own acquisition, so the article can be written to spec. Reached (HTTP 200, body checked): https://astral.sh/blog/openai (52,443 bytes, full article text plus MDX frontmatter with author/date/category); https://astral.sh/blog/rss.xml (39 items, newest 2026-09-04 - live feed); https://openai.com/news/rss.xml (1,194 items, newest 2026-09-16 - live feed); https://openai.com/sitemap.xml and https://openai.com/sitemap.xml/company/ (261 URLs, includes the Astral announcement entry with lastmod and ~60 hreflang alternates); https://docs.astral.sh/uv/, /ruff/, /ty/; https://pypi.org/project/uv/ and the pypi JSON API for uv, ruff, ty; https://astral.sh/pyx; https://docs.pyx.dev/; https://astral.sh/blog/python-packaging-council, /ruff-v0.16.0, /uv-audit, /open-source-security-at-astral, /announcing-astral-the-company-behind-ruff; https://raw.githubusercontent.com/astral-sh/{uv,ruff,ty}/main/LICENSE* and uv CHANGELOG.md; https://developers.openai.com/codex/. BLOCKED (HTTP 403, verified today with curl -A Mokaair-editorial AND with WebFetch): https://openai.com/index/openai-to-acquire-astral and the trailing-slash form, every locale variant tested (ja-JP, zh-Hant), https://openai.com/news/, https://openai.com/index/, https://chatgpt.com/codex, https://help.openai.com/en/, https://api.github.com and https://github.com (github.com is 403 through this proxy; raw.githubusercontent.com is 200). The GitHub MCP tool is scoped to x812033727/travel_scanner only and refused astral-sh repos. SOURCE-SLOT NOTE FOR THE WRITER: BRIEF.md normally requires the article URL rather than the feed URL, but the OpenAI article page is 403 to every client, so https://openai.com/news/rss.xml is the ONLY reachable official OpenAI channel carrying OpenAI's own wording. This is a deliberate exception - do not let a checker 'fix' it by substituting the 403 article URL, which was never read. Alternate slot-4 sources if the writer prefers them over pypi.org/project/uv/: https://astral.sh/pyx (for the pyx signup fact) or https://astral.sh/blog/python-packaging-council (for Astral still operating as Astral on 2026-09-04).",
+ "sources": [
+  {
+   "title": "Astral to join OpenAI",
+   "url": "https://astral.sh/blog/openai",
+   "publisher": "Astral Software Inc.",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "OpenAI news RSS feed (item: OpenAI to acquire Astral)",
+   "url": "https://openai.com/news/rss.xml",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "uv documentation",
+   "url": "https://docs.astral.sh/uv/",
+   "publisher": "Astral Software Inc.",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "uv · PyPI",
+   "url": "https://pypi.org/project/uv/",
+   "publisher": "Python Package Index (PSF)",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "Astral published its own announcement titled \"Astral to join OpenAI\" on 2026-03-19. The page's MDX frontmatter reads \"title\":\"Astral to join OpenAI\",\"author\":\"Charlie Marsh\",\"date\":\"2026-03-19\",\"category\":\"Announcements\", and the rendered page shows \"March 19, 2026\" above the headline with a byline image whose alt text is \"Charlie Marsh\".",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"title\":\"Astral to join OpenAI\",\"author\":\"Charlie Marsh\",\"date\":\"2026-03-19\",\"category\":\"Announcements\""
+  },
+  {
+   "fact": "Astral states that it has entered into an agreement to join OpenAI as part of the Codex team. This is the wording in both the page meta description and the body.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Today, we're taking a step forward in that mission by announcing that we've entered into an agreement to join OpenAI as part of the Codex team."
+  },
+  {
+   "fact": "Astral's page meta description (og:description and name=description) reads: \"Astral has entered into an agreement to join OpenAI as part of the Codex team.\"",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Astral has entered into an agreement to join OpenAI as part of the Codex team."
+  },
+  {
+   "fact": "OpenAI's official news feed carries the matching item: title \"OpenAI to acquire Astral\", description \"Accelerates Codex growth to power the next generation of Python developer tools\", category \"Company\", pubDate \"Thu, 19 Mar 2026 00:00:00 GMT\", link https://openai.com/index/openai-to-acquire-astral . This one-line description is the only OpenAI-authored text about the deal that could be read from this container.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<title><![CDATA[OpenAI to acquire Astral]]></title> <description><![CDATA[Accelerates Codex growth to power the next generation of Python developer tools]]></description> <category><![CDATA[Company]]></category> <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>"
+  },
+  {
+   "fact": "OpenAI's own wording is \"acquire\" (\"OpenAI to acquire Astral\") while Astral's own wording is \"join\" (\"Astral to join OpenAI\"). The two announcements carry the same date but different headline verbs; this is worth keeping visible rather than flattening into one word.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "OpenAI's own company sitemap lists the announcement at the canonical URL https://openai.com/index/openai-to-acquire-astral/ with <lastmod>2026-08-31T19:59:25.765Z</lastmod> and hreflang alternates for roughly sixty locales, including zh-Hant, zh-Hans-CN, ja-JP and ko-KR. The sitemap entry proves the page exists and is localised; it does not reveal the page's contents, which are 403 from here.",
+   "url": "https://openai.com/sitemap.xml/company/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "<loc>https://openai.com/index/openai-to-acquire-astral/</loc> <lastmod>2026-08-31T19:59:25.765Z</lastmod>"
+  },
+  {
+   "fact": "Astral's blog feed lists the announcement as one of 39 items, pubDate \"Thu, 19 Mar 2026 00:00:00 GMT\", author \"charlie@astral.sh (Charlie Marsh)\", description \"Astral has entered into an agreement to join OpenAI as part of the Codex team.\"",
+   "url": "https://astral.sh/blog/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Astral says OpenAI will continue supporting Astral's open source tools after the deal closes, and that Astral will keep building in the open. The sentence attributes this jointly to Astral's philosophy and to OpenAI's own announcement.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In line with our philosophy and OpenAI's own announcement, OpenAI will continue supporting our open source tools after the deal closes. We'll keep building in the open, alongside our community – and for the broader Python ecosystem – just as we have from the start."
+  },
+  {
+   "fact": "Astral says that after joining the Codex team it will continue building its open source tools, explore ways they can work more seamlessly with Codex, and expand its reach. No timeline, version, feature or product name is attached to the Codex integration.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "After joining the Codex team, we'll continue building our open source tools, explore ways they can work more seamlessly with Codex, and expand our reach to think more broadly about the future of software development."
+  },
+  {
+   "fact": "The phrase \"after the deal closes\" establishes that, at the moment of the 2026-03-19 announcement, the transaction had been agreed but not completed.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI will continue supporting our open source tools after the deal closes"
+  },
+  {
+   "fact": "The three tools Astral names in the announcement are Ruff, uv and ty, and the announcement links each one to its repository under the astral-sh GitHub organisation (github.com/astral-sh/ruff, /uv, /ty). The post also links Codex to https://chatgpt.com/codex and links \"OpenAI's own announcement\" to https://openai.com/index/openai-to-acquire-astral/ .",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Astral claims its tools have grown from zero to hundreds of millions of downloads per month across Ruff, uv and ty, and that the Astral toolchain has become foundational to modern Python development. No per-tool number, no measurement period and no source for the figure are given; this is Astral's own characterisation and the site has not verified it.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Over the past few years, our tools have grown from zero to hundreds of millions of downloads per month across Ruff, uv, and ty. The Astral toolchain has become foundational to modern Python development."
+  },
+  {
+   "fact": "Charlie Marsh frames the move as a bet on AI-assisted software development: he writes that AI is rapidly changing how software is built, that the pace is accelerating, and that building at the frontier of AI and software is the highest-leverage thing Astral can do; he adds that it is increasingly clear to him that Codex is that frontier.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Today, AI is rapidly changing the way we build software, and the pace of that change is only accelerating. If our goal is to make programming more productive, then building at the frontier of AI and software feels like the highest-leverage thing we can do."
+  },
+  {
+   "fact": "Charlie Marsh opens the announcement with \"I started Astral to make programming more productive.\" and closes by thanking the Astral team, Astral's investors and Astral's users.",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "I started Astral to make programming more productive."
+  },
+  {
+   "fact": "The announcement quotes Astral's own 2023 launch post, described as \"three years ago\": \"If you could make the Python ecosystem even 1% more productive, imagine how that impact would compound?\"",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As I wrote in our launch post three years ago: \"If you could make the Python ecosystem even 1% more productive, imagine how that impact would compound?\""
+  },
+  {
+   "fact": "The quoted sentence is genuinely in the launch post \"Announcing Astral, the company behind Ruff\", frontmatter date 2023-04-18, author Charlie Marsh: \"I love building tools, and I see tooling as an incredibly high-leverage endeavor. If you could make the Python ecosystem even 1% more productive, imagine how that impact would compound?\"",
+   "url": "https://astral.sh/blog/announcing-astral-the-company-behind-ruff",
+   "is_vendor_claim": false,
+   "verbatim_quote": "If you could make the Python ecosystem even 1% more productive, imagine how that impact would compound?"
+  },
+  {
+   "fact": "Astral's 2023 launch post states the company raised 4 million US dollars in seed funding led by Accel, with participation from Caffeinated Capital, Guillermo Rauch (Vercel), Solomon Hykes (Docker), David Cramer (Sentry) and others. This is the only funding figure stated in any first-party page reached.",
+   "url": "https://astral.sh/blog/announcing-astral-the-company-behind-ruff",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We’ve raised $4m in seed funding led by Accel"
+  },
+  {
+   "fact": "The 2026 announcement names two investors by person and round but no amounts: Casey Aylward of Accel, who led Astral's Seed and Series A, and Jennifer Li of Andreessen Horowitz, who led the Series B. Marsh describes himself as \"a first-time, technical, solo founder\".",
+   "url": "https://astral.sh/blog/openai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "especially Casey Aylward from Accel, who led our Seed and Series A, and Jennifer Li from Andreessen Horowitz, who led our Series B"
+  },
+  {
+   "fact": "As of the 2026-09-16 check, the official uv documentation still describes the tool as \"uv is backed by Astral, the creators of Ruff.\" A case-insensitive search of the fetched page for \"openai\" returns zero hits.",
+   "url": "https://docs.astral.sh/uv/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "uv is backed by Astral, the creators of Ruff."
+  },
+  {
+   "fact": "As of the 2026-09-16 check, the official Ruff documentation still says \"Ruff is backed by Astral, the creators of uv and ty.\" Zero occurrences of \"openai\" on the fetched page.",
+   "url": "https://docs.astral.sh/ruff/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Ruff is backed by Astral, the creators of uv and ty."
+  },
+  {
+   "fact": "As of the 2026-09-16 check, the official ty documentation still says \"ty is backed by Astral, the creators of uv and Ruff.\" Zero occurrences of \"openai\" on the fetched page. The page footer shows a last-updated date of September 15, 2026.",
+   "url": "https://docs.astral.sh/ty/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "ty is backed by Astral, the creators of uv and Ruff."
+  },
+  {
+   "fact": "uv's PyPI project page on 2026-09-16 shows version 0.12.15, released 2026-09-15T12:07:02+0000, Author \"Astral Software Inc.\", and a README licence section reading that uv is licensed under either Apache License Version 2.0 or the MIT licence at the user's option. The page contains zero occurrences of \"OpenAI\".",
+   "url": "https://pypi.org/project/uv/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "uv is licensed under either of Apache License, Version 2.0, (LICENSE-APACHE or https://www.apache.org/licenses/LICENSE-2.0) MIT license (LICENSE-MIT or https://opensource.org/licenses/MIT) at your option."
+  },
+  {
+   "fact": "PyPI metadata on 2026-09-16: uv latest version 0.12.15, uploaded 2026-09-15T12:07:02Z, license expression \"MIT OR Apache-2.0\", summary \"An extremely fast Python package and project manager, written in Rust.\", Repository https://github.com/astral-sh/uv .",
+   "url": "https://pypi.org/pypi/uv/json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PyPI metadata on 2026-09-16: ruff latest version 0.16.7, uploaded 2026-09-10T18:03:30Z, license expression \"MIT\", summary \"An extremely fast Python linter and code formatter, written in Rust.\", Repository https://github.com/astral-sh/ruff .",
+   "url": "https://pypi.org/pypi/ruff/json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PyPI metadata on 2026-09-16: ty latest version 0.0.81, uploaded 2026-09-15T02:04:51Z, summary \"An extremely fast Python type checker, written in Rust.\", Repository https://github.com/astral-sh/ty . ty is still on a 0.0.x version number, i.e. it has not reached a 1.0 stable release. PyPI's license_expression field for ty is empty.",
+   "url": "https://pypi.org/pypi/ty/json",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "uv's repository licence files are unchanged open source licences: LICENSE-MIT reads \"MIT License / Copyright (c) 2025 Astral Software Inc.\" and LICENSE-APACHE is the Apache License Version 2.0. The copyright holder is still Astral Software Inc., not OpenAI.",
+   "url": "https://raw.githubusercontent.com/astral-sh/uv/main/LICENSE-MIT",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MIT License\n\nCopyright (c) 2025 Astral Software Inc."
+  },
+  {
+   "fact": "Ruff's repository LICENSE is the MIT License with \"Copyright (c) 2022 Charles Marsh\" - the founder personally, dating from before the company existed.",
+   "url": "https://raw.githubusercontent.com/astral-sh/ruff/main/LICENSE",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MIT License\n\nCopyright (c) 2022 Charles Marsh"
+  },
+  {
+   "fact": "ty's repository LICENSE is the MIT License with \"Copyright (c) 2025 Astral Software Inc.\"",
+   "url": "https://raw.githubusercontent.com/astral-sh/ty/main/LICENSE",
+   "is_vendor_claim": false,
+   "verbatim_quote": "MIT License\n\nCopyright (c) 2025 Astral Software Inc."
+  },
+  {
+   "fact": "uv's changelog shows continuous releases after the announcement: version 0.12.0 \"Released on 2026-07-28\" and version 0.12.15 \"Released on 2026-09-15\", with 16 dated releases in the 0.12 series recorded in that file. Development did not stop after the deal was announced.",
+   "url": "https://raw.githubusercontent.com/astral-sh/uv/main/CHANGELOG.md",
+   "is_vendor_claim": false,
+   "verbatim_quote": "## 0.12.15\n\nReleased on 2026-09-15."
+  },
+  {
+   "fact": "Astral kept publishing under the Astral name after the announcement. Its blog feed lists, after 2026-03-19: \"Open source security at Astral\" (2026-04-08), \"Vulnerability and malware checks in uv\" (2026-06-08), \"Ruff v0.16.0\" (2026-07-23) and \"Our endorsements for Python's first Packaging Council\" (2026-09-04).",
+   "url": "https://astral.sh/blog/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Astral's most recent post, dated 2026-09-04, still speaks as Astral and still names the same three tools: \"At Astral, our mission is to make Python the most productive programming ecosystem on the planet. We work towards this mission by building great tools (uv, Ruff, and ty)\". The post contains zero occurrences of \"OpenAI\".",
+   "url": "https://astral.sh/blog/python-packaging-council",
+   "is_vendor_claim": false,
+   "verbatim_quote": "At Astral, our mission is to make Python the most productive programming ecosystem on the planet. We work towards this mission by building great tools (uv, Ruff, and ty) that enable developers to ship faster and by advancing standards that allow an integrated Python experience across many tools."
+  },
+  {
+   "fact": "In that 2026-09-04 post Astral endorses William Woodruff, Pradyun Gedam, Ralf Gommers and Donald Stufft for the inaugural Python Packaging Council, which the post says was established by PEP 772; it says eligible PSF Voting Members could vote through September 15. William Woodruff is described as a member of the Astral team and a uv maintainer. Astral is therefore still acting as an independent participant in Python governance six months after the announcement.",
+   "url": "https://astral.sh/blog/python-packaging-council",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "Ruff v0.16.0, published 2026-07-23 (author Brent Westbrook), enabled 413 rules by default, up from 59, and states that the number of rules in Ruff has grown from 708 to 968 since v0.1.0; 18 pycodestyle and pyflakes rules (E401, E402, E701, E702, E703, E711, E712, E713, E714, E721, E731, E741, E742, E743, F403, F405, F406, F722) were removed from the default set. This is an example of a breaking-ish change shipped under Astral after the announcement, not something attributable to OpenAI.",
+   "url": "https://astral.sh/blog/ruff-v0.16.0",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "uv gained security features on 2026-06-08: \"uv audit\" scans dependencies for known vulnerabilities and adverse project statuses, described as a uv-native alternative to pip-audit and stated by Astral to be between 4x and 10x faster on typical projects; and an opt-in OSV-based malware lookup enabled by setting UV_MALWARE_CHECK=1. Astral says both features are in preview, considered unstable, and may have breaking changes.",
+   "url": "https://astral.sh/blog/uv-audit",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Both of these features are in preview for now. They're considered unstable and there may be breaking changes as we iterate on their design."
+  },
+  {
+   "fact": "Astral's commercial product page for pyx states, as of the 2026-09-16 check, \"pyx is no longer accepting new signups.\" The page gives no date for this change and no reason, and does not mention OpenAI. pyx is described on the same page as \"A Python-native package registry from the creators of uv.\" and lists Ramp, Intercom and fal as customers.",
+   "url": "https://astral.sh/pyx",
+   "is_vendor_claim": false,
+   "verbatim_quote": "pyx is no longer accepting new signups."
+  },
+  {
+   "fact": "pyx.dev redirects to https://astral.sh/ . The separate documentation site docs.pyx.dev is still live and still describes pyx as \"a high-performance, Python-native package registry from Astral, the creators of uv\", with no notice of closure and no mention of OpenAI.",
+   "url": "https://docs.pyx.dev/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "pyx is a high-performance, Python-native package registry from Astral, the creators of uv."
+  },
+  {
+   "fact": "OpenAI's Codex developer documentation landing page, fetched 2026-09-16, contains zero occurrences of \"astral\", \"ruff\" or \"uv\". Six months after the announcement, OpenAI's public Codex docs do not surface the Astral tools.",
+   "url": "https://developers.openai.com/codex/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "A search of all 1,194 items in OpenAI's official news feed for \"astral\" returns exactly one item, the 2026-03-19 announcement. OpenAI has published no follow-up item in that feed announcing the deal closing, or any Astral-related product change.",
+   "url": "https://openai.com/news/rss.xml",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "The purchase price, deal value, or any financial term is not stated anywhere in Astral's announcement, and OpenAI's one-line feed description gives no figure either. Write 「官方未公布金額」, never a number.",
+  "No closing date is stated. Astral says only \"after the deal closes\". Nothing on any first-party page reachable from this container says the deal has closed, so the article must not say it completed - the safe formulation is 「官方公告的是『已達成協議』，並未說明何時完成」.",
+  "No regulatory approval, antitrust review or closing condition is mentioned at all.",
+  "No headcount. Astral does not say how many people it employs, how many join OpenAI, or whether the entire team transfers. Marsh thanks \"the Astral team\" and says \"I am so excited to keep building with you\", which is not the same as a stated commitment that everyone moves.",
+  "No job title for Charlie Marsh at OpenAI. \"Join OpenAI as part of the Codex team\" is the only placement statement.",
+  "No licence commitment. Astral says OpenAI \"will continue supporting our open source tools\" and that Astral will \"keep building in the open\", but neither party states that uv, Ruff or ty will stay under MIT / Apache-2.0, states a duration for the commitment, or rules out future relicensing, a source-available model or paid tiers.",
+  "No statement about governance or ownership of the astral-sh GitHub organisation, the repositories, the trademarks, the Discord, or the Astral OSS Fund.",
+  "Nothing about pyx. The acquisition announcement does not mention Astral's commercial package registry at all. The pyx page separately says it is no longer accepting new signups, but gives no reason and no date - do NOT attribute that to the acquisition.",
+  "No roadmap for the promised Codex integration: no feature, no version, no date, no product name for \"explore ways they can work more seamlessly with Codex\".",
+  "No pricing. uv, Ruff and ty are free open source tools and no price, plan or paid tier is announced or changed.",
+  "No region or availability condition of any kind - nothing about Taiwan, the EU, or any market. This is a corporate transaction announcement, not a product launch, so do not write a 「台灣能不能用」 paragraph as if it were one.",
+  "No statement that uv, Ruff or ty will be bundled into, required by, or restricted to Codex.",
+  "No statement about ty reaching 1.0 or leaving preview; PyPI still shows 0.0.81.",
+  "No commitment about continued support for users who do not use OpenAI products.",
+  "OpenAI itself has said nothing publicly readable beyond the headline \"OpenAI to acquire Astral\" and the line \"Accelerates Codex growth to power the next generation of Python developer tools\". Everything else about OpenAI's intentions in this article comes from Astral's description of OpenAI's announcement, not from OpenAI's announcement itself."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The body of OpenAI's own announcement page (https://openai.com/index/openai-to-acquire-astral/) - any deal terms, team commitments, quotes from OpenAI executives, or open-source pledges it may contain.",
+   "seen_where": "Linked from Astral's post as \"OpenAI's own announcement\"; listed in OpenAI's own sitemap with a 2026-08-31 lastmod.",
+   "why_excluded": "HTTP 403 from this container to curl with -A Mokaair-editorial and to WebFetch, on the bare URL, the trailing-slash URL and the ja-JP and zh-Hant locale variants. The page was never read, so nothing from it is recorded. Only the feed headline and one-line description are used."
+  },
+  {
+   "claim": "Whether the acquisition has actually closed, and on what date.",
+   "seen_where": "Astral's wording \"after the deal closes\"; absence of any follow-up item in OpenAI's 1,194-item news feed.",
+   "why_excluded": "No first-party page reachable from here states a closing. Absence of a feed item is not proof either way, so the article must say the official sources do not state it rather than asserting the deal is or is not done."
+  },
+  {
+   "claim": "Any reported purchase price or valuation for Astral.",
+   "seen_where": "Not seen in any source used; such figures typically circulate in trade press.",
+   "why_excluded": "News media and aggregators are barred by BRIEF.md, and no first-party source gives a figure. Excluded entirely - do not import a number from memory either, since the writing model's knowledge cutoff predates parts of this period."
+  },
+  {
+   "claim": "Astral's Series A and Series B amounts and dates.",
+   "seen_where": "The 2026 announcement names the investors who led each round (Casey Aylward / Accel for Seed and Series A, Jennifer Li / a16z for Series B) but no amounts.",
+   "why_excluded": "Only the 2023 seed round figure (4 million US dollars, led by Accel) is stated in a first-party page. Series A and B amounts were not found first-party and are not recorded."
+  },
+  {
+   "claim": "\"Hundreds of millions of downloads per month across Ruff, uv, and ty.\"",
+   "seen_where": "Astral's announcement.",
+   "why_excluded": "Recorded, but only as Astral's own claim. The PyPI JSON API responses fetched do not include download counts, so the figure could not be independently checked. Must be written as 「Astral 表示」, never as a fact."
+  },
+  {
+   "claim": "The reason pyx stopped accepting new signups, and when it stopped.",
+   "seen_where": "https://astral.sh/pyx states the fact with no explanation; docs.pyx.dev still describes the product normally.",
+   "why_excluded": "No first-party page gives a reason or a date. The temptation to tie it to the OpenAI deal is exactly the kind of inference BRIEF.md forbids. If the writer mentions pyx at all, it must be as an undated, unexplained state of the page on the check date."
+  },
+  {
+   "claim": "The content of OpenAI's post about a TanStack npm supply-chain attack, which Astral's uv-audit post links to.",
+   "seen_where": "An outbound link inside https://astral.sh/blog/uv-audit pointing at https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack/",
+   "why_excluded": "openai.com/index/* is 403 here, so the page was not read. Only the existence of the link is noted, and nothing about its contents is recorded."
+  },
+  {
+   "claim": "Repository-level evidence from GitHub (stars, contributor lists, commit activity, org membership changes for astral-sh).",
+   "seen_where": "github.com and api.github.com",
+   "why_excluded": "github.com and api.github.com return 403 through this container's proxy, and the GitHub MCP tool is scoped to x812033727/travel_scanner only and refused astral-sh. raw.githubusercontent.com works, so only file contents (LICENSE, CHANGELOG.md) were used."
+  },
+  {
+   "claim": "Any claim that uv, Ruff or ty will change licence, be discontinued, be merged into Codex, or require an OpenAI account.",
+   "seen_where": "Not stated by any source; a natural reader worry.",
+   "why_excluded": "No first-party source says this. It must appear in the article only as 「官方未說明」, framed as an open question, never as a prediction or a reassurance."
+  },
+  {
+   "claim": "Whether OpenAI's Codex now uses uv or Ruff internally, or will ship them.",
+   "seen_where": "Astral says it will \"explore ways they can work more seamlessly with Codex\".",
+   "why_excluded": "\"Explore\" is not a shipped feature. OpenAI's Codex developer docs mention neither tool as of 2026-09-16. Recorded as a stated intention with no product behind it."
+  }
+ ],
+ "editorial_brief": "讀者：台灣一般讀者中偵向「自己寫程式、或身邊有人寫程式」那一群，以及會委外、會拿別人寫的專案來維護的人。角度是「我依賴的工具被買走了，我該担心什麼」，不是企業併購或投資題材。本站 API 本身就用 uv 跟 ruff（apps/api/pyproject.toml 里面寫的是 ruff>=0.12,<1，uv.lock 鎖定 Python 3.13），這件事對這種專案是真的有影響，可以拿來寫成編輯自己設計的情境例子（要標明是編輯設計的例子）。五個小節建議：（1）發生了什麼——兩邊官方各自怎麼說，且一邊說 acquire、一邊說 join；（2）uv、Ruff、ty 分別是什麼工具，誰會碰到它們（末尾放 table）；（3）官方此刻實際承諾了什麼、沒承諾什麼（末尾放 diagram）；（4）六個月後的實際狀態：文件還寫 backed by Astral、PyPI 上 9/15 還在發版、授權檔還是 MIT／Apache-2.0；（5）使用者現在能做的檢查：鎖版本、看 CHANGELOG、確認授權檔、不要因為新聞就急著換工具。刻意不談：Codex 模型本身的能力（已有 ai-news-gpt-53-codex-20260205）、Agents API 計費（已有 ai-news-openai-agents-api-20260910）、OpenAI 的財務與上市話題、任何收購金額推測、以及「AI 會不會取代工程師」這種發想題。語氣平實：這是一則「已簽協議、未說完成、工具目前照常」的新聞，不要寫成危機也不要寫成利多。 topics 建議 [\"ai\",\"software\",\"ai-news\"]（跟 ai-news-gpt-53-codex-20260205 與 ai-news-openai-agents-api-20260910 一致），news_date \"2026-03-19\"，display_order 接在 148 之後。",
+ "overlaps_existing_article": "站上 38 篇 ai-news-* 裡面沒有任何一篇提到 Astral、uv 或 ruff（對 apps/api/app/guides/content/*.json 做過 grep -l -i ：astral 零筆、ruff 零筆），所以主題本身沒有重複。 需要劃清界線的是兩篇 Codex 相關稿：ai-news-gpt-53-codex-20260205「GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？」講的是模型能力與交付流程；ai-news-openai-agents-api-20260910「OpenAI Agents API 公開 beta」講的是計費與資料位置。 本篇只寫「收購這件事本身」與「開源 Python 工具鏈的去留」，不重述 Codex 的功能、模型代號或計費方式；要提到 Codex 時，只寫它是 OpenAI 的寫程式產品線，細節用站內連結導過去。 常騐稿 ai-coding-tools-overview-2026「AI 寫程式工具總覽」有提到 Codex，但那是工具選型指南，與本篇不衝突。 兩個 link 建議：第一個指 ai-news-2026-january-september-index（注意 ai.md 說這篇的 title 可能正在改，定稿前要重讀內容包拿正式 title），第二個指 ai-news-gpt-53-codex-20260205 或 ai-news-openai-agents-api-20260910。",
+ "must_not_write": [
+  "不可寫出任何收購金額、估值或股權比例——一手來源一個數字都沒给。",
+  "不可寫「收購已完成」「已正式並入」「Astral 現在是 OpenAI 的一部分」——官方只說「已達成協議」與「交易完成後」。",
+  "不可把 pyx 停止新註冊跟這樁收購接上因果，也不可幫它推一個時間點。",
+  "不可寫 uv、Ruff、ty 會閃閃閉源、會收費、會被並進 Codex、會要求 OpenAI 帳號——也不可反過來保證「永遠不會」。",
+  "不可把 OpenAI 公告頁的內文當成讀過：那一頁 403，可引用的 OpenAI 原文只有標題與那一句描述。",
+  "不可寫「本站實測」「我們裝了 0.12.15 後發現……」——本站沒有實測。",
+  "不可寫 Series A、Series B 的金額；只有 2023 年 400 萬美元種子輪有一手出處。",
+  "不可把「每月數億次下載」寫成事實，要寫「Astral 表示」。",
+  "不可寫任何地區可用性、台灣開放時程、方案限制——這一則根本沒有這些條件。",
+  "不可推測 Charlie Marsh 在 OpenAI 的職稱，也不可寫「全體團隊加入」——公告未說。",
+  "不可引用任何媒體、諧媒體、搜尋摘要或記憶中的數字；sources 只能放本紀錄列出且實際抓過的網址。",
+  "不可把 openai.com/index/openai-to-acquire-astral 寫進 sources（沒讀到）；OpenAI 那一條用 openai.com/news/rss.xml。",
+  "不可出現簡體字；不可用列表、Markdown、emoji；不可下投資建議。"
+ ],
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-tech-and-ai.md 第 130 行寫「Astral 是 uv／ruff 的開發商」，漏了第三個工具 ty（型別檢查器），Astral 的公告本文是三個一起點名的。",
+  "候選清單沒寫到：OpenAI 這篇公告頁（openai.com/index/openai-to-acquire-astral）在本容器 403，實際可用的主要一手來源是 Astral 自己的 astral.sh/blog/openai（200）。",
+  "候選清單沒寫到：Astral 有官方 RSS https://astral.sh/blog/rss.xml（2026-09-16 實測 200、39 筆、最新一筆 2026-09-04），下一批找 Python 工具題目可直接用。",
+  "候選清單沒寫到：astral.sh 雖然是 Next.js，但對 curl 會回完整 HTML（含 MDX frontmatter 的 author／date／category），不屬於「前端渲染抓不到」那一類；但偶爾會 Connection reset by peer，加 --retry 3 --retry-all-errors 就好。",
+  "候選清單沒寫到：github.com 與 api.github.com 在本容器 403，但 raw.githubusercontent.com 回 200，可以拿 LICENSE、CHANGELOG.md 等檔案內容；pypi.org（頁面與 /pypi/<pkg>/json）也是 200。",
+  "候選清單沒寫到：openai.com/sitemap.xml 與 openai.com/sitemap.xml/company/ 都回 200，可以拿到官方正規網址與 lastmod，是 openai.com/index/* 403 時另一個可用的官方管道。",
+  "ai.md 的既有篇目表與本次 grep 一致：沒有任何一篇寫過 Astral／開源 Python 工具鏈，這個題目確實是缺口，不是重寫。"
+ ]
+}

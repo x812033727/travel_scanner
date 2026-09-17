@@ -1,0 +1,670 @@
+{
+  "slug": "crypto-news-genius-act-occ-20260302",
+  "event_date": "2026-03-02",
+  "event_date_basis": "2026-03-02 是這份 notice of proposed rulemaking 的聯邦公報刊登日，引註 91 FR 10202（第 91 卷第 40 期，2026 年 3 月 2 日星期一，第 10202 至 10303 頁）。Federal Register API 回的 publication_date 是 2026-03-02，type 是 Proposed Rule，effective_on 與 signing_date 兩個欄位都是 null。也就是說：這份文件沒有另一個可查的機關作成日或署名日，也沒有生效日（提案沒有生效日）。文章因此把刊登日寫成事件日，並在正文與 FAQ 明寫生效日欄位是空值，不去推算另一個日期。另一組必須分開的日期是 GENIUS Act 的核准日 2025 年 7 月 18 日（公法 119-27 原文末尾的 Approved 日期）與意見徵詢截止日 2026 年 5 月 1 日。前一輪研究從 public_inspection_pdf_url 的 cache-buster 參數（?1772199923）解出 2026-02-27T13:45:23Z，推測為預先公開閱覽時點——那是網址參數不是官方陳述，本輪一樣排除。",
+  "title": "美國 OCC 穩定幣發行規則草案：一比一準備金、兩個營業日贖回與定期申報",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "Federal Register, Volume 91 Issue 40 (Monday, March 2, 2026)：FR Doc. 2026-04089 全文",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "publisher": "Office of the Comptroller of the Currency, Department of the Treasury / Office of the Federal Register",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Federal Register API：文件 2026-04089 的後設資料",
+      "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+      "publisher": "Office of the Federal Register",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "govinfo：Public Law 119-27（GENIUS Act）公法原文",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "publisher": "U.S. Government Publishing Office",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 全部重抓，每一條都讀到 body 才登記 checked_on。取得配方（全部用 curl -sL -A \"Mokaair-editorial\"，請求裡沒有任何 email 或個人資料）：(1) https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt → HTTP 200、800,323 bytes；body 開頭是 <html><head><title>Federal Register, Volume 91 Issue 40 (Monday, March 2, 2026)</title>…<pre>[Federal Register Volume 91, Number 40 (Monday, March 2, 2026)] [Proposed Rules] [Pages 10202-10303] … [FR Doc No: 2026-04089]，即 GPO 的全文。注意這個檔案裡有 4 個 NUL 位元組（在第 919、920、997、998 byte，夾在頁眉那一行），grep 會把它當 binary；用 tr -d '\\000' 或 Python 去掉再搜尋，去掉後是 800,319 bytes。內文用 GPO 的 ``…'' 引號，網址與 email 被包成 <a> 標籤（其中 email 被 Cloudflare 的 email-protection 置換），引用時要避開這些片段。(2) https://www.federalregister.gov/api/v1/documents/2026-04089.json → HTTP 200、6,982 bytes；body 是 JSON，含 action、citation、page_length、effective_on、signing_date、comments_close_on 等結構化欄位。(3) https://www.govinfo.gov/link/plaw/119/public/27?link-type=html → 轉址落地在 https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm、HTTP 200、185,846 bytes；body 開頭是 [119th Congress Public Law 27]，末尾是 Approved July 18, 2025.，SEC. 20 是 EFFECTIVE DATE。sources[] 放的是最後落地的那個網址，不是 link service 的網址。\n\n讀不到或不放進 sources[] 的：uscode.house.gov 的 12 U.S.C. 5901 頁面（修正清單 must_add 6 建議的佐證）今天連線逾時，兩次嘗試（含 --http1.1、--max-time 100）都回 curl 000、0 bytes，因此不放進 sources[]，改用 govinfo 的公法原文承載同一個生效日公式。聯邦公報的正規 HTML 頁（.../documents/2026/03/02/2026-04089/implementing-...）依修正清單 source_list_fix 不放進 sources[]：它是 API 自己的 html_url，但會 302 到 unblock.federalregister.gov 並回 Request Access 擋阻頁，前一輪掛了 checked_on 卻從未讀到。occ.gov / occ.treas.gov 依修正清單 must_fix 4 的更正描述處理：那些路徑會回 HTTP 200，但供應的是 OCC 首頁而不是目標頁，屬於取得失敗，狀態碼不能當取得成功的判準；本輪沒有把 occc.gov 的任何內容當來源，草案裡提到的申請表格、每週報表格式、境外發行人名單頁一律不寫內容。\n\n方法論註記（不是 sources[]，也沒有寫進文章）：2026-09-17 以 https://www.federalregister.gov/api/v1/documents.json?conditions%5Bregulation_id_number%5D=1557-AF41 與 conditions%5Bdocket_id%5D=OCC-2025-0372 查詢，兩者都 HTTP 200，count 皆為 1，唯一結果是 2026-04089（2026-03-02，Proposed Rule）。這是查詢當下的快照，不是「官方說沒有定案規則」，因此文章只寫怎麼自己去查，不寫否定結論。",
+  "verified_facts": [
+    {
+      "fact": "這份文件是 notice of proposed rulemaking，不是定案規則；ACTION 欄逐字如此寫。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ACTION: Notice of proposed rulemaking."
+    },
+    {
+      "fact": "發布機關是 Office of the Comptroller of the Currency（OCC），隸屬美國財政部。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AGENCY: Office of the Comptroller of the Currency, Treasury."
+    },
+    {
+      "fact": "刊登於聯邦公報第 91 卷第 40 期（2026 年 3 月 2 日星期一）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Federal Register Volume 91, Number 40 (Monday, March 2, 2026)]"
+    },
+    {
+      "fact": "聯邦公報後設資料：引註 91 FR 10202、篇幅 102 頁、刊登日 2026-03-02、類型 Proposed Rule。",
+      "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"citation\":\"91 FR 10202\""
+    },
+    {
+      "fact": "聯邦公報後設資料的 effective_on 與 signing_date 兩個欄位都是 null；提案階段的文件沒有生效日，也沒有另記署名日。",
+      "url": "https://www.federalregister.gov/api/v1/documents/2026-04089.json",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"effective_on\":null"
+    },
+    {
+      "fact": "意見徵詢截止日 2026-05-01；後設資料的 comments_close_on 與全文的 DATES 欄一致。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Comments must be received by May 1, 2026."
+    },
+    {
+      "fact": "案號 Docket ID OCC-2025-0372；法規識別號 RIN 1557-AF41。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Docket ID OCC-2025-0372]"
+    },
+    {
+      "fact": "草案要修正的 CFR 篇目列為 12 CFR Parts 3, 6, 8, 15, and 19。part 19 確實被修正（草案要改 19.1、19.3 與 19.180，把 GENIUS Act 第 6 條下的停止命令、除職禁止、罰鍰與正式調查程序納入）。文章第一段照這五個篇目寫出新增 part 15 與修正 part 3、part 6、part 8 與 part 19，但不寫 part 19 的內容。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "12 CFR Parts 3, 6, 8, 15, and 19"
+    },
+    {
+      "fact": "新增的 part 15 標題在文件內出現兩種寫法：修正指示寫 PART 15--PAYMENT STABLECOINS，授權引註清單寫 PART 15--STABLECOIN。文章照來源並列，不擇一訂正。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "PART 15--STABLECOIN"
+    },
+    {
+      "fact": "文件第三節的徵詢問題從 Question 1 編到 Question 211，中間沒有缺號（以正規式 'Question (\\d+):' 逐一比對，共 211 個、互不重複）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Question 211:"
+    },
+    {
+      "fact": "GENIUS Act 是公法 119-27，公法原文末尾記的核准日是 2025 年 7 月 18 日。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Approved July 18, 2025."
+    },
+    {
+      "fact": "GENIUS Act 第 20 條（EFFECTIVE DATE）規定本法自兩者較早者起生效：制定日起 18 個月，或主要聯邦支付穩定幣主管機關發布任何實施本法之定案規則後 120 天。條文沒有印出任何日曆日期。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) the date that is 18 months after the date of enactment"
+    },
+    {
+      "fact": "OCC 在草案的背景說明裡寫的是同一個生效日公式。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act's effective date is the earlier of 18 months after"
+    },
+    {
+      "fact": "草案註 12 分開兩個時點，兩款拘束的都是數位資產服務提供者：非由已許可發行人發行者自 2028 年 7 月 18 日起適用（12 U.S.C. 5902(b)(1)）；非由符合一定要件之境外發行人所發行者，自 GENIUS Act 生效日起適用（12 U.S.C. 5902(b)(2)）。5902(b)(2) 不是對境外發行人本身的禁令。2026-09-17 重讀全文 .txt 的註 12（位於檔案 offset 13909 附近），三句話依序為 5902(b)(1) 的 2028-07-18、5902(b)(2) 的生效日，以及下面這條把禁令延伸到發行人的但書。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "issued by foreign payment stablecoin issuers that meet certain"
+    },
+    {
+      "fact": "草案註 12 第三句：適用於數位資產服務提供者的那些禁令，在發行人本身屬於數位資產服務提供者的範圍內也適用於發行人。第一節第二段依此補上「而發行人若本身也是數位資產服務提供者，這些禁令同樣適用於它」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "extent that the issuer is a digital asset service provider."
+    },
+    {
+      "fact": "擬議的 payment stablecoin 定義帶一個排除：發行人須負有兌換、贖回或買回為固定貨幣金額之義務，而該固定貨幣金額不包含以固定貨幣金額計價的數位資產。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "not including a digital asset denominated in"
+    },
+    {
+      "fact": "擬議 15.1(b) 的適用對象共六款：國民銀行及其子公司、聯邦儲貸機構及其子公司、聯邦分行及其子公司、境外支付型穩定幣發行人、尋求或已取得聯邦合格支付型穩定幣發行人核准的非銀行業者，以及 OCC 依擬議 15.15 或 15.16 對其有監理或執行權限的州級合格支付型穩定幣發行人。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(b) Scope. This part applies to the following entities' activities"
+    },
+    {
+      "fact": "草案註 93 寫明 OCC 不會核准受保國民銀行或聯邦儲貸機構直接發行支付型穩定幣，而是要透過子公司。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(as opposed to through a subsidiary)."
+    },
+    {
+      "fact": "擬議 15.30(b)(3)(ii)：OCC 會在收到申請後不遲於 30 天通知申請是否實質完備。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(ii) The OCC will notify applicants not later than 30 days after"
+    },
+    {
+      "fact": "擬議 15.30(b)(5)：實質完備的申請自 OCC 收到之日起算第 120 天視為核准，除非 OCC 依 (d) 予以駁回。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "deemed approved by the OCC as of the 120th day after the"
+    },
+    {
+      "fact": "擬議 15.30(e)(1)：申請人得於收到駁回通知後 30 天內請求書面或口頭聽證。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OCC's denial of a substantially complete application within 30 days"
+    },
+    {
+      "fact": "擬議 15.31(a) 對境外發行人列出四項要件（境外主管機關經財政部長認定與該法相當、已依擬議 15.32 向 OCC 登記、在美國金融機構持有足以支應美國客戶需求的準備、所在國未受美國全面性經濟制裁且非主要洗錢關切地區）；文章只寫其中兩項並標明「包含」。「四項」來自條文自己的 (1) 到 (4) 編號，引導語是 if it meets all of the following requirements，四項並須全部滿足。這四項的作用是使境外發行人不受 GENIUS Act 第 3 條（12 U.S.C. 5902）禁令拘束。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(3) The foreign payment stablecoin issuer holds reserves in United"
+    },
+    {
+      "fact": "擬議 15.31(a)(3) 的準備要件帶一個但書：除財政部長依 GENIUS Act 第 18(d) 條設立並執行之互惠安排另有許可者外。第二節第二段已補上「（互惠安排另有許可者除外）」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "unless otherwise permitted under a reciprocal arrangement"
+    },
+    {
+      "fact": "擬議 15.32(b)(4)：境外發行人的登記申請自 OCC 收件後第 30 天視為核准，除非 OCC 書面通知已予駁回。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the 30th day after the OCC received the filing"
+    },
+    {
+      "fact": "擬議 15.15(b)(1)：觸發點是流通發行面額「超過」100 億美元（more than $10 billion），不是達到。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "outstanding issuance value of more than $10 billion must:"
+    },
+    {
+      "fact": "擬議 15.11(a)(1)(iii)：準備資產在任何時候的總公允價值都必須等於或高於發行人的流通發行面額。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(iii) At all times have a total fair value that equals or exceeds"
+    },
+    {
+      "fact": "擬議 15.2 把 outstanding issuance value 定義為發行人所有支付型穩定幣的合併面額（par value）總額。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Outstanding issuance value means the total consolidated par value"
+    },
+    {
+      "fact": "擬議 15.11(b) 把準備資產限於八類，其中國庫券、中期與長期公債的剩餘到期日不得超過 93 天。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "remaining maturity of 93 days or less;"
+    },
+    {
+      "fact": "擬議 15.11(b) 的八類逐條編號為 (1) 到 (8)，「八類」這個數字直接來自條文自己的編號，不是研究者清點的結果；引導語是 must comprise exclusively，所以是封閉清單。八類的內容依序是：美國硬幣與紙幣（含聯邦準備銀行券）或聯邦準備銀行帳戶款項；受保存款機構可隨時提取的存款或受保股金（受 FDIC 與 NCUA 依 GENIUS Act 第 4(a)(1)(A)(ii) 條所定限制）；剩餘到期日 93 天以內的國庫券、中期與長期公債；以 93 天以內國庫券擔保、不超過隔夜的附買回；以國債擔保、不超過隔夜且符合三種型態之一的附賣回；只投資於前五類之註冊投資公司或政府型貨幣市場基金證券；經 OCC（必要時會同州主管機關）核准的其他同等流動之聯邦政府發行資產；以及前述 (1) 到 (3)、(6)、(7) 的代幣化形式。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "must comprise exclusively:"
+    },
+    {
+      "fact": "第 (7) 類是留給 OCC 核准的其他同等流動聯邦政府發行資產，它不是建立在第 (1) 到 (3) 類之上的衍生形式——前一稿正文「另外幾類都建立在這些資產之上」因此是錯的，已改成「其餘幾類多是這些資產的衍生形式……另有一類是 OCC 認可的其他同等流動聯邦政府發行資產」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(7) Any other similarly liquid Federal Government-issued asset"
+    },
+    {
+      "fact": "第 (8) 類是把 (b)(1) 到 (3) 或 (b)(6)、(7) 的準備資產以代幣化形式持有，並須符合所有適用法令；它明文建立在其他各類之上。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(8) Any reserve described in paragraphs (b)(1) through (3) or"
+    },
+    {
+      "fact": "投資於其他資產的貨幣市場基金，包含剩餘到期日超過 93 天的國債，不符合準備資產資格。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\\53\\ A money market fund that invests in any other assets,"
+    },
+    {
+      "fact": "擬議 15.11(c) 並列 Option A 與 Option B，文件明寫定案規則只會選一個。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "only one of which would be selected"
+    },
+    {
+      "fact": "Option A 的安全港與 Option B 的強制版本數字相同：每個營業日至少 10%、至少 30%、單一機構不超過 40%、前述 10% 的部分在單一機構不超過 50%、加權平均到期日不超過 20 天。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "weighted average maturity of no more than 20"
+    },
+    {
+      "fact": "擬議 15.11(d)：流通發行面額 250 億美元以上的發行人，每個營業日至少 0.5% 的準備資產要放在受保存款機構的受保存款或受保股金，上限 5 億美元。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "maintain at least 0.5 percent of its reserve assets, up"
+    },
+    {
+      "fact": "擬議 15.11(g)(3)：連續 15 個營業日未達最低準備金要求（OCC 得自行決定延長），必須開始清算準備資產與贖回，且清算期間任何時候都不得向客戶收取贖回費用。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "for 15 consecutive business days"
+    },
+    {
+      "fact": "擬議 15.11(g)(2)(i) 的「立即停止新發行」帶一個例外：為促成支付型穩定幣自一個分散式帳本移轉至另一個帳本所必要，且淨流通發行面額不增加者不在此限。擬議 15.41(c)(2) 的資本／後備未達標停發條款用的是同一個例外句。第三節第二段已補上「（跨帳本移轉且淨額不增加者除外）」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "except as necessary to facilitate a transfer of payment"
+    },
+    {
+      "fact": "擬議 15.12(b)(1)(i)：及時贖回不得超過請求贖回日之後兩個營業日。OCC 說明這是外側上限。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "That timely redemption may not exceed two business days"
+    },
+    {
+      "fact": "擬議 15.12(c)(1)：單一 24 小時期間的贖回需求超過流通發行面額 10% 時，及時贖回期間依本項之作用立即延長為七個日曆日。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "is immediately extended to seven calendar days by operation of"
+    },
+    {
+      "fact": "擬議 15.12：贖回要求只適用於發行人（及代其行事之主體）的贖回，不適用於次級市場交易。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "would not apply to secondary market trading."
+    },
+    {
+      "fact": "擬議 15.12(c)(3) 讓發行人提前贖回的條件有兩個分支：OCC 認定其能以有序方式、經公平透明的程序提前贖回，或 OCC 另行通知該延長期間不再適用。FAQ 第三題原只寫第一個分支，已補上第二個。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "extended redemption period no longer applies."
+    },
+    {
+      "fact": "擬議 15.12(b)(1)(ii)：及時贖回的裁量性限制只能由 OCC 課加；州級合格支付型穩定幣發行人的情形，得由 OCC、Federal Reserve 或該州支付穩定幣主管機關課加（視適用情形）。條文寫的是 Federal Reserve，不是 Board of Governors，因此正文改用「聯準會」而非「聯邦準備理事會」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "by the OCC, Federal Reserve, or the State payment"
+    },
+    {
+      "fact": "擬議 15.10(c)(3)：已許可支付穩定幣發行人不得直接或以暗示方式表示其支付型穩定幣有美國全額信用擔保、受美國政府保證，或受聯邦存款保險或聯邦股金保險保障（落實 GENIUS Act 第 4(e) 條）。第五節新增的讀者段落用的是這一條。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(3) Directly or through implication represent that payment"
+    },
+    {
+      "fact": "擬議 15.12(d)(1)：發行人必須以淺白文字、在客戶容易注意且容易理解的版面、與其他資訊分開，公開發行人名稱、發行人即負有為固定貨幣金額兌換／贖回／買回義務之主體、擬議 15.11(e) 每月準備金組成報告的連結，以及購買或贖回支付型穩定幣的所有費用。第五節新增的讀者段落用的是這一條。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(iv) All fees associated with purchasing or redeeming payment"
+    },
+    {
+      "fact": "申報不是四個週期：草案的文書減量法一節把估計負擔頻率印成 Weekly, monthly, quarterly, annually, event-generated, and on occasion（六項），而擬議 15.14 另有 (l) 的年度查核財報、(m) 的變更控制權申報，擬議 15.11(f) 還有每月具結。前一稿的「四個週期」與標題的「四層申報」都是撰稿者自己的清點，來源沒有印，已改成不帶數字的說法。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Frequency: Weekly, monthly, quarterly, annually, event-generated,"
+    },
+    {
+      "fact": "擬議 15.16(b)：OCC 認定有異常且緊急情事、且有合理理由相信非銀行的州級合格發行人繼續其活動（包含不作為）構成重大風險時，將以具有終局停止命令效力的指令課加限制，列舉的限制第一項是支付型穩定幣的贖回。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) Redemptions of payment stablecoins;"
+    },
+    {
+      "fact": "擬議 15.14(k)：核准後不遲於 180 天、之後每年，由董事會具結已建立洗錢防制與經濟制裁法遵計畫。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(k) Ongoing compliance reporting. Not later than 180 days after the"
+    },
+    {
+      "fact": "銀行及沙盒外的 BSA 與制裁法遵標準不在本提案內，草案明寫留給另一個提案處理。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "requirements will be addressed in a different proposed rule."
+    },
+    {
+      "fact": "擬議 15.41(a)(1)：新設（de novo）發行人最低資本為許可或設立條件所定金額與 500 萬美元之較高者。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(B) $5 million."
+    },
+    {
+      "fact": "擬議 15.41(b)(1)：營運後備須等於 12 個月的總費用。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Equal to 12 months of total expenses."
+    },
+    {
+      "fact": "擬議 15.41(c)(2)：季末未達最低資本或後備要求者，自次月第一日起不得新發行，直到達標為止。條文與前言都沒有「次一季結束前補正」這個義務或期限。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "issuance value does not increase starting on the first day of the"
+    },
+    {
+      "fact": "擬議 15.41(c)(3)：連續兩季未達最低資本或後備要求，必須開始清算準備資產與贖回、不得收取贖回費用，且此後不得再發行新的穩定幣。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "minimum capital or backstop requirements at the end of two consecutive"
+    },
+    {
+      "fact": "擬議 15.41(d)：未受保的國民信託銀行（不論是否為已許可支付穩定幣發行人）得選擇適用 15.41 的最低資本與後備要求，以取代 12 CFR part 3 的最低資本與槓桿要求；該選擇於 OCC 收件後 30 日生效，除非 OCC 以書面正當理由反對。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) An uninsured national trust bank, whether or not it is a"
+    },
+    {
+      "fact": "擬議 15.42：OCC 得對個別發行人加課額外資本或後備要求，並列出七種示例情形，其中包含穩定幣發行或贖回出現顯著波動。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(4) A permitted payment stablecoin issuer that is experiencing"
+    },
+    {
+      "fact": "同一個 35%（最高 55%）減除在文件內出現兩處：修正後的 8.2（國民銀行與聯邦儲貸機構）與擬議 8.10（subpart B 新納管機構）。兩處都寫實際比率由 OCC 年度費用公告發布。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "by thirty-five percent, or such other percentage (up to fifty-five"
+    },
+    {
+      "fact": "擬議 8.11(a)：適用於擬議 8.10 所涵蓋、且保管或保管性業務占其「利息與非利息收入」50% 以上的機構；(a)(1) 是一筆最低費（金額另由年度費用公告訂），(a)(2) 才是對超過 10 億美元之相關資產加收的部分。條文的最低費沒有綁在「前 10 億美元」上。注意 8.11 只適用於擬議 8.10 底下的機構（非銀行聯邦合格發行人、受 OCC 管轄的境外發行人、受 12 U.S.C. 5903(d) 拘束的州級合格發行人），不適用於國民銀行——國民銀行走的是現行 8.6(c) 與修正後的 8.6(c)(3)。2026-09-17 縮短第五節時整條沒有寫進文章。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(2) Additional amount for certain assets in excess of $1 billion."
+    },
+    {
+      "fact": "文件自己前後不一致：擬議 8.11 的前言寫最低費是「與前 10 億美元保管與保管性業務相關資產相對應」（a minimum fee associated with the first $1 billion of assets），但擬議條文 8.11(a)(1) 只寫一筆最低費、金額由年度費用公告訂，沒有把它綁在前 10 億美元上。修正清單 must_fix 9 的判斷對條文成立、對前言不成立；本篇不寫這一條，差異記在這裡供後續編輯參考，不要「訂正」任一處。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a minimum fee associated with the first $1 billion of assets"
+    },
+    {
+      "fact": "擬議 8.12：對受 GENIUS Act 管轄的機構收取特別檢查與調查費用。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sec.  8.12  Fees for special examinations and investigations."
+    },
+    {
+      "fact": "擬議 3.22 新增 (i) 項：與已許可支付穩定幣發行人合併報表的受保國民銀行或聯邦儲貸機構，計算資本比率時必須把該發行人解除合併、自普通股權益第一類資本扣除源自該發行人且未以股利發放給銀行的正保留盈餘，並在計算標準法與進階法風險性資產、平均合併總資產與總槓桿暴險時排除對該發行人的投資與應收款；6.2 作對應修正。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/03/02/2026-04089.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) Deconsolidate any permitted payment stablecoin issuer from the"
+    }
+  ],
+  "not_said": [
+    "這份文件沒有訂自己的生效日或遵循日：它是提案，聯邦公報後設資料的 effective_on 是 null。文章第一段與 FAQ 都寫明這一點。",
+    "OCC 沒有說 Option A（原則性加可選安全港）與 Option B（強制量化）最後會採哪一個，文件只寫定案規則會選一個。10%／30%／40%／50% 與 20 天因此都是提案中的數字。",
+    "OCC 描述但明確表示「不提案」的可變資本成分（依流通發行面額分級的作業風險加成、附買回式折扣、未受保存款加成、保管資產加成）不得寫成要求；文章一律不寫數字，只寫「描述了幾種可變的附加成分，但明確表示不在擬議條文之內」。",
+    "OCC 沒有在這份文件裡寫出 8.10 與 8.11 的級距基數、邊際費率或任何一筆金額，35%（最高 55%）的減除比率本身也是提案，並由年度 Notice of Fees 逐年訂定。",
+    "本提案不訂銀行保密法、洗錢防制或制裁計畫的標準，文件明寫留給另一個提案；本文只寫擬議 15.14(k) 的董事會具結。",
+    "文件沒有指名任何公司是申請人、已核准的已許可支付穩定幣發行人或已登記的境外發行人。出現在註腳與意見案卷會議紀要裡的公司名不得寫入文章。",
+    "文件沒有說 OCC 收到幾件申請，也沒有說目前有幾家在其監理下發行支付型穩定幣。文件裡的 24 與 29 是 OCC 自己在文書減量法與經濟分析用的假設，不是計數。文件的 Affected Parties 一節自己把 29 拆成 12＋12＋5，因此 24 與 29 之間沒有未解釋的不一致——前一輪把「不一致」寫成事實是研究者的推論，本輪整條刪除。",
+    "文件沒有提到台灣、台北或任何亞洲法域的穩定幣制度。文章裡的台灣角度是編輯的框架，並明寫台灣的規定不在本文來源範圍內。",
+    "OCC 沒有說支付型穩定幣是安全、受保或有擔保的。相反地，擬議 15.10(c)(3) 會禁止發行人表示其穩定幣有美國全額信用擔保、受美國政府保證，或受聯邦存款保險或聯邦股金保險保障。",
+    "以本文查核到 2026-09-17 的草案文本，課加義務的對象是發行人、保管人與主管機關；在條文中未見對穩定幣持有人課加義務的規定。",
+    "OCC 在這份文件裡沒有公布申請表格、每週保密報表或每季財務狀況報告的表格內容，三者都寫成「表格可在 www.occ.gov 取得」。occ.gov 在本機讀不到正文（回 200 但供應首頁），所以表格內容一律不寫。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "OCC 在經濟分析中假設的市場規模：2026 年流通穩定幣價值上限 5,000 億美元，其中 3,750 億美元歸非 OCC 銀行系發行人、1,250 億美元歸 OCC 銀行系發行人；以及 Section IV 開頭那句「本規則的主要效果預期是支付型穩定幣總市值增加」。",
+      "seen_where": "草案的 Affected Parties 與 Section IV（經濟分析）。",
+      "why_excluded": "這些是市值與市場規模數字。crypto.md 禁幣價、市值、交易量與資金流，並不因為印在主管機關文件裡就變成法規事實（修正清單跨篇型態第 9 條）。一律不寫，也不改寫成敘述。"
+    },
+    {
+      "claim": "OCC 引用的私部門預測：2025 年 2,500 億美元、2026 年 5,000 億美元、2027 年 1 兆美元、2028 年 2 兆美元的發行上限。",
+      "seen_where": "草案註 140 附近，OCC 自陳取自媒體報導的私部門預測。",
+      "why_excluded": "同樣是市場規模預測，而且是轉引媒體。雙重不可用。"
+    },
+    {
+      "claim": "OCC 估計 2026 年會有 12 家 OCC 銀行系與 12 家非 OCC 銀行系已許可發行人（共 24 家），以及文書減量法負擔表大多數列所用的 29 家受訪者。",
+      "seen_where": "草案的 Affected Parties 與 Paperwork Reduction Act 兩節。",
+      "why_excluded": "這是 OCC 的分析假設，不是家數統計，寫進文章很容易被讀成「市場上有幾家」。本篇整段不寫。附帶更正：前一輪把「24 與 29 不一致」寫成事實並標成 is_vendor_claim: true，兩者都錯——文件自己把 29 拆成 12＋12＋5，而主管機關的分析假設不是廠商宣稱。"
+    },
+    {
+      "claim": "OCC 估計本案將為已許可支付穩定幣發行人省下 1,190 萬美元的 2026 年評估費用。",
+      "seen_where": "草案的成本效益分析：OCC 原文寫 a total of $11.9 million in assessment fee costs in 2026。",
+      "why_excluded": "數字本身成立，但本篇篇幅不寫經濟分析。備註給後續編輯：同一份文件的 Total Impact 段把同一個數字印成 $11,929,204 million，那是聯邦公報文本的排版錯誤，不要「訂正」成更大的數字，也不要照抄那串壞掉的字串。"
+    },
+    {
+      "claim": "Regulations.gov 案卷 OCC-2025-0372 有 257,601 則意見與 26 份支持文件，其中包含與 Coinbase（2026-06-24）、Circle（2026-05-22）等業者的會議紀要。",
+      "seen_where": "Federal Register API 後設資料的 regulations_dot_gov_info 區塊，快取時點 checked_regulationsdotgov_at 2026-07-30T22:55:04Z。",
+      "why_excluded": "那是聯邦公報在 2026-07-30 讀 Regulations.gov 的快取讀數，不是 OCC 公布的數字；regulations.gov 本身在此回 403 無法回源，而且 API 只回 26 份中最近的 10 份，讀到的是不完整清單。活資料且無法回源，整組不寫，也不拿來論證爭議大小。"
+    },
+    {
+      "claim": "OCC 曾於 2025-12-12 對五件與穩定幣業務有關的國民信託銀行執照申請作成有條件核准（新聞稿 2025-125），最低資本介於 605 萬至 2,500 萬美元。",
+      "seen_where": "草案註 98、99 引用 OCC News Release 2025-125。",
+      "why_excluded": "該新聞稿讀不到（occ.gov 回 200 但供應首頁），家數、機構名稱與核准條件一律不寫。金額區間雖然印在草案裡，但脫離那則新聞稿的脈絡容易誤導，本篇也不寫。"
+    },
+    {
+      "claim": "USDC 於 2023 年 3 月脫鉤、33 億美元卡在矽谷銀行；某 PayPal 加密夥伴於 2025 年 10 月因技術錯誤鑄造 300 兆枚穩定幣；Circle 是第二大穩定幣發行商且 99.5% 準備放在現金、短期公債與附買回。",
+      "seen_where": "草案註 50、60、143，分別轉引華爾街日報、CNBC 與一家資產管理公司的產品頁。",
+      "why_excluded": "官方文件裡的新聞媒體與業者行銷頁引用仍然是二手來源，BRIEF 禁止它們成為事實或來源；第三條另外是具名標的的市場排名與準備組成，crypto.md 明文禁止。"
+    },
+    {
+      "claim": "GENIUS Act 於 2027 年 1 月 18 日生效。",
+      "seen_where": "對法定公式（2025-07-18 起 18 個月）做算術。",
+      "why_excluded": "法條給的是兩者取其早，第二個分支取決於定案規則何時發布；沒有任何官方來源印出日曆日期。文章一律寫公式。"
+    },
+    {
+      "claim": "本案於 2026-02-27 先行公開閱覽。",
+      "seen_where": "Federal Register 的 public_inspection_pdf_url 帶的 cache-buster 參數 ?1772199923 可解為 2026-02-27T13:45:23Z。",
+      "why_excluded": "那是網址參數，不是任何頁面上的陳述。事件日維持刊登日 2026-03-02。"
+    },
+    {
+      "claim": "uscode.house.gov 的 12 U.S.C. 5901 頁面帶有 Delayed Effective Date of Section 橫幅，並寫明 Text contains those laws in effect on September 15, 2026（修正清單 must_add 6 建議用它佐證「尚未生效」）。",
+      "seen_where": "修正清單 must_add 6 與前一輪查核紀錄。",
+      "why_excluded": "2026-09-17 兩次嘗試都連不上 uscode.house.gov（curl 回 000、0 bytes），今天沒有讀到，因此不放進 sources[]、也不寫進文章。替代作法是用 govinfo 的公法原文承載生效日公式，並在文章裡只寫公式與「怎麼自己查」。"
+    },
+    {
+      "claim": "截至查核日，這個案號與 RIN 底下沒有展延公告，也沒有定案規則。",
+      "seen_where": "2026-09-17 以 Federal Register API 依 RIN 1557-AF41 與 docket OCC-2025-0372 查詢，兩者 count 皆為 1。",
+      "why_excluded": "查詢網址依修正清單不放進 sources[]，這條因此不能當文章裡的事實（每一句都要指得到 sources[] 其中一條）。改寫成方法論註記留在 sourcing_notes，文章只教讀者用同樣的識別碼自己查。"
+    },
+    {
+      "claim": "FDIC、NCUA、FinCEN 與 OFAC 的 GENIUS Act 提案要求與本案相同或相當。",
+      "seen_where": "聯邦公報同期的其他 GENIUS Act 文件標題。",
+      "why_excluded": "那幾份文件的本文不在本篇的來源範圍內，本篇不描述它們的內容。那是 C7、C8、C9 三篇的範圍。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，不是法遵人員。全篇要回答一個問題：在美國，一家機構想發行支付型穩定幣，OCC 打算要求它做到什麼——而且這一切都還只是草案。\n\n骨架：一、這是什麼文件（刊登日、案號、RIN、意見截止日、後設資料的生效日欄位是空值、211 個徵詢問題、GENIUS Act 自己的生效公式與註 12 的兩個時點）；二、管到誰與發行前的那一關（擬議 15.1(b) 六類主體、受保銀行只能透過子公司、定義的關鍵排除、30 天完備通知、120 天視為核准、境外登記制、州級發行人超過 100 億美元的轉軌）——本節結尾放表；三、準備金（一比一按面額、八類資產、93 天、Option A 與 Option B 並列、10/30/40/50 與 20 天、短缺 15 個營業日）——本節結尾放圖；四、贖回與申報（兩個營業日、一成觸發七個日曆日、24 小時通報、只適用發行人贖回不適用次級市場、擬議 15.16 的贖回限制、每週每月每季每年四層）；五、還沒定的部分（兩案擇一、可變資本成分只是徵詢、擬議 15.42 的個案加課、資本與後備的門檻、擬議 15.41(d) 的選擇權、費率兩處 35%（最高 55%）、8.11 與 8.12、3.22(i) 的銀行端連動、AML 另案）。\n\n刻意不談：任何幣價、市值、流通量與資金流，包含 OCC 經濟分析裡的市場規模假設；哪一種穩定幣比較安全、值不值得持有、該不該換平台；FDIC、NCUA、FinCEN／OFAC 三案的內容（C7 到 C9）；台灣《虛擬資產服務法》的細節（C1，本文只用一句話說明那不在本文來源範圍內並連結過去）。\n\n生活情境只用在 FAQ 解釋「一比一」是什麼意思，並明寫是編輯設計的例子，不得變成使用建議。免責 callout 照 crypto.md 逐字，查核日 2026-09-17。",
+  "must_not_write": [
+    "不寫任何幣價、漲跌幅、市值、交易量或資金流。特別是 OCC 經濟分析裡 2026 年市場規模上限 5,000 億美元、3,750 億／1,250 億美元的拆分，以及 Section IV 那句「預期主要效果是支付型穩定幣總市值增加」——crypto.md 禁的東西不因為印在主管機關文件裡就變成法規事實。",
+    "不把任何穩定幣、發行商、交易所、錢包或保管商寫成讀者可以持有、使用或選擇的對象。草案註腳與案卷會議紀要裡出現的公司名一律不入文。",
+    "不把禁止付息這一條寫成對報酬的評論；只寫成對發行人的法律上禁止，不附任何殖利率或報酬數字。",
+    "不告訴讀者某個穩定幣安不安全、準備金夠不夠、該不該贖回或換平台。一比一與贖回時限是制度設計，不是安全評等。",
+    "這份文件裡的任何內容都不得用現在式寫成「OCC 已核准」或「規則要求」；每一個操作性句子都要帶草案或擬議。",
+    "不引用 CNBC、華爾街日報、資產管理公司產品頁或第二手的其他州主管機關規定，即使它們出現在 OCC 的註腳裡。",
+    "不放任何聯盟或追蹤連結，不比較任何業者的費率。",
+    "不把 211 個徵詢問題、案卷意見件數或文書減量法的負擔時數寫成這個案子有爭議或會不會定案的證據；它們是程序事實，不是預測。",
+    "不寫 24 家或 29 家這類 OCC 分析假設，也不寫兩者之間有不一致。"
+  ],
+  "live_data_warnings": [
+    "Federal Register API 依 docket 與 RIN 查詢回的 count（2026-09-17 皆為 1）是查詢當下的快照。文章沒有寫這個結論，只寫怎麼自己查；若日後要寫，必須在定稿當天重跑並標明查核日。",
+    "35%（最高 55%）的減除比率、8.10 的級距基數與邊際費率、8.11 的最低費金額都由 OCC 年度 Notice of Fees 另訂，不在本文件內，會逐年變動。文章因此只寫比率與上限的來源是年度費用公告。",
+    "Regulations.gov 的意見件數 257,601 與支持文件數 26 是聯邦公報 2026-07-30T22:55:04Z 的快取讀數，不是 OCC 的數字，且 API 只回最近 10 份。整組不寫。",
+    "草案 Regulatory Flexibility Act 一節的 997 家機構與約 609 家小型實體明寫 data accessed February 20, 2026，是有時點的抽取結果。本文不寫。",
+    "occ.gov 與 occ.treas.gov 會回 HTTP 200 但供應首頁，狀態碼不能當取得成功的判準；uscode.house.gov 在 2026-09-17 連線逾時。兩者的狀態都可能改變，下次要重測。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（5902(b)(2) 不是對境外發行人的禁令）：已套用。第一節第二段改寫成「兩款拘束的都是數位資產服務提供者」，並分開寫 (b)(1) 的 2028 年 7 月 18 日與 (b)(2) 的「自 GENIUS Act 生效日起」，引文改掛全文 .txt 的註 12 原句。",
+    "must_fix 2（24 與 29 不一致是研究者推論）：已套用。整句刪除，文章完全不寫 24／29，並在 unverified_or_excluded 記下為什麼不寫，同時更正 is_vendor_claim 應為 false 的判斷（主管機關的分析假設不是廠商宣稱）。",
+    "must_fix 3（沒有「次一季結束前補正」這個義務）：已套用。文章寫的是「季末未達標者自次月第一日起不得新發行，連續兩季未達標則須開始清算並贖回」，verified_facts 也照 15.41(c)(2)、(c)(3) 分成兩條。",
+    "must_fix 4（occ.gov 不是 302，而是回 200 供應首頁）：已套用。sourcing_notes 改寫成「回 200 但供應的是首頁而非目標頁，屬於取得失敗，狀態碼不能當取得成功的判準」，並據此不寫申請表格、每週報表格式與境外發行人名單頁的內容。",
+    "must_fix 5（三條引文掛錯網址）：已套用。AGENCY、Federal Register 卷期與 DATES 三條引文全部改掛全文 .txt；掛在 API JSON 上的兩條改用 JSON 自己的欄位字串（\"citation\":\"91 FR 10202\"、\"effective_on\":null）。",
+    "must_fix 6（Coinbase／Circle 會議紀要缺出處但書）：已套用，但更進一步——整組 regulations_dot_gov_info 的意見件數、支持文件數與會議紀要都不寫，理由與快取時點、清單不完整一併記進 unverified_or_excluded 與 live_data_warnings。",
+    "must_fix 7（payment stablecoin 定義漏掉關鍵排除）：已套用。正文第二節與 verified_facts 都補上「不包含以固定貨幣金額計價的數位資產」。",
+    "must_fix 8（35%／最高 55% 出現在 8.2 與 8.10 兩處）：已套用。第五節明寫「草案在兩處提出同一個減除——修正後的 8.2 管國民銀行與聯邦儲貸機構，擬議 8.10 管新納管的機構」。",
+    "must_fix 9（8.11 的最低費沒有綁在前 10 億美元；門檻是利息與非利息收入）：已套用。文章寫成「對保管性業務占利息與非利息收入五成以上的機構另收最低費，並對超過 10 億美元的相關資產加收」。",
+    "must_fix 10（15.15(b) 是「超過」100 億美元）：已套用，正文寫「流通發行面額超過 100 億美元時」，verified_facts 引文用 more than $10 billion must:。",
+    "must_fix 11（檢查週期條件 (2) 的限定詞）：因篇幅未寫。18 至 36 個月的延長檢查週期整段沒有進文章（正文只寫四層申報），所以不存在少寫限定詞的風險；若查核者要補回這一條，必須連「in which a full-scope examination would have been required but for this paragraph (d)」一起寫。",
+    "must_fix 12（1,190 萬美元與 $11,929,204 million 排版錯誤）：已記進 unverified_or_excluded 的備註。文章不寫經濟分析數字。",
+    "must_add 1（12 CFR 3.22 新增 (i) 項）：已套用，第五節末段寫出解除合併、扣除正保留盈餘、排除投資與應收款三項，並提到 6.2 的對應修正在 verified_facts 裡。",
+    "must_add 2（擬議 15.16 異常且緊急情事）：已套用，第四節整段說明，並明寫列舉的限制第一項就是贖回。",
+    "must_add 3（擬議 15.42 個別加課）：已套用，第五節寫出 OCC 得視個別發行人情況加課額外資本或後備並列有七種示例情形。",
+    "must_add 4（擬議 15.41(d) 國民信託銀行的選擇權）：已套用，第五節末寫出得選擇適用以取代 12 CFR part 3 的資本與槓桿要求。",
+    "must_add 5（擬議 8.12 特別檢查與調查費用）：已套用，第五節與 verified_facts 都有。",
+    "must_add 6（uscode.house.gov 的 Delayed Effective Date 橫幅）：未套用，因為該頁 2026-09-17 連不上（curl 000）。改用 govinfo 的公法 119-27 原文（SEC. 20 EFFECTIVE DATE 與 Approved July 18, 2025.）承載同一個論點，並把讀不到的情形寫進 sourcing_notes 與 unverified_or_excluded。",
+    "must_add 7（PART 15 標題文件內不一致）：已套用，但作法與修正清單不同。修正清單說「採修正指示那一版」；BRIEF 跨篇型態第 4 條說「印出來源印的東西，不要幫它改對」，而本篇任務書也要求並列。因此 FAQ 最後一題照來源並列兩種寫法，並說明哪一種出自修正指示、哪一種出自授權引註清單。這一點記為規格衝突。",
+    "source_list_fix：已套用。移除聯邦公報正規 HTML 頁（Request Access 擋阻頁，從未讀到），補進 API JSON，第三條因 uscode.house.gov 讀不到而改為 govinfo 的公法原文，共 3 條，全部在 2026-09-17 讀到 body。FR API 的查詢網址沒有放進 sources[]，改寫成 sourcing_notes 裡帶查核日的方法論註記。",
+    "checked_on：修正清單第 16 行說「所有查核與研究的 checked_on 都是 2026-09-16，免責 callout 的查核日一律填 2026-09-16」，但 BRIEF.md 規定 checked_on 一律寫實際查證當天，而本篇是在 2026-09-17 重抓並重讀來源。依「BRIEF > 修正清單」，全篇（研究紀錄、內容包每條 source、第二段的查核句、表格 caption、圖說、免責 callout）一律用 2026-09-17。記為規格衝突。"
+  ],
+  "factcheck": {
+    "checked_by": "獨立查核代理（未參與撰稿）",
+    "checked_on": "2026-09-17",
+    "method": "三條 sources 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（請求裡沒有任何 email 或個人資料）：全文 .txt 200／800,323 bytes（去掉 4 個 NUL 後 800,319），body 是 GPO 全文；API JSON 200／6,982 bytes，body 是結構化欄位；govinfo 公法 200／185,846 bytes，body 開頭 [119th Congress Public Law 27]、末尾 Approved July 18, 2025.。正文每一句、摘要四句、FAQ 六題、兩個 callout、表格五列與 caption、圖說、title 與 description 逐條回原文比對；擬議 15.1(b)、15.10(c)、15.11、15.12、15.14、15.15、15.16、15.30、15.31、15.32、15.41、15.42 與修正的 3.22(i)、6.2、8.2、8.6(c)、8.10、8.11、8.12 都讀了條文本身而不只是前言；Question 編號以正規式逐一比對（1 到 211，211 個、無缺號、無重複）；59 條 verified_facts 的 verbatim_quote 全部以程式確認是所掛網址上可搜尋到的連續字串（換行處已改用單行片段）。沒有用任何 sources[] 以外的網址替文章補事實。",
+    "verdict": "needs_owner（文章本身可刊；留給站主的是 hero.alt 仍寫著「四層」、以及 title 改動要往索引與 autolink 傳）",
+    "edits_to_the_pack": [
+      "第三節第一段「另外幾類都建立在這些資產之上，例如隔夜的附買回與附賣回」改成「其餘幾類多是這些資產的衍生形式，例如不超過隔夜的附買回與附賣回，另有一類是 OCC 認可的其他同等流動聯邦政府發行資產」：擬議 15.11(b) 第 (7) 類是 Any other similarly liquid Federal Government-issued asset approved by the OCC，它不建立在 (1) 到 (3) 之上，原句的「都」是假的。八類本身沒問題，來源自己編號 (1) 到 (8)，引導語是 must comprise exclusively。",
+      "title 的「四層申報」、第四節標題的「四層申報」、第四節第二段的「申報則分四個週期」全部改成不帶數字的說法（「定期申報」「不只一個週期，草案至少要求以下幾項」）：來源沒有印過四，也沒有把這四項編成一組；草案自己的文書減量法一節把頻率印成 Weekly, monthly, quarterly, annually, event-generated, and on occasion（六項），另有擬議 15.14(l) 年度查核財報、15.14(m) 變更控制權申報與 15.11(f) 每月具結，四是撰稿者的清點而且偏窄。研究紀錄的 diagram.title 與 caption、內容包 image caption 一併去掉「四道關卡」。",
+      "第一段「並修正既有的 part 3、part 6 與 part 8」改成「part 3、part 6、part 8 與 part 19」：報頭印的是 12 CFR Parts 3, 6, 8, 15, and 19，草案確實要改 19.1、19.3、19.180，原句把不完整的清單寫成完整的。",
+      "第二節第二段「境外發行人……在美國金融機構持有足夠準備」補上「（互惠安排另有許可者除外）」：擬議 15.31(a)(3) 原文帶 unless otherwise permitted under a reciprocal arrangement created and implemented by the Secretary of the Treasury under section 18(d)，刪掉但書就把要件寫死了。",
+      "第三節第二段「立即停止新發行」補上「（跨帳本移轉且淨額不增加者除外）」：擬議 15.11(g)(2)(i) 原文是 except as necessary to facilitate a transfer of payment stablecoins from one distributed ledger to another and provided that the net outstanding issuance value does not increase。",
+      "第二節第二段「銀行端要透過子公司」改成「受保銀行端要透過子公司」：擬議 15.30(a)(1) 只對受保國民銀行、聯邦儲貸機構與受保聯邦分行課子公司路徑，未受保的國民銀行與未受保聯邦分行走 (a)(2) 的聯邦合格發行人路徑，原句把範圍放大了（註 93 也只寫受保）。",
+      "FAQ 第三題補上擬議 15.12(c)(3) 的第二個分支「或 OCC 另行通知延長期間不再適用」：原文是 ... or the OCC otherwise provides notice to the permitted payment stablecoin issuer that the extended redemption period no longer applies，原本只寫了第一個分支。",
+      "第四節第一段「裁量性限制」前面加上「同款 (ii) 的」，並把「聯邦準備理事會」改成「聯準會」：擬議 15.12(b)(1)(ii) 印的是 Federal Reserve，不是 Board of Governors。",
+      "摘要第三句開頭加「草案把」：原句「贖回的時限訂為不超過兩個營業日……」是沒有帶草案字樣的操作性句子，違反 must_not_write 第五條；第三節標題也從「準備金：……」改成「草案的準備金：……」。",
+      "第一節第二段句末補上註 12 的第三句（發行人若本身也是數位資產服務提供者，這些禁令同樣適用於它）：註 12 三句話裡原稿只寫了兩句。前兩句本身查證無誤——must_fix 1 的修正確實套用了，5902(b)(1) 的 2028-07-18 與 5902(b)(2) 的「自生效日起」拘束的都是數位資產服務提供者，沒有寫成「境外發行行為違法」。",
+      "第五節第二段依協調者指示從 313 字壓成 153 字，只留「費用的金額還沒有訂、比率逐年在 OCC 的年度費用公告發布」與「銀行端要把發行子公司解除合併」兩個重點；擬議 8.11、8.12 的細節與 3.22(i) 的扣除、排除兩項、以及 35%（最高 55%）的數字都不寫（8.11 的內容另有一處文件自身不一致，見 verified_facts）。第五節第一段開頭刪掉與第三節重複的「除了 Option A 與 Option B 二選一」。",
+      "第五節新增第三段：擬議 15.1(b) 拘束的是那幾類美國機構而不是台灣讀者，加上擬議 15.12(d)(1) 的淺白文字揭露（發行人名稱、由誰負兌換義務、每月準備金組成報告連結、購買與贖回的所有費用）與擬議 15.10(c)(3) 的禁止（不得直接或暗示表示有美國全額信用擔保、受美國政府保證或受聯邦存款保險或股金保險保障）。三條都新增進 verified_facts，全部出自 sources[0]，沒有推薦或比較語氣，也沒有加入任何金額。"
+    ],
+    "checked_and_correct": [
+      "協調者點名的三個高風險句子：註 12 兩個時點正確（見上，已補第三句）；擬議 8.11 的寫法對條文成立（(a)(1) 是單純最低費、(a)(2) 才是超過 10 億美元加收，門檻是利息與非利息收入的 50%），但那一段依指示已整段不寫；八類的數字正確且來源自己編號，錯的是「都建立在這些資產之上」那半句，已改。",
+      "數字逐條回擬議條文核對無誤：93 天（15.11(b)(3)）；10%／30%／40%／50%／20 天 Option A 是 (c)(2)(i) 到 (v)、Option B 是 (c)(1) 到 (5)，兩案五個數字確實相同，Option B (4) 指向 (c)(1) 一如 Option A (iv) 指向 (c)(2)(i)，「兩案數字相同」成立；連續 15 個營業日（15.11(g)(3)）；兩個營業日（15.12(b)(1)(i)，OCC 自稱 outer limit）；24 小時內 10% → 七個日曆日與 24 小時內通報（15.12(c)(1)、(c)(4)）；30 天完備通知（15.30(b)(3)(ii)）與第 120 天視為核准（15.30(b)(5)，起算日由 (b)(3)(iv) 定為 OCC 收到補足資料之日）；超過 100 億美元（15.15(b)(1)，more than）；250 億美元以上、0.5%、上限 5 億美元（15.11(d)）；500 萬美元與 12 個月總費用（15.41(a)(1)(i)(B)、(b)(1)）；180 天與其後每年（15.14(k)）；Question 1 到 211（III. Request for Comments 一整節，Question 211 之後就是 IV. Expected Effects）；篇幅 102 頁（API page_length，報頭印 Pages 10202-10303）。表格五列的條號與期間五列全對。",
+      "「六類」（15.1(b)(1) 到 (6)）、「四項要件」（15.31(a)(1) 到 (4)，引導語 all of the following）、「七種示例情形」（15.42(a)(1) 到 (7)，引導語 For example）三個清點數字來源都自己編了號，可以留；只有「四個週期／四層申報」沒有依據，已改。",
+      "「OCC，隸屬美國財政部」對得上報頭的 DEPARTMENT OF THE TREASURY／Office of the Comptroller of the Currency 與 AGENCY: Office of the Comptroller of the Currency, Treasury.；註 93 逐字是 the OCC would not approve an insured national bank or a Federal savings association to issue a payment stablecoin directly (as opposed to through a subsidiary)，文章的寫法正確。",
+      "PART 15 標題兩種寫法並列那句對回原文兩處：修正指示是「12. Add part 15 to read as follows: PART 15--PAYMENT STABLECOINS」，授權引註清單之後是「PART 15--STABLECOIN」。兩處都在，照來源並列而不擇一訂正，符合 BRIEF 跨篇型態第 4 條。",
+      "GENIUS Act 生效時點全篇只寫公式：公法 SEC. 20 原文只有 the earlier of (1) 18 months after the date of enactment 與 (2) 120 days after ... any final regulations，沒有印任何日曆日期；草案前言寫的是同一個公式。全文沒有出現 2027 年任何換算日期，也沒有引用同批 FDIC 文件印的 January 18, 2027。註 12 的 2028 年 7 月 18 日是來源自己印的（begins on July 18, 2028），且掛在數位資產服務提供者的禁令上，不是本法生效日。",
+      "界線：全文沒有幣價、漲跌幅、市值、交易量、資金流、殖利率或報酬；OCC 經濟分析的 5,000 億／3,750 億／1,250 億美元、2,500 億／1 兆／2 兆美元的私部門預測、Section IV 開頭「主要效果是總市值增加」那句、1,190 萬美元與 $11,929,204 million 的排版錯誤、24／29 家假設、997 家與 609 家小型實體、regulations.gov 的 257,601 則意見全部沒有出現。文中所有金額都是法定或擬議門檻（100 億、250 億、5 億、500 萬美元），不是市場數字。沒有任何一句把穩定幣、發行商、交易所或錢包寫成可以持有或選擇的對象，也沒有點名任何公司。",
+      "每一個操作性句子都帶草案或擬議（兩處漏的已補，見上）；FAQ 第五題明寫 Option A 與 Option B 的數字都還是提案中的數字；FAQ 第一題與第六題只教讀者用案號、RIN、引註自己查，沒有寫出「目前沒有定案規則」這種從查詢快照推出的否定結論。",
+      "FAQ 第四題的編輯例子（面額一美元、發行一百萬枚、準備資產公允價值要在一百萬美元以上）標明了「以下是編輯設計的例子」，講的是面額對公允價值的算術，沒有任何可被讀成價格、報酬或商品比較的說法；「而不是看它在市場上換到多少」只是排除次級市場價格，不是行情敘述。",
+      "免責 callout 的 title 與 text 與 crypto.md 的樣板逐字相同（含「不是投資建議」六個字），查核日 2026-09-17。",
+      "checked_on 沒有動：2026-09-17 本來就是撰稿者讀到來源那一天，也是本輪重抓的同一天，內容包三條 source、研究紀錄、第二段查核句、表格 caption、圖說、免責 callout 六處一致。",
+      "sources[] 三條今天都讀到正文，沒有一條是擋阻頁；聯邦公報正規 HTML 頁依修正清單沒有放進 sources[]，本輪也沒有去要它。59 條 verified_facts 的網址全部在 sources[] 之內。",
+      "摘要每一個數字都在正文出現；FAQ 答案都是純文字、沒有網址；全文沒有簡體字；圖上與 hero_label 的數字（120、93）都在正文。"
+    ],
+    "left_for_the_owner": [
+      "hero.alt 還寫著「由每週到每年堆成四層的申報格線」。查核代理依任務書不動 alt（主圖由協調者繪製、alt 由協調者依實際畫面改寫），但「四層」這個數字已經從 title、標題、正文與圖說移除，改寫 alt 時請一併去掉，主圖構圖若已照「四層申報」畫好也要一起調整。",
+      "title 從「……與四層申報」改成「……與定期申報」。目前站上沒有別的內容包用這個 title 當 link text（已 grep 過 apps/api/app/guides/content），但日後 pack_cli relink／autolink 與四篇 GENIUS Act 互連時要用新 title；四語系譯文尚未產生，翻譯時也以新 title 為準。",
+      "文件自身有一處不一致沒有寫進文章：擬議 8.11 的前言寫最低費「與前 10 億美元相關資產相對應」，條文 8.11(a)(1) 卻只寫一筆由年度費用公告訂金額的最低費。修正清單 must_fix 9 的判斷對條文成立、對前言不成立。本篇依協調者指示已把整段刪掉，差異記在 verified_facts，不要「訂正」任一處。",
+      "第五節壓縮後不再寫的內容，若站主日後要補回需要額外字數（目前 zh-TW 段落 2,982／3,000）：35%（最高 55%）的減除比率、擬議 8.11 與 8.12、3.22(i) 的扣除正保留盈餘與排除投資／應收款兩項、擬議 15.41(c)(3) 的「不得收取贖回費用」與「此後不得再發行」。這些都已經在 verified_facts 裡，刪的是篇幅不是依據。",
+      "第三節第一段用「核心是」帶出八類裡的三類，因此是部分列舉而非全清單；但被壓縮掉的限定詞有一個值得知道：擬議 15.11(b)(2) 的存款與受保股金要「受 FDIC 與 NCUA 依 GENIUS Act 第 4(a)(1)(A)(ii) 條為處理該受保存款機構安全穩健風險所定之限制」。若日後放寬字數，這個但書應該補回去。",
+      "occ.gov 今天沒有再測（本篇不引用它的任何內容）；uscode.house.gov 的 12 U.S.C. 5901 頁面（修正清單 must_add 6）本輪同樣沒有納入 sources[]。兩者的狀態下次仍要重測。"
+    ]
+  },
+  "hero_label": "草案，還沒生效",
+  "diagram": {
+    "title": "OCC 草案設下的關卡",
+    "caption": "依 OCC 2026 年 3 月 2 日刊登的規則草案整理：先申請、準備金、贖回與持續申報，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "先申請",
+        "完備後 120 天視為核准"
+      ],
+      [
+        "準備金",
+        "一比一、93 天內短債"
+      ],
+      [
+        "贖回",
+        "上限兩個營業日"
+      ],
+      [
+        "持續申報",
+        "每週、每月、每季"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "A proposal, not yet in force",
+      "diagram": {
+        "title": "The gates the OCC's proposal would set",
+        "caption": "Compiled from the proposed rule the OCC published on March 2, 2026: apply first, reserves, redemption and ongoing reporting; checked on September 17, 2026.",
+        "nodes": [
+          [
+            "Apply first",
+            "Deemed approved on day 120"
+          ],
+          [
+            "Reserves",
+            "One-to-one, 93-day Treasuries"
+          ],
+          [
+            "Redemption",
+            "Two business days at most"
+          ],
+          [
+            "Ongoing reporting",
+            "Weekly, monthly, quarterly"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "規則案、未発効",
+      "diagram": {
+        "title": "OCC規則案が設ける関門",
+        "caption": "OCCが2026年3月2日に掲載した規則案に基づく整理です。まず申請、準備金、償還、そして継続的な報告の4点で、2026年9月17日に確認しました。",
+        "nodes": [
+          [
+            "まず申請",
+            "完備から120日で承認とみなす"
+          ],
+          [
+            "準備金",
+            "額面と1対1、93日以内の国債"
+          ],
+          [
+            "償還",
+            "上限は2営業日"
+          ],
+          [
+            "継続的な報告",
+            "毎週・毎月・四半期"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "규칙안, 아직 미발효",
+      "diagram": {
+        "title": "OCC 규칙안이 세운 관문",
+        "caption": "OCC가 2026년 3월 2일 게재한 규칙안을 정리한 것으로 먼저 신청, 준비자산, 상환과 지속적인 보고 네 가지이며 확인일은 2026년 9월 17일입니다.",
+        "nodes": [
+          [
+            "먼저 신청",
+            "완비 후 120일째 승인 간주"
+          ],
+          [
+            "준비자산",
+            "액면 1대1, 93일 이내 국채"
+          ],
+          [
+            "상환",
+            "최대 2영업일"
+          ],
+          [
+            "지속 보고",
+            "주간·월간·분기"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "草案，还没生效",
+      "diagram": {
+        "title": "OCC 草案设下的关卡",
+        "caption": "依 OCC 2026 年 3 月 2 日刊登的规则草案整理：先申请、准备金、赎回与持续报送，核查日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "先申请",
+            "完备后第 120 天视为核准"
+          ],
+          [
+            "准备金",
+            "一比一、93 天内短债"
+          ],
+          [
+            "赎回",
+            "上限两个营业日"
+          ],
+          [
+            "持续报送",
+            "每周、每月、每季"
+          ]
+        ]
+      }
+    }
+  }
+}

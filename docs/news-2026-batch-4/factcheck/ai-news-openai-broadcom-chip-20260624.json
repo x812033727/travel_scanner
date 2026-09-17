@@ -1,0 +1,64 @@
+{
+ "slug": "ai-news-openai-broadcom-chip-20260624",
+ "verdict": "needs_fixes",
+ "confirmed_count": 33,
+ "source_reachability": "I re-fetched all three source URLs myself on 2026-09-16.\n1) https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor -> HTTP 200, 70,913 bytes, real article body (dateline + 5 bullets + 4 quotes + forward-looking notice) and JSON-LD headline \"OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor\", datePublished 2026-06-24T09:00:48-0400. CAVEAT I reproduced independently: with the BRIEF-mandated User-Agent \"Mokaair-editorial\" this host returns curl exit 92 (HTTP/2 stream INTERNAL_ERROR, zero bytes); only curl's default UA gets the 200. No personal data sent either way.\n2) https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10 -> HTTP 200, 71,384 bytes, real body, JSON-LD datePublished 2025-10-13T09:00:43-0400, dateline \"Oct. 13, 2025\". Same UA caveat.\n3) https://openai.com/news/rss.xml -> HTTP 200 with \"Mokaair-editorial\", 726,611 bytes, 1,195 <item> (researcher recorded 1,194 / 725,972 bytes — live-feed drift, not an error), oldest 2015-12-11, newest Wed 16 Sep 2026 16:00 GMT. Live feed, not a rejection page.\nBLOCKS I RE-CONFIRMED MYSELF: https://openai.com/index/openai-broadcom-jalapeno-inference-chip -> HTTP 403, 9,857 bytes, Cloudflare challenge body with <meta http-equiv=\"refresh\" content=\"360\">; trailing-slash variant 403/9,860; https://openai.com/index/jalapeno-first-results -> 403/9,785; https://openai.com/index/the-full-stack-behind-abundant-intelligence -> 403/9,869. The feed carries NO <content:encoded> (0 occurrences in the whole file), so the RSS one-liners really are the only OpenAI-authored wording obtainable here.\nOTHER ROUTES I CHECKED: https://investors.broadcom.com/news-releases -> HTTP 404 (56,654 bytes). https://investors.broadcom.com/rss/news-releases.xml -> 200, exactly 10 items, 2026-08-06 to 2026-09-02, cannot reach June. https://www.broadcom.com/company/news/product-releases/64506 -> 200/48,006 bytes but a JS shell: <title> is the correct headline while the body contains 0 occurrences of \"Jalape\", \"Celestica\", \"Tomahawk\", \"GLOBE NEWSWIRE\", \"tape-out\", \"Brockman\", \"Hock Tan\". Broadcom Q3 FY2026 release (datePublished 2026-09-02T16:15:47-0400) -> 200, and I confirm 0 occurrences of \"Jalape\" and 0 of \"OpenAI\". Celestica: corporate.celestica.com/news -> 200 and corporate.celestica.com/rss/news-releases.xml -> 200, neither mentions Jalapeno/OpenAI/Broadcom.\nNO GUESSED IDENTIFIERS FOUND: node id 64506 is printed on the page itself as href=\"/node/64506/pdf\"; the three openai.com/index slugs all come from <link> elements in the official feed; the Q3 URL is a <link> in Broadcom's own IR RSS.",
+ "refuted": [],
+ "unsupported": [
+  {
+   "fact": "VF6 'OpenAI designed the chip from scratch around its deep understanding of LLM fundamentals ... with partners Broadcom and Celestica' recorded with is_vendor_claim=false.",
+   "why": "Quote is verbatim-correct, but 'designed the chip from scratch around its deep understanding of LLM fundamentals' is a self-description of credit and process that nobody outside the two companies can verify. BRIEF requires it be written as a vendor statement. Flip is_vendor_claim to true."
+  },
+  {
+   "fact": "VF10 'As of the announcement the chip exists as engineering samples, NOT SHIPPING PRODUCT', is_vendor_claim=false.",
+   "why": "Two defects. (a) The page never says 'not shipping product' — that is the researcher's inference; the source only says 'Engineering samples of the Jalapeño chip are running ML workloads in the lab at production target frequency and power, including GPT-5.3-Codex-Spark.' (b) An unobservable in-lab status reported by the vendor is a vendor claim; is_vendor_claim must be true."
+  },
+  {
+   "fact": "VF19 'designed for initial deployment by the end of 2026, and expanding in the years ahead', is_vendor_claim=false.",
+   "why": "The same release's Cautionary Note names 'the deployment of gigawatt scale datacenters' as a forward-looking statement on which 'undue reliance should not be placed'. A statement the issuer itself formally disclaims cannot be recorded as a non-vendor fact."
+  },
+  {
+   "fact": "VF20 'To be deployed at gigawatt scale with data center partners, over multiple generations', is_vendor_claim=false.",
+   "why": "Same reason as VF19 — a future-deployment promise expressly covered by Broadcom's own forward-looking-statements disclaimer."
+  },
+  {
+   "fact": "VF29 'OpenAI has grown to over 800 million weekly active users', is_vendor_claim=false.",
+   "why": "Clearest mislabel in the set. An unaudited self-reported user count inside a press release, as of 2025-10-13. Must be written as 'OpenAI 表示' with the 2025-10-13 date attached, never as a bare fact."
+  },
+  {
+   "fact": "VF16 (nine months) and VF26 ('targeted to start in the second half of 2026, to complete by end of 2029'), both is_vendor_claim=false.",
+   "why": "The bullet-vs-body discrepancy VF16 catches is a genuine text fact, but the nine-month duration itself and the 2026H2→2029 rollout window are company-stated schedule claims and must be attributed."
+  },
+  {
+   "fact": "VF12 'A detailed technical report on performance will be presented in the coming months', is_vendor_claim=false.",
+   "why": "Confirmed verbatim, but it is a promise about a future publication, not an observed fact. Should be attributed."
+  },
+  {
+   "fact": "VF5 verbatim_quote: the five opening bullets joined with ' / ' separators.",
+   "why": "All five bullet texts are confirmed present, in that order, and there are exactly five — but the string recorded as verbatim_quote does not exist on the page; the ' / ' separators were inserted by the researcher. A quote field must be quotable as-is. Split into five quotes or mark it a reconstruction."
+  },
+  {
+   "fact": "sources[2] = https://openai.com/news/rss.xml, which carries VF3, VF30, VF31 and VF32.",
+   "why": "BRIEF.md is explicit: 'feed 給的是日期與標題，不是內容 … sources 放的是文章頁的網址，不是 feed 的網址.' A feed URL is not an allowed sources[] entry. The two Broadcom IR pages already meet the 2–4 first-party minimum, so the RSS entry should be dropped from sources[] and its four items kept in the research record only, clearly marked as feed metadata. Spec violation, not fabrication."
+  },
+  {
+   "fact": "sourcing_verdict = 'full'.",
+   "why": "Overstated. For the 2026-06-24 event there is exactly ONE readable first-party article page (Broadcom's); OpenAI's own post is 403 and all OpenAI-authored wording available is a 26-word feed description. Qualify it to say the OpenAI side was never read, or downgrade it."
+  }
+ ],
+ "additional_findings": [
+  "MATERIAL OMISSION — the release DOES contain cost language, and must_not_write #0 ('do not write any cost or price comparison') will mislead the writer into thinking it does not. The body says verbatim: 'If AI can help engineers design better chips faster, it can lower the cost of compute across the industry and help democratize access to advanced AI.' It is conditional ('if'), industry-wide, has no number and names no chip. Record it as a vendor claim and rewrite must_not_write #0 to ban only the unsourced '50% cheaper than GPUs' figure and any numeric price comparison.",
+  "MISSING FACT — 'Jalapeño is designed with flexibility to work with all LLMs guided by OpenAI's insights into the inference needs of current and future AI models across the industry.' This sentence is in the body but appears in no verified_fact; it survives only inside not_said #8. It is the sentence that most invites the misreading 'the chip will be sold to others', so it belongs in verified_facts with is_vendor_claim=true plus the existing caveat that no sale is stated.",
+  "SECOND BULLET/BODY DISCREPANCY, NOT FLAGGED — the researcher caught 'design to production' (bullet) vs 'design to manufacturing tape-out' (body) but missed the same pattern on performance: bullet 3 says perf/watt 'better than current state-of-the-art', the body says 'SUBSTANTIALLY better than current state-of-the-art'. Same class of defect; use the body wording and note the difference.",
+  "MISSING — the release's own three section headings are not recorded: 'Designed to be the best inference platform for LLMs', 'Nine-month tape-out, accelerated by OpenAI models', 'Building a multi-generation platform with partners'. The middle one is Broadcom's own heading and independently confirms that tape-out, not production, is the official framing — direct support for must_not_write #3.",
+  "SOURCE QUIRK THE WRITER MUST NOT 'FIX' — Richard Ho is introduced as 'who leads OpenAI's hardware program', yet his quoted words are 'using detailed insights from our close collaboration with OpenAI researchers', which reads as if the speaker were outside OpenAI. That is what the page prints. Quote it as printed; do not reattribute it to Broadcom and do not silently repair it.",
+  "TITLE DRIFT BETWEEN THE TWO RELEASES — Charlie Kawwas is 'Semiconductor Solutions President' in the 2026-06-24 release but 'Charlie Kawwas, Ph.D., President of the Semiconductor Solutions Group for Broadcom Inc.' in the 2025-10-13 one; Sam Altman is 'OpenAI CEO Sam Altman' in June 2026 and 'Sam Altman, co-founder and CEO of OpenAI' in Oct 2025. Do not mix them.",
+  "NOT RECORDED — the 2025-10-13 release also carries a Sam Altman quote ('Partnering with Broadcom is a critical step in building the infrastructure needed to unlock AI's potential…') and the subhead 'Multi-year partnership enables OpenAI and Broadcom to deliver accelerator and network systems for next-generation AI clusters'. Background only, but the researcher recorded Kawwas and not Altman.",
+  "CELESTICA IS UNCORROBORATED — corporate.celestica.com/news (HTTP 200) and corporate.celestica.com/rss/news-releases.xml (HTTP 200) contain zero mentions of Jalapeno, OpenAI or Broadcom. Celestica's role rests entirely on Broadcom's word and should be written that way.",
+  "DATE HANDLING IS SOUND, WITH ONE NUANCE WORTH KEEPING — OpenAI's feed publishes at 24 Jun 2026 06:00 GMT while Broadcom's IR page stamps 2026-06-24T09:00:48-0400 (13:00 GMT): seven hours apart, same calendar day, and 14:00 / 21:00 on 2026-06-24 in Taipei, so news_date 2026-06-24 is safe for a zh-TW pack. Announcement, publication, 'initial deployment by the end of 2026' and the 2025-10-13 'H2 2026 to end of 2029' window are all kept properly separate — NO date conflation found anywhere.",
+  "NO DISQUALIFYING SOURCING — I found no fact traced to a news outlet, aggregator, law-firm blog or search snippet. TechCrunch/Bloomberg/Seeking Alpha and the '50% cheaper than Nvidia GPUs' figure are correctly quarantined in unverified_or_excluded with the right reason. No guessed URL, node id, document number or identifier: every identifier traces to a link printed on an official page or in the official feed.",
+  "REPO-SIDE CLAIMS ALL VERIFIED BY ME — apps/api/app/guides/content holds exactly 970 packs, 40 ai-news-*, 0 tech-news-*; grep -ril 'broadcom|jalape' across all packs returns nothing; ai-news-siri-ai-ios-27-20260914 has display_order 148; ai-news-2026-january-september-index has display_order 141, zh-TW title '2026 年 AI 新聞總整理：1 月 1 日至 9 月 14 日的重點與生活應用' and NO top-level news_date; candidates-tech-and-ai.md carries the duplicate rows at lines 136 and 314 exactly as reported. The AI-vertical decision and the correction list are well founded.",
+  "OPERATIONAL NOTE FOR THE WHOLE BATCH, INDEPENDENTLY REPRODUCED — investors.broadcom.com and corporate.celestica.com (same IR platform) both refuse the BRIEF-mandated UA 'Mokaair-editorial' with curl exit 92, and serve HTTP 200 to curl's default UA. Anyone re-verifying these two sources will otherwise wrongly conclude they are dead.",
+  "OUTPUT FILE — written to /tmp/claude-0/-home-user-travel-scanner/7f63d65a-c509-5a16-8b56-4ffddc3bb57b/scratchpad/research/ai-news-openai-broadcom-chip-20260624-factcheck.json. I deliberately did NOT write to <slug>.json because the researcher's own record already occupies that path; I copied it to ai-news-openai-broadcom-chip-20260624.researcher-backup.json before touching anything."
+ ]
+}

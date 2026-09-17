@@ -1,0 +1,404 @@
+{
+ "slug": "tech-news-apple-eu-business-terms-20260818",
+ "checked_on": "2026-09-16",
+ "event_date": "2026-08-18",
+ "event_date_basis": "Apple Developer News item id=gmws0jgp is datelined 'August 18, 2026' on the page, and the official Apple Developer RSS feed (https://developer.apple.com/news/rss/news.rss, 142 items, newest 2026-09-09) carries the same item with pubDate 'Tue, 18 Aug 2026 08:00:38 PDT'. The Apple Newsroom version carries JSON-LD datePublished '2026-08-18Z'. Announcement date = 2026-08-18. Effective date of the new terms = 2026-10-01 (stated on all three Apple pages). The Newsroom page carries dateModified '2026-08-27T14:00:09Z', so the Newsroom text read today is the 2026-08-27 revision, not the as-published 2026-08-18 text; Apple does not say what was changed.",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All Apple pages reachable from this container with curl -A Mokaair-editorial. developer.apple.com/news/?id=gmws0jgp 200 (111,532 bytes). developer.apple.com/news/rss/news.rss 200, 142 <item>, newest 2026-09-09 - live feed, not a dead one. www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/ 200 (162,779 bytes), real article body, title tag matches, not a 404 page. developer.apple.com/support/apps-in-the-eu/ 200, Last-Modified Tue, 18 Aug 2026 22:12:10 GMT. developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/ 200, same Last-Modified. A FIFTH first-party page was read but left out of sources because of the max-4 rule: https://developer.apple.com/support/terms/apple-developer-program-license-agreement/ (200, 842,456 bytes) - this is the binding legal text and contains 'Attachment 14 (to the Agreement) Additional Terms for Apps in the European Union'. Facts traced to it are marked in verified_facts; the writing agent may swap it in for one of the four if it wants to cite the legal text. Apple Newsroom Atom feed (https://www.apple.com/newsroom/rss-feed.rss) returns only 20 <entry>, newest 2026-09-16, so the August item is out of window there - the article page itself was used instead. Localized Apple support pages exist at /cn/, /jp/, /kr/, /de/, /fr/, /it/, /br/, /la/ but NOT /tw/ (developer.apple.com/tw/support/apps-in-the-eu/ returns 404); the /cn/, /jp/ and /kr/ pages still serve the 'What's new' body in ENGLISH, so there is no official zh-TW or even zh-CN/ja/ko wording for 'Core Technology Commission' to copy at translation time. European Commission side: ec.europa.eu/commission/presscorner is an Angular SPA and its /api/documents endpoint returned HTTP 400; the topical official channel https://digital-markets-act.ec.europa.eu/node/2/rss_en returned 200 with 30 items whose newest is 2026-07-23 ('Commission fines Google EUR890 million...'), i.e. the Commission's own DMA news channel carries NOTHING on or after 2026-08-18 about Apple. digital-markets-act.ec.europa.eu/cases_en and /decisions_en are both 404.",
+ "sources": [
+  {
+   "title": "Changes for apps in the European Union",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "publisher": "Apple Developer",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Apple announces changes for apps in the European Union",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "publisher": "Apple Newsroom",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Changes for apps in the European Union",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "publisher": "Apple Developer Support",
+   "checked_on": "2026-09-16"
+  },
+  {
+   "title": "Payment options on the App Store in the EU",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "publisher": "Apple Developer Support",
+   "checked_on": "2026-09-16"
+  }
+ ],
+ "hero_label": "歐盟 App 條款改版",
+ "diagram": {
+  "title": "歐盟 App 條款怎麼改",
+  "caption": "資料來源：Apple 開發者公告與支援頁，查核日 2026 年 9 月 16 日。",
+  "nodes": [
+   [
+    "原本",
+    "多套條款並存"
+   ],
+   [
+    "改成",
+    "歐盟單一套條款"
+   ],
+   [
+    "核心技術",
+    "安裝費改抽 5%"
+   ],
+   [
+    "生效日",
+    "2026 年 10 月 1 日"
+   ]
+  ]
+ },
+ "verified_facts": [
+  {
+   "fact": "Apple published the announcement 'Changes for apps in the European Union' in Apple Developer News, datelined August 18, 2026.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Changes for apps in the European Union / August 18, 2026"
+  },
+  {
+   "fact": "Apple says the changes follow close collaboration with the European Commission and reduce complexity by moving every developer that distributes apps in the EU to a single set of business terms.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Apple is making changes to its business terms for apps in the European Union, following close collaboration with the European Commission. The changes reduce complexity by moving every developer that distributes apps in the EU to a single set of business terms."
+  },
+  {
+   "fact": "Apple says the Core Technology Fee, described by Apple as a per-install fee for developers who achieve extraordinary scale, will be replaced by the Core Technology Commission, a 5% commission on digital transactions in apps distributed outside the App Store.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The Core Technology Fee, a per-install fee for developers who achieve extraordinary scale, will be replaced by the Core Technology Commission, a simple 5% commission on digital transactions in apps distributed outside the App Store."
+  },
+  {
+   "fact": "Apple says the new terms eliminate the Initial Acquisition Fee and the Store Services Fee.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The new terms also eliminate the Initial Acquisition Fee and Store Services Fee."
+  },
+  {
+   "fact": "Apple Developer Program members could review and agree to the updated terms in the Apple Developer Program License Agreement on the day of the announcement; the key updates go into effect October 1, 2026.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Members of the Apple Developer Program can review and agree to the updated terms today in the Apple Developer Program License Agreement. Some key updates, which go into effect October 1, 2026, include:"
+  },
+  {
+   "fact": "The four key updates Apple lists in the developer announcement are: adjusting commission rates across the App Store, alternative payments and alternatively distributed apps; allowing apps to offer alternative payment options alongside Apple In-App Purchase; adding child safety protections for alternative payments on the App Store; and expanding the qualifications for developers to operate alternative app marketplaces and distribute their apps over the web.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Adjusting commission rates across the App Store, alternative payments, and alternatively distributed apps. Allowing apps to offer alternative payment options alongside Apple In-App Purchase. Adding child safety protections for alternative payments on the App Store. Expanding the qualifications for developers to operate alternative app marketplaces and distribute their apps over the web."
+  },
+  {
+   "fact": "Apple offers EU developers a 30-minute online appointment to ask questions about the changes, linked from the announcement.",
+   "url": "https://developer.apple.com/news/?id=gmws0jgp",
+   "is_vendor_claim": false,
+   "verbatim_quote": "You can also request a 30-minute online appointment to ask questions about these changes."
+  },
+  {
+   "fact": "Apple's Newsroom item is labelled UPDATE and dated August 18, 2026; its JSON-LD gives datePublished 2026-08-18 and dateModified 2026-08-27T14:00:09Z, so the text read on 2026-09-16 is the 27 August revision.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "\"datePublished\": \"2026-08-18Z\" ... \"dateModified\": \"2026-08-27T14:00:09Z\""
+  },
+  {
+   "fact": "Apple says the changes 'resolve Apple's disagreements with the Commission over business terms and alternative distribution' and that developers can sign the new terms the same day, with changes taking effect on October 1.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "These changes resolve Apple’s disagreements with the Commission over business terms and alternative distribution. They also reduce complexity by moving every developer that distributes apps in the EU to a single set of business terms. Developers can sign the new terms today, and changes will go into effect on October 1."
+  },
+  {
+   "fact": "For App Store apps using Apple In-App Purchase the commission will be 26 percent; 15 percent for developers in the App Store Small Business Program, Mini Apps Partner Program or Video Partner Program, and for auto-renewing subscriptions after their first year.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For App Store apps using Apple In-App Purchase, the commission will be 26 percent. For the vast majority of developers, including those in the App Store Small Business Program, Mini Apps Partner Program, or Video Partner Program, and for auto-renewing subscriptions after their first year, it will be 15 percent."
+  },
+  {
+   "fact": "For App Store apps using alternative payment processing the commission will be 20 percent, with a reduced rate of 10 percent for developers in those same programs.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For App Store apps using alternative payment processing, the commission will be 20 percent. Developers in the programs mentioned above will pay a reduced rate of 10 percent."
+  },
+  {
+   "fact": "For App Store apps that link out of the app to complete purchases the commission will be 15 percent, with a reduced rate of 10 percent for developers in those same programs.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For App Store apps that link out of the app to complete purchases, the commission will be 15 percent. Developers in the programs mentioned above will pay a reduced rate of 10 percent."
+  },
+  {
+   "fact": "For apps distributed via alternative app marketplaces or the web, Apple will charge a 5 percent Core Technology Commission.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For apps distributed via alternative app marketplaces or the web, Apple will charge a 5 percent Core Technology Commission."
+  },
+  {
+   "fact": "Apple says developers can now offer Apple In-App Purchase alongside alternative payment options, 'which had not previously been permitted in the EU', subject to presentation requirements.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Under the updated terms, developers can now offer Apple In-App Purchase alongside alternative payment options, which had not previously been permitted in the EU. This is subject to presentation requirements designed to give users a consistent, transparent experience."
+  },
+  {
+   "fact": "Developers distributing apps in the EU select their payment options - Apple In-App Purchase, alternative payment processing in their app, linking out to the web, or a combination - and must maintain those options for 12 months.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "developers distributing apps in the EU will select their payment options — Apple In-App Purchase, alternative payment processing in their app, linking out to the web, or a combination — and must maintain those options for 12 months."
+  },
+  {
+   "fact": "Child safety measures: apps in the Kids category will not include links to websites to complete transactions; for users under 18, App Store apps using alternative payment processing or linking out must include a parental gate; for users under 13, App Store apps cannot link out to websites for transactions. In EU member states requiring parental consent above age 13, the protections scale accordingly.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apps in the Kids category on the App Store will not include links to websites to complete transactions ... For users under 18 years old, all apps from the App Store that use alternative payment processing or link out to a website for transactions must include a parental gate ... For users under 13 years old, apps from the App Store cannot link out to websites for transactions ... In EU member states that require parental consent for digital actions for children older than 13 years old, these protections will scale accordingly."
+  },
+  {
+   "fact": "Apple says it worked with the Commission to implement child safety measures for alternative payments 'similar to those already in place in other markets'.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Apple has worked with the Commission to implement child safety measures for alternative payments similar to those already in place in other markets"
+  },
+  {
+   "fact": "Expanded eligibility to operate an alternative app marketplace or distribute via the web: companies qualify if they meet a moderate financial-stability bar as scored by Dun & Bradstreet, are publicly traded or owned by a publicly traded company, have received venture funding from an established investment firm, have completed a financial audit by a licensed accountant, or are a government entity, educational institution or nonprofit.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Meet a moderate financial-stability bar as scored by Dun & Bradstreet. Are publicly traded or owned by a publicly traded company. Have received venture funding from an established investment firm. Have completed a financial audit by a licensed accountant. Are a government entity, educational institution, or nonprofit."
+  },
+  {
+   "fact": "Apple states that Web Distribution is available only in the EU, has no marketplace operator standing behind it, and that Apple will continue to require every alternatively distributed app to go through Notarization, which Apple describes as a baseline review focused on basic functionality and protection from serious threats.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Web distribution, which is available only in the EU, does not have a marketplace operator standing behind it or ongoing oversight like the kind Apple provides for the App Store ... Apple will continue to require every alternatively distributed app to go through Notarization — a baseline review focused on basic functionality and protection from serious threats."
+  },
+  {
+   "fact": "Apple states that Apple In-App Purchase is 'the safest, most trusted way for users to purchase and download apps and make seamless and secure payments in those apps'. This is Apple's characterisation, not a tested finding.",
+   "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Apple In-App Purchase is the safest, most trusted way for users to purchase and download apps and make seamless and secure payments in those apps."
+  },
+  {
+   "fact": "Apple's support hub page states that since 2024 Apple has made updates to iOS, iPadOS, Safari and the App Store in the EU 'to comply with the Digital Markets Act (DMA)', listing alternative payments, alternative app marketplaces, web distribution and alternative browser engines. This is background about 2024 onwards, NOT a stated reason for the 18 August 2026 business-terms change.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Since 2024, Apple has made updates to iOS, iPadOS, Safari, and the App Store in the European Union (EU) to comply with the Digital Markets Act (DMA), giving developers more options in the EU — including the ability to process payments for digital goods and services outside of Apple In-App Purchase, distribute on alternative app marketplaces, operate alternative app marketplaces, distribute directly from their website, and use alternative browser engines."
+  },
+  {
+   "fact": "The support page says the Apple Developer Program License Agreement was updated on August 18, 2026 and that the primary updates go into effect on October 1, 2026.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Apple Developer Program License Agreement, updated on August 18, 2026, introduces new business terms and policies for apps distributed in the EU, following close collaboration with the European Commission."
+  },
+  {
+   "fact": "Apple states companies are no longer required to have a legal entity or be established in the EU to operate an alternative app marketplace or use Web Distribution.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Companies are no longer required to have a legal entity or be established in the EU to operate an alternative app marketplace or use Web Distribution."
+  },
+  {
+   "fact": "The EU business terms cover apps distributed in EU storefronts on iOS, iPadOS, macOS, tvOS, visionOS and watchOS.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In the EU, there are additional options, which include specific business terms for iOS, iPadOS, macOS, tvOS, visionOS, and watchOS apps distributed in EU storefronts."
+  },
+  {
+   "fact": "The support page's rate table gives App Store commission (Apple In-App Purchase) 26% / 15%; App Store commission (alternative payment processing within the app) 20% / 10%; store services commission (out-of-app offers with an actionable link) 15% / 10%; Core Technology Commission 5%. App Store commission rates apply to the price paid by the customer.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "App Store commission rates apply to the price paid by the customer."
+  },
+  {
+   "fact": "The store services commission applies only to sales made within 7 days of the link tap.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Only sales made within 7 days of the link tap are subject to this commission."
+  },
+  {
+   "fact": "From October 1, 2026 the full eligibility list for operating an alternative app marketplace or using Web Distribution has seven criteria, of which two are not in the Newsroom list: providing a stand-by letter of credit of USD 1,000,000 (or local-currency equivalent), or having one million first annual installs worldwide.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Provide a stand-by letter of credit of USD 1,000,000 (or equivalent in local currency); or Have one million first annual installs worldwide."
+  },
+  {
+   "fact": "Small marketplace operators qualify to have the Core Technology Commission waived on their marketplace download fee or access subscription fees if they earn less than EUR 10 million in global revenue in the last 12 months and less than EUR 1 million in total lifetime revenue from those marketplace fees.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "€10 million in global revenue in the last 12 months; and €1 million in total lifetime revenue from your EU marketplace app’s download price or subscription fees to access apps distributed by your marketplace."
+  },
+  {
+   "fact": "From October 1, 2026 the Alternative Terms Addendum for Apps in the EU and the StoreKit External Purchase Link Entitlement (EU) Addendum are superseded by Attachment 14 of the Apple Developer Program License Agreement. A developer's account becomes subject to the unified EU terms on October 1, 2026 or the date they agree, whichever is later; fees accrued under the discontinued agreements remain payable.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Starting October 1, 2026, these terms will be superseded by Attachment 14 of the Apple Developer Program License Agreement ... their account will be subject to the unified EU terms starting October 1, 2026, or the date they agree, whichever is later. Developers that owe Apple fees and commissions accrued under the discontinued agreements will remain responsible for paying those amounts to Apple."
+  },
+  {
+   "fact": "Apple says that in fall 2026 it will update the EU installation experience for alternative app marketplaces and web-distributed apps, provide an API letting developers start downloads of their web-distributed apps from inside their own app, and let EU users install alternative app marketplaces and alternatively distributed apps for 90 days when travelling outside the EU.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Let EU users install alternative app marketplaces and alternatively distributed apps for 90 days when traveling outside the EU."
+  },
+  {
+   "fact": "Apple's support page states that the account holder of the membership must be the one to agree to the updated terms.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "To agree to these terms in your Apple Developer account, you’ll need to be the Account Holder of your membership."
+  },
+  {
+   "fact": "Developers must report alternative payment transactions to Apple monthly within 15 days following the end of the calendar month, and Apple states it has audit rights; failure to pay commission could result in offset of proceeds owed in other markets, removal of the app from the App Store, or removal from the Apple Developer Program.",
+   "url": "https://developer.apple.com/support/apps-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This report will need to be provided monthly within 15 days following the end of the calendar month."
+  },
+  {
+   "fact": "The entitlement for alternative payment options is valid in 29 country codes: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden. Iceland and Norway are EEA but not EU members; Liechtenstein is not listed.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The valid country codes are: Austria (at), Belgium (be), Bulgaria (bg), Croatia (hr), Cyprus (cy), Czechia (cz), Denmark (dk), Estonia (ee), Finland (fi), France (fr), Germany (de), Greece (gr), Hungary (hu), Iceland (is), Ireland (ie), Italy (it), Latvia (lv), Lithuania (lt), Luxembourg (lu), Malta (mt), Netherlands (nl), Norway (no), Poland (pl), Portugal (pt), Romania (ro), Slovakia (sk), Slovenia (si), Spain (es), Sweden (se)"
+  },
+  {
+   "fact": "The entitlement profile is compatible only with apps on EU storefronts on devices running at minimum iOS 26.2, iPadOS 26.2, macOS 26.6, tvOS 26.6, visionOS 26.6 and watchOS 26.6.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Entitlement Profile is compatible with and may only be used in apps on EU storefronts on devices running a minimum of iOS 26.2, iPadOS 26.2, macOS 26.6, tvOS 26.6, visionOS 26.6, and watchOS 26.6."
+  },
+  {
+   "fact": "Presentation rules: Apple In-App Purchase must be presented at the same time as any alternative payment option and displayed at least as prominently; the Apple In-App Purchase button background must be black or white with no custom colours; colour may not be used to make the alternative option look preferred; payment flows may not discourage or disrupt use of Apple In-App Purchase; the App Store product page may not include information about purchasing with an alternative payment option.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Apple In-App Purchase must be displayed at least as prominently as any other payment option shown. Prominence is determined by the overall experience."
+  },
+  {
+   "fact": "Apps that offer alternative payment processing or out-of-app offers with an actionable link must use the ExternalPurchaseCustomLink API to show a system-provided disclosure sheet telling the user they will be transacting with the developer and not Apple; users can turn the sheet off for later purchases via a 'Show This Reminder Next Time?' dialog.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "must use the ExternalPurchaseCustomLink API to display a system-provided disclosure sheet that explains to the user they’ll be transacting with the developer and not Apple."
+  },
+  {
+   "fact": "The App Store will show an informational banner on the product page of apps that offer alternative payment options, a disclosure in the Information section, and an External Purchases notation on the download confirmation.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the App Store will display an informational banner on the app’s product page and a disclosure in the Information section, and the download confirmation will have an External Purchases notation."
+  },
+  {
+   "fact": "Apple warns that with alternative payment options Report a Problem and Family Sharing will not reflect those transactions, App Store purchase history and subscription management will only reflect Apple In-App Purchase transactions, and Apple will not be able to assist customers with refunds, purchase history or subscription management for those purchases. This is Apple's own description of the trade-off.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Helpful features — like Report a Problem, and Family Sharing — will also not reflect these transactions ... users’ purchase history and subscription management will only reflect transactions made using Apple In‑App Purchase."
+  },
+  {
+   "fact": "An alternative payment service provider must meet Level 1 Payment Card Industry (PCI) compliance and make a customer service process available for users including disputing unauthorized transactions, managing subscriptions and requesting refunds.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Meet Level 1 Payment Card Industry (PCI) compliance for handling credit and debit card data; and Make a customer service process available for users"
+  },
+  {
+   "fact": "From iOS 26.4, iPadOS 26.4, macOS 26.4, tvOS 26.4, visionOS 26.4 and watchOS 26.4 onwards, developers use the External Purchase Server API to report transactions to Apple.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For apps running iOS 26.4, iPadOS 26.4, macOS 26.4, tvOS 26.4, visionOS 26.4, watchOS 26.4, and later, use the External Purchase Server API to report transactions to Apple."
+  },
+  {
+   "fact": "Apple aggregates transactions and calculates commissions by the 15th of the following month and the developer must pay within 30 days of receiving the invoice.",
+   "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Transactions will be aggregated and commissions calculated by Apple by the 15th of the following month. You’ll need to provide payment within 30 days of receiving the invoice."
+  },
+  {
+   "fact": "SUPPLEMENTARY (page not in the 4 sources): the binding text is 'Attachment 14 (to the Agreement) Additional Terms for Apps in the European Union', which states it 'is effective as of October 1, 2026, or the date on which You sign this Agreement including this Attachment 14, whichever is later' and replaces the Alternative Terms Addendum for Apps in the EU and the StoreKit External Purchase Link Addendum for Apps in the EU.",
+   "url": "https://developer.apple.com/support/terms/apple-developer-program-license-agreement/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "This Attachment is effective as of October 1, 2026, or the date on which You sign this Agreement including this Attachment 14, whichever is later."
+  },
+  {
+   "fact": "SUPPLEMENTARY (page not in the 4 sources): Attachment 14 Section 4(E) states the Core Technology Commission is five percent (5%) of covered sales; Section 3.5 states 20%/10% for Alternative Payment Processing, 26%/15% for Apple's in-app purchase system, and a store services commission of 15%/10% for Out-of-App Offers. Unlike the Japan/Brazil attachment, the EU attachment adds NO separate payment-processing fee on top of the 20%.",
+   "url": "https://developer.apple.com/support/terms/apple-developer-program-license-agreement/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The Core Technology Commission is five percent (5%) of all sales covered in this Section 4."
+  },
+  {
+   "fact": "SUPPLEMENTARY (page not in the 4 sources): the full Apple Developer Program License Agreement, including Attachment 14, contains no occurrence of the strings 'Digital Markets' or 'DMA' anywhere in the document (842,456 bytes fetched 2026-09-16).",
+   "url": "https://developer.apple.com/support/terms/apple-developer-program-license-agreement/",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  }
+ ],
+ "not_said": [
+  "Neither the 18 August 2026 Apple Developer News item nor the Apple Newsroom announcement mentions the Digital Markets Act, the DMA, gatekeepers, Regulation (EU) 2022/1925, antitrust, non-compliance or any fine. Zero string matches for all of those on both pages. The article must NOT state the DMA as the cause of this change.",
+  "NUANCE the previous pass got wrong: Apple's own support hub page https://developer.apple.com/support/apps-in-the-eu/ DOES name the Digital Markets Act twice - once as background ('Since 2024, Apple has made updates ... to comply with the Digital Markets Act (DMA)') and once about interoperability requests ('To reflect the DMA's requirements, Apple also provides a dedicated process to request additional interoperability'). Neither sentence is about the 18 August business-terms change. So 'Apple never mentions the DMA' is FALSE as a blanket claim; the accurate statement is 'Apple's announcement of this change does not mention the DMA, and attributes the change only to close collaboration with the European Commission'.",
+  "Apple does not say what the Core Technology Fee cost per install, nor what numeric threshold counted as 'extraordinary scale'. The string '0.50' appears in these pages only inside SVG path data, never as a fee. Do not write a per-install amount.",
+  "Apple does not state what the previous EU commission rates were, so the article cannot say the rates went 'up' or 'down' without a source. Write only the new rates.",
+  "Apple does not explain the difference between the eliminated 'Store Services Fee' and the 'store services commission' of 15%/10% that still exists under the new terms for out-of-app offers. Do NOT write that Apple removed all store-services charges.",
+  "Apple does not say how many developers, apps or users are affected, and gives no revenue or financial impact figure.",
+  "Apple does not say anything about app prices for consumers, and does not say whether users in the EU will pay more or less.",
+  "Apple does not say the European Commission approved, accepted or closed anything. Apple's own wording is that the changes 'resolve Apple's disagreements with the Commission'. That is Apple's characterisation of the outcome, not a Commission statement.",
+  "Apple does not say these terms will apply anywhere outside the EU/EEA storefronts listed. Nothing in these pages says Taiwan, Asia or any other market is affected. Do not write or imply 'Taiwan will be next'.",
+  "Apple does not give a date for the 'fall 2026' installation-experience updates beyond the season, and does not say which OS version delivers them.",
+  "Apple does not define what 'moderate financial-stability bar as scored by Dun & Bradstreet' means in the Newsroom item. The support page and the licence agreement are more specific ('Low Risk' or 'Below Average Risk' D&B Global Business Ranking) but that detail is on the licence agreement page, not in the announcement.",
+  "Apple does not publish an official Traditional Chinese (zh-TW) version of either support page - developer.apple.com/tw/support/apps-in-the-eu/ returns 404 - and the zh-CN, ja and ko versions still serve the relevant section in English. There is therefore NO official Apple Chinese wording for 'Core Technology Commission'; keep the English term alongside any translation and say so.",
+  "The European Commission's own DMA news channel (https://digital-markets-act.ec.europa.eu/node/2/rss_en, 30 items, newest 2026-07-23) carries nothing on or after 2026-08-18 about Apple's business terms. The article must not attribute any statement to the Commission."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "That the Digital Markets Act obliged, forced or caused Apple to make these changes.",
+   "seen_where": "Widely stated in technology media and implied by the topic itself; also suggested by the assignment lead.",
+   "why_excluded": "Apple's 18 August announcement and Newsroom item say only 'following close collaboration with the European Commission' and that the changes 'resolve Apple's disagreements with the Commission'. No first-party Apple text ties the 18 August change to the DMA, and the Commission published nothing on that date through its own DMA news channel. Causation is therefore unsourced."
+  },
+  {
+   "claim": "That the European Commission accepted, approved or closed a non-compliance proceeding against Apple on or around 2026-08-18.",
+   "seen_where": "Implied by Apple's phrase 'resolve Apple's disagreements with the Commission'.",
+   "why_excluded": "Only Apple says this. The Commission's DMA news feed's newest item is 2026-07-23 (a Google fine) and the presscorner API is unreachable from this container (HTTP 400 on /api/documents, SPA front end). No Commission first-party confirmation was obtained, so nothing may be attributed to the Commission."
+  },
+  {
+   "claim": "That the old Core Technology Fee was EUR 0.50 per first annual install above one million installs.",
+   "seen_where": "Common in coverage of Apple's 2024 EU terms; the number also 'appears' as a substring in the fetched HTML.",
+   "why_excluded": "The '0.50' hits are SVG path coordinates, not text. None of the four sources, nor the licence agreement, states a per-install amount. Writing it would be fabrication."
+  },
+  {
+   "claim": "That the 18 August 2026 Apple Newsroom text read today is identical to what Apple published on 18 August 2026.",
+   "seen_where": "The page itself is datelined August 18, 2026 and labelled UPDATE.",
+   "why_excluded": "Its JSON-LD dateModified is 2026-08-27T14:00:09Z. Apple does not say what changed. The article should cite the page with checked_on 2026-09-16 and not claim the wording is the as-published wording."
+  },
+  {
+   "claim": "Any figure for how many EU developers use alternative distribution or alternative payments, or how much Apple collects from the Core Technology Fee/Commission.",
+   "seen_where": "Frequently quoted in analyst commentary.",
+   "why_excluded": "No first-party Apple page states any such figure."
+  },
+  {
+   "claim": "That app prices in the EU will fall because Apple's commission rates changed.",
+   "seen_where": "A natural inference from the rate table.",
+   "why_excluded": "Apple says nothing about consumer prices. tech.md also forbids turning pricing into a recommendation."
+  },
+  {
+   "claim": "That Apple's Notarization, parental gate or prominence rules make alternative payments safe or unsafe.",
+   "seen_where": "Apple's own framing ('Apple In-App Purchase is the safest, most trusted way...', 'a bad actor distributing via the web can operate for a long time').",
+   "why_excluded": "These are Apple's claims about its own competitors' channels. They may be reported as 'Apple says', never as findings. Mokaair has done no testing."
+  },
+  {
+   "claim": "An official Chinese or Japanese rendering of 'Core Technology Commission' from Apple.",
+   "seen_where": "developer.apple.com/cn/, /jp/, /kr/ support pages exist and return 200.",
+   "why_excluded": "Those pages still serve the relevant section in English; no official localized term exists to copy, and there is no /tw/ page at all (404)."
+  }
+ ],
+ "editorial_brief": "Reader: a Taiwanese general reader who uses an iPhone or iPad and buys things inside apps, plus the smaller group of Taiwan-based developers who ship to EU storefronts. Neither group is in the EU, so the article's job is NOT 'what changes for you' but 'why the same app can run on different commercial rules depending on which storefront it is sold in, and how to tell which set of rules you are under'. Angle: on 2026-08-18 Apple announced one unified set of EU business terms taking effect on 2026-10-01; the per-install Core Technology Fee becomes a 5% Core Technology Commission on digital transactions outside the App Store, the Initial Acquisition Fee and Store Services Fee go, App Store commissions are restated at 26/15, 20/10 and 15/10 percent, and apps may for the first time in the EU offer Apple In-App Purchase side by side with alternative payments, locked in for 12 months. Five sections, roughly: (1) what Apple announced and when; (2) the fee structure, with the table of the four commission lines and the two rate tiers, caption dated 2026-09-16; (3) what actually changes on screen for an EU user - the disclosure sheet, the External Purchases notation on the download confirmation, the parental gates at under-13 and 13-to-17, and what Apple says will NOT work (Report a Problem, Family Sharing, purchase history), with the 2x2 diagram here; (4) who can now run an alternative app marketplace or distribute from the web, and the 29-storefront geography including Iceland and Norway - the point being that 'EU' here is a list of storefronts, not a feeling; (5) how a Taiwanese reader can check which rules apply to them, i.e. that these terms are scoped to EU storefronts and Apple has said nothing about anywhere else. The callout should say plainly that Apple's announcement never names the Digital Markets Act and attributes the change only to collaboration with the European Commission, so this article does not say the law forced it. Deliberately out of scope: whether the change is good or bad for Apple, for developers or for competition; any estimate of money involved; any 'Taiwan will follow' speculation; any comparison with Google Play; any purchase or upgrade advice.",
+ "must_not_write": [
+  "Do not write that the Digital Markets Act (數位市場法) required, forced or caused this change. Apple's announcement does not say so.",
+  "Do not write that the European Commission approved, accepted, cleared or closed anything. Only Apple's own words are sourced.",
+  "Do not write a per-install amount for the old Core Technology Fee, or a numeric threshold for 'extraordinary scale'.",
+  "Do not write that the rates went up or went down - the old EU rates are not in any source here.",
+  "Do not write that Apple removed store-services charges; a 15%/10% store services commission still exists for out-of-app offers.",
+  "Do not write or imply that Taiwan, or any market outside the listed EU/EEA storefronts, is affected or will be next.",
+  "Do not write that EU app prices will fall, and do not turn any rate into a recommendation to buy, subscribe or switch - tech.md forbids purchase advice.",
+  "Do not repeat Apple's safety framing as fact: 'Apple In-App Purchase is the safest...', 'a bad actor distributing via the web can operate for a long time' and 'Notarization protects from serious threats' are all 'Apple 表示'.",
+  "Do not add a finance disclaimer callout - tech.md says the tech vertical must not carry one.",
+  "Do not describe testing, screenshots or hands-on use; nothing here was tested.",
+  "Do not draw any Apple logo, wordmark, App Store icon or UI screenshot in the diagram; write product names as plain text.",
+  "Do not use 簡體字, Markdown, lists or emoji; use 台灣用語 (使用者/帳號/軟體/應用程式)."
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md T5 says '官方也沒說：調整後的各項抽成是多少'. That is WRONG. Apple's Newsroom announcement and both support pages publish the full rate card: App Store with Apple In-App Purchase 26% / 15%; App Store with alternative payment processing 20% / 10%; out-of-app link-outs (store services commission) 15% / 10%; Core Technology Commission 5%. The licence agreement's Attachment 14 repeats all of them in binding wording.",
+  "T5 says 'Apple 全文沒有提到《數位市場法》（DMA）'. That is true of the developer news item and of the Apple Newsroom item, but FALSE of Apple's own linked support page https://developer.apple.com/support/apps-in-the-eu/, which names the Digital Markets Act twice (2024 background, and interoperability requests). The correct framing is that Apple's announcement of THIS change does not cite the DMA.",
+  "T5 says '兒少保護的細節' is undisclosed. Apple in fact publishes them in detail: Kids category apps cannot offer out-of-app website purchases and must put alternative-payment purchase flows behind a parental gate; under 13 - parental gate required and no out-of-app offers; 13 to 17 - parental gate for both; storefronts with a higher consent age (example given: under 16 and 16-17) use the higher age. What Apple does NOT disclose is which storefronts use which age.",
+  "T5's source list is incomplete. Three more first-party pages carry most of the detail: developer.apple.com/support/apps-in-the-eu/, developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/, and the Apple Developer Program License Agreement (Attachment 14).",
+  "The lead URL https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/ resolves (HTTP 200, real body) but is a live page: JSON-LD dateModified is 2026-08-27T14:00:09Z, later than its 2026-08-18 datePublished. Cite it as read on 2026-09-16.",
+  "The candidates file does not mention that there is no tech vertical index content pack in the repository yet (only ai-news-2026-january-september-index.json exists, and no docs/tech-news-2026/ directory). BRIEF.md requires link #1 to be the vertical index, so the batch must create a tech index or the writer must be told which slug to point at."
+ ],
+ "overlaps_existing_article": "No existing content pack covers this. apps/api/app/guides/content/ has 40 news packs, all ai-news-*; there is no tech-news-* pack yet and no docs/tech-news-2026/ workspace directory. The two nearest neighbours: (1) ai-news-eu-transparency-20260802 '歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？' - also an EU rule that reaches Taiwanese readers indirectly, but its subject is AI content labelling under the AI Act, not app-store commerce. It is the best candidate for the second (related-news) link, and the two articles should cross-reference rather than re-explain 'EU rules do not automatically apply in Taiwan' twice - this article should state that point in one sentence and link. (2) ai-news-siri-ai-ios-27-20260914 - Apple, but software/AI features; no commercial-terms content. Division of labour: this article owns App Store business terms, commissions, alternative payments and alternative distribution in the EU; it must not restate AI Act obligations or iOS 27 features. Batch sibling T1/T2/T8 (iPhone Duo, 9/9 hardware, M6) are hardware and do not overlap."
+}
