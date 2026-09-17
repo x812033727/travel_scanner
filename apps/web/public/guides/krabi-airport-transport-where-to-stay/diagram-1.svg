@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans Thai','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">喀比機場落地後怎麼到各住宿區 / From Krabi Airport to where you sleep</title>
+  <desc id="desc">示意圖。喀比機場在右上角，Grab 官方頁標示的上車點是國際線入境 17 號門。機場往西以實線（車）連到喀比鎮，標約 20 到 30 分；機場往西南以實線連到奧南，標約 50 分，奧南是據點，船都從這裡出發。奧南往南以虛線（船）連到萊雷，標長尾船約 30 分，萊雷分成萊雷西的白沙灘與萊雷東的攀岩與碼頭；奧南往西南以虛線連到帕南，標長尾船約 30 到 40 分。奧南往北以實線連到克隆芒與 Tubkaek，官方頁沒有車程，以叫車 App 或飯店接送為準。左下角一支虛線箭頭指出圖外，寫往皮皮島、普吉的船從喀比鎮的 Klong Jilad 碼頭出發，普吉要在皮皮島轉船。圖例：實線是車、虛線是船。方向與距離非比例。</desc>
+  <defs>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrow-coral" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#B8442D"/>
+    </marker>
+    <marker id="arrow-mocha" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#6B4A3A"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 11 6 L 0 11 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="bold" fill="#102A2B">喀比機場落地：到各住宿區怎麼走</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From Krabi Airport (KBV) to Ao Nang, Krabi Town, Railay, Klong Muang</text>
+  <text x="1540" y="52" font-size="16" fill="#5C6B6B" text-anchor="end">示意圖，方向與距離非比例</text>
+
+  <!-- lines first, boxes on top -->
+  <line x1="1150" y1="195" x2="975" y2="195" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrow-teal)"/>
+  <text x="1062" y="175" font-size="17" fill="#0D6B68" text-anchor="middle">約 20 到 30 分</text>
+
+  <line x1="1250" y1="270" x2="995" y2="455" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrow-teal)"/>
+  <text x="1180" y="390" font-size="17" fill="#0D6B68" text-anchor="start">約 50 分</text>
+
+  <line x1="660" y1="400" x2="420" y2="290" stroke="#6B4A3A" stroke-width="5" marker-end="url(#arrow-mocha)"/>
+  <text x="498" y="424" font-size="16" fill="#6B4A3A" text-anchor="middle">奧南往北</text>
+
+  <line x1="790" y1="550" x2="790" y2="652" stroke="#B8442D" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrow-coral)"/>
+  <text x="812" y="612" font-size="17" fill="#B8442D" text-anchor="start">長尾船約 30 分</text>
+
+  <line x1="600" y1="505" x2="452" y2="600" stroke="#B8442D" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrow-coral)"/>
+  <text x="548" y="524" font-size="17" fill="#B8442D" text-anchor="end">長尾船約 30 到 40 分</text>
+
+  <line x1="500" y1="800" x2="90" y2="800" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrow-blue)"/>
+  <text x="300" y="772" font-size="17" fill="#2F6F9F" text-anchor="middle">往皮皮島、普吉：Klong Jilad 碼頭</text>
+  <text x="300" y="838" font-size="15" fill="#5C6B6B" text-anchor="middle">碼頭在喀比鎮；普吉要在皮皮島轉船</text>
+
+  <!-- airport -->
+  <rect x="1150" y="120" width="380" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1340" y="168" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">喀比機場 Krabi Airport (KBV)</text>
+  <text x="1340" y="204" font-size="16" fill="#5C6B6B" text-anchor="middle">Grab 上車點：</text>
+  <text x="1340" y="234" font-size="16" fill="#5C6B6B" text-anchor="middle">國際線入境 17 號門</text>
+
+  <!-- Krabi Town -->
+  <rect x="655" y="140" width="320" height="110" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="815" y="186" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">喀比鎮 กระบี่</text>
+  <text x="815" y="218" font-size="16" fill="#5C6B6B" text-anchor="middle">Krabi Town</text>
+
+  <!-- Klong Muang / Tubkaek -->
+  <rect x="120" y="140" width="420" height="150" rx="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+  <text x="330" y="186" font-size="19" font-weight="bold" fill="#102A2B" text-anchor="middle">克隆芒 Klong Muang．Tubkaek</text>
+  <text x="330" y="222" font-size="16" fill="#5C6B6B" text-anchor="middle">在奧南北邊</text>
+  <text x="330" y="254" font-size="16" fill="#5C6B6B" text-anchor="middle">車程以叫車 App 或飯店接送為準</text>
+
+  <!-- Ao Nang -->
+  <rect x="600" y="400" width="380" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="790" y="452" font-size="24" font-weight="bold" fill="#102A2B" text-anchor="middle">奧南 อ่าวนาง</text>
+  <text x="790" y="486" font-size="16" fill="#5C6B6B" text-anchor="middle">Ao Nang</text>
+  <text x="790" y="522" font-size="17" fill="#0D6B68" text-anchor="middle">據點．船都從這裡出發</text>
+
+  <!-- Railay -->
+  <rect x="600" y="652" width="380" height="170" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="790" y="700" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">萊雷 อ่าวไร่เลย์</text>
+  <text x="790" y="730" font-size="16" fill="#5C6B6B" text-anchor="middle">Railay．沒有車路</text>
+  <text x="790" y="764" font-size="16" fill="#5C6B6B" text-anchor="middle">萊雷西 白沙灘</text>
+  <text x="790" y="796" font-size="16" fill="#5C6B6B" text-anchor="middle">萊雷東 攀岩．碼頭</text>
+
+  <!-- Phra Nang -->
+  <rect x="130" y="560" width="320" height="120" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="290" y="608" font-size="20" font-weight="bold" fill="#102A2B" text-anchor="middle">帕南 Phra Nang</text>
+  <text x="290" y="642" font-size="16" fill="#5C6B6B" text-anchor="middle">也沒有車路</text>
+
+  <!-- legend -->
+  <rect x="1120" y="720" width="420" height="110" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <line x1="1150" y1="762" x2="1220" y2="762" stroke="#0D6B68" stroke-width="5"/>
+  <text x="1236" y="768" font-size="16" fill="#102A2B">實線＝車</text>
+  <line x1="1150" y1="800" x2="1220" y2="800" stroke="#B8442D" stroke-width="5" stroke-dasharray="14 10"/>
+  <text x="1236" y="806" font-size="16" fill="#102A2B">虛線＝船</text>
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

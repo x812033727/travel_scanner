@@ -1,0 +1,428 @@
+{
+  "slug": "ai-pricing-beyond-list-price",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-plans"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "related": [
+    "ai-model-comparison-table-2026",
+    "ai-api-pricing-comparison-2026",
+    "ai-token-cost-estimation",
+    "ai-term-prompt-caching"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "單價之外：快取、長上下文門檻與 tokenizer 怎麼改變帳單",
+      "description": "每百萬 token 的單價只是起點。這篇把三個官網有寫、但不在主價目表上的欄位攤開：快取命中價（多數家原價 10%，DeepSeek 低到 2%、xAI 要 25%）、長上下文加價門檻（xAI 明寫跨過去整筆請求都用高價計，Anthropic 則完全沒有這道門檻），以及各家 tokenizer 切出來的 token 數不一樣。附一套重估帳單的順序。",
+      "hero": {
+        "src": "/guides/ai-pricing-beyond-list-price/hero.jpg",
+        "alt": "一條橫線上有三個大小不同的關卡，線的左端是一個小方塊代表單價，右端是一個較大的方塊代表帳單",
+        "width": 1,
+        "height": 1
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "三件事會讓帳單跟單價對不起來：快取命中價、長上下文加價門檻，以及各家 tokenizer 數出來的 token 數不一樣。",
+            "快取命中多數家是原價的 10%，但 DeepSeek 低到 2%、xAI 是 25%，差了十倍以上——同樣一份固定的系統指示，省下來的比例各家不同。",
+            "跨過長上下文門檻通常不是只有超出的部分變貴。xAI 官網明寫整筆請求都用高價計；Anthropic 則是 100 萬 token 全程同一個單價，完全沒有這道門檻。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "把各家的每百萬 token 單價排成一張表之後，下一個問題是：照這張表估出來的數字，跟月底實際收到的帳單差多少。答案通常是差不少，而且差的方向不一定。這篇講三個會讓兩者對不起來的欄位，它們都寫在官網上，只是不在最顯眼的那張價目表裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這三件事的共同點是：它們不改變模型能力，只改變同一份工作的計價方式。所以它們不影響你選哪個模型好用，卻可能直接改變哪一家比較便宜的結論。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "快取：重複的開頭只付一小筆"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你每次請求都送同一份系統指示、同一批參考文件，那段內容可以被快取起來，之後只付一筆很小的讀取費。這對正式產品幾乎一定適用，因為提示詞的前半段通常是固定的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各家的命中價多數落在原輸入價的 10%，但兩端拉得很開：DeepSeek 的 deepseek-flash 只要原價的 2%，xAI 的 grok-4.6 要 25%。同一份固定前綴，在不同家省下來的比例差了十倍以上。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "廠商",
+            "模型",
+            "快取命中價／百萬",
+            "原輸入價／百萬",
+            "命中價是原價的"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "gpt-6-astra",
+              "1.00 美元",
+              "10.00 美元",
+              "10%"
+            ],
+            [
+              "Anthropic",
+              "Claude Opus 5",
+              "0.50 美元",
+              "5 美元",
+              "10%"
+            ],
+            [
+              "xAI",
+              "grok-4.6",
+              "0.50 美元",
+              "2.00 美元",
+              "25%"
+            ],
+            [
+              "Moonshot",
+              "kimi-k3",
+              "0.30 美元",
+              "3.00 美元",
+              "10%"
+            ],
+            [
+              "Anthropic",
+              "Claude Fable 5.1",
+              "0.25 美元",
+              "10 美元",
+              "2.5%"
+            ],
+            [
+              "Google",
+              "gemini-3.1-pro-preview",
+              "0.20 美元（另收儲存費）",
+              "2.00 美元",
+              "10%"
+            ],
+            [
+              "Anthropic",
+              "Claude Sonnet 5",
+              "0.20 美元",
+              "2 美元",
+              "10%"
+            ],
+            [
+              "OpenAI",
+              "gpt-5.6-terra",
+              "0.20 美元",
+              "2.00 美元",
+              "10%"
+            ],
+            [
+              "xAI",
+              "grok-4.3",
+              "0.20 美元",
+              "1.25 美元",
+              "16%"
+            ],
+            [
+              "Anthropic",
+              "Claude Haiku 4.5",
+              "0.10 美元",
+              "1 美元",
+              "10%"
+            ],
+            [
+              "Google",
+              "gemini-3.8-flash",
+              "0.075 美元（另收儲存費）",
+              "0.75 美元",
+              "10%"
+            ],
+            [
+              "OpenAI",
+              "gpt-5.4-mini",
+              "0.075 美元",
+              "0.75 美元",
+              "10%"
+            ],
+            [
+              "MiniMax",
+              "MiniMax-M3",
+              "0.06 美元",
+              "0.30 美元",
+              "20%"
+            ],
+            [
+              "DeepSeek",
+              "deepseek-v4-pro",
+              "0.044 美元",
+              "1.32 美元",
+              "3.3%"
+            ],
+            [
+              "OpenAI",
+              "gpt-5.6-luna",
+              "0.02 美元",
+              "0.20 美元",
+              "10%"
+            ],
+            [
+              "DeepSeek",
+              "deepseek-flash",
+              "0.006 美元",
+              "0.30 美元",
+              "2%"
+            ],
+            [
+              "OpenAI",
+              "gpt-5-nano",
+              "0.005 美元",
+              "0.05 美元",
+              "10%"
+            ]
+          ],
+          "caption": "各家官網 2026 年 9 月 17 日當天的快取命中價，依命中價由高到低排。DeepSeek 為尖峰時段價，離峰再對折。百分比為本站以同頁的原輸入價相除後四捨五入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有三個細節容易漏看。第一，快取通常要先付一筆寫入費：Anthropic 的 5 分鐘寫入是原價的 1.25 倍、1 小時寫入是 2 倍，官網直接寫明 5 分鐘那種讀一次就回本、1 小時要讀兩次。第二，Google 的快取除了單價還另外按小時收儲存費，gemini-3.1-pro-preview 是每百萬 token 每小時 4.50 美元，放著不用也在計費。第三，Anthropic 的 Claude Fable 5.1 命中價是原價的 2.5% 而不是 10%，是它自己家的例外。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "長上下文門檻：跨過去就整筆變貴"
+        },
+        {
+          "type": "paragraph",
+          "text": "幾家把上下文分成兩段計價，超過某個 token 數就換一套價。關鍵在於跨過去之後怎麼算——多數人以為只有超出的部分變貴，但官網寫的不是這樣。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "廠商",
+            "門檻",
+            "跨過去之後",
+            "怎麼算"
+          ],
+          "rows": [
+            [
+              "Anthropic",
+              "沒有門檻",
+              "100 萬 token 全程標準價",
+              "官網明寫 90 萬 token 的請求與 9 千 token 同一個單價"
+            ],
+            [
+              "Google",
+              "20 萬 token",
+              "輸入 2.00 → 4.00、輸出 12.00 → 18.00 美元",
+              "快取價也同步從 0.20 跳到 0.40 美元"
+            ],
+            [
+              "xAI",
+              "20 萬 token",
+              "輸入 2.00 → 4.00、輸出 6.00 → 12.00 美元",
+              "官網明寫：整筆請求的所有 token 都用高價計"
+            ],
+            [
+              "MiniMax",
+              "51.2 萬 token",
+              "輸入 0.30 → 0.60、輸出 1.20 → 2.40 美元",
+              "快取命中價同步 0.06 → 0.12 美元"
+            ],
+            [
+              "OpenAI",
+              "官網未標門檻",
+              "定價頁分短脈絡與長脈絡兩欄",
+              "有兩種價，但當天頁面沒有寫切換的 token 數"
+            ]
+          ],
+          "caption": "2026 年 9 月 17 日各家官網定價頁。Anthropic 與其他家相反，明文寫出全程同一個單價，沒有第二段價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "xAI 的定價頁把規則寫得最直白：請求的提示詞達到門檻，整筆請求的所有 token 都用高價計。也就是說一個 19.9 萬 token 的請求和一個 20.1 萬 token 的請求，後者不是多付那 2 千 token 的錢，而是整整二十萬 token 都換成兩倍單價。這種計價方式下，把提示詞壓在門檻以下是很具體的省錢動作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Tokenizer：同一份文件不是同一個 token 數"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一件事會動搖前面所有比較的前提：token 不是一個跨廠商的標準單位。同一份文件送進不同家，被切成的 token 數不一樣，所以「每百萬 token 多少錢」相同，不代表跑同一份工作的花費相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 是少數把這件事寫在定價頁上的：Claude 4.7 以後的模型換了新的 tokenizer，同一段文字大約會多產生 30% 的 token，官網並註明實際增幅依內容而定，而 Claude Sonnet 4.6 以前的模型用的是舊的。換句話說，同一家的新舊模型之間，單價相同也不代表帳單相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這件事的實際後果是：單價便宜一成，如果 token 數多三成，總花費反而是貴的。所以拿兩家比價的時候，真正能比的是「同一份文件各自數出來幾個 token、乘上各自的單價」，不是把兩個單價並排看。各家官網都有 token 計數的端點或工具，拿你自己真正會送出去的內容去數一次，比看價目表準得多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩家的 tokenizer 差異，官網當天沒有可以直接引用的對照說明，所以這篇沒有替它們填數字。要比的話只能自己拿同一份文件分別去數。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-pricing-beyond-list-price/diagram-1.svg",
+          "alt": "一條從左到右的流程，把單價乘上 token 數之後，依序經過快取、長上下文門檻與 tokenizer 三個會改變金額的關卡，最後才是帳單",
+          "width": 1,
+          "height": 1,
+          "caption": "單價乘以 token 數只是起點，中間還要經過三道會改變金額的關卡才是帳單。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "估算之前先確認這三欄，不然誤差是倍數不是百分比",
+          "text": "固定前綴很長又沒開快取，實際花費可能是估算的好幾倍；提示詞剛好壓在長上下文門檻上下浮動，同樣的工作帳單會忽高忽低；拿舊模型量出來的 token 數去估新模型，在 Anthropic 這邊會低估約三成。這三項都不是小數點後的差異。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各家的基礎單價、上下文視窗與權重授權排在一起的總表在"
+            },
+            {
+              "type": "article",
+              "text": "各家 AI 模型總表",
+              "kind": "life",
+              "slug": "ai-model-comparison-table-2026"
+            },
+            {
+              "type": "text",
+              "text": "；只想看價目表與免費層條款的話，"
+            },
+            {
+              "type": "article",
+              "text": "API 價格比較",
+              "kind": "life",
+              "slug": "ai-api-pricing-comparison-2026"
+            },
+            {
+              "type": "text",
+              "text": " 那篇寫得更細。快取本身的原理另有"
+            },
+            {
+              "type": "article",
+              "text": "提示詞快取",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "一篇。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼用這三件事重估一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "這三欄不用全部算過，照下面的順序看一遍，通常兩三分鐘就知道自己的估算偏在哪裡。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "先看提示詞裡有多少是每次都一樣的。超過一半就把那部分改用快取命中價重算，這通常是最大的一筆差額。",
+            "確認快取的寫入費與回本次數。Anthropic 官網寫得最清楚：5 分鐘快取讀一次回本，1 小時快取要讀兩次；用 Google 的還要另外把每小時儲存費加進去。",
+            "量一下實際請求的 token 數，跟你那家的長上下文門檻比。壓在門檻以下的價值，在 xAI 那種整筆改價的規則下特別高。",
+            "換模型時重新量 token 數，不要沿用舊模型的數字。Anthropic 的 4.7 以後多約三成，別家官網當天沒有可引用的對照說明。",
+            "最後拿一天的真實流量跑一次，把帳單跟估算對一次，差多少就把差額補進假設再估一輪。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "怎麼實際數自己的 token、有哪些官方計數工具，站上有"
+            },
+            {
+              "type": "article",
+              "text": "token 計算與費用估算",
+              "kind": "life",
+              "slug": "ai-token-cost-estimation"
+            },
+            {
+              "type": "text",
+              "text": "；"
+            },
+            {
+              "type": "article",
+              "text": "token",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "上下文視窗",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "兩個名詞如果還不熟，也各有一篇。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI API 定價頁（各型號的快取輸入價，以及短脈絡與長脈絡兩欄）",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Anthropic Claude 平台定價頁（快取寫入與命中倍率、Fable 5.1 的 0.025 倍例外、100 萬 token 全程標準價、新舊 tokenizer 約差 30% 的註記）",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Anthropic Claude 模型總覽頁（各模型的基礎輸入輸出價與上下文視窗）",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Gemini API 定價頁（內容快取單價、每小時儲存費，以及 20 萬 token 的分段門檻）",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "xAI 開發者文件：定價頁（快取輸入價，以及達到門檻後整筆請求都用高價計的規則）",
+          "url": "https://docs.x.ai/developers/pricing",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "DeepSeek API 文件：模型與定價（快取命中與未命中、尖峰與離峰四欄價）",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "MiniMax API 文件：隨用隨付定價（M3 與 M2.7 的快取讀寫價與 51.2 萬 token 分段）",
+          "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Moonshot Kimi 平台文件：對話模型定價（kimi-k3 與 k2.7-code 的快取命中與未命中價）",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}
