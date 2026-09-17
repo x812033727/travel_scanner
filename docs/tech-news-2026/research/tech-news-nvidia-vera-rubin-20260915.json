@@ -1,0 +1,568 @@
+{
+  "slug": "tech-news-nvidia-vera-rubin-20260915",
+  "event_date": "2026-09-15",
+  "event_date_basis": "NVIDIA 自己的部落格在 og:description 與內文都把 Ian Buck 的演講寫成 Tuesday（2026-09-15 是星期二），署名 'September 15, 2026 by NVIDIA Writers'（同批研究紀錄已記過這行，今天重抓未再核對署名字串本身，故不重複列為 verified_facts，只採用可重複驗證的 meta 欄位）。今天（2026-09-17）重抓 https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/ 的 meta 欄位：<meta property=\"article:published_time\" content=\"2026-09-15T16:55:40+00:00\">，與 2026-09-16 那輪查核讀到的時間完全相同，事件日採這個欄位。注意這是一篇會持續更新的動態文章：同一份 meta 的 <meta property=\"article:modified_time\"> 今天讀到 2026-09-16T18:57:45+00:00，比前一輪（2026-09-16 記錄的 2026-09-16T14:57:15+00:00）又晚了四小時，代表這篇文章在两次查核之間又被編輯過至少一次；本文只用 published_time 當事件日，不用 modified_time。",
+  "title": "NVIDIA AI Infra Summit 談電力效率：Vera Rubin 與 DSX 新增了什麼",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "AI Infra Summit: NVIDIA Vera Rubin and DSX Platform Advancements Showcase Energy Efficiencies of Optimizing Tokens Per Watt for AI Factories",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "publisher": "NVIDIA (NVIDIA Blog)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "From Megawatts to Tokens: How NVIDIA Maximizes AI Factory Production",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "publisher": "NVIDIA (NVIDIA Blog)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer",
+      "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "publisher": "NVIDIA Newsroom",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NVIDIA Groq 3 LPX Now in Full Production With World-Class Speed for Agentic AI",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+      "publisher": "NVIDIA Newsroom",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 用 curl -sL -A \"Mokaair-editorial\" 重抓四條 sources[]，全部 HTTP 200、讀到真正的 body（不是擋阻頁或導覽殼）：(1) blogs.nvidia.com/blog/ai-infra-summit-... 134,522 bytes；(2) blogs.nvidia.com/blog/from-megawatts-to-tokens-... 126,175 bytes；(3) nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer 93,790 bytes；(4) nvidianews.nvidia.com/news/nvidia-groq-3-lpx-... 77,601 bytes。四個位元組數都和前一輪（2026-09-16）查核紀錄的量級一致（(3)(4) 完全相同，(1)(2) 相差不到 400 bytes，屬於動態文章的正常小幅編輯），確認今天讀到的不是快取或殘缺頁。\n\n本篇是撰稿階段，直接沿用同一批獨立查核（docs/news-2026-batch-4/factcheck/tech-news-nvidia-vera-rubin-20260915.json）與修正清單（corrections-tech.md）的結論，但每一條要寫進正文的事實都用今天抓到的 body 自行重新定位、確認字串仍在原地，不是照抄前一輪的 verbatim_quote。今天用 word-boundary 正則另外獨立驗證：(1)+(2) 的 'Taiwan' 與 'TSMC' 皆為 0 次；(1)+(2) 的 'price' 皆為 0 次、'pricing' 各 1 次；(3) 的 'megawatt' 為 0 次，(1) 為 10 次、(2) 為 5 次。修正清單 must_fix 3 指出 (1) 的唯一 'pricing' 是 'pricing signals'（DSX Flex 定義句）、(2) 的唯一 'pricing' 是 'pricing events'（DSX at a glance 側欄），今天重讀兩處原文，兩者字串confirmed 不同，正文因此不挑其中一個當固定英文片語，只寫中文『電價訊號』。\n\n來源選擇：沿用前一輪研究紀錄選定的四條（兩篇 9/15 部落格 + 1/5 與 8/24 兩則新聞稿），沒有換源。修正清單 source_list_fix 指出 F41–F47 共 7 條事實掛在表外網址（developer.nvidia.com 三篇、docs.nvidia.com、nvidia.com 案例研究、另外兩篇 blogs.nvidia.com），本篇一律不使用只存在於那些表外網址的事實，寧可捨棄內容也不擴充到 4 條以上：具體捨棄了 227 kW 機櫃 TDP、'Groq 3 LPU' 這個晶片內部名稱、'第七顆晶片' 的框架敘述、Manassas 啟用日期以外的細節、Dynamic Power Software 的 Developer Preview 狀態、GB200 對 Vera Rubin 用不同模型測的 kW 對比、MLPerf 有限定版本的 1.6x、Nebius 也送出 Vera Rubin 預覽結果、15x token 用量的 OpenRouter 出處、Lambda 案例研究頁的專屬數字。這些捨棄的項目列在 unverified_or_excluded。",
+  "verified_facts": [
+    {
+      "fact": "事件：2026 年 9 月 15 日，NVIDIA 副總裁 Ian Buck（負責超大規模與高效能運算業務）在加州聖塔克拉拉會議中心舉行的 AI Infra Summit 上談 AI 機房效率，NVIDIA 官方部落格同日刊出彙整文章。原文是 'spoke on AI factory efficiency'，沒有『電力』二字；配套那篇寫成 'made AI factory efficiency the centerpiece of his infrastructure keynote'。場地與 'Coachella of infrastructure tech' 這個形容只有 NVIDIA 自己的部落格一個來源，不是已獨立確立的事實。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ian Buck, vice president of hyperscale and high-performance computing at NVIDIA, Tuesday spoke on AI factory efficiency at the AI Infra Summit, the Santa Clara Convention Center event that has morphed into a Coachella of infrastructure tech."
+    },
+    {
+      "fact": "NVIDIA 表示今年活動吸引超過八千人參加，去年是三千五百人；這是 NVIDIA 對第三方研討會規模的描述，本文未向主辦單位另外查證。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Before a packed audience — with more than 8,000 attendees this year, up from 3,500 last year —"
+    },
+    {
+      "fact": "衡量框架的轉折：NVIDIA 表示衡量 AI 基礎設施的方式正快速從尖峰效能轉向經驗證的代理式每百萬瓦 token 數，AI 機房必須從晶片到電網整體協同設計。這是把 9 月 15 日和 1 月 CES 發表區分開來的句子。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The metric for AI infrastructure is fast shifting from peak performance to validated agentic tokens per megawatt. AI factories must now be codesigned from silicon to grid."
+    },
+    {
+      "fact": "NVIDIA 表示 Amazon 旗下 Annapurna Labs 正與 NVIDIA 合作開發 NVHBM 高頻寬記憶體技術；原文沒有把 NVHBM 稱為『NVIDIA 的』技術，只說是雙方合作的技術名稱，沒有給規格、時程或量產資訊。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Amazon’s Annapurna Labs is working with NVIDIA on the NVHBM custom high-bandwidth memory technology."
+    },
+    {
+      "fact": "NVIDIA 表示 d-Matrix 正整合 NVLink Fusion，以便把 NVIDIA Vera CPU 與 d-Matrix Raptor XPU 結合，做大規模的超低延遲推論；只有一句話，沒有規格或時程。原文沒有說是「把 NVLink Fusion 整合進 Raptor XPU」，也不要漏掉 ultra 與 at scale 兩個限定。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "d-Matrix is integrating with NVLink Fusion to combine NVIDIA Vera CPUs with d-Matrix Raptor XPUs to deliver ultra low-latency inference at scale."
+    },
+    {
+      "fact": "NVIDIA 表示 Pinterest 採用 NVIDIA Blackwell 平台與 Dynamo 推論軟體，把對話式 AI（conversational AI）帶進視覺探索（visual discovery）；只有一句話，沒有規格或時程。原文不是『生成式 AI』，也不是『視覺搜尋』。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pinterest is using the NVIDIA Blackwell platform and NVIDIA Dynamo inference software to bring conversational AI to visual discovery."
+    },
+    {
+      "fact": "DSX MaxLPS 在廠級（factory level）動態調度機櫃之間的電力；廠級的效果寫成兩個項目符號，各自是頁面上可原樣搜尋到的連續字串：'Up to 40% more GPUs within the same site-power envelope' 與 'Up to 35% higher token throughput — no new power lines required'。40% 帶著『在同一場地電力額度內』這個條件，不可以拿掉。這兩個數字明確掛在『At the factory level』這句之後，不是機櫃層級。第二輪補充：**兩條項目符號都以 'Up to' 起頭**，35% 的『最高』和 40% 的一樣不可以省；另外這一節的開場句是 'NVIDIA does this with a full-stack AI factory built on the Vera Rubin NVL72 — systems, networking, software and power management working as one.'，所以這兩個廠級數字本來就寫在 Vera Rubin NVL72 的脈絡裡，與 Lambda 那一節那句 Vera Rubin NVL72 的 40% 指的是同一個宣稱，只是用詞不同（'more GPUs' 對 'more GPU capacity'、'site-power envelope' 對 'megawatt budget'），不是兩筆獨立數字。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At the factory level, NVIDIA DSX MaxLPS dynamically shifts power across racks as demand rises and falls."
+    },
+    {
+      "fact": "機櫃層級另外由 Intelligent Power Smoothing 軟體與擴充儲能吸收短暫尖峰負載，這句話緊接在廠級敘述之後、是不同的層級，官方沒有在這句給任何百分比數字。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Inside each rack, Intelligent Power Smoothing software and expanded energy buffering absorb short spikes, letting systems run closer to sustained demand."
+    },
+    {
+      "fact": "NVIDIA 整體說法：DSX MaxLPS 透過全廠範圍電力最佳化，最高可讓每百萬瓦多產出 1.4 倍的 token。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "NVIDIA DSX MaxLPS can deliver up to 1.4x more tokens per megawatt through factory-wide power optimization"
+    },
+    {
+      "fact": "DSX Flex 的定義：接收電網送來的降載請求、需量反應事件與電價訊號，在預先設定好的工作優先順序內自動反應，最重要的工作持續運作、其餘暫停後再恢復。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "DSX Flex can receive grid signals — load-shedding requests, demand-response events and pricing signals — and automatically act within a predefined workload hierarchy. The most critical jobs keep going, while everything else pauses temporarily and then resumes."
+    },
+    {
+      "fact": "Groq 3 LPX 接上 Vera Rubin 後的頭條數字：對兩兆參數以上、長上下文模型，合併平台每百萬瓦 token 吞吐量最高是 GB200 NVL72 的 35 倍。比較基準（GB200 NVL72、兩兆參數以上、長上下文）是這句話本身自帶的條件。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The combined platform delivers up to 35X higher token throughput per megawatt than GB200 NVL72 for 2-trillion-plus-parameter models at long context."
+    },
+    {
+      "fact": "較具體的一個數字：10 萬 token 上下文的 Qwen 3.8 27B 負載下，Groq 3 LPX 測到每位使用者每秒 2,529 個輸出 token。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On a 100K-context Qwen 3.8 27B workload, Groq 3 LPX hit 2,529 output tokens per second per user."
+    },
+    {
+      "fact": "NVIDIA 轉述第三方機構 SemiAnalysis 用 AgentX 方法量到的結果：DeepSeek V4 Pro 模型上，Vera Rubin NVL72 相對 GB300 NVL72 每百萬瓦吞吐量最高 30 倍。SemiAnalysis 是第三方，本文沒有另外抓它的儀表板核對。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On the DeepSeek V4 Pro model, Vera Rubin NVL72 delivers up to 30x higher throughput per megawatt than NVIDIA GB300 NVL72."
+    },
+    {
+      "fact": "供貨狀態，官方完整的一句話：Vera Rubin 已進入全面生產，並持續在生態系中擴大部署，效能會隨軟體最佳化持續改善；沒有出貨數量、客戶名單或雲端地區清單。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Vera Rubin is in full production and scaling across the ecosystem, and performance will continue to improve with ongoing software optimization."
+    },
+    {
+      "fact": "同一篇動態文章在 2026-09-16（活動隔天）新增一段標題為『Wednesday, Sept. 16』的 MLPerf Inference v6.1 內容：NVIDIA 稱 Vera Rubin NVL72 在其首次 MLPerf Inference 預覽提交中，吞吐量最高是 GB300 NVL72 的 3.7 倍。原文是 'up to 3.7x higher throughput'，是吞吐量不是速度；中文寫法要和同篇 35 倍（'up to 35X higher token throughput per megawatt than GB200 NVL72'）、30 倍（'up to 30x higher throughput per megawatt than NVIDIA GB300 NVL72'）一致，三者都用『最高是…的 N 倍』，不可以其中一個寫成『比…高 N 倍』（那在中文是 N+1 倍）。這段內容有自己的日期標題，不屬於 9 月 15 日。",
+      "url": "https://blogs.nvidia.com/blog/ai-infra-summit-vera-rubin-dsx-energy-efficiencies-tokens-per-watt-ai-factories/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In its first MLPerf Inference preview submission, the NVIDIA Vera Rubin NVL72 system delivered up to 3.7x higher throughput than NVIDIA GB300 NVL72"
+    },
+    {
+      "fact": "黃仁勳的引言，解釋電力為何是瓶頸：一座十億瓦的機房永遠不會自己變成兩座十億瓦的機房。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "“A one-gigawatt factory will never become a two-gigawatt factory,” NVIDIA founder and CEO Jensen Huang has said."
+    },
+    {
+      "fact": "DSX 軟體本身的發表時間點：官方寫『DSX 是 5 月在 GTC Taipei 發表的』，句子裡沒有出現年份，'May 2026' 這個字串在本頁查無。GTC Taipei 是 NVIDIA 在台灣舉辦的活動。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Introduced at GTC Taipei in May, NVIDIA DSX is that answer for the AI factory — and the early deployments are already proving it out."
+    },
+    {
+      "fact": "Lambda 的實測數字：19 個節點跑在原本 16 個滿載節點的電力預算內，叢集整體 token 吞吐量多 24%（約 4 百萬提高到約 5 百萬 tokens/sec），每瓦效能多 23%。條件在同一頁的『數字一覽』表裡：'19 nodes at 85% power vs. 16 nodes at full power, same facility budget' 與 '19-node cluster at 85% power policy vs. 16-node full-power baseline'——85% 電力政策是這兩個百分比的前提，正文那句沒有寫，抄正文會漏掉。同頁另寫 Lambda 跑的是 'a five-rack, 19-node cluster'。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "by running 19 nodes within the same power budget as 16 nodes at full power, Lambda achieved 24% more cluster-wide token throughput — from roughly 4 million tokens per second to 5 million. Performance per watt improved by 23%."
+    },
+    {
+      "fact": "這個 Lambda 測試是在 Blackwell 世代的 HGX B200 伺服器上做的，不是 Vera Rubin。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Lambda’s results, released at the AI Infra Summit, are the first validation of DSX MaxLPS on NVIDIA HGX B200 GPU Servers."
+    },
+    {
+      "fact": "Lambda 雲端服務總裁 Dave Ward 的原話：透過這次概念驗證，相信已經突破了固定電力預算的限制。這是概念驗證的說法，不是正式全面導入。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“With our proof of concept, we believe we’ve moved beyond the limitation of fixed power budgets,” said Dave Ward, president of cloud services at Lambda."
+    },
+    {
+      "fact": "Vera Rubin NVL72 的『最高多 40% GPU 容量』數字，配套那篇（from-megawatts-to-tokens）標成依 NVIDIA 的投影，並加了『在合適的部署環境下』這個條件，不是量測結果。注意兩篇措辭不同：高峰會那篇寫的是 'For next-generation NVIDIA Vera Rubin NVL72 AI factories, DSX MaxLPS can enable up to 40% more GPU capacity within the same megawatt budget in the right deployment environments.'，**沒有** 'Based on NVIDIA's projections' 這個前綴（該字串在高峰會那篇 0 次命中）。要寫成『官方標成投影』就必須指明是配套那篇。配套那篇的『數字一覽』表另外把這一列的條件寫成 'Vera Rubin NVL72, MaxLPS combined with data center power planning, same power budget'。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Based on NVIDIA’s projections, DSX MaxLPS can enable up to 40% more GPU capacity for next-generation Vera Rubin NVL72 AI factories within the same megawatt power budget in suitable deployment environments."
+    },
+    {
+      "fact": "矽谷電力公司示範，正文說法：NVIDIA 自家 Eos 機房參與矽谷電力公司（Silicon Valley Power）彈性負載互聯方案，搭配 Emerald AI 的 Conductor 平台，某個 8 月夜晚電力自動從 4 百萬瓦降到 3 百萬瓦，同時高優先順序工作維持運作。獨立查核第二輪更正：『4 百萬瓦降到 3 百萬瓦』在這一頁出現兩次，但**只有一次是正文**——'That August evening, when SVP called, Conductor executed against a predefined workload hierarchy: lowest-priority jobs yielded, high-priority inference kept running, and power fell from four megawatts to three.'；另一次在一張照片的 <figcaption> 裡（wp-caption-text，caption-attachment-98197），而且是現在式的通則敘述、沒有指名 8 月那一晚。不可以把兩處都寫成『正文』，也不可以把照片說明那一處綁到 8 月夜晚。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "power dropping from four megawatts to three, automatically, while every high-priority job keeps running"
+    },
+    {
+      "fact": "同一起矽谷電力公司示範，另一種說法：文章附的『數字一覽』表格把同一場示範寫成一列『40%』的『一分鐘內降低的電力需求』，該列的 Context 欄是 'SVP automated response, Flexible Load Interconnect Program'、Source 欄是 'Emerald AI / Future DSX Flex'。NVIDIA 沒有在文章裡自己說明這兩種說法（4→3 百萬瓦 對 40%）的關係。注意這是一列表格：40%、說明與來源分屬三個儲存格，只有儲存格內部才是可原樣搜尋到的連續字串，逐字引文因此只取 Context 那一格的前半段。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "power demand reduction in under a minute"
+    },
+    {
+      "fact": "NVIDIA 表示矽谷電力公司之後已送出超過兩百次需求訊號（demand signals），『每一次都成功』。原文是 demand signals，不是 load-shedding；同日高峰會那篇只寫 'hundreds of demand signals'，沒有給 200 這個數字。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Silicon Valley Power has since sent more than 200 demand signals to that AI factory. It worked every single time."
+    },
+    {
+      "fact": "NVIDIA 明確表示矽谷電力公司這場示範還不是正式的 DSX Flex 安裝，而是更早、更重要的：證明這個概念能在商用規模上運作。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Santa Clara story isn’t a DSX Flex installation — it’s something earlier and more important: proof that the concept works at commercial scale."
+    },
+    {
+      "fact": "第一個正式的 DSX Flex 商用場域：維吉尼亞州 Manassas 一座 96 百萬瓦的 Vera Rubin 機房，NVIDIA 的 AI Factory Research Center，建立在先前兩大洲五次示範的基礎上；官方沒有公布啟用日期。本文最終沒有把這句寫進正文（篇幅考量），列在這裡供查核與後續補寫參考。",
+      "url": "https://blogs.nvidia.com/blog/from-megawatts-to-tokens-how-nvidia-maximizes-ai-factory-production/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The first dedicated DSX Flex commercial deployment will be the Manassas, Virginia, facility: a 96-megawatt Vera Rubin AI factory at NVIDIA’s AI Factory Research Center, building on five prior demonstrations across two continents."
+    },
+    {
+      "fact": "1 月 5 日 CES 發表：NVIDIA 稱 Rubin 平台為六顆新晶片（含 Vera CPU、Rubin GPU、NVLink 6、ConnectX-9、BlueField-4、Spectrum-6）。",
+      "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NVIDIA Kicks Off the Next Generation of AI With Rubin — Six New Chips, One Incredible AI Supercomputer"
+    },
+    {
+      "fact": "1 月頭條效能數字：官方稱比 Blackwell 平台最高可省 10 倍推論每 token 成本、訓練混合專家模型最高可少用 4 倍 GPU。",
+      "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "is_vendor_claim": true,
+      "verbatim_quote": "up to 10x reduction in inference token cost and 4x reduction in number of GPUs to train MoE models, compared with the NVIDIA Blackwell platform"
+    },
+    {
+      "fact": "1 月新聞稿的供貨語言，用未來式：NVIDIA Rubin 已進入全面生產，Rubin 相關產品預計 2026 年下半年由合作夥伴提供。這句話今天（2026-09-17）重讀仍是這個寫法，9 月 15 日的材料沒有更新這個時程。",
+      "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "is_vendor_claim": true,
+      "verbatim_quote": "NVIDIA Rubin is in full production, and Rubin-based products will be available from partners the second half of 2026."
+    },
+    {
+      "fact": "編輯自行清點的結果，不是來源印出來的數字：1 月新聞稿全文以 word-boundary 比對，'megawatt' 與 'megawatts' 皆 0 次，整篇沒有把電力當成衡量單位。獨立查核 2026-09-18 複算時發現單複數必須分開數——高峰會那篇 'megawatt' 10 次、'megawatts' 0 次；配套那篇 'megawatt' 5 次、'megawatts' 2 次（兩次都是 'from four megawatts to three'），另加標題與頁首各一次大寫的 'Megawatts'（'From Megawatts to Tokens'）。第二輪更正：第一輪寫的『配套那篇 megawatts 另外 5 次』是錯的，實際是 2 次。因為這種清點本來就容易數錯、又不是來源印出來的數字，文章一律不寫任何出現次數，只寫 1 月那篇沒有用百萬瓦當衡量單位（該篇 'megawatt'／'megawatts' 皆 0 次，兩輪複查一致）。",
+      "url": "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer",
+      "is_vendor_claim": false,
+      "verbatim_quote": "（無逐字引文：這是編輯的清點結果，來源沒有印出次數）"
+    },
+    {
+      "fact": "8 月 24 日 Hot Chips 大會，NVIDIA 宣布 Groq 3 LPX 全面量產，稱 Vera Rubin 平台橫跨七顆晶片與五款專用機櫃；新聞稿沒有列出七顆是哪七顆，也沒有說 Groq 3 LPX 是第七顆。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Through extreme codesign across seven chips and five purpose-built racks, NVIDIA Vera Rubin is the most extensive AI factory platform."
+    },
+    {
+      "fact": "商標聲明：Groq 與 LPU 名稱經 Groq, Inc. 授權使用。本文查核到的官方文件裡，沒有任何一處說 NVIDIA 併購或收購了 Groq；同一份新聞稿反而把『Groq』列為未來可能採用這個平台的獨立推論雲端業者之一。",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Groq and LPU are used under license from Groq, Inc."
+    }
+  ],
+  "not_said": [
+    "以 blogs.nvidia.com 兩篇 9 月 15 日部落格查核到 2026-09-18 未見 'price' 一字（word-boundary，四條 sources 皆 0 次）；這兩篇查核到當日沒有寫出 Vera Rubin、Groq 3 LPX、DSX MaxLPS 或 DSX Flex 任何一項的價格、授權費或訂閱費。注意 'pricing' 在兩篇各出現 1 次，而且講的都是電網的電價訊號（高峰會那篇是 'pricing signals'、配套那篇側欄是 'pricing events'），與產品售價無關；另外 1 月與 8 月兩則新聞稿的頁尾各有 2 次 'pricing'，在 'Features, pricing, availability and specifications are subject to change without notice.' 這句樣板聲明裡。用 'price' 的 0 次當成『沒有價格資訊』的證據要連這幾處一起說明，否則就是子字串式的負面證據。",
+    "以同兩篇部落格查核到 2026-09-17 未見 'Taiwan' 或 'TSMC'；沒有台灣部署、台灣夥伴或供應鏈的敘述。唯一沾得上台灣邊的，是 DSX 這套軟體本身是 5 月在 GTC Taipei（NVIDIA 在台灣舉辦的活動）發表的。",
+    "以 GTC Taipei 那句查核到 2026-09-17 未見年份；'May 2026' 這個字串在該頁查無，只查得到 'May'，因此本文不寫 DSX 是哪一年在 GTC Taipei 發表的。",
+    "官方沒有給 Vera Rubin 的出貨數量、客戶名單或雲端地區清單；完整說法只有『已進入全面生產，並持續在生態系中擴大部署』一句。",
+    "官方沒有在文章裡自己說明矽谷電力公司示範的『4 百萬瓦降到 3 百萬瓦』與『數字一覽表的 40%』這兩種說法之間的關係，本文因此不替官方選一個當唯一答案。",
+    "官方沒有把 9 月 16 日新增的 MLPerf 段落標成『9 月 15 日發生的事』；那一段有自己的日期標題『Wednesday, Sept. 16, 8:00 a.m. PT』，且官方自稱是『首次的 MLPerf Inference 預覽提交』。",
+    "以兩篇 9 月 15 日部落格查核到 2026-09-18，未見 Lambda 已把 DSX MaxLPS 用在正式營運環境的說法；Lambda 雲端服務總裁 Dave Ward 自己的說法是『概念驗證』。但這一條不可以寫成『官方說不是部署環境』——配套那篇明寫 'Results from cloud provider Lambda’s first validation in a deployment environment'，官方的說法是『在部署環境中的首次驗證』，同時當事人稱之為概念驗證，兩件事要並列。",
+    "以兩篇 9 月 15 日部落格查核到 2026-09-18，未見任何 Vera Rubin 產品的出貨或上架日期；唯一與日期有關的是配套那篇『數字一覽』表寫 800V DC 架構 'available with Vera Rubin NVL72 2027'，那是電力架構的時程，不是 Rubin 產品本身的供貨時程，兩者不可混用。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Groq 3 LPX 內部晶片的正式名稱是『NVIDIA Groq 3 LPU』。",
+      "seen_where": "blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/（不在本篇四條 sources[] 內）。",
+      "why_excluded": "本篇選定的 Aug 24 新聞稿（sources[3]）裡 'Groq 3 LPU' 這個字串完全不存在，只出現一次 'LPU'（在商標聲明）。正確的一手依據在另一篇部落格，但本篇 sources[] 上限四條，選擇不擴充來源，因此整個『內部晶片叫 Groq 3 LPU』的說法本文不寫，只寫『NVIDIA Groq 3 LPX』這個產品名稱。"
+    },
+    {
+      "claim": "Groq 3 LPX／LPU 是 Vera Rubin 平台的『第七顆晶片』，是 8 月 24 日新增的那一顆。",
+      "seen_where": "由『1 月六顆＋8 月七顆』推算出來的框架，正確一手依據同樣在 vera-rubin-nvl72-efficiency-ai-agents 這篇（不在四條 sources[] 內）。",
+      "why_excluded": "Aug 24 新聞稿只說平台『橫跨七顆晶片與五款專用機櫃』，沒有列舉是哪七顆、沒有說 Groq 3 LPX 是『第七顆』。這是查核回饋明確點名的推論陷阱（'六顆＋七顆＝新增的是 LPU' 是算術，不是來源的話），本文不採這個框架，只照 Aug 24 新聞稿原句轉述。"
+    },
+    {
+      "claim": "Vera Rubin MaxP 機櫃的 Thermal Design Power 是 227 kW。",
+      "seen_where": "docs.nvidia.com/dsx/maxlps/overview.md（不在四條 sources[] 內；overview 的 HTML 版本機櫃頁籤是前端渲染，curl 讀不到這個數字）。",
+      "why_excluded": "數字是真的、也是一手，但正確網址不在本篇四條 sources[] 內，本篇選擇不擴充來源，因此不寫任何一個具體的機櫃瓦數。"
+    },
+    {
+      "claim": "DSX MaxLPS 的 Dynamic Power Software（DPS）與 DSX Exchange 目前狀態是『Developer Preview』。",
+      "seen_where": "developer.nvidia.com/blog/maximizing-ai-factory-performance-per-watt-with-nvidia-dsx-maxlps/（不在四條 sources[] 內）。",
+      "why_excluded": "同樣的正確一手依據不在本篇來源清單，本文只用兩篇 9/15 部落格裡『已進入全面生產，並持續在生態系中擴大部署』這句概括供貨狀態，不細分到個別軟體元件的 Developer Preview 狀態。"
+    },
+    {
+      "claim": "GB200 NVL72 機櫃電力從 125 kW 降到 90 kW、Vera Rubin NVL72 從 136 kW 降到 101 kW，分別多放 39% 與 35% 機櫃。",
+      "seen_where": "developer.nvidia.com 的 DSX MaxLPS 工程部落格（不在四條 sources[] 內）。",
+      "why_excluded": "這組數字的正確來源不在本篇四條 sources[] 內；而且該來源自己註明兩個數字是在不同模型（Vera Rubin 用 DeepSeek-R1、GB200 用 Kimi-K2.5）上測的，不是同條件對比，本文選擇整組不寫，避免只截一半。"
+    },
+    {
+      "claim": "MLPerf Inference v6.1 比 v6.0 最高快 1.6 倍。",
+      "seen_where": "summit 那篇部落格本身有這句無條件的說法，但查核回饋指出有條件限定的版本（GB300 NVL72 在 Qwen3-VL 上）在另一篇 blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/（2026-09-16 發布，不在四條 sources[] 內）。",
+      "why_excluded": "本篇沒有把有限定條件的正確版本納入四條 sources[]，為避免重複『無條件引用 1.6x』這個已經被查核回饋指出的錯誤，本文完全不寫 1.6x 這個數字，只寫 3.7x（summit 部落格自己完整給了比較基準的那一個）。"
+    },
+    {
+      "claim": "Nebius 也送出了 Vera Rubin NVL72 的 MLPerf 預覽結果；SemiAnalysis AgentX 的 30 倍是『in preview testing』階段的結果。",
+      "seen_where": "blogs.nvidia.com/blog/vera-rubin-nvl72-mlperf-inference/（2026-09-16，不在四條 sources[] 內）。",
+      "why_excluded": "同上，這篇不在本篇來源清單內。本文提到 30 倍時已經明寫是『NVIDIA 轉述別家機構的測試，本站未取得原始數據』，不需要這個額外的來源就能做到不把它寫成確定事實。"
+    },
+    {
+      "claim": "『代理式工作負載消耗的 token 量約是一般對話的 15 倍』這個數字，出處是 OpenRouter 的資料。",
+      "seen_where": "summit 部落格本身有這句話但沒標出處；出處在 blogs.nvidia.com/blog/vera-rubin-nvl72-efficiency-ai-agents/ 開頭（不在四條 sources[] 內）。",
+      "why_excluded": "沒有出處的『15 倍』本文選擇整句不寫，而不是寫一個查不到出處的數字；正確出處所在的頁面不在四條 sources[] 內。"
+    },
+    {
+      "claim": "Lambda 案例研究頁的詳細數字：GPT-OSS-120B 每節點 40 QPS、80% 政策下 10+10 節點時混合推論 +20%／混合訓練 +17%。",
+      "seen_where": "www.nvidia.com/en-us/case-studies/lambda/（不在四條 sources[] 內）。",
+      "why_excluded": "這是 NVIDIA 發布、關於 Lambda 測試的另一份材料，正確網址不在本篇四條 sources[] 內；本文只用兩篇 9/15 部落格裡已有、且已標明是 Blackwell HGX B200 上測的 24%／23%／19 節點／16 節點這組數字。"
+    },
+    {
+      "claim": "NVIDIA 是否為 AI Infra Summit 的主辦單位、超過八千人的與會人數是否經第三方確認。",
+      "seen_where": "summit 部落格自述。",
+      "why_excluded": "這是 NVIDIA 對一場第三方研討會規模的描述，本文沒有另外向 AI Infra Summit 官方或主辦單位查證，正文與 verified_facts 都標成 is_vendor_claim: true。"
+    },
+    {
+      "claim": "www.nvidia.com/en-us/data-center/lpx/ 頁面上的效能與營收宣稱（35x、10x more revenue per watt 等）。",
+      "seen_where": "該頁本身，2026-09-17 未重新查核（依 tech.md 排除）。",
+      "why_excluded": "tech.md 明文規定產品行銷頁不能當能力宣稱的來源，該頁本身也自行標註 'Projected performance subject to change'，本文完全不使用。"
+    }
+  ],
+  "editorial_brief": "科技垂直（tech-news-），讀者是會用雲端 AI 服務、但不管機房的一般台灣讀者。角度不是『NVIDIA 又發表了什麼』，而是『從 1 月到 9 月，這家公司拿來衡量自己產品的尺規換了』：1 月 5 日 CES 講六顆晶片、每個 token 的成本、訓練要幾張 GPU；9 月 15 日 AI Infra Summit 上 Ian Buck 講的是每一百萬瓦能產出多少 token、以及機房怎麼跟電網對話。9 月 15 日這天沒有任何新晶片，新的是三件事：DSX 電力管理軟體（MaxLPS 與 Flex）拿到第一份夥伴實測數字（Lambda，但在 Blackwell 硬體上，不是 Vera Rubin）；Emerald AI 與矽谷電力公司做出第一個商用規模的電網彈性負載示範（同一事件官方自己給了兩種不同的數字說法）；以及新的生態系合作（Annapurna Labs、d-Matrix、Pinterest，官方都只給一句話）。\n\n五節安排：(1) 9 月 15 日發生了什麼、衡量框架怎麼變；(2) 跟 1 月比換了什麼（六顆晶片→七顆晶片→零顆新晶片，指標從每 token 成本換成每百萬瓦 token，表格放在這節結尾）；(3) 電力為什麼是瓶頸、DSX MaxLPS 與 DSX Flex 分別在做什麼（圖解放在這節結尾）；(4) 怎麼讀 NVIDIA 的數字——哪些是 Lambda 在 Blackwell 上量到的，哪些是 NVIDIA 自己標成投影的，哪些是 NVIDIA 轉述第三方機構的；(5) 對用雲端服務的人代表什麼、以及官方完全沒說什麼（價格、出貨數量、台灣）。\n\nsources[] 四條全部是 nvidia.com 財產（兩篇 9/15 部落格 + 1/5、8/24 兩則新聞稿），刻意不擴充到查核回饋點名的表外網址，寧可少寫幾個數字（227 kW 機櫃瓦數、Groq 3 LPU 內部晶片名、第七顆晶片框架、Manassas 啟用細節、有限定條件的 MLPerf 1.6x、15x 的 OpenRouter 出處）也不超過四條上限。刻意不談：買不買、值不值得、股價與市值、NVIDIA 與競爭對手比較、Rubin 之後的產品路線圖，以及『你的 ChatGPT 會不會變便宜』——這點站上既有的 ai-news-nvidia-rubin-20260105 那篇已經寫透，本篇只用一句話帶過、不重複那篇的推論成本／終端定價落差論證與電商試算情境。也不寫攻擊性或投資性結論，科技篇不加免責 callout。",
+  "must_not_write": [
+    "不可寫 NVIDIA 併購或收購了 Groq。官方唯一的說法是『Groq and LPU are used under license from Groq, Inc.』，同一份新聞稿還把 Groq 公司列為未來的可能採用者。",
+    "不可把 9 月 15 日寫成 Vera Rubin 或 Groq 3 LPX 的發表日或推出日。Vera Rubin 平台是 2026-01-05 發表，Groq 3 LPX 是 2026-08-24 宣布量產；9 月 15 日沒有新晶片。",
+    "不可寫 DSX 是這場峰會推出的。官方自己說 DSX 是 5 月在 GTC Taipei 推出的（沒有寫年份）。",
+    "不可把 35x、30x、40%、35%、24%、23%、1.4x、3.7x、2,529 tokens/sec 任何一個寫成本站或事實上已驗證的結果，一律『NVIDIA 表示』『NVIDIA 轉述』，並保留比較基準（對 GB200 NVL72、對 GB300 NVL72、兩兆參數以上、長上下文、同一電力預算）。",
+    "不可把 Lambda 的 24%／23% 說成 Vera Rubin 的成績；那是在 NVIDIA HGX B200（Blackwell）上測的，Lambda 自己稱為概念驗證。Vera Rubin 的 40% 是投影數字，帶著『在合適的部署環境下』這個條件。",
+    "不可寫 Lambda 已經在正式營運環境全面導入 DSX MaxLPS。",
+    "不可把 MLPerf Inference v6.1 的數字掛在 2026-09-15；那一段是同一篇動態文章在 2026-09-16 追加的，官方自稱是『首次的 MLPerf Inference 預覽提交』。",
+    "不可寫任何價格、資費、台幣換算或『現在採用划算』。官方完全沒有給價格，科技垂直也禁止購買建議。",
+    "不可寫『該不該升級』『哪一家比較強』這類結論，也不可做競品比較式的推薦。",
+    "不可寫本站做過實測或看過機房；所有數字都是官方或官方轉述的第三方測試（SemiAnalysis），本站沒有驗證來源。",
+    "不可推測這些效率改善會讓 ChatGPT、Gemini 或任何服務降價、變快、放寬額度；官方一個字都沒說。",
+    "不可自行補上台灣、台積電、聯發科或任何在來源裡不存在的在地角度；唯一有一手依據的台灣關聯，是 DSX 在 GTC Taipei 發表這一句。",
+    "不可把 Annapurna Labs、d-Matrix、Pinterest 三項寫得比官方一句話更多；官方沒給規格、日期或規模。",
+    "不可寫 NVIDIA 已經自己說明矽谷電力公司示範的『4→3 百萬瓦』與『40%』這兩種說法的關係；官方沒有解釋，本文也不替官方解釋。",
+    "不可用簡體字、列表、Markdown 或 emoji；產品名一律用官方英文原名（Vera Rubin NVL72、Groq 3 LPX、DSX MaxLPS、DSX Flex、NVLink 6、Dynamo）。",
+    "不可加投資免責 callout；科技篇不帶 finance 主題。",
+    "圖解不可畫 NVIDIA 商標、字標或任何介面截圖。"
+  ],
+  "live_data_warnings": [
+    "summit 那篇部落格（sources[0]）是活文件：今天（2026-09-17）重抓，article:modified_time 讀到 2026-09-16T18:57:45+00:00，比前一輪查核記錄的 2026-09-16T14:57:15+00:00 又晚了四小時，代表兩次查核之間文章又被編輯過。本文只用 article:published_time（2026-09-15T16:55:40+00:00）當事件日，不用 modified_time，且在正文與 callout 明寫這是一篇會持續追加的動態文章。",
+    "同一篇文章裡標題為『Wednesday, Sept. 16, 8:00 a.m. PT』的 MLPerf 段落是查核期間才長出來的新內容，日期屬於 9/16，本文只把它當『後續追加』提一次，不算進 9 月 15 日的新聞。",
+    "NVIDIA 官方新聞室 RSS（releases.xml）今天沒有重抓計數，本文提及它只是指引讀者查最新動態的管道，不引用其筆數或日期當事實。",
+    "矽谷電力公司示範的『4 百萬瓦降到 3 百萬瓦』與『數字一覽表 40%』兩種說法本身就是同一篇活文件內部的矛盾，不是查核期間才出現的變化，但性質類似：讀者之後重讀同一頁，兩個數字很可能還是並存，不會有官方勘誤。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（40%／35% 是廠級不是機櫃級）：已套用。正文與 verified_facts 明確把這兩個數字掛在『在廠級』之後，機櫃層級的 Intelligent Power Smoothing 另外寫、不帶百分比。",
+    "must_fix 2（LinkedIn 分享字串是研究者編造、Advances／Advancements 兩個元素找反了）：已套用，用更保守的方式處理——本文完全不提『LinkedIn 分享字串』這件事，sources[] 的 title 直接採 h1／og:title／JSON-LD headline 用的『Advancements』，並在 sourcing_notes 記下今天獨立驗證的出現次數（7 對 2）。",
+    "must_fix 3（'pricing events' 對 'pricing signals' 兩篇不同）：已套用。sourcing_notes 記下兩篇個別的字串，正文 DSX Flex 定義只寫中文『電價訊號』，不挑一個固定英文片語硬套兩篇。",
+    "must_fix 4（『唯一的日期承諾』這個 anywhere 範圍過大）：已套用，用不寫這句話的方式處理——本文從未主張『這是唯一的日期承諾』，也沒有引用 2027／800V DC 那組數字（不在四條 sources[] 內），因此不會重複這個錯誤。",
+    "must_fix 5（Taiwan／TSMC 0 次不該擋掉 GTC Taipei 這個事實）：已套用。正文、FAQ 都寫『DSX 是 5 月在 GTC Taipei（NVIDIA 在台灣的活動）發表的』，同時保留『沒有台灣部署／夥伴／供應鏈說明』這個真實的空白。",
+    "must_fix 6（Groq 3 LPU 這個字串在 Aug 24 新聞稿裡不存在）：已套用，用不寫的方式處理——正確來源（efficiency-ai-agents 部落格）不在本篇四條 sources[] 內，本文完全不提『Groq 3 LPU』這個內部晶片名稱，只用 Aug 24 新聞稿確實有的『Groq 3 LPX』產品名。",
+    "must_fix 7（『第七顆晶片』是研究者的算術）：已套用，用不寫的方式處理——本文只轉述 Aug 24 新聞稿『七顆晶片、五款機櫃』這句原話，不主張 Groq 3 LPX 是哪一顆。",
+    "must_fix 8（227 kW 掛錯網址，正確在 .md 版本）：已套用，用不寫的方式處理——227 kW 這個數字完全沒有出現在本文，因為正確網址不在四條 sources[] 內。",
+    "must_fix 9（GTC Taipei 那句沒有年份）：已套用。正文與 FAQ 都明寫『沒有寫年份』，不主張是 2026 年 5 月。",
+    "must_fix 10（HGX Rubin NVL8 用現在式『will also offer』被誤引為已供貨）：已套用，用不寫的方式處理——本文完全不提 HGX Rubin NVL8 這項產品，篇幅留給更核心的電力管理軟體內容。",
+    "must_fix 11（NVHBM 的『NVIDIA 的』是研究者加的，原文沒有歸屬語）：已套用。正文寫『Amazon 旗下 Annapurna Labs 表示與 NVIDIA 合作開發 NVHBM 高頻寬記憶體』，不寫成『NVIDIA 的技術』。",
+    "must_add（矽谷電力公司事件的內部矛盾：4→3 MW 對 40%）：已套用。正文與 FAQ 都把兩個數字並列，明寫官方沒有自己說明兩者關係，不擇一當答案。",
+    "must_add（F44 GB200 對 Vera Rubin 用不同模型測、不是同條件對比）：不適用——本文完全沒有使用 125→90 kW／136→101 kW 這組數字（正確來源不在四條 sources[] 內），因此不會出現這個誤導。",
+    "must_add（1.6x MLPerf 數字需要 GB300／Qwen3-VL 限定語）：不適用——本文完全不寫 1.6x 這個數字，只用 summit 部落格自己就有完整比較基準的 3.7x。",
+    "must_add（F46 Nebius 也送出 Vera Rubin 預覽結果、AgentX 30x 是 preview testing）：不適用——正確來源（2026-09-16 的 MLPerf 專文）不在四條 sources[] 內；本文提到 30x 時已經寫『NVIDIA 轉述別家機構的測試，本站未取得原始數據』，效果上做到了同等的保留態度。",
+    "must_add（15x token 用量的出處是 OpenRouter）：不適用——本文完全不寫『15 倍』這個數字，因為查得到出處的頁面不在四條 sources[] 內，沒有出處就不寫，而不是寫一個查不到出處的版本。",
+    "must_add（Lambda 案例研究頁的數字要標成 NVIDIA 轉述 Lambda 的測試）：不適用——本文沒有使用 case-studies/lambda 頁面的專屬數字（40 QPS、80% 政策等），只用兩篇 9/15 部落格裡已經有、且已經標成 NVIDIA 表示的 24%／23% 那組。",
+    "source_list_fix（F41–F47 共 7 條事實掛在表外網址）：已套用，用刪減內容而非擴充來源的方式處理——沿用原訂四條 sources[]，把所有只存在於表外網址的事實列進 unverified_or_excluded，不寫進正文。",
+    "跨篇通則第 4 條（不要把『來源沒提到』寫成『來源說沒有』）：已套用在 GTC Taipei／台灣這一組——改寫成『沒有台灣部署、夥伴或供應鏈說明，但 DSX 的發表場合是 GTC Taipei』，不是『完全沒有台灣角度』。",
+    "跨篇通則第 9 條（sources[] 上限 4 條、事實掛表外網址）：已套用，理由與 source_list_fix 相同。",
+    "跨篇通則第 10 條（活文件要寫讀到哪一版）：已套用。event_date_basis 與 live_data_warnings 都記下今天讀到的 article:modified_time 比前一輪又晚了四小時，且正文 callout 明寫這是一篇會持續追加的動態文章。"
+  ],
+  "factcheck": {
+    "checked_by": "獨立查核代理（未參與撰稿）",
+    "checked_on": "2026-09-18",
+    "method": "四條 sources[] 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body，位元組數與研究紀錄完全相同（134,522／126,175／93,790／77,601），四頁都是正文、不是擋阻頁或導覽殼。把正文 13 段、摘要 5 句、FAQ 6 題答句、1 個 callout、表格 12 格與 caption、圖解 caption 與四格、title 與 description 拆成約 92 條主張，逐條回到原文定位；所有要引的英文字串都以「去標籤但不補空白」的方式在原始 HTML 裡確認為可原樣搜尋到的連續字串。另外重讀站上既有的 ai-news-nvidia-rubin-20260105 全文，確認沒有重寫或牴觸。沒有使用任何 sources[] 以外的新網址替文章補事實。",
+    "verdict": "needs_second_round（19 處已改，其中約 15 處是事實層級，且動到第 3 節「廠級對機櫃級、實測對投影」這條骨幹論述；照規格應再送一輪）",
+    "edits_to_the_pack": [
+      "第一段的講題改掉：草稿寫 Ian Buck「以 Vera Rubin 平台與 DSX 機房電力管理軟體為題演講」，來源寫的是 'spoke on AI factory efficiency'／'made AI factory efficiency the centerpiece of his infrastructure keynote'。已改成「以 AI 機房效率為題發表基礎設施主題演講」，並把場地與講題整句歸給 NVIDIA 官方部落格（場地只有 NVIDIA 一個來源）。",
+      "第 1 節第 1 段的歸屬改掉：『尖峰效能轉向每百萬瓦 token』那兩句不在 Ian Buck 的引號內，是部落格本身（NVIDIA Writers）的敘述，草稿寫成『Ian Buck 說明』。已改成『NVIDIA 在這篇彙整文章裡表示』。description 的『把衡量 AI 機房的指標從尖峰效能換成…』同步改成『並表示…正從尖峰效能轉向…』，因為原文說的是指標正在移動，不是 NVIDIA 把它換掉。",
+      "第 1 節第 2 段的『當天新進展全是電力管理與生態系合作』不成立：同一篇公告另有『Startups Celebrate Performance Results With NVIDIA Vera CPU』（多家新創的 Vera CPU 測試結果）與『NVIDIA NVLink 6 Keeps AI Factories Running at Massive Scale』兩節。已改成『當天沒有新的晶片發表』並補上這兩節的存在；FAQ 第 1 題同步補。",
+      "同段三項合作的歸屬全部改掉：草稿寫『Annapurna Labs 表示』『d-Matrix 表示』『Pinterest 表示』，但唯一來源是 NVIDIA 自己的部落格，三家沒有發言。已改成『NVIDIA 表示』。",
+      "同段 d-Matrix 那句改寫：原文是 'd-Matrix is integrating with NVLink Fusion to combine NVIDIA Vera CPUs with d-Matrix Raptor XPUs to deliver ultra low-latency inference at scale'，草稿寫成『把 NVLink Fusion 整合進 Raptor XPU』且掉了 ultra 與 at scale。",
+      "同段 Pinterest 那句改寫：原文是 'to bring conversational AI to visual discovery'，草稿寫成『強化視覺搜尋』——把對話式 AI 換成了搜尋、把 visual discovery 換成了視覺搜尋。已改成『把對話式 AI 帶進視覺探索』。",
+      "第 2 節第 2 段刪掉 megawatt 的出現次數：『1 月零次、兩篇部落格十次與五次』是編輯自己數的，而且單複數要分開數（配套那篇 'megawatts' 另有 5 次，只數單數會低估一半）。已改成不寫次數，只寫 1 月那篇整篇沒有用百萬瓦當衡量單位（'megawatt' 與 'megawatts' 皆 0 次，這一項複查成立）。",
+      "第 3 節第 1 段的黃仁勳引言誤譯：原文 'A one-gigawatt factory will never become a two-gigawatt factory'，草稿寫成『不會自己變成兩座十億瓦的機房』——把一座二十億瓦的機房寫成了兩座十億瓦的機房。已改成『一座十億瓦的機房永遠不會變成一座二十億瓦的機房』。",
+      "第 3 節第 2 段補回 40% 的條件：原文是 'Up to 40% more GPUs within the same site-power envelope'，草稿只寫『最高可多出 40% 的 GPU』，掉了『在同一場地電力額度內』。35% 那條的 'no new power lines required' 草稿有保留。",
+      "同段的兩個 40% 重寫成同一個主張：草稿把廠級的 40% 與 Vera Rubin NVL72 的 40% 並排，讀起來像兩個獨立數字。已改成『上面那個 40% 掛到 Vera Rubin NVL72 時…』，並把『標成投影』限縮到配套那篇——高峰會那篇寫同一件事時沒有 'Based on NVIDIA’s projections' 這個前綴（該字串在高峰會那篇 0 次命中）。FAQ 第 2 題同步重寫，並補上『在同一電力預算內』。",
+      "同段『唯一有實測支持的是 Lambda』改成『這組電力數字裡有夥伴實測的是 Lambda』：同一篇公告裡 Vera CPU 的新創測試、SemiAnalysis AgentX 與 MLPerf 都是量測結果，『唯一』站不住。",
+      "同段補上 Lambda 數字的前提：24%／23% 在『數字一覽』表裡的條件是 '19 nodes at 85% power vs. 16 nodes at full power'，正文那句沒寫。已補『在 85% 電力政策下』。",
+      "同段『Lambda 總裁』改成『Lambda 雲端服務總裁』：Dave Ward 的職稱是 'president of cloud services at Lambda'，不是公司總裁。",
+      "同段機櫃層級改寫成『另有削峰軟體與擴充儲能吸收短暫尖峰，官方在這一層沒有給百分比』，把廠級與機櫃級的界線寫死（修正清單 must_fix 1 的重點）。",
+      "第 3 節第 3 段『超過兩百次降載訊號』改成『需求訊號』：原文是 'more than 200 demand signals'，不是 load-shedding。",
+      "第 4 節第 2 段『官方完整說法只有一句』限縮成『兩篇 9 月 15 日部落格給的只有一句』；同段與表格第 4 列的『最高比 GB300 NVL72 快 3.7 倍』改成『吞吐量最高比 GB300 NVL72 高 3.7 倍』，原文是 'up to 3.7x higher throughput'，不是速度。",
+      "第 5 節第 1 段刪掉『兩篇公告也沒有出現 price（價格）一字』：那是子字串式的負面證據，而且同兩篇各有一次 'pricing'（電價訊號／電價事件）。已改成『兩篇公告通篇沒有提到 Vera Rubin、Groq 3 LPX 或 DSX 任何一項的售價或授權費，只在描述電網訊號時出現過電價』。",
+      "第 5 節第 2 段的台灣段落改寫：『兩詞皆零次出現』改成『以 Taiwan 與 TSMC 查核到 2026 年 9 月 17 日都未見』，『唯一沾邊』改成『與台灣有關的只有』；同時刪掉指向 nvidianews.nvidia.com/releases.xml 的建議（那個網址不在 sources[] 內，本文也沒有從它取任何事實），改成請讀者回到這兩篇部落格本身。",
+      "callout 的『本文查核當下（2026 年 9 月 17 日）內文仍在變動』改成『查核時讀到的版本標示最後修改於 9 月 16 日』：article:modified_time 今天重抓仍是 2026-09-16T18:57:45+00:00，沒有在 9 月 17 日之後再動過，原句把『兩次查核之間被改過』說成了『現在還在改』。",
+      "表格第 1 列『最高省 10 倍推論成本』補成『每 token 推論成本』（原文 'inference token cost'／'cost per token'）；第 3 列補上『官方稱』。",
+      "摘要第 1 句同步改講題與指標歸屬；第 5 句『官方沒有公布…交付雲端或任何價格』改成『查核到的官方公告沒有公布…出貨數量、客戶名單或任何售價』。",
+      "圖解第一格『晶片／Vera Rubin NVL72』改成『晶片／Vera Rubin 平台』（NVL72 是機櫃級系統，不是晶片）；第三格『機房／MaxLPS 動態調度，最高 40%』改成『機房／同電力下多 40% GPU』，讓圖上的 40% 有明確受詞。"
+    ],
+    "checked_and_correct": [
+      "四條 sources[] 今天全部 HTTP 200、全部讀到正文，位元組數與研究紀錄逐條相同（134,522／126,175／93,790／77,601）；沒有轉址殼、軟性 404 或擋阻頁。",
+      "事件日 2026-09-15 成立：高峰會那篇 article:published_time 2026-09-15T16:55:40+00:00、配套那篇 2026-09-15T16:55:59+00:00，slug 尾碼與 news_date 一致。MLPerf 那段確實掛在頁內『Wednesday, Sept. 16, 8:00 a.m. PT』這個小標下，文章把它歸給 9 月 16 日正確。",
+      "1 月 5 日 CES 六晶片、10x／4x、'NVIDIA Rubin is in full production, and Rubin-based products will be available from partners the second half of 2026.' 三項與新聞稿逐字相符；8 月 24 日 Hot Chips、七顆晶片五款機櫃、'Groq and LPU are used under license from Groq, Inc.' 亦相符。",
+      "修正清單 must_fix 1／5／6／7／8／9／10／11 全部確認已套用或以不寫的方式避開：40%／35% 寫成廠級、GTC Taipei 這個台灣關聯有寫出來且不帶年份、沒有出現 'Groq 3 LPU'、沒有『第七顆晶片』框架、沒有 227 kW、沒有 HGX Rubin NVL8、NVHBM 沒有寫成 NVIDIA 的技術。",
+      "35x（對 GB200 NVL72、兩兆參數以上、長上下文）、2,529 output tokens/sec（100K 上下文、Qwen 3.8 27B）、30x（DeepSeek V4 Pro、對 GB300 NVL72、SemiAnalysis AgentX）三組數字都帶著各自的比較基準，而且都歸因給 NVIDIA 或 NVIDIA 的轉述，沒有一處寫成本站驗證。",
+      "矽谷電力公司事件的兩種說法並列正確：正文兩處都是 4 MW→3 MW（'power dropping from four megawatts to three, automatically' 與 'power fell from four megawatts to three'），『數字一覽』表寫 '40% | power demand reduction in under a minute'，文章沒有替官方調和，也沒有相加相減。",
+      "Emerald AI Conductor 與 DSX Flex 的關係沒有寫成已上線：來源說 Emerald AI 'is planning to use' DSX Flex、'integrating into DSX Flex as the platform matures'、表格來源欄寫 'Future DSX Flex'，文章寫『還不是正式的 DSX Flex 安裝，只是證明概念可行』，與來源一致。",
+      "『9 月的資料沒有更新 2026 下半年這個時程』成立：兩篇 9 月 15 日部落格裡與年份有關的只有配套那篇 800V DC 那列的 2027，而那是電力架構的時程，不是 Rubin 產品供貨時程，文章沒有引用。",
+      "科技垂直界線：全文沒有購買或升級建議、沒有推薦式比價、沒有機型比較結論、沒有攻擊細節；只有一個 info callout，沒有投資免責段落；廠商數字全部帶『NVIDIA 表示／NVIDIA 稱／官方稱』。",
+      "與站上既有的 ai-news-nvidia-rubin-20260105 沒有重寫也沒有牴觸：那篇談 1 月 CES 與推論成本／終端定價的落差，本篇只用一句話帶過並明寫不重複；兩篇對『已全面生產、夥伴產品 2026 下半年提供』的寫法一致。",
+      "摘要 5 句裡的每一個數字（40%、35%、24%、23%、3.7、35 倍、30 倍、2,529、4／3 百萬瓦、一分鐘、兩百）都在正文出現過；FAQ 答案都是純文字、沒有網址；全文沒有簡體字、列表、Markdown 或 emoji。",
+      "checked_on 2026-09-17 在內容包四條 source、研究紀錄、第二段、表格 caption 與圖解 caption 六處一致，沒有因為本輪重查而改動。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍是 FAIL，只剩 `zh-TW link target tech-news-2026-index.json does not exist yet` 一條：科技垂直的索引內容包還沒建立，不在查核代理可動的兩個檔案裡。索引落地後，第一個 link 的 text（目前的佔位字串）要逐字換成索引自己的 zh-TW title。",
+      "撰稿者問的六條 must_add，本代理判定沒有一條屬於『不寫就會誤導』：六條的正確一手出處都在四條 sources[] 之外，而草稿是整條不寫（而不是寫一半），所以讀者不會拿到被削掉限定詞的版本。最接近需要補的是 SemiAnalysis AgentX 的 30x——NVIDIA 自己 9 月 16 日的 MLPerf 專文把它描述成 'in preview testing'，比高峰會那篇保守；但文章已經寫明是 NVIDIA 轉述、本站未取得原始數據，缺這一句不會誤導。要補就必須換掉一條 sources[]，是編輯取捨，本代理不代決定。",
+      "zh-TW 段落字數已到 2,993／3,000，只剩 7 字。本輪為了補回『在同一場地電力額度內』與『85% 電力政策』兩個限定，已刪掉『本文只在這裡提一次』這句純編輯用語來換字數。之後若還要補任何限定詞，必須從別處刪等量的字，不可以刪限定詞湊字數。",
+      "『數字一覽』表把 Vera Rubin NVL72 那個 40% 的條件寫成 'MaxLPS combined with data center power planning'，比正文多了『搭配機房電力規劃』這一層；文章目前只寫『在同一場地電力額度內』與『依投影、限於合適的部署環境』。要不要再補這一層是編輯取捨，受上面的字數限制。",
+      "高峰會那篇是活文件，還會再長內容。今天（2026-09-18）重抓 article:modified_time 仍是 2026-09-16T18:57:45+00:00，與 9 月 17 日那輪相同；出刊前建議再抓一次 meta，如果又往後移動，callout 裡『標示最後修改於 9 月 16 日』那一句要跟著改。"
+    ],
+    "second_round": {
+      "checked_by": "獨立查核代理第二輪（未參與撰稿，亦非第一輪那位）",
+      "checked_on": "2026-09-18",
+      "scope": "不是整篇重做。範圍是（a）第一輪改動過的每一段與新寫進去的每一句，逐句回四條 sources[] 的原文；（b）全文每一處功率單位重新換算；（c）研究紀錄每一條 verbatim_quote 以字串比對確認是來源頁上的連續字串；（d）回掃第一輪有沒有為了字數刪掉但書；（e）summary ⊆ 正文、FAQ ⊆ 正文、否定句的範圍。",
+      "method": "四條 sources[] 今天再以 curl -sL -A \"Mokaair-editorial\" 重抓一次，位元組數 134,522／126,175／93,790／77,601，與研究紀錄與第一輪逐條相同。用『去標籤但不補空白』與『去標籤且每個標籤補一個空白』兩種抽文字方式各做一份，對 32 條 verbatim_quote 全部做程式化字串比對（含彎引號／直引號、nbsp、破折號變體）。功率單位另以 'megawatt(s)'、'gigawatt' 的全部命中逐條對照中文換算。",
+      "claims_checked": 55,
+      "edits": 18,
+      "edits_to_the_pack": [
+        "第 3 節第 2 段：35% 掉了 'Up to'。來源兩條項目符號都是 'Up to …'（'Up to 40% more GPUs within the same site-power envelope'、'Up to 35% higher token throughput — no new power lines required'），第一輪補回了 40% 的『在同一場地電力額度內』卻沒有注意到自己寫出來的 35% 少了『最高』。已改成『且不必新建輸電線路就最高多出 35% 的 token 吞吐量』。",
+        "第 3 節第 2 段：補上第一輪留給站主的那一層條件。配套那篇『數字一覽』把 Vera Rubin NVL72 那個 40% 的 Context 寫成 'Vera Rubin NVL72, MaxLPS combined with data center power planning, same power budget'。不寫這一層，讀者會以為 MaxLPS 這套軟體單獨就有 40%，這會讓那個數字變強，屬於不可省的但書，已補『同篇數字表還寫明要搭配機房電力規劃』；FAQ 第 2 題同步。",
+        "第 3 節第 3 段：『正文兩次寫某個 8 月夜晚電力自動從 4 百萬瓦降到 3 百萬瓦』兩邊都錯。'four megawatts to three' 在配套那篇出現兩次，第一次在一張照片的 <figcaption class=\"wp-caption-text\" id=\"caption-attachment-98197\"> 裡、不是正文，而且是現在式的通則敘述（'The Emerald AI team in San Francisco watches as …'），沒有指名 8 月那一晚；只有第二次是正文並明寫 'That August evening'。已改成『內文寫某個 8 月夜晚…，同頁一張照片說明也寫同樣兩個數字』；FAQ 第 3 題同步。第一輪的報告把這一處列在『查過而且正確』，是漏看。",
+        "第 3 節第 3 段與 FAQ 第 3 題：『把同一件事寫成一分鐘內降低 40%』改成『同一場示範』。表格那一列的 Context／Source 兩欄（'SVP automated response, Flexible Load Interconnect Program'、'Emerald AI / Future DSX Flex'）確實指同一個方案，但『同一件事』讀起來像官方自己說過兩者等價，官方沒有。",
+        "第 3 節第 1 段：黃仁勳引言後面『機房擴張卡住的不是晶片，是能不能拿到更多電力』是編輯加的對比，來源沒有把晶片拿來當對照組。原文只寫 'In the AI factory economy, power is the constraint.'，而且那句與引言不在同一段。已改成『NVIDIA 在同一篇裡寫電力就是 AI 機房經濟裡的限制條件』。引言本身（一座十億瓦→一座二十億瓦）第二輪逐字複查正確，不動。",
+        "第 4 節第 1 段：2,529 掉了主詞。原文是 'On a 100K-context Qwen 3.8 27B workload, Groq 3 LPX hit 2,529 output tokens per second per user.'，草稿寫成『較具體的數字是…每位使用者每秒測到 2,529 個輸出 token』，接在合併平台那句後面會被讀成合併平台的成績。已改成『較具體的是 Groq 3 LPX 在…』。",
+        "第 4 節第 2 段與表格第 4 列：3.7 倍的中文寫法與同篇 35 倍、30 倍不一致。三處英文都是 'up to N x higher … than Y'，但草稿把 35 倍寫成『最高是…的 35 倍』、3.7 寫成『最高比…高 3.7 倍』（在中文是 4.7 倍）。已統一成『吞吐量最高是 GB300 NVL72 的 3.7 倍』。",
+        "第 1 節第 2 段與摘要第 2 句：『當天沒有新的晶片發表』是範圍不明的否定句，NVIDIA 自己的部落格不是這場研討會的完整紀錄。已限縮成『兩篇 9 月 15 日公告裡沒有新的晶片發表』／『兩篇 9 月 15 日公告裡沒有新晶片』。",
+        "第 1 節第 2 段：NVHBM 掉了 'custom'。原文 'the NVHBM custom high-bandwidth memory technology'，已補成『NVHBM 客製高頻寬記憶體技術』。",
+        "FAQ 第 2 題：『Lambda 自己也把這稱為概念驗證，不是正式導入』的後半是編輯的推論，而且與官方寫法相牴觸——配套那篇明寫 'Results from cloud provider Lambda’s first validation in a deployment environment'。已刪掉『不是正式導入』，只留有出處的『Lambda 雲端服務總裁自己把這稱為概念驗證』。",
+        "FAQ 第 2 題：『同日的高峰會彙整文則只寫結果』不準確——高峰會那篇同樣帶著 'in the right deployment environments'，少的只有 'Based on NVIDIA’s projections' 這個標籤。已改成『同一件事在同日的高峰會彙整文裡沒有標上投影兩個字』。",
+        "FAQ 第 5 題：『本文查核到的官方頁面完全沒有出現任何價格』範圍過大，而且四篇來源都有 'pricing'（兩篇部落格各 1 次講的是電網電價，1 月與 8 月新聞稿頁尾各 2 次在 'Features, pricing, availability and specifications are subject to change without notice.' 這句樣板裡）。已改成與正文同一個寫法：『本文查核到的兩篇 9 月 15 日公告都沒有寫出 Vera Rubin、Groq 3 LPX 或 DSX 任何一項的售價或授權費』。",
+        "摘要第 4 句同步把『同一件事』改成『同一場示範』，與正文、FAQ 第 3 題一致。",
+        "為了騰出上面這些但書的字數，刪掉四處純敘述的重複（不是限定詞）：第 1 節『本文不替官方補充』（同句前半已寫官方只給一句話）、第 2 節結尾『下一節說明這套軟體實際在做什麼』（與下一個小標重複）、第 5 節『9 月 15 日的材料同樣沒有把效率數字換算成價格或速度承諾』（同段開頭與結尾各講過一次）、第 5 節『本文每段都標明官方哪一天所說』（而且不是每段都標）。另刪第 3 節『本文如實並列』與第 4 節『也沒有另外查證』兩句與前文重複的編輯用語。段落字數 2,993 → 2,985，可用餘裕從 7 字變成 15 字。",
+        "研究紀錄：矽谷電力公司 40% 那條的 verbatim_quote 是用 '|' 把表格三個儲存格拼起來的，不是頁面上的連續字串（程式化比對唯一一條不通過的）。已換成該列 Context 欄裡真正連續的 'power demand reduction in under a minute'，並在 fact 欄寫清楚這是一列表格、三欄各自獨立。",
+        "研究紀錄：第一輪寫的『配套那篇 megawatts 另外 5 次』是錯的，實際 2 次（都是 'from four megawatts to three'），另加標題與頁首兩次大寫的 'Megawatts'。已更正，並重申文章不寫任何出現次數。"
+      ],
+      "checked_and_correct": [
+        "32 條 verbatim_quote 程式化比對：30 條在來源頁上是可原樣搜尋到的連續字串，1 條是明示的『無逐字引文（編輯清點結果）』，1 條是上面改掉的表格拼接。改完 32 條全部通過。",
+        "全文功率單位逐處重算，沒有一處錯：megawatt＝百萬瓦（第 1／2／4／5 節的『每百萬瓦 token』、第 3 節『4 百萬瓦降到 3 百萬瓦』對 'from four megawatts to three'）、gigawatt＝十億瓦（'A one-gigawatt factory' → 一座十億瓦、'a two-gigawatt factory' → 一座二十億瓦）。description、摘要、表格、圖解、callout 一併重算，中文的『一座／兩座』與『百萬／十億』沒有再錯。",
+        "第一輪點名要第二人再讀的三句，逐句結論：（1）『廠級對機櫃級』成立——40%／35% 都在 'At the factory level' 之後、機櫃層級那句（Intelligent Power Smoothing 與擴充儲能）官方確實沒給百分比；但 35% 少了 'Up to'，已補。（2）『實測對投影』大致成立——'Based on NVIDIA’s projections' 在配套那篇命中、在高峰會那篇 0 次；但高峰會那篇不是『只寫結果』，它同樣寫了 'in the right deployment environments'，FAQ 已修正。（3）『Blackwell 對 Vera Rubin』成立——24%／23% 的原句與 'Lambda’s results … are the first validation of DSX MaxLPS on NVIDIA HGX B200 GPU Servers.' 相符，85% 只出現在『數字一覽』表的兩個 Context 儲存格（'19 nodes at 85% power vs. 16 nodes at full power, same facility budget'、'19-node cluster at 85% power policy vs. 16-node full-power baseline'），第一輪補進正文的寫法與這兩格一致。",
+        "兩個 40% 合併成一個主張是對的：高峰會那篇的廠級項目符號寫在 'NVIDIA does this with a full-stack AI factory built on the Vera Rubin NVL72' 這句之後，本來就是 Vera Rubin NVL72 的脈絡，與 Lambda 那一節的 Vera Rubin NVL72 40% 是同一個宣稱。文章『上面那個 40% 掛到 Vera Rubin NVL72 時…』的寫法成立。",
+        "Ian Buck 的講題與引號範圍：高峰會那篇 'Tuesday spoke on AI factory efficiency at the AI Infra Summit, the Santa Clara Convention Center event'、配套那篇 'made AI factory efficiency the centerpiece of his infrastructure keynote'，文章『以 AI 機房效率為題發表基礎設施主題演講』與兩篇都相符。頁面上唯一的 Buck 直接引語是 'Infrastructure that’s fungible…' 那一段，文章沒有引用、也沒有把任何話放進他的引號內；'The metric for AI infrastructure is fast shifting…' 兩句確實在引號之外，文章歸給『NVIDIA 在這篇彙整文章裡表示』正確。",
+        "三家夥伴改成『NVIDIA 表示』之後，三句的歸屬與內容逐句重核皆相符：Annapurna Labs 'is working with NVIDIA on'、d-Matrix 'integrating with NVLink Fusion to combine NVIDIA Vera CPUs with d-Matrix Raptor XPUs to deliver ultra low-latency inference at scale'（超低、大規模都在）、Pinterest 'to bring conversational AI to visual discovery'。句首的『NVIDIA 表示』以分號串起三句，涵蓋範圍正確。",
+        "第一輪沒有為了字數刪掉任何但書：把第一輪前後兩版逐句比對，刪掉的只有『本文只在這裡提一次』這句編輯用語，所有 'up to'／條件子句／歸因語都還在（唯一的例外就是上面第一條找到的 35% 的 'Up to'，那是第一輪自己改寫時漏掉的，不是為了字數刪的）。",
+        "摘要五句的每一個數字（19、16、24%、23%、4、3、40%、2026）都在正文出現；FAQ 六題答案全部是純文字、沒有網址，改寫後仍然句句在正文找得到依據。",
+        "checked_on 2026-09-17 六處一致，沒有因為第二輪重查而改動；article:modified_time 今天（2026-09-18）讀到仍是 2026-09-16T18:57:45+00:00，callout 那句『標示最後修改於 9 月 16 日』仍然成立。",
+        "與 ai-news-nvidia-rubin-20260105 沒有重寫也沒有牴觸：本篇談推論成本與終端定價落差的那一句仍只是一句帶過並明寫不重複。",
+        "科技垂直界線複查：沒有購買或升級建議、沒有推薦式比價、沒有機型比較結論、沒有攻擊細節、沒有投資免責 callout；廠商數字全部帶歸因。"
+      ],
+      "left_for_the_owner": [
+        "check_article.py 仍是同一條 FAIL：`zh-TW link target tech-news-2026-index.json does not exist yet`。科技索引內容包還沒建立，不在查核代理可動的兩個檔案裡。",
+        "段落字數 2,985／3,000，餘裕 15 字。第二輪補了兩個但書（35% 的『最高』、40% 的『搭配機房電力規劃』）與一處照片說明的更正，字數是靠刪六句重複敘述換來的，沒有動任何限定詞。之後要再補限定詞仍得先從別處刪等量的字。",
+        "可補但沒補的一句：配套那篇把 Lambda 的測試稱為 'Results from cloud provider Lambda’s first validation in a deployment environment'，文章目前只寫當事人那一半（概念驗證）。兩種說法不牴觸，寫弱的那一半不會誤導，因此第二輪只把 FAQ 裡編輯自己加的『不是正式導入』刪掉，沒有花 20 字把官方那一半也寫進正文。要不要並列是編輯取捨。",
+        "高峰會那篇仍是活文件。出刊前再抓一次 article:modified_time；若晚於 2026-09-16T18:57:45+00:00，callout 那句與第 5 節『最後更新時間在查核期間又往後移動過』要一起重寫。",
+        "第一輪提的六條 must_add 與四條 sources[] 上限，第二輪沒有改變結論：不補、不換源。"
+      ],
+      "verdict": "ok（第二輪查了約 55 條、改了 18 處，其中 13 處在內容包、5 處在研究紀錄；沒有找到會讓讀者誤解主要結論的錯，最重的三處是 35% 掉了 'Up to'、Vera Rubin NVL72 的 40% 少了『搭配機房電力規劃』這一層、以及把一張照片的說明當成正文。第一輪動到的第 3 節骨幹三句，第二輪逐句回原文後成立，只補了條件、沒有推翻。自檢只剩索引那一條允許的 FAIL。）"
+    }
+  },
+  "hero_label": "算力的新單位是電",
+  "diagram": {
+    "title": "每一百萬瓦能產出多少 token",
+    "caption": "依 NVIDIA 2026 年 9 月 15 日發布的兩篇部落格文章整理，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "晶片",
+        "Vera Rubin 平台"
+      ],
+      [
+        "機櫃",
+        "削峰儲能，吸收尖峰負載"
+      ],
+      [
+        "機房",
+        "同電力下最高多 40% GPU"
+      ],
+      [
+        "電網",
+        "DSX Flex 接收訊號自動調度"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "New Compute Unit: Power",
+      "diagram": {
+        "title": "How Many Tokens per Megawatt",
+        "caption": "Compiled from two NVIDIA blog posts published September 15, 2026. Fact-checked September 17, 2026.",
+        "nodes": [
+          [
+            "Chip",
+            "Vera Rubin platform"
+          ],
+          [
+            "Rack",
+            "Energy buffers absorb spikes"
+          ],
+          [
+            "Data Center",
+            "Up to 40% more GPUs"
+          ],
+          [
+            "Grid",
+            "DSX Flex reacts to signals"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "計算能力の新単位は電力",
+      "diagram": {
+        "title": "メガワットあたりのトークン数",
+        "caption": "NVIDIAが2026年9月15日に公開した2本のブログ記事をもとに作成。確認日 2026年9月17日。",
+        "nodes": [
+          [
+            "チップ",
+            "Vera Rubin基盤"
+          ],
+          [
+            "ラック",
+            "蓄電でピークを吸収"
+          ],
+          [
+            "データセンター",
+            "同電力でGPU最大40%増"
+          ],
+          [
+            "電力網",
+            "DSX Flexが信号に自動対応"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "연산력의 새 단위는 전력",
+      "diagram": {
+        "title": "메가와트당 토큰 수",
+        "caption": "NVIDIA가 2026년 9월 15일 공개한 블로그 게시물 2건을 바탕으로 작성. 확인일 2026년 9월 17일.",
+        "nodes": [
+          [
+            "칩",
+            "Vera Rubin 플랫폼"
+          ],
+          [
+            "랙",
+            "축전으로 피크 흡수"
+          ],
+          [
+            "데이터센터",
+            "같은 전력, GPU 최대 40%"
+          ],
+          [
+            "전력망",
+            "DSX Flex 신호 자동대응"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "算力的新单位是电",
+      "diagram": {
+        "title": "每兆瓦能产出多少 token",
+        "caption": "根据 NVIDIA 2026 年 9 月 15 日发布的两篇博客文章整理，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "芯片",
+            "Vera Rubin 平台"
+          ],
+          [
+            "机柜",
+            "削峰储能，吸收尖峰负载"
+          ],
+          [
+            "机房",
+            "同电力下 GPU 最高多 40%"
+          ],
+          [
+            "电网",
+            "DSX Flex 接收信号自动调度"
+          ]
+        ]
+      }
+    }
+  }
+}

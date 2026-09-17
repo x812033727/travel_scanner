@@ -1,0 +1,1224 @@
+{
+  "slug": "tech-news-taiwan-sovereign-ai-corpus-20260915",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-15",
+  "featured": false,
+  "display_order": 303,
+  "related": [
+    "tech-news-taiwan-6g-spectrum-20260910",
+    "tech-news-taiwan-matsu-cable-20260623"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "臺灣主權 AI 訓練語料庫啟動民間語料徵集：授權條款與客語語料現況",
+      "description": "2026 年 9 月 15 日，數位發展部宣布啟動「臺灣主權AI訓練語料庫」民間語料徵集，邀請出版社與作家把出版品授權提供給 AI 訓練使用。本文依數位發展部三則新聞稿與語料庫網站的授權條款頁，說明徵集範圍、無償授權與「可退出」實際碰到的界線，以及官方文件沒有交代的部分，查核日 2026 年 9 月 17 日。",
+      "hero": {
+        "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/hero.jpg",
+        "alt": "原創插圖：左邊是三本疊起來的書，箭頭指向中間一份蓋有圓形印記的授權文件，再由箭頭指向右邊一個裝著九個小方格的大方框，代表出版品經授權後進入語料庫",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日，數位發展部（moda）宣布正式啟動「臺灣主權AI訓練語料庫」民間語料徵集行動，邀請出版社、作家與文化機構把出版品授權釋出給這座語料庫做 AI 訓練之用。數發部部長林宜敬率先以作家身分，捐出個人著作《幸福的鬼島》與《流寇與創新者》；多家出版及電子書平臺業者與作家也在記者會現場簽署授權同意書，名單見下一節。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是數位發展部三則新聞稿的全文與「臺灣主權AI訓練語料庫」網站的授權條款頁，本站沒有做任何實測，也不代替讀者判斷該不該授權或投稿；下文提到的規模數字、日期與條文，均以這四份官方文件在查核當天所寫的內容為準，之後仍可能更動。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 15 日，數位發展部宣布啟動「臺灣主權AI訓練語料庫」民間語料徵集，邀請出版社與作家把出版品授權提供給 AI 訓練使用。",
+            "數發部在這則新聞稿寫語料庫自 2025 年底上線、規模「截至今年8月底」約 22 億 Tokens；2026 年 7 月 24 日的另一則新聞稿則寫客語語料「近日」上架、首度新增約 2000 萬 tokens，官方沒有給確切的上架日期。",
+            "官方推動方式是無償授權，授權條款寫明此項授權不得再授權與轉讓，也寫明即使原語料資料後續停止提供使用，不影響已完成之訓練成果。",
+            "退出的部分，本文引用的四份官方文件只寫了「設有完善的退出下架申請管道」這一句；查核到 2026 年 9 月 17 日，未見這個管道的網址、表單或處理時間。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "九月十五日的記者會，誰簽了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "數發部同日舉辦「啟動民間語料徵集記者會」，新聞稿寫「包括秀威資訊、印刻文學、Readmoo讀墨、食力、巨思文化等出版及電子書平臺業者，以及藍弋丰、李魁賢(家屬代表)等作家皆親自出席簽署授權同意書」，這是舉例而不是完整名單；陳明忠、連明偉、朱國珍、朱和之等作家則是「亦提供著作響應」。官方把這兩群人分開敘述，沒有說明後者是否也到場。"
+        },
+        {
+          "type": "paragraph",
+          "text": "林宜敬部長指出，AI 模型對民主、權力制衡等概念的理解，會受訓練語料所蘊含的社會與文化脈絡影響，並提到目前國際大型語言模型的中文訓練資料仍多以簡體中文內容為主。這是部長對現況的論述，本站沒有另外查證這個說法本身是否正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "數發部強調，語料徵集採「自願參與、明確授權、可退出」三大原則，並表示設有完善的退出下架申請管道；不過官方新聞稿沒有說明這個管道的網址、表單或處理時間，也沒有為這次徵集訂出截止日期或名額，只寫「數發部誠摯邀請作者、出版社、文化機構、法人單位及各領域內容提供者共同參與」。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "語料庫怎麼長到今天的規模"
+        },
+        {
+          "type": "paragraph",
+          "text": "臺灣主權 AI 訓練語料庫不是 9 月 15 日才出現。數位發展部在 2025 年 12 月 24 日發布上線公告，內文寫的是「目前已有超過200個政府機關投入，上架逾2,000筆資料集、超過6億tokens」，內容涵蓋語言、文化、教育、生物、地理環境等領域。官方用的詞是「目前」，沒有替這三個數字標出統計基準日；這一頁的建立日期是 2025 年 12 月 24 日、更新日期是 2026 年 3 月 19 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 7 月 24 日，數發部發布新聞稿，宣布語料庫與客家委員會合作，近日正式上架客家語言資源、出版品、文史典藏及研究報告等內容，首度新增約 2000 萬 tokens 的高品質訓練語料，官方沒有寫實際上架日；客語在新聞稿中被定位為「我國國家語言之一」。同一則新聞稿寫道，語料庫自上線以來已累積逾 15 億 tokens 語料量，但官方沒有為這個累計數字附上任何截止時間點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到了 9 月 15 日，數發部表示語料庫規模「截至今年8月底」已達約 22 億 Tokens，並把啟動民間語料徵集稱為語料庫「邁入新的發展階段」的里程碑。三則公告裡只有這一則替規模數字寫出了統計基準日：12 月那則寫「目前」，7 月那則寫「自上線以來」，兩者都沒有截止時點。三個數字因此分屬不同的計算基礎，本文不相加、不相減，也不換算成同一天的規模。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "公告日期",
+            "官方公告的規模",
+            "語料來源",
+            "查核依據"
+          ],
+          "rows": [
+            [
+              "2025 年 12 月 24 日",
+              "「目前」超過 200 個機關、逾 2,000 筆資料集、超過 6 億 tokens（未附基準日）",
+              "各政府機關上架之資料集",
+              "數位發展部上線公告"
+            ],
+            [
+              "2026 年 7 月 24 日",
+              "「自上線以來」累積逾 15 億 tokens（未附基準日）",
+              "新增客家委員會提供之客語語料約 2000 萬 tokens",
+              "數位發展部客語語料新聞稿"
+            ],
+            [
+              "2026 年 9 月 15 日",
+              "「截至今年8月底」約 22 億 Tokens",
+              "啟動民間語料徵集，現階段合作對象為出版業與電子書平臺",
+              "數位發展部民間語料徵集新聞稿"
+            ]
+          ],
+          "caption": "資料來源：數位發展部 2025 年 12 月 24 日、2026 年 7 月 24 日與 2026 年 9 月 15 日新聞稿，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰能提供語料、提供什麼、由誰居中"
+        },
+        {
+          "type": "paragraph",
+          "text": "數發部說明，現階段以具豐富語料資源的出版業及電子書平臺為合作對象，採無償授權方式推動；作者如果有意願提供個人著作，可以由其出版社協助上架至語料庫，官方新聞稿沒有提到作者能否自行申請上架。重點徵集內容包含四大類：經同意授權之出版品、出版品簡介、出版品試閱內容，以及已逾著作權保護期間並可作為公共財活化運用之典籍與創作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權條款把整個流程放進三個角色裡：「授權人」是提供語料的權利人，「被授權人」是依條款使用語料的收受者，「語料平臺」則是從授權人處取得語料、再依授權人指示把語料橋接給被授權人的第三方。條款明寫語料平臺「非屬授權關係任一造之當事人」，但可以經授權人同意，替授權人評估、篩選語料的收受對象或有效期間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授權條款對「語料資料」的定義比書本寬：包含但不限於可用於 AI 語言與多模態學習的語文、音樂、美術、攝影、圖形、視聽、錄音等作品，也包含具創作性之資料選擇與編排所得的編輯性著作。9 月 15 日的新聞稿沒有寫這次要徵到多少本書、多少 tokens 才會停止，也沒有寫後續會不會有第二輪徵集。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/diagram-1.svg",
+          "alt": "四格圖解：誰能提供語料、可以提供什麼內容、授權條件，以及已完成的訓練成果不受退出影響",
+          "width": 1600,
+          "height": 900,
+          "caption": "資料來源：數位發展部 2026 年 9 月 15 日新聞稿與臺灣主權 AI 訓練語料授權條款，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "授權條款對投稿人的權利動了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "臺灣主權 AI 訓練語料庫網站公布的《臺灣主權 AI 訓練語料授權條款-第 1 版》，依數位發展部 2025 年 12 月 24 日的上線公告，是數發部與經濟部智慧財產局合作共同推出。條款把提供語料、具備合法權利的個人或單位稱為「授權人」，把接收並使用語料的一方稱為「被授權人」；授權人授予被授權人的是重製、改作、編輯及其他著作權和著作相關權利上必要之使用權，使語料合法用於 AI 訓練，「此項授權不得再授權與轉讓」，有效期間得由授權人或其代表人指定為特定年份或永久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "條款同時劃出「可退出」真正的界線。被授權人依訓練所得的模型、權重、程式碼、文件或其他輸出，若具著作權保護要件，應歸屬於被授權人或模型操作者所有；而且「即使原語料資料後續停止提供使用，不影響已完成之訓練成果，包括但不限於所產出之模型、權重，以及程式碼、文件或其他型態之輸出」。至於已經被下載的語料副本之後還能不能繼續用於訓練，條款沒有寫。另一條但書是，除非成果與原語料實質近似、對原語料資料市場或價值造成負面影響，並超出合理學習範疇，否則授權人同意不把 AI 訓練成果視為自己著作的改作或編輯，也不對後續的使用、修改、再散布或運算行為施加任何限制或提出訴訟。"
+        },
+        {
+          "type": "paragraph",
+          "text": "被授權人使用語料訓練出的模型或工具，除非依法免除或經授權人另行同意，要標示語料平臺提供的識別資訊——條款舉的例子有資料集名稱、版本號、資料集提供者、發布年份、資料集申請頁面或官方網站——並指出這是依這份授權條款發布的狀態，但條款明寫「毋須就本授權語料資料內含個別素材……進行逐項標示」，也就是不必逐本書列出出處。輸出如果是程式碼或文件，標示義務可以更簡化；條款舉的例子是輸出成果公開演播或展示時，應註明其為「人工智慧生成產出」。條款頁面的後設資料顯示最後一次修改時間是 2026 年 9 月 3 日，早於 9 月 15 日的記者會。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "條款沒寫的部分，以及怎麼自己查"
+        },
+        {
+          "type": "paragraph",
+          "text": "條款的免責聲明寫得直白：這是「免授權金之授權基礎」，授權人只對語料本身擁有的著作權和著作相關權利地位做出明確主張，對其他事項不提供任何擔保，也不對使用資料引發的直接或間接損失負責。條款另外列出十項被授權人應自負其責的法律及倫理爭議行為，包括違反國際或當地法規、傷害未成年人、製造虛假資訊、用於個人資訊追蹤、侵犯他人合法權利等；條款寫的是授權人（提供語料的個人或單位）不因為提供語料資料，而被認為對這些行為表達同意、許可或核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文引用的四份官方文件查核到 2026 年 9 月 17 日，未見退出下架申請管道的網址、表單或處理時間，也未見這次民間徵集已收到多少著作、語料庫維運管理單位是哪一個機關或廠商。報酬則不是「沒說」而是說了：新聞稿寫「採無償授權方式推動」，條款寫「免授權金之授權基礎」，都不是稿費或分潤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有意願提供語料的出版社或作者，可以直接查詢臺灣主權 AI 訓練語料庫官方網站，或撥打新聞稿公布的諮詢專線 0800-023-300。條款也寫明，正體中文版與英文版皆為正式文本、具有同等法律效力，兩個語言版本如果用字不同，本文僅依中文版陳述。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這次徵集有截止日期嗎？",
+              "answer": "新聞稿沒有訂。數發部 2026 年 9 月 15 日的新聞稿沒有為這次民間語料徵集寫出截止日期或徵集名額，本文引用的另外三份官方文件查核到 2026 年 9 月 17 日也未見任何期限。"
+            },
+            {
+              "question": "提供語料會有稿費或分潤嗎？",
+              "answer": "官方寫的是無償授權。數發部新聞稿說明，現階段以出版業及電子書平臺為合作對象，「採無償授權方式推動」，臺灣主權 AI 訓練語料授權條款也是在「免授權金之授權基礎」上訂立；本文引用的四份官方文件查核到 2026 年 9 月 17 日，未見任何稿費、授權金或分潤機制。"
+            },
+            {
+              "question": "如果後悔了，可以把已授權的語料撤回嗎？",
+              "answer": "數發部表示設有退出下架的申請管道，但本文引用的四份官方文件查核到 2026 年 9 月 17 日，未見這個管道的網址、表單或申請人資格等細節。更重要的是，授權條款明寫「即使原語料資料後續停止提供使用，不影響已完成之訓練成果」，所以已經訓練出來的模型、權重與輸出不會因為退出而被追回；至於已經被下載的語料副本之後還能不能繼續用於訓練，條款沒有寫。"
+            },
+            {
+              "question": "客語語料是這次徵集新增的嗎？",
+              "answer": "不是同一批。客語語料是數發部與客家委員會合作上架的，2026 年 7 月 24 日的新聞稿寫的是「近日」正式上架、首度新增約 2000 萬 tokens；官方沒有給確切的上架日期，7 月 24 日只是這則新聞稿的發布日。9 月 15 日這次是面向出版業與作家的民間語料徵集，兩者來源與時間點不同。"
+            },
+            {
+              "question": "語料庫現在總共累積了多少語料？",
+              "answer": "依數發部 2026 年 9 月 15 日新聞稿，語料庫規模「截至今年8月底」約 22 億 Tokens；同一份新聞稿也寫語料庫自 2025 年底上線、初期以中央及地方政府語料為主。另外兩則新聞稿的規模數字，一則寫「目前」、一則寫「自上線以來」，都沒有寫出統計基準日，所以本文不把三個數字合併成同一個「現在」的數字。"
+            },
+            {
+              "question": "作者可以自己把作品送進語料庫嗎？",
+              "answer": "官方寫的路徑是透過出版社。數發部新聞稿說明，作者如果有意願提供個人著作，「可由其出版社協助上架至語料庫」；本文引用的四份官方文件查核到 2026 年 9 月 17 日，未見作者能否略過出版社、自行申請上架的說明。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三份公告，三種不同的計算基礎",
+          "text": "語料庫規模數字來自三份不同日期的官方新聞稿：2025 年 12 月 24 日的公告寫「目前」超過 6 億 tokens、2026 年 7 月 24 日的公告寫「自上線以來」逾 15 億 tokens、2026 年 9 月 15 日的公告寫「截至今年8月底」約 22 億 Tokens。只有最後一份替數字寫出了統計基準日，所以這三個數字不能直接相加或相減，也不能當成同一條成長曲線上的三個點。除了這三則新聞稿，本文沒有查核其他管道的即時統計數字，因此不引用。讀者若要查最新狀態，建議直接查詢臺灣主權 AI 訓練語料庫官方網站或數位發展部新聞稿。查核日期：2026 年 9 月 17 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "數位發展部辦 6G 頻譜國際研討會：談了什麼，還沒定案什麼",
+              "kind": "life",
+              "slug": "tech-news-taiwan-6g-spectrum-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "數發部啟動主權 AI 語料庫民間語料徵集 號召作家與出版業共襄盛舉",
+          "url": "https://moda.gov.tw/press/press-releases/20640",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "「臺灣主權AI訓練語料庫」上線！ 數位發展部攜手 200 個機關打造本土語料資源",
+          "url": "https://moda.gov.tw/press/press-releases/18314",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "數發部「臺灣主權AI訓練語料庫」新增 2000 萬 tokens 客語語料 充實本土 AI 語言資料基礎",
+          "url": "https://moda.gov.tw/press/press-releases/20230",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "臺灣主權 AI 訓練語料授權條款-第 1 版",
+          "url": "https://taic.moda.gov.tw/content/license",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "Taiwan Sovereign AI Training Corpus Opens Public Call for Content: License Terms and the State of Its Hakka-Language Data",
+      "description": "On September 15, 2026, Taiwan's Ministry of Digital Affairs (moda) announced a public call for content for the Taiwan Sovereign AI Training Corpus, inviting publishers and writers to license their works for AI training. Drawing on three moda press releases and the license-terms page of the corpus website, this article covers the scope of the call, the royalty-free terms, the real limits of the \"opt-out\" option, and what the official documents leave unsaid. Checked September 17, 2026.",
+      "hero": {
+        "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/hero-en.jpg",
+        "alt": "Original illustration: three books on the left; an arrow to a stamped licensing document; another arrow to a large square holding nine small squares, representing books entering the corpus",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 15, 2026, Taiwan's Ministry of Digital Affairs (moda) formally launched a public call for content for the Taiwan Sovereign AI Training Corpus (臺灣主權AI訓練語料庫), inviting publishers, writers and cultural institutions to license their published works to the corpus for AI training. Minister Yi-Jing Lin (林宜敬), in his own capacity as an author, was the first to donate two of his own books, The Happy Ghost Island (幸福的鬼島) and Roving Rebels and Innovators (流寇與創新者); a number of publishers, e-book platforms and writers also signed licensing consent forms at the press conference. See the next section for the list."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 17, 2026, against the full text of three moda press releases and the license-terms page of the Taiwan Sovereign AI Training Corpus website. This site has not tested anything itself, and does not judge for readers whether they should license or submit their work. The scale figures, dates and clause language cited below all reflect what these four official documents stated as of the day they were checked, and may change afterward."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 15, 2026, Taiwan's Ministry of Digital Affairs announced the launch of a public call for content for the Taiwan Sovereign AI Training Corpus, inviting publishers and writers to license their published works for AI training.",
+            "moda's release says the corpus went live in late 2025 and reached about 2.2 billion tokens \"as of the end of August this year\"; a separate July 24, 2026 release says Hakka-language data went live \"recently,\" adding about 20 million tokens, without giving an exact go-live date.",
+            "The official approach is royalty-free licensing: the license terms state that this license is non-transferable and non-sublicensable, and that even if the original corpus data is later withdrawn from use, this does not affect training results already completed.",
+            "On opting out, the four official documents cited in this article contain only one sentence: that \"a complete process for requesting withdrawal is in place.\" As of the September 17, 2026 check, this article found no URL, form, or processing time for that process."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The September 15 Press Conference: Who Signed What"
+        },
+        {
+          "type": "paragraph",
+          "text": "moda held a \"Public Content Call Launch Press Conference\" the same day. Its release states that those attending in person to sign licensing consent forms \"included publishers and e-book platforms such as Showwe Information Co., Ltd. (秀威資訊), INK (印刻文學), Readmoo (讀墨), foodNEXT (食力) and Cunext Group (巨思文化), as well as writers such as Lan Yifeng (藍弋丰) and Lee Kuei-shien (李魁賢, represented by family)\" — this is a list of examples, not a complete roster. Writers Chen Mingzhong (陳明忠), Lian Mingwei (連明偉), Zhu Guozhen (朱國珍) and Zhu Hezhi (朱和之) are separately described as having \"also contributed works in response.\" The official account describes these two groups separately and does not say whether the second group was present in person."
+        },
+        {
+          "type": "paragraph",
+          "text": "Minister Yi-Jing Lin said that how an AI model understands concepts such as democracy and checks on power is shaped by the social and cultural context embedded in its training corpus, and noted that the Chinese-language training data used by major international large language models is, at present, still mostly Simplified Chinese content. This is the minister's own characterization of the current situation; this site has not independently verified whether the claim itself is accurate."
+        },
+        {
+          "type": "paragraph",
+          "text": "moda emphasizes that the content call follows three principles — voluntary participation, explicit licensing, and the ability to opt out — and states that a complete process for requesting withdrawal is in place. The official release does not, however, explain the URL, form, or processing time for that process, nor does it set a deadline or a quota for this call; it only states that \"moda sincerely invites authors, publishers, cultural institutions, corporate bodies and content providers across all fields to take part.\""
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How the Corpus Grew to Its Current Scale"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Taiwan Sovereign AI Training Corpus did not first appear on September 15. moda published a launch announcement on December 24, 2025, whose text states that \"[the corpus] currently has more than 200 government agencies participating, with over 2,000 datasets and more than 600 million tokens uploaded,\" covering fields such as language, culture, education, biology and geography. The official wording used is \"currently,\" without giving a reference date for any of these three figures; the page itself carries a creation date of December 24, 2025 and a last-updated date of March 19, 2026."
+        },
+        {
+          "type": "paragraph",
+          "text": "On July 24, 2026, moda issued a press release announcing that the corpus had partnered with the Hakka Affairs Council to formally add Hakka-language resources, publications, cultural and historical archives, and research reports, adding about 20 million tokens of high-quality training data for the first time; moda did not state the actual go-live date. The release positions Hakka as \"one of our nation's national languages.\" The same release states that the corpus has accumulated more than 1.5 billion tokens of data since going live, but moda did not attach any cutoff point to this cumulative figure."
+        },
+        {
+          "type": "paragraph",
+          "text": "By September 15, moda stated that the corpus had reached about 2.2 billion tokens \"as of the end of August this year,\" and called the launch of the public content call a milestone marking the corpus's \"entry into a new stage of development.\" Of the three announcements, only this one gives a reference date for its scale figure: the December release says \"currently,\" the July release says \"since going live,\" and neither carries a cutoff point. The three figures therefore rest on different bases for counting; this article does not add them together, subtract one from another, or convert them into a single same-day figure."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Release Date",
+            "Official Scale Stated",
+            "Source of Data",
+            "Verification Basis"
+          ],
+          "rows": [
+            [
+              "December 24, 2025",
+              "\"Currently\" over 200 agencies, 2,000+ datasets, 600 million+ tokens (no reference date given)",
+              "Datasets uploaded by government agencies",
+              "moda launch announcement"
+            ],
+            [
+              "July 24, 2026",
+              "\"Since going live,\" over 1.5 billion tokens accumulated (no reference date given)",
+              "About 20 million tokens of new Hakka-language data from the Hakka Affairs Council",
+              "moda Hakka-language data press release"
+            ],
+            [
+              "September 15, 2026",
+              "\"As of the end of August this year,\" about 2.2 billion tokens",
+              "Launch of the public content call; current partners are publishers and e-book platforms",
+              "moda public content call press release"
+            ]
+          ],
+          "caption": "Source: moda press releases dated December 24, 2025, July 24, 2026 and September 15, 2026. Checked on September 17, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Who Can Contribute Data, What Counts, and Who Sits in the Middle"
+        },
+        {
+          "type": "paragraph",
+          "text": "moda explains that, at this stage, it is partnering with publishers and e-book platforms that hold rich corpus resources, and is proceeding on a royalty-free licensing basis; authors who wish to contribute their own works may have their publisher help upload them to the corpus. The official release does not mention whether authors may apply to upload their works on their own. The priority content categories are four: publications licensed with consent, publication synopses, publication excerpts, and classics and creative works whose copyright protection has expired and that can be activated as public-domain resources."
+        },
+        {
+          "type": "paragraph",
+          "text": "The license terms cast the whole process in three roles: the \"Licensor\" is the rights holder who provides the data; the \"Licensee\" is the recipient who uses the data under the terms; and the \"Corpus Platform\" is the third party that obtains the data from the Licensor and, on the Licensor's instructions, bridges it to the Licensee. The terms state explicitly that the Corpus Platform \"is not a party to any of the licensing relationships defined in this License,\" but that it may, with the Licensor's consent, evaluate and select recipients and/or validity periods of the data on the Licensor's behalf."
+        },
+        {
+          "type": "paragraph",
+          "text": "The license terms define \"Corpus Data\" more broadly than just books: it includes, but is not limited to, works usable for AI language and multimodal learning, such as text, music, artwork, photographs, graphics, audiovisual content and sound recordings, as well as compilation works resulting from the creative selection and arrangement of data. The September 15 release does not state how many books or tokens this call aims to collect before stopping, nor does it say whether a second round of calls will follow."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/diagram-1-en.svg",
+          "alt": "Four-panel diagram: who can contribute data, what content can be contributed, the licensing conditions, and how completed training results are unaffected by opting out",
+          "width": 1600,
+          "height": 900,
+          "caption": "Source: moda press release dated September 15, 2026 and the Taiwan Sovereign AI Training Corpus License. Checked on September 17, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the License Terms Actually Do to a Contributor's Rights"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Taiwan Sovereign AI Training Corpus License – Version 1 (臺灣主權AI訓練語料授權條款-第1版), published on the corpus website, was, according to moda's December 24, 2025 launch announcement, jointly introduced by moda and the Taiwan Intellectual Property Office (TIPO), Ministry of Economic Affairs. The license terms call the individual or entity with legal rights who provides the data the \"Licensor,\" and the party that receives and uses the data the \"Licensee.\" What the Licensor grants the Licensee is the right to reproduce, adapt, compile and exercise other necessary rights under copyright and related rights, so that the data can be lawfully used for AI training; \"this license is non-transferable and non-sublicensable,\" and its validity period may be specified by the Licensor or its representative as a set number of years or in perpetuity."
+        },
+        {
+          "type": "paragraph",
+          "text": "The terms also draw the real boundary of the \"opt-out\" option. Models, weights, code, documentation or other output that the Licensee produces through training belong to the Licensee or the model operator if they meet the requirements for copyright protection; and \"even if the original corpus data is subsequently withdrawn from use, this does not affect training results already completed, including but not limited to the resulting models, weights, and code, documentation or other forms of output.\" The terms do not say whether copies of data already downloaded may continue to be used for training afterward. A separate proviso states that, unless the results are substantially similar to the original data and negatively affect the market or value of the original data, and exceed a reasonable scope of learning, the Licensor agrees not to treat the AI training results as an adaptation or compilation of its own work, and agrees not to impose any restrictions on, or bring litigation over, the subsequent use, modification, redistribution or computation of the results."
+        },
+        {
+          "type": "paragraph",
+          "text": "Unless exempted by law or otherwise agreed by the Licensor, models or tools that the Licensee trains using the data must carry identifying information provided by the Corpus Platform — the terms give examples such as the dataset name, version number, data provider, year of release, and the dataset's application page or official website — and must note that it was released under this license. The terms state explicitly, however, that the Licensee \"is not required to attribute each individual component within the Corpus Data\" item by item, meaning there is no need to list the source of every single book. Where the output takes the form of code or documentation, the attribution obligation can be simplified; the example the terms give is that when such output is publicly performed or displayed, it should be labeled \"AI-generated output.\" The metadata on the license page shows it was last modified on September 3, 2026, before the September 15 press conference."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the Terms Don't Say, and How to Check for Yourself"
+        },
+        {
+          "type": "paragraph",
+          "text": "The disclaimer in the terms is stated plainly: this is a \"royalty-free basis,\" under which the Licensor asserts only the copyright and related rights it holds in the data itself, provides no warranty of any kind for any other matter, and bears no responsibility for direct or indirect losses arising from use of the data. The terms separately list ten legally or ethically controversial activities for which the Licensee alone bears responsibility, including violating international or local laws, harming minors, generating false information, using the data to track personal information, and violating the lawful rights of others. The terms state that the Licensor — the individual or entity that provided the data — is not, merely by providing it, to be deemed to have expressed consent, permission or approval for such activities."
+        },
+        {
+          "type": "paragraph",
+          "text": "As of the September 17, 2026 check of the four official documents cited in this article, this article found no URL, form or processing time for the withdrawal process, nor any figure for how many works this content call has received so far, nor which agency or vendor operates and maintains the corpus. Compensation, however, is not a matter the documents stay silent on — they do address it: the press release states the call is \"carried out on a royalty-free licensing basis,\" and the license terms describe a \"royalty-free basis\"; neither is a fee or a revenue share."
+        },
+        {
+          "type": "paragraph",
+          "text": "Publishers or authors interested in contributing data can check the Taiwan Sovereign AI Training Corpus's official website directly, or call the inquiry line published in the press release, 0800-023-300. The terms also state that both the Traditional Chinese and English versions are official texts with equal legal effect; where the two language versions differ in wording, this article follows only the Chinese version."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Does this content call have a deadline?",
+              "answer": "The press release doesn't set one. moda's September 15, 2026 release does not give a deadline or a quota for this public content call, and as of the September 17, 2026 check, the other three official documents cited in this article showed no deadline of any kind either."
+            },
+            {
+              "question": "Is there a fee or revenue share for contributing data?",
+              "answer": "What the official documents state is royalty-free licensing. moda's press release explains that, at this stage, it is partnering with publishers and e-book platforms \"on a royalty-free licensing basis,\" and the Taiwan Sovereign AI Training Corpus License is likewise established on a \"royalty-free basis.\" As of the September 17, 2026 check, the four official documents cited in this article showed no fee, royalty, or revenue-sharing mechanism of any kind."
+            },
+            {
+              "question": "If I change my mind, can I withdraw data I've already licensed?",
+              "answer": "moda states that a process for requesting withdrawal is in place, but as of the September 17, 2026 check, the four official documents cited in this article showed no URL, form, or applicant-eligibility details for that process. More importantly, the license terms state explicitly that \"even if the original corpus data is subsequently withdrawn from use, this does not affect training results already completed,\" so models, weights and output already trained will not be clawed back because of a withdrawal. Whether copies of data already downloaded can continue to be used for training afterward is not addressed in the terms."
+            },
+            {
+              "question": "Was the Hakka-language data added as part of this content call?",
+              "answer": "No, it's a separate batch. The Hakka-language data was added through a partnership between moda and the Hakka Affairs Council; the July 24, 2026 press release states it went live formally \"recently,\" adding about 20 million tokens for the first time. moda did not give an exact go-live date — July 24 is only the release's publication date. The September 15 call is a separate effort aimed at publishers and writers; the two have different sources and different timing."
+            },
+            {
+              "question": "How much data has the corpus accumulated in total right now?",
+              "answer": "According to moda's September 15, 2026 press release, the corpus had reached about 2.2 billion tokens \"as of the end of August this year\"; the same release also states that the corpus went live at the end of 2025 and initially drew mainly on data from central and local government agencies. The scale figures in the other two releases are given as \"currently\" and \"since going live\" respectively, neither with a reference date, so this article does not combine the three figures into a single \"current\" number."
+            },
+            {
+              "question": "Can authors submit their own work to the corpus directly?",
+              "answer": "The path the official documents describe runs through a publisher. moda's press release explains that authors who wish to contribute their own works \"may have their publisher help upload them to the corpus.\" As of the September 17, 2026 check, the four official documents cited in this article gave no indication of whether authors can bypass their publisher and apply to upload their work themselves."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Three Announcements, Three Different Ways of Counting",
+          "text": "The corpus's scale figures come from three official press releases issued on different dates: the December 24, 2025 announcement states \"currently\" more than 600 million tokens; the July 24, 2026 announcement states \"since going live,\" over 1.5 billion tokens; and the September 15, 2026 announcement states \"as of the end of August this year,\" about 2.2 billion tokens. Only the last one gives a reference date for its figure, so these three numbers cannot be added or subtracted directly, nor treated as three points on the same growth curve. Beyond these three press releases, this article has not checked real-time figures from other channels, and does not cite any. Readers who want the latest status are advised to check the Taiwan Sovereign AI Training Corpus's official website or moda's press releases directly. Checked on: September 17, 2026."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "moda Hosts International 6G Spectrum Symposium: What Was Discussed, What Remains Undecided",
+              "kind": "life",
+              "slug": "tech-news-taiwan-6g-spectrum-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "moda Launches Public Call for Content for Sovereign AI Corpus, Rallying Writers and Publishers to Take Part",
+          "url": "https://moda.gov.tw/press/press-releases/20640",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "\"Taiwan Sovereign AI Training Corpus\" Goes Live! Ministry of Digital Affairs Partners with 200 Agencies to Build a Local Data Resource",
+          "url": "https://moda.gov.tw/press/press-releases/18314",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "moda Adds 20 Million Tokens of Hakka-Language Data to the \"Taiwan Sovereign AI Training Corpus,\" Strengthening the Local AI Language Data Foundation",
+          "url": "https://moda.gov.tw/press/press-releases/20230",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Taiwan Sovereign AI Training Corpus License – Version 1",
+          "url": "https://taic.moda.gov.tw/content/license",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "「Taiwan Sovereign AI Training Corpus（臺灣主權AI訓練語料庫）」が民間言語データの提供募集を開始 ライセンス条項と客家語データの現状",
+      "description": "2026年9月15日、台湾のデジタル発展部（moda）はTaiwan Sovereign AI Training Corpusへの民間からの言語データ提供募集の開始を発表し、出版社や作家に出版物をAI訓練用にライセンス提供するよう呼びかけました。本記事はmoda発表3件と同コーパスのライセンス条項ページに基づき、募集範囲、無償ライセンスの仕組み、「撤回可能」が実際にどこまで及ぶのか、公式文書が説明していない部分を解説します。確認日は2026年9月17日です。",
+      "hero": {
+        "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左に積み重ねられた3冊の本、中央には丸い印が押されたライセンス文書へ矢印が伸び、さらに右側の9つの枠を含む四角形へ矢印が続く。出版物がライセンスを経てコーパスに入る様子を表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月15日、台湾のデジタル発展部（moda）はTaiwan Sovereign AI Training Corpus（臺灣主權AI訓練語料庫）への民間言語データ提供募集を正式に開始したと発表し、出版社、作家、文化機関に対して出版物をAI訓練用としてコーパスにライセンス提供するよう呼びかけました。林宜敬部長は作家の立場からまず自身の著作『幸福な鬼島』（幸福的鬼島）と『流寇と革新者』（流寇與創新者）を提供し、複数の出版社や電子書籍プラットフォーム、作家も記者会見の場でライセンス同意書に署名しました。顔ぶれは次の節で紹介します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日に確認を行い、moda発表3件の全文と同コーパスのウェブサイトに掲載されたライセンス条項ページを確認しました。当サイトは実地の検証を行っておらず、ライセンス提供や投稿をすべきかどうかを読者に代わって判断するものでもありません。以下で触れる規模の数字、日付、条文はいずれも、これら4件の公式文書が確認当日時点で記載していた内容に基づいており、その後変更される可能性があります。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月15日、台湾のデジタル発展部はTaiwan Sovereign AI Training Corpusへの民間言語データ提供募集の開始を発表し、出版社や作家に出版物をAI訓練用としてライセンス提供するよう呼びかけました。",
+            "modaはこの発表で、コーパスは2025年末に稼働開始し、規模は「今年8月末時点」で約22億Tokensに達したと記載しています。2026年7月24日付の別発表では、客家語データが「近日」正式公開され、初めて約2,000万tokensが追加されたとしていますが、正確な公開日は明記されていません。",
+            "公式の推進方式は無償ライセンスで、ライセンス条項にはこのライセンスは再許諾および譲渡ができないこと、元の言語データが後に提供停止となった場合でも、すでに完了した訓練の成果には影響しないことが明記されています。",
+            "撤回については、本記事が引用する4件の公式文書に記載があるのは「完備した撤回申請の窓口を設けている」という一文のみです。2026年9月17日時点の確認では、この窓口のURL、申請フォーム、処理時間はいずれも確認できませんでした。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月15日の記者会見、誰が何に署名したか"
+        },
+        {
+          "type": "paragraph",
+          "text": "modaは同日、「民間言語データ募集開始記者会見」を開催しました。発表文には「秀威資訊、印刻文學、Readmoo讀墨、食力、巨思文化など出版社・電子書籍プラットフォーム事業者、および藍弋丰、李魁賢（家族代表）など作家が自ら出席し、ライセンス同意書に署名した」とありますが、これは例示であって完全な名簿ではありません。陳明忠、連明偉、朱國珍、朱和之ら作家については「著作提供で賛同」したと、別枠で記されています。公式発表はこの2つのグループを分けて記述しており、後者が会場に出席したかどうかは説明していません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "林宜敬部長は、AIモデルが民主主義や権力の抑制と均衡といった概念をどう理解するかは、訓練言語データに含まれる社会的・文化的文脈の影響を受けると指摘し、現在、国際的な大規模言語モデルの中国語訓練データは依然として簡体字コンテンツが中心であると述べました。これは部長自身による現状認識であり、当サイトはこの発言自体の正しさを別途検証したわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "modaは、言語データ募集が「自発的参加、明確なライセンス、撤回可能」という3原則に基づいていると強調し、完備した撤回申請の窓口を設けているとしています。ただし公式発表はこの窓口のURL、申請フォーム、処理時間を説明しておらず、今回の募集について締切や件数の上限も定めていません。記載されているのは「modaは作家、出版社、文化機関、法人、各分野のコンテンツ提供者の参加を心より歓迎する」という一文のみです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "コーパスはどのように現在の規模へ成長したか"
+        },
+        {
+          "type": "paragraph",
+          "text": "Taiwan Sovereign AI Training Corpusは9月15日に突然現れたものではありません。デジタル発展部は2025年12月24日に稼働開始の発表を行い、本文には「現在すでに200を超える政府機関が参加し、2,000件超のデータセット、6億を超えるtokensが公開されている」とあり、言語、文化、教育、生物、地理環境などの分野を網羅するとしています。公式が使った言葉は「現在」であり、この3つの数字について統計の基準日は示されていません。このページ自体の作成日は2025年12月24日、更新日は2026年3月19日です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年7月24日、modaは新聞発表を行い、コーパスが客家委員会と連携し、近日中に客家語の言語資源、出版物、文史資料、研究報告などのコンテンツを正式に公開し、初めて約2,000万tokensの高品質な訓練言語データを追加したと発表しました。実際の公開日は明記されていません。客家語は発表の中で「我が国の国家言語の一つ」と位置づけられています。同じ発表には、コーパスは稼働開始以来15億tokensを超える言語データ量を蓄積したとありますが、この累計数字に基準時点は付されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月15日になると、modaはコーパスの規模が「今年8月末時点」で約22億Tokensに達したと述べ、民間言語データ募集の開始を、コーパスが「新たな発展段階に入る」節目と位置づけました。3件の発表のうち、規模の数字に統計基準日を明記しているのはこの発表のみです。12月の発表は「現在」、7月の発表は「稼働開始以来」としており、いずれも基準時点はありません。3つの数字はこのようにそれぞれ異なる算定基準に基づいており、本記事はこれらを足し合わせたり、差し引いたりせず、同一時点の規模に換算することもしません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "発表日",
+            "公式発表の規模",
+            "言語データの出所",
+            "確認の根拠"
+          ],
+          "rows": [
+            [
+              "2025年12月24日",
+              "「現在」200機関超、2,000件超のデータセット、6億tokens超（基準日の記載なし）",
+              "各政府機関が公開したデータセット",
+              "デジタル発展部の稼働開始発表"
+            ],
+            [
+              "2026年7月24日",
+              "「稼働開始以来」累計15億tokens超（基準日の記載なし）",
+              "客家委員会提供の客家語データ約2,000万tokensを追加",
+              "デジタル発展部の客家語データ発表"
+            ],
+            [
+              "2026年9月15日",
+              "「今年8月末時点」で約22億Tokens",
+              "民間言語データ募集を開始、現段階の連携先は出版業と電子書籍プラットフォーム",
+              "デジタル発展部の民間言語データ募集発表"
+            ]
+          ],
+          "caption": "出典：デジタル発展部の2025年12月24日、2026年7月24日、2026年9月15日発表。確認日2026年9月17日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰が言語データを提供でき、何を提供でき、誰が仲介するのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "modaの説明によれば、現段階では豊富な言語データ資源を持つ出版業と電子書籍プラットフォームを連携先とし、無償ライセンス方式で進めています。作家が自身の著作を提供したい場合は、所属する出版社がコーパスへの登録を支援できるとされていますが、作家自身が登録を申請できるかどうかは公式発表に記載がありません。重点的な募集対象は4つのカテゴリーです。同意に基づきライセンスされた出版物、出版物の紹介文、出版物の試し読みコンテンツ、そして著作権の保護期間をすでに過ぎ、パブリックドメインとして活用できる古典・創作物です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ライセンス条項は、プロセス全体を3つの役割に整理しています。「ライセンサー」は言語データを提供する権利者、「ライセンシー」は条項に基づき言語データを利用する受領者、そして「コーパスプラットフォーム」はライセンサーから言語データを取得し、その指示に従ってライセンシーへ橋渡しする第三者です。条項には、コーパスプラットフォームは「本ライセンスが定めるいずれのライセンス関係の当事者にも該当しない」と明記されていますが、ライセンサーの同意を得た上で、言語データの受領先や有効期間を評価・選定することはできるとされています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ライセンス条項が定める「言語データ」の範囲は書籍より広く、AIの言語・マルチモーダル学習に利用できる文章、音楽、美術、写真、図形、視聴覚コンテンツ、録音などの作品を含み（これに限定されない）、創作性のあるデータの選択・配列によって生じる編集著作物も含まれます。9月15日の発表には、今回の募集で何冊、何tokens集まった時点で終了するのかは書かれておらず、今後第2弾の募集があるかどうかも記載がありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/diagram-1-ja.svg",
+          "alt": "4コマ図解：誰が言語データを提供できるか、どんな内容を提供できるか、ライセンス条件、そしてすでに完了した訓練成果は撤回の影響を受けないこと",
+          "width": 1600,
+          "height": 900,
+          "caption": "出典：デジタル発展部の2026年9月15日発表およびTaiwan Sovereign AI Training Corpus License。確認日2026年9月17日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ライセンス条項は投稿者の権利に何をもたらすのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "コーパスのウェブサイトが公開する「Taiwan Sovereign AI Training Corpus License – Version 1（臺灣主權AI訓練語料授權條款-第1版）」は、デジタル発展部の2025年12月24日付稼働開始発表によれば、modaと経済部知的財産局（TIPO）が共同で打ち出したものです。条項は、言語データを提供する適法な権利を持つ個人または団体を「ライセンサー」、言語データを受け取り利用する側を「ライセンシー」と呼びます。ライセンサーがライセンシーに付与するのは、複製、翻案、編集、その他著作権および著作関連権利上必要な利用権であり、言語データを適法にAI訓練へ用いることを可能にします。「このライセンスは再許諾および譲渡ができない」とされ、有効期間はライセンサーまたはその代表者が特定の年数、または永久として指定できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "条項はまた、「撤回可能」の実際の境界線も定めています。ライセンシーが訓練によって得たモデル、重み、コード、文書その他の出力は、著作権保護の要件を満たす場合、ライセンシーまたはモデル運用者に帰属します。さらに「元の言語データが後に提供停止となった場合でも、すでに完了した訓練の成果（生成されたモデル、重み、コード、文書その他の形態の出力を含むがこれに限定されない）には影響しない」とされています。一方、すでにダウンロード済みの言語データの複製がその後も訓練に使い続けられるかどうかについては、条項に記載がありません。もう一つの但し書きとして、成果が元の言語データと実質的に類似し、元の言語データの市場または価値に負の影響を及ぼし、かつ合理的な学習の範囲を超える場合を除き、ライセンサーはAI訓練の成果を自らの著作物の翻案または編集とはみなさないこと、またその後の利用、改変、再頒布または演算行為に対していかなる制限も課さず、訴訟も提起しないことに同意する、としています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ライセンシーが言語データを使って訓練したモデルやツールは、法令により免除される場合やライセンサーが別途同意した場合を除き、コーパスプラットフォームが提供する識別情報を表示しなければなりません——条項が挙げる例は、データセット名、バージョン番号、データセット提供者、公開年、データセットの申請ページまたは公式サイトです——そして、これがこのライセンス条項に基づいて公開された状態であることを示す必要があります。ただし条項には「本ライセンスの言語データに含まれる個々の素材について……逐一表示する必要はない」と明記されており、1冊ごとに出典を列挙する必要はありません。出力がコードや文書の場合、表示義務はより簡略化できます。条項が挙げる例は、出力成果を公に上演または展示する際に「AI生成コンテンツ」である旨を明記すべきというものです。条項ページのメタデータによれば、最終更新は2026年9月3日で、9月15日の記者会見より前です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "条項に書かれていない部分と、自分で確認する方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "条項の免責事項は率直です。これは「ロイヤリティフリーのライセンス基盤」であり、ライセンサーは言語データ自体について有する著作権および著作関連権利の地位のみを明確に主張し、それ以外の事項については一切の保証を行わず、データの利用から生じる直接的・間接的な損失についても責任を負いません。条項はさらに、ライセンシーが自己責任を負うべき法律上・倫理上問題のある行為を10項目挙げています。国際法や現地法規への違反、未成年者への加害、虚偽情報の生成、個人情報の追跡への利用、他者の適法な権利の侵害などです。条項が述べているのは、ライセンサー（言語データを提供した個人または団体）は言語データを提供したという事実だけで、これらの行為について同意、許可、承認を示したとはみなされない、ということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事が引用する4件の公式文書について2026年9月17日まで確認した範囲では、撤回申請窓口のURL、申請フォーム、処理時間は見当たらず、今回の民間募集がこれまでに何件の著作を受け付けたか、コーパスの運用管理を担う機関や事業者がどこであるかについても記載がありませんでした。一方、報酬については「言及がない」のではなく、明確に言及されています。発表文には「無償ライセンス方式で推進する」とあり、条項には「ロイヤリティフリーのライセンス基盤」とあり、いずれも原稿料や収益分配ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "言語データの提供を希望する出版社や作家は、Taiwan Sovereign AI Training Corpusの公式サイトに直接問い合わせるか、発表文に記載された相談専用ダイヤル0800-023-300に電話することができます。条項にはまた、正体字中国語版と英語版はいずれも正式なテキストであり、同等の法的効力を持つと明記されています。両言語版の文言が異なる場合、本記事は中国語版のみに基づいて記述しています。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "今回の募集に締切はありますか。",
+              "answer": "発表文には定められていません。modaの2026年9月15日の発表には、今回の民間言語データ募集について締切や募集件数の上限は記載がなく、本記事が引用する他の3件の公式文書も、2026年9月17日時点の確認でいかなる期限も確認できませんでした。"
+            },
+            {
+              "question": "言語データを提供すると原稿料や収益分配はありますか。",
+              "answer": "公式発表が記しているのは無償ライセンスです。modaの発表は、現段階では出版業と電子書籍プラットフォームを連携先とし、「無償ライセンス方式で推進する」と説明しており、Taiwan Sovereign AI Training Corpus Licenseも「ロイヤリティフリーのライセンス基盤」の上に定められています。本記事が引用する4件の公式文書について2026年9月17日時点で確認した範囲では、原稿料、ライセンス料、収益分配の仕組みはいずれも見当たりませんでした。"
+            },
+            {
+              "question": "後で気が変わった場合、提供済みの言語データを撤回できますか。",
+              "answer": "modaは撤回申請の窓口を設けているとしていますが、本記事が引用する4件の公式文書について2026年9月17日時点で確認した範囲では、この窓口のURL、申請フォーム、申請資格などの詳細は見当たりませんでした。さらに重要なのは、ライセンス条項に「元の言語データが後に提供停止となった場合でも、すでに完了した訓練の成果には影響しない」と明記されている点です。すでに訓練済みのモデル、重み、出力は撤回によって回収されることはありません。すでにダウンロード済みの言語データの複製がその後も訓練に使い続けられるかどうかについては、条項に記載がありません。"
+            },
+            {
+              "question": "客家語データは今回の募集で新たに追加されたのですか。",
+              "answer": "同じロットではありません。客家語データはmodaと客家委員会の連携によって公開されたもので、2026年7月24日の発表には「近日」正式公開され、初めて約2,000万tokensが追加されたとあります。公式は正確な公開日を示しておらず、7月24日はあくまでこの発表の公開日です。9月15日の今回は出版業と作家を対象とした民間言語データ募集であり、両者は出所も時期も異なります。"
+            },
+            {
+              "question": "コーパスは現在、総計でどれだけの言語データを蓄積していますか。",
+              "answer": "modaの2026年9月15日発表によれば、コーパスの規模は「今年8月末時点」で約22億Tokensです。同じ発表には、コーパスは2025年末に稼働を開始し、当初は中央・地方政府の言語データが中心だったとも記されています。他の2件の発表の規模数字は、それぞれ「現在」「稼働開始以来」とされており、いずれも統計基準日は明記されていません。そのため本記事は、この3つの数字を一つの「現在」の数字として合算しません。"
+            },
+            {
+              "question": "作家は自分の作品を自分でコーパスに提供できますか。",
+              "answer": "公式が示す経路は出版社を通じたものです。modaの発表は、作家が自身の著作を提供したい場合、「所属する出版社がコーパスへの登録を支援できる」と説明しています。本記事が引用する4件の公式文書について2026年9月17日時点で確認した範囲では、作家が出版社を介さず自ら登録を申請できるかどうかについての説明は見当たりませんでした。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "3件の発表、3つの異なる算定基準",
+          "text": "コーパスの規模の数字は、発表日の異なる3件の公式発表に基づいています。2025年12月24日の発表は「現在」6億tokens超、2026年7月24日の発表は「稼働開始以来」15億tokens超、2026年9月15日の発表は「今年8月末時点」で約22億Tokensとしています。統計基準日が明記されているのは最後の発表のみであるため、これら3つの数字を直接足し合わせたり差し引いたりすることはできず、同一の成長曲線上の3点として扱うこともできません。この3件の発表以外に、本記事は他の経路によるリアルタイムの統計数字を確認しておらず、したがって引用していません。最新の状況を確認したい読者は、Taiwan Sovereign AI Training Corpusの公式サイトまたはmodaの発表を直接確認することをお勧めします。確認日：2026年9月17日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "デジタル発展部が6G周波数国際シンポジウムを開催：何が話し合われ、何がまだ決まっていないのか",
+              "kind": "life",
+              "slug": "tech-news-taiwan-6g-spectrum-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "moda、主権AIコーパスへの民間言語データ募集を開始 作家と出版業界に参加を呼びかけ",
+          "url": "https://moda.gov.tw/press/press-releases/20640",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "「Taiwan Sovereign AI Training Corpus」稼働開始！ デジタル発展部が200機関と連携し国産言語データ資源を構築",
+          "url": "https://moda.gov.tw/press/press-releases/18314",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "moda「Taiwan Sovereign AI Training Corpus」に2,000万tokensの客家語データを追加 国産AI言語データの基盤を強化",
+          "url": "https://moda.gov.tw/press/press-releases/20230",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Taiwan Sovereign AI Training Corpus License – Version 1",
+          "url": "https://taic.moda.gov.tw/content/license",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Taiwan Sovereign AI Training Corpus(臺灣主權AI訓練語料庫), 민간 언어자료 제공 모집 시작: 라이선스 약관과 하카어 데이터 현황",
+      "description": "2026년 9월 15일, 대만 디지털발전부(moda)는 Taiwan Sovereign AI Training Corpus에 대한 민간 언어자료 제공 모집 시작을 발표하고, 출판사와 작가에게 출판물을 AI 훈련용으로 라이선스 제공해 달라고 요청했습니다. 본 기사는 moda의 보도자료 3건과 코퍼스 웹사이트의 라이선스 약관 페이지를 근거로, 모집 범위와 무상 라이선스 방식, '철회 가능'이 실제로 어디까지 적용되는지, 그리고 공식 문서가 설명하지 않은 부분을 다룹니다. 확인일은 2026년 9월 17일입니다.",
+      "hero": {
+        "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/hero-ko.jpg",
+        "alt": "원작 삽화: 왼쪽에는 쌓여 있는 책 세 권, 가운데에는 원형 도장이 찍힌 라이선스 문서로 화살표가 이어지고, 오른쪽에는 작은 사각형 아홉 개가 담긴 큰 사각형으로 다시 화살표가 이어진다. 출판물이 라이선스를 거쳐 코퍼스로 들어가는 과정을 나타낸다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 15일, 대만 디지털발전부(moda)는 Taiwan Sovereign AI Training Corpus(臺灣主權AI訓練語料庫)에 대한 민간 언어자료 제공 모집을 공식적으로 시작한다고 발표하고, 출판사와 작가, 문화 기관에 출판물을 AI 훈련용으로 코퍼스에 라이선스 제공해 달라고 요청했습니다. 린이징(林宜敬) 장관은 작가로서 가장 먼저 자신의 저서 《행복한 귀신섬》(幸福的鬼島)과 《떠돌이 반란군과 혁신가》(流寇與創新者)를 기증했으며, 여러 출판사와 전자책 플랫폼, 작가들도 기자회견 현장에서 라이선스 동의서에 서명했습니다. 명단은 다음 절에서 소개합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 17일에 검증을 진행했으며, moda 보도자료 3건의 전문과 Taiwan Sovereign AI Training Corpus 웹사이트에 게재된 라이선스 약관 페이지를 확인했습니다. 본 사이트는 직접 시험해 보지 않았고, 라이선스 제공이나 투고 여부를 독자 대신 판단하지도 않습니다. 아래에서 다루는 규모 수치, 날짜, 조항 내용은 모두 이 네 건의 공식 문서가 검증 당일 시점에 기재하고 있던 내용에 근거하며, 이후 변경될 수 있습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 15일, 대만 디지털발전부는 Taiwan Sovereign AI Training Corpus에 대한 민간 언어자료 제공 모집 시작을 발표하고, 출판사와 작가에게 출판물을 AI 훈련용으로 라이선스 제공해 달라고 요청했습니다.",
+            "moda는 이 발표에서 코퍼스가 2025년 말 가동을 시작했으며, 규모는 '올해 8월 말 기준' 약 22억 Tokens에 달했다고 밝혔습니다. 2026년 7월 24일자 별도 발표에서는 하카어(客家語) 데이터가 '최근' 정식으로 공개되어 처음으로 약 2,000만 tokens가 추가되었다고 했지만, 정확한 공개일은 명시하지 않았습니다.",
+            "공식 추진 방식은 무상 라이선스이며, 라이선스 약관에는 이 라이선스가 재허가 및 양도가 불가능하다는 점과, 원 언어자료 제공이 이후 중단되더라도 이미 완료된 훈련 성과에는 영향을 주지 않는다는 점이 명시되어 있습니다.",
+            "철회와 관련해, 본 기사가 인용하는 네 건의 공식 문서에는 '완비된 철회 신청 창구를 마련했다'는 한 문장만 있습니다. 2026년 9월 17일 기준 검증에서 이 창구의 URL, 신청 양식, 처리 시간은 확인되지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 15일 기자회견, 누가 무엇에 서명했나"
+        },
+        {
+          "type": "paragraph",
+          "text": "moda는 같은 날 '민간 언어자료 모집 시작 기자회견'을 열었습니다. 보도자료에는 '秀威資訊(Showwe Information Co., Ltd.), 印刻文學(INK), Readmoo讀墨(Readmoo), 食力(foodNEXT), 巨思文化(Cunext Group) 등 출판 및 전자책 플랫폼 업체와 란이펑(藍弋丰), 리쿠이셴(李魁賢, 가족 대표) 등 작가가 직접 참석해 라이선스 동의서에 서명했다'고 되어 있지만, 이는 예시일 뿐 완전한 명단은 아닙니다. 천밍중(陳明忠), 롄밍웨이(連明偉), 주궈전(朱國珍), 주허즈(朱和之) 등 작가는 별도로 '저작물 제공으로 호응했다'고 기재되어 있습니다. 공식 발표는 이 두 그룹을 구분해서 서술했을 뿐, 후자가 현장에 참석했는지는 설명하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "린이징 장관은 AI 모델이 민주주의, 권력 견제와 균형 같은 개념을 이해하는 방식이 훈련 언어자료에 담긴 사회적・문화적 맥락의 영향을 받는다고 지적하며, 현재 국제 대형 언어모델의 중국어 훈련 데이터가 여전히 대부분 간체자 콘텐츠 위주라고 언급했습니다. 이는 장관 본인의 현황에 대한 견해이며, 본 사이트는 이 발언 자체가 사실인지 별도로 검증하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "moda는 언어자료 모집이 '자발적 참여, 명확한 라이선스, 철회 가능'이라는 3대 원칙을 따른다고 강조하고, 완비된 철회 신청 창구를 마련했다고 밝혔습니다. 다만 공식 보도자료는 이 창구의 URL, 신청 양식, 처리 시간을 설명하지 않으며, 이번 모집의 마감일이나 건수 상한도 정하지 않았습니다. 기재된 내용은 'moda는 작가, 출판사, 문화 기관, 법인, 각 분야의 콘텐츠 제공자가 함께 참여해 주기를 진심으로 요청한다'는 한 문장뿐입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "코퍼스는 어떻게 지금의 규모로 성장했나"
+        },
+        {
+          "type": "paragraph",
+          "text": "Taiwan Sovereign AI Training Corpus는 9월 15일에 갑자기 등장한 것이 아닙니다. 디지털발전부는 2025년 12월 24일 가동 개시 발표를 냈으며, 본문에는 '현재 이미 200개가 넘는 정부 기관이 참여했고, 2,000건이 넘는 데이터셋과 6억 개가 넘는 tokens가 공개되어 있다'고 되어 있으며, 내용은 언어, 문화, 교육, 생물, 지리환경 등의 분야를 포괄한다고 밝혔습니다. 공식이 사용한 표현은 '현재'이며, 이 세 수치에 대한 통계 기준일은 제시되지 않았습니다. 이 페이지 자체의 작성일은 2025년 12월 24일, 갱신일은 2026년 3월 19일입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 7월 24일, moda는 보도자료를 내고 코퍼스가 하카위원회(客家委員會)와 협력해 최근 하카어 언어자원, 출판물, 문사(文史) 자료, 연구보고서 등을 정식으로 공개하고, 처음으로 약 2,000만 tokens의 고품질 훈련 언어자료를 추가했다고 발표했습니다. 실제 공개일은 명시되지 않았습니다. 하카어는 보도자료에서 '우리나라 국가언어 중 하나'로 규정되었습니다. 같은 발표에는 코퍼스가 가동 이후 15억 tokens가 넘는 언어자료량을 누적했다고 되어 있지만, 이 누적 수치에는 어떤 마감 시점도 붙어 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 15일이 되자 moda는 코퍼스 규모가 '올해 8월 말 기준' 약 22억 Tokens에 달했다고 밝히고, 민간 언어자료 모집 시작을 코퍼스가 '새로운 발전 단계에 접어드는' 이정표라고 칭했습니다. 세 건의 발표 중 규모 수치에 통계 기준일을 명시한 것은 이 발표뿐입니다. 12월 발표는 '현재', 7월 발표는 '가동 이후'라고 되어 있으며, 둘 다 마감 시점이 없습니다. 따라서 세 수치는 각각 다른 산정 기준에 근거하고 있으며, 본 기사는 이를 더하거나 빼지 않고, 같은 시점의 규모로 환산하지도 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "발표일",
+            "공식 발표 규모",
+            "언어자료 출처",
+            "검증 근거"
+          ],
+          "rows": [
+            [
+              "2025년 12월 24일",
+              "'현재' 200개 기관 초과, 데이터셋 2,000건 초과, 6억 tokens 초과(기준일 미기재)",
+              "각 정부 기관이 공개한 데이터셋",
+              "디지털발전부 가동 개시 발표"
+            ],
+            [
+              "2026년 7월 24일",
+              "'가동 이후' 누적 15억 tokens 초과(기준일 미기재)",
+              "하카위원회 제공 하카어 데이터 약 2,000만 tokens 추가",
+              "디지털발전부 하카어 데이터 보도자료"
+            ],
+            [
+              "2026년 9월 15일",
+              "'올해 8월 말 기준' 약 22억 Tokens",
+              "민간 언어자료 모집 시작, 현 단계 협력 대상은 출판업과 전자책 플랫폼",
+              "디지털발전부 민간 언어자료 모집 보도자료"
+            ]
+          ],
+          "caption": "출처: 디지털발전부의 2025년 12월 24일, 2026년 7월 24일, 2026년 9월 15일 보도자료. 확인일 2026년 9월 17일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "누가 언어자료를 제공할 수 있고, 무엇을 제공할 수 있으며, 누가 중개하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "moda의 설명에 따르면, 현 단계에서는 풍부한 언어자료 자원을 보유한 출판업과 전자책 플랫폼을 협력 대상으로 삼아 무상 라이선스 방식으로 추진하고 있습니다. 작가가 자신의 저작물을 제공하고 싶은 경우 소속 출판사가 코퍼스 등록을 지원할 수 있다고 되어 있지만, 작가 본인이 직접 등록을 신청할 수 있는지는 공식 보도자료에 언급이 없습니다. 중점 모집 대상은 네 가지 범주입니다. 동의를 거쳐 라이선스된 출판물, 출판물 소개, 출판물 미리보기 콘텐츠, 그리고 저작권 보호 기간이 이미 지나 공공재로 활용할 수 있는 고전과 창작물입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "라이선스 약관은 전체 절차를 세 가지 역할로 정리합니다. '라이선서(Licensor)'는 언어자료를 제공하는 권리자, '라이선시(Licensee)'는 약관에 따라 언어자료를 이용하는 수령자, 그리고 '코퍼스 플랫폼'은 라이선서로부터 언어자료를 확보해 그 지시에 따라 라이선시에게 다리 역할을 하는 제3자입니다. 약관에는 코퍼스 플랫폼이 '본 라이선스가 정하는 어떠한 라이선스 관계의 당사자에도 해당하지 않는다'고 명시되어 있지만, 라이선서의 동의를 얻어 언어자료의 수령 대상이나 유효기간을 평가・선정할 수 있다고 되어 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "라이선스 약관이 정의하는 '언어자료 데이터'의 범위는 책보다 넓습니다. AI의 언어 및 멀티모달 학습에 사용할 수 있는 어문, 음악, 미술, 사진, 도형, 시청각, 녹음 등의 저작물을 포함하되 이에 한정되지 않으며, 창작성 있는 데이터의 선택과 배열로 생기는 편집저작물도 포함됩니다. 9월 15일 발표에는 이번 모집이 몇 권, 몇 tokens가 모이면 종료되는지 쓰여 있지 않고, 향후 2차 모집이 있을지도 기재되어 있지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/diagram-1-ko.svg",
+          "alt": "4컷 도해: 누가 언어자료를 제공할 수 있는가, 어떤 내용을 제공할 수 있는가, 라이선스 조건, 그리고 이미 완료된 훈련 성과는 철회의 영향을 받지 않는다는 것",
+          "width": 1600,
+          "height": 900,
+          "caption": "출처: 디지털발전부의 2026년 9월 15일 보도자료 및 Taiwan Sovereign AI Training Corpus License. 확인일 2026년 9월 17일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "라이선스 약관은 투고자의 권리에 무엇을 하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "코퍼스 웹사이트가 공개한 'Taiwan Sovereign AI Training Corpus License – Version 1(臺灣主權AI訓練語料授權條款-第1版)'은 디지털발전부의 2025년 12월 24일자 가동 개시 발표에 따르면 moda와 경제부 지식재산국(TIPO)이 공동으로 마련한 것입니다. 약관은 언어자료를 제공하는 적법한 권리를 가진 개인 또는 단체를 '라이선서', 언어자료를 받아 이용하는 쪽을 '라이선시'라고 부릅니다. 라이선서가 라이선시에게 부여하는 것은 복제, 각색, 편집 및 그 밖에 저작권과 저작인접권상 필요한 이용권이며, 이를 통해 언어자료를 AI 훈련에 적법적으로 사용할 수 있게 됩니다. '이 라이선스는 재허가 및 양도가 불가능'하며, 유효기간은 라이선서 또는 그 대리인이 특정 연수 또는 영구로 지정할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "약관은 또한 '철회 가능'의 실제 경계도 정하고 있습니다. 라이선시가 훈련을 통해 얻은 모델, 가중치, 코드, 문서 또는 그 밖의 산출물은 저작권 보호 요건을 충족할 경우 라이선시 또는 모델 운영자에게 귀속됩니다. 또한 '원 언어자료 데이터가 이후 제공이 중단되더라도, 이미 완료된 훈련 성과(산출된 모델, 가중치, 코드, 문서 또는 그 밖의 형태의 산출물을 포함하되 이에 한정되지 않음)에는 영향을 주지 않는다'고 되어 있습니다. 반면 이미 다운로드된 언어자료 사본을 이후에도 계속 훈련에 사용할 수 있는지는 약관에 쓰여 있지 않습니다. 또 다른 단서 조항으로, 성과가 원 언어자료와 실질적으로 유사하고 원 언어자료 데이터의 시장 또는 가치에 부정적 영향을 미치며 합리적인 학습 범위를 초과하는 경우가 아니라면, 라이선서는 AI 훈련 성과를 자신의 저작물에 대한 각색이나 편집으로 보지 않으며, 이후의 사용, 수정, 재배포 또는 연산 행위에 어떤 제한도 가하지 않고 소송도 제기하지 않는다는 데 동의합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "라이선시가 언어자료를 사용해 훈련한 모델이나 도구는 법에 따라 면제되거나 라이선서가 별도로 동의한 경우가 아니라면, 코퍼스 플랫폼이 제공하는 식별 정보를 표시해야 합니다. 약관이 드는 예로는 데이터셋 이름, 버전 번호, 데이터셋 제공자, 공개 연도, 데이터셋 신청 페이지 또는 공식 웹사이트가 있으며, 이것이 이 라이선스 약관에 따라 공개된 상태임을 밝혀야 합니다. 다만 약관에는 '본 라이선스의 언어자료 데이터에 포함된 개별 소재에 대해……낱낱이 표시할 필요는 없다'고 명시되어 있어, 책 한 권 한 권마다 출처를 나열할 필요는 없습니다. 산출물이 코드나 문서인 경우 표시 의무는 더 간소화할 수 있습니다. 약관이 드는 예는 산출 결과를 공개적으로 상연하거나 전시할 때 'AI 생성 산출물'임을 명시해야 한다는 것입니다. 약관 페이지의 메타데이터에 따르면 최종 수정 시각은 2026년 9월 3일로, 9월 15일 기자회견보다 앞서 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "약관이 쓰지 않은 부분과 직접 확인하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "약관의 면책 조항은 직설적입니다. 이는 '로열티 프리 라이선스 기반'이며, 라이선서는 언어자료 자체에 대해 보유한 저작권 및 저작인접권 지위만을 명확히 주장하고, 그 밖의 사항에 대해서는 어떤 보증도 제공하지 않으며, 데이터 이용으로 발생하는 직접적・간접적 손실에 대해서도 책임을 지지 않습니다. 약관은 이어서 라이선시가 전적으로 책임져야 할 법률적・윤리적으로 논란이 될 수 있는 행위 열 가지를 열거합니다. 국제 또는 현지 법규 위반, 미성년자에 대한 위해, 허위 정보 생성, 개인정보 추적 목적 사용, 타인의 적법한 권리 침해 등입니다. 약관이 밝히는 바는, 라이선서(언어자료를 제공한 개인 또는 단체)는 언어자료 데이터를 제공했다는 사실만으로 이러한 행위에 동의, 허가, 승인의 의사를 표시한 것으로 간주되지 않는다는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사가 인용하는 네 건의 공식 문서를 2026년 9월 17일까지 확인한 범위에서는, 철회 신청 창구의 URL, 신청 양식, 처리 시간은 확인되지 않았고, 이번 민간 모집이 지금까지 몇 건의 저작물을 접수했는지, 코퍼스 운영 관리를 맡은 기관이나 업체가 어디인지도 확인되지 않았습니다. 반면 보상에 관해서는 '언급이 없는' 것이 아니라 명확히 언급되어 있습니다. 보도자료에는 '무상 라이선스 방식으로 추진한다'고 되어 있고, 약관에는 '로열티 프리 라이선스 기반'이라고 되어 있는데, 둘 다 원고료나 수익 배분이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "언어자료 제공을 희망하는 출판사나 작가는 Taiwan Sovereign AI Training Corpus 공식 웹사이트에 직접 문의하거나, 보도자료에 공개된 상담 전용 회선 0800-023-300으로 전화할 수 있습니다. 약관에는 또한 정체자 중국어판과 영어판이 모두 정식 텍스트이며 동등한 법적 효력을 가진다고 명시되어 있습니다. 두 언어판의 문구가 다를 경우, 본 기사는 중국어판에 따라서만 서술합니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이번 모집에 마감일이 있나요?",
+              "answer": "보도자료에는 정해져 있지 않습니다. moda의 2026년 9월 15일 발표에는 이번 민간 언어자료 모집에 대한 마감일이나 모집 건수 상한이 기재되어 있지 않으며, 본 기사가 인용하는 다른 세 건의 공식 문서도 2026년 9월 17일 기준 검증에서 어떤 기한도 확인되지 않았습니다."
+            },
+            {
+              "question": "언어자료를 제공하면 원고료나 수익 배분이 있나요?",
+              "answer": "공식 문서가 밝히는 것은 무상 라이선스입니다. moda의 보도자료는 현 단계에서 출판업과 전자책 플랫폼을 협력 대상으로 삼아 '무상 라이선스 방식으로 추진한다'고 설명하며, Taiwan Sovereign AI Training Corpus License 역시 '로열티 프리 라이선스 기반' 위에 마련되어 있습니다. 본 기사가 인용하는 네 건의 공식 문서를 2026년 9월 17일 기준으로 확인한 범위에서는 원고료, 라이선스료, 수익 배분 구조는 어느 것도 확인되지 않았습니다."
+            },
+            {
+              "question": "마음이 바뀌면 이미 라이선스 제공한 언어자료를 철회할 수 있나요?",
+              "answer": "moda는 철회 신청 창구를 마련했다고 밝혔지만, 본 기사가 인용하는 네 건의 공식 문서를 2026년 9월 17일 기준으로 확인한 범위에서는 이 창구의 URL, 신청 양식, 신청 자격 등 세부 사항이 확인되지 않았습니다. 더 중요한 점은 라이선스 약관에 '원 언어자료 데이터가 이후 제공이 중단되더라도 이미 완료된 훈련 성과에는 영향을 주지 않는다'고 명시되어 있다는 것입니다. 따라서 이미 훈련을 마친 모델, 가중치, 산출물은 철회로 인해 회수되지 않습니다. 이미 다운로드된 언어자료 사본을 이후에도 계속 훈련에 사용할 수 있는지는 약관에 쓰여 있지 않습니다."
+            },
+            {
+              "question": "하카어 데이터는 이번 모집으로 새로 추가된 건가요?",
+              "answer": "같은 묶음이 아닙니다. 하카어 데이터는 moda와 하카위원회의 협력으로 공개된 것으로, 2026년 7월 24일 발표에는 '최근' 정식으로 공개되어 처음으로 약 2,000만 tokens가 추가되었다고 되어 있습니다. 공식은 정확한 공개일을 밝히지 않았으며, 7월 24일은 어디까지나 이 발표의 공개일입니다. 9월 15일의 이번 모집은 출판업과 작가를 대상으로 한 민간 언어자료 모집으로, 둘은 출처와 시점이 다릅니다."
+            },
+            {
+              "question": "코퍼스는 지금까지 총 얼마나 많은 언어자료를 누적했나요?",
+              "answer": "moda의 2026년 9월 15일 보도자료에 따르면 코퍼스 규모는 '올해 8월 말 기준' 약 22억 Tokens입니다. 같은 발표에는 코퍼스가 2025년 말에 가동을 시작했으며 초기에는 중앙 및 지방 정부의 언어자료가 중심이었다고도 되어 있습니다. 다른 두 건의 발표에 나온 규모 수치는 각각 '현재', '가동 이후'로 되어 있고 둘 다 통계 기준일이 명시되어 있지 않습니다. 그래서 본 기사는 이 세 수치를 하나의 '지금' 수치로 합산하지 않습니다."
+            },
+            {
+              "question": "작가가 직접 작품을 코퍼스에 제공할 수 있나요?",
+              "answer": "공식이 밝히는 경로는 출판사를 거치는 것입니다. moda의 보도자료는 작가가 자신의 저작물을 제공하고 싶은 경우 '소속 출판사가 코퍼스 등록을 지원할 수 있다'고 설명합니다. 본 기사가 인용하는 네 건의 공식 문서를 2026년 9월 17일 기준으로 확인한 범위에서는 작가가 출판사를 거치지 않고 직접 등록을 신청할 수 있는지에 대한 설명은 확인되지 않았습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "발표 세 건, 세 가지 다른 산정 기준",
+          "text": "코퍼스의 규모 수치는 발표일이 다른 세 건의 공식 보도자료에서 나온 것입니다. 2025년 12월 24일 발표는 '현재' 6억 tokens 초과, 2026년 7월 24일 발표는 '가동 이후' 15억 tokens 초과, 2026년 9월 15일 발표는 '올해 8월 말 기준' 약 22억 Tokens라고 되어 있습니다. 수치에 통계 기준일을 명시한 것은 마지막 발표뿐이므로, 이 세 수치는 직접 더하거나 뺄 수 없고, 같은 성장 곡선 위의 세 점으로 취급할 수도 없습니다. 이 세 건의 보도자료 외에 본 기사는 다른 경로의 실시간 통계 수치를 확인하지 않았으며, 따라서 인용하지 않습니다. 최신 현황을 확인하고 싶은 독자는 Taiwan Sovereign AI Training Corpus 공식 웹사이트나 디지털발전부 보도자료를 직접 확인하는 것을 권장합니다. 확인일: 2026년 9월 17일."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "디지털발전부, 6G 주파수 국제 심포지엄 개최: 무엇을 논의했고 무엇이 아직 정해지지 않았나",
+              "kind": "life",
+              "slug": "tech-news-taiwan-6g-spectrum-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "moda, 주권 AI 코퍼스에 대한 민간 언어자료 모집 시작 — 작가와 출판업계에 참여 호소",
+          "url": "https://moda.gov.tw/press/press-releases/20640",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "'Taiwan Sovereign AI Training Corpus' 가동 시작! 디지털발전부, 200개 기관과 손잡고 자국 언어자료 구축",
+          "url": "https://moda.gov.tw/press/press-releases/18314",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "moda, 'Taiwan Sovereign AI Training Corpus'에 하카어 데이터 2,000만 tokens 추가 — 자국 AI 언어 데이터 기반 강화",
+          "url": "https://moda.gov.tw/press/press-releases/20230",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "Taiwan Sovereign AI Training Corpus License – Version 1",
+          "url": "https://taic.moda.gov.tw/content/license",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "台湾主权 AI 训练语料库启动民间语料征集：授权条款与客语语料现况",
+      "description": "2026 年 9 月 15 日，数位发展部宣布启动“台湾主权 AI 训练语料库”民间语料征集，邀请出版社与作家把出版物授权提供给 AI 训练使用。本文依数位发展部三则新闻稿与语料库网站的授权条款页，说明征集范围、无偿授权与“可退出”实际碰到的界线，以及官方文件没有交代的部分，查核日 2026 年 9 月 17 日。",
+      "hero": {
+        "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/hero-zh-cn.jpg",
+        "alt": "原创插图：左边是三本叠起来的书，箭头指向中间一份盖有圆形印记的授权文件，再由箭头指向右边一个装着九个小方格的大方框，代表出版物经授权后进入语料库",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日，数位发展部（moda）宣布正式启动“台湾主权 AI 训练语料库”民间语料征集行动，邀请出版社、作家与文化机构把出版物授权释出给这座语料库做 AI 训练之用。数发部部长林宜敬率先以作家身份，捐出个人著作《幸福的鬼岛》与《流寇与创新者》；多家出版及电子书平台业者与作家也在记者会现场签署授权同意书，名单见下一节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日查核，读的是数位发展部三则新闻稿的全文与“台湾主权 AI 训练语料库”网站的授权条款页，本站没有做任何实测，也不代替读者判断该不该授权或投稿；下文提到的规模数字、日期与条文，均以这四份官方文件在查核当天所写的内容为准，之后仍可能更动。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 15 日，数位发展部宣布启动“台湾主权 AI 训练语料库”民间语料征集，邀请出版社与作家把出版物授权提供给 AI 训练使用。",
+            "数发部在这则新闻稿写语料库自 2025 年底上线、规模“截至今年 8 月底”约 22 亿 Tokens；2026 年 7 月 24 日的另一则新闻稿则写客语语料“近日”上架、首度新增约 2000 万 tokens，官方没有给确切的上架日期。",
+            "官方推动方式是无偿授权，授权条款写明此项授权不得再授权与转让，也写明即使原语料数据后续停止提供使用，不影响已完成之训练成果。",
+            "退出的部分，本文引用的四份官方文件只写了“设有完善的退出下架申请管道”这一句；查核到 2026 年 9 月 17 日，未见这个管道的网址、表单或处理时间。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "九月十五日的记者会，谁签了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "数发部同日举办“启动民间语料征集记者会”，新闻稿写“包括秀威资讯、印刻文学、Readmoo 读墨、食力、巨思文化等出版及电子书平台业者，以及蓝弋丰、李魁贤（家属代表）等作家皆亲自出席签署授权同意书”，这是举例而不是完整名单；陈明忠、连明伟、朱国珍、朱和之等作家则是“亦提供著作响应”。官方把这两群人分开叙述，没有说明后者是否也到场。"
+        },
+        {
+          "type": "paragraph",
+          "text": "林宜敬部长指出，AI 模型对民主、权力制衡等概念的理解，会受训练语料所蕴含的社会与文化脉络影响，并提到目前国际大型语言模型的中文训练数据仍多以简体中文内容为主。这是部长对现况的论述，本站没有另外查证这个说法本身是否正确。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数发部强调，语料征集采“自愿参与、明确授权、可退出”三大原则，并表示设有完善的退出下架申请管道；不过官方新闻稿没有说明这个管道的网址、表单或处理时间，也没有为这次征集订出截止日期或名额，只写“数发部诚挚邀请作者、出版社、文化机构、法人单位及各领域内容提供者共同参与”。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "语料库怎么长到今天的规模"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾主权 AI 训练语料库不是 9 月 15 日才出现。数位发展部在 2025 年 12 月 24 日发布上线公告，内文写的是“目前已有超过 200 个政府机关投入，上架逾 2,000 笔数据集、超过 6 亿 tokens”，内容涵盖语言、文化、教育、生物、地理环境等领域。官方用的词是“目前”，没有替这三个数字标出统计基准日；这一页的建立日期是 2025 年 12 月 24 日、更新日期是 2026 年 3 月 19 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 7 月 24 日，数发部发布新闻稿，宣布语料库与客家委员会合作，近日正式上架客家语言资源、出版物、文史典藏及研究报告等内容，首度新增约 2000 万 tokens 的高品质训练语料，官方没有写实际上架日；客语在新闻稿中被定位为“我国国家语言之一”。同一则新闻稿写道，语料库自上线以来已累积逾 15 亿 tokens 语料量，但官方没有为这个累计数字附上任何截止时间点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到了 9 月 15 日，数发部表示语料库规模“截至今年 8 月底”已达约 22 亿 Tokens，并把启动民间语料征集称为语料库“迈入新的发展阶段”的里程碑。三则公告里只有这一则替规模数字写出了统计基准日：12 月那则写“目前”，7 月那则写“自上线以来”，两者都没有截止时点。三个数字因此分属不同的计算基础，本文不相加、不相减，也不换算成同一天的规模。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "公告日期",
+            "官方公告的规模",
+            "语料来源",
+            "查核依据"
+          ],
+          "rows": [
+            [
+              "2025 年 12 月 24 日",
+              "“目前”超过 200 个机关、逾 2,000 笔数据集、超过 6 亿 tokens（未附基准日）",
+              "各政府机关上架之数据集",
+              "数位发展部上线公告"
+            ],
+            [
+              "2026 年 7 月 24 日",
+              "“自上线以来”累积逾 15 亿 tokens（未附基准日）",
+              "新增客家委员会提供之客语语料约 2000 万 tokens",
+              "数位发展部客语语料新闻稿"
+            ],
+            [
+              "2026 年 9 月 15 日",
+              "“截至今年 8 月底”约 22 亿 Tokens",
+              "启动民间语料征集，现阶段合作对象为出版业与电子书平台",
+              "数位发展部民间语料征集新闻稿"
+            ]
+          ],
+          "caption": "数据来源：数位发展部 2025 年 12 月 24 日、2026 年 7 月 24 日与 2026 年 9 月 15 日新闻稿，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "谁能提供语料、提供什么、由谁居中"
+        },
+        {
+          "type": "paragraph",
+          "text": "数发部说明，现阶段以具丰富语料资源的出版业及电子书平台为合作对象，采无偿授权方式推动；作者如果有意愿提供个人著作，可以由其出版社协助上架至语料库，官方新闻稿没有提到作者能否自行申请上架。重点征集内容包含四大类：经同意授权之出版物、出版物简介、出版物试读内容，以及已逾著作权保护期间并可作为公共财活化运用之典籍与创作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授权条款把整个流程放进三个角色里：“授权人”是提供语料的权利人，“被授权人”是依条款使用语料的收受者，“语料平台”则是从授权人处取得语料、再依授权人指示把语料桥接给被授权人的第三方。条款明写语料平台“非属授权关系任一造之当事人”，但可以经授权人同意，替授权人评估、筛选语料的收受对象或有效期间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "授权条款对“语料数据”的定义比书本宽：包含但不限于可用于 AI 语言与多模态学习的语文、音乐、美术、摄影、图形、视听、录音等作品，也包含具创作性之数据选择与编排所得的编辑性著作。9 月 15 日的新闻稿没有写这次要征到多少本书、多少 tokens 才会停止，也没有写后续会不会有第二轮征集。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-taiwan-sovereign-ai-corpus-20260915/diagram-1-zh-cn.svg",
+          "alt": "四格图解：谁能提供语料、可以提供什么内容、授权条件，以及已完成的训练成果不受退出影响",
+          "width": 1600,
+          "height": 900,
+          "caption": "数据来源：数位发展部 2026 年 9 月 15 日新闻稿与台湾主权 AI 训练语料授权条款，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "授权条款对投稿人的权利动了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾主权 AI 训练语料库网站公布的《台湾主权 AI 训练语料授权条款-第 1 版》，依数位发展部 2025 年 12 月 24 日的上线公告，是数发部与经济部智慧财产局合作共同推出。条款把提供语料、具备合法权利的个人或单位称为“授权人”，把接收并使用语料的一方称为“被授权人”；授权人授予被授权人的是重制、改作、编辑及其他著作权和著作相关权利上必要之使用权，使语料合法用于 AI 训练，“此项授权不得再授权与转让”，有效期间得由授权人或其代表人指定为特定年份或永久。"
+        },
+        {
+          "type": "paragraph",
+          "text": "条款同时划出“可退出”真正的界线。被授权人依训练所得的模型、权重、代码、文件或其他输出，若具著作权保护要件，应归属于被授权人或模型操作者所有；而且“即使原语料数据后续停止提供使用，不影响已完成之训练成果，包括但不限于所产出之模型、权重，以及代码、文件或其他形态之输出”。至于已经被下载的语料副本之后还能不能继续用于训练，条款没有写。另一条但书是，除非成果与原语料实质近似、对原语料数据市场或价值造成负面影响，并超出合理学习范畴，否则授权人同意不把 AI 训练成果视为自己著作的改作或编辑，也不对后续的使用、修改、再散布或运算行为施加任何限制或提出诉讼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "被授权人使用语料训练出的模型或工具，除非依法免除或经授权人另行同意，要标示语料平台提供的识别信息——条款举的例子有数据集名称、版本号、数据集提供者、发布年份、数据集申请页面或官方网站——并指出这是依这份授权条款发布的状态，但条款明写“毋须就本授权语料数据内含个别素材……进行逐项标示”，也就是不必逐本书列出出处。输出如果是代码或文件，标示义务可以更简化；条款举的例子是输出成果公开演播或展示时，应注明其为“人工智能生成产出”。条款页面的元数据显示最后一次修改时间是 2026 年 9 月 3 日，早于 9 月 15 日的记者会。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "条款没写的部分，以及怎么自己查"
+        },
+        {
+          "type": "paragraph",
+          "text": "条款的免责声明写得直白：这是“免授权金之授权基础”，授权人只对语料本身拥有的著作权和著作相关权利地位做出明确主张，对其他事项不提供任何担保，也不对使用数据引发的直接或间接损失负责。条款另外列出十项被授权人应自负其责的法律及伦理争议行为，包括违反国际或当地法规、伤害未成年人、制造虚假信息、用于个人信息追踪、侵犯他人合法权利等；条款写的是授权人（提供语料的个人或单位）不因为提供语料数据，而被认为对这些行为表达同意、许可或核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文引用的四份官方文件查核到 2026 年 9 月 17 日，未见退出下架申请管道的网址、表单或处理时间，也未见这次民间征集已收到多少著作、语料库运维管理单位是哪一个机关或厂商。报酬则不是“没说”而是说了：新闻稿写“采无偿授权方式推动”，条款写“免授权金之授权基础”，都不是稿费或分润。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有意愿提供语料的出版社或作者，可以直接查询台湾主权 AI 训练语料库官方网站，或拨打新闻稿公布的咨询专线 0800-023-300。条款也写明，正体中文版与英文版皆为正式文本，具有同等法律效力，两个语言版本如果用字不同，本文仅依中文版陈述。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这次征集有截止日期吗？",
+              "answer": "新闻稿没有订。数发部 2026 年 9 月 15 日的新闻稿没有为这次民间语料征集写出截止日期或征集名额，本文引用的另外三份官方文件查核到 2026 年 9 月 17 日也未见任何期限。"
+            },
+            {
+              "question": "提供语料会有稿费或分润吗？",
+              "answer": "官方写的是无偿授权。数发部新闻稿说明，现阶段以出版业及电子书平台为合作对象，“采无偿授权方式推动”，台湾主权 AI 训练语料授权条款也是在“免授权金之授权基础”上订立；本文引用的四份官方文件查核到 2026 年 9 月 17 日，未见任何稿费、授权金或分润机制。"
+            },
+            {
+              "question": "如果后悔了，可以把已授权的语料撤回吗？",
+              "answer": "数发部表示设有退出下架的申请管道，但本文引用的四份官方文件查核到 2026 年 9 月 17 日，未见这个管道的网址、表单或申请人资格等细节。更重要的是，授权条款明写“即使原语料数据后续停止提供使用，不影响已完成之训练成果”，所以已经训练出来的模型、权重与输出不会因为退出而被追回；至于已经被下载的语料副本之后还能不能继续用于训练，条款没有写。"
+            },
+            {
+              "question": "客语语料是这次征集新增的吗？",
+              "answer": "不是同一批。客语语料是数发部与客家委员会合作上架的，2026 年 7 月 24 日的新闻稿写的是“近日”正式上架、首度新增约 2000 万 tokens；官方没有给确切的上架日期，7 月 24 日只是这则新闻稿的发布日。9 月 15 日这次是面向出版业与作家的民间语料征集，两者来源与时间点不同。"
+            },
+            {
+              "question": "语料库现在总共累积了多少语料？",
+              "answer": "依数发部 2026 年 9 月 15 日新闻稿，语料库规模“截至今年 8 月底”约 22 亿 Tokens；同一份新闻稿也写语料库自 2025 年底上线、初期以中央及地方政府语料为主。另外两则新闻稿的规模数字，一则写“目前”、一则写“自上线以来”，都没有写出统计基准日，所以本文不把三个数字合并成同一个“现在”的数字。"
+            },
+            {
+              "question": "作者可以自己把作品送进语料库吗？",
+              "answer": "官方写的路径是通过出版社。数发部新闻稿说明，作者如果有意愿提供个人著作，“可由其出版社协助上架至语料库”；本文引用的四份官方文件查核到 2026 年 9 月 17 日，未见作者能否略过出版社、自行申请上架的说明。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三份公告，三种不同的计算基础",
+          "text": "语料库规模数字来自三份不同日期的官方新闻稿：2025 年 12 月 24 日的公告写“目前”超过 6 亿 tokens、2026 年 7 月 24 日的公告写“自上线以来”逾 15 亿 tokens、2026 年 9 月 15 日的公告写“截至今年 8 月底”约 22 亿 Tokens。只有最后一份替数字写出了统计基准日，所以这三个数字不能直接相加或相减，也不能当成同一条成长曲线上的三个点。除了这三则新闻稿，本文没有查核其他管道的即时统计数字，因此不引用。读者若要查最新状态，建议直接查询台湾主权 AI 训练语料库官方网站或数位发展部新闻稿。查核日期：2026 年 9 月 17 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "数位发展部办 6G 频谱国际研讨会：谈了什么，还没定案什么",
+              "kind": "life",
+              "slug": "tech-news-taiwan-6g-spectrum-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "数发部启动主权 AI 语料库民间语料征集 号召作家与出版业共襄盛举",
+          "url": "https://moda.gov.tw/press/press-releases/20640",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "“台湾主权 AI 训练语料库”上线！ 数位发展部携手 200 个机关打造本土语料资源",
+          "url": "https://moda.gov.tw/press/press-releases/18314",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "数发部“台湾主权 AI 训练语料库”新增 2000 万 tokens 客语语料 充实本土 AI 语言数据基础",
+          "url": "https://moda.gov.tw/press/press-releases/20230",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "台湾主权 AI 训练语料授权条款-第 1 版",
+          "url": "https://taic.moda.gov.tw/content/license",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

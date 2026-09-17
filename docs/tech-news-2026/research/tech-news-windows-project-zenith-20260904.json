@@ -1,0 +1,525 @@
+{
+  "slug": "tech-news-windows-project-zenith-20260904",
+  "event_date": "2026-09-04",
+  "event_date_basis": "2026-09-04 是 Windows Developer Blog 公告頁的發布日。頁面 <meta property=\"article:published_time\" content=\"2026-09-04T10:00:29+00:00\" />，同一頁 <meta property=\"article:modified_time\" content=\"2026-09-04T13:17:30+00:00\" />（同日修訂，不移動事件日）。2026-09-17 重抓時獨立確認這兩個 meta 標籤逐字存在。研究紀錄與查核紀錄另外記錄了兩個官方 RSS feed（blogs.windows.com/windowsdeveloper/feed、blogs.windows.com/feed）當天都把 Zenith 這一則的 pubDate 印成 Fri, 04 Sep 2026 10:00:29 +0000；本輪比照查核紀錄的建議，不把 feed 網址另外放進 sources[]，也不把 feed 讀數寫進 verified_facts，只留在這裡當佐證。公告本身沒有任何生效日、預覽日或上市日，唯一的未來時間字樣是「in the coming months」，指的是後續加入的其他裝置。",
+  "title": "微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "publisher": "Windows Developer Blog (Microsoft)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "More choice and possibility with Windows PCs at IFA",
+      "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+      "publisher": "Microsoft Devices Blog",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Build 2026: Furthering Windows as the trusted platform for development",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "publisher": "Windows Developer Blog (Microsoft)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "AMD Powers Next-Generation Agent Computers with New Ryzen AI Halo Developer Platform and Ryzen AI Max PRO 400 Series Processors",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "publisher": "AMD",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 用 curl -sL -A \"Mokaair-editorial\" 把四條 sources 全部重抓一次並讀 body，請求裡沒有任何 email 或個人資料。(1) Zenith 公告：HTTP 200、121,061 bytes，與研究紀錄、查核紀錄記錄的位元組數完全相同；body 含完整正文，meta 標籤與內文引句逐一以程式比對確認存在。(2) IFA 報導：HTTP 200、140,491 bytes，同樣與既有紀錄一致；<meta property=\"article:published_time\" content=\"2026-09-14T17:00:39+00:00\" />。(3) Build 2026 文章：HTTP 200、158,245 bytes；published_time 2026-06-02T16:31:36+00:00，modified_time 2026-06-05T14:18:38+00:00（發布三天後被編輯過，寫進 live_data_warnings）。(4) AMD 部落格：HTTP 200、183,162 bytes（研究紀錄記 183,253、查核紀錄記 183,411，本輪又是另一個數字——頁面帶動態相關文章欄，位元組數本來就會漂移，正文不變）；dateline 為 May 20, 2026。四條全部一手、全部讀到正文，沒有一條是擋阻頁或轉址殼。\n\n預先安裝工具圖表：頁面上實際引用的圖片網址是 https://blogs.windows.com/wp-content/uploads/sites/3/2026/09/Preinstalled-tools-2-1024x625.png（今天重抓 HTTP 200、140,734 bytes，與查核紀錄記錄的位元組數相同）；沒有 srcset，頁面上不存在去掉尺寸後綴的裸檔名。本輪下載的就是這個頁面實際引用的版本（不是推導出來的全解析度版本），並用圖片閱讀工具親自看過：標題「Preinstalled tools」，三欄依序為「Productivity & edit tools」5 項（Visual Studio Code、GitHub Copilot、PowerToys、WinAppCLI、Windows Dev Skills）、「Terminal & source control」7 項（Intelligent Terminal、PowerShell 7、Git、GitHub CLI、Azure CLI、Core Utils、Oh My Posh）、「Languages & runtimes」6 項（Python 3.14+、uv、NVM、Node 24+、WSL 2+ Ubuntu、.NET 10），其中帶版本號的只有 Python 3.14+、Node 24+、WSL 2+ Ubuntu、.NET 10 與 PowerShell 7 共 5 項，uv 與 NVM 是裸名稱——與查核紀錄的機器判讀完全一致，獨立確認 must_fix 1 成立。圖表相關事實全部掛在文章網址（Zenith 公告），不掛圖片網址，圖片網址本身只留在這裡。\n\nIntel／OEM 廠商名稱：以 Python 對 Zenith 公告全文做詞界（word-boundary）比對，Acer、ASUS、Dell、HP、Lenovo、MSI、Intel、NVIDIA、Qualcomm 的詞界命中數皆為 0，AMD 詞界命中 1 次；Intel 的子字串命中數為 2，出現在「shifting some of that intelligence to the edge」與「Windows Developer Configurations to Intelligent Terminal」，不是公司名。獨立重現查核紀錄 must_fix 2 的結論：子字串命中不代表公司名出現，但「其他廠商完全未點名」這個實質論點仍然成立，文章沒有寫成一個特定的 grep 次數。IFA 報導另以同樣方法確認 Acer 9 次、ASUS 5 次、Dell 7 次、Lenovo 4 次、MSI 2 次、NVIDIA 9 次，但這篇文章裡 Zenith 一詞只出現 3 次，且都不在提到這些廠商名稱的句子附近——確認 IFA 報導列出多家夥伴電腦但沒有把任何一款和 Zenith 綁在一起。\n\nAMD 部落格的缺項：對抽取後的純文字做子字串搜尋，Zenith 0 次、bandwidth 0 次、GB/s 0 次、price 0 次、$ 0 次，獨立重現既有紀錄「AMD 這篇文章完全沒有提到 Project Zenith、沒有任何頻寬數字、沒有任何價格」的結論。AMD 規格表內部命名不一致，本輪也獨立重現：表格儲存格印的是「Ryzen™ AI Max+ PRO 495」，footnote GRHP-01 印的是「AMD Ryzen™ AI Max+ 495 PRO」，兩者用原始位元組核對過是合法 UTF-8 的 ™（U+2122），不是編碼錯誤。文章正文完全不使用這兩種拼法中的任何一種去指名單一 SKU，一律只寫「Ryzen AI Max PRO 400 系列處理器」（這個系列名本身在頁面上乾淨地出現 21 次，不帶這個衝突），避免合成一個兩處都不存在的產品名。\n\n沒有讀到、因此沒有放進 sources[] 或 verified_facts 的：WordPress REST 端點 https://blogs.windows.com/windowsdeveloper/wp-json/wp/v2/posts/57883（本輪沒有重試，既有紀錄已記為 HTTP 401，post id 57883 確實印在頁面 head 的 <link rel=\"alternate\"> 裡，不是猜的，但因為讀不到內容不重試）；兩個 Windows 官方 RSS feed 的網址本身（只用於佐證事件日，不當成文章或研究紀錄的事實來源，見上）。",
+  "verified_facts": [
+    {
+      "fact": "微軟在 2026 年 9 月 4 日 10:00:29 UTC 於 Windows Developer Blog 發布公告，標題為 Announcing Project Zenith: The ready-to-code Windows experience on developer-class devices，同日 13:17:30 UTC 曾被編輯過。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "article:published_time\" content=\"2026-09-04T10:00:29+00:00"
+    },
+    {
+      "fact": "微軟把 Project Zenith 定義為「隨開即寫程式」的 Windows 使用體驗，鎖定統一記憶體 64GB 以上、頻寬 250GB/s 以上的「開發者等級裝置」。同一篇公告後段把同一組數字寫成「64 GB+ of unified memory and 250 GB/s+ of memory bandwidth」，加號位置不同但單位相同；微軟並沒有把這兩個數字講成認證或強制規範，也沒有說低於這個數字的機器會怎樣。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "64 GB+ unified memory and 250+ GB/s memory bandwidth"
+    },
+    {
+      "fact": "微軟表示在符合門檻的裝置上，開發者可以在本機執行 30B 參數以上模型，不必計量計費。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "30B+ parameter models locally and unmetered"
+    },
+    {
+      "fact": "微軟這個能力宣稱的主詞一律是「Project Zenith 裝置」，不是「任何符合那兩個數字的裝置」：公告寫的是 On these devices（指前一句的 Project Zenith devices），後段寫的是 With 64 GB+ of unified memory and 250 GB/s+ of memory bandwidth, Project Zenith devices enable developers to run capable coding models locally and unmetered。第二輪獨立查核修正：前一版正文與 FAQ 第六題寫成「符合門檻的裝置上開發者可以…」，把微軟對自家產品的宣稱擴大成一條硬體規格的通則——一台自行組裝、記憶體達標但不是 Zenith 的機器，微軟並沒有對它承諾任何事。兩處已改回「Zenith 裝置」。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Project Zenith devices enable developers to run capable coding models locally and unmetered, helping lower token costs"
+    },
+    {
+      "fact": "微軟表示 Project Zenith 第一款支援裝置採用 AMD 的 Ryzen AI Halo，其他 OEM 與晶片夥伴的裝置在未來幾個月內推出，公告全文沒有點名任何其他廠商。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Project Zenith will first become available with"
+    },
+    {
+      "fact": "微軟自己對 Project Zenith 的一句話定義：裝置出廠就附上已經先設定好的 Windows 開發環境，以及一組為了讓開發者最先用到而挑選的工具。這句話緊接在 30B+ 引句之前，前一輪研究紀錄漏掉了它（修正清單 must_add）。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Project Zenith devices come with a preconfigured Windows setup"
+    },
+    {
+      "fact": "微軟說明跨裝置的差異：透過 OEM 夥伴合作，開發者在不同裝置與效能等級間仍有選擇，硬體可能不同，但開發者體驗的承諾一致。前一輪研究紀錄整組漏掉這句（修正清單 must_add，是這篇唯一針對「Zenith 裝置之間什麼會變」的說明）。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The hardware may vary, but the developer promise is consistent"
+    },
+    {
+      "fact": "公告內文只點名工作列預設固定的兩項工具：Windows Terminal 與 Visual Studio Code。（獨立查核修正：原本寫「內文只點名兩項工具」過頭了——同一篇內文另外提到 WSL 與 Intelligent Terminal，只是不以「預先安裝工具」的身分列出。）",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Windows Terminal and Visual Studio Code are pinned to the Taskbar by default"
+    },
+    {
+      "fact": "完整的預先安裝工具清單只印在內嵌圖表裡（頁面實際引用的圖片網址是 Preinstalled-tools-2-1024x625.png，alt 文字是 Chart showing pre-installed tools），分三欄：生產力與編輯工具 5 項、終端機與原始碼控制工具 7 項、語言與執行環境工具 6 項，合計 18 項。圖上自己印的標題是 Preinstalled tools，三個欄位標題是 Productivity & edit tools、Terminal & source control、Languages & runtimes——這些字串都讀自圖片，頁面文字裡搜尋不到，因此不當成 verbatim_quote。「18 項」與「5／7／6」都是清點圖表得到的數字，圖表本身沒有印出任何總數；獨立查核代理 2026-09-18 重新下載同一張圖（HTTP 200、140,734 bytes、1024x625，放大三倍判讀）逐項重數，結果與撰稿者相同。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Chart showing pre-installed tools"
+    },
+    {
+      "fact": "18 項工具裡，帶版本號的只有 5 項：語言與執行環境欄的 Python 3.14+、Node 24+、WSL 2+ Ubuntu、.NET 10，加上終端機欄的 PowerShell 7；同欄的 uv 與 NVM 是裸名稱，沒有版本號。這一條推翻了前一輪研究紀錄「六項都帶版本」的說法（修正清單 must_fix 1），獨立查核代理 2026-09-18 重新下載圖片再數一次，得到同一個結果。這些字串讀自圖片、不在頁面文字裡，所以這條沒有 verbatim_quote。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "圖表把工作列固定的終端機稱為 Intelligent Terminal，但公告內文說固定的是 Windows Terminal，微軟沒有在這篇公告裡說明兩個名稱是不是同一個東西。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "微軟列出預先套用的介面預設：檔案總管顯示副檔名、隱藏檔案、標題列完整路徑與詳細資料窗格，並開啟長路徑支援；關閉最近使用的檔案與資料夾、關閉同步供應商提示。（獨立查核補回 with long-path support enabled 這一項，前一輪漏掉，而文章同時寫了「四項」這個來源沒有印的計數。）",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "File Explorer shows file extensions, hidden files, the full path in the title bar, and the details pane, with long-path support enabled"
+    },
+    {
+      "fact": "微軟列出搜尋與開始功能表的預設：Command Palette 開啟，開始功能表提示與帳號通知關閉。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Command Palette is enabled"
+    },
+    {
+      "fact": "微軟強調 Project Zenith 不是強制的單一工作流程，開發者仍可以繼續設定、擴充或客製化自己偏好的工具、語言與框架。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/09/04/announcing-project-zenith-the-ready-to-code-windows-experience/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Project Zenith is not about prescribing a single workflow"
+    },
+    {
+      "fact": "2026 年 9 月 14 日 17:00:39 UTC，微軟 Windows 裝置部落格在報導 IFA 展會的文章裡重述了同一個裝置門檻，但把頻寬寫法從「250+ GB/s」改成「250gbps」——是微軟自己兩篇公告用詞不一致，不是同一個數字換了寫法。",
+      "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "64GB+ unified memory and 250gbps memory bandwidth"
+    },
+    {
+      "fact": "同一篇 IFA 報導轉述 AMD 的說法：Ryzen AI Halo 系統將開箱即支援 Project Zenith，並舉出 Visual Studio Code、WSL、GitHub Copilot CLI、PowerShell 四項。這是微軟轉述 AMD 的說法，不是 AMD 自己的原文；原文用的是 includes，所以這四項是舉例而不是完整清單，也不等於公告圖表的 18 項（修正清單 must_add）。獨立查核修正：不可以寫成「範圍比 18 項小得多」——用 includes 引出的清單撐不起一個範圍比較。前一輪的 verbatim_quote「AMD announced that Ryzen AI Halo systems will support」在 HTML 裡搜尋不到，因為 Ryzen AI Halo 中間夾著一個 <a> 連結；已換成同一句裡真正連續的字串。",
+      "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "out of the box, providing developers with a ready-to-code Windows experience that includes Visual Studio Code, WSL, GitHub Copilot CLI, and PowerShell"
+    },
+    {
+      "fact": "2026-09-14 的 IFA 報導沒有重述 30B+ 這個參數規模：全文子字串搜尋「30B」0 次命中，它寫的是「capable coding models」。前一版文章的表格把「30B 以上」同時掛在 9/4 與 9/14 兩篇上，是錯的；已改成「未提參數」。",
+      "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "run capable coding models locally and unmetered"
+    },
+    {
+      "fact": "2026-09-14 的 IFA 報導全文出現 price 三次（every person, purpose, and price point／the right device at the right price for them／at different price points），也寫了一個 9 月 4 日公告以外的未來日期（NVIDIA RTX Spark Windows PCs will arrive in October 2026），並提到柏林（The momentum we saw in Berlin）。因此「兩篇公告全文都沒有 price 字樣」「唯一的未來時間是未來幾個月內」「兩篇公告都沒提到任何地區」三個否定句都不成立；沒有價格、沒有其他未來日期的是 9 月 4 日那一篇。",
+      "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "every person, purpose, and price point"
+    },
+    {
+      "fact": "IFA 報導列出宏碁（Acer）、華碩（ASUS）、戴爾（Dell）、聯想（Lenovo）、微星（MSI）、NVIDIA 等多家夥伴的電腦，但沒有把其中任何一款機型和 Project Zenith 綁在一起；AMD 仍是唯一被點名支援 Zenith 的晶片夥伴。本輪以詞界比對重新確認這些公司名稱在文中出現多次，但都不在提到 Zenith 的句子附近。",
+      "url": "https://blogs.windows.com/devices/2026/09/14/more-choice-and-possibility-with-windows-pcs-at-ifa/",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "微軟 2026 年 6 月 2 日發布 Build 2026 文章，描述 Windows Developer Configurations：透過 WinGet 設定檔 dev-config.winget，在任何一台 Windows 11 裝置上執行一個指令，即可套用包含 WSL、PowerShell 7、Git、GitHub CLI、Visual Studio Code 等工具與類似介面預設，狀態為正式推出（GA）。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "now generally available"
+    },
+    {
+      "fact": "同一篇文章宣布 Windows 365 with Developer configuration：一種預先套用同樣開發者設定的雲端 PC，截至 2026 年 6 月 2 日為公開預覽階段，不需要任何硬體門檻。這是回答「不買機器能不能用」這個問題的路徑，前一輪研究紀錄完全沒有記（修正清單 must_add）。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Windows 365 comes pre-configured with the same Windows developer configuration, available in public preview"
+    },
+    {
+      "fact": "同一篇文章介紹 Surface RTX Spark Dev Box，具備 128GB 統一記憶體，2026-06-02 當天說的是「later this year」在美國僅透過 Microsoft.com 獨家銷售；註腳 [ii] 寫明這是先行釋出（pre-release）產品，實際銷售與交付要視法規核准與相關要求而定，這個但書必須和供貨說法一起走（修正清單 must_add）。獨立查核修正：這不是一款「既有裝置」，公告當天它還沒上市，文章原本寫成「既有裝置」已改。前一輪的 verbatim_quote「pre-release products」在頁面上搜尋不到——原文的 pre-release 與 products 之間是 U+202F 窄式不斷行空格，不是一般空格；已換成同一註腳裡真正連續的下一句。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Products and features are subject to regulatory certification/approval; actual sale and delivery is contingent on compliance with applicable requirements."
+    },
+    {
+      "fact": "同一篇文章把 Intelligent Terminal 描述成建立在既有 Windows Terminal 體驗之上、再加上代理程式整合的介面，截至 2026 年 6 月 2 日的狀態是「實驗性預覽」。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "available in experimental preview"
+    },
+    {
+      "fact": "同一篇 6 月文章把 Coreutils for Windows 與 Windows Development Skills 標為正式推出（now generally available，並各有一個 Announcing general availability of… 的小標）。第二輪獨立查核修正：不可以寫成「圖表上的 Core Utils 與 Windows Dev Skills 在那篇標的是正式推出」——6 月那篇全文搜尋「Core Utils」0 次、「Windows Dev Skills」0 次，這兩個是圖表自己的寫法，微軟從來沒有說圖表那兩項就是 6 月那兩項。這和本文刻意不調和 Windows Terminal／Intelligent Terminal 是同一個標準，正文已改成「那篇把名稱相近的 Coreutils for Windows 與 Windows Development Skills 標為正式推出」。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Announcing general availability of Coreutils for Windows"
+    },
+    {
+      "fact": "同一篇文章的發布時間是 2026-06-02T16:31:36+00:00，修改時間是 2026-06-05T14:18:38+00:00，即發布三天後被編輯過；Zenith 公告沒有重新交代這些狀態在 9 月是否已經改變。",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "article:modified_time\" content=\"2026-06-05T14:18:38+00:00"
+    },
+    {
+      "fact": "AMD 於 2026 年 5 月 20 日發布部落格文章，比 Project Zenith 公告早三個半月，全文沒有提到 Project Zenith（子字串搜尋 0 次命中）。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "May 20, 2026"
+    },
+    {
+      "fact": "AMD 表示 Ryzen AI Halo 是自家第一款輕巧 AI 開發者平台，採 Ryzen AI Max+ 395 處理器，最高支援 128GB 統一記憶體，能執行最高 2,000 億（200 billion）參數的模型。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "capably runs models of up to 200 billion parameters"
+    },
+    {
+      "fact": "AMD 表示 Ryzen AI Halo 首波預購自 2026 年 6 月開始，通路僅限 Micro Center；AMD 全文沒有提到任何地區（U.S.、United States、America、retailer、retail、region、country、store、distributor、channel 今天各 0 次命中），也沒有在文中自稱 Micro Center 是美國零售商——那是外部常識，本文與研究紀錄都不把這個定性掛在 AMD 的網址上。第二輪獨立查核修正：也不可以寫成「AMD 那篇唯一提到的通路是 Micro Center」——同一頁另寫了 Ryzen AI Max PRO 400 系列將由包含 HP 與 Lenovo 在內的 OEM 夥伴於第三季推出，那同樣是一條供貨路徑，文章自己也寫了這一句。Micro Center 的獨家只屬於 Ryzen AI Halo 這一個產品，callout 與 FAQ 第四題已限縮成「AMD 那篇部落格只說 Ryzen AI Halo 的通路僅限 Micro Center」。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "will be available exclusively at Micro Center with pre-orders starting in June 2026"
+    },
+    {
+      "fact": "AMD 這篇文章全文沒有出現任何頻寬（bandwidth／GB/s）數字，也沒有任何價格或貨幣符號（子字串搜尋 0 次命中）。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "AMD 預告 2026 年第三季推出新一代 Ryzen AI Max PRO 400 系列處理器，最高支援 192GB 統一記憶體與 160GB 顯示記憶體。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "up to 192GB of unified memory and 160GB of VRAM"
+    },
+    {
+      "fact": "AMD 正文表示 Ryzen AI Max PRO 400 系列是全球第一批能在本機執行 3,000 億（300 billion）參數模型的 x86 用戶端處理器——原文的主詞是複數的 processors，講的是整個系列，所以是「第一批」不是「第一款」。正文這一句印的是 300 billion parameter models，**沒有加號**；加號只出現在註腳裡。第二輪獨立查核修正：前一版把註腳的加號併進正文的系列宣稱，寫成「3,000 億參數以上」，等於放大了廠商的「全球第一」宣稱；正文與表格第四列都已改回 AMD 正文的寫法。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ryzen AI Max PRO 400 Series are the world's first x86 client processors capable of running 300 billion parameter models locally"
+    },
+    {
+      "fact": "正文那句掛的註腳 GRHP-01 寫的是：以 2026 年 5 月 11 日的狀態，該系列最高階的那顆處理器支援最高 160 GB 專屬圖形記憶體，能在 4 位元量化下執行 3,000 億以上參數。註腳的主詞是單一 SKU（本文不指名，見命名衝突那一條），不是整個系列；「以上」與「4 位元量化」兩個限定都出自這裡。4 位元量化這個條件必須和參數規模寫在同一句、不可省略，AMD 自己標的時點 2026 年 5 月 11 日也一併寫進正文（第二輪補上，前一輪因字數留給站主）。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "capable of running 300 billion+ parameters at 4-bit quantization"
+    },
+    {
+      "fact": "AMD 表示新一代 Ryzen AI Max PRO 400 系列處理器將由包含 HP 與 Lenovo 在內的 OEM 夥伴於 2026 年第三季推出；這是這顆晶片系列自己的 OEM 夥伴名單，AMD 沒有把 HP、Lenovo 和 Project Zenith 連在一起。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "will be available from leading OEM partners including HP and Lenovo in the third quarter of 2026"
+    },
+    {
+      "fact": "AMD 這份頁面內部對同一顆晶片的命名不一致：規格表儲存格印的是「Ryzen™ AI Max+ PRO 495」，footnote GRHP-01 印的是「AMD Ryzen™ AI Max+ 495 PRO」。本輪以原始位元組核對過兩處都是合法 UTF-8 的 ™ 符號，不是編碼錯誤；兩種拼法都是頁面自己印的，不可合併成一個兩處都不存在的產品名。文章正文因此完全不使用任一種拼法指名這顆特定 SKU，只用系列名「Ryzen AI Max PRO 400 系列」。",
+      "url": "https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ryzen™ AI Max+ PRO 495"
+    }
+  ],
+  "not_said": [
+    "價格。9 月 4 日公告與 9 月 14 日 IFA 報導全文都沒有任何價格、幣別或 price、pricing 字樣（子字串搜尋 0 次命中）。微軟沒有說一台 Project Zenith 裝置多少錢，也沒有說 Project Zenith 本身在裝置價格之外是否另外收費。",
+    "上市時程。微軟沒有給 Project Zenith 任何出貨日、預覽日或正式推出日；公告裡「preview」與「general availability」兩個字都沒有出現。唯一的未來時間字樣是「in the coming months」，指的是後續加入的其他裝置，不是第一款裝置。",
+    "地區與市場。微軟兩篇公告都沒有點名任何國家、地區或市場；沒有提到台灣或亞洲。AMD 提到的首波預購通路只有 Micro Center，AMD 也沒有提到地區。",
+    "OEM 名單。微軟只說「我們的 OEM 與晶片夥伴」，Acer、ASUS、Dell、HP、Lenovo、MSI、Intel、NVIDIA、Qualcomm 都不曾以公司名義出現在 9 月 4 日的公告裡（詞界比對 0 命中）。9 月 14 日 IFA 報導雖然列出多家夥伴的電腦，但沒有把其中任何一款和 Project Zenith 綁在一起。",
+    "Project Zenith 技術上是什麼。微軟從未說明它是出廠影像、Windows SKU、開機首次設定、可另外下載的安裝包，還是純粹的行銷代稱；也沒有說符合硬體門檻的既有機器能不能事後取得。",
+    "硬體門檻是不是強制認證。微軟把裝置描述成具備 64GB+ 統一記憶體與 250+ GB/s 頻寬，但沒有把這兩個數字講成 Microsoft 認證或強制規範的門檻，也沒有說低於這個門檻的機器會怎樣。",
+    "是哪一個模型。「30B+ 參數模型」沒有指名任何模型名稱、供應商、量化方式、context 長度或每秒 token 數，也沒有任何跑分或基準測試數字。",
+    "Windows 版本、版次或組建號碼。公告只說建立在 Windows 11 之上，沒有指定版本（如 25H2）、版別（家用版／專業版／企業版）或組建號碼，也沒有給 Project Zenith 設下最低 OS 組建需求。",
+    "預先安裝的工具能不能移除。微軟說環境可以繼續設定、擴充與客製化，但沒有提到能不能解除安裝或退出任何一項預先安裝的工具。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Micro Center 是美國零售商。",
+      "seen_where": "一般常識，不是 AMD 部落格文章裡出現的字句。",
+      "why_excluded": "查核紀錄的 must_fix 4 指出前一輪把這句話掛在 AMD 的網址上，但 AMD 頁面全文搜尋不到這句話。獨立查核 2026-09-18 重抓 AMD 頁面重測：U.S.、United States、America、retailer 各 0 次命中。撰稿代理雖然把這條列進了排除清單，實際交稿的文章卻在 FAQ 兩題與 callout 裡寫了「美國的 Micro Center」，等於還是把這個定性掛在 AMD 身上；已全部改成「通路僅限 Micro Center，AMD 沒有提到任何地區」。"
+    },
+    {
+      "claim": "AMD 在 IFA 現場對 Project Zenith 支援的原始官方文字。",
+      "seen_where": "只出現在微軟 Windows 裝置部落格 2026-09-14 的轉述裡。",
+      "why_excluded": "沒有找到、也沒有推測任何一個 AMD newsroom 網址承載這句話。今天重測 amd.com/en/newsroom/press-releases.html、ir.amd.com/news-events/press-releases、amd.com/en/blogs.html 三頁全文搜尋 Zenith 均 0 命中，維持前兩輪「AMD 沒有可讀到的一手頁面提到 Zenith」的結論，本文一律寫成「微軟轉述 AMD 的說法」。"
+    },
+    {
+      "claim": "任何 30B+ 模型在 Project Zenith 裝置上的實際執行速度、跑分或基準測試結果。",
+      "seen_where": "未見於任何一手來源。",
+      "why_excluded": "微軟與 AMD 都沒有公布任何測試數字，本站也沒有做過實測，文章與 FAQ 明確寫「不是實測結果」。"
+    },
+    {
+      "claim": "Windows Terminal 與圖表上的 Intelligent Terminal 是同一個東西。",
+      "seen_where": "9 月 4 日公告正文提 Windows Terminal，圖表提 Intelligent Terminal；6 月 2 日 Build 2026 文章把 Intelligent Terminal 描述成建立在 Windows Terminal 體驗之上。",
+      "why_excluded": "微軟沒有在任何一篇文章裡明確說兩者相同或不同。Build 2026 的描述只是暗示性的，不足以認定 Zenith 機器上釘選的到底是哪一個，文章保留為未解的不一致，不替微軟訂正。"
+    },
+    {
+      "claim": "AMD 規格表裡的晶片究竟該叫「Ryzen AI Max+ PRO 495」還是「Ryzen AI Max+ 495 PRO」。",
+      "seen_where": "同一頁面兩處各自印了不同順序。",
+      "why_excluded": "兩種拼法都是 AMD 自己印的，沒有一個是錯字或可以判定的正確答案；本文因此完全不使用這顆特定 SKU 的名字，只用不含衝突的系列名「Ryzen AI Max PRO 400 系列」。"
+    },
+    {
+      "claim": "微軟「unmetered」（不必計量計費）一詞背後具體指的是哪一個裝置端模型。",
+      "seen_where": "Build 2026 文章有一節標題是 Unmetered intelligence on Windows powered by on-device AI，宣布裝置端小模型 Aion 1.0 Instruct 與 Aion 1.0 Plan，狀態是「available in the coming months」。",
+      "why_excluded": "這牽涉具名 AI 模型的選用與能力，依 tech.md 的垂直界線屬於 AI 垂直的範圍，且 editorial_brief 明確把「怎麼選、怎麼跑本機模型」列為刻意不談的範圍；本文不點名任何模型，只維持微軟原文「不必計量計費」的说法。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，不是已經懂 Windows 的開發者。題目是一套作業系統設定加上一個硬體門檻，不是 AI 模型發布，因此留在科技垂直、不深入模型本身。三段式角度：第一，9 月 4 日實際改了什麼——一組開發者過去要自己手動打開的預設值（顯示副檔名、顯示隱藏檔、顯示完整路徑、關閉提示與最近使用清單、開啟 Command Palette）現在出廠就設好，加上固定的 18 項預先安裝工具清單，這是一般讀者看得懂、也查得到的具體變化。第二，比較有意思的一半：微軟把「開發者等級裝置」訂出一個數字門檻——統一記憶體 64GB 以上、頻寬 250GB/s 以上——並把這個門檻和「本機跑 30B 參數以上模型、不必計量計費」綁在一起；用白話解釋統一記憶體與頻寬是什麼、為什麼用的是記憶體規格而不是處理器規格。第三，誠實的空白：微軟公布了一個名字和一個規格門檻，卻沒有公布價格、日期、地區與 OEM 名單，也沒有說 Project Zenith 技術上到底是什麼、舊機器能不能事後取得——這對台灣讀者是最有用的一句話，因為它代表現在沒有人能說這件事什麼時候、會不會到台灣。\n\n嚴格界線：每一句能力敘述都是「微軟表示／AMD 表示」，本站沒有做任何測試，也沒有任何量測數字。不做任何購買或升級建議：不寫「該不該買」「值不值得」「哪一台比較好」，也不把微軟與 AMD 自己的數字之間、或和其他廠商的數字做成排名或頭對頭比較——文中唯一的表格是「各文件各自怎麼說」的整理，並在表格說明裡明講不是同一規格的比較。AMD 的材料只在它是第一款被點名的裝置這個範圍內出現：AMD 自己的規格是 AMD 的宣稱，時間點早於 Zenith 公告三個半月，從未提到 Zenith；Micro Center 的預購細節是 AMD 產品的美國零售事實，不是 Project Zenith 的上市地區聲明，不能讓它變成一句可供性宣稱。刻意不談：怎麼挑選或執行本機模型（AI 垂直的範圍）、雲端推論成本（NVIDIA Rubin 那篇的範圍）、代理程式安全機制（MXC、身分驗證）——6 月已公布的既有投資，9 月 4 日沒有新內容，不展開。同樣刻意不去調和微軟自己材料裡的兩個不一致：Windows Terminal 對 Intelligent Terminal、「250+ GB/s」對「250gbps」——正確做法是照抄各自的寫法，不是幫微軟訂正。",
+  "must_not_write": [
+    "不寫任何購買、升級或機型比較建議；不做「現在買最划算」「值不值得升級」「哪一台比較好」的結論。",
+    "不把微軟或 AMD 的效能、規格宣稱寫成本站量測或測試出來的事實；一律「微軟表示／AMD 表示」。",
+    "不把 Micro Center 描述成微軟或 AMD 對 Project Zenith 上市地區的聲明；那只是 AMD 自家產品的美國零售通路事實。",
+    "不指名任何具體的 30B+ 或本機模型（例如 Aion 1.0），也不深入本機模型的選擇與執行方式——那是 AI 垂直的範圍。",
+    "不把 AMD 頁面兩種不同拼法的晶片名稱合併成單一產品名；不指名這顆特定 SKU，只用不含衝突的系列名。",
+    "不把 Windows Terminal 與 Intelligent Terminal、或「250+ GB/s」與「250gbps」寫成可以互換的同一件事；照抄各自的原文寫法，並說明是微軟自己用詞不一致。",
+    "不加投資免責 callout——本文不帶 finance 主題，tech.md 的規則是不需要就不要加。",
+    "不描述任何商標、字標、圖示或介面截圖；hero 與圖解一律是幾何構圖的原創插圖說明。"
+  ],
+  "live_data_warnings": [
+    "AMD 部落格頁面帶動態的相關文章欄，位元組數會漂移：前一輪研究記 183,253、查核紀錄記 183,411、本輪重抓是 183,162，三次都不同，但抽取後的正文內容相同。引用時只寫「2026 年 5 月 20 日發布」，不依賴位元組數本身。",
+    "Build 2026 文章裡各元件（Coreutils、WSL containers、Windows Development Skills、Intelligent Terminal、MXC SDK）的正式推出／預覽狀態，全部是 2026 年 6 月 2 日當天的說法；Zenith 公告沒有在 9 月重新交代這些狀態是否已經改變，本文與研究紀錄引用時一律標明是 6 月的說法。",
+    "三個 Windows 官方 RSS feed（windowsdeveloper/feed、blogs.windows.com/feed、devices/feed）都是 10 筆滾動視窗，本輪沒有重抓確切筆數與最新日期，也沒有把 feed 網址放進 sources[]；只用來佐證事件日，不當成可以寫進文章的計數型事實。",
+    "AMD 規格表與 footnote GRHP-01 對同一顆晶片的命名不一致（PRO 495 對 495 PRO），是頁面當下的印刷狀態，下次查核仍要重新核對是否已被 AMD 自己修正。",
+    "WordPress REST 端點（wp-json/wp/v2/posts/57883）回 401，本輪沒有重試；下次查核若要用它做交叉比對，要先確認狀態是否改變。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（版本標記數錯誤，六項應為五項）：已套用。正文與 verified_facts 都改成「18 項裡標版本號的共 5 項：語言欄四項加 PowerShell 7，uv 與 NVM 沒有標版本」，本輪並以圖片閱讀工具重新獨立判讀全解析度圖表確認。",
+    "must_fix 2（Intel 子字串命中被誤記為公司名 0 命中的證據）：已套用。文章沒有寫出任何具體的 grep 次數，只寫「公告未提其他 OEM 或晶片廠商」；research 的 sourcing_notes 記錄了今天重新以詞界比對得到的結果（Intel 子字串 2 次、詞界 0 次），不把子字串命中誤記為公司名出現，也不把這個方法論細節寫進文章正文。",
+    "must_fix 3（圖片檔名是去掉尺寸後綴推導出來的，且「只存在於圖片」的說法過頭）：已套用。sourcing_notes 記下頁面實際引用的檔名（-1024x625 版本），本輪下載的就是這個頁面版本，不是推導出來的全解析度版本；正文先講內文點名的兩項工具，再講「完整的 18 項清單只印在圖表裡」，不再籠統地說工具名只存在於圖片。",
+    "must_fix 4（Micro Center「美國零售商」的定性不能掛在 AMD 網址上）：撰稿階段只套用了一半——研究紀錄排除了這句定性，但交稿的文章在 FAQ 第一題、第四題與 callout 裡仍寫了「美國的 Micro Center」。獨立查核已改掉三處，全部改成「通路僅限 Micro Center，AMD 沒有提到任何地區」。",
+    "must_fix 5（feed 佐證的事實掛在文章網址而非 feed 網址）：已套用。feed 的核對細節整段留在 event_date_basis 與 sourcing_notes，不進 verified_facts，也沒有把 feed 網址加進 sources[]。",
+    "must_fix 6（IFA 版本「250gbps」不是同一數字換寫法）：已套用。H2 第三段與 verified_facts 都寫成「微軟自己兩篇公告用詞不一致，不是同一個數字換了寫法」，正文引用的頻寬數字只採 9 月 4 日公告的「250+ GB/s」。",
+    "must_add（硬體可能不同但開發者承諾一致）：已套用，見 H1 第二段。",
+    "must_add（「已預先設定好的開發環境／挑選過的工具」一句話定義）：已套用，作為 H1 第一段的開場。",
+    "must_add（Windows 365 with Developer configuration 雲端路徑）：已套用，見 H5 第二段與 FAQ 第二題。",
+    "must_add（Surface RTX Spark Dev Box 的 pre-release 但書要跟著供貨說法走）：已套用，見 H5 第三段，128GB 與美國獨家銷售的說法都跟著先行釋出產品的但書一起寫。",
+    "must_add（AMD 四項開箱清單與微軟 18 項圖表是兩回事，不能當成同一件事）：已套用，見 H4 第一段，明寫「範圍比圖表 18 項小得多」。",
+    "must_add（AMD 頁面內部 PRO 495／495 PRO 命名衝突）：部分套用。衝突本身記在這份研究紀錄的 verified_facts、unverified_or_excluded 與 sourcing_notes，但文章正文完全不使用這顆特定 SKU 的任一種拼法，只用不含衝突的系列名「Ryzen AI Max PRO 400 系列」，用迴避取代選邊。",
+    "must_add（'unmetered' 一詞源自 Build 2026 的 Aion 1.0 裝置端模型）：未套用到文章正文。原因：這會牽涉具名 AI 模型的選用與能力描述，依 tech.md 的科技／AI 垂直分工（題目主體不是 AI 模型才留在科技垂直）與本篇 editorial_brief 明訂的排除範圍（怎麼挑選、執行本機模型留給 AI 垂直），不展開；已記進 unverified_or_excluded 供後續參考。",
+    "source_list_fix（結構已經乾淨，43 條事實全部掛在四條 sources 之內）：維持四條 sources 不變，沒有新增或刪除任何一條；feed 網址與圖片網址依 must_fix 3、5 的精神都不放進 sources[]。"
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "未參與撰稿。sources[] 四條全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（請求裡沒有任何 email、姓名或個人資料），再用純 Python 抽出正文與 meta 逐條比對；預先安裝工具圖表另外重新下載頁面實際引用的 Preinstalled-tools-2-1024x625.png（HTTP 200、140,734 bytes、1024x625），放大三倍後以圖片閱讀工具重新逐項判讀。全部 29 條 verbatim_quote 以程式對原始 HTML 與抽出的正文各比對一次。檢查的主張共 96 條：正文 16 段的每一句、summary 四句、FAQ 六題的答句、callout、表格四列與欄位標題與 caption、圖解 caption 與研究紀錄 diagram 的四格與 hero_label、title、description。沒有使用任何 sources[] 以外的新網址作為文章依據；為了反駁而讀的頁面只有那張圖片（它已在研究紀錄裡）。",
+    "verdict": "needs_fixes（16 處已改，其中 5 處是被推翻的事實）",
+    "edits_to_the_pack": [
+      "表格：9/14 IFA 那一列原本寫「30B 以上」，但那篇全文子字串搜尋「30B」0 次命中——已改成「未提參數」。同時把欄位標題「本機模型規模上限」改成「本機模型規模的說法」（微軟的 30B+ 是下限，AMD 的 200B／300B 才是上限，同一欄兩種意義不能都叫「上限」），把 AMD 那兩列改成「最高 2,000 億」與「3,000 億以上（4 位元量化）」，讓 4 位元量化的但書和數字待在同一格。",
+      "H5 第一段原本寫「兩篇公告全文沒有價格、幣別或 price、pricing 字樣」「唯一的未來時間『未來幾個月內』」「兩篇公告都沒提到台灣、亞洲或任何地區」——IFA 那篇 price 出現三次、寫了 will arrive in October 2026、也提到 Berlin，三個否定句都被推翻。已全部限縮到 9 月 4 日那一篇，並改寫成「沒有說 Zenith 會在哪些國家或市場推出」。",
+      "H3 第一段原本寫「18 項裡標版本號的共 5 項：前四項加 PowerShell 7」——「前四項」照字面就是 Python 3.14+、uv、NVM、Node 24+，和同句後半「uv 與 NVM 沒有標版本」自相矛盾。已改成「語言欄除 uv 與 NVM 外的四項，加上 PowerShell 7」，並把 18 這個清點數字明寫成「本站清點」。",
+      "H4 第一段原本寫 AMD 開箱清單「列出四項工具……範圍比圖表 18 項小得多」——微軟原文用的是 includes，那是舉例不是完整清單，撐不起範圍比較。已改成「並舉出……原文用的是『包含』，不是完整清單，也不是圖表那 18 項」。",
+      "H1 第二段原本從「硬體可能不同」推論出「Zenith 是一套 OEM 夥伴共同遵守的設定標準」——來源沒有任何「標準」或「共同遵守」的說法，而且和本文自己「微軟沒說 Zenith 技術上是什麼」互相打架。已改成「可見 Zenith 涵蓋的是多款裝置與效能等級，不是單一機型」。",
+      "H5 第三段原本把 Surface RTX Spark Dev Box 稱為「既有裝置」——它在 2026-06-02 當天是 pre-release、說的是 later this year，不是既有裝置。已改成「同一篇 6 月文章還提到一款微軟自家裝置」，並把先行釋出但書與供貨說法綁在一起。",
+      "FAQ 第一題、第四題與 callout 原本寫「美國的 Micro Center」——AMD 頁面全文 U.S./United States/America/retailer 各 0 次命中，這個定性不是 AMD 說的。三處已改成「通路僅限 Micro Center，AMD 沒有提到任何地區」。",
+      "H3 第三段原本寫「微軟另列四項預先套用的介面預設」，接著列了九項設定——來源印的「四」是 File Explorer、Search、Start、Taskbar 四個區域，不是四項設定。計數已拿掉，並補回來源列在同一句裡、前一輪漏掉的 with long-path support enabled。",
+      "H3 第二段原本寫「圖表其餘工具在那篇 6 月文章各有不同狀態」——6 月那篇只交代了圖表 18 項裡的少數幾項（Git、uv、NVM、Node 這些第三方工具完全沒提）。已改成具體的「圖表上的 Core Utils 與 Windows Dev Skills 在那篇標的是正式推出」。",
+      "H2 第二段的「不必計量計費」原本加了引號、像是引用微軟的原話，而且「藉此降低雲端 token 花費」把原文兩處的 helping 對沖詞刪掉了。已改成「而且是『不計量』（unmetered）的——微軟拿它和『按量計費的雲端 token』對照，說有助於降低 token 成本」，FAQ 第六題同步改寫，並明說這不是在說微軟另外提供免費服務。",
+      "H2 第三段原本寫 IFA 那篇「重述同一門檻，但把頻寬寫法從 250+ GB/s 改成 250gbps」——改成先寫兩篇都寫的「64GB+ 統一記憶體」，再說頻寬寫成「250gbps」，避免讀成同一個量的兩種寫法。同段的「Windows 裝置部落格」依 og:site_name 改為「微軟裝置部落格」（Microsoft Devices Blog），表格同步。",
+      "H3 第一段原本寫「公告內文只點名兩項工具」——同一篇內文另外提到 WSL 與 Intelligent Terminal。已改成「只點名工作列預設固定的兩項工具」。",
+      "第一段與 summary 第二句原本寫「第一款支援裝置採用 AMD 的 Ryzen AI Halo」——原文是 will first become available with，沒有說「裝置採用」。已改成「Zenith 先隨 AMD 的 Ryzen AI Halo 推出」。",
+      "summary 第四句「微軟沒有公布……」改成「微軟這兩篇公告都沒有寫出……」，description 末句同步限縮成「兩篇公告都沒有寫的價格、時程與地區」。",
+      "H2 第一段與 FAQ 第三題的「微軟在意的是……」改成「看的是……」（不替微軟講動機）；FAQ 第三題並補上「微軟沒有說這兩個數字是認證或強制規範，也沒有說低於這個數字的機器會怎樣」。",
+      "H4 第三段「全球第一款 x86 用戶端處理器」改成「全球第一批」——AMD 原文是 the world's first x86 client processors，講的是整個系列。",
+      "H5 第二段的 dev-config.winget 工具清單補上「等工具」（原文是 WSL, PowerShell 7, Git, GitHub CLI, Visual Studio Code, Python and more），並拿掉來源沒有的「不設硬體門檻」；FAQ 第二題同步改成微軟自己的說法（任何一台 Windows 11 裝置／可從任何裝置存取）。",
+      "研究紀錄：兩條讀自圖片的 verbatim_quote（Preinstalled tools、Python 3.14+）在頁面文字裡搜尋不到，已改為圖片的 alt 文字與空字串並註明是讀自圖片；IFA 那條引文跨過一個 <a> 連結、Build 那條的 pre-release 與 products 之間是 U+202F 窄式不斷行空格，兩條都換成頁面上真正連續的字串。另補三條新事實（IFA 沒有 30B、IFA 有 price 與 October 2026 與 Berlin、Zenith 公告後段的 250 GB/s+ 變體）。"
+    ],
+    "checked_and_correct": [
+      "四條 sources 今天全部 HTTP 200 並讀到正文，沒有擋阻頁、軟性 404 或轉址殼：Zenith 公告 121,061 bytes、IFA 報導 140,491 bytes、Build 2026 文章 158,245 bytes（前三者與撰稿紀錄的位元組數完全相同）、AMD 部落格 183,399 bytes（撰稿記 183,162、更早兩輪記 183,253／183,411，是已知的動態相關文章欄漂移，正文相同）。",
+      "事件日 2026-09-04 與 published_time 2026-09-04T10:00:29+00:00、modified_time 2026-09-04T13:17:30+00:00 逐字重新確認；IFA 那篇 published_time 2026-09-14T17:00:39+00:00；Build 那篇 2026-06-02T16:31:36+00:00 發布、2026-06-05T14:18:38+00:00 修改。",
+      "預先安裝工具圖表獨立重數：三欄標題與 18 個工具名全部與紀錄一致，帶版本號的確實只有 Python 3.14+、Node 24+、WSL 2+ Ubuntu、.NET 10 與 PowerShell 7 五項，uv 與 NVM 是裸名稱。",
+      "9 月 4 日公告以詞界比對重測：Acer、ASUS、Dell、HP、Lenovo、MSI、Intel、NVIDIA、Qualcomm 各 0 次，AMD 1 次；Taiwan、preview、generally available、general availability 各 0 次。文章沒有把任何一個 grep 次數寫進正文。",
+      "AMD 頁面重測：Zenith、bandwidth、GB/s、price、$ 各 0 次命中；up to 200 billion parameters、up to 192GB of unified memory and 160GB of VRAM、available exclusively at Micro Center、including HP and Lenovo in the third quarter of 2026、footnote GRHP-01 的 300 billion+ at 4-bit quantization 逐字核對無誤。",
+      "AMD 頁面內部的 PRO 495／495 PRO 命名衝突今天仍然存在（規格表印 Ryzen™ AI Max+ PRO 495、footnote GRHP-01 印 AMD Ryzen™ AI Max+ 495 PRO）；文章正文兩種拼法一個字都沒有出現，只用頁面上乾淨出現的系列名「Ryzen AI Max PRO 400 系列」，沒有因為迴避而發明來源沒有的系列名。",
+      "界線：全文沒有購買或升級建議、沒有推薦式比價、沒有排名；每一句能力與規格敘述都帶「微軟表示／AMD 表示／公告說」；只有一個 callout，沒有投資免責段落；沒有簡體字。",
+      "checked_on 2026-09-17 在內容包四條 source、研究紀錄、第二段與表格 caption 四處一致，本輪沒有更動它（那是撰稿者實際讀到來源的日子）。",
+      "圖解四格與 hero_label 的每個數字（5、7、6、18）都出現在正文；summary 的每個數字也都在正文裡。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍是 FAIL，只剩協調者要處理的兩條：tech 索引內容包還不存在，以及第二個 link 的 text 要換成 tech-news-pixel-drop-20260915 的正式 title。查核前後完全相同，不是本次編輯造成的。",
+      "AMD footnote GRHP-01 自己標了「As of 5/11/2026」，文章因為 zh-TW 段落字數已經 2,986／3,000 而沒有把這個時點寫進正文，只保留「須 4 位元量化才成立」。站主若要補上這一句，需要從別處刪等量的字。",
+      "「門檻」這個詞是本文的框架：微軟只是把裝置描述成具備 64GB+ 與 250+ GB/s，沒有說那是認證或強制規範。FAQ 第三題已經寫出這一點，但 title 與正文仍然用「門檻」，站主可決定是否改詞。",
+      "圖表是一張 PNG 快照，微軟換圖就過時；18／5／7／6 四個數字與 18 個工具名都綁在 2026-09-18 讀到的那一版 Preinstalled-tools-2-1024x625.png 上。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "why": "第一輪改了 16 處、其中 5 處是被推翻的事實，超過十處，依規格要做第二輪。範圍不是整篇重做，而是：覆核第一輪改動過的每一個段落、逐句回查第一輪新寫進去的每一句（那些句子沒有人查過）、表格八格的來源歸屬、圖表計數、台灣與購買建議的界線、全部 verbatim_quote 的連續性，以及第一輪有沒有為了字數刪掉但書。",
+      "method": "四條 sources 今天再以 curl -sL -A \"Mokaair-editorial\" 各抓一次並讀 body（請求裡沒有任何 email、姓名或個人資料）：Zenith 公告 200／121,061 bytes、IFA 報導 200／140,491 bytes、Build 2026 文章 200／158,245 bytes、AMD 部落格 200／183,163 bytes（AMD 這一頁的位元組數第四次又是新數字，仍是動態相關文章欄漂移，正文相同；不可當版本識別）。用純 Python 把四頁各抽成三個版本（原始 HTML、去標籤不補空白、去標籤補空白）再做字串比對，所以跨 <a>／跨 <span> 與 U+202F、U+00A0 的引文都抓得出來。預先安裝工具圖表另外重抓（200、140,734 bytes、1024x625），自行放大三倍後逐項重數，沒有沿用第一輪的計數結論。",
+      "claims_checked": 104,
+      "claims_checked_breakdown": "正文 16 段的 40 個句子、圖表 18 個工具名與 3 個欄位標題、summary 四句、FAQ 六題答句、callout 三項、表格 16 格加 4 個欄位標題加 caption、圖解 caption 與四格 nodes 與 hero_label、title 與 description 兩句；另外獨立跑了 34 條 verbatim_quote 的連續性比對與約 60 組關鍵字／詞界計數（四頁各自的否定句測試）。",
+      "edits": 9,
+      "edits_note": "沿用第一輪的數法，一個發現算一處；這 9 處共動到 13 個文字位置（第 1 處動正文與表格、第 4 處動 callout 與 FAQ 第四題、第 5 處動正文與 FAQ 第六題、第 7 處動正文與 FAQ 第三題）。",
+      "edits_to_the_pack": [
+        "H4 第三段與表格第四列的「3,000 億參數以上」→「3,000 億參數」。AMD 正文印的是 the world's first x86 client processors capable of running 300 billion parameter models locally，**沒有加號**；加號出自註腳 GRHP-01，而那個註腳的主詞是單一 SKU、不是整個系列。第一輪把註腳的加號併進正文的系列宣稱，等於放大廠商的「全球第一」宣稱。",
+        "H4 第三段補上 AMD 註腳自己標的時點：「但須 4 位元量化才成立，註腳標的是 2026 年 5 月 11 日的狀態」。第一輪因為段落字數 2,988／3,000 把這一條留給站主；第二輪先清出字數再補進去，站主不必再決定。",
+        "H5 第三段「實際銷售與交付要視法規核准而定」→「……要視法規核准與相關要求而定」。註腳 [ii] 是兩個條件（subject to regulatory certification/approval；contingent on compliance with applicable requirements），第一輪壓成一個，等於少寫一個但書——研究紀錄裡本來就是完整的兩句。",
+        "callout 與 FAQ 第四題「AMD 那篇部落格唯一提到的通路是 Micro Center」→「AMD 那篇部落格只說 Ryzen AI Halo 的通路僅限 Micro Center」。同一頁另寫了 Ryzen AI Max PRO 400 系列將由包含 HP 與 Lenovo 在內的 OEM 夥伴推出，那也是一條供貨路徑，而且文章 H4 第三段自己就寫了這一句——「唯一」和文章自己打架。Micro Center 的獨家只屬於 Ryzen AI Halo。",
+        "H2 第二段與 FAQ 第六題「符合門檻的裝置上開發者可在本機執行 30B 參數以上模型」→「Zenith 裝置上……」。微軟兩處的主詞都是 Project Zenith devices（On these devices／With 64 GB+ …, Project Zenith devices enable developers to…），寫成「符合門檻的裝置」會把微軟對自家產品的宣稱擴大成一條硬體規格通則。",
+        "H3 第二段「圖表上的 Core Utils 與 Windows Dev Skills 在那篇標的是正式推出」→「那篇把名稱相近的 Coreutils for Windows 與 Windows Development Skills 標為正式推出」。6 月那篇全文「Core Utils」0 次、「Windows Dev Skills」0 次——那是圖表自己的寫法，微軟沒說兩邊是同一件事。同一段才剛拒絕替微軟調和 Windows Terminal／Intelligent Terminal，這裡要用同一個標準。",
+        "H2 第一段與 FAQ 第三題「微軟用記憶體規格而非處理器規格當門檻，看的是機器能不能把大模型整個放進去運作」→「……公告把這兩個數字和『在本機執行模型』綁在一起」。第一輪已經把「在意的」改成「看的是」，但仍然是在替微軟講理由；公告只把數字和本機執行模型並列，沒有說為什麼挑記憶體規格。改後的寫法是公告真的做了的事。",
+        "H1 第一段「公告說明這套設定建立在微軟從年初以來對 Windows 11 …的改善之上」→「公告說微軟從年初以來持續改善 Windows 11 的搜尋、檔案總管與日常記憶體使用」。來源只說 Zenith 裝置 will benefit from all these improvements，沒有說 Zenith「建立在」那些改善之上；而且同一句後半已經寫了「會從這些既有改善中受惠」，前半是多出來的因果。",
+        "H5 第一段刪掉句尾「只說 Zenith 裝置會受惠於 Windows 11 今年以來的改善」——與 H1 第一段末句重複，且該段是「微軟沒講什麼」的清單。刪的是重複敘述，不是但書，用來換回上面幾處補字的空間。"
+      ],
+      "checked_and_correct": [
+        "verbatim_quote 全部重驗：現在 34 條，非空的每一條都以正規化後（引號、破折號、U+00A0／U+202F、連續空白）的字串出現在原始 HTML 裡，沒有一條是靠補空白才連得起來的。第一輪修掉的三條（IFA 跨 <a>、Build 的 U+202F、讀自圖片的兩條）今天全部通過。",
+        "預先安裝工具圖表獨立重數（不看第一輪結論）：生產力與編輯 5 項（Visual Studio Code、GitHub Copilot、PowerToys、WinAppCLI、Windows Dev Skills）、終端機與原始碼控制 7 項（Intelligent Terminal、PowerShell 7、Git、GitHub CLI、Azure CLI、Core Utils、Oh My Posh）、語言與執行環境 6 項（Python 3.14+、uv、NVM、Node 24+、WSL 2+ Ubuntu、.NET 10），合計 18；帶版本號的正好 5 項（Python 3.14+、Node 24+、WSL 2+ Ubuntu、.NET 10、PowerShell 7），uv 與 NVM 是裸名稱。圖上沒有印任何總數，正文已標「本站清點」。圖解 nodes 的 5／7／6 與標題的 18 與重數結果相同，四個數字都出現在正文。",
+        "表格四列八格逐格回查來源歸屬：第一、二列的數字只出自微軟各自的那一篇（9/4 的 64 GB+ 與 30B+；9/14 的 64GB+ 與 250gbps），第三、四列的 128GB／200B、192GB／160GB／300B／4-bit 只出自 AMD 那一頁，沒有一格跨文件。9/14 那篇「30B」「parameter」今天再測仍是 0 次命中，第二列「未提參數」成立。",
+        "三句被限縮到「9/4 那篇」的否定句範圍今天重測剛好：9/4 公告 price／pricing／$／preview／generally available／general availability／Taiwan／Berlin／October 各 0 次，未來時間字樣只有 coming months 1 次（later this year、soon、quarter、launch 各 0 次），所以「9 月 4 日公告裡唯一的未來時間」成立；IFA 那篇 price 3 次、October 2026 1 次、Berlin 1 次，而正文寫的是「兩篇公告全文都沒有 **Zenith 的** 價格、出貨日、預覽日或正式推出日」與「沒說 Zenith 會在哪些國家或市場推出」，兩句都仍然成立，而且正文沒有提到 IFA 那篇的 price／October 2026／Berlin，不需要另外帶條件。",
+        "Surface RTX Spark Dev Box 的狀態三件事全部對上：later this year、in the U.S. exclusively on Microsoft.com、註腳 [ii] 的 pre-release 與法規但書；文章寫的是「當時說」，沒有寫成既有裝置或已上市。四條來源今天再測都沒有把這款裝置和 Zenith 畫上等號（6 月那篇 Zenith 0 次命中）。",
+        "unmetered 那一段與 FAQ 第六題的對沖詞都還在：微軟原文兩處都是 helping（helping reduce reliance on metered cloud tokens／helping lower token costs），正文寫「說有助於降低 token 成本」、FAQ 明寫「這不是在說微軟另外提供免費的服務」，沒有把 unmetered 讀成微軟送一份免費服務，也仍然沒有點名 Aion 1.0（AI 垂直的範圍）。",
+        "AMD 命名衝突今天仍在（規格表 Ryzen™ AI Max+ PRO 495、註腳 GRHP-01 的 AMD Ryzen™ AI Max+ 495 PRO）；對整個 zh-TW 內容包做字串搜尋，「PRO 495」「495 PRO」「Max+ PRO」各 0 次，文章用的三個名字 Ryzen AI Halo、Ryzen AI Max+ 395、Ryzen AI Max PRO 400 系列都在 AMD 頁面上乾淨出現，沒有發明來源沒有的系列名。IFA 開箱那四項仍寫成「包含」（includes）的舉例，沒有被寫成全清單。",
+        "台灣與界線：全文出現「台灣」四次，四次都是否定句（兩篇公告沒提到台灣、來源沒有任何和台灣上市與否有關的資訊、讀者不能從本文推論台灣已經買得到或已經推送），沒有一句能讀成台灣已上市、已推送或有台灣售價。購買建議掃描：推薦／值得／划算／最好／最佳／CP值 各 0 次；該買、升級、建議、排名的出現處全部是否定用法（不做該不該升級、該買哪一台的建議／不提供購買或升級建議／不是效能排名）。",
+        "summary 四句與 FAQ 六題的答句逐句回正文比對，沒有任何一句帶入正文沒有的事實；FAQ 多出來的只有更嚴的但書（微軟沒有說這兩個數字是認證或強制規範、讀者不能從本文推論台灣已經買得到）。summary 的每個數字仍都在正文裡，check_article 的 summary 數字檢查通過。",
+        "checked_on 2026-09-17 仍然沒有動（那是撰稿者實際讀到來源的日子），內容包四條 source、研究紀錄、第二段、表格 caption 與圖解 caption 一致。"
+      ],
+      "left_for_the_owner": [
+        "check_article.py 仍是 FAIL，且只剩協調者要處理的那兩條：tech 索引內容包還不存在，以及第二個 link 的 text 要換成 tech-news-pixel-drop-20260915 的正式 title。兩輪查核前後完全相同，兩個結尾連結都沒有動過。",
+        "zh-TW 段落字數現在是 2,996／3,000，只剩 4 個字的空間。第二輪是先刪掉一句重複敘述、再把 AMD 註腳時點與法規但書補回去才擠進來的；之後若還要加字，得從別處刪等量、而且不能刪但書。",
+        "「門檻」仍是本文的框架用詞（title 與正文都用），微軟只是把裝置描述成具備 64 GB+ 與 250+ GB/s，沒有說那是認證或強制規範——FAQ 第三題已寫出這一點。要不要改詞仍由站主決定；這是第一輪就留下的同一件事，第二輪沒有改。",
+        "圖表是一張 PNG 快照，微軟換圖就過時；18／5／7／6 與 18 個工具名都綁在 2026-09-18 讀到的那一版 Preinstalled-tools-2-1024x625.png（兩輪各自獨立重數，結果相同）。出刊前若隔了一段時間，再抓一次比對。"
+      ],
+      "verdict": "ok（9 處已改、動到 13 個文字位置：3 處是被推翻或被放大的事實，2 處是主詞被放大，3 處是補回但書與來源印的時點，1 處是刪掉重複敘述換字數；骨幹論述全部重查成立，沒有被動到）"
+    }
+  },
+  "hero_label": "開發機門檻，價格未定",
+  "diagram": {
+    "title": "18 項預先安裝的工具",
+    "caption": "依微軟 2026 年 9 月 4 日發布的 Project Zenith 公告整理：預先安裝工具圖表的三個分類與介面預設變更，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "生產力與編輯",
+        "5 項工具"
+      ],
+      [
+        "終端機與版控",
+        "7 項工具"
+      ],
+      [
+        "語言與執行環境",
+        "6 項工具"
+      ],
+      [
+        "介面預設",
+        "副檔名、隱藏檔皆顯示"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Baseline Set, Price TBD",
+      "diagram": {
+        "title": "18 Preinstalled Tools",
+        "caption": "Compiled from Microsoft's Project Zenith announcement published September 4, 2026: the three categories in the preinstalled-tools chart and the interface default changes. Checked on September 17, 2026.",
+        "nodes": [
+          [
+            "Productivity/edit",
+            "5 tools"
+          ],
+          [
+            "Terminal & VCS",
+            "7 tools"
+          ],
+          [
+            "Languages/runtimes",
+            "6 tools"
+          ],
+          [
+            "UI defaults",
+            "Extensions, hidden files shown"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "開発機の基準、価格未定",
+      "diagram": {
+        "title": "18個の事前インストールツール",
+        "caption": "Microsoft が2026年9月4日に発表した Project Zenith の内容をもとに作成：事前インストールツールの図表にある3分類とインターフェースの既定値の変更。確認日2026年9月17日。",
+        "nodes": [
+          [
+            "生産性と編集",
+            "5個のツール"
+          ],
+          [
+            "ターミナルと版管理",
+            "7個のツール"
+          ],
+          [
+            "言語と実行環境",
+            "6個のツール"
+          ],
+          [
+            "画面の既定値",
+            "拡張子や隠しファイルを表示"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "기준 발표, 가격 미정",
+      "diagram": {
+        "title": "미리 설치된 도구 18개",
+        "caption": "Microsoft가 2026년 9월 4일 발표한 Project Zenith 내용을 바탕으로 정리: 미리 설치된 도구 도표의 세 범주와 인터페이스 기본값 변경. 확인일 2026년 9월 17일.",
+        "nodes": [
+          [
+            "생산성·편집",
+            "도구 5개"
+          ],
+          [
+            "터미널·버전관리",
+            "도구 7개"
+          ],
+          [
+            "언어·실행환경",
+            "도구 6개"
+          ],
+          [
+            "인터페이스 기본값",
+            "확장자·숨김 파일 표시"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "开发机门槛，价格未定",
+      "diagram": {
+        "title": "18 项预装工具",
+        "caption": "依 Microsoft 2026 年 9 月 4 日发布的 Project Zenith 公告整理：预装工具图表的三个分类与界面默认设置变更，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "生产力与编辑",
+            "5 项工具"
+          ],
+          [
+            "终端与版控",
+            "7 项工具"
+          ],
+          [
+            "语言与运行环境",
+            "6 项工具"
+          ],
+          [
+            "界面默认",
+            "扩展名、隐藏文件均显示"
+          ]
+        ]
+      }
+    }
+  }
+}

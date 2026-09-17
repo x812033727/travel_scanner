@@ -377,6 +377,198 @@ def _crypto_index(accent: str) -> str:
     return b
 
 
+# --- the tech vertical (batch 4.2) ----------------------------------------------------------
+# Devices are outlines of a category -- a slab, a square with a strap, a bud on a stem -- and
+# never a particular product's silhouette, camera layout or interface.
+
+
+def curve(x1, y1, cx, cy, x2, y2, color=TEAL, width=10, broken=False):
+    """One quadratic stroke: a cable on the sea floor. ``broken`` is one that is not lit yet."""
+    dash = ' stroke-dasharray="26 22"' if broken else ""
+    return f'<path d="M{x1} {y1} Q{cx} {cy} {x2} {y2}" fill="none" stroke="{color}" stroke-width="{width}" stroke-linecap="round"{dash}/>'
+
+
+def outline(x, y, w, h, color=BLUE, rx=36):
+    """A dashed frame round things that are counted as one."""
+    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" fill="none" stroke="{color}" stroke-width="6" stroke-dasharray="22 16"/>'
+
+
+def pylon(x, y, color=TEAL, h=360):
+    """A transmission tower: the grid, as opposed to ``tower``'s radio mast."""
+    body = line(x - 70, y + h, x, y, color, 12) + line(x + 70, y + h, x, y, color, 12)
+    for share, half in ((0.22, 95), (0.45, 70)):
+        level = y + h * share
+        body += line(x - half, level, x + half, level, color, 10)
+        body += line(x - half, level, x - half, level + 26, color, 8) + line(x + half, level, x + half, level + 26, color, 8)
+    return body + line(x - 48, y + h * 0.72, x + 48, y + h * 0.72, color, 10)
+
+
+def _iphone_duo(accent: str) -> str:
+    # The same device twice: closed, a narrow slab with its spine on the left; open, one wide
+    # panel with the fold down the middle, a hinge at each end of it and a cell in each half.
+    other = second_colour(accent)
+    b = rect(275, 270, 210, 340, "#FFFFFF", other, 34) + rect(305, 298, 158, 284, PALE, "none", 18) + line(290, 310, 290, 570, other, 10)
+    b += arrow(560, 700, 440, other)
+    b += rect(760, 250, 580, 380, "#FFFFFF", accent, 34) + rect(784, 274, 532, 332, PALE, "none", 18)
+    b += dashed(1050, 268, 1050, 612, accent, 8) + circle(1050, 250, 15, accent, "none") + circle(1050, 630, 15, accent, "none")
+    return b + rect(835, 515, 150, 56, "#FFFFFF", other, 14) + rect(1115, 515, 150, 56, "#FFFFFF", other, 14)
+
+
+def _apple_september_hardware(accent: str) -> str:
+    # Three categories on one shelf -- a phone, a watch with a pulse across its face, a pair of
+    # buds -- and nothing that belongs to a particular model.
+    other = second_colour(accent)
+    b = phone(250, 235, 230, 420, INK)
+    b += rect(705, 210, 130, 95, PALE, other, 22) + rect(705, 575, 130, 95, PALE, other, 22) + rect(650, 295, 240, 290, "#FFFFFF", accent, 60)
+    b += f'<path d="M690 440 L735 440 L762 385 L792 495 L818 440 L850 440" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'
+    for x in (1105, 1275):
+        b += rect(x - 19, 395, 38, 170, "#FFFFFF", other, 19) + circle(x, 370, 52, "#FFFFFF", other) + circle(x, 370, 18, other, "none")
+    return b
+
+
+def _eu_cra_reporting(accent: str) -> str:
+    # A clock starts running, a report goes to one platform, and the platform passes it on to
+    # the national teams: the article's flow, left to right.
+    other = second_colour(accent)
+    b = circle(330, 430, 125, "#FFFFFF", other) + line(330, 430, 330, 345, other, 12) + line(330, 430, 400, 430, other, 12) + circle(330, 430, 13, other, "none")
+    b += arrow(490, 600, 430, other) + sheet(635, 295, 220, 270, accent, rows=4) + warning(835, 305, 42)
+    b += arrow(890, 1000, 430, accent)
+    b += "".join(line(1100, 430, x, y, "#C4CCCC", 8) for x, y in ((1300, 285), (1350, 430), (1300, 575)))
+    b += circle(1100, 430, 74, PALE, accent) + circle(1100, 430, 24, accent, "none")
+    return b + "".join(circle(x, y, 42, "#FFFFFF", other) for x, y in ((1300, 285), (1350, 430), (1300, 575)))
+
+
+def _taiwan_sovereign_ai_corpus(accent: str) -> str:
+    # Books on the left, the licence they pass through, and the corpus they end up in.
+    other = second_colour(accent)
+    b = rect(245, 500, 300, 64, "#FFFFFF", other, 12) + rect(270, 428, 270, 64, PALE, other, 12) + rect(235, 356, 300, 64, "#FFFFFF", other, 12)
+    b += line(285, 372, 285, 404, other, 8) + line(320, 444, 320, 476, other, 8) + line(295, 516, 295, 548, other, 8)
+    b += arrow(585, 665, 460, other) + certificate(695, 290, 240, 320, accent) + arrow(975, 1055, 460, accent)
+    b += rect(1085, 275, 320, 340, "#FFFFFF", accent, 36)
+    for r in range(3):
+        for c in range(3):
+            b += rect(1115 + c * 95, 305 + r * 95, 70, 70, PALE if (r + c) % 2 == 0 else "#FFFFFF", other if (r + c) % 2 == 0 else accent, 14)
+    return b
+
+
+def _taiwan_6g_spectrum(accent: str) -> str:
+    # A mast on the ground, a satellite above it, a dashed link between the two layers -- and
+    # on the right a plan drawn in dashes with an open date: a seminar, not a decision.
+    other = second_colour(accent)
+    b = line(215, 645, 1000, 645, "#C4CCCC", 10) + tower(390, 405, accent, 240)
+    b += rect(640, 268, 100, 50, PALE, other, 8) + rect(870, 268, 100, 50, PALE, other, 8) + line(740, 293, 760, 293, other, 8) + line(850, 293, 870, 293, other, 8)
+    b += rect(760, 250, 90, 86, "#FFFFFF", other, 16)
+    b += dashed(500, 420, 730, 340, other, 8) + dashed(805, 360, 805, 610, other, 8)
+    return b + sheet(1110, 300, 240, 300, accent, rows=5, broken=True) + pending(1350, 300, 36, accent)
+
+
+def _taiwan_matsu_cable(accent: str) -> str:
+    # The main island's shore, three cables across the strait -- one with a fault on it, one
+    # not yet lit -- and the four townships joined to each other by microwave.
+    other = second_colour(accent)
+    b = rect(200, 290, 170, 320, PALE, other, 44)
+    b += curve(370, 360, 700, 250, 1046, 415, other) + curve(370, 430, 700, 520, 1046, 430, other) + curve(370, 500, 700, 700, 1046, 445, accent, broken=True)
+    b += warning(704, 470, 44)
+    nodes = ((1090, 430), (1230, 275), (1370, 430), (1230, 585))
+    b += "".join(dashed(x1, y1, x2, y2, accent, 8) for (x1, y1), (x2, y2) in zip(nodes, nodes[1:] + nodes[:1]))
+    return b + "".join(circle(x, y, 44, PALE, other) for x, y in nodes)
+
+
+def _apple_eu_business_terms(accent: str) -> str:
+    # Several sets of terms become one, and what that one charges for core technology is the
+    # thin slice of the pie: a twentieth, drawn to scale.
+    other = second_colour(accent)
+    b = sheet(215, 245, 180, 230, other, rows=3) + sheet(275, 325, 180, 230, other, rows=3) + sheet(335, 405, 180, 230, other, rows=3)
+    b += arrow(560, 670, 440, other) + sheet(705, 275, 250, 330, accent, rows=6) + arrow(990, 1090, 440, accent)
+    return b + circle(1255, 440, 130, "#FFFFFF", accent) + f'<path d="M1255 440 L1255 310 A130 130 0 0 1 1295.2 316.4 Z" fill="{accent}" stroke="{accent}" stroke-width="6" stroke-linejoin="round"/>'
+
+
+def _windows_project_zenith(accent: str) -> str:
+    # A developer machine with its tools already listed on screen, and beside it the memory it
+    # must have and the bandwidth line it has to clear.
+    other = second_colour(accent)
+    b = monitor(215, 250, 560, 330)
+    for c in range(3):
+        for r in range(4):
+            b += line(280 + c * 165, 325 + r * 52, 385 + c * 165 - (r % 2) * 30, 325 + r * 52, accent if c == 1 else other, 12)
+    b += rect(890, 290, 470, 120, "#FFFFFF", accent, 24) + "".join(rect(915 + i * 108, 318, 88, 64, PALE, accent, 10) for i in range(4))
+    return b + arrow(890, 1360, 545, other) + line(1190, 470, 1190, 620, INK, 10) + circle(1190, 545, 24, INK, "none")
+
+
+def _pixel_drop(accent: str) -> str:
+    # One update, four gates -- model, region, language, pairing -- and at the far end the one
+    # watch some of it is limited to.
+    other = second_colour(accent)
+    b = phone(235, 235, 230, 420, INK)
+    b += "".join(rect(272 + c * 85, 325 + r * 85, 66, 66, "#FFFFFF", accent if (r + c) % 2 == 0 else other, 14) for r in range(2) for c in range(2))
+    for x in (610, 765, 920, 1075):
+        b += line(x, 265, x, 385, other, 14) + line(x, 495, x, 615, other, 14)
+    return b + arrow(520, 1160, 440, accent) + pending(1290, 440, 92, accent) + circle(1290, 440, 54, PALE, accent)
+
+
+def _apple_m6_m5_ultra(accent: str) -> str:
+    # One chip on its own and one made of two joined edge to edge, over a staircase of memory.
+    other = second_colour(accent)
+    b = chip(285, 245, 230, 190) + chip(760, 245, 220, 190) + chip(1075, 245, 220, 190) + rect(980, 300, 95, 80, PALE, accent, 10)
+    for i, h in enumerate((36, 64, 98, 136)):
+        b += rect(300 + i * 270, 670 - h, 200, h, PALE if i % 2 == 0 else "#FFFFFF", other if i % 2 == 0 else accent, 12)
+    return b
+
+
+def _nvidia_cuda_q(accent: str) -> str:
+    # Many error-prone physical qubits counted as one logical qubit, and the ruler underneath:
+    # the release estimates how much hardware that takes -- it does not run anything.
+    other = second_colour(accent)
+    b = outline(200, 235, 390, 290, accent)
+    for r in range(3):
+        for c in range(4):
+            x, y = 250 + c * 95, 290 + r * 90
+            b += pending(x, y, 28, other) if (r * 4 + c) % 3 == 1 else circle(x, y, 28, "#FFFFFF", other)
+    b += arrow(640, 770, 380, accent) + circle(935, 380, 125, "#FFFFFF", accent) + circle(935, 380, 60, PALE, accent)
+    b += sheet(1150, 245, 230, 280, other, rows=5)
+    b += rect(215, 590, 1170, 64, "#FFFFFF", INK, 14)
+    return b + "".join(line(215 + i * 65, 593, 215 + i * 65, 593 + (36 if i % 3 == 0 else 20), INK, 6) for i in range(1, 18))
+
+
+def _nvidia_mediatek(accent: str) -> str:
+    # Two chip companies and the money passing between them; on the right, the two documents
+    # that describe the same deal in different words.
+    other = second_colour(accent)
+    b = chip(240, 335, 230, 190) + arrow(520, 700, 430, accent) + coin(610, 340, 48, accent) + chip(770, 335, 230, 190)
+    return b + sheet(1095, 235, 200, 250, accent, rows=4) + sheet(1195, 405, 200, 250, other, rows=4)
+
+
+def _nvidia_vera_rubin(accent: str) -> str:
+    # The four levels the power is managed at: chip, rack, hall, grid. The last link runs both
+    # ways, so it is dashed and has a node at each end.
+    other = second_colour(accent)
+    b = chip(230, 340, 190, 180) + arrow(465, 535, 430, other)
+    b += rect(565, 265, 200, 340, "#FFFFFF", INK, 20) + "".join(rect(590, 292 + i * 76, 150, 50, PALE, other, 10) for i in range(4))
+    b += arrow(795, 865, 430, other) + rect(895, 320, 250, 285, "#FFFFFF", accent, 16)
+    b += "".join(rect(925 + c * 70, 352 + r * 80, 48, 48, PALE, accent, 8) for r in range(3) for c in range(3))
+    b += dashed(1165, 488, 1262, 488, accent, 10) + circle(1165, 488, 12, accent, "none") + circle(1262, 488, 12, accent, "none")
+    return b + pylon(1335, 265, other, 380)
+
+
+def _tech_index(accent: str) -> str:
+    # Four kinds of story feeding one reading list: a chip, a screen, a mast, a lock.
+    other = second_colour(accent)
+    panels = [(230, 215), (470, 215), (230, 455), (470, 455)]
+    b = "".join(rect(x, y, 200, 200, "#FFFFFF", accent if i in (0, 3) else other, 28) for i, (x, y) in enumerate(panels))
+    b += rect(285, 270, 90, 90, PALE, other, 16) + rect(309, 294, 42, 42, "#FFFFFF", accent, 8)
+    b += "".join(line(x, 290 + i * 25, x + 17, 290 + i * 25, other, 7) for i in range(3) for x in (265, 378))
+    b += rect(505, 255, 130, 90, "#FFFFFF", INK, 14) + rect(517, 267, 106, 58, PALE, "none", 8) + line(570, 345, 570, 372, INK, 10) + line(535, 376, 605, 376, INK, 10)
+    b += line(295, 625, 330, 535, other, 10) + line(365, 625, 330, 535, other, 10) + line(312, 585, 348, 585, other, 8) + circle(330, 535, 11, other, "none")
+    b += f'<path d="M285 510 A45 45 0 0 1 375 510" fill="none" stroke="{other}" stroke-width="8" stroke-linecap="round"/>'
+    b += padlock(570, 545, 0.6, accent)
+    b += "".join(line(690, y, 860, 430, "#C4CCCC", 8) for y in (315, 555))
+    b += sheet(890, 215, 430, 440, INK, rows=0)
+    for i in range(4):
+        y = 290 + i * 95
+        b += circle(950, y, 16, accent if i % 2 == 0 else other, "none") + line(995, y, 1255 - (i % 2) * 50, y, "#C4CCCC", 14)
+    return b
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -393,6 +585,20 @@ _DRAWINGS = {
     "crypto-news-jfsa-working-group-20260216": _jfsa_working_group,
     "crypto-news-jfsa-cybersecurity-20260723": _jfsa_cybersecurity,
     "crypto-news-2026-index": _crypto_index,
+    "tech-news-iphone-duo-20260909": _iphone_duo,
+    "tech-news-apple-september-hardware-20260909": _apple_september_hardware,
+    "tech-news-eu-cra-reporting-20260911": _eu_cra_reporting,
+    "tech-news-taiwan-sovereign-ai-corpus-20260915": _taiwan_sovereign_ai_corpus,
+    "tech-news-taiwan-6g-spectrum-20260910": _taiwan_6g_spectrum,
+    "tech-news-taiwan-matsu-cable-20260623": _taiwan_matsu_cable,
+    "tech-news-apple-eu-business-terms-20260818": _apple_eu_business_terms,
+    "tech-news-windows-project-zenith-20260904": _windows_project_zenith,
+    "tech-news-pixel-drop-20260915": _pixel_drop,
+    "tech-news-apple-m6-m5-ultra-20260825": _apple_m6_m5_ultra,
+    "tech-news-nvidia-cuda-q-20260914": _nvidia_cuda_q,
+    "tech-news-nvidia-mediatek-20260831": _nvidia_mediatek,
+    "tech-news-nvidia-vera-rubin-20260915": _nvidia_vera_rubin,
+    "tech-news-2026-index": _tech_index,
 }
 
 

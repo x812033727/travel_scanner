@@ -1,0 +1,602 @@
+{
+  "slug": "tech-news-apple-m6-m5-ultra-20260825",
+  "event_date": "2026-08-25",
+  "event_date_basis": "今天（2026-09-17）重新抓取四個頁面並直接檢視內嵌的 application/ld+json：四頁的 datePublished 都是 2026-08-25Z，可作為事件日的官方訊號；四頁的 dateModified 都落在 2026-08-27（**只有日期是穩定的**：同一個網址每次重抓回來的時分秒都不一樣，例如 Mac mini 稿在 2026-09-18 的兩次重抓分別是 14:01:55Z 與 14:12:00Z，chip-us 則依序是 14:00:14Z、14:00:31Z、14:00:23Z，所以本紀錄只取日期，不記時分秒，也不記「介於某時到某時之間」這種區間——2026-09-18 第二輪就是靠一個落在區間外的值抓到這一點）。前一輪研究紀錄的 event_date_basis 寫『這些頁面沒有暴露 JSON-LD 的 datePublished／dateModified』，經今天重新檢視是錯的，已改寫；事件日結論不變，仍是 2026-08-25，但 2026-08-27 的 dateModified 現在正式記成活文件訊號。頁面正文的可見日期列（英文版『August 25, 2026』、繁中版『2026 年 8 月 25 日』）與 JSON-LD 的 datePublished 一致。",
+  "title": "Apple 發表 M6 與 M5 Ultra：Mac mini、Mac Studio 首發與台灣售價",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "Apple introduces M6 and M5 Ultra for a big leap in performance and AI compute",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "publisher": "Apple Newsroom",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Apple 推出 M6 和 M5 Ultra，效能與 AI 運算能力大幅提升",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "publisher": "Apple Newsroom（台灣）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Apple 推出搭載全新 M6 與 M5 Pro、效能更強大的 Mac mini",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "publisher": "Apple Newsroom（台灣）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Apple 推出搭載 M5 Max 和 M5 Ultra 的新款 Mac Studio",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "publisher": "Apple Newsroom（台灣）",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-17 以 `curl -sS -A \"Mokaair-editorial\" -L` 重新抓取四個網址並讀 body（未在任何請求的 UA、查詢字串或標頭中放入使用者的 email 或個人資料）：chip-us 200／201,731 bytes、chip-tw 200／195,144 bytes、macmini-tw 200／225,087 bytes、macstudio-tw 200／212,130 bytes；四者都是真正的新聞稿全文（含標題、內文、註腳、新聞聯絡人），不是擋阻頁或導覽殼，位元組數與前一輪研究記的數字接近但不完全相同（屬頁面快照的正常波動，不代表內容改版）。四頁都內嵌 JSON-LD，datePublished 均為 2026-08-25Z、dateModified 均落在 2026-08-27（見 event_date_basis）。抓下的 HTML 另用本機 Python 腳本轉成純文字（<sup> footnote 標記另外轉成 [N] 只為了自己核對footnote 歸屬，不作為 verbatim_quote 的一部分——寫進本紀錄的每一條 verbatim_quote 都取在 [N] 標記出現之前的一段連續原文，不包含這個自製標記本身）。source_list_fix：依修正清單建議，四條 sources 維持『美國版晶片稿＋台灣版三篇』，沒有把美國版 Mac mini／Mac Studio 兩個頁面換進來；這兩個頁面上的美金定價、『30 個國家和地區』、Apple Upgrade 租賃方案、英文版 Srouji 引言因此都沒有一手來源支撐，全文不寫（見 unverified_or_excluded）。Apple Newsroom 的 Atom feed（rss-feed.rss，20 筆、最舊回溯到 8 月中）與 archive 列表頁（服務當月連結）今天沒有重抓，因為本文最終沒有任何事實需要靠它們支撐；上一輪研究誤用這兩個管道去證明『M5 Pro／M5 Max 首發日回溯不到』，本文完全不談 M5 Pro／M5 Max 的首發時間，所以不需要這兩個管道，也不重複前一輪的錯誤。",
+  "verified_facts": [
+    {
+      "fact": "美國版晶片新聞稿標示日期為 2026 年 8 月 25 日，標籤為 PRESS RELEASE。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 25, 2026"
+    },
+    {
+      "fact": "台灣版晶片新聞稿標示日期為 2026 年 8 月 25 日。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "2026 年 8 月 25 日"
+    },
+    {
+      "fact": "美國版晶片新聞稿頁面內嵌 JSON-LD 的 datePublished 為 2026-08-25Z（2026-09-17 今日重新檢視所得）。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "datePublished\": \"2026-08-25Z\""
+    },
+    {
+      "fact": "美國版晶片新聞稿頁面內嵌 JSON-LD 的 dateModified 落在 2026-08-27（2026-09-17 今日重新檢視所得），是活文件訊號，不是原始發布時的版本。秒級時間戳不可重現：撰稿時記到的是 14:00:14Z，2026-09-18 獨立查核重抓同一個網址得到 14:00:31Z，日期相同、秒數不同，因此本欄只保留到日期為止的連續字串。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "dateModified\": \"2026-08-27"
+    },
+    {
+      "fact": "晶片新聞稿由 Apple 晶片工程團隊副總裁 Sri Santhanam 具名發言。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple 晶片工程團隊副總裁 Sri Santhanam 表示"
+    },
+    {
+      "fact": "Apple 表示 M6 是 Apple 首款採用 2 奈米製程的晶片。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "M6 是 Apple 首款採用 2 奈米製程的晶片"
+    },
+    {
+      "fact": "M6 配備 12 核心 CPU，由 2 個超級核心、4 個效能核心、6 個節能核心組成，比 M5 增加兩個核心。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "M6 配備比 M5 增加兩個核心的全新 12 核心 CPU 組合，包括 2 個超級核心、4 個效能核心、6 個節能核心"
+    },
+    {
+      "fact": "Apple 表示 M6 具備全球最快的單執行緒效能，多執行緒效能最高可達 M5 的 1.2 倍、M1 的 2.4 倍；這句話所掛的註腳只列 Apple 自己的 M6／M5／M1 三款機型，沒有列出任何非 Apple 的競爭對手或第三方跑分項目。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "其單執行緒效能為全球最快，多執行緒效能最快可達 M5 的 1.2 倍、M1 的 2.4 倍"
+    },
+    {
+      "fact": "Apple 表示 M6 的 GPU 設計讓 AI 用的 GPU 峰值運算能力較 M5 提升近 30%，達 M1 的 8 倍以上。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "此設計讓 AI 的 GPU 峰值運算能力較 M5 提升近 30%，更達 M1 的 8 倍以上"
+    },
+    {
+      "fact": "Apple 表示 M6 處理複雜圖形時的幾何處理率提升 50%。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "M6 處理複雜圖形時的幾何處理率也提升 50%"
+    },
+    {
+      "fact": "Apple 表示 M6 的雙 16 核心神經網路引擎峰值運算能力最高可達前幾代的 2 倍。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "M6 也帶來雙 16 核心神經網路引擎，峰值運算能力最高可達前幾代的 2 倍"
+    },
+    {
+      "fact": "M6 支援最高 32GB 統一記憶體；記憶體頻寬最高 170GB/s，較 M5 提升 10%、達 M1 的 2.5 倍。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "M6 的統一記憶體頻寬最高可達 170GB/s，較 M5 提升 10%，並可達 M1 的 2.5 倍"
+    },
+    {
+      "fact": "Mac mini 稿：Apple 表示搭配 M6，AI 效能最快可達 4 倍。台灣版導言的四個數字分掛兩個註腳——AI 4 倍、圖形 2 倍、CPU 40% 掛註腳 1（只寫 M4 基準配置，沒有寫測試月份）；「2 倍儲存」掛註腳 2（只寫「測試由 Apple 於 2026 年 7 月進行」，沒有列對照機型）。2026-09-18 獨立查核更正：撰稿時把註腳 2 的 7 月測試日期套到全部四個數字上，Apple 並沒有為 AI／圖形／CPU 三項印出測試月份，文章已據此改寫。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "搭配 M6，Mac mini 現在的 AI 效能最快可達 4 倍"
+    },
+    {
+      "fact": "Mac mini 稿註腳：AI／圖形／CPU 三項倍數的對照基準為前一代搭載 Apple M4 晶片、10 核心 CPU、10 核心 GPU、32GB 統一記憶體、2TB SSD 固態硬碟的 Mac mini。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "與前代搭載 Apple M4 晶片、10 核心 CPU、10 核心 GPU、32GB 統一記憶體和 2TB SSD 固態硬碟的 Mac mini 系統比較"
+    },
+    {
+      "fact": "Mac mini 稿註腳 2（「2 倍儲存」與「可達成以下效能表現」清單所掛的那一個）只寫測試月份，沒有列出任何對照機型的配置。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "測試由 Apple 於 2026 年 7 月進行。請參閱 apple.com/tw/mac-mini/，以取得進一步資訊。"
+    },
+    {
+      "fact": "Mac Studio 稿的註腳編號與 Mac mini 稿相反：Mac Studio 註腳 1 只寫測試月份（2026 年 7 月），4.3 倍 AI／1.8 倍圖形／1.3 倍 CPU／M5 Max 3.9 倍／四部叢集 3 倍都掛這一個；註腳 2 才是 M3 Ultra 512GB／8TB 的對照配置，只掛在「2 倍儲存」與 M5 Ultra 的應用程式跑分清單上。兩篇稿的註腳編號不可互套。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "測試由 Apple 於 2026 年 7 月進行。更多資訊請參閱 apple.com/tw/mac-studio。"
+    },
+    {
+      "fact": "M5 Pro 的規格只寫在 Mac mini 新聞稿裡：以「M5 Pro」逐字查核到 2026-09-18，美國版與台灣版晶片新聞稿都是 0 次；「M5 Max」在兩篇晶片稿裡只以「M5 Ultra 連接兩顆雙晶粒 M5 Max 晶片」這一句的形式出現。Apple 沒有說 M5 Pro 或 M5 Max 是既有晶片，也沒有說它們是這次發表的新晶片。2026-09-18 第二輪更正：**不可以**寫「Apple 以『全新』／『all-new』稱呼的只有 M6 與 M5 Ultra」——Mac mini 新聞稿的標題就是「Apple 推出搭載全新 M6 與 M5 Pro、效能更強大的 Mac mini」（英文網址作 the-all-new-m6-and-m5-pro），而「全新」在兩篇晶片稿裡一次也沒有加在 M5 Ultra 上（「全新 M5 Ultra」只出現在 Mac Studio 稿）。這個「只有」的說法兩頭都站不住，正文已改掉。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple 今日發表搭載全新 M6 和強大 M5 Pro 的新款"
+    },
+    {
+      "fact": "搭載 M5 Pro 的 Mac mini 支援最高 64GB 統一記憶體，記憶體頻寬達 307GB/s。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "搭載 M5 Pro 的 Mac mini 支援最高 64GB 統一記憶體，記憶體頻寬達 307GB/s"
+    },
+    {
+      "fact": "Apple 表示 M5 Ultra 採用 UltraFusion 技術，連接兩顆雙晶粒 M5 Max，組成 Apple 晶片首見的四晶粒架構。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "M5 Ultra 採用 UltraFusion 技術，連接兩顆雙晶粒 M5 Max 晶片，組成 Apple 晶片首見的四晶粒架構"
+    },
+    {
+      "fact": "Apple 表示 UltraFusion 將晶粒間頻寬提升至 4.4TB/s 以上，連接密度提高至 6 倍以上。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "UltraFusion 將晶粒間頻寬提升至 4.4TB/s 以上，連接密度則提高至 6 倍以上"
+    },
+    {
+      "fact": "M5 Ultra 最高配備 36 核心 CPU（12 個超級核心、24 個效能核心）與 80 核心 GPU。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "M5 Ultra 也配備最高可達 36 核心的大型 CPU，由 12 個超級核心和 24 個效能核心組成"
+    },
+    {
+      "fact": "晶片新聞稿：Apple 表示 M5 Ultra 的 GPU AI 峰值運算能力最高可達 M3 Ultra 的 4.5 倍、M1 Ultra 的 6 倍以上。此數字與 Mac Studio 新聞稿的 4.3 倍／9.8 倍不同、量測對象也不同（GPU 峰值運算 vs 整機 AI 運算效能），不可互換。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AI 的 GPU 峰值運算能力最高可達 M3 Ultra 的 4.5 倍，更達 M1 Ultra 的 6 倍以上"
+    },
+    {
+      "fact": "晶片新聞稿註腳：上一條 4.5 倍／6 倍以上的測試於 2026 年 8 月進行，對照配置為預量產 Mac Studio（M5 Ultra，36 核心 CPU、80 核心 GPU、256GB 記憶體）對比 M3 Ultra（32 核心 CPU、80 核心 GPU、256GB 記憶體）與 M1 Ultra（20 核心 CPU、64 核心 GPU、64GB 記憶體）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "測試由 Apple 於 2026 年 8 月使用配備 36 核心 CPU、80 核心 GPU 以及 256GB 記憶體的 M5 Ultra 準量產版 Mac Studio"
+    },
+    {
+      "fact": "Apple 表示新款 Mac Studio 的 80 核心 GPU 首度將神經網路加速器導入 Ultra 晶片。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "首度將神經網路加速器導入 Ultra 晶片"
+    },
+    {
+      "fact": "Mac Studio 新聞稿：Apple 表示搭載 M5 Ultra 的 Mac Studio，AI 峰值運算效能最快可達 M3 Ultra 的 4.3 倍、M1 Ultra 的 9.8 倍（測試於 2026 年 7 月）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "搭載 M5 Ultra 的 Mac Studio，AI 峰值運算效能最快可達 M3 Ultra 的 4.3 倍，更高達 M1 Ultra 的 9.8 倍"
+    },
+    {
+      "fact": "Apple 表示搭載 M5 Max 的 Mac Studio，AI 效能最快可達前一代的 3.9 倍。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "M5 Max 具備出色的裝置端 AI 運算能力，AI 效能最快可達前一代的 3.9 倍"
+    },
+    {
+      "fact": "M5 Max 配備最高 40 核心 GPU，Apple 表示較前一代快 50%。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "最高可達 40 核心且內建神經網路加速器的 GPU，速度現較前一代最快提升 50%"
+    },
+    {
+      "fact": "搭載 M5 Max 的 Mac Studio 配備 18 核心 CPU、最高 40 核心 GPU、最高 128GB 統一記憶體；記憶體頻寬最高 614GB/s（另段落）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "搭載 M5 Max 的 Mac Studio 配備 18 核心 CPU、最高達 40 核心且每個核心均內建神經網路加速器的 GPU，以及最高 128GB 統一記憶體"
+    },
+    {
+      "fact": "Apple 表示可透過 Thunderbolt 5 與 RDMA 將多部 Mac Studio 串聯成叢集；由四部 Mac Studio 組成的叢集，AI 推論速度最快可達單一系統的 3 倍。官方沒有列出實際測試過的叢集規模上限。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "由四部 Mac Studio 組成的叢集，能提供比單一系統快達驚人的 3 倍 AI 推論速度"
+    },
+    {
+      "fact": "Mac mini 稿：Apple 表示透過 Thunderbolt 5 可將多部 Mac mini 組成叢集、完全在裝置端執行大型 AI 模型；同一段落也寫明搭載 M6 的 Mac mini 背面是三個 Thunderbolt 4 埠，官方沒有另外說明 M6 機型是否適用這項叢集功能。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "透過 Thunderbolt 5，使用者也能將多部 Mac mini 組成叢集，完全在裝置端執行大型 AI 模型"
+    },
+    {
+      "fact": "Apple 表示 M5 Ultra 的記憶體配置可完全在裝置端執行『擁有數千億參數』的大型語言模型；未指名任何具體模型。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "並完全在裝置端執行擁有數千億參數的超大型語言模型"
+    },
+    {
+      "fact": "Apple Intelligence 官方以逐一列出語言名稱的方式說明支援語言，其中包含中文（繁體）；官方沒有在頁面上印出語言總數的數字（上一輪研究把清單自行清點為『16 種』，本輪不重複這個算術）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "英文、丹麥文、荷蘭文、法文、德文、義大利文、挪威文、葡萄牙文、西班牙文、瑞典文、土耳其文、越南文、中文 (簡體)、中文 (繁體)、日文，以及韓文"
+    },
+    {
+      "fact": "Apple 說明新款 Mac mini 整機採用 50% 再生材料製成。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "整部裝置採用 50% 再生材料製成"
+    },
+    {
+      "fact": "Apple 說明 Mac mini 機身為 100% 再生鋁金屬，所有磁石為 100% 再生稀土元素。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "包括機身採用 100% 再生鋁金屬，以及所有磁石採用 100% 再生稀土元素"
+    },
+    {
+      "fact": "Apple 說明 Mac mini 供應鏈製造過程中所使用的電力均來自風能與太陽能等再生能源，並在全球投資再生能源以相抵顧客使用時的耗電。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Mac mini 在供應鏈製造過程中所使用的電力，均來自風能與太陽能等再生能源"
+    },
+    {
+      "fact": "Apple 說明新款 Mac Studio 整機採用 35% 再生材料製成，比例與 Mac mini 的 50% 不同。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "整部裝置採用 35% 再生材料製成"
+    },
+    {
+      "fact": "Apple 說明新款 Mac Studio 製造過程中，供應鏈使用 40% 可再生能源；這與 Mac mini「電力均來自再生能源」的表述基準不同，不宜直接比較。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "新款 Mac Studio 製造過程中，供應鏈使用 40% 可再生能源"
+    },
+    {
+      "fact": "搭載 M6 的 Mac mini 台灣售價 NT$29,900 起，教育優惠價 NT$26,590 起。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "搭載 M6 的 Mac mini 售價 NT$29,900 起；教育優惠價 NT$26,590 起"
+    },
+    {
+      "fact": "搭載 M5 Pro 的 Mac mini 台灣售價 NT$59,900 起，教育優惠價 NT$56,390 起。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "搭載 M5 Pro 的 Mac mini 售價 NT$59,900 起，教育優惠價 NT$56,390 起"
+    },
+    {
+      "fact": "搭載 M5 Max 的 Mac Studio 台灣售價 NT$84,900 起，教育優惠價 NT$78,090 起。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "搭載 M5 Max 的 Mac Studio 售價 NT$84,900 起， 教育優惠價 NT$78,090 起"
+    },
+    {
+      "fact": "搭載 M5 Ultra 的 Mac Studio 台灣售價 NT$199,900 起，教育優惠價 NT$185,390 起。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "搭載 M5 Ultra 的 Mac Studio 售價 NT$199,900 起， 教育優惠價 NT$185,390 起"
+    },
+    {
+      "fact": "台灣顧客自 2026 年 8 月 27 日台灣時間早上 9 時起可預訂新款 Mac Studio；產品自 9 月 22 日起供貨；配備 512GB 統一記憶體的機型於 10 月底推出。Mac mini 稿的預購與供貨日期相同（8 月 27 日早上 9 時、9 月 22 日）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "8 月 27 日台灣時間早上 9 時起，台灣的顧客可透過 apple.com/tw/store 和 Apple Store app 預訂搭載 M5 Max 和 M5 Ultra 的新款 Mac Studio"
+    },
+    {
+      "fact": "Apple 說明新一代 Apple Intelligence 功能目前透過 Apple Beta Software Program 開放測試，將於今年秋季隨 macOS 27 推出。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple Intelligence 目前透過 Apple Beta Software Program 提供測試，並將於今年秋季隨 macOS 27 推出"
+    },
+    {
+      "fact": "Apple 台灣版 Mac mini 新聞稿全文沒有出現 Siri AI 字樣，只寫「新一代 Apple Intelligence」；Siri AI 只出現在美國版新聞稿（未列入本文 sources[]）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "新款 Mac mini 結合 macOS 27 和新一代 Apple Intelligence"
+    }
+  ],
+  "not_said": [
+    "三篇（含美國版共四篇）新聞稿以逐字搜尋核對，全文沒有出現台積電、TSMC、foundry 或代工等字樣，也沒有說 M6 是「全球第一顆」2 奈米消費級晶片，只說是「Apple 首款」。Mac Studio 稿裡出現的『Foundry』兩次都是指特效軟體 Foundry Nuke，不是半導體代工廠，本文完全不提這款軟體以避免混淆。",
+    "Apple 沒有說 M5 Ultra 或組成它的 M5 Max 是幾奈米製程；四篇稿件通篇沒有在 M5 Max／M5 Ultra 旁邊出現任何製程節點數字。",
+    "Apple 沒有給任何電晶體數量、晶粒面積、時脈、TDP／瓦數、耗電量或絕對 TOPS 數字，所有 AI 運算能力都只以倍數表達。",
+    "Apple 沒有指名任何可在 M5 Ultra 上執行的具體模型名稱或參數量，只寫『擁有數千億參數』。",
+    "Apple 沒有列出『全球最快單執行緒效能／CPU 核心』是和哪些非 Apple 的競爭對手或第三方基準測試比較；相關註腳只寫『使用市售競品系統及特定業界標準測試項目』（未列競品名稱），或只列出 Apple 自己的 M6／M5／M1（或 M5 Ultra／M3 Ultra／M1 Ultra）機型。",
+    "Apple 沒有公布任何第三方基準測試分數（Geekbench、Cinebench、3DMark 等），四篇稿件裡一個都沒有出現。",
+    "Apple 沒有明寫搭載 M6 的 Mac mini（背面配置三個 Thunderbolt 4 埠）是否適用 Thunderbolt 5 叢集功能；該句『透過 Thunderbolt 5，使用者也能將多部 Mac mini 組成叢集』出現在 M6 與 M5 Pro 共用的段落，沒有另外區分機型。",
+    "Apple 沒有列出實際測試過的 Mac Studio 叢集規模上限，官方新聞稿只舉了『由四部 Mac Studio 組成的叢集』這一個例子。",
+    "Apple 台灣版的 Mac mini 與 Mac Studio 新聞稿全文沒有出現 Siri AI 字樣，只寫『新一代 Apple Intelligence』；Siri AI 的語言與地區時程只出現在美國版新聞稿的註腳裡（未列入本文 sources[]，因此本文不寫這項時程，只在文末連到另一篇處理 Siri AI 的專文）。",
+    "Apple 沒有說舊款 Mac mini 或舊款 Mac Studio 會不會停售、降價或繼續販售。",
+    "三篇新聞稿都沒有寫 M5 Pro 與 M5 Max 是不是這次才發表的新晶片，也沒有寫它們之前就存在；以 2026-09-18 逐字查核，「M5 Pro」在兩篇晶片稿裡 0 次。文章因此只描述哪一款機型提供哪一顆晶片，不寫「既有」也不寫「同場發表」，也不主張「全新」這個詞只用在哪幾顆晶片上——Mac mini 稿的標題「搭載全新 M6 與 M5 Pro」（英文 the-all-new-m6-and-m5-pro）讀起來就可能把 M5 Pro 也包進去，而晶片稿從來沒有寫過「全新 M5 Ultra」。",
+    "四篇稿件都沒有在頁面上印出 Apple Intelligence 支援語言的總數字，只逐一列出語言名稱。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "M6 的 2 奈米製程由台積電（TSMC）代工。",
+      "seen_where": "業界普遍說法／前期候選清單。",
+      "why_excluded": "四篇官方新聞稿全文沒有出現台積電、TSMC 或任何代工廠名稱，無一手來源，不寫。"
+    },
+    {
+      "claim": "M5 Ultra 也是 2 奈米製程。",
+      "seen_where": "讀者可能因 M6 是 2 奈米而直覺推論到同代的 M5 Ultra／M5 Max。",
+      "why_excluded": "官方從未提及 M5 Ultra 或 M5 Max 的製程節點，這是推論不是事實，不寫；FAQ 已就這點單獨澄清。"
+    },
+    {
+      "claim": "美金定價 US$899／US$1,699／US$2,499／US$5,499（各含教育價）與『8 月 25 日起於 30 個國家和地區（含美國）開放預購』、Apple Upgrade 租賃方案（Klarna，M5 Max 月付 US$48.99、M5 Ultra 月付 US$110.10，限美國居民）。",
+      "seen_where": "美國版 Mac mini／Mac Studio 新聞稿。",
+      "why_excluded": "依 source_list_fix 建議，本文四條 sources 維持『美國版晶片稿＋台灣版三篇』，沒有把這兩個美國版 Mac 頁面換進 sources[]；這些數字因此沒有一手來源支撐，全文不寫美金價格、國家地區數字與租賃方案。"
+    },
+    {
+      "claim": "台灣是否在 Apple 的『首波』預購名單內。",
+      "seen_where": "推論自美國版稿件用『today』描述預購起始、台灣版寫 8 月 27 日。",
+      "why_excluded": "本文 sources[] 不含美國版 Mac 稿的預購時程描述，且『首波』本身是比較性推論；文章只寫台灣版自己公布的 8 月 27 日台灣時間早上 9 時，不做任何『是否首波』的推論或比較。"
+    },
+    {
+      "claim": "M5 Ultra 的 AI 峰值運算能力『4.5 倍』與『4.3 倍』兩個數字可以互相替換使用。",
+      "seen_where": "Apple 自己的兩篇同日新聞稿（晶片稿與 Mac Studio 稿）。",
+      "why_excluded": "兩個數字分屬不同新聞稿、不同測試月份（2026 年 8 月 vs 7 月）、量測的也不是同一件事（GPU 峰值運算 vs 整機 AI 運算效能）；文章與 FAQ 都分開標明出處，不混用、不擇一當唯一數字。"
+    },
+    {
+      "claim": "Mac Studio 支援『最多六個 Thunderbolt 5 連接埠』。",
+      "seen_where": "Mac Studio 新聞稿一張圖片的圖說文字。",
+      "why_excluded": "那句只出現在圖說，不在正文段落；依規則圖說不能單獨當作正文事實的依據，本文不寫具體埠數。"
+    },
+    {
+      "claim": "M5 Ultra／M5 Max／M5 Pro 各自在 LM Studio、Blender、Affinity、DaVinci Resolve、Redshift、MinKNOW、Foundry Nuke 等應用程式裡的逐項跑分倍數（例如 Foundry Nuke 訓練 CopyCat 最快 15.4 倍、DaVinci Resolve Magic Mask 最快 5.3 倍等）。",
+      "seen_where": "兩篇 Mac 稿各自的『可達成以下效能表現』清單。",
+      "why_excluded": "篇幅有限，且『Foundry』是特效軟體 Foundry Nuke 的名稱，容易被誤讀成半導體代工廠（上一輪查核就在這裡踩過坑）；本文只保留最具代表性的整體倍數（AI／儲存／圖形／CPU），不逐一列出應用程式跑分，降低誤用風險。"
+    },
+    {
+      "claim": "Apple Intelligence 支援『16 種語言』。",
+      "seen_where": "前期研究把官方逐一列出的語言名稱自行清點為 16 種。",
+      "why_excluded": "官方頁面沒有印出語言總數的數字，只逐一列出語言名稱；16 是研究者自己算出來的，不是來源印的事實，不寫這個數字，只寫『官方列出的語言中包含繁體中文』。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣的一般使用者，以及會在本機跑模型的開發者／研究者，不是硬體評測受眾。文章要回答三件事：第一，2026 年 8 月 25 日 Apple 到底發表了什麼（M6、M5 Ultra 兩顆新晶片，以及首載它們的新款 Mac mini 與新款 Mac Studio，兩款新機另分別提供 M5 Pro／M5 Max 版本——Apple 沒有說這兩顆是既有晶片，文章因此不寫「既有」）；第二，『2 奈米製程』與『四晶粒架構』各自在解決什麼問題——前者是把更多電晶體塞進更小晶粒換效能與能源效率，後者是用 UltraFusion 把兩顆雙晶粒 M5 Max 接成四晶粒、讓四個晶粒像單一處理器運作；第三，統一記憶體容量與頻寬的階梯（M6 32GB／170GB/s、M5 Pro 64GB／307GB/s、M5 Max 128GB／614GB/s、M5 Ultra 512GB／1.2TB/s）對本機跑模型代表什麼。這張階梯就是文章最有價值的表格素材，放在第 2 節結尾；圖解放在第 3 節結尾，四格對應 2 奈米製程、四晶粒 UltraFusion、統一記憶體頻寬、台灣上市時程。台灣角度是本文賣點：官方繁中稿給了 NT$29,900／59,900／84,900／199,900 四個起價、8 月 27 日台灣時間早上 9 時預購、9 月 22 日供貨、512GB 機型 10 月底，這些都是官方繁中原文，比換算美金可靠，也是本文刻意只用台幣、不寫美金與『30 個國家和地區』的原因（那兩個數字沒有一手來源支撐）。所有倍數一律寫成『Apple 表示』，並盡量帶上 Apple 註腳裡的對照條件；M5 Ultra 的兩組不同 AI 倍數（晶片稿 4.5x／6x+ 對 Mac Studio 稿 4.3x／9.8x）刻意分開標明出處，這是本文示範『廠商數字要看出處與條件』最好的例子。生活情境只用一句『在自己的 Mac 上跑本機模型不必把資料送上雲端』，標明是編輯設計的例子，不寫成實測，也不展開成家用 AI 伺服器的架設教學——那是既有文章 `local-ai-on-mac-mini.json`（『Mac mini 當家用 AI 伺服器：統一記憶體、售價與區網設定』）已經處理過的範圍，本文的角度是『這次發表了什麼、多少錢、什麼時候買得到』，不重複那篇的網路設定與架設步驟，兩篇的統一記憶體階梯與台幣價格會自然重疊，但呈現目的不同（新聞事件 vs 架設教學），並列點出處理方式；`local-llm-hardware-requirements.json` 與 `apple-intelligence-guide.json` 也有主題重疊，同樣不重寫其內容。刻意不談：不寫該不該買、值不值得升級、哪一台比較划算（tech.md 明文禁止）；不拿 M 系列去跟 NVIDIA、AMD、Qualcomm 比較，因為 Apple 沒有做那個比較；不談 Siri AI 的功能與語言時程細節，那屬於 AI 垂直既有文章 `ai-news-siri-ai-ios-27-20260914` 的範圍，本文只用一句話帶過並在文末連到本垂直內的相關文章（依指派，第二個 link 指向 `tech-news-apple-september-hardware-20260909`，該篇已處理同場發表會的 iPhone／Watch／AirPods，Siri AI 細節則在 AI 垂直另一篇，本文不重複、只在正文一句帶過『請見文末連結的 Siri AI 專文』這樣的指引性文字，但實際連結目標依指派固定為 apple-september-hardware 那篇）。",
+  "must_not_write": [
+    "不寫『台積電代工』『全球第一顆 2 奈米晶片』——Apple 只說是『Apple 首款』2 奈米製程晶片，且四篇稿件全文沒有代工廠字樣。",
+    "不把『2 奈米』套用到 M5 Ultra 或 M5 Max 身上；Apple 沒有說明其製程節點。",
+    "不把『16 種語言』寫成官方印出的數字；官方只逐一列出語言名稱，16 是研究者自己算出來的。",
+    "不把晶片新聞稿的『4.5 倍／6 倍以上』與 Mac Studio 新聞稿的『4.3 倍／9.8 倍』混用或擇一當唯一數字；兩者分開標明出處與量測對象。",
+    "不可把任何倍數寫成本站的實測結果，一律寫成『Apple 表示』；不可出現『我們實測』『實際體驗』。",
+    "不寫購買建議、升級建議或機型比較推薦（tech.md 明文禁止）。",
+    "不可拿 Apple 的數字去和 NVIDIA、AMD、Qualcomm、Intel 的晶片相比——Apple 沒有做那個比較，本站也沒有。",
+    "不寫美金定價或『30 個國家和地區』——這兩個數字只出現在未列入本文 sources[] 的美國版 Mac 新聞稿。",
+    "不寫『台灣不在首波』這類推論；只寫台灣版新聞稿自己公布的預購與供貨日期。",
+    "不畫或描述任何商標、字標、機身外觀截圖；產品名以純文字書寫（BRIEF 圖像規則）。",
+    "不把 Mac Studio 圖片說明裡的『最多六個 Thunderbolt 5 連接埠』當成正文事實使用，那只是圖說不是正文。",
+    "不加投資免責 callout（tech.md：科技篇不帶 finance 主題，本文 topics 沒有 finance）。"
+  ],
+  "live_data_warnings": [
+    "四個頁面的 JSON-LD datePublished 均為 2026-08-25Z，dateModified 都落在 2026-08-27；時分秒是活資料，每次重抓都不同（2026-09-18 兩次重抓 Mac mini 稿得到 14:01:55Z 與 14:12:00Z），只有日期可以引用，不要記成固定值或區間；本文查核於 2026-09-17 讀到的都是修訂後版本，內容如有更新，讀者需自行至 Apple Newsroom 查核最新版本（callout 已寫明這點）。",
+    "Apple Newsroom 的 Atom feed 與 archive 列表頁都是滾動視窗，本文完全沒有引用它們的內容當作事實，也沒有拿它們證明『某件事沒有發生』。",
+    "台灣售價（NT$29,900／59,900／84,900／199,900 與各教育價）是 2026-09-17 查核當天的官方牌價快照，日後可能調整；表格 caption 與圖說都已標明查核日。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（event_date_basis 的 JSON-LD 判斷錯誤）：已套用。今天重新檢視四個頁面的 application/ld+json，確認 datePublished 均為 2026-08-25Z、dateModified 均落在 2026-08-27，event_date_basis 已改寫，並把 dateModified 記成活文件訊號寫進 live_data_warnings 與文中 callout。",
+    "must_fix 2（Atom feed 回溯不到 8 月的排除理由錯誤）：不直接適用於最終文章，因為本文完全沒有討論 M5 Pro／M5 Max 的首發時間，不需要引用 Atom feed 或用它排除任何主張；今天沒有重抓這個 feed，sourcing_notes 已說明原因。",
+    "must_fix 3（archive 列表頁『零筆文章列』的描述錯誤）：同上，本文沒有引用 archive 列表頁，不涉及這項更正；sourcing_notes 已說明今天沒有重抓的理由。",
+    "must_fix 4（『三篇稿都沒有 foundry』字面被 Foundry Nuke 推翻）：已套用，且做法比修正清單建議更保守——本文完全不提 Foundry Nuke 這款軟體與它的跑分數字，從根本避免『foundry』一詞在文中以任何形式出現造成混淆；not_said 與 unverified_or_excluded 都記錄了這個決定。",
+    "must_fix 5（4.5 倍與 4.3 倍的測試條件差異）：已套用。文中第 3 節與 FAQ 都分開標明兩個數字的出處（晶片稿 vs Mac Studio 稿）、測試月份（8 月 vs 7 月）與量測對象（GPU 峰值運算 vs 整機 AI 運算效能），不寫成無法解釋的矛盾。",
+    "must_fix 6／7（Mac Studio 與 Mac mini 頂層倍數的註腳配對，兩篇稿編號相反）：已套用，但做法是繞開這個陷阱而不是逐一還原每個註腳編號——M5 Ultra／M5 Max 的 AI 倍數改用兩篇稿『各晶片小節』裡直接點名對照機型（M3 Ultra、M1 Ultra、前一代）的句子，不依賴頂層那句『4.3倍AI/2倍儲存/1.8倍圖形/1.3倍CPU』的註腳歸屬；Mac mini 的 M6 頂層倍數（4倍AI/2倍儲存/2倍圖形/40%CPU）則今天重新核對註腳，確認 AI／圖形／CPU 三項掛的是 M4 基準配置註腳、『2 倍儲存』只掛測試日期註腳，文中已據此把『儲存空間的對照基準官方沒有重複列出』這句寫進去，不再籠統地把同一組配置套用到全部四個數字。",
+    "must_fix 8（Apple Intelligence『16 種語言』不是來源印的數字）：已套用。文中一律寫『官方列出的支援語言中包含繁體中文』，不寫『16 種』；research 的 verified_facts 也改記逐一語言清單，不記總數。",
+    "must_fix 9／10（verbatim_quote 不是逐字：PRESS RELEASE 用『／』串接、『performance』被漏字、破折號被改成連字號）：已套用做法上的通則——本紀錄每一條 verbatim_quote 都直接從今天重新抓取、轉存的純文字裡複製，且都在頁面原有的 footnote 標記（原文以 <sup> 呈現）出現之前截斷，不跨越、不拼接兩個不同位置的文字，不自行插入『／』或其他分隔符號；沒有引用需要跨越破折號的英文片段，因此不存在把『—』誤打成『-』的風險。",
+    "must_fix 11（『全球最快 CPU 核心／單執行緒效能』的兩個不同註腳被混在一起）：已套用。not_said 已分開寫：lede 那句『世界最快 CPU 核心』掛的是『市售競品系統』註腳（沒有列出競品名稱），M6 小節『單執行緒效能為全球最快』掛的是另一個只列 Apple 自己三款機型的註腳；文中正文只籠統寫『並未指名是和哪些競爭對手晶片或第三方跑分項目比較』，不具體歸屬到某一個註腳編號，避免把兩者的歸屬寫錯。",
+    "must_fix 12（再生材料／再生能源比例的 is_vendor_claim 應為 true）：已套用。本紀錄把 Mac mini 的 50%／100%／供應鏈再生能源、Mac Studio 的 35%／40% 全部標記 is_vendor_claim: true，文中也一律寫『Apple 說明』。",
+    "must_add（overlaps_existing_article 重新盤點）：已套用，見 editorial_brief——已檢查 `local-ai-on-mac-mini.json`、`local-llm-hardware-requirements.json`、`apple-intelligence-guide.json` 三篇既有文章的重疊，本文角度限定在『這次發表了什麼、多少錢、何時買得到』，不重寫本機 AI 伺服器的架設與網路設定內容。",
+    "must_add（兩個 4.x 數字的標籤不同，不只是數值不同）：已套用，正文與 FAQ 都寫出『GPU 峰值運算能力』vs『整機 AI 峰值運算效能』的差異，而不只是列出兩個不同的倍數。",
+    "must_add（漏掉 M5 Max 的 3.9 倍 AI 效能）：已套用，寫進第 3 節。",
+    "must_add（環保數字的不對稱：Mac mini 是供應鏈電力全部來自再生能源，Mac Studio 只有 40%）：已套用，第 5 節與研究紀錄都分別列出兩款機型各自的數字，並註明基準不同、不宜比較。",
+    "must_add（80 核心 GPU『首度將神經網路加速器導入 Ultra 晶片』的官方說法）：已套用，寫進第 3 節第一段。",
+    "must_add（註腳編號隨語系與稿件而變）：已套用，做法是完全不在正文提及註腳編號，只轉述註腳內容，避免讀者或後續編輯誤用某個數字編號去套用到另一篇稿件或另一語系。",
+    "source_list_fix（四條 sources 維持『美國版晶片稿＋台灣版三篇』，不寫美金與『30 個國家和地區』）：已套用，見 sourcing_notes 與 unverified_or_excluded。",
+    "checked_on：依 BRIEF「checked_on 一律寫實際查證當天」，本篇是 2026-09-17 查核，內容包每條 source、研究紀錄、第二段查核句、表格 caption、圖說、callout 六處一致使用 2026-09-17。"
+  ],
+  "hero_label": "2 奈米晶片同步發表",
+  "diagram": {
+    "title": "晶片與上市重點一覽",
+    "caption": "依 Apple 2026 年 8 月 25 日發表的 M6 與 M5 Ultra 新聞稿整理：2 奈米製程、四晶粒架構、統一記憶體頻寬與台灣上市時程，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "2 奈米製程",
+        "M6 密度更高"
+      ],
+      [
+        "四晶粒架構",
+        "兩顆 M5 Max 相連"
+      ],
+      [
+        "統一記憶體頻寬",
+        "M5 Ultra 達 1.2TB/s"
+      ],
+      [
+        "台灣上市時程",
+        "8/27 預購、9/22 供貨"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "四條 sources 全部以 `curl -sS -A \"Mokaair-editorial\" -L` 重抓並讀 body（請求的 UA、查詢字串與標頭都沒有放任何 email 或個人資料），HTML 以本機腳本轉純文字並把頁面原有的 <sup> 註腳標記轉成 [[sup:N]]，因此每個數字掛的是哪一個註腳可以逐一比對。研究紀錄的 41 條 verbatim_quote 逐條在今天抓下的頁面裡做連續字串搜尋，40 條命中、1 條（JSON-LD dateModified 的秒數）失效已改寫。沒有使用任何 sources[] 以外的新網址；文章的 checked_on 2026-09-17 是撰稿者實際讀到來源的日期，沒有因為今天重查而改動。",
+    "verdict": "needs_owner（12 處已改；唯一剩下的 check_article.py 失敗是科技垂直索引內容包還不存在，不在本代理可動的兩個檔案裡）",
+    "edits_to_the_pack": [
+      "Mac mini 的四個頂層倍數：刪掉套在全部四項上的「（測試於 2026 年 7 月）」。台灣版 Mac mini 稿的標記是「AI 效能最快可達 4 倍[1]，儲存空間[2]與圖形效能[1]最快可達 2 倍，CPU 效能也提升了 40%[1]」，註腳 1 只寫 M4 基準配置（沒有測試月份）、註腳 2 只寫「測試由 Apple 於 2026 年 7 月進行」（沒有對照機型）。7 月這個月份只屬於「2 倍儲存」，套到另外三項就是替 Apple 掛上它沒說的條件。",
+      "第一段與第 2 節「Apple 表示 M6 是首款 2 奈米製程晶片」兩處補回「Apple」：官方寫的是「M6 是 Apple 首款採用 2 奈米製程的晶片」，掉了這兩個字就變成「全球首款」，正是 must_not_write 第一條禁止的說法。",
+      "摘要第一句「同場也發表了 M5 Pro 與 M5 Max」刪掉：晶片新聞稿只發表 M6 與 M5 Ultra，「M5 Pro」在兩篇晶片稿裡 0 次。同時第一段與第 1 節的「既有的 M5 Pro／M5 Max」也刪掉——Apple 沒有說它們是既有晶片。兩處改成「兩款新機另分別提供 M5 Pro 與 M5 Max 版本」，並補上「Apple 以『全新』稱呼的只有 M6 與 M5 Ultra」——**這後半句本身是錯的，2026-09-18 第二輪已刪除並改寫，見 second_round 第 1 條**。",
+      "第 5 節刪掉「Apple 美國版新聞稿另提到 Siri AI 將於稍後以 beta 形式推出、先支援英文」：這句掛在兩個不在 sources[] 的美國版 Mac 新聞稿上，本文四個來源頁 Siri 出現 0 次。連帶刪掉「相關時程請見文末連結的專文」——文末第二個連結是 apple-september-hardware，不是 Siri AI 那篇。",
+      "第 3 節的 4.5 倍／4.3 倍改成照抄 Apple 自己的標籤：晶片稿是「AI 的 GPU 峰值運算能力」、Mac Studio 稿是「AI 峰值運算效能」，並把「8 月測試／7 月測試」改寫成「註腳寫測試於…」。原文寫的「Mac Studio 稿說的是整機 AI 效能」是查核者的歸納，而 Mac Studio 稿的 M5 Ultra 小節把同一個 4.3 倍掛在 80 核心 GPU 那句上，寫成「整機」站不住。",
+      "第 3 節補回兩個被拿掉的限定詞：M5 Max 的 GPU「快 50%」改成「最快較前一代提升 50%」（原文「速度現較前一代最快提升 50%」）、「頻寬達 614GB/s」改成「頻寬最高 614GB/s」（原文「最高可達 614GB/s」）。",
+      "第 2 節「幾何處理率提升 50%」補回條件：原文是「M6 處理複雜圖形時的幾何處理率也提升 50%」。",
+      "三個否定句限縮到「這幾頁沒有寫」：「三篇新聞稿都沒有提到代工廠」改成「以台積電、TSMC 查核到 9 月 17 日，四個官方頁面都未見」（Mac Studio 稿其實出現兩次 Foundry，那是特效軟體 Foundry Nuke，寫成「沒有任何代工廠名稱」讀者一查就以為我們寫錯）；「官方沒有列出實際測試過的叢集規模上限」改成「稿中只舉了四部一組這一個例子」；FAQ「Apple 沒有這樣說」改成「本文查核的四個官方頁面沒有這樣寫」。",
+      "第 2 節與 FAQ 7 的「未指名競爭對手或跑分項目」拆開兩個註腳：註腳 1（「市售競品系統及特定業界標準測試項目」）掛在導言那句「全球最快的 CPU 核心⋯170GB/s」上，註腳 2（只列 Apple 自己的 M6／M5／M1 三台）才是 1.2 倍／2.4 倍那句。FAQ 7 改成寫出哪一句掛哪一個註腳，不再把兩者混成一句。",
+      "FAQ 4 補上晶片稿註腳 3 的完整對照組（M5 Ultra 36/80/256GB 對 M3 Ultra 32/80/256GB 對 M1 Ultra 20/64/64GB），並寫明 Mac Studio 稿的註腳「只寫測試於 2026 年 7 月，沒有列出對照機型的配置」。",
+      "FAQ 1 刪掉「M5 Pro、M5 Max、M5 Ultra 是同一世代但等級不同的晶片」：四個來源頁沒有這個說法，那是從命名推的。",
+      "FAQ 7 的「預量產 Mac mini」改成官方用語「準量產版」；表格欄名「首發機型」改成「搭載機型」（M5 Pro／M5 Max 在這兩款機型上是不是「首發」，Apple 沒有說），表格 caption 改成「三篇新聞稿列出的四顆晶片」。",
+      "第 2 段「四篇官方新聞稿」改成「三篇官方新聞稿（晶片稿另讀美國版）」，與全文其他地方的「三篇新聞稿」一致。",
+      "研究紀錄同步更正：JSON-LD dateModified 的 verbatim_quote 縮到日期為止（撰稿記 14:00:14Z、今天重抓是 14:00:31Z，秒數重現不了）；Mac mini 那條事實改寫成正確的註腳對應；新增三條事實（Mac mini 註腳 2 逐字、Mac Studio 兩個註腳與 Mac mini 相反、M5 Pro 在晶片稿 0 次）與一條 not_said。新增那條 M5 Pro 事實的引文一開始寫到「⋯的新款 Mac mini」就搜尋不到，因為台灣版稿在「新款」與「Mac mini」之間是不斷行空格（U+00A0），引文已縮到不斷行空格之前。"
+    ],
+    "checked_and_correct": [
+      "四個台幣起價與四個教育價逐字比對無誤：Mac mini M6 NT$29,900／NT$26,590、M5 Pro NT$59,900／NT$56,390（Mac mini 稿）；Mac Studio M5 Max NT$84,900／NT$78,090、M5 Ultra NT$199,900／NT$185,390（Mac Studio 稿）。每一個都帶「起」，機型與配置對應正確；文章正文只寫四個起價、教育價留在 FAQ 一句帶過，沒有把美金或「30 個國家和地區」寫進來。",
+      "台灣上市日期照台灣版新聞稿寫：兩篇稿都是「8 月 27 日台灣時間早上 9 時起」預購、「9 月 22 日起」陸續供貨，512GB 統一記憶體機型「10 月底推出」只寫在 Mac Studio 稿、文章也只掛在 Mac Studio 上。沒有用到美國版的日期。",
+      "事件日 2026-08-25：四個頁面的可見日期列與 JSON-LD datePublished 今天重看都是 2026-08-25，四頁 dateModified 今天都落在 2026-08-27（本輪記到的時分秒事後被第二輪推翻，見 second_round，只有日期可引用）。修訂了什麼看不出來——Apple Newsroom 不提供版本比對，本代理也沒有 8 月 25 日的原始快照可比，所以只能記下「現在讀到的是 8 月 27 日修訂版」這件事，文章的 callout 與第 1 節已寫明，事件日維持 08-25。",
+      "晶片稿註腳 3 逐字核對：4.5 倍／6 倍以上確實掛在這一個註腳上，內容是 2026 年 8 月、M5 Ultra 準量產版 Mac Studio（36 核心 CPU／80 核心 GPU／256GB）對 M3 Ultra（32／80／256GB）對 M1 Ultra（20／64／64GB）。Mac Studio 稿的 4.3 倍／9.8 倍掛註腳 1（2026 年 7 月，無配置）。兩組數字在文章與 FAQ 裡都各自帶著自己的出處、月份與標籤，沒有互換也沒有合併成一句。",
+      "M5 Max 3.9 倍、四部叢集 3 倍、M6 的 1.2 倍／2.4 倍／近 30%／8 倍以上／2 倍神經網路引擎／170GB/s（較 M5 提升 10%、M1 的 2.5 倍）、M5 Ultra 的 4.4TB/s 以上／6 倍以上連接密度／36 核心 CPU／80 核心 GPU／512GB／1.2TB/s、M5 Pro 的 18 核心 CPU／20 核心 GPU／64GB／307GB/s、M5 Max 的 128GB／614GB/s 全部與來源逐字相符。",
+      "英文版與台灣版晶片稿的對沖詞一致，沒有 iPhone Duo 那種掉 up to 的情形：nearly 30 percent／近 30%、more than 8x／8 倍以上、up to 4.5x／最高可達 4.5 倍、over 6x／6 倍以上、up to 2x the peak compute／最高可達前幾代的 2 倍、50 percent increased geometry rates／提升 50% 都對得起來。",
+      "環保數字兩款分開寫、基準不同也寫明：Mac mini 50% 再生材料＋100% 再生鋁金屬＋供應鏈電力「均來自」再生能源；Mac Studio 35% 再生材料＋供應鏈「40% 可再生能源」，並附「兩款機型的比例與基準並不相同，不宜直接比較」。兩處都寫「Apple 說明」。",
+      "界線：全文沒有任何購買、升級或「哪一台比較划算」的結論，沒有把官方定價做成推薦；每一個效能倍數都帶「Apple 表示／Apple 說明」；macOS 27 與 Apple Intelligence 都寫成「預計今年秋季推出」「目前透過 Apple Beta Software Program 開放測試」，沒有寫成已上市；語言寫成「官方列出的支援語言中包含繁體中文」，沒有出現研究者自己數出來的「16 種」；沒有投資免責 callout，全篇只有一個 callout。",
+      "sources[] 的結構乾淨：44 條 verified_facts 的 url 全部落在 sources[] 這四條裡，沒有一條掛在表外網址；文章沒有引用美國版 Mac mini／Mac Studio 稿的任何數字。",
+      "研究紀錄的 verbatim_quote 今天逐條重搜：41 條裡 40 條是來源頁上原樣搜尋得到的連續字串，沒有用「／」拼接、沒有漏字、沒有把破折號改成連字號。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍是 FAIL，只剩 `zh-TW link target tech-news-2026-index.json does not exist yet`。科技垂直索引內容包還沒建立，不在本代理可動的兩個檔案裡；索引落地後，第一條 link 的 text（目前的佔位字串「2026 年科技新聞總整理：硬體、平台、電信與法規的重點」）要逐字換成索引自己的 zh-TW title。",
+      "四個頁面在 2026-08-27 被改過什麼，查不出來：Apple Newsroom 沒有版本歷史，本代理也沒有 8 月 25 日的原始快照。文章只寫「讀到的是修訂後版本」，沒有推測改了什麼；如果站主手上有 8 月 25 日的存檔，值得比對一次再出刊。",
+      "台幣牌價與教育價是 2026-09-17 的快照，出刊當天建議再看一次 Apple 台灣新聞稿；表格 caption 與 callout 都已標查核日。",
+      "（2026-09-18 第二輪已處理，不再是站主待辦）Mac Studio 稿其實也寫了「機身採用 100% 再生鋁金屬、所有磁石採用 100% 再生稀土元素」，和 Mac mini 逐字相同；第一輪為了控字數只把 100% 再生鋁金屬掛在 Mac mini 那半句上，讀者會誤以為 Mac Studio 的機身不是。第二輪把第 5 節改寫成「兩款機身都是 100% 再生鋁金屬」，並從別處刪去等量的重複敘述換出字數。",
+      "Mac Studio 稿的「最多六個 Thunderbolt 5 連接埠」只出現在圖說、不在正文段落，依前一輪的決定沒有寫進文章；如果站主希望寫埠數，要先決定圖說能不能當正文依據。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "reason": "第一輪改了 21 處（超過十處），依規格觸發第二輪。範圍不是整篇重做，而是覆核第一輪動過的每一段與新寫進去的每一句，另加四組台幣價、台灣日期、兩組 AI 倍數的歸屬，以及全部 verbatim_quote 的連續字串比對。",
+      "method": "四條 sources 由第二輪自己重抓（curl -sL -A \"Mokaair-editorial\"，請求的 UA、查詢字串與標頭都沒有放任何 email 或個人資料），HTML 以本機腳本轉純文字並把頁面原有的 <sup> 保留成 [[sup:N]]，逐一比對每個數字掛哪一個註腳。今日 HTTP／bytes：chip-us 200／201,731、chip-tw 200／195,144、mini-tw 200／225,255、studio-tw 200／212,130，四者都是新聞稿全文。沒有使用 sources[] 以外的新網址；文章的 checked_on 2026-09-17 維持不動。",
+      "claims_rechecked": 96,
+      "edits": 9,
+      "edits_to_the_pack": [
+        "第 1 節第 2 段刪掉第一輪新寫的「其中 Apple 以「全新」稱呼的只有 M6 與 M5 Ultra」。兩頭都站不住：（一）Mac mini 新聞稿的標題就是「Apple 推出搭載全新 M6 與 M5 Pro、效能更強大的 Mac mini」（英文網址 the-all-new-m6-and-m5-pro），這個標題逐字印在本文 sources[] 第三條上，讀者一看就會認為我們寫錯；（二）「全新」在兩篇晶片稿裡一次也沒有加在 M5 Ultra 身上（「全新 M5 Ultra」只出現在 Mac Studio 稿）。改成只寫查得到的事實：「晶片新聞稿只介紹 M6 與 M5 Ultra 兩顆：以「M5 Pro」逐字查核，美國版與台灣版晶片稿都是 0 次，規格只寫在 Mac mini 稿裡。」",
+        "第 2 節「多執行緒效能最高達 M5 的 1.2 倍、M1 的 2.4 倍，但沒有指名比較的競品系統或測試項目」改成「⋯；這句掛的註腳只列 Apple 自己的 M6、M5、M1 三台機型，沒有指名任何競品」。原句字面沒錯，卻讓讀者以為 Apple 通篇沒有做過競品測試的說明；實際上晶片稿註腳 1（掛在導言「全球最快的 CPU 核心⋯170GB/s」上）就寫了「使用市售競品系統及特定業界標準測試項目」。這一句與 1.2 倍／2.4 倍掛的是註腳 2（M6 準量產版 Mac mini 12/12/32GB、M5 14 吋 MacBook Pro 10/10/32GB、M1 Mac mini 8/8/16GB，2026 年 8 月），裡面一個競品都沒有。FAQ 7 早已分開寫，正文現在與它一致。",
+        "第 5 節環保段落改寫。原文只把「機身為 100% 再生鋁金屬」掛在 Mac mini 上，Mac Studio 稿其實逐字寫了同一句，選擇性省略會讓讀者以為 Mac Studio 的機身不是 100% 再生鋁。改成「新款 Mac mini 整機採用 50% 再生材料、新款 Mac Studio 採用 35%，兩款機身都是 100% 再生鋁金屬；供應鏈製造電力則是 Mac mini 均來自風能與太陽能等再生能源、Mac Studio 使用 40% 可再生能源」，「基準不同不宜比較」的但書原樣保留。",
+        "第 3 節「這顆 GPU 首度把神經網路加速器導入 Ultra 等級晶片」補上歸因並改回官方用語：「Apple 表示這顆 GPU 首度把神經網路加速器導入 Ultra 晶片」。原句是一個沒有歸因的「首度」宣稱，而且「Ultra 等級晶片」不是 Apple 的寫法（Mac Studio 稿寫「首度將神經網路加速器導入 Ultra 晶片」）。",
+        "FAQ 1「M6 與 M5 Ultra 是兩顆分開設計的晶片」改成「兩顆不同的晶片」：「分開設計」四個來源頁都沒有寫，是從常識補的。",
+        "FAQ 4 的晶片稿註腳 3 對照組補齊並改用官方用語：「準量產 Mac Studio」→「M5 Ultra 準量產版 Mac Studio」，「對比同為 256GB 的 M3 Ultra Mac Studio」→「對比 32 核心 CPU、80 核心 GPU、256GB 的 M3 Ultra Mac Studio」，與註腳原文逐字相符。",
+        "騰字數（第一輪收在 2,998／3,000，第二輪要補回但書就得先騰）：只刪重複敘述，沒有動任何但書或限定詞。第 1 節第 1 段開頭「Apple 這次同時發布三篇官方新聞稿：」→「這三篇官方新聞稿，」（第 1 段已寫過「以三篇官方新聞稿同時發表」）；第 4 節第 1 段把四階記憶體階梯的中間兩階（M5 Pro、M5 Max）改成「中間兩階見上表」（表格就在上面，兩組數字也仍在第 2、3 節正文裡）；第 1 節第 3 段刪掉「內容如有更新請自行至 Apple Newsroom 查核」（callout 逐字寫著同一件事）。最終 2,977／3,000。",
+        "研究紀錄：M5 Pro 那條 verified_facts 與對應的 not_said 刪掉「以『全新』稱呼的只有 M6 與 M5 Ultra」，改寫成上面第 1 條的正確版本；「M5 Max 在晶片稿出現 2 次」改成不記次數（那個 2 是頁面把全文渲染兩次造成的假象，實際每份渲染各一次）。",
+        "研究紀錄：event_date_basis 與 live_data_warnings 裡的「dateModified 介於 13:59Z 到 14:09Z 之間」刪掉。第二輪今天重抓得到 14:00:23Z／14:05:05Z／14:12:00Z／14:05:12Z，Mac mini 稿的 14:12:00Z 就落在那個區間外（第一輪同日讀到的是 14:01:55Z）。dateModified 的時分秒是活資料，只有日期 2026-08-27 穩定；checked_and_correct 裡把四個時間戳當成事實列出的那一句也一併改掉。第一輪只把 verbatim_quote 縮到日期為止，卻在自己的散文裡留下同樣不穩定的數字。"
+      ],
+      "checked_and_correct": [
+        "Mac mini 導言四個倍數的註腳歸屬，第二輪重抓後逐字相符：「AI 效能最快可達 4 倍[1]，儲存空間[2]與圖形效能[1]最快可達 2 倍，CPU 效能也提升了 40%[1]」；註腳 1 =「與前代搭載 Apple M4 晶片、10 核心 CPU、10 核心 GPU、32GB 統一記憶體和 2TB SSD 固態硬碟的 Mac mini 系統比較。」（沒有月份），註腳 2 =「測試由 Apple 於 2026 年 7 月進行。」（沒有對照機型）。文章寫的「AI、圖形、CPU 三項掛 M4 配置註腳，『2 倍儲存』掛只寫 7 月的那一個」完全正確，第一輪的修正站得住。",
+        "兩組 M5 Ultra 的 AI 倍數沒有互換也沒有合併，全文（第 3 節、FAQ 4、摘要、表格、圖解 nodes、callout）逐處核對：晶片稿「AI 的 GPU 峰值運算能力」4.5 倍／6 倍以上 → 註腳 3 → 2026 年 8 月、36/80/256GB 對 32/80/256GB 對 20/64/64GB；Mac Studio 稿「AI 峰值運算效能」4.3 倍／9.8 倍 → 註腳 1 → 只寫 2026 年 7 月、沒有配置。摘要、表格與圖解四格都沒有出現任何 AI 倍數，所以沒有第三處可混。",
+        "兩篇 Mac 稿的註腳編號確實相反，第二輪重抓再確認一次：Mac mini 1 = M4 配置／2 = 7 月；Mac Studio 1 = 7 月（「測試由 Apple 於 2026 年 7 月進行。更多資訊請參閱 apple.com/tw/mac-studio。」）／2 = M3 Ultra 32 核心 CPU、80 核心 GPU、512GB、8TB SSD 配置。",
+        "四組台幣起價與四組教育價逐字比對千分位與「起」字，全部相符：NT$29,900／NT$26,590、NT$59,900／NT$56,390（Mac mini 稿）、NT$84,900／NT$78,090、NT$199,900／NT$185,390（Mac Studio 稿）。正文、摘要、FAQ 6 三處的數字互相一致。台灣預購「8 月 27 日台灣時間早上 9 時起」、供貨「9 月 22 日起」都照台灣版新聞稿；「配備 512GB 統一記憶體的 Mac Studio 將於 10 月底推出」只寫在 Mac Studio 稿，文章也只掛在 Mac Studio 上。沒有美金、沒有「30 個國家和地區」、沒有任何購買或升級建議。",
+        "44 條 verified_facts 的 verbatim_quote 今天逐條在重抓的頁面上做連續字串比對，44 條全中（第一輪報告寫「41 條」是清點錯誤，不是引文有問題）；其中 2 條取自頁面內嵌的 application/ld+json，紀錄本身已說明。44 條的 url 也全部落在 sources[] 這四條裡。",
+        "逐字查核（四頁都是 0 次）：台積電、TSMC、代工、Siri。「Foundry」只在 Mac Studio 稿出現，是特效軟體 Foundry Nuke，文章刻意不提。「2 奈米」／「2 nm」在四頁裡永遠只接在 M6 身上，M5 Ultra／M5 Max 旁邊沒有任何製程節點數字，FAQ 2 站得住。電晶體只有「密度更高」的定性說法，沒有數量，也沒有晶粒面積。",
+        "晶片稿沒有售價、沒有預購日、沒有供貨日（NT$／US$／$／預訂／預購／售價／8 月 27／9 月 22 在兩篇晶片稿都是 0 次），第 1 節那句成立。",
+        "美國版與台灣版晶片稿的對沖詞今天再核一次，仍然一致：world's fastest single-threaded／單執行緒效能為全球最快、up to 1.2x／最快可達 1.2 倍、up to 2.4x／2.4 倍、nearly 30 percent／近 30%、more than 8x／8 倍以上、up to 2x the peak compute／最高可達前幾代的 2 倍、50 percent increased geometry rates for complex graphics／處理複雜圖形時的幾何處理率提升 50%、up to 4.5x／最高可達 4.5 倍、over 6x／6 倍以上。兩版的註腳編號 1–4 也對得起來。",
+        "第一輪沒有為了字數刪掉但書：逐段比對，「兩款機型的比例與基準並不相同，不宜直接比較」「部分功能可能不適用於所有地區或語言」「本站沒有實際測試」「並非本站量測」「稿中沒有再說明是否適用」「但沒有指名具體模型」全部還在。第二輪自己要補字時也只刪重複敘述，沒有碰任何但書。",
+        "範圍不明的否定句：全文 14 處否定句逐一檢查，每一處都限縮在「本文引用／查核的四個官方頁面」「晶片新聞稿」「稿中」或某一個註腳上，沒有「官方從未」「業界唯一」這類無界說法。",
+        "summary 四句的每個數字（32GB、170GB/s、512GB、1.2TB/s、NT$29,900、NT$199,900、8 月 27 日、9 月 22 日）都仍在正文裡；圖解四格的每個數字（1.2TB/s、8/27、9/22）也都在正文裡；第二輪刪掉階梯中間兩階之後再確認一次。",
+        "界線：沒有購買或升級建議、沒有推薦式比價、沒有把 Apple 的數字拿去和 NVIDIA／AMD／Qualcomm 比、每個效能倍數都帶「Apple 表示／Apple 說明」、macOS 27 與 Apple Intelligence 都寫成「預計今年秋季推出」「目前透過 Apple Beta Software Program 開放測試」、沒有投資免責 callout，全篇只有一個 callout。"
+      ],
+      "left_for_the_owner": [
+        "check_article.py 仍是同一條 FAIL：`zh-TW link target tech-news-2026-index.json does not exist yet`。科技垂直索引內容包還沒建立，不在查核代理可動的兩個檔案裡；索引落地後第一條 link 的 text 要逐字換成索引自己的 zh-TW title。查核前後這條失敗完全相同。",
+        "四個頁面在 2026-08-27 被改了什麼仍然查不出來（Apple Newsroom 沒有版本歷史，本代理沒有 8 月 25 日的快照）。文章只寫「讀到的是修訂後版本」，事件日維持 08-25。",
+        "台幣牌價與教育價是 2026-09-17 的快照，出刊當天建議再看一次 Apple 台灣新聞稿。",
+        "Mac Studio 稿的「最多六個 Thunderbolt 5 連接埠」只出現在圖說，仍未寫進文章；要寫埠數得先決定圖說能不能當正文依據。"
+      ],
+      "verdict": "needs_owner（第二輪覆核 96 條、再改 9 處，其中 4 處是會誤導讀者的敘述；骨幹論述沒有動。唯一擋住 gate 的仍是不存在的科技垂直索引內容包，不在本代理可動的檔案裡。）"
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "2-Nanometer Chip Debut",
+      "diagram": {
+        "title": "Chip and Launch Highlights",
+        "caption": "Compiled from Apple’s M6 and M5 Ultra press release of August 25, 2026: the 2-nanometer process, the quad-die architecture, unified memory bandwidth, and the Taiwan launch timeline; checked September 17, 2026.",
+        "nodes": [
+          [
+            "2nm Process",
+            "Denser transistors in M6"
+          ],
+          [
+            "Quad-Die Design",
+            "Two M5 Max chips joined"
+          ],
+          [
+            "Memory Bandwidth",
+            "M5 Ultra: up to 1.2TB/s"
+          ],
+          [
+            "Taiwan Launch",
+            "Preorder 8/27, ships 9/22"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "2ナノチップ同時発表",
+      "diagram": {
+        "title": "チップと発売の要点",
+        "caption": "Appleが2026年8月25日に発表したM6とM5 Ultraのプレスリリースをもとに整理：2ナノメートルプロセス、4ダイ構成、ユニファイドメモリ帯域幅、台湾での発売時期。確認日は2026年9月17日。",
+        "nodes": [
+          [
+            "2ナノプロセス",
+            "M6は密度が向上"
+          ],
+          [
+            "4ダイ構成",
+            "M5 Max 2基を接続"
+          ],
+          [
+            "メモリ帯域幅",
+            "M5 Ultraは1.2TB/s"
+          ],
+          [
+            "台湾の発売時期",
+            "8/27予約、9/22発売"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "2나노 칩 동시 공개",
+      "diagram": {
+        "title": "칩과 출시 핵심 정리",
+        "caption": "Apple이 2026년 8월 25일 발표한 M6와 M5 Ultra 보도자료를 바탕으로 정리했습니다: 2나노미터 공정, 쿼드 다이 구조, 통합 메모리 대역폭, 대만 출시 일정. 확인일은 2026년 9월 17일입니다.",
+        "nodes": [
+          [
+            "2나노 공정",
+            "M6 밀도 향상"
+          ],
+          [
+            "쿼드 다이 구조",
+            "M5 Max 2개 연결"
+          ],
+          [
+            "메모리 대역폭",
+            "M5 Ultra 1.2TB/s"
+          ],
+          [
+            "대만 출시 일정",
+            "8/27 예약, 9/22 공급"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "2 纳米芯片同步发布",
+      "diagram": {
+        "title": "芯片与上市要点一览",
+        "caption": "依据 Apple 2026 年 8 月 25 日发布的 M6 与 M5 Ultra 新闻稿整理：2 纳米制程、四芯粒架构、统一内存带宽与台湾上市时间，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "2 纳米制程",
+            "M6 密度更高"
+          ],
+          [
+            "四芯粒架构",
+            "两颗 M5 Max 相连"
+          ],
+          [
+            "统一内存带宽",
+            "M5 Ultra 达 1.2TB/s"
+          ],
+          [
+            "台湾上市时间",
+            "8/27 预购、9/22 供货"
+          ]
+        ]
+      }
+    }
+  }
+}

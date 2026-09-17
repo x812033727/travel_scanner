@@ -1,0 +1,562 @@
+{
+  "slug": "tech-news-apple-eu-business-terms-20260818",
+  "event_date": "2026-08-18",
+  "event_date_basis": "Apple Developer News 該篇公告（id=gmws0jgp）頁面日期標示 'August 18, 2026'；Apple Developer 官方 RSS（142 筆，最新 2026-09-09）帶同一篇 pubDate 'Tue, 18 Aug 2026 08:00:38 PDT'；Apple Newsroom 該篇 JSON-LD datePublished 為 '2026-08-18Z'。三者一致指向 2026-08-18 為公告日，本文以此為 event_date 與 slug 尾碼。新條款的多數重點生效日是 2026-10-01（三條來源都寫），Newsroom 頁面自身的 dateModified 是 2026-08-27（不含秒，理由見 live_data_warnings）——這兩個日期都不是事件日，正文另外分開明寫。",
+  "title": "Apple 公布歐盟新版 App 商業條款：核心技術抽成 5%、可同時用替代付款",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "Changes for apps in the European Union",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "publisher": "Apple Developer News",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Apple announces changes for apps in the European Union",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "publisher": "Apple Newsroom",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Changes for apps in the European Union",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "publisher": "Apple Developer Support",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Payment options on the App Store in the EU",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "publisher": "Apple Developer Support",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "本文承接 2026-09-16 完成的前期研究（docs/news-2026-batch-4/research/tech-news-apple-eu-business-terms-20260818.json）與獨立查核（docs/news-2026-batch-4/factcheck/tech-news-apple-eu-business-terms-20260818.json，verdict: needs_fixes，41 條確認、2 條推翻、3 條無法追溯），並於 2026-09-17（台北時間）親自以 curl -sL -A \"Mokaair-editorial\" 重新抓取本文實際引用的四條 sources[]，逐一讀 body、不只看狀態碼：(1) developer.apple.com/news/?id=gmws0jgp -> HTTP 200、111,532 bytes，與前次查核位元組數完全相同（頁面未變動），'August 18, 2026' 與四項重點原句仍逐字在。(2) apple.com/newsroom 該篇 -> HTTP 200、162,927 bytes，JSON-LD datePublished '2026-08-18Z'、dateModified 日期 '2026-08-27'（秒級時間戳不穩定：前次查核七次重抓六次得到 13:59:42Z；2026-09-17 的獨立查核四次重抓全部得到 14:00:09Z，且 body 是 162,779 bytes。Apple 同日至少供應兩種 edge 版本，故正文與本記錄只寫日期、不寫秒）；抽成三句 '26 percent'／'20 percent'／'15 percent' 逐字仍在。(3) developer.apple.com/support/apps-in-the-eu/ -> HTTP 200、142,113 bytes，'Digital Markets Act' 字串出現 2 次（與前次查核一致）、'nonprofit approved for a fee waiver'、10% 級距含自動續訂那句、核心技術抽成涵蓋範圍那句均逐字仍在；國家代碼清單（Austria (at)…Iceland (is)…）與最低作業系統版本（iOS 26.2 等）本次由本文親自 grep 核對無誤。(4) developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/ -> HTTP 200、141,539 bytes；稽核權／抵扣／下架那句本次重新以 grep 確認只在這一頁、不在 apps-in-the-eu 頁，修正前次研究記錄的掛址錯誤（must_fix 4）。四個位元組數與前次查核相同；但獨立查核當天 newsroom 那頁拿到的是另一個 edge 版本（162,779 bytes），可見位元組數只能說明「抓到哪一個版本」，不足以證明頁面內容沒有變動。本文未重新抓取第五份補充頁面（Apple Developer Program 授權合約，內含 Attachment 14）：依 source_list_fix 選項二處理，不引用該頁，凡依賴 Attachment 14／Section 3.5／Section 4(E)／『全文 0 次出現 DMA』的內容一律不寫，也不把該頁列入 sources[]。台灣／中國大陸／日本／韓國在地化頁面（/tw/、/cn/、/jp/、/kr/）本次未抓取；獨立查核後正文不再依賴這個沿用來的結論，『Apple 目前沒有繁體中文版支援頁』那一句已刪除，改成『本文四條來源都是英文頁面，中文名詞為編輯部自行翻譯』——這句話光靠 sources[] 本身就撐得住，不必引用四個未列入 sources[] 的語系網址。所有請求都未挾帶任何使用者 email 或個人資料。",
+  "verified_facts": [
+    {
+      "fact": "Apple Developer News 於 2026-08-18 刊出公告〈Changes for apps in the European Union〉，頁面日期標示如此。",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 18, 2026"
+    },
+    {
+      "fact": "Apple 表示這次調整是與歐盟執委會密切合作的結果，把在歐盟發行 App 的開發者統一收攏到同一套商業條款之下。",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Apple is making changes to its business terms for apps in the European Union, following close collaboration with the European Commission. The changes reduce complexity by moving every developer that distributes apps in the EU to a single set of business terms."
+    },
+    {
+      "fact": "原本只對達到特殊規模（extraordinary scale）的開發者按安裝次數計費的核心技術費，將由核心技術抽成取代，比率是在 App Store 以外通路發布的 App，其數位交易的 5%。原文是 'digital transactions in apps distributed outside the App Store'——條件是 App 在哪裡發布，不是交易在哪裡完成；'for developers who achieve extraordinary scale' 這個限定詞也不能掉（第二輪補回正文與本欄）。",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Core Technology Fee, a per-install fee for developers who achieve extraordinary scale, will be replaced by the Core Technology Commission, a simple 5% commission on digital transactions in apps distributed outside the App Store."
+    },
+    {
+      "fact": "新條款同時取消首次取得費與商店服務費（這兩個費用名目被取消，不代表所有店外連結都不再計費，見下方 must_not_write）。",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The new terms also eliminate the Initial Acquisition Fee and Store Services Fee."
+    },
+    {
+      "fact": "會員自公告當天起可在《Apple Developer Program 授權合約》中檢視並同意新條款，其中四項重點更新於 2026-10-01 生效。",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Members of the Apple Developer Program can review and agree to the updated terms today in the Apple Developer Program License Agreement. Some key updates, which go into effect October 1, 2026, include:"
+    },
+    {
+      "fact": "公告舉出的四項更新依序為：調整抽成比率、允許 App 同時提供 Apple 應用程式內購買與替代付款選項、替代付款新增兒少保護、放寬替代市集與網站發布資格。這四項在頁面上是四個獨立的項目符號，不能接成一個引用字串，所以下列引文只取第一項；其餘三項的原文依序是 'Allowing apps to offer alternative payment options alongside Apple In-App Purchase.'、'Adding child safety protections for alternative payments on the App Store.'、'Expanding the qualifications for developers to operate alternative app marketplaces and distribute their apps over the web.'。Apple 的引導句是 'Some key updates, which go into effect October 1, 2026, include:'（支援頁寫 'The primary updates, which go into effect on October 1, 2026, include:'），所以這四項是舉例，不是完整清單。",
+      "url": "https://developer.apple.com/news/?id=gmws0jgp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Adjusting commission rates across the App Store, alternative payments, and alternatively distributed apps."
+    },
+    {
+      "fact": "Apple Newsroom 該頁 JSON-LD 的 datePublished 是 '2026-08-18Z'，dateModified 的日期是 2026-08-27。秒級時間戳不可重現（2026-09-16 的查核六次拿到 13:59:42Z、一次 14:00:09Z；2026-09-17 的獨立查核四次全部拿到 14:00:09Z），因此本文只寫日期，verbatim_quote 只留穩定的 datePublished。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\": \"2026-08-18Z\""
+    },
+    {
+      "fact": "Apple 支援頁提到，自 2024 年起 Apple 已為因應《數位市場法》調整 iOS、iPadOS、Safari 與 App Store；這是背景說明，不是本次商業條款異動的公告原因（修正 must_fix 6 的全稱誤述）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Since 2024, Apple has made updates to iOS, iPadOS, Safari, and the App Store in the European Union (EU) to comply with the Digital Markets Act (DMA)"
+    },
+    {
+      "fact": "同一份支援頁另提到開發者可依《數位市場法》的要求申請互通性請求管道，同樣不是這次條款異動的原因。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To reflect the DMA’s requirements, Apple also provides a dedicated process to request additional interoperability"
+    },
+    {
+      "fact": "App Store 內使用 Apple 應用程式內購買，抽成 26%。15% 那一階，Newsroom 的寫法是 'For the vast majority of developers, including those in the ... Program'（三個計畫是舉例，不是全部），支援頁的費率表寫的則是 'from participants in the ... Program, and sales of auto-renewable subscriptions after their first year'（較窄）。兩個都是官方版本，正文與表格採支援頁的費率表並在 caption 標明依據哪一頁；兩版差異見 factcheck.left_for_the_owner。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For App Store apps using Apple In-App Purchase, the commission will be 26 percent. For the vast majority of developers, including those in the App Store Small Business Program, Mini Apps Partner Program, or Video Partner Program, and for auto-renewing subscriptions after their first year, it will be 15 percent."
+    },
+    {
+      "fact": "App 內替代付款處理抽成 20%，同一批開發者降為 10%。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For App Store apps using alternative payment processing, the commission will be 20 percent. Developers in the programs mentioned above will pay a reduced rate of 10 percent."
+    },
+    {
+      "fact": "連到 App 外完成交易抽成 15%，同一批開發者降為 10%。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For App Store apps that link out of the app to complete purchases, the commission will be 15 percent. Developers in the programs mentioned above will pay a reduced rate of 10 percent."
+    },
+    {
+      "fact": "10% 的替代付款處理級距同時涵蓋續訂滿一年後的自動續訂訂閱，這句只在支援頁、Newsroom 沒寫（must_add：表格漏一行，已補上）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sales processed via alternative payment processing within the app from participants in the App Store Small Business Program, Mini Apps Partner Program, or Video Partner Program, and sales of auto-renewable subscriptions after their first year."
+    },
+    {
+      "fact": "商店服務抽成（store services commission）只在 App 使用『附可點擊連結的店外購買提案』時才適用，目的地可以是網站、替代市集或另一個 App；15% 與 10% 兩檔都只計入使用者點擊連結後 7 天內完成的交易（7 天限制掛在整段，不是只掛 10% 那一檔）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The store services commission applies when your app uses an out-of-app offer with an actionable link that directs users to offers and promotions at a destination of your choice — a website, an alternative app marketplace, or another app. Only sales made within 7 days of the link tap are subject to this commission."
+    },
+    {
+      "fact": "商店服務抽成 15% 那一列，apps-in-the-eu 明寫排除計畫參與者與續訂滿一年後的自動續訂訂閱；同一列在 payment-options 頁只寫 'Out-of-app offers.'，沒有排除語。表格建在 apps-in-the-eu，因此採較完整的這一版。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Out-of-app offers, excluding transactions from program participants or auto-renewable subscriptions after their first year."
+    },
+    {
+      "fact": "替代市集、經由替代市集發布的 App、網站發布的 App，Apple 在支援頁把核心技術抽成的段落標題限定在 iOS 與 iPadOS；替代發布本身也只寫 iOS 與 iPadOS。Newsroom 的 5% 那一句沒有寫平台，正文採支援頁較明確的範圍。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Core Technology Commission for iOS and iPadOS apps distributed outside of the App Store"
+    },
+    {
+      "fact": "核心技術抽成涵蓋的三類交易中，第一類是在替代市集、市集發布的 App、網站發布的 App 之內銷售數位商品與服務——這一類前次研究紀錄漏抄，正文已補。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sales of digital goods and services within alternative app marketplaces, apps distributed via alternative app marketplaces, and apps distributed via Web Distribution."
+    },
+    {
+      "fact": "核心技術抽成的第三類是這些 App 以可點擊連結把使用者帶到瀏覽器開啟的網站購買，且同樣只計入 7 天內完成的交易；目的地寫的是 website，不是『其他 App』。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sales when alternative app marketplaces, apps distributed via alternative app marketplaces, or apps distributed via Web Distribution direct users to offers and promotions with actionable links that open in a web browser to a website for the purchase of promoted digital goods and services."
+    },
+    {
+      "fact": "核心技術抽成 5% 的範圍包含使用者為存取或下載替代市集、替代市集發布的 App、網站發布的 App 所產生的交易，也包含存取 App 內容或型錄的訂閱費（must_add：CTC 範圍比 Newsroom 版本廣）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "required to access or download alternative app marketplaces, apps distributed via alternative app marketplaces, and apps distributed via Web Distribution, including paid subscriptions to access or download app content or catalogs"
+    },
+    {
+      "fact": "小型市集業者的免收範圍是有限的：免的是『市集 App 收取的下載費，或存取該市集所發布 App 的訂閱費』上的核心技術抽成，不是整筆核心技術抽成全免；門檻是兩個條件同時成立（近 12 個月全球營收低於 1000 萬歐元，且市集下載費或訂閱費的累計終身營收低於 100 萬歐元）。原頁寫的是 'you qualify to have the CTC waived'，沒有寫要申請，因此正文不寫『可申請』。兩個門檻在頁面上是兩個項目符號（第一項結尾是 '; and'），不接成一句：原文分別是 '€10 million in global revenue in the last 12 months; and' 與 '€1 million in total lifetime revenue from your EU marketplace app’s download price or subscription fees to access apps distributed by your marketplace.'（後者含彎引號）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you're a small marketplace operator, you qualify to have the CTC waived on fees your EU marketplace app charges to download your alternative app marketplace, or subscription fees to access apps distributed by your alternative app marketplace."
+    },
+    {
+      "fact": "開發者選定的付款組合（Apple 應用程式內購買、App 內替代付款、附可點擊連結的店外提案，或以上組合）須維持 12 個月不變；payment-options 頁另寫明這個選擇要『在所有歐盟商店前台』一致維持 12 個月。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "developers distributing apps in the EU will select their payment options — Apple In-App Purchase, alternative payment processing in their app, linking out to the web, or a combination — and must maintain those options for 12 months."
+    },
+    {
+      "fact": "須顯示系統揭露畫面的觸發條件，是 App『在 App 內提供替代付款處理』或『用可點擊連結帶到店外提案』，不是『同時提供替代付款』；揭露畫面在使用者點下替代付款按鈕時出現，之後可以選擇不再顯示。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "must use the ExternalPurchaseCustomLink API to display a system-provided disclosure sheet that explains to the user they’ll be transacting with the developer and not Apple."
+    },
+    {
+      "fact": "App Store 產品頁面會顯示提供替代付款的資訊橫幅與「資訊」欄位揭露，下載確認畫面加註 External Purchases 字樣（這是英文介面字串，Apple 沒有在本文四條來源給出中文對照，正文因此保留英文）。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the App Store will display an informational banner on the app’s product page and a disclosure in the Information section, and the download confirmation will have an External Purchases notation."
+    },
+    {
+      "fact": "Apple 表示，使用替代付款後「回報問題」與「家人共享」不會反映這些交易。原頁在這一句與『購買紀錄只反映 Apple 應用程式內購買』之間還有一句（使用者可能要把付款資訊交給更多對象），所以兩段不可以接成一個引文；購買紀錄那半句的原文是 'And on the App Store, users’ purchase history and subscription management will only reflect transactions made using Apple In‑App Purchase.'（注意 In‑App 用的是 U+2011 連字號）。Apple 另在『Supporting customers』一節寫明自己無法協助退款、購買紀錄與訂閱管理。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Helpful features — like Report a Problem, and Family Sharing — will also not reflect these transactions."
+    },
+    {
+      "fact": "Newsroom 版兒少保護其實有四個項目，不只『未滿 18 歲』一條：兒童類別 App 不放連到網站完成交易的連結；未滿 18 歲用替代付款或連到網站須加家長閘門；未滿 13 歲不能連到網站完成交易；會員國若對 13 歲以上兒童要求家長同意，保護措施隨之調整。前次研究紀錄只抄了第二條，據以寫成『Newsroom 只寫未滿 18 歲』是錯的。下列引文是第三個項目符號的完整字串。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For users under 13 years old, apps from the App Store cannot link out to websites for transactions to protect against the risk of scams that target younger kids."
+    },
+    {
+      "fact": "Newsroom 第四個項目：歐盟會員國若對 13 歲以上的兒童要求數位行為的家長同意，這些保護措施會隨之調整。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In EU member states that require parental consent for digital actions for children older than 13 years old, these protections will scale accordingly."
+    },
+    {
+      "fact": "兩份支援頁的兒少保護寫法相同，比 Newsroom 細：兒童類別 App 的替代付款購買流程須放在家長閘門後、且不得提供在網站購買的店外提案；未滿 13 歲者替代付款須經家長閘門、且不得提供店外提案（是店外提案整體，不是只有網站）；13 至 17 歲者兩者都須經家長閘門。Apple 有說明較高門檻的規則（商店前台把家長同意年齡訂在 13 歲以上時改用該年齡），只是沒有列出是哪些前台，而是要開發者去查『Region-specific rules for managing an Apple Account』。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In cases where an EU storefront sets an age for parental consent above 13 years old, the same protections apply at the higher age instead of 13. For example, in some storefronts the protections apply to users under 16 (instead of under 13) and 16 to 17 (instead of 13 to 17)."
+    },
+    {
+      "fact": "Newsroom 的資格清單有五項（D&B 財務穩健評等、上市公司或其持有、具規模投資機構的創投資金、合格會計師財務查核、政府機關／教育機構／非營利組織）；支援頁的清單有七項，多了備用信用狀與首年百萬安裝兩項，且第五項寫成『已核准減免費用的非營利組織』。正文採支援頁的七項並註明 Newsroom 少了哪些。下列引文只取 Newsroom 清單的第一個項目符號，五個項目不接成一句。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Meet a moderate financial-stability bar as scored by Dun & Bradstreet."
+    },
+    {
+      "fact": "支援頁把放寬後的資格繫在生效日上：自 2026-10-01 起，符合以下任一條件的開發者才具備經營替代市集（Web Distribution 段落有一模一樣的句子）的資格。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple is expanding eligibility to operate an alternative app marketplace in the EU. Starting October 1, 2026, developers who meet at least one of the following criteria will be eligible to operate an alternative app marketplace:"
+    },
+    {
+      "fact": "支援頁對第五選一的非營利組織門檻寫法更精確：須是「已核准減免費用」的非營利組織，Newsroom 版只寫 nonprofit（must_add：資格條件用字分歧，正文採支援頁較精確版本）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "nonprofit approved for a fee waiver"
+    },
+    {
+      "fact": "支援頁另列兩項 Newsroom 公告沒有提到的資格門檻：提供 100 萬美元（或等值當地貨幣）的備用信用狀，或全球「首次年度安裝」達 100 萬次。這兩項在頁面上是相鄰的兩個項目符號，第一項的原文是 'Provide a stand-by letter of credit of USD 1,000,000 (or equivalent in local currency); or'，下列引文只取第二項，兩項不接成一句。注意 'first annual installs' 是 Apple 自己的計量名詞，不等於「第一年之內的累計安裝次數」；四條來源都沒有定義它，正文因此只照字面譯成「首次年度安裝」並加引號（第二輪改；原稿寫成「首年全球累計安裝次數」）。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Have one million first annual installs worldwide."
+    },
+    {
+      "fact": "經營替代市集或使用網站發布，不再要求開發者在歐盟境內設有法律實體或登記據點。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Companies are no longer required to have a legal entity or be established in the EU to operate an alternative app marketplace or use Web Distribution."
+    },
+    {
+      "fact": "這些安排的適用範圍是在歐盟商店前台上架、涵蓋 iOS、iPadOS、macOS、tvOS、visionOS、watchOS 的 App。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "specific business terms for iOS, iPadOS, macOS, tvOS, visionOS, and watchOS apps distributed in EU storefronts."
+    },
+    {
+      "fact": "替代付款權限頁列出的有效國家代碼從 Austria (at) 到 Sweden (se)，含 Iceland (is) 與 Norway (no)。『29 個』是編輯清點出來的，Apple 沒有印出這個數字，正文因此寫明『本文清點為 29 個』。冰島與挪威不是歐盟會員國；這份清單也不等於歐洲經濟區（列支敦斯登不在其中），所以正文不把『歐盟』寫成『歐洲經濟區』。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Austria (at), Belgium (be), Bulgaria (bg), Croatia (hr), Cyprus (cy), Czechia (cz), Denmark (dk), Estonia (ee), Finland (fi), France (fr), Germany (de), Greece (gr), Hungary (hu), Iceland (is), Ireland (ie), Italy (it), Latvia (lv), Lithuania (lt), Luxembourg (lu), Malta (mt), Netherlands (nl), Norway (no), Poland (pl), Portugal (pt), Romania (ro), Slovakia (sk), Slovenia (si), Spain (es), Sweden (se)"
+    },
+    {
+      "fact": "使用這組替代付款權限，裝置至少要更新到 iOS 26.2、iPadOS 26.2、macOS 26.6、tvOS 26.6、visionOS 26.6 或 watchOS 26.6，本文今日重新 grep 核對版本號無誤。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Entitlement Profile is compatible with and may only be used in apps on EU storefronts on devices running a minimum of iOS 26.2, iPadOS 26.2, macOS 26.6, tvOS 26.6, visionOS 26.6, and watchOS 26.6."
+    },
+    {
+      "fact": "Apple 表示網站發布僅限歐盟開放，背後沒有市集營運者把關或 Apple 為 App Store 提供的那種持續監督（原頁在這句與公證那句之間還有一句『壞人可以長期運作而不被發現』，所以兩段不可以接成一個引文）；每款替代發布的 App 仍須通過公證，Apple 在 Newsroom 形容為『聚焦基本功能與防範重大威脅的基礎審查』，而支援頁對公證的定義是另一種寫法（'focused on platform policies for security and privacy and to maintain device integrity'），正文採 Newsroom 版並歸因給 Apple。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Apple will continue to require every alternatively distributed app to go through Notarization — a baseline review focused on basic functionality and protection from serious threats."
+    },
+    {
+      "fact": "Apple 表示，在歐盟同時提供 Apple 應用程式內購買與替代付款選項，是先前在歐盟不被允許的做法。",
+      "url": "https://www.apple.com/newsroom/2026/08/apple-announces-changes-for-apps-in-the-european-union/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "developers can now offer Apple In-App Purchase alongside alternative payment options, which had not previously been permitted in the EU"
+    },
+    {
+      "fact": "生效時點還有一個分支：舊的 Alternative Terms Addendum 與 StoreKit External Purchase Link Entitlement (EU) Addendum 自 2026-10-01 起被授權合約的 Attachment 14 取代；同意更新條款的開發者，其帳號適用統一條款的時點是 2026-10-01 與同意日之中較晚的一天。這一條因正文字數上限（第二輪後為 2,992／3,000）沒有寫入，留給站主決定。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "After agreeing to the updated terms, their account will be subject to the unified EU terms starting October 1, 2026, or the date they agree, whichever is later."
+    },
+    {
+      "fact": "替代付款交易須每月於次月起 15 日內向 Apple 申報，此句在 apps-in-the-eu 頁。",
+      "url": "https://developer.apple.com/support/apps-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This report will need to be provided monthly within 15 days following the end of the calendar month."
+    },
+    {
+      "fact": "稽核權與未付佣金後果的敘述——Apple 有稽核權；未付佣金可能導致抵扣其他市場應付款、下架 App 或移出開發者計畫——2026-09-17 的獨立查核以原始 HTML 再確認一次：'audit rights' 與 'offset of proceeds' 在 payment-options 頁各 1 次、在 apps-in-the-eu 頁各 0 次，掛址正確。原頁在 'Apple Developer Program'、'App Store' 之間用的是不斷行空格（&nbsp;），用一般空格去搜尋整句會找不到，因此 verbatim_quote 只取沒有不斷行空格的那一句；後果那一句的原文是 'Failure to pay Apple’s commission could result in the offset of proceeds owed to you in other markets, removal of your app from the App Store, or removal from the Apple Developer Program.'（同樣含不斷行空格與彎引號）。這一段沒有寫進正文。",
+      "url": "https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This allows Apple to review the accuracy of a developer’s record of digital transactions as a result of the entitlement, ensuring the appropriate commission has been paid to Apple."
+    }
+  ],
+  "not_said": [
+    "Apple Developer News 與 Apple Newsroom 兩篇公告全文，本文今日以 grep 重新確認 0 次出現 Digital Markets Act／DMA／gatekeeper／1925／antitrust／fine；正文因此只寫『這次公告沒有提到《數位市場法》』，不寫成『Apple 從未提到 DMA』的全稱命題——因為 apps-in-the-eu 支援頁確實提過兩次（背景說明與互通性請求管道），都不是這次商業條款異動的原因。",
+    "Apple 沒有說明原本（改版前）歐盟地區的抽成比率是多少，所以本文不能寫新比率是「調高」或「調低」，FAQ 第二題明寫這一點。",
+    "Apple 沒有說明 Newsroom 公告從 2026-08-18 刊出到 2026-08-27 dateModified 之間改了什麼內容，本文只註明兩個日期與『本文引用的是 9 月 17 日讀到的版本』，不假設內容有無變動。",
+    "Apple 沒有在這兩份支援頁列出是哪些商店前台採用「未滿 16 歲」與「16 至 17 歲」這個較高的年齡門檻——但它有說明觸發規則（該前台把家長同意年齡訂在 13 歲以上時就改用該年齡），並要開發者到『Region-specific rules for managing an Apple Account』查各地規定。本文與 FAQ 因此寫成『這一頁沒有列出是哪些前台』，不寫成『Apple 沒有說明』。",
+    "Apple 沒有在本文四條來源的任何一頁提到台灣、亞洲，或本次條款是否會擴及歐盟／歐洲經濟區以外的市場，本文因此不寫、也不暗示『台灣會跟進』。",
+    "Apple 沒有給出受影響的開發者數量、App 數量或營收金額，本文不寫任何金額或家數推估。",
+    "Apple 沒有說明消費者在歐盟的實際支付金額會不會因為這次抽成調整而改變，本文不做這類推論，也不做購買或升級建議（tech.md 的紅線）。",
+    "歐盟執委會對這次異動的立場，本文一句都不寫：四條 sources[] 全是 Apple 自己的頁面，執委會的新聞頻道不在 sources[] 內，也沒有在查核當天重新抓取。正文與 FAQ 因此只寫『本文沒有取得執委會的一手說明』，不寫『執委會沒有發布』或『最新一則與這次異動無關』——後者是一個滾動視窗的快照，撐不起否定命題（獨立查核 2026-09-17 刪掉了這兩句）。",
+    "Apple 沒有說明『公證』（Notarization）審查的具體項目或標準，只形容為『聚焦基本功能與防範重大威脅的基礎審查』，本文將其整句標成 Apple 自己的描述，不當成本站驗證過的事實。",
+    "Apple 沒有在本文引用的頁面說明舊制『商店服務費』與新制仍存在的『商店服務抽成』兩者計費範圍是否完全相同，本文只寫『商店服務費這個項目被取消，連到 App 外完成交易仍要付商店服務抽成』，不寫成『店外連結完全免抽成』。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "《數位市場法》迫使、要求或導致 Apple 做出這次商業條款調整。",
+      "seen_where": "這是題目本身容易讓人預設的因果關係，也是前次研究一度想寫的角度。",
+      "why_excluded": "Apple 的兩篇公告全文 0 次出現 DMA 相關字眼，只說明是與歐盟執委會密切合作的結果、化解雙方歧見；歐盟執委會自己的《數位市場法》新聞頻道在這個日期附近也沒有相關說法。沒有一手來源把因果關係講清楚，本文不下這個因果判斷。"
+    },
+    {
+      "claim": "改版前歐盟地區的核心技術費、App Store 抽成等舊比率的具體數字。",
+      "seen_where": "許多科技媒體的既有報導會提到 2024 年版本的數字，讀者也可能想知道漲跌。",
+      "why_excluded": "本文四條 sources[] 都只寫新條款的數字，沒有一條重新列出舊比率，寫出來會是本文自己去查舊資料再做比較，不是這四條來源能撐住的事實，因此不寫，FAQ 第二題也明講『無法判斷是提高還是降低』。"
+    },
+    {
+      "claim": "Attachment 14（Apple Developer Program 授權合約，即歐盟商業條款的具拘束力法律文字）的 Section 3.5、Section 4(E) 逐條內容，以及與日本／巴西附件（Attachment 12）的抽成比較。",
+      "seen_where": "前次研究讀過這份補充頁面（第五條，未列入 sources[]），且獨立查核已指出其中一條跨附件比較是研究者自己誤讀、對錯行的分析（must_fix 2）。",
+      "why_excluded": "依 source_list_fix 選項二，本文維持原有四條 sources[]，不把授權合約頁換進來，因此不寫任何只出自該頁的內容，包括那個已被推翻的跨附件比較——不是重寫得比較保守，而是整段不寫，避免援引一份不在 sources[] 內的頁面。"
+    },
+    {
+      "claim": "使用替代付款或替代市集是否比 Apple 應用程式內購買「安全」或「不安全」。",
+      "seen_where": "Apple 自己的用語，例如『Apple 應用程式內購買是最安全、最值得信賴的方式』，以及對網站發布『沒有市集營運者把關』的描述。",
+      "why_excluded": "這些都是 Apple 對自己與對其他發布管道的比較性描述，本站沒有做任何測試去驗證，一律標成『Apple 自己的描述』（is_vendor_claim: true），不寫成本站的結論或建議，tech.md 也禁止把這類內容寫成購買或升級建議。"
+    },
+    {
+      "claim": "Apple 中國大陸、日本、韓國語系支援頁對『Core Technology Commission』等名詞的正式在地化譯名，以及繁體中文版支援頁的內容。",
+      "seen_where": "前次查核已確認 /tw/ 路徑回 404，/cn/、/jp/、/kr/ 對應段落仍是英文，本文沿用此結論但今日未重新抓取這三個語系頁面。",
+      "why_excluded": "沒有官方中文譯名可以照抄，本文『核心技術抽成』等中文用語一律是編輯部自行翻譯，正文與 FAQ 都有寫明這點，不假裝是 Apple 官方譯名。"
+    },
+    {
+      "claim": "歐盟執委會（而非 Apple）對這次商業條款調整的官方立場或聲明。",
+      "seen_where": "Apple 用『化解了雙方在商業條款與替代發布通路上的歧見』這種說法，容易讓人以為執委會也發了對應聲明。",
+      "why_excluded": "前次查核讀過執委會自己的《數位市場法》新聞頻道與 presscorner API，都沒有找到這個日期附近與本次異動直接相關的執委會說法，本文因此完全不把任何話歸給執委會，只寫 Apple 自己的用詞。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般 iPhone／iPad 使用者，以及少數把 App 賣進歐盟商店前台的台灣開發者；兩者都不在歐盟，所以這篇文章要回答的不是『你會怎麼被影響』，而是『同一款 App 為什麼在不同商店前台會有不同的商業規則，以及怎麼分辨自己現在受哪一套規則管』。五節安排：一、公告是什麼、何時生效（四項重點、Newsroom 頁面的修改日落差、DMA 用詞的正確範圍）；二、四條抽成線與兩個級距（表格放在這節結尾）；三、使用者實際會看到的畫面——付款方式須維持 12 個月、揭露畫面、退款與購買紀錄的限制、兒少保護的年齡分層（圖解放在這節結尾）；四、誰能經營替代市集或用網站發布（資格條件、29 個地區代碼、最低系統需求）；五、台灣讀者怎麼自己核對現況（範圍限定在歐盟商店前台、沒有繁中官方頁面、怎麼查最新版本）。刻意不談：這次調整對 Apple 或開發者是好是壞、任何金額或家數估計、『台灣會不會跟進』的推測、與 Google Play 的比較，以及任何購買、訂閱或升級建議。callout 明白寫出 Apple 的公告沒有提到《數位市場法》，且範圍只到歐盟商店前台。",
+  "must_not_write": [
+    "不寫《數位市場法》要求、迫使或導致這次調整——Apple 的公告沒有這樣說。",
+    "不寫歐盟執委會核准、接受或結束了什麼——本文查得到的只有 Apple 自己的用詞。",
+    "不寫舊制核心技術費的每次安裝金額，或『特殊規模』的具體門檻數字——四條來源都沒有印出這個數字。",
+    "不寫新比率比舊比率『調高』或『調低』——舊的歐盟比率不在本文任何來源內。",
+    "不寫 Apple 取消了所有店外連結的抽成——商店服務費這個項目被取消，但連到 App 外完成交易仍有 15%／10% 的商店服務抽成。",
+    "不寫、也不暗示台灣或歐盟／歐洲經濟區以外的任何市場會受影響或即將跟進。",
+    "不寫歐盟 App 售價會下降，也不把任何一檔抽成寫成『該不該用』『划不划算』的建議——tech.md 禁止購買與升級建議。",
+    "不把 Apple 的自我描述當成事實直接陳述：『Apple 應用程式內購買是最安全、最值得信賴的方式』『網站發布沒有持續監督』『公證聚焦防範重大威脅』——一律標成『Apple 表示／Apple 形容』。",
+    "不加投資或財務免責 callout——tech.md 明講科技垂直不帶這段。",
+    "不描述任何實測、截圖或動手操作——本站沒有實際申請替代付款或替代市集資格。",
+    "圖解不畫 Apple 標誌、App Store 圖示或任何介面截圖，產品與功能名稱一律用純文字。",
+    "不使用簡體字、Markdown、條列或表情符號；用台灣用語（使用者、帳號、應用程式、軟體）。",
+    "不引用 Attachment 14／Section 3.5／Section 4(E)／日本巴西附件比較——這些內容依 source_list_fix 選項二整段不寫，不是改寫得比較保守。"
+  ],
+  "live_data_warnings": [
+    "Apple Newsroom 該篇公告是活頁面：JSON-LD datePublished 2026-08-18、dateModified 2026-08-27，而且同一天會拿到不同的秒級時間戳與不同的位元組數（2026-09-16 七次重抓六次是 13:59:42Z／162,927 bytes、一次 14:00:09Z；2026-09-17 的獨立查核四次重抓全部是 14:00:09Z／162,779 bytes）。本記錄與正文一律只寫日期 2026-08-27，不寫秒。位元組數是版本識別，不是內容是否變動的證據。",
+    "Apple Developer Program 授權合約頁（本文未引用的第五份補充頁面）Last-Modified 是 2026-09-10，晚於 8 月 18 日公告日；正因為這是一份公告後仍被修改過的活文件，本文選擇完全不引用它，而不是引用後註明查核日期。",
+    "Apple Newsroom 的 Atom feed（20 筆，滾動視窗）與 Apple Developer RSS（142 筆，滾動視窗，最新 2026-09-09）都只用來輔助核對公告日期，不當成『某件事沒有發生』的證據；本文沒有把任一 feed 的筆數寫進正文。",
+    "歐盟執委會的《數位市場法》新聞頻道（30 筆，滾動視窗）與 presscorner API（10 筆滾動視窗）在前次查核時讀不到與本次異動相關的內容，這個結論會隨時間變動，本文只寫『本文查到 2026-09-17 為止，沒有取得執委會的一手說明』，不寫成『執委會從未表態』。",
+    "四條 sources[] 的位元組數：撰稿日重抓為 111,532／162,927／142,113／141,539，2026-09-17 的獨立查核重抓為 111,532／162,779／142,113／141,539。三頁一致、newsroom 那頁不一致（兩個 edge 版本）。正文與 callout 都寫明查核日期，建議讀者自行核對當下內容。",
+    "台灣／中國大陸／日本／韓國語系支援頁的可達性，因為那四個網址不在 sources[] 內，獨立查核後已從正文移除，本記錄也不再拿它當依據。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（Newsroom Atom feed 其實收錄了這篇公告，前次研究誤寫成不在窗內）：已套用。研究紀錄與正文都不再引用『feed 沒收錄』這個錯誤說法，改寫成只講 Newsroom 頁面本身的 dateModified 落差（2026-08-18 公告、2026-08-27 修改），不提 feed 筆數。",
+    "must_fix 2（Attachment 14 與日本／巴西附件的跨附件比較，對錯行且非一手陳述）：已套用，且做法比修正清單建議的更嚴格——不是改寫這個比較，而是依 source_list_fix 選項二，整份不引用 Attachment 14 所在的授權合約頁，凡依賴該頁的內容（包括這個比較）一律不寫。",
+    "must_fix 3（dateModified 的秒級時間戳不可重現）：已套用。正文與研究紀錄的 verified_facts 都只寫『2026 年 8 月 27 日』，不寫時分秒。",
+    "must_fix 4（稽核權那句掛錯到 apps-in-the-eu 頁）：已套用。本文今日重新以 grep 獨立核對，確認該句只在 payment-options 頁，verified_facts 已改掛正確網址，apps-in-the-eu 頁只用於『每月 15 日內申報』那句。",
+    "must_fix 5（verbatim_quote 用『／』把標題與日期兩個獨立元素接成一句）：已套用。verified_facts 第一條只引用日期本身『August 18, 2026』，不再把標題與日期黏成一個引用字串。",
+    "must_fix 6（『Apple 從頭到尾沒提到 DMA』寫成全稱命題）：已套用。正文與 FAQ 第一題都改寫成『Apple 這次公告沒有提到《數位市場法》』，並另外明寫 apps-in-the-eu 支援頁提過兩次（背景說明、互通性請求管道），都不是這次異動的原因。",
+    "must_add（兒少保護兩版本落差，支援頁比 Newsroom 嚴格）：已套用。第三節第三段與 FAQ 第六題都寫出未滿 13 歲、13 至 17 歲的細分年齡層，以及支援頁提到但沒指名的『部分前台用較高門檻』。",
+    "must_add（費率表漏一行：10% 級距也涵蓋續訂滿一年後的自動續訂）：已套用，寫進第二節第一段與表格的儲存格備註。",
+    "must_add（15% 店外抽成兩頁用字不同）：部分套用。表格與正文以支援頁（apps-in-the-eu）的版本為準，並在表格 caption 標明依據哪一頁；沒有另外用一整句說明兩頁用字差異，因篇幅（1,800–3,000 字）優先保留其他但書與條件。",
+    "must_add（資格條件『已核准減免費用的非營利組織』比 Newsroom 的單純『nonprofit』精確）：已套用，第四節第一段採用支援頁版本並改掛對應網址。",
+    "must_add（核心技術抽成範圍比 Newsroom 版本廣，含市集存取訂閱費與 7 天內店外交易）：已套用，第二節第二段。",
+    "must_add（Multiplatform Services 3.1.3(b) 與 reader app 促銷限制兩條一手事實）：未套用。為了把全文控制在 1,800–3,000 字之內、且不刪除已經寫入的其他但書與條件，這兩條技術性較高、對一般讀者價值較低的規定本次沒有寫入正文；記在這裡供之後的批次或索引頁補充。",
+    "source_list_fix（三條事實掛在不在 sources[] 的授權合約頁）：採用選項二——維持原有四條 sources[]，不把授權合約頁換進來，也不寫任何只出自該頁的內容（Attachment 14、Section 3.5、Section 4(E)、『全文 0 次出現 DMA』）。"
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-17",
+    "method": "沒有參與撰稿。四條 sources[] 於 2026-09-17（查核跨到 09-18 凌晨）全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body，不看狀態碼就算數；newsroom 那頁另外重抓四次比對 JSON-LD 與位元組數。正文 15 段、摘要 4 句、FAQ 6 題、表格 4 列與 caption、callout、圖解 caption、title 與 description 逐句拆成 96 條主張，逐條回到四頁原文比對；研究紀錄的 32 條 verbatim_quote 以程式對原始 HTML 做四種正規化（保留標籤內文、不斷行空格轉空白、標籤轉空白、壓縮空白）比對，找出 9 條在來源頁搜尋不到的字串。沒有使用 sources[] 以外的任何網址替文章補事實，也沒有猜任何識別碼；所有請求都沒有帶使用者 email 或個人資料。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "推翻：『Newsroom 只寫「未滿 18 歲」』。Newsroom 的兒少保護有四個項目，含『For users under 13 years old, apps from the App Store cannot link out to websites for transactions』與會員國家長同意年齡的調整條款。第三節第三段與 FAQ 第六題已改寫，兩版差異改寫成『寫法不完全一致』而不是『支援頁較嚴格』。",
+      "刪除：『歐盟執委會的《數位市場法》新聞頻道查到 9 月 17 日為止最新一則與這次異動無關』（正文與 FAQ 各一處）。該頻道不在 sources[]，而且是滾動視窗，撐不起否定命題。改寫成『本文四條來源都是 Apple 自己的頁面，沒有取得執委會的一手說明』。",
+      "刪除：『Apple 目前沒有繁體中文版的支援頁，中國大陸、日本與韓國語系頁面也仍沿用英文原文』。四個語系網址不在 sources[]，且撰稿者自承當天沒有抓取。改寫成『本文四條來源都是英文頁面』，中文名詞仍註明是編輯部自行翻譯。",
+      "修正抽成的條件：商店服務抽成 15%／10% 只在『附可點擊連結的店外購買提案』才適用，7 天限制掛在整段（原文表格與正文把 7 天只掛在 10% 那一格），15% 那一列在 apps-in-the-eu 明寫排除計畫參與者與續訂滿一年後的訂閱。第二節第一段、表格第三列、FAQ 第二題與第三題、摘要第二句都已改。",
+      "修正核心技術抽成：補上漏掉的第一類交易（在這些 App 內銷售數位商品與服務）、把第三類的目的地從『網站或其他 App』改回原文的『網站』、把小型市集業者的免收範圍從『可申請免收這筆抽成』縮回原文的『市集的下載費與訂閱費可免收』（原文寫 you qualify，沒有寫要申請）。",
+      "修正適用平台：替代市集與網站發布（含核心技術抽成）在支援頁明寫只做 iOS 與 iPadOS，六個平台那一句講的是『歐盟商店前台上架 App 的商業條款』。原稿把六平台清單放在替代市集那一節，會讓讀者以為 macOS／watchOS 也能用替代市集。第四節第二段已拆開寫。",
+      "修正核心技術抽成的主體：首段『比率是 App 在 App Store 以外完成數位交易的 5%』誤讀原文，原文是 'digital transactions in apps distributed outside the App Store'——條件是 App 在哪裡發布，不是交易在哪裡完成。首段與摘要第一句都已改。",
+      "刪除『歐盟（歐洲經濟區）』這個括號（摘要、第五節、FAQ 第四題、callout 共四處）。Apple 四頁只有在 HCE 非接觸式交易那一段用 EEA；替代付款的 29 個商店前台是歐盟 27 國加冰島、挪威，不含列支敦斯登，既不等於歐盟也不等於歐洲經濟區。冰島、挪威那句改寫成『兩國不是歐盟會員國』。",
+      "『29 個地區代碼』標成編輯清點（Apple 沒有印出這個數字）；『多數重點／多數條款於 10 月 1 日生效』改成『主要更新』（原文是 'The primary updates ... include'／'Some key updates ... include'，沒有『多數』）；『Apple 列出四項重點』改成『Apple 以「主要更新包括」帶出四項』，保住 include 的舉例性質。",
+      "修正資格條件：支援頁列的是七項、且繫在 2026-10-01，Newsroom 只列五項。原稿寫成『Apple 列出五種情形』＋『支援頁另列兩項』，讀起來像五選一。改成一份七項清單並註明 Newsroom 少了哪些；『知名創投機構投資』改成『具規模投資機構的創投資金』（established 不是 well-known）；補回『或設立據點』（原文是 have a legal entity **or be established** in the EU）。",
+      "修正兒少保護的範圍：未滿 13 歲原文是 'out-of-app offers are not permitted'（整類店外提案），不是『不能連到 App 外網站』；兒童類別 App 補回『替代付款流程須放在家長閘門後』那半句；『部分前台把門檻拉高』補上 Apple 有說明的觸發規則與它指向的地區規則頁。摘要第三句原本寫『13 至 17 歲不論用哪一種付款方式都要家長閘門』——Apple 應用程式內購買不在其中，已改。",
+      "修正揭露畫面：觸發條件是『App 內替代付款處理』或『用可點擊連結帶到店外提案』，不是『同時提供替代付款的 App』；顯示時機是使用者點下替代付款按鈕時。介面字串 External Purchases 不再翻成「外部購買」（四條來源都沒有中文對照）。12 個月鎖定補上『在所有歐盟商店前台』。",
+      "修正 DMA 那段：『Apple 這次公告從頭到尾沒有出現』改成『這兩篇公告的全文都沒有出現』；『化解了雙方的歧見』改成 Apple 表示化解了它與執委會之間的歧見（原文是 Apple’s disagreements with the Commission）；dateModified 段落刪掉『不保證與剛公告時的原始文字完全相同』這種推測。",
+      "研究紀錄：9 條 verbatim_quote 在來源頁搜尋不到，已逐條改掉——dateModified 的秒級時間戳（改用穩定的 datePublished）、四處直引號寫成來源的彎引號、四處用刪節號把不相鄰的段落接成一句（Report a Problem、Kids category、Web distribution、audit rights）。另外把兩條把多個項目符號串成一句的引文改成單一項目並在 fact 裡寫明。audit rights 那句在原始 HTML 含不斷行空格，已在 fact 寫明，避免下一個代理照抄後搜尋不到。"
+    ],
+    "checked_and_correct": [
+      "四條 sources[] 今天全部 HTTP 200 且 body 是正文，沒有擋阻頁、軟性 404 或轉址殼。",
+      "稽核權／抵扣／下架那一句確實只在 payment-options 頁：'audit rights' 與 'offset of proceeds' 在該頁各 1 次、在 apps-in-the-eu 頁各 0 次。撰稿者的掛址修正成立。",
+      "『未滿 16 歲／16 至 17 歲』那句是來源頁上原樣搜尋得到的連續字串，而且兩份支援頁都有，url 掛在 apps-in-the-eu 正確。",
+      "dateModified 的處置正確：日期 2026-08-27 穩定、秒級時間戳不穩定，正文只寫日期、沒有印時刻，因此也沒有時區換算問題。",
+      "抽成數字逐一核對無誤：26%／15%、20%／10%、15%／10%、5%；12 個月、7 天、15 日內申報、1000 萬歐元／100 萬歐元、100 萬美元備用信用狀、首年 100 萬次安裝、iOS 26.2／iPadOS 26.2／macOS 26.6／tvOS 26.6／visionOS 26.6／watchOS 26.6。",
+      "界線：全文沒有購買或升級建議、沒有推薦式比價、沒有『該不該用替代付款』的結論；Apple 的自述（最安全最值得信賴、公證、網站發布沒有持續監督、化解歧見）全部歸因給 Apple；只有一個 callout，沒有投資免責段落。",
+      "生效日只寫來源印出來的 2026-10-01，沒有自行推算任何日期；沒有把 8 月 27 日的頁面修改日當成事件日；news_date 與 slug 尾碼都是 2026-08-18。",
+      "摘要四句的每個數字都在正文出現；FAQ 六題都是純文字、沒有連結；圖解四格與 hero_label 的數字都在正文。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍是 FAIL，只剩 'zh-TW link target tech-news-2026-index.json does not exist yet'。tech 垂直的索引內容包尚未建立（corrections-tech.md 第 15 條說留給索引階段），查核代理只能動內容包與研究紀錄兩個檔，因此沒有建立它。索引落地後，第一個 link 的 text 必須逐字換成索引自己的 zh-TW title。",
+      "15% 那一階有兩個官方版本：Newsroom 寫 'For the vast majority of developers, including those in the ... Program'（三個計畫是舉例），支援頁的費率表寫 'from participants in the ... Program'（較窄）。正文採支援頁並在表格 caption 標明依據哪一頁，但沒有用一句話寫出兩版差異——段落字數第二輪後是 2,992／3,000，只剩 8 個字，補一句就得從別處刪等量的字。這是編輯取捨，查核代理不代決定。",
+      "統一條款的生效時點還有一個分支：同意更新條款的開發者，帳號適用的時點是 2026-10-01 與同意日之中較晚的一天，而舊的兩份增補條款自 10-01 起被 Attachment 14 取代。已寫進 verified_facts，同樣因為字數沒有進正文。",
+      "corrections-tech.md 的兩條 must_add（Guideline 3.1.3(b) Multiplatform Services 必須提供 Apple 應用程式內購買和／或 App 內替代付款；歐盟的 reader app 可以宣傳不帶可點擊連結的店外提案）本次仍未寫入。查核判斷：不是非寫不可——前者只對一小類 App 生效，後者的正確讀法是『可以不帶連結地宣傳』（原文 may promote ... without an actionable link），而不是修正清單所寫的『不得放可點擊的連結』，照修正清單的字面寫反而會寫錯。若站主要補，請用原文那個讀法。",
+      "Apple 對『公證』有兩種官方描述（Newsroom：聚焦基本功能與防範重大威脅；支援頁：聚焦安全與隱私政策、維持裝置完整性）。正文採 Newsroom 版並歸因，兩版差異只記在研究紀錄。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "scope": "不是整篇重做。範圍是：(a) 第一輪改動過的每一段與新寫進去的每一句，逐句回四條 sources[] 原文；(b) 每一種費用連著它自己的全部要件（核心技術抽成 5% 的適用主體／三類交易／目的地／免收範圍；商店服務抽成 15% 與 10% 各自的條件、『附可點擊連結』要件、7 天限制掛在哪一層、15% 的排除語；App Store 26%／15%、20%／10% 兩組），正文、表格、摘要、FAQ、標題、description、圖解 nodes 逐處比對是否一致；(c) 適用平台、29 個商店前台、生效日、是否要主動同意；(d) 兒少保護四項在 Newsroom 與支援頁各寫什麼；(e) 執委會／DMA 的歸因與範圍；(f) 40 條 verbatim_quote 全數重驗；(g) 回掃有沒有為了字數刪掉但書。",
+      "method": "四條 sources[] 於 2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 重抓，位元組數 111,532／162,779／142,113／141,539，四頁與第一輪完全相同（newsroom 那頁仍是 14:00:09Z 那個 edge 版本，JSON-LD datePublished '2026-08-18Z'、dateModified 日期 2026-08-27 都與正文一致）。把四頁轉成正文後逐條字串比對；40 條 verbatim_quote 以五種正規化（原始 HTML、實體解碼、不斷行空格轉空白、標籤轉空白、標籤直接去除）檢查，40 條全部命中、0 條搜尋不到，url 也全在 sources[] 內——第一輪那 9 條修正成立。Taiwan／Asia／gatekeeper／antitrust 在四頁都是 0 次，Digital Markets Act 只在 apps-in-the-eu 出現（2 個段落），European Economic Area 只出現在該頁的 HCE 段落，均與正文的否定句範圍一致。沒有使用 sources[] 以外的任何網址，所有請求都沒有帶 email 或個人資料。",
+      "claims_rechecked": 71,
+      "edits": 14,
+      "edits_to_the_pack": [
+        "第一輪自己寫錯掛址：『Apple 以「主要更新包括」帶出四項』。文中列的四項是 Developer News 的四個項目符號，那一頁的引導句是 'Some key updates, which go into effect October 1, 2026, include:'；'The primary updates ... include:' 是支援頁的引導句，而支援頁底下的四項是另一組（統一商業條款／替代付款／兒少保護／資格）。改成『Apple 寫「部分重點更新」包括四項』，同時保住 Some 與 include 兩個限定詞。",
+        "核心技術費掉了它自己的要件：原文是 'a per-install fee for developers who achieve extraordinary scale'。第一段與摘要第一句都只寫『原本按安裝次數計費的核心技術費』，讀起來像對所有開發者收。補成『只對特殊規模開發者按安裝次數計費』（不寫門檻數字，must_not_write 第三條）。",
+        "核心技術抽成漏掉一種適用主體：5% 那一列的原文是 'Alternative app marketplaces, apps distributed through them, or apps distributed via Web Distribution'——替代市集本身也在內。第二節第二段原本只寫『透過替代市集或網站發布的 App』，已改成『替代市集本身與透過替代市集或網站發布的 iOS 與 iPadOS App』；FAQ 第二題同步。",
+        "核心技術抽成第三類交易掉了『在瀏覽器開啟』：原文 'actionable links that open in a web browser to a website'。改成『用可點擊連結帶到瀏覽器開啟的網站購買』。",
+        "商店服務抽成的目的地被寫成『站外』：原文是 'at a destination of your choice — a website, an alternative app marketplace, or another app'，三種目的地，不是只有網站。正文改成『把使用者帶出 App』，完整的三種目的地寫進表格第三列與 FAQ 第三題（表格與 FAQ 不計入段落字數）。",
+        "商店服務抽成 15% 的排除語掉了『自動』：原文 'excluding transactions from program participants or auto-renewable subscriptions after their first year'。『續訂超過第一年的訂閱』改成『滿一年後的自動續訂訂閱』。",
+        "『新條款把 App Store 抽成依付款方式拆成三檔』把商店服務抽成算進 App Store 抽成。支援頁把它列成獨立的 'Store services commission'，與兩張 'App Store commission' 表分開。改成『新條款依付款方式訂出三檔比率』；description 的『App Store 抽成依付款方式分為…』同步改成『抽成依付款方式分為…』。",
+        "表格第三欄的欄名『小型企業／Mini Apps／影片夥伴計畫』套不住第四列：核心技術抽成的免收要件是『小型市集業者』的兩項營收門檻，跟那三個計畫無關。欄名改成『較低比率或免收』，計畫名稱移進第一列的儲存格，第四列寫明『免收：小型市集業者的市集下載費與訂閱費，須同時符合兩項營收門檻』。",
+        "Newsroom 的未滿 18 歲那一項被放大：原文是 'use alternative payment processing or link out to a website for transactions'，正文寫成『連到 App 外』。改回『連到網站』。（研究紀錄第 24 條本來就寫對，是正文抄錯。）",
+        "資格條件『Have one million first annual installs worldwide' 被譯成『首年全球累計安裝次數達 100 萬次』。'first annual installs' 是 Apple 的計量名詞，不是『第一年之內的安裝』，四條來源都沒有定義它。改成『全球「首次年度安裝」達 100 萬次』並加引號；研究紀錄同步。",
+        "第五節『這類名詞沒有 Apple 自己的中文譯名』是四條英文來源撐不起的否定命題（那四頁只能證明它們自己沒有中文）。改成『這類名詞也沒有中文對照』，範圍收回到前一句的『本文四條來源都是英文頁面』。",
+        "研究紀錄 verified_facts 第 3 條仍留著第一輪已在正文推翻的誤讀——『比率是 App 在 App Store 以外通路完成數位交易的 5%』。已改成『在 App Store 以外通路發布的 App，其數位交易的 5%』並附原文，免得下一個代理照抄研究紀錄寫回錯的版本。",
+        "研究紀錄第 31 條的 verbatim_quote 把兩個項目符號用 '; or ' 接成一句。改成只取第二個項目 'Have one million first annual installs worldwide.'，第一項的原文移進 fact。這樣 40 條引文每一條都是單一頁面元素。",
+        "摘要與 callout 的範圍字：摘要第四句與 callout 的『Apple 的公告沒有提到《數位市場法》』改成『Apple 的兩篇公告…』，與正文第一節第三段一致（apps-in-the-eu 支援頁確實提了兩個段落）；摘要第二句補上商店服務抽成的 7 天限制，FAQ 第二題同步。"
+      ],
+      "checked_and_correct": [
+        "四條 sources[] 今天的位元組數與第一輪完全相同，四頁都是正文；newsroom 的 JSON-LD 仍是 datePublished '2026-08-18Z'、dateModified '2026-08-27T14:00:09Z'，正文只寫 8 月 27 日這個日期，處置仍然正確。",
+        "40 條 verbatim_quote 全部是來源頁上的連續字串（含彎引號、不斷行空格、行內粗體造成的三種正規化差異），0 條搜尋不到，url 全在 sources[] 內。第一輪修掉的 9 條經得起重驗。",
+        "第一輪最重的三處改寫今天再核一次都成立：商店服務抽成需要『附可點擊連結』且 7 天限制掛在整段（apps-in-the-eu 與 payment-options 兩頁的引導句逐字相同）；15% 那一列的排除語只在 apps-in-the-eu（payment-options 的同一列今天仍只寫 'Out-of-app offers.'）；核心技術抽成的條件是 App 在哪裡發布而不是交易在哪裡完成。",
+        "資格七項與 Newsroom 五項的落差、『nonprofit approved for a fee waiver』、『or be established in the EU』、繫在 Starting October 1, 2026、以及替代市集與 Web Distribution 兩節的七項條件逐字相同，全部重新核對無誤。",
+        "適用平台的兩層仍然正確：六平台那一句在 'Payment options on the App Store' 段落下（EU storefronts 的商業條款），替代市集與網站發布的兩個段落標題都限定 iOS 與 iPadOS。",
+        "29 個國家代碼今天重新清點仍是 29（歐盟 27 國加冰島、挪威），列支敦斯登不在其中；全文沒有出現『歐洲經濟區』，來源裡的 EEA 只在 HCE 非接觸式交易那一段。",
+        "兒少保護：支援頁三項（兒童類別、未滿 13 歲、13 至 17 歲）與較高年齡的觸發規則，兩份支援頁逐字相同，正文與 FAQ 第六題都對得上。Newsroom 的第四項（會員國家長同意年齡）與支援頁的『商店前台』版本是兩種寫法，正文只採支援頁那一版並歸因為『Apple 另說明』，沒有把兩者混成一句。",
+        "生效日只有來源印出來的 2026-10-01，沒有自行推算；『與同意日取其晚』那個分支仍然只在研究紀錄、沒有進正文（字數）。開發者要主動同意更新條款這件事寫在第一節，與 'Members of the Apple Developer Program can review and agree to the updated terms today' 一致。",
+        "沒有為了字數刪掉但書：第二輪淨減 3 個字（2,995 → 2,992），刪掉的都是冗詞（『把 App Store 抽成』『原本獨立計費的』『沒有 Apple 自己的中文譯名』），每一處刪減都同時補進更精確的條件。",
+        "summary 四句與 FAQ 六題的每一個說法都能在正文、表格或 callout 找到對應；summary 的數字全部出現在正文；FAQ 仍是純文字、沒有連結；圖解四格與 hero_label 的數字（5、2026、10、1）都在正文。",
+        "界線（tech.md）再掃一次：沒有購買或升級建議、沒有推薦式比價、沒有『該不該改用替代付款』的結論；Apple 的自述（化解歧見、公證、網站發布沒有持續監督、先前不允許並行）全部歸因；只有一個 callout，沒有免責段落；全文沒有把台灣的開發者或使用者寫成適用對象。"
+      ],
+      "verdict": "needs_owner",
+      "conclusion": "71 條覆核、14 處改動，全部是限定詞、適用主體與掛址，沒有動骨幹論述（誰被涵蓋、哪幾檔比率、何時生效、台灣不適用）。標題的兩個說法都站得住。擋住 gate 的仍然只有 tech 索引內容包尚未建立。不需要第三輪。"
+    }
+  },
+  "hero_label": "歐盟 App 條款改版",
+  "diagram": {
+    "title": "歐盟 App 商業條款怎麼改",
+    "caption": "資料來源：Apple 開發者公告與支援頁，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "原本",
+        "多套條款並存"
+      ],
+      [
+        "改成",
+        "歐盟單一套條款"
+      ],
+      [
+        "核心技術",
+        "抽成改收 5%"
+      ],
+      [
+        "生效日",
+        "2026/10/1"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "EU App Terms Overhaul",
+      "diagram": {
+        "title": "How the EU App Business Terms Changed",
+        "caption": "Source: Apple developer announcements and support pages, checked September 17, 2026.",
+        "nodes": [
+          [
+            "Before",
+            "Multiple separate terms"
+          ],
+          [
+            "After",
+            "One EU-wide set of terms"
+          ],
+          [
+            "Core Tech",
+            "Commission now 5%"
+          ],
+          [
+            "Effective",
+            "Oct 1, 2026"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "EU App条件改定",
+      "diagram": {
+        "title": "EU App事業条件はこう変わる",
+        "caption": "情報源：Apple開発者向け発表とサポートページ。確認日2026年9月17日。",
+        "nodes": [
+          [
+            "これまで",
+            "複数の条件が並存"
+          ],
+          [
+            "変更後",
+            "EU単一の条件に"
+          ],
+          [
+            "コアテクノロジー",
+            "手数料5%に"
+          ],
+          [
+            "発効日",
+            "10月1日"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "EU App 약관 개정",
+      "diagram": {
+        "title": "EU App 사업 조건은 이렇게 바뀐다",
+        "caption": "출처: Apple 개발자 발표와 지원 페이지, 확인일 2026년 9월 17일.",
+        "nodes": [
+          [
+            "이전",
+            "여러 조건이 병존"
+          ],
+          [
+            "이후",
+            "EU 단일 조건으로"
+          ],
+          [
+            "코어 테크놀로지",
+            "수수료 5%로"
+          ],
+          [
+            "발효일",
+            "10월 1일"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "欧盟 App 条款改版",
+      "diagram": {
+        "title": "欧盟 App 商业条款怎么改",
+        "caption": "资料来源：Apple 开发者公告与支持页面，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "原本",
+            "多套条款并存"
+          ],
+          [
+            "改成",
+            "欧盟单一套条款"
+          ],
+          [
+            "核心技术",
+            "抽成改收 5%"
+          ],
+          [
+            "生效日",
+            "2026/10/1"
+          ]
+        ]
+      }
+    }
+  }
+}

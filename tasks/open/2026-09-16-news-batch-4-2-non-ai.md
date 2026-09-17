@@ -1,14 +1,14 @@
 ---
 id: 2026-09-16-news-batch-4-2-non-ai
 title: News batch 4.2: non-AI technology news
-status: open
+status: review
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-17T14:57:20Z
 created_at: 2026-09-16T13:21:40Z
 completed_at:
-branch: claude/brave-hopper-8ezxba
+branch: claude/news-batch-4-2-tech
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
 scope:
@@ -135,11 +135,23 @@ uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.
 npm run check:tasks
 ```
 
-## 交接（2026-09-17）
+## 狀態（2026-09-18）：內容完成，等站主驗收、合併與發布
 
-還沒開始寫任何一篇。站主指定先交幣圈（4.1）驗收，幣圈目前的狀態與整條流程踩過的坑在
-[`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md)；這張票照同一條線跑。
-開工前要先填 `verticals.py` 的 `order_base`（科技還是 `None`，幣圈用 200、索引 199）、`check_article.py` 的 `RELATED`
-與 `build_assets.py` 的 `_DRAWINGS`，並先寫索引 `tech-news-2026-index`（五語標題要先定案，其他篇的第一個連結逐字引用）。
-代理規格在 `docs/news-2026-batch-4/agents/`。研究、獨立查核與 `corrections-tech.md` 都在 PR #544 裡，要等它合併。
-因為停手而 `release`，不是做完。
+站主 2026-09-17 說「好 開始」後開工，分支 `claude/news-batch-4-2-tech`。完整交接（每篇的查核與審稿數字、留給站主決定的事、
+這一輪學到的）在 [`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md) 第 1b、3、4 節，這裡只記票的狀態。
+上面「認領還要等兩件事」與「已知會擋路的兩件事」是開工前的舊紀錄：4.0 已 done、content 目錄的鎖已讓出；
+Windows 上出圖用 `CHROMIUM_BIN` 指到 Playwright 的 headless shell 即可。
+
+- [x] 十三篇 zh-TW 撰稿（sonnet）並經**兩輪**獨立查核（opus；第一輪每篇改 11–30 處、第二輪再改 8–18 處）；報告在 `docs/news-2026-batch-4/factcheck-draft/tech-news-*.md`。
+- [x] 協調者通讀十三篇、`hero.alt`／`image.alt` 改成實際畫面；三篇補中英文間空格並刪重複敘述騰字數（不刪但書）；CRA 篇的法條來源換成 EUR-Lex ELI 網址。
+- [x] 索引 `tech-news-2026-index`（`build_tech_index.py` 產生 zh-TW，只重述十三篇已查核的事實；沒有免責 callout）。
+- [x] 四語翻譯（sonnet，14 位）併入；逐語審稿 4 語言 × 3 組共 12 位 opus 代理，採用 799 筆（`translation-corrections.json`），
+      另對錯字最多的馬祖海纜日文做第二次審稿（5 筆）；協調者自己的修訂在 `coordinator-corrections.json`。
+- [x] 工具：`verticals.py` tech `order_base=300`、`check_article.py` 的 `RELATED`、`build_assets.py` 14 個主圖構圖、`align_links.py --only`、
+      新增 `build_tech_index.py`、`translation_checks.py`、`normalize_locales.py`、`space_cjk.py`、`sync_captions.py`；代理規格在 `agents/tech/`。
+- [x] `related`（延伸閱讀）、`pack_cli relink`、全垂直出圖與 contact sheet、`manifest.json`。
+- [x] 驗證：十三篇 `check_article.py --full --assets` OK、索引五語 schema＋lint OK、`pack_cli lint --kind life` 0 error、
+      `tests/test_guides_content_pack.py`＋`test_guides_content_links.py`＋`test_guides_pack_ingest.py` 通過、`npm run check:tasks`。
+- [ ] 站主驗收 → 合併 PR（**等站主指示，不要自己合併**）。
+- [ ] 部署 → `guides-import --slug` ×14 同一次匯入發布（**等站主指示**；先 `--dry-run --publish` 核對計畫只有這 14 個 slug）→ 正式站 70 個網址驗證 → 這張票轉 done。
+      發布當天先重開 HANDOVER 第 1b 節列的活頁面（EUR-Lex 那個網址還沒有人親眼確認打得開）。

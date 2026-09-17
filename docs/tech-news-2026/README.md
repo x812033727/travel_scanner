@@ -3,6 +3,12 @@
 批次 4 三個垂直之一：非 AI 的科技新聞——硬體、作業系統、網路與電信、平台法遵，
 五語（zh-TW、en、ja、ko、zh-CN），每篇一張原創主圖與一張 2×2 圖解。
 
+> **現況（2026-09-18）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md) 第 1b 節。
+> 十三篇加索引都是五語、都經過兩輪獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet、`related` 與 relink 都做完了；
+> **還沒合併、還沒匯入發布，等站主驗收與指示。** 發布前要重開的活頁面也列在那一節。
+> 固定值：`topics` 是 `["tech", "tech-news"]`（需要時加 `gadgets`／`software`），主色 BLUE，眉標 `MOKAAIR  /  TECH NEWS`，
+> `display_order` 十三篇 300–312、索引 299；**沒有免責 callout**。索引用 [`build_tech_index.py`](../news-2026-batch-4/build_tech_index.py) 產生 zh-TW。
+
 ## 這個目錄放什麼
 
 | 路徑 | 內容 | 誰寫的 |

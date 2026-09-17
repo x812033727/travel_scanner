@@ -1,0 +1,1253 @@
+{
+  "slug": "tech-news-eu-cra-reporting-20260911",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-11",
+  "featured": false,
+  "display_order": 302,
+  "related": [
+    "tech-news-apple-eu-business-terms-20260818"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+      "description": "2026 年 9 月 11 日，歐盟《網路韌性法》第 14 條的通報義務開始適用，ENISA 同步啟用單一通報平台。本文依歐盟執委會通報頁面、ENISA 新聞稿與常見問答，以及《歐盟公報》刊登的規則全文，說明製造商要多快通報、通報送到哪裡、哪些義務已經上路、哪些要到 2027 年 12 月才輪到，並整理第 64 條訂出的罰則上限。",
+      "hero": {
+        "src": "/guides/tech-news-eu-cra-reporting-20260911/hero.jpg",
+        "alt": "原創插圖：左邊一個時鐘，箭頭指向一份右上角帶著警示三角形的通報文件，再由箭頭送到中央的圓形平台，平台以三條線分別連到右側三個圓點，代表通報經單一平台轉送各國的應變小組",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 11 日，歐盟《網路韌性法》（Cyber Resilience Act，Regulation (EU) 2024/2847）的通報義務開始適用：歐盟網路安全局（ENISA）同步啟用「單一通報平台」（Single Reporting Platform，SRP），讓製造商依第 14 條通報遭積極利用的漏洞與重大資安事故。條文本身把「適用」拆成三個日期，9 月 11 日只是其中一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 17 日查核，讀的是歐盟執委會的通報義務頁面、ENISA 的啟用新聞稿與常見問答，以及《歐盟公報》刊登的規則全文。本站沒有實際送出通報，也沒有做平台實測；下文不比較廠商、不建議是否該升級裝置，只整理官方公開的條文與時限。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 11 日起，歐盟《網路韌性法》第 14 條的通報義務開始適用，ENISA 同步啟用單一通報平台，製造商必須在知悉遭積極利用的漏洞或重大資安事故後，依 24 小時、72 小時等時限通報。",
+            "這個時間表只涵蓋製造商：開源軟體維護者的同類義務，以及規則其餘大部分內容，要到 2027 年 12 月 11 日才適用。",
+            "ENISA 說明，平台目前是「初始運作量能」，只支援英文介面，沒有應用程式介面，第 15 條的自願通報功能也還沒開放。",
+            "本文查到的官方頁面沒有公布平台上線以來收到幾件通報，本文也不提供是否該升級裝置的建議。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第 71 條的三個日期，9 月 11 日只輪到第 14 條"
+        },
+        {
+          "type": "paragraph",
+          "text": "《網路韌性法》第 71 條第 2 項把「適用」拆成三個日期：整部規則原則上自 2027 年 12 月 11 日起適用；第 14 條（製造商的通報義務）提前自 2026 年 9 月 11 日起適用；第四章（第 35 條至第 51 條，符合性評估機構的通知）更早，自 2026 年 6 月 11 日起就已適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 11 日開始要求的只有第 14 條。歐盟執委會的頁面寫得直接：製造商自 9 月 11 日起必須通報遭積極利用的漏洞與重大資安事故；開源軟體維護者依第 24 條第 3 項承接同一種義務，但以其涉入產品開發的範圍為限，且依第 71 條第 2 項要到 2027 年 12 月 11 日才輪到，ENISA 常見問答也把兩者的起算日分開講。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這部規則 2024 年 10 月 23 日在史特拉斯堡簽署，同年 11 月 20 日刊登於《歐盟公報》，依第 71 條第 1 項的公式，公告後第 20 天生效。「生效」跟「條文要求你做什麼」是兩件事——本文接下來每一句，都會標明是 9 月 11 日已適用，還是 2027 年 12 月 11 日才適用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "知悉之後，通報要在多快之內送出"
+        },
+        {
+          "type": "paragraph",
+          "text": "時限從「製造商知悉」那一刻起算，不是從漏洞或事故實際發生的時間點起算。ENISA 常見問答寫明：通報流程始於製造商或（日後適用的）開源軟體維護者知悉的那一刻。第 3 條第 42 項定義「遭積極利用的漏洞」：要有可靠證據顯示已有惡意行為者在未經系統所有人許可下加以利用——單純知道弱點存在，還不會觸發第 14 條第 1 項的通報義務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遭積極利用的漏洞與重大資安事故，適用同一套早期警訊與完整通報時限，但最終報告算法不同。第 14 條第 2 項：知悉後不得無故延遲，至遲 24 小時內送早期警訊、72 小時內送完整通報，最終報告在修補或緩解措施備妥後 14 天內送出。第 14 條第 4 項規定，重大資安事故的最終報告則是 72 小時通報送出後 1 個月內，起算點是通報本身，不是知悉那一刻，也不套用 14 天的規則。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第 14 條第 6 項另外給了 CSIRT 一項權限：收到通報的 CSIRT 如認為有必要，可要求製造商補送中間報告，說明狀態更新——早期警訊、完整通報與最終報告之外，還可能有這一份。歐盟執委會的通報頁面把上面這四個時限濃縮成同樣一句話。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "階段",
+            "期限",
+            "起算點",
+            "依據條款"
+          ],
+          "rows": [
+            [
+              "早期警訊",
+              "24 小時內",
+              "製造商知悉漏洞或事故",
+              "第 14 條第 2 項 (a)、第 4 項 (a)"
+            ],
+            [
+              "完整通報",
+              "72 小時內",
+              "製造商知悉漏洞或事故",
+              "第 14 條第 2 項 (b)、第 4 項 (b)"
+            ],
+            [
+              "最終報告（漏洞）",
+              "措施備妥後 14 天內",
+              "修補或緩解措施備妥",
+              "第 14 條第 2 項 (c)"
+            ],
+            [
+              "最終報告（事故）",
+              "72 小時通報後 1 個月內",
+              "提交 72 小時完整通報",
+              "第 14 條第 4 項 (c)"
+            ]
+          ],
+          "caption": "依《網路韌性法》第 14 條整理，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "通報送到哪裡：一個窗口，同步 ENISA"
+        },
+        {
+          "type": "paragraph",
+          "text": "通報只透過單一平台送出一次。第 14 條第 7 項規定，製造商要用其歐盟主要營業地 CSIRT 的電子通報窗口送出，並同步讓 ENISA 看到；執委會說明，特別例外情形下不在此限。「主要營業地」先看決定產品資安決策的會員國；無法判斷時，改看雇用人數最多的會員國。歐盟執委會濃縮成一句：製造商只透過平台通報一次，送到主要營業地的 CSIRT，同時讓 ENISA 看到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有在歐盟設主要營業地的製造商，依第 14 條第 7 項，依序改用四種身分之一判斷窗口：代理其最多產品的授權代表所在國、在市場上投放其最多產品的進口商所在國、供貨其最多產品的經銷商所在國，或使用者人數最多的會員國。ENISA 提醒，選錯窗口的後果不小：通報可能被判定無效，須重新送到正確窗口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收到通報的 CSIRT 會轉發給產品有上市的其他成員國 CSIRT，並提供市場監督機關所需資訊——這是第 16 條的內容。第 71 條第 2 項列出的提前適用條文只有第 14 條與第四章，第 16 條不在其中；不過執委會與 ENISA 都寫明，平台就是依第 16 條建立、自 9 月 11 日起運作。特殊情形下 CSIRT 可延後轉發；執委會說明，2025 年 12 月 11 日已通過授權法案訂出延後條件。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-eu-cra-reporting-20260911/diagram-1.svg",
+          "alt": "四格圖解：知悉當下、72 小時內通報、送單一窗口、轉發其他 CSIRT",
+          "width": 1600,
+          "height": 900,
+          "caption": "通報平台的收送流程，依官方頁面與《網路韌性法》整理，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "對使用者與已經賣出的裝置，這代表什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "已賣出的裝置不是例外。ENISA 常見問答寫出，第 14 條的通報義務「自 2026 年 9 月 11 日起，適用於所有落在《網路韌性法》範圍內的連網產品，包括 2027 年 12 月 11 日前已上市的產品」。家裡這幾年買的路由器、攝影機或穿戴裝置，只要在歐盟市場販售，遇到遭積極利用的漏洞或重大資安事故，製造商現在就要通報，不必等 2027 年 12 月新規則全面適用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第 14 條第 8 項要求製造商知悉後把漏洞或事故告知受影響使用者，必要時一併說明風險緩解與更正措施，適當時用結構化、機器可讀格式——本文查到的官方頁面沒有替這件事訂通知期限，也沒規定語言或管道。容易誤會之處：通報義務不等於「裝置會更快拿到修補更新」——那屬於第 13 條的維護期限規定，同樣要到 2027 年 12 月 11 日才適用，本文查到的官方頁面也沒講通報上路會讓修補變快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通報的漏洞不會自動公開：第 17 條第 5 項規定，須修補或緩解措施備妥、且製造商同意，ENISA 才會把已公開的漏洞加進歐洲漏洞資料庫（EUVD）。罰則方面，第 64 條上限是違反第 13、14 條與附件一資安要求者最高罰 1500 萬歐元，或違規企業全球前一會計年度總營業額 2.5%，取其高，實際規則由會員國自訂並通知執委會。第 64 條不在第 71 條第 2 項列出的提前適用條文裡；本文查到的三個官方頁面都沒有提到罰鍰，也沒有說明現在到 2027 年 12 月之間違反第 14 條會不會被罰。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "平台現在完成到哪裡"
+        },
+        {
+          "type": "paragraph",
+          "text": "ENISA 用「初始運作量能」形容這次上線的平台，不是完工版本。常見問答列出還沒有的功能：上線時只支援英文介面；沒有應用程式介面，通報須透過平台介面送出；第 15 條的自願通報（漏洞、威脅、事故與未遂事故）也還沒開放，目前只接受第 14 條的強制通報。ENISA 說自願通報會在「未來階段」開放，應用程式介面與其他語言版本則只說會在下一階段評估，都沒有給時間表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平台也不是消費者的報修管道：現在版本只支援製造商依第 14 條送出的強制通報，不是製造商的人送出的通報可能被標記為無效。ENISA 也公開承認一個已知瑕疵：72 小時倒數計時器是從送出 24 小時早期警訊起算 48 小時，因此有些通報會在知悉未滿 72 小時就顯示逾期；ENISA 強調計時器顯示不取代法定義務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出通報的人也有身分限制：每家製造商只能有一位「主要指定代表」，最多可有 20 位「次要指定代表」，須用具備多重要素驗證的 EU Login 帳號登入，平台目前沒有額外的企業身分驗證機制；同一家製造商的主要與次要代表都看得到該製造商的通報，不分原本是誰送出，只有尚未送出的草稿留在各自帳號裡。本文查到的官方頁面沒有公布上線以來收到幾件通報、幾家製造商註冊，本文因此不寫這類數字。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的裝置不是在歐盟買的，通報這件事跟我有關係嗎？",
+              "answer": "《網路韌性法》第 2 條把適用範圍定在「在（歐盟）市場上販售、且具有連接裝置或網路功能的連網產品」。以本文查到 2026 年 9 月 17 日為止的官方頁面，沒有看到針對台灣或歐盟以外市場的說明；第 14 條第 7 項處理的只是通報要送到哪一國的窗口（包含製造商沒有在歐盟設主要營業地時怎麼判斷），跟使用者人在哪裡無關；決定規則管不管得到的，仍然是上面第 2 條的市場範圍。本文只能引用條文本身怎麼定範圍，無法替讀者判斷自己手上的裝置算不算。"
+            },
+            {
+              "question": "我自己發現裝置有漏洞，可以透過這個平台通報嗎？",
+              "answer": "不行。ENISA 的常見問答明白寫出，目前版本的平台只支援製造商依第 14 條送出的強制通報；不是製造商的人如果送出通報，可能會被平台標記為無效，建議改成直接聯絡自己國家的 CSIRT。第 15 條原本設計了給任何人使用的自願通報管道，但 ENISA 說目前的平台版本還沒開放這項功能。"
+            },
+            {
+              "question": "通報之後，我會知道自己的裝置出了什麼事嗎？",
+              "answer": "本文查到的官方頁面沒有寫出特定的通知期限。第 14 條第 8 項要求製造商在知悉後把漏洞或事故告知受影響的使用者，適當時也通知所有使用者，必要時並說明可以採取的緩解或更正措施；但條文只寫製造商未「及時」告知時，CSIRT 可以代為通知使用者，沒有訂出通知要多快送出，也沒規定語言或管道。漏洞本身也不會自動公開：第 17 條第 5 項規定，只有在修補措施備妥、而且製造商同意之後，ENISA 才會把已公開的漏洞加進歐洲漏洞資料庫。"
+            },
+            {
+              "question": "已經買了好幾年的舊裝置，製造商也要通報嗎？",
+              "answer": "以官方頁面的說法是要的。ENISA 常見問答寫著，第 14 條的通報義務「自 2026 年 9 月 11 日起，適用於所有落在《網路韌性法》範圍內的連網產品，包括 2027 年 12 月 11 日前就已經上市的產品」。這跟一般的過渡規定不同——一般規定是舊產品只有在「之後被實質變更」才要符合新規則，但通報義務不受這個限制，不分新舊都算。"
+            },
+            {
+              "question": "2027 年 12 月 11 日之後，又會多出什麼規定？",
+              "answer": "屆時整部《網路韌性法》原則上全面適用，包括本文沒有細談的部分：第 13 條第 8 項要求製造商訂出至少 5 年的維護支援期，但產品預期使用時間不到 5 年時，支援期就等於預期使用時間；第 13 條第 9 項要求支援期內提供過的每一項安全更新，發布後至少保留 10 年，或保留到支援期結束為止，取其長；第 24 條第 3 項讓開源軟體維護者也要承接和製造商相同的通報義務，以其涉入產品開發的範圍為限。本文查到的官方頁面把這部分統稱為規則的主要義務，和現在已經上路的第 14 條通報義務分開講。"
+            },
+            {
+              "question": "違反通報義務會被罰多少錢？",
+              "answer": "第 64 條訂的上限，是違反第 13 條、第 14 條與附件一資安要求者最高可罰 1500 萬歐元，或違規企業全球前一會計年度總營業額的 2.5%，兩者取其高；但實際罰則規則由各會員國自訂並通知歐盟執委會。第 64 條本身不在第 71 條第 2 項列出的提前適用條文裡，而本文查到的三個官方頁面都沒有提到罰鍰，也沒有說明現在到 2027 年 12 月 11 日之間違反第 14 條會不會被罰、怎麼罰。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三個日期不要混在一起",
+          "text": "《網路韌性法》第 71 條第 2 項一次訂了三個日期：整部規則原則上自 2027 年 12 月 11 日起適用，第 14 條（製造商的通報義務）自 2026 年 9 月 11 日起提前適用，第四章（符合性評估機構的通知）則早在 2026 年 6 月 11 日就已經適用。本文只整理官方頁面與規則條文寫出來的內容，查核日為 2026 年 9 月 17 日；平台之後如有調整，請以歐盟執委會與 ENISA 的官方頁面當下內容為準，本文不提供是否該升級裝置或選擇哪家廠商的建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 公布歐盟新版 App 商業條款：核心技術抽成 5%、可同時用替代付款",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "歐盟執委會：《網路韌性法》通報義務頁面",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA 新聞稿：單一通報平台正式啟用",
+          "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA：單一通報平台常見問答",
+          "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "EUR-Lex：《歐盟公報》刊登的 Regulation (EU) 2024/2847（網路韌性法）全文",
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "en": {
+      "title": "EU Cyber Resilience Act Reporting Obligations Begin September 11: Who Must Report, How Fast",
+      "description": "On September 11, 2026, the reporting obligations under Article 14 of the EU's Cyber Resilience Act took effect, and ENISA launched its Single Reporting Platform. Based on the European Commission's reporting page, ENISA's press release and FAQ, and the Regulation's text in the Official Journal, this article explains how fast manufacturers must report, where reports go, which obligations already apply, which wait until December 2027, and the fine ceiling in Article 64.",
+      "hero": {
+        "src": "/guides/tech-news-eu-cra-reporting-20260911/hero-en.jpg",
+        "alt": "Original illustration: a clock, an arrow to a report marked with a warning triangle, another arrow to a central platform, which relays it by three lines to three dots for national response teams",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 11, 2026, the reporting obligations under the EU's Cyber Resilience Act (Regulation (EU) 2024/2847) took effect: the European Union Agency for Cybersecurity (ENISA) simultaneously launched its Single Reporting Platform (SRP), letting manufacturers report actively exploited vulnerabilities and severe incidents under Article 14. The Regulation itself splits ‘application’ into three dates, and September 11 is only one of them."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 17, 2026, drawing on the European Commission's reporting-obligations page, ENISA's launch press release and FAQ, and the Regulation's full text as published in the Official Journal of the European Union. This site has not actually submitted a notification or tested the platform itself; the following does not compare vendors or advise on whether to upgrade a device, and only summarizes the officially published provisions and deadlines."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "From September 11, 2026, Article 14 of the EU's Cyber Resilience Act took effect and ENISA launched its Single Reporting Platform; manufacturers must report actively exploited vulnerabilities or severe incidents within set deadlines, starting at 24 hours, once they become aware.",
+            "This timetable covers manufacturers only: the equivalent obligation for open-source software stewards, and most of the rest of the Regulation, do not apply until December 11, 2027.",
+            "ENISA describes the platform as currently at ‘initial operating capability’: it supports only an English interface, has no application programming interface, and the voluntary reporting feature under Article 15 is not yet available.",
+            "The official pages this article consulted do not disclose how many notifications the platform has received since launch, and this article does not offer advice on whether to upgrade a device."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Three Dates in Article 71(2): September 11 Is Only Article 14's Turn"
+        },
+        {
+          "type": "paragraph",
+          "text": "Article 71(2) of the Cyber Resilience Act splits ‘application’ into three dates: the Regulation applies in full from December 11, 2027 in principle; Article 14 (manufacturers' reporting obligations) applies earlier, from September 11, 2026; and Chapter IV (Articles 35 to 51, on the notification of conformity assessment bodies) applies earlier still, from June 11, 2026."
+        },
+        {
+          "type": "paragraph",
+          "text": "Only Article 14 takes effect on September 11, 2026. The European Commission's page states it plainly: manufacturers must report actively exploited vulnerabilities and severe incidents affecting product security from September 11 onward; open-source software stewards take on the same obligation under Article 24(3), but only to the extent they are involved in developing the product, and under Article 71(2) their obligation does not begin until December 11, 2027 — ENISA's FAQ likewise keeps the two starting dates separate."
+        },
+        {
+          "type": "paragraph",
+          "text": "The Regulation was signed in Strasbourg on October 23, 2024, and published in the Official Journal of the European Union on November 20 of the same year; under the formula in Article 71(1), it entered into force on the twentieth day after publication. ‘Entering into force’ and ‘what the provisions require you to do’ are two different things — every sentence that follows in this article notes whether it is already in effect on September 11 or waits until December 11, 2027."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Fast a Notification Must Go Out, Once You Know"
+        },
+        {
+          "type": "paragraph",
+          "text": "The clock starts running when the manufacturer becomes aware, not from the moment the vulnerability or incident actually occurs. ENISA's FAQ is explicit: the reporting process starts when a manufacturer — or, once it applies, an open-source software steward — becomes aware of it. Article 3(42) defines an ‘actively exploited vulnerability’ as one for which there is reliable evidence that a malicious actor has exploited it without the system owner's permission — merely knowing a weakness exists does not, on its own, trigger the notification obligation under Article 14(1)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Actively exploited vulnerabilities and severe incidents share the same early-warning and full-notification deadlines, but the formula for the final report differs. Under Article 14(2): without undue delay, and in any case within 24 hours of becoming aware, the manufacturer sends an early warning; within 72 hours, a full notification; and the final report follows within 14 days after a corrective or mitigating measure becomes available. Under Article 14(4), the final report for a severe incident instead falls due within one month after the 72-hour notification itself is submitted — the clock there starts from the notification, not from the moment of awareness, and the 14-day rule does not apply."
+        },
+        {
+          "type": "paragraph",
+          "text": "Article 14(6) gives the CSIRT one more power: if the CSIRT that received the notification considers it necessary, it may ask the manufacturer for an intermediate report describing a status update — a possible fifth document alongside the early warning, the full notification, and the final report. The European Commission's reporting page condenses these four deadlines into a single sentence."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Stage",
+            "Deadline",
+            "Starting Point",
+            "Legal Basis"
+          ],
+          "rows": [
+            [
+              "Early warning",
+              "Within 24 hours",
+              "Manufacturer becomes aware of the vulnerability or incident",
+              "Article 14(2)(a), 14(4)(a)"
+            ],
+            [
+              "Full notification",
+              "Within 72 hours",
+              "Manufacturer becomes aware of the vulnerability or incident",
+              "Article 14(2)(b), 14(4)(b)"
+            ],
+            [
+              "Final report (vulnerability)",
+              "Within 14 days of the measure being available",
+              "Corrective or mitigating measure becomes available",
+              "Article 14(2)(c)"
+            ],
+            [
+              "Final report (incident)",
+              "Within 1 month of the 72-hour notification",
+              "Submission of the 72-hour full notification",
+              "Article 14(4)(c)"
+            ]
+          ],
+          "caption": "Compiled from Article 14 of the Cyber Resilience Act; fact-checked September 17, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where a Notification Goes: One Window, Copied to ENISA"
+        },
+        {
+          "type": "paragraph",
+          "text": "A notification is submitted through the Single Reporting Platform only once. Under Article 14(7), the manufacturer submits it through the electronic notification end-point of the CSIRT designated as coordinator for the Member State of its main establishment in the EU, made simultaneously accessible to ENISA; the Commission notes this holds except in particularly exceptional circumstances. ‘Main establishment’ looks first at the Member State where decisions about product security are made; where that cannot be determined, it looks instead at the Member State with the most employees."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a manufacturer with no main establishment in the EU, Article 14(7) has it work through one of four fallback identities in order: the Member State of the authorised representative handling the largest number of its products, the Member State of the importer placing the largest number of its products on the market, the Member State of the distributor supplying the largest number of its products, or the Member State with the most users. ENISA warns that the consequence of picking the wrong window is not minor: the notification may be invalidated and have to be resubmitted to the correct one."
+        },
+        {
+          "type": "paragraph",
+          "text": "The CSIRT that receives a notification forwards it to the CSIRTs of the other Member States where the product is on the market, and supplies market surveillance authorities with the information they need — that is the substance of Article 16. Article 71(2)'s list of provisions that apply early covers only Article 14 and Chapter IV; Article 16 is not on it. Even so, both the Commission and ENISA state that the platform was built under Article 16 and has been operating since September 11. In exceptional cases the CSIRT may delay forwarding; the Commission notes that a delegated act adopted on December 11, 2025 sets out the conditions for that delay."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-eu-cra-reporting-20260911/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the moment of awareness, notification within 72 hours, submission to the single window, forwarding to other CSIRTs",
+          "width": 1600,
+          "height": 900,
+          "caption": "How the reporting platform receives and relays notifications, compiled from the official pages and the Cyber Resilience Act; fact-checked September 17, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What This Means for Users and Devices Already Sold"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices already sold are not exempt. ENISA's FAQ states that the Article 14 reporting obligation ‘will apply from 11 September 2026 to all products with digital elements falling within the scope of the CRA, including products that were placed on the market before 11 December 2027.’ For a router, camera, or wearable bought a few years ago — as long as it is sold on the EU market — the manufacturer must report now if it faces an actively exploited vulnerability or a severe incident, without waiting for the Regulation's full application in December 2027."
+        },
+        {
+          "type": "paragraph",
+          "text": "Article 14(8) requires the manufacturer, once it becomes aware, to inform affected users of the vulnerability or incident, together with any risk-mitigation and corrective measures where necessary, in a structured, machine-readable format where appropriate. The official pages this article consulted set no deadline, language, or channel for that notice. A likely point of confusion: the reporting obligation does not mean ‘a device will get a patch faster’ — that falls under Article 13's maintenance-period rules, which likewise do not apply until December 11, 2027, and the official pages this article consulted do not say that the reporting obligation taking effect will speed up patches."
+        },
+        {
+          "type": "paragraph",
+          "text": "A reported vulnerability is not automatically made public: under Article 17(5), ENISA adds a publicly known vulnerability to the European vulnerability database (EUVD) only once a corrective or mitigating measure is available and the manufacturer agrees. As for penalties, Article 64 sets a ceiling of up to €15 million, or 2.5% of an offending undertaking's total worldwide annual turnover for the preceding financial year, whichever is higher, for breaches of Articles 13, 14, and the security requirements in Annex I — with the actual rules set by each Member State and notified to the Commission. Article 64 is not among the provisions Article 71(2) lists as applying early; none of the three official pages this article consulted mentions fines, or says whether, between now and December 2027, a breach of Article 14 would be penalized."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Far the Platform Has Gotten So Far"
+        },
+        {
+          "type": "paragraph",
+          "text": "ENISA describes the platform that just launched as an ‘initial operating capability,’ not a finished product. Its FAQ lists what is still missing: at launch the interface supports English only; there is no application programming interface, so notifications must be submitted through the platform's own interface; and voluntary reporting under Article 15 — covering vulnerabilities, threats, incidents, and near-misses — is not yet available, so the platform currently accepts only the mandatory notifications required under Article 14. ENISA says voluntary reporting will be introduced in a ‘future phase’; for the application programming interface and additional language versions, it says only that they may be considered, or will be reviewed, in the next phase — neither comes with a timetable."
+        },
+        {
+          "type": "paragraph",
+          "text": "The platform is also not a channel for consumer complaints: the current release accepts only the mandatory notifications manufacturers submit under Article 14, and a submission from someone who is not a manufacturer may be marked invalid. ENISA also openly acknowledges a known flaw: the 72-hour countdown timer actually shows a due time 48 hours after the 24-hour early warning is submitted, so in some cases a notification shows as overdue before 72 hours have actually elapsed since the manufacturer became aware; ENISA stresses that the timer's display does not replace the legal obligation itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "There are also identity limits on who may submit a notification: each manufacturer may have only one ‘Primary’ designated representative (Primary AR) and up to 20 ‘Secondary’ designated representatives (Secondary ARs), who must log in with an EU Login account protected by multi-factor authentication — the platform currently has no additional corporate-identity verification mechanism. The Primary and Secondary representatives of the same manufacturer can all see that manufacturer's notifications, regardless of who originally submitted them; only unsubmitted drafts stay in each representative's own account. The official pages this article consulted do not disclose how many notifications, or how many registered manufacturers, the platform has had since launch, so this article does not state either figure."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "My device wasn't bought in the EU — does this reporting obligation have anything to do with me?",
+              "answer": "Article 2 of the Cyber Resilience Act sets its scope as connected products ‘made available on the market’ in the EU with a connection to a device or network. As of the official pages this article consulted on September 17, 2026, none of them says anything specifically about Taiwan or markets outside the EU; Article 14(7) only addresses which country's window a notification is sent to (including how that is decided when a manufacturer has no main establishment in the EU), which has nothing to do with where the user is located. What decides whether the rule reaches a given case is still the market scope in Article 2. This article can only cite how the provisions themselves define that scope — it cannot tell a reader whether their own device counts."
+            },
+            {
+              "question": "I found a vulnerability in my own device — can I report it through this platform?",
+              "answer": "No. ENISA's FAQ states plainly that the current version of the platform accepts only the mandatory notifications manufacturers submit under Article 14; a notification from someone who is not a manufacturer may be flagged as invalid by the platform, and ENISA suggests contacting your own country's CSIRT directly instead. Article 15 was designed to give anyone a voluntary reporting channel, but ENISA says this feature is not yet available in the platform's current version."
+            },
+            {
+              "question": "Once a notification is made, will I find out what happened to my device?",
+              "answer": "The official pages this article consulted set no specific notification deadline. Article 14(8) requires the manufacturer, once it becomes aware, to inform affected users — and where appropriate all users — of the vulnerability or incident, and, where necessary, of any mitigation or corrective measures they can take; but the provision only states that a CSIRT may notify users on the manufacturer's behalf if the manufacturer fails to inform them ‘in a timely manner’ — it does not set how quickly notice must go out, nor its language or channel. The vulnerability itself is not automatically made public either: under Article 17(5), ENISA adds a publicly known vulnerability to the European vulnerability database only once a corrective measure is available and the manufacturer agrees."
+            },
+            {
+              "question": "Does the manufacturer still have to report an older device I've had for years?",
+              "answer": "Based on the official pages, yes. ENISA's FAQ states that the Article 14 reporting obligation ‘will apply from 11 September 2026 to all products with digital elements falling within the scope of the CRA, including products that were placed on the market before 11 December 2027.’ That differs from the Regulation's usual transitional rule, under which an older product only has to meet the new requirements if it is later ‘substantially modified’ — the reporting obligation is not limited that way, and applies regardless of how old the product is."
+            },
+            {
+              "question": "What else changes after December 11, 2027?",
+              "answer": "At that point the Cyber Resilience Act applies in full, in principle, including parts this article has not covered in detail: Article 13(8) requires manufacturers to set a support period of at least five years — unless the product's expected use is shorter than five years, in which case the support period matches that expected use instead; Article 13(9) requires every security update issued during the support period to remain available for at least ten years after release, or for the rest of the support period, whichever is longer; and Article 24(3) extends the same reporting obligation to open-source software stewards, limited to the extent they are involved in developing the product. The official pages this article consulted group all of this under the Regulation's main obligations, distinct from the Article 14 reporting obligation that is already in effect."
+            },
+            {
+              "question": "How much can a company be fined for failing to report?",
+              "answer": "Article 64 sets a ceiling: up to €15 million, or 2.5% of an offending undertaking's total worldwide annual turnover for the preceding financial year, whichever is higher, for breaches of Articles 13, 14, and the security requirements in Annex I — but the actual penalty rules are set by each Member State and notified to the European Commission. Article 64 itself is not among the provisions Article 71(2) lists as applying early, and none of the three official pages this article consulted mentions fines or says whether — or how — a breach of Article 14 would be penalized between now and December 11, 2027."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Don't Mix Up the Three Dates",
+          "text": "Article 71(2) of the Cyber Resilience Act sets three dates at once: the Regulation applies in full, in principle, from December 11, 2027; Article 14 (manufacturers' reporting obligations) applies early, from September 11, 2026; and Chapter IV (notification of conformity assessment bodies) applied earlier still, from June 11, 2026. This article only summarizes what the official pages and the Regulation's text state, as fact-checked on September 17, 2026; if the platform changes afterward, defer to the European Commission's and ENISA's official pages at the time, and this article offers no advice on whether to upgrade a device or which vendor to choose."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple Announces New EU App Business Terms: A 5% Core Technology Commission, and Alternative Payments Alongside Apple In-App Purchase",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "European Commission: Cyber Resilience Act Reporting Obligations Page",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA Press Release: The CRA Single Reporting Platform Is Launched",
+          "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA: Single Reporting Platform Frequently Asked Questions",
+          "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "EUR-Lex: Full Text of Regulation (EU) 2024/2847 (Cyber Resilience Act) as Published in the Official Journal",
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ja": {
+      "title": "EUサイバーレジリエンス法の通報義務が始動：9月11日から誰がどれだけ早く通報するのか",
+      "description": "2026年9月11日、EUサイバーレジリエンス法(Regulation (EU) 2024/2847)第14条の通報義務が適用され、ENISA（欧州連合サイバーセキュリティ機関）は単一通報プラットフォーム（Single Reporting Platform）を同時に稼働させました。本記事は欧州委員会の通報義務ページ、ENISAのプレスリリースとFAQ、そして官報に掲載された規則全文をもとに、製造者がどれだけ早く通報すべきか、通報先はどこか、どの義務がすでに始まっており、どれが2027年12月まで適用されないか、第64条が定める制裁金の上限を整理します。",
+      "hero": {
+        "src": "/guides/tech-news-eu-cra-reporting-20260911/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側の時計から矢印が伸び、右上に警告の三角マークが付いた通報文書を指し、さらに矢印が中央の円形プラットフォームへ送られ、そこから3本の線で右側の3つの点（各国の対応チームへ通報を転送する様子）へつながっている",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月11日、EUの「サイバーレジリエンス法」(Cyber Resilience Act、Regulation (EU) 2024/2847)の通報義務が適用されました。欧州連合サイバーセキュリティ機関（ENISA）は同日、「単一通報プラットフォーム」（Single Reporting Platform、SRP）を稼働させ、製造者が第14条に基づき、積極的に悪用された脆弱性（actively exploited vulnerability）や重大インシデント（severe incident）を通報できるようにしました。この規則自体は「適用」を3つの日付に分けており、9月11日はそのうちの1つにすぎません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月17日に確認しており、参照したのは欧州委員会の通報義務ページ、ENISAの稼働開始プレスリリースとFAQ、そして官報（Official Journal）に掲載された規則全文です。当サイトは実際に通報を送信したことはなく、プラットフォームの実地の検証も行っておらず、以下では製品同士を比較せず、機器を更新すべきかどうかも助言せず、公開されている条文と期限のみを整理します。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月11日から、EUサイバーレジリエンス法第14条の通報義務が適用され、ENISAは単一通報プラットフォームを同時に稼働させました。製造者は積極的に悪用された脆弱性や重大インシデントを認知した後、24時間、72時間などの期限に沿って通報しなければなりません。",
+            "この日程は製造者のみが対象です。オープンソースソフトウェアの管理者（steward）に課される同種の義務や、規則の残り大部分は、2027年12月11日まで適用されません。",
+            "ENISAの説明によると、プラットフォームは現在「初期運用能力」（initial operating capability）の段階にあり、対応言語は英語のみ、API（アプリケーション・プログラミング・インターフェース）はなく、第15条の任意通報機能もまだ開放されていません。",
+            "本記事が確認した公式ページには、プラットフォーム稼働開始以降に何件の通報があったかは公表されておらず、本記事も機器を更新すべきかどうかは助言しません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第71条が定める3つの日付：9月11日にスタートするのは第14条だけ"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイバーレジリエンス法第71条第2項は、「適用」を3つの日付に分けています。規則全体は原則として2027年12月11日から適用されますが、第14条（製造者の通報義務）は前倒しで2026年9月11日から、第4章（第35条から第51条、適合性評価機関の通知に関する規定）はさらに早く2026年6月11日から、それぞれ適用されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年9月11日に適用が始まるのは第14条だけです。欧州委員会のページははっきりと書いています。製造者は9月11日以降、積極的に悪用された脆弱性や製品の安全性に影響する重大インシデントを通報しなければなりません。オープンソースソフトウェアの管理者は第24条第3項に基づき同じ義務を引き継ぎますが、それは製品開発に関与する範囲に限られ、かつ第71条第2項により2027年12月11日まで対象になりません。ENISAのFAQも両者の起算日を分けて説明しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この規則は2024年10月23日にストラスブールで署名され、同年11月20日に官報に掲載されました。第71条第1項の計算式によれば、公表後20日目に発効します。「発効」と「条文が何を求めているか」は別の話です。以下、本記事のすべての文で、それが9月11日にすでに適用されているのか、2027年12月11日まで適用されないのかを明記します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "認知した後、通報はどれだけ早く送らなければならないか"
+        },
+        {
+          "type": "paragraph",
+          "text": "期限は「製造者が認知した」瞬間から起算され、脆弱性やインシデントが実際に発生した時点からではありません。ENISAのFAQは明確です。「通報のプロセスは、製造者、あるいは（将来適用される）オープンソースソフトウェアの管理者が認知した時点で始まる」。第3条第42項は「積極的に悪用された脆弱性」を、悪意ある行為者がシステム所有者の許可なくそれを悪用したという信頼できる証拠がある場合、と定義しています。単に弱点の存在を知っているだけでは、第14条第1項の通報義務は発生しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "積極的に悪用された脆弱性と重大インシデントには、同じ早期警戒（early warning）と完全な通報（full notification）の期限が適用されますが、最終報告の計算方法は異なります。第14条第2項では、認知後、不当に遅延することなく、遅くとも24時間以内に早期警戒を、72時間以内に完全な通報を送り、是正または緩和措置が整ってから14日以内に最終報告を送ります。第14条第4項では、重大インシデントの最終報告は、72時間以内の通報を送信してから1か月以内と定められています。起算点は通報そのものであり、認知した瞬間ではなく、14日というルールも適用されません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第14条第6項はさらに、CSIRTに一つの権限を与えています。通報を受け取ったCSIRTが必要と判断した場合、製造者に対して状況の更新を説明する中間報告（intermediate report）の追加提出を求めることができます。早期警戒、完全な通報、最終報告に加えて、この中間報告が求められる場合もあるということです。欧州委員会の通報ページは、この4つの期限を同じ一文に要約しています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "段階",
+            "期限",
+            "起算点",
+            "根拠条文"
+          ],
+          "rows": [
+            [
+              "早期警戒",
+              "24時間以内",
+              "製造者が脆弱性やインシデントを認知",
+              "第14条第2項(a)・第4項(a)"
+            ],
+            [
+              "完全な通報",
+              "72時間以内",
+              "製造者が脆弱性やインシデントを認知",
+              "第14条第2項(b)・第4項(b)"
+            ],
+            [
+              "最終報告（脆弱性）",
+              "措置が整ってから14日以内",
+              "是正または緩和措置が整う",
+              "第14条第2項(c)"
+            ],
+            [
+              "最終報告（インシデント）",
+              "72時間通報から1か月以内",
+              "72時間以内の完全な通報を提出",
+              "第14条第4項(c)"
+            ]
+          ],
+          "caption": "サイバーレジリエンス法第14条をもとに整理。確認日 2026年9月17日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "通報の送り先：単一の窓口、ENISAにも同時共有"
+        },
+        {
+          "type": "paragraph",
+          "text": "通報は単一通報プラットフォームを通じて一度だけ送信されます。第14条第7項では、製造者はEU域内の主たる拠点（main establishment）を管轄するCSIRTの電子通報窓口を通じて通報を送信し、同時にENISAも閲覧できるようにしなければならないと定めています。欧州委員会の説明によれば、特に例外的な事情がある場合はこの限りではありません。「主たる拠点」は、まず製品のセキュリティに関する意思決定を行う加盟国を基準とし、判断できない場合は従業員数が最も多い加盟国を基準とします。欧州委員会はこれを一文に要約しています。製造者はプラットフォームを通じて一度だけ通報し、送り先は主たる拠点のCSIRT、同時にENISAも閲覧できるようにする、というものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "EU域内に主たる拠点を持たない製造者は、第14条第7項に基づき、次の4つの基準を順に適用して窓口を判断します。製品の取扱数が最も多い正規代理人（authorised representative）の所在国、製品の取扱数が最も多い輸入者（importer）が市場に投入する国、製品の取扱数が最も多い販売業者（distributor）の所在国、利用者数が最も多い加盟国です。ENISAは、窓口を誤って選ぶと通報が無効と判定され、正しい窓口へ再提出しなければならなくなる可能性があると注意を促しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通報を受け取ったCSIRTは、当該製品が販売されている他の加盟国のCSIRTへ転送し、市場監視当局が必要とする情報を提供します。これが第16条の内容です。第71条第2項が定める前倒し適用の対象条文は第14条と第4章のみで、第16条は含まれていません。それでも欧州委員会とENISAはいずれも、プラットフォーム自体は第16条に基づいて構築され、9月11日から稼働していると説明しています。例外的な状況では、CSIRTは転送を遅らせることができます。欧州委員会によると、2025年12月11日にその遅延の条件を定めた委任法令（delegated act）がすでに採択されています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-eu-cra-reporting-20260911/diagram-1-ja.svg",
+          "alt": "4コマ図解：認知した瞬間、72時間以内の通報、単一窓口への提出、他のCSIRTへの転送",
+          "width": 1600,
+          "height": 900,
+          "caption": "通報プラットフォームの受付と転送の流れ。公式ページとサイバーレジリエンス法をもとに整理。確認日 2026年9月17日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "利用者と、すでに販売された機器にとって何を意味するか"
+        },
+        {
+          "type": "paragraph",
+          "text": "すでに販売された機器も例外ではありません。ENISAのFAQは、第14条の通報義務は「2026年9月11日から、サイバーレジリエンス法の適用範囲に含まれるすべての接続製品に適用され、2027年12月11日より前に市場に投入された製品も含む」と明記しています。数年前に買ったルーターやカメラ、ウェアラブル端末でも、EU市場で販売されているものであれば、積極的に悪用された脆弱性や重大インシデントが起きた場合、製造者は2027年12月の規則全面適用を待たず、今すぐ通報しなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第14条第8項は、製造者が認知した後、影響を受ける利用者に脆弱性やインシデントを知らせ、必要な場合はリスク緩和策や是正措置についても、適切な場合には構造化された機械可読の形式で伝えるよう求めています。本記事が確認した公式ページには、この通知の期限や言語、手段についての定めは見当たりません。誤解しやすい点として、通報義務があるからといって「機器が早く修正プログラムを受け取れるようになる」わけではありません。それは第13条の保守期間（maintenance period）に関する規定であり、同じく2027年12月11日まで適用されず、本記事が確認した公式ページにも、通報の開始が修正を早めるとは書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通報された脆弱性が自動的に公開されるわけでもありません。第17条第5項では、是正または緩和措置が整い、かつ製造者が同意した場合に限り、ENISAが公知の脆弱性を欧州脆弱性データベース（European vulnerability database、EUVD）に追加すると定めています。制裁金については、第64条が上限を定めており、第13条、第14条および附属書Iの安全要件への違反に対しては、最大1,500万ユーロ、または違反した事業者の前会計年度における全世界年間売上高の2.5%のいずれか高い方が上限となります。実際の規則は加盟国がそれぞれ定め、欧州委員会に通知します。第64条は第71条第2項が定める前倒し適用の対象条文には含まれておらず、本記事が確認した3つの公式ページはいずれも制裁金について触れておらず、現在から2027年12月までの間に第14条違反が処罰されるかどうかについても説明していません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "プラットフォームは現在どこまで整っているか"
+        },
+        {
+          "type": "paragraph",
+          "text": "ENISAは今回稼働したプラットフォームを「初期運用能力」（initial operating capability）と表現しており、完成版ではないとしています。FAQにはまだ実装されていない機能が挙げられています。稼働開始時点ではインターフェースは英語のみに対応し、API（アプリケーション・プログラミング・インターフェース）はなく通報はプラットフォームの画面を通じて送信する必要があり、第15条が定める任意通報（脆弱性、脅威、インシデント、ニアミスに関するもの）もまだ開放されておらず、現時点では第14条に基づく義務的な通報のみを受け付けています。ENISAは、任意通報は「今後の段階」で導入するとしていますが、APIやその他の言語版については、次の段階で「検討する」「見直す」としか述べておらず、いずれも具体的な時期は示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラットフォームは消費者からの故障相談窓口でもありません。現行版が受け付けるのは製造者が第14条に基づいて送る義務的な通報のみで、製造者以外の人が送信した通報は無効と判定される可能性があります。ENISAはまた、既知の不具合があることも公表しています。72時間のカウントダウンタイマーは、実際には24時間の早期警戒を提出してから48時間後を基準にしているため、場合によっては製造者が認知してから72時間経たないうちに「期限超過」と表示されることがあるといいます。ENISAは、タイマーの表示が法的義務そのものに取って代わるものではないと強調しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通報を送信できる人にも制限があります。製造者1社につき「主指定代表者」（Primary AR）は1名のみ、「副指定代表者」（Secondary AR）は最大20名まで置くことができ、いずれも多要素認証に対応したEU Loginアカウントでログインする必要があります。プラットフォームには現時点で追加の法人認証の仕組みはありません。同じ製造者の主指定代表者と副指定代表者は、元の送信者が誰であるかにかかわらず、その製造者の通報をすべて閲覧できます。唯一の例外は下書きで、下書きはそれぞれの代表者のアカウントにのみ保存されます。本記事が確認した公式ページには、稼働開始以降の通報件数や登録製造者数は公表されておらず、本記事もこれらの数字は記載しません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "自分の機器はEUで購入したものではありませんが、この通報義務は自分に関係ありますか。",
+              "answer": "サイバーレジリエンス法第2条は、適用範囲を「(EU)市場で提供され、機器やネットワークへの接続機能を有する接続製品」と定めています。本記事が2026年9月17日時点で確認した公式ページには、台湾やEU域外の市場を名指しした説明は見当たりません。第14条第7項が扱うのは通報をどの国の窓口に送るかという話（製造者がEU域内に主たる拠点を持たない場合の判断方法を含む）であり、利用者がどこにいるかとは関係ありません。規則が及ぶかどうかを決めるのは、あくまで第2条が定める市場の範囲です。本記事は条文自体が定める範囲を紹介できるだけで、読者の手元の機器が対象に該当するかどうかを判断することはできません。"
+            },
+            {
+              "question": "自分で機器の脆弱性を見つけました。このプラットフォームから通報できますか。",
+              "answer": "できません。ENISAのFAQには、現行版のプラットフォームが受け付けるのは製造者が第14条に基づいて送信する義務的な通報のみだとはっきり書かれています。製造者以外の人が通報を送信すると、プラットフォーム上で無効と判定される可能性があり、代わりに自国のCSIRTへ直接連絡することが勧められています。第15条はもともと誰でも利用できる任意通報の窓口として設計されていますが、ENISAによれば、この機能は現行版のプラットフォームではまだ開放されていません。"
+            },
+            {
+              "question": "通報した後、自分の機器に何が起きたのか分かりますか。",
+              "answer": "本記事が確認した公式ページには、具体的な通知の期限は書かれていません。第14条第8項は、製造者が認知した後、影響を受ける利用者（適当な場合はすべての利用者）に脆弱性やインシデントを知らせ、必要な場合は利用者が取れる緩和策や是正措置についても伝えるよう求めています。ただし条文には、製造者が「適時に」利用者へ知らせなかった場合にCSIRTが代わりに知らせることができるとしか書かれておらず、通知をどれだけ早く送るべきかや、言語、手段までは定めていません。脆弱性そのものも自動的には公開されません。第17条第5項により、是正措置が整い、かつ製造者が同意した場合に限り、ENISAは公知の脆弱性を欧州脆弱性データベースに追加します。"
+            },
+            {
+              "question": "何年も前に買った古い機器でも、製造者は通報しなければなりませんか。",
+              "answer": "公式ページの説明によれば、その通りです。ENISAのFAQには、第14条の通報義務は「2026年9月11日から、サイバーレジリエンス法の適用範囲に含まれるすべての接続製品に適用され、2027年12月11日より前に市場に投入された製品も含む」と明記されています。これは一般的な経過規定とは異なります。通常、古い製品は「その後に実質的な変更が加えられた」場合に限って新しい規則への適合が求められますが、通報義務にはこの制限がなく、製品の新旧を問わず適用されます。"
+            },
+            {
+              "question": "2027年12月11日以降は、さらにどんな規定が加わりますか。",
+              "answer": "その時点でサイバーレジリエンス法が原則としてすべて適用されます。本記事で詳しく触れていない内容には、次のようなものがあります。第13条第8項は、製造者に少なくとも5年間の保守サポート期間を設けるよう求めていますが、製品の想定使用期間が5年に満たない場合は、保守サポート期間はその想定使用期間と同じになります。第13条第9項は、保守サポート期間中に提供されたすべてのセキュリティアップデートについて、公開後少なくとも10年間、または保守サポート期間の残り期間のいずれか長い方の間、利用可能な状態を保つよう求めています。第24条第3項は、オープンソースソフトウェアの管理者にも製造者と同じ通報義務を課しますが、製品開発への関与の範囲に限られます。本記事が確認した公式ページは、これらをまとめて規則の主要な義務と位置づけており、すでに始まっている第14条の通報義務とは分けて説明しています。"
+            },
+            {
+              "question": "通報義務に違反すると、どれくらいの制裁金が科されますか。",
+              "answer": "第64条が定める上限は、第13条、第14条および附属書Iの安全要件への違反に対して、最大1,500万ユーロ、または違反した事業者の前会計年度における全世界年間売上高の2.5%のいずれか高い方です。ただし実際の制裁金の規則は加盟国がそれぞれ定め、欧州委員会に通知します。第64条自体は第71条第2項が定める前倒し適用の対象条文には含まれておらず、本記事が確認した3つの公式ページはいずれも制裁金について触れておらず、現在から2027年12月11日までの間に第14条違反がどのように処罰されるか（されないか）についても説明していません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "3つの日付を混同しないこと",
+          "text": "サイバーレジリエンス法第71条第2項は、一度に3つの日付を定めています。規則全体は原則として2027年12月11日から適用され、第14条（製造者の通報義務）は前倒しで2026年9月11日から、第4章（適合性評価機関の通知）はさらに早く2026年6月11日から、それぞれすでに適用されています。本記事は公式ページと条文に書かれている内容のみを整理したもので、確認日は2026年9月17日です。プラットフォームが今後変更される場合は、その時点の欧州委員会とENISAの公式ページの内容を優先してください。本記事は機器を更新すべきかどうかや、どのメーカーを選ぶべきかについての助言は行いません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Appleが欧州連合向けの新App事業条件を発表：コアテクノロジー手数料は5%に、代替決済との併用も可能に",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "欧州委員会：サイバーレジリエンス法の通報義務ページ",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISAプレスリリース：単一通報プラットフォームが稼働開始",
+          "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA：単一通報プラットフォームに関するFAQ",
+          "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "EUR-Lex：官報に掲載されたRegulation (EU) 2024/2847（サイバーレジリエンス法）全文",
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "ko": {
+      "title": "EU 사이버복원력법 통보 의무 시행: 9월 11일부터, 누가 얼마나 빨리 통보해야 하나",
+      "description": "2026년 9월 11일, EU 사이버복원력법(Regulation (EU) 2024/2847) 제14조의 통보 의무가 적용되기 시작했고, ENISA(유럽연합 사이버보안청)는 동시에 단일 통보 플랫폼(Single Reporting Platform)을 가동했습니다. 이 글은 EU 집행위원회의 통보 의무 페이지, ENISA의 보도자료와 FAQ, 관보에 게재된 규정 전문을 바탕으로 제조자가 얼마나 빨리 통보해야 하는지, 통보처는 어디인지, 어떤 의무가 이미 시행 중이고 어떤 의무가 2027년 12월까지 기다려야 하는지, 그리고 제64조가 정한 과징금 상한을 정리합니다.",
+      "hero": {
+        "src": "/guides/tech-news-eu-cra-reporting-20260911/hero-ko.jpg",
+        "alt": "독창적 일러스트: 왼쪽의 시계에서 화살표가 뻗어 나와 오른쪽 위에 경고 삼각형이 표시된 통보 문서를 가리키고, 다시 화살표가 중앙의 원형 플랫폼으로 이어지며, 그 플랫폼이 세 개의 선으로 오른쪽의 점 세 개(각국 대응팀으로 통보가 전달되는 것을 상징)와 연결된 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 11일, EU 사이버복원력법(Cyber Resilience Act, Regulation (EU) 2024/2847)의 통보 의무가 적용되기 시작했습니다. 유럽연합 사이버보안청(ENISA)은 같은 날 '단일 통보 플랫폼'(Single Reporting Platform, SRP)을 가동해, 제조자가 제14조에 따라 적극적으로 악용된 취약점(actively exploited vulnerability)과 중대 사고(severe incident)를 통보할 수 있도록 했습니다. 이 규정 자체는 '적용'을 세 개의 날짜로 나누고 있으며, 9월 11일은 그중 하나일 뿐입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 17일에 사실을 확인했으며, EU 집행위원회의 통보 의무 페이지, ENISA의 가동 보도자료와 FAQ, 그리고 관보(Official Journal)에 게재된 규정 전문을 참고했습니다. 본 사이트는 직접 시험해 보지 않았고, 플랫폼으로 통보를 실제로 제출해 본 적도 없습니다. 아래 내용은 제품을 비교하거나 기기를 업그레이드해야 하는지 권하지 않으며, 공개된 조문과 기한만을 정리합니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 11일부터 EU 사이버복원력법 제14조의 통보 의무가 적용되기 시작했고, ENISA는 동시에 단일 통보 플랫폼을 가동했습니다. 제조자는 적극적으로 악용된 취약점이나 중대 사고를 인지한 뒤 24시간, 72시간 등의 기한에 맞춰 통보해야 합니다.",
+            "이 일정은 제조자에게만 해당합니다. 오픈소스 소프트웨어 관리자(steward)에게 적용되는 동일한 의무와 규정의 나머지 대부분은 2027년 12월 11일이 되어야 적용됩니다.",
+            "ENISA는 플랫폼이 현재 '초기 운영 역량'(initial operating capability) 단계에 있다고 설명합니다. 영어 인터페이스만 지원하고, 응용 프로그램 인터페이스(API)가 없으며, 제15조의 자율 통보 기능도 아직 열리지 않았습니다.",
+            "이 글이 확인한 공식 페이지들은 플랫폼 가동 이후 몇 건의 통보가 접수되었는지 공개하지 않았고, 이 글 역시 기기를 업그레이드해야 하는지는 권하지 않습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "제71조의 세 날짜, 9월 11일은 제14조 차례일 뿐"
+        },
+        {
+          "type": "paragraph",
+          "text": "사이버복원력법 제71조 제2항은 '적용'을 세 개의 날짜로 나눕니다. 규정 전체는 원칙적으로 2027년 12월 11일부터 적용되지만, 제14조(제조자의 통보 의무)는 이보다 앞서 2026년 9월 11일부터, 제4장(제35조부터 제51조까지, 적합성평가기관 통지에 관한 규정)은 더 일찍 2026년 6월 11일부터 각각 적용됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 11일에 시작되는 것은 제14조뿐입니다. EU 집행위원회 페이지는 이를 분명히 밝히고 있습니다. 제조자는 9월 11일부터 적극적으로 악용된 취약점과 제품 보안에 영향을 미치는 중대 사고를 통보해야 합니다. 오픈소스 소프트웨어 관리자는 제24조 제3항에 따라 같은 의무를 지지만, 이는 제품 개발에 관여한 범위로 한정되며 제71조 제2항에 따라 2027년 12월 11일이 되어야 적용됩니다. ENISA의 FAQ 역시 두 기산일을 구분해서 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 규정은 2024년 10월 23일 스트라스부르에서 서명되었고, 같은 해 11월 20일 관보에 게재되었습니다. 제71조 제1항의 공식에 따르면 공표 후 20일째 되는 날 발효합니다. '발효'와 '조문이 요구하는 실제 행위'는 별개의 문제입니다. 이 글의 이어지는 모든 문장에서는 그 내용이 9월 11일에 이미 적용되는 것인지, 2027년 12월 11일이 되어야 적용되는 것인지를 밝힙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "인지한 뒤, 얼마나 빨리 통보해야 하는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "기한은 '제조자가 인지한' 시점부터 계산되며, 취약점이나 사고가 실제로 발생한 시점부터가 아닙니다. ENISA의 FAQ는 명확합니다. '통보 절차는 제조자, 또는 (향후 적용될) 오픈소스 소프트웨어 관리자가 인지한 시점에 시작된다.' 제3조 제42항은 '적극적으로 악용된 취약점'을, 악의적인 행위자가 시스템 소유자의 허락 없이 이를 악용했다는 신뢰할 수 있는 증거가 있는 경우로 정의합니다. 단순히 취약점의 존재를 아는 것만으로는 제14조 제1항의 통보 의무가 발생하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "적극적으로 악용된 취약점과 중대 사고에는 동일한 조기 경보(early warning)와 전체 통보(full notification) 기한이 적용되지만, 최종 보고서의 계산 방식은 다릅니다. 제14조 제2항에 따르면, 인지 후 부당한 지연 없이 늦어도 24시간 이내에 조기 경보를, 72시간 이내에 전체 통보를 보내고, 시정 또는 완화 조치가 마련된 뒤 14일 이내에 최종 보고서를 제출해야 합니다. 제14조 제4항에 따르면 중대 사고의 최종 보고서는 72시간 통보를 제출한 뒤 1개월 이내에 제출하면 되며, 기산점은 통보 그 자체이지 인지한 순간이 아니고, 14일 규정도 적용되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제14조 제6항은 CSIRT에 한 가지 권한을 추가로 부여합니다. 통보를 받은 CSIRT가 필요하다고 판단하면, 제조자에게 상황을 설명하는 중간 보고서(intermediate report)를 추가로 제출하도록 요구할 수 있습니다. 조기 경보, 전체 통보, 최종 보고서 외에 이 중간 보고서가 더해질 수 있는 것입니다. EU 집행위원회의 통보 페이지는 이 네 가지 기한을 한 문장으로 압축해서 설명합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "단계",
+            "기한",
+            "기산점",
+            "근거 조문"
+          ],
+          "rows": [
+            [
+              "조기 경보",
+              "24시간 이내",
+              "제조자가 취약점이나 사고를 인지",
+              "제14조 제2항(a)·제4항(a)"
+            ],
+            [
+              "전체 통보",
+              "72시간 이내",
+              "제조자가 취약점이나 사고를 인지",
+              "제14조 제2항(b)·제4항(b)"
+            ],
+            [
+              "최종 보고서(취약점)",
+              "조치 마련 후 14일 이내",
+              "시정 또는 완화 조치 마련",
+              "제14조 제2항(c)"
+            ],
+            [
+              "최종 보고서(사고)",
+              "72시간 통보 후 1개월 이내",
+              "72시간 전체 통보 제출",
+              "제14조 제4항(c)"
+            ]
+          ],
+          "caption": "사이버복원력법 제14조를 바탕으로 정리. 사실 확인일 2026년 9월 17일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "통보는 어디로 가는가: 하나의 창구, ENISA에도 동시 공유"
+        },
+        {
+          "type": "paragraph",
+          "text": "통보는 단일 통보 플랫폼을 통해 단 한 번만 제출됩니다. 제14조 제7항에 따르면 제조자는 EU 내 주요 사업장(main establishment)이 있는 회원국의 CSIRT 전자 통보 창구를 통해 통보를 제출해야 하며, 동시에 ENISA도 이를 열람할 수 있도록 해야 합니다. 집행위원회는 특히 예외적인 상황에서는 그렇지 않을 수 있다고 설명합니다. '주요 사업장'은 먼저 제품 보안에 관한 결정을 내리는 회원국을 기준으로 하고, 판단이 어려우면 고용 인원이 가장 많은 회원국을 기준으로 합니다. EU 집행위원회는 이를 한 문장으로 요약합니다. 제조자는 플랫폼을 통해 한 번만 통보하고, 그 통보는 주요 사업장이 있는 회원국의 CSIRT로 가며 동시에 ENISA도 이를 열람한다는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "EU 내에 주요 사업장이 없는 제조자는 제14조 제7항에 따라 다음 네 가지 기준을 순서대로 적용해 창구를 정합니다. 해당 제조자의 제품을 가장 많이 취급하는 공인대리인(authorised representative)이 있는 회원국, 해당 제조자의 제품을 가장 많이 시장에 출시하는 수입자(importer)가 있는 회원국, 해당 제조자의 제품을 가장 많이 공급하는 유통업자(distributor)가 있는 회원국, 이용자 수가 가장 많은 회원국입니다. ENISA는 창구를 잘못 선택하면 통보가 무효로 처리되어 올바른 창구로 다시 제출해야 할 수 있다고 경고합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "통보를 받은 CSIRT는 해당 제품이 판매되는 다른 회원국의 CSIRT에 이를 전달하고, 시장감시당국이 필요로 하는 정보를 제공합니다. 이는 제16조의 내용입니다. 제71조 제2항이 정한 조기 적용 대상 조문은 제14조와 제4장뿐이며, 제16조는 여기에 포함되지 않습니다. 그럼에도 집행위원회와 ENISA는 모두 플랫폼 자체는 제16조에 따라 구축되어 9월 11일부터 운영되고 있다고 밝히고 있습니다. 예외적인 상황에서는 CSIRT가 전달을 늦출 수 있습니다. 집행위원회에 따르면 2025년 12월 11일에 이러한 지연의 조건을 정한 위임법령(delegated act)이 이미 채택되었습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-eu-cra-reporting-20260911/diagram-1-ko.svg",
+          "alt": "4단 도해: 인지한 순간, 72시간 이내 통보, 단일 창구 제출, 다른 CSIRT로 전달",
+          "width": 1600,
+          "height": 900,
+          "caption": "통보 플랫폼의 접수와 전달 흐름. 공식 페이지와 사이버복원력법을 바탕으로 정리. 사실 확인일 2026년 9월 17일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이용자와 이미 판매된 기기에는 어떤 의미인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "이미 판매된 기기도 예외가 아닙니다. ENISA의 FAQ는 제14조의 통보 의무가 '2026년 9월 11일부터, 사이버복원력법 적용 범위에 속하는 모든 연결 제품에 적용되며, 2027년 12월 11일 이전에 이미 시장에 나온 제품도 포함한다'고 명시합니다. 몇 년 전에 구입한 공유기, 카메라, 웨어러블 기기라도 EU 시장에서 판매되는 제품이라면, 적극적으로 악용된 취약점이나 중대 사고가 발생했을 때 제조자는 2027년 12월의 전면 적용을 기다리지 않고 지금 바로 통보해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제14조 제8항은 제조자가 인지한 뒤 영향을 받는 이용자에게 취약점이나 사고를 알리고, 필요한 경우 이용자가 취할 수 있는 위험 완화 및 시정 조치도, 적절한 경우 구조화된 기계 판독 형식으로 함께 알리도록 요구합니다. 이 글이 확인한 공식 페이지에는 이 통지의 기한이나 언어, 방식에 대한 규정은 보이지 않습니다. 오해하기 쉬운 부분은, 통보 의무가 있다고 해서 '기기가 더 빨리 수정 업데이트를 받는다'는 뜻은 아니라는 점입니다. 이는 제13조의 유지보수 기간 규정에 해당하며, 이 역시 2027년 12월 11일이 되어야 적용됩니다. 이 글이 확인한 공식 페이지에도 통보 의무 시행이 수정 업데이트를 더 빠르게 만든다는 내용은 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "통보된 취약점이 자동으로 공개되는 것도 아닙니다. 제17조 제5항에 따르면 시정 또는 완화 조치가 마련되고 제조자가 동의한 경우에 한해, ENISA가 이미 공개된 취약점을 유럽 취약점 데이터베이스(European vulnerability database, EUVD)에 추가합니다. 과징금과 관련해서는 제64조가 상한을 정하고 있는데, 제13조·제14조 및 부속서 I의 보안 요구사항을 위반한 경우 최대 1,500만 유로, 또는 위반 기업의 직전 회계연도 전 세계 연간 매출액의 2.5% 중 더 높은 금액이 상한이 됩니다. 실제 제재 규정은 각 회원국이 정해 집행위원회에 통지합니다. 제64조는 제71조 제2항이 정한 조기 적용 대상 조문에 포함되어 있지 않으며, 이 글이 확인한 세 개의 공식 페이지 모두 과징금을 언급하지 않았고, 지금부터 2027년 12월 사이에 제14조 위반이 처벌되는지에 대해서도 설명하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "플랫폼은 지금 어디까지 갖춰졌는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "ENISA는 이번에 가동한 플랫폼을 '초기 운영 역량'(initial operating capability)이라고 표현하며, 완성된 버전이 아니라고 밝힙니다. FAQ는 아직 갖춰지지 않은 기능을 나열합니다. 가동 시점에는 인터페이스가 영어만 지원하고, 응용 프로그램 인터페이스(API)가 없어 통보는 플랫폼 화면을 통해서만 제출해야 하며, 제15조의 자율 통보(취약점, 위협, 사고, 미수 사고에 관한)도 아직 열리지 않아 현재는 제14조에 따른 의무 통보만 접수합니다. ENISA는 자율 통보가 '향후 단계'에 도입될 것이라고 밝혔지만, 응용 프로그램 인터페이스와 다른 언어 버전에 대해서는 다음 단계에서 '검토할 수 있다', '재검토할 것이다'라고만 밝혔을 뿐, 구체적인 일정은 제시하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플랫폼은 소비자의 고장 신고 창구도 아닙니다. 현재 버전이 받아들이는 것은 제조자가 제14조에 따라 제출하는 의무 통보뿐이며, 제조자가 아닌 사람이 제출한 통보는 무효로 표시될 수 있습니다. ENISA는 또한 알려진 결함 하나를 스스로 공개했습니다. 72시간 카운트다운 타이머는 실제로는 24시간 조기 경보를 제출한 시점부터 48시간을 기준으로 하기 때문에, 경우에 따라 제조자가 인지한 지 72시간이 지나기 전에도 통보가 '기한 초과'로 표시될 수 있습니다. ENISA는 타이머 표시가 법적 의무 자체를 대신하지 않는다고 강조합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "통보를 제출할 수 있는 사람에게도 자격 제한이 있습니다. 제조자 한 곳당 '주 지정대표자'(Primary AR)는 한 명만 둘 수 있고, '부 지정대표자'(Secondary AR)는 최대 20명까지 둘 수 있으며, 모두 다요소 인증을 지원하는 EU 로그인(EU Login) 계정으로 로그인해야 합니다. 플랫폼에는 현재 이 외의 별도 법인 인증 수단이 없습니다. 같은 제조자의 주 지정대표자와 부 지정대표자는 원래 누가 제출했는지와 관계없이 해당 제조자의 통보를 모두 볼 수 있으며, 아직 제출하지 않은 임시 저장본만 각자의 계정에 남습니다. 이 글이 확인한 공식 페이지에는 가동 이후 몇 건의 통보가 접수되었는지, 몇 개 제조자가 등록되었는지 공개되어 있지 않아 이 글도 이러한 수치는 다루지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "제 기기는 EU에서 구입한 것이 아닌데, 이 통보 의무가 저와 관련이 있나요?",
+              "answer": "사이버복원력법 제2조는 적용 범위를 '(EU) 시장에서 제공되며 기기나 네트워크에 연결되는 기능을 가진 연결 제품'으로 정하고 있습니다. 이 글이 2026년 9월 17일 기준으로 확인한 공식 페이지에는 대만이나 EU 역외 시장을 특정해 설명한 내용이 보이지 않습니다. 제14조 제7항이 다루는 것은 통보를 어느 나라의 창구로 보낼지(제조자가 EU 내에 주요 사업장이 없을 때의 판단 방법 포함)일 뿐이며, 이용자가 어디에 있는지와는 관련이 없습니다. 규정이 적용되는지를 결정하는 것은 여전히 제2조가 정한 시장 범위입니다. 이 글은 조문 자체가 정한 범위를 인용할 수 있을 뿐, 독자가 가진 기기가 해당하는지 판단해 드릴 수는 없습니다."
+            },
+            {
+              "question": "제가 직접 발견한 기기의 취약점을 이 플랫폼으로 통보할 수 있나요?",
+              "answer": "아니요. ENISA의 FAQ는 현재 버전의 플랫폼이 제조자가 제14조에 따라 제출하는 의무 통보만 받는다고 분명히 밝히고 있습니다. 제조자가 아닌 사람이 통보를 제출하면 플랫폼에서 무효로 표시될 수 있으며, ENISA는 대신 자국의 CSIRT에 직접 연락할 것을 권합니다. 제15조는 원래 누구나 이용할 수 있는 자율 통보 창구로 설계되었지만, ENISA에 따르면 이 기능은 현재 버전의 플랫폼에서는 아직 열려 있지 않습니다."
+            },
+            {
+              "question": "통보한 뒤에는 제 기기에 무슨 일이 있었는지 알 수 있나요?",
+              "answer": "이 글이 확인한 공식 페이지에는 구체적인 통지 기한이 나와 있지 않습니다. 제14조 제8항은 제조자가 인지한 뒤 영향을 받는 이용자(적절한 경우 모든 이용자)에게 취약점이나 사고를 알리고, 필요한 경우 이용자가 취할 수 있는 완화·시정 조치도 함께 알리도록 요구합니다. 다만 조문에는 제조자가 '적시에' 알리지 못한 경우 CSIRT가 대신 이용자에게 알릴 수 있다고만 적혀 있을 뿐, 통지를 얼마나 빨리 보내야 하는지나 언어, 방식까지는 정해져 있지 않습니다. 취약점 자체도 자동으로 공개되지 않습니다. 제17조 제5항에 따라 시정 조치가 마련되고 제조자가 동의한 경우에 한해, ENISA는 이미 공개된 취약점을 유럽 취약점 데이터베이스에 추가합니다."
+            },
+            {
+              "question": "몇 년 전에 산 오래된 기기도 제조자가 통보해야 하나요?",
+              "answer": "공식 페이지에 따르면 그렇습니다. ENISA의 FAQ는 제14조의 통보 의무가 '2026년 9월 11일부터, 사이버복원력법 적용 범위에 속하는 모든 연결 제품에 적용되며, 2027년 12월 11일 이전에 이미 시장에 나온 제품도 포함한다'고 명시합니다. 이는 일반적인 경과 규정과는 다릅니다. 보통 오래된 제품은 '이후 실질적으로 변경된' 경우에만 새 규정을 따르면 되지만, 통보 의무에는 이러한 제한이 없어 제품의 신구를 가리지 않고 적용됩니다."
+            },
+            {
+              "question": "2027년 12월 11일 이후에는 또 어떤 규정이 추가되나요?",
+              "answer": "그 시점이 되면 사이버복원력법이 원칙적으로 전면 적용됩니다. 이 글에서 자세히 다루지 않은 내용으로는 다음이 있습니다. 제13조 제8항은 제조자에게 최소 5년의 유지보수 지원 기간을 두도록 요구하지만, 제품의 예상 사용 기간이 5년보다 짧으면 지원 기간은 그 예상 사용 기간과 같아집니다. 제13조 제9항은 지원 기간 중 제공된 모든 보안 업데이트를 배포 후 최소 10년, 또는 지원 기간의 남은 기간 중 더 긴 쪽 동안 계속 이용할 수 있도록 요구합니다. 제24조 제3항은 오픈소스 소프트웨어 관리자에게도 제조자와 같은 통보 의무를 부과하되, 제품 개발에 관여한 범위로 한정합니다. 이 글이 확인한 공식 페이지는 이러한 내용을 규정의 주요 의무로 묶어서 설명하며, 이미 시행 중인 제14조 통보 의무와는 구분해서 다룹니다."
+            },
+            {
+              "question": "통보 의무를 어기면 과징금은 얼마나 되나요?",
+              "answer": "제64조가 정한 상한은, 제13조·제14조 및 부속서 I의 보안 요구사항을 위반한 경우 최대 1,500만 유로, 또는 위반 기업의 직전 회계연도 전 세계 연간 매출액의 2.5% 중 더 높은 금액입니다. 다만 실제 제재 규정은 각 회원국이 정해 EU 집행위원회에 통지합니다. 제64조 자체는 제71조 제2항이 정한 조기 적용 대상 조문에 포함되어 있지 않으며, 이 글이 확인한 세 개의 공식 페이지 모두 과징금을 언급하지 않았고, 지금부터 2027년 12월 11일 사이에 제14조 위반이 어떻게(혹은 처벌되지 않는지) 처리되는지도 설명하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "세 날짜를 혼동하지 마세요",
+          "text": "사이버복원력법 제71조 제2항은 한 번에 세 개의 날짜를 정합니다. 규정 전체는 원칙적으로 2027년 12월 11일부터 적용되고, 제14조(제조자의 통보 의무)는 이보다 앞서 2026년 9월 11일부터, 제4장(적합성평가기관 통지)은 더 일찍 2026년 6월 11일부터 이미 적용되고 있습니다. 이 글은 공식 페이지와 조문에 적힌 내용만을 정리한 것이며, 사실 확인일은 2026년 9월 17일입니다. 이후 플랫폼에 변경이 있으면 그 시점의 EU 집행위원회와 ENISA 공식 페이지 내용을 기준으로 삼으시기 바라며, 이 글은 기기를 업그레이드해야 하는지나 어떤 제조사를 선택해야 하는지에 대한 조언은 제공하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple, EU 대상 새 App 사업 조건 발표: 코어 테크놀로지 수수료 5%로, 대체 결제도 동시 사용 가능",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "EU 집행위원회: 사이버복원력법 통보 의무 페이지",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA 보도자료: 단일 통보 플랫폼 가동 시작",
+          "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA: 단일 통보 플랫폼 자주 묻는 질문",
+          "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "EUR-Lex: 관보에 게재된 Regulation (EU) 2024/2847(사이버복원력법) 전문",
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "欧盟《网络弹性法案》通报义务开始适用：9 月 11 日起，谁要多快通报",
+      "description": "2026 年 9 月 11 日，欧盟《网络弹性法案》第 14 条的通报义务开始适用，欧盟网络安全局（ENISA）同步启用单一通报平台。本文依据欧盟委员会通报义务页面、ENISA 新闻稿与常见问答，以及《欧盟公报》刊登的条例全文，说明制造商要多快通报、通报送到哪里、哪些义务已经适用、哪些要到 2027 年 12 月才轮到，并整理第 64 条订出的罚款上限。",
+      "hero": {
+        "src": "/guides/tech-news-eu-cra-reporting-20260911/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一个时钟，箭头指向一份右上角带着警示三角形的通报文件，再由箭头送到中央的圆形平台，平台以三条线分别连到右侧三个圆点，代表通报经单一平台转送各国的应急小组",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 11 日，欧盟《网络弹性法案》（Cyber Resilience Act，Regulation (EU) 2024/2847）的通报义务开始适用：欧盟网络安全局（ENISA）同步启用“单一通报平台”（Single Reporting Platform，SRP），让制造商依第 14 条通报遭积极利用的漏洞与重大网络安全事件。条例本身把“适用”拆成三个日期，9 月 11 日只是其中一个。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 17 日查核，读的是欧盟委员会的通报义务页面、ENISA 的启用新闻稿与常见问答，以及《欧盟公报》刊登的条例全文。本站没有实际提交通报，也没有对平台做实测；下文不比较厂商、不建议是否该升级设备，只整理官方公开的条文与期限。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 11 日起，欧盟《网络弹性法案》第 14 条的通报义务开始适用，ENISA 同步启用单一通报平台，制造商必须在知悉遭积极利用的漏洞或重大网络安全事件后，依 24 小时、72 小时等期限通报。",
+            "这个时间表只涵盖制造商：开源软件维护者的同类义务，以及条例其余大部分内容，要到 2027 年 12 月 11 日才适用。",
+            "ENISA 说明，平台目前是“初始运行能力”，只支持英文界面，没有应用程序接口，第 15 条的自愿通报功能也还没开放。",
+            "本文查到的官方页面没有公布平台上线以来收到几件通报，本文也不提供是否该升级设备的建议。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "第 71 条的三个日期，9 月 11 日只轮到第 14 条"
+        },
+        {
+          "type": "paragraph",
+          "text": "《网络弹性法案》第 71 条第 2 款把“适用”拆成三个日期：整部条例原则上自 2027 年 12 月 11 日起适用；第 14 条（制造商的通报义务）提前自 2026 年 9 月 11 日起适用；第四章（第 35 条至第 51 条，符合性评估机构的通知）更早，自 2026 年 6 月 11 日起就已适用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 11 日开始要求的只有第 14 条。欧盟委员会的页面写得很直接：制造商自 9 月 11 日起必须通报遭积极利用的漏洞与重大网络安全事件；开源软件维护者依第 24 条第 3 款承接同一种义务，但仅以其涉入产品开发的范围为限，且依第 71 条第 2 款要到 2027 年 12 月 11 日才轮到，ENISA 常见问答也把两者的起算日分开讲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这部条例 2024 年 10 月 23 日在斯特拉斯堡签署，同年 11 月 20 日刊登于《欧盟公报》。依第 71 条第 1 款的公式，公告后第 20 天生效。“生效”跟“条文要求你做什么”是两件事——本文接下来每一句，都会标明是 9 月 11 日已适用，还是要到 2027 年 12 月 11 日才适用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "知悉之后，通报要在多快之内送出"
+        },
+        {
+          "type": "paragraph",
+          "text": "期限从“制造商知悉”那一刻起算，不是从漏洞或事件实际发生的时间点起算。ENISA 常见问答写明：通报流程始于制造商，或（日后适用的）开源软件维护者知悉的那一刻。第 3 条第 42 款定义“遭积极利用的漏洞”：要有可靠证据显示已有恶意行为者在未经系统所有者许可下加以利用——单纯知道弱点存在，还不会触发第 14 条第 1 款的通报义务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遭积极利用的漏洞与重大网络安全事件，适用同一套早期预警与完整通报期限，但最终报告的算法不同。第 14 条第 2 款：知悉后不得无故拖延，最迟 24 小时内送早期预警、72 小时内送完整通报，最终报告在修补或缓解措施备妥后 14 天内送出。第 14 条第 4 款规定，重大网络安全事件的最终报告则是在 72 小时通报送出后 1 个月内提交，起算点是通报本身，不是知悉那一刻，也不适用 14 天的规则。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第 14 条第 6 款另外给了 CSIRT 一项权限：收到通报的 CSIRT 如认为有必要，可要求制造商补交中间报告，说明状态更新——早期预警、完整通报与最终报告之外，还可能有这一份。欧盟委员会的通报页面把上面这四个期限浓缩成同样一句话。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "阶段",
+            "期限",
+            "起算点",
+            "依据条款"
+          ],
+          "rows": [
+            [
+              "早期预警",
+              "24 小时内",
+              "制造商知悉漏洞或事件",
+              "第 14 条第 2 款 (a)、第 4 款 (a)"
+            ],
+            [
+              "完整通报",
+              "72 小时内",
+              "制造商知悉漏洞或事件",
+              "第 14 条第 2 款 (b)、第 4 款 (b)"
+            ],
+            [
+              "最终报告（漏洞）",
+              "措施备妥后 14 天内",
+              "修补或缓解措施备妥",
+              "第 14 条第 2 款 (c)"
+            ],
+            [
+              "最终报告（事件）",
+              "72 小时通报后 1 个月内",
+              "提交 72 小时完整通报",
+              "第 14 条第 4 款 (c)"
+            ]
+          ],
+          "caption": "依《网络弹性法案》第 14 条整理，查核日 2026 年 9 月 17 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "通报送到哪里：一个窗口，同步 ENISA"
+        },
+        {
+          "type": "paragraph",
+          "text": "通报只通过单一平台送出一次。第 14 条第 7 款规定，制造商要用其在欧盟主要营业地 CSIRT 的电子通报窗口送出，并同步让 ENISA 看到；欧盟委员会说明，特别例外情形下不在此限。“主要营业地”先看决定产品网络安全决策的成员国；无法判断时，改看雇用人数最多的成员国。欧盟委员会浓缩成一句：制造商只通过平台通报一次，送到主要营业地的 CSIRT，同时让 ENISA 看到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "没有在欧盟设主要营业地的制造商，依第 14 条第 7 款，依序改用四种身份之一判断窗口：代理其最多产品的授权代表所在国、在市场上投放其最多产品的进口商所在国、供货其最多产品的经销商所在国，或用户数最多的成员国。ENISA 提醒，选错窗口的后果不小：通报可能被判定无效，须重新送到正确窗口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收到通报的 CSIRT 会转发给产品有上市的其他成员国 CSIRT，并提供市场监督机构所需信息——这是第 16 条的内容。第 71 条第 2 款列出的提前适用条文只有第 14 条与第四章，第 16 条不在其中；不过欧盟委员会与 ENISA 都写明，平台就是依第 16 条建立、自 9 月 11 日起运作。特殊情形下 CSIRT 可延后转发；欧盟委员会说明，2025 年 12 月 11 日已通过一项授权法案订出延后条件。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-eu-cra-reporting-20260911/diagram-1-zh-cn.svg",
+          "alt": "四格图解：知悉当下、72 小时内通报、送单一窗口、转发其他 CSIRT",
+          "width": 1600,
+          "height": 900,
+          "caption": "通报平台的收送流程，依官方页面与《网络弹性法案》整理，查核日 2026 年 9 月 17 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "对用户与已经卖出的设备，这代表什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "已卖出的设备不是例外。ENISA 常见问答写出，第 14 条的通报义务“自 2026 年 9 月 11 日起，适用于所有落在《网络弹性法案》范围内的联网产品，包括 2027 年 12 月 11 日前已上市的产品”。家里这几年买的路由器、摄像头或穿戴设备，只要在欧盟市场销售，遇到遭积极利用的漏洞或重大网络安全事件，制造商现在就要通报，不必等 2027 年 12 月新规则全面适用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第 14 条第 8 款要求制造商知悉后把漏洞或事件告知受影响用户，必要时一并说明风险缓解与更正措施，适当时用结构化、机器可读格式——本文查到的官方页面没有替这件事订通知期限，也没规定语言或渠道。容易误会之处：通报义务不等于“设备会更快拿到修补更新”——那属于第 13 条的维护期限规定，同样要到 2027 年 12 月 11 日才适用，本文查到的官方页面也没讲通报义务开始适用会让修补变快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通报的漏洞不会自动公开：第 17 条第 5 款规定，须修补或缓解措施备妥、且制造商同意，ENISA 才会把已公开的漏洞加进欧洲漏洞数据库（European vulnerability database，EUVD）。罚则方面，第 64 条上限是违反第 13、14 条与附件一网络安全要求者最高罚 1500 万欧元，或违规企业全球前一会计年度总营业额 2.5%，取其高，实际规则由成员国自订并通知欧盟委员会。第 64 条不在第 71 条第 2 款列出的提前适用条文里；本文查到的三个官方页面都没有提到罚款，也没有说明现在到 2027 年 12 月之间违反第 14 条会不会被罚。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "平台现在完成到哪里"
+        },
+        {
+          "type": "paragraph",
+          "text": "ENISA 用“初始运行能力”形容这次上线的平台，不是完工版本。常见问答列出还没有的功能：上线时只支持英文界面；没有应用程序接口，通报须通过平台界面送出；第 15 条的自愿通报（漏洞、威胁、事件与未遂事件）也还没开放，目前只接受第 14 条的强制通报。ENISA 说自愿通报会在“未来阶段”开放，应用程序接口与其他语言版本则只说会在下一阶段评估，都没有给出时间表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平台也不是消费者的报修渠道：现在版本只支持制造商依第 14 条送出的强制通报，不是制造商的人送出的通报可能被标记为无效。ENISA 也公开承认一个已知缺陷：72 小时倒计时器是从送出 24 小时早期预警起算 48 小时，因此有些通报会在知悉未满 72 小时就显示逾期；ENISA 强调计时器显示不取代法定义务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送出通报的人也有身份限制：每家制造商只能有一位“主要指定代表”，最多可有 20 位“次要指定代表”，须用具备多因素认证的 EU Login 账号登录，平台目前没有额外的企业身份验证机制；同一家制造商的主要与次要代表都看得到该制造商的通报，不分原本是谁送出，只有尚未送出的草稿留在各自账号里。本文查到的官方页面没有公布上线以来收到几件通报、几家制造商注册，本文因此不写这类数字。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的设备不是在欧盟买的，通报这件事跟我有关系吗？",
+              "answer": "《网络弹性法案》第 2 条把适用范围定在“在（欧盟）市场上销售、且具有连接设备或网络功能的联网产品”。以本文查到 2026 年 9 月 17 日为止的官方页面，没有看到针对台湾或欧盟以外市场的说明；第 14 条第 7 款处理的只是通报要送到哪一国的窗口（包含制造商没有在欧盟设主要营业地时怎么判断），跟用户人在哪里无关；决定条例管不管得到的，仍然是上面第 2 条的市场范围。本文只能引用条文本身怎么定范围，无法替读者判断自己手上的设备算不算。"
+            },
+            {
+              "question": "我自己发现设备有漏洞，可以通过这个平台通报吗？",
+              "answer": "不行。ENISA 的常见问答明白写出，目前版本的平台只支持制造商依第 14 条送出的强制通报；不是制造商的人如果送出通报，可能会被平台标记为无效，建议改成直接联系自己国家的 CSIRT。第 15 条原本设计了给任何人使用的自愿通报渠道，但 ENISA 说目前的平台版本还没开放这项功能。"
+            },
+            {
+              "question": "通报之后，我会知道自己的设备出了什么事吗？",
+              "answer": "本文查到的官方页面没有写出特定的通知期限。第 14 条第 8 款要求制造商在知悉后把漏洞或事件告知受影响的用户，适当时也通知所有用户，必要时并说明可以采取的缓解或更正措施；但条文只写制造商未“及时”告知时，CSIRT 可以代为通知用户，没有订出通知要多快送出，也没规定语言或渠道。漏洞本身也不会自动公开：第 17 条第 5 款规定，只有在修补措施备妥、而且制造商同意之后，ENISA 才会把已公开的漏洞加进欧洲漏洞数据库。"
+            },
+            {
+              "question": "已经买了好几年的旧设备，制造商也要通报吗？",
+              "answer": "以官方页面的说法是要的。ENISA 常见问答写着，第 14 条的通报义务“自 2026 年 9 月 11 日起，适用于所有落在《网络弹性法案》范围内的联网产品，包括 2027 年 12 月 11 日前就已经上市的产品”。这跟一般的过渡规定不同——一般规定是旧产品只有在“之后被实质变更”才要符合新规则，但通报义务不受这个限制，不分新旧都算。"
+            },
+            {
+              "question": "2027 年 12 月 11 日之后，又会多出什么规定？",
+              "answer": "届时整部《网络弹性法案》原则上全面适用，包括本文没有细谈的部分：第 13 条第 8 款要求制造商订出至少 5 年的维护支持期，但产品预期使用时间不到 5 年时，支持期就等于预期使用时间；第 13 条第 9 款要求支持期内提供过的每一项安全更新，发布后至少保留 10 年，或保留到支持期结束为止，取其长；第 24 条第 3 款让开源软件维护者也要承接和制造商相同的通报义务，以其涉入产品开发的范围为限。本文查到的官方页面把这部分统称为条例的主要义务，和现在已经开始适用的第 14 条通报义务分开讲。"
+            },
+            {
+              "question": "违反通报义务会被罚多少钱？",
+              "answer": "第 64 条订的上限，是违反第 13 条、第 14 条与附件一网络安全要求者最高可罚 1500 万欧元，或违规企业全球前一会计年度总营业额的 2.5%，两者取其高；但实际罚则规则由各成员国自订并通知欧盟委员会。第 64 条本身不在第 71 条第 2 款列出的提前适用条文里，而本文查到的三个官方页面都没有提到罚款，也没有说明现在到 2027 年 12 月 11 日之间违反第 14 条会不会被罚、怎么罚。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三个日期不要混在一起",
+          "text": "《网络弹性法案》第 71 条第 2 款一次订了三个日期：整部条例原则上自 2027 年 12 月 11 日起适用，第 14 条（制造商的通报义务）自 2026 年 9 月 11 日起提前适用，第四章（符合性评估机构的通知）则早在 2026 年 6 月 11 日就已经适用。本文只整理官方页面与条例条文写出来的内容，查核日为 2026 年 9 月 17 日；平台之后如有调整，请以欧盟委员会与 ENISA 的官方页面当下内容为准，本文不提供是否该升级设备或选择哪家厂商的建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 公布欧盟新版 App 商业条款：核心技术抽成 5%、可同时使用替代支付",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "欧盟委员会：《网络弹性法案》通报义务页面",
+          "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA 新闻稿：单一通报平台正式启用",
+          "url": "https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "ENISA：单一通报平台常见问答",
+          "url": "https://www.enisa.europa.eu/topics/product-security/single-reporting-platform-srp/frequently-asked-questions",
+          "checked_on": "2026-09-17"
+        },
+        {
+          "title": "EUR-Lex：《欧盟公报》刊登的 Regulation (EU) 2024/2847（网络弹性法案）全文",
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng",
+          "checked_on": "2026-09-17"
+        }
+      ]
+    }
+  }
+}

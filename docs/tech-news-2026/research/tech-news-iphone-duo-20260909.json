@@ -1,0 +1,832 @@
+{
+  "slug": "tech-news-iphone-duo-20260909",
+  "event_date": "2026-09-09",
+  "event_date_basis": "發表日與發布日同一天，都是 2026-09-09。Apple Newsroom 英文頁面自己標「September 9, 2026」，繁體中文頁面標「2026 年 9 月 9 日」。Apple Newsroom Atom feed 該筆的 <updated> 是 2026-09-09T18:15:40.996Z（UTC），換算台灣時間是 2026-09-10 凌晨，但 Apple 自己在頁面上標示的日期是 9 月 9 日，slug 與 news_date 都用 2026-09-09，文章第一句寫的也是發表日。三個日期不同、分開記：發表日 2026-09-09、預購日 2026-10-16、首波供貨日 2026-10-23（第二波 2026-10-30，Apple 未公布名單）。",
+  "title": "Apple 發表 iPhone Duo：螢幕、電池與台灣上市時程整理",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "Apple unveils iPhone Duo",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "publisher": "Apple Inc.（Apple Newsroom）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Apple 發表 iPhone Duo",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "publisher": "Apple Inc.（Apple Newsroom 台灣）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "iPhone Duo - 技術規格 - Apple (台灣)",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "publisher": "Apple Inc.（台灣）",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Apple unveils iPhone Duo（新加坡版，用於佐證各語系地區名單差異）",
+      "url": "https://www.apple.com/sg/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "publisher": "Apple Inc.（Apple Newsroom 新加坡）",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條來源全部於 2026-09-17 由撰稿者重抓、並由獨立查核代理同日各自 curl -sL -A \"Mokaair-editorial\" 重抓一次、讀到正文：英文版新聞稿 HTTP 200／341,693 bytes、繁體中文版 200／298,040、台灣技術規格頁 200／251,311、新加坡版 200／330,229，四頁都是真的新聞稿／規格內文，沒有擋阻頁或軟性 404。`checked_on` 依 BRIEF 寫實際讀到正文那一天，因此內容包四條 source、研究紀錄、正文第二段、表格 caption、圖解 caption、正文與 FAQ 的「查核到…」句全部統一為 2026-09-17（前一輪留在 2026-09-16，與實際重讀日不符）。位元組數只是快照，不寫進文章，也不當成頁面未變的證明。另外抓過 Apple Newsroom Atom feed（20 筆滾動視窗）、uk／jp／au 版新聞稿、同日 iPhone 18 Pro 的英文版與繁體中文版對照組、以及 apple.com/tw/shop/buy-iphone/iphone-duo（JavaScript 商店頁）——這些都不列入 sources[]，只作交叉比對。新加坡版頁面自己標的日期是 September 10, 2026（當地日期），與英文版的 September 9, 2026 不同；文章的事件日只用 2026-09-09，不混用。四條 sources 涵蓋本文全部事實，沒有事實掛在表列之外的網址。",
+  "verified_facts": [
+    {
+      "fact": "Apple 的英文新聞稿標題為「Apple unveils iPhone Duo」，文件型別標示為 PRESS RELEASE，日期為 September 9, 2026，發稿地為 CUPERTINO, CALIFORNIA。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple unveils iPhone Duo"
+    },
+    {
+      "fact": "Apple 繁體中文新聞稿標題為「Apple 發表 iPhone Duo」，標示「新聞發佈」，日期為 2026 年 9 月 9 日。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple 發表 iPhone Duo"
+    },
+    {
+      "fact": "Apple 稱 iPhone Duo 為「the first foldable iPhone」（第一款可摺疊 iPhone）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple today introduced iPhone Duo, the first foldable iPhone."
+    },
+    {
+      "fact": "新聞稿中的引言署名為「John Ternus, Apple's CEO」。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "said John Ternus, Apple's CEO"
+    },
+    {
+      "fact": "Apple 表示 iPhone Duo 是「the most transformational change to iPhone since the original」。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "iPhone Duo is the most transformational change to iPhone since the original."
+    },
+    {
+      "fact": "獨立查核新增：同一句在繁體中文版新聞稿有 Apple 自己的官方中文，署名寫成「Apple CEO John Ternus 表示」。原稿正文用引號引了一句自製翻譯（「iPhone 自初代機型以來最具變革性的一次改變」），那個字串在任何一條 source 上都搜尋不到；本輪正文改引繁中版原句。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "iPhone Duo 是繼首代推出以來最具變革性的 iPhone。"
+    },
+    {
+      "fact": "must_add：Apple 表示 iPhone Duo 打開時是「歷來最薄的 iPhone」（thinnest iPhone ever）。前一輪只記在 not_said，本輪以 Apple 表示入稿。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Opened, it is the thinnest iPhone ever"
+    },
+    {
+      "fact": "must_add：Apple 表示 iPhone Duo 擁有「iPhone 歷來最大的螢幕」（the largest display ever on iPhone），Ternus 另外複述這是「仍能輕鬆放進口袋」的最大螢幕。前一輪只記在 not_said，本輪以 Apple 表示入稿。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "iPhone Duo features the largest display ever on iPhone"
+    },
+    {
+      "fact": "內螢幕為 7.6 吋 Super Retina XDR（超 Retina XDR）顯示器；外螢幕為 5.4 吋 Super Retina XDR 顯示器。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a 5.4-inch outer Super Retina XDR display ... the 7.6-inch inner Super Retina XDR display"
+    },
+    {
+      "fact": "Apple 表示外螢幕提供 iPhone 18 Pro 螢幕面積的 90%（90 percent of the screen area of iPhone 18 Pro）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "provides 90 percent of the screen area of iPhone 18 Pro"
+    },
+    {
+      "fact": "Apple 表示內螢幕比 iPhone 18 Pro Max 大 50%（50 percent larger than iPhone 18 Pro Max）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the 7.6-inch inner Super Retina XDR display is 50 percent larger than iPhone 18 Pro Max"
+    },
+    {
+      "fact": "註腳說明：以標準矩形量測時，內螢幕對角線為 7.58 吋、外螢幕為 5.36 吋，實際可視區域較小。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When measured as a standard rectangular shape, the inner display screen is 7.58 inches diagonally, and the outer display screen is 5.36 inches diagonally. The actual viewable area is smaller."
+    },
+    {
+      "fact": "兩個螢幕顯示比例相同，內容可按比例縮放。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Both displays share the same aspect ratio, so content scales proportionally"
+    },
+    {
+      "fact": "兩個螢幕均支援 ProMotion、永遠顯示（Always On），戶外峰值亮度 3000 尼特。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The displays also feature ProMotion, Always On, and 3000 nits of peak outdoor brightness."
+    },
+    {
+      "fact": "must_fix 9（verbatim_quote 不可用「 / 」接兩個頁面元素）：原第 11 條把內、外螢幕解析度用「 / 」接成一句，本輪拆成兩條。技術規格頁列出內螢幕解析度 1878 x 2670 像素、430 ppi。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "1878 x 2670 像素，430 ppi 解析度"
+    },
+    {
+      "fact": "技術規格頁列出外螢幕解析度 1398 x 2034 像素、460 ppi。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "1398 x 2034 像素，460 ppi 解析度"
+    },
+    {
+      "fact": "技術規格頁列出亮度為：1000 尼特最大亮度（標準）、1600 尼特峰值亮度（HDR）、3000 尼特峰值亮度（室外）、1 尼特最低亮度；對比度 2,000,000:1（標準）。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "1000 尼特最大亮度 (標準)；1600 尼特峰值亮度 (HDR)；3000 尼特峰值亮度 (室外)；1 尼特最低亮度"
+    },
+    {
+      "fact": "技術規格頁列出 ProMotion 技術支援最高達 120Hz 自動適應更新頻率，內螢幕為 OLED 可摺疊全螢幕並具奈米紋理表面。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ProMotion 技術，支援最高達 120Hz 自動適應更新頻率"
+    },
+    {
+      "fact": "內螢幕採用頂級奈米紋理（nano-texture）表面，Apple 表示可減少眩光與反射、並「極力減少折痕的顯現」（minimizes crease visibility）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A premium nano-texture finish reduces glare and reflections, creating a matte surface that minimizes crease visibility"
+    },
+    {
+      "fact": "內螢幕下方有一個隱藏式 FaceTime 相機，不使用時保持隱藏。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Beneath the inner display, a new FaceTime camera stays hidden when not in use to keep the screen uninterrupted."
+    },
+    {
+      "fact": "Apple 說明「今年稍晚」（later this year）iPhone Duo 將支援 USB-C 版 Apple Pencil，可在任一螢幕使用。獨立查核更正：corrections-tech.md 的 must_add 與前一輪紀錄都寫「技術規格頁列出這項功能、沒有標註時間限定」，2026-09-17 重抓該頁後確認**這是錯的**——頁面原始碼是「支援 Apple&nbsp;Pencil (USB-C)<sup data-footnote=\"numbered-pencil\"><a href=\"#footnote-4\" aria-label=\"註腳 3\">3</a></sup>」，footnote-4（data-footnote=\"numbered-pencil\"）的內容就是「此功能於今年稍晚推出。」，也就是技術規格頁同樣寫明了時間。正文與 FAQ 已改成「兩處都寫今年稍晚、都沒有給確切日期或 iOS 版本」。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Later this year, iPhone Duo will support Apple Pencil with USB-C"
+    },
+    {
+      "fact": "Touch ID 整合於側邊按鈕；也可用 Apple Watch 解鎖；並具備 Camera Control（相機控制）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Touch ID is integrated into the side button ... The design also features Camera Control to quickly launch the camera"
+    },
+    {
+      "fact": "英文版另外提到 Camera Control 包含全新的 Siri Camera 模式，讓 Siri 看到使用者所見；繁體中文版同一段沒有這一句，本文不寫入正文。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "including the brand-new Siri Camera mode, which lets Siri see what the user sees to answer questions and take action"
+    },
+    {
+      "fact": "機身採用 5 級鈦金屬（grade 5 titanium），鏡面拋光外觀，3D 列印軸承蓋採微噴砂處理。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "crafted from grade 5 titanium for incredible strength, with an enclosure that has an elegant mirror-polished finish and a 3D-printed hinge cover"
+    },
+    {
+      "fact": "must_fix 3：背板為 Ceramic Shield（超瓷晶盾）；Apple 只說明 Ceramic Shield 2（超瓷晶盾 2）用於正面／外螢幕，抗刮能力是上一代的 3 倍。原稿在此條末尾加了「內螢幕不是用 Ceramic Shield 2」，查核代理判定無來源支持（英文頁只說 Ceramic Shield 2 在 front／outer display，未提內螢幕；台灣技術規格頁列「超瓷晶盾 2 面板／超瓷晶盾背板」同樣未提內螢幕），已刪除該句，內螢幕的保護方式另見下一條。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ceramic Shield protects the back of iPhone Duo, and Ceramic Shield 2 on the front has 3x better scratch resistance than the previous generation."
+    },
+    {
+      "fact": "內螢幕的保護方式是抗刮鍍膜加上奈米紋理層，該層由特製聚合物製成，Apple 表示剛度比業界其他材質最多高出 40%；摺疊面板上下有高強度玻璃、特製黏著劑，底部另有鈦金屬板。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "a custom polymer with up to 40 percent higher stiffness than other materials used in the industry"
+    },
+    {
+      "fact": "軸承由超過 100 個零組件構成，用來精準控制開合並支撐螢幕中央。獨立查核更正：整合式磁石陣列不是軸承的一部分——原文是軸承「together with an integrated magnet array, delivers a satisfying and secure closure」（繁中版：「並支撐著顯示器中央，使其打開時能保持平坦，搭配整合的磁石陣列，帶來令人滿意且安全的闔合」），磁石陣列是與軸承一起作用、負責闔合，原稿寫成「軸承由超過 100 個零組件與整合式磁石陣列構成」是把兩個元件併成一個，正文已改寫。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The hinge is engineered from more than 100 components"
+    },
+    {
+      "fact": "防水防塵為 IP68；註腳說明是在受控實驗室條件下依 IEC 60529 測試，最深 6 公尺、最長 30 分鐘，且防護力非永久、會隨耗損下降，液體損壞不在保固範圍內。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a rating of IP68 under IEC standard 60529 (maximum depth of 6 meters for up to 30 minutes)"
+    },
+    {
+      "fact": "must_add：技術規格頁列出打開時尺寸 164.6 公釐（寬度）x 117.8 公釐（高度）x 5.2 公釐（厚度），闔起時 84.1 公釐（寬度）x 117.8 公釐（高度）x 11.3 公釐（厚度），兩種狀態重量均為 254 公克（8.96 盎司）。原稿按頁面順序抄下數字但沒有標籤，查核代理指出寬／高互換是容易犯的錯，本輪逐一補上標籤並做成表格。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "164.6 公釐 ... 117.8 公釐 ... 5.2 公釐 ... 打開 ... 重量：254 公克(8.96 盎司) ... 84.1 公釐 ... 11.3 公釐 ... 闔起"
+    },
+    {
+      "fact": "must_fix 6：主相機為 48MP Fusion Main，內建光學品質 2 倍望遠，可拍 48MP，預設 24MP，Apple 表示零快門延遲，具感光元件位移式光學影像穩定。原稿把「零快門延遲」標成 is_vendor_claim=false，查核代理判定這是 Apple 的能力宣稱、非公布規格，本輪改標 true 並改寫為「Apple 表示」。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With the new 48MP Fusion Main camera, users can shoot sharp photos at up to 48MP resolution with zero shutter lag"
+    },
+    {
+      "fact": "Apple 表示低光源表現出色的是主相機（48MP Fusion Main），理由是大型感光元件、大光圈與感光元件位移式光學影像穩定。協調者 2026-09-18 更正：這條原本誤記在超廣角名下，引文是用刪節號把兩句拼起來的；en 審稿代理據此回報正文可能有錯，協調者重抓英文版新聞稿核對後，確認正文（低光源掛在主相機）是對的、錯的是這條紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The 48MP Fusion Main camera also benefits from a new computational image pipeline for sharp details, and excels in low light thanks to a large sensor, fast aperture, and sensor-shift optical image stabilization."
+    },
+    {
+      "fact": "超廣角為 48MP Fusion Ultra Wide，Apple 說明與 iPhone 18 Pro 機型相同，可拍微距。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The 48MP Fusion Ultra Wide camera — the same as on iPhone 18 Pro models — captures wider fields of view and enables macro photography"
+    },
+    {
+      "fact": "技術規格頁列出：融合主相機 26 公釐 ƒ/1.6；1200 萬像素光學品質 2 倍望遠 52 公釐 ƒ/1.6；融合超廣角 4800 萬像素 13 公釐 ƒ/2.2、120 度視角；2 倍光學品質變焦放大、2 倍光學變焦縮小、4 倍光學品質變焦範圍、最高 10 倍數位變焦；全景最高 6300 萬像素；4800 萬像素微距。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "4800 萬像素融合主相機：26 公釐、ƒ/1.6 光圈"
+    },
+    {
+      "fact": "技術規格頁列出外螢幕前鏡頭為 1200 萬像素 Center Stage 相機、ƒ/2.2；內螢幕為「螢幕下 FaceTime 相機」、ƒ/1.8、1080p 30 fps 或 60 fps，並未列出其像素數。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "螢幕下 FaceTime 相機 ... ƒ/1.8 光圈 ... 1080p 錄影，30 fps 或 60 fps"
+    },
+    {
+      "fact": "摺疊帶來的相機功能包括 Smart Take（智慧拍攝，由 A20 Pro 上的裝置端 AI 模型即時分析場景自動拍攝）、Duo Preview（雙面預覽）、Kid Cue（在外螢幕播放 Peanuts 動畫吸引小孩看鏡頭）、Duo FaceTime、FaceTime 的 Dual Capture（雙向同拍）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "With Smart Take ... Duo Preview ... Kid Cue plays animations from Peanuts ... Duo FaceTime"
+    },
+    {
+      "fact": "影片方面：48MP Fusion Main 支援 4K120 fps 杜比視界錄影；電影級效果可在拍攝後套用、最高 60 fps；Audio Mix 新演算法可隔離音樂；縮時攝影支援 4K 杜比視界 HDR。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo supports 4K120 fps recording in Dolby Vision on the 48MP Fusion Main camera"
+    },
+    {
+      "fact": "iOS 27 為 iPhone Duo 調整：Lock Screen 控制項、Home Screen 的 Dock 與 app 導覽改到側邊；打開時顯示兩頁主畫面並在左側顯示 Today View；Dynamic Island 改為垂直置於側邊。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Lock Screen controls, the Dock on the Home Screen, and app navigation and controls now appear on the side"
+    },
+    {
+      "fact": "must_fix 7：Apple 表示 Split View（分割顯示）讓使用者首次能在 iPhone 上並排開啟兩個 app，也能開同一個 app 的兩個視窗、儲存 app 配對。原稿把「首次」標成 is_vendor_claim=false，查核代理判定「for the first time」是 Apple 自己的說法，本輪改標 true。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Split View allows users to open two apps side by side on iPhone for the first time."
+    },
+    {
+      "fact": "StandBy（待機模式）升級：即使不充電也能在內或外螢幕啟用，新增行事曆與天氣顯示畫面，照片顯示畫面可顯示共享的相簿。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Set iPhone Duo down and it enters StandBy on either the outer or inner display — even when it's not charging"
+    },
+    {
+      "fact": "Apple 點名已針對摺疊設計最佳化的第三方 app 為 Netflix、Zoom、Slack（including 起頭，只是舉例）；另提到 Detail app 使用新的 Core AI 架構在裝置端執行 AI 模型。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Third-party apps, including Netflix, Zoom, and Slack"
+    },
+    {
+      "fact": "開發者可用最新 SDK 中的新增與更新 API 調整 app，Xcode 的 Device Hub 將支援 iPhone Duo。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "developers can easily adapt their apps using the new and updated APIs in the latest SDKs, and upcoming support for iPhone Duo in Device Hub in Xcode"
+    },
+    {
+      "fact": "A20 Pro 與 iPhone 18 Pro 機型是同一顆晶片，採用 2 奈米製程。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Powered by A20 Pro — the same chip in iPhone 18 Pro models"
+    },
+    {
+      "fact": "Apple 表示搭配散熱系統後，持續效能比 iPhone 17 Pro 最高提升 35%。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "delivers up to 35 percent better sustained performance than iPhone 17 Pro"
+    },
+    {
+      "fact": "must_fix 10：Apple 表示 6 核心 CPU 比 A19 Pro 最高快 20%（up to 20 percent）、是「智慧型手機中最快的 CPU」；7 核心 GPU 最高快 40%（up to 40 percent faster and more power efficient，40% 只掛在速度上，不掛在省電效率）；全新雙 16 核心神經網路引擎提供 2 倍運算力；統一記憶體頻寬增加 50%；以 2 奈米製程打造。原稿的 20%／40%／40% 三個數字本身已帶「最多／最高」在事實文字裡，本輪在正文撰寫時同樣保留這個限定詞，不寫成拿掉限定詞的整數。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the 6-core CPU is up to 20 percent faster than A19 Pro, delivering the fastest CPU in a smartphone; the 7-core GPU is up to 40 percent faster and more power efficient"
+    },
+    {
+      "fact": "晶片封裝靈感來自 M 系列，將 A20 Pro 直接連接特製均溫板（vapor chamber）；新的顯示引擎同時驅動內外兩個螢幕。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A new chip package inspired by M-series Apple silicon connects A20 Pro directly to a custom vapor chamber"
+    },
+    {
+      "fact": "技術規格頁列出 A20 Pro 為 6 核心 CPU（2 個超級核心與 4 個節能核心）、7 核心 GPU 配備神經網路加速器、雙 16 核心神經網路引擎、硬體加速光線追蹤。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "6 核心 CPU 配備 2 個超級核心與 4 個節能核心"
+    },
+    {
+      "fact": "雙電池架構：左右兩側各一顆高能量電池，透過 Apple 晶片與能源平衡演算法作為一個整體運作。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo is designed with one high-energy battery on each side"
+    },
+    {
+      "fact": "Apple 表示續航為：使用內螢幕影片播放最長 31 小時、使用外螢幕最長 44 小時、兩個螢幕平均使用時每次充電最長 24 小時。24 小時是「一般使用」（usage per charge），不是影片播放，前一輪已正確區分，本輪維持。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "up to 31 hours of video playback when using the inner display, up to 44 hours of video playback when using the outer display, and up to 24 hours of usage per charge when both displays are used equally"
+    },
+    {
+      "fact": "技術規格頁另外列出影片串流播放時間：使用外螢幕最長 37 小時、使用內螢幕最長 26 小時。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "影片串流播放時間 使用外螢幕最長可達 37 小時 使用內螢幕最長可達 26 小時"
+    },
+    {
+      "fact": "續航數字的註腳：測試由 Apple 於 2026 年 8 月以預量產機型與軟體進行，連接 LTE 與 5G 網路，依 iPhone 使用者使用數值中位數的代表性使用情境，一般使用測試是以內外螢幕平均使用為準。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Testing conducted by Apple in August 2026 using preproduction iPhone Duo units and software"
+    },
+    {
+      "fact": "must_fix 5、11：Apple 表示充電——有線約 20 分鐘可充到最多 50%，無線搭配 MagSafe 或 Qi2 約 30 分鐘充到最多 50%。這兩個數字掛的是英文版註腳 8（繁中版註腳 7）「Testing conducted by Apple in July 2026 using preproduction iPhone Duo units and software」，是 Apple 自己的受控測試，本輪標 is_vendor_claim=true。獨立查核更正：續航數字掛的是另一則註腳（英文版 7、繁中版 6），寫的是 August 2026／2026 年 8 月，兩則不是同一個註腳也不是同一個月份——corrections-tech.md must_fix 5 把它們寫成同一則、月份寫成 7 月，那是錯的。配對關係（有線＝20 分鐘、MagSafe／Qi2 無線＝30 分鐘）本來就是對的，繁體中文版新聞稿把這兩個數字配反了（寫成「搭配 MagSafe 或 Qi2 充電器，iPhone Duo 約 20 分鐘即可充至最多 50% 電量，或無線充電約 30 分鐘即可充至最多 50% 電量」），本文採用英文版與技術規格頁一致的配對，並依 BRIEF 型態 8 在正文寫明兩版差異與各自出處，不再安靜擇一。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "iPhone Duo can charge up to 50 percent in around 20 minutes or wirelessly charge up to 50 percent in around 30 minutes with a MagSafe or Qi2 charger"
+    },
+    {
+      "fact": "must_fix 9：技術規格頁列出 MagSafe 無線充電最高可達 25W。原第 46 條把這句與 Qi2、內建電池兩個頁面元素用「 / 」接成一句 verbatim_quote，本輪拆開，只保留這一句本身連續出現在頁面上的部分。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "MagSafe 無線充電最高可達 25W"
+    },
+    {
+      "fact": "技術規格頁列出 Qi2 無線充電最高可達 25W；內建充電式雙鋰離子電池。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Qi2 無線充電最高可達 25W"
+    },
+    {
+      "fact": "獨立查核新增：技術規格頁的「支援快速充電」把兩個充電時間各自的條件寫出來——20 分鐘那一條註明須使用 60W 或更高功率的電源轉接器（另售）並搭配 USB-C 充電連接線，30 分鐘那一條註明須使用 35W 或更高功率的電源轉接器並搭配 MagSafe 充電器（皆另售）。同一頁「包裝盒內容」只列 iPhone、USB-C 充電連接線（1 公尺）與說明文件，沒有電源轉接器。這兩個條件原稿完全沒有記，也沒有寫進正文；依 BRIEF「數字要連著它自己的條件一起抄」，本輪已補進正文電池段。註：規格頁 30 分鐘那一條只寫 MagSafe 充電器，Qi2 是英文版新聞稿那一句才有（MagSafe or Qi2 charger）。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "充電約 20 分鐘最高可達 50% 電量"
+    },
+    {
+      "fact": "must_fix 8：Apple 說明全球超過 500 家電信業者支援 eSIM，iPhone Duo 全球一律為 eSIM 專用設計，沒有實體 SIM 卡槽。原稿把「超過 500 家」標成 is_vendor_claim=false，查核代理指出這是廠商提供的數字，本輪改標 true。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "iPhone Duo features an eSIM-only design worldwide"
+    },
+    {
+      "fact": "英文版點名的電信業者是 AT&T、T-Mobile、Verizon（including 起頭，只是舉例）。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "including AT&T, T-Mobile, and Verizon"
+    },
+    {
+      "fact": "繁體中文版同一句點名的是中華電信、台灣大哥大和遠傳電信（同樣只是舉例，不是完整名單）。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "全世界有超過 500 家電信業者支援，包括中華電信、台灣大哥大和遠傳電信"
+    },
+    {
+      "fact": "技術規格頁列出 iPhone Duo 為雙 eSIM（兩個啟用的 eSIM，可儲存八個或以上），並明寫與實體 SIM 卡不相容。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "雙 eSIM (兩個啟用的 eSIM；可儲存八個或以上的 eSIM)"
+    },
+    {
+      "fact": "N1 是 Apple 自行設計的無線網路晶片，支援 Wi-Fi 7、藍牙 6 與 Thread；C2 是新一代行動數據機系統。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "N1, an Apple-designed wireless networking chip, enables Wi-Fi 7, Bluetooth 6, and Thread, while C2, Apple's next-generation cellular modem system"
+    },
+    {
+      "fact": "英文版寫 C2「now supports mmWave in the U.S.」（在美國支援毫米波）；繁體中文版同一句沒有提到毫米波。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "and now supports mmWave in the U.S."
+    },
+    {
+      "fact": "台灣技術規格頁列出的機型為 A3720，5G 只列出 FDD-5G NR 與 TDD-5G NR 的 sub-6 頻段，並寫「5G (sub‑6 GHz)，具 4x4 MIMO 技術」，以本文查核到 2026-09-17 的頁面未見毫米波頻段。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "型號 A3720* ... Apple C2 行動數據機系統 5G (sub‑6 GHz)，具 4x4 MIMO 技術"
+    },
+    {
+      "fact": "iOS 27 新增 iPhone Handoff，可在兩支同號碼的 iPhone 之間切換；註腳說明推出時僅美國 T-Mobile 與德國 Telekom Germany 支援。繁體中文版新聞稿沒有這一段，本文正文未收錄（篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Handoff will be available at launch with T-Mobile in the U.S. and with Telekom Germany in Germany."
+    },
+    {
+      "fact": "技術規格頁列出 USB-C 連接器支援充電、DisplayPort 與 USB 3（最快 10Gb/s，註腳 13 說明須使用速度達 10Gb/s 的 USB 3 連接線）；盒內只有 iPhone、1 公尺 USB-C 充電連接線與說明文件，沒有電源轉接器，且盒內連接線本身未標示為 10Gb/s 規格。",
+      "url": "https://www.apple.com/tw/iphone-duo/specs/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "包裝盒內容 搭載 iOS 27 的 iPhone USB‑C 充電連接線 (1 公尺) 說明文件"
+    },
+    {
+      "fact": "配件：iPhone Duo Folio（雙面夾，含支架，海軍藍色與灰褐色）美金 129 元；iPhone Duo Case（保護殼，沙色與海軍藍色）美金 79 元；均支援 MagSafe、Qi2 25W 與 Qi 認證充電器；10 月 16 日（星期五）開始可訂購。本文正文未收錄配件定價（篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The iPhone Duo Case will be available for $79 (U.S.) ... the iPhone Duo Folio with Kickstand will be available for $129 (U.S.)"
+    },
+    {
+      "fact": "台灣配件定價：iPhone Duo 保護殼 NT$2,590，附支架的 iPhone Duo 雙面夾 NT$4,290，10 月 16 日（星期五）開始供貨。本文正文未收錄（篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo 保護殼將提供海軍藍色和沙色，售價為 NT$2,590；附有支架的 iPhone Duo 雙面夾將提供海軍藍色和灰褐色，售價為 NT$4,290。"
+    },
+    {
+      "fact": "must_fix 4：Apple 表示目標是 2030 年前讓整體碳足跡（entire footprint）達到碳中和，供應鏈（supply chain）的可再生能源使用比例達 60%；整體採用 35% 再生成分，電池使用 100% 再生鈷金屬，3D 列印軸承蓋使用 100% 再生鈦金屬，紙質包裝 100% 纖維材質。原稿把這句掛在英文網址卻用了「整體營運」「製程」這兩個台灣版頁面才有的措辭（英文原文是 entire footprint／supply chain），本輪改用與英文網址相符的字詞。本文正文未收錄環境數字（篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "carbon neutral across its entire footprint by 2030"
+    },
+    {
+      "fact": "顏色只有兩款：star white（星光白色）與 night sky（夜空色）。容量為 256GB、512GB、1TB、2TB。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo is available in star white and night sky, and starts at $1,999 (U.S.) ... in 256GB, 512GB, 1TB, and 2TB storage capacities."
+    },
+    {
+      "fact": "美國定價 256GB 起 1,999 美元，或 24 期每期 83.29 美元；新聞稿沒有列出 512GB、1TB、2TB 的個別價格。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "starts at $1,999 (U.S.), or $83.29 (U.S.) per month for 24 months, in 256GB"
+    },
+    {
+      "fact": "每期 83.29 美元的註腳條件：須使用 Apple Card Monthly Installments（ACMI）分期、須通過信用審核與額度、結帳時須選擇 AT&T、T-Mobile 或 Verizon 作為電信業者、稅金與運費不適用 ACMI 的 0% 年利率、最後一期金額為售價扣除前面各期後的餘額，且線上特殊商店不適用。本文正文未收錄（美國專屬條件，篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "requires users to select Apple Card Monthly Installments (ACMI) as their payment type at checkout at Apple. They'll need to select AT&T, T‑Mobile, or Verizon as their carrier when they check out."
+    },
+    {
+      "fact": "Apple Upgrade 是由 Klarna 提供、僅在美國適用的租賃方案，分 12 期與 24 期，24 期最低每期 57.99 美元；註腳說明這是消費性租賃、不是購買或貸款。本文正文未收錄（美國專屬，篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple Upgrade, a leasing program provided by Klarna and available in the U.S."
+    },
+    {
+      "fact": "台灣定價：iPhone Duo 售價新台幣 74,900 元起，容量 256GB、512GB、1TB、2TB。繁體中文新聞稿沒有任何台幣分期或月付金額，也沒有列出各容量的個別價格。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo 提供星光白色和夜空色，售價 NT$74,900 起，並提供 256GB、512GB、1TB 和 2TB 容量選項。"
+    },
+    {
+      "fact": "英文版上市說明：超過 70 個國家與地區，包含 Australia、Brazil、Canada、China、Colombia、France、Germany、India、Japan、Malaysia、Mexico、Singapore、South Korea、Türkiye、the UAE、the UK、the U.S.、Vietnam（including 起頭，只是舉例），太平洋時間 10 月 16 日（星期五）上午 5 點開始預購，10 月 23 日（星期五）開始供貨；另有 28 個其他國家與地區自 10 月 30 日（星期五）起供貨，Apple 未公布這 28 個地區的名單。台灣沒有出現在英文版點名的舉例名單裡。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Customers in more than 70 countries and regions, including Australia, Brazil, Canada, China, Colombia, France, Germany, India, Japan, Malaysia, Mexico, Singapore, South Korea, Türkiye, the UAE, the UK, the U.S., and Vietnam, will be able to pre-order iPhone Duo beginning at 5 a.m. PT on Friday, October 16, with availability beginning Friday, October 23. iPhone Duo will be available in 28 other countries and regions beginning Friday, October 30."
+    },
+    {
+      "fact": "繁體中文版上市說明明確把台灣列在首波名單內：「澳洲、加拿大、中國、哥倫比亞、法國、德國、印度、日本、馬來西亞、墨西哥、新加坡、韓國、泰國、台灣、阿聯酋、英國、美國和 越南等超過 63 個國家和地區」，台灣時間 10 月 16 日（星期五）晚上 8 點開始預訂，10 月 23 日（星期五）開始供貨；其他 28 個國家和地區自 10 月 30 日（星期五）起供貨。名單成員與英文版不同：Brazil 只在英／英國／澳／新加坡版出現、不在台灣版；台灣版比英文版多了泰國。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "澳洲、加拿大、中國、哥倫比亞、法國、德國、印度、日本、馬來西亞、墨西哥、新加坡、韓國、泰國、台灣、阿聯酋、英國、美國和 越南等超過 63 個國家和地區的顧客，將可於台灣時間 10 月 16 日 (星期五) 晚上 8 點開始預訂 iPhone Duo"
+    },
+    {
+      "fact": "Apple 各語系版本點名的國家名單不同、但數字相同：新加坡版同樣寫「more than 70 countries and regions」，名單裡用 Thailand 取代 Türkiye，預購時間寫成新加坡時間 10 月 16 日晚上 8 點。這證明「including …」後面那串只是舉例，不是完整名單，而 63／70 的落差是這篇獨有：同日 iPhone 18 Pro 的英文版與繁體中文版都寫 65，對照組成立。",
+      "url": "https://www.apple.com/sg/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Customers in more than 70 countries and regions, including Australia, Brazil, Canada, China, Colombia, France, Germany, India, Japan, Malaysia, Mexico, Singapore, South Korea, Thailand, the UAE, the UK, the U.S., and Vietnam, will be able to pre-order iPhone Duo beginning at 8 p.m. SGT on Friday, October 16"
+    },
+    {
+      "fact": "Apple 說明 iPhone Duo 將隨 iOS 27.1 推出，並寫明「部分功能可能未適用於所有語言，或未在所有地區提供；適用範圍可能因當地法律與法規而異」。技術規格頁的作業系統與盒內容物欄位寫的是 iOS 27，Apple 沒有解釋 iOS 27 與 iOS 27.1 的關係，本文正文原樣並記，不自行推論。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo 將與 iOS 27.1 一同推出。部分功能可能未適用於所有語言，或未在所有地區提供；適用範圍可能因當地法律與法規而異。"
+    },
+    {
+      "fact": "Apple Intelligence 自 2026 年 9 月 14 日（原文 Monday, September 14）隨 iOS 27 推出，官方列出的語言包含英文、丹麥文、荷蘭文、法文、德文、義大利文、挪威文、葡萄牙文、西班牙文、瑞典文、土耳其文、越南文、簡體中文、繁體中文、日文與韓文。跨篇通則第 2 條點名「16 種語言」是研究者自己加總出來的數字、來源沒有印過，本輪不寫總數，只寫官方列出的語言包含繁體中文與簡體中文。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple Intelligence will be available with iOS 27 on Monday, September 14"
+    },
+    {
+      "fact": "Siri AI 自 9 月 14 日（星期一）隨 iOS 27 推出 beta，初期只支援英文，法文、日文、韓文、葡萄牙文、西班牙文的支援在 10 月推出。中文不在已公布的 Siri AI 語言梯次內。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Siri AI is rolling out with iOS 27 as a beta on Monday, September 14, for users with a supported device set to English, with support for French, Japanese, Korean, Portuguese, and Spanish coming in October."
+    },
+    {
+      "fact": "註腳寫明 Siri AI 推出初期不會在歐盟的 iOS、iPadOS 與 watchOS 上提供，依賴 Siri AI 的功能在歐盟同樣不提供；Siri AI 不適用於未滿 13 歲的使用者。繁體中文版新聞稿同一段只寫「在歐盟地區，Siri AI 推出初期不會於 iOS 上提供」，範圍比英文版窄（英文版另外點名 iPadOS、watchOS），翻譯階段需留意。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Siri AI will not be available initially in the EU on iOS, iPadOS, and watchOS. ... Siri AI is not available for users under 13."
+    },
+    {
+      "fact": "繁體中文版新聞稿把該節標題寫成「新一代 Apple Intelligence」，英文版是「The Next Generation of Apple Intelligence and an All-New Siri」；繁體中文版內文整段刪掉了 Siri AI 的個人情境理解、螢幕感知、Siri app、Call Context 等描述，只在上市說明與註腳提到 Siri AI。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "新一代 Apple Intelligence"
+    },
+    {
+      "fact": "衛星功能：Apple 將為太平洋時間 9 月 9 日午夜前、在支援國家啟用裝置的既有 iPhone 14、iPhone 15、iPhone 16 使用者，額外提供一年免費衛星功能。本文正文未收錄（與 iPhone Duo 本身無直接關係，篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apple is extending free access to satellite features for an additional year for existing iPhone 14, iPhone 15, and iPhone 16 users who have activated their device in a country that supports Apple's satellite features prior to midnight PT on September 9."
+    },
+    {
+      "fact": "英文版提到 AppleCare+、AppleCare One（在有提供的市場）與美國的 AppleCare One Family，並寫明含竊盜遺失保障；繁體中文版只寫 AppleCare+，涵蓋摔落潑濺、電池更換與優先支援，沒有提到竊盜遺失保障、AppleCare One 或 AppleCare One Family。本文正文未收錄（篇幅考量），僅存於研究紀錄。",
+      "url": "https://www.apple.com/tw/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "顧客可以選擇 AppleCare+ 來保障自己的新 iPhone。方案涵蓋摔落與潑濺等意外狀況、電池更換服務，以及 Apple 專家的優先支援。"
+    },
+    {
+      "fact": "英文版有「購買 iPhone Duo 可獲 3 個月免費 Apple One」的段落，自 9 月 17 日起在特定國家與地區適用；繁體中文版新聞稿完全沒有 Apple One 這一段，本文因此不寫台灣是否適用。",
+      "url": "https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "New and qualified returning subscribers who purchase iPhone Duo can unlock three months of Apple One for free."
+    }
+  ],
+  "not_said": [
+    "must_fix 1：新聞稿沒有寫後鏡頭有幾顆，也沒有獨立的望遠鏡頭模組——這句限縮為「英文新聞稿沒有寫」。已列為 source 的台灣技術規格頁把後鏡頭區塊標題寫成「4800 萬像素雙融合相機系統」，Apple 確實在技術規格頁說了那是雙鏡頭系統；2 倍望遠是 48MP 融合主相機裡的「光學品質」裁切，技術規格頁另外寫成獨立的 1200 萬像素規格列。本文正文不寫這句負面陳述，只正面描述兩顆鏡頭各自的規格。",
+    "must_fix 2：Apple 沒有提到 iPhone Duo 的 NCC 型式認證或任何台灣法規狀態——這句同樣限縮為「新聞稿沒有寫」。台灣技術規格頁本身有一句樣板文字「如需台灣 NCC 認證產品的進一步詳細資訊，請按這裡」，但那是所有台灣機型頁共用的樣板連結，沒有 iPhone Duo 專屬的核准字號或認證狀態；本文正文不寫 NCC，避免讀者誤以為官方公布了 Duo 專屬的認證資訊。",
+    "Apple 從頭到尾沒有公布那 70 多個（繁中版寫 63 個）國家與地區的完整名單，「including …」後面只是舉例，而且各語系點名的國家不一樣。",
+    "10 月 30 日第二波的 28 個國家與地區，以本文查核到 2026-09-17 的四條 sources（英文版、繁中版、台灣技術規格頁、新加坡版）都沒有點名任何一個。",
+    "新聞稿沒有給任何尺寸、厚度或重量數字，只寫「歷來最薄的 iPhone」。這些數字要到技術規格頁才有（打開 5.2 公釐、闔起 11.3 公釐、254 公克）。",
+    "Apple 沒有公布任何摺疊次數或軸承壽命的耐用度數字（沒有「可摺疊 X 十萬次」這類規格），新聞稿與技術規格頁都沒有。",
+    "Apple 沒有公布電池容量（mAh 或瓦時）、也沒有公布記憶體（RAM）容量，只寫「統一記憶體頻寬提升 50%」。",
+    "Apple 沒有公布螢幕下 FaceTime 相機的像素數，技術規格頁只給 ƒ/1.8 光圈與 1080p 30/60 fps。",
+    "新聞稿沒有列出 512GB、1TB、2TB 的美金或台幣價格，只給起始價。",
+    "繁體中文版沒有任何台幣分期、月付金額、電信業者資費或 Apple Trade In 換購折抵數字——同日的 iPhone 18 Pro 繁中新聞稿有換購數字，iPhone Duo 這篇沒有。",
+    "Apple 沒有說台灣是否支援毫米波。英文版只寫 C2 在美國支援毫米波，台灣技術規格頁的機型 A3720 只列 sub-6 頻段，以本文查核到 2026-09-17 未見毫米波規格。",
+    "Apple 沒有給台灣專屬的 Apple Intelligence 或 Siri AI 時程，也沒有說繁體中文版的 Siri AI 何時推出——已公布的語言梯次（英文，10 月加法日韓葡西）沒有中文。",
+    "Apple 沒有說 Apple Pencil（USB-C）支援會在哪一個 iOS 版本、確切哪一天推出：新聞稿寫「今年稍晚」（later this year），台灣技術規格頁的註腳 3 寫「此功能於今年稍晚推出。」，以兩頁查核到 2026-09-17 都未見確切日期。（前一輪寫「技術規格頁沒有標註時間」，已由獨立查核推翻。）",
+    "Apple 沒有公布任何第三方或獨立實測。所有效能、續航、耐用度數字都是 Apple 自己在受控條件下以預量產機型測得的。",
+    "Apple 沒有說明摺疊機在 IP68 之外對於軸承進塵的額外條件，也沒有針對摺疊狀態另外給防護說明。",
+    "新聞稿沒有寫 Apple One 三個月免費是否適用台灣（繁中版根本沒有這一段）。",
+    "英文版與繁體中文版新聞稿都寫 iPhone Duo 隨 iOS 27.1 推出（EN「iPhone Duo will be available with iOS 27.1.」、繁中「iPhone Duo 將與 iOS 27.1 一同推出。」），技術規格頁的「作業系統」與「包裝盒內容」卻寫 iOS 27；Apple 沒有解釋兩者的關係，本文正文原樣並記，不自行推論兩者是否相同。獨立查核更正：原稿正文寫成「英文新聞稿寫的是 iOS 27.1」，會讓人以為只有英文版這樣寫，已改為兩版新聞稿都是。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "iPhone Duo 首波上市的國家與地區到底是「超過 70 個」還是「超過 63 個」。",
+      "seen_where": "Apple 英文版、英國版、日本版、新加坡版、澳洲版新聞稿都寫 more than 70 / 70以上；Apple 繁體中文版寫「超過 63 個國家和地區」。兩邊都是 Apple 官方頁面。",
+      "why_excluded": "同一篇稿的官方版本互相矛盾，無法判斷哪一個正確，因此不能只寫其中一個數字，也不能相加或取平均。本文把兩個版本並列說明，並指出同日 iPhone 18 Pro 的英文版與繁中版都是 65，證明這不是 Apple 慣例的語系差異。"
+    },
+    {
+      "claim": "iPhone Duo 在台灣 512GB／1TB／2TB 的台幣價格（Apple 台灣線上商店原始 HTML 裡看得到 NT$74,900 與 NT$118,900 等數字）。",
+      "seen_where": "https://www.apple.com/tw/shop/buy-iphone/iphone-duo（HTTP 200，標題「購買 iPhone Duo - Apple (台灣)」）",
+      "why_excluded": "must_add：查核代理指出這些價格數字本身確實出現在頁面上、且價格不是「能力宣稱」，所以 tech.md「產品行銷頁不能當能力宣稱來源」這條規則表面上不適用；但該頁是 JavaScript 產生的商店頁，撰稿者與查核者都試過，原始 HTML 抓到的價格與容量無法一一對應，屬於取得失敗。本文只採用新聞稿寫明的「NT$74,900 起」。"
+    },
+    {
+      "claim": "台灣是否也在 10 月 30 日第二波的 28 個國家與地區之列。",
+      "seen_where": "無任何官方頁列出那 28 個地區。",
+      "why_excluded": "台灣已明列在繁中版首波名單，所以這題其實不影響結論；但那 28 個地區在本文查核到 2026-09-17 的四條 sources 上都沒有名單，任何推測都是捏造，本文不寫。"
+    },
+    {
+      "claim": "iPhone Duo 的折痕深淺、實際手感、摺疊耐用度表現。",
+      "seen_where": "Apple 只寫奈米紋理表面「minimizes crease visibility」。",
+      "why_excluded": "這是 Apple 的宣稱，不是可驗證的事實，本站也沒有實測。已改標 is_vendor_claim=true 並寫成「Apple 表示」。"
+    },
+    {
+      "claim": "媒體流傳的 iPhone Duo 重量與厚度數字。",
+      "seen_where": "科技媒體報導（只當線索，未記為來源）。",
+      "why_excluded": "改用 Apple 台灣技術規格頁上實際抓到的數字（打開 164.6 x 117.8 x 5.2 公釐、闔起 84.1 x 117.8 x 11.3 公釐、254 公克），不採用任何媒體轉述。"
+    },
+    {
+      "claim": "iPhone Duo 的 iOS 27 與新聞稿所稱 iOS 27.1 之間的確切關係（例如是否為同一版本的不同說法、或 27.1 是否為必要更新）。",
+      "seen_where": "英文新聞稿寫「iPhone Duo will be available with iOS 27.1.」、繁體中文版寫「iPhone Duo 將與 iOS 27.1 一同推出。」；技術規格頁「作業系統」與「包裝盒內容」欄位都寫 iOS 27。（前一輪這裡寫成「will launch with iOS 27.1」，不是頁面上的字，已照原文更正。）",
+      "why_excluded": "Apple 沒有在任何一條 source 解釋兩者關係，本文只並記兩個說法，不自行推論或訂正其中一個。"
+    }
+  ],
+  "editorial_brief": "讀者：台灣的一般 iPhone 使用者，大多沒用過摺疊機，看到「第一款可摺疊 iPhone」時最想知道三件事——台灣到底買不買得到、什麼時候、多少錢；這支機器跟一般 iPhone 在使用上差在哪；以及哪些說法是 Apple 自己講的、還沒有人實測。\n\n角度定在「條件與差異」，不是開箱也不是推薦。tech.md 明文禁止購買建議，所以全篇不寫值不值得買、不比較哪一支好、不寫「現在買最划算」。價格照官方寫（美金 1,999 起、台幣 74,900 元起），但只當作條件之一陳述，不做價格評論。\n\n五節安排：（1）Apple 怎麼定義這支手機——两句最高級宣稱（歷來最薄、歷來最大螢幕）與螢幕基本規格，全部標「Apple 表示」；（2）機身與螢幕規格——材質、Ceramic Shield 的正確位置、奈米紋理層、解析度，結尾放尺寸表（寬／高／厚三欄，避免寬高互換）；（3）耐用度、電池與相機——IP68 的限定條件、A20 Pro 效能（保留「最高」「最多」等限定詞）、電池與充電（修正 20 分鐘／30 分鐘的配對）、相機規格，結尾放圖解；（4）台灣上市——預購與供貨日期、63 對 70 的官方矛盾並列、定價、eSIM 專用設計；（5）軟體與 AI 邊界——iOS 27.1 與 iOS 27 的並記、Split View「首次」標明是 Apple 說法、Apple Intelligence 支援繁體中文但 Siri AI 語言梯次還沒有中文，並點出本站另一篇文章談 Siri AI 細節（不重寫）。\n\n刻意不談：不談與其他品牌摺疊機的比較（沒有一手來源，也會變成推薦）；不談第二波 28 個地區是哪些（Apple 從未公布）；不談台灣電信業者的資費綁約（官方沒說）；不談 iPhone 18 Pro 的規格細節（留給同批次的 tech-news-apple-september-hardware-20260909）；不重講 Siri AI 的開通流程（AI 垂直已有 ai-news-siri-ai-ios-27-20260914 這篇）；不寫美國專屬的 ACMI／Apple Upgrade 分期條件、配件定價、衛星功能延長、Apple One／AppleCare 的地區差異（篇幅考量，全部留在研究紀錄）；不寫 NCC 認證狀態（來源只有樣板連結）。\n\n語氣提醒：所有效能、續航、抗刮、耐用、「首次」「零快門延遲」數字或說法一律寫成「Apple 表示」「Apple 說明」，並在第二段的查核聲明裡寫清楚本站沒有實機測試。summary 與 faq 的數字必須逐字取自正文，不得出現正文沒寫過的數字；63 與 70 兩個數字全篇並列，不擇一、不相加。",
+  "must_not_write": [
+    "不寫購買建議：不下「該不該買」「值不值得升級」「哪一支比較好」的結論；官方定價可以寫，但不做「現在買最划算」式的推薦。",
+    "不把 Apple 的效能、續航、抗刮、「首次」「零快門延遲」「歷來最薄」「歷來最大螢幕」等宣稱寫成本站測試或查證出的事實，一律標「Apple 表示」或「Apple 說明」。",
+    "不拿掉英文版「up to」（最高／最多）等限定詞：6 核心 CPU 快 20%、7 核心 GPU 快 40%、持續效能提升 35%、內螢幕剛度高 40% 都要保留限定詞，不得寫成不帶限定詞的整數；7 核心 GPU 的 40% 只掛在速度，不得也掛在省電效率上。",
+    "不把「新聞稿沒有寫後鏡頭顆數」寫成「沒有獨立望遠鏡頭模組」，不把「新聞稿沒提 NCC」寫成「Apple 沒有提到 NCC 型式認證」這種全稱句——技術規格頁本身有相關線索，見 not_said。",
+    "不使用 apple.com/tw/shop/buy-iphone/iphone-duo（JavaScript 產生的商店頁）上看到的容量與價格對應數字（NT$81,900、NT$118,900 等），原始 HTML 無法把容量與價格一一對應。",
+    "不推測 10 月 30 日第二波 28 個國家與地區的名單——本文查核的四條 sources 都沒有列出。",
+    "63 個與 70 個國家和地區這兩個數字不可擇一採用，也不可相加、取平均或視為同一件事的不同講法。",
+    "不畫任何商標、字標、圖示、吉祥物或實際機身外觀／介面截圖；hero 與 diagram 只用幾何圖形表達概念。",
+    "不使用四條 sources 以外的網址作為事實依據；新聞媒體與整合站只能當線索。",
+    "不把繁體中文版新聞稿「約 20 分鐘…搭配 MagSafe 或 Qi2…或無線充電約 30 分鐘」那一句的配對方式（20 分鐘配 MagSafe／Qi2）寫進文章——那與英文版及技術規格頁矛盾，本文採用英文版與技術規格頁一致的配對（20 分鐘＝有線、30 分鐘＝MagSafe／Qi2 無線）。"
+  ],
+  "live_data_warnings": [
+    "四個來源頁的位元組數（研究者與查核者兩次讀到的數字相差約 118 bytes）只是頁面層級的動態標記快照，內容一致；不要把位元組數寫進文章或當成頁面未變的證明。",
+    "Apple Newsroom Atom feed 是 20 筆滾動視窗（2026-09-16 抓到時，最新一筆是當天），本篇 entry 的 <updated> 是 2026-09-09T18:15:40.996Z；視窗會滾動，不能拿來證明「沒有更新」。",
+    "apple.com/tw/shop/buy-iphone/iphone-duo 是 JavaScript 產生的商店頁，價格與容量的對應關係隨時可能改，原始 HTML 抓不到正確配對，不要引用其中的容量別價格。",
+    "「超過 63 個／超過 70 個國家和地區」與各語系名單成員本身就是 Apple 兩個語系版本查核當下的狀態，未來可能修訂；10 月 30 日第二波的 28 個地區，以本文查核到 2026-09-17 的四條 sources 都沒有列出名單，任何推測都是捏造。",
+    "iOS 27 與 iOS 27.1 的關係（英文版寫隨 iOS 27.1 推出、技術規格頁寫 iOS 27）是本文查核到 2026-09-17 兩個頁面的當下狀態，Apple 未解釋，日後任一頁面都可能修訂或補充說明。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（「新聞稿沒有寫後鏡頭顆數」被自己引的來源推翻）：已套用。not_said 該句限縮為「英文新聞稿沒有寫」，正文正面描述兩顆鏡頭規格，不寫負面陳述。",
+    "must_fix 2（「Apple 沒有提到 NCC」被自己引的來源推翻）：已套用。not_said 該句限縮為「新聞稿沒有寫」，正文完全不提 NCC，避免讀者誤解官方公布了機型專屬認證狀態。",
+    "must_fix 3（「內螢幕不是用 Ceramic Shield 2」無來源支持）：已套用。已從 fact 中刪除該句，正文改寫為「Apple 只說明 Ceramic Shield 2 用於正面／外螢幕」，內螢幕保護方式另段描述。",
+    "must_fix 4（碳中和／可再生能源用詞掛錯語系）：已套用。fact 改用與英文網址相符的「整體碳足跡」「供應鏈」；因篇幅正文未收錄此類環境數字，僅存於研究紀錄。",
+    "must_fix 5（充電時間數字 is_vendor_claim 應為 true）：已套用，fact 與正文均改標並寫成「Apple 表示」。",
+    "must_fix 6（零快門延遲 is_vendor_claim 應為 true）：已套用，fact 與正文均改標並寫成「Apple 表示」。",
+    "must_fix 7（Split View「首次」is_vendor_claim 應為 true）：已套用，fact 與正文均改標並寫成「Apple 表示」。",
+    "must_fix 8（超過 500 家電信業者 is_vendor_claim 應為 true）：已套用，fact 與正文均改標並寫成「Apple 說明」。",
+    "must_fix 9（facts 0、1、11、46 的 verbatim_quote 用「 / 」把頁面上分開的元素接成一句）：已套用。fact 0、1 只保留標題本身；原 fact 11（解析度）拆成兩條；原 fact 46（MagSafe／Qi2／電池）拆成兩條，每條各自只引用頁面上連續出現的字串。",
+    "must_fix 10（繁體中文版拿掉英文版的 up to 對沖詞，7 核心 GPU 的 40% 誤配到能源效率）：已套用，獨立查核 2026-09-17 逐字覆核四處數字（CPU 最高快 20%、GPU 最高快 40% 且更省電、持續效能最高提升 35%、內螢幕剛度最高高出 40%）全部保留限定詞，GPU 的 40% 只掛在速度上，正確。但 BRIEF 型態 8 還要求「註明兩版差異與各自出處」，原稿只在 callout 說「本文一律保留英文版的 up to」，沒有說繁中版拿掉了；callout 已補上英文版與繁中版各自的原句對照。",
+    "must_fix 11（繁體中文版把 MagSafe／Qi2 配到 20 分鐘那一邊，與英文版及技術規格頁矛盾）：前一輪只做了一半——正文採用了正確配對，卻沒有依 BRIEF 型態 8 寫出兩版差異與各自出處，讀者看不出這裡有官方矛盾。獨立查核已在正文電池段補上「這個配對在英文版新聞稿與台灣技術規格頁一致，繁體中文版新聞稿卻把 MagSafe 或 Qi2 寫在 20 分鐘那一邊，本文採前者」，並補上規格頁的 60W／35W 轉接器條件與「轉接器不在盒內」。",
+    "must_add（Apple 兩個核心最高級說法「歷來最薄」「歷來最大螢幕」沒有進 verified_facts）：已套用，新增兩條 fact，正文第一節以「Apple 表示」入稿。",
+    "must_add（USB 3 連接線 10Gb/s 的條件與盒內線材未接起來）：已套用於研究紀錄（fact 補上註腳 13 的條件），因篇幅正文未收錄，僅記錄在案。",
+    "must_add（Apple Pencil 支援在螢幕規格區塊沒有時間限定，需與新聞稿「今年稍晚」並讀）：**這條 must_add 本身是錯的**。獨立查核 2026-09-17 重抓技術規格頁，該行帶著 footnote 標記 3，footnote-4／data-footnote=\"numbered-pencil\" 寫的是「此功能於今年稍晚推出。」。原稿照抄這條 must_add，寫成「技術規格頁沒有註明時間」，是把一個來源自己否定的負面句寫進正文與 FAQ；兩處都已改成「兩處都寫今年稍晚、都沒有給確切日期或 iOS 版本」。",
+    "must_add（尺寸數字按頁面順序抄下但沒有標籤，寬高互換風險）：已套用，正文改用寬度／高度／厚度三欄表格，不再是無標籤的一串數字。",
+    "must_add（英文註腳裡兩個「不是上市即有」的條件——Photographic Styles 限定機型、SynthID 今年稍晚——未記）：因與 iPhone Duo 本身關聯較弱且篇幅有限，本輪未追加為獨立 fact，記於此處供後續編輯參考；若日後放寬字數可補入相機小節。",
+    "must_add（上市地區名單成員本身不同，不只是數字不同：Brazil 只在部分語系出現，台灣版多了泰國）：已套用於研究紀錄與正文第四節。",
+    "must_add（英文註腳 3 提到 Siri AI 在歐盟不提供的範圍比台灣版註腳寫的更廣，含 iPadOS、watchOS）：已套用於研究紀錄，正文因篇幅只概述「歐盟地區的 iOS」，完整範圍差異留在研究紀錄供翻譯階段參考。",
+    "must_add（63 對 70 的矛盾是這篇獨有，並非 Apple 慣常的語系差異，需要 iPhone 18 Pro 對照組佐證）：已套用，正文與 FAQ 都並列兩個數字並說明不可擇一。",
+    "must_add（台灣商店頁價格排除理由需修正——問題在於容量與價格無法對應，不是「產品行銷頁不能當能力宣稱來源」）：已套用於 unverified_or_excluded。",
+    "source_list_fix：無需變更。四條 sources 涵蓋全部事實，維持原樣（EN newsroom、TW newsroom、TW specs、SG newsroom 供地區名單對照）。",
+    "跨篇通則第 2 條（Apple Intelligence「16 種語言」是研究者自己加總的數字）：已套用，fact 與正文都不寫總數，只寫官方列出的語言包含繁體中文與簡體中文。"
+  ],
+  "hero_label": "摺疊 iPhone 的條件",
+  "diagram": {
+    "title": "iPhone Duo 上市前的四個重點",
+    "caption": "依 Apple 2026 年 9 月 9 日新聞稿與台灣技術規格頁整理，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "兩個螢幕",
+        "7.6 吋與 5.4 吋"
+      ],
+      [
+        "同款晶片",
+        "與 18 Pro 同一顆"
+      ],
+      [
+        "兩段上市",
+        "10/16 預購、10/23 供貨"
+      ],
+      [
+        "eSIM 專用",
+        "沒有實體 SIM 卡槽"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Conditions on the Fold",
+      "diagram": {
+        "title": "Four Things Before iPhone Duo Ships",
+        "caption": "Compiled from Apple's September 9, 2026 press release and Taiwan technical specifications page. Fact-checked September 17, 2026.",
+        "nodes": [
+          [
+            "Two Displays",
+            "7.6-inch and 5.4-inch"
+          ],
+          [
+            "Same Chip",
+            "Shared with iPhone 18 Pro"
+          ],
+          [
+            "Two-Stage Launch",
+            "Preorder 10/16, ships 10/23"
+          ],
+          [
+            "eSIM Only",
+            "No physical SIM tray"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "折りたたみの条件",
+      "diagram": {
+        "title": "iPhone Duo発売前の要点",
+        "caption": "Appleの2026年9月9日付プレスリリースと台湾版技術仕様ページをもとに作成。確認日は2026年9月17日です。",
+        "nodes": [
+          [
+            "2つの画面",
+            "7.6インチと5.4インチ"
+          ],
+          [
+            "共通チップ",
+            "18 Proと同じ"
+          ],
+          [
+            "2段階発売",
+            "10/16予約・10/23供給"
+          ],
+          [
+            "eSIM専用",
+            "物理SIMなし"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "폴더블의 조건",
+      "diagram": {
+        "title": "iPhone Duo 출시 전 네 가지",
+        "caption": "Apple의 2026년 9월 9일 보도자료와 대만 기술 사양 페이지를 바탕으로 정리했습니다. 확인일은 2026년 9월 17일입니다.",
+        "nodes": [
+          [
+            "두 디스플레이",
+            "7.6인치와 5.4인치"
+          ],
+          [
+            "동일 칩",
+            "18 Pro와 같음"
+          ],
+          [
+            "2단계 출시",
+            "10/16예약, 10/23공급"
+          ],
+          [
+            "eSIM 전용",
+            "물리 SIM 없음"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "折叠 iPhone 的条件",
+      "diagram": {
+        "title": "iPhone Duo 上市前的四个重点",
+        "caption": "依 Apple 2026 年 9 月 9 日新闻稿与台湾技术规格页整理，查核日为 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "两块屏幕",
+            "7.6 英寸与 5.4 英寸"
+          ],
+          [
+            "同款芯片",
+            "与 18 Pro 相同"
+          ],
+          [
+            "两段上市",
+            "10/16 预购、10/23 供货"
+          ],
+          [
+            "eSIM 专用",
+            "没有实体 SIM 卡槽"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "獨立查核代理（未參與撰稿）",
+    "checked_on": "2026-09-17",
+    "method": "四條 sources 全部以 curl -sL -A \"Mokaair-editorial\" 於 2026-09-17 重抓並讀 body（四頁 HTTP 200、341,693／298,040／251,311／330,229 bytes，都是真的正文）。正文每一句、summary 四句、FAQ 六題、表格每一格與 caption、圖解 caption 與四格、callout、title、description 逐條比對英文版新聞稿全文（含 14 條註腳）、繁體中文版全文（含 12 條註腳）、台灣技術規格頁全文（含 25 條註腳，並直接讀 HTML 的 sup／footnote 標記）與新加坡版上市段。共核 98 條主張。沒有使用任何 sources[] 以外的網址作為文章依據。",
+    "verdict": "ok（改了 13 處；骨幹論述沒有動，不需要第二輪）",
+    "edits_to_the_pack": [
+      "Apple Pencil：原稿寫「技術規格頁列出支援 Apple Pencil (USB-C)、沒有註明時間」（正文一處、FAQ 一處）——被該頁自己推翻。HTML 是「支援 Apple&nbsp;Pencil (USB-C)<sup data-footnote=\"numbered-pencil\"><a href=\"#footnote-4\" aria-label=\"註腳 3\">3</a></sup>」，footnote-4 寫「此功能於今年稍晚推出。」。兩處都改成「兩處都寫今年稍晚、都沒有給確切日期或 iOS 版本」。corrections-tech.md 那條 must_add 本身就是錯的。",
+      "充電：原稿只採用英文版的配對，沒有照 BRIEF 型態 8 寫出兩版差異。正文補上「這個配對在英文版新聞稿與台灣技術規格頁一致，繁體中文版新聞稿卻把 MagSafe 或 Qi2 寫在 20 分鐘那一邊，本文採前者」，並補上技術規格頁的條件：20 分鐘須 60W 以上轉接器配 USB-C 連接線、30 分鐘須 35W 以上轉接器配 MagSafe 充電器，兩種轉接器都不在盒內（盒內只有 1 公尺 USB-C 充電連接線）。",
+      "效能對沖詞：20%／40%／35%／剛度 40% 四處都正確保留了「最高」，40% 也只掛在速度上；但兩版差異沒有寫出來。callout 補上英文版「up to 20 percent faster」「up to 40 percent faster and more power efficient」對繁中版「快了 20%」「速度和能源效率都提升了 40%」的對照。",
+      "Ternus 引言：原稿用引號引了一句自製翻譯「iPhone 自初代機型以來最具變革性的一次改變」，該字串在四條 sources 上都搜尋不到。改引繁體中文版新聞稿的官方原句「iPhone Duo 是繼首代推出以來最具變革性的 iPhone。」，署名也改成該頁的「Apple CEO John Ternus」。",
+      "iOS 27／27.1：原稿寫「英文新聞稿寫的是 iOS 27.1」，但繁體中文版同樣寫「iPhone Duo 將與 iOS 27.1 一同推出。」。改成「技術規格頁寫搭載 iOS 27，英文版與繁體中文版新聞稿則都寫將與 iOS 27.1 一同推出」。",
+      "軸承與磁石陣列：原稿寫「軸承由超過 100 個零組件與整合式磁石陣列構成」，把兩個元件併成一個。原文是軸承由超過 100 個零組件構成，磁石陣列是「together with」一起作用、負責闔合。已拆開。",
+      "外螢幕 90%：原稿寫「外螢幕可視面積約為 iPhone 18 Pro 螢幕的 90%」。Apple 兩版都寫「螢幕面積」（screen area），而註腳正好區分「實際可視區域較小」，寫成可視面積等於和註腳打架。改為「提供 iPhone 18 Pro 螢幕面積的 90%」，並刪掉來源沒有的「約」。",
+      "Duo 雙面 FaceTime：原稿寫成「Duo FaceTime 雙向同拍」，把兩個不同功能併成一個——「雙向同拍」（Dual Capture）是同時分享前後鏡頭，「Duo 雙面 FaceTime」是讓身邊的人透過外螢幕加入通話。已分開，並改用繁中版的官方功能名（智慧拍攝、Duo 雙面預覽、看這裡、Duo 雙面 FaceTime）。",
+      "Apple Intelligence 時態：原稿寫「已隨 iOS 27 於 9 月 14 日推出」，但四條 sources 寫的都是未來式（will be available on Monday, September 14／將於 9 月 14 日推出），本站也沒有查證實際推送。改為「新聞稿寫明……於 9 月 14 日隨 iOS 27 推出」。",
+      "全稱否定句：正文「Apple 表示……但沒有公布摺疊次數或軸承壽命的耐用度規格」與 FAQ「Apple 沒有公布任何摺疊次數或軸承壽命的耐用度規格」都超出「這幾頁沒有寫」的範圍。正文那句刪掉（同段後面已有限縮版），FAQ 改成「以本文查核到 2026 年 9 月 17 日的新聞稿與台灣技術規格頁，未見……」。第二波 28 個地區的「Apple 目前沒有公布名單」也改成「本文查核的四個官方頁面都沒有列出」。",
+      "「英文版等其他語系版本」：sources[] 裡的兩條 70 的來源是美國英文版與新加坡版，兩條都是英文，不是「其他語系」；正文、summary、FAQ、callout 四處都改成「英文版與新加坡版」，並補上名單成員的差異（巴西在這兩版名單上、不在繁體中文版）。",
+      "超過 500 家電信業者：原句讀起來像「500 家電信業者支援 iPhone Duo」。原文是 eSIM 作為業界標準「supported by over 500 carriers」。正文補上「Apple 說明 eSIM 是業界標準」。",
+      "續航與充電註腳的月份：續航是英文版註腳 7／繁中註腳 6「August 2026／2026 年 8 月」，充電是註腳 8／7「July 2026／2026 年 7 月」，是兩則不同註腳、不同月份。FAQ 的「Apple 於 2026 年……測得」補成「2026 年 8 月」，正文充電段改用註腳 8 的條件。corrections-tech.md must_fix 5 把兩者寫成同一則、月份寫成 7 月，已在紀錄裡更正。"
+    ],
+    "checked_and_correct": [
+      "四條 sources 全部 HTTP 200 且 body 是正文，沒有擋阻頁、軟性 404 或轉址殼；四條 URL 與研究紀錄一致，沒有任何事實掛在表列之外的網址。",
+      "63 對 70 的並列處理正確且完整：繁體中文版原句確實是「……泰國、台灣、阿聯酋、英國、美國和 越南等超過 63 個國家和地區」，英文版與新加坡版都是「more than 70 countries and regions」，文章四處（正文、summary、FAQ、callout）都並列、都沒有擇一或相加。",
+      "尺寸表四列與標籤全部正確：打開 164.6 公釐寬／117.8 公釐高／5.2 公釐厚，闔起 84.1／117.8／11.3，兩種狀態都是 254 公克，寬高沒有互換；caption 另補上該頁註腳 2「尺寸和重量隨配置和製程不同而有所差異」。",
+      "A20 Pro 四個數字都保留了 up to：CPU 最高快 20%、GPU 最高快 40%（只掛在速度）、持續效能最高提升 35%、內螢幕剛度最高高出 40%，且整段掛在「Apple 表示：」之下。",
+      "續航 31／44／24 小時正確，且「24 小時是一般使用、不是影片播放」這個區分有寫出來（英文版原文 up to 24 hours of usage per charge when both displays are used equally）。",
+      "解析度 1878 x 2670／430 ppi 與 1398 x 2034／460 ppi、3000 尼特室外峰值亮度、IP68 與 IEC 60529 的 6 公尺／30 分鐘、A3720 只列 sub-6、雙 eSIM 可儲存八個或以上、N1 的 Wi-Fi 7／藍牙 6／Thread，逐格與技術規格頁相符。",
+      "廠商宣稱全部有歸因：歷來最薄、歷來最大螢幕、零快門延遲、低光源表現、Split View「首次」、超過 500 家電信業者、抗刮 3 倍、剛度 40%、摺痕不明顯，全部寫成「Apple 表示」或「Apple 說明」。",
+      "tech.md 兩條紅線都守住：全篇沒有購買或升級建議、沒有推薦式比價（US$1,999 起與 NT$74,900 起只當條件陳述），也沒有多出投資免責 callout（只有一個 callout）。",
+      "分批與限制狀態都有寫：預購／首波供貨／第二波 10 月 30 日分開寫、Apple Pencil 今年稍晚、Siri AI 英文 beta 與 10 月語言梯次、歐盟 iOS 初期不提供、未滿 13 歲不開放、毫米波只在美國。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍報 `zh-TW link target tech-news-2026-index.json does not exist yet`：科技垂直的索引內容包還沒建立，第一條 link 的 text 目前是佔位字串，索引落地後要逐字換成索引自己的 zh-TW title。兩條結尾連結不在本代理可動的範圍。",
+      "正文段落字數 2,988 字，離 3,000 的上限只剩 12 字。翻譯或審稿階段若要再加句子，得先從別處減字，不可以拿掉任何但書或限定詞。",
+      "新加坡版新聞稿頁面自己標的日期是 September 10, 2026（當地日期），英文版是 September 9。文章只用 9 月 9 日當事件日；若日後要在譯文裡提到新加坡版，別把 9 月 10 日當成另一個事件日。",
+      "繁體中文版新聞稿內部自相矛盾：配件段寫「iPhone Duo 雙面夾有海軍藍色和淺褐色」，價格段寫「將提供海軍藍色和灰褐色」。文章沒有寫配件顏色，不影響本篇，但同批次若有別篇要寫配件，這是來源自己的錯，要照印並說明。",
+      "「超過 63 個／超過 70 個」與各語系名單是 Apple 兩個版本在 2026-09-17 的當下狀態，Apple 日後可能悄悄改掉其中一版。正式站上線後若要重驗，直接比對兩頁的上市段即可。"
+    ],
+    "second_round": {
+      "checked_by": "第二輪獨立查核代理（未參與撰稿，也未參與第一輪查核）",
+      "checked_on": "2026-09-17",
+      "scope": "第一輪改了 13 處、超過十處門檻，因此做第二輪。重點是第一輪自己新寫進去、沒有第三方查過的句子，以及「報告寫對、套進內容包時沒套滿」的限定詞。四條 sources 於 2026-09-17 再次以 curl -sL -A \"Mokaair-editorial\" 重抓（HTTP 200／341,693、298,040、251,311、330,243 bytes，四頁都是正文；新加坡版比第一輪多 14 bytes，是頁面層級的動態標記，上市段逐字相同）。英文版新聞稿的 14 條註腳、台灣技術規格頁的 26 條註腳（以 li[id=footnote-n] 逐條抽出）、繁體中文版全文與新加坡版上市段全部重讀。覆核 13 個改動段落共 41 個句子，加上全文限定詞、摘要與正文對照、字數四項掃描，另外改了 9 處。",
+      "first_round_edits_reverified": [
+        "Apple Pencil：技術規格頁 HTML 仍是「支援 Apple&nbsp;Pencil (USB-C)<sup data-footnote=\"numbered-pencil\"><a href=\"#footnote-4\" aria-label=\"註腳 3\">3</a></sup>」，footnote-4 的內容確為「此功能於今年稍晚推出。」。第一輪推翻 corrections-tech.md 那條 must_add 是對的，正文與 FAQ 兩處都改到了。",
+        "充電條件：技術規格頁「支援快速充電」兩列原文為「充電約 20 分鐘最高可達 50% 電量，須使用 60W 或更高功率的電源轉接器 (另售)，並搭配 USB-C 充電連接線」與「充電約 30 分鐘最高可達 50% 電量， 須使用 35W 或更高功率的電源轉接器，並搭配 MagSafe 充電器 (皆另售)」，第一輪補進正文的條件屬實。另查到英文版新聞稿註腳 8 也印了同一組條件（「The 60W-capable or higher adapter (available separately) must be paired with a USB-C charging cable, and the 35W or higher adapter must be paired with a MagSafe Charger (both available separately).」），正文寫「規格頁另註明」沒有寫錯，只是不只規格頁這麼寫。",
+        "充電配對：英文版註腳 8 與規格頁一致（20 分鐘＝有線、30 分鐘＝MagSafe／Qi2 無線），繁體中文版新聞稿確實寫成「搭配 MagSafe 或 Qi2 充電器，iPhone Duo 約 20 分鐘即可充至最多 50% 電量，或無線充電約 30 分鐘即可充至最多 50% 電量」。第一輪補的兩版差異句成立。",
+        "Ternus 引言：繁體中文版第 31 行原句為「Apple CEO John Ternus 表示：「iPhone Duo 是繼首代推出以來最具變革性的 iPhone。……」」，第一輪改引的句子與署名逐字相符。",
+        "巴西：英文版與新加坡版 including 名單都有 Brazil，繁體中文版沒有（繁中版多了泰國與台灣，英文版多了 Türkiye，新加坡版以 Thailand 取代 Türkiye）。第一輪的「巴西在這兩版名單上、不在繁體中文版」成立。",
+        "iOS 27／27.1：英文版「iPhone Duo will be available with iOS 27.1.」、繁體中文版「iPhone Duo 將與 iOS 27.1 一同推出。」、技術規格頁「作業系統 iOS 27」與「包裝盒內容 搭載 iOS 27 的 iPhone」，三處都重抓確認。",
+        "相機功能名：繁體中文版新聞稿逐字有「智慧拍攝」「Duo 雙面預覽」「看這裡」「Duo 雙面 FaceTime」四個官方名稱，且「看這裡」是播放《史努比》動畫、「Duo 雙面 FaceTime」是讓身邊的人透過外螢幕參與視訊通話，與正文敘述相符；「雙向同拍」是另一個功能（同時分享前後鏡頭），第一輪拆開是對的。",
+        "續航／充電註腳月份：英文版註腳 7 與繁中規格頁 footnote-7 都是 August 2026／2026 年 8 月（續航），英文版註腳 8 與規格頁 footnote-9 都是 July 2026／2026 年 7 月（充電）。第一輪指出 corrections-tech.md must_fix 5 把兩者寫成同一則註腳、月份寫成 7 月是錯的，成立。",
+        "英文版與新加坡版、全稱否定句限縮、90% 螢幕面積、超過 500 家電信業者、Apple Intelligence 時態：四項改動在內容包的每一處（正文、summary、FAQ、callout）都確實套到了，沒有漏套。"
+      ],
+      "edits_to_the_pack": [
+        "軸承與磁石陣列（正文第 2 節第 2 段）：第一輪拆開兩個元件時把闔合整個歸給磁石陣列——原稿改成「闔合則靠另外整合的磁石陣列」。英文原文是軸承「together with an integrated magnet array, delivers a satisfying and secure closure」、繁中版是「並支撐著顯示器中央，使其打開時能保持平坦，搭配整合的磁石陣列，帶來令人滿意且安全的闔合」，闔合是軸承與磁石陣列一起達成，不是磁石陣列單獨負責。改成「可精準控制開合、支撐螢幕中央，並搭配整合的磁石陣列帶來闔合」。",
+        "callout 的效能對沖詞對照：第一輪新寫的「因為繁體中文版把這些限定詞拿掉了」是過度概括。繁體中文版在持續效能那一項仍寫「持續效能表現比 iPhone 17 Pro 最高可提升 35%」，只有 CPU 20%、GPU 40% 與內螢幕剛度 40% 三處拿掉。改成「在部分數字上拿掉了這個限定詞」，並補上「但不是每一處都拿掉，持續效能那一項繁體中文版同樣寫「最高可提升 35%」」。",
+        "MagSafe 充電器也另售（正文第 3 節電池段）：規格頁 30 分鐘那一列寫的是「(皆另售)」，涵蓋 35W 轉接器與 MagSafe 充電器兩者，第一輪只寫「兩種轉接器都不在盒內」，漏掉 MagSafe 充電器本身。改成「兩種轉接器與 MagSafe 充電器都另售、不在盒內」（包裝盒內容只有搭載 iOS 27 的 iPhone、USB-C 充電連接線 (1 公尺) 與說明文件）。",
+        "充電數字的註腳月份沒有跟著數字進文章（FAQ 第 4 題）：第一輪把續航的「2026 年 8 月、預量產機型」補進 FAQ，但充電的 20／30 分鐘在文章裡沒有帶自己的測試條件。FAQ 第 4 題補上「充電的 20 分鐘與 30 分鐘掛的是另一則註腳，Apple 寫明是 2026 年 7 月以預量產機型與軟體測試，兩組數字不是同一次測試」（英文版註腳 8／規格頁 footnote-9）。FAQ 不計入段落字數。",
+        "「Apple 沒有解釋兩者的關係」（正文第 5 節第 1 段）是全稱否定句，超出「這幾頁沒有寫」的範圍——第一輪限縮了另外三句，這一句漏掉。改成「這幾頁都沒有解釋兩者的關係」。",
+        "「超過 70 個國家和地區」被加上「」當引文（正文、summary、FAQ 三處）：這兩條來源是美國英文版與新加坡版，兩頁都是英文，這串中文在任何一條 source 上都搜尋不到——與第一輪自己糾正 Ternus 引言的理由完全相同。三處都拿掉引號改為敘述（繁中版的「超過 63 個國家和地區」是逐字引文，引號保留）。callout 那一處改引英文原文「more than 70 countries and regions」。",
+        "callout「兩者並非同一件事的不同講法」：這是關於 Apple 意圖的推論，而且靠的是 sources[] 以外的 iPhone 18 Pro 對照組；就字面而言「超過 70」本來就蘊含「超過 63」，兩句不必然互斥。改成「兩個官方頁面印出來的數字不一致」，並列與不擇一的結論不變。",
+        "精簡（為了容納上面的補字，且不動任何但書）：刪掉兩個純轉場詞「相機方面，」與「定價方面，」。段落字數 2,988 → 2,991（上限 3,000）。"
+      ],
+      "checked_and_correct": [
+        "四條 sources 今天全部 HTTP 200 且 body 是正文，沒有擋阻頁、軟性 404 或轉址殼；落地 URL 與表列一致，沒有事實掛在表外網址。",
+        "尺寸表逐格重抄無誤：規格頁「打開」段為寬度 164.6 公釐、高度 117.8 公釐、厚度 5.2 公釐、重量 254 公克(8.96 盎司)，「闔起」段為 84.1／117.8／11.3 與同一個 254 公克，寬高沒有互換；caption 的註腳 3「尺寸和重量隨配置和製程不同而有所差異」逐字相符。",
+        "解析度 1878 x 2670／430 ppi 與 1398 x 2034／460 ppi、3000 尼特室外峰值亮度、IP68 與 IEC 60529 的 6 公尺／30 分鐘、機型 A3720 只列 FDD／TDD-5G NR 的 sub-6 頻段、雙 eSIM「兩個啟用的 eSIM；可儲存八個或以上」、包裝盒內容三項，全部與技術規格頁逐格相符。",
+        "限定詞全文再掃一次：最高快 20%／最高快 40%（只掛在速度）／最高提升 35%／剛度最高高出 40%／最長 31／44／24 小時／約 20 分鐘與約 30 分鐘／最多 50%／最深 6 公尺與最長 30 分鐘／最高 3000 尼特／抗刮 3 倍，全部保留；今年稍晚（Apple Pencil）、beta 與 10 月語言梯次（Siri AI）、歐盟 iOS 初期不提供、未滿 13 歲不開放、毫米波只在美國、第二波 10 月 30 日，預告與限制狀態一句都沒有掉。",
+        "摘要四句的每一件事都能在正文找到，不只是數字：發表日與「第一款摺疊 iPhone」在第一段，7.6／5.4 吋與 ProMotion、最高 3000 尼特在第 1 節，20／30 分鐘與最多 50%、eSIM 專用在第 3、4 節，10 月 16 日晚上 8 點、10 月 23 日、NT$74,900 起與 63／70 在第 4 節。摘要全部用阿拉伯數字，沒有用中文數字躲數字比對。",
+        "圖解四格與 hero_label 重看一次：7.6 吋與 5.4 吋、與 18 Pro 同一顆、10/16 預購與 10/23 供貨、沒有實體 SIM 卡槽，四格的數字都在正文裡；圖解 caption 與內容包的 image caption 逐字相同。",
+        "界線：全篇沒有購買或升級建議、沒有推薦式比價（US$1,999 起與 NT$74,900 起只當條件陳述）、只有一個 callout 且不是投資免責、所有效能與宣稱都掛「Apple 表示」或「Apple 說明」。",
+        "checked_on 2026-09-17 在內容包四條 source、研究紀錄、正文第二段、表格 caption、圖解 caption、正文與 FAQ 的「查核到…」句六處一致，本輪未改（BRIEF：不因重查而改）。"
+      ],
+      "left_for_the_owner": [
+        "check_article.py 仍只剩一條 FAIL：`zh-TW link target tech-news-2026-index.json does not exist yet`。與查核前後完全相同，科技索引內容包落地後要把第一條 link 的 text 換成索引自己的 zh-TW title。",
+        "段落字數 2,991／3,000，只剩 9 字。翻譯或審稿要加句子必須先從敘述減字，不可以動但書。",
+        "技術規格頁 footnote-12「Wi-Fi 7 適用於支援的國家或地區」是一條地區限制，本文沒有收。正文那句「N1 晶片支援 Wi-Fi 7、藍牙 6 與 Thread」照的是新聞稿（兩版都沒有掛這條註腳），所以不算刪限定詞；字數放寬時可以補。",
+        "繁體中文版新聞稿仍自相矛盾（雙面夾顏色「淺褐色」對「灰褐色」），本文不寫配件顏色，不影響這篇。",
+        "新加坡版頁面自標日期是 September 10, 2026（當地日期），本文事件日只用 9 月 9 日。"
+      ],
+      "verdict": "ok（第二輪覆核 13 個改動段落，另改 9 處；骨幹論述 63／70 並列、up to 一律保留、不做購買建議、宣稱全部歸因給 Apple 都沒有動）"
+    }
+  }
+}

@@ -85,6 +85,24 @@ RELATED: dict[str, str] = {
     "crypto-news-eba-psd2-mica-20260212": "crypto-news-taiwan-vasp-act-20260630",
     "crypto-news-jfsa-working-group-20260216": "crypto-news-taiwan-vasp-act-20260630",
     "crypto-news-jfsa-cybersecurity-20260723": "crypto-news-taiwan-vasp-act-20260630",
+    # Tech, batch 4.2, in the owner's list order (T1-T11 with T4a-c): `display_order` 300-312.
+    # No single anchor here: each article's second link is the nearest story of its own cluster
+    # (the 9/9 Apple event, the EU rules, the three MODA stories, the two platform updates, the
+    # three NVIDIA announcements). The thirteen are written concurrently, so a writer cannot know
+    # its target's title yet; `align_links.py --apply` fills the link texts in once all exist.
+    "tech-news-iphone-duo-20260909": "tech-news-apple-september-hardware-20260909",
+    "tech-news-apple-september-hardware-20260909": "tech-news-iphone-duo-20260909",
+    "tech-news-eu-cra-reporting-20260911": "tech-news-apple-eu-business-terms-20260818",
+    "tech-news-taiwan-sovereign-ai-corpus-20260915": "tech-news-taiwan-6g-spectrum-20260910",
+    "tech-news-taiwan-6g-spectrum-20260910": "tech-news-taiwan-matsu-cable-20260623",
+    "tech-news-taiwan-matsu-cable-20260623": "tech-news-taiwan-6g-spectrum-20260910",
+    "tech-news-apple-eu-business-terms-20260818": "tech-news-eu-cra-reporting-20260911",
+    "tech-news-windows-project-zenith-20260904": "tech-news-pixel-drop-20260915",
+    "tech-news-pixel-drop-20260915": "tech-news-windows-project-zenith-20260904",
+    "tech-news-apple-m6-m5-ultra-20260825": "tech-news-apple-september-hardware-20260909",
+    "tech-news-nvidia-cuda-q-20260914": "tech-news-nvidia-vera-rubin-20260915",
+    "tech-news-nvidia-mediatek-20260831": "tech-news-nvidia-vera-rubin-20260915",
+    "tech-news-nvidia-vera-rubin-20260915": "tech-news-nvidia-cuda-q-20260914",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:
