@@ -75,11 +75,31 @@ export const LIFE_NEWS_TOPIC = "ai-news";
  * Topics whose hub is a news list: one line per story, the day the news happened and its
  * title, newest day first (`sort=news`). Add a topic here when it starts carrying dated
  * news packs with `news_date`; every other topic keeps its cards.
+ *
+ * `LIFE_NEWS_TOPIC` stays first: it is the oldest and largest of the three, so it is the one
+ * the hub names when only one of them has anything to show. The API's `topic` takes a single
+ * slug, so a page wanting all three reads them separately and merges -- `newsOrder` below is
+ * that merge, and it has to stay in step with the API's own news keyset.
  */
-export const NEWS_TOPICS: readonly string[] = [LIFE_NEWS_TOPIC];
+export const NEWS_TOPICS: readonly string[] = [LIFE_NEWS_TOPIC, "crypto", "tech-news"];
 
 export function isNewsTopic(section: GuideSection, topic: string): boolean {
   return section === "life" && NEWS_TOPICS.includes(topic);
+}
+
+/**
+ * The API's news order as a comparator, for merging the per-topic reads into one row: the day
+ * the news happened, then publication time, then slug -- the same keyset `_encode_news_cursor`
+ * pages on (`apps/api/app/guides/service.py`). Undated stories sort last there, and the hub
+ * filters them out before sorting, so a missing `news_date` only has to be ordered, not ranked.
+ */
+export function newsOrder(
+  a: { news_date?: string | null; published_at: string; slug: string },
+  b: { news_date?: string | null; published_at: string; slug: string },
+): number {
+  if ((a.news_date ?? "") !== (b.news_date ?? "")) return (a.news_date ?? "") < (b.news_date ?? "") ? 1 : -1;
+  if (a.published_at !== b.published_at) return a.published_at < b.published_at ? 1 : -1;
+  return a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0;
 }
 
 /**

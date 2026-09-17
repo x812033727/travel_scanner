@@ -68,7 +68,11 @@ VERTICALS = (
         topics=("finance", "crypto"),
         eyebrow="MOKAAIR  /  CRYPTO NEWS",
         accent="#D97A2B",  # ORANGE
-        order_base=None,
+        # The owner's band, 2026-09-17. 200 upwards was wholly unused: 110-196 is the crowded
+        # tutorial and series range (119 packs there already interleave with the AI news run,
+        # which is 100-148 and continues at 149), so a fresh hundred keeps this series whole
+        # and leaves it about a hundred slots of headroom. Tech has 300 for the same reason.
+        order_base=200,
     ),
     Vertical(
         name="tech",

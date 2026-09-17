@@ -9,7 +9,7 @@ import { SiteHeader } from "@/components/site-header";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { LIFE_NEWS_TOPIC, guideHref, guideListHref, guideTopicHref } from "@/lib/guides";
+import { NEWS_TOPICS, guideHref, guideListHref, guideTopicHref, newsOrder } from "@/lib/guides";
 import { getGuideList, getGuideTopics, getSeriesIndex, hubIsEmpty } from "@/lib/guides.server";
 import { localeUrl } from "@/lib/seo";
 import { getGeminiHubReference, getVisibleGeminiSeries, filterGeminiArticleLinks } from "@/lib/gemini-series.server";
@@ -30,7 +30,12 @@ const listFor = (locale: Locale, search: Search) =>
  *  publication time -- a batch import publishes a week of stories in the same minute -- and
  *  only dated stories: the topic's evergreen pieces (a sources list, a yearly timeline) are
  *  not news. Only on the plain first page: a `?topic=` or `?cursor=` view is already somewhere
- *  specific, and the news topic's own hub lists all of it. */
+ *  specific, and the news topics' own hubs list all of it.
+ *
+ *  There are three news topics and the API's `topic` takes one slug, so this reads each of
+ *  them and merges on `newsOrder`, the API's own news keyset. Each read asks for the full
+ *  limit because one topic may supply every row: crypto and tech start at nothing, and a busy
+ *  week in one vertical should not push the others' stories out by an accident of paging. */
 const NEWS_LIMIT = 20;
 
 /**
@@ -77,7 +82,9 @@ export default async function LifeHubPage(
   const showNews = !search.topic && !search.cursor;
   const [rawList, rawNews, topics, registry, t, nav] = await Promise.all([
     listFor(locale, search),
-    showNews ? getGuideList(locale, { kind: "life", topic: LIFE_NEWS_TOPIC, sort: "news" }, NEWS_LIMIT) : Promise.resolve(null),
+    showNews
+      ? Promise.all(NEWS_TOPICS.map((topic) => getGuideList(locale, { kind: "life", topic, sort: "news" }, NEWS_LIMIT)))
+      : Promise.resolve(null),
     getGuideTopics(locale, "life"),
     getSeriesIndex(locale),
     getTranslations({ locale, namespace: "common" }),
@@ -97,8 +104,25 @@ export default async function LifeHubPage(
     locale, hubPublished: Boolean(geminiReference) && registry.some((item) => item.source === "web-gemini"),
   });
   const list = { ...rawList, articles: geminiReference ? filterGeminiArticleLinks(rawList.articles, geminiSeries) : rawList.articles };
-  const news = (rawNews && geminiReference ? filterGeminiArticleLinks(rawNews.articles, geminiSeries) : rawNews?.articles ?? [])
-    .filter((article) => Boolean(article.news_date));
+  // One row per story even if two topics carry the same article: a pack may hold both
+  // ``crypto`` and ``ai-news``, and it appears in each topic's read.
+  const newsBySlug = new Map(
+    (rawNews ?? []).flatMap((result) =>
+      (geminiReference ? filterGeminiArticleLinks(result.articles, geminiSeries) : result.articles)
+        .filter((article) => Boolean(article.news_date))
+        .map((article) => [article.slug, article] as const),
+    ),
+  );
+  const news = [...newsBySlug.values()].sort(newsOrder).slice(0, NEWS_LIMIT);
+  // "See all" names the topics that actually have something, in ``NEWS_TOPICS`` order, with
+  // each topic's own label from the vocabulary this page already reads -- no new strings, and
+  // while only one vertical publishes it renders as the single link it was before.
+  const newsHubs = NEWS_TOPICS.flatMap((slug) => {
+    const topic = topics.find((item) => item.slug === slug);
+    return topic && news.some((article) => article.topics?.some((option) => option.slug === slug))
+      ? [{ slug, label: topic.label }]
+      : [];
+  });
 
   const cardLabels = {
     intel: t("guides.intel"), howto: t("guides.howto"), life: t("guides.life"),
@@ -130,9 +154,17 @@ export default async function LifeHubPage(
           <section className="mt-10" aria-labelledby="life-news-heading" data-testid="life-news">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <h2 id="life-news-heading" className="text-2xl font-bold tracking-tight">{t("guides.latestNews")}</h2>
-              <Link className="inline-flex min-h-11 items-center text-[var(--teal)] underline" href={guideTopicHref("life", LIFE_NEWS_TOPIC)}>
-                {t("guides.seeAll")}
-              </Link>
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                {newsHubs.map((hub) => (
+                  <Link
+                    key={hub.slug}
+                    className="inline-flex min-h-11 items-center text-[var(--teal)] underline"
+                    href={guideTopicHref("life", hub.slug)}
+                  >
+                    {newsHubs.length === 1 ? t("guides.seeAll") : hub.label}
+                  </Link>
+                ))}
+              </div>
             </div>
             <NewsList articles={news} />
           </section>

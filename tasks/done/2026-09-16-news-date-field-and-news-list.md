@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-news-date-field-and-news-list
 title: "News date field; news shown as a dated list, newest 20 on the lifestyle hub"
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-16T12:26:15Z
 created_at: 2026-09-16T10:05:00Z
-completed_at:
+completed_at: 2026-09-17T02:28:41Z
 branch: claude/news-date-list
 depends_on: []
 scope:
@@ -153,3 +153,21 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
 - 本機完整 API 測試 3,873 通過；`test_guides_autolink.py` 與 `test_warning_codes.py` 在 Windows 預設編碼下會紅，
   `PYTHONUTF8=1` 重跑就過，CI 是綠的。
 
+## 結案（2026-09-17，由另一個 session 補結）
+
+這張票的工作**已經合併進 main**，是 PR #537（`987f3500`
+「新聞日期欄位：最新新聞依新聞日期一條一條列出，首頁前 20 條」），
+但票在合併後沒有被轉成 `done`，一直掛在 `in-progress`。
+
+補結前逐項確認過交付物真的在 main：
+
+- `apps/api/migrations/versions/0079_guide_news_date.py` 在。
+- `apps/api/tests/test_guides_news_date.py` 在。
+- `news_date` 已接進 `schemas.py`（6 處）、`service.py`（11 處）、
+  `apps/web/lib/guides.ts`（3 處），`NEWS_TOPICS` 與 `isNewsTopic` 都在。
+- 它自己的分支 `claude/news-date-list` 在遠端已經不存在（合併後刪除）。
+
+**沒有動任何程式碼**，只是把票的狀態補成實際狀態。
+它掛著會擋住 `2026-09-16-the-life-hub-news-row-shows`（那張票要改的
+`apps/web/lib/guides.ts` 落在這張的 scope 裡），而那張正是新聞批次 4
+把幣圈與科技加進首頁新聞列所需要的。

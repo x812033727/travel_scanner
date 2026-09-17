@@ -62,10 +62,27 @@ from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS  # noqa: E
 # slug -> the article its second closing link points at. One line per article of the batch, in
 # publication order within its vertical: `display_order` is the vertical's base plus the
 # position here, the way batch 3 numbered from 142. Fill this in as the articles are agreed.
+#
+# Crypto, batch 4.1. The site had no crypto article before this batch, so the vertical has no
+# earlier news to point back at. The Taiwan act is written first and is the anchor: it is the
+# one story a reader here is actually governed by, and every international piece ends by
+# linking to what Taiwan did. Its own second link is the closest existing evergreen -- the
+# regulatory classification of Taiwan's payment instruments -- which is the one place this
+# batch bends "the second link is a news story", for want of a news story to point at.
+# Cross-links within a cluster (the four GENIUS Act rules, the two JFSA pieces) are not wired
+# here: `pack_cli autolink` adds them once all eleven exist, which is what that pass is for.
 RELATED: dict[str, str] = {
-    # "crypto-news-vasp-act-20260630": "<an existing finance or crypto article>",
-    # "tech-news-...-2026MMDD": "<an existing tech article>",
-    # "ai-news-...-2026MMDD": "<one of the 38 existing ai-news articles>",
+    "crypto-news-taiwan-vasp-act-20260630": "epayment-vs-ewallet-taiwan",
+    "crypto-news-mica-transition-ends-20260701": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-sec-crypto-interpretation-20260323": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-sec-regulation-crypto-assets-20260821": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-genius-act-occ-20260302": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-stablecoin-aml-20260410": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-fdic-genius-act-20260410": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-ncua-genius-act-20260518": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-eba-psd2-mica-20260212": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-jfsa-working-group-20260216": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-jfsa-cybersecurity-20260723": "crypto-news-taiwan-vasp-act-20260630",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:
