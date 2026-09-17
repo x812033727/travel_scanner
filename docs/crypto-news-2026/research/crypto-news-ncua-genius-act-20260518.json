@@ -1,0 +1,873 @@
+{
+  "slug": "crypto-news-ncua-genius-act-20260518",
+  "event_date": "2026-05-18",
+  "event_date_basis": "2026-05-18 是本規則草案在聯邦公報的刊登日（govinfo PDF 第 1 頁報頭「28956 Federal Register / Vol. 91, No. 95 / Monday, May 18, 2026 / Proposed Rules」，引註 91 FR 28956）。同一件事有三個日期，文章逐一分開寫，不混用：(1) 2026-05-14，文件署名日（前言結尾「By the National Credit Union Administration Board, this 14th day of May, 2026. Ji Kwon, Acting Secretary of the Board.」）；(2) 2026-05-15，送存聯邦公報辦公室（文末「[FR Doc. 2026–09915 Filed 5–15–26; 8:45 am]」）並由 NCUA 發布自家新聞稿（「Alexandria, VA (May 15, 2026)」，頁面標示 Last modified on 05/15/26）；(3) 2026-05-18，聯邦公報刊登。slug 尾碼與 news_date 用刊登日。另外兩個容易誤用的日期：意見徵詢截止日 2026-07-17（不是事件日），以及 GENIUS Act 的制定日 2025-07-18（法律的日期，不是本文事件日）。本案沒有生效日：它是草案。",
+  "title": "NCUA 的穩定幣標準草案：信用合作社只能透過子公司發行，穩定幣不受股金保險",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "聯邦公報：Implementing the GENIUS Act for the Issuance of Stablecoins by Entities Subject to the Jurisdiction of the National Credit Union Administration（91 FR 28956，govinfo PDF）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "publisher": "U.S. Government Publishing Office / Office of the Federal Register",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "NCUA 新聞稿：NCUA Announces Proposed Rule for Permitted Payment Stablecoin Issuer Standards（2026-05-15）",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "publisher": "National Credit Union Administration",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "GENIUS Act 制定條文全文（Public Law 119-27，govinfo）",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "publisher": "U.S. Government Publishing Office (GovInfo)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "聯邦公報：Investments in and Licensing of Permitted Payment Stablecoins Issuers（91 FR 6531，govinfo PDF）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "publisher": "U.S. Government Publishing Office / Office of the Federal Register",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "全部於 2026-09-17 重抓，指令一律 curl -sL -A \"Mokaair-editorial\"，任何請求都沒有放入 email、姓名或其他個人資料。\n【四條 sources 今天的取得結果】\n(1) https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf → HTTP 200、application/pdf、581,110 bytes。以 pypdf 抽文字得 80 頁、604,962 字元；第 1 頁開頭是「28956 Federal Register / Vol. 91, No. 95 / Monday, May 18, 2026 / Proposed Rules」，末頁是「[FR Doc. 2026–09915 Filed 5–15–26; 8:45 am] BILLING CODE 7535–01–P」。確認是文件本身，不是擋阻頁。\n(2) https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards → HTTP 200、text/html、57,977 bytes。剝掉標籤後可讀到完整新聞稿本文（標題、副標、Alexandria, VA (May 15, 2026)、主席引言、評論截止日、機關簡介、Last modified on 05/15/26），不是 Access Denied 或導覽殼。原始 HTML 內含 2 次 https://www.federalregister.gov/public-inspection/2026-09915/… 連結，也就是新聞稿「available for review」指向的是公眾閱覽本。\n(3) https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm → HTTP 200、text/html、185,846 bytes，開頭「[[Page 139 STAT. 419]] Public Law 119-27 119th Congress An Act To provide for the regulation of payment stablecoins…」，含 SEC. 13（12 USC 5913）、SEC. 20（12 USC 5901 note）與「Approved July 18, 2025.」。\n(4) https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf → HTTP 200、application/pdf、338,038 bytes、22 頁；第 1 頁有「6531 Vol. 91, No. 29 Thursday, February 12, 2026」「12 CFR Part 706 RIN 3133–AF69」「ACTION: Proposed rule.」。\n【引文怎麼核的】本紀錄 verified_facts 的每一條 verbatim_quote 都在上面四份檔案的抽出文字上以「空白正規化後的連續字串」實際比對過（78 條全中，0 條漏）。兩份聯邦公報 PDF 的排版慣例要照抄，不要自行「訂正」：引號印成 ‘‘…’’、單引號印成 ’、RIN 與 FR Doc 編號用的是 en dash（3133–AG10、2026–09915），而法律 HTML 用的是 `` '' 與一般連字號（Public Law 119-27）。PDF 兩欄排版會在行末斷字，所以少數字串在頁面上是跨行的：docket 編號印成「NCUA–」換行「2026–1024」、「NCUA-Licensed」在 706.201(a) 開頭處斷在連字號後、「pass-through」在 745 那段斷成「pass-」「through」。這些地方本紀錄一律改引真正連續的片段，沒有把跨行拼成一句。\n【看過但沒放進 sources 的官方管道】https://www.federalregister.gov/documents/full_text/text/2026/05/18/2026-09915.txt 今天回 HTTP 200、634,750 bytes，是同一份 91 FR 28956 的官方純文字版，用來定位段落與行號（例如署名行在 10,667 行中的第 8,259 行）；因為與 sources[0] 是同一份文件，引文一律掛 sources[0]。https://www.federalregister.gov/api/v1/documents.json 的 NCUA 查詢用於確認現況（見 live_data_warnings），是查詢端點不是公告頁，不列入 sources。\n【已知擋阻，不要再踩】https://www.federalregister.gov/documents/2026/05/18/2026-09915/implementing-… 這個「給人看」的正規頁會 302 轉到 unblock.federalregister.gov 並回 10,596 bytes 的 Request Access 頁；congress.gov 的 S.1582 頁回 403。兩者都不能當來源，本文也沒有用。",
+  "verified_facts": [
+    {
+      "fact": "本案刊登於聯邦公報第 91 卷第 95 期（2026 年 5 月 18 日星期一）的 Proposed Rules，起始頁 28956，正式引註 91 FR 28956。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "28956 Federal Register / Vol. 91, No. 95 / Monday, May 18, 2026 / Proposed Rules"
+    },
+    {
+      "fact": "發文機關只有 NCUA 一家，修正的是 12 CFR 第 702、704、706、745、747 部，案號 RIN 3133-AG10（PDF 報頭印的是 en dash 的 3133–AG10）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "12 CFR Parts 702, 704, 706, 745, and 747 RIN 3133–AG10"
+    },
+    {
+      "fact": "聯邦公報的 ACTION 欄寫的是「補充規則草案」，不是一般的 proposed rule，也不是最終規則。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ACTION: Supplemental proposed rule."
+    },
+    {
+      "fact": "DATES 欄寫明意見須於 2026 年 7 月 17 日前送達。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Comments must be received by July 17, 2026."
+    },
+    {
+      "fact": "本案在 regulations.gov 的 docket 編號為 NCUA-2026-1024（PDF 在此處換行，頁面上印成「NCUA–」與下一行的「2026–1024」）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "2026–1024. Follow the ‘‘Submit a comment’’ instructions."
+    },
+    {
+      "fact": "文件署名日為 2026 年 5 月 14 日，署名者為 Ji Kwon, Acting Secretary of the Board。這是聯邦公報的授權／署名行，文件沒有說當天開了理事會會議或進行表決，也沒有票數紀錄；ADDRESSES 欄另寫通訊對象為 Melane Conyers-Ausbrooks, Secretary of the Board。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By the National Credit Union Administration Board, this 14th day of May, 2026. Ji Kwon, Acting Secretary of the Board."
+    },
+    {
+      "fact": "上面那段署名不在文件末尾，而是前言（preamble）的結尾：緊接著的是修正指示與約二千四百行的條文。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For the reasons stated in the preamble, the NCUA Board proposes to amend chapter VII of title 12 of the Code of Federal Regulations as follows:"
+    },
+    {
+      "fact": "文件真正的末行是送存標記：2026 年 5 月 15 日上午 8:45 送存聯邦公報辦公室，刊登則在 5 月 18 日。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[FR Doc. 2026–09915 Filed 5–15–26; 8:45 am]"
+    },
+    {
+      "fact": "SUMMARY 自述本案的範圍：補充前一份提案，規範支付穩定幣的發行與相關業務，並就股金保險、代幣化股金與其他配套修正提出修改。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This current proposal supplements the previous proposal and would govern the issuance of Payment Stablecoins and certain related activities by entities subject to the NCUA’s jurisdiction. This proposal would also make amendments to address share insurance coverage, tokenized shares, and other conforming and clarifying amendments."
+    },
+    {
+      "fact": "第 IV 節自己劃界：除本補充提案明文寫出者外，NCUA 並未重新提出或修改 2026 年 2 月許可提案裡的條文。因此 5 月版條文中複述的許可程序條款（706.103、706.106、706.107、706.112 等）是 2 月提出的，不是 5 月新提的。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Unless explicitly stated in this supplemental proposal, the NCUA is not reproposing or otherwise modifying those provisions proposed in the NCUA Licensing Proposal."
+    },
+    {
+      "fact": "NCUA 說明在可能的範圍內，擬議的第 706 部會與其他主要聯邦支付穩定幣主管機關所提的標準與用語保持一致。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "where possible, proposed part 706 would maintain consistency with the standards and terminology proposed by the other primary Federal payment stablecoin regulators"
+    },
+    {
+      "fact": "依 GENIUS Act，受保存款機構（法律定義包含 FDIC 受保的存款機構與聯邦受保信用合作社 FICU，文件合稱 IDI）不得成為支付穩定幣的發行人，必須透過「子公司」發行。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cannot be issuers of Payment Stablecoins. Instead, IDIs must use ‘‘subsidiaries’’ as issuers."
+    },
+    {
+      "fact": "提案的第 III 節重述同一件事：FICU 不得直接發行支付穩定幣。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FICUs are not permitted to issue Payment Stablecoins directly."
+    },
+    {
+      "fact": "文件寫「主要聯邦支付穩定幣主管機關」時用的是「包括」NCUA、FDIC、OCC 與聯準會理事會，不是「就是這四家」；706.2 的定義條文沒有替這個詞下定義。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the primary Federal payment stablecoin regulators, which include the NCUA, the Federal Deposit Insurance Corporation (FDIC), the Office of the Comptroller of the Currency (OCC), and the Board of Governors of the Federal Reserve System (Federal Reserve Board)"
+    },
+    {
+      "fact": "GENIUS Act 對「受保信用合作社子公司」的定義，前言說是三個分支，並只列 (A)(B)(C)：提供信用合作社日常營運相關服務的組織（12 U.S.C. 1757(7)(I)）、信用合作社持有股權或已放款的信用合作社服務組織（CUSO，12 CFR part 712），以及州立受保信用合作社依州法設立的子公司；註腳引 12 U.S.C. 5901(33)。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This definition includes three separate prongs."
+    },
+    {
+      "fact": "文件並寫明這三個分支各自獨立：每一個都是取得 FICU 子公司資格、進而成為 PPSI 的單獨路徑。（另有一個把所有層級下層子公司納入的第四款出現在 706.2 的擬議條文，屬於 NCUA 的提案，不是法律本身的三個分支，本文沒有寫到條文層級。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Each prong is a separate and distinct avenue to qualify as a FICU subsidiary for purposes of being a PPSI."
+    },
+    {
+      "fact": "屬於 IDI 子公司（含 FICU 子公司）的發行人必須受主要聯邦支付穩定幣主管機關監理，不能選擇州級監理架構。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act requires that issuers that are subsidiaries of IDIs (including subsidiaries of FICUs) must be regulated by the primary Federal payment stablecoin regulators and does not allow them to opt for the state-level regulatory framework."
+    },
+    {
+      "fact": "擬議 706.201(a) 以「只能」列舉八項業務：發行、贖回、管理與發行贖回有關的準備資產、提供保管或保管箱服務、就購買或贖回收費、以本人或代理人身分行事、支付費用以促成客戶交易，以及直接支援前四項的其他業務。（PDF 在此處把「NCUA-Licensed」斷在連字號後換行，故引文自 Licensed 之後的連續片段取。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Permitted Payment Stablecoin Issuer may only:"
+    },
+    {
+      "fact": "擬議 706.201(c)(3)：發行人不得直接或以暗示表示支付穩定幣有美國完全信用擔保、由美國政府保證，或受聯邦存款保險或聯邦股金保險保障。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Directly or through implication represent that Payment Stablecoins are backed by the full faith and credit of the United States, guaranteed by the United States Government, or subject to Federal deposit insurance or Federal share insurance."
+    },
+    {
+      "fact": "前言把同一件事講成法律本身的規定：GENIUS Act 明文規定支付穩定幣不受美國完全信用擔保、不由美國政府保證，也不受 FDIC 存款保險或 NCUA 股金保險保障。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act explicitly dictates that Payment Stablecoins are not backed by the full faith and credit of the United States, they are not guaranteed by the U.S. Government, nor are they covered by deposit or share insurance from the FDIC or NCUA."
+    },
+    {
+      "fact": "擬議 706.201(c)(4)：不得就持有、使用或保有該支付穩定幣本身，付給持有人任何形式的利息或收益，不論現金、代幣或其他對價。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Pay the holder of any Payment Stablecoin any form of interest or yield (whether in cash, tokens, or other consideration) solely in connection with the holding, use, or retention of such Payment Stablecoin."
+    },
+    {
+      "fact": "擬議 706.201(c)(4)(i)–(iii) 對關係企業與特定第三方的安排建立可推翻的推定，發行人得提出書面資料反證。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "may rebut the presumption in paragraph (c)(4)(i) of this section by submitting written materials"
+    },
+    {
+      "fact": "擬議 706.201(c)(7)：不得直接或間接提供客戶信用，使該客戶得以向該發行人購買或取得支付穩定幣。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Provide a Customer credit, directly or indirectly, to enable the Customer to purchase or otherwise acquire Payment Stablecoins from the NCUA-Licensed Permitted Payment Stablecoin Issuer."
+    },
+    {
+      "fact": "擬議 706.202(a)(1)：準備資產須可辨識、與發行人其他資產分離不得混同，且任何時點公允價值總額須等於或超過流通發行總額（Outstanding Issuance Value）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "At all times have a total Fair Value that equals or exceeds the Outstanding Issuance Value"
+    },
+    {
+      "fact": "擬議 706.202(g)(1)：準備資產低於下限的當日，發行人須通報 NCUA。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "must notify the NCUA on any day in which its Reserve Asset amount has fallen below the required minimum"
+    },
+    {
+      "fact": "擬議 706.202(g)(2)(i)：未達準備下限時立即禁止新發行（僅為跨帳本移轉且淨流通發行總額不增加者除外）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Is prohibited from issuing any new Payment Stablecoins immediately"
+    },
+    {
+      "fact": "擬議 706.202(g)(3)：連續 15 個營業日未達準備下限（NCUA 得單方裁量延長），須開始變賣準備資產並贖回流通中的支付穩定幣。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "fails to meet its minimum Reserve Asset requirement for 15 consecutive business days (which may be extended in the NCUA’s sole discretion)"
+    },
+    {
+      "fact": "擬議 706.202(g)(3)(ii)：清算期間任何時候都不得向客戶收取贖回費用。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Not charge Customers a fee to redeem their Payment Stablecoins at any time during the liquidation."
+    },
+    {
+      "fact": "擬議 706.203(b)(1)：贖回政策須載明及時贖回不得超過申請贖回日之後兩個營業日，且任何裁量性的贖回限制只能由 NCUA 課予。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "That timely redemption may not exceed two business days following the date of the requested redemption; and (ii) That any discretionary limitations on timely redemptions can only be imposed by the NCUA."
+    },
+    {
+      "fact": "擬議 706.203(c)(1)：單一 24 小時內贖回需求超過流通發行總額 10% 時，及時贖回期間依本項自動延長為七個日曆日。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the period for timely redemption described in paragraph (b)(1) of this section is immediately extended to seven calendar days by operation of this paragraph (c)(1)"
+    },
+    {
+      "fact": "擬議 706.203(c)(4)：觸發上述 10% 門檻時，發行人須於 24 小時內通知 NCUA。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "must provide notice to the NCUA within 24 hours if its redemption requests exceed 10 percent of its Outstanding Issuance Value in a single 24-hour period"
+    },
+    {
+      "fact": "擬議 706.203(a)(5)：贖回政策須載明最低贖回數量（如有），且發行人必須受理一枚以上的任何數量，惟仍須經適當的客戶篩查與開戶程序。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "provided that the issuer must redeem any number greater than or equal to one Payment Stablecoin, subject to appropriate Customer screening and onboarding."
+    },
+    {
+      "fact": "擬議的最低資本條文：新設（de novo）發行人須維持執照條件所訂金額與 500 萬美元兩者中較高者。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A de novo NCUA-Licensed Permitted Payment Stablecoin Issuer must hold minimum capital equal to the greater of: (A) The amount specified as part of its licensing conditions; or (B) $5 million."
+    },
+    {
+      "fact": "同一條規定該最低金額須維持 36 個月，得依執照條件或 NCUA 其後的認定縮短或延長；「de novo」指取得 NCUA 發行核准未滿三年者。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "must hold this minimum amount for 36 months"
+    },
+    {
+      "fact": "擬議的營運後盾（operational backstop）要求發行人維持相當於 12 個月總費用的資產，且須與準備資產分別列示。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Equal to 12 months of total expenses."
+    },
+    {
+      "fact": "擬議 706.205(a)：NCUA 每 12 個月期間至少對每一家受其監理的 PPSI 進行一次全面檢查，除非適用 706.205(d)。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the NCUA will conduct a full-scope examination of every PPSI subject to its supervision at least once during each 12-month period"
+    },
+    {
+      "fact": "擬議 706.205(d)：符合四項條件者，NCUA 得單方裁量改為 14 至 24 個月檢查一次；條件包含目前未受正式執法程序或命令、在「若非本項規定本應受全面檢查」的前 12 個月期間內無人成為母公司或取得控制權、發行與交易規模在門檻以下，以及遵守準備資產與申報要求。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Proposed § 706.205(d) would provide the NCUA with the option to examine some PPSIs on a 14- to 24-month cycle, as determined by the NCUA in its sole discretion"
+    },
+    {
+      "fact": "擬議修正第 745 部：存在信用合作社股金帳戶裡、作為支付穩定幣準備的錢，依法人帳戶規則保給該發行人。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "funds held in Share Accounts at FICUs as reserves for a Payment Stablecoin would be insured to the PPSI under the NCUA’s coverage rules for corporate accounts"
+    },
+    {
+      "fact": "同一段說明這些帳戶要與該發行人在同一家信用合作社的其他法人帳戶合併計算。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As corporate accounts of the PPSI, such accounts would be aggregated with other corporate accounts maintained by the PPSI at the same FICU"
+    },
+    {
+      "fact": "合併計算後的保額上限是標準最高股金保險額（SMSIA），文件寫「目前為 25 萬美元」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "insured for up to the Standard Maximum Share Insurance Amount (SMSIA), currently $250,000"
+    },
+    {
+      "fact": "NCUA 說明不採穿透式保險的理由：法律既然明文寫支付穩定幣不受股金保險，把股金保險穿透給持有人看起來與那些條文不一致。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These provisions appear to be inconsistent with providing share insurance to Payment Stablecoin holders on a pass-through basis."
+    },
+    {
+      "fact": "擬議 745.6 的新增項把上述認定寫進條文：存在受保信用合作社、作為支付穩定幣準備的帳戶，是該支付穩定幣發行人的帳戶，依本部按法人帳戶投保。（條文原文的 issuer’s and insured 是來源自己的寫法。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "are accounts of the permitted payment stablecoin issuer’s and insured as corporate accounts for purposes of this part."
+    },
+    {
+      "fact": "擬議 745.2 新增項：受保信用合作社用什麼技術或記帳方式記錄帳戶負債，不影響那些負債是否構成可保的「帳戶」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The technology or type of recordkeeping utilized by an Insured Credit Union to record account liabilities does not affect whether those liabilities constitute ‘‘accounts.’’"
+    },
+    {
+      "fact": "前言的對應結論：使用代幣化股金的信用合作社社員或帳戶持有人，依聯邦信用合作社法享有與使用非代幣化股金者相同的聯邦股金保險。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a FICU member or accountholder using tokenized shares is afforded the same Federal share insurance coverage under the FCU Act as a FICU member or accountholder using non-tokenized shares"
+    },
+    {
+      "fact": "NCUA 認為支付穩定幣與代幣化股金在經濟上與法律上是不同的東西。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Payment Stablecoins and tokenized shares are economically and legally distinct."
+    },
+    {
+      "fact": "NCUA 同時提醒：可能有代幣化的信用合作社負債不是可保的股金帳戶，即使當事人有相反的意圖或陳述亦然。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "there may be tokenized FICU liabilities that are not insurable share accounts, irrespective of an intention or representation that such constitute an insurable share account"
+    },
+    {
+      "fact": "NCUA 在文件裡把 GENIUS Act 的生效時點寫成公式：制定日（2025 年 7 月 18 日）起 18 個月，或各主要聯邦支付穩定幣主管機關發布實施最終規則後 120 天，兩者取其早。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act’s effective date is the earlier of 18 months after the enactment date (July 18, 2025) or 120 days after the primary Federal payment stablecoin regulators issue final regulations implementing the GENIUS Act."
+    },
+    {
+      "fact": "提案第一節開頭寫制定日：2025 年 7 月 18 日總統簽署 GENIUS Act 成為法律。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On July 18, 2025, President Trump signed the GENIUS Act into law."
+    },
+    {
+      "fact": "本提案的編號問題自 Question 1 連續編到 Question 199，共 199 個、無缺號也無重號（以「Question N:」在 govinfo PDF 抽出文字上計數，2026-09-17 實算）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Question 199:"
+    },
+    {
+      "fact": "NCUA 為分析之用假設約有 15 家 FICU 會從事本提案允許的一項以上活動，這是假設不是實際家數。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the NCUA assumes that approximately 15 FICUs would perform one or more of the activities authorized under the proposed rule"
+    },
+    {
+      "fact": "該假設的註腳說明這個數字與截至 2025 年 12 月 31 日申報提供數位資產服務的 FICU 家數一致。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This number is consistent with the number of FICUs that report offering digital asset services as of December 31, 2025."
+    },
+    {
+      "fact": "擬議 706.503：NCUA 在採取 AML/CFT 執法或重大監理行動前，原則上須至少提前 30 天書面通知 FinCEN 署長（除非 NCUA 單方認為需要更短時間以因應不安全或不穩健的做法）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Send written notice to the FinCEN Director of its intent to take that action at least 30 days before taking the action"
+    },
+    {
+      "fact": "5 月文件的條文裡也複述了投資限制（706.112）：受保信用合作社不得投資於非 NCUA 核照的支付穩定幣發行人。依第 IV 節的界線，這是 2026 年 2 月提案提出的條文，5 月只是照錄。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An Insured Credit Union cannot invest in a Payment Stablecoin issuer unless it is an NCUA-Licensed Permitted Payment Stablecoin Issuer."
+    },
+    {
+      "fact": "NCUA 新聞稿的標題與副標：標題為 NCUA Announces Proposed Rule for Permitted Payment Stablecoin Issuer Standards，副標請利害關係人檢視提案並提出意見。",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Stakeholders Are Encouraged to Review Notice of Proposed Rulemaking and Submit Comments"
+    },
+    {
+      "fact": "新聞稿發稿地與日期為維吉尼亞州亞歷山卓，2026 年 5 月 15 日；頁面另標示最後修改日 05/15/26。",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Alexandria, VA (May 15, 2026)"
+    },
+    {
+      "fact": "NCUA 在自家新聞稿裡把這份文件稱為 Notice of Proposed Rule Making，與聯邦公報 ACTION 欄的 Supplemental proposed rule 用語不同。",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "announced a Notice of Proposed Rule Making outlining the operational and risk management standards for an NCUA-licensed permitted payment stablecoin issuer, as outlined in the GENIUS Act"
+    },
+    {
+      "fact": "新聞稿寫意見徵詢於 2026 年 7 月 17 日截止，與聯邦公報 DATES 欄一致；同句說提案「目前可在聯邦公報上檢視」，而該連結指向的是聯邦公報的公眾閱覽本（public inspection）頁，不是刊登本。",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposed rule is currently available for review in the Federal Register, where stakeholders will be able to submit comments. The comment period on the proposed rule will close on July 17, 2026."
+    },
+    {
+      "fact": "NCUA 主席 Kyle Hauptman 表示已努力把 NCUA 核照發行人的標準與銀行子公司的擬議標準對齊。這是機關自述，不是本站查證的結論。",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we worked diligently to align the standards for NCUA-licensed PPSIs with the standards that are proposed for bank subsidiaries"
+    },
+    {
+      "fact": "新聞稿末尾的機關簡介寫 NCUA 是由美國國會設立、負責規範、核照與監理聯邦信用合作社的聯邦機關。",
+      "url": "https://ncua.gov/newsroom/press-release/2026/ncua-announces-proposed-rule-permitted-payment-stablecoin-issuer-standards",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The NCUA is the federal agency created by the U.S. Congress to regulate, charter and supervise federal credit unions."
+    },
+    {
+      "fact": "GENIUS Act 的法律編號是 Public Law 119-27，制定條文起始於 139 STAT. 419。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Public Law 119-27"
+    },
+    {
+      "fact": "法律第 1 條的簡稱條款：本法得稱為 Guiding and Establishing National Innovation for U.S. Stablecoins Act 或 GENIUS Act。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Act may be cited as the ``Guiding and Establishing National Innovation for U.S. Stablecoins Act'' or the ``GENIUS Act''."
+    },
+    {
+      "fact": "制定條文末尾寫 Approved July 18, 2025.，這是制定日。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Approved July 18, 2025."
+    },
+    {
+      "fact": "法律第 20 條（NOTE: 12 USC 5901 note）規定生效時點：本法及其修正自「制定日起 18 個月」或「各主要聯邦支付穩定幣主管機關發布任何實施最終規則後 120 天」兩者較早者起生效。文章只寫這個公式，不寫推算的日期。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Act, and the amendments made by this Act, shall take effect on the earlier of (1) the date that is 18 months after the date of enactment of this Act; or (2) the date that is 120 days after the date on which the primary Federal payment stablecoin regulators issue any final regulations implementing this Act."
+    },
+    {
+      "fact": "法律第 13 條（NOTE: 12 USC 5913）要求各主要聯邦支付穩定幣主管機關、財政部長與各州支付穩定幣主管機關，於本法制定日起一年內以正式的預告評論程序完成規則制定。",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Not later than 1 year after the date of enactment of this Act, each primary Federal payment stablecoin regulator, the Secretary of the Treasury, and each State payment stablecoin regulator shall promulgate regulations to carry out this Act through appropriate notice and comment rulemaking."
+    },
+    {
+      "fact": "NCUA 前一份提案刊登於聯邦公報第 91 卷第 29 期（2026 年 2 月 12 日星期四），起始頁 6531。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "6531 Vol. 91, No. 29 Thursday, February 12, 2026"
+    },
+    {
+      "fact": "該提案的標題為 Investments in and Licensing of Permitted Payment Stablecoins Issuers，修正 12 CFR 第 706 部，案號 RIN 3133-AF69（PDF 印的是 en dash 的 3133–AF69），與 5 月補充提案的 RIN 不同。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "12 CFR Part 706 RIN 3133–AF69 Investments in and Licensing of Permitted Payment Stablecoins Issuers"
+    },
+    {
+      "fact": "2 月那份的 ACTION 欄寫的是一般的規則草案（Proposed rule），不是補充草案。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ACTION: Proposed rule."
+    },
+    {
+      "fact": "2 月提案的 SUMMARY 自己寫出法定期限：GENIUS Act 要求 NCUA 在 2026 年 7 月 18 日前發布實施規則。這是官方印出的日期，不是本文推算。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act also requires the NCUA to issue implementing regulations by July 18th, 2026."
+    },
+    {
+      "fact": "2 月提案的意見徵詢於 2026 年 4 月 13 日截止。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Comments must be received by April 13, 2026."
+    },
+    {
+      "fact": "2 月提案的 docket 編號為 NCUA-2025-1335，與 5 月補充提案的 NCUA-2026-1024 不同（PDF 同樣在編號中間換行）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "2025–1335. Follow the ‘‘Submit a comment’’ instructions."
+    },
+    {
+      "fact": "2 月提案的 706.103(a)：申請必須與任何受保信用合作社母公司共同提出。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This application must be filed jointly with any insured credit union Parent Company(ies)."
+    },
+    {
+      "fact": "2 月提案說明 GENIUS Act 要求 NCUA 在收到實質完整申請後 120 天內作成決定。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the GENIUS Act requires the NCUA to render a decision on the application not later than 120 days after receiving a substantially complete application"
+    },
+    {
+      "fact": "2 月提案的 706.106(a)：NCUA 若未在該期間內就完整申請作成決定，申請視為核准。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the NCUA fails to render a decision on a complete application within this period, the application shall be deemed approved."
+    },
+    {
+      "fact": "2 月提案的 706.106(b)(2)：收件後 30 天內，NCUA 要通知申請人其申請是否經認定為實質完整。30 天通知在 (b)(2)，不在 706.106(a)。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Not later than 30 days after receiving an application, the NCUA will notify the Applying Issuer as to whether the NCUA determined the application to be substantially complete"
+    },
+    {
+      "fact": "2 月提案的 706.107(a)(2)：在開放式、公開或去中心化網路上發行支付穩定幣，不構成駁回依本分章所受理申請的正當理由。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The issuance of a payment stablecoin on an open, public, or decentralized network is not a valid ground for denial of an application received under this subpart."
+    },
+    {
+      "fact": "2 月提案的 706.112：受保信用合作社不得投資於非 NCUA 核照的支付穩定幣發行人（2 月版條文用的是小寫的 insured credit union 與 payment stablecoin issuer）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An insured credit union cannot invest in a payment stablecoin issuer unless it is an NCUA-Licensed Permitted Payment Stablecoin Issuer."
+    },
+    {
+      "fact": "2 月那份文件於 2026 年 2 月 11 日上午 8:45 送存聯邦公報辦公室，2 月 12 日刊登——與 5 月這一份一樣是送存日與刊登日分開。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[FR Doc. 2026–02868 Filed 2–11–26; 8:45 am]"
+    },
+    {
+      "fact": "擬議 706.203(c)(5)：除了 10% 門檻觸發的自動延長之外，NCUA 若認定發行人危及安全穩健或金融穩定、或延長另符合公共利益，得裁量延長 706.203(b)(1) 的兩個營業日或 (c)(1) 的七個日曆日。（第二輪查核新增：前一版正文與 FAQ 只寫自動延長，把兩個營業日寫成只有一種例外。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The NCUA may also, in its discretion, extend timely redemption described in paragraph (b)(1) or (c)(1) of this section, as applicable, if the NCUA determines that the NCUA-Licensed Permitted Payment Stablecoin Issuer poses a threat to safety and soundness, financial stability, or such an extension is otherwise in the public interest."
+    },
+    {
+      "fact": "2 月提案的 706.106(b)(3)：已認定為實質完整的申請維持實質完整，除非情況有重大變更而須由 NCUA 當成新申請處理——也就是 120 天／逾期視為核准的時鐘不是絕對的。（第二輪查核新增。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An application considered substantially complete under this section will remain substantially complete unless there is a material change in circumstances that requires the NCUA to treat the application as a new application."
+    },
+    {
+      "fact": "NCUA 談本案的成本與效益時用的是條件句，沒有把定案當成既定事實。（第二輪查核新增：文章的「沒有給定案日期」就掛在這兩句上，不再寫成「沒有寫是否會成為最終規則」。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This proposed rule, if finalized as proposed, is expected to be a deregulatory action under Executive Order 14192."
+    },
+    {
+      "fact": "NCUA 就股金保險的認定本身徵詢意見：問這樣處理是否妥當、是否反映 GENIUS Act 與 FCU Act 的正確解釋。（第二輪查核新增。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The NCUA is seeking comment on whether this is the appropriate approach and reflects the appropriate interpretation of the GENIUS Act and FCU Act."
+    },
+    {
+      "fact": "NCUA 另就要不要在最終規則裡明文把以分散式帳本技術記錄的股金帳戶排除在支付穩定幣定義之外徵詢意見；來源這一句自己把 Distributed 印成 Distribution，照抄不訂正。（第二輪查核新增。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Board is specifically seeking comment as to whether the final rule should modify the text drawn from the GENIUS Act’s definition to specifically exempt Share Accounts recorded using Distribution Ledger technology from the GENIUS Act’s definition of a Payment Stablecoin"
+    },
+    {
+      "fact": "GENIUS Act 第 2 條第 22 款對「支付穩定幣」的定義明文排除存款，並包含以分散式帳本技術記錄的存款——這是法律原文，不必靠 NCUA 前言轉述。（第二輪查核新增。）",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "is a deposit (as defined in section 3 of the Federal Deposit Insurance Act (12 U.S.C. 1813)), including a deposit recorded using distributed ledger technology"
+    },
+    {
+      "fact": "法律第 4 條(e)款「Misrepresentation of Insured Status」自己就把相反陳述訂為違法，所以文章的「作相反陳述即屬違法」有法律原文可掛，不只是 NCUA 前言的轉述。（第二輪查核新增。）",
+      "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ27/html/PLAW-119publ27.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It shall be unlawful to represent that payment stablecoins are backed by the full faith and credit of the United States, guaranteed by the United States Government, or subject to Federal deposit insurance or Federal share insurance."
+    },
+    {
+      "fact": "2 月提案自述其做法貼近信用合作社的合作模式——這是四條來源裡唯一寫出「合作」的地方，文章的信用合作社背景句改掛這一句。（第二輪查核新增：原句「由社員共同持有的合作性存款機構」唯一依據是新聞稿頁導覽區塊的機關自述，不在新聞稿本文。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-12/pdf/2026-02868.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Board also believes this approach better reflects standards and characteristics that are unique to the cooperative model in which credit unions operate"
+    },
+    {
+      "fact": "NCUA 為所有 FICU 的社員帳戶提供股金保險，而保障範圍不限於名冊上的社員，還包含其他依法得在 FICU 開立受保帳戶的人。（第二輪查核新增：可用來取代「由社員共同持有」那種所有權敘述。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In other words, the NCUA provides share insurance coverage to members and those otherwise eligible to maintain insured accounts at FICUs."
+    },
+    {
+      "fact": "擬議 706.201(b) 的解釋規定：本條(a)項的業務清單不得解釋為限制受保信用合作社依適用州法與聯邦法得從事的業務。所以「只能做八件事」限於核照發行人，不是信用合作社本身的業務範圍。（第二輪查核新增。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-18/pdf/2026-09915.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Nothing in paragraph (a) of this section may be construed to limit the authority of an Insured Credit Union to engage in activities permissible pursuant to applicable State and Federal law."
+    }
+  ],
+  "not_said": [
+    "官方未說明本規則的生效日：它是補充規則草案，文件本身沒有任何生效日期。",
+    "四份文件都沒有給本案定案的日期，NCUA 自己用的是假設語氣：「This proposed rule, if finalized as proposed, is expected to be a deregulatory action under Executive Order 14192.」與「If finalized, the proposed rule would establish a new regulatory framework for Payment Stablecoins issued by subsidiaries of FICUs.」（各 1 次）。但第二輪查核推翻了更強的寫法：不可以寫成「四份文件都沒有寫它是否會成為最終規則」——5 月全文以最終規則為前提的地方很多（2026-09-17 以 pypdf 抽出文字實算 final rule 21 次，其中 the final rule 15 次），包括「the effective date of the NCUA’s final rule implementing the GENIUS Act」、706.202(c) 兩個選項的「only one of which would be selected in the final rule」，以及 2 次「should the final rule」的提問；2 月提案更印了法定期限「The GENIUS Act also requires the NCUA to issue implementing regulations by July 18th, 2026.」。能寫的只有「沒有給日期」與「NCUA 用的是條件句」。",
+    "官方未說明已有任何信用合作社子公司提出申請或取得 PPSI 執照。文件裡的「約 15 家 FICU」是 NCUA 為成本與負擔分析設定的假設。",
+    "官方未說明本規則對台灣的使用者、平台或主管機關有什麼影響；以 govinfo PDF 的抽出文字查核到 2026-09-17，全文未見 Taiwan 與 Taipei（各 0 次）。反過來不成立：全文並非完全不談美國以外——它引 12 U.S.C. 5916 談符合要件的境外支付穩定幣發行人、在準備資產條文裡寫到 IDI 的境外分支與通匯行、把「Money issued by a foreign central bank」列為 706.2 的定義項，並在資本那一段說本案的資本要求較「certain foreign jurisdictions」已採或已提的做法寬鬆。所以不可以寫成「全文沒有談美國以外的轄區」，只能寫成「沒有提到台灣」。",
+    "官方未點名任何一種穩定幣、任何一家發行商、交易所或信用合作社。",
+    "官方未說明支付穩定幣持有人在發行人倒閉時實際可以拿回多少；提案只處理順位與贖回程序，沒有給任何回收率或保障金額。",
+    "官方未說明利息／收益禁令是否及於與發行人完全無關的第三方；可推翻的推定只涵蓋定義中的關係企業與 related third party。",
+    "NCUA 新聞稿沒有說明本案與 OCC、FDIC 提案在條文上的具體差異，只有主席一句「已努力對齊」的表述。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "GENIUS Act 的 Statutes at Large 引註 139 Stat. 419 與編入 12 U.S.C. 5901–5916 的敘述。",
+      "seen_where": "前一輪研究紀錄第 13、14 條，引的是 FDIC 與 OFAC/FinCEN 提案的註 1",
+      "why_excluded": "那兩個網址不在本文 sources[]，而 NCUA 文件本身從未寫過 Public Law 119-27、139 Stat. 或 5901-5916。本文改以法律原文（sources[2]）支撐法律編號與起始頁，文章也只寫 Public Law 119-27，不寫 5901–5916 的編入範圍。"
+    },
+    {
+      "claim": "「四個主要聯邦支付穩定幣主管機關為 NCUA、FDIC、OCC 與聯準會理事會」。",
+      "seen_where": "前一輪研究紀錄第 23 條",
+      "why_excluded": "原文用的是 which include（包括），不是列舉窮盡，且全文沒有替這個詞下定義。文章改寫成「包括」，不寫「四個」。"
+    },
+    {
+      "claim": "「NCUA 理事會於 2026 年 5 月 14 日通過本案」。",
+      "seen_where": "前一輪研究紀錄第 7 條",
+      "why_excluded": "文件給的是聯邦公報標準的授權／署名行，沒有說當天開會或表決，也沒有票數。文章只寫「署名日 5 月 14 日」。"
+    },
+    {
+      "claim": "「NCUA 這次提出 120 天視為核准、共同申請、開放網路不得作為駁回理由、信用合作社投資限制」等許可程序條文。",
+      "seen_where": "前一輪研究紀錄第 24、25、26、27 條",
+      "why_excluded": "這些是 2026 年 2 月 12 日許可提案（91 FR 6531）的條文，5 月文件第 IV 節明寫除非明文指出，否則不重新提出或修改那些條文。文章一律寫成「2 月提出、5 月照錄」，並把引註掛在 2 月那份 PDF 上。"
+    },
+    {
+      "claim": "「S. 1582 於 2025 年 5 月 21 日、6 月 2、9、11、12、17 日經參議院審議通過」。",
+      "seen_where": "前一輪研究紀錄第 16 條與 govinfo 的 Legislative History 欄位",
+      "why_excluded": "來源字串是「considered and passed Senate」的國會紀錄日期清單，參議院只通過一次。立法歷程與本文主旨無關，整段不寫。"
+    },
+    {
+      "claim": "「私部門預測 2026 年穩定幣發行量上限 5,000 億美元」與 NCUA 假設的 100 億美元發行量。",
+      "seen_where": "NCUA 提案的受影響實體分析",
+      "why_excluded": "市場規模性質的數字，crypto.md 明文禁止；且 5,000 億那一項 NCUA 只說是私部門預測，沒有指名出處。一律不寫。"
+    },
+    {
+      "claim": "706.205(d) 放寬檢查週期的門檻之一是「月交易量低於 250 億美元」。",
+      "seen_where": "NCUA 提案 706.205(d) 條件 (3)",
+      "why_excluded": "條件本身要保留（文章寫成「發行與交易規模在門檻以下」），但那個以交易量表示的金額在 crypto.md 的禁區邊緣，為避免被讀成市場數字而不印出數字。條件沒有被刪，只是不印金額。"
+    },
+    {
+      "claim": "regulations.gov 上本案已收到的意見件數。",
+      "seen_where": "Federal Register API 的 regulations_dot_gov_info 欄位",
+      "why_excluded": "那是聯邦公報轉述 regulations.gov 的快照，時點不是本文查核日，且本文沒有直接連上 regulations.gov 驗證。活資料，不寫。"
+    },
+    {
+      "claim": "白宮 Strengthening American Leadership in Digital Financial Technology 報告（NCUA 註 2 起大量引用）的內容。",
+      "seen_where": "NCUA 提案註腳 2 至 8",
+      "why_excluded": "本次沒有抓 whitehouse.gov 的原始 PDF，不能當本文查證過的事實，也沒有列為來源。"
+    },
+    {
+      "claim": "把最低資本條文寫成「706.402」。",
+      "seen_where": "本案條文前的第 706 部目次（91 FR 的條文目次把 Subpart D 列成 706.401 Capital Elements／706.402 Minimum Capital and Backstop／706.403 Individual Additional…）",
+      "why_excluded": "同一份文件的前言與條文本身用的是 706.400 資本組成、706.401 最低資本與後盾、706.402 個別額外要求，目次與條文差一號。這是來源自己的不一致，本文不引 Subpart D 的條號（只寫內容），也不替來源「訂正」。"
+    },
+    {
+      "claim": "把 706.201(c)(7)（禁止提供客戶信用）寫成 706.201(b)(7)。",
+      "seen_where": "NCUA 提案前言的敘述",
+      "why_excluded": "前言與條文編號不一致，條文本身是 (c)(7)。本文不印這個條號，只寫禁止的內容。"
+    }
+  ],
+  "editorial_brief": "讀者設定：台灣一般使用者，可能用美元穩定幣做跨境收付，但不做交易決策，對美國金融監理術語（信用合作社、股金保險、CUSO）完全陌生。\n本篇在四篇 GENIUS Act 落地文中的分工：只寫 NCUA 管到誰（聯邦受保信用合作社及其子公司）與要求什麼。GENIUS Act 本身用兩三句帶過。主軸三條：(1) 路徑——信用合作社自己不能發，只能由子公司取得 NCUA 執照；(2) 保障的界線——支付穩定幣不受股金保險，準備金算發行人的法人帳戶、合併計算、上限 25 萬美元、不穿透；代幣化股金則與傳統股金帳戶同樣受保，這組對比是本篇的主軸；(3) 出事時會怎樣——準備不足要通報並停止新發行、連續 15 個營業日要清算且不得收費、大量贖回時期限自動延長。\n準備資產八大類、分散度門檻、兩個營業日贖回、500 萬美元新設資本、12 個月營運後盾這些與銀行端對齊的條文只點到為止，細節留給 OCC 與 FDIC 兩篇；AML/CFT 計畫的實質要求留給 FinCEN/OFAC 那篇，本篇只寫 NCUA 端的 30 天事前通知。\n刻意不談：任何幣種、發行商、平台；任何價格、市值、發行量、收益；美國以外轄區；以及「這代表穩定幣變安全了」這類評價。生活情境已明標為編輯設計的例子。\n語氣：全篇反覆落在「這是草案、查核日尚未定案」這條線上。",
+  "must_not_write": [
+    "不可寫成「已生效」「已上路」「信用合作社現在可以發行穩定幣」——這是補充規則草案，沒有生效日。",
+    "不可自行推算 GENIUS Act 的生效日：全文查核到 2026-09-17 未見「2027」這個字串，生效時點一律寫公式。",
+    "不可把 2026 年 2 月許可提案的條文（共同申請、120 天視為核准、30 天完整性通知、開放網路不得作為駁回理由、投資限制）寫成 5 月 18 日這一天提出的。",
+    "不可寫「四個主要聯邦支付穩定幣主管機關」，原文是「包括」。",
+    "不可寫「NCUA 理事會 5 月 14 日通過」，只能寫署名日或授權發布。",
+    "不可把公眾閱覽（5 月 15 日）與聯邦公報刊登（5 月 18 日）混為一談。",
+    "不可寫任何幣價、漲跌幅、市值、交易量、資金流或報酬，包含提案裡的市場規模預測。",
+    "不可寫成「存在信用合作社的穩定幣有 25 萬美元保險」——保的是發行人的法人帳戶，不穿透給持有人。",
+    "不可把「禁止支付利息或收益」寫成報酬率討論，也不可提及任何質押、獎勵或空投數字。",
+    "不可推定台灣使用者、台灣平台或金管會受此規則拘束。",
+    "不可引用二手整理或新聞媒體，也不可把 federalregister.gov 的 Request Access 擋阻頁當來源。",
+    "免責 callout 的「不是投資建議」六個字逐字不可改。"
+  ],
+  "live_data_warnings": [
+    "本案現況（沒有最終規則、沒有延長評論期、沒有更正）原本寫進摘要、FAQ 與提醒 callout，句型是「以聯邦公報官方檢索查核到 2026 年 9 月 17 日未見」。獨立查核把這三處都撤掉了：那個否定句的依據是 Federal Register 的查詢端點（documents.json 的 NCUA 清單）與 documents/2026-09915.json，兩者都不在 sources[] 的四條裡，而 sources[] 上限是 4 條、四條都在承載別的事實，沒有位子換。第二輪再收一次：「沒有寫是否會成為最終規則」本身也過頭了（5 月全文多處以最終規則為前提，見 not_said 第 2 條），三處現在只寫「四份文件都沒有給本案定案的日期」，並把 NCUA 自己的條件句 if finalized as proposed 寫出來當依據。文章現在只寫四條來源撐得住的說法：文件本身沒有生效日、意見徵詢已於 2026-07-17 截止、四份文件都沒有給定案日期、NCUA 用的是假設語氣。若站主要把「查核日仍未定案」寫回去，必須先讓出一條 sources 位子（見 factcheck.left_for_the_owner）。",
+    "regulations.gov 的意見件數與 open_for_comment 旗標會變動，本文完全不印。",
+    "SMSIA「目前為 25 萬美元」是文件寫的現值，金額由法律另定、會調整；引用時一律帶「文件寫『目前』」這個限定。",
+    "「約 15 家 FICU」與「截至 2025 年 12 月 31 日申報提供數位資產服務的家數」是有時點的分析假設，不是現況家數。",
+    "govinfo 的兩份 PDF 是靜態快照（modDate 早於查核日），這一點是好的：同一網址不會被換掉。相對地，NCUA 新聞稿頁的「Last modified」與側邊的最新消息列是會變的頁面元素，文章只引新聞稿本文。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（最嚴重的範圍錯誤）：已套用。706.103(a)、706.106(a)、706.107(a)(2)、706.112 全部改寫成「2026 年 2 月許可提案（91 FR 6531）提出、5 月補充提案照錄」，引註改掛 2 月那份 PDF；文章第二節明講 5 月文件自己的界線句。5 月真正提出的 Subpart B–E 與第 745 部修正成為第三、四節的內容。",
+    "must_fix 2：已套用。30 天完整性通知寫成 706.106(b)(2) 的內容，引註掛 2 月提案的條文原文，沒有歸到 706.106(a)。",
+    "must_fix 3：已套用。署名段落寫成「前言結尾」，另記文件真正的末行是 FR Doc 送存標記；職務者姓名採署名欄的 Ji Kwon，並註明 ADDRESSES 欄寫的是另一人。",
+    "must_fix 4：已套用。文章與紀錄一律寫「署名日」，沒有寫「通過」，也沒有寫理事會開會或票數。",
+    "must_fix 5：已套用。寫成「包括」NCUA、FDIC、OCC 與聯準會理事會，並在紀錄註明 706.2 沒有定義這個詞。",
+    "must_fix 6：已套用。sources[2] 換成 GENIUS Act 制定條文全文，法律編號 Public Law 119-27 與制定日直接引法律原文，不再靠 FDIC 或 OFAC/FinCEN 的註腳；139 Stat. 起始頁只寫在紀錄裡，文章不寫編入條號範圍。",
+    "must_fix 7：已套用。govinfo 的 wssearch 內部端點完全不用，也沒有列入 sources；公法 metadata 頁（/app/details/）一併換掉。",
+    "must_fix 8：已套用。立法歷程整段不寫，避免「六次通過」的錯誤敘述。",
+    "must_fix 9：已套用。5902(b)(1) 的 2028 年禁令與註 13 後半（境外不合規發行人的平行禁令自生效日起適用）都不寫——那是 OCC 那篇在處理的分工，而且本文的四條來源裡只有 NCUA 文件的註腳可支撐，寫了會超出「每句都指得到來源」的範圍。",
+    "must_fix 10：已套用。只寫法律的三個並列分支，並在紀錄裡說明 NCUA 擬議的第四款（所有層級）另屬提案條文；文章沒有寫成法律有四個分支。",
+    "must_fix 11：已套用。意見截止日只引規則自己的 DATES 欄與 NCUA 新聞稿，沒有引 regulations.gov 的日期。",
+    "must_add 1（706.201(c)(3) 行銷禁令）：已套用，寫進第三節與第四節，並在 FAQ 再答一次。",
+    "must_add 2（706.201(c)(4) 利息／收益禁令與可推翻推定）：已套用，寫進第三節與 FAQ。",
+    "must_add 3（706.201(c)(7) 客戶信用禁令；(c)(5) 質押再抵押例外）：(c)(7) 已寫進第三節；(c)(5) 因字數只留在研究紀錄，文章未寫。",
+    "must_add 4（706.203(b)(1)(i) 兩個營業日與裁量限制只能由 NCUA 課予）：已套用。",
+    "must_add 5（新設 500 萬美元／36 個月、12 個月營運後盾）：已套用。",
+    "must_add 6（代幣化股金與股金保險的對比）：已套用，成為第四節與標題的主軸。",
+    "must_add 7（199 道編號問題）：已套用，並於今天重新計數 1–199 無缺號。",
+    "must_add 8（法定規則制定期限）：已套用，但改良了引註方式——法律第 13 條的「一年內」引法律原文，而「2026 年 7 月 18 日」這個日期不靠推算，改引 NCUA 自己 2 月提案摘要印出的那一句。",
+    "must_add 9（不要自己算生效日）：已套用。全文查核「2027」0 次，文章不出現 2027，生效時點寫成第 20 條的公式。",
+    "must_add 10（改用法律原文當來源）：已套用，見 must_fix 6。",
+    "must_add 11（NCUA 2 月新聞稿）：未採用。四條 sources 已滿，2 月那份的事實改引 2 月聯邦公報 PDF 本身（更接近一手），主席在 2 月新聞稿的兩句自述因此不寫。",
+    "must_add 12（三段日期鏈）：已套用，寫進首段與提醒 callout，並點明新聞稿連到的是公眾閱覽本。",
+    "must_add 13（用語與 RIN／docket 不一致）：已套用。ACTION 欄與新聞稿用語的差異寫進提醒 callout；RIN 與 docket 不同寫進第一節，docket 編號本身留在研究紀錄。",
+    "must_add 14（交叉脈絡：其他機關的同系列提案）：未寫進文章。那些引註出自 NCUA 註腳，逐一寫出會讓本篇踩進其他三篇的範圍，且字數不足；改由索引與站內連結處理。",
+    "source_list_fix：已套用。75 條掛在 full_text/text 網址的事實全部改掛 sources[0] 的 govinfo PDF（同一份 91 FR 28956，今天重抓並以 pypdf 抽文字逐條比對），sources[2] 由 /app/details/ 換成法律條文全文。四條 sources 今天全部 HTTP 200 且讀到正文。"
+  ],
+  "hero_label": "草案，還不是規則",
+  "diagram": {
+    "title": "信用合作社端的四個重點",
+    "caption": "草案的四個重點：發行要由子公司取得 NCUA 執照、準備資產公允價值不低於流通發行總額、及時贖回不超過兩個營業日且可延長、支付穩定幣不受聯邦股金保險保障。",
+    "nodes": [
+      [
+        "發行路徑",
+        "須由子公司取得執照"
+      ],
+      [
+        "準備資產",
+        "不低於流通發行總額"
+      ],
+      [
+        "贖回期限",
+        "兩個營業日，得延長"
+      ],
+      [
+        "保險界線",
+        "穩定幣不受股金保險"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "A proposal, not a rule",
+      "diagram": {
+        "title": "Four points on the credit union side",
+        "caption": "Four things the proposal would do: issuance only by a subsidiary licensed by the NCUA, reserve assets at a fair value no lower than the outstanding issuance value, timely redemption within two business days but extendable, and no Federal share insurance for the coin.",
+        "nodes": [
+          [
+            "Issuance path",
+            "Subsidiary must be licensed"
+          ],
+          [
+            "Reserve assets",
+            "No less than issuance value"
+          ],
+          [
+            "Redemption",
+            "Two business days, extendable"
+          ],
+          [
+            "Insurance line",
+            "No share insurance for the coin"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "規則ではなく規則案",
+      "diagram": {
+        "title": "信用組合側の四つの要点",
+        "caption": "規則案の四つの要点。発行は子会社がNCUAの認可を受けて行うこと、準備資産の公正価値は流通発行総額を下回らないこと、適時の償還は2営業日を超えず延長もあり得ること、決済用ステーブルコインは連邦の出資金保険で保護されないこと。",
+        "nodes": [
+          [
+            "発行の経路",
+            "子会社が認可を受ける"
+          ],
+          [
+            "準備資産",
+            "流通発行総額を下回らない"
+          ],
+          [
+            "償還の期限",
+            "2営業日、延長あり"
+          ],
+          [
+            "保険の境界",
+            "コインに出資金保険なし"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "규칙이 아니라 규칙안",
+      "diagram": {
+        "title": "신용협동조합 쪽의 네 가지 요점",
+        "caption": "규칙안의 네 가지 요점: 발행은 자회사가 NCUA 인가를 받아 해야 하고, 준비자산의 공정가치는 유통 발행 총액보다 낮을 수 없으며, 적시 상환은 2영업일을 넘지 않되 연장될 수 있고, 지급결제용 스테이블코인은 연방 출자금보험의 보호를 받지 않습니다.",
+        "nodes": [
+          [
+            "발행 경로",
+            "자회사가 인가를 받아야"
+          ],
+          [
+            "준비자산",
+            "유통 발행 총액 이상"
+          ],
+          [
+            "상환 기한",
+            "2영업일, 연장 가능"
+          ],
+          [
+            "보험의 경계",
+            "코인에 출자금보험 없음"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "草案，还不是规则",
+      "diagram": {
+        "title": "信用合作社端的四个重点",
+        "caption": "草案的四个重点：发行要由子公司取得 NCUA 执照、准备资产公允价值不低于流通发行总额、及时赎回不超过两个营业日且可延长、支付型稳定币不受联邦股金保险保障。",
+        "nodes": [
+          [
+            "发行路径",
+            "须由子公司取得执照"
+          ],
+          [
+            "准备资产",
+            "不低于流通发行总额"
+          ],
+          [
+            "赎回期限",
+            "两个营业日，得延长"
+          ],
+          [
+            "保险界线",
+            "稳定币不受股金保险"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-17",
+    "method": "四條 sources 全部於 2026-09-17 以 curl -sL -A \"Mokaair-editorial\" 重抓（任何請求都沒有放入 email、姓名或其他個人資料），兩份聯邦公報 PDF 以系統 python 的 pypdf 抽文字（s0 80 頁、s3 22 頁），再以「空白正規化後的連續字串」逐句比對；抽出字元數與撰稿紀錄一致（80 頁以換行相接得 605,041，去掉 79 個換行即紀錄寫的 604,962）。條文引註一律回到條文本身，不只看前言。撰稿代理點名的三個高風險句子逐一回查一手條文；199 道編號問題今天重新計數；2027、Taiwan、Taipei 三個字串重新計次。沒有替文章補任何 sources[] 以外的新事實：為反駁而讀的 federalregister.gov 全文 .txt（HTTP 200、634,750 bytes，與 sources[0] 同一份文件）、documents/2026-09915.json 與 ncua.gov/regulation-supervision/rulemakings-proposals-comment 只寫進本欄與查核報告。",
+    "verdict": "needs_second_round（92 條主張逐條核對，改了 13 處、分布在 11 個區塊，超過 FACTCHECK.md 的十處門檻，所以照規則選這一項；但骨幹論述一處未動，撰稿代理自己點名的三個高風險句子全部成立。缺陷集中在三類：不能指到 sources[] 的否定句、壓縮句裡被刪掉的但書與例外，以及對沒讀過的其他機關提案所做的比較與獨佔性斷言）",
+    "edits_to_the_pack": [
+      "第五節第一段的「全文也沒有談美國以外的轄區」改成「全文也沒有提到台灣」：該否定句不成立，文件引 12 U.S.C. 5916 談合規的境外支付穩定幣發行人、寫到 IDI 的境外分支與通匯行、把境外央行發行的 Money 列進 706.2 定義，並拿「certain foreign jurisdictions」的資本做法作比較。Taiwan 與 Taipei 在全文各 0 次，所以限縮到台灣才站得住。",
+      "摘要第五句、FAQ 第一題、提醒 callout 三處的「以聯邦公報（官方檢索）查核到 2026 年 9 月 17 日，本案未見最終規則、延長評論期公告或更正」全部撤掉，改成「本文引用的四份文件都沒有寫它何時、或是否會成為最終規則」：那個「未見」指不到 sources[] 的任何一條（依據是 Federal Register 的查詢端點與 API 文件記錄，都不在四條裡，而 4 條是上限）。",
+      "description 結尾的「以及這份草案到查核日仍未定案」改成「以及為什麼這份文件的每一條都要讀成草案」，理由同上（173→178 字，仍在 120–200）。",
+      "第五節第二段結尾的「在最終規則出現以前，任何具體的生效日期都是算出來的，不是官方寫的」限縮成「NCUA 這份提案也只印這個公式，沒有把它換算成日期，本文同樣不換算」：原句對別的官方文件不成立——同批 FDIC 那份提案（91 FR 18534）自己就印了 will become effective on January 18, 2027, or 120 days after … if earlier。NCUA 這份全文 2027 出現 0 次、18 months 只出現在公式那一句，限縮後為真。",
+      "第三節第二段補回 706.202(g)(2)(i) 的除外規定：原文是 Is prohibited from issuing any new Payment Stablecoins immediately except as necessary to facilitate a transfer of Payment Stablecoins from one Distributed Ledger to another and provided that the net Outstanding Issuance Value does not increase，前一版只寫「立即禁止新發行」，把禁令寫成無例外。",
+      "同一段的「清算期間不得收費」改成「不得收贖回費用」：706.202(g)(3)(ii) 是 Not charge Customers a fee to redeem their Payment Stablecoins at any time during the liquidation，禁的是贖回費用，不是所有費用。",
+      "第三節第三段的「須維持 36 個月」補回但書：706.401(a)(1)(iii) 是 must hold this minimum amount for 36 months, or for a shorter or longer period as specified as part of its licensing conditions or as subsequently determined by the NCUA based on the experience of the …，前一版把可縮可延寫成硬性 36 個月。",
+      "摘要第四句的「上限 25 萬美元」補上「目前為」：前言原文是 insured for up to the Standard Maximum Share Insurance Amount (SMSIA), currently $250,000，SMSIA 是會調整的現值，正文與 FAQ 本來就帶了這個限定，摘要漏了。",
+      "FAQ 第七題的「發行與交易規模在門檻以下」改成「流通發行總額或月交易量任一在門檻以下（條文用的是「或」，不必兩者都低）」：706.205(d)(3) 的條件是 has an Outstanding Issuance Value of less than $1 billion or less than $25 billion in total monthly Trading Volume，是選擇性的「或」，寫成「與」會把條件寫得比來源嚴。兩個金額依 crypto.md 不印。",
+      "FAQ 第六題（贖回那題）的清算句補回 706.202(g)(3) 的「（NCUA 得裁量延長）」——原文是 for 15 consecutive business days (which may be extended in the NCUA’s sole discretion)，正文帶了這個括號、FAQ 漏了。",
+      "FAQ 第八題的「所以準備資產、贖回與資本的條文大同小異」與「只屬於 NCUA 這一份的是……」全部改寫：那是對 OCC、FDIC 提案的比較與獨佔性斷言，而那兩份文件不在 sources[] 也沒有讀過；改成兩句機關自述（NCUA 的 where possible 一致化說明、主席的「已努力對齊」）加上「新聞稿沒有寫出條文上的具體差異，本站也沒有讀其他機關的提案，因此不比較條文」，題目同步改成「是什麼關係」。"
+    ],
+    "checked_and_correct": [
+      "撰稿代理點名的高風險句 1 成立：GENIUS Act SEC. 13(a)（NOTE: 12 USC 5913）原文 Not later than 1 year after the date of enactment of this Act, each primary Federal payment stablecoin regulator, the Secretary of the Treasury, and each State payment stablecoin regulator shall promulgate regulations …；而「2026 年 7 月 18 日」這個日期確實印在 2 月提案（91 FR 6531）的 SUMMARY 欄裡：The GENIUS Act also requires the NCUA to issue implementing regulations by July 18th, 2026.（同一句在該文件的 regulations.gov 摘要段再出現一次）。文章把日期歸給 NCUA 的摘要、把「一年內」歸給法律條文，兩者沒有互相冒充。",
+      "高風險句 2 成立且限定詞齊全：前言原文 funds held in Share Accounts at FICUs as reserves for a Payment Stablecoin would be insured to the PPSI under the NCUA’s coverage rules for corporate accounts, but would not be insured to Payment Stablecoin holders on a pass-through basis. As corporate accounts of the PPSI, such accounts would be aggregated with other corporate accounts maintained by the PPSI at the same FICU and insured for up to the Standard Maximum Share Insurance Amount (SMSIA), currently $250,000. 文章三處（正文、摘要、FAQ）都寫明保給發行人、不穿透給持有人；「目前」在正文與 FAQ 本來就有，摘要已補。不採穿透的理由也照原文的 appear to be 寫成「看起來與條文不一致」。",
+      "高風險句 3 成立，每個子句都掛在 2 月的 PDF 上：706.103(a) This application must be filed jointly with any insured credit union Parent Company(ies).；前言 the GENIUS Act requires the NCUA to render a decision on the application not later than 120 days after receiving a substantially complete application；706.106(a) …the application shall be deemed approved.；706.106(b)(2) Not later than 30 days after receiving an application…；706.107(a)(2) The issuance of a payment stablecoin on an open, public, or decentralized network is not a valid ground for denial…；706.112 An insured credit union cannot invest in a payment stablecoin issuer unless it is an NCUA-Licensed Permitted Payment Stablecoin Issuer. 而且「5 月這份照錄在條文裡」也為真：同樣的 706.106 條文在 5 月 PDF 的條文段落逐字重現。",
+      "清點數字都有來源自己的編號：706.201(a) 的許可業務由來源編到 (8)（may only 起頭，文章用「包括……等」不當成全清單）；前言 This definition includes three separate prongs. 與 Each prong is a separate and distinct avenue…；706.205(d) 的條件由來源編到 (4)；Question 1 至 Question 199 今天重新計數 199 次出現、199 個相異編號、無缺號無重號；約 15 家是 the NCUA assumes that approximately 15 FICUs would perform one or more of the activities authorized under the proposed rule 加註 274 This number is consistent with the number of FICUs that report offering digital asset services as of December 31, 2025.，文章保留歸因與「不是實際申請或核准家數」。",
+      "數字逐一對回條文，全部相符：兩個營業日 706.203(b)(1)(i)；裁量限制只能由 NCUA 課予 706.203(b)(1)(ii)；單一 24 小時內超過 10% 自動延為七個日曆日 706.203(c)(1)；連續 15 個營業日 706.202(g)(3)；500 萬美元與執照條件金額取其高 706.401(a)(1)(i)；36 個月 706.401(a)(1)(iii)；de novo 指 within the prior 3 years 706.401(a)(1)(ii)；12 個月總費用與 Separately identified from any reserve assets… 706.401(b)(1)、(b)(3)；每 12 個月一次全面檢查 706.205(a)、14 至 24 個月 706.205(d)；120 天與 30 天在 2 月提案；意見截止 7 月 17 日（5 月 DATES 欄與新聞稿）與 4 月 13 日（2 月 DATES 欄）。月度組成報告的公布與查核也對：706.202(e) 的 By noon on the last day of each month… publish 與 706.202(f)(1) 的 examined by a Registered Public Accounting Firm。",
+      "來源自己的條號不一致，文章沒有引到、也沒有安靜訂正：Subpart D 的目次印 706.401 Capital Elements／706.402 Minimum Capital and Backstop／706.403 Individual Additional…，條文本身卻是 § 706.400 Capital elements／§ 706.401 Minimum capital and backstop／§ 706.402 Individual additional capital or backstop requirement（今天逐一確認）；706.201 的客戶信用禁令在條文是 (c)(7)。文章只寫內容與 706.201 這個沒有爭議的條號。",
+      "界線：全文的數字只有法規事實——25 萬美元（SMSIA）、500 萬美元（最低資本）、10%（贖回門檻）、各種天數與月數。沒有幣價、市值、交易量、資金流、殖利率或報酬；提案裡的 5,000 億美元私部門預測、100 億美元假設發行量、706.202(d) 的 250 億美元／5 億美元門檻、706.205(d)(3) 的 10 億／250 億美元門檻一個都沒有進文章。沒有點名任何幣種、發行商或平台，沒有任何推薦或比較語氣。",
+      "「草案」字樣：每一個操作性句子都帶草案、提案或「尚未生效」；ACTION 欄的 Supplemental proposed rule 與新聞稿的 Notice of Proposed Rule Making 兩種用語的差異寫在 callout 裡，兩者都照來源印的抄。",
+      "三段日期鏈與 callout 的細節都對回原文：署名行 By the National Credit Union Administration Board, this 14th day of May, 2026. Ji Kwon, Acting Secretary of the Board.（緊接著就是 For the reasons stated in the preamble…，確認是前言結尾）；末行 [FR Doc. 2026–09915 Filed 5–15–26; 8:45 am]；新聞稿 Alexandria, VA (May 15, 2026)。callout 那句「available for review」也逐字對到：新聞稿 HTML 裡該錨文字的 href 就是 https://www.federalregister.gov/public-inspection/2026-09915/…，確實是公眾閱覽本。",
+      "免責 callout 與 crypto.md 的樣板逐字相同（tone、title、text 全等），含「不是投資建議」六個字，查核日 2026-09-17；文章共兩個 callout，符合幣圈規定。checked_on 五處一致，沒有因為今天重查而改動。",
+      "sources[] 四條今天全部 HTTP 200 且讀到正文，bytes 與撰稿紀錄完全相同（581,110／57,977／185,846／338,038），沒有「記了 checked_on 卻讀不到」的問題。"
+    ],
+    "left_for_the_owner": [
+      "若要把「到查核日仍未定案」寫回文章，需要一條能承載它的官方頁，而 sources[] 已用滿 4 條。今天實測可用的候選是 NCUA 自己的規則制定清單 https://ncua.gov/regulation-supervision/rulemakings-proposals-comment（HTTP 200、228,713 bytes，連結出自新聞稿頁的導覽，不是猜的）：本案列在第一列，Status 欄寫 Comment Period Closed、Issued 5/18/2026、Comments Due 7/17/2026，而同一張表對已定案的案子寫的是 Final，所以它能同時承載「已截止」與「還沒 Final」。代價是要讓出現有四條之一（每一條都在承載別的事實），而且那是活頁面，寫進文章必須帶查核日並在出刊當天重看。",
+      "Federal Register 的 documents/2026-09915.json 今天回 corrections: []、effective_on: null、type: Proposed Rule，可以承載「未見更正」但不能承載「未見最終規則」（最終規則會是另一份文件）。它是查詢／中介記錄而非公告頁，本次沒有列入 sources[]。",
+      "zh-TW 段落字數 2,970／3,000。四處補回的但書與例外已經吃掉大部分餘裕；翻譯或後續補寫（例如 706.201(c)(5) 的質押再抵押例外、706.503 的 FinCEN 30 天事前通知）要先從敘述性句子精簡，不可以刪但書。",
+      "govinfo 的 2 月 PDF（FR-2026-02-12/2026-02868.pdf）抽出的文字在 NCUA 文件結束後還包含同一期下一份文件（Forest Service／Interior 的阿拉斯加補充規則）的開頭，所以在這份 PDF 上做字串計次必須先切到 [FR Doc. 2026–02868 Filed 2–11–26; 8:45 am] 為止——整份檔案裡的 3 次 2027 全部來自那份無關的文件，NCUA 部分是 0 次。5 月那份 PDF 沒有這個問題（末行就是自己的 FR Doc 標記）。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent, second round (未參與撰稿，也未參與第一輪)",
+      "checked_on": "2026-09-17",
+      "method": "四條 sources 於 2026-09-17 再抓一次（curl -sL -A \"Mokaair-editorial\"，任何請求都沒有放入 email、姓名或其他個人資料），bytes 與前兩輪完全相同（581,110／57,977／185,846／338,038）；兩份 PDF 以系統 python 的 pypdf 重抽（5 月 80 頁 605,041 字元、2 月 22 頁 164,209 字元），2 月那份先切到自己的 FR Doc 標記（159,820 → 153,285 字元）再比對。重點放在三件第一輪沒有查過的事：(1) 第一輪自己新寫進去的每一句，逐句回到條文；(2) 正文每一個帶數字或帶不得／必須／只能／應的句子，專找 except、unless、or、may、at least、in the NCUA's discretion 這類被壓掉的限定；(3) 每一個清點數字是否由來源自己印出或編號。研究紀錄的 87 條 verbatim_quote 今天以「空白正規化後的連續字串」全部重驗，0 條落空。Question 1–199 重新計數：199 次出現、199 個相異編號、無缺號無重號。Taiwan／Taipei 各 0 次、2027 在 5 月全文 0 次、18 months 只出現在生效公式那一句，三個都再算一次。沒有替文章補任何 sources[] 以外的來源。",
+      "verdict": "ok（改了 9 處：1 處是第一輪新寫進去的否定句過頭，4 處是第一輪沒掃到的但書與例外，2 處是把文件的狀態寫成當下的狀態，1 處是內部歸屬不一致，1 處是唯一依據只在新聞稿導覽區塊的背景定義。骨幹論述一處未動；第一輪真正推翻的兩句事實今天重驗仍然成立）",
+      "edits_to_the_pack": [
+        "摘要第五句、FAQ 第一題、提醒 callout 三處的「本文引用的四份文件都沒有寫它何時、或是否會成為最終規則」改成「四份文件都沒有給本案定案的日期」＋NCUA 自己的條件句 if finalized as proposed（若照提案定案）。「是否會成為最終規則」這半句不成立：5 月全文以最終規則為前提的地方很多（final rule 21 次），包括 the effective date of the NCUA's final rule implementing the GENIUS Act 與 706.202(c) 兩個選項的 only one of which would be selected in the final rule；而 2 月提案印了法定期限 by July 18th, 2026（文章自己也引了這個日期），所以「都沒有寫它何時」與文章的另一句互相牴觸。",
+        "第三節第二段與 FAQ 第六題補回 706.203(c)(5)：除了 10% 門檻的自動延長，NCUA 認定發行人危及安全穩健或金融穩定、或延長另符合公共利益時，還得裁量延長兩個營業日或七個日曆日。前一版把兩個營業日寫成只有一種例外。",
+        "第二節第三段的「逾期未決定則視為核准」補回 706.106(b)(3) 的 unless：情況有重大變更時該申請視為新申請，120 天的時鐘不是絕對的。",
+        "第四節第一段補一句：NCUA 就股金保險這個認定本身也在徵詢意見（The NCUA is seeking comment on whether this is the appropriate approach and reflects the appropriate interpretation of the GENIUS Act and FCU Act.）。",
+        "FAQ 第四題補一句：NCUA 另就要不要在最終規則裡明文把以分散式帳本技術記錄的股金帳戶排除在支付穩定幣定義之外徵詢意見（來源該句把 Distributed 印成 Distribution，照抄不訂正）。",
+        "第二節第一段的「它是由社員共同持有的合作性存款機構」改成「NCUA 說它以合作模式運作」：原句唯一依據是新聞稿頁導覽區塊的機關自述（protects the members who own credit unions），不在新聞稿本文，而研究紀錄自己寫「文章只引新聞稿本文」。新依據是 2 月提案的 the cooperative model in which credit unions operate。同段保留股金帳戶與 FICU 的說明。",
+        "表格 caption 的「兩份文件都還是草案」改成「兩份文件的 ACTION 欄寫的都是規則草案，兩份都沒有生效日」：前者是查核日當下的狀態斷言，四條來源只能證明兩份文件當初怎麼標示自己（5 月 ACTION: Supplemental proposed rule.、2 月 ACTION: Proposed rule.，兩份的 DATES 欄都只有意見截止日）。",
+        "FAQ 第二題的「許可程序本身也還在草案階段」改成「規範許可程序的 2 月文件，ACTION 欄寫的也是規則草案」，理由同上。",
+        "FAQ 第八題的「這份草案裡屬於信用合作社脈絡的是……信用合作社只能投資 NCUA 核照的發行人」改成「這兩份草案裡」：投資限制 706.112 在文章其他四處（第二節、表格）都歸給 2 月提案，只有這裡歸給 5 月這一份，自己跟自己矛盾。",
+        "第一節第一段刪掉「NCUA 是美國聯邦層級的信用合作社主管機關，」：同一句後半的機關簡介已經把它說完，刪掉純粹是為了讓出字數給上面幾處但書（2,970 → 2,994，仍在 1,800–3,000）。"
+      ],
+      "checked_and_correct": [
+        "第一輪新寫進去的句子逐句成立：706.202(g)(2)(i) 的跨帳本移轉例外（except as necessary to facilitate a transfer of Payment Stablecoins from one Distributed Ledger to another and provided that the net Outstanding Issuance Value does not increase，條文與前言各一次，資本那邊 706.401(c)(2) 還有第三次）；706.401(a)(1)(iii) 的 or for a shorter or longer period as specified as part of its licensing conditions or as subsequently determined by the NCUA；706.202(g)(3) 的 (which may be extended in the NCUA's sole discretion)（注意：前言那一版沒有這個括號，只有條文有，第一輪引的是條文，正確）；706.205(d)(3) 的 or（has an Outstanding Issuance Value of less than $1 billion or less than $25 billion in total monthly Trading Volume）；FAQ 第八題兩句機關自述（where possible, proposed part 706 would maintain consistency… 在 5 月全文出現 2 次；主席那句在新聞稿本文）。",
+        "所有清點數字都由來源自己印出或編號，沒有一個是文章算出來的：706.201(a) 的業務由來源編到 (8)（may only: 起頭，文章寫「包括……等」）；three separate prongs 是 NCUA 自己的用語；706.205(d) 的條件由來源編到 (4)；Question 1–199 今天重算無缺號無重號；approximately 15 FICUs 是來源印的字，且來源自己說是 conservative estimate 並承認 significant uncertainty，文章保留了歸因與「不是實際申請或核准家數」。",
+        "「作相反陳述即屬違法」這句今天找到更硬的依據：不必靠 NCUA 前言，法律第 4 條(e)(2)(A) 自己就寫 It shall be unlawful to represent that payment stablecoins are backed by the full faith and credit of the United States… 而且它與 (e)(3) 的行銷禁令（unlawful to market a product … as a payment stablecoin unless issued pursuant to this Act）是兩件不同的事，文章沒有把兩者混在一起。",
+        "「GENIUS Act 的支付穩定幣定義明文排除存款，包含以分散式帳本技術記錄的存款」逐字對到法律第 2 條第 22 款 (B)(ii)。文章沒有把它擴張成「股金帳戶也被明文排除」——那正是 NCUA 還在徵詢的問題。",
+        "表格六列今天逐列回查：第一列的「法律與兩份草案」為真——5 月文件寫 cannot be issuers of Payment Stablecoins. Instead, IDIs must use ''subsidiaries'' as issuers.，2 月文件同一段用小寫寫同一句（payment stablecoins），而法律端是第 5 條的 approval of subsidiaries of insured depository institutions（5 月文件自己這樣引）；其餘五列都掛在已驗證的條文上。",
+        "圖解 caption 四個重點與研究紀錄 diagram 四格今天逐一回查；caption 的「及時贖回不超過兩個營業日且可延長」在補進 706.203(c)(5) 之後更站得住，不必改。hero_label「草案，還不是規則」描述的是文件自己的 ACTION 欄，沒有越界成當下狀態。",
+        "界線再查一次：全文仍然只有法規事實數字（25 萬、500 萬、10%、天數月數），沒有幣價、市值、交易量、資金流或報酬；706.202(c) 的 10%／30%／40%／50%／20 天分散度門檻、706.202(d) 的 250 億與 5 億、706.205(d)(3) 的 10 億與 250 億、成本分析印的 $112.6 million 年化節省，一個都沒有進文章；沒有點名任何幣種、發行商或平台，沒有推薦或比較語氣。每一個操作性句子都帶草案／提案／尚未生效。",
+        "免責 callout 與 crypto.md 樣板今天以程式逐字比對，tone、title、text 三者全等，含「不是投資建議」六個字。checked_on 2026-09-17 五處一致，沒有動。",
+        "四條 sources 今天全部 HTTP 200 並讀到正文，bytes 與前兩輪完全相同；研究紀錄 87 條 verbatim_quote 今天全數重驗通過。"
+      ],
+      "left_for_the_owner": [
+        "zh-TW 段落字數 2,994／3,000，只剩 6 字。第二輪補回四處但書、刪掉一句贅述才擠出空間。之後任何補寫（706.201(c)(5) 的質押再抵押三例外、706.503 的 FinCEN 30 天事前通知、706.202(c) 的分散度門檻）都必須先精簡敘述性句子，不可以刪但書。真的要補，FAQ 與 callout 不計入這 3,000 字，是比較實際的落點。",
+        "第一輪留下的「要不要把『到查核日仍未定案』寫回文章」那件事沒有變：需要讓出一條 sources 位子給 NCUA 自己的規則制定清單。第二輪另外確認，就算不換來源，也能寫「NCUA 用的是 if finalized as proposed 這種條件句」與「四份文件都沒有給定案日期」，這兩句已經寫進文章。",
+        "706.201(b) 的解釋規定（本條業務清單不限制信用合作社依州法與聯邦法得從事的業務）已寫進 verified_facts，文章沒有寫。正文那句的主語是「NCUA 核照的發行人」，不會被誤讀成信用合作社只能做八件事，所以第二輪沒有動它；若站主希望更保守，這是可以加的一句。"
+      ]
+    }
+  }
+}

@@ -3,6 +3,10 @@
 批次 4 三個垂直之一：法規、技術與產業面的幣圈新聞，五語（zh-TW、en、ja、ko、zh-CN），
 每篇一張原創主圖與一張 2×2 圖解。站上目前一篇幣圈文章都沒有，這是第一批。
 
+> **現況與未完成事項（2026-09-17）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md)。
+> 十一篇 zh-TW 都已獨立查核；十篇五語齊全，`crypto-news-stablecoin-aml-20260410` 缺 ja 與 ko，
+> 索引 `crypto-news-2026-index` 缺 ja、ko、zh-CN；逐語審稿、relink／autolink、manifest 與 contact sheet 都還沒做。
+
 ## 這個目錄放什麼
 
 | 路徑 | 內容 | 誰寫的 |
@@ -63,7 +67,7 @@ uv run python ../../docs/news-2026-batch-4/update_index.py crypto
 | 索引 | `crypto-news-2026-index`（兩個 link 的第一個指向它） |
 | hero 眉標 | `MOKAAIR  /  CRYPTO NEWS` |
 | 主色 | `#D97A2B`（ORANGE，畫冊六色之一） |
-| `display_order` | 還沒指定號段；`check_article.py` 只要求不是預設的 100 |
+| `display_order` | 200 起（`verticals.py` 的 `order_base`）：十一篇依 `check_article.py` 的 `RELATED` 順序是 200–210，索引是 199 |
 | 免責 callout | 每篇都要，且用該語系自己的標記（zh-TW 是「不是投資建議」），不是中文那句的翻譯 |
 
 

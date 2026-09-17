@@ -1,11 +1,11 @@
 ---
 id: 2026-09-16-news-batch-4-2-non-ai
 title: News batch 4.2: non-AI technology news
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-opus-5
-claimed_at: 2026-09-17T03:43:21Z
+owner:
+claimed_at:
 created_at: 2026-09-16T13:21:40Z
 completed_at:
 branch: claude/brave-hopper-8ezxba
@@ -134,3 +134,12 @@ uv run python -m app.guides.pack_cli lint --kind life    # 0 error
 uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py
 npm run check:tasks
 ```
+
+## 交接（2026-09-17）
+
+還沒開始寫任何一篇。站主指定先交幣圈（4.1）驗收，幣圈目前的狀態與整條流程踩過的坑在
+[`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md)；這張票照同一條線跑。
+開工前要先填 `verticals.py` 的 `order_base`（科技還是 `None`，幣圈用 200、索引 199）、`check_article.py` 的 `RELATED`
+與 `build_assets.py` 的 `_DRAWINGS`，並先寫索引 `tech-news-2026-index`（五語標題要先定案，其他篇的第一個連結逐字引用）。
+代理規格在 `docs/news-2026-batch-4/agents/`。研究、獨立查核與 `corrections-tech.md` 都在 PR #544 裡，要等它合併。
+因為停手而 `release`，不是做完。

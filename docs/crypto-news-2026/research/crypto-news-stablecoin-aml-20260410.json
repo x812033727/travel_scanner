@@ -1,0 +1,895 @@
+{
+  "slug": "crypto-news-stablecoin-aml-20260410",
+  "event_date": "2026-04-10",
+  "event_date_basis": "事件日 2026-04-10 是這份聯合規則草案在聯邦公報的刊登日，也是意見期的起算日：文件第一頁頁眉印「18582 Federal Register / Vol. 91, No. 69 / Friday, April 10, 2026 / Proposed Rules」，引註為 91 FR 18582。這一篇要分清楚四個日期，文章裡都寫出來了：（a）署名與對外宣布日 2026-04-08——文件署名欄印兩次「Dated: April 8, 2026.」（FinCEN 局長 Andrea M. Gacki、OFAC 主任 Bradley T. Smith），財政部新聞稿（sb0435）與 FinCEN 新聞稿都標 2026-04-08，財政部稿還寫「will be published in the Federal Register in the coming days」；（b）送存公眾閱覽 2026-04-09 08:45——文末印「[FR Doc. 2026–06963 Filed 4–9–26; 8:45 am]」；（c）刊登日兼意見期起算日 2026-04-10；（d）意見期截止日 2026-06-09（DATES 欄）。生效日不在其中：草案只提議定案規則於「定案規則發布後 12 個月」生效，聯邦公報上這個案號到查核日沒有定案規則。slug 尾碼 20260410 與 news_date 都取刊登日。",
+  "title": "穩定幣發行人的防洗錢與制裁法遵草案：FinCEN 與 OFAC 聯名提出，尚未生效",
+  "checked_on": "2026-09-17",
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條 sources 都在 2026-09-17 以 curl -sL -A \"Mokaair-editorial\" 重新抓取並讀 body，不是只看狀態碼。取得配方與當天看到的東西：（1）https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf → HTTP 200、content-type application/pdf、765,284 bytes、md5 48e7a3244420d9c34fde70cb46249ef9，以 pypdf 讀為 86 頁、抽出 654,880 字元；第 1 頁頁眉是「18582 Federal Register / Vol. 91, No. 69 / Friday, April 10, 2026 / Proposed Rules」，末頁頁眉出現 18667，PDF 內部 /CreationDate 為 D:20260410052832Z。這一條就是本文所有條文與前言引文的來源。（2）https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf → HTTP 200、214,495 bytes、md5 6b0e04d8139a56df8edb375fd591e2f7、5 頁、抽出 14,578 字元，PDF /Title 為「Fact Sheet: Proposed Rule to Implement the GENIUS Act’s Anti-Money Laundering Obligations and Sanctions Compliance Program Requirements」，/CreationDate D:20260409105800-04'00'。（3）https://home.treasury.gov/news/press-releases/sb0435 → HTTP 200、70,100 bytes，<title> 為「Treasury Proposes Rule to Implement the GENIUS Act’s Requirements to Counter Illicit Finance | U.S. Department of the Treasury」，正文標日期 April 8, 2026，含 Bessent 的引句與「coming days」那一句。（4）https://www.federalregister.gov/api/v1/documents.json?conditions%5Bdocket_id%5D=FINCEN-2026-0100 → HTTP 200、2,575 bytes、application/json，body 是 count 1 與唯一一筆 document_number 2026-06963（type「Proposed Rule」、publication_date 2026-04-10）；同一端點的無百分比編碼寫法 ?conditions[docket_id]=FINCEN-2026-0100 用 curl -g 同樣回 200 與同一份 body，sources[] 採百分比編碼的合規寫法。這一條承載「以案號查詢到查核日只有這一份提案、未見定案規則」那句話。**2026-09-17 獨立查核時換掉的來源**：原本的 sources[3] 是 FinCEN 新聞稿（https://www.fincen.gov/news/news-releases/treasury-proposes-rule-implement-genius-acts-requirements-counter-illicit，當天 200、32,582 bytes、「Immediate Release April 08, 2026」，讀得到正文），內容是財政部新聞稿的子集，文章唯一只靠它的句子是「兩則新聞稿都是 4 月 8 日」這個重複的日期；換成這個端點之後，全文最後一句指不到來源的「未見定案規則」有了依據。 引文比對方法（重要）：聯邦公報 PDF 與全文 .txt 都會在句子中間換行，所以每一條 verbatim_quote 都是用「把連續空白壓成一個空格後、在來源文本中原樣出現」的方式驗證過的（腳本只正規化空白，不動引號、破折號與 § 符號）。兩種官方文本的排版字元不同，抄的時候不能混用：PDF 印的是「[Docket No. FINCEN–2026–0100] RIN 1506–AB73」（en dash）、「§ 1033.320」、彎引號 ‘‘ ’’ 與 ’；聯邦公報全文 .txt 印的是「[Docket No. FINCEN-2026-0100]」「RIN 1506-AB73」（ASCII 連字號）、「Sec.  1033.320」（兩個空格）與 `` ''。本紀錄的引文一律照 sources[0]（PDF）的字元。 交叉核對用、但沒有放進 sources[] 的一手網址：https://www.federalregister.gov/documents/full_text/text/2026/04/10/2026-06963.txt（200、712,054 bytes，HTML <pre> 包住的全文，解 HTML 實體後 711,923 字元；與 PDF 逐句相符，本紀錄每一條掛在 PDF 的引文都同時在這份 .txt 裡核對過）、https://www.federalregister.gov/api/v1/documents/2026-06963.json（200、5,566 bytes：type「Proposed Rule」、citation 91 FR 18582、publication_date 2026-04-10、comments_close_on 2026-06-09、page_length 86、effective_on null、pdf_url 正是上面那個 govinfo PDF）、以及案號與 RIN 的查詢端點（見 live_data_warnings）。 今天連不到的：https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title12-section5903（以及 -5901、-5905）連續三次都是 curl (28) Failed to connect to uscode.house.gov:443 after 約 21 秒、狀態 000、0 bytes，所以法典原文今天讀不到，沒有放進 sources[]；凡是只有法典才印的字（例如 12 U.S.C. 5905(b)(5) 的「or institution-affiliated party」與 Pub. L. 119-27 第 20 條的 18 個月／120 天生效公式）本文一律不寫，改寫草案自己引述的版本，見 unverified_or_excluded。 已知的擋阻管道（沿用前期紀錄、今天沒有重試）：聯邦公報的正規 HTML 頁會 302 到 unblock.federalregister.gov，regulations.gov 的案號頁回 403，fincen.gov/news/news-releases 這個索引頁回 404（個別新聞稿頁本身 200）。這些都不是「拿不到文件」，PDF 與全文 .txt 都不受影響。",
+  "sources": [
+    {
+      "title": "聯邦公報：Permitted Payment Stablecoin Issuer Anti-Money Laundering/Countering the Financing of Terrorism Program and Sanctions Compliance Program Requirements（91 FR 18582，官方 PDF 全文）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "publisher": "U.S. Government Publishing Office / Office of the Federal Register",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "FinCEN：Fact Sheet: Proposed Rule to Implement the GENIUS Act's Anti-Money Laundering Obligations and Sanctions Compliance Program Requirements",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "publisher": "Financial Crimes Enforcement Network, U.S. Department of the Treasury",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "美國財政部新聞稿：Treasury Proposes Rule to Implement the GENIUS Act's Requirements to Counter Illicit Finance（2026-04-08）",
+      "url": "https://home.treasury.gov/news/press-releases/sb0435",
+      "publisher": "U.S. Department of the Treasury",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "聯邦公報的官方文件查詢：以案號 FINCEN-2026-0100 列出本案底下的文件（2026 年 9 月 17 日查詢回 1 筆，類別為提案規則 Proposed Rule）",
+      "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bdocket_id%5D=FINCEN-2026-0100",
+      "publisher": "Office of the Federal Register, National Archives and Records Administration",
+      "checked_on": "2026-09-17"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "這份文件是刊登在 2026 年 4 月 10 日（星期五）聯邦公報第 91 卷第 69 期的提案規則，引註 91 FR 18582；PDF 第 1 頁頁眉即為第 18582 頁。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "18582 Federal Register / Vol. 91, No. 69 / Friday, April 10, 2026 / Proposed Rules"
+    },
+    {
+      "fact": "頁數與頁碼範圍：本站於 2026-09-17 取得的 govinfo PDF 以 pypdf 讀為 86 頁，末頁頁眉印 18667，因此頁碼範圍為 18582 至 18667。86 這個數字是本站對取得檔案的計數（聯邦公報 API 的 page_length 亦為 86，該 API 網址不在 sources[]）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "18667"
+    },
+    {
+      "fact": "提案機關是財政部底下的兩個單位，AGENCY 欄依序寫 Financial Crimes Enforcement Network、Office of Foreign Assets Control、Treasury；ACTION 欄寫「Joint proposed rule.」，也就是一份聯合提案，不是三個機關各提一份。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AGENCY: Financial Crimes Enforcement Network, Office of Foreign Assets Control, Treasury."
+    },
+    {
+      "fact": "ACTION 欄逐字是「Joint proposed rule.」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ACTION: Joint proposed rule."
+    },
+    {
+      "fact": "案號為 Docket No. FINCEN-2026-0100，RIN 為 1506-AB73（PDF 以 en dash 排版）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Docket No. FINCEN–2026–0100] RIN 1506–AB73"
+    },
+    {
+      "fact": "草案動到三處 31 CFR 條文：OFAC 的新增第 502 部，以及 FinCEN 的第 1010 部與新增第 1033 部。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Office of Foreign Assets Control 31 CFR Part 502 Financial Crimes Enforcement Network 31 CFR Parts 1010 and 1033"
+    },
+    {
+      "fact": "DATES 欄印的意見期截止日是 2026 年 6 月 9 日。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DATES: Comments must be received by June 9, 2026."
+    },
+    {
+      "fact": "意見遞交方式只有兩種、而且只能選一種：在 regulations.gov 電子遞交，或郵寄至 Regulatory and Strategic Affairs Division, Financial Crimes Enforcement Network, P.O. Box 39, Vienna, VA 22183；郵寄者須在意見期結束前寄達。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ADDRESSES: Comments must be submitted in one of the following two ways (please choose only one of the ways listed):"
+    },
+    {
+      "fact": "署名欄印兩次「Dated: April 8, 2026.」，分別是 FinCEN 局長 Andrea M. Gacki 與 OFAC 主任 Bradley T. Smith。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Dated: April 8, 2026."
+    },
+    {
+      "fact": "文件末尾的送存戳記：2026 年 4 月 9 日上午 8 時 45 分送存公眾閱覽。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[FR Doc. 2026–06963 Filed 4–9–26; 8:45 am]"
+    },
+    {
+      "fact": "財政部新聞稿日期為 2026 年 4 月 8 日，並寫明提案「將在接下來幾天刊登於聯邦公報」，也就是宣布日早於刊登日。",
+      "url": "https://home.treasury.gov/news/press-releases/sb0435",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN and OFAC welcome public comments on the proposal, which will be published in the Federal Register in the coming days."
+    },
+    {
+      "fact": "財政部長 Scott Bessent 在新聞稿中表示「President Trump is strengthening American leadership in digital financial technology」。這是機關的宣稱，不是可獨立觀察的事實。",
+      "url": "https://home.treasury.gov/news/press-releases/sb0435",
+      "is_vendor_claim": true,
+      "verbatim_quote": "President Trump is strengthening American leadership in digital financial technology"
+    },
+    {
+      "fact": "以案號 FINCEN-2026-0100 在聯邦公報的文件查詢端點查詢，2026-09-17 回 HTTP 200、2,575 bytes，count 為 1，唯一一筆是 document_number 2026-06963、type「Proposed Rule」、publication_date 2026-04-10——也就是這個案號底下到查核日只有這一份提案，未見定案規則。這是活資料，重新定稿或翻譯前要重跑（見 live_data_warnings）。",
+      "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bdocket_id%5D=FINCEN-2026-0100",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"count\":1"
+    },
+    {
+      "fact": "同一端點回的那一筆文件的類別欄位逐字是「Proposed Rule」，可用來回答「這是提案還是定案規則」。",
+      "url": "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bdocket_id%5D=FINCEN-2026-0100",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"type\":\"Proposed Rule\""
+    },
+    {
+      "fact": "草案寫明其法源 GENIUS Act 於 2025 年 7 月 18 日制定。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act, enacted on July 18, 2025, the legal basis for the proposed rule, creates a regulatory framework for PPSIs in the United States."
+    },
+    {
+      "fact": "FinCEN 提議引用 31 U.S.C. 5312(a)(2)(Y) 的權限，在條文裡明文把 PPSI 定義為銀行保密法下的金融機構。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "proposes exercising its 31 U.S.C. 5312(a)(2)(Y) authority to expressly define PPSIs as financial institutions under the BSA"
+    },
+    {
+      "fact": "現行的穩定幣發行人是以貨幣移轉業者（貨幣服務業的一種）身分受銀行保密法規範；草案要修正「money services business」的定義，把 PPSI 列進「不包括」的清單，以免兩套義務重疊。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "to add PPSIs to the list of financial institutions that the term ‘‘money services business’’ shall not include"
+    },
+    {
+      "fact": "FinCEN 的重點說明寫明草案會修正四個既有定義、並在 31 CFR 第 1010 部新增九個定義。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the proposed rule would amend four existing definitions and add nine new definitions to 31 CFR part 1010."
+    },
+    {
+      "fact": "草案自己說，因為 GENIUS Act 的框架還沒到位，還沒確定哪些穩定幣會是支付型穩定幣、哪些發行人會是 PPSI——所以文件沒有點名任何一家發行人或任何一種穩定幣。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Because the GENIUS Act framework is not yet in place, it is not yet determined which specific stablecoins will be payment stablecoins and which specific issuers will be PPSIs."
+    },
+    {
+      "fact": "客戶身分辨識計畫（CIP）雖然列在 GENIUS Act 裡，但這份草案沒有課予該義務；註 111 寫明那是另一件規則制定案的主題。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Although specifically enumerated in the GENIUS Act, this proposed rule does not impose a customer identification program obligation, which is the subject of a separate rulemaking."
+    },
+    {
+      "fact": "生效時點：兩個機關提議各自的定案規則於「定案規則發布後 12 個月」生效，理由是讓發行人有時間檢視與落實，並就這個時點徵詢意見。草案沒有寫定案時程。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN and OFAC are proposing that their respective rules will become effective 12 months after issuance of final rules"
+    },
+    {
+      "fact": "檢查權的委任原則：FinCEN 提議把 PPSI 的銀行保密法檢查權委給檢查同一實體安全性與穩健性的聯邦機關，沒有這種聯邦機關時則委給美國國稅局。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN proposes delegating examination authority over PPSIs to federal agencies responsible for examining the same entities for safety and soundness and, where no such federal agency exists, to the IRS."
+    },
+    {
+      "fact": "草案指出，依 GENIUS Act，主要聯邦支付型穩定幣監理機關是 OCC、聯邦準備理事會、FDIC 與 NCUA。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Under the GENIUS Act, the OCC, Board, FDIC, and NCUA are the primary Federal payment stablecoin regulators"
+    },
+    {
+      "fact": "擬議在 31 CFR 1010.810(b) 新增第 (11) 款，把檢查權委給定期為安全性與穩健性檢查該發行人的主要聯邦支付型穩定幣監理機關。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(11) To the appropriate primary Federal payment stablecoin regulator with respect to permitted payment stablecoin issuers regularly examined by the primary Federal payment stablecoin regulator for safety and soundness."
+    },
+    {
+      "fact": "草案引述 GENIUS Act：流通在外總額不超過 100 億美元的州級核准發行人，一般可選擇留在與聯邦框架實質相似的州級制度；超過門檻須轉入主要聯邦監理機關的框架或取得豁免。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a State qualified payment stablecoin issuer with a consolidated total outstanding issuance of not more than $10 billion payment stablecoins may opt for regulation under a State-level regulatory regime"
+    },
+    {
+      "fact": "擬議 1033.221(b)(1)：除了未依 1033.210(c) 實施計畫的重大或系統性失誤之外，已依 1033.210(b) 建立計畫的發行人不會受到 FinCEN 的防洗錢執法行動，或 FinCEN 與受委聯邦監理機關的重大防洗錢監理措施。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Except with respect to a significant or systemic failure"
+    },
+    {
+      "fact": "同一節前言寫明，這套執法要求不適用於、也完全不影響**銀行保密法下的**刑事責任（2026-09-17 獨立查核：範圍限於銀行保密法，文章原本寫成「刑事責任不受影響」，那比來源寬。註 194 另有一句「The proposal is not intended to and does not affect criminal enforcement liability under the BSA, or the related authority of the Department of Justice.」，同樣帶著這個限定）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The enforcement requirements do not apply to and in no way affect criminal enforcement liability under the BSA."
+    },
+    {
+      "fact": "擬議 1033.221(c)(2)(i)：受委行使權限的主要聯邦支付型穩定幣監理機關，要在採取重大防洗錢監理措施前至少 30 天書面通知 FinCEN 局長並附上依據資料，除非依該機關專屬判斷需要更短期間以處理不安全或不穩健的做法或狀況。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "at least 30 days before taking the action (unless a shorter period of time is necessary, in the sole discretion of the primary Federal payment stablecoin regulator, to remedy, prevent, or respond to an unsafe or unsound practice or condition)"
+    },
+    {
+      "fact": "擬議 1033.210 把「有效」拆成兩半：依 (b) 建立計畫，並依 (c) 在所有重要方面實施該計畫。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) Establishes an AML/CFT program in accordance with paragraph (b) of this section; and (2) Maintains an AML/CFT program by implementing the AML/CFT program in accordance with paragraph (c) of this section."
+    },
+    {
+      "fact": "重點說明列出風險評估程序的三件事：評估業務活動的風險；審視並在適當時納入防洗錢與反資恐優先事項；在發行人知悉或有理由知悉風險顯著改變時即時更新。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(1) evaluate the risks of the PPSI’s business activities; (2) review and, as appropriate, incorporate the AML/CFT Priorities; and (3) are updated promptly upon any change that the PPSI knows or has reason to know significantly changes the PPSI’s risks."
+    },
+    {
+      "fact": "第二項要件的條文原文是「建立由發行人自己的人員或外部單位執行的獨立防洗錢與反資恐計畫測試」——不是要求設置稽核單位。（前期研究把它寫成「獨立稽核功能」，那是草案引述 31 U.S.C. 5318(h)(1)(B) 的法定用語，不是提案本身的要求。）",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Establishes independent AML/CFT program testing to be conducted by permitted payment stablecoin issuer personnel or by an outside party"
+    },
+    {
+      "fact": "前言說明：沒有委任外部稽核或顧問、也沒有內部稽核部門的發行人，可以用未參與受測職能的內部人員來符合這項要求。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "PPSIs that do not employ outside auditors or consultants or that do not have internal audit departments may comply with this requirement by using internal staff who are not involved in the function being tested."
+    },
+    {
+      "fact": "擬議 1033.210(b)(3) 對專責人員的四項要求：在美國境內、可被 FinCEN 及其受委機關接觸並受其監督、負責建立與實施計畫並協調監控日常法遵、且未曾因內線交易、侵占、網路犯罪、洗錢、資恐或金融詐欺等重罪被判刑。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Designates an individual, who is (i) located in the United States"
+    },
+    {
+      "fact": "重點說明以另一種措辭寫同一件事：該專責人員必須在美國境內，且不得曾因內線交易、侵占、網路犯罪、洗錢、資恐或金融詐欺等重罪被判刑。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The officer must be located in the United States and cannot be convicted of a felony offense involving insider trading, embezzlement, cybercrime, money laundering, financing of terrorism, or financial fraud."
+    },
+    {
+      "fact": "第四項要件是持續的員工訓練計畫（擬議 1033.210(b)(4)）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(4) Establishes an ongoing employee training program."
+    },
+    {
+      "fact": "擬議 1033.210(d)：計畫必須書面化，並經董事會、發行人內部同等治理機關或適當高階管理階層核准，且應 FinCEN 或其受委機關要求提供副本。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A permitted payment stablecoin issuer’s AML/CFT program must be written, and it must be approved by the permitted payment stablecoin issuer’s board of directors, an equivalent governing body within the permitted payment stablecoin issuer, or appropriate senior management."
+    },
+    {
+      "fact": "擬議 1033.210(e)：發行人應 FinCEN 或其受委機關要求，提供它向主要聯邦或州支付型穩定幣監理機關提交過的、依 12 U.S.C. 5904(i)(1) 表明已實施防洗錢計畫的一切證明文件。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "any and all certifications submitted to its primary Federal payment stablecoin regulator or State payment stablecoin regulator that the permitted payment stablecoin issuer has implemented an AML/CFT program pursuant to 12 U.S.C. 5904(i)(1)"
+    },
+    {
+      "fact": "FinCEN 表示，這套給 PPSI 的防洗錢計畫「大致比照」它先前為 11 類既有金融機構提出的計畫義務。這是機關自己的比較說法。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The proposed AML/CFT program for PPSIs largely mirrors the AML/CFT program obligation FinCEN recently proposed for the 11 types of existing financial institutions."
+    },
+    {
+      "fact": "擬議 1033.240(a)：發行人應具備技術能力、政策與程序，以阻擋、凍結與拒絕違反聯邦或州法令的特定或不許交易。涵蓋範圍是兩半，不只第三方那一半（2026-09-17 第二輪查核補進正文）：條文寫「經由發行人進行、在發行人處或透過發行人進行的交易，以及第三方進行的交易，包括交易導致與發行人智慧合約互動的情形」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Permitted payment stablecoin issuers shall have the technical capabilities, policies, and procedures to block, freeze, and reject specific or impermissible transactions that violate Federal or State laws, rules, or regulations."
+    },
+    {
+      "fact": "擬議 1033.240(b)：發行人既要有遵循任何合法命令條款的技術能力，也要確實遵循。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Permitted payment stablecoin issuers shall (1) have the technical capabilities to comply with the terms of any lawful order and (2) comply with the terms of any lawful order."
+    },
+    {
+      "fact": "擬議 31 CFR 1010.100(rrr) 的「合法命令」定義，第一個要件是要求扣押、凍結、銷毀或阻止移轉其所發行的支付型穩定幣。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "to seize, freeze, burn, or prevent the transfer of payment stablecoins it issued"
+    },
+    {
+      "fact": "同一定義的第二個要件是以合理的特定程度指明受凍結的支付型穩定幣或帳戶，第三個要件是依法可受司法或行政審查或上訴。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Specifies the payment stablecoins or accounts subject to blocking with reasonable particularity"
+    },
+    {
+      "fact": "「合法命令」定義的第三個要件逐字是「依法可受司法或行政審查或上訴」（2026-09-17 獨立查核補上：文章原本只寫了前兩個要件）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Is subject to judicial or administrative review or appeal as provided by law."
+    },
+    {
+      "fact": "同一定義的前段限定命令的來源與性質：必須是「依聯邦法作成或發布」、由「有管轄權的法院」或「依其法定職權的經授權聯邦機關」發出的「最終且有效的」令狀、程序、命令、規則、判決、指令或其他要求（2026-09-17 獨立查核補上「依聯邦法」與「最終且有效」）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A lawful order is any final and valid writ, process, order, rule, decree, command, or other requirement issued or promulgated under Federal law, issued by a court of competent jurisdiction or by an authorized Federal agency pursuant to its statutory authority, that:"
+    },
+    {
+      "fact": "草案說明這兩項義務都適用於次級市場活動，而且都是 GENIUS Act 直接課予發行人的。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Both obligations would apply to secondary market activity."
+    },
+    {
+      "fact": "同一段落寫明：FinCEN 提議課予次級市場義務的這兩項，都是 GENIUS Act 直接課給發行人的。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Notably both obligations where FinCEN is proposing secondary market obligations are imposed on PPSIs directly by the GENIUS Act."
+    },
+    {
+      "fact": "重點說明也寫這兩項要求同時適用於初級與次級市場活動。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Both requirements would apply to PPSI’s primary and secondary market activity."
+    },
+    {
+      "fact": "草案明說這一條不要求發行人自行判斷某筆交易是否違反聯邦或州法；何時動用這些能力，由其他聯邦或州法律、規則、規章與法院命令決定。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "this provision would not require a PPSI to make an independent determination that a transaction violates federal or state law"
+    },
+    {
+      "fact": "草案提到 OFAC 執行的美國制裁是嚴格責任制度：美國人（包括 PPSI）即使不知情、也沒有理由知情，仍可能就制裁違規被課民事責任。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "U.S. sanctions administered by OFAC are a strict liability regime"
+    },
+    {
+      "fact": "FinCEN 表示，有些穩定幣發行人目前已經能透過為穩定幣的智慧合約寫入程式來阻擋、凍結或拒絕涉及其穩定幣的交易。這是機關對業界現況的敘述。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "FinCEN recognizes that some stablecoin issuers are currently able to block, freeze, or reject transactions involving their stablecoin by programming the stablecoin’s smart contracts."
+    },
+    {
+      "fact": "草案為本次規則制定定義了「初級市場」：發行人直接面對使用者或持有人的行為，例如發行、轉換、贖回、回購、銷毀與再發行，以及託管等相關服務。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN and OFAC will use the term ‘‘primary market’’ to generally describe a PPSI interacting directly with a user or holder of a payment stablecoin, such as when a PPSI engages in issuing, converting, redeeming, repurchasing, burning, and reissuing payment stablecoins, as well as providing associated services, such as providing custodial services."
+    },
+    {
+      "fact": "草案定義的「次級市場」是：除了透過智慧合約以外，發行人並非交易當事人的穩定幣活動（文件舉的例子包括個人向中介買入、從自管錢包付款給商家、在數位資產交易平台換成別的數位資產，以及個人之間的移轉）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN and OFAC will use the term ‘‘secondary market’’ to describe payment stablecoin activity that does not directly involve the PPSI as a party to the transaction other than via a smart contract."
+    },
+    {
+      "fact": "擬議 1033.320(a)(2) 的可疑交易申報門檻：交易涉及或累計至少 5,000 美元，且發行人知悉、懷疑或有理由懷疑符合四款情形之一。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "it involves or aggregates funds or other assets of at least $5,000; and the permitted payment stablecoin issuer knows, suspects, or has reason to suspect"
+    },
+    {
+      "fact": "5,000 美元高於穩定幣發行人現在以貨幣服務業身分適用的 2,000 美元門檻；草案給的理由包括這是它對須設客戶身分辨識計畫的機構類型所採用的門檻、初級市場低於 5,000 美元的交易少見，以及這個生態系沒有移轉業者與代理人的關係。理由屬機關的評估。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The $2,000 threshold for MSBs"
+    },
+    {
+      "fact": "擬議 1033.320(b)(3) 的申報期限：自初次發現可能構成申報基礎的事實起 30 個日曆日內申報；若發現當日未辨識出嫌疑人，可再延 30 個日曆日以辨識，但自初次發現起無論如何不得延遲超過 60 個日曆日。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "but in no case shall reporting be delayed more than 60 calendar days after the date of such initial detection."
+    },
+    {
+      "fact": "擬議 1033.320(c)：申報書副本與相關證明文件自申報日起保存五年。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "for a period of five years from the date of filing the SAR"
+    },
+    {
+      "fact": "擬議 1033.320(d)：申報書及任何會揭露其存在的資訊都是保密的。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A SAR, and any information that would reveal the existence of a SAR, are confidential"
+    },
+    {
+      "fact": "擬議 1033.320(g)（依 must_fix 4，引文含前期研究刪掉的子句）：只因為第三方的移轉導致與發行人智慧合約互動，並不使該筆交易成為由發行人、在發行人處或透過發行人進行或嘗試的交易。PDF 排成「§ 1033.320」，聯邦公報全文 .txt 排成「Sec.  1033.320」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A transaction, for purposes of § 1033.320, is not conducted or attempted by, at, or through a permitted payment stablecoin issuer only because a transfer by third parties results in an interaction with a permitted payment stablecoin issuer’s smart contract."
+    },
+    {
+      "fact": "現金交易報告的門檻是單一營業日內超過 1 萬美元。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The threshold in § 1010.311 applies to transactions in currency of more than $10,000 conducted during a single business day."
+    },
+    {
+      "fact": "但 31 CFR 1010.100(m) 的 currency 定義不包含支付型穩定幣，所以擬議的 1033.310 至 1033.314 不要求申報穩定幣本身的交易。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the definition of ‘‘currency,’’ as defined in § 1010.100(m), does not include a payment stablecoin"
+    },
+    {
+      "fact": "紀錄規則的門檻是 3,000 美元以上的資金移轉與傳送；旅行規則要求把資訊傳給支付鏈上的下一家金融機構。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Recordkeeping Rule requires financial institutions to collect and retain records for funds transfers and transmittals of funds in amounts of $3,000 or more."
+    },
+    {
+      "fact": "草案還要求發行人為超過 1 萬美元的授信，以及超過 1 萬美元的跨境移轉（貨幣、貨幣工具、資金、支票、投資性證券與授信）建立並保存紀錄。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "certain records for extensions of credit in excess of $10,000"
+    },
+    {
+      "fact": "FinCEN 沒有要求把次級市場監控納入防洗錢計畫，但發行人仍須理解客戶與通路（包括其穩定幣部署在哪些區塊鏈）的風險。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN is not proposing to require a PPSI as part of an AML/CFT program to monitor secondary market activity"
+    },
+    {
+      "fact": "重點說明也寫明：這份提案不會課予次級市場的可疑交易申報義務。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposal would not impose a secondary market SAR reporting obligation."
+    },
+    {
+      "fact": "OFAC 新增的第 502 部，部名為 Permitted Payment Stablecoin Issuer Effective Sanctions Compliance Program Regulations。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "PART 502—PERMITTED PAYMENT STABLECOIN ISSUER EFFECTIVE SANCTIONS COMPLIANCE PROGRAM REGULATIONS"
+    },
+    {
+      "fact": "重點說明寫制裁法遵計畫有五項關鍵要素；條文 502.201(b) 的用字是「至少應包括」，五項依序是高階管理階層與組織的承諾、風險評估、內部控制、測試與稽核、訓練。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposed rule would require PPSIs to adopt a sanctions compliance program including the five key elements described below."
+    },
+    {
+      "fact": "擬議 502.201(b)(3)(i) 的內部控制有四個子要素（依 must_fix 11，前期研究漏掉第三個）：(A) 辨識、(B) 阻擋或拒絕、(C) 依規定向 OFAC 申報（含 502.102(b) 與第 501 部所述者）、(D) 保存紀錄。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(C) Provides reports to OFAC as required, including those described in § 502.102(b) and part 501 of this chapter"
+    },
+    {
+      "fact": "同一款 (A) 與 (B) 的限定詞（2026-09-17 獨立查核逐字對回：(A) 是「已經或可能被禁止」，不只是「可能」；(B) 是「在適用範圍內」阻擋或拒絕「違反或將違反」的活動，不只是「將違反」）。內部控制的整體限定是「風險為基礎」，且適用於所有穩定幣相關活動、不分初級或次級市場。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Establish and maintain a system of risk-based internal controls, including technical capabilities and written policies and procedures, applicable to all payment stablecoin-related activity, whether on the primary or secondary market, that: (A) Identifies any payment stablecoin- related activity that is or may be prohibited by U.S. sanctions; (B) Blocks or rejects, as applicable, any payment stablecoin-related activity that violates or would violate U.S. sanctions;"
+    },
+    {
+      "fact": "重點說明對同一款的摘要與條文不同：它把四個子要素寫成「辨識、阻擋和／或拒絕可能違反或將違反美國制裁的交易，並依 OFAC 規定留存相關紀錄」，漏掉申報那一項，也把 (A) 的「is or may be」與 (B) 的「violates or would violate」併成一個「may violate or would violate」。條文與重點說明衝突時以條文為準。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "that identifies, blocks, and/or rejects transactions that may violate or would violate U.S. sanctions and retains relevant records in accordance with OFAC regulations."
+    },
+    {
+      "fact": "草案說制裁篩檢「至少」應包含足以辨識並阻擋與 OFAC 特別指定國民（SDN）名單上數位貨幣位址相關交易的工具。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "at a minimum, such sanctions screening should include tools sufficient to identify and block transactions associated with digital currency addresses included on OFAC’s SDN List"
+    },
+    {
+      "fact": "OFAC 不要求發行人使用任何特定工具或軟體。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OFAC does not require PPSIs to use any specific tool or software"
+    },
+    {
+      "fact": "擬議 502.201(b)(5)(i)：訓練至少每年一次，並以與風險評估及風險輪廓相稱的頻率辦理。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Performed at least annually and with a frequency appropriate to the PPSI’s risk assessments and risk profile"
+    },
+    {
+      "fact": "擬議 502.401(a)：重大違反維持有效制裁法遵計畫之要求者，按違反持續之每一日處不超過 10 萬美元民事罰鍰。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A permitted payment stablecoin issuer (PPSI) that materially violates the requirement to maintain an effective sanctions compliance program (SCP), as described in § 502.201, shall be liable for a civil penalty of not more than $100,000 for each day during which the violation continues."
+    },
+    {
+      "fact": "擬議 502.401(b) 的條文用字是「明知而違反」（knowingly violates）維持有效制裁法遵計畫之要求者，在 (a) 之外按日再處不超過 10 萬美元。依 must_fix 8，前期研究把它寫成「knowingly participates」，那是草案前言的措辭，不是條文的措辭。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a PPSI who knowingly violates the requirement to maintain an effective SCP, as described in § 502.201 of this chapter, shall be liable for a civil penalty of not more than an additional $100,000 for each day during which the violation continues."
+    },
+    {
+      "fact": "文件自己前後不一：同一件事的前言寫的是「knowingly participates in a violation of the same」。本文只寫條文的版本，不印前言那句，也不把兩段文字併成一句。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Proposed § 502.401(b) would provide for an additional $100,000 penalty for each day during which a PPSI knowingly participates in a violation of the same."
+    },
+    {
+      "fact": "擬議 502.402：罰鍰未繳且未與 OFAC 主任達成可接受的付款安排時，案件得移交財政部行政收繳，或移送美國司法部在聯邦地方法院提起民事訴訟追償。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the matter may be referred for administrative collection measures by the Department of the Treasury or to the United States Department of Justice for appropriate action to recover the penalty in a civil suit in a federal district court."
+    },
+    {
+      "fact": "草案提到國際緊急經濟權力法（IEEPA）允許的民事罰鍰為 37 萬 7,700 美元或該筆交易金額兩倍中的較高者，且經通膨調整。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "civil penalties of the greater of $377,700 or twice the amount of the underlying transaction for each violation"
+    },
+    {
+      "fact": "草案也提到與敵國貿易法（TWEA，OFAC 古巴制裁計畫的法源）允許每次違反最高 11 萬 1,308 美元的罰鍰，亦經通膨調整。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "penalties of up to $111,308 for each violation"
+    },
+    {
+      "fact": "這句話的主體是「GENIUS Act 的制裁法遵計畫要求」，說話的是這份聯合草案（印在 OFAC 那一節的前言裡），不是 4 月 8 日的新聞稿——財政部新聞稿全文查「first time」0 次。原句還帶一個讓步子句（「儘管 IEEPA 與其他法源授權總統得調查、阻擋、規範或禁止受美國管轄財產的交易與往來」）。依 must_fix 12 這是機關對自家法律新穎性的自述，文件裡沒有另外的佐證；2026-09-17 獨立查核把文章的「財政部並表示」改成「草案說…並表示」，並把主體從指涉不明的「這」改回 GENIUS Act 的制裁法遵計畫要求。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "represents the first time that Federal law has explicitly mandated that a particular U.S. person have an effective sanctions compliance program"
+    },
+    {
+      "fact": "條號不一致（依 must_fix 2 並列，不安靜訂正）：草案前言寫的是「與 31 CFR 1022.220(a)(2)、銀行的客戶身分辨識計畫規則相同的要素」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the same elements as 31 CFR 1022.220(a)(2), the customer identification program rule for banks"
+    },
+    {
+      "fact": "同一件事，擬議條文 1010.230(b)(2) 寫的是 § 1020.220(a)(2)（銀行適用）。本站以取得的全文比對，1022.220 出現 1 次、1020.220 出現 4 次——這兩個次數是本站 2026-09-17 對取得文本的計數，不是文件印出來的數字，文章裡也照這樣標示。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "these procedures must contain the elements required for verifying the identity of customers that are individuals under § 1020.220(a)(2) of this chapter (for banks)"
+    },
+    {
+      "fact": "被明文排除的兩條（依 must_add 2）：FinCEN 不打算把禁止為外國空殼銀行開立通匯帳戶的 1010.630，以及關於對外國銀行傳票與傳喚的 1010.670 適用於 PPSI，理由是這些條文的法定授權只及於特定類型的金融機構。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN is not proposing to apply to PPSIs § 1010.630, which prohibits correspondent accounts for foreign shell banks, or § 1010.670, which relates to summons and subpoenas on foreign banks"
+    },
+    {
+      "fact": "但擬議條文仍留了一條 1033.630，內容是空殼銀行通匯帳戶禁令等相關規定「請參照本章 1010.630」——文件自己相反，所以本文不斷言空殼銀行禁令適用於 PPSI。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For regulations regarding prohibition on correspondent accounts for foreign shell banks and related provisions refer to § 1010.630 of this chapter."
+    },
+    {
+      "fact": "另一處文件內部不一致（依 must_add 6）：紙上作業精簡法那一節把 OFAC 的新部稱為「Payment Stablecoin Effective Sanctions Compliance Program Regulations」，與部標題和前言的「Permitted Payment Stablecoin Issuer ...」不同。本文採用部標題的版本。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Payment Stablecoin Effective Sanctions Compliance Program Regulations"
+    },
+    {
+      "fact": "31 CFR 1010.100 的修正指示是新增 (nnn) 到 (xxx) 共十一項，其中 (nnn) 與 (ooo) 是為另一件關於 11 類既有金融機構防洗錢計畫的規則制定案保留的。所以重點說明的「新增九個定義」與條文數出來的十一項並不衝突，本文採用重點說明的說法，不自己從條文數。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN is reserving two subparagraphs, (nnn) and (ooo), expecting they will contain definitions proposed in a previously issued FinCEN rulemaking related to AML/CFT programs for the 11 types of existing financial institutions."
+    },
+    {
+      "fact": "重點說明寫明意見期截止日，用的寫法是「June 9th」（沒有寫年）。",
+      "url": "https://www.fincen.gov/system/files/2026-04/FactSheet-PPSI-program-NPRM.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Comments must be received by June 9th"
+    },
+    {
+      "fact": "文件內部不一致的處數不只兩處（2026-09-17 獨立查核：文章原本寫「草案自己有兩處前後不一致」，那是本站的清點，而且與本紀錄自己記下的處數衝突）。至少有五處：（1）前言的 1022.220(a)(2) 對條文的 1020.220(a)(2)；（2）前言說不適用 1010.630，擬議條文卻仍留 1033.630 指向它；（3）紙上作業精簡法一節把第 502 部稱為另一個名稱；（4）1010.100 的修正指示數出十一項而重點說明說九項（兩項保留）；（5）委任檢查權那一節的小標印「ii. Proposed 31 CFR 1010.810(b)(8)—Federal Qualified Payment Stablecoin Issuers」，但該節談的新增款次是 1010.810(b)(11)。文章已改寫成「草案自己有幾處前後不一致，本文照來源並列其中兩處」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ii. Proposed 31 CFR 1010.810(b)(8)— Federal Qualified Payment Stablecoin Issuers"
+    },
+    {
+      "fact": "擬議 1033.320(g) 在同一份文件裡有兩個寫法：前言引述時沒有「, for purposes of § 1033.320,」這個子句，擬議條文有。修正清單 must_fix 4 說「研究者從句子中間刪掉了子句」，實際上前言印的就是沒有子句的版本；兩種都在文件裡，引用時要說清楚引的是哪一段。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "which as proposed would state that ‘‘A transaction is not conducted or attempted by, at, or through a permitted payment stablecoin issuer only because a transfer by third parties results in an interaction with a permitted payment stablecoin issuer’s smart contract.’’"
+    },
+    {
+      "fact": "擬議 1033.210(b) 的四項要件是條文自己的編號 (1) 到 (4)，不是本站清點出來的；重點說明的項目符號另外多列了「書面計畫與核准」與「監理與執法」兩項，所以「四項」只能掛在條文的編號上。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(4) Establishes an ongoing employee training program. (c) Program implementation."
+    },
+    {
+      "fact": "擬議 502.301 把「明知」（knowingly）定義成「該人對該行為、情況或結果有實際知悉，或應當知悉」——也就是 502.401(b) 的「明知而違反」涵蓋應知而不知。2026-09-17 第二輪查核已把這個定義補進正文第五節（「明知（草案定義為實際知悉或應當知悉）而違反者」），不再讓中文的「明知」被讀成只限實際知悉。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The term knowingly, with respect to conduct, a circumstance, or a result, means that a person has actual knowledge, or should have known, of the conduct, the circumstance, or the result."
+    },
+    {
+      "fact": "擬議 1033.240(a) 涵蓋範圍那一句的逐字原文（2026-09-17 第二輪查核加入）：要求的技術能力、政策與程序必須涵蓋「經由發行人、在發行人處或透過發行人」進行的交易，「以及」第三方進行的交易。文章原本只寫了第三方那一半，第二輪補成兩半；「including」起頭的智慧合約情形是舉例，不是全清單。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The required technical capabilities, policies and procedures must account for transactions occurring by, at, or through the permitted payment stablecoin issuer, as well as transactions by third parties, including where a transaction results in an interaction with a permitted payment stablecoin issuer’s smart contract."
+    },
+    {
+      "fact": "把 PPSI 從貨幣服務業定義裡排除的理由，文件自己印出來了（2026-09-17 第二輪查核推翻第一輪的判斷）：第一輪把文章原本的「以免兩套義務重疊」當成本站的推論而刪掉，依據是 1010.100(ff) 那一段的「The amendment makes clear that PPSIs are subject to obligations as a PPSI and not as a money services business.」；但同一份文件討論與其他 BSA 機構義務交互作用的那一節（註 136 那句）逐字寫的是「為了限制重疊的義務與混淆」。也就是說原文的說法是有來源的，被刪掉並不使文章出錯（現在的句子只陳述排除這件事），但要復原是合規的。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To limit overlapping obligations and confusion, FinCEN proposes affirmatively carving out PPSIs from the definition of MSB."
+    },
+    {
+      "fact": "「五項最低要素」的「最低」是條文自己的字：擬議 502.201(b) 在列出 (1) 到 (5) 之前寫的是「至少應包括」。重點說明另外逐字印出「五項關鍵要素」。兩個字眼各有來源，不是本站的形容。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It shall include, at a minimum:"
+    },
+    {
+      "fact": "「四個既有定義、九個新增」兩份來源都印，但用字不同：聯邦公報全文寫的是「nine new terms」（出現兩次），重點說明寫的是「nine new definitions」。文章寫「新增九個定義」並歸因給重點說明，對得上重點說明的用字。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "FinCEN is proposing to amend four existing definitions and add nine new terms to the general definitions section of its regulations, 31 CFR 1010.100."
+    },
+    {
+      "fact": "防洗錢計畫的「四項」是擬議 1033.210(b) 自己的款次編號，(b) 以「; and (4)」收尾、下一個層級就是 (c)，所以四是條文印出來的最後一個款號，不是本站清點項目得出的（2026-09-17 第二輪查核逐字確認：以詞界比對，全文與重點說明都沒有任何一處把這組要件寫成「four requirements」之類的字；全文 six 處 four 分別是 OFAC 指定的四個實體、兩處「amend four existing definitions」、OFAC 定義四個用語，以及 Eighty-four percent）。文章因此把標題與摘要都改寫成「擬議條文編號的四項要件」，把數字掛在條文的編號上。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(4) Establishes an ongoing employee training program. (c) Program implementation."
+    },
+    {
+      "fact": "擬議 502.401 的罰則與 GENIUS Act 一致這句是文件自己說的（文章第五節照寫）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposed penalties are consistent with those prescribed in the GENIUS Act"
+    },
+    {
+      "fact": "兩個機關對「定案規則發布後 12 個月生效」這個時點徵詢意見（FAQ 1 的「並就這個時點徵詢意見」的依據）。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We seek comment on the proposed effective date."
+    },
+    {
+      "fact": "5,000 美元門檻的三個理由逐字（FAQ 4 的依據，文章寫「理由包括」保留開放清單）：初級市場低於 5,000 美元的交易少見、PPSI 生態系沒有移轉業者與代理人的關係、以及 PPSI 依法必須設客戶身分辨識計畫。這一段是機關的評估。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "where primary market transactions below $5,000 are rare; the lack of transmitter/agent relationships in the PPSI ecosystem; and the required imposition of customer identification program obligations on PPSIs."
+    },
+    {
+      "fact": "「沒有聯邦機關檢查的發行人多是州級核准的發行人」有來源（文章第二節「後者多是州級核准的發行人」的依據）：文件寫這個族群「將包括」不受主要聯邦支付型穩定幣監理機關監理的州級核准發行人，原因是流通在外總額不超過 100 億美元或取得豁免。用的是 will include，不是全清單，文章因此寫「多是」而不是「就是」。",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This population will include State qualified payment stablecoin issuers not supervised by a primary Federal payment stablecoin regulator"
+    }
+  ],
+  "not_said": [
+    "文件是提案，不是生效的規則。以文件本身查核到 2026-09-17，裡面沒有任何一句說這些義務已經生效；機關提議的是定案規則發布後 12 個月生效，而草案沒有寫何時定案。",
+    "文件沒有指認哪些業者會成為 PPSI，也沒有說哪些穩定幣會是支付型穩定幣——它自己寫「還沒確定」。不得把任何公司寫成 PPSI。**但不可以寫成「文件沒有點名任何一家公司或任何一種穩定幣」**：2026-09-17 獨立查核以詞界比對，取得的全文裡 Tether 出現 3 次、USDT 4 次（都在註 48、49、51、74 的司法部沒入案件案名裡，例如「United States of America v. Nine Cryptocurrency Wallets Held by Tether Ltd. and Seven Cryptocurrency Wallets Held by Binance Holdings Ltd.」），Circle、USDC、Coinbase 則是 0 次。那些是它引用的案件當事人，不是它認定的發行人。",
+    "文件沒有寫意見期是否延長、也沒有寫意見的內容。文件裡唯一的意見件數是 2025 年 9 月那份預告（ANPRM）收到「約 450 件」，那是另一份文件的意見，不是本案的。",
+    "文件沒有課予客戶身分辨識計畫義務（註 111 明寫是另一件規則制定案的主題），所以本文不寫 CIP 的內容。",
+    "文件沒有訂準備資產、資本、流動性或發照要求。草案說那些屬於主要聯邦支付型穩定幣監理機關與州監理機關各自的規則制定案（批次 4.1 的 C6、C8、C9 三篇），本文只用一句話帶過。",
+    "文件沒有要求發行人在防洗錢計畫裡監控次級市場交易，也沒有要求就次級市場交易申報可疑交易。",
+    "文件沒有規定阻擋、凍結、拒絕與合法命令的技術能力要怎麼建，也沒有指定任何制裁篩檢工具、廠商或軟體。",
+    "文件沒有在條文裡定義 burn 或 account（就合法命令而言），只在前言說明目前的理解並徵詢意見；本文因此沒有給這兩個詞一個確定的法規定義。",
+    "文件沒有說支付型穩定幣的交易要申報現金交易報告——它明說 currency 的定義不含支付型穩定幣。",
+    "文件沒有寫一般持有人要做什麼，每一項義務都落在發行人身上；也沒有提到台灣、台灣使用者或任何非美國主管機關對同一批發行人的處理。不得外推。",
+    "12 U.S.C. 5905(b)(5) 的法典原文（含「or institution-affiliated party of such permitted payment stablecoin issuer」，以及 (A) 款對未經核准發行美元計價支付型穩定幣者的同額罰鍰）今天讀不到，本文沒有寫誰是罰鍰的受罰主體範圍，只寫草案自己引述的 GENIUS Act 罰則與擬議 502.401 的內容。",
+    "Pub. L. 119-27 第 20 條的生效公式（制定日起 18 個月，或最終規則後 120 天，取其早）不在這份文件裡：以取得的全文比對，「18 months」與「120 days」都出現 0 次。本文因此沒有寫這個公式，只寫草案自己的「定案規則發布後 12 個月」。",
+    "文件沒有把價格、市值、流通量、交易量或報酬寫成讀者可以據以行動的資訊；crypto.md 也禁止轉引草案經濟分析裡的市場規模數字，本文一律沒有寫。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "12 U.S.C. 5903 與 5905 的法典原文，包括六項法定義務的逐字用語、5905(b)(5)(A)–(C) 三個罰鍰級距與「or institution-affiliated party」的受罰主體，以及 Pub. L. 119-27 第 20 條的 18 個月／120 天生效公式。",
+      "seen_where": "前期研究紀錄把 uscode.house.gov 的 granuleid 網址列為 sources[3]（12 U.S.C. 5903）。",
+      "why_excluded": "2026-09-17 連續三次 curl（含 --max-time 60）都是 curl (28) Failed to connect to uscode.house.gov:443、狀態 000、0 bytes，今天讀不到，因此沒有放進 sources[]。凡只有法典才印的字一律不寫；六項法定義務、罰鍰與制裁義務都改寫成草案自己引述的版本並掛在 sources[0]。生效公式改寫成草案自己的「定案規則發布後 12 個月」。"
+    },
+    {
+      "claim": "regulations.gov 案號 FINCEN-2026-0100 收到 89 則意見、意見結束日 2026-06-10。",
+      "seen_where": "聯邦公報 API 文件紀錄裡鏡像的 dockets 區塊（comment_count 89、comment_end_date 2026-06-10、regulations_dot_gov_open_for_comment false、checked_regulationsdotgov_at 2026-06-19）。",
+      "why_excluded": "那是聯邦公報在 2026-06-19 鏡像 regulations.gov 的讀數，不是 FinCEN 或 OFAC 的說法，而且 6 月 10 日與規則 DATES 欄印的 6 月 9 日衝突；regulations.gov 本身對這個容器回 403。API 查詢網址也不在 sources[]。文章只寫 DATES 欄的 2026-06-09，不寫任何意見件數。"
+    },
+    {
+      "claim": "草案經濟分析裡的市場規模、市值占比與流通總額，以及註 33 引白宮 E.O. 14178 報告關於美元計價穩定幣占比的說法。",
+      "seen_where": "草案第 XII 節與註 33。",
+      "why_excluded": "crypto.md 禁止幣價、市值、交易量與資金流，即使它們印在主管機關文件裡也一樣。"
+    },
+    {
+      "claim": "草案註腳引用的司法部案件金額（例如約 2.253 億、3,690 萬、774 萬、200 萬美元的扣押），以及「執法機關已用合法命令扣押價值數億美元穩定幣」這句話裡的金額。",
+      "seen_where": "草案註 48 至 52 與 207，均引司法部新聞稿或法院文書。",
+      "why_excluded": "這些數字只透過草案註腳看到，本站沒有抓 justice.gov，而且「數億美元」是 FinCEN 的敘述。文章只寫法院命令「有時會要求發行人銷毀並重新發行等額穩定幣到政府控制的錢包」這件事的性質，不寫金額。"
+    },
+    {
+      "claim": "草案轉引的防制洗錢金融行動工作組織（FATF）2025 年 6 月更新報告中「多數鏈上不法活動現在以穩定幣進行」的估計。",
+      "seen_where": "草案第 IV 節引 FATF 報告。",
+      "why_excluded": "那是草案轉引的第三方估計，本站沒有抓 FATF 原文；而且它本質上是交易量的估計，crypto.md 不寫。"
+    },
+    {
+      "claim": "受影響發行人家數與成本估計（約 50 家、其中約 20 家非受保存款機構子公司與 30 家受保存款機構子公司、最多 42 家初期登記、50 家中最多 19 家為小型實體，以及第一年約 180 萬美元、每家 24,983 與 52,453 美元等數字）。",
+      "seen_where": "草案第 XII 節的規制影響分析與紙上作業精簡法一節。",
+      "why_excluded": "機關自己寫這是資訊有限下的盡力推估並徵求資料改進；而且前期研究把 52,453 美元寫成「每家非子公司 PPSI」（原文是 non-IDI subsidiary PPSI，指不是受保存款機構子公司的發行人），這類用語極易誤譯。本文不需要這些數字，全部不寫；要寫必須逐字照原文的分類與但書。"
+    },
+    {
+      "claim": "2026-06-22 刊登的客戶身分辨識計畫提案（91 FR 37234）由 FinCEN 與 OCC、聯準會理事會、FDIC、NCUA 聯名，以及 2026 年 6 月 5 日 FDIC、6 月 24 日 OCC 的後續提案。",
+      "seen_where": "前期研究與獨立查核引的聯邦公報 API 紀錄與全文 .txt（2026-12460）。",
+      "why_excluded": "要寫這些需要一個 sources[] 名額給 2026-12460 的官方全文，而四個名額已經用在本案文件與兩則新聞稿上。文章只寫本案文件自己說的「CIP 是另一件規則制定案的主題」，不寫後續案的機關清單、RIN 或意見期。"
+    },
+    {
+      "claim": "行政命令編號：草案本文寫 Executive Order 14294、註 320 寫 E.O. 14292。",
+      "seen_where": "草案第 XI 節與註 320。",
+      "why_excluded": "獨立查核以聯邦公報查詢確認正確編號是 14294（90 FR 20363，2025-05-09 簽署、2025-05-14 刊登），但那份總統文件的網址不在 sources[]，而且本文沒有寫刑事罰則那一段，所以整段連同編號都不寫。"
+    },
+    {
+      "claim": "聯邦公報正規 HTML 頁、regulations.gov 案號頁與 fincen.gov 新聞索引頁的可達性。",
+      "seen_where": "前期研究與獨立查核的紀錄（302 到 unblock.federalregister.gov、403、404）。",
+      "why_excluded": "今天沒有重試這三個管道，因為本文不需要它們；這些是取得路徑的紀錄，不是文章裡的事實，文章也沒有任何一句依賴它們。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者裡會用到跨境支付、海外平台或以美元穩定幣計價服務的人，以及想知道「發美元穩定幣的公司被要求做哪些防洗錢與制裁法遵」的人。他們不會去讀聯邦公報，也常分不清提案與生效。\n\n本文只回答一個問題：FinCEN 與 OFAC 在 2026 年 4 月 10 日刊登的聯合草案，打算要求經核准的支付型穩定幣發行人做到什麼。答案分四層：把發行人明文列為銀行保密法的金融機構並從貨幣服務業拉出來；防洗錢與反資恐計畫的四項要件加上書面與核准；申報與紀錄（可疑交易 5,000 美元、現金交易 1 萬美元但不含穩定幣、紀錄規則 3,000 美元、旅行規則）；以及 OFAC 新增第 502 部的五項制裁法遵要素與每日 10 萬美元罰鍰。\n\n全篇最重要的一件事是「這是草案」：每個操作性句子都帶「草案擬」，意見期依 DATES 欄是 2026-06-09 截止，以案號與 RIN 查詢到 2026-09-17 只有這一份文件，而機關提議定案規則要在發布後 12 個月才生效。第二重要的是日期鏈：署名與宣布 4/8、送存 4/9 08:45、刊登與意見期起算 4/10，四個日期都寫出來。\n\n刻意不談：任何幣價、市值、流通量與資金流；哪一種穩定幣比較安全、該不該持有；OCC、FDIC、NCUA 三案的準備金與許可內容；客戶身分辨識計畫的內容；台灣《虛擬資產服務法》的細節（只用一句話做制度對照並連結）。初級與次級市場的分野是草案自己為本次規則制定界定的，文章歸因給草案（2026-09-17 獨立查核改掉原本的「編輯設計的例子」標示——那個標示只能用在真正由本站虛構的生活情境，這一篇沒有）。",
+  "must_not_write": [
+    "不得把任何一項義務寫成現在式的既成規定。每一句都是草案擬議，機關自己的用字是 would require。",
+    "不得寫幣價、漲跌幅、市值、流通量、交易量、資金流、殖利率、質押報酬或空投——即使印在聯邦公報文件裡也不寫（特別是第 XII 節的市場規模與註 33 的占比）。",
+    "不得把任何穩定幣、發行人、交易所、錢包或託管商寫成讀者可以持有、使用或選擇的東西。文件沒有點名任何一家，也自己說還沒確定誰會是 PPSI。",
+    "不得把「發行人可以凍結或銷毀穩定幣」寫成對讀者持有安全性的保證或警告。只寫成草案擬要求發行人具備的能力，並寫明何時動用由其他法律或法院命令決定。",
+    "不得寫成「美國讓穩定幣合法／安全了」。這份草案只處理防洗錢與制裁法遵計畫；發照、準備資產與資本在別的機關、別的案子。",
+    "不得寫意見期還開放。DATES 欄印的截止日是 2026-06-09，早於查核日。",
+    "不得寫本案的意見件數，也不得描述意見內容；文件裡的「約 450 件」是 2025 年 9 月預告案的意見。",
+    "不得描述 OCC、FDIC、NCUA 的審慎規則內容（那是 C6、C8、C9 三篇）。",
+    "不得寫行政命令編號與刑事罰則那一段（文件本文與註腳的編號互相矛盾，本文整段不寫）。",
+    "不得斷言禁止為外國空殼銀行開立通匯帳戶的規定適用於 PPSI：前言說不適用，擬議條文卻仍保留 1033.630，文件自己相反。",
+    "不得把前言的 1022.220(a)(2) 安靜改成條文的 1020.220(a)(2)，也不得只寫其中一個；兩個都要印出來並說明出入。",
+    "不得寫「我們實測」「我們向主管機關確認」這類句子；本站不做實測、不做接觸。",
+    "不得提供稅務、法律、法遵或投資建議，也不得告訴任何業者它是否需要登記為 PPSI。",
+    "用語：法規語境寫虛擬資產、一般語境寫加密貨幣；全篇正體字，不得出現簡體字。"
+  ],
+  "live_data_warnings": [
+    "「查核日沒有定案規則」是活資料，2026-09-17 由獨立查核再重跑一次：https://www.federalregister.gov/api/v1/documents.json?conditions%5Bdocket_id%5D=FINCEN-2026-0100 回 HTTP 200、2,575 bytes、count 1；https://www.federalregister.gov/api/v1/documents.json?conditions%5Bregulation_id_number%5D=1506-AB73 回 HTTP 200、2,565 bytes、count 1；兩者回的都只有 2026-04-10 的 document_number 2026-06963、type「Proposed Rule」。**2026-09-17 的處理改變了**：案號那個端點已經進 sources[]（取代 FinCEN 新聞稿），因為這句「未見定案規則」原本是全文唯一指不到來源的句子；RIN 那個端點仍不在 sources[]，所以文章把這句話收窄成「以案號 FINCEN-2026-0100 在聯邦公報的文件查詢端點查詢，到 2026 年 9 月 17 日只回這一份提案」，不再宣稱 RIN 查詢的結果（RIN 只作為文件自己印出的識別碼出現）。再次定稿或翻譯前要重跑案號那一個端點，並同步更新 sources[3] 的 title 裡那句「回 1 筆」。**2026-09-17 第二輪查核又重跑一次同一個端點**：HTTP 200、2,575 bytes、count 仍為 1，唯一一筆仍是 document_number 2026-06963、type「Proposed Rule」、publication_date 2026-04-10，所以四處「未見定案規則」與 sources[3] 的 title 都不必改。同一輪把正文、摘要、FAQ 與提醒 callout 裡的「文件查詢端點」一律改成讀者看得懂的「聯邦公報的官方文件查詢」，網址與查核方法不變。",
+    "後續規則會繼續出現：客戶身分辨識計畫的提案已於 2026-06-22 刊登（91 FR 37234）。因此文章一律不寫「這是唯一／最新的一份」，只寫本案案號底下的狀態。",
+    "聯邦公報 API 的文件紀錄鏡像了 regulations.gov 的 89 則意見與 2026-06-10 結束日，鏡像時點是 2026-06-19；那個件數與結束日都不是機關的說法，而且與 DATES 欄的 2026-06-09 衝突，文章一律不寫件數，並以 DATES 欄為準。",
+    "本案文件本身是固定的聯邦公報刊登物，不是活檔：govinfo PDF 的 md5 48e7a3244420d9c34fde70cb46249ef9（765,284 bytes、86 頁）與聯邦公報全文 .txt（712,054 bytes）在 2026-09-17 逐句相符，引文可以放心引用。",
+    "「1022.220 出現 1 次、1020.220 出現 4 次」是本站對取得文本的計數，不是文件印出來的數字；文章已照這樣標示。2026-09-17 獨立查核對當天重抓的同一份 PDF（md5 相同）重數一次，結果不變：1022.220 一次（在前言「the same elements as 31 CFR 1022.220(a)(2), the customer identification program rule for banks」），1020.220 四次（註 358 一次、擬議 1010.230(b)(2) 一次、1010.230 的另一段兩次）。重新定稿時要再重數。",
+    "uscode.house.gov 今天完全連不上（curl (28)，三次）。它先前的頁面會標「Text contains those laws in effect on ...」，是有時點的滾動版本；日後若要把法典條文寫進文章，必須重抓並記下那一行的日期。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（CIP 提案的聯名機關清單掛錯網址）：整條不寫。文章只寫本案文件自己說的「客戶身分辨識計畫是另一件規則制定案的主題」（註 111 逐字引），沒有提後續案的機關清單、91 FR 37234、RIN 或意見期；理由記在 unverified_or_excluded（四個 sources 名額不夠放 2026-12460 的全文）。",
+    "must_fix 2（1022.220 對 1020.220）：兩個都印出來並說明出入——正文第五節與 FAQ 各寫一次，前言寫 1022.220(a)(2)、擬議條文 1010.230(b)(2) 寫 1020.220(a)(2)，沒有安靜改對。兩條引文分別掛 sources[0] 並逐字驗證過。",
+    "must_fix 3（(ttt)(1)(A)/(B) 應為羅馬數字）：文章沒有寫 PPSI 定義的分支條號，避免再錯；研究紀錄以 1010.100(ttt) 的條文引文為準（PDF 排「(1) (i) ... (ii) ...」），而 (a)/(b)/(c) 的編法屬 OFAC 平行的 502.304。",
+    "must_fix 4（1033.320(g) 引文被刪掉子句）：引文已補回「, for purposes of § 1033.320,」並照 sources[0] 的 § 排版；同時寫明聯邦公報全文 .txt 排成「Sec.  1033.320」。",
+    "must_fix 5（52,453 美元的用語錯、且漏了小型發行人的成本區間）：成本估計整組不寫（見 unverified_or_excluded），文章沒有任何一個成本數字。",
+    "must_fix 6（OCC 規則標題是縮寫被當成正式標題）：四則先前的 GENIUS Act 規則制定引註整組不寫，文章只用一句話說準備資產、資本與發照屬別的機關、別的案子。",
+    "must_fix 7（把獨立測試寫成「必須有稽核功能」）：已改寫。正文第三節照條文寫「由發行人自己的人員或外部單位執行的獨立測試」，並補上前言那句「沒有外部稽核或內部稽核部門者可用未參與受測職能的內部人員」，兩條引文都掛 sources[0]。",
+    "must_fix 8（502.401(b) 的 knowingly participates／knowingly violates 被混寫）：文章寫「明知而違反」，依條文；研究紀錄另列一條記下前言的不同措辭，並註明不把兩段文字併成一句。",
+    "must_fix 9（5905(b)(5) 的受罰主體與 (A) 款）：法典今天讀不到，文章因此不寫法典的罰鍰條文，只寫擬議 502.401 的內容；受罰主體範圍完全不寫，理由記在 not_said 與 unverified_or_excluded。",
+    "must_fix 10（SAR 展延漏了 60 日上限）：已補。正文第四節與引文都寫「自初次發現起無論如何不得延遲超過 60 個日曆日」。",
+    "must_fix 11（OFAC 內部控制漏掉申報那一項）：已補成四項（辨識、阻擋或拒絕、依規定向 OFAC 申報、保存紀錄），並以 (C) 款原文為引文。",
+    "must_fix 12（「聯邦法律第一次明文要求」被當成事實）：已改成「財政部並表示」，研究紀錄把 is_vendor_claim 設為 true，並寫明文件裡沒有另外的佐證。",
+    "must_add 1（完整日期鏈）：四個日期都寫進文章第一段與提醒 callout（署名與宣布 4/8、送存 4/9 08:45、刊登與意見期起算 4/10、意見期截止 6/9），署名欄與送存戳記兩條引文都掛 sources[0]。",
+    "must_add 2（唯一被明文排除的 BSA 條文）：已寫進第五節，包括 1010.630 與 1010.670 不適用，以及擬議條文仍留 1033.630 指向 1010.630 的矛盾；文章明說因此不斷言空殼銀行禁令適用於 PPSI。",
+    "must_add 3（行政命令編號已補上為 14294）：仍然不寫。本文沒有寫刑事罰則那一段，整段連同編號都不需要，省下的字數留給讀者更用得到的狀態與查法。",
+    "must_add 4（聯邦公報 API 鏡像了 89 則意見與 6/10 結束日）：已改寫成「鏡像讀數」記在 unverified_or_excluded 與 live_data_warnings，不再寫成「無法驗證」；文章只寫 DATES 欄的 2026-06-09，不寫件數。",
+    "must_add 5（兩個組出來的網址型式，建議 sources[0] 改用 govinfo PDF）：已採用。sources[0] 換成 https://www.govinfo.gov/content/pkg/FR-2026-04-10/pdf/2026-06963.pdf（今天 200、765,284 bytes、86 頁、第 1 頁即 18582），全文 .txt 只當交叉核對並在 sourcing_notes 標明是組出來的型式；uscode 的 granuleid 型式因今天連不上而整條移除。",
+    "must_add 6（另兩處文件內部不一致）：兩處都記進 verified_facts——紙上作業精簡法一節把第 502 部稱為另一個名稱（文章採部標題與前言的版本），以及 1010.100 的修正指示新增 (nnn) 到 (xxx) 共十一項、其中 (nnn) 與 (ooo) 為保留（前言那句逐字引文已記錄）；文章只寫重點說明的「修正四個定義、新增九個定義」，沒有自己從條文數出十一項。",
+    "must_add 7（重數字全部成立）：文章只用其中對讀者有用的幾個：91 FR 18582、86 頁、案號與 RIN、意見期 2026-06-09、定案規則發布後 12 個月、5,000 美元與 2,000 美元的對比、1 萬美元、3,000 美元、100 億美元、10 萬美元、37 萬 7,700 美元、11 萬 1,308 美元。成本、家數、SAR 件數與熱線號碼都沒有寫。",
+    "source_list_fix：四條全換過一次——sources[0] 從全文 .txt 換成 govinfo 官方 PDF，sources[3] 從 uscode 12 U.S.C. 5903 換成 FinCEN 新聞稿（原本掛在 sources[] 以外的 1 條事實現在有位子了）。文章每一句事實都指得到這四條之一：條文與前言掛 sources[0]、定義數與計畫要點掛 sources[1]、宣布日與 Bessent 引句掛 sources[2]、FinCEN 端的發布日與框架說法掛 sources[3]。唯一不掛 sources[] 的是「以案號與 RIN 查詢到查核日只有這一份文件」這句自行查核的狀態，查法寫在句子裡，端點與結果記在 live_data_warnings——這一點請站主裁示是否可留。**2026-09-17 獨立查核已處理**：sources[3] 由 FinCEN 新聞稿換成案號查詢端點，那句話因此有了來源並收窄成只講案號查詢；細節見 factcheck.edits_to_the_pack 第 1、2 條。"
+  ],
+  "hero_label": "草案，尚未生效",
+  "diagram": {
+    "title": "草案對發行人的四層要求",
+    "caption": "四層要求：列為金融機構、防洗錢計畫、申報與紀錄、制裁法遵。資料來源：FinCEN 與 OFAC 聯合草案（91 FR 18582），查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "列為金融機構",
+        "適用銀行保密法"
+      ],
+      [
+        "防洗錢計畫",
+        "四項要件加書面核准"
+      ],
+      [
+        "申報與紀錄",
+        "可疑交易五千美元"
+      ],
+      [
+        "制裁法遵",
+        "五要素、每日十萬"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-17",
+    "method": "未參與撰稿。sources[] 四條在 2026-09-17 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body：govinfo PDF 200／765,284 bytes／md5 48e7a3244420d9c34fde70cb46249ef9／86 頁，以系統 python 的 pypdf 抽出 654,880 字元；重點說明 PDF 200／214,495 bytes／md5 6b0e04d8139a56df8edb375fd591e2f7／5 頁／14,578 字元；財政部新聞稿 200／70,100 bytes（正文含 Bessent 引句與 coming days 那句）；原 sources[3] 的 FinCEN 新聞稿 200／32,582 bytes（讀得到正文，但內容是財政部稿的子集，已換掉）。比對時把連續空白壓成一個空格，不動彎引號、en dash 與 §。條文與前言逐條對回 PDF；重點說明與條文衝突處以條文為準。為了反駁而讀、但沒有寫進文章的：聯邦公報 API 的 RIN 查詢端點與 documents/2026-06963.json（兩者 200）。沒有猜任何網址或識別碼；所有請求都沒有帶 email 或個人資料。",
+    "verdict": "needs_owner",
+    "claims_checked": 96,
+    "edits_to_the_pack": [
+      "sources[3]：FinCEN 新聞稿 → 聯邦公報以案號 FINCEN-2026-0100 列出文件的查詢端點。原因是全文唯一指不到來源的句子（「以案號查詢到查核日只回這一份提案，未見定案規則」，出現在第一節、摘要、FAQ 與提醒 callout 四處）。兩則新聞稿內容高度重複，只靠被換掉那一則的句子只有「兩則新聞稿都是 4 月 8 日」這個重複日期；已把第二段的來源清單與 callout 的「兩則新聞稿」改成「財政部新聞稿」。",
+      "四處「未見定案規則」的查法：由「以案號與 RIN 在聯邦公報網站查詢」收窄成「以案號 FINCEN-2026-0100 在聯邦公報的文件查詢端點查詢」——RIN 查詢端點沒有進 sources[]，不宣稱它的結果。FAQ 1 另補上「類別是提案規則」，因為端點回的 type 欄位就是這個。",
+      "第四節合法命令的定義：補回被省略的第三個要件「依法可受司法或行政審查或上訴」，並把壓成「作成」的部分還原為「依聯邦法作成、由有管轄權法院或依法定職權的聯邦機關發出的最終有效命令」，明寫三個要件要同時具備。FAQ 3 同步補上三個要件。",
+      "第五節內部控制：(A) 由「可能被制裁禁止」改為「已經或可能被制裁禁止」，(B) 由「會違反制裁」改為「在適用範圍內…違反或將違反制裁」，並補上整體限定「以風險為基礎」。原文的限定詞位置被壓縮並列後位移了。",
+      "第二節執法政策：「已妥當建立計畫」→「已依擬議 1033.210(b) 建立計畫」，補上執法主體「FinCEN」；「但刑事責任不受影響」→「但草案說這套執法要求不影響銀行保密法下的刑事責任」（原句超出來源的範圍）。",
+      "第四節初級／次級市場：刪掉「以下是編輯設計的例子，只用來解釋制度」，改成歸因給草案（「初級與次級市場的分野是草案自己為本次規則制定界定的」）。那兩段是草案自己的定義，不是本站虛構的情境。",
+      "第五節與該節小標：「草案自己有兩處前後不一致」→「草案自己有幾處前後不一致，本文照來源並列其中兩處」；小標「還沒理清的兩處」→「還沒理清的地方」。至少五處不一致（見 verified_facts 新增那一條），「兩處」是本站的清點。",
+      "第五節「首次」那句：「財政部並表示，這是…」→「草案說…並表示 GENIUS Act 的制裁法遵計畫要求是…」。說話的是這份聯合草案而不是新聞稿（財政部新聞稿查「first time」0 次），而且原句的主體是 GENIUS Act 的要求，不是前一句的罰則。",
+      "第三節專責人員：「因內線交易、侵占、網路犯罪、洗錢、資恐或金融詐欺等重罪」→「因涉及…的重罪」。原文是封閉列舉（involving … or …），「等」會讀成開放清單。",
+      "第三節風險評估：刪掉「FinCEN 公布的」——文件只說 AML/CFT Priorities 是依 AML Act 訂出的美國政府政策優先事項，沒有寫誰公布；同段的緩釋補上來源自己的對照「而不是較低風險者」，並標明那是草案舉的做法。",
+      "第一節：刪掉「以免兩套義務重疊」。文件寫的理由是這項修正「明確 PPSI 是以發行人身分、而不是以貨幣服務業身分承擔義務」，「以免重疊」是推論。",
+      "FAQ 2：「所以它沒有點名任何一家公司或任何一種穩定幣」→「它沒有指認哪一家業者會是這種發行人（文件註腳裡確實出現過公司名與幣別代號，但那是它引用的司法部沒入案件當事人）」。文件註腳確實出現 Tether 3 次、USDT 4 次。",
+      "字數：上述補充使段落字數由 2,900 升到 3,072（超過 3,000 上限），改以刪除重複與非限定詞的敘述補回——第一節刪「不是三個機關各提一份」、第二節刪與第一節重複的「也就是擬議第 1033 部與第 1010 部修正」、第二段刪與 FAQ 重複的「也不點名任何發行人或穩定幣」、第四節縮短初級市場的舉例清單、第五節刪「不是本站的判斷」、第三節兩處語句精簡。沒有刪掉任何但書或限定詞。"
+    ],
+    "checked_and_correct": [
+      "四條 sources 今天都讀到正文，沒有擋阻頁、沒有軟性 404、沒有轉址殼。PDF 的 md5 與 bytes 與紀錄一字不差，逐句引文可用。",
+      "數字與條次逐一對回 PDF 全部成立：可疑交易 5,000 美元（條文「involves or aggregates funds or other assets of at least $5,000」）、現行 MSB 2,000 美元、30 日／再 30 日／不逾 60 個日曆日（三個都在 1033.320(b)(3) 同一句）、現金交易報告單一營業日逾 1 萬美元、授信與跨境移轉逾 1 萬美元、紀錄規則 3,000 美元以上、州級門檻不超過 100 億美元（含「generally」與「substantially similar」兩個限定，文章寫成「一般」與「實質相似」）、每日不超過 10 萬美元（502.401(a) 重大違反與 (b) 明知而違反另計）、定案規則發布後 12 個月生效、31 U.S.C. 5312(a)(2)(Y)、擬議 1033.210(b) 與 (c)、1033.240(a)(b)、1033.320、1033.630、1010.230(b)(2)、1010.630、1010.670、1010.810(b)(8)、502.201、502.401、註 111。",
+      "清點數字都有來源自己印：「四個既有定義、九個新增」與「五項關鍵要素」逐字印在重點說明；「四項要件」是擬議 1033.210(b) 自己的編號 (1)–(4)。本站自己數的只有 1022.220／1020.220 的次數，文章已標示，今天重數結果不變。",
+      "「主要聯邦支付型穩定幣監理機關是 OCC、聯準會、FDIC、NCUA」對得上「Under the GENIUS Act, the OCC, Board, FDIC, and NCUA are the primary Federal payment stablecoin regulators」，已補上「依 GENIUS Act」這層歸因。IRS 那一句的「提議」語氣成立：文件寫「FinCEN proposes delegating its examination authority to the IRS for PPSIs not examined by…」，並說 1010.810(b)(8) 不必修改。",
+      "GENIUS Act 的生效公式沒有偷渡：以詞界比對，全文「18 months」0 次、「120 days」0 次；文章也沒有出現任何換算出來的生效年份。",
+      "界線檢查：全文沒有幣價、漲跌幅、市值、流通量、交易量、資金流或報酬；唯一的金額是法定罰鍰與法規門檻。草案第 XII 節的市場規模、成本估計與家數、註 33 的占比、FATF 與司法部案件金額都沒有進文章。沒有點名任何發行人、穩定幣、交易所、錢包或分析工具商，也沒有任何比較或推薦語氣。",
+      "每個操作性句子都帶「草案／擬議／提議」；表格 caption 明寫「表中除國稅局那一列是現行條文外，都是草案擬議、尚未生效」。",
+      "免責 callout 與 crypto.md 的樣板逐字相同（含「不是投資建議」六個字），查核日 2026-09-17；本文另有一個日期提醒 callout，共兩個。",
+      "checked_on 五處一致（四條 source、研究紀錄、第二段、表格 caption、免責 callout）都是 2026-09-17，沒有因為重查而改動。",
+      "摘要四句的每個數字都在正文出現；圖解四格與 hero_label 的字串都對得上正文；FAQ 六題的答案都是純文字、沒有連結。"
+    ],
+    "left_for_the_owner": [
+      "sources[3] 現在是一個會變的查詢端點，它的 title 裡寫著「2026 年 9 月 17 日查詢回 1 筆」。出刊或翻譯當天要重跑，若 count 變了，四處「未見定案規則」與這個 title 都要一起改。站主若不接受把活端點放進 sources[]，替代做法是把那四句話整組刪掉（本文不需要它們才能成立），但不可以留一句指不到來源的「未見」。",
+      "第一節／FAQ 5 照來源並列 1022.220(a)(2) 與 1020.220(a)(2)。修正清單 must_fix 2 要求直接改成 1020.220，BRIEF.md 型態 7 與跨篇型態 4 要求照印來源的錯字並說明；本文採 BRIEF.md，兩個都印。這個衝突請站主裁示並按 AGENTS.md 記進 tasks/。",
+      "擬議 502.301 把「明知」定義成「實際知悉或應當知悉」。文章寫「明知而違反」而沒有帶這個定義，中文的「明知」會被讀成只限實際知悉。要補進正文需要約 40 字，段落字數已在 2,998／3,000，得從別處等量精簡——這是編輯取捨，查核代理不代決定。引文已記進 verified_facts。",
+      "第四節說 1033.240(a) 的能力「要涵蓋第三方進行的交易」，但條文是「經由發行人進行的交易，以及第三方進行的交易」兩半。文章只寫了較值得寫的第二半；要補完同樣受字數限制。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-17",
+      "why": "第一輪改了 13 處，超過十處門檻，依規定送第二輪。第二輪沒有參與撰稿也沒有參與第一輪。",
+      "method": "來源比對層沒有整個重做（第一輪已逐條驗過引文），但四條 sources 今天全部重抓確認仍讀到正文：govinfo PDF 200／765,284 bytes／md5 48e7a3244420d9c34fde70cb46249ef9／pypdf 86 頁（本輪抽出 654,795 字元，與第一輪記的 654,880 差 85 字元，屬 pypdf 版本差異，md5 與 bytes 一字不差，逐句引文不受影響）；重點說明 PDF 200／214,495 bytes／md5 6b0e04d8139a56df8edb375fd591e2f7／5 頁；財政部新聞稿 200／70,109 bytes（<title> 正確，含 April 8, 2026、Bessent 引句與 coming days，first time 詞界比對 0 次）；案號查詢端點 200／2,575 bytes／count 1／type「Proposed Rule」。重點放在：第一輪改寫的 13 處逐一對回條文與前言、第一輪為了收字數刪掉的 6 處是否掉了定位或條件、三組清點數字的來源是否自己印出、以及站主裁示的四件事。所有請求都用 User-Agent Mokaair-editorial，沒有帶 email 或個人資料。",
+      "verdict": "ok",
+      "claims_rechecked": 41,
+      "items_handled": "13 項：12 處改動、1 項依裁示維持現狀（1022.220 對 1020.220）。12 處裡 3 處來自站主裁示，9 處是本輪自己找到的。",
+      "edits_to_the_pack": [
+        "站主裁示 3：正文第五節的罰則句補進「明知」的定義——「明知（草案定義為實際知悉或應當知悉）而違反者，另按日再處不超過 10 萬美元」。依擬議 502.301，避免中文的「明知」被讀成只限實際知悉。",
+        "站主裁示 4：正文第四節把擬議 1033.240(a) 的涵蓋範圍補成兩半——「而且要涵蓋在發行人處或經由發行人進行的交易，以及第三方進行、包括導致與發行人智慧合約互動的交易」。條文的三個介詞是 by, at, or through，中文壓成「在發行人處或經由發行人」，逐字原文已記進 verified_facts。",
+        "站主裁示 1：正文、摘要、FAQ 1、FAQ 6、提醒 callout、description 與 sources[3] 的 title 裡的「文件查詢端點」全部改成「聯邦公報的官方文件查詢」，FAQ 6 的「一個 count 與每份文件的 type」改成「筆數與每份文件的類別」。網址、查法與查核日都沒有動；sources[3] 的 title 保留「2026 年 9 月 17 日查詢回 1 筆」並把類別寫成「提案規則 Proposed Rule」。",
+        "站主裁示 2（1022.220 對 1020.220）：維持現狀，兩個都印並說明出入。今天對同一份 PDF 第三次重數，結果仍是 1022.220 一次、1020.220 四次。",
+        "第二節「檢查權則委給檢查同一實體安全性與穩健性的聯邦機關」補一個「擬」字。原句是這份草案才要做的事（原文 FinCEN proposes delegating…），沒有定位詞會讀成現行制度。這是本輪唯一找到缺定位的操作性句子。",
+        "第三節標題與摘要第二句把「四項要件」改寫成「擬議條文編號的四項要件」。四是擬議 1033.210(b) 自己的最後一個款號（(b) 以「; and (4)」收尾），不是本站清點；改寫是為了讓數字的來源在文章表面上看得見。",
+        "摘要第二句的核准主體補回被漏掉的第三個選項：「經董事會或適當高階管理階層核准」→「經董事會、同等治理機關或適當高階管理階層核准」。擬議 1033.210(d) 是三選一，摘要原本只列兩個，等於把要求寫得比來源嚴。正文第三段本來就是三個都寫。",
+        "摘要第三句把「訂五項制裁法遵要素」改成「訂五項最低制裁法遵要素」，並把可疑交易門檻補成「涉及或累計至少 5,000 美元」。擬議 502.201(b) 的字是「至少應包括」，1033.320(a)(2) 的字是「涉及或累計至少」——摘要原本把兩個限定都省掉了。",
+        "FAQ 3 的第一句補回被省略的限定：「阻擋、凍結與拒絕特定或不許交易」→「阻擋、凍結與拒絕違反聯邦或州法令的特定或不許交易」。條文的 that violate Federal or State laws, rules, or regulations 是限定，FAQ 原本少了它，讀起來像任何交易都要能擋。正文本來就有這個限定。",
+        "提醒 callout 的「兩位署長」改成「兩個機關主管」。署名的是 FinCEN 局長與 OFAC 主任，兩個都不是「署長」；另把「戳記是」改成「戳記印的是」，讓那個時刻明確是文件自己印的戳記（原文 [FR Doc. 2026–06963 Filed 4–9–26; 8:45 am]），不是本站換算過的台北時間。",
+        "第一節刪掉「所以」這個因果連接：「兩個提案機關都在財政部底下，所以這是一份聯合提案」→「…，這是一份聯合提案」。「是一份聯合提案」有來源（ACTION 欄逐字「Joint proposed rule.」），但「因為都在財政部底下所以是聯合提案」是本站的推論。",
+        "第四節初級市場的舉例清單由五個動詞縮成三個（發行、贖回與銷毀等），並把「草案自己為本次規則制定界定的」的「自己」拿掉。原文是 such as 起頭的舉例、文章保留「等」，開放清單仍是開放清單；歸因仍在「草案…界定的」。",
+        "字數平衡：上面兩處補充（+16、+19）與一個「擬」字（+1）共 +36，從純敘述處精簡同量——第一段兩個「是／則是」、第二段兩個「的」、第四節「擬議 1033.240 把兩件事並列。」這個骨架句、第五節「申報方面，」與「最後，」、第三節「的發行人，」→「者」與「在被要求時」→「應要求」、「要套用」→「適用」、「典型是」→「多是」、「接著要」→「接著」、「所以…會適用」→「因此…適用」。沒有刪掉任何但書、限定詞或條件，也沒有刪掉任何事實。段落字數 2,999 → 2,994。"
+      ],
+      "rechecked_and_correct": [
+        "第一輪 13 處改寫全部逐一對回條文或前言，沒有一處再收窄、放大或位移限定詞。逐項：合法命令定義的三個要件以「; and」相連、要同時具備，且前段的「依聯邦法作成或發布」「最終且有效」都在（1010.100(rrr)）；502.201(b)(3)(i) 的 (A)「is or may be prohibited」與 (B)「Blocks or rejects, as applicable, … violates or would violate」兩個限定都在文章裡，整體限定「風險為基礎」也在；1033.221 執法政策那句的「除了重大或系統性未實施計畫」對得上 Except with respect to a significant or systemic failure，「不影響銀行保密法下的刑事責任」對得上前言與擬議 1033.221(b)(3) 兩處都帶的 under the BSA／under the Bank Secrecy Act 限定；專責人員的失格事由是封閉列舉（a felony offense involving insider trading, embezzlement, cybercrime, money laundering, financing of terrorism, or financial fraud），文章寫「因涉及…的重罪」沒有「等」；「第一次明文要求」那句的主語確實是 GENIUS Act 的制裁法遵計畫要求、說話的是這份聯合草案（印在第 VII 節前言），文章的「草案說…並表示…」歸因正確，句尾「那是機關對自家法律新穎性的自述」留著。",
+        "第一輪為收字數刪掉的 6 處逐段覆核，沒有任何操作性句子掉了「草案／擬議／提議」的定位，也沒有掉條件。唯一的缺口是第二節的檢查權委任那一句（本輪已補「擬」）。第一節「分工上，FinCEN 管銀行保密法的計畫、申報與紀錄，OFAC 管制裁法遵計畫」沒有加定位詞是刻意的：那是兩個機關現行的職權分界（FinCEN 主管銀行保密法、OFAC 主管制裁），不是這份草案才創設的。",
+        "三組清點數字逐一確認來源自己印：「四個既有定義、九個新增」——重點說明逐字「amend four existing definitions and add nine new definitions to 31 CFR part 1010.」（聯邦公報全文用的是 nine new terms，文章歸因給重點說明所以照重點說明的字）；「五項最低要素」——重點說明逐字「the five key elements described below」，條文 502.201(b) 逐字「It shall include, at a minimum:」再接 (1)–(5)；「四項要件」——沒有任何來源把它寫成 four，四是擬議 1033.210(b) 自己的最後一個款號，文章已改寫成「擬議條文編號的四項要件」把這件事寫在表面。第二節標題的「四個審慎監理機關」同理掛在原文的封閉並列「the OCC, Board, FDIC, and NCUA」。",
+        "摘要四句、FAQ 六題、兩個 callout、表格五列與 caption、圖解 caption、研究紀錄 diagram 四格、hero_label、description、title 全部再通讀一次。摘要與圖上的每個數字都在正文或表格、callout、FAQ 裡出現（自檢的 summary-number 與 artwork-number 兩條規則都過）；圖解四格與 hero_label 沒有動，字串仍對得上正文；免責 callout 與 crypto.md 樣板逐字元相同（比對 True），含「不是投資建議」六個字。",
+        "界線再掃一次：全文沒有幣價、漲跌幅、市值、流通量、交易量、資金流、殖利率、質押報酬或空投（唯一的「漲跌」二字在免責樣板自己的句子裡）；沒有任何發行人、穩定幣、交易所、錢包或分析工具商的名稱（Tether／USDT／Circle／USDC／Coinbase／Binance／Chainalysis／Elliptic 在內容包裡各 0 次，註腳裡的司法部案件當事人名稱沒有進文章）；沒有市場規模、成本或家數；GENIUS Act 的 18 個月／120 天生效公式沒有出現，文章只寫草案自己的「定案規則發布後 12 個月」。",
+        "checked_on 沒有動：四條 source、研究紀錄、第二段、表格 caption、免責 callout 五處仍一致為 2026-09-17。hero.alt 沒有查也沒有改。"
+      ],
+      "left_for_the_owner": [
+        "sources[3] 仍是會變的查詢端點（站主已裁示可留）。今天第二次重跑仍是 count 1、類別提案規則；出刊或翻譯當天要再跑一次，若 count 變了，四處「未見定案規則」與 sources[3] 的 title 要一起改。",
+        "1022.220 對 1020.220 的規格衝突依裁示維持現狀（兩個都印並說明），這個衝突由協調者記進 tasks/，第二輪沒有處理。",
+        "可選的復原：第一輪把第一節的「以免兩套義務重疊」當成推論刪掉，但文件自己印了「To limit overlapping obligations and confusion, FinCEN proposes affirmatively carving out PPSIs from the definition of MSB.」。現在的句子只陳述排除這件事，沒有寫錯；要把理由寫回去大約需要 15 字，段落字數是 2,994／3,000，站主可自行決定。引文已記進 verified_facts。",
+        "兩處刻意保留的壓縮，都是把來源說得比較窄而不是比較寬，字數放寬時可以補足：擬議 1033.210(b)(3)(ii) 與 (d)、(e) 的「FinCEN and its designee／FinCEN or its designee」在文章裡都寫成「FinCEN」（少了「及其受委機關」，各約 6 字）；擬議 1033.240(a) 的「by, at, or through」壓成「在發行人處或經由發行人」。另外擬議 1010.100(rrr) 涵蓋的是「令狀、程序、命令、規則、判決、指令或其他要求」這個開放清單，文章以「最終有效命令」一詞代表。",
+        "第五節「第一次明文要求」那句省掉了原文的讓步子句（「儘管 IEEPA 與其他法源授權總統得調查、阻擋、規範或禁止受美國管轄財產的交易與往來」）。主句不因此走樣，而且文章已把整句標成機關自述；要更保守可以把讓步子句補上，同樣受字數限制。"
+      ]
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "A proposal, not yet in effect",
+      "diagram": {
+        "title": "Four layers the proposal would set",
+        "caption": "Four layers of requirements: named a financial institution, AML program, reports and records, sanctions compliance. Source: the joint FinCEN and OFAC proposal (91 FR 18582), check date September 17, 2026.",
+        "nodes": [
+          [
+            "A financial institution",
+            "Under the Bank Secrecy Act"
+          ],
+          [
+            "AML program",
+            "Four requirements, in writing"
+          ],
+          [
+            "Reports and records",
+            "SAR threshold of $5,000"
+          ],
+          [
+            "Sanctions compliance",
+            "Five elements, $100,000 a day"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "草案，尚未生效",
+      "diagram": {
+        "title": "草案对发行人的四层要求",
+        "caption": "四层要求：列为金融机构、反洗钱计划、报告与记录、制裁合规。资料来源：FinCEN 与 OFAC 联合草案（91 FR 18582），核查日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "列为金融机构",
+            "适用《银行保密法》"
+          ],
+          [
+            "反洗钱计划",
+            "四项要件加书面批准"
+          ],
+          [
+            "报告与记录",
+            "可疑交易五千美元"
+          ],
+          [
+            "制裁合规",
+            "五要素、每日十万"
+          ]
+        ]
+      }
+    }
+  },
+  "translation_status": "zh-TW、en、zh-CN 已併入內容包；ja 與 ko 尚未翻譯（2026-09-17 因帳號用量上限中斷）。補齊後要在這裡加 translations.ja／translations.ko，再重跑 build_assets.py 與 check_article.py --full --assets。"
+}

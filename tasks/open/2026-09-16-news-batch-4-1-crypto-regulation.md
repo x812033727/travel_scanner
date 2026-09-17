@@ -1,11 +1,11 @@
 ---
 id: 2026-09-16-news-batch-4-1-crypto-regulation
 title: News batch 4.1: crypto regulation, technology and industry news
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-opus-5
-claimed_at: 2026-09-17T03:43:21Z
+owner:
+claimed_at:
 created_at: 2026-09-16T13:21:39Z
 completed_at:
 branch: claude/brave-hopper-8ezxba
@@ -132,3 +132,32 @@ uv run python -m app.guides.pack_cli lint --kind life    # 0 error
 uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py
 npm run check:tasks
 ```
+
+## 進度與交接（2026-09-17，claude-fable-5-1 接手 PR #544 後）
+
+完整交接在 [`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md)，這裡只記票的狀態。
+
+- [x] 十一篇 zh-TW 全部撰稿並經獨立查核（C4、C7、C9 做了第二輪）；報告在 `docs/news-2026-batch-4/factcheck-draft/`。
+- [x] 十篇五語併入、主圖與圖解五語產出（C1–C6、C8–C11）。
+- [x] 索引 `crypto-news-2026-index` 的 zh-TW（另由獨立代理拿十一篇逐句核對，14 條發現全數套用）與 en。
+- [ ] **C7 `crypto-news-stablecoin-aml-20260410` 缺 ja、ko**（zh-TW、en、zh-CN 已併入）。
+- [ ] **索引缺 ja、ko、zh-CN**；三個標題已定案、不可更動（研究紀錄的 `planned_titles`）。
+      補齊前十一篇的 `check_article.py --full` 都會多三條索引連結的 FAIL，CI 不受影響。
+- [ ] **逐語審稿整個階段還沒做**（`docs/news-2026-batch-4/agents/REVIEW.md`，修正由 `apply_corrections.py` 套用）。
+- [ ] `pack_cli relink`／`autolink`（內容定稿後才跑）。
+- [ ] 全垂直的 `manifest.json` 與 contact sheet（`build_assets.py crypto` 不帶 `--slug` 跑一次，並由人逐張看過）。
+- [ ] 站主逐篇驗收（YMYL：有沒有變相推薦標的、風險講得夠不夠）。
+- [ ] 匯入與發布：先解 `2026-09-14-sitemap-split-before-1000-rows`（這批是 60 列，線上已約 980／1,000）。
+
+停手的原因是帳號用量上限（Opus 子代理的週上限 2026-09-19 07:00 台北時間重置），不是卡在技術問題，所以 `release`。
+
+### 規格衝突（`BRIEF.md` 要求記進 tasks/）
+
+1. `corrections-crypto.md` 寫查核日一律填 2026-09-16；`BRIEF.md` 寫實際查證當天。C2–C11 當天重抓重讀，用 **2026-09-17**。
+2. `corrections-crypto.md` 的 stablecoin-aml must_fix 2 要把 1022.220 改成 1020.220、EBA must_fix 8 要補 `and the` 的空格；
+   `BRIEF.md` 型態 7 要求照印來源並說明。照 BRIEF：兩種寫法並列、不代來源訂正（EBA 那個空格三種抽文法都印 `andthe`，是來源排版）。
+3. `corrections-crypto.md` 傾向把 FDIC 的事件日訂為理事會通過日 04-07；站主圈選的 slug 是 20260410。
+   五份美國聯邦規則一律以**聯邦公報刊登日**為事件日，另一個日期明寫在文章裡。
+4. 撰稿規格原本寫「生效日一律寫公式」；FDIC 的聯邦公報文件自己印了 `January 18, 2027 … if earlier`。
+   改成「照來源印的寫，來源沒印才只寫公式，不可自己換算」。
+5. `RELATED`：C1 的第二個連結從 `epayment-vs-ewallet-taiwan`（只有 zh-TW）改成 MiCA 那篇，四個譯文才有標題可連。
