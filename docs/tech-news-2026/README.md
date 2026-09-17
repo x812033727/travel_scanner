@@ -5,7 +5,7 @@
 
 > **現況（2026-09-18）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md) 第 1b 節。
 > 十三篇加索引都是五語、都經過兩輪獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet、`related` 與 relink 都做完了；
-> **還沒合併、還沒匯入發布，等站主驗收與指示。** 發布前要重開的活頁面也列在那一節。
+> **2026-09-18 已合併（PR #546）並匯入發布**（14 篇 × 5 語系）；日後修訂與要重查的活資料列在那一節。
 > 固定值：`topics` 是 `["tech", "tech-news"]`（需要時加 `gadgets`／`software`），主色 BLUE，眉標 `MOKAAIR  /  TECH NEWS`，
 > `display_order` 十三篇 300–312、索引 299；**沒有免責 callout**。索引用 [`build_tech_index.py`](../news-2026-batch-4/build_tech_index.py) 產生 zh-TW。
 
@@ -69,11 +69,11 @@ uv run python ../../docs/news-2026-batch-4/update_index.py tech
 | 索引 | `tech-news-2026-index`（兩個 link 的第一個指向它） |
 | hero 眉標 | `MOKAAIR  /  TECH NEWS` |
 | 主色 | `#2F6F9F`（BLUE，畫冊六色之一） |
-| `display_order` | 還沒指定號段；`check_article.py` 只要求不是預設的 100 |
+| `display_order` | 300 起（`verticals.py` 的 `order_base`）：十三篇依 `check_article.py` 的 `RELATED` 順序是 300–312，索引是 299 |
 | 免責 callout | 沒有。一篇只有它自己的提醒 `callout`（`tech.md`） |
 
 
 ## 票
 
-[`tasks/open/2026-09-16-news-batch-4-2-non-ai.md`](../../tasks/open/2026-09-16-news-batch-4-2-non-ai.md)（重要新聞）與
+[`tasks/done/2026-09-16-news-batch-4-2-non-ai.md`](../../tasks/done/2026-09-16-news-batch-4-2-non-ai.md)（重要新聞，2026-09-18 發布後結案）與
 [`tasks/open/2026-09-16-news-batch-4-4-the-8.md`](../../tasks/open/2026-09-16-news-batch-4-4-the-8.md)（8/1 起的次要新聞）。

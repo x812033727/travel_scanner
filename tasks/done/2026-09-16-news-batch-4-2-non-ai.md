@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-news-batch-4-2-non-ai
 title: News batch 4.2: non-AI technology news
-status: review
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-17T14:57:20Z
 created_at: 2026-09-16T13:21:40Z
-completed_at:
+completed_at: 2026-09-17T22:13:52Z
 branch: claude/news-batch-4-2-tech
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
@@ -135,7 +135,7 @@ uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.
 npm run check:tasks
 ```
 
-## 狀態（2026-09-18）：內容完成，等站主驗收、合併與發布
+## 狀態（2026-09-18）：已合併（PR #546）並匯入發布，結案
 
 站主 2026-09-17 說「好 開始」後開工，分支 `claude/news-batch-4-2-tech`。完整交接（每篇的查核與審稿數字、留給站主決定的事、
 這一輪學到的）在 [`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md) 第 1b、3、4 節，這裡只記票的狀態。
@@ -152,6 +152,12 @@ Windows 上出圖用 `CHROMIUM_BIN` 指到 Playwright 的 headless shell 即可�
 - [x] `related`（延伸閱讀）、`pack_cli relink`、全垂直出圖與 contact sheet、`manifest.json`。
 - [x] 驗證：十三篇 `check_article.py --full --assets` OK、索引五語 schema＋lint OK、`pack_cli lint --kind life` 0 error、
       `tests/test_guides_content_pack.py`＋`test_guides_content_links.py`＋`test_guides_pack_ingest.py` 通過、`npm run check:tasks`。
-- [ ] 站主驗收 → 合併 PR（**等站主指示，不要自己合併**）。
-- [ ] 部署 → `guides-import --slug` ×14 同一次匯入發布（**等站主指示**；先 `--dry-run --publish` 核對計畫只有這 14 個 slug）→ 正式站 70 個網址驗證 → 這張票轉 done。
-      發布當天先重開 HANDOVER 第 1b 節列的活頁面（EUR-Lex 那個網址還沒有人親眼確認打得開）。
+- [x] 合併：站主 2026-09-18（台北）明確選了「合併並發布」；PR #546 以 `--match-head-commit 17523605…` squash 為 `88e4cd1a`，合併後 main 的樹與 PR head 逐位元相同。
+- [x] 發布前重開活頁面：EUR-Lex 的 ELI 網址 2026-09-17T21:56Z 回 200／974,702 bytes，讀到 Article 14 與「11 September 2026」；
+      帶 `Accept-Language: zh-TW` 同樣 200 HTML，舊的 CELLAR 網址同條件回 404。
+- [x] 部署：部署前查過沒有 hold 檔、沒有進行中的分段發布、沒有 migration，待部署的只有 #545、#546；
+      `/root/deploy-travel-scanner.sh`（`deploy_20260917_220710`，22:07–22:10 UTC）health 3/3、alembic `0080_crypto_and_tech_topics`、首頁 200。
+- [x] 匯入發布：`guides-import --slug` ×14。腳本先跑 `--dry-run --publish` 核對計畫＝14 篇／70 個 create／沒有別的 slug 才 `--publish`；
+      結果 `taxonomy_updated` 13 篇（延伸閱讀）、`failed: null`。
+- [x] 正式站驗證（User-Agent `Mokaair-editorial`）：70 個網址全部 200、沒有 noindex、有 `#article-summary`、JSON-LD 有 `FAQPage` 與 `abstract`、
+      canonical 正確、主圖 70 張都 200；五語 sitemap 70／70 收錄；索引頁連到 13 篇，Vera Rubin 那篇的延伸閱讀看得到 `ai-news-nvidia-rubin-20260105`。
