@@ -5,7 +5,7 @@
 
 > **現況與未完成事項（2026-09-17）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md)。
 > 十一篇加索引都是五語、都經過獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet 與 relink 都做完了；
-> 還沒匯入、還沒發布，等站主逐篇驗收（YMYL）與出刊當天的活資料重查。
+> **2026-09-17 已匯入發布**（12 篇 × 5 語系）；日後修訂照 HANDOVER 2.1–2.3。
 
 ## 這個目錄放什麼
 
@@ -75,6 +75,6 @@ uv run python ../../docs/news-2026-batch-4/update_index.py crypto
 
 ## 票
 
-[`tasks/open/2026-09-16-news-batch-4-1-crypto-regulation.md`](../../tasks/open/2026-09-16-news-batch-4-1-crypto-regulation.md)（重要新聞）與
+[`tasks/done/2026-09-16-news-batch-4-1-crypto-regulation.md`](../../tasks/done/2026-09-16-news-batch-4-1-crypto-regulation.md)（重要新聞，2026-09-17 發布後結案）與
 [`tasks/open/2026-09-16-news-batch-4-4-the-8.md`](../../tasks/open/2026-09-16-news-batch-4-4-the-8.md)（8/1 起的次要新聞）。
-認領前先看 4.1 那張票的「認領之前還缺兩件事」。
+
