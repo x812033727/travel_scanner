@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-news-date-field-and-news-list
 title: "News date field; news shown as a dated list, newest 20 on the lifestyle hub"
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-16T12:26:15Z
 created_at: 2026-09-16T10:05:00Z
-completed_at:
+completed_at: 2026-09-16T23:54:09Z
 branch: claude/news-date-list
 depends_on: []
 scope:
@@ -153,3 +153,15 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
 - 本機完整 API 測試 3,873 通過；`test_guides_autolink.py` 與 `test_warning_codes.py` 在 Windows 預設編碼下會紅，
   `PYTHONUTF8=1` 重跑就過，CI 是綠的。
 
+2026-09-16 23:52 UTC 部署 `406ce742`（含 #537、#536 的 `0080_crypto_and_tech_topics`；對方已把它改接在
+`0079_guide_news_date` 之後，alembic 單一 head `0080`）。部署前自動備份 `travel_scanner_predeploy_20260916_234901.dump`。
+以 `--slug` 限定匯入 38 篇、不帶 `--publish`：dry-run 38 篇 taxonomy `update`、190 個語系版本 `unchanged`、0 新建；
+套用 taxonomy_updated 38、published 0、failed 無。
+
+正式站驗證（直接打容器內的 web 與 API）：`sort=news` 42 篇，38 篇有日期且由新到舊，4 篇常青文全在最後；
+`/zh-TW/life` 新聞區塊 20 條全有日期、由新到舊、沒有主題描述句、沒有卡片；`/zh-TW/life/topics/ai-news`
+一條一行、沒有排序切換，第 2 頁 18 條（14 條有日期、4 篇常青文在最後）；`/topics/ai-terms` 仍是卡片與排序切換；
+`/guides/howto?sort=news` 退回卡片。截圖：桌機 1280 一行日期＋標題；手機 390 日期在上、標題在下，
+`scrollWidth` 390、連結點擊高度 44px。
+
+#540 帶上線的 `ai-model-comparison-table-2026` 內容包沒有匯入 —— 那張票寫明匯入時機由站主決定。
