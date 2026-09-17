@@ -11,9 +11,13 @@
   "news_date": "2026-09-14",
   "featured": false,
   "display_order": 310,
+  "related": [
+    "tech-news-nvidia-vera-rubin-20260915",
+    "tech-news-nvidia-mediatek-20260831"
+  ],
   "locales": {
     "zh-TW": {
-      "title": "NVIDIA 開源 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
+      "title": "NVIDIA 為 CUDA-Q 開源平台新增 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
       "description": "2026 年 9 月 14 日，NVIDIA 宣布為開源的 CUDA-Q 平台新增 CUDA-Q Logical，這是一個協調層，用來幫助研究者估算容錯量子運算應用程式需要多少硬體，而不是新的量子電腦。本文依 NVIDIA 新聞稿與技術文件，說明這個工具能做與不能做的事、新聞稿和技術文件用詞的落差，以及桑迪亞國家實驗室開發的跨平台基準 QUOPS。查核日 2026 年 9 月 17 日。",
       "hero": {
         "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero.jpg",
@@ -197,14 +201,26 @@
           "text": "NVIDIA 這次的新聞稿只說 CUDA-Q Logical「現已透過 GitHub 提供」，沒有提到價格、地區或方案，全文也沒有出現 preview 這個字；這些限定詞都寫在 NVIDIA 自己的技術文件裡：頁面標示為預覽版、API 與行為都可能在之後的版本大幅變動、CUDA-Q 0.16.0 整合的是 CUDA-Q Logical 0.1.1 版。本文提到的每一項規格與說法，都各自標明出自新聞稿還是技術文件，沒有來源印出的數字或期程一律不寫。想看目前的狀態，可以自行到 NVIDIA CUDA-Q 的官方技術文件查對應版本的頁面；本文查核日為 2026 年 9 月 17 日。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NVIDIA AI Infra Summit 談電力效率：Vera Rubin 與 DSX 新增了什麼",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-nvidia-vera-rubin-20260915"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA AI Infra Summit 談電力效率：Vera Rubin 與 DSX 新增了什麼",
+              "kind": "life",
+              "slug": "tech-news-nvidia-vera-rubin-20260915"
+            }
+          ]
         }
       ],
       "sources": [
@@ -231,7 +247,7 @@
       ]
     },
     "en": {
-      "title": "NVIDIA Open-Sources CUDA-Q Logical: A Resource Estimator, Not a Quantum Computer",
+      "title": "NVIDIA Adds CUDA-Q Logical to Its Open Source CUDA-Q Platform: A Resource Estimator, Not a Quantum Computer",
       "description": "On September 14, 2026, NVIDIA announced CUDA-Q Logical, an orchestration layer for its open-source CUDA-Q platform that helps researchers estimate the hardware a fault-tolerant quantum application would need, not a new quantum computer. Based on NVIDIA's press release and technical documentation, this article explains what the tool can and cannot do, where the two sources differ, and QUOPS, the cross-platform benchmark built by Sandia National Laboratories. Checked September 17, 2026.",
       "hero": {
         "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-en.jpg",
@@ -274,7 +290,7 @@
         },
         {
           "type": "paragraph",
-          "text": "NVIDIA explains that developing applications for such systems is “a tedious, time-consuming codesign challenge: A change to an algorithm, error-correction code, hardware architecture or other QPU component can significantly change the resources needed to run any given application.” With CUDA-Q Logical, NVIDIA says, “researchers can now design and orchestrate the many components required for fault-tolerant quantum computing applications, easily switching between options to identify optimal system configurations for performance with logical qubits.” Timothy Costa, vice president and general manager of quantum at NVIDIA, said quantum computing “is maturing into an era of logical qubits,” and that the addition of CUDA-Q Logical is “drastically shortening the timeline to useful quantum-GPU supercomputing” — without attaching a specific year or timeframe."
+          "text": "NVIDIA explains that developing applications for fault-tolerant systems is “a tedious, time-consuming codesign challenge: A change to an algorithm, error-correction code, hardware architecture or other QPU component can significantly change the resources needed to run any given application.” With CUDA-Q Logical, NVIDIA says, “researchers can now design and orchestrate the many components required for fault-tolerant quantum computing applications, easily switching between options to identify optimal system configurations for performance with logical qubits.” Timothy Costa, vice president and general manager of quantum at NVIDIA, said quantum computing “is maturing into an era of logical qubits,” and that the addition of CUDA-Q Logical is “drastically shortening the timeline to useful quantum-GPU supercomputing” — without attaching a specific year or timeframe."
         },
         {
           "type": "paragraph",
@@ -415,14 +431,26 @@
           "text": "NVIDIA's press release only says CUDA-Q Logical “is now available through GitHub,” with no mention of price, region or plan, and the word “preview” does not appear anywhere in it. Those qualifiers are all in NVIDIA's own technical documentation: the page is labeled a preview release, the API and behavior may change substantially in later versions, and CUDA-Q 0.16.0 integrates CUDA-Q Logical version 0.1.1. Every specification and claim in this article is marked as coming from either the press release or the documentation, and any number or timeframe not printed in a source is left out. To check the current status yourself, visit NVIDIA CUDA-Q's own technical documentation for the corresponding version's page; this article was checked on September 17, 2026."
         },
         {
-          "type": "link",
-          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
-          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NVIDIA's AI Infra Summit Power Efficiency Talk: What's New With Vera Rubin and DSX",
-          "url": "https://mokaair.com/en/life/tech-news-nvidia-vera-rubin-20260915"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA's AI Infra Summit Power Efficiency Talk: What's New With Vera Rubin and DSX",
+              "kind": "life",
+              "slug": "tech-news-nvidia-vera-rubin-20260915"
+            }
+          ]
         }
       ],
       "sources": [
@@ -449,8 +477,8 @@
       ]
     },
     "ja": {
-      "title": "NVIDIA、CUDA-Q Logicalをオープンソース化――誤り耐性量子コンピュータの規模を見積もるツール、量子コンピュータ本体ではない",
-      "description": "2026年9月14日、NVIDIAはオープンソースのCUDA-Qプラットフォームに新しいオーケストレーション層CUDA-Q Logicalを追加すると発表しました。これは研究者が誤り耐性量子コンピューティング向けアプリケーションに必要なハードウェア量を見積もるのを助けるものであり、新しい量子コンピュータではありません。本記事はNVIDIAのプレスリリースと技術文書に基づき、このツールにできることとできないこと、両者の記述の食い違い、そしてサンディア国立研究所が開発したクロスプラットフォームベンチマークQUOPSについて説明します。査読日は2026年9月17日です。",
+      "title": "NVIDIA、オープンソースのCUDA-QにCUDA-Q Logicalを追加――誤り耐性量子コンピュータの規模を見積もるツール、量子コンピュータ本体ではない",
+      "description": "2026年9月14日、NVIDIAはオープンソースのCUDA-Qプラットフォームに新しいオーケストレーション層CUDA-Q Logicalを追加すると発表しました。これは研究者が誤り耐性量子コンピューティング向けアプリケーションに必要なハードウェア量を見積もるのを助けるものであり、新しい量子コンピュータではありません。本記事はNVIDIAのプレスリリースと技術文書に基づき、このツールにできることとできないこと、両者の記述の食い違い、そしてサンディア国立研究所が開発したクロスプラットフォームベンチマークQUOPSについて説明します。確認日は2026年9月17日です。",
       "hero": {
         "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-ja.jpg",
         "alt": "オリジナルイラスト：左側の破線の枠に小さな丸が並び、一部は破線の輪郭で描かれ、誤りが起きやすい物理量子ビットを表す。矢印は整った同心円の大きな丸を指し、一つの論理量子ビットを表す。右側には文書があり、下に目盛り付きの定規が横たわり、実際に稼働する機械ではなく見積もりのためのツールであることを表す",
@@ -469,14 +497,14 @@
         },
         {
           "type": "paragraph",
-          "text": "本記事は2026年9月17日に、NVIDIA Newsroomのプレスリリース全文と、CUDA-Q技術文書の3ページ――CUDA-Q Logicalの概要ページ、Capabilities and status（機能と現状）ページ、リリースノートページ――を突き合わせて査読しました。当サイトはこのソフトウェアをインストールしたり操作したりしておらず、実地の検証を行っておりません。購入やアップグレード、比較の助言も行いません。以下の記述にはそれぞれ、プレスリリースと技術文書のどちらに基づくかを明記しています。"
+          "text": "本記事は2026年9月17日に、NVIDIA Newsroomのプレスリリース全文と、CUDA-Q技術文書の3ページ――CUDA-Q Logicalの概要ページ、Capabilities and status（機能と現状）ページ、リリースノートページ――を突き合わせて確認しました。当サイトはこのソフトウェアをインストールしたり操作したりしておらず、実地の検証を行っておりません。購入やアップグレード、比較の助言も行いません。以下の記述にはそれぞれ、プレスリリースと技術文書のどちらに基づくかを明記しています。"
         },
         {
           "type": "summary",
           "items": [
             "2026年9月14日、NVIDIAはオープンソースのCUDA-Qプラットフォームに新しいオーケストレーション層CUDA-Q Logicalを追加すると発表しました。研究者が誤り耐性量子コンピューティング向けアプリケーションを設計し、必要なハードウェア量を見積もるのを助けるもので、新しい量子コンピュータではありません。",
             "NVIDIAの技術文書はCUDA-Q Logicalを誤り耐性量子コンピューティングのための資源見積もりツールと定義し、実機への物理的なスケジュール送信も、物理シミュレーションの実行も行わないと明記していますが、これらの説明はプレスリリースには一切登場しません。",
-            "NVIDIAによれば、Iceberg QuantumはこのツールでDiraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化し、論理量子ビット1,000個をわずか物理量子ビット150,000個で作れると見積もりました。これはDiraq自身の従来の見積もりよりおよそ10分の1少ない数字ですが、あくまでモデルによる見積もりであり、実際に作られたハードウェアではありません。",
+            "NVIDIAによれば、Iceberg QuantumはこのツールでDiraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化し、論理量子ビット1,000個をわずか物理量子ビット150,000個で作れると見積もりました。これはDiraq自身の従来の見積もりのおよそ10分の1にあたる数字ですが、あくまでモデルによる見積もりであり、実際に作られたハードウェアではありません。",
             "発表で紹介されたQUOPSは、サンディア国立研究所が開発した独立系のクロスプラットフォームベンチマークであり、NVIDIA自身のベンチマークではありません。発表本文が書いているのは、NVIDIA CUDA-Q上でQUOPSのリファレンス実装を利用できるということです。",
             "技術文書はCUDA-Q Logicalをプレビュー版と位置づけ、APIや挙動、文書の内容が今後のバージョンで大幅に変わり得ると説明しています。リリースノートページには、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合していると明記されています。"
           ]
@@ -535,7 +563,7 @@
               "計算を固定して異なる方式を比較する"
             ]
           ],
-          "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。査読日は2026年9月17日。"
+          "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。確認日は2026年9月17日。"
         },
         {
           "type": "heading",
@@ -544,7 +572,7 @@
         },
         {
           "type": "paragraph",
-          "text": "NVIDIAが挙げる最も具体的な例は、Iceberg QuantumがCUDA-Q Logicalを使い、Diraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化したというものです。その結果、論理量子ビット1,000個をわずか物理量子ビット150,000個で作れることが示され、これはDiraqの従来の見積もりよりおよそ10分の1少ない数字です。これはモデルによる見積もり結果であり、プレスリリースはこれらの量子ビットがすでにハードウェアとして作られたとは述べていません。比較対象はDiraq自身の従来の見積もりであり、他社が実際に作ったハードウェアではありません。"
+          "text": "NVIDIAが挙げる最も具体的な例は、Iceberg QuantumがCUDA-Q Logicalを使い、Diraqの量子ビットを対象に自社の誤り耐性アーキテクチャをモデル化したというものです。その結果、論理量子ビット1,000個をわずか物理量子ビット150,000個で作れることが示され、これはDiraqの従来の見積もりのおよそ10分の1にあたる数字です。これはモデルによる見積もり結果であり、プレスリリースはこれらの量子ビットがすでにハードウェアとして作られたとは述べていません。比較対象はDiraq自身の従来の見積もりであり、他社が実際に作ったハードウェアではありません。"
         },
         {
           "type": "paragraph",
@@ -560,7 +588,7 @@
           "width": 1600,
           "height": 900,
           "alt": "4コマの図解：物理量子ビットには本来備わる誤りがある。複数の物理量子ビットが組み合わさって一つの論理量子ビットになる。CUDA-Q Logicalは必要なハードウェア量を見積もる。結果はあくまで見積もりであり、実際の実行ではない",
-          "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。査読日は2026年9月17日。",
+          "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。確認日は2026年9月17日。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -591,11 +619,11 @@
         },
         {
           "type": "paragraph",
-          "text": "技術文書はこのツールの境界をはっきりと述べています。CUDA-Q Logicalを「誤り耐性量子コンピューティングのための資源見積もりツール」と定義し、「それはあくまでコンパイラであり見積もりの成果物である。CUDA-Q Logicalは物理的なスケジュールをハードウェアに送信することも、そのための実行時サービスを提供することもない」と明記し、さらに「このパッケージ内のいかなるものも、物理シミュレーションを取り込んだり実行したりしない」とも述べています。文書はまた、検出器と観測量のラベル付け、検出器誤りモデルの生成、サンプリングと復号は、CUDA-Q Logicalが行う範囲ではなく、出力されたStimのテキストより後、Stimのエコシステムの中で初めて始まると説明しています。これらの境界線はプレスリリースには一切書かれていません。"
+          "text": "技術文書はこのツールの境界をはっきりと述べています。CUDA-Q Logicalを「誤り耐性量子コンピューティングのための資源見積もりツール」と定義し、「それはあくまでコンパイルと見積もりの成果物である。CUDA-Q Logicalは物理的なスケジュールをハードウェアに送信することも、そのための実行時サービスを提供することもない」と明記し、さらに「このパッケージ内のいかなるものも、物理シミュレーションを取り込んだり実行したりしない」とも述べています。文書はまた、検出器と観測量のラベル付け、検出器誤りモデルの生成、サンプリングと復号は、CUDA-Q Logicalが行う範囲ではなく、出力されたStimのテキストより後、Stimのエコシステムの中で初めて始まると説明しています。これらの境界線はプレスリリースには一切書かれていません。"
         },
         {
           "type": "paragraph",
-          "text": "技術文書はさらに、付属のサンプルコードがApache License 2.0というオープンソースライセンスのもとで提供されていると記していますが、この名称もやはりプレスリリースには登場しません。プレスリリースに付された会社の将来予測に関する記述は、その第一項目に「量子コンピューティングに関する期待」を挙げています。NVIDIA自身がこの種の記述を、将来の結果を保証しない、歴史的事実ではないものと位置づけています。本記事が査読した情報源には、台湾についての言及は一切なく、誤り耐性量子コンピュータがいつ成熟し普及するかという時期も示されていません。"
+          "text": "技術文書はさらに、付属のサンプルコードがApache License 2.0というオープンソースライセンスのもとで提供されていると記していますが、この名称もやはりプレスリリースには登場しません。プレスリリースに付された会社の将来予測に関する記述は、その第一項目に「量子コンピューティングに関する期待」を挙げています。NVIDIA自身がこの種の記述を、将来の結果を保証しない、歴史的事実ではないものと位置づけています。本記事が確認した情報源には、台湾についての言及は一切なく、誤り耐性量子コンピュータがいつ成熟し普及するかという時期も示されていません。"
         },
         {
           "type": "faq",
@@ -605,7 +633,7 @@
               "answer": "いいえ。NVIDIAの技術文書はこれを、ある計算にどれだけのハードウェア資源が必要かを見積もるための、誤り耐性量子コンピューティング向けの資源見積もりツールと定義しています。文書はまた、物理的なスケジュールを実機に送って実行させることはなく、パッケージ自体が物理シミュレーションを実行することもないと明記しています。今回の発表のどこにも、NVIDIAが誤り耐性量子コンピュータを製造・販売・実演したとは書かれていません。"
             },
             {
-              "question": "これはNVIDIAが新たに売り出した製品ですか。",
+              "question": "これはNVIDIAが新たに投入した製品ですか。",
               "answer": "まったく新しい製品系列ではなく、既存のオープンソースCUDA-Qプラットフォームに追加された新しい層です。NVIDIAはCUDA-Q Logicalを、研究者が誤り耐性量子コンピューティング向けアプリケーションについて、異なる誤り訂正方式やシステムアーキテクチャの組み合わせを設計・評価し、切り替えられるようにするオーケストレーション層と説明しています。CUDA-Qプラットフォーム自体は、この発表より前からすでに存在していました。"
             },
             {
@@ -622,7 +650,7 @@
             },
             {
               "question": "台湾の利用者や企業はどのように入手できますか。",
-              "answer": "NVIDIAのプレスリリースにも技術文書にも、価格、地域制限、申請方法についての記載はありません。プレスリリースはGitHubを通じて入手できるとしか述べておらず、技術文書は付属のサンプルがApache License 2.0というオープンソースライセンスのもとで提供されているとしています。本記事が査読した情報源には、台湾に関する記述は一切なく、誤り耐性量子コンピュータがいつ成熟し普及するかについても示されていません。"
+              "answer": "NVIDIAのプレスリリースにも技術文書にも、価格、地域制限、申請方法についての記載はありません。プレスリリースはGitHubを通じて入手できるとしか述べておらず、技術文書は付属のサンプルがApache License 2.0というオープンソースライセンスのもとで提供されているとしています。本記事が確認した情報源には、台湾に関する記述は一切なく、誤り耐性量子コンピュータがいつ成熟し普及するかについても示されていません。"
             }
           ]
         },
@@ -630,17 +658,29 @@
           "type": "callout",
           "tone": "info",
           "title": "「提供している」と「プレビュー版」は別の話",
-          "text": "NVIDIA今回のプレスリリースは、CUDA-Q Logicalが「現在GitHubを通じて利用できる」としか述べておらず、価格や地域、プランには触れていませんし、全文を通じてpreviewという語も登場しません。こうした限定条件はすべて、NVIDIA自身の技術文書に書かれています。ページはプレビュー版と位置づけられ、APIや挙動は今後のバージョンで大幅に変わりうるとされ、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合しているとされています。本記事で触れている仕様や記述はすべて、プレスリリースと技術文書のどちらに基づくかを明記しており、情報源に印字されていない数字や時期は書いていません。現在の状況を自分で確認したい場合は、NVIDIA CUDA-Qの公式技術文書で該当バージョンのページを参照してください。本記事の査読日は2026年9月17日です。"
+          "text": "NVIDIAの今回のプレスリリースは、CUDA-Q Logicalが「現在GitHubを通じて利用できる」としか述べておらず、価格や地域、プランには触れていませんし、全文を通じてpreviewという語も登場しません。こうした限定条件はすべて、NVIDIA自身の技術文書に書かれています。ページはプレビュー版と位置づけられ、APIや挙動は今後のバージョンで大幅に変わりうるとされ、CUDA-Q 0.16.0がCUDA-Q Logical 0.1.1を統合しているとされています。本記事で触れている仕様や記述はすべて、プレスリリースと技術文書のどちらに基づくかを明記しており、情報源に印字されていない数字や時期は書いていません。現在の状況を自分で確認したい場合は、NVIDIA CUDA-Qの公式技術文書で該当バージョンのページを参照してください。本記事の確認日は2026年9月17日です。"
         },
         {
-          "type": "link",
-          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
-          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NVIDIAのAI Infra Summit講演から：Vera RubinとDSXに何が加わったか",
-          "url": "https://mokaair.com/ja/life/tech-news-nvidia-vera-rubin-20260915"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIAのAI Infra Summit講演から：Vera RubinとDSXに何が加わったか",
+              "kind": "life",
+              "slug": "tech-news-nvidia-vera-rubin-20260915"
+            }
+          ]
         }
       ],
       "sources": [
@@ -667,7 +707,7 @@
       ]
     },
     "ko": {
-      "title": "NVIDIA, CUDA-Q Logical 오픈소스 공개 — 결함 허용 양자컴퓨터 규모를 추정하는 도구, 양자컴퓨터 자체는 아니다",
+      "title": "NVIDIA, 오픈소스 CUDA-Q 플랫폼에 CUDA-Q Logical 추가 ― 결함 허용 양자컴퓨터 규모를 추정하는 도구, 양자컴퓨터 자체는 아니다",
       "description": "2026년 9월 14일, NVIDIA는 오픈소스 CUDA-Q 플랫폼에 새로운 오케스트레이션 계층인 CUDA-Q Logical을 추가한다고 발표했습니다. 이는 연구자가 결함 허용 양자컴퓨팅 애플리케이션에 필요한 하드웨어 규모를 추정하도록 돕는 도구이며, 새로운 양자컴퓨터가 아닙니다. 본 기사는 NVIDIA의 보도자료와 기술 문서를 근거로, 이 도구가 할 수 있는 일과 할 수 없는 일, 두 자료 사이의 표현 차이, 그리고 샌디아 국립연구소가 개발한 크로스플랫폼 벤치마크 QUOPS를 설명합니다. 확인일은 2026년 9월 17일입니다.",
       "hero": {
         "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-ko.jpg",
@@ -696,7 +736,7 @@
             "NVIDIA의 기술 문서는 CUDA-Q Logical을 결함 허용 양자컴퓨팅을 위한 자원 추정 도구로 정의하며, 물리적 스케줄을 하드웨어에 전달해 실행시키지 않고 패키지 자체가 물리 시뮬레이션을 실행하지도 않는다고 명시합니다. 하지만 이런 설명은 보도자료에는 전혀 나오지 않습니다.",
             "NVIDIA에 따르면 Iceberg Quantum은 이 도구로 Diraq의 큐비트를 대상으로 자사의 결함 허용 아키텍처를 모델링해, 논리 큐비트 1,000개를 물리 큐비트 150,000개만으로 만들 수 있다고 추정했습니다. 이는 Diraq 자체의 이전 추정치보다 약 10배 적은 숫자이지만, 어디까지나 모델 추정치이며 실제로 만들어진 하드웨어가 아닙니다.",
             "발표에서 함께 소개된 QUOPS는 샌디아 국립연구소가 개발한 독립적인 크로스플랫폼 벤치마크로, NVIDIA 자체의 벤치마크가 아닙니다. 발표 본문에 적힌 내용은 NVIDIA CUDA-Q에서 QUOPS의 참조 구현을 이용할 수 있다는 것입니다.",
-            "기술 문서는 CUDA-Q Logical을 프리뷰(미리보기) 버전으로 표시하며, API와 동작, 문서 내용이 이후 버전에서 크게 바뀔 수 있다고 설명합니다. 릴리스 노트 페이지에는 CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 명시되어 있습니다."
+            "기술 문서는 CUDA-Q Logical을 프리뷰 버전으로 표시하며, API와 동작, 문서 내용이 이후 버전에서 크게 바뀔 수 있다고 설명합니다. 릴리스 노트 페이지에는 CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 명시되어 있습니다."
           ]
         },
         {
@@ -809,7 +849,7 @@
         },
         {
           "type": "paragraph",
-          "text": "기술 문서는 이 도구의 경계를 분명하게 밝힙니다. CUDA-Q Logical을 “결함 허용 양자컴퓨팅을 위한 자원 추정 도구”로 정의하고, “그것은 어디까지나 컴파일러이자 추정 산출물이다. CUDA-Q Logical은 물리적 스케줄을 하드웨어에 제출하지도, 그것을 위한 런타임 실행 서비스를 제공하지도 않는다”고 명시하며, 더 나아가 “이 패키지 안의 어떤 것도 물리 시뮬레이션을 사용하거나 실행하지 않는다”고도 밝힙니다. 문서는 또한 검출기와 관측량 표시, 검출기 오류 모델 생성, 샘플링과 디코딩은 CUDA-Q Logical이 하는 일이 아니며, 이런 작업은 출력된 Stim 결과 이후 Stim 생태계 안에서야 시작된다고 설명합니다. 이런 경계는 보도자료에는 전혀 쓰여 있지 않습니다."
+          "text": "기술 문서는 이 도구의 경계를 분명하게 밝힙니다. CUDA-Q Logical을 “결함 허용 양자컴퓨팅을 위한 자원 추정 도구”로 정의하고, “그것은 어디까지나 컴파일러이자 추정 산출물이다. CUDA-Q Logical은 물리적 스케줄을 하드웨어에 제출하지도, 그것을 위한 런타임 실행 서비스를 제공하지도 않는다”고 명시하며, 더 나아가 “이 패키지 안의 어떤 것도 물리 시뮬레이션을 사용하거나 실행하지 않는다”고도 밝힙니다. 문서는 또한 검출기와 관측량 표시, 검출기 오류 모델 생성, 샘플링과 디코딩은 CUDA-Q Logical이 하는 일이 아니며, 이런 작업은 출력된 Stim 텍스트 이후 Stim 생태계 안에서야 시작된다고 설명합니다. 이런 경계는 보도자료에는 전혀 쓰여 있지 않습니다."
         },
         {
           "type": "paragraph",
@@ -851,14 +891,26 @@
           "text": "NVIDIA의 이번 보도자료는 CUDA-Q Logical이 “현재 GitHub를 통해 이용할 수 있다”고만 말할 뿐, 가격이나 지역, 요금제는 언급하지 않고 전체 글에 preview라는 단어도 등장하지 않습니다. 이런 단서 조건은 모두 NVIDIA 자체의 기술 문서에 적혀 있습니다. 페이지는 프리뷰 버전으로 표시되어 있고, API와 동작이 이후 버전에서 크게 바뀔 수 있으며, CUDA-Q 0.16.0이 CUDA-Q Logical 0.1.1을 통합한다고 되어 있습니다. 본 기사에서 언급한 모든 사양과 서술은 보도자료와 기술 문서 중 어디에서 나온 것인지 표시했으며, 출처에 나오지 않는 숫자나 시기는 쓰지 않았습니다. 지금 상태를 직접 확인하려면 NVIDIA CUDA-Q의 공식 기술 문서에서 해당 버전 페이지를 찾아보시기 바랍니다. 본 기사의 확인일은 2026년 9월 17일입니다."
         },
         {
-          "type": "link",
-          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
-          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NVIDIA의 AI Infra Summit 전력 효율 강연: Vera Rubin과 DSX에 새로 추가된 것",
-          "url": "https://mokaair.com/ko/life/tech-news-nvidia-vera-rubin-20260915"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA의 AI Infra Summit 전력 효율 강연: Vera Rubin과 DSX에 새로 추가된 것",
+              "kind": "life",
+              "slug": "tech-news-nvidia-vera-rubin-20260915"
+            }
+          ]
         }
       ],
       "sources": [
@@ -885,7 +937,7 @@
       ]
     },
     "zh-CN": {
-      "title": "NVIDIA 开源 CUDA-Q Logical：估算容错量子计算机规模，不是量子计算机本身",
+      "title": "NVIDIA 为 CUDA-Q 开源平台新增 CUDA-Q Logical：估算容错量子计算机规模，不是量子计算机本身",
       "description": "2026 年 9 月 14 日，NVIDIA 宣布为开源的 CUDA-Q 平台新增 CUDA-Q Logical，这是一个协调层，用来帮助研究者估算容错量子计算应用需要多少硬件，而不是新的量子计算机。本文依据 NVIDIA 新闻稿与技术文档，说明这个工具能做与不能做的事、新闻稿和技术文档用词的落差，以及桑迪亚国家实验室（Sandia National Laboratories）开发的跨平台基准 QUOPS。查核日 2026 年 9 月 17 日。",
       "hero": {
         "src": "/guides/tech-news-nvidia-cuda-q-20260914/hero-zh-cn.jpg",
@@ -911,7 +963,7 @@
           "type": "summary",
           "items": [
             "2026 年 9 月 14 日，NVIDIA 宣布为开源的 CUDA-Q 平台新增 CUDA-Q Logical，这是一个协调层，用来帮助研究者设计容错量子计算应用，并估算它们需要多少硬件资源，而不是推出新的量子计算机。",
-            "NVIDIA 的技术文档把 CUDA-Q Logical 定义为容错量子计算的资源估算工具，并说明它不会把物理排程提交给硬件执行、软件包本身也不执行物理模拟，但这些说明都没有出现在新闻稿里。",
+            "NVIDIA 的技术文档把 CUDA-Q Logical 定义为容错量子计算的资源估算工具，并说明它不会把物理调度提交给硬件执行、软件包本身也不执行物理模拟，但这些说明都没有出现在新闻稿里。",
             "NVIDIA 表示，Iceberg Quantum 用这套工具针对 Diraq 的量子比特为自家容错架构建模，估算 1,000 个逻辑量子比特只需要 150,000 个物理量子比特，比 Diraq 自己先前的估计少了大约 10 倍，但这是模型估算，不是已经做出来的硬件。",
             "公告介绍的 QUOPS，是桑迪亚国家实验室开发的独立跨平台基准，不是 NVIDIA 自己的基准测试；公告正文写的是在 NVIDIA CUDA-Q 中可以获取 QUOPS 的参考实现。",
             "技术文档把 CUDA-Q Logical 标记为预览版，说明 API、行为与文档内容都可能在之后的版本中大幅变动；版本记录页写明 CUDA-Q 0.16.0 这一版整合的是 CUDA-Q Logical 0.1.1 版。"
@@ -924,11 +976,11 @@
         },
         {
           "type": "paragraph",
-          "text": "NVIDIA 自己的说法是，这次“为 NVIDIA CUDA-Q™ 开源平台新增了 CUDA-Q Logical，这是一个协调层，用可编程、可验证的方式，帮助为容错量子计算机开发有用的应用”。也就是说，CUDA-Q Logical 是加在既有 CUDA-Q 平台上的新功能，平台本身在公告之前就已存在；NVIDIA 没有在公告里表示自己推出了新的量子计算机。"
+          "text": "NVIDIA 自己的说法是，这次“为 NVIDIA CUDA-Q 开源平台新增了 CUDA-Q Logical，这是一个协调层，用可编程、可验证的方式，帮助为容错量子计算机开发有用的应用”。也就是说，CUDA-Q Logical 是加在既有 CUDA-Q 平台上的新功能，平台本身在公告之前就已存在；NVIDIA 没有在公告里表示自己推出了新的量子计算机。"
         },
         {
           "type": "paragraph",
-          "text": "NVIDIA 说明，为容错系统开发应用是一项“繁琐、耗时的协同设计（codesign）挑战”：“只要更改算法、纠错码、硬件架构或其他 QPU 组件，运行任意一个应用所需的资源就可能大幅改变”。有了 CUDA-Q Logical，按 NVIDIA 的说法，“研究者现在可以设计并协调容错量子计算应用所需的众多组件，在不同选项之间轻松切换，找出在逻辑量子比特上性能最佳的系统配置”。NVIDIA 量子事业部副总裁兼总经理 Timothy Costa 表示，量子计算正在走向“逻辑量子比特的时代”，CUDA-Q Logical 的加入“大幅缩短了通往实用量子－GPU 超级计算的时间线”——但没有附上具体年份或时间表。"
+          "text": "NVIDIA 说明，为容错系统开发应用是一项“繁琐、耗时的协同设计（codesign）挑战”：只要更改算法、纠错码或硬件架构，运行同一个应用所需的资源就可能大幅改变。有了 CUDA-Q Logical，研究者可以“在不同选项之间切换，找出在逻辑量子比特上性能最佳的系统配置”。NVIDIA 量子事业部副总裁兼总经理 Timothy Costa 表示，量子计算正在走向“逻辑量子比特的时代”，CUDA-Q Logical 的加入“大幅缩短了通往实用量子－GPU 超级计算的时间线”——但没有附上具体年份或时间表。"
         },
         {
           "type": "paragraph",
@@ -945,7 +997,7 @@
         },
         {
           "type": "paragraph",
-          "text": "技术文档说明，这中间的难点在于协同设计：换一种纠错码、换一种硬件架构，甚至换一种解码方式，都可能同时改变某个运算需要多少个量子比特、需要多少运行时间。CUDA-Q Logical 要做的，是让研究者固定住同一个运算、只改变这些系统选项，从而直接比较结果、检查每种组合背后的假设。"
+          "text": "技术文档说明，这中间的难点在于协同设计：换一种纠错码、换一种硬件架构，甚至换一种解码方式，都可能改变同一个运算需要多少个量子比特、需要多少运行时间。CUDA-Q Logical 要做的，是让研究者固定住同一个运算、只改变这些系统选项，从而直接比较结果、检查每种组合背后的假设。"
         },
         {
           "type": "table",
@@ -988,7 +1040,7 @@
         },
         {
           "type": "paragraph",
-          "text": "技术文档说明，在目前这个预览阶段，用户可以从一段 CUDA-Q 内核出发，或直接编写可移植的逻辑程序，配置纠错码、部件与布局、蒸馏（distillation）协议，生成资源估算结果，并将展开后的程序输出给 Stim 这类工具做进一步模拟与分析。文档列出的动作止步于“生成估算”与“输出程序”，不包含“运行”。"
+          "text": "技术文档说明，在目前这个预览阶段，用户可以从一段 CUDA-Q 代码出发，或直接编写可移植的逻辑程序，配置纠错码、部件与布局、蒸馏（distillation）协议，生成资源估算结果，并将展开后的程序输出给 Stim 这类工具做进一步模拟与分析。文档列出的动作止步于“生成估算”与“输出程序”，不包含“运行”。"
         },
         {
           "type": "image",
@@ -1027,7 +1079,7 @@
         },
         {
           "type": "paragraph",
-          "text": "技术文档把这个工具的边界说得很清楚：它把 CUDA-Q Logical 定义为“容错量子计算的资源估算工具”，并且明确写道“它仍然是编译与估算的产物：CUDA-Q Logical 不会把物理排程提交给硬件，也不为其提供运行时执行服务”，还有“软件包里没有任何东西会使用或执行物理模拟”。文档也写明，标注探测器与可观测量、生成探测器错误模型、采样与解码，CUDA-Q Logical 都不做；这些要在输出的 Stim 文本之后、在 Stim 生态系统里才开始。这些界线新闻稿都没有写。"
+          "text": "技术文档把这个工具的边界说得很清楚：它把 CUDA-Q Logical 定义为“容错量子计算的资源估算工具”，并且明确写道“它仍然是编译与估算的产物：CUDA-Q Logical 不会把物理调度提交给硬件，也不为其提供运行时执行服务”，还有“软件包里没有任何东西会使用或执行物理模拟”。文档也写明，标注探测器与可观测量、生成探测器错误模型、采样与解码，CUDA-Q Logical 都不做；这些要在输出的 Stim 文本之后、在 Stim 生态系统里才开始。这些界线新闻稿都没有写。"
         },
         {
           "type": "paragraph",
@@ -1038,7 +1090,7 @@
           "items": [
             {
               "question": "CUDA-Q Logical 是量子计算机吗？",
-              "answer": "不是。NVIDIA 的技术文档把它定义为容错量子计算的资源估算工具，用来估算某个运算需要多少硬件资源；文档也写明它不会把物理排程提交给硬件执行，软件包本身也不执行物理模拟。NVIDIA 这次公告里没有表示自己打造、销售或演示过一台容错量子计算机。"
+              "answer": "不是。NVIDIA 的技术文档把它定义为容错量子计算的资源估算工具，用来估算某个运算需要多少硬件资源；文档也写明它不会把物理调度提交给硬件执行，软件包本身也不执行物理模拟。NVIDIA 这次公告里没有表示自己打造、销售或演示过一台容错量子计算机。"
             },
             {
               "question": "这是 NVIDIA 全新推出的产品吗？",
@@ -1069,14 +1121,26 @@
           "text": "NVIDIA 这次的新闻稿只说 CUDA-Q Logical“现已通过 GitHub 提供”，没有提到价格、地区或方案，全文也没有出现 preview 这个词；这些限定词都写在 NVIDIA 自己的技术文档里：页面标记为预览版、API 与行为都可能在之后的版本中大幅变动、CUDA-Q 0.16.0 整合的是 CUDA-Q Logical 0.1.1 版。本文提到的每一项规格与说法，都各自标明出自新闻稿还是技术文档，信息来源没有印出的数字或时间表一律不写。想看目前的状态，可以自行前往 NVIDIA CUDA-Q 的官方技术文档查看对应版本的页面；本文查核日为 2026 年 9 月 17 日。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "NVIDIA AI Infra Summit 谈电力效率：Vera Rubin 与 DSX 新增了什么",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-nvidia-vera-rubin-20260915"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA AI Infra Summit 谈电力效率：Vera Rubin 与 DSX 新增了什么",
+              "kind": "life",
+              "slug": "tech-news-nvidia-vera-rubin-20260915"
+            }
+          ]
         }
       ],
       "sources": [

@@ -2,7 +2,7 @@
   "slug": "tech-news-nvidia-cuda-q-20260914",
   "event_date": "2026-09-14",
   "event_date_basis": "2026-09-14 是 NVIDIA 新聞稿頁面本身印出的刊頭日期「September 14, 2026」，正文開頭也寫「NVIDIA today announced」，即發布日＝宣布日。本輪查核只採用頁面上印出的這個日期字串，不使用 RSS（releases.xml）的 pubDate／modDate 欄位，也不推論「發布後幾小時修訂過」——這是修正清單 must_fix 7 的處理方式，因為 pubDate／modDate 是 feed 的欄位，不是文章頁上的陳述，一條事實只能掛一個網址。PyPI 上 cudaq-logical 0.1.1 與 cudaq 0.16.0 都是 2026-09-12 上傳（早兩天，軟體先上架、公告後發），以及 arXiv:2609.12146 是 2026-09-10 投稿，這兩組日期本輪沒有引用，也沒有寫進文章，避免和事件日混用。",
-  "title": "NVIDIA 開源 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
+  "title": "NVIDIA 為 CUDA-Q 開源平台新增 CUDA-Q Logical：估算容錯量子電腦規模，不是量子電腦本身",
   "checked_on": "2026-09-17",
   "sources": [
     {
@@ -375,15 +375,27 @@
   },
   "translations": {
     "en": {
-      "hero_label": "A hardware-sizing tool",
+      "hero_label": "An Estimator, Not a QPU",
       "diagram": {
         "title": "What CUDA-Q Logical Estimates",
         "caption": "Compiled from NVIDIA's September 14, 2026 press release and technical documentation. Checked September 17, 2026.",
         "nodes": [
-          ["Physical qubits", "Carry errors inherent to them"],
-          ["Logical qubits", "Combine physical qubits"],
-          ["Estimation tool", "Counts hardware needed"],
-          ["Estimate only", "Not run, not simulated"]
+          [
+            "Physical qubits",
+            "Carry errors inherent to them"
+          ],
+          [
+            "Logical qubits",
+            "Combine physical qubits"
+          ],
+          [
+            "Estimation tool",
+            "Counts hardware needed"
+          ],
+          [
+            "Estimate only",
+            "Not run, not simulated"
+          ]
         ]
       }
     },
@@ -391,12 +403,24 @@
       "hero_label": "見積もる道具であり機械でない",
       "diagram": {
         "title": "CUDA-Q Logicalは何を見積もるか",
-        "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。査読日は2026年9月17日。",
+        "caption": "NVIDIAの2026年9月14日のプレスリリースと技術文書をもとに作成。確認日は2026年9月17日。",
         "nodes": [
-          ["物理量子ビット", "本来備わる誤りがある"],
-          ["論理量子ビット", "物理量子ビットが組み合わさる"],
-          ["見積もりツール", "必要なハードウェア量を算出"],
-          ["見積もりのみ", "実行も模擬もしない"]
+          [
+            "物理量子ビット",
+            "本来備わる誤りがある"
+          ],
+          [
+            "論理量子ビット",
+            "物理量子ビットが組み合わさる"
+          ],
+          [
+            "見積もりツール",
+            "必要なハードウェア量を算出"
+          ],
+          [
+            "見積もりのみ",
+            "実行もシミュレーションもしない"
+          ]
         ]
       }
     },
@@ -406,23 +430,47 @@
         "title": "CUDA-Q Logical이 추정하는 것",
         "caption": "NVIDIA의 2026년 9월 14일 보도자료와 기술 문서를 바탕으로 정리. 확인일 2026년 9월 17일.",
         "nodes": [
-          ["물리 큐비트", "본래 오류가 있음"],
-          ["논리 큐비트", "물리 큐비트가 결합"],
-          ["추정 도구", "필요한 하드웨어 추정"],
-          ["추정뿐", "실행도 모의도 아님"]
+          [
+            "물리 큐비트",
+            "본래 오류가 있음"
+          ],
+          [
+            "논리 큐비트",
+            "물리 큐비트가 결합"
+          ],
+          [
+            "추정 도구",
+            "필요한 하드웨어 추정"
+          ],
+          [
+            "추정뿐",
+            "실행도 시뮬레이션도 아님"
+          ]
         ]
       }
     },
     "zh-CN": {
       "hero_label": "估算工具，非量子计算机",
       "diagram": {
-        "title": "CUDA-Q Logical在算什么",
+        "title": "CUDA-Q Logical 在算什么",
         "caption": "整理自 NVIDIA 2026 年 9 月 14 日新闻稿与技术文档，查核日 2026 年 9 月 17 日。",
         "nodes": [
-          ["物理量子比特", "本身带有固有的错误"],
-          ["逻辑量子比特", "多个物理比特合并而成"],
-          ["估算工具", "算需要多少硬件"],
-          ["只估算", "不执行、不模拟"]
+          [
+            "物理量子比特",
+            "本身带有固有的错误"
+          ],
+          [
+            "逻辑量子比特",
+            "多个物理比特合并而成"
+          ],
+          [
+            "估算工具",
+            "算需要多少硬件"
+          ],
+          [
+            "只估算",
+            "不执行、不模拟"
+          ]
         ]
       }
     }

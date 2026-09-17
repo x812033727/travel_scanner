@@ -1,699 +1,699 @@
 {
- "slug": "tech-news-pixel-drop-20260915",
- "event_date": "2026-09-15",
- "event_date_basis": "blog.google post JSON-LD datePublished 2026-09-15T18:00:00+00:00; meta article:published_time 2026-09-15; visible date line 'Sep 15, 2026'; dateModified 2026-09-15T18:20:54.745901+00:00 (same day, 20 minutes later). Re-confirmed 2026-09-17 by fetching the same URL again: JSON-LD, meta tag and dateline are byte-identical to the 2026-09-16 reading. The factcheck agent independently decoded the phone forum thread's internal timestamp field (1789496860754770 microseconds = 2026-09-15T18:27:40Z, 27 minutes after the blog post) as a second, independent confirmation of the same date; that field is not a displayed date and is not itself printed as a fact anywhere in this record or the article, only used to corroborate the JSON-LD date. Announcement date and rollout-start date are the same: the forum note says updates arrive 'starting today' and continue 'over the coming weeks in phases'. news_date = 2026-09-15, matching the slug suffix.",
- "title": "Google 9 月 Pixel Drop 更新：機型、地區語言與 Pixel Watch 5 的條件",
- "checked_on": "2026-09-17",
- "sources": [
-  {
-   "title": "September Pixel Drop: New Pixel VIP updates, Pixel Watch features, and more",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "publisher": "Google (The Keyword / blog.google)",
-   "checked_on": "2026-09-17"
-  },
-  {
-   "title": "September 2026 Pixel Drop",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "publisher": "Google Pixel Phone Help Community",
-   "checked_on": "2026-09-17"
-  },
-  {
-   "title": "Google Pixel Watch Update (Pixel Watch 5) - September 2026",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "publisher": "Google Pixel Watch Help Community",
-   "checked_on": "2026-09-17"
-  },
-  {
-   "title": "Protect yourself with spam & scam detection on your Pixel phone",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "publisher": "Google Pixel Phone Help",
-   "checked_on": "2026-09-17"
-  }
- ],
- "sourcing_verdict": "full",
- "sourcing_notes": "This record supersedes docs/news-2026-batch-4/research/tech-news-pixel-drop-20260915.json (checked_on 2026-09-16) after applying every must_fix/must_add item in docs/news-2026-batch-4/corrections-tech.md's tech-news-pixel-drop-20260915 section. All four sources were independently refetched today, 2026-09-17, with curl -sL -A \"Mokaair-editorial\" (no email or personal data in any request), before this record or the article was written: blog_post.html HTTP 200 / 389,344 bytes (2026-09-16 reading was 389,352; the few-byte drift is expected on a live page and does not change any cited content -- JSON-LD datePublished/dateModified, the og:title and twitter:title full headline, the short <title> element, and 'Android Drop' occurring 0 times were all re-verified byte-for-byte against the 2026-09-16 record); phone_thread.html HTTP 200 / 2,060,321 bytes (2026-09-16: 2,060,175/2,060,182); watch_thread.html HTTP 200 / 1,900,524 bytes (2026-09-16: 2,060,182 for phone, 1,898,230-242 for watch); help_centre.html HTTP 200 / 1,683,101 bytes (2026-09-16: 1,681,250). The two support.google.com threads still carry their body inside a double-escaped inline-JSON blob (confirmed again today by grepping for literal 'Pause Point' at raw-file offset and finding it wrapped in \\\\u003cdiv\\\\u003e-style double escaping); rather than re-derive a full clean decode, today's check greps the raw bytes for the exact phrases this record and the article rely on and confirms each occurs exactly once: 'December 31, 2026', 'January 14, 2027', 'nine new countries', the full 9-country list, the full 6-language list, 'Pixel 6 and newer phones', 'Feature Availability by Device', 'Feature availability may vary by country and', 'Available only in select languages in the US', 'Available on other keyboards with Keyboard Suggestions', 'Update to the latest Android version', 'update your apps' (phone thread); 'Pixel Watch 5' (12x), 'CP3A.260905.002', 'Wear OS 7', the five connected-app list, 'Available only on Pixel Watch 5 paired with Pixel 11', 'Powered by on-device AI', 'Our most accurate GPS route tracking', 'Hand Gestures App Expansions', 'raise to talk gesture model', 'Pixel Watch Security Bulletin', 'Previous Pixel Watch Updates', 'General bug fixes and improvements' (watch thread); the device-matrix attachment filename thread-466181739-2189480914184742135.png and the second (hero-art) attachment thread-466181739-10255076335878498553.png are both still referenced by name. The Help Centre page today still lists 11 regions (including Spain), 8 languages (including English and Indonesian), the full Circle to Search / Google Lens section verbatim, and carries no visible publish or update date (confirmed via WebFetch and via curl). Source 1 is discoverable in blog.google/rss/ under its exact title, so the URL was not guessed; source 4 was reached both directly and via Google's own link support.google.com?p=scam_detection, so the answer id was not guessed either. This record therefore treats 2026-09-17 as the writer's own checked_on, not merely a copy of the prior research's 2026-09-16.",
- "verified_facts": [
-  {
-   "fact": "Google published the September 2026 Pixel Drop announcement on its own blog on 2026-09-15. The page's JSON-LD gives datePublished 2026-09-15T18:00:00+00:00 and dateModified 2026-09-15T18:20:54.745901+00:00; the meta tag article:published_time is 2026-09-15; the visible date line reads 'Sep 15, 2026'. Re-fetched and confirmed unchanged on 2026-09-17.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": false,
-   "verbatim_quote": "\"datePublished\": \"2026-09-15T18:00:00+00:00\", \"dateModified\": \"2026-09-15T18:20:54.745901+00:00\""
-  },
-  {
-   "fact": "The official headline of the blog post is 'September Pixel Drop: New Pixel VIP updates, Pixel Watch features, and more'. That same full headline is carried by BOTH the og:title and the twitter:title meta tags. Only the <title> element uses the shorter form 'September Pixel Drop: VIP updates, Pixel Watch features'. Corrected 2026-09-17 per corrections-tech.md must_fix 2: the prior record mislabelled the short form as 'the og title', which is wrong -- og:title carries the full headline, not the short one.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": false,
-   "verbatim_quote": "September Pixel Drop: New Pixel VIP updates, Pixel Watch features, and more"
-  },
-  {
-   "fact": "Google's own one-line description of the post is: 'Our September Pixel Drop is here with an updated Pixel VIP widget, expanded chat Scam Detection, and more.'",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Our September Pixel Drop is here with an updated Pixel VIP widget, expanded chat Scam Detection, and more."
-  },
-  {
-   "fact": "The blog post carries no author byline (unlike other blog.google posts such as the Pause Point one, which names an author). It is published under Google, not a named person.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "The blog post body is FIVE <p> elements inside one rich-text block: an opening line ('Our September Pixel Drop is officially here, complete with handy new features and updates.'), one on Pixel VIPs plus the Gboard/Scam Detection line, one on Pixel Watch, one on Harry Potter, and the pointer 'Visit our community forum post to learn more.', which links to support.google.com/pixelphone/thread/466181739 -- i.e. Google itself designates that forum thread as its own detailed release note ('our community forum post'). Corrected 2026-09-18 by the independent factcheck agent: the prior record's 'four short paragraphs plus a pointer sentence' undercounts the body by one paragraph (it drops the opening line), and the draft article's 「只有四段文字」 was built on that miscount. A paragraph count is the editor's count; Google prints no number.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Visit our community forum post to learn more."
-  },
-  {
-   "fact": "Blog wording for the phone features: 'Stay connected to your VIPs with updated home screen widgets that let you call or text people with a single tap, or switch between contacts using the bottom floating overlay navigation menu. New notification badges ensure you never miss a message. And Pixel now makes it easier to avoid scams with inline Gboard warnings in the U.S. and expanded Scam Detection for chat app notifications in more regions.'",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Stay connected to your VIPs with updated home screen widgets that let you call or text people with a single tap, or switch between contacts using the bottom floating overlay navigation menu. New notification badges ensure you never miss a message. And Pixel now makes it easier to avoid scams with inline Gboard warnings in the U.S. and expanded Scam Detection for chat app notifications in more regions."
-  },
-  {
-   "fact": "Blog wording for the watch features: 'If you have a Pixel Watch, you'll receive Raise to Talk improvements, and additional One Handed gesture app integrations, along with other bug fixes.' The blog does NOT name a watch model here and does not mention Pause Point, Gemini Personalization, Proactive suggestions, Offline Gemini or GPS route tracking; only the linked support thread restricts the update to Pixel Watch 5 and names those five additional items.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": true,
-   "verbatim_quote": "If you have a Pixel Watch, you’ll receive Raise to Talk improvements, and additional One Handed gesture app integrations, along with other bug fixes."
-  },
-  {
-   "fact": "Blog wording for the Harry Potter tie-in: 'Instantly customize your Pixel with Harry Potter Audiobook Packs to celebrate the release of Harry Potter: The Full-Cast Audio Editions on Audible. To begin your journey to Hogwarts, all eligible Pixel users will receive a two-month Audible free trial.' The blog states no countries and no end date for this offer; the support thread does.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": true,
-   "verbatim_quote": "To begin your journey to Hogwarts, all eligible Pixel users will receive a two-month Audible free trial."
-  },
-  {
-   "fact": "The string 'Android Drop' occurs zero times on the blog post page. The related-stories rail lists exactly four items, none of them a 'September Android Drop' post; a probe URL for one returns 404. Corrected 2026-09-17 per corrections-tech.md must_fix 1: the prior record's claim that the rail 'shows a separate September Android Drop post' is deleted outright, re-confirmed absent on today's refetch.",
-   "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "Google's forum release note is titled 'September 2026 Pixel Drop' and defines a Pixel Drop as: 'Your Pixel devices become even more helpful with Pixel Drops. They're automatic software updates that send new and upgraded features to your phone.'",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Your Pixel devices become even more helpful with Pixel Drops. They’re automatic software updates that send new and upgraded features to your phone."
-  },
-  {
-   "fact": "Rollout timing, verbatim: 'Supported Pixel devices will receive these software updates starting today. The rollout of these features will continue over the coming weeks in phases, depending on carrier and device.' Google gives no completion date and names no carriers.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Supported Pixel devices will receive these software updates starting today. The rollout of these features will continue over the coming weeks in phases, depending on carrier and device."
-  },
-  {
-   "fact": "Google tells users they will be notified when the update is available and points them to 'Update to the latest Android version' (href support.google.com/pixelphone/answer/7680439) and 'update your apps' (href support.google.com/googleplay/answer/113412) -- i.e. some of these features arrive via app updates, not only the system update. The two hrefs, confirmed again 2026-09-17, replace an earlier inference with Google's own link targets.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "You will receive a notification once the system update is available for your device."
-  },
-  {
-   "fact": "The forum note's prose, under the heading 'Here are just some of the features to look forward to in the September Pixel Drop:', names exactly FOUR feature headings: 'Pixel VIPs updates', 'Harry Potter Audiobook Packs', 'Scam Detection comes to your keyboard and expands to new regions', and 'Pause Point expands to more Pixel devices'. Corrected 2026-09-17 per corrections-tech.md must_fix 5: the prior record wrote 'five named features'; five is the ROW count of the separate device-availability image (Scam Detection is split there into a keyboard row and a notification row), not the number of feature headings in the prose. The article must not write 'Google 列出五項功能'; it must say the prose names four headings and the matrix has five rows because Scam Detection is split in two there.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Here are just some of the features to look forward to in the September Pixel Drop:"
-  },
-  {
-   "fact": "Feature 1, Pixel VIPs updates, verbatim: 'Stay seamlessly connected to your VIP contacts. With newly designed, expanded widget options, you can use quick actions to send a call or text to your VIP contacts with a single tap straight from your home screen. New, glanceable notification badges ensure you never miss an urgent or unread message, and you can also switch effortlessly between VIPs using the bottom floating menu.' No region, language or carrier condition is attached to this feature anywhere in the note, only the blanket footnote 5 (see below).",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": true,
-   "verbatim_quote": "With newly designed, expanded widget options, you can use quick actions to send a call or text to your VIP contacts with a single tap straight from your home screen."
-  },
-  {
-   "fact": "Feature 2, Harry Potter Audiobook Packs, verbatim: 'One tap changes your wallpaper, icons, and sounds with elements from the audiobooks - no wand required.' It is a theme pack (wallpaper + icons + sounds), tied to the release of 'Harry Potter: The Full-Cast Audio Editions' on Audible.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": true,
-   "verbatim_quote": "One tap changes your wallpaper, icons, and sounds with elements from the audiobooks - no wand required."
-  },
-  {
-   "fact": "Feature 3a, Scam Detection in the keyboard: 'Starting in the U.S. on Pixel 6 and newer phones, Scam Detection is arriving directly on your Gboard (3) across your favorite messaging apps. When you start typing a response to a suspicious message, a \"Likely scam\" warning chip will appear right above your keys. Processing happens in real-time and on your device, keeping your conversations private to you (4).' Two conditions are stated in one sentence: United States only, AND Pixel 6 or newer; note the conditions are 'Starting in the U.S.', not 'only in the U.S.'. Corrected 2026-09-18 in the second factcheck round: the page's own text carries footnote markers inside these sentences -- '(3)' sits between 'Gboard' and 'across', '(4)' between 'private to you' and the full stop -- so the sentence as previously stored was NOT a contiguous string on the page. verbatim_quote below is trimmed to the part that is contiguous and that carries both conditions.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Starting in the U.S. on Pixel 6 and newer phones, Scam Detection is arriving directly on your Gboard"
-  },
-  {
-   "fact": "The on-device / real-time processing claim for keyboard Scam Detection is Google's own statement, not something this site tested: 'Processing happens in real-time and on your device, keeping your conversations private to you'.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Processing happens in real-time and on your device, keeping your conversations private to you"
-  },
-  {
-   "fact": "Footnote 3, attached to the word 'Gboard', says the keyboard warning is not Gboard-exclusive: 'Available on other keyboards with Keyboard Suggestions.' Not used in the article body (kept for completeness); the article states the Gboard/US/Pixel-6+ facts only.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Available on other keyboards with Keyboard Suggestions."
-  },
-  {
-   "fact": "Footnote 4, attached to the keyboard Scam Detection paragraph, narrows it further: 'Available only in select languages in the US.' Google does not name which languages.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Available only in select languages in the US."
-  },
-  {
-   "fact": "Feature 3b, Scam Detection in chat notifications, verbatim: 'Already available in the US for Pixel 6+ devices, we're now expanding this feature to nine new countries (Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, and the United Kingdom) and six new languages (Arabic, French, German, Portuguese, Japanese, and Spanish), helping protect even more people worldwide.' That is exactly nine countries and six languages, listed by name. Taiwan is not among them.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "we’re now expanding this feature to nine new countries (Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, and the United Kingdom) and six new languages (Arabic, French, German, Portuguese, Japanese, and Spanish)"
-  },
-  {
-   "fact": "Google describes the notification-level Scam Detection as pre-existing, not new in this Drop, and links to Google's own November 2025 Pixel Drop post. Corrected 2026-09-17 per corrections-tech.md must_fix 8: the href is confirmed (blog.google/products-and-platforms/devices/pixel/november-2025-pixel-drop/, HTTP 200) but Google never states the feature originated there; write only 'links to Google's November 2025 Pixel Drop post', not 'as its origin'. What is new in September 2026 is the country/language expansion plus the keyboard placement.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "This adds another layer of defense alongside Scam Detection in notifications"
-  },
-  {
-   "fact": "Feature 4, Pause Point, verbatim: 'Pause Point helps you cut down on unintentional app use. It adds a pause before you open a distracting app of your choice, giving you a moment to decide whether you really want to continue. First introduced on Pixel 11, Pause Point is now rolling out to Pixel 6 and newer devices as part of this update.' Pause Point is in the forum release note and in the device table but is NOT mentioned in the blog post at all. Added 2026-09-18 by the independent factcheck agent: Google attaches NO DATE to 'First introduced on Pixel 11' -- 'May' occurs zero times in the thread body and the note names no month or year for that first introduction. The draft article's 「2026 年 5 月隨 Pixel 11 推出」 had no support in any of the four sources and was deleted; the article now writes only 公告寫它「最早在 Pixel 11 推出」、沒有給日期. The note's 'Pause Point' link points at blog.google/products-and-platforms/platforms/android/pause-point/, which is NOT in sources[] and must not be used to supply that date.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": true,
-   "verbatim_quote": "First introduced on Pixel 11, Pause Point is now rolling out to Pixel 6 and newer devices as part of this update."
-  },
-  {
-   "fact": "The forum note contains a section headed 'Feature Availability by Device' carrying footnote 5. The matrix itself is a PNG image attachment inside that thread (storage.googleapis.com/support-forums-api/attachment/thread-466181739-2189480914184742135.png, 1743x629, filename 'Screenshot 2026-09-15 11.54.42 PM.png'), not HTML text -- so it is invisible to text-only scraping and to screen readers, and there is no text alternative in the thread. Filename re-confirmed present in the raw HTML on 2026-09-17.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Feature Availability by Device"
-  },
-  {
-   "fact": "The device matrix has 25 device columns, in this order: Pixel 11 Pro Fold, Pixel 11 Pro XL, Pixel 11 Pro, Pixel 11, Pixel 10 Pro Fold, Pixel 10 Pro XL, Pixel 10 Pro, Pixel 10, Pixel 10a, Pixel 9 Pro Fold, Pixel 9 Pro XL, Pixel 9 Pro, Pixel 9, Pixel 9a, Pixel 8 Pro, Pixel 8, Pixel 8a, Pixel Fold, Pixel 7 Pro, Pixel 7, Pixel 7a, Pixel 6 Pro, Pixel 6, Pixel 6a, Pixel Tablet. That is 24 phones plus Pixel Tablet. No Pixel 5a or older model appears in the table at all.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "The device matrix has exactly five feature rows: 'Pixel VIPs updates'; 'Harry Potter Audiobook Packs'; 'Scam Detection in chat message notifications market expansion (AU, CA, DE, FR, IN, JP, MX, SG, and UK) and language expansion (AR, DE, ES, FR, DE, PT, and JA)'; 'Scam Detection in keyboard launch in the US'; 'Pause Point'. This is the image's own row structure, distinct from the four prose headings above. Row count re-verified 2026-09-18 by grid-line detection on the PNG: 7 horizontal rules, i.e. a header band plus 5 feature bands. verbatim_quote is deliberately empty: these row labels are pixels inside thread-466181739-2189480914184742135.png and appear nowhere in the thread's text, so no string search of the page can reproduce them -- they are the editor's reading of the image.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "In the device matrix, all 24 phone columns (Pixel 6 / 6a through Pixel 11 Pro Fold) carry a tick for every one of the five features. Pixel Tablet is listed as a column but carries NO tick for any of the five features -- checked cell by cell at 3x magnification by the original researcher and independently re-verified by the factcheck agent via grid-line detection and per-cell dark-pixel counting (30-35 dark pixels on ticked cells, 0 on the Pixel Tablet column, all five rows). Two independent methods agree. The article writes only 'Google's table marks none of the five features for Pixel Tablet', never 'Pixel Tablet does not support this'.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "Footnote 5, attached to the device table, is the availability caveat Google attaches to the Pixel VIPs row (and, by the same wording, to Pause Point, which carries no other condition): 'Feature availability may vary by country and/or language.' It names no country. Corrected 2026-09-17 per corrections-tech.md must_fix 4: this footnote is NOT the only caveat on the Harry Potter row -- Disclaimer 2 (below) separately gives Harry Potter Audiobook Packs a hard expiry date, 31 December 2026, which footnote 5 does not carry.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Feature availability may vary by country and/or language."
-  },
-  {
-   "fact": "The language-expansion label inside the device-matrix image reads '(AR, DE, ES, FR, DE, PT, and JA)' -- seven codes for six languages, with DE appearing twice. The prose in the same note lists six: Arabic, French, German, Portuguese, Japanese, and Spanish. The duplication is Google's own defect in the source image; the article uses the six-language prose list only and does not silently fix or reproduce the image's duplicate. Re-read from the PNG on 2026-09-18 and still present. verbatim_quote is deliberately empty for the same reason as the row-structure fact above: this label exists only as pixels in the attachment, not as text on the page.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "Disclaimer 1, on eligibility in general: 'Pixel Drops are provided during applicable Android update and support periods for your device. See g.co/pixel/updates for details. Feature availability varies by model. Devices sold separately.'",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Pixel Drops are provided during applicable Android update and support periods for your device. See g.co/pixel/updates for details. Feature availability varies by model. Devices sold separately."
-  },
-  {
-   "fact": "Disclaimer 2 gives the only two hard dates in the whole Drop: 'Harry Potter Audiobook Packs available until December 31, 2026. Audible offer available until January 14, 2027 only in the United States, Canada, United Kingdom, France, Germany, Italy, Spain, India, Japan, and Australia.' That is ten named countries for the Audible offer specifically; Taiwan is not among them. The theme packs (31 Dec 2026) and the Audible trial (14 Jan 2027) expire on different dates, and only the Audible trial carries the ten-country limit -- the theme packs' own sentence states no country.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Harry Potter Audiobook Packs available until December 31, 2026. Audible offer available until January 14, 2027 only in the United States, Canada, United Kingdom, France, Germany, Italy, Spain, India, Japan, and Australia."
-  },
-  {
-   "fact": "The ten Audible-offer countries are not the same set as the nine Scam Detection expansion countries plus the US. The Audible list adds Italy and Spain and omits Mexico and Singapore; the Scam Detection list adds Mexico and Singapore and omits Italy and Spain. Both lists are in the same forum note.",
-   "url": "https://support.google.com/pixelphone/thread/466181739",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "The Pixel Watch thread Google links from the blog post is titled 'Google Pixel Watch Update (Pixel Watch 5) - September 2026' -- the model restriction is in the title itself.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Google Pixel Watch Update (Pixel Watch 5) - September 2026"
-  },
-  {
-   "fact": "The watch update is a Wear OS 7 update and is limited to one model: 'All eligible Pixel Watch 5 devices will receive a Wear OS 7 update. The rollout will continue over the coming weeks in phases depending on carrier and device.' A separate 'Device Applicability' section repeats it: 'Applicable updates are available for the following models: Pixel Watch 5'.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "All eligible Pixel Watch 5 devices will receive a Wear OS 7 update."
-  },
-  {
-   "fact": "The watch build number is given under a heading 'Software version' / 'Global': 'Pixel Watch 5: CP3A.260905.002'. It is listed as Global, with no per-region build.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Pixel Watch 5: CP3A.260905.002"
-  },
-  {
-   "fact": "Watch feature - Gemini Personalization: 'Personalization makes Gemini on Watch more helpful by learning from past conversations and connected Google apps (Gmail, Calendar, Search, YouTube, Photos) to deliver personalized responses. Users can ask queries like \"What's on my calendar today?\" or \"Find the tracking number in my email\" and receive answers tailored to their data. The feature is powered by an offline user profile and real-time online retrieval working together.' Five connected apps are named. No region or language condition is stated for it.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": true,
-   "verbatim_quote": "learning from past conversations and connected Google apps (Gmail, Calendar, Search, YouTube, Photos) to deliver personalized responses"
-  },
-  {
-   "fact": "Watch feature - Proactive suggestions, described as: 'Gemini Intelligence Proactive Suggestions turns complex, multi-step tasks into seamless one-tap actions in messages. If a loved one asks when is the dinner with family, Gemini automatically locates the info in your calendar and surfaces it directly on your wrist, eliminating the need to dig through your phone'. It carries footnote 1, the tightest condition in the entire Drop: 'Available only on Pixel Watch 5 paired with Pixel 11. Also requires gemini and proactive assistance enabled on paired Pixel 11.' Corrected 2026-09-17 per corrections-tech.md must_fix 9: verbatim_quote extended to the sentence's actual end instead of stopping mid-sentence without an ellipsis.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Available only on Pixel Watch 5 paired with Pixel 11. Also requires gemini and proactive assistance enabled on paired Pixel 11."
-  },
-  {
-   "fact": "Watch feature - Offline Gemini: 'Powered by on-device AI, Gemini can process core actions instantly with low latency, even when you're completely offline. Examples are setting up a timer, starting/stopping a workout, turning on do not disturb and other device actions.' Corrected 2026-09-17 per corrections-tech.md must_fix 3: Google names THREE example actions (setting up a timer; starting/stopping a workout; turning on do not disturb), followed by the open-ended catch-all 'and other device actions', which is not a fourth named example. The prior record's 'four example actions' is wrong; 'low latency' is Google's claim, not a measurement.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Powered by on-device AI, Gemini can process core actions instantly with low latency, even when you’re completely offline."
-  },
-  {
-   "fact": "Watch feature - Raise to talk improvements, in full: 'Updates and improvements for raise to talk gesture model.' That single sentence is everything Google says about it; the blog post capitalises it as 'Raise to Talk' while the support thread writes 'raise to talk'.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Updates and improvements for raise to talk gesture model."
-  },
-  {
-   "fact": "Watch feature - GPS: Google's heading is 'Our most accurate GPS route tracking' and the body is 'Major improvements to the route maps displayed on Google Health app after running, biking, hiking, and walking sessions.' 'Most accurate' is a vendor superlative with no figure attached and no comparison baseline.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Our most accurate GPS route tracking"
-  },
-  {
-   "fact": "Watch feature - the gesture work the blog calls 'One Handed gesture app integrations' is headed 'Hand Gestures App Expansions' in Google's own support thread, and lists eight items: double pinch to open At a Glance from watch face; double pinch to open notification center from watch face; double pinch to scroll through Gemini response; double pinch to scroll through cards in Wallet app; double pinch to scroll through your workout metrics; double pinch to toggle between Google Maps views; double pinch to manage Recorder app; wrist turn gesture as universal back navigation.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Hand Gestures App Expansions"
-  },
-  {
-   "fact": "The watch note's security-bulletin sign-off, 'Thanks, Google Pixel Watch Support Team', sits near the TOP of the note, immediately after the line pointing to the Pixel Watch Security Bulletin -- not at the end. The note's actual last section is 'Previous Pixel Watch Updates'. Corrected 2026-09-17 per corrections-tech.md must_fix 6: the prior wording implied a closing signature; the article does not describe where in the note this sign-off sits.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Details regarding applicable security fixes can be found on the Pixel Watch Security Bulletin"
-  },
-  {
-   "fact": "The same watch thread lists Google's previous Pixel Watch updates as 'June (Pixel Watch 2, 3, & 4)', 'March EMR (Pixel Watch 1)' and 'March (Pixel Watch 2, 3, & 4)' -- no year is printed anywhere in the visible labels. The year (2026) is carried only in the link hrefs (.../google-pixel-watch-update-june-2026, .../google-pixel-watch-update-march-2026, .../pixel-watch-1-modem-software-update-march-2026). Corrected 2026-09-17 per corrections-tech.md must_fix 7: kept out of the article body since the year is not visible text, only an href.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "Google's Help Centre page 'Protect yourself with spam & scam detection on your Pixel phone' lists the CUMULATIVE state of Scam Detection after this Drop: 'Scam Detection is available in these regions: Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, Spain, United Kingdom, United States.' That is eleven regions. Taiwan is not listed. Re-confirmed unchanged on 2026-09-17 via both curl and WebFetch.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Scam Detection is available in these regions:"
-  },
-  {
-   "fact": "The same Help Centre page lists eight languages: Arabic, English, French, German, Indonesian, Japanese, Portuguese, Spanish. Chinese in any form is not listed. Re-confirmed unchanged on 2026-09-17.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Scam Detection is available in the following languages:"
-  },
-  {
-   "fact": "The Help Centre region list (11) does not match the Drop announcement arithmetic (US already supported + nine new = 10). The Help Centre additionally lists Spain, and additionally lists English and Indonesian among the languages, neither of which appears in the Drop's 'six new languages'. Google does not reconcile the two lists anywhere reachable. The article treats the Help Centre page as the current cumulative snapshot and the forum note as the September delta, and says so.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": ""
-  },
-  {
-   "fact": "The Help Centre confirms the US-only scope of the keyboard variant independently of the Drop note: 'This feature helps detect likely scams by analyzing new message notifications from supported apps. For users in the US, this feature can also help detect scams when using the keyboard in select apps.'",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "For users in the US, this feature can also help detect scams when using the keyboard in select apps."
-  },
-  {
-   "fact": "Help Centre on the setting: 'Scam Detection for chat messages is on by default.' The path is Settings app > Security & privacy > More security & privacy > Scam Detection > turn 'Message scams' on or off. Google's own Traditional-Chinese rendering of the same page (?hl=zh-Hant, which itself carries Google's own warning that it may be machine-translated and may contain errors) gives the path as 設定 > 安全性與隱私權 > 其他安全性和隱私權設定 > 詐騙偵測 > 訊息詐騙, with the feature named 詐騙偵測 and the warning chip 疑似詐騙.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Scam Detection for chat messages is on by default."
-  },
-  {
-   "fact": "Help Centre on data handling: 'This feature runs in a secure, isolated environment to identify suspicious patterns... Your message content remains private and isn't sent to Google, unless you choose to share it.' If a user taps to share a flagged message, 'Only the selected message content will be shared, without common identifying info.'",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": true,
-   "verbatim_quote": "Your message content remains private and isn’t sent to Google, unless you choose to share it."
-  },
-  {
-   "fact": "Google states the limit of the feature itself: 'Important: Scam Detection may not catch every scam. Be careful when you share personal info or tap on links.'",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Important: Scam Detection may not catch every scam. Be careful when you share personal info or tap on links."
-  },
-  {
-   "fact": "The Help Centre's 'Check feature eligibility' material lists only region and language; it states no Pixel model requirement anywhere for chat Scam Detection, even though the forum note requires Pixel 6 or newer and the device matrix starts at Pixel 6/6a. The two Google pages state different eligibility scopes, so the Help Centre's region/language list is not read as complete eligibility on its own.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Check feature eligibility"
-  },
-  {
-   "fact": "Added 2026-09-18 by the independent factcheck agent, and it overturns the whole 'the threads carry no visible date' chain: both support.google.com threads DO render a date to a reader, client-side, from the same internal field the earlier research decoded and then excluded. Loaded in a real browser, the watch thread's header reads 'Stefanie Frederick / Community Manager / Original Poster / Sep 2, 2026', and the phone thread's header reads 'Kush M. / Community Manager / Original Poster / 2 days ago' with 'Last edited 2 days ago' at the foot (read 2026-09-18). curl sees neither, because both are rendered from the inline-JSON blob. Second round, 2026-09-18: the machine-readable timestamp behind that rendered date was located and converted independently. The watch thread's own record opens '[[464268922,\"1788292062825882\",174288606,1788456498201866]' and repeats 1788292062825882 inside the message record; 1788292062825882 microseconds = 2026-09-01T19:47:42Z = 2026-09-02 03:47:42 in Taipei (UTC+8) and 2026-09-01 12:47:42 in US Pacific (UTC-7). So the rendered 'Sep 2, 2026' is what a Taipei reader sees and the article's date holds under Taipei time, while a US reader sees Sep 1 -- the date is produced by the reader's browser, not printed by Google. The same slot in the phone thread holds 1789496860754770 = 2026-09-15T18:27:40Z = 2026-09-16 02:27:40 Taipei, which is what renders as '2 days ago' when read on 2026-09-18 in a UTC+8 browser, so the two threads' fields are the same field and the reading is calibrated. verbatim_quote is the contiguous inline-JSON string the conversion rests on, because 'Sep 2, 2026' itself is never a string on the page. Consequences: (a) 'the threads render no visible date' is wrong and was deleted from the article; (b) the displayed date is timezone-dependent, and the article now says the page's date is converted by the browser and that Taipei time gives 2026-09-02; (c) the 'Community Manager' badge IS visible next to both authors, which the earlier record could not establish from the static HTML.",
-   "url": "https://support.google.com/googlepixelwatch/thread/464268922",
-   "is_vendor_claim": false,
-   "verbatim_quote": "\"1788292062825882\""
-  },
-  {
-   "fact": "Added 2026-09-18 by the independent factcheck agent: Google's own Traditional-Chinese rendering of source 4 (same answer id, reached with Google's ?hl=zh-Hant switch, HTTP 200 / 1,696,451 bytes on 2026-09-18) renders Circle to Search as 「畫圈搜尋」 and Google Lens as 「Google 智慧鏡頭」, and renders the AI/web sentence as 「系統會運用 AI 和網路資訊評估訊息是否可能涉及詐騙」. The same page carries Google's own notice 「這個頁面可能含有使用 AI 技術翻譯的內容，也許會有錯誤。」, so the product names are kept in English in the body; the Chinese renderings are recorded here only. IMPORTANT, second round 2026-09-18: verbatim_quote below is contiguous on that ?hl=zh-Hant rendering (verified by string match against the unescaped body, 2 occurrences), NOT on the default-language fetch of the url field, which serves the English sentence recorded in the next fact. Because Google itself, not this site, wrote that Chinese sentence but wrote it on a page carrying its own machine-translation warning, the article no longer attributes it bare to 「Google 寫」 -- it now says 「Google 的中文版頁面寫」, so a reader can connect the quote to the translation warning stated in the article's last section.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "系統會運用 AI 和網路資訊評估訊息是否可能涉及詐騙。"
-  },
-  {
-   "fact": "Added 2026-09-17 per corrections-tech.md must_add (Circle to Search / Google Lens): the same Help Centre page has a section headed 'Use Circle to Search & Google Lens to spot scam messages', with step lists for both, and the sentence 'Our systems will use AI and information from the web to assess whether the message is likely a scam.' No region or language restriction is attached anywhere to this route, unlike the 11-region Scam Detection list. This is an AI/web-lookup mechanism, explicitly distinct from the on-device Scam Detection feature; the article does not present it as the same thing.",
-   "url": "https://support.google.com/pixelphone/answer/16704479",
-   "is_vendor_claim": false,
-   "verbatim_quote": "Our systems will use AI and information from the web to assess whether the message is likely a scam."
-  }
- ],
- "not_said": [
-  "Taiwan. Taiwan is named nowhere in any of the four sources. It is not in the nine new Scam Detection countries, not in the eleven Help Centre regions, and not in the ten Audible-offer countries. Traditional or Simplified Chinese is not in the eight supported Scam Detection languages. Google does not say Taiwan is excluded either -- it simply does not appear. Write this as '官方未提及台灣', never as '台灣不能用' for the features Google gave no region list for.",
-  "No price. Nothing in the Drop is priced. The Audible trial is described only as 'a two-month Audible free trial' with no statement of what it costs after the trial and no statement of whether a payment method is required.",
-  "'All eligible Pixel users' for the Audible trial is never defined. Google does not say what makes a user eligible beyond the ten listed countries, does not say whether existing or lapsed Audible subscribers qualify, and does not say how the trial is claimed.",
-  "No rollout completion date. 'Over the coming weeks in phases, depending on carrier and device' is the only schedule, for both the phone Drop and the Pixel Watch 5 Wear OS 7 update. No carrier is named and no phase order is given.",
-  "No Android version number and no phone build number. The Pixel Watch thread gives a build (CP3A.260905.002) but the phone thread gives none, and names no Android release. Do not supply one.",
-  "No region condition at all is stated for Pixel VIPs updates, for Harry Potter Audiobook Packs (beyond the ten-country Audible trial), or for Pause Point. The only thing covering them is the blanket footnote 'Feature availability may vary by country and/or language.' So Google neither promises nor denies these three in Taiwan.",
-  "No region or language condition is stated for any Pixel Watch feature, including Gemini Personalization. The build is labelled 'Global' and that is all.",
-  "The blog post does not say Pixel Watch features are Pixel Watch 5 only -- it just says 'If you have a Pixel Watch'. Only the linked support thread restricts it. Do not repeat the blog's looser wording without the restriction.",
-  "The blog post does not mention Pause Point, Gemini Personalization, Proactive suggestions, Offline Gemini or the GPS route-tracking change at all. Those exist only in the support threads.",
-  "Pixel Tablet's blank row is a blank row, not a sentence. Google's table shows no tick for Pixel Tablet on any of the five features, but Google never writes 'Pixel Tablet does not get these'. Report it as 'Google's table marks none of the five features for Pixel Tablet'.",
-  "Google never says which languages the US keyboard Scam Detection covers. Footnote 4 only says 'Available only in select languages in the US.'",
-  "Google does not say whether Pixel Watch 1 through 4 receive anything in September 2026. The thread only lists their previous updates (June, and March EMR for Watch 1), with no year printed on the visible labels.",
-  "No measured performance figures anywhere. 'Our most accurate GPS route tracking', 'low latency', 'real-time', 'processing happens on your device' are Google's characterisations with no numbers and no methodology.",
-  "As of 2026-09-17 there is no September 2026 Pixel Watch security bulletin published: source.android.com/docs/security/bulletin/pixel-watch lists August 2026 (published August 20, 2026, patch level 2026-08-05) as the newest entry and the page footer reads 'Last updated 2026-08-20 UTC', even though the watch release note points readers there for 'applicable security fixes'. Do not name a September patch level.",
-  "Google published no Traditional-Chinese version of this Pixel Drop post: blog.google/intl/zh-tw/products-and-platforms/devices/pixel/september-2026-pixel-drop/ returns HTTP 404 (while blog.google/intl/zh-tw/ returns 200), re-confirmed 2026-09-17. Taiwanese readers only have the English post plus the machine-assisted Chinese Help Centre page.",
-  "Added 2026-09-17 per corrections-tech.md must_add: support.google.com/pixelphone/answer/16704479 carries no visible publication or update date anywhere -- no dateModified, no JSON-LD, no 'Last updated' string outside JavaScript template literals. The 11 regions / 8 languages can only be described as the page state read on the checked_on date, never as 'after the September Drop' or any other dated claim.",
-  "Added 2026-09-17 per corrections-tech.md must_add: the Help Centre page's eligibility material states region and language only; it does not restate the Pixel 6-or-newer device requirement the forum note and the device matrix both carry. The Help Centre list is therefore not read as complete eligibility criteria by itself.",
-  "The Help Centre page also documents call-level Scam Detection ('On eligible Pixel phones, you can get real-time alerts if a call shows patterns commonly associated with scams') and Google Messages spam ('The Google Messages app automatically detects and moves suspected spam into a dedicated folder') on the same page. Neither is part of this September Drop, which covers only the chat-notification and keyboard variants; the article does not conflate the three."
- ],
- "unverified_or_excluded": [
-  {
-   "claim": "Exact posting dates and times of the two Google support-forum threads.",
-   "seen_where": "Decoded internal timestamp arrays inside the threads' inline JSON: the phone thread carries 1789496860754770 microseconds = 2026-09-15T18:27:40Z (27 minutes after the blog post), the watch thread carries 1788292062825882 = 2026-09-01T19:47:42Z with a later value 1788456498201866 = 2026-09-03T17:28:18Z. The factcheck agent additionally calibrated this field against three watch threads whose titles name a month and year (June 2026, March 2026, March 2026) and found it matches the Pixel Watch security bulletin's own published dates exactly for two of them (June 16 2026 and March 3 2026).",
-   "why_excluded": "SUPERSEDED 2026-09-18 by the independent factcheck agent, and refined the same day in the second round. The premise was wrong: the threads DO render a date, client-side, from exactly this field, so it is not an undocumented internal-only value. In a browser the watch thread shows 'Sep 2, 2026' and the phone thread shows '2 days ago' plus 'Last edited 2 days ago'. The second round decoded the field itself rather than relying on the browser: 1788292062825882 microseconds = 2026-09-01T19:47:42Z = 2026-09-02 03:47:42 Taipei / 2026-09-01 12:47:42 US Pacific, and the phone thread's 1789496860754770 = 2026-09-15T18:27:40Z = 2026-09-16 02:27:40 Taipei, which is exactly what renders as '2 days ago' on 2026-09-18 in a UTC+8 browser -- the two readings calibrate each other. What survives: (a) the displayed date is computed by the reader's browser, so it must be written as a converted date, not a printed one -- the article writes 「公告頁面上的日期由瀏覽器依讀者時區換算，台北時間是 2026 年 9 月 2 日，那是討論串本身的日期」; (b) do NOT write that the Pixel Watch 5 / Wear OS 7 update 'was announced on 15 September', and do not write that the watch note predates the blog post either, because the field dates the thread rather than the text now on it (the note carries build CP3A.260905.002, a later stamp than 2026-09-01); (c) the phone thread's label is relative, not absolute, so the forum note must not be described as '2026 年 9 月 15 日發布的論壇公告' -- both captions were changed to 「依 Google 9 月 Pixel Drop 的論壇公告……整理」; (d) news_date / event_date stays 2026-09-15, from the blog post's own printed dateline 'Sep 15, 2026' and its JSON-LD datePublished."
-  },
-  {
-   "claim": "That the forum threads are written by Google staff.",
-   "seen_where": "The phone thread's byline is 'Kush M.' and the watch thread's is 'Stefanie Frederick'; the pages contain badge label strings ('Community Manager', 'Product Expert', 'Google Employee') but only in the UI string dictionary, so no badge could be tied to either author from this container.",
-   "why_excluded": "Google Support Community threads can also be posted by volunteer Product Experts, who are not Google. These two are treated as first-party on different grounds: the blog post calls the phone thread 'our community forum post' and links it, and the watch thread is signed 'Google Pixel Watch Support Team'. Attribute to 'Google', never to the personal names."
-  },
-  {
-   "claim": "The Audible offer's terms (two-month length, price after trial, sign-up mechanics).",
-   "seen_where": "www.audible.com/ep/pixel-country-selection, HTTP 200, the page Google links on the words 'two-month Audible free trial'.",
-   "why_excluded": "That URL is only a country picker: twelve locale entries mapping to the same ten countries Google names, with no trial length and no terms stated, plus an unrelated Amazon promo banner ('Prime Member Exclusive | $0.99/mo for 4 months, $8.99/mo thereafter') that is NOT the Pixel offer and must not be written. The only sourced statement about this offer is Google's own: 'two-month Audible free trial', valid until 14 January 2027 in ten countries."
-  },
-  {
-   "claim": "Which languages the US keyboard Scam Detection actually supports.",
-   "seen_where": "Inferred temptation from the Help Centre's eight-language list.",
-   "why_excluded": "The eight languages are for Scam Detection as a whole, across eleven regions. Google's footnote 4 says only 'Available only in select languages in the US' and never intersects the two lists. Mapping one onto the other would be inference, not Google's statement."
-  },
-  {
-   "claim": "Why the Help Centre lists Spain, English and Indonesian when the September expansion note does not.",
-   "seen_where": "The gap between support.google.com/pixelphone/answer/16704479 and the forum note, both fetched the same day (2026-09-16 originally, re-confirmed 2026-09-17).",
-   "why_excluded": "Google gives no explanation and no dates on the Help Centre page. Most likely the Help Centre reflects cumulative availability including earlier waves, but that is a reading, not a sourced statement. The article reports both lists and says Google does not reconcile them."
-  },
-  {
-   "claim": "Pixel Tablet is being dropped, is end-of-life, or is excluded on purpose.",
-   "seen_where": "The empty Pixel Tablet column in Google's own availability image.",
-   "why_excluded": "An empty row is an absence of a tick, nothing more. Google gives no reason and makes no statement about the Pixel Tablet's future. Anything beyond 'the table marks none of the five features for Pixel Tablet' would be speculation."
-  },
-  {
-   "claim": "Any spec, availability date or price for Pixel 11, Pixel 11 Pro Fold, Pixel 10a or Pixel Watch 5 themselves.",
-   "seen_where": "Model names appear as column headers in the availability table and in the blog's related-stories rail ('You can officially buy the Pixel 11 phones and Pixel Watch 5.').",
-   "why_excluded": "Nothing in the four sources describes those products. The device names are usable as names only. Do not describe the hardware, and do not compare models -- tech.md forbids buying advice."
-  },
-  {
-   "claim": "Real-world effectiveness of Scam Detection, e.g. detection rate or false-positive rate.",
-   "seen_where": "Nowhere. Google publishes no figure.",
-   "why_excluded": "No number exists in any source, and this site does no testing. Google's own caveat 'Scam Detection may not catch every scam' is the only thing that can be written about its limits."
-  },
-  {
-   "claim": "Reaction, hands-on reports and feature lists circulating about this Drop on technology media and aggregator sites.",
-   "seen_where": "Not used. No news or aggregator page was opened for this assignment, either in the original research or in today's re-verification.",
-   "why_excluded": "BRIEF.md bars media and aggregators from becoming facts or sources. Everything above came from Google properties only. The richest material -- the device matrix, the country lists, the expiry dates, the Pixel Watch 5 restriction, the Circle to Search section -- is all first-party and was simply hidden one click below the blog post, so there was no need for secondary sourcing."
-  }
- ],
- "editorial_brief": "READER: a Taiwanese Pixel owner -- Pixel 6 through Pixel 11, possibly a Pixel Watch -- who saw a headline about scam warnings and wants to know whether anything in it reaches their phone.\n\nANGLE: a Feature Drop is not one thing. Its features are gated three different ways, stated in three different places. (a) Device gate: the matrix ticks 24 phone models, Pixel 6/6a up to Pixel 11 Pro Fold, for all five rows, and ticks Pixel Tablet for none. (b) Region/language gate: keyboard Scam Detection is US-only and 'select languages in the US'; notification Scam Detection adds nine named countries and six named languages this Drop, on top of an eleven-region/eight-language cumulative state the Help Centre states separately and without a date; the Audible trial covers ten named countries until 14 January 2027, and the theme packs themselves expire 31 December 2026 with no country limit of their own. (c) Pairing gate: the watch's Proactive suggestions need a Pixel Watch 5 paired with a Pixel 11 with Gemini and proactive assistance turned on. Taiwan appears in none of the lists. Say that plainly and let the reader check their own model; do not turn it into a complaint about Google or a prediction of when Taiwan gets it.\n\nSECOND ANGLE: where the real release note lives. The blog post says 'If you have a Pixel Watch' -- the linked note says Pixel Watch 5 only. The blog names three phone-side items in prose -- the linked forum note names four feature headings and a five-row device matrix, including Pause Point, which the blog never mentions. The blog gives no dates -- the note gives two. And the device matrix that answers 'does my phone get this' is a PNG screenshot inside a forum thread with no text alternative. A concrete point about how to read a vendor Feature Drop, grounded in having actually opened both pages.\n\nTHIRD ANGLE, small but genuinely useful for a Taiwan reader: Circle to Search and Google Lens, on the same Help Centre page as the region-gated Scam Detection feature, carry no region or language restriction at all -- a different (AI/web-lookup) mechanism, not to be blurred with on-device Scam Detection, but worth naming because it is the one scam-checking route not fenced behind the eleven-region list.\n\nSTRUCTURE: 9/15 announcement and where the real note lives; phone features and the device matrix (table closes this section); region/language detail including the Help Centre's cumulative snapshot and Circle to Search (diagram closes this section); the Pixel Watch 5 side and its pairing condition; what is not stated, including Taiwan, dates, build numbers and the Pixel Tablet row.\n\nLIVED-EXPERIENCE material stays out or is explicitly editor-labelled per BRIEF.md; none was needed given how much first-party detail exists.",
- "must_not_write": [
-  "No buying or upgrade advice of any kind -- tech.md bars 該不該買 / 值不值得升級 / 哪一支比較好. Listing which model gets which feature is allowed; concluding which model to get is not.",
-  "Do not write that Taiwan is excluded, blocked or unsupported. Google names Taiwan nowhere. Write 官方公告未提及台灣 and, for the features with no region list, 官方只說可用性可能因國家或語言而異.",
-  "Do not restate Google's capability claims as fact. 'Most accurate GPS route tracking', 'low latency', 'real-time', 'processing happens on your device', 'keeping your conversations private' are all Google 表示. This site ran no test -- never write 我們實測.",
-  "Do not invent an Android version, a phone build number, a September 2026 Pixel Watch security patch level, a Taiwan launch date or a rollout completion date. None exists in any source; the only build published is the watch's CP3A.260905.002.",
-  "Do not silently fix Google's duplicated 'DE' in the image's language list (AR, DE, ES, FR, DE, PT, and JA). Use the six-language prose list for the body.",
-  "Do not merge the ten Audible countries with the nine Scam Detection countries -- they are different sets (Audible adds Italy and Spain, omits Mexico and Singapore).",
-  "Do not carry the blog's loose phrasing 'If you have a Pixel Watch' without Google's own restriction to Pixel Watch 5.",
-  "Do not attribute anything to the forum posters' personal names ('Kush M.', 'Stefanie Frederick'). Attribute to Google.",
-  "Do not describe or evaluate Pixel 11 / Pixel Watch 5 hardware. The sources only use those names.",
-  "No finance disclaimer callout -- tech.md says the tech vertical must not carry one.",
-  "No trademark, wordmark, logo, mascot or UI screenshot in the hero or the SVG diagram; write product names as plain text.",
-  "Do not write anything about how scams are actually carried out. Batch 3's threat-report rule applies: scope and what the user should do, never attack technique.",
-  "No list formatting, no Markdown, no emoji, no Simplified Chinese characters in the zh-TW pack.",
-  "Do not write 'Google 列出五項功能' -- the forum note's prose names four feature headings; five is the device-matrix's row count because Scam Detection is split into a keyboard row and a notification row there. State both numbers with what each one counts.",
-  "Do not write that the Pixel Watch 5 / Wear OS 7 update 'was announced on 15 September'. Revised 2026-09-18: the watch thread DOES display a date to readers (rendered client-side) -- 'Sep 2, 2026' in a UTC+8 browser -- so 'the note carries no visible date' is false and must not be written either. Print the displayed date only with the caveat that the browser converts it into the reader's own timezone, and never print the raw 2026-09-01T19:47:42Z instant as the note's date.",
-  "Revised in the second round, 2026-09-18: do not write that the watch note 「早於部落格文章」 or that it was published two weeks before the Pixel Drop. What the page gives is the THREAD's date (1788292062825882 = 2026-09-01T19:47:42Z, 2026-09-02 in Taipei), and the note's own build string CP3A.260905.002 carries a later stamp than that date, so the content a reader sees today was edited after the thread was created. The article therefore states only what the page shows and how it is produced, and takes its event date from the blog post's printed 'Sep 15, 2026'. Do not turn the two dates into a chronology.",
-  "Do not describe the phone forum note as '2026 年 9 月 15 日發布的論壇公告'. The thread displays only a relative label ('2 days ago', 'Last edited 2 days ago'); no absolute publication date for that thread is printed anywhere a reader can see. Only the blog post carries a printed dateline, 'Sep 15, 2026'.",
-  "Do not put a date on 'First introduced on Pixel 11' for Pause Point. The forum note gives none ('May' occurs zero times in it), and the Pause Point blog post it links to is not in sources[].",
-  "Do not import the Pixel Watch security bulletin's state (source.android.com/docs/security/bulletin/pixel-watch) into the article. It is not in sources[], it is live data, and the claim would be a negative one ('no September bulletin yet'). The article may only repeat that the note points readers there.",
-  "Do not write that Google published no Traditional-Chinese version of the Pixel Drop blog post. That rested on probing a derived intl/zh-tw URL, which BRIEF.md counts as guessing. The article now says only that the blog post and the two forum notes it cites are English, and that the Help Centre page has a Chinese version carrying Google's own machine-translation warning.",
-  "Do not describe the sign-off 'Thanks, Google Pixel Watch Support Team' as being at the end of the watch note -- it sits near the top, right after the security-bulletin line; the note's last section is 'Previous Pixel Watch Updates'.",
-  "Do not write 'Offline Gemini gives four examples' -- Google names three (timer, workout start/stop, do-not-disturb) plus an open-ended 'other device actions', which is not a fourth named example.",
-  "Do not present the Help Centre's 11-region/8-language list as complete eligibility criteria on its own -- it states no Pixel model requirement, while the forum note and device matrix require Pixel 6 or newer.",
-  "Do not conflate Circle to Search / Google Lens (AI and web-lookup based, no stated region limit) with the on-device Scam Detection feature this Drop expands, and do not invent an official Traditional-Chinese product name for Circle to Search -- none was found in any source; keep the English product names as plain text.",
-  "Do not conflate call-level Scam Detection or the Google Messages spam folder (both documented on the same Help Centre page) with the chat-notification and keyboard Scam Detection variants this Drop actually changes."
- ],
- "live_data_warnings": [
-  "The device-availability matrix is a snapshot read from a PNG image, re-verified by two independent methods (manual multi-magnification read and per-cell pixel-detection) on 2026-09-16 and spot-checked again by filename on 2026-09-17: 25 device columns, 5 feature rows, columns 1-24 ticked on all 5 rows, column 25 (Pixel Tablet) ticked on none. It is still a snapshot of one image; write 'Google's table does not mark these five features for Pixel Tablet', not 'Pixel Tablet is unsupported'.",
-  "The Help Centre's 11 regions / 8 languages are a cumulative count with NO date anywhere on that page (checked again 2026-09-17); the forum note's 9 countries / 6 languages are this Drop's own delta. The two counts must not be added, subtracted or presented as the same list.",
-  "As of 2026-09-17 there is still no September 2026 Pixel Watch security bulletin: source.android.com/docs/security/bulletin/pixel-watch's newest entry remains August 2026 (published 2026-08-20, patch level 2026-08-05, footer 'Last updated 2026-08-20 UTC'). This is a checked_on-date snapshot and should be re-tested before any later reuse of this record.",
-  "The two fixed expiry dates still need their checked_on attached when cited: Harry Potter Audiobook Packs until 2026-12-31, the Audible trial until 2027-01-14 (ten named countries only for the Audible trial).",
-  "blog.google/intl/zh-tw/products-and-platforms/devices/pixel/september-2026-pixel-drop/ returns 404 (re-confirmed 2026-09-17) while blog.google/intl/zh-tw/ returns 200 -- Google has not published a Traditional-Chinese version of this specific post. Taiwanese readers have only the English original and the machine-assisted Chinese Help Centre page (which carries Google's own AI-translation warning).",
-  "Both support.google.com threads still serve their body inside a double-escaped inline-JSON blob rather than plain HTML (confirmed again 2026-09-17); a future re-check must grep the raw bytes for exact phrases (as this record's sourcing_notes documents) or budget time to fully unescape the blob, not rely on naive tag-stripping."
- ],
- "corrections_applied": [
-  "must_fix 1 (September Android Drop claim refuted): applied. The not_said entry is deleted outright; verified_facts now carries an explicit zero-occurrence check re-confirmed 2026-09-17.",
-  "must_fix 2 (og:title mislabelled as short form): applied. verified_facts corrected to state og:title and twitter:title both carry the FULL headline and only the <title> element is short.",
-  "must_fix 3 (Offline Gemini 'four examples'): applied. verified_facts corrected to three named examples plus an open-ended tail; added to must_not_write so the article cannot regress.",
-  "must_fix 4 (footnote 5 'only caveat' on VIPs AND Harry Potter): applied. verified_facts narrowed to Pixel VIPs (and Pause Point); Harry Potter's separate 2026-12-31 expiry from Disclaimer 2 is called out as a distinct condition.",
-  "must_fix 5 ('five named features' miscount): applied. verified_facts corrected to four prose feature headings vs. five device-matrix rows (Scam Detection split into keyboard + notification rows); added to must_not_write.",
-  "must_fix 6 (sign-off position): applied. verified_facts corrected to state the sign-off sits near the top of the note, not the end; added to must_not_write.",
-  "must_fix 7 (no year in the 'previous updates' labels): applied. verified_facts corrected to note the year is only in the link hrefs; the article does not use this fact at all, removing the risk entirely.",
-  "must_fix 8 ('as its origin' overclaim): applied. verified_facts reworded to 'links to Google's November 2025 Pixel Drop post' without asserting origination.",
-  "must_fix 9 (Proactive suggestions quote missing its tail): applied. verbatim_quote extended to the sentence's actual end.",
-  "must_add (watch note date): applied. Promoted from unverified_or_excluded into must_not_write per the correction's own instruction; the article states only that the watch note predates the blog post and carries no visible date, and does not print 2026-09-01.",
-  "must_add (Help Centre has no date): applied. New not_said and live_data_warnings entries; the article attributes the 11-region/8-language list to the 2026-09-17 checked_on snapshot, never to 'after the Drop'.",
-  "must_add (Help Centre states no model condition): applied. New verified_fact and not_said entry; the article does not present the Help Centre list as complete eligibility.",
-  "must_add (Circle to Search / Google Lens omission): applied. New verified_fact added, and used in the article body as a not-region-gated alternative, explicitly distinguished from on-device Scam Detection.",
-  "must_add (three different 'Scam Detection' things on one page): applied. New not_said entry and must_not_write item; the article covers only the chat-notification and keyboard variants this Drop actually changes.",
-  "must_add (forum note link targets for the two update channels): applied, folded into the existing verified_fact about 'Update to the latest Android version' / 'update your apps' with both hrefs now recorded.",
-  "must_add (second attachment image is hero art, not a second matrix): applied, recorded in sourcing_notes so a later agent does not mistake it for a second data table; not used in the article.",
-  "live_data_warnings: applied, all five original items carried forward and re-checked on 2026-09-17 with the same findings; two new items added (Help Centre no-date, blob-escaping still present).",
-  "source_list_fix: applied. All four sources remain first-party Google properties, checked_on updated to 2026-09-17 throughout the content pack, this record, the article's second paragraph, the table caption and the diagram caption -- all six locations consistent.",
-  "checked_on: this record independently re-verifies all four sources on 2026-09-17 (see sourcing_notes for the byte counts and phrase greps), one day after the prior research (2026-09-16) and the factcheck (2026-09-16); it does not merely copy the earlier date forward."
- ],
- "factcheck": {
-  "checked_by": "independent factcheck agent",
-  "checked_on": "2026-09-18",
-  "method": "All four sources[] refetched with curl -sL -A \"Mokaair-editorial\" (no email, name or personal data in any request, header or query string) and read in full: blog.google 200 / 389,344 bytes (body present as plain HTML, five <p> elements plus JSON-LD and meta tags); support.google.com/pixelphone/thread/466181739 200 / 2,060,316 bytes; support.google.com/googlepixelwatch/thread/464268922 200 / 1,900,528 bytes; support.google.com/pixelphone/answer/16704479 200 / 1,683,525 bytes. The three support pages serve their body inside a double-escaped inline-JSON blob, so a local decoder unescaped \\\\uXXXX / \\\\xXX / \\\\\" / \\\\/ repeatedly and the release notes were then read end to end, not grepped for expected phrases. The device-availability matrix was fetched as an image (thread-466181739-2189480914184742135.png, 200 / 73,292 bytes, 1743x629) and read visually, not inferred: 25 device columns from Pixel 11 Pro Fold to Pixel Tablet with Pixel Fold between Pixel 8a and Pixel 7 Pro, 5 feature rows, all 24 phone columns ticked on all 5 rows, the Pixel Tablet column blank on all 5, and Google's own duplicated 'DE' in '(AR, DE, ES, FR, DE, PT, and JA)' confirmed. Both support threads were additionally loaded in a real browser, which is how the rendered dates and author badges were found. Google's zh-Hant rendering of source 4 was read through Google's own ?hl=zh-Hant switch. No URL outside sources[] became a basis for any sentence in the article; no identifier or path was guessed. 96 claims checked: every paragraph sentence, the 5 summary lines, the 6 FAQ answers, the callout, all 20 table cells plus caption, the diagram caption and its four nodes, the hero_label, title and description.",
-  "verdict": "ok",
-  "verdict_history": "第一輪（2026-09-18）是 needs_second_round：改了 17 處，其中三處動到骨幹。第二輪（同日，見 second_round）覆核完那三處與所有新寫的句子，再改 16 處後改判 ok。",
-  "edits_to_the_pack": [
-   "第 1 節第 1 段：「只有四段文字」→ 部落格本文其實是五個 <p>（開頭一句「Our September Pixel Drop is officially here…」被漏掉）。改寫成不帶數字的敘述。",
-   "第 2 節第 2 段：刪掉 Pause Point 的「2026 年 5 月隨 Pixel 11 推出」。四份來源都沒有這個日期，公告只寫 'First introduced on Pixel 11'；已改成「公告寫它『最早在 Pixel 11 推出』、沒有給日期」。",
-   "第 4 節第 1 段：「這則公告比部落格文章更早發布，本身沒有標示日期」→ 手錶討論串在瀏覽器裡其實顯示 'Sep 2, 2026'。已改成「公告頁面標示的日期是 2026 年 9 月 2 日（依瀏覽器所在時區顯示），早於部落格文章」。",
-   "第 4 節第 3 段：刪掉「那個頁面最新一則仍是 2026 年 8 月公告，還沒有 9 月號的手錶安全公告」——那是 source.android.com 的狀態，不在 sources[] 內，而且是活資料加否定命題。",
-   "第 3 節第 3 段：「不受這 11 個地區限制的路徑」「Google 沒有替它加上地區或語言限制」→ 限縮成「這一頁沒有替這條路徑寫出地區或語言限制」。",
-   "第 2 節第 2 段：「這三項功能，公告只寫『適用性可能因國家與語言而異』」→ 哈利波特那一列另有 Disclaimer 2 的期限與 Audible 國家清單（修正清單 must_fix 4 的同一個錯誤在正文復發）。已限縮到 Pixel VIPs 與 Pause Point，並補回 'and/or'。",
-   "清點數字全部標成編輯清點：第 2 段加一句總說明，「4 個功能標題」「5 列」「11 個地區」「8 種語言」就地標註；「10 個國家」改成照公告點名的名單寫。Google 自己印出的「nine new countries」「six new languages」維持不標。",
-   "第 1 節第 2 段補上公告自己的但書「以下只是這次 Pixel Drop 值得期待的一部分功能」，這份功能清單不是全清單。",
-   "鍵盤詐騙警示的「只在美國」→ 照公告寫成「從美國開始，適用 Pixel 6 以上機型」（表格與 FAQ 同步）。",
-   "表格 caption 與圖解 caption 的「2026 年 9 月 15 日發布的論壇公告」→ 論壇公告頁面沒有印出絕對日期；改成「Google 9 月 Pixel Drop 的論壇公告」，圖解 caption 另補上 Pixel Watch 更新說明（配對那一格來自手錶公告，不是論壇公告）。",
-   "第 5 節第 1 段：刪掉「這篇公告沒有官方繁體中文版（網址查核時回應 404）」——那條 intl/zh-tw 網址是推導出來的，BRIEF 視同猜測。改成只說引用的三份英文頁與說明中心的中文版及其機器翻譯警語。",
-   "第 5 節第 2 段：「兩個期限不是同一件事，國家名單也不完全相同」原本無所指（主題套件根本沒有國家清單）。改成 Audible 十國名單與通知詐騙九國的實際差異：多了義大利與西班牙，少了墨西哥與新加坡。",
-   "FAQ 第 5 題把手錶公告標題誤引成「Pixel Watch 5 - September 2026」，已補成完整標題「Google Pixel Watch Update (Pixel Watch 5) - September 2026」。",
-   "小節標題「官方沒有寫的事」→「四份來源沒有寫的事」；摘要第 5 句「官方公布的名單裡沒有出現台灣」→「本文引用的四份來源」；callout 的「官方公布的名單」同步限縮，「以下」改成「本文列出的」（callout 在 FAQ 之後）。",
-   "「最新的 Pixel 11 Pro Fold」「條件最窄的是主動建議」兩個比較級刪掉；GPS 那句改成 Google 用「我們最精準的 GPS 路線追蹤」當小標、內文只寫路線圖改善；手勢那句的「從單手手勢擴大成 8 種」改成照公告的小標與項目寫。",
-   "《哈利波特：全卡司有聲劇場版》這個自創中文書名改回原文 Harry Potter: The Full-Cast Audio Editions；Circle to Search／Google Lens 維持英文；At a Glance 不再譯成「一目了然」；Circle to Search 那句引文改用 Google 自己 zh-Hant 頁的措辭。",
-   "台灣用語：兩處「App」改成「應用程式」；「符合資格的裝置」改成公告寫的「支援的 Pixel 裝置」。",
-   "研究紀錄：更正部落格段落數、補上 Pause Point 無日期、改寫手錶公告日期那條 unverified_or_excluded、新增兩條 verified_fact（瀏覽器渲染的日期與作者徽章、Google zh-Hant 頁的用語），must_not_write 新增五條。"
+  "slug": "tech-news-pixel-drop-20260915",
+  "event_date": "2026-09-15",
+  "event_date_basis": "blog.google post JSON-LD datePublished 2026-09-15T18:00:00+00:00; meta article:published_time 2026-09-15; visible date line 'Sep 15, 2026'; dateModified 2026-09-15T18:20:54.745901+00:00 (same day, 20 minutes later). Re-confirmed 2026-09-17 by fetching the same URL again: JSON-LD, meta tag and dateline are byte-identical to the 2026-09-16 reading. The factcheck agent independently decoded the phone forum thread's internal timestamp field (1789496860754770 microseconds = 2026-09-15T18:27:40Z, 27 minutes after the blog post) as a second, independent confirmation of the same date; that field is not a displayed date and is not itself printed as a fact anywhere in this record or the article, only used to corroborate the JSON-LD date. Announcement date and rollout-start date are the same: the forum note says updates arrive 'starting today' and continue 'over the coming weeks in phases'. news_date = 2026-09-15, matching the slug suffix.",
+  "title": "Google 9 月 Pixel Drop 更新：機型、地區語言與 Pixel Watch 5 的條件",
+  "checked_on": "2026-09-17",
+  "sources": [
+    {
+      "title": "September Pixel Drop: New Pixel VIP updates, Pixel Watch features, and more",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "publisher": "Google (The Keyword / blog.google)",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "September 2026 Pixel Drop",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "publisher": "Google Pixel Phone Help Community",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Google Pixel Watch Update (Pixel Watch 5) - September 2026",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "publisher": "Google Pixel Watch Help Community",
+      "checked_on": "2026-09-17"
+    },
+    {
+      "title": "Protect yourself with spam & scam detection on your Pixel phone",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "publisher": "Google Pixel Phone Help",
+      "checked_on": "2026-09-17"
+    }
   ],
-  "checked_and_correct": [
-   "事件日 2026-09-15：部落格頁面可見日期行 'Sep 15, 2026'、meta article:published_time 2026-09-15、JSON-LD datePublished 2026-09-15T18:00:00+00:00 三處一致，與 slug 尾碼及 news_date 相符。",
-   "九國與六語逐字無誤（Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, United Kingdom；Arabic, French, German, Portuguese, Japanese, Spanish），而且 nine／six 是 Google 自己印出來的數字。",
-   "說明中心十一個地區與八種語言逐項無誤，英文版與 Google 自己的 zh-Hant 版列的是同一份名單；該頁確實沒有任何可見的發布日或更新日（唯一的 'Last updated' 字串在 JavaScript 樣板裡）。",
-   "兩個到期日與十個 Audible 國家逐字無誤：'Harry Potter Audiobook Packs available until December 31, 2026. Audible offer available until January 14, 2027 only in the United States, Canada, United Kingdom, France, Germany, Italy, Spain, India, Japan, and Australia.'",
-   "裝置對照表獨立重讀（看圖，不是沿用紀錄）：24 支手機五列全勾、Pixel Tablet 五列全空，Google 圖上的重複 'DE' 確實存在且文章沒有偷偷修掉。",
-   "手錶公告：標題、'All eligible Pixel Watch 5 devices will receive a Wear OS 7 update.'、'Applicable updates are available for the following models: Pixel Watch 5'、版本號 CP3A.260905.002 標為 Global、主動建議的但書 'Available only on Pixel Watch 5 paired with Pixel 11. Also requires gemini and proactive assistance enabled on paired Pixel 11.'、離線 Gemini 的三個具名例子加 'and other device actions' 全部相符。",
-   "台灣：兩則討論串裡的 'Taiwan' 各只有兩次，都在頁面 UI 的國碼／語言字典裡，正文沒有提到台灣；八種語言裡沒有任何中文。文章一律寫成官方未提及，沒有寫成台灣被排除。",
-   "界線：全文沒有購買或升級建議、沒有機型推薦、沒有價格比較、沒有投資免責 callout（科技垂直只有一個提醒 callout），也沒有任何攻擊手法的描述。",
-   "廠商宣稱都有歸屬：即時／裝置端處理、對話保有隱私、最精準的 GPS、低延遲，全部寫成 Google 的說法，並寫明本站沒有實機測試。",
-   "checked_on 2026-09-17 四處一致（sources 四條、研究紀錄、第二段、表格 caption、圖解 caption），依規格沒有因為本次重查而改動。",
-   "所有事實都掛在四條 sources 內；本次查核為了反駁而讀的 blog.google Pause Point 文章、audible.com 國家選擇頁、source.android.com 安全公告、blog.google/intl/zh-tw 都沒有成為文章依據。"
+  "sourcing_verdict": "full",
+  "sourcing_notes": "This record supersedes docs/news-2026-batch-4/research/tech-news-pixel-drop-20260915.json (checked_on 2026-09-16) after applying every must_fix/must_add item in docs/news-2026-batch-4/corrections-tech.md's tech-news-pixel-drop-20260915 section. All four sources were independently refetched today, 2026-09-17, with curl -sL -A \"Mokaair-editorial\" (no email or personal data in any request), before this record or the article was written: blog_post.html HTTP 200 / 389,344 bytes (2026-09-16 reading was 389,352; the few-byte drift is expected on a live page and does not change any cited content -- JSON-LD datePublished/dateModified, the og:title and twitter:title full headline, the short <title> element, and 'Android Drop' occurring 0 times were all re-verified byte-for-byte against the 2026-09-16 record); phone_thread.html HTTP 200 / 2,060,321 bytes (2026-09-16: 2,060,175/2,060,182); watch_thread.html HTTP 200 / 1,900,524 bytes (2026-09-16: 2,060,182 for phone, 1,898,230-242 for watch); help_centre.html HTTP 200 / 1,683,101 bytes (2026-09-16: 1,681,250). The two support.google.com threads still carry their body inside a double-escaped inline-JSON blob (confirmed again today by grepping for literal 'Pause Point' at raw-file offset and finding it wrapped in \\\\u003cdiv\\\\u003e-style double escaping); rather than re-derive a full clean decode, today's check greps the raw bytes for the exact phrases this record and the article rely on and confirms each occurs exactly once: 'December 31, 2026', 'January 14, 2027', 'nine new countries', the full 9-country list, the full 6-language list, 'Pixel 6 and newer phones', 'Feature Availability by Device', 'Feature availability may vary by country and', 'Available only in select languages in the US', 'Available on other keyboards with Keyboard Suggestions', 'Update to the latest Android version', 'update your apps' (phone thread); 'Pixel Watch 5' (12x), 'CP3A.260905.002', 'Wear OS 7', the five connected-app list, 'Available only on Pixel Watch 5 paired with Pixel 11', 'Powered by on-device AI', 'Our most accurate GPS route tracking', 'Hand Gestures App Expansions', 'raise to talk gesture model', 'Pixel Watch Security Bulletin', 'Previous Pixel Watch Updates', 'General bug fixes and improvements' (watch thread); the device-matrix attachment filename thread-466181739-2189480914184742135.png and the second (hero-art) attachment thread-466181739-10255076335878498553.png are both still referenced by name. The Help Centre page today still lists 11 regions (including Spain), 8 languages (including English and Indonesian), the full Circle to Search / Google Lens section verbatim, and carries no visible publish or update date (confirmed via WebFetch and via curl). Source 1 is discoverable in blog.google/rss/ under its exact title, so the URL was not guessed; source 4 was reached both directly and via Google's own link support.google.com?p=scam_detection, so the answer id was not guessed either. This record therefore treats 2026-09-17 as the writer's own checked_on, not merely a copy of the prior research's 2026-09-16.",
+  "verified_facts": [
+    {
+      "fact": "Google published the September 2026 Pixel Drop announcement on its own blog on 2026-09-15. The page's JSON-LD gives datePublished 2026-09-15T18:00:00+00:00 and dateModified 2026-09-15T18:20:54.745901+00:00; the meta tag article:published_time is 2026-09-15; the visible date line reads 'Sep 15, 2026'. Re-fetched and confirmed unchanged on 2026-09-17.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\": \"2026-09-15T18:00:00+00:00\", \"dateModified\": \"2026-09-15T18:20:54.745901+00:00\""
+    },
+    {
+      "fact": "The official headline of the blog post is 'September Pixel Drop: New Pixel VIP updates, Pixel Watch features, and more'. That same full headline is carried by BOTH the og:title and the twitter:title meta tags. Only the <title> element uses the shorter form 'September Pixel Drop: VIP updates, Pixel Watch features'. Corrected 2026-09-17 per corrections-tech.md must_fix 2: the prior record mislabelled the short form as 'the og title', which is wrong -- og:title carries the full headline, not the short one.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September Pixel Drop: New Pixel VIP updates, Pixel Watch features, and more"
+    },
+    {
+      "fact": "Google's own one-line description of the post is: 'Our September Pixel Drop is here with an updated Pixel VIP widget, expanded chat Scam Detection, and more.'",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Our September Pixel Drop is here with an updated Pixel VIP widget, expanded chat Scam Detection, and more."
+    },
+    {
+      "fact": "The blog post carries no author byline (unlike other blog.google posts such as the Pause Point one, which names an author). It is published under Google, not a named person.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "The blog post body is FIVE <p> elements inside one rich-text block: an opening line ('Our September Pixel Drop is officially here, complete with handy new features and updates.'), one on Pixel VIPs plus the Gboard/Scam Detection line, one on Pixel Watch, one on Harry Potter, and the pointer 'Visit our community forum post to learn more.', which links to support.google.com/pixelphone/thread/466181739 -- i.e. Google itself designates that forum thread as its own detailed release note ('our community forum post'). Corrected 2026-09-18 by the independent factcheck agent: the prior record's 'four short paragraphs plus a pointer sentence' undercounts the body by one paragraph (it drops the opening line), and the draft article's 「只有四段文字」 was built on that miscount. A paragraph count is the editor's count; Google prints no number.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Visit our community forum post to learn more."
+    },
+    {
+      "fact": "Blog wording for the phone features: 'Stay connected to your VIPs with updated home screen widgets that let you call or text people with a single tap, or switch between contacts using the bottom floating overlay navigation menu. New notification badges ensure you never miss a message. And Pixel now makes it easier to avoid scams with inline Gboard warnings in the U.S. and expanded Scam Detection for chat app notifications in more regions.'",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Stay connected to your VIPs with updated home screen widgets that let you call or text people with a single tap, or switch between contacts using the bottom floating overlay navigation menu. New notification badges ensure you never miss a message. And Pixel now makes it easier to avoid scams with inline Gboard warnings in the U.S. and expanded Scam Detection for chat app notifications in more regions."
+    },
+    {
+      "fact": "Blog wording for the watch features: 'If you have a Pixel Watch, you'll receive Raise to Talk improvements, and additional One Handed gesture app integrations, along with other bug fixes.' The blog does NOT name a watch model here and does not mention Pause Point, Gemini Personalization, Proactive suggestions, Offline Gemini or GPS route tracking; only the linked support thread restricts the update to Pixel Watch 5 and names those five additional items.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you have a Pixel Watch, you’ll receive Raise to Talk improvements, and additional One Handed gesture app integrations, along with other bug fixes."
+    },
+    {
+      "fact": "Blog wording for the Harry Potter tie-in: 'Instantly customize your Pixel with Harry Potter Audiobook Packs to celebrate the release of Harry Potter: The Full-Cast Audio Editions on Audible. To begin your journey to Hogwarts, all eligible Pixel users will receive a two-month Audible free trial.' The blog states no countries and no end date for this offer; the support thread does.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To begin your journey to Hogwarts, all eligible Pixel users will receive a two-month Audible free trial."
+    },
+    {
+      "fact": "The string 'Android Drop' occurs zero times on the blog post page. The related-stories rail lists exactly four items, none of them a 'September Android Drop' post; a probe URL for one returns 404. Corrected 2026-09-17 per corrections-tech.md must_fix 1: the prior record's claim that the rail 'shows a separate September Android Drop post' is deleted outright, re-confirmed absent on today's refetch.",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/september-2026-pixel-drop/",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "Google's forum release note is titled 'September 2026 Pixel Drop' and defines a Pixel Drop as: 'Your Pixel devices become even more helpful with Pixel Drops. They're automatic software updates that send new and upgraded features to your phone.'",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your Pixel devices become even more helpful with Pixel Drops. They’re automatic software updates that send new and upgraded features to your phone."
+    },
+    {
+      "fact": "Rollout timing, verbatim: 'Supported Pixel devices will receive these software updates starting today. The rollout of these features will continue over the coming weeks in phases, depending on carrier and device.' Google gives no completion date and names no carriers.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Supported Pixel devices will receive these software updates starting today. The rollout of these features will continue over the coming weeks in phases, depending on carrier and device."
+    },
+    {
+      "fact": "Google tells users they will be notified when the update is available and points them to 'Update to the latest Android version' (href support.google.com/pixelphone/answer/7680439) and 'update your apps' (href support.google.com/googleplay/answer/113412) -- i.e. some of these features arrive via app updates, not only the system update. The two hrefs, confirmed again 2026-09-17, replace an earlier inference with Google's own link targets.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You will receive a notification once the system update is available for your device."
+    },
+    {
+      "fact": "The forum note's prose, under the heading 'Here are just some of the features to look forward to in the September Pixel Drop:', names exactly FOUR feature headings: 'Pixel VIPs updates', 'Harry Potter Audiobook Packs', 'Scam Detection comes to your keyboard and expands to new regions', and 'Pause Point expands to more Pixel devices'. Corrected 2026-09-17 per corrections-tech.md must_fix 5: the prior record wrote 'five named features'; five is the ROW count of the separate device-availability image (Scam Detection is split there into a keyboard row and a notification row), not the number of feature headings in the prose. The article must not write 'Google 列出五項功能'; it must say the prose names four headings and the matrix has five rows because Scam Detection is split in two there.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Here are just some of the features to look forward to in the September Pixel Drop:"
+    },
+    {
+      "fact": "Feature 1, Pixel VIPs updates, verbatim: 'Stay seamlessly connected to your VIP contacts. With newly designed, expanded widget options, you can use quick actions to send a call or text to your VIP contacts with a single tap straight from your home screen. New, glanceable notification badges ensure you never miss an urgent or unread message, and you can also switch effortlessly between VIPs using the bottom floating menu.' No region, language or carrier condition is attached to this feature anywhere in the note, only the blanket footnote 5 (see below).",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With newly designed, expanded widget options, you can use quick actions to send a call or text to your VIP contacts with a single tap straight from your home screen."
+    },
+    {
+      "fact": "Feature 2, Harry Potter Audiobook Packs, verbatim: 'One tap changes your wallpaper, icons, and sounds with elements from the audiobooks - no wand required.' It is a theme pack (wallpaper + icons + sounds), tied to the release of 'Harry Potter: The Full-Cast Audio Editions' on Audible.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": true,
+      "verbatim_quote": "One tap changes your wallpaper, icons, and sounds with elements from the audiobooks - no wand required."
+    },
+    {
+      "fact": "Feature 3a, Scam Detection in the keyboard: 'Starting in the U.S. on Pixel 6 and newer phones, Scam Detection is arriving directly on your Gboard (3) across your favorite messaging apps. When you start typing a response to a suspicious message, a \"Likely scam\" warning chip will appear right above your keys. Processing happens in real-time and on your device, keeping your conversations private to you (4).' Two conditions are stated in one sentence: United States only, AND Pixel 6 or newer; note the conditions are 'Starting in the U.S.', not 'only in the U.S.'. Corrected 2026-09-18 in the second factcheck round: the page's own text carries footnote markers inside these sentences -- '(3)' sits between 'Gboard' and 'across', '(4)' between 'private to you' and the full stop -- so the sentence as previously stored was NOT a contiguous string on the page. verbatim_quote below is trimmed to the part that is contiguous and that carries both conditions.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Starting in the U.S. on Pixel 6 and newer phones, Scam Detection is arriving directly on your Gboard"
+    },
+    {
+      "fact": "The on-device / real-time processing claim for keyboard Scam Detection is Google's own statement, not something this site tested: 'Processing happens in real-time and on your device, keeping your conversations private to you'.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Processing happens in real-time and on your device, keeping your conversations private to you"
+    },
+    {
+      "fact": "Footnote 3, attached to the word 'Gboard', says the keyboard warning is not Gboard-exclusive: 'Available on other keyboards with Keyboard Suggestions.' Not used in the article body (kept for completeness); the article states the Gboard/US/Pixel-6+ facts only.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Available on other keyboards with Keyboard Suggestions."
+    },
+    {
+      "fact": "Footnote 4, attached to the keyboard Scam Detection paragraph, narrows it further: 'Available only in select languages in the US.' Google does not name which languages.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Available only in select languages in the US."
+    },
+    {
+      "fact": "Feature 3b, Scam Detection in chat notifications, verbatim: 'Already available in the US for Pixel 6+ devices, we're now expanding this feature to nine new countries (Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, and the United Kingdom) and six new languages (Arabic, French, German, Portuguese, Japanese, and Spanish), helping protect even more people worldwide.' That is exactly nine countries and six languages, listed by name. Taiwan is not among them.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we’re now expanding this feature to nine new countries (Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, and the United Kingdom) and six new languages (Arabic, French, German, Portuguese, Japanese, and Spanish)"
+    },
+    {
+      "fact": "Google describes the notification-level Scam Detection as pre-existing, not new in this Drop, and links to Google's own November 2025 Pixel Drop post. Corrected 2026-09-17 per corrections-tech.md must_fix 8: the href is confirmed (blog.google/products-and-platforms/devices/pixel/november-2025-pixel-drop/, HTTP 200) but Google never states the feature originated there; write only 'links to Google's November 2025 Pixel Drop post', not 'as its origin'. What is new in September 2026 is the country/language expansion plus the keyboard placement.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This adds another layer of defense alongside Scam Detection in notifications"
+    },
+    {
+      "fact": "Feature 4, Pause Point, verbatim: 'Pause Point helps you cut down on unintentional app use. It adds a pause before you open a distracting app of your choice, giving you a moment to decide whether you really want to continue. First introduced on Pixel 11, Pause Point is now rolling out to Pixel 6 and newer devices as part of this update.' Pause Point is in the forum release note and in the device table but is NOT mentioned in the blog post at all. Added 2026-09-18 by the independent factcheck agent: Google attaches NO DATE to 'First introduced on Pixel 11' -- 'May' occurs zero times in the thread body and the note names no month or year for that first introduction. The draft article's 「2026 年 5 月隨 Pixel 11 推出」 had no support in any of the four sources and was deleted; the article now writes only 公告寫它「最早在 Pixel 11 推出」、沒有給日期. The note's 'Pause Point' link points at blog.google/products-and-platforms/platforms/android/pause-point/, which is NOT in sources[] and must not be used to supply that date.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": true,
+      "verbatim_quote": "First introduced on Pixel 11, Pause Point is now rolling out to Pixel 6 and newer devices as part of this update."
+    },
+    {
+      "fact": "The forum note contains a section headed 'Feature Availability by Device' carrying footnote 5. The matrix itself is a PNG image attachment inside that thread (storage.googleapis.com/support-forums-api/attachment/thread-466181739-2189480914184742135.png, 1743x629, filename 'Screenshot 2026-09-15 11.54.42 PM.png'), not HTML text -- so it is invisible to text-only scraping and to screen readers, and there is no text alternative in the thread. Filename re-confirmed present in the raw HTML on 2026-09-17.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Feature Availability by Device"
+    },
+    {
+      "fact": "The device matrix has 25 device columns, in this order: Pixel 11 Pro Fold, Pixel 11 Pro XL, Pixel 11 Pro, Pixel 11, Pixel 10 Pro Fold, Pixel 10 Pro XL, Pixel 10 Pro, Pixel 10, Pixel 10a, Pixel 9 Pro Fold, Pixel 9 Pro XL, Pixel 9 Pro, Pixel 9, Pixel 9a, Pixel 8 Pro, Pixel 8, Pixel 8a, Pixel Fold, Pixel 7 Pro, Pixel 7, Pixel 7a, Pixel 6 Pro, Pixel 6, Pixel 6a, Pixel Tablet. That is 24 phones plus Pixel Tablet. No Pixel 5a or older model appears in the table at all.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "The device matrix has exactly five feature rows: 'Pixel VIPs updates'; 'Harry Potter Audiobook Packs'; 'Scam Detection in chat message notifications market expansion (AU, CA, DE, FR, IN, JP, MX, SG, and UK) and language expansion (AR, DE, ES, FR, DE, PT, and JA)'; 'Scam Detection in keyboard launch in the US'; 'Pause Point'. This is the image's own row structure, distinct from the four prose headings above. Row count re-verified 2026-09-18 by grid-line detection on the PNG: 7 horizontal rules, i.e. a header band plus 5 feature bands. verbatim_quote is deliberately empty: these row labels are pixels inside thread-466181739-2189480914184742135.png and appear nowhere in the thread's text, so no string search of the page can reproduce them -- they are the editor's reading of the image.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "In the device matrix, all 24 phone columns (Pixel 6 / 6a through Pixel 11 Pro Fold) carry a tick for every one of the five features. Pixel Tablet is listed as a column but carries NO tick for any of the five features -- checked cell by cell at 3x magnification by the original researcher and independently re-verified by the factcheck agent via grid-line detection and per-cell dark-pixel counting (30-35 dark pixels on ticked cells, 0 on the Pixel Tablet column, all five rows). Two independent methods agree. The article writes only 'Google's table marks none of the five features for Pixel Tablet', never 'Pixel Tablet does not support this'.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "Footnote 5, attached to the device table, is the availability caveat Google attaches to the Pixel VIPs row (and, by the same wording, to Pause Point, which carries no other condition): 'Feature availability may vary by country and/or language.' It names no country. Corrected 2026-09-17 per corrections-tech.md must_fix 4: this footnote is NOT the only caveat on the Harry Potter row -- Disclaimer 2 (below) separately gives Harry Potter Audiobook Packs a hard expiry date, 31 December 2026, which footnote 5 does not carry.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Feature availability may vary by country and/or language."
+    },
+    {
+      "fact": "The language-expansion label inside the device-matrix image reads '(AR, DE, ES, FR, DE, PT, and JA)' -- seven codes for six languages, with DE appearing twice. The prose in the same note lists six: Arabic, French, German, Portuguese, Japanese, and Spanish. The duplication is Google's own defect in the source image; the article uses the six-language prose list only and does not silently fix or reproduce the image's duplicate. Re-read from the PNG on 2026-09-18 and still present. verbatim_quote is deliberately empty for the same reason as the row-structure fact above: this label exists only as pixels in the attachment, not as text on the page.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "Disclaimer 1, on eligibility in general: 'Pixel Drops are provided during applicable Android update and support periods for your device. See g.co/pixel/updates for details. Feature availability varies by model. Devices sold separately.'",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Pixel Drops are provided during applicable Android update and support periods for your device. See g.co/pixel/updates for details. Feature availability varies by model. Devices sold separately."
+    },
+    {
+      "fact": "Disclaimer 2 gives the only two hard dates in the whole Drop: 'Harry Potter Audiobook Packs available until December 31, 2026. Audible offer available until January 14, 2027 only in the United States, Canada, United Kingdom, France, Germany, Italy, Spain, India, Japan, and Australia.' That is ten named countries for the Audible offer specifically; Taiwan is not among them. The theme packs (31 Dec 2026) and the Audible trial (14 Jan 2027) expire on different dates, and only the Audible trial carries the ten-country limit -- the theme packs' own sentence states no country.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Harry Potter Audiobook Packs available until December 31, 2026. Audible offer available until January 14, 2027 only in the United States, Canada, United Kingdom, France, Germany, Italy, Spain, India, Japan, and Australia."
+    },
+    {
+      "fact": "The ten Audible-offer countries are not the same set as the nine Scam Detection expansion countries plus the US. The Audible list adds Italy and Spain and omits Mexico and Singapore; the Scam Detection list adds Mexico and Singapore and omits Italy and Spain. Both lists are in the same forum note.",
+      "url": "https://support.google.com/pixelphone/thread/466181739",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "The Pixel Watch thread Google links from the blog post is titled 'Google Pixel Watch Update (Pixel Watch 5) - September 2026' -- the model restriction is in the title itself.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Google Pixel Watch Update (Pixel Watch 5) - September 2026"
+    },
+    {
+      "fact": "The watch update is a Wear OS 7 update and is limited to one model: 'All eligible Pixel Watch 5 devices will receive a Wear OS 7 update. The rollout will continue over the coming weeks in phases depending on carrier and device.' A separate 'Device Applicability' section repeats it: 'Applicable updates are available for the following models: Pixel Watch 5'.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "All eligible Pixel Watch 5 devices will receive a Wear OS 7 update."
+    },
+    {
+      "fact": "The watch build number is given under a heading 'Software version' / 'Global': 'Pixel Watch 5: CP3A.260905.002'. It is listed as Global, with no per-region build.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Pixel Watch 5: CP3A.260905.002"
+    },
+    {
+      "fact": "Watch feature - Gemini Personalization: 'Personalization makes Gemini on Watch more helpful by learning from past conversations and connected Google apps (Gmail, Calendar, Search, YouTube, Photos) to deliver personalized responses. Users can ask queries like \"What's on my calendar today?\" or \"Find the tracking number in my email\" and receive answers tailored to their data. The feature is powered by an offline user profile and real-time online retrieval working together.' Five connected apps are named. No region or language condition is stated for it.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": true,
+      "verbatim_quote": "learning from past conversations and connected Google apps (Gmail, Calendar, Search, YouTube, Photos) to deliver personalized responses"
+    },
+    {
+      "fact": "Watch feature - Proactive suggestions, described as: 'Gemini Intelligence Proactive Suggestions turns complex, multi-step tasks into seamless one-tap actions in messages. If a loved one asks when is the dinner with family, Gemini automatically locates the info in your calendar and surfaces it directly on your wrist, eliminating the need to dig through your phone'. It carries footnote 1, the tightest condition in the entire Drop: 'Available only on Pixel Watch 5 paired with Pixel 11. Also requires gemini and proactive assistance enabled on paired Pixel 11.' Corrected 2026-09-17 per corrections-tech.md must_fix 9: verbatim_quote extended to the sentence's actual end instead of stopping mid-sentence without an ellipsis.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Available only on Pixel Watch 5 paired with Pixel 11. Also requires gemini and proactive assistance enabled on paired Pixel 11."
+    },
+    {
+      "fact": "Watch feature - Offline Gemini: 'Powered by on-device AI, Gemini can process core actions instantly with low latency, even when you're completely offline. Examples are setting up a timer, starting/stopping a workout, turning on do not disturb and other device actions.' Corrected 2026-09-17 per corrections-tech.md must_fix 3: Google names THREE example actions (setting up a timer; starting/stopping a workout; turning on do not disturb), followed by the open-ended catch-all 'and other device actions', which is not a fourth named example. The prior record's 'four example actions' is wrong; 'low latency' is Google's claim, not a measurement.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Powered by on-device AI, Gemini can process core actions instantly with low latency, even when you’re completely offline."
+    },
+    {
+      "fact": "Watch feature - Raise to talk improvements, in full: 'Updates and improvements for raise to talk gesture model.' That single sentence is everything Google says about it; the blog post capitalises it as 'Raise to Talk' while the support thread writes 'raise to talk'.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Updates and improvements for raise to talk gesture model."
+    },
+    {
+      "fact": "Watch feature - GPS: Google's heading is 'Our most accurate GPS route tracking' and the body is 'Major improvements to the route maps displayed on Google Health app after running, biking, hiking, and walking sessions.' 'Most accurate' is a vendor superlative with no figure attached and no comparison baseline.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our most accurate GPS route tracking"
+    },
+    {
+      "fact": "Watch feature - the gesture work the blog calls 'One Handed gesture app integrations' is headed 'Hand Gestures App Expansions' in Google's own support thread, and lists eight items: double pinch to open At a Glance from watch face; double pinch to open notification center from watch face; double pinch to scroll through Gemini response; double pinch to scroll through cards in Wallet app; double pinch to scroll through your workout metrics; double pinch to toggle between Google Maps views; double pinch to manage Recorder app; wrist turn gesture as universal back navigation.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Hand Gestures App Expansions"
+    },
+    {
+      "fact": "The watch note's security-bulletin sign-off, 'Thanks, Google Pixel Watch Support Team', sits near the TOP of the note, immediately after the line pointing to the Pixel Watch Security Bulletin -- not at the end. The note's actual last section is 'Previous Pixel Watch Updates'. Corrected 2026-09-17 per corrections-tech.md must_fix 6: the prior wording implied a closing signature; the article does not describe where in the note this sign-off sits.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Details regarding applicable security fixes can be found on the Pixel Watch Security Bulletin"
+    },
+    {
+      "fact": "The same watch thread lists Google's previous Pixel Watch updates as 'June (Pixel Watch 2, 3, & 4)', 'March EMR (Pixel Watch 1)' and 'March (Pixel Watch 2, 3, & 4)' -- no year is printed anywhere in the visible labels. The year (2026) is carried only in the link hrefs (.../google-pixel-watch-update-june-2026, .../google-pixel-watch-update-march-2026, .../pixel-watch-1-modem-software-update-march-2026). Corrected 2026-09-17 per corrections-tech.md must_fix 7: kept out of the article body since the year is not visible text, only an href.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "Google's Help Centre page 'Protect yourself with spam & scam detection on your Pixel phone' lists the CUMULATIVE state of Scam Detection after this Drop: 'Scam Detection is available in these regions: Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, Spain, United Kingdom, United States.' That is eleven regions. Taiwan is not listed. Re-confirmed unchanged on 2026-09-17 via both curl and WebFetch.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Scam Detection is available in these regions:"
+    },
+    {
+      "fact": "The same Help Centre page lists eight languages: Arabic, English, French, German, Indonesian, Japanese, Portuguese, Spanish. Chinese in any form is not listed. Re-confirmed unchanged on 2026-09-17.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Scam Detection is available in the following languages:"
+    },
+    {
+      "fact": "The Help Centre region list (11) does not match the Drop announcement arithmetic (US already supported + nine new = 10). The Help Centre additionally lists Spain, and additionally lists English and Indonesian among the languages, neither of which appears in the Drop's 'six new languages'. Google does not reconcile the two lists anywhere reachable. The article treats the Help Centre page as the current cumulative snapshot and the forum note as the September delta, and says so.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "The Help Centre confirms the US-only scope of the keyboard variant independently of the Drop note: 'This feature helps detect likely scams by analyzing new message notifications from supported apps. For users in the US, this feature can also help detect scams when using the keyboard in select apps.'",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For users in the US, this feature can also help detect scams when using the keyboard in select apps."
+    },
+    {
+      "fact": "Help Centre on the setting: 'Scam Detection for chat messages is on by default.' The path is Settings app > Security & privacy > More security & privacy > Scam Detection > turn 'Message scams' on or off. Google's own Traditional-Chinese rendering of the same page (?hl=zh-Hant, which itself carries Google's own warning that it may be machine-translated and may contain errors) gives the path as 設定 > 安全性與隱私權 > 其他安全性和隱私權設定 > 詐騙偵測 > 訊息詐騙, with the feature named 詐騙偵測 and the warning chip 疑似詐騙.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Scam Detection for chat messages is on by default."
+    },
+    {
+      "fact": "Help Centre on data handling: 'This feature runs in a secure, isolated environment to identify suspicious patterns... Your message content remains private and isn't sent to Google, unless you choose to share it.' If a user taps to share a flagged message, 'Only the selected message content will be shared, without common identifying info.'",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Your message content remains private and isn’t sent to Google, unless you choose to share it."
+    },
+    {
+      "fact": "Google states the limit of the feature itself: 'Important: Scam Detection may not catch every scam. Be careful when you share personal info or tap on links.'",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Important: Scam Detection may not catch every scam. Be careful when you share personal info or tap on links."
+    },
+    {
+      "fact": "The Help Centre's 'Check feature eligibility' material lists only region and language; it states no Pixel model requirement anywhere for chat Scam Detection, even though the forum note requires Pixel 6 or newer and the device matrix starts at Pixel 6/6a. The two Google pages state different eligibility scopes, so the Help Centre's region/language list is not read as complete eligibility on its own.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Check feature eligibility"
+    },
+    {
+      "fact": "Added 2026-09-18 by the independent factcheck agent, and it overturns the whole 'the threads carry no visible date' chain: both support.google.com threads DO render a date to a reader, client-side, from the same internal field the earlier research decoded and then excluded. Loaded in a real browser, the watch thread's header reads 'Stefanie Frederick / Community Manager / Original Poster / Sep 2, 2026', and the phone thread's header reads 'Kush M. / Community Manager / Original Poster / 2 days ago' with 'Last edited 2 days ago' at the foot (read 2026-09-18). curl sees neither, because both are rendered from the inline-JSON blob. Second round, 2026-09-18: the machine-readable timestamp behind that rendered date was located and converted independently. The watch thread's own record opens '[[464268922,\"1788292062825882\",174288606,1788456498201866]' and repeats 1788292062825882 inside the message record; 1788292062825882 microseconds = 2026-09-01T19:47:42Z = 2026-09-02 03:47:42 in Taipei (UTC+8) and 2026-09-01 12:47:42 in US Pacific (UTC-7). So the rendered 'Sep 2, 2026' is what a Taipei reader sees and the article's date holds under Taipei time, while a US reader sees Sep 1 -- the date is produced by the reader's browser, not printed by Google. The same slot in the phone thread holds 1789496860754770 = 2026-09-15T18:27:40Z = 2026-09-16 02:27:40 Taipei, which is what renders as '2 days ago' when read on 2026-09-18 in a UTC+8 browser, so the two threads' fields are the same field and the reading is calibrated. verbatim_quote is the contiguous inline-JSON string the conversion rests on, because 'Sep 2, 2026' itself is never a string on the page. Consequences: (a) 'the threads render no visible date' is wrong and was deleted from the article; (b) the displayed date is timezone-dependent, and the article now says the page's date is converted by the browser and that Taipei time gives 2026-09-02; (c) the 'Community Manager' badge IS visible next to both authors, which the earlier record could not establish from the static HTML.",
+      "url": "https://support.google.com/googlepixelwatch/thread/464268922",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"1788292062825882\""
+    },
+    {
+      "fact": "Added 2026-09-18 by the independent factcheck agent: Google's own Traditional-Chinese rendering of source 4 (same answer id, reached with Google's ?hl=zh-Hant switch, HTTP 200 / 1,696,451 bytes on 2026-09-18) renders Circle to Search as 「畫圈搜尋」 and Google Lens as 「Google 智慧鏡頭」, and renders the AI/web sentence as 「系統會運用 AI 和網路資訊評估訊息是否可能涉及詐騙」. The same page carries Google's own notice 「這個頁面可能含有使用 AI 技術翻譯的內容，也許會有錯誤。」, so the product names are kept in English in the body; the Chinese renderings are recorded here only. IMPORTANT, second round 2026-09-18: verbatim_quote below is contiguous on that ?hl=zh-Hant rendering (verified by string match against the unescaped body, 2 occurrences), NOT on the default-language fetch of the url field, which serves the English sentence recorded in the next fact. Because Google itself, not this site, wrote that Chinese sentence but wrote it on a page carrying its own machine-translation warning, the article no longer attributes it bare to 「Google 寫」 -- it now says 「Google 的中文版頁面寫」, so a reader can connect the quote to the translation warning stated in the article's last section.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "系統會運用 AI 和網路資訊評估訊息是否可能涉及詐騙。"
+    },
+    {
+      "fact": "Added 2026-09-17 per corrections-tech.md must_add (Circle to Search / Google Lens): the same Help Centre page has a section headed 'Use Circle to Search & Google Lens to spot scam messages', with step lists for both, and the sentence 'Our systems will use AI and information from the web to assess whether the message is likely a scam.' No region or language restriction is attached anywhere to this route, unlike the 11-region Scam Detection list. This is an AI/web-lookup mechanism, explicitly distinct from the on-device Scam Detection feature; the article does not present it as the same thing.",
+      "url": "https://support.google.com/pixelphone/answer/16704479",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Our systems will use AI and information from the web to assess whether the message is likely a scam."
+    }
   ],
-  "left_for_the_owner": [
-   "check_article.py 仍有一條 FAIL：zh-TW link target tech-news-2026-index.json does not exist yet。科技垂直索引內容包還沒建立，不在查核代理能動的兩個檔案裡；索引落地後第一條 link 的 text 必須逐字換成索引自己的 zh-TW title。",
-   "本文改了 17 處，其中三處動到骨幹（部落格段落數、Pause Point 的日期、手錶公告的日期與「沒有標示日期」），因此結論是 needs_second_round。",
-   "手錶討論串顯示的 'Sep 2, 2026' 會隨讀者時區變成 Sep 1；文章已加時區但書，站主若覺得這個細節對讀者沒有價值，可以整句改成「公告早於部落格文章」。",
-   "11 個地區／8 種語言與裝置對照表都是查核當下的快照，出刊當天要再開一次頁面與那張 PNG 重看。",
-   "Pixel Watch 9 月安全公告在 2026-09-17 仍未發布（source.android.com 最新是 2026-08-20、修補等級 2026-08-05）。這條刻意沒寫進文章，但站主若想補，必須先把那個網址放進 sources[]。"
+  "not_said": [
+    "Taiwan. Taiwan is named nowhere in any of the four sources. It is not in the nine new Scam Detection countries, not in the eleven Help Centre regions, and not in the ten Audible-offer countries. Traditional or Simplified Chinese is not in the eight supported Scam Detection languages. Google does not say Taiwan is excluded either -- it simply does not appear. Write this as '官方未提及台灣', never as '台灣不能用' for the features Google gave no region list for.",
+    "No price. Nothing in the Drop is priced. The Audible trial is described only as 'a two-month Audible free trial' with no statement of what it costs after the trial and no statement of whether a payment method is required.",
+    "'All eligible Pixel users' for the Audible trial is never defined. Google does not say what makes a user eligible beyond the ten listed countries, does not say whether existing or lapsed Audible subscribers qualify, and does not say how the trial is claimed.",
+    "No rollout completion date. 'Over the coming weeks in phases, depending on carrier and device' is the only schedule, for both the phone Drop and the Pixel Watch 5 Wear OS 7 update. No carrier is named and no phase order is given.",
+    "No Android version number and no phone build number. The Pixel Watch thread gives a build (CP3A.260905.002) but the phone thread gives none, and names no Android release. Do not supply one.",
+    "No region condition at all is stated for Pixel VIPs updates, for Harry Potter Audiobook Packs (beyond the ten-country Audible trial), or for Pause Point. The only thing covering them is the blanket footnote 'Feature availability may vary by country and/or language.' So Google neither promises nor denies these three in Taiwan.",
+    "No region or language condition is stated for any Pixel Watch feature, including Gemini Personalization. The build is labelled 'Global' and that is all.",
+    "The blog post does not say Pixel Watch features are Pixel Watch 5 only -- it just says 'If you have a Pixel Watch'. Only the linked support thread restricts it. Do not repeat the blog's looser wording without the restriction.",
+    "The blog post does not mention Pause Point, Gemini Personalization, Proactive suggestions, Offline Gemini or the GPS route-tracking change at all. Those exist only in the support threads.",
+    "Pixel Tablet's blank row is a blank row, not a sentence. Google's table shows no tick for Pixel Tablet on any of the five features, but Google never writes 'Pixel Tablet does not get these'. Report it as 'Google's table marks none of the five features for Pixel Tablet'.",
+    "Google never says which languages the US keyboard Scam Detection covers. Footnote 4 only says 'Available only in select languages in the US.'",
+    "Google does not say whether Pixel Watch 1 through 4 receive anything in September 2026. The thread only lists their previous updates (June, and March EMR for Watch 1), with no year printed on the visible labels.",
+    "No measured performance figures anywhere. 'Our most accurate GPS route tracking', 'low latency', 'real-time', 'processing happens on your device' are Google's characterisations with no numbers and no methodology.",
+    "As of 2026-09-17 there is no September 2026 Pixel Watch security bulletin published: source.android.com/docs/security/bulletin/pixel-watch lists August 2026 (published August 20, 2026, patch level 2026-08-05) as the newest entry and the page footer reads 'Last updated 2026-08-20 UTC', even though the watch release note points readers there for 'applicable security fixes'. Do not name a September patch level.",
+    "Google published no Traditional-Chinese version of this Pixel Drop post: blog.google/intl/zh-tw/products-and-platforms/devices/pixel/september-2026-pixel-drop/ returns HTTP 404 (while blog.google/intl/zh-tw/ returns 200), re-confirmed 2026-09-17. Taiwanese readers only have the English post plus the machine-assisted Chinese Help Centre page.",
+    "Added 2026-09-17 per corrections-tech.md must_add: support.google.com/pixelphone/answer/16704479 carries no visible publication or update date anywhere -- no dateModified, no JSON-LD, no 'Last updated' string outside JavaScript template literals. The 11 regions / 8 languages can only be described as the page state read on the checked_on date, never as 'after the September Drop' or any other dated claim.",
+    "Added 2026-09-17 per corrections-tech.md must_add: the Help Centre page's eligibility material states region and language only; it does not restate the Pixel 6-or-newer device requirement the forum note and the device matrix both carry. The Help Centre list is therefore not read as complete eligibility criteria by itself.",
+    "The Help Centre page also documents call-level Scam Detection ('On eligible Pixel phones, you can get real-time alerts if a call shows patterns commonly associated with scams') and Google Messages spam ('The Google Messages app automatically detects and moves suspected spam into a dedicated folder') on the same page. Neither is part of this September Drop, which covers only the chat-notification and keyboard variants; the article does not conflate the three."
   ],
-  "second_round": {
-   "checked_on": "2026-09-18",
-   "scope": "不是整篇重做：覆核第一輪改動過的每一段與新寫進去的每一句，加上四條 sources 全部重抓重讀、對照表 PNG 重抓重看、53 條 verbatim_quote 逐條做連續字串比對、手錶公告日期的原始時間戳自行解碼換算。",
-   "claims_checked": 150,
-   "claims_breakdown": "53 條 verbatim_quote 連續性比對；63 條文章端主張（第一輪改過的 12 段共 22 句、摘要 5 句、FAQ 6 題答句、callout 3 句、表格 20 格與 caption、圖解 caption 與四格、hero_label）；34 條來源端重讀（部落格 15、對照表 6、時間戳 5、zh-Hant 頁 3、說明中心清單 5）。兩則論壇公告的正文另外整份反轉義後從頭讀到尾。",
-   "edits": 16,
-   "edits_note": "另有 5 處純為騰出字數做的敘述精簡（不動任何但書或限定詞）：第 1 節第 1 段的結尾指路句、第 2 節第 1 段的「另外列出」、第 2 節第 2 段的「指定的」、第 3 節第 1 段的「公告寫出的」、第 5 節第 2 段的「更新何時到每個人手上」→「至於時程」。段落字數 2,999 → 2,997。",
-   "edits_to_the_pack": [
-    "第 3 節第 2 段：說明中心 11 個地區和公告 9 個新增國家的差集原本只寫「多了西班牙」，讀者自己一減會少一個。改成「比公告新增的 9 國多了美國與西班牙，語言多了英文與印尼文」——美國是公告自己寫的原本就支援的地區，上一段已經寫過。沒有引入任何自己算出來的總數。",
-    "第 3 節第 3 段：Circle to Search 那句中文引文原本寫成「Google 寫」，但它出自 Google 的 ?hl=zh-Hant 頁，而文章最後一節自己寫了那頁帶有機器翻譯警語。改成「Google 的中文版頁面寫」，讓引文和警語連得起來。",
-    "第 2 節第 2 段：「前者與 Pause Point 只有對照表下方那句……」→「VIPs 與 Pause Point……」。那一段列了三項功能，「前者」指涉不清（雖然後半句把哈利波特排除掉了，仍要讀者自己推）。",
-    "第 4 節第 1 段：刪掉「早於部落格文章」。頁面上的日期是討論串自己的日期（時間戳 1788292062825882 = 2026-09-01T19:47:42Z），而公告裡的版本號 CP3A.260905.002 的戳記晚於那一天，代表現在看到的內文是建立後編輯過的，所以那個日期撐不起「這則公告比部落格早發布」。改成「公告頁面上的日期由瀏覽器依讀者時區換算，台北時間是 2026 年 9 月 2 日，那是討論串本身的日期」，並自行換算確認台北時間下 9 月 2 日成立（美西會顯示 9 月 1 日）。",
-    "表格第 1 列與第 5 列：「可能因國家或語言而異」→「可能因國家和／或語言而異」。正文第一輪已經補回 and/or，表格兩格漏了，等於在表格裡把 Google 的限定詞寫弱。",
-    "FAQ 第 6 題：原本的答句帶進兩條正文沒有的事實（公告請使用者更新 Android 版本與更新應用程式、沒有點名電信業者），違反 FAQ 答案必須是正文子集。改寫成只用正文已有的內容，並刪掉「請以應用程式商店的更新通知為準」這句正文沒有依據的指引。",
-    "研究紀錄 verified_fact（鍵盤詐騙警示）：verbatim_quote 原本抄了整句，但公告正文在 Gboard 和 across 之間有註腳標記 (3)、在 private to you 和句號之間有 (4)，整句不是頁面上的連續字串。引文截到 'directly on your Gboard' 為止（兩個條件都還在），並在 fact 裡把兩個註腳標記的位置寫明。",
-    "研究紀錄 verified_fact（對照表五列的列名）：verbatim_quote 改成空字串。那段文字只存在於 PNG 的像素裡，頁面文字搜尋永遠找不到；fact 改寫成「這是編輯讀圖的結果」。",
-    "研究紀錄 verified_fact（圖上重複的 DE）：同上，verbatim_quote 改成空字串並註明原因。",
-    "研究紀錄 verified_fact（手錶公告的日期）：verbatim_quote 從 'Sep 2, 2026'（瀏覽器算出來的字串，頁面上沒有）改成頁面上真的存在的連續字串 \"1788292062825882\"，並補上 UTC／台北／美西三種換算，以及用手機討論串 1789496860754770 = 2026-09-16 02:27 台北（讀取當天顯示 '2 days ago'）互相校準的過程。",
-    "研究紀錄 verified_fact（Google zh-Hant 頁）：註明那條 verbatim_quote 是 ?hl=zh-Hant 版本上的連續字串，不是 url 欄位預設語言版本上的，免得後續代理把它當成壞引文；同步記下正文的歸屬已經改寫。",
-    "研究紀錄 diagram 第 1 格：「平板不列入」→「平板未打勾」。Pixel 平板在對照表裡是有欄位的，只是五列都沒有勾；「不列入」會被讀成沒有列進表格。",
-    "研究紀錄 diagram 第 4 格：「限 Pixel Watch 5 配對」→「Pixel Watch 5 配 Pixel 11」。原本的寫法把配對關卡寫成只跟手錶型號有關，但公告的但書是要搭配 Pixel 11 手機。",
-    "研究紀錄 must_not_write 新增一條：不可以寫手錶公告「早於部落格文章」或「比 Pixel Drop 早兩週發布」，並寫明理由（時間戳是討論串的日期、版本號戳記更晚）。",
-    "研究紀錄 unverified_or_excluded 的日期那一條改寫：補上第二輪自行解碼與雙向校準的過程，以及「顯示的日期是瀏覽器換算出來的，不是 Google 印的」這個結論。",
-    "研究紀錄 factcheck 新增 second_round（本節），並把 factcheck.verdict 從 needs_second_round 改成 ok。"
-   ],
-   "checked_and_correct": [
-    "事件日 2026-09-15 四重對上，且今天重抓的位元組與第一輪相同：可見日期行 'Sep 15, 2026'（全頁 1 次）、meta article:published_time 2026-09-15、JSON-LD datePublished 2026-09-15T18:00:00+00:00、dateModified 2026-09-15T18:20:54.745901+00:00；og:title 與 twitter:title 都是完整標題，只有 <title> 是短版；'Android Drop' 全頁 0 次。",
-    "部落格本文確實是五個 <p>，而且順序就是文章寫的順序：開場句、Pixel VIPs 與 Gboard／通知詐騙、Pixel Watch 的 Raise to Talk 與單手手勢、哈利波特與 Audible 試用、'Visit our community forum post to learn more.'。本文內 'Pause Point' 0 次、'Pixel Watch 5' 0 次，所以第 1 節第 1 段那兩句否定句成立（全頁 'Pixel Watch 5' 1 次，在相關報導欄，不在本文）。",
-    "本文自己清點的數字全部重數一次：論壇公告 'Here are just some of the features…' 底下的功能標題 4 個、對照表 5 個功能列、說明中心 11 個地區、8 種語言，全部無誤，正文也都標了「本文清點」；Google 自己印的 'nine new countries'／'six new languages' 維持不標，各 1 次。",
-    "對照表 PNG 重抓重看（200／73,292 bytes／1743x629）：用格線偵測得到 27 條垂直線（26 欄，扣掉功能名稱欄是 25 個裝置欄）與 7 條水平線（表頭加 5 個功能列）；逐格數深色像素，五列的第 1–24 欄各 30–31 點、第 25 欄（Pixel Tablet）五列都是 0。24 支手機加一台平板、Pixel Fold 夾在 Pixel 8a 與 Pixel 7 Pro 中間、圖上重複的 'DE' 全部確認。",
-    "手錶公告整份反轉義後從頭讀到尾，第一輪引用的每一句都在：標題、Wear OS 7 那句、'Applicable updates are available for the following models:' 底下只有 Pixel Watch 5、'Pixel Watch 5: CP3A.260905.002' 標在 Global 底下、Gemini 個人化的五個已連結應用程式、主動建議的配對但書、離線 Gemini 的三個具名例子加 'and other device actions'、'Our most accurate GPS route tracking' 小標、'Hand Gestures App Expansions' 的八個項目（最後一項是轉腕當通用返回）、安全公告那一行與它後面的署名、最後一節是 'Previous Pixel Watch Updates'。整份公告只有一條 Disclaimer，就是配對那一條。",
-    "手機公告整份反轉義後從頭讀到尾：Pixel Drop 的定義、'starting today' 與 'over the coming weeks in phases'、通知那句與兩個連結、'Here are just some of the features…'、四個功能標題的內文、九國六語逐字、Pause Point 那段（'May' 在公告正文 0 次，所以第一輪刪掉 5 月那個日期是對的）、'Feature Availability by Device'、五條 Disclaimer 逐字、兩張附件檔名。",
-    "說明中心 11 個地區與 8 種語言逐項重數：Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, Spain, United Kingdom, United States／Arabic, English, French, German, Indonesian, Japanese, Portuguese, Spanish。中文任何形式都不在語言清單上；正文的中文譯名與順序與頁面一致。該頁正文裡沒有任何可見的發布日或更新日。",
-    "Circle to Search 那一節的英文原句 'Our systems will use AI and information from the web to assess whether the message is likely a scam.' 今天仍在英文頁上；zh-Hant 版的對應句與機器翻譯警語也都在（各 2 次）。",
-    "四份來源今天都拿得到正文，狀態與位元組數記在報告的重抓表裡；'Taiwan' 在四頁的正文裡都是 0 次。",
-    "界線（tech.md）重掃：沒有購買或升級建議、沒有推薦式比價（全篇沒有價格）、沒有投資免責 callout、沒有任何攻擊手法描述；廠商宣稱（即時／裝置端、對話保有隱私、最精準的 GPS、低延遲）全部有歸屬並寫明本站沒有實機測試。'Starting in the U.S.' 在正文、表格、FAQ 三處都還是「從美國開始」，沒有被寫成「僅限美國」，也沒有任何一句會讓人以為台灣可用。",
-    "summary 五句、FAQ 六題（第 6 題改寫後）、callout 三句都能在正文裡找到對應；範圍不明的否定句都限縮在「本文引用的這幾頁」「這一頁」「公告」之內。",
-    "checked_on 2026-09-17 六處一致（四條 source、研究紀錄、第二段、表格 caption、圖解 caption），依規格沒有因為第二輪重查而改動。"
-   ],
-   "left_for_the_owner": [
-    "check_article.py 仍是同一條 FAIL：zh-TW link target tech-news-2026-index.json does not exist yet。科技垂直索引內容包還沒建立，查核前後完全相同；索引落地後第一條 link 的 text 要逐字換成索引自己的 zh-TW title。",
-    "手錶公告頁面上的日期是瀏覽器換算出來的：台北時間顯示 2026 年 9 月 2 日，美西會顯示 9 月 1 日。文章已寫明是換算來的，站主若覺得這個細節對讀者沒價值，整句可以刪，正文不會少掉任何限制條件。",
-    "11 個地區／8 種語言、那張對照表 PNG、以及兩則討論串的相對日期標籤（'2 days ago' 會隨時間變成日期）都是查核當下的快照，出刊當天要再開一次。",
-    "Disclaimer 1（'Pixel Drops are provided during applicable Android update and support periods for your device… Feature availability varies by model.'）與註腳 3（'Available on other keyboards with Keyboard Suggestions.'）刻意沒寫進正文，字數也不夠。兩條都不會讓文章現有的說法變弱——註腳 3 是放寬條件，文章本來就沒有寫成 Gboard 限定。站主若要補，段落只剩 3 個字的餘裕，其餘要從別處等量刪。",
-    "段落字數 2,997／3,000，只剩 3 個字。要再加句子就得從別處刪等量的字，而且不能動但書與限定詞（'Starting'、'和／或'、「本文清點」、「由瀏覽器依讀者時區換算」都是這兩輪補回來的）。"
-   ],
-   "verdict": "ok"
+  "unverified_or_excluded": [
+    {
+      "claim": "Exact posting dates and times of the two Google support-forum threads.",
+      "seen_where": "Decoded internal timestamp arrays inside the threads' inline JSON: the phone thread carries 1789496860754770 microseconds = 2026-09-15T18:27:40Z (27 minutes after the blog post), the watch thread carries 1788292062825882 = 2026-09-01T19:47:42Z with a later value 1788456498201866 = 2026-09-03T17:28:18Z. The factcheck agent additionally calibrated this field against three watch threads whose titles name a month and year (June 2026, March 2026, March 2026) and found it matches the Pixel Watch security bulletin's own published dates exactly for two of them (June 16 2026 and March 3 2026).",
+      "why_excluded": "SUPERSEDED 2026-09-18 by the independent factcheck agent, and refined the same day in the second round. The premise was wrong: the threads DO render a date, client-side, from exactly this field, so it is not an undocumented internal-only value. In a browser the watch thread shows 'Sep 2, 2026' and the phone thread shows '2 days ago' plus 'Last edited 2 days ago'. The second round decoded the field itself rather than relying on the browser: 1788292062825882 microseconds = 2026-09-01T19:47:42Z = 2026-09-02 03:47:42 Taipei / 2026-09-01 12:47:42 US Pacific, and the phone thread's 1789496860754770 = 2026-09-15T18:27:40Z = 2026-09-16 02:27:40 Taipei, which is exactly what renders as '2 days ago' on 2026-09-18 in a UTC+8 browser -- the two readings calibrate each other. What survives: (a) the displayed date is computed by the reader's browser, so it must be written as a converted date, not a printed one -- the article writes 「公告頁面上的日期由瀏覽器依讀者時區換算，台北時間是 2026 年 9 月 2 日，那是討論串本身的日期」; (b) do NOT write that the Pixel Watch 5 / Wear OS 7 update 'was announced on 15 September', and do not write that the watch note predates the blog post either, because the field dates the thread rather than the text now on it (the note carries build CP3A.260905.002, a later stamp than 2026-09-01); (c) the phone thread's label is relative, not absolute, so the forum note must not be described as '2026 年 9 月 15 日發布的論壇公告' -- both captions were changed to 「依 Google 9 月 Pixel Drop 的論壇公告……整理」; (d) news_date / event_date stays 2026-09-15, from the blog post's own printed dateline 'Sep 15, 2026' and its JSON-LD datePublished."
+    },
+    {
+      "claim": "That the forum threads are written by Google staff.",
+      "seen_where": "The phone thread's byline is 'Kush M.' and the watch thread's is 'Stefanie Frederick'; the pages contain badge label strings ('Community Manager', 'Product Expert', 'Google Employee') but only in the UI string dictionary, so no badge could be tied to either author from this container.",
+      "why_excluded": "Google Support Community threads can also be posted by volunteer Product Experts, who are not Google. These two are treated as first-party on different grounds: the blog post calls the phone thread 'our community forum post' and links it, and the watch thread is signed 'Google Pixel Watch Support Team'. Attribute to 'Google', never to the personal names."
+    },
+    {
+      "claim": "The Audible offer's terms (two-month length, price after trial, sign-up mechanics).",
+      "seen_where": "www.audible.com/ep/pixel-country-selection, HTTP 200, the page Google links on the words 'two-month Audible free trial'.",
+      "why_excluded": "That URL is only a country picker: twelve locale entries mapping to the same ten countries Google names, with no trial length and no terms stated, plus an unrelated Amazon promo banner ('Prime Member Exclusive | $0.99/mo for 4 months, $8.99/mo thereafter') that is NOT the Pixel offer and must not be written. The only sourced statement about this offer is Google's own: 'two-month Audible free trial', valid until 14 January 2027 in ten countries."
+    },
+    {
+      "claim": "Which languages the US keyboard Scam Detection actually supports.",
+      "seen_where": "Inferred temptation from the Help Centre's eight-language list.",
+      "why_excluded": "The eight languages are for Scam Detection as a whole, across eleven regions. Google's footnote 4 says only 'Available only in select languages in the US' and never intersects the two lists. Mapping one onto the other would be inference, not Google's statement."
+    },
+    {
+      "claim": "Why the Help Centre lists Spain, English and Indonesian when the September expansion note does not.",
+      "seen_where": "The gap between support.google.com/pixelphone/answer/16704479 and the forum note, both fetched the same day (2026-09-16 originally, re-confirmed 2026-09-17).",
+      "why_excluded": "Google gives no explanation and no dates on the Help Centre page. Most likely the Help Centre reflects cumulative availability including earlier waves, but that is a reading, not a sourced statement. The article reports both lists and says Google does not reconcile them."
+    },
+    {
+      "claim": "Pixel Tablet is being dropped, is end-of-life, or is excluded on purpose.",
+      "seen_where": "The empty Pixel Tablet column in Google's own availability image.",
+      "why_excluded": "An empty row is an absence of a tick, nothing more. Google gives no reason and makes no statement about the Pixel Tablet's future. Anything beyond 'the table marks none of the five features for Pixel Tablet' would be speculation."
+    },
+    {
+      "claim": "Any spec, availability date or price for Pixel 11, Pixel 11 Pro Fold, Pixel 10a or Pixel Watch 5 themselves.",
+      "seen_where": "Model names appear as column headers in the availability table and in the blog's related-stories rail ('You can officially buy the Pixel 11 phones and Pixel Watch 5.').",
+      "why_excluded": "Nothing in the four sources describes those products. The device names are usable as names only. Do not describe the hardware, and do not compare models -- tech.md forbids buying advice."
+    },
+    {
+      "claim": "Real-world effectiveness of Scam Detection, e.g. detection rate or false-positive rate.",
+      "seen_where": "Nowhere. Google publishes no figure.",
+      "why_excluded": "No number exists in any source, and this site does no testing. Google's own caveat 'Scam Detection may not catch every scam' is the only thing that can be written about its limits."
+    },
+    {
+      "claim": "Reaction, hands-on reports and feature lists circulating about this Drop on technology media and aggregator sites.",
+      "seen_where": "Not used. No news or aggregator page was opened for this assignment, either in the original research or in today's re-verification.",
+      "why_excluded": "BRIEF.md bars media and aggregators from becoming facts or sources. Everything above came from Google properties only. The richest material -- the device matrix, the country lists, the expiry dates, the Pixel Watch 5 restriction, the Circle to Search section -- is all first-party and was simply hidden one click below the blog post, so there was no need for secondary sourcing."
+    }
+  ],
+  "editorial_brief": "READER: a Taiwanese Pixel owner -- Pixel 6 through Pixel 11, possibly a Pixel Watch -- who saw a headline about scam warnings and wants to know whether anything in it reaches their phone.\n\nANGLE: a Feature Drop is not one thing. Its features are gated three different ways, stated in three different places. (a) Device gate: the matrix ticks 24 phone models, Pixel 6/6a up to Pixel 11 Pro Fold, for all five rows, and ticks Pixel Tablet for none. (b) Region/language gate: keyboard Scam Detection is US-only and 'select languages in the US'; notification Scam Detection adds nine named countries and six named languages this Drop, on top of an eleven-region/eight-language cumulative state the Help Centre states separately and without a date; the Audible trial covers ten named countries until 14 January 2027, and the theme packs themselves expire 31 December 2026 with no country limit of their own. (c) Pairing gate: the watch's Proactive suggestions need a Pixel Watch 5 paired with a Pixel 11 with Gemini and proactive assistance turned on. Taiwan appears in none of the lists. Say that plainly and let the reader check their own model; do not turn it into a complaint about Google or a prediction of when Taiwan gets it.\n\nSECOND ANGLE: where the real release note lives. The blog post says 'If you have a Pixel Watch' -- the linked note says Pixel Watch 5 only. The blog names three phone-side items in prose -- the linked forum note names four feature headings and a five-row device matrix, including Pause Point, which the blog never mentions. The blog gives no dates -- the note gives two. And the device matrix that answers 'does my phone get this' is a PNG screenshot inside a forum thread with no text alternative. A concrete point about how to read a vendor Feature Drop, grounded in having actually opened both pages.\n\nTHIRD ANGLE, small but genuinely useful for a Taiwan reader: Circle to Search and Google Lens, on the same Help Centre page as the region-gated Scam Detection feature, carry no region or language restriction at all -- a different (AI/web-lookup) mechanism, not to be blurred with on-device Scam Detection, but worth naming because it is the one scam-checking route not fenced behind the eleven-region list.\n\nSTRUCTURE: 9/15 announcement and where the real note lives; phone features and the device matrix (table closes this section); region/language detail including the Help Centre's cumulative snapshot and Circle to Search (diagram closes this section); the Pixel Watch 5 side and its pairing condition; what is not stated, including Taiwan, dates, build numbers and the Pixel Tablet row.\n\nLIVED-EXPERIENCE material stays out or is explicitly editor-labelled per BRIEF.md; none was needed given how much first-party detail exists.",
+  "must_not_write": [
+    "No buying or upgrade advice of any kind -- tech.md bars 該不該買 / 值不值得升級 / 哪一支比較好. Listing which model gets which feature is allowed; concluding which model to get is not.",
+    "Do not write that Taiwan is excluded, blocked or unsupported. Google names Taiwan nowhere. Write 官方公告未提及台灣 and, for the features with no region list, 官方只說可用性可能因國家或語言而異.",
+    "Do not restate Google's capability claims as fact. 'Most accurate GPS route tracking', 'low latency', 'real-time', 'processing happens on your device', 'keeping your conversations private' are all Google 表示. This site ran no test -- never write 我們實測.",
+    "Do not invent an Android version, a phone build number, a September 2026 Pixel Watch security patch level, a Taiwan launch date or a rollout completion date. None exists in any source; the only build published is the watch's CP3A.260905.002.",
+    "Do not silently fix Google's duplicated 'DE' in the image's language list (AR, DE, ES, FR, DE, PT, and JA). Use the six-language prose list for the body.",
+    "Do not merge the ten Audible countries with the nine Scam Detection countries -- they are different sets (Audible adds Italy and Spain, omits Mexico and Singapore).",
+    "Do not carry the blog's loose phrasing 'If you have a Pixel Watch' without Google's own restriction to Pixel Watch 5.",
+    "Do not attribute anything to the forum posters' personal names ('Kush M.', 'Stefanie Frederick'). Attribute to Google.",
+    "Do not describe or evaluate Pixel 11 / Pixel Watch 5 hardware. The sources only use those names.",
+    "No finance disclaimer callout -- tech.md says the tech vertical must not carry one.",
+    "No trademark, wordmark, logo, mascot or UI screenshot in the hero or the SVG diagram; write product names as plain text.",
+    "Do not write anything about how scams are actually carried out. Batch 3's threat-report rule applies: scope and what the user should do, never attack technique.",
+    "No list formatting, no Markdown, no emoji, no Simplified Chinese characters in the zh-TW pack.",
+    "Do not write 'Google 列出五項功能' -- the forum note's prose names four feature headings; five is the device-matrix's row count because Scam Detection is split into a keyboard row and a notification row there. State both numbers with what each one counts.",
+    "Do not write that the Pixel Watch 5 / Wear OS 7 update 'was announced on 15 September'. Revised 2026-09-18: the watch thread DOES display a date to readers (rendered client-side) -- 'Sep 2, 2026' in a UTC+8 browser -- so 'the note carries no visible date' is false and must not be written either. Print the displayed date only with the caveat that the browser converts it into the reader's own timezone, and never print the raw 2026-09-01T19:47:42Z instant as the note's date.",
+    "Revised in the second round, 2026-09-18: do not write that the watch note 「早於部落格文章」 or that it was published two weeks before the Pixel Drop. What the page gives is the THREAD's date (1788292062825882 = 2026-09-01T19:47:42Z, 2026-09-02 in Taipei), and the note's own build string CP3A.260905.002 carries a later stamp than that date, so the content a reader sees today was edited after the thread was created. The article therefore states only what the page shows and how it is produced, and takes its event date from the blog post's printed 'Sep 15, 2026'. Do not turn the two dates into a chronology.",
+    "Do not describe the phone forum note as '2026 年 9 月 15 日發布的論壇公告'. The thread displays only a relative label ('2 days ago', 'Last edited 2 days ago'); no absolute publication date for that thread is printed anywhere a reader can see. Only the blog post carries a printed dateline, 'Sep 15, 2026'.",
+    "Do not put a date on 'First introduced on Pixel 11' for Pause Point. The forum note gives none ('May' occurs zero times in it), and the Pause Point blog post it links to is not in sources[].",
+    "Do not import the Pixel Watch security bulletin's state (source.android.com/docs/security/bulletin/pixel-watch) into the article. It is not in sources[], it is live data, and the claim would be a negative one ('no September bulletin yet'). The article may only repeat that the note points readers there.",
+    "Do not write that Google published no Traditional-Chinese version of the Pixel Drop blog post. That rested on probing a derived intl/zh-tw URL, which BRIEF.md counts as guessing. The article now says only that the blog post and the two forum notes it cites are English, and that the Help Centre page has a Chinese version carrying Google's own machine-translation warning.",
+    "Do not describe the sign-off 'Thanks, Google Pixel Watch Support Team' as being at the end of the watch note -- it sits near the top, right after the security-bulletin line; the note's last section is 'Previous Pixel Watch Updates'.",
+    "Do not write 'Offline Gemini gives four examples' -- Google names three (timer, workout start/stop, do-not-disturb) plus an open-ended 'other device actions', which is not a fourth named example.",
+    "Do not present the Help Centre's 11-region/8-language list as complete eligibility criteria on its own -- it states no Pixel model requirement, while the forum note and device matrix require Pixel 6 or newer.",
+    "Do not conflate Circle to Search / Google Lens (AI and web-lookup based, no stated region limit) with the on-device Scam Detection feature this Drop expands, and do not invent an official Traditional-Chinese product name for Circle to Search -- none was found in any source; keep the English product names as plain text.",
+    "Do not conflate call-level Scam Detection or the Google Messages spam folder (both documented on the same Help Centre page) with the chat-notification and keyboard Scam Detection variants this Drop actually changes."
+  ],
+  "live_data_warnings": [
+    "The device-availability matrix is a snapshot read from a PNG image, re-verified by two independent methods (manual multi-magnification read and per-cell pixel-detection) on 2026-09-16 and spot-checked again by filename on 2026-09-17: 25 device columns, 5 feature rows, columns 1-24 ticked on all 5 rows, column 25 (Pixel Tablet) ticked on none. It is still a snapshot of one image; write 'Google's table does not mark these five features for Pixel Tablet', not 'Pixel Tablet is unsupported'.",
+    "The Help Centre's 11 regions / 8 languages are a cumulative count with NO date anywhere on that page (checked again 2026-09-17); the forum note's 9 countries / 6 languages are this Drop's own delta. The two counts must not be added, subtracted or presented as the same list.",
+    "As of 2026-09-17 there is still no September 2026 Pixel Watch security bulletin: source.android.com/docs/security/bulletin/pixel-watch's newest entry remains August 2026 (published 2026-08-20, patch level 2026-08-05, footer 'Last updated 2026-08-20 UTC'). This is a checked_on-date snapshot and should be re-tested before any later reuse of this record.",
+    "The two fixed expiry dates still need their checked_on attached when cited: Harry Potter Audiobook Packs until 2026-12-31, the Audible trial until 2027-01-14 (ten named countries only for the Audible trial).",
+    "blog.google/intl/zh-tw/products-and-platforms/devices/pixel/september-2026-pixel-drop/ returns 404 (re-confirmed 2026-09-17) while blog.google/intl/zh-tw/ returns 200 -- Google has not published a Traditional-Chinese version of this specific post. Taiwanese readers have only the English original and the machine-assisted Chinese Help Centre page (which carries Google's own AI-translation warning).",
+    "Both support.google.com threads still serve their body inside a double-escaped inline-JSON blob rather than plain HTML (confirmed again 2026-09-17); a future re-check must grep the raw bytes for exact phrases (as this record's sourcing_notes documents) or budget time to fully unescape the blob, not rely on naive tag-stripping."
+  ],
+  "corrections_applied": [
+    "must_fix 1 (September Android Drop claim refuted): applied. The not_said entry is deleted outright; verified_facts now carries an explicit zero-occurrence check re-confirmed 2026-09-17.",
+    "must_fix 2 (og:title mislabelled as short form): applied. verified_facts corrected to state og:title and twitter:title both carry the FULL headline and only the <title> element is short.",
+    "must_fix 3 (Offline Gemini 'four examples'): applied. verified_facts corrected to three named examples plus an open-ended tail; added to must_not_write so the article cannot regress.",
+    "must_fix 4 (footnote 5 'only caveat' on VIPs AND Harry Potter): applied. verified_facts narrowed to Pixel VIPs (and Pause Point); Harry Potter's separate 2026-12-31 expiry from Disclaimer 2 is called out as a distinct condition.",
+    "must_fix 5 ('five named features' miscount): applied. verified_facts corrected to four prose feature headings vs. five device-matrix rows (Scam Detection split into keyboard + notification rows); added to must_not_write.",
+    "must_fix 6 (sign-off position): applied. verified_facts corrected to state the sign-off sits near the top of the note, not the end; added to must_not_write.",
+    "must_fix 7 (no year in the 'previous updates' labels): applied. verified_facts corrected to note the year is only in the link hrefs; the article does not use this fact at all, removing the risk entirely.",
+    "must_fix 8 ('as its origin' overclaim): applied. verified_facts reworded to 'links to Google's November 2025 Pixel Drop post' without asserting origination.",
+    "must_fix 9 (Proactive suggestions quote missing its tail): applied. verbatim_quote extended to the sentence's actual end.",
+    "must_add (watch note date): applied. Promoted from unverified_or_excluded into must_not_write per the correction's own instruction; the article states only that the watch note predates the blog post and carries no visible date, and does not print 2026-09-01.",
+    "must_add (Help Centre has no date): applied. New not_said and live_data_warnings entries; the article attributes the 11-region/8-language list to the 2026-09-17 checked_on snapshot, never to 'after the Drop'.",
+    "must_add (Help Centre states no model condition): applied. New verified_fact and not_said entry; the article does not present the Help Centre list as complete eligibility.",
+    "must_add (Circle to Search / Google Lens omission): applied. New verified_fact added, and used in the article body as a not-region-gated alternative, explicitly distinguished from on-device Scam Detection.",
+    "must_add (three different 'Scam Detection' things on one page): applied. New not_said entry and must_not_write item; the article covers only the chat-notification and keyboard variants this Drop actually changes.",
+    "must_add (forum note link targets for the two update channels): applied, folded into the existing verified_fact about 'Update to the latest Android version' / 'update your apps' with both hrefs now recorded.",
+    "must_add (second attachment image is hero art, not a second matrix): applied, recorded in sourcing_notes so a later agent does not mistake it for a second data table; not used in the article.",
+    "live_data_warnings: applied, all five original items carried forward and re-checked on 2026-09-17 with the same findings; two new items added (Help Centre no-date, blob-escaping still present).",
+    "source_list_fix: applied. All four sources remain first-party Google properties, checked_on updated to 2026-09-17 throughout the content pack, this record, the article's second paragraph, the table caption and the diagram caption -- all six locations consistent.",
+    "checked_on: this record independently re-verifies all four sources on 2026-09-17 (see sourcing_notes for the byte counts and phrase greps), one day after the prior research (2026-09-16) and the factcheck (2026-09-16); it does not merely copy the earlier date forward."
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "All four sources[] refetched with curl -sL -A \"Mokaair-editorial\" (no email, name or personal data in any request, header or query string) and read in full: blog.google 200 / 389,344 bytes (body present as plain HTML, five <p> elements plus JSON-LD and meta tags); support.google.com/pixelphone/thread/466181739 200 / 2,060,316 bytes; support.google.com/googlepixelwatch/thread/464268922 200 / 1,900,528 bytes; support.google.com/pixelphone/answer/16704479 200 / 1,683,525 bytes. The three support pages serve their body inside a double-escaped inline-JSON blob, so a local decoder unescaped \\\\uXXXX / \\\\xXX / \\\\\" / \\\\/ repeatedly and the release notes were then read end to end, not grepped for expected phrases. The device-availability matrix was fetched as an image (thread-466181739-2189480914184742135.png, 200 / 73,292 bytes, 1743x629) and read visually, not inferred: 25 device columns from Pixel 11 Pro Fold to Pixel Tablet with Pixel Fold between Pixel 8a and Pixel 7 Pro, 5 feature rows, all 24 phone columns ticked on all 5 rows, the Pixel Tablet column blank on all 5, and Google's own duplicated 'DE' in '(AR, DE, ES, FR, DE, PT, and JA)' confirmed. Both support threads were additionally loaded in a real browser, which is how the rendered dates and author badges were found. Google's zh-Hant rendering of source 4 was read through Google's own ?hl=zh-Hant switch. No URL outside sources[] became a basis for any sentence in the article; no identifier or path was guessed. 96 claims checked: every paragraph sentence, the 5 summary lines, the 6 FAQ answers, the callout, all 20 table cells plus caption, the diagram caption and its four nodes, the hero_label, title and description.",
+    "verdict": "ok",
+    "verdict_history": "第一輪（2026-09-18）是 needs_second_round：改了 17 處，其中三處動到骨幹。第二輪（同日，見 second_round）覆核完那三處與所有新寫的句子，再改 16 處後改判 ok。",
+    "edits_to_the_pack": [
+      "第 1 節第 1 段：「只有四段文字」→ 部落格本文其實是五個 <p>（開頭一句「Our September Pixel Drop is officially here…」被漏掉）。改寫成不帶數字的敘述。",
+      "第 2 節第 2 段：刪掉 Pause Point 的「2026 年 5 月隨 Pixel 11 推出」。四份來源都沒有這個日期，公告只寫 'First introduced on Pixel 11'；已改成「公告寫它『最早在 Pixel 11 推出』、沒有給日期」。",
+      "第 4 節第 1 段：「這則公告比部落格文章更早發布，本身沒有標示日期」→ 手錶討論串在瀏覽器裡其實顯示 'Sep 2, 2026'。已改成「公告頁面標示的日期是 2026 年 9 月 2 日（依瀏覽器所在時區顯示），早於部落格文章」。",
+      "第 4 節第 3 段：刪掉「那個頁面最新一則仍是 2026 年 8 月公告，還沒有 9 月號的手錶安全公告」——那是 source.android.com 的狀態，不在 sources[] 內，而且是活資料加否定命題。",
+      "第 3 節第 3 段：「不受這 11 個地區限制的路徑」「Google 沒有替它加上地區或語言限制」→ 限縮成「這一頁沒有替這條路徑寫出地區或語言限制」。",
+      "第 2 節第 2 段：「這三項功能，公告只寫『適用性可能因國家與語言而異』」→ 哈利波特那一列另有 Disclaimer 2 的期限與 Audible 國家清單（修正清單 must_fix 4 的同一個錯誤在正文復發）。已限縮到 Pixel VIPs 與 Pause Point，並補回 'and/or'。",
+      "清點數字全部標成編輯清點：第 2 段加一句總說明，「4 個功能標題」「5 列」「11 個地區」「8 種語言」就地標註；「10 個國家」改成照公告點名的名單寫。Google 自己印出的「nine new countries」「six new languages」維持不標。",
+      "第 1 節第 2 段補上公告自己的但書「以下只是這次 Pixel Drop 值得期待的一部分功能」，這份功能清單不是全清單。",
+      "鍵盤詐騙警示的「只在美國」→ 照公告寫成「從美國開始，適用 Pixel 6 以上機型」（表格與 FAQ 同步）。",
+      "表格 caption 與圖解 caption 的「2026 年 9 月 15 日發布的論壇公告」→ 論壇公告頁面沒有印出絕對日期；改成「Google 9 月 Pixel Drop 的論壇公告」，圖解 caption 另補上 Pixel Watch 更新說明（配對那一格來自手錶公告，不是論壇公告）。",
+      "第 5 節第 1 段：刪掉「這篇公告沒有官方繁體中文版（網址查核時回應 404）」——那條 intl/zh-tw 網址是推導出來的，BRIEF 視同猜測。改成只說引用的三份英文頁與說明中心的中文版及其機器翻譯警語。",
+      "第 5 節第 2 段：「兩個期限不是同一件事，國家名單也不完全相同」原本無所指（主題套件根本沒有國家清單）。改成 Audible 十國名單與通知詐騙九國的實際差異：多了義大利與西班牙，少了墨西哥與新加坡。",
+      "FAQ 第 5 題把手錶公告標題誤引成「Pixel Watch 5 - September 2026」，已補成完整標題「Google Pixel Watch Update (Pixel Watch 5) - September 2026」。",
+      "小節標題「官方沒有寫的事」→「四份來源沒有寫的事」；摘要第 5 句「官方公布的名單裡沒有出現台灣」→「本文引用的四份來源」；callout 的「官方公布的名單」同步限縮，「以下」改成「本文列出的」（callout 在 FAQ 之後）。",
+      "「最新的 Pixel 11 Pro Fold」「條件最窄的是主動建議」兩個比較級刪掉；GPS 那句改成 Google 用「我們最精準的 GPS 路線追蹤」當小標、內文只寫路線圖改善；手勢那句的「從單手手勢擴大成 8 種」改成照公告的小標與項目寫。",
+      "《哈利波特：全卡司有聲劇場版》這個自創中文書名改回原文 Harry Potter: The Full-Cast Audio Editions；Circle to Search／Google Lens 維持英文；At a Glance 不再譯成「一目了然」；Circle to Search 那句引文改用 Google 自己 zh-Hant 頁的措辭。",
+      "台灣用語：兩處「App」改成「應用程式」；「符合資格的裝置」改成公告寫的「支援的 Pixel 裝置」。",
+      "研究紀錄：更正部落格段落數、補上 Pause Point 無日期、改寫手錶公告日期那條 unverified_or_excluded、新增兩條 verified_fact（瀏覽器渲染的日期與作者徽章、Google zh-Hant 頁的用語），must_not_write 新增五條。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-15：部落格頁面可見日期行 'Sep 15, 2026'、meta article:published_time 2026-09-15、JSON-LD datePublished 2026-09-15T18:00:00+00:00 三處一致，與 slug 尾碼及 news_date 相符。",
+      "九國與六語逐字無誤（Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, United Kingdom；Arabic, French, German, Portuguese, Japanese, Spanish），而且 nine／six 是 Google 自己印出來的數字。",
+      "說明中心十一個地區與八種語言逐項無誤，英文版與 Google 自己的 zh-Hant 版列的是同一份名單；該頁確實沒有任何可見的發布日或更新日（唯一的 'Last updated' 字串在 JavaScript 樣板裡）。",
+      "兩個到期日與十個 Audible 國家逐字無誤：'Harry Potter Audiobook Packs available until December 31, 2026. Audible offer available until January 14, 2027 only in the United States, Canada, United Kingdom, France, Germany, Italy, Spain, India, Japan, and Australia.'",
+      "裝置對照表獨立重讀（看圖，不是沿用紀錄）：24 支手機五列全勾、Pixel Tablet 五列全空，Google 圖上的重複 'DE' 確實存在且文章沒有偷偷修掉。",
+      "手錶公告：標題、'All eligible Pixel Watch 5 devices will receive a Wear OS 7 update.'、'Applicable updates are available for the following models: Pixel Watch 5'、版本號 CP3A.260905.002 標為 Global、主動建議的但書 'Available only on Pixel Watch 5 paired with Pixel 11. Also requires gemini and proactive assistance enabled on paired Pixel 11.'、離線 Gemini 的三個具名例子加 'and other device actions' 全部相符。",
+      "台灣：兩則討論串裡的 'Taiwan' 各只有兩次，都在頁面 UI 的國碼／語言字典裡，正文沒有提到台灣；八種語言裡沒有任何中文。文章一律寫成官方未提及，沒有寫成台灣被排除。",
+      "界線：全文沒有購買或升級建議、沒有機型推薦、沒有價格比較、沒有投資免責 callout（科技垂直只有一個提醒 callout），也沒有任何攻擊手法的描述。",
+      "廠商宣稱都有歸屬：即時／裝置端處理、對話保有隱私、最精準的 GPS、低延遲，全部寫成 Google 的說法，並寫明本站沒有實機測試。",
+      "checked_on 2026-09-17 四處一致（sources 四條、研究紀錄、第二段、表格 caption、圖解 caption），依規格沒有因為本次重查而改動。",
+      "所有事實都掛在四條 sources 內；本次查核為了反駁而讀的 blog.google Pause Point 文章、audible.com 國家選擇頁、source.android.com 安全公告、blog.google/intl/zh-tw 都沒有成為文章依據。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍有一條 FAIL：zh-TW link target tech-news-2026-index.json does not exist yet。科技垂直索引內容包還沒建立，不在查核代理能動的兩個檔案裡；索引落地後第一條 link 的 text 必須逐字換成索引自己的 zh-TW title。",
+      "本文改了 17 處，其中三處動到骨幹（部落格段落數、Pause Point 的日期、手錶公告的日期與「沒有標示日期」），因此結論是 needs_second_round。",
+      "手錶討論串顯示的 'Sep 2, 2026' 會隨讀者時區變成 Sep 1；文章已加時區但書，站主若覺得這個細節對讀者沒有價值，可以整句改成「公告早於部落格文章」。",
+      "11 個地區／8 種語言與裝置對照表都是查核當下的快照，出刊當天要再開一次頁面與那張 PNG 重看。",
+      "Pixel Watch 9 月安全公告在 2026-09-17 仍未發布（source.android.com 最新是 2026-08-20、修補等級 2026-08-05）。這條刻意沒寫進文章，但站主若想補，必須先把那個網址放進 sources[]。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "scope": "不是整篇重做：覆核第一輪改動過的每一段與新寫進去的每一句，加上四條 sources 全部重抓重讀、對照表 PNG 重抓重看、53 條 verbatim_quote 逐條做連續字串比對、手錶公告日期的原始時間戳自行解碼換算。",
+      "claims_checked": 150,
+      "claims_breakdown": "53 條 verbatim_quote 連續性比對；63 條文章端主張（第一輪改過的 12 段共 22 句、摘要 5 句、FAQ 6 題答句、callout 3 句、表格 20 格與 caption、圖解 caption 與四格、hero_label）；34 條來源端重讀（部落格 15、對照表 6、時間戳 5、zh-Hant 頁 3、說明中心清單 5）。兩則論壇公告的正文另外整份反轉義後從頭讀到尾。",
+      "edits": 16,
+      "edits_note": "另有 5 處純為騰出字數做的敘述精簡（不動任何但書或限定詞）：第 1 節第 1 段的結尾指路句、第 2 節第 1 段的「另外列出」、第 2 節第 2 段的「指定的」、第 3 節第 1 段的「公告寫出的」、第 5 節第 2 段的「更新何時到每個人手上」→「至於時程」。段落字數 2,999 → 2,997。",
+      "edits_to_the_pack": [
+        "第 3 節第 2 段：說明中心 11 個地區和公告 9 個新增國家的差集原本只寫「多了西班牙」，讀者自己一減會少一個。改成「比公告新增的 9 國多了美國與西班牙，語言多了英文與印尼文」——美國是公告自己寫的原本就支援的地區，上一段已經寫過。沒有引入任何自己算出來的總數。",
+        "第 3 節第 3 段：Circle to Search 那句中文引文原本寫成「Google 寫」，但它出自 Google 的 ?hl=zh-Hant 頁，而文章最後一節自己寫了那頁帶有機器翻譯警語。改成「Google 的中文版頁面寫」，讓引文和警語連得起來。",
+        "第 2 節第 2 段：「前者與 Pause Point 只有對照表下方那句……」→「VIPs 與 Pause Point……」。那一段列了三項功能，「前者」指涉不清（雖然後半句把哈利波特排除掉了，仍要讀者自己推）。",
+        "第 4 節第 1 段：刪掉「早於部落格文章」。頁面上的日期是討論串自己的日期（時間戳 1788292062825882 = 2026-09-01T19:47:42Z），而公告裡的版本號 CP3A.260905.002 的戳記晚於那一天，代表現在看到的內文是建立後編輯過的，所以那個日期撐不起「這則公告比部落格早發布」。改成「公告頁面上的日期由瀏覽器依讀者時區換算，台北時間是 2026 年 9 月 2 日，那是討論串本身的日期」，並自行換算確認台北時間下 9 月 2 日成立（美西會顯示 9 月 1 日）。",
+        "表格第 1 列與第 5 列：「可能因國家或語言而異」→「可能因國家和／或語言而異」。正文第一輪已經補回 and/or，表格兩格漏了，等於在表格裡把 Google 的限定詞寫弱。",
+        "FAQ 第 6 題：原本的答句帶進兩條正文沒有的事實（公告請使用者更新 Android 版本與更新應用程式、沒有點名電信業者），違反 FAQ 答案必須是正文子集。改寫成只用正文已有的內容，並刪掉「請以應用程式商店的更新通知為準」這句正文沒有依據的指引。",
+        "研究紀錄 verified_fact（鍵盤詐騙警示）：verbatim_quote 原本抄了整句，但公告正文在 Gboard 和 across 之間有註腳標記 (3)、在 private to you 和句號之間有 (4)，整句不是頁面上的連續字串。引文截到 'directly on your Gboard' 為止（兩個條件都還在），並在 fact 裡把兩個註腳標記的位置寫明。",
+        "研究紀錄 verified_fact（對照表五列的列名）：verbatim_quote 改成空字串。那段文字只存在於 PNG 的像素裡，頁面文字搜尋永遠找不到；fact 改寫成「這是編輯讀圖的結果」。",
+        "研究紀錄 verified_fact（圖上重複的 DE）：同上，verbatim_quote 改成空字串並註明原因。",
+        "研究紀錄 verified_fact（手錶公告的日期）：verbatim_quote 從 'Sep 2, 2026'（瀏覽器算出來的字串，頁面上沒有）改成頁面上真的存在的連續字串 \"1788292062825882\"，並補上 UTC／台北／美西三種換算，以及用手機討論串 1789496860754770 = 2026-09-16 02:27 台北（讀取當天顯示 '2 days ago'）互相校準的過程。",
+        "研究紀錄 verified_fact（Google zh-Hant 頁）：註明那條 verbatim_quote 是 ?hl=zh-Hant 版本上的連續字串，不是 url 欄位預設語言版本上的，免得後續代理把它當成壞引文；同步記下正文的歸屬已經改寫。",
+        "研究紀錄 diagram 第 1 格：「平板不列入」→「平板未打勾」。Pixel 平板在對照表裡是有欄位的，只是五列都沒有勾；「不列入」會被讀成沒有列進表格。",
+        "研究紀錄 diagram 第 4 格：「限 Pixel Watch 5 配對」→「Pixel Watch 5 配 Pixel 11」。原本的寫法把配對關卡寫成只跟手錶型號有關，但公告的但書是要搭配 Pixel 11 手機。",
+        "研究紀錄 must_not_write 新增一條：不可以寫手錶公告「早於部落格文章」或「比 Pixel Drop 早兩週發布」，並寫明理由（時間戳是討論串的日期、版本號戳記更晚）。",
+        "研究紀錄 unverified_or_excluded 的日期那一條改寫：補上第二輪自行解碼與雙向校準的過程，以及「顯示的日期是瀏覽器換算出來的，不是 Google 印的」這個結論。",
+        "研究紀錄 factcheck 新增 second_round（本節），並把 factcheck.verdict 從 needs_second_round 改成 ok。"
+      ],
+      "checked_and_correct": [
+        "事件日 2026-09-15 四重對上，且今天重抓的位元組與第一輪相同：可見日期行 'Sep 15, 2026'（全頁 1 次）、meta article:published_time 2026-09-15、JSON-LD datePublished 2026-09-15T18:00:00+00:00、dateModified 2026-09-15T18:20:54.745901+00:00；og:title 與 twitter:title 都是完整標題，只有 <title> 是短版；'Android Drop' 全頁 0 次。",
+        "部落格本文確實是五個 <p>，而且順序就是文章寫的順序：開場句、Pixel VIPs 與 Gboard／通知詐騙、Pixel Watch 的 Raise to Talk 與單手手勢、哈利波特與 Audible 試用、'Visit our community forum post to learn more.'。本文內 'Pause Point' 0 次、'Pixel Watch 5' 0 次，所以第 1 節第 1 段那兩句否定句成立（全頁 'Pixel Watch 5' 1 次，在相關報導欄，不在本文）。",
+        "本文自己清點的數字全部重數一次：論壇公告 'Here are just some of the features…' 底下的功能標題 4 個、對照表 5 個功能列、說明中心 11 個地區、8 種語言，全部無誤，正文也都標了「本文清點」；Google 自己印的 'nine new countries'／'six new languages' 維持不標，各 1 次。",
+        "對照表 PNG 重抓重看（200／73,292 bytes／1743x629）：用格線偵測得到 27 條垂直線（26 欄，扣掉功能名稱欄是 25 個裝置欄）與 7 條水平線（表頭加 5 個功能列）；逐格數深色像素，五列的第 1–24 欄各 30–31 點、第 25 欄（Pixel Tablet）五列都是 0。24 支手機加一台平板、Pixel Fold 夾在 Pixel 8a 與 Pixel 7 Pro 中間、圖上重複的 'DE' 全部確認。",
+        "手錶公告整份反轉義後從頭讀到尾，第一輪引用的每一句都在：標題、Wear OS 7 那句、'Applicable updates are available for the following models:' 底下只有 Pixel Watch 5、'Pixel Watch 5: CP3A.260905.002' 標在 Global 底下、Gemini 個人化的五個已連結應用程式、主動建議的配對但書、離線 Gemini 的三個具名例子加 'and other device actions'、'Our most accurate GPS route tracking' 小標、'Hand Gestures App Expansions' 的八個項目（最後一項是轉腕當通用返回）、安全公告那一行與它後面的署名、最後一節是 'Previous Pixel Watch Updates'。整份公告只有一條 Disclaimer，就是配對那一條。",
+        "手機公告整份反轉義後從頭讀到尾：Pixel Drop 的定義、'starting today' 與 'over the coming weeks in phases'、通知那句與兩個連結、'Here are just some of the features…'、四個功能標題的內文、九國六語逐字、Pause Point 那段（'May' 在公告正文 0 次，所以第一輪刪掉 5 月那個日期是對的）、'Feature Availability by Device'、五條 Disclaimer 逐字、兩張附件檔名。",
+        "說明中心 11 個地區與 8 種語言逐項重數：Australia, Canada, France, Germany, India, Japan, Mexico, Singapore, Spain, United Kingdom, United States／Arabic, English, French, German, Indonesian, Japanese, Portuguese, Spanish。中文任何形式都不在語言清單上；正文的中文譯名與順序與頁面一致。該頁正文裡沒有任何可見的發布日或更新日。",
+        "Circle to Search 那一節的英文原句 'Our systems will use AI and information from the web to assess whether the message is likely a scam.' 今天仍在英文頁上；zh-Hant 版的對應句與機器翻譯警語也都在（各 2 次）。",
+        "四份來源今天都拿得到正文，狀態與位元組數記在報告的重抓表裡；'Taiwan' 在四頁的正文裡都是 0 次。",
+        "界線（tech.md）重掃：沒有購買或升級建議、沒有推薦式比價（全篇沒有價格）、沒有投資免責 callout、沒有任何攻擊手法描述；廠商宣稱（即時／裝置端、對話保有隱私、最精準的 GPS、低延遲）全部有歸屬並寫明本站沒有實機測試。'Starting in the U.S.' 在正文、表格、FAQ 三處都還是「從美國開始」，沒有被寫成「僅限美國」，也沒有任何一句會讓人以為台灣可用。",
+        "summary 五句、FAQ 六題（第 6 題改寫後）、callout 三句都能在正文裡找到對應；範圍不明的否定句都限縮在「本文引用的這幾頁」「這一頁」「公告」之內。",
+        "checked_on 2026-09-17 六處一致（四條 source、研究紀錄、第二段、表格 caption、圖解 caption），依規格沒有因為第二輪重查而改動。"
+      ],
+      "left_for_the_owner": [
+        "check_article.py 仍是同一條 FAIL：zh-TW link target tech-news-2026-index.json does not exist yet。科技垂直索引內容包還沒建立，查核前後完全相同；索引落地後第一條 link 的 text 要逐字換成索引自己的 zh-TW title。",
+        "手錶公告頁面上的日期是瀏覽器換算出來的：台北時間顯示 2026 年 9 月 2 日，美西會顯示 9 月 1 日。文章已寫明是換算來的，站主若覺得這個細節對讀者沒價值，整句可以刪，正文不會少掉任何限制條件。",
+        "11 個地區／8 種語言、那張對照表 PNG、以及兩則討論串的相對日期標籤（'2 days ago' 會隨時間變成日期）都是查核當下的快照，出刊當天要再開一次。",
+        "Disclaimer 1（'Pixel Drops are provided during applicable Android update and support periods for your device… Feature availability varies by model.'）與註腳 3（'Available on other keyboards with Keyboard Suggestions.'）刻意沒寫進正文，字數也不夠。兩條都不會讓文章現有的說法變弱——註腳 3 是放寬條件，文章本來就沒有寫成 Gboard 限定。站主若要補，段落只剩 3 個字的餘裕，其餘要從別處等量刪。",
+        "段落字數 2,997／3,000，只剩 3 個字。要再加句子就得從別處刪等量的字，而且不能動但書與限定詞（'Starting'、'和／或'、「本文清點」、「由瀏覽器依讀者時區換算」都是這兩輪補回來的）。"
+      ],
+      "verdict": "ok"
+    }
+  },
+  "hero_label": "功能各自綁地區與機型",
+  "diagram": {
+    "title": "Pixel Drop 的四道關卡",
+    "caption": "依 Google 9 月 Pixel Drop 的論壇公告與 Pixel Watch 更新說明整理：機型、地區、語言與配對四道關卡，查核日 2026 年 9 月 17 日。",
+    "nodes": [
+      [
+        "機型關卡",
+        "Pixel 6 系列起、平板未打勾"
+      ],
+      [
+        "地區關卡",
+        "通知詐騙新增 9 國"
+      ],
+      [
+        "語言關卡",
+        "新增 6 種語言"
+      ],
+      [
+        "配對關卡",
+        "Pixel Watch 5 配 Pixel 11"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Each Feature Has a Gate",
+      "diagram": {
+        "title": "The Four Gates of the Pixel Drop",
+        "caption": "Compiled from the forum post for Google's September Pixel Drop and the Pixel Watch update notes: four gates — device, region, language, and pairing. Checked on September 17, 2026.",
+        "nodes": [
+          [
+            "Device gate",
+            "Pixel 6 up; Tablet unchecked"
+          ],
+          [
+            "Region gate",
+            "9 new countries for alerts"
+          ],
+          [
+            "Language gate",
+            "6 new languages added"
+          ],
+          [
+            "Pairing gate",
+            "Pixel Watch 5 + Pixel 11"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "機能ごとに条件が違う",
+      "diagram": {
+        "title": "Pixel Dropの4つの関門",
+        "caption": "Googleの9月Pixel Dropのフォーラム投稿とPixel Watchのアップデート情報をもとに整理：機種・地域・言語・ペアリングという4つの関門。確認日は2026年9月17日。",
+        "nodes": [
+          [
+            "機種の関門",
+            "6以降、Tabletのみ空欄"
+          ],
+          [
+            "地域の関門",
+            "9カ国が新たに対象"
+          ],
+          [
+            "言語の関門",
+            "6言語が追加"
+          ],
+          [
+            "ペアリングの関門",
+            "Watch 5とPixel 11"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "기능마다 조건이 다름",
+      "diagram": {
+        "title": "Pixel Drop의 네 관문",
+        "caption": "Google 9월 Pixel Drop의 포럼 게시물과 Pixel Watch 업데이트 안내를 바탕으로 정리: 기종·지역·언어·페어링이라는 네 가지 관문. 확인일 2026년 9월 17일.",
+        "nodes": [
+          [
+            "기종 관문",
+            "Pixel 6부터, 태블릿 빈칸"
+          ],
+          [
+            "지역 관문",
+            "9개국 알림 추가"
+          ],
+          [
+            "언어 관문",
+            "6개 언어 추가"
+          ],
+          [
+            "페어링 관문",
+            "Watch 5와 Pixel 11"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "功能各自绑地区与机型",
+      "diagram": {
+        "title": "Pixel Drop 的四道关卡",
+        "caption": "依据 Google 9 月 Pixel Drop 的论坛帖子与 Pixel Watch 更新说明整理：机型、地区、语言与配对四道关卡，查核日 2026 年 9 月 17 日。",
+        "nodes": [
+          [
+            "机型关卡",
+            "Pixel 6 系列起、平板未打勾"
+          ],
+          [
+            "地区关卡",
+            "通知诈骗新增 9 国"
+          ],
+          [
+            "语言关卡",
+            "新增 6 种语言"
+          ],
+          [
+            "配对关卡",
+            "Watch 5 配 Pixel 11"
+          ]
+        ]
+      }
+    }
   }
- },
- "hero_label": "功能各自綁地區與機型",
- "diagram": {
-  "title": "Pixel Drop 的四道關卡",
-  "caption": "依 Google 9 月 Pixel Drop 的論壇公告與 Pixel Watch 更新說明整理：機型、地區、語言與配對四道關卡，查核日 2026 年 9 月 17 日。",
-  "nodes": [
-   [
-    "機型關卡",
-    "Pixel 6 系列起、平板未打勾"
-   ],
-   [
-    "地區關卡",
-    "通知詐騙新增 9 國"
-   ],
-   [
-    "語言關卡",
-    "新增 6 種語言"
-   ],
-   [
-    "配對關卡",
-    "Pixel Watch 5 配 Pixel 11"
-   ]
-  ]
- },
- "translations": {
-  "en": {
-   "hero_label": "Each feature has a gate",
-   "diagram": {
-    "title": "The Four Gates of the Pixel Drop",
-    "caption": "Compiled from the forum post for Google's September Pixel Drop and the Pixel Watch update notes: four gates — device, region, language, and pairing. Checked on September 17, 2026.",
-    "nodes": [
-     [
-      "Device gate",
-      "Pixel 6 up; Tablet unchecked"
-     ],
-     [
-      "Region gate",
-      "9 new countries for alerts"
-     ],
-     [
-      "Language gate",
-      "6 new languages added"
-     ],
-     [
-      "Pairing gate",
-      "Pixel Watch 5 + Pixel 11"
-     ]
-    ]
-   }
-  },
-  "ja": {
-   "hero_label": "機能ごとに条件が違う",
-   "diagram": {
-    "title": "Pixel Dropの4つの関門",
-    "caption": "Googleの9月Pixel Dropのフォーラム投稿とPixel Watchのアップデート情報をもとに整理：機種・地域・言語・ペアリングという4つの関門。確認日は2026年9月17日。",
-    "nodes": [
-     [
-      "機種の関門",
-      "6以降、Tabletのみ空欄"
-     ],
-     [
-      "地域の関門",
-      "9カ国が新たに対象"
-     ],
-     [
-      "言語の関門",
-      "6言語が追加"
-     ],
-     [
-      "ペアリングの関門",
-      "Watch 5とPixel 11"
-     ]
-    ]
-   }
-  },
-  "ko": {
-   "hero_label": "기능마다 조건이 다름",
-   "diagram": {
-    "title": "Pixel Drop의 네 관문",
-    "caption": "Google 9월 Pixel Drop의 포럼 게시물과 Pixel Watch 업데이트 안내를 바탕으로 정리: 기종·지역·언어·페어링이라는 네 가지 관문. 확인일 2026년 9월 17일.",
-    "nodes": [
-     [
-      "기종 관문",
-      "Pixel6부터, 태블릿 빈칸"
-     ],
-     [
-      "지역 관문",
-      "9개국 알림 추가"
-     ],
-     [
-      "언어 관문",
-      "6개 언어 추가"
-     ],
-     [
-      "페어링 관문",
-      "Watch 5와 Pixel 11"
-     ]
-    ]
-   }
-  },
-  "zh-CN": {
-   "hero_label": "功能各自绑地区与机型",
-   "diagram": {
-    "title": "Pixel Drop 的四道关卡",
-    "caption": "依据 Google 9 月 Pixel Drop 的论坛帖子与 Pixel Watch 更新说明整理：机型、地区、语言与配对四道关卡，核查日 2026 年 9 月 17 日。",
-    "nodes": [
-     [
-      "机型关卡",
-      "Pixel 6 系列起、平板未打勾"
-     ],
-     [
-      "地区关卡",
-      "通知诈骗新增 9 国"
-     ],
-     [
-      "语言关卡",
-      "新增 6 种语言"
-     ],
-     [
-      "配对关卡",
-      "Watch 5配Pixel 11"
-     ]
-    ]
-   }
-  }
- }
 }

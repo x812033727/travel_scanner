@@ -10,6 +10,10 @@
   "news_date": "2026-09-10",
   "featured": false,
   "display_order": 304,
+  "related": [
+    "tech-news-taiwan-matsu-cable-20260623",
+    "tech-news-taiwan-sovereign-ai-corpus-20260915"
+  ],
   "locales": {
     "zh-TW": {
       "title": "數位發展部辦 6G 頻譜國際研討會：談了什麼，還沒定案什麼",
@@ -214,14 +218,26 @@
           "text": "這場研討會上的發言，包括葉寧次長說的「全球6G預計於2030年起逐步商轉」，是官員在國際交流場合的判斷與期待，不是台灣已經核定的政策或法規。看到「台灣2030年上6G」這類標題時，建議回頭核對數位發展部的新聞稿原文，並到執行計畫頁與《無線電頻率供應計畫》確認官方公告的內容——供應計畫（114 年 2 月修正版）全文查核到 2026 年 9 月 17 日，還沒有出現「6G」這個詞。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "臺馬四號海纜與馬祖微波站：數發部稱「近期完工」，馬祖通訊備援現況",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-taiwan-matsu-cable-20260623"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "臺馬四號海纜與馬祖微波站：數發部稱「近期完工」，馬祖通訊備援現況",
+              "kind": "life",
+              "slug": "tech-news-taiwan-matsu-cable-20260623"
+            }
+          ]
         }
       ],
       "sources": [
@@ -248,8 +264,8 @@
       ]
     },
     "en": {
-      "title": "MODA Hosts International 6G Spectrum Symposium: What Was Discussed, What Remains Undecided",
-      "description": "On September 10, 2026, Taiwan's Ministry of Digital Affairs (moda) held the \"Spectrum for Tomorrow\" International Symposium, inviting ITU-R Study Group 5's chairman and spectrum-policy experts from several countries to discuss 6G's spectrum demand from land-space integration and AI. Drawing on moda's press release, program page, and the Radio Frequency Supply Plan (amended February 2025), this article lays out what was discussed, and what remained unsaid as of the date checked.",
+      "title": "moda Hosts International 6G Spectrum Symposium: What Was Discussed, What Remains Undecided",
+      "description": "On September 10, 2026, Taiwan's Ministry of Digital Affairs (moda) held the \"Spectrum for Tomorrow\" International Symposium, inviting ITU-R Study Group 5's chairman and spectrum-policy experts from several countries to discuss 6G's spectrum demand from land-space integration and AI. Using moda's press release, program page, and the Radio Frequency Supply Plan (amended February 2025), this article lays out what was discussed and what the official documents had not yet said as of the check date.",
       "hero": {
         "src": "/guides/tech-news-taiwan-6g-spectrum-20260910/hero-en.jpg",
         "alt": "Original illustration: a ground station beams radio waves to a satellite upper right, linked by dashed lines. A dashed document at right has a dashed circle marking undecided plans. No trademarks.",
@@ -274,7 +290,7 @@
           "type": "summary",
           "items": [
             "On September 10, 2026, Taiwan's moda held the \"Spectrum for Tomorrow\" International Symposium, inviting ITU-R Study Group 5's chairman and spectrum experts from several countries to discuss 6G land-space integration and AI's spectrum demand, but announced no band and no 6G timeline for Taiwan.",
-            "moda Deputy Minister Yeh Ning told the symposium that 6G is expected to gradually become commercially available worldwide starting in 2030, and that Taiwan's preparations must start early -- this is his reading of the global situation, not a timetable Taiwan's government has set.",
+            "moda Deputy Minister Ning Yeh told the symposium that 6G is expected to gradually become commercially available worldwide starting in 2030, and that Taiwan's preparations must start early -- this is his reading of the global situation, not a timetable Taiwan's government has set.",
             "The Department of Resource Management's \"6G Land-Space Integration Spectrum Planning Program\" describes its own goals as advancing the release of 6G land-space integration spectrum and the re-farming of spectrum as 4G licenses expire, but that description names no frequency band or year.",
             "The full text of the Radio Frequency Supply Plan (amended February 2025) contains neither \"6G\" nor \"IMT-2030,\" the name the International Telecommunication Union has confirmed for 6G; the plan lists 6425-7125MHz as a nationwide specific experimental frequency, not a commercial band.",
             "In the Supply Plan's mobile communications table, three groups of bands have licenses running through ROC year 119 (2030), but the Plan never connects them to 4G re-farming or 6G -- a coinciding date this article observed, not a conclusion the official document draws."
@@ -291,7 +307,7 @@
         },
         {
           "type": "paragraph",
-          "text": "In his remarks, moda Deputy Minister Yeh Ning said 6G changes not only network speed but also serves as the key to integrating terrestrial and non-terrestrial networks and achieving ubiquitous coverage, and that 6G's AI-native network architecture will become the cornerstone supporting future AI computing power and massive data traffic. Deputy Minister Yeh also said that 6G is expected to gradually become commercially available worldwide starting in 2030, and that Taiwan's 6G deployment cannot wait until the technology and applications are mature -- it must keep pace with international trends and prepare in advance. This is his own reading of the global situation; the press release gives no separate licensing date or commercialization timeline for Taiwan itself."
+          "text": "In his remarks, moda Deputy Minister Ning Yeh said 6G changes not only network speed but also serves as the key to integrating terrestrial and non-terrestrial networks and achieving ubiquitous coverage, and that 6G's AI-native network architecture will become the cornerstone supporting future AI computing power and massive data traffic. Deputy Minister Yeh also said that 6G is expected to gradually become commercially available worldwide starting in 2030, and that Taiwan's 6G deployment cannot wait until the technology and applications are mature -- it must keep pace with international trends and prepare in advance. This is his own reading of the global situation; the press release gives no separate licensing date or commercialization timeline for Taiwan itself."
         },
         {
           "type": "paragraph",
@@ -308,11 +324,11 @@
         },
         {
           "type": "paragraph",
-          "text": "One of the documents that sets out the rules for Taiwan's spectrum planning is the Radio Frequency Supply Plan (無線電頻率供應計畫); this article cites the version amended February 2025, and did not verify whether any further amendment has been announced since. In its preamble, the plan describes itself as \"a substantive regulatory order, distinct from the administrative plans previously offered for reference,\" which will \"produce a defined legal effect\" once formally announced. But as of September 17, 2026, the date this article was checked, the plan's full text does not contain the word \"6G\" anywhere, nor \"IMT-2030,\" the name the ITU Radiocommunication Assembly has confirmed for 6G."
+          "text": "One of the documents that sets out the rules for Taiwan's spectrum planning is the Radio Frequency Supply Plan (無線電頻率供應計畫); this article cites the version amended February 2025, and did not verify whether any further amendment has been announced since. In its preamble, the plan describes itself as \"a substantive regulatory order, distinct from the administrative plans previously offered for reference,\" which will produce certain legal effects once formally announced. But as of September 17, 2026, the date this article was checked, the plan's full text does not contain the word \"6G\" anywhere, nor \"IMT-2030,\" the name the ITU Radiocommunication Assembly has confirmed for 6G."
         },
         {
           "type": "paragraph",
-          "text": "The Supply Plan sorts every band's progress into three tiers: short-term bands have an established international standard, equipment that is already available or expected to become available, clear demand, and are expected to be released within three years or already have preparation work underway; medium-term bands are ones the government will begin preparing within three years (for example, defining technical specifications or coordinating a clearance plan with existing users); long-term bands are ones where, based on currently known international trends, equipment availability, or domestic demand that is not yet clear, the plan will keep tracking them as candidates and has not yet begun preparation or release work."
+          "text": "The Supply Plan sorts every band's progress into three tiers: short-term bands have an established international standard, equipment that is already available or expected to become available, clear demand, and are expected to be released within three years or already have preparation work underway; medium-term bands are ones the government will begin preparing within three years (for example, defining technical specifications or coordinating a clearance plan with existing users); long-term bands are ones where international development trends as currently understood, equipment availability, or actual domestic demand are not yet clear, so the plan will keep tracking them as candidates and will not yet prepare or release them."
         },
         {
           "type": "table",
@@ -365,7 +381,7 @@
         },
         {
           "type": "paragraph",
-          "text": "The Supply Plan already contains a set of rules directly related to \"land-space integration\" that are in effect right now -- not something said at the symposium: an operator applying to use the 27900-29500MHz band to set up synchronous or asynchronous fixed-satellite communications must complete an agreement with existing mobile broadband operators, including a procedure for handling interference, and must obtain approval from the competent authority. The same set of rules goes on to say that this open fixed-satellite communications spectrum is reserved for future mobile communications use, and that existing fixed-satellite communications operators may not interfere with mobile communications and must tolerate interference from mobile communications. This is how the Supply Plan has written down the way terrestrial and non-terrestrial systems are meant to share spectrum."
+          "text": "The Supply Plan already contains a set of rules directly related to \"land-space integration\" that are in effect right now -- not something said at the symposium: an operator applying to use the 27900-29500MHz band to set up fixed-satellite communications using synchronous or non-synchronous satellites must complete an agreement with existing mobile broadband operators, including a procedure for handling interference, and must obtain approval from the competent authority. The same set of rules goes on to say that the fixed-satellite communications band opened in this round is reserved for future mobile communications use, and that existing fixed-satellite communications operators may not interfere with mobile communications and must tolerate interference from mobile communications. This is how the Supply Plan has written down the way terrestrial and non-terrestrial systems are meant to share spectrum."
         },
         {
           "type": "image",
@@ -419,7 +435,7 @@
           "items": [
             {
               "question": "When will Taiwan have 6G?",
-              "answer": "As of September 17, 2026, when this article was checked, none of the official documents it cites give a licensing date, commercialization date, or policy timeline for 6G in Taiwan. At the symposium, moda Deputy Minister Yeh Ning said global 6G is expected to gradually become commercially available starting in 2030 -- that is his own reading of the international situation, not Taiwan's own timetable. This article also found no spectrum-regulation amendment that was issued because of this symposium."
+              "answer": "As of September 17, 2026, when this article was checked, none of the official documents it cites give a licensing date, commercialization date, or policy timeline for 6G in Taiwan. At the symposium, moda Deputy Minister Ning Yeh said global 6G is expected to gradually become commercially available starting in 2030 -- that is his own reading of the international situation, not Taiwan's own timetable. This article also found no spectrum-regulation amendment that was issued because of this symposium."
             },
             {
               "question": "Did the symposium make any decisions?",
@@ -435,7 +451,7 @@
             },
             {
               "question": "What do \"land-space integration\" and \"AI-native network\" mean?",
-              "answer": "\"Land-space integration\" means linking terrestrial mobile networks with non-terrestrial networks such as satellites, so signal coverage reaches places ground-based base stations cannot. \"AI-native\" networking means building AI capability directly into 6G's network architecture from the start, rather than adding it on afterward. Both terms come from what moda Deputy Minister Yeh Ning said at the symposium; the press release attaches no technical specifications or timeline for realizing either concept."
+              "answer": "\"Land-space integration\" means linking terrestrial mobile networks with non-terrestrial networks such as satellites, so signal coverage reaches places ground-based base stations cannot. \"AI-native\" networking means building AI capability directly into 6G's network architecture from the start, rather than adding it on afterward. Both terms come from what moda Deputy Minister Ning Yeh said at the symposium; the press release attaches no technical specifications or timeline for realizing either concept."
             },
             {
               "question": "How can I check the latest status myself?",
@@ -450,14 +466,26 @@
           "text": "What was said at this symposium -- including Deputy Minister Yeh's statement that \"global 6G is expected to gradually become commercially available starting in 2030\" -- is an official's own reading and expectation, offered at an international exchange, not a policy or regulation Taiwan has already adopted. If you see a headline like \"Taiwan to launch 6G in 2030,\" it's worth checking moda's original press release yourself, and confirming what has actually been officially announced against the program page and the Radio Frequency Supply Plan -- as of September 17, 2026, when this article was checked, the full text of the Supply Plan (amended February 2025) still did not contain the word \"6G.\""
         },
         {
-          "type": "link",
-          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
-          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Taiwan–Matsu No. 4 Submarine Cable and Matsu’s Microwave Stations: moda Says Completion Is Coming Soon, and the State of Matsu’s Communications Backups",
-          "url": "https://mokaair.com/en/life/tech-news-taiwan-matsu-cable-20260623"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Taiwan–Matsu No. 4 Submarine Cable and Matsu’s Microwave Stations: moda Says Completion Is Coming Soon, and the State of Matsu’s Communications Backups",
+              "kind": "life",
+              "slug": "tech-news-taiwan-matsu-cable-20260623"
+            }
+          ]
         }
       ],
       "sources": [
@@ -485,10 +513,10 @@
     },
     "ja": {
       "title": "デジタル発展部が6G周波数国際シンポジウムを開催：何が話し合われ、何がまだ決まっていないのか",
-      "description": "2026年9月10日、デジタル発展部（moda）は「周波数政策先導：6G新時代へ」国際シンポジウムを開催し、ITU-R第5研究委員会議長と各国の周波数政策専門家を招いて、6Gの地上・非地上統合とAIがもたらす周波数需要について議論しました。本記事はmodaの記者発表、計画ページ、および《無線電頻率供應計畫》（2025年2月改正）などの公式文書に基づき、シンポジウムで実際に話し合われた内容と、査読日時点で公式文書がまだ記していない事項を整理します。",
+      "description": "2026年9月10日、デジタル発展部（moda）は「周波数政策先導：6G新時代へ」国際シンポジウムを開催し、ITU-R第5研究委員会議長と各国の周波数政策専門家を招いて、6Gの地上・非地上統合とAIがもたらす周波数需要について議論しました。本記事はmodaの記者発表、計画ページ、および「無線電頻率供應計畫」（2025年2月改正）などの公式文書に基づき、シンポジウムで実際に話し合われた内容と、確認日時点で公式文書がまだ記していない事項を整理します。",
       "hero": {
         "src": "/guides/tech-news-taiwan-6g-spectrum-20260910/hero-ja.jpg",
-        "alt": "オリジナルイラスト：左側の地上局が弧を描く電波を2本発し、右上には2枚のパネルを広げた衛星。局と衛星、衛星と地上をそれぞれ破線で結ぶ。右側には破線枠の書類があり、右上に破線の円が未定の計画を表す。商標や機器の外観は含まない。",
+        "alt": "オリジナルイラスト：左側の地上の基地局が弧を描く電波を2本発し、右上には2枚のパネルを広げた衛星。局と衛星、衛星と地上をそれぞれ破線で結ぶ。右側には破線枠の書類があり、右上に破線の円が未定の計画を表す。商標や機器の外観は含まない。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -504,15 +532,15 @@
         },
         {
           "type": "paragraph",
-          "text": "本記事は2026年9月17日に査読し、デジタル発展部の記者発表、資源管理司による「6G地空統合周波数計画プログラム」の実行計画ページ、および《無線電頻率供應計畫》（2025年2月改正、以下「供給計画」）全文を読み、国際電気通信連合（ITU-R）第5研究委員会の公式ページと照合しました。当サイトはこのシンポジウムに出席しておらず、実地の検証を行っておらず、機器や料金プランの購入を勧めるものでもありません。以下では、それぞれの記述が公式文書によるものか、シンポジウムでの発言によるものかを明記します。"
+          "text": "本記事は2026年9月17日に確認し、デジタル発展部の記者発表、資源管理司による「6G地空統合周波数計画プログラム」の実行計画ページ、および「無線電頻率供應計畫」（2025年2月改正、以下「供給計画」）全文を読み、国際電気通信連合（ITU-R）第5研究委員会の公式ページと照合しました。当サイトはこのシンポジウムに出席しておらず、実地の検証を行っておらず、機器や料金プランの購入を勧めるものでもありません。以下では、それぞれの記述が公式文書によるものか、シンポジウムでの発言によるものかを明記します。"
         },
         {
           "type": "summary",
           "items": [
             "2026年9月10日、デジタル発展部（moda）は「周波数政策先導：6G新時代へ」国際シンポジウムを開催し、ITU-R第5研究委員会議長と各国の周波数政策専門家を招いて、6Gの地上・非地上統合とAIがもたらす周波数需要について議論しましたが、記者発表はどの周波数帯も台湾自身の6Gスケジュールも公表していません。",
-            "デジタル発展部の葉寧・政務次長はシンポジウムで、世界の6Gは2030年から段階的に商用化が始まる見込みであり、台湾も前もって準備すべきだと述べました。これは同氏による世界情勢の見方であり、台湾当局が定めた期程ではありません。",
-            "資源管理司「6G地空統合周波数計画プログラム」が自ら掲げる目標は、6G地空統合周波数の放出推進および4G期限切れ周波数の再編・放出推進ですが、その説明文自体には周波数帯や年も記されていません。",
-            "《無線電頻率供應計畫》（2025年2月改正）全文には「6G」という語も、国際電気通信連合が6Gの名称として確認した「IMT-2030」という語も一度も登場しません。同計画は6425～7125MHzを全国で使える特定実験周波数として挙げていますが、商用周波数帯ではありません。",
+            "デジタル発展部の葉寧次長はシンポジウムで、世界の6Gは2030年から段階的に商用化が始まる見込みであり、台湾も前もって準備すべきだと述べました。これは同氏による世界情勢の見方であり、台湾当局が定めたスケジュールではありません。",
+            "資源管理司「6G地空統合周波数計画プログラム」が自ら掲げる目標は、6G地空統合周波数の放出推進および4G期限切れ周波数の再編・放出推進ですが、その説明文自体には周波数帯も年も記されていません。",
+            "「無線電頻率供應計畫」（2025年2月改正）全文には「6G」という語も、国際電気通信連合が6Gの名称として確認した「IMT-2030」という語も一度も登場しません。同計画は6425～7125MHzを全国で使える特定実験周波数として挙げていますが、商用周波数帯ではありません。",
             "供給計画の移動通信表では、免許期限が中華民国119年（2030年）までとされる周波数帯が3組ありますが、供給計画はこの3組を4G再編や6Gと結びつけて記してはいません。この時期の一致は本記事が公式文書を照合して見出した観察であり、公式文書が書いた結論ではありません。"
           ]
         },
@@ -523,15 +551,15 @@
         },
         {
           "type": "paragraph",
-          "text": "デジタル発展部の記者発表によれば、このシンポジウムには国際電気通信連合無線通信部門（ITU-R）第5研究委員会のWee Kyu-jin議長が再び台湾を訪れて出席したほか、初めて台湾を訪れた複数の国際専門家として、米国国家電気通信情報庁（NTIA）、英国情報通信庁（Ofcom）、世界移動通信事業者協会（GSMA）、NERAなどの機関の周波数政策担当者が招かれました。肩書や「再訪」「初訪台」といった説明はすべてデジタル発展部によるものであり、本記事はこれらの機関に対して個別に検証を行っていません。"
+          "text": "デジタル発展部の記者発表によれば、このシンポジウムには国際電気通信連合無線通信部門（ITU-R）第5研究委員会のWee Kyu-jin議長が再び台湾を訪れて出席したほか、初めて台湾を訪れた複数の国際専門家として、米国国家電気通信情報庁（NTIA）、英国情報通信庁（Ofcom）、世界移動通信事業者協会（GSMA）、NERAなどの機関の周波数政策責任者が招かれました。肩書や「再訪」「初訪台」といった説明はすべてデジタル発展部によるものであり、本記事はこれらの機関に対して個別に検証を行っていません。"
         },
         {
           "type": "paragraph",
-          "text": "デジタル発展部の葉寧・政務次長は式辞で、6Gが変えるのは通信速度だけでなく、地上・非地上ネットワークの統合とあらゆる場所をカバーする通信の実現の鍵でもあり、AIを組み込んだ6GのAIネイティブなネットワークアーキテクチャは将来のAI演算能力と膨大なデータトラフィックを支える基盤になると述べました。葉次長はさらに、世界の6Gは2030年から段階的に商用化が始まる見込みであり、台湾の6G展開は技術と応用が成熟するのを待ってから始めるわけにはいかず、国際的な潮流に合わせて前もって準備しなければならないと指摘しました。これは同氏による世界情勢の見方であり、記者発表には台湾自身の免許交付日や商用化時期は別途示されていません。"
+          "text": "デジタル発展部の葉寧次長は式辞で、6Gが変えるのは通信速度だけでなく、地上・非地上ネットワークの統合とあらゆる場所をカバーする通信の実現の鍵でもあり、AIを組み込んだ6GのAIネイティブなネットワークアーキテクチャは将来のAI演算能力と膨大なデータトラフィックを支える基盤になると述べました。葉次長はさらに、世界の6Gは2030年から段階的に商用化が始まる見込みであり、台湾の6G展開は技術と応用が成熟するのを待ってから始めるわけにはいかず、国際的な潮流に合わせて前もって準備しなければならないと指摘しました。これは同氏による世界情勢の見方であり、記者発表には台湾自身の免許交付日や商用化時期は別途示されていません。"
         },
         {
           "type": "paragraph",
-          "text": "記者発表がこのシンポジウム自体をどう位置づけているかというと、使われている言葉は「探る」「期待する」「基盤を築く」です。6Gの発展ビジョンを出発点として、地空ネットワーク統合とAI革新応用がもたらす周波数需要を深く探り、国際交流を通じて世界の技術動向と政策動向を把握し、台湾の6G周波数整備と戦略配置の基盤を築くことを望む、という内容です。本記事が査読当日に記者発表本文を一語一語数えたところ、「決定」「認可」「公告」「放出」「オークション」「MHz」「GHz」「周波数帯」という語は一度も出てきませんでした。"
+          "text": "記者発表がこのシンポジウム自体をどう位置づけているかというと、使われている言葉は「探る」「期待する」「基盤を築く」です。6Gの発展ビジョンを出発点として、地空ネットワーク統合とAI革新応用がもたらす周波数需要を深く探り、国際交流を通じて世界の技術動向と政策動向を把握し、台湾の6G周波数整備と戦略配置の基盤を築くことを望む、という内容です。本記事が確認した当日に記者発表本文を一語一語数えたところ、「決定」「認可」「公告」「放出」「オークション」「MHz」「GHz」「周波数帯」という語は一度も出てきませんでした。"
         },
         {
           "type": "heading",
@@ -540,11 +568,11 @@
         },
         {
           "type": "paragraph",
-          "text": "シンポジウムとは別に、デジタル発展部のウェブサイトには6G周波数に直接関わる実行計画「6G地空統合周波数計画プログラム」が掲載されています。発表部署は資源管理司で、ページの作成日は2026年3月5日、本記事の査読日（2026年9月17日）時点の更新日は2026年9月15日でした。計画ページが自ら掲げる目標は2つあります。6G地空統合周波数の放出を完了させること、そして期限切れとなる4G周波数の再編・放出を進めることです。あわせて省庁間の連携強化、学術研究力の連結、産業界のコンセンサス形成も掲げています。この説明文自体には周波数帯も年も記されていません。"
+          "text": "シンポジウムとは別に、デジタル発展部のウェブサイトには6G周波数に直接関わる実行計画「6G地空統合周波数計画プログラム」が掲載されています。発表部署は資源管理司で、ページの作成日は2026年3月5日、本記事の確認日（2026年9月17日）時点の更新日は2026年9月15日でした。計画ページが自ら掲げる目標は2つあります。6G地空統合周波数の放出を完了させること、そして期限切れとなる4G周波数の再編・放出を進めることです。あわせて省庁間の連携強化、学術研究力の連結、産業界のコンセンサス形成も掲げています。この説明文自体には周波数帯も年も記されていません。"
         },
         {
           "type": "paragraph",
-          "text": "台湾の周波数計画のルールを定めた文書の一つが《無線電頻率供應計畫》（供給計画）です。本記事が引用するのは2025年2月改正版であり、この版以降にさらなる改正公告があったかどうかは検証していません。この計画は前文で、自らを「実質的な法規命令の性質を有し、従来の各界への参考提供を目的とした行政計画とは異なる」ものと明記しており、正式公告後は対外的に一定の法的効力を生じるとしています。しかし本記事が2026年9月17日まで査読した限り、この計画の全文には「6G」という語は一切登場せず、国際電気通信連合の無線通信総会が6Gの名称として確認した「IMT-2030」という語も登場しません。"
+          "text": "台湾の周波数計画のルールを定めた文書の一つが「無線電頻率供應計畫」（供給計画）です。本記事が引用するのは2025年2月改正版であり、この版以降にさらなる改正公告があったかどうかは検証していません。この計画は前文で、自らを「実質的な法規命令の性質を有し、従来の各界への参考提供を目的とした行政計画とは異なる」ものと明記しており、正式公告後は対外的に一定の法的効力を生じるとしています。しかし本記事が2026年9月17日まで確認した限り、この計画の全文には「6G」という語は一切登場せず、国際電気通信連合の無線通信総会が6Gの名称として確認した「IMT-2030」という語も登場しません。"
         },
         {
           "type": "paragraph",
@@ -584,7 +612,7 @@
               "長"
             ]
           ],
-          "caption": "供給計画（2025年2月改正）「移動通信」表より作成、査読日2026年9月17日。短／中／長は独自の整備優先順位、「-」は特定用途に割当済みで期限満了後に次の計画へ進むことを示す。"
+          "caption": "供給計画（2025年2月改正）「移動通信」表より作成、確認日2026年9月17日。短／中／長は供給計画が定めた整備優先順位、「-」は特定用途に割当済みで期限満了後に次の計画へ進むことを示す。"
         },
         {
           "type": "heading",
@@ -601,7 +629,7 @@
         },
         {
           "type": "paragraph",
-          "text": "供給計画にはすでに「地空統合」に直接関わり、しかも今まさに有効な規則が一組あります。これはシンポジウムでの発言ではありません。27900～29500MHz帯を用いて同期または非同期の衛星固定通信を設置しようとする事業者は、既存の移動広帯域事業者と協議を完了させなければならず、これには干渉発生時の対応手順を含み、主務官庁の割り当てを経る必要があります。同じ規則はさらに、今回開放する衛星固定通信用の周波数帯は将来の移動通信利用のために留保されており、既存の衛星固定通信の設置者は移動通信に干渉してはならず、逆に移動通信からの干渉は甘受しなければならないとしています。これは地上系と非地上系のシステムが周波数を共用する際の付き合い方として、供給計画が書き記しているものです。"
+          "text": "供給計画にはすでに「地空統合」に直接関わり、しかも今まさに有効な規則が一組あります。これはシンポジウムでの発言ではありません。27900～29500MHz帯を用いて同期または非同期の衛星固定通信を設置しようとする事業者は、既存のモバイルブロードバンド事業者と協議を完了させなければならず、これには干渉発生時の対応手順を含み、主務官庁の割り当てを経る必要があります。同じ規則はさらに、今回開放する衛星固定通信用の周波数帯は将来の移動通信利用のために留保されており、既存の衛星固定通信の設置者は移動通信に干渉してはならず、逆に移動通信からの干渉は甘受しなければならないとしています。これは地上系と非地上系のシステムが周波数を共用する際の付き合い方として、供給計画が書き記しているものです。"
         },
         {
           "type": "image",
@@ -609,7 +637,7 @@
           "alt": "4コマ図解：地上ネットワーク、非地上ネットワーク、AIネイティブ設計、全域カバレッジという目標。6G地空統合の4つの概念を示す。",
           "width": 1600,
           "height": 900,
-          "caption": "デジタル発展部の2026年9月10日付記者発表より作成：地上・非地上ネットワークの統合、AIネイティブなネットワークアーキテクチャ。査読日2026年9月17日。",
+          "caption": "デジタル発展部の2026年9月10日付記者発表より作成：地上・非地上ネットワークの統合、AIネイティブなネットワークアーキテクチャ。確認日2026年9月17日。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -627,7 +655,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同じ年は《無線電頻率供應計畫》にも登場しますが、それは別の話です。供給計画の移動通信表では、「利用現況」欄に免許期限が119年までと記されている周波数帯が3組あります——703-748MHzと758-803MHz（帯域幅合計90MHz）、885-915MHzと930-960MHz（帯域幅合計60MHz）、1710-1775MHzと1805-1870MHz（帯域幅合計130MHz）——で、中華民国119年は西暦に換算すると2030年です。同じ表の他のすでに割り当て済みの移動通信周波数帯は、免許期限が122年（2033年）または129年（2040年）と記されています。"
+          "text": "同じ年は「無線電頻率供應計畫」にも登場しますが、それは別の話です。供給計画の移動通信表では、「利用現況」欄に免許期限が119年までと記されている周波数帯が3組あります——703-748MHzと758-803MHz（帯域幅合計90MHz）、885-915MHzと930-960MHz（帯域幅合計60MHz）、1710-1775MHzと1805-1870MHz（帯域幅合計130MHz）——で、中華民国119年は西暦に換算すると2030年です。同じ表の他のすでに割り当て済みの移動通信周波数帯は、免許期限が122年（2033年）または129年（2040年）と記されています。"
         },
         {
           "type": "paragraph",
@@ -640,30 +668,30 @@
         },
         {
           "type": "paragraph",
-          "text": "本記事が引用したこれらの公式文書は、2026年9月17日の査読時点で、一般利用者に直接関わるいくつかの事柄について何も記していません。6G対応スマートフォンの仕様や発売時期、6G料金プラン、どの県市や地域が優先的にカバーされるか、そして既存の4Gや5Gサービスが今回の周波数議論の影響を受けるかどうかについての説明は、いずれもありません。"
+          "text": "本記事が引用したこれらの公式文書は、2026年9月17日に確認した時点で、一般利用者に直接関わるいくつかの事柄について何も記していません。6G対応スマートフォンの仕様や発売時期、6G料金プラン、どの県市や地域が優先的にカバーされるか、そして既存の4Gや5Gサービスが今回の周波数議論の影響を受けるかどうかについての説明は、いずれもありません。"
         },
         {
           "type": "paragraph",
-          "text": "《無線電頻率供應計畫》に記された6425～7125MHzは、台湾における現在の位置づけでは「特定実験周波数」であり、移動通信や免許不要の低出力無線情報伝送機器などの低出力無線機器が全国で試験的な実験ネットワークとして利用するためのものです。条件は、合法通信に干渉してはならず、かつ合法通信からの干渉を甘受しなければならないというものです。これは実験用途であり、供給計画はこの周波数帯が商用通信サービスに開放されるかどうか、またいつ開放されるかについては記していません。"
+          "text": "「無線電頻率供應計畫」に記された6425～7125MHzは、台湾における現在の位置づけでは「特定実験周波数」であり、移動通信や免許不要の低出力無線情報伝送機器などの低出力無線機器が全国で試験的な実験ネットワークとして利用するためのものです。条件は、合法通信に干渉してはならず、かつ合法通信からの干渉を甘受しなければならないというものです。これは実験用途であり、供給計画はこの周波数帯が商用通信サービスに開放されるかどうか、またいつ開放されるかについては記していません。"
         },
         {
           "type": "paragraph",
-          "text": "本記事は2026年9月17日まで査読しましたが、このシンポジウムを理由に発布された周波数法規の改正は確認できませんでした。その後の新しい公告の有無を知りたい場合は、デジタル発展部の公式サイトにある「核心業務－資源管理－執行計畫」のページで最新の進捗を確認できます。このページは更新されるため、読者が今見ている内容は本記事が査読した時点とはすでに異なっている可能性があります。"
+          "text": "本記事は2026年9月17日まで確認しましたが、このシンポジウムを理由に発布された周波数法規の改正は確認できませんでした。その後の新しい公告の有無を知りたい場合は、デジタル発展部の公式サイトにある「核心業務－資源管理－執行計畫」のページで最新の進捗を確認できます。このページは更新されるため、読者が今見ている内容は本記事が確認した時点とはすでに異なっている可能性があります。"
         },
         {
           "type": "faq",
           "items": [
             {
               "question": "台湾はいつ6Gが使えるようになるのか",
-              "answer": "本記事が引用したこれらの公式文書は、2026年9月17日の査読時点で、台湾の6G免許交付日、商用化日、政策スケジュールのいずれも記していません。デジタル発展部の葉寧・政務次長はこのシンポジウムで、世界の6Gは2030年から段階的に商用化が始まる見込みだと述べましたが、これは同氏による国際情勢の見方であり、台湾自身のスケジュールではありません。本記事はまた、このシンポジウムを理由に発布された周波数法規の改正も確認していません。"
+              "answer": "本記事が引用したこれらの公式文書は、2026年9月17日に確認した時点で、台湾の6G免許交付日、商用化日、政策スケジュールのいずれも記していません。デジタル発展部の葉寧次長はこのシンポジウムで、世界の6Gは2030年から段階的に商用化が始まる見込みだと述べましたが、これは同氏による国際情勢の見方であり、台湾自身のスケジュールではありません。本記事はまた、このシンポジウムを理由に発布された周波数法規の改正も確認していません。"
             },
             {
               "question": "このシンポジウムで何か決定はなされたのか",
-              "answer": "デジタル発展部の記者発表にはいかなる決定も記されていません。本記事が査読当日に記者発表本文を一語一語数えたところ、「決定」「認可」「公告」「放出」「オークション」という語は一度も出てこず、使われているのは「探る」「期待する」「基盤を築く」といった言葉だけでした。記者発表はこのイベントを国際交流と位置づけており、周波数放出や法規改正の手続きとはしていません。当サイトはこのシンポジウムに出席しておらず、記者発表本文のみを根拠としています。読者ご自身でも原文をご確認いただけます。"
+              "answer": "デジタル発展部の記者発表にはいかなる決定も記されていません。本記事が確認した当日に記者発表本文を一語一語数えたところ、「決定」「認可」「公告」「放出」「オークション」という語は一度も出てこず、使われているのは「探る」「期待する」「基盤を築く」といった言葉だけでした。記者発表はこのイベントを国際交流と位置づけており、周波数放出や法規改正の手続きとはしていません。当サイトはこのシンポジウムに出席しておらず、記者発表本文のみを根拠としています。読者ご自身でも原文をご確認いただけます。"
             },
             {
               "question": "6425～7125MHzは台湾の6G周波数帯なのか",
-              "answer": "現時点ではそうではありません。《無線電頻率供應計畫》（2025年2月改正）はこの周波数を「特定実験周波数」として挙げており、移動通信や免許不要の低出力無線情報伝送機器などの低出力無線機器が全国で試験的な実験ネットワークとして利用するためのもので、条件は合法通信に干渉しないこと、かつ合法通信からの干渉を甘受することです。これは実験用途であり、供給計画はこの周波数帯が商用通信サービスに開放されるかどうか、いつ開放されるかについては記していません。"
+              "answer": "現時点ではそうではありません。「無線電頻率供應計畫」（2025年2月改正）はこの周波数を「特定実験周波数」として挙げており、移動通信や免許不要の低出力無線情報伝送機器などの低出力無線機器が全国で試験的な実験ネットワークとして利用するためのもので、条件は合法通信に干渉しないこと、かつ合法通信からの干渉を甘受することです。これは実験用途であり、供給計画はこの周波数帯が商用通信サービスに開放されるかどうか、いつ開放されるかについては記していません。"
             },
             {
               "question": "供給計画にある3組の免許期限が偶然2030年なのは、それらが6G向けに再編される周波数帯だということか",
@@ -671,11 +699,11 @@
             },
             {
               "question": "「地空統合」と「AIネイティブネットワーク」とは何を意味するのか",
-              "answer": "地空統合とは、地上の移動通信網と衛星などの非地上ネットワークをつなぎ、地上の基地局が届かない場所にも電波を届けることを指します。AIネイティブネットワークとは、AIの能力を後付けするのではなく、6Gのネットワークアーキテクチャ設計そのものに直接組み込むことを指します。この2つの用語はデジタル発展部の葉寧・政務次長がシンポジウムで語った内容によるもので、記者発表にはこれらの概念を実現するための技術仕様や時期は添えられていません。"
+              "answer": "地空統合とは、地上の移動通信網と衛星などの非地上ネットワークをつなぎ、地上の基地局が届かない場所にも電波を届けることを指します。AIネイティブネットワークとは、AIの能力を後付けするのではなく、6Gのネットワークアーキテクチャ設計そのものに直接組み込むことを指します。この2つの用語はデジタル発展部の葉寧次長がシンポジウムで語った内容によるもので、記者発表にはこれらの概念を実現するための技術仕様や時期は添えられていません。"
             },
             {
               "question": "自分で最新の進捗を確認するにはどうすればよいか",
-              "answer": "デジタル発展部の公式サイトにある「核心業務－資源管理－執行計畫」の下の「6G地空統合周波数計画プログラム」のページで最新の更新を確認できます。本記事の査読当日（2026年9月17日）時点で、このページの更新日は2026年9月15日であり、発表部署は資源管理司でした。本記事が引用する《無線電頻率供應計畫》は2025年2月改正版であり、本記事はこの版以降にさらなる改正公告があったかどうかは検証していません。"
+              "answer": "デジタル発展部の公式サイトにある「核心業務－資源管理－執行計畫」の下の「6G地空統合周波数計画プログラム」のページで最新の更新を確認できます。本記事が確認した当日（2026年9月17日）時点で、このページの更新日は2026年9月15日であり、発表部署は資源管理司でした。本記事が引用する「無線電頻率供應計畫」は2025年2月改正版であり、本記事はこの版以降にさらなる改正公告があったかどうかは検証していません。"
             }
           ]
         },
@@ -683,17 +711,29 @@
           "type": "callout",
           "tone": "info",
           "title": "シンポジウムでの発言は方向性であって、約束ではない",
-          "text": "この発言（葉寧・政務次長が述べた「世界の6Gは2030年から段階的に商用化が始まる見込み」を含む）は、国際交流の場における担当者自身の見方と期待であり、台湾がすでに採択した政策や法規ではありません。「台湾は2030年に6Gを導入」といった見出しを目にした場合は、デジタル発展部の記者発表原文に立ち返って確認し、実行計画ページと《無線電頻率供應計畫》で公式に何が公告されているかを確かめることをお勧めします。本記事が2026年9月17日まで査読した限り、供給計画（2025年2月改正版）の全文には「6G」という語はまだ登場していません。"
+          "text": "この発言（葉寧次長が述べた「世界の6Gは2030年から段階的に商用化が始まる見込み」を含む）は、国際交流の場における当局者自身の見方と期待であり、台湾がすでに採択した政策や法規ではありません。「台湾は2030年に6Gを導入」といった見出しを目にした場合は、デジタル発展部の記者発表原文に立ち返って確認し、実行計画ページと「無線電頻率供應計畫」で公式に何が公告されているかを確かめることをお勧めします。本記事が2026年9月17日まで確認した限り、供給計画（2025年2月改正版）の全文には「6G」という語はまだ登場していません。"
         },
         {
-          "type": "link",
-          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
-          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "台湾—馬祖第4海底ケーブルと馬祖のマイクロ波中継局：デジタル発展部(moda)「近く完工」、馬祖の通信バックアップの現状",
-          "url": "https://mokaair.com/ja/life/tech-news-taiwan-matsu-cable-20260623"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台馬四号海底ケーブルと馬祖のマイクロ波中継局：デジタル発展部（moda）「近く完工」、通信バックアップの現状",
+              "kind": "life",
+              "slug": "tech-news-taiwan-matsu-cable-20260623"
+            }
+          ]
         }
       ],
       "sources": [
@@ -721,7 +761,7 @@
     },
     "ko": {
       "title": "디지털발전부, 6G 주파수 국제 심포지엄 개최: 무엇을 논의했고 무엇이 아직 정해지지 않았나",
-      "description": "2026년 9월 10일, 대만 디지털발전부(moda)는 '주파수 정책 선도: 6G 신시대를 향하여' 국제 심포지엄을 열고 ITU-R 제5연구반 의장과 여러 나라의 주파수 정책 전문가를 초청해 6G의 지상-비지상 네트워크 통합과 AI가 가져올 주파수 수요를 논의했습니다. 본 기사는 moda의 보도자료, 사업 페이지, 그리고 《無線電頻率供應計畫》(2025년 2월 개정) 등 공식 문서를 근거로, 심포지엄에서 실제로 논의된 내용과 검증일 기준으로 공식 문서가 아직 밝히지 않은 부분을 정리합니다.",
+      "description": "2026년 9월 10일, 대만 디지털발전부(moda)는 '주파수 정책 선도: 6G 신시대를 향하여' 국제 심포지엄을 열고 ITU-R 제5연구반 의장과 여러 나라의 주파수 정책 전문가를 초청해 6G의 지상-비지상 네트워크 통합과 AI가 가져올 주파수 수요를 논의했습니다. 본 기사는 moda의 보도자료, 사업 페이지, 그리고 《무선주파수 공급계획(無線電頻率供應計畫)》(2025년 2월 개정) 등 공식 문서를 근거로, 심포지엄에서 실제로 논의된 내용과 확인일 기준으로 공식 문서가 아직 밝히지 않은 부분을 정리합니다.",
       "hero": {
         "src": "/guides/tech-news-taiwan-6g-spectrum-20260910/hero-ko.jpg",
         "alt": "독창적 일러스트: 왼쪽 지상에는 두 갈래의 곡선 전파를 내보내는 기지국이 있고, 오른쪽 위에는 두 개의 패널을 펼친 위성이 있다. 기지국과 위성, 위성과 지상은 각각 점선으로 연결된다. 오른쪽에는 점선 테두리의 문서가 있고, 점선 원은 아직 정해지지 않은 계획을 나타낸다. 상표나 기기 외관은 포함하지 않는다.",
@@ -740,13 +780,13 @@
         },
         {
           "type": "paragraph",
-          "text": "본 기사는 2026년 9월 17일에 검증했으며, 디지털발전부의 보도자료, 자원관리사(資源管理司)의 '6G 지상-비지상 통합 주파수 계획 프로그램' 사업 페이지, 그리고 《無線電頻率供應計畫》(2025년 2월 개정, 이하 '공급계획') 전문을 읽고 국제전기통신연합(ITU-R) 제5연구반의 공식 페이지와 대조했습니다. 본 사이트는 이 심포지엄에 참석하지 않았고 직접 시험해 보지 않았으며, 장비나 요금제 구매를 권하지도 않습니다. 아래에서는 각 서술이 공식 문서에서 나온 것인지, 심포지엄에서 관계자가 발언한 내용인지 표시합니다."
+          "text": "본 기사는 2026년 9월 17일에 검증했으며, 디지털발전부의 보도자료, 자원관리사(資源管理司)의 '6G 지상-비지상 통합 주파수 계획 프로그램' 사업 페이지, 그리고 《무선주파수 공급계획(無線電頻率供應計畫)》(2025년 2월 개정, 이하 '공급계획') 전문을 읽고 국제전기통신연합(ITU-R) 제5연구반의 공식 페이지와 대조했습니다. 본 사이트는 이 심포지엄에 참석하지 않았고 직접 시험해 보지 않았으며, 장비나 요금제 구매를 권하지도 않습니다. 아래에서는 각 서술이 공식 문서에서 나온 것인지, 심포지엄에서 관계자가 발언한 내용인지 표시합니다."
         },
         {
           "type": "summary",
           "items": [
             "2026년 9월 10일, 대만 디지털발전부(moda)는 '주파수 정책 선도: 6G 신시대를 향하여' 국제 심포지엄을 열어 ITU-R 제5연구반 의장과 여러 나라의 주파수 정책 전문가를 초청해 6G의 지상-비지상 네트워크 통합과 AI가 가져올 주파수 수요를 논의했지만, 보도자료는 어떤 주파수 대역도 대만 자체의 6G 일정도 밝히지 않았습니다.",
-            "디지털발전부 엽녕(葉寧) 차관은 심포지엄에서 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상되며 대만도 미리 준비해야 한다고 말했습니다. 이는 그가 본 국제 정세에 대한 판단이며, 대만 당국이 정한 일정이 아닙니다.",
+            "디지털발전부 예닝(葉寧) 차관은 심포지엄에서 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상되며 대만도 미리 준비해야 한다고 말했습니다. 이는 그가 본 국제 정세에 대한 판단이며, 대만 당국이 정한 일정이 아닙니다.",
             "자원관리사의 '6G 지상-비지상 통합 주파수 계획 프로그램'이 스스로 내세운 목표는 6G 지상-비지상 통합 주파수 방출 추진과 4G 만료 주파수 재편 방출 추진이지만, 그 설명 자체에는 주파수 대역이나 연도가 적혀 있지 않습니다.",
             "《無線電頻率供應計畫》(2025년 2월 개정) 전문에는 '6G'라는 단어도, 국제전기통신연합이 6G의 명칭으로 확인한 'IMT-2030'이라는 단어도 전혀 등장하지 않습니다. 이 계획은 6425~7125MHz를 전국에서 사용 가능한 특정 실험 주파수로 분류하고 있으며, 상용 주파수 대역이 아닙니다.",
             "공급계획의 이동통신 표에서는 면허 기한이 중화민국 119년(2030년)까지로 된 주파수 대역이 세 조 있지만, 공급계획은 이 세 조를 4G 재편이나 6G와 연결 짓지 않았습니다. 이 시기의 일치는 본 기사가 공식 문서를 대조해 발견한 관찰이며, 공식 문서가 적은 결론이 아닙니다."
@@ -759,11 +799,11 @@
         },
         {
           "type": "paragraph",
-          "text": "디지털발전부 보도자료에 따르면, 이번 심포지엄에는 국제전기통신연합 무선통신부문(ITU-R) 제5연구반의 Wee Kyu-jin 의장이 다시 대만을 방문해 참석했으며, 처음으로 대만을 방문한 여러 국제 전문가로 미국 국가통신정보관리청(NTIA), 영국 통신청(Ofcom), 세계이동통신사업자협회(GSMA), NERA 등 기관의 주파수 정책 담당자가 초청되었습니다. 직함과 '다시 방문', '처음 방문'이라는 설명은 모두 디지털발전부 자체의 소개이며, 본 기사는 이들 기관을 개별적으로 검증하지 않았습니다."
+          "text": "디지털발전부 보도자료에 따르면, 이번 심포지엄에는 국제전기통신연합 무선통신부문(ITU-R) 제5연구반 의장인 Wee Kyu-jin 박사가 다시 대만을 방문해 참석했으며, 처음으로 대만을 방문한 여러 국제 전문가로 미국 국가통신정보관리청(NTIA), 영국 통신청(Ofcom), 세계이동통신사업자협회(GSMA), NERA 등 기관의 주파수 정책 담당자가 초청되었습니다. 직함과 '다시 방문', '처음 방문'이라는 설명은 모두 디지털발전부 자체의 소개이며, 본 기사는 이들 기관을 개별적으로 검증하지 않았습니다."
         },
         {
           "type": "paragraph",
-          "text": "디지털발전부 엽녕 차관은 축사에서 6G가 바꾸는 것은 통신 속도만이 아니라 지상과 비지상 네트워크 통합, 그리고 어디서나 통신이 가능한 환경을 실현하는 핵심이기도 하며, AI를 내장한 6G의 AI 네이티브 네트워크 아키텍처가 미래의 AI 연산 능력과 방대한 데이터 트래픽을 뒷받침하는 초석이 될 것이라고 말했습니다. 엽녕 차관은 또한 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상되며, 대만의 6G 전개는 기술과 응용이 성숙되기를 기다렸다가 시작할 수 없고 국제적 흐름에 맞춰 미리 준비해야 한다고 지적했습니다. 이는 그가 본 국제 정세에 대한 판단이며, 보도자료는 대만 자체의 면허 교부일이나 상용화 일정은 별도로 제시하지 않았습니다."
+          "text": "디지털발전부 예닝 차관은 축사에서 6G가 바꾸는 것은 통신 속도만이 아니라 지상과 비지상 네트워크 통합, 그리고 어디서나 통신이 가능한 환경을 실현하는 핵심이기도 하며, AI를 내장한 6G의 AI 네이티브 네트워크 아키텍처가 미래의 AI 연산 능력과 방대한 데이터 트래픽을 뒷받침하는 초석이 될 것이라고 말했습니다. 예닝 차관은 또한 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상되며, 대만의 6G 전개는 기술과 응용이 성숙되기를 기다렸다가 시작할 수 없고 국제적 흐름에 맞춰 미리 준비해야 한다고 지적했습니다. 이는 그가 본 국제 정세에 대한 판단이며, 보도자료는 대만 자체의 면허 교부일이나 상용화 일정은 별도로 제시하지 않았습니다."
         },
         {
           "type": "paragraph",
@@ -776,11 +816,11 @@
         },
         {
           "type": "paragraph",
-          "text": "심포지엄과 별도로, 디지털발전부 웹사이트에는 6G 주파수와 직접 관련된 사업 '6G 지상-비지상 통합 주파수 계획 프로그램'이 있습니다. 발표 부서는 자원관리사이며, 페이지 작성일은 2026년 3월 5일, 본 기사 검증일(2026년 9월 17일) 기준 갱신일은 2026년 9월 15일이었습니다. 사업 페이지가 스스로 내세운 목표는 두 가지입니다. 6G 지상-비지상 통합 주파수 방출을 완수하는 것, 그리고 만료되는 4G 주파수의 재편·방출을 추진하는 것입니다. 아울러 부처 간 협력 강화, 학계 연구 역량 연계, 산업계 공감대 형성도 내세우고 있습니다. 그 사업 설명 자체에는 주파수 대역이나 연도가 적혀 있지 않습니다."
+          "text": "심포지엄과 별도로, 디지털발전부 웹사이트에는 6G 주파수와 직접 관련된 사업 '6G 지상-비지상 통합 주파수 계획 프로그램'이 있습니다. 발표 부서는 자원관리사이며, 페이지 작성일은 2026년 3월 5일, 본 기사 확인일(2026년 9월 17일) 기준 갱신일은 2026년 9월 15일이었습니다. 사업 페이지가 스스로 내세운 목표는 두 가지입니다. 6G 지상-비지상 통합 주파수 방출을 완수하는 것, 그리고 만료되는 4G 주파수의 재편·방출을 추진하는 것입니다. 아울러 부처 간 협력 강화, 학계 연구 역량 연계, 산업계 공감대 형성도 내세우고 있습니다. 그 사업 설명 자체에는 주파수 대역이나 연도가 적혀 있지 않습니다."
         },
         {
           "type": "paragraph",
-          "text": "대만 주파수 계획의 규칙을 정한 문서 중 하나가 《無線電頻率供應計畫》(공급계획)입니다. 본 기사가 인용하는 것은 2025년 2월 개정판이며, 이 판 이후 추가 개정 공고가 있었는지는 검증하지 않았습니다. 이 계획은 전문(前文)에서 스스로를 '실질적 법규명령의 성격을 지니며, 기존에 각계에 참고용으로 제공되던 행정계획과는 다르다'고 명시하고 있으며, 정식 공고 후에는 대외적으로 일정한 법적 효력이 발생한다고 밝히고 있습니다. 그러나 본 기사가 2026년 9월 17일까지 검증한 바로는, 이 계획의 전문에는 '6G'라는 단어가 전혀 등장하지 않으며, 국제전기통신연합 전파통신총회가 6G의 명칭으로 확인한 'IMT-2030'이라는 단어도 등장하지 않습니다."
+          "text": "대만 주파수 계획의 규칙을 정한 문서 중 하나가 《無線電頻率供應計畫》(공급계획)입니다. 본 기사가 인용하는 것은 2025년 2월 개정판이며, 이 판 이후 추가 개정 공고가 있었는지는 검증하지 않았습니다. 이 계획은 전문(前文)에서 스스로를 '실질적 법규명령의 성격을 지니며, 기존에 각계에 참고용으로 제공되던 행정계획과는 다르다'고 명시하고 있으며, 정식 공고 후에는 대외적으로 일정한 법적 효력이 발생한다고 밝히고 있습니다. 그러나 본 기사가 2026년 9월 17일까지 검증한 바로는, 이 계획 문서 전체에는 '6G'라는 단어가 전혀 등장하지 않으며, 국제전기통신연합 전파통신총회가 6G의 명칭으로 확인한 'IMT-2030'이라는 단어도 등장하지 않습니다."
         },
         {
           "type": "paragraph",
@@ -820,7 +860,7 @@
               "장기"
             ]
           ],
-          "caption": "공급계획(2025년 2월 개정) '이동통신' 표를 정리, 검증일 2026년 9월 17일. 단기/중기/장기는 자체 정비 우선순위이며, '-'는 이미 특정 용도로 면허가 부여되어 기한 만료 후에야 다음 계획을 검토함을 뜻합니다."
+          "caption": "공급계획(2025년 2월 개정) '이동통신' 표를 정리, 확인일 2026년 9월 17일. 단기/중기/장기는 자체 정비 우선순위이며, '-'는 이미 특정 용도로 면허가 부여되어 기한 만료 후에야 다음 계획을 검토함을 뜻합니다."
         },
         {
           "type": "heading",
@@ -829,15 +869,15 @@
         },
         {
           "type": "paragraph",
-          "text": "'지상-비지상 통합'이란 지상 이동통신망과 위성 등 비지상 네트워크를 연결해 지상 기지국이 닿지 않는 곳까지 신호가 닿게 하는 것을 뜻합니다. 엽녕 차관은 축사에서 이를 6G의 핵심 변화 중 하나로 규정하며, 디지털발전부가 시스템 간 간섭을 피하면서 주파수를 조화롭고 효과적으로 공유하는 거버넌스 체계를 구축해 국민이 어디서나 신뢰할 수 있는 통신 서비스를 누릴 수 있게 해야 한다고 말했습니다."
+          "text": "'지상-비지상 통합'이란 지상 이동통신망과 위성 등 비지상 네트워크를 연결해 지상 기지국이 닿지 않는 곳까지 신호가 닿게 하는 것을 뜻합니다. 예닝 차관은 축사에서 이를 6G의 핵심 변화 중 하나로 규정하며, 디지털발전부가 시스템 간 간섭을 피하면서 주파수를 조화롭고 효과적으로 공유하는 거버넌스 체계를 구축해 국민이 어디서나 신뢰할 수 있는 통신 서비스를 누릴 수 있게 해야 한다고 말했습니다."
         },
         {
           "type": "paragraph",
-          "text": "'AI 네이티브'란 AI 기능을 나중에 덧붙이는 것이 아니라 6G의 네트워크 아키텍처 설계 자체에 직접 반영하는 것을 뜻합니다. 엽녕 차관에 따르면 생성형 AI와 각종 AI 응용의 빠른 확산으로 네트워크 트래픽 수요가 크게 늘어나면서 6G의 AI 네이티브 네트워크 아키텍처 설계 방향에 깊은 영향을 주고 있습니다. 그는 또한 통신사업자가 AI 가치사슬에서 핵심적인 위치를 차지하고 이를 새로운 비즈니스 모델로 전환할 수 있다면 새로운 산업 성장 곡선을 열 기회가 있다고 보았습니다. 이 부분은 모두 차관 본인의 주장과 기대이며, 보도자료에는 수치나 목표치, 일정이 함께 제시되지 않았습니다."
+          "text": "'AI 네이티브'란 AI 기능을 나중에 덧붙이는 것이 아니라 6G의 네트워크 아키텍처 설계 자체에 직접 반영하는 것을 뜻합니다. 예닝 차관에 따르면 생성형 AI와 각종 AI 응용의 빠른 확산으로 네트워크 트래픽 수요가 크게 늘어나면서 6G의 AI 네이티브 네트워크 아키텍처 설계 방향에 깊은 영향을 주고 있습니다. 그는 또한 통신사업자가 AI 가치사슬에서 핵심적인 위치를 차지하고 이를 새로운 비즈니스 모델로 전환할 수 있다면 새로운 산업 성장 곡선을 열 기회가 있다고 보았습니다. 이 부분은 모두 차관 본인의 주장과 기대이며, 보도자료에는 수치나 목표치, 일정이 함께 제시되지 않았습니다."
         },
         {
           "type": "paragraph",
-          "text": "공급계획에는 이미 '지상-비지상 통합'과 직접 관련되고 지금 바로 효력이 있는 규정이 하나 있습니다. 이는 심포지엄에서 나온 발언이 아닙니다. 27900~29500MHz 대역을 사용해 동기식 또는 비동기식 위성고정통신을 설치하려는 사업자는 기존 이동광대역사업자와 협의를 완료해야 하며, 여기에는 주파수 간섭이 발생했을 때의 처리 절차가 포함되고, 주무관청의 승인을 받아야 합니다. 같은 규정은 이어서 이번에 개방하는 위성고정통신 주파수 대역은 향후 이동통신 이용을 위해 유보되며, 기존 위성고정통신 설치자는 이동통신에 간섭해서는 안 되고 오히려 이동통신으로부터의 간섭은 감수해야 한다고 적고 있습니다. 이는 지상 시스템과 비지상 시스템이 주파수를 공유할 때의 방식을 공급계획이 적어놓은 것입니다."
+          "text": "공급계획에는 이미 '지상-비지상 통합'과 직접 관련되고 지금 바로 효력이 있는 규정이 하나 있습니다. 이는 심포지엄에서 나온 발언이 아닙니다. 27900~29500MHz 대역을 사용해 동기(정지궤도)식 또는 비동기(비정지궤도)식 위성고정통신을 설치하려는 사업자는 기존 이동광대역사업자와 협의를 완료해야 하며, 여기에는 주파수 간섭이 발생했을 때의 처리 절차가 포함되고, 주무관청의 승인을 받아야 합니다. 같은 규정은 이어서 이번에 개방하는 위성고정통신 주파수 대역은 향후 이동통신 이용을 위해 유보되며, 기존 위성고정통신 설치자는 이동통신에 간섭해서는 안 되고 오히려 이동통신으로부터의 간섭은 감수해야 한다고 적고 있습니다. 이는 지상 시스템과 비지상 시스템이 주파수를 공유할 때의 방식을 공급계획이 적어놓은 것입니다."
         },
         {
           "type": "image",
@@ -845,7 +885,7 @@
           "alt": "네 칸 도해: 지상 네트워크, 비지상 네트워크, AI 네이티브 설계, 전역 커버리지 목표. 6G 지상-비지상 통합의 네 가지 개념을 보여준다.",
           "width": 1600,
           "height": 900,
-          "caption": "디지털발전부 2026년 9월 10일 보도자료를 정리: 지상-비지상 네트워크 통합, AI 네이티브 네트워크 아키텍처. 검증일 2026년 9월 17일.",
+          "caption": "디지털발전부 2026년 9월 10일 보도자료를 정리: 지상-비지상 네트워크 통합, AI 네이티브 네트워크 아키텍처. 확인일 2026년 9월 17일.",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -859,7 +899,7 @@
         },
         {
           "type": "paragraph",
-          "text": "이번 심포지엄 보도자료 본문에서 등장하는 연도는 2030뿐이며, 단 한 번만 나옵니다. 대응하는 문장도 하나뿐입니다. 엽녕 차관은 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상되며 대만의 준비는 미리 진행되어야 한다고 말했습니다. 이는 그가 본 국제 정세에 대한 판단이며, 대만 자체의 일정표가 아닙니다."
+          "text": "이번 심포지엄 보도자료 본문에서 등장하는 연도는 2030뿐이며, 단 한 번만 나옵니다. 대응하는 문장도 하나뿐입니다. 예닝 차관은 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상되며 대만의 준비는 미리 진행되어야 한다고 말했습니다. 이는 그가 본 국제 정세에 대한 판단이며, 대만 자체의 일정표가 아닙니다."
         },
         {
           "type": "paragraph",
@@ -867,7 +907,7 @@
         },
         {
           "type": "paragraph",
-          "text": "이 두 개의 2030이 같은 것을 가리키는지는 공급계획에 적혀 있지 않습니다. 사업 페이지는 자원관리사의 업무를 '4G 만료 주파수 재편 방출'이라 부르지만 어느 대역인지는 지목하지 않았습니다. 공급계획 전문에도 '4G', '5G', '재편'이라는 단어는 전혀 등장하지 않으며, 이 세 조 대역의 이용 현황란에는 '이동광대역업무용'이라고만 적혀 있습니다. 면허 만료 연도가 엽녕 차관이 말한 전 세계 상용화 연도와 공교롭게 겹치는 것은 본 기사가 공식 문서를 대조해 발견한 우연이며, 디지털발전부 스스로가 적은 결론이 아닙니다."
+          "text": "이 두 개의 2030이 같은 것을 가리키는지는 공급계획에 적혀 있지 않습니다. 사업 페이지는 자원관리사의 업무를 '4G 만료 주파수 재편 방출'이라 부르지만 어느 대역인지는 지목하지 않았습니다. 공급계획 전문에도 '4G', '5G', '재편'이라는 단어는 전혀 등장하지 않으며, 이 세 조 대역의 이용 현황란에는 '이동광대역업무용'이라고만 적혀 있습니다. 면허 만료 연도가 예닝 차관이 말한 전 세계 상용화 연도와 공교롭게 겹치는 것은 본 기사가 공식 문서를 대조해 발견한 우연이며, 디지털발전부 스스로가 적은 결론이 아닙니다."
         },
         {
           "type": "heading",
@@ -891,7 +931,7 @@
           "items": [
             {
               "question": "대만은 언제 6G를 쓸 수 있나요?",
-              "answer": "본 기사가 인용한 이 공식 문서들은 2026년 9월 17일 검증 시점까지 대만의 6G 면허 교부일, 상용화일, 정책 일정 중 어느 것도 밝히지 않았습니다. 디지털발전부 엽녕 차관은 이 심포지엄에서 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상된다고 말했지만, 이는 그가 본 국제 정세에 대한 판단이며 대만 자체의 일정표가 아닙니다. 본 기사는 또한 이 심포지엄을 이유로 발표된 주파수 법규 개정도 확인하지 못했습니다."
+              "answer": "본 기사가 인용한 이 공식 문서들은 2026년 9월 17일 검증 시점까지 대만의 6G 면허 교부일, 상용화일, 정책 일정 중 어느 것도 밝히지 않았습니다. 디지털발전부 예닝 차관은 이 심포지엄에서 전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상된다고 말했지만, 이는 그가 본 국제 정세에 대한 판단이며 대만 자체의 일정표가 아닙니다. 본 기사는 또한 이 심포지엄을 이유로 발표된 주파수 법규 개정도 확인하지 못했습니다."
             },
             {
               "question": "이 심포지엄에서 어떤 결정이 내려졌나요?",
@@ -903,11 +943,11 @@
             },
             {
               "question": "공급계획에서 세 대역의 면허 만료 연도가 공교롭게 2030년인데, 그게 6G용으로 재편될 대역이라는 뜻인가요?",
-              "answer": "공급계획은 그렇게 적지 않았습니다. 자원관리사의 사업 페이지는 그 업무를 '4G 만료 주파수 재편 방출'이라 부르지만 대역을 지목하지 않았고, 공급계획 전문에도 '4G', '5G', '6G', '재편'이라는 단어는 등장하지 않습니다. 703-748MHz와 758-803MHz, 885-915MHz와 930-960MHz, 1710-1775MHz와 1805-1870MHz, 이 세 조 대역은 모두 면허 기한이 중화민국 119년(2030년)까지이며, 같은 표의 다른 기존 면허 이동통신 대역은 122년(2033년) 또는 129년(2040년)으로 적혀 있고, 이용 현황란이 '없음'인 대역도 있습니다. 면허 만료 연도가 엽녕 차관이 말한 전 세계 상용화 연도와 겹치는 것은 본 기사가 공식 문서를 대조해 발견한 시기상의 우연이며, 디지털발전부 스스로가 적은 결론이 아닙니다."
+              "answer": "공급계획은 그렇게 적지 않았습니다. 자원관리사의 사업 페이지는 그 업무를 '4G 만료 주파수 재편 방출'이라 부르지만 대역을 지목하지 않았고, 공급계획 전문에도 '4G', '5G', '6G', '재편'이라는 단어는 등장하지 않습니다. 703-748MHz와 758-803MHz, 885-915MHz와 930-960MHz, 1710-1775MHz와 1805-1870MHz, 이 세 조 대역은 모두 면허 기한이 중화민국 119년(2030년)까지이며, 같은 표의 다른 기존 면허 이동통신 대역은 122년(2033년) 또는 129년(2040년)으로 적혀 있고, 이용 현황란이 '없음'인 대역도 있습니다. 면허 만료 연도가 예닝 차관이 말한 전 세계 상용화 연도와 겹치는 것은 본 기사가 공식 문서를 대조해 발견한 시기상의 우연이며, 디지털발전부 스스로가 적은 결론이 아닙니다."
             },
             {
               "question": "'지상-비지상 통합'과 'AI 네이티브 네트워크'는 무슨 뜻인가요?",
-              "answer": "지상-비지상 통합이란 지상 이동통신망과 위성 등 비지상 네트워크를 연결해 지상 기지국이 닿지 않는 곳까지 신호가 닿게 하는 것을 뜻합니다. AI 네이티브 네트워크란 AI 기능을 나중에 덧붙이는 것이 아니라 6G의 네트워크 아키텍처 설계 자체에 직접 반영하는 것을 뜻합니다. 이 두 용어는 디지털발전부 엽녕 차관이 심포지엄에서 밝힌 내용에서 나온 것이며, 보도자료에는 이 개념을 실현할 기술 규격이나 일정이 함께 제시되지 않았습니다."
+              "answer": "지상-비지상 통합이란 지상 이동통신망과 위성 등 비지상 네트워크를 연결해 지상 기지국이 닿지 않는 곳까지 신호가 닿게 하는 것을 뜻합니다. AI 네이티브 네트워크란 AI 기능을 나중에 덧붙이는 것이 아니라 6G의 네트워크 아키텍처 설계 자체에 직접 반영하는 것을 뜻합니다. 이 두 용어는 디지털발전부 예닝 차관이 심포지엄에서 밝힌 내용에서 나온 것이며, 보도자료에는 이 개념을 실현할 기술 규격이나 일정이 함께 제시되지 않았습니다."
             },
             {
               "question": "최신 진행 상황은 어떻게 직접 확인하나요?",
@@ -919,17 +959,29 @@
           "type": "callout",
           "tone": "info",
           "title": "심포지엄에서 나온 발언은 방향이지, 약속이 아니다",
-          "text": "이번 심포지엄에서 나온 발언, 즉 엽녕 차관이 말한 '전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상된다'는 내용을 포함해, 이는 국제 교류 자리에서 나온 관계자 본인의 판단과 기대이지, 대만이 이미 채택한 정책이나 법규가 아닙니다. '대만, 2030년 6G 개통'과 같은 제목을 본다면 디지털발전부 보도자료 원문으로 돌아가 확인하고, 집행계획 페이지와 《無線電頻率供應計畫》에서 공식적으로 공고된 내용을 대조해 보시길 권합니다. 본 기사가 2026년 9월 17일까지 검증한 바로는, 공급계획(2025년 2월 개정판) 전문에는 아직 '6G'라는 단어가 등장하지 않습니다."
+          "text": "이번 심포지엄에서 나온 발언, 즉 예닝 차관이 말한 '전 세계 6G가 2030년부터 단계적으로 상용화될 것으로 예상된다'는 내용을 포함해, 이는 국제 교류 자리에서 나온 관계자 본인의 판단과 기대이지, 대만이 이미 채택한 정책이나 법규가 아닙니다. '대만, 2030년 6G 개통'과 같은 제목을 본다면 디지털발전부 보도자료 원문으로 돌아가 확인하고, 집행계획 페이지와 《無線電頻率供應計畫》에서 공식적으로 공고된 내용을 대조해 보시길 권합니다. 본 기사가 2026년 9월 17일까지 검증한 바로는, 공급계획(2025년 2월 개정판) 전문에는 아직 '6G'라는 단어가 등장하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
-          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "대만-마쭈 4호 해저케이블과 마쭈 마이크로파 중계소: 디지털발전부(moda) “조만간 완공” 발표, 마쭈 통신 백업 현황",
-          "url": "https://mokaair.com/ko/life/tech-news-taiwan-matsu-cable-20260623"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대만-마쭈 4호 해저케이블과 마쭈 마이크로파 중계소: 디지털발전부(moda) “조만간 완공” 발표, 마쭈 통신 백업 현황",
+              "kind": "life",
+              "slug": "tech-news-taiwan-matsu-cable-20260623"
+            }
+          ]
         }
       ],
       "sources": [
@@ -957,7 +1009,7 @@
     },
     "zh-CN": {
       "title": "数位发展部办 6G 频谱国际研讨会：谈了什么，还没定案什么",
-      "description": "2026 年 9 月 10 日，数位发展部举办「频谱政策领航：迈向6G新世代」国际研讨会，邀请国际电信联盟第 5 研究组主席与多国频谱政策专家，讨论 6G 地空整合与 AI 带来的频谱需求。本文依数位发展部新闻稿、执行计划页与《无线电频率供应计划》（114 年 2 月修正）等官方文件，说明研讨会实际谈了什么、哪些事官方文件到查核日为止还没有写。",
+      "description": "2026 年 9 月 10 日，数位发展部举办“频谱政策领航：迈向 6G 新世代”国际研讨会，邀请国际电信联盟第 5 研究组主席与多国频谱政策专家，讨论 6G 地空整合与 AI 带来的频谱需求。本文依数位发展部新闻稿、执行计划页与《无线电频率供应计划》（114 年 2 月修正）等官方文件，说明研讨会实际谈了什么、哪些事官方文件到查核日为止还没有写。",
       "hero": {
         "src": "/guides/tech-news-taiwan-6g-spectrum-20260910/hero-zh-cn.jpg",
         "alt": "原创插图：左边地面上一座发出两道弧形电波的基站，右上方是一颗展开两片面板的卫星，基站到卫星、卫星到地面各有一条虚线；右侧是一份虚线外框的文件，右上角挂着一个虚线圆圈，代表还没定案的规划。画面不含任何商标或设备外观。",
@@ -972,19 +1024,19 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "2026 年 9 月 10 日，数位发展部举办「频谱政策领航：迈向6G新世代」国际研讨会，邀请国际电信联盟无线电通信部门（ITU-R）第 5 研究组主席，以及美国、英国与国际组织、业界的频谱政策专家与会，主题是 6G 的地面与非地面网络整合，以及人工智能带来的频谱需求。这是一场研讨会，不是政策发布：数位发展部的新闻稿内文没有点名任何一个频段，也没有给台湾自己的 6G 时程。"
+          "text": "2026 年 9 月 10 日，数位发展部举办“频谱政策领航：迈向 6G 新世代”国际研讨会，邀请国际电信联盟无线电通信部门（ITU-R）第 5 研究组主席，以及美国、英国与国际组织、业界的频谱政策专家与会，主题是 6G 的地面与非地面网络整合，以及人工智能带来的频谱需求。这是一场研讨会，不是政策发布：数位发展部的新闻稿内文没有点名任何一个频段，也没有给台湾自己的 6G 时程。"
         },
         {
           "type": "paragraph",
-          "text": "本文于 2026 年 9 月 17 日查核，读的是数位发展部的新闻稿、资源管理司「6G地空整合频谱规划计划」执行计划页，以及《无线电频率供应计划》（114 年 2 月修正）全文，并对照国际电信联盟（ITU-R）第 5 研究组的官方页面。本站没有出席这场研讨会、没有做任何实测，也不提供设备或资费的购买建议；下文会标明每一项说法出自官方文件，还是官方人员在研讨会上的发言。"
+          "text": "本文于 2026 年 9 月 17 日查核，读的是数位发展部的新闻稿、资源管理司“6G 地空整合频谱规划计划”执行计划页，以及《无线电频率供应计划》（114 年 2 月修正）全文，并对照国际电信联盟（ITU-R）第 5 研究组的官方页面。本站没有出席这场研讨会、没有做任何实测，也不提供设备或资费的购买建议；下文会标明每一项说法出自官方文件，还是官方人员在研讨会上的发言。"
         },
         {
           "type": "summary",
           "items": [
-            "2026 年 9 月 10 日，数位发展部举办「频谱政策领航：迈向6G新世代」国际研讨会，邀请国际电信联盟第 5 研究组主席与多国频谱政策专家，讨论 6G 的地空网络整合与 AI 带来的频谱需求，但新闻稿没有公布任何频段或台湾的 6G 时程。",
+            "2026 年 9 月 10 日，数位发展部举办“频谱政策领航：迈向 6G 新世代”国际研讨会，邀请国际电信联盟第 5 研究组主席与多国频谱政策专家，讨论 6G 的地空网络整合与 AI 带来的频谱需求，但新闻稿没有公布任何频段或台湾的 6G 时程。",
             "数位发展部次长叶宁在会中表示，全球 6G 预计于 2030 年起逐步商用，台湾的布局必须提前准备，这是他对全球局势的说法，不是台湾官方订出的期程。",
-            "资源管理司「6G地空整合频谱规划计划」自述的目标是推动 6G 地空整合频谱释出与 4G 届期频谱重耕释出，但那段计划说明没有写出任何频段或年份。",
-            "《无线电频率供应计划》（114 年 2 月修正）全文没有出现「6G」，也没有出现国际电信联盟确认为 6G 名称的「IMT-2030」；计划把 6425 至 7125MHz 列为全国可用的特定实验频率，不是商用频段。",
+            "资源管理司“6G 地空整合频谱规划计划”自述的目标是推动 6G 地空整合频谱释出与 4G 届期频谱重耕释出，但那段计划说明没有写出任何频段或年份。",
+            "《无线电频率供应计划》（114 年 2 月修正）全文没有出现“6G”，也没有出现国际电信联盟确认为 6G 名称的“IMT-2030”；计划把 6425 至 7125MHz 列为全国可用的特定实验频率，不是商用频段。",
             "供应计划的移动通信表里，执照期限写到民国 119 年（2030 年）的有三组频段，但供应计划没有把这三组和 4G 重耕或 6G 连在一起，这个时间点上的巧合是本文整理出来的观察，不是官方文件写的结论。"
           ]
         },
@@ -995,7 +1047,7 @@
         },
         {
           "type": "paragraph",
-          "text": "根据数位发展部的新闻稿，这场研讨会邀请到国际电信联盟无线电通信部门（ITU-R）第 5 研究组主席 Kyu-Jin WEE 博士再度来台与会，以及多位首次访台的国际专家，包括美国国家电信和信息管理局（NTIA）、英国通信管理局（Ofcom）、全球移动通信系统协会（GSMA）与 NERA 等机构的频谱政策主管。职称与「再度来台」「首次访台」都是数位发展部的介绍，本文没有向这几个机构逐一查证。"
+          "text": "根据数位发展部的新闻稿，这场研讨会邀请到国际电信联盟无线电通信部门（ITU-R）第 5 研究组主席 Kyu-Jin WEE 博士再度来台与会，以及多位首次访台的国际专家，包括美国国家电信和信息管理局（NTIA）、英国通信管理局（Ofcom）、全球移动通信系统协会（GSMA）与 NERA 等机构的频谱政策主管。职称与“再度来台”“首次访台”都是数位发展部的介绍，本文没有向这几个机构逐一查证。"
         },
         {
           "type": "paragraph",
@@ -1003,20 +1055,20 @@
         },
         {
           "type": "paragraph",
-          "text": "新闻稿对研讨会本身的定位，用的词是「探讨」「期盼」与「奠定基础」：从 6G 发展愿景出发，深入探讨地空网络整合及 AI 创新应用带来的频谱需求，希望通过国际交流掌握全球技术演进与政策发展趋势，为台湾的 6G 频谱整备与战略布局打底。本文查核当天逐字计算新闻稿内文，决定、核定、公告、释出、拍卖、MHz、GHz 与频段这几个词一次都没有出现。"
+          "text": "新闻稿对研讨会本身的定位，用的词是“探讨”“期盼”与“奠定基础”：从 6G 发展愿景出发，深入探讨地空网络整合及 AI 创新应用带来的频谱需求，希望通过国际交流掌握全球技术演进与政策发展趋势，为台湾的 6G 频谱整备与战略布局打底。本文查核当天逐字计算新闻稿内文，决定、核定、公告、释出、拍卖、MHz、GHz 与频段这几个词一次都没有出现。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "研讨会不是政策：供应计划怎么分「已经排」和「还在看」"
+          "text": "研讨会不是政策：供应计划怎么分“已经排”和“还在看”"
         },
         {
           "type": "paragraph",
-          "text": "研讨会之外，数位发展部网站上另有一份和 6G 频谱直接相关的执行计划「6G地空整合频谱规划计划」，发布单位是资源管理司，页面建立于 2026 年 3 月 5 日，本文查核当天（2026 年 9 月 17 日）的更新日期是 2026 年 9 月 15 日。计划页自述的目标有两个：推动完成 6G 地空整合频谱释出，以及 4G 届期频谱重耕释出；并要强化跨机关协调、串联学界研究能量、凝聚产业共识。那段计划说明本身没有写出任何频段或年份。"
+          "text": "研讨会之外，数位发展部网站上另有一份和 6G 频谱直接相关的执行计划“6G 地空整合频谱规划计划”，发布单位是资源管理司，页面建立于 2026 年 3 月 5 日，本文查核当天（2026 年 9 月 17 日）的更新日期是 2026 年 9 月 15 日。计划页自述的目标有两个：推动完成 6G 地空整合频谱释出，以及 4G 届期频谱重耕释出；并要强化跨机关协调、串联学界研究能量、凝聚产业共识。那段计划说明本身没有写出任何频段或年份。"
         },
         {
           "type": "paragraph",
-          "text": "台湾频谱规划写下规则的文件之一是《无线电频率供应计划》，本文引用的是 114 年 2 月修正版；本文没有查证这一版之后是否另有修正公告。这份计划在前言写明自己「属实质法规命令性质，有别于以往为提供各界参考之行政计划」，正式公告后对外会产生一定法律效果——但本文查核到 2026 年 9 月 17 日，这份计划全文完全没有出现「6G」，也没有出现国际电信联盟无线电通信全会确认为 6G 名称的「IMT-2030」。"
+          "text": "台湾频谱规划写下规则的文件之一是《无线电频率供应计划》，本文引用的是 114 年 2 月修正版；本文没有查证这一版之后是否另有修正公告。这份计划在前言写明自己“属实质法规命令性质，有别于以往为提供各界参考之行政计划”，正式公告后对外会产生一定法律效果——但本文查核到 2026 年 9 月 17 日，这份计划全文完全没有出现“6G”，也没有出现国际电信联盟无线电通信全会确认为 6G 名称的“IMT-2030”。"
         },
         {
           "type": "paragraph",
@@ -1056,24 +1108,24 @@
               "长"
             ]
           ],
-          "caption": "依《无线电频率供应计划》（114 年 2 月修正）「移动通信」表整理，查核日 2026 年 9 月 17 日；短/中/长是供应计划自订的整备优先顺序，「-」代表频段已核配特定用途，需视核配的使用期限届满才进入后续规划。"
+          "caption": "依《无线电频率供应计划》（114 年 2 月修正）“移动通信”表整理，查核日 2026 年 9 月 17 日；短/中/长是供应计划自订的整备优先顺序，“-”代表频段已核配特定用途，需视核配的使用期限届满才进入后续规划。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "「地空整合」与「AI原生」到底在说什么"
+          "text": "“地空整合”与“AI 原生”到底在说什么"
         },
         {
           "type": "paragraph",
-          "text": "「地空整合」指的是把地面移动网络和卫星等非地面网络接在一起，让信号覆盖到地面基站顾不到的地方。叶宁在致辞中把这件事讲成 6G 的核心变化之一，并说数位发展部需要建构频谱和谐有效共用、避免跨系统干扰的治理框架，确保国人能享有无所不在且可靠的通信服务。"
+          "text": "“地空整合”指的是把地面移动网络和卫星等非地面网络接在一起，让信号覆盖到地面基站顾不到的地方。叶宁在致辞中把这件事讲成 6G 的核心变化之一，并说数位发展部需要建构频谱和谐有效共用、避免跨系统干扰的治理框架，确保国人能享有无所不在且可靠的通信服务。"
         },
         {
           "type": "paragraph",
-          "text": "「AI原生」（AI-native）指的是把 AI 能力直接写进 6G 的网络架构设计，而不是事后加装。叶宁的说法是，生成式 AI 与各类 AI 应用快速普及让网络流量需求大幅飙升，深刻影响 6G 原生 AI 网络架构的设计方向；他并认为电信业者若能掌握 AI 价值链中的关键定位并转化为新型态商业模式，有机会开创新的产业成长曲线。这整段是次长的主张与期待，新闻稿没有附上任何数据、目标值或时程。"
+          "text": "“AI 原生”（AI-native）指的是把 AI 能力直接写进 6G 的网络架构设计，而不是事后加装。叶宁的说法是，生成式 AI 与各类 AI 应用快速普及让网络流量需求大幅飙升，深刻影响 6G 原生 AI 网络架构的设计方向；他并认为电信业者若能掌握 AI 价值链中的关键定位并转化为新型商业模式，有机会开创新的产业成长曲线。这整段是次长的主张与期待，新闻稿没有附上任何数据、目标值或时程。"
         },
         {
           "type": "paragraph",
-          "text": "供应计划里已经有一组和「地空整合」直接相关、而且现在就有效的规则，不是研讨会上的发言：申请使用 27900 至 29500MHz 频段设置同步或非同步卫星固定通信的业者，应与既有的移动宽带业者完成协议，包含频率发生干扰时的处理程序，并经主管机关核配；同一组规则接着写，本次开放的卫星固定通信频段保留供未来移动通信使用，既有的卫星固定通信设置者不得干扰移动通信，还必须忍受移动通信对它的干扰。这是地面与非地面系统共用频谱时，供应计划写下来的相处方式。"
+          "text": "供应计划里已经有一组和“地空整合”直接相关、而且现在就有效的规则，不是研讨会上的发言：申请使用 27900 至 29500MHz 频段设置同步或非同步卫星固定通信的业者，应与既有的移动宽带业者完成协议，包含频率发生干扰时的处理程序，并经主管机关核配；同一组规则接着写，本次开放的卫星固定通信频段保留供未来移动通信使用，既有的卫星固定通信设置者不得干扰移动通信，还必须忍受移动通信对它的干扰。这是地面与非地面系统共用频谱时，供应计划写下来的相处方式。"
         },
         {
           "type": "image",
@@ -1091,7 +1143,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "「2030」出现了两次，指的不是同一件事"
+          "text": "“2030”出现了两次，指的不是同一件事"
         },
         {
           "type": "paragraph",
@@ -1103,7 +1155,7 @@
         },
         {
           "type": "paragraph",
-          "text": "这两个 2030 是不是同一件事，供应计划没有写。计划页把资源管理司的工作称为「4G届期频谱重耕释出」，但没有指名是哪个频段；供应计划全文也完全没有出现「4G」「5G」或「重耕」这些字，这三组频段的使用现况栏写的是「供移动宽带业务使用」。执照到期年份刚好撞上叶宁说的全球商用年份，是本文对照官方文件后看到的巧合，不是数位发展部自己写出来的结论。"
+          "text": "这两个 2030 是不是同一件事，供应计划没有写。计划页把资源管理司的工作称为“4G 届期频谱重耕释出”，但没有指名是哪个频段；供应计划全文也完全没有出现“4G”“5G”或“重耕”这些字，这三组频段的使用现况栏写的是“供移动宽带业务使用”。执照到期年份刚好撞上叶宁说的全球商用年份，是本文对照官方文件后看到的巧合，不是数位发展部自己写出来的结论。"
         },
         {
           "type": "heading",
@@ -1116,11 +1168,11 @@
         },
         {
           "type": "paragraph",
-          "text": "《无线电频率供应计划》里的 6425 至 7125MHz，在台湾现在的身分是「特定实验频率」，供移动通信、免执照低功率无线信息传输设备等低功率射频器材在全国做测试实验网络使用，条件是不得干扰合法通信、且须忍受合法通信对它的干扰——这是实验用途，供应计划没有写这个频段会不会、或何时会开放给商用电信服务。"
+          "text": "《无线电频率供应计划》里的 6425 至 7125MHz，在台湾现在的身分是“特定实验频率”，供移动通信、免执照低功率无线信息传输设备等低功率射频器材在全国做测试实验网络使用，条件是不得干扰合法通信、且须忍受合法通信对它的干扰——这是实验用途，供应计划没有写这个频段会不会、或何时会开放给商用电信服务。"
         },
         {
           "type": "paragraph",
-          "text": "本文查核到 2026 年 9 月 17 日，没有查到任何因这场研讨会而发布的频谱法规修正。想知道后续有没有新公告，可以到数位发展部官网「核心业务－资源管理－执行计划」这一页查最新进度；这一页会更新，读者现在看到的内容可能已经和本文查到的不一样。"
+          "text": "本文查核到 2026 年 9 月 17 日，没有查到任何因这场研讨会而发布的频谱法规修正。想知道后续有没有新公告，可以到数位发展部官网“核心业务－资源管理－执行计划”这一页查最新进度；这一页会更新，读者现在看到的内容可能已经和本文查到的不一样。"
         },
         {
           "type": "faq",
@@ -1135,19 +1187,19 @@
             },
             {
               "question": "6425 至 7125MHz 是台湾的 6G 频段吗？",
-              "answer": "目前不是。《无线电频率供应计划》（114 年 2 月修正）把这段频率列为「特定实验频率」，供移动通信、免执照低功率无线信息传输设备等低功率射频器材在全国做测试实验网络使用，条件是不得干扰合法通信并须忍受合法通信对它的干扰。这是实验用途，供应计划没有写它会不会、或何时会开放给商用电信服务。"
+              "answer": "目前不是。《无线电频率供应计划》（114 年 2 月修正）把这段频率列为“特定实验频率”，供移动通信、免执照低功率无线信息传输设备等低功率射频器材在全国做测试实验网络使用，条件是不得干扰合法通信并须忍受合法通信对它的干扰。这是实验用途，供应计划没有写它会不会、或何时会开放给商用电信服务。"
             },
             {
               "question": "供应计划里三组执照到期年刚好是 2030 年，代表那些就是要重耕给 6G 的频段吗？",
-              "answer": "供应计划没有这样写。资源管理司的计划页把工作称为「4G届期频谱重耕释出」，但没有指名频段；供应计划全文也没有出现「4G」「5G」「6G」或「重耕」这些字。703-748 及 758-803MHz、885-915 及 930-960MHz、1710-1775 及 1805-1870MHz 这三组频段的执照期限都到民国 119 年（2030 年），同表其他已核配的移动通信频段写的是 122 年或 129 年，另有使用现况栏写「无」的频段。执照到期年和叶宁说的全球商用年份重叠，是本文对照官方文件后看到的时间巧合，不是数位发展部自己写出的结论。"
+              "answer": "供应计划没有这样写。资源管理司的计划页把工作称为“4G 届期频谱重耕释出”，但没有指名频段；供应计划全文也没有出现“4G”“5G”“6G”或“重耕”这些字。703-748 及 758-803MHz、885-915 及 930-960MHz、1710-1775 及 1805-1870MHz 这三组频段的执照期限都到民国 119 年（2030 年），同表其他已核配的移动通信频段写的是 122 年或 129 年，另有使用现况栏写“无”的频段。执照到期年和叶宁说的全球商用年份重叠，是本文对照官方文件后看到的时间巧合，不是数位发展部自己写出的结论。"
             },
             {
-              "question": "「地空整合」和「AI原生网络」是什么意思？",
+              "question": "“地空整合”和“AI 原生网络”是什么意思？",
               "answer": "地空整合指的是把地面移动网络和卫星等非地面网络接在一起，让信号覆盖到地面基站顾不到的地方。AI 原生网络（AI-native）则是把 AI 能力直接写进 6G 的网络架构设计，而不是事后加装。这两个词出自数位发展部次长叶宁在研讨会上的说法，新闻稿没有附上实现这些概念的技术规格或时程。"
             },
             {
               "question": "怎么自己查最新进度？",
-              "answer": "可以到数位发展部官网「核心业务－资源管理－执行计划」下的「6G地空整合频谱规划计划」页查最新更新，本文查核当天（2026 年 9 月 17 日）该页更新日期是 2026 年 9 月 15 日，发布单位是资源管理司；本文引用的《无线电频率供应计划》是 114 年 2 月修正版，本文没有查证这一版之后是否另有修正公告。"
+              "answer": "可以到数位发展部官网“核心业务－资源管理－执行计划”下的“6G 地空整合频谱规划计划”页查最新更新，本文查核当天（2026 年 9 月 17 日）该页更新日期是 2026 年 9 月 15 日，发布单位是资源管理司；本文引用的《无线电频率供应计划》是 114 年 2 月修正版，本文没有查证这一版之后是否另有修正公告。"
             }
           ]
         },
@@ -1155,22 +1207,34 @@
           "type": "callout",
           "tone": "info",
           "title": "研讨会的发言是方向，不是承诺",
-          "text": "这场研讨会上的发言，包括叶宁次长说的「全球6G预计于2030年起逐步商用」，是官员在国际交流场合的判断与期待，不是台湾已经核定的政策或法规。看到「台湾2030年上6G」这类标题时，建议回头核对数位发展部的新闻稿原文，并到执行计划页与《无线电频率供应计划》确认官方公告的内容——供应计划（114 年 2 月修正版）全文查核到 2026 年 9 月 17 日，还没有出现「6G」这个词。"
+          "text": "这场研讨会上的发言，包括叶宁次长说的“全球 6G 预计于 2030 年起逐步商用”，是官员在国际交流场合的判断与期待，不是台湾已经核定的政策或法规。看到“台湾 2030 年上 6G”这类标题时，建议回头核对数位发展部的新闻稿原文，并到执行计划页与《无线电频率供应计划》确认官方公告的内容——供应计划（114 年 2 月修正版）全文查核到 2026 年 9 月 17 日，还没有出现“6G”这个词。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "台马四号海缆与马祖微波站：数位发展部称“近期完工”，马祖通讯备援现况",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-taiwan-matsu-cable-20260623"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "台马四号海缆与马祖微波站：数位发展部称“近期完工”，马祖通信备援现况",
+              "kind": "life",
+              "slug": "tech-news-taiwan-matsu-cable-20260623"
+            }
+          ]
         }
       ],
       "sources": [
         {
-          "title": "数发部举办「频谱政策领航 迈向6G新世代」国际研讨会 聚焦 6G 前瞻布局与 AI 应用",
+          "title": "数发部举办“频谱政策领航 迈向 6G 新世代”国际研讨会 聚焦 6G 前瞻布局与 AI 应用",
           "url": "https://moda.gov.tw/press/press-releases/20612",
           "checked_on": "2026-09-17"
         },

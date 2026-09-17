@@ -10,6 +10,9 @@
   "news_date": "2026-08-18",
   "featured": false,
   "display_order": 306,
+  "related": [
+    "tech-news-eu-cra-reporting-20260911"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Apple 公布歐盟新版 App 商業條款：核心技術抽成 5%、可同時用替代付款",
@@ -200,14 +203,26 @@
           "text": "本文整理的是 Apple 2026 年 8 月 18 日公告、主要更新於 10 月 1 日生效的歐盟商業條款調整，範圍限於歐盟商店前台上架的 App，不包含台灣或其他地區。Apple 的兩篇公告沒有提到《數位市場法》，只說明是與歐盟執委會密切合作的結果；本文不比較付款方式的優劣，也不建議開發者或使用者是否該調整付款設定。查核日為 2026 年 9 月 17 日，最新狀況請以 Apple Developer News（識別碼 gmws0jgp）與官方支援頁當下內容為準。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [
@@ -234,7 +249,7 @@
       ]
     },
     "en": {
-      "title": "Apple Announces New EU App Business Terms: A 5% Core Technology Commission, and Alternative Payments Alongside Apple's",
+      "title": "Apple Announces New EU App Business Terms: A 5% Core Technology Commission, and Alternative Payments Alongside Apple In-App Purchase",
       "description": "On August 18, 2026, Apple announced new EU App Store business terms: the Core Technology Fee becomes a 5% Core Technology Commission, commissions run 26%/20%/15% by payment method, and apps may offer Apple In-App Purchase alongside alternative payments. Primary updates take effect October 1, 2026, for EU storefronts only. Checked against Apple's own announcements and support pages on September 17, 2026.",
       "hero": {
         "src": "/guides/tech-news-apple-eu-business-terms-20260818/hero-en.jpg",
@@ -346,7 +361,7 @@
         {
           "type": "image",
           "src": "/guides/tech-news-apple-eu-business-terms-20260818/diagram-1-en.svg",
-          "alt": "Four-panel diagram: multiple sets of terms used to coexist, now replaced by a single EU set of terms, the Core Technology Commission drops to 5%, effective October 1",
+          "alt": "Four-panel diagram: multiple sets of terms used to coexist, now replaced by a single EU set of terms, core technology now charged as a 5% commission, effective October 1",
           "width": 1600,
           "height": 900,
           "caption": "Source: Apple developer announcements and support pages, checked September 17, 2026.",
@@ -371,7 +386,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Apple explains that Web Distribution is available only in the EU, has no marketplace operator acting as a gatekeeper behind it, and lacks the ongoing oversight Apple applies to the App Store; whichever channel is used, every alternatively distributed app must still pass Notarization, which Apple describes as a baseline review focused on basic functionality and protection from serious threats."
+          "text": "Apple explains that Web Distribution is available only in the EU, has no marketplace operator vetting apps behind it, and lacks the ongoing oversight Apple applies to the App Store; whichever channel is used, every alternatively distributed app must still pass Notarization, which Apple describes as a baseline review focused on basic functionality and protection from serious threats."
         },
         {
           "type": "heading",
@@ -422,14 +437,26 @@
           "text": "This article summarizes the EU business-terms changes Apple announced on August 18, 2026, with primary updates taking effect October 1; the scope is limited to apps listed on EU storefronts and does not include Taiwan or any other region. Apple's two announcements do not mention the Digital Markets Act, describing the changes only as the result of close collaboration with the European Commission; this article does not compare the merits of different payment options or recommend whether developers or users should change any payment setting. It was checked on September 17, 2026 -- for the current status, refer to the Apple Developer News announcement (id gmws0jgp) and the official support pages."
         },
         {
-          "type": "link",
-          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
-          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "EU Cyber Resilience Act Reporting Obligations Begin September 11: Who Must Report, How Fast",
-          "url": "https://mokaair.com/en/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU Cyber Resilience Act Reporting Obligations Begin September 11: Who Must Report, How Fast",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [
@@ -456,11 +483,11 @@
       ]
     },
     "ja": {
-      "title": "Appleが欧州連合向けの新App事業条件を発表:コアテクノロジー手数料は5%に、代替決済との併用も可能に",
-      "description": "2026年8月18日、Appleは欧州連合(EU)向けのApp事業条件を変更すると発表しました。コアテクノロジー料金は5%のコアテクノロジー手数料に置き換わり、決済方法に応じて26%・20%・15%の3段階の手数料が設定されるほか、AppはApple In-App Purchaseと代替決済を同時に提供できるようになります。主な変更は2026年10月1日に発効し、対象はEUのストアフロントに限られます。本記事はAppleの公式発表とサポートページに基づき、2026年9月17日時点で確認しました。",
+      "title": "Appleが欧州連合向けの新App事業条件を発表：コアテクノロジー手数料は5%に、代替決済との併用も可能に",
+      "description": "2026年8月18日、Appleは欧州連合（EU）向けのApp事業条件を変更すると発表しました。コアテクノロジー料金は5%のコアテクノロジー手数料に置き換わり、決済方法に応じて26%・20%・15%の3段階の手数料が設定されるほか、AppはApple In-App Purchaseと代替決済を同時に提供できるようになります。主な変更は2026年10月1日に発効し、対象はEUのストアフロントに限られます。本記事はAppleの公式発表とサポートページに基づき、2026年9月17日時点で確認しました。",
       "hero": {
         "src": "/guides/tech-news-apple-eu-business-terms-20260818/hero-ja.jpg",
-        "alt": "オリジナルイラスト:左側に3枚の重なり合った書類、矢印がその先の中央にある1枚の大きな書類を指し、さらに矢印が右側の円グラフを指す。円グラフには全体の20分の1を占める小さな網掛け部分があり、複数の条件が1つにまとまったことと5%の料率を表す",
+        "alt": "オリジナルイラスト：左側に3枚の重なり合った書類、矢印がその先の中央にある1枚の大きな書類を指し、さらに矢印が右側の円グラフを指す。円グラフには全体の20分の1を占める小さな網掛け部分があり、複数の条件が1つにまとまったことと5%の料率を表す",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -472,19 +499,19 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "2026年8月18日、AppleはApple Developer NewsとApple Newsroomの両方で同日に発表を行い、欧州連合(EU)向けのApp事業条件を変更しました。Appleによれば、これは欧州委員会との緊密な協力の結果であり、EU域内でAppを配信するすべての開発者を単一の条件に統一するものです。特別な規模に達した開発者のみにインストール数に応じて課金していたコアテクノロジー料金(Core Technology Fee)は、コアテクノロジー手数料(Core Technology Commission)に置き換わり、App Store以外の経路で配信されるAppのデジタル取引に対して5%が課されます。あわせて、従来の初回取得料金(Initial Acquisition Fee)とストアサービス料金(Store Services Fee)は廃止されました。"
+          "text": "2026年8月18日、AppleはApple Developer NewsとApple Newsroomの両方で同日に発表を行い、欧州連合（EU）向けのApp事業条件を変更しました。Appleによれば、これは欧州委員会との緊密な協力の結果であり、EU域内でAppを配信するすべての開発者を単一の条件に統一するものです。特別な規模に達した開発者のみにインストール数に応じて課金していたコアテクノロジー料金（Core Technology Fee）は、コアテクノロジー手数料（Core Technology Commission）に置き換わり、App Store以外の経路で配信されるAppのデジタル取引に対して5%が課されます。あわせて、従来の初回取得料金（Initial Acquisition Fee）とストアサービス料金（Store Services Fee）は廃止されました。"
         },
         {
           "type": "paragraph",
-          "text": "本記事は2026年9月17日に、Apple Developer Newsの発表全文、同じ内容のApple Newsroomの発表、そしてApple Developerの2つのサポートページ(事業条件の概要ページと決済オプションのページ)を確認して作成しました。当サイトは代替決済や代替アプリマーケットプレイス(alternative app marketplace)の資格を実際に申請したことも、決済フローを実地で検証したこともありません。以下では各方式の優劣を比較したり、決済設定を変更すべきかどうかを助言したりせず、公式ページに書かれている条件と期限のみを整理します。"
+          "text": "本記事は2026年9月17日に、Apple Developer Newsの発表全文、同じ内容のApple Newsroomの発表、そしてApple Developerの2つのサポートページ（事業条件の概要ページと決済オプションのページ）を確認して作成しました。当サイトは代替決済や代替アプリマーケットプレイス（alternative app marketplace）の資格を実際に申請したことも、決済フローを実地で検証したこともありません。以下では各方式の優劣を比較したり、決済設定を変更すべきかどうかを助言したりせず、公式ページに書かれている条件と期限のみを整理します。"
         },
         {
           "type": "summary",
           "items": [
             "2026年8月18日、Appleは欧州連合向けApp事業条件の変更を発表し、これまで分かれていた複数の取り決めを1つにまとめました。特別な規模の開発者のみにインストール数で課金していたコアテクノロジー料金は、App Store以外で配信されるAppのデジタル取引に課す5%のコアテクノロジー手数料に変わり、2026年10月1日に発効します。",
-            "App Store内でApple In-App Purchaseを使う場合の手数料は26%、App内の代替決済処理に切り替えると20%、アクションリンク付きのアプリ外購入案内は15%(リンクをタップしてから7日以内に完了した取引のみ対象)です。App Store小規模ビジネスプログラム、ミニアプリパートナープログラム、動画パートナープログラムの参加者、および1年を過ぎた自動更新サブスクリプションは、それぞれ15%、10%、10%に下がります。",
+            "App Store内でApple In-App Purchaseを使う場合の手数料は26%、App内の代替決済処理に切り替えると20%、アクションリンク付きのアプリ外購入案内は15%（リンクをタップしてから7日以内に完了した取引のみ対象）です。App Store小規模ビジネスプログラム、ミニアプリパートナープログラム、動画パートナープログラムの参加者、および1年を過ぎた自動更新サブスクリプションは、それぞれ15%、10%、10%に下がります。",
             "新しい条件では、EU域内のAppがApple In-App Purchaseと代替決済オプションを同時に提供できるようになります。開発者が選んだ決済の組み合わせは、すべてのEUストアフロントで12か月間変更できません。13歳未満の利用者にはアプリ外購入案内を提供できず、13歳から17歳の利用者には、App内の代替決済とアプリ外購入案内のいずれも保護者ゲートを経る必要があります。",
-            "これらの条件は、EUのストアフロントに掲載されているAppにのみ適用されます。Appleの2件の発表はいずれも《デジタル市場法》(DMA)に触れておらず、台湾など他の地域で同じ事業条件が採用されるかどうかも説明していません。"
+            "これらの条件は、EUのストアフロントに掲載されているAppにのみ適用されます。Appleの2件の発表はいずれもデジタル市場法（DMA）に触れておらず、台湾など他の地域で同じ事業条件が採用されるかどうかも説明していません。"
           ]
         },
         {
@@ -494,7 +521,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Appleは「一部の主な更新(Some key updates)」として4項目を挙げています。App Store、代替決済、代替配布App全体の手数料率の調整。AppがApple In-App Purchaseと代替決済オプションを同時に提供できるようにすること(これまでEUでは認められていませんでした)。代替決済における児童保護の仕組みの追加。代替アプリマーケットプレイスの運営とウェブ配布(Web Distribution)でAppを配布する資格要件の緩和です。開発者は発表当日から《Apple Developer Program使用許諾契約》で新条件を確認し同意できるようになり、これらの更新は2026年10月1日に発効します。"
+          "text": "Appleは「一部の主な更新（Some key updates）」として4項目を挙げています。App Store、代替決済、代替配布App全体の手数料率の調整。AppがApple In-App Purchaseと代替決済オプションを同時に提供できるようにすること（これまでEUでは認められていませんでした）。代替決済における児童保護の仕組みの追加。代替アプリマーケットプレイスの運営とウェブ配布（Web Distribution）でAppを配布する資格要件の緩和です。開発者は発表当日からApple Developer Program使用許諾契約で新条件を確認し同意できるようになり、これらの更新は2026年10月1日に発効します。"
         },
         {
           "type": "paragraph",
@@ -502,20 +529,20 @@
         },
         {
           "type": "paragraph",
-          "text": "Appleのこの2件の発表全文には、《デジタル市場法》(DMA)、ゲートキーパー、制裁金といった言葉は一度も出てきません。両発表は、欧州委員会との緊密な協力の結果であるとだけ説明しています。Appleは、この調整によって事業条件と代替配布経路をめぐる欧州委員会との意見の相違が解消したとしています。Appleのサポートページでは、《デジタル市場法》に触れている箇所が別に2つありますが、いずれも2024年以降の既存の変更点の振り返りと、開発者が申請できる相互運用性リクエストの窓口についての説明で、今回の変更の理由ではありません。本記事の4つの情報源はすべてApple自身のページであり、欧州委員会による今回の変更についての一次的な説明は得られていません。"
+          "text": "Appleのこの2件の発表全文には、デジタル市場法（DMA）、ゲートキーパー、制裁金といった言葉は一度も出てきません。両発表は、欧州委員会との緊密な協力の結果であるとだけ説明しています。Appleは、この調整によって事業条件と代替配布経路をめぐる欧州委員会との意見の相違が解消したとしています。Appleのサポートページでは、デジタル市場法に触れている箇所が別に2つありますが、いずれも2024年以降の既存の変更点の振り返りと、開発者が申請できる相互運用性リクエストの窓口についての説明で、今回の変更の理由ではありません。本記事の4つの情報源はすべてApple自身のページであり、欧州委員会による今回の変更についての一次的な説明は得られていません。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "4種類の手数料と2段階の優遇"
+          "text": "4種類の手数料と2段階の料率"
         },
         {
           "type": "paragraph",
-          "text": "新しい条件では、決済方法によって3段階の料率が定められています。Apple In-App Purchaseを使う場合は26%、App Store小規模ビジネスプログラム(App Store Small Business Program)、ミニアプリパートナープログラム(Mini Apps Partner Program)、動画パートナープログラム(Video Partner Program)の参加者、および1年目を超えた自動更新サブスクリプションは15%に下がります。App内の代替決済処理(alternative payment processing)に切り替えると20%で、同じ対象者は10%に下がります。アクションリンク(actionable link)付きで利用者をApp外に導く購入案内には、別立てのストアサービス手数料(store services commission)15%が課されます(サポートページには、前述のプログラム参加者と1年を過ぎた自動更新サブスクリプションを除くと明記されています)。同じ対象者は10%に下がります。この2段階はいずれも、リンクをタップしてから7日以内に完了した取引のみが対象です。"
+          "text": "新しい条件では、決済方法によって3段階の料率が定められています。Apple In-App Purchaseを使う場合は26%、App Store小規模ビジネスプログラム（App Store Small Business Program）、ミニアプリパートナープログラム（Mini Apps Partner Program）、動画パートナープログラム（Video Partner Program）の参加者、および1年目を超えた自動更新サブスクリプションは15%に下がります。App内の代替決済処理（alternative payment processing）に切り替えると20%で、同じ対象者は10%に下がります。アクションリンク（actionable link）付きで利用者をApp外に導く購入案内には、別立てのストアサービス手数料（store services commission）15%が課されます（サポートページには、前述のプログラム参加者と1年を過ぎた自動更新サブスクリプションを除くと明記されています）。同じ対象者は10%に下がります。この2段階はいずれも、リンクをタップしてから7日以内に完了した取引のみが対象です。"
         },
         {
           "type": "paragraph",
-          "text": "代替アプリマーケットプレイス自体、および代替マーケットプレイスやウェブ配布経由で配布されるiOSとiPadOSのAppについては、Appleは5%のコアテクノロジー手数料を課します。Appleが挙げる対象取引は3種類です。これらのApp内でのデジタル商品・サービスの販売。代替マーケットプレイスやこれらのAppへのアクセス・ダウンロードのために支払う費用(コンテンツやカタログへのアクセスに対するサブスクリプション料を含む)。そして、アクションリンクでブラウザに開くウェブサイトに誘導して行う購入で、これも7日以内に完了した取引のみが対象です。小規模なマーケットプレイス運営者は、直近12か月の世界売上高が1,000万ユーロ未満で、かつマーケットプレイスのダウンロード料またはサブスクリプション料による累計売上高が100万ユーロ未満の場合、マーケットプレイスのダウンロード料とサブスクリプション料についてこの手数料が免除されます。"
+          "text": "代替アプリマーケットプレイス自体、および代替マーケットプレイスやウェブ配布経由で配布されるiOSとiPadOSのAppについては、Appleは5%のコアテクノロジー手数料を課します。Appleが挙げる対象取引は3種類です。これらのApp内でのデジタル商品・サービスの販売。代替マーケットプレイスやこれらのAppへのアクセス・ダウンロードのために支払う費用（コンテンツやカタログへのアクセスに対するサブスクリプション料を含む）。そして、アクションリンクでブラウザに開くウェブサイトに誘導して行う購入で、これも7日以内に完了した取引のみが対象です。小規模なマーケットプレイス運営者は、直近12か月の世界売上高が1,000万ユーロ未満で、かつマーケットプレイスのダウンロード料またはサブスクリプション料による累計売上高が100万ユーロ未満の場合、マーケットプレイスのダウンロード料とサブスクリプション料についてこの手数料が免除されます。"
         },
         {
           "type": "table",
@@ -526,24 +553,24 @@
           ],
           "rows": [
             [
-              "App Store:Apple In-App Purchase",
+              "App Store：Apple In-App Purchase",
               "26%",
-              "15%:小規模ビジネス/ミニアプリ/動画パートナープログラム参加者、1年経過後の自動更新サブスクリプション"
+              "15%：小規模ビジネス／ミニアプリ／動画パートナープログラム参加者、1年経過後の自動更新サブスクリプション"
             ],
             [
-              "App Store:App内の代替決済処理",
+              "App Store：App内の代替決済処理",
               "20%",
-              "10%:同じ対象者"
+              "10%：同じ対象者"
             ],
             [
-              "ストアサービス:アクションリンク付きのアプリ外提案(遷移先はウェブサイト、代替マーケットプレイス、または別のApp。タップ後7日以内に限る)",
-              "15%(上記対象者を除く)",
-              "10%:同じ対象者"
+              "ストアサービス：アクションリンク付きのアプリ外提案（遷移先はウェブサイト、代替マーケットプレイス、または別のApp。タップ後7日以内に限る）",
+              "15%（上記対象者を除く）",
+              "10%：同じ対象者"
             ],
             [
-              "コアテクノロジー手数料(代替マーケットプレイス自体、および代替配布のiOS・iPadOS App)",
+              "コアテクノロジー手数料（代替マーケットプレイス自体、および代替配布のiOS・iPadOS App）",
               "5%",
-              "免除:小規模マーケットプレイス運営者のダウンロード料とサブスクリプション料。2つの売上高基準を同時に満たす必要あり"
+              "免除：小規模マーケットプレイス運営者のダウンロード料とサブスクリプション料。2つの売上高基準を同時に満たす必要あり"
             ]
           ],
           "caption": "Apple Developerサポートページ「Changes for apps in the European Union」をもとに作成。確認日2026年9月17日。"
@@ -551,11 +578,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "利用者に表示される内容:開示と児童保護"
+          "text": "利用者に表示される内容：開示と児童保護"
         },
         {
           "type": "paragraph",
-          "text": "Appleによれば、開発者が決済方法(Apple In-App Purchase、App内の代替決済、アクションリンク付きのアプリ外提案、またはこれらの組み合わせ)を選んだ後は、すべてのEUストアフロント(storefront)で12か月間その選択を維持しなければなりません。後者2つの方式を採用する場合、AppはExternalPurchaseCustomLinkを使い、利用者がボタンをタップした時点で、取引相手が開発者でありAppleではないことを知らせるシステム提供の開示画面を表示する必要があります。利用者はその後表示しないよう選択できます。App Storeの商品ページにも案内バナーと「情報」欄の開示が表示され、ダウンロード確認画面には「External Purchases」の表記が加わります。"
+          "text": "Appleによれば、開発者が決済方法（Apple In-App Purchase、App内の代替決済、アクションリンク付きのアプリ外提案、またはこれらの組み合わせ）を選んだ後は、すべてのEUストアフロント（storefront）で12か月間その選択を維持しなければなりません。後者2つの方式を採用する場合、AppはExternalPurchaseCustomLinkを使い、利用者がボタンをタップした時点で、取引相手が開発者でありAppleではないことを知らせるシステム提供の開示画面を表示する必要があります。利用者はその後表示しないよう選択できます。App Storeの商品ページにも案内バナーと「情報」欄の開示が表示され、ダウンロード確認画面には「External Purchases」の表記が加わります。"
         },
         {
           "type": "paragraph",
@@ -563,15 +590,15 @@
         },
         {
           "type": "paragraph",
-          "text": "児童保護のルールについては、Newsroomとサポートページとで書きぶりが完全には一致していません。Newsroomは、キッズカテゴリのAppには取引を完了させるためのウェブサイトへのリンクを設置しない、18歳未満の利用者が代替決済を使うかウェブサイトにリンクする場合は保護者ゲート(parental gate)が必要、13歳未満はウェブサイトへのリンクで取引を完了できない、としています。一方サポートページは、キッズカテゴリのAppは代替決済の購入フローを保護者ゲートの後ろに置き、ウェブサイトで購入するアプリ外提案は提供してはならないこと、13歳未満は代替決済に保護者ゲートが必要でアプリ外提案も提供できないこと、13歳から17歳はその両方に保護者ゲートが必要であることを挙げています。Appleはさらに、ストアフロントが保護者の同意年齢を13歳より高く設定している場合は、その高い年齢が適用されると説明しており、たとえば一部のストアフロントでは「16歳未満」「16歳から17歳」となっています。"
+          "text": "児童保護のルールについては、Newsroomとサポートページとで書きぶりが完全には一致していません。Newsroomは、キッズカテゴリのAppには取引を完了させるためのウェブサイトへのリンクを設置しない、18歳未満の利用者が代替決済を使うかウェブサイトにリンクする場合は保護者ゲート（parental gate）が必要、13歳未満はウェブサイトへのリンクで取引を完了できない、としています。一方サポートページは、キッズカテゴリのAppは代替決済の購入フローを保護者ゲートの後ろに置き、ウェブサイトで購入するアプリ外提案は提供してはならないこと、13歳未満は代替決済に保護者ゲートが必要でアプリ外提案も提供できないこと、13歳から17歳はその両方に保護者ゲートが必要であることを挙げています。Appleはさらに、ストアフロントが保護者の同意年齢を13歳より高く設定している場合は、その高い年齢が適用されると説明しており、たとえば一部のストアフロントでは「16歳未満」「16歳から17歳」となっています。"
         },
         {
           "type": "image",
           "src": "/guides/tech-news-apple-eu-business-terms-20260818/diagram-1-ja.svg",
-          "alt": "4コマの図解:これまでは複数の条件が並存、EU単一の条件に変更、コアテクノロジー手数料は5%に、10月1日発効",
+          "alt": "4コマの図解：これまでは複数の条件が並存、EU単一の条件に変更、コアテクノロジー手数料は5%に、10月1日発効",
           "width": 1600,
           "height": 900,
-          "caption": "情報源:Apple開発者向け発表とサポートページ。確認日2026年9月17日。",
+          "caption": "情報源：Apple開発者向け発表とサポートページ。確認日2026年9月17日。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -585,15 +612,15 @@
         },
         {
           "type": "paragraph",
-          "text": "代替マーケットプレイスとウェブ配布の資格要件は2026年10月1日から緩和され、サポートページによれば次のいずれか1つを満たせばよいとされています。Dun & Bradstreetによる一定の財務健全性評価を満たす。上場企業であるか、上場企業の傘下にある。一定規模の投資機関からベンチャー資金を調達している。適格な会計士による財務監査を完了している。政府機関、教育機関、または手数料免除が承認された非営利団体である。100万米ドル(または現地通貨相当額)のスタンドバイ信用状(stand-by letter of credit)を提供する。または、世界全体で「年間初回インストール数(first annual installs)」が100万回に達している。Newsroomの発表ではこのうち5項目しか挙げられておらず、後の2項目(信用状とインストール数)がなく、非営利団体についても「手数料免除が承認された」とは書かれていません。Appleは、代替マーケットプレイスの運営やウェブ配布の利用にあたり、開発者がEU域内に法人や拠点を持つことはもはや求められないと説明しています。"
+          "text": "代替マーケットプレイスとウェブ配布の資格要件は2026年10月1日から緩和され、サポートページによれば次のいずれか1つを満たせばよいとされています。Dun & Bradstreetによる一定の財務健全性評価を満たす。上場企業であるか、上場企業の傘下にある。一定規模の投資機関からベンチャー資金を調達している。適格な会計士による財務監査を完了している。政府機関、教育機関、または手数料免除が承認された非営利団体である。100万米ドル（または現地通貨相当額）のスタンドバイ信用状（stand-by letter of credit）を提供する。または、世界全体で「年間初回インストール数（first annual installs）」が100万回に達している。Newsroomの発表ではこのうち5項目しか挙げられておらず、後の2項目（信用状とインストール数）がなく、非営利団体についても「手数料免除が承認された」とは書かれていません。Appleは、代替マーケットプレイスの運営やウェブ配布の利用にあたり、開発者がEU域内に法人や拠点を持つことはもはや求められないと説明しています。"
         },
         {
           "type": "paragraph",
-          "text": "対象プラットフォームは分けて考える必要があります。EUの事業条件全体は、EUストアフロントに掲載されているiOS、iPadOS、macOS、tvOS、visionOS、watchOSのAppを対象としますが、代替マーケットプレイスとウェブ配布はiOSとiPadOSのみが対象です。代替決済の権限ページに掲載されている地域コード(本記事の集計で29件)にはアイスランドとノルウェーが含まれていますが、この2か国はEU加盟国ではありません。つまり、ここでの「EU」はストアフロントの一覧を指しているということです。この権限を使うには、端末が少なくともiOS 26.2、iPadOS 26.2、またはmacOS・tvOS・visionOS・watchOSの26.6に更新されている必要があります。"
+          "text": "対象プラットフォームは分けて考える必要があります。EUの事業条件全体は、EUストアフロントに掲載されているiOS、iPadOS、macOS、tvOS、visionOS、watchOSのAppを対象としますが、代替マーケットプレイスとウェブ配布はiOSとiPadOSのみが対象です。代替決済の権限ページに掲載されている地域コード（本記事の集計で29件）にはアイスランドとノルウェーが含まれていますが、この2か国はEU加盟国ではありません。つまり、ここでの「EU」はストアフロントの一覧を指しているということです。この権限を使うには、端末が少なくともiOS 26.2、iPadOS 26.2、またはmacOS・tvOS・visionOS・watchOSの26.6に更新されている必要があります。"
         },
         {
           "type": "paragraph",
-          "text": "Appleは、ウェブ配布はEUでのみ利用可能で、その背後にマーケットプレイス運営者による審査もApp Storeのような継続的な監視も存在しないと説明しています。どちらの経路をたどるとしても、代替配布されるAppは引き続き「公証(Notarization)」を通過する必要があり、Appleはこれを基本機能と重大な脅威への対策に焦点を当てた基礎的な審査だと説明しています。"
+          "text": "Appleは、ウェブ配布はEUでのみ利用可能で、その背後にマーケットプレイス運営者による審査もApp Storeのような継続的な監視も存在しないと説明しています。どちらの経路をたどるとしても、代替配布されるAppは引き続き「公証（Notarization）」を通過する必要があり、Appleはこれを基本機能と重大な脅威への対策に焦点を当てた基礎的な審査だと説明しています。"
         },
         {
           "type": "heading",
@@ -606,22 +633,22 @@
         },
         {
           "type": "paragraph",
-          "text": "最新の状況を自分で確認するには、Apple Developer Newsのこの発表(識別子gmws0jgp)と2つのサポートページを直接確認してください。3つのページはいずれも今後更新される可能性があり、本記事が確認したのは2026年9月17日時点の版です。なお、本記事が参照した4つの情報源はすべて英語のページであり、「コアテクノロジー手数料(Core Technology Commission)」のような用語には公式な日本語訳が確認できていません。本記事中の日本語訳語は編集部が独自に訳したもので、参考のために英語の原語をあわせて記載しています。"
+          "text": "最新の状況を自分で確認するには、Apple Developer Newsのこの発表（識別子gmws0jgp）と2つのサポートページを直接確認してください。3つのページはいずれも今後更新される可能性があり、本記事が確認したのは2026年9月17日時点の版です。なお、本記事が参照した4つの情報源はすべて英語のページであり、「コアテクノロジー手数料（Core Technology Commission）」のような用語には公式な日本語訳が確認できていません。本記事中の日本語訳語は編集部が独自に訳したもので、参考のために英語の原語をあわせて記載しています。"
         },
         {
           "type": "faq",
           "items": [
             {
-              "question": "今回の変更は《デジタル市場法》と関係がありますか？",
-              "answer": "Appleのこの2件の発表の全文には、《デジタル市場法》(DMA)、ゲートキーパー、制裁金といった言葉は一度も出てきません。両発表は欧州委員会との緊密な協力の結果であるとだけ説明し、この調整によって事業条件と代替配布経路をめぐるAppleと欧州委員会の意見の相違が解消したとしています。Appleのサポートページには《デジタル市場法》に触れている箇所が確かに2つありますが、いずれも2024年以降の既存の変更と相互運用性リクエストの窓口について説明したもので、今回の事業条件変更の理由ではありません。本記事の4つの情報源はすべてApple自身のページであり、欧州委員会による今回の変更についての一次的な発言は得られていないため、本記事はいかなる見解も欧州委員会に帰していません。"
+              "question": "今回の変更はデジタル市場法と関係がありますか？",
+              "answer": "Appleのこの2件の発表の全文には、デジタル市場法（DMA）、ゲートキーパー、制裁金といった言葉は一度も出てきません。両発表は欧州委員会との緊密な協力の結果であるとだけ説明し、この調整によって事業条件と代替配布経路をめぐるAppleと欧州委員会の意見の相違が解消したとしています。Appleのサポートページにはデジタル市場法に触れている箇所が確かに2つありますが、いずれも2024年以降の既存の変更と相互運用性リクエストの窓口について説明したもので、今回の事業条件変更の理由ではありません。本記事の4つの情報源はすべてApple自身のページであり、欧州委員会による今回の変更についての一次的な発言は得られていないため、本記事はいかなる見解も欧州委員会に帰していません。"
             },
             {
               "question": "App Storeの手数料は上がったのですか、それとも下がったのですか？",
-              "answer": "本記事では、今回の変更前のEUにおける手数料率がいくらだったかを確認できなかったため、上がったのか下がったのか判断できません。新しい条件で示された数字を整理すると、Apple In-App Purchaseの利用は26%(対象要件を満たす場合は15%)、App内の代替決済処理への切り替えは20%(対象要件を満たす場合は10%)、アクションリンク付きのアプリ外購入案内は15%(対象要件を満たす場合は10%、いずれもリンクをタップしてから7日以内に完了した取引のみ対象)、代替マーケットプレイス自体および代替マーケットプレイスやウェブ配布経由で配布されるiOS・iPadOS Appは5%のコアテクノロジー手数料です。"
+              "answer": "本記事では、今回の変更前のEUにおける手数料率がいくらだったかを確認できなかったため、上がったのか下がったのか判断できません。新しい条件で示された数字を整理すると、Apple In-App Purchaseの利用は26%（対象要件を満たす場合は15%）、App内の代替決済処理への切り替えは20%（対象要件を満たす場合は10%）、アクションリンク付きのアプリ外購入案内は15%（対象要件を満たす場合は10%、いずれもリンクをタップしてから7日以内に完了した取引のみ対象）、代替マーケットプレイス自体および代替マーケットプレイスやウェブ配布経由で配布されるiOS・iPadOS Appは5%のコアテクノロジー手数料です。"
             },
             {
               "question": "廃止された「ストアサービス料金」とは、今後Appleに費用を払わなくてよくなるということですか？",
-              "answer": "いいえ、違います。Appleが廃止したのは「ストアサービス料金」という項目名であり、アクションリンク付きで利用者をApp外のウェブサイト、代替マーケットプレイス、または別のAppへ導く購入案内には、引き続き15%(対象要件を満たす場合は10%)の手数料がかかります。Appleはこれを「ストアサービス手数料(store services commission)」と呼び、リンクをタップしてから7日以内に完了した取引のみを対象としています。廃止されたのは旧制度における1つの費用名目であり、アプリ外での取引すべてにかかる手数料が廃止されたわけではありません。"
+              "answer": "いいえ、違います。Appleが廃止したのは「ストアサービス料金」という項目名であり、アクションリンク付きで利用者をApp外のウェブサイト、代替マーケットプレイス、または別のAppへ導く購入案内には、引き続き15%（対象要件を満たす場合は10%）の手数料がかかります。Appleはこれを「ストアサービス手数料（store services commission）」と呼び、リンクをタップしてから7日以内に完了した取引のみを対象としています。廃止されたのは旧制度における1つの費用名目であり、アプリ外での取引すべてにかかる手数料が廃止されたわけではありません。"
             },
             {
               "question": "台湾のAppや利用者は影響を受けますか？",
@@ -641,17 +668,29 @@
           "type": "callout",
           "tone": "info",
           "title": "今回の変更が対象とするのはEUのストアフロントのみです",
-          "text": "本記事がまとめているのは、Appleが2026年8月18日に発表し、主な変更が10月1日に発効する欧州連合向けの事業条件の変更であり、対象範囲はEUのストアフロントに掲載されているAppに限られ、台湾など他の地域は含まれません。Appleの2件の発表は《デジタル市場法》に触れておらず、欧州委員会との緊密な協力の結果であるとのみ説明しています。本記事は決済方式の優劣を比較するものではなく、開発者や利用者に決済設定を変更すべきかどうかを助言するものでもありません。確認日は2026年9月17日で、最新の状況はApple Developer News(識別子gmws0jgp)と公式サポートページの現在の内容を参照してください。"
+          "text": "本記事がまとめているのは、Appleが2026年8月18日に発表し、主な変更が10月1日に発効する欧州連合向けの事業条件の変更であり、対象範囲はEUのストアフロントに掲載されているAppに限られ、台湾など他の地域は含まれません。Appleの2件の発表はデジタル市場法に触れておらず、欧州委員会との緊密な協力の結果であるとのみ説明しています。本記事は決済方式の優劣を比較するものではなく、開発者や利用者に決済設定を変更すべきかどうかを助言するものでもありません。確認日は2026年9月17日で、最新の状況はApple Developer News（識別子gmws0jgp）と公式サポートページの現在の内容を参照してください。"
         },
         {
-          "type": "link",
-          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
-          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "EUサイバーレジリエンス法の通報義務が始動：9月11日から誰がどれだけ早く通報するのか",
-          "url": "https://mokaair.com/ja/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EUサイバーレジリエンス法の通報義務が始動：9月11日から誰がどれだけ早く通報するのか",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [
@@ -682,7 +721,7 @@
       "description": "2026년 8월 18일, Apple은 유럽연합(EU) 지역 App 사업 조건을 변경한다고 발표했습니다. 코어 테크놀로지 요금은 5%의 코어 테크놀로지 수수료로 대체되고, 결제 방식에 따라 26%·20%·15%의 세 단계 수수료가 적용되며, App은 Apple In-App Purchase와 대체 결제 옵션을 동시에 제공할 수 있게 됩니다. 주요 변경 사항은 2026년 10월 1일 발효되며 적용 범위는 EU 스토어프론트로 한정됩니다. 본 기사는 Apple의 공식 발표와 지원 페이지를 바탕으로 2026년 9월 17일 기준으로 확인했습니다.",
       "hero": {
         "src": "/guides/tech-news-apple-eu-business-terms-20260818/hero-ko.jpg",
-        "alt": "오리지널 일러스트: 왼쪽에 겹쳐진 문서 세 장, 화살표가 가운데의 더 큰 문서 한 장을 가리키고, 다시 화살표가 오른쪽의 원 그래프를 가리킨다. 원 그래프 위쪽에는 전체의 20분의 1을 차지하는 작은 음영 부분이 있어 여러 조건이 하나로 합쳐진 것과 5%의 요율을 나타낸다",
+        "alt": "오리지널 일러스트: 왼쪽에 겹쳐진 문서 세 장, 화살표가 가운데의 더 큰 문서 한 장을 가리키고, 다시 화살표가 오른쪽의 원 그래프를 가리킵니다. 원 그래프 위쪽에는 전체의 20분의 1을 차지하는 작은 음영 부분이 있어 여러 조건이 하나로 합쳐진 것과 5%의 요율을 나타냅니다",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -866,14 +905,26 @@
           "text": "본 기사는 Apple이 2026년 8월 18일 발표하고 주요 변경 사항이 10월 1일 발효되는 유럽연합 대상 사업 조건 변경을 정리한 것으로, 적용 범위는 EU 스토어프론트에 등록된 App으로 한정되며 대만이나 다른 지역은 포함되지 않습니다. Apple의 두 발표는 《디지털시장법》을 언급하지 않았으며, EU 집행위원회와의 긴밀한 협력의 결과라고만 설명합니다. 본 기사는 결제 방식의 우열을 비교하지 않으며, 개발자나 이용자에게 결제 설정을 바꿔야 하는지 권하지도 않습니다. 확인일은 2026년 9월 17일이며, 최신 상황은 Apple Developer News(식별자 gmws0jgp)와 공식 지원 페이지의 현재 내용을 참고하시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
-          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "EU 사이버복원력법 통보 의무 시행: 9월 11일부터, 누가 얼마나 빨리 통보해야 하나",
-          "url": "https://mokaair.com/ko/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU 사이버복원력법 통보 의무 시행: 9월 11일부터, 누가 얼마나 빨리 통보해야 하나",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [
@@ -938,7 +989,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Apple 写道「部分重点更新（Some key updates）」包括四项：调整 App Store、替代支付与替代发布渠道的抽成比率；允许 App 同时提供 Apple In-App Purchase 与替代支付选项（欧盟此前不允许）；替代支付新增未成年人保护机制；放宽经营替代应用市场与网站发布（Web Distribution）App 的资格。开发者从公告当天起可在《Apple Developer Program 许可协议》中查看并同意新条款，这些更新自 2026 年 10 月 1 日生效。"
+          "text": "Apple 写道“部分重点更新（Some key updates）”包括四项：调整 App Store、替代支付与替代发布渠道的抽成比率；允许 App 同时提供 Apple In-App Purchase 与替代支付选项（欧盟此前不允许）；替代支付新增未成年人保护机制；放宽经营替代应用市场与网站发布（Web Distribution）App 的资格。开发者从公告当天起可在《Apple Developer Program 许可协议》中查看并同意新条款，这些更新自 2026 年 10 月 1 日生效。"
         },
         {
           "type": "paragraph",
@@ -951,7 +1002,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "四档抽成与两级优惠"
+          "text": "四档抽成与两级较低比率"
         },
         {
           "type": "paragraph",
@@ -1003,11 +1054,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Apple 也说明，使用替代支付之后，「回报问题」与「家人共享」不会反映这些交易，购买记录与订阅管理也只会显示 Apple In-App Purchase 的交易；Apple 表示自己没有办法协助处理这类交易的退款、记录查询或订阅管理。"
+          "text": "Apple 也说明，使用替代支付之后，“报告问题”与“家人共享”不会反映这些交易，购买记录与订阅管理也只会显示 Apple In-App Purchase 的交易；Apple 表示自己没有办法协助处理这类交易的退款、记录查询或订阅管理。"
         },
         {
           "type": "paragraph",
-          "text": "未成年人保护规则，Newsroom 与支持页面的写法不完全一致。Newsroom 写儿童类别 App 不放连到网站完成交易的链接、未满 18 岁使用替代支付或链接到网站须加家长闸门（parental gate）、未满 13 岁不能链接到网站完成交易。支持页面则写：儿童类别 App 的替代支付流程须放在家长闸门之后，且不得提供在网站购买的店外提案；未满 13 岁者替代支付须经家长闸门，且不得提供店外提案；13 至 17 岁者两者都要。Apple 另说明，商店前台如果把家长同意年龄定在 13 岁以上，就改按该更高年龄执行，例如部分前台是「未满 16 岁」与「16 至 17 岁」。"
+          "text": "未成年人保护规则，Newsroom 与支持页面的写法不完全一致。Newsroom 写儿童类别 App 不放连到网站完成交易的链接、未满 18 岁使用替代支付或链接到网站须加家长闸门（parental gate）、未满 13 岁不能链接到网站完成交易。支持页面则写：儿童类别 App 的替代支付流程须放在家长闸门之后，且不得提供在网站购买的店外提案；未满 13 岁者替代支付须经家长闸门，且不得提供店外提案；13 至 17 岁者两者都要。Apple 另说明，商店前台如果把家长同意年龄定在 13 岁以上，就改按该更高年龄执行，例如部分前台是“未满 16 岁”与“16 至 17 岁”。"
         },
         {
           "type": "image",
@@ -1029,15 +1080,15 @@
         },
         {
           "type": "paragraph",
-          "text": "替代应用市场与网站发布的资格自 2026 年 10 月 1 日起放宽，支持页面的条件符合其一即可：Dun & Bradstreet 评级达到一定财务稳健门槛、由上市公司持有或本身是上市公司、获得具规模投资机构的风险投资、经合格会计师完成财务审计、属政府机关或教育机构或已获批减免费用的非营利组织、提供 100 万美元（或等值当地货币）备用信用证（stand-by letter of credit），或全球「年度首次安装量」（\"first annual installs\"）达 100 万次。Newsroom 的公告少了后两项，非营利组织也没写「已获批减免费用」。Apple 说明，经营替代应用市场或使用网站发布，不再要求开发者在欧盟设有法律实体或据点。"
+          "text": "替代应用市场与网站发布的资格自 2026 年 10 月 1 日起放宽，支持页面的条件符合其一即可：Dun & Bradstreet 评级达到一定财务稳健门槛、由上市公司持有或本身是上市公司、获得具规模投资机构的风险投资、经合格会计师完成财务审计、属政府机关或教育机构或已获批减免费用的非营利组织、提供 100 万美元（或等值当地货币）备用信用证（stand-by letter of credit），或全球“首次年度安装”（first annual installs）达 100 万次。Newsroom 的公告少了后两项，非营利组织也没写“已获批减免费用”。Apple 说明，经营替代应用市场或使用网站发布，不再要求开发者在欧盟设有法律实体或据点。"
         },
         {
           "type": "paragraph",
-          "text": "适用平台要分开看：欧盟商业条款涵盖在欧盟商店前台上架的 iOS、iPadOS、macOS、tvOS、visionOS 与 watchOS App，替代应用市场与网站发布则只做 iOS 与 iPadOS。替代支付权限页面列出的地区代码（本文清点为 29 个）包含冰岛与挪威——两国不是欧盟成员国，可见这里的「欧盟」是一份商店前台清单。要使用这组权限，设备至少要更新到 iOS 26.2、iPadOS 26.2，或 macOS、tvOS、visionOS、watchOS 26.6。"
+          "text": "适用平台要分开看：欧盟商业条款涵盖在欧盟商店前台上架的 iOS、iPadOS、macOS、tvOS、visionOS 与 watchOS App，替代应用市场与网站发布则只做 iOS 与 iPadOS。替代支付权限页面列出的地区代码（本文清点为 29 个）包含冰岛与挪威——两国不是欧盟成员国，可见这里的“欧盟”是一份商店前台清单。要使用这组权限，设备至少要更新到 iOS 26.2、iPadOS 26.2，或 macOS、tvOS、visionOS、watchOS 26.6。"
         },
         {
           "type": "paragraph",
-          "text": "Apple 说明，网站发布只在欧盟开放，背后没有市场经营者把关，也没有 App Store 那种持续监督；不论走哪种渠道，每款替代发布的 App 仍要通过「公证（Notarization）」，Apple 形容那是聚焦基本功能与防范重大威胁的基础审查。"
+          "text": "Apple 说明，网站发布只在欧盟开放，背后没有市场经营者把关，也没有 App Store 那种持续监督；不论走哪种渠道，每款替代发布的 App 仍要通过“公证（Notarization）”，Apple 形容那是聚焦基本功能与防范重大威胁的基础审查。"
         },
         {
           "type": "heading",
@@ -1050,7 +1101,7 @@
         },
         {
           "type": "paragraph",
-          "text": "要自行核实最新状况，可以直接查看 Apple Developer News 这篇公告（标识符 gmws0jgp）与两份支持页面。三个页面都会随时间更新，本文查证的版本以 2026 年 9 月 17 日为准。需要留意的是，本文四条来源都是英文页面，「核心技术抽成（Core Technology Commission）」这类名词也没有官方中文对照，本文中的中文译名为编辑部自行翻译，并保留英文原文以供对照。"
+          "text": "要自行核实最新状况，可以直接查看 Apple Developer News 这篇公告（标识符 gmws0jgp）与两份支持页面。三个页面都会随时间更新，本文查证的版本以 2026 年 9 月 17 日为准。需要留意的是，本文四条来源都是英文页面，“核心技术抽成（Core Technology Commission）”这类名词也没有官方中文对照，本文中的中文译名为编辑部自行翻译，并保留英文原文以供对照。"
         },
         {
           "type": "faq",
@@ -1064,8 +1115,8 @@
               "answer": "本文没有查到 Apple 这次调整之前，欧盟地区原本的抽成比率是多少，所以无法判断是提高还是降低，只能整理新条款公布的数字：使用 Apple In-App Purchase 抽 26%（符合资格对象 15%），改用应用内替代支付处理抽 20%（符合资格对象 10%），附可点击链接的店外购买提案抽 15%（符合资格对象 10%，且只计入点击链接后 7 天内完成的交易），替代应用市场本身与通过替代应用市场或网站发布的 iOS、iPadOS App 则是 5% 的核心技术抽成。"
             },
             {
-              "question": "被取消的「商店服务费」是不是代表以后都不用向 Apple 付费了？",
-              "answer": "不是。Apple 取消的是「商店服务费」这个项目，但附可点击链接、把用户带出 App 到网站、替代应用市场或另一个 App 完成的购买提案，依然要付 15%（符合资格对象 10%）的抽成，Apple 称为「商店服务抽成（store services commission）」，且只计入用户点击链接后 7 天内完成的交易。取消的是旧制度下的一个费用名目，不是取消所有店外交易的抽成。"
+              "question": "被取消的“商店服务费”是不是代表以后都不用向 Apple 付费了？",
+              "answer": "不是。Apple 取消的是“商店服务费”这个项目，但附可点击链接、把用户带出 App 到网站、替代应用市场或另一个 App 完成的购买提案，依然要付 15%（符合资格对象 10%）的抽成，Apple 称为“商店服务抽成（store services commission）”，且只计入用户点击链接后 7 天内完成的交易。取消的是旧制度下的一个费用名目，不是取消所有店外交易的抽成。"
             },
             {
               "question": "台湾的 App 或用户会受影响吗？",
@@ -1073,11 +1124,11 @@
             },
             {
               "question": "使用替代支付之后，退款或购买记录查询会不会受影响？",
-              "answer": "Apple 说明，选择替代支付之后，「回报问题」与「家人共享」不会反映这些交易，App Store 的购买记录与订阅管理也只会显示通过 Apple In-App Purchase 完成的交易；Apple 表示自己没有办法协助处理通过替代支付完成之交易的退款、购买记录查询或订阅管理。这是 Apple 自己对这项取舍的描述，本站没有另外测试。"
+              "answer": "Apple 说明，选择替代支付之后，“报告问题”与“家人共享”不会反映这些交易，App Store 的购买记录与订阅管理也只会显示通过 Apple In-App Purchase 完成的交易；Apple 表示自己没有办法协助处理通过替代支付完成之交易的退款、购买记录查询或订阅管理。这是 Apple 自己对这项取舍的描述，本站没有另外测试。"
             },
             {
               "question": "未成年用户这次多了哪些保护？",
-              "answer": "依据 Apple 的支持页面：儿童类别的 App 要把使用替代支付处理的购买流程放在家长闸门之后，而且不能提供在网站购买的店外提案；未满 13 岁的用户，替代支付购买必须先通过家长闸门，也不得提供店外购买提案；13 至 17 岁的用户，应用内替代支付与店外购买提案都要先通过家长闸门。Apple 另外说明，商店前台如果把家长同意的年龄定在 13 岁以上，就改用该更高年龄，例如部分前台是「未满 16 岁」与「16 至 17 岁」；Apple 没有在这一页列出是哪些前台，而是要开发者到账号地区规则的说明页查看各地年龄规定。"
+              "answer": "依据 Apple 的支持页面：儿童类别的 App 要把使用替代支付处理的购买流程放在家长闸门之后，而且不能提供在网站购买的店外提案；未满 13 岁的用户，替代支付购买必须先通过家长闸门，也不得提供店外购买提案；13 至 17 岁的用户，应用内替代支付与店外购买提案都要先通过家长闸门。Apple 另外说明，商店前台如果把家长同意的年龄定在 13 岁以上，就改用该更高年龄，例如部分前台是“未满 16 岁”与“16 至 17 岁”；Apple 没有在这一页列出是哪些前台，而是要开发者到账号地区规则的说明页查看各地年龄规定。"
             }
           ]
         },
@@ -1088,14 +1139,26 @@
           "text": "本文整理的是 Apple 2026 年 8 月 18 日公告、主要更新于 10 月 1 日生效的欧盟商业条款调整，范围限于欧盟商店前台上架的 App，不包含台湾或其他地区。Apple 的两篇公告没有提到《数字市场法》，只说明是与欧盟委员会密切合作的结果；本文不比较支付方式的优劣，也不建议开发者或用户是否该调整支付设置。查核日为 2026 年 9 月 17 日，最新状况请以 Apple Developer News（标识符 gmws0jgp）与官方支持页面当下内容为准。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "欧盟《网络弹性法案》通报义务上线：9 月 11 日起，谁要多快通报",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "欧盟《网络弹性法案》通报义务开始适用：9 月 11 日起，谁要多快通报",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [

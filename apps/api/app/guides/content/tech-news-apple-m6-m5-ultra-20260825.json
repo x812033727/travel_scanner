@@ -11,6 +11,10 @@
   "news_date": "2026-08-25",
   "featured": false,
   "display_order": 309,
+  "related": [
+    "tech-news-apple-september-hardware-20260909",
+    "tech-news-iphone-duo-20260909"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Apple 發表 M6 與 M5 Ultra：Mac mini、Mac Studio 首發與台灣售價",
@@ -218,14 +222,26 @@
           "text": "所有效能、製程與環保數字都是 Apple 官方測試或宣稱的結果（以「Apple 表示」「Apple 說明」標示），本站沒有實測，也不提供購買或升級建議；台灣售價僅供參考，實際定價與供貨請以 Apple 官方頁面當時公告為準。本文讀的是 Apple 於 2026 年 9 月 17 日提供的頁面版本，三篇新聞稿的頁面後設資料都顯示曾於 2026 年 8 月 27 日修訂過，內容如有更新，請自行至 Apple Newsroom 查核最新版本。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台灣定價與健康感測系統",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-apple-september-hardware-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台灣定價與健康感測系統",
+              "kind": "life",
+              "slug": "tech-news-apple-september-hardware-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -279,7 +295,7 @@
           "items": [
             "On August 25, 2026, Apple introduced two custom chips, M6 and M5 Ultra, debuting in the new Mac mini and the new Mac Studio, with each machine also offered in an M5 Pro or M5 Max version.",
             "M6 is Apple's first 2-nanometer chip, supporting up to 32GB of unified memory with 170GB/s of bandwidth; M5 Ultra is the first to use UltraFusion technology to form a quad-die architecture, supporting up to 512GB of unified memory with 1.2TB/s of bandwidth.",
-            "In Taiwan, the Mac mini with M6 starts at NT$29,900 and the Mac Studio with M5 Ultra starts at NT$199,900; both machines opened for pre-order at 9am Taiwan time on August 27 and began shipping on September 22.",
+            "In Taiwan, the Mac mini with M6 starts at NT$29,900 and the Mac Studio with M5 Ultra starts at NT$199,900; both machines opened for pre-order at 9 a.m. Taiwan time on August 27, with availability from September 22.",
             "Every performance multiple in this article is Apple's own test result or claim; this site has not tested them itself, and it offers no purchase or upgrade advice."
           ]
         },
@@ -398,7 +414,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Developers can tap the hardware of both chips directly through frameworks such as Core AI and Core ML to build and run AI work on device. The next generation of Apple Intelligence features is currently open for testing through the Apple Beta Software Program and is set to arrive with macOS 27 this fall; the list of supported languages Apple provides includes Chinese (traditional), and some features may not be available in every region or language."
+          "text": "Developers can tap the hardware of both chips directly through frameworks such as Core AI and Core ML to build and run AI work on device. The next generation of Apple Intelligence features is currently open for testing through the Apple Beta Software Program and is set to arrive with macOS 27 this fall; the list of supported languages Apple provides includes Traditional Chinese, and some features may not be available in every region or language."
         },
         {
           "type": "heading",
@@ -407,7 +423,7 @@
         },
         {
           "type": "paragraph",
-          "text": "According to Apple’s Taiwan press releases, both new machines opened for pre-order at 9am Taiwan time on August 27, 2026, and began shipping on September 22. The Mac mini with M6 is priced from NT$29,900, and with M5 Pro from NT$59,900; the Mac Studio with M5 Max is priced from NT$84,900, and with M5 Ultra from NT$199,900."
+          "text": "According to Apple’s Taiwan press releases, both new machines opened for pre-order at 9 a.m. Taiwan time on August 27, 2026, with availability from September 22. The Mac mini with M6 is priced from NT$29,900, and with M5 Pro from NT$59,900; the Mac Studio with M5 Max is priced from NT$84,900, and with M5 Ultra from NT$199,900."
         },
         {
           "type": "paragraph",
@@ -442,7 +458,7 @@
             },
             {
               "question": "When can you buy these in Taiwan, and how much do they cost?",
-              "answer": "According to Apple’s Taiwan press releases, both new machines opened for pre-order at 9am Taiwan time on August 27, 2026, and shipping began rolling out on September 22. The Mac mini with M6 is priced from NT$29,900 and with M5 Pro from NT$59,900; the Mac Studio with M5 Max is priced from NT$84,900 and with M5 Ultra from NT$199,900; the Mac Studio configuration with 512GB of unified memory does not arrive until late October, and education pricing is listed separately."
+              "answer": "According to Apple’s Taiwan press releases, both new machines opened for pre-order at 9 a.m. Taiwan time on August 27, 2026, with availability rolling out from September 22. The Mac mini with M6 is priced from NT$29,900 and with M5 Pro from NT$59,900; the Mac Studio with M5 Max is priced from NT$84,900 and with M5 Ultra from NT$199,900; the Mac Studio configuration with 512GB of unified memory does not arrive until late October, and education pricing is listed separately."
             },
             {
               "question": "How were these performance multiples measured?",
@@ -457,14 +473,26 @@
           "text": "Every performance, process-node, and environmental figure here is Apple’s own test result or claim (marked “Apple states” or “Apple explains”); this site has not tested any of it, and it offers no purchase or upgrade advice. Taiwan pricing is for reference only — check Apple’s official pages for the pricing and availability in effect at the time. This article read the page versions Apple provided on September 17, 2026; the metadata of all three press releases shows they were revised on August 27, 2026, so if the content has since changed, check Apple Newsroom yourself for the latest version."
         },
         {
-          "type": "link",
-          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
-          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "iPhone 18 Pro, Watch Series 12/Ultra 4, AirPods 5: Taiwan Pricing and the Health Sensing System",
-          "url": "https://mokaair.com/en/life/tech-news-apple-september-hardware-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "iPhone 18 Pro, Watch Series 12/Ultra 4, AirPods 5: Taiwan Pricing and the Health Sensing System",
+              "kind": "life",
+              "slug": "tech-news-apple-september-hardware-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -495,7 +523,7 @@
       "description": "2026年8月25日、AppleはM6とM5 Ultraの2つの新チップを発表し、新しいMac miniとMac Studioにそれぞれ初搭載されました。M6はAppleにとって初の2ナノメートルプロセスチップで、M5 UltraはUltraFusion技術で初めて4ダイ構成を実現しています。本記事は公式プレスリリースに基づき、台湾での価格と各チップのユニファイドメモリ仕様を整理したものです。性能倍率はApple公式のテスト結果であり、当サイトは実機での検証を行っておらず、購入や買い替えを勧めるものではありません。",
       "hero": {
         "src": "/guides/tech-news-apple-m6-m5-ultra-20260825/hero-ja.jpg",
-        "alt": "オリジナルイラスト：上段左に単独のチップ、右に小さな接続部でつながった2つのチップ。下段には高さの異なる4つの長方形が階段状に並び、ユニファイドメモリ容量の段階を表す。幾何学図形のみで構成し、実際の製品外観や商標は一切描いていない。",
+        "alt": "オリジナルイラスト：上段左に単独のチップ、右に小さな接続部でつながった2つのチップ。下段には高さの異なる4つの長方形が階段状に並び、ユニファイドメモリ容量の段階を表します。幾何学図形のみで構成し、実際の製品外観や商標は一切描いていません。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -511,14 +539,14 @@
         },
         {
           "type": "paragraph",
-          "text": "本記事は2026年9月17日に、Apple米国および台湾Newsroomがその日に公開していた3本の公式プレスリリース（チップに関するリリースは米国版を参照）に基づいて検証しました。当サイトはいずれの製品も実機での検証を行っておらず、購入や買い替えを勧めるものでもありません。特に断りがない限り、本文中の性能倍率、プロセスノード、環境関連の数値はすべてApple公式のテスト結果または発表内容であり、当サイトによる実測ではありません。"
+          "text": "本記事は2026年9月17日に、Apple米国および台湾Newsroomがその日に公開していた3本の公式プレスリリース（チップに関するリリースは米国版を参照）に基づいて確認しました。当サイトはいずれの製品も実機での検証を行っておらず、購入や買い替えを勧めるものでもありません。特に断りがない限り、本文中の性能倍率、プロセスノード、環境関連の数値はすべてApple公式のテスト結果または発表内容であり、当サイトによる実測ではありません。"
         },
         {
           "type": "summary",
           "items": [
             "2026年8月25日、Appleは自社設計チップM6とM5 Ultraを発表し、それぞれ新しいMac miniと新しいMac Studioに初搭載しました。両モデルにはM5 Pro版とM5 Max版もそれぞれ用意されています。",
             "M6はApple初の2ナノメートルプロセスチップで、最大32GBのユニファイドメモリと170GB/sの帯域幅に対応します。M5 UltraはUltraFusion技術で初めて4ダイ構成を実現し、最大512GBのユニファイドメモリと1.2TB/sの帯域幅に対応します。",
-            "台湾での価格は、M6搭載Mac miniがNT$29,900から、M5 Ultra搭載Mac StudioがNT$199,900から。両モデルとも台湾時間8月27日午前9時に予約受付を開始し、9月22日から販売されました。",
+            "台湾での価格は、M6搭載Mac miniがNT$29,900から、M5 Ultra搭載Mac StudioがNT$199,900から。両モデルとも台湾時間8月27日午前9時に予約受付を開始し、9月22日から販売されます。",
             "本文中の性能倍率はすべてApple公式のテスト結果または発表内容であり、当サイトは実機での検証を行っておらず、購入や買い替えを勧めるものでもありません。"
           ]
         },
@@ -533,11 +561,11 @@
         },
         {
           "type": "paragraph",
-          "text": "新しいMac miniはM6またはM5 Proを選択でき、新しいMac StudioはM5 MaxまたはM5 Ultraを選択できるため、今回の発表には合計4つのチップが関わっていますが、チップのプレスリリースが紹介するのはM6とM5 Ultraの2つだけです。「M5 Pro」という語句で逐語的に確認したところ、米国版・台湾版いずれのチップのプレスリリースにも0回しか登場せず、その仕様はMac miniのプレスリリースにのみ記載されています。"
+          "text": "新しいMac miniはM6またはM5 Proを選択でき、新しいMac StudioはM5 MaxまたはM5 Ultraを選択できるため、今回の発表には合計4つのチップが関わっていますが、チップのプレスリリースが紹介するのはM6とM5 Ultraの2つだけです。「M5 Pro」という語句で逐語的に確認したところ、米国版・台湾版いずれのチップのプレスリリースでも0回で、その仕様はMac miniのプレスリリースにのみ記載されています。"
         },
         {
           "type": "paragraph",
-          "text": "3本のプレスリリースはいずれも2026年8月25日付けで公開されたと表示されています。ページのメタデータによると2026年8月27日に改訂されており、本文の検証日に読んだのはその改訂後のバージョンです。"
+          "text": "3本のプレスリリースはいずれも2026年8月25日付けで公開されたと表示されています。ページのメタデータによると2026年8月27日に改訂されており、本文の確認日に読んだのはその改訂後のバージョンです。"
         },
         {
           "type": "heading",
@@ -550,7 +578,7 @@
         },
         {
           "type": "paragraph",
-          "text": "GPUについては、M6は同じく2コア多い12コアGPUを搭載し、各コアにNeural Acceleratorを内蔵しています。Appleによれば、AI用のGPUピーク演算性能はM5比で約30%向上、M1比で8倍以上に達し、複雑なグラフィックス処理時のジオメトリ処理率は50%向上するとしています。デュアル16コアNeural Engineのピーク演算性能は従来世代比で最大2倍、ユニファイドメモリは最大32GB、帯域幅は最大170GB/sです。"
+          "text": "GPUについては、M6は同じく2コア多い12コアGPUを搭載し、各コアにNeural Acceleratorを内蔵しています。Appleによれば、AI用のGPUピーク演算性能はM5比で30%近く向上、M1比で8倍以上に達し、複雑なグラフィックス処理時のジオメトリ処理率は50%向上するとしています。デュアル16コアNeural Engineのピーク演算性能は従来世代比で最大2倍、ユニファイドメモリは最大32GB、帯域幅は最大170GB/sです。"
         },
         {
           "type": "paragraph",
@@ -646,7 +674,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Apple台湾のプレスリリースによると、両モデルとも2026年8月27日台湾時間午前9時から予約受付を開始し、9月22日から販売されました。M6搭載Mac miniはNT$29,900から、M5 Pro搭載はNT$59,900から。M5 Max搭載Mac StudioはNT$84,900から、M5 Ultra搭載はNT$199,900からです。"
+          "text": "Apple台湾のプレスリリースによると、両モデルとも2026年8月27日台湾時間午前9時から予約受付を開始し、9月22日から販売されます。M6搭載Mac miniはNT$29,900から、M5 Pro搭載はNT$59,900から。M5 Max搭載Mac StudioはNT$84,900から、M5 Ultra搭載はNT$199,900からです。"
         },
         {
           "type": "paragraph",
@@ -669,11 +697,11 @@
             },
             {
               "question": "M6はTSMCが製造していますか。",
-              "answer": "公式プレスリリースには記載がありません。「台積電」「TSMC」という語句で2026年9月17日まで確認しましたが、本文が引用する4つの公式ページのいずれにも登場しません。AppleはM6を「Apple初」の2ナノメートルプロセスチップと呼ぶのみで、どの製造会社が製造しているかは説明していません。"
+              "answer": "公式プレスリリースには記載がありません。「台積電」「TSMC」という語句で2026年9月17日まで確認しましたが、本文が引用する4つの公式ページのいずれにも登場しません。AppleはM6を「Apple初」の2ナノメートルプロセスチップと呼ぶのみで、どのファウンドリで製造しているかは説明していません。"
             },
             {
               "question": "M5 UltraのAI演算性能について、公式には4.5倍と4.3倍のどちらだとされていますか。",
-              "answer": "どちらの数値もAppleが発表したものですが、出典となるプレスリリースが異なり、Appleが付けている名称も異なります。チップのプレスリリースは「AI用のGPUピーク演算性能」がM3 Ultra比で最大4.5倍、M1 Ultra比で6倍以上としており、脚注では2026年8月に、36コアCPU・80コアGPU・256GBメモリのM5 Ultra試作モデルMac Studioを、32コアCPU・80コアGPU・256GBのM3 Ultra搭載Mac Studioおよび20コアCPU・64コアGPU・64GBのM1 Ultra搭載Mac Studioと比較してテストしたとしています。一方Mac Studioのプレスリリースは「AIピーク演算性能」がM3 Ultra比で最大4.3倍、M1 Ultra比で9.8倍としており、その脚注には2026年7月にテストを実施したとだけ記され、比較対象機種の構成は記載されていません。この2つの数値は互いに置き換えて使うことはできません。"
+              "answer": "どちらの数値もAppleが発表したものですが、出典となるプレスリリースが異なり、Appleが付けている名称も異なります。チップのプレスリリースは「AI用のGPUピーク演算性能」がM3 Ultra比で最大4.5倍、M1 Ultra比で6倍以上としており、脚注では2026年8月に、36コアCPU・80コアGPU・256GBメモリのM5 Ultra搭載の量産前モデルMac Studioを、32コアCPU・80コアGPU・256GBのM3 Ultra搭載Mac Studioおよび20コアCPU・64コアGPU・64GBのM1 Ultra搭載Mac Studioと比較してテストしたとしています。一方Mac Studioのプレスリリースは「AIピーク演算性能」がM3 Ultra比で最大4.3倍、M1 Ultra比で9.8倍としており、その脚注には2026年7月にテストを実施したとだけ記され、比較対象機種の構成は記載されていません。この2つの数値は互いに置き換えて使うことはできません。"
             },
             {
               "question": "Mac miniやMac Studioで本当に大規模言語モデルを実行できますか。",
@@ -681,11 +709,11 @@
             },
             {
               "question": "台湾ではいつから、いくらで購入できますか。",
-              "answer": "Apple台湾のプレスリリースによると、両モデルとも2026年8月27日台湾時間午前9時に予約受付を開始し、9月22日から順次販売されました。M6搭載Mac miniはNT$29,900から、M5 Pro搭載はNT$59,900から。M5 Max搭載Mac StudioはNT$84,900から、M5 Ultra搭載はNT$199,900からです。512GBのユニファイドメモリを搭載したMac Studioの提供は10月末になるとしており、教育機関向け価格も別途示されています。"
+              "answer": "Apple台湾のプレスリリースによると、両モデルとも2026年8月27日台湾時間午前9時に予約受付を開始し、9月22日から順次販売されます。M6搭載Mac miniはNT$29,900から、M5 Pro搭載はNT$59,900から。M5 Max搭載Mac StudioはNT$84,900から、M5 Ultra搭載はNT$199,900からです。512GBのユニファイドメモリを搭載したMac Studioの提供は10月末になるとしており、教育機関向け価格も別途示されています。"
             },
             {
               "question": "これらの性能倍率はどのように測定されたのですか。",
-              "answer": "すべてApple自身によるテスト結果であり、当サイトによる実測ではありません。Appleは脚注でテスト機種と比較対象を説明しており、例えばM6の複数の倍率は、試作モデルのMac mini（M6、12コアCPU、12コアGPU、32GBメモリ）を14インチMacBook Pro（M5、10コアCPU、10コアGPU、32GBメモリ）や旧型のMac mini（M1、8コアCPU、8コアGPU、16GBメモリ）と比較して2026年8月に測定されたものです。倍率ごとに比較対象の機種とテスト実施月は異なります。チップのプレスリリースにある「流通している競合システムと特定の業界標準ベンチマーク」という記述は別の脚注によるもので、冒頭の「世界最速のCPUコア」という一文に付いており、Appleはここでもどの競合製品やベンチマークかは明らかにしていません。"
+              "answer": "すべてApple自身によるテスト結果であり、当サイトによる実測ではありません。Appleは脚注でテスト機種と比較対象を説明しており、例えばM6の複数の倍率は、量産前モデルのMac mini（M6、12コアCPU、12コアGPU、32GBメモリ）を14インチMacBook Pro（M5、10コアCPU、10コアGPU、32GBメモリ）や旧型のMac mini（M1、8コアCPU、8コアGPU、16GBメモリ）と比較して2026年8月に測定されたものです。倍率ごとに比較対象の機種とテスト実施月は異なります。チップのプレスリリースにある「流通している競合システムと特定の業界標準ベンチマーク」という記述は別の脚注によるもので、冒頭の「世界最速のCPUコア」という一文に付いており、Appleはここでもどの競合製品やベンチマークかは明らかにしていません。"
             }
           ]
         },
@@ -696,14 +724,26 @@
           "text": "本文中のすべての性能、プロセス、環境関連の数値はApple公式のテスト結果または発表内容であり（「Appleによれば」「Appleは説明しています」と表記）、当サイトは実機での検証を行っておらず、購入や買い替えを勧めるものでもありません。台湾での価格は参考情報であり、実際の価格や供給状況はApple公式ページのその時点の発表内容をご確認ください。本文はAppleが2026年9月17日に提供していたページのバージョンを参照しました。3本のプレスリリースはいずれもページのメタデータ上2026年8月27日に改訂されており、内容が更新されている場合は、Apple Newsroomで最新版をご自身でご確認ください。"
         },
         {
-          "type": "link",
-          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
-          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台湾の価格とヘルスセンシングシステム",
-          "url": "https://mokaair.com/ja/life/tech-news-apple-september-hardware-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台湾の価格とヘルスセンシングシステム",
+              "kind": "life",
+              "slug": "tech-news-apple-september-hardware-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -731,7 +771,7 @@
     },
     "ko": {
       "title": "Apple, M6 및 M5 Ultra 공개: Mac mini와 Mac Studio 최초 탑재, 대만 가격도",
-      "description": "2026년 8월 25일, Apple은 M6과 M5 Ultra 두 개의 새 칩을 공개했으며, 새로운 Mac mini와 Mac Studio에 각각 처음으로 탑재되었습니다. M6는 Apple 최초의 2나노미터 공정 칩이며, M5 Ultra는 UltraFusion 기술로 처음 4다이 구조를 구현했습니다. 본 기사는 공식 보도자료를 바탕으로 대만 가격과 각 칩의 통합 메모리 사양을 정리했습니다. 성능 배수는 Apple의 공식 테스트 결과이며, 본 사이트는 직접 시험해 보지 않았고 구매나 업그레이드를 권하지 않습니다.",
+      "description": "2026년 8월 25일, Apple은 M6과 M5 Ultra 두 개의 새 칩을 공개했으며, 새로운 Mac mini와 Mac Studio에 각각 처음으로 탑재되었습니다. M6는 Apple 최초의 2나노미터 공정 칩이며, M5 Ultra는 UltraFusion 기술로 처음 쿼드 다이 구조를 구현했습니다. 본 기사는 공식 보도자료를 바탕으로 대만 가격과 각 칩의 통합 메모리 사양을 정리했습니다. 성능 배수는 Apple의 공식 테스트 결과이며, 본 사이트는 직접 시험해 보지 않았고 구매나 업그레이드를 권하지 않습니다.",
       "hero": {
         "src": "/guides/tech-news-apple-m6-m5-ultra-20260825/hero-ko.jpg",
         "alt": "오리지널 일러스트: 윗줄 왼쪽에는 칩 하나, 오른쪽에는 작은 연결부로 이어진 두 개의 칩이 있습니다. 아랫줄에는 높이가 다른 네 개의 직사각형이 계단 모양으로 놓여 통합 메모리 용량 단계를 나타냅니다. 기하학적 도형만으로 구성했으며 실제 제품 외관이나 상표는 담지 않았습니다.",
@@ -746,18 +786,18 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "2026년 8월 25일, Apple은 세 건의 공식 보도자료를 통해 자체 설계 칩 M6와 M5 Ultra를 동시에 공개했습니다. 각각 새로운 Mac mini와 새로운 Mac Studio에 처음 탑재되었으며, 두 신제품에는 각각 M5 Pro 버전과 M5 Max 버전도 함께 제공됩니다. Apple은 M6가 Apple 최초의 2나노미터 공정 칩이며, M5 Ultra는 UltraFusion 기술로 처음 4다이 구조를 구현한, Apple 역대 가장 강력한 칩이라고 밝혔습니다."
+          "text": "2026년 8월 25일, Apple은 세 건의 공식 보도자료를 통해 자체 설계 칩 M6와 M5 Ultra를 동시에 공개했습니다. 각각 새로운 Mac mini와 새로운 Mac Studio에 처음 탑재되었으며, 두 신제품에는 각각 M5 Pro 버전과 M5 Max 버전도 함께 제공됩니다. Apple은 M6가 Apple 최초의 2나노미터 공정 칩이며, M5 Ultra는 UltraFusion 기술로 처음 쿼드 다이 구조를 구현한, Apple 역대 가장 강력한 칩이라고 밝혔습니다."
         },
         {
           "type": "paragraph",
-          "text": "본 기사는 2026년 9월 17일 Apple 미국 및 대만 Newsroom이 그날 공개한 세 건의 공식 보도자료(칩 관련 자료는 미국판을 참고)를 바탕으로 확인했습니다. 본 사이트는 어떤 제품도 직접 시험해 보지 않았고, 구매나 업그레이드를 권하지 않습니다. 별도로 표시하지 않는 한 본문의 성능 배수, 공정, 환경 관련 수치는 모두 Apple의 공식 테스트 결과 또는 발표 내용이며 본 사이트가 측정한 것이 아닙니다."
+          "text": "본 기사는 Apple 미국 및 대만 Newsroom이 2026년 9월 17일 시점에 제공한 세 건의 공식 보도자료(칩 관련 자료는 미국판을 참고)를 바탕으로 확인했습니다. 본 사이트는 어떤 제품도 직접 시험해 보지 않았고, 구매나 업그레이드를 권하지 않습니다. 별도로 표시하지 않는 한 본문의 성능 배수, 공정, 환경 관련 수치는 모두 Apple의 공식 테스트 결과 또는 발표 내용이며 본 사이트가 측정한 것이 아닙니다."
         },
         {
           "type": "summary",
           "items": [
             "2026년 8월 25일, Apple은 자체 설계 칩 M6와 M5 Ultra를 공개했으며, 새로운 Mac mini와 새로운 Mac Studio에 각각 처음 탑재되었습니다. 두 신제품에는 각각 M5 Pro 버전과 M5 Max 버전도 함께 제공됩니다.",
-            "M6는 Apple 최초의 2나노미터 공정 칩으로 최대 32GB의 통합 메모리와 170GB/s의 대역폭을 지원합니다. M5 Ultra는 UltraFusion 기술로 처음 4다이 구조를 구현했으며 최대 512GB의 통합 메모리와 1.2TB/s의 대역폭을 지원합니다.",
-            "대만 가격은 M6를 탑재한 Mac mini가 NT$29,900부터, M5 Ultra를 탑재한 Mac Studio가 NT$199,900부터입니다. 두 모델 모두 대만 시간 8월 27일 오전 9시부터 예약 판매를 시작해 9월 22일부터 공급되었습니다.",
+            "M6는 Apple 최초의 2나노미터 공정 칩으로 최대 32GB의 통합 메모리와 170GB/s의 대역폭을 지원합니다. M5 Ultra는 UltraFusion 기술로 처음 쿼드 다이 구조를 구현했으며 최대 512GB의 통합 메모리와 1.2TB/s의 대역폭을 지원합니다.",
+            "대만 가격은 M6를 탑재한 Mac mini가 NT$29,900부터, M5 Ultra를 탑재한 Mac Studio가 NT$199,900부터입니다. 두 모델 모두 대만 시간 8월 27일 오전 9시부터 예약 판매를 시작하고 9월 22일부터 공급됩니다.",
             "본문의 모든 성능 배수는 Apple의 공식 테스트 결과 또는 발표 내용이며, 본 사이트는 직접 시험해 보지 않았고 구매나 업그레이드를 권하지 않습니다."
           ]
         },
@@ -789,7 +829,7 @@
         },
         {
           "type": "paragraph",
-          "text": "GPU 측면에서 M6는 마찬가지로 2개 늘어난 12코어 GPU를 탑재했으며, 각 코어에 신경망 가속기(Neural Accelerator)를 내장했습니다. Apple에 따르면 AI용 GPU 최대 연산 성능은 M5 대비 약 30% 향상되었고 M1 대비 8배 이상이며, 복잡한 그래픽 처리 시 지오메트리 처리율은 50% 향상되었다고 합니다. 듀얼 16코어 Neural Engine의 최대 연산 성능은 이전 세대 대비 최대 2배이며, 통합 메모리는 최대 32GB, 대역폭은 최대 170GB/s입니다."
+          "text": "GPU 측면에서 M6는 마찬가지로 2개 늘어난 12코어 GPU를 탑재했으며, 각 코어에 Neural Accelerator를 내장했습니다. Apple에 따르면 AI용 GPU 최대 연산 성능은 M5 대비 약 30% 향상되었고 M1 대비 8배 이상이며, 복잡한 그래픽 처리 시 지오메트리 처리율은 50% 향상되었다고 합니다. 듀얼 16코어 Neural Engine의 최대 연산 성능은 이전 세대 대비 최대 2배이며, 통합 메모리는 최대 32GB, 대역폭은 최대 170GB/s입니다."
         },
         {
           "type": "paragraph",
@@ -834,11 +874,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "M5 Ultra: M5 Max 두 개를 UltraFusion으로 연결한 4다이 구조, 새로운 Mac Studio에 최초 탑재"
+          "text": "M5 Ultra: M5 Max 두 개를 UltraFusion으로 연결한 쿼드 다이 구조, 새로운 Mac Studio에 최초 탑재"
         },
         {
           "type": "paragraph",
-          "text": "Apple에 따르면 M5 Ultra는 UltraFusion 기술로 듀얼 다이 구조의 M5 Max 두 개를 연결해 Apple 칩 최초로 4다이 구조를 구현했습니다. 다이 간 대역폭은 4.4TB/s 이상으로 향상되었고 연결 밀도는 6배 이상 높아졌으며, 네 개의 다이는 하나의 프로세서처럼 작동합니다. M5 Ultra는 최대 36코어 CPU(슈퍼 코어 12개, 성능 코어 24개)와 80코어 GPU를 탑재했으며, Apple은 이 GPU가 신경망 가속기를 Ultra 칩에 처음 도입한 것이라고 밝혔습니다."
+          "text": "Apple에 따르면 M5 Ultra는 UltraFusion 기술로 듀얼 다이 구조의 M5 Max 두 개를 연결해 Apple 칩 최초로 쿼드 다이 구조를 구현했습니다. 다이 간 대역폭은 4.4TB/s 이상으로 향상되었고 연결 밀도는 6배 이상 높아졌으며, 네 개의 다이는 하나의 프로세서처럼 작동합니다. M5 Ultra는 최대 36코어 CPU(슈퍼 코어 12개, 성능 코어 24개)와 80코어 GPU를 탑재했으며, Apple은 이 GPU가 Neural Accelerator를 Ultra 칩에 처음 도입한 것이라고 밝혔습니다."
         },
         {
           "type": "paragraph",
@@ -851,10 +891,10 @@
         {
           "type": "image",
           "src": "/guides/tech-news-apple-m6-m5-ultra-20260825/diagram-1-ko.svg",
-          "alt": "네 칸 도해: 2나노미터 공정, 4다이 구조 UltraFusion, 통합 메모리 대역폭, 대만 출시 일정",
+          "alt": "네 칸 도해: 2나노미터 공정, 쿼드 다이 구조 UltraFusion, 통합 메모리 대역폭, 대만 출시 일정",
           "width": 1600,
           "height": 900,
-          "caption": "Apple이 2026년 8월 25일 발표한 M6와 M5 Ultra 보도자료를 바탕으로 정리했습니다: 2나노미터 공정, 4다이 구조, 통합 메모리 대역폭, 대만 출시 일정. 확인일은 2026년 9월 17일입니다.",
+          "caption": "Apple이 2026년 8월 25일 발표한 M6와 M5 Ultra 보도자료를 바탕으로 정리했습니다: 2나노미터 공정, 쿼드 다이 구조, 통합 메모리 대역폭, 대만 출시 일정. 확인일은 2026년 9월 17일입니다.",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -885,7 +925,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Apple 대만 보도자료에 따르면 두 신제품 모두 2026년 8월 27일 대만 시간 오전 9시부터 예약 판매를 시작해 9월 22일부터 공급되었습니다. M6를 탑재한 Mac mini는 NT$29,900부터, M5 Pro는 NT$59,900부터입니다. M5 Max를 탑재한 Mac Studio는 NT$84,900부터, M5 Ultra는 NT$199,900부터입니다."
+          "text": "Apple 대만 보도자료에 따르면 두 신제품 모두 2026년 8월 27일 대만 시간 오전 9시부터 예약 판매를 시작하고 9월 22일부터 공급됩니다. M6를 탑재한 Mac mini는 NT$29,900부터, M5 Pro는 NT$59,900부터입니다. M5 Max를 탑재한 Mac Studio는 NT$84,900부터, M5 Ultra는 NT$199,900부터입니다."
         },
         {
           "type": "paragraph",
@@ -920,7 +960,7 @@
             },
             {
               "question": "대만에서는 언제, 얼마에 구매할 수 있나요?",
-              "answer": "Apple 대만 보도자료에 따르면 두 신제품 모두 2026년 8월 27일 대만 시간 오전 9시에 예약 판매를 시작해 9월 22일부터 순차적으로 공급되었습니다. M6를 탑재한 Mac mini는 NT$29,900부터, M5 Pro를 탑재한 모델은 NT$59,900부터입니다. M5 Max를 탑재한 Mac Studio는 NT$84,900부터, M5 Ultra를 탑재한 모델은 NT$199,900부터입니다. 512GB 통합 메모리를 갖춘 Mac Studio는 10월 말이 되어야 출시되며, 교육 할인 가격도 별도로 제시되어 있습니다."
+              "answer": "Apple 대만 보도자료에 따르면 두 신제품 모두 2026년 8월 27일 대만 시간 오전 9시에 예약 판매를 시작해 9월 22일부터 순차적으로 공급됩니다. M6를 탑재한 Mac mini는 NT$29,900부터, M5 Pro를 탑재한 모델은 NT$59,900부터입니다. M5 Max를 탑재한 Mac Studio는 NT$84,900부터, M5 Ultra를 탑재한 모델은 NT$199,900부터입니다. 512GB 통합 메모리를 갖춘 Mac Studio는 10월 말이 되어야 출시되며, 교육 할인 가격도 별도로 제시되어 있습니다."
             },
             {
               "question": "이런 성능 배수는 어떻게 측정한 건가요?",
@@ -935,14 +975,26 @@
           "text": "이 글의 모든 성능, 공정, 환경 관련 수치는 Apple의 공식 테스트 결과 또는 발표 내용이며(“Apple에 따르면”, “Apple은 설명합니다”로 표시), 본 사이트는 직접 시험해 보지 않았고 구매나 업그레이드를 권하지 않습니다. 대만 가격은 참고용이며 실제 가격과 공급 현황은 Apple 공식 페이지의 해당 시점 발표 내용을 확인하시기 바랍니다. 본 기사는 Apple이 2026년 9월 17일에 제공한 페이지 버전을 참고했습니다. 세 건의 보도자료 모두 페이지 메타데이터상 2026년 8월 27일에 수정된 이력이 있으므로, 내용이 갱신되었을 수 있는 만큼 Apple Newsroom에서 직접 최신 버전을 확인하시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
-          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "iPhone 18 Pro, Watch Series 12/Ultra 4, AirPods 5: 대만 가격과 건강 감지 시스템",
-          "url": "https://mokaair.com/ko/life/tech-news-apple-september-hardware-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "iPhone 18 Pro, Watch Series 12/Ultra 4, AirPods 5: 대만 가격과 건강 감지 시스템",
+              "kind": "life",
+              "slug": "tech-news-apple-september-hardware-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1081,7 +1133,7 @@
         },
         {
           "type": "paragraph",
-          "text": "芯片稿与 Mac Studio 稿给出的 M5 Ultra AI 倍数不同，不能互换：芯片稿写的是“AI 的 GPU 峰值运算能力”最高达 M3 Ultra 的 4.5 倍、M1 Ultra 的 6 倍以上，脚注注明测试于 2026 年 8 月；Mac Studio 稿写的是“AI 峰值运算性能”最快达 M3 Ultra 的 4.3 倍、M1 Ultra 的 9.8 倍，脚注只注明测试于 2026 年 7 月。Apple 另表示 M5 Max 的 AI 性能最快达上一代的 3.9 倍，GPU 最快较上一代提升 50%，带宽最高 614GB/s。"
+          "text": "芯片稿与 Mac Studio 稿给出的 M5 Ultra AI 倍数不同，不能互换：芯片稿写的是“AI 的 GPU 峰值运算能力”最高达 M3 Ultra 的 4.5 倍、M1 Ultra 的 6 倍以上，脚注注明测试于 2026 年 8 月；Mac Studio 稿写的是“AI 峰值运算性能”最快达 M3 Ultra 的 4.3 倍、M1 Ultra 的 9.8 倍，脚注注明测试于 2026 年 7 月。Apple 另表示 M5 Max 的 AI 性能最快达上一代的 3.9 倍，GPU 最快较上一代提升 50%，带宽最高 614GB/s。"
         },
         {
           "type": "paragraph",
@@ -1115,7 +1167,7 @@
         },
         {
           "type": "paragraph",
-          "text": "开发者可通过 Core AI、Core ML 等框架直接调用两颗芯片的硬件，在设备端构建与运行 AI 任务。新一代 Apple Intelligence 功能目前通过 Apple Beta Software Program 开放测试，将于今年秋季随 macOS 27 推出，官方列出的支持语言中包含中文（繁体），部分功能可能不适用于所有地区或语言。"
+          "text": "开发者可通过 Core AI、Core ML 等框架直接调用两颗芯片的硬件，在设备端构建与运行 AI 任务。新一代 Apple Intelligence 功能目前通过 Apple Beta Software Program 开放测试，将于今年秋季随 macOS 27 推出，官方列出的支持语言中包含繁体中文，部分功能可能不适用于所有地区或语言。"
         },
         {
           "type": "heading",
@@ -1174,19 +1226,31 @@
           "text": "所有性能、制程与环保数字都是 Apple 官方测试或宣称的结果（以“Apple 表示”“Apple 说明”标示），本站没有实测，也不提供购买或升级建议；台湾售价仅供参考，实际定价与供货请以 Apple 官方页面当时公告为准。本文读的是 Apple 于 2026 年 9 月 17 日提供的页面版本，三篇新闻稿的页面元数据都显示曾于 2026 年 8 月 27 日修订过，内容如有更新，请自行前往 Apple Newsroom 查核最新版本。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台湾定价与健康感测系统",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-apple-september-hardware-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台湾定价与健康感测系统",
+              "kind": "life",
+              "slug": "tech-news-apple-september-hardware-20260909"
+            }
+          ]
         }
       ],
       "sources": [
         {
-          "title": "Apple 推出 M6 和 M5 Ultra 芯片，实现性能与 AI 计算能力的大幅跃升",
+          "title": "Apple introduces M6 and M5 Ultra for a big leap in performance and AI compute",
           "url": "https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/",
           "checked_on": "2026-09-17"
         },

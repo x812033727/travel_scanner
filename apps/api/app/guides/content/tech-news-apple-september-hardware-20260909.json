@@ -11,6 +11,10 @@
   "news_date": "2026-09-09",
   "featured": false,
   "display_order": 301,
+  "related": [
+    "tech-news-iphone-duo-20260909",
+    "tech-news-apple-m6-m5-ultra-20260825"
+  ],
   "locales": {
     "zh-TW": {
       "title": "iPhone 18 Pro、Watch Series 12／Ultra 4、AirPods 5：台灣定價與健康感測系統",
@@ -235,14 +239,26 @@
           "text": "本文只依 Apple 台灣 Newsroom 於 2026 年 9 月 9 日刊出的四篇新聞稿整理，本站沒有實測任何一項產品，也不提供購買或升級建議。發表日、預購日與供貨日是三個不同的日期，請勿混用；高血壓通知功能在台灣的上市時間，兩篇手錶新聞稿的註腳寫「預計將於明年推出」，沒有指名主管機關，也沒有寫出月份，建議讀者留意 Apple 台灣 Newsroom 後續公告確認最新狀態。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple 發表 iPhone Duo：螢幕、電池與台灣上市時程整理",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-iphone-duo-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 發表 iPhone Duo：螢幕、電池與台灣上市時程整理",
+              "kind": "life",
+              "slug": "tech-news-iphone-duo-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -312,11 +328,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Series 12, Ultra 4 and AirPods 5 are open for pre-order starting today, September 9; the iPhone 18 Pro lineup does not open for pre-order until 8 p.m. Taiwan time on September 12. All of the above go on sale September 18; iPhone 18 Pro additionally reaches another 20 countries and regions starting September 25, though the press release does not list them."
+          "text": "Series 12, Ultra 4 and AirPods 5 are open for pre-order the same day, September 9; the iPhone 18 Pro lineup does not open for pre-order until 8 p.m. Taiwan time on September 12. All of the above go on sale September 18; iPhone 18 Pro additionally reaches another 20 countries and regions starting September 25, though the press release does not list them."
         },
         {
           "type": "paragraph",
-          "text": "On regional availability, Apple's Taiwan press release describes iPhone 18 Pro's first wave as \"65 or more countries and regions,\" with Taiwan among them; Series 12 and Ultra 4 as \"more than 50 countries and regions\"; and AirPods 5 as \"more than 65 countries and regions.\" These are three separate figures for three separate products, each an illustrative Apple figure rather than a fixed list, and this article does not merge them into one range."
+          "text": "On regional availability, Apple's Taiwan press release describes iPhone 18 Pro's first wave as \"65 or more countries and regions,\" with Taiwan among them; Series 12 and Ultra 4 as \"more than 50 countries and regions\"; and AirPods 5 as \"more than 65 countries and regions.\" These are three separate figures for three separate products, and in each case Apple names only example countries rather than a full list, so this article does not merge them into one range."
         },
         {
           "type": "heading",
@@ -333,7 +349,7 @@
         },
         {
           "type": "paragraph",
-          "text": "The A20 Pro chip, Apple says, is built on a 2-nanometer process: the 6-core CPU's memory bandwidth is up 50% over A19 Pro, the 7-core GPU is up to 40% faster, and the dual 16-core Neural Engines total 32 cores, giving AI performance Apple says is double that of A19 Pro. The vapor chamber's cooling surface area is triple the previous generation, for up to a 40% gain in sustained performance. The N1 chip supports Wi-Fi 7, Bluetooth 6 and Thread; the C2 modem uploads significantly faster than C1X while using 15% less power."
+          "text": "The A20 Pro chip, Apple says, is built on a 2-nanometer process: the 6-core CPU's memory bandwidth is up 50% over A19 Pro, the 7-core GPU is up to 40% faster, and the dual 16-core Neural Engine totals 32 cores, giving AI performance Apple says is double that of A19 Pro. The vapor chamber's cooling surface area is triple the previous generation, for up to a 40% gain in sustained performance. The N1 chip supports Wi-Fi 7, Bluetooth 6 and Thread; the C2 modem uploads significantly faster than C1X while using 15% less power."
         },
         {
           "type": "paragraph",
@@ -398,7 +414,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Heart rate variability (HRV) can now be measured up to 24 times as often as before. Apple offers two metrics: Recovery HRV, for day-to-day stress and recovery signals, and overall HRV, for a fuller picture of health. Overnight Vitals now adds Recovery HRV analyzed against a personal baseline, and a new daytime Vitals view lets users switch between nighttime and daytime metrics."
+          "text": "Heart rate variability (HRV) can now be measured up to 24 times as often as before. Apple offers two metrics: Recovery HRV, for day-to-day stress and recovery signals, and Overall HRV, for a fuller picture of health. Overnight Vitals now adds Recovery HRV analyzed against a personal baseline, and a new daytime Vitals view lets users switch between nighttime and daytime metrics."
         },
         {
           "type": "paragraph",
@@ -411,7 +427,7 @@
         {
           "type": "image",
           "src": "/guides/tech-news-apple-september-hardware-20260909/diagram-1-en.svg",
-          "alt": "Four-panel diagram: optical sensor reads heart rate every five seconds, electrical sensor raises HRV frequency up to 24x, S11 chip gives a 0-10 readiness score, hypertension alerts delayed in Taiwan",
+          "alt": "Four-panel diagram: optical sensor reads heart rate every five seconds, electrical sensor raises HRV frequency up to 24x, S11 chip gives a 0-10 readiness score, no hypertension alerts in Taiwan yet",
           "width": 1600,
           "height": 900,
           "caption": "How the Health Sensing System works. Checked September 17, 2026.",
@@ -491,14 +507,26 @@
           "text": "This article is based only on the four press releases Apple's Taiwan Newsroom published on September 9, 2026. This site has not tested any of the products and offers no purchase or upgrade advice. The announcement date, pre-order date and availability date are three different dates — do not conflate them. On when the hypertension notification feature will launch in Taiwan, the footnotes of both watch press releases say it is \"expected to launch next year,\" without naming a regulator or giving a month; readers should watch Apple's Taiwan Newsroom for further updates to confirm the latest status."
         },
         {
-          "type": "link",
-          "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
-          "url": "https://mokaair.com/en/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple Unveils iPhone Duo: Displays, Battery, and Taiwan Launch Timeline",
-          "url": "https://mokaair.com/en/life/tech-news-iphone-duo-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple Unveils iPhone Duo: Displays, Battery, and Taiwan Launch Timeline",
+              "kind": "life",
+              "slug": "tech-news-iphone-duo-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -545,7 +573,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本記事は2026年9月17日に、Apple台湾Newsroomに同日掲載された4本の繁体字中国語プレスリリースを基に検証しました。当サイトはいずれの製品も実機での検証を行っておらず、購入や買い替えを勧めるものではありません。性能、バッテリー持続時間、精度に関する数値は、特に断りがない限りすべてApple公式のテスト結果または発表内容です。"
+          "text": "本記事は2026年9月17日に、Apple台湾Newsroomが発表当日に掲載した4本の繁体字中国語プレスリリースを基に確認しました。当サイトはいずれの製品も実機での検証を行っておらず、購入や買い替えを勧めるものではありません。性能、バッテリー持続時間、精度に関する数値は、特に断りがない限りすべてApple公式のテスト結果または発表内容です。"
         },
         {
           "type": "summary",
@@ -564,7 +592,7 @@
         },
         {
           "type": "paragraph",
-          "text": "iPhone 18 Proシリーズはブラック、シルバー、グレイシャーブルー、新色のバーガンディレッドの4色展開で、容量は256GB、512GB、1TB、2TBの4種類です。台湾での価格はProがNT$44,900から、Pro MaxがNT$49,900からです。Apple Watch Series 12はNT$13,900から、Ultra 4はNT$27,900から、AirPods 5はNT$4,490、ワイヤレス充電ケース付きモデルはNT$5,190です。"
+          "text": "iPhone 18 Proシリーズはブラック、シルバー、グレイシャー、新色のバーガンディの4色展開で、容量は256GB、512GB、1TB、2TBの4種類です。台湾での価格はProがNT$44,900から、Pro MaxがNT$49,900からです。Apple Watch Series 12はNT$13,900から、Ultra 4はNT$27,900から、AirPods 5はNT$4,490、ワイヤレス充電ケース付きモデルはNT$5,190です。"
         },
         {
           "type": "paragraph",
@@ -581,11 +609,11 @@
         },
         {
           "type": "paragraph",
-          "text": "iPhone 18 Proシリーズのメインカメラは4800万画素のFusion Mainカメラで、Appleはこれをアパチャー（絞り）制御機能をiPhoneに初めて搭載したものだとしています。レーザーカットされた6枚の羽根が絞りを切り替え、公式のキャプションには3つの数値が挙げられています。暗い場所ではƒ/1.48まで開き、ポートレートではƒ/1.8、集合写真ではƒ/4まで絞ることができます。"
+          "text": "iPhone 18 Proシリーズのメインカメラは4800万画素のFusionメインカメラで、Appleはこれを絞りのコントロール機能をiPhoneに初めて搭載したものだとしています。レーザーカットされた6枚の羽根が絞りを切り替え、公式のキャプションには3つの数値が挙げられています。暗い場所ではƒ/1.48まで開き、ポートレートではƒ/1.8、集合写真ではƒ/4まで絞ることができます。"
         },
         {
           "type": "paragraph",
-          "text": "プレスリリースでは「Appleリファレンス画像」モードについても触れています。メインカメラの新しいセンサーが各ピクセルにデジタル署名を付加し、このモードで撮影するとその署名付きデータが記録され、「プライベートクラウドコンピューティング」によって改ざんできないリファレンス画像として現像され、メイン画像と並べて比較できます。Appleは今後対応予定のSynthID標準にも言及しており、AIによって生成・編集された画像の識別に役立つとしています。注釈には、SynthIDは今年後半にソフトウェアアップデートで提供され、編集方法に応じて多くの編集済み画像に適用されると記載されています。"
+          "text": "プレスリリースでは「Appleリファレンス画像」モードについても触れています。メインカメラの新しいセンサーが各ピクセルにデジタル署名を付加し、このモードで撮影するとその署名付きデータが記録され、「プライベートクラウドコンピューティング」によって改ざんできないリファレンス画像として現像され、メイン画像と並べて比較できます。Appleは今後対応予定のSynthID標準にも言及しており、AIによって生成・編集された画像の識別に役立つとしています。注釈には、SynthIDは今年後半にソフトウェアアップデートで提供され、編集方法に応じてほとんどの編集済み画像に適用されると記載されています。"
         },
         {
           "type": "paragraph",
@@ -684,7 +712,7 @@
         },
         {
           "type": "paragraph",
-          "text": "医療用途に最も関わる一文は注釈に記載されています。「『バイタル』Appはウェルネスを目的としたものであり、医療目的で使用することを意図したものではありません。」この4本のプレスリリースはいずれも、「ヘルスセンシングシステム」、5秒ごとの心拍数、心拍変動、「準備度」について、いかなる規制当局の承認や認証も得ているとは記載していません。既存の他の2つの機能にはそれぞれ条件が付いています。「心電図」Appは22歳以上の使用者が対象、睡眠時無呼吸通知は18歳以上でまだ診断を受けていない人が対象です。"
+          "text": "医療用途に最も関わる一文は注釈に記載されています。「『バイタル』Appはウェルネスのみを目的としたものであり、医療目的で使用することを意図したものではありません。」この4本のプレスリリースはいずれも、「ヘルスセンシングシステム」、5秒ごとの心拍数、心拍変動、「準備度」について、いかなる規制当局の承認や認証も得ているとは記載していません。既存の他の2つの機能にはそれぞれ条件が付いています。「心電図」Appは22歳以上の使用者が対象、睡眠時無呼吸通知は18歳以上でまだ診断を受けていない人が対象です。"
         },
         {
           "type": "paragraph",
@@ -716,7 +744,7 @@
             },
             {
               "question": "Apple Watch Series 12とUltra 4の違いは？",
-              "answer": "両モデルとも新しいヘルスセンシングシステムとS11チップを搭載しており、5秒ごとの心拍数、心拍変動、「準備度」についての説明は両方のプレスリリースで共通しています。異なるのはバッテリー持続時間と位置づけです。Series 12は日常使用で最長24時間、屋外でのワークアウトでは最長10時間（Appleによれば前世代比25%向上）のバッテリー持続時間で、価格はNT$13,900からです。Ultra 4は日常使用で最長2日間、時間にして最大50時間、「低電力モード」では最大84時間のバッテリー持続時間を持ち、Appleが主張する「スポーツウォッチの中で最も正確なデバイス上のGPS」を備え、価格はNT$27,900からです。Series 12のプレスリリースにはこのGPSに関する記述はありません。"
+              "answer": "両モデルとも新しいヘルスセンシングシステムとS11チップを搭載しており、5秒ごとの心拍数、心拍変動、「準備度」についての説明は両方のプレスリリースで共通しています。異なるのはバッテリー持続時間と測位（GPS）です。Series 12は日常使用で最長24時間、屋外でのワークアウトでは最長10時間（Appleによれば前世代比25%向上）のバッテリー持続時間で、価格はNT$13,900からです。Ultra 4は日常使用で最長2日間、時間にして最大50時間、「低電力モード」では最大84時間のバッテリー持続時間を持ち、Appleが主張する「スポーツウォッチの中で最も正確なデバイス上のGPS」を備え、価格はNT$27,900からです。Series 12のプレスリリースにはこのGPSに関する記述はありません。"
             },
             {
               "question": "Apple Watchの高血圧通知機能は、今すぐ台湾で使えますか？",
@@ -747,14 +775,26 @@
           "text": "本記事はApple台湾Newsroomが2026年9月9日に掲載した4本のプレスリリースのみに基づいて構成しています。当サイトはいずれの製品も実機での検証を行っておらず、購入や買い替えを勧めるものでもありません。発表日、予約受付開始日、発売日はそれぞれ異なる日付ですので混同しないようご注意ください。高血圧通知機能の台湾での提供時期については、2つのApple Watchのプレスリリースの注釈に「来年の提供開始を見込んでいる」と記載されているのみで、規制当局の名称や具体的な月は記載されていません。最新の状況はApple台湾Newsroomの今後の発表をご確認ください。"
         },
         {
-          "type": "link",
-          "text": "2026年科学技術ニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
-          "url": "https://mokaair.com/ja/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple、iPhone Duoを発表 ディスプレイ・バッテリー・台湾発売スケジュールまとめ",
-          "url": "https://mokaair.com/ja/life/tech-news-iphone-duo-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple、iPhone Duoを発表 ディスプレイ・バッテリー・台湾発売スケジュールまとめ",
+              "kind": "life",
+              "slug": "tech-news-iphone-duo-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -785,7 +825,7 @@
       "description": "2026년 9월 9일, Apple은 대만 Newsroom을 통해 iPhone 18 Pro 시리즈, Apple Watch Series 12, Apple Watch Ultra 4, AirPods 5를 공개했습니다. 본 기사는 공식 보도자료를 바탕으로 대만 가격, 예약 판매 및 공급 시기, 새 Apple Watch가 공유하는 '건강 감지 시스템', 그리고 고혈압 알림 기능이 대만에서 처음부터 제공되지는 않는다는 공식 설명을 정리했습니다. 구매를 권하는 내용은 없으며, 본 사이트는 제품을 직접 시험해 보지 않았습니다.",
       "hero": {
         "src": "/guides/tech-news-apple-september-hardware-20260909/hero-ko.jpg",
-        "alt": "독자 제작 일러스트: 왼쪽부터 오른쪽으로 세 기기의 기하학적 윤곽을 나란히 배치했습니다. 휴대폰, 화면에 심박 파형이 그려진 시계, 이어폰으로 같은 날 발표된 세 제품군을 나타내며 실제 제품 외관이나 상표는 표현하지 않았습니다",
+        "alt": "오리지널 일러스트: 왼쪽부터 오른쪽으로 세 기기의 기하학적 윤곽을 나란히 배치했습니다. 휴대폰, 화면에 심박 파형이 그려진 시계, 이어폰으로 같은 날 발표된 세 제품군을 나타내며 실제 제품 외관이나 상표는 표현하지 않았습니다",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -801,12 +841,12 @@
         },
         {
           "type": "paragraph",
-          "text": "본 기사는 2026년 9월 17일, Apple 대만 Newsroom에 같은 날 게재된 네 건의 번체 중국어 보도자료를 근거로 검증했습니다. 본 사이트는 어떤 제품도 직접 시험해 보지 않았으며, 구매나 업그레이드를 권하지 않습니다. 성능, 배터리 사용 시간, 정확도에 관한 수치는 별도로 표시하지 않는 한 모두 Apple의 공식 테스트 결과 또는 주장입니다."
+          "text": "본 기사는 Apple 대만 Newsroom에 9월 9일 같은 날 게재된 네 건의 번체 중국어 보도자료를 2026년 9월 17일에 확인했습니다. 본 사이트는 어떤 제품도 직접 시험해 보지 않았으며, 구매나 업그레이드를 권하지 않습니다. 성능, 배터리 사용 시간, 정확도에 관한 수치는 별도로 표시하지 않는 한 모두 Apple의 공식 테스트 결과 또는 주장입니다."
         },
         {
           "type": "summary",
           "items": [
-            "Apple은 2026년 9월 9일 iPhone 18 Pro, iPhone 18 Pro Max, Apple Watch Series 12, Apple Watch Ultra 4, AirPods 5를 공개했으며, 대만 판매가는 각각 NT$44,900부터, NT$49,900부터, NT$13,900부터, NT$27,900부터이고, AirPods 5는 NT$4,490（무선 충전 케이스 포함 시 NT$5,190）입니다.",
+            "Apple은 2026년 9월 9일 iPhone 18 Pro, iPhone 18 Pro Max, Apple Watch Series 12, Apple Watch Ultra 4, AirPods 5를 공개했으며, 대만 판매가는 각각 NT$44,900부터, NT$49,900부터, NT$13,900부터, NT$27,900부터이고, AirPods 5는 NT$4,490(무선 충전 케이스 포함 시 NT$5,190)입니다.",
             "iPhone 18 Pro, iPhone 18 Pro Max, Apple Watch Series 12, Apple Watch Ultra 4, AirPods 5는 모두 9월 18일부터 공급됩니다. Apple Watch와 AirPods 5는 당일부터 예약 판매를 시작하지만, iPhone 18 Pro 시리즈는 대만 시간 9월 12일 오후 8시가 되어야 예약 판매를 시작합니다.",
             "Apple Watch Series 12와 Ultra 4는 완전히 새로운 건강 감지 시스템과 S11 칩을 함께 사용하며, 하루 종일 5초마다 한 번씩 심박수를 측정하고 0~10점의 '준비 상태' 점수를 제공합니다.",
             "대만판 보도자료에는 Apple Watch의 고혈압 알림 기능이 다른 규제 승인 절차가 아직 진행 중이라는 이유로 대만에서 처음부터 제공되지는 않는다고 별도로 명시되어 있으며, Apple은 내년 출시를 예상한다고 밝혔습니다.",
@@ -824,7 +864,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Series 12, Ultra 4, AirPods 5는 당일（9월 9일）부터 예약 판매를 시작합니다. iPhone 18 Pro 시리즈는 대만 시간 9월 12일 오후 8시가 되어야 예약 판매를 시작합니다. 위 모델들은 모두 9월 18일부터 공급되며, iPhone 18 Pro는 9월 25일부터 다른 20개국 및 지역에도 추가로 공급되지만, 보도자료에는 해당 국가·지역 명단이 나와 있지 않습니다."
+          "text": "Series 12, Ultra 4, AirPods 5는 당일(9월 9일)부터 예약 판매를 시작합니다. iPhone 18 Pro 시리즈는 대만 시간 9월 12일 오후 8시가 되어야 예약 판매를 시작합니다. 위 모델들은 모두 9월 18일부터 공급되며, iPhone 18 Pro는 9월 25일부터 다른 20개국 및 지역에도 추가로 공급되지만, 보도자료에는 해당 국가·지역 명단이 나와 있지 않습니다."
         },
         {
           "type": "paragraph",
@@ -837,19 +877,19 @@
         },
         {
           "type": "paragraph",
-          "text": "iPhone 18 Pro 시리즈의 메인 카메라는 4800만 화소 퓨전 메인 카메라이며, Apple은 iPhone에 조리개 제어 기능을 도입한 것은 이번이 처음이라고 밝혔습니다. 레이저로 절단한 6장의 날개가 서로 다른 조리개 값 사이를 전환하며, 공식 설명에는 세 가지 수치가 제시되어 있습니다. 저조도에서는 ƒ/1.48까지 개방하고, 인물 사진에서는 ƒ/1.8, 단체 사진에서는 ƒ/4까지 조입니다."
+          "text": "iPhone 18 Pro 시리즈의 메인 카메라는 4800만 화소 Fusion 메인 카메라이며, Apple은 iPhone에 조리개 제어 기능을 도입한 것은 이번이 처음이라고 밝혔습니다. 레이저로 절단한 6장의 날개가 서로 다른 조리개 값 사이를 전환하며, 공식 설명에는 세 가지 수치가 제시되어 있습니다. 저조도에서는 ƒ/1.48까지 개방하고, 인물 사진에서는 ƒ/1.8, 단체 사진에서는 ƒ/4까지 조입니다."
         },
         {
           "type": "paragraph",
-          "text": "보도자료는 'Apple 레퍼런스 이미지' 모드에 대해서도 설명합니다. 메인 카메라의 새로운 센서는 픽셀마다 디지털 서명을 추가하며, 이 모드로 촬영하면 서명이 포함된 데이터가 기록되고 '비공개 클라우드 컴퓨팅'이 이를 변경할 수 없는 레퍼런스 이미지로 만들어, 메인 이미지와 나란히 놓고 비교할 수 있습니다. Apple은 또한 AI로 생성되거나 편집된 이미지를 식별하는 데 도움이 되는 SynthID 표준을 곧 지원할 예정이라고 언급했으며, 각주에는 SynthID가 올해 하반기 소프트웨어 업데이트로 제공되며 편집 방식에 따라 대다수의 편집된 이미지에 적용된다고 적혀 있습니다."
+          "text": "보도자료는 'Apple 레퍼런스 이미지' 모드에 대해서도 설명합니다. 메인 카메라의 새로운 센서는 픽셀마다 디지털 서명을 추가하며, 이 모드로 촬영하면 서명이 포함된 데이터가 기록되고 '비공개 클라우드 컴퓨팅'이 이를 변경할 수 없는 레퍼런스 이미지로 만들어, 메인 이미지와 나란히 놓고 비교할 수 있습니다. Apple은 또한 AI로 생성되거나 편집된 이미지를 식별하는 데 도움이 되는 SynthID 표준을 곧 지원할 예정이라고 언급했으며, 각주에는 SynthID가 연내에 소프트웨어 업데이트로 제공되며 편집 방식에 따라 대다수의 편집된 이미지에 적용된다고 적혀 있습니다."
         },
         {
           "type": "paragraph",
-          "text": "A20 Pro 칩은 2나노미터 공정으로 제작되었다고 Apple은 설명합니다. 6코어 CPU의 메모리 대역폭은 A19 Pro보다 50% 향상되었고, 7코어 GPU는 최대 40% 빨라졌으며, 듀얼 16코어 신경망 엔진은 합쳐서 32코어로 AI 연산 능력이 A19 Pro의 두 배에 달한다고 밝혔습니다. 베이퍼 챔버의 방열 면적은 이전 세대의 세 배이며, 지속 성능은 최대 40% 향상되었습니다. N1 칩은 Wi-Fi 7, 블루투스 6, Thread를 지원하며, C2는 C1X보다 업로드 속도가 눈에 띄게 빨라지고 소비 전력은 15% 줄었습니다."
+          "text": "A20 Pro 칩은 2나노미터 공정으로 제작되었다고 Apple은 설명합니다. 6코어 CPU의 메모리 대역폭은 A19 Pro보다 50% 향상되었고, 7코어 GPU는 최대 40% 빨라졌으며, 듀얼 16코어 Neural Engine은 합쳐서 32코어로 AI 연산 능력이 A19 Pro의 두 배에 달한다고 밝혔습니다. 베이퍼 챔버의 방열 면적은 이전 세대의 세 배이며, 지속 성능은 최대 40% 향상되었습니다. N1 칩은 Wi-Fi 7, 블루투스 6, Thread를 지원하며, C2는 C1X보다 업로드 속도가 눈에 띄게 빨라지고 소비 전력은 15% 줄었습니다."
         },
         {
           "type": "paragraph",
-          "text": "배터리와 관련해 대만판 보도자료는 iPhone 18 Pro의 동영상 재생 시간이 최대 34시간, Pro Max는 최대 43시간이라고 밝혔습니다. iPhone 18 Pro는 최소 약 15분 만에 50%까지 충전할 수 있으며, 무선 충전으로는 30분이 걸립니다. Pro Max는 유선 충전 5분으로 약 7시간의 동영상 재생이 가능합니다. 이 수치들은 Apple이 2026년 7월과 8월에 양산 전 모델과 소프트웨어로 측정한 것이며, 실제 결과는 다를 수 있다고 명시했습니다."
+          "text": "배터리와 관련해 대만판 보도자료는 iPhone 18 Pro의 동영상 재생 시간이 최대 34시간, Pro Max는 최대 43시간이라고 밝혔습니다. iPhone 18 Pro는 빠르면 약 15분 만에 50%까지 충전할 수 있으며, 무선 충전으로는 30분이면 됩니다. Pro Max는 유선 충전 5분으로 약 7시간의 동영상 재생이 가능합니다. 이 수치들은 Apple이 2026년 7월과 8월에 양산 전 모델과 소프트웨어로 측정한 것이며, 실제 결과는 다를 수 있다고 명시했습니다."
         },
         {
           "type": "table",
@@ -891,7 +931,7 @@
               "9/18"
             ],
             [
-              "AirPods 5（충전 케이스 포함）",
+              "AirPods 5(충전 케이스 포함)",
               "NT$5,190",
               "9/9",
               "9/18"
@@ -910,7 +950,7 @@
         },
         {
           "type": "paragraph",
-          "text": "심박 변이도(HRV) 측정 빈도는 이전보다 최대 24배까지 높아졌습니다. Apple은 두 가지 지표를 제공하는데, 일상적인 스트레스와 회복 신호에는 '회복 심박 변이'를, 보다 종합적인 건강 상태 파악에는 '총 심박 변이'를 사용합니다. 야간 활력 징후에는 개인 기준값을 기준으로 분석하는 회복 심박 변이가 추가되었고, 주간 활력 징후 보기도 새로 추가되어 야간과 주간 지표를 전환하며 확인할 수 있습니다."
+          "text": "심박 변이도(HRV) 측정 빈도는 이전보다 최대 24배까지 높아졌습니다. Apple은 두 가지 지표를 제공하는데, 일상적인 스트레스와 회복 신호에는 '회복 심박 변이'를, 보다 종합적인 건강 상태 파악에는 '총 심박 변이'를 사용합니다. 야간 활력 징후에는 개인 기준값을 기준으로 분석하는 회복 심박 변이가 추가되었고, 일간 활력 징후 보기도 새로 추가되어 야간과 일간 지표를 전환하며 확인할 수 있습니다."
         },
         {
           "type": "paragraph",
@@ -918,7 +958,7 @@
         },
         {
           "type": "paragraph",
-          "text": "S11 칩은 '소리 인식'과 Shazam도 지원합니다. 소리 인식은 사이렌, 경보음, 초인종, 아기 울음소리 등 중요한 소리를 청각 장애인이나 난청이 있는 사용자에게 알려주는 기능으로, iPhone이 곁에 없어도 작동합니다. Shazam은 '스마트 스택'에 곡명과 아티스트를 표시합니다. Apple에 따르면 S11에는 나머지 부분과 분리된 'Secure Exclave'가 내장되어 있어 오디오를 처리한 뒤 즉시 삭제하며, 운영체제, 앱, 사용자, Apple 그 누구도 원본 오디오에 접근할 수 없습니다. 두 Apple Watch 보도자료 모두 S11이 올해 하반기 제공될 예정인 새로운 기능도 지원할 것이라고 예고했는데, 이 역시 청각 장애인이나 난청이 있는 사용자가 중요한 소리를 알아차리도록 돕는 기능입니다."
+          "text": "S11 칩은 '소리 인식'과 Shazam도 지원합니다. 소리 인식은 사이렌, 경보음, 초인종, 아기 울음소리 등 중요한 소리를 청각 장애인이나 난청이 있는 사용자에게 알려주는 기능으로, iPhone이 곁에 없어도 작동합니다. Shazam은 '스마트 스택'에 곡명과 아티스트를 표시합니다. Apple에 따르면 S11에는 나머지 부분과 분리된 'Secure Exclave'가 내장되어 있어 오디오를 처리한 뒤 즉시 삭제하며, 운영체제, 앱, 사용자, Apple 그 누구도 원본 오디오에 접근할 수 없습니다. 두 Apple Watch 보도자료 모두 S11이 연내에 제공될 예정인 새로운 기능도 지원할 것이라고 예고했는데, 이 역시 청각 장애인이나 난청이 있는 사용자가 중요한 소리를 알아차리도록 돕는 기능입니다."
         },
         {
           "type": "image",
@@ -972,7 +1012,7 @@
             },
             {
               "question": "Apple Watch Series 12와 Ultra 4는 어떤 차이가 있나요?",
-              "answer": "두 모델 모두 완전히 새로운 건강 감지 시스템과 S11 칩을 탑재했으며, 5초마다의 심박수, 심박 변이, '준비 상태'에 대한 설명은 두 보도자료에서 동일합니다. 다른 점은 배터리 사용 시간과 제품 포지셔닝입니다. Series 12는 일상적인 배터리 사용 시간이 최대 24시간, 실외 운동 시에는 최대 10시간（Apple에 따르면 이전 세대보다 25% 향상）이며 가격은 NT$13,900부터입니다. Ultra 4는 일상적인 배터리 사용 시간이 최대 2일, 시간으로는 최대 50시간이며, '저전력 모드'에서는 최대 84시간이고, Apple이 주장하는 '스포츠 워치 중 가장 정확한 온디바이스 GPS'를 갖추었으며 가격은 NT$27,900부터입니다. Series 12 보도자료에는 이 GPS에 관한 설명이 없습니다."
+              "answer": "두 모델 모두 완전히 새로운 건강 감지 시스템과 S11 칩을 탑재했으며, 5초마다의 심박수, 심박 변이, '준비 상태'에 대한 설명은 두 보도자료에서 동일합니다. 다른 점은 배터리 사용 시간과 위치 측정(GPS)입니다. Series 12는 일상적인 배터리 사용 시간이 최대 24시간, 실외 운동 시에는 최대 10시간(Apple에 따르면 이전 세대보다 25% 향상)이며 가격은 NT$13,900부터입니다. Ultra 4는 일상적인 배터리 사용 시간이 최대 2일, 시간으로는 최대 50시간이며, '저전력 모드'에서는 최대 84시간이고, Apple이 주장하는 '스포츠 워치 중 가장 정확한 온디바이스 GPS'를 갖추었으며 가격은 NT$27,900부터입니다. Series 12 보도자료에는 이 GPS에 관한 설명이 없습니다."
             },
             {
               "question": "Apple Watch의 고혈압 알림 기능을 지금 대만에서 사용할 수 있나요?",
@@ -1003,14 +1043,26 @@
           "text": "본 기사는 Apple 대만 Newsroom이 2026년 9월 9일 게재한 네 건의 보도자료만을 근거로 작성했습니다. 본 사이트는 어떤 제품도 직접 시험해 보지 않았으며, 구매나 업그레이드를 권하지 않습니다. 발표일, 예약 판매일, 공급일은 서로 다른 세 날짜이므로 혼동하지 않도록 주의하시기 바랍니다. 고혈압 알림 기능의 대만 출시 시기에 대해서는 두 Apple Watch 보도자료의 각주에 '내년 출시를 예상한다'고만 적혀 있을 뿐, 규제 기관 이름이나 구체적인 월은 나와 있지 않으므로, 최신 상황은 Apple 대만 Newsroom의 추후 공지를 확인하시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 과학기술 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
-          "url": "https://mokaair.com/ko/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple, iPhone Duo 공개: 디스플레이·배터리·대만 출시 일정 정리",
-          "url": "https://mokaair.com/ko/life/tech-news-iphone-duo-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple, iPhone Duo 공개: 디스플레이·배터리·대만 출시 일정 정리",
+              "kind": "life",
+              "slug": "tech-news-iphone-duo-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1076,7 +1128,7 @@
         },
         {
           "type": "paragraph",
-          "text": "iPhone 18 Pro 系列提供黑色、银色、冰川蓝色与全新勃艮第红色，256GB、512GB、1TB、2TB 四种容量；台湾售价 Pro NT$44,900 起、Pro Max NT$49,900 起。Apple Watch Series 12 NT$13,900 起、Ultra 4 NT$27,900 起；AirPods 5 NT$4,490，搭配无线充电盒版本 NT$5,190。"
+          "text": "iPhone 18 Pro 系列提供黑色、银色、冰川蓝色与全新勃艮第酒红色，256GB、512GB、1TB、2TB 四种容量；台湾售价 Pro NT$44,900 起、Pro Max NT$49,900 起。Apple Watch Series 12 NT$13,900 起、Ultra 4 NT$27,900 起；AirPods 5 NT$4,490，搭配无线充电盒版本 NT$5,190。"
         },
         {
           "type": "paragraph",
@@ -1097,7 +1149,7 @@
         },
         {
           "type": "paragraph",
-          "text": "新闻稿也提到“Apple 参考影像”模式：主摄像头新感光元件为每个像素加上数字签名，以这个模式拍照时会记录带签名的数据，再由“私密云端运算”显影成无法更改的参考影像，可与主影像并列比对。官方另提到即将支持的 SynthID 标准，能协助识别 AI 生成或编辑的影像，注脚写明 SynthID 将于今年稍晚通过软件更新推出，并视编辑方式套用于大多数经过编辑的影像。"
+          "text": "新闻稿也提到“Apple 参考影像”模式：主摄像头新感光元件为每个像素加上数字签名，以这个模式拍照时会记录带签名的数据，再由“专用云计算”显影成无法更改的参考影像，可与主影像并列比对。官方另提到即将支持的 SynthID 标准，能协助识别 AI 生成或编辑的影像，注脚写明 SynthID 将于今年稍晚通过软件更新推出，并视编辑方式套用于大多数经过编辑的影像。"
         },
         {
           "type": "paragraph",
@@ -1174,7 +1226,7 @@
         },
         {
           "type": "paragraph",
-          "text": "S11 芯片也支持“声音识别”与 Shazam：前者提醒失聪或重听用户注意警笛、警报声、门铃或婴儿哭声等，iPhone 不在身边也能运作；后者在“智能堆叠”显示歌曲与演出者。Apple 表示 S11 内置隔离的“安全隔离区”处理音频，处理完立即删除，操作系统、App、用户或 Apple 都无法访问原始音频。两篇手表稿另预告 S11 将支持今年稍晚推出的新功能，同样协助失聪或重听用户留意重要声音。"
+          "text": "S11 芯片也支持“声音识别”与 Shazam：前者提醒失聪或重听用户注意警笛、警报声、门铃或婴儿哭声等，iPhone 不在身边也能运作；后者在“智能叠放”显示歌曲与演出者。Apple 表示 S11 内置隔离的“安全隔区”处理音频，处理完立即删除，操作系统、App、用户或 Apple 都无法访问原始音频。两篇手表稿另预告 S11 将支持今年稍晚推出的新功能，同样协助失聪或重听用户留意重要声音。"
         },
         {
           "type": "image",
@@ -1209,7 +1261,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Ultra 4 提供原色与黑色钛金属两种表壳，日常续航长达 2 天、可达 50 小时，“低功耗模式”下可达 84 小时，充电 15 分钟可获得最长 18 小时额外续航。“长时间体能训练”开启完整 GPS 与心率侦测最长 25 小时，较先前机型提升 25%；“长时间体能训练上限”可追踪户外跑步、步行、徒步长达 45 小时，Apple 形容“一般足以完成 100 英里的比赛”。"
+          "text": "Ultra 4 提供原色与黑色钛金属两种表壳，日常续航长达 2 天、可达 50 小时，“低电量模式”下可达 84 小时，充电 15 分钟可获得最长 18 小时额外续航。“长时间体能训练”开启完整 GPS 与心率侦测最长 25 小时，较先前机型提升 25%；“长时间体能训练上限”可追踪户外跑步、步行、徒步长达 45 小时，Apple 形容“一般足以完成 100 英里的比赛”。"
         },
         {
           "type": "paragraph",
@@ -1217,7 +1269,7 @@
         },
         {
           "type": "paragraph",
-          "text": "AirPods 5 主打开放式耳机的降噪：Apple 宣称这是业界最佳的开放式耳机“主动式降噪”，所消除的噪音量比 AirPods 4 主动式降噪款最高可达 50%，依 IEC 60268-24 标准测量。搭配无线充电盒的版本另加入可滑动调整音量的力度传感器、续航更长。“实时翻译”由 Apple Intelligence 驱动，Apple 表示已支持全系列 AirPods，但未适用于所有语言或地区。"
+          "text": "AirPods 5 主打开放式耳机的降噪：Apple 宣称这是业界最佳的开放式耳机“主动降噪”，所消除的噪音量比 AirPods 4 主动降噪款最高可达 50%，依 IEC 60268-24 标准测量。搭配无线充电盒的版本另加入可滑动调整音量的力度感应器、续航更长。“实时翻译”由 Apple Intelligence 驱动，Apple 表示已支持全系列 AirPods，但未适用于所有语言或地区。"
         },
         {
           "type": "faq",
@@ -1228,7 +1280,7 @@
             },
             {
               "question": "Apple Watch Series 12 与 Ultra 4 差在哪里？",
-              "answer": "两款手表都搭载全新“健康感测系统”与 S11 芯片，两篇新闻稿对每五秒心率、心率变异与“准备指数”的描述一致。写得不一样的是续航与定位：Series 12 日常续航长达 24 小时、户外体能训练可长达 10 小时（Apple 表示较上一代增加 25%），售价 NT$13,900 起；Ultra 4 日常续航长达 2 天、可达 50 小时，“低功耗模式”下可达 84 小时，并带有 Apple 宣称的“运动手表中最精准的设备端 GPS”，售价 NT$27,900 起。Series 12 的新闻稿没有这项 GPS 描述。"
+              "answer": "两款手表都搭载全新“健康感测系统”与 S11 芯片，两篇新闻稿对每五秒心率、心率变异与“准备指数”的描述一致。写得不一样的是续航与定位：Series 12 日常续航长达 24 小时、户外体能训练可长达 10 小时（Apple 表示较上一代增加 25%），售价 NT$13,900 起；Ultra 4 日常续航长达 2 天、可达 50 小时，“低电量模式”下可达 84 小时，并带有 Apple 宣称的“运动手表中最精准的设备端 GPS”，售价 NT$27,900 起。Series 12 的新闻稿没有这项 GPS 描述。"
             },
             {
               "question": "Apple Watch 的高血压通知功能，台湾现在可以用吗？",
@@ -1244,7 +1296,7 @@
             },
             {
               "question": "AirPods 5 两个版本差在哪里？",
-              "answer": "标准版售价 NT$4,490；搭配无线充电盒的版本售价 NT$5,190，多了可在耳机柄滑动调整音量的力度传感器，Apple 表示电池续航时间也更持久：启用“主动式降噪”时单次充电播放时间最长可达 5 小时、比 AirPods 4 主动式降噪款多一小时，搭配充电盒并启用降噪聆听的总时间最长可达 22 小时。要注意这个“多一小时”比较的是 AirPods 4 主动式降噪款，不是标准版的 AirPods 5；新闻稿没有列出标准版的电池数字。"
+              "answer": "标准版售价 NT$4,490；搭配无线充电盒的版本售价 NT$5,190，多了可在耳机柄滑动调整音量的力度感应器，Apple 表示电池续航时间也更持久：启用“主动降噪”时单次充电播放时间最长可达 5 小时、比 AirPods 4 主动降噪款多一小时，搭配充电盒并启用降噪聆听的总时间最长可达 22 小时。要注意这个“多一小时”比较的是 AirPods 4 主动降噪款，不是标准版的 AirPods 5；新闻稿没有列出标准版的电池数字。"
             },
             {
               "question": "要怎么自己查证这些规格与定价？",
@@ -1259,14 +1311,26 @@
           "text": "本文只依 Apple 台湾 Newsroom 于 2026 年 9 月 9 日刊出的四篇新闻稿整理，本站没有实测任何一项产品，也不提供购买或升级建议。发布日、预购日与供货日是三个不同的日期，请勿混用；高血压通知功能在台湾的上市时间，两篇手表新闻稿的注脚写“预计将于明年推出”，没有指明监管机构，也没有写出月份，建议读者留意 Apple 台湾 Newsroom 后续公告以确认最新状态。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple 发布 iPhone Duo：屏幕、电池与台湾上市时间整理",
-          "url": "https://mokaair.com/zh-CN/life/tech-news-iphone-duo-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 发布 iPhone Duo：屏幕、电池与台湾上市时间整理",
+              "kind": "life",
+              "slug": "tech-news-iphone-duo-20260909"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1286,7 +1350,7 @@
           "checked_on": "2026-09-17"
         },
         {
-          "title": "Apple 推出 AirPods 5，带来实力顶尖的开放式耳机“主动式降噪”设计",
+          "title": "Apple 推出 AirPods 5，带来实力顶尖的开放式耳机“主动降噪”设计",
           "url": "https://www.apple.com/tw/newsroom/2026/09/apple-introduces-airpods-5-featuring-best-in-class-open-ear-active-noise-cancellation/",
           "checked_on": "2026-09-17"
         }
