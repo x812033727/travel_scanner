@@ -37,6 +37,9 @@ The exact commands or clicks that prove it works.
 
 Findings, decisions and dead ends, so the next agent does not repeat them.
 
+- 2026-09-18：站主決定**先不做**這 15 則 8/1–9/15 的次要新聞，改做「9/16 起真正最新的消息」（批次 4.5，另一張票 `2026-09-18-news-batch-4-5-since-0916`）。
+  本票的候選清單、幣圈 0 則的查證結果與 scope 都沒動；要做時號段接在 4.5 之後。
+
 ## Why
 
 站主最初的要求是「1/1 到現在的**重要新聞**、8/1 到現在的**次要新聞**」，而且

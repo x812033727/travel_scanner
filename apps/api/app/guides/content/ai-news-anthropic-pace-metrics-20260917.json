@@ -1,0 +1,1191 @@
+{
+  "slug": "ai-news-anthropic-pace-metrics-20260917",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-17",
+  "featured": false,
+  "display_order": 164,
+  "locales": {
+    "zh-TW": {
+      "title": "Anthropic 公布三項前沿 AI 指標：26% 是「主導」不是「自主」",
+      "description": "2026 年 9 月 17 日，Anthropic 公布三項嘗試讓外界追蹤前沿 AI 實驗室內部進展的指標：研發自動化程度、代理人監督與安全算力占比。本文依 Anthropic 官方頁面於 2026 年 9 月 18 日查核，說明 26% 的「主導」為何不等於全自動、0.002% 的攔截率為何搭配著另一句警語，以及這幾個數字目前仍是官方自行量測、涵蓋範圍有限，外部評估者還在建立中。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-pace-metrics-20260917/hero.jpg",
+        "alt": "原創插圖：三個並排的量表圖形，指針各自停在不同刻度上，量表上方懸著一個幾何問號輪廓，代表這些刻度目前仍等待外部檢視",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 17 日，Anthropic 在官方網站公布三項指標，嘗試讓外界看見前沿 AI 實驗室內部的研發進度：有多少 AI 研發工作由 AI 自己完成、AI 代理人的行動怎麼被看管，以及運算資源怎麼分配。官方把這件事和執行長 Dario Amodei 稍早呼籲放慢前沿 AI 腳步的文章連在一起，寫道若各家實驗室真的協調放慢速度，這些數字預期會跟著改變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，讀的是 Anthropic 官方網站三個頁面：公布這三項指標的專文、新聞總覽頁，以及說明政策脈絡的政策頁面。本站沒有做任何實測；這三項指標目前都是 Anthropic 自行量測、自行公布的數字，本文逐一說明官方自己標出的限制與尚未查證的部分。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 於 2026 年 9 月 17 日公布三項指標，嘗試讓外界追蹤前沿 AI 實驗室內部的研發進度。",
+            "以 2026 年 8 月為準，Claude「主導」占 26%，「協作」以上的比重合計超過 90%，但官方定義的「主導」是人類監督下、AI 能從高層次指令出發完成大部分工作，官方在註腳寫完全自主是一個尚未達到的等級。",
+            "以 2026 年 7 月 13 日至 20 日一週為準，官方估計投入 AI 研發的算力約有 6% 分給安全工作，投入「AI 主導的 AI 研發」的算力約有 12% 分給安全工作，官方稱這是刻意保守的估計。",
+            "官方說明這些數字目前由 Anthropic 自行量測，獨立第三方評估者常駐是官方寫的計畫、目前正在建立，本文查核當下沒有看到外部單位查核過這三項指標本身。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropic 公布了什麼，又是為了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 官方新聞總覽頁為這篇專文寫的摘要是：現在外界看不到 AI 實驗室內部在發生什麼事，Anthropic 提出新指標要讓大眾看見前沿 AI 的發展。專文本身則把這件事和 Amodei 的呼籲連在一起，但只超連結到他那篇文章、沒有複述他主張的內容；官方寫的是這些提議的量測與政策合起來，是外界從實驗室外監測 AI 發展步調的一個起點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇專文本身沒有印出發布日期——查核到 2026 年 9 月 18 日，頁面上找不到署名日期、「發布於」字樣或對應的中繼資料欄位。9 月 17 日是 Anthropic 官方新聞總覽頁在精選區塊為這篇文章標註的日期，本文依此認定為事件日；原文沒有印出任何時刻，本文因此不寫發布的確切時間。官方把這份指標稱為雛形，寫道希望藉此示範透明度、會繼續這麼做，但沒有承諾固定的公布週期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三項指標：研發自動化、代理人監督與安全算力"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一項是「Anthropic 研發自動化指數」，用 Epoch AI 的自動化等級量表（AL）評分，從 AL0 到 AL5（完全自主、無人類介入）。AL3「協作」是 AI 能在人類近距離指導下完成大量工作；AL4「主導」是 AI 能從高層次指令出發完成大部分工作，人類仍在旁監督。以 2026 年 8 月為準，官方寫道 Claude 在任何一類有量測的 AI 研發工作中都還沒有完全自主運作；「主導」占 26%，「協作」以上比重合計超過 90%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二項是代理人監督，官方選了三個角度：涵蓋率、審查時延與升級比率，分別對應多少行動經過監控、行動與審查隔了多久、多少行動被攔截或標記審查。以 2026 年 8 月為準，內部最常用的一個平台上同時約有 3 萬個代理人在做研究與工程工作，這幾項數字只涵蓋這一個平台。這些行動有 100% 先經過線上監控、通常幾秒內完成，事後也有 100% 進入離線監控；離線監控每週標記約 10 萬則對話紀錄，多數由分類器處理掉，優先度最高的約 50 則送交人工審查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方寫道，分析 2026 年 8 月超過 10 億筆決策後，0.002%（約 47,000 筆裡有 1 筆）被線上監控攔截。官方在原文這一節的開頭先提醒：就目前的監控資料看，單一代理人很少亂來，但當經濟體裡有數百萬、數十億個代理人運作時，罕見事件也可能經常發生。第三項是算力快照：官方檢視 2026 年 7 月 13 日到 20 日這一週的全部運算資源用途，AI 研發算力裡約有 6% 分給安全工作，「AI 主導的 AI 研發」算力裡約有 12% 分給安全工作，兩個數字分母不同，本文不相加也不比較。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "指標",
+            "期間",
+            "官方數字",
+            "官方標示的限制"
+          ],
+          "rows": [
+            [
+              "研發自動化指數",
+              "2026 年 8 月",
+              "「主導」占 26%，「協作」以上占逾 90%",
+              "由 Claude 評分 Claude，非外部稽核"
+            ],
+            [
+              "代理人監督：涵蓋率",
+              "2026 年 8 月",
+              "100% 行動事前經線上監控、事後進離線監控",
+              "僅涵蓋內部最常用的一個平台"
+            ],
+            [
+              "代理人監督：攔截率",
+              "2026 年 8 月",
+              "逾 10 億筆決策中攔截 0.002%（約 47,000 分之 1）",
+              "官方稱經濟體規模夠大時罕見事件也可能經常發生"
+            ],
+            [
+              "安全算力占比",
+              "2026 年 7 月 13 日至 20 日",
+              "AI 研發算力約 6%、AI 主導研發算力約 12% 分給安全工作",
+              "官方稱是刻意保守的單週快照"
+            ]
+          ],
+          "caption": "整理自 Anthropic 2026 年 9 月 17 日公布的三項指標，查核日 2026 年 9 月 18 日；表中數字均為官方自行量測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼這些數字還不是已經查證的數字"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方自己列出兩個擋在跨實驗室比較前面的障礙。第一，沒有共通的量測方法；第二，Anthropic 是用自己的 Claude 去評分自己的系統：研究用的 Claude 代理人先蒐集證據，再由獨立的 Claude 擔任評審；評某個月份時，做評分的代理人只看得到那個月或更早的證據。換句話說，官方自己寫這可能表示擔任評審的模型，會犯下和被它檢查的模型同一種錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "監督數字也有邊界：官方寫的是計劃把多個組織的獨立第三方評估者常駐、給予接近內部風險評估團隊的存取權限，並在監督那一節寫目前正在建立外部評估者——兩句都不等於已經有人查核過。文中提到 METR 過去曾獨立紅隊測試 Anthropic 的離線監控平台，但這是過去式，測試對象是監控平台，不是這篇文章公布的百分比數字。以查核當天讀到的內容為準，本文沒有看到外部單位驗證過上面這幾個數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "算力占比的算法官方也寫得保守：官方舉的例子是一個 token 對能力提升的貢獻若和對安全一樣多，就不算進安全那一邊；兩個數字也不含另一批用於安全防護分類器的運算資源，官方形容那是另一筆相當規模的算力。官方提醒，安全研究通常比前沿訓練更仰賴研究人員的時間、而非運算資源本身，所以算力占比只是不完美的替代指標，意義在於能跨開發者、跨時間做同類比較，而不是這兩個百分比眼前的絕對大小。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-pace-metrics-20260917/diagram-1.svg",
+          "alt": "四格圖解：誰在做研發、代理人怎麼被看管、算力分給誰、誰來查證",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic 2026 年 9 月 17 日公布三項指標的整理：研發自動化、代理人監督與安全算力占比，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩個最容易被誤讀的數字"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個容易被誤讀的地方是「主導」。26% 常被直接理解成「四分之一的工作 AI 自己完成、不用人管」，但官方對 AL4「主導」的定義是 AI 能從高層次指令出發完成大部分工作、人類仍在監督；AL5「完全自主、沒有人類介入」，官方在註腳寫的是「一個我們尚未達到的等級」。較接近的說法是「AI 接下任務、自己做完大部分步驟，但旁邊還有人看著、隨時能介入」，不是「AI 關起門來做完，沒有人知道發生什麼事」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個容易被誤讀的地方是 0.002% 的攔截率。單看數字，很容易讀成「代理人幾乎不會亂來，系統很安全」；但官方在原文同一節寫，當經濟體裡有數百萬、數十億個代理人運作，就算單一事件機率很低，罕見事件也可能經常發生。而且 0.002% 只是線上監控在一個月內、一個內部平台上攔截的比率，離線監控另外還會標記大約千分之一到千分之二的對話紀錄做進一步審查，原文把兩者分列在表格不同格子，沒有合併。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "沒有寫進這篇文章的部分，以及和放慢前沿的關聯"
+        },
+        {
+          "type": "paragraph",
+          "text": "以查核到 2026 年 9 月 18 日的內容為準，這篇專文沒有點名任何國家或市場，也沒有提到產品變化或使用者看得到的功能調整——這是說明 Anthropic 怎麼衡量自己內部研發過程的文章，不是產品公告，台灣使用者目前使用 Claude 的方式不會因此改變。文章只公布 Anthropic 自己的數字，沒有寫其他公司的自動化比重、監督涵蓋率或安全算力占比；官方原文寫的是「任何前沿開發者都可以」公布類似指標，不是已經有其他公司這麼做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇專文在附錄寫出自己對「安全工作」的定義：以讓 AI 系統更安全、更容易理解或資安更穩固為主要目的的工作；官方同時寫明這只是眾多合理選擇之一，換一家開發者或主管機關可能把線畫在別的地方，並認為各方事先談好共通定義會有好處。Anthropic 另一份政策頁面提到自家的 Advanced AI Framework，內容涵蓋透明度、獨立評估，到政府在必要時阻止或嚇阻危險部署的權限；該頁寫明這份框架主要是為美國聯邦政府而寫，是提案，不是已經生效的規定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇專文與 Amodei 稍早發表的〈We Must Pace the Frontier〉是同一條脈絡的兩篇文章：專文只寫這些數字呼應 Amodei 協調放慢前沿的呼籲並超連結過去，沒有複述那篇的內容；三步驟計畫與「第一步是外部評估者常駐」出自本站另一篇整理，不在本文引用的頁面裡。本篇公布的三項指標，是 Anthropic 嘗試把「放慢有沒有發生」變成可以攤開來看的數字；要了解那三個步驟，請見文末第二個連結。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "26% 是不是代表四分之一的研發工作已經完全交給 AI 自己做？",
+              "answer": "不是。Anthropic 官方定義裡，26% 對應的是自動化等級 AL4「主導」，意思是 AI 能從高層次指令出發完成大部分工作，但人類仍在監督；完全自主、沒有人類介入的 AL5，官方在註腳寫的是「一個我們尚未達到的等級」，正文也寫以 2026 年 8 月為準，任何一類有量測的 AI 研發工作都還沒有完全自主運作。"
+            },
+            {
+              "question": "0.002% 的攔截率是不是表示這套監督系統很安全？",
+              "answer": "官方沒有這樣宣稱。這個數字是 2026 年 8 月線上監控在超過 10 億筆決策中攔截的比率，而官方在同一節開頭就先寫明：就目前的監控資料看，單一代理人很少亂來，但當經濟體裡有數百萬、數十億個代理人運作，就算單一事件的機率很低，罕見事件也可能經常發生。離線監控另外還會標記大約千分之一到千分之二的對話紀錄，那是不同的數字，原文沒有把兩者合併。"
+            },
+            {
+              "question": "這三項指標有沒有經過外部單位查核？",
+              "answer": "以本文查核到 2026 年 9 月 18 日的內容為準，沒有看到外部單位驗證過這幾個數字本身。官方寫的是計劃把獨立第三方評估者常駐、給予接近內部風險評估團隊的存取權限，並在另一處寫目前正在建立外部評估者；文中提到 METR 過去曾獨立紅隊測試 Anthropic 的離線監控平台，但那是過去式，測試對象是監控平台，不是這幾個百分比。"
+            },
+            {
+              "question": "這跟台灣的 Claude 使用者有關係嗎？",
+              "answer": "以本文查核到的內容為準，這篇專文沒有點名任何國家或市場，也沒有提到產品變化或使用者看得到的功能調整。這是 Anthropic 說明自己怎麼衡量內部研發過程的文章，不是產品公告，台灣使用者目前使用 Claude 的方式不會因此改變。"
+            },
+            {
+              "question": "這些指標以後會固定公布嗎？",
+              "answer": "官方沒有承諾固定的公布週期。文章寫希望藉此示範透明度、會繼續這麼做，也寫任何前沿開發者都可以用公開的方法定期公布這類指標；以本文查核到的頁面為準，沒有寫出下一次公布的日期，也沒有承諾往後會沿用同一套方法。官方另外在附錄寫道，計劃定期重建那份任務清單，並視情況為已公布的自動化數字重新標示版本。"
+            },
+            {
+              "question": "這篇文章跟 Amodei 稍早呼籲放慢前沿 AI 的文章是什麼關係？",
+              "answer": "Anthropic 這篇專文寫這些數字呼應 Amodei 協調放慢前沿的呼籲，並超連結到他那篇文章，但沒有複述那篇的內容。三步驟計畫與「第一步是外部評估者常駐」出自本站另一篇整理，不在本文引用的頁面裡。本篇公布的三項指標，是 Anthropic 嘗試把「有沒有真的放慢」變成可以攤開來看的數字；要了解那三個步驟，讀者可從文末第二個連結進一步閱讀。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "自己量給外面看的數字，還不是已查證的數字",
+          "text": "本文說明的 26%、90%、0.002%、6%、12% 等數字，全部是 Anthropic 自行量測、自行公布，官方也在原文列出各自的限制：研發自動化由 Claude 評分 Claude、代理人監督只涵蓋內部一個平台、算力占比是刻意保守的單週快照。官方寫的是計劃讓獨立第三方評估者常駐、目前正在建立，以查核當天讀到的內容為準，還沒有外部單位查核過這幾個數字本身；官方也沒有承諾固定的公布週期。本站沒有做任何實測，實際情況請以 Anthropic 官方頁面最新內容為準，本文查核日為 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei 呼籲放慢前沿 AI：〈We Must Pace the Frontier〉的主張與界線",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Measurements for understanding the pace of AI development inside frontier labs",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic Newsroom（新聞總覽頁，本篇收錄於精選區塊並標註 Sep 17, 2026）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic：Policy on the AI Exponential",
+          "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "Anthropic Publishes Three Frontier AI Metrics: 26% Is “Leads,” Not “Fully Autonomous”",
+      "description": "On September 17, 2026, Anthropic published three metrics meant to let outsiders track R&D progress inside a frontier AI lab: how automated its research is, how AI agents are overseen, and how compute is allocated to safety. Fact-checked on September 18, 2026, this article explains why 26% “leads” is not full automation, why the 0.002% block rate carries its own caveat, and why these are still self-measured numbers with limited scope, as external evaluators are still being set up.",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-pace-metrics-20260917/hero-en.jpg",
+        "alt": "Original illustration: three gauge dials with needles at different readings, and a geometric question-mark outline above them, showing these readings still await outside scrutiny",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 17, 2026, Anthropic published three metrics on its official website meant to let outsiders see research and development progress inside a frontier AI lab: how much AI R&D work AI itself completes, how the actions of AI agents are overseen, and how compute resources are allocated. Anthropic ties this to an earlier piece by CEO Dario Amodei calling for pacing frontier AI, writing that it would expect these numbers to shift if labs actually coordinated on slowing down."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 18, 2026, against three pages on Anthropic's official website: the post announcing these three metrics, the newsroom overview page, and a policy page explaining the policy context. This site has not run any tests of its own; all three metrics are currently numbers that Anthropic measures and publishes itself, and this article goes through the limits and the parts that remain unverified, as Anthropic itself has flagged them."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic published three metrics on September 17, 2026, meant to let outsiders track research and development progress inside a frontier AI lab.",
+            "As of August 2026, Claude “leads” 26% of the work, with “collaborates” or above at more than 90%; Anthropic defines “leads” as AI that can complete most of a task from a high-level prompt while a human supervises, and calls full autonomy a level it has not yet reached.",
+            "For the week of July 13 to 20, 2026, Anthropic estimates that about 6% of the compute going to AI R&D was allocated to safety work, and about 12% of the compute going to “AI-driven AI R&D” was allocated to safety work, which it calls deliberately conservative estimates.",
+            "Anthropic states that these numbers are currently self-measured; embedding independent third-party evaluators is a plan Anthropic has written down and is now setting up, and as of this fact-check this article found no sign that an outside party has verified these three metrics themselves."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Anthropic Published, and Why"
+        },
+        {
+          "type": "paragraph",
+          "text": "The summary Anthropic's official newsroom page wrote for this post is that today, the world can't see what's going on inside AI labs, and Anthropic is proposing new metrics to give the public visibility into frontier AI development. The post itself ties this to Amodei's call, but only links out to his piece without restating what it argues; Anthropic writes that these proposed measurements and policies together are a starting point for monitoring the pace of AI development from outside the labs."
+        },
+        {
+          "type": "paragraph",
+          "text": "The post itself does not print a publication date — as fact-checked through September 18, 2026, the page has no byline date, no “published on” text, or corresponding metadata field. September 17 is the date Anthropic's official newsroom page attaches to this piece in its featured section, and this article treats that as the event date; the original text prints no time of day, so this article does not state an exact publication time. Anthropic calls this set of metrics a prototype, writes that it hopes to demonstrate transparency this way and will keep doing so, but does not commit to a fixed publishing schedule."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Three Metrics: R&D Automation, Agent Oversight, and Safety Compute"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first is the “Anthropic R&D Automation Index,” scored using Epoch AI's Automation Level (AL) scale, running from AL0 to AL5 (fully autonomous, with no human in the loop). At AL3, “collaborates,” AI can do large chunks of work under close human direction; at AL4, “leads,” AI can complete most of a task end-to-end from a high-level prompt while a human still supervises. As of August 2026, Anthropic writes that Claude is not operating fully autonomously for any measured subset of AI R&D work; it “leads” 26% of the work, and the share at or above “collaborates” totals more than 90%."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second is agent oversight, where Anthropic picked three angles: coverage, review latency, and escalation rate, corresponding respectively to how much of an action passes through monitoring, how long elapses between an action and its review, and how much of an action gets blocked or flagged for review. As of August 2026, roughly 30,000 agents were doing research and engineering work at any one time on Anthropic's most-used internal platform, and these figures cover only that one platform. 100% of these actions pass through online monitoring first, usually within seconds, and afterward 100% also go through offline monitoring; the offline monitor flags roughly 100,000 transcripts a week, most of which are resolved by classifiers, with the highest-priority roughly 50 a week escalated to human review."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic writes that after analyzing more than a billion decisions in August 2026, 0.002% of them (about 1 in 47,000) were blocked by the online monitor. At the start of that section, Anthropic first cautions that in its monitoring data to date, individual agents rarely misbehave, but when there are millions or billions of agents operating in the economy, even rare events can happen regularly. The third metric is a compute snapshot: Anthropic examined how it used all of its compute over the week of July 13 to 20, 2026, finding that about 6% of AI R&D compute was allocated to safety work and about 12% of “AI-driven AI R&D” compute was allocated to safety work; the two figures have different denominators, and this article does not add or compare them."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Metric",
+            "Period",
+            "Official Figure",
+            "Limit Anthropic States"
+          ],
+          "rows": [
+            [
+              "R&D Automation Index",
+              "August 2026",
+              "“Leads” at 26%; “collaborates” or above more than 90%",
+              "Claude scoring Claude, not an outside audit"
+            ],
+            [
+              "Agent Oversight: Coverage",
+              "August 2026",
+              "100% of actions pass online monitoring beforehand, offline monitoring afterward",
+              "Covers only one internal platform, the most-used one"
+            ],
+            [
+              "Agent Oversight: Block Rate",
+              "August 2026",
+              "0.002% blocked out of more than 1 billion decisions (about 1 in 47,000)",
+              "Anthropic says rare events can happen regularly at economy scale"
+            ],
+            [
+              "Safety Compute Share",
+              "July 13–20, 2026",
+              "About 6% of AI R&D compute, about 12% of AI-driven R&D compute, allocated to safety work",
+              "Anthropic calls it a deliberately conservative single-week snapshot"
+            ]
+          ],
+          "caption": "Compiled from the three metrics Anthropic published on September 17, 2026; fact-checked September 18, 2026. All figures in the table are Anthropic's own measurements."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why These Numbers Are Not Yet Verified Numbers"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic itself lists two obstacles standing in the way of cross-lab comparison. First, there is no shared measurement methodology; second, Anthropic uses its own Claude to score its own systems: Claude research agents first gather the evidence, and then a separate Claude serves as the judge; when rating a given month, the agents doing the rating can only see evidence from that month or earlier. In other words, Anthropic itself writes that this could mean the model acting as judge makes the same kinds of errors as the model it is checking."
+        },
+        {
+          "type": "paragraph",
+          "text": "The oversight numbers have boundaries too: Anthropic writes that it plans to embed independent third-party evaluators from multiple organizations, giving them access comparable to what its internal risk assessment teams have, and in the oversight section writes that it is now setting up external evaluators — neither sentence amounts to something an outside party has already checked. The text mentions that METR has, in the past, independently red-teamed Anthropic's offline monitoring platform, but that is past tense, and what was tested was the monitoring platform, not the percentages this article publishes. Based on what this fact-check read on the day it was done, this article found no outside party that has verified the numbers above."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic also writes that its method for the compute share is conservative: the example it gives is that if a token contributed as much to advancing capabilities as it did to safety, it was not counted on the safety side; the two figures also exclude a separate, similarly sizable pool of compute used for safety-protection classifiers. Anthropic notes that safety research tends to rely more on researchers' time than on compute compared with frontier training, so the compute share is only an imperfect proxy, and its value lies in comparing like with like across developers and over time, not in the absolute size of these two percentages by themselves."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-pace-metrics-20260917/diagram-1-en.svg",
+          "alt": "Four-panel diagram: who does the R&D, how agents are overseen, who compute is allocated to, and who verifies it",
+          "width": 1600,
+          "height": 900,
+          "caption": "A summary of the three metrics Anthropic published on September 17, 2026: R&D automation, agent oversight, and the share of compute spent on safety. Fact-checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Two Numbers Most Likely to Be Misread"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first place readers are likely to misread is “leads.” 26% is often taken to mean “a quarter of the work is done by AI on its own, with no human managing it,” but Anthropic's own definition of AL4 “leads” is that AI can complete most of a task end-to-end from a high-level prompt while a human still supervises; AL5, “fully autonomous, with no human in the loop,” is described in a footnote as “a level we have not yet reached.” A closer reading is “AI takes on a task and does most of the steps itself, but someone is still watching and can step in at any time,” not “AI finishes the job behind closed doors, with no one knowing what happened.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "The second place readers are likely to misread is the 0.002% block rate. Taken alone, it is easy to read as “agents almost never misbehave, so the system is safe”; but in that same section, Anthropic writes that when there are millions or billions of agents operating in the economy, even if any single event is unlikely, rare events can happen regularly. And 0.002% is only the rate the online monitor blocked within one month on one internal platform; the offline monitor separately flags roughly one to two in a thousand transcripts for further review, and the original text lists the two in separate cells of a table without combining them."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What This Article Leaves Out, and How It Connects to Pacing the Frontier"
+        },
+        {
+          "type": "paragraph",
+          "text": "Based on what was fact-checked through September 18, 2026, this post does not name any country or market, and it does not mention product changes or any feature change users would see — this is an article about how Anthropic measures its own internal R&D process, not a product announcement, and it will not change how Taiwan-based users use Claude today. The article publishes only Anthropic's own numbers; it does not give other companies' automation share, oversight coverage, or safety-compute share. Anthropic's own text says “any frontier developer could” publish similar metrics, not that other companies already have."
+        },
+        {
+          "type": "paragraph",
+          "text": "In an appendix, the post writes out its own definition of “safety work”: work whose dominant purpose is making AI systems safer, more understandable, or more secure; Anthropic also states that this is just one reasonable choice among many, that another developer or regulator might draw the line elsewhere, and that it believes all sides would benefit from agreeing on a shared definition ahead of time. A separate Anthropic policy page describes its own Advanced AI Framework, covering transparency and independent evaluation up through government authority to block or deter dangerous deployments when necessary; that page states that the framework is written primarily with the US federal government in mind and is a proposal, not a rule already in effect."
+        },
+        {
+          "type": "paragraph",
+          "text": "This post and the piece Amodei published earlier, “We Must Pace the Frontier,” belong to the same thread: the post only writes that these numbers echo Amodei's call for coordinated pacing of the frontier and links out to it, without restating its content; the three-step plan and “step one is embedding external evaluators” come from another roundup on this site, not from the pages cited in this article. The three metrics published here are Anthropic's attempt to turn “whether pacing is actually happening” into numbers that can be laid out and examined; to learn about those three steps, see the second link at the end of this article."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Does 26% mean a quarter of R&D work has already been handed entirely to AI?",
+              "answer": "No. In Anthropic's own definition, 26% corresponds to Automation Level AL4, “leads,” meaning AI can complete most of a task end-to-end from a high-level prompt, but a human is still supervising; AL5, fully autonomous with no human in the loop, is described in a footnote as “a level we have not yet reached,” and the text also states that as of August 2026, no measured subset of AI R&D work is yet fully autonomous."
+            },
+            {
+              "question": "Does the 0.002% block rate mean this oversight system is safe?",
+              "answer": "Anthropic does not claim that. This figure is the rate the online monitor blocked out of more than a billion decisions in August 2026, and at the start of that same section Anthropic writes that in its monitoring data to date, individual agents rarely misbehave, but when there are millions or billions of agents operating in the economy, even if any single event is unlikely, rare events can happen regularly. The offline monitor separately flags roughly one to two in a thousand transcripts, which is a different figure that the original text does not combine with the block rate."
+            },
+            {
+              "question": "Have these three metrics been verified by an outside party?",
+              "answer": "Based on what this article found as of its September 18, 2026 fact-check, no outside party has verified these numbers themselves. Anthropic writes that it plans to embed independent third-party evaluators with access comparable to its internal risk assessment teams, and elsewhere writes that it is now setting up external evaluators. The text mentions that METR has, in the past, independently red-teamed Anthropic's offline monitoring platform, but that is past tense and what was tested was the monitoring platform, not these percentages."
+            },
+            {
+              "question": "Does this have anything to do with Claude users in Taiwan?",
+              "answer": "Based on what this article found, the post does not name any country or market, and it does not mention product changes or any feature change users would see. This is an article about how Anthropic measures its own internal R&D process, not a product announcement, and it will not change how Taiwan-based users use Claude today."
+            },
+            {
+              "question": "Will these metrics be published on a fixed schedule going forward?",
+              "answer": "Anthropic has not committed to a fixed publishing schedule. The post says it hopes to demonstrate transparency this way and will keep doing so, and also that any frontier developer could publish this kind of metric on a regular basis using a public method; as of the page this article fact-checked, there is no date given for the next release, nor any promise to keep using the same method going forward. In an appendix, Anthropic also writes that it plans to periodically rebuild that basket of tasks and re-version its published automation numbers as appropriate."
+            },
+            {
+              "question": "How does this piece relate to Amodei's earlier call to pace frontier AI?",
+              "answer": "This Anthropic post writes that these numbers echo Amodei's call for coordinated pacing of the frontier and links out to his piece, without restating its content. The three-step plan and “step one is embedding external evaluators” come from another roundup on this site, not from the pages cited in this article. The three metrics published here are Anthropic's attempt to turn “whether pacing is actually happening” into numbers that can be laid out and examined; to learn about those three steps, readers can continue with the second link at the end of this article."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Numbers Measured In-House for Outside Eyes Are Not Yet Verified Numbers",
+          "text": "The 26%, 90%, 0.002%, 6%, and 12% figures this article covers are all self-measured and self-published by Anthropic, and Anthropic's own text lists limits for each: R&D automation is Claude scoring Claude, agent oversight covers only one internal platform, and the compute share is a deliberately conservative single-week snapshot. Anthropic writes that embedding independent third-party evaluators is a plan it is now setting up; based on what was read as of this fact-check, no outside party has yet verified these numbers themselves, and Anthropic has not committed to a fixed publishing schedule. This site has not run any tests of its own; for the current state of things, refer to the latest content on Anthropic's official pages. This article was fact-checked on September 18, 2026."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei Urges Pacing Frontier AI: What “We Must Pace the Frontier” Proposes and Its Limits",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Measurements for Understanding the Pace of AI Development Inside Frontier Labs",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic Newsroom (news overview page; this post appears in the featured section, dated Sep 17, 2026)",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic: Policy on the AI Exponential",
+          "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Anthropic、フロンティアAIの指標を3つ公表：26%は「主導」であって「自律」ではない",
+      "description": "2026年9月17日、AnthropicはフロンティアAI研究所内部の進捗を外部が追えるようにする三つの指標——研究開発の自動化度合い、AIエージェントの監督体制、安全性に充てる計算資源の割合——を公表しました。本稿はAnthropic公式ページをもとに2026年9月18日に確認しており、26%の「主導」がなぜ完全自動を意味しないのか、0.002%という遮断率になぜもう一つの注意書きが添えられているのか、そしてこれらの数値が今のところAnthropic自身による測定で範囲が限られ、外部評価者の体制は構築中であることを説明します。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-pace-metrics-20260917/hero-ja.jpg",
+        "alt": "オリジナルイラスト：3つのゲージが並び、それぞれの針が異なる目盛りで止まっている。ゲージの上には幾何学的な疑問符の輪郭が浮かび、これらの目盛りがまだ外部の検証を待っていることを表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月17日、Anthropicは公式サイトで三つの指標を公表しました。AI研究開発のうちどれだけをAI自身が行っているか、AIエージェントの行動がどのように監督されているか、そして計算資源がどのように配分されているかを、フロンティアAI研究所の内部の様子として外部にも見えるようにする試みです。Anthropicはこれを、CEOのDario Amodei氏が少し前に発表したフロンティアAIの減速を求める文章と結び付け、各研究所が足並みをそろえて速度を落とせば、これらの数値も変わっていくはずだと書いています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、Anthropic公式サイトの三つのページ——この三指標を公表した記事本文、ニュース一覧ページ、そして政策の背景を説明する政策ページ——を読んで確認しました。当サイトは実地の検証を行っておらず、この三つの指標は現時点ではいずれもAnthropicが自ら測定し自ら公表した数値です。本稿はAnthropic自身が示した限界と、まだ検証されていない部分を一つずつ説明します。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropicは2026年9月17日、フロンティアAI研究所内部の研究開発の進捗を外部が追跡できるようにする三つの指標を公表しました。",
+            "2026年8月時点で、Claudeが「主導」する作業は26%、「協働」以上の作業の割合は合計90%を超えていますが、Anthropicが定義する「主導」は人間の監督のもとAIが高レベルの指示から作業の大部分を完了できることを指し、完全自律は脚注でまだ到達していない段階だと記されています。",
+            "2026年7月13日から20日の週について、Anthropicの推計ではAI研究開発に充てた計算資源の約6%、「AI主導のAI研究開発」に充てた計算資源の約12%が安全性の作業に配分されており、Anthropicはこれを意図的に保守的な推計だとしています。",
+            "Anthropicは、これらの数値が現時点では自社による測定であること、独立した第三者評価者の常駐は文書化された計画であり現在構築中であることを説明しています。本稿の確認時点では、この三指標そのものを外部機関が検証した形跡は見当たりません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropicは何を、何のために公表したのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic公式のニュース一覧ページがこの記事につけた要約は、今のところ世界はAI研究所の内部で何が起きているか見ることができず、AnthropicはフロンティアAI開発を一般の人々にも見えるようにする新しい指標を提案する、というものです。記事本文自体はこれをAmodei氏の呼びかけと結び付けていますが、氏の文章にリンクを張るだけで主張の内容を繰り返してはいません。Anthropicが書いているのは、これらの提案された測定と政策を合わせたものが、研究所の外からAI開発の速度を監視するための出発点になる、ということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事本文には公開日が記載されていません——2026年9月18日まで確認した限り、ページ上に署名日、「公開日」といった表記、対応するメタデータの項目は見当たりません。9月17日は、Anthropic公式のニュース一覧ページの注目記事欄がこの記事に付けている日付で、本稿はこれを出来事の日付として採用しています。原文には時刻がいっさい記載されていないため、本稿も公開の正確な時刻は書きません。Anthropicはこの指標群を試作版と呼び、これによって透明性を示したい、今後も続けるとしていますが、公表の頻度を固定する約束はしていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三つの指標：研究開発の自動化、エージェントの監督、安全性への計算資源"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つ目は「Anthropic研究開発自動化指数（Anthropic R&D Automation Index）」で、Epoch AIが開発した自動化レベル（Automation Level、AL）という尺度で評価し、AL0からAL5（完全自律、人間の介在なし）まであります。AL3「協働（Collaborative）」は、AIが人間の綿密な指示のもとで多くの作業を担えることを指し、AL4「主導（Leading）」は、AIが高レベルの指示から作業の大部分を最初から最後まで完了でき、人間はそれを監督する立場にとどまることを指します。2026年8月時点で、AnthropicはClaudeが測定対象のどのAI研究開発作業においても完全自律では動作していないと書いており、「主導」は26%、「協働」以上の割合は合計90%を超えています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つ目はエージェントの監督で、Anthropicはカバレッジ（coverage）、レビュー遅延（review latency）、エスカレーション率（escalation rate）という三つの観点を選んでいます。それぞれ、行動のうちどれだけが監視を通過するか、行動とレビューの間にどれだけ時間が空くか、行動のうちどれだけが遮断または要審査としてフラグを立てられるかに対応します。2026年8月時点で、社内で最も多く使われている一つのプラットフォーム上で、同時に約3万のエージェントが研究・エンジニアリング業務にあたっており、これらの数値はこのプラットフォームのみを対象としています。これらの行動は100%が実行前にオンライン監視（online monitoring）を通過し、通常は数秒以内に完了します。事後にも100%がオフライン監視（offline monitoring）に回され、オフライン監視は毎週およそ10万件の対話記録にフラグを立て、その大半は分類器（classifier）によって処理されます。優先度が最も高いおよそ50件が人によるレビューに回されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicは、2026年8月の10億件を超える判断を分析した結果、0.002%（およそ47,000件に1件）がオンライン監視によって遮断されたと書いています。Anthropicはこの節の冒頭で、これまでの監視データを見る限り個々のエージェントが問題行動を起こすことはまれだが、経済全体で数百万、数十億のエージェントが動いている状況では、まれな出来事も日常的に起こり得ると先に注意を促しています。三つ目は計算資源のスナップショットです。Anthropicは2026年7月13日から20日までの1週間について、自社の計算資源の使われ方全体を調べ、AI研究開発向けの計算資源のうち約6%、「AI主導のAI研究開発」向けの計算資源のうち約12%が安全性の作業に配分されていたとしています。二つの数値は分母が異なるため、本稿では両者を足し合わせたり比較したりしません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "指標",
+            "期間",
+            "公式の数値",
+            "公式が示す限界"
+          ],
+          "rows": [
+            [
+              "研究開発自動化指数",
+              "2026年8月",
+              "「主導」26%、「協働」以上が90%超",
+              "ClaudeがClaudeを採点、外部監査ではない"
+            ],
+            [
+              "エージェント監督：カバレッジ",
+              "2026年8月",
+              "行動の100%が事前にオンライン監視、事後にオフライン監視を通過",
+              "社内で最も多く使われる1プラットフォームのみが対象"
+            ],
+            [
+              "エージェント監督：遮断率",
+              "2026年8月",
+              "10億件超の判断のうち0.002%を遮断（約47,000件に1件）",
+              "経済規模が大きくなればまれな出来事も日常的に起こり得るとAnthropicは説明"
+            ],
+            [
+              "安全性への計算資源の割合",
+              "2026年7月13日〜20日",
+              "AI研究開発の計算資源の約6%、AI主導の研究開発では約12%を安全性に配分",
+              "意図的に保守的な単週スナップショットとAnthropicは説明"
+            ]
+          ],
+          "caption": "Anthropicが2026年9月17日に公表した三つの指標を整理したもの。確認日は2026年9月18日。表中の数値はすべてAnthropic自身による測定です。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "これらの数値がまだ検証済みとは言えない理由"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicは、研究所間の比較を妨げる二つの障害を自ら挙げています。第一に、共通の測定方法がないこと。第二に、Anthropicは自社のClaudeを使って自社のシステムを評価しているという点です。研究用のClaudeエージェントがまず証拠を集め、次に別のClaudeが評価役を務めます。ある月の自動化度合いを評価する際、評価を行うエージェントはその月かそれ以前の証拠しか見ることができません。言い換えれば、Anthropic自身が、評価役を務めるモデルが評価対象のモデルと同じ種類の誤りを犯す可能性があると書いているのです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "監督に関する数値にも限界があります。Anthropicが書いているのは、複数の組織から独立した第三者評価者を常駐させ、社内のリスク評価チームに近いアクセス権を与える計画であり、監督についての節では現在外部評価者の体制を構築中だとも書いています。どちらの文も、すでに誰かが検証したことを意味しません。本文にはMETRが過去にAnthropicのオフライン監視プラットフォームを独立してレッドチーム方式でテストしたことがあると出てきますが、これは過去のことであり、テストの対象は監視プラットフォームであって、この記事が公表している百分率の数値そのものではありません。確認当日に読めた内容を基準にすると、本稿は上記の数値を外部機関が検証した形跡を確認できませんでした。"
+        },
+        {
+          "type": "paragraph",
+          "text": "計算資源の割合についても、Anthropicは控えめな算出方法だと説明しています。挙げられている例では、あるトークンが能力向上への貢献と安全性への貢献が同じくらいだった場合、そのトークンは安全性側にはカウントしないとしています。また二つの数値には、安全対策用の分類器のために使われるもう一つのまとまった規模の計算資源は含まれていません。Anthropicは、安全性研究は最先端のトレーニングに比べて、計算資源そのものよりも研究者の時間に頼る傾向があると述べており、そのため計算資源の割合は不完全な代替指標にすぎず、その意味は開発者間・時系列で同種のものを比較できる点にあり、この二つの百分率そのものの絶対的な大きさにあるわけではないとしています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-pace-metrics-20260917/diagram-1-ja.svg",
+          "alt": "4コマの図解：誰が研究開発を行っているか、エージェントはどう監督されているか、計算資源は誰に配分されているか、誰が検証するのか",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropicが2026年9月17日に公表した三つの指標の整理：研究開発の自動化、エージェントの監督、安全性への計算資源の割合。確認日は2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誤読されやすい二つの数値"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つ目に誤読されやすいのは「主導」です。26%は「作業の4分の1をAIが完全に自分だけで行い、人は管理していない」とそのまま理解されがちですが、Anthropicが定義するAL4「主導」は、AIが高レベルの指示から作業の大部分を最初から最後まで完了できる一方、人間はなお監督している状態を指します。AL5「完全自律、人間の介在なし」は、脚注で「私たちがまだ到達していない段階」と説明されています。より近い言い方は、「AIがタスクを引き受け、ほとんどの手順を自分でこなすが、そばで誰かが見ていて、いつでも介入できる」であって、「AIが扉を閉めた中で完結させ、誰も何が起きたか分からない」ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つ目に誤読されやすいのは0.002%という遮断率です。数字だけを見ると、「エージェントはほとんど問題行動を起こさず、システムは安全だ」と読みたくなりますが、Anthropicは同じ節の中で、経済全体で数百万、数十億のエージェントが動いているときは、一つひとつの出来事の確率は低くても、まれな出来事は日常的に起こり得ると書いています。しかも0.002%は、あくまで1か月間、社内の1プラットフォーム上でオンライン監視が遮断した割合にすぎず、オフライン監視は別途、対話記録のおよそ1,000件に1件から2件をさらなる審査のためにフラグ付けしており、原文はこの二つを表の別々のマスに分けて記載し、合算はしていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "この記事に書かれていない部分、そしてフロンティアの減速との関係"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年9月18日までに確認した内容を基準にすると、この記事本文はどの国や市場も名指ししておらず、製品の変化やユーザーの目に見える機能の調整にも触れていません。これはAnthropicが自社の内部の研究開発プロセスをどう測定しているかを説明する記事であって、製品発表ではなく、台湾のユーザーが今Claudeを使う方法がこれによって変わることはありません。記事はAnthropic自身の数値だけを公表しており、他社の自動化比率、監督のカバレッジ、安全性への計算資源の割合は書かれていません。Anthropicの原文が書いているのは「どのフロンティア開発者でも」同様の指標を公表できるということであり、すでに他社がそうしているという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事本文は付録で、自ら「安全性に関わる作業」の定義を示しています。AIシステムをより安全に、より理解しやすく、あるいはセキュリティ面でより堅牢にすることを主目的とする作業、というものです。Anthropicは同時に、これは数ある合理的な選択肢の一つにすぎず、別の開発者や規制当局であれば線引きが違う場所になるかもしれないと述べたうえで、各者が事前に共通の定義について話し合っておくことにはメリットがあるとの考えを示しています。Anthropicの別の政策ページでは、自社のAdvanced AI Frameworkに触れており、透明性や独立評価から、必要な場合に危険な展開を阻止・抑止する政府の権限までを扱うとしています。このページには、このフレームワークは主に米国連邦政府を念頭に書かれた提案であり、すでに発効している規定ではないと明記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事本文と、Amodei氏が少し前に発表した「We Must Pace the Frontier」は、同じ一連の流れをなす二つの文章です。この記事本文は、これらの数値がAmodei氏によるフロンティア減速の協調の呼びかけに呼応するものだと書いてリンクを張るだけで、その文章の内容を繰り返してはいません。3段階の計画と「第1段階は外部評価者の常駐」という部分は、当サイトの別の記事によるまとめから来ており、本稿が引用しているページには含まれていません。ここで公表されている三つの指標は、「本当に減速が起きているかどうか」を並べて見られる数値に変えようとするAnthropicの試みです。その3段階について知るには、本稿末尾の2つ目のリンクをご覧ください。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "26%は研究開発作業の4分の1がすでに完全にAI任せになっていることを意味しますか。",
+              "answer": "いいえ。Anthropicの定義では、26%は自動化レベルAL4「主導」に対応しており、AIが高レベルの指示から作業の大部分を最初から最後まで完了できることを意味しますが、人間はなお監督しています。人間の介在なしに完全自律で動くAL5は、脚注で「私たちがまだ到達していない段階」と説明されており、本文でも2026年8月時点で、測定対象となっているどのAI研究開発作業も完全自律では動作していないと書かれています。"
+            },
+            {
+              "question": "0.002%という遮断率は、この監督システムが安全であることを示していますか。",
+              "answer": "Anthropicはそのようには主張していません。この数値は2026年8月にオンライン監視が10億件を超える判断のうち遮断した割合であり、Anthropicは同じ節の冒頭で、これまでの監視データを見る限り個々のエージェントが問題行動を起こすことはまれだが、経済全体で数百万、数十億のエージェントが動いている状況では、一つひとつの出来事の確率が低くても、まれな出来事は日常的に起こり得ると先に書いています。オフライン監視は別途、対話記録のおよそ1,000件に1件から2件にフラグを立てており、これは別の数値で、原文はこの遮断率と合算していません。"
+            },
+            {
+              "question": "この三つの指標は外部機関の検証を経ていますか。",
+              "answer": "本稿が2026年9月18日までに確認した内容を基準にすると、これらの数値そのものを外部機関が検証した形跡は見当たりません。Anthropicが書いているのは、独立した第三者評価者を常駐させ、社内のリスク評価チームに近いアクセス権を与える計画であり、別の箇所では現在外部評価者の体制を構築中だとも書いています。本文にはMETRが過去にAnthropicのオフライン監視プラットフォームを独立してレッドチーム方式でテストしたことがあると出てきますが、これは過去のことであり、テストの対象は監視プラットフォームであって、これらの百分率ではありません。"
+            },
+            {
+              "question": "これは台湾のClaudeユーザーと関係がありますか。",
+              "answer": "本稿が確認した内容を基準にすると、この記事本文はどの国や市場も名指ししておらず、製品の変化やユーザーの目に見える機能の調整にも触れていません。これはAnthropicが自社の内部の研究開発プロセスをどう測定しているかを説明する記事であって、製品発表ではなく、台湾のユーザーが今Claudeを使う方法がこれによって変わることはありません。"
+            },
+            {
+              "question": "これらの指標は今後、決まった頻度で公表されますか。",
+              "answer": "Anthropicは公表頻度を固定する約束をしていません。記事はこれによって透明性を示したい、今後も続けたいとしており、どのフロンティア開発者でも公開された方法を使ってこの種の指標を定期的に公表できるとも書いています。本稿が確認したページを基準にすると、次回公表の日付は書かれておらず、今後も同じ方法を使い続けるという約束もありません。Anthropicは付録で、タスクの一覧を定期的に作り直し、必要に応じて公表済みの自動化数値のバージョンを改めて振り直す計画だとも書いています。"
+            },
+            {
+              "question": "この記事は、Amodei氏が少し前に発表したフロンティアAIの減速を求める文章とどう関係していますか。",
+              "answer": "Anthropicのこの記事本文は、これらの数値がAmodei氏によるフロンティア減速の協調の呼びかけに呼応するものだと書いて、氏の文章にリンクを張っていますが、その内容を繰り返してはいません。3段階の計画と「第1段階は外部評価者の常駐」という部分は、当サイトの別の記事によるまとめから来ており、本稿が引用しているページには含まれていません。ここで公表されている三つの指標は、「本当に減速が起きているかどうか」を並べて見られる数値に変えようとするAnthropicの試みです。その3段階について知りたい読者は、本稿末尾の2つ目のリンクからさらに読み進めることができます。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "外部向けに自社で測った数値は、まだ検証済みの数値ではありません",
+          "text": "本稿で取り上げた26%、90%、0.002%、6%、12%といった数値は、すべてAnthropicが自ら測定し自ら公表したものであり、Anthropic自身も原文でそれぞれの限界を挙げています。研究開発の自動化はClaudeがClaudeを採点したものであり、エージェントの監督は社内の1プラットフォームのみを対象とし、計算資源の割合は意図的に保守的な単週スナップショットです。Anthropicが書いているのは、独立した第三者評価者を常駐させる計画であり、現在構築中だということです。確認当日に読めた内容を基準にすると、これらの数値そのものを外部機関が検証した形跡はまだなく、Anthropicは公表頻度を固定する約束もしていません。当サイトは実地の検証を行っておらず、実際の状況はAnthropic公式ページの最新の内容をご確認ください。本稿の確認日は2026年9月18日です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei氏、フロンティアAIの減速を呼びかけ：「We Must Pace the Frontier」の主張と線引き",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Measurements for understanding the pace of AI development inside frontier labs",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropicニュースルーム（ニュース一覧ページ。本記事は注目記事欄に掲載され、Sep 17, 2026と表示）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic：Policy on the AI Exponential",
+          "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Anthropic, 프런티어 AI 지표 3종 공개: 26%는 '주도'이지 '자율'이 아니다",
+      "description": "Anthropic는 2026년 9월 17일, 프런티어 AI 연구소 내부의 진행 상황을 외부에서 추적할 수 있게 하는 세 가지 지표—연구개발 자동화 정도, AI 에이전트 감독 체계, 안전 작업에 배분되는 컴퓨팅 비중—를 공개했습니다. 이 글은 Anthropic 공식 페이지를 바탕으로 2026년 9월 18일에 확인했으며, 26%의 '주도'가 왜 완전 자동을 뜻하지 않는지, 0.002%라는 차단율에 왜 또 다른 단서가 따라붙는지, 그리고 이 수치들이 현재로서는 Anthropic 자체 측정이고 범위가 제한적이며 외부 평가자 체계는 아직 구축 중이라는 점을 설명합니다.",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-pace-metrics-20260917/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 나란히 놓인 세 개의 계기판, 각 바늘이 서로 다른 눈금에 멈춰 있고, 계기판 위에는 기하학적인 물음표 윤곽이 떠 있어 이 눈금들이 아직 외부 검증을 기다리고 있음을 나타낸다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 17일, Anthropic는 공식 웹사이트에 세 가지 지표를 공개해 프런티어 AI 연구소 내부의 연구개발 진행 상황—AI 연구개발 업무 중 얼마나 많은 부분을 AI 스스로 수행하는지, AI 에이전트의 행동이 어떻게 관리되는지, 컴퓨팅 자원이 어떻게 배분되는지—을 외부에서도 볼 수 있게 하려고 시도했습니다. Anthropic는 이를 CEO Dario Amodei가 얼마 앞서 발표한, 프런티어 AI의 속도를 늦추자는 글과 연결지으며, 각 연구소가 실제로 속도 조절에 협력한다면 이 수치들도 그에 따라 바뀔 것으로 예상한다고 썼습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 18일에 확인했으며, Anthropic 공식 웹사이트의 세 페이지—이 세 지표를 공개한 게시물 본문, 뉴스 목록 페이지, 정책 맥락을 설명하는 정책 페이지—를 근거로 합니다. 본 사이트는 직접 시험해 보지 않았고, 이 세 지표는 현재 모두 Anthropic가 스스로 측정하고 스스로 공개한 수치입니다. 이 글은 Anthropic 스스로 밝힌 한계와 아직 검증되지 않은 부분을 하나씩 짚습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic는 2026년 9월 17일, 프런티어 AI 연구소 내부의 연구개발 진행 상황을 외부에서 추적할 수 있게 하는 세 가지 지표를 공개했습니다.",
+            "2026년 8월 기준으로 Claude가 '주도'하는 작업은 26%, '협업' 이상 비중은 합쳐서 90%를 넘지만, Anthropic가 정의하는 '주도'는 인간의 감독 아래 AI가 상위 수준의 지시만으로 작업 대부분을 완료할 수 있다는 뜻이며, 완전 자율은 각주에서 아직 도달하지 못한 단계라고 밝히고 있습니다.",
+            "2026년 7월 13일부터 20일까지 한 주를 기준으로, Anthropic의 추산에 따르면 AI 연구개발에 투입된 컴퓨팅의 약 6%, 'AI가 주도하는 AI 연구개발'에 투입된 컴퓨팅의 약 12%가 안전 작업에 배분되었으며, Anthropic는 이를 의도적으로 보수적인 추산이라고 밝혔습니다.",
+            "Anthropic는 이 수치들이 현재 자체 측정이라는 점, 독립적인 제3자 평가자 상주는 문서화된 계획이며 지금 구축 중이라는 점, 그리고 이 글을 확인한 시점까지 이 세 지표 자체를 외부 기관이 검증한 흔적은 보이지 않는다는 점을 설명합니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropic는 무엇을, 왜 공개했나"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 공식 뉴스 목록 페이지가 이 게시물에 붙인 요약은, 지금 세상은 AI 연구소 내부에서 무슨 일이 벌어지는지 볼 수 없으며 Anthropic는 프런티어 AI 개발을 대중이 볼 수 있게 하는 새로운 지표를 제안한다는 것입니다. 게시물 본문은 이를 Amodei의 호소와 연결짓지만, 그의 글로 연결되는 링크만 걸었을 뿐 주장 내용을 다시 서술하지는 않습니다. Anthropic가 쓴 것은, 이렇게 제안한 측정과 정책을 합치면 연구소 바깥에서 AI 개발 속도를 모니터링하는 하나의 출발점이 된다는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 게시물 본문에는 발행일이 인쇄되어 있지 않습니다. 2026년 9월 18일까지 확인한 바로는 페이지에 서명 날짜, '게시됨'이라는 표기, 그에 해당하는 메타데이터 항목이 보이지 않습니다. 9월 17일은 Anthropic 공식 뉴스 목록 페이지의 주요 기사 영역이 이 게시물에 표시한 날짜이며, 이 글은 이를 사건 발생일로 삼습니다. 원문은 어떤 시각도 인쇄하지 않았으므로 이 글도 발행의 정확한 시각은 적지 않습니다. Anthropic는 이 지표들을 프로토타입이라고 부르며, 이를 통해 투명성을 보여주고 싶고 앞으로도 계속하겠다고 썼지만, 정해진 공개 주기를 약속하지는 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "세 가지 지표: 연구개발 자동화, 에이전트 감독, 안전 컴퓨팅 비중"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째는 'Anthropic 연구개발 자동화 지수(Anthropic R&D Automation Index)'로, Epoch AI가 개발한 자동화 수준(Automation Level, AL) 척도로 점수를 매기며 AL0부터 AL5(완전 자율, 인간 개입 없음)까지 있습니다. AL3 '협업(Collaborative)'은 AI가 인간의 밀접한 지시 아래 많은 양의 작업을 해낼 수 있다는 뜻이고, AL4 '주도(Leading)'는 AI가 상위 수준의 지시만으로 작업 대부분을 처음부터 끝까지 완료할 수 있으며 인간은 여전히 감독하는 입장에 있다는 뜻입니다. 2026년 8월 기준으로 Anthropic는 측정 대상이 된 어떤 AI 연구개발 작업 범주에서도 Claude가 완전 자율로 작동하고 있지 않다고 밝혔으며, '주도'는 26%, '협업' 이상 비중은 합쳐서 90%를 넘습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째는 에이전트 감독으로, Anthropic는 커버리지(coverage), 리뷰 지연시간(review latency), 에스컬레이션 비율(escalation rate) 세 가지 관점을 선택했습니다. 각각 행동 중 얼마나 많은 부분이 모니터링을 거치는지, 행동과 리뷰 사이에 시간이 얼마나 걸리는지, 행동 중 얼마나 많은 부분이 차단되거나 검토 대상으로 표시되는지를 뜻합니다. 2026년 8월 기준으로 사내에서 가장 많이 쓰이는 플랫폼 하나에서 동시에 약 3만 개의 에이전트가 연구·엔지니어링 업무를 수행했으며, 이 수치들은 이 플랫폼 하나만을 대상으로 합니다. 이 행동들의 100%는 실행 전에 온라인 모니터링(online monitoring)을 먼저 거치며 보통 몇 초 안에 끝나고, 사후에도 100%가 오프라인 모니터링(offline monitoring)으로 들어갑니다. 오프라인 모니터링은 매주 약 10만 건의 대화 기록에 표시를 하고, 대부분은 분류기(classifier)가 처리하며, 우선순위가 가장 높은 약 50건이 사람의 검토로 넘어갑니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic는 2026년 8월 한 달간 10억 건이 넘는 판단을 분석한 결과, 0.002%(약 47,000건 중 1건)가 온라인 모니터링에 의해 차단되었다고 밝혔습니다. Anthropic는 이 절 서두에서 먼저, 지금까지의 모니터링 데이터를 보면 개별 에이전트가 문제를 일으키는 일은 드물지만, 경제 전체에서 수백만, 수십억 개의 에이전트가 작동할 때는 드문 사건도 자주 일어날 수 있다고 짚었습니다. 세 번째는 컴퓨팅 스냅숏입니다. Anthropic는 2026년 7월 13일부터 20일까지 한 주 동안 자사가 사용한 모든 컴퓨팅 자원의 용도를 살펴보았고, AI 연구개발용 컴퓨팅의 약 6%, 'AI가 주도하는 AI 연구개발'용 컴퓨팅의 약 12%가 안전 작업에 배분되었다고 밝혔습니다. 두 수치는 분모가 다르므로 이 글에서는 둘을 더하거나 비교하지 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "지표",
+            "기간",
+            "공식 수치",
+            "Anthropic이 밝힌 한계"
+          ],
+          "rows": [
+            [
+              "연구개발 자동화 지수",
+              "2026년 8월",
+              "'주도' 26%, '협업' 이상 90% 초과",
+              "Claude가 Claude를 채점, 외부 감사 아님"
+            ],
+            [
+              "에이전트 감독: 커버리지",
+              "2026년 8월",
+              "행동의 100%가 사전 온라인 모니터링, 사후 오프라인 모니터링을 거침",
+              "사내에서 가장 많이 쓰이는 플랫폼 하나만 대상"
+            ],
+            [
+              "에이전트 감독: 차단율",
+              "2026년 8월",
+              "10억 건 넘는 판단 중 0.002% 차단(약 47,000건 중 1건)",
+              "경제 규모가 커지면 드문 사건도 자주 일어날 수 있다고 Anthropic는 설명"
+            ],
+            [
+              "안전 컴퓨팅 비중",
+              "2026년 7월 13일~20일",
+              "AI 연구개발 컴퓨팅의 약 6%, AI 주도 연구개발 컴퓨팅의 약 12%를 안전 작업에 배분",
+              "의도적으로 보수적인 한 주짜리 스냅숏이라고 Anthropic는 설명"
+            ]
+          ],
+          "caption": "Anthropic가 2026년 9월 17일 공개한 세 가지 지표를 정리했습니다. 확인일 2026년 9월 18일. 표의 모든 수치는 Anthropic 자체 측정입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 수치들이 아직 검증된 수치가 아닌 이유"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic는 연구소 간 비교를 가로막는 두 가지 장애물을 스스로 꼽습니다. 첫째, 공통된 측정 방법론이 없다는 점입니다. 둘째, Anthropic가 자사 시스템을 평가하는 데 자사의 Claude를 쓴다는 점입니다. 연구용 Claude 에이전트가 먼저 증거를 모으고, 이어서 별도의 Claude가 평가자 역할을 맡습니다. 특정 달의 자동화 정도를 평가할 때, 채점을 담당하는 에이전트는 그 달이나 그 이전의 증거만 볼 수 있습니다. 다시 말해 Anthropic 스스로, 평가자 역할을 하는 모델이 자신이 점검하는 모델과 같은 종류의 오류를 저지를 수 있다는 뜻일 수 있다고 쓰고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "감독 관련 수치에도 한계가 있습니다. Anthropic가 쓴 내용은, 여러 조직에서 독립적인 제3자 평가자를 상주시켜 내부 위험평가 팀에 준하는 접근 권한을 줄 계획이라는 것이며, 감독을 다룬 절에서는 현재 외부 평가자 체계를 구축하는 중이라고도 썼습니다. 두 문장 모두 이미 누군가 검증을 마쳤다는 뜻은 아닙니다. 본문에는 METR이 과거 Anthropic의 오프라인 모니터링 플랫폼을 독립적으로 레드팀 방식으로 테스트한 적이 있다고 나오지만, 이는 과거의 일이며 테스트 대상은 모니터링 플랫폼이지 이 글이 공개하는 백분율 수치 자체가 아닙니다. 확인 당일 읽을 수 있었던 내용을 기준으로, 이 글은 위 수치들을 외부 기관이 검증한 흔적을 확인하지 못했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "컴퓨팅 비중의 산출 방식도 Anthropic는 보수적으로 짰다고 설명합니다. 예로 든 것은, 어떤 토큰이 능력 향상에 기여한 정도가 안전에 기여한 정도와 같을 경우 그 토큰은 안전 쪽으로 집계하지 않는다는 규칙입니다. 두 수치에는 안전 보호용 분류기에 쓰이는 또 다른 컴퓨팅 자원도 포함되어 있지 않으며, Anthropic는 그것도 비슷한 규모라고 설명합니다. Anthropic는 안전 연구가 프런티어 훈련에 비해 컴퓨팅 자체보다 연구자의 시간에 더 의존하는 경향이 있다고 밝혔으며, 그래서 컴퓨팅 비중은 불완전한 대리 지표일 뿐이고 그 의미는 개발자 간, 시간에 따라 같은 것끼리 비교할 수 있다는 데 있지, 이 두 백분율 자체의 절대적 크기에 있는 것이 아니라고 설명합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-pace-metrics-20260917/diagram-1-ko.svg",
+          "alt": "네 칸짜리 도해: 누가 연구개발을 하는지, 에이전트는 어떻게 관리되는지, 컴퓨팅은 누구에게 배분되는지, 누가 검증하는지",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic가 2026년 9월 17일 공개한 세 가지 지표 정리: 연구개발 자동화, 에이전트 감독, 안전 컴퓨팅 비중. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "가장 오해하기 쉬운 두 수치"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째로 오해하기 쉬운 부분은 '주도'입니다. 26%는 흔히 '업무의 4분의 1을 AI가 사람 관리 없이 스스로 끝낸다'는 뜻으로 바로 받아들여지지만, Anthropic가 정의하는 AL4 '주도'는 AI가 상위 수준의 지시만으로 작업 대부분을 처음부터 끝까지 완료할 수 있되 인간은 여전히 감독하고 있다는 뜻입니다. '완전 자율, 인간 개입 없음'을 뜻하는 AL5는 각주에서 '우리가 아직 도달하지 못한 단계'라고 설명되어 있습니다. 더 가까운 표현은 '작업을 넘겨받은 AI가 대부분의 단계를 스스로 처리하지만, 옆에서 누군가 지켜보며 언제든 개입할 수 있다'이지, 'AI가 문을 닫아걸고 끝내버려서 무슨 일이 있었는지 아무도 모른다'가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째로 오해하기 쉬운 부분은 0.002%라는 차단율입니다. 숫자만 보면 '에이전트는 거의 문제를 일으키지 않으니 시스템이 안전하다'로 읽기 쉽지만, Anthropic는 같은 절에서 경제 전체에 수백만, 수십억 개의 에이전트가 작동할 때는 개별 사건의 확률이 낮더라도 드문 사건이 자주 일어날 수 있다고 씁니다. 게다가 0.002%는 어디까지나 한 달 동안 사내 플랫폼 하나에서 온라인 모니터링이 차단한 비율일 뿐이며, 오프라인 모니터링은 별도로 대화 기록의 약 1,000건 중 1~2건에 추가 검토가 필요하다고 표시합니다. 원문은 이 둘을 표의 서로 다른 칸에 나눠 적었을 뿐 합산하지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글에 쓰이지 않은 부분, 그리고 프런티어 속도 조절과의 관계"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 18일까지 확인한 내용을 기준으로, 이 게시물 본문은 어떤 국가나 시장도 특정해 언급하지 않았고, 제품 변화나 사용자가 체감할 기능 조정도 다루지 않았습니다. 이는 Anthropic가 자사 내부 연구개발 과정을 어떻게 측정하는지 설명하는 글이지 제품 발표가 아니며, 대만 사용자가 지금 Claude를 쓰는 방식은 이로 인해 바뀌지 않습니다. 이 글은 Anthropic 자체 수치만 공개하며, 다른 회사의 자동화 비중, 감독 커버리지, 안전 컴퓨팅 비중은 적혀 있지 않습니다. Anthropic 원문이 쓴 것은 '어떤 프런티어 개발사든' 비슷한 지표를 공개할 수 있다는 것이지, 이미 다른 회사가 그렇게 하고 있다는 뜻이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 게시물 본문은 부록에서 자체적으로 '안전 작업'의 정의를 밝힙니다. AI 시스템을 더 안전하게, 더 이해하기 쉽게, 또는 보안을 더 튼튼하게 만드는 것을 주된 목적으로 하는 작업이라는 것입니다. Anthropic는 동시에 이것이 여러 합리적인 선택지 중 하나일 뿐이며, 다른 개발사나 규제 기관이라면 선을 다른 곳에 그을 수도 있다고 밝히면서, 각 주체가 미리 공통된 정의를 두고 논의해 두면 도움이 될 것이라는 견해를 밝힙니다. Anthropic의 또 다른 정책 페이지는 자사의 Advanced AI Framework를 언급하며, 투명성과 독립 평가부터 필요할 때 위험한 배포를 막거나 억제하는 정부의 권한까지 다룬다고 설명합니다. 이 페이지는 이 프레임워크가 주로 미국 연방정부를 염두에 두고 작성된 제안이며, 이미 시행 중인 규정이 아니라고 명시하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 게시물 본문과 Amodei가 얼마 앞서 발표한 〈We Must Pace the Frontier〉는 같은 흐름을 이루는 두 편의 글입니다. 이 게시물 본문은 이 수치들이 프런티어 속도 조절에 대한 Amodei의 협력 호소에 부응한다고 쓰고 그의 글로 링크를 걸 뿐, 그 내용을 다시 서술하지는 않습니다. 3단계 계획과 '1단계는 외부 평가자 상주'라는 내용은 본 사이트의 다른 정리 글에서 나온 것으로, 이 글이 인용하는 페이지에는 들어 있지 않습니다. 여기서 공개된 세 가지 지표는 '실제로 속도 조절이 일어나고 있는지'를 펼쳐볼 수 있는 수치로 바꾸려는 Anthropic의 시도입니다. 그 3단계에 대해 알고 싶다면 본문 끝의 두 번째 링크를 참고하십시오."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "26%는 연구개발 업무의 4분의 1이 이미 완전히 AI에게 넘어갔다는 뜻인가요?",
+              "answer": "아닙니다. Anthropic의 정의에서 26%는 자동화 수준 AL4 '주도'에 해당하며, AI가 상위 수준의 지시만으로 작업 대부분을 처음부터 끝까지 완료할 수 있지만 인간은 여전히 감독하고 있다는 뜻입니다. 인간 개입 없이 완전 자율로 작동하는 AL5는 각주에서 '우리가 아직 도달하지 못한 단계'라고 설명되어 있으며, 본문에도 2026년 8월 기준으로 측정 대상이 된 어떤 AI 연구개발 작업도 아직 완전 자율로 작동하지 않는다고 적혀 있습니다."
+            },
+            {
+              "question": "0.002%라는 차단율은 이 감독 시스템이 안전하다는 뜻인가요?",
+              "answer": "Anthropic는 그렇게 주장하지 않습니다. 이 수치는 2026년 8월 온라인 모니터링이 10억 건이 넘는 판단 중에서 차단한 비율이며, Anthropic는 같은 절 서두에서 지금까지의 모니터링 데이터를 보면 개별 에이전트가 문제를 일으키는 일은 드물지만, 경제 전체에서 수백만, 수십억 개의 에이전트가 작동할 때는 개별 사건의 확률이 낮더라도 드문 사건이 자주 일어날 수 있다고 먼저 밝힙니다. 오프라인 모니터링은 별도로 대화 기록의 약 1,000건 중 1~2건에 표시를 하는데, 이는 다른 수치이며 원문은 이를 차단율과 합산하지 않았습니다."
+            },
+            {
+              "question": "이 세 지표는 외부 기관의 검증을 거쳤나요?",
+              "answer": "이 글이 2026년 9월 18일까지 확인한 내용을 기준으로, 이 수치들 자체를 외부 기관이 검증한 흔적은 보이지 않습니다. Anthropic가 쓴 내용은 독립적인 제3자 평가자를 상주시켜 내부 위험평가 팀에 준하는 접근 권한을 줄 계획이라는 것이며, 다른 곳에서는 현재 외부 평가자 체계를 구축하는 중이라고도 썼습니다. 본문에는 METR이 과거 Anthropic의 오프라인 모니터링 플랫폼을 독립적으로 레드팀 방식으로 테스트한 적이 있다고 나오지만, 이는 과거의 일이며 테스트 대상은 모니터링 플랫폼이지 이 백분율 수치들이 아닙니다."
+            },
+            {
+              "question": "이것이 대만의 Claude 사용자와 관계가 있나요?",
+              "answer": "이 글이 확인한 내용을 기준으로, 이 게시물 본문은 어떤 국가나 시장도 특정해 언급하지 않았고, 제품 변화나 사용자가 체감할 기능 조정도 다루지 않았습니다. 이는 Anthropic가 자사 내부 연구개발 과정을 어떻게 측정하는지 설명하는 글이지 제품 발표가 아니며, 대만 사용자가 지금 Claude를 쓰는 방식은 이로 인해 바뀌지 않습니다."
+            },
+            {
+              "question": "이 지표들은 앞으로 정해진 주기로 공개되나요?",
+              "answer": "Anthropic는 정해진 공개 주기를 약속하지 않았습니다. 이 글은 이를 통해 투명성을 보여주고 싶고 앞으로도 계속하겠다고 밝혔으며, 어떤 프런티어 개발사든 공개된 방법을 써서 이런 지표를 정기적으로 공개할 수 있다고도 썼습니다. 이 글이 확인한 페이지를 기준으로 다음 공개 날짜는 적혀 있지 않고, 앞으로도 같은 방법을 계속 쓰겠다는 약속도 없습니다. Anthropic는 부록에서 그 과업 목록을 주기적으로 다시 구성하고, 필요에 따라 이미 공개한 자동화 수치의 버전을 다시 매길 계획이라고도 밝혔습니다."
+            },
+            {
+              "question": "이 글은 Amodei가 얼마 앞서 발표한, 프런티어 AI의 속도를 늦추자는 글과 어떤 관계가 있나요?",
+              "answer": "Anthropic의 이 게시물 본문은 이 수치들이 프런티어 속도 조절에 대한 Amodei의 협력 호소에 부응한다고 쓰고 그의 글로 링크를 걸고 있지만, 그 내용을 다시 서술하지는 않습니다. 3단계 계획과 '1단계는 외부 평가자 상주'라는 내용은 본 사이트의 다른 정리 글에서 나온 것으로, 이 글이 인용하는 페이지에는 들어 있지 않습니다. 여기서 공개된 세 가지 지표는 '실제로 속도 조절이 일어나고 있는지'를 펼쳐볼 수 있는 수치로 바꾸려는 Anthropic의 시도입니다. 그 3단계에 대해 알고 싶은 독자는 본문 끝의 두 번째 링크로 더 읽어볼 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "외부에 보여주려 자체적으로 잰 수치는 아직 검증된 수치가 아닙니다",
+          "text": "이 글이 다루는 26%, 90%, 0.002%, 6%, 12% 등의 수치는 모두 Anthropic가 스스로 측정하고 스스로 공개한 것이며, Anthropic 스스로도 원문에서 각각의 한계를 밝혔습니다. 연구개발 자동화는 Claude가 Claude를 채점한 것이고, 에이전트 감독은 사내 플랫폼 하나만을 대상으로 하며, 컴퓨팅 비중은 의도적으로 보수적인 한 주짜리 스냅숏입니다. Anthropic가 쓴 내용은 독립적인 제3자 평가자를 상주시키는 계획이 지금 구축 중이라는 것이며, 확인 당일 읽을 수 있었던 내용을 기준으로 아직 이 수치들 자체를 외부 기관이 검증하지는 않았고, Anthropic는 정해진 공개 주기도 약속하지 않았습니다. 본 사이트는 직접 시험해 보지 않았고, 실제 상황은 Anthropic 공식 페이지의 최신 내용을 기준으로 확인하시기 바랍니다. 이 글의 확인일은 2026년 9월 18일입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei, 프런티어 AI 속도 조절 촉구: 〈We Must Pace the Frontier〉의 주장과 경계",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Measurements for understanding the pace of AI development inside frontier labs",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic 뉴스룸(뉴스 목록 페이지, 이 글은 주요 기사 영역에 실려 있으며 Sep 17, 2026으로 표기됨)",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic: Policy on the AI Exponential",
+          "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Anthropic 公布三项前沿 AI 指标：26% 是“主导”不是“自主”",
+      "description": "2026 年 9 月 17 日，Anthropic 公布三项尝试让外界追踪前沿 AI 实验室内部进展的指标：研发自动化程度、代理人监督与安全算力占比。本文依 Anthropic 官方页面于 2026 年 9 月 18 日查核，说明 26% 的“主导”为何不等于全自动、0.002% 的拦截率为何搭配着另一句警语，以及这几个数字目前仍是官方自行量测、涵盖范围有限，外部评估者还在建立中。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-pace-metrics-20260917/hero-zh-cn.jpg",
+        "alt": "原创插图：三个并排的量表图形，指针各自停在不同刻度上，量表上方悬着一个几何问号轮廓，代表这些刻度目前仍等待外部检视",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 17 日，Anthropic 在官方网站公布三项指标，尝试让外界看见前沿 AI 实验室内部的研发进度：有多少 AI 研发工作由 AI 自己完成、AI 代理人的行动怎么被看管，以及运算资源怎么分配。官方把这件事和首席执行官 Dario Amodei 稍早呼吁放慢前沿 AI 脚步的文章连在一起，写道若各家实验室真的协调放慢速度，这些数字预期会跟着改变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核，读的是 Anthropic 官方网站三个页面：公布这三项指标的专文、新闻总览页，以及说明政策脉络的政策页面。本站没有做任何实测；这三项指标目前都是 Anthropic 自行量测、自行公布的数字，本文逐一说明官方自己标出的限制与尚未查证的部分。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 于 2026 年 9 月 17 日公布三项指标，尝试让外界追踪前沿 AI 实验室内部的研发进度。",
+            "以 2026 年 8 月为准，Claude“主导”占 26%，“协作”以上的比重合计超过 90%，但官方定义的“主导”是人类监督下、AI 能从高层次指令出发完成大部分工作，官方在注脚写完全自主是一个尚未达到的等级。",
+            "以 2026 年 7 月 13 日至 20 日一周为准，官方估计投入 AI 研发的算力约有 6% 分给安全工作，投入“AI 主导的 AI 研发”的算力约有 12% 分给安全工作，官方称这是刻意保守的估计。",
+            "官方说明这些数字目前由 Anthropic 自行量测，独立第三方评估者常驻是官方写的计划、目前正在建立，本文查核当下没有看到外部单位查核过这三项指标本身。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropic 公布了什么，又是为了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 官方新闻总览页为这篇专文写的摘要是：现在外界看不到 AI 实验室内部在发生什么事，Anthropic 提出新指标要让大众看见前沿 AI 的发展。专文本身则把这件事和 Amodei 的呼吁连在一起，但只超链接到他那篇文章、没有复述他主张的内容；官方写的是这些提议的量测与政策合起来，是外界从实验室外监测 AI 发展步调的一个起点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇专文本身没有印出发布日期——查核到 2026 年 9 月 18 日，页面上找不到署名日期、“发布于”字样或对应的元数据栏位。9 月 17 日是 Anthropic 官方新闻总览页在精选区块为这篇文章标注的日期，本文依此认定为事件日；原文没有印出任何时刻，本文因此不写发布的确切时间。官方把这份指标称为雏形，写道希望借此示范透明度、会继续这么做，但没有承诺固定的公布周期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三项指标：研发自动化、代理人监督与安全算力"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一项是“Anthropic 研发自动化指数”，用 Epoch AI 的自动化等级量表（AL）评分，从 AL0 到 AL5（完全自主、无人类介入）。AL3“协作”是 AI 能在人类近距离指导下完成大量工作；AL4“主导”是 AI 能从高层次指令出发完成大部分工作，人类仍在旁监督。以 2026 年 8 月为准，官方写道 Claude 在任何一类有量测的 AI 研发工作中都还没有完全自主运作；“主导”占 26%，“协作”以上比重合计超过 90%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二项是代理人监督，官方选了三个角度：覆盖率、审查时延与升级比率，分别对应多少行动经过监控、行动与审查隔了多久、多少行动被拦截或标记审查。以 2026 年 8 月为准，内部最常用的一个平台上同时约有 3 万个代理人在做研究与工程工作，这几项数字只涵盖这一个平台。这些行动有 100% 先经过在线监控、通常几秒内完成，事后也有 100% 进入离线监控；离线监控每周标记约 10 万则对话记录，多数由分类器处理掉，优先级最高的约 50 则送交人工审查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方写道，分析 2026 年 8 月超过 10 亿次决策后，0.002%（约 47,000 次里有 1 次）被在线监控拦截。官方在原文这一节的开头先提醒：就目前的监控数据看，单一代理人很少乱来，但当经济体里有数百万、数十亿个代理人运作时，罕见事件也可能经常发生。第三项是算力快照：官方检视 2026 年 7 月 13 日到 20 日这一周的全部运算资源用途，AI 研发算力里约有 6% 分给安全工作，“AI 主导的 AI 研发”算力里约有 12% 分给安全工作，两个数字分母不同，本文不相加也不比较。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "指标",
+            "期间",
+            "官方数字",
+            "官方标示的限制"
+          ],
+          "rows": [
+            [
+              "研发自动化指数",
+              "2026 年 8 月",
+              "“主导”占 26%，“协作”以上占逾 90%",
+              "由 Claude 评分 Claude，非外部稽核"
+            ],
+            [
+              "代理人监督：覆盖率",
+              "2026 年 8 月",
+              "100% 行动事前经在线监控、事后进离线监控",
+              "仅涵盖内部最常用的一个平台"
+            ],
+            [
+              "代理人监督：拦截率",
+              "2026 年 8 月",
+              "逾 10 亿次决策中拦截 0.002%（约 47,000 分之 1）",
+              "官方称经济体规模够大时罕见事件也可能经常发生"
+            ],
+            [
+              "安全算力占比",
+              "2026 年 7 月 13 日至 20 日",
+              "AI 研发算力约 6%、AI 主导研发算力约 12% 分给安全工作",
+              "官方称是刻意保守的单周快照"
+            ]
+          ],
+          "caption": "整理自 Anthropic 2026 年 9 月 17 日公布的三项指标，查核日 2026 年 9 月 18 日；表中数字均为官方自行量测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "为什么这些数字还不是已经查证的数字"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方自己列出两个挡在跨实验室比较前面的障碍。第一，没有共通的量测方法；第二，Anthropic 是用自己的 Claude 去评分自己的系统：研究用的 Claude 代理人先收集证据，再由独立的 Claude 担任评审；评某个月份时，做评分的代理人只看得到那个月或更早的证据。换句话说，官方自己写这可能表示担任评审的模型，会犯下和被它检查的模型同一种错误。"
+        },
+        {
+          "type": "paragraph",
+          "text": "监督数字也有边界：官方写的是计划把多个组织的独立第三方评估者常驻、给予接近内部风险评估团队的访问权限，并在监督那一节写目前正在建立外部评估者——两句都不等于已经有人查核过。文中提到 METR 过去曾独立红队测试 Anthropic 的离线监控平台，但这是过去式，测试对象是监控平台，不是这篇文章公布的百分比数字。以查核当天读到的内容为准，本文没有看到外部单位验证过上面这几个数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "算力占比的算法官方也写得保守：官方举的例子是一个 token 对能力提升的贡献若和对安全一样多，就不算进安全那一边；两个数字也不含另一批用于安全防护分类器的运算资源，官方形容那是另一笔相当规模的算力。官方提醒，安全研究通常比前沿训练更仰赖研究人员的时间、而非运算资源本身，所以算力占比只是不完美的替代指标，意义在于能跨开发者、跨时间做同类比较，而不是这两个百分比眼前的绝对大小。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-pace-metrics-20260917/diagram-1-zh-cn.svg",
+          "alt": "四格图解：谁在做研发、代理人怎么被看管、算力分给谁、谁来查证",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic 2026 年 9 月 17 日公布三项指标的整理：研发自动化、代理人监督与安全算力占比，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "两个最容易被误读的数字"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一个容易被误读的地方是“主导”。26% 常被直接理解成“四分之一的工作 AI 自己完成、不用人管”，但官方对 AL4“主导”的定义是 AI 能从高层次指令出发完成大部分工作、人类仍在监督；AL5“完全自主、没有人类介入”，官方在注脚写的是“一个我们尚未达到的等级”。较接近的说法是“AI 接下任务、自己做完大部分步骤，但旁边还有人看着、随时能介入”，不是“AI 关起门来做完，没有人知道发生什么事”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二个容易被误读的地方是 0.002% 的拦截率。单看数字，很容易读成“代理人几乎不会乱来，系统很安全”；但官方在原文同一节写，当经济体里有数百万、数十亿个代理人运作，就算单一事件概率很低，罕见事件也可能经常发生。而且 0.002% 只是在线监控在一个月内、一个内部平台上拦截的比率，离线监控另外还会标记大约千分之一到千分之二的对话记录做进一步审查，原文把两者分列在表格不同格子，没有合并。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "没有写进这篇文章的部分，以及和放慢前沿的关联"
+        },
+        {
+          "type": "paragraph",
+          "text": "以查核到 2026 年 9 月 18 日的内容为准，这篇专文没有点名任何国家或市场，也没有提到产品变化或用户看得到的功能调整——这是说明 Anthropic 怎么衡量自己内部研发过程的文章，不是产品公告，台湾用户目前使用 Claude 的方式不会因此改变。文章只公布 Anthropic 自己的数字，没有写其他公司的自动化比重、监督覆盖率或安全算力占比；官方原文写的是“任何前沿开发者都可以”公布类似指标，不是已经有其他公司这么做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇专文在附录写出自己对“安全工作”的定义：以让 AI 系统更安全、更容易理解或网络安全更稳固为主要目的的工作；官方同时写明这只是众多合理选择之一，换一家开发者或主管机关可能把线画在别的地方，并认为各方事先谈好共通定义会有好处。Anthropic 另一份政策页面提到自家的 Advanced AI Framework，内容涵盖透明度、独立评估，到政府在必要时阻止或吓阻危险部署的权限；该页写明这份框架主要是为美国联邦政府而写，是提案，不是已经生效的规定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇专文与 Amodei 稍早发表的《We Must Pace the Frontier》是同一条脉络的两篇文章：专文只写这些数字呼应 Amodei 协调放慢前沿的呼吁并超链接过去，没有复述那篇的内容；三步骤计划与“第一步是外部评估者常驻”出自本站另一篇整理，不在本文引用的页面里。本篇公布的三项指标，是 Anthropic 尝试把“放慢有没有发生”变成可以摊开来看的数字；要了解那三个步骤，请见文末第二个链接。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "26% 是不是代表四分之一的研发工作已经完全交给 AI 自己做？",
+              "answer": "不是。Anthropic 官方定义里，26% 对应的是自动化等级 AL4“主导”，意思是 AI 能从高层次指令出发完成大部分工作，但人类仍在监督；完全自主、没有人类介入的 AL5，官方在注脚写的是“一个我们尚未达到的等级”，正文也写以 2026 年 8 月为准，任何一类有量测的 AI 研发工作都还没有完全自主运作。"
+            },
+            {
+              "question": "0.002% 的拦截率是不是表示这套监督系统很安全？",
+              "answer": "官方没有这样宣称。这个数字是 2026 年 8 月在线监控在超过 10 亿次决策中拦截的比率，而官方在同一节开头就先写明：就目前的监控数据看，单一代理人很少乱来，但当经济体里有数百万、数十亿个代理人运作，就算单一事件的概率很低，罕见事件也可能经常发生。离线监控另外还会标记大约千分之一到千分之二的对话记录，那是不同的数字，原文没有把两者合并。"
+            },
+            {
+              "question": "这三项指标有没有经过外部单位查核？",
+              "answer": "以本文查核到 2026 年 9 月 18 日的内容为准，没有看到外部单位验证过这几个数字本身。官方写的是计划把独立第三方评估者常驻、给予接近内部风险评估团队的访问权限，并在另一处写目前正在建立外部评估者；文中提到 METR 过去曾独立红队测试 Anthropic 的离线监控平台，但那是过去式，测试对象是监控平台，不是这几个百分比。"
+            },
+            {
+              "question": "这跟台湾的 Claude 用户有关系吗？",
+              "answer": "以本文查核到的内容为准，这篇专文没有点名任何国家或市场，也没有提到产品变化或用户看得到的功能调整。这是 Anthropic 说明自己怎么衡量内部研发过程的文章，不是产品公告，台湾用户目前使用 Claude 的方式不会因此改变。"
+            },
+            {
+              "question": "这些指标以后会固定公布吗？",
+              "answer": "官方没有承诺固定的公布周期。文章写希望借此示范透明度、会继续这么做，也写任何前沿开发者都可以用公开的方法定期公布这类指标；以本文查核到的页面为准，没有写出下一次公布的日期，也没有承诺往后会沿用同一套方法。官方另外在附录写道，计划定期重建那份任务清单，并视情况为已公布的自动化数字重新标示版本。"
+            },
+            {
+              "question": "这篇文章跟 Amodei 稍早呼吁放慢前沿 AI 的文章是什么关系？",
+              "answer": "Anthropic 这篇专文写这些数字呼应 Amodei 协调放慢前沿的呼吁，并超链接到他那篇文章，但没有复述那篇的内容。三步骤计划与“第一步是外部评估者常驻”出自本站另一篇整理，不在本文引用的页面里。本篇公布的三项指标，是 Anthropic 尝试把“有没有真的放慢”变成可以摊开来看的数字；要了解那三个步骤，读者可从文末第二个链接进一步阅读。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "自己量给外面看的数字，还不是已查证的数字",
+          "text": "本文说明的 26%、90%、0.002%、6%、12% 等数字，全部是 Anthropic 自行量测、自行公布，官方也在原文列出各自的限制：研发自动化由 Claude 评分 Claude、代理人监督只涵盖内部一个平台、算力占比是刻意保守的单周快照。官方写的是计划让独立第三方评估者常驻、目前正在建立，以查核当天读到的内容为准，还没有外部单位查核过这几个数字本身；官方也没有承诺固定的公布周期。本站没有做任何实测，实际情况请以 Anthropic 官方页面最新内容为准，本文查核日为 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Amodei 呼吁放慢前沿 AI：《We Must Pace the Frontier》的主张与边界",
+              "kind": "life",
+              "slug": "ai-news-pace-the-frontier-20260912"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Measurements for understanding the pace of AI development inside frontier labs",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic Newsroom（新闻总览页，本篇收录于精选区块并标注 Sep 17, 2026）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Anthropic：Policy on the AI Exponential",
+          "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  },
+  "related": [
+    "ai-news-pace-the-frontier-20260912",
+    "ai-news-openai-misalignment-reports-20260917",
+    "ai-news-anthropic-threat-report-20260910"
+  ]
+}

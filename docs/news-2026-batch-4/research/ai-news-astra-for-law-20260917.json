@@ -1,0 +1,294 @@
+{
+ "slug": "ai-news-astra-for-law-20260917",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All three recorded sources were fetched from this container on 2026-09-18 with curl -sL -A \"Mokaair-editorial\"; no personal data in any header, query string or form. Observed: https://openai.com/index/astra-for-law/ 200 / 516,081 bytes; https://openai.com/index/cooley-gopublic/ 200 / 382,611 bytes; https://openai.com/business/plugins/?tab=plugins-legal 200 / 2,025,064 bytes. All three returned real body. ACCESS NOTE: earlier rounds of this batch recorded openai.com/index/* as 403 and fell back to web.archive.org; on 2026-09-18 these pages answered 200 to plain curl, so the block is intermittent and nothing here comes from an archive. INVISIBLE CHARACTERS - THIS PAGE IS FULL OF THEM, and the BRIEF's rule about copying strings exactly applies: 'GPT‑6 Astra' uses U+2011 NON-BREAKING HYPHEN, not an ASCII '-', everywhere on the page including inside the model-picker name '“GPT‑6 Astra Law”'. Meanwhile the API identifier printed on the same line, gpt-6-astra-law, uses ordinary ASCII hyphens. The page also inserts U+2060 WORD JOINER before every '(opens in a new window)', so a quote must not run across a link boundary. Searching this page for 'GPT-6' in ASCII returns nothing. LIVE-DOCUMENT WARNING: https://openai.com/business/plugins/ is a filterable product directory with no dates on it; it was used only to confirm that a Legal filter exists in the directory and how OpenAI describes plugins generally, never for counts and never for dates. The counts of 26 partner plugins, 9 community plugins and 47 custom skills come from the sentences OpenAI wrote in the announcement itself, which is the safe place to take them from. TWO FIRST-PARTY PAGES DELIBERATELY NOT USED: vals.ai and wiki.free.law are linked from the announcement but are third parties under the BRIEF, were not fetched, and every number resting on them is written as OpenAI's claim. No news media, aggregator or search snippet was used.",
+ "sources": [
+  {
+   "title": "Introducing Astra for Law",
+   "url": "https://openai.com/index/astra-for-law/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "How Cooley is accelerating IPO work with ChatGPT",
+   "url": "https://openai.com/index/cooley-gopublic/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Plugins | Secure integrations for enterprise workflows",
+   "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "event_date": "2026-09-17",
+ "event_date_basis": "TAIPEI CONVENTION APPLIED, per docs/news-2026-batch-4/agents/DELTA-4-5.md section 6 (\"事件日：以前期研究紀錄的 event_date 與 event_date_basis 為準（已換算台北時間）\"). Here the conversion cannot be applied because OpenAI published no usable time, and the printed date stands. The announcement page's date line reads 'OpenAI September 17, 2026', filed under Company, and the Cooley customer story published alongside it prints the same date. OpenAI's official feed (https://openai.com/news/rss.xml, read 2026-09-18) gives the Astra for Law item pubDate Thu, 17 Sep 2026 00:00:00 GMT - and 00:00:00 GMT is one of the PLACEHOLDER timestamps this batch has hit before, so the date is usable and the time is not. There is nothing to convert. The paired Cooley item carries a real time, Thu, 17 Sep 2026 12:00:00 GMT, which is 2026-09-17 20:00 in Taipei - still 17 September - so both readings agree. Use 2026-09-17 for the slug and news_date and do not print a time of day. SEPARATE DATES INSIDE THE STORY: Cooley's deal figures are for 2025, not 2026, and 'ChatGPT for Word generally available today' is also 2026-09-17. Keep all three apart.",
+ "verified_facts": [
+  {
+   "fact": "OpenAI published this on 2026-09-17; the page's own date line reads 'OpenAI September 17, 2026' and it is filed under Company.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI September 17, 2026"
+  },
+  {
+   "fact": "The standfirst states what Astra for Law is in OpenAI's own framing: an existing model configured for a field, not a new model.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Our most powerful model, configured into a new AI foundation for law."
+  },
+  {
+   "fact": "The opening sentence defines the product and names its three ingredients - GPT-6 Astra plus settings, tools and context tailored for professional legal work. Note the U+2011 hyphen in the model name.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It combines GPT‑6 Astra, our latest and most powerful model, with settings, tools, and context tailored for professional legal work."
+  },
+  {
+   "fact": "OpenAI names two API customers that will be able to build on it - Harvey and Legora - using 'including', so this is an example list, not a complete one.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "API customers including Harvey and Legora will be able to build on Astra for Law, bringing this intelligence into their own products and workflows."
+  },
+  {
+   "fact": "The core tool is a legal search index. OpenAI states what it covers and how large it is: U.S. case law, statutes, regulations, court rules and administrative decisions across a corpus of more than 230 million URLs, with sources added daily.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Astra for Law can search U.S. case law, statutes, regulations, court rules, and administrative decisions across a corpus of more than 230 million URLs, with sources added daily."
+  },
+  {
+   "fact": "The index scope is United States law only. Every item in OpenAI's own list is prefixed 'U.S.' and no other jurisdiction is named anywhere on the page.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "search U.S. case law, statutes, regulations, court rules, and administrative decisions"
+  },
+  {
+   "fact": "OpenAI names a nonprofit partner for case law: the Free Law Project, behind CourtListener, whose collection OpenAI says covers more than 99.9% of published U.S. precedential case law.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Our work with Free Law Project, the nonprofit behind CourtListener, brings its case-law collection covering more than 99.9% of published U.S. precedential case law"
+  },
+  {
+   "fact": "OpenAI says the index complements rather than replaces the licensed content firms already buy, naming Thomson Reuters as an example of such a provider.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "complements the licensed content and specialist products firms rely on from providers such as Thomson Reuters"
+  },
+  {
+   "fact": "The benchmark and its exact conditions: 200 U.S. legal research questions from the PRIVATE VALIDATION SET of Vals AI's Legal Research Bench, testing Astra for Law's complete setup.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "we tested Astra for Law’s complete setup on 200 U.S. legal research questions from the private validation set of Vals AI’s Legal Research Bench"
+  },
+  {
+   "fact": "The headline benchmark result, with both its comparison baseline and its effort condition attached, exactly as OpenAI printed it including the en dash.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "At the highest reasoning effort for both systems, Astra for Law passed the evaluation’s overall correctness check on 54.0% of questions, compared with 38.7% for GPT‑6 Astra using web search alone – a 40% relative improvement."
+  },
+  {
+   "fact": "The retrieval results, and note the hedge on the second number: 24% more reference cases at the highest reasoning effort, and 'up to' 54% more relevant passages when comparing at the same reasoning effort.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "On the audited set of target passages, it retrieved up to 54% more relevant passages from the correct court opinions, when comparing the systems at the same reasoning effort."
+  },
+  {
+   "fact": "AVAILABILITY, the tightest and most important sentence on the page: initially offered to selected law firms through Trusted Access in ChatGPT and Codex, and only 'coming soon' to the API.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Astra for Law will be initially offered to selected law firms through Trusted Access in ChatGPT and Codex, and will be coming soon to the API."
+  },
+  {
+   "fact": "The two identifiers, which differ in their hyphens: the model picker name uses U+2011 non-breaking hyphens, the API identifier uses ASCII hyphens.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It will appear in the model picker as “GPT‑6 Astra Law” and in the API as gpt-6-astra-law."
+  },
+  {
+   "fact": "The Trusted Access Program is described as a special programme for eligible law firms, covering lawyers and people working under their supervision, for professional legal work.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We’ve created a special Trusted Access Program for eligible law firms to give lawyers and people working under their supervision access to Astra for Law for professional legal work."
+  },
+  {
+   "fact": "The two data-handling terms attached to that programme, and both are scoped to eligible firms: Zero Data Retention on the API, and ChatGPT Enterprise usage excluded from human review by default.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For eligible firms, the offering includes Zero Data Retention (ZDR) on our API, and usage of ChatGPT Enterprise is excluded from human review by default."
+  },
+  {
+   "fact": "OpenAI says it is working with Latham & Watkins on governance design, naming four things: information permissions, ethical walls, client instructions and firm oversight.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "to design for information permissions, ethical walls, client instructions, and firm oversight"
+  },
+  {
+   "fact": "Plugin counts as OpenAI states them: 26 partner-built plugins launched that day, described as covering the practice and business of law.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Today, we’re launching 26 partner-built plugins"
+  },
+  {
+   "fact": "Named plugin partners, given as examples of what they do rather than as a complete list: iManage (save a negotiation brief to the matter file), Intapp (surface activities that may need a time entry), DeepJudge (bring prior deals into a comparison), and Thomson Reuters (HighQ matter context in ChatGPT, plus a previewed CoCounsel Legal connector). Relativity and Clio are named earlier in the post as examples of specialist tools the plugins connect to.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Thomson Reuters is bringing HighQ matter context into ChatGPT and previewing a forthcoming CoCounsel Legal connector."
+  },
+  {
+   "fact": "Community contribution counts: 9 community plugins from lawyers and legal engineers at LegalQuants, LECG and Skills.law, carrying 47 custom skills.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The launch includes 9 community plugins from lawyers and legal engineers at LegalQuants, LECG, and Skills.law, with 47 custom skills"
+  },
+  {
+   "fact": "THE ONE ITEM IN THIS ANNOUNCEMENT THAT IS NOT LAW-SPECIFIC: OpenAI states that ChatGPT for Word became generally available on the same day, for proofreading, suggested edits and flagging formatting issues.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We’re also making ChatGPT for Word generally available today, so lawyers can proofread, get suggested edits, and flag formatting issues in the tool they already rely on for drafting."
+  },
+  {
+   "fact": "Three firms are named with the custom applications OpenAI's forward-deployed engineers built with them: Sullivan & Cromwell (an agreement analyzer), Ropes & Gray (a deal diligence system) and Cooley (GO Public, for preparing to go public).",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Cooley built GO Public to bring its capital markets expertise into how companies prepare to go public, from drafting the IPO filing to identifying the risks that deserve management’s attention."
+  },
+  {
+   "fact": "A fourth firm, Wachtell, Lipton, Rosen & Katz, is named as an exploratory collaboration rather than a shipped application.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Our work with Wachtell, Lipton, Rosen & Katz brings the firm’s litigation and corporate expertise together with our frontier research and engineering to explore how AI can support the work involved in providing sophisticated legal judgment."
+  },
+  {
+   "fact": "OpenAI's stated posture toward the existing legal-software market, which is the sentence that frames the whole announcement commercially.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Building on OpenAI should mean getting more from the ecosystem, not replacing it."
+  },
+  {
+   "fact": "Every named lawyer quote on the page is an early-testing impression, not a result. Harvey's head of applied research describes 'early testing'; Sullivan & Cromwell's partner says the models 'felt like' a significant step at 'this early stage'.",
+   "url": "https://openai.com/index/astra-for-law/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In our early testing, Astra for Law showed strength across key aspects of legal research: grounding answers in on-point authorities, citing with precision, and offering practical, advisory guidance."
+  },
+  {
+   "fact": "The Cooley customer story was published the same day and carries the same date line.",
+   "url": "https://openai.com/index/cooley-gopublic/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI September 17, 2026"
+  },
+  {
+   "fact": "Cooley's GO Public is built on ChatGPT Work, not on Astra for Law. The customer story says so directly, which matters because the announcement lists Cooley among firms building custom applications.",
+   "url": "https://openai.com/index/cooley-gopublic/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Cooley developed GO Public, a proprietary AI product offering built on ChatGPT Work."
+  },
+  {
+   "fact": "OpenAI describes the workflow as producing material for human review rather than output: an agentic harness analyses information so lawyers can review and validate it.",
+   "url": "https://openai.com/index/cooley-gopublic/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Its agentic harness analyzes information so lawyers can review and validate the work."
+  },
+  {
+   "fact": "Cooley's scale figures, which are for 2025 and not for 2026: 180 deals globally, more than $51.5 billion in deal volume.",
+   "url": "https://openai.com/index/cooley-gopublic/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In 2025, the firm advised on 180 deals globally, totaling more than $51.5 billion in deal volume."
+  },
+  {
+   "fact": "What changed in practice, in Cooley's own description: instead of starting from a comparable company's precedent, GO Public starts from the client's own information to create a tailored starting point for lawyer review.",
+   "url": "https://openai.com/index/cooley-gopublic/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GO Public allows Cooley to begin with the client itself, bringing together the information provided, relevant public sources, and carefully curated precedents to create a more tailored starting point for lawyer review."
+  },
+  {
+   "fact": "OpenAI's plugin directory has a Legal filter among eight categories (Small Business, Productivity, Engineering & IT, Data & Research, Legal, Design & Creative, Finance, Sales & Commerce), and describes plugins in general terms.",
+   "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Plugins bring context from your tools and data into ChatGPT and the API, helping you create, analyze, and take action in one place."
+  }
+ ],
+ "not_said": [
+  "NO REGION SCOPE FOR THE PRODUCT, and a jurisdiction scope that is not the same thing. The legal search index is explicitly U.S. law - case law, statutes, regulations, court rules, administrative decisions, all prefixed 'U.S.' - and the Vals AI benchmark is 200 U.S. questions. But OpenAI never says which COUNTRIES' law firms may join Trusted Access. As checked on both announcement pages to 2026-09-18, no country list for eligibility appears. The article must keep those two separate and must not write that Taiwanese firms can or cannot apply.",
+  "No price. Nothing on any of the three pages states what Astra for Law costs, whether it is included in an existing ChatGPT Enterprise contract, or what the plugins cost.",
+  "No eligibility criteria for Trusted Access: no firm size, no application route, no waitlist, no deadline, no participant count. 'Eligible firms' and 'selected law firms' are used without definition.",
+  "No date for API availability. 'Coming soon to the API' carries no timeframe.",
+  "No end date, no completion date, and no statement that Astra for Law will ever become generally available.",
+  "No statement about Traditional Chinese, Chinese-language legal work, or any non-English drafting. The page names no language at all.",
+  "No accuracy figure outside the Vals AI validation set, no error rate, no hallucination rate, and no statement about what happens when a citation is wrong.",
+  "No independent verification. Every benchmark number is OpenAI's own report of a test it ran; vals.ai and wiki.free.law are linked but were not fetched and are third parties.",
+  "No customer outcome numbers. Sullivan & Cromwell, Ropes & Gray, Cooley, Latham & Watkins, Wachtell and Harvey all appear with descriptions or impressions; none carries a measured result, a time saving or a cost figure.",
+  "No statement about professional responsibility, malpractice, bar rules, or who is accountable for an AI-assisted filing. Governance is described as something being designed with one firm, not as a published standard.",
+  "No detail on what Zero Data Retention or exclusion from human review means in practice, or on whether either applies outside the eligible-firm offering.",
+  "No statement that ChatGPT for Word's general availability is limited to law firms - OpenAI announces it in the legal post but describes it as generally available. Which plans and regions it covers is NOT stated on this page."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "That Astra for Law is a new model.",
+   "seen_where": "Headline framing, and the natural reading of 'Introducing Astra for Law'.",
+   "why_excluded": "OpenAI's own standfirst calls it 'our most powerful model, configured into a new AI foundation for law', and the body says it combines GPT‑6 Astra with settings, tools and context. It is a configuration with a search index and instructions, and it appears in the model picker under a distinct name. Calling it a new model overstates it."
+  },
+  {
+   "claim": "The 54.0% / 38.7% / 40% figures as evidence of general legal accuracy.",
+   "seen_where": "The benchmark section of the announcement.",
+   "why_excluded": "Three conditions are attached in OpenAI's own sentence: 200 questions, a private validation set, and the highest reasoning effort for both systems. A private validation set cannot be inspected by anyone outside. Report the numbers with all three conditions and as 'OpenAI 表示', or not at all."
+  },
+  {
+   "claim": "'Up to 54% more relevant passages' as a flat 54%.",
+   "seen_where": "Same section.",
+   "why_excluded": "OpenAI wrote 'up to'. Per the BRIEF's rule 3, dropping a hedge changes the claim. Keep 'up to'."
+  },
+  {
+   "claim": "That Cooley's GO Public runs on Astra for Law.",
+   "seen_where": "The announcement lists Cooley among firms whose custom applications OpenAI's engineers helped build, in a section about Astra for Law.",
+   "why_excluded": "The Cooley customer story published the same day says GO Public is 'built on ChatGPT Work'. Two OpenAI pages, one day, two different foundations named. Follow the customer story for what GO Public runs on, and do not present Cooley as an Astra for Law deployment."
+  },
+  {
+   "claim": "Cooley's 180 deals and $51.5 billion as current or as an AI result.",
+   "seen_where": "The customer story's opening paragraph.",
+   "why_excluded": "The sentence is explicitly about 2025 and about the firm's practice, not about GO Public's output. Writing it near an AI claim would imply a causal link the page does not make."
+  },
+  {
+   "claim": "Any count of legal plugins taken from https://openai.com/business/plugins/.",
+   "seen_where": "That directory, read 2026-09-18.",
+   "why_excluded": "It is an undated, filterable product directory whose contents change without notice - the BRIEF's live-document rule. The counts 26, 9 and 47 are safe only because OpenAI wrote them as sentences in the dated announcement. Do not count the directory."
+  },
+  {
+   "claim": "Vals AI's Legal Research Bench described independently, or CourtListener's coverage verified at source.",
+   "seen_where": "The announcement links to vals.ai and wiki.free.law.",
+   "why_excluded": "Both are third parties under the BRIEF and neither was fetched. Everything about them in this record is OpenAI's characterisation."
+  },
+  {
+   "claim": "That this is OpenAI's first vertical product, or that a legal vertical is new.",
+   "seen_where": "Tempting framing.",
+   "why_excluded": "The site already has ai-news-chatgpt-financial-services-20260910 about a financial-services vertical a week earlier, and OpenAI's own plugin directory carries eight category filters. Nothing here supports a 'first' claim, and the BRIEF forbids '第一' constructions built from silence."
+  },
+  {
+   "claim": "That ChatGPT for Word's general availability covers all plans, regions or languages.",
+   "seen_where": "One sentence in the announcement.",
+   "why_excluded": "OpenAI states GA and nothing else - no plan list, no region, no language. Report the one sentence and say the conditions are not stated. Do not check another page and silently merge it in; the BRIEF requires sources[] to actually carry every fact."
+  }
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md's OpenAI section ends at 2026-09-14 and treats 9/15-9/16 as empty. Seven OpenAI items carry a pubDate at or after 2026-09-16 00:00 UTC as of 2026-09-18, including this one and its paired customer story.",
+  "The candidate file's note that openai.com/index/* returns 403 did not hold on 2026-09-18: astra-for-law returned 516,081 bytes and cooley-gopublic 382,611 bytes to plain curl with the Mokaair-editorial UA.",
+  "BRIEF.md's warning about invisible characters cites OpenAI's 'GPT‑Live‑1' as the example. This page shows the same U+2011 hyphen is used throughout the GPT‑6 Astra name, INCLUDING inside the quoted model-picker string, while the API identifier on the same line uses ASCII hyphens. Any writer or checker grepping this page for 'GPT-6' in ASCII will conclude the model is not mentioned. That is the negative-evidence trap the BRIEF describes in rule 2, and it is live on this page.",
+  "Neither the candidate file nor ai.md notes that OpenAI publishes a customer story alongside vertical launches. Here the story contradicts the announcement's implied framing - GO Public runs on ChatGPT Work, not Astra for Law. Anyone writing a vertical-launch piece from the announcement alone will get that wrong."
+ ],
+ "must_not_write": [
+  "Do not call Astra for Law a new model. OpenAI calls it its most powerful model configured for law, combining GPT‑6 Astra with settings, tools and context.",
+  "Do not write that Taiwanese law firms can or cannot use it. OpenAI publishes no eligibility geography. Write '官方未說明可申請的地區'.",
+  "Do not confuse the U.S. jurisdiction of the search index with the availability of the product. The first is stated; the second is not.",
+  "Do not state 54.0%, 38.7%, 40%, 24% or 54% without their conditions - 200 questions, a private validation set, highest or matched reasoning effort - and always as 'OpenAI 表示'.",
+  "Do not drop the 'up to' from 'up to 54% more relevant passages'.",
+  "Do not write that Cooley's GO Public runs on Astra for Law. OpenAI's own customer story says it is built on ChatGPT Work.",
+  "Do not place Cooley's 2025 deal figures next to an AI capability claim; the page makes no causal link.",
+  "Do not write '第一個法律垂直產品' or any 'first' claim. The site covered a financial-services vertical a week earlier and OpenAI makes no priority claim.",
+  "Do not count plugins from the plugin directory; use only the 26 / 9 / 47 figures OpenAI wrote in the dated announcement.",
+  "Do not extend ChatGPT for Word's general availability to any plan, region or language OpenAI did not name.",
+  "Do not write '我們試用'. Every quote on the page is a law firm's early impression, and this site has tested nothing.",
+  "Do not give legal advice, and do not suggest a reader use any AI tool for their own legal matter.",
+  "Do not re-explain what GPT-6 Astra is - that is ai-news-gpt-6-astra-20260903's material - or how a vertical product is sold, which is ai-news-chatgpt-financial-services-20260910's.",
+  "Do not draw any logo, wordmark, UI screenshot or product icon in the diagram, and do not put a number in the diagram that is not in the body."
+ ],
+ "overlaps_existing_article": "Two existing packs are direct neighbours and both were read.\n\n1. ai-news-chatgpt-financial-services-20260910 'ChatGPT for Financial Services 發布：金融機構的 AI 工具，跟個人帳號無關' (news_date 2026-09-10, display_order 156; sources openai.com/index/introducing-chatgpt-financial-services/ and learn.chatgpt.com/docs/pricing; sections: the product, how built-in data and existing subscriptions connect, how to read OpenAI's three benchmarks, template output and governance, and who may use it plus what is unstated). THIS IS THE CLOSEST ARTICLE ON THE SITE AND THE STRUCTURAL TWIN - same publisher, same 'industry vertical built on GPT-6 Astra' shape, one week apart. If this article is written to the same outline it will read as a repeat. DIVISION: that article owns the general question 'what is an industry version of ChatGPT and why does it not concern a personal account'. This one must NOT re-answer that. Its own material is specific: a searchable corpus with a stated jurisdiction, a benchmark on a private validation set, a Trusted Access programme with two named data terms, an ecosystem of partner and community plugins, and a customer story that names a different foundation from the announcement. ai.md's B8 guidance also applies here by analogy: this is a product for firms, so it carries a plain callout saying the site has not used it and this is not legal advice - but it must NOT take the finance topic or a finance disclaimer.\n\n2. ai-news-gpt-6-astra-20260903 'GPT-6 Astra 發布：從回答問題到完成電腦工作' (news_date 2026-09-03). The underlying model. DIVISION: do not re-derive what GPT-6 Astra is or what it can do; one sentence of context, then link. This is the natural 相關新聞 link if the financial-services piece is judged too close a twin to link to.\n\n3. ai-news-openai-agents-api-20260910 is adjacent only through the word 'agentic' in the Cooley story. No division needed beyond not conflating them.\n\nNothing on the site covers a professional-vertical product's access conditions in detail, and nothing covers ChatGPT for Word.\n\nFirst link (本垂直索引) is ai-news-2026-january-september-index, zh-TW title read on 2026-09-18 as '2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用'; read the pack at writing time because check_article.py asserts link.text equals the target title. display_order continues from 160, the current maximum.",
+ "editorial_brief": "READER AND ANGLE. Written for a Taiwanese general reader who is not a lawyer and will never touch this product, but who keeps hearing that AI is about to replace professionals. The question the article answers is: when a frontier lab builds a version of its model for one profession, what does it actually add, and what does that tell you about what the general model could not do? The answer here is unusually concrete and unusually humbling - OpenAI did not train a new model. It added a searchable corpus of one country's law, wrote instructions for legal analysis, put two data-handling terms around it, and restricted it to selected firms. The lesson for a general reader is that the hard part was sources and access rules, not intelligence.\n\nTHE CENTRAL FACT TO GET RIGHT. Two scopes that look alike and are not. The search index is explicitly U.S. law. The product's availability geography is NOT STATED AT ALL - OpenAI says 'selected law firms' through 'Trusted Access', with no country list. Writing 'a U.S.-only product' would be an inference from the corpus; writing 'available worldwide' would be an inference from silence. Both are wrong. The second thing to get right is that Cooley's GO Public runs on ChatGPT Work, per OpenAI's own customer story, even though Cooley appears in the Astra for Law announcement.\n\nTHE DETAIL THAT EARNS THE PIECE ITS PLACE. 230 million URLs, sources added daily, and a nonprofit's case-law collection are the product. So is the sentence 'reliable authorities the lawyer can examine for herself'. The value proposition is not that the model knows more law; it is that the answer comes with something a professional can go and check. That reframes the whole story for a reader who has ever been given a confident answer with a fake citation.\n\nSUGGESTED FIVE SECTIONS. (1) What was announced on 2026-09-17 and why 'configured' is not 'new model'. (2) What was actually added - the index and its stated jurisdiction, the instructions, and why a checkable citation is the point - ending with the required table (max 4 columns: 項目 / 內容 / 開放對象 / 官方未說明的部分; 4-6 rows covering the model, the index, Trusted Access, ZDR, the plugins, ChatGPT for Word; caption dated 2026-09-18). (3) How to read the benchmark: 200 questions, private validation set, matched reasoning effort, OpenAI's own test - and what 'private validation set' means for anyone who wants to check; diagram goes here. (4) Access and data terms: selected firms, coming soon to the API, ZDR and exclusion from human review scoped to eligible firms, governance being designed with one firm rather than published. (5) What OpenAI did not say, plus the one item in this announcement a general reader can actually use - ChatGPT for Word going generally available, with the plain note that OpenAI stated no plan, region or language for it.\n\nORIGINAL SCENARIO, to be labelled as an editorial example per BRIEF. A reader asks a general assistant about a contract clause and gets a fluent answer citing a statute number that does not exist. The editorial point is that the fix a professional product reaches for is not a smarter model but a bounded, named, checkable source - and that a reader can apply the same test to any AI answer they are given: can I open what it cited?\n\nTONE AND SCOPE. Plain, no awe, no threat narrative about lawyers' jobs - OpenAI makes no such claim and neither should the article. Deliberately out of scope: any legal advice; any suggestion a reader use AI for their own legal matter; what GPT-6 Astra is (covered 2026-09-03); the general 'industry version of ChatGPT' explainer (covered 2026-09-10); any comparison with Harvey, Legora, Thomson Reuters or any competitor product; any hands-on impression.\n\nHERO LABEL SUGGESTION (zh-TW, <= 12 chars): 加的是來源，不是聰明\n\nDIAGRAM SUGGESTION, 2x2, title '一個專業版加了什麼' (<= 20 chars), caption to carry the 2026-09-18 check date. Nodes, top-left to bottom-right: ['同一個模型', '設定與工具換過'] / ['一套法律索引', '查得到、打得開的出處'] / ['受邀才能用', '先給選定的事務所'] / ['資料條款另談', '合資格者才有的待遇']. Every string must also appear in the body, and no numeral appears in the diagram."
+}

@@ -1,0 +1,463 @@
+{
+  "slug": "tech-news-eu-kids-act-20260917",
+  "event_date": "2026-09-17",
+  "event_date_basis": "The European Commission's news page, the press release PDF (IP/26/1890, datelined 'Strasbourg, 17 September 2026') and the library entry for the proposal all agree on 17 September 2026 as the adoption/publication date. This is the date the Commission ADOPTED A PROPOSAL, not a date any rule starts to apply -- no entry-into-force or application date appears in any of the four sources.",
+  "title": "歐盟執委會通過 KIDS Act 提案：未滿 13 歲禁社群帳號，15 歲才能自己開帳號",
+  "checked_on": "2026-09-18",
+  "sourcing_verdict": "full",
+  "sourcing_notes": "All four sources were re-fetched by the writer on 2026-09-18 with curl -sL -A \"Mokaair-editorial\" (Taipei time), independently of the 2026-09-18 research record handed off by the exploration agent, and all four returned HTTP 200 with byte counts matching that earlier record exactly: (1) digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu -> 200, 49928 bytes, server-rendered HTML; (2) ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf -> 200, 87640 bytes, application/pdf, text extracted with pypdf (PdfReader), 3 pages, 7546 characters; (3) digital-strategy.ec.europa.eu/en/faqs/kids-act-explained -> 200, 68346 bytes; (4) digital-strategy.ec.europa.eu/en/library/proposal-eu-kids-act-eu-keeping-internet-digital-spaces-accountable-and-trustworthy -> 200, 53786 bytes. Every verbatim_quote below was located today by literal substring search in the corresponding fetched body. PDF-sourced quotes that cross a line-wrap in the extracted text layer have the wrap collapsed to a single space (noted here once rather than per quote); no other normalization was applied and no quote was cleaned of a repeated word, footnote mark, or non-ASCII punctuation. The human-facing press-corner page (https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1890) was not used as a source: it is an Angular shell that defeats curl, confirmed by the prior record and not re-tested today since the PDF print endpoint already serves the same document as readable text. The factsheet print endpoint (.../fs_26_1891/FS_26_1891_EN.pdf) was not re-tested today; the prior record's HTTP 404 is taken as current and nothing here is attributed to the factsheet. The proposal's own PDF (linked from the library page) was not downloaded or read, so no article number, recital or legal-base citation appears anywhere in this record or in the article, and no EUR-Lex/ELI address was constructed.",
+  "sources": [
+    {
+      "title": "歐盟執委會：EU KIDS Act 新聞稿頁面（限制社群媒體平台接觸兒童）",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "新聞稿 IP/26/1890 全文（PDF 列印版）：EU KIDS Act 限制社群媒體平台接觸兒童",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "歐盟執委會：KIDS Act 提案常見問答",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "歐盟執委會：EU KIDS Act 提案摘要頁面（EU Keeping Internet Digital Spaces Accountable and Trustworthy）",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/proposal-eu-kids-act-eu-keeping-internet-digital-spaces-accountable-and-trustworthy",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "On 2026-09-17 the European Commission adopted the EU KIDS Act; this is the news page's own opening sentence.",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today, the European Commission has adopted the EU KIDS Act to enhance the online safety of children throughout the Union."
+    },
+    {
+      "fact": "KIDS is an acronym; the proposal's official title, printed on the library page, spells it out.",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/proposal-eu-kids-act-eu-keeping-internet-digital-spaces-accountable-and-trustworthy",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Proposal for EU KIDS Act - 'EU Keeping Internet Digital Spaces Accountable and Trustworthy'"
+    },
+    {
+      "fact": "The press release is datelined Strasbourg, 17 September 2026 and carries reference IP/26/1890.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Strasbourg, 17 September 2026"
+    },
+    {
+      "fact": "The core age rule: a ban on social media platforms accessing children under 13, and an EU-wide minimum age of 15 for a minor to open an account of their own, which the Commission calls a gradual approach.",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposal prohibits social media platforms from accessing children under the age of 13 and sets an EU-wide minimum age for minors to open an account of their own at the age of 15, thereby ensuring a gradual approach."
+    },
+    {
+      "fact": "The KIDS Act reverses the burden of proof.",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/eu-kids-act-restrict-social-media-platforms-access-children-eu",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The KIDS Act also reverses the burden of proof."
+    },
+    {
+      "fact": "The press release organizes the proposal into four named pillars.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The proposed EU KIDS Act is structured around four pillars:"
+    },
+    {
+      "fact": "Pillar 1, the 13-to-under-15 band: guardians set up mini accounts the child reaches through the guardian's account, with named safeguards including limited social contacts and a daily screen-time limit.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "such as limited social contacts and limited screen time up to one hour per day"
+    },
+    {
+      "fact": "Pillar 1, the 3-to-under-13 band: children in that band cannot access social media, but may reach specially designed child-friendly video-sharing services through a guardian-managed account.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Children between 3 and under 13 cannot access social media, but they can access specially designed"
+    },
+    {
+      "fact": "Pillar 2 covers social media, video sharing, online video games, and AI companions and chatbots, for users below the age of 18.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "video sharing, online video games, AI companions and chatbots to users below the age of 18."
+    },
+    {
+      "fact": "Pillar 2 bans, for minors: infinite scroll without stopping points, reward tricks, push notifications during sleeping hours, and unsolicited contact from strangers (on top of the addictive-feature and recommender-feed ban named in the previous sentence of the same paragraph).",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "prohibiting infinite scroll without stopping points, reward tricks, and push notifications during sleeping hours, as well as unsolicited contact from strangers"
+    },
+    {
+      "fact": "Pillar 2: AI companions and chatbots must be off by default and may not simulate interpersonal relationships in ways that create emotional dependency; profiles for minors must be private by default with geolocation, camera and microphone access off.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AI companions and chatbots must be turned off by default and cannot simulate interpersonal relationships in ways that create emotional dependency. Profiles for minors must be private by default, with geolocation, camera and microphone access turned off."
+    },
+    {
+      "fact": "Existing accounts: providers must estimate age from reasonable proxies, with account creation date and credit card details given only as examples.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When it comes to existing accounts, providers have to estimate the user's age based on reasonable proxies (e.g. account creation date, credit card details)."
+    },
+    {
+      "fact": "Status: the legislative proposal has been submitted to the European Parliament and Council; no entry-into-force or application date is stated.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The legislative proposal has been submitted to the European Parliament and Council, with a view to launching the legislative process for their examination and adoption."
+    },
+    {
+      "fact": "The enforcement framework builds on structures already in place under the DSA and the AI Act; the Commission should conclude investigations within 90 days for cases it handles under the expedited procedure.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The enforcement framework builds on the structures already in place under the Digital Services Act and the Artificial Intelligence Act, making use of established mechanisms and existing expertise. The proposal introduces expedited enforcement procedures against providers in case of noncompliance with the EU KIDS Act, where the Commission should conclude investigations within 90 days."
+    },
+    {
+      "fact": "Background: the proposal builds on the report of the Co-Chairs of the Special Panel on Child Safety Online, Dr Maria Melchior and Prof. Dr. Jorg M Fegert, convened by President von der Leyen; the panel had more than 60 experts, was first convened in March 2026 and met three times before delivering its report in July 2026. The membership sentence is an 'including' list (civil society organisations, youth representatives, parents, educators, child psychiatrists, public health specialists, neurologists, tech specialists), never a closed one. NOTE ON QUOTING THIS PASSAGE: 'Special Panel on Child Safety Online' is a link in both the HTML and the PDF text layer, so the extracted text reads 'Child Safety Online , Dr Maria Melchior' with a space before the comma; a span crossing that point is not a literal substring of either body. The quote below is the longest span that survives, checked by literal substring search on 2026-09-18.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Special Panel, which was composed of more than 60 experts"
+    },
+    {
+      "fact": "Same passage, the dates half, quoted separately because the PDF text layer breaks the sentence: the panel was first convened in March 2026 and met three times before the report was delivered in July 2026.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "was first convened in March 2026 and met three times"
+    },
+    {
+      "fact": "The press release cites, and attributes to the Special Eurobarometer on the Digital Decade 2026, a figure of 92% of Europeans considering the need to further strengthen children's online protection a top policy priority.",
+      "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1890/IP_26_1890_EN.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "with 92% of Europeans considering the need to further strengthen children and young people's protection online as a top policy priority"
+    },
+    {
+      "fact": "The Q&A states platforms do not check identity documents or learn who the user is; verification runs through certified solutions independent of the platforms, including a free EU age verification app; the law requires zero-knowledge-proof technology that cannot identify, locate, track or profile anyone.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Platforms do not check identity documents and do not learn who you are. Age is verified through certified solutions independent of the platforms, including a free EU age verification app and, in time, the European Digital Identity Wallet. These tools tell the platform one thing only: is the user above or below the age, yes or no. The law requires ‘zero knowledge proof' technology that cannot identify, locate, track or profile anyone."
+    },
+    {
+      "fact": "SCOPE QUALIFIER on the age staircase, added by the fact-check on 2026-09-18: the Q&A does not apply the age rules to every service. It scopes them to social networking and video-sharing services with proven risky features. (The library page makes the same point in its own words: 'The proposal recognises the risks that minors face on certain online social networking services and video-sharing platforms and therefore limits autonomous account creation on those specific platforms and systems by children below the age of 15 years.') The article carries this qualifier in section 2 and in the FAQ; do not write the age rules as applying to all online services.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The age rules apply to social networking and video-sharing services with proven risky features"
+    },
+    {
+      "fact": "The under-13 band, as the Q&A spells it out: the child has no account of their own; access runs through the parent's account on video platforms designed specifically for young children; personalised feeds and search are off; the parent sets a daily limit of up to one hour and can stop access at any time; and the arrangement ends at 13.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The child has no account, personalised feeds and search are off, the parent sets a daily limit of up to one hour and can stop access at any time."
+    },
+    {
+      "fact": "Every Member State must offer at least one free way to prove age, including for people without digital ID.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Every Member State must offer at least one free way to prove your age, including for people without digital ID."
+    },
+    {
+      "fact": "App stores must age-rate every app including videogames, with a published methodology; must not let children access or buy apps inappropriate for their age; must carry the EU age verification app.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "App stores must age-rate every app, including videogames, with a published methodology, they must not let children access or buy apps inappropriate for their age, and must carry the EU age verification app."
+    },
+    {
+      "fact": "The very-large-platform threshold that triggers the reversed burden of proof is 45 million or more active monthly users in the EU; such platforms must submit a compliance plan checked by independent auditors, and the audit is paid for by the platforms, not taxpayers.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The largest platforms – those with 45 million or more active monthly users in the EU – cannot simply declare themselves safe: Before coming into contact with children under the new rules, they must put on the table a detailed plan showing how they intend to meet every obligation of the law, and have it checked by independent auditors. This audit needs to be paid by platforms, not taxpayers."
+    },
+    {
+      "fact": "Penalty and procedure figures stated only on the Q&A page, not in the press release: fines can reach 6% of total worldwide annual turnover; an expedited procedure applies to services the Commission supervises directly, with preliminary findings within 30 days and a final decision targeted within 90 days.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Fines can reach 6% of total worldwide annual turnover. An expedited procedure applies for services and systems supervised by the Commission: Preliminary findings within 30 days and a final decision targeted within 90 days"
+    },
+    {
+      "fact": "Enforcement split: the Commission directly supervises the online platforms and AI chatbots most widely used in the EU; digital service coordinators and national market surveillance authorities remain responsible for the other services and AI systems; national authorities supervise video games that are not online platforms.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the Commission directly supervises the online platforms and AI chatbots most widely used in the EU. Digital service coordinators and national market surveillance authorities remain responsible respectively for the other services and AI systems"
+    },
+    {
+      "fact": "The existing-account transition rule: within six months of the rules applying, platforms must check whether existing account holders are under 15 and disable the accounts of those who are, or whose age cannot be established.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Within six months of the rules applying, platforms must check whether existing account holders are under 15 and disable the accounts of those who are, or whose age cannot be established."
+    },
+    {
+      "fact": "The Commission pushes back on the 'ban' framing itself: the age rules are called the most visible part, but most of the law is said to be about how services are built.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": false,
+      "verbatim_quote": "No. The age rules are the most visible part, but most of the law is about how services are built"
+    },
+    {
+      "fact": "The Q&A's own stated rationale for an EU-level rule rather than national ones.",
+      "url": "https://digital-strategy.ec.europa.eu/en/faqs/kids-act-explained",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Because the internet does not stop at borders."
+    }
+  ],
+  "not_said": [
+    "No date of entry into force, no date of application, no transposition deadline appears in any of the four sources fetched today. The only timing statements are relative: 'within six months of the rules applying' for the existing-account sweep, 30 days for preliminary findings and 90 days for a final decision under the expedited procedure. Per BRIEF.md rule 9, the article writes the formula, never a calculated date.",
+    "No article numbers, recitals, legal base or COM(2026) reference appear in any source read today; the proposal's own PDF was not downloaded, so the article cites none and constructs no EUR-Lex/ELI address.",
+    "Taiwan is not mentioned in any of the four sources, and neither is any other non-EU country. The article does not say Taiwan will, should, or will not follow, and does not compare it to any Taiwanese rule.",
+    "No company or service is named as covered anywhere in the four sources; they speak only of 'social media platforms', 'very large online platforms', 'AI companions and chatbots' and similar categories.",
+    "The 6% fine figure, the 45-million-user threshold and the 30/90-day procedure appear only on the FAQ page today, not in the press release; the article keeps that distinction rather than presenting all figures as coming from a single document.",
+    "The factsheet FS/26/1891 was not read today (its print endpoint was reported as HTTP 404 by the prior record and was not re-tested), so nothing in the article is attributed to it even though the news page links it.",
+    "Neither source states how the 45-million-user threshold is measured, over what period, or who certifies the count.",
+    "Nothing is said about a 13- or 14-year-old with no guardian available, beyond the general line that every Member State must give parents a free, privacy-preserving way to prove parental responsibility -- which itself was not independently re-verified today and is not asserted in the article.",
+    "The EU age verification app is described but not dated, priced or located: no release date, no supported platforms, no download address, no statement of who operates it.",
+    "Nothing is said about how any of this interacts with VPNs, travellers, or EU residents' accounts opened outside the EU; the article does not speculate."
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "The exact legal text of the proposal -- article numbers, definitions, the legal base, and the precise wording of each obligation.",
+      "seen_where": "A PDF link on the library page (ec.europa.eu/newsroom/repository/document/2026-38/Proposal_for_EU_KIDS_Act...pdf).",
+      "why_excluded": "Not downloaded or read today. Everything in the article comes from the Commission's own summaries (news page, press release, FAQ), and every operative sentence says 'proposal' or 'the Commission's summary states' rather than citing a section number."
+    },
+    {
+      "claim": "Anything in the official factsheet (FS/26/1891).",
+      "seen_where": "Linked from the news page as 'factsheet'.",
+      "why_excluded": "Its print endpoint returned HTTP 404 with a small JSON error body per the prior record; not re-tested today because the news page, press release and FAQ already cover the article's claims. Nothing here or in the article is attributed to it."
+    },
+    {
+      "claim": "The 92% figure's methodology, sample size and field dates.",
+      "seen_where": "Press release background section, attributed to the 'Special Eurobarometer on the Digital Decade 2026'.",
+      "why_excluded": "The Eurobarometer report itself was not opened today. The article attributes the figure to the Commission citing that survey, never states it as a bare fact."
+    },
+    {
+      "claim": "That the KIDS Act amends, replaces or supersedes the Digital Services Act or the AI Act.",
+      "seen_where": "Inference invited by 'the enforcement framework builds on the structures already in place under the Digital Services Act and the Artificial Intelligence Act'.",
+      "why_excluded": "The source says only that enforcement builds on those existing structures; it never says either act is amended or replaced, and the article does not make that claim."
+    },
+    {
+      "claim": "Reaction from platforms, industry bodies, child-safety NGOs, or individual Member States.",
+      "seen_where": "Not looked for.",
+      "why_excluded": "tech.md/BRIEF.md restrict sources to official first-party pages for this vertical; no media or aggregator page was opened today, so no reaction is reported."
+    },
+    {
+      "claim": "Whether the proposal will pass, in what form, or when.",
+      "seen_where": "The press release's closing line, 'it is essential that the act is adopted swiftly.'",
+      "why_excluded": "That is the Commission's own stated position, not a forecast. It is not quoted or paraphrased in the article, to avoid any reading of it as a prediction of the outcome."
+    }
+  ],
+  "editorial_brief": "Reader: a Taiwanese parent or teenager who has seen a headline like 'Europe bans social media for under-15s' and wants to know what was actually decided, whether it has happened yet, and whether it touches their own account. Angle: three corrections to that headline, each directly attributable to the Commission's own pages -- (1) nothing is in force yet, only a proposal adopted 2026-09-17 and sent to Parliament and Council, with no application date anywhere in the sources; (2) it is a staircase, not one age limit (under 13 no account; 13-to-under-15 guardian-run mini account with a 1-hour daily cap; 15+ own account); (3) the Commission's own FAQ says the age rules are the visible part but most of the text is about how services are built (no infinite scroll, no streak-style rewards, no sleeping-hours push notifications, private-by-default profiles, AI companions off by default). Second angle, two sections' worth: age assurance without identity -- platforms won't see ID documents, verification runs through independent certified tools including a free EU age-verification app, zero-knowledge-proof technology, a free option in every Member State. Structure: five H2 sections (what was adopted and what 'adopted a proposal' means; the age staircase with the table; safety-by-design with the diagram; age assurance and the very-large-platform burden-of-proof threshold; enforcement, penalties and what is not decided). Taiwan frame: honest statement that the sources never mention Taiwan, so the article does not predict Taiwanese follow-on legislation; it instead notes this is the third EU-specific-rule article on the site after the CRA reporting piece (already in force) and the Apple EU business-terms piece, and lets the second closing link carry that contrast forward.",
+  "must_not_write": [
+    "Never write that the KIDS Act 上路/施行/生效/has taken effect; the article uses 提案/通過提案/送交立法程序 throughout, including in the title.",
+    "Never supply an entry-into-force date, an application date, or a deadline year; where the sources give a period (six months, 30 days, 90 days) the article writes the formula, not a calculated date.",
+    "Never cite an article number, a recital, a legal base or a COM(2026) reference, and never construct a EUR-Lex or ELI URL; the proposal's own text was not read.",
+    "Never attribute anything to the factsheet FS/26/1891; its endpoint returned HTTP 404 and it was not read.",
+    "Never write that Taiwan is excluded, will follow, or should follow; the article writes only that the official sources do not mention Taiwan.",
+    "Never name a company or service as covered by the proposal; the sources use categories only.",
+    "Never present the 92% figure as the article's own fact; it is always 'the Commission cites/states'.",
+    "Never describe the KIDS Act as amending or replacing the DSA or the AI Act.",
+    "Never describe how a minor might circumvent age verification, and no VPN or workaround detail (tech.md's threat-report rule).",
+    "Never give parenting advice or tell readers what to do about their own children's accounts; the article reports what the proposal says.",
+    "No finance disclaimer callout; tech.md says the tech vertical does not carry one.",
+    "No trademark, wordmark, logo, mascot or UI screenshot in the hero or the SVG diagram; product and institution names are written as plain text only.",
+    "No list formatting, no Markdown, no emoji, no Simplified Chinese characters in the zh-TW pack."
+  ],
+  "live_data_warnings": [
+    "None of the numbers used (13, 15, 18, 1 hour, 4,500 萬/45 million, 6%, 30 days, 90 days, six months) come from a live counter, registry, feed or dashboard; they are fixed figures printed in the press release or the FAQ page as read today, 2026-09-18, so no snapshot-versus-current-value caveat applies here.",
+    "All four pages carry 'Last update 17 September 2026' as read on 2026-09-18. That string is a page-state value, not a fact, and is not written into the article."
+  ],
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "All four sources re-fetched on 2026-09-18 with curl -sL -A \"Mokaair-editorial\"; byte counts identical to the writer's record (49,928 / 87,640 / 68,346 / 53,786). The PDF was re-extracted with system Python + pypdf (3 pages, 7,545 characters). Every verbatim_quote was re-tested by literal substring search against a whitespace-normalised copy of the body it is attributed to: 24 of 25 passed, 1 failed and was replaced (see edits_to_the_pack). The article was then split into claims -- every paragraph sentence, every summary and FAQ sentence, every table cell and caption, the callout, the two image captions, the title and the description -- and each one traced to a sentence in one of the four bodies. The factsheet print endpoint (fs_26_1891/FS_26_1891_EN.pdf) was re-tested and still returns HTTP 404 with a 300-byte JSON error body, so the prior record's finding stands. One further official page, https://digital-strategy.ec.europa.eu/en/policies/kids-act ('KIDS Act - an overview', HTTP 200, 54,563 bytes), was opened only to try to refute the draft; nothing in the article rests on it and it was deliberately not added to sources[], which is already at the four-source maximum.",
+    "verdict": "fixed_in_place",
+    "edits_to_the_pack": [
+      "AGE BOUNDARIES. '13 歲以下' (which in Chinese includes 13-year-olds) contradicted the article's own table and the sources: the press release says 'children under the age of 13' and the Q&A 'Under 13: no account', while 13- and 14-year-olds do get a guardian-run mini account. Changed to '未滿 13 歲' in the title, the description, paragraph 1, summary item 1, section 2 and the FAQ. The same error on the other end: '18 歲以下' -> '未滿 18 歲' ('users below the age of 18') in section 3, summary item 3 and the diagram node.",
+      "TABLE, 15+ ROW. The cell read '官方頁面未再另列限制', a negative claim the sources contradict: the safety-by-design obligations run to users below 18, so a 15-to-17-year-old's services are still covered. Changed to '服務仍須符合未滿 18 歲的安全設計義務'.",
+      "FINE. '全球前一年總營業額的 6%' -> '全球年總營業額的 6%'. The Q&A prints 'Fines can reach 6% of total worldwide annual turnover'; 'preceding' appears nowhere in any of the four bodies (the qualifier belongs to the DSA, not to this page). Fixed in the enforcement paragraph and in the FAQ answer.",
+      "SCOPE OF THE AGE RULES. The draft applied the staircase to social media at large. Added the Q&A's own scope line to section 2 and to the FAQ: the age rules apply to social networking and video-sharing services with proven risky features.",
+      "MODAL. '規則要求監護人開設迷你帳號' made a duty of what the sources make an option: the press release says the proposal 'calls for parental control, enabling guardians to set up mini accounts' and the Q&A says 'a guardian can set up a limited account'. Changed to '提案要求平台提供家長管控，讓監護人開設迷你帳號'.",
+      "AGE-VERIFICATION APP. Summary item 3 said '年齡驗證方案不留存身分證件與生物特徵資料', generalising to every solution what the press release says of the EU age verification app alone. Changed to name the app. In the same item, '禁止無限捲動' restored the source's qualifier ('infinite scroll without stopping points') and '對象是 18 歲以下使用者' was fixed.",
+      "SUMMARY THRESHOLD. Summary item 4 dropped '在歐盟境內' from '45 million or more active monthly users in the EU'; restored.",
+      "BAN LIST. 'profiling-based recommender feeds' had been widened to '演算法推薦' and 'reward tricks' to '獎勵機制'; changed to '依側寫推薦的訊息流' and '獎勵花招', and 'unsolicited contact from strangers' from '陌生人主動搭訕' to '陌生人未經邀請的接觸'.",
+      "PILLAR 3 NAME. '隱私保護的年齡驗證' -> '隱私保護的年齡查核': the pillar is 'Privacy-preserving age assurance', and the same page separately uses 'age verification' for the narrower act performed at account opening, a distinction the article relies on two paragraphs later.",
+      "CONDITIONS RESTORED. Section 2 gained 'when it is passed on to children' ('在裝置交給兒童使用時') on the parental device tool; section 4 gained the Q&A's 'Before coming into contact with children under the new rules' and its 'a detailed plan showing how they intend to meet every obligation of the law' in place of a looser paraphrase; section 3 gained 'safe' on the recommender systems and '線上服務' in place of '平台' ('Online services must also offer...').",
+      "TOOLING NARRATIVE OUT OF THE BODY. The last paragraph of section 5 told readers that the proposal PDF had not been downloaded and that the factsheet link returned HTTP 404. BRIEF.md rule 5 keeps container and tooling narrative out of the article; the finding itself stays in this record. Replaced with a plain statement that the article rests on the Commission's own press release and Q&A summaries, not on the legal text, and cites no article number.",
+      "UNCOUNTABLE COUNT. The same paragraph called this '第三篇' EU-rules article on the site -- a self-count that a sibling article in this same batch would already have made wrong. Removed.",
+      "NEGATIVE CLAIMS NARROWED. '官方文件也沒有提到台灣或歐盟以外的地區' and the FAQ's '也沒有提到歐盟以外的任何國家或地區' narrowed to '沒有提到台灣' (verified: 'Taiwan' appears 0 times in all four bodies). '官方沒有給時間表' -> '官方頁面沒有寫出時間表'. The FAQ's territorial sentence '提案規範的是在歐盟境內提供的服務' was an inference the sources do not state; replaced with what they do state, that it is an EU regulation setting EU-wide rules.",
+      "SMALLER FIXES. '案號 IP/26/1890' -> '編號'; '兒童網路保護' -> '兒童與青少年的網路保護' ('children and young people's protection online'); '要執行年齡驗證' -> '將被要求執行年齡驗證' ('will be called to perform'); '各國主管機關' -> '會員國指定的主管機關' ('National authorities designated by Member States'); '規則要求採用零知識證明技術' -> '提案要求' (proposal voice); the section 3 close no longer asserts the Commission ranks design above age, and instead carries the Q&A's own 'more importantly that they are safe in their design'.",
+      "ADDED, from the Q&A and previously missing: what the under-13 arrangement actually is (no account of the child's own, personalised feeds and search off, parent can stop access at any time, ends at 13).",
+      "RESEARCH RECORD. verified_facts #15's verbatim_quote spliced two sentences with an ellipsis and crossed a link boundary where the extracted text reads 'Child Safety Online , Dr Maria Melchior' with a space before the comma, so it was not a literal substring of either body. Split into two short spans that are. Two facts added for the newly used Q&A lines; the title and the two diagram nodes were brought in line with the corrected age wording."
+    ],
+    "checked_and_correct": [
+      "Event date 2026-09-17 and news_date: 'Strasbourg, 17 September 2026' in the PDF, 'Publication 17 September 2026' on the news and library pages, both attributed quotes dated '- 17/09/2026'.",
+      "Proposal status. 'in force', 'entry into force', 'apply from', '2027' and '2028' return zero matches across all four bodies; the only status sentence is 'The legislative proposal has been submitted to the European Parliament and Council'. Every obligation in the article is written in proposal voice, and the callout, the summary and FAQ 1 all say so.",
+      "Relative periods only: six months for the existing-account sweep, 30 days for preliminary findings, 90 days for the final decision. No date is calculated anywhere in the article.",
+      "The '6%', '45 million' and '30 days' strings appear in the FAQ body only and in none of the other three; the article's sentence saying the fine figure is absent from the press release is correct. ('90 days' does appear in the press release too, and the article does not claim otherwise.)",
+      "The existing-account transition sentence, including the conditional the coordinator flagged: 'Where a platform can already tell with high confidence that a user is an adult, no new check is needed' is carried intact in section 5 and in FAQ 3.",
+      "The compliance-plan threshold sentence: '45 million or more active monthly users in the EU', the detailed plan, the independent auditors and 'This audit needs to be paid by platforms, not taxpayers'.",
+      "The four pillar names, the five service categories, the AI-companion default-off rule, the private-by-default profile settings, the app-store obligations, the enforcement split between the Commission, digital service coordinators and national market surveillance authorities, and the 'builds on the structures already in place' wording with no claim of amendment.",
+      "Panel background: Dr Maria Melchior and Prof. Dr. Jorg M Fegert, more than 60 experts, first convened March 2026, met three times, report July 2026 -- all present verbatim in the press release.",
+      "The 92% figure is attributed to the Commission citing the Special Eurobarometer on the Digital Decade 2026, and the article says it did not check the survey itself.",
+      "Vertical boundaries: no purchase advice, no price comparison, no vendor performance claim, no finance disclaimer callout, no circumvention detail, no company or service named as covered, no Taiwanese rule asserted.",
+      "checked_on 2026-09-18 is consistent across all four pack sources, this record, the second paragraph, the table caption and the image caption; it was not changed.",
+      "Second closing link text matches the zh-TW title of tech-news-eu-cra-reporting-20260911 character for character; the first link text matches the tech index title given in DELTA-4-5.md."
+    ],
+    "left_for_the_owner": [
+      "The factsheet FS/26/1891 is linked from the news page but its print endpoint is still HTTP 404 on 2026-09-18. If it lands later it may carry figures the article does not have; nothing in the article depends on it.",
+      "The proposal's own PDF, the accompanying Communication and the Staff Working Document are all downloadable from the library page and were not read. Article numbers, the legal base and the exact wording of each obligation are only in there.",
+      "A fifth official page exists, https://digital-strategy.ec.europa.eu/en/policies/kids-act, and it adds two things the four sources do not: that the Act would also reach app stores and operating systems, and that some services are proposed to be exempt (encyclopaedias, educational platforms, digital news). It also names the pillars differently ('Age assurance and parental responsibility', 'Strong enforcement') and gives the 30-day clock a different meaning (assessment of a compliance plan, not preliminary findings). sources[] is at its four-source maximum, so nothing from it was used; swapping it in for the news page is a reasonable call for the owner if a follow-up is written.",
+      "The Commission's news page and Q&A both changed 'Last update' to 17 September 2026 only; if the pages are revised before publication the numbers should be re-read."
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent (did not write the draft, did not run the first round)",
+      "checked_on": "2026-09-18",
+      "method": "All four sources re-fetched independently with curl -sL -A \"Mokaair-editorial\": 200/49,928; 200/87,640 (PDF, system Python + pypdf 6.16.2, 3 pages, 7,545 characters); 200/68,346; 200/53,786 -- byte-identical to both earlier records. 120 claims re-checked (every paragraph the first round rewrote, every sentence it newly wrote, all 28 verbatim quotes, 21 table cells and the caption, the summary, the FAQ, the callout, the diagram nodes and hero_label, the title and the description) plus 12 programmatic string counts. Quotes were compared by literal substring search with whitespace collapsed and NOTHING else normalised. Counted across the four bodies: 'preceding' 0, 'in force' 0, 'entry into force' 0, 'apply from' 0, '2027' 0, '2028' 0, 'Taiwan' 0; '6%' and '45 million' and '30 days' only in the Q&A, '90 days' in the Q&A and the press release. The fifth official page (digital-strategy.ec.europa.eu/en/policies/kids-act, 200, 54,563 bytes) and the factsheet print endpoint (still HTTP 404, 300-byte JSON) were opened only to try to refute the draft; no fact was taken from either, and sources[] was not touched.",
+      "verdict": "fixed_in_place",
+      "edits": [
+        "RESEARCH RECORD, QUOTE #18. The Q&A prints ‘zero knowledge proof' with U+2018 before 'zero'; the quote had it as a straight apostrophe, so it was not a literal substring. Restored the source character.",
+        "RESEARCH RECORD, QUOTE #23. The Q&A prints 'The largest platforms – those with 45 million ... in the EU – cannot' with U+2013 en dashes; the quote had hyphens. Restored both. With these two fixed, all 28 quotes are literal substrings of the body they are attributed to, which is what sourcing_notes already claimed.",
+        "TABLE CAPTION. The staircase table carried no scope, so it read as applying to services at large while the body and the FAQ both carry the Q&A's limit. Added the same wording to the caption: the age rules apply to social networking and video-sharing services with proven risky features. The three places now match word for word. (The image caption was left alone so it still equals research diagram.caption.)",
+        "DIAGRAM NODE 4. '最高罰全球營業額 6%' dropped the 'annual' the body carries; changed to '最高罰全球年總營業額 6%' ('6% of total worldwide annual turnover').",
+        "NEGATIVE CLAIMS, SCOPE. Two sentences still made an unbounded claim about '官方文件': the last body paragraph and the callout. Narrowed to the four pages this article read ('這四份頁面', '本文查到的四份官方頁面'). Section 4's '官方頁面沒有寫出時間表' about the European Digital Identity Wallet was narrowed to '常見問答頁面', the page that actually says 'in time'."
+      ],
+      "checked_and_correct": [
+        "AGE BOUNDARIES. No '13 歲以下' or '18 歲以下' survives anywhere in the pack; the nine sites the first round fixed (title, description, paragraph 1, summary 1 and 3, section 2, section 3, FAQ 2, diagram node) all read 未滿, matching 'children under the age of 13' and 'users below the age of 18'. The direction is right at both ends: '15 歲以上' in the table is correct ('From 15: young people can open their own account'), and the 13-to-under-15 mini-account sentences do not contradict the under-13 ban.",
+        "PROPOSAL VOICE. Every sentence reads as a proposal, and the three periods (six months, 30 days, 90 days) are written as formulas only -- no calendar date anywhere. The one 'enter into force' string in the whole sweep is on the fifth page, which is not a source and which the article does not rest on.",
+        "SCOPE, AGAINST THE FIFTH PAGE. The article makes no universal claim the policy page would contradict: it never says the Act covers only social and video services, it reports the app-store obligations in section 4, and it says nothing about exemptions. The page's extra material (app stores and operating systems in scope, proposed exemptions for encyclopaedias, educational platforms and digital news, and a 30-day clock meaning a compliance-plan assessment) remains an owner decision, not a correction.",
+        "TOOLING NARRATIVE. Nothing about the undownloaded proposal PDF or the 404 factsheet remains in the body; section 5 now says only that the article rests on the Commission's summaries rather than the legal text.",
+        "QUALIFIERS KEPT. 'up to one hour per day' (至多), 'targeted within 90 days' (目標是), 'such as'/'These include' (舉的例子/列了好幾種), 'e.g. account creation date, credit card details' (這是舉例，不是完整清單) and the adult-with-high-confidence carve-out are all intact; nothing was cut for length.",
+        "The fine is '全球年總營業額的 6%' in both places, with no 'preceding year'.",
+        "summary ⊆ body, FAQ answers ⊆ body, and every number drawn on the artwork (13, 15, 18, 6) appears in the zh-TW text.",
+        "Vertical boundaries: topics are tech/tech-news with no finance, one callout and no disclaimer, no purchase or upgrade advice, no price comparison, no unattributed vendor claim, no circumvention detail, no named company, no Taiwanese rule asserted or predicted.",
+        "checked_on 2026-09-18 still agrees across the four pack sources, this record, the second paragraph, the table caption and the image caption; it was not changed. Both closing links were not touched."
+      ],
+      "left_for_the_owner": [
+        "Unchanged from the first round: the 404 factsheet, the unread proposal PDF plus Communication and SWD, the fifth official page and its exemption list, and the 'Last update 17 September 2026' on all four pages. All four are editorial calls about widening the article, not errors in it."
+      ],
+      "verdict_note": "needs_owner -- no factual error was left standing; the five second-round edits are precision, scope and quote-fidelity fixes."
+    }
+  },
+  "hero_label": "KIDS Act 兒少上網提案",
+  "diagram": {
+    "title": "KIDS Act 提案四關卡",
+    "caption": "依歐盟執委會 2026 年 9 月 17 日發布的 KIDS Act 提案整理，查核日 2026 年 9 月 18 日；這是提案內容，尚未生效。",
+    "nodes": [
+      [
+        "年齡關卡",
+        "未滿 13 歲無帳號、15 歲自開"
+      ],
+      [
+        "設計關卡",
+        "未滿 18 歲禁誘導設計"
+      ],
+      [
+        "年齡驗證",
+        "免出示證件、零知識驗證"
+      ],
+      [
+        "執法與罰則",
+        "最高罰全球年總營業額 6%"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "EU KIDS Act Proposal",
+      "diagram": {
+        "title": "KIDS Act Proposal: Four Checkpoints",
+        "caption": "Compiled from the European Commission's EU KIDS Act proposal, published September 17, 2026; checked on September 18, 2026. This is proposal content, not yet in force.",
+        "nodes": [
+          [
+            "Age Gate",
+            "No account under 13, own at 15"
+          ],
+          [
+            "Design Rules",
+            "No addictive design, under 18"
+          ],
+          [
+            "Age Check",
+            "No ID; zero-knowledge proof"
+          ],
+          [
+            "Enforcement",
+            "Up to 6% of global turnover"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "EUのKIDS Act提案",
+      "diagram": {
+        "title": "KIDS Act提案の四つの関門",
+        "caption": "欧州委員会が2026年9月17日に公表したKIDS Act提案に基づき作成。確認日は2026年9月18日。これは提案内容であり、まだ発効していません。",
+        "nodes": [
+          [
+            "年齢の関門",
+            "13歳未満は不可、15歳で開設可"
+          ],
+          [
+            "設計の関門",
+            "18歳未満は誘導設計禁止"
+          ],
+          [
+            "年齢確認",
+            "証明書不要、ゼロ知識証明で確認"
+          ],
+          [
+            "執行と罰則",
+            "最大で世界年間売上高の6%"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "KIDS Act 제안",
+      "diagram": {
+        "title": "KIDS Act 제안의 네 관문",
+        "caption": "유럽연합 집행위원회가 2026년 9월 17일 발표한 KIDS Act 제안을 바탕으로 작성. 확인일 2026년 9월 18일. 이는 제안 내용이며 아직 발효되지 않았습니다.",
+        "nodes": [
+          [
+            "연령 관문",
+            "13세 미만 불가·15세 개설"
+          ],
+          [
+            "설계 관문",
+            "18세 미만 중독성 기능 금지"
+          ],
+          [
+            "연령 확인",
+            "신분증 없이 영지식 증명"
+          ],
+          [
+            "집행과 제재",
+            "전 세계 연매출의 최대 6%"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "KIDS Act 儿少上网提案",
+      "diagram": {
+        "title": "KIDS Act 提案四道关卡",
+        "caption": "依欧盟委员会 2026 年 9 月 17 日发布的 KIDS Act 提案整理，查核日 2026 年 9 月 18 日；这是提案内容，尚未生效。",
+        "nodes": [
+          [
+            "年龄关卡",
+            "未满13岁不可，15岁起自行开设"
+          ],
+          [
+            "设计关卡",
+            "未满18岁禁止诱导性设计"
+          ],
+          [
+            "年龄核验",
+            "免出示证件，零知识验证"
+          ],
+          [
+            "执法与罚则",
+            "最高罚全球年度总营业额6%"
+          ]
+        ]
+      }
+    }
+  }
+}

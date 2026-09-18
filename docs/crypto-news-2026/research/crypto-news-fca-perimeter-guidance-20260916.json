@@ -1,0 +1,454 @@
+{
+  "slug": "crypto-news-fca-perimeter-guidance-20260916",
+  "event_date": "2026-09-16",
+  "event_date_basis": "PS26/18 出版品頁的欄位逐字寫「Policy statement 16/09/2026」與「First published: 16/09/2026 Last updated: 16/09/2026」；FCA 新聞列表把新聞稿「Crypto firms get guidance on how the new regime applies」標成同一天。文章裡另外分開寫三個不同日期，不與事件日混用：2026-02-04 國會通過作為法源的 Cryptoasset Regulations、2026-09-30 授權申請窗口開放、2027-10-25 新制生效；2027-02-28 是限定「想使用過渡安排者」的申請關閉日，不是統一截止日。",
+  "title": "英國 FCA 發布加密資產監理範圍最終指引 PS26/18：申請 9 月 30 日開放、新制 2027 年 10 月生效",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Crypto firms get guidance on how the new regime applies (press release)",
+      "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+      "publisher": "Financial Conduct Authority (UK)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "PS26/18: Cryptoasset perimeter guidance (publication page)",
+      "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+      "publisher": "Financial Conduct Authority (UK)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Policy Statement PS26/18 — Cryptoasset Perimeter Guidance (PDF, 140 pages)",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "publisher": "Financial Conduct Authority (UK)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "全國法規資料庫：虛擬資產服務法（所有條文）",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400163",
+      "publisher": "法務部全國法規資料庫",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "三條全部由本撰稿代理於 2026-09-18 親自以 curl -sL -A \"Mokaair-editorial\" 重抓，不是沿用前期研究紀錄的既有數字。結果：(1) 新聞稿 HTTP 200、175,821 bytes（前期研究記 175,820，差 1 byte，屬已知的抓取間漂移，不是版本差異）；<title> 為 \"Crypto firms get guidance on how the new regime applies | FCA\"；grep 確認 \"25 October 2027\"、\"30 September 2026\" 各出現 1 次，且能取出完整句子。(2) 出版品頁 HTTP 200、177,577 bytes（前期記 177,578）；<title> 為 \"PS26/18: Cryptoasset perimeter guidance | FCA\"；標籤化擷取確認 \"Policy statement 16/09/2026\"、\"First published: 16/09/2026 Last updated: 16/09/2026\"、\"received 78 responses\"、\"won't convert automatically\"、\"application window opens on 30 September 2026 and closes on 28 February 2027\" 均在 body 內。(3) PDF HTTP 200、1,579,276 bytes，以 apps/api/.venv 的 pypdf 6.19.0 重新抽取，140 頁、316,691 字元，與前期研究記錄的頁數與字元數完全一致。全文 grep 三次 \"taiwan\"（不分大小寫）於三份來源合計 0 次，獨立確認 not_said 第一條。PDF 抽取的已知瑕疵：這份 PDF 在多處詞中插入了額外空白（例如 \"stablecoi ns\"、\"digita l currencies\"、\"al so\"、\"plat form\"、\"liquidit y\"），與前期研究紀錄描述的斷字瑕疵屬同一類但出現位置更多；本紀錄凡引用這些段落一律改寫成敘述，只有確認同一行內連續、且沒有中插空白的句子才標為 verbatim_quote。未查：legislation.gov.uk 上的 statutory instrument 原文（不在 crypto.md 白名單，本次未抓取）；PS26/9–PS26/13 五份 2026-06-30 政策聲明的本文；CP26/13 逐題（Q2、Q4）支持度百分比的細節取到但本文未使用，以免母數不同的百分比被讀成單一業界共識。\n【獨立查核 2026-09-18 補記】四條來源當天再抓一次（curl -sL -A \"Mokaair-editorial\"）：新聞稿 200／175,821 bytes／<title> Crypto firms get guidance on how the new regime applies | FCA；出版品頁 200／177,578 bytes／<title> PS26/18: Cryptoasset perimeter guidance | FCA；PDF 200／1,579,276 bytes，以 apps/api/.venv 的 pypdf 6.19.0 抽出 140 頁、316,691 字元（與撰稿代理一致）；新增第四條 https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400163 回 200／92,407 bytes／<title> 虛擬資產服務法-全國法規資料庫，是條文正文不是導覽殼。四份都讀到正文，沒有擋阻頁或轉址殼。\n上面「只有同一行內連續的句子才標為 verbatim_quote」這句話與實際不符：本紀錄有四條 PDF 引文（1.10、1.15、5.2、5.7）在 pypdf 抽取結果中跨行，只有把換行正規化成空白之後才逐字命中；這四條在 PDF 檢視器裡搜尋得到（檢視器會處理換行），內容也與版面一致，因此保留，但不再宣稱它們同一行。另外兩條新增引文（1.6、PERG 18.11.6）已縮到同一行內。20 條引文全部命中，另有 4 條事實刻意不附引文。第 5.7 段那條原本把 Parliament’s 的彎引號打成 ASCII 直引號，已改回原文的 U+2019。\n界線重查：三份 FCA 來源以詞界比對 taiwan 各 0 次（獨立確認 not_said 第一條）；PDF 全文出現 price 6 次，都是條文用語（價格資訊、價格或指數連動、撮合價格、價格饋送與市場資料等），沒有任何具體行情數字；本文也沒有寫入任何價格、市值或報酬數字。\n【第二輪獨立查核 2026-09-18】四條來源由第二輪代理再抓一次（同樣 curl -sL -A \"Mokaair-editorial\"，未帶任何個人資料）：新聞稿 200／175,820 bytes（第一輪記 175,821，1 byte 漂移；<title>、David Geale 談話與 Notes to editors 逐句對得上，不是版本差異）、出版品頁 200／177,578 bytes、PDF 200／1,579,276 bytes（以 apps/api/.venv 的 pypdf 抽出 140 頁、316,691 字元，與前兩輪完全一致）、全國法規資料庫 200／92,407 bytes。20 條 verbatim_quote 全部重測命中（四條 PDF 引文仍需換行正規化，U+2019 保持）。本輪另外讀了 Appendix 1 的法律文書 FCA 2026/55：它把 Annex B 拆成 Part 1（2026-09-16 生效）與 Part 2（2027-10-25 生效），插入新章 PERG 18 的指示在 Part 1 之內——第一輪寫成未來式的那一句因此改掉。",
+  "verified_facts": [
+    {
+      "fact": "FCA 於 2026 年 9 月 16 日發布政策聲明 PS26/18《Cryptoasset perimeter guidance》。出版品頁把它歸類為 Policy statements，「Policy statement」「First published」「Last updated」三個欄位都是 16/09/2026。",
+      "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We have published final guidance on when cryptoasset activities need FCA authorisation."
+    },
+    {
+      "fact": "新制的生效日是 2027 年 10 月 25 日。FCA 新聞稿逐字寫這一句。",
+      "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The regime comes into force on 25 October 2027."
+    },
+    {
+      "fact": "授權申請自 2026 年 9 月 30 日開放；新聞稿把「現在就需要這份指引」的理由掛在這個日期上，另一句更直接地說授權窗口於這一天開放。",
+      "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The authorisation gateway for firms will open on 30 September 2026."
+    },
+    {
+      "fact": "申請窗口 2026 年 9 月 30 日開放、2027 年 2 月 28 日關閉，而關閉日只針對「想使用過渡安排」的業者，不是全體申請人的統一截止日。",
+      "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The application window opens on 30 September 2026 and closes on 28 February 2027 for firms wanting to use the transitional arrangements."
+    },
+    {
+      "fact": "PS26/18 第 1.26 段進一步提醒申請人：要熟悉這個排定於 2026-09-30 開放、2027-02-28 關閉（給想使用 savings 規定者）的申請窗口，並理解在此期間或之後申請的後果，包括 savings 與過渡規定如何運作。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "這套制度的法源是 2026 年 2 月 4 日由國會通過的 Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026（PS26/18 稱之為 the Cryptoasset Regulations）。PS26/18 第 1.7 段載明本指引對應的是這部已完成立法的法規，還不包含政府後來提出的新 statutory instrument。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the Cryptoasset Regulations passed by Parliament on 4 February 2026"
+    },
+    {
+      "fact": "那份新的 statutory instrument 已經不只是草案。PS26/18 第 1.6 段分兩個階段寫：政府在諮詢期間公布了一份草案，之後已把 SI 提交（laid before）國會；新聞稿則寫政府「已經做出」針對性修法並「已公布」修正內容。文章因此不可以只寫「提出修正草案」。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "subsequently laid a statutory instrument (SI) before Parliament."
+    },
+    {
+      "fact": "PS26/18 定案的指引是 PERG 的一個新章節，章號 PERG 18；PS26/18 第 2.1 段註明諮詢文件 CP26/13 時原編為 PERG 19。不可以寫成「這份政策聲明就是 PERG 第 18 章」。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "proposals to introduce a new chapter of PERG 18."
+    },
+    {
+      "fact": "PERG 18 這一章的生效日是 2026 年 9 月 16 日，不是未來式。PS26/18 附件的法律文書（Appendix 1，FCA 2026/55《Perimeter Guidance (Regulated Cryptoasset Activities) Instrument 2026》，2026 年 9 月 11 日由 FCA 執行監理與政策委員會作成）自己印了兩個生效日：Annex B 的 Part 1 自 2026 年 9 月 16 日生效，其餘自 2027 年 10 月 25 日生效。「Insert the following new chapter, PERG 18 ... after PERG 17」這道指示落在 Annex B 的 Part 1 之內（Part 1 起於該 Annex 開頭，Part 2 之前），Part 2 只改 PERG App 1 的定義表，所以整章 PERG 18 與 PERG 18 Annex 1、Annex 2 都在指引發布當天生效。獨立查核第二輪據此把正文的「會以新的一章 PERG 18 編入」改成已編入並加註「附件的法律文書載明這一章同日生效」；這不是第五個日期，與新制 2027-10-25 生效不衝突——生效的是指引，不是新制。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Part 1 of Annex B to this instrument comes into force on 16 September 2026."
+    },
+    {
+      "fact": "PS26/18 附件（Appendix 1 的法律文書，PERG 18.11.6）說明 Article 9Z11 的範圍：該排除限於「以附隨方式從事、且其專門職業或營業本身不是由受規範活動構成、並受《2000 年金融服務與市場法（指定專業團體）令》第 2 條所列指定專業團體監督與管理」的情形。條號本身的標題是 Activities incidental to the carrying on of a profession or business，沒有 regulated 一字，中文不可譯成「附隨於受規範之專門職業或營業」。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "designated professional body listed in article 2 (Designated professional bodies)"
+    },
+    {
+      "fact": "台灣對照段的一手來源：全國法規資料庫《虛擬資產服務法》所有條文頁，公布日期欄「民國 115 年 07 月 22 日」（＝2026-07-22），生效狀態欄「※本法規部分或全部條文尚未生效，最後生效日期：未定」，沿革欄「一百十五年七月二十二日制定公布全文 56 條，依第 56 條規定：施行日期，由行政院定之。」，第 56 條條文「本法施行日期，由行政院定之。」本頁由獨立查核代理於 2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 重抓，HTTP 200、92,407 bytes。生效狀態是活資料，本文已標查核日。",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400163",
+      "is_vendor_claim": false,
+      "verbatim_quote": "※本法規部分或全部條文尚未生效，最後生效日期：未定"
+    },
+    {
+      "fact": "既有的登記或許可不會自動轉換。PS26/18 第 1.25 段：目前依 FSMA 取得授權者、依洗錢防制規則（MLRs）登記者、依支付服務規則或電子貨幣規則取得授權或登記者，只要在英國以營業方式從事一項以上受規範加密資產活動、且沒有可用的排除或豁免，就必須取得適當的授權。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Existing registrations or permissions will not convert automatically."
+    },
+    {
+      "fact": "這份最終指引來自 2026 年 4 月 15 日至 6 月 3 日的諮詢文件 CP26/13（出版品頁欄位：Consultation opens 15/04/2026、Consultation closes 03/06/2026），PS26/18 第 1.9 段記載共收到 78 份回應。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We received a total of 78 responses to CP26/13."
+    },
+    {
+      "fact": "PS26/18 第 1.10 段：多數（60%）回應者大致支持所提的 perimeter 指引，並同意它能釐清受規範加密資產活動如何適用監理範圍；許多回應者也歡迎把加密資產的 perimeter 指引整合進既有的 PERG 架構。獨立查核補記：這個 60% 的母數，PS26/18 沒有印出來——第 1.9 段的 78 份是 CP26/13 的總回應數，各題另有自己的母數（第 1 題 62 份、第 2 題 58 份、第 4 題 61 份、第 5 題 51 份），因此不可以把 60% 寫成「78 份之中的 60%」。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A majority (60%) generally supported our proposed perimeter guidance and agreed that it would clarify the application of the regulatory perimeter to regulated cryptoasset activities."
+    },
+    {
+      "fact": "PS26/18 第 4.1 段自己列出的「新的受規範加密資產活動」是七項：在英國發行合格穩定幣；保管與安排保管合格加密資產及相關的特定投資加密資產；經營合格加密資產交易平台（QCATP）；以自己名義自營合格加密資產；以代理人身分交易合格加密資產；安排合格加密資產的交易；安排合格加密資產質押。第 4.2 段另外說明，加密資產的借與貸落在 dealing 或 arranging 之內，不是獨立的第八類。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "PS26/18 第 3.3 段：被排除在「合格加密資產」定義之外的類型包含電子貨幣、法定貨幣、央行數位貨幣，以及只能向發行人贖回並用於向發行人購買商品或服務、或只能向發行人贖回並在有限網路內使用的加密資產（including 起頭，不是全清單）。第 3.4 段：落入其他特定投資標的類別的加密資產也被排除。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "PS26/18 第 5.2 段：Cryptoasset Regulations 裡有兩項一般排除，對所有受規範加密資產活動都適用——為銷售商品或提供服務而從事的活動（Article 9Z10），以及附隨於專門職業或營業而從事的活動（Article 9Z11）。第二輪補記：第 5.2 段的英文寫 a regulated profession or business，但條號本身的標題、PERG 18.11.3 與 18.11.4 都寫 activities incidental to the carrying on of a profession or business，沒有 regulated 一字；PERG 18.11.6 說明這裡的「受規範」指該職業或營業受指定專業團體監督與管理、且本身不由受規範活動構成，與本文其他地方的「受規範加密資產活動」意思相反，因此中文不照字面譯成「附隨於受規範之專門職業或營業」。Article 9Z10 的範圍見 PERG 18.11.4：carried on for the purpose of, and, where applicable, in connection with, the sale of goods or supply of services。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "there are 2 general exclusions in the Cryptoasset Regulations: an exclusion for activities carried on for the sale of goods or supply of services (Article 9Z10), and an exclusion for activities that are incidental to a regulated profession or business (Article 9Z11)."
+    },
+    {
+      "fact": "PS26/18 第 5.3 段：國會並沒有把 RAO 裡其他既有的一般排除全部（或原樣）複製到受規範加密資產活動上，因此不能假設適用於傳統受規範活動的排除，會以相同方式、或根本會適用於加密資產活動。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "PS26/18 第 5.7 段：有 13% 的回應者質疑國會沒有為受規範加密資產活動設立「Overseas Persons Exclusion（OPE）」。這是回應者提出的意見，不是 FCA 已經給出的結論。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Some respondents (13%) challenged Parliament’s decision not to create an Overseas Persons Exclusion (OPE) for regulated cryptoasset activities."
+    },
+    {
+      "fact": "PS26/18 第 1.14 至 1.16 段說明 PERG 的定位：PERG 是 FCA 對國會於立法中設定之監理範圍的解釋，FCA 不以偏好的政策結果決定範圍；PERG 不能用來擴張、限縮或改變國會設定的監理範圍，只有法院能對法律作出權威解釋，要改變監理範圍本身必須修法。PERG 是一般性指引，不適合針對個別商業模式、技術安排或使用情境提供細部指引；有需要者可自行尋求獨立法律意見或向 FCA 申請個別指引。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "PERG cannot be used to expand, narrow or otherwise alter the scope of the perimeter established in legislation. Only the courts can provide an authoritative interpretation of legislation."
+    },
+    {
+      "fact": "政府已另外對這部法規提出「targeted」的修正，FCA 表示這些修改不會影響多數加密資產業者，業者現在就可以用這份指引準備申請；FCA 將於 10 月就這些法律變動對指引提出進一步諮詢。",
+      "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These changes will not affect most crypto firms, which can use this guidance now to prepare for authorisation. The FCA will, however, consult in October on targeted updates to this guidance in light of these legal changes."
+    },
+    {
+      "fact": "新聞稿的「Notes to editors」把 10 月那場諮詢的範圍列出來：英國合格穩定幣、自營與造市、某些技術供應商、去中心化協議、涉及中央證券保管機構的保管安排，以及財務推銷（financial promotions）。",
+      "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The consultation in October will cover the targeted changes relating to UK qualifying stablecoins, proprietary trading and market making, certain technology providers, decentralised protocols, safeguarding arrangements involving central securities depositaries and financial promotions."
+    },
+    {
+      "fact": "出版品頁對後續時程的寫法比新聞稿再多一句：FCA 計畫在 2026 年稍晚就 perimeter 指引的進一步修改進行諮詢，並以 2027 年初發布修訂後的指引為目標。",
+      "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We plan to consult on further changes to our perimeter guidance in late 2026, following a Government statutory instrument amending the underlying regulations. We aim to publish that guidance in early 2027."
+    },
+    {
+      "fact": "FCA 表示這份指引接續它 2026 年 6 月定案的規則與指引：2026 年 6 月 30 日發布了一系列政策聲明，分別處理上架與揭露及市場濫用（PS26/9）、穩定幣發行（PS26/10）、受規範加密資產活動（PS26/11）、審慎規則（PS26/12），以及 FCA Handbook 的適用（PS26/13）。",
+      "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On 30 June 2026, we published a series of policy statements on our cryptoasset regime."
+    },
+    {
+      "fact": "PS26/18 的 PDF 封面標示為「Policy Statement PS26/18 Cryptoasset Perimeter Guidance September 2026」，全文 140 頁；目次分七章加四個附錄與一份附件（Appendix 1 Made rules (legal instrument)）：第 1 章摘要、第 2 章 PERG 18 導論、第 3 章新的特定投資標的、第 4 章新的受規範加密資產活動、第 5 章排除、第 6 章與現行洗錢防制架構的互動、第 7 章相關修正。",
+      "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Appendix 1 Made rules (legal instrument)"
+    }
+  ],
+  "not_said": [
+    "三份 FCA 來源以 2026-09-18 查核未見「Taiwan」一詞（獨立查核當天以詞界比對重驗：新聞稿、出版品頁、PDF 全文 316,691 字元各 0 次），也就是 FCA 沒有在這三份文件裡談英國新制對台灣使用者或業者的影響。文中的台灣對照只並列日期與制度名稱，依據是另外列入 sources[] 的全國法規資料庫條文頁，不是 FCA 的說法。",
+    "FCA 沒有在這三份來源裡點名任何一家交易所、錢包或發行人，也沒有說哪些業者會通過或不會通過授權。",
+    "FCA 沒有說 2027 年 10 月 25 日之後未取得授權的業者會怎麼處置，也沒有給出罰則金額。",
+    "FCA 沒有公布已經有幾家業者提出申請、或預期會有幾家。9 月 30 日申請窗口本文查核日尚未開放。",
+    "FCA 沒有說這份指引改變了監理範圍。PS26/18 第 1.15 段反過來說 PERG 不能擴張或限縮國會設定的範圍。",
+    "FCA 沒有把 78 份回應的名單全部公開；PDF 的 Annex 1 標題是「List of non-confidential respondents」，只列非機密者。本文不引用名單。",
+    "FCA 沒有在這三份來源裡說明新 statutory instrument 的條文內容，只說政府已提出、將於 10 月諮詢。本文沒有引述該 SI 的內容，也沒有讀取 legislation.gov.uk 的原文（不在 crypto.md 白名單內）。",
+    "FCA 沒有提到任何幣價、市值、交易量或報酬率。",
+    "本站沒有申請也沒有實測 FCA 的授權流程，本文沒有寫成「我們試過」。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "政府修法（statutory instrument）的具體條文與生效時程。",
+      "seen_where": "FCA 新聞稿把「amendments to that legislation」連到 legislation.gov.uk 的 SI 頁面",
+      "why_excluded": "該網址不在 crypto.md 的白名單內，本次沒有抓取、沒有讀到正文。只寫 FCA 自己說的兩件事：政府已提出 targeted 修正、FCA 將於 10 月諮詢。不引述 SI 的任何條文或編號。"
+    },
+    {
+      "claim": "PS26/9 至 PS26/13 五份政策聲明的具體內容。",
+      "seen_where": "PS26/18 出版品頁與 PDF 第 1.3 段列出它們的編號與主題",
+      "why_excluded": "只讀到編號與一句話主題，沒有讀這五份的本文。文章只寫「2026 年 6 月 30 日另發布五份政策聲明」與各自一句話主題，不進一步敘述其內容。"
+    },
+    {
+      "claim": "英國新制與歐盟 MiCA、台灣《虛擬資產服務法》的比較結論（誰比較嚴、誰比較早）。",
+      "seen_where": "無一手來源",
+      "why_excluded": "三份 FCA 來源都沒有做這個比較，文章也沒有做。獨立查核 2026-09-18 的處置：原稿把台灣的公布日、56 條、施行日未定寫成「轉述本站另一篇文章的查核結果」，等於一組沒有 source 支撐的事實；改為直接把全國法規資料庫的《虛擬資產服務法》所有條文頁加進 sources[]（crypto.md 白名單內），當天重抓並在頁面上讀到公布日期、生效狀態與第 56 條條文，正文的查核日也一併改成本文自己的 2026-09-18。並列仍只寫日期與制度名稱，不做優劣評價。"
+    },
+    {
+      "claim": "CP26/13 各題（Question 2 的 58 份回應、Question 4 的 61 份回應）逐題支持度百分比。",
+      "seen_where": "PS26/18 第 3.7、3.8、5.5 段，本次重抓已獨立確認這些段落的文字存在",
+      "why_excluded": "各題母數不同（58 份、61 份、總回應 78 份），相加或互推會製造出不存在的「業界共識」，且不是本篇編輯簡報要求的內容，故本文完全不使用這組數字，只保留 1.10 段「多數（60%）大致支持」這個對應總回應數的單一敘述。"
+    },
+    {
+      "claim": "目前有多少家業者依洗錢防制規則（MLRs）在英國登記。",
+      "seen_where": "無——三份來源都沒有給這個數字",
+      "why_excluded": "沒有一手數字。不寫家數。"
+    },
+    {
+      "claim": "台灣使用者現在用的平台會不會因此停止服務英國客戶、或反過來影響台灣帳號。",
+      "seen_where": "這是這類新聞最常見的延伸問題",
+      "why_excluded": "沒有任何一手來源說明。只能寫「英國制度管的是在英國以營業方式從事這些活動的業者」，不推論對台灣帳號的影響。"
+    }
+  ],
+  "editorial_brief": "讀者：在台灣、手上有加密資產帳號、會看到「英國要管加密貨幣了」這種標題，但分不清「法通過了」「指引出來了」「制度上路了」是三件事的一般使用者。本篇的核心任務是把四個日期拆開，並說明「指引」在監理裡是什麼位置——它不是新法，而是主管機關告訴業者「你這門生意算不算在管制範圍裡」。五節：(1) 發生了什麼——PS26/18 的發布與 CP26/13 諮詢背景；(2) 四個日期——時間表與過渡安排的條件，表格收尾；(3) 指引管什麼——七項受規範活動與排除清單，圖解收尾；(4) 指引做不到什麼——PERG 的法律定位與 10 月將諮詢的未定案部分；(5) 台灣讀者可以怎麼看——三分法判讀方法，並與台灣 VASP 法時程並列（只列日期，不評價）。刻意不談：任何代幣的價格與是否值得持有、哪些業者會受惠或退出、英國制度對台灣帳號的影響推論、政府新 SI 的條文、CP26/13 逐題的百分比細節。免責 callout 照 crypto.md 逐字，查核日 2026-09-18。",
+  "must_not_write": [
+    "不可寫「英國通過加密貨幣新法」。2026-02-04 通過的是 Cryptoasset Regulations，本次 9/16 發布的是 FCA 的最終指引（policy statement 與 PERG 指引），兩件事不同。",
+    "不可寫「新制 2026 年 9 月 16 日上路」。生效日是 2027 年 10 月 25 日，9/16 只是指引發布日，9/30 是申請窗口開放日。",
+    "不可把 2027 年 2 月 28 日寫成「申請截止日」而不加條件。它只針對想使用過渡（savings）規定的業者。",
+    "不可把新聞稿那句 including 起頭的活動清單寫成「共五種受規範活動」。PS26/18 第 4.1 段自己列的是七項，新聞稿是舉例。",
+    "不可寫「既有登記會自動變成新制的許可」。FCA 明說不會自動轉換。",
+    "不可引述或改寫政府那份 statutory instrument 的條文——本次沒有讀到，而且來源不在白名單。",
+    "不可寫哪些交易所、錢包或穩定幣會受惠或會退出英國，也不可評價任何業者的合規能力。",
+    "不可出現幣價、漲跌幅、市值、交易量、報酬率、質押報酬或空投數字。可以說明「安排合格加密資產質押」是一項受規範活動，但不得寫質押可以拿到多少。",
+    "不可寫「在英國拿到授權＝安全」或「沒授權＝一定是詐騙」。",
+    "不可把百分比寫成業界共識，也不可把不同題目的母數混用；本文乾脆不使用逐題百分比。",
+    "不可寫「台灣也應該比照」或任何政策建議，也不可評價英國與台灣哪一邊比較嚴格或比較快。",
+    "不可下投資建議、不可寫買賣時機或值不值得持有。幣圈篇必須另帶免責 callout，且「不是投資建議」六個字逐字不可改。",
+    "不可寫「本站實測」「我們試用」。本文不做任何實測。"
+  ],
+  "live_data_warnings": "本篇沒有名冊列數、feed 筆數這類會逐日變動的活資料。78 份回應與各項支持度百分比是已結束之 CP26/13 諮詢的統計結果，不會再變動，但仍附上查核日 2026-09-18 以防頁面內容更新。申請窗口（2026-09-30 開放）本文查核日尚未開放，文章與 FAQ 都明寫「尚未開放」而非給出任何申請家數；若在窗口開放之後才刊出，需要重新確認這句話是否仍然成立。",
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "四條來源當天各重抓一次並讀正文（curl -sL -A \"Mokaair-editorial\"，PDF 以 apps/api/.venv 的 pypdf 6.19.0 抽 140 頁、316,691 字元）；把 title、description、summary 四句、五節十四段正文、表格五列、圖解 caption、FAQ 七題、兩個 callout 與研究紀錄的 verified_facts 拆成 96 條主張逐條回原文比對；另外用程式把研究紀錄每一條 verbatim_quote 拿回四份來源的可見文字裡做字串命中測試。批次 4.5 沒有前期修正清單，corrections_applied 維持空陣列。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "第一段「這份文件在 PERG 裡編為第 18 章」→「它定案的指引會以新的一章 PERG 18 編入 FCA 的監理範圍指引手冊」。原句把政策聲明本身當成 PERG 章節；PS26/18 第 2 章「Our response」寫 proposals to introduce a new chapter of PERG 18，第 2.1 段另註明諮詢時原編為 PERG 19。",
+      "第一段與 description 的「加密資產業務」→「加密資產活動」。出版品頁的句子是 when cryptoasset activities need FCA authorisation，全文其餘地方也一律用「受規範加密資產活動」。",
+      "第二段補上第四條來源（全國法規資料庫條文頁），與 sources[] 一致。",
+      "第 2 節刪掉結尾重覆的「四個日期分屬不同階段，缺一個就容易讀錯現況。」，把字數讓給下面幾處必要的限定詞；沒有刪掉任何但書或條件。",
+      "第 1 節「還不包含英國政府後續另外提出的新修正草案」→ 改寫成第 1.6 段的兩個階段：政府在諮詢期間先公布草案，之後已把該 statutory instrument 提交國會。第 1.6 段寫 subsequently laid a statutory instrument (SI) before Parliament，新聞稿寫 The Government has also made targeted changes / has published amendments；「草案」是已經過去的狀態。",
+      "第 1 節「PS26/18 記載 FCA 總共收到 78 份回應，其中多數（60%）…」→ 分開寫成第 1.9 段的 78 份與第 1.10 段的 60%，並加一句「這個百分比的母數，PS26/18 沒有寫」。原句的「其中」替來源補了一個它沒有印的母數。",
+      "第 2 節「FCA 在新聞稿與 PS26/18 都寫了同一件事」→「PS26/18 的出版品頁與政策聲明全文都寫了同一件事」。新聞稿全文沒有 convert automatically，也沒有 Money Laundering 字樣（各 0 次），不會自動轉換這件事只在出版品頁與 PS26/18 第 1.25 段。",
+      "第 2 節同段「一項以上這次新增的受規範加密資產活動…都必須另外取得適當的授權」→「一項以上受規範加密資產活動…就必須取得適當的授權」，照第 1.25 段的範圍與措辭。",
+      "表格第五列與第一個 callout 的「想使用過渡安排的既有業者」→「想使用過渡安排的業者」。出版品頁寫 for firms wanting to use the transitional arrangements、PS26/18 第 1.26 段寫 for those wishing to make use of the savings provisions，兩處都沒有限定「既有」。",
+      "第 3 節「借貸落在自營或代理交易的範圍裡」→「落在自營、代理交易或安排交易的範圍裡」（FAQ 第四題同步）。第 4.2 段寫 falls within scope of the dealing and/or arranging activities；arranging 是第 4.1 段七項裡獨立的一項，不等於 dealing as agent。",
+      "第 3 節排除清單的第四類改寫成「只能向發行人贖回並用於向發行人購買商品或服務，或只能向發行人贖回並在有限網路內使用」。第 3.3 段的兩個分支都以 can only be redeemed with the issuer 起頭，原稿把第二個分支的這個條件寫掉了。",
+      "第 3 節「附隨於受規範之專門職業或營業」→「附隨於專門職業或營業而從事的活動（後者以該職業或營業受指定專業團體監督管理者為限）」，另把「因銷售商品或提供服務」改為「為銷售商品或提供服務」。Article 9Z11 的條號標題是 Activities incidental to the carrying on of a profession or business，沒有 regulated 一字；PERG 18.11.6 說明該職業或營業本身不得由受規範活動構成，且須受指定專業團體監督管理——用本文自己的「受規範」一詞去譯，意思正好相反。Article 9Z10 是 carried on for the purpose of the sale of goods or supply of services。",
+      "第 4 節「PERG…不適合針對個別商業模式提供細部規定」→「細部指引」；「業者可自行尋求獨立法律意見」→「任何人都可以尋求」。第 1.16 段寫 PERG is general guidance、Anyone can seek independent legal advice；PERG 是指引不是規定，正是這一節的重點。",
+      "第 4 節「這次修改預期不會影響多數加密資產業者」→「這些修改不會影響多數加密資產業者」（FAQ 第七題同步），照新聞稿 These changes will not affect most crypto firms 的寫法並保留歸因。",
+      "第 4 節「FCA 另外表示，計劃在 2026 年稍晚再諮詢一次」→「出版品頁把同一場諮詢寫成 2026 年稍晚」。新聞稿的「10 月」、出版品頁的 late 2026 與 PS26/18 第 1.8 段的 early Q4 2026 是同一場諮詢的三種寫法，原句會被讀成兩場。",
+      "第 5 節「三個時間點前後相差超過一年半」→「這三件事分別發生在三個日期」。一年半是本文自己從兩個日期換算的，來源沒有印。",
+      "第 5 節台灣段：刪掉「細節可參考本站另一篇文章」與「該文查核當時（2026 年 9 月 16 日）」，改為直接引全國法規資料庫的第 56 條條文與「最後生效日期：未定」，查核日改成本文自己的 2026-09-18。",
+      "第 5 節「FCA 目前公布的是指引與時程，不是可以查詢的授權名單」→「本文讀的三份 FCA 文件給的是指引與時程，沒有新制授權的名單」，把否定句收回到「這幾份文件沒有寫」。",
+      "FAQ 第三題補一句：PS26/18 全文對過渡安排用的字是 savings。",
+      "sources[] 增列第四條：全國法規資料庫《虛擬資產服務法》所有條文頁（crypto.md 白名單），checked_on 2026-09-18；研究紀錄同步。"
+    ],
+    "checked_and_correct": [
+      "四個日期全部回到原文：2026-02-04（第 1.7 段 passed by Parliament on 4 February 2026）、2026-09-16（出版品頁 Policy statement 16/09/2026 與 First published／Last updated，新聞稿同日）、2026-09-30（新聞稿 The authorisation gateway for firms will open on 30 September 2026）、2027-10-25（新聞稿 The regime comes into force on 25 October 2027，出版品頁與第 1.1 段另有 From 25 October 2027 的寫法）；2027-02-28 只掛在過渡／savings 安排上。",
+      "第 4.1 段七項活動逐項對過，七項的中文與英文一一對應，沒有多列也沒有少列；新聞稿那句 including 起頭的五項舉例沒有被寫成全清單。",
+      "78 份回應（第 1.9 段）、60%（第 1.10 段）數字本身正確；CP26/13 諮詢起訖 15/04/2026–03/06/2026 與出版品頁欄位一致。逐題百分比（Q1 62 份、Q2 58 份、Q4 61 份、Q5 51 份）確認存在，文章照原計畫完全不使用。",
+      "PS26/9 至 PS26/13 五份政策聲明的編號、主題與 2026-06-30 發布日逐字對出版品頁。",
+      "第 1.14–1.16 段 PERG 定位、第 5.3 段 RAO 排除未被全部複製、第 3.3／3.4 段排除清單的 including 例示性質，文章都保留了限定詞。",
+      "台灣段四個事實對全國法規資料庫頁面：公布日期民國 115 年 07 月 22 日、全文 56 條、第 56 條「本法施行日期，由行政院定之」、生效狀態「最後生效日期：未定」。",
+      "免責 callout 的 title 與 text 與 crypto.md 樣板逐字相同（含「不是投資建議」六個字），查核日 2026-09-18；兩個結尾連結的 text 與目標內容包 zh-TW title 逐字相同。",
+      "界線：全文沒有幣價、市值、交易量、質押報酬或空投數字，沒有推薦或比較任何業者、資產與錢包，沒有把提案寫成已生效的規則，沒有簡體字，沒有「本站實測」。",
+      "研究紀錄 24 條事實裡的 20 條 verbatim_quote 全部在來源可見文字裡命中；其中四條 PDF 引文只在換行正規化後逐字相符（PDF 檢視器可搜到），已改寫 sourcing_notes 說明，不再宣稱它們同一行。第 5.7 段那條的彎引號被打成 ASCII 直引號，已改回 U+2019。"
+    ],
+    "left_for_the_owner": [
+      "全國法規資料庫的生效狀態是活資料。若刊出時間離 2026-09-18 較遠，行政院可能已公告施行日期，第 5 節那句「最後生效日期：未定」要重抓該頁確認。",
+      "申請窗口 2026-09-30 在查核日尚未開放，文章與 FAQ 都寫「尚未開放」。若在 9/30 之後才發布，第 5 節與 FAQ 第一題需要改寫，`live_data_warnings` 已載明。",
+      "FCA 說 10 月要就新 SI 諮詢。諮詢一開，第 4 節「還沒有涵蓋全部東西」那段會需要更新。",
+      "新增第四條來源之後，翻譯階段五語系的 sources 會多一條；中文標題「全國法規資料庫：虛擬資產服務法（所有條文）」需要各語系自行翻譯，url 與 checked_on 不變。",
+      "PS26/18 第 5 章「Our response」列出新 SI 帶來的三項新排除（部分技術服務、涉及 UKQS 的自營與安排交易、為支付暫時持有 UKQS）。本文刻意沒有寫，因為 SI 條文不在白名單來源內；若站主要寫，需要先決定 legislation.gov.uk 是否納入 crypto.md 白名單。",
+      "zh-TW 段落字數 2,985，距離上限 3,000 只剩 15 字。後續審稿若要加字，必須同時刪掉等量的敘述句，不可以刪限定詞或但書來湊。"
+    ],
+    "second_round": {
+      "checked_by": "second-round factcheck agent (did not write, did not run round one)",
+      "checked_on": "2026-09-18",
+      "claims_rechecked": 91,
+      "edits": 8,
+      "method": "四條來源當天各重抓一次（curl -sL -A \"Mokaair-editorial\"）：新聞稿 200／175,820 bytes（第一輪記 175,821，1 byte 漂移，內容相同）、出版品頁 200／177,578 bytes、PDF 200／1,579,276 bytes（pypdf 抽 140 頁、316,691 字元，與第一輪一致）、全國法規資料庫 200／92,407 bytes，四份都讀到正文。範圍：第一輪改過的 18 處逐句回原文、第一輪新寫進去的每一句、20 條 verbatim_quote 以程式做連續字串比對、checked_on 九處一致性、免責 callout 與 crypto.md 逐字比對、兩個結尾連結對目標內容包、界線重掃。",
+      "verdict": "needs_owner",
+      "edits_to_the_pack": [
+        "第一段「它定案的指引會以新的一章 PERG 18 編入 FCA 的監理範圍指引手冊」→「它定案的指引以新的一章 PERG 18 編入 FCA 的監理範圍指引手冊，附件的法律文書載明這一章同日生效」。第一輪把「政策聲明＝PERG 第 18 章」改對了，但改成了未來式；PS26/18 附件的法律文書 FCA 2026/55 自己寫「Part 1 of Annex B to this instrument comes into force on 16 September 2026.」，而插入新章 PERG 18 的指示就在 Annex B 的 Part 1 裡，所以查核日 PERG 18 已經生效。這是本輪唯一的事實層級訂正。",
+        "第一段「FCA 的出版品頁把這份文件歸類為政策聲明，首次發布與最後更新都標記為這一天」→「FCA 的出版品頁把政策聲明、首次發布與最後更新三個欄位都標記為這一天」。出版品頁上「Policy statement 16/09/2026」本身就是一個日期欄位，原句把它寫成分類而不是日期，反而弱化了事件日的依據（研究紀錄 event_date_basis 引的正是這三個欄位）。",
+        "summary 第一句「說明加密資產業務在什麼情況下需要 FCA 授權」→「加密資產活動」。第一輪已把第一段與 description 的「業務」改成「活動」（出版品頁寫 when cryptoasset activities need FCA authorisation），但漏了 summary 這一句，造成同一句話在文內兩種寫法。",
+        "summary 第四句「政府另外提出的修法」→「政府另外送交國會的修法」，與第 1 節「之後已把那份法規命令（statutory instrument）提交國會」對齊。「提出」會被讀成還在草案階段，正是第一輪第 4 處要修掉的那個誤讀。",
+        "第 4 節「第 1.14 至 1.16 段把這份指引的定位講得很清楚」→「說明這份指引的定位」，第 5 節「這三件事分別發生在三個日期」→「這三件事的日期分別是」。兩處都只是敘述精簡，用來騰出上面那句加字的空間；沒有刪掉任何但書、限定詞或歸因。zh-TW 段落字數 2,985 → 2,991。",
+        "研究紀錄第 5.2 段那條事實的中文寫法「因銷售商品或提供服務而從事該活動」「附隨於受規範之專門職業或營業」改寫。第一輪改了正文卻沒有回頭改這一條，使同一份紀錄裡一條事實用了另一條事實明文禁止的譯法。verbatim_quote 不動（第 5.2 段英文確實寫 a regulated profession or business），另補上 PERG 18.11.3／18.11.4／18.11.6 說明這裡的 regulated 不是 FCA 的受規範活動。",
+        "研究紀錄新增一條 verified_fact：法律文書的兩個生效日與 PERG 18 落在哪一部分，附 verbatim_quote。",
+        "sourcing_notes 補上第二輪的重抓數字與比對結果。"
+      ],
+      "checked_and_correct": [
+        "第一輪 18 處逐句回原文全部成立：SI 已 laid before Parliament（第 1.6 段兩階段寫法）、78 份（第 1.9 段）與 60%（第 1.10 段）拆開且「母數沒有印」屬實（第 1.10 段確實沒有印母數，各題母數 62／58／61／51 另計）、dealing and/or arranging 譯成「自營、代理交易或安排交易」與第 4.1 段七項對得上、Article 9Z11 與 PERG 18.11.6 的條件句、第 3.3 段排除清單第四類兩個分支都以 can only be redeemed with the issuer 起頭、第 1.16 段的「細部指引」與「任何人」、新聞稿的 These changes will not affect most crypto firms、「不會自動轉換」只在出版品頁與第 1.25 段（新聞稿全文 convert 0 次、money laundering 0 次、MLR 0 次）、過渡安排不限「既有」業者。",
+        "「10 月」（新聞稿）、「late 2026」（出版品頁）、「early Q4 2026」（第 1.8 段）確認是同一場諮詢：三處都指向同一份政府 SI 之後的 PERG 修訂，且出版品頁與第 1.8 段都以 early 2027 發布修訂後指引為目標。第 4 節「同一場」的寫法成立。",
+        "台灣段四個事實 2026-09-18 當天逐字對全國法規資料庫該頁：公布日期「民國 115 年 07 月 22 日」、生效狀態「※本法規部分或全部條文尚未生效，最後生效日期：未定」、沿革「一百十五年七月二十二日制定公布全文 56 條，依第 56 條規定：施行日期，由行政院定之。」、第 56 條條文「本法施行日期，由行政院定之。」與站上既有文章 crypto-news-taiwan-vasp-act-20260630 的說法一致（那篇查核日 2026-09-16），沒有矛盾，也沒有改動該篇。",
+        "checked_on 九處一致（內容包四條 source、研究紀錄本體與四條 source、第二段、表格 caption、圖解 caption、免責 callout、FAQ 第一題、第 5 節），全部 2026-09-18。",
+        "20 條 verbatim_quote 以程式對本輪自己抓的正文重測，全部命中；其中四條 PDF 引文（1.10、1.15、5.2、5.7）仍是換行正規化後才逐字相符，與 sourcing_notes 的自述一致；第 5.7 段 Parliament’s 的 U+2019 彎引號保持原樣，沒有被打成 ASCII 直引號。",
+        "免責 callout 的 title 與 text 與 crypto.md 樣板逐字相同（只有查核日不同），含「不是投資建議」六個字，未改動。",
+        "界線：全文沒有幣價、市值、交易量、質押報酬或空投數字；沒有推薦或比較任何交易所、錢包、發行商或資產；「草案」在全文只出現一次，且是第 1.6 段確有的那個已過去的階段；無簡體字；三份 FCA 來源 taiwan 各 0 次，not_said 第一條仍成立。",
+        "display_order 211 與 check_article.py 的 RELATED 順序相符；news_date 2026-09-16 與 slug 尾碼、第一段日期一致；第二個結尾連結指向 crypto-news-mica-transition-ends-20260701，text 與該內容包 zh-TW title 逐字相同。"
+      ],
+      "left_for_the_owner": [
+        "全國法規資料庫的頁尾寫「法規整編資料截止日：民國 115 年 09 月 11 日」，並說內容每週五更新、當週發布的資料下週五才上線。所以 2026-09-18 讀到的「最後生效日期：未定」反映的是 09-11 的整編狀態。刊出前若離查核日較遠，除了重抓該頁，也要看這個截止日有沒有往前走。",
+        "第一輪列的六件事全部維持，其中「9/30 申請窗口尚未開放」與刊出時間直接相關（本文與 FAQ 第一題都寫尚未開放）。",
+        "同批 crypto-news-fca-p2p-crypto-crackdown-20260917 的第二個結尾連結指向本篇，但它現在寫的 text 是「英國 FCA 加密資產監理範圍最終指引」，不是本篇 zh-TW 的 title。本輪沒有改本篇標題，所以那一處仍要由對齊連結的步驟（align_links）補平，不是本篇造成的。",
+        "字數 2,991／3,000，餘裕 9 字。翻譯與逐語審稿階段要加字，仍須等量刪敘述句，不可刪限定詞。"
+      ]
+    }
+  },
+  "hero_label": "指引已發布，新制未生效",
+  "diagram": {
+    "title": "指引涵蓋的四類活動",
+    "caption": "PS26/18 列出的七項新受規範加密資產活動，依性質歸為四類；查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "發行",
+        "在英國發行合格穩定幣"
+      ],
+      [
+        "保管",
+        "保管合格加密資產"
+      ],
+      [
+        "交易",
+        "自營、代理或安排交易"
+      ],
+      [
+        "質押",
+        "安排合格加密資產質押"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Guidance Out, Not Live",
+      "diagram": {
+        "title": "Four Categories the Guidance Covers",
+        "caption": "The seven newly regulated cryptoasset activities listed in PS26/18, grouped into four categories by nature; checked September 18, 2026.",
+        "nodes": [
+          [
+            "Issue",
+            "Issue a qualifying stablecoin"
+          ],
+          [
+            "Safeguard",
+            "Safeguard cryptoassets"
+          ],
+          [
+            "Trading",
+            "Deal or arrange trades"
+          ],
+          [
+            "Staking",
+            "Arrange cryptoasset staking"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "指針は公表済み、新制度は未施行",
+      "diagram": {
+        "title": "指針が対象とする四分類",
+        "caption": "PS26/18が挙げる7つの新しい規制対象暗号資産活動を、性質によって4つに分類。確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "発行",
+            "英国で適格ステーブルコインを発行"
+          ],
+          [
+            "保管",
+            "適格暗号資産を保管"
+          ],
+          [
+            "取引",
+            "自己勘定・代理・取引の手配"
+          ],
+          [
+            "ステーキング",
+            "適格暗号資産のステーキングを手配"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "지침 공표, 신제도 미시행",
+      "diagram": {
+        "title": "지침이 다루는 네 가지 범주",
+        "caption": "PS26/18이 제시한 새로 규제 대상이 되는 가상자산 활동 7가지를 성격에 따라 4가지로 분류. 확인일은 2026년 9월 18일.",
+        "nodes": [
+          [
+            "발행",
+            "영국에서 적격 스테이블코인 발행"
+          ],
+          [
+            "보관",
+            "적격 가상자산 보관"
+          ],
+          [
+            "거래",
+            "자기매매 또는 대리거래"
+          ],
+          [
+            "스테이킹",
+            "적격 가상자산 스테이킹 주선"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "指引已发布，新制未生效",
+      "diagram": {
+        "title": "指引涵盖的四类活动",
+        "caption": "PS26/18 列出的七项新受监管加密资产活动，依性质归为四类；查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "发行",
+            "在英国发行合格稳定币"
+          ],
+          [
+            "保管",
+            "保管合格加密资产"
+          ],
+          [
+            "交易",
+            "自营、代理或安排交易"
+          ],
+          [
+            "质押",
+            "安排合格加密资产质押"
+          ]
+        ]
+      }
+    }
+  }
+}

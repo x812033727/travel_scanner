@@ -117,6 +117,22 @@ RELATED: dict[str, str] = {
     "ai-news-chatgpt-storage-scale-20260911": "ai-news-openai-broadcom-chip-20260624",
     "ai-news-gemini-38-live-20260915": "ai-news-gpt-live-1-api-20260910",
     "ai-news-nvidia-hugging-face-20260903": "ai-news-openai-astral-20260319",
+    # Batch 4.5: only what was published from 2026-09-16 on, in event-date order within each
+    # vertical (the owner's selection of 2026-09-18). Appended, never inserted: the position here
+    # is the display_order, and the earlier batches' numbers must not move.
+    "ai-news-chatgpt-sponsored-agents-20260916": "ai-news-chatgpt-ads-20260505",
+    "ai-news-firefox-smart-window-mistral-20260916": "ai-news-siri-ai-ios-27-20260914",
+    "ai-news-openai-misalignment-reports-20260917": "ai-news-frontier-governance-20260528",
+    "ai-news-anthropic-pace-metrics-20260917": "ai-news-pace-the-frontier-20260912",
+    "ai-news-astra-for-law-20260917": "ai-news-chatgpt-financial-services-20260910",
+    "ai-news-google-cc-family-agent-20260918": "ai-news-google-assistant-gemini-20260904",
+    "tech-news-apple-att-eu-20260916": "tech-news-apple-eu-business-terms-20260818",
+    "tech-news-app-store-bundles-multiseat-20260916": "tech-news-apple-att-eu-20260916",
+    "tech-news-eu-kids-act-20260917": "tech-news-eu-cra-reporting-20260911",
+    "tech-news-taiwan-matsu-cable-tm4-20260918": "tech-news-taiwan-matsu-cable-20260623",
+    "crypto-news-fca-perimeter-guidance-20260916": "crypto-news-mica-transition-ends-20260701",
+    "crypto-news-cftc-passive-software-20260917": "crypto-news-sec-crypto-interpretation-20260323",
+    "crypto-news-fca-p2p-crypto-crackdown-20260917": "crypto-news-fca-perimeter-guidance-20260916",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

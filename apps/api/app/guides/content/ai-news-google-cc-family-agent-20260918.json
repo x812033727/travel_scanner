@@ -1,0 +1,1276 @@
+{
+  "slug": "ai-news-google-cc-family-agent-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 166,
+  "locales": {
+    "zh-TW": {
+      "title": "Google CC 變身家庭代理人：自己的帳號、最多 6 人怎麼分享",
+      "description": "Google 官方部落格在 2026 年 9 月 17 日刊出公告，台北時間已經是 9 月 18 日，宣布 Google Labs 的 AI 代理 CC 從個人助理擴大成一家最多 6 人共用、擁有自己 Google 帳號的版本。本文依官方部落格與 Gemini 產品頁，整理 CC 怎麼設計分享與記憶、官方列出的美國與 18 歲以上等條件，以及目前還沒有交代的部分。",
+      "hero": {
+        "src": "/guides/ai-news-google-cc-family-agent-20260918/hero.jpg",
+        "alt": "原創插圖：中央一個圓形節點，被一個簡化的屋型外框圍住，幾條細線從圓心放射連到外框上的小圓點，其中一條線中間有一個小勾號圖案，代表動作需要許可",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google 官方部落格在 2026 年 9 月 17 日刊出新公告，這個時間換算成台北時間已經是 2026 年 9 月 18 日。公告宣布，Google Labs 的 AI 代理 CC 正從服務單一使用者的個人助理，變成一家人或一個群組可以共用的代理：CC 現在有自己的 Google 帳號，官方說這讓 CC 有獨立的身分與清楚的權限機制，最多可以有 6 位成員一起管理與協作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，讀的是 Google 官方部落格這篇公告的全文、CC 在 2025 年推出時的原始公告、Gemini 官方產品頁面介紹 Daily Brief 的部分，以及 Google 官方部落格的 RSS 摘要。本站沒有實際使用過 CC，官方列出的開放地區也只有美國；文中生活情境是編輯設計的例子，全文不做任何購買或訂閱建議。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Google 官方部落格在 2026 年 9 月 17 日刊出公告，換算成台北時間已經是 2026 年 9 月 18 日，宣布 Google Labs 的 AI 代理 CC 正從個人助理，擴大成家庭與群組可以共用的版本。",
+            "CC 現在有自己的 Google 帳號，最多可以有 6 位成員一起管理與協作，每人各自決定要跟 CC 分享什麼、保留什麼隱私，並且能隨時更改。",
+            "官方列出的開放條件是美國、18 歲以上，並使用個人 Google 帳號；2025 年 12 月 16 日推出的最初版本，條件寫的卻是美國與加拿大，而且要從 Google AI Ultra 與付費訂閱者開始開放，Google 沒有說明需求是否已經改變。",
+            "本文查核到 2026 年 9 月 18 日為止，官方這篇公告沒有說明分享出去的資料會保存多久、是否用於訓練模型，也沒有交代成員退出群組後會發生什麼事。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這則公告在說什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的標題是「新版 CC：一個為家庭打造的 AI 代理」，標題下的導言說明，這是 Google Labs 推出的一個實驗性代理，目的是幫家庭減少花在後勤協調上的時間，把時間留給彼此相處。撰文者是 Google Labs 資深產品經理 Tom Shane。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CC 不是這次才出現的產品。Google 在文中回顧，CC 最早的定位是幫個人掌握一天行程的個人代理，2025 年 12 月 16 日以早期版本上線，許多早期測試者很快就養成每天使用的習慣；官方寫的是「5 月」把它帶進 Gemini App、變成 Daily Brief，沒有印出年份，也沒有給出確切日子。這次的公告，是把同一個 CC 從服務一個人，擴大成服務一整個家庭或群組。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告頁面上印的日期是 2026 年 9 月 17 日，但 Google 官方 RSS 摘要記錄這篇文章發布於協調世界時 9 月 17 日 18 點 15 分，換算成台北時間，已經是 2026 年 9 月 18 日凌晨。本文採用台北時間認定的日期，但兩個日期都寫在這裡，方便讀者對照原文時，不會誤以為「9 月 17 日」是本文寫錯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一個家能靠 CC 做的三件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一件事，是每天早上的共用摘要。公告寫道，CC 每天早上會送出一份共用的「Your Day Ahead」簡報，讓原本卡在某一個人信箱或腦袋裡的家庭行程，變成所有成員都看得到：誰要去哪裡、有什麼事要做，以及 CC 昨天已經完成了什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件事，是自動整理行事曆與待辦。公告寫道，CC 會自動追蹤重要的日期與待辦事項，把群組裡成員分享出來的相關資訊，整理進一份家庭共用的行事曆或待辦清單，並在事情有變動時協助保持更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件事，官方寫的是協助你完成一些耗時的家庭行政工作，舉的例子是填寫學校的同意書或活動報名的 PDF 表單、列出學用品的採購清單，或是草擬一週的餐點計畫；遇到缺少的資訊，官方說 CC 會主動詢問，並更新它記住的群組資訊，方便下一次派上用場。官方也在功能說明的圖說裡特別加了一句但書：CC 能採取行動，例如填寫表單，前提是經過你的同意。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "誰能用",
+            "需要誰同意",
+            "官方未說明的部分"
+          ],
+          "rows": [
+            [
+              "每天早上的共用摘要",
+              "群組裡的成員",
+              "事前由各成員決定分享哪些內容",
+              "未寫明可用的語言"
+            ],
+            [
+              "自動整理行事曆與待辦",
+              "群組裡的成員",
+              "同上，只用成員分享出來的資訊",
+              "未寫明資料保留多久"
+            ],
+            [
+              "協助填表、購物與餐點計畫",
+              "群組裡的成員",
+              "需要，官方寫明經你同意",
+              "未寫明填錯或訂錯後怎麼補救"
+            ],
+            [
+              "帳號與分享設定",
+              "每位成員各自設定",
+              "每人自行決定分享範圍，隨時可改",
+              "未寫明退出群組後資料如何處理"
+            ]
+          ],
+          "caption": "依 Google 於 2026 年 9 月 17 日（台北時間 9 月 18 日）發布的官方部落格公告整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "帳號、分享與記憶怎麼設計"
+        },
+        {
+          "type": "paragraph",
+          "text": "這次改版真正的設計重點，是 CC 有了自己「已驗證」的 Google 帳號。官方說明，這個帳號讓 CC 有獨立的身分與清楚的權限機制，CC 在跟群組互動時就是用這個帳號現身。官方也寫明兩個限制：CC 只會回應群組裡的成員，而且沒有得到許可，不會在群組之外採取行動或分享資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享的權限是每個人各自決定的。每位成員可以自由選擇要跟 CC 分享什麼、要保留什麼隱私，而且隨時可以更改。官方另外設計了一個自動分享寄件者的機制：成員可以指定固定要分享的寄件者，例如小孩學校或旅遊訂位通知的信箱，之後這些來源會持續自動分享；每星期，成員還會收到一份私人的新寄件者清單，自己決定要不要加進分享範圍。臨時想分享的內容，也可以用電子郵件或 Google Chat 傳給 CC，或分享雲端硬碟資料夾或檔案給它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CC 記住的東西分成兩層。官方寫道，CC 會記得整個家庭共用的資訊，例如固定買的雜貨清單或全家最愛的餐廳；也會記得只屬於一個人的資訊，例如個人的飲食偏好或所在時區。以下是編輯設計的例子：一家四口裡只有一個人不吃辣，照官方舉的例子，這項忌口屬於個人那一層，餐廳偏好卻屬於全家那一層，那麼全家一起訂餐廳時，兩層會怎麼互相影響？公告只列了這兩組例子，沒有說明實際上怎麼判斷一件事屬於哪一層，也沒有寫兩層記憶各自保存多久、怎麼清除。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-google-cc-family-agent-20260918/diagram-1.svg",
+          "alt": "四格圖解：自己的帳號、各自決定分享、記憶分兩層、動作需要許可",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Google 2026 年 9 月 17 日（台北時間 9 月 18 日）發布的公告整理：帳號、分享、記憶與許可，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台灣用不到，但這些條件要先弄清楚"
+        },
+        {
+          "type": "paragraph",
+          "text": "先講最直接的一點：官方列出的開放地區只有美國。公告原文寫的是，這個家庭版是 Google Labs 的早期實驗，開放給美國、年滿 18 歲、使用個人 Google 帳號的使用者，可以透過網頁與行動裝置使用。公告沒有提到台灣，也沒有列出任何擴大到其他地區的時間表或可用的語言，本文因此不去猜測 CC 未來會不會、或什麼時候到台灣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訂閱門檻也有一處沒有說清楚。2025 年 12 月 16 日 CC 剛推出時，官方寫的條件是美國與加拿大的消費者帳號、年滿 18 歲，而且要從 Google AI Ultra 與付費訂閱者開始開放；這次 2026 年 9 月的公告只寫個人 Google 帳號，沒有再提訂閱或付費。Google 沒有明講付費門檻是不是已經取消，本文把兩句話連同各自的日期都列出來，不代替讀者下結論。"
+        },
+        {
+          "type": "paragraph",
+          "text": "符合條件也不是馬上就能用。公告寫道，已經是使用者的人會在接下來幾天收到升級信件，新使用者則要加入候補名單，兩者都沒有給出確切要等多久。另外還有一處官方沒有解釋的落差：這是設計給家庭用的產品，舉的例子有不少是小孩的學校表單與活動，開放條件卻是年滿 18 歲，照公告字面上的條件，小孩沒辦法是那 6 位成員之一，公告全文沒有處理這個看起來矛盾的地方。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Google 沒有交代的部分，以及現有的 Gemini 版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私與資料保存的細節，公告幾乎沒有著墨。Google 說明 CC 只看得到成員主動分享的內容，而且沒有許可不會在群組外分享，也寫了每個 CC 都跑在自己獨立的雲端電腦上，但沒有寫分享出去的信件內容保留多久、會不會被用來改進 Google 的模型，也沒有寫成員想收回先前分享過的內容時該怎麼做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "群組本身怎麼運作，官方也留下不少空白：沒有寫成員退出群組後，共用的記憶會不會跟著刪除；沒有寫這個帳號本身算是屬於誰的；也沒有寫 CC 填錯表單或看錯信件內容時，除了事前要經過同意之外，還有沒有其他核對或補救的做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini App 裡原本就有的 Daily Brief，是同一套概念比較早開放、給單一使用者用的版本，本文不重講它平常怎麼運作。Gemini 官方產品頁把它目前的開放範圍寫成正在向部分地區的合資格使用者推出；頁面最下方的免責區塊，另外印著一行涵蓋整個 Daily Brief 頁面的條件：供應情況不一、僅限美國、僅限英文、18 歲以上。所以這個比較早的版本，台灣的使用者同樣用不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整體來看，這篇公告示範的是一個具體的設計方向：把共用的 AI 代理，變成一個有自己身分、由成員各自決定分享範圍、記憶分成全家與個人兩層的帳號，而不是把一個人的助理直接借給全家用。台灣的使用者目前用不到，本站也沒有實際操作過，這篇整理依據的是 Google 官方公告與產品頁，之後如果開放範圍改變，仍要以官方當時的公告為準。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "台灣的 Google 帳號現在可以用 CC 的家庭版嗎？",
+              "answer": "以本文查核到 2026 年 9 月 18 日為止，官方公告寫的開放地區只有美國，條件是年滿 18 歲、使用個人 Google 帳號，並透過網頁或行動裝置使用。公告沒有提到台灣，也沒有列出任何其他地區的時間表，所以本文不去推測 CC 之後會不會、或什麼時候開放給台灣的帳號。"
+            },
+            {
+              "question": "用 CC 的家庭版要另外付費或訂閱嗎？",
+              "answer": "官方沒有把話說清楚。2026 年 9 月 17 日的公告只寫使用個人 Google 帳號，沒有提到訂閱或付費；但 2025 年 12 月 16 日 CC 剛推出時，官方寫的條件是要從 Google AI Ultra 與付費訂閱者開始開放。Google 並沒有說明這項付費門檻是不是已經取消，本文把兩句話與各自的日期都列出來，不代替讀者判斷現在到底要不要付費。"
+            },
+            {
+              "question": "小孩可以是家庭群組裡的成員嗎？",
+              "answer": "官方列出的年齡條件是使用者必須年滿 18 歲，公告全文沒有另外說明未成年人可以怎麼加入。這代表照公告字面上的條件，小孩沒辦法是那最多 6 位成員之一，即使公告舉的例子有不少跟小孩的學校與活動有關，Google 也沒有解釋這中間的落差要怎麼處理。"
+            },
+            {
+              "question": "CC 會不會自己亂填表單或亂訂東西？",
+              "answer": "官方在說明填表單、列清單這類會實際採取行動的功能時，特別加註經過你的同意這個條件；但公告沒有進一步描述，成員可以在 CC 動手之前，用什麼方式先看過或核對它要做的事，也沒有說明如果 CC 填錯資訊或訂錯時間，接下來要怎麼處理。"
+            },
+            {
+              "question": "Gemini App 裡本來就有的 Daily Brief，跟這次的家庭版是同一個東西嗎？",
+              "answer": "不是同一個功能。Daily Brief 是 CC 比較早、給單一使用者用的版本，官方公告寫的是「5 月」把它帶進 Gemini App，沒有印出年份，也沒有給出確切日子；這次 9 月的公告講的是另外做出一個給家庭或群組共用、擁有自己帳號的新版本。Gemini 官方產品頁把 Daily Brief 目前的開放範圍寫成向部分地區的合資格使用者推出，頁面最下方另外印著供應情況不一、僅限美國、僅限英文、18 歲以上的條件，跟家庭版一樣，台灣目前都用不到。"
+            },
+            {
+              "question": "想自己確認最新的開放狀態，該去哪裡查？",
+              "answer": "可以到 Google 官方部落格裡 Google Labs 分類下的文章，或是 Gemini 官方網站介紹 Daily Brief 的頁面，查看有沒有更新開放地區、年齡或帳號條件的說明；本文查核到的內容以 2026 年 9 月 18 日當天讀到的版面為準，官方頁面隨時可能更新。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文查核到的重點與限制",
+          "text": "Google 官方部落格 2026 年 9 月 17 日的公告，換算成台北時間已經是 9 月 18 日，寫的開放範圍只有美國、年滿 18 歲，並使用個人 Google 帳號；官方沒有提到台灣，本文也不推測 CC 之後會不會、或什麼時候到台灣。2025 年 12 月 16 日推出時的條件原本是美國與加拿大的消費者帳號，而且要從 Google AI Ultra 與付費訂閱者開始開放，Google 沒有說明需求是否已經改變，本文把兩種說法都列出來。本站沒有實際使用過 CC，文中生活情境是編輯設計的例子，全文不是購買或訂閱建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Assistant 退場、Gemini 接手：手機、手錶與車上換手前後要檢查什麼",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Keyword 官方部落格：The new CC, an AI agent built for families",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google Keyword 官方部落格：CC from Google Labs helps you stay productive",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-ai-agent/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Gemini 官方產品頁：Daily Brief - Smart summaries for busy minds",
+          "url": "https://gemini.google/overview/daily-brief/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google 官方部落格 RSS 摘要",
+          "url": "https://blog.google/rss/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "Google's CC Becomes a Family Agent: Its Own Account, and How Up to 6 People Share It",
+      "description": "Google's official blog posted this on September 17, 2026 — already September 18 in Taipei time — saying CC, the AI agent from Google Labs, is expanding from a personal assistant into a version up to 6 people in one household can share, with its own Google account. Based on the blog post and the Gemini product page, this article covers how CC handles sharing and memory, the conditions Google lists — U.S., age 18+ — and what remains unexplained.",
+      "hero": {
+        "src": "/guides/ai-news-google-cc-family-agent-20260918/hero-en.jpg",
+        "alt": "Original illustration: a circular node inside a simplified house outline, with lines radiating out to dots on the frame; one line has a small checkmark, showing an action needs permission.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google's official blog published a new announcement on September 17, 2026, which converts to September 18, 2026 in Taipei time. The announcement says CC, the AI agent from Google Labs, is moving from a personal assistant that serves a single user to an agent that a family or a group can share: CC now has its own Google account, which Google says gives it a distinct identity and a clear permissions model, with up to 6 members able to manage and collaborate with it."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 18, 2026, based on the full text of this announcement on Google's official blog, the original post from when CC launched in 2025, the part of the Gemini official product page that covers Daily Brief, and Google's official blog RSS feed. This site has not actually used CC, and the only region Google lists as available is the U.S.; the everyday scenarios in this article are examples designed by our editors, and nothing here is a recommendation to buy or subscribe."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Google's official blog published an announcement on September 17, 2026 — already September 18, 2026 in Taipei time — saying that CC, the AI agent from Google Labs, is expanding from a personal assistant into a version families and groups can share.",
+            "CC now has its own Google account, with up to 6 members able to manage and collaborate with it, and each member decides individually what to share with CC and what to keep private, with the choice changeable at any time.",
+            "The conditions Google lists are the U.S., age 18 and up, and a personal Google account; the original version launched on December 16, 2025 instead listed the U.S. and Canada, starting with Google AI Ultra and paid subscribers, and Google has not said whether that requirement has changed.",
+            "As of this article's fact-check on September 18, 2026, Google's post does not explain how long shared data is kept, whether it is used to train its models, or what happens after a member leaves the group."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the Announcement Says"
+        },
+        {
+          "type": "paragraph",
+          "text": "The post is titled \"The new CC, an AI agent built for families.\" The standfirst under the title explains that this is an experimental agent from Google Labs meant to help families spend less time on logistics and more time together. It is written by Tom Shane, Senior Product Manager at Google Labs."
+        },
+        {
+          "type": "paragraph",
+          "text": "CC is not a new product. Google recaps in the post that CC was originally positioned as a personal agent to help one person keep track of a day's schedule, launching as an early version on December 16, 2025, and that it quickly became a daily habit for many early testers. Google writes only that it brought CC into the Gemini App as Daily Brief \"in May,\" printing no year and no specific day. This announcement takes that same CC and expands it from serving one person to serving an entire family or group."
+        },
+        {
+          "type": "paragraph",
+          "text": "The date printed on the announcement page is September 17, 2026, but Google's official RSS feed records this post as published at 18:15 UTC on September 17, which converts to the early hours of September 18, 2026 in Taipei time. This article uses the Taipei-time date, but both dates are given here so that readers checking the original post do not mistake \"September 17\" for an error in this article."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Three Things CC Can Do for a Household"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first is a shared morning briefing. The post says CC delivers a shared \"Your Day Ahead\" briefing every morning, turning household schedule information that used to be stuck in one person's inbox or head into something every member can see: who needs to be where, what needs doing, and what CC already completed the day before."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second is automatically organizing the calendar and to-dos. The post says CC automatically tracks important dates and to-dos, pulling relevant shared information from across the group into a shared family Calendar or to-do list, and helps keep it up to date as things change."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the third, Google says it can help you complete time-consuming household administrative tasks — the examples given are filling out school permission slips or activity registration PDF forms, creating a school-supply shopping list, or drafting a weekly meal plan; when information is missing, Google says CC will ask, and update what it remembers about the group so it can use that the next time. Google also adds a caveat in the image caption under this feature: CC can take action, such as filling out forms, only with your permission."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Feature",
+            "Who can use it",
+            "Whose permission is needed",
+            "What Google hasn't explained"
+          ],
+          "rows": [
+            [
+              "Shared morning briefing",
+              "Group members",
+              "Each member decides in advance what to share",
+              "Which languages it supports"
+            ],
+            [
+              "Automatically organizing calendar and to-dos",
+              "Group members",
+              "Same as above — only uses information members have shared",
+              "How long data is kept"
+            ],
+            [
+              "Helping with forms, shopping, and meal plans",
+              "Group members",
+              "Yes — Google states this requires your permission",
+              "How to fix a wrong entry or a wrong order"
+            ],
+            [
+              "Account and sharing settings",
+              "Set individually by each member",
+              "Each person decides their own sharing scope, changeable anytime",
+              "What happens to data after leaving the group"
+            ]
+          ],
+          "caption": "Compiled from Google's official blog announcement published September 17, 2026 (September 18, 2026 in Taipei time); fact-checked September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How the Account, Sharing, and Memory Are Designed"
+        },
+        {
+          "type": "paragraph",
+          "text": "The real design point of this update is that CC now has its own \"verified\" Google account. Google explains that this account gives CC a distinct identity and a clear permissions model, and that this is the account CC shows up as when it interacts with the group. Google also states two limits: CC only responds to members of the group, and it will not take action or share information outside the group without permission."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sharing permissions are decided individually by each person. Every member can freely choose what to share with CC and what to keep private, and can change that at any time. Google also built in a standing-sender mechanism: a member can designate senders to always share going forward, such as a child's school or travel-booking emails, and those sources are then shared automatically from then on; each week, members also receive a private list of new senders they can choose to add to that sharing scope. For anything to share on the spot, a member can also forward it to CC by email or Google Chat, or share a Google Drive folder or files with it."
+        },
+        {
+          "type": "paragraph",
+          "text": "What CC remembers is split into two layers. Google writes that CC remembers what applies to the whole household, such as a go-to grocery list or the family's favorite restaurants, as well as what belongs to just one person, such as individual dietary preferences or local timezones. Here is an example designed by our editors: in a household of four, only one person doesn't eat spicy food. By Google's own examples, that dietary restriction would sit in the individual layer, while restaurant preferences sit in the household layer — so when the family books a restaurant together, how do the two layers interact? Google's post lists only those two sets of examples; it does not explain how something is actually classified into one layer or the other, or how long either layer of memory is kept or how it is cleared."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-google-cc-family-agent-20260918/diagram-1-en.svg",
+          "alt": "Four-panel diagram: its own account, sharing decided individually, memory split into two layers, actions need permission",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from Google's announcement published September 17, 2026 (September 18, 2026 in Taipei time): account, sharing, memory, and permission; fact-checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Not Available in Taiwan, But Here Are the Conditions to Know First"
+        },
+        {
+          "type": "paragraph",
+          "text": "The most direct point first: the only region Google lists as available is the U.S. The post's own text says this family version is an early experiment from Google Labs, available on web and mobile to users age 18 and up in the U.S. with a personal Google account. The post does not mention Taiwan, and it lists no timeline for expanding to other regions and no supported languages, so this article does not speculate about whether or when CC might come to Taiwan."
+        },
+        {
+          "type": "paragraph",
+          "text": "There is also a point about the subscription threshold that isn't fully clear. When CC first launched on December 16, 2025, Google's stated conditions were a U.S. or Canada consumer account, age 18 and up, starting with Google AI Ultra and paid subscribers. This September 2026 announcement names only a personal Google account and says nothing more about a subscription or payment. Google has not explicitly said whether the payment requirement has been dropped; this article lists both sentences along with their own dates rather than drawing a conclusion for the reader."
+        },
+        {
+          "type": "paragraph",
+          "text": "Meeting the conditions doesn't mean access right away, either. The post says existing users will receive an upgrade email in the coming days, while new users need to join a waitlist, and neither is given a specific timeframe. There is also a gap Google doesn't explain: this is a product designed for families, and quite a few of its examples involve children's school forms and activities, yet the eligibility condition is age 18 and up. Taken literally, that means a child cannot be one of the 6 members, and the full post never addresses this apparent contradiction."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Google Hasn't Explained, and the Existing Gemini Version"
+        },
+        {
+          "type": "paragraph",
+          "text": "The post says almost nothing about privacy and data-retention details. Google explains that CC only sees content a member actively chooses to share, and that it will not share anything outside the group without permission; it also states that every CC runs on its own isolated cloud computer. But it does not say how long shared email content is kept, whether it is used to improve Google's models, or how a member can take back something they previously shared."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google also leaves plenty of blanks about how the group itself works: it does not say whether shared memory is deleted after a member leaves the group; it does not say who actually owns the account itself; and it does not say whether there is any way to check or fix things if CC fills out a form incorrectly or misreads an email, beyond the general requirement that it needs your permission beforehand."
+        },
+        {
+          "type": "paragraph",
+          "text": "Daily Brief, which already exists in the Gemini App, is an earlier, single-user version of the same concept, and this article does not re-explain how it normally works. Google's official Gemini product page describes its current availability as rolling out to eligible users in select regions; a disclaimer block at the bottom of the page separately prints a line that covers the entire Daily Brief page: availability varies, U.S. only, English only, age 18 and up. So this earlier version is likewise not usable by users in Taiwan."
+        },
+        {
+          "type": "paragraph",
+          "text": "Taken as a whole, this announcement demonstrates a concrete design direction: turning a shared AI agent into an account with its own identity, sharing scope decided individually by each member, and memory split between household and individual — rather than simply lending one person's assistant to the whole family. Users in Taiwan cannot use it for now, and this site has not actually operated it; this article is based on Google's official announcement and product pages, and if the availability changes later, Google's announcement at that time should still be treated as the authority."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Can a Taiwan Google account use the family version of CC right now?",
+              "answer": "As of this article's fact-check on September 18, 2026, Google's official post lists only the U.S. as available, with conditions of age 18 and up, a personal Google account, and access on web or mobile. The post does not mention Taiwan and lists no timeline for any other region, so this article does not speculate about whether or when CC might open up to Taiwan accounts."
+            },
+            {
+              "question": "Do you need to pay or subscribe separately to use the family version of CC?",
+              "answer": "Google hasn't made this fully clear. The September 17, 2026 post names only a personal Google account, with no mention of a subscription or payment; but when CC first launched on December 16, 2025, Google's stated conditions started with Google AI Ultra and paid subscribers. Google has not said whether that payment requirement has been dropped, so this article lists both sentences with their own dates rather than deciding for the reader whether payment is currently required."
+            },
+            {
+              "question": "Can a child be a member of the family group?",
+              "answer": "The age condition Google lists is that users must be 18 or older, and the full post does not separately explain how a minor could join. Taken literally, that means a child cannot be one of the up to 6 members, even though quite a few of the post's own examples involve children's school and activities; Google does not explain how to resolve that gap."
+            },
+            {
+              "question": "Could CC fill out forms or place orders incorrectly on its own?",
+              "answer": "When describing action-taking features like filling out forms or making lists, Google specifically adds the condition that it happens with your permission; but the post does not further describe any way for a member to review or check what CC is about to do before it acts, and it does not explain what happens next if CC enters the wrong information or books the wrong time."
+            },
+            {
+              "question": "Is Daily Brief, which is already in the Gemini App, the same thing as this new family version?",
+              "answer": "No, they are not the same feature. Daily Brief is the earlier, single-user version of CC; Google's post says only that it was brought into the Gemini App \"in May,\" with no year printed and no specific day given. This September announcement is about a separate, new version built for a family or group to share, with its own account. Google's official Gemini product page describes Daily Brief's current availability as rolling out to eligible users in select regions, and separately prints a condition at the bottom of the page — availability varies, U.S. only, English only, age 18 and up — so, like the family version, it is currently unusable in Taiwan as well."
+            },
+            {
+              "question": "Where can I check the latest availability myself?",
+              "answer": "You can check posts under the Google Labs category on Google's official blog, or the Gemini official website's page on Daily Brief, to see whether the region, age, or account conditions have been updated. What this article reports reflects the pages as read on September 18, 2026; Google's official pages can be updated at any time."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Key Points and Limits of This Fact-Check",
+          "text": "Google's official blog post from September 17, 2026 — already September 18 in Taipei time — states an availability range of the U.S. only, age 18 and up, and a personal Google account; Google does not mention Taiwan, and this article does not speculate about whether or when CC might come to Taiwan. When it launched on December 16, 2025, the stated conditions were originally a U.S. or Canada consumer account, starting with Google AI Ultra and paid subscribers; Google has not explained whether that requirement has changed, so this article lists both versions. This site has not actually used CC, the everyday scenarios in this article are examples designed by our editors, and nothing here is a recommendation to buy or subscribe."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Assistant Exits, Gemini Takes Over: Phone, Watch, and Car Checks Before and After",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Keyword Official Blog: The new CC, an AI agent built for families",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google Keyword Official Blog: CC from Google Labs helps you stay productive",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-ai-agent/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Gemini Official Product Page: Daily Brief - Smart summaries for busy minds",
+          "url": "https://gemini.google/overview/daily-brief/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google Official Blog RSS Feed",
+          "url": "https://blog.google/rss/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Google の CC が家族版エージェントに：専用アカウントと最大6人での共有方法",
+      "description": "Google公式ブログは2026年9月17日にこの発表を掲載しました。台北時間ではすでに9月18日です。Google LabsのAIエージェントCCが、個人向けアシスタントから、1つの家庭で最大6人が共有できる、専用のGoogleアカウントを持つバージョンへと拡大すると発表しています。本稿は公式ブログとGemini製品ページをもとに、CCが共有と記憶をどう設計しているか、公式が挙げる米国・18歳以上といった条件、そしてまだ説明されていない部分を整理します。",
+      "hero": {
+        "src": "/guides/ai-news-google-cc-family-agent-20260918/hero-ja.jpg",
+        "alt": "オリジナルイラスト：中央の円形のノードを、簡略化された家の形の枠が囲み、中心から枠上の小さな点へ何本かの細い線が放射状に伸びている。そのうち1本の線の途中に小さなチェックマークがあり、行動には許可が必要なことを表している。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google公式ブログは2026年9月17日に新しい発表を掲載しました。この日時は台北時間に換算するとすでに2026年9月18日になります。発表によると、Google LabsのAIエージェントCCは、1人のユーザーに応じる個人向けアシスタントから、家族やグループで共有できるエージェントへと変わりつつあります。CCは今や専用のGoogleアカウントを持ち、Googleはこれによって独自のアイデンティティと明確な権限モデルが与えられると説明しており、最大6人のメンバーが一緒に管理・協力できるようになりました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に事実確認を行いました。根拠は、Google公式ブログのこの発表の全文、2025年にCCが登場した際の元の発表、Daily Briefを紹介するGemini公式製品ページの該当箇所、そしてGoogle公式ブログのRSSフィードです。当サイトはCCを実際に使用しておらず、公式が挙げる利用可能な地域も米国のみです。本文中の生活シーンは編集部が作成した例であり、全文を通じて購入や契約を勧めるものではありません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Google公式ブログは2026年9月17日に発表を掲載し、台北時間に換算するとすでに2026年9月18日になります。Google LabsのAIエージェントCCが、個人向けアシスタントから、家族やグループで共有できるバージョンへと拡大すると発表しました。",
+            "CCは今や専用のGoogleアカウントを持ち、最大6人のメンバーが一緒に管理・協力できます。各メンバーはCCと何を共有し何をプライバシーとして残すかを個別に決められ、いつでも変更できます。",
+            "公式が挙げる利用条件は、米国、18歳以上、個人のGoogleアカウントの使用です。2025年12月16日に登場した最初のバージョンの条件は米国とカナダで、Google AI Ultraと有料サブスクリプション利用者から開始するというものでした。要件が変わったのかどうかについて、Googleは説明していません。",
+            "本稿が2026年9月18日まで確認した限り、この発表では共有されたデータがどれくらいの期間保存されるか、モデルの学習に使われるかどうか、メンバーがグループを抜けた後どうなるかについて説明されていません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "この発表の内容"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表のタイトルは「新しいCC、家族のために作られたAIエージェント」です。タイトル下のリード文では、これはGoogle Labsが手がける実験的なエージェントで、家族が段取りの調整に費やす時間を減らし、一緒に過ごす時間を増やすことを目的としていると説明されています。執筆者はGoogle LabsのシニアプロダクトマネージャーであるTom Shane氏です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CCは今回初めて登場した製品ではありません。Googleは発表の中で振り返り、CCはもともと1人のユーザーが1日の予定を把握するのを助ける個人向けエージェントとして位置づけられ、2025年12月16日に初期バージョンとして公開され、多くの初期テスターにとってすぐに毎日使う習慣になったとしています。公式が書いているのは「5月」にそれをGemini AppにDaily Briefとして導入したということだけで、年は記載されておらず、具体的な日付も示されていません。今回の発表は、同じCCを1人向けのサービスから、家族やグループ全体向けのサービスへと拡大するものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表ページに印字されている日付は2026年9月17日ですが、Google公式のRSSフィードでは、この記事が協定世界時9月17日18時15分に公開されたと記録されており、台北時間に換算するとすでに2026年9月18日未明になります。本稿は台北時間で認定した日付を採用していますが、両方の日付をここに記しておくことで、読者が原文と照らし合わせた際に「9月17日」を本稿の誤りだと誤解しないようにしています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "CCが1つの家庭でできる3つのこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "1つ目は、毎朝の共有サマリーです。発表によると、CCは毎朝、共有の「Your Day Ahead」ブリーフィングを送信し、これまで特定の1人の受信トレイや頭の中に留まっていた家庭の予定を、メンバー全員が見られる形にします。誰がどこに行く必要があるか、何をする必要があるか、そしてCCが前日までに完了したことが分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2つ目は、カレンダーとタスクの自動整理です。発表によると、CCは重要な日付とタスクを自動的に把握し、グループ内のメンバーが共有した関連情報を、家族共有のカレンダーやタスクリストにまとめ、状況が変わってもそれを最新の状態に保つのを助けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3つ目について、公式が書いているのは、時間のかかる家庭の事務作業を済ませる手助けをするということです。挙げられている例は、学校の同意書や活動申し込みのPDFフォームへの記入、学用品の買い物リストの作成、1週間の献立プランの下書きなどです。情報が不足している場合、公式によればCCが尋ねてくれ、次回に役立つようグループについて記憶している情報を更新します。公式はこの機能の説明にある画像のキャプションにも、あえて次のただし書きを加えています。CCがフォームへの記入のような行動を取れるのは、あなたの許可があることが前提です。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "機能",
+            "誰が使えるか",
+            "誰の許可が必要か",
+            "公式が説明していない部分"
+          ],
+          "rows": [
+            [
+              "毎朝の共有サマリー",
+              "グループのメンバー",
+              "事前に各メンバーが共有内容を決める",
+              "対応言語が明記されていない"
+            ],
+            [
+              "カレンダーとタスクの自動整理",
+              "グループのメンバー",
+              "同上、メンバーが共有した情報のみ使用",
+              "データの保存期間が明記されていない"
+            ],
+            [
+              "フォーム記入・買い物・献立プランの補助",
+              "グループのメンバー",
+              "必要。公式は許可が必要と明記",
+              "記入や注文の誤りの修正方法が明記されていない"
+            ],
+            [
+              "アカウントと共有設定",
+              "メンバー各自が設定",
+              "各自が共有範囲を決め、いつでも変更可能",
+              "グループ脱退後のデータの扱いが明記されていない"
+            ]
+          ],
+          "caption": "Googleが2026年9月17日（台北時間9月18日）に公開した公式ブログの発表をもとに整理。確認日は2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "アカウント、共有、記憶はどう設計されているか"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回の改訂で本当に重要な設計上のポイントは、CCが自分専用の「確認済み」Googleアカウントを持つようになったことです。公式の説明によると、このアカウントによってCCには独自のアイデンティティと明確な権限モデルが与えられ、CCがグループとやり取りする際はこのアカウントとして現れます。公式は2つの制限も明記しています。CCはグループのメンバーにのみ応答すること、そして許可がなければグループの外で行動したり情報を共有したりしないことです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共有の権限は各自が個別に決めます。各メンバーは、CCと何を共有し何をプライバシーとして残すかを自由に選ぶことができ、いつでも変更できます。公式は送信者を常に共有する仕組みも別に用意しています。メンバーは、子どもの学校や旅行の予約通知のメールアドレスなど、今後常に共有したい送信者を指定でき、それ以降はそれらの送信元が自動的に共有され続けます。毎週、メンバーには新しい送信者の一覧が個人宛に届き、共有範囲に加えるかどうかを自分で決められます。その場で共有したい内容がある場合は、メールやGoogle ChatでCCに転送したり、Google Driveのフォルダやファイルを共有したりすることもできます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CCが記憶する内容は2つの層に分かれています。公式は、CCは家庭全体に当てはまる情報（いつも買う食料品リストや家族のお気に入りのレストランなど）を記憶するとともに、1人だけに属する情報（個人の食事の好みや現在のタイムゾーンなど）も記憶すると書いています。以下は編集部が作成した例です。4人家族のうち1人だけが辛い物を食べられないとします。公式が挙げた例に従うと、この苦手な食べ物は個人の層に属し、レストランの好みは家庭の層に属します。それでは、家族全員で一緒にレストランを予約するとき、この2つの層はどのように影響し合うのでしょうか。発表ではこの2組の例しか挙げられておらず、実際にあることがどちらの層に属するかをどう判断するのか、また2つの層の記憶がそれぞれどれくらいの期間保存され、どう消去されるのかは説明されていません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-google-cc-family-agent-20260918/diagram-1-ja.svg",
+          "alt": "4コマ図解：専用アカウント、共有は各自が決定、記憶は2層に分割、行動には許可が必要",
+          "width": 1600,
+          "height": 900,
+          "caption": "Googleが2026年9月17日（台北時間9月18日）に公開した発表をもとに整理：アカウント、共有、記憶、許可。確認日は2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台湾では使えないが、先に押さえておきたい条件"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず一番直接的な点から述べます。公式が挙げている利用可能な地域は米国のみです。発表の原文には、このファミリー版はGoogle Labsによる早期の実験であり、米国で18歳以上、個人のGoogleアカウントを使うユーザーがウェブとモバイルで利用できると書かれています。発表には台湾についての記載はなく、他の地域への展開スケジュールや対応言語も一切挙げられていないため、本稿はCCが今後台湾に来るかどうか、来るとすればいつかについて推測しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サブスクリプションのハードルについても、はっきりしない点があります。2025年12月16日にCCが初めて登場した際、公式が示した条件は、米国とカナダの消費者向けアカウント、18歳以上で、Google AI Ultraと有料サブスクリプション利用者から開始するというものでした。今回の2026年9月の発表では個人のGoogleアカウントとしか書かれておらず、サブスクリプションや支払いについては触れられていません。Googleは支払いのハードルが撤廃されたのかどうかを明言していないため、本稿は両方の文をそれぞれの日付とともに列挙するにとどめ、読者の代わりに結論を出すことはしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "条件に当てはまっていても、すぐに使えるわけではありません。発表によると、既存のユーザーは今後数日以内にアップグレード用のメールを受け取り、新規のユーザーはウェイティングリストに登録することになりますが、どちらも具体的にどれくらい待つのかは示されていません。もう1つ、公式が説明していない食い違いがあります。これは家庭向けに設計された製品であり、挙げられている例の多くが子どもの学校や活動に関するものですが、利用条件は18歳以上です。発表の文言どおりに考えると、子どもは最大6人のメンバーの1人にはなれず、発表の全文でもこの矛盾しているように見える点は扱われていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Googleが説明していない部分と、既存のGeminiバージョン"
+        },
+        {
+          "type": "paragraph",
+          "text": "プライバシーとデータ保存の詳細について、発表ではほとんど触れられていません。Googleは、CCはメンバーが自ら共有した内容しか見えず、許可がなければグループの外で共有することもないと説明しており、それぞれのCCが独立したクラウドコンピューター上で動作しているとも書いています。しかし、共有されたメールの内容がどれくらいの期間保存されるのか、Googleのモデルの改善に使われるのかどうか、メンバーが以前共有した内容を取り消したい場合にどうすればよいのかは書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "グループそのものの仕組みについても、公式は多くを説明せずに残しています。メンバーがグループを抜けた後、共有されていた記憶が一緒に削除されるのかどうかは書かれておらず、このアカウント自体が誰のものとみなされるのかも書かれていません。また、CCがフォームに誤って記入したりメールの内容を読み違えたりした場合、事前に許可が必要という以外に、確認や修正の方法があるのかどうかも書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini Appにもともとあった Daily Brief は、同じ発想をもとにした、より早く公開された1人向けのバージョンであり、本稿ではその通常の使い方について改めて説明しません。Gemini公式製品ページは、その現在の提供範囲について、一部地域の対象ユーザーへの展開中と説明しています。ページ最下部の免責事項のブロックには、Daily Briefのページ全体に適用される条件として、提供状況は一定ではない、米国のみ、英語のみ、18歳以上という一文が別途記載されています。そのため、この比較的早い時期のバージョンについても、台湾のユーザーは同様に利用できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "全体として見ると、この発表が示しているのは1つの具体的な設計の方向性です。共有のAIエージェントを、独自のアイデンティティを持ち、共有範囲をメンバー各自が決め、記憶が家庭全体と個人の2層に分かれたアカウントへと変えることであり、1人分のアシスタントをそのまま家族全員に貸し与えるという発想ではありません。台湾のユーザーは現時点では利用できず、当サイトも実際に操作したことはありません。この記事はGoogleの公式発表と製品ページに基づいており、今後提供範囲が変われば、その時点でのGoogleの公式発表を基準にする必要があります。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "台湾のGoogleアカウントでは、今すぐCCのファミリー版を使えますか。",
+              "answer": "本稿が2026年9月18日まで確認した限り、公式発表が挙げている利用可能な地域は米国のみで、条件は18歳以上、個人のGoogleアカウントの使用、ウェブまたはモバイルでの利用です。発表には台湾についての記載がなく、他の地域の展開スケジュールも挙げられていないため、本稿はCCが今後台湾のアカウントに開放されるかどうか、開放されるとすればいつかについて推測しません。"
+            },
+            {
+              "question": "CCのファミリー版を使うには、別途料金の支払いや契約が必要ですか。",
+              "answer": "公式ははっきりと説明していません。2026年9月17日の発表には個人のGoogleアカウントとしか書かれておらず、サブスクリプションや支払いについての言及はありません。しかし2025年12月16日にCCが初めて登場した際、公式が示した条件はGoogle AI Ultraと有料サブスクリプション利用者から開始するというものでした。Googleはこの支払いのハードルが撤廃されたかどうかを説明していないため、本稿は両方の文をそれぞれの日付とともに列挙するにとどめ、現時点で支払いが必要かどうかを読者の代わりに判断することはしません。"
+            },
+            {
+              "question": "子どもは家族グループのメンバーになれますか。",
+              "answer": "公式が挙げている年齢条件は、利用者が18歳以上でなければならないというもので、発表の全文には未成年者がどのように参加できるかについての説明は別途ありません。つまり、発表の文言どおりに考えると、子どもは最大6人のメンバーの1人にはなれないことになります。発表で挙げられている例の多くが子どもの学校や活動に関するものであっても、Googleはこの食い違いをどう扱うかを説明していません。"
+            },
+            {
+              "question": "CCが勝手にフォームに誤って記入したり、誤った注文をしたりすることはありませんか。",
+              "answer": "公式は、フォームへの記入やリスト作成のような実際に行動を伴う機能について説明する際、あなたの許可があることが前提だという条件をあえて付け加えています。ただし発表では、CCが行動を起こす前にメンバーがその内容を事前に確認したりチェックしたりする方法についてはこれ以上説明されておらず、CCが情報を誤って入力したり時間を間違えて予約したりした場合にその後どう対応するのかも説明されていません。"
+            },
+            {
+              "question": "Gemini Appにもともとある Daily Brief は、今回のファミリー版と同じものですか。",
+              "answer": "同じ機能ではありません。Daily Briefは、CCのより早い時期の、1人向けのバージョンです。公式発表が書いているのは、それを「5月」にGemini Appに導入したということだけで、年は記載されておらず、具体的な日付も示されていません。今回9月の発表が扱っているのは、家族やグループで共有でき、専用のアカウントを持つ、別に作られた新しいバージョンです。Gemini公式製品ページは、Daily Briefの現在の提供範囲について、一部地域の対象ユーザーへの展開中と説明しており、ページ最下部には別途、提供状況は一定ではない、米国のみ、英語のみ、18歳以上という条件が記載されています。ファミリー版と同様、こちらも台湾では現時点で利用できません。"
+            },
+            {
+              "question": "自分で最新の提供状況を確認するには、どこを見ればよいですか。",
+              "answer": "Google公式ブログのGoogle Labsカテゴリーの記事や、Daily Briefを紹介するGemini公式サイトのページで、対象地域、年齢、アカウントの条件についての説明が更新されていないかを確認できます。本稿が確認した内容は、2026年9月18日時点で読んだページの内容に基づいており、公式ページはいつでも更新される可能性があります。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本稿が確認した要点と限界",
+          "text": "Google公式ブログの2026年9月17日の発表は、台北時間に換算するとすでに9月18日で、利用可能な範囲を米国のみ、18歳以上、個人のGoogleアカウントの使用と記載しています。公式は台湾について触れておらず、本稿もCCが今後台湾に来るかどうか、来るとすればいつかについて推測しません。2025年12月16日の登場時の条件はもともと米国とカナダの消費者向けアカウントで、Google AI Ultraと有料サブスクリプション利用者から開始するというものでした。要件が変わったのかどうかについてGoogleは説明していないため、本稿は両方の説明を併記しています。当サイトはCCを実際に使用しておらず、本文中の生活シーンは編集部が作成した例であり、全文を通じて購入や契約を勧めるものではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google アシスタント終了、Gemini が後継に：スマホ、ウォッチ、車で切り替え前後に確認すること",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Keyword公式ブログ：The new CC, an AI agent built for families",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google Keyword公式ブログ：CC from Google Labs helps you stay productive",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-ai-agent/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Gemini公式製品ページ：Daily Brief - Smart summaries for busy minds",
+          "url": "https://gemini.google/overview/daily-brief/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google公式ブログ RSSフィード",
+          "url": "https://blog.google/rss/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Google CC, 가족용 에이전트로 확장: 자체 계정과 최대 6명 공유 방법",
+      "description": "Google 공식 블로그는 2026년 9월 17일 이 발표를 게재했습니다. 타이베이 시간으로는 이미 9월 18일입니다. Google Labs의 AI 에이전트 CC가 개인용 어시스턴트에서 한 가정 최대 6명이 함께 사용할 수 있고 자체 Google 계정을 가진 버전으로 확장된다고 발표했습니다. 이 글은 공식 블로그와 Gemini 제품 페이지를 바탕으로 CC가 공유와 기억을 어떻게 설계했는지, Google이 제시한 미국·18세 이상 등의 조건, 그리고 아직 설명되지 않은 부분을 정리합니다.",
+      "hero": {
+        "src": "/guides/ai-news-google-cc-family-agent-20260918/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 중앙의 원형 노드를 단순화한 집 모양 테두리가 둘러싸고 있고, 중심에서 테두리 위의 작은 점들로 가느다란 선 여러 개가 방사형으로 뻗어 있습니다. 그중 한 선의 중간에는 작은 체크 표시가 있어, 동작에는 허락이 필요함을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google 공식 블로그는 2026년 9월 17일에 새 발표문을 게재했습니다. 이 시점을 타이베이 시간으로 환산하면 이미 2026년 9월 18일입니다. 발표에 따르면 Google Labs의 AI 에이전트 CC는 한 명의 사용자에게만 응답하던 개인용 어시스턴트에서 가족이나 그룹이 함께 쓸 수 있는 에이전트로 바뀌고 있습니다. CC는 이제 자체 Google 계정을 가지고 있으며, Google은 이를 통해 CC가 뚜렷한 정체성과 명확한 권한 체계를 갖게 된다고 설명합니다. 최대 6명의 구성원이 함께 관리하고 협업할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 18일에 사실 확인을 거쳤으며, Google 공식 블로그에 실린 이 발표문 전문, 2025년 CC가 처음 등장했을 때의 원래 발표문, Daily Brief를 소개하는 Gemini 공식 제품 페이지의 해당 부분, 그리고 Google 공식 블로그의 RSS 피드를 근거로 합니다. 본 사이트는 CC를 직접 사용해 보지 않았고, Google이 제시한 이용 가능 지역도 미국뿐입니다. 본문에 나오는 생활 속 상황은 편집부가 만든 예시이며, 이 글 전체는 구독이나 구매를 권하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Google 공식 블로그는 2026년 9월 17일에 발표문을 게재했고, 타이베이 시간으로 환산하면 이미 2026년 9월 18일입니다. Google Labs의 AI 에이전트 CC가 개인용 어시스턴트에서 가족과 그룹이 함께 쓸 수 있는 버전으로 확장된다고 밝혔습니다.",
+            "CC는 이제 자체 Google 계정을 가지고 있으며, 최대 6명의 구성원이 함께 관리하고 협업할 수 있습니다. 각 구성원은 CC와 무엇을 공유하고 무엇을 비공개로 둘지 개별적으로 정하며, 언제든지 바꿀 수 있습니다.",
+            "Google이 제시한 이용 조건은 미국, 18세 이상, 개인 Google 계정 사용입니다. 2025년 12월 16일에 나온 최초 버전의 조건은 미국과 캐나다였고 Google AI Ultra와 유료 구독자부터 시작해 열렸는데, 요건이 바뀌었는지는 Google이 설명하지 않았습니다.",
+            "이 글이 2026년 9월 18일까지 확인한 바로는, 이 발표문에는 공유된 데이터가 얼마나 오래 보관되는지, 모델 학습에 쓰이는지, 구성원이 그룹을 나간 뒤에는 어떻게 되는지에 대한 설명이 없습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이번 발표의 내용"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문의 제목은 '새로운 CC, 가족을 위해 만든 AI 에이전트'입니다. 제목 아래 도입부에는 이것이 Google Labs가 내놓은 실험적인 에이전트로, 가정이 집안일 조율에 쓰는 시간을 줄이고 서로 함께하는 시간을 늘리는 것이 목적이라고 설명되어 있습니다. 작성자는 Google Labs의 수석 프로덕트 매니저인 Tom Shane입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CC는 이번에 처음 등장한 제품이 아닙니다. Google은 발표문에서, CC가 원래 한 사람이 하루 일정을 파악하도록 돕는 개인용 에이전트로 자리매김했고, 2025년 12월 16일에 초기 버전으로 출시되어 많은 초기 테스터가 곧바로 매일 쓰는 습관을 들였다고 돌아봅니다. Google은 그것을 '5월'에 Gemini App에 Daily Brief로 들여왔다고만 적었을 뿐, 연도는 인쇄하지 않았고 정확한 날짜도 밝히지 않았습니다. 이번 발표는 같은 CC를 한 사람을 위한 서비스에서 가족이나 그룹 전체를 위한 서비스로 확장하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표 페이지에 인쇄된 날짜는 2026년 9월 17일이지만, Google 공식 RSS 피드에는 이 글이 협정 세계시 9월 17일 18시 15분에 게시된 것으로 기록되어 있으며, 타이베이 시간으로 환산하면 이미 2026년 9월 18일 이른 새벽입니다. 이 글은 타이베이 시간을 기준으로 한 날짜를 쓰지만, 독자가 원문과 대조할 때 '9월 17일'을 이 글의 오류로 오해하지 않도록 두 날짜를 모두 여기에 적어 둡니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "CC가 한 가정을 위해 할 수 있는 세 가지"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째는 매일 아침의 공유 요약입니다. 발표문에 따르면 CC는 매일 아침 공유되는 'Your Day Ahead' 브리핑을 보내, 예전이라면 한 사람의 받은편지함이나 머릿속에만 머물렀을 가정 일정을 모든 구성원이 볼 수 있게 해 줍니다. 누가 어디로 가야 하는지, 무엇을 해야 하는지, 그리고 CC가 전날까지 이미 끝낸 일이 무엇인지를 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째는 캘린더와 할 일의 자동 정리입니다. 발표문에 따르면 CC는 중요한 날짜와 할 일을 자동으로 추적하고, 그룹 내 구성원이 공유한 관련 정보를 모아 가족이 함께 쓰는 캘린더나 할 일 목록으로 정리하며, 상황이 바뀌어도 이를 최신 상태로 유지하도록 돕습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 번째로 Google이 적은 내용은, 시간이 많이 드는 가정의 행정 업무를 마치도록 돕는다는 것입니다. 예로 든 것은 학교 동의서나 활동 신청 PDF 양식 작성, 학용품 구매 목록 만들기, 일주일치 식단 계획 초안 작성입니다. 공식에 따르면, 정보가 부족할 때 CC가 먼저 물어보고, 다음에 쓸 수 있도록 그룹에 대해 기억하고 있는 정보를 업데이트합니다. Google은 이 기능을 설명하는 이미지 캡션에도 단서 한 줄을 따로 덧붙였습니다. CC가 양식 작성처럼 행동에 나서는 것은 당신의 허락이 있어야 한다는 것입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "기능",
+            "누가 쓸 수 있는지",
+            "누구의 허락이 필요한지",
+            "Google이 설명하지 않은 부분"
+          ],
+          "rows": [
+            [
+              "매일 아침 공유 요약",
+              "그룹 구성원",
+              "각 구성원이 미리 공유 내용을 정함",
+              "지원 언어가 명시되지 않음"
+            ],
+            [
+              "캘린더와 할 일 자동 정리",
+              "그룹 구성원",
+              "위와 동일, 구성원이 공유한 정보만 사용",
+              "데이터 보관 기간이 명시되지 않음"
+            ],
+            [
+              "양식 작성·구매·식단 계획 지원",
+              "그룹 구성원",
+              "필요함. Google이 허락이 필요하다고 명시",
+              "잘못 작성하거나 잘못 주문했을 때의 수습 방법이 명시되지 않음"
+            ],
+            [
+              "계정과 공유 설정",
+              "구성원 각자 설정",
+              "각자 공유 범위를 정하며 언제든 변경 가능",
+              "그룹을 나간 뒤 데이터 처리 방식이 명시되지 않음"
+            ]
+          ],
+          "caption": "Google이 2026년 9월 17일(타이베이 시간 9월 18일)에 게재한 공식 블로그 발표문을 바탕으로 정리했습니다. 확인일은 2026년 9월 18일입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "계정, 공유, 기억은 어떻게 설계되어 있는가"
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 개편에서 진짜 중요한 설계상의 핵심은 CC가 자체적인 '인증된' Google 계정을 갖게 되었다는 점입니다. 공식 설명에 따르면 이 계정 덕분에 CC는 뚜렷한 정체성과 명확한 권한 체계를 갖게 되며, CC가 그룹과 상호작용할 때는 바로 이 계정으로 나타납니다. Google은 두 가지 제한도 명시합니다. CC는 그룹 구성원에게만 응답하며, 허락 없이는 그룹 밖에서 행동하거나 정보를 공유하지 않는다는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공유 권한은 각자가 개별적으로 정합니다. 각 구성원은 CC와 무엇을 공유하고 무엇을 비공개로 둘지 자유롭게 고를 수 있으며, 언제든지 바꿀 수 있습니다. Google은 발신자를 항상 공유하는 장치도 따로 마련했습니다. 구성원은 자녀 학교나 여행 예약 알림 메일 주소처럼 앞으로 항상 공유하고 싶은 발신자를 지정할 수 있고, 이후 그 발신자는 계속 자동으로 공유됩니다. 매주 구성원에게는 새로운 발신자 목록이 개인적으로 전달되며, 공유 범위에 넣을지는 스스로 정할 수 있습니다. 그때그때 공유하고 싶은 내용이 있다면 이메일이나 Google Chat으로 CC에 전달하거나, Google Drive 폴더나 파일을 공유할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CC가 기억하는 내용은 두 층으로 나뉩니다. Google은 CC가 가정 전체에 해당하는 정보(단골 장보기 목록이나 가족이 가장 좋아하는 식당 등)를 기억하는 동시에, 한 사람에게만 속하는 정보(개인의 식사 취향이나 현재 시간대 등)도 기억한다고 적습니다. 다음은 편집부가 만든 예시입니다. 네 식구 중 한 명만 매운 음식을 못 먹는다고 해 봅시다. Google이 든 예시를 따르면 이 못 먹는 음식은 개인 층에 속하고, 식당 선호는 가정 층에 속합니다. 그렇다면 온 가족이 함께 식당을 예약할 때 이 두 층은 서로 어떻게 영향을 미칠까요? 발표문에는 이 두 세트의 예시만 나와 있을 뿐, 실제로 어떤 일이 어느 층에 속하는지 어떻게 판단하는지, 또 두 층의 기억이 각각 얼마나 오래 보관되고 어떻게 지워지는지는 설명되어 있지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-google-cc-family-agent-20260918/diagram-1-ko.svg",
+          "alt": "네 칸 도해: 자체 계정, 공유는 각자 결정, 기억은 두 층으로 분리, 행동에는 허락 필요",
+          "width": 1600,
+          "height": 900,
+          "caption": "Google이 2026년 9월 17일(타이베이 시간 9월 18일)에 게재한 발표문을 바탕으로 정리: 계정, 공유, 기억, 허락. 확인일은 2026년 9월 18일입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "대만에서는 쓸 수 없지만, 먼저 알아둘 조건들"
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 직접적인 점부터 말하면, Google이 제시한 이용 가능 지역은 미국뿐입니다. 발표문 원문에는 이 가족용 버전이 Google Labs의 초기 실험이며, 미국에서 18세 이상, 개인 Google 계정을 쓰는 사용자가 웹과 모바일로 이용할 수 있다고 적혀 있습니다. 발표문은 대만을 언급하지 않고, 다른 지역으로 확대할 일정이나 지원 언어도 전혀 나열하지 않았습니다. 그래서 이 글은 CC가 앞으로 대만에 올지, 온다면 언제일지 추측하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구독 문턱에 대해서도 분명하지 않은 부분이 있습니다. 2025년 12월 16일 CC가 처음 나왔을 때 Google이 제시한 조건은 미국과 캐나다의 소비자 계정, 18세 이상이었고, Google AI Ultra와 유료 구독자부터 시작해 열린다는 것이었습니다. 이번 2026년 9월 발표문에는 개인 Google 계정이라고만 적혀 있고, 구독이나 결제에 대한 언급은 더 이상 없습니다. Google은 결제 문턱이 없어졌는지 명확히 밝히지 않았으므로, 이 글은 두 문장을 각각의 날짜와 함께 나열할 뿐 독자 대신 결론을 내리지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "조건에 맞더라도 바로 쓸 수 있는 것은 아닙니다. 발표문에 따르면 기존 사용자는 앞으로 며칠 안에 업그레이드 이메일을 받고, 신규 사용자는 대기자 명단에 이름을 올려야 하는데, 둘 다 정확히 얼마나 기다려야 하는지는 나와 있지 않습니다. Google이 설명하지 않은 또 다른 어긋남도 있습니다. 이것은 가정을 위해 설계된 제품이고 예시 중 상당수가 자녀의 학교와 활동에 관한 것인데, 이용 조건은 18세 이상입니다. 발표문의 문구대로라면 자녀는 최대 6명의 구성원 중 하나가 될 수 없으며, 발표문 전체에서도 이 모순되어 보이는 부분은 다루지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Google이 설명하지 않은 부분과 기존 Gemini 버전"
+        },
+        {
+          "type": "paragraph",
+          "text": "프라이버시와 데이터 보관에 관한 세부 사항은 발표문에서 거의 다루지 않습니다. Google은 CC가 구성원이 스스로 공유하기로 한 내용만 볼 수 있고, 허락 없이는 그룹 밖에서 공유하지 않는다고 설명하며, CC마다 독립된 클라우드 컴퓨터에서 동작한다고도 적습니다. 하지만 공유된 메일 내용이 얼마나 오래 보관되는지, Google 모델 개선에 쓰이는지, 구성원이 이전에 공유한 내용을 되돌리고 싶을 때 어떻게 해야 하는지는 적혀 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그룹 자체가 어떻게 운영되는지에 대해서도 Google은 많은 부분을 밝히지 않은 채로 남겨 둡니다. 구성원이 그룹을 나간 뒤 공유된 기억이 함께 삭제되는지 적혀 있지 않고, 이 계정 자체가 누구의 것으로 여겨지는지도 적혀 있지 않습니다. 또한 CC가 양식을 잘못 작성하거나 메일 내용을 잘못 읽었을 때, 사전에 허락이 필요하다는 것 외에 확인하거나 바로잡을 방법이 있는지도 적혀 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini App에 원래 있던 Daily Brief는 같은 개념을 바탕으로 더 일찍 공개된, 한 사람을 위한 버전이며, 이 글에서 평소 작동 방식을 다시 설명하지는 않습니다. Gemini 공식 제품 페이지는 현재 제공 범위를 일부 지역의 자격이 되는 사용자에게 순차적으로 제공하는 중이라고 적고 있습니다. 페이지 맨 아래 면책 조항 블록에는 Daily Brief 페이지 전체에 적용되는 조건으로 제공 상황은 다를 수 있다, 미국 한정, 영어 한정, 18세 이상이라는 문구가 따로 적혀 있습니다. 그래서 이 비교적 이른 버전 역시 대만 사용자는 똑같이 쓸 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전체적으로 보면 이번 발표문이 보여 주는 것은 구체적인 설계 방향 하나입니다. 공유형 AI 에이전트를, 고유한 정체성을 가지고 공유 범위를 구성원 각자가 정하며 기억이 가정 전체와 개인 두 층으로 나뉘는 계정으로 바꾸는 것이지, 한 사람의 어시스턴트를 그대로 온 가족에게 빌려주는 발상이 아닙니다. 대만 사용자는 지금은 쓸 수 없고, 본 사이트도 직접 조작해 보지 않았습니다. 이 글은 Google의 공식 발표와 제품 페이지를 근거로 하며, 앞으로 제공 범위가 바뀌면 그 시점의 Google 공식 발표를 기준으로 삼아야 합니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "대만의 Google 계정으로 지금 바로 CC의 가족용 버전을 쓸 수 있나요?",
+              "answer": "이 글이 2026년 9월 18일까지 확인한 바로는, 공식 발표문이 제시한 이용 가능 지역은 미국뿐이며 조건은 18세 이상, 개인 Google 계정 사용, 웹이나 모바일을 통한 이용입니다. 발표문은 대만을 언급하지 않고 다른 지역의 확대 일정도 나열하지 않았으므로, 이 글은 CC가 앞으로 대만 계정에 열릴지, 연다면 언제일지 추측하지 않습니다."
+            },
+            {
+              "question": "CC의 가족용 버전을 쓰려면 별도로 요금을 내거나 구독해야 하나요?",
+              "answer": "Google은 이 부분을 분명히 밝히지 않았습니다. 2026년 9월 17일 발표문에는 개인 Google 계정이라고만 적혀 있고 구독이나 결제에 대한 언급은 없습니다. 하지만 2025년 12월 16일 CC가 처음 나왔을 때 Google이 제시한 조건은 Google AI Ultra와 유료 구독자부터 시작해 열린다는 것이었습니다. Google은 이 결제 문턱이 없어졌는지 설명하지 않았으므로, 이 글은 두 문장을 각각의 날짜와 함께 나열할 뿐, 지금 결제가 필요한지를 독자 대신 판단하지 않습니다."
+            },
+            {
+              "question": "자녀도 가족 그룹의 구성원이 될 수 있나요?",
+              "answer": "Google이 제시한 연령 조건은 사용자가 18세 이상이어야 한다는 것이며, 발표문 전문에는 미성년자가 어떻게 참여할 수 있는지에 대한 별도 설명이 없습니다. 즉 발표문의 문구대로라면 자녀는 최대 6명의 구성원 중 하나가 될 수 없습니다. 발표문이 든 예시 중 상당수가 자녀의 학교나 활동과 관련이 있는데도, Google은 이 어긋남을 어떻게 처리할지 설명하지 않습니다."
+            },
+            {
+              "question": "CC가 제멋대로 양식을 잘못 작성하거나 잘못 주문하지는 않나요?",
+              "answer": "Google은 양식 작성이나 목록 만들기처럼 실제로 행동에 나서는 기능을 설명할 때 당신의 허락이 있어야 한다는 조건을 따로 덧붙입니다. 다만 발표문은 CC가 행동에 나서기 전에 구성원이 그 내용을 미리 살펴보거나 확인할 방법을 더 이상 설명하지 않으며, CC가 정보를 잘못 입력하거나 시간을 잘못 예약했을 때 그다음에 어떻게 해야 하는지도 설명하지 않습니다."
+            },
+            {
+              "question": "Gemini App에 원래 있던 Daily Brief는 이번 가족용 버전과 같은 것인가요?",
+              "answer": "같은 기능이 아닙니다. Daily Brief는 CC의 더 이른, 한 사람을 위한 버전입니다. 공식 발표문은 그것을 '5월'에 Gemini App에 들여왔다고만 적었을 뿐, 연도는 인쇄하지 않았고 정확한 날짜도 밝히지 않았습니다. 이번 9월 발표문이 다루는 것은 가족이나 그룹이 함께 쓸 수 있고 자체 계정을 가진, 별도로 만든 새 버전입니다. Gemini 공식 제품 페이지는 Daily Brief의 현재 제공 범위를 일부 지역의 자격이 되는 사용자에게 순차적으로 제공하는 중이라고 적고 있으며, 페이지 맨 아래에는 제공 상황은 다를 수 있다, 미국 한정, 영어 한정, 18세 이상이라는 조건이 따로 적혀 있습니다. 가족용 버전과 마찬가지로 이 역시 대만에서는 지금 쓸 수 없습니다."
+            },
+            {
+              "question": "최신 제공 상태를 직접 확인하려면 어디를 봐야 하나요?",
+              "answer": "Google 공식 블로그의 Google Labs 카테고리에 실린 글이나, Daily Brief를 소개하는 Gemini 공식 웹사이트 페이지에서 지역, 연령, 계정 조건에 대한 설명이 업데이트되었는지 확인할 수 있습니다. 이 글이 확인한 내용은 2026년 9월 18일 당일 읽은 페이지를 기준으로 하며, 공식 페이지는 언제든 업데이트될 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 글이 확인한 핵심과 한계",
+          "text": "Google 공식 블로그의 2026년 9월 17일 발표문은 타이베이 시간으로 환산하면 이미 9월 18일이며, 이용 가능 범위를 미국뿐, 18세 이상, 개인 Google 계정 사용이라고 적고 있습니다. Google은 대만을 언급하지 않았고, 이 글도 CC가 앞으로 대만에 올지, 온다면 언제일지 추측하지 않습니다. 2025년 12월 16일 등장 당시 조건은 원래 미국과 캐나다의 소비자 계정이었고, Google AI Ultra와 유료 구독자부터 시작해 열린다는 것이었습니다. 요건이 바뀌었는지 Google이 설명하지 않았으므로, 이 글은 두 가지 설명을 함께 적습니다. 본 사이트는 CC를 직접 사용해 보지 않았고, 본문에 나오는 생활 속 상황은 편집부가 만든 예시이며, 이 글 전체는 구독이나 구매를 권하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google 어시스턴트 퇴장, Gemini가 대체: 휴대전화·스마트워치·차량 전환 전후 점검할 것",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 키워드 공식 블로그: The new CC, an AI agent built for families",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google 키워드 공식 블로그: CC from Google Labs helps you stay productive",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-ai-agent/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Gemini 공식 제품 페이지: Daily Brief - Smart summaries for busy minds",
+          "url": "https://gemini.google/overview/daily-brief/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google 공식 블로그 RSS 피드",
+          "url": "https://blog.google/rss/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Google CC 变身家庭代理人：自己的账号、最多 6 人怎么分享",
+      "description": "Google 官方博客在 2026 年 9 月 17 日刊出公告，台北时间已经是 9 月 18 日，宣布 Google Labs 的 AI 代理 CC 从个人助理扩大成一家最多 6 人共用、拥有自己 Google 账号的版本。本文依官方博客与 Gemini 产品页，整理 CC 怎么设计分享与记忆、官方列出的美国与 18 岁以上等条件，以及目前还没有交代的部分。",
+      "hero": {
+        "src": "/guides/ai-news-google-cc-family-agent-20260918/hero-zh-cn.jpg",
+        "alt": "原创插图：中央一个圆形节点，被一个简化的屋型外框围住，几条细线从圆心放射连到外框上的小圆点，其中一条线中间有一个小勾号图案，代表动作需要许可",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Google 官方博客在 2026 年 9 月 17 日刊出新公告，这个时间换算成台北时间已经是 2026 年 9 月 18 日。公告宣布，Google Labs 的 AI 代理 CC 正从服务单一用户的个人助理，变成一家人或一个群组可以共用的代理：CC 现在有自己的 Google 账号，官方说这让 CC 有独立的身份与清楚的权限机制，最多可以有 6 位成员一起管理与协作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核，读的是 Google 官方博客这篇公告的全文、CC 在 2025 年推出时的原始公告、Gemini 官方产品页面介绍 Daily Brief 的部分，以及 Google 官方博客的 RSS 摘要。本站没有实际使用过 CC，官方列出的开放地区也只有美国；文中生活情境是编辑设计的例子，全文不做任何购买或订阅建议。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Google 官方博客在 2026 年 9 月 17 日刊出公告，换算成台北时间已经是 2026 年 9 月 18 日，宣布 Google Labs 的 AI 代理 CC 正从个人助理，扩大成家庭与群组可以共用的版本。",
+            "CC 现在有自己的 Google 账号，最多可以有 6 位成员一起管理与协作，每人各自决定要跟 CC 分享什么、保留什么隐私，并且能随时更改。",
+            "官方列出的开放条件是美国、18 岁以上，并使用个人 Google 账号；2025 年 12 月 16 日推出的最初版本，条件写的却是美国与加拿大，而且要从 Google AI Ultra 与付费订阅者开始开放，Google 没有说明需求是否已经改变。",
+            "本文查核到 2026 年 9 月 18 日为止，官方这篇公告没有说明分享出去的数据会保存多久、是否用于训练模型，也没有交代成员退出群组后会发生什么事。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这则公告在说什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的标题是“新版 CC：一个为家庭打造的 AI 代理”，标题下的导言说明，这是 Google Labs 推出的一个实验性代理，目的是帮家庭减少花在后勤协调上的时间，把时间留给彼此相处。撰文者是 Google Labs 资深产品经理 Tom Shane。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CC 不是这次才出现的产品。Google 在文中回顾，CC 最早的定位是帮个人掌握一天行程的个人代理，2025 年 12 月 16 日以早期版本上线，许多早期测试者很快就养成每天使用的习惯；官方写的是“5 月”把它带进 Gemini App、变成 Daily Brief，没有印出年份，也没有给出确切日子。这次的公告，是把同一个 CC 从服务一个人，扩大成服务一整个家庭或群组。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告页面上印的日期是 2026 年 9 月 17 日，但 Google 官方 RSS 摘要记录这篇文章发布于协调世界时 9 月 17 日 18 点 15 分，换算成台北时间，已经是 2026 年 9 月 18 日凌晨。本文采用台北时间认定的日期，但两个日期都写在这里，方便读者对照原文时，不会误以为“9 月 17 日”是本文写错。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一个家能靠 CC 做的三件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一件事，是每天早上的共用摘要。公告写道，CC 每天早上会送出一份共用的“Your Day Ahead”简报，让原本卡在某一个人邮箱或脑袋里的家庭行程，变成所有成员都看得到：谁要去哪里、有什么事要做，以及 CC 昨天已经完成了什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件事，是自动整理日历与待办。公告写道，CC 会自动追踪重要的日期与待办事项，把群组里成员分享出来的相关信息，整理进一份家庭共用的日历或待办清单，并在事情有变动时协助保持更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件事，官方写的是协助你完成一些耗时的家庭行政工作，举的例子是填写学校的同意书或活动报名的 PDF 表单、列出学用品的采购清单，或是草拟一周的餐点计划；遇到缺少的信息，官方说 CC 会主动询问，并更新它记住的群组信息，方便下一次派上用场。官方也在功能说明的图说里特别加了一句但书：CC 能采取行动，例如填写表单，前提是经过你的同意。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "功能",
+            "谁能用",
+            "需要谁同意",
+            "官方未说明的部分"
+          ],
+          "rows": [
+            [
+              "每天早上的共用摘要",
+              "群组里的成员",
+              "事前由各成员决定分享哪些内容",
+              "未写明可用的语言"
+            ],
+            [
+              "自动整理日历与待办",
+              "群组里的成员",
+              "同上，只用成员分享出来的信息",
+              "未写明数据保留多久"
+            ],
+            [
+              "协助填表、购物与餐点计划",
+              "群组里的成员",
+              "需要，官方写明经你同意",
+              "未写明填错或订错后怎么补救"
+            ],
+            [
+              "账号与分享设定",
+              "每位成员各自设定",
+              "每人自行决定分享范围，随时可改",
+              "未写明退出群组后数据如何处理"
+            ]
+          ],
+          "caption": "依 Google 于 2026 年 9 月 17 日（台北时间 9 月 18 日）发布的官方博客公告整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "账号、分享与记忆怎么设计"
+        },
+        {
+          "type": "paragraph",
+          "text": "这次改版真正的设计重点，是 CC 有了自己“已验证”的 Google 账号。官方说明，这个账号让 CC 有独立的身份与清楚的权限机制，CC 在跟群组互动时就是用这个账号现身。官方也写明两个限制：CC 只会回应群组里的成员，而且没有得到许可，不会在群组之外采取行动或分享信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分享的权限是每个人各自决定的。每位成员可以自由选择要跟 CC 分享什么、要保留什么隐私，而且随时可以更改。官方另外设计了一个自动分享发件人的机制：成员可以指定固定要分享的发件人，例如孩子学校或旅行预订通知的邮箱，之后这些来源会持续自动分享；每星期，成员还会收到一份私人的新发件人清单，自己决定要不要加进分享范围。临时想分享的内容，也可以用电子邮件或 Google Chat 传给 CC，或分享云端硬盘文件夹或文件给它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CC 记住的东西分成两层。官方写道，CC 会记得整个家庭共用的信息，例如固定买的杂货清单或全家最爱的餐厅；也会记得只属于一个人的信息，例如个人的饮食偏好或所在时区。以下是编辑设计的例子：一家四口里只有一个人不吃辣，照官方举的例子，这项忌口属于个人那一层，餐厅偏好却属于全家那一层，那么全家一起订餐厅时，两层会怎么互相影响？公告只列了这两组例子，没有说明实际上怎么判断一件事属于哪一层，也没有写两层记忆各自保存多久、怎么清除。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-google-cc-family-agent-20260918/diagram-1-zh-cn.svg",
+          "alt": "四格图解：自己的账号、各自决定分享、记忆分两层、动作需要许可",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Google 2026 年 9 月 17 日（台北时间 9 月 18 日）发布的公告整理：账号、分享、记忆与许可，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台湾用不到，但这些条件要先弄清楚"
+        },
+        {
+          "type": "paragraph",
+          "text": "先讲最直接的一点：官方列出的开放地区只有美国。公告原文写的是，这个家庭版是 Google Labs 的早期实验，开放给美国、年满 18 岁、使用个人 Google 账号的用户，可以通过网页与移动设备使用。公告没有提到台湾，也没有列出任何扩大到其他地区的时间表或可用的语言，本文因此不去猜测 CC 未来会不会、或什么时候到台湾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "订阅门槛也有一处没有说清楚。2025 年 12 月 16 日 CC 刚推出时，官方写的条件是美国与加拿大的消费者账号、年满 18 岁，而且要从 Google AI Ultra 与付费订阅者开始开放；这次 2026 年 9 月的公告只写个人 Google 账号，没有再提订阅或付费。Google 没有明讲付费门槛是不是已经取消，本文把两句话连同各自的日期都列出来，不代替读者下结论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "符合条件也不是马上就能用。公告写道，已经是用户的人会在接下来几天收到升级信件，新用户则要加入候补名单，两者都没有给出确切要等多久。另外还有一处官方没有解释的落差：这是设计给家庭用的产品，举的例子有不少是小孩的学校表单与活动，开放条件却是年满 18 岁，照公告字面上的条件，小孩没办法是那 6 位成员之一，公告全文没有处理这个看起来矛盾的地方。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Google 没有交代的部分，以及现有的 Gemini 版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "隐私与数据保存的细节，公告几乎没有着墨。Google 说明 CC 只看得到成员主动分享的内容，而且没有许可不会在群组外分享，也写了每个 CC 都跑在自己独立的云端电脑上，但没有写分享出去的信件内容保留多久、会不会被用来改进 Google 的模型，也没有写成员想收回先前分享过的内容时该怎么做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "群组本身怎么运作，官方也留下不少空白：没有写成员退出群组后，共用的记忆会不会跟着删除；没有写这个账号本身算是属于谁的；也没有写 CC 填错表单或看错信件内容时，除了事前要经过同意之外，还有没有其他核对或补救的做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini App 里原本就有的 Daily Brief，是同一套概念比较早开放、给单一用户用的版本，本文不重讲它平常怎么运作。Gemini 官方产品页把它目前的开放范围写成正在向部分地区的合资格用户推出；页面最下方的免责区块，另外印着一行涵盖整个 Daily Brief 页面的条件：供应情况不一、仅限美国、仅限英文、18 岁以上。所以这个比较早的版本，台湾的用户同样用不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整体来看，这篇公告示范的是一个具体的设计方向：把共用的 AI 代理，变成一个有自己身份、由成员各自决定分享范围、记忆分成全家与个人两层的账号，而不是把一个人的助理直接借给全家用。台湾的用户目前用不到，本站也没有实际操作过，这篇整理依据的是 Google 官方公告与产品页，之后如果开放范围改变，仍要以官方当时的公告为准。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "台湾的 Google 账号现在可以用 CC 的家庭版吗？",
+              "answer": "以本文查核到 2026 年 9 月 18 日为止，官方公告写的开放地区只有美国，条件是年满 18 岁、使用个人 Google 账号，并通过网页或移动设备使用。公告没有提到台湾，也没有列出任何其他地区的时间表，所以本文不去推测 CC 之后会不会、或什么时候开放给台湾的账号。"
+            },
+            {
+              "question": "用 CC 的家庭版要另外付费或订阅吗？",
+              "answer": "官方没有把话说清楚。2026 年 9 月 17 日的公告只写使用个人 Google 账号，没有提到订阅或付费；但 2025 年 12 月 16 日 CC 刚推出时，官方写的条件是要从 Google AI Ultra 与付费订阅者开始开放。Google 并没有说明这项付费门槛是不是已经取消，本文把两句话与各自的日期都列出来，不代替读者判断现在到底要不要付费。"
+            },
+            {
+              "question": "小孩可以是家庭群组里的成员吗？",
+              "answer": "官方列出的年龄条件是用户必须年满 18 岁，公告全文没有另外说明未成年人可以怎么加入。这代表照公告字面上的条件，小孩没办法是那最多 6 位成员之一，即使公告举的例子有不少跟小孩的学校与活动有关，Google 也没有解释这中间的落差要怎么处理。"
+            },
+            {
+              "question": "CC 会不会自己乱填表单或乱订东西？",
+              "answer": "官方在说明填表单、列清单这类会实际采取行动的功能时，特别加注经过你的同意这个条件；但公告没有进一步描述，成员可以在 CC 动手之前，用什么方式先看过或核对它要做的事，也没有说明如果 CC 填错信息或订错时间，接下来要怎么处理。"
+            },
+            {
+              "question": "Gemini App 里本来就有的 Daily Brief，跟这次的家庭版是同一个东西吗？",
+              "answer": "不是同一个功能。Daily Brief 是 CC 比较早、给单一用户用的版本，官方公告写的是“5 月”把它带进 Gemini App，没有印出年份，也没有给出确切日子；这次 9 月的公告讲的是另外做出一个给家庭或群组共用、拥有自己账号的新版本。Gemini 官方产品页把 Daily Brief 目前的开放范围写成向部分地区的合资格用户推出，页面最下方另外印着供应情况不一、仅限美国、仅限英文、18 岁以上的条件，跟家庭版一样，台湾目前都用不到。"
+            },
+            {
+              "question": "想自己确认最新的开放状态，该去哪里查？",
+              "answer": "可以到 Google 官方博客里 Google Labs 分类下的文章，或是 Gemini 官方网站介绍 Daily Brief 的页面，查看有没有更新开放地区、年龄或账号条件的说明；本文查核到的内容以 2026 年 9 月 18 日当天读到的版面为准，官方页面随时可能更新。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文查核到的重点与限制",
+          "text": "Google 官方博客 2026 年 9 月 17 日的公告，换算成台北时间已经是 9 月 18 日，写的开放范围只有美国、年满 18 岁，并使用个人 Google 账号；官方没有提到台湾，本文也不推测 CC 之后会不会、或什么时候到台湾。2025 年 12 月 16 日推出时的条件原本是美国与加拿大的消费者账号，而且要从 Google AI Ultra 与付费订阅者开始开放，Google 没有说明需求是否已经改变，本文把两种说法都列出来。本站没有实际使用过 CC，文中生活情境是编辑设计的例子，全文不是购买或订阅建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Assistant 退场、Gemini 接手：手机、手表与车上切换前后要检查什么",
+              "kind": "life",
+              "slug": "ai-news-google-assistant-gemini-20260904"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Keyword 官方博客：The new CC, an AI agent built for families",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-expanding-to-groups/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google Keyword 官方博客：CC from Google Labs helps you stay productive",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/cc-ai-agent/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Gemini 官方产品页：Daily Brief - Smart summaries for busy minds",
+          "url": "https://gemini.google/overview/daily-brief/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google 官方博客 RSS 摘要",
+          "url": "https://blog.google/rss/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  },
+  "related": [
+    "ai-news-google-assistant-gemini-20260904",
+    "ai-news-chatgpt-sponsored-agents-20260916",
+    "ai-news-firefox-smart-window-mistral-20260916"
+  ]
+}
