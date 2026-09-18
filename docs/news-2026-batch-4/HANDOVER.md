@@ -1,4 +1,4 @@
-# 交接：新聞批次 4（2026-09-18：幣圈與科技都已發布，AI 垂直未開始）
+# 交接：新聞批次 4（2026-09-18：幣圈與科技都已發布，AI 十二篇加索引改版待站主驗收）
 
 這份文件給接手的人或模型。它記的是**批次 4 三個垂直現在各做到哪裡、還缺什麼、怎麼接著做**。
 規格在 [`BRIEF.md`](BRIEF.md)、[`crypto.md`](crypto.md)、[`tech.md`](tech.md)、
@@ -9,7 +9,8 @@
 做完逐語審稿、出圖、互連與驗證。**站主當天指示合併並匯入發布，幣圈十二個內容包已在正式站上線**（部署、匯入與驗證紀錄在 4.1 那張票）。
 站主接著說「好 開始」，同一個 session 在 2026-09-17 晚到 09-18 把**科技垂直（批次 4.2）十三篇加索引做到五語、已逐語審稿、圖檔齊全**，
 PR #546；**站主 2026-09-18 明確指示「合併並發布」，十四個內容包已在正式站上線**（見第 1b 節；部署、匯入與驗證紀錄在 4.2 那張票）。
-AI 12 篇（4.3）**還沒有任何文章**，研究、獨立查核與逐篇修正清單都已在這個目錄裡。
+AI 12 篇（4.3）在同一個 session 於 2026-09-18 做到**五語、兩輪查核、逐語審稿、圖檔齊全，並把既有索引原地改版**（第 1c 節），
+分支 `claude/news-batch-4-3-ai`，**還沒合併、還沒匯入發布——兩件事都要等站主指示**。
 
 ## 1. 幣圈十一篇加索引的現況
 
@@ -80,6 +81,54 @@ PR #546（squash 為 `88e4cd1a`）。十四個內容包都是五語、五語圖�
   （需另指定來源）、taic 網站仍自稱 Beta、授權條款的官方英文版把「停止提供使用」寫得比中文版窄（文章已註明只依中文版陳述）。
 - **zh-TW 的「微軟」保留**（站上已有 11 篇繁中文章這樣寫）；四個譯文語言的公司名一律用拉丁原名。
 
+## 1c. AI 十二篇加索引改版的現況（批次 4.3）
+
+分支 `claude/news-batch-4-3-ai`。十二個新內容包都是五語、五語圖檔齊全、都經過**兩輪**獨立查核與逐語審稿；
+十二篇都過 `check_article.py --full --assets`，`pack_cli lint --kind life` 0 error（只有 en 超過 6,000 字元的既有警告），
+內容測試 164 passed。**還沒合併、還沒匯入發布。**「查核」欄是第一輪核對的主張數／改動處數，與第二輪再改的處數。
+
+| 代號 | slug | 查核（第一輪；第二輪） | 逐語審稿採用的修正（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- |
+| B1 | `ai-news-openai-astral-20260319` | 96／20；再改 21 | 5／11／3／23 |
+| B2 | `ai-news-openai-funding-20260331` | 110／30；再改 9 | 3／4／5／2 |
+| B3 | `ai-news-gpt-55-instant-20260505` | 96／18；再改 6 | 2／4／4／3 |
+| B4 | `ai-news-chatgpt-ads-20260505` | 138／24；再改 12 | 8／23／6／1 |
+| B5 | `ai-news-frontier-governance-20260528` | 96／19；再改 14 | 10／11／77／3（ko 69 筆是 한다체→합니다體） |
+| B6 | `ai-news-openai-s1-20260608` | 108／19；再改 9 | 6／12／18／21 |
+| B7 | `ai-news-openai-broadcom-chip-20260624` | 106／18；再改 11 | 3／31／1／5（ja 30 筆是だ・である→です・ます） |
+| B8 | `ai-news-chatgpt-financial-services-20260910` | 128／17；再改 25 | 2／7／13／18 |
+| B9 | `ai-news-gpt-live-1-api-20260910` | 96／15；再改 13 | 5／5／7／7 |
+| B10 | `ai-news-chatgpt-storage-scale-20260911` | 87／20；再改 14 | 2／9／15／0 |
+| A1 | `ai-news-gemini-38-live-20260915` | 96／29；再改 9 | 4／4／5／10 |
+| A3 | `ai-news-nvidia-hugging-face-20260903` | 118／19；再改 9 | 1／2／6／2 |
+
+查核報告在 [`factcheck-draft/`](factcheck-draft)（`ai-news-*.md`，每份都有「第二輪」一節），研究紀錄在
+[`../ai-news-2026-09-late/research/`](../ai-news-2026-09-late/research)。逐語審稿採用的 429 筆與前兩個垂直的 1,510 筆同在
+[`translation-corrections.json`](translation-corrections.json)（zh-CN 審稿另交的 40 筆「查核→核实／核查」沒有套，見第 3 節）；
+協調者自己的修訂在 [`coordinator-corrections.json`](coordinator-corrections.json)。實際發給代理的六份規格在 [`agents/ai/`](agents/ai)。
+另有一位文體修正代理把 B7 的 ko 全篇、B5 的 ja 半篇改回本站規定的敬體，並把 B3／B8 ko 約 17 處「공식이／공식은」當主詞的句子改成「OpenAI가／OpenAI는」（不動內容）。
+
+**既有索引 `ai-news-2026-january-september-index` 原地改版**（`update_index.py ai`）：五語標題去掉日期（「1 月至 9 月」）、
+description 與正文拿掉所有篇數、月份表拿掉「本輯新聞篇數」整欄並把「9 月 1–14 日」改成「9 月」、加 12 個連結（依事件日插進各月）、
+多引 4 條來源（共 13 條）；因為改了標題，**30 個既有內容包**裡指向索引的連結文字一併改掉——發布時這 30 個 slug 要和索引一起 `--slug` 重新匯入
+（清單在第 2.4 節）。索引的 hero 圖上仍印著「2026-09-14」（批次 3 的圖），這次沒有重畫。
+
+### 留給站主決定的事（都不擋發布，但發布前請看一眼）
+
+- **`openai.com/index/*` 的可及性不穩**：前期研究時 403，撰稿與兩輪查核當天（09-18）都讀得到 200 全文，多篇因此改用官方公告頁當 `sources[]`
+  （B1 交易狀態的骨幹只掛這一頁）。發布當天用瀏覽器重開一次；讀不到也不影響文章正確性，只影響讀者點得開與否。
+- **B1 揭露本站後端用 uv 與 Ruff**（正文與 FAQ 各一處，查核者對過 `pyproject.toml`／`uv.lock`）：屬實、也是誠實揭露，但等於公開站方工具鏈，站主可刪。
+- **B2** 沒寫約 47 億美元循環信貸額度與 SoftBank 3/27 過渡融資（兩輪查核都判「不寫不會誤導」）；10 月 1 日 SoftBank 第三批與 Amazon 剩餘 350 億到位後要重查。
+- **B6** 的 `sources[1]` 是 EDGAR 全文檢索 **API 端點**（讀者點開是 JSON）；換成 `www.sec.gov/edgar/search/` 介面要同步改研究紀錄的 fact url，而那頁是 JS 應用、curl 讀不到。四條來源都沒解釋 Form D，要解釋得換一條來源（例如 17 CFR 239.500）。
+- **B3** Figure 2 的六個百分比只存在 PNG（第二輪代理實際開圖核對過）；「現在還是不是預設模型」官方沒有句點。
+- **B4** 指派要求的 8/11、8/18 兩則更新因 `sources` 上限 4 條被移出，正文完全不提；要補得換掉一份開發者文件。
+- **B7** `investors.broadcom.com` 拒絕 `Mokaair-editorial` UA（五次重現），查核用 curl 預設 UA；段落 2,984／3,000。
+- **B8** OfficeQA Pro 那張圖官方沒註明誰做的；21.6% 圖說與圖表矛盾（只採 55.6%）；`sources[]` 只剩 2 條（下限）。
+- **A1** 發表文自帶 `Updated September 17, 2026`，是活文件；定價頁頁尾 `Last updated 2026-09-16`。
+- **zh-CN 的「查核」**：這批四篇（B1、B9、B10、A1）用「查核」、其餘用「核查」（normalize 統一）或「核实」（B5、B6、B8、A3）；每篇內部一致、跨篇不一致。
+  審稿者建議全批統一「核实」；本站 tech 批次 131 處用「查核」、crypto 用「核查」——三批各異，要不要統一請站主定。
+- **ko 的「本文」**分「본 기사」與「이 글」兩種，**ja 的「本文」**同樣有兩種寫法，各篇內部一致，沒有統一。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）
@@ -123,10 +172,19 @@ PR #546（squash 為 `88e4cd1a`）。十四個內容包都是五語、五語圖�
 **科技（4.2）**：已發布（2026-09-18）。十四篇同一次匯入，`related` 在第二輪套上（`taxonomy_updated` 13 篇；
 `tech-news-nvidia-vera-rubin-20260915` 的延伸閱讀另外連到已發布的 `ai-news-nvidia-rubin-20260105`，正式站已看得到）。
 
-**AI（4.3）**：沒有開始。照同一條線跑：撰稿 → 獨立查核（**兩輪**，見第 4 節）→ 協調者讀全文、改 `hero.alt`
-→ 翻譯 → 逐語審稿 → 出圖 → 索引 → `related`／relink → 驗證。`check_article.py` 的 `RELATED`、
-`build_assets.py` 的 `_DRAWINGS` 要先填（`verticals.py` 的 AI `order_base` 已是 149）。
-[`agents/tech/`](agents/tech) 的四份規格換掉工作區與補充規格的檔名就能用。**先看第 4 節的用量數字再決定一次開幾個代理。**
+**AI（4.3）**：內容做完了（第 1c 節），剩站主驗收、合併 PR、部署、匯入發布。這一次匯入的 `--slug` 清單比前兩個垂直長：
+12 個新 slug ＋ 改版的索引 `ai-news-2026-january-september-index` ＋ **30 個只改了連結文字的既有包**（不重新匯入的話，
+既有文章頁面上指向索引的連結會顯示舊標題「1 月 1 日至 9 月 14 日」）：
+`ai-model-release-timeline-2026`、`ai-news-anthropic-threat-report-20260910`、`ai-news-chatgpt-health-20260107`、`ai-news-chatgpt-images-20-20260421`、
+`ai-news-chatgpt-work-20260709`、`ai-news-claude-fable-5-access-20260609`、`ai-news-claude-interactive-visuals-20260312`、`ai-news-claude-opus-46-20260205`、
+`ai-news-claude-sonnet-5-20260630`、`ai-news-deepseek-v41-flash-20260910`、`ai-news-gemini-31-pro-20260219`、`ai-news-gemini-36-flash-20260721`、
+`ai-news-gemini-omni-20260519`、`ai-news-gemini-personal-intelligence-20260114`、`ai-news-gemini-spark-20260519`、`ai-news-google-assistant-gemini-20260904`、
+`ai-news-gpt-53-codex-20260205`、`ai-news-gpt-54-20260305`、`ai-news-gpt-55-20260423`、`ai-news-gpt-56-sol-preview-20260626`、`ai-news-gpt-live-voice-20260708`、
+`ai-news-lyria-3-pro-20260325`、`ai-news-meta-muse-spark-20260408`、`ai-news-nvidia-rubin-20260105`、`ai-news-openai-agents-api-20260910`、
+`ai-news-pace-the-frontier-20260912`、`ai-news-project-glasswing-20260407`、`ai-news-qwen-35-20260216`、`ai-news-siri-ai-ios-27-20260914`、`ai-news-sources-to-follow`。
+這 31 個既有包已經是「已發布」狀態，`guides-import --slug` 對它們是更新不是新建；先 `--dry-run --publish` 核對計畫只有這 43 個 slug、
+create 60（12 × 5 語）而其餘是 update，再 `--publish`。`related` 在第二輪套上（含連到已發布的 `ai-news-gpt-live-voice-20260708`、
+`ai-news-gpt-55-20260423`、`ai-news-gpt-6-astra-20260903`）。發布當天先重開第 1c 節列的活頁面。
 
 ## 3. 定下來、接手的人不要再翻案的決定
 
@@ -186,6 +244,14 @@ PR #546（squash 為 `88e4cd1a`）。十四個內容包都是五語、五語圖�
   Apple 歐盟條款的 en／zh-CN 標題被譯者加上「Cut to／降至 5%」，原稿沒有方向（文章還明寫無法判斷升降），也改掉。
 - **圖上的數字不能比正文強**：Vera Rubin 那張圖的「40%」原本少了「最高」，五語都補回。
 - **排版**：zh-TW 與 zh-CN 的中文與英數之間留半形空格（`space_cjk` 類腳本，「」內的引文不動）；zh-CN 引號用“ ”；ja 相鄰日文的括號、冒號用全形（`Regulation (EU)`、`第14条第2項(a)` 保留半形）。
+
+第三個 session（AI 4.3）定的：
+
+- **zh-CN 的「查核」不再整批改字**：`normalize_locales.py` 只把「核查→查核」（沿用 4.2），審稿交的「查核→核实」40 筆沒有套；
+  「事实核查」是 fact-checking 的通行譯法，不受這條規則影響（B3 一處保留）。三批 zh-CN 的用字本來就不同（4.1 核查、4.2 查核、4.3 混），要統一是站上另一件事。
+- **既有 AI 索引不再顯示篇數**（`ai.md` 第 2 點、站主 2026-09-16 的決定）：月份表整欄拿掉而不是把 38 改成 50，`update_index.py` 的 COUNT 規則會擋住任何殘留的篇數。
+- **AI 篇的 `topics`** 只有 `["ai","ai-news"]` 或再加 `software`／`gadgets`；B8 不掛 `finance`（`ai.md`）。
+- **標題改了兩篇**：B7 原「做模型的公司為什麼也要做晶片？」問了正文沒回答的問題、B4 原「怎麼買」讀起來像投放教學，都改成描述公告內容；研究紀錄的 `title` 已同步。
 
 ## 4. 學到的（寫給下一個協調者）
 

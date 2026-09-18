@@ -1,0 +1,1211 @@
+{
+  "slug": "ai-news-gpt-55-instant-20260505",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-05-05",
+  "featured": false,
+  "display_order": 151,
+  "related": [
+    "ai-news-gpt-55-20260423",
+    "ai-news-gemini-38-live-20260915",
+    "ai-news-chatgpt-ads-20260505"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "GPT-5.5 Instant 成為 ChatGPT 預設模型：官方公布的進步、退步與新功能",
+      "description": "2026 年 5 月 5 日，OpenAI 以 GPT-5.5 Instant 取代 GPT-5.3 Instant，成為 ChatGPT 的預設模型。本文依官方公告與系統卡，整理事實查核進步的數字、血腥與性內容兩項退步、新增個人化功能的開放對象與地區但書，以及同年 8 月 6 日官方寫明新模型將取代它的時間點，並說明官方數字為何不代表日常出錯率。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-55-instant-20260505/hero.jpg",
+        "alt": "原創插圖：左邊一個對話框裡畫著一個齒輪，代表看不見的底層模型換了一顆；一支箭頭指向右邊一份核對清單，五列裡前三列打勾、後兩列是虛線圓圈，代表官方公布了數字的項目與還沒公布的項目。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 5 日，OpenAI 發布 GPT-5.5 Instant，取代 GPT-5.3 Instant 成為 ChatGPT 的預設模型；官方表示這次是換成更聰明、更準確的版本，回答更清楚簡潔、也更貼合使用者。同一天發布的系統卡指出，這是第一個被 OpenAI 依 Preparedness Framework 在網路安全、生物與化學兩類都視為 High capability 的 Instant 模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核 OpenAI 官方公告頁、Deployment Safety Hub 上的系統卡全文、API 變更紀錄，以及同年 8 月 6 日發布的另一份系統卡。本站沒有實際使用 GPT-5.5 Instant，下列功能與評測數字皆為 OpenAI 自行公布的說法，本文不提供任何訂閱或購買建議。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 5 月 5 日，OpenAI 以 GPT-5.5 Instant 取代 GPT-5.3 Instant 成為 ChatGPT 的預設模型，並同時推出「記憶來源」與更強的個人化。",
+            "OpenAI 表示，在內部評測中，GPT-5.5 Instant 比 GPT-5.3 Instant 在高風險提示上減少 52.5% 幻覺主張，在使用者標記過含事實錯誤的困難對話上減少 37.3% 不準確主張。",
+            "系統卡同時列出兩項統計上顯著的退步：血腥與性內容兩個安全類別的分數下降；官方聲明這些評測跑在沒有系統層防護的基礎模型上，數字不代表日常出錯率。",
+            "個人化功能先開放給網頁版 Plus 與 Pro 使用者，OpenAI 表示計畫在接下來幾週擴及 Free、Go、Business 與 Enterprise，並加註個人化來源的開放情形「可能」依地區而不同。",
+            "同年 8 月 6 日，OpenAI 在新的系統卡寫明新模型「將取代 GPT-5.5 Instant」。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-5.5 Instant 是什麼，換掉了哪個模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "系統卡把 GPT-5.5 Instant 的對照對象設定為 GPT-5.3 Instant，並註明沒有「GPT-5.4 Instant」這個模型。本站四月介紹過的 GPT-5.5，系統卡稱為「GPT-5.5 Thinking」，用來與這裡的 Instant 版本區分，兩者是不同模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告頁說明，GPT-5.5 Instant 從 5 月 5 日起對所有使用者陸續推出，取代 GPT-5.3 Instant 成為預設模型，在 API 則以 chat-latest 名稱提供；付費使用者可在模型設定裡選回 GPT-5.3 Instant，這個選項會保留三個月後停用。系統卡另外說明，它部署時用的是低推理強度，而網路安全的 High capability 判定是在更高的 xhigh 推理強度下跑出來的，為的是看出能力上限。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方公布的數字：事實查核進步了多少"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告表示，在內部評測中，GPT-5.5 Instant 在涵蓋醫療、法律、財務等領域的高風險提示上，比 GPT-5.3 Instant 減少 52.5% 幻覺主張；在使用者標記過含事實錯誤的困難對話上，減少 37.3% 不準確主張。系統卡用三個題組列出更細的數字：Factuality Heavy、User Flagged Failures、High Stakes（見下表），分別統計「回答」與「主張」含錯誤比例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HealthBench 系列評測多數也顯示進步，其中 HealthBench Professional 的長度校正分數從 32.9 分進步到 38.4 分，但 HealthBench Consensus 官方形容大致持平。公告也提到分析圖片、回答 STEM 問題等其他能力提升，但用的是「包括」這種舉例寫法，並非完整清單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些進步有兩個限定。第一，系統卡寫明用來比較的前一代數字取自那些模型的最新版本，可能和它們發布當時公布的分數略有出入。第二，官方聲明這些題目刻意挑出模型容易出錯的情境、設計得困難，目的是取得長期研究訊號，不代表日常出錯率，也不是一般使用者的平均體驗。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "題組",
+            "GPT-5.3 Instant",
+            "GPT-5.5 Instant"
+          ],
+          "rows": [
+            [
+              "High Stakes（醫療／法律／財務）",
+              "10.1%",
+              "4.8%"
+            ],
+            [
+              "User Flagged Failures（使用者標記）",
+              "25.2%",
+              "15.8%"
+            ],
+            [
+              "Factuality Heavy（高事實密度對話）",
+              "7.4%",
+              "4.4%"
+            ]
+          ],
+          "caption": "含事實錯誤主張比例（越低越好），依系統卡 Figure 2 整理，查核日 2026 年 9 月 18 日；官方刻意設計的高風險測試集，不代表日常出錯率。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "退步的部分：血腥與性內容評測，和為什麼不是日常出錯率"
+        },
+        {
+          "type": "paragraph",
+          "text": "系統卡的 Table 1 列出禁止內容的評測分數，並用統計檢定標出「相對前一代顯著變動」的項目——只有兩項達到顯著，而且都是退步：血腥（gore）分數從 0.867 降到 0.703，性內容分數從 0.857 降到 0.806（分數越高代表越少違規回答）。其餘類別，OpenAI 表示與前一代沒有統計上的顯著差異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「gore」是系統卡把先前「violence」類別改的新名稱，官方註明只是為了與非法暴力行為的請求更清楚區分，評測本身沒有改變；註腳把範圍限定在「圖像化或毫無節制的血腥內容」，不含暴力角色扮演、暴力意念或協助暴力行為，那些由「暴力違法行為」那一列涵蓋。OpenAI 也已針對禁止的性內容加了系統層級緩解措施，並對疑似未滿 18 歲的使用者套用更嚴格的性內容與血腥限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退步不只這兩項：「情感依賴」分數從 0.995 降到 0.963，OpenAI 表示這項退步統計上不顯著、線上實驗也未觀察到不良回應增加；越獄（jailbreak）評測官方自承相對 GPT-5.3 Instant 退步，系統卡的折線圖在每個攻擊預算下的防守成功率都低於前一代，OpenAI 說明正在調整評測架構，視為方向性而非定論的中期結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以上分數，系統卡特別聲明是在沒有系統層防護的「基礎模型」上測出來的，用意是確認模型本身行為符合安全門檻，官方同一節並寫明這些錯誤率不代表一般正式流量的平均情形。系統層級的防護不在這次評測的範圍內；被判定為高風險的生物化學與網路安全兩個領域，官方說明另有自動監測與行為人層級執法等防護。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-55-instant-20260505/diagram-1.svg",
+          "alt": "四格圖解：預設模型換手、官方數字的性質、個人化分階段開放、8 月 6 日官方寫明將換新模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 5 月 5 日公告與系統卡整理：預設模型、官方數字的性質、個人化開放階段與 8 月 6 日的交接時點，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新增的個人化功能：給誰、什麼時候"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告說明，GPT-5.5 Instant 更擅長運用過去對話、檔案，以及已連結的 Gmail（如果有連結）做個人化依據，會判斷何時用這些內容能讓回答更有幫助。OpenAI 同時在所有 ChatGPT 模型推出「記憶來源」（memory sources），讓使用者看到回答用了哪些依據，並能刪除或修正過時內容；使用暫時對話則不會用到或更新記憶。官方也加註，記憶來源不一定顯示每一個影響答案的因素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開放對象與時程不同：預設模型替換當天對所有使用者陸續推出；進階個人化功能（過去對話、檔案與 Gmail）先開放網頁版 Plus 與 Pro，手機版「即將」推出，計畫接下來幾週擴及 Free、Go、Business 與 Enterprise；記憶來源則在所有消費版方案的網頁版逐步推出，手機版同樣「即將」。公告頁加註，個人化來源的開放情形「可能」依地區而不同，但沒有列出地區清單，本文查核的四個來源也都沒有寫台灣是否在內。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告頁上另有一則標明 2026 年 6 月 9 日的更新：個人化改進正推展到 ChatGPT Go 與免費版，免費版的回答會參考較少量的過去對話。那是標著後續日期的更新，不是 5 月 5 日當天的內容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "8 月的模型交接，以及怎麼自己查現況"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 2026 年 8 月 6 日發布的另一份系統卡寫明，當天起要更新 ChatGPT 的模型並擴大開放：免費版與 Go 會拿到新的日常聊天預設模型，Plus 與 Pro 會拿到更新版 GPT-5.6 Sol 與一個選擇回應投入多少心力的滑桿，官方原話是「這些模型將取代 GPT-5.5 Instant」。同一天的 API 變更紀錄也看得到交接：chat-latest 的說明從「指向 ChatGPT 目前使用的最新 Instant 模型」改成「指向 ChatGPT 提供給 Plus 與 Pro 使用者的最新模型」，並改口建議正式用途改用 GPT-5.6 Sol。兩份文件都沒有寫替換完成或停止服務的日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的系統卡會被事後修訂：8 月 6 日那份系統卡附有一則 2026 年 8 月 19 日的更正紀錄，把 GPT-5.5 在一項蛋白質結合預測評測上的 pass@4 分數從 0.4% 訂正為 1.48%，並說明先前刊出的其實是 pass@1 的分數。GPT-5.5 Instant 這份系統卡目前沒有附上更正紀錄，但這只是查核當天的狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想確認現況，可以直接查 OpenAI 官方公告頁、Deployment Safety Hub 與 API 變更紀錄。以這幾個管道查核到 2026 年 9 月 18 日，未見官方再對 GPT-5.5 Instant 發布新公告或更正。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-5.5 Instant 現在還是 ChatGPT 的預設模型嗎？",
+              "answer": "官方文件只寫到「將取代」，沒有給這件事一個完成日。OpenAI 在 2026 年 8 月 6 日發布的系統卡寫明，當天起免費版與 Go 使用者會拿到新的日常聊天預設模型，Plus 與 Pro 使用者會拿到更新版 GPT-5.6 Sol，並寫著「這些模型將取代 GPT-5.5 Instant」。API 的變更紀錄在同一天也把 chat-latest 快照的說明，從指向 ChatGPT 目前使用的最新 Instant 模型改成指向 ChatGPT 提供給 Plus 與 Pro 使用者的最新模型。兩份文件都沒有寫替換完成或停止服務的日期，本文因此不寫它已經停用，也不寫它現在仍是預設模型；以官方公告頁、Deployment Safety Hub 與 API 變更紀錄查核到 2026 年 9 月 18 日，未見官方再對 GPT-5.5 Instant 本身發布新的公告。"
+            },
+            {
+              "question": "官方公布的幻覺減少數字，代表我平常使用出錯的機率降低這麼多嗎？",
+              "answer": "不建議這樣解讀。系統卡的三個題組是刻意挑選、容易讓模型出錯的高事實密度、使用者標記失敗案例與高風險題目，設計得比較困難，目的是取得長期研究訊號；系統卡明白聲明，這些百分比不反映正式環境裡的日常出錯率，也不是一般使用者的平均體驗。系統卡也說明，用來比較的前一代分數取自那些模型的最新版本，可能和它們當初發布時公布的分數略有出入。"
+            },
+            {
+              "question": "血腥（gore）分數退步，是不是代表這個模型比較暴力？",
+              "answer": "不建議這樣解讀。系統卡把先前的「violence」類別改名為「gore」，官方註腳把範圍限定在圖像化或毫無節制的血腥內容，並明白排除暴力角色扮演、暴力意念與協助暴力行為——那些由「暴力違法行為」那一列涵蓋。官方也寫明這只是名稱的調整，不是底層評測的改變。血腥與性內容兩項分數確實是系統卡 Table 1 裡唯二標上統計顯著的變動，而且都是退步，數字分別是 0.867 降到 0.703、0.857 降到 0.806，本文並未省略。"
+            },
+            {
+              "question": "個人化功能，台灣的帳號現在用得到嗎？",
+              "answer": "官方公告說明個人化功能是先開放給網頁版的 Plus 與 Pro 使用者，並計畫在接下來幾週擴及 Free、Go、Business 與 Enterprise；公告頁另有一則標明 2026 年 6 月 9 日的更新，寫著個人化改進正推展到 ChatGPT Go 與免費版。公告同時加註，個人化來源的開放情形「可能」依地區而不同，但沒有列出地區清單，本文查核的四個來源也都沒有寫台灣是否在內。想確認自己的帳號目前有哪些選項，建議直接查看 ChatGPT 裡的設定畫面。"
+            },
+            {
+              "question": "GPT-5.3 Instant 現在還能用嗎？",
+              "answer": "官方公告當時說明，付費使用者可以在模型設定裡手動選回 GPT-5.3 Instant，這個選項會保留三個月，之後就會停用；公告沒有說明免費使用者是否有這個選項。三個月的期限從 2026 年 5 月 5 日算起，實際停用時間本文未再查證，建議直接到 ChatGPT 的模型設定確認目前還看不看得到這個選項。"
+            },
+            {
+              "question": "這篇報導做過實際測試嗎？",
+              "answer": "沒有。本文所有數字與描述都是 OpenAI 官方公告頁、系統卡與 API 變更紀錄公布的內容，本站沒有實際使用或測試 GPT-5.5 Instant，也不提供訂閱、購買或投資方面的建議。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查核當天的狀態，不是現在的狀態",
+          "text": "本文寫的是 2026 年 5 月 5 日 GPT-5.5 Instant 發布當時的公告與系統卡內容，查核日為 2026 年 9 月 18 日。OpenAI 已在同年 8 月 6 日的系統卡寫明新模型「將取代 GPT-5.5 Instant」，公告頁另有一則標示 6 月 9 日的更新，系統卡與 API 頁面也都是會持續修訂的文件。想確認最新狀態，可以直接查 ChatGPT 內的設定畫面、OpenAI 官方公告頁，或 Deployment Safety Hub（deploymentsafety.openai.com）；本文引用的安全與幻覺評測數字出自官方刻意設計的困難題組，其中禁止內容那幾項還是在沒有系統層防護的基礎模型上測出來的，都不代表日常使用的出錯率，也不是本站的實測結果，不構成任何訂閱或購買建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live 與 Extended Thinking：新語音模型，你的帳號能用嗎？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方公告：GPT-5.5 Instant: smarter, clearer, and more personalized",
+          "url": "https://openai.com/index/gpt-5-5-instant",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：GPT-5.5 Instant System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：GPT-5.6 — August Updates System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "GPT-5.5 Instant Becomes ChatGPT's Default Model: The Gains, Regressions, and New Features OpenAI Announced",
+      "description": "On May 5, 2026, OpenAI replaced GPT-5.3 Instant with GPT-5.5 Instant as ChatGPT's default model. Based on OpenAI's official announcement and system card, this article lays out the published factuality gains, the two safety regressions in gore and sexual content, who the new personalization features reach and when, the point on August 6 of the same year when OpenAI stated a new model would replace it, and why OpenAI says its figures do not represent everyday error rates.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-55-instant-20260505/hero-en.jpg",
+        "alt": "Original illustration: a chat bubble holds a gear for a hidden model swap; an arrow points to a five-row checklist, three rows checked and two dashed, for published and unpublished figures.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On May 5, 2026, OpenAI released GPT-5.5 Instant, replacing GPT-5.3 Instant as ChatGPT's default model; OpenAI says this update swaps in a smarter, more accurate version with clearer, more concise answers that feel better tailored to users. The system card published the same day states that this is the first Instant model OpenAI treats as High capability under its Preparedness Framework in both the cybersecurity and the biological and chemical categories."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 18, 2026 against OpenAI's official announcement page, the full system card on the Deployment Safety Hub, the API Changelog, and a separate system card OpenAI published on August 6 of the same year. We have not tested GPT-5.5 Instant ourselves; every feature and evaluation figure below is OpenAI's own published claim, and this article does not offer any subscription or purchase recommendation."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On May 5, 2026, OpenAI replaced GPT-5.3 Instant with GPT-5.5 Instant as ChatGPT's default model, and rolled out memory sources alongside stronger personalization at the same time.",
+            "OpenAI says that in internal evaluations, GPT-5.5 Instant produced 52.5% fewer hallucinated claims than GPT-5.3 Instant on high-stakes prompts, and 37.3% fewer inaccurate claims on difficult conversations users had flagged for factual errors.",
+            "The system card also lists two statistically significant regressions: scores fell in the gore and sexual content safety categories. OpenAI states these evaluations run on the base model without system-level safeguards, and the figures do not represent everyday error rates.",
+            "The personalization features first rolled out to Plus and Pro users on the web; OpenAI says it plans to expand them to Free, Go, Business, and Enterprise in the coming weeks, and notes that availability of personalization sources may vary by region.",
+            "On August 6 of the same year, OpenAI stated in a new system card that new models “will replace GPT-5.5 Instant.”"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Is GPT-5.5 Instant, and Which Model Did It Replace"
+        },
+        {
+          "type": "paragraph",
+          "text": "The system card sets GPT-5.3 Instant as the baseline for comparison, and notes that there is no model named GPT-5.4 Instant. The GPT-5.5 this site covered in April is called “GPT-5.5 Thinking” in the system card, used to distinguish it from the Instant version here; the two are different models."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official announcement page explains that GPT-5.5 Instant began rolling out to all users starting May 5, replacing GPT-5.3 Instant as the default model, and is available in the API as chat-latest; paid users can switch back to GPT-5.3 Instant in their model settings, an option that will remain available for three months before being retired. The system card separately explains that it is deployed at a low reasoning effort, while the High capability determination for cybersecurity was run at the higher xhigh reasoning effort, in order to gauge the model's maximum capability."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Official Numbers: How Much Did Factuality Improve"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's announcement states that in internal evaluations, GPT-5.5 Instant produced 52.5% fewer hallucinated claims than GPT-5.3 Instant on high-stakes prompts covering areas like medicine, law, and finance, and 37.3% fewer inaccurate claims on difficult conversations users had flagged for factual errors. The system card breaks this down across three prompt sets — Factuality Heavy, User Flagged Failures, and High Stakes (see table below) — each reporting the share of responses and the share of claims that contain errors."
+        },
+        {
+          "type": "paragraph",
+          "text": "Most of the HealthBench evaluations also show improvement: the length-adjusted HealthBench Professional score rose from 32.9 to 38.4, though OpenAI describes HealthBench Consensus as staying roughly flat. The announcement also mentions other capability gains, such as analyzing photo and image uploads and answering STEM-related questions, but uses the word “including,” which is illustrative rather than a complete list."
+        },
+        {
+          "type": "paragraph",
+          "text": "These gains come with two qualifications. First, the system card states that the prior-generation figures used for comparison are taken from the latest versions of those models, and may differ slightly from the scores published when those models launched. Second, OpenAI states these prompt sets were deliberately chosen as situations where models tend to make mistakes and designed to be difficult, meant to produce a long-term research signal; they do not represent everyday error rates or the average experience of typical users."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Prompt Set",
+            "GPT-5.3 Instant",
+            "GPT-5.5 Instant"
+          ],
+          "rows": [
+            [
+              "High Stakes (medical/legal/financial)",
+              "10.1%",
+              "4.8%"
+            ],
+            [
+              "User Flagged Failures (user-flagged)",
+              "25.2%",
+              "15.8%"
+            ],
+            [
+              "Factuality Heavy (fact-dense conversations)",
+              "7.4%",
+              "4.4%"
+            ]
+          ],
+          "caption": "Share of claims with a factual error (lower is better), from the system card's Figure 2, fact-checked September 18, 2026; OpenAI's deliberately difficult test set, not everyday error rates."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where It Regressed: The Gore and Sexual Content Scores, and Why These Aren't Everyday Error Rates"
+        },
+        {
+          "type": "paragraph",
+          "text": "Table 1 of the system card lists evaluation scores for disallowed content, flagging items that are statistically significant relative to the prior generation using a statistical test — only two items reach significance, and both are regressions: the gore score fell from 0.867 to 0.703, and the sexual content score fell from 0.857 to 0.806 (higher scores mean fewer violating responses). OpenAI states the remaining categories show no statistically significant difference from the prior generation."
+        },
+        {
+          "type": "paragraph",
+          "text": "“Gore” is the new name the system card gives to the previous “violence” category; OpenAI notes it is only a naming change made to more clearly distinguish it from requests related to illicit violent behavior, and the evaluation itself is unchanged. A footnote scopes it to “graphic or gratuitously gory content,” excluding violent roleplay, violent ideation, or facilitation of violent activity, which are instead covered by the “violent illicit behavior” row. OpenAI has also added system-level mitigations for disallowed sexual content, and applies stricter sexual-content and gore restrictions to users it believes may be under 18."
+        },
+        {
+          "type": "paragraph",
+          "text": "The regressions are not limited to those two: the “emotional reliance” score fell from 0.995 to 0.963, though OpenAI says this regression is not statistically significant and online testing did not observe an increase in undesirable responses. OpenAI acknowledges a regression relative to GPT-5.3 Instant on jailbreak evaluations — the system card's line chart shows a lower defender success rate at every attacker budget than the prior generation — and says it is actively iterating on the evaluation structure, treating this as a directional, interim result rather than a definitive one."
+        },
+        {
+          "type": "paragraph",
+          "text": "The system card specifically states that the scores above were measured on the “base model” without system-level safeguards, meant to confirm the model's own behavior meets OpenAI's safety bar; the same section states these error rates do not represent the average of general production traffic. System-level safeguards are outside the scope of this evaluation; for the two domains judged High capability — biological and chemical, and cybersecurity — OpenAI states there are additional protections such as automated monitoring and actor-level enforcement."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-55-instant-20260505/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the default model handover, what the official figures do and don't represent, personalization's phased rollout, and OpenAI's August 6 statement that a new model will replace it.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI's May 5, 2026 announcement and system card: the default model handover, what the official figures represent, personalization's rollout stages, and the August 6 handover point; fact-checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The New Personalization Features: Who Gets Them, and When"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's announcement explains that GPT-5.5 Instant is now better at drawing on past chats, files, and connected Gmail (if linked) as a basis for personalization, judging when using this context makes an answer more useful. OpenAI is also rolling out memory sources across all ChatGPT models, letting users see what context shaped a response and delete or correct anything outdated; temporary chats neither use nor update memory. OpenAI also notes that memory sources may not show every factor that shaped an answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Who gets what, and when, differs. The default-model swap began rolling out to all users on the day itself. Enhanced personalization (past chats, files, and Gmail) first went to Plus and Pro users on the web, is coming soon to mobile, and is planned to expand to Free, Go, Business, and Enterprise in the coming weeks. Memory sources are rolling out across the web for all consumer plans, and are likewise coming soon to mobile. The announcement page notes that availability of personalization sources may vary by region, but lists no specific regions, and none of the four sources this article checked states whether Taiwan is included."
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement page also carries a dated update from June 9, 2026: personalization improvements were rolling out to ChatGPT Go and Free, with Free-tier responses drawing on a smaller set of past chats. That is a later dated update, not part of the original May 5 content."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The August Model Handover, and How to Check the Current Status Yourself"
+        },
+        {
+          "type": "paragraph",
+          "text": "A separate system card OpenAI published on August 6, 2026 states that, starting that day, ChatGPT's models would change and access would expand: Free and Go users would get a new default model for everyday chats, and Plus and Pro users would get an updated GPT-5.6 Sol along with a slider for choosing how much effort a response uses. OpenAI's own words were, “These models will replace GPT-5.5 Instant.” The API Changelog entry from the same day shows the same handover: the description of chat-latest changed from “points to the latest Instant model currently used in ChatGPT” to “points to the latest model available in ChatGPT for Plus and Pro users,” and the recommendation for production use switched to GPT-5.6 Sol. Neither document states a date when the replacement was completed or when the model would be retired."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's system cards do get revised after publication: the August 6 system card carries a change log entry dated August 19, 2026, correcting GPT-5.5's pass@4 score on a protein-binding prediction evaluation from 0.4% to 1.48%, explaining that the value previously posted was actually its pass@1 score. The GPT-5.5 Instant system card currently carries no change log entry, but that is only the state as of the day we checked."
+        },
+        {
+          "type": "paragraph",
+          "text": "To check the current status, you can go directly to OpenAI's official announcement page, the Deployment Safety Hub, and the API Changelog. Checking these channels as of September 18, 2026, we found no further announcement or correction from OpenAI specifically about GPT-5.5 Instant."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is GPT-5.5 Instant still ChatGPT's default model right now?",
+              "answer": "Official documents only say “will replace,” without giving that a completion date. The system card OpenAI published on August 6, 2026 states that, starting that day, Free and Go users would get a new default model for everyday chats and Plus and Pro users would get an updated GPT-5.6 Sol, adding, “These models will replace GPT-5.5 Instant.” The API Changelog entry from the same day also changed the description of the chat-latest snapshot from pointing to the latest Instant model currently used in ChatGPT to pointing to the latest model ChatGPT provides Plus and Pro users. Neither document states a date when the replacement was completed or the model retired, so this article does not say it has already been retired, nor that it is still the default model today. Checking the official announcement page, the Deployment Safety Hub, and the API Changelog as of September 18, 2026, we found no further announcement from OpenAI about GPT-5.5 Instant itself."
+            },
+            {
+              "question": "Does OpenAI's published hallucination-reduction number mean my own everyday error rate drops by that much?",
+              "answer": "We don't recommend reading it that way. The system card's three prompt sets — fact-dense conversations, previously flagged failure cases, and high-stakes questions — were deliberately chosen because models tend to make mistakes on them and are designed to be difficult, meant to produce a long-term research signal. The system card explicitly states these percentages do not reflect everyday error rates in production, nor the average experience of typical users. It also notes that the prior-generation scores used for comparison come from the latest versions of those models, and may differ slightly from the scores those models published at launch."
+            },
+            {
+              "question": "Does the drop in the gore score mean this model is more violent?",
+              "answer": "We don't recommend reading it that way. The system card renamed the previous “violence” category to “gore”; OpenAI's footnote scopes it to graphic or gratuitously gory content, and explicitly excludes violent roleplay, violent ideation, and facilitation of violent activity — those are instead covered by the “violent illicit behavior” row. OpenAI also states this is only a naming change, not a change to the underlying evaluation. The gore and sexual content scores are indeed the only two items in the system card's Table 1 flagged as statistically significant changes, and both are regressions — 0.867 to 0.703, and 0.857 to 0.806 — and this article has not left that out."
+            },
+            {
+              "question": "Are the personalization features available to Taiwan accounts right now?",
+              "answer": "OpenAI's announcement says the personalization features first rolled out to Plus and Pro users on the web, with plans to expand to Free, Go, Business, and Enterprise in the coming weeks; the announcement page also carries a dated update from June 9, 2026 saying personalization improvements were rolling out to ChatGPT Go and Free. The announcement also notes that availability of personalization sources may vary by region, but lists no specific regions, and none of the four sources this article checked states whether Taiwan is included. To check what's available on your own account right now, we'd suggest looking directly at the settings screen inside ChatGPT."
+            },
+            {
+              "question": "Can I still use GPT-5.3 Instant right now?",
+              "answer": "At the time, OpenAI's announcement explained that paid users could manually switch back to GPT-5.3 Instant in their model settings, an option that would remain available for three months before being retired; the announcement did not say whether free users had this option. That three-month window runs from May 5, 2026; this article did not further verify the actual retirement date, so we'd suggest checking ChatGPT's model settings directly to see whether that option is still there."
+            },
+            {
+              "question": "Did this article involve any hands-on testing?",
+              "answer": "No. Every number and description in this article comes from OpenAI's official announcement page, system cards, and API Changelog; we have not actually used or tested GPT-5.5 Instant ourselves, and this article offers no subscription, purchase, or investment advice."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "The Status as of the Day We Checked, Not the Status Today",
+          "text": "This article covers the announcement and system card content as they stood when GPT-5.5 Instant launched on May 5, 2026; it was fact-checked on September 18, 2026. OpenAI has since stated in an August 6 system card that new models “will replace GPT-5.5 Instant,” the announcement page carries a separate update dated June 9, and both the system cards and the API pages are documents that keep getting revised. To check the latest status, go directly to the settings screen inside ChatGPT, OpenAI's official announcement page, or the Deployment Safety Hub (deploymentsafety.openai.com). The safety and hallucination figures cited in this article come from OpenAI's deliberately difficult test sets, and the disallowed-content figures in particular were measured on the base model without system-level safeguards; none of them represent everyday error rates, none are this site's own hands-on results, and none of this constitutes subscription or purchase advice."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live and Extended Thinking: New Voice Models, Can Your Account Use Them?",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI announcement: GPT-5.5 Instant: smarter, clearer, and more personalized",
+          "url": "https://openai.com/index/gpt-5-5-instant",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub: GPT-5.5 Instant System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub: GPT-5.6 — August Updates System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "GPT-5.5 InstantがChatGPTの既定モデルに：公式発表の進歩・後退・新機能",
+      "description": "2026年5月5日、OpenAIはGPT-5.3 InstantをGPT-5.5 Instantに切り替え、ChatGPTの既定モデルとしました。本稿はOpenAIの公式発表とSystem Cardに基づき、事実確認で公表された改善の数値、gore（グロテスクな残虐表現）と性的コンテンツという2つの後退、新しい個人化機能の対象者と地域による但し書き、同年8月6日に公式が新モデルによる置き換えを予告した時点、そして公式の数値が日常のエラー率を意味しない理由を整理します。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-55-instant-20260505/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側の吹き出しに歯車が描かれ、見えない基盤モデルが入れ替わったことを表す。矢印の先には5行のチェックリストがあり、上の3行にチェック、下の2行は点線の丸で、公表済みと未公表の数値を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年5月5日、OpenAIはGPT-5.5 Instantを公開し、GPT-5.3 InstantからChatGPTの既定モデルを切り替えました。OpenAIによると、今回の更新はより賢く、より正確なバージョンへの切り替えで、回答はより明確で簡潔になり、ユーザーによりよく合わせたものになるとしています。同日公開されたSystem Cardでは、これはOpenAIがPreparedness Frameworkに基づき、サイバーセキュリティと生物・化学の両分野でHigh capabilityとみなす最初のInstantモデルだと述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、OpenAIの公式発表ページ、Deployment Safety Hub上のSystem Card全文、API Changelog、そして同年8月6日に公開されたもう一つのSystem Cardを確認しました。当サイトは実地の検証を行っておらず、以下の機能や評価数値はすべてOpenAIが自ら公表した内容であり、本稿はいかなる契約や購入も勧めるものではありません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年5月5日、OpenAIはGPT-5.3 InstantをGPT-5.5 Instantに切り替えてChatGPTの既定モデルとし、同時にメモリーソース（memory sources）とより強力な個人化機能を導入しました。",
+            "OpenAIによると、内部評価においてGPT-5.5 Instantは、高リスクなプロンプトでGPT-5.3 Instantより幻覚（誤った主張）が52.5%減少し、ユーザーが事実誤りとして報告した難しい会話では不正確な主張が37.3%減少したとしています。",
+            "System Cardは統計的に有意な後退も2件挙げています。gore（グロテスクな残虐表現）と性的コンテンツという2つの安全カテゴリーでスコアが低下しました。OpenAIは、これらの評価はシステム層の保護がないベースモデルで行われたもので、数値は日常のエラー率を表さないと説明しています。",
+            "個人化機能はまずウェブ版のPlusとProユーザーに提供され、OpenAIは今後数週間でFree、Go、Business、Enterpriseにも拡大する計画だとしています。また、個人化のソースが利用できるかどうかは地域によって異なる「可能性がある」と付け加えています。",
+            "同年8月6日、OpenAIは新しいSystem Cardで「これらのモデルはGPT-5.5 Instantを置き換えます」と明記しました。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-5.5 Instantとは何か、何を置き換えたのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "System CardはGPT-5.5 Instantの比較対象をGPT-5.3 Instantに設定しており、GPT-5.4 Instantというモデルは存在しないと注記しています。当サイトが4月に紹介したGPT-5.5は、System Cardでは「GPT-5.5 Thinking」と呼ばれ、ここでのInstant版と区別するための名称であり、両者は別のモデルです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表ページによると、GPT-5.5 Instantは5月5日から全ユーザーに順次展開され、GPT-5.3 Instantに代わって既定モデルとなり、APIではchat-latestという名称で提供されます。有料ユーザーはモデル設定でGPT-5.3 Instantに切り替えることができ、このオプションは3か月間保持された後に廃止されます。System Cardは別途、実運用ではlow reasoning effort（低い推論強度）で展開されている一方、サイバーセキュリティにおけるHigh capabilityの判定は、能力の上限を把握するためにより高いxhigh推論強度で行われたと説明しています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公式が公表した数値：事実確認はどれだけ改善したか"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表によると、内部評価においてGPT-5.5 Instantは、医療・法律・財務などの分野を含む高リスクなプロンプトで、GPT-5.3 Instantより幻覚に基づく主張が52.5%減少し、ユーザーが事実誤りとして報告した難しい会話では不正確な主張が37.3%減少しました。System Cardは3つの評価セット、Factuality Heavy、User Flagged Failures、High Stakes（下表を参照）で、より詳細な数値を示しており、それぞれ「回答」と「主張」に誤りが含まれる割合を集計しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HealthBenchシリーズの評価も大半で改善が見られ、HealthBench Professionalの長さ補正後のスコアは32.9点から38.4点に上昇しましたが、HealthBench Consensusについて公式は「ほぼ横ばい」としています。発表では画像の分析やSTEM関連の質問への回答など他の能力向上にも触れていますが、これは「including（含む）」という例示的な書き方であり、完全なリストではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これらの改善には2つの留保があります。第一に、System Cardは比較に使う前世代の数値がそれらのモデルの最新版から取られたものであり、発表当時に公表されたスコアとは多少異なる可能性があると明記しています。第二に、公式はこれらの問題がモデルが誤りやすい状況をあえて選び、難しく設計されたものであり、長期的な研究シグナルを得るためのものであって、日常のエラー率や一般ユーザーの平均的な体験を表すものではないと述べています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "評価セット",
+            "GPT-5.3 Instant",
+            "GPT-5.5 Instant"
+          ],
+          "rows": [
+            [
+              "High Stakes（医療・法律・財務）",
+              "10.1%",
+              "4.8%"
+            ],
+            [
+              "User Flagged Failures（ユーザー報告）",
+              "25.2%",
+              "15.8%"
+            ],
+            [
+              "Factuality Heavy（事実密度の高い会話）",
+              "7.4%",
+              "4.4%"
+            ]
+          ],
+          "caption": "事実誤りを含む主張の割合（低いほど良い）。System CardのFigure 2をもとに作成、確認日2026年9月18日。公式があえて難しく設計した高リスクのテストセットで、日常のエラー率ではない。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "後退した部分：gore（残虐表現）と性的コンテンツの評価、そしてなぜ日常のエラー率ではないのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "System CardのTable 1には禁止コンテンツの評価スコアが示されており、統計的検定によって「前世代と比較して有意な変化があった」項目に印がついています。有意とされたのは2項目のみで、いずれも後退でした。gore（グロテスクな残虐表現）のスコアは0.867から0.703に、性的コンテンツのスコアは0.857から0.806に低下しました（スコアが高いほど違反する回答が少ないことを意味します）。それ以外のカテゴリーについては、OpenAIは前世代と統計的に有意な差はないとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「gore」は、System Cardが以前の「violence（暴力）」というカテゴリー名を変更した新しい名称で、公式は違法な暴力行為に関する要求とより明確に区別するための変更に過ぎず、評価自体は変わっていないと注記しています。脚注では範囲を「graphic（生々しい）または過度に残虐な内容」に限定しており、暴力的なロールプレイ、暴力的な観念、暴力行為への加担は含まれず、それらは「violent illicit behavior（暴力的な違法行為）」の項目でカバーされるとしています。OpenAIはまた、禁止されている性的コンテンツに対してシステム層の緩和策を追加し、18歳未満と思われるユーザーには性的コンテンツとgoreについてより厳しい制限を適用しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "後退はこの2項目だけではありません。「情緒的依存（emotional reliance）」のスコアは0.995から0.963に低下しましたが、OpenAIはこの後退は統計的に有意ではなく、オンライン実験でも望ましくない回答の増加は見られなかったとしています。jailbreak（脱獄）の評価については、GPT-5.3 Instantと比べて後退したことを公式自ら認めており、System Cardの折れ線グラフでは、あらゆる攻撃予算において防御成功率が前世代を下回っています。OpenAIは評価の枠組みを見直している最中であり、これは確定的な結論ではなく方向性を示す中間結果だと説明しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Cardは、以上のスコアがシステム層の保護がない「ベースモデル」で測定されたものであり、モデル自体の挙動が安全基準を満たしているかを確認するためのものだと明記しています。同じ節では、これらのエラー率は一般的な本番トラフィックの平均を表すものではないとも述べています。システム層の保護は今回の評価の対象外です。High capabilityと判定された生物・化学とサイバーセキュリティの2分野については、公式は自動監視や行為者レベルでの取り締まりなど別途の保護策があると説明しています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-55-instant-20260505/diagram-1-ja.svg",
+          "alt": "4コマ図解：既定モデルの交代、公式数値の性質、個人化の段階的な提供開始、そして8月6日に公式が新モデルへの置き換えを明記したこと。",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIの2026年5月5日の発表とSystem Cardをもとに作成：既定モデル、公式数値の性質、個人化の提供段階、8月6日の交代時点。確認日2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新しい個人化機能：誰に、いつ提供されるのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表によると、GPT-5.5 Instantは過去の会話やファイル、連携済みのGmail（連携している場合）をより効果的に個人化の根拠として活用できるようになり、これらの情報をいつ使えば回答がより役立つかを判断するとしています。OpenAIは同時に、すべてのChatGPTモデルにメモリーソース（memory sources）を展開し、回答にどのような根拠が使われたかをユーザーが確認でき、古くなった内容を削除・修正できるようにしました。一時的な会話ではメモリーは使用も更新もされません。公式は、メモリーソースが回答に影響したすべての要因を示すとは限らないとも付け加えています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対象ユーザーと時期はそれぞれ異なります。既定モデルの切り替えはその当日にすべてのユーザーへ順次展開されました。高度な個人化機能（過去の会話・ファイル・Gmail）はまずウェブ版のPlusとProユーザーに提供され、モバイル版は「近日提供予定」で、今後数週間でFree、Go、Business、Enterpriseにも拡大する計画です。メモリーソースはすべての消費者向けプランのウェブ版で順次展開されており、モバイル版も同様に「近日提供予定」です。発表ページには、個人化ソースの利用可否は地域によって異なる「可能性がある」との注記がありますが、具体的な地域リストは示されておらず、本稿が確認した4つの情報源にも台湾が含まれるかどうかは記載されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表ページにはさらに、2026年6月9日付けの更新として、個人化の改善がChatGPT Goと無料版にも展開されており、無料版の回答は参照する過去の会話の量が少なくなるとの記載があります。これは後日付けの更新であり、5月5日当日の内容ではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "8月のモデル交代と、現状を自分で確認する方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIが2026年8月6日に公開したもう一つのSystem Cardには、その日からChatGPTのモデルを更新し提供範囲を広げると明記されています。無料版とGoユーザーには日常会話用の新しい既定モデルが、PlusとProユーザーには更新版のGPT-5.6 Solと、回答にどれだけ力を入れるかを選べるスライダーが提供されます。公式の原文は「これらのモデルはGPT-5.5 Instantを置き換えます」です。同日のAPI Changelogにも同じ交代の跡が見られます。chat-latestの説明は「ChatGPTで現在使われている最新のInstantモデルを指す」から「ChatGPTがPlusとProユーザーに提供する最新モデルを指す」に変わり、本番用途にはGPT-5.6 Solの利用を推奨するよう書き換えられました。どちらの文書にも、置き換えが完了した日付やサービスを終了する日付は記載されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIのSystem Cardは公開後に修正されることがあります。8月6日のSystem Cardには2026年8月19日付けの訂正記録が付いており、GPT-5.5のタンパク質結合予測評価におけるpass@4スコアを0.4%から1.48%に訂正し、以前掲載されていた数値は実はpass@1のスコアだったと説明しています。GPT-5.5 InstantのSystem Cardには現時点で訂正記録は付いていませんが、これはあくまで確認当日の状態にすぎません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現状を確認したい場合は、OpenAIの公式発表ページ、Deployment Safety Hub、API Changelogを直接確認できます。これらの情報源を2026年9月18日まで確認しましたが、GPT-5.5 Instant自体について公式から新たな発表や訂正は見つかりませんでした。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-5.5 Instantは今もChatGPTの既定モデルですか？",
+              "answer": "公式文書には「置き換える」としか書かれておらず、完了時期は示されていません。OpenAIが2026年8月6日に公開したSystem Cardには、その日から無料版とGoユーザーは日常会話用の新しい既定モデルを、PlusとProユーザーは更新版のGPT-5.6 Solを利用できるようになると明記されており、「これらのモデルはGPT-5.5 Instantを置き換えます」と書かれています。同日のAPI Changelogでも、chat-latestスナップショットの説明が「ChatGPTで現在使われている最新のInstantモデルを指す」から「ChatGPTがPlusとProユーザーに提供する最新モデルを指す」に変更されました。どちらの文書にも置き換えが完了した日付やサービス終了日は記載されていないため、本稿はGPT-5.5 Instantがすでに廃止されたとも、今も既定モデルのままだとも書きません。公式発表ページ、Deployment Safety Hub、API Changelogを2026年9月18日まで確認しましたが、GPT-5.5 Instant自体についての新しい公式発表は見当たりませんでした。"
+            },
+            {
+              "question": "公式が公表した幻覚の減少数値は、自分が普段使う際のエラー率もそれだけ下がることを意味しますか？",
+              "answer": "そのように読み取ることはお勧めしません。System Cardの3つの評価セットは、モデルが誤りやすい状況としてあえて選ばれた事実密度の高い会話、過去に報告された失敗事例、高リスクな問題であり、難しく設計されているのは長期的な研究シグナルを得るためです。System Cardは、これらのパーセンテージが本番環境における日常的なエラー率を反映するものではなく、一般ユーザーの平均的な体験でもないと明言しています。また、比較に使われた前世代のスコアはそれらのモデルの最新版から取られたものであり、発表当時に公表された数値とは多少異なる可能性があるとも説明しています。"
+            },
+            {
+              "question": "gore（残虐表現）のスコアが下がったのは、このモデルがより暴力的になったということですか？",
+              "answer": "そのように読み取ることはお勧めしません。System Cardは以前の「violence（暴力）」というカテゴリー名を「gore」に変更したもので、公式の脚注は範囲をgraphic（生々しい）または過度に残虐な内容に限定しており、暴力的なロールプレイ、暴力的な観念、暴力行為への加担は明確に除外され、それらは「violent illicit behavior（暴力的な違法行為）」の項目でカバーされるとしています。公式はこれが名称の変更に過ぎず、評価自体の変更ではないとも明記しています。goreと性的コンテンツの2項目は、System CardのTable 1で統計的に有意な変化と印がついた唯一の2項目であり、いずれも後退で、数値はそれぞれ0.867から0.703、0.857から0.806であり、本稿はこれを省略していません。"
+            },
+            {
+              "question": "個人化機能は、台湾のアカウントでも今使えますか？",
+              "answer": "公式発表では、個人化機能はまずウェブ版のPlusとProユーザーに提供され、今後数週間でFree、Go、Business、Enterpriseにも拡大する計画だと説明されています。発表ページにはさらに2026年6月9日付けの更新として、個人化の改善がChatGPT Goと無料版にも展開されているとの記載があります。発表ではまた、個人化ソースの利用可否は地域によって異なる「可能性がある」としていますが、具体的な地域リストは示されておらず、本稿が確認した4つの情報源にも台湾が含まれるかどうかは記載がありません。自分のアカウントで現在どの機能が使えるか確認したい場合は、ChatGPT内の設定画面を直接ご確認ください。"
+            },
+            {
+              "question": "GPT-5.3 Instantは今も使えますか？",
+              "answer": "当時の公式発表によると、有料ユーザーはモデル設定で手動でGPT-5.3 Instantに戻すことができ、このオプションは3か月間保持された後に廃止されるとされていました。無料ユーザーにこのオプションがあるかどうかは発表に記載がありません。3か月の期限は2026年5月5日から起算されますが、実際に廃止された時期については本稿では改めて確認していないため、ChatGPTのモデル設定で現在もこのオプションが表示されるかどうか直接ご確認いただくことをお勧めします。"
+            },
+            {
+              "question": "この記事では実際にテストを行いましたか？",
+              "answer": "行っていません。本稿の数値や説明はすべて、OpenAIの公式発表ページ、System Card、API Changelogに公表された内容です。当サイトはGPT-5.5 Instantを実際に使用・検証しておらず、契約・購入・投資に関する助言も行いません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "確認した当日時点の状態であり、現在の状態ではありません",
+          "text": "本稿はGPT-5.5 Instantが公開された2026年5月5日当時の発表とSystem Cardの内容を扱っており、確認日は2026年9月18日です。OpenAIは同年8月6日のSystem Cardで、新モデルが「GPT-5.5 Instantを置き換えます」とすでに明記しており、発表ページには6月9日付けの更新も別途あり、System CardやAPIのページも常に改訂され続ける文書です。最新の状態を確認したい場合は、ChatGPT内の設定画面、OpenAIの公式発表ページ、またはDeployment Safety Hub（deploymentsafety.openai.com）を直接ご覧ください。本稿が引用した安全性と幻覚に関する評価数値は、公式があえて難しく設計した問題セットによるものであり、禁止コンテンツに関する項目はシステム層の保護がないベースモデルで測定されたもので、いずれも日常利用でのエラー率を表すものではなく、当サイト自身が検証した結果でもなく、契約や購入を勧めるものでもありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 LiveとExtended Thinking：新しい音声モデル、あなたのアカウントは使えるか",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI公式発表：GPT-5.5 Instant: smarter, clearer, and more personalized",
+          "url": "https://openai.com/index/gpt-5-5-instant",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：GPT-5.5 Instant System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：GPT-5.6 — August Updates System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-5.5 Instant, ChatGPT 기본 모델이 되다: OpenAI가 밝힌 개선점과 퇴보, 새 기능",
+      "description": "2026년 5월 5일, OpenAI는 GPT-5.3 Instant를 GPT-5.5 Instant로 교체해 ChatGPT의 기본 모델로 삼았습니다. 이 글은 OpenAI의 공식 발표와 System Card를 바탕으로, 사실 확인에서 공개된 개선 수치, gore(잔혹 묘사)와 성적 콘텐츠 두 항목의 퇴보, 새로 추가된 개인화 기능의 대상과 지역별 단서, 같은 해 8월 6일 OpenAI가 새 모델이 이를 대체할 것이라고 명시한 시점, 그리고 공식 수치가 일상적인 오류율을 뜻하지 않는 이유를 정리합니다.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-55-instant-20260505/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽 말풍선 안에 톱니바퀴가 그려져 있어 보이지 않는 기반 모델이 바뀌었음을 나타내고, 화살표가 오른쪽의 다섯 줄짜리 체크리스트를 가리키며 위 세 줄은 체크, 아래 두 줄은 점선 원으로 공개된 수치와 아직 공개되지 않은 수치를 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 5월 5일, OpenAI는 GPT-5.5 Instant를 공개해 GPT-5.3 Instant를 대신해 ChatGPT의 기본 모델로 삼았습니다. OpenAI는 이번 업데이트가 더 똑똑하고 더 정확한 버전으로 바뀐 것이며, 답변이 더 명확하고 간결해지고 사용자에게 더 잘 맞춰졌다고 설명합니다. 같은 날 공개된 System Card는 이것이 OpenAI가 Preparedness Framework에 따라 사이버보안과 생물·화학 두 영역 모두에서 High capability로 취급하는 첫 번째 Instant 모델이라고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 18일에 OpenAI 공식 발표 페이지, Deployment Safety Hub에 실린 System Card 전문, API Changelog, 그리고 같은 해 8월 6일에 공개된 또 다른 System Card를 확인했습니다. 본 사이트는 직접 시험해 보지 않았고, 아래의 기능과 평가 수치는 모두 OpenAI가 직접 공개한 내용이며, 이 글은 어떠한 구독이나 구매도 권하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 5월 5일, OpenAI는 GPT-5.3 Instant를 GPT-5.5 Instant로 교체해 ChatGPT의 기본 모델로 삼는 동시에 메모리 소스(memory sources)와 더 강력한 개인화 기능을 함께 선보였습니다.",
+            "OpenAI에 따르면 내부 평가에서 GPT-5.5 Instant는 고위험 프롬프트에서 GPT-5.3 Instant보다 환각(허위) 주장이 52.5% 줄었고, 사용자가 사실 오류로 신고한 어려운 대화에서는 부정확한 주장이 37.3% 줄었습니다.",
+            "System Card는 통계적으로 유의미한 퇴보 두 가지도 함께 밝혔습니다. gore(잔혹 묘사)와 성적 콘텐츠라는 두 안전 항목의 점수가 낮아진 것입니다. OpenAI는 이 평가가 시스템 차원의 보호 장치가 없는 기반 모델에서 이뤄졌으며, 수치가 일상적인 오류율을 뜻하지 않는다고 밝혔습니다.",
+            "개인화 기능은 먼저 웹 버전의 Plus와 Pro 사용자에게 제공되며, OpenAI는 앞으로 몇 주 안에 Free, Go, Business, Enterprise로 확대할 계획이라고 밝혔습니다. 또한 개인화 소스의 제공 여부가 지역에 따라 ‘달라질 수 있다’고 덧붙였습니다.",
+            "같은 해 8월 6일, OpenAI는 새 System Card에서 새 모델이 ‘GPT-5.5 Instant를 대체할 것’이라고 명시했습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-5.5 Instant란 무엇이고, 어떤 모델을 대체했나"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card는 GPT-5.5 Instant의 비교 대상을 GPT-5.3 Instant로 설정하며, GPT-5.4 Instant라는 모델은 존재하지 않는다고 밝히고 있습니다. 본 사이트가 4월에 소개한 GPT-5.5는 System Card에서 ‘GPT-5.5 Thinking’이라고 부르며, 이는 여기서 다루는 Instant 버전과 구분하기 위한 명칭으로 둘은 서로 다른 모델입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표 페이지에 따르면 GPT-5.5 Instant는 5월 5일부터 모든 사용자에게 순차적으로 제공되어 GPT-5.3 Instant를 대신해 기본 모델이 되었고, API에서는 chat-latest라는 이름으로 제공됩니다. 유료 사용자는 모델 설정에서 GPT-5.3 Instant로 되돌릴 수 있으며, 이 옵션은 3개월간 유지된 뒤 종료됩니다. System Card는 별도로, 실제 배포 시에는 낮은 추론 강도(low reasoning effort)를 사용하지만 사이버보안 영역의 High capability 판정은 최대 능력을 파악하기 위해 더 높은 xhigh 추론 강도에서 진행되었다고 설명합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI가 밝힌 수치: 사실 확인이 얼마나 개선되었나"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표에 따르면 내부 평가에서 GPT-5.5 Instant는 의료, 법률, 금융 등의 영역을 포함한 고위험 프롬프트에서 GPT-5.3 Instant보다 환각 주장이 52.5% 줄었고, 사용자가 사실 오류로 신고한 어려운 대화에서는 부정확한 주장이 37.3% 줄었습니다. System Card는 Factuality Heavy, User Flagged Failures, High Stakes(아래 표 참고) 세 가지 평가 세트로 더 자세한 수치를 제시하며, 각각 ‘답변’과 ‘주장’에 오류가 포함된 비율을 집계합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "HealthBench 시리즈 평가에서도 대부분 개선이 나타났습니다. HealthBench Professional의 길이 보정 점수는 32.9점에서 38.4점으로 올랐지만, HealthBench Consensus에 대해서는 OpenAI가 ‘거의 변화가 없다’고 설명합니다. 발표에서는 사진·이미지 분석, STEM 관련 질문 답변 등 다른 능력 향상도 언급하지만, 이는 ‘포함(including)’이라는 예시적 표현이며 전체 목록은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이런 개선에는 두 가지 단서가 붙습니다. 첫째, System Card는 비교에 쓰인 이전 세대 수치가 해당 모델들의 최신 버전에서 가져온 것이며, 출시 당시 공개된 점수와 다소 차이가 있을 수 있다고 밝힙니다. 둘째, OpenAI는 이 문제들이 모델이 실수하기 쉬운 상황을 일부러 골라 어렵게 설계한 것으로, 장기적인 연구 신호를 얻기 위한 것이며 일상적인 오류율이나 일반 사용자의 평균적인 경험을 나타내지 않는다고 밝혔습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "평가 세트",
+            "GPT-5.3 Instant",
+            "GPT-5.5 Instant"
+          ],
+          "rows": [
+            [
+              "High Stakes(의료·법률·금융)",
+              "10.1%",
+              "4.8%"
+            ],
+            [
+              "User Flagged Failures(사용자 신고)",
+              "25.2%",
+              "15.8%"
+            ],
+            [
+              "Factuality Heavy(사실 밀도 높은 대화)",
+              "7.4%",
+              "4.4%"
+            ]
+          ],
+          "caption": "사실 오류가 포함된 주장의 비율(낮을수록 좋음). System Card의 Figure 2를 바탕으로 정리, 확인일 2026년 9월 18일. OpenAI가 의도적으로 어렵게 설계한 고위험 테스트 세트로, 일상적인 오류율이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "퇴보한 부분: gore와 성적 콘텐츠 평가, 그리고 일상적인 오류율이 아닌 이유"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card의 Table 1에는 금지 콘텐츠에 대한 평가 점수가 실려 있으며, 통계 검정을 통해 ‘이전 세대 대비 유의미하게 변화한’ 항목을 표시합니다. 유의미하다고 표시된 항목은 단 두 가지뿐이며, 둘 다 퇴보입니다. gore(잔혹 묘사) 점수는 0.867에서 0.703으로, 성적 콘텐츠 점수는 0.857에서 0.806으로 낮아졌습니다(점수가 높을수록 규정을 어긴 답변이 적다는 뜻입니다). 나머지 항목들은 OpenAI에 따르면 이전 세대와 통계적으로 유의미한 차이가 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "‘gore’는 System Card가 이전의 ‘violence(폭력)’ 항목 이름을 바꾼 새로운 명칭으로, OpenAI는 불법 폭력 행위 관련 요청과 더 명확히 구분하기 위한 명칭 변경일 뿐이며 평가 자체는 바뀌지 않았다고 밝힙니다. 각주는 범위를 ‘노골적이거나 지나치게 잔혹한 콘텐츠(graphic or gratuitously gory content)’로 한정하며, 폭력적인 롤플레이, 폭력적인 관념, 폭력 행위 조력은 포함하지 않고 이는 ‘violent illicit behavior(폭력적 불법 행위)’ 항목에서 다룬다고 밝힙니다. OpenAI는 또한 금지된 성적 콘텐츠에 대해 시스템 차원의 완화 조치를 추가했고, 18세 미만으로 추정되는 사용자에게는 성적 콘텐츠와 gore에 대해 더 엄격한 제한을 적용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "퇴보는 이 두 항목만이 아닙니다. ‘정서적 의존(emotional reliance)’ 점수는 0.995에서 0.963으로 낮아졌지만, OpenAI는 이 퇴보가 통계적으로 유의미하지 않으며 온라인 실험에서도 바람직하지 않은 답변이 늘어나는 현상은 관찰되지 않았다고 밝혔습니다. jailbreak(탈옥) 평가에서는 GPT-5.3 Instant 대비 퇴보했다고 OpenAI가 스스로 인정했으며, System Card의 꺾은선 그래프에서는 모든 공격 예산 구간에서 방어 성공률이 이전 세대보다 낮게 나타납니다. OpenAI는 평가 구조를 조정하는 중이며, 이를 확정적인 결론이 아니라 방향성을 보여주는 중간 결과로 본다고 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card는 위 점수들이 시스템 차원의 보호 장치가 없는 ‘기반 모델(base model)’에서 측정된 것이며, 이는 모델 자체의 동작이 안전 기준을 충족하는지 확인하기 위한 것이라고 명시합니다. 같은 절에서 이 오류율이 일반적인 프로덕션 트래픽의 평균을 나타내지 않는다고도 밝힙니다. 시스템 차원의 보호 장치는 이번 평가 범위에 포함되지 않습니다. High capability로 판정된 생물·화학과 사이버보안 두 영역에는 자동 모니터링과 행위자 수준의 단속 등 별도의 보호 장치가 있다고 OpenAI는 설명합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-55-instant-20260505/diagram-1-ko.svg",
+          "alt": "네 칸짜리 도해: 기본 모델 교체, 공식 수치의 성격, 개인화의 단계별 제공, 그리고 8월 6일 OpenAI가 새 모델로 대체될 것이라고 명시한 사실.",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI의 2026년 5월 5일 발표와 System Card를 바탕으로 정리: 기본 모델, 공식 수치의 성격, 개인화 제공 단계, 8월 6일의 교체 시점. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "새로 추가된 개인화 기능: 누구에게, 언제"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표에 따르면 GPT-5.5 Instant는 과거 대화, 파일, 그리고 연결된 Gmail(연결되어 있는 경우)을 개인화 근거로 더 잘 활용하게 되었으며, 이런 맥락을 활용하는 것이 답변에 더 도움이 되는지를 판단합니다. OpenAI는 동시에 모든 ChatGPT 모델에 메모리 소스(memory sources)를 도입해, 사용자가 답변에 어떤 근거가 쓰였는지 확인하고 오래되거나 더 이상 맞지 않는 내용을 삭제하거나 수정할 수 있게 했습니다. 임시 대화를 사용하면 메모리를 사용하거나 업데이트하지 않습니다. OpenAI는 또한 메모리 소스가 답변에 영향을 준 모든 요소를 다 보여주는 것은 아니라고 덧붙였습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제공 대상과 시점은 각각 다릅니다. 기본 모델 교체는 발표 당일 모든 사용자에게 순차적으로 제공되었습니다. 고급 개인화 기능(과거 대화, 파일, Gmail)은 먼저 웹 버전의 Plus와 Pro 사용자에게 제공되고, 모바일 버전은 ‘곧’ 제공될 예정이며, 앞으로 몇 주 안에 Free, Go, Business, Enterprise로 확대할 계획입니다. 메모리 소스는 모든 소비자용 요금제의 웹 버전에서 순차적으로 제공되고 있으며, 모바일 버전도 마찬가지로 ‘곧’ 제공될 예정입니다. 발표 페이지에는 개인화 소스의 제공 여부가 지역에 따라 ‘달라질 수 있다’는 설명이 있지만 구체적인 지역 목록은 없으며, 이 글이 확인한 네 개의 출처 모두 대만이 포함되는지는 적혀 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표 페이지에는 2026년 6월 9일 자로 표시된 업데이트도 있습니다. 개인화 개선 사항이 ChatGPT Go와 무료 버전으로 확대되고 있으며, 무료 버전의 답변은 더 적은 양의 과거 대화를 참고한다는 내용입니다. 이는 이후 날짜가 표시된 업데이트이며, 5월 5일 당일의 내용이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "8월의 모델 교체, 그리고 현재 상태를 직접 확인하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI가 2026년 8월 6일에 공개한 또 다른 System Card에는 그날부터 ChatGPT의 모델을 업데이트하고 제공 범위를 넓힌다고 명시되어 있습니다. 무료 버전과 Go 사용자는 일상 대화용 새 기본 모델을, Plus와 Pro 사용자는 업데이트된 GPT-5.6 Sol과 답변에 얼마나 공을 들일지 고를 수 있는 슬라이더를 받게 됩니다. 공식 원문은 ‘이 모델들이 GPT-5.5 Instant를 대체할 것’이라고 되어 있습니다. 같은 날의 API Changelog에서도 같은 교체 흔적이 보입니다. chat-latest에 대한 설명이 ‘ChatGPT에서 현재 쓰이는 최신 Instant 모델을 가리킴’에서 ‘ChatGPT가 Plus와 Pro 사용자에게 제공하는 최신 모델을 가리킴’으로 바뀌었고, 정식 용도로는 GPT-5.6 Sol을 쓰라고 권장하는 쪽으로 바뀌었습니다. 두 문서 모두 교체가 완료된 날짜나 서비스를 종료하는 날짜는 적혀 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 System Card는 공개 후에도 수정됩니다. 8월 6일 자 System Card에는 2026년 8월 19일 자 정정 기록이 붙어 있는데, GPT-5.5의 단백질 결합 예측 평가에서 pass@4 점수를 0.4%에서 1.48%로 정정하고, 앞서 게시됐던 수치가 사실은 pass@1 점수였다고 설명합니다. GPT-5.5 Instant의 System Card에는 현재 정정 기록이 붙어 있지 않지만, 이는 어디까지나 확인 당일의 상태일 뿐입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 상태를 확인하고 싶다면 OpenAI 공식 발표 페이지, Deployment Safety Hub, API Changelog를 직접 확인하면 됩니다. 이 경로들을 2026년 9월 18일까지 확인한 결과, GPT-5.5 Instant 자체에 대한 새로운 공식 발표나 정정은 보이지 않았습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-5.5 Instant는 지금도 ChatGPT의 기본 모델인가요?",
+              "answer": "공식 문서에는 ‘대체할 것’이라고만 적혀 있을 뿐, 완료 시점은 나와 있지 않습니다. OpenAI가 2026년 8월 6일에 공개한 System Card에는 그날부터 무료 버전과 Go 사용자는 일상 대화용 새 기본 모델을, Plus와 Pro 사용자는 업데이트된 GPT-5.6 Sol을 받게 된다고 적혀 있으며, ‘이 모델들이 GPT-5.5 Instant를 대체할 것’이라고 적혀 있습니다. 같은 날의 API Changelog에서도 chat-latest 스냅숏에 대한 설명이 ‘ChatGPT에서 현재 쓰이는 최신 Instant 모델을 가리킴’에서 ‘ChatGPT가 Plus와 Pro 사용자에게 제공하는 최신 모델을 가리킴’으로 바뀌었습니다. 두 문서 모두 교체가 완료된 날짜나 서비스 종료일은 적혀 있지 않으므로, 이 글은 이미 종료되었다고도, 지금도 여전히 기본 모델이라고도 쓰지 않습니다. 공식 발표 페이지, Deployment Safety Hub, API Changelog를 2026년 9월 18일까지 확인했지만, GPT-5.5 Instant 자체에 대한 새로운 공식 발표는 찾지 못했습니다."
+            },
+            {
+              "question": "OpenAI가 발표한 환각 감소 수치는, 제가 평소에 사용할 때의 오류 확률도 그만큼 줄어든다는 뜻인가요?",
+              "answer": "그렇게 해석하는 것은 권하지 않습니다. System Card의 세 가지 평가 세트는 모델이 실수하기 쉬운 상황으로 일부러 고른 사실 밀도가 높은 대화, 과거에 신고된 실패 사례, 고위험 문제들로, 장기적인 연구 신호를 얻기 위해 어렵게 설계된 것입니다. System Card는 이 백분율이 프로덕션 환경에서의 일상적인 오류율을 반영하지 않으며, 일반 사용자의 평균적인 경험도 아니라고 명확히 밝힙니다. 또한 비교에 쓰인 이전 세대 점수는 해당 모델들의 최신 버전에서 가져온 것으로, 출시 당시 공개된 점수와 다소 차이가 있을 수 있다고 설명합니다."
+            },
+            {
+              "question": "gore 점수가 낮아진 것은 이 모델이 더 폭력적이라는 뜻인가요?",
+              "answer": "그렇게 해석하는 것은 권하지 않습니다. System Card는 이전의 ‘violence’ 항목 이름을 ‘gore’로 바꿨을 뿐이며, 공식 각주는 범위를 노골적이거나 지나치게 잔혹한 콘텐츠로 한정하고 폭력적인 롤플레이, 폭력적인 관념, 폭력 행위 조력은 명확히 제외한다고 밝힙니다. 이런 항목들은 ‘violent illicit behavior’ 항목에서 다룹니다. OpenAI는 이것이 명칭 조정일 뿐 기반 평가의 변경은 아니라고도 밝힙니다. gore와 성적 콘텐츠 두 점수는 System Card의 Table 1에서 통계적으로 유의미한 변화로 표시된 단 두 항목이며 둘 다 퇴보로, 수치는 각각 0.867에서 0.703으로, 0.857에서 0.806으로 낮아졌고, 이 글은 이를 생략하지 않았습니다."
+            },
+            {
+              "question": "개인화 기능을 대만 계정에서도 지금 쓸 수 있나요?",
+              "answer": "공식 발표에서는 개인화 기능이 먼저 웹 버전의 Plus와 Pro 사용자에게 제공되며, 앞으로 몇 주 안에 Free, Go, Business, Enterprise로 확대할 계획이라고 설명합니다. 발표 페이지에는 2026년 6월 9일 자 업데이트도 있는데, 개인화 개선 사항이 ChatGPT Go와 무료 버전으로 확대되고 있다는 내용입니다. 발표에서는 또한 개인화 소스의 제공 여부가 지역에 따라 ‘달라질 수 있다’고 덧붙였지만 구체적인 지역 목록은 없으며, 이 글이 확인한 네 개의 출처 모두 대만이 포함되는지는 적혀 있지 않습니다. 자신의 계정에서 지금 어떤 옵션을 쓸 수 있는지 확인하려면 ChatGPT 안의 설정 화면을 직접 확인해 보시기 바랍니다."
+            },
+            {
+              "question": "GPT-5.3 Instant는 지금도 쓸 수 있나요?",
+              "answer": "당시 공식 발표에서는 유료 사용자가 모델 설정에서 수동으로 GPT-5.3 Instant로 되돌릴 수 있으며, 이 옵션은 3개월간 유지된 뒤 종료된다고 설명했습니다. 무료 사용자에게도 이 옵션이 있는지는 발표에 나와 있지 않습니다. 3개월의 기한은 2026년 5월 5일부터 계산되며, 실제 종료 시점은 이 글에서 다시 확인하지 않았으므로 ChatGPT의 모델 설정에서 지금도 이 옵션이 보이는지 직접 확인해 보시기를 권합니다."
+            },
+            {
+              "question": "이 기사는 실제로 테스트를 거쳤나요?",
+              "answer": "아니요. 이 글의 모든 수치와 설명은 OpenAI의 공식 발표 페이지, System Card, API Changelog에 공개된 내용입니다. 본 사이트는 GPT-5.5 Instant를 직접 사용하거나 시험해 보지 않았으며, 구독, 구매, 투자에 관한 어떠한 조언도 제공하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "확인 당일의 상태이며, 지금의 상태가 아닙니다",
+          "text": "이 글은 GPT-5.5 Instant가 공개된 2026년 5월 5일 당시의 발표와 System Card 내용을 다루며, 확인일은 2026년 9월 18일입니다. OpenAI는 같은 해 8월 6일 자 System Card에서 이미 새 모델이 ‘GPT-5.5 Instant를 대체할 것’이라고 밝혔고, 발표 페이지에는 6월 9일 자 업데이트도 따로 있으며, System Card와 API 페이지 모두 계속 수정되는 문서입니다. 최신 상태를 확인하려면 ChatGPT 안의 설정 화면, OpenAI 공식 발표 페이지, 또는 Deployment Safety Hub(deploymentsafety.openai.com)를 직접 확인하시기 바랍니다. 이 글이 인용한 안전성과 환각 관련 평가 수치는 OpenAI가 의도적으로 어렵게 설계한 문제 세트에서 나온 것이며, 그중 금지 콘텐츠 항목들은 시스템 차원의 보호 장치가 없는 기반 모델에서 측정된 것으로, 모두 일상 사용에서의 오류율을 나타내지 않고 본 사이트가 직접 시험한 결과도 아니며 어떠한 구독이나 구매를 권하는 것도 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live와 Extended Thinking: 새 음성 모델, 내 계정으로 쓸 수 있을까",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 공식 발표: GPT-5.5 Instant: smarter, clearer, and more personalized",
+          "url": "https://openai.com/index/gpt-5-5-instant",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub: GPT-5.5 Instant System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub: GPT-5.6 — August Updates System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "GPT-5.5 Instant 成为 ChatGPT 默认模型：官方公布的进步、退步与新功能",
+      "description": "2026 年 5 月 5 日，OpenAI 以 GPT-5.5 Instant 取代 GPT-5.3 Instant，成为 ChatGPT 的默认模型。本文依官方公告与 System Card，整理事实核查进步的数字、gore（血腥）与性内容两项退步、新增个性化功能的开放对象与地区但书，以及同年 8 月 6 日官方写明新模型将取代它的时间点，并说明官方数字为何不代表日常出错率。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-55-instant-20260505/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一个对话框里画着一个齿轮，代表看不见的底层模型换了一颗；一支箭头指向右边一份核对清单，五行里前三行打勾、后两行是虚线圆圈，代表官方公布了数字的项目与还没公布的项目。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 5 日，OpenAI 发布 GPT-5.5 Instant，取代 GPT-5.3 Instant 成为 ChatGPT 的默认模型；官方表示这次是换成更聪明、更准确的版本，回答更清楚简洁、也更贴合用户。同一天发布的 System Card 指出，这是第一个被 OpenAI 依 Preparedness Framework 在网络安全、生物与化学两类都视为 High capability 的 Instant 模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核了 OpenAI 官方公告页、Deployment Safety Hub 上的 System Card 全文、API Changelog，以及同年 8 月 6 日发布的另一份 System Card。本站没有实测 GPT-5.5 Instant，下列功能与评测数字皆为 OpenAI 自行公布的说法，本文不提供任何订阅或购买建议。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 5 月 5 日，OpenAI 以 GPT-5.5 Instant 取代 GPT-5.3 Instant 成为 ChatGPT 的默认模型，并同时推出“记忆来源”（memory sources）与更强的个性化功能。",
+            "OpenAI 表示，在内部评测中，GPT-5.5 Instant 比 GPT-5.3 Instant 在高风险提示上减少 52.5% 幻觉主张，在用户标记过含事实错误的困难对话上减少 37.3% 不准确主张。",
+            "System Card 同时列出两项统计上显著的退步：gore（血腥）与性内容两个安全类别的分数下降；官方声明这些评测跑在没有系统层防护的基础模型上，数字不代表日常出错率。",
+            "个性化功能先开放给网页版 Plus 与 Pro 用户，OpenAI 表示计划在接下来几周扩及 Free、Go、Business 与 Enterprise，并加注个性化来源的开放情形“可能”依地区而不同。",
+            "同年 8 月 6 日，OpenAI 在新的 System Card 写明新模型“将取代 GPT-5.5 Instant”。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-5.5 Instant 是什么，换掉了哪个模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 把 GPT-5.5 Instant 的对照对象设定为 GPT-5.3 Instant，并注明没有 GPT-5.4 Instant 这个模型。本站 4 月介绍过的 GPT-5.5，System Card 称为“GPT-5.5 Thinking”，用来与这里的 Instant 版本区分，两者是不同模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告页说明，GPT-5.5 Instant 从 5 月 5 日起对所有用户陆续推出，取代 GPT-5.3 Instant 成为默认模型，在 API 中则以 chat-latest 名称提供；付费用户可在模型设置里选回 GPT-5.3 Instant，这个选项会保留三个月后停用。System Card 另外说明，它部署时用的是低推理强度，而网络安全的 High capability 判定是在更高的 xhigh 推理强度下跑出来的，为的是看出能力上限。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方公布的数字：事实核查进步了多少"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告表示，在内部评测中，GPT-5.5 Instant 在涵盖医疗、法律、财务等领域的高风险提示上，比 GPT-5.3 Instant 减少 52.5% 幻觉主张；在用户标记过含事实错误的困难对话上，减少 37.3% 不准确主张。System Card 用三个题组列出更细的数字：Factuality Heavy、User Flagged Failures、High Stakes（见下表），分别统计“回答”与“主张”含错误比例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HealthBench 系列评测多数也显示进步，其中 HealthBench Professional 的长度校正分数从 32.9 分进步到 38.4 分，但 HealthBench Consensus 官方形容大致持平。公告也提到分析图片、回答 STEM 问题等其他能力提升，但用的是“包括”这种举例写法，并非完整清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这些进步有两个限定。第一，System Card 写明用来比较的前一代数字取自那些模型的最新版本，可能和它们发布当时公布的分数略有出入。第二，官方声明这些题目刻意挑出模型容易出错的情境、设计得困难，目的是取得长期研究信号，不代表日常出错率，也不是一般用户的平均体验。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "题组",
+            "GPT-5.3 Instant",
+            "GPT-5.5 Instant"
+          ],
+          "rows": [
+            [
+              "High Stakes（医疗／法律／财务）",
+              "10.1%",
+              "4.8%"
+            ],
+            [
+              "User Flagged Failures（用户标记）",
+              "25.2%",
+              "15.8%"
+            ],
+            [
+              "Factuality Heavy（高事实密度对话）",
+              "7.4%",
+              "4.4%"
+            ]
+          ],
+          "caption": "含事实错误主张比例（越低越好），依 System Card Figure 2 整理，查核日 2026 年 9 月 18 日；官方刻意设计的高风险测试集，不代表日常出错率。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "退步的部分：gore（血腥）与性内容评测，和为什么不是日常出错率"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 的 Table 1 列出禁止内容的评测分数，并用统计检验标出“相对前一代显著变动”的项目——只有两项达到显著，而且都是退步：gore（血腥）分数从 0.867 降到 0.703，性内容分数从 0.857 降到 0.806（分数越高代表越少违规回答）。其余类别，OpenAI 表示与前一代没有统计上的显著差异。"
+        },
+        {
+          "type": "paragraph",
+          "text": "“gore”是 System Card 把先前“violence”（暴力）类别改的新名称，官方注明只是为了与非法暴力行为的请求更清楚区分，评测本身没有改变；注脚把范围限定在“图像化或毫无节制的血腥内容”，不含暴力角色扮演、暴力意念或协助暴力行为，那些由“暴力违法行为”那一列涵盖。OpenAI 也已针对禁止的性内容加了系统层级缓解措施，并对疑似未满 18 岁的用户套用更严格的性内容与血腥限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退步不只这两项：“情感依赖”分数从 0.995 降到 0.963，OpenAI 表示这项退步统计上不显著、线上实验也未观察到不良回应增加；越狱（jailbreak）评测官方自承相对 GPT-5.3 Instant 退步，System Card 的折线图在每个攻击预算下的防守成功率都低于前一代，OpenAI 说明正在调整评测架构，视为方向性而非定论的中期结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以上分数，System Card 特别声明是在没有系统层防护的“基础模型”上测出来的，用意是确认模型本身行为符合安全门槛，官方同一节并写明这些错误率不代表一般正式流量的平均情形。系统层级的防护不在这次评测的范围内；被判定为高风险的生物化学与网络安全两个领域，官方说明另有自动监测与行为人层级执法等防护。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-55-instant-20260505/diagram-1-zh-cn.svg",
+          "alt": "四格图解：默认模型换手、官方数字的性质、个性化分阶段开放、8 月 6 日官方写明将换新模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 5 月 5 日公告与 System Card 整理：默认模型、官方数字的性质、个性化开放阶段与 8 月 6 日的交接时点，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新增的个性化功能：给谁、什么时候"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告说明，GPT-5.5 Instant 更擅长运用过去对话、文件，以及已连接的 Gmail（如果有连接）做个性化依据，会判断何时用这些内容能让回答更有帮助。OpenAI 同时在所有 ChatGPT 模型推出“记忆来源”（memory sources），让用户看到回答用了哪些依据，并能删除或修正过时内容；使用临时对话则不会用到或更新记忆。官方也加注，记忆来源不一定显示每一个影响答案的因素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开放对象与时间表不同：默认模型替换当天对所有用户陆续推出；进阶个性化功能（过去对话、文件与 Gmail）先开放网页版 Plus 与 Pro，手机版“即将”推出，计划接下来几周扩及 Free、Go、Business 与 Enterprise；记忆来源则在所有消费版方案的网页版逐步推出，手机版同样“即将”。公告页加注，个性化来源的开放情形“可能”依地区而不同，但没有列出地区清单，本文查核的四个来源也都没有写台湾是否在内。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告页上另有一则标明 2026 年 6 月 9 日的更新：个性化改进正推展到 ChatGPT Go 与免费版，免费版的回答会参考较少量的过去对话。那是标着后续日期的更新，不是 5 月 5 日当天的内容。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "8 月的模型交接，以及怎么自己查现状"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 2026 年 8 月 6 日发布的另一份 System Card 写明，当天起要更新 ChatGPT 的模型并扩大开放：免费版与 Go 会拿到新的日常聊天默认模型，Plus 与 Pro 会拿到更新版 GPT-5.6 Sol 与一个选择回答投入多少心力的滑块，官方原话是“这些模型将取代 GPT-5.5 Instant”。同一天的 API Changelog 也看得到交接：chat-latest 的说明从“指向 ChatGPT 目前使用的最新 Instant 模型”改成“指向 ChatGPT 提供给 Plus 与 Pro 用户的最新模型”，并改口建议正式用途改用 GPT-5.6 Sol。两份文件都没有写替换完成或停止服务的日期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 System Card 会被事后修订：8 月 6 日那份 System Card 附有一则 2026 年 8 月 19 日的更正记录，把 GPT-5.5 在一项蛋白质结合预测评测上的 pass@4 分数从 0.4% 订正为 1.48%，并说明先前公布的其实是 pass@1 的分数。GPT-5.5 Instant 这份 System Card 目前没有附上更正记录，但这只是查核当天的状态。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想确认现状，可以直接查 OpenAI 官方公告页、Deployment Safety Hub 与 API Changelog。以这几个渠道查核到 2026 年 9 月 18 日，未见官方再对 GPT-5.5 Instant 发布新公告或更正。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-5.5 Instant 现在还是 ChatGPT 的默认模型吗？",
+              "answer": "官方文件只写到“将取代”，没有给这件事一个完成日。OpenAI 在 2026 年 8 月 6 日发布的 System Card 写明，当天起免费版与 Go 用户会拿到新的日常聊天默认模型，Plus 与 Pro 用户会拿到更新版 GPT-5.6 Sol，并写着“这些模型将取代 GPT-5.5 Instant”。API Changelog 在同一天也把 chat-latest 快照的说明，从指向 ChatGPT 目前使用的最新 Instant 模型改成指向 ChatGPT 提供给 Plus 与 Pro 用户的最新模型。两份文件都没有写替换完成或停止服务的日期，本文因此不写它已经停用，也不写它现在仍是默认模型；以官方公告页、Deployment Safety Hub 与 API Changelog 查核到 2026 年 9 月 18 日，未见官方再对 GPT-5.5 Instant 本身发布新的公告。"
+            },
+            {
+              "question": "官方公布的幻觉减少数字，代表我平常使用出错的概率降低这么多吗？",
+              "answer": "不建议这样解读。System Card 的三个题组是刻意挑选、容易让模型出错的高事实密度、用户标记失败案例与高风险题目，设计得比较困难，目的是取得长期研究信号；System Card 明白声明，这些百分比不反映正式环境里的日常出错率，也不是一般用户的平均体验。System Card 也说明，用来比较的前一代分数取自那些模型的最新版本，可能和它们当初发布时公布的分数略有出入。"
+            },
+            {
+              "question": "gore（血腥）分数退步，是不是代表这个模型比较暴力？",
+              "answer": "不建议这样解读。System Card 把先前的“violence”类别改名为“gore”，官方注脚把范围限定在图像化或毫无节制的血腥内容，并明白排除暴力角色扮演、暴力意念与协助暴力行为——那些由“暴力违法行为”那一列涵盖。官方也写明这只是名称的调整，不是底层评测的改变。血腥与性内容两项分数确实是 System Card Table 1 里唯二标上统计显著的变动，而且都是退步，数字分别是 0.867 降到 0.703、0.857 降到 0.806，本文并未省略。"
+            },
+            {
+              "question": "个性化功能，台湾的账号现在用得到吗？",
+              "answer": "官方公告说明个性化功能是先开放给网页版的 Plus 与 Pro 用户，并计划在接下来几周扩及 Free、Go、Business 与 Enterprise；公告页另有一则标明 2026 年 6 月 9 日的更新，写着个性化改进正推展到 ChatGPT Go 与免费版。公告同时加注，个性化来源的开放情形“可能”依地区而不同，但没有列出地区清单，本文查核的四个来源也都没有写台湾是否在内。想确认自己的账号目前有哪些选项，建议直接查看 ChatGPT 里的设置画面。"
+            },
+            {
+              "question": "GPT-5.3 Instant 现在还能用吗？",
+              "answer": "官方公告当时说明，付费用户可以在模型设置里手动选回 GPT-5.3 Instant，这个选项会保留三个月，之后就会停用；公告没有说明免费用户是否有这个选项。三个月的期限从 2026 年 5 月 5 日算起，实际停用时间本文未再查核，建议直接到 ChatGPT 的模型设置确认目前还看不看得到这个选项。"
+            },
+            {
+              "question": "这篇报道做过实际测试吗？",
+              "answer": "没有。本文所有数字与描述都是 OpenAI 官方公告页、System Card 与 API Changelog 公布的内容，本站没有实测或使用 GPT-5.5 Instant，也不提供订阅、购买或投资方面的建议。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查核当天的状态，不是现在的状态",
+          "text": "本文写的是 2026 年 5 月 5 日 GPT-5.5 Instant 发布当时的公告与 System Card 内容，查核日为 2026 年 9 月 18 日。OpenAI 已在同年 8 月 6 日的 System Card 写明新模型“将取代 GPT-5.5 Instant”，公告页另有一则标示 6 月 9 日的更新，System Card 与 API 页面也都是会持续修订的文件。想确认最新状态，可以直接查 ChatGPT 内的设置画面、OpenAI 官方公告页，或 Deployment Safety Hub（deploymentsafety.openai.com）；本文引用的安全与幻觉评测数字出自官方刻意设计的困难题组，其中禁止内容那几项还是在没有系统层防护的基础模型上测出来的，都不代表日常使用的出错率，也不是本站的实测结果，不构成任何订阅或购买建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live 与 Extended Thinking：新语音模型，你的账号能用吗？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方公告：GPT-5.5 Instant: smarter, clearer, and more personalized",
+          "url": "https://openai.com/index/gpt-5-5-instant",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：GPT-5.5 Instant System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：GPT-5.6 — August Updates System Card",
+          "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

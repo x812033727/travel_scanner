@@ -1,0 +1,505 @@
+{
+  "slug": "ai-news-openai-s1-20260608",
+  "event_date": "2026-06-08",
+  "event_date_basis": "事件日 2026-06-08，今天（2026-09-18）直接從 OpenAI 官方公告頁本身讀到可見的發布日期文字「June 8, 2026」，並與同一則公告在官方 RSS 的 pubDate「Mon, 08 Jun 2026 14:00:00 GMT」互相印證（換算台北時間為 2026 年 6 月 8 日 22:00，不跨日）。要區分三種日期：(1) 公開確認日＝2026-06-08，公告頁面本身標示、可查；(2) 實際向 SEC 遞件的日期——公告原句只說「最近遞交了」，沒有寫出確切日期，官方未說明，不可查也不可寫；(3) 生效日／公開申報日——不存在，因為到 2026-09-18 查核當下都還沒有公開申報（EDGAR 上查不到任何以 OpenAI 為申報人名稱的 S-1 或 DRS）。slug 與 news_date 都用 2026-06-08。",
+  "title": "OpenAI 保密遞交 S-1 草稿：一句公告之外，官方還沒說的事",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI 官方公告：Confidential submission of draft S-1 to the SEC",
+      "url": "https://openai.com/index/openai-submits-confidential-s-1/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "EDGAR 全文檢索 API：entityName=OpenAI 查詢結果",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI",
+      "publisher": "U.S. Securities and Exchange Commission (EDGAR)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "15 U.S.C. §77f — 1933 年證券法第 6 條（美國法典）",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2A-subchapI-sec77f.htm",
+      "publisher": "U.S. Government Publishing Office",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Enhancement of Emerging Growth Company Accommodations and Simplification of Filer Status for Reporting Companies（91 FR 30086 全文）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "publisher": "U.S. Securities and Exchange Commission / Office of the Federal Register",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 全部用 curl -sL -A \"Mokaair-editorial\" 重抓，四條都讀到 body 才登記 checked_on；沒有任何請求帶入 email 或個人資料。\n\n(1) OpenAI 公告頁 https://openai.com/index/openai-submits-confidential-s-1/：本次重大發現——2026-09-16 前一輪研究記錄這個網址回 403（Cloudflare 挑戰頁，cf-mitigated: challenge），今天 curl -sL -A \"Mokaair-editorial\" https://openai.com/index/openai-submits-confidential-s-1 先回 308 轉址到帶斜線的正式網址，接著回 HTTP 200、346,593 bytes（第二次重複請求為 346,542 bytes，差異出自頁面內嵌的動態建置代號與工作階段識別碼，不影響本文引用的段落）；回應標頭是 server: cloudflare 但沒有 cf-mitigated 或任何挑戰相關標頭，x-nextjs-prerender: 1、x-powered-by: Next.js，確認是真正由 Vercel/Next.js 產生並經 Cloudflare 轉發的頁面，不是拒絕頁。頁面標題與 meta description 與 2026-09-16 研究記下的 RSS 描述逐字相同，但今天第一次讀到全文：正文是兩小段——OpenAI 第一人稱寫的四句話公告，以及依 Rule 135 發布的法律聲明；頁面上另外印出可見的發布日期文字「June 8, 2026」、分類連結文字「Company」與具名作者「OpenAI」，這些是本次新增、前一輪研究沒有讀到的資訊。頁面沒有 datePublished/dateModified 這類 JSON-LD 欄位，也沒有 nodeType/richText 這類 Contentful 富文字結構，以全文檢索確認正文只有這兩小段（含關鍵詞 IPO、NASDAQ、NYSE、valuation、shares、road show、registration statement、Sam Altman、fundrais 的命中次數皆為 0，only the known sentence 命中 6 次，全部落在 meta/RSC 重複欄位）。本次也試過 www.sec.gov 的兩個路徑（/cgi-bin/browse-edgar、/edgar/search/），今天仍是 403（body 是 \"SEC.gov | Request Rate Threshold Exceeded\"），所以本文不描述、也不列出 www.sec.gov 的人工查詢頁網址；efts.sec.gov（API）、data.sec.gov、govinfo.gov、federalregister.gov 的 raw text/API 端點不受影響，一如前一輪。\n\n(2) EDGAR 全文檢索 https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI：HTTP 200、32,682 bytes。今天這次查詢把全部 46 筆 hits.hits 一次回傳（未分頁到 10 筆），因此不必像 2026-09-16 前一輪那樣仰賴查核者的二次確認：本代理直接展開 46 筆 hits[]._source.display_names，程式計算得到 41 個不同申報人（一筆 2024-03-22 的申報有兩個共同申報人）、以 file_type 分組得到 40 筆 D、6 筆 D/A；並用 forms=DRS、S-1、F-1、DRS%2FA、S-1%2FA、8-A12B、424B4 七個獨立查詢各自確認 0 筆（僅作為交叉確認，這七個查詢網址不在 sources[]，本文與本紀錄的 verified_facts 不掛在它們上）。更好的做法（本次採用）：同一個基礎查詢自帶的 form_filter 聚合就足以證明「零筆屬於其他表單類別」——聚合的 sum_other_doc_count 為 0，代表 46 筆全部落在單一個 D 分類、沒有被聚合截斷藏起來；對照 entity_filter 的 sum_other_doc_count 為 11（30 個顯示的 bucket 加 11 等於 41，與展開計算一致），證明 entity_filter truncate 在 30、但 form_filter 這次沒有 truncate。這比另外發七個 forms= 查詢更乾淨：同一支 sources[] 網址、同一次回應就能承載這個事實，不必再開新的 source 網址。\n\n(3) govinfo USCODE §77f https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2A-subchapI-sec77f.htm：HTTP 200、24,007 bytes，與 2026-09-16 前一輪讀到的 bytes 數一致，內容比對後沒有變化。程式全文搜尋確認今天這一頁仍然沒有 \"JOBS\"、\"FAST\"、\"Jumpstart\"、\"Fixing America\" 這幾個字串（都是 0 次），確認查核代理 2026-09-16 的更正（這兩個簡稱不能掛在這一頁）今天依然成立。Amendments 段落確認 2012 年 Pub. L. 112-106 新增 (e) 項、2015 年 Pub. L. 114-94 把 (e)(1) 項的 21 days 改成 15 days（這一段原頁是用 &mdash;／&ndash;／&quot; 這類 HTML 實體寫的，verified_facts 的 verbatim_quote 照實體原樣抄，不解碼）。另外讀到 (e)(1) 句尾有一句關於「遞件當時是新興成長公司、之後喪失資格」的但書，但這一句在頁面上印的是「...shall continue to be treated as an emerging market growth company...」，中間多了一個「market」，與全篇其餘地方一律寫「emerging growth company」不一致，疑似來源本身的排版或轉檔痕跡；本文不引用這句話（避免抄錯或抄出看起來像本代理打錯字），只記在這裡供後續批次注意。\n\n(4) 聯邦公報 91 FR 30086 全文 https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt：HTTP 200、657,682 bytes，與前一輪讀到的 bytes 數一致。header 區塊確認：\"[Federal Register Volume 91, Number 98 (Thursday, May 21, 2026)]\"、\"[Pages 30086-30190]\"、\"[FR Doc No: 2026-10222]\"（文件自己印出的編號，不是猜出來的）、\"[Release Nos. 33-11419; 34-105515; File No. S7-2026-18]\"、\"ACTION: Proposed rule.\"、\"DATES: Comments should be received on or before July 20, 2026.\"。文末的委員會署名區塊確認通過日是 By the Commission, Dated: May 19, 2026，署名 Vanessa A. Countryman, Secretary——委員會通過日 5/19、聯邦公報刊登日 5/21，兩個日期不同，已分開記錄（verified_facts 的 verbatim_quote 保留原頁的換行）。JOBS Act／FAST Act 的簡稱今天直接在這份文件裡找到完整命名句，見 verified_facts。\n\n三個識別碼的取得方式（回應修正清單 must_fix 7 的要求）：govinfo 的 USCODE 網址與聯邦公報文件編號 2026-10222 都是延用 2026-09-16 前一輪研究已經查證過、且查核代理已經獨立驗過的網址／編號，本次不是重新用樣式拼出來的——2026-10222 這個編號實際上會在抓到全文後，從文件自己印出的 \"[FR Doc No: 2026-10222]\" 得到確認，屬於「讀到文件後才確認」而不是「先猜再湊巧讀到」。uscode.house.gov 的 granuleid 網址本輪沒有使用（govinfo 的 USCODE 頁已經足夠承載同一段條文，兩者重複時只保留一條，避免超過四條上限）。",
+  "verified_facts": [
+    {
+      "fact": "OpenAI 公告全文的第一段是公司用第一人稱寫的四句話：最近遞交了一份保密的 S-1；預期會外流所以主動公布；時程尚未決定，可能會拖一段時間，因為有些事以私人公司身分做起來比較容易；這是一組複雜的取捨，讓公司保留了提早公開發行的選擇權。",
+      "url": "https://openai.com/index/openai-submits-confidential-s-1/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We recently submitted a confidential S-1. We expect it to leak so we’re just announcing it. We have not decided on timing yet; it may be a while because there are things we want to do that are likely easier as a private company. But it’s a complicated set of tradeoffs and this gives us the option to go public sooner if that ends up being best."
+    },
+    {
+      "fact": "公告正文第二段是一段斜體字的法律聲明：這則公告依 Rule 135（1933 年證券法）發布，不構成出售證券的要約或徵求購買證券要約的行為；未來任何要約、徵求或銷售都會依證券法的登記規定進行。",
+      "url": "https://openai.com/index/openai-submits-confidential-s-1/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This announcement is being made pursuant to Rule 135 under the Securities Act of 1933, as amended, and does not constitute an offer to sell or the solicitation of an offer to buy any securities. Any offers, solicitations of offers to buy, or any sales of securities will be made in accordance with the registration requirements of the Securities Act."
+    },
+    {
+      "fact": "OpenAI 官方對這件事的公開描述（meta description／RSS 描述）只有一句：OpenAI 確認向 SEC 做了一次保密的 S-1 遞件，且尚未決定後續動作的時程。",
+      "url": "https://openai.com/index/openai-submits-confidential-s-1/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI confirms a confidential S-1 submission to the SEC and has not yet determined timing for further action."
+    },
+    {
+      "fact": "公告頁面上可見的發布日期文字是「June 8, 2026」，同一區塊還有分類連結文字「Company」。",
+      "url": "https://openai.com/index/openai-submits-confidential-s-1/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<p class=\"text-meta text-primary-100\">June 8, 2026</p>"
+    },
+    {
+      "fact": "頁面標題（<title>／og:title）逐字是「Confidential submission of draft S-1 to the SEC」，與研究者 2026-09-16 從 RSS 讀到的標題一致，今天是直接從文章頁本身讀到，不再只依賴 RSS。",
+      "url": "https://openai.com/index/openai-submits-confidential-s-1/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<title>Confidential submission of draft S-1 to the SEC | OpenAI</title>"
+    },
+    {
+      "fact": "以 entityName=OpenAI 查詢 EDGAR 全文檢索，2026-09-18 查詢當下命中 46 筆申報（hits.total.value）。",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"total\":{\"value\":46,\"relation\":\"eq\"}"
+    },
+    {
+      "fact": "同一次查詢的表單類別聚合顯示：46 筆全部歸在單一個 root form「D」之下，且「其他類別筆數」明確為 0，代表這次聚合沒有截斷、沒有任何一筆屬於 D 以外的表單類別（也就是沒有任何一筆是 S-1、DRS 等公開發行相關表單）。",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"form_filter\":{\"doc_count_error_upper_bound\":0,\"sum_other_doc_count\":0,\"buckets\":[{\"key\":\"D\",\"doc_count\":46}]}"
+    },
+    {
+      "fact": "把 46 筆命中的 display_names 逐筆展開（不是讀聚合），2026-09-18 得到 41 個不同申報人；同一次查詢的 entity_filter 聚合只顯示 30 個 bucket、sum_other_doc_count 為 11，30+11=41，與展開計算一致，證實 entity_filter 這個聚合本身會截斷在 30。",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"entity_filter\":{\"doc_count_error_upper_bound\":0,\"sum_other_doc_count\":11"
+    },
+    {
+      "fact": "46 筆申報依 file_type 逐筆分類，2026-09-18 統計得到 40 筆 file_type 為 D、6 筆為 D/A（Form D 的修正案）。",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"file_type\":\"D\""
+    },
+    {
+      "fact": "41 個申報人名稱清一色是第三方創投基金、特殊目的公司或其系列（例如 OpenAI Startup Fund 系列、多個以「a Series of CGF2021 LLC」掛名的基金、BP OpenAI LP、OurCrowd 的投資工具），沒有一筆的申報人名稱是「OpenAI」本身、「OpenAI Group PBC」或「OpenAI Foundation」。",
+      "url": "https://efts.sec.gov/LATEST/search-index?q=&entityName=OpenAI",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI Startup Fund I, L.P.  (CIK 0001877240)"
+    },
+    {
+      "fact": "1933 年證券法第 6(e)(1) 條規定：新興成長公司在首次公開發行前，得向 SEC 保密遞交註冊說明書草稿供幕僚做非公開審查，但初次保密遞件與其後所有修正本，最晚須在發行人進行路演之日前 15 天全部公開申報。",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2A-subchapI-sec77f.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Any emerging growth company, prior to its initial public offering date, may confidentially submit to the Commission a draft registration statement, for confidential nonpublic review by the staff of the Commission prior to public filing, provided that the initial confidential submission and all amendments thereto shall be publicly filed with the Commission not later than 15 days before the date on which the issuer conducts a road show"
+    },
+    {
+      "fact": "第 6(e)(2) 條規定：SEC 不得被強制揭露依本項取得的資訊；就資訊自由法而言，這屬於該法第 (b)(3)(B) 款所稱的法定豁免。",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2A-subchapI-sec77f.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Notwithstanding any other provision of this subchapter, the Commission shall not be compelled to disclose any information provided to or obtained by the Commission pursuant to this subsection."
+    },
+    {
+      "fact": "修正註記顯示：2012 年由 Pub. L. 112-106 新增第 (e) 項；2015 年 Pub. L. 114-94 把 (e)(1) 項的「21 days」改為「15 days」。這一頁本身沒有出現「JOBS」「FAST」這兩個簡稱（今天程式全文搜尋為 0 次），簡稱要掛在 91 FR 30086。",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2A-subchapI-sec77f.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "&mdash;Subsec. (e)(1). Pub. L. 114&ndash;94 substituted &quot;15 days&quot; for &quot;21 days&quot;"
+    },
+    {
+      "fact": "同一條修正註記另一句確認第 (e) 項新增的年度與法源。",
+      "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap2A-subchapI-sec77f.htm",
+      "is_vendor_claim": false,
+      "verbatim_quote": "&mdash;Subsec. (e). Pub. L. 112&ndash;106 added subsec. (e)."
+    },
+    {
+      "fact": "91 FR 30086 的註腳確認 2012 年公法 112-106 的正式全名是 Jumpstart Our Business Startups Act（即 JOBS Act）。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Jumpstart Our Business Startups Act, Public Law 112-106, 126 Stat. \n306 (2012)"
+    },
+    {
+      "fact": "91 FR 30086 正文確認國會以 Fixing America's Surface Transportation（\"FAST\"）Act（即公法 114-94）補充 JOBS Act，為新興成長公司提供額外的特別便利。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Congress supplemented the JOBS Act by enacting the Fixing America's \nSurface Transportation (``FAST'') Act"
+    },
+    {
+      "fact": "91 FR 30086 寫明 SEC 公司財務組的幕僚自 2017 年起已經接受所有發行人（不限新興成長公司）遞交註冊說明書草稿做非公開審查，之後又進一步擴大適用範圍。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The staff of the Division of Corporation Finance have accepted \ndraft registration statements for non-public review for all issuers \nsince 2017"
+    },
+    {
+      "fact": "91 FR 30086 寫出新興成長公司目前的認定門檻：最近一個已完成會計年度總營收低於 12.35 億美元（$1.235 billion）。查核代理 2026-09-18 更正：原本掛在這一條的引文是「$1.235 billion or more」那一句，那是「何時喪失 EGC 資格」的條件，不是取得資格的門檻；現在改引同一段的取得資格句。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Currently, a company \nqualifies as an EGC if it has total gross revenues of less than $1.235 \nbillion during its most recently completed fiscal year"
+    },
+    {
+      "fact": "91 FR 30086 寫明：委員會沒有提議把「幕僚對所有發行人開放非公開審查」這套做法入法；而且就第 6(e)(2) 條的保密而言，委員會沒有權限把這層保密延伸到非新興成長公司，因此只有法定的新興成長公司仍然適用這項優惠。這一條是查核代理 2026-09-18 補上的——第一輪草稿把「非公開審查對所有發行人開放」與「法定保密」寫成同一件事，實際上來源把兩者分開。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the \nCommission lacks the authority to extend this confidentiality to non-\nEGC companies and therefore only statutory EGCs will remain eligible \nfor this accommodation."
+    },
+    {
+      "fact": "91 FR 30086 另一段確認委員會不打算把該幕僚實務寫進法規，只就是否入法徵詢外界意見。第二輪查核 2026-09-18 把引文補完整：原本只引到「We are not proposing to codify this process」就停住，漏掉了同一句的轉折子句（but we request comment…），會讓讀者以為委員會已經定案不入法。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We are not proposing to codify this \nprocess but we request comment on whether doing so would provide \nadditional clarity and certainty."
+    },
+    {
+      "fact": "91 FR 30086 在同一段接著寫明：非新興成長公司的申報人在遞交註冊說明書草稿做非公開審查時，仍然可以依 17 CFR 200.83（Rule 83）使用委員會關於資訊自由法請求的保密處理程序。這一條是第二輪查核 2026-09-18 補上的——第一輪只寫「委員會沒有權限把第 6(e)(2) 條的保密延伸到非新興成長公司」就停住，會讓讀者以為非新興成長公司的草稿完全沒有保密可言，而來源在同一段明講還有 Rule 83 這條途徑。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Non-EGC registrants would continue to be able \nto use the Commission's confidential treatment procedures regarding \nFOIA requests pursuant to 17 CFR 200.83 (``Rule 83''), when submitting \ndraft registration statements for nonpublic review."
+    },
+    {
+      "fact": "91 FR 30086 在介紹 JOBS Act 新增第 6(e) 條時，自己把「註冊說明書草稿」縮寫成 DRS，並說明該項給新興成長公司兩件事：(1) 於首次公開發行前遞交草稿供保密審查，(2) 該草稿免於因資訊自由法請求而被委員會提供出去。這一條是第二輪查核 2026-09-18 補上的，用來承載文章與 FAQ 裡「DRS 是提案規則對註冊說明書草稿的簡稱」這個說法。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the ability to submit to the Commission a draft \nregistration statement (``DRS'') for confidential review prior to an \nEGC's initial public offering;"
+    },
+    {
+      "fact": "91 FR 30086 在條文正文裡把 Form S-1 寫成註冊說明書所用的表格，並註明其法規條次為本章第 239.11 條（即 17 CFR 239.11）。這一條是查核代理 2026-09-18 補上的，用來支撐文章「S-1 是註冊說明書表格之一」這句；文件全文沒有出現 most commonly 之類的字眼，因此不可以寫成「最常用」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "registration statement on Form S-1 (Sec.  239.11 of this chapter)"
+    },
+    {
+      "fact": "91 FR 30086 由委員會於 2026 年 5 月 19 日通過，於 2026 年 5 月 21 日刊登聯邦公報；文件自身頁首印出編號 2026-10222、引註 91 FR 30086、頁碼 30086-30190、Release Nos. 33-11419、34-105515、File No. S7-2026-18，意見徵詢截止日 2026 年 7 月 20 日。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/05/21/2026-10222.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By the Commission.\n\n    Dated: May 19, 2026.\nVanessa A. Countryman,\nSecretary."
+    }
+  ],
+  "not_said": [
+    "官方公告沒有寫遞件的實際日期，只說「我們最近遞交了」；2026 年 6 月 8 日是公開確認、頁面標示發布的日子，不等於送出草稿的那一天。",
+    "官方公告沒有指名是哪一個法人主體遞交這份草稿，公告全文找不到任何公司或機構名稱字樣。",
+    "官方公告沒有寫交易所、股票代號、發行股數、價格區間、募資金額或估值，一個相關數字都沒有。",
+    "官方公告沒有給時程，且明說尚未決定；公告也沒有排除撤回、暫停或長期不公開申報的可能。",
+    "官方公告沒有說 SEC 已經核准、受理或表示任何意見，保密遞件只是把草稿交出去，不是取得任何許可。",
+    "官方公告沒有說這次遞件是依 1933 年證券法第 6(e) 條的新興成長公司權利、還是依 SEC 公司財務組自 2017 年起對所有發行人開放的幕僚實務，也沒有說 OpenAI 是不是新興成長公司；OpenAI 的營收沒有公開資料可查，本文不替它歸類。",
+    "官方公告沒有透露 draft S-1 裡的任何內容。",
+    "官方公告沒有說 ChatGPT 的方案、價格、功能或可用地區有任何改變，也沒有提到台灣或任何其他國家。",
+    "官方公告引用了 Rule 135，但沒有進一步解釋 Rule 135 是什麼、作用是什麼；本文查核到的四條來源都沒有定義 Rule 135 本身，因此本文不代為解讀。",
+    "以 EDGAR 全文檢索用申報人名稱查詢，2026-09-18 查核當下看不到任何與這次遞件有關的公開文件（46 筆全部是表單別 D 或 D/A）。第二輪查核 2026-09-18 改寫本條：第一輪原本寫「SEC 沒有公開任何與這次遞件有關的文件」與「SEC 依制度設計不確認也不否認一件保密遞件的存在」，前者是超出查詢範圍的全稱否定，後者在四條來源裡完全沒有依據（neither confirm／confirm nor deny 在 OpenAI 公告頁、USCODE §77f、91 FR 30086 都是 0 次）。第一輪已把這個說法從正文、FAQ 3、FAQ 4 與 callout 四處刪除，但這一條紀錄本身漏掉沒改，本輪一併更正，避免後續批次又從這裡抄回去。",
+    "官方公告沒有把這件事和 2026-03-31 的募資公告或任何其他 OpenAI 公告連結在一起。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "17 CFR 239.11（Form S-1 的正式法規定義，來源是 ecfr.gov 的 versioner API）。",
+      "seen_where": "2026-09-16 前一輪研究已經查證過這個網址與條文內容。",
+      "why_excluded": "本文 sources[] 上限 4 條，今天優先保留 OpenAI 公告頁、EDGAR、USCODE §77f 與 91 FR 30086 這四條，沒有再開第五條放 17 CFR 239.11；S-1 是「常用的註冊說明書表格」這句沒有進一步的 CFR 條號，本文只掛在讀者理解需要的最低限度。"
+    },
+    {
+      "claim": "Cerebras Systems Inc.（CIK 0002021728）從保密遞件（DRS，file number 377- 開頭）走到公開發行（S-1 系列，file number 333- 開頭）的完整軌跡，很適合當對照組說明「保密轉公開」的實際樣子。",
+      "seen_where": "查核代理 2026-09-16 在 data.sec.gov/submissions/CIK0002021728.json 獨立驗證過這條軌跡。",
+      "why_excluded": "同樣受限於四條來源的上限，本輪沒有把 data.sec.gov 這個網址納入 sources[]，因此本文不寫這個對照組；留給後續批次或站主決定要不要為了這段內容多開一條來源。"
+    },
+    {
+      "claim": "SEC 新聞稿 RSS（www.sec.gov/news/pressreleases.rss）裡 2026-07-08 那則「SEC to Host Virtual Roundtable on Modernizing IPOs and Expanding Access to Public Markets」。",
+      "seen_where": "查核代理 2026-09-16 讀過這份 feed，確認可用（HTTP 200）且與 OpenAI 無關。",
+      "why_excluded": "本輪沒有重抓這份 feed，且它不在本文 sources[] 裡，本文與本紀錄都不引用它。"
+    },
+    {
+      "claim": "www.sec.gov 上人工可用的 EDGAR 搜尋頁面網址與操作步驟（一般讀者可以自己點的那個介面）。",
+      "seen_where": "efts.sec.gov（API）今天可用，但那是給程式呼叫的端點，不是給讀者點的頁面。",
+      "why_excluded": "今天重測 www.sec.gov/cgi-bin/browse-edgar 與 www.sec.gov/edgar/search/ 仍然 403（body 是「SEC.gov | Request Rate Threshold Exceeded」），本容器讀不到那個人工介面長什麼樣子，所以本文不列出 www.sec.gov 的網址，也不描述操作介面，只描述「用申報人名稱查詢」這個概念。"
+    },
+    {
+      "claim": "OpenAI 在其他公告裡用過「OpenAI Foundation」與「OpenAI Group PBC」兩個法人名稱。",
+      "seen_where": "2026-09-16 前一輪研究從 OpenAI 官方 RSS 的其他項目（2026-07-21 那則）讀到這兩個名稱。",
+      "why_excluded": "本輪的四條 sources[] 不含 OpenAI 官方 RSS 或那則 7/21 公告，這個事實今天沒有來源可指，因此本文只寫「公告沒有指名任何法人主體」，不提這兩個名稱是什麼。"
+    },
+    {
+      "claim": "15 U.S.C. §77f(e)(1) 句尾那句關於「遞件時是新興成長公司、之後喪失資格仍準用本項」的但書。",
+      "seen_where": "今天在 USCODE §77f 頁面讀到，緊接在 15 天公開申報規定之後。",
+      "why_excluded": "這句話在來源頁上印的是「shall continue to be treated as an emerging market growth company」，比全篇其餘處一律使用的「emerging growth company」多了一個「market」，疑似來源本身的轉檔或排版痕跡；為了不要抄錯、也不要看起來像本代理自己打錯字，這句話今天不引用，留給後續批次核對原始公法條文後再決定怎麼處理。"
+    },
+    {
+      "claim": "OpenAI 的實際營收數字，用來判斷它是否符合新興成長公司 12.35 億美元的門檻。",
+      "seen_where": "沒有從任何一手來源看到；媒體與市場傳聞的營收數字不算一手來源。",
+      "why_excluded": "OpenAI 未公開財報，拿傳聞數字和門檻相乘比較就是臆測；本文明確不替 OpenAI 歸類是否為新興成長公司。"
+    },
+    {
+      "claim": "OpenAI 這次遞件的估值、募資規模、承銷商、交易所或股票代號。",
+      "seen_where": "本次查證沒有從任何一手來源看到，這些是新聞媒體與市場傳聞常見的說法。",
+      "why_excluded": "沒有一手來源；且派工單與 ai.md 都要求本篇不得寫成投資題材，即使日後媒體報導一致也不寫。"
+    },
+    {
+      "claim": "Form D 的定義與用途（「私募發行的通知文件」「創投基金或特殊目的公司通報自己完成了一輪私募」「不是公司申請公開發行要用的表格」）。",
+      "seen_where": "第一輪草稿的「自己到 SEC 資料庫查得到什麼」一節寫過這一句。",
+      "why_excluded": "查核代理 2026-09-18 以程式核對四條來源全文：Form D、Regulation D、private placement、exempt offering 在 91 FR 30086 與 USCODE §77f 都是 0 次，EDGAR 回應也只回欄位值不回定義。四條來源沒有一條定義 Form D，這句話因此整句刪掉；文章改為只寫查詢回傳得到的東西（申報人名稱、表單別、申報日、登記州別）。要寫 Form D 的定義就得換掉一條 sources[]（例如 17 CFR 239.500），本輪沒有換。"
+    },
+    {
+      "claim": "這 41 個申報人「清一色是投資 OpenAI 的創投基金與特殊目的公司」。",
+      "seen_where": "第一輪草稿的同一段。",
+      "why_excluded": "查核代理 2026-09-18 逐筆檢查 EDGAR 回應的 _source 欄位：ciks、display_names、form／file_type／root_forms、file_date、biz_states／biz_locations、inc_states、items、adsh、file_num、film_num、sics（46 筆全為空陣列）、period_ending 與 file_description（46 筆全為 null），沒有一個欄位說明這些基金投資什麼；「投資 OpenAI」是從名稱推出來的。此外名單裡的 OpenAI Startup Fund 系列依其名稱是對外投資的基金，把它說成「投資 OpenAI」風險更高。文章改寫成只描述名稱樣態，並明講查詢欄位裡沒有投資標的資訊。第二輪查核 2026-09-18 更正本條的舉證：第一輪在此寫「invest 與 venture 兩個字串在整份回應是 0 次」，重抓後實測 invest 出現 8 次、venture 出現 5 次，全部落在申報人名稱裡（MAV Alternate Investments、DiversiFi Ventures、Venelite Venture Funds、InvestX Capital、OurCrowd (Investment in G-new OpenAI)、GatePass Ventures），不是描述投資標的的欄位——結論不變，但舉證方式改為列舉欄位本身，不再用關鍵字計數。"
+    },
+    {
+      "claim": "「SEC 對於某家公司是否遞交過保密文件，一貫不確認也不否認」「保密遞件不會出現在任何公開資料庫」。",
+      "seen_where": "第一輪草稿的正文、第 3 題與第 4 題 FAQ、以及 callout，共四處。",
+      "why_excluded": "查核代理 2026-09-18 以程式搜尋三份文字來源：neither confirm／confirm nor deny 在 OpenAI 公告頁、USCODE §77f、91 FR 30086 都是 0 次。§77f(e)(2) 只寫「不得被強制揭露」，那是 FOIA 上的豁免，推不出 SEC 對外詢問的應答慣例，也推不出「任何公開資料庫」這種全稱。四處全部改寫或刪除，正文改成「本文查核的四條來源，都沒有說 SEC 會不會回應外界詢問」。"
+    },
+    {
+      "claim": "「保密遞件過程中沒有核准或受理這種對外程序」「依法只有走到公開申報之後，資料才會出現在 EDGAR 上」。",
+      "seen_where": "第一輪草稿的第 4 題 FAQ。",
+      "why_excluded": "兩句都是沒有來源的全稱否定。91 FR 30086 全文裡 approv 出現 29 次、EDGAR 出現 8 次（都是別的脈絡），四條來源沒有一條說這個階段不存在對外程序，也沒有一條規定 EDGAR 的登載時點。改寫成限縮句：條文只寫「在公開申報之前由幕僚做保密的非公開審查」，四條來源沒有提到這個階段有對外的核准或受理程序。"
+    },
+    {
+      "claim": "「S-1 是美國 1933 年證券法下最常用的註冊說明書表格」的「最常用」。",
+      "seen_where": "第一輪草稿的正文與第 3 題 FAQ。",
+      "why_excluded": "91 FR 30086 全文 most commonly 為 0 次，四條來源都沒有給任何使用頻率的比較。改寫為「註冊說明書表格之一」，並改掛文件裡實際印出的「registration statement on Form S-1 (Sec.  239.11 of this chapter)」。"
+    },
+    {
+      "claim": "「公告沒有出現任何數字」。",
+      "seen_where": "第一輪草稿的「公告沒有說的事」一節。",
+      "why_excluded": "字面就不成立：公告正文本身有 S-1、Rule 135、1933，頁面上另有 June 8, 2026。原意是「沒有和發行規模有關的數字」，已照這個意思改寫。"
+    },
+    {
+      "claim": "「這句話本身就是 OpenAI 目前唯一公開表態的立場」。",
+      "seen_where": "第一輪草稿的「後續要怎麼自己追蹤」一節。",
+      "why_excluded": "「唯一」是 BRIEF 明文禁止的全稱。撐這句話的只有本輪對 OpenAI 官方 RSS 做的關鍵字掃描，而 RSS 不在 sources[]，依規則不能當成文章的依據。改寫成「本文查核的四條來源裡沒有其他說法」。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般使用者：平常用 ChatGPT，看到「OpenAI 要上市了」的推播或轉述，想知道這句話到底是什麼意思、跟自己有沒有關係。角度是「這句公告講了什麼、沒講什麼」，不是投資角度。今天（2026-09-18）查核時最大的變化是：openai.com/index/openai-submits-confidential-s-1 這個公告頁在 2026-09-16 前一輪研究時回 403（Cloudflare 挑戰頁），今天可以直接讀到全文——公告本身只有兩小段，一段是 OpenAI 第一人稱寫的四句話（遞交了、預期會外流、時程未定、保留提早公開發行的選擇權），另一段是依 Rule 135 發布的法律聲明。全篇因此改用三層骨架：第一層，公告原文逐字說了什麼、頁面上可見的發布日期與分類；第二層，保密遞交 S-1 在美國證券法上是什麼制度——1933 年證券法第 6(e) 條的新興成長公司保密權利（2012 年 JOBS Act 新增，2015 年 FAST Act 把公開申報期限從路演前 21 天縮短為 15 天），以及 SEC 公司財務組自 2017 年起對所有發行人開放的幕僚實務（91 FR 30086 提案規則裡的官方文字）；第三層，公告沒有說什麼——沒有日期、法人主體、金額、時程、核准或分類。最有價值的一段是可重現的查證：以 EDGAR 全文檢索用申報人名稱「OpenAI」查詢，2026-09-18 命中 46 筆申報、展開後 41 個不同申報人，全部是投資 OpenAI 的創投基金與特殊目的公司，同一次查詢的表單類別聚合證明沒有任何一筆屬於 Form D 以外的類別（沒有截斷、沒有藏起來的其他類別）——這正是「保密遞件」四個字在公開資料庫裡的具體樣子，讀者自己也查得到同一個結果（雖然筆數會隨時間變動）。生活情境要標明是編輯設計的例子；本文沒有用到這類例子，因為主題本身已經足夠具體。刻意不談：估值、募資金額、上市時程、承銷商、交易所、draft S-1 的內容、OpenAI 的財務數字或公司結構改組細節。與既有文章的分工：不重述任何 OpenAI 產品或模型新聞；第二個連結指向 OpenAI 2026-03-31 的募資公告（ai-news-openai-funding-20260331，由另一位代理撰寫），本文不重述那篇的內容。硬性限制（來自派工單與 ai.md，必須在成稿與查核時逐條檢查）：不得成為投資內容，不得寫估值、不得寫「該不該買」、不得推測時程；topics 只用 [\"ai\",\"ai-news\"]，不掛 finance，不加投資免責 callout，改用一般 callout 明講本文不是投資建議。",
+  "must_not_write": [
+    "不得出現估值、市值、股價、募資金額、發行股數、承銷商、交易所、股票代號。",
+    "不得寫「值不值得買」「該不該投資」「怎麼參與」「怎麼買到」，不得暗示讀者可以或應該做任何投資動作。",
+    "不得預測或暗示上市時程（不寫「預計」「可能在今年內」「最快何時」）；官方明講尚未決定。",
+    "不得把保密遞件寫成「已申請上市」「已送件 IPO」「已獲 SEC 受理」。",
+    "不得推測 draft S-1 的內容，包括營收、虧損、使用者數、股權結構。",
+    "不得斷定 OpenAI 是不是新興成長公司，也不得把 15 天路演規定的適用對象替它下結論。",
+    "不得引用 TechCrunch、Reuters、彭博、CoinDesk、律師事務所部落格或任何整合站作為來源或事實。",
+    "topics 不得帶 finance 或 crypto，也不加投資免責 callout（ai.md 明訂 AI 篇只放一般 callout）。",
+    "不得寫成 OpenAI 產品新聞，不得重述 ChatGPT／GPT 系列模型的功能。",
+    "不得出現簡體字、列表、Markdown、emoji；不得寫「我們實測」。",
+    "不得自行編造或列出 www.sec.gov 的網址或表單編號；今天重測 www.sec.gov 仍然 403。",
+    "不得引用 15 U.S.C. §77f(e)(1) 句尾那句「emerging market growth company」的但書（來源本身用語不一致，見 unverified_or_excluded）。"
+  ],
+  "live_data_warnings": [
+    "EDGAR 的每一個計數都是查詢當下的快照：46 筆申報、41 個不同申報人、40 筆 Form D／6 筆 Form D/A，2026-09-18 查詢得到，會隨新申報增加；引用時一律綁上查核日，不當成固定數字。",
+    "entity_filter 聚合最多回 30 個 bucket（今天 sum_other_doc_count 為 11，30+11=41），任何「有幾個申報人」的結論都必須展開 hits[] 逐筆計算，不能只讀聚合；form_filter 這次的 sum_other_doc_count 是 0，代表沒有截斷，是比較乾淨的完整性證據，但下次查詢時仍要重新確認這個值。",
+    "OpenAI 官方新聞 RSS（openai.com/news/rss.xml）今天筆數依然在漲（逾 1,100 筆，最新一筆 pubDate 為查核前一天的 UTC 日期），依 corrections-ai.md must_fix 4，確切筆數不寫進文章也不寫進本紀錄；這份 feed 只用來做「有沒有後續公告」的交叉確認，不是引用的事實。",
+    "openai.com/index/openai-submits-confidential-s-1 今天（2026-09-18）從 403 變成 200，是否會再次被擋不確定，下次查核這篇或同垂直其他被擋在 openai.com/index/* 的文章時，都應該重新測一次，不要沿用「這個路徑一定被擋」的假設。",
+    "www.sec.gov 今天仍是 403（Request Rate Threshold Exceeded），這個狀態同樣可能隨時間改變，下次要重測。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（46 筆分屬 41 個申報人，不是 30 個）：已套用並重新獨立驗證——今天的查詢一次回傳全部 46 筆 hits，程式展開 display_names 得到 41 個不同申報人，與查核代理 2026-09-16 的結論一致。",
+    "must_fix 2（SEC 新聞稿 RSS 涵蓋區間寫錯）：不適用，本輪沒有使用 SEC 新聞稿 RSS 這個來源，本文與本紀錄都不提這份 feed 的涵蓋區間。",
+    "must_fix 3（46 筆不是「全部是 Form D」，是 40 筆 D＋6 筆 D/A）：已套用，正文與 verified_facts 都寫「40 筆 D、6 筆 D/A」，不寫成「全部是 Form D」。",
+    "must_fix 4（不准把 OpenAI RSS 的 item 數印進文章或紀錄）：已套用且加嚴——本輪連來源都不列 RSS，只在 live_data_warnings 記「逾 1,100 筆、最新一筆 pubDate 等於查核前一天」做交叉確認，不當成引用的事實，也不寫進內容包。查核代理 2026-09-18 補記：第一輪的本紀錄仍留著確切筆數，已依 must_fix 4 改寫成區間。",
+    "must_fix 5（Cerebras 對照組來源錯誤）：不適用，本輪沒有使用 Cerebras 對照組（受限於四條來源上限，見 unverified_or_excluded）。",
+    "must_fix 6（JOBS Act／FAST Act 簡稱要掛 91 FR 30086，不能掛 govinfo 的 §77f 頁）：已套用，今天重新程式搜尋確認 §77f 頁沒有這兩個字串，兩個簡稱的 verified_facts 都掛在 91 FR 30086 上，並附上完整命名句的逐字引文。",
+    "must_fix 7（三個識別碼要記下取得方式）：已套用，sourcing_notes 說明 govinfo USCODE 網址與聯邦公報文件編號 2026-10222 都是延用前一輪已查證的網址／編號、今天重新抓到並核對文件自身印出的編號，不是本輪重新拼出來的；uscode.house.gov 本輪沒有使用。",
+    "must_add（govinfo PDF 版 91 FR 30086）：考慮後不採用——今天重新確認 federalregister.gov 的 raw text 端點本身可正常讀到（200、657,682 bytes，純文字比 PDF 更容易程式化核對），因此維持用 raw text 網址，不換成 govinfo 的 PDF。",
+    "must_add（Cerebras 完整軌跡、377- 轉 333- 字頭）：不採用，受限於四條來源上限，記在 unverified_or_excluded。",
+    "must_add（entity_filter 30-bucket 陷阱的方法論註記）：已套用並擴充——本輪額外發現 form_filter 的 sum_other_doc_count 可以直接證明「這次聚合沒有截斷」，比另外發七個 forms= 查詢更乾淨，已寫進 sourcing_notes 供後續批次參考。",
+    "must_add（§77f(e)(1) 的 EGC 資格延續但書）：讀到了，但今天發現這句話在來源頁上多印了一個「market」（emerging market growth company），與全篇用語不一致，決定不引用，記在 unverified_or_excluded。",
+    "must_add（2026-07-08 SEC 線上圓桌訊息）：不採用，本輪沒有使用 SEC 新聞稿 RSS。",
+    "must_add（更寬關鍵字重跑「沒有後續」檢查）：已套用並擴充——本輪對 feed 裡全部 2026 年項目的標題與描述做關鍵字掃描（S-1、SEC、prospectus、road show、public markets、restructur、PBC、Foundation、valuation、investor、equity、capital、IPO、NASDAQ、NYSE、ticker、shares outstanding、underwrit），2026-06-08 這則仍是唯一與 S-1 直接相關的項目；但這個檢查的結果沒有寫進文章正文或當成 verified_facts（RSS 不在 sources[]），只當作撰稿時的方法論確認。",
+    "must_add（公告標題全為 ASCII，可以直接照打）：已重新確認，今天讀到的公告全文（含兩段正文）逐字元檢查也全部是 ASCII，沒有 U+2011 或不斷行空格的陷阱。"
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "四條 sources[] 於 2026-09-18 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（沒有任何請求帶入 email、姓名或個人資料）：OpenAI 公告頁 200／346,593 bytes，最終網址即帶斜線的原網址，回應標頭有 x-nextjs-prerender: 1、x-powered-by: Next.js，沒有 cf-mitigated，<title> 為 Confidential submission of draft S-1 to the SEC | OpenAI，正文兩小段可讀，確認是公告正文而非挑戰頁（撰稿者「今天讀得到全文」的說法成立）；EDGAR FTS 200／32,682 bytes；govinfo USCODE §77f 200／24,007 bytes；聯邦公報 raw text 200／657,682 bytes。逐條主張回源：正文 17 段、summary 4 句、FAQ 7 題、表格 4 列加 caption、圖解 caption 與研究紀錄 diagram 四格、hero_label、title、description，共核 108 條主張。19 條 verbatim_quote 全部以程式做連續字串比對，19/19 在今天抓下來的來源檔裡原樣命中，且 19 條的 url 全部落在 sources[] 之內（本垂直少見）。EDGAR 的三個數字全部獨立重數，不讀聚合：hits.total.value=46、hits.hits 一次回傳 46 筆未分頁、逐筆展開 display_names 得 41 個不同申報人（2024-03-22 一筆掛 MAV OpenAI Fund I 與 QP-MAV OpenAI Fund I 兩個共同申報人）、以 file_type 分組得 40 筆 D 與 6 筆 D/A、form_filter 單一 bucket D:46 且 sum_other_doc_count=0、entity_filter 30 bucket 加 sum_other 11 等於 41——與撰稿者的清點完全一致。界線檢查（本篇不可寫成投資題材）：全篇沒有估值、募資金額、發行股數、承銷商、交易所、股票代號、上市時程預測或「值得期待」式語氣；topics 為 [ai, ai-news] 不含 finance；只有一個 callout 且明講不是投資建議，沒有投資免責 callout。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "刪掉「Form D 是私募發行的通知文件，用途是創投基金或特殊目的公司通報自己完成了一輪私募，不是公司申請公開發行要用的表格」與「這 41 個申報人清一色是投資 OpenAI 的創投基金與特殊目的公司」。四條來源沒有一條定義 Form D（Form D／Regulation D／private placement／exempt offering 在兩份法規文字裡都是 0 次），EDGAR 回應也不含任何投資標的資訊（invest／venture 0 次）。改寫成只描述查詢實際回傳的欄位，並明講欄位裡沒有投資標的。",
+      "「法條同時規定，SEC 不得被強制揭露……換句話說，保密遞件不會出現在任何公開資料庫，而 SEC 對於某家公司是否遞交過保密文件，一貫不確認也不否認」整段重寫。91 FR 30086 明文寫著委員會沒有權限把第 6(e)(2) 條的保密延伸到非新興成長公司、只有法定 EGC 適用；原稿把「非公開審查對所有發行人開放」和「法定保密」接成一條，等於放大了來源的範圍。「一貫不確認也不否認」在三份文字來源是 0 次，四處（正文、FAQ 3、FAQ 4、callout）全部刪除或限縮。",
+      "「公告沒有出現任何數字」改為「公告沒有寫任何和發行規模有關的數字」——公告正文本身就有 S-1、Rule 135、1933，頁面上還有 June 8, 2026，原句字面不成立。",
+      "「S-1 是……最常用的註冊說明書表格」的「最常用」刪掉（most commonly 在 91 FR 30086 為 0 次），改掛文件裡實際印出的「registration statement on Form S-1 (Sec.  239.11 of this chapter)」；正文與 FAQ 3 兩處。",
+      "公告四句話的轉述補回被刪掉的限定詞：likely（→多半）、things we want to do（→有些想做的事）、if that ends up being best（→萬一那樣做最好），並刪掉原稿自己加上去的「遲早」；正文與 FAQ 2 兩處。",
+      "FAQ 5 原本把第 6(e)(1) 條的 15 天路演規定當成對 OpenAI 的把關（「目前沒有證據顯示 OpenAI 的草稿已經到了必須公開申報的階段」），違反 must_not_write「不得把 15 天路演規定的適用對象替它下結論」。改為先寫明該條的適用對象是新興成長公司，再說本文不判斷它對 OpenAI 適不適用。",
+      "FAQ 4 的「過程中沒有核准或受理這種對外程序」「依法只有走到公開申報之後，資料才會出現在 EDGAR 上」兩句無來源全稱否定，改寫成限縮句與可重現的查法。",
+      "「這句話本身就是 OpenAI 目前唯一公開表態的立場」的「唯一」刪掉；撐它的 RSS 掃描不在 sources[]。同段「保密遞件之後可能發生的事包括……」改成「公告沒有寫接下來會怎麼走」的限縮句。",
+      "表格四列全部補上適用範圍：6(e)(1) 加「新興成長公司」、6(e)(2) 加「提案規則指僅新興成長公司適用」、2017 年幕僚實務加「該文件未提議入法」、門檻加「已完成」會計年度。",
+      "summary 第 2 句補上適用對象與「沒有提議入法」；第 3 句的「全部是投資機構的 Form D 或其修正」改為「表單別全部是 Form D 或 Form D/A」。description 的「查不到任何以 OpenAI 為名的公開申報」改為「公開註冊說明書」——EDGAR 上確實有 46 筆以 OpenAI 為名的公開申報（Form D），缺的是註冊說明書。",
+      "圖解第三格「全文檢索查無公開申報」改為「全文檢索查無註冊說明書」，理由同上。",
+      "研究紀錄：EGC 門檻那一條原本掛的引文是「$1.235 billion or more」（喪失資格條件），與 fact 敘述（取得資格門檻）不符，改引同一段的「qualifies as an EGC if it has total gross revenues of less than $1.235 billion」；另補三條 verified_facts（EGC-only 保密、未提議入法、Form S-1 條次）與七條 unverified_or_excluded。"
+    ],
+    "checked_and_correct": [
+      "OpenAI 公告頁今天可讀且是正文：兩段本文、頁面可見日期 June 8, 2026、分類連結文字 Company（href=/news/company-announcements/）、author-list 區塊的具名作者 OpenAI、meta description 一句，全部逐字核對無誤。公告正文第一段確為四句話。",
+      "EDGAR 的 46／41／40／6 四個數字獨立重數後全部相符，form_filter 的 sum_other_doc_count=0 這個「沒有截斷」的證據今天仍然成立，entity_filter 仍截斷在 30 個 bucket。corrections-ai.md must_fix 1 與 must_fix 3 確認沒有留在正文。",
+      "JOBS Act／FAST Act 的命名確實掛得住 91 FR 30086：註腳 7 與註腳 93 印出 Jumpstart Our Business Startups Act, Public Law 112-106；正文印出 Fixing America's Surface Transportation (``FAST'') Act，緊接的註腳 95 印出 Public Law 114-94, 129 Stat. 1312 (2015)。§77f 頁今天仍然 0 次出現 JOBS／FAST／Jumpstart／Fixing America，must_fix 6 的改法正確。",
+      "Rule 135 那一段引文逐字比對通過，含 U+2019 撇號（we’re、it’s 在第一段），整段在頁面上原樣命中兩次；文章對它的中文轉述沒有超出原文，且照公告與研究紀錄的決定不代為解讀 Rule 135。",
+      "21 天改 15 天的修正註記、6(e)(2) 的 FOIA 豁免句、Pub. L. 112-106 新增 (e) 項，三條在 govinfo §77f 頁逐字命中。「emerging market growth company」那句排版異常仍在，文章照 must_not_write 沒有引用。",
+      "91 FR 30086 的日期分離正確：文件頁首 [Federal Register Volume 91, Number 98 (Thursday, May 21, 2026)]、[Pages 30086-30190]、[FR Doc No: 2026-10222]，文末 By the Commission. Dated: May 19, 2026. 文章把刊登日與通過日分開寫，符合 must_add。",
+      "checked_on 四處（內容包每條 source、研究紀錄、正文第二段、表格 caption）一致寫 2026-09-18，且今天確實在這一天讀到四條來源，未更動。",
+      "活資料處理正確：46 筆與 41 個申報人在正文、FAQ 7 與追蹤段三處都綁了查核日並說明是快照；沒有任何 feed 筆數、sitemap url 數或 RSS item 數進入內容包（must_fix 4 與跨篇通則 1 成立）。",
+      "界線：沒有購買建議、沒有推薦式比價、沒有未歸因的廠商宣稱（公告內容一律寫成「公告」「OpenAI 的原句」），沒有把預告或草案寫成已完成——反而通篇就是在說「送件≠公開申報≠核准≠一定會上市」。"
+    ],
+    "left_for_the_owner": [
+      "四條 sources[] 已達上限，所以文章現在完全不解釋 Form D 是什麼，讀者只知道「表單別是 D，不是 S-1」。若希望寫出 Form D 的用途，需要換掉一條來源（建議 17 CFR 239.500 的官方條文，或 data.sec.gov 上某一筆 Form D 本身），這是編輯裁量，本輪沒有動 sources[]。",
+      "第二個結尾連結的標題含有「1,220 億美元募資」這個金額。依規格結尾兩個連結由協調者處理，本代理沒有動；若站主認為本篇不該在任何位置出現募資金額，需要協調者換一篇相關文章。",
+      "www.sec.gov 今天仍未實測（研究紀錄記錄前一輪為 403）。文章因此只描述「以申報人名稱查詢」的概念、不給讀者可點的網址。若日後 www.sec.gov 可讀，可以考慮補一個讀者能直接點的查詢頁。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "claims_rechecked": 71,
+      "edits": 9,
+      "method": "四條 sources[] 全部以 curl -sL -A \"Mokaair-editorial\" 獨立重抓（沒有任何請求帶入 email、姓名或個人資料）：OpenAI 公告頁 200／346,590 bytes，回應標頭 x-nextjs-prerender: 1、x-powered-by: Next.js，無 cf-mitigated 或任何挑戰標頭，確認是公告正文；EDGAR FTS 200／32,681 bytes；govinfo USCODE §77f 200／24,007 bytes；聯邦公報 raw text 200／657,682 bytes。範圍是第一輪改動過的每一段與新寫進去的每一句，逐句回四條來源原文。22 條 verbatim_quote 全部以程式做連續字串比對，22/22 原樣命中且 url 全部在 sources[] 之內；含 U+2019 與 `|` 的兩條逐字元／逐片段確認不是把不同段落拼起來的。EDGAR 自己重抓重數：hits.total.value=46、hits.hits 一次回傳 46 筆未分頁、展開 display_names 得 41 個不同申報人（2024-03-22 一筆掛 MAV OpenAI Fund I 與 QP-MAV OpenAI Fund I 兩個共同申報人）、file_type 分組得 40 筆 D 與 6 筆 D/A、form_filter 單一 bucket D:46 且 sum_other_doc_count=0、entity_filter 30 bucket 加 sum_other 11 等於 41——與第一輪完全一致。指派訊息點名的七個疑點逐項查過，結果見下。",
+      "verdict": "ok",
+      "edits_to_the_pack": [
+        "（最重）保密那一段補回第一輪漏掉的但書：91 FR 30086 在「委員會沒有權限把第 6(e)(2) 條的保密延伸到非新興成長公司」之後，同一段緊接著寫 Non-EGC registrants would continue to be able to use the Commission's confidential treatment procedures regarding FOIA requests pursuant to 17 CFR 200.83 (``Rule 83'')。第一輪停在前半句，讀起來像是非新興成長公司的草稿完全沒有保密可言，來源並不是這樣寫。已在正文補一句，並新增對應的 verified_facts。",
+        "「這次查詢回傳的欄位只有申報人名稱、表單別、申報日與登記州別」的「只有」不成立：回應實際還帶 biz_locations／biz_states（營業地）、adsh、file_num、film_num、items、sics、period_ending、file_description 等欄位。改為「回傳的是……這類申報欄位」，並把否定句限縮成可驗證的「沒有一個欄位說明這些基金實際投資什麼」。",
+        "第一輪把「Form D 是私募通知文件」整句刪掉之後，文章從頭到尾不再解釋這份表單，讀者會卡住。已在 EDGAR 那一段補一句誠實寫法：「本文引用的四條來源都沒有解釋 Form D 這份表單的用途，所以這裡只照查詢回傳的表單別寫，不代為說明它是做什麼用的。」本輪重新確認 Form D／Regulation D／private placement／exempt offering 四個字串在四條來源全部是 0 次，沒有自己補定義。",
+        "「委員會沒有提議把這套做法入法」補上同一句的轉折子句（but we request comment on whether doing so would provide additional clarity and certainty）→「只就是否入法徵詢外界意見」，避免把提案中的事寫成已定案。",
+        "FAQ 第 7 題「S-1、DRS 這類才是註冊說明書」用語不精確（DRS 依 91 FR 30086 自己的定義是註冊說明書「草稿」），改為「註冊說明書要看的是 S-1 這種表格，或是提案規則裡簡稱 DRS 的註冊說明書草稿」；同時把只寫「查核日」的地方補成 2026 年 9 月 18 日，讓活資料每一處都帶日期。",
+        "description 的「查核到查不到」語句不通且沒有時點，改為「並以全文檢索系統確認，截至查核當天查不到以 OpenAI 為申報人名稱的公開註冊說明書」（195 字，仍在 120–200）。"
+      ],
+      "edits_to_this_record": [
+        "not_said 裡仍留著「SEC 依制度設計不確認也不否認一件保密遞件的存在」與「SEC 沒有公開任何與這次遞件有關的文件」——第一輪已把這個說法從正文與三處 FAQ／callout 刪掉，卻沒有改這份紀錄，等於把無來源的說法留在原地給後續批次抄。已改寫成限縮在查詢範圍內的敘述並註明原因。",
+        "unverified_or_excluded 中「invest 與 venture 兩個字串在整份回應是 0 次」這個舉證是錯的：重抓實測 invest 8 次、venture 5 次，全部落在申報人名稱裡（MAV Alternate Investments、DiversiFi Ventures、Venelite Venture Funds、InvestX Capital、OurCrowd (Investment in G-new OpenAI)、GatePass Ventures）。結論（回應沒有說這些基金投資什麼）不變，舉證改為列舉 _source 欄位本身。",
+        "新增三條 verified_facts：Rule 83 對非新興成長公司的保密處理程序、「未提議入法」的完整句（含 request comment 子句）、91 FR 30086 自己給 DRS 下的定義（承載文章與 FAQ 裡「DRS ＝註冊說明書草稿的簡稱」這個說法，第一輪沒有對應的 fact）。"
+      ],
+      "checked_and_correct": [
+        "保密遞件那一段（第一輪整段重寫）逐句回 91 FR 30086 與 15 U.S.C. §77f 原文：文章沒有替 OpenAI 歸類是不是新興成長公司（正文、FAQ 3、FAQ 5 三處都明講不歸類）、沒有把條文寫成對 OpenAI 的適用結論、也沒有把「非公開審閱」與「法定保密」混為一談（「兩條路徑的保密程度並不一樣」這句正是來源的分野）。§77f(e)(2) 的豁免文字確為「pursuant to this subsection」，而該 subsection 標題就是 (e) Emerging growth companies；FOIA 的連結由 91 FR 30086 註腳 224 明確指向 77f(e)(2)，不是本文自己接上去的。",
+        "EDGAR 數字在正文、summary、表格、FAQ、圖解 nodes 每一處一致（46、41、40 D＋6 D/A），且正文三處、summary 一處、FAQ 兩處都綁了 2026 年 9 月 18 日；圖解 nodes 的數字由 caption 帶查核日。全篇「2026 年 9 月 18 日」出現 12 次。RSS 筆數只在 live_data_warnings 以「逾 1,100 筆」的區間記錄，沒有進入內容包。",
+        "第一輪刪掉「SEC 一貫不確認也不否認」的四處之後，內容包沒有留下斷句或失去歸因的推論：正文改成限縮在四條來源的敘述，FAQ 3、FAQ 4、callout 三處都是完整且有界限的句子。",
+        "FAQ 第 5 題改寫後沒有暗示 OpenAI 的上市時程：先寫明第 6(e)(1) 條的適用對象是新興成長公司，再明講不替 OpenAI 歸類、不判斷 15 天規定對它適不適用；「一旦走到那一步，草稿就會變成公開文件」是條文的條件句，不是對 OpenAI 的預測。",
+        "公告原文的動詞與時態：原句是 We recently submitted a confidential S-1（過去式＋recently，沒有寫出日期），頁面 <h1> 與 <title> 才出現 draft S-1；文章寫「已……保密遞交一份 S-1 註冊說明書草稿」並在兩處明講公告沒有寫遞件的實際日期、2026-06-08 只是公開確認日，與原文相符。2026-06-08 的依據是頁面 hero meta 區塊的 <p class=\"text-meta text-primary-100\">June 8, 2026</p>，緊鄰分類連結 Company 與 <h1>，確認是這篇文章自己的日期。Rule 135 那一段沒有任何制式語句：shares、price range、market conditions、subject to、road show、underwrit、IPO、NASDAQ、NYSE、valuation 在公告頁全部是 0 次，文章也沒有替它補上「股數與價格未定」「視市場狀況」「SEC 審閱完成後」這類句子。",
+        "全文沒有「已申請上市」「即將上市」「預計某月掛牌」這類超出原文的說法——title、description、summary、hero_label、hero alt、圖解 alt 與 caption 全部掃過；「申請上市」只出現在 FAQ 第 1 題的問句，而答案第一個字就是「沒有」。",
+        "界線：沒有估值、上市時程預測、購買或投資建議；正文與 summary 出現的金額只有 12.35 億美元這個新興成長公司門檻（來源印出的數字），「1,220 億美元募資」只出現在第二個結尾連結的標題文字，正文任何位置都沒有。topics 為 [ai, ai-news] 不含 finance；只有一個 callout，且是本篇自己的提醒（明講不是投資建議），沒有另加投資免責 callout。"
+      ],
+      "left_for_the_owner": [
+        "四條 sources[] 已達上限，文章仍然不解釋 Form D 是什麼，只是現在會誠實告訴讀者「本文引用的來源沒有解釋這份表單」。要真的寫出用途就得換掉一條來源（17 CFR 239.500 的官方條文，或 data.sec.gov 上某一筆 Form D 本身）。本輪維持不動 sources[]。",
+        "第二個結尾連結的標題含「1,220 億美元募資」。兩個結尾連結依規格由協調者處理，本輪未動；若站主認為本篇不該在任何位置出現募資金額，需要協調者換一篇相關文章。",
+        "www.sec.gov 本輪同樣沒有實測（沿用前兩輪的 403 紀錄）。文章只描述「以申報人名稱查詢」的概念、不給可點的網址，這個保守作法在 www.sec.gov 可讀之前都成立。"
+      ]
+    }
+  },
+  "hero_label": "保密遞件，時程未定",
+  "diagram": {
+    "title": "保密遞件，代表與不代表",
+    "caption": "四格圖解：公告內容、法源基礎、查證方式與查核情形，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "公告內容",
+        "四句聲明，未定時程"
+      ],
+      [
+        "法源基礎",
+        "證券法保密遞件權"
+      ],
+      [
+        "查證方式",
+        "全文檢索查無註冊說明書"
+      ],
+      [
+        "查核情形",
+        "46 筆、41 個申報人"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Submitted, no timeline",
+      "diagram": {
+        "title": "Confidential Submission: What It Means",
+        "caption": "Four-panel diagram: what the announcement says, its legal basis, how it was verified, and the verification findings. Checked on September 18, 2026.",
+        "nodes": [
+          [
+            "The Announcement",
+            "Four sentences, no timing set"
+          ],
+          [
+            "Legal Basis",
+            "Securities Act, Section 6(e)"
+          ],
+          [
+            "How We Checked",
+            "Full-text search: no S-1"
+          ],
+          [
+            "What We Found",
+            "46 filings, 41 filers"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "非公開提出、時期は未定",
+      "diagram": {
+        "title": "非公開提出は何を意味し、何を意味しないか",
+        "caption": "4コマ図解：発表の内容、法的根拠、確認方法、確認結果。確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "発表の内容",
+            "4つの文だけ、時期は未定"
+          ],
+          [
+            "法的根拠",
+            "証券法の非公開提出権"
+          ],
+          [
+            "確認方法",
+            "全文検索で登録届出書なし"
+          ],
+          [
+            "確認結果",
+            "46件、41の申請者"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "비공개 제출, 시기 미정",
+      "diagram": {
+        "title": "비공개 제출이 의미하는 것과 아닌 것",
+        "caption": "4컷 도식: 발표 내용, 법적 근거, 확인 방법, 확인 결과. 확인일은 2026년 9월 18일입니다.",
+        "nodes": [
+          [
+            "발표 내용",
+            "네 문장, 시기 미정"
+          ],
+          [
+            "법적 근거",
+            "증권법상 비공개 제출권"
+          ],
+          [
+            "확인 방법",
+            "전문검색상 증권신고서 없음"
+          ],
+          [
+            "확인 결과",
+            "46건, 신청인 41곳"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "保密递交，时间表未定",
+      "diagram": {
+        "title": "保密递交，代表与不代表",
+        "caption": "四格图解：公告内容、法律依据、核实方式与核实情况，核实日期为 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "公告内容",
+            "四句声明，时间表未定"
+          ],
+          [
+            "法律依据",
+            "证券法保密递交权"
+          ],
+          [
+            "核实方式",
+            "全文检索查无注册声明"
+          ],
+          [
+            "核实情况",
+            "46 笔、41 个申报人"
+          ]
+        ]
+      }
+    }
+  }
+}

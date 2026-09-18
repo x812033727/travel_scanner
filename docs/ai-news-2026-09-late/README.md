@@ -4,6 +4,14 @@
 `docs/ai-news-2026-09-mid` 之後：補到 9/16，並補回 1/1 起漏掉的重要新聞。
 五語（zh-TW、en、ja、ko、zh-CN），每篇一張原創主圖與一張 2×2 圖解。
 
+> **現況（2026-09-18）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md) 第 1c 節。
+> 十二篇都是五語、都經過兩輪獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet、`related` 與 relink 都做完了；
+> 既有索引 `ai-news-2026-january-september-index` 已原地改版（拿掉篇數、加 12 篇連結）。
+> **還沒合併、還沒匯入發布，等站主驗收與指示**；匯入時要連同 30 個只改了連結文字的既有包（清單在 HANDOVER 第 2.4 節）。
+> 固定值：`topics` 是 `["ai", "ai-news"]`（需要時加 `software`／`gadgets`），主色 TEAL，眉標 `MOKAAIR  /  AI NEWS`，
+> `display_order` 十二篇 149–160；**沒有免責 callout**（含 B8 金融服務那篇，理由見 `ai.md`）。
+> 實際發給代理的六份規格在 [`docs/news-2026-batch-4/agents/ai/`](../news-2026-batch-4/agents/ai)。
+
 ## 這個目錄放什麼
 
 | 路徑 | 內容 | 誰寫的 |

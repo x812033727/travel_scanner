@@ -1,0 +1,602 @@
+{
+  "slug": "ai-news-gpt-live-1-api-20260910",
+  "event_date": "2026-09-10",
+  "event_date_basis": "2026-09-10 是 OpenAI 開發者文件 API 更新紀錄裡『September, 2026』下 Sep 10 條目所記的日期，該條目標記 Feature · Model: gpt-live-1 · API: v1/live/sessions，寫明 GPT-Live 1 在 API 正式（generally available）推出；文件沒有另外給出分批開放或不同的生效日，GA 狀態本身就是生效。事件日採這個刊登日，slug 尾碼與 news_date 皆為 2026-09-10；查核日 2026-09-18 是撰稿當天重新讀取文件的日期，兩者分開記。",
+  "title": "GPT-Live 1 開放 API：電話客服能不能接、聲音是誰的、會不會錄音",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI 開發者文件：Changelog（API 更新紀錄）",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "checked_on": "2026-09-18",
+      "publisher": "OpenAI"
+    },
+    {
+      "title": "OpenAI 開發者文件：GPT-Live 1 模型頁",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "checked_on": "2026-09-18",
+      "publisher": "OpenAI"
+    },
+    {
+      "title": "OpenAI 開發者文件：Telephony and SIP",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "checked_on": "2026-09-18",
+      "publisher": "OpenAI"
+    },
+    {
+      "title": "OpenAI 開發者文件：Managing GPT-Live sessions",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "checked_on": "2026-09-18",
+      "publisher": "OpenAI"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 重新抓取四條 sources[] 的 .md 版本，全部 HTTP 200、讀到真正的正文（非擋阻頁）：changelog.md 69,420 bytes；models/gpt-live-1.md 2,713 bytes；guides/voice-sip.md 22,381 bytes；guides/live-conversations.md 33,781 bytes（後三個檔案的位元組數與 2026-09-16 查核者重抓的結果完全一致，changelog 因為當天多了 Sep 15 的新條目而略大）。changelog.md 的 Sep 10 段落與研究紀錄逐字相符；GPT-Live 1 那條的上一則是 2026-09-10 的 Agents API 公開 beta、上上則是同日的 API 金鑰到期日設定，往上一則是 2026-09-15 的 API 金鑰建立治理功能，確認今天讀到的仍是同一份文件在時間軸上的延伸，不是被整篇改寫。voice-sip.md 的分頁陷阱同前期研究記錄：GPT-Live 內容在 .md 第 1–103 行（『Next steps with GPT-Live』結尾），第 109 行起換成 Realtime API 的 SIP 內容，本次所有引文都只取自前半段。逐句核對非 ASCII 字元：changelog.md 的『Feature · Model:』用的是 U+00B7 中點，已原樣照抄；live-conversations.md 的『don’t』用 U+2019 造型撇號，為避免打錯字元，本紀錄的 verbatim_quote 在該處截到 don't 之前的『audio tokens that』，不含這個字。四條 sources 之外，今天額外核對過但沒有收進 sources[] 的頁面：guides/custom-voices（客製化語音資格與流程，決定整段不寫）、guides/your-data（資料落地與 ZDR 的完整規則，決定只用 live-conversations 自己已有的 store／30 天／ZDR 這幾句）、guides/live-delegation（委派後端模型建議，決定不寫任何後端模型名稱以避開 must_fix 2 的歸屬錯誤）、openai.com/news/rss.xml（7 月 8 日 ChatGPT 端發布的精確時間，決定用不需要日期佐證的說法帶過）、developers.openai.com/api/docs/models 總覽頁（Realtime 分類的完整模型清單，決定不寫『API 有沒有 mini 版』以避開 must_fix 1 的錯誤型態）。",
+  "verified_facts": [
+    {
+      "fact": "OpenAI 開發者文件的 API 更新紀錄在 2026 年 9 月 10 日新增一條，標記型別與端點：Feature、模型 gpt-live-1、端點 v1/live/sessions。",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Feature · Model: gpt-live-1 · API: v1/live/sessions"
+    },
+    {
+      "fact": "同一條紀錄寫 GPT-Live 1 已在 API 正式（generally available）推出，可以建立全雙工語音對話，對話能在後端模型或代理處理推理與工具時繼續進行。",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "is now generally available in the API. Build full-duplex voice conversations that can continue while a backend model or agent handles reasoning and tools."
+    },
+    {
+      "fact": "同一條紀錄寫明兩種委派方式與計費：可用 Responses 委派搭配 OpenAI 模型，或用 client 委派接自己的後端；語音工作階段每分鐘 0.05 美元、按秒計費，後端模型與工具用量另外計費。",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Use Responses delegation with an OpenAI model, or client delegation to connect your own backend. Voice sessions cost $0.05 per minute, billed per second; backend model and tool usage is charged separately."
+    },
+    {
+      "fact": "模型頁把 GPT-Live 1 定義為一個全雙工語音模型，能同時聆聽與說話，並把推理與工具使用委派給後端代理。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-Live 1 is a full-duplex voice model for real-time conversations. It can listen and speak at the same time, and delegate reasoning and tool use to a backend agent."
+    },
+    {
+      "fact": "模型頁用一句話形容自己：我們最頂級的模型，用於自然、有表情的語音對話，並能流暢處理插話。這是官方說法，本站沒有實測。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our premier model for natural, expressive voice conversations with smooth interruption handling."
+    },
+    {
+      "fact": "模型細節列出輸入與輸出模態皆為 audio、text，不支援 image、video 模態，知識截止日是 2025 年 7 月 31 日。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Unsupported modalities: image, video"
+    },
+    {
+      "fact": "定價段落註明工作階段時長不會無條件進位到整分鐘。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Session duration is not rounded up to the next whole minute."
+    },
+    {
+      "fact": "端點列表只把 Live（v1/live/sessions）標為 Supported，其餘既有端點都標 Not supported，其中最後一列舊式端點的官方標籤是 Completions (legacy)，不是單純的 Completions。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Completions (legacy)"
+    },
+    {
+      "fact": "速率限制以同時進行的工作階段數計算。頁面只印這一句，沒有拿它跟每分鐘呼叫次數做對比。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Rate limits are measured in concurrent sessions."
+    },
+    {
+      "fact": "模型頁明寫不支援免費使用層級；併發上限依層級為 Tier 1 到 Tier 5 分別 25、50、200、300、500。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Unsupported usage tiers: Free."
+    },
+    {
+      "fact": "電話串接文件列出兩種連線方式，其中 Direct SIP 由電話業者與 OpenAI 交換通話音訊，應用程式處理事件通知、工作階段設定、通話決策與商業邏輯。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The provider exchanges call audio with OpenAI. Your application handles webhooks, session configuration, call decisions, and business logic."
+    },
+    {
+      "fact": "Server audio bridge 那一列寫，應用程式要自己管理兩端連線、事件轉換、播放與通話生命週期。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your application relays provider or room audio to GPT-Live over WebSocket. It manages both connections, event translation, playback, and call lifecycle."
+    },
+    {
+      "fact": "文件提到 Twilio、Telnyx、LiveKit 與 Daily/Pipecat 這幾家業者都有專屬的整合說明。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Using Twilio, Telnyx, LiveKit, or Daily/Pipecat?"
+    },
+    {
+      "fact": "拒接電話要附一個 300 到 699 之間的 SIP 狀態碼，例如代表忙線的 486。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The status must be an integer from 300 through 699."
+    },
+    {
+      "fact": "第一個接聽或拒接的決定生效，之後重複送出的決定會被拒絕。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The first accept or reject decision wins; a later competing decision returns `decision_already_made`."
+    },
+    {
+      "fact": "轉接與掛斷分別是獨立的 API 動作，成功時都回應 200 OK 且沒有內容。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Both return `200 OK` with an empty body on success."
+    },
+    {
+      "fact": "文件在 Direct SIP 流程的結尾寫明，這個流程處理的是打進來的電話；透過 POST /v1/live/sessions 建立對外撥出的 SIP 通話不支援，外撥要用合作夥伴的整合方案，原文把外撥描述成 provider-owned。這句限縮在這個流程，不是說 GPT-Live 完全不能用於外撥。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This flow accepts inbound calls. Creating an outbound SIP call through `POST /v1/live/sessions` is not supported; use the relevant"
+    },
+    {
+      "fact": "文件提醒來電附帶的 SIP 標頭只能當成不可信的來電方資訊，不能當成授權依據。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Treat `data.sip_headers` as untrusted caller metadata, not authorization."
+    },
+    {
+      "fact": "工作階段設定表寫，聲音要在建立工作階段時設定，預設值是 marin。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The default is `marin`."
+    },
+    {
+      "fact": "文件列出 12 個額外的具名語音選項可選，並註明地區風格只是形容說話風格，不保證腔調的擬真度。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Regional influence describes a voice's speaking style, not a guarantee of accent fidelity."
+    },
+    {
+      "fact": "聲音一旦選定，工作階段進行中無法更換，要換聲音就得開一個新的工作階段。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Start a new session to change it."
+    },
+    {
+      "fact": "工作階段預設的上下文視窗是 128,000 tokens，包含指示、對話文字，以及不會出現在逐字稿裡的聲音 token。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The default context window holds 128,000 tokens, including your instructions, conversation text, and audio tokens that"
+    },
+    {
+      "fact": "用量超過視窗的 90% 時，系統會在同一個工作階段裡換上另一個語音引擎接手；新引擎拿到原本的指示與最多 8,192 tokens 的對話歷史，內容是近期訊息，以及在有摘要可用時（when available）舊訊息的摘要。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When context usage exceeds 90%, it starts a replacement voice engine within the same session."
+    },
+    {
+      "fact": "錄音設定 store 預設是 false，且必須為專案啟用。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Storage defaults to `false` and must be enabled for your project."
+    },
+    {
+      "fact": "留存的錄音會在 30 天後到期。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Recordings expire after 30 days."
+    },
+    {
+      "fact": "啟用 Zero Data Retention 時，store 一律視為 false，下載與分叉功能都不可用。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "With Zero Data Retention, `store` is treated as `false`, and recording downloads and forks are unavailable."
+    },
+    {
+      "fact": "下載的錄音是雙聲道 WAV 檔，輸入音訊在左聲道、輸出音訊在右聲道。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The response is binary stereo WAV, with input audio in the left channel and output audio in the right channel."
+    },
+    {
+      "fact": "工作階段的用量事件回報累計語音秒數，文件強調這是快照、不是可以相加的增量。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These are snapshots, not increments to sum."
+    },
+    {
+      "fact": "工作階段結束時的五種 reason 之一是 expired：工作階段達到時長上限；文件沒有寫出時長上限實際是幾分鐘。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The session reached its duration limit."
+    },
+    {
+      "fact": "（第二輪補記）電話串接指南開頭寫，每一種 API 有自己的驗證、工作階段建立方式與事件契約。第一輪用這句取代原本的推論，本輪補上引文。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Each API has its own authentication, session creation, and event contract."
+    },
+    {
+      "fact": "（第二輪補記）電話串接指南寫，既有整合可能仍會收到已淘汰的 live.call.incoming 事件，該事件沒有 data.type。這是第一輪用來推翻「第一次以 API 開放」的反證，本輪補上引文。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Existing integrations may still receive the deprecated `live.call.incoming` event, which has no `data.type`."
+    },
+    {
+      "fact": "（第二輪補記）Direct SIP 段落寫，來電決定、工作階段設定、授權與商業邏輯仍由開發者的後端擁有。這是第一輪修正「GPT-Live 1 決定接聽或拒接」主詞錯誤的依據。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your backend still owns the incoming-call decision, session configuration, authorization, and business logic."
+    },
+    {
+      "fact": "（第二輪補記）接聽或拒接那一節的第一句要開發者套用自己應用程式的授權與路由規則。accept 與 reject 是兩個各自獨立的端點（POST /v1/live/sessions/{session_id}/accept 與 .../reject），本輪據此把正文的「用一個 API 動作決定接聽或拒接」改成「分別用一個 API 動作接聽或拒接」。",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apply your application's authorization and routing rules."
+    },
+    {
+      "fact": "（第二輪補記）工作階段設定表的 Delegation 列寫，沒有指定或設成 null 時選到的就是 client 模式。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Omitted or `null` delegation selects client mode."
+    },
+    {
+      "fact": "（第二輪補記）文件寫委派模式在工作階段啟動後不能更改。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You cannot change the delegation mode after startup."
+    },
+    {
+      "fact": "（第二輪補記）語音表的引言寫，這些是 GPT-Live 額外提供的語音選項——也就是預設的 marin 之外的 12 列。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-Live includes these additional voice options:"
+    },
+    {
+      "fact": "（第二輪補記）語音表 Vesper 那一列的欄位值：Language 英語、Regional influence 英國。正文舉這個例子時照抄了這兩欄。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "| Vesper   | `vesper`   | English    | British            | Masculine    | Natural   |"
+    },
+    {
+      "fact": "（第二輪補記）語音表 Gleam 那一列的欄位值：Language 英語、Regional influence 北美。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "| Gleam    | `gleam`    | English    | North American     | Feminine     | Natural   |"
+    },
+    {
+      "fact": "（第二輪補記）語音表 Bossa 與 Tempo 兩列相鄰，欄位值都是 Language 葡萄牙語、Regional influence 巴西。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "| Bossa    | `bossa`    | Portuguese | Brazilian          | Feminine     | Natural   |\n| Tempo    | `tempo`    | Portuguese | Brazilian          | Masculine    | Natural   |"
+    },
+    {
+      "fact": "（第二輪補記）開場白那一節寫，在來電者開口之前要用應用程式指定的語言，不要從姓名、電話號碼或所在地推斷。第一輪把這句寫成不帶時間限定的「用應用程式指定的語言」，本輪把「在來電者開口前」補回正文與 FAQ。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Use the language specified by your application until the caller speaks"
+    },
+    {
+      "fact": "（第二輪補記）同一節結尾要開發者拿自己應用程式支援的語言與插話情境去測試開場白。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Test your greeting with the languages and interruptions your application supports."
+    },
+    {
+      "fact": "（第二輪補記）Deliver a disclosure 段落的示範，是請模型完整唸出「本通話可能為了品質與訓練目的而錄音」。第一輪在 callout 裡只譯了前半句，本輪補齊「為了品質與訓練目的」。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This call may be recorded for quality and training purposes."
+    },
+    {
+      "fact": "（第二輪補記）同一段的但書：這只是請求該段措辭，不保證照樣唸出。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This requests the wording; it does not guarantee exact delivery."
+    },
+    {
+      "fact": "（第二輪補記）接手的語音引擎拿到最多 8,192 tokens 的對話歷史，內容是近期訊息，以及在有摘要可用時（when available）舊訊息的摘要。第一輪補回 when available，本輪補上這段的引文。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "up to 8,192 tokens of conversation history, containing recent messages and, when available, a summary of older messages"
+    },
+    {
+      "fact": "（第二輪補記）文件寫較舊的對話細節有可能被摘要或省略（may）。正文末句的「有可能」對應原文的 may。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Older conversation details may be summarized or omitted."
+    },
+    {
+      "fact": "（第二輪補記）下載與分叉需要一份已完成的已儲存錄音，以及一份允許留存的資料政策。第一輪補回這個但書，本輪補上引文。",
+      "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Downloads and forks require a completed stored recording and a data policy that permits persistence."
+    }
+  ],
+  "not_said": [
+    "以本文 sources[] 這四頁查核到 2026-09-18 未見任何地區或國家的開放清單，四頁裡 Taiwan 與 country／countries 以詞界比對各 0 次（voice-sip 唯一一次 country 出現在該頁後半的 Realtime 區段，且是 unsupported country code 的錯誤訊息）。",
+    "以這四頁查核到 2026-09-18 未見支援口說語言的清單。live-conversations 的語音表有 Language 欄，12 列裡 10 列標 English、2 列標 Portuguese，但那是每個具名語音的欄位值，不是模型支援語言的清單；預設語音 marin 沒有列在表內，語言也沒有另外說明。同一頁的開場白段落反過來要開發者『在來電者開口之前用應用程式指定的語言』（Use the language specified by your application until the caller speaks），並拿自己支援的語言去測試，可見語言由開發者設定，只是這四頁沒有印出清單。",
+    "以這四頁查核到 2026-09-18 未見工作階段時長上限的數字。session.closed 的 reason 之一是 expired（The session reached its duration limit），但沒有寫上限是幾分鐘或幾小時。",
+    "以這四頁查核到 2026-09-18 未見 ChatGPT 端的價格、方案或用量有任何改變，也未見任何一句把 GPT-Live 連到 ChatGPT。ChatGPT 以詞界比對只出現在 changelog（21 次、分布 18 行），另外三頁各 0 次；那 21 次全部是 chat-latest 快照、gpt-image／chatgpt-image 模型與 Secure MCP Tunnel，沒有一次與 GPT-Live 有關。",
+    "以這四頁查核到 2026-09-18 未見任何評測數字、延遲數字，或與其他語音模型的比較。",
+    "以這四頁查核到 2026-09-18 未見服務水準（SLA）、可用性承諾或故障補償的說明。",
+    "以這四頁查核到 2026-09-18 未見客製化語音的資格條件或價格；live-conversations 只提到可以用核准的錄音打造，細節在另一份說明裡，本文沒有查證那些細節，因此沒有寫進文章。",
+    "以這四頁查核到 2026-09-18 未見業者必須告知來電者正在與 AI 對話的義務。live-conversations 有一段 Deliver a disclosure，示範怎麼請模型唸出『This call may be recorded for quality and training purposes』，但那是開發者的選擇，而且該頁自己提醒 This requests the wording; it does not guarantee exact delivery。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "客製化語音的申請資格、20 個名額上限與『僅支援英語口音』等具體規則。",
+      "seen_where": "docs/news-2026-batch-4/research/ai-news-gpt-live-1-api-20260910.json 的既有研究紀錄，出處是 developers.openai.com/api/docs/guides/custom-voices",
+      "why_excluded": "為了讓 sources[] 收在 4 條以內、且每句話都指得到來源，本篇今天沒有把 guides/custom-voices 重新列進 sources[]，因此文章只承認客製化語音存在，不寫細節。"
+    },
+    {
+      "claim": "Responses 委派建議先用哪個後端模型（GPT-5.6 Terra／Luna），以及 gpt-6-astra 的定價是否適用於 GPT-Live 的委派。",
+      "seen_where": "docs/news-2026-batch-4/corrections-ai.md 對本 slug 的 must_fix 2：gpt-6-astra 的價格被前期研究錯誤歸屬為 GPT-Live 後端價格，正確出處是 guides/live-delegation（未列入本次 sources[]）。",
+      "why_excluded": "guides/live-delegation 不在本次 sources[] 內，為避免重蹈同一個歸屬錯誤，本篇不寫任何後端模型的建議或價格。"
+    },
+    {
+      "claim": "資料落地（美國與歐洲／EEA＋瑞士）與 Zero Data Retention 的完整資格條件、資料控制表。",
+      "seen_where": "developers.openai.com/api/docs/guides/your-data",
+      "why_excluded": "guides/your-data 不在本次 sources[] 內。live-conversations 頁本身已足夠支撐『store 預設關閉、30 天到期、ZDR 時 store 視為 false』這幾句，資料落地地區與完整資料控制表則不寫。"
+    },
+    {
+      "claim": "『GPT-Live 先前已經用在 ChatGPT 的語音對話裡』『這套技術原本只出現在 ChatGPT 的語音功能裡』，以及整個『9 月 10 日和 7 月有什麼不同』的對照框架。",
+      "seen_where": "第一輪草稿的第一段、第一節標題、第一節第一段、FAQ 第一題與 description；前期研究的錨點是 openai.com/news/rss.xml 的〈Introducing GPT-Live〉pubDate Wed, 08 Jul 2026 00:00:00 GMT。",
+      "why_excluded": "獨立查核 2026-09-18 逐頁比對後刪除。本次 sources[] 這四頁沒有任何一句把 GPT-Live 連到 ChatGPT：ChatGPT 只在 changelog 出現（21 次／18 行），全部是 chat-latest 快照、image 模型與 Secure MCP Tunnel；changelog 回溯到 2023-10，gpt-live 僅出現在 2026-09-10 那條與 gpt-live-transcribe 的兩條，2026 年 7 月完全沒有 GPT-Live 條目。查核者今天另抓 openai.com/news/rss.xml（HTTP 200、736,773 bytes、1,207 筆）確認〈Introducing GPT-Live〉pubDate 為 Wed, 08 Jul 2026 00:00:00 GMT，但 feed 只給標題與日期，標題本身沒有 ChatGPT 字樣，文章頁 openai.com/index/introducing-gpt-live 仍 403，所以連 feed 也撐不起『那次是在 ChatGPT 端』這句話。sources[] 上限 4 條且四條全部吃重，無法再加一條，故整個框架改寫成 changelog 自己寫的 generally available 狀態。"
+    },
+    {
+      "claim": "『9 月 10 日是 GPT-Live 第一次以 API 形式開放給開發者』。",
+      "seen_where": "第一輪草稿第一節第一段。",
+      "why_excluded": "被 sources[] 自己推翻。changelog 只寫 is now generally available in the API，GA 是狀態不是首度供應；而 voice-sip 第 43 行寫 Existing integrations may still receive the deprecated `live.call.incoming` event，既有整合與已淘汰的事件名稱代表 9-10 之前就有整合在跑。改寫成照抄 GA 的說法，並把這句反證寫進正文與 FAQ。"
+    },
+    {
+      "claim": "API 模型總覽頁（developers.openai.com/api/docs/models）Realtime 分類下實際列出的完整模型清單。",
+      "seen_where": "docs/news-2026-batch-4/corrections-ai.md 對本 slug 的 must_fix 1：前期研究誤寫『Realtime 分類下只有 GPT-Live 1，沒有 mini 版』，查核者指出該分類其實列了七個模型、其中兩個是 mini 版。",
+      "why_excluded": "那個總覽頁不在本次 sources[] 內，而且是修正清單明確指出的錯誤來源。本篇不寫『API 沒有 mini 版』這類需要總覽頁佐證的說法，只寫 gpt-live-1 這個模型本身的規格。"
+    },
+    {
+      "claim": "guides/audio 頁面『For a new conversational voice application, start with GPT-Live』這句更強的一手定位陳述。",
+      "seen_where": "docs/news-2026-batch-4/corrections-ai.md 的 must_add：查核者今天另外找到的頁面，前期研究沒有抓過。",
+      "why_excluded": "guides/audio 不在本次 sources[] 內，今天沒有重新抓取查證，因此不寫。"
+    },
+    {
+      "claim": "定價頁『資料落地端點加收 10%』的條款是否適用於 GPT-Live 的每分鐘語音費率。",
+      "seen_where": "docs/news-2026-batch-4/corrections-ai.md 的 must_add：查核者指出這句只出現在 Standard／Batch 的 token 表下方，沒有在 GPT-Live sessions 那一區重複。",
+      "why_excluded": "pricing 頁不在本次 sources[] 內。為避免錯誤歸屬同一個陷阱，本篇完全不提資料落地加價，只寫每分鐘 0.05 美元這個定價頁與模型頁都重複印出的數字。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，不是開發者，但可能是打電話去客服、診所或電商時，電話另一頭第一次遇到這個模型的人。角度是：一個會邊聽邊說的語音模型，9 月 10 日起變成別人可以買來裝進自己電話系統的零件。（獨立查核 2026-09-18 修正：原本的角度掛在『7 月讀者在 ChatGPT 裡聽過的那個語音』上，但本次 sources[] 四頁沒有一句支撐，已整段改掉，詳見 unverified_or_excluded。）五節安排：(1) 9/10 更新紀錄寫了什麼、GA 是狀態不是首度供應、兩種委派方式；(2) 這個模型在 API 裡的規格（端點、模態、併發上限、無免費層級）——表格放這節結尾；(3) 電話怎麼接上（SIP／橋接、接聽拒接轉接掛斷、只能接不能撥、幾家合作夥伴）——圖解放這節結尾；(4) 聲音與語言（12 個具名語音、地區風格只是形容詞、這四頁沒有列出支援語言、語言由應用程式指定、不能預設有中文）；(5) 記憶上限、會不會錄音、費用怎麼算。刻意不談：ChatGPT 端既有的方案與用量（另一篇的範圍）、客製化語音的申請細節、委派後端模型的建議、資料落地的完整規則——這幾項今天沒有把對應頁面收進 sources[]，查得到但沒有放進來源清單就不寫。全篇能力描述一律寫成『官方文件寫』，明講本站沒有實測；三分鐘電話的費用試算明講是編輯換算，不是官方數字。",
+  "must_not_write": [
+    "不要寫『台灣可以用／台灣開發者已開放』或任何地區推定；官方文件沒有列出可用地區。",
+    "不要寫『支援中文』或『中文口音自然』；官方沒有列出支援語言，具名語音只有英語與巴西葡萄牙語。",
+    "不要把『更強的指令遵循』或任何形容詞式宣稱寫成事實或加上百分比。",
+    "不要重寫 ChatGPT 端既有的方案、用量與錄音訓練開關，那是 ai-news-gpt-live-voice-20260708 的內容。",
+    "不要寫『我們實測』『試用後發現』；本站沒有任何實測。",
+    "不要猜測工作階段時長上限、客製化語音的資格或價格；官方文件沒有寫。",
+    "不要把 gpt-6-astra、gpt-5.6 系列或其他文字模型的定價寫成 GPT-Live 委派的後端價格；本次沒有把定價頁與委派指南收進 sources[]，查不到就不歸屬。",
+    "不要寫 API 模型清單裡有沒有 gpt-live-1-mini；那需要總覽頁佐證，本次沒有把它收進 sources[]。",
+    "不要寫資料落地地區（美國／歐洲）或 Zero Data Retention 的完整資格條件；guides/your-data 沒有收進 sources[]。",
+    "不要引用 openai.com/index 的網址當 source，那個網址在本容器回 403，沒有人讀到內文。",
+    "不要憑印象寫任何端點路徑、事件名稱或參數名，全部照今天重新抓取的文件內容抄。",
+    "（獨立查核 2026-09-18 新增）不要寫 GPT-Live『先前已用在 ChatGPT』『原本只出現在 ChatGPT』或任何 7 月對照；這四頁沒有一句支撐，feed 也只給標題與日期。",
+    "（獨立查核 2026-09-18 新增）不要寫『第一次以 API 開放』；changelog 寫的是 generally available，而 voice-sip 的已淘汰事件名稱反證先前就有整合。",
+    "（獨立查核 2026-09-18 新增）不要把『只能接聽、不能外撥』寫成整個產品的性質；來源那句限縮在 Direct SIP 流程與 POST /v1/live/sessions 這個建立方式。",
+    "（獨立查核 2026-09-18 新增）不要寫語言選定後通話中不能更換；來源只對 voice 與 model 說要開新工作階段，語言是由應用程式用 instructions 指定，而 instructions 可以在工作階段中途 append。",
+    "（第二輪 2026-09-18 新增）不要把『用應用程式指定的語言』寫成沒有時間限定的通則；原文是 until the caller speaks，只管到來電者開口之前，後面接的還有『不要從姓名、電話號碼或所在地推斷』。",
+    "（第二輪 2026-09-18 新增）不要用『變成』『從此』這類轉折語氣描述 9-10 的 GA；GA 只寫成供應狀態，不寫成狀態的轉變，否則又回到被推翻的『第一次開放』框架。",
+    "（第二輪 2026-09-18 新增）accept 與 reject 是兩個各自獨立的端點，不要寫成『一個 API 動作決定接聽或拒接』。"
+  ],
+  "live_data_warnings": [
+    "developers.openai.com 的每一頁都沒有版本號、沒有日期，是會被改的活頁面；本紀錄的每一個數字都是 2026-09-18 讀到的版本。",
+    "併發上限（25／50／200／300／500）、費率（每分鐘 0.05 美元）、12 個具名語音、128,000 token 視窗與 90% 門檻、30 天錄音到期、300–699 的 SIP 狀態碼範圍，都可能隨文件改版而變，引用時已綁查核日 2026-09-18。",
+    "changelog 頁會持續新增條目（今天讀到的檔案比前期研究記錄的版本多了新的 Sep 15 條目），本紀錄只採 2026-09-10 那一條的內容，不記錄整份 changelog 的筆數或最新一筆是什麼。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（Realtime 分類下實際有七個模型，兩個是 mini 版，前期研究誤寫成只有一個）：不採用折衷寫法，而是整段不寫『API 有沒有 mini 版』這件事——那需要模型總覽頁佐證，本次沒有把它收進 sources[]，記進 unverified_or_excluded。",
+    "must_fix 2（gpt-6-astra 的價格被前期研究誤歸屬為 GPT-Live 後端價格）：本篇完全不提任何後端模型的名稱或價格，避免重蹈同一個歸屬錯誤，記進 unverified_or_excluded。",
+    "must_fix 3（客製化語音的 verbatim_quote 在 .md 版是重組過的 JSX，要引 HTML 版）：本篇不引用那句話，客製化語音只用一句話帶過、不深入，因為 guides/custom-voices 這次沒有收進 sources[]。",
+    "must_fix 4（Endpoints 表最後一列官方標籤是 Completions (legacy)，sources[0].title 應為頁面自己的 H1）：已套用。正文與 verified_facts 都用『Completions (legacy)』；sources[0] 標題改為反映頁面 H1『Changelog』的『OpenAI 開發者文件：Changelog（API 更新紀錄）』。",
+    "source_list_fix（原 sources[] 撐不住原研究要寫的內容，33／67 條事實掛在未列出的網址上）：不是延用原本四條（changelog、models/gpt-live-1、voice-sip、custom-voices），而是把 custom-voices 換成 guides/live-conversations，因為今天要寫的重點（聲音清單、上下文視窗、錄音保存）大多在那一頁，客製化語音的細節則整段捨棄。四條來源今天（2026-09-18）重新以 curl -A \"Mokaair-editorial\" 抓取並讀到全文，逐句核對可以指到其中一條才寫進文章。",
+    "must_add（guides/audio 的定位陳述、pricing 的 10% 資料落地加價陷阱、7 月 RSS pubDate 錨點、合作夥伴的具體措辭、context window 用語的和解、feed 佔位時間）：guides/audio、pricing（獨立頁）、openai.com/news/rss.xml、guides/live-partner-integrations、guides/live-prompting 都不在本次 sources[] 內，這幾項建議因此沒有採用，記進 unverified_or_excluded；其中『合作夥伴具體措辭』改用 voice-sip 頁自己就有的『Using Twilio, Telnyx, LiveKit, or Daily/Pipecat?』一句帶過四家名稱。",
+    "額外：規格合規（研究紀錄缺 checked_on／title／hero_label／diagram）：本篇補齊全部四個欄位。"
+  ],
+  "hero_label": "電話裡的 AI 語音",
+  "diagram": {
+    "title": "GPT-Live 1 進 API 四重點",
+    "caption": "GPT-Live 1 進 API 的四個重點：電話接聽為主、聲音語言未列明、預設不錄音、每分鐘 0.05 美元；依 OpenAI 開發者文件整理，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "接聽為主",
+        "外撥須走合作夥伴"
+      ],
+      [
+        "語言未列明",
+        "12 種聲音只標英語與葡萄牙語"
+      ],
+      [
+        "預設不錄音",
+        "留存最長 30 天"
+      ],
+      [
+        "語音計費",
+        "每分鐘 0.05 美元"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "AI Voice on the Phone",
+      "diagram": {
+        "title": "GPT-Live 1 in the API: 4 Points",
+        "caption": "Four key points about GPT-Live 1 in the API: calls are inbound-only, voice languages are not listed, recording is off by default, and pricing is $0.05 per minute; compiled from OpenAI developer documentation, checked on September 18, 2026.",
+        "nodes": [
+          [
+            "Inbound Only",
+            "Outbound needs a partner"
+          ],
+          [
+            "Language Unlisted",
+            "12 voices: English, Portuguese"
+          ],
+          [
+            "Off by Default",
+            "Recordings kept up to 30 days"
+          ],
+          [
+            "Voice Billing",
+            "$0.05 per minute"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "電話越しのAI音声",
+      "diagram": {
+        "title": "GPT-Live 1がAPIに入る4つの要点",
+        "caption": "GPT-Live 1がAPIに入った際の4つの要点：電話は着信対応が中心、音声の対応言語は記載なし、初期設定では録音しない、1分あたり0.05ドル。OpenAI開発者向けドキュメントをもとに作成、確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "着信が中心",
+            "発信は提携先経由"
+          ],
+          [
+            "言語は未記載",
+            "12種の声は英語とポルトガル語のみ"
+          ],
+          [
+            "録音は既定オフ",
+            "保存は最長30日"
+          ],
+          [
+            "音声課金",
+            "1分あたり0.05ドル"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "전화 속 AI 음성",
+      "diagram": {
+        "title": "GPT-Live 1, API 핵심 4가지",
+        "caption": "GPT-Live 1이 API에 들어오며 생긴 네 가지 핵심: 전화는 수신 위주, 음성 지원 언어는 명시되지 않음, 기본값은 녹음 안 함, 분당 0.05달러. OpenAI 개발자 문서를 바탕으로 정리, 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "수신 위주",
+            "발신은 제휴사 경유"
+          ],
+          [
+            "언어 미명시",
+            "음성 12종 영어·포르투갈어만"
+          ],
+          [
+            "기본 녹음 끔",
+            "보관 최장 30일"
+          ],
+          [
+            "음성 과금",
+            "분당 0.05달러"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "电话里的 AI 语音",
+      "diagram": {
+        "title": "GPT-Live 1 进入 API 四大要点",
+        "caption": "GPT-Live 1 进入 API 的四个要点：电话接听为主、声音语言未列明、默认不录音、每分钟 0.05 美元；依据 OpenAI 开发者文档整理，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "接听为主",
+            "外呼须走合作伙伴"
+          ],
+          [
+            "语言未列明",
+            "12 种声音仅标英语与葡萄牙语"
+          ],
+          [
+            "默认不录音",
+            "留存最长 30 天"
+          ],
+          [
+            "语音计费",
+            "每分钟 0.05 美元"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "sources[] 四條今天以 curl -sL -A \"Mokaair-editorial\" 重抓 HTML 與 .md 兩版，全部 HTTP 200 且是正文（changelog.md 69,420、models/gpt-live-1.md 2,713、guides/voice-sip.md 22,381、guides/live-conversations.md 33,781 bytes，與撰稿者記錄一致）。voice-sip 只採第 1–103 行的 GPT-Live 半頁，第 109 行起是 Realtime 內容。把正文每句、summary 四句、FAQ 六題答句、callout、表格每格與 caption、圖解 caption 與四個節點、title、description 拆成 96 條主張逐條回原文比對；否定句一律改用詞界比對重查（Taiwan 四頁各 0、country 僅 voice-sip 後半 Realtime 段的錯誤訊息 1 次、ChatGPT 僅 changelog 21 次且無一與 GPT-Live 相關、gpt-live 在回溯到 2023-10 的 changelog 只出現在 2026-09-10 與兩條 gpt-live-transcribe）。29 條 verbatim_quote 以程式做連續字串比對，全部命中且 URL 都在 sources[] 內。另抓 openai.com/news/rss.xml（200、736,773 bytes、1,207 筆）僅用於反證，未寫入文章。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "刪掉整個『先前已用在 ChatGPT／和 7 月有什麼不同』框架（第一段、第一節標題、第一節第一段、FAQ 第一題、description 各一處）：四條 sources 沒有一句把 GPT-Live 連到 ChatGPT。",
+      "『是同一套技術第一次以 API 的形式開放給開發者』改成照抄 changelog 的 generally available，並補上 voice-sip 第 43 行的反證（既有整合仍可能收到已淘汰的 live.call.incoming）。",
+      "summary 第四句與第四節『選定聲音與語言後，通話中途都不能更換』：語言不能更換是杜撰，來源只對 voice 與 model 說要開新工作階段，語言反而是由應用程式指定、instructions 可中途 append。已刪去語言那一半並補上文件自己的說法。",
+      "『這個電話功能只能接聽打進來的電話，不能透過這個 API 主動撥出去…不是 GPT-Live 1 直接支援』限縮成來源的範圍：This flow accepts inbound calls／不支援透過 POST /v1/live/sessions 建立外撥 SIP 通話／外撥用合作夥伴整合（原文稱 provider-owned）。summary、FAQ 第四題、圖解節點與 caption 一併改。",
+      "『GPT-Live 1 用一個 API 動作決定接聽或拒接』主詞錯誤：來源寫 Your backend still owns the incoming-call decision、Apply your application's authorization and routing rules，改為開發者的應用程式依自己的授權與路由規則決定。",
+      "『通話中可以用另一個動作把電話轉接出去，或直接掛斷…兩者』自相矛盾：refer 與 hangup 是兩個獨立動作，改為『另有兩個動作』。",
+      "補回被刪掉的限定詞：8,192 tokens 歷史的『when available』（在有摘要可用時）、Direct SIP 的 session configuration、伺服器橋接的 event translation／playback／call lifecycle、store 的 a data policy that permits persistence。",
+      "『應用程式只需要處理…』的『只』刪除；『電話業者直接把通話音訊送給 OpenAI』改成 exchanges 的『交換』；SIP 標頭的『只能當成參考資料』改回 untrusted 的『不可信的來電方資訊』。",
+      "『知識截止日是 2025 年 7 月 31 日，也就是說那之後才發生的事，它不會知道』刪去絕對推論（與本文自己寫的委派機制矛盾），改成訓練資料時間點。",
+      "『這代表它是一條獨立的產品線，不能直接套用其他端點的呼叫方式』的推論，換成 voice-sip 自己印的 Each API has its own authentication, session creation, and event contract。",
+      "『官方定義了五種結束原因』的清點改成『官方文件列出的結束原因包含』；expired 的『通話達到時長上限』改為『工作階段達到時長上限』。",
+      "所有否定句限縮到『本文查核的四份官方文件』：支援語言、地區清單、可用國家、更早的預覽時程。",
+      "callout 的『沒有規定業者必須告知你正在跟 AI 對話』補上文件自己的 Deliver a disclosure 段落與它的但書（requests the wording; does not guarantee exact delivery）。",
+      "三分鐘 0.15 美元的編輯換算：算術正確（0.05×3），單價出自模型頁 Pricing 與 changelog 兩處，屬每分鐘工作階段計費、不需要輸入／輸出音訊假設；正文與 FAQ 兩處都補上查核日綁定。",
+      "其餘小處：速率限制刪掉來源沒印的『而不是每分鐘呼叫次數』對比、表格『唯一端點』改『唯一支援端點』、第二節標題『還沒有免費層級』改『不支援免費層級』、語音舉例改用文件自己的 Language／Regional influence 欄位措辭、錄音左右聲道改回輸入／輸出音訊、補上 delegation 省略或 null 時走 client。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-10 與 news_date、slug 尾碼一致；changelog『September, 2026』下 Sep 10 條目逐字相符，Feature · Model: gpt-live-1 · API: v1/live/sessions 的中點是 U+00B7 且照抄。RSS 的 Sep 10 pubDate 是 00:00:00 GMT 佔位值，文章沒有用到時刻。",
+      "每分鐘 0.05 美元、按秒計費、不進位到整分鐘、後端另計：模型頁與 changelog 兩處都印，一致。",
+      "模態（audio、text；不支援 image、video）、知識截止日 2025-07-31、端點表只有 Live 標 Supported、Completions (legacy) 的官方列名、Unsupported usage tiers: Free、Tier 1–5 的 25／50／200／300／500，逐格與模型頁相符。",
+      "SIP 流程細節全部命中：300–699 狀態碼與 486 忙線、第一個決定生效、refer 與 hangup 都回 200 OK 空內容、sip_headers 不可信、Twilio／Telnyx／LiveKit／Daily/Pipecat 四家的原句。",
+      "聲音與工作階段：預設 marin、12 列具名語音（10 列 English、2 列 Portuguese）、Regional influence 的但書、換聲音要開新工作階段、128,000 token 視窗與 90% 門檻、8,192 tokens 歷史、store 預設 false 且須為專案啟用、30 天到期、ZDR 下 store 視為 false、雙聲道 WAV、usage 是快照不可相加、五個 reason 的字面意義。",
+      "29 條 verbatim_quote 全部是今天頁面上的連續字串，URL 全在 sources[] 內；voice-sip 的引文全部落在 GPT-Live 半頁。",
+      "界線：沒有購買建議、沒有推薦式比價、沒有投資免責 callout（AI 篇本來就不該有）、callout 恰好一個；廠商宣稱（premier model、full-duplex 定義）都有歸屬且註明本站沒有實測。"
+    ],
+    "left_for_the_owner": [
+      "7 月 ChatGPT 端 GPT-Live 的對照框架被整段刪除。要救回來只有兩條路：把 openai.com/news/rss.xml 加成第五條 source（會破 BRIEF 的 4 條上限，而且 feed 只給標題與日期、標題沒有 ChatGPT 字樣），或改走站內既有的 ai-news-gpt-live-voice-20260708。本篇的第二個結尾連結目前指向 ai-news-gemini-38-live-20260915（check_article.py 的 RELATED 寫死），是否改指 7/8 那篇由站主與協調者決定。",
+      "corrections-ai.md 的 must_add『定價頁資料落地端點加收 10%』本篇仍然不寫。查核判斷是不寫不會誤導：文章從頭到尾沒有提資料落地或區域處理端點，也明講後端模型與工具另計、總價要看後端做了多少事，沒有把 0.05 美元說成全額。四條 sources 裡唯一的 data residency 字樣在 voice-sip 後半的 Realtime 段落，不能拿來撐 GPT-Live。若站主要納入，必須把 pricing 頁收進 sources[]。",
+      "其餘五條 must_add（guides/audio 的定位陳述、合作夥伴表的外撥措辭、guides/live-prompting 的 small context window 調和、RSS pubDate 錨點、feed 佔位時間）都因對應頁面不在 sources[] 而未採用；其中『合作夥伴外撥』已用 voice-sip 自己的 provider-owned outbound calling 帶到，『small context window 的矛盾』因為本篇沒有引 live-prompting 而不存在。",
+      "developers.openai.com 四頁都沒有版本號與日期，是活文件。型號、128,000 與 8,192 tokens、併發上限、每分鐘 0.05 美元、12 個具名語音、30 天到期、300–699 狀態碼都綁 2026-09-18；發稿前若隔了幾天，值得再抓一次模型頁與 changelog。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "method": "沒有參與撰稿，也沒有參與第一輪。四條 sources[] 今天再以 curl -sL -A \"Mokaair-editorial\" 各抓 .md 與 HTML 兩版：全部 HTTP 200，.md 的位元組數與第一輪完全一致（changelog 69,420、models/gpt-live-1 2,713、voice-sip 22,381、live-conversations 33,781），HTML 也都 200 且是正文。voice-sip 的分頁邊界重新確認：GPT-Live 半頁在 .md 第 1–103 行（第 97 行 'Next steps with GPT-Live'），第 109 行起才是 Realtime，本輪引文全部落在前半。範圍是第一輪改動過的每一段、第一輪新寫進去的每一句（第一段末句、第一節標題與第一段、FAQ 第一題、第四節語言那一句、callout 告知語那一段），加上指派訊息點名的五個疑點，共覆核 78 條主張。29 條原有 verbatim_quote 以程式做連續字串比對，29/29 命中、URL 全在 sources[] 內、沒有任何一條含 '...'／'…'／'|' 的拼接引文（唯一帶 | 的是本輪新增的表格列，那是文件表格自己的分隔線，且為單一連續字串）。否定句以詞界比對重驗：Taiwan／Chinese／Mandarin／countries 四頁各 0 次；country 只在 voice-sip 第 193 行（Realtime 半頁的錯誤訊息）出現 1 次；ChatGPT 只在 changelog 出現 21 次，逐一看過全部是 chat-latest 快照、gpt-image／chatgpt-image 與 Secure MCP Tunnel，無一與 GPT-Live 有關；gpt-live 在整份 changelog 只出現在 2026-09-10 那條與兩條 gpt-live-transcribe，沒有更早的 GPT-Live 條目；rollout／staged／phased／waitlist／early access 四頁各 0 次；工作階段時長上限的數字四頁皆無。另讀站上既有的 ai-news-gpt-live-voice-20260708 內容包全文，逐段比對確認本篇沒有重寫它、也沒有與它矛盾（該篇自己就寫『開發者端和 ChatGPT 裡的推出是兩件事』，並用同樣的說法記 9-10 的 changelog）。",
+      "claims_rechecked": 78,
+      "edits": 13,
+      "edits_to_the_pack": [
+        "第一段末句『變成開發者可以買來裝進…的零件』→『是開發者…』：『變成』把 9-10 寫成狀態的轉變，正好是第一輪刪掉的『第一次開放』框架的殘留，與本文自己第一節『這之前就有整合在跑』互相矛盾。",
+        "第一段『正式在 API 開放（generally available）』→『已在 API 正式提供（generally available）』，第一節標題『正式開放』→『正式提供（GA）』，summary 第一句與 description『正式推出』同步改成『正式提供』：把 is now generally available 一律寫成供應狀態，不留『開放』『推出』這種帶事件感的動詞。",
+        "第二段『本文只談 API 開發者端的這次開放』→『這次更新』：同一個理由，正文裡不再有把 9-10 當成一個開放事件的字眼。標題『GPT-Live 1 開放 API』維持不動，理由見 left_for_the_owner。",
+        "第一節第一段首句『GPT-Live 是 OpenAI 的全雙工語音技術』→『官方模型頁把 GPT-Live 1 定義成一個全雙工語音模型』：四頁沒有一句把 GPT-Live 稱為『技術』，模型頁寫的是 GPT-Live 1 is a full-duplex voice model；原句也把主詞從有來源的 GPT-Live 1 放大成沒有來源的 GPT-Live。",
+        "第一節第一段『那是一個狀態，不是「第一次出現」』→『那句話講的是供應狀態，本文查核的四份文件沒有寫這是第一次出現』：原句是查核者對 GA 一詞的斷言，改成限縮到這四頁的否定句。FAQ 第一題同步，並把『沒有寫出更早的預覽時程，也沒有寫分批開放的安排』的主詞明寫成『這四份文件』。",
+        "第一節第二段『API 版本的模型代號是 gpt-live-1』→『模型頁列出的模型代號是 gpt-live-1』：『API 版本的』暗示同一型號另有非 API 版本，這四頁沒有寫；模型頁印的是 Model ID: gpt-live-1。",
+        "第三節第二段『用一個 API 動作決定接聽或拒接』→『分別用一個 API 動作接聽或拒接』：accept 與 reject 是兩個各自獨立的端點（POST .../accept 與 POST .../reject），第一輪已經為 refer／hangup 做過同樣的修正，這裡漏掉。",
+        "第四節第二段與 FAQ 第二題的『要開發者「用應用程式指定的語言」』→『要開發者在來電者開口前「用應用程式指定的語言」』：原文是 Use the language specified by your application until the caller speaks，時間限定詞被刪掉會讓這句比來源強，也讓它看起來像一條通則。",
+        "第四節標題『文件沒有列出支援語言』→『這四份文件沒有列出支援語言』：標題裡的否定句原本沒有範圍。",
+        "第五節第三段『官方文件沒有把這兩筆費用合併成一個範例』與 FAQ 第六題『官方文件沒有提供整通電話的總價範例』→ 主詞都改成『這四份文件』。",
+        "callout 的告知語示範『本通話可能被錄音』→『本通話可能為了品質與訓練目的而錄音』：文件示範的整句是 This call may be recorded for quality and training purposes，只譯前半會把用途略掉；同段『沒有規定業者一定要告訴你正在跟 AI 對話』的主詞明寫成『這四份文件』。",
+        "description『文件為何不支援用這個端點外撥』→『文件說這個端點不支援外撥』：『為何』等於承諾一個理由，但文件只寫 not supported 並要開發者改走合作夥伴整合，沒有給理由。",
+        "第五節第二段末句刪去『不是每一句都會被完整記住』：那是同句『有可能被摘要或省略』的重複敘述，刪它是為了騰出字數放回被刪的限定詞（段落字數 2,986 → 3,005 → 2,992），沒有刪掉任何但書或限定詞。"
+      ],
+      "verified_facts_added": 17,
+      "checked_and_correct": [
+        "指派點名的『三分鐘約 0.15 美元』：單價 $0.05 per minute, billed per second 出自模型頁 ## Pricing 與 changelog 兩處，字面一致；它是每分鐘工作階段計費、不是 token 計費，所以 0.05×3=0.15 只需要『語音講滿三分鐘』一個假設。正文與 FAQ 兩處都寫明『這是本文的換算，不是官方數字』並綁查核日 2026-09-18，也都寫明後端模型與工具另計、實際總價要看後端做了多少事、這四份文件沒有整通電話的總價範例。四項要求全部滿足，未改動。",
+        "指派點名的『只能接聽』限縮後的一致性：正文第三節第三段、summary 第三句、FAQ 第四題、圖解節點『接聽為主／外撥須走合作夥伴』與 caption『電話接聽為主』五處互相一致，也都沒有比原文強——原文 This flow accepts inbound calls 限縮在 Direct SIP 這段流程，不支援的是透過 POST /v1/live/sessions 建立外撥 SIP 通話，外撥則是 provider-owned、要走 partner integration。",
+        "兩種被推翻的說法沒有殘留：title、description、summary、正文、FAQ、圖解 nodes 與 caption 全文比對，沒有『先前已用在 ChatGPT』『和 7 月有什麼不同』『第一次以 API 開放』或任何等價說法。『第一次』只出現在 FAQ 第一題的提問與正文的反駁裡。第二段『不談 ChatGPT 使用者端的方案與設定』保留：那是界線聲明，不是把 GPT-Live 連到 ChatGPT 的事實主張，而且站上既有的 ai-news-gpt-live-voice-20260708 自己就寫『開發者端和 ChatGPT 裡的推出是兩件事』。",
+        "不與 ai-news-gpt-live-voice-20260708 矛盾：該篇談 7 月 8 日 ChatGPT 端的發布、方案用量與錄音訓練開關，本篇完全不碰；該篇最後一段記的 9-10 changelog 事實（在 API 正式開放、每分鐘 0.05 美元、按秒計費、後端另計）與本篇一字不差地相容。本篇沒有寫 mini 版，也就沒有與該篇『GPT-Live-1 與 GPT-Live-1 mini 兩個版本』相牴觸的地方。兩個結尾連結未動。",
+        "活文件的綁定：四頁都沒有版本號也沒有日期，今天重抓的位元組數與第一輪一致，內容逐句相符。所有型號、價格、端點、併發上限、語音數、token 數、30 天、300–699 都在正文、表格 caption、圖解 caption 或 FAQ 裡綁著查核日 2026-09-18；checked_on 四處一致，未更動。",
+        "界線：topics 是 ai／software／ai-news，不帶 finance；只有一個 info callout、沒有投資免責段落；沒有購買建議、沒有推薦式比價、沒有『值得升級』式結論；廠商宣稱（Our premier model、full-duplex 定義）都有歸屬並註明本站沒有實測；沒有推定台灣可用（FAQ 第三題明講請以自己帳號畫面為準）。",
+        "summary ⊆ 正文、FAQ 答案 ⊆ 正文、圖解四個節點的數字（12、30、0.05，加上型號裡的 1）都出現在正文；段落字數 2,992，落在 1,800–3,000 內。"
+      ],
+      "left_for_the_owner": [
+        "第一輪留下的四件事全部維持原判：7 月 ChatGPT 對照框架不救回（要救只能加第五條 source 或改指站內 7/8 那篇）、定價頁 10% 資料落地加價不寫、四頁是活文件、其餘 must_add 不採用。第二輪另外確認：站內 ai-news-gpt-live-voice-20260708 已經替讀者接上 7 月那一段，所以本篇不寫也不會留下缺口。",
+        "本篇第二個結尾連結仍指向 ai-news-gemini-38-live-20260915，依指派未更動。",
+        "標題『GPT-Live 1 開放 API：…』未改。判斷是它沒有宣稱首度：句中沒有『第一次』『首度』，『開放』對應的是 generally available 這個供應狀態，而站上既有、已查核過的 ai-news-gpt-live-voice-20260708 也用同一句『GPT-Live 1 在 API 正式開放』記這一天；正文第一節緊接著就寫明那句話講的是供應狀態、這四份文件沒有寫這是第一次出現。若站主仍想把標題的動詞換掉（例如『GPT-Live 1 進 API』），要同步改內容包 title、研究紀錄 title，以及協調者做的索引與相關文章連結文字。",
+        "FAQ 第一題末句『這四份文件也沒有寫出更早的預覽時程，或分批開放的安排』是正文沒有的一句。事實本身已驗證（整份 changelog 回溯到 2023-10，gpt-live 只出現在 2026-09-10 那條與兩條 gpt-live-transcribe；rollout／staged／phased／waitlist／early access 四頁各 0 次），範圍也已限縮，因此保留；若站主要嚴格執行『FAQ ⊆ 正文』，刪掉這一句即可，不影響其餘內容。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}

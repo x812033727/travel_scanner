@@ -1,0 +1,1294 @@
+{
+  "slug": "ai-news-frontier-governance-20260528",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-05-28",
+  "featured": false,
+  "display_order": 153,
+  "related": [
+    "ai-news-gpt-55-instant-20260505",
+    "ai-news-openai-s1-20260608"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
+      "description": "2026 年 5 月 28 日，OpenAI 公布 22 頁的《前沿治理框架》，同時對應加州《前沿人工智慧透明法》與歐盟《通用人工智慧行為準則》兩套規定。本文依 FGF 與既有 Preparedness Framework 全文、加州法典現行條文查核，說明 50 人、10 億美元的風險門檻怎麼來、三級風險分級實際寫了什麼、公布之後誰能追蹤，以及這份文件為什麼沒有涵蓋台灣使用者。",
+      "hero": {
+        "src": "/guides/ai-news-frontier-governance-20260528/hero.jpg",
+        "alt": "原創插圖：左邊一份直立的文件，代表這份框架；中央兩個交疊的圓圈，代表它同時對應的兩套法規；右邊一道分成三格的直條，由下往上代表風險分級由低到高，最上面一格是虛線外框，代表文件自稱仍屬探索性質的等級。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 28 日，OpenAI 公布一份 22 頁的《前沿治理框架》（Frontier Governance Framework，簡稱 FGF），整理公司目前對網路攻擊、CBRN（化學、生物、輻射與核）、有害操弄與喪失控制四類系統性風險的評估與緩解作法。OpenAI 表示，FGF 要滿足多部前沿人工智慧法規的基本法定要求，文件舉出兩項：在加州，它是《前沿人工智慧透明法》所稱的「前沿人工智慧框架」；在歐盟，它是《通用人工智慧行為準則》下 OpenAI 安全與安控框架的公開摘要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，直接讀取 FGF 與既有 Preparedness Framework 第 2 版兩份 PDF 全文、加州法典中《前沿人工智慧透明法》現行條文，以及 OpenAI 官方新聞頻道記錄的發布日期。本站沒有做任何實測，只整理文件寫了什麼、沒寫什麼，不提供法律意見。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 於 2026 年 5 月 28 日公布一份 22 頁的《前沿治理框架》（FGF），同時作為加州《前沿人工智慧透明法》所稱的框架文件，以及歐盟《通用人工智慧行為準則》下的公開摘要。",
+            "FGF 對系統性風險的定義包含模型實質促成單一事件超過 50 人死亡或 10 億美元財產損失；加州 SB 53 對「災難性風險」的法定門檻是超過 50 人死亡或重傷、或超過 10 億美元財產損害或損失。",
+            "文件把風險分成網路攻擊、CBRN、有害操弄與喪失控制四類，其中三類各訂出 3 個等級，有害操弄目前還沒有分級表。",
+            "OpenAI 承諾至少每 12 個月做一次框架總檢視、重大修改後 30 天內公布異動紀錄；加州法規定大型前沿開發者沒有遵守自己寫的框架，每項違規不超過 100 萬美元罰鍰。",
+            "以本文抽取全文比對，FGF 未見台灣字樣，文件本身也沒有宣告任何 ChatGPT 介面上的變化。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一份文件，兩套法規要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文抽取的 22 頁全文查核，FGF 沒有印出日期、版本號或修訂紀錄；2026 年 5 月 28 日這個發布日來自 OpenAI 官方新聞頻道那則公告。該檔標頭的最後修改時間是 5 月 27 日，查核當天重抓的雜湊值與先前紀錄相同，可見這個檔案自那時起沒被覆寫，但證明不了別處沒有更新版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件寫道，OpenAI 建立 FGF 是為了說明如何履行法規義務、記錄目前評估與緩解系統性風險的作法，並在某些方面與既有的 Preparedness Framework（PF，應變準備框架）重疊：PF 可能採用不同的「災難性風險」定義，也不綁定 FGF 這種法定運算門檻。FGF 提到「既有的 PF」時沒有指名版本；新聞頻道最後一則 PF 更新公告是 2025 年 4 月 15 日，即該版 PDF 封面印的第 2 版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF 也說明，風險評估流程取材自公司內部研究與訊號，並「視情況」納入學術研究者、獨立領域專家、產業組織（文件舉 Frontier Model Forum 為例）與美國政府、歐盟執委會等機關的意見。談外部專家那一節寫的是「我們可能徵詢並取得外部專家意見」，沒有指名任何第三方評測機構，也沒有承諾強制外部審查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "50 人、10 億美元的門檻，其實是加州定的"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF 對「系統性風險」的定義「包含」最先進前沿模型的開發、儲存、使用或部署可預見且重大的嚴重危害風險，其中包括模型實質促成單一事件超過 50 人死亡或 10 億美元財產損失。FGF 沒有註明這兩個數字的出處，但它說加州這一側處理的是《前沿人工智慧透明法》（TFAIA，即 SB 53）所定義的災難性風險，而法條的門檻是超過 50 人死亡或重傷、或超過 10 億美元財產損害或損失。法典頁這一章七條都標注 2026 年 1 月 1 日生效、沒有一條標注修正，FGF 公布日則是同年 5 月 28 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "法條的定義還不只數字：該事件必須涉及模型提供專家級協助製造或釋放化生放核武器、在無有意義人類監督下發動網路攻擊或做出等同殺人、傷害、勒索、竊盜的行為，或擺脫前沿開發者或使用者的控制。同一條另列三項排除：資訊本來就能從基礎模型以外的來源以「實質上類似」的形式公開取得、聯邦政府的合法行為、前沿模型與其他軟體合併造成而前沿模型並未實質促成的損害。法條把「財產」定義為有形或無形財產，並單獨寫明股權價值的損失不算財產損害或損失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這套規定的入口是「前沿模型」：訓練運算量超過 10 的 26 次方次整數或浮點運算的「基礎模型」。訓練或啟動訓練這種模型的，是「前沿開發者」；其中和關係企業合計、前一曆年總營收超過 5 億美元的，另稱「大型前沿開發者」：公開框架、每年檢視與罰則只落在這一層，透明報告與安全事故通報則是所有前沿開發者都要做。OpenAI 在 FGF 裡把這份文件稱為自己依 TFAIA 提出的「前沿人工智慧框架」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 PF 把「嚴重危害」設在更高的門檻——數千人死亡或重傷、或數千億美元經濟損失——但同一個註腳也寫明「我們的安全體系涵蓋範圍更廣的風險，其中許多危害程度低於這個門檻」。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "FGF（依加州 SB 53）",
+            "Preparedness Framework"
+          ],
+          "rows": [
+            [
+              "嚴重危害門檻",
+              "超過 50 人死亡或 10 億美元財產損失",
+              "數千人死亡或重傷、或數千億美元經濟損失"
+            ],
+            [
+              "風險分類數",
+              "4 類：網路攻擊、CBRN、有害操弄、喪失控制",
+              "3 個追蹤類別：生化、資安、AI 自我改良"
+            ],
+            [
+              "分級方式",
+              "3 級（有害操弄除外）",
+              "High 與 Critical 兩個門檻"
+            ],
+            [
+              "適用依據",
+              "加州 TFAIA、歐盟行為準則等",
+              "OpenAI 自訂，不綁法定運算門檻"
+            ]
+          ],
+          "caption": "整理自 OpenAI 2026 年 5 月 28 日公布的 Frontier Governance Framework 與既有 Preparedness Framework v2，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三級風險，一類還沒有分級表"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF 把四類系統性風險中的三類——網路攻擊、CBRN、喪失控制——各訂出 3 個等級，用文字描述模型在每級能做到什麼，但沒有公布任何對外的分數或切分點。三類的措辭並不相同：網路攻擊說分級「試圖量化」模型能力、並用「可衡量的門檻」做決策，CBRN 說分級「量化」模型能力，喪失控制只說「描述」，並註明除 AI 自我改良外，這些分級仍屬探索性質、可能大幅演變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 CBRN 為例，第 2 級是模型能提供「有意義的反事實協助」（比較基準是「可無限制取用 2021 年當時既有的工具」），讓具備基本相關技術背景的「新手」也能製造已知的生化威脅；第 3 級是模型能讓專家開發出全新的高危險威脅，或連接工具設備在無人介入下完成研發到合成的全流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四類「有害操弄」——文件說的是影響力行動、介入選舉或其他操縱輿論、破壞民主程序的協同行動——目前沒有分級表。FGF 說 OpenAI 的作法「仍屬探索性質」、這一級風險日後可能大幅改變，並認為這類風險「可能」更適合用部署後監控這種系統層級的措施處理，而不是部署前的模型評測。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-frontier-governance-20260528/diagram-1.svg",
+          "alt": "四格圖解：四類系統性風險與其分級狀態",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 5 月 28 日公布的 Frontier Governance Framework 整理：四類系統性風險與其分級狀態，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公布之後，誰能追蹤這份文件有沒有兌現"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 承諾至少每 12 個月、從 TFAIA 與歐盟行為準則各自的生效日起算，做一次「框架總檢視」；修改重大時會提交 OpenAI 基金會董事會的安全與安控委員會與 OpenAI Ireland Limited 董事會監督，並在異動後 30 天內公布異動紀錄與理由。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另有一節講「模型報告」更新，開頭限定在「屬於本框架範圍、且受歐盟人工智慧法規範的模型」：若有合理根據認為模型系統性風險可接受的基礎已被實質動搖，會在完成評估後「視情況」更新。接著文件寫「無論如何」，對最具能力的前沿模型每 6 個月會決定是否更新，三種不需更新的情形是：能力自上次更新後沒有重大變化、計畫在不到一個月內發布更強模型，或依《行為準則》附錄 2.2 認定該模型同樣安全或更安全。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加州的法定時程則分兩層：大型前沿開發者要至少每年檢視、必要時更新自己的框架，重大修改後 30 天內公布新框架與理由；所有前沿開發者則是在部署新的前沿模型或其實質修改版本之前或同時，公開一份「透明報告」（FGF 把自己的「模型報告」註記為 TFAIA 的「透明報告」）。前沿開發者發現重大安全事故後，要在 15 天內通報加州緊急服務辦公室，若構成死亡或嚴重身體傷害的立即風險，要在 24 小時內通報有管轄權的適當機關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒做到的後果寫在法條裡，不是寫在 FGF 裡：大型前沿開發者若沒公布或遞送法定文件、做出重大不實或誤導陳述、沒依規定通報事故，或沒遵守自己寫的框架，會面臨依情節輕重、每項違規不超過 100 萬美元的民事罰鍰，而且只有加州州檢察長能提起這種訴訟。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "文件未提到台灣，也沒有介面公告"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文 2026 年 9 月 18 日抽取全文比對，FGF 未見台灣、日本、韓國字樣；文中點名的管轄範圍只有美國（加州）與歐盟／愛爾蘭。本文查核的四份一手來源都沒有顯示這份框架對台灣使用者課予義務或提供保障——TFAIA 是加州法律，歐盟行為準則是歐盟規範，台灣自己的規則不在本文查證範圍內。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這份文件也沒有宣告使用者看得到的變化：全文未見消費端產品、價格、方案、地區或語言的說明，也沒有提到 ChatGPT 介面會有調整。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這份文件會改變我現在使用 ChatGPT 的方式嗎？",
+              "answer": "以本文查核到的文件內容來看不會。FGF 沒有提到任何消費端產品、價格、方案、地區或語言的變化，它整理的是 OpenAI 內部評估與緩解系統性風險的流程，用來對外交代法規遵循狀況，不是產品公告。"
+            },
+            {
+              "question": "50 人、10 億美元這兩個數字是 OpenAI 自己訂的嗎？",
+              "answer": "FGF 沒有註明這兩個數字的出處，但它自己說在加州這一側處理的是《前沿人工智慧透明法》所定義的災難性風險，而該法對「災難性風險」寫下的法定門檻正是單一事件造成超過 50 人死亡或重傷、或超過 10 億美元財產損害或損失。要注意法條的定義不只有數字：該事件還必須涉及模型提供專家級協助製造或釋放化生放核武器、在無有意義人類監督下發動網路攻擊或做出等同殺人、傷害、勒索、竊盜的行為，或擺脫前沿開發者或使用者的控制。法條同時把「財產」定義為有形或無形財產，並單獨寫明股權價值的損失不算；而被這個門檻管到的是訓練運算量超過 10 的 26 次方次整數或浮點運算的「前沿模型」。"
+            },
+            {
+              "question": "這份框架對台灣使用者有法律上的意義嗎？",
+              "answer": "以本文查核到 2026 年 9 月 18 日的文件內容，沒有看到。FGF 文中點名的管轄範圍只有美國加州與歐盟／愛爾蘭，全文比對未見台灣字樣，本站也沒有讀到任何條文對台灣使用者課予義務或提供保障。台灣自己的人工智慧治理規則要另外查台灣的法規，不在這篇文章的查證範圍內。"
+            },
+            {
+              "question": "OpenAI 如果沒有遵守自己寫的這份框架，會怎麼樣？",
+              "answer": "後果寫在加州法條裡，不是寫在 FGF 裡。SB 53 規定，大型前沿開發者若沒有公布或遞送法定文件、做出重大不實或誤導陳述、沒有依規定通報安全事故，或沒有遵守自己公布的框架，會面臨依情節輕重、每項違規不超過 100 萬美元的民事罰鍰，而且只有加州州檢察長可以提起這種訴訟。法條另外寫明，出於善意、且在當時情況下屬合理的陳述，不適用不實陳述那一項。"
+            },
+            {
+              "question": "為什麼「有害操弄」這類風險沒有分級表？",
+              "answer": "FGF 自己說明，有害操弄作為系統性風險領域還很新，OpenAI 認為這類風險「可能」更適合用部署後監控這種系統層級的緩解措施處理，而不是部署前的模型評測，所以目前沒有像網路攻擊、CBRN、喪失控制那樣訂出 3 個等級。文件用兩句話交代這件事：OpenAI 對有害操弄的作法「仍屬探索性質」，而這一級風險仍待進一步研究、日後可能大幅改變。"
+            },
+            {
+              "question": "FGF 和 OpenAI 原本的 Preparedness Framework 差在哪？",
+              "answer": "文件自己說兩份在某些方面重疊，PF 可能採用不同的「災難性風險」定義，也不綁定 FGF 這種法定運算門檻。本站把兩份 PDF 抽成全文、以連續字串比對後發現，重疊的程度比文件的說法更明顯：FGF 的 CBRN 第 3 級與 PF 生化類別 Critical 門檻逐字相同，第 2 級與 High 門檻只差 novice 一詞外面的引號；網路攻擊第 3 級與 PF 資安 Critical 只差一個冠詞（FGF 多一個 the）與一處連字號寫法（high-level 對 high level）。要注意這次比對只涵蓋 CBRN 與網路攻擊兩類，FGF 的喪失控制與有害操弄在 PF 的三個追蹤類別裡沒有對應項；兩份文件本身都沒有說自己的分級可以互相對照。"
+            },
+            {
+              "question": "這些文件公布之後，一般人看得到多少？",
+              "answer": "公開不等於全部看得到。加州法條准許前沿開發者在為履行公布義務而公開的文件裡，為保護自己的營業秘密或資安、公共安全、美國國家安全，或為遵守聯邦或州法，做必要的遮蔽；遮蔽之後要在公開版本裡說明遮蔽的性質與理由（以遮蔽的理由所允許的範圍為限），並把未遮蔽的資訊保留五年。透明報告裡的災難性風險評估、評估結果與第三方評測參與程度等摘要，法條也只要求大型前沿開發者附上。另外，前沿開發者通報給加州緊急服務辦公室的重大安全事故報告，以及大型前沿開發者遞送的內部使用風險評估摘要，依法排除在加州公共紀錄法之外，一般人無法循該法調閱；緊急服務辦公室則要從 2027 年 1 月 1 日起每年做出一份去識別化、彙整過的事故報告，送交州議會與州長。"
+            },
+            {
+              "question": "要怎麼自己找到這份文件核對？",
+              "answer": "可以到 OpenAI 官方網站搜尋《前沿治理框架》全文 PDF；加州的條文可以到加州立法資訊網，用法案編號 SB 53 或《商業與專業法典》第 25.1 章查詢現行條文，兩者都是任何人都能重新讀一次的公開一手資料。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三件事：不是新規定、不保護台灣使用者、還會再修",
+          "text": "FGF 是一份揭露與法遵文件，不是產品或服務公告——OpenAI 自己說它在某些方面與既有的 Preparedness Framework 重疊，作用是說明公司如何履行法規義務、記錄目前的作法。文件舉出的法規是加州《前沿人工智慧透明法》與歐盟《通用人工智慧行為準則》兩項，全文比對未見台灣字樣，本站也沒有讀到任何條文對台灣使用者課予義務或保障。文件本身沒有版本號或修訂紀錄，OpenAI 承諾至少每 12 個月檢視一次，所以 2026 年 9 月 18 日查核當下讀到的內容不一定是最新版本；要確認最新狀態，請直接查 OpenAI 官網與加州立法資訊網。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 Instant 成為 ChatGPT 預設模型：官方公布的進步、退步與新功能",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-instant-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI《Frontier Governance Framework》全文（PDF）",
+          "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "加州法典 Business and Professions Code 第 25.1 章（Transparency in Frontier Artificial Intelligence Act）現行條文",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI《Preparedness Framework》第 2 版全文（PDF）",
+          "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 官方新聞頻道 RSS（發布日期紀錄）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "OpenAI's Frontier Governance Framework Goes Public: The 50-Person, $1 Billion Threshold, and Who Can Track It",
+      "description": "On May 28, 2026, OpenAI published a 22-page Frontier Governance Framework addressing both California's Transparency in Frontier Artificial Intelligence Act and the EU's General-Purpose AI Code of Practice. Checked against the FGF, the Preparedness Framework, and California's current code, this article explains the 50-death, $1 billion risk threshold, what the three risk tiers say, who can track the document, and why it does not cover users in Taiwan.",
+      "hero": {
+        "src": "/guides/ai-news-frontier-governance-20260528/hero-en.jpg",
+        "alt": "Original illustration: a document for the framework; two overlapping circles for the two regulations it addresses; a three-part bar from low to high risk, top dashed for the still-exploratory tier.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On May 28, 2026, OpenAI published a 22-page Frontier Governance Framework (FGF), setting out the company's current assessment and mitigation practices for four categories of systemic risk: cyber offense, CBRN (chemical, biological, radiological, and nuclear), harmful manipulation, and loss of control. OpenAI says the FGF is designed to meet the baseline legal requirements of various frontier AI laws, and names two: in California, it is what the Transparency in Frontier Artificial Intelligence Act calls a “Frontier AI Framework”; in the EU, it is the public summary of OpenAI's safety and security framework under the General-Purpose AI Code of Practice."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 18, 2026, by reading the full text of both the FGF and the existing Preparedness Framework Version 2 PDFs directly, the current text of the Transparency in Frontier Artificial Intelligence Act in the California code, and the publication date recorded on OpenAI's official news channel. We have not tested anything ourselves; we only summarize what the documents say and do not say, and we do not provide legal advice."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI published a 22-page Frontier Governance Framework (FGF) on May 28, 2026, serving at once as what California's Transparency in Frontier Artificial Intelligence Act calls a “Frontier AI Framework” and as the public summary under the EU's General-Purpose AI Code of Practice.",
+            "FGF's definition of systemic risk includes a model materially contributing to more than 50 deaths or $1 billion in property damage in a single incident; SB 53's statutory threshold for “catastrophic risk” is more than 50 deaths or serious injuries, or over $1 billion in property damage or losses.",
+            "The document splits risk into four categories — cyber offense, CBRN, harmful manipulation, and loss of control — with three of them each assigned 3 tiers; harmful manipulation does not yet have a tier table.",
+            "OpenAI commits to a full framework assessment at least every 12 months and to publishing a changelog within 30 days of a material update; California's statute provides that a large frontier developer that fails to comply with its own framework faces a civil penalty of up to $1 million per violation.",
+            "Based on this article's full-text comparison, the word “Taiwan” does not appear anywhere in the FGF, and the document itself announces no change to the ChatGPT interface."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "One Document, Two Sets of Legal Requirements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Based on this article's full-text check of the 22 pages, the FGF prints no date, version number, or changelog anywhere in it; the May 28, 2026 publication date comes from the announcement on OpenAI's official news channel. The file's header shows a last-modified time of May 27, and the hash pulled again on the day of this check matches the earlier record, which shows this particular file has not been overwritten since then — though it cannot prove no newer version exists elsewhere."
+        },
+        {
+          "type": "paragraph",
+          "text": "The document states that OpenAI built the FGF to explain how it fulfills its regulatory obligations and to document its current practices for assessing and mitigating systemic risk, and that it overlaps in some areas with the existing Preparedness Framework (PF): the PF may use a different definition of “catastrophic risk” and is not tied to a statutory compute threshold like the FGF's. The FGF does not name a version when it refers to the “existing PF”; the news channel's most recent PF update announcement is dated April 15, 2025, which matches “Version 2” printed on that PDF's cover."
+        },
+        {
+          "type": "paragraph",
+          "text": "The FGF also explains that its risk-assessment process draws on OpenAI's own internal research and signals, and “where appropriate” incorporates feedback from academic researchers, independent domain experts, industry bodies (the document names the Frontier Model Forum as an example), and government agencies such as the U.S. government and the European Commission. The section on external experts states, “We may solicit and obtain input from external experts,” without naming any third-party evaluator or committing to mandatory external review."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The 50-Death, $1 Billion Threshold Is Actually California's"
+        },
+        {
+          "type": "paragraph",
+          "text": "The FGF's definition of “systemic risk” “includes” foreseeable and material risks of severe harm from the development, storage, use, or deployment of its most advanced frontier models, including risks that a model will materially contribute to more than 50 deaths or $1 billion in property damage or losses from a single incident. The FGF does not cite a source for these two figures, but it says the California side of this addresses the catastrophic risk defined by the Transparency in Frontier Artificial Intelligence Act (TFAIA, i.e., SB 53), and the statute's threshold is more than 50 deaths or serious injuries, or more than $1 billion in property damage or losses. All seven sections of this chapter of the code are marked effective January 1, 2026, with none marked as amended, while the FGF was published on May 28 of the same year."
+        },
+        {
+          "type": "paragraph",
+          "text": "The statute's definition goes beyond the two numbers: the incident must also involve a model providing expert-level assistance in creating or releasing a chemical, biological, radiological, or nuclear weapon; engaging in a cyberattack with no meaningful human oversight; or, absent such oversight, conduct that would be murder, assault, extortion, or theft if a human did it — or escaping the control of its frontier developer or user. The same section lists three exclusions: information otherwise publicly accessible in “substantially similar” form from a source other than a foundation model, lawful federal government activity, and harm from a frontier model combined with other software where the frontier model did not materially contribute. The statute defines “property” as tangible or intangible property, and separately states that a loss in the value of equity does not count as property damage or loss."
+        },
+        {
+          "type": "paragraph",
+          "text": "The gate for these rules is the “frontier model”: a “foundation model” trained using more than 10^26 integer or floating-point operations. Whoever trains or initiates training of such a model is a “frontier developer”; one that, together with its affiliates, had aggregate annual gross revenue of more than $500 million in the preceding calendar year is further termed a “large frontier developer” — framework publication, annual review, and the penalties apply only at this level, while transparency reports and safety-incident reporting are required of every frontier developer. In the FGF, OpenAI calls this document the “Frontier AI Framework” it is submitting under the TFAIA."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's PF sets the bar for “severe harm” higher — the death or grave injury of thousands of people, or hundreds of billions of dollars of economic damage — but the same footnote also states, “Our safety stack addresses a broad spectrum of risks, including many with harms below this severity.”"
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "FGF (under California SB 53)",
+            "Preparedness Framework"
+          ],
+          "rows": [
+            [
+              "Severe-harm threshold",
+              "More than 50 deaths or $1 billion in property damage",
+              "Thousands of deaths or serious injuries, or hundreds of billions of dollars in economic damage"
+            ],
+            [
+              "Risk categories",
+              "4: cyber offense, CBRN, harmful manipulation, loss of control",
+              "3 Tracked Categories: biological and chemical, cybersecurity, AI self-improvement"
+            ],
+            [
+              "Tiering",
+              "3 tiers (except harmful manipulation)",
+              "Two thresholds: High and Critical"
+            ],
+            [
+              "Basis",
+              "California's TFAIA, the EU's Code of Practice, etc.",
+              "OpenAI's own design, not tied to a statutory compute threshold"
+            ]
+          ],
+          "caption": "Compiled from OpenAI's Frontier Governance Framework, published May 28, 2026, and the existing Preparedness Framework v2. Checked September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Three Risk Tiers, and One Category Still Without a Tier Table"
+        },
+        {
+          "type": "paragraph",
+          "text": "The FGF assigns three of its four systemic-risk categories — cyber offense, CBRN, and loss of control — three tiers each, describing in words what a model can do at each tier, without publishing any public-facing scores or cut-offs. The wording differs across the three: for cyber offense, the tiers “seek to quantify” model capability and are used as “measurable thresholds” for decision-making; for CBRN, the tiers “quantify” model capability; for loss of control, the FGF says only that the tiers “describe” capability, and notes that outside of risks related to AI self-improvement, these risk tiers remain exploratory and may evolve substantially."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take CBRN as an example: Tier 2 is a model that can provide “meaningful counterfactual assistance” (the baseline for comparison being “unlimited access to tools available in 2021”) to a “novice” with only a basic relevant technical background, enabling them to create a known biological or chemical threat; Tier 3 is a model that can enable an expert to develop an entirely new, highly dangerous threat, or that can be connected to tools and equipment to complete the full cycle from development to synthesis without human intervention."
+        },
+        {
+          "type": "paragraph",
+          "text": "The fourth category, harmful manipulation — which the document describes as influence operations, election interference, or other coordinated campaigns to manipulate public opinion or undermine democratic processes — has no tier table yet. The FGF says OpenAI's approach here “remains exploratory,” that this risk tier may change substantially in the future, and that this kind of risk “may” be better addressed through deployment-level, system-wide monitoring rather than pre-deployment model evaluation."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-frontier-governance-20260528/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the four categories of systemic risk and their tiering status",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI's Frontier Governance Framework, published May 28, 2026: the four categories of systemic risk and their tiering status. Checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "After Publication, Who Can Track Whether This Document Is Kept"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI commits to completing a “Framework Assessment” at least once every 12 months, counted from the respective effective dates of the TFAIA and the EU Code of Practice; material changes go to the OpenAI Foundation board's Safety and Security Committee and to the OpenAI Ireland Limited board for oversight, with a changelog and the reasons for it published within 30 days of the update."
+        },
+        {
+          "type": "paragraph",
+          "text": "A separate section covers updates to the “Model Report,” opening with a scope limited to “models in scope of this Framework that are subject to the EU AI Act”: if there are reasonable grounds to believe the basis for considering a model's systemic risk acceptable has been materially undermined, the report will be updated “as appropriate” after completing an assessment. The document then states that “in any event,” OpenAI will decide every 6 months whether to update the report for its most capable frontier models, with three exceptions from needing an update: no material capability change since the last update, a more capable model planned for release within a month, or the model being assessed as similarly safe or safer under Appendix 2.2 of the Code of Practice."
+        },
+        {
+          "type": "paragraph",
+          "text": "California's statutory timeline has two layers: a large frontier developer must review, and update as appropriate, its own framework at least once a year, publishing the modified framework and its justification within 30 days of a material change; every frontier developer, meanwhile, must publish a “transparency report” before or at the same time as deploying a new frontier model or a substantially modified version of one (the FGF notes that its own “Model Report” is what the TFAIA calls a “Transparency Report”). A frontier developer that discovers a critical safety incident must report it to California's Office of Emergency Services within 15 days, and if it poses an imminent risk of death or serious physical injury, must notify the authority with jurisdiction within 24 hours."
+        },
+        {
+          "type": "paragraph",
+          "text": "The consequences of falling short are written into the statute, not into the FGF: a large frontier developer that fails to publish or submit required documents, makes a materially false or misleading statement, fails to report an incident as required, or fails to comply with its own framework, faces a civil penalty of up to $1 million per violation, depending on the severity, and only California's Attorney General may bring such an action."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Taiwan Goes Unmentioned, and There Is No Interface Announcement"
+        },
+        {
+          "type": "paragraph",
+          "text": "Based on this article's full-text comparison on September 18, 2026, the words Taiwan, Japan, and Korea do not appear anywhere in the FGF; the only jurisdictions named in it are the United States (California) and the EU/Ireland. None of the four primary sources checked for this article shows this framework imposing obligations on, or offering protections to, users in Taiwan — the TFAIA is a California law, the EU Code of Practice is an EU regulation, and Taiwan's own rules are outside the scope of what this article verifies."
+        },
+        {
+          "type": "paragraph",
+          "text": "The document also announces no change a user would see: the full text has no mention of any consumer-facing product, price, plan, region, or language, and does not say the ChatGPT interface will be adjusted."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Will this document change how I use ChatGPT today?",
+              "answer": "Not based on what this article found in the document. The FGF makes no mention of any consumer-facing product, price, plan, region, or language change; it lays out OpenAI's internal process for assessing and mitigating systemic risk, used to account for regulatory compliance externally — it is not a product announcement."
+            },
+            {
+              "question": "Did OpenAI itself set the 50-death, $1 billion figures?",
+              "answer": "The FGF does not cite a source for these two figures, but it states that California addresses the catastrophic risk defined by the Transparency in Frontier Artificial Intelligence Act, whose statutory threshold for “catastrophic risk” is exactly a single incident causing more than 50 deaths or serious injuries, or more than $1 billion in property damage or losses. The statute's definition is not just the numbers: the incident must involve a model giving expert-level assistance to create or release a chemical, biological, radiological, or nuclear weapon; a cyberattack with no meaningful human oversight; or conduct that would be murder, assault, extortion, or theft if a human did it — or escaping the control of its frontier developer or user. The statute defines “property” as tangible or intangible, excludes lost equity value, and applies to a “frontier model” trained using more than 10^26 integer or floating-point operations."
+            },
+            {
+              "question": "Does this framework have any legal meaning for users in Taiwan?",
+              "answer": "Based on what this article verified as of September 18, 2026, no. The only jurisdictions the FGF names are California in the United States and the EU/Ireland; a full-text comparison finds no mention of Taiwan anywhere, and this site found no provision imposing obligations on, or offering protections to, users in Taiwan. Taiwan's own AI-governance rules would need to be checked separately, in Taiwan's own regulations, which are outside what this article verifies."
+            },
+            {
+              "question": "What happens if OpenAI does not comply with the framework it wrote?",
+              "answer": "The consequences are written into California's statute, not into the FGF. SB 53 provides that a large frontier developer that fails to publish or submit required documents, makes a materially false or misleading statement, fails to report a safety incident as required, or fails to comply with its own published framework faces a civil penalty of up to $1 million per violation, depending on severity, and only California's Attorney General may bring such an action. The statute also states that the false-statement provision does not apply to a statement made in good faith and reasonable under the circumstances."
+            },
+            {
+              "question": "Why is there no tier table for “harmful manipulation”?",
+              "answer": "The FGF itself explains that harmful manipulation is still a new area as a systemic-risk category, and that OpenAI believes this kind of risk “may” be better addressed through deployment-level, system-wide monitoring measures rather than pre-deployment model evaluation — so it does not yet have 3 tiers the way cyber offense, CBRN, and loss of control do. The document covers this in two sentences: OpenAI's approach to harmful manipulation “remains exploratory,” and this risk tier is subject to further research and may change substantially over time."
+            },
+            {
+              "question": "How does the FGF differ from OpenAI's original Preparedness Framework?",
+              "answer": "The document itself says the two overlap in some areas, that the PF may use a different definition of “catastrophic risk,” and that it is not tied to a statutory compute threshold like the FGF's. This site extracted both PDFs to full text and compared them as contiguous strings, finding the overlap deeper than the document's own description suggests: FGF's CBRN Tier 3 is word-for-word identical to PF's Biological and Chemical Critical threshold, and Tier 2 differs from the High threshold only in the quotation marks around “novice.” FGF's cyber offense Tier 3 differs from PF's Cybersecurity Critical threshold only by one article (FGF has an extra “the”) and one hyphenation (high-level versus high level). This comparison covers only CBRN and cyber offense — FGF's loss of control and harmful manipulation have no counterpart among PF's three Tracked Categories — and neither document says its tiers map onto the other's."
+            },
+            {
+              "question": "After these documents are published, how much can the public actually see?",
+              "answer": "Being published is not the same as being fully visible. California's statute lets a frontier developer redact what is necessary to protect trade secrets, cybersecurity, public safety, or U.S. national security, or to comply with federal or state law; it must describe the redaction's nature and justification in the published version, to the extent the redaction's own grounds permit, and keep the unredacted information for five years. Only a large frontier developer must include, in its transparency report, summaries of catastrophic-risk assessments, their results, and third-party evaluator involvement. Incident reports filed with California's Office of Emergency Services, and a large frontier developer's internal risk-assessment summaries, are exempt from the California Public Records Act, so the public cannot obtain them that way; the Office must instead produce an annual de-identified, aggregated incident report from January 1, 2027, for the Legislature and the Governor."
+            },
+            {
+              "question": "How can I check this document myself?",
+              "answer": "You can search OpenAI's official website for the full Frontier Governance Framework PDF; California's statutory text can be found on the California Legislative Information website by searching bill number SB 53 or Business and Professions Code Chapter 25.1 for the current text — both are public, primary sources anyone can read again for themselves."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Three Things to Know: Not New, Not for Taiwan, Subject to Change",
+          "text": "The FGF is a disclosure and compliance document, not a product or service announcement — OpenAI itself says it overlaps in some areas with the existing Preparedness Framework, and that its purpose is to explain how the company fulfills its regulatory obligations and to document its current practices. The two laws the document names are California's Transparency in Frontier Artificial Intelligence Act and the EU's General-Purpose AI Code of Practice; a full-text comparison finds no mention of Taiwan anywhere, and this site found no provision imposing obligations on, or offering protections to, users in Taiwan. The document itself carries no version number or changelog, and OpenAI commits to reviewing it at least once every 12 months, so what this article read as of the September 18, 2026 check may not be the current version — to confirm the latest status, check OpenAI's official site and the California Legislative Information website directly."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 Instant Becomes ChatGPT's Default Model: The Gains, Regressions, and New Features OpenAI Announced",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-instant-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI's Frontier Governance Framework, full text (PDF)",
+          "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "California Codes, Business and Professions Code Chapter 25.1 (Transparency in Frontier Artificial Intelligence Act), current text",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI's Preparedness Framework Version 2, full text (PDF)",
+          "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI's official news RSS feed (publication date record)",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "OpenAIのフロンティア・ガバナンス・フレームワーク公開：「50人・10億ドル」基準はどこから来たのか、誰が追跡できるのか",
+      "description": "2026年5月28日、OpenAIは22ページの「Frontier Governance Framework」を公開し、カリフォルニア州の「Transparency in Frontier Artificial Intelligence Act」とEUの「General-Purpose AI Code of Practice」という2つの規定に同時に対応しています。本記事はFGFと既存のPreparedness Framework全文、カリフォルニア州法典の現行条文を照合し、50人・10億ドルというリスク基準の由来、3段階のリスク等級が実際に何を定めているか、公開後に誰が追跡できるか、そしてこの文書がなぜ台湾のユーザーを対象にしていないのかを説明します。",
+      "hero": {
+        "src": "/guides/ai-news-frontier-governance-20260528/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左は本フレームワークを表す文書、中央は同時に対応する二つの規制を表す重なった二つの円、右は下から上へ低リスクから高リスクへ並ぶ三段の縦棒で、最上段のみ破線で探索段階であることを示す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年5月28日、OpenAIは22ページの「Frontier Governance Framework」（フロンティア・ガバナンス・フレームワーク、以下FGF）を公開しました。これは、サイバー攻撃、CBRN（化学・生物・放射性物質・核）、有害な操作、制御喪失という4つのシステミックリスクの分類について、同社が現在行っている評価と緩和策をまとめたものです。OpenAIによれば、FGFは複数のフロンティアAI法規の基本的な法的要件を満たすことを目的としており、文書はその例として2つを挙げています。カリフォルニア州では、Transparency in Frontier Artificial Intelligence Act（フロンティア人工知能透明法、TFAIA）が言う「フロンティアAIフレームワーク」に当たり、EUでは、General-Purpose AI Code of Practice（汎用AI行動規範）のもとでのOpenAIの安全・セキュリティ枠組みの公開要約に当たります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、FGFと既存のPreparedness Framework第2版のPDF2点の全文、カリフォルニア州法典中のTransparency in Frontier Artificial Intelligence Act現行条文、そしてOpenAI公式ニュースチャンネルに記録された公開日を直接確認しました。当サイトは実地の検証を行っておらず、文書に書かれていること・書かれていないことを整理するのみで、法的助言は行っていません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAIは2026年5月28日、22ページの「Frontier Governance Framework」（FGF）を公開しました。これはカリフォルニア州のTransparency in Frontier Artificial Intelligence Actが求める枠組み文書であると同時に、EUのGeneral-Purpose AI Code of Practiceのもとでの公開要約でもあります。",
+            "FGFのシステミックリスクの定義には、モデルが単一の事案で50人を超える死亡または10億ドルを超える財産的損害に実質的に寄与することが含まれます。カリフォルニア州SB 53が定める「壊滅的リスク」の法定基準も、50人を超える死亡・重傷、または10億ドルを超える財産的損害・損失です。",
+            "文書はリスクをサイバー攻撃、CBRN、有害な操作、制御喪失の4分類に分け、そのうち3分類にはそれぞれ3段階の等級を設けています。有害な操作については、現時点で等級表がありません。",
+            "OpenAIは少なくとも12か月ごとに枠組み全体の見直しを行い、重大な変更から30日以内に変更履歴を公開すると約束しています。カリフォルニア州法は、大規模フロンティア開発者が自ら定めた枠組みを守らなかった場合、違反1件につき100万ドルを超えない民事制裁金を科すと定めています。",
+            "本記事が全文を抽出して比較した限り、FGFに「台湾」という文字列は見当たらず、文書自体もChatGPTのインターフェースに関する変更は一切示していません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1つの文書が2つの法規制に対応する"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事が22ページ全文を確認した限り、FGFには日付、バージョン番号、変更履歴のいずれも記載されていません。2026年5月28日という公開日は、OpenAI公式ニュースチャンネルの発表に基づきます。ファイルのヘッダーに記録された最終更新時刻は5月27日で、確認当日に再取得したハッシュ値も以前の記録と一致しており、このファイル自体はそれ以降上書きされていないことが分かります。ただし、他の場所により新しいバージョンが存在しないことまでは証明できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書には、OpenAIがFGFを策定したのは規制上の義務をどう果たしているかを説明し、システミックリスクの評価と緩和に関する現在の取り組みを記録するためであり、既存のPreparedness Framework（PF）といくつかの点で重なるとも書かれています。PFは「壊滅的リスク」について異なる定義を用いる場合があり、FGFのような法定の計算量基準にも縛られません。FGFは「既存のPF」に言及する際にバージョンを明記していません。ニュースチャンネルに掲載された最新のPF更新発表は2025年4月15日付で、これはそのPDFの表紙に印刷された「第2版」と一致します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGFはまた、リスク評価のプロセスは自社内部の調査やシグナルに基づき、「必要に応じて」学術研究者、独立した分野の専門家、業界団体（文書はFrontier Model Forumを例として挙げている）、米国政府や欧州委員会などの機関からの意見を取り入れるとしています。外部専門家について述べた箇所には「外部専門家から意見を求め、取得することがある」とあるのみで、特定の第三者評価機関の名前は挙げられておらず、外部審査を必須とする約束もありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「50人・10億ドル」基準は、実はカリフォルニア州が定めたもの"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGFにおける「システミックリスク」の定義は、最も高度なフロンティアモデルの開発・保管・使用・展開から生じる予見可能かつ重大な深刻な害のリスクを「含む」ものとされ、その中には、モデルが単一の事案で50人を超える死亡、または10億ドルを超える財産的損害に実質的に寄与するリスクが含まれます。FGFはこの2つの数字の出典を示していないが、カリフォルニア州側についてはTransparency in Frontier Artificial Intelligence Act（TFAIA、すなわちSB 53）が定義する壊滅的リスクを扱うものだとしており、同法の基準はまさに50人を超える死亡・重傷、または10億ドルを超える財産的損害・損失です。この章の7つの条文はいずれも2026年1月1日施行と記されており、修正の記載は一つもありません。一方、FGFの公開日は同年5月28日です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "法律上の定義は数字だけにとどまりません。当該事案は、モデルが化学・生物・放射性物質・核兵器の製造または放出に専門家レベルの支援を行うこと、意味のある人間の監督なしにサイバー攻撃を行うこと、あるいは人間が行えば殺人・傷害・恐喝・窃盗に相当する行為を行うこと、またはフロンティア開発者やユーザーの制御を逃れることのいずれかに関与している必要があります。同じ条文には3つの除外事由も挙げられています。基盤モデル以外の情報源から「実質的に類似する」形ですでに一般に入手可能な情報であること、連邦政府による合法な行為であること、フロンティアモデルが実質的に寄与していない、他のソフトウェアと組み合わさって生じた被害であること、の3つです。法律は「財産」を有形または無形の財産と定義し、株式価値の損失は財産的損害・損失に含まれないと別途明記しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この一連の規制の入り口となるのが「フロンティアモデル」です。これは、訓練に10の26乗回を超える整数または浮動小数点演算を用いた「基盤モデル」を指します。こうしたモデルを訓練、または訓練を開始した者は「フロンティア開発者」であり、その関連会社と合算した前暦年の年間総収入が5億ドルを超える者は、さらに「大規模フロンティア開発者」と呼ばれます。枠組みの公開、年次見直し、罰則はこの層にのみ適用され、透明性報告書と安全事故の報告はすべてのフロンティア開発者に課されます。OpenAIはFGFの中で、この文書をTFAIAに基づき提出する自社の「フロンティアAIフレームワーク」と呼んでいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIのPFは「深刻な害」をより高い基準に設定している（数千人の死亡または重傷、あるいは数千億ドル規模の経済的損害）が、同じ脚注には「当社の安全対策はこの基準を下回る害を含む、より広範なリスクに対応している」とも記されています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "FGF（カリフォルニア州SB 53に基づく）",
+            "Preparedness Framework"
+          ],
+          "rows": [
+            [
+              "重大な危害のしきい値",
+              "50人を超える死亡、または10億ドルを超える財産的損害",
+              "数千人の死亡または重傷、あるいは数千億ドル規模の経済的損害"
+            ],
+            [
+              "リスク分類数",
+              "4分類：サイバー攻撃、CBRN、有害な操作、制御喪失",
+              "3つの追跡カテゴリー：生物・化学、サイバーセキュリティ、AIの自己改善"
+            ],
+            [
+              "等級づけ方法",
+              "3段階（有害な操作を除く）",
+              "HighとCriticalの2つのしきい値"
+            ],
+            [
+              "適用根拠",
+              "カリフォルニア州TFAIA、EU行動規範など",
+              "OpenAI独自の設定で、法定の計算量しきい値とは連動しない"
+            ]
+          ],
+          "caption": "OpenAIが2026年5月28日に公開したFrontier Governance Frameworkと既存のPreparedness Framework v2に基づき作成。確認日2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3段階のリスク等級と、まだ等級表のない1分類"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGFは4つのシステミックリスク分類のうち3つ（サイバー攻撃、CBRN、制御喪失）について、それぞれ3段階の等級を設け、各段階でモデルが何をできるかを文章で説明しているが、対外的なスコアや切り分けの数値は一切公表していません。3分類の表現は同一ではありません。サイバー攻撃については、等級は「モデルの能力を定量化しようとする」ものであり、意思決定には「測定可能な基準」を用いるとされます。CBRNについては、等級は「モデルの能力を定量化する」とされます。制御喪失については「記述する」としか述べられておらず、AIの自己改善に関するリスクを除き、これらの等級は依然として探索的であり、大きく変化しうると注記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CBRNを例に取ると、第2段階は、モデルが「意味のある反実仮想的な支援」（比較の基準は「2021年当時に存在したツールへの無制限のアクセス」）を提供し、基本的な関連技術知識を持つ「初心者」でも既知の生物・化学的脅威を作れるようにする段階です。第3段階は、モデルが専門家に全く新しい高度に危険な脅威を開発させられる段階、またはモデルがツールや設備に接続され、人の介入なしに研究開発から合成までの全工程を完了できる段階です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4つ目の分類である「有害な操作」（文書はこれを、世論を操作したり民主的プロセスを損なったりするための影響工作、選挙介入、その他の協調的なキャンペーンと説明しています）には、現時点で等級表がありません。FGFは、OpenAIのこの分野への取り組みは「依然として探索的」であり、この等級は今後大きく変わる可能性があるとし、この種のリスクは展開前のモデル評価よりも、展開後のシステムレベルの監視で対処する方が「適している可能性がある」としています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-frontier-governance-20260528/diagram-1-ja.svg",
+          "alt": "4コマ図解：4つのシステミックリスクの分類とその等級づけの状況",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIが2026年5月28日に公開したFrontier Governance Frameworkに基づき作成：4つのシステミックリスクの分類とその等級づけの状況。確認日2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公開後、この文書が守られているかを誰が追跡できるのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは、TFAIAとEU行動規範それぞれの発効日を起点に、少なくとも12か月ごとに「フレームワーク・アセスメント」を実施すると約束しています。重大な変更がある場合は、OpenAI Foundation取締役会のSafety and Security Committee、およびOpenAI Ireland Limitedの取締役会に諮られ、変更から30日以内に変更履歴とその理由が公開されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "別の項では「モデルレポート」の更新について述べられており、冒頭で対象を「本フレームワークの範囲内にあり、かつEU AI Actの適用を受けるモデル」に限定しています。モデルのシステミックリスクを許容できるとする根拠が実質的に揺らいだと信じるに足る合理的な理由がある場合、評価を完了した後に「必要に応じて」更新するとされます。続けて文書は「いずれにせよ」、最も高性能なフロンティアモデルについては6か月ごとに更新の要否を判断するとし、更新が不要な3つのケースとして、前回の更新以降に能力面で重大な変化がないこと、1か月以内により高性能なモデルの発表を予定していること、行動規範の附属書2.2に基づき同等以上に安全と判断されることを挙げています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "カリフォルニア州の法定スケジュールは2層構造になっています。大規模フロンティア開発者は少なくとも年1回、自社の枠組みを見直し必要に応じて更新し、重大な変更から30日以内に修正後の枠組みとその理由を公開しなければなりません。一方、すべてのフロンティア開発者は、新しいフロンティアモデルまたはその実質的な改変版を展開する前、または展開と同時に、「透明性報告書」を公開しなければなりません（FGFは自社の「モデルレポート」をTFAIAが言う「透明性報告書」に相当するものと注記しています）。フロンティア開発者は重大な安全事故を発見した場合、15日以内にカリフォルニア州緊急事態サービス局に報告しなければならず、死亡または重傷の切迫したリスクを伴う場合は、24時間以内に管轄権を持つ適切な機関に通知しなければなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "義務を果たさなかった場合の結果は、FGFではなく法律に書かれています。大規模フロンティア開発者が法定文書を公開または提出しなかった場合、重大な虚偽・誤解を招く陳述を行った場合、規定どおり事故を報告しなかった場合、または自ら定めた枠組みを守らなかった場合、違反の程度に応じて1件につき100万ドルを超えない民事制裁金が科される可能性があり、こうした訴訟を提起できるのはカリフォルニア州司法長官に限られます。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "台湾への言及はなく、インターフェースの発表もない"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事が2026年9月18日に全文を抽出して比較した限り、FGFには台湾・日本・韓国という文字列は見当たりません。文書内で名指しされている管轄区域は米国（カリフォルニア州）とEU/アイルランドのみです。本記事が確認した4つの一次情報源のいずれも、この枠組みが台湾のユーザーに義務を課したり保護を提供したりすることを示していません。TFAIAはカリフォルニア州法であり、EU行動規範はEUの規制であって、台湾独自のルールは本記事の確認範囲に含まれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この文書はまた、ユーザーの目に見える変更も一切発表していません。全文を通じて、消費者向け製品、価格、プラン、地域、言語に関する説明は見当たらず、ChatGPTのインターフェースが変更されるとの記載もありません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "この文書によって、今のChatGPTの使い方が変わりますか。",
+              "answer": "本記事が確認した文書の内容を見る限り、変わりません。FGFには消費者向け製品、価格、プラン、地域、言語のいずれについても変更の記載はなく、この文書がまとめているのはOpenAI社内でのシステミックリスクの評価・緩和プロセスであり、規制順守の状況を対外的に説明するためのもので、製品発表ではありません。"
+            },
+            {
+              "question": "50人・10億ドルという2つの数字は、OpenAIが独自に定めたものですか。",
+              "answer": "FGFはこの2つの数字の出典を示していませんが、カリフォルニア州側についてはTransparency in Frontier Artificial Intelligence Actが定義する壊滅的リスクを扱うものだと自ら述べており、同法が「壊滅的リスク」について定める法定基準こそが、単一の事案で50人を超える死亡・重傷、または10億ドルを超える財産的損害・損失というものです。法律上の定義が数字だけにとどまらない点に注意してください。当該事案は、モデルが化学・生物・放射性物質・核兵器の製造または放出に専門家レベルの支援を行うこと、意味のある人間の監督なしにサイバー攻撃を行うこと、あるいは人間が行えば殺人・傷害・恐喝・窃盗に相当する行為を行うこと、またはフロンティア開発者やユーザーの制御を逃れることのいずれかに関与している必要があります。法律はまた「財産」を有形または無形の財産と定義し、株式価値の損失は含まれないと別途明記しており、この基準が適用されるのは、訓練に10の26乗回を超える整数または浮動小数点演算を用いた「フロンティアモデル」です。"
+            },
+            {
+              "question": "この枠組みは台湾のユーザーにとって法的な意味を持ちますか。",
+              "answer": "本記事が2026年9月18日時点で確認した文書の内容からは、そうした記載は見当たりません。FGFの本文で名指しされている管轄区域はカリフォルニア州とEU/アイルランドのみで、全文を比較しても台湾という文字列は見当たらず、当サイトも台湾のユーザーに義務を課したり保護を提供したりする条文を確認していません。台湾独自のAIガバナンスに関するルールは別途台湾の法規を確認する必要があり、本記事の確認範囲には含まれません。"
+            },
+            {
+              "question": "OpenAIが自ら定めたこの枠組みを守らなかった場合、どうなりますか。",
+              "answer": "その結果はFGFではなく、カリフォルニア州の法律に書かれています。SB 53は、大規模フロンティア開発者が法定文書を公開・提出しなかった場合、重大な虚偽・誤解を招く陳述を行った場合、規定どおり安全事故を報告しなかった場合、または自ら公開した枠組みを守らなかった場合、違反の程度に応じて1件につき100万ドルを超えない民事制裁金が科されると定めており、こうした訴訟を提起できるのはカリフォルニア州司法長官に限られます。法律はさらに、善意で行われ、当時の状況下で合理的であった陳述には、虚偽陳述の項目は適用されないと明記しています。"
+            },
+            {
+              "question": "なぜ「有害な操作」というリスクには等級表がないのですか。",
+              "answer": "FGF自身の説明によれば、有害な操作はシステミックリスクの分野としてまだ新しく、OpenAIはこの種のリスクについて、展開前のモデル評価よりも展開後のシステムレベルの監視で対処する方が「適している可能性がある」と考えており、そのためサイバー攻撃、CBRN、制御喪失のように3段階の等級をまだ設けていません。文書はこの点を2つの文で説明しています。OpenAIの有害な操作への取り組みは「依然として探索的」であり、この等級は今後さらなる研究の対象であり、大きく変わる可能性があるというものです。"
+            },
+            {
+              "question": "FGFは、OpenAIのもとのPreparedness Frameworkとどう違うのですか。",
+              "answer": "文書自体は、両者がいくつかの点で重なっており、PFは「壊滅的リスク」について異なる定義を用いる場合があり、FGFのような法定の計算量基準にも縛られないと述べています。当サイトが両方のPDFを全文抽出し、連続する文字列として比較したところ、重なりの度合いは文書自身の説明よりも大きいことが分かりました。FGFのCBRN第3段階は、PFの生物・化学分類のCritical基準と一字一句同一であり、第2段階もHigh基準と比べて「novice」という語を囲む引用符が違うだけです。FGFのサイバー攻撃第3段階は、PFのサイバーセキュリティCritical基準と比べて、冠詞1つ（FGFの方に「the」が1つ多い）とハイフンの表記1箇所（high-levelとhigh level）が異なるだけです。この比較はCBRNとサイバー攻撃の2分類のみを対象としており、FGFの制御喪失と有害な操作には、PFの3つの追跡カテゴリーの中に対応する項目がないこと、また両文書ともに自分たちの等級が互いに対応するとは述べていないことに注意してください。"
+            },
+            {
+              "question": "これらの文書が公開された後、一般の人はどこまで見ることができますか。",
+              "answer": "公開されることと、すべてが見えることは同じではありません。カリフォルニア州法は、フロンティア開発者が公開義務を果たすために公開する文書において、自社の営業秘密やサイバーセキュリティ、公共の安全、米国の国家安全保障を守るため、または連邦法や州法を順守するために必要な範囲で、内容を黒塗りにすることを認めています。黒塗りにした場合は、公開版においてその性質と理由を、黒塗りを正当化する事情が許す範囲内で説明し、黒塗りにしていない情報を5年間保存しなければなりません。透明性報告書に含まれる壊滅的リスク評価やその結果、第三者評価機関の関与の程度などの要約についても、法律が求めているのは大規模フロンティア開発者のみです。フロンティア開発者がカリフォルニア州緊急事態サービス局に報告する重大安全事故の報告書、および大規模フロンティア開発者が提出する内部使用リスク評価の要約は、法律上カリフォルニア州公文書公開法の対象外とされ、一般の人はこの法律を通じて閲覧できません。緊急事態サービス局は2027年1月1日以降、毎年、匿名化・集計済みの事故報告書を作成し、州議会と知事に送付します。"
+            },
+            {
+              "question": "自分でこの文書を確認するにはどうすればよいですか。",
+              "answer": "OpenAIの公式サイトで「Frontier Governance Framework」の全文PDFを検索できます。カリフォルニア州の条文は、カリフォルニア州議会情報サイトで、法案番号SB 53、またはBusiness and Professions Code第25.1章で検索すれば現行の条文を確認できます。いずれも、誰でも自分でもう一度読み直せる公開された一次情報です。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "3つのポイント：新規定ではない、台湾を保護しない、今後も改訂される",
+          "text": "FGFは開示・法令順守のための文書であり、製品やサービスの発表ではありません。OpenAI自身、これは既存のPreparedness Frameworkといくつかの点で重なっており、その役割は自社が規制上の義務をどう果たしているかを説明し、現在の取り組みを記録することだと述べています。文書が挙げている法規制はカリフォルニア州のTransparency in Frontier Artificial Intelligence Actと、EUのGeneral-Purpose AI Code of Practiceの2つで、全文を比較しても台湾という文字列は見当たらず、当サイトも台湾のユーザーに義務を課したり保護を提供したりする条文を確認していません。文書自体にはバージョン番号や変更履歴がなく、OpenAIは少なくとも12か月ごとに見直すと約束しているだけなので、2026年9月18日の確認時点で読んだ内容が最新版とは限りません。最新の状況を確認したい場合は、OpenAIの公式サイトとカリフォルニア州議会情報サイトを直接確認してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 InstantがChatGPTの既定モデルに：公式発表の進歩・後退・新機能",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-instant-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI「Frontier Governance Framework」全文（PDF）",
+          "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "カリフォルニア州法典 Business and Professions Code 第25.1章（Transparency in Frontier Artificial Intelligence Act）現行条文",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI「Preparedness Framework」第2版全文（PDF）",
+          "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI公式ニュースRSS（公開日の記録）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "OpenAI 프런티어 거버넌스 프레임워크 공개: '50명·10억 달러' 기준은 어디서 왔고, 누가 추적할 수 있나",
+      "description": "2026년 5월 28일, OpenAI는 22페이지 분량의 'Frontier Governance Framework'를 공개했습니다. 이는 캘리포니아주의 'Transparency in Frontier Artificial Intelligence Act'와 EU의 'General-Purpose AI Code of Practice'라는 두 가지 규정에 동시에 대응합니다. 본 기사는 FGF와 기존 Preparedness Framework 전문, 캘리포니아주 법전 현행 조문을 대조해, 50명·10억 달러 위험 기준의 출처, 3단계 위험 등급이 실제로 규정한 내용, 공개 후 누가 이를 추적할 수 있는지, 그리고 이 문서가 왜 대만 사용자를 포괄하지 않는지를 설명합니다.",
+      "hero": {
+        "src": "/guides/ai-news-frontier-governance-20260528/hero-ko.jpg",
+        "alt": "오리지널 일러스트. 왼쪽은 이 프레임워크를 나타내는 문서, 가운데는 동시에 대응하는 두 규정을 나타내는 겹친 원 두 개, 오른쪽은 아래에서 위로 낮은 위험에서 높은 위험 순으로 놓인 세 칸 막대이며, 맨 위 칸만 점선으로 문서가 스스로 탐색적이라고 밝힌 등급임을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 5월 28일, OpenAI는 22페이지 분량의 'Frontier Governance Framework'(프런티어 거버넌스 프레임워크, 이하 FGF)를 공개했습니다. 이는 사이버 공격, CBRN(화학·생물·방사성·핵), 유해한 조작, 통제 상실이라는 네 가지 시스템적 위험 범주에 대해 회사가 현재 수행 중인 평가 및 완화 방식을 정리한 것입니다. OpenAI에 따르면 FGF는 여러 프런티어 AI 관련 법의 기본적인 법적 요건을 충족하도록 설계되었으며, 문서는 그 예로 두 가지를 듭니다. 캘리포니아주에서는 Transparency in Frontier Artificial Intelligence Act(프런티어 인공지능 투명성법, TFAIA)가 말하는 '프런티어 AI 프레임워크'에 해당하고, EU에서는 General-Purpose AI Code of Practice(범용 AI 행동강령) 아래 OpenAI의 안전·보안 프레임워크에 대한 공개 요약에 해당합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 18일에 FGF와 기존 Preparedness Framework 2판 PDF 두 건의 전문, 캘리포니아주 법전 중 Transparency in Frontier Artificial Intelligence Act 현행 조문, 그리고 OpenAI 공식 뉴스 채널에 기록된 공개일을 직접 확인했습니다. 본 사이트는 직접 시험해 보지 않았고, 문서에 쓰여 있는 것과 쓰여 있지 않은 것을 정리할 뿐이며 법률 자문을 제공하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI는 2026년 5월 28일 22페이지 분량의 'Frontier Governance Framework'(FGF)를 공개했습니다. 이는 캘리포니아주 Transparency in Frontier Artificial Intelligence Act가 요구하는 프레임워크 문서이자, 동시에 EU General-Purpose AI Code of Practice에 따른 공개 요약입니다.",
+            "FGF의 시스템적 위험 정의에는 모델이 단일 사건에서 50명을 초과하는 사망 또는 10억 달러를 초과하는 재산 손실에 실질적으로 기여하는 경우가 포함됩니다. 캘리포니아주 SB 53이 정한 '파국적 위험'의 법정 기준 역시 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실입니다.",
+            "문서는 위험을 사이버 공격, CBRN, 유해한 조작, 통제 상실의 네 범주로 나누고, 이 중 세 범주에 각각 3단계 등급을 두었습니다. 유해한 조작은 현재 등급표가 없습니다.",
+            "OpenAI는 최소 12개월마다 프레임워크 전체 검토를 실시하고, 중대한 변경 후 30일 이내에 변경 이력을 공개하겠다고 약속합니다. 캘리포니아주법은 대형 프런티어 개발자가 스스로 작성한 프레임워크를 준수하지 않을 경우, 위반 건당 100만 달러를 넘지 않는 민사 벌금을 부과하도록 정합니다.",
+            "본 기사가 전문을 추출해 대조한 결과, FGF에서 '대만'이라는 문자열은 보이지 않았으며, 문서 자체도 ChatGPT 인터페이스의 어떠한 변화도 공표하지 않습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "하나의 문서, 두 가지 법규 요건"
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사가 22페이지 전문을 확인한 결과, FGF에는 날짜, 버전 번호, 변경 이력이 어디에도 인쇄되어 있지 않습니다. 2026년 5월 28일이라는 공개일은 OpenAI 공식 뉴스 채널의 발표에서 가져온 것입니다. 해당 파일 헤더의 최종 수정 시각은 5월 27일이며, 확인 당일 다시 추출한 해시값도 이전 기록과 일치해 이 파일이 그 이후로 덮어써지지 않았음을 보여줍니다. 다만 다른 곳에 더 새로운 버전이 없다는 것까지 증명하지는 못합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서는 OpenAI가 FGF를 만든 이유가 규제상의 의무를 어떻게 이행하는지 설명하고, 시스템적 위험 평가와 완화에 관한 현재의 작업 방식을 기록하기 위해서라고 밝히며, 기존 Preparedness Framework(PF)와 일부 영역에서 겹친다고 설명합니다. PF는 '파국적 위험'에 대해 다른 정의를 사용할 수 있고, FGF와 같은 법정 연산량 기준에 얽매이지도 않습니다. FGF는 '기존 PF'를 언급하면서 버전을 명시하지 않습니다. 뉴스 채널에 게재된 가장 최근의 PF 업데이트 발표는 2025년 4월 15일 자로, 이는 해당 PDF 표지에 인쇄된 '2판'과 일치합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF는 또한 위험 평가 절차가 자사 내부 연구와 신호에 기반하며, '적절한 경우' 학계 연구자, 독립적인 분야 전문가, 업계 단체(문서는 Frontier Model Forum을 예로 듭니다), 그리고 미국 정부·유럽연합 집행위원회 등 기관의 의견을 반영한다고 설명합니다. 외부 전문가에 관한 항목에는 '외부 전문가로부터 의견을 구하고 얻을 수 있다'고만 적혀 있을 뿐, 특정 제3자 평가 기관의 이름은 언급하지 않으며 외부 심사를 의무화하겠다는 약속도 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "'50명·10억 달러' 기준, 사실은 캘리포니아주가 정한 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF의 '시스템적 위험' 정의는 가장 고도화된 프런티어 모델의 개발·보관·사용·배포로 인한 예견 가능하고 중대한 심각한 피해 위험을 '포함'하며, 여기에는 모델이 단일 사건에서 50명을 초과하는 사망 또는 10억 달러를 초과하는 재산 손실에 실질적으로 기여하는 위험이 포함됩니다. FGF는 이 두 수치의 출처를 밝히지 않지만, 캘리포니아주 쪽에서는 Transparency in Frontier Artificial Intelligence Act(TFAIA, 즉 SB 53)가 정의하는 파국적 위험을 다루는 것이라고 스스로 밝히고 있으며, 해당 법의 기준이 바로 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실입니다. 이 장의 일곱 개 조문은 모두 2026년 1월 1일 시행으로 표기되어 있고 개정 표기는 하나도 없는 반면, FGF의 공개일은 같은 해 5월 28일입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "법 조문의 정의는 숫자에 그치지 않습니다. 해당 사건은 모델이 화학·생물·방사성·핵무기의 제조 또는 방출에 전문가 수준의 지원을 제공하는 것, 의미 있는 인간의 감독 없이 사이버 공격을 감행하는 것, 혹은 사람이 했다면 살인·폭행·공갈·절도에 해당했을 행위를 하는 것, 또는 프런티어 개발자나 사용자의 통제를 벗어나는 것 중 하나에 해당해야 합니다. 같은 조문은 세 가지 제외 사유도 열거합니다. 기반 모델이 아닌 출처로부터 '실질적으로 유사한' 형태로 이미 공개적으로 얻을 수 있는 정보, 연방 정부의 합법적 행위, 그리고 프런티어 모델이 실질적으로 기여하지 않은 채 다른 소프트웨어와 결합해 발생한 피해입니다. 법 조문은 '재산'을 유형 또는 무형의 재산으로 정의하며, 주식 가치의 손실은 재산상 손해·손실에 포함되지 않는다고 별도로 명시합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 규정의 관문이 되는 것은 '프런티어 모델'입니다. 훈련에 10의 26제곱 회를 초과하는 정수 또는 부동소수점 연산을 사용한 '기반 모델'을 가리킵니다. 이러한 모델을 훈련했거나 훈련을 개시한 자는 '프런티어 개발자'이며, 그중 계열사를 합산해 직전 역년의 연간 총수입이 5억 달러를 초과하는 경우 '대형 프런티어 개발자'로 별도 분류됩니다. 프레임워크 공개, 연례 검토, 벌칙은 이 계층에만 적용되며, 투명성 보고서와 안전사고 보고는 모든 프런티어 개발자가 이행해야 합니다. OpenAI는 FGF에서 이 문서를 TFAIA에 따라 제출하는 자사의 '프런티어 AI 프레임워크'라고 부릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 PF는 '심각한 피해'의 기준을 더 높게 설정합니다(수천 명의 사망 또는 중상, 혹은 수천억 달러 규모의 경제적 손해). 그러나 같은 각주에는 '당사의 안전 체계는 이 기준보다 낮은 피해를 포함해 더 넓은 범위의 위험을 다룬다'고도 적혀 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "FGF(캘리포니아주 SB 53 기준)",
+            "Preparedness Framework"
+          ],
+          "rows": [
+            [
+              "중대 위해 기준",
+              "50명 초과 사망 또는 10억 달러 초과 재산 손실",
+              "수천 명의 사망 또는 중상, 혹은 수천억 달러 규모의 경제적 손실"
+            ],
+            [
+              "위험 분류 수",
+              "4개 범주: 사이버 공격, CBRN, 유해한 조작, 통제 상실",
+              "3개 추적 범주: 생물·화학, 사이버보안, AI 자기 개선"
+            ],
+            [
+              "등급 방식",
+              "3단계(유해한 조작 제외)",
+              "High와 Critical 두 가지 기준"
+            ],
+            [
+              "적용 근거",
+              "캘리포니아주 TFAIA, EU 행동강령 등",
+              "OpenAI 자체 설정, 법정 연산량 기준과 연동되지 않음"
+            ]
+          ],
+          "caption": "OpenAI가 2026년 5월 28일 공개한 Frontier Governance Framework와 기존 Preparedness Framework v2를 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3단계 위험 등급, 그리고 아직 등급표가 없는 한 범주"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF는 네 가지 시스템적 위험 범주 중 세 가지(사이버 공격, CBRN, 통제 상실)에 각각 3단계 등급을 두고, 각 단계에서 모델이 무엇을 할 수 있는지를 글로 설명하지만, 대외적으로 공개하는 점수나 구분 기준은 없습니다. 세 범주의 표현 방식은 서로 다릅니다. 사이버 공격은 등급이 모델 능력을 '정량화하려는' 것이며 의사결정에는 '측정 가능한 기준'을 사용한다고 밝힙니다. CBRN은 등급이 모델 능력을 '정량화한다'고 밝힙니다. 통제 상실은 단지 등급을 '기술한다'고만 밝히며, AI 자기 개선과 관련된 위험을 제외하면 이 등급들은 여전히 탐색적이며 크게 달라질 수 있다고 명시합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CBRN을 예로 들면, 2단계는 모델이 '의미 있는 반사실적 지원'(비교 기준은 '2021년 당시 존재하던 도구에 대한 무제한 접근')을 제공해, 기본적인 관련 기술 배경을 가진 '초보자'도 이미 알려진 생물·화학적 위협을 만들 수 있게 하는 단계입니다. 3단계는 모델이 전문가가 완전히 새로운 고위험 위협을 개발하도록 돕거나, 도구·장비에 연결되어 사람의 개입 없이 연구개발부터 합성까지 전 과정을 완료할 수 있는 단계입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "네 번째 범주인 '유해한 조작'(문서는 이를 여론 조작이나 민주적 절차 훼손을 위한 영향력 공작, 선거 개입, 그 밖의 조직적 캠페인으로 설명합니다)은 현재 등급표가 없습니다. FGF는 OpenAI의 이 분야에 대한 접근 방식이 '여전히 탐색적'이며 이 위험 등급은 향후 크게 바뀔 수 있다고 밝히고, 이런 종류의 위험은 배포 전 모델 평가보다 배포 후 시스템 차원의 모니터링으로 다루는 편이 '더 적합할 수 있다'고 봅니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-frontier-governance-20260528/diagram-1-ko.svg",
+          "alt": "4칸 다이어그램: 네 가지 시스템적 위험 범주와 등급 설정 현황",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI가 2026년 5월 28일 공개한 Frontier Governance Framework를 바탕으로 정리: 네 가지 시스템적 위험 범주와 등급 설정 현황. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "공개 이후, 이 문서가 지켜지는지는 누가 추적할 수 있나"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 TFAIA와 EU 행동강령 각각의 발효일을 기준으로 최소 12개월마다 '프레임워크 전체 검토'를 완료하겠다고 약속합니다. 중대한 변경이 있을 경우 OpenAI Foundation 이사회 산하 Safety and Security Committee와 OpenAI Ireland Limited 이사회의 감독을 거치며, 변경 후 30일 이내에 변경 이력과 사유를 공개합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "별도 항목에서는 '모델 보고서' 업데이트를 다루는데, 첫머리에서 적용 대상을 '본 프레임워크의 범위에 속하며 EU AI Act의 적용을 받는 모델'로 한정합니다. 모델의 시스템적 위험이 수용 가능하다고 보는 근거가 실질적으로 흔들렸다고 믿을 합리적인 근거가 있는 경우, 평가를 완료한 뒤 '적절히' 업데이트합니다. 이어서 문서는 '어떤 경우든' 가장 성능이 뛰어난 프런티어 모델에 대해서는 6개월마다 업데이트 여부를 결정하겠다고 밝히며, 업데이트가 필요 없는 세 가지 경우로 마지막 업데이트 이후 능력 면에서 중대한 변화가 없는 경우, 한 달 이내에 더 뛰어난 모델을 출시할 계획인 경우, 또는 행동강령 부속서 2.2에 따라 해당 모델이 동등하거나 더 안전하다고 판단되는 경우를 듭니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "캘리포니아주의 법정 일정은 두 층으로 나뉩니다. 대형 프런티어 개발자는 최소 연 1회 자사 프레임워크를 검토하고 필요 시 업데이트해야 하며, 중대한 변경 후 30일 이내에 수정된 프레임워크와 그 사유를 공개해야 합니다. 반면 모든 프런티어 개발자는 새로운 프런티어 모델이나 그 실질적 수정판을 배포하기 전 또는 동시에 '투명성 보고서'를 공개해야 합니다(FGF는 자사의 '모델 보고서'가 TFAIA가 말하는 '투명성 보고서'에 해당한다고 주석을 답니다). 프런티어 개발자는 중대 안전사고를 발견하면 15일 이내에 캘리포니아주 비상서비스국에 보고해야 하며, 사망이나 중대한 신체적 상해의 임박한 위험을 구성하는 경우에는 24시간 이내에 관할권이 있는 적절한 기관에 통보해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이행하지 않았을 때의 결과는 FGF가 아니라 법 조문에 쓰여 있습니다. 대형 프런티어 개발자가 법정 문서를 공개하거나 제출하지 않은 경우, 중대하게 허위이거나 오해를 부르는 진술을 한 경우, 규정대로 사고를 보고하지 않은 경우, 또는 스스로 작성한 프레임워크를 준수하지 않은 경우, 위반의 경중에 따라 건당 100만 달러를 넘지 않는 민사 벌금에 처해질 수 있으며, 이런 소송은 오직 캘리포니아주 법무장관만 제기할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "문서에 대만 언급 없고, 인터페이스 발표도 없다"
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사가 2026년 9월 18일 전문을 추출해 대조한 결과, FGF에서 대만·일본·한국이라는 문자열은 보이지 않습니다. 문서 안에서 명시된 관할 지역은 미국(캘리포니아주)과 EU/아일랜드뿐입니다. 본 기사가 확인한 네 개의 1차 자료 중 어느 것도 이 프레임워크가 대만 사용자에게 의무를 부과하거나 보호를 제공한다는 내용을 보여주지 않습니다. TFAIA는 캘리포니아주법이고 EU 행동강령은 EU 규정이며, 대만 자체의 규정은 본 기사의 확인 범위에 들어 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 문서는 또한 사용자가 체감할 수 있는 변화도 전혀 공표하지 않습니다. 전문 어디에도 소비자 대상 제품, 가격, 요금제, 지역, 언어에 관한 설명이 없으며, ChatGPT 인터페이스가 조정된다는 언급도 없습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이 문서 때문에 지금 제가 ChatGPT를 쓰는 방식이 바뀌나요?",
+              "answer": "본 기사가 확인한 문서 내용으로 보면 그렇지 않습니다. FGF는 소비자 대상 제품, 가격, 요금제, 지역, 언어 중 어느 것에 대해서도 변화를 언급하지 않습니다. 이 문서가 정리하는 것은 OpenAI 내부의 시스템적 위험 평가·완화 절차로, 규제 준수 상황을 대외적으로 설명하기 위한 것이며 제품 발표가 아닙니다."
+            },
+            {
+              "question": "50명·10억 달러라는 두 수치는 OpenAI가 자체적으로 정한 건가요?",
+              "answer": "FGF는 이 두 수치의 출처를 밝히지 않지만, 캘리포니아주 쪽에서는 Transparency in Frontier Artificial Intelligence Act가 정의하는 파국적 위험을 다루는 것이라고 스스로 밝히고 있으며, 해당 법이 '파국적 위험'에 대해 정한 법정 기준이 바로 단일 사건에서 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실입니다. 법 조문의 정의가 숫자에 그치지 않는다는 점에 유의해야 합니다. 해당 사건은 모델이 화학·생물·방사성·핵무기의 제조 또는 방출에 전문가 수준의 지원을 제공하는 것, 의미 있는 인간의 감독 없이 사이버 공격을 감행하는 것, 혹은 사람이 했다면 살인·폭행·공갈·절도에 해당했을 행위를 하는 것, 또는 프런티어 개발자나 사용자의 통제를 벗어나는 것 중 하나에 해당해야 합니다. 법 조문은 또한 '재산'을 유형 또는 무형의 재산으로 정의하며 주식 가치의 손실은 포함되지 않는다고 별도로 명시하고 있고, 이 기준이 적용되는 대상은 훈련에 10의 26제곱 회를 초과하는 정수 또는 부동소수점 연산을 사용한 '프런티어 모델'입니다."
+            },
+            {
+              "question": "이 프레임워크가 대만 사용자에게 법적인 의미가 있나요?",
+              "answer": "본 기사가 2026년 9월 18일 기준으로 확인한 문서 내용으로는 그런 점을 찾을 수 없습니다. FGF 본문에서 명시된 관할 지역은 캘리포니아주와 EU/아일랜드뿐이며, 전문을 대조해도 대만이라는 문자열은 보이지 않고, 본 사이트도 대만 사용자에게 의무를 부과하거나 보호를 제공하는 조문을 확인하지 못했습니다. 대만 자체의 AI 거버넌스 규정은 별도로 대만의 법규를 확인해야 하며, 이는 본 기사의 확인 범위에 포함되지 않습니다."
+            },
+            {
+              "question": "OpenAI가 스스로 작성한 이 프레임워크를 지키지 않으면 어떻게 되나요?",
+              "answer": "그 결과는 FGF가 아니라 캘리포니아주 법 조문에 쓰여 있습니다. SB 53은 대형 프런티어 개발자가 법정 문서를 공개·제출하지 않은 경우, 중대하게 허위이거나 오해를 부르는 진술을 한 경우, 규정대로 안전사고를 보고하지 않은 경우, 또는 스스로 공개한 프레임워크를 준수하지 않은 경우, 위반의 경중에 따라 건당 100만 달러를 넘지 않는 민사 벌금에 처하도록 정하며, 이런 소송은 오직 캘리포니아주 법무장관만 제기할 수 있다고 정합니다. 법 조문은 또한 선의로, 그리고 당시 상황에서 합리적으로 이루어진 진술에는 허위 진술 조항이 적용되지 않는다고 명시합니다."
+            },
+            {
+              "question": "'유해한 조작' 같은 위험에는 왜 등급표가 없나요?",
+              "answer": "FGF 스스로 설명하는 바에 따르면, 유해한 조작은 시스템적 위험 영역으로서 아직 새로운 분야이며, OpenAI는 이런 종류의 위험이 배포 전 모델 평가보다 배포 후 시스템 차원의 모니터링으로 다루는 편이 '더 적합할 수 있다'고 보기 때문에, 사이버 공격·CBRN·통제 상실처럼 3단계 등급을 아직 정하지 않았습니다. 문서는 이를 두 문장으로 설명합니다. OpenAI의 유해한 조작에 대한 접근 방식은 '여전히 탐색적'이며, 이 위험 등급은 추가 연구의 대상이고 향후 크게 바뀔 수 있습니다."
+            },
+            {
+              "question": "FGF는 OpenAI의 기존 Preparedness Framework와 어떻게 다른가요?",
+              "answer": "문서 자체는 두 문서가 일부 영역에서 겹치며, PF는 '파국적 위험'에 대해 다른 정의를 사용할 수 있고 FGF와 같은 법정 연산량 기준에 얽매이지 않는다고 밝힙니다. 본 사이트가 두 PDF를 전문으로 추출해 연속된 문자열로 대조한 결과, 겹치는 정도는 문서 자체의 설명보다 더 뚜렷했습니다. FGF의 CBRN 3단계는 PF의 생물·화학 범주 Critical 기준과 한 글자도 다르지 않고, 2단계도 High 기준과 비교했을 때 'novice'라는 단어를 감싸는 인용부호만 다릅니다. FGF의 사이버 공격 3단계는 PF의 사이버보안 Critical 기준과 비교했을 때 관사 하나(FGF 쪽에 'the'가 하나 더 있음)와 하이픈 표기 한 곳(high-level과 high level)만 다릅니다. 이 대조는 CBRN과 사이버 공격 두 범주만 다룬 것으로, FGF의 통제 상실과 유해한 조작은 PF의 세 가지 추적 범주 중 대응하는 항목이 없으며, 두 문서 모두 자신의 등급이 서로 대응한다고 밝히지는 않는다는 점에 유의해야 합니다."
+            },
+            {
+              "question": "이 문서들이 공개된 뒤, 일반인은 얼마나 볼 수 있나요?",
+              "answer": "공개된다는 것이 전부 볼 수 있다는 뜻은 아닙니다. 캘리포니아주법은 프런티어 개발자가 공개 의무를 이행하기 위해 공개하는 문서에서, 자사의 영업비밀이나 사이버보안, 공공안전, 미국의 국가안보를 보호하기 위해, 또는 연방법이나 주법을 준수하기 위해 필요한 범위에서 가림 처리(redaction)를 하는 것을 허용합니다. 가림 처리를 한 뒤에는 공개본에서 그 성격과 사유를 가림 처리를 정당화하는 사유가 허용하는 범위 내에서 설명해야 하고, 가림 처리하지 않은 정보는 5년간 보관해야 합니다. 투명성 보고서에 담기는 파국적 위험 평가, 그 결과, 제3자 평가 기관의 관여 정도 등의 요약도 법 조문은 대형 프런티어 개발자에게만 포함하도록 요구합니다. 그 밖에 프런티어 개발자가 캘리포니아주 비상서비스국에 제출하는 중대 안전사고 보고서, 그리고 대형 프런티어 개발자가 제출하는 내부 사용 위험 평가 요약은 법에 따라 캘리포니아주 공공기록법의 적용 대상에서 제외되어 일반인이 이 법을 통해 열람할 수 없습니다. 비상서비스국은 2027년 1월 1일부터 매년 익명화·집계된 사고 보고서를 작성해 주 의회와 주지사에게 보내야 합니다."
+            },
+            {
+              "question": "이 문서를 직접 확인하려면 어떻게 해야 하나요?",
+              "answer": "OpenAI 공식 웹사이트에서 'Frontier Governance Framework' 전문 PDF를 검색할 수 있습니다. 캘리포니아주 조문은 캘리포니아주 입법정보 웹사이트에서 법안 번호 SB 53 또는 Business and Professions Code 제25.1장으로 검색하면 현행 조문을 확인할 수 있으며, 두 곳 모두 누구나 다시 읽어볼 수 있는 공개된 1차 자료입니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "세 가지 요점: 새 규정 아님, 대만 보호 안 함, 앞으로도 개정됨",
+          "text": "FGF는 공개·법규 준수를 위한 문서이지, 제품이나 서비스 발표가 아닙니다. OpenAI 스스로 이 문서가 기존 Preparedness Framework와 일부 영역에서 겹치며, 그 역할은 회사가 규제상의 의무를 어떻게 이행하는지 설명하고 현재의 작업 방식을 기록하는 것이라고 밝힙니다. 문서가 언급하는 법규는 캘리포니아주의 Transparency in Frontier Artificial Intelligence Act와 EU의 General-Purpose AI Code of Practice 두 가지이며, 전문을 대조해도 대만이라는 문자열은 보이지 않고, 본 사이트도 대만 사용자에게 의무를 부과하거나 보호를 제공하는 조문을 확인하지 못했습니다. 문서 자체에는 버전 번호나 변경 이력이 없고 OpenAI는 최소 12개월마다 검토하겠다고만 약속하므로, 2026년 9월 18일 확인 시점에 읽은 내용이 최신판이 아닐 수 있습니다. 최신 상태를 확인하려면 OpenAI 공식 사이트와 캘리포니아주 입법정보 웹사이트를 직접 확인하시기 바랍니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 Instant, ChatGPT 기본 모델이 되다: OpenAI가 밝힌 개선점과 퇴보, 새 기능",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-instant-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 'Frontier Governance Framework' 전문(PDF)",
+          "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "캘리포니아주 법전 Business and Professions Code 제25.1장(Transparency in Frontier Artificial Intelligence Act) 현행 조문",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 'Preparedness Framework' 2판 전문(PDF)",
+          "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 공식 뉴스 RSS(공개일 기록)",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "OpenAI 前沿治理框架公开：50 人、10 亿美元门槛怎么来、谁追得到",
+      "description": "2026 年 5 月 28 日，OpenAI 公布 22 页的《前沿治理框架》，同时对应加州《前沿人工智能透明法》与欧盟《通用人工智能行为准则》两套规定。本文依 FGF 与既有 Preparedness Framework 全文、加州法典现行条文核实，说明 50 人、10 亿美元的风险门槛怎么来、三级风险分级实际写了什么、公布之后谁能追踪，以及这份文件为什么没有涵盖台湾用户。",
+      "hero": {
+        "src": "/guides/ai-news-frontier-governance-20260528/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一份直立的文件，代表这份框架；中央两个交叠的圆圈，代表它同时对应的两套法规；右边一道分成三格的直条，由下往上代表风险分级由低到高，最上面一格是虚线外框，代表文件自称仍属探索性质的等级。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 28 日，OpenAI 公布一份 22 页的《前沿治理框架》（Frontier Governance Framework，简称 FGF），整理公司目前对网络攻击、CBRN（化学、生物、辐射与核）、有害操纵与丧失控制四类系统性风险的评估与缓解做法。OpenAI 表示，FGF 要满足多部前沿人工智能法规的基本法定要求，文件举出两项：在加州，它是《前沿人工智能透明法》所称的“前沿人工智能框架”；在欧盟，它是《通用人工智能行为准则》下 OpenAI 安全与安控框架的公开摘要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日核实，直接读取 FGF 与既有 Preparedness Framework 第 2 版两份 PDF 全文、加州法典中《前沿人工智能透明法》现行条文，以及 OpenAI 官方新闻频道记录的发布日期。本站没有实测，只整理文件写了什么、没写什么，不提供法律意见。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 于 2026 年 5 月 28 日公布一份 22 页的《前沿治理框架》（FGF），同时作为加州《前沿人工智能透明法》所称的框架文件，以及欧盟《通用人工智能行为准则》下的公开摘要。",
+            "FGF 对系统性风险的定义包含模型实质促成单一事件超过 50 人死亡或 10 亿美元财产损失；加州 SB 53 对“灾难性风险”的法定门槛是超过 50 人死亡或重伤、或超过 10 亿美元财产损害或损失。",
+            "文件把风险分成网络攻击、CBRN、有害操纵与丧失控制四类，其中三类各订出 3 个等级，有害操纵目前还没有分级表。",
+            "OpenAI 承诺至少每 12 个月做一次框架总检视、重大修改后 30 天内公布异动记录；加州法规定大型前沿开发者没有遵守自己写的框架，每项违规不超过 100 万美元民事罚款。",
+            "以本文抽取全文比对，FGF 未见台湾字样，文件本身也没有宣告任何 ChatGPT 界面上的变化。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一份文件，两套法规要求"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文抽取的 22 页全文核实，FGF 没有印出日期、版本号或修订记录；2026 年 5 月 28 日这个发布日来自 OpenAI 官方新闻频道那则公告。该文件标头的最后修改时间是 5 月 27 日，核实当天重新抓取的哈希值与先前记录相同，可见这个文件自那时起没被覆写，但证明不了别处没有更新版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件写道，OpenAI 建立 FGF 是为了说明如何履行法规义务、记录目前评估与缓解系统性风险的做法，并在某些方面与既有的 Preparedness Framework（PF，应变准备框架）重叠：PF 可能采用不同的“灾难性风险”定义，也不绑定 FGF 这种法定运算门槛。FGF 提到“既有的 PF”时没有指明版本；新闻频道最后一则 PF 更新公告是 2025 年 4 月 15 日，即该版 PDF 封面印的第 2 版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF 也说明，风险评估流程取材自公司内部研究与信号，并“视情况”纳入学术研究者、独立领域专家、行业组织（文件举 Frontier Model Forum 为例）与美国政府、欧盟委员会等机关的意见。谈外部专家那一节写的是“我们可能征询并取得外部专家意见”，没有指名任何第三方评测机构，也没有承诺强制外部审查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "50 人、10 亿美元的门槛，其实是加州定的"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF 对“系统性风险”的定义“包含”最先进前沿模型的开发、存储、使用或部署可预见且重大的严重危害风险，其中包括模型实质促成单一事件超过 50 人死亡或 10 亿美元财产损失。FGF 没有注明这两个数字的出处，但它说加州这一侧处理的是《前沿人工智能透明法》（TFAIA，即 SB 53）所定义的灾难性风险，而法条的门槛是超过 50 人死亡或重伤、或超过 10 亿美元财产损害或损失。法典这一章七条都标注 2026 年 1 月 1 日生效、没有一条标注修正，FGF 公布日则是同年 5 月 28 日。"
+        },
+        {
+          "type": "paragraph",
+          "text": "法条的定义还不只数字：该事件必须涉及模型提供专家级协助制造或释放化生放核武器、在无有意义人类监督下发动网络攻击或做出等同杀人、伤害、勒索、盗窃的行为，或摆脱前沿开发者或用户的控制。同一条另列三项排除：信息本来就能从基础模型以外的来源以“实质上类似”的形式公开取得、联邦政府的合法行为、前沿模型与其他软件合并造成而前沿模型并未实质促成的损害。法条把“财产”定义为有形或无形财产，并单独写明股权价值的损失不算财产损害或损失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这套规定的入口是“前沿模型”：训练运算量超过 10 的 26 次方次整数或浮点运算的“基础模型”。训练或启动训练这种模型的，是“前沿开发者”；其中和关联企业合计、前一个日历年总营收超过 5 亿美元的，另称“大型前沿开发者”：公开框架、每年检视与罚则只落在这一层，透明报告与安全事故通报则是所有前沿开发者都要做。OpenAI 在 FGF 里把这份文件称为自己依 TFAIA 提出的“前沿人工智能框架”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 PF 把“严重危害”设在更高的门槛——数千人死亡或重伤、或数千亿美元经济损失——但同一个注脚也写明“我们的安全体系涵盖范围更广的风险，其中许多危害程度低于这个门槛”。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "FGF（依加州 SB 53）",
+            "Preparedness Framework"
+          ],
+          "rows": [
+            [
+              "严重危害门槛",
+              "超过 50 人死亡或 10 亿美元财产损失",
+              "数千人死亡或重伤、或数千亿美元经济损失"
+            ],
+            [
+              "风险分类数",
+              "4 类：网络攻击、CBRN、有害操纵、丧失控制",
+              "3 个追踪类别：生化、网络安全、AI 自我改进"
+            ],
+            [
+              "分级方式",
+              "3 级（有害操纵除外）",
+              "High 与 Critical 两个门槛"
+            ],
+            [
+              "适用依据",
+              "加州 TFAIA、欧盟行为准则等",
+              "OpenAI 自定，不绑定法定运算门槛"
+            ]
+          ],
+          "caption": "整理自 OpenAI 2026 年 5 月 28 日公布的 Frontier Governance Framework 与既有 Preparedness Framework v2，核实日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三级风险，一类还没有分级表"
+        },
+        {
+          "type": "paragraph",
+          "text": "FGF 把四类系统性风险中的三类——网络攻击、CBRN、丧失控制——各订出 3 个等级，用文字描述模型在每级能做到什么，但没有公布任何对外的分数或切分点。三类的措辞并不相同：网络攻击说分级“试图量化”模型能力、并用“可衡量的门槛”做决策，CBRN 说分级“量化”模型能力，丧失控制只说“描述”，并注明除 AI 自我改进外，这些分级仍属探索性质、可能大幅演变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 CBRN 为例，第 2 级是模型能提供“有意义的反事实协助”（比较基准是“可无限制取用 2021 年当时既有的工具”），让具备基本相关技术背景的“新手”也能制造已知的生化威胁；第 3 级是模型能让专家开发出全新的高危险威胁，或连接工具设备在无人介入下完成研发到合成的全流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四类“有害操纵”——文件说的是影响力行动、介入选举或其他操纵舆论、破坏民主程序的协同行动——目前没有分级表。FGF 说 OpenAI 的做法“仍属探索性质”、这一级风险日后可能大幅改变，并认为这类风险“可能”更适合用部署后监控这种系统层级的措施处理，而不是部署前的模型评测。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-frontier-governance-20260528/diagram-1-zh-cn.svg",
+          "alt": "四格图解：四类系统性风险与其分级状态",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 5 月 28 日公布的 Frontier Governance Framework 整理：四类系统性风险与其分级状态，核实日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公布之后，谁能追踪这份文件有没有兑现"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 承诺至少每 12 个月、从 TFAIA 与欧盟行为准则各自的生效日起算，做一次“框架总检视”；修改重大时会提交 OpenAI 基金会董事会的安全与安控委员会与 OpenAI Ireland Limited 董事会监督，并在异动后 30 天内公布异动记录与理由。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另有一节讲“模型报告”更新，开头限定在“属于本框架范围、且受欧盟人工智能法规范的模型”：若有合理根据认为模型系统性风险可接受的基础已被实质动摇，会在完成评估后“视情况”更新。接着文件写“无论如何”，对最具能力的前沿模型每 6 个月会决定是否更新，三种不需更新的情形是：能力自上次更新后没有重大变化、计划在不到一个月内发布更强模型，或依《行为准则》附录 2.2 认定该模型同样安全或更安全。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加州的法定时限则分两层：大型前沿开发者要至少每年检视、必要时更新自己的框架，重大修改后 30 天内公布新框架与理由；所有前沿开发者则是在部署新的前沿模型或其实质修改版本之前或同时，公开一份“透明报告”（FGF 把自己的“模型报告”注记为 TFAIA 的“透明报告”）。前沿开发者发现重大安全事故后，要在 15 天内通报加州紧急服务办公室，若构成死亡或严重身体伤害的紧迫风险，要在 24 小时内通报有管辖权的适当机关。"
+        },
+        {
+          "type": "paragraph",
+          "text": "没做到的后果写在法条里，不是写在 FGF 里：大型前沿开发者若没公布或递送法定文件、做出重大不实或误导陈述、没依规定通报事故，或没遵守自己写的框架，会面临依情节轻重、每项违规不超过 100 万美元的民事罚款，而且只有加州州检察长能提起这种诉讼。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "文件未提到台湾，也没有界面公告"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文 2026 年 9 月 18 日抽取全文比对，FGF 未见台湾、日本、韩国字样；文中点名的管辖范围只有美国（加州）与欧盟／爱尔兰。本文核实的四份一手来源都没有显示这份框架对台湾用户课予义务或提供保障——TFAIA 是加州法律，欧盟行为准则是欧盟规范，台湾自己的规则不在本文查证范围内。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这份文件也没有宣告用户看得到的变化：全文未见消费端产品、价格、方案、地区或语言的说明，也没有提到 ChatGPT 界面会有调整。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这份文件会改变我现在使用 ChatGPT 的方式吗？",
+              "answer": "以本文核实到的文件内容来看不会。FGF 没有提到任何消费端产品、价格、方案、地区或语言的变化，它整理的是 OpenAI 内部评估与缓解系统性风险的流程，用来对外交代法规遵循状况，不是产品公告。"
+            },
+            {
+              "question": "50 人、10 亿美元这两个数字是 OpenAI 自己订的吗？",
+              "answer": "FGF 没有注明这两个数字的出处，但它自己说在加州这一侧处理的是《前沿人工智能透明法》所定义的灾难性风险，而该法对“灾难性风险”写下的法定门槛正是单一事件造成超过 50 人死亡或重伤、或超过 10 亿美元财产损害或损失。要注意法条的定义不只有数字：该事件还必须涉及模型提供专家级协助制造或释放化生放核武器、在无有意义人类监督下发动网络攻击或做出等同杀人、伤害、勒索、盗窃的行为，或摆脱前沿开发者或用户的控制。法条同时把“财产”定义为有形或无形财产，并单独写明股权价值的损失不算；而被这个门槛管到的是训练运算量超过 10 的 26 次方次整数或浮点运算的“前沿模型”。"
+            },
+            {
+              "question": "这份框架对台湾用户有法律上的意义吗？",
+              "answer": "以本文核实到 2026 年 9 月 18 日的文件内容，没有看到。FGF 文中点名的管辖范围只有美国加州与欧盟／爱尔兰，全文比对未见台湾字样，本站也没有读到任何条文对台湾用户课予义务或提供保障。台湾自己的人工智能治理规则要另外查台湾的法规，不在这篇文章的查证范围内。"
+            },
+            {
+              "question": "OpenAI 如果没有遵守自己写的这份框架，会怎么样？",
+              "answer": "后果写在加州法条里，不是写在 FGF 里。SB 53 规定，大型前沿开发者若没有公布或递送法定文件、做出重大不实或误导陈述、没有依规定通报安全事故，或没有遵守自己公布的框架，会面临依情节轻重、每项违规不超过 100 万美元的民事罚款，而且只有加州州检察长可以提起这种诉讼。法条另外写明，出于善意、且在当时情况下属合理的陈述，不适用不实陈述那一项。"
+            },
+            {
+              "question": "为什么“有害操纵”这类风险没有分级表？",
+              "answer": "FGF 自己说明，有害操纵作为系统性风险领域还很新，OpenAI 认为这类风险“可能”更适合用部署后监控这种系统层级的缓解措施处理，而不是部署前的模型评测，所以目前没有像网络攻击、CBRN、丧失控制那样订出 3 个等级。文件用两句话交代这件事：OpenAI 对有害操纵的做法“仍属探索性质”，而这一级风险仍待进一步研究、日后可能大幅改变。"
+            },
+            {
+              "question": "FGF 和 OpenAI 原本的 Preparedness Framework 差在哪？",
+              "answer": "文件自己说两份在某些方面重叠，PF 可能采用不同的“灾难性风险”定义，也不绑定 FGF 这种法定运算门槛。本站把两份 PDF 抽成全文、以连续字符串比对后发现，重叠的程度比文件的说法更明显：FGF 的 CBRN 第 3 级与 PF 生化类别 Critical 门槛逐字相同，第 2 级与 High 门槛只差 novice 一词外面的引号；网络攻击第 3 级与 PF 网络安全 Critical 只差一个冠词（FGF 多一个 the）与一处连字符写法（high-level 对 high level）。要注意这次比对只涵盖 CBRN 与网络攻击两类，FGF 的丧失控制与有害操纵在 PF 的三个追踪类别里没有对应项；两份文件本身都没有说自己的分级可以互相对照。"
+            },
+            {
+              "question": "这些文件公布之后，一般人看得到多少？",
+              "answer": "公开不等于全部看得到。加州法条准许前沿开发者在为履行公布义务而公开的文件里，为保护自己的商业秘密或网络安全、公共安全、美国国家安全，或为遵守联邦或州法，做必要的遮蔽；遮蔽之后要在公开版本里说明遮蔽的性质与理由（以遮蔽的理由所允许的范围为限），并把未遮蔽的信息保留五年。透明报告里的灾难性风险评估、评估结果与第三方评测参与程度等摘要，法条也只要求大型前沿开发者附上。另外，前沿开发者通报给加州紧急服务办公室的重大安全事故报告，以及大型前沿开发者递送的内部使用风险评估摘要，依法排除在加州公共记录法之外，一般人无法循该法调阅；紧急服务办公室则要从 2027 年 1 月 1 日起每年做出一份去标识化、汇总过的事故报告，送交州议会与州长。"
+            },
+            {
+              "question": "要怎么自己找到这份文件核对？",
+              "answer": "可以到 OpenAI 官方网站搜索《前沿治理框架》全文 PDF；加州的条文可以到加州立法信息网，用法案编号 SB 53 或《商业与专业法典》第 25.1 章查询现行条文，两者都是任何人都能重新读一次的公开一手资料。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三件事：不是新规定、不保护台湾用户、还会再修",
+          "text": "FGF 是一份披露与法规遵循文件，不是产品或服务公告——OpenAI 自己说它在某些方面与既有的 Preparedness Framework 重叠，作用是说明公司如何履行法规义务、记录目前的做法。文件举出的法规是加州《前沿人工智能透明法》与欧盟《通用人工智能行为准则》两项，全文比对未见台湾字样，本站也没有读到任何条文对台湾用户课予义务或保障。文件本身没有版本号或修订记录，OpenAI 承诺至少每 12 个月检视一次，所以 2026 年 9 月 18 日核实当下读到的内容不一定是最新版本；要确认最新状态，请直接查 OpenAI 官网与加州立法信息网。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-5.5 Instant 成为 ChatGPT 默认模型：官方公布的进步、退步与新功能",
+              "kind": "life",
+              "slug": "ai-news-gpt-55-instant-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI《Frontier Governance Framework》全文（PDF）",
+          "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "加州法典 Business and Professions Code 第 25.1 章（Transparency in Frontier Artificial Intelligence Act）现行条文",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI《Preparedness Framework》第 2 版全文（PDF）",
+          "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 官方新闻频道 RSS（发布日期记录）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1306 @@
+{
+  "slug": "ai-news-gemini-38-live-20260915",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-15",
+  "featured": false,
+  "display_order": 159,
+  "related": [
+    "ai-news-gpt-live-1-api-20260910",
+    "ai-news-gpt-55-instant-20260505",
+    "ai-news-gpt-live-voice-20260708"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Gemini 3.8 Live 與 Extended Thinking：新語音模型，你的帳號能用嗎？",
+      "description": "2026 年 9 月 15 日，Google 發表 Gemini 3.8 Live 與 Gemini 3.8 Live Extended Thinking 兩款語音對話模型。本文依 Google 官方發表文、開發者文、模型卡與定價頁，整理開發者、企業、一般使用者與 Workspace 訂閱者各自能用到什麼、費用怎麼計算，以及模型卡寫的知識截止日與官方未說明的開放地區。",
+      "hero": {
+        "src": "/guides/ai-news-gemini-38-live-20260915/hero.jpg",
+        "alt": "原創插圖：左邊一個圓角對話框裡畫著一排聲波線，代表語音對話；一支箭頭指向右邊四個方框，代表四種使用身分，其中兩個是實線、兩個是虛線外框，象徵同時發表但開放程度不同。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日，Google 以模型發表文與開發者文兩篇公告，發表兩款語音對話模型：Gemini 3.8 Live 與 Gemini 3.8 Live Extended Thinking。Google 為兩款模型定了不同位置：3.8 Live「為規模與成本效率打造，結合對話智慧、流暢對答與視覺參照」；Extended Thinking「為高複雜度任務打造，具備更高智慧與多步驟推理能力」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核 Google 的模型發表文、開發者文、DeepMind 模型卡與 Gemini API 定價頁，內容以查核當天為準。本站沒有實際使用這兩款模型，文中能力、排行榜名次與價格都是 Google 的說法，以「Google 表示」標示廠商宣稱；本文也不構成使用或購買建議。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 15 日，Google 發表 Gemini 3.8 Live 與 Gemini 3.8 Live Extended Thinking 兩款語音對話模型，一款主打規模與成本效率，另一款主打高複雜度的多步驟推理。",
+            "Google 對兩款模型都寫「即日起開始推出」，開發者這一側的通路是 Gemini API 與 Google AI Studio；一般使用者這一側，發表文那張清單把 Gemini 3.8 Live 寫在 Search Live、Extended Thinking 寫在 Gemini Live，Workspace 的文件功能還限定 Google AI Pro 與 Ultra 訂閱者才能用。",
+            "Google 在三份官方文件裡都沒有寫出開放地區，企業端也仍是私人預覽階段，「即日起推出」目前只代表開始，不代表已經對所有人開放。",
+            "兩款模型在 Gemini API 共用同一張價目表：文字輸入每百萬 token 0.75 美元、語音輸入 3 美元，另外有免費層級，以及每月 5,000 次的免費搜尋 grounding 額度。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這次發表了什麼：兩個模型，兩種定位"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型發表文把 Gemini 3.8 Live 的幾項能力寫在同一段文字：能近乎即時處理視覺輸入，讓對話有畫面可以參照；能自動偵測並切換語言，發表文寫的是支援 97 種語言；也能在背景執行工具與 API 呼叫、同時繼續對話，讓使用者先聽到回覆、工作再於背景完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Extended Thinking 的差異在於推理方式：Google 說明這款模型會「一邊推理一邊說話」，遇到需要深度推理的任務時，先用「讓我確認一下」之類的話語自然承接，再用進度旁白帶使用者走過多步驟的背景工作；開發者文把兩款模型合稱為「比串接式架構更精簡的替代方案」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者文另外條列主要能力，用的是「包括」：非同步函式呼叫、視覺情境、字母數字精確度（準確判讀確認碼、理賠編號與技術資料）、多語言支援（「97 種以上」語言並保持腔調一致），以及漸進式內容更新。發表文說 Google AI 產品生成的語音都會加上 SynthID 浮水印，讓 AI 生成內容維持可被偵測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四種身分，各自能用到哪一個模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者這一側寫得最明確：Google 對兩款模型都寫「即日起開始推出」，通路是 Gemini API 與 AI Studio。企業端則只在 Gemini Enterprise 開放私人預覽；Customer Experience 場景與（僅 Extended Thinking）Workspace 企業用戶端都還寫著「即將推出」，沒有時間表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發表文那張清單上，消費端分工是：3.8 Live 對「所有人」只寫了 Search Live；Extended Thinking 寫 Gemini Live，加上 Workspace 的「文件」限 Google AI Pro 與 Ultra 訂閱者，「Gmail」與「Keep」則開放給所有 Google AI 訂閱者——「文件」的訂閱門檻比「Gmail」與「Keep」高。同一篇發表文的影片圖說另外寫 Extended Thinking 在 Gemini App 裡，內文與小節標題也把兩款模型合稱寫進 Gemini App。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡的通路清單不同：兩款模型一致列出 Gemini API、Gemini App、AI Studio、Vertex AI，3.8 Live 另加 Search Live，Extended Thinking 另加 Gmail、文件與 Keep 所在的 Workspace。發表文那張清單沒有 Vertex AI，也沒把 Gemini App 算給 3.8 Live；本文兩份照原樣並列，不替 Google 認定哪一份才準。發表文頂端另標示曾於 9 月 17 日更新。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "身分",
+            "可用模型",
+            "開放內容",
+            "狀態"
+          ],
+          "rows": [
+            [
+              "開發者",
+              "兩款皆可",
+              "Gemini API、AI Studio",
+              "即日起推出"
+            ],
+            [
+              "企業",
+              "兩款皆可",
+              "Gemini Enterprise",
+              "私人預覽"
+            ],
+            [
+              "一般使用者",
+              "3.8 Live",
+              "Search Live",
+              "即日起推出"
+            ],
+            [
+              "一般使用者",
+              "Extended Thinking",
+              "Gemini Live、Gemini App",
+              "即日起推出"
+            ],
+            [
+              "Workspace 訂閱者",
+              "Extended Thinking",
+              "文件限 AI Pro／Ultra；Gmail、Keep 限 Google AI 訂閱者",
+              "即日起推出"
+            ]
+          ],
+          "caption": "依 Google 2026 年 9 月 15 日發表文與模型卡整理，查核日 2026 年 9 月 18 日；模型卡另列 Gemini App 與 Vertex AI 為兩款模型共同通路，詳見前文說明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「即日起推出」不等於「現在就能用」"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 原文寫「rolling out starting today」，是開始不是完成；企業端明講是私人預覽，標著「即將推出」的場景也沒有時間表。查核到 2026 年 9 月 18 日，三份文件說明可用性時只點名產品與訂閱身分，沒有一句寫出開放的國家、地區或市場，本文因此無法判斷台灣帳號是否已在可用範圍。"
+        },
+        {
+          "type": "paragraph",
+          "text": "企業私人預覽同樣沒有寫申請管道或資格條件，Google 也沒有講推出什麼時候算完成，使用者無從判斷何時會拿到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "語言數字兩篇寫法不同：模型發表文寫 3.8 Live 會在對話中自動切換「97 種支援語言」，開發者文的能力條列寫「97 種以上」。兩個數字都是 Google 自己給的，本文照原樣並列，不合併成一個。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gemini-38-live-20260915/diagram-1.svg",
+          "alt": "四格圖解：開發者、企業、消費端與 Workspace 四種身分各自的開放狀態，不含商標或介面畫面",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Google 2026 年 9 月 15 日發表整理：開發者、企業、消費端與 Workspace 四種身分的開放狀態，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "費用與資料：兩款模型共用一張價目表"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini API 定價頁把 gemini-3.8-live、gemini-3.8-live-extended-thinking 與較早的 gemini-3.1-flash-live-preview 列在同一個價格區塊、共用同一組價格，也沒有寫新模型取代或停用它。發表文說 3.8 Live「為規模與成本效率打造」，那是定位說法，不是牌價比較低。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定價頁的付費層級：輸入每百萬 token 文字 0.75 美元、語音 3 美元（每分鐘 0.005 美元）、圖像影片 1 美元；輸出每百萬 token（含思考 token）文字 4.5 美元、語音 12 美元（每分鐘 0.018 美元）。開發者文引用每分鐘數字時加了註腳，說明那是用每百萬 token 價格換算的估計值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定價頁還有免費層級：輸入輸出都寫「免費」，資料會用於改善產品，付費層級則不會。Google 搜尋即時查證（grounding）的額度列在付費層級：每月 5,000 次免費搜尋由 Gemini 3.x 系列共用，超過後每 1,000 次收費 14 美元；一次請求可能觸發不只一次查詢，每次都算費用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡另外寫了規格：兩款模型都以 Gemini 3 Pro 為基礎，輸入涵蓋音訊、圖像、影片與文字，情境窗上限 128K token；輸出音訊與文字，64K token。知識截止日是 2025 年 1 月，代表模型記得的事到那時候為止，時效性內容仍要靠另外計費的搜尋 grounding 補。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Google 沒有講的部分，以及一個編輯設計的情境"
+        },
+        {
+          "type": "paragraph",
+          "text": "評測數字都出自 Google 發表文：Extended Thinking 在 Artificial Analysis 的 Speech to Speech Quality Index「整體第一（82.6）」，τ-Voice 68.6%、Sierra 的 τ-Voice-banking 基準 35.1%、Big Bench Audio 97.7%；3.8 Live 則在 Speech Agent Arena「第二名」。這些是 9 月 15 日的快照，本站未自行測試，排行榜會持續變動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全性方面，模型卡寫 Google 依前沿安全框架評估的對象是 Gemini 3.7 Flash，結果沒有觸及任何「已追蹤或關鍵能力等級」；因兩款新模型相較 3.7 Flash 沒有明顯新能力或效能實質提升，Google 表示它們「不太可能」觸及那些等級——這是從另一款模型的結果推論，不是針對這兩款模型的評估。模型卡也寫明可能出現幻覺與偶爾的遲緩或逾時，並仍在改善誘導攻擊的抵抗力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是編輯設計的情境，不是實測結果。假設使用者對著行程比較表，用語音請 Extended Thinking 整理重點：依 Google 的說法，模型會先回應、把整理放到背景執行，再用進度旁白交代進度。這疊了三個還沒確定的條件：帳號要在合格地區、要用對的介面與訂閱身分；加上 2025 年 1 月的知識截止日，日期相關的細節仍要靠另外計費的搜尋 grounding。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "台灣的 Google 帳號現在可以用 Gemini 3.8 Live 或 Extended Thinking 嗎？",
+              "answer": "以本文查核到 2026 年 9 月 18 日為止，Google 的發表文、開發者文與模型卡在說明可用性時只點名產品與訂閱身分，沒有一句寫出開放的國家、地區或市場，官方未說明開放地區。文中能查到的只有身分別（開發者、企業、一般使用者、Workspace 訂閱者）與介面別的差異，沒有地區別的說明，本文無法代替 Google 確認台灣帳號是否已經可以使用。"
+            },
+            {
+              "question": "Gemini 3.8 Live 跟 Gemini 3.8 Live Extended Thinking 差在哪裡？",
+              "answer": "Google 把 Gemini 3.8 Live 定位成為規模與成本效率打造，發表文那張可用性清單給一般使用者的通路只寫了 Search Live；Extended Thinking 定位成處理高複雜度、多步驟推理的任務，一般使用者在 Gemini Live，以及 Workspace 的文件（限 Google AI Pro 與 Ultra 訂閱者）、Gmail 與 Keep（開放給所有 Google AI 訂閱者）用得到。兩款模型在 Gemini API 上共用同一張價目表，定價頁把輸出價格註明為含思考 token。"
+            },
+            {
+              "question": "Gemini App 裡面能不能用到這兩款新模型？",
+              "answer": "發表文那張可用性清單上，3.8 Live 對「所有人」只寫了 Search Live，Extended Thinking 寫的是 Gemini Live 與 Workspace；不過同一篇發表文的影片圖說也寫著 Extended Thinking 在 Gemini App 裡，內文與小節標題也把兩款模型合稱寫進去，沒有分開點名是哪一款。DeepMind 的模型卡則把 Gemini App 與 Google Cloud／Vertex AI 都列成兩款模型共同的通路，而發表文那張清單沒有 Vertex AI，也沒把 Gemini App 算給 3.8 Live。兩份清單的列法不同，本文把幾種寫法照原樣列出，本站無法代為判斷哪一份才是最新或最準確的狀態。"
+            },
+            {
+              "question": "用語音會比用文字貴嗎？",
+              "answer": "以 Gemini API 定價頁的數字，語音輸入每百萬 token 3 美元、文字輸入每百萬 token 0.75 美元，語音的單位定價確實比較高；定價頁與開發者文都印了「每分鐘 0.005 美元」與「每分鐘 0.018 美元」，開發者文的註腳說明那是用每百萬 token 價格換算的估計值，定價表本身也是以每百萬 token 標價。另外還有一個免費層級，輸入與輸出都不收費，但資料會用於改善 Google 的產品。"
+            },
+            {
+              "question": "這兩款模型知道最新發生的事嗎？",
+              "answer": "模型卡寫的知識截止日是 2025 年 1 月，也就是模型本身記得的內容到那時候為止，並不會因為主打即時對話就自動知道之後發生的事。如果需要查證時效性的內容，要靠 Google 搜尋的 grounding 功能；定價頁在付費層級那一欄列出每月 5,000 次免費額度、用量由所有 Gemini 3.x 系列模型共用，超過後每 1,000 次收費 14 美元，免費層級那一欄只寫「支援」，沒有列出額度或價格。"
+            },
+            {
+              "question": "97 種語言是哪 97 種？",
+              "answer": "本文查核的四份文件都沒有列出語言名稱。模型發表文寫 Gemini 3.8 Live 會在對話中自動切換「97 種支援語言」，開發者文的能力條列寫「97 種以上」；兩個數字都是 Google 自己給的，本文照原樣並列，不合併成一個。另外要提醒：這個數字說的是模型在對話中聽得懂、說得出的語言，Google 沒有在這四份文件裡說明各個介面本身的介面語言或開放地區。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文查核範圍與提醒",
+          "text": "本文只整理 Google 在 2026 年 9 月 15 日發表的官方文件，查核日為 2026 年 9 月 18 日，本站沒有實際使用這兩款模型，文中的能力描述、排行榜名次與定價都是 Google 的說法。本文查核的四份文件在說明可用性時，都沒有寫出開放的國家、地區或市場（定價頁只寫 Google AI Studio「在所有可用地區」免費，同樣沒有點名地區）。消費端的訂閱門檻與費用也可能隨時調整，行動前請以 Google 官方頁面當下的公告為準；本文不構成使用或購買建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 1 開放 API：電話客服能不能接、聲音是誰的、會不會錄音",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-1-api-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google：Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google DeepMind：Gemini 3.8 Audio (Live, Live Extended Thinking) Model Card",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google：Gemini Developer API Pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "Gemini 3.8 Live and Extended Thinking: New Voice Models, Can Your Account Use Them?",
+      "description": "On September 15, 2026, Google introduced two voice-dialogue models, Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking. Drawing on Google's official model post, developer post, model card, and pricing page, this article lays out what developers, enterprises, everyday users, and Workspace subscribers can each access, how the pricing works, the knowledge cutoff date the model card states, and the availability regions the official pages do not specify.",
+      "hero": {
+        "src": "/guides/ai-news-gemini-38-live-20260915/hero-en.jpg",
+        "alt": "Original illustration: a speech bubble with sound-wave lines for voice dialogue; an arrow points to four boxes for four user types, two solid-outlined and two dashed, showing mixed availability.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 15, 2026, Google announced two voice-dialogue models across two posts, a model post and a developer post: Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking. Google positions the two models differently: 3.8 Live is \"built for scale and cost efficiency, combining conversational intelligence with fluid dialogue and visual grounding\"; Extended Thinking is \"built for high-complexity tasks, with increased intelligence and multi-step reasoning.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 18, 2026, against Google's model post, developer post, the DeepMind model card, and the Gemini API pricing page; the content reflects that day. We have not actually used either model ourselves — the capabilities, leaderboard rankings, and prices described here are Google's own claims, marked \"Google says\" where they are the vendor's statements; this article is not advice on using or purchasing them."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 15, 2026, Google introduced two voice-dialogue models, Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking — one built around scale and cost efficiency, the other around high-complexity, multi-step reasoning.",
+            "Google writes \"rolling out starting today\" for both; developers get them via the Gemini API and Google AI Studio, while for consumers the model post lists Gemini 3.8 Live under Search Live and Extended Thinking under Gemini Live, with Workspace Docs limited to Google AI Pro and Ultra subscribers.",
+            "None of Google's three official documents names any availability region, and the enterprise side is still in private preview — \"rolling out starting today\" currently marks only a start, not that it is already open to everyone.",
+            "The two models share one price list on the Gemini API: text input is $0.75 per 1M tokens, audio input $3, with a free tier also available, plus a monthly quota of 5,000 free search grounding requests."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Was Announced: Two Models, Two Positions"
+        },
+        {
+          "type": "paragraph",
+          "text": "The model post lists several of Gemini 3.8 Live's capabilities in the same passage: it can process visual input in near real time, so the conversation has something to reference; it can automatically detect and switch languages, with the post citing 97 supported languages; and it can run tool and API calls in the background while the conversation continues, so users hear a reply first while the work finishes behind the scenes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Extended Thinking differs in how it reasons: Google explains that this model \"reasons and speaks simultaneously,\" and when a task needs deeper reasoning, it first bridges naturally with early verbal cues like \"Let me check that…\", then uses progress narration to walk the user through multi-step work happening in the background; the developer post calls the pair together \"a more streamlined alternative to cascaded architectures.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "The developer post separately lists key capabilities using the word \"including\": asynchronous function calling, visual context, alphanumeric precision (accurately parsing confirmation codes, claim numbers, and technical data), multilingual support (\"97+\" languages while maintaining consistent accents), and progressive content updates. The model post says voice generated by Google AI products all carries a SynthID watermark, keeping AI-generated content detectable."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Four Types of Users, and Which Model Each Can Use"
+        },
+        {
+          "type": "paragraph",
+          "text": "The developer side is stated most clearly: Google writes \"rolling out starting today\" for both models, through the Gemini API and AI Studio. On the enterprise side, availability is private preview only, in Gemini Enterprise; the Customer Experience scenario, and — for Extended Thinking only — Workspace enterprise customers, are both still marked \"coming soon,\" with no timeline given."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the model post's availability list, the consumer-side split is: for 3.8 Live, the \"For everyone\" line names only Search Live; for Extended Thinking, it names Gemini Live, plus Workspace's Docs, limited to Google AI Pro and Ultra subscribers, while Gmail and Keep are open to all Google AI subscribers — so the subscription bar for Docs is higher than for Gmail and Keep. Separately, the same model post's video captions also place Extended Thinking in the Gemini App, and both the running text and a section heading name the two models together there too."
+        },
+        {
+          "type": "paragraph",
+          "text": "The model card's channel list is different: both models alike list Gemini API, Gemini App, AI Studio, and Vertex AI, with 3.8 Live additionally listed under Search Live, and Extended Thinking additionally listed under the Workspace that holds Gmail, Docs, and Keep. The model post's own availability list does not name Vertex AI, and does not put Gemini App under 3.8 Live either; this article presents both lists as they are, without deciding on Google's behalf which one is authoritative. The model post is also marked at the top as having been updated on September 17."
+        },
+        {
+          "type": "table",
+          "header": [
+            "User type",
+            "Model(s) available",
+            "What's available",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Developers",
+              "Both",
+              "Gemini API, AI Studio",
+              "Rolling out starting today"
+            ],
+            [
+              "Enterprises",
+              "Both",
+              "Gemini Enterprise",
+              "Private preview"
+            ],
+            [
+              "Everyday users",
+              "3.8 Live",
+              "Search Live",
+              "Rolling out starting today"
+            ],
+            [
+              "Everyday users",
+              "Extended Thinking",
+              "Gemini Live, Gemini App",
+              "Rolling out starting today"
+            ],
+            [
+              "Workspace subscribers",
+              "Extended Thinking",
+              "Docs limited to AI Pro/Ultra; Gmail and Keep limited to Google AI subscribers",
+              "Rolling out starting today"
+            ]
+          ],
+          "caption": "Compiled from Google's September 15, 2026 model post and model card, checked September 18, 2026. The model card also lists Gemini App and Vertex AI as shared channels."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "\"Rolling Out Starting Today\" Does Not Mean \"Available Right Now\""
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's own English reads \"rolling out starting today\" — a start, not a completion; the enterprise side is explicitly private preview, and the scenarios marked \"coming soon\" carry no timeline either. As checked through September 18, 2026, the three documents, in describing availability, name only products and subscription tiers, and not one sentence states which country, region, or market is open — so this article cannot determine whether Taiwan accounts are already within the available range."
+        },
+        {
+          "type": "paragraph",
+          "text": "The enterprise private preview likewise states no application channel or eligibility criteria, and Google does not say when the rollout counts as complete, so users have no way to judge when they will get it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The two posts state the language figure differently: the model post writes that 3.8 Live automatically switches among \"97 supported languages\" mid-conversation, while the developer post's capability list says \"97+ languages.\" Both figures come from Google itself, and this article presents them side by side as given, without merging them into one."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gemini-38-live-20260915/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the availability status for each of four user types — developers, enterprises, consumers, and Workspace — with no logos or interface screens",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from Google's September 15, 2026 announcement: the availability status for developers, enterprises, consumers, and Workspace. Checked on September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Pricing and Data: One Price List for Both Models"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Gemini API pricing page lists gemini-3.8-live, gemini-3.8-live-extended-thinking, and the earlier gemini-3.1-flash-live-preview in the same pricing block, sharing the same set of prices, and it does not say the new models replace or deprecate it. The model post's line that 3.8 Live is \"built for scale and cost efficiency\" is a positioning statement, not a claim that its list price is lower."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the pricing page's paid tier: input is $0.75 per 1M tokens for text, $3 for audio ($0.005/minute), and $1 for image/video; output (including thinking tokens) is $4.50 per 1M tokens for text and $12 for audio ($0.018/minute). When the developer post cites the per-minute figures, it adds a footnote explaining that they are estimates converted from the per-1M-token prices."
+        },
+        {
+          "type": "paragraph",
+          "text": "The pricing page also has a free tier: both input and output are listed as \"free of charge,\" and that data is used to improve Google's products, unlike the paid tier. The quota for grounding with Google Search — real-time search verification — is listed under the paid tier: 5,000 free search requests per month, shared across the Gemini 3.x family, then $14 per 1,000 requests after that; a single request may trigger more than one query, and each one is billed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The model card also states the specs: both models are based on Gemini 3 Pro; input covers audio, images, video, and text, with a context window of up to 128K tokens; output is audio and text, at 64K tokens. The knowledge cutoff date is January 2025, meaning what the model remembers ends there, and time-sensitive content still needs the separately billed search grounding to fill in."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Google Has Not Said, and One Scenario Designed by the Editors"
+        },
+        {
+          "type": "paragraph",
+          "text": "All benchmark figures come from Google's model post: Extended Thinking took the \"#1 overall spot (82.6)\" on Artificial Analysis's Speech to Speech Quality Index, 68.6% on τ-Voice, 35.1% on Sierra's τ-Voice-banking benchmark, and 97.7% on Big Bench Audio; 3.8 Live, meanwhile, took \"second place\" in the Speech Agent Arena. These are snapshots from September 15; we have not tested them ourselves, and leaderboards keep changing."
+        },
+        {
+          "type": "paragraph",
+          "text": "On safety, the model card states that the model Google assessed under its frontier safety framework was Gemini 3.7 Flash, and the result reached none of the \"Tracked or Critical Capability Levels\"; because the two new models show no meaningful new capability or material performance increase over 3.7 Flash, Google says they are \"not likely\" to reach those levels either — an inference from another model's results, not an assessment run on these two models themselves. The model card also notes possible hallucinations and occasional slowness or timeouts, and says work is ongoing to improve resistance to jailbreak attempts."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following is a scenario designed by the editors, not a hands-on test result. Suppose a user is looking at a trip comparison table and asks Extended Thinking by voice to summarize the key points: by Google's account, the model would respond first, push the summarizing work to the background, and narrate its progress as it goes. That stacks three conditions that are not yet settled: the account has to be in an eligible region, and has to use the right interface and subscription tier; on top of that, the January 2025 knowledge cutoff means date-sensitive details would still depend on the separately billed search grounding."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Can a Taiwan Google account use Gemini 3.8 Live or Extended Thinking right now?",
+              "answer": "As checked through September 18, 2026, Google's model post, developer post, and model card, in describing availability, name only products and subscription tiers, and not one sentence states which country, region, or market is open — the official pages do not specify availability regions. What this article can find is only a breakdown by user type (developers, enterprises, everyday users, Workspace subscribers) and by interface, with no breakdown by region, so this article cannot confirm on Google's behalf whether Taiwan accounts can already use it."
+            },
+            {
+              "question": "What is the difference between Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking?",
+              "answer": "Google positions Gemini 3.8 Live as built for scale and cost efficiency, and the model post's availability list names only Search Live as the channel for everyday users; Extended Thinking is positioned for high-complexity, multi-step reasoning tasks, and everyday users can reach it in Gemini Live, as well as in Workspace's Docs (limited to Google AI Pro and Ultra subscribers), Gmail, and Keep (open to all Google AI subscribers). The two models share one price list on the Gemini API, where the pricing page notes the output price as including thinking tokens."
+            },
+            {
+              "question": "Can these two new models be used inside the Gemini App?",
+              "answer": "On the model post's availability list, 3.8 Live's \"For everyone\" line names only Search Live, while Extended Thinking's names Gemini Live and Workspace; however, that same model post's video captions also place Extended Thinking in the Gemini App, and both the running text and a section heading name the two models together there too, without separating out which one. DeepMind's model card, meanwhile, lists both Gemini App and Google Cloud/Vertex AI as channels shared by both models, while the model post's availability list does not name Vertex AI at all, and does not put Gemini App under 3.8 Live either. The two lists are written differently, and this article lays out each version as it is; we cannot determine on Google's behalf which one is the most current or most accurate."
+            },
+            {
+              "question": "Is using voice more expensive than using text?",
+              "answer": "By the Gemini API pricing page's figures, audio input is $3 per 1M tokens versus $0.75 per 1M tokens for text input, so the per-unit price for audio is indeed higher; both the pricing page and the developer post print \"$0.005 per minute\" and \"$0.018 per minute,\" and the developer post's footnote explains that these are estimates converted from the per-1M-token prices, with the pricing table itself still priced per 1M tokens. There is also a free tier where neither input nor output is charged, though that data is used to improve Google's products."
+            },
+            {
+              "question": "Do these two models know about things that happened recently?",
+              "answer": "The model card states a knowledge cutoff date of January 2025 — meaning what the model itself remembers ends there, and being built around live conversation does not automatically mean it knows what has happened since. Verifying time-sensitive content depends on Google Search's grounding feature; the pricing page's paid-tier column lists a monthly quota of 5,000 free requests, shared usage across the whole Gemini 3.x family, then $14 per 1,000 requests after that, while the free-tier column just says \"Supported,\" with no quota or price listed."
+            },
+            {
+              "question": "Which 97 languages are the \"97 languages\"?",
+              "answer": "None of the four documents this article checked lists the language names. The model post writes that Gemini 3.8 Live automatically switches among \"97 supported languages\" mid-conversation, while the developer post's capability list says \"97+ languages\"; both figures come from Google itself, and this article presents them side by side as given, without merging them into one. One more note: this figure describes the languages the model can hear and speak within a conversation — Google does not, in these four documents, describe the interface language of each surface itself, or the regions where each is available."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "What This Article Checked, and a Reminder",
+          "text": "This article only compiles the official documents Google published on September 15, 2026, and was checked on September 18, 2026; we have not actually used either model ourselves, and the capability descriptions, leaderboard rankings, and pricing here are all Google's own statements. All four documents this article checked, in describing availability, name no country, region, or market (the pricing page only says Google AI Studio is free \"in all available regions,\" which likewise names no specific region). Consumer-side subscription tiers and pricing may also change at any time; before acting, check Google's official pages for the current announcement. This article is not advice on using or purchasing them."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 1 Comes to the API: Can It Take Customer Service Calls, Whose Voice Is It, Will It Record?",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-1-api-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google: Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google DeepMind: Gemini 3.8 Audio (Live, Live Extended Thinking) Model Card",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google: Gemini Developer API Pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Gemini 3.8 LiveとExtended Thinking：新しい音声モデル、あなたのアカウントは使えるか",
+      "description": "2026年9月15日、Googleは音声対話モデル「Gemini 3.8 Live」と「Gemini 3.8 Live Extended Thinking」の2機種を発表しました。本稿はGoogle公式の発表文、開発者向け記事、モデルカード、料金ページをもとに、開発者・企業・一般ユーザー・Workspace加入者それぞれが使える範囲、料金の仕組み、モデルカードに記された知識のカットオフ日、そして公式が明記していない提供地域を整理します。",
+      "hero": {
+        "src": "/guides/ai-news-gemini-38-live-20260915/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側の角丸の吹き出しに音波を表す線が並び、音声対話を表す。矢印が右側の4つの四角を指し、4種類の利用者区分を表す。そのうち2つは実線、2つは破線の枠で、同時発表でも開放度が異なることを象徴する。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月15日、Googleはモデル発表文と開発者向け記事という2本の公式発表で、音声対話モデル2機種を発表しました。Gemini 3.8 LiveとGemini 3.8 Live Extended Thinkingです。Googleは両モデルに異なる位置づけを与えています。3.8 Liveは「規模とコスト効率のために作られ、対話的な知性と流暢な受け答え、視覚的な参照を組み合わせている」、Extended Thinkingは「複雑度の高いタスクのために作られ、より高い知性と多段階の推論能力を備えている」としています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、Googleのモデル発表文、開発者向け記事、DeepMindのモデルカード、Gemini APIの料金ページを確認しました。内容は確認当日時点のものです。当サイトはこの2つのモデルを実際には使用しておらず、本文中の性能、リーダーボードの順位、価格はすべてGoogle自身の説明であり、ベンダー側の主張には「Googleによれば」と明記します。本稿は利用や購入を勧めるものでもありません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月15日、Googleは音声対話モデル「Gemini 3.8 Live」と「Gemini 3.8 Live Extended Thinking」を発表しました。一方は規模とコスト効率を、もう一方は複雑度の高い多段階推論を主眼としています。",
+            "Googleは両モデルについて「本日より順次提供開始」としており、開発者側の窓口はGemini APIとGoogle AI Studioです。一般ユーザー側では、発表文の一覧表でGemini 3.8 LiveがSearch Liveに、Extended ThinkingがGemini Liveに割り当てられており、Workspaceのドキュメント機能はGoogle AI ProとUltraの加入者に限定されています。",
+            "Googleは公式の3つの文書のいずれにも提供地域を明記しておらず、企業向けも依然として非公開プレビュー段階です。「本日より順次提供開始」は現時点では開始を意味するだけで、すでに全員に開放されたことを意味しません。",
+            "両モデルはGemini API上で同じ価格表を共有しています。テキスト入力は100万トークンあたり0.75米ドル、音声入力は3米ドルで、無料枠に加えて、月5,000回までの無料の検索grounding枠もあります。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "今回発表されたもの：2つのモデル、2つの位置づけ"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデル発表文は、Gemini 3.8 Liveのいくつかの能力を同じ段落にまとめています。視覚入力をほぼリアルタイムで処理でき、会話に参照できる画面を持てること。言語を自動的に検知して切り替えられること（発表文は97種類の言語に対応するとしています）。そしてツールやAPI呼び出しをバックグラウンドで実行しながら会話を続けられ、ユーザーはまず応答を聞き、作業はその裏側で完了するということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Extended Thinkingの違いは推論の仕方にあります。Googleはこのモデルが「考えながら話す」と説明しており、深い推論を要するタスクに直面すると、まず「確認させてください」といった言葉で自然に間をつなぎ、その後は進捗を伝えるナレーションでユーザーを多段階のバックグラウンド処理へと導きます。開発者向け記事は両モデルを合わせて「カスケード型アーキテクチャに代わる、より簡潔な選択肢」と呼んでいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者向け記事はさらに主な能力を「含む」という言葉で列挙しています。非同期の関数呼び出し、視覚的コンテキスト、英数字の精度（確認コードや保険金請求番号、技術データを正確に読み取る）、多言語対応（アクセントの一貫性を保ちながら「97種類以上」の言語）、そして段階的なコンテンツ更新です。発表文は、Google AI製品が生成する音声にはすべてSynthIDの電子透かしが付き、AI生成コンテンツを検知可能な状態に保つとしています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "4種類の利用者、それぞれが使えるモデル"
+        },
+        {
+          "type": "paragraph",
+          "text": "最も明確に書かれているのは開発者側です。Googleは両モデルについて「本日より順次提供開始」としており、窓口はGemini APIとAI Studioです。企業向けはGemini Enterpriseでの非公開プレビューのみで、Customer Experience向けの場面と（Extended Thinkingのみ）Workspace法人ユーザー向けはいずれも「近日提供予定」とされ、時期は示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表文の一覧表では、消費者向けの振り分けは次のとおりです。3.8 Liveは「すべての人向け」の欄にSearch Liveとだけ書かれています。Extended ThinkingはGemini Liveに加え、WorkspaceのうちGoogle AI ProとUltraの加入者に限定される「ドキュメント」、そしてすべてのGoogle AI加入者が使える「Gmail」と「Keep」に書かれています。つまりドキュメントの加入条件はGmailやKeepより厳しいということです。同じ発表文の動画キャプションには、別途Extended ThinkingがGemini Appにあるとも書かれており、本文と小見出しにも両モデルをまとめてGemini Appに含めて記す箇所があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルカードの窓口一覧は異なります。両モデルとも共通してGemini API、Gemini App、AI Studio、Vertex AIが挙げられ、3.8 LiveにはさらにSearch Liveが、Extended ThinkingにはさらにGmail・ドキュメント・Keepを含むWorkspaceが加わります。発表文の一覧表にはVertex AIがなく、Gemini Appも3.8 Liveには数えられていません。本稿はこの2つの一覧をそのまま並べて示すにとどめ、どちらが正しいかをGoogleに代わって判断することはしません。発表文の冒頭には、9月17日に更新された旨の表示もあります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "利用者区分",
+            "使えるモデル",
+            "提供内容",
+            "状況"
+          ],
+          "rows": [
+            [
+              "開発者",
+              "両方",
+              "Gemini API、AI Studio",
+              "本日より順次提供開始"
+            ],
+            [
+              "企業",
+              "両方",
+              "Gemini Enterprise",
+              "非公開プレビュー"
+            ],
+            [
+              "一般ユーザー",
+              "3.8 Live",
+              "Search Live",
+              "本日より順次提供開始"
+            ],
+            [
+              "一般ユーザー",
+              "Extended Thinking",
+              "Gemini Live、Gemini App",
+              "本日より順次提供開始"
+            ],
+            [
+              "Workspace加入者",
+              "Extended Thinking",
+              "ドキュメントはAI Pro／Ultra限定、GmailとKeepはGoogle AI加入者向け",
+              "本日より順次提供開始"
+            ]
+          ],
+          "caption": "Googleの2026年9月15日の発表文とモデルカードをもとに整理。確認日は2026年9月18日。モデルカードはさらにGemini AppとVertex AIを両モデル共通の窓口として挙げています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「本日より順次提供開始」は「今すぐ使える」ではない"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google原文は「rolling out starting today」と書いており、これは開始であって完了ではありません。企業向けは明確に非公開プレビューとされ、「近日提供予定」と記された場面にも時期は示されていません。2026年9月18日時点で確認したところ、3つの文書はいずれも提供状況を説明する際に製品名と加入区分だけを挙げており、開放された国・地域・市場を一つも明記していないため、本稿は台湾のアカウントがすでに利用可能な範囲に入っているかどうかを判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "企業向けの非公開プレビューについても、申込み方法や資格条件は書かれておらず、Googleは展開がいつ完了するとも述べていないため、ユーザーは自分がいつ使えるようになるか判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "言語数の書き方は2つの文書で異なります。モデル発表文は3.8 Liveが会話中に「97種類の対応言語」を自動的に切り替えるとし、開発者向け記事の能力一覧は「97種類以上」としています。どちらもGoogle自身が示した数字であり、本稿は両方をそのまま並べて示し、1つにまとめることはしません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gemini-38-live-20260915/diagram-1-ja.svg",
+          "alt": "4コマ図解：開発者・企業・消費者・Workspaceという4種類の利用者それぞれの提供状況。商標やインターフェース画面は含まない",
+          "width": 1600,
+          "height": 900,
+          "caption": "Googleの2026年9月15日の発表をもとに整理：開発者・企業・消費者・Workspaceという4種類の利用者の提供状況。確認日は2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "料金とデータ：両モデルが共有する1つの価格表"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini APIの料金ページは、gemini-3.8-live、gemini-3.8-live-extended-thinking、そしてそれより前からあるgemini-3.1-flash-live-previewを同じ価格区分にまとめ、同じ価格を共有させています。新モデルがこれを置き換える、または提供終了にするとも書かれていません。発表文が3.8 Liveを「規模とコスト効率のために作られた」とするのは位置づけの説明であり、定価が安いという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "料金ページの有料枠は、入力が100万トークンあたりテキスト0.75米ドル、音声3米ドル（1分あたり0.005米ドル）、画像・動画1米ドル。出力は100万トークンあたり（思考トークンを含む）テキスト4.5米ドル、音声12米ドル（1分あたり0.018米ドル）です。開発者向け記事は1分あたりの数字を引用する際に脚注を付け、それが100万トークンあたりの価格から換算した推定値であると説明しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "料金ページには無料枠もあります。入力・出力とも「無料」ですが、データは製品改善に使われ、有料枠ではそうなりません。Google検索によるgrounding（検索を通じたリアルタイムの裏付け）の枠は有料枠に記載されており、月5,000回までの無料検索をGemini 3.xシリーズ全体で共有し、それを超えると1,000回あたり14米ドルが課金されます。1回のリクエストで複数回のクエリが発生することもあり、その都度課金されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルカードにはさらに仕様が書かれています。両モデルともGemini 3 Proをベースとし、入力は音声・画像・動画・テキストに対応し、コンテキストウィンドウは最大128Kトークン。出力は音声とテキストで64Kトークンです。知識のカットオフ日は2025年1月で、モデル自身が記憶している内容はそこまでという意味であり、即時性のある内容は別料金の検索groundingで補う必要があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Googleが述べていないこと、そして編集部が作成したシナリオ1つ"
+        },
+        {
+          "type": "paragraph",
+          "text": "評価指標の数字はすべてGoogleの発表文によるものです。Extended ThinkingはArtificial AnalysisのSpeech to Speech Quality Indexで「総合1位（82.6）」、τ-Voiceで68.6%、Sierraのτ-Voice-banking基準で35.1%、Big Bench Audioで97.7%。3.8 LiveはSpeech Agent Arenaで「2位」です。これらは9月15日時点のスナップショットであり、当サイトは自ら検証しておらず、順位表は今後も変動します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全性について、モデルカードはGoogleがフロンティア安全性フレームワークに基づいて評価した対象がGemini 3.7 Flashであり、結果はどの「Tracked または Critical Capability Level」にも達しなかったと記しています。2つの新モデルは3.7 Flashと比べて明確な新能力や実質的な性能向上が見られないため、Googleはこれらも「達する可能性は低い」としていますが、これは別モデルの結果からの推論であり、この2つのモデル自体を対象にした評価ではありません。モデルカードはまた、幻覚が起こり得ることや、時折の遅延・タイムアウト、ジェイルブレイクへの耐性向上が引き続き課題であることも記しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は編集部が作成したシナリオであり、実際に試した結果ではありません。ユーザーが旅程の比較表を見ながら、音声でExtended Thinkingに要点の整理を頼んだとします。Googleの説明によれば、モデルはまず応答し、整理作業をバックグラウンドに回し、その後は進捗をナレーションで伝えます。これには、アカウントが対象地域にあること、正しいインターフェースと加入区分を使っていることという、まだ確定していない条件が3つ重なっています。さらに2025年1月という知識のカットオフ日があるため、日付に関わる細部は依然として別料金の検索groundingに頼ることになります。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "台湾のGoogleアカウントは、今すぐGemini 3.8 LiveやExtended Thinkingを使えますか。",
+              "answer": "本稿が2026年9月18日まで確認した範囲では、Googleのモデル発表文、開発者向け記事、モデルカードはいずれも提供状況を説明する際に製品名と加入区分だけを挙げており、開放された国・地域・市場を一つも明記していません。公式は提供地域を明記していないということです。本文で分かるのは利用者区分（開発者、企業、一般ユーザー、Workspace加入者）とインターフェースによる違いだけで、地域による違いの説明はなく、本稿は台湾のアカウントがすでに使えるかどうかをGoogleに代わって確認することはできません。"
+            },
+            {
+              "question": "Gemini 3.8 LiveとGemini 3.8 Live Extended Thinkingはどう違いますか。",
+              "answer": "GoogleはGemini 3.8 Liveを規模とコスト効率のために作られたものと位置づけており、発表文の一覧表が一般ユーザーに示す窓口はSearch Liveだけです。Extended Thinkingは複雑度が高く多段階の推論を要するタスク向けに位置づけられ、一般ユーザーはGemini Liveのほか、Workspaceのドキュメント（Google AI ProとUltraの加入者限定）、Gmail、Keep（すべてのGoogle AI加入者が利用可）で使えます。両モデルはGemini API上で同じ価格表を共有しており、料金ページは出力価格が思考トークンを含むと注記しています。"
+            },
+            {
+              "question": "Gemini Appの中でこの2つの新モデルを使えますか。",
+              "answer": "発表文の一覧表では、3.8 Liveの「すべての人向け」の欄にはSearch Liveだけが書かれ、Extended ThinkingにはGemini LiveとWorkspaceが書かれています。ただし同じ発表文の動画キャプションにはExtended ThinkingがGemini Appにあるとも書かれており、本文と小見出しにも両モデルをまとめてそこに記す箇所があって、どちらか一方だけを名指ししてはいません。一方、DeepMindのモデルカードはGemini AppとGoogle Cloud／Vertex AIの両方を両モデル共通の窓口として挙げていますが、発表文の一覧表にはVertex AIがなく、Gemini Appも3.8 Liveには数えられていません。2つの一覧は書き方が異なっており、本稿はそれぞれの記述をそのまま並べるにとどめ、どちらが最新か、あるいはより正確かを当サイトが代わりに判断することはできません。"
+            },
+            {
+              "question": "音声を使うとテキストより高くなりますか。",
+              "answer": "Gemini APIの料金ページの数字では、音声入力は100万トークンあたり3米ドル、テキスト入力は100万トークンあたり0.75米ドルで、音声の単価が高いのは事実です。料金ページと開発者向け記事にはそれぞれ「1分あたり0.005米ドル」「1分あたり0.018米ドル」とも印刷されていますが、開発者向け記事の脚注はこれが100万トークンあたりの価格から換算した推定値だと説明しており、料金表自体は100万トークン単位で表示されています。このほか無料枠もあり、入力・出力とも課金されませんが、データはGoogleの製品改善に使われます。"
+            },
+            {
+              "question": "この2つのモデルは最近起きたことを知っていますか。",
+              "answer": "モデルカードに記された知識のカットオフ日は2025年1月です。つまりモデル自身が記憶している内容はそこまでで、即時対話を売りにしているからといって、それ以降に起きたことを自動的に知るわけではありません。即時性のある内容を確認するにはGoogle検索のgrounding機能に頼る必要があります。料金ページの有料枠の欄には月5,000回までの無料枠があり、利用量はGemini 3.xシリーズ全体で共有され、それを超えると1,000回あたり14米ドルが課金されると記されている一方、無料枠の欄には「対応」とだけ書かれ、枠や価格は示されていません。"
+            },
+            {
+              "question": "97種類の言語とは具体的にどの言語ですか。",
+              "answer": "本稿が確認した4つの文書のいずれにも言語名の一覧はありません。モデル発表文はGemini 3.8 Liveが会話中に「97種類の対応言語」を自動的に切り替えるとし、開発者向け記事の能力一覧は「97種類以上」としています。どちらもGoogle自身が示した数字であり、本稿は両方をそのまま並べて示し、1つにまとめることはしません。なお、この数字はモデルが会話の中で聞き取り、話せる言語を指すものであり、Googleはこの4つの文書の中で各インターフェース自体の表示言語や提供地域については説明していません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本稿の確認範囲とお断り",
+          "text": "本稿はGoogleが2026年9月15日に発表した公式文書のみを整理したもので、確認日は2026年9月18日です。当サイトはこの2つのモデルを実際には使用しておらず、本文中の能力の説明、リーダーボードの順位、価格はすべてGoogle自身の説明によるものです。本稿が確認した4つの文書は、提供状況を説明する際にいずれも開放された国・地域・市場を明記していません（料金ページはGoogle AI Studioが「利用可能なすべての地域」で無料だとしか書いておらず、こちらも地域を名指ししていません）。消費者向けの加入条件や料金は今後変更される可能性もあるため、行動する前にGoogleの公式ページで最新の発表を確認してください。本稿は利用や購入を勧めるものではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 1がAPIで正式提供開始：電話対応はできるのか、声は誰のものか、録音されるのか",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-1-api-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google：Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google DeepMind：Gemini 3.8 Audio (Live, Live Extended Thinking) Model Card",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google：Gemini Developer API Pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Gemini 3.8 Live와 Extended Thinking: 새 음성 모델, 내 계정으로 쓸 수 있을까",
+      "description": "2026년 9월 15일, Google은 음성 대화 모델 Gemini 3.8 Live와 Gemini 3.8 Live Extended Thinking 두 가지를 발표했습니다. 본 기사는 Google 공식 발표문, 개발자 게시물, 모델 카드, 가격 페이지를 바탕으로 개발자·기업·일반 사용자·Workspace 구독자가 각각 무엇을 쓸 수 있는지, 요금은 어떻게 계산되는지, 모델 카드가 명시한 지식 컷오프 날짜, 그리고 공식 문서가 밝히지 않은 제공 지역을 정리합니다.",
+      "hero": {
+        "src": "/guides/ai-news-gemini-38-live-20260915/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽의 둥근 말풍선 안에 음파를 나타내는 선들이 늘어서 있어 음성 대화를 나타낸다. 화살표가 오른쪽의 네 개 사각형을 가리키며 네 가지 이용자 구분을 나타내는데, 그중 두 개는 실선, 두 개는 점선 테두리로 그려 동시에 발표되었지만 개방 정도가 다름을 상징한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 15일, Google은 모델 발표문과 개발자 게시물, 두 건의 공식 발표를 통해 음성 대화 모델 두 가지를 공개했습니다. Gemini 3.8 Live와 Gemini 3.8 Live Extended Thinking입니다. Google은 두 모델에 서로 다른 자리매김을 부여했습니다. 3.8 Live는 '규모와 비용 효율을 위해 만들어졌으며, 대화형 지능과 유창한 응답, 시각적 참조를 결합했다'고, Extended Thinking은 '복잡도가 높은 작업을 위해 만들어졌으며, 더 높은 지능과 다단계 추론 능력을 갖췄다'고 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일에 Google의 모델 발표문, 개발자 게시물, DeepMind의 모델 카드, Gemini API 가격 페이지를 확인했습니다. 내용은 확인 당일을 기준으로 합니다. 본 사이트는 이 두 모델을 직접 사용해 보지 않았으며, 본문의 성능, 리더보드 순위, 가격은 모두 Google 자신의 설명이며, 공급업체의 주장에는 'Google에 따르면'이라고 표시합니다. 본 기사는 이용이나 구매를 권하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 15일, Google은 음성 대화 모델 Gemini 3.8 Live와 Gemini 3.8 Live Extended Thinking을 발표했습니다. 하나는 규모와 비용 효율을, 다른 하나는 복잡도가 높은 다단계 추론을 내세웁니다.",
+            "Google은 두 모델 모두에 대해 '오늘부터 순차 제공 시작'이라고 밝혔으며, 개발자 쪽 창구는 Gemini API와 Google AI Studio입니다. 일반 사용자 쪽에서는 발표문의 제공 목록이 Gemini 3.8 Live를 Search Live에, Extended Thinking을 Gemini Live에 배정했고, Workspace의 문서 기능은 Google AI Pro와 Ultra 구독자로 제한됩니다.",
+            "Google은 공식 문서 세 건 어디에도 제공 지역을 명시하지 않았고, 기업용도 여전히 비공개 프리뷰 단계입니다. '오늘부터 순차 제공 시작'은 현재로서는 시작을 뜻할 뿐, 이미 모두에게 열렸다는 뜻은 아닙니다.",
+            "두 모델은 Gemini API에서 같은 가격표를 공유합니다. 텍스트 입력은 100만 토큰당 0.75달러, 음성 입력은 3달러이며, 무료 등급도 있고 월 5,000회까지 무료로 제공되는 검색 grounding 한도도 있습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이번에 발표된 것: 두 모델, 두 가지 자리매김"
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 발표문은 Gemini 3.8 Live의 몇 가지 능력을 한 단락에 정리합니다. 시각 입력을 거의 실시간으로 처리해 대화에 참조할 화면을 가질 수 있다는 점, 언어를 자동으로 감지해 전환할 수 있다는 점(발표문은 97개 언어를 지원한다고 밝힙니다), 그리고 도구 호출과 API 호출을 백그라운드에서 실행하면서 대화를 이어갈 수 있어 사용자가 먼저 답을 듣고 작업은 뒤에서 마무리된다는 점입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Extended Thinking의 차이는 추론 방식에 있습니다. Google은 이 모델이 '생각하면서 말한다'고 설명하며, 깊은 추론이 필요한 작업을 만나면 먼저 '확인해 볼게요' 같은 말로 자연스럽게 이어간 뒤, 진행 상황을 알리는 내레이션으로 사용자를 다단계 백그라운드 작업으로 이끈다고 합니다. 개발자 게시물은 두 모델을 합쳐 '연쇄형 아키텍처보다 더 간결한 대안'이라고 부릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자 게시물은 주요 능력을 '포함'이라는 표현으로 따로 나열합니다. 비동기 함수 호출, 시각적 맥락, 영숫자 정확도(확인 코드, 청구 번호, 기술 데이터를 정확히 읽어냄), 다국어 지원(억양의 일관성을 유지하면서 '97개 이상'의 언어), 그리고 점진적 콘텐츠 업데이트입니다. 발표문은 Google AI 제품이 생성하는 음성에는 모두 SynthID 워터마크가 붙어 AI 생성 콘텐츠를 계속 식별할 수 있게 한다고 밝힙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "네 가지 이용자, 각각 쓸 수 있는 모델"
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 분명하게 쓰인 쪽은 개발자입니다. Google은 두 모델 모두에 대해 '오늘부터 순차 제공 시작'이라고 밝혔으며, 창구는 Gemini API와 AI Studio입니다. 기업 쪽은 Gemini Enterprise에서 비공개 프리뷰로만 제공되며, Customer Experience 시나리오와 (Extended Thinking만 해당하는) Workspace 기업 고객용은 모두 '출시 예정'이라고만 적혀 있을 뿐 일정은 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문의 제공 목록에서 소비자 쪽 구분은 다음과 같습니다. 3.8 Live는 '모두를 위한' 항목에 Search Live만 적혀 있습니다. Extended Thinking은 Gemini Live와 더불어, Workspace 중 Google AI Pro와 Ultra 구독자로 제한되는 '문서', 그리고 모든 Google AI 구독자가 쓸 수 있는 'Gmail'과 'Keep'에 적혀 있습니다. 즉 문서의 구독 문턱이 Gmail이나 Keep보다 높습니다. 같은 발표문의 동영상 캡션에는 별도로 Extended Thinking이 Gemini App 안에 있다고도 적혀 있으며, 본문과 소제목에도 두 모델을 함께 Gemini App으로 적은 부분이 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 카드의 창구 목록은 다릅니다. 두 모델 모두 공통으로 Gemini API, Gemini App, AI Studio, Vertex AI가 나열되고, 3.8 Live에는 Search Live가, Extended Thinking에는 Gmail·문서·Keep을 포함한 Workspace가 추가로 붙습니다. 발표문의 제공 목록에는 Vertex AI가 없고, Gemini App도 3.8 Live 쪽에는 포함되어 있지 않습니다. 본 기사는 이 두 목록을 있는 그대로 나란히 제시할 뿐, 어느 쪽이 맞는지 Google을 대신해 판단하지 않습니다. 발표문 상단에는 9월 17일에 업데이트되었다는 표시도 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "이용자 구분",
+            "사용 가능 모델",
+            "제공 내용",
+            "상태"
+          ],
+          "rows": [
+            [
+              "개발자",
+              "둘 다 가능",
+              "Gemini API, AI Studio",
+              "오늘부터 순차 제공"
+            ],
+            [
+              "기업",
+              "둘 다 가능",
+              "Gemini Enterprise",
+              "비공개 프리뷰"
+            ],
+            [
+              "일반 사용자",
+              "3.8 Live",
+              "Search Live",
+              "오늘부터 순차 제공"
+            ],
+            [
+              "일반 사용자",
+              "Extended Thinking",
+              "Gemini Live, Gemini App",
+              "오늘부터 순차 제공"
+            ],
+            [
+              "Workspace 구독자",
+              "Extended Thinking",
+              "문서는 AI Pro/Ultra 한정, Gmail과 Keep은 Google AI 구독자 대상",
+              "오늘부터 순차 제공"
+            ]
+          ],
+          "caption": "Google의 2026년 9월 15일 발표문과 모델 카드를 바탕으로 정리. 확인일 2026년 9월 18일. 모델 카드는 Gemini App과 Vertex AI도 두 모델 공통 창구로 나열합니다. 자세한 내용은 앞의 설명을 참고하세요."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "'오늘부터 순차 제공'은 '지금 바로 쓸 수 있다'는 뜻이 아니다"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 원문은 'rolling out starting today'라고 적었는데, 이는 시작이지 완료가 아닙니다. 기업 쪽은 명확히 비공개 프리뷰라고 밝혔고, '출시 예정'이라고 적힌 시나리오에도 일정은 없습니다. 2026년 9월 18일까지 확인한 결과, 세 문서 모두 제공 여부를 설명할 때 제품명과 구독 구분만 언급할 뿐 개방된 국가·지역·시장을 단 한 문장도 명시하지 않아서, 본 기사는 대만 계정이 이미 사용 가능한 범위에 들어 있는지 판단할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기업용 비공개 프리뷰 역시 신청 경로나 자격 조건이 적혀 있지 않고, Google은 출시가 언제 완료되는지도 밝히지 않아 사용자는 자신이 언제 받게 될지 판단할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "언어 수치는 두 문서의 표기가 다릅니다. 모델 발표문은 3.8 Live가 대화 중 '97개 지원 언어'를 자동으로 전환한다고 적었고, 개발자 게시물의 능력 목록은 '97개 이상'이라고 적었습니다. 두 수치 모두 Google 자신이 제시한 것이며, 본 기사는 둘을 그대로 나란히 적을 뿐 하나로 합치지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gemini-38-live-20260915/diagram-1-ko.svg",
+          "alt": "4분할 도해: 개발자·기업·소비자·Workspace라는 네 가지 이용자 구분별 제공 상태. 상표나 인터페이스 화면은 포함하지 않음",
+          "width": 1600,
+          "height": 900,
+          "caption": "Google의 2026년 9월 15일 발표를 바탕으로 정리: 개발자·기업·소비자·Workspace라는 네 가지 이용자의 제공 상태. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "요금과 데이터: 두 모델이 공유하는 하나의 가격표"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini API 가격 페이지는 gemini-3.8-live, gemini-3.8-live-extended-thinking, 그리고 그보다 앞서 나온 gemini-3.1-flash-live-preview를 같은 가격 구간에 묶어 같은 가격을 공유하게 하며, 새 모델이 이를 대체하거나 서비스 종료한다고도 적지 않았습니다. 발표문이 3.8 Live를 '규모와 비용 효율을 위해 만들어졌다'고 한 것은 자리매김에 관한 설명이지, 정가가 더 싸다는 뜻이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가격 페이지의 유료 등급은 입력 기준 100만 토큰당 텍스트 0.75달러, 음성 3달러(분당 0.005달러), 이미지·동영상 1달러입니다. 출력은 100만 토큰당(생각 토큰 포함) 텍스트 4.5달러, 음성 12달러(분당 0.018달러)입니다. 개발자 게시물은 분당 수치를 인용하면서 각주를 달아, 이것이 100만 토큰당 가격에서 환산한 추정치라고 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가격 페이지에는 무료 등급도 있습니다. 입력과 출력 모두 '무료'이지만 데이터가 제품 개선에 사용되며, 유료 등급은 그렇지 않습니다. Google 검색을 통한 grounding(실시간 사실 확인) 한도는 유료 등급에 적혀 있습니다. 월 5,000회까지 무료 검색을 Gemini 3.x 계열 전체가 공유하며, 그 이상은 1,000회당 14달러가 청구됩니다. 한 번의 요청이 여러 번의 조회를 일으킬 수 있으며, 그때마다 비용이 계산됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 카드에는 사양도 적혀 있습니다. 두 모델 모두 Gemini 3 Pro를 기반으로 하며, 입력은 오디오·이미지·동영상·텍스트를 아우르고 컨텍스트 창은 최대 128K 토큰입니다. 출력은 오디오와 텍스트로 64K 토큰입니다. 지식 컷오프 날짜는 2025년 1월로, 모델 자체가 기억하는 내용은 그때까지라는 뜻이며, 시의성 있는 내용은 여전히 별도로 과금되는 검색 grounding으로 보완해야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Google이 밝히지 않은 부분, 그리고 편집부가 만든 시나리오 하나"
+        },
+        {
+          "type": "paragraph",
+          "text": "평가 수치는 모두 Google의 발표문에서 나온 것입니다. Extended Thinking은 Artificial Analysis의 Speech to Speech Quality Index에서 '종합 1위(82.6)', τ-Voice에서 68.6%, Sierra의 τ-Voice-banking 기준에서 35.1%, Big Bench Audio에서 97.7%를 기록했습니다. 3.8 Live는 Speech Agent Arena에서 '2위'입니다. 이는 9월 15일 시점의 스냅샷이며, 본 사이트는 직접 시험해 보지 않았고 순위표는 계속 바뀔 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "안전성과 관련해 모델 카드는 Google이 프런티어 안전 프레임워크에 따라 평가한 대상이 Gemini 3.7 Flash였으며, 결과는 어떤 '추적 대상 또는 중대 역량 수준(Tracked or Critical Capability Level)'에도 도달하지 않았다고 밝힙니다. 두 신모델이 3.7 Flash 대비 뚜렷한 새 역량이나 실질적인 성능 향상을 보이지 않기 때문에, Google은 이들도 그 수준에 '도달할 가능성이 낮다'고 밝히는데, 이는 다른 모델의 결과에서 끌어낸 추론이지 이 두 모델 자체를 평가한 것은 아닙니다. 모델 카드는 또한 환각이 나타날 수 있다는 점, 이따금 지연이나 시간 초과가 있을 수 있다는 점, 유도 공격에 대한 저항력을 계속 개선하고 있다는 점도 적고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 편집부가 만든 시나리오이며, 실제로 사용해 본 결과가 아닙니다. 사용자가 여행 일정 비교표를 보면서 음성으로 Extended Thinking에 요점 정리를 부탁한다고 가정해 봅시다. Google의 설명에 따르면 모델은 먼저 응답하고, 정리 작업을 백그라운드로 넘긴 뒤, 진행 상황을 내레이션으로 전달합니다. 여기에는 계정이 해당 지역에 있어야 한다는 것, 올바른 인터페이스와 구독 구분을 써야 한다는 것까지 아직 확정되지 않은 조건 세 가지가 겹쳐 있습니다. 더해서 2025년 1월이라는 지식 컷오프 날짜 때문에 날짜와 관련된 세부 사항은 여전히 별도로 과금되는 검색 grounding에 의존해야 합니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "대만의 Google 계정으로 지금 Gemini 3.8 Live나 Extended Thinking을 쓸 수 있나요?",
+              "answer": "본 기사가 2026년 9월 18일까지 확인한 바로는, Google의 모델 발표문, 개발자 게시물, 모델 카드는 제공 여부를 설명할 때 제품명과 구독 구분만 언급할 뿐 개방된 국가·지역·시장을 단 한 문장도 명시하지 않았으며, 공식적으로 제공 지역을 밝히지 않았습니다. 본문에서 확인할 수 있는 것은 이용자 구분(개발자, 기업, 일반 사용자, Workspace 구독자)과 인터페이스별 차이뿐이며 지역별 설명은 없어서, 본 기사는 대만 계정이 이미 사용 가능한지를 Google을 대신해 확인할 수 없습니다."
+            },
+            {
+              "question": "Gemini 3.8 Live와 Gemini 3.8 Live Extended Thinking은 어떻게 다른가요?",
+              "answer": "Google은 Gemini 3.8 Live를 규모와 비용 효율을 위해 만들어진 것으로 자리매김했으며, 발표문의 제공 목록이 일반 사용자에게 제시하는 창구는 Search Live뿐입니다. Extended Thinking은 복잡도가 높고 다단계 추론이 필요한 작업을 위한 것으로 자리매김되어 있으며, 일반 사용자는 Gemini Live에서, 그리고 Workspace의 문서(Google AI Pro와 Ultra 구독자 한정), Gmail, Keep(모든 Google AI 구독자 이용 가능)에서 쓸 수 있습니다. 두 모델은 Gemini API에서 같은 가격표를 공유하며, 가격 페이지는 출력 가격에 생각 토큰이 포함된다고 명시합니다."
+            },
+            {
+              "question": "Gemini App 안에서 이 두 새 모델을 쓸 수 있나요?",
+              "answer": "발표문의 제공 목록에서 3.8 Live의 '모두를 위한' 항목에는 Search Live만 적혀 있고, Extended Thinking에는 Gemini Live와 Workspace가 적혀 있습니다. 다만 같은 발표문의 동영상 캡션에는 Extended Thinking이 Gemini App 안에 있다고도 적혀 있고, 본문과 소제목에도 두 모델을 함께 그곳에 적은 부분이 있어 어느 한쪽만 따로 지목하지는 않습니다. 반면 DeepMind의 모델 카드는 Gemini App과 Google Cloud/Vertex AI를 모두 두 모델 공통 창구로 나열하지만, 발표문의 제공 목록에는 Vertex AI가 없고 Gemini App도 3.8 Live 쪽에는 포함되어 있지 않습니다. 두 목록은 적힌 방식이 다르며, 본 기사는 각각의 내용을 있는 그대로 나열할 뿐, 어느 쪽이 최신이거나 더 정확한 상태인지 본 사이트가 대신 판단할 수는 없습니다."
+            },
+            {
+              "question": "음성을 쓰면 텍스트보다 비싼가요?",
+              "answer": "Gemini API 가격 페이지의 수치로는 음성 입력이 100만 토큰당 3달러, 텍스트 입력이 100만 토큰당 0.75달러로, 음성의 단가가 더 높은 것은 사실입니다. 가격 페이지와 개발자 게시물에는 모두 '분당 0.005달러'와 '분당 0.018달러'도 인쇄되어 있는데, 개발자 게시물의 각주는 이것이 100만 토큰당 가격에서 환산한 추정치라고 설명하며, 가격표 자체는 여전히 100만 토큰 단위로 표시됩니다. 이 밖에 무료 등급도 있어 입력과 출력 모두 과금되지 않지만, 데이터는 Google의 제품 개선에 사용됩니다."
+            },
+            {
+              "question": "이 두 모델은 최근에 일어난 일을 알고 있나요?",
+              "answer": "모델 카드에 적힌 지식 컷오프 날짜는 2025년 1월입니다. 즉 모델 자체가 기억하는 내용은 그때까지이며, 실시간 대화를 내세운다고 해서 그 이후에 일어난 일을 자동으로 아는 것은 아닙니다. 시의성 있는 내용을 확인하려면 Google 검색의 grounding 기능에 의존해야 합니다. 가격 페이지의 유료 등급 칸에는 월 5,000회까지 무료 한도가 있고 사용량은 Gemini 3.x 계열 전체가 공유하며 그 이상은 1,000회당 14달러가 청구된다고 적혀 있는 반면, 무료 등급 칸에는 '지원'이라고만 적혀 있을 뿐 한도나 가격은 나와 있지 않습니다."
+            },
+            {
+              "question": "97개 언어는 구체적으로 어떤 언어들인가요?",
+              "answer": "본 기사가 확인한 네 개 문서 어디에도 언어 이름 목록은 없습니다. 모델 발표문은 Gemini 3.8 Live가 대화 중 '97개 지원 언어'를 자동으로 전환한다고 적었고, 개발자 게시물의 능력 목록은 '97개 이상'이라고 적었습니다. 두 수치 모두 Google 자신이 제시한 것이며, 본 기사는 둘을 그대로 나란히 적을 뿐 하나로 합치지 않습니다. 한 가지 더 짚자면, 이 수치는 모델이 대화 중에 듣고 말할 수 있는 언어를 가리키는 것으로, Google은 이 네 개 문서에서 각 인터페이스 자체의 표시 언어나 제공 지역에 대해서는 설명하지 않았습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "본 기사의 확인 범위와 유의 사항",
+          "text": "본 기사는 Google이 2026년 9월 15일에 발표한 공식 문서만을 정리한 것이며, 확인일은 2026년 9월 18일입니다. 본 사이트는 이 두 모델을 직접 사용해 보지 않았으며, 본문의 능력 설명, 리더보드 순위, 가격은 모두 Google 자신의 설명입니다. 본 기사가 확인한 네 개 문서는 제공 여부를 설명할 때 모두 개방된 국가·지역·시장을 명시하지 않았습니다(가격 페이지는 Google AI Studio가 '이용 가능한 모든 지역'에서 무료라고만 적었을 뿐, 이 역시 특정 지역을 지목하지 않았습니다). 소비자 쪽 구독 문턱과 요금도 언제든 조정될 수 있으므로, 행동하기 전에 Google 공식 페이지의 현재 공지를 확인하시기 바랍니다. 본 기사는 이용이나 구매를 권하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 1, API에 정식 제공 시작: 전화 상담을 받을 수 있을까, 목소리는 누구의 것일까, 녹음될까",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-1-api-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google: Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google DeepMind: Gemini 3.8 Audio (Live, Live Extended Thinking) Model Card",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google: Gemini Developer API Pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Gemini 3.8 Live 与 Extended Thinking：新语音模型，你的账号能用吗？",
+      "description": "2026 年 9 月 15 日，Google 发布 Gemini 3.8 Live 与 Gemini 3.8 Live Extended Thinking 两款语音对话模型。本文依据 Google 官方发布文章、开发者文章、模型卡与定价页，整理开发者、企业、普通用户与 Workspace 订阅者各自能用到什么、费用怎么计算，以及模型卡写明的知识截止日与官方未说明的开放地区。",
+      "hero": {
+        "src": "/guides/ai-news-gemini-38-live-20260915/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一个圆角对话框里画着一排声波线，代表语音对话；一支箭头指向右边四个方框，代表四种使用身份，其中两个是实线、两个是虚线外框，象征同时发布但开放程度不同。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 15 日，Google 以模型发布文章与开发者文章两篇公告，发布两款语音对话模型：Gemini 3.8 Live 与 Gemini 3.8 Live Extended Thinking。Google 为两款模型给出了不同定位：3.8 Live“为规模与成本效率打造，结合对话智能、流畅应答与视觉参照”；Extended Thinking“为高复杂度任务打造，具备更高智能与多步骤推理能力”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核 Google 的模型发布文章、开发者文章、DeepMind 模型卡与 Gemini API 定价页，内容以查核当天为准。本站没有实际使用这两款模型，文中能力、排行榜名次与价格都是 Google 的说法，以“Google 表示”标示厂商宣称；本文也不构成使用或购买建议。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 15 日，Google 发布 Gemini 3.8 Live 与 Gemini 3.8 Live Extended Thinking 两款语音对话模型，一款主打规模与成本效率，另一款主打高复杂度的多步骤推理。",
+            "Google 对两款模型都写“即日起开始推出”，开发者这一侧的渠道是 Gemini API 与 Google AI Studio；普通用户这一侧，发布文章那张清单把 Gemini 3.8 Live 写在 Search Live、Extended Thinking 写在 Gemini Live，Workspace 的文档功能还限定 Google AI Pro 与 Ultra 订阅者才能用。",
+            "Google 在三份官方文档里都没有写出开放地区，企业端也仍是私有预览阶段，“即日起推出”目前只代表开始，不代表已经对所有人开放。",
+            "两款模型在 Gemini API 共用同一张价目表：文字输入每百万 token 0.75 美元、语音输入 3 美元，另外有免费层级，以及每月 5,000 次的免费搜索 grounding 额度。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这次发布了什么：两个模型，两种定位"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型发布文章把 Gemini 3.8 Live 的几项能力写在同一段文字里：能近乎实时处理视觉输入，让对话有画面可以参照；能自动检测并切换语言，发布文章写的是支持 97 种语言；也能在后台执行工具与 API 调用、同时继续对话，让用户先听到回复、工作再于后台完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Extended Thinking 的差异在于推理方式：Google 说明这款模型会“一边推理一边说话”，遇到需要深度推理的任务时，先用“让我确认一下”之类的话语自然承接，再用进度旁白带用户走过多步骤的后台工作；开发者文章把两款模型合称为“比级联式架构更精简的替代方案”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者文章另外条列主要能力，用的是“包括”：异步函数调用、视觉情境、字母数字精确度（准确判读确认码、理赔编号与技术数据）、多语言支持（“97 种以上”语言并保持腔调一致），以及渐进式内容更新。发布文章说 Google AI 产品生成的语音都会加上 SynthID 水印，让 AI 生成内容维持可被检测。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "四种身份，各自能用到哪一个模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者这一侧写得最明确：Google 对两款模型都写“即日起开始推出”，渠道是 Gemini API 与 AI Studio。企业端则只在 Gemini Enterprise 开放私有预览；Customer Experience 场景与（仅 Extended Thinking）Workspace 企业用户端都还写着“即将推出”，没有时间表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布文章那张清单上，消费端分工是：3.8 Live 对“所有人”只写了 Search Live；Extended Thinking 写 Gemini Live，加上 Workspace 的“文档”限 Google AI Pro 与 Ultra 订阅者，“Gmail”与“Keep”则开放给所有 Google AI 订阅者——“文档”的订阅门槛比“Gmail”与“Keep”高。同一篇发布文章的视频图说另外写 Extended Thinking 在 Gemini App 里，正文与小节标题也把两款模型合称写进 Gemini App。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡的渠道清单不同：两款模型一致列出 Gemini API、Gemini App、AI Studio、Vertex AI，3.8 Live 另加 Search Live，Extended Thinking 另加 Gmail、文档与 Keep 所在的 Workspace。发布文章那张清单没有 Vertex AI，也没把 Gemini App 算给 3.8 Live；本文两份照原样并列，不替 Google 认定哪一份才准。发布文章顶端另标示曾于 9 月 17 日更新。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "身份",
+            "可用模型",
+            "开放内容",
+            "状态"
+          ],
+          "rows": [
+            [
+              "开发者",
+              "两款皆可",
+              "Gemini API、AI Studio",
+              "即日起推出"
+            ],
+            [
+              "企业",
+              "两款皆可",
+              "Gemini Enterprise",
+              "私有预览"
+            ],
+            [
+              "普通用户",
+              "3.8 Live",
+              "Search Live",
+              "即日起推出"
+            ],
+            [
+              "普通用户",
+              "Extended Thinking",
+              "Gemini Live、Gemini App",
+              "即日起推出"
+            ],
+            [
+              "Workspace 订阅者",
+              "Extended Thinking",
+              "文档限 AI Pro／Ultra；Gmail、Keep 限 Google AI 订阅者",
+              "即日起推出"
+            ]
+          ],
+          "caption": "依 Google 2026 年 9 月 15 日发布文章与模型卡整理，查核日 2026 年 9 月 18 日；模型卡另列 Gemini App 与 Vertex AI 为两款模型共同渠道，详见前文说明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "“即日起推出”不等于“现在就能用”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 原文写“rolling out starting today”，是开始不是完成；企业端明写是私有预览，标着“即将推出”的场景也没有时间表。查核到 2026 年 9 月 18 日，三份文档说明可用性时只点名产品与订阅身份，没有一句写出开放的国家、地区或市场，本文因此无法判断台湾账号是否已在可用范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "企业私有预览同样没有写申请渠道或资格条件，Google 也没有讲推出什么时候算完成，用户无从判断自己什么时候会拿到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "语言数字两篇写法不同：模型发布文章写 3.8 Live 会在对话中自动切换“97 种支持语言”，开发者文章的能力条列写“97 种以上”。两个数字都是 Google 自己给的，本文照原样并列，不合并成一个。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gemini-38-live-20260915/diagram-1-zh-cn.svg",
+          "alt": "四格图解：开发者、企业、消费端与 Workspace 四种身份各自的开放状态，不含商标或界面画面",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Google 2026 年 9 月 15 日发布整理：开发者、企业、消费端与 Workspace 四种身份的开放状态，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "费用与数据：两款模型共用一张价目表"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini API 定价页把 gemini-3.8-live、gemini-3.8-live-extended-thinking 与较早的 gemini-3.1-flash-live-preview 列在同一个价格区块、共用同一组价格，也没有写新模型取代或停用它。发布文章说 3.8 Live“为规模与成本效率打造”，那是定位说法，不是牌价比较低。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定价页的付费层级：输入每百万 token 文字 0.75 美元、语音 3 美元（每分钟 0.005 美元）、图像视频 1 美元；输出每百万 token（含思考 token）文字 4.5 美元、语音 12 美元（每分钟 0.018 美元）。开发者文章引用每分钟数字时加了脚注，说明那是用每百万 token 价格换算的估计值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定价页还有免费层级：输入输出都写“免费”，数据会用于改善产品，付费层级则不会。Google 搜索即时查证（grounding）的额度列在付费层级：每月 5,000 次免费搜索由 Gemini 3.x 系列共用，超过后每 1,000 次收费 14 美元；一次请求可能触发不止一次查询，每次都计费。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡另外写了规格：两款模型都以 Gemini 3 Pro 为基础，输入涵盖音频、图像、视频与文字，上下文窗口上限 128K token；输出音频与文字，64K token。知识截止日是 2025 年 1 月，代表模型记得的事到那时候为止，时效性内容仍要靠另外计费的搜索 grounding 补。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Google 没有讲的部分，以及一个编辑设计的情境"
+        },
+        {
+          "type": "paragraph",
+          "text": "评测数字都出自 Google 发布文章：Extended Thinking 在 Artificial Analysis 的 Speech to Speech Quality Index“整体第一（82.6）”，τ-Voice 68.6%、Sierra 的 τ-Voice-banking 基准 35.1%、Big Bench Audio 97.7%；3.8 Live 则在 Speech Agent Arena“第二名”。这些是 9 月 15 日的快照，本站未自行测试，排行榜会持续变动。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全性方面，模型卡写 Google 依前沿安全框架评估的对象是 Gemini 3.7 Flash，结果没有触及任何“已追踪或关键能力等级”；因两款新模型相较 3.7 Flash 没有明显新能力或性能实质提升，Google 表示它们“不太可能”触及那些等级——这是从另一款模型的结果推论，不是针对这两款模型的评估。模型卡也写明可能出现幻觉与偶尔的迟缓或超时，并仍在改善诱导攻击的抵抗力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是编辑设计的情境，不是实测结果。假设用户对着行程比较表，用语音请 Extended Thinking 整理重点：依 Google 的说法，模型会先回应、把整理放到后台执行，再用进度旁白交代进度。这叠了三个还没确定的条件：账号要在合格地区、要用对的界面与订阅身份；加上 2025 年 1 月的知识截止日，日期相关的细节仍要靠另外计费的搜索 grounding。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "台湾的 Google 账号现在可以用 Gemini 3.8 Live 或 Extended Thinking 吗？",
+              "answer": "以本文查核到 2026 年 9 月 18 日为止，Google 的发布文章、开发者文章与模型卡在说明可用性时只点名产品与订阅身份，没有一句写出开放的国家、地区或市场，官方未说明开放地区。文中能查到的只有身份别（开发者、企业、普通用户、Workspace 订阅者）与界面别的差异，没有地区别的说明，本文无法代替 Google 确认台湾账号是否已经可以使用。"
+            },
+            {
+              "question": "Gemini 3.8 Live 跟 Gemini 3.8 Live Extended Thinking 差在哪里？",
+              "answer": "Google 把 Gemini 3.8 Live 定位成为规模与成本效率打造，发布文章那张可用性清单给普通用户的渠道只写了 Search Live；Extended Thinking 定位成处理高复杂度、多步骤推理的任务，普通用户在 Gemini Live，以及 Workspace 的文档（限 Google AI Pro 与 Ultra 订阅者）、Gmail 与 Keep（开放给所有 Google AI 订阅者）用得到。两款模型在 Gemini API 上共用同一张价目表，定价页把输出价格注明为含思考 token。"
+            },
+            {
+              "question": "Gemini App 里面能不能用到这两款新模型？",
+              "answer": "发布文章那张可用性清单上，3.8 Live 对“所有人”只写了 Search Live，Extended Thinking 写的是 Gemini Live 与 Workspace；不过同一篇发布文章的视频图说也写着 Extended Thinking 在 Gemini App 里，正文与小节标题也把两款模型合称写进去，没有分开点名是哪一款。DeepMind 的模型卡则把 Gemini App 与 Google Cloud／Vertex AI 都列成两款模型共同的渠道，而发布文章那张清单没有 Vertex AI，也没把 Gemini App 算给 3.8 Live。两份清单的列法不同，本文把几种写法照原样列出，本站无法代为判断哪一份才是最新或最准确的状态。"
+            },
+            {
+              "question": "用语音会比用文字贵吗？",
+              "answer": "以 Gemini API 定价页的数字，语音输入每百万 token 3 美元、文字输入每百万 token 0.75 美元，语音的单位定价确实比较高；定价页与开发者文章都印了“每分钟 0.005 美元”与“每分钟 0.018 美元”，开发者文章的脚注说明那是用每百万 token 价格换算的估计值，定价表本身也是以每百万 token 标价。另外还有一个免费层级，输入与输出都不收费，但数据会用于改善 Google 的产品。"
+            },
+            {
+              "question": "这两款模型知道最新发生的事吗？",
+              "answer": "模型卡写的知识截止日是 2025 年 1 月，也就是模型本身记得的内容到那时候为止，并不会因为主打实时对话就自动知道之后发生的事。如果需要查证时效性的内容，要靠 Google 搜索的 grounding 功能；定价页在付费层级那一栏列出每月 5,000 次免费额度、用量由所有 Gemini 3.x 系列模型共用，超过后每 1,000 次收费 14 美元，免费层级那一栏只写“支持”，没有列出额度或价格。"
+            },
+            {
+              "question": "97 种语言是哪 97 种？",
+              "answer": "本文查核的四份文档都没有列出语言名称。模型发布文章写 Gemini 3.8 Live 会在对话中自动切换“97 种支持语言”，开发者文章的能力条列写“97 种以上”；两个数字都是 Google 自己给的，本文照原样并列，不合并成一个。另外要提醒：这个数字说的是模型在对话中听得懂、说得出的语言，Google 没有在这四份文档里说明各个界面本身的界面语言或开放地区。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文查核范围与提醒",
+          "text": "本文只整理 Google 在 2026 年 9 月 15 日发布的官方文档，查核日为 2026 年 9 月 18 日，本站没有实际使用这两款模型，文中的能力描述、排行榜名次与定价都是 Google 的说法。本文查核的四份文档在说明可用性时，都没有写出开放的国家、地区或市场（定价页只写 Google AI Studio“在所有可用地区”免费，同样没有点名地区）。消费端的订阅门槛与费用也可能随时调整，行动前请以 Google 官方页面当下的公告为准；本文不构成使用或购买建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "GPT-Live 1 开放 API：电话客服能不能接、声音是谁的、会不会录音",
+              "kind": "life",
+              "slug": "ai-news-gpt-live-1-api-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google：Build real-time voice applications with Gemini 3.8 Live and 3.5 Transcribe",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-real-time-voice-applications-gemini-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google DeepMind：Gemini 3.8 Audio (Live, Live Extended Thinking) Model Card",
+          "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Google：Gemini Developer API Pricing",
+          "url": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

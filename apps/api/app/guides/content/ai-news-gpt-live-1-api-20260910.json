@@ -1,0 +1,1236 @@
+{
+  "slug": "ai-news-gpt-live-1-api-20260910",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-10",
+  "featured": false,
+  "display_order": 157,
+  "related": [
+    "ai-news-gemini-38-live-20260915",
+    "ai-news-gpt-live-voice-20260708",
+    "ai-news-chatgpt-storage-scale-20260911"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "GPT-Live 1 開放 API：電話客服能不能接、聲音是誰的、會不會錄音",
+      "description": "2026 年 9 月 10 日，OpenAI 的 API 更新紀錄寫下全雙工語音模型 GPT-Live 1 已在 API 正式提供，開發者可以把它接進電話客服、App 或自己的產品。本文依 OpenAI 開發者文件整理這個模型在 API 裡的規格、電話怎麼接上以及文件說這個端點不支援外撥、內建的 12 個具名語音與沒有列出的支援語言，還有錄音與每分鐘計費方式；本站沒有實測。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-1-api-20260910/hero.jpg",
+        "alt": "原創插圖：左邊一支手機，旁邊有四條聲波線；一條線從手機底部折向右邊的圓角面板，面板裡有一個對話泡泡和幾條聲波，代表打進來的電話由背後的語音模型接手回應。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，OpenAI 在 API 開發者文件的更新紀錄寫下一則新條目：全雙工語音模型 GPT-Live 1 已在 API 正式提供（generally available），對應模型代號 gpt-live-1、端點 v1/live/sessions。官方文件寫，語音工作階段每分鐘 0.05 美元、按秒計費，後端模型與工具的用量另外計費。這件事的意義是：一個會邊聽邊說的語音模型，是開發者可以買來裝進自己電話系統、App 或產品裡的零件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核 OpenAI 開發者文件的 API 更新紀錄、GPT-Live 1 模型頁、電話與 SIP 整合指南，以及工作階段管理指南，讀到的是查核當天的版本；這些文件頁沒有版本號，內容可能之後再更動。本站沒有實際串接或測試這個 API，文中的能力描述都是 OpenAI 的說法。本文只談 API 開發者端的這次更新，不談 ChatGPT 使用者端的方案與設定。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 10 日，OpenAI 的 API 更新紀錄寫下全雙工語音模型 GPT-Live 1 已在 API 正式提供（generally available），開發者可以把它接進電話客服、App 或自己的產品。",
+            "語音工作階段每分鐘 0.05 美元，依秒計費，後端模型與呼叫的工具則另外計費。",
+            "文件寫這個電話流程處理的是打進來的電話，不支援用 v1/live/sessions 建立對外撥出的 SIP 通話；併發的工作階段上限依帳號層級從 25 到 500 個不等，且不支援免費層級。",
+            "本文查核的四份官方文件沒有列出支援的口說語言清單，12 個具名語音的語言欄位只有英語與葡萄牙語；聲音要在建立工作階段時選定，通話中途不能更換。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 10 日的更新紀錄：正式提供（GA）、模型代號與兩種委派方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方模型頁把 GPT-Live 1 定義成一個全雙工語音模型：它可以同時聆聽與說話，並把推理與工具使用委派給後端代理，也就是查資料或運算時交給背後處理，對話還能繼續。更新紀錄把 9 月 10 日的狀態寫成「已在 API 正式（generally available）推出」，那句話講的是供應狀態，本文查核的四份文件沒有寫這是第一次出現；電話串接指南反而提到，既有整合可能仍會收到一個已淘汰的來電事件名稱，可見這之前就有整合在跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型頁列出的模型代號是 gpt-live-1，對應的端點是 v1/live/sessions；官方文件形容它是「我們最頂級的模型，用於自然、有表情的語音對話，並能流暢處理插話」，這是 OpenAI 自己的說法。模型的輸入與輸出都是聲音與文字兩種形式，不支援圖片與影片；模型頁列出的知識截止日是 2025 年 7 月 31 日，也就是模型本身訓練資料的時間點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者要讓 GPT-Live 1 處理需要查資料或運算的問題時，文件寫有兩種委派方式：一種是 Responses 委派，搭配 OpenAI 的模型；另一種是 client 委派，接到開發者自己架設的後端，沒有指定或設成 null 時走的就是 client。文件寫委派模式在工作階段啟動後不能更改，要換得開一個新的工作階段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這個模型在 API 裡的規格：只有一個端點，不支援免費層級"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1 在 API 裡只有一個端點被標為支援——Live（v1/live/sessions）；官方的端點列表把 Chat Completions、Responses、Realtime 等既有端點，連同舊式的 Completions (legacy) 一起列為不支援。電話串接指南也提醒，每一種 API 有自己的驗證、工作階段建立方式與事件契約，不能互相套用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用量的算法也不太一樣：文件寫明速率限制是以「同時進行的工作階段數」計算，並把免費（Free）列為不支援的使用層級。依帳號的使用層級，Tier 1 到 Tier 5 分別可以同時開啟 25、50、200、300、500 個工作階段。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "內容",
+            "備註"
+          ],
+          "rows": [
+            [
+              "模型代號",
+              "gpt-live-1",
+              "唯一支援端點 v1/live/sessions"
+            ],
+            [
+              "支援模態",
+              "聲音與文字（輸入輸出皆同）",
+              "不支援圖片與影片"
+            ],
+            [
+              "委派模式",
+              "Responses 委派或 client 委派",
+              "建立工作階段時選定，中途不能換"
+            ],
+            [
+              "併發上限",
+              "Tier 1–5：25／50／200／300／500",
+              "不支援免費層級"
+            ],
+            [
+              "語音費用",
+              "每分鐘 0.05 美元，按秒計費",
+              "後端模型與工具另計"
+            ]
+          ],
+          "caption": "依 OpenAI 開發者文件整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "電話打進來，GPT-Live 1 怎麼接手"
+        },
+        {
+          "type": "paragraph",
+          "text": "要把 GPT-Live 1 接到電話系統，官方文件列出兩條路：一種是 Direct SIP，由電話業者與 OpenAI 交換通話音訊，開發者的應用程式負責事件通知、工作階段設定、接不接電話的決定與商業邏輯；另一種是伺服器音訊橋接，由開發者的應用程式把電話業者或會議室的音訊透過 WebSocket 轉送給 GPT-Live，兩端連線、事件轉換、播放與通話生命週期都要自己管。文件提到 Twilio、Telnyx、LiveKit 與 Daily/Pipecat 這幾家業者都有專屬的整合說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "電話打進來後的流程：由開發者的應用程式依自己的授權與路由規則，分別用一個 API 動作接聽或拒接，接聽要送出模型、聲音與委派模式等設定，拒接則要附上一個介於 300 到 699 之間的 SIP 狀態碼（例如代表忙線的 486）；第一個接聽或拒接的決定生效，之後重複送出的決定會被拒絕。通話中另有兩個動作，可以把電話轉接出去或直接掛斷，兩者成功時都回應 200 OK 且沒有內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件在這段流程的結尾寫明，它處理的是打進來的電話，不支援透過 POST /v1/live/sessions 建立對外撥出的 SIP 通話；要做外撥，文件要開發者改用合作夥伴的整合方案，並把外撥講成業者自己掌握的事。文件也提醒，來電附帶的 SIP 標頭要當成不可信的來電方資訊，不能當成授權依據。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-1-api-20260910/diagram-1.svg",
+          "alt": "四格圖解：GPT-Live 1 進 API 的四個重點——電話以接聽為主、支援語言未列明、預設不錄音、語音每分鐘 0.05 美元",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 1 進 API 的四個重點：電話接聽為主、聲音語言未列明、預設不錄音、每分鐘 0.05 美元；依 OpenAI 開發者文件整理，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "聲音是誰的：內建 12 種，這四份文件沒有列出支援語言"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1 的聲音不是只有一種。除了預設的 marin，官方文件另外列出 12 個具名語音可以選，例如語言欄標英語、地區風格欄標英國的 vesper 與標北美的 gleam，以及語言欄標葡萄牙語、風格欄標巴西的 bossa 與 tempo。開發者在建立工作階段時選一個放進設定，對話開始後就不能中途更換，要換就得開新的工作階段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣讀者要注意的是：文件用「地區風格」形容這些語音，同時特別註明那只是說話風格，不保證腔調的擬真度。更重要的是，本文查核的四份官方文件沒有列出這個模型支援哪些口說語言——12 個具名語音的語言欄位只有英語與葡萄牙語，預設語音 marin 的語言也沒有另外說明；文件談到開場白時，要開發者在來電者開口前「用應用程式指定的語言」，並拿自己支援的語言去測試。也就是說，客服電話那頭若真的用上 GPT-Live 1，它中文講得如何，這四份文件沒有給答案，不能預設它會。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件也提到，經過核准的聲音可以用自己的錄音打造成客製化語音，細節在另一份說明裡，本文不深入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "會不會被錄音、記憶有多長、電話講幾分鐘大概多少錢"
+        },
+        {
+          "type": "paragraph",
+          "text": "會不會被錄音，由開發者決定，不是預設開啟。官方文件寫明，工作階段的錄音設定預設是關閉，開發者要主動把它打開、而且專案要先被允許，才能留下已完成的錄音供下載或「分叉」出新的工作階段，下載與分叉還要有一份允許留存的資料政策。留下來的錄音會在 30 天後到期；如果專案啟用了 Zero Data Retention（資料零保留），錄音設定一律視為關閉，下載與分叉也就不可用。錄音下載下來是雙聲道的 WAV 檔，輸入與輸出的聲音分別在左右聲道。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長時間通話的記憶也有上限。文件寫，工作階段預設的上下文視窗是 128,000 tokens，裡面包含開發者給的指示、對話文字，以及不會出現在逐字稿裡的聲音 token；用量超過視窗的 90% 時，系統會在同一個工作階段裡換上另一個語音引擎接手，新引擎會拿到原本的指示，以及最多 8,192 tokens 的對話歷史（近期訊息，以及在有摘要可用時，舊訊息的摘要）。這代表很長的通話，前面談到的細節有可能被摘要或省略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用的算法本身不複雜：語音工作階段每分鐘 0.05 美元，依實際秒數計費，文件註明不會無條件進位到整分鐘；後端模型與工具依各自的價格另外計費，這四份文件沒有把這兩筆費用合併成一個範例。以下是本文依查核日 2026 年 9 月 18 日費率做的換算，不是官方數字：語音部分講滿三分鐘，單計語音是 0.15 美元，實際總價還要看後端處理了多少工作。工作階段結束時，官方文件列出的結束原因包含應用程式主動關閉、工作階段達到時長上限、安全過濾中止、遠端連線正常結束，以及連線意外中斷，但文件沒有寫出時長上限實際是幾分鐘。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-Live 1 是 2026 年 9 月 10 日才第一次能用嗎？",
+              "answer": "更新紀錄寫的是「已在 API 正式（generally available）推出」，那句話講的是供應狀態，本文查核的四份官方文件沒有寫這是第一次出現。電話與 SIP 整合指南反而提到，既有整合可能仍會收到一個已淘汰的來電事件名稱，代表在這之前就有整合在跑。這四份文件也沒有寫出更早的預覽時程，或分批開放的安排。"
+            },
+            {
+              "question": "GPT-Live 1 聽得懂中文嗎？可以打電話去用中文問問題嗎？",
+              "answer": "本文查核的四份官方文件沒有列出這個模型支援哪些口說語言。文件列出的 12 個具名語音，語言欄位只有英語與葡萄牙語，預設語音 marin 也沒有另外標明語言；文件談到開場白時，要開發者在來電者開口前用應用程式指定的語言，並拿自己支援的語言去測試。以本文查核到 2026 年 9 月 18 日的文件版本，沒有看到支援中文的說明，不能預設它聽得懂或答得出流利中文。"
+            },
+            {
+              "question": "台灣的開發者現在可以用這個 API 嗎？",
+              "answer": "本文查核的四份官方文件沒有列出可以使用的國家或地區清單，也沒有另外提到台灣。能不能申請與使用，請以自己帳號在 OpenAI 平台上實際看到的畫面為準；本文沒有查證台灣帳號目前是否能使用這個功能。"
+            },
+            {
+              "question": "企業要串接電話系統，只能用 OpenAI 官方管道嗎？",
+              "answer": "不一定。官方文件寫，這個電話流程處理的是打進來的電話，不支援透過 POST /v1/live/sessions 建立對外撥出的 SIP 通話；要做外撥，文件要開發者改用合作夥伴的整合方案，文件點名的幾家是 Twilio、Telnyx、LiveKit 與 Daily/Pipecat。這些屬於第三方業者自己的服務範圍，實際功能與費用要看各家自己的說明。"
+            },
+            {
+              "question": "這個語音工作階段會被錄音留存嗎？",
+              "answer": "預設不會。官方文件寫明，工作階段的錄音設定預設是關閉，開發者要主動打開、專案要先被允許，下載與分叉還要有一份允許留存的資料政策，才會有錄音留下；留下的錄音會在 30 天後到期。如果專案啟用了資料零保留（Zero Data Retention），錄音設定會一律視為關閉，不會有錄音可以下載。"
+            },
+            {
+              "question": "打一通電話大概要多少錢？",
+              "answer": "官方公布的是語音本身的費率：每分鐘 0.05 美元，依實際秒數計費，查核日是 2026 年 9 月 18 日。以下是本文的換算，不是官方數字：三分鐘的通話單計語音是 0.15 美元。後端模型與呼叫的工具是另外計費，依各自的價格而定，實際一通電話的總價要看它處理了多少工作，這四份文件沒有提供整通電話的總價範例。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這是開發者工具，不是消費者可以直接申請的服務",
+          "text": "本文寫的是 OpenAI 開放給開發者串接的 API，一般使用者不會有「打開 GPT-Live 1」這種設定可以調整——你會不會遇到它，取決於打電話或用 App 的那家公司有沒有採用。本文查核的四份官方文件沒有列出支援的口說語言，也沒有可使用的地區清單；文件示範了怎麼請模型唸出「本通話可能為了品質與訓練目的而錄音」這類告知語，但把它當成開發者的選擇，這四份文件沒有規定業者一定要告訴你正在跟 AI 對話，而且文件自己也提醒這種指示不保證逐字唸出。本站沒有實際測試這個 API，文中的功能描述都是 OpenAI 的說法，實際狀況請以你聯繫的業者說明，或 OpenAI 開發者文件的最新版本為準，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live 與 Extended Thinking：新語音模型，你的帳號能用嗎？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 開發者文件：Changelog（API 更新紀錄）",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開發者文件：GPT-Live 1 模型頁",
+          "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開發者文件：Telephony and SIP",
+          "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開發者文件：Managing GPT-Live sessions",
+          "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "GPT-Live 1 Comes to the API: Can It Take Customer Service Calls, Whose Voice Is It, Will It Record?",
+      "description": "On September 10, 2026, OpenAI’s API changelog noted that voice model GPT-Live 1 is now generally available in the API, so developers can wire it into phone support, apps, or their own products. Drawing on OpenAI’s developer documentation, this article covers the model’s API specs, how calls connect, the documentation’s note that outbound calls are not supported, its 12 named voices and unlisted spoken languages, and how recording and per-minute billing work; this site has not tested it.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-1-api-20260910/hero-en.jpg",
+        "alt": "Original illustration: a phone with sound-wave lines; one line bends toward a rounded panel with a speech bubble and sound waves, showing an incoming call answered by a voice model.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 10, 2026, OpenAI’s API developer documentation logged a new changelog entry: the full-duplex voice model GPT-Live 1 is now generally available in the API, under the model ID gpt-live-1 and the endpoint v1/live/sessions. The official documentation states that voice sessions cost $0.05 per minute, billed per second, with backend model and tool usage charged separately. What this means is that a voice model that can listen and speak at the same time is a component developers can buy and build into their own phone systems, apps, or products."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026 against OpenAI’s developer documentation: the API changelog, the GPT-Live 1 model page, the telephony and SIP integration guide, and the session management guide, reflecting the versions available on the day of checking; these documentation pages carry no version numbers and their content may change later. This site did not actually integrate with or test this API; the capability descriptions in this article are OpenAI’s own statements. This article covers only this update on the API developer side, not the plans or settings on the ChatGPT consumer side."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 10, 2026, OpenAI’s API changelog recorded that the full-duplex voice model GPT-Live 1 is now generally available in the API, and developers can wire it into phone support lines, apps, or their own products.",
+            "Voice sessions cost $0.05 per minute, billed per second, while the backend model and any tools it calls are billed separately.",
+            "The documentation states that this call flow handles inbound calls, and does not support creating outbound SIP calls through v1/live/sessions; the concurrent session limit ranges from 25 to 500 depending on account tier, and the free tier is not supported.",
+            "The four official documents this article checked do not list which spoken languages are supported; the language field for the 12 named voices shows only English and Portuguese. A voice must be selected when a session is created and cannot be changed mid-call."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The September 10 Changelog Entry: Generally Available, the Model ID, and Two Delegation Modes"
+        },
+        {
+          "type": "paragraph",
+          "text": "The official model page defines GPT-Live 1 as a full-duplex voice model: it can listen and speak at the same time, delegating reasoning and tool use to a backend agent — meaning that when something needs to be looked up or computed, that work is handed off in the background while the conversation continues. The changelog describes the September 10 status as “now generally available in the API”; that phrase describes an availability status, and the four documents this article checked do not say this is the first time it has appeared. The telephony integration guide, in fact, notes that existing integrations may still receive a deprecated incoming-call event name, which suggests integrations were already running before this date."
+        },
+        {
+          "type": "paragraph",
+          "text": "The model page lists the model ID as gpt-live-1, with the corresponding endpoint v1/live/sessions; the official documentation describes it as “our premier model for natural, expressive voice conversations with smooth interruption handling” — this is OpenAI’s own characterization. Both input and output modalities are audio and text; image and video are not supported. The model page lists a knowledge cutoff of July 31, 2025, which is the point in time for the model’s own training data."
+        },
+        {
+          "type": "paragraph",
+          "text": "When developers want GPT-Live 1 to handle questions that require looking things up or computation, the documentation describes two delegation modes: Responses delegation, paired with an OpenAI model, and client delegation, which connects to a backend the developer runs themselves; if delegation is omitted or set to null, it defaults to client mode. The documentation states that the delegation mode cannot be changed once a session has started — changing it requires starting a new session."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Model’s API Specifications: Only One Supported Endpoint, No Free Tier"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1 has only one endpoint marked as supported in the API — Live (v1/live/sessions); the official endpoint list marks existing endpoints such as Chat Completions, Responses, and Realtime, along with the older Completions (legacy), as not supported. The telephony integration guide also notes that each API has its own authentication, session creation, and event contract, and they cannot be substituted for one another."
+        },
+        {
+          "type": "paragraph",
+          "text": "Usage is also measured differently: the documentation states that rate limits are measured in concurrent sessions, and lists Free as an unsupported usage tier. Depending on the account’s usage tier, Tier 1 through Tier 5 can open 25, 50, 200, 300, and 500 concurrent sessions respectively."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Details",
+            "Notes"
+          ],
+          "rows": [
+            [
+              "Model ID",
+              "gpt-live-1",
+              "Only supported endpoint: v1/live/sessions"
+            ],
+            [
+              "Supported modalities",
+              "Audio and text (both input and output)",
+              "Image and video not supported"
+            ],
+            [
+              "Delegation mode",
+              "Responses delegation or client delegation",
+              "Selected when the session is created; cannot be changed mid-session"
+            ],
+            [
+              "Concurrency limit",
+              "Tier 1–5: 25 / 50 / 200 / 300 / 500",
+              "Free tier not supported"
+            ],
+            [
+              "Voice pricing",
+              "$0.05 per minute, billed per second",
+              "Backend model and tools billed separately"
+            ]
+          ],
+          "caption": "Compiled from OpenAI developer documentation; checked on September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "When a Call Comes In: How GPT-Live 1 Takes Over"
+        },
+        {
+          "type": "paragraph",
+          "text": "To connect GPT-Live 1 to a phone system, the official documentation lists two paths: Direct SIP, where the telephony provider exchanges call audio with OpenAI while the developer’s application handles webhooks, session configuration, call decisions, and business logic; and a server audio bridge, where the developer’s application relays audio from the telephony provider or a meeting room to GPT-Live over WebSocket, managing both connections, event translation, playback, and the call lifecycle itself. The documentation mentions that Twilio, Telnyx, LiveKit, and Daily/Pipecat each have dedicated integration guides."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once a call comes in: the developer’s application applies its own authorization and routing rules, using a separate API action to accept or reject the call — accepting requires sending settings such as the model, voice, and delegation mode, while rejecting requires attaching a SIP status code between 300 and 699 (486, for busy, for example); the first accept or reject decision wins, and any decision sent afterward is rejected. Two further actions are available during a call — transferring it elsewhere or hanging up directly — both of which return 200 OK with no content on success."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the end of this section, the documentation states plainly that this flow handles inbound calls, and does not support creating outbound SIP calls through POST /v1/live/sessions; for outbound calling, the documentation directs developers to use a partner integration instead, describing outbound calling as something the provider owns. The documentation also warns that SIP headers attached to an incoming call should be treated as untrusted caller metadata, not as a basis for authorization."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-1-api-20260910/diagram-1-en.svg",
+          "alt": "Four-panel diagram: four key points about GPT-Live 1 in the API — calls are inbound-only, supported languages are not listed, recording is off by default, voice costs $0.05 per minute",
+          "width": 1600,
+          "height": 900,
+          "caption": "Four key points about GPT-Live 1 in the API: calls are inbound-only, voice languages are not listed, recording is off by default, and pricing is $0.05 per minute; compiled from OpenAI developer documentation, checked on September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Whose Voice Is It: 12 Built-in Options, but These Four Documents Don’t List Supported Languages"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1’s voice isn’t limited to just one option. Besides the default, marin, the official documentation lists 12 additional named voices to choose from — for example, vesper, whose language field is marked English and regional-influence field British, and gleam, marked English and North American; as well as bossa and tempo, both marked Portuguese with a Brazilian regional influence. Developers select one and put it in the session settings when creating a session; once a conversation has started, it cannot be changed mid-call — changing it requires starting a new session."
+        },
+        {
+          "type": "paragraph",
+          "text": "What readers in Taiwan should note: the documentation uses “regional influence” to describe these voices, while specifically stating that this refers only to speaking style and is not a guarantee of accent fidelity. More importantly, the four official documents this article checked do not list which spoken languages this model supports — the language field for the 12 named voices shows only English and Portuguese, and the default voice, marin, has no language specified either; when the documentation discusses greetings, it tells developers to use the language specified by the application until the caller speaks, and to test with the languages their own application supports. In other words, if GPT-Live 1 really is answering a customer service call, how well it handles Chinese is a question these four documents do not answer — it should not be assumed that it can."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official documentation also mentions that, once approved, a custom voice can be built from your own recordings; the details are in a separate guide that this article does not go into."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Is It Recorded, How Long Does It Remember, and What Does a Few Minutes on the Phone Cost"
+        },
+        {
+          "type": "paragraph",
+          "text": "Whether a call is recorded is up to the developer — it is not on by default. The official documentation states that a session’s recording setting defaults to off; the developer must turn it on, and the project must first be approved, before a completed recording can be kept for download or “forking” into a new session, and downloading or forking also requires a data policy that permits persistence. Saved recordings expire after 30 days; if a project has Zero Data Retention enabled, the recording setting is always treated as off, making downloads and forks unavailable. A downloaded recording is a stereo WAV file, with the input and output audio in the left and right channels respectively."
+        },
+        {
+          "type": "paragraph",
+          "text": "There’s also a cap on memory for long calls. The documentation states that a session’s default context window holds 128,000 tokens, which includes the instructions given by the developer, the conversation text, and audio tokens that do not appear in the transcript; when usage exceeds 90% of that window, the system starts a replacement voice engine within the same session, and the new engine receives the original instructions plus up to 8,192 tokens of conversation history (recent messages, and, when available, a summary of older messages). That means that in a very long call, details discussed earlier may be summarized or omitted."
+        },
+        {
+          "type": "paragraph",
+          "text": "The pricing formula itself is simple: voice sessions cost $0.05 per minute, billed by actual seconds, and the documentation notes that this is not rounded up to the next whole minute; the backend model and tools are billed separately at their own rates, and these four documents do not combine the two into a single worked example. What follows is this article’s own conversion at the rate checked on September 18, 2026, not an official figure: for three full minutes of voice alone, that works out to $0.15; the actual total also depends on how much work the backend did. When a session ends, the official documentation lists reasons including the application closing it, the session reaching its duration limit, a safety filter stopping it, the remote connection ending normally, and the connection being interrupted unexpectedly — but the documentation does not state what the duration limit actually is in minutes."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Was September 10, 2026 the first time GPT-Live 1 became usable?",
+              "answer": "The changelog entry says it “is now generally available in the API”; that phrase describes an availability status, and the four official documents this article checked do not say this is the first time it has appeared. The telephony and SIP integration guide, in fact, mentions that existing integrations may still receive a deprecated incoming-call event name, which indicates integrations were already running before this date. These four documents also do not describe an earlier preview period or a staged rollout schedule."
+            },
+            {
+              "question": "Does GPT-Live 1 understand Chinese? Can you call in and ask questions in Chinese?",
+              "answer": "The four official documents this article checked do not list which spoken languages this model supports. Of the 12 named voices listed in the documentation, the language field shows only English and Portuguese, and the default voice, marin, has no language specified either; when the documentation discusses greetings, it tells developers to use the language specified by the application until the caller speaks, and to test with the languages their own application supports. As of the documentation version this article checked on September 18, 2026, there is no statement confirming Chinese support, so it should not be assumed that it can understand or respond fluently in Chinese."
+            },
+            {
+              "question": "Can developers in Taiwan use this API right now?",
+              "answer": "The four official documents this article checked do not list which countries or regions can use it, and none of them mention Taiwan specifically. Whether you can apply for or use it should be based on what your own account actually shows on the OpenAI platform; this article has not verified whether Taiwan-based accounts can currently use this feature."
+            },
+            {
+              "question": "If a business wants to connect this to its phone system, is OpenAI’s own channel the only option?",
+              "answer": "Not necessarily. The official documentation states that this call flow handles inbound calls, and does not support creating outbound SIP calls through POST /v1/live/sessions; for outbound calling, the documentation directs developers to use a partner integration instead, naming Twilio, Telnyx, LiveKit, and Daily/Pipecat. These fall under each third-party provider’s own service scope, so actual features and pricing depend on what each provider states."
+            },
+            {
+              "question": "Is this voice session recorded and retained?",
+              "answer": "Not by default. The official documentation states that a session’s recording setting defaults to off; the developer must turn it on, the project must first be approved, and downloading or forking also requires a data policy that permits persistence before any recording is kept; saved recordings expire after 30 days. If a project has Zero Data Retention enabled, the recording setting is always treated as off, and there is no recording available to download."
+            },
+            {
+              "question": "Roughly how much does a call cost?",
+              "answer": "What’s officially published is the rate for voice itself: $0.05 per minute, billed by actual seconds, as checked on September 18, 2026. What follows is this article’s own conversion, not an official figure: a three-minute call, counting voice alone, works out to $0.15. The backend model and any tools it calls are billed separately at their own rates, and the actual total for a call depends on how much work it did; these four documents do not provide a total-cost example for an entire call."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "This Is a Developer Tool, Not a Service Consumers Can Sign Up for Directly",
+          "text": "This article is about the API that OpenAI makes available for developers to integrate; ordinary users won’t have a setting like “turn on GPT-Live 1” to toggle — whether you encounter it depends on whether the company you’re calling or using an app from has adopted it. The four official documents this article checked do not list which spoken languages are supported, nor a list of regions where it can be used; the documentation demonstrates how to have the model say a disclosure such as “This call may be recorded for quality and training purposes,” but treats that as the developer’s choice — these four documents do not require providers to tell you that you’re talking to an AI, and the documentation itself notes that this kind of instruction is not guaranteed to be delivered word for word. This site has not actually tested this API; the feature descriptions in this article are OpenAI’s own statements. For the actual situation, refer to the provider you’re dealing with, or the latest version of OpenAI’s developer documentation, checked on September 18, 2026."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live and Extended Thinking: New Voice Models, Can Your Account Use Them?",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI Developer Docs: Changelog (API Update Log)",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Developer Docs: GPT-Live 1 Model Page",
+          "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Developer Docs: Telephony and SIP",
+          "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI Developer Docs: Managing GPT-Live Sessions",
+          "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "GPT-Live 1がAPIで正式提供開始：電話対応はできるのか、声は誰のものか、録音されるのか",
+      "description": "2026年9月10日、OpenAIのAPI更新履歴に、全二重音声モデルGPT-Live 1がAPIで正式提供されたと記載されました。開発者はこれを電話対応、アプリ、または自社製品に組み込めます。本記事はOpenAI開発者向けドキュメントに基づき、このモデルのAPI仕様、電話の接続方法、そしてこのエンドポイントは発信に対応しないとドキュメントが述べていること、内蔵された12種類の名前付き音声とドキュメントに記載のない対応言語、録音の扱いと分単位の課金方式を整理しました。当サイトは実地の検証を行っておりません。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-1-api-20260910/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側にスマートフォンが1台あり、その横に4本の音波線が描かれている。1本の線がスマートフォン下部から右側の角丸パネルへ折れ曲がっており、パネルの中には吹き出しといくつかの音波が描かれ、かかってきた電話の背後で音声モデルが応答を引き継いでいることを表している。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAIは2026年9月10日、APIの開発者向けドキュメントの更新履歴に新しい項目を記載しました。全二重音声モデルGPT-Live 1がAPIで正式（GA）に提供され、対応するモデルIDはgpt-live-1、エンドポイントはv1/live/sessionsです。公式ドキュメントには、音声セッションは1分あたり0.05ドルで秒単位課金、バックエンドのモデルとツールの利用分は別途課金と記載されています。これが意味するのは、聞きながら話せる音声モデルが、開発者が自分の電話システムやアプリ、製品に組み込める部品として手に入るということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月18日に、OpenAIの開発者向けドキュメントであるAPI更新履歴、GPT-Live 1モデルページ、電話・SIP連携ガイド、セッション管理ガイドを確認しました。読んだのは確認当日時点の版で、これらのドキュメントページにはバージョン番号がなく、内容は今後変更される可能性があります。当サイトはこのAPIを実際に連携・検証しておらず、本文中の機能説明はすべてOpenAIの説明によるものです。本記事が扱うのはAPI開発者向けのこの更新のみで、ChatGPT利用者側のプランや設定については扱いません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月10日、OpenAIのAPI更新履歴に、全二重音声モデルGPT-Live 1がAPIで正式提供（GA）になったと記載され、開発者はこれを電話対応、アプリ、または自社製品に組み込めるようになりました。",
+            "音声セッションは1分あたり0.05ドルで秒単位課金され、バックエンドのモデルと呼び出したツールの利用分は別途課金されます。",
+            "ドキュメントによれば、この電話フローが扱うのはかかってきた電話であり、v1/live/sessionsを使って発信するSIP通話の作成には対応していません。同時セッション数の上限はアカウントの階層によって25から500まで異なり、無料階層には対応していません。",
+            "本記事が確認した4件の公式ドキュメントには、対応する音声言語の一覧は記載されていません。12種類の名前付き音声の言語欄には英語とポルトガル語しかありません。声はセッション作成時に選択する必要があり、通話の途中では変更できません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月10日の更新履歴：正式提供（GA）、モデルIDと2つの委任方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式モデルページはGPT-Live 1を全二重音声モデルと定義しています。同時に聞くことと話すことができ、推論とツールの利用をバックエンドのエージェントに委任します。つまり情報検索や演算が必要なときはその処理を裏側に任せながら、会話自体は続けられるということです。更新履歴は9月10日の状態を「APIで正式（GA）に提供開始」と記載していますが、これは提供状況を表す言葉であり、本記事が確認した4件のドキュメントにはこれが初めて登場したものだとは書かれていません。むしろ電話連携ガイドには、既存の連携が非推奨になった着信イベント名を今も受け取る場合があると書かれており、これより前から連携が動いていたことがうかがえます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルページに記載されているモデルIDはgpt-live-1で、対応するエンドポイントはv1/live/sessionsです。公式ドキュメントはこれを「スムーズな割り込み処理を備えた、自然で表現力豊かな音声対話のための最上位モデル」と説明していますが、これはOpenAI自身の説明です。このモデルの入力と出力はいずれも音声とテキストの2つの形式で、画像と動画には対応していません。モデルページに記載されている知識のカットオフ日は2025年7月31日で、これはモデル自体の学習データの時点を示しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者がGPT-Live 1に情報検索や演算が必要な問題を処理させたい場合、ドキュメントには2つの委任方式が記載されています。1つはOpenAIのモデルと組み合わせるResponses委任、もう1つは開発者自身が構築したバックエンドに接続するclient委任です。指定しない場合やnullに設定した場合はclientが選択されます。ドキュメントには、委任方式はセッション開始後に変更できず、変更するには新しいセッションを開始する必要があると記載されています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "APIにおけるこのモデルの仕様：対応エンドポイントは1つのみ、無料階層には非対応"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1がAPIで対応と表示されているエンドポイントはLive（v1/live/sessions）の1つだけです。公式のエンドポイント一覧では、Chat Completions、Responses、Realtimeなど既存のエンドポイントに加え、旧式のCompletions (legacy) もあわせて非対応と表示されています。電話連携ガイドも、それぞれのAPIには独自の認証、セッション作成方法、イベント契約があり、互いに流用できないと注意を促しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "利用量の計算方法もやや異なります。ドキュメントにはレート制限が「同時に進行しているセッション数」で計算されると明記されており、無料（Free）は非対応の利用階層として挙げられています。アカウントの利用階層に応じて、Tier 1からTier 5まででそれぞれ25、50、200、300、500セッションを同時に開始できます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "内容",
+            "備考"
+          ],
+          "rows": [
+            [
+              "モデルID",
+              "gpt-live-1",
+              "対応エンドポイントはv1/live/sessionsのみ"
+            ],
+            [
+              "対応モダリティ",
+              "音声とテキスト（入力・出力とも）",
+              "画像・動画には非対応"
+            ],
+            [
+              "委任方式",
+              "Responses委任またはclient委任",
+              "セッション作成時に選択、途中変更は不可"
+            ],
+            [
+              "同時実行上限",
+              "Tier 1–5：25／50／200／300／500",
+              "無料階層には非対応"
+            ],
+            [
+              "音声料金",
+              "1分あたり0.05ドル、秒単位課金",
+              "バックエンドのモデルとツールは別途課金"
+            ]
+          ],
+          "caption": "OpenAI開発者向けドキュメントをもとに作成。確認日は2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "電話がかかってきたとき、GPT-Live 1はどう応答を引き継ぐか"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1を電話システムに接続する方法として、公式ドキュメントは2つの経路を挙げています。1つはDirect SIPで、通話音声を電話業者とOpenAIの間でやり取りし、開発者のアプリケーションがイベント通知、セッション設定、電話を受けるかどうかの判断、ビジネスロジックを担当します。もう1つはサーバー音声ブリッジで、開発者のアプリケーションが電話業者や会議室の音声をWebSocket経由でGPT-Liveへ転送し、両端の接続、イベント変換、再生、通話のライフサイクルをすべて自分で管理します。ドキュメントには、Twilio、Telnyx、LiveKit、Daily/Pipecatといった業者にそれぞれ専用の連携ガイドがあると記載されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "電話がかかってきた後の流れです。開発者のアプリケーションが自らの認可・ルーティングのルールに従い、それぞれ1つのAPI操作で応答または拒否を行います。応答する場合はモデル、声、委任方式などの設定を送信し、拒否する場合は300から699の間のSIPステータスコード（たとえば話し中を表す486）を付ける必要があります。最初に送られた応答または拒否の判断が有効となり、その後重ねて送られた判断は拒否されます。通話中にはさらに2つの操作があり、電話を転送するか、そのまま切断することができ、いずれも成功時には内容のない200 OKが返されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドキュメントはこの流れの最後に、これが扱うのはかかってきた電話であり、POST /v1/live/sessionsを通じて発信するSIP通話を作成することには対応していないと明記しています。発信を行うには、ドキュメントは開発者にパートナーの連携方式を使うよう求めており、発信はパートナー業者自身が担うものだと説明しています。ドキュメントはまた、着信に付随するSIPヘッダーは信頼できない発信者情報として扱うべきであり、認可の根拠にはできないと注意を促しています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-1-api-20260910/diagram-1-ja.svg",
+          "alt": "4コマ図解：GPT-Live 1がAPIに入った際の4つの要点——電話は着信対応が中心、対応言語は記載なし、初期設定では録音しない、音声は1分あたり0.05ドル",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 1がAPIに入った際の4つの要点：電話は着信対応が中心、音声の対応言語は記載なし、初期設定では録音しない、1分あたり0.05ドル。OpenAI開発者向けドキュメントをもとに作成、確認日は2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "声は誰のものか：内蔵12種類、この4件のドキュメントには対応言語の記載なし"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1の声は1種類だけではありません。デフォルトのmarinに加えて、公式ドキュメントには選択できる12種類の名前付き音声が挙げられています。たとえば言語欄が英語、地域的特徴欄がイギリスと表示されるvesper、同じく英語で北米と表示されるgleam、言語欄がポルトガル語、地域的特徴欄がブラジルと表示されるbossaとtempoなどです。開発者はセッション作成時にその中から1つを選んで設定に入れます。会話が始まった後は途中で変更できず、変更するには新しいセッションを開始する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾の読者が注意すべき点があります。ドキュメントはこれらの音声を「地域的特徴」と表現しつつ、それはあくまで話し方のスタイルであり、アクセントの再現性を保証するものではないと特に注記しています。さらに重要なのは、本記事が確認した4件の公式ドキュメントには、このモデルがどの話し言葉に対応しているかの一覧が記載されていないことです。12種類の名前付き音声の言語欄にあるのは英語とポルトガル語だけで、デフォルトの音声marinについても言語の説明は別途ありません。ドキュメントは挨拶文について触れる際、開発者に対し発信者が話し出すまでアプリケーションが指定した言語を使うよう求め、自社アプリケーションが対応する言語でテストするよう促しています。つまり、コールセンターの電話口で実際にGPT-Live 1が使われた場合、それがどれほど中国語を話せるのかについて、この4件のドキュメントは答えを示しておらず、話せると決めてかかることはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式ドキュメントには、承認を受けた音声であれば自分の録音データを使ってカスタム音声を作成できるとも記載されています。詳細は別のガイドにあり、本記事では踏み込みません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "録音されるのか、記憶はどれくらい続くのか、電話を何分か話すとだいたいいくらになるのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "録音されるかどうかは開発者が決めることで、初期設定でオンになっているわけではありません。公式ドキュメントには、セッションの録音設定は初期状態でオフになっており、開発者が自らオンにし、かつプロジェクトが事前に許可されて初めて、完了した録音をダウンロードしたり新しいセッションへ「フォーク」したりできるようになると明記されています。ダウンロードとフォークにはさらに、データの保持を認めるデータポリシーが必要です。保存された録音は30日後に期限切れとなります。プロジェクトでZero Data Retention（データのゼロ保持）が有効になっている場合、録音設定は常にオフとして扱われ、ダウンロードとフォークも利用できません。ダウンロードした録音はステレオのWAVファイルで、入力音声と出力音声がそれぞれ左右のチャンネルに分かれています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長時間の通話については記憶にも上限があります。ドキュメントによれば、セッションの初期設定のコンテキストウィンドウは128,000トークンで、開発者が与える指示、会話のテキスト、さらに書き起こしには表示されない音声トークンが含まれます。使用量がウィンドウの90%を超えると、システムは同じセッションの中で別の音声エンジンに交代させます。新しいエンジンは元の指示と、最大8,192トークンの会話履歴（直近のメッセージ、および要約が利用できる場合はそれより前のメッセージの要約）を受け取ります。これはつまり、非常に長い通話では、それより前に話された内容が要約されたり省略されたりする可能性があるということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "料金の計算方法自体はシンプルです。音声セッションは1分あたり0.05ドルで、実際の秒数に応じて課金され、切り上げて1分単位にすることはないとドキュメントに注記されています。バックエンドのモデルとツールはそれぞれの料金で別途課金され、この4件のドキュメントはこの2つの費用を合わせた例は示していません。以下は本記事が確認日である2026年9月18日時点の料率で行った換算であり、公式の数字ではありません。音声だけで3分間話した場合、単純計算で0.15ドルになりますが、実際の総額はバックエンドがどれだけ処理したかによって変わります。セッション終了時、公式ドキュメントに挙げられている終了理由には、アプリケーションが自ら終了した場合、セッションが時間の上限に達した場合、安全フィルターによって中断された場合、リモート接続が正常に終了した場合、接続が予期せず切断された場合が含まれますが、時間の上限が実際に何分なのかはドキュメントに記載されていません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-Live 1は2026年9月10日に初めて使えるようになったのですか？",
+              "answer": "更新履歴には「APIで正式（GA）に提供開始」と記載されていますが、これは提供状況を表す言葉であり、本記事が確認した4件の公式ドキュメントには、これが初めて登場したものだとは書かれていません。むしろ電話・SIP連携ガイドには、既存の連携が非推奨になった着信イベント名を今も受け取る場合があると記載されており、これより前から連携が動いていたことがうかがえます。この4件のドキュメントには、それより前のプレビュー時期や段階的な提供開始のスケジュールも書かれていません。"
+            },
+            {
+              "question": "GPT-Live 1は中国語がわかりますか？電話をかけて中国語で質問できますか？",
+              "answer": "本記事が確認した4件の公式ドキュメントには、このモデルがどの話し言葉に対応しているかは記載されていません。ドキュメントに挙げられている12種類の名前付き音声は、言語欄が英語とポルトガル語しかなく、デフォルトの音声marinについても言語の説明は別途ありません。ドキュメントは挨拶文について触れる際、開発者に対し発信者が話し出すまでアプリケーションが指定した言語を使うよう求め、自社アプリケーションが対応する言語でテストするよう促しています。本記事が2026年9月18日に確認したドキュメントの版では、中国語に対応しているという説明は見当たらず、流暢な中国語を理解したり話したりできると決めてかかることはできません。"
+            },
+            {
+              "question": "台湾の開発者は今すぐこのAPIを使えますか？",
+              "answer": "本記事が確認した4件の公式ドキュメントには、利用できる国や地域の一覧は記載されておらず、台湾について特に触れている箇所もありません。申請や利用ができるかどうかは、自分のアカウントでOpenAIのプラットフォーム上に実際に表示される画面を基準にしてください。本記事は台湾のアカウントが現在この機能を使えるかどうかを検証していません。"
+            },
+            {
+              "question": "企業が電話システムと連携する場合、OpenAI公式の経路しか使えないのですか？",
+              "answer": "そうとは限りません。公式ドキュメントには、この電話フローが扱うのはかかってきた電話であり、POST /v1/live/sessionsを通じて発信するSIP通話を作成することには対応していないと記載されています。発信を行うには、ドキュメントは開発者にパートナーの連携方式を使うよう求めており、名前が挙がっているのはTwilio、Telnyx、LiveKit、Daily/Pipecatです。これらはいずれもサードパーティ業者自身のサービス範囲に属するもので、実際の機能や料金は各社の説明によります。"
+            },
+            {
+              "question": "この音声セッションは録音され、保存されるのですか？",
+              "answer": "初期設定では保存されません。公式ドキュメントには、セッションの録音設定は初期状態でオフになっており、開発者が自らオンにし、プロジェクトが事前に許可され、さらにダウンロードとフォークにはデータの保持を認めるデータポリシーが必要で、それらが揃って初めて録音が残ると明記されています。残った録音は30日後に期限切れとなります。プロジェクトでZero Data Retention（データのゼロ保持）が有効になっている場合、録音設定は常にオフとして扱われ、ダウンロードできる録音は存在しません。"
+            },
+            {
+              "question": "電話を1本かけると、だいたいいくらかかりますか？",
+              "answer": "公式に公開されているのは音声そのものの料率のみです。1分あたり0.05ドルで、実際の秒数に応じて課金され、確認日は2026年9月18日です。以下は本記事による換算で、公式の数字ではありません。3分間の通話を音声分だけで単純計算すると0.15ドルになります。バックエンドのモデルと呼び出したツールはそれぞれの料金で別途課金され、実際の通話1本あたりの総額はどれだけ処理したかによって変わります。この4件のドキュメントは通話1本あたりの総額の例を示していません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "これは開発者向けのツールであり、消費者が直接申し込めるサービスではありません",
+          "text": "本記事が扱っているのは、OpenAIが開発者向けに連携用として提供しているAPIです。一般の利用者に「GPT-Live 1をオンにする」といった設定はなく、実際にこれに出会うかどうかは、電話をかけた先やアプリを使っている企業がこれを採用しているかどうかによります。本記事が確認した4件の公式ドキュメントには、対応する話し言葉の一覧も、利用できる地域の一覧も記載されていません。ドキュメントには、「本通話は品質およびトレーニングの目的で録音される場合があります」といった告知文をモデルに読み上げさせる方法が例示されていますが、それはあくまで開発者の選択であり、この4件のドキュメントは事業者に対し、AIと話していることを必ず伝えるよう義務付けてはいません。ドキュメント自体も、こうした指示が一字一句そのまま読み上げられることを保証するものではないと注記しています。当サイトはこのAPIを実際には検証しておらず、本文中の機能説明はすべてOpenAIの説明によるものです。実際の状況については、連絡した事業者の説明、またはOpenAI開発者向けドキュメントの最新版を確認してください。確認日は2026年9月18日です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 LiveとExtended Thinking：新しい音声モデル、あなたのアカウントは使えるか",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 開発者向けドキュメント：Changelog（APIアップデート履歴）",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開発者向けドキュメント：GPT-Live 1 モデルページ",
+          "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開発者向けドキュメント：Telephony and SIP",
+          "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開発者向けドキュメント：Managing GPT-Live sessions",
+          "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-Live 1, API에 정식 제공 시작: 전화 상담을 받을 수 있을까, 목소리는 누구의 것일까, 녹음될까",
+      "description": "2026년 9월 10일, OpenAI의 API 업데이트 기록에 전이중 음성 모델 GPT-Live 1이 API에서 정식 제공을 시작했다고 기재되었습니다. 개발자는 이를 전화 상담, 앱, 또는 자체 제품에 연동할 수 있습니다. 본 기사는 OpenAI 개발자 문서를 바탕으로 이 모델의 API 사양, 전화 연결 방식과 이 엔드포인트가 발신 통화는 지원하지 않는다고 문서가 밝힌 점, 내장된 12종의 이름 붙은 음성과 문서에 나와 있지 않은 지원 언어, 녹음 처리와 분당 과금 방식을 정리했습니다. 본 사이트는 직접 시험해 보지 않았습니다.",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-1-api-20260910/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽에 스마트폰 한 대가 있고 그 옆에 음파선 네 개가 그려져 있다. 그중 한 줄이 스마트폰 아래에서 오른쪽의 둥근 모서리 패널로 꺾여 이어지고, 패널 안에는 말풍선과 몇 개의 음파가 그려져 있으며, 걸려 온 전화를 뒤에서 음성 모델이 이어받아 응답하는 모습을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 2026년 9월 10일, API 개발자 문서의 업데이트 기록에 새 항목을 기재했습니다. 전이중 음성 모델 GPT-Live 1이 API에서 정식 제공(GA)되었으며, 이에 대응하는 모델 ID는 gpt-live-1, 엔드포인트는 v1/live/sessions입니다. 공식 문서에는 음성 세션이 분당 0.05달러이며 초 단위로 과금되고, 백엔드 모델과 도구 사용량은 별도로 과금된다고 적혀 있습니다. 이것이 의미하는 바는, 듣고 말하기를 동시에 하는 음성 모델이 개발자가 구매해 자신의 전화 시스템이나 앱, 제품에 넣을 수 있는 부품이라는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일, OpenAI 개발자 문서의 API 업데이트 기록, GPT-Live 1 모델 페이지, 전화·SIP 연동 가이드, 세션 관리 가이드를 확인했습니다. 확인 당일 시점의 버전을 읽은 것이며, 이 문서 페이지들에는 버전 번호가 없어 내용이 이후 바뀔 수 있습니다. 본 사이트는 이 API를 실제로 연동하거나 시험해 보지 않았으며, 본문의 기능 설명은 모두 OpenAI 측의 설명입니다. 본 기사는 API 개발자 쪽의 이번 업데이트만 다루며, ChatGPT 이용자 쪽의 요금제나 설정은 다루지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 10일, OpenAI의 API 업데이트 기록에 전이중 음성 모델 GPT-Live 1이 API에서 정식 제공(GA)되었다고 기재되었으며, 개발자는 이를 전화 상담, 앱, 또는 자체 제품에 연동할 수 있습니다.",
+            "음성 세션은 분당 0.05달러이며 초 단위로 과금되고, 백엔드 모델과 호출한 도구는 별도로 과금됩니다.",
+            "문서에 따르면 이 전화 흐름이 처리하는 것은 걸려 오는 전화이며, v1/live/sessions로 발신하는 SIP 통화를 만드는 것은 지원하지 않습니다. 동시 세션 수 상한은 계정 등급에 따라 25개에서 500개까지 다르며, 무료 등급은 지원하지 않습니다.",
+            "본 기사가 확인한 4개의 공식 문서에는 지원하는 음성 언어 목록이 나와 있지 않습니다. 이름이 붙은 12개 음성의 언어 항목에는 영어와 포르투갈어만 있습니다. 음성은 세션을 만들 때 선택해야 하며 통화 도중에는 바꿀 수 없습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 10일 업데이트 기록: 정식 제공(GA), 모델 ID와 두 가지 위임 방식"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 모델 페이지는 GPT-Live 1을 전이중 음성 모델로 정의합니다. 동시에 듣고 말할 수 있으며, 추론과 도구 사용을 백엔드 에이전트에 위임합니다. 즉 자료 조회나 연산이 필요할 때는 그 처리를 뒤에서 맡기면서도 대화는 계속 이어갈 수 있다는 뜻입니다. 업데이트 기록은 9월 10일의 상태를 “API에서 정식(GA)으로 제공 시작”이라고 적었는데, 이는 공급 상태를 나타내는 말이며, 본 기사가 확인한 4개의 문서 어디에도 이것이 처음 등장한 것이라고는 쓰여 있지 않습니다. 오히려 전화 연동 가이드에는 기존 연동이 폐기된 착신 이벤트 이름을 여전히 받을 수 있다고 나와 있어, 그 이전부터 연동이 돌아가고 있었음을 짐작하게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 페이지에 나온 모델 ID는 gpt-live-1이며, 대응하는 엔드포인트는 v1/live/sessions입니다. 공식 문서는 이를 “매끄러운 끼어들기 처리를 갖춘, 자연스럽고 표현력 있는 음성 대화를 위한 최상위 모델”이라고 설명하는데, 이는 OpenAI 자신의 설명입니다. 이 모델의 입력과 출력은 모두 음성과 텍스트 두 형식이며, 이미지와 동영상은 지원하지 않습니다. 모델 페이지에 나온 지식 기준일은 2025년 7월 31일로, 이는 모델 자체의 학습 데이터 시점을 나타냅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자가 GPT-Live 1에 자료 조회나 연산이 필요한 문제를 처리시키려 할 때, 문서에는 두 가지 위임 방식이 나와 있습니다. 하나는 OpenAI 모델과 짝을 이루는 Responses 위임이고, 다른 하나는 개발자가 직접 구축한 백엔드에 연결하는 client 위임입니다. 지정하지 않거나 null로 설정하면 client가 선택됩니다. 문서에는 위임 방식이 세션 시작 후에는 변경할 수 없으며, 바꾸려면 새 세션을 시작해야 한다고 적혀 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "API에서 이 모델의 사양: 지원 엔드포인트는 단 하나, 무료 등급은 지원하지 않음"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1이 API에서 지원한다고 표시된 엔드포인트는 Live(v1/live/sessions) 하나뿐입니다. 공식 엔드포인트 목록은 Chat Completions, Responses, Realtime 등 기존 엔드포인트와 구버전인 Completions (legacy)까지 모두 지원하지 않는다고 표시하고 있습니다. 전화 연동 가이드 역시 API마다 각자의 인증, 세션 생성 방식, 이벤트 계약이 있어 서로 바꿔 쓸 수 없다고 알려 줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용량 계산 방식도 조금 다릅니다. 문서에는 속도 제한이 “동시에 진행 중인 세션 수”로 계산된다고 명시되어 있으며, 무료(Free)는 지원하지 않는 사용 등급으로 나와 있습니다. 계정의 사용 등급에 따라 Tier 1부터 Tier 5까지 각각 25, 50, 200, 300, 500개의 세션을 동시에 열 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "내용",
+            "비고"
+          ],
+          "rows": [
+            [
+              "모델 ID",
+              "gpt-live-1",
+              "지원하는 엔드포인트는 v1/live/sessions뿐"
+            ],
+            [
+              "지원 모달리티",
+              "음성과 텍스트(입력·출력 모두)",
+              "이미지·동영상은 지원하지 않음"
+            ],
+            [
+              "위임 방식",
+              "Responses 위임 또는 client 위임",
+              "세션 생성 시 선택, 도중 변경 불가"
+            ],
+            [
+              "동시 실행 상한",
+              "Tier 1–5: 25/50/200/300/500",
+              "무료 등급은 지원하지 않음"
+            ],
+            [
+              "음성 요금",
+              "분당 0.05달러, 초 단위 과금",
+              "백엔드 모델과 도구는 별도 과금"
+            ]
+          ],
+          "caption": "OpenAI 개발자 문서를 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "전화가 걸려 오면, GPT-Live 1은 어떻게 응답을 이어받나"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1을 전화 시스템에 연결하는 방법으로 공식 문서는 두 가지 경로를 제시합니다. 하나는 Direct SIP로, 통화 음성을 전화 사업자와 OpenAI가 주고받고, 개발자의 애플리케이션이 이벤트 알림, 세션 설정, 전화를 받을지 말지의 판단, 비즈니스 로직을 담당합니다. 다른 하나는 서버 오디오 브리지로, 개발자의 애플리케이션이 전화 사업자나 회의실의 음성을 WebSocket을 통해 GPT-Live로 전달하며, 양쪽 연결과 이벤트 변환, 재생, 통화 생명 주기를 모두 직접 관리해야 합니다. 문서에는 Twilio, Telnyx, LiveKit, Daily/Pipecat 같은 업체들이 각자 전용 연동 가이드를 갖추고 있다고 나와 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전화가 걸려 온 뒤의 흐름은 이렇습니다. 개발자의 애플리케이션이 자체 인증·라우팅 규칙에 따라 각각 하나의 API 동작으로 수락하거나 거절합니다. 수락할 때는 모델, 음성, 위임 방식 등의 설정을 함께 보내야 하고, 거절할 때는 300에서 699 사이의 SIP 상태 코드(예를 들어 통화 중을 나타내는 486)를 붙여야 합니다. 가장 먼저 도착한 수락 또는 거절 판단이 유효하며, 이후 다시 보내는 판단은 거부됩니다. 통화 중에는 두 가지 동작이 더 있어 전화를 다른 곳으로 넘기거나 바로 끊을 수 있으며, 둘 다 성공하면 내용 없는 200 OK가 반환됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서는 이 흐름의 마지막에, 이것이 처리하는 것은 걸려 오는 전화이며 POST /v1/live/sessions를 통해 발신하는 SIP 통화를 만드는 것은 지원하지 않는다고 명시합니다. 발신을 하려면 문서는 개발자에게 파트너의 연동 방식을 쓰라고 안내하며, 발신은 사업자 자신이 책임지는 영역이라고 설명합니다. 문서는 또한 착신에 붙는 SIP 헤더를 신뢰할 수 없는 발신자 정보로 취급해야 하며 인증의 근거로 삼아서는 안 된다고 경고합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-1-api-20260910/diagram-1-ko.svg",
+          "alt": "4분할 도해: GPT-Live 1이 API에 들어오며 생긴 네 가지 핵심 — 전화는 수신 위주, 지원 언어는 명시되지 않음, 기본값은 녹음 안 함, 음성은 분당 0.05달러",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 1이 API에 들어오며 생긴 네 가지 핵심: 전화는 수신 위주, 음성 지원 언어는 명시되지 않음, 기본값은 녹음 안 함, 분당 0.05달러. OpenAI 개발자 문서를 바탕으로 정리, 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "목소리는 누구의 것인가: 내장 12종, 이 4개 문서엔 지원 언어 목록이 없다"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1의 목소리는 하나만이 아닙니다. 기본값인 marin 외에도 공식 문서는 선택할 수 있는 이름 붙은 음성 12개를 추가로 제시합니다. 예를 들어 언어 항목이 영어, 지역색 항목이 영국으로 표시된 vesper, 같은 영어에 북미로 표시된 gleam, 언어 항목이 포르투갈어이고 지역색 항목이 브라질로 표시된 bossa와 tempo 등입니다. 개발자는 세션을 만들 때 그중 하나를 골라 설정에 넣습니다. 대화가 시작된 뒤에는 도중에 바꿀 수 없고, 바꾸려면 새 세션을 시작해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대만 독자가 눈여겨봐야 할 점이 있습니다. 문서는 이 음성들을 “지역색”이라는 말로 표현하면서도, 이는 어디까지나 말하는 스타일일 뿐 억양의 사실적 재현을 보장하는 것은 아니라고 따로 못 박고 있습니다. 더 중요한 것은, 본 기사가 확인한 4개의 공식 문서 어디에도 이 모델이 어떤 구어를 지원하는지 목록이 나와 있지 않다는 점입니다. 이름 붙은 12개 음성의 언어 항목에는 영어와 포르투갈어뿐이고, 기본 음성인 marin도 언어가 따로 명시돼 있지 않습니다. 문서는 인사말을 다루면서, 개발자에게 발신자가 말을 꺼내기 전까지는 애플리케이션이 지정한 언어를 쓰라고 요구하고, 자사 애플리케이션이 지원하는 언어로 테스트하라고 당부합니다. 다시 말해, 상담 전화 저편에서 실제로 GPT-Live 1이 쓰인다면 그것이 중국어를 얼마나 잘 구사하는지, 이 4개 문서는 답을 주지 않으며, 당연히 할 수 있다고 가정해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 문서에는 승인을 받은 음성이라면 자신의 녹음을 이용해 커스텀 음성을 만들 수 있다고도 나와 있습니다. 세부 사항은 별도 가이드에 있으며 본 기사에서는 깊이 다루지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "녹음되는지, 기억은 얼마나 이어지는지, 전화를 몇 분 하면 대략 얼마인지"
+        },
+        {
+          "type": "paragraph",
+          "text": "녹음 여부는 개발자가 정하는 것이며 기본값으로 켜져 있지 않습니다. 공식 문서에는 세션의 녹음 설정이 기본값으로 꺼져 있으며, 개발자가 직접 켜고 프로젝트가 먼저 승인되어야만 완료된 녹음을 다운로드하거나 새 세션으로 “포크”할 수 있다고 명시돼 있습니다. 다운로드와 포크에는 데이터 보관을 허용하는 데이터 정책도 필요합니다. 남겨진 녹음은 30일 뒤 만료됩니다. 프로젝트에서 Zero Data Retention(데이터 제로 보존)을 활성화하면 녹음 설정은 항상 꺼진 것으로 취급되어 다운로드와 포크도 쓸 수 없습니다. 다운로드한 녹음은 스테레오 WAV 파일이며, 입력 음성과 출력 음성이 각각 왼쪽과 오른쪽 채널에 담깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "장시간 통화의 기억에도 상한이 있습니다. 문서에 따르면 세션의 기본 컨텍스트 창은 128,000토큰이며, 여기에는 개발자가 준 지시문, 대화 텍스트, 그리고 대화 기록에는 나타나지 않는 음성 토큰이 포함됩니다. 사용량이 창의 90%를 넘으면 시스템은 같은 세션 안에서 다른 음성 엔진으로 교체합니다. 새 엔진은 원래의 지시문과 함께 최대 8,192토큰의 대화 이력(최근 메시지, 그리고 요약을 쓸 수 있을 때는 이전 메시지의 요약)을 넘겨받습니다. 이는 곧 아주 긴 통화에서는 앞서 나눈 이야기의 세부 내용이 요약되거나 생략될 수 있다는 뜻입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "요금 계산 방식 자체는 복잡하지 않습니다. 음성 세션은 분당 0.05달러이며 실제 초 단위로 과금되고, 문서에는 다음 1분 단위로 반올림되지 않는다고 적혀 있습니다. 백엔드 모델과 도구는 각자의 요금으로 별도 과금되며, 이 4개 문서는 이 두 비용을 합친 예시는 보여 주지 않습니다. 다음은 본 기사가 확인일인 2026년 9월 18일 기준 요율로 계산한 것이며 공식 수치가 아닙니다. 음성만으로 3분을 통화하면 단순 계산으로 0.15달러가 되며, 실제 총액은 백엔드가 얼마나 많은 작업을 처리했는지에 달려 있습니다. 세션이 끝날 때 공식 문서가 나열하는 종료 사유에는 애플리케이션이 직접 종료한 경우, 세션이 시간 상한에 도달한 경우, 안전 필터가 중단시킨 경우, 원격 연결이 정상적으로 끝난 경우, 연결이 예기치 않게 끊긴 경우가 포함되지만, 시간 상한이 실제로 몇 분인지는 문서에 나와 있지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-Live 1은 2026년 9월 10일에야 처음 쓸 수 있게 된 건가요?",
+              "answer": "업데이트 기록에는 “API에서 정식(GA)으로 제공 시작”이라고 적혀 있는데, 이는 공급 상태를 나타내는 말이며, 본 기사가 확인한 4개의 공식 문서 어디에도 이것이 처음 등장한 것이라고는 쓰여 있지 않습니다. 오히려 전화·SIP 연동 가이드에는 기존 연동이 폐기된 착신 이벤트 이름을 여전히 받을 수 있다고 나와 있어, 그 이전부터 연동이 돌아가고 있었음을 보여 줍니다. 이 4개 문서에는 그보다 앞선 프리뷰 시기나 단계적 공개 일정도 나와 있지 않습니다."
+            },
+            {
+              "question": "GPT-Live 1은 중국어를 알아듣나요? 전화를 걸어 중국어로 질문할 수 있나요?",
+              "answer": "본 기사가 확인한 4개의 공식 문서에는 이 모델이 어떤 구어를 지원하는지 나와 있지 않습니다. 문서에 나온 이름 붙은 12개 음성은 언어 항목이 영어와 포르투갈어뿐이고, 기본 음성인 marin도 언어가 따로 표시돼 있지 않습니다. 문서는 인사말을 다루면서 개발자에게 발신자가 말을 꺼내기 전까지는 애플리케이션이 지정한 언어를 쓰라고 요구하고, 자사 애플리케이션이 지원하는 언어로 테스트하라고 당부합니다. 본 기사가 2026년 9월 18일까지 확인한 문서 버전에서는 중국어를 지원한다는 설명을 찾지 못했으며, 유창한 중국어를 알아듣거나 말할 수 있다고 가정해서는 안 됩니다."
+            },
+            {
+              "question": "대만 개발자도 지금 이 API를 쓸 수 있나요?",
+              "answer": "본 기사가 확인한 4개의 공식 문서에는 사용할 수 있는 국가나 지역 목록이 나와 있지 않으며, 대만을 따로 언급하지도 않습니다. 신청과 이용이 가능한지는 자신의 계정으로 OpenAI 플랫폼에서 실제로 보이는 화면을 기준으로 확인해야 합니다. 본 기사는 대만 계정이 현재 이 기능을 쓸 수 있는지 검증하지 않았습니다."
+            },
+            {
+              "question": "기업이 전화 시스템과 연동하려면 OpenAI 공식 경로만 써야 하나요?",
+              "answer": "꼭 그렇지는 않습니다. 공식 문서에는 이 전화 흐름이 처리하는 것은 걸려 오는 전화이며, POST /v1/live/sessions를 통해 발신하는 SIP 통화를 만드는 것은 지원하지 않는다고 적혀 있습니다. 발신을 하려면 문서는 개발자에게 파트너의 연동 방식을 쓰라고 안내하며, 이름이 언급된 곳은 Twilio, Telnyx, LiveKit, Daily/Pipecat입니다. 이들은 각각 서드파티 업체 자신의 서비스 범위에 속하므로, 실제 기능과 요금은 각 업체의 설명에 따라 다릅니다."
+            },
+            {
+              "question": "이 음성 세션은 녹음되어 보관되나요?",
+              "answer": "기본값으로는 그렇지 않습니다. 공식 문서에는 세션의 녹음 설정이 기본값으로 꺼져 있으며, 개발자가 직접 켜고, 프로젝트가 먼저 승인되고, 다운로드와 포크에는 데이터 보관을 허용하는 데이터 정책까지 갖추어야 비로소 녹음이 남는다고 명시돼 있습니다. 남은 녹음은 30일 뒤 만료됩니다. 프로젝트에서 Zero Data Retention(데이터 제로 보존)을 활성화하면 녹음 설정은 항상 꺼진 것으로 취급되어 다운로드할 수 있는 녹음이 없습니다."
+            },
+            {
+              "question": "전화를 한 통 걸면 대략 얼마가 드나요?",
+              "answer": "공식적으로 공개된 것은 음성 자체의 요율뿐입니다. 분당 0.05달러이며 실제 초 단위로 과금되고, 확인일은 2026년 9월 18일입니다. 다음은 본 기사의 계산이며 공식 수치가 아닙니다. 3분 통화를 음성만으로 단순 계산하면 0.15달러입니다. 백엔드 모델과 호출한 도구는 각자의 요금으로 별도 과금되며, 실제 통화 한 통의 총액은 얼마나 많은 작업을 처리했는지에 달려 있습니다. 이 4개 문서는 통화 한 통 전체의 총액 예시를 제공하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이것은 개발자용 도구이지, 소비자가 직접 신청할 수 있는 서비스가 아닙니다",
+          "text": "본 기사가 다루는 것은 OpenAI가 개발자에게 연동용으로 제공하는 API입니다. 일반 이용자에게는 “GPT-Live 1 켜기” 같은 설정이 따로 없으며, 실제로 이를 마주치는지는 전화를 걸거나 앱을 쓰는 그 회사가 이를 도입했는지에 달려 있습니다. 본 기사가 확인한 4개의 공식 문서에는 지원하는 구어 목록도, 이용 가능한 지역 목록도 나와 있지 않습니다. 문서는 “본 통화는 품질 및 학습 목적으로 녹음될 수 있습니다” 같은 고지 문구를 모델이 읽도록 하는 방법을 예시로 보여 주지만, 이는 어디까지나 개발자의 선택이며, 이 4개 문서는 사업자에게 AI와 대화하고 있다는 사실을 반드시 알리도록 규정하지 않습니다. 문서 자체도 이런 지시가 그대로 한 글자도 빠짐없이 읽힌다는 것을 보장하지는 않는다고 밝히고 있습니다. 본 사이트는 이 API를 실제로 시험해 보지 않았으며, 본문의 기능 설명은 모두 OpenAI 측의 설명입니다. 실제 상황은 연락한 업체의 설명, 또는 OpenAI 개발자 문서의 최신판을 기준으로 확인하십시오. 확인일은 2026년 9월 18일입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live와 Extended Thinking: 새 음성 모델, 내 계정으로 쓸 수 있을까",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 개발자 문서: Changelog(API 업데이트 기록)",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 개발자 문서: GPT-Live 1 모델 페이지",
+          "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 개발자 문서: Telephony and SIP",
+          "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 개발자 문서: Managing GPT-Live sessions",
+          "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "GPT-Live 1 开放 API：电话客服能不能接、声音是谁的、会不会录音",
+      "description": "2026 年 9 月 10 日，OpenAI 的 API 更新记录写下全双工语音模型 GPT-Live 1 已在 API 正式提供，开发者可以把它接入电话客服、App 或自己的产品。本文依据 OpenAI 开发者文档整理这个模型在 API 里的规格、电话怎么接入，以及文档说明这个端点不支持外呼、内置的 12 个具名语音与没有列出的支持语言，还有录音与每分钟计费方式；本站没有实测。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-live-1-api-20260910/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一部手机，旁边有四条声波线；一条线从手机底部折向右边的圆角面板，面板里有一个对话气泡和几条声波，代表打进来的电话由背后的语音模型接手回应。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，OpenAI 在 API 开发者文档的更新记录里写下一条新条目：全双工语音模型 GPT-Live 1 已在 API 正式提供（generally available），对应模型代号 gpt-live-1、端点 v1/live/sessions。官方文档写明，语音会话每分钟 0.05 美元、按秒计费，后端模型与工具的用量另外计费。这件事的意义是：一个能边听边说的语音模型，是开发者可以买来装进自己电话系统、App 或产品里的组件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核了 OpenAI 开发者文档的 API 更新记录、GPT-Live 1 模型页、电话与 SIP 集成指南，以及会话管理指南，读到的是查核当天的版本；这些文档页面没有版本号，内容之后可能还会变动。本站没有实际对接或测试这个 API，文中的能力描述都是 OpenAI 的说法。本文只谈 API 开发者端的这次更新，不谈 ChatGPT 用户端的订阅方案与设置。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 10 日，OpenAI 的 API 更新记录写下全双工语音模型 GPT-Live 1 已在 API 正式提供（generally available），开发者可以把它接入电话客服、App 或自己的产品。",
+            "语音会话每分钟 0.05 美元，按秒计费，后端模型与调用的工具则另外计费。",
+            "文档写明这个电话流程处理的是打进来的电话，不支持用 v1/live/sessions 创建对外呼出的 SIP 通话；并发会话数上限依账号层级从 25 到 500 个不等，且不支持免费层级。",
+            "本文查核的四份官方文档没有列出支持的口语语言清单，12 个具名语音的语言字段只有英语与葡萄牙语；声音要在创建会话时选定，通话中途不能更换。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 10 日的更新记录：正式提供（GA）、模型代号与两种委派方式"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方模型页把 GPT-Live 1 定义成一个全双工语音模型：它可以同时聆听与说话，并把推理与工具使用委派给后端代理，也就是查资料或运算时交给背后处理，对话仍能继续。更新记录把 9 月 10 日的状态写成“已在 API 正式（generally available）推出”，那句话讲的是供应状态，本文查核的四份文档没有写这是第一次出现；电话集成指南反而提到，现有集成可能仍会收到一个已弃用的来电事件名称，可见在这之前就有集成在运行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型页列出的模型代号是 gpt-live-1，对应的端点是 v1/live/sessions；官方文档形容它是“我们最顶级的模型，用于自然、有表现力的语音对话，并能流畅处理插话”，这是 OpenAI 自己的说法。模型的输入与输出都是声音与文字两种形式，不支持图片与视频；模型页列出的知识截止日是 2025 年 7 月 31 日，也就是模型本身训练数据的时间点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者要让 GPT-Live 1 处理需要查资料或运算的问题时，文档写有两种委派方式：一种是 Responses 委派，搭配 OpenAI 的模型；另一种是 client 委派，接到开发者自己搭建的后端，没有指定或设为 null 时走的就是 client。文档写委派模式在会话启动后不能更改，要换就得开一个新的会话。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这个模型在 API 里的规格：只有一个端点，不支持免费层级"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1 在 API 里只有一个端点被标为支持——Live（v1/live/sessions）；官方的端点列表把 Chat Completions、Responses、Realtime 等现有端点，连同旧式的 Completions (legacy) 一起列为不支持。电话集成指南也提醒，每一种 API 都有自己的认证、会话创建方式与事件契约，不能互相套用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用量的算法也不太一样：文档写明速率限制是按“同时进行的会话数”计算，并把免费（Free）列为不支持的使用层级。依账号的使用层级，Tier 1 到 Tier 5 分别可以同时开启 25、50、200、300、500 个会话。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "内容",
+            "备注"
+          ],
+          "rows": [
+            [
+              "模型代号",
+              "gpt-live-1",
+              "唯一支持端点 v1/live/sessions"
+            ],
+            [
+              "支持模态",
+              "声音与文字（输入输出皆同）",
+              "不支持图片与视频"
+            ],
+            [
+              "委派模式",
+              "Responses 委派或 client 委派",
+              "创建会话时选定，中途不能换"
+            ],
+            [
+              "并发上限",
+              "Tier 1–5：25／50／200／300／500",
+              "不支持免费层级"
+            ],
+            [
+              "语音费用",
+              "每分钟 0.05 美元，按秒计费",
+              "后端模型与工具另计"
+            ]
+          ],
+          "caption": "依据 OpenAI 开发者文档整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "电话打进来，GPT-Live 1 怎么接手"
+        },
+        {
+          "type": "paragraph",
+          "text": "要把 GPT-Live 1 接入电话系统，官方文档列出两条路径：一种是 Direct SIP，由电话运营商与 OpenAI 交换通话音频，开发者的应用负责事件通知、会话设置、接不接电话的判断与业务逻辑；另一种是服务器音频桥接，由开发者的应用把电话运营商或会议室的音频通过 WebSocket 转发给 GPT-Live，两端连接、事件转换、播放与通话生命周期都要自己管理。文档提到 Twilio、Telnyx、LiveKit 与 Daily/Pipecat 这几家服务商都有专属的集成说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "电话打进来后的流程：由开发者的应用依自己的授权与路由规则，分别用一个 API 操作接听或拒接，接听要发送模型、声音与委派模式等设置，拒接则要附上一个介于 300 到 699 之间的 SIP 状态码（例如代表占线的 486）；第一个接听或拒接的判断生效，之后重复发送的判断会被拒绝。通话中另有两个操作，可以把电话转接出去或直接挂断，两者成功时都返回 200 OK 且没有内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档在这段流程的结尾写明，它处理的是打进来的电话，不支持通过 POST /v1/live/sessions 创建对外呼出的 SIP 通话；要做外呼，文档要求开发者改用合作伙伴的集成方案，并把外呼描述成运营商自己掌握的事。文档也提醒，来电附带的 SIP 头部要当成不可信的来电方信息，不能当成授权依据。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-live-1-api-20260910/diagram-1-zh-cn.svg",
+          "alt": "四格图解：GPT-Live 1 进入 API 的四个要点——电话以接听为主、支持语言未列明、默认不录音、语音每分钟 0.05 美元",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-Live 1 进入 API 的四个要点：电话接听为主、声音语言未列明、默认不录音、每分钟 0.05 美元；依据 OpenAI 开发者文档整理，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "声音是谁的：内置 12 种，这四份文档没有列出支持语言"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-Live 1 的声音不止一种。除了默认的 marin，官方文档另外列出 12 个具名语音可选，例如语言字段标英语、地区风格字段标英国的 vesper 与标北美的 gleam，以及语言字段标葡萄牙语、风格字段标巴西的 bossa 与 tempo。开发者在创建会话时选一个放进设置，对话开始后就不能中途更换，要换就得开新的会话。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾读者要注意的是：文档用“地区风格”形容这些语音，同时特别注明那只是说话风格，不保证口音的还原度。更重要的是，本文查核的四份官方文档没有列出这个模型支持哪些口语语言——12 个具名语音的语言字段只有英语与葡萄牙语，默认语音 marin 的语言也没有另外说明；文档谈到开场白时，要求开发者在来电者开口前“使用应用指定的语言”，并用自己支持的语言去测试。也就是说，客服电话那头若真的用上 GPT-Live 1，它中文讲得如何，这四份文档没有给出答案，不能预设它会。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文档也提到，经过核准的声音可以用自己的录音打造成定制语音，细节在另一份说明里，本文不深入展开。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "会不会被录音、记忆有多长、打电话几分钟大概多少钱"
+        },
+        {
+          "type": "paragraph",
+          "text": "会不会被录音，由开发者决定，不是默认开启。官方文档写明，会话的录音设置默认是关闭，开发者要主动打开、而且项目要先获得许可，才能保留已完成的录音供下载或“分叉”出新的会话，下载与分叉还需要一份允许留存的数据政策。留存的录音会在 30 天后过期；如果项目启用了 Zero Data Retention（数据零保留），录音设置一律视为关闭，下载与分叉也就不可用。下载的录音是双声道 WAV 文件，输入与输出的声音分别在左右声道。"
+        },
+        {
+          "type": "paragraph",
+          "text": "长时间通话的记忆也有上限。文档写，会话默认的上下文窗口是 128,000 tokens，里面包含开发者给的指示、对话文字，以及不会出现在文字记录里的语音 token；用量超过窗口的 90% 时，系统会在同一个会话里切换到另一个语音引擎接手，新引擎会拿到原本的指示，以及最多 8,192 tokens 的对话历史（近期消息，以及在有摘要可用时，旧消息的摘要）。这代表很长的通话，前面谈到的细节有可能被摘要或省略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "费用的算法本身不复杂：语音会话每分钟 0.05 美元，按实际秒数计费，文档注明不会无条件进位到整分钟；后端模型与工具依各自的价格另外计费，这四份文档没有把这两笔费用合并成一个示例。以下是本文依查核日 2026 年 9 月 18 日费率做的换算，不是官方数字：语音部分讲满三分钟，单计语音是 0.15 美元，实际总价还要看后端处理了多少工作。会话结束时，官方文档列出的结束原因包括应用主动关闭、会话达到时长上限、安全过滤中止、远程连接正常结束，以及连接意外中断，但文档没有写出时长上限实际是几分钟。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-Live 1 是 2026 年 9 月 10 日才第一次能用吗？",
+              "answer": "更新记录写的是“已在 API 正式（generally available）推出”，那句话讲的是供应状态，本文查核的四份官方文档没有写这是第一次出现。电话与 SIP 集成指南反而提到，现有集成可能仍会收到一个已弃用的来电事件名称，说明在这之前就有集成在运行。这四份文档也没有写出更早的预览时间表，或分批开放的安排。"
+            },
+            {
+              "question": "GPT-Live 1 听得懂中文吗？可以打电话用中文提问吗？",
+              "answer": "本文查核的四份官方文档没有列出这个模型支持哪些口语语言。文档列出的 12 个具名语音，语言字段只有英语与葡萄牙语，默认语音 marin 也没有另外标明语言；文档谈到开场白时，要求开发者在来电者开口前使用应用指定的语言，并用自己支持的语言去测试。以本文查核到 2026 年 9 月 18 日的文档版本，没有看到支持中文的说明，不能预设它听得懂或能讲流利中文。"
+            },
+            {
+              "question": "台湾的开发者现在可以用这个 API 吗？",
+              "answer": "本文查核的四份官方文档没有列出可以使用的国家或地区清单，也没有另外提到台湾。能不能申请与使用，请以自己账号在 OpenAI 平台上实际看到的画面为准；本文没有查证台湾账号目前是否能使用这个功能。"
+            },
+            {
+              "question": "企业要接入电话系统，只能用 OpenAI 官方渠道吗？",
+              "answer": "不一定。官方文档写明，这个电话流程处理的是打进来的电话，不支持通过 POST /v1/live/sessions 创建对外呼出的 SIP 通话；要做外呼，文档要求开发者改用合作伙伴的集成方案，文档点名的几家是 Twilio、Telnyx、LiveKit 与 Daily/Pipecat。这些属于第三方服务商自己的服务范围，实际功能与费用要看各家自己的说明。"
+            },
+            {
+              "question": "这个语音会话会被录音留存吗？",
+              "answer": "默认不会。官方文档写明，会话的录音设置默认是关闭，开发者要主动打开、项目要先获得许可，下载与分叉还需要一份允许留存的数据政策，才会有录音留下；留下的录音会在 30 天后过期。如果项目启用了数据零保留（Zero Data Retention），录音设置会一律视为关闭，不会有录音可以下载。"
+            },
+            {
+              "question": "打一通电话大概要多少钱？",
+              "answer": "官方公布的是语音本身的费率：每分钟 0.05 美元，按实际秒数计费，查核日是 2026 年 9 月 18 日。以下是本文的换算，不是官方数字：三分钟的通话单计语音是 0.15 美元。后端模型与调用的工具是另外计费，依各自的价格而定，实际一通电话的总价要看它处理了多少工作，这四份文档没有提供整通电话的总价示例。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这是开发者工具，不是消费者可以直接申请的服务",
+          "text": "本文写的是 OpenAI 开放给开发者集成的 API，普通用户不会有“打开 GPT-Live 1”这种设置可以调整——你会不会遇到它，取决于打电话或用 App 的那家公司有没有采用。本文查核的四份官方文档没有列出支持的口语语言，也没有可使用的地区清单；文档示范了怎么让模型读出“本通话可能为了质量与训练目的而录音”这类告知语，但把它当成开发者的选择，这四份文档没有规定服务商一定要告诉你正在跟 AI 对话，而且文档自己也提醒这种指示不保证逐字读出。本站没有实际测试这个 API，文中的功能描述都是 OpenAI 的说法，实际情况请以你联系的服务商说明，或 OpenAI 开发者文档的最新版本为准，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live 与 Extended Thinking：新语音模型，你的账号能用吗？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 开发者文档：Changelog（API 更新记录）",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 开发者文档：GPT-Live 1 模型页",
+          "url": "https://developers.openai.com/api/docs/models/gpt-live-1",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 开发者文档：Telephony and SIP",
+          "url": "https://developers.openai.com/api/docs/guides/voice-sip",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 开发者文档：Managing GPT-Live sessions",
+          "url": "https://developers.openai.com/api/docs/guides/live-conversations",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

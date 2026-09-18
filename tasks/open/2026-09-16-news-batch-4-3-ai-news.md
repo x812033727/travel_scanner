@@ -1,14 +1,14 @@
 ---
 id: 2026-09-16-news-batch-4-3-ai-news
 title: News batch 4.3: AI news catch-up and backfill
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-17T22:16:02Z
 created_at: 2026-09-16T13:21:40Z
 completed_at:
-branch: claude/brave-hopper-8ezxba
+branch: claude/news-batch-4-3-ai
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
 scope:
@@ -37,6 +37,38 @@ scope:
   - apps/api/app/guides/content/ai-news-nvidia-hugging-face-20260903.json
   - apps/web/public/guides/ai-news-nvidia-hugging-face-20260903
   - docs/ai-news-2026-09-late
+  - docs/news-2026-batch-4
+  - apps/api/app/guides/content/ai-news-2026-january-september-index.json
+  - apps/api/app/guides/content/ai-model-release-timeline-2026.json
+  - apps/api/app/guides/content/ai-news-anthropic-threat-report-20260910.json
+  - apps/api/app/guides/content/ai-news-chatgpt-health-20260107.json
+  - apps/api/app/guides/content/ai-news-chatgpt-images-20-20260421.json
+  - apps/api/app/guides/content/ai-news-chatgpt-work-20260709.json
+  - apps/api/app/guides/content/ai-news-claude-fable-5-access-20260609.json
+  - apps/api/app/guides/content/ai-news-claude-interactive-visuals-20260312.json
+  - apps/api/app/guides/content/ai-news-claude-opus-46-20260205.json
+  - apps/api/app/guides/content/ai-news-claude-sonnet-5-20260630.json
+  - apps/api/app/guides/content/ai-news-deepseek-v41-flash-20260910.json
+  - apps/api/app/guides/content/ai-news-gemini-31-pro-20260219.json
+  - apps/api/app/guides/content/ai-news-gemini-36-flash-20260721.json
+  - apps/api/app/guides/content/ai-news-gemini-omni-20260519.json
+  - apps/api/app/guides/content/ai-news-gemini-personal-intelligence-20260114.json
+  - apps/api/app/guides/content/ai-news-gemini-spark-20260519.json
+  - apps/api/app/guides/content/ai-news-google-assistant-gemini-20260904.json
+  - apps/api/app/guides/content/ai-news-gpt-53-codex-20260205.json
+  - apps/api/app/guides/content/ai-news-gpt-54-20260305.json
+  - apps/api/app/guides/content/ai-news-gpt-55-20260423.json
+  - apps/api/app/guides/content/ai-news-gpt-56-sol-preview-20260626.json
+  - apps/api/app/guides/content/ai-news-gpt-live-voice-20260708.json
+  - apps/api/app/guides/content/ai-news-lyria-3-pro-20260325.json
+  - apps/api/app/guides/content/ai-news-meta-muse-spark-20260408.json
+  - apps/api/app/guides/content/ai-news-nvidia-rubin-20260105.json
+  - apps/api/app/guides/content/ai-news-openai-agents-api-20260910.json
+  - apps/api/app/guides/content/ai-news-pace-the-frontier-20260912.json
+  - apps/api/app/guides/content/ai-news-project-glasswing-20260407.json
+  - apps/api/app/guides/content/ai-news-qwen-35-20260216.json
+  - apps/api/app/guides/content/ai-news-siri-ai-ios-27-20260914.json
+  - apps/api/app/guides/content/ai-news-sources-to-follow.json
 ---
 
 # News batch 4.3: AI news catch-up and backfill
@@ -149,9 +181,20 @@ uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.
 npm run check:tasks
 ```
 
+## 進度（2026-09-18）
+
+- [x] 12 篇 zh-TW 撰稿（sonnet）、每篇兩輪獨立查核（opus；第一輪 87–138 條主張、改 15–30 處，第二輪再改 6–25 處），報告在 `docs/news-2026-batch-4/factcheck-draft/ai-news-*.md`
+- [x] 協調者通讀 12 篇、改 `hero.alt`／圖上文字、兩篇改標題（B4、B7），修訂記在 `coordinator-corrections.json`
+- [x] 五語翻譯（sonnet ×12）、`translation_checks.py` 0 命中、逐語審稿 4 語 × 3 組（opus ×12，採用 429 筆，記在 `translation-corrections.json`）、文體修正（B7 ko、B5 ja 改回敬體）
+- [x] 既有索引 `ai-news-2026-january-september-index` 原地改版（`update_index.py ai`：拿掉篇數、加 12 篇連結、五語新標題），連帶改 30 個既有包的連結文字（scope 已逐一列出）
+- [x] `related`（延伸閱讀）、`pack_cli relink` ×12、`build_assets.py ai`（60 張圖＋contact sheet 已逐張看過）
+- [x] 驗證：12 篇 `check_article.py --full --assets` 全 OK、`pack_cli lint --kind life` 0 error、內容測試 164 passed、`check:tasks` OK
+- [ ] 站主驗收、合併 PR、部署、`guides-import --slug` ×43（12 新＋索引＋30 既有；先 `--dry-run --publish` 核對），見 HANDOVER 第 1c／2.4 節
+- [ ] 留給站主決定的事（HANDOVER 第 1c 節）
+
 ## 交接（2026-09-17）
 
-還沒開始寫任何一篇。站主指定先交幣圈（4.1）驗收，幣圈目前的狀態與整條流程踩過的坑在
+（以下是開工前的狀態，留作紀錄。）還沒開始寫任何一篇。站主指定先交幣圈（4.1）驗收，幣圈目前的狀態與整條流程踩過的坑在
 [`docs/news-2026-batch-4/HANDOVER.md`](../../docs/news-2026-batch-4/HANDOVER.md)；這張票照同一條線跑。
 AI 垂直的索引是既有的 `ai-news-2026-january-september-index`（網址不變、原地改標題），`update_index.py` 裡 AI 那幾條
 `TODO` 要先寫好；三篇 `partial` 的研究（`openai.com/index/*` 對所有客戶端回 403）開稿時若撐不起完整文章要回報站主。

@@ -1,0 +1,475 @@
+{
+  "slug": "ai-news-chatgpt-financial-services-20260910",
+  "event_date": "2026-09-10",
+  "event_date_basis": "OpenAI 官方公告頁上印的日期為 September 10, 2026（頁面 h1 上方的 publicationDateText，2026-09-18 由查核者重抓確認），這是事件日（公告日）。官方沒有另外給生效日、開放日或上線日；供應狀況段落只寫『開放給合資格的金融機構』與『請聯絡業務』，不含任何日期。sitemap 的 lastmod 是建置或部署時的時間戳記，不等於內容更新日，本輪沒有引用它，也沒有引用 openai.com/news/rss.xml 的 pubDate（該網址不在 sources[] 裡）。",
+  "title": "ChatGPT for Financial Services 發布：金融機構的 AI 工具，跟個人帳號無關",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Introducing ChatGPT for Financial Services",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Pricing",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 全部用 curl -sL -A \"Mokaair-editorial\" 抓取，每一條都讀到 body 才登記 checked_on（請求裡沒有任何 email 或個人資料）；同日由獨立查核代理抓第二次，第二輪查核再抓第三次，結果如下。(1) https://openai.com/index/introducing-chatgpt-financial-services/ → HTTP 200，撰稿者讀到 566,394 bytes、第一輪查核者讀到 566,345 bytes、第二輪查核者讀到 566,353 bytes（同一份 Next.js 頁面，位元組數會隨當下的建置字串浮動，不是事實）；body 是完整的官方公告頁（含渲染後 HTML 與 React 水合用的 JSON payload 兩份幾乎相同的正文），<title> 為 Introducing ChatGPT for Financial Services | OpenAI，h1、副標題、三張評測圖的 vega-lite 原始資料與圖說、以及 Frontier research…／Data is the foundation…／Put GPT-6 Astra to work…／Turn the analysis into work…／Work with security and governance…／Expanding what the industry can achieve／Availability 各小節都讀得到，頁面上唯一的 cloudflare 字串是 static.cloudflareinsights.com 的統計 beacon，不是挑戰頁。這一頁在 2026-09-16 的更早一輪查核對本容器回 403，2026-09-18 三次抓取都不再出現這個問題，因此不需要、也沒有使用 web.archive.org 的封存版本。(2) https://learn.chatgpt.com/docs/pricing → HTTP 200、670,897 bytes 的 HTML；全文 0 次出現 financial（不分大小寫），只用來支撐『官方定價頁沒有這項服務的價格』這個負面事實，頁面實際框架是 Codex 的方案比較（切換器識別碼 codex-pricing-plans 出現 4 次），本文不引用裡面任何一個 ChatGPT／Codex 方案的價格數字，避免誤植成這項企業產品的價格。同站另有 .md 版本，不在 sources[] 裡，本輪起不再以它為任何事實的依據，也不再記錄它的位元組數。(3) https://learn.chatgpt.com/docs/enterprise/chatgpt-work-overview 前兩輪列在 sources[] 第二條（HTTP 200、348,916 bytes 的 HTML，h1 為 ChatGPT Work Overview，全文 0 次出現 ChatGPT for Financial Services，financial 單字只出現 1 次、在一段講『可能造成財務、法律或帳號後果的動作要另外確認』的權限說明裡），第二輪查核逐句核對後把它移出 sources[]：文章『這是 ChatGPT Work 的客製版本』這句的依據其實是公告頁自己的 a tailored ChatGPT Work experience，這一頁沒有獨自撐住任何一句，而它是 ChatGPT Work 的執行隔離與網路權限文件，拿它來佐證『沒有價格、沒有地區』與本題無關。openai.com/policies/financial-services-terms/、openai.com/business/contact-sales-financial-services/、openai.com/news/rss.xml 本輪沒有重新抓取，也沒有任何一條文章事實掛在它們身上。",
+  "verified_facts": [
+    {
+      "fact": "官方公告頁上印的日期為 September 10, 2026，h1 標題為 Introducing ChatGPT for Financial Services，分類標示為 Product。這是事件日；官方沒有另外給生效日或開放日。（撰稿者另以 openai.com/news/rss.xml 的 pubDate 交叉確認同一天，但該網址不在 sources[] 裡，本條事實只掛公告頁自己印的日期。）",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 10, 2026"
+    },
+    {
+      "fact": "官方公告的副標題（hero subhead）是「為金融服務打造的前沿智慧」。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Frontier intelligence, built for financial services."
+    },
+    {
+      "fact": "OpenAI 說明這項產品是摩根士丹利（Morgan Stanley）與 Evercore 兩家設計夥伴合作打磨出來的。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This product has been shaped by our design partnership with Morgan Stanley and Evercore."
+    },
+    {
+      "fact": "OpenAI 表示這層合作協助 OpenAI 找出金融機構最頭痛的挑戰，並引導產品往能幫助銀行從業人員日常工作的方向發展。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The collaboration has enabled us to pinpoint where OpenAI can solve the biggest challenges for financial institutions and has guided us on the solutions that will help every banker in their day-to-day work."
+    },
+    {
+      "fact": "OpenAI 表示與兩家夥伴的早期合作，讓產品的起點鎖定投資銀行（investment banking）與股票研究（equity research）。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our early work with Morgan Stanley and Evercore has helped steer where we have started: investment banking and equity research."
+    },
+    {
+      "fact": "OpenAI 表示對兩家夥伴而言，能不能可靠取得資料與能不能做出高品質產出，是他們團隊最大的痛點。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Reliable access to data and high quality artifact creation proved to be the biggest pain points for their teams."
+    },
+    {
+      "fact": "2026-09-18 讀到的版本，內建資料商清單包含 Daloopa、PitchBook、LSEG News 與 Crunchbase（研究者於 2026-09-16 讀到的版本只有前三家；本輪讀到的頁面已經是加入 Crunchbase 之後的版本，與獨立查核代理指出的 2026-09-11 改版一致）。這些資料由 OpenAI 自己索引並存放在自家基礎設施上，可直接使用，不必另外簽約或設定連接器。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Built-in premium data from providers like Daloopa, PitchBook, LSEG News, and Crunchbase remove the challenges with MCP connectors and access to data."
+    },
+    {
+      "fact": "OpenAI 宣稱由自己索引與代管資料可以提高正確性，並帶來逐格溯源（granular citations）這類新功能，讓銀行從業人員把數字與說法追回來源、檢查佐證。這是廠商宣稱，官方沒有提供可驗證的準確率數據。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This data is indexed and hosted by OpenAI to enable higher accuracy and new features like granular citations so that bankers can trace figures and claims back to their sources, and check the evidence as their analysis develops."
+    },
+    {
+      "fact": "OpenAI 自陳知道許多客戶原本就已經訂閱其他金融資料服務。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We know many customers already have existing data subscriptions."
+    },
+    {
+      "fact": "既有訂閱的串接尚未完成：OpenAI 表示正在與 S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva 與 Moody's 合作開發共用登入與權限（entitlement）對接。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "So we’re working with S&P Capital IQ, LSEG, MSCI, Dow Jones Factiva, and Moody’s on shared sign-in and entitlement integrations."
+    },
+    {
+      "fact": "OpenAI 說明未來資料商將能透過使用者的 ChatGPT 登入身分辨識使用者，讓使用者自動取得原本就有權限的資料；官方沒有給時程，也沒有說已經上線。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Providers will be able to recognize users through their ChatGPT sign-in to enable automatic access to data they’re already entitled to."
+    },
+    {
+      "fact": "OpenAI 表示有效使用金融資料商的 MCP 連接器可能有困難，官方已針對金融服務業常用的連接器做優化，讓使用者花更少時間排查連線問題、更多時間做分析。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It can be challenging to effectively use MCP connectors for data providers. We have focused on making some of the most used MCPs in financial services optimized for immediate use in the product, so teams can spend less time troubleshooting requests and more time on analysis."
+    },
+    {
+      "fact": "OpenAI 表示更廣的連接器生態「超過 50 個以上」，並點名 Datasite、Box、Preqin、FactSet 與 Intapp 作為例子（原文用 including，非完整清單）；官方原文本身用詞重複，寫成 over 50+ connectors。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our broader connector ecosystem includes over 50+ connectors including Datasite, Box, Preqin, FactSet and Intapp."
+    },
+    {
+      "fact": "OpenAI 宣稱 GPT‑6 Astra 在金融服務工作所需的三項核心能力（資訊檢索、財務推理、成果產出）上都達到業界領先水準（state of the art）。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Astra is state of the art across three of the core capabilities required for financial services work: information retrieval, financial reasoning, and artifact generation."
+    },
+    {
+      "fact": "官方描述這個模型的能力：能讀懂財務文件裡的數字、表格與附註；能根據輸入的資料執行財務分析並整理出結論；能把分析結果整理成文件、試算表與簡報等產出。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It can navigate and understand figures, tables, and the supporting notes in financial documents. It can take inputs, run financial analysis, and draw conclusions. And it can take all of this work and accurately synthesize it into documents, spreadsheets, and slides."
+    },
+    {
+      "fact": "評測一 OfficeQA Pro：官方圖說寫 GPT‑6 Astra 得 69.9%、GPT‑5.6 Sol 得 60.2%，測的是模型能否在美國財政部公報（U.S. Treasury Bulletins）中找到並分析資訊，包含複雜財務表格、圖表與附註。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OfficeQA Pro tests whether AI agents can find and analyze information across U.S. Treasury Bulletins, including complex financial tables, charts, and supporting footnotes. GPT‑6 Astra scores 69.9%, compared with 60.2% for GPT‑5.6 Sol."
+    },
+    {
+      "fact": "評測二 BoxBench：官方圖說寫 GPT-6 Astra 得 77%、GPT-5.6 Sol 得 74%，並自行註明「這是外部夥伴提供的 Eval」，測的是模型能否把複雜商業流程中的文件整理成完整產出。這一條圖說本身用的是 ASCII 連字號，與 OfficeQA Pro 圖說使用特殊連字號不同，兩者都是官方頁面原樣，不是抓取誤差。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "BoxBench tests how well models can reason over documents in complex business workflows to turn them into rich deliverables. GPT-6 Astra scores 77%, compared with 74% for GPT-5.6 Sol. Note this is an Eval provided by an External partner."
+    },
+    {
+      "fact": "評測三專業簡報製作：官方圖說自承是內部評測，寫 GPT-6 Astra 對 Claude Opus 5 的人工評比勝率為 55.6%，同一句圖說另外提到 GPT-5.6 Sol 為 21.6%——但這個 21.6% 與圖表本身的原始資料矛盾（圖表資料是 GPT-5.5 為 0.216、GPT-5.6 Sol 為 0.306），本文只採用雙方一致的 55.6% 這個數字，不採用 21.6%。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This internal evaluation tests models on professional slide creation, including both making slide decks from scratch and following existing templates. GPT-6 Astra scores a win rate of 55.6% against Opus 5 in human comparisons, compared to only 21.6% for GPT-5.6 Sol."
+    },
+    {
+      "fact": "官方說明管理者可以透過專屬後台頁面發布 Excel、Word 與 PowerPoint 範本。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In ChatGPT for Financial Services, administrators can publish Excel, Word, and PowerPoint templates through a dedicated admin page."
+    },
+    {
+      "fact": "設定好公司範本與風格指南後，團隊可以把分析結果轉成公司格式的估值模型、研究報告與提案簡報（pitchbook）。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With firm templates and style guides configured, teams can turn their analysis into valuation models, research notes, and pitchbooks in their firm’s format and style."
+    },
+    {
+      "fact": "安全與治理建立在 ChatGPT Enterprise 既有能力上：SAML 單一登入、SCIM 帳號佈建與角色式存取控制。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT for Financial Services builds on ChatGPT Enterprise’s SAML SSO, SCIM provisioning, and role-based access controls."
+    },
+    {
+      "fact": "OpenAI 表示企業的業務資料預設不用於訓練模型，靜態儲存與傳輸過程都加密，管理者可設定工作區的資料保留期限。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Your firm’s business data is not used to train our models by default. It is encrypted at rest and in transit, and admins can configure workspace retention."
+    },
+    {
+      "fact": "法遵團隊可透過 OpenAI Compliance Platform，把支援的工作區紀錄匯出到自己既有的稽核與調查流程。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Compliance teams can export supported workspace logs through the OpenAI Compliance Platform into their existing audit and investigation workflows."
+    },
+    {
+      "fact": "企業可依角色管理誰能使用哪些外掛（skills）與應用程式、開關特定應用程式的讀寫權限，也可以建立多個工作區來做資訊隔離牆（information barriers）。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Firms can manage access to skills and apps by role and enable or disable supported app read and write actions. Multiple workspaces can also be created to enforce information barriers."
+    },
+    {
+      "fact": "OpenAI 自己表示這項產品只是服務金融業客戶的其中一種方式，金融產業的需求需要一整套解決方案。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT for Financial Services is one way we serve customers across the industry, but we recognize that it will require a range of solutions to address the needs of the finance industry."
+    },
+    {
+      "fact": "OpenAI 說明金融服務業者與開發者也可以直接使用 OpenAI 的 API，打造自己理解需求所需的專屬應用程式。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Financial services firms and developers can use our API to build specialized applications for the needs they understand best."
+    },
+    {
+      "fact": "供應狀況全文只有一句：ChatGPT for Financial Services 開放給「合資格的金融機構」使用，有興趣請聯絡 OpenAI 業務或自己的客戶經理。頁面上唯一的行動呼籲（hero 按鈕「Contact financial services sales」與 prefooter 按鈕「Contact sales」）都連到同一個網址 /business/contact-sales-financial-services/；沒有任何地區、時程、資格條件或價格。",
+      "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT for Financial Services is available to eligible financial institutions. If you’re interested, please contact us or reach out to your account team."
+    },
+    {
+      "fact": "OpenAI 自家 ChatGPT 說明文件的定價頁（sources[] 裡的那一份 HTML，2026-09-18 三次抓取都是 670,897 bytes，h1 為 Pricing）通篇沒有出現 financial 這個字（不分大小寫，0 次），也沒有為 ChatGPT for Financial Services 列出任何價格；該頁的方案框架其實是 Codex 的方案比較（切換器識別碼 codex-pricing-plans 出現 4 次），不是這項金融機構產品的收費頁。",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "codex-pricing-plans"
+    }
+  ],
+  "not_said": [
+    "沒有任何價格：官方公告與官方 ChatGPT 說明文件的定價頁都沒有 ChatGPT for Financial Services 的費用、每席次成本、最低席次或合約長度，也沒說它是 ChatGPT Enterprise 的加購項目、獨立方案還是另立合約。",
+    "沒有任何地區或國家的開放說明：公告正文裡唯一出現的地名是 OfficeQA Pro 評測所用的「U.S. Treasury Bulletins」（頁尾的語言／地區選擇器另有 English 與 United States，那是全站頁尾元件，不是這篇公告的內容）。以 Taiwan、Asia、Europe 等字串查核到 2026-09-18 未見，也沒有語言支援的說明。",
+    "沒有定義「合資格的金融機構」（eligible financial institutions）：沒有寫資格條件、機構類型、規模門檻、審核方式或需要多久。",
+    "沒有開放時程：公告正文以 beta、waitlist、preview 等字串查核到 2026-09-18 未見（preview 只出現在頁面 JavaScript 的路由名稱清單裡，與這篇公告無關），也沒有分批開放或「幾月幾日起可用」的說法，只請讀者聯絡業務或客戶經理。",
+    "沒有說個人使用者（Free、Go、Plus、Pro）能不能用，也沒有說既有 ChatGPT Business 工作區是否適用；以 2026-09-18 查核到的官方公告與定價頁，兩處都未見任何相關敘述（公告正文以 Plus、Business、Free、consumer、individual 五個字串搜尋皆 0 次，Business 的 4 次全在頁尾全站導覽列）。",
+    "沒有公布任何客戶數、機構數、席次數、使用量或採用率。",
+    "沒有說摩根士丹利與 Evercore 已經導入、購買或全面使用，官方只稱其為設計夥伴（design partners）並引用兩家代表的發言。",
+    "對 S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's 只說「正在合作」與「將能」，沒有說已上線，也沒有給時程。",
+    "沒有說明內建資料的涵蓋範圍、歷史深度、更新頻率、地區涵蓋或授權條件；也沒有說內建資料是否另外收費或計入用量額度。",
+    "沒有公布任何評測的方法、題數、評分者人數、時間或可重現的細節；BoxBench 官方自己註明是外部夥伴提供的評測，簡報評測官方自己註明是內部評測。",
+    "沒有提到任何主管機關的核准、認證或法遵背書（例如 FINRA、SEC、FCA、金管會），安全段落講的全是 ChatGPT Enterprise 既有的功能。",
+    "沒有談模型出錯、幻覺或準確率上限，也沒有說產出可否直接對外交付給客戶、需不需要人工覆核。",
+    "沒有說資料落地（data residency）選項，也沒有說是否支援零資料保留（Zero Data Retention）。",
+    "沒有公布 admin 後台頁面的名稱、位置或設定步驟。（前一版這裡還寫『OpenAI 官方說明文件站上沒有為這項產品另外開一頁』，第二輪查核刪掉：本文只讀了那個站的其中一頁，從來沒有把整站列舉過一次，這是一句查不到依據的全稱否定。）",
+    "沒有說產品介面語言、是否支援繁體中文，也沒有說資料商的資料是否含非美國市場的內容。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "GPT-5.6 Sol 在專業簡報製作評測的人工評比勝率是 21.6%。",
+      "seen_where": "官方簡報評測圖的圖說（caption）文字本身。",
+      "why_excluded": "同一張圖的圖表原始資料（vega-lite spec 的 data.values）把 0.216 記在 GPT-5.5 名下、把 GPT-5.6 Sol 記為 0.306。圖說與圖表資料互相矛盾，本文只採用兩者一致的 55.6% 這個數字，21.6% 不寫進正文。"
+    },
+    {
+      "claim": "ChatGPT for Financial Services 有專屬的服務條款頁與另一個獨立的方案介紹頁，內容為……",
+      "seen_where": "openai.com/sitemap.xml/page/ 裡列有 https://openai.com/policies/financial-services-terms/ 與 https://openai.com/business/solutions/industries/financial-services/ 等真實路徑。",
+      "why_excluded": "2026-09-18 沒有另外重抓 sitemap 或這兩個頁面；本文只用已經直接讀到正文的官方公告頁與另外兩份 ChatGPT 產品文件當來源，不去描述沒有親自讀到內容的頁面。"
+    },
+    {
+      "claim": "申請流程是填表、需要提供哪些資料、審核要多久。",
+      "seen_where": "官方公告頁的行動呼籲按鈕連到 /business/contact-sales-financial-services/。",
+      "why_excluded": "本文沒有實際點擊或送出該頁的聯絡表單（本站不代讀者送出任何表單），因此不描述申請流程或審核時間。"
+    },
+    {
+      "claim": "OpenAI Compliance Platform、Compliance Logs Platform、Compliance API 是同一件事。",
+      "seen_where": "本次公告頁用 OpenAI Compliance Platform 一詞；前兩輪列在 sources[] 的 ChatGPT Work Overview 另外提到 Compliance Logs Platform 之類的保留規則。",
+      "why_excluded": "官方沒有一頁說明三者的關係，本文只照公告頁的用詞引用，不寫成同義詞或互相代換；第二輪把 ChatGPT Work Overview 移出 sources[] 之後，更不會拿它去對照這個名詞。"
+    },
+    {
+      "claim": "同一天 OpenAI 發布的其他公告（例如讓開發者建置自動化的 Agents API）的詳細內容。",
+      "seen_where": "本篇公告頁側欄與『同一天』脈絡；ai-news-openai-agents-api-20260910 是站上另一篇報導同一天發布的獨立文章。",
+      "why_excluded": "不在本篇任務範圍內，正文只用一句話點出同一天有這則公告、並說明兩篇主題不同，不重述其內容。"
+    },
+    {
+      "claim": "研究紀錄前一版（2026-09-16 查核）認為 sources[0] 讀不到正文、必須靠 web.archive.org 封存才能撐住全文事實。",
+      "seen_where": "docs/news-2026-batch-4/research 與 factcheck 的前一版紀錄、corrections-ai.md 的 source_list_fix。",
+      "why_excluded": "2026-09-18 用 curl -sL -A \"Mokaair-editorial\" 重新抓取，openai.com/index/introducing-chatgpt-financial-services/ 直接回 HTTP 200（566,394 bytes），正文可直接讀到，不再需要透過封存頁佐證；本輪 sources[] 因此只放官方原址，不放 web.archive.org 網址。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣的一般上班族與會用 ChatGPT 的個人使用者，不是投資銀行從業人員。角度不是「這個工具多強」，而是「一個賣給金融機構的 AI 產品發表了，它和我手上的 ChatGPT 帳號有什麼關係、又沒有關係」。三個切點：(1) 這是 ChatGPT Work 的客製版本、賣給合資格金融機構、要聯絡業務，個人帳號不會因為這則新聞多出任何功能；(2) 官方主打「資料內建＋逐格溯源」，把數字追回原始表格與段落，這正是一般人用 AI 處理數字時最該學的檢查動作；(3) 官方放了三張評測圖，其中一張自承是外部夥伴的 Eval、一張自承是內部評測，還有一張圖說與圖表資料互相矛盾，示範怎麼讀廠商自己的評測圖比抄數字有用。刻意不談：不評論哪家資料商比較好、不談任何金融商品、不談市場或股價、不推測 OpenAI 的商業模式與營收、不推測台灣的銀行會不會導入、不把設計夥伴寫成已導入的客戶。★ 本篇不掛 finance 主題、不加投資免責 callout：docs/news-2026-batch-4/ai.md 逐字點名這個 slug、判定「主題該怎麼掛看的是文章在寫什麼，不是標題裡有沒有 financial」；本篇寫的是一個給金融機構用的產品，不是教讀者理財，因此照 ai.md 用一般 callout 明講本文寫的是給金融機構的工具、本站沒有試用、也不是投資建議。前一輪研究紀錄與 corrections-ai.md 都提到「若掛 finance 會觸發 pack_ingest 的 finance_no_disclaimer」，本輪不掛 finance，這條規則因此不會觸發，一個 callout 就足夠。",
+  "must_not_write": [
+    "不得寫任何價格、每席次費用、合約金額或「大概多少錢」的推測——官方公告與官方定價文件都沒有。",
+    "不得寫台灣、亞洲或任何地區可用或不可用，也不得寫「台灣的銀行可以／不能用」——官方完全沒提地區。",
+    "不得寫個人 ChatGPT 帳號可以用、或升級 Plus/Pro 就有；官方只寫供合資格金融機構使用、請聯絡業務。",
+    "不得把 S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's 的整合寫成已上線；官方寫的是「正在合作」與「將能」。",
+    "不得寫摩根士丹利或 Evercore 已導入、已購買、全行使用；官方只說是設計夥伴。",
+    "不得引用 21.6% 這個數字——同一張圖的圖說與圖表資料互相矛盾。簡報評測只寫 55.6%。",
+    "不得把 69.9%、77%、55.6% 寫成中立第三方的評測結果；OfficeQA Pro 要寫成官方自己的評測，BoxBench 要註明官方自承是外部夥伴提供的 Eval，簡報評測要註明官方自承是內部評測，全部寫成「OpenAI 表示」。",
+    "不得寫本站試用過、實測過、比較過任何功能。",
+    "不得出現任何投資標的、報酬、殖利率、漲跌、市值、買賣時機或「值不值得」的內容；也不得把估值模型、pitchbook 寫成讀者可以自己拿來做投資判斷的方法。",
+    "不得把行動呼籲按鈕寫成兩個不同的網址；hero 按鈕與 prefooter 按鈕經 2026-09-18 查核都指向同一個 /business/contact-sales-financial-services/。",
+    "不得寫「官方說明文件指出」ChatGPT for Financial Services 的設定步驟——本文讀到的官方說明文件頁面（定價頁）查核到 2026-09-18 為止 0 次提到這個產品；整個說明文件站本文沒有列舉過，不得寫成「整站都沒有」。",
+    "topics 不得加 finance；本篇照 ai.md 用一般 callout，不加投資免責字樣。"
+  ],
+  "live_data_warnings": [
+    "官方公告頁是活文件：獨立查核代理曾於 2026-09-16 比對多個 web.archive.org 封存版本，確認內容在 2026-09-11 被改過兩次（新增 Crunchbase、拿掉一張已撤下的 connector 錯誤率圖）。本文 2026-09-18 直接讀取的線上版本已經是改版之後的版本（內建資料商清單同樣是四家：Daloopa、PitchBook、LSEG News、Crunchbase），與上一輪修正清單描述的『9 月 11 日起的版本』一致，不需要再靠封存佐證。",
+    "已被官方從頁面撤下的數字絕對不可用：connector 錯誤率（Quartr、S&P Global、FactSet、Daloopa 四組百分比）在 2026-09-18 讀到的版本裡同樣搜尋不到，維持不寫。",
+    "openai.com/news/rss.xml 的項目筆數、openai.com/sitemap.xml 各分區的網址數與 lastmod 分布都是查詢當下的快照，本輪沒有重新記錄任何一個筆數，避免重蹈前 12 篇同垂直文章的錯誤（同一天記出三種不同的 item 數）。",
+    "「connector 生態超過 50 個以上」是官方在活文件上的自報數字，只能寫「OpenAI 表示」，且要照官方原文重複用詞的寫法（over 50+ connectors）引述，不可以自己改寫成單一數字。",
+    "learn.chatgpt.com 的定價頁是活文件；「查核當下那一頁沒有這個產品的價格」這個負面結論只在 2026-09-18 成立，之後要重查才能再引用，而且只能講那一頁，不能推廣到整個說明文件站。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（topics 不掛 finance、不加投資免責）：已套用。topics 用 [\"ai\",\"software\",\"ai-news\"]，只有一個一般 callout，內容依 ai.md 的指示明講本文寫的是給金融機構的工具、本站沒有試用、也不是投資建議。",
+    "must_fix 2（sitemap lastmod 不是理由）：不再適用——本輪沒有引用 sitemap lastmod 當任何論證依據，論證改成直接以 2026-09-18 讀到的頁面內容為準（見 live_data_warnings 第一條）。",
+    "must_fix 3（CTA 只有一個網址）：已套用。正文與研究紀錄都寫成 hero 與 prefooter 兩個按鈕指向同一個 /business/contact-sales-financial-services/，不再描述兩個不同的聯絡管道。",
+    "must_fix 4（版本日期改成『9 月 11 日起的版本』而非『9 月 14 日的版本』）：以更新的作法處理——本文不再引用任何 web.archive.org 封存或特定快照日期，改成如實敘述『官方公告頁自上線後多次更新過內容』，並用 2026-09-18 當天直接讀到的線上版本當事實依據，不做版本考古。",
+    "must_fix 5（verbatim_quote 不可以是拼裝品）：已套用。本輪每一條 verbatim_quote 都用程式對 2026-09-18 抓到的原始檔案（main_page.html、work_overview.html、pricing.html）做過字串比對確認存在，並保留官方原文使用的特殊連字號（U+2011，出現在『GPT-6 Astra 是業界領先水準』與 OfficeQA Pro 圖說兩處）與 Unicode 右單引號（U+2019，出現在 firm's／Enterprise's／member's 等所有格）；BoxBench 與簡報評測兩則圖說官方原文確認使用一般 ASCII 連字號，兩種寫法並存於同一頁面，照樣原樣引用，不統一改寫。",
+    "must_add（hero 副標題、能力描述段落、產業框架段落、MCP 段落）：已套用，分別對應正文第一節第一段（副標題翻譯）、第三節第一段（能力描述）、第五節第一段（Expanding what the industry can achieve 的框架）、第二節第三段（MCP 段落）。",
+    "must_add（互動圖表功能、『資料故事』三段式總結、prefooter 完整文案）：獨立查核代理於 2026-09-18 逐條判定有沒有『不寫就會誤導』。三段式總結：原本只以『官方公告把資料分成三層』這個本站自己的框架起頭，等於把編輯分層講成官方分層，已改寫成官方原文自己的三件事（納入進階金融資料、簡化既有資料商連線、改善 MCP 效能），這一條補進正文。互動圖表與 prefooter 文案：兩者都是產品功能與行銷文案，漏掉不會讓讀者誤解產品的對象、範圍或開放狀態，維持不寫，屬於版面取捨而非查不到。另補一條原本漏掉、但會影響理解的官方說法：逐格溯源（granular citations）——圖解與 hero alt 都以它為四格之一，正文卻沒有出現，已補進第二節第一段。",
+    "must_add（web.archive.org 的 timemap 是更好的封存管道）：不再適用——本輪不需要使用任何封存管道，openai.com 的正式網址在 2026-09-18 對 curl -A \"Mokaair-editorial\" 直接回 200。",
+    "source_list_fix 1（sources[0] 不可掛官方原址卻讀不到）：已解除。2026-09-18 撰稿者與獨立查核代理各測一次，https://openai.com/index/introducing-chatgpt-financial-services/ 對 curl -sL -A \"Mokaair-editorial\" 都回 HTTP 200（566,394／566,345 bytes），可直接讀到含三張評測圖 vega-lite 資料與完整段落結構在內的正文，不再是 403。sources[0] 因此維持官方原址，不使用 web.archive.org。",
+    "source_list_fix 2（另外兩條來源完全沒提到 Financial Services，只能撐背景與負面結論）：第一輪保留兩條、用途限定為背景與負面事實；第二輪逐句回推之後把 ChatGPT Work Overview 移出 sources[]，只留 Pricing。理由是兩條的處境並不對稱——定價頁沒有這項產品的價格，是一個讀者會預期在那裡看到答案的地方而沒有答案，撐得住正文那句負面事實；ChatGPT Work Overview 是 ChatGPT Work 的執行隔離與網路權限文件，文章『這是 ChatGPT Work 的客製版本』這句的依據其實是公告頁自己印的 a tailored ChatGPT Work experience，它沒有獨自撐住任何一句，拿它佐證『沒有價格、沒有地區』也與本題無關。sources[] 因此是兩條，等於 BRIEF 的下限；『實質上是單一來源』這個編輯判斷照舊留給站主。",
+    "跨篇通則第 16 條（研究紀錄需補齊 title／hero_label／diagram／checked_on，且 hero_label 不可超過 12 字）：已套用，hero_label 改為『機構限定，數字可溯源』（10 個字），diagram 的四個節點也改成不寫死家數的『多家資料商即用』，不再是被指出矛盾的『四家資料商直接可用』。"
+  ],
+  "hero_label": "機構限定，數字可溯源",
+  "diagram": {
+    "title": "金融版 ChatGPT 的四個重點",
+    "caption": "依 OpenAI 2026 年 9 月 10 日發布的官方公告整理，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "內建資料",
+        "多家資料商即用"
+      ],
+      [
+        "逐格溯源",
+        "數字連回表格段落"
+      ],
+      [
+        "範本產出",
+        "管理者發布公司範本"
+      ],
+      [
+        "機構限定",
+        "合資格機構洽業務"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Eligible only, traceable",
+      "diagram": {
+        "title": "ChatGPT, Finance Edition: Four Points",
+        "caption": "Compiled from OpenAI's official announcement published September 10, 2026; checked on September 18, 2026.",
+        "nodes": [
+          [
+            "Built-in data",
+            "Ready from multiple providers"
+          ],
+          [
+            "Granular citations",
+            "Figures traced to their tables"
+          ],
+          [
+            "Template output",
+            "Admins publish firm templates"
+          ],
+          [
+            "Institutions only",
+            "Eligible firms contact sales"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "機関限定・根拠まで遡れる",
+      "diagram": {
+        "title": "金融版ChatGPTの4つの要点",
+        "caption": "2026年9月10日発表のOpenAI公式発表をもとに整理。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "組み込みデータ",
+            "複数社のデータ即利用"
+          ],
+          [
+            "根拠まで遡る",
+            "数字を表まで遡れる"
+          ],
+          [
+            "テンプレート出力",
+            "管理者が自社様式を公開"
+          ],
+          [
+            "対象機関限定",
+            "対象機関が営業に相談"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "기관 한정, 수치 추적 가능",
+      "diagram": {
+        "title": "금융 ChatGPT의 4가지 핵심",
+        "caption": "2026년 9월 10일 발표된 OpenAI 공식 발표를 바탕으로 정리. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "내장 데이터",
+            "여러 업체 자료 바로 사용"
+          ],
+          [
+            "근거 추적",
+            "수치를 원본 표까지 추적"
+          ],
+          [
+            "템플릿 출력",
+            "관리자가 회사 템플릿 공개"
+          ],
+          [
+            "기관 한정",
+            "적격 기관이 영업 문의"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "机构限定，数字可溯源",
+      "diagram": {
+        "title": "金融版 ChatGPT 的四个重点",
+        "caption": "依 OpenAI 2026 年 9 月 10 日发布的官方公告整理，核实日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "内置数据",
+            "多家数据提供商即用"
+          ],
+          [
+            "逐格溯源",
+            "数字连回表格段落"
+          ],
+          [
+            "模板产出",
+            "管理员发布公司模板"
+          ],
+          [
+            "机构限定",
+            "符合资格机构洽业务"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "2026-09-18 用 curl -sL -A \"Mokaair-editorial\" 把 sources[] 三條全部重抓一次並讀 body（請求未帶任何 email、姓名或個人資料），把內容包拆成 128 條主張逐條回原文核對：正文每一句、summary 四句、FAQ 六題的答句、callout、表格九格與 caption、圖解四格與 caption、title 與 description。三張評測圖除了圖說之外，另外從頁面的 RSC payload 取出 vega-lite 原始資料（OfficeQA Pro：GPT-6 Astra 69.9／GPT-5.6 Sol 60.2／Claude Fable 5.1 62.4，Y 軸 Correctness；BoxBench：0.77／0.74／0.72，Y 軸 Weighted rubric accuracy；Slides Head to Head (Internal) Versus Opus 5：GPT-5.5 0.216／GPT-5.6 Sol 0.306／GPT-6 Astra 0.556，Y 軸 Win Rate (Human Eval)），與圖說互相對質。29 條 verbatim_quote 全部用程式對當天抓到的原始檔做連續字串比對。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "評測段落：刪掉「三張圖都是拿 GPT-6 Astra 和上一代 GPT-5.6 Sol 比較」——三張圖各有三個受測模型，OfficeQA Pro 與 BoxBench 的第三個是 Claude Fable 5.1（62.4／0.72），簡報那張的對照是 Opus 5、而且圖上的三個模型是 GPT-5.5／GPT-5.6 Sol／GPT-6 Astra。改寫成「三張圖各有三個受測模型，圖說各自挑了不同的對照組」，並加上「GPT-6 Astra 在三張圖上都是分數最高的模型」這個三張圖都撐得住的說法。",
+      "BoxBench：刪掉「不是 OpenAI 自己做的」——官方原文只寫 Note this is an Eval provided by an External partner，沒有說分數不是 OpenAI 跑的。改成照官方的話寫「這是外部夥伴提供的 Eval」。",
+      "OfficeQA Pro：刪掉 FAQ 裡「OfficeQA Pro 是官方的文件問答評測」這個來源沒寫的歸屬，改成「這張圖沒有像另外兩張那樣註明評測是誰做的」。",
+      "簡報評測：「與 Anthropic 的 Claude Opus 5」改成「對手在圖上標示為 Opus 5」——頁面只印 Opus 5。",
+      "設計夥伴段落：原稿把 Reliable access to data and high quality artifact creation proved to be the biggest pain points for their teams 的 their teams 放大成「金融機構最頭痛的兩個問題」，並與前一句 pinpoint where OpenAI can solve the biggest challenges 合併成一句。已拆開，痛點限縮回這兩家夥伴的團隊。",
+      "「官方公告引用了兩家公司代表的說法」→「兩家公司的說法（署名到公司，沒有具名到個人）」：頁面上 Morgan Stanley 與 Evercore 兩段引言只署到公司名，沒有任何個人姓名。",
+      "第二段與 summary 第四句：刪掉「官方公告頁自上線後多次更新過內容（例如內建資料商從三家增加到四家）」——這個說法靠的是前一輪的封存逐版比對，web.archive.org 不在 sources[] 裡；而且 providers like … 是非窮舉清單，寫成家數就是把例子當全清單。改成「網頁內容隨時可能更動」。",
+      "最後一段：刪掉「同一天，OpenAI 另外發布了 Agents API」——同日發布這件事沒有任何一條 sources[] 撐得住。",
+      "第二節第一段：把本站自己的「官方公告把資料分成三層」換成官方原文自己的三件事總結（納入進階金融資料、簡化既有資料商連線、改善 MCP 效能），並補上正文從頭到尾沒寫、圖解與 hero alt 卻放在四格之一的逐格溯源（granular citations）。",
+      "第二節第二段：原稿把 OpenAI 的整合夥伴名單寫成「不少金融機構原本就付費訂閱 S&P Capital IQ…這類資料服務」，等於把兩件事的歸屬接在一起。改成官方原文的順序：OpenAI 表示知道許多客戶原本就有訂閱，因此正在與這五家合作。",
+      "第二節第三段與表格：MCP 那句補回 some of the most used 的「部分」，並補上官方自己承認 It can be challenging to effectively use MCP connectors 的前提。",
+      "第四節：刪掉來源沒有的效益句「不必再手動套版」；「外掛」改成官方用詞「技能」；資訊隔離牆那句改成引官方自己的理由（保護重大未公開資訊與客戶機密）。",
+      "負面句全部限縮到頁面與查核日：「官方沒有公布費用…」→「這則公告沒有寫出…」；「三項評測的方法…官方都沒有公開」→「公告頁上都沒有寫」；FAQ 第二題的「不會。」→「官方公告沒有這樣說。」加上查法與時點。",
+      "「『供應狀況』段落全文只有一句」→「只有兩句話」（官方原文是兩句）。",
+      "title 未動；description 與 summary 第一句的「為投資銀行與股票研究打造」改成官方的說法（where we have started：起點是投資銀行與股票研究）。",
+      "研究紀錄：14 條 is_vendor_claim 由 false 改為 true（外部無法觀察、公司自報、關於未來或關於自己的流程）；第 10 條的 verbatim_quote 由句中片段換成完整句；第 1 條拿掉掛不上 sources[] 的 RSS pubDate 主張；event_date_basis 與 sourcing_notes 更正（兩個頁面是 HTML 不是 markdown、定價頁 HTML 與 .md 的位元組數被混寫成同一份）；not_said 兩條全稱句限縮（頁尾語言選單有 United States；preview 出現在 JS 路由名稱裡）；corrections_applied 第一句裡混進的兩個簡體字已改成正體。"
+    ],
+    "checked_and_correct": [
+      "sources[] 三條 2026-09-18 全部 HTTP 200 且 body 是正文：公告頁 566,345 bytes（<title> 與 h1 都是Introducing ChatGPT for Financial Services，無 Cloudflare 挑戰頁字串）、ChatGPT Work Overview 348,916 bytes（h1 ChatGPT Work Overview）、Pricing 670,897 bytes（h1 Pricing，codex-pricing-plans 出現 4 次、financial 0 次）。前一輪的 403 與封存路線問題本輪不存在，sources[] 乾淨。",
+      "29 條 verbatim_quote 全部是當天原始檔裡可原樣搜尋到的連續字串（含 U+2011 連字號與 U+2019 右單引號），沒有一條是拼裝品——這是本批同垂直最常見的錯誤型態，本篇沒有踩到。",
+      "三個評測數字與各自的歸屬全部正確：OfficeQA Pro 69.9%／60.2%（圖說逐字無誤）、BoxBench 77%／74% 並確實印著 Note this is an Eval provided by an External partner、簡報 55.6% 且圖上標題就寫 Slides Head to Head (Internal)。圖說寫 GPT-5.6 Sol 21.6%、圖表資料卻把 0.216 記在 GPT-5.5 名下（Sol 是 0.306），矛盾為真，草稿只用 55.6%、不用 21.6% 的決定正確。",
+      "「既有訂閱」那一段守住了來源的語氣：OpenAI 表示「正在與」五家合作、資料商「將能」辨識使用者、公告沒有給時程也沒有寫已上線，三個限定詞都在，沒有被寫成已經上線。",
+      "非窮舉清單處理正確：內建資料商寫「等」（原文 providers like）、連接器點名五家寫明「不是完整清單」（原文 including）、連接器數字照官方重複用詞引成「超過 50 個以上／over 50+ connectors」並歸因給官方。",
+      "已被官方撤下的 connector 錯誤率（Quartr、S&P Global、FactSet、Daloopa）在 2026-09-18 的頁面上同樣搜尋不到，草稿沒有使用，維持正確。",
+      "地區處理正確：公告內文沒有任何開放地區，草稿沒有推定台灣可用，並在正文與 FAQ 兩處寫明台灣的機構能不能申請、要多少錢都沒有答案。",
+      "界線檢查：沒有購買建議、沒有推薦式比價（全文沒有任何價格數字，也沒有引用定價頁上的 Codex 方案價）、沒有投資標的或報酬敘述；廠商宣稱都帶「OpenAI 表示／官方說明」；topics 是 [ai, software, ai-news]、不掛 finance、只有一個一般 callout，callout 依 ai.md 明講本文寫的是給金融機構的工具、本站沒有試用、也不是投資建議——三項要求都在。",
+      "event_date 2026-09-10 與 news_date、slug 尾碼一致，且就是公告頁自己印的 September 10, 2026。",
+      "hero_label「機構限定，數字可溯源」10 字（≤12）；diagram 四格沒有寫死家數、圖上沒有數字；diagram.caption 與內容包 image caption 一致；研究紀錄 title 與內容包 title 一致。"
+    ],
+    "left_for_the_owner": [
+      "sources[] 只有三條，其中兩條（ChatGPT Work Overview、Pricing）整頁沒有提到這個產品，只能撐背景與『官方文件裡沒有』這兩個負面事實。主題的實質內容全部來自同一條官方公告頁。BRIEF 要求 2–4 條一手來源，形式上過關，但實質上是單一來源，站主可決定是否接受。",
+      "官方公告頁是活文件（前一輪已證實 2026-09-11 被改過兩次）。本輪改成不寫版本考古、只寫依查核當天讀到的版本。若日後頁面再改（例如資料商清單、評測圖），正文的清單與三個百分比都要重查。",
+      "OfficeQA Pro 這個評測，官方沒有註明是誰做的。文章已寫明這件事，但如果站主希望更保守，可以再加一句「本站查不到這個評測的公開說明」——本輪沒有加，因為那需要引用 sources[] 以外的搜尋結果。",
+      "頁面上還有一位資料夥伴 Fiscal.ai 有 CEO 引言與 logo，卻不在內建資料那段的 providers like 清單裡。文章用「等」處理、沒有寫家數，所以不會錯；若站主希望點名 Fiscal.ai，需要另外寫一句說明它的角色差異。"
+    ],
+    "second_round": {
+      "checked_on": "2026-09-18",
+      "scope": "不是整篇重做。範圍是第一輪改動過的每一段、第一輪新寫進去的每一句（這些句子第一輪自己沒有人查過）、三張評測圖改寫後的每一個數字與註記、第一輪留下的 sources[] 問題、全部 verbatim_quote 的連續字串比對、以及界線再掃一次。",
+      "claims_checked": 134,
+      "claims_checked_breakdown": "第一輪改動過的段落與新寫進去的句子共 60 條逐句回原文、29 條 verbatim_quote 重跑連續字串比對、三張評測圖的 21 個資料點（評測名稱、三個模型名、三個數值、名次、來源註記、Y 軸名稱、標籤格式）從 vega-lite spec 重新取出、16 個否定句範圍用字串計數重數、8 項第一輪刪除事實的殘留掃描。",
+      "edits": 25,
+      "method": "2026-09-18 第三次用 curl -sL -A \"Mokaair-editorial\" 重抓（請求未帶任何 email、姓名或個人資料）：公告頁 HTTP 200／566,353 bytes、定價頁 HTTP 200／670,897 bytes、當時還在 sources[] 的 ChatGPT Work Overview HTTP 200／348,916 bytes，三份 body 都是正文。三張圖不看第一輪的紀錄，直接從 RSC payload 重新取出 vega-lite spec 與 figcaption 原文對質；29 條 verbatim_quote 用程式重跑一次連續字串比對（原始 HTML 與 HTML-unescape 後兩種變體都試），並逐條檢查有沒有 ...／…／| 這類拼接符號。",
+      "findings": [
+        "評測段落第一輪新寫的『圖說各自挑了不同的對照組』不成立：OfficeQA Pro 與 BoxBench 兩張圖的圖說挑的是同一個對照（GPT-5.6 Sol），只有簡報那張換成 Opus 5。改成三張圖都撐得住的寫法『圖說都只點名其中兩個』——OfficeQA Pro 圖說點 Astra 與 Sol、BoxBench 圖說點 Astra 與 Sol、簡報圖說點 Astra 與 Sol（沒點到圖上的 GPT-5.5，對手 Opus 5 是基準線不是長條）。",
+        "第三個模型補進正文：OfficeQA Pro 圖上的第三個模型是 Claude Fable 5.1，圖上印 62.4%（圖表的 transform 是 format(datum.correctness, '.1f') + '%'，所以 62.4% 是圖上原樣印出來的字，不是查核者換算的）。只寫圖上印的名稱與數字，不加評語、不做排名以外的推論。BoxBench 的第三個模型同樣是 Claude Fable 5.1（資料 0.72，圖上標籤格式為 .1%，即 72.0%），因為它低於圖說點名的兩個、漏掉不會誤導，且正文字數已近上限，只寫進本紀錄不寫進正文。",
+        "三張圖的其他重點逐一複驗無誤：三張圖各有三個受測模型、GPT-6 Astra 三張都最高（69.9 > 62.4 > 60.2；0.77 > 0.74 > 0.72；0.556 > 0.306 > 0.216）；BoxBench 圖說印 Note this is an Eval provided by an External partner；簡報那張圖表標題就是 [\"Slides Head to Head (Internal)\",\"Versus Opus 5\"]、圖說寫 This internal evaluation，圖上與圖說都註明是內部評測；OfficeQA Pro 的圖說沒有任何來源註記。圖說 21.6% 與圖表把 0.216 記在 GPT-5.5 名下的矛盾今天仍在，正文只用 55.6%（圖說與圖表一致）的決定維持。",
+        "FAQ 第五題還留著第一輪自己已經推翻的說法：『不是本站或第三方獨立測出來的』。官方只說 BoxBench 的 Eval 由外部夥伴提供，沒有說分數是誰跑的，這句等於反向多推論一次。改成『這些數字都是 OpenAI 在自己的公告頁上公布的，不是本站實測的結果』。",
+        "sources[] 由三條收成兩條：移出 ChatGPT Work Overview（理由見 corrections_applied 的 source_list_fix 2），連帶刪掉它那條 verified_fact，並把正文第二段、FAQ 第二題、FAQ 第六題裡『官方 ChatGPT 產品說明文件』『三個官方頁面』改寫成實際剩下的那一頁（定價頁）與『兩個官方頁面』。",
+        "第一輪新寫的『這層合作讓 OpenAI 找出自己能為金融機構解決的最大挑戰；而對這兩家夥伴的團隊來說……』逐句回原文成立，兩句在來源上確實是分開的兩句，their teams 的歸屬限縮正確。『兩家公司的說法（署名到公司，沒有具名到個人）』也成立：Morgan Stanley 與 Evercore 兩段引言只署公司名，同頁六段資料商引言則都具名到人（Jager McConnell、Thomas Li、Tom Van Buskirk、Braden Dennis、Sally Moore、Emily Prince）。",
+        "第一輪刪掉的兩條事實沒有殘留：全包搜尋『四家』『三家增加』『封存』『多次更新』『改版』『同一天』皆 0 次；正文、summary、FAQ、diagram 四處都沒有家數，diagram 節點維持『多家資料商即用』。唯一保留的 Agents API 字樣是正文最後一段的站內互見，與『同一天發布』無關。",
+        "正文最後一段『這兩塊，以及 OpenAI Agents API 的計費與資料位置，本站先前都已經分別整理過』屬實：ai-news-gpt-6-astra-20260903、ai-news-chatgpt-work-20260709、ai-news-openai-agents-api-20260910 三篇都在內容目錄裡，最後一篇的標題就是『委託 AI 自動化前，先看懂計費與資料位置』。",
+        "第一節第一段『OpenAI 說明這是把金融團隊日常會用到的資料、模型與產出格式整合進同一個工作環境』是掛在 OpenAI 名下、但官方沒有這樣寫的清單（官方原文是 brings together the financial data teams need，另一處圖說是 built-in data, connected sources, and financial analysis workflows，都沒有『模型與產出格式』）。改成官方自己的說法『把團隊需要的金融資料整合在一起』。",
+        "第五節第一段開頭『官方也自己承認這款產品蓋不了整個金融產業：』刪掉——官方原文是中性的 we recognize that it will require a range of solutions，『承認』替來源加上了不情願的語氣，而且後面整句已經把同一件事講完。",
+        "customized client materials 的譯法由『客製化的客戶資料』改成『客製化的客戶文件』（正文第一段與 FAQ 第一題兩處）。全文其他地方的『資料』一律指 data（內建資料、資料商、資料訂閱），沿用同一個詞會讓讀者把『為客戶做的文件』讀成『客戶的個資』。",
+        "研究紀錄自身的三處不一致已修：定價頁那條 verified_fact 描述的是不在 sources[] 裡的 .md 版本、而且寫 46,714 bytes、與 sourcing_notes 的 46,700 bytes 互相打架（改成描述 sources[] 裡那份 670,897 bytes 的 HTML）；not_said 與 must_not_write 各有一句『官方說明文件站上沒有為這項產品開一頁』的全稱否定，但本文從未列舉過那個站（限縮成只講讀到的那一頁）；not_said 的個人方案那條補上可重現的字串計數。"
+      ],
+      "checked_and_correct": [
+        "29 條 verbatim_quote（移出 ChatGPT Work Overview 後為 28 條）今天再跑一次，全部仍是原始檔裡可原樣搜尋到的連續字串；沒有任何一條含 ...、… 或 |，因此沒有拼接片段要逐段比對。U+2011 連字號（GPT‑6 Astra、OfficeQA Pro 圖說）與 U+2019 右單引號照舊，BoxBench 與簡報圖說用 ASCII 連字號也照舊，同頁兩種寫法並存為真。",
+        "第一輪為了字數並沒有刪掉任何但書或限定詞：刪掉的四處（不必再手動套版、不是 OpenAI 自己做的、同一天發布、改版史）都是來源沒有的斷言或推論，而第一輪反而加進了『部分』『三項中的』『正文』『查核到……為止』四個限定詞。第二輪的刪修同樣沒有動到任何限定詞。",
+        "summary 四句全部可在正文段落裡找到對應（不只是 check_article.py 要求的數字，敘述也是）；FAQ 六題的答句在把第五題、第六題與正文用詞對齊之後（『席次費用或最低採用條件』改成正文用的『最低採用規模或合約長度』）也全部收在正文講過的範圍內。",
+        "範圍不明的否定句再掃一次，正文與 FAQ 的每一句否定都帶著頁面範圍或查核日：『這則公告沒有寫出』『公告頁上都沒有寫』『官方公告正文沒有提到』『查核到 2026 年 9 月 18 日為止』。FAQ 第四題本輪補上查核日。公告正文的地區與方案字串今天重數：Taiwan／Asia／Europe／region／beta／waitlist／preview／price 皆 0 次，United States 與 U.S. Treasury 各 1 次且都在正文之外（頁尾地區選單、圖說），preview 只出現在頁面 JavaScript 的 econ-research-preview 路由名稱裡。",
+        "界線再掃一次，五項都成立：topics 是 [ai, software, ai-news]、不掛 finance；只有一個 callout，而它明講三件事（給金融機構的工具、本站沒有試用、不是投資建議）；沒有投資免責 callout；全文沒有任何價格數字，也沒有『值不值得』『該不該導入』『該訂哪個方案』這類訂閱或採購建議；沒有推定台灣可用，正文與 FAQ 各寫一次台灣的機構能不能申請、要多少錢都沒有答案。",
+        "checked_on 2026-09-18 沒有因為第二輪重抓而改動；內容包兩條 source、研究紀錄、正文第二段與兩個 caption 仍然一致。event_date 2026-09-10 與 news_date、slug 尾碼、公告頁自己印的 September 10, 2026 也仍然一致。"
+      ],
+      "verdict": "needs_owner"
+    }
+  }
+}

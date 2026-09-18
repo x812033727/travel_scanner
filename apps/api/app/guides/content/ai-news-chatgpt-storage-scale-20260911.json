@@ -1,0 +1,1236 @@
+{
+  "slug": "ai-news-chatgpt-storage-scale-20260911",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-11",
+  "featured": false,
+  "display_order": 158,
+  "related": [
+    "ai-news-openai-broadcom-chip-20260624",
+    "ai-news-gpt-live-1-api-20260910",
+    "ai-news-chatgpt-financial-services-20260910"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI 揭露 Habitat 儲存架構：每週逾十億人使用背後的規模與極限",
+      "description": "OpenAI 在 2026 年 9 月 11 日於官方工程部落格發布文章，說明內部儲存平台 Habitat 如何從一個 Python 用戶端函式庫演變成獨立服務，並在今年第二季改寫成 Rust。本文依官方文章原文，整理 OpenAI 自陳的請求量、涵蓋地區與資料量等數字，以及官方沒有說明的耐久性與地區細節；本站沒有實測，也不提供任何使用或購買建議。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-storage-scale-20260911/hero.jpg",
+        "alt": "原創插圖：左邊多條淺灰細線從四面匯聚到一個資料庫圓柱，代表大量請求同時湧入同一個儲存系統；右上一條由虛線接成實線的箭頭，代表服務從舊版本改寫成新版本；右下四根由矮到高的長條，代表官方描述的逐年成長。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 11 日，OpenAI 在官方工程部落格發布文章《Rapidly scaling online storage to serve over 1 billion ChatGPT users》，說明內部儲存平台 Habitat 這幾年怎麼從一個 Python 用戶端函式庫，演變成一套獨立運作的服務。文章掛在 Engineering 分類下，作者具名為三位技術人員 Jon Lee、Chaomin Yu 與 Ben Ries，文末附上一個工程職缺連結，是一篇技術部落格，不是新產品或新方案的公告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核 OpenAI 官方文章原文、OpenAI 官方新聞 RSS feed，以及官方網站地圖 Engineering 分類頁。openai.com 的文章頁在先前幾天一度只回應存取限制頁面，本文查核當天已能直接讀取正文。以下數字全部是 OpenAI 自己的說法，本站沒有做任何測試，也不提供任何購買或使用建議；本文沒有使用虛構的生活情境。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 11 日，OpenAI 在官方工程部落格說明儲存平台 Habitat 現況：OpenAI 表示現在每秒處理超過 7000 萬次請求，支撐旗下產品每週被超過 10 億人使用，服務範圍涵蓋近 40 個地區。",
+            "OpenAI 表示，過去 3 年他們每年成長幅度超過 10 倍；2026 年第二季由兩名工程師搭配 Codex 與 GPT-5.5 改寫成 Rust，目前處理 95% 的正式環境請求。",
+            "官方這篇文章是系列文章的第一篇，第二篇預定說明多租戶可靠性、讀取效能與資料庫合作方式，查核當下尚未發布，也沒有公布日期。",
+            "OpenAI 沒有在這篇文章說明一份資料保留幾個副本、有沒有服務水準協議，也沒有指出資料實際放在哪些國家或城市。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這篇文章是什麼：一篇工程部落格，不是新產品公告"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把這篇文章歸類在 Engineering（工程）分類下，說明 Habitat 是自己打造的線上儲存平台，讓旗下產品能快速、可靠地取得需要的資料：使用者登入、查看 Codex 設定或在 ChatGPT 開新對話，背後都可能牽涉多次資料查詢。OpenAI 寫道，這些查詢一慢，產品就會讓人覺得慢；查詢失敗，產品就直接無法運作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章開頭的統計方塊並列三個數字：每秒超過 7000 萬次請求、每週超過 10 億人，以及超過 500 PB 的資料量；OpenAI 說明 Habitat 最早是 2023 年 DevDay 為了支援 GPTs 而推出，一開始只是一個連到單一資料庫的 Python 用戶端函式庫，如今已成長為一套複雜的分散式系統。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章末尾附上一個工程職缺連結（網址裡帶著西雅圖的地名）；這是儲存主題兩篇系列文章的第一篇，第二篇預定說明多租戶可靠性、讀取效能分層策略，以及和 Azure Cosmos DB 的合作方式如何擴大。以官方網站地圖與新聞 feed 查核到 2026 年 9 月 18 日，都還沒有看到第二篇的項目，也沒有公布日期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI 說的規模：幾個數字要放在一起看"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在文章正文寫道，Habitat 現在每秒處理超過 7000 萬次請求，支撐旗下產品每週被超過 10 億人使用，服務範圍涵蓋近 40 個地區；文章沒有列出地區的國家或城市名稱，只在一張自陳為「簡化」的示意圖上，出現 us0、us1、eu0 三個範例資料庫代號，那是圖上的標籤，不是一份公布的地區清單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "值得留意的是，OpenAI 官方 RSS feed 與網頁的中繼資料另外寫著「22M requests per second」，但本文查核當天重新讀過正文全文，這個數字只出現在摘要與中繼資料裡，正文從頭到尾沒有再提過，也沒有交代它和 7000 萬、2000 萬有什麼關係。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 也說明，過去 3 年他們每年成長幅度超過 10 倍；文中原句提到，系統工程師通常抓 10 倍規模做設計，希望撐個幾年，同時準備下一個 10 倍。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "數字",
+            "代表什麼",
+            "出現在哪裡"
+          ],
+          "rows": [
+            [
+              "逾 7000 萬/秒",
+              "現在每秒處理的請求數",
+              "正文與統計方塊"
+            ],
+            [
+              "逾 2000 萬/秒",
+              "改寫前 Python 尖峰時的請求數",
+              "正文"
+            ],
+            [
+              "22M/秒",
+              "官方摘要與中繼資料寫的數字",
+              "只在摘要，正文未提"
+            ],
+            [
+              "逾 500 PB",
+              "現在存放的資料量",
+              "正文與統計方塊"
+            ],
+            [
+              "近 40 個",
+              "服務涵蓋的地理區域數",
+              "正文，未列地區名"
+            ],
+            [
+              "逾 10 倍",
+              "過去 3 年每年成長倍數",
+              "正文"
+            ]
+          ],
+          "caption": "整理自 OpenAI 2026 年 9 月 11 日發布的工程部落格；查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼一次變慢的查詢，使用者會感覺得到"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 解釋，當一般使用者的一次請求會帶出幾百次資料庫呼叫時，使用者感覺到的就是最慢的那一次。文章把管理這種「尾端延遲」（少數特別慢的查詢）稱為在這個規模下跑 Python 服務的主要挑戰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章舉了一個案例：Habitat 用 Statsig 這套功能開關工具，預設每分鐘輪詢一次更新後的設定、沒有錯開時間差，而那份設定包含每個服務的每一條正式環境規則；疊上「一個 Pod 最多跑 8 個 Python 處理程序」的架構決定後，變成每分鐘每個 Pod 都會有某個瞬間，所有工作處理程序同時停下手上的請求，改去解析那份龐大的設定檔。OpenAI 說一旦用 CPU 剖析定位到根因，修法就很單純：改用範圍更小的設定、拉長輪詢間隔，並替這類背景工作加上隨機時間差。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個案例和連線池有關：OpenAI 說 Python 的 aiohttp 函式庫預設優先重複使用最近釋出的連線，平常是合理的預設；但流量突增時，比較慢、已經過載的伺服器比較晚把連線還回池子，反而更常被後續請求選中，流量逐漸集中到本來就吃力的 Pod 上。OpenAI 稱這是一種「亞穩態故障」（metastable failure）：造成過載的用戶端停掉之後，仍有一部分處理程序持續惡化，要重開才恢復。改成優先使用最早釋出的連線後，不只解掉回饋循環，連穩態下的請求量落差也跟著變小；現在這類連線管理大多交給 Istio 與 Envoy 負責。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-storage-scale-20260911/diagram-1.svg",
+          "alt": "四格圖解：Habitat 的每秒請求量、涵蓋地區，以及官方沒有說明的部分",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理自 OpenAI 2026 年 9 月 11 日發布的工程部落格；查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI 沒有在這篇文章說明的事"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以英文原詞逐字比對，文章沒有出現 durability、backup、replica 這幾個字，也沒有寫出一份資料會保留幾個副本；OpenAI 只描述過一次想把最關鍵的資料集移到跨地區分散的 Azure Cosmos DB 帳戶、以縮小單一地區故障影響範圍的經過，沒有再說明保存或備援機制。文章也沒有任何可用性數字或服務水準協議，只描述了幾次自家系統出過的狀況，例如某個團隊因為不相干的原因把自己的服務回滾到帶有問題用戶端的舊版本，反而引發原本想避免的事故，但沒有標明日期、時長或對使用者的實際影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地區方面，文章只寫近 40 個地區，沒有把任何國家或城市寫成資料存放地點，也沒有提到台灣或亞洲；比較接近地區資訊的，是示意圖上那三個資料庫代號，以及職缺連結網址裡的城市名。文章同樣沒有交代 Habitat 實際存放哪些資料——登入、查看 Codex 設定、開新對話都可能需要查資料，但沒有明講對話內容是否存在 Habitat 裡，只說這裡是保護使用者資料、防止外部、內部與代理程式未經授權存取的關鍵位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改寫成 Rust 之後的數字也一樣：OpenAI 說自家數據顯示，新版本的 CPU 效率是原本的 6 倍、記憶體效率是 15 倍，平均與尾端延遲都顯著降低，目前處理 95% 的正式環境請求，並計畫在未來幾週內完全停用 Python 版本；OpenAI 也說之後會再發一篇分享更多心得，這個後續同樣沒有公布日期。文章沒有附上測試方法、測試情境或第三方查核，這些數字目前只能視為 OpenAI 自己公布的內部量測結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀者可以怎麼看待這篇文章"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇文章沒有公布任何新產品、新方案、新地區或新設定，ChatGPT 或 Codex 的使用者不需要因此做任何調整；OpenAI 自己在文章裡也沒有宣稱使用者會感覺到更快或更省，改寫的效益目前只停留在 OpenAI 自己內部的說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇文章比較適合當成一個提醒：服務背後都有自己的儲存與可用性設計，而營運方自己公布的規模數字，不管是請求量、使用者數或成長倍數，在有第三方查核之前都只能算廠商自己的說法；讀者可以留意文章有沒有提到耐久性、服務水準協議或事故細節，這通常比單一個亮眼數字更能反映服務的穩定程度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想確認後續進度的讀者，可以自己查兩個免費的官方管道：OpenAI 的新聞 RSS feed，以及工程分類的網站地圖，本文就是用這兩個管道確認第二篇還沒出現。要注意網站地圖上標的時間和頁面印出的發布日期對不起來，不宜當成文章的發布日或更新日，這是本文查核當天的觀察。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這篇文章會改變我使用 ChatGPT 或 Codex 的方式嗎？",
+              "answer": "不會。這篇文章沒有公布新產品、新方案、新功能或新設定，OpenAI 也沒有說使用者會感覺到任何變化；文章的主要目的是說明內部儲存平台 Habitat 的技術演進，並且在文末附上一個工程職缺。"
+            },
+            {
+              "question": "「超過 10 億」到底是哪一種使用者？",
+              "answer": "OpenAI 自己就有好幾種寫法。正文的規模句寫「支撐旗下產品每週被超過 10 億人使用」，講的是以週計算的使用人數，不是註冊帳號數；但官方標題與文末預告都寫成「超過 10 億 ChatGPT 使用者」，頁面中繼資料寫「10 億 ChatGPT 使用者」，官方社群分享圖的替代文字則寫「接近 10 億」。OpenAI 沒有說明這幾種說法之間的關係，也沒有說哪些產品計入，本文只照正文那一句寫。"
+            },
+            {
+              "question": "我的資料是不是存在台灣或離台灣比較近的地方？",
+              "answer": "文章沒有寫。OpenAI 只說 Habitat 的服務涵蓋近 40 個地區，沒有把任何國家或城市寫成資料存放地點，也沒有提到台灣或亞洲；比較接近地區資訊的，是示意圖上用來代表資料庫節點的範例代號，以及職缺連結網址裡的城市名，兩者都不是一份公布的地區清單。"
+            },
+            {
+              "question": "OpenAI 真的是靠 AI 自己把系統從 Python 改寫成 Rust 的嗎？",
+              "answer": "OpenAI 是這麼說的：文章寫道，2026 年第二季，只用兩名工程師搭配 Codex 與 GPT-5.5，把整套服務改寫成 Rust，新版本現在處理 95% 的正式環境請求；但文章沒有附上改寫過程的測試方法、程式碼比例或第三方查核，這個說法目前只能算是 OpenAI 自己公布的結果。"
+            },
+            {
+              "question": "系列文章的第二篇什麼時候會出？",
+              "answer": "以官方網站地圖與新聞 feed 查核到 2026 年 9 月 18 日，都還沒有看到第二篇的項目，OpenAI 也沒有另外公布日期；讀者可以自行查 openai.com 的新聞 feed 與工程分類網站地圖，兩者都免費、不需要帳號，不過本文查核當天發現，網站地圖上標的時間和頁面印出的發布日期對不起來，不宜當成文章的發布日或更新日。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇文章引用的都是 OpenAI 自己的說法",
+          "text": "本文所有規模數字、成長倍數與改寫成效，都出自 OpenAI 2026 年 9 月 11 日發布的官方工程部落格，是 OpenAI 對自己系統的自述，沒有第三方查核或稽核；文章沒有公布任何新產品、價格、地區或帳號設定，本站也沒有做任何實測。文章承諾的第二篇系列文章，以及停用 Python 版本的確切時間，查核當下都還沒有公布日期，讀者可自行查閱 OpenAI 官方新聞 feed 或工程分類網站地圖確認最新進度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 與 Broadcom 發表 Jalapeño 晶片：官方說的階段、分工，與還沒公布的事",
+              "kind": "life",
+              "slug": "ai-news-openai-broadcom-chip-20260624"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方工程部落格：Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+          "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI News（官方新聞 RSS feed）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 官方網站地圖：Engineering 分類",
+          "url": "https://openai.com/sitemap.xml/engineering/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "OpenAI Discloses Habitat Storage Architecture: The Scale and Limits Behind Over 1 Billion Weekly Users",
+      "description": "On September 11, 2026, OpenAI published an engineering-blog post describing how its storage platform, Habitat, evolved from a Python client library into an independent service, and was rewritten in Rust in the second quarter of this year. This article sets out the request-volume, regional-coverage, and data-volume figures OpenAI states, plus the durability and regional details it omits; this site has not tested any of this and offers no advice on using or buying anything.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-storage-scale-20260911/hero-en.jpg",
+        "alt": "Original illustration: thin lines converge on a database cylinder for many requests; a dashed-to-solid arrow shows an old version being rewritten; four rising bars show OpenAI-stated yearly growth.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 11, 2026, OpenAI published a post titled “Rapidly scaling online storage to serve over 1 billion ChatGPT users” on its official engineering blog, describing how its internal storage platform, Habitat, evolved over the years from a Python client-side library into an independently operating service. The post is filed under the Engineering category and credited to three named technical staff, Jon Lee, Chaomin Yu, and Ben Ries; it closes with a link to an engineering job opening. It is a technical blog post, not an announcement of a new product or plan."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026 against the original OpenAI post, OpenAI's official news RSS feed, and the Engineering section of OpenAI's official sitemap. For several days beforehand, the post's page on openai.com would sometimes return only an access-restricted page; by the day of this check it could be read directly. Every figure below is OpenAI's own statement; this site has not run any tests of its own and offers no advice on purchasing or using anything. This article uses no invented everyday scenario."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 11, 2026, OpenAI described the current state of its Habitat storage platform on its official engineering blog: OpenAI states that it now handles over 70 million requests every second, supports products used by over 1 billion people a week, and spans nearly 40 regions.",
+            "OpenAI states that its scale has grown more than 10x year-over-year for the last three years; in the second quarter of 2026, two engineers, working with Codex and GPT-5.5, rewrote the service in Rust, which now handles 95% of production requests.",
+            "This post is the first in a two-part series; the second part is expected to cover multi-tenancy reliability, read performance, and how the database partnership works, but as of this check it had not been published and no date has been announced.",
+            "OpenAI does not say in this post how many copies of data it keeps, whether there is any service-level agreement, or which countries or cities the data actually resides in."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What This Post Is: An Engineering Blog Post, Not a Product Announcement"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI files this post under its Engineering category, describing Habitat as the online storage platform it built in-house so its products can retrieve the data they need quickly and reliably: a user logging in, checking their Codex settings, or opening a new ChatGPT conversation can all involve multiple data queries behind the scenes. OpenAI writes that when those queries are slow, the product feels slow; when they fail, the product simply stops working."
+        },
+        {
+          "type": "paragraph",
+          "text": "The stat block at the top of the post lists three numbers side by side: over 70 million requests per second, over 1 billion people a week, and over 500 PB of data. OpenAI explains that Habitat first launched at DevDay 2023 to support GPTs, starting as a simple Python client-side library connected to a single database, and has since grown into a complex distributed system."
+        },
+        {
+          "type": "paragraph",
+          "text": "The post closes with a link to an engineering job opening (the URL carries the name of Seattle); this is the first of two posts on the storage topic, and the second is expected to cover multi-tenancy reliability, a layered strategy for read performance, and how the partnership with Azure Cosmos DB is being scaled up. As checked against the official sitemap and news feed through September 18, 2026, no entry for the second part has appeared yet, and no date has been announced."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Scale OpenAI Describes: A Few Numbers Worth Reading Together"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI writes in the body of the post that Habitat now handles over 70 million requests every second, supports products used by over 1 billion people a week, and spans nearly 40 regions; the post does not list the countries or cities behind those regions. The closest thing to regional detail appears on a diagram the post itself labels “simplified,” which shows three example database codes, us0, us1, and eu0 — labels on a diagram, not a published list of regions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Worth noting: OpenAI's official RSS feed and the page's own metadata separately state “22M requests per second.” Rereading the full body text on the day of this check, this article found that figure only in the summary and metadata; it never appears again in the body, and the post never explains how it relates to the 70 million or 20 million figures."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI also states that its scale has grown more than 10x year-over-year for the last three years; the post's own line notes that systems engineers typically design for 10x the current scale, hoping it holds for a few years while they prepare for the next 10x."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Figure",
+            "What it represents",
+            "Where it appears"
+          ],
+          "rows": [
+            [
+              "Over 70 million/sec",
+              "Requests handled per second now",
+              "Body text and stat block"
+            ],
+            [
+              "Over 20 million/sec",
+              "Python's peak requests before the rewrite",
+              "Body text"
+            ],
+            [
+              "22M/sec",
+              "Figure given in the official summary and metadata",
+              "Summary only, not the body"
+            ],
+            [
+              "Over 500 PB",
+              "Data volume stored now",
+              "Body text and stat block"
+            ],
+            [
+              "Nearly 40",
+              "Number of geographic regions served",
+              "Body text, regions not named"
+            ],
+            [
+              "More than 10x",
+              "Year-over-year growth, last three years",
+              "Body text"
+            ]
+          ],
+          "caption": "Compiled from the engineering blog post OpenAI published on September 11, 2026; checked on September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why Users Can Feel a Single Slow Query"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI explains that when the average user's request triggers hundreds of database calls behind the scenes, what the user feels is the slowest one. The post calls managing this tail latency — a small number of unusually slow queries — the main challenge of running a Python service at this scale."
+        },
+        {
+          "type": "paragraph",
+          "text": "The post gives one example: Habitat uses Statsig, a feature-flag tool, which by default polls for updated configuration once a minute with no jitter, and that configuration includes every production rule across every service. Layered on top of the architectural decision that a pod runs up to 8 Python processes, the result was that every minute, each pod would have some moment where all of its worker processes simultaneously stalled their in-flight requests to instead parse that giant configuration file. OpenAI says that once CPU profiling helped them find the root cause, the fix was simple: deploy narrower-scoped configuration, lengthen the polling interval, and add jitter to background work like this."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other example involves connection pooling: OpenAI says Python's aiohttp library defaults to preferring the most recently released connection for reuse, which is normally a reasonable default. But during a burst of requests, slower, already-overloaded servers returned connections to the pool later and were therefore selected more often by subsequent requests, gradually concentrating more traffic on the pods already struggling. OpenAI calls this a kind of “metastable failure”: even after the client causing the overload stops, a subset of processes keeps degrading and only recovers after a restart. Switching to preferring the earliest-released connection not only broke the feedback loop but also reduced variance in request volume under steady state; this kind of connection management is now mostly handled by Istio and Envoy."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-storage-scale-20260911/diagram-1-en.svg",
+          "alt": "A four-panel diagram: Habitat's requests per second, the regions it covers, and what OpenAI's post does not explain",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from the engineering blog post OpenAI published on September 11, 2026; checked on September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What OpenAI Does Not Explain in This Post"
+        },
+        {
+          "type": "paragraph",
+          "text": "This article compared the original English wording term by term: the post does not contain the words durability, backup, or replica, and does not state how many copies of a piece of data are kept. OpenAI describes, just once, wanting to move its most critical datasets into an Azure Cosmos DB account distributed across regions, to narrow the blast radius of a single-region failure — and says nothing further about retention or redundancy mechanisms. The post also gives no availability figures or service-level agreement, describing only a few incidents its own systems have had — for example, one team rolling its own service back to an older version with a problematic client for unrelated reasons, which set off the very outage so much effort had gone into avoiding — without stating a date, duration, or the actual impact on users."
+        },
+        {
+          "type": "paragraph",
+          "text": "On regions, the post states only that it covers nearly 40 regions, without naming any country or city as a data location, and without mentioning Taiwan or Asia. The closest things to regional information are the three database codes on the diagram and the city name in the URL of the job link. The post likewise does not spell out what data Habitat actually stores — logging in, checking Codex settings, and opening a new conversation may all require querying data, but the post never states outright whether conversation content itself is stored in Habitat, saying only that this is where user data is protected, a key point guarding against unauthorized access by external, internal, and agent actors."
+        },
+        {
+          "type": "paragraph",
+          "text": "The numbers for the Rust rewrite are the same kind of claim: OpenAI says its own data shows the new version is 6x more CPU-efficient and 15x more memory-efficient, with both average and tail latency significantly reduced; it now handles 95% of production requests, and OpenAI plans to fully retire the Python version within the next few weeks. OpenAI also says it plans to publish another post sharing more learnings, and that follow-up likewise has no announced date. The post includes no testing methodology, test scenarios, or third-party verification, so for now these numbers can only be treated as internal measurements OpenAI has published itself."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Readers Might Weigh This Post"
+        },
+        {
+          "type": "paragraph",
+          "text": "This post announces no new product, plan, region, or setting, so ChatGPT or Codex users do not need to change anything because of it. OpenAI itself never claims in the post that users will feel anything faster or cheaper; for now, the benefits of the rewrite remain solely OpenAI's own internal account."
+        },
+        {
+          "type": "paragraph",
+          "text": "This post is best treated as a reminder: every service has its own storage and availability design behind it, and the scale figures an operator publishes about itself — whether request volume, user counts, or growth multiples — can only be taken as the vendor's own statement until there is third-party verification. Readers may want to notice whether a post like this addresses durability, service-level agreements, or incident details, which usually says more about a service's stability than any single eye-catching number."
+        },
+        {
+          "type": "paragraph",
+          "text": "Readers who want to check for updates can consult two free official channels themselves: OpenAI's news RSS feed and the Engineering section of the sitemap — this article used exactly those two channels to confirm that the second part has not appeared yet. Note that the time stamped on the sitemap does not match the publication date printed on the page itself, so it should not be treated as the post's publication or update date; that is an observation made on the day of this check."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Does this post change how I use ChatGPT or Codex?",
+              "answer": "No. This post announces no new product, plan, feature, or setting, and OpenAI never says users will feel any change. Its main purpose is to describe the technical evolution of the internal storage platform Habitat, closing with a link to an engineering job opening."
+            },
+            {
+              "question": "What exactly does “over 1 billion” users mean?",
+              "answer": "OpenAI itself uses several different phrasings. The scale statement in the body text says it is “supporting products used by over 1 billion people a week” — a weekly usage figure, not a count of registered accounts. But the official headline and the closing teaser both say “over 1 billion ChatGPT users,” the page's own metadata says “1 billion ChatGPT users,” and the alt text on the official social share image says “nearly 1 billion.” OpenAI does not explain how these figures relate to one another, or which products are counted, so this article follows only the body text's own wording."
+            },
+            {
+              "question": "Is my data stored in Taiwan, or somewhere close to Taiwan?",
+              "answer": "The post does not say. OpenAI states only that Habitat's service spans nearly 40 regions, without naming any country or city as a data location, and without mentioning Taiwan or Asia. The closest things to regional information are the example codes on the diagram that stand in for database nodes, and the city name in the URL of the job link — neither of which is a published list of regions."
+            },
+            {
+              "question": "Did OpenAI really rewrite the system from Python to Rust using AI itself?",
+              "answer": "That is what OpenAI says: the post states that in the second quarter of 2026, just two engineers, working with Codex and GPT-5.5, rewrote the entire service in Rust, and that the new version now handles 95% of production requests. But the post includes no testing methodology, code-share figures, or third-party verification of the rewrite process, so for now this can only be treated as a result OpenAI has published itself."
+            },
+            {
+              "question": "When will the second part of the series come out?",
+              "answer": "As checked against the official sitemap and news feed through September 18, 2026, no entry for the second part has appeared yet, and OpenAI has not announced a date separately. Readers can check OpenAI's news feed and the Engineering sitemap themselves — both are free and require no account — though this article found, on the day of this check, that the time stamped on the sitemap does not match the publication date printed on the page, so it should not be treated as the post's publication or update date."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Everything This Post Cites Is OpenAI's Own Account",
+          "text": "Every scale figure, growth multiple, and rewrite result in this article comes from the official engineering blog post OpenAI published on September 11, 2026 — OpenAI's own account of its own systems, without third-party verification or audit. The post announces no new product, price, region, or account setting, and this site has run no tests of its own. As of this check, OpenAI has not announced a date for either the promised second part of the series or the exact timing of retiring the Python version; readers can check OpenAI's official news feed or the Engineering sitemap themselves for the latest status."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI and Broadcom Unveil the Jalapeño Chip: The Official Stage, Division of Labor, and What's Not Yet Announced",
+              "kind": "life",
+              "slug": "ai-news-openai-broadcom-chip-20260624"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI's official engineering blog: Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+          "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI News (official news RSS feed)",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI's official sitemap: Engineering section",
+          "url": "https://openai.com/sitemap.xml/engineering/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "OpenAIがHabitatストレージ基盤を公開：毎週10億人超の利用を支える規模と限界",
+      "description": "2026年9月11日、OpenAIは公式エンジニアリングブログで、社内ストレージ基盤Habitatが1つのPythonクライアントライブラリから独立したサービスへ進化し、今年第2四半期にRustで書き直された経緯を説明する記事を公開しました。本稿は同記事の原文に基づき、OpenAIが自ら述べるリクエスト数・対応地域・データ量の数字と、公式が説明していない耐久性や地域の詳細を整理しています。当サイトは実地の検証を行っておらず、利用や購入を勧めるものでもありません。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-storage-scale-20260911/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左は薄いグレーの細線が四方から円柱形のデータベースへ集まり、大量のリクエストが同時に押し寄せる様子を表す。右上は破線から実線に変わる矢印で旧版から新版への書き直しを表す。右下は低い順から高い順に並ぶ4本の棒で、公式が示す年ごとの成長を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月11日、OpenAIは公式エンジニアリングブログに「Rapidly scaling online storage to serve over 1 billion ChatGPT users」と題した記事を公開し、社内ストレージ基盤Habitatがこの数年でPythonクライアントライブラリから独立して稼働するサービスへと進化してきた経緯を説明しました。記事はEngineering（エンジニアリング）カテゴリーに分類され、著者として技術スタッフ3名、Jon Lee、Chaomin Yu、Ben Riesの名前が記載され、末尾にはエンジニア職の求人リンクが添えられています。これは新製品や新プランの発表ではなく、技術ブログの記事です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、OpenAIの公式記事原文、OpenAIの公式ニュースRSSフィード、公式サイトマップのEngineeringカテゴリーページを確認しました。openai.comの記事ページは、それ以前の数日間はアクセス制限ページしか返さないことがありましたが、本稿の確認日には本文を直接読むことができました。以下の数字はすべてOpenAI自身の説明であり、当サイトは独自の検証を行っておらず、購入や利用に関する助言も行いません。本稿では架空の生活場面は使用していません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月11日、OpenAIは公式エンジニアリングブログでストレージ基盤Habitatの現状を説明しました。OpenAIによると、現在は毎秒7000万件を超えるリクエストを処理し、傘下の製品は毎週10億人を超える利用者に使われており、対応地域は40地域近くに及びます。",
+            "OpenAIによると、過去3年間は前年比で10倍を超える成長を続けており、2026年第2四半期にはエンジニア2名がCodexとGPT-5.5を使ってRustへの書き直しを行い、現在は本番環境のリクエストの95%を処理しています。",
+            "この記事はシリーズの第1弾で、第2弾はマルチテナントの信頼性、読み取り性能、データベースとの協業方法を説明する予定ですが、確認時点ではまだ公開されておらず、日付も発表されていません。",
+            "OpenAIはこの記事で、1件のデータを何個の複製として保持しているか、サービス品質保証（SLA）があるかどうか、データが実際にどの国・都市に置かれているかについては説明していません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "この記事は何か：新製品の発表ではなく、エンジニアリングブログの記事"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIはこの記事をEngineering（エンジニアリング）カテゴリーに分類し、Habitatを自社で構築したオンラインストレージ基盤だと説明しています。これにより傘下の製品は必要なデータを素早く確実に取得できるとしており、ユーザーがログインする、Codexの設定を確認する、ChatGPTで新しい会話を始めるといった動作の裏側では、いずれも複数回のデータ照会が発生しうるとしています。OpenAIは、こうした照会が遅くなれば製品自体が遅く感じられ、照会が失敗すれば製品はそのまま動かなくなる、と述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事冒頭の統計ボックスには、毎秒7000万件超のリクエスト、毎週10億人超の利用者、500PB超のデータ量という3つの数字が並んでいます。OpenAIの説明によると、Habitatはもともと2023年のDevDayでGPTsを支えるために登場し、当初は単一のデータベースに接続するだけのシンプルなPythonクライアントライブラリでしたが、現在では複雑な分散システムへと成長しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の末尾にはエンジニア職の求人リンクが添えられており（URLにはシアトルの地名が含まれています）、これはストレージをテーマにした2本シリーズの第1弾です。第2弾ではマルチテナントの信頼性、読み取り性能の階層化戦略、Azure Cosmos DBとの協業をどう拡大したかを説明する予定です。公式サイトマップとニュースフィードを2026年9月18日まで確認した限り、第2弾に該当する項目はまだ見当たらず、日付も発表されていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAIが語る規模：いくつかの数字をあわせて読む"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは記事本文で、Habitatは現在毎秒7000万件を超えるリクエストを処理し、傘下の製品は毎週10億人を超える利用者に使われており、対応地域は40地域近くに及ぶと述べています。記事は対応地域の国名や都市名は挙げておらず、「簡略化」したものだと自ら記す模式図の中に、us0、us1、eu0という3つのサンプルのデータベース識別子が登場するのみです。これは図中のラベルであり、公表された地域一覧ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "注意したいのは、OpenAIの公式RSSフィードとページのメタデータには別途「22M requests per second」と記載されている点です。しかし本稿が確認当日に本文全体を読み直したところ、この数字は要約とメタデータにしか登場せず、本文では一度も触れられておらず、7000万や2000万との関係も説明されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIはまた、過去3年間は前年比で10倍を超える成長を続けてきたとも説明しています。記事本文には、システムエンジニアは通常、現状の10倍の規模を見込んで設計し、それが数年もつことを期待しながら、次の10倍にも備える、という一文があります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "数字",
+            "何を表すか",
+            "どこに登場するか"
+          ],
+          "rows": [
+            [
+              "7000万件/秒超",
+              "現在の毎秒処理リクエスト数",
+              "本文と統計ボックス"
+            ],
+            [
+              "2000万件/秒超",
+              "書き直し前のPythonのピーク時リクエスト数",
+              "本文"
+            ],
+            [
+              "22M/秒",
+              "公式の要約とメタデータに記載された数字",
+              "要約のみ、本文には記載なし"
+            ],
+            [
+              "500PB超",
+              "現在保存しているデータ量",
+              "本文と統計ボックス"
+            ],
+            [
+              "40地域近く",
+              "サービス対応地域の数",
+              "本文、地域名の記載なし"
+            ],
+            [
+              "10倍超",
+              "過去3年間の前年比成長倍率",
+              "本文"
+            ]
+          ],
+          "caption": "OpenAIが2026年9月11日に公開したエンジニアリングブログ記事をもとに整理。確認日2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "なぜ1件の遅いクエリをユーザーは体感できるのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIの説明によると、一般的なユーザーの1回のリクエストの裏側で数百回のデータベース呼び出しが発生する場合、ユーザーが体感するのはその中で最も遅い1回です。記事はこうした「テールレイテンシ（tail latency）」（ごく一部の特に遅いクエリ）を管理することを、この規模でPythonサービスを運用するうえでの主な課題と呼んでいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事は1つの事例を挙げています。Habitatは機能フラグを管理するツールStatsigを使っており、既定では時間差を設けずに1分ごとに更新後の設定をポーリングします。その設定には全サービスの全ての本番環境ルールが含まれています。これに「1つのPodにつきPythonプロセスは最大8つまで」というアーキテクチャ上の決定が重なった結果、毎分、各Podであるひとつの瞬間に、すべてのワーカープロセスが処理中のリクエストを止め、代わりにその巨大な設定ファイルの解析にCPUを使う、という状態になりました。OpenAIによると、CPUプロファイリングで根本原因を特定できれば対処はシンプルで、対象範囲をより狭くした設定を配信し、ポーリング間隔を延ばし、こうしたバックグラウンド処理にランダムな時間差を加えればよいとのことです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう1つの事例はコネクションプールに関するものです。OpenAIによると、Pythonのaiohttpライブラリは既定で、直近に解放されたコネクションを優先的に再利用する仕様になっており、これは通常は妥当な既定値です。しかしリクエストが急増すると、遅く既に過負荷になっているサーバーほどコネクションをプールに返すタイミングが遅れるため、かえって後続のリクエストに選ばれやすくなり、トラフィックが徐々にすでに苦しんでいるPodに集中していきました。OpenAIはこれを一種の「準安定故障（metastable failure）」と呼んでいます。過負荷を引き起こしたクライアントが止まった後も、一部のプロセスは悪化し続け、再起動して初めて回復するという現象です。最も早く解放されたコネクションを優先する方式に変更したところ、フィードバックループが解消されただけでなく、定常状態でのリクエスト量のばらつきも小さくなりました。現在、この種のコネクション管理の大部分はIstioとEnvoyが担っています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-storage-scale-20260911/diagram-1-ja.svg",
+          "alt": "4コマの図解：Habitatの毎秒リクエスト数、対応地域、そしてOpenAIが説明していない部分",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIが2026年9月11日に公開したエンジニアリングブログ記事をもとに整理。確認日2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAIがこの記事で説明していないこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿が英語の原語で逐語的に照合したところ、記事にはdurability、backup、replicaという単語は登場せず、1件のデータが何個の複製（レプリカ）として保持されるかも書かれていません。OpenAIが説明しているのは、最も重要なデータセットを複数地域に分散したAzure Cosmos DBのアカウントへ移そうとした経緯を1度述べている点だけで、単一地域の障害が及ぶ範囲を縮めるためだとしていますが、それ以上の保存や冗長化の仕組みについては説明していません。記事には可用性の数字やサービス品質保証（SLA）の記載もなく、自社システムで実際に起きたいくつかの状況を説明しているだけです。例えば、あるチームが無関係の理由から問題のあるクライアントを含む旧バージョンへ自分たちのサービスをロールバックしてしまい、かえって回避しようと力を尽くしていたはずの障害を引き起こした、というものですが、日付や継続時間、ユーザーへの実際の影響は示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域については、記事は40地域近くとしか書いておらず、いかなる国名や都市名もデータの保存場所として挙げておらず、台湾やアジアにも触れていません。地域情報にもっとも近いのは、模式図にある3つのデータベースコードと、求人リンクのURLに含まれる都市名です。記事はまた、Habitatが実際に何のデータを保存しているかについても明言していません。ログイン、Codexの設定確認、新しい会話の開始はいずれもデータ照会を伴う可能性があるとしていますが、会話の内容そのものがHabitatに保存されているかどうかは明言せず、ここが外部・内部・エージェントによる不正アクセスからユーザーデータを守る重要な場所だ、とだけ述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rustへの書き直し後の数字についても同様です。OpenAIは自社データによると、新バージョンはCPU効率が6倍、メモリ効率が15倍になり、平均レイテンシとテールレイテンシのいずれも大幅に下がったとしており、現在は本番環境のリクエストの95%を処理し、今後数週間以内にPython版を完全に廃止する計画だとしています。OpenAIはまた、今後さらに詳しい知見を共有する記事を出す予定だとしていますが、この続報についても日付は発表されていません。記事にはテスト方法やテストのシナリオ、第三者による検証は付されておらず、これらの数字は現時点ではOpenAIが自ら公表した社内計測結果とみなすほかありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "読者はこの記事をどう受け止めればよいか"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事は新製品、新プラン、新しい対応地域、新しい設定のいずれも発表しておらず、ChatGPTやCodexの利用者がこれを理由に何かを変える必要はありません。OpenAI自身も記事の中で、ユーザーが速さやコストの面で何かを体感できるとは主張しておらず、書き直しの効果は今のところOpenAI社内の説明にとどまっています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事はむしろ、次のことを思い出させてくれるものとして読むのがよいでしょう。どのサービスの裏側にも、それぞれ独自のストレージと可用性の設計があり、運営者自身が公表する規模の数字は、リクエスト数であれ利用者数であれ成長倍率であれ、第三者による検証がない限りは、あくまでその事業者自身の説明にすぎません。読者は、こうした記事が耐久性やサービス品質保証、障害の詳細に触れているかどうかに注目するとよいでしょう。それは往々にして、単一の目を引く数字よりもサービスの安定性をよく表しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続報を自分で確認したい読者は、OpenAIのニュースRSSフィードと、Engineeringカテゴリーのサイトマップという2つの無料の公式チャネルを自分で確認できます。本稿もこの2つのチャネルを使って、第2弾がまだ公開されていないことを確認しました。なお、サイトマップに記載されている時刻はページに印字された公開日とは一致しておらず、記事の公開日や更新日とみなすべきではありません。これは本稿の確認当日にわかったことです。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "この記事によって、ChatGPTやCodexの使い方は変わりますか？",
+              "answer": "変わりません。この記事は新製品、新プラン、新機能、新しい設定のいずれも発表しておらず、OpenAIもユーザーが何らかの変化を感じるとは述べていません。この記事の主な目的は、社内ストレージ基盤Habitatの技術的な進化を説明することで、末尾にはエンジニア職の求人が添えられています。"
+            },
+            {
+              "question": "「10億人超」とは、具体的にどのユーザーを指しているのですか？",
+              "answer": "OpenAI自身、複数の異なる表現を使っています。本文の規模に関する一文は「傘下の製品が毎週10億人を超える利用者に使われている」というもので、週単位の利用者数を指しており、登録アカウント数ではありません。一方で、公式の見出しと記事末尾の予告はいずれも「10億人を超えるChatGPTユーザー」と表現し、ページのメタデータは「10億人のChatGPTユーザー」、公式のSNSシェア画像の代替テキストは「10億人近く」としています。OpenAIはこれらの表現の関係についても、どの製品を対象に数えているかについても説明しておらず、本稿は本文にあるその一文のみに沿って記述しています。"
+            },
+            {
+              "question": "私のデータは台湾、あるいは台湾に近い場所に保存されているのですか？",
+              "answer": "記事には書かれていません。OpenAIはHabitatのサービスが40地域近くに及ぶとだけ述べており、いかなる国名や都市名もデータの保存場所として挙げておらず、台湾やアジアにも触れていません。地域情報にもっとも近いのは、データベースのノードを表すために模式図で使われているサンプルの識別子と、求人リンクのURLに含まれる都市名ですが、どちらも公表された地域一覧ではありません。"
+            },
+            {
+              "question": "OpenAIは本当にAI自身の力でシステムをPythonからRustへ書き直したのですか？",
+              "answer": "OpenAIはそう説明しています。記事によると、2026年第2四半期に、わずかエンジニア2名がCodexとGPT-5.5を使ってサービス全体をRustへ書き直し、新バージョンは現在、本番環境のリクエストの95%を処理しているとのことです。ただし記事には、書き直しの過程についてのテスト方法やコードの割合、第三者による検証は付されておらず、この説明は現時点ではOpenAIが自ら公表した結果とみなすほかありません。"
+            },
+            {
+              "question": "シリーズの第2弾はいつ出るのですか？",
+              "answer": "公式サイトマップとニュースフィードを2026年9月18日まで確認した限り、第2弾に該当する項目はまだ見当たらず、OpenAIも別途日付を発表していません。読者はopenai.comのニュースフィードとEngineeringカテゴリーのサイトマップを自分で確認できます。どちらも無料でアカウントも不要です。ただし本稿が確認当日に気づいたのは、サイトマップに記載されている時刻がページに印字された公開日と一致しないという点で、これを記事の公開日や更新日とみなすべきではありません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "この記事が引用しているのは、すべてOpenAI自身の説明です",
+          "text": "本稿にある規模を示す数字、成長倍率、書き直しの成果はすべて、OpenAIが2026年9月11日に公開した公式エンジニアリングブログ記事に基づくものであり、OpenAIが自社のシステムについて自ら語った内容で、第三者による検証や監査は行われていません。記事は新製品や価格、新しい対応地域、アカウント設定のいずれも発表しておらず、当サイトも実地の検証は行っていません。記事が予告する第2弾のシリーズ記事、およびPython版を廃止する正確な時期については、確認時点でまだ日付が発表されていません。読者はOpenAIの公式ニュースフィードやEngineeringカテゴリーのサイトマップを自分で確認し、最新の状況を把握することができます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAIとBroadcomがJalapeñoチップを発表：公式が語る段階、役割分担、そしてまだ発表されていないこと",
+              "kind": "life",
+              "slug": "ai-news-openai-broadcom-chip-20260624"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI公式エンジニアリングブログ：Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+          "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI News（公式ニュースRSSフィード）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI公式サイトマップ：Engineeringカテゴリー",
+          "url": "https://openai.com/sitemap.xml/engineering/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "OpenAI, Habitat 스토리지 아키텍처 공개: 매주 10억 명 넘게 사용하는 규모와 한계",
+      "description": "2026년 9월 11일, OpenAI는 공식 엔지니어링 블로그에 사내 스토리지 플랫폼 Habitat이 하나의 Python 클라이언트 라이브러리에서 독립된 서비스로 발전하고 올해 2분기에 Rust로 다시 작성된 과정을 설명하는 글을 게시했습니다. 본 기사는 원문을 바탕으로 OpenAI가 스스로 밝힌 요청량, 서비스 지역, 데이터 규모 등의 수치와 공식 문서가 설명하지 않은 내구성 및 지역 세부 사항을 정리한 것입니다. 본 사이트는 직접 시험해 보지 않았고, 이용이나 구매에 관한 어떠한 조언도 제공하지 않습니다.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-storage-scale-20260911/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽은 옅은 회색 가는 선들이 사방에서 원통형 데이터베이스로 모여들어 대량의 요청이 한 스토리지 시스템에 몰리는 모습이다. 오른쪽 위는 점선이 실선으로 바뀌는 화살표로 구버전에서 신버전으로의 재작성을, 오른쪽 아래는 낮은 순서에서 높은 순서로 늘어선 막대 4개로 OpenAI가 설명하는 연간 성장을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 11일, OpenAI는 공식 엔지니어링 블로그에 「Rapidly scaling online storage to serve over 1 billion ChatGPT users」라는 제목의 글을 게시하고, 사내 스토리지 플랫폼 Habitat이 지난 몇 년간 Python 클라이언트 라이브러리에서 독립적으로 운영되는 서비스로 발전해 온 과정을 설명했습니다. 이 글은 Engineering(엔지니어링) 카테고리에 속하며, 저자로 기술 인력 3명 Jon Lee, Chaomin Yu, Ben Ries의 이름이 실려 있고, 글 말미에는 엔지니어 채용 공고 링크가 첨부되어 있습니다. 이는 신제품이나 신규 요금제 발표가 아니라 기술 블로그 글입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일에 OpenAI의 공식 글 원문, OpenAI의 공식 뉴스 RSS 피드, 공식 사이트맵의 Engineering 카테고리 페이지를 확인했습니다. openai.com의 글 페이지는 그 이전 며칠 동안 접근 제한 페이지만 반환하기도 했으나, 확인 당일에는 본문을 바로 읽을 수 있었습니다. 아래 수치는 모두 OpenAI 자신의 설명이며, 본 사이트는 직접 시험해 보지 않았고, 구매나 이용에 관한 어떠한 조언도 제공하지 않습니다. 본 기사에서는 가상의 생활 시나리오를 사용하지 않았습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 11일, OpenAI는 공식 엔지니어링 블로그에서 스토리지 플랫폼 Habitat의 현황을 설명했습니다. OpenAI에 따르면 현재 초당 7000만 건이 넘는 요청을 처리하고, 산하 제품은 매주 10억 명이 넘는 사람이 사용하며, 서비스 범위는 40개에 가까운 지역에 걸쳐 있습니다.",
+            "OpenAI에 따르면 지난 3년간 매년 10배가 넘는 성장을 기록했으며, 2026년 2분기에는 엔지니어 2명이 Codex와 GPT-5.5를 활용해 Rust로 다시 작성했고, 현재는 프로덕션 요청의 95%를 처리하고 있습니다.",
+            "이 글은 시리즈의 첫 번째 글로, 두 번째 글에서는 멀티테넌시 안정성, 읽기 성능, 데이터베이스 협력 방식을 다룰 예정이지만 확인 시점 기준 아직 게시되지 않았고 날짜도 발표되지 않았습니다.",
+            "OpenAI는 이 글에서 데이터 한 건을 몇 개의 복제본으로 보관하는지, 서비스 수준 계약(SLA)이 있는지, 데이터가 실제로 어느 국가나 도시에 있는지는 설명하지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 글은 무엇인가: 신제품 발표가 아니라 엔지니어링 블로그 글"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 이 글을 Engineering(엔지니어링) 카테고리로 분류하고, Habitat을 자체적으로 구축한 온라인 스토리지 플랫폼이라고 설명합니다. 이를 통해 산하 제품이 필요한 데이터를 빠르고 안정적으로 가져올 수 있다고 하며, 사용자가 로그인하거나 Codex 설정을 확인하거나 ChatGPT에서 새 대화를 시작하는 것 모두 이면에서 여러 차례의 데이터 조회를 수반할 수 있다고 설명합니다. OpenAI는 이런 조회가 느려지면 제품 자체가 느리게 느껴지고, 조회가 실패하면 제품이 그대로 작동하지 않는다고 적었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글 서두의 통계 블록에는 초당 7000만 건이 넘는 요청, 매주 10억 명이 넘는 사용자, 500PB가 넘는 데이터량이라는 세 가지 수치가 나란히 제시되어 있습니다. OpenAI의 설명에 따르면 Habitat은 원래 2023년 DevDay에서 GPTs를 지원하기 위해 등장했으며, 처음에는 단일 데이터베이스에 연결되는 단순한 Python 클라이언트 라이브러리였지만 지금은 복잡한 분산 시스템으로 성장했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글 말미에는 엔지니어 채용 공고 링크가 첨부되어 있으며(URL에 시애틀이라는 지명이 포함되어 있습니다), 이는 스토리지를 주제로 한 2부작 시리즈의 첫 번째 글입니다. 두 번째 글에서는 멀티테넌시 안정성, 읽기 성능을 위한 계층화 전략, Azure Cosmos DB와의 협력을 어떻게 확대했는지를 다룰 예정입니다. 공식 사이트맵과 뉴스 피드를 2026년 9월 18일까지 확인한 결과, 두 번째 글에 해당하는 항목은 아직 보이지 않으며 날짜도 발표되지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI가 말하는 규모: 몇 가지 수치를 함께 읽어야 하는 이유"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 본문에서 Habitat이 현재 초당 7000만 건이 넘는 요청을 처리하고, 산하 제품은 매주 10억 명이 넘는 사람이 사용하며, 서비스 범위는 40개에 가까운 지역에 걸쳐 있다고 밝힙니다. 글은 해당 지역의 국가명이나 도시명을 나열하지 않으며, 스스로 '단순화'한 것이라고 밝힌 모식도에 us0, us1, eu0이라는 세 가지 예시 데이터베이스 코드만 등장합니다. 이는 그림 속 라벨일 뿐, 공개된 지역 목록이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주목할 점은 OpenAI의 공식 RSS 피드와 페이지 메타데이터에 별도로 '22M requests per second'라고 적혀 있다는 것입니다. 그러나 본 기사가 확인 당일 본문 전체를 다시 읽어 본 결과, 이 수치는 요약과 메타데이터에만 등장할 뿐 본문에서는 한 번도 다시 언급되지 않았으며, 7000만이나 2000만과 어떤 관계인지도 설명되어 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 또한 지난 3년간 매년 10배가 넘는 성장을 기록했다고 설명합니다. 글 본문에는 시스템 엔지니어들이 보통 현재 규모의 10배를 염두에 두고 설계하며, 이것이 몇 년은 버티기를 바라는 동시에 다음 10배에도 대비한다는 문장이 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "수치",
+            "의미",
+            "등장 위치"
+          ],
+          "rows": [
+            [
+              "초당 7000만 건 초과",
+              "현재 초당 처리하는 요청 수",
+              "본문과 통계 블록"
+            ],
+            [
+              "초당 2000만 건 초과",
+              "다시 작성 전 Python의 피크 시점 요청 수",
+              "본문"
+            ],
+            [
+              "초당 22M",
+              "공식 요약과 메타데이터에 적힌 수치",
+              "요약에만 등장, 본문에는 없음"
+            ],
+            [
+              "500PB 초과",
+              "현재 저장하고 있는 데이터량",
+              "본문과 통계 블록"
+            ],
+            [
+              "40개에 가까운 지역",
+              "서비스 대상 지역 수",
+              "본문, 지역명은 나열되지 않음"
+            ],
+            [
+              "10배 초과",
+              "지난 3년간 연간 성장 배수",
+              "본문"
+            ]
+          ],
+          "caption": "OpenAI가 2026년 9월 11일 게시한 엔지니어링 블로그 글을 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "느려진 조회 하나를 사용자가 체감할 수 있는 이유"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 설명에 따르면 일반 사용자의 요청 한 건 이면에서 수백 건의 데이터베이스 호출이 발생할 때, 사용자가 체감하는 것은 그중 가장 느린 한 건입니다. 글은 이렇게 소수의 유난히 느린 조회, 즉 '테일 레이턴시(tail latency)'를 관리하는 일을 이 규모에서 Python 서비스를 운영할 때의 주된 과제라고 부릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글은 한 가지 사례를 제시합니다. Habitat은 기능 플래그를 관리하는 도구 Statsig를 사용하는데, 기본값으로 시간차 없이 1분마다 갱신된 설정을 폴링합니다. 이 설정에는 모든 서비스의 모든 프로덕션 규칙이 포함되어 있습니다. 여기에 '파드 하나당 Python 프로세스는 최대 8개까지 실행한다'는 아키텍처 결정이 겹치면서, 매분마다 각 파드에서 어느 한 순간에 모든 워커 프로세스가 처리 중이던 요청을 멈추고 대신 그 거대한 설정 파일을 파싱하는 데 CPU를 쓰는 상황이 벌어졌습니다. OpenAI는 CPU 프로파일링으로 근본 원인을 찾아낸 뒤에는 해결책이 단순했다고 말합니다. 범위를 좁힌 설정을 배포하고, 폴링 주기를 늘리고, 이런 백그라운드 작업에 무작위 시간차를 추가하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또 다른 사례는 커넥션 풀과 관련이 있습니다. OpenAI에 따르면 Python의 aiohttp 라이브러리는 기본적으로 가장 최근에 반환된 커넥션을 우선적으로 재사용하도록 되어 있으며, 이는 평소에는 합리적인 기본값입니다. 그러나 요청이 급증할 때는 느리고 이미 과부하된 서버일수록 커넥션을 풀에 더 늦게 반환하기 때문에 오히려 이후 요청에 더 자주 선택되고, 트래픽이 점점 이미 버거운 파드로 몰리게 됩니다. OpenAI는 이를 일종의 '준안정 장애(metastable failure)'라고 부릅니다. 과부하를 일으킨 클라이언트가 멈춘 뒤에도 일부 프로세스는 계속 악화되며, 재시작을 해야만 회복되는 현상입니다. 가장 먼저 반환된 커넥션을 우선하는 방식으로 바꾸자 피드백 루프가 해소됐을 뿐 아니라, 정상 상태에서의 요청량 편차도 함께 줄어들었습니다. 현재 이런 커넥션 관리는 대부분 Istio와 Envoy가 맡고 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-storage-scale-20260911/diagram-1-ko.svg",
+          "alt": "4분할 도해: Habitat의 초당 요청 수, 서비스 지역, 그리고 OpenAI가 설명하지 않은 부분",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI가 2026년 9월 11일 게시한 엔지니어링 블로그 글을 바탕으로 정리. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI가 이 글에서 설명하지 않은 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 영어 원문 표현을 그대로 대조했으며, 글에는 durability, backup, replica라는 단어가 등장하지 않고, 데이터 한 건을 몇 개의 복제본으로 보관하는지도 나와 있지 않습니다. OpenAI가 설명한 것은 가장 중요한 데이터셋을 여러 지역에 분산된 Azure Cosmos DB 계정으로 옮기고 싶었다는 경위를 한 차례 언급한 것뿐이며, 이는 단일 지역 장애의 영향 범위를 줄이기 위해서라고 밝혔지만 그 이상의 보관이나 이중화 메커니즘은 설명하지 않았습니다. 글에는 가용성 수치나 서비스 수준 계약(SLA)도 없으며, 자사 시스템에서 실제로 있었던 몇 가지 상황만 설명합니다. 예를 들어 한 팀이 무관한 이유로 문제가 있는 클라이언트가 포함된 구버전으로 자신들의 서비스를 롤백했다가, 오히려 그토록 피하려 애썼던 장애를 일으킨 사례가 있지만, 날짜나 지속 시간, 사용자에게 미친 실제 영향은 나와 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "지역과 관련해서는 글에 40개에 가까운 지역이라고만 나와 있을 뿐, 어떤 국가나 도시도 데이터 보관 장소로 명시하지 않았고, 대만이나 아시아도 언급하지 않았습니다. 지역 정보에 가장 가까운 것은 모식도에 있는 세 가지 데이터베이스 코드와 채용 공고 링크 URL에 포함된 도시명입니다. 글은 또한 Habitat이 실제로 어떤 데이터를 저장하는지도 명확히 밝히지 않습니다. 로그인, Codex 설정 확인, 새 대화 시작은 모두 데이터 조회를 수반할 수 있다고 하지만, 대화 내용 자체가 Habitat에 저장되는지는 명확히 밝히지 않고, 이곳이 외부, 내부, 에이전트에 의한 무단 접근으로부터 사용자 데이터를 지키는 핵심 지점이라고만 말합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Rust로 다시 작성한 뒤의 수치도 마찬가지입니다. OpenAI는 자체 데이터에 따르면 새 버전이 CPU 효율은 6배, 메모리 효율은 15배가 됐고 평균 지연과 테일 레이턴시 모두 크게 줄었다고 하며, 현재 프로덕션 요청의 95%를 처리하고 있고 앞으로 몇 주 안에 Python 버전을 완전히 폐지할 계획이라고 밝혔습니다. OpenAI는 또 앞으로 더 많은 경험을 공유하는 글을 하나 더 낼 예정이라고 했지만, 이 후속 글 역시 날짜는 발표되지 않았습니다. 글에는 테스트 방법이나 테스트 시나리오, 제3자 검증이 첨부되어 있지 않아 이 수치들은 현재로서는 OpenAI가 스스로 발표한 내부 측정 결과로만 볼 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "독자는 이 글을 어떻게 받아들이면 좋을까"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 신제품, 신규 요금제, 신규 지역, 신규 설정 중 어느 것도 발표하지 않았으므로 ChatGPT나 Codex 사용자가 이 때문에 무언가를 바꿀 필요는 없습니다. OpenAI 스스로도 글에서 사용자가 더 빠르거나 더 저렴하다고 체감할 것이라고 주장하지 않으며, 다시 작성한 효과는 현재로서는 OpenAI 내부의 설명에 그칩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 오히려 다음과 같은 사실을 일깨워 주는 자료로 받아들이는 편이 적절합니다. 어떤 서비스든 그 이면에는 저마다의 스토리지와 가용성 설계가 있으며, 운영사가 스스로 발표하는 규모 수치는 요청량이든 사용자 수든 성장 배수든 제3자의 검증이 있기 전까지는 어디까지나 그 업체 자신의 설명일 뿐입니다. 독자는 이런 글이 내구성, 서비스 수준 계약, 장애 세부 사항을 언급하는지 살펴보는 것이 좋습니다. 이는 흔히 눈에 띄는 수치 하나보다 서비스의 안정성을 더 잘 보여줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "후속 소식을 직접 확인하고 싶은 독자는 OpenAI의 뉴스 RSS 피드와 Engineering 카테고리 사이트맵이라는 두 가지 무료 공식 채널을 스스로 확인할 수 있습니다. 본 기사도 바로 이 두 채널을 이용해 두 번째 글이 아직 나오지 않았음을 확인했습니다. 다만 사이트맵에 표시된 시각은 페이지에 인쇄된 게시일과 맞지 않으므로 글의 게시일이나 수정일로 여겨서는 안 되며, 이는 본 기사가 확인 당일에 관찰한 내용입니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이 글 때문에 제가 ChatGPT나 Codex를 쓰는 방식이 바뀌나요?",
+              "answer": "아닙니다. 이 글은 신제품, 신규 요금제, 신규 기능, 신규 설정 중 어느 것도 발표하지 않았고, OpenAI도 사용자가 어떤 변화를 체감할 것이라고 말하지 않았습니다. 이 글의 주된 목적은 사내 스토리지 플랫폼 Habitat의 기술적 발전 과정을 설명하는 것이며, 말미에는 엔지니어 채용 공고가 첨부되어 있습니다."
+            },
+            {
+              "question": "'10억 명 초과'는 정확히 어떤 사용자를 말하는 건가요?",
+              "answer": "OpenAI 스스로도 여러 가지 표현을 씁니다. 본문의 규모 관련 문장은 '산하 제품이 매주 10억 명이 넘는 사람에게 사용되고 있다'로, 주 단위 이용자 수를 말하는 것이지 등록 계정 수가 아닙니다. 반면 공식 제목과 글 말미의 예고는 모두 '10억 명이 넘는 ChatGPT 사용자'라고 적었고, 페이지 메타데이터는 '10억 ChatGPT 사용자', 공식 소셜 공유 이미지의 대체 텍스트는 '10억 명에 가까운'이라고 적었습니다. OpenAI는 이 표현들 사이의 관계도, 어떤 제품이 포함되는지도 설명하지 않았으므로 본 기사는 본문의 그 문장만을 따라 적었습니다."
+            },
+            {
+              "question": "제 데이터가 대만이나 대만에서 가까운 곳에 저장되어 있나요?",
+              "answer": "글에는 나와 있지 않습니다. OpenAI는 Habitat의 서비스가 40개에 가까운 지역에 걸쳐 있다고만 밝혔을 뿐, 어떤 국가나 도시도 데이터 보관 장소로 명시하지 않았고 대만이나 아시아도 언급하지 않았습니다. 지역 정보에 가장 가까운 것은 데이터베이스 노드를 나타내기 위해 모식도에 쓰인 예시 코드와 채용 공고 링크 URL에 포함된 도시명이지만, 둘 다 공개된 지역 목록은 아닙니다."
+            },
+            {
+              "question": "OpenAI는 정말 AI 스스로의 힘으로 시스템을 Python에서 Rust로 다시 작성한 건가요?",
+              "answer": "OpenAI는 그렇다고 설명합니다. 글에 따르면 2026년 2분기에 엔지니어 단 2명이 Codex와 GPT-5.5를 활용해 서비스 전체를 Rust로 다시 작성했고, 새 버전은 현재 프로덕션 요청의 95%를 처리하고 있다고 합니다. 다만 글에는 다시 작성하는 과정의 테스트 방법이나 코드 비율, 제3자 검증이 첨부되어 있지 않아 이 설명은 현재로서는 OpenAI가 스스로 발표한 결과로만 볼 수 있습니다."
+            },
+            {
+              "question": "시리즈의 두 번째 글은 언제 나오나요?",
+              "answer": "공식 사이트맵과 뉴스 피드를 2026년 9월 18일까지 확인한 결과, 두 번째 글에 해당하는 항목은 아직 보이지 않으며 OpenAI도 별도로 날짜를 발표하지 않았습니다. 독자는 openai.com의 뉴스 피드와 Engineering 카테고리 사이트맵을 직접 확인할 수 있으며, 둘 다 무료이고 계정도 필요하지 않습니다. 다만 본 기사가 확인 당일 발견한 바로는 사이트맵에 표시된 시각이 페이지에 인쇄된 게시일과 맞지 않으므로, 이를 글의 게시일이나 수정일로 여겨서는 안 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "본 기사가 인용하는 내용은 모두 OpenAI 자신의 설명입니다",
+          "text": "본 기사에 나온 모든 규모 수치, 성장 배수, 다시 작성한 성과는 모두 OpenAI가 2026년 9월 11일 게시한 공식 엔지니어링 블로그 글에서 나온 것으로, OpenAI가 자사 시스템에 대해 스스로 밝힌 내용이며 제3자의 검증이나 감사는 없습니다. 글은 신제품, 가격, 신규 지역, 계정 설정 중 어느 것도 발표하지 않았고, 본 사이트도 직접 시험해 보지 않았습니다. 글이 예고한 시리즈 두 번째 글과 Python 버전을 폐지하는 정확한 시점은 확인 시점 기준 아직 날짜가 발표되지 않았으므로, 독자는 OpenAI의 공식 뉴스 피드나 Engineering 카테고리 사이트맵을 직접 확인해 최신 진행 상황을 파악할 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI와 Broadcom, Jalapeño 칩 공개: 공식 발표가 말하는 단계, 역할 분담, 그리고 아직 밝히지 않은 것",
+              "kind": "life",
+              "slug": "ai-news-openai-broadcom-chip-20260624"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 공식 엔지니어링 블로그: Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+          "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI News(공식 뉴스 RSS 피드)",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 공식 사이트맵: Engineering 카테고리",
+          "url": "https://openai.com/sitemap.xml/engineering/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "OpenAI 揭露 Habitat 存储架构：每周逾十亿人使用背后的规模与极限",
+      "description": "OpenAI 在 2026 年 9 月 11 日于官方工程博客发布文章，说明内部存储平台 Habitat 如何从一个 Python 客户端库演变成独立服务，并在今年第二季度改写成 Rust。本文依官方文章原文，整理 OpenAI 自陈的请求量、覆盖地区与数据量等数字，以及官方没有说明的耐久性与地区细节；本站没有实测，也不提供任何使用或购买建议。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-storage-scale-20260911/hero-zh-cn.jpg",
+        "alt": "原创插图：左边多条浅灰细线从四面汇聚到一个数据库圆柱，代表大量请求同时涌入同一个存储系统；右上一条由虚线接成实线的箭头，代表服务从旧版本改写成新版本；右下四根由矮到高的长条，代表官方描述的逐年增长。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 11 日，OpenAI 在官方工程博客发布文章《Rapidly scaling online storage to serve over 1 billion ChatGPT users》，说明内部存储平台 Habitat 这几年怎么从一个 Python 客户端库，演变成一套独立运作的服务。文章挂在 Engineering 分类下，作者具名为三位技术人员 Jon Lee、Chaomin Yu 与 Ben Ries，文末附上一个工程师招聘链接，是一篇技术博客，不是新产品或新方案的公告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核 OpenAI 官方文章原文、OpenAI 官方新闻 RSS feed，以及官方网站地图 Engineering 分类页。openai.com 的文章页在此前几天一度只回应访问限制页面，本文查核当天已能直接读取正文。以下数字全部是 OpenAI 自己的说法，本站没有做任何测试，也不提供任何购买或使用建议；本文没有使用虚构的生活场景。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 11 日，OpenAI 在官方工程博客说明存储平台 Habitat 现状：OpenAI 表示现在每秒处理超过 7000 万次请求，支撑旗下产品每周被超过 10 亿人使用，服务范围覆盖近 40 个地区。",
+            "OpenAI 表示，过去 3 年他们每年增长幅度超过 10 倍；2026 年第二季度由两名工程师搭配 Codex 与 GPT-5.5 改写成 Rust，目前处理 95% 的正式环境请求。",
+            "官方这篇文章是系列文章的第一篇，第二篇预定说明多租户可靠性、读取性能与数据库合作方式，查核当下尚未发布，也没有公布日期。",
+            "OpenAI 没有在这篇文章说明一份数据保留几个副本、有没有服务级别协议，也没有指出数据实际放在哪些国家或城市。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这篇文章是什么：一篇工程博客，不是新产品公告"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把这篇文章归类在 Engineering（工程）分类下，说明 Habitat 是自己打造的在线存储平台，让旗下产品能快速、可靠地获取所需的数据：用户登录、查看 Codex 设置或在 ChatGPT 开新对话，背后都可能牵涉多次数据查询。OpenAI 写道，这些查询一慢，产品就会让人觉得慢；查询失败，产品就直接无法运作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章开头的统计方框并列三个数字：每秒超过 7000 万次请求、每周超过 10 亿人，以及超过 500 PB 的数据量；OpenAI 说明 Habitat 最早是 2023 年 DevDay 为了支持 GPTs 而推出，一开始只是一个连到单一数据库的 Python 客户端库，如今已成长为一套复杂的分布式系统。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章末尾附上一个工程师招聘链接（网址里带着西雅图的地名）；这是存储主题两篇系列文章的第一篇，第二篇预定说明多租户可靠性、读取性能分层策略，以及和 Azure Cosmos DB 的合作方式如何扩大。以官方网站地图与新闻 feed 查核到 2026 年 9 月 18 日，都还没有看到第二篇的项目，也没有公布日期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI 说的规模：几个数字要放在一起看"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在文章正文写道，Habitat 现在每秒处理超过 7000 万次请求，支撑旗下产品每周被超过 10 亿人使用，服务范围覆盖近 40 个地区；文章没有列出地区的国家或城市名称，只在一张自陈为“简化”的示意图上，出现 us0、us1、eu0 三个示例数据库代号，那是图上的标签，不是一份公布的地区清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "值得留意的是，OpenAI 官方 RSS feed 与网页的元数据另外写着“22M requests per second”，但本文查核当天重新读过正文全文，这个数字只出现在摘要与元数据里，正文从头到尾没有再提过，也没有交代它和 7000 万、2000 万有什么关系。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 也说明，过去 3 年他们每年增长幅度超过 10 倍；文中原句提到，系统工程师通常按 10 倍规模做设计，希望撑个几年，同时准备下一个 10 倍。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "数字",
+            "代表什么",
+            "出现在哪里"
+          ],
+          "rows": [
+            [
+              "逾 7000 万/秒",
+              "现在每秒处理的请求数",
+              "正文与统计方框"
+            ],
+            [
+              "逾 2000 万/秒",
+              "改写前 Python 峰值时的请求数",
+              "正文"
+            ],
+            [
+              "22M/秒",
+              "官方摘要与元数据写的数字",
+              "只在摘要，正文未提"
+            ],
+            [
+              "逾 500 PB",
+              "现在存放的数据量",
+              "正文与统计方框"
+            ],
+            [
+              "近 40 个",
+              "服务覆盖的地理区域数",
+              "正文，未列地区名"
+            ],
+            [
+              "逾 10 倍",
+              "过去 3 年每年增长倍数",
+              "正文"
+            ]
+          ],
+          "caption": "整理自 OpenAI 2026 年 9 月 11 日发布的工程博客；查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "为什么一次变慢的查询，用户会感觉得到"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 解释，当一般用户的一次请求会带出几百次数据库调用时，用户感觉到的就是最慢的那一次。文章把管理这种“尾部延迟（tail latency）”（少数特别慢的查询）称为在这个规模下运行 Python 服务的主要挑战。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文章举了一个案例：Habitat 用 Statsig 这套功能开关工具，默认每分钟轮询一次更新后的配置、没有错开时间差，而那份配置包含每个服务的每一条正式环境规则；叠加“一个 Pod 最多运行 8 个 Python 进程”的架构决定后，变成每分钟每个 Pod 都会有某个瞬间，所有工作进程同时停下手上的请求，改去解析那份庞大的配置文件。OpenAI 说一旦用 CPU 剖析定位到根因，解决方法就很简单：改用范围更小的配置、拉长轮询间隔，并给这类后台工作加上随机时间差。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一个案例和连接池有关：OpenAI 说 Python 的 aiohttp 库默认优先重复使用最近释放的连接，平常是合理的默认值；但流量突增时，比较慢、已经过载的服务器比较晚把连接还回池子，反而更常被后续请求选中，流量逐渐集中到本来就吃力的 Pod 上。OpenAI 称这是一种“亚稳态故障（metastable failure）”：造成过载的客户端停掉之后，仍有一部分进程持续恶化，要重启才恢复。改成优先使用最早释放的连接后，不只解掉反馈循环，连稳态下的请求量落差也跟着变小；现在这类连接管理大多交给 Istio 与 Envoy 负责。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-storage-scale-20260911/diagram-1-zh-cn.svg",
+          "alt": "四格图解：Habitat 的每秒请求量、覆盖地区，以及官方没有说明的部分",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理自 OpenAI 2026 年 9 月 11 日发布的工程博客；查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI 没有在这篇文章说明的事"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以英文原词逐字比对，文章没有出现 durability、backup、replica 这几个字，也没有写出一份数据会保留几个副本；OpenAI 只描述过一次想把最关键的数据集移到跨地区分布的 Azure Cosmos DB 账户、以缩小单一地区故障影响范围的经过，没有再说明保存或冗余机制。文章也没有任何可用性数字或服务级别协议，只描述了几次自家系统出过的状况，例如某个团队因为不相干的原因把自己的服务回滚到带有问题客户端的旧版本，反而引发原本想避免的事故，但没有标明日期、时长或对用户的实际影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地区方面，文章只写近 40 个地区，没有把任何国家或城市写成数据存放地点，也没有提到台湾或亚洲；比较接近地区信息的，是示意图上那三个数据库代号，以及招聘链接网址里的城市名。文章同样没有交代 Habitat 实际存放哪些数据——登录、查看 Codex 设置、开新对话都可能需要查数据，但没有明讲对话内容是否存在 Habitat 里，只说这里是保护用户数据、防止外部、内部与代理程序未经授权访问的关键位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改写成 Rust 之后的数字也一样：OpenAI 说自家数据显示，新版本的 CPU 效率是原本的 6 倍、内存效率是 15 倍，平均与尾部延迟都显著降低，目前处理 95% 的正式环境请求，并计划在未来几周内完全停用 Python 版本；OpenAI 也说之后会再发一篇分享更多心得，这个后续同样没有公布日期。文章没有附上测试方法、测试场景或第三方查核，这些数字目前只能视为 OpenAI 自己公布的内部测量结果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "读者可以怎么看待这篇文章"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇文章没有公布任何新产品、新方案、新地区或新设置，ChatGPT 或 Codex 的用户不需要因此做任何调整；OpenAI 自己在文章里也没有宣称用户会感觉到更快或更省，改写的效益目前只停留在 OpenAI 自己内部的说法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇文章比较适合当成一个提醒：服务背后都有自己的存储与可用性设计，而运营方自己公布的规模数字，不管是请求量、用户数或增长倍数，在有第三方查核之前都只能算厂商自己的说法；读者可以留意文章有没有提到耐久性、服务级别协议或事故细节，这通常比单一个亮眼数字更能反映服务的稳定程度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想确认后续进度的读者，可以自己查两个免费的官方渠道：OpenAI 的新闻 RSS feed，以及工程分类的网站地图，本文就是用这两个渠道确认第二篇还没出现。要注意网站地图上标的时间和页面印出的发布日期对不上，不宜当成文章的发布日或更新日，这是本文查核当天的观察。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这篇文章会改变我使用 ChatGPT 或 Codex 的方式吗？",
+              "answer": "不会。这篇文章没有公布新产品、新方案、新功能或新设置，OpenAI 也没有说用户会感觉到任何变化；文章的主要目的是说明内部存储平台 Habitat 的技术演进，并且在文末附上一个工程师招聘链接。"
+            },
+            {
+              "question": "“超过 10 亿”到底是哪一种用户？",
+              "answer": "OpenAI 自己就有好几种写法。正文的规模句写“支撑旗下产品每周被超过 10 亿人使用”，讲的是以周计算的使用人数，不是注册账户数；但官方标题与文末预告都写成“超过 10 亿 ChatGPT 用户”，页面元数据写“10 亿 ChatGPT 用户”，官方社交分享图的替代文字则写“接近 10 亿”。OpenAI 没有说明这几种说法之间的关系，也没有说哪些产品计入，本文只照正文那一句写。"
+            },
+            {
+              "question": "我的数据是不是存在台湾或离台湾比较近的地方？",
+              "answer": "文章没有写。OpenAI 只说 Habitat 的服务覆盖近 40 个地区，没有把任何国家或城市写成数据存放地点，也没有提到台湾或亚洲；比较接近地区信息的，是示意图上用来代表数据库节点的示例代号，以及招聘链接网址里的城市名，两者都不是一份公布的地区清单。"
+            },
+            {
+              "question": "OpenAI 真的是靠 AI 自己把系统从 Python 改写成 Rust 的吗？",
+              "answer": "OpenAI 是这么说的：文章写道，2026 年第二季度，只用两名工程师搭配 Codex 与 GPT-5.5，把整套服务改写成 Rust，新版本现在处理 95% 的正式环境请求；但文章没有附上改写过程的测试方法、代码比例或第三方查核，这个说法目前只能算是 OpenAI 自己公布的结果。"
+            },
+            {
+              "question": "系列文章的第二篇什么时候会出？",
+              "answer": "以官方网站地图与新闻 feed 查核到 2026 年 9 月 18 日，都还没有看到第二篇的项目，OpenAI 也没有另外公布日期；读者可以自行查 openai.com 的新闻 feed 与工程分类网站地图，两者都免费、不需要账户，不过本文查核当天发现，网站地图上标的时间和页面印出的发布日期对不上，不宜当成文章的发布日或更新日。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇文章引用的都是 OpenAI 自己的说法",
+          "text": "本文所有规模数字、增长倍数与改写成效，都出自 OpenAI 2026 年 9 月 11 日发布的官方工程博客，是 OpenAI 对自己系统的自述，没有第三方查核或审计；文章没有公布任何新产品、价格、地区或账户设置，本站也没有做任何实测。文章承诺的第二篇系列文章，以及停用 Python 版本的确切时间，查核当下都还没有公布日期，读者可自行查阅 OpenAI 官方新闻 feed 或工程分类网站地图确认最新进度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 与 Broadcom 发布 Jalapeño 芯片：官方说的阶段、分工，与还没公布的事",
+              "kind": "life",
+              "slug": "ai-news-openai-broadcom-chip-20260624"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方工程博客：Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+          "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI News（官方新闻 RSS feed）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 官方网站地图：Engineering 分类",
+          "url": "https://openai.com/sitemap.xml/engineering/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

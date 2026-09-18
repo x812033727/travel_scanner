@@ -68,11 +68,35 @@ MAX_SOURCES = next(
 NEW: dict[str, list[tuple[str, str]]] = {
     "crypto": [],
     "tech": [],
-    "ai": [],
+    # Batch 4.3's twelve, each placed by event date among the month's existing links. An entry
+    # may name a slug inserted just before it: the list is applied in order.
+    "ai": [
+        ("ai-news-openai-astral-20260319", "ai-news-claude-interactive-visuals-20260312"),
+        ("ai-news-openai-funding-20260331", "ai-news-lyria-3-pro-20260325"),
+        ("ai-news-gpt-55-instant-20260505", "<ai-news-gemini-omni-20260519"),
+        ("ai-news-chatgpt-ads-20260505", "ai-news-gpt-55-instant-20260505"),
+        ("ai-news-frontier-governance-20260528", "ai-news-gemini-spark-20260519"),
+        ("ai-news-openai-s1-20260608", "<ai-news-claude-fable-5-access-20260609"),
+        ("ai-news-openai-broadcom-chip-20260624", "ai-news-claude-fable-5-access-20260609"),
+        ("ai-news-nvidia-hugging-face-20260903", "ai-news-gpt-6-astra-20260903"),
+        ("ai-news-chatgpt-financial-services-20260910", "ai-news-deepseek-v41-flash-20260910"),
+        ("ai-news-gpt-live-1-api-20260910", "ai-news-chatgpt-financial-services-20260910"),
+        ("ai-news-chatgpt-storage-scale-20260911", "ai-news-gpt-live-1-api-20260910"),
+        ("ai-news-gemini-38-live-20260915", "ai-news-siri-ai-ios-27-20260914"),
+    ],
 }
 # vertical -> the articles whose first source the index cites. A source the index already
 # carries is skipped, not appended twice: the index's nine include this batch's own subjects.
-CITED: dict[str, list[str]] = {"crypto": [], "tech": [], "ai": []}
+CITED: dict[str, list[str]] = {
+    "crypto": [],
+    "tech": [],
+    "ai": [
+        "ai-news-openai-funding-20260331",
+        "ai-news-gpt-55-instant-20260505",
+        "ai-news-nvidia-hugging-face-20260903",
+        "ai-news-gemini-38-live-20260915",
+    ],
+}
 
 # vertical -> locale -> new title. Empty leaves the title alone. The AI index loses the days
 # from its range (ai.md: "1 月 1 日至 9 月 14 日" is wrong the moment 9/15 is added, and a range
@@ -104,50 +128,66 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "ai": {
         "zh-TW": [
             ("description", "從 2026 年 1 月 1 日至 9 月 14 日，依月份整理 38 則 AI 重要新聞", "從 2026 年 1 月至 9 月，依月份整理 AI 重要新聞"),
-            (0, "收錄三十八則重要事件", TODO),
-            (1, "原先七月底至九月的十篇新聞也納入索引，與這次補齊的一月至七月二十一篇形成", TODO),
-            (1, "2026-09-15 再補上七則：", TODO),
-            (3, "一月的三則消息", TODO),
-            (20, "原先已刊登的十篇均保留", TODO),
-            (23, "下方按月份排列三十八則新聞", TODO),
-            (24, "（2026-09-15 增補七則）", TODO),
+            (0, "2026-01-01 至 2026-09-14，", "2026 年一月至九月，"),
+            (0, "這份索引於 2026-09-14 查核、2026-09-15 增補，收錄三十八則重要事件的完整解析", "這份索引於 2026-09-14 查核，2026-09-15 與 2026-09-18 兩度增補，收錄重要事件的完整解析"),
+            (1, "原先七月底至九月的十篇新聞也納入索引，與這次補齊的一月至七月二十一篇形成", "原先七月底至九月的新聞也納入索引，與之後補齊的一月至七月各篇形成"),
+            (1, "2026-09-15 再補上七則：", "2026-09-15 再補上："),
+            (1, "Amodei 呼籲放慢前沿 AI 與 Siri AI。", "Amodei 呼籲放慢前沿 AI 與 Siri AI。2026-09-18 又補上先前沒寫到的事件：三月的 OpenAI 收購 Astral 與 1,220 億美元募資，五月的 GPT-5.5 Instant 成為預設模型、ChatGPT 廣告開放自助購買與 OpenAI 的前沿治理框架，六月的保密遞交 S-1 草稿與 Jalapeño 晶片，以及九月的 NVIDIA 收購 Hugging Face、ChatGPT for Financial Services、GPT-Live 1 開放 API、Habitat 儲存架構與 Gemini 3.8 Live。"),
+            (3, "一月的三則消息", "一月的消息"),
+            (20, "原先已刊登的十篇均保留", "原先已刊登的各篇均保留"),
+            (23, "下方按月份排列三十八則新聞", "下方按月份排列各則新聞"),
+            (24, "本次整理是截至 2026-09-14 的一次性編輯專輯（2026-09-15 增補七則），", "本專輯最初整理到 2026-09-14，之後在 2026-09-15 與 2026-09-18 增補，"),
+            (25, "本輯截止 2026-09-14。", "本輯收錄的事件到 2026-09-15 為止，最後增補於 2026-09-18。"),
         ],
         "en": [
             ("description", "Organizing 38 key AI news stories month by month from January 1 to September 14, 2026", "Organizing key AI news stories month by month from January to September 2026"),
-            (0, "full analyses of thirty-eight key events", TODO),
-            (1, "The ten news reports originally published from late July through September are also integrated into this index, forming a continuous reading timeline alongside the twenty-one newly added pieces spanning January to July.", TODO),
-            (1, "On 2026-09-15 seven more were added:", TODO),
-            (20, "The ten articles previously published are fully retained", TODO),
-            (23, "Below, thirty-eight news reports are arranged", TODO),
-            (24, "(seven articles added on 2026-09-15)", TODO),
+            (0, "From 2026-01-01 to 2026-09-14, AI news", "From January to September 2026, AI news"),
+            (0, "Verified as of 2026-09-14 and expanded on 2026-09-15, this index brings together full analyses of thirty-eight key events", "Verified as of 2026-09-14 and expanded on 2026-09-15 and 2026-09-18, this index brings together full analyses of key events"),
+            (1, "The ten news reports originally published from late July through September are also integrated into this index, forming a continuous reading timeline alongside the twenty-one newly added pieces spanning January to July.", "The news reports originally published from late July through September are also integrated into this index, forming a continuous reading timeline alongside the pieces later added for January to July."),
+            (1, "On 2026-09-15 seven more were added:", "On 2026-09-15 more were added:"),
+            (1, "Amodei's call to pace frontier AI, and Siri AI.", "Amodei's call to pace frontier AI, and Siri AI. On 2026-09-18 events not yet covered were added: from March, OpenAI's agreement to acquire Astral and its $122 billion funding round; from May, GPT-5.5 Instant becoming the default model, self-serve buying for ChatGPT ads and OpenAI's frontier governance framework; from June, the confidential S-1 draft and the Jalapeño chip; and from September, NVIDIA's agreement to acquire Hugging Face, ChatGPT for Financial Services, GPT-Live 1 in the API, the Habitat storage platform and Gemini 3.8 Live."),
+            (3, "The three updates from January can be divided", "January's updates can be divided"),
+            (20, "The ten articles previously published are fully retained", "The articles previously published are fully retained"),
+            (23, "Below, thirty-eight news reports are arranged", "Below, the news reports are arranged"),
+            (24, "This compilation is a one-off editorial feature current through 2026-09-14 (seven articles added on 2026-09-15),", "This editorial feature was first compiled through 2026-09-14 and expanded on 2026-09-15 and 2026-09-18,"),
+            (25, "This series is current as of 2026-09-14.", "This series covers events through 2026-09-15 and was last expanded on 2026-09-18."),
         ],
         "ja": [
             ("description", "2026年1月1日から9月14日までの重要AIニュース38件を月別に整理し", "2026年1月から9月までの重要AIニュースを月別に整理し"),
-            (0, "38件の重要ニュースの完全な解説", TODO),
-            (1, "先行して掲載されていた7月下旬から9月の10本の記事も収録され、今回追加された1月から7月の21本と合わせ", TODO),
-            (1, "Siri AIの7本を追加しました。", TODO),
-            (20, "以前掲載された10本もすべて維持され", TODO),
-            (23, "下記に38件のニュース", TODO),
-            (24, "（2026-09-15に7本を追補）", TODO),
+            (0, "2026-01-01から2026-09-14にかけて、", "2026年1月から9月にかけて、"),
+            (0, "このインデックスは2026-09-14に検証され、2026-09-15に追補したもので、38件の重要ニュースの完全な解説を", "このインデックスは2026-09-14に検証され、2026-09-15と2026-09-18に追補したもので、重要ニュースの完全な解説を"),
+            (1, "先行して掲載されていた7月下旬から9月の10本の記事も収録され、今回追加された1月から7月の21本と合わせ", "先行して掲載されていた7月下旬から9月の記事も収録され、その後追加された1月から7月の記事と合わせ"),
+            (1, "Siri AIの7本を追加しました。", "Siri AIを追加しました。2026-09-18には、未収録だった出来事を追加しました。3月のOpenAIによるAstral買収合意と1,220億ドルの資金調達、5月のGPT-5.5 Instantの既定モデル化、ChatGPT広告のセルフサービス購入開始、OpenAIのフロンティア・ガバナンス枠組み、6月のS-1ドラフトの非公開提出とJalapeñoチップ、9月のNVIDIAによるHugging Face買収合意、ChatGPT for Financial Services、GPT-Live 1のAPI提供、ストレージ基盤Habitat、Gemini 3.8 Liveです。"),
+            (3, "1月の3つのニュースは", "1月のニュースは"),
+            (20, "以前掲載された10本もすべて維持され", "以前掲載された記事もすべて維持され"),
+            (23, "下記に38件のニュース", "下記に各ニュース"),
+            (24, "今回のまとめは2026-09-14時点での一回限りの編集特集（2026-09-15に7本を追補）であり、", "本特集は2026-09-14時点でまとめ、2026-09-15と2026-09-18に追補した編集特集であり、"),
+            (25, "本特集の対象は2026-09-14までです。", "本特集の対象は2026-09-15までの出来事で、最終追補は2026-09-18です。"),
         ],
         "ko": [
             ("description", "2026년 1월 1일부터 9월 14일까지의 주요 AI 뉴스 38건을 월별로 정리하여", "2026년 1월부터 9월까지의 주요 AI 뉴스를 월별로 정리하여"),
-            (0, "38건의 주요 사건에 대한 전체 분석", TODO),
-            (1, "기존 7월 말부터 9월까지의 뉴스 10편도 색인에 포함되어, 이번에 보완된 1월부터 7월까지의 21편과 함께", TODO),
-            (1, "Siri AI 등 7편을 추가했습니다.", TODO),
-            (20, "기존에 게재된 10편은 그대로 유지되며", TODO),
-            (23, "아래에 38건의 뉴스", TODO),
-            (24, "(2026-09-15에 7편 보완)", TODO),
+            (0, "2026-01-01부터 2026-09-14까지, ", "2026년 1월부터 9월까지, "),
+            (0, "2026-09-14에 검증되고 2026-09-15에 보완된 이 색인은 38건의 주요 사건에 대한 전체 분석을", "2026-09-14에 검증되고 2026-09-15와 2026-09-18에 보완된 이 색인은 주요 사건에 대한 전체 분석을"),
+            (1, "기존 7월 말부터 9월까지의 뉴스 10편도 색인에 포함되어, 이번에 보완된 1월부터 7월까지의 21편과 함께", "기존 7월 말부터 9월까지의 뉴스도 색인에 포함되어, 이후 보완된 1월부터 7월까지의 기사와 함께"),
+            (1, "Siri AI 등 7편을 추가했습니다.", "Siri AI를 추가했습니다. 2026-09-18에는 아직 다루지 않았던 사건을 추가했습니다. 3월의 OpenAI의 Astral 인수 합의와 1,220억 달러 자금 조달, 5월의 GPT-5.5 Instant 기본 모델 전환, ChatGPT 광고 셀프서비스 구매 개시, OpenAI의 프런티어 거버넌스 프레임워크, 6월의 S-1 초안 비공개 제출과 Jalapeño 칩, 9월의 NVIDIA의 Hugging Face 인수 합의, ChatGPT for Financial Services, GPT-Live 1의 API 제공, 스토리지 기반 Habitat, Gemini 3.8 Live입니다."),
+            (3, "1월의 3가지 소식은", "1월의 소식은"),
+            (20, "기존에 게재된 10편은 그대로 유지되며", "기존에 게재된 기사는 그대로 유지되며"),
+            (23, "아래에 38건의 뉴스", "아래에 각 뉴스"),
+            (24, "이번 정리는 2026-09-14 기준의 일회성 편집 특집(2026-09-15에 7편 보완)으로,", "이번 특집은 2026-09-14 기준으로 정리한 뒤 2026-09-15와 2026-09-18에 보완한 편집 특집으로,"),
+            (25, "본 특집은 2026-09-14 기준입니다.", "본 특집은 2026-09-15까지의 사건을 다루며, 마지막 보완은 2026-09-18입니다."),
         ],
         "zh-CN": [
             ("description", "从 2026 年 1 月 1 日至 9 月 14 日，按月份整理 38 条 AI 重要新闻", "从 2026 年 1 月至 9 月，按月份整理 AI 重要新闻"),
-            (0, "收录三十八条重要事件", TODO),
-            (1, "原先七月底至九月的十篇新闻也纳入索引，与这次补齐的一月至七月二十一篇形成", TODO),
-            (1, "2026-09-15 再补上七条：", TODO),
-            (3, "一月的三则消息", TODO),
-            (20, "原先已刊登的十篇均保留", TODO),
-            (23, "下方按月份排列三十八条新闻", TODO),
-            (24, "（2026-09-15 增补七篇）", TODO),
+            (0, "2026-01-01 至 2026-09-14，", "2026 年一月至九月，"),
+            (0, "这份索引于 2026-09-14 查核、2026-09-15 增补，收录三十八条重要事件的完整解析", "这份索引于 2026-09-14 查核，2026-09-15 与 2026-09-18 两度增补，收录重要事件的完整解析"),
+            (1, "原先七月底至九月的十篇新闻也纳入索引，与这次补齐的一月至七月二十一篇形成", "原先七月底至九月的新闻也纳入索引，与之后补齐的一月至七月各篇形成"),
+            (1, "2026-09-15 再补上七条：", "2026-09-15 再补上："),
+            (1, "Amodei 呼吁放慢前沿 AI 与 Siri AI。", "Amodei 呼吁放慢前沿 AI 与 Siri AI。2026-09-18 又补上先前没写到的事件：三月的 OpenAI 收购 Astral 与 1,220 亿美元融资，五月的 GPT-5.5 Instant 成为默认模型、ChatGPT 广告开放自助购买与 OpenAI 的前沿治理框架，六月的保密递交 S-1 草案与 Jalapeño 芯片，以及九月的 NVIDIA 收购 Hugging Face、ChatGPT for Financial Services、GPT-Live 1 开放 API、Habitat 存储架构与 Gemini 3.8 Live。"),
+            (3, "一月的三则消息", "一月的消息"),
+            (20, "原先已刊登的十篇均保留", "原先已刊登的各篇均保留"),
+            (23, "下方按月份排列三十八条新闻", "下方按月份排列各条新闻"),
+            (24, "本次整理是截至 2026-09-14 的一次性编辑专辑（2026-09-15 增补七篇），", "本专辑最初整理到 2026-09-14，之后在 2026-09-15 与 2026-09-18 增补，"),
+            (25, "本辑截止 2026-09-14。", "本辑收录的事件到 2026-09-15 为止，最后增补于 2026-09-18。"),
         ],
     },
 }
@@ -157,7 +197,63 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
 TABLE: dict[str, dict[str, list[tuple[str, int, str, str]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
-    "ai": {locale: [] for locale in LOCALES},
+    # The reading-focus cells of the months that gained articles, and September's row label,
+    # which named a day range that is wrong the moment 9/15 is in. Column indexes are those of
+    # the table as it reads today; the count column (1) goes afterwards. The September label
+    # is edited last, because the row is found by that label.
+    "ai": {
+        "zh-TW": [
+            ("3 月", 2, "工作、圖解、音樂", "工作、圖解、音樂、開發工具與募資"),
+            ("5 月", 2, "影片與背景工作", "影片、背景工作、預設模型、廣告與治理"),
+            ("6 月", 2, "預覽與存取狀態", "預覽與存取狀態、保密遞件、自研晶片"),
+            ("9 月 1–14 日", 2, "模型、代理、資安與個人助理", "模型、代理、資安、助理、語音與基礎設施"),
+            ("9 月 1–14 日", 0, "9 月 1–14 日", "9 月"),
+        ],
+        "en": [
+            ("March", 2, "Work, diagrams, music", "Work, diagrams, music, developer tools, funding"),
+            ("May", 2, "Video and background tasks", "Video, background tasks, default model, ads, governance"),
+            ("June", 2, "Previews and access status", "Previews, access status, confidential filing, custom chip"),
+            ("Sept 1–14", 2, "Models, agents, security, assistants", "Models, agents, security, assistants, voice, infrastructure"),
+            ("Sept 1–14", 0, "Sept 1–14", "September"),
+        ],
+        "ja": [
+            ("3月", 2, "業務、図解、音楽", "業務、図解、音楽、開発ツール、資金調達"),
+            ("5月", 2, "動画とバックグラウンドタスク", "動画、バックグラウンドタスク、既定モデル、広告、ガバナンス"),
+            ("6月", 2, "プレビューと利用可能状況", "プレビュー、利用可能状況、非公開提出、自社チップ"),
+            ("9月1〜14日", 2, "モデル、エージェント、セキュリティ、アシスタント", "モデル、エージェント、セキュリティ、アシスタント、音声、基盤"),
+            ("9月1〜14日", 0, "9月1〜14日", "9月"),
+        ],
+        "ko": [
+            ("3월", 2, "업무, 도해, 음악", "업무, 도해, 음악, 개발 도구, 자금 조달"),
+            ("5월", 2, "동영상 및 백그라운드 작업", "동영상, 백그라운드 작업, 기본 모델, 광고, 거버넌스"),
+            ("6월", 2, "프리뷰 및 접근 상태", "프리뷰, 접근 상태, 비공개 제출, 자체 칩"),
+            ("9월 1~14일", 2, "모델, 에이전트, 보안, 어시스턴트", "모델, 에이전트, 보안, 어시스턴트, 음성, 인프라"),
+            ("9월 1~14일", 0, "9월 1~14일", "9월"),
+        ],
+        "zh-CN": [
+            ("3 月", 2, "工作、图解、音乐", "工作、图解、音乐、开发工具与融资"),
+            ("5 月", 2, "视频与后台工作", "视频、后台工作、默认模型、广告与治理"),
+            ("6 月", 2, "预览与访问状态", "预览与访问状态、保密递件、自研芯片"),
+            ("9 月 1–14 日", 2, "模型、代理、网络安全与个人助理", "模型、代理、网络安全、助理、语音与基础设施"),
+            ("9 月 1–14 日", 0, "9 月 1–14 日", "9 月"),
+        ],
+    },
+}
+# vertical -> locale -> the header cell of a table column to remove, after ``TABLE`` has run (so
+# ``TABLE`` addresses columns as the index reads today). The AI index's month table carried a
+# per-month number of articles: a number that grows with every batch, which is exactly what an
+# index may not show (``ai.md``, "篇數"). Correcting 3 to 5 would be wrong again next batch, so
+# the column goes and the table keeps the month and its reading focus.
+DROP_COLUMN: dict[str, dict[str, str]] = {
+    "crypto": {},
+    "tech": {},
+    "ai": {
+        "zh-TW": "本輯新聞篇數",
+        "en": "Articles in Series",
+        "ja": "本特集の記事数",
+        "ko": "본 특집 뉴스 편수",
+        "zh-CN": "本辑新闻篇数",
+    },
 }
 # vertical -> locale -> (old caption fragment, new caption fragment). The AI index's caption
 # states the total; what it says instead is the same editorial decision as the paragraphs.
@@ -165,11 +261,11 @@ CAPTION: dict[str, dict[str, tuple[str, str]]] = {
     "crypto": {},
     "tech": {},
     "ai": {
-        "zh-TW": ("共 38 篇", TODO),
-        "en": ("38 articles in total", TODO),
-        "ja": ("全38本", TODO),
-        "ko": ("총 38편", TODO),
-        "zh-CN": ("共 38 篇", TODO),
+        "zh-TW": ("篇數僅計新聞解析，不含這篇索引；共 38 篇，全部提供五種語言。", "各月的新聞解析都提供五種語言；完整清單見文末各月份的連結。"),
+        "en": ("Count includes only news analyses, excluding this index; 38 articles in total, all offered in five languages.", "Every monthly analysis is offered in five languages; the full list follows below by month."),
+        "ja": ("記事数はニュース解説のみで本インデックスを含みません。全38本、すべて5言語で提供。", "各月のニュース解説はすべて5言語で提供しています。全リストは記事末尾の月別リンクをご覧ください。"),
+        "ko": ("편수는 뉴스 심층 분석 기사만 집계한 것이며 본 색인은 포함하지 않습니다. 총 38편으로 모두 5개 언어로 제공됩니다.", "각 월의 뉴스 분석은 모두 5개 언어로 제공됩니다. 전체 목록은 글 말미의 월별 링크에서 확인하세요."),
+        "zh-CN": ("篇数仅计新闻解析，不含这篇索引；共 38 篇，全部提供五种语言。", "各月的新闻解析都提供五种语言；完整清单见文末各月份的链接。"),
     },
 }
 
@@ -228,7 +324,9 @@ def replace_once(text: str, old: str, new: str, where: str) -> str:
 def edit_block(block: dict, old: str, new: str, where: str) -> None:
     """Replace inside a paragraph, rich or plain. Only ``text`` inlines are touched: an
     ``article`` inline's text is a link label owned by the target article's title."""
-    if block["type"] == "paragraph":
+    # A callout's body is prose like any paragraph: the AI index's callout states the date the
+    # series runs to, which is wrong the day a later event is added.
+    if block["type"] in ("paragraph", "callout"):
         block["text"] = replace_once(block["text"], old, new, where)
         return
     if block["type"] != "rich_paragraph":
@@ -310,6 +408,7 @@ def has_work(name: str) -> bool:
         or RETITLE[name]
         or any(EDITS[name].values())
         or any(TABLE[name].values())
+        or DROP_COLUMN[name]
         or CAPTION[name]
     )
 
@@ -393,7 +492,7 @@ def update(vertical) -> None:
                 edit_block(blocks[target], old, new, f"{locale} block {target}")
 
         table = next((b for b in blocks if b["type"] == "table"), None)
-        if TABLE[name][locale] or locale in CAPTION[name]:
+        if TABLE[name][locale] or locale in DROP_COLUMN[name] or locale in CAPTION[name]:
             if table is None:
                 sys.exit(f"{locale}: the index has no table to edit")
             for row_label, column, old, new in TABLE[name][locale]:
@@ -405,6 +504,16 @@ def update(vertical) -> None:
                 if row[column] != old:
                     sys.exit(f"{locale}: row {row_label} column {column} is {row[column]!r}, expected {old!r}")
                 row[column] = new
+            if locale in DROP_COLUMN[name]:
+                label = DROP_COLUMN[name][locale]
+                if table["header"].count(label) != 1:
+                    sys.exit(f"{locale}: expected one table column headed {label!r}, found {table['header']}")
+                column = table["header"].index(label)
+                if len(table["header"]) < 3:
+                    sys.exit(f"{locale}: dropping {label!r} would leave a table of one column")
+                del table["header"][column]
+                for row in table["rows"]:
+                    del row[column]
             if locale in CAPTION[name]:
                 old, new = CAPTION[name][locale]
                 table["caption"] = replace_once(table["caption"], old, new, f"{locale} caption")

@@ -569,6 +569,170 @@ def _tech_index(accent: str) -> str:
     return b
 
 
+def cylinder(x, y, w=260, h=300, color=TEAL):
+    """A database: a can with its lid drawn as an ellipse and two seams down the body."""
+    ry = w * 0.18
+    body = f'<path d="M{x} {y+ry} V{y+h-ry} A{w/2} {ry} 0 0 0 {x+w} {y+h-ry} V{y+ry}" fill="#FFFFFF" stroke="{color}" stroke-width="8"/>'
+    body += f'<ellipse cx="{x+w/2}" cy="{y+ry}" rx="{w/2}" ry="{ry}" fill="{PALE}" stroke="{color}" stroke-width="8"/>'
+    return body + "".join(f'<path d="M{x} {y+ry+i*90} A{w/2} {ry} 0 0 0 {x+w} {y+ry+i*90}" fill="none" stroke="{color}" stroke-width="6"/>' for i in (1, 2))
+
+
+def bubble(x, y, w=150, h=100, color=BLUE):
+    """A speech bubble: a rounded box with a tail at the lower left."""
+    return rect(x, y, w, h, "#FFFFFF", color, 30) + f'<path d="M{x+34} {y+h-4} L{x+22} {y+h+34} L{x+70} {y+h-4}" fill="#FFFFFF" stroke="{color}" stroke-width="6" stroke-linejoin="round"/>'
+
+
+def magnifier(x, y, r=70, color=TEAL):
+    """A lens and its handle: tracing a figure back to where it came from."""
+    return circle(x, y, r, "#FFFFFF", color) + line(x + r * 0.72, y + r * 0.72, x + r * 1.7, y + r * 1.7, color, 18)
+
+
+def _chatgpt_storage_scale(accent: str) -> str:
+    # Many requests converging on one database, and underneath the article's spine: the same
+    # service drawn in dashes as the old version and in a solid line as the rewrite.
+    other = second_colour(accent)
+    b = "".join(line(215, y, 560, 430, "#C4CCCC", 6) for y in range(250, 631, 38))
+    b += cylinder(590, 265, 260, 330, accent)
+    b += dashed(960, 300, 1180, 300, other, 14) + arrow(1180, 1260, 300, other, 14) + line(1260, 300, 1385, 300, accent, 14)
+    b += circle(960, 300, 16, other, "none") + circle(1385, 300, 16, accent, "none")
+    # Four bars, each a step taller: the growth the post describes as tenfold a year.
+    return b + "".join(rect(975 + i * 105, 640 - h, 80, h, PALE if i % 2 == 0 else "#FFFFFF", other if i % 2 == 0 else accent, 12) for i, h in enumerate((40, 90, 160, 250)))
+
+
+def _openai_astral(accent: str) -> str:
+    # Three tools on the left, the larger product they are to join on the right, and between
+    # them an arrow still drawn in dashes with an open node on it: announced, not yet closed.
+    other = second_colour(accent)
+    b = "".join(slot(230, 235 + i * 150, 120, other) + line(262, 295 + i * 150, 320 - i * 14, 295 + i * 150, "#C4CCCC", 12) for i in range(3))
+    b += arrow(420, 800, 440, accent, broken=True) + pending(610, 440, 46, accent)
+    return b + outline(860, 225, 520, 440, accent) + monitor(940, 285, 360, 240)
+
+
+def _gpt_live_1_api(accent: str) -> str:
+    # A handset with sound coming off it, wired to the panel that answers: the model lives
+    # behind the call, not in a setting the caller can see.
+    other = second_colour(accent)
+    b = phone(250, 235, 230, 420, INK) + wave(535, 330, 4, other, 26)
+    b += "".join(line(295, 330 + i * 60, 435 - (i % 2) * 40, 330 + i * 60, "#C4CCCC", 12) for i in range(4))
+    b += line(480, 560, 700, 560, other, 12) + line(700, 560, 700, 440, other, 12) + arrow(700, 820, 440, other)
+    b += rect(850, 245, 520, 400, "#FFFFFF", accent, 36) + bubble(1030, 400, 160, 110, accent)
+    return b + wave(1060, 320, 5, other, 24)
+
+
+def _chatgpt_financial_services(accent: str) -> str:
+    # Stacked sources on the left, one figure traced back through a lens, and the four things
+    # the announcement is about along the bottom: data, templates, permissions, contact.
+    other = second_colour(accent)
+    b = "".join(sheet(230 + i * 60, 245 + (2 - i) * 60, 200, 230 - (2 - i) * 30, other if i < 2 else accent, rows=3) for i in range(3))
+    b += rect(430, 420, 40, 30, "#FFFFFF", accent, 6) + line(470, 435, 900, 435, accent, 6)
+    b += magnifier(960, 400, 80, accent)
+    return b + "".join(rect(700 + i * 110, 570, 80, 80, PALE if i % 2 == 0 else "#FFFFFF", other if i % 2 == 0 else accent, 16) for i in range(4))
+
+
+def hexagon(x, y, r=52, color=TEAL, fill="#FFFFFF"):
+    """One cell of a honeycomb: a community, a hub, many hands on one platform."""
+    points = " ".join(f"{x + r * c},{y + r * s}" for c, s in ((0.866, 0.5), (0, 1), (-0.866, 0.5), (-0.866, -0.5), (0, -1), (0.866, -0.5)))
+    return f'<polygon points="{points}" fill="{fill}" stroke="{color}" stroke-width="7" stroke-linejoin="round"/>'
+
+
+def _nvidia_hugging_face(accent: str) -> str:
+    # An open platform drawn as a honeycomb, the chip company it has agreed to join, and the
+    # deal between them still a dashed line into a dashed ring: agreed, not closed, no date.
+    other = second_colour(accent)
+    # Pointy-top cells sit side by side at 0°, 60°, 120°... and r√3 apart, so the ring's six
+    # share an edge each with the centre instead of crossing it.
+    cells = [(430, 440)] + [(430 + 118 * c, 440 + 118 * s) for c, s in ((1, 0), (0.5, 0.866), (-0.5, 0.866), (-1, 0), (-0.5, -0.866), (0.5, -0.866))]
+    b = "".join(hexagon(x, y, 64, accent if i == 0 else other, PALE if i == 0 else "#FFFFFF") for i, (x, y) in enumerate(cells))
+    b += arrow(660, 900, 440, accent, broken=True)
+    return b + pending(1150, 440, 200, accent) + chip(1030, 350, 240, 180)
+
+
+def _openai_funding(accent: str) -> str:
+    # Investors on the left paying into one round, and on the right the timeline the money
+    # actually arrives along: two tranches done, the third still a dashed node.
+    other = second_colour(accent)
+    b = "".join(coin(300, y, 50, other if i % 2 == 0 else accent) + line(352, y, 560, 440, "#C4CCCC", 8) for i, y in enumerate((300, 440, 580)))
+    b += rect(560, 300, 280, 280, "#FFFFFF", accent, 40) + "".join(rect(600 + c * 90, 340 + r * 90, 60, 60, PALE, other, 12) for r in range(2) for c in range(2))
+    b += arrow(870, 960, 440, other) + line(960, 440, 1380, 440, other, 10)
+    return b + tick(1010, 440, 46, accent) + tick(1190, 440, 46, accent) + pending(1370, 440, 46, accent)
+
+
+def _openai_s1(accent: str) -> str:
+    # A draft under lock on the left, and on the right the clock nobody has set: the filing is
+    # confidential, the timetable undecided.
+    other = second_colour(accent)
+    b = sheet(300, 245, 260, 330, accent, rows=5, broken=True) + padlock(560, 470, 0.9, other)
+    b += dashed(700, 430, 960, 430, accent, 12)
+    b += pending(1150, 430, 150, accent) + line(1150, 430, 1150, 340, other, 12) + line(1150, 430, 1225, 470, other, 12) + circle(1150, 430, 14, other, "none")
+    return b + "".join(circle(1150 + 118 * c, 430 + 118 * s, 8, other, "none") for c, s in ((0, -1), (1, 0), (0, 1), (-1, 0)))
+
+
+def gear(x, y, r=60, color=BLUE):
+    """A cog: the part under the surface that was swapped."""
+    body = "".join(line(x + (r + 4) * c, y + (r + 4) * s, x + (r + 26) * c, y + (r + 26) * s, color, 16)
+                   for c, s in ((1, 0), (0.707, 0.707), (0, 1), (-0.707, 0.707), (-1, 0), (-0.707, -0.707), (0, -1), (0.707, -0.707)))
+    return body + circle(x, y, r, "#FFFFFF", color) + circle(x, y, r * 0.38, PALE, color)
+
+
+def _gemini_38_live(accent: str) -> str:
+    # A voice in a speech bubble, and beside it the four kinds of account the launch names:
+    # two doors drawn solid, two still dashed -- announced together, open to different degrees.
+    other = second_colour(accent)
+    b = bubble(230, 265, 480, 300, accent) + wave(370, 415, 8, other, 30)
+    b += arrow(770, 880, 440, other)
+    for i, (x, y) in enumerate(((930, 250), (1150, 250), (930, 470), (1150, 470))):
+        b += slot(x, y, 180, accent if i < 2 else other, broken=i >= 2)
+        b += rect(x + 50, y + 50, 80, 80, PALE if i < 2 else "#FFFFFF", "none", 16)
+    return b
+
+
+def _gpt_55_instant(accent: str) -> str:
+    # The model under the chat window swapped like a cog, and beside it a checklist with half
+    # its rows ticked: what the release notes put numbers to, and what they left blank.
+    other = second_colour(accent)
+    b = bubble(230, 250, 440, 330, accent) + gear(450, 405, 62, other)
+    b += arrow(720, 830, 440, other) + sheet(880, 245, 300, 380, accent, rows=0)
+    for i in range(5):
+        y = 305 + i * 68
+        b += (tick(935, y, 22, accent) if i < 3 else pending(935, y, 22, other)) + line(985, y, 1140 - (i % 2) * 30, y, "#C4CCCC", 12)
+    return b
+
+
+def _openai_broadcom_chip(accent: str) -> str:
+    # A model (a speech bubble) wired to the chip made for it, the chip still inside a dashed
+    # frame -- engineering samples in a lab -- and the rack it is planned for drawn in dashes.
+    other = second_colour(accent)
+    b = bubble(215, 320, 260, 180, other) + line(475, 410, 620, 410, other, 12)
+    b += outline(620, 250, 380, 340, accent) + chip(690, 320, 240, 200)
+    b += arrow(1020, 1140, 420, accent, broken=True)
+    b += f'<rect x="1160" y="245" width="220" height="360" rx="20" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="22 16"/>'
+    return b + "".join(rect(1185, 275 + i * 80, 170, 52, PALE, "none", 10) for i in range(4))
+
+
+def _chatgpt_ads(accent: str) -> str:
+    # The four levels an ad is bought through, small to large, and on the right the chat and
+    # the ad kept apart by a dashed line: the announcement's own claim, drawn as a gap.
+    other = second_colour(accent)
+    b = "".join(rect(230 + i * 70, 590 - (60 + i * 55), 60 + i * 55, 60 + i * 55, "#FFFFFF" if i % 2 else PALE, accent if i % 2 == 0 else other, 16 + i * 4) for i in range(4))
+    b += arrow(690, 800, 440, other)
+    b += bubble(840, 280, 240, 160, accent) + "".join(line(880, 320 + i * 34, 1040 - (i % 2) * 40, 320 + i * 34, "#C4CCCC", 10) for i in range(3))
+    b += dashed(1130, 250, 1130, 640, INK, 8)
+    b += rect(1180, 300, 210, 140, PALE, other, 14) + line(1285, 440, 1285, 620, other, 12) + line(1240, 620, 1330, 620, other, 12)
+    return b + rect(1205, 325, 80, 90, "#FFFFFF", other, 10) + line(1305, 345, 1365, 345, other, 10) + line(1305, 385, 1350, 385, other, 10)
+
+
+def _frontier_governance(accent: str) -> str:
+    # One document answering two overlapping sets of rules, and the three-step scale it grades
+    # risk on -- the top step still dashed, because the framework calls its levels exploratory.
+    other = second_colour(accent)
+    b = sheet(230, 245, 260, 340, accent, rows=6)
+    b += line(490, 415, 600, 415, "#C4CCCC", 10)
+    b += circle(730, 415, 120, "none", other) + circle(870, 415, 120, "none", accent) + circle(800, 415, 20, INK, "none")
+    b += line(1010, 415, 1120, 415, "#C4CCCC", 10)
+    b += rect(1150, 500, 220, 110, PALE, other, 14) + rect(1150, 380, 220, 110, "#FFFFFF", accent, 14)
+    return b + f'<rect x="1150" y="260" width="220" height="110" rx="14" fill="#FFFFFF" stroke="{accent}" stroke-width="6" stroke-dasharray="22 16"/>'
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -599,6 +763,18 @@ _DRAWINGS = {
     "tech-news-nvidia-mediatek-20260831": _nvidia_mediatek,
     "tech-news-nvidia-vera-rubin-20260915": _nvidia_vera_rubin,
     "tech-news-2026-index": _tech_index,
+    "ai-news-chatgpt-storage-scale-20260911": _chatgpt_storage_scale,
+    "ai-news-openai-astral-20260319": _openai_astral,
+    "ai-news-gpt-live-1-api-20260910": _gpt_live_1_api,
+    "ai-news-chatgpt-financial-services-20260910": _chatgpt_financial_services,
+    "ai-news-nvidia-hugging-face-20260903": _nvidia_hugging_face,
+    "ai-news-openai-funding-20260331": _openai_funding,
+    "ai-news-openai-s1-20260608": _openai_s1,
+    "ai-news-gemini-38-live-20260915": _gemini_38_live,
+    "ai-news-gpt-55-instant-20260505": _gpt_55_instant,
+    "ai-news-openai-broadcom-chip-20260624": _openai_broadcom_chip,
+    "ai-news-chatgpt-ads-20260505": _chatgpt_ads,
+    "ai-news-frontier-governance-20260528": _frontier_governance,
 }
 
 

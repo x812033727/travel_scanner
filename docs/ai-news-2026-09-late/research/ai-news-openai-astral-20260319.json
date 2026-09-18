@@ -1,0 +1,483 @@
+{
+  "slug": "ai-news-openai-astral-20260319",
+  "event_date": "2026-03-19",
+  "event_date_basis": "Astral 官方公告（astral.sh/blog/openai）的 MDX frontmatter 記 \"date\":\"2026-03-19\"，頁面頂端渲染的日期文字同樣是 March 19, 2026；OpenAI 自己的收購公告頁（openai.com/index/openai-to-acquire-astral/，本次查核已可直接讀取全文）頁首也標示 March 19, 2026，且該日確實是星期四，與先前研究記錄的 OpenAI 新聞 RSS 項目 pubDate（Thu, 19 Mar 2026 00:00:00 GMT）一致。三個獨立管道（Astral 官方公告、OpenAI 官方公告、OpenAI RSS）的日期互相吻合，交易完成日則未知：OpenAI 公告明寫完成須取得監理機關核准等常見條件，完成前雙方仍是兩家各自獨立的公司。",
+  "title": "OpenAI 宣布收購 Astral：uv、Ruff、ty 三個開源工具的去向",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Astral 公告「Astral to join OpenAI」",
+      "url": "https://astral.sh/blog/openai",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 公告「OpenAI to acquire Astral」",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Astral 官方網站首頁",
+      "url": "https://astral.sh/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "uv · PyPI",
+      "url": "https://pypi.org/project/uv/",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18（台北時間）用 curl -sL -A \"Mokaair-editorial\" 重抓 4 條 sources 並讀到 body 才登記 checked_on，沒有任何請求帶入 email 或個人資料。(1) https://astral.sh/blog/openai -> HTTP 200、52,443 bytes，與先前兩輪查核的 bytes 數完全相同，body 含完整正文與 MDX frontmatter。(2) https://openai.com/index/openai-to-acquire-astral/ -> HTTP 200，重大變化：先前研究（2026-09-16）與獨立查核（2026-09-17）對這個網址與其各種變體（結尾斜線、ja-JP、zh-Hant、.md）一律回 403，只能靠 openai.com/news/rss.xml 的一行 description 轉述。本次查核同一天內對同一網址重抓兩次，第一次 386,257 bytes、第二次 386,213 bytes，17 個 <article> 內段落逐字相同（差異僅在頁面內的動態/追蹤片段），title 均為「OpenAI to acquire Astral | OpenAI」，正文可正常讀取，不是驗證碼或攔截頁（比對過沒有 Just a moment / captcha / Enable JavaScript 等字樣）。因此本次不再使用 RSS feed 作為 sources，改直接引用公告全文；RSS 是否仍會 403、這次為何轉為 200，本文沒有進一步調查（可能是 Cloudflare 依 IP／ASN 的機器人分數浮動，CF-RAY 顯示走的是 TPE／台北邊節點），這點寫進 corrections_applied 供協調者知悉，回報中也會提示查核代理留意。(3) https://astral.sh/ -> HTTP 200、144,076 bytes，首頁最上方橫幅仍是「Astral to join OpenAI as part of the Codex team」，Ruff／ty 各有一句話說明。(4) https://pypi.org/project/uv/ -> HTTP 200、511,941 bytes，Key dates 區塊顯示 Released: Sep 15, 2026（版本 0.12.15），License expression 欄位為 MIT OR Apache-2.0，作者欄為 Astral Software Inc.，整頁比對 'openai'（不分大小寫）0 次命中。額外重抓但最終未列入 sources[] 的頁面（供後續查核參考，非本文事實依據）：docs.astral.sh/uv/（200，修訂時間戳 2026-03-13 14:17:06 UTC，早於公告）、docs.astral.sh/ruff/（200，無修訂時間戳）、docs.astral.sh/ty/（200，修訂時間戳 2026-09-17 19:22:31 UTC）、openai.com/news/rss.xml（200，726 KB 上下，今天 1,207 個 <item>，三天內三種不同計數，僅供比對用不作為事實）、astral.sh/pyx（未重抓，本文不提 pyx）。",
+  "verified_facts": [
+    {
+      "fact": "OpenAI 自己的收購公告頁標題是「OpenAI to acquire Astral」，頁首日期標示 March 19, 2026，副標是「Accelerates Codex growth to power the next generation of Python developer tools」（與 OpenAI 官方新聞 RSS 中該則項目的 description 完全一致）。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI to acquire Astral"
+    },
+    {
+      "fact": "OpenAI 公告正文開頭寫「Today we're announcing that OpenAI will acquire Astral, bringing powerful open source developer tools into our Codex ecosystem.」，用的動詞是 acquire。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today we’re announcing that OpenAI will acquire Astral"
+    },
+    {
+      "fact": "OpenAI 形容 Astral「打造了一些被最廣泛使用的開源 Python 工具」，並點名 uv、Ruff、ty 三者。這是 OpenAI 自己對 Astral 的評價性描述，本站沒有查證「most widely used」是否屬實。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Astral has built some of the most widely used open source Python tools, helping developers move faster with modern tooling like uv, Ruff, and ty."
+    },
+    {
+      "fact": "OpenAI 公告用一句話分別描述三個工具的功能：uv「簡化套件與環境管理」。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "uv simplifies dependency and environment management"
+    },
+    {
+      "fact": "OpenAI 公告：Ruff「提供極快的程式碼檢查與格式化」。extremely fast 是速度宣稱、本站沒有實測，2026-09-18 獨立查核把旗標改成 true；正文已歸因為 OpenAI 的說法。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ruff provides extremely fast linting and formatting"
+    },
+    {
+      "fact": "OpenAI 公告：ty「協助在程式碼庫中落實型別安全」。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ty helps enforce type safety across codebases"
+    },
+    {
+      "fact": "OpenAI 公告明寫收購完成的條件與交易完成前雙方的關係：完成須取得監理機關核准等常見完成條件，在完成之前 OpenAI 與 Astral 仍是兩家各自獨立的公司。這是本文交易狀態說法的唯一依據，且是本次查核新取得、先前研究紀錄與查核紀錄都未讀到的段落（見下方 corrections_applied 說明）。這句是公司自報、關於未來，2026-09-18 獨立查核把旗標改成 true，正文全部歸因為「OpenAI 自己的公告寫明」。這句話只說明完成條件，**沒有**說核准是否已取得、也沒有說交易到某一天為止是否已完成，因此不能拿它推出「還沒有經過監理機關核准」。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The closing of the acquisition is subject to customary closing conditions, including receipt of regulatory approval. Until the closing, OpenAI and Astral will remain separate and independent companies."
+    },
+    {
+      "fact": "OpenAI 公告寫「基於我們以開發者為先的理念，交易完成後，OpenAI 打算支援 Astral 的開源產品」，用詞是「plans to」（打算），不是承諾。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As part of our developer-first philosophy, after closing OpenAI plans to support Astral’s open source products."
+    },
+    {
+      "fact": "OpenAI 公告寫「交易完成後，Astral 團隊將加入 OpenAI 的 Codex 團隊」，沒有給出人數，也沒有說明是否全體員工都會加入。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "After closing, the Astral team will join the Codex team at OpenAI"
+    },
+    {
+      "fact": "Astral 官方公告的 MDX frontmatter 為 title、author（Charlie Marsh）、date（2026-03-19）、category（Announcements），frontmatter 出現在頁面原始碼中，供程式讀取渲染。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"title\":\"Astral to join OpenAI\",\"author\":\"Charlie Marsh\",\"date\":\"2026-03-19\",\"category\":\"Announcements\""
+    },
+    {
+      "fact": "Astral 創辦人 Charlie Marsh 在公告正文寫「已與 OpenAI 達成協議、將以 Codex 團隊一員的身分加入 OpenAI」，用的動詞是 join，與 OpenAI 自己用的 acquire 不同。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we've entered into an agreement to join OpenAI as part of the Codex team."
+    },
+    {
+      "fact": "Astral 自述過去幾年三個工具的下載量從零成長到「每月數億次下載」（英文原文 hundreds of millions），這句話後面接著點名 Ruff、uv、ty 三者合計；是 Astral 自己的說法，PyPI 頁面本身不提供下載量統計，本站沒有獨立查證這個數字。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Over the past few years, our tools have grown from zero to hundreds of millions of downloads per month across Ruff"
+    },
+    {
+      "fact": "Astral 公告寫「交易完成後，OpenAI 會繼續支援我們的開源工具」，並接著說 Astral 會繼續公開開發。這是 Astral 轉述 OpenAI 公告的說法，句子本身出現在 Astral 網站上。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI will continue supporting our open source tools after the deal closes."
+    },
+    {
+      "fact": "Marsh 個人陳述創立 Astral 的初衷。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": false,
+      "verbatim_quote": "I started Astral to make programming more productive."
+    },
+    {
+      "fact": "Astral 官方網站首頁（astral.sh 根網域，非 openai.com）查核當天最上方仍掛著站台橫幅公告這樁收購，橫幅文字與連結指回 3 月 19 日那篇公告；六個月後網站本身沒有改朝換代或轉址到 OpenAI 網域。",
+      "url": "https://astral.sh/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Astral to join OpenAI as part of the Codex team"
+    },
+    {
+      "fact": "Astral 首頁把 Ruff 定位成「速度極快的 Python 程式碼檢查工具，以 Rust 寫成」。",
+      "url": "https://astral.sh/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An extremely fast Python linter, written in Rust."
+    },
+    {
+      "fact": "Astral 首頁把 ty 定位成「速度極快的 Python 型別檢查器與語言伺服器，以 Rust 寫成，設計上是 mypy、Pyright 與 Pylance 的替代方案」。",
+      "url": "https://astral.sh/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ty is an extremely fast Python type checker and language server, written in Rust, and designed as an alternative to mypy, Pyright, and Pylance."
+    },
+    {
+      "fact": "uv 在 PyPI 上的套件頁自我描述為「一個以 Rust 寫成、速度極快的 Python 套件與專案管理工具」，查核當天版本號為 0.12.15。",
+      "url": "https://pypi.org/project/uv/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An extremely fast Python package and project manager, written in Rust."
+    },
+    {
+      "fact": "PyPI 頁面「Key dates」區塊裡，標籤 Released: 是一個 <strong>、日期在相鄰的 <time datetime=\"2026-09-15T12:07:02+0000\"> 裡，渲染成一行「Released: Sep 15, 2026」。標成引文的只有 <time> 裡那段可原樣搜尋的字串；「Released:」與日期跨兩個元素，2026-09-18 獨立查核把原本拼接的引文拆開。",
+      "url": "https://pypi.org/project/uv/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sep 15, 2026"
+    },
+    {
+      "fact": "PyPI 側欄有一個標題為 License expression 的區塊，區塊內容是 MIT OR Apache-2.0；標題在 <h2>、值在另一個 <div> 的 <p> 裡，是兩個頁面元素，因此引文只取值本身。同頁 Credits 區塊的 Author: 後面連的是 Astral Software Inc.（在 <a href=\"mailto:…\"> 內，可原樣搜尋）。",
+      "url": "https://pypi.org/project/uv/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "MIT OR Apache-2.0"
+    },
+    {
+      "fact": "以 2026-09-18 抓到的 pypi.org/project/uv/ 全頁（511,941 bytes 原始 HTML，與剝除標籤後的可見文字兩份各查一次）比對，「openai」不分大小寫的子字串命中 0 次、加詞界的 \\bopenai\\b 命中 0 次，另查「open ai」與「chatgpt」亦各 0 次。這是限於這一頁、限於這一天的否定結果，不代表 PyPI 其他頁面或其他日期。",
+      "url": "https://pypi.org/project/uv/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Astral Software Inc."
+    },
+    {
+      "fact": "OpenAI 公告在點名三個工具之前，先寫這些工具「支撐著數百萬個開發者工作流程，並已成為現代 Python 開發基礎的一部分」。注意原文是 millions of developer workflows（數百萬個工作流程），不是數百萬名開發者；同一頁 Codex 負責人 Thibault Sottiaux 的引言另外說 Astral 的工具「被數百萬名 Python 開發者使用」，兩句主詞不同，不可合併。兩句都是 OpenAI 自報、外部無法查核。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These tools power millions of developer workflows and have become part of the foundation of modern Python development."
+    },
+    {
+      "fact": "OpenAI 公告寫 Codex 的目標，列的是五件事：規劃改動、修改程式庫、執行工具、驗證結果、長期維護軟體。2026-09-18 獨立查核發現草稿漏掉了 verify results（驗證結果），已補回。破折號是 U+2014，照抄。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "move beyond AI that simply generates code and toward systems that can participate in the entire development workflow—helping plan changes, modify codebases, run tools, verify results, and maintain software over time."
+    },
+    {
+      "fact": "OpenAI 公告用一句話總結三個工具合起來的作用：幫開發者管理專案、維持品質，並在開發過程早期就抓出錯誤。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Together these tools help developers manage projects, enforce quality, and catch errors early in the development process."
+    },
+    {
+      "fact": "關於工具與 Codex 的整合，OpenAI 公告同時有「探索」與「會」兩種語氣：兩處用 explore（「探索讓它們與 Codex 更順暢搭配的方式」、「探索更深的整合」），但另有一句是確定語氣的 we will enable。2026-09-18 獨立查核據此推翻草稿原本「雙方公告都只說會探索」的寫法。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By integrating these systems with Codex after closing, we will enable AI agents to work more directly with the tools developers already rely on every day."
+    },
+    {
+      "fact": "OpenAI 公告的另一處「探索」用語，接在「會繼續支援這些開源專案」之後；破折號是 U+2014。這一句的前半 we'll continue to support these open source projects 也是 OpenAI 自己對開源支援的確定語氣說法，與同頁的 plans to support 並存。2026-09-18 第二輪查核據此修正草稿只拿 plans to 當「OpenAI 的說法」、把 will continue 只歸給 Astral 的對比寫法（正文第三節第二段、summary 第四句、FAQ 第 3 題）。",
+      "url": "https://openai.com/index/openai-to-acquire-astral/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we’ll continue to support these open source projects while exploring ways they can work more seamlessly with Codex"
+    },
+    {
+      "fact": "Astral 公告也用 explore 這個字談整合，措辭與 OpenAI 那句幾乎相同（原文在網頁上跨行，此處引文為壓掉換行後的連續字串）。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "explore ways they can work more seamlessly with Codex"
+    },
+    {
+      "fact": "Marsh 寫促成這筆交易的判斷：AI 正在快速改變軟體開發的方式、變化還在加速，而他認為 Codex 就是 AI 與軟體的前緣（frontier 指的是前一句的「AI 與軟體的前緣」，不是泛指這波變化）。引文為壓掉換行後的連續字串。",
+      "url": "https://astral.sh/blog/openai",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It is increasingly clear to me that Codex is that frontier."
+    },
+    {
+      "fact": "astral.sh 首頁最上方那條收購橫幅是一個連到 /blog/openai 的連結，也就是點進去就是 3 月 19 日那篇公告。首頁主要版位介紹的是 Ruff；ty 的一句話說明出現在首頁「Announcements」區塊裡 2025 年 12 月 16 日那張公告卡片上，不是獨立的工具版位；頁尾則同時列出 Ruff、uv、ty 三個連結，分別指向 docs.astral.sh/ruff/、/uv/、/ty/。2026-09-18 獨立查核據此修正草稿「首頁其餘部分照常介紹 Ruff 與 ty」的說法。",
+      "url": "https://astral.sh/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<a href=\"/blog/openai\">"
+    }
+  ],
+  "not_said": [
+    "交易金額、Astral 估值或任何財務數字：OpenAI 與 Astral 的公告都沒有提到，本文查證範圍內沒有任何一手來源給出數字，因此不寫、也不臆測。",
+    "交易是否已經完成：OpenAI 自己的公告寫「交易完成前，OpenAI 與 Astral 仍是兩家各自獨立的公司」，且需要監理機關核准等常見完成條件；以查核到 2026-09-18 為止，兩份官方頁面都沒有後續公告交易已完成。",
+    "Astral 團隊加入人數：OpenAI 公告只寫「Astral 團隊將加入 Codex 團隊」，沒有給人數，也沒有說是否全員加入；Marsh 自己的公告向「Astral 團隊」致謝，同樣沒有人數。",
+    "uv、Ruff、ty 未來的授權或收費方式：兩份公告都只承諾交易完成後「繼續支援」開源工具，沒有提到授權是否變動、是否收費、是否被併入 Codex 或要求 OpenAI 帳號。",
+    "任何地區或市場限制：這是一筆企業併購與開源工具的持續發布，兩份公告與 PyPI 頁面都沒有出現地區、國家或市場別的字樣。",
+    "Charlie Marsh 在 OpenAI 的職稱：兩份公告都沒有提到。",
+    "Astral 三個工具「每月數億次下載」是否屬實：這是 Astral 自己的說法，PyPI 頁面不提供下載量統計，本站沒有其他管道獨立核對。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Astral 的 Series A、Series B 募資金額，以及本輪交易是否有具名投資人參與。",
+      "seen_where": "曾出現在 2026-09-16 前期研究紀錄裡（引用自 astral.sh/blog/openai 對投資人的致謝段落，只點名人名與輪次，沒有金額）。",
+      "why_excluded": "本輪查核把 sources[] 收斂為 4 條之後，這段致謝內容與本文「工具去留」的主軸關聯不大，為了篇幅與 sources 對應關係單純，本文正文沒有使用，故不放進 verified_facts。金額本來就沒有任何一手來源給出。"
+    },
+    {
+      "claim": "Astral 的商業套件登記站 pyx 停止接受新註冊，以及原因與時間點。",
+      "seen_where": "astral.sh/pyx（前期研究與獨立查核都讀過，HTTP 200）。",
+      "why_excluded": "本輪定案的 4 條 sources[] 不含 astral.sh/pyx，這個網址今天沒有重新讀取；即使讀了，前期查核已指出該頁沒有給時間點或理由，容易被誤讀成與本次收購有因果關係，本文不提。"
+    },
+    {
+      "claim": "OpenAI 公告裡「Codex 已有 3 倍使用者成長、5 倍用量成長，每週活躍使用者超過 200 萬」的說法。",
+      "seen_where": "openai.com/index/openai-to-acquire-astral 正文（本次查核讀到）。",
+      "why_excluded": "這是 Codex 產品本身的使用量，不是 Astral 收購案或 uv／Ruff／ty 的內容；本站另一篇 Codex 文章（ai-news-gpt-53-codex-20260205）已涵蓋 Codex 能力與使用情形，本文編輯範圍刻意不重複，因此不寫這個數字，即使它今天確實讀到了。"
+    },
+    {
+      "claim": "Astral 投資人 Casey Aylward（Accel）與 Jennifer Li（Andreessen Horowitz）分別主導 Astral 哪一輪募資。",
+      "seen_where": "astral.sh/blog/openai 正文（本次查核仍讀得到）。",
+      "why_excluded": "與「工具去留、交易是否完成」的主軸關聯有限，為了在 4 條 sources 內聚焦，本文正文沒有使用；不是因為查不到，是編輯取捨。"
+    },
+    {
+      "claim": "docs.astral.sh/uv/、/ruff/、/ty/ 三個文件頁各自的最後修訂時間，以及 Ruff、ty 的 PyPI JSON 版本中繼資料。",
+      "seen_where": "本次查核有另外重新讀取這三個文件頁（uv 頁修訂於 2026-03-13 14:17:06 UTC，即公告前；ty 頁修訂於 2026-09-17 19:22:31 UTC；ruff 頁沒有修訂時間欄位）。",
+      "why_excluded": "這三個網址不在本文定案的 4 條 sources[] 內。uv 文件頁的修訂時間早於公告，不能當成「公告後仍在維護文件」的證據，寫進去反而容易誤導；為了不超過來源上限，本文改用 PyPI 的發布日期（2026-09-15）作為『工具仍在維護』的證據，這條資訊更直接也更新。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者裡偏向『自己寫程式、或依賴別人維護的 Python 專案』的那一群，角度是『我依賴的開源工具被收購了，我該擔心什麼、能做什麼』，不是企業併購或投資題材。本站後端服務（apps/api）本身就在用 uv 鎖定相依套件、在設定裡指定 ruff 的版本範圍（已核對 apps/api/pyproject.toml 與 uv.lock 存在），拿來當第二、五節的『以本站為例』情境，不需要另外標記為假設情境，因為這是本站自己專案設定檔的真實狀態，但仍避免暗示本站因此對這樁收購有任何立場。五節安排：一、雙方官方公告各自怎麼說（acquire 對 join）；二、uv／Ruff／ty 是什麼、誰會碰到（表格收尾）；三、官方現在承諾了什麼、還沒承諾什麼，包含完成條件與『完成前仍各自獨立』這句關鍵陳述（圖解收尾）；四、六個月後查核當天的實際狀態（首頁橫幅仍在、PyPI 仍在發版）；五、讀者現在能做的檢查。刻意不談：Codex 模型本身的能力與用量（OpenAI 公告裡的 3 倍成長、200 萬週活躍使用者等數字，屬於 ai-news-gpt-53-codex-20260205 與 ai-news-openai-agents-api-20260910 的範圍）、Astral 的募資輪次金額、pyx 商業產品、任何收購金額推測、『AI 會不會取代工程師』這類發想題。語氣平實：這是一則『已宣布收購、尚未完成、工具目前照常維護』的新聞，不寫成利多或危機。",
+  "must_not_write": [
+    "不可寫出任何收購金額、估值或股權比例：兩份官方公告都沒有給數字。",
+    "不可寫「收購已完成」「Astral 現在是 OpenAI 的一部分」：OpenAI 自己的公告明寫，完成前雙方仍是兩家各自獨立的公司，且需要監理機關核准。",
+    "不可把 Astral『每月數億次下載』或 OpenAI『支撐數百萬個開發者工作流程』寫成本站查證過的事實，一律標明是該公司自己的說法。",
+    "不可寫 uv、Ruff、ty 會關閉開源、會收費、會被併入 Codex、會要求 OpenAI 帳號，也不可反過來保證『永遠不會』：官方沒有這個層級的承諾或保證。",
+    "不可寫 Astral 團隊加入 OpenAI 的確切人數，或暗示『全體員工』加入：官方只寫『Astral 團隊將加入 Codex 團隊』。",
+    "不可寫本站『實測』或『安裝之後發現』：本站沒有為這篇文章測試、評比或安裝這三個工具。注意這條不等於『本站沒用過這些工具』——apps/api/pyproject.toml 與 uv.lock 顯示本站後端確實用 uv 與 ruff，editorial_brief 也是這樣寫的；2026-09-18 第二輪查核發現正文第二段照這條寫成『本站沒有安裝或實際使用這三個工具』，與第二節第三段和 FAQ 第 4 題自相矛盾，已把兩邊都收斂成『沒有測試或評比』。",
+    "不可寫任何地區、台灣開放時程或市場限制：這是企業併購與開源工具的持續發布，官方公告與 PyPI 頁面都沒有這類條件。",
+    "不可出現簡體字；不可用列表、Markdown、emoji；不可下投資或採購建議。"
+  ],
+  "live_data_warnings": [
+    "uv／Ruff／ty 的 PyPI 版本號、發布時間、下載量說法都是查核當天（2026-09-18）的快照，下次查核可能已經改變版本號；本文只寫『查核當天讀到的版本』，不宣稱是最新或最終版本。",
+    "OpenAI 官方新聞 RSS（openai.com/news/rss.xml）今天讀到 1,207 筆項目，三天內（研究 2026-09-16 記 1,194、獨立查核 2026-09-17 記 1,195、本次 2026-09-18 記 1,207）就有三種不同計數；本文與研究紀錄都不使用這個筆數，只用其中與 Astral 相關的那一筆項目本身。",
+    "Astral 官方網站首頁的站台橫幅、Astral 部落格清單、PyPI 頁面上的維護者名單都是查核當天看到的狀態，日後可能更新或移除；本文『六個月後仍掛著橫幅』只代表 2026-09-18 這一天的觀察，不是永久狀態的保證。",
+    "docs.astral.sh/uv/ 頁面的修訂時間戳（2026-03-13 14:17:06 UTC）與 docs.astral.sh/ty/ 頁面的修訂時間戳（2026-09-17 19:22:31 UTC）是頁面自己的 git 修訂紀錄，本文沒有使用這兩個時間戳，僅在本檔案記錄供後續查核參考。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（pyx 頁面其實有出現 OpenAI，出自站台橫幅）：不適用改寫，因為本輪 sources[] 沒有收 astral.sh/pyx，正文完全不提 pyx。但改用了同一個發現的更好版本——本次直接重新確認 astral.sh 首頁（astral.sh/）今天仍掛著同一條橫幅「Astral to join OpenAI as part of the Codex team」，並把它寫進第四節作為『六個月後』的證據，效果與 must_fix 1 的精神一致（工具旗下頁面仍在對外提這樁收購）。",
+    "must_fix 2（developers.openai.com/codex/ 是壞掉的轉址，Codex 文件零命中是導覽殼造成的）：已避開。本文完全不使用 Codex 開發文件『zero mentions』這個負面證據，改成更直接、更安全的正面證據：OpenAI 自己的收購公告頁（本次查核已可讀取全文，見下方說明）與 astral.sh、PyPI 頁面。",
+    "must_fix 3（uv 文件頁『仍然寫 backed by Astral』不能當成公告後決策的證據，因為修訂時間早於公告）：已套用同樣的判斷。本次查核也重新確認了 docs.astral.sh/uv/ 的修訂時間仍是 2026-03-13（公告前），因此本文完全不使用『文件仍寫 backed by Astral』這個說法，改用 PyPI 的實際發版日期（2026-09-15，公告後約半年）作為『仍在維護』的證據，這是比文件修訂時間更直接的訊號。",
+    "must_fix 4（uv audit 4x-10x 比較需要但書）：本文正文沒有使用 uv audit 或 4x-10x 這個數字，不適用。",
+    "must_add（astral.sh/about 是更安全的六個月後證據）：改用同樣性質但更新的做法——本次查核直接重新讀取 astral.sh 首頁（而非 /about 子頁），確認同一條收購橫幅公告今天仍在，效果相同且是本文已經定案的 sources[] 之一，不需要額外增加來源。",
+    "must_add（Astral 仍在用站台橫幅宣傳這樁交易）：已套用，見第四節與 verified_facts。",
+    "must_add（PyPI 版本號與上傳時間是查核當天的活值，寫作時要標明查核日）：已套用，正文與研究紀錄的每一個版本號、發布日都標明是 2026-09-18 查核當天讀到的 PyPI 頁面內容，並在 live_data_warnings 重申。",
+    "source_list_fix（developers.openai.com/codex/ 從未落地，必須換掉）：已解決，且解決方式比修正清單建議的更徹底——本文完全不使用該網址，也不使用替代的 learn.chatgpt.com/docs/llms-full.txt，因為本次查核已經能直接讀到 OpenAI 自己的收購公告全文（見下方『與研究紀錄的重大差異』）。",
+    "source_list_fix（原始研究把 openai.com/news/rss.xml 放進 sources[1] 是為了繞過公告頁 403 的權宜之計）：已不再需要。本次查核 openai.com/index/openai-to-acquire-astral 兩次獨立重抓都回 HTTP 200、內容穩定一致（見下方說明），本文直接把公告頁本身放進 sources[]，不再使用 RSS feed 作為來源。",
+    "與研究紀錄（checked_on 2026-09-16）及獨立查核（checked_on 2026-09-17）的重大差異：兩者都記錄 openai.com/index/openai-to-acquire-astral 對 curl（帶 Mokaair-editorial UA）與 WebFetch 一律回 403，因此只能靠 openai.com/news/rss.xml 的一行描述轉述 OpenAI 的說法。本次查核（2026-09-18 台北時間）用同樣的 curl -sL -A \"Mokaair-editorial\" 對同一網址重抓兩次，皆回 HTTP 200，內容穩定（386,257 與 386,213 bytes，17 段落逐字相同，title 皆為「OpenAI to acquire Astral | OpenAI」），因此本文改為直接引用 OpenAI 公告全文，取得的內容遠多於先前只有一行 feed 摘要可用的狀態，包含收購完成條件、雙方在完成前仍各自獨立、三個工具的一句話說明等，都是先前兩輪工作都沒有讀到的段落。這是規格與現實狀況不一致時的更新，已在回報中特別註明給協調者。",
+    "research 缺 title、hero_label、diagram 三個欄位：已補齊（見下方對應欄位）。",
+    "display_order／topics：研究紀錄 editorial_brief 建議 topics 用 [\"ai\",\"software\",\"ai-news\"]（比照 ai-news-gpt-53-codex-20260205）。WRITER-AI.md 規定「公司層級的新聞（募資、S-1、併購、治理框架）用 [\"ai\",\"ai-news\"]」，而協調者指派訊息本身就把這篇定性為『OpenAI 併購 Astral』；WRITER-AI.md 給的四個例子（募資／S-1／併購／治理框架）恰好一一對應這批另外三篇 openai-funding、openai-s1、frontier-governance 與本篇，判斷這篇屬於「併購」分類。因此本文採 [\"ai\",\"ai-news\"]，不加 software，與研究紀錄的建議不同；這個判斷記在這裡並寫進回報，供協調者覆核。"
+  ],
+  "hero_label": "已宣布，完成須核准",
+  "diagram": {
+    "title": "這樁收購，現在走到哪裡",
+    "caption": "依 OpenAI 2026 年 3 月 19 日公告整理：收購已宣布，完成須經監理核准，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "已宣布",
+        "2026 年 3 月 19 日"
+      ],
+      [
+        "未見完成公告",
+        "查核當天四頁都沒有"
+      ],
+      [
+        "仍各自獨立",
+        "完成前不算同一家"
+      ],
+      [
+        "uv 仍發版",
+        "9 月 15 日發布 0.12.15"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Announced, approval next",
+      "diagram": {
+        "title": "Where This Acquisition Stands Now",
+        "caption": "Compiled from OpenAI’s March 19, 2026 announcement: the acquisition has been announced, and closing requires regulatory approval; checked as of September 18, 2026.",
+        "nodes": [
+          [
+            "Announced",
+            "March 19, 2026"
+          ],
+          [
+            "No closing notice",
+            "None of the four pages had one"
+          ],
+          [
+            "Still separate",
+            "Not one company yet"
+          ],
+          [
+            "uv still shipping",
+            "0.12.15, Sep 15"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "発表済み、完了は承認次第",
+      "diagram": {
+        "title": "この買収は今どうなっているか",
+        "caption": "OpenAIの2026年3月19日の発表をもとに作成：買収は発表済みだが、完了には規制当局の承認が必要です。確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "発表済み",
+            "2026年3月19日"
+          ],
+          [
+            "完了発表なし",
+            "確認日は4ページともなし"
+          ],
+          [
+            "独立継続",
+            "完了前は別会社"
+          ],
+          [
+            "uvは更新中",
+            "9月15日/0.12.15"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "발표됨, 승인 필요",
+      "diagram": {
+        "title": "이 인수는 지금 어디까지 왔나",
+        "caption": "OpenAI의 2026년 3월 19일 발표문을 바탕으로 정리: 인수는 발표되었으나 완료에는 규제 당국의 승인이 필요합니다. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "발표됨",
+            "2026년 3월 19일"
+          ],
+          [
+            "완료 발표 없음",
+            "확인일 네 페이지 다 없음"
+          ],
+          [
+            "독립 유지",
+            "완료 전엔 별개 회사"
+          ],
+          [
+            "uv 계속 배포",
+            "9월 15일, 0.12.15"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "已宣布，完成须核准",
+      "diagram": {
+        "title": "这桩收购，现在走到哪里",
+        "caption": "依 OpenAI 2026 年 3 月 19 日公告整理：收购已宣布，完成须经监管核准，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "已宣布",
+            "2026年3月19日"
+          ],
+          [
+            "未见完成公告",
+            "查核当天四页都没有"
+          ],
+          [
+            "仍各自独立",
+            "完成前不算同一家"
+          ],
+          [
+            "uv 仍发版",
+            "9月15日发布0.12.15"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "沒有參與撰稿。把 sources[] 四條在 2026-09-18 用 curl -sL -A \"Mokaair-editorial\" 全部重抓並讀 body（openai.com 那條在同一天內獨立抓兩次交叉比對），任何請求都沒有帶入 email、姓名或個人資料。把 title、description、summary 四句、正文 17 段每一句、表格 9 格與 caption、圖解 caption 與研究紀錄 diagram 四格、hero_label、FAQ 六題答句、callout 逐條拆成主張，共核對 96 條；另用程式對 29 條 verbatim_quote 做連續字串比對（原始 HTML 與剝除標籤後的可見文字各查一次），並用詞界比對重驗 PyPI 頁「OpenAI 0 次」這個否定句。hero.alt 依規格未查也未改；兩個結尾連結未動。",
+    "verdict": "needs_fixes（已由查核代理直接改完，20 處；核對 96 條主張）",
+    "edits_to_the_pack": [
+      "撰稿者提醒的第 1 點已獨立證實：openai.com/index/openai-to-acquire-astral/ 今天確實讀得到公告正文。兩次獨立重抓皆 HTTP 200（386,254 與 386,261 bytes，url_effective 無轉址，Server: cloudflare、CF-RAY 走 TPE 邊節點），<title> 為「OpenAI to acquire Astral | OpenAI」，<article> 內 19 段逐字相同；查過 Just a moment／captcha／Enable JavaScript／Access Denied／Request Access／Attention Required 全部 0 次命中，Page not found 0 次。不是擋阻頁、軟性 404 或驗證頁，因此沒有任何句子因為讀不到來源而需要刪除。",
+      "撰稿者提醒的第 2 點（交易狀態）查出實質錯誤並已改：原文只寫完成條件與完成前的關係，沒有說核准是否已取得。草稿第三節寫『截至查核日，這筆交易還沒有完成，也還沒有經過監理機關核准』，後半句是從『沒看到完成公告』推出來的世界性否定，來源撐不住。改成『完成與否取決於監理核准等條件；查核當天讀到的四個頁面都沒有交易已完成的訊息』。同型的還有第四節『這筆交易對外呈現的狀態沒有變化：仍是已宣布而不是已完成』、第四節『OpenAI 與 Astral 都沒有公告任何取消或延遲的消息』、FAQ 第 1 題開頭的『還沒有』與『兩邊的官方頁面都沒有』、FAQ 第 3 題的『官方沒有這樣的公告』、FAQ 第 5 題的『官方沒有公布』、callout 的『截至查核當天，這筆收購尚未完成，仍待監理機關核准』，全部限縮成『本文查核的這四個頁面上沒有…』並寫出查了哪四個地方。",
+      "撰稿者提醒的第 3 點（PyPI）重驗後成立，但把兩處寫法收緊：uv 0.12.15、Released Sep 15, 2026（<time datetime=\"2026-09-15T12:07:02+0000\">）、License expression 值 MIT OR Apache-2.0、Author 為 Astral Software Inc. 全部逐一對上；『OpenAI 0 次』改用原始 HTML 與可見文字兩份、子字串與詞界 \\bopenai\\b 兩種比對，另查 open ai／chatgpt 也各 0 次，正文的否定句本來就掛在『查核當天的 PyPI 頁面顯示』之下，維持。研究紀錄原本兩條引文是拼接品（Released: + 日期跨兩個元素、License expression 標題 <h2> + 值 <p>），已拆成可原樣搜尋的字串並在 fact 裡寫明版面結構。",
+      "第一節第三段漏掉來源五項清單裡的一項：原文是 helping plan changes, modify codebases, run tools, verify results, and maintain software over time，草稿只寫了四項，漏掉 verify results。已補上『驗證結果』，並把 participate in the entire development workflow 補回成『參與整個開發流程』。",
+      "第三節第三段的『雙方公告都只說會「探索」』被同一頁推翻：OpenAI 除了兩處 explore，另有一句確定語氣的 By integrating these systems with Codex after closing, we will enable AI agents to work more directly with the tools developers already rely on every day。已改成兩份公告都用探索談整合、並把 OpenAI 那句比較確定的話寫出來，結尾保留『兩邊都沒有列出功能、版本或時程』。",
+      "summary 第四句把 OpenAI 的 plans to（打算）與 Astral 的 will continue（會繼續）合併成『都表示…會繼續支援』，等於刪掉一個限定詞、把打算升級成承諾。已改成分開寫兩邊各自的用詞，與第三節正文一致。FAQ 第 3 題同一處也改成分開寫。",
+      "第一節第二段的『支撐著數百萬個開發者的工作流程』會被讀成數百萬名開發者。原文是 millions of developer workflows（數百萬個工作流程），同一頁 Sottiaux 的引言才是 millions of Python developers，兩句主詞不同。已改成『數百萬個開發者工作流程』，並把 OpenAI 對 Astral 的評價句『一些最被廣泛使用的開源 Python 工具』一併歸因給 OpenAI。",
+      "第一節第二段引 Marsh 的下載量時把來源的順序改成 uv、Ruff 與 ty，原文是 across Ruff, uv, and ty。已照原序改回。",
+      "第二節第一段『三者都是設計給撰寫 Python 程式的人日常使用的命令列工具，不是給一般消費者用的產品』整句沒有來源，而且與來源矛盾：ty 在 astral.sh 上被定位成型別檢查器「與語言伺服器」，不是命令列工具。已整句換成 OpenAI 自己的總結句（幫開發者管理專案、維持品質、在開發過程早期抓出錯誤）。",
+      "第二節第一段與表格第一列的 uv 說明把 dependency 譯成『套件』：原文是 uv simplifies dependency and environment management。已改成『簡化相依套件與環境的管理』，正文與表格同步。",
+      "第二節第二段把 ty 那句說成首頁的工具定位。實際上首頁主要版位只有 Ruff，ty 那句出現在首頁 Announcements 區塊裡 2025 年 12 月 16 日那張公告卡片上。已改寫成『首頁公告區列的 ty 那篇寫的是…』。",
+      "第四節第一段『首頁其餘部分照常介紹 Ruff 與 ty』不準：首頁其餘版位以 Ruff 為主，uv 與 ty 是頁尾連結（docs.astral.sh/ruff/、/uv/、/ty/）。已改寫。同段『仍是「已宣布」而不是「已完成」』改成『這一頁對這樁交易的說法還是「將加入」，沒有改成已經完成』，只描述讀到的頁面。橫幅連結另外驗過是 <a href=\"/blog/openai\">，點進去確實是 3 月 19 日那篇。",
+      "FAQ 第 4 題『Mokaair 後端服務本身也在使用這兩個工具』的『這兩個』沒有對應對象（題目列的是三個工具）。查過 apps/api/pyproject.toml 與 uv.lock：本站用的是 uv 與 ruff>=0.12,<1，型別檢查用的是 mypy 不是 ty。已改成明寫『uv 與 Ruff』。",
+      "第一段與 summary 第三句把三個工具寫成『Python 開發者常用的』，這個評價只有 OpenAI 與 Astral 自己的說法撐得住。已改成中性的『三個開源 Python 工具』，把『廣泛使用』留在有歸因的那一句裡。summary 第三句的『授權仍是』也改成『授權欄寫的是』（沒有更早的快照可以支撐『仍』）。",
+      "第二節第三段『而不是急著換掉工具』與第五節第一段『比較實際的作法是…而不是因為一則收購新聞就急著更換工具鏈』是行動建議，科技／AI 垂直不寫這類結論。已改成中性描述（可以追蹤的是版本與授權有沒有變化／本站不建議任何人換或不換工具）。",
+      "description 原本寫『說明 uv、Ruff、ty 這三個開源工具目前的授權與發布狀態，以及交易為什麼還沒有完成』：文章只給了 uv 的授權與發布狀態，另外兩個只有『名稱與連結仍列在首頁』，而且『為什麼還沒有完成』預設了交易未完成。已改成『說明 uv、Ruff、ty 三個工具在查核當天的狀態，以及官方公告怎麼寫這樁交易的完成條件』（178 字，在 120–200 內）。",
+      "第二段『讀的是 OpenAI 與 Astral 當天各自發出的公告全文』的『當天』會被讀成 9 月 18 日。已改成『在 3 月 19 日各自發出的公告全文』。",
+      "圖解與標語：hero_label 由『已宣布，尚未完成』改為『已宣布，完成待核准』（9 字）；diagram 第二格說明由『要等監理核准』改為『查核日未見完成公告』；diagram caption 由『收購已宣布但尚未完成』改為『收購已宣布，完成須經監理核准』，內容包與研究紀錄同步；圖解 alt 的第二象限描述同步改成『查核當天沒有讀到交易完成的公告』。hero.alt 依規格未動。",
+      "研究紀錄另外改了兩個 is_vendor_claim 旗標：Ruff『extremely fast』（速度宣稱）與收購完成條件那條（公司自報、關於未來），依 BRIEF 第 10 條由 false 改為 true；正文本來就有歸因，文字不必動。"
+    ],
+    "checked_and_correct": [
+      "sources[] 四條 2026-09-18 全部 HTTP 200 且拿到正文：astral.sh/blog/openai（52,443 bytes，<title> Astral to join OpenAI）、openai.com/index/openai-to-acquire-astral/（386,254／386,261 bytes，兩抓一致）、astral.sh/（144,076 bytes，橫幅在）、pypi.org/project/uv/（511,941 bytes，uv 0.12.15）。四條都在 sources[] 內，沒有事實掛在清單外的網址。",
+      "29 條 verbatim_quote 全部通過連續字串比對，0 條拼接品、0 條掛在 sources[] 以外的網址。",
+      "事件日 2026-03-19：Astral MDX frontmatter \"date\":\"2026-03-19\"、頁面渲染 March 19, 2026、OpenAI 公告頁首 March 19, 2026，三處一致；news_date 與 slug 尾碼相符。",
+      "交易金額／估值：對兩份公告的正文各查一次 $金額、billion／million、valuation、undisclosed、terms of the deal、purchase price，除了 OpenAI 那句 Codex「2 million weekly active users」（本文刻意不寫）之外，沒有任何交易金額或估值數字。正文與 FAQ 不寫金額的處理正確。",
+      "第三節引 OpenAI 完成條件那兩句的中譯逐字對得上，保留了「一般常見的」（customary）與「包括」（including），沒有把 including 寫成窮舉。",
+      "『打算支援』（plans to）與『交易完成後 Astral 團隊將加入 Codex 團隊、沒有給人數』兩處與原文相符。",
+      "Astral 的下載量『每月數億次』、OpenAI 的『最被廣泛使用』都有歸因並註明本站沒有查證，符合廠商宣稱規則。",
+      "本站專案的舉例屬實：apps/api/uv.lock 存在、apps/api/pyproject.toml 內有 \"ruff>=0.12,<1\" 與 [tool.ruff] 設定。",
+      "checked_on 2026-09-18 在內容包四條 source、研究紀錄頂層與四條 source、第二段、表格 caption、圖解 caption、callout、FAQ 全部一致，且確實是撰稿者讀到來源那天，未更動。",
+      "界線：全文沒有購買建議、沒有推薦式比價、沒有投資免責 callout（AI 篇本來就不該有）、沒有『本站實測』、沒有地區開放時程、沒有簡體字、沒有列表與 emoji；callout 只有一個。",
+      "字數：正文 17 段合計 2,864 字（1,800–3,000 內），title 39 字，description 178 字，每節 3 段。summary 四句的數字（2026 年 3 月 19 日、0.12.15、2026 年 9 月 15 日、MIT 或 Apache-2.0）與圖解上的數字全部出現在正文。",
+      "topics [\"ai\",\"ai-news\"]：依協調者指示不改，研究紀錄裡撰稿者的判斷理由保留。"
+    ],
+    "left_for_the_owner": [
+      "openai.com/index/* 的可讀性會浮動：2026-09-16 的研究與 2026-09-17 的第一輪查核對這個網址（含尾斜線、ja-JP、zh-Hant、.md 變體）一律拿到 403，2026-09-18 撰稿者兩抓與查核者兩抓都拿到 200 的完整正文。本文整篇交易狀態的骨幹只掛在這一頁上。如果之後要覆核而該頁又 403，能替代的只有 openai.com/news/rss.xml 那一行描述（只有標題與副標，沒有完成條件那一段），屆時第三節、summary 第二句、FAQ 第 1 題與 callout 的完成條件說法就失去來源，要整批改寫，不可以改用整合站或媒體補。",
+      "『交易是否已完成』是持續變動的狀態，本文所有相關句子都只寫到 2026-09-18 為止、且只涵蓋這四個頁面。若站主要在刊出前再確認一次，最省事的兩個地方是 astral.sh/blog（看有沒有新公告）與 openai.com/news/rss.xml（看有沒有後續項目），但這兩個都不在 sources[] 裡，要寫進文章就得先換 sources。",
+      "PyPI 是活頁面：0.12.15 與 2026-09-15 這兩個值隨時會被新版取代，文章與表格都已標成查核日快照，但刊出日若距查核日太遠，建議重抓一次再上。",
+      "兩個結尾連結的自檢 FAIL 未處理（索引尚未定稿、nvidia-hugging-face 那篇的 title 與連結文字不一致），依規格留給協調者。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "method": "沒有參與撰稿，也沒有參與第一輪。sources[] 四條在 2026-09-18 用 curl -sL -A \"Mokaair-editorial\" 全部重抓一次並剝標籤讀正文（任何請求都沒有帶入 email、姓名或個人資料），四條皆 HTTP 200 且拿到正文：astral.sh/blog/openai 52,443 bytes、openai.com/index/openai-to-acquire-astral/ 386,261 bytes（url_effective 無轉址，<article> 正文完整，可見文字 5,760 字元）、astral.sh/ 144,076 bytes、pypi.org/project/uv/ 511,941 bytes。範圍是第一輪改過的每一段與新寫進去的每一句，逐句回四份原文；29 條 verbatim_quote 用程式對原始 HTML、剝標籤文字及兩者的壓空白版本各做一次連續字串比對，29/29 命中、0 條含 ...／…／| 的拼接引文、0 條掛在 sources[] 以外的網址。另用正規式掃全文的否定句、最高級／全稱詞與行動建議語氣，並對四份原文重跑金額（$、billion、million、valuation、purchase price、terms of the deal）、收費與授權（pric、fee、subscription、licen）、完成（completed、has closed、completion、finali(s|z)ed）、取消延遲（terminat、delay、abandon）、地區（region、country、Taiwan）、人數（employees、headcount、staff）六組否定句的比對：除 OpenAI 那句 Codex「over 2 million weekly active users」（本文刻意不寫）外全部 0 次，六個否定句成立。",
+      "claims_checked": 104,
+      "edits": 21,
+      "verdict": "needs_fixes（已由第二輪查核代理直接改完，內容包 16 處、研究紀錄 5 處；核對 104 條主張）",
+      "edits_to_the_pack": [
+        "指派的疑點 1（交易狀態的三層寫法）：第一輪限縮過的七處逐處覆核，句型一致、沒有殘留無來源的否定推論；但圖上的兩個標語漏掉了。research 的 hero_label『已宣布，完成待核准』與 diagram 第二格標題『未完成』都是在斷言查核當天的狀態，而來源只寫完成條件（closing is subject to ... including receipt of regulatory approval），沒有說核准是否已取得。hero_label 改成『已宣布，完成須核准』（條件，不是進度），第二格改成『未見完成公告』／『查核當天四頁都沒有』，與圖解 alt 的第二象限說法一致。另把正文第四節第三段的『這幾個頁面』統一成『這四個頁面』，並刪掉『工具照常運作正是這句話目前的樣子』——那句預設了現在仍在完成前。",
+        "指派的疑點 2（三種語氣）：查出第一輪留下的反向錯誤。草稿把 plans to 當成「OpenAI 的說法」、把 will continue 只歸給 Astral，做出兩邊語氣不同的對比；但 OpenAI 同一頁另有一句 we'll continue to support these open source projects，與 Astral 轉述的語氣相同。這是與第一輪推翻『都只說會探索』同型的錯（BRIEF 第 9 條：反例就在同一頁上）。正文第三節第二段改成寫出 OpenAI 的兩處用詞（『打算支援』與『會繼續支援這些開源專案』）再接 Astral 那句，summary 第四句與 FAQ 第 3 題同步改。we will enable 那一處（第三節第三段）原本就分開歸因，維持不動。",
+        "指派的疑點 3（五項清單）：全文只有第一節第三段一處列舉，五項齊全、順序與原文 helping plan changes, modify codebases, run tools, verify results, and maintain software over time 完全一致，其他地方（summary、FAQ、表格、圖解）都沒有再列這份清單。另檢查了其餘三份來自來源的列舉：三個工具的順序（OpenAI 條列與表格皆 uv、Ruff、ty）、Marsh 下載量那句的 across Ruff, uv, and ty、astral.sh 頁尾的 Ruff、uv、ty，三處都與原文同序。這一項沒有需要改的地方。",
+        "指派的疑點 4（行動建議語氣）：還有兩處。第五節第一段『能做的是照專案原本的習慣鎖定版本，並留意官方公告與變更紀錄』是實作建議，改成『下面兩個地方是本文查核當天自己讀過、讀者也查得到的』並接第二段的兩個查法；第二節第三段結尾『這類專案如果依賴 Astral 的工具鏈，可以追蹤的就是版本與授權有沒有變化』改成中性的『屬於會直接用到 Astral 工具鏈的那類專案』。第五節第三段重複的『本文也不是投資或採購建議』刪掉（callout 與第二段各有一次），騰出的字數用在本輪補的但書。",
+        "全文自相矛盾（本輪新發現，最重的一處）：第二段寫『本站沒有安裝或實際使用這三個工具』，但第二節第三段寫『Mokaair 後端服務的專案設定檔就用 uv 鎖定相依套件、並在設定裡指定了 ruff 的版本範圍』、FAQ 第 4 題寫『Mokaair 後端服務本身也在使用 uv 與 Ruff』，兩邊直接打架。查過 apps/api/pyproject.toml（ruff>=0.12,<1 與 [tool.ruff]）與 apps/api/uv.lock（存在），本站確實在用 uv 與 ruff，型別檢查用 mypy。第二段改成『本站沒有為這篇文章測試或評比這三個工具』，must_not_write 那一條也同步寫清楚界線。",
+        "第四節第二段『工具本身也持續在發布新版本』是從一個工具推到三個：sources[] 只有 pypi.org/project/uv/ 一條 PyPI 頁面，Ruff 與 ty 的版本狀態本文沒有查過。改成『三個工具的 PyPI 頁面裡，本文只查了 uv 那一頁』。同型的還有 diagram 第四格『工具照常』（改成『uv 仍發版』／『9月15日發布0.12.15』）與圖解 alt 的第四象限（改成『uv 在查核當天仍有新版本』）。表格裡 Ruff 與 ty 那兩列本來就只寫『名稱與連結列在 astral.sh 首頁』，沒有版本宣稱，維持。",
+        "FAQ 第 4 題『uv、Ruff 與 ty 都是透過 PyPI 與 GitHub 發布的開源工具，任何地方的開發者都能取得』兩句都沒有來源：sources[] 裡只有 uv 的 PyPI 頁，Ruff 與 ty 的發布管道沒有查過；『任何地方都能取得』是從『公告沒提地區限制』推出來的全稱肯定句，正是 BRIEF 第 2 型的鏡像。改成只寫查到的事（四個頁面都沒有出現地區、國家或市場別的限制字樣，本站沒有查證各地實際取得情形），並把同一句補進第五節第三段，讓 FAQ 的答案仍是正文的子集。",
+        "第五節第二段與 FAQ 第 6 題叫讀者去查『PyPI 上 uv、Ruff、ty 各自的版本號與授權欄位』，等於宣稱那兩個套件頁存在，而本文沒有讀過。兩處都收斂到本文真的讀過的 uv 那一頁。",
+        "第三節標題『官方現在承諾了什麼，還沒承諾什麼』的『官方…還沒』超出『這幾頁沒有寫』的範圍（BRIEF 第 2 型不可以寫『官方沒有』）。改成『兩份公告承諾了什麼，沒有寫到什麼』，把主詞收回本文讀過的兩份文件。",
+        "第一節第二段『兩句都是 OpenAI 自己的評價』：millions of developer workflows 是公司自報的數字而不是評價，依 BRIEF 第 10 條改成『兩句都是 OpenAI 自報、本站無法查證的說法』。",
+        "第二段『以下每一項進度都是官方公告當下的狀態』與文章實際做的事不符——第四節寫的是查核當天的頁面狀態，不是公告當下。改成『以下會分開標明哪些是公告當下的說法、哪些是查核當天讀到的狀態』，順帶去掉『每一項』這個全稱詞。"
+      ],
+      "checked_and_correct": [
+        "29 條 verbatim_quote 全部通過連續字串比對（原始 HTML、剝標籤文字，以及兩者壓掉空白的版本，四種表示各查一次），沒有拼接品、沒有掛在 sources[] 以外的網址。其中三條先前被記為跨元素或跨行的（PyPI 的 Sep 15, 2026 與 MIT OR Apache-2.0、Astral 那兩句跨行引文）在壓空白版本上逐字對得上，第一輪的拆法正確。",
+        "第一輪補回的五項清單、第一輪新寫的『OpenAI 接著寫，這三者合起來幫開發者管理專案、維持品質，並在開發過程早期就抓出錯誤』、『首頁公告區列的 ty 那篇』、『首頁其餘版位以 Ruff 為主，頁尾仍同時列出 Ruff、uv、ty 三個工具的連結』、『OpenAI 另外寫…會讓 AI 代理更直接使用開發者每天倚賴的工具』五句，逐句回原文都對得上：ty 那句確實只出現在首頁 Announcements 區 2025-12-16 那張卡片上，首頁主要版位只有 Ruff，頁尾三個連結俱在。",
+        "六個否定句今天重驗全部成立，且全部帶著『這幾頁、這一天』的限定：四頁都沒有交易已完成的訊息（completed／has closed／completion／finali(s|z)ed 各 0 次）、兩份公告沒有金額或估值（$、billion、valuation、purchase price 皆 0 次，唯一的 million 是 Codex 週活躍使用者那句）、沒有收費或授權變更（pric／fee／subscription／licen 在兩份公告各 0 次）、沒有取消或延遲、沒有人數、沒有地區或市場別字樣。PyPI 那一頁的『沒有 OpenAI』以原始 HTML 與可見文字兩份、子字串與詞界兩種比對重跑，openai 0 次、\\bopenai\\b 0 次、open ai 0 次、chatgpt 0 次。",
+        "限定詞沒有為了字數被刪：customary→『一般常見的』、including→『包括』與『等』、plans to→『打算』、explore→『探索』、most widely used→『一些最被廣泛使用的』（有歸因）、hundreds of millions→『數億次』（有歸因並註明本站沒查證）全部在位，正文 2,944 字（1,800–3,000 內），title 39 字、description 178 字，五節各 3 段。",
+        "summary 四句每一句都能在正文找到對應段落，四句裡的數字（2026 年 3 月 19 日、0.12.15、2026 年 9 月 15 日、MIT 或 Apache-2.0）與圖上四格、hero_label 的數字都出現在正文；FAQ 六題的答句在本輪改完後也全部是正文的子集。",
+        "界線重掃：沒有購買、升級、訂閱或投資建議，沒有推薦式比價，沒有『值得／該不該』式結論，沒有推定台灣可用，廠商宣稱（extremely fast、most widely used、millions of developer workflows、hundreds of millions of downloads、支援與整合的未來承諾）全部歸因，topics 不含 finance，只有一個一般 callout、沒有投資免責段落，沒有簡體字、列表或 emoji。與站上既有的 ai-news-gpt-53-codex-20260205 不重疊：OpenAI 公告裡 Codex 的 3 倍成長與 200 萬週活躍使用者本文仍然不寫。",
+        "checked_on 2026-09-18 在內容包四條 source、研究紀錄頂層與四條 source、第二段、表格 caption、圖解 caption、callout、FAQ 全部一致，未更動；event_date 2026-03-19 由 Astral MDX frontmatter、頁面渲染日期與 OpenAI 公告頁首三處支撐，與 slug 尾碼、news_date 相符。",
+        "hero.alt 依規格未查也未改；兩個結尾連結未動；table 的三列與 caption 逐格比對過原文，未改。"
+      ],
+      "left_for_the_owner": [
+        "第一輪那條最重要的提醒仍然成立，而且本輪是第三次確認：openai.com/index/openai-to-acquire-astral/ 在 2026-09-16 與 2026-09-17 一律回 403，2026-09-18 撰稿者兩抓、第一輪兩抓、第二輪一抓都拿到 200 的完整正文（386,254／386,261 bytes，本輪 386,261）。本文的交易狀態骨幹只掛在這一頁上，刊出前若該頁又 403，第三節、summary 第二與第四句、FAQ 第 1、3 題與 callout 就要整批改寫，不可以改用整合站或媒體補。",
+        "『六個月過去』（第四節第一段與第四節標題）是把 2026-03-19 與 2026-09-18 兩個來源印出的日期換算出來的敘事說法，嚴格講屬於編輯換算而非來源印出的數字。本輪判斷它是行文的時間框架、不是事實主張，因此保留；站主若要把 BRIEF 第 9 條一路執行到底，這是唯一一處要改的。",
+        "PyPI 是活頁面：uv 0.12.15 與 2026-09-15 是查核日快照，正文、表格與圖解第四格都標了查核日，但刊出日若距 2026-09-18 太遠，建議重抓 pypi.org/project/uv/ 再上。",
+        "兩個結尾連結的自檢 FAIL 依規格未處理，留給協調者。"
+      ]
+    }
+  }
+}

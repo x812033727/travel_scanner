@@ -1,0 +1,1150 @@
+{
+  "slug": "ai-news-chatgpt-ads-20260505",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-05-05",
+  "featured": false,
+  "display_order": 152,
+  "related": [
+    "ai-news-chatgpt-financial-services-20260910",
+    "ai-news-gpt-55-instant-20260505"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT 廣告開放自助購買：OpenAI 5 月公告的工具、計費與鎖定機制",
+      "description": "2026 年 5 月 5 日，OpenAI 公告以測試版自助廣告管理工具、按點擊出價與更多量測工具擴大 ChatGPT 廣告的購買方式。本文依公告原文與開發者文件，說明廣告帳戶、活動、廣告組與廣告的四層架構、三種活動目標怎麼計費、出價策略怎麼選，以及地區、平台與 context hints 的鎖定機制，並說明查核當天讀到的文件版本與 5 月 5 日公告的差別。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-ads-20260505/hero.jpg",
+        "alt": "原創插圖：左邊四個由小到大堆疊的圓角方塊，代表帳戶、活動、廣告組與廣告四個層級；一支箭頭指向右邊一個對話框，對話框與更右邊的廣告牌之間隔著一條垂直虛線，代表官方所說的廣告與對話分開。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 5 日，OpenAI 在官方新聞頁發布〈New ways to buy ChatGPT ads〉（買 ChatGPT 廣告的新方式），頁面標示的日期就是這一天。公告開頭的引言寫的是 OpenAI 正在擴大 ChatGPT 廣告，替廣告主增加購買與管理廣告活動的方式，並依循自家的廣告原則；內文分成四節，依序談擴大企業購買廣告的管道、推出按點擊（CPC）出價、發展更多量測工具，以及正在打造 ChatGPT 廣告平台。以下關於這則公告的敘述，都是 OpenAI 自己的說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，讀的是這則公告的原文頁，以及開發者文件站上三份廣告 API 說明頁。公告寫明當時推出的自助廣告管理工具是測試版，OpenAI 並表示會逐步開放給更多企業；開發者文件則是持續維護的頁面，沒有標發布日或版本號，反映的是查核當天讀到的版本，不代表 5 月 5 日當天就已經是這個樣子。本站沒有登入廣告後台，也沒有建立或購買過廣告，不提供任何採購建議或平台比較。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 在 2026 年 5 月 5 日公告擴大 ChatGPT 廣告的購買方式，內容包括測試版的自助廣告管理工具、按點擊出價，以及更多量測工具；OpenAI 表示這些工具不會把對話或個人資料交給廣告主。",
+            "公告說自助廣告管理工具是逐步開放給更多企業，而且 OpenAI 會繼續同時支援原本的千次曝光買法與新的按點擊買法。",
+            "開發者文件把廣告拆成廣告帳戶、廣告活動、廣告組與廣告四層，新建立的資源預設是暫停狀態，要另外啟用才會開始投放。",
+            "出價與預算說明頁列出曝光、點擊與轉換三種活動目標，其中點擊與轉換兩種目標的計費依據都是點擊，不是轉換次數。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026 年 5 月的公告：測試版自助廣告工具"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告說，OpenAI 一開始是直接和一小群廣告主合作在 ChatGPT 投放廣告，隨著試行計畫擴大才透過合作夥伴放寬門檻，5 月 5 日這天開始推出測試版的自助廣告管理工具，讓企業自己註冊成為廣告主、填付款資料、設定預算與出價、上傳廣告、開關活動並在後台看成效。OpenAI 同時寫明，這個工具是一邊測試一邊調整、逐步開放給更多企業。公告也提到合作的代理商與技術夥伴，用的是「包括」與「例如」的寫法，不是完整名單。"
+        },
+        {
+          "type": "paragraph",
+          "text": "計費方式的改變是這則公告的另一個重點。公告說，試行計畫的第一階段廣告主是以千次曝光（CPM）的方式買 ChatGPT 廣告，當時是為了先理解需求、投放與初期成效；這次加上按點擊（CPC）出價，讓花費更直接對應到使用者看到廣告之後採取的動作，並寫明廣告主只依點擊結果付費。OpenAI 另外表示會繼續同時支援 CPM 與 CPC 兩種買法。量測方面，公告說最近推出了 Conversions API 與像素量測，廣告主拿到的是彙整過的成效資料，看不到個別對話，並說這些方式不會把對話或個人資料交給廣告主。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "廣告怎麼買：帳戶、活動、廣告組、廣告四層"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者文件把廣告買賣拆成四層：廣告帳戶之下是廣告活動，活動之下是廣告組，廣告組之下才是廣告本身。文件逐層列出設定內容：廣告帳戶是品牌資料、幣別、時區、帳戶存取權限與花費上限；廣告活動是目標、預算、排程、地區與平台鎖定、受眾的納入與排除，以及轉換事件；廣告組是出價策略、context hints（後面會說明）、受眾出價加成與商品組合；廣告本身才是素材、圖片或商品範本，以及到達網址。文件特別提醒，帳戶狀態顯示為「active（已啟用）」，也可能還有審核沒結案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件的範例流程是：素材類型 chat_card，要填標題、內文與到達網址，還要上傳一張至少 640×640 像素的圖片，建立廣告即把素材送審。出價與預算頁寫明新建立的資源預設是暫停狀態，讓廣告主先把設定做完再開投，因此廣告活動、廣告組與廣告要各自呼叫啟用的指令。文件說明，啟用是在其餘要求都符合的情況下才讓廣告開始投放；預覽功能只能看外觀，不代表已經符合上線資格。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "層級",
+            "主要設定",
+            "建立後的狀態"
+          ],
+          "rows": [
+            [
+              "廣告帳戶",
+              "品牌資料、幣別、時區、存取權限、花費上限",
+              "－"
+            ],
+            [
+              "廣告活動",
+              "目標、預算、排程、地區與平台鎖定、受眾納入與排除",
+              "預設為暫停"
+            ],
+            [
+              "廣告組",
+              "出價策略、context hints、受眾出價加成、商品組合",
+              "預設為暫停"
+            ],
+            [
+              "廣告",
+              "素材、圖片或商品範本、到達網址",
+              "預設為暫停，素材送審"
+            ]
+          ],
+          "caption": "整理自 OpenAI 開發者文件（developers.openai.com/ads），查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "計費怎麼算：三種活動目標與出價策略"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方在出價與預算說明頁列出三種活動目標：曝光、點擊與轉換。曝光目標按曝光計費，只能自己設定固定出價；點擊目標按點擊計費，出價方式可以自己設定固定出價，也可以交給 OpenAI 自動調整去追更多點擊；轉換目標的計費依據同樣是點擊，文件的說法是轉換活動會朝選定的動作最佳化、但按有效點擊計費，出價方式一樣可以自己設定或交給 OpenAI 追更多轉換。換句話說，把目標設成轉換，改變的是出價要最佳化的方向，付費依據仍然是點擊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把交給系統自動調整出價的兩種策略統稱 Maximize Results，分別對應點擊與轉換目標，兩者都要用每日預算，而且不能自己填出價金額；自己設定固定出價則每日預算與總預算都能用。金額在 API 裡用整數的 micros 表示，一個貨幣主要單位等於 1,000,000 micros，這只是計數方式，出價與預算頁的預算與出價範例寫明是示範用途。至於門檻，文件只寫每日預算的最低金額依帳戶幣別而定、低於門檻會回錯誤訊息並告知需要多少，出價的上下限則依帳戶幣別與活動目標而定，兩處都沒有印出具體數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "廣告會不會實際出現，文件寫的是除了預算與帳戶花費上限之外，還取決於活動排程、資源狀態、審核結果、鎖定條件與可用的版位。預算也分成兩層各自獨立：廣告活動自己的預算，跟廣告帳戶整體的花費上限是分開算的，調高活動預算不會讓已經用完的帳戶花費上限重新打開；而帳戶層級的花費上限期間，文件寫明只開放給部分帳戶。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-ads-20260505/diagram-1.svg",
+          "alt": "四格圖解：左上是帳戶到廣告的四層架構，右上是三種活動目標的計費方式，左下是兩種出價策略，右下是地區、平台與 context hints 的鎖定機制與其限制",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理自 OpenAI 開發者廣告文件的四層架構、計費方式、出價策略與鎖定機制，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "鎖定條件：地區、平台與 Context Hints"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件寫明地區、平台與受眾三種鎖定是一起生效的，符合其中一項不會讓其他項失效；同一個人如果同時落在納入與排除的受眾名單裡，排除優先。地區鎖定用 ISO 3166-1 alpha-2 國碼，地區的納入與排除清單最多可以放 2,500 個地點代碼，文件並加註帳戶的可用範圍與活動模式還可能有額外限制。官方另外提醒，國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要看支援的廣告投放地區——本文查核的四條來源都沒有列出那份地區清單，所以台灣是否已開放，本文沒有答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平台鎖定，文件列的是三個「廣義平台分組」：iOS 應用程式、Android 應用程式與網頁；官方舉例，用 iPhone 瀏覽器開 ChatGPT 網站算進網頁組，不是 iOS 應用程式組，跟直覺不完全一樣。文件也寫明，建立活動時如果沒有設定平台鎖定，預設是全部平台。要注意這三組是廣義分組，不是全部可填的值——文件總覽頁的更新紀錄顯示，9 月 10 日又把網頁再細分成桌面、iOS 網頁與 Android 網頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "廣告主上傳自己的名單當受眾時，文件寫的可用識別碼是 email、電話、這兩者官方支援的 SHA-256 雜湊形式，以及 GAID；名單檔案不得大於 500,000,000 bytes。廣告組另有 context hints，由廣告主寫文字描述相關的產品、使用情境或需求，補足素材與到達網址沒講清楚的部分；文件強調這些提示不是完全比對的關鍵字，也不能取代地區、平台或受眾的明確鎖定，並寫明表格裡的範例只是示範寫法，不保證某一段對話真的會觸發廣告。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還在變動：怎麼自己查現況"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者文件附的更新紀錄顯示，從 2026 年 6 月 3 日到 9 月 10 日之間，這個廣告 API 陸續加入地區鎖定與查詢地點的端點、轉換設定與回報端點、依商品與國家和裝置細分的成效資料、自訂受眾的增刪取代與合併操作、替採後付發票制的廣告帳戶開放每日花費上限，以及把網頁平台再細分成桌面、iOS 網頁與 Android 網頁。再往前只剩一則沒有日期的初版，所以這份文件不能拿來描述 5 月 5 日當天確切有哪些功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想確認目前狀況的讀者，可以自己到 developers.openai.com 的廣告 API 文件看最新版本與更新紀錄，或回頭讀 OpenAI 官方新聞頁的後續公告。本文關於這項產品能做什麼的敘述，來源都是 OpenAI 自己的公告與文件，本站沒有看過廣告在 ChatGPT 介面裡實際出現的樣子。廣告主實際能設定哪些選項、費用怎麼算，仍然要以登入帳戶後看到的畫面與官方當下的說明為準。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "現在的自助廣告工具，跟 2026 年 5 月宣布的是同一個版本嗎？",
+              "answer": "不一定。公告當時寫的是測試版，而且 OpenAI 表示會一邊測試一邊調整、逐步開放給更多企業。開發者文件的更新紀錄顯示，從 2026 年 6 月 3 日到 9 月 10 日之間陸續加入新的鎖定方式、轉換設定與回報功能；本文查核到的文件反映的是 2026 年 9 月 18 日讀到的版本，文件本身沒有標示 5 月 5 日當天的功能範圍。想知道目前確切能用到什麼，請直接看官方文件當下的內容。"
+            },
+            {
+              "question": "廣告費用怎麼算，最低要花多少？",
+              "answer": "公告說按點擊出價是 5 月 5 日這次新增的，廣告主只依點擊結果付費，OpenAI 並表示會繼續同時支援原本的千次曝光買法。開發者文件把活動目標分成曝光、點擊與轉換三種，其中點擊與轉換兩種的計費依據都是點擊。至於最低金額，出價與預算頁只寫每日預算的最低金額依帳戶幣別而定、出價上下限依帳戶幣別與活動目標而定，低於門檻會收到錯誤訊息並被告知需要的金額；頁面上的預算與出價範例寫明是示範用途，沒有印出任何一個具體門檻。"
+            },
+            {
+              "question": "廣告主寫的 context hints，會不會讓廣告出現在特定對話裡？",
+              "answer": "文件明講不保證。context hints 是廣告主自己寫的文字，用來描述相關的產品、使用情境或需求，但文件寫明這些提示不是完全比對的關鍵字，表格裡的範例只是示範寫法，不保證某一段對話真的會觸發廣告，而且 context hints 不能取代地區、平台或受眾的明確鎖定設定。"
+            },
+            {
+              "question": "台灣的廣告主現在能不能用這個工具？",
+              "answer": "本文查核的四條來源都沒有列出可以投放廣告的地區清單。可以確定的是，鎖定設定頁提醒國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要另外看支援的廣告投放地區，而且帳戶的可用範圍與活動模式還可能有額外限制；公告本身也只說自助廣告管理工具是逐步開放給更多企業，沒有提到任何地區。實際能不能用，要以廣告主登入帳戶後看到的內容為準，本文不代為推測台灣是否已經開放。"
+            },
+            {
+              "question": "廣告會不會影響 ChatGPT 給我的回答？",
+              "answer": "OpenAI 在 5 月 5 日的公告裡表示，這次更新是要在讓更多企業參與的同時，維持 ChatGPT 的答案獨立、對話私密、使用者保有控制權，並說新的購買與量測方式不會把對話或個人資料交給廣告主，廣告主拿到的是彙整過的成效資料、看不到個別對話。這些都是 OpenAI 自己的說法；本站沒有登入帳戶看過廣告實際出現的畫面，公告與本文查核到的開發者文件也都沒有說明廣告在介面上如何標示、出現在哪個位置。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查核範圍與這篇文章的界線",
+          "text": "本文查核日期是 2026 年 9 月 18 日，依據是 OpenAI 2026 年 5 月 5 日的公告原文頁，以及開發者文件站上三份廣告 API 說明頁。凡是這項產品能做什麼、原則是什麼的敘述，都是 OpenAI 自己的說法，本站沒有實測。開發者文件是會持續更新的頁面，沒有發布日與版本號，反映的是查核當天讀到的版本，不代表 5 月 5 日當天就已經是這個樣子；公告當時也寫明自助廣告管理工具是測試版、逐步開放給更多企業。本站沒有登入 ChatGPT 廣告後台，沒有建立或購買過廣告，也沒有看過廣告實際出現的畫面；本文不提供採購建議，也不比較任何廣告平台的費用。想知道目前確切規則，請直接查 developers.openai.com 的廣告 API 文件或 OpenAI 官方新聞頁。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 發布：金融機構的 AI 工具，跟個人帳號無關",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方公告：New ways to buy ChatGPT ads（買 ChatGPT 廣告的新方式）",
+          "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開發者文件：Ads 總覽（Overview - Ads）",
+          "url": "https://developers.openai.com/ads/api-overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開發者文件：出價與預算（Bidding & Budgets - Ads）",
+          "url": "https://developers.openai.com/ads/bidding-and-budgets",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 開發者文件：鎖定設定（Targeting - Ads）",
+          "url": "https://developers.openai.com/ads/campaign-targeting",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "ChatGPT Ads Open Up to Self-Serve Buying: The Tools, Billing, and Targeting from OpenAI's May Announcement",
+      "description": "On May 5, 2026, OpenAI announced it was expanding how ChatGPT ads can be bought, adding a beta self-serve ad management tool, CPC bidding, and more measurement tools. Based on the announcement and OpenAI's developer documentation, this article covers the ad account, campaign, ad group, and ad structure, how the three campaign objectives are billed, bidding strategies, and region, platform, and context hints targeting, and notes how the documentation differs from the May 5 announcement.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-ads-20260505/hero-en.jpg",
+        "alt": "Original illustration: four rounded blocks, small to large, for account, campaign, ad group, ad; an arrow crosses a dashed line to a speech bubble and billboard, keeping ads and conversations apart.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On May 5, 2026, OpenAI published an announcement titled “New ways to buy ChatGPT ads” on its official news page, and that is the date printed on the page. The announcement opens by saying that OpenAI is expanding ChatGPT ads with new ways for advertisers to buy and manage campaigns, built around its own ads principles. The body is organized into four sections, covering in order: expanding how businesses can buy ads, launching cost-per-click (CPC) bidding, developing more ways to measure results, and building the ChatGPT ad platform. Everything below about this announcement is OpenAI's own description."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was fact-checked on September 18, 2026, based on the announcement's own page and three ad API documentation pages on OpenAI's developer site. The announcement states that the self-serve ad management tool launched at the time was a beta, and OpenAI said it would gradually open it to more businesses; the developer documentation is a continuously maintained page with no publication date or version number, so it reflects the version read on the day of fact-checking, not necessarily what existed on May 5 itself. This site has not logged into the ads dashboard, has not created or purchased any ads, and does not offer any purchasing advice or platform comparison."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI announced on May 5, 2026 that it was expanding how ChatGPT ads can be bought, including a beta self-serve ad management tool, cost-per-click bidding, and more measurement tools; OpenAI said these tools do not share conversations or personal details with advertisers.",
+            "The announcement says the self-serve ad management tool is being rolled out gradually to more businesses, and that OpenAI will keep supporting both the original cost-per-mille buying and the new cost-per-click buying.",
+            "The developer documentation splits ads into four layers, ad account, campaign, ad group, and ad, and newly created resources default to a paused state until they are separately activated.",
+            "The bidding and budgets page lists three campaign objectives, impressions, clicks, and conversions, and the billing basis for both the clicks and conversions objectives is clicks, not conversions."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The May 2026 Announcement: A Beta Self-Serve Ad Tool"
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the announcement, OpenAI initially worked directly with a small group of advertisers to run campaigns in ChatGPT, then lowered the barrier through partners as the pilot expanded, before beginning to roll out, on May 5, a beta self-serve ad management tool that lets businesses register as advertisers themselves, enter payment details, set budgets and bids, upload ads, turn campaigns on and off, and view performance in a dashboard. OpenAI also states that this tool is being tested and refined as it goes, and is gradually opening to more businesses. The announcement also mentions partner agencies and technology partners, using the words “including” and “such as” rather than giving a complete list."
+        },
+        {
+          "type": "paragraph",
+          "text": "A change in billing is another focus of the announcement. It says that in the first phase of the pilot, advertisers could buy ChatGPT ads on a cost-per-mille (CPM) basis, as a preliminary way to understand demand, delivery, and early performance; this time OpenAI is adding cost-per-click (CPC) bidding, so that spend maps more directly to what users do after seeing an ad, and it states that advertisers pay only for the resulting clicks. OpenAI also says it will keep supporting both CPM and CPC buying. On measurement, the announcement says it recently launched a Conversions API and pixel measurement, that advertisers receive aggregated performance data rather than seeing individual conversations, and that these methods do not share conversations or personal details with advertisers."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Ads Are Bought: Four Layers, Account, Campaign, Ad Group, Ad"
+        },
+        {
+          "type": "paragraph",
+          "text": "The developer documentation splits ad buying into four layers: under the ad account sits the campaign, under the campaign sits the ad group, and under the ad group sits the ad itself. The documentation lists what each layer configures: the ad account holds brand information, currency, time zone, account access, and spend limits; the campaign holds the objective, budget, schedule, geographic and platform targeting, and audience inclusion and exclusion, plus conversion events; the ad group holds the bidding strategy, context hints (explained below), audience bid adjustments, and the product set; the ad itself holds the creative, an image or product template, and the landing page URL. The documentation specifically notes that an account marked “active” may still have an outstanding review."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation's example flow uses the creative type chat_card, which requires a headline, body text, and a landing page URL, plus an image of at least 640×640 pixels; creating the ad submits its creative for review. The bidding and budgets page states that newly created resources default to a paused state, so advertisers can finish setup before turning delivery on, which means the campaign, ad group, and ad each need their own activation call. The documentation explains that activation enables delivery only once the remaining requirements are met; the preview feature only shows appearance and does not mean an ad already qualifies to go live."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Layer",
+            "Main settings",
+            "Status after creation"
+          ],
+          "rows": [
+            [
+              "Ad account",
+              "Brand information, currency, time zone, access, spend limits",
+              "–"
+            ],
+            [
+              "Campaign",
+              "Objective, budget, schedule, region and platform targeting, audience inclusion/exclusion",
+              "Paused by default"
+            ],
+            [
+              "Ad group",
+              "Bidding strategy, context hints, audience bid adjustments, product set",
+              "Paused by default"
+            ],
+            [
+              "Ad",
+              "Creative, image or product template, landing page URL",
+              "Paused by default, creative under review"
+            ]
+          ],
+          "caption": "Compiled from OpenAI's developer documentation (developers.openai.com/ads); fact-checked September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How Billing Works: Three Campaign Objectives and Bidding Strategies"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI's bidding and budgets page lists three campaign objectives: impressions, clicks, and conversions. The impressions objective bills by impression and only allows a self-set fixed bid; the clicks objective bills by click and can either use a self-set fixed bid or let OpenAI auto-adjust bids to pursue more clicks; the conversions objective is also billed on clicks: the documentation states that conversion campaigns optimize toward the selected action but bill for valid clicks, and here too the bid can be self-set or handed to OpenAI to pursue more conversions. In other words, setting the objective to conversions changes what the bidding is optimized for, while the billing basis remains clicks."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI collectively calls the two strategies that hand bid adjustment to the system Maximize Results, corresponding to the clicks and conversions objectives; both require a daily budget and cannot have a manually entered bid amount, while a self-set fixed bid can use either a daily or a lifetime budget. Amounts in the API are expressed as integer micros, where one unit of an account's currency equals 1,000,000 micros; this is simply a way of counting, and the budget and bid examples on the bidding and budgets page are stated to be for illustrative purposes. As for thresholds, the documentation only says that the minimum daily budget depends on the account's currency, and that a request below the threshold returns an error telling you the amount required, while bid limits depend on both the account's currency and the campaign objective; neither place prints a specific number."
+        },
+        {
+          "type": "paragraph",
+          "text": "On whether an ad actually appears, the documentation says that besides the budget and the account spend limit, delivery also depends on the campaign schedule, resource statuses, review outcomes, targeting conditions, and available inventory. Budgets also work at two independent levels: a campaign's own budget is calculated separately from the ad account's overall spend limit, so raising a campaign's budget does not reopen an account spend limit that has already been exhausted; and the documentation states that the account-level spend-limit window is available only to some accounts."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-ads-20260505/diagram-1-en.svg",
+          "alt": "Four-panel diagram: top left, account-to-ad structure; top right, billing for three objectives; bottom left, two bidding strategies; bottom right, region, platform, and context hints targeting.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI's developer ad documentation covering the four-layer structure, billing, bidding strategies, and targeting; fact-checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Targeting Conditions: Region, Platform, and Context Hints"
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation states that region, platform, and audience targeting all apply together, so meeting one of them does not override the others; if the same person falls into both an included and an excluded audience list, the exclusion takes precedence. Region targeting uses ISO 3166-1 alpha-2 country codes, and geographic inclusion and exclusion lists can hold up to 2,500 location IDs, with the documentation noting that account availability and campaign mode can impose additional restrictions. OpenAI also notes that a code's ISO validity does not mean your account can advertise in that region — you need to check the supported advertising locations; none of the four sources checked for this article lists that set of regions, so this article has no answer as to whether Taiwan is already supported."
+        },
+        {
+          "type": "paragraph",
+          "text": "For platform targeting, the documentation lists three “broad platform groups”: the iOS app, the Android app, and web; OpenAI gives the example that a person opening the ChatGPT website in an iPhone browser counts as the web group rather than the iOS app group, which is not entirely intuitive. The documentation also states that if a campaign is created without platform targeting set, the default is all platforms. Note that these three are broad groups rather than every value you can enter: the changelog on the documentation's overview page shows that on September 10 the web group was further split into desktop, iOS web, and Android web."
+        },
+        {
+          "type": "paragraph",
+          "text": "When advertisers upload their own list as an audience, the documentation states the usable identifiers are email, phone, the officially supported SHA-256 hashed forms of those two, and GAID; list files must be no larger than 500,000,000 bytes. Ad groups also have context hints, free text that advertisers write to describe the relevant product, use case, or need, filling in what the creative and landing page URL do not fully convey; the documentation stresses that these hints are not exact-match keywords, cannot replace explicit region, platform, or audience targeting, and that the examples in its table are illustrations of writing style only, not a guarantee that any given conversation will actually trigger an ad."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Still Changing: How to Check the Current State Yourself"
+        },
+        {
+          "type": "paragraph",
+          "text": "The changelog attached to the developer documentation shows that between June 3 and September 10, 2026, this ad API progressively added a region-targeting and location-lookup endpoint, conversion configuration and reporting endpoints, performance data broken down by product, country, and device, add/remove/replace/merge operations for custom audiences, daily account spend limits for ad accounts on postpaid invoice billing, and the further split of the web platform into desktop, iOS web, and Android web. Before that there is only a single undated initial version, so this documentation cannot be used to describe exactly which features existed on May 5 itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "Readers who want to confirm the current state can check the ad API documentation at developers.openai.com themselves for the latest version and changelog, or look for follow-up announcements on OpenAI's official news page. Everything in this article about what this product can do is sourced from OpenAI's own announcement and documentation; this site has not seen what an ad actually looks like inside the ChatGPT interface. Which options advertisers can actually configure, and how costs are actually calculated, should still be judged from what you see after logging into an account and from OpenAI's own explanation at the time."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is today's self-serve ad tool the same version announced in May 2026?",
+              "answer": "Not necessarily. The announcement described it as a beta at the time, and OpenAI said it would test and refine it while gradually opening it to more businesses. The developer documentation's changelog shows new targeting options, conversion settings, and reporting features were progressively added between June 3 and September 10, 2026; the documentation this article checked reflects the version read on September 18, 2026, and the documentation itself does not mark out the feature set that existed on May 5. To find out exactly what is available now, check the official documentation's current content directly."
+            },
+            {
+              "question": "How is ad spend calculated, and what is the minimum I have to spend?",
+              "answer": "The announcement says CPC bidding was the new addition on May 5, that advertisers pay only for the resulting clicks, and that OpenAI said it would keep supporting the original cost-per-mille buying as well. The developer documentation splits campaign objectives into impressions, clicks, and conversions, and the billing basis for both the clicks and conversions objectives is clicks. As for minimums, the bidding and budgets page only states that the minimum daily budget depends on the account's currency and that bid limits depend on both the account's currency and the campaign objective; a request below the threshold gets an error message telling you the amount required. The budget and bid examples on the page are stated to be for illustrative purposes, and no specific threshold is printed anywhere."
+            },
+            {
+              "question": "Can the context hints an advertiser writes make an ad appear in a specific conversation?",
+              "answer": "The documentation is explicit that it cannot guarantee this. Context hints are free text that advertisers write themselves to describe the relevant product, use case, or need, but the documentation states these hints are not exact-match keywords, that the examples in its table are illustrations of writing style only and not a guarantee that a given conversation will trigger an ad, and that context hints cannot replace explicit region, platform, or audience targeting."
+            },
+            {
+              "question": "Can advertisers in Taiwan use this tool right now?",
+              "answer": "None of the four sources checked for this article lists the set of regions where ads can run. What can be confirmed is that the targeting documentation warns that a code's ISO validity does not mean your account can advertise in that region — you need to check the supported advertising locations separately, and account availability and campaign mode can impose additional restrictions; the announcement itself only says the self-serve ad management tool is gradually opening to more businesses, without mentioning any region. Whether it can actually be used should be judged from what an advertiser sees after logging into their account; this article does not guess whether Taiwan is already supported."
+            },
+            {
+              "question": "Will ads affect the answers ChatGPT gives me?",
+              "answer": "In the May 5 announcement, OpenAI said this update is meant to bring more businesses in while keeping ChatGPT's answers independent, conversations private, and users in control of their experience, and it said the new buying and measurement methods do not share conversations or personal details with advertisers, with advertisers receiving only aggregated performance data rather than seeing individual conversations. These are all OpenAI's own statements; this site has not logged into an account to see how ads actually appear, and neither the announcement nor the developer documentation checked for this article explains how ads are labeled or where they appear in the interface."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "The Scope and Limits of This Fact-Check",
+          "text": "This article was fact-checked on September 18, 2026, based on the original page of OpenAI's May 5, 2026 announcement and three ad API documentation pages on OpenAI's developer site. Every statement here about what this product can do, and what its principles are, is OpenAI's own description; this site has not tested it itself. The developer documentation is a continuously updated page with no publication date or version number, so it reflects the version read on the day of fact-checking, not necessarily what existed on May 5 itself; the announcement at the time also stated that the self-serve ad management tool was a beta being gradually opened to more businesses. This site has not logged into the ChatGPT ads dashboard, has not created or purchased any ads, and has not seen what an ad actually looks like; this article does not offer purchasing advice and does not compare the cost of any ad platforms. For the exact current rules, check the ad API documentation at developers.openai.com or OpenAI's official news page directly."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services Launches: An AI Tool for Financial Institutions, Not Your Personal Account",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI official announcement: New ways to buy ChatGPT ads",
+          "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI developer documentation: Ads Overview",
+          "url": "https://developers.openai.com/ads/api-overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI developer documentation: Bidding & Budgets (Ads)",
+          "url": "https://developers.openai.com/ads/bidding-and-budgets",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI developer documentation: Targeting (Ads)",
+          "url": "https://developers.openai.com/ads/campaign-targeting",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ChatGPT広告がセルフサーブ購入に対応：OpenAIが5月に発表したツールと課金・ターゲティングの仕組み",
+      "description": "2026年5月5日、OpenAIはベータ版のセルフサーブ広告管理ツール、クリック課金（CPC）入札、計測ツールの拡充により、ChatGPT広告の購入方法を拡大すると発表しました。本記事は発表原文と開発者ドキュメントに基づき、広告アカウント・キャンペーン・広告グループ・広告の4階層構造、3種類のキャンペーン目的の課金方法、入札戦略の選び方、地域・プラットフォーム・context hintsによるターゲティングの仕組みを説明し、確認当日に読んだドキュメントのバージョンと5月5日の発表との違いも記します。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-ads-20260505/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側に小さい順から大きい順へ積み重なった4つの角丸四角形があり、アカウント・キャンペーン・広告グループ・広告の4つの階層を表す。矢印が右側の吹き出しを指しており、吹き出しとさらに右にある広告看板の間には縦の点線があり、公式が説明する「広告と会話は分離されている」ことを表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年5月5日、OpenAIは公式ニュースページで〈New ways to buy ChatGPT ads〉（ChatGPT広告の新しい購入方法）という発表を公開しました。ページに表示されている日付もこの日です。発表の冒頭は、OpenAIが自社の広告原則に基づいて、広告主が広告キャンペーンを購入・管理する方法を拡充していると述べています。本文は4つの節に分かれており、順に、企業が広告を購入できる経路の拡大、クリック課金（CPC）入札の導入、計測ツールの拡充、そして現在進めているChatGPT広告プラットフォームの構築について述べています。以下、この発表に関する記述はすべてOpenAI自身の説明です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月18日に確認を行い、この発表の原文ページと、開発者ドキュメントサイトにある広告APIの説明ページ3本を根拠としています。発表では、当時公開されたセルフサーブ広告管理ツールはベータ版であるとされ、OpenAIはより多くの企業に段階的に公開していくと述べています。開発者ドキュメントは随時更新されるページで、公開日やバージョン番号は表示されておらず、確認当日に読んだバージョンを反映しているにすぎず、5月5日時点で同じ内容だったとは限りません。当サイトは広告の管理画面にログインしたことも、広告を作成・購入したこともなく、仕入れに関する助言や広告プラットフォームの比較は行いません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAIは2026年5月5日、ベータ版のセルフサーブ広告管理ツール、クリック課金入札、計測ツールの拡充を含む、ChatGPT広告の購入方法の拡大を発表しました。OpenAIは、これらのツールが会話や個人情報を広告主に提供することはないとしています。",
+            "発表によると、セルフサーブ広告管理ツールはより多くの企業に段階的に公開されており、OpenAIは従来のインプレッション課金（CPM）と新しいクリック課金（CPC）の両方を今後も継続してサポートするとしています。",
+            "開発者ドキュメントは広告を広告アカウント・キャンペーン・広告グループ・広告の4階層に分けており、新規作成したリソースは既定で一時停止状態になり、別途有効化しない限り配信は始まりません。",
+            "入札と予算に関する説明ページには、インプレッション・クリック・コンバージョンという3種類のキャンペーン目的が挙げられており、そのうちクリックとコンバージョンの2つの目的は、いずれも課金基準がクリックであり、コンバージョン数ではありません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026年5月の発表：ベータ版のセルフサーブ広告ツール"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表によると、OpenAIは当初、少数の広告主と直接連携してChatGPT上でキャンペーンを開始し、試験的な取り組みが拡大するにつれてパートナーを通じて参入のハードルを下げ、5月5日には、企業が自ら広告主として登録し、支払い情報を入力し、予算と入札を設定し、広告をアップロードし、キャンペーンのオン・オフを行い、管理画面で成果を確認できる、ベータ版のセルフサーブ広告管理ツールの展開を開始しました。OpenAIはまた、このツールはテストと改善を重ねながら、より多くの企業に段階的に公開していくものだとしています。発表では提携する代理店や技術パートナーにも触れていますが、「including」（含む）や「such as」（例えば）という表現が使われており、完全な一覧ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "課金方式の変更も、この発表のもう一つの要点です。発表によると、試験的な取り組みの第一段階では、広告主は需要・配信・初期の成果をまず把握する手段として、インプレッション課金（CPM）でのみChatGPT広告を購入できました。今回追加されたクリック課金（CPC）入札により、広告費がユーザーが広告を見た後に取った行動により直接連動するようになり、広告主はクリックの結果に対してのみ課金されるとされています。OpenAIはさらに、CPMとCPCの両方の購入方法を今後も継続してサポートするとしています。計測面では、発表によると最近Conversions APIとピクセル計測が導入され、広告主が受け取るのは個々の会話ではなく集計された成果データであり、これらの方法は会話や個人情報を広告主に提供することはないとしています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "広告の購入方法：アカウント・キャンペーン・広告グループ・広告の4階層"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者ドキュメントは、広告の売買を4つの階層に分けています。広告アカウントの下にキャンペーンがあり、キャンペーンの下に広告グループがあり、広告グループの下に初めて広告そのものがあります。ドキュメントは各階層で設定する内容を挙げています。広告アカウントはブランド情報・通貨・タイムゾーン・アカウントへのアクセス権限・使用上限額、キャンペーンは目的・予算・スケジュール・地域とプラットフォームのターゲティング・オーディエンスの包含と除外、およびコンバージョンイベント、広告グループは入札戦略・context hints（後述）・オーディエンスによる入札額の調整・商品セット、広告そのものはクリエイティブ・画像または商品テンプレート、およびリンク先URLです。ドキュメントは特に、アカウントのステータスが「active（有効）」と表示されていても、審査が完了していない場合があると注意を促しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドキュメントに示された例では、クリエイティブの種類はchat_cardで、見出し・本文・リンク先URLを入力し、さらに640×640ピクセル以上の画像をアップロードする必要があり、広告を作成するとそのクリエイティブが審査に回されます。入札と予算のページには、新規作成したリソースは既定で一時停止状態になり、広告主が設定を完了してから配信を開始できるようになっていると書かれており、そのためキャンペーン・広告グループ・広告はそれぞれ個別に有効化の操作を行う必要があります。ドキュメントの説明によると、有効化は残りの要件がすべて満たされた場合に配信を可能にするものであり、プレビュー機能は見た目を確認できるだけで、配信可能な状態にあることを意味するものではありません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "階層",
+            "主な設定項目",
+            "作成後の状態"
+          ],
+          "rows": [
+            [
+              "広告アカウント",
+              "ブランド情報、通貨、タイムゾーン、アクセス権限、使用上限額",
+              "－"
+            ],
+            [
+              "キャンペーン",
+              "目的、予算、スケジュール、地域とプラットフォームのターゲティング、オーディエンスの包含と除外",
+              "既定で一時停止"
+            ],
+            [
+              "広告グループ",
+              "入札戦略、context hints、オーディエンスによる入札額の調整、商品セット",
+              "既定で一時停止"
+            ],
+            [
+              "広告",
+              "クリエイティブ、画像または商品テンプレート、リンク先URL",
+              "既定で一時停止、クリエイティブは審査中"
+            ]
+          ],
+          "caption": "OpenAIの開発者向けドキュメント（developers.openai.com/ads）をもとに作成。確認日は2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "課金の仕組み：3種類のキャンペーン目的と入札戦略"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI公式の入札と予算に関する説明ページには、インプレッション・クリック・コンバージョンという3種類のキャンペーン目的が挙げられています。インプレッション目的はインプレッション数で課金され、固定入札を自分で設定することしかできません。クリック目的はクリック数で課金され、固定入札を自分で設定することも、OpenAIに自動調整を任せてよりクリックを稼ぐこともできます。コンバージョン目的も課金基準はクリックであり、ドキュメントの説明では、コンバージョンキャンペーンは選択したアクションに向けて最適化を行うものの、課金は有効なクリックに対して行われるとされ、入札方法もクリック目的と同様、自分で設定するかOpenAIに任せてよりコンバージョンを稼ぐことができます。つまり、目的をコンバージョンに設定しても変わるのは入札の最適化の方向であり、課金の基準は引き続きクリックです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは、入札の自動調整をシステムに任せる2つの戦略をまとめてMaximize Resultsと呼んでおり、それぞれクリック目的とコンバージョン目的に対応しています。どちらも日予算を使う必要があり、入札額を自分で入力することはできません。一方、固定入札を自分で設定する場合は、日予算と総予算のどちらも使用できます。金額はAPI内では整数のmicrosで表され、通貨の主単位1につきmicrosは1,000,000です。これは単なる数え方であり、入札と予算のページに示されている予算と入札の例はあくまで説明用だと明記されています。しきい値については、ドキュメントには日予算の最低金額がアカウントの通貨によって異なること、しきい値を下回るとエラーメッセージが返され必要な金額が伝えられること、入札額の上限と下限はアカウントの通貨とキャンペーン目的によって異なることが書かれているのみで、いずれの箇所にも具体的な数字は示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "広告が実際に表示されるかどうかについて、ドキュメントでは、予算とアカウントの使用上限額のほかに、キャンペーンのスケジュール、リソースのステータス、審査結果、ターゲティング条件、利用可能な広告枠にも左右されるとしています。予算は2つの階層で独立して計算されます。キャンペーン自体の予算と、広告アカウント全体の使用上限額は別々に計算され、キャンペーンの予算を引き上げても、すでに使い切ったアカウントの使用上限額が再び使えるようになるわけではありません。また、アカウント単位の使用上限額の期間機能については、ドキュメントに一部のアカウントにのみ提供されていると明記されています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-ads-20260505/diagram-1-ja.svg",
+          "alt": "4コマ図解：左上はアカウントから広告までの4階層構造、右上は3種類のキャンペーン目的の課金方法、左下は2つの入札戦略、右下は地域・プラットフォーム・context hintsによるターゲティングの仕組みとその制限を示す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIの開発者向け広告ドキュメントに基づき、4階層構造・課金方法・入札戦略・ターゲティングの仕組みを整理。確認日は2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ターゲティング条件：地域・プラットフォーム・Context Hints"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドキュメントには、地域・プラットフォーム・オーディエンスの3種類のターゲティングはすべて同時に適用され、いずれか1つを満たしても他の条件が無効になるわけではないと明記されています。同一人物が包含オーディエンスと除外オーディエンスの両方に該当する場合は、除外が優先されます。地域のターゲティングにはISO 3166-1 alpha-2の国コードが使われ、地域の包含・除外リストには最大2,500件の地点コードを登録でき、アカウントの利用可能範囲とキャンペーンモードによってさらに制限が加わる場合があると注記されています。公式にはさらに、国コードがISO上有効であることは、そのアカウントがその地域で広告を配信できることを意味せず、サポート対象の広告配信地域を確認する必要があるとも注意を促しています。本記事が確認した4つの情報源のいずれにも、広告配信が可能な地域の一覧は示されていないため、台湾がすでに対象となっているかどうか、本記事には答えがありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラットフォームのターゲティングについて、ドキュメントが挙げているのは「広義のプラットフォームグループ」3種類、すなわちiOSアプリ・Androidアプリ・ウェブです。公式の例によると、iPhoneのブラウザでChatGPTのウェブサイトを開いた場合はウェブグループに含まれ、iOSアプリグループには含まれないとされており、直感とは必ずしも一致しません。ドキュメントにはまた、キャンペーン作成時にプラットフォームのターゲティングを設定しなかった場合、既定ではすべてのプラットフォームが対象になるとも書かれています。この3つはあくまで広義のグループであり、入力可能な値のすべてではない点に注意が必要です。ドキュメントの概要ページの更新履歴によると、9月10日にはウェブがさらにデスクトップ・iOSウェブ・Androidウェブに細分化されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "広告主が自分のリストをオーディエンスとしてアップロードする場合、ドキュメントに記載されている利用可能な識別子は、メールアドレス、電話番号、その両方の公式にサポートされたSHA-256ハッシュ形式、そしてGAIDです。リストファイルは500,000,000バイトを超えてはならないとされています。広告グループにはこのほかcontext hintsという項目があり、広告主が関連する商品、利用シーン、ニーズなどを文章で記述し、クリエイティブやリンク先URLだけでは伝えきれない部分を補うものです。ドキュメントは、このヒントは完全一致のキーワードではなく、地域・プラットフォーム・オーディエンスの明示的なターゲティングの代わりにはならないと強調しており、表にある例はあくまで書き方の一例であり、特定の会話で必ず広告が表示されることを保証するものではないと明記しています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "今も変化中：現状を自分で確認する方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者ドキュメントに付属する更新履歴によると、2026年6月3日から9月10日にかけて、この広告APIには、地域ターゲティングと地点検索用のエンドポイント、コンバージョン設定とレポート用のエンドポイント、商品・国・デバイス別に細分化された成果データ、カスタムオーディエンスの追加・削除・置換・統合操作、後払い請求方式の広告アカウント向けの日次使用上限額、そしてウェブプラットフォームをデスクトップ・iOSウェブ・Androidウェブにさらに細分化する変更が、順次追加されています。それより前は日付のない初版が1件あるのみで、そのためこのドキュメントを、5月5日時点で正確にどの機能が存在したかを示す根拠として使うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現状を確認したい読者は、developers.openai.comの広告APIドキュメントで最新版と更新履歴を自分で確認するか、OpenAI公式ニュースページの続報を確認することができます。本記事のこの製品にできることに関する記述は、すべてOpenAI自身の発表とドキュメントを出典としており、当サイトはChatGPTの画面上で広告が実際にどのように表示されるかを見たことはありません。広告主が実際にどの項目を設定できるか、費用がどう計算されるかは、アカウントにログインした際に表示される画面と、その時点での公式の説明に従う必要があります。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "現在のセルフサーブ広告ツールは、2026年5月に発表されたものと同じバージョンですか？",
+              "answer": "必ずしもそうとは限りません。発表当時はベータ版とされており、OpenAIはテストと改善を重ねながら、より多くの企業に段階的に公開していくと述べています。開発者ドキュメントの更新履歴によると、2026年6月3日から9月10日にかけて、新しいターゲティング方法やコンバージョン設定、レポート機能が順次追加されています。本記事が確認したドキュメントは2026年9月18日時点で読んだバージョンを反映したものであり、ドキュメント自体には5月5日時点での機能範囲は示されていません。現時点で正確に何が使えるかを知りたい場合は、公式ドキュメントのその時点の内容を直接確認してください。"
+            },
+            {
+              "question": "広告費用はどのように計算され、最低いくらから利用できますか？",
+              "answer": "発表によると、クリック課金入札は5月5日に新たに追加されたもので、広告主はクリックの結果に対してのみ課金され、OpenAIは従来のインプレッション課金も引き続きサポートするとしています。開発者ドキュメントはキャンペーン目的をインプレッション・クリック・コンバージョンの3種類に分けており、そのうちクリックとコンバージョンの2つは課金基準がいずれもクリックです。最低金額については、入札と予算のページに、日予算の最低金額はアカウントの通貨によって異なり、入札額の上限と下限はアカウントの通貨とキャンペーン目的によって異なると書かれているのみで、しきい値を下回るとエラーメッセージが返され、必要な金額が伝えられるとされています。ページに示された予算と入札の例はあくまで説明用だと明記されており、具体的なしきい値はどこにも示されていません。"
+            },
+            {
+              "question": "広告主が記入するcontext hintsによって、広告が特定の会話に表示されるようになりますか？",
+              "answer": "ドキュメントは保証されないと明言しています。context hintsは広告主自身が関連する商品、利用シーン、ニーズなどを記述する自由記述のテキストですが、ドキュメントにはこのヒントが完全一致のキーワードではないこと、表にある例はあくまで書き方の一例であり、特定の会話で必ず広告が表示されることを保証するものではないこと、そしてcontext hintsは地域・プラットフォーム・オーディエンスの明示的なターゲティング設定の代わりにはならないことが明記されています。"
+            },
+            {
+              "question": "台湾の広告主は、現時点でこのツールを利用できますか？",
+              "answer": "本記事が確認した4つの情報源のいずれにも、広告を配信できる地域の一覧は示されていません。確かなのは、ターゲティング設定のページで、国コードがISO上有効であることはそのアカウントがその地域で広告を配信できることを意味せず、サポート対象の広告配信地域を別途確認する必要があるとされ、さらにアカウントの利用可能範囲とキャンペーンモードによって追加の制限がある場合があると注意が促されている点です。発表自体も、セルフサーブ広告管理ツールがより多くの企業に段階的に公開されているとしか述べておらず、特定の地域には触れていません。実際に利用できるかどうかは、広告主がアカウントにログインした際に表示される内容に従う必要があり、本記事は台湾がすでに対象となっているかどうかを推測するものではありません。"
+            },
+            {
+              "question": "広告はChatGPTが私に返す回答に影響しますか？",
+              "answer": "OpenAIは5月5日の発表の中で、今回の更新はより多くの企業の参加を可能にしながらも、ChatGPTの回答の独立性、会話のプライバシー、ユーザーが自分の体験をコントロールできる状態を維持することを目的としているとし、新しい購入方法と計測方法は会話や個人情報を広告主に提供するものではなく、広告主が受け取るのは集計された成果データであり、個々の会話を見ることはできないとしています。これらはいずれもOpenAI自身の説明です。当サイトはアカウントにログインして広告が実際に表示される様子を見たことはなく、発表および本記事が確認した開発者ドキュメントにも、広告が画面上でどのように表示され、どこに配置されるかについての説明はありません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本記事の確認範囲と限界",
+          "text": "本記事の確認日は2026年9月18日で、OpenAIが2026年5月5日に発表した原文ページと、開発者ドキュメントサイトにある広告APIの説明ページ3本を根拠としています。この製品にできることや、その原則に関する記述は、すべてOpenAI自身の説明であり、当サイトは実地の検証を行っておりません。開発者ドキュメントは随時更新されるページで、公開日やバージョン番号は示されておらず、確認当日に読んだバージョンを反映しているにすぎず、5月5日時点で同じ内容だったとは限りません。発表当時も、セルフサーブ広告管理ツールはベータ版であり、より多くの企業に段階的に公開していくと明記されていました。当サイトはChatGPT広告の管理画面にログインしたことも、広告を作成・購入したこともなく、広告が実際に表示される様子を見たこともありません。本記事は仕入れに関する助言を行うものではなく、広告プラットフォームの費用を比較するものでもありません。現時点の正確なルールを知りたい場合は、developers.openai.comの広告APIドキュメントまたはOpenAI公式ニュースページを直接ご確認ください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 発表：金融機関向けAIツール、個人アカウントとは無関係",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI公式発表：New ways to buy ChatGPT ads（ChatGPT広告の新しい購入方法）",
+          "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI開発者ドキュメント：広告の概要（Overview - Ads）",
+          "url": "https://developers.openai.com/ads/api-overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI開発者ドキュメント：入札と予算（Bidding & Budgets - Ads）",
+          "url": "https://developers.openai.com/ads/bidding-and-budgets",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI開発者ドキュメント：ターゲティング設定（Targeting - Ads）",
+          "url": "https://developers.openai.com/ads/campaign-targeting",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "ChatGPT 광고, 셀프서브 구매 시작: OpenAI가 5월에 발표한 도구·과금·타겟팅 방식",
+      "description": "2026년 5월 5일, OpenAI는 베타 버전 셀프서브 광고 관리 도구, 클릭당 과금(CPC) 입찰, 그리고 더 다양한 측정 도구를 통해 ChatGPT 광고 구매 방식을 확대한다고 발표했습니다. 본 기사는 발표 원문과 개발자 문서를 근거로, 광고 계정·캠페인·광고 그룹·광고의 4단계 구조, 세 가지 캠페인 목표의 과금 방식, 입찰 전략을 고르는 법, 그리고 지역·플랫폼·context hints 타겟팅 방식을 설명하며, 검증 당일 확인한 문서 버전과 5월 5일 발표 내용의 차이도 함께 밝힙니다.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-ads-20260505/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽에는 작은 것부터 큰 것 순서로 쌓인 네 개의 둥근 사각형이 있으며, 이는 계정·캠페인·광고 그룹·광고라는 네 단계를 나타냅니다. 화살표가 오른쪽의 말풍선을 가리키고 있고, 말풍선과 더 오른쪽의 광고판 사이에는 세로 점선이 있어 공식이 설명하는 '광고와 대화의 분리'를 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 5월 5일, OpenAI는 공식 뉴스 페이지에 〈New ways to buy ChatGPT ads〉(ChatGPT 광고를 구매하는 새로운 방법)라는 글을 게시했으며, 페이지에 표시된 날짜도 이날입니다. 발표문 서두에는 OpenAI가 자체 광고 원칙에 따라 ChatGPT 광고를 확대하면서 광고주가 캠페인을 구매·관리하는 방법을 늘리고 있다고 적혀 있습니다. 본문은 네 개 절로 나뉘어 있으며, 순서대로 기업이 광고를 구매할 수 있는 경로 확대, 클릭당 과금(CPC) 입찰 도입, 측정 도구 확충, 그리고 현재 진행 중인 ChatGPT 광고 플랫폼 구축을 다룹니다. 아래 이 발표에 관한 서술은 모두 OpenAI 자신의 설명입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일에 검증했으며, 이 발표의 원문 페이지와 개발자 문서 사이트의 광고 API 설명 페이지 3건을 근거로 합니다. 발표문에는 당시 공개된 셀프서브 광고 관리 도구가 베타 버전이라고 명시되어 있으며, OpenAI는 더 많은 기업에 단계적으로 공개하겠다고 밝혔습니다. 개발자 문서는 계속 갱신되는 페이지로 발행일이나 버전 번호가 표시되어 있지 않아, 검증 당일 확인한 버전을 반영할 뿐 5월 5일 당시에도 같은 내용이었다는 뜻은 아닙니다. 본 사이트는 광고 관리 화면에 로그인한 적도, 광고를 만들거나 구매한 적도 없으며, 구매 조언이나 플랫폼 비교를 제공하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI는 2026년 5월 5일 ChatGPT 광고 구매 방식 확대를 발표했으며, 여기에는 베타 버전 셀프서브 광고 관리 도구, 클릭당 과금 입찰, 그리고 측정 도구 확충이 포함됩니다. OpenAI는 이러한 도구들이 대화나 개인정보를 광고주에게 제공하지 않는다고 밝혔습니다.",
+            "발표문에 따르면 셀프서브 광고 관리 도구는 더 많은 기업에 단계적으로 공개되고 있으며, OpenAI는 기존의 1,000회 노출당 과금 방식과 새로운 클릭당 과금 방식을 앞으로도 함께 지원할 예정입니다.",
+            "개발자 문서는 광고를 광고 계정·캠페인·광고 그룹·광고의 4단계로 나누고 있으며, 새로 생성된 리소스는 기본적으로 일시중지 상태이고 별도로 활성화해야 게재가 시작됩니다.",
+            "입찰 및 예산 안내 페이지에는 노출·클릭·전환이라는 세 가지 캠페인 목표가 나열되어 있으며, 이 중 클릭과 전환 두 목표는 모두 과금 기준이 클릭이며 전환 횟수가 아닙니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026년 5월의 발표: 베타 버전 셀프서브 광고 도구"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문에 따르면 OpenAI는 처음에는 소수의 광고주와 직접 협력해 ChatGPT에서 캠페인을 시작했고, 시범 프로그램이 확대되면서 파트너를 통해 진입 문턱을 낮췄으며, 5월 5일부터 기업이 스스로 광고주로 등록하고 결제 정보를 입력하며 예산과 입찰가를 설정하고 광고를 업로드하며 캠페인을 켜고 끄고 관리 화면에서 성과를 확인할 수 있는 베타 버전 셀프서브 광고 관리 도구를 공개하기 시작했습니다. OpenAI는 또한 이 도구가 테스트와 개선을 거듭하며 더 많은 기업에 단계적으로 공개되고 있다고 밝혔습니다. 발표문은 협력 대행사와 기술 파트너도 언급하지만 “including”(포함)과 “such as”(예를 들어)라는 표현을 사용하고 있어 전체 명단은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "과금 방식의 변화는 이번 발표의 또 다른 핵심입니다. 발표문에 따르면 시범 프로그램 1단계에서는 광고주가 수요·게재·초기 성과를 먼저 파악하기 위한 수단으로 1,000회 노출당 과금(CPM) 방식으로만 ChatGPT 광고를 구매할 수 있었습니다. 이번에 추가된 클릭당 과금(CPC) 입찰은 지출이 사용자가 광고를 본 뒤 취하는 행동과 더 직접적으로 연결되도록 하며, 광고주는 클릭 결과에 대해서만 비용을 지불한다고 명시되어 있습니다. OpenAI는 앞으로도 CPM과 CPC 두 구매 방식을 계속 지원하겠다고 밝혔습니다. 측정 측면에서는 최근 Conversions API와 픽셀 측정을 도입했으며, 광고주는 개별 대화가 아니라 집계된 성과 데이터를 받게 되고, 이러한 방식들이 대화나 개인정보를 광고주에게 제공하지 않는다고 설명합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "광고 구매 방식: 계정·캠페인·광고 그룹·광고의 4단계"
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자 문서는 광고 거래를 4단계로 나눕니다. 광고 계정 아래에 캠페인이 있고, 캠페인 아래에 광고 그룹이 있으며, 광고 그룹 아래에야 비로소 광고 자체가 있습니다. 문서는 각 단계에서 설정하는 내용을 나열합니다. 광고 계정은 브랜드 정보·통화·시간대·계정 접근 권한·지출 한도이고, 캠페인은 목표·예산·일정·지역 및 플랫폼 타겟팅·오디언스 포함과 제외, 그리고 전환 이벤트이며, 광고 그룹은 입찰 전략·context hints(뒤에서 설명)·오디언스 입찰가 조정·상품 세트이고, 광고 자체는 소재·이미지 또는 상품 템플릿, 그리고 랜딩 페이지 URL입니다. 문서는 특히 계정 상태가 “active(활성)”로 표시되어도 아직 처리되지 않은 심사가 남아 있을 수 있다고 알려줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문서의 예시 흐름에서 소재 유형은 chat_card이며, 제목·본문·랜딩 페이지 URL을 입력하고 640×640픽셀 이상의 이미지를 업로드해야 하며, 광고를 생성하면 해당 소재가 심사에 제출됩니다. 입찰 및 예산 페이지에는 새로 생성된 리소스는 기본적으로 일시중지 상태이며, 광고주가 설정을 마친 뒤 게재를 시작할 수 있도록 되어 있어 캠페인·광고 그룹·광고 각각을 별도로 활성화해야 한다고 적혀 있습니다. 문서 설명에 따르면 활성화는 나머지 요건이 모두 충족된 경우에만 게재를 가능하게 하는 것이며, 미리보기 기능은 외형만 확인할 수 있을 뿐 게재 자격을 이미 충족했다는 의미는 아닙니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "단계",
+            "주요 설정 항목",
+            "생성 후 상태"
+          ],
+          "rows": [
+            [
+              "광고 계정",
+              "브랜드 정보, 통화, 시간대, 접근 권한, 지출 한도",
+              "－"
+            ],
+            [
+              "캠페인",
+              "목표, 예산, 일정, 지역 및 플랫폼 타겟팅, 오디언스 포함·제외",
+              "기본값 일시중지"
+            ],
+            [
+              "광고 그룹",
+              "입찰 전략, context hints, 오디언스 입찰가 조정, 상품 세트",
+              "기본값 일시중지"
+            ],
+            [
+              "광고",
+              "소재, 이미지 또는 상품 템플릿, 랜딩 페이지 URL",
+              "기본값 일시중지, 소재 심사 중"
+            ]
+          ],
+          "caption": "OpenAI 개발자 문서(developers.openai.com/ads)를 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "과금 방식: 세 가지 캠페인 목표와 입찰 전략"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 입찰 및 예산 안내 페이지에는 노출·클릭·전환이라는 세 가지 캠페인 목표가 나열되어 있습니다. 노출 목표는 노출 수로 과금되며 고정 입찰가를 직접 설정하는 방법만 가능합니다. 클릭 목표는 클릭 수로 과금되며, 고정 입찰가를 직접 설정하거나 OpenAI에 자동 조정을 맡겨 더 많은 클릭을 추구할 수 있습니다. 전환 목표 역시 과금 기준은 클릭이며, 문서의 설명에 따르면 전환 캠페인은 선택한 행동을 향해 최적화되지만 유효 클릭에 대해 과금되고, 입찰 방식도 클릭 목표와 마찬가지로 직접 설정하거나 OpenAI에 맡겨 더 많은 전환을 추구할 수 있습니다. 다시 말해 목표를 전환으로 설정해도 바뀌는 것은 입찰 최적화의 방향이며, 과금 기준은 여전히 클릭입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 입찰 자동 조정을 시스템에 맡기는 두 전략을 통틀어 Maximize Results라고 부르며, 각각 클릭 목표와 전환 목표에 대응합니다. 두 전략 모두 일일 예산을 사용해야 하며 입찰 금액을 직접 입력할 수 없습니다. 반면 고정 입찰가를 직접 설정하는 경우에는 일일 예산과 총 예산을 모두 사용할 수 있습니다. 금액은 API에서 정수 단위의 micros로 표시되며, 통화 기본 단위 1은 micros 1,000,000에 해당합니다. 이는 단순한 계산 단위일 뿐이며, 입찰 및 예산 페이지에 나온 예산과 입찰가 예시는 어디까지나 설명을 위한 것이라고 명시되어 있습니다. 기준액에 대해서는, 일일 예산의 최소 금액이 계정 통화에 따라 다르고 기준액에 못 미치는 요청에는 오류 메시지와 함께 필요한 금액이 안내되며, 입찰가의 상한과 하한은 계정 통화와 캠페인 목표에 따라 다르다고만 적혀 있을 뿐, 두 곳 모두 구체적인 수치는 나와 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "광고가 실제로 노출되는지 여부에 대해 문서는, 예산과 계정 지출 한도 외에도 캠페인 일정, 리소스 상태, 심사 결과, 타겟팅 조건, 이용 가능한 지면에도 달려 있다고 설명합니다. 예산은 또한 두 단계에서 각각 독립적으로 계산됩니다. 캠페인 자체의 예산과 광고 계정 전체의 지출 한도는 별도로 계산되며, 캠페인 예산을 올린다고 해서 이미 소진된 계정 지출 한도가 다시 열리지는 않습니다. 그리고 계정 단위의 지출 한도 기간 기능은 문서에 일부 계정에만 제공된다고 명시되어 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-ads-20260505/diagram-1-ko.svg",
+          "alt": "4분할 도해: 왼쪽 위는 계정부터 광고까지의 4단계 구조, 오른쪽 위는 세 가지 캠페인 목표의 과금 방식, 왼쪽 아래는 두 가지 입찰 전략, 오른쪽 아래는 지역·플랫폼·context hints 타겟팅 방식과 그 제한을 나타냅니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI 개발자 광고 문서의 4단계 구조, 과금 방식, 입찰 전략, 타겟팅 방식을 정리. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "타겟팅 조건: 지역·플랫폼·Context Hints"
+        },
+        {
+          "type": "paragraph",
+          "text": "문서에는 지역·플랫폼·오디언스라는 세 가지 타겟팅이 모두 함께 적용되며, 그중 하나를 충족한다고 해서 다른 조건이 무효가 되지는 않는다고 명시되어 있습니다. 같은 사람이 포함 오디언스와 제외 오디언스에 동시에 속하면 제외가 우선합니다. 지역 타겟팅은 ISO 3166-1 alpha-2 국가 코드를 사용하며, 지역 포함·제외 목록에는 최대 2,500개의 위치 코드를 등록할 수 있고, 문서는 계정의 이용 가능 범위와 캠페인 모드에 따라 추가 제한이 있을 수 있다고 덧붙입니다. 공식 문서는 또한 국가 코드가 ISO상 유효하다고 해서 해당 계정이 그 지역에서 광고를 게재할 수 있다는 뜻은 아니며, 지원되는 광고 게재 지역을 별도로 확인해야 한다고 안내합니다. 본 기사가 검증한 네 개 출처 어디에도 광고를 게재할 수 있는 지역 목록은 나와 있지 않아, 대만이 이미 지원 대상인지에 대해 본 기사는 답을 제시하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플랫폼 타겟팅과 관련해 문서가 나열하는 것은 세 개의 “광범위한 플랫폼 그룹”으로, iOS 앱·Android 앱·웹입니다. 공식 예시에 따르면 아이폰 브라우저로 ChatGPT 웹사이트에 접속하면 iOS 앱 그룹이 아니라 웹 그룹에 포함되며, 이는 직관과 완전히 일치하지는 않습니다. 문서에는 또한 캠페인을 생성할 때 플랫폼 타겟팅을 설정하지 않으면 기본값은 전체 플랫폼이라고 적혀 있습니다. 이 세 그룹은 어디까지나 광범위한 분류이며 입력 가능한 값 전체는 아니라는 점에 유의해야 합니다. 문서 개요 페이지의 업데이트 기록에 따르면 9월 10일 웹이 데스크톱·iOS 웹·Android 웹으로 다시 세분화되었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "광고주가 자신의 명단을 오디언스로 업로드할 때, 문서에 적힌 사용 가능한 식별자는 이메일, 전화번호, 이 둘의 공식 지원 SHA-256 해시 형태, 그리고 GAID입니다. 명단 파일은 500,000,000바이트를 넘을 수 없습니다. 광고 그룹에는 이 밖에도 context hints라는 항목이 있는데, 광고주가 관련 상품, 이용 상황, 필요 등을 직접 글로 설명해 소재와 랜딩 페이지 URL만으로는 다 전달되지 않는 부분을 보완하는 것입니다. 문서는 이 힌트가 완전히 일치하는 키워드가 아니며, 지역·플랫폼·오디언스의 명시적 타겟팅을 대신할 수 없다고 강조하고, 표에 있는 예시는 어디까지나 작성 방식을 보여주는 것일 뿐 특정 대화에서 실제로 광고가 노출된다는 보장은 아니라고 명시합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "여전히 변화 중: 현황을 직접 확인하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자 문서에 딸린 업데이트 기록을 보면, 2026년 6월 3일부터 9월 10일 사이에 이 광고 API에는 지역 타겟팅과 위치 조회용 엔드포인트, 전환 설정 및 리포트 엔드포인트, 상품·국가·기기별로 세분화된 성과 데이터, 커스텀 오디언스의 추가·삭제·교체·병합 기능, 후불 청구 방식 광고 계정을 위한 일일 지출 한도, 그리고 웹 플랫폼을 데스크톱·iOS 웹·Android 웹으로 세분화하는 기능이 순차적으로 추가되었습니다. 그 이전에는 날짜가 없는 최초 버전 한 건만 있어, 이 문서를 5월 5일 당시 정확히 어떤 기능이 있었는지 설명하는 근거로 사용할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 상황을 확인하고 싶은 독자는 developers.openai.com의 광고 API 문서에서 최신 버전과 업데이트 기록을 직접 확인하거나, OpenAI 공식 뉴스 페이지의 후속 발표를 찾아볼 수 있습니다. 이 제품이 할 수 있는 일에 관한 본 기사의 서술은 모두 OpenAI 자신의 발표와 문서를 출처로 하며, 본 사이트는 ChatGPT 화면에서 광고가 실제로 어떻게 나타나는지 본 적이 없습니다. 광고주가 실제로 어떤 옵션을 설정할 수 있는지, 비용이 어떻게 계산되는지는 계정에 로그인했을 때 보이는 화면과 그 시점의 공식 설명을 기준으로 삼아야 합니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "지금의 셀프서브 광고 도구는 2026년 5월에 발표된 것과 같은 버전인가요?",
+              "answer": "반드시 그렇지는 않습니다. 발표 당시에는 베타 버전이라고 명시되어 있었고, OpenAI는 테스트와 개선을 거듭하며 더 많은 기업에 단계적으로 공개하겠다고 밝혔습니다. 개발자 문서의 업데이트 기록을 보면 2026년 6월 3일부터 9월 10일 사이에 새로운 타겟팅 방식, 전환 설정, 리포트 기능이 순차적으로 추가되었습니다. 본 기사가 검증한 문서는 2026년 9월 18일에 확인한 버전을 반영한 것이며, 문서 자체는 5월 5일 당시의 기능 범위를 표시하지 않습니다. 현재 정확히 무엇을 쓸 수 있는지 알고 싶다면 공식 문서의 그 시점 내용을 직접 확인하시기 바랍니다."
+            },
+            {
+              "question": "광고 비용은 어떻게 계산되며, 최소 얼마를 써야 하나요?",
+              "answer": "발표문에 따르면 클릭당 과금 입찰은 5월 5일에 새로 추가된 것으로, 광고주는 클릭 결과에 대해서만 비용을 지불하며, OpenAI는 기존의 1,000회 노출당 과금 방식도 계속 지원하겠다고 밝혔습니다. 개발자 문서는 캠페인 목표를 노출·클릭·전환 세 가지로 나누며, 이 중 클릭과 전환 두 목표는 과금 기준이 모두 클릭입니다. 최소 금액에 대해서는 입찰 및 예산 페이지에 일일 예산의 최소 금액이 계정 통화에 따라 다르고 입찰가의 상한·하한은 계정 통화와 캠페인 목표에 따라 다르다고만 적혀 있으며, 기준액에 못 미치면 오류 메시지와 함께 필요한 금액이 안내된다고 합니다. 페이지에 나온 예산과 입찰가 예시는 어디까지나 설명을 위한 것이라고 명시되어 있으며, 구체적인 기준액은 어디에도 나와 있지 않습니다."
+            },
+            {
+              "question": "광고주가 작성하는 context hints 때문에 특정 대화에 광고가 나타날 수 있나요?",
+              "answer": "문서는 그렇게 보장하지 않는다고 명확히 밝히고 있습니다. context hints는 광고주가 직접 관련 상품, 이용 상황, 필요 등을 서술하는 자유 텍스트이지만, 문서는 이 힌트가 완전히 일치하는 키워드가 아니며, 표에 있는 예시는 어디까지나 작성 방식을 보여줄 뿐 특정 대화에서 실제로 광고가 노출된다는 보장은 아니고, context hints가 지역·플랫폼·오디언스의 명시적 타겟팅 설정을 대신할 수 없다고 명시합니다."
+            },
+            {
+              "question": "대만의 광고주도 지금 이 도구를 쓸 수 있나요?",
+              "answer": "본 기사가 검증한 네 개 출처 어디에도 광고를 게재할 수 있는 지역 목록은 나와 있지 않습니다. 확실한 점은 타겟팅 설정 페이지에서 국가 코드가 ISO상 유효하다고 해서 해당 계정이 그 지역에서 광고를 게재할 수 있다는 뜻은 아니며 지원되는 광고 게재 지역을 별도로 확인해야 한다고 안내하고 있고, 계정의 이용 가능 범위와 캠페인 모드에 따라 추가 제한이 있을 수 있다는 점입니다. 발표문 자체도 셀프서브 광고 관리 도구가 더 많은 기업에 단계적으로 공개되고 있다고만 밝힐 뿐 특정 지역을 언급하지 않습니다. 실제로 쓸 수 있는지는 광고주가 계정에 로그인했을 때 보이는 내용을 기준으로 삼아야 하며, 본 기사는 대만이 이미 지원 대상인지를 대신 추측하지 않습니다."
+            },
+            {
+              "question": "광고가 ChatGPT가 저에게 주는 답변에 영향을 미치나요?",
+              "answer": "OpenAI는 5월 5일 발표문에서 이번 업데이트가 더 많은 기업의 참여를 이끌어내는 동시에 ChatGPT의 답변 독립성, 대화의 프라이버시, 사용자가 자신의 경험을 통제할 수 있는 상태를 유지하기 위한 것이라고 밝혔으며, 새로운 구매·측정 방식이 대화나 개인정보를 광고주에게 제공하지 않고 광고주는 집계된 성과 데이터만 받을 뿐 개별 대화를 볼 수 없다고 설명합니다. 이는 모두 OpenAI 자신의 설명입니다. 본 사이트는 계정에 로그인해 광고가 실제로 나타나는 모습을 본 적이 없으며, 발표문과 본 기사가 검증한 개발자 문서 어디에도 광고가 화면에서 어떻게 표시되고 어디에 위치하는지에 대한 설명은 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "본 기사의 검증 범위와 한계",
+          "text": "본 기사의 확인일은 2026년 9월 18일이며, OpenAI가 2026년 5월 5일 발표한 원문 페이지와 개발자 문서 사이트의 광고 API 설명 페이지 3건을 근거로 합니다. 이 제품이 할 수 있는 일과 그 원칙에 관한 서술은 모두 OpenAI 자신의 설명이며, 본 사이트는 직접 시험해 보지 않았습니다. 개발자 문서는 계속 갱신되는 페이지로 발행일이나 버전 번호가 표시되어 있지 않아 검증 당일 확인한 버전을 반영할 뿐이며, 5월 5일 당시에도 같은 내용이었다는 뜻은 아닙니다. 발표 당시에도 셀프서브 광고 관리 도구는 베타 버전이며 더 많은 기업에 단계적으로 공개된다고 명시되어 있었습니다. 본 사이트는 ChatGPT 광고 관리 화면에 로그인한 적도, 광고를 만들거나 구매한 적도, 광고가 실제로 나타나는 모습을 본 적도 없습니다. 본 기사는 구매 조언을 제공하지 않으며 어떤 광고 플랫폼의 비용도 비교하지 않습니다. 현재 정확한 규정을 알고 싶다면 developers.openai.com의 광고 API 문서나 OpenAI 공식 뉴스 페이지를 직접 확인하시기 바랍니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 발표: 금융기관용 AI 도구, 개인 계정과는 무관",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 공식 발표: New ways to buy ChatGPT ads(ChatGPT 광고를 구매하는 새로운 방법)",
+          "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 개발자 문서: 광고 개요(Overview - Ads)",
+          "url": "https://developers.openai.com/ads/api-overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 개발자 문서: 입찰 및 예산(Bidding & Budgets - Ads)",
+          "url": "https://developers.openai.com/ads/bidding-and-budgets",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 개발자 문서: 타겟팅 설정(Targeting - Ads)",
+          "url": "https://developers.openai.com/ads/campaign-targeting",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "ChatGPT 广告开放自助购买：OpenAI 5 月公告的工具、计费与定向机制",
+      "description": "2026 年 5 月 5 日，OpenAI 宣布以测试版自助广告管理工具、按点击出价与更多效果衡量工具，扩大 ChatGPT 广告的购买方式。本文依据公告原文与开发者文档，说明广告账户、广告活动、广告组与广告的四层结构、三种广告活动目标的计费方式、出价策略怎么选，以及地域、平台与 context hints 的定向机制，并说明查核当天读到的文档版本与 5 月 5 日公告之间的差异。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-ads-20260505/hero-zh-cn.jpg",
+        "alt": "原创插图：左边四个由小到大堆叠的圆角方块，代表账户、活动、广告组与广告四个层级；一支箭头指向右边一个对话框，对话框与更右边的广告牌之间隔着一条垂直虚线，代表官方所说的广告与对话彼此分开。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 5 月 5 日，OpenAI 在官方新闻页面发布〈New ways to buy ChatGPT ads〉（购买 ChatGPT 广告的新方式），页面标注的日期就是这一天。公告开头的引言写道，OpenAI 正在扩大 ChatGPT 广告，围绕自家的广告原则，为广告主增加购买与管理广告活动的方式；正文分成四节，依次是扩大企业购买广告的渠道、推出按点击（CPC）出价、开发更多效果衡量工具，以及正在打造 ChatGPT 广告平台。以下关于这则公告的表述，都是 OpenAI 自己的说法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核，读取的是这则公告的原文页面，以及开发者文档站上的三份广告 API 说明页面。公告写明当时推出的自助广告管理工具是测试版，OpenAI 表示会逐步向更多企业开放；开发者文档则是持续维护更新的页面，没有标注发布日期或版本号，反映的是查核当天读到的版本，不代表 5 月 5 日当天就已经是这个样子。本站没有登录广告后台，也没有创建或购买过广告，不提供任何采购建议或平台比较。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 于 2026 年 5 月 5 日公告扩大 ChatGPT 广告的购买方式，内容包括测试版的自助广告管理工具、按点击出价，以及更多效果衡量工具；OpenAI 表示这些工具不会把对话或个人信息提供给广告主。",
+            "公告称自助广告管理工具正逐步向更多企业开放，而且 OpenAI 会继续同时支持原有的千次曝光计费方式与新的按点击计费方式。",
+            "开发者文档把广告拆分为广告账户、广告活动、广告组与广告四层，新创建的资源默认为暂停状态，需要另行启用才会开始投放。",
+            "出价与预算说明页面列出曝光、点击与转化三种广告活动目标，其中点击与转化两种目标的计费依据都是点击，而不是转化次数。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026 年 5 月的公告：测试版自助广告工具"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告称，OpenAI 最初是直接与一小批广告主合作，在 ChatGPT 上投放广告，随着试点计划扩大，才通过合作伙伴降低门槛；5 月 5 日这天开始推出测试版的自助广告管理工具，让企业可以自行注册成为广告主、填写支付信息、设置预算与出价、上传广告、开启和关闭广告活动，并在后台查看投放效果。OpenAI 同时表示，这款工具是边测试边调整、逐步向更多企业开放的。公告也提到了合作的代理商与技术合作伙伴，用的是“包括”与“例如”这样的措辞，并不是完整名单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "计费方式的变化是这则公告的另一个重点。公告称，试点计划第一阶段的广告主是按千次曝光（CPM）方式购买 ChatGPT 广告，当时是为了先了解需求、投放与早期效果；这次新增的按点击（CPC）出价，让花费更直接对应用户看到广告后采取的行动，并写明广告主只按点击结果付费。OpenAI 另外表示会继续同时支持 CPM 与 CPC 两种购买方式。在效果衡量方面，公告称最近推出了 Conversions API 与像素衡量工具，广告主拿到的是汇总后的效果数据，看不到单条对话，并表示这些方式不会把对话或个人信息提供给广告主。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "广告怎么买：账户、活动、广告组、广告四层"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者文档把广告买卖拆分成四层：广告账户之下是广告活动，广告活动之下是广告组，广告组之下才是广告本身。文档逐层列出各层的设置内容：广告账户包括品牌信息、币种、时区、账户访问权限与花费上限；广告活动包括目标、预算、排期、地域与平台定向、受众的包含与排除，以及转化事件；广告组包括出价策略、context hints（后文说明）、受众出价调整与商品集；广告本身则是素材、图片或商品模板，以及落地页网址。文档特别提醒，账户状态显示为“active（已启用）”，也可能仍有审核尚未结案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档给出的示例流程是：素材类型为 chat_card，需要填写标题、正文与落地页网址，还要上传一张至少 640×640 像素的图片，创建广告即会把素材提交审核。出价与预算页面写明，新创建的资源默认为暂停状态，好让广告主先完成设置再开始投放，因此广告活动、广告组与广告要分别调用启用指令。文档说明，启用只是在其余条件都满足的情况下才会让广告开始投放；预览功能只能查看外观，不代表已经具备上线资格。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "层级",
+            "主要设置",
+            "创建后的状态"
+          ],
+          "rows": [
+            [
+              "广告账户",
+              "品牌信息、币种、时区、访问权限、花费上限",
+              "－"
+            ],
+            [
+              "广告活动",
+              "目标、预算、排期、地域与平台定向、受众包含与排除",
+              "默认为暂停"
+            ],
+            [
+              "广告组",
+              "出价策略、context hints、受众出价调整、商品集",
+              "默认为暂停"
+            ],
+            [
+              "广告",
+              "素材、图片或商品模板、落地页网址",
+              "默认为暂停，素材审核中"
+            ]
+          ],
+          "caption": "整理自 OpenAI 开发者文档（developers.openai.com/ads），查核日期 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "计费怎么算：三种广告活动目标与出价策略"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方在出价与预算说明页面列出三种广告活动目标：曝光、点击与转化。曝光目标按曝光计费，只能自行设置固定出价；点击目标按点击计费，出价方式既可以自行设置固定出价，也可以交给 OpenAI 自动调整以争取更多点击；转化目标的计费依据同样是点击，文档的说法是转化类广告活动会朝所选定的行动进行优化，但按有效点击计费，出价方式同样可以自行设置，或交给 OpenAI 争取更多转化。换句话说，把目标设为转化，改变的是出价优化的方向，付费依据仍然是点击。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把交给系统自动调整出价的两种策略统称为 Maximize Results，分别对应点击与转化两种目标，两者都必须使用每日预算，而且不能自行填写出价金额；自行设置固定出价则每日预算与总预算都可以使用。金额在 API 中以整数形式的 micros 表示，1 个货币主单位等于 1,000,000 micros，这只是一种计数方式，出价与预算页面上的预算与出价示例注明仅供参考。至于门槛，文档只写明每日预算的最低金额因账户币种而异，低于门槛的请求会返回错误提示，并告知所需的金额；出价的上下限则因账户币种与广告活动目标而异，这两处都没有印出具体数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "广告是否会实际展示，文档写的是除了预算与账户花费上限之外，还取决于广告活动排期、资源状态、审核结果、定向条件与可用广告位。预算也分成两个层级各自独立计算：广告活动自身的预算，与广告账户整体的花费上限是分开计算的，调高广告活动预算不会让已经用完的账户花费上限重新打开；而账户层级的花费上限周期功能，文档写明目前只向部分账户开放。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-ads-20260505/diagram-1-zh-cn.svg",
+          "alt": "四格图解：左上是账户到广告的四层结构，右上是三种广告活动目标的计费方式，左下是两种出价策略，右下是地域、平台与 context hints 的定向机制及其限制",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理自 OpenAI 开发者广告文档的四层结构、计费方式、出价策略与定向机制，查核日期 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "定向条件：地域、平台与 Context Hints"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档写明，地域、平台与受众三种定向是同时生效的，满足其中一项并不会让其他条件失效；如果同一个人同时属于包含受众与排除受众名单，则以排除为准。地域定向使用 ISO 3166-1 alpha-2 国家代码，地域的包含与排除列表最多可以放入 2,500 个地点代码，文档并注明账户的可用范围与广告活动模式可能还有额外限制。官方还提醒，国家代码在 ISO 上有效，不代表你的账户可以在该地区投放广告，要看支持投放广告的地区——本文查核的四个信息来源均未列出那份地区清单，所以台湾是否已经开放，本文没有答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在平台定向方面，文档列出的是三个“广义平台分组”：iOS 应用、Android 应用与网页；官方举例说明，用 iPhone 浏览器打开 ChatGPT 网站会计入网页分组，而不是 iOS 应用分组，这一点和直觉不完全相符。文档还写明，创建广告活动时如果没有设置平台定向，默认是全部平台。需要注意的是，这三个分组是广义分组，并不是可填写的全部取值——文档总览页面的更新日志显示，9 月 10 日又把网页进一步细分为桌面端、iOS 网页端与 Android 网页端。"
+        },
+        {
+          "type": "paragraph",
+          "text": "广告主上传自己的名单作为受众时，文档写明可用的标识符是邮箱、电话号码、这两者经官方支持的 SHA-256 哈希形式，以及 GAID；名单文件不得超过 500,000,000 字节。广告组另外还有 context hints，由广告主自行撰写文字，描述相关的产品、使用场景或需求，用来补充素材与落地页网址没有讲清楚的部分；文档强调，这些提示并非完全匹配的关键词，也不能取代地域、平台或受众的明确定向设置，并写明表格里的示例只是写法参考，不保证某一段对话真的会触发广告。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "仍在变动：怎么自己查看最新情况"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者文档所附的更新日志显示，从 2026 年 6 月 3 日到 9 月 10 日之间，这个广告 API 陆续新增了地域定向与地点查询接口、转化设置与报告接口、按商品与国家和设备细分的效果数据、自定义受众的增加、删除、替换与合并操作、面向采用后付费开票结算方式的广告账户开放的每日花费上限，以及把网页平台进一步细分为桌面端、iOS 网页端与 Android 网页端。再往前只剩一条没有日期的初始版本，所以这份文档不能用来说明 5 月 5 日当天究竟有哪些功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想确认当前状况的读者，可以自行前往 developers.openai.com 的广告 API 文档查看最新版本与更新日志，或回头查看 OpenAI 官方新闻页面的后续公告。本文关于这项产品能做什么的表述，来源都是 OpenAI 自己的公告与文档，本站没有见过广告在 ChatGPT 界面中实际出现的样子。广告主实际能设置哪些选项、费用如何计算，仍然要以登录账户后看到的画面，以及官方当下的说明为准。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "现在的自助广告工具，跟 2026 年 5 月公布的是同一个版本吗？",
+              "answer": "不一定。公告当时写的是测试版，而且 OpenAI 表示会边测试边调整、逐步向更多企业开放。开发者文档的更新日志显示，从 2026 年 6 月 3 日到 9 月 10 日之间陆续新增了新的定向方式、转化设置与报告功能；本文查核到的文档反映的是 2026 年 9 月 18 日读到的版本，文档本身并未标注 5 月 5 日当天的功能范围。想知道目前确切能用到什么，请直接查看官方文档当下的内容。"
+            },
+            {
+              "question": "广告费用怎么计算，最低要花多少钱？",
+              "answer": "公告称按点击出价是 5 月 5 日这次新增的功能，广告主只按点击结果付费，OpenAI 并表示会继续同时支持原有的千次曝光计费方式。开发者文档把广告活动目标分成曝光、点击与转化三种，其中点击与转化两种的计费依据都是点击。至于最低金额，出价与预算页面只写明每日预算的最低金额因账户币种而异，出价上下限因账户币种与广告活动目标而异，低于门槛会收到错误提示，并被告知所需的金额；页面上的预算与出价示例注明仅供参考，没有印出任何一个具体门槛数字。"
+            },
+            {
+              "question": "广告主填写的 context hints，会不会让广告出现在特定对话里？",
+              "answer": "文档明确表示不保证。context hints 是广告主自己撰写的文字，用来描述相关的产品、使用场景或需求，但文档写明这些提示并非完全匹配的关键词，表格里的示例只是写法参考，不保证某一段对话真的会触发广告，而且 context hints 不能取代地域、平台或受众的明确定向设置。"
+            },
+            {
+              "question": "台湾的广告主现在能不能用这个工具？",
+              "answer": "本文查核的四个信息来源均未列出可以投放广告的地区清单。可以确定的是，定向设置页面提醒，国家代码在 ISO 上有效，不代表你的账户可以在该地区投放广告，要另外查看支持投放广告的地区，而且账户的可用范围与广告活动模式可能还有额外限制；公告本身也只说自助广告管理工具正逐步向更多企业开放，没有提到任何具体地区。实际能不能使用，要以广告主登录账户后看到的内容为准，本文不代为推测台湾是否已经开放。"
+            },
+            {
+              "question": "广告会不会影响 ChatGPT 给我的回答？",
+              "answer": "OpenAI 在 5 月 5 日的公告中表示，这次更新是希望在让更多企业参与的同时，维持 ChatGPT 回答的独立性、对话的私密性，以及用户对自身体验的掌控权，并表示新的购买与效果衡量方式不会把对话或个人信息提供给广告主，广告主拿到的是汇总后的效果数据，看不到单条对话。以上都是 OpenAI 自己的说法；本站没有登录账户看过广告实际出现的画面，公告与本文查核到的开发者文档也都没有说明广告在界面上如何标示、出现在什么位置。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查核范围与本文的界限",
+          "text": "本文查核日期是 2026 年 9 月 18 日，依据是 OpenAI 2026 年 5 月 5 日公告的原文页面，以及开发者文档站上的三份广告 API 说明页面。凡是关于这项产品能做什么、原则是什么的表述，都是 OpenAI 自己的说法，本站没有实测。开发者文档是持续更新的页面，没有发布日期与版本号，反映的是查核当天读到的版本，不代表 5 月 5 日当天就已经是这个样子；公告当时也写明自助广告管理工具是测试版，正逐步向更多企业开放。本站没有登录 ChatGPT 广告后台，没有创建或购买过广告，也没有见过广告实际出现的画面；本文不提供采购建议，也不比较任何广告平台的费用。想了解目前确切的规则，请直接查阅 developers.openai.com 的广告 API 文档或 OpenAI 官方新闻页面。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 发布：金融机构的 AI 工具，跟个人账号无关",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方公告：New ways to buy ChatGPT ads（购买 ChatGPT 广告的新方式）",
+          "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 开发者文档：广告总览（Overview - Ads）",
+          "url": "https://developers.openai.com/ads/api-overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 开发者文档：出价与预算（Bidding & Budgets - Ads）",
+          "url": "https://developers.openai.com/ads/bidding-and-budgets",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 开发者文档：定向设置（Targeting - Ads）",
+          "url": "https://developers.openai.com/ads/campaign-targeting",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

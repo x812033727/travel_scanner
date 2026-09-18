@@ -12078,5 +12078,3437 @@
     "old": "中華電信やmodaの発表に",
     "new": "中華電信や moda の発表に",
     "reason": "全篇 31 處 moda 夾在假名／漢字之間時都前後留半形空格，只有 block12 這一處沒有，屬排版不一致。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "en",
+    "file": "pack",
+    "old": "Astral’s homepage, and its PyPI page",
+    "new": "Astral’s official homepage, and uv’s page on PyPI",
+    "reason": "ZH 查的是 Astral 官方網站首頁與 uv 的 PyPI 套件頁，en 的 its PyPI page 會被讀成 Astral 自己的 PyPI 頁（正文與來源清單都寫明查的是 uv 那一頁）；改後 description 由 461 增為 474 字元，仍在 500 以內。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "en",
+    "file": "pack",
+    "old": "OpenAI’s announcement says in one place it ‘plans to’ support Astral’s open source products, and elsewhere that it ‘will continue to support’ these projects; Astral’s announcement says OpenAI will continue supporting its open source tools.",
+    "new": "OpenAI’s announcement says in one place that after closing it ‘plans to’ support Astral’s open source products, and elsewhere that it ‘will continue to support’ these projects; Astral says OpenAI will continue supporting its open source tools.",
+    "reason": "ZH 與來源原文都把「打算支援」限定在交易完成後（OpenAI 公告逐字為 “after closing OpenAI plans to support Astral’s open source products”），en 漏掉這個限定詞會讓支援承諾看起來立即生效；為守住 summary 單句 300 字元上限，同一格的 Astral’s announcement says 縮為 Astral says（ZH 也只寫「Astral 寫的是」），改後 294→298 字元。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "en",
+    "file": "research",
+    "old": "Announced, approval needed",
+    "new": "Announced, approval next",
+    "reason": "原字串 26 字元，超過 en hero_label ≤24 的上限；改寫後 24 字元，仍保留「已宣布」與「完成須核准」兩層意思。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "en",
+    "file": "research",
+    "old": "Not closed yet",
+    "new": "No closing notice",
+    "reason": "ZH 圖上是「未見完成公告」（查核當天四個頁面都沒寫），en 的 Not closed yet 把「頁面沒有寫」講成「交易尚未完成」的事實，與正文「這不代表交易破局或延後」的限縮寫法衝突；17 字元未超過小標 ≤18 上限。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "en",
+    "file": "research",
+    "old": "None of the pages said so",
+    "new": "None of the four pages had one",
+    "reason": "配合小標改成「沒有完成公告」的說法，並補回 ZH 的「四頁」（查核當天四頁都沒有）；30 字元，未超過說明 ≤30 上限。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "en",
+    "file": "pack",
+    "old": "this investment “starts with an initial $15 billion,” and the remaining",
+    "new": "this investment starts with an initial $15 billion, and the remaining",
+    "reason": "Amazon 新聞稿原句是 “starting with an initial $15 billion investment”（研究紀錄 verbatim_quote），en 加引號等於捏造一句不存在的逐字引文；改為轉述即可，後半真正逐字的 “in the coming months when certain conditions are met” 不動。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "en",
+    "file": "research",
+    "old": "Committed Capital, Staged",
+    "new": "Staged committed capital",
+    "reason": "原字串 25 字元，超過 en hero_label ≤24 上限；改寫後 24 字元，並保留「承諾資本」這個全文的關鍵詞。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "en",
+    "file": "research",
+    "old": "How Committed Capital Arrives in Stages",
+    "new": "Committed Capital Arrives in Stages",
+    "reason": "原字串 39 字元，超過 en diagram title ≤38 上限；拿掉 How 之後 35 字元，語意不變。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "en",
+    "file": "pack",
+    "old": "and confirms by full-text search that no public registration statement under OpenAI's name existed as of the check date.",
+    "new": "and confirms by full-text search that, as of the check date, no public registration statement under OpenAI's filer name could be found.",
+    "reason": "ZH 是「查不到」（檢索結果），en 的 existed 把「檢索沒查到」寫成「不存在」，與全文只陳述資料庫看到什麼的寫法衝突（正文 block1 就寫 the database showed no…）；另補回 ZH 的「申報人名稱」。改後 description 由 441 增為 455 字元。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "en",
+    "file": "pack",
+    "old": "which the Commission adopted on May 19 of the same year",
+    "new": "which the Commission issued on May 19 of the same year",
+    "reason": "這份是 proposed rule，來源只有署名日期 “By the Commission. Dated: May 19, 2026”；en 的 adopted 在美國證券法語境指規則定案，會與同一句「委員會沒有提議把這套做法入法」自相矛盾。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "en",
+    "file": "research",
+    "old": "Confidential filing, no timeline yet",
+    "new": "Submitted, no timeline",
+    "reason": "原字串 36 字元遠超過 hero_label ≤24 上限，且全文重點就是「保密遞件（submission）不是公開申報（filing）」，圖上寫 filing 會推翻文章結論；改後 22 字元。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "en",
+    "file": "research",
+    "old": "Confidential Filing: What It Does and Doesn't Mean",
+    "new": "Confidential Submission: What It Means",
+    "reason": "原字串 50 字元超過 diagram title ≤38 上限，且 Filing 與內文「保密遞件不是公開申報」矛盾；改後 38 字元，「代表與不代表」由四格節點承擔。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "en",
+    "file": "research",
+    "old": "Securities Act confidential-filing right",
+    "new": "Securities Act, Section 6(e)",
+    "reason": "原字串 40 字元超過說明 ≤30 上限，且 confidential-filing 用了本文特意避開的 filing；改用正文出現過的條號，28 字元。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "en",
+    "file": "research",
+    "old": "Full-text search: no registration statement",
+    "new": "Full-text search: no S-1",
+    "reason": "原字串 43 字元超過說明 ≤30 上限；改後 24 字元，S-1 在正文與 FAQ 都有出現（FAQ 也寫 none is an S-1 or any other registration statement）。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "en",
+    "file": "pack",
+    "old": "guided by OpenAI's insight into current and future inference needs across the industry",
+    "new": "guided by OpenAI's insights into the inference needs of current and future AI models across the industry",
+    "reason": "來源原句逐字是 “Jalapeño is designed with flexibility to work with all LLMs guided by OpenAI’s insights into the inference needs of current and future AI models across the industry”，ZH 也寫「現有與未來 AI 模型推論需求」；en 把「現有與未來」錯接到 needs 上。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "en",
+    "file": "pack",
+    "old": "the bullet points say “design to production took just nine months,” while the body text says “from initial design to manufacturing tape-out took just nine months.”",
+    "new": "the bullet points say the chip went from design to “production” in just nine months, while the body text says it went “from initial design to manufacturing tape-out in just nine months.”",
+    "reason": "內文逐字原句是 “Jalapeño was co-developed from initial design to manufacturing tape-out in just nine months”（研究紀錄 verbatim_quote），en 引號內卻改成 took just nine months；條列那一句研究紀錄只記到它用了 production 一字、沒有逐字原文，所以只把 production 留在引號內，避免第二個假引文。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "en",
+    "file": "research",
+    "old": "Unveiled 6/24",
+    "new": "Unveiled June 24",
+    "reason": "en 日期寫法應與正文（June 24）及同組其他篇圖上的寫法（Apr 1、Jul 1、Sep 15）一致，不用 6/24 這種數字式；16 字元未超過說明 ≤30 上限。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "The default-model swap rolled out to all users on the day itself.",
+    "new": "The default-model swap began rolling out to all users on the day itself.",
+    "reason": "原稿與官方原文都是「陸續推出（GPT-5.5 Instant is rolling out starting today to all ChatGPT users）」，現譯讀起來像當天就對所有人完成替換，屬狀態升級；同篇第 5 段已用 began rolling out。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "fact-checked Sept 18, 2026",
+    "new": "fact-checked September 18, 2026",
+    "reason": "全篇其他七處查核日都寫 September 18, 2026，只有這個表格圖說縮寫成 Sept，en 日期格式不縮寫。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "advertisers could only buy ChatGPT ads on a cost-per-mille (CPM) basis",
+    "new": "advertisers could buy ChatGPT ads on a cost-per-mille (CPM) basis",
+    "reason": "原稿沒有「只能」，來源原文也是 In the first phase of the pilot, advertisers could buy ChatGPT ads on a CPM (cost-per-mille impressions) basis，加上 only 等於自行加強限定。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "the conversions objective is also billed on clicks, the documentation states that conversion campaigns",
+    "new": "the conversions objective is also billed on clicks: the documentation states that conversion campaigns",
+    "reason": "兩個完整子句用逗號相連（comma splice），英文是文法錯誤，改成冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "equals 1,000,000 micros, this is simply a way of counting",
+    "new": "equals 1,000,000 micros; this is simply a way of counting",
+    "reason": "同一句連著四個子句，其中 this is simply a way of counting 是獨立句卻用逗號相連（comma splice），改成分號才讀得斷。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "the campaign objective, neither place prints a specific number",
+    "new": "the campaign objective; neither place prints a specific number",
+    "reason": "neither place prints a specific number 是獨立句，用逗號相連會讀成 objective 的同位語（comma splice）。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "advertise in that region, you need to check the supported advertising locations; none of the four sources",
+    "new": "advertise in that region — you need to check the supported advertising locations; none of the four sources",
+    "reason": "you need to check… 是獨立句，用逗號相連是 comma splice；同段後面已用分號，故改破折號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "advertise in that region, you need to check the supported advertising locations separately",
+    "new": "advertise in that region — you need to check the supported advertising locations separately",
+    "reason": "FAQ 第四題同一個 comma splice，與正文改法一致。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "pack",
+    "old": "rather than every value you can enter, the changelog",
+    "new": "rather than every value you can enter: the changelog",
+    "reason": "the changelog… shows 是獨立句，用逗號相連是 comma splice；改冒號同時帶出後面的舉證關係。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "en",
+    "file": "research",
+    "old": "Clicks and conversions alike",
+    "new": "Conversions bill by click too",
+    "reason": "原稿圖上短字是「點擊與轉換都算點擊」，現譯只剩「兩者一樣」，最關鍵的「都按點擊計費」在圖上消失；新字 29 字元仍在 30 以內。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "pack",
+    "old": "Illustration: a document for the framework; two overlapping circles for the two regulations it addresses; a three-part bar from low to high risk, its top part dashed for the still-exploratory tier.",
+    "new": "Original illustration: a document for the framework; two overlapping circles for the two regulations it addresses; a three-part bar from low to high risk, top dashed for the still-exploratory tier.",
+    "reason": "原稿與本組其他三篇的 hero.alt 都以「原創插圖／Original illustration」開頭，這篇漏掉「原創」；刪去 its 與 part 以維持 197 字元、未超過 alt 的 200 上限。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "pack",
+    "old": "as the framework document California's Transparency in Frontier Artificial Intelligence Act calls for and as the public summary required under",
+    "new": "as what California's Transparency in Frontier Artificial Intelligence Act calls a “Frontier AI Framework” and as the public summary under",
+    "reason": "原稿寫「所稱的框架文件」而非「要求公布的」，因為只有大型前沿開發者才有公布義務，calls for／required 等於替 OpenAI 做了原稿刻意避開的歸類；改後與同篇第 1 段的 what the TFAIA calls a “Frontier AI Framework” 一致，全句 280 字元未超過 300。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "pack",
+    "old": "is the same: more than 50 deaths or serious injuries",
+    "new": "is more than 50 deaths or serious injuries",
+    "reason": "原稿沒有說兩個門檻相同，事實上也不同（FGF 只寫死亡與財產損失，SB 53 另含「或重傷」），is the same 是譯文自行加上的等同判斷。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "pack",
+    "old": "publishing a framework, reviewing it annually, and the penalties apply only at this level",
+    "new": "framework publication, annual review, and the penalties apply only at this level",
+    "reason": "動名詞與名詞混列使句子可被讀成「只有罰則落在這一層」，而這一句的作用正是界定哪些義務只落在大型前沿開發者；改成三個並列名詞片語。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "pack",
+    "old": "and keep the unredacted information five years",
+    "new": "and keep the unredacted information for five years",
+    "reason": "keep … five years 漏掉介系詞 for，英文文法錯誤。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "pack",
+    "old": "OpenAI commits only to reviewing it at least once every 12 months",
+    "new": "OpenAI commits to reviewing it at least once every 12 months",
+    "reason": "原稿是「OpenAI 承諾至少每 12 個月檢視一次」，only 是譯文加上的評價語氣（暗示「不過就是」），且與摘要第四句的寫法不一致。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "research",
+    "old": "Frontier Governance Framework Published",
+    "new": "Framework goes public",
+    "reason": "hero_label 39 字元，超過 en 的 24 字元上限；新字 21 字元，且與標題的 Goes Public 一致。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "research",
+    "old": "Harmful Manipulation",
+    "new": "Manipulation",
+    "reason": "圖上小標 20 字元，超過 en 的 18 字元上限；四格並列時 Manipulation 不致誤讀，正文仍用 harmful manipulation 全稱。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "research",
+    "old": "3 tiers, exploratory except self-improvement",
+    "new": "3 tiers, mostly exploratory",
+    "reason": "說明 44 字元，超過 en 的 30 字元上限；查核者刻意加上的「除自我改良外」在 30 字元內放不下，改用 mostly 保住「不是全部都還在探索」這個限定（若協調者能放寬 en 字數，建議還原完整寫法）。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "en",
+    "file": "research",
+    "old": "No tiers yet, still exploratory",
+    "new": "No tiers, still exploratory",
+    "reason": "說明 32 字元，超過 en 的 30 字元上限；刪 yet 後仍保留原稿「沒有分級，仍探索中」的兩項資訊。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "on another figure shown elsewhere on the same chart, so this article only uses",
+    "new": "on another comparison figure, so this article only uses",
+    "reason": "原稿只寫「在另一個對照數字上」，譯文自行補上「印在同一張圖的其他位置」這個未經查證的位置描述（該數字的矛盾發生在圖說與圖表原始資料之間）。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "or explain how ChatGPT Work assigns tasks, and it does not cover the billing and data location of OpenAI's Agents API. We have already covered those separately.",
+    "new": "or explain how ChatGPT Work assigns tasks. We have already covered both of those separately, along with the billing and data location of OpenAI's Agents API.",
+    "reason": "原稿把「Agents API 的計費與資料位置」歸在本站先前整理過的題目，沒有說這則公告也沒寫這件事；現譯多出一項對公告內容的斷言。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "en",
+    "file": "pack",
+    "old": "an open letter of the same name, 〈Open Weights and American AI Leadership〉, dated",
+    "new": "an open letter of the same name, “Open Weights and American AI Leadership,” dated",
+    "reason": "中文書名號〈〉直接留在英文句子裡，英文讀者看不懂；本篇其他引文（“has agreed to acquire”）都用雙引號，改成一致的英文引號"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "how calls connect, why this endpoint does not support outbound calls,",
+    "new": "how calls connect, the documentation’s note that outbound calls are not supported,",
+    "reason": "原稿是「文件說這個端點不支援外撥」，譯成 why 等於向讀者承諾本文會解釋原因，但文中只寫文件這麼寫、並要求改用合作夥伴，沒有交代理由"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "that phrase describes a supply status, and the four documents",
+    "new": "that phrase describes an availability status, and the four documents",
+    "reason": "supply status 在英文是供應鏈用語；generally available 講的是供應（可用）狀態，譯成 availability status 才能讓讀者看懂「不等於第一次出現」這個重點"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "that phrase describes a supply status, and the four official documents",
+    "new": "that phrase describes an availability status, and the four official documents",
+    "reason": "同上（FAQ 重複一次）：supply status 改為 availability status"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "The changelog entry says it ‘is now generally available in the API’;",
+    "new": "The changelog entry says it “is now generally available in the API”;",
+    "reason": "同一篇其他引文都用雙引號（正文同一句就是 “now generally available in the API”），單引號在美式英文只用於引文中的引文"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "en",
+    "file": "pack",
+    "old": "won’t have a setting like ‘turn on GPT-Live 1’ to toggle",
+    "new": "won’t have a setting like “turn on GPT-Live 1” to toggle",
+    "reason": "同一段後面的告知語用雙引號，這裡卻用單引號，同段內標點不一致"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "en",
+    "file": "pack",
+    "old": "and was rewritten in Rust this quarter.",
+    "new": "and was rewritten in Rust in the second quarter of this year.",
+    "reason": "原稿寫「今年第二季」（正文與摘要都寫 2026 年第二季），this quarter 在 9 月讀起來是第三季，是日期錯誤"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "en",
+    "file": "pack",
+    "old": "a dashed-to-solid arrow shows an old version rewritten new;",
+    "new": "a dashed-to-solid arrow shows an old version being rewritten;",
+    "reason": "rewritten new 不成英文（讀屏軟體會念出來），改成合文法的寫法並保留「舊版本」"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "en",
+    "file": "pack",
+    "old": "with Workspace Docs limited to Pro and Ultra subscribers.",
+    "new": "with Workspace Docs limited to Google AI Pro and Ultra subscribers.",
+    "reason": "原稿與來源都寫 Google AI Pro（來源原句 Google AI Pro and Ultra subscribers in Workspace in Docs）；單寫 Pro 會被誤讀成 Workspace 自己的方案名"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "en",
+    "file": "pack",
+    "old": "name only products and subscription tiers and do not state, in a single sentence, which country, region, or market is open — so this article cannot determine",
+    "new": "name only products and subscription tiers, and not one sentence states which country, region, or market is open — so this article cannot determine",
+    "reason": "原稿「沒有一句寫出」是全稱否定；do not state, in a single sentence 在英文是「沒有用一句話說完」，反而暗示可能分幾句寫了"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "en",
+    "file": "pack",
+    "old": "name only products and subscription tiers and do not state, in a single sentence, which country, region, or market is open — the official pages",
+    "new": "name only products and subscription tiers, and not one sentence states which country, region, or market is open — the official pages",
+    "reason": "同上（FAQ 重複一次）：恢復「沒有一句」的全稱否定"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "en",
+    "file": "pack",
+    "old": "while the model post's availability list names neither Vertex AI nor Gemini App under 3.8 Live.",
+    "new": "while the model post's availability list does not name Vertex AI at all, and does not put Gemini App under 3.8 Live either.",
+    "reason": "原稿是兩件事：那張清單根本沒有 Vertex AI，且沒把 Gemini App 算給 3.8 Live；合併成 neither...under 3.8 Live 會變成 Vertex AI 只是沒掉在 3.8 Live 名下（正文 block10 譯得才對）"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "オリジナルイラスト:左側",
+    "new": "オリジナルイラスト：左側",
+    "reason": "日文版全批與站上既有日文文章一律用全形冒號，本篇誤用半形「:」。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "何が起きたのか:両社",
+    "new": "何が起きたのか：両社",
+    "reason": "日文版全批與站上既有日文文章一律用全形冒號，本篇誤用半形「:」。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "4コマの図解:この買収",
+    "new": "4コマ図解：この買収",
+    "reason": "批次其他日文篇的圖解一律寫「4コマ図解：」，本篇多一個「の」又用半形冒號，圖說用語不一致。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "発表をもとに作成:買収は",
+    "new": "発表をもとに作成：買収は",
+    "reason": "日文版全批與站上既有日文文章一律用全形冒號，本篇誤用半形「:」。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "research",
+    "old": "発表をもとに作成:買収は",
+    "new": "発表をもとに作成：買収は",
+    "reason": "日文版全批與站上既有日文文章一律用全形冒號，本篇誤用半形「:」。（與 pack 的 image caption 同一句，需一併改）"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "およそ半年後:確認当日",
+    "new": "およそ半年後：確認当日",
+    "reason": "日文版全批與站上既有日文文章一律用全形冒號，本篇誤用半形「:」。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "「買収」(acquire)という",
+    "new": "「買収」（acquire）という",
+    "reason": "同批日文篇的英文原詞註記一律用全形括號（例：「ロードショー（road show）」），本篇用半形括號。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "「参加」(join)という",
+    "new": "「参加」（join）という",
+    "reason": "同批日文篇的英文原詞註記一律用全形括號（例：「ロードショー（road show）」），本篇用半形括號。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "pack",
+    "old": "オープンソースの Python ツールである",
+    "new": "オープンソースのPythonツールである",
+    "reason": "同一篇其他處都寫「Pythonツール」不加空格，此處多了兩個半形空格。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "research",
+    "old": "発表済み、承認待ち",
+    "new": "発表済み、完了は承認次第",
+    "reason": "原稿是「完成須核准」，「承認待ち」會讀成已送件進入審查等待中；改用與正文一致的說法，12 字未超過 hero_label 15 字上限。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ja",
+    "file": "research",
+    "old": "確認日は4ページ共なし",
+    "new": "確認日は4ページともなし",
+    "reason": "「4ページ共」不是日文寫法（とも 用假名），改後 12 字仍在說明 17 字上限內。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ja",
+    "file": "pack",
+    "old": "1つは点線の円で、資本が分割して払い込まれる様子を示す。",
+    "new": "1つは点線の円で、コミットメント資本が分割して払い込まれ、最後の1回はまだ期日が来ていないことを示す。",
+    "reason": "原稿 alt 末句「最後一批還沒到期」在譯文中消失，且「承諾資本」被縮成「資本」，與正文用語不一致；補回後全長仍在 200 字以內。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ja",
+    "file": "pack",
+    "old": "条件（内容は非公開）を満たし次第",
+    "new": "条件（発表は内容を説明せず）を満たし次第",
+    "reason": "原稿是「符合它沒有說明的條件」，指公告沒有說明條件內容；「内容は非公開」會讀成官方明示保密。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ja",
+    "file": "research",
+    "old": "分割払いの承諾資本",
+    "new": "コミットメント資本は分割入金",
+    "reason": "「承諾資本」不是日文用語，正文一律寫「コミットメント資本」，圖上用語要一致；改後 14 字未超過 hero_label 15 字上限。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ja",
+    "file": "research",
+    "old": "承諾資本はどう分割払い込みされるか",
+    "new": "コミットメント資本はどう分割入金されるか",
+    "reason": "「承諾資本」不是日文用語，正文一律寫「コミットメント資本」，圖標題要與正文一致；改後 20 字未超過標題 25 字上限。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAIの発表全文、1933年証券取引法",
+    "new": "OpenAIの発表全文、1933年証券法",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAIの公式発表全文、1933年証券取引法",
+    "new": "OpenAIの公式発表全文、1933年証券法",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "法的根拠は1933年証券取引法第6(e)条",
+    "new": "法的根拠は1933年証券法第6(e)条",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "改正後の1933年証券取引法に基づくRule 135",
+    "new": "改正後の1933年証券法に基づくRule 135",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "証券取引法の登録規定に従って",
+    "new": "証券法の登録規定に従って",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。（這裡指的也是 1933 年証券法的登録規定）"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "S-1は米国1933年証券取引法に基づく登録届出書の書式の一つです。本稿が引用する",
+    "new": "S-1は米国1933年証券法に基づく登録届出書の書式の一つです。本稿が引用する",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "1933年証券取引法第6(e)(1)項",
+    "new": "1933年証券法第6(e)(1)項",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "1933年証券取引法第6(e)(2)項",
+    "new": "1933年証券法第6(e)(2)項",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "S-1は米国1933年証券取引法に基づく登録届出書の書式の一つです。同法第6(e)条",
+    "new": "S-1は米国1933年証券法に基づく登録届出書の書式の一つです。同法第6(e)条",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "pack",
+    "old": "1933年証券取引法第6条（米国法典）",
+    "new": "1933年証券法第6条（米国法典）",
+    "reason": "米国 Securities Act of 1933 的日文通稱是「1933年証券法」，「証券取引法」在日文指 1934 年証券取引所法與日本舊法，會指錯法律（日本証券経済研究所〈外国証券関係法令集 アメリカ〉書名即為「1933年証券法、1934年証券取引所法」：https://www.jsri.or.jp/publication/book/foreign_laws/200809/ ）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "research",
+    "old": "非公開提出は何を意味するか",
+    "new": "非公開提出は何を意味し、何を意味しないか",
+    "reason": "原稿圖標題是「代表與不代表」，譯文只留下「代表」，全篇最要緊的「不代表已申請上市」不見了；改後 20 字未超過 25 字上限。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ja",
+    "file": "research",
+    "old": "4つの声明、時期は未定",
+    "new": "4つの文だけ、時期は未定",
+    "reason": "正文寫「4つの文からなります」，圖上的「4つの声明」會讀成四份獨立聲明；改後 12 字在 17 字上限內。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "9ヶ月でtape-outを終えた",
+    "new": "9か月でtape-outを終えた",
+    "reason": "站上既有日文文章與本批其他篇一律寫「か月」，本篇用「ヶ月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "現在の段階：9ヶ月",
+    "new": "現在の段階：9か月",
+    "reason": "站上既有日文文章與本批其他篇一律寫「か月」，本篇用「ヶ月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "research",
+    "old": "9ヶ月でtape-out",
+    "new": "9か月でtape-out",
+    "reason": "站上既有日文文章與本批其他篇一律寫「か月」，本篇用「ヶ月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "2026年6月24日、OpenAIと半導体大手Broadcomは、Jalapeñoと呼ばれるカスタムチップを共同発表した。両社の公式記事はいずれも、これをOpenAI初の「Intelligence Processor」と呼び、用途はモデルの「推論」（ユーザーが質問を送ってからモデルが回答を生成するまでの計算処理）だとしている。両社の見出しは完全には一致しない。Broadcomは「LLM-Optimized Intelligence Processor」と書き、OpenAI自身は「LLM-optimized inference chip」と書いている。両記事とも、本文中に「GPU」という語は一度も登場しない。",
+    "new": "2026年6月24日、OpenAIと半導体大手Broadcomは、Jalapeñoと呼ばれるカスタムチップを共同発表しました。両社の公式記事はいずれも、これをOpenAI初の「Intelligence Processor」と呼び、用途はモデルの「推論」（ユーザーが質問を送ってからモデルが回答を生成するまでの計算処理）だとしています。両社の見出しは完全には一致しません。Broadcomは「LLM-Optimized Intelligence Processor」と書き、OpenAI自身は「LLM-optimized inference chip」と書いています。両記事とも、本文中に「GPU」という語は一度も登場しません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "本記事は2026年9月18日に、Broadcomの投資家向けサイトに掲載されたプレスリリース全文、同日にOpenAI公式サイトで公開された原文全文、そして2025年10月13日にBroadcomが発表した以前の協業に関するプレスリリース全文を確認したうえで執筆している。当サイトは実地の検証を行っておらず、購入や投資を勧めるものでもない。以下はすべて、この3本の公式記事に書かれている内容であり、その大半はまだ検証可能な数値を伴っていない。",
+    "new": "本記事は2026年9月18日に、Broadcomの投資家向けサイトに掲載されたプレスリリース全文、同日にOpenAI公式サイトで公開された原文全文、そして2025年10月13日にBroadcomが発表した以前の協業に関するプレスリリース全文を確認したうえで執筆しています。当サイトは実地の検証を行っておらず、購入や投資を勧めるものでもありません。以下はすべて、この3本の公式記事に書かれている内容であり、その大半はまだ検証可能な数値を伴っていません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "2026年6月24日、OpenAIとBroadcomはカスタムチップ「Jalapeño」を共同発表した。公式はこれを大規模言語モデルの推論向けにOpenAI初の「Intelligence Processor」と呼んでおり、両公式記事とも本文に「GPU」という語は登場しない。",
+    "new": "2026年6月24日、OpenAIとBroadcomはカスタムチップ「Jalapeño」を共同発表しました。公式はこれを大規模言語モデルの推論向けにOpenAI初の「Intelligence Processor」と呼んでおり、両公式記事とも本文に「GPU」という語は登場しません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両社によれば、Jalapeñoは設計から量産前工程（tape-out）までを9ヶ月で完了しており、現在はエンジニアリングサンプルが実験室で量産目標の周波数と消費電力によりGPT-5.3-Codex-Sparkなどの処理を実行している段階だという。6月24日付の両公式記事とも、出荷や発売の時期については一切記載していない。",
+    "new": "両社によれば、Jalapeñoは設計から量産前工程（tape-out）までを9か月で完了しており、現在はエンジニアリングサンプルが実験室で量産目標の周波数と消費電力によりGPT-5.3-Codex-Sparkなどの処理を実行している段階だといいます。6月24日付の両公式記事とも、出荷や発売の時期については一切記載していません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。並把「ヶ月」統一為站上與本批通用的「か月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "BroadcomとOpenAIによれば、この複数世代にわたる計算基盤は「2026年末までの初期導入を目指して設計」されており、データセンターのパートナーの一社としてMicrosoftの名を挙げている。ただしBroadcom自身は、ギガワット規模のデータセンター導入を将来予測に関する記述（forward-looking statement）の一つに位置づけ、「過度に依拠すべきではない」と注記している。",
+    "new": "BroadcomとOpenAIによれば、この複数世代にわたる計算基盤は「2026年末までの初期導入を目指して設計」されており、データセンターのパートナーの一社としてMicrosoftの名を挙げています。ただしBroadcom自身は、ギガワット規模のデータセンター導入を将来予測に関する記述（forward-looking statement）の一つに位置づけ、「過度に依拠すべきではない」と注記しています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "今回の発表と、2025年10月13日に両社が発表した「100億ワット規模のカスタムAIアクセラレータ」の協業は別々の発表であり、両公式記事ともJalapeñoをその100億ワットという規模に直接結び付けてはいない。",
+    "new": "今回の発表と、2025年10月13日に両社が発表した「100億ワット規模のカスタムAIアクセラレータ」の協業は別々の発表であり、両公式記事ともJalapeñoをその100億ワットという規模に直接結び付けてはいません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事とも、実測性能の数値や価格、他社チップとの比較は一切公表しておらず、「ワットあたりの性能は既存の最高水準を大きく上回る見込み」としか述べていない。OpenAIも自ら、最終的な性能はまだ計測中であるとしている。",
+    "new": "両公式記事とも、実測性能の数値や価格、他社チップとの比較は一切公表しておらず、「ワットあたりの性能は既存の最高水準を大きく上回る見込み」としか述べていません。OpenAIも自ら、最終的な性能はまだ計測中であるとしています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両社が発表した文章は、実のところ大部分が同じ原稿である。冒頭はどちらも「OpenAIが描く大規模言語モデル推論の未来像を軸に設計されたアクセラレータ」だと書いており、Jalapeñoは「あらゆる大規模言語モデルに対応できるよう柔軟に設計されている」とも両記事とも述べたうえで、これは業界全体の現在および将来のAIモデル推論ニーズに関するOpenAIの理解に基づいて設計されたものだとしている。両記事とも、JalapeñoがOpenAI以外の企業に販売・貸与・提供されるとは書いておらず、第三者の顧客名も一切挙げていない。",
+    "new": "両社が発表した文章は、実のところ大部分が同じ原稿です。冒頭はどちらも「OpenAIが描く大規模言語モデル推論の未来像を軸に設計されたアクセラレータ」だと書いており、Jalapeñoは「あらゆる大規模言語モデルに対応できるよう柔軟に設計されている」と両記事とも述べたうえで、これは業界全体の現在および将来のAIモデル推論ニーズに関するOpenAIの理解に基づいて設計されたものだとしています。両記事とも、JalapeñoがOpenAI以外の企業に販売・貸与・提供されるとは書いておらず、第三者の顧客名も一切挙げていません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。另把「とも…とも」重複的助詞改為「と両記事とも」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "公式記事には引き渡しの場面が描かれている。JalapeñoはBroadcomの社長兼CEOであるHock Tanと、もう一人の幹部Charlie Kawwasから、OpenAIのCEOであるSam Altmanとプレジデントを務めるGreg Brockmanへと手渡された。Brockmanの発言は二つに分かれている。「世界はコンピューティング能力によって動く経済へと向かっています」、そして「Jalapeñoは、コンピューティング能力をより豊富にし、AIをより速く、より信頼でき、個人にとっても企業にとってもより手頃な価格にするという、私たちの長期的なフルスタックインフラ戦略の一部です……」",
+    "new": "公式記事には引き渡しの場面が描かれています。JalapeñoはBroadcomの社長兼CEOであるHock Tanと、もう一人の幹部Charlie Kawwasから、OpenAIのCEOであるSam Altmanとプレジデントを務めるGreg Brockmanへと手渡されました。Brockmanの発言は二つに分かれています。「世界はコンピューティング能力によって動く経済へと向かっています」、そして「Jalapeñoは、コンピューティング能力をより豊富にし、AIをより速く、より信頼でき、個人にとっても企業にとってもより手頃な価格にするという、私たちの長期的なフルスタックインフラ戦略の一部です……」",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "公式が説明する役割分担はこうだ。OpenAIは大規模言語モデルの計算特性に関する自社の理解に基づき、チップアーキテクチャをゼロから設計し、BroadcomとCelesticaがこのプラットフォームを共に「産業化」したという。両記事の末尾ではこの二社をさらに分けて説明している。Broadcomはシリコン実装、ネットワーキングおよび接続技術を提供し（挙げられている製品はTomahawkネットワークシリコン一つのみ）、Celesticaは基板、ラック、システムに関する専門知識を提供したとしている。これはあくまで公式による自社の役割説明であり、当サイトが独自に検証することはできない。",
+    "new": "公式が説明する役割分担は次のとおりです。OpenAIは大規模言語モデルの計算特性に関する自社の理解に基づき、チップアーキテクチャをゼロから設計し、BroadcomとCelesticaがこのプラットフォームを共に「産業化」したといいます。両記事の末尾ではこの二社をさらに分けて説明しています。Broadcomはシリコン実装、ネットワーキングおよび接続技術を提供し（挙げられている製品はTomahawkネットワークシリコン一つのみ）、Celesticaは基板、ラック、システムに関する専門知識を提供したとしています。これはあくまで公式による自社の役割説明であり、当サイトが独自に検証することはできません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "注意しておきたいのは、本記事が引用する3本の公式記事すべてにおいて、Celesticaの役割はBroadcomとOpenAI側からの一方的な説明にとどまっている点だ。3本のうちどの記事にも、Celestica自身の発言は一つも含まれておらず、本記事もCelestica自身による説明を裏付けとして引用してはいない。",
+    "new": "注意しておきたいのは、本記事が引用する3本の公式記事すべてにおいて、Celesticaの役割はBroadcomとOpenAI側からの一方的な説明にとどまっている点です。3本のうちどの記事にも、Celestica自身の発言は一つも含まれておらず、本記事もCelestica自身による説明を裏付けとして引用していません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事はまた、設計工程の一部を高速化・最適化するためにOpenAI自身のモデルを利用したとも述べており、「ユーザーに提供されているのと同じモデル群が、将来のモデルを動かすための基盤の改善を助けている」としている。これは両社自身の説明であり、外部から検証する手段はない。",
+    "new": "両公式記事はまた、設計工程の一部を高速化・最適化するためにOpenAI自身のモデルを利用したとも述べており、「ユーザーに提供されているのと同じモデル群が、将来のモデルを動かすための基盤の改善を助けている」としています。これは両社自身の説明であり、外部から検証する手段はありません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事には、似ているようで実は異なる二つの表現がある。箇条書きの要点には「設計から量産（production）までわずか9ヶ月」とある一方、本文には「最初の設計から量産前工程（tape-out）までわずか9ヶ月」と書かれている。tape-outとは、チップの設計が確定し製造に引き渡される段階を指し、すでに量産・出荷されていることを意味しない。両記事の小見出しもどちらも「Nine-month tape-out」となっている。本文と小見出しに従えば、両社が述べているのは9ヶ月以内にtape-outを終えたということであり、9ヶ月以内に量産したということではない。この数字自体も両社の自己申告である。",
+    "new": "両公式記事には、似ているようで実は異なる二つの表現があります。箇条書きの要点には「設計から量産（production）までわずか9か月」とある一方、本文には「最初の設計から量産前工程（tape-out）までわずか9か月」と書かれています。tape-outとは、チップの設計が確定し製造に引き渡される段階を指し、すでに量産・出荷されていることを意味しません。両記事の小見出しもどちらも「Nine-month tape-out」となっています。本文と小見出しに従えば、両社が述べているのは9か月以内にtape-outを終えたということであり、9か月以内に量産したということではありません。この数字自体も両社の自己申告です。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。並把「ヶ月」統一為站上與本批通用的「か月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両社によれば、現在はエンジニアリングサンプルが実験室で、量産目標の周波数と消費電力によりGPT-5.3-Codex-Sparkを含む機械学習の処理を実行している段階だという。両記事ともここで記述を止めており、このサンプルと出荷製品との関係や、出荷・発売の時期については一切触れていない。性能についても現時点では方向性を示す表現にとどまる。OpenAIは自ら「最終的な性能はまだ計測中」だとしたうえで、初期テストではワットあたりの性能が「既存の最高水準を大きく上回る」と示されているとしているが、「既存の最高水準」が何を指すかは定義されておらず、特定のメーカー名も挙げられていない。詳細な技術レポートは「今後数ヶ月のうちに」公表されるという。",
+    "new": "両社によれば、現在はエンジニアリングサンプルが実験室で、量産目標の周波数と消費電力によりGPT-5.3-Codex-Sparkを含む機械学習の処理を実行している段階だといいます。両記事ともここで記述を止めており、このサンプルと出荷製品との関係や、出荷・発売の時期については一切触れていません。性能についても現時点では方向性を示す表現にとどまります。OpenAIは自ら「最終的な性能はまだ計測中」だとしたうえで、初期テストではワットあたりの性能が「既存の最高水準を大きく上回る」と示されているとしていますが、「既存の最高水準」が何を指すかは定義されておらず、特定のメーカー名も挙げられていません。詳細な技術レポートは「今後数か月のうちに」公表されるとしています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。並把「ヶ月」統一為站上與本批通用的「か月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "「史上最速のASIC開発サイクル」という同じ主張について、両社は異なる留保表現を用いている。Broadcomの表現は「高性能先進半導体においてこれまでに達成された中で最速かもしれない（what may be）ASIC開発サイクル」であり、同じ一文についてOpenAI自身の記事では「私たちが信じるところでは（what we believe to be）」となっている。どちらも留保付きの表現であり、本記事は原文どおり両方を並べて示す。",
+    "new": "「史上最速のASIC開発サイクル」という同じ主張について、両社は異なる留保表現を用いています。Broadcomの表現は「高性能先進半導体においてこれまでに達成された中で最速かもしれない（what may be）ASIC開発サイクル」であり、同じ一文についてOpenAI自身の記事では「私たちが信じるところでは（what we believe to be）」となっています。どちらも留保付きの表現であり、本記事は原文どおり両方を並べて示します。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事とも、導入規模については「gigawatt scale（ギガワット級）」としか記述しておらず、具体的なギガワット数、チップの個数、データセンターの所在地は書かれていない。公式の説明では、この複数世代にわたるプラットフォームは「2026年末までの初期導入を目指して設計されており、その後数年かけて拡大していく」とされている。Hock Tanはデータセンターのパートナーの一社としてMicrosoftの名を挙げており、その言葉をそのまま引くと「自社の業界をリードするシリコンをOpenAIと直接共同開発することで、2026年からMicrosoftおよびその他のパートナーとともにギガワット規模のデータセンター導入を実現する」としている。Microsoftは両公式記事の中で名前が挙げられている唯一のデータセンターパートナーであり、それ以外は一律「その他のパートナー」と書かれている。",
+    "new": "両公式記事とも、導入規模については「gigawatt scale（ギガワット級）」としか記述しておらず、具体的なギガワット数、チップの個数、データセンターの所在地は書かれていません。公式の説明では、この複数世代にわたるプラットフォームは「2026年末までの初期導入を目指して設計されており、その後数年かけて拡大していく」とされています。Hock Tanはデータセンターのパートナーの一社としてMicrosoftの名を挙げており、その言葉をそのまま引くと「2026年からMicrosoftおよびその他のパートナーとともにギガワット規模のデータセンターを導入する」としています。Microsoftは両公式記事の中で名前が挙げられている唯一のデータセンターパートナーであり、それ以外は一律「その他のパートナー」と書かれています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。另：原稿只引 Hock Tan 的後半句「2026 年開始，與微軟及其他合作夥伴部署十億瓦等級的資料中心」，譯文多補了前半句廠商自誇（自社の業界をリードするシリコン），比原稿多出宣傳語氣。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "この導入時期の記述には見落としやすい注記が一つある。Broadcomはプレスリリースの末尾に、米国証券法に基づく「将来予測に関する記述」の注記を置き、その中で「ギガワット規模のデータセンターの導入」を将来予測に関する記述の一つとして明確に位置づけたうえで、「これらの記述に過度に依拠すべきではない」と明記している。つまりこの導入時期は、Broadcom自身がまだ実現しておらず、変更される可能性もあると認めている計画にすぎない。",
+    "new": "この導入時期の記述には見落としやすい注記が一つあります。Broadcomはプレスリリースの末尾に、米国証券法に基づく「将来予測に関する記述」の注記を置き、その中で「ギガワット規模のデータセンターの導入」を将来予測に関する記述の一つとして明確に位置づけたうえで、「これらの記述に過度に依拠すべきではない」と明記しています。つまりこの導入時期は、Broadcom自身がまだ実現しておらず、変更される可能性もあると認めている計画にすぎません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "もう一つ分けて考えるべきなのが、2025年10月13日のそれより前の発表だ。当時両社は、100億ワット（10ギガワット）規模のカスタムAIアクセラレータを共同で導入すると発表し、Broadcomによるラック導入は「2026年後半の開始、2029年末までの完了を目標とする」と明記、両社はラック導入に関するterm sheet（意向書）にすでに署名していた。この発表ではまた、OpenAIが当時「すでに週間アクティブユーザー数8億人超に成長していた」とも書かれている。2026年6月のこの記事は「100億ワット」という数字を繰り返しておらず、Jalapeñoがそのアクセラレータであるとも書いていない。これらは別々の発表であり、そのまま同一視すべきではない。",
+    "new": "もう一つ分けて考えるべきなのが、2025年10月13日のそれより前の発表です。当時両社は、100億ワット（10ギガワット）規模のカスタムAIアクセラレータを共同で導入すると発表し、Broadcomによるラック導入は「2026年後半の開始、2029年末までの完了を目標とする」と明記、両社はラック導入に関するterm sheet（意向書）にすでに署名していました。この発表ではまた、OpenAIが当時「すでに週間アクティブユーザー数8億人超に成長していた」とも書かれています。2026年6月のこの記事は「100億ワット」という数字を繰り返しておらず、Jalapeñoがそのアクセラレータであるとも書いていません。これらは別々の発表であり、そのまま同一視すべきではありません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "この発表には性質の異なる3種類の内容が混在している。一つは外部から確認できる行動の事実で、例えば両社が6月24日にそれぞれ公式記事を発表したことや、両記事の表現がどこで異なるかといった点である。もう一つは社内でしか把握できず外部からは検証できない説明で、例えば9ヶ月でのtape-out完了、実験室でのエンジニアリングサンプルの稼働、「ワットあたりの性能が既存の最高水準を大きく上回る」、「週間アクティブユーザー8億人超」といった内容だ。そして三つ目は将来に関する計画であり、導入時期などがこれにあたるが、これについてはBroadcom自身も過度に依拠しないよう注意を促している。",
+    "new": "この発表には性質の異なる3種類の内容が混在しています。一つは外部から確認できる行動の事実で、例えば両社が6月24日にそれぞれ公式記事を発表したことや、両記事の表現がどこで異なるかといった点です。もう一つは社内でしか把握できず外部からは検証できない説明で、例えば9か月でのtape-out完了、実験室でのエンジニアリングサンプルの稼働、「ワットあたりの性能が既存の最高水準を大きく上回る」、「週間アクティブユーザー8億人超」といった内容です。そして三つ目は将来に関する計画であり、導入時期などがこれにあたりますが、これについてはBroadcom自身も過度に依拠しないよう注意を促しています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。並把「ヶ月」統一為站上與本批通用的「か月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事には、過剰に解釈されがちな一文がある。「AIがエンジニアによるより良いチップのより迅速な設計を助けられるなら、業界全体の計算コストを引き下げ、先進的なAIへのアクセスをより多くの人に広げる一助となり得る」というものだ。この一文は「もし」で始まり、業界全体について述べており、具体的な数字や割合は一切付いておらず、Jalapeño自体がどれだけ安くなるかも述べていない。2026年9月18日時点で確認した限り、両記事にコスト削減の割合を示す記述は一切登場しない。",
+    "new": "両公式記事には、過剰に解釈されがちな一文があります。「AIがエンジニアによるより良いチップのより迅速な設計を助けられるなら、業界全体の計算コストを引き下げ、先進的なAIへのアクセスをより多くの人に広げる一助となり得る」というものです。この一文は「もし」で始まり、業界全体について述べており、具体的な数字や割合は一切付いておらず、Jalapeño自体がどれだけ安くなるかも述べていません。2026年9月18日時点で確認した限り、両記事にコスト削減の割合を示す記述は一切登場しません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "本記事が2026年9月18日まで確認した限り、両公式記事ともチップの製造プロセス、製造を担うファウンドリ、メモリの種類と容量、消費電力（ワット数）については記載しておらず、NVIDIAや他社のチップとの直接比較も一切行っていない。OpenAIの記事には日付のない条件文が一つあり、コスト・速度・信頼性の改善は「より速いChatGPTの回答」や「構築コストがより低いAPI製品」などとして「現れ得る（can show up as）」としている。それ以外に、ユーザーがいつ違いを感じられるかを述べた文は一つもない。",
+    "new": "本記事が2026年9月18日まで確認した限り、両公式記事ともチップの製造プロセス、製造を担うファウンドリ、メモリの種類と容量、消費電力（ワット数）については記載しておらず、NVIDIAや他社のチップとの直接比較も一切行っていません。OpenAIの記事には日付のない条件文が一つあり、コスト・速度・信頼性の改善は「より速いChatGPTの回答」や「構築コストがより低いAPI製品」などとして「現れ得る（can show up as）」としています。それ以外に、ユーザーがいつ違いを感じられるかを述べた文は一つもありません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事とも、このチップがOpenAI以外の企業に販売・貸与・提供されるとは書いておらず、第三者の顧客名や購入方法についても一切触れていない。公式の説明によれば、現在の状態はエンジニアリングサンプルが実験室で機械学習の処理を実行している段階であり、6月24日付の両公式記事とも出荷や発売の時期は記載していない。",
+    "new": "両公式記事とも、このチップがOpenAI以外の企業に販売・貸与・提供されるとは書いておらず、第三者の顧客名や購入方法についても一切触れていません。公式の説明によれば、現在の状態はエンジニアリングサンプルが実験室で機械学習の処理を実行している段階であり、6月24日付の両公式記事とも出荷や発売の時期は記載していません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "公式記事はこの問いに答えていない。OpenAIとBroadcomは、Jalapeñoのワットあたりの性能が「既存の最高水準を大きく上回る」としか述べておらず、「既存の最高水準」がどのチップを指すのかも定義しておらず、NVIDIAや他のメーカーの名前も挙げていない。テストの数値や価格比較も公表されていない。公式によれば、詳細な性能に関する技術レポートは今後数ヶ月のうちに公表されるという。",
+    "new": "公式記事はこの問いに答えていません。OpenAIとBroadcomは、Jalapeñoのワットあたりの性能が「既存の最高水準を大きく上回る」としか述べておらず、「既存の最高水準」がどのチップを指すのかも定義しておらず、NVIDIAや他のメーカーの名前も挙げていません。テストの数値や価格比較も公表されていません。公式によれば、詳細な性能に関する技術レポートは今後数か月のうちに公表されるとしています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。並把「ヶ月」統一為站上與本批通用的「か月」。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "両公式記事ともそのようには書いていない。この発表は、OpenAIが自社モデルの推論向けにカスタムチップを設計したという内容であり、OpenAIが他の供給元のチップや計算基盤の利用をやめるとは述べていない。この点について公式記事はまったく触れていない。",
+    "new": "両公式記事ともそのようには書いていません。この発表は、OpenAIが自社モデルの推論向けにカスタムチップを設計したという内容であり、OpenAIが他の供給元のチップや計算基盤の利用をやめるとは述べていません。この点について公式記事はまったく触れていません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "同じ発表ではない。2025年10月13日の発表は、100億ワット規模のカスタムAIアクセラレータを導入する複数年にわたる協業についてのもので、そのうちBroadcomによるラック導入は「2026年後半の開始、2029年末までの完了」を目標としている。2026年6月24日のこの発表はJalapeñoチップそのものを発表したものだが、その100億ワットという数字は繰り返しておらず、Jalapeñoがその協業で導入されるアクセラレータであるとも明言していない。両者は別物として捉えるべきであり、自己判断で同一視すべきではない。",
+    "new": "同じ発表ではありません。2025年10月13日の発表は、100億ワット規模のカスタムAIアクセラレータを導入する複数年にわたる協業についてのもので、そのうちBroadcomによるラック導入は「2026年後半の開始、2029年末までの完了」を目標としています。2026年6月24日のこの発表はJalapeñoチップそのものを発表したものですが、その100億ワットという数字は繰り返しておらず、Jalapeñoがその協業で導入されるアクセラレータであるとも明言していません。両者は別物として捉えるべきであり、自己判断で同一視すべきではありません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAIの記事には条件文が一つあり、コスト・速度・信頼性のあらゆる改善は「より速いChatGPTの回答」、「待ち時間が減るCodexタスク」、「構築コストがより低いAPI製品」などとして「現れ得る（can show up as）」としている。ただしこの一文には日付も割合も保証も付いておらず、それがJalapeñoによるものだとも述べていない。公式によれば、Jalapeñoは現在も実験室でのテスト段階にあり、実際のサービスへの導入までにはまだ計画段階の期間が残っている。",
+    "new": "OpenAIの記事には条件文が一つあり、コスト・速度・信頼性のあらゆる改善は「より速いChatGPTの回答」、「待ち時間が減るCodexタスク」、「構築コストがより低いAPI製品」などとして「現れ得る（can show up as）」としています。ただしこの一文には日付も割合も保証も付いておらず、それがJalapeñoによるものだとも述べていません。公式によれば、Jalapeñoは現在も実験室でのテスト段階にあり、実際のサービスへの導入までにはまだ計画段階の期間が残っています。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "これはBroadcomとOpenAIがJalapeñoのために選んだ公式な呼び方である。2026年9月18日時点で確認した限り、両公式記事の本文に「GPU」という語は一度も登場しない。公式の説明では、このチップは現代の大規模言語モデルの推論向けに設計されたものであり、過去の他のAIワークロード向けに作られたものを転用した汎用アクセラレータではないとされている。ただし公式記事は製造プロセスやトランジスタ数などの技術仕様を公表していないため、本記事ではハードウェア設計上GPUと具体的に何が違うのかについて、これ以上比較することはできない。",
+    "new": "これはBroadcomとOpenAIがJalapeñoのために選んだ公式な呼び方です。2026年9月18日時点で確認した限り、両公式記事の本文に「GPU」という語は一度も登場しません。公式の説明では、このチップは現代の大規模言語モデルの推論向けに設計されたものであり、過去の他のAIワークロード向けに作られたものを転用した汎用アクセラレータではないとされています。ただし公式記事は製造プロセスやトランジスタ数などの技術仕様を公表していないため、本記事ではハードウェア設計上GPUと具体的に何が違うのかについて、これ以上比較することはできません。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ja",
+    "file": "pack",
+    "old": "外部から確認できることは一つだけだ。2026年6月24日にOpenAIとBroadcomがそれぞれこのニュースを公表したという事実である。それ以外はすべて、両社自身の説明か、将来に関する計画にすぎない。「9ヶ月以内にtape-outを完了」「エンジニアリングサンプルが実験室で稼働中」——これらは外部から検証する手段がない。「2026年末までに導入を開始」——Broadcomは自社のプレスリリース末尾で、ギガワット規模のデータセンター導入を将来予測に関する記述の一つとして位置づけ、過度に依拠しないよう注記している。「ワットあたりの性能は既存の最高水準を大きく上回る」——OpenAIは自ら最終的な性能をまだ計測中だとしている。「週間アクティブユーザー8億人超」——これは2025年10月13日の発表に含まれる自己申告の数字である。本記事は実地の検証を一切行っておらず、チップの価格比較や投資に関する助言も行っていない。確認日：2026年9月18日。",
+    "new": "外部から確認できることは一つだけです。2026年6月24日にOpenAIとBroadcomがそれぞれこのニュースを公表したという事実です。それ以外はすべて、両社自身の説明か、将来に関する計画にすぎません。「9か月以内にtape-outを完了」「エンジニアリングサンプルが実験室で稼働中」——これらは外部から検証する手段がありません。「2026年末までに導入を開始」——Broadcomは自社のプレスリリース末尾で、ギガワット規模のデータセンター導入を将来予測に関する記述の一つとして位置づけ、過度に依拠しないよう注記しています。「ワットあたりの性能は既存の最高水準を大きく上回る」——OpenAIは自ら最終的な性能をまだ計測中だとしています。「週間アクティブユーザー8億人超」——これは2025年10月13日の発表に含まれる自己申告の数字です。本記事は実地の検証を一切行っておらず、チップの価格比較や投資に関する助言も行っていません。確認日：2026年9月18日。",
+    "reason": "本篇正文用だ・である體，但本批其他 19 篇、站上既有日文文章，以及本篇自己的 description 與 FAQ 問句都用です・ます體，同一批文章文體不一致；本筆只改句尾，內容不動。並把「ヶ月」統一為站上與本批通用的「か月」。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "同年8月6日に公式が新モデルへの置き換えを明言した時点",
+    "new": "同年8月6日に公式が新モデルによる置き換えを予告した時点",
+    "reason": "原稿是「官方寫明新模型將取代它」，「置き換えを明言した」讀得成置換已經完成；改用「予告した」保住未來式，與內文、摘要的「置き換えます」一致。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "これらの情報を使うことで回答がより役立つかどうかを判断する",
+    "new": "これらの情報をいつ使えば回答がより役立つかを判断する",
+    "reason": "原稿是「會判斷何時用這些內容能讓回答更有幫助」，譯成「かどうか（要不要用）」換掉了原意的「何時用」。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "当サイト自身の実測結果でもなく",
+    "new": "当サイト自身が検証した結果でもなく",
+    "reason": "統一用語表 ja 用「実地の検証」，同篇 [4] 也已用該寫法；「実測」在日文指實地測量數值，用在軟體服務不通。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ja",
+    "file": "research",
+    "old": "難しい問題で日常じゃない",
+    "new": "難しい問題で日常ではない",
+    "reason": "圖上短字用口語的「じゃない」，與正文一致的書面語不符；字數 12 字仍在說明 17 字上限內。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "地域の包含・除外リストにはそれぞれ最大2,500件の地点コードを登録でき",
+    "new": "地域の包含・除外リストには最大2,500件の地点コードを登録でき",
+    "reason": "來源原文是 You can include up to 2,500 IDs in geographic inclusion and exclusion lists，沒有分開計算；研究紀錄第 212／338 行明載前一版誤寫「各自」已被改掉，譯文又把「それぞれ」加回來。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "ドキュメント総覧ページの更新履歴によると",
+    "new": "ドキュメントの概要ページの更新履歴によると",
+    "reason": "同一頁在 sources 譯為「広告の概要（Overview - Ads）」，正文用「総覧」指同一頁不一致。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "オリジナルイラスト:左側に",
+    "new": "オリジナルイラスト：左側に",
+    "reason": "同批其他三篇 ja 的 alt 都用全形冒號，半形冒號夾在日文中排版不一致。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "2026年5月の発表:ベータ版のセルフサーブ広告ツール",
+    "new": "2026年5月の発表：ベータ版のセルフサーブ広告ツール",
+    "reason": "同批其他三篇 ja 的小標一律用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "広告の購入方法:アカウント",
+    "new": "広告の購入方法：アカウント",
+    "reason": "同批其他三篇 ja 的小標一律用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "課金の仕組み:3種類のキャンペーン目的と入札戦略",
+    "new": "課金の仕組み：3種類のキャンペーン目的と入札戦略",
+    "reason": "同批其他三篇 ja 的小標一律用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "4コマ図解:左上は",
+    "new": "4コマ図解：左上は",
+    "reason": "同批其他三篇 ja 的圖說與 alt 都用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "ターゲティング条件:地域",
+    "new": "ターゲティング条件：地域",
+    "reason": "同批其他三篇 ja 的小標一律用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "今も変化中:現状を自分で確認する方法",
+    "new": "今も変化中：現状を自分で確認する方法",
+    "reason": "同批其他三篇 ja 的小標一律用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "同じバージョンですか?",
+    "new": "同じバージョンですか？",
+    "reason": "同批其他 ja 篇的 FAQ 問句用全形問號，半形問號與日文行文不一致。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "最低いくらから利用できますか?",
+    "new": "最低いくらから利用できますか？",
+    "reason": "同批其他 ja 篇的 FAQ 問句用全形問號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "表示されるようになりますか?",
+    "new": "表示されるようになりますか？",
+    "reason": "同批其他 ja 篇的 FAQ 問句用全形問號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "現時点でこのツールを利用できますか?",
+    "new": "現時点でこのツールを利用できますか？",
+    "reason": "同批其他 ja 篇的 FAQ 問句用全形問號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "回答に影響しますか?",
+    "new": "回答に影響しますか？",
+    "reason": "同批其他 ja 篇的 FAQ 問句用全形問號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAI公式発表:New ways",
+    "new": "OpenAI公式発表：New ways",
+    "reason": "同批其他 ja 篇的 source 標題前綴用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAI開発者ドキュメント:広告の概要",
+    "new": "OpenAI開発者ドキュメント：広告の概要",
+    "reason": "同批其他 ja 篇的 source 標題前綴用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAI開発者ドキュメント:入札と予算",
+    "new": "OpenAI開発者ドキュメント：入札と予算",
+    "reason": "同批其他 ja 篇的 source 標題前綴用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAI開発者ドキュメント:ターゲティング設定",
+    "new": "OpenAI開発者ドキュメント：ターゲティング設定",
+    "reason": "同批其他 ja 篇的 source 標題前綴用全形冒號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "クリック課金(CPC)入札、計測ツールの拡充により",
+    "new": "クリック課金（CPC）入札、計測ツールの拡充により",
+    "reason": "同篇 [11] 同一詞寫成「クリック課金（CPC）」全形括號，同一篇內兩種寫法並存。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "クリック課金(CPC)入札の導入",
+    "new": "クリック課金（CPC）入札の導入",
+    "reason": "同篇 [11] 同一詞寫成全形括號，統一為全形。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "pack",
+    "old": "従来のインプレッション課金(CPM)と新しいクリック課金(CPC)の両方を",
+    "new": "従来のインプレッション課金（CPM）と新しいクリック課金（CPC）の両方を",
+    "reason": "同篇 [11]「インプレッション課金（CPM）」「クリック課金（CPC）」用全形括號，統一為全形。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "research",
+    "old": "自助広告、段階的に拡大",
+    "new": "セルフサーブ広告、順次提供",
+    "reason": "正文一律用「セルフサーブ広告」，「自助広告」是中文直譯、日文不通用；「順次提供」是統一用語表對「陸續推出」的寫法。13 字仍在 hero_label 15 字上限內。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ja",
+    "file": "research",
+    "old": "クリックとコンバージョンは同じ課金",
+    "new": "コンバージョンでもクリック課金",
+    "reason": "原稿短字是「點擊與轉換都算點擊」，原譯只說「計費相同」，漏掉「都按點擊計費」這個本文重點；15 字在 17 字上限內。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "カリフォルニア州SB 53が定める「破局的リスク」の法定基準も",
+    "new": "カリフォルニア州SB 53が定める「壊滅的リスク」の法定基準も",
+    "reason": "ジェトロ（jetro.go.jp）的 SB 53 報導把 catastrophic risk 譯為「壊滅的リスク」並列同樣的 50 人／10 億美元門檻：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "PFは「破局的リスク」について異なる定義を用いる場合があり、FGFのような法定の計算量基準にも縛られない。",
+    "new": "PFは「壊滅的リスク」について異なる定義を用いる場合があり、FGFのような法定の計算量基準にも縛られない。",
+    "reason": "同上，統一為 jetro.go.jp SB 53 報導所用的「壊滅的リスク」：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "が定義する破局的リスクを扱うものだとしており",
+    "new": "が定義する壊滅的リスクを扱うものだとしており",
+    "reason": "同上，統一為「壊滅的リスク」：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "透明性報告書に含まれる破局的リスク評価やその結果",
+    "new": "透明性報告書に含まれる壊滅的リスク評価やその結果",
+    "reason": "同上，統一為「壊滅的リスク」：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "破局的リスクを扱うものだと自ら述べており",
+    "new": "壊滅的リスクを扱うものだと自ら述べており",
+    "reason": "同上，統一為「壊滅的リスク」：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "同法が「破局的リスク」について定める法定基準こそが",
+    "new": "同法が「壊滅的リスク」について定める法定基準こそが",
+    "reason": "同上，統一為「壊滅的リスク」：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "PFは「破局的リスク」について異なる定義を用いる場合があり、FGFのような法定の計算量基準にも縛られないと述べています",
+    "new": "PFは「壊滅的リスク」について異なる定義を用いる場合があり、FGFのような法定の計算量基準にも縛られないと述べています",
+    "reason": "同上，統一為「壊滅的リスク」：https://www.jetro.go.jp/biznews/2025/10/6537f3596ce4bce1.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "必要な範囲で、内容を遮蔽することを認めています",
+    "new": "必要な範囲で、内容を黒塗りにすることを認めています",
+    "reason": "日文的「遮蔽」指物理遮擋（遮へい措置），文件塗銷不用這個詞；厚生労働省的部分開示判斷基準用「覆い隠す」「削除」，日本報導通稱「黒塗り」：https://www.mhlw.go.jp/jouhou/koukai03/04.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "遮蔽した場合は、公開版において遮蔽の性質と理由を、遮蔽を正当化する事情が許す範囲内で説明し、遮蔽していない情報を5年間保存しなければなりません",
+    "new": "黒塗りにした場合は、公開版においてその性質と理由を、黒塗りを正当化する事情が許す範囲内で説明し、黒塗りにしていない情報を5年間保存しなければなりません",
+    "reason": "同上，同一段四處「遮蔽」一併改為日文通行的「黒塗り」，並保留「以遮蔽的理由所允許的範圍為限」這個限定：https://www.mhlw.go.jp/jouhou/koukai03/04.html"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "3つの追跡カテゴリー：生物・化学、サイバーセキュリティ、AIの自己改良",
+    "new": "3つの追跡カテゴリー：生物・化学、サイバーセキュリティ、AIの自己改善",
+    "reason": "同篇正文與圖解都寫「自己改善」，只有這一格寫「自己改良」，同一個 PF 類別在一篇裡兩種寫法。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ja",
+    "file": "pack",
+    "old": "オリジナルイラスト。左は本フレームワークを表す文書",
+    "new": "オリジナルイラスト：左は本フレームワークを表す文書",
+    "reason": "同批其他三篇 ja 的 hero alt 都用「オリジナルイラスト：」起頭。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAIのAPIを直接使って自社のニーズを最もよく理解した専用アプリケーションを作ることもできます",
+    "new": "OpenAIのAPIを直接使って自社専用のアプリケーションを作ることもできます",
+    "reason": "原稿只寫「打造自己的專屬應用程式」，譯文多出「最了解自身需求」這個子句，而且日文語意不通（應用程式不會「理解需求」）。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "独立したランキングではなく、あくまで提供元自身による比較結果として参考にするのが適切です",
+    "new": "独立したランキングではなく、あくまでベンダー自身による比較結果として参考にするのが適切です",
+    "reason": "同篇「データ提供元」專指 Daloopa、PitchBook 等資料商，這裡的「提供元」卻是指 OpenAI，同一個詞兩個所指會誤讀；原稿是「廠商」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "客観的なランキングとしてではなく、提供元自身の見解の参考として捉えるのが適切です",
+    "new": "客観的なランキングとしてではなく、ベンダー自身の見解の参考として捉えるのが適切です",
+    "reason": "同上，避免與同篇指資料商的「データ提供元」混淆；原稿是「廠商」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "作られたフロンティア インテリジェンス",
+    "new": "作られたフロンティア・インテリジェンス",
+    "reason": "日文外來語複合詞用中黑點連接（同批 frontier-governance 篇即寫「フロンティア・ガバナンス・フレームワーク」），半形空白是英文排版習慣。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "OpenAIの公式発表をもとに整理。確認日2026年9月18日。",
+    "new": "OpenAIの公式発表をもとにデータ連携の方法を整理。確認日2026年9月18日。",
+    "reason": "原稿表格圖說是「依 OpenAI 官方公告整理資料串接方式」，譯文漏掉「資料串接方式」，讀者看不出這張表整理的是什麼。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "research",
+    "old": "機関限定・根拠まで遡及",
+    "new": "機関限定・根拠まで遡れる",
+    "reason": "日文「遡及」指法律溯及既往，追溯來源要用「遡る／遡れる」（同圖說明已寫「数字を表まで遡れる」）；12 字在 hero_label 15 字上限內。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ja",
+    "file": "research",
+    "old": "根拠を遡及",
+    "new": "根拠まで遡る",
+    "reason": "同上，「遡及」在日文不指追溯來源；6 字在小標 10 字上限內。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ja",
+    "file": "pack",
+    "old": "Hugging Faceが今年のはじめに起こしたセキュリティインシデント",
+    "new": "Hugging Faceで今年起きたセキュリティインシデント",
+    "reason": "事實漂移兩處：原稿是「今年稍早」而事件在 2026 年 7 月，「今年のはじめ」會讀成年初；且原稿是「Hugging Face 的資安事件」，「起こした」把責任歸給 Hugging Face，與本文（入侵者是外部 AI 代理）相反。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ja",
+    "file": "pack",
+    "old": "その書簡の一節を引用しています",
+    "new": "その書簡で述べた点の1つに触れています",
+    "reason": "原稿是「提到信裡的一點」；本文下一段明說無法確認 NVIDIA 站上那份 PDF 就是同一封信，寫成「引用一節」會讓讀者以為公告逐字複製了信的文字。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "電話は着信対応が中心、対応言語は非公開",
+    "new": "電話は着信対応が中心、対応言語は記載なし",
+    "reason": "原稿是「支援語言未列明」，限定在本文查核的四份文件沒有列出；「非公開」等於斷定 OpenAI 刻意不公開，超出本文的查核範圍，也與小節標題的「記載なし」不一致。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ja",
+    "file": "pack",
+    "old": "音声の対応言語は非公開",
+    "new": "音声の対応言語は記載なし",
+    "reason": "同上，原稿「聲音語言未列明」是「文件沒列」不是「官方不公開」；此格與 research 的 diagram.caption 逐字相同，另交一筆。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ja",
+    "file": "research",
+    "old": "音声の対応言語は非公開",
+    "new": "音声の対応言語は記載なし",
+    "reason": "與 pack 的 block15.image.caption 同一句，兩處要一起改。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ja",
+    "file": "research",
+    "old": "12種の声は英語と葡語のみ",
+    "new": "12種の声は英語とポルトガル語のみ",
+    "reason": "「葡語」是中文式簡稱，現代日文不通用，正文一律寫「ポルトガル語」；圖上與正文用詞要一致。改後 17 字，仍在說明 17 字上限內。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ja",
+    "file": "research",
+    "old": "着信のみ",
+    "new": "着信が中心",
+    "reason": "原稿小標是「接聽為主」，限定語被改成絕對的「のみ」；而同一格的說明寫「発信は提携先経由」（外撥要走合作夥伴），兩句互相矛盾。改後 5 字，在小標 10 字上限內。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "Rustへの書き直しを行い、現在は正式環境のリクエストの95%を処理しています",
+    "new": "Rustへの書き直しを行い、現在は本番環境のリクエストの95%を処理しています",
+    "reason": "日文的 production 是「本番環境」，「正式環境」是中文詞，日文讀者讀不出是正式上線環境；同批 nvidia 篇已用「本番環境」。四處一起改。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "その設定には全サービスの全ての正式環境ルールが含まれています",
+    "new": "その設定には全サービスの全ての本番環境ルールが含まれています",
+    "reason": "同上，「正式環境」→「本番環境」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "現在は正式環境のリクエストの95%を処理し、今後数週間以内に",
+    "new": "現在は本番環境のリクエストの95%を処理し、今後数週間以内に",
+    "reason": "同上，「正式環境」→「本番環境」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "新バージョンは現在、正式環境のリクエストの95%を処理している",
+    "new": "新バージョンは現在、本番環境のリクエストの95%を処理している",
+    "reason": "同上，「正式環境」→「本番環境」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "データを何世代保存しているか",
+    "new": "1件のデータを何個の複製として保持しているか",
+    "reason": "原稿是「資料保存幾份」（副本數）；「何世代保存」講的是備份世代／保存期間，換掉了爭點。研究紀錄確認原文缺的是 replica／replication／redundancy。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "データを何世代保存するかも書かれていません",
+    "new": "1件のデータが何個の複製（レプリカ）として保持されるかも書かれていません",
+    "reason": "同上；同一句前半剛說原文沒有出現 replica 這個字，後半卻寫成「何世代保存」，前後對不起來。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "us0、us1、eu0という3つのサンプルのデータベースコード",
+    "new": "us0、us1、eu0という3つのサンプルのデータベース識別子",
+    "reason": "原稿是「範例資料庫代號」；日文的「コード」在技術文章裡先被讀成原始碼，會誤解成圖上貼了程式碼範例。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "データベースのノードを表すために模式図で使われているサンプルコード",
+    "new": "データベースのノードを表すために模式図で使われているサンプルの識別子",
+    "reason": "同上，且「サンプルコード」在日文就是「程式碼範例」的固定說法，讀者會完全誤解；這裡指的是 us0／us1／eu0 這種代號。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ja",
+    "file": "pack",
+    "old": "当サイトも独自の検証は行っていません",
+    "new": "当サイトも実地の検証は行っていません",
+    "reason": "全批統一用語：「本站沒有實測」ja 一律用「実地の検証」，本篇其他各篇皆已照此寫。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ja",
+    "file": "pack",
+    "old": "廠商の主張には「Googleによれば」と明記します",
+    "new": "ベンダー側の主張には「Googleによれば」と明記します",
+    "reason": "「廠商」是中文詞，日文沒有這個詞、也沒有這個漢字用法，讀者讀不懂這句在說誰的宣稱。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ja",
+    "file": "pack",
+    "old": "「連結型アーキテクチャに代わる、より簡潔な選択肢」",
+    "new": "「カスケード型アーキテクチャに代わる、より簡潔な選択肢」",
+    "reason": "來源原文是 a more streamlined alternative to cascaded architectures（研究紀錄 ai-news-gemini-38-live-20260915.json 的 verified_facts）；日文語音 AI 一律寫「カスケード型」，「連結型」讀不出串接式管線的意思。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ja",
+    "file": "pack",
+    "old": "本文と小見出しにも両モデルをまとめてGemini Appと記す箇所があります",
+    "new": "本文と小見出しにも両モデルをまとめてGemini Appに含めて記す箇所があります",
+    "reason": "日文「AをBと記す」＝把 A 稱為 B，現譯會讀成「發表文把兩款模型合稱為 Gemini App」；原稿是「內文與小節標題也把兩款模型合稱寫進（Gemini App）」。後段 FAQ 的同一件事已寫成「そこに記す」，這裡也要對齊。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ja",
+    "file": "pack",
+    "old": "誘導攻撃への耐性向上が引き続き課題である",
+    "new": "ジェイルブレイクへの耐性向上が引き続き課題である",
+    "reason": "模型卡原文是 jailbreak resistance（研究紀錄 verified_facts：ongoing work on jailbreak resistance）；日文通行寫法是「ジェイルブレイク」，「誘導攻撃」不是既有術語，日文讀者對應不到這個已知風險。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ko",
+    "file": "pack",
+    "old": "수백만 개발자의 워크플로를 떠받치고",
+    "new": "수백만 개의 개발자 워크플로를 떠받치고",
+    "reason": "來源原文是 millions of developer workflows（數百萬個工作流程），研究紀錄特別註明「不是數百萬名開發者」，同一頁 Sottiaux 的引言才是 millions of Python developers，譯文把主詞換成開發者人數。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ko",
+    "file": "pack",
+    "old": "비교 평가하지 않았으며, 투자 조언도 구매 관련 조언도 아닙니다",
+    "new": "비교 평가하지 않았으며, 이 기사는 투자 조언이나 구매 조언을 제공하지 않습니다",
+    "reason": "原稿是「本站沒有…也不提供任何投資或採購建議」，譯文承接的主詞是「본 사이트」，變成「本站不是建議」而且丟掉「不提供」；同篇 s1 的對應句就是補主詞的寫法。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "ko",
+    "file": "pack",
+    "old": "직접 시험해 보지 않았고, 투자 조언도 구매 관련 조언도 아닙니다",
+    "new": "직접 시험해 보지 않았고, 이 기사는 투자 조언도 구매 관련 조언도 아닙니다",
+    "reason": "同上，callout 這一句的主詞也是「본 사이트」，照原稿「本文…也不是投資或採購建議」要把主詞換成這篇文章，統一用語表的「투자 조언이 아닙니다」寫法保留。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ko",
+    "file": "pack",
+    "old": "독창적 일러스트: 둥근 토큰 세 개가 중앙의 크고 둥근 사각형으로 모여들어 여러 투자자가 한 라운드에 출자했음을 나타낸다. 오른쪽 타임라인은 세 지점 중 두 곳은 체크, 한 곳은 점선 원으로 표시되어 자본이 분할 납입됨을 보여준다.",
+    "new": "오리지널 일러스트: 왼쪽의 둥근 토큰 세 개가 가는 선을 따라 중앙의 크고 둥근 사각형으로 모여들어 여러 투자자가 한 라운드에 출자했음을 나타냅니다. 오른쪽 타임라인의 세 지점 중 앞의 두 곳은 체크, 마지막 한 곳은 점선 원으로 표시되어 약정 자본이 분할 납입되며 마지막 회차는 아직 기한이 되지 않았음을 보여줍니다.",
+    "reason": "這一格是全篇唯一的 한다체（其餘 103 處都是 합니다체），開頭「독창적 일러스트」也與其他三篇的「오리지널 일러스트」不一致；同時補回原稿的「承諾資本」與「最後一批還沒到期」，仍在 alt 200 字元內。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ko",
+    "file": "pack",
+    "old": "유료 구독자는 5,000만 명 이상이며",
+    "new": "구독자는 5,000만 명 이상이며",
+    "reason": "來源原文是 over 50 million subscribers，研究紀錄註明官方沒有定義 subscriber，本篇表格也寫「공식 발표는 산정 방식을 정의하지 않음」，譯文自行加上「유료」是原稿沒有的限定詞。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ko",
+    "file": "pack",
+    "old": "유료 구독자는 5,000만 명 이상이라고",
+    "new": "구독자는 5,000만 명 이상이라고",
+    "reason": "同上，正文這一處也自行加上原稿沒有的「유료」。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ko",
+    "file": "pack",
+    "old": "유료 구독자",
+    "new": "구독자",
+    "reason": "表格第二列的指標名，同上理由；這一筆有順序相依，要在前兩筆改完之後才唯一，請按本檔順序套用。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공식 발표는 10억 명 도달도 최속이 될 것이라 함",
+    "new": "공식 발표는 10억 명에도 가장 빠르게 도달할 것이라고 함",
+    "reason": "「최속」不是韓文新聞會用的詞，同一件事正文寫的是「가장 빠르게 도달할 것」，表格應與正文一致（句尾比照同表「…늘었다고 함」）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "왼쪽에는 자물쇠가 달린 점선 문서가 있어 비공개로 제출된 초안을 나타낸다. 점선은 오른쪽의 점선 시계로 이어지며, 아직 정해지지 않은 시기를 나타낸다. 기업 로고나 제품 화면은 그려져 있지 않다.",
+    "new": "왼쪽에는 자물쇠가 달린 점선 문서가 있어 비공개로 제출된 초안을 나타냅니다. 점선은 오른쪽의 점선 시계로 이어지며, 아직 정해지지 않은 시기를 나타냅니다. 기업 로고나 제품 화면은 그려져 있지 않습니다.",
+    "reason": "這一格是全篇唯一的 한다체（其餘 101 處都是 합니다체）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "S-1 등록신고서 초안을 비공개로 제출했다고",
+    "new": "S-1 증권신고서 초안을 비공개로 제출했다고",
+    "reason": "全批統一用語表 ko 欄定為「Form S-1 증권신고서 초안」，本篇 16 處寫成「등록신고서」，這一批 16 筆要一起套用（description）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공개 등록신고서는 찾을 수 없었음을",
+    "new": "공개 증권신고서는 찾을 수 없었음을",
+    "reason": "同上，統一用語表的 ko 寫法（description 第二處）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "(SEC)에 S-1 등록신고서 초안을 비공개로 제출했음을",
+    "new": "(SEC)에 S-1 증권신고서 초안을 비공개로 제출했음을",
+    "reason": "同上，統一用語表的 ko 寫法（block0）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공개된 등록신고서는 데이터베이스에서",
+    "new": "공개된 증권신고서는 데이터베이스에서",
+    "reason": "同上，統一用語表的 ko 寫法（block1）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "증권거래위원회에 S-1 등록신고서 초안을",
+    "new": "증권거래위원회에 S-1 증권신고서 초안을",
+    "reason": "同上，統一用語表的 ko 寫法（summary[0]）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공개된 S-1이나 등록신고서 초안은",
+    "new": "공개된 S-1이나 증권신고서 초안은",
+    "reason": "同上，統一用語表的 ko 寫法（summary[2]）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "등록신고서 서식 중 하나입니다. 이 글이 인용하는",
+    "new": "증권신고서 서식 중 하나입니다. 이 글이 인용하는",
+    "reason": "同上，統一用語表的 ko 寫法（block8）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "Form S-1에 의한 등록신고서",
+    "new": "Form S-1에 의한 증권신고서",
+    "reason": "同上，統一用語表的 ko 寫法（block8 引用 SEC 提案規則的用語）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기업공개 이전에 등록신고서 초안을 SEC에",
+    "new": "기업공개 이전에 증권신고서 초안을 SEC에",
+    "reason": "同上，統一用語表的 ko 寫法（block8 第三處）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "규칙 제안에서 등록신고서 초안을 가리키는",
+    "new": "규칙 제안에서 증권신고서 초안을 가리키는",
+    "reason": "同上，統一用語表的 ko 寫法（block23 的 DRS 括注）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "S-1이나 다른 등록신고서는",
+    "new": "S-1이나 다른 증권신고서는",
+    "reason": "同上，統一用語表的 ko 寫法（FAQ0）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "등록신고서 서식 중 하나입니다. 같은 법",
+    "new": "증권신고서 서식 중 하나입니다. 같은 법",
+    "reason": "同上，統一用語表的 ko 寫法（FAQ2）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기록에는 등록신고서가 하나도 없어",
+    "new": "기록에는 증권신고서가 하나도 없어",
+    "reason": "同上，統一用語表的 ko 寫法（FAQ3）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "등록신고서로 확인해야 할 것은",
+    "new": "증권신고서로 확인해야 할 것은",
+    "reason": "同上，統一用語表的 ko 寫法（FAQ6）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "pack",
+    "old": "DRS로 줄여 부르는 등록신고서 초안입니다",
+    "new": "DRS로 줄여 부르는 증권신고서 초안입니다",
+    "reason": "同上，統一用語表的 ko 寫法（FAQ6 第二處）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "research",
+    "old": "전문검색상 등록신고서 없음",
+    "new": "전문검색상 증권신고서 없음",
+    "reason": "同上，圖上短字要跟正文一致（改後 12 字，仍在 ko 說明 17 字內）。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "ko",
+    "file": "research",
+    "old": "비공개 제출이 의미하는 것",
+    "new": "비공개 제출이 의미하는 것과 아닌 것",
+    "reason": "原稿圖名是「保密遞件，代表與不代表」，譯文只剩「代表什麼」，把整篇最重要的另一半拿掉了（改後 19 字，仍在 ko 圖名 25 字內）。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "ko",
+    "file": "pack",
+    "old": "업계를 선도하는 자사 실리콘을 OpenAI와 직접 공동 개발함으로써, 2026년부터",
+    "new": "2026년부터",
+    "reason": "原稿的「原話」只引後半（2026 年開始、與微軟及其他合作夥伴部署十億瓦等級資料中心），譯文把來源引文前半的自誇 industry-leading silicon 也補進引號裡，等於替廠商多放一句宣稱。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "폭력 행위 조장은 포함하지 않고",
+    "new": "폭력 행위 조력은 포함하지 않고",
+    "reason": "系統卡註腳原文是 facilitation of violent activity（協助），「조장」是煽動／助長，會把排除範圍寫成另一件事。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "폭력 행위 조장은 명확히 제외한다고",
+    "new": "폭력 행위 조력은 명확히 제외한다고",
+    "reason": "同上，FAQ 這處也要與正文一致用「조력」對應原文 facilitation。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "HealthBench Consensus는 공식적으로 ‘거의 변화가 없다’고 설명합니다.",
+    "new": "HealthBench Consensus에 대해서는 OpenAI가 ‘거의 변화가 없다’고 설명합니다.",
+    "reason": "原句主語變成評測本身、動詞卻是「설명합니다」，歸因對象不明；原稿是「官方形容大致持平」，要讓 OpenAI 當主詞。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기본 모델 교체는 해당 당일 모든 사용자에게",
+    "new": "기본 모델 교체는 발표 당일 모든 사용자에게",
+    "reason": "「해당 당일」在韓文沒有指涉對象、讀不出是哪一天；原稿指的是 5 月 5 日公告當天。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "발표문 서두에는 OpenAI가 자체 광고 원칙에 따라 광고주가 캠페인을 구매·관리하는 방법을 확대하고 있다고 적혀 있습니다.",
+    "new": "발표문 서두에는 OpenAI가 자체 광고 원칙에 따라 ChatGPT 광고를 확대하면서 광고주가 캠페인을 구매·관리하는 방법을 늘리고 있다고 적혀 있습니다.",
+    "reason": "原稿引言有兩件事（正在擴大 ChatGPT 廣告、增加購買與管理方式），譯文把前一件併掉了。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기존의 노출당 과금 방식과 새로운",
+    "new": "기존의 1,000회 노출당 과금 방식과 새로운",
+    "reason": "原稿是「千次曝光」（CPM＝cost-per-mille），「노출당」會讀成每一次曝光計費，差一千倍。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "노출당 과금(CPM) 방식으로만",
+    "new": "1,000회 노출당 과금(CPM) 방식으로만",
+    "reason": "同上，CPM 是每千次曝光計費，來源原文也寫 cost-per-mille impressions。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기존의 노출당 과금 방식도 계속",
+    "new": "기존의 1,000회 노출당 과금 방식도 계속",
+    "reason": "同上，FAQ 這處也要寫成每千次曝光。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "문서 총괄 페이지의 업데이트 기록",
+    "new": "문서 개요 페이지의 업데이트 기록",
+    "reason": "指的是來源清單裡的 Overview 頁，該筆來源標題已譯成「광고 개요(Overview - Ads)」，用「총괄 페이지」讀者對不上是哪一頁。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 둘의 공식 지원되는 SHA-256 해시 형태",
+    "new": "이 둘의 공식 지원 SHA-256 해시 형태",
+    "reason": "「이 둘의 … 지원되는」助詞與被動搭不起來，句子讀不通；改成名詞修飾即可對應原稿「這兩者官方支援的 SHA-256 雜湊形式」。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'Frontier Governance Framework'를 공개했다.",
+    "new": "'Frontier Governance Framework'를 공개했습니다.",
+    "reason": "本篇正文與摘要用한다체、FAQ 與 callout 卻用합니다체，同篇不一致；全批 ko 以합니다체為準，以下同。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "두 가지 규정에 동시에 대응한다.",
+    "new": "두 가지 규정에 동시에 대응합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "포괄하지 않는지를 설명한다.",
+    "new": "포괄하지 않는지를 설명합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "맨 위 칸만 점선으로 탐색 단계임을 나타낸다.",
+    "new": "맨 위 칸만 점선으로 문서가 스스로 탐색적이라고 밝힌 등급임을 나타냅니다.",
+    "reason": "原稿是「文件自稱仍屬探索性質的等級」，譯文漏掉歸因；順便統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이하 FGF)를 공개했다.",
+    "new": "이하 FGF)를 공개했습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "완화 방식을 정리한 것이다.",
+    "new": "완화 방식을 정리한 것입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "문서는 그 예로 두 가지를 든다.",
+    "new": "문서는 그 예로 두 가지를 듭니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공개 요약에 해당한다.",
+    "new": "공개 요약에 해당합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공개일을 직접 확인했다.",
+    "new": "공개일을 직접 확인했습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "법률 자문을 제공하지 않는다.",
+    "new": "법률 자문을 제공하지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'Frontier Governance Framework'(FGF)를 공개했다.",
+    "new": "'Frontier Governance Framework'(FGF)를 공개했습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "따른 공개 요약이다.",
+    "new": "따른 공개 요약입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "실질적으로 기여하는 경우가 포함된다.",
+    "new": "실질적으로 기여하는 경우가 포함됩니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "법정 기준 역시 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실이다.",
+    "new": "법정 기준 역시 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "세 범주에 각각 3단계 등급을 두었다.",
+    "new": "세 범주에 각각 3단계 등급을 두었습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "유해한 조작은 현재 등급표가 없다.",
+    "new": "유해한 조작은 현재 등급표가 없습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "변경 이력을 공개하겠다고 약속한다.",
+    "new": "변경 이력을 공개하겠다고 약속합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "민사 벌금을 부과하도록 정한다.",
+    "new": "민사 벌금을 부과하도록 정합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "어떠한 변화도 공표하지 않는다.",
+    "new": "어떠한 변화도 공표하지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "어디에도 인쇄되어 있지 않다.",
+    "new": "어디에도 인쇄되어 있지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "발표에서 가져온 것이다.",
+    "new": "발표에서 가져온 것입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "덮어써지지 않았음을 보여준다.",
+    "new": "덮어써지지 않았음을 보여줍니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "증명하지는 못한다.",
+    "new": "증명하지는 못합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "일부 영역에서 겹친다고 설명한다.",
+    "new": "일부 영역에서 겹친다고 설명합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기준에 얽매이지도 않는다.",
+    "new": "기준에 얽매이지도 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "버전을 명시하지 않는다.",
+    "new": "버전을 명시하지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'2판'과 일치한다.",
+    "new": "'2판'과 일치합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "Frontier Model Forum을 예로 든다)",
+    "new": "Frontier Model Forum을 예로 듭니다)",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "의견을 반영한다고 설명한다.",
+    "new": "의견을 반영한다고 설명합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "의무화하겠다는 약속도 없다.",
+    "new": "의무화하겠다는 약속도 없습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기여하는 위험이 포함된다.",
+    "new": "기여하는 위험이 포함됩니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기준이 바로 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실이다.",
+    "new": "기준이 바로 50명을 초과하는 사망·중상, 또는 10억 달러를 초과하는 재산상 손해·손실입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "FGF의 공개일은 같은 해 5월 28일이다.",
+    "new": "FGF의 공개일은 같은 해 5월 28일입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "정의는 숫자에 그치지 않는다.",
+    "new": "정의는 숫자에 그치지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "자사 프런티어 개발자나 사용자의 통제를 벗어나는 것 중 하나에 해당해야 한다.",
+    "new": "프런티어 개발자나 사용자의 통제를 벗어나는 것 중 하나에 해당해야 합니다.",
+    "reason": "法條寫的是「擺脫前沿開發者或使用者的控制」，多出的「자사」把主體限縮成自家公司，FAQ 同一句也沒有這個字；順便統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "제외 사유도 열거한다.",
+    "new": "제외 사유도 열거합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "결합해 발생한 피해다.",
+    "new": "결합해 발생한 피해입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "않는다고 별도로 명시한다.",
+    "new": "않는다고 별도로 명시합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "관문이 되는 것은 '프런티어 모델'이다.",
+    "new": "관문이 되는 것은 '프런티어 모델'입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'기반 모델'을 가리킨다.",
+    "new": "'기반 모델'을 가리킵니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'대형 프런티어 개발자'로 별도 분류된다.",
+    "new": "'대형 프런티어 개발자'로 별도 분류됩니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "모든 프런티어 개발자가 이행해야 한다.",
+    "new": "모든 프런티어 개발자가 이행해야 합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'프런티어 AI 프레임워크'라고 부른다.",
+    "new": "'프런티어 AI 프레임워크'라고 부릅니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기준을 더 높게 설정한다",
+    "new": "기준을 더 높게 설정합니다",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "다룬다'고도 적혀 있다.",
+    "new": "다룬다'고도 적혀 있습니다.",
+    "reason": "統一為합니다체（引號內的原文照舊）。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "구분 기준은 없다.",
+    "new": "구분 기준은 없습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "표현 방식은 서로 다르다.",
+    "new": "표현 방식은 서로 다릅니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'측정 가능한 기준'을 사용한다고 밝힌다.",
+    "new": "'측정 가능한 기준'을 사용한다고 밝힙니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'정량화한다'고 밝힌다.",
+    "new": "'정량화한다'고 밝힙니다.",
+    "reason": "統一為합니다체（引號內的原文照舊）。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "크게 달라질 수 있다고 명시한다.",
+    "new": "크게 달라질 수 있다고 명시합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "만들 수 있게 하는 단계다.",
+    "new": "만들 수 있게 하는 단계입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "완료할 수 있는 단계다.",
+    "new": "완료할 수 있는 단계입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "캠페인으로 설명한다)은 현재 등급표가 없다.",
+    "new": "캠페인으로 설명합니다)은 현재 등급표가 없습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'더 적합할 수 있다'고 본다.",
+    "new": "'더 적합할 수 있다'고 봅니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'프레임워크 평가'를 완료하겠다고 약속한다.",
+    "new": "'프레임워크 전체 검토'를 완료하겠다고 약속합니다.",
+    "reason": "原稿引號裡是「框架總檢視」，摘要也譯成「프레임워크 전체 검토」；本篇「평가」專指風險評估，這裡用평가會和風險評估混在一起。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "변경 이력과 사유를 공개한다.",
+    "new": "변경 이력과 사유를 공개합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "받는 모델'로 한정한다.",
+    "new": "받는 모델'로 한정합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'적절히' 업데이트한다.",
+    "new": "'적절히' 업데이트합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "판단되는 경우를 든다.",
+    "new": "판단되는 경우를 듭니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "법정 일정은 두 층으로 나뉜다.",
+    "new": "법정 일정은 두 층으로 나뉩니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "그 사유를 공개해야 한다.",
+    "new": "그 사유를 공개해야 합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "'투명성 보고서'를 공개해야 한다(FGF는",
+    "new": "'투명성 보고서'를 공개해야 합니다(FGF는",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "해당한다고 주석을 단다).",
+    "new": "해당한다고 주석을 답니다).",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "적절한 기관에 통보해야 한다.",
+    "new": "적절한 기관에 통보해야 합니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "법 조문에 쓰여 있다.",
+    "new": "법 조문에 쓰여 있습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "캘리포니아주 법무장관만 제기할 수 있다.",
+    "new": "캘리포니아주 법무장관만 제기할 수 있습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "한국이라는 문자열은 보이지 않는다.",
+    "new": "한국이라는 문자열은 보이지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "EU/아일랜드뿐이다.",
+    "new": "EU/아일랜드뿐입니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "내용을 보여주지 않는다.",
+    "new": "내용을 보여주지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "확인 범위에 들어 있지 않다.",
+    "new": "확인 범위에 들어 있지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "변화도 전혀 공표하지 않는다.",
+    "new": "변화도 전혀 공표하지 않습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "조정된다는 언급도 없다.",
+    "new": "조정된다는 언급도 없습니다.",
+    "reason": "統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "필요한 범위에서 가림 처리를 하는 것을 허용합니다",
+    "new": "필요한 범위에서 가림 처리(redaction)를 하는 것을 허용합니다",
+    "reason": "「가림 처리」是譯者自擬詞，首次出現附上法條原詞 redaction，讀者才對得回加州法條；本篇其他外來語（information barriers 等）也是這個作法。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "4칸 다이어그램: 네 가지 시스템 리스크 범주와 등급 설정 현황",
+    "new": "4칸 다이어그램: 네 가지 시스템적 위험 범주와 등급 설정 현황",
+    "reason": "正文與摘要一律用「시스템적 위험」（systemic risk，法規用語），圖說卻改用「시스템 리스크」，同一個概念兩種寫法。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "pack",
+    "old": "정리: 네 가지 시스템 리스크 범주와 등급 설정 현황",
+    "new": "정리: 네 가지 시스템적 위험 범주와 등급 설정 현황",
+    "reason": "同上，圖片 caption 也要與正文用同一個詞（research 的 diagram.caption 另交一筆）。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "research",
+    "old": "정리: 네 가지 시스템 리스크 범주와 등급 설정 현황",
+    "new": "정리: 네 가지 시스템적 위험 범주와 등급 설정 현황",
+    "reason": "與 pack 的 image caption 逐字相同，兩處一起改。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "ko",
+    "file": "research",
+    "old": "FGF 네 가지 시스템 리스크 범주",
+    "new": "FGF 네 가지 시스템적 위험 범주",
+    "reason": "圖上標題要與正文用詞一致（19 字元，未超過 25 字上限）。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "제공업체의 자료를 나타낸다.",
+    "new": "제공업체의 자료를 나타냅니다.",
+    "reason": "本篇其餘全部是합니다체，只有 hero alt 用한다체。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "추적하는 것을 나타낸다.",
+    "new": "추적하는 것을 나타냅니다.",
+    "reason": "同上，統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "네 단계를 나타낸다.",
+    "new": "네 단계를 나타냅니다.",
+    "reason": "同上，統一為합니다체。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이용자의 ChatGPT 로그인을 통해 본인을 인식하고",
+    "new": "이용자의 ChatGPT 로그인을 통해 해당 이용자를 식별하고",
+    "reason": "主詞是資料商，「본인을 인식」會讀成資料商辨識自己；原稿是資料商辨識使用者。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "제공업체 자체의 비교 결과로 참고하는 것이 적절합니다",
+    "new": "OpenAI 자체의 비교 결과로 참고하는 것이 적절합니다",
+    "reason": "本篇「데이터 제공업체」一路指 Daloopa、PitchBook 等資料商，這裡的「廠商」是 OpenAI，用同一個詞會指錯對象。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "제공업체 자체의 설명 정도로 참고하는 것이 적절합니다",
+    "new": "OpenAI 자체의 설명 정도로 참고하는 것이 적절합니다",
+    "reason": "同上，FAQ 這處的「廠商」也是 OpenAI，不是資料商。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "중요 비공개 정보와 고객 기밀",
+    "new": "미공개 중요정보와 고객 기밀",
+    "reason": "韓國《자본시장과 금융투자업에 관한 법률》第174條的法定用語是「미공개중요정보」（https://www.law.go.kr/법령/자본시장과 금융투자업에 관한 법률/제174조），金融讀者認的是這個詞。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "금융 산업의 요구를 충족하려면 다양한 솔루션이 필요하다고 인정합니다.",
+    "new": "금융 산업의 요구를 충족하려면 종합적인 솔루션이 필요하다고 설명합니다.",
+    "reason": "原稿是「OpenAI 表示…需要一整套解決方案」，「인정」讓 OpenAI 變成在承認不足，「다양한」也不是「一整套」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "OpenAI의 API를 직접 사용해 자신이 가장 잘 이해하는 요구에 맞춘 전용 애플리케이션을 만들 수도 있습니다.",
+    "new": "OpenAI의 API를 직접 사용해 자체 전용 애플리케이션을 만들 수도 있습니다.",
+    "reason": "「자신이 가장 잘 이해하는 요구에 맞춘」是來源原文 needs they understand best，繁中原稿沒有這一句，其他語系也不會有。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "ChatGPT Work가 작업을 어떻게 배분하는지를",
+    "new": "ChatGPT Work에 작업을 어떻게 맡기는지를",
+    "reason": "原稿「ChatGPT Work 怎麼交辦任務」是使用者把工作交給它，譯文寫成 ChatGPT Work 自己分派工作，主客顛倒。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "research",
+    "old": "수치를 원표까지 추적",
+    "new": "수치를 원본 표까지 추적",
+    "reason": "「원표」不是通行詞、圖上讀不懂；正文寫的是「원본 표」（13 字元，未超過 17 字上限）。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "research",
+    "old": "관리자가 서식 공개",
+    "new": "관리자가 회사 템플릿 공개",
+    "reason": "同一格的標籤與正文都用「템플릿」，說明卻換成「서식」，而且原稿是「管理者發布公司範本」（14 字元，未超過 17 字上限）。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "ko",
+    "file": "research",
+    "old": "기관 한정, 추적 가능",
+    "new": "기관 한정, 수치 추적 가능",
+    "reason": "原稿 hero_label 是「機構限定，數字可溯源」，只寫「추적 가능」看不出追的是什麼（15 字元，等於 hero_label 上限）。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ko",
+    "file": "pack",
+    "old": "Hugging Face가 올해 초 겪은 보안 사고와 관련이 있나요?",
+    "new": "Hugging Face가 올해 있었던 보안 사고와 관련이 있나요?",
+    "reason": "原稿是「今年稍早的資安事件」，事件在 2026 年 7 月；韓文「올해 초」指年初（一至三月），會把事件時間往前推。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ko",
+    "file": "pack",
+    "old": "그 서한의 한 대목을 인용합니다",
+    "new": "그 서한의 한 대목을 언급합니다",
+    "reason": "原稿只寫「提到信裡的一點」，沒有說是逐字引用；同篇下一段還在辨別那封 PDF 是不是同一份文件，用「인용」會把轉述升級成引文。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기존 유료 플랜 변경 여부",
+    "new": "기존 유료 요금제 변경 여부",
+    "reason": "全批統一用語表把「方案」定為 ko「요금제」，同組另外三篇也一律用 요금제，只有本篇四處寫「플랜」。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기존 유료 플랜, 무료 사용량",
+    "new": "기존 유료 요금제, 무료 사용량",
+    "reason": "同上，統一用語表的「方案」＝요금제。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기존 제품이나 유료 플랜의 조정",
+    "new": "기존 제품이나 유료 요금제의 조정",
+    "reason": "同上，統一用語表的「方案」＝요금제。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "ko",
+    "file": "pack",
+    "old": "기존 제품과 유료 플랜이 바뀌는지",
+    "new": "기존 제품과 유료 요금제가 바뀌는지",
+    "reason": "同上，統一用語表的「方案」＝요금제（助詞隨之改為 가）。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "적았는데",
+    "new": "적었는데",
+    "reason": "韓文「적다」的過去式是「적었다」，「적았는데」是錯字。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "내장 12종, 이 4개 문서엔 지원 언어가 없다",
+    "new": "내장 12종, 이 4개 문서엔 지원 언어 목록이 없다",
+    "reason": "原稿小標是「這四份文件沒有列出支援語言」；「지원 언어가 없다」會被讀成這個模型不支援任何語言，正是本文一再避免的推論。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "정식 제공(GA)된다고 기재되었으며",
+    "new": "정식 제공(GA)되었다고 기재되었으며",
+    "reason": "原稿是「已在 API 正式提供」；韓文「된다고」可讀成未來式，同篇 description 與 block0 都用過去式。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "품질 및 트레이닝 목적으로",
+    "new": "품질 및 학습 목적으로",
+    "reason": "全批統一用語表把「訓練」定為 ko「학습(훈련)」，同段其他術語也沒有用外來語轉寫。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "pack",
+    "old": "4칸 그림 설명",
+    "new": "4분할 도해",
+    "reason": "同一組四篇的「四格圖解」韓文各譯各的（4분할 도해／4칸 그림 설명／네 칸짜리 그림 설명／4컷 다이어그램），統一成 nvidia 篇的「4분할 도해」。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "research",
+    "old": "수신 전용",
+    "new": "수신 위주",
+    "reason": "原稿圖上是「接聽為主」，同一格的說明又寫「발신은 제휴사 경유」；「전용」會變成完全不能外撥，與正文「不支援用這個端點外撥、要走合作夥伴」矛盾。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "ko",
+    "file": "research",
+    "old": "언어 비공개",
+    "new": "언어 미명시",
+    "reason": "原稿圖上是「語言未列明」（文件沒有列出），「비공개」會變成官方刻意不公開；同篇圖說與正文都寫「명시되지 않음」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글은 원문을 바탕으로 OpenAI가",
+    "new": "본 기사는 원문을 바탕으로 OpenAI가",
+    "reason": "原稿主詞是「本文」，但前一句才剛講 OpenAI 那篇文章，沿用「이 글」會被讀成 OpenAI 自己的文章；同組其餘三篇都用「본 기사」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "공식이 설명하지 않은 내구성",
+    "new": "공식 문서가 설명하지 않은 내구성",
+    "reason": "韓文「공식」不能單獨當主詞；同批 gemini 篇同一種說法寫成「공식 문서가 밝히지 않은」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글은 2026년 9월 18일에",
+    "new": "본 기사는 2026년 9월 18일에",
+    "reason": "查核動作的主詞是「本文」；本篇通篇把 OpenAI 那篇文章也叫「글」，不改會分不出是誰查核的。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글에서는 가상의 생활 시나리오를",
+    "new": "본 기사에서는 가상의 생활 시나리오를",
+    "reason": "同上，這是本文自己的編輯聲明，與 OpenAI 的文章分開。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "그러나 이 글이 확인 당일 본문 전체를",
+    "new": "그러나 본 기사가 확인 당일 본문 전체를",
+    "reason": "重讀正文全文的是本文；前一句主詞是 OpenAI 的頁面，沿用「이 글」會變成 OpenAI 自己重讀。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글은 영어 원문 표현을",
+    "new": "본 기사는 영어 원문 표현을",
+    "reason": "同一句裡「이 글」是本文、「글에는」是 OpenAI 的文章，兩者同名會讓「本文逐字比對」這個動作被讀成 OpenAI 做的。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글도 바로 이 두 채널을",
+    "new": "본 기사도 바로 이 두 채널을",
+    "reason": "用這兩個管道確認第二篇還沒出現的是本文，不是 OpenAI 的文章。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이는 이 글이 확인 당일에 관찰한",
+    "new": "이는 본 기사가 확인 당일에 관찰한",
+    "reason": "原稿是「這是本文查核當天的觀察」，歸屬要留在本文。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글은 본문의 그 문장만을",
+    "new": "본 기사는 본문의 그 문장만을",
+    "reason": "原稿是「本文只照正文那一句寫」，這裡的「본문」正是 OpenAI 文章的正文，兩個「글」並用會互相混淆。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "다만 이 글이 확인 당일 발견한",
+    "new": "다만 본 기사가 확인 당일 발견한",
+    "reason": "發現網站地圖時間對不上的是本文。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글에 나온 모든 규모 수치",
+    "new": "본 기사에 나온 모든 규모 수치",
+    "reason": "原稿是「本文所有規模數字」，同句後半又講 OpenAI 的部落格文章，需要分開。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "이 글이 인용하는 내용은",
+    "new": "본 기사가 인용하는 내용은",
+    "reason": "callout 標題與內文同指本文，隨內文一起改；不改會與同一個 callout 裡的「본 기사」不一致。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "느려진 요청 하나를 사용자가",
+    "new": "느려진 조회 하나를 사용자가",
+    "reason": "原稿小標是「一次變慢的查詢」；內文區分「요청 한 건」與其背後「수백 건의 조회」，寫成「요청」會把整段的重點（使用者感覺到的是最慢的那一次查詢）弄反。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "pack",
+    "old": "네 칸짜리 그림 설명",
+    "new": "4분할 도해",
+    "reason": "同一組四篇的「四格圖解」寫法統一成「4분할 도해」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-storage-scale-20260911",
+    "locale": "ko",
+    "file": "research",
+    "old": "스토리지 기반",
+    "new": "스토리지 플랫폼",
+    "reason": "原稿圖上是「儲存平台」，正文一律寫「스토리지 플랫폼」；「기반」是另一個詞，圖與正文用詞要一致。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ko",
+    "file": "pack",
+    "old": "본 사이트는 직접 검증하지 않았고",
+    "new": "본 사이트는 직접 시험해 보지 않았고",
+    "reason": "全批統一用語表明定 ko 的「검증하지 않았고」要改成「직접 시험해 보지 않았고」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ko",
+    "file": "pack",
+    "old": "개발자 게시물에는 각각",
+    "new": "개발자 게시물에는 모두",
+    "reason": "原稿是「定價頁與開發者文都印了」兩個每分鐘數字；「각각」會被讀成兩份文件各印一個。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ko",
+    "file": "pack",
+    "old": "Google 공식 발표문, 개발자 문서, 모델 카드",
+    "new": "Google 공식 발표문, 개발자 게시물, 모델 카드",
+    "reason": "同一份來源（開發者文）正文一律稱「개발자 게시물」，description 另寫「개발자 문서」會被當成另一份來源。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ko",
+    "file": "pack",
+    "old": "모델 카드는 Gemini App과 Vertex AI도 두 모델 공통 창구로 나열합니다.",
+    "new": "모델 카드는 Gemini App과 Vertex AI도 두 모델 공통 창구로 나열합니다. 자세한 내용은 앞의 설명을 참고하세요.",
+    "reason": "原稿表格說明結尾有「詳見前文說明」，譯文漏掉，讀者會以為表格和模型卡互相矛盾卻沒有交代。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "ko",
+    "file": "pack",
+    "old": "4컷 다이어그램",
+    "new": "4분할 도해",
+    "reason": "同一組四篇的「四格圖解」寫法統一成「4분할 도해」；韓文「4컷」是四格漫畫的用法。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "一处写完成后「打算」支持 Astral 的开源产品、一处写「会继续支持」这些开源项目",
+    "new": "一处写完成后“打算”支持 Astral 的开源产品、一处写“会继续支持”这些开源项目",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "标题直接写「OpenAI to acquire Astral」，用的是「收购」（acquire）这个词",
+    "new": "标题直接写“OpenAI to acquire Astral”，用的是“收购”（acquire）这个词",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "公告标题是「Astral to join OpenAI」，正文写「已与 OpenAI 达成协议、将以 Codex 团队一员的身份加入 OpenAI」，用的是「加入」（join）",
+    "new": "公告标题是“Astral to join OpenAI”，正文写“已与 OpenAI 达成协议、将以 Codex 团队一员的身份加入 OpenAI”，用的是“加入”（join）",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "打造了「一些最被广泛使用的开源 Python 工具」，这些工具「支撑着数百万个开发者工作流程」",
+    "new": "打造了“一些最被广泛使用的开源 Python 工具”，这些工具“支撑着数百万个开发者工作流程”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "Astral 的工具「从零成长到 Ruff、uv 与 ty 合计每月数亿次下载」",
+    "new": "Astral 的工具“从零成长到 Ruff、uv 与 ty 合计每月数亿次下载”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "uv「简化依赖包与环境的管理」，Ruff「提供极快的代码检查与格式化」，ty「协助在代码库中落实类型安全」",
+    "new": "uv“简化依赖包与环境的管理”，Ruff“提供极快的代码检查与格式化”，ty“协助在代码库中落实类型安全”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "把它形容成「一个用 Rust 编写、速度极快的 Python 软件包与项目管理工具」；Astral 官方网站首页则把 Ruff 定位成「速度极快的 Python 代码检查工具」，首页公告区列出的 ty 那篇写的是「速度极快的 Python 类型检查器与语言服务器」",
+    "new": "把它形容成“一个用 Rust 编写、速度极快的 Python 软件包与项目管理工具”；Astral 官方网站首页则把 Ruff 定位成“速度极快的 Python 代码检查工具”，首页公告区列出的 ty 那篇写的是“速度极快的 Python 类型检查器与语言服务器”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "写得很明确：「这笔收购的完成，取决于一般常见的完成条件，包括取得监管机构核准。在完成之前，OpenAI 与 Astral 仍是两家各自独立的公司。」",
+    "new": "写得很明确：“这笔收购的完成，取决于一般常见的完成条件，包括取得监管机构核准。在完成之前，OpenAI 与 Astral 仍是两家各自独立的公司。”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "OpenAI 一处写「交易完成后，OpenAI 打算支持 Astral 的开源产品」，另一处写「我们会继续支持这些开源项目」；Astral 的公告写的是「交易完成后，OpenAI 会继续支持我们的开源工具」。「打算」与「会继续」语气不同",
+    "new": "OpenAI 一处写“交易完成后，OpenAI 打算支持 Astral 的开源产品”，另一处写“我们会继续支持这些开源项目”；Astral 的公告写的是“交易完成后，OpenAI 会继续支持我们的开源工具”。“打算”与“会继续”语气不同",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "OpenAI 写的是「交易完成后，Astral 团队将加入 OpenAI 的 Codex 团队」",
+    "new": "OpenAI 写的是“交易完成后，Astral 团队将加入 OpenAI 的 Codex 团队”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "两份公告都用「探索」谈更紧密的整合",
+    "new": "两份公告都用“探索”谈更紧密的整合",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "写着「Astral to join OpenAI as part of the Codex team」",
+    "new": "写着“Astral to join OpenAI as part of the Codex team”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "这一页对这桩交易的说法还是「将加入」",
+    "new": "这一页对这桩交易的说法还是“将加入”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "整个页面没有出现「OpenAI」这个词",
+    "new": "整个页面没有出现“OpenAI”这个词",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "看有没有新增「交易已完成」之类的更新",
+    "new": "看有没有新增“交易已完成”之类的更新",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "为什么 OpenAI 说『收购』、Astral 却说『加入』？",
+    "new": "为什么 OpenAI 说“收购”、Astral 却说“加入”？",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "OpenAI 自己的公告标题是「OpenAI to acquire Astral」，用的是「收购」；Astral 创始人 Charlie Marsh 的公告标题是「Astral to join OpenAI」，用的是「加入」，正文写的是「已与 OpenAI 达成协议、以 Codex 团队一员的身份加入 OpenAI」",
+    "new": "OpenAI 自己的公告标题是“OpenAI to acquire Astral”，用的是“收购”；Astral 创始人 Charlie Marsh 的公告标题是“Astral to join OpenAI”，用的是“加入”，正文写的是“已与 OpenAI 达成协议、以 Codex 团队一员的身份加入 OpenAI”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "一处写完成后「打算支持」Astral 的开源产品、一处写「会继续支持」这些开源项目，Astral 的公告写的是 OpenAI 会「继续支持」开源工具",
+    "new": "一处写完成后“打算支持”Astral 的开源产品、一处写“会继续支持”这些开源项目，Astral 的公告写的是 OpenAI 会“继续支持”开源工具",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "所以不写「哪里用得到」",
+    "new": "所以不写“哪里用得到”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "Astral 公告「Astral to join OpenAI」",
+    "new": "Astral 公告“Astral to join OpenAI”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "OpenAI 公告「OpenAI to acquire Astral」",
+    "new": "OpenAI 公告“OpenAI to acquire Astral”",
+    "reason": "本篇 zh-CN 全文用日式角括號、與全站 49 篇 zh-CN 文章的直角引號不一致（僅此篇與 financial-services 例外），簡中排版應用“”。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "看版本号与授权栏位有没有变动",
+    "new": "看版本号与授权栏有没有变动",
+    "reason": "「欄位」是台灣用語；同篇 [38] 已寫「授权栏寫的是」，全站 zh-CN 以「字段」或「栏」為主。"
+  },
+  {
+    "slug": "ai-news-openai-astral-20260319",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "本文查的是 uv 那一页的版本记录与授权栏位",
+    "new": "本文查的是 uv 那一页的版本记录与授权栏",
+    "reason": "同上：「欄位」是台灣用語，與同篇 [38] 的「授权栏」不一致。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "原创插画：三枚圆形代币沿细线汇入",
+    "new": "原创插图：左边三枚圆形代币沿细线汇入",
+    "reason": "其他 28 篇 zh-CN 的 hero alt 都寫「原创插图」；且原稿的「左邊」被刪，alt 裡就只剩右側時間軸有位置，左右對照的結構讀不出來。"
+  },
+  {
+    "slug": "ai-news-openai-funding-20260331",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "其余 350 亿美元要在未来几个月、符合未公开的条件时投入",
+    "new": "其余 350 亿美元要在未来几个月、符合它没有说明的条件时投入",
+    "reason": "原稿把「沒有說明」歸給 Amazon 的公告（同篇 [39]、[51] 也寫「公告没有说明条件是什么」），譯成「未公开」就變成對條件本身的斷言，歸因不見了。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "SEC 不得被强制揭露依该项取得的信息",
+    "new": "SEC 不得被强制披露依该项取得的信息",
+    "reason": "zh-CN 的「揭露」是「揭發」義，資訊公開在陸側法律財經文字用「披露」；同篇 [4] 已寫「公开披露的…」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "就信息自由法而言不得被强制揭露",
+    "new": "就信息自由法而言不得被强制披露",
+    "reason": "zh-CN 的「揭露」是「揭發」義，資訊公開在陸側法律財經文字用「披露」；同篇 [4] 已寫「公开披露的…」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "把每一笔的申报人栏位逐笔展开",
+    "new": "把每一笔的申报人字段逐笔展开",
+    "reason": "「欄位」是台灣用語，本站 zh-CN 其他 14 篇都用「字段」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "注册州别与营业地这类申报栏位，没有一个栏位说明",
+    "new": "注册州别与营业地这类申报字段，没有一个字段说明",
+    "reason": "「欄位」是台灣用語，本站 zh-CN 其他 14 篇都用「字段」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "并注意表单类别栏位",
+    "new": "并注意表单类别字段",
+    "reason": "「欄位」是台灣用語，本站 zh-CN 其他 14 篇都用「字段」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "委员会保密递交一份 S-1 注册说明书草案，且",
+    "new": "委员会保密递交一份 S-1 注册声明草案，且",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "公开注册说明书",
+    "new": "公开注册声明",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "（SEC）保密递交一份 S-1 注册说明书草案",
+    "new": "（SEC）保密递交一份 S-1 注册声明草案",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "公开披露的注册说明书",
+    "new": "公开披露的注册声明",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "委员会保密递交一份 S-1 注册说明书草案，并",
+    "new": "委员会保密递交一份 S-1 注册声明草案，并",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "公开的 S-1 或注册说明书草案",
+    "new": "公开的 S-1 或注册声明草案",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "证券法下的注册说明书表格之一；",
+    "new": "证券法下的注册声明表格之一；",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "以 Form S-1 提出的注册说明书",
+    "new": "以 Form S-1 提出的注册声明",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "可以先把注册说明书草案保密递交给 SEC",
+    "new": "可以先把注册声明草案保密递交给 SEC",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "提案规则里对注册说明书草案的简称",
+    "new": "提案规则里对注册声明草案的简称",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "S-1 或其他注册说明书",
+    "new": "S-1 或其他注册声明",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "证券法下的注册说明书表格之一。",
+    "new": "证券法下的注册声明表格之一。",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "看不到任何注册说明书",
+    "new": "看不到任何注册声明",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "而注册说明书要看的是 S-1 这种表格",
+    "new": "而注册声明要看的是 S-1 这种表格",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "简称 DRS 的注册说明书草案",
+    "new": "简称 DRS 的注册声明草案",
+    "reason": "全批統一用語表定 zh-CN 的 registration statement 寫「Form S-1 注册声明草案」，譯文用的是「注册说明书」，全篇 16 處需改成「注册声明」。"
+  },
+  {
+    "slug": "ai-news-openai-s1-20260608",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "全文检索查无注册说明书",
+    "new": "全文检索查无注册声明",
+    "reason": "圖上的語要跟正文一致：正文改成「注册声明」後，這格也要跟著改（改後 10 字，未超過 17 字上限）。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "自己把部署十亿瓦等级数据中心列为前瞻性陈述，提醒",
+    "new": "自己把部署吉瓦等级数据中心列为前瞻性陈述，提醒",
+    "reason": "全批統一用語表定 zh-CN 的 gigawatt 寫「吉瓦（GW）」；同篇 [37] 已寫「没有写出吉瓦数字」、[39] 已寫「10 吉瓦」，「十亿瓦」是台灣寫法且與同篇不一致。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "gigawatt scale（十亿瓦等级）",
+    "new": "gigawatt scale（吉瓦等级）",
+    "reason": "全批統一用語表定 zh-CN 的 gigawatt 寫「吉瓦（GW）」；同篇 [37] 已寫「没有写出吉瓦数字」、[39] 已寫「10 吉瓦」，「十亿瓦」是台灣寫法且與同篇不一致。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "及其他合作伙伴部署十亿瓦等级的数据中心",
+    "new": "及其他合作伙伴部署吉瓦等级的数据中心",
+    "reason": "全批統一用語表定 zh-CN 的 gigawatt 寫「吉瓦（GW）」；同篇 [37] 已寫「没有写出吉瓦数字」、[39] 已寫「10 吉瓦」，「十亿瓦」是台灣寫法且與同篇不一致。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "明确把“部署十亿瓦等级数据中心”",
+    "new": "明确把“部署吉瓦等级数据中心”",
+    "reason": "全批統一用語表定 zh-CN 的 gigawatt 寫「吉瓦（GW）」；同篇 [37] 已寫「没有写出吉瓦数字」、[39] 已寫「10 吉瓦」，「十亿瓦」是台灣寫法且與同篇不一致。"
+  },
+  {
+    "slug": "ai-news-openai-broadcom-chip-20260624",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "末尾把部署十亿瓦等级数据中心列为前瞻性陈述，并提醒",
+    "new": "末尾把部署吉瓦等级数据中心列为前瞻性陈述，并提醒",
+    "reason": "全批統一用語表定 zh-CN 的 gigawatt 寫「吉瓦（GW）」；同篇 [37] 已寫「没有写出吉瓦数字」、[39] 已寫「10 吉瓦」，「十亿瓦」是台灣寫法且與同篇不一致。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "并用统计检定标出",
+    "new": "并用统计检验标出",
+    "reason": "簡體中文統計學用「统计检验」，「检定」在大陸多指計量檢定（器具校驗），照原樣讀者會誤會這裡做的是什麼。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "并说明先前登出的其实是 pass@1 的分数",
+    "new": "并说明先前公布的其实是 pass@1 的分数",
+    "reason": "原稿「登出」是「刊登出來」之意（來源原文：The previously reported value was its pass@1 score），簡體的「登出」只會讀成 log out，整句失去意義。"
+  },
+  {
+    "slug": "ai-news-gpt-55-instant-20260505",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "开放对象与时程不同",
+    "new": "开放对象与时间表不同",
+    "reason": "「时程」非簡體常用詞；本批 zh-CN 其他篇（financial-services）一律把「時程」譯成「时间表」，此處跟著統一。"
+  },
+  {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "试点计划第一阶段的广告主只能按千次曝光（CPM）方式购买 ChatGPT 广告",
+    "new": "试点计划第一阶段的广告主是按千次曝光（CPM）方式购买 ChatGPT 广告",
+    "reason": "原稿只寫「是以千次曝光（CPM）的方式買」，沒有排他限定；譯文的「只能」等於替官方多加一條當時不存在的限制。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "与美国政府、欧盟执委会等机关的意见",
+    "new": "与美国政府、欧盟委员会等机关的意见",
+    "reason": "European Commission 的簡體中文通行官方寫法是「欧盟委员会」（中國駐歐盟使團官網 http://eu.china-mission.gov.cn/ 全站用「欧盟委员会」、零次「执委会」）；「执委会」是台港用法。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "前一历年总营收超过 5 亿美元",
+    "new": "前一个日历年总营收超过 5 亿美元",
+    "reason": "原稿「曆年」指日曆年（法條：in the preceding calendar year）；簡體「历年」會被讀成「歷年累計」，門檻範圍完全不同。"
+  },
+  {
+    "slug": "ai-news-frontier-governance-20260528",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "加州的法定时程则分两层",
+    "new": "加州的法定时限则分两层",
+    "reason": "「时程」非簡體常用詞，這一段講的是每年檢視、30 天、15 天、24 小時等法定期限，用「时限」才讀得懂。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "这项服务开放给「符合资格的金融机构」洽谈业务",
+    "new": "这项服务开放给“符合资格的金融机构”洽谈业务",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "定位语是「为金融服务打造的前沿智能」",
+    "new": "定位语是“为金融服务打造的前沿智能”",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "因此「正在与」S&P Capital IQ",
+    "new": "因此“正在与”S&P Capital IQ",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "数据提供商「将能」透过用户的 ChatGPT 登录身份识别用户",
+    "new": "数据提供商“将能”通过用户的 ChatGPT 登录身份识别用户",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。同格順帶把「透过」改為簡體通行的「通过」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "官方公告写连接器生态「超过 50 个以上」",
+    "new": "官方公告写连接器生态“超过 50 个以上”",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "官方表示「超过 50 个以上」，已优化部分常用连接器",
+    "new": "官方表示“超过 50 个以上”，已优化部分常用连接器",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "并注明「这是外部伙伴提供的 Eval」",
+    "new": "并注明“这是外部伙伴提供的 Eval”",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "打造自己的专属应用。「供应状况」段落只有两句话：这项服务开放给「符合资格的金融机构」使用",
+    "new": "打造自己的专属应用。“供应状况”段落只有两句话：这项服务开放给“符合资格的金融机构”使用",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "公告只写这项服务开放给「符合资格的金融机构」，需要另外联系销售团队",
+    "new": "公告只写这项服务开放给“符合资格的金融机构”，需要另外联系销售团队",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "为「设计伙伴」",
+    "new": "为“设计伙伴”",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "官方公告写明开放给「符合资格的金融机构」，不是个人 ChatGPT 账号",
+    "new": "官方公告写明开放给“符合资格的金融机构”，不是个人 ChatGPT 账号",
+    "reason": "簡體中文行文用彎引號「“ ”」，「」是台港與直排用法；本組另外三篇 zh-CN 全用“ ”，只有這一篇通篇用「」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "能不能透过升级取得这些功能",
+    "new": "能不能通过升级取得这些功能",
+    "reason": "「透过」是台灣用語，簡體通行寫法是「通过」；本組另外三篇 zh-CN 沒有出現「透过」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "管理员可以透过专属的后台页面发布",
+    "new": "管理员可以通过专属的后台页面发布",
+    "reason": "「透过」是台灣用語，簡體通行寫法是「通过」；本組另外三篇 zh-CN 沒有出現「透过」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "合规团队可以透过 OpenAI Compliance Platform",
+    "new": "合规团队可以通过 OpenAI Compliance Platform",
+    "reason": "「透过」是台灣用語，簡體通行寫法是「通过」；本組另外三篇 zh-CN 沒有出現「透过」。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "都达到业界领先水准",
+    "new": "都达到业界领先水平",
+    "reason": "簡體中文說「领先水平」，「水准」在大陸少用且偏書面誤用。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "官方在图上与图说都注明这是内部评测，对手在图上标示为 Opus 5",
+    "new": "官方在图上与图说都注明这是内部评测、由人工比较各模型做出来的演示文稿，对手在图上标示为 Opus 5",
+    "reason": "譯文漏掉原稿「由人工比較各模型做出來的簡報」這個評測方法註記（來源原文：in human comparisons），55.6% 的來歷因此消失，屬於歸因漏譯。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "在另一个数字上和图表本身的数据对不上",
+    "new": "在另一个对照数字上和图表本身的数据对不上",
+    "reason": "原稿限定是「另一個對照數字」（圖說 21.6% 與圖表資料不符），譯文寫成「另一个数字」會讓讀者以為本文採用的 55.6% 也可能有問題。"
+  },
+  {
+    "slug": "ai-news-chatgpt-financial-services-20260910",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "多家数据商即用",
+    "new": "多家数据提供商即用",
+    "reason": "圖上短字要與正文一致：正文一律用「数据提供商」，且「数据商」不是簡體通行說法；改後 9 字，仍在 10 字上限內。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "出”，开发者这一侧的通路是 Gemini A",
+    "new": "出”，开发者这一侧的渠道是 Gemini A",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "“即日起开始推出”，通路是 Gemini A",
+    "new": "“即日起开始推出”，渠道是 Gemini A",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "模型卡的通路清单不同：两款模型",
+    "new": "模型卡的渠道清单不同：两款模型",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "I 为两款模型共同通路，详见前文说明。",
+    "new": "I 为两款模型共同渠道，详见前文说明。",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "预览同样没有写申请通路或资格条件，Goo",
+    "new": "预览同样没有写申请渠道或资格条件，Goo",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "性清单给普通用户的通路只写了 Searc",
+    "new": "性清单给普通用户的渠道只写了 Searc",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "列成两款模型共同的通路，而发布文章那张清",
+    "new": "列成两款模型共同的渠道，而发布文章那张清",
+    "reason": "「通路」是台灣的 channel 用法，大陸讀者會讀成「通道」；同組其他三篇已一律用「渠道」。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "也会继续支持多云端与多种加速器的开发与部署方式",
+    "new": "也会继续支持多云与多种加速器的开发与部署方式",
+    "reason": "multi-cloud 在中國大陸的通行寫法是「多云」，「多云端」不是大陸用語。"
+  },
+  {
+    "slug": "ai-news-nvidia-hugging-face-20260903",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "标示官方未说明的栏位",
+    "new": "标示官方未说明的条目",
+    "reason": "「栏位」是台灣用語，大陸對應寫法是「字段／条目」；同組 gpt-live-1-api 講資料欄位處已用「字段」。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "已在 API 正式提供（GA），对应模型代号",
+    "new": "已在 API 正式提供（generally available），对应模型代号",
+    "reason": "原稿此處附的是來源用字 generally available；zh-CN 全篇縮成 GA 之後這個縮寫從未展開，讀者無法對回官方更新紀錄的用字。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "已在 API 正式提供（GA），开发者可以把它接入",
+    "new": "已在 API 正式提供（generally available），开发者可以把它接入",
+    "reason": "同上，摘要句也要保留來源原詞 generally available。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "状态写成“已在 API 正式（GA）推出”",
+    "new": "状态写成“已在 API 正式（generally available）推出”",
+    "reason": "引號內是更新紀錄的原話，原稿寫的是 generally available；換成縮寫等於改動被引用的用字，而「正式提供≠首次推出」正是本篇的論證。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "更新记录写的是“已在 API 正式（GA）推出”",
+    "new": "更新记录写的是“已在 API 正式（generally available）推出”",
+    "reason": "同上，FAQ 這句同樣是引用更新紀錄的原話。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "不谈 ChatGPT 用户端的套餐与设置",
+    "new": "不谈 ChatGPT 用户端的订阅方案与设置",
+    "reason": "全批統一用語表把 plan 的 zh-CN 定為「订阅方案／方案」；本篇其餘處與同組各篇都用「方案」，只有這裡寫「套餐」。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "来电附带的 SIP 请求头要当成不可信的来电方信息",
+    "new": "来电附带的 SIP 头部要当成不可信的来电方信息",
+    "reason": "協調者要 zh-CN 判斷：原稿是泛指的「SIP 標頭」，「请求头」只涵蓋請求訊息、在大陸又強烈指向 HTTP request header，比原文窄，建議用「SIP 头部」。"
+  },
+  {
+    "slug": "ai-news-gpt-live-1-api-20260910",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "12 种声音仅标英语与葡语",
+    "new": "12 种声音仅标英语与葡萄牙语",
+    "reason": "圖上寫「葡语」、正文一律寫「葡萄牙语」，用詞不一致；改後 15 字仍在 zh-CN 說明 17 字上限內。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "本文依据 Google 官方发布文章、开发者文档、模型卡与定价页",
+    "new": "本文依据 Google 官方发布文章、开发者文章、模型卡与定价页",
+    "reason": "這份來源（source1）是 Google 開發者部落格的一篇文章，不是開發者文件；本篇其餘八處都寫「开发者文章」，只有 description 誤寫成「开发者文档」。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "能自动侦测并切换语言",
+    "new": "能自动检测并切换语言",
+    "reason": "語言自動偵測在大陸的通行寫法是「检测」，「侦测」偏台灣／軍事語境。"
+  },
+  {
+    "slug": "ai-news-gemini-38-live-20260915",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "让 AI 生成内容维持可被侦测",
+    "new": "让 AI 生成内容维持可被检测",
+    "reason": "同上，SynthID 的大陸寫法是「可被检测」。"
   }
 ]

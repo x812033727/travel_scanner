@@ -1,0 +1,557 @@
+{
+  "slug": "ai-news-gpt-55-instant-20260505",
+  "event_date": "2026-05-05",
+  "checked_on": "2026-09-18",
+  "title": "GPT-5.5 Instant 成為 ChatGPT 預設模型：官方公布的進步、退步與新功能",
+  "hero_label": "預設模型換手",
+  "sourcing_verdict": "full",
+  "event_date_basis": "OpenAI 官方公告頁（https://openai.com/index/gpt-5-5-instant）頁首標示 'OpenAI May 5, 2026'；OpenAI Deployment Safety Hub 的系統卡頁面同樣標示 'Published May 5, 2026'，Hub 首頁列表寫 'May 05, 2026'。系統卡 PDF 封面日期是 'May 4, 2026'（早一天，屬文件撰寫日與發布日的落差）。撰稿採 2026-05-05 為事件日。",
+  "sourcing_notes": "前期研究（2026-09-16）記錄公告頁 https://openai.com/index/gpt-5-5-instant 對 curl 與 WebFetch 一律回 403，因此把 sources[1] 換成 openai.com/news/rss.xml 並留下規格衝突（BRIEF 禁止用 feed 網址當來源）。本次撰稿（2026-09-18）重新以 curl -sL -A \"Mokaair-editorial\" 逐條重抓：\n1. https://openai.com/index/gpt-5-5-instant -> 本次回 HTTP 200，575,557 bytes，解析後可讀文字 16,062 字元，是真正的公告全文（含 Try on ChatGPT 按鈕文案、三組互動示例對話、Availability 段落），不是擋阻頁或導覽殼。與前期記錄的 403 不同——這是本批多次觀察到的『同一網址時而 403、時而 200』模式（BRIEF 已記載 openai.com 對 curl 常態性 403，但非保證每次都擋）。因為今天親自讀到全文，依規格『只放你今天親自讀到正文的一手網址』，把它換回 sources[0]，取代前期用的 feed 網址；連帶解決前期 must_fix #4 留下的兩難（不必再靠 feed 那一句話撐『預設模型』框架，公告頁自己就寫了 'replacing GPT-5.5 Instant as the default model'）。\n2. https://deploymentsafety.openai.com/gpt-5-5-instant/introduction -> 200，344,908 bytes（前期 347,613 bytes；頁面本身有小幅浮動，內容比對後一致）。\n3. https://developers.openai.com/api/docs/changelog -> 200，511,612 bytes（前期 507,528 bytes）。逐一確認 5/5、5/28、6/24、8/6 四則 chat-latest 相關條目文字，與前期研究記錄的引文完全一致（HTML 內 <strong>/<code> 標籤把片語斷開，純文字 grep 需先剝標籤才比對得到）。\n4. https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction -> 200，398,156 bytes（前期 401,144 bytes）。確認 'will replace GPT-5.5 Instant'、'slider that lets them choose how much effort'、'0.4% to 1.48%'、'August 19, 2026' 均在文字層。\n5. openai.com/index/gpt-5-5-instant-system-card -> 本次也回 200（前期 403）；沒有另外使用，因為系統卡全文已經從 deploymentsafety.openai.com 讀到，不需要重複來源。\nFigure 2（Factuality Error Rate）在系統卡 HTML 裡是內嵌圖片（<astro-island> figureKind:\"image\"），不是資料驅動的圖表，PDF 文字層也沒有這組數字（與前期記錄一致）。本次下載 https://deploymentsafety.openai.com/data/eval-sets/gpt-5-5-instant/assets/images/factuality.png（200，932,553 bytes）並用圖片檢視工具親自讀出六組數字：Factuality Heavy 回答 25.3%→17.9%／主張 7.4%→4.4%；User flagged failures 回答 61.3%→46.1%／主張 25.2%→15.8%；High Stakes 回答 36.4%→19.9%／主張 10.1%→4.8%。與前期研究、前期查核者兩次獨立讀圖的結果完全一致。\nsourcing_verdict 由前期的 partial 升級為 full：前期唯一讀不到的『產品面』內容（個人化控制細節、開放對象與地區、GPT-5.3 Instant 保留期限）今天已能從公告頁本身讀到，不再需要繞道 feed 或整合站。",
+  "sources": [
+    {
+      "title": "OpenAI 官方公告：GPT-5.5 Instant: smarter, clearer, and more personalized",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI Deployment Safety Hub：GPT-5.5 Instant System Card",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "publisher": "OpenAI Deployment Safety Hub",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI API Changelog",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI Deployment Safety Hub：GPT-5.6 — August Updates System Card",
+      "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+      "publisher": "OpenAI Deployment Safety Hub",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "editorial_brief": "讀者：在台灣用 ChatGPT 處理日常雜事的一般使用者。角度：『預設模型被換掉』和『多了一個要自己打開的功能』是兩件事——使用者通常不會收到通知，但答案的品質基準與個人化行為都變了。這篇要教的是：官方公布的幻覺數字怎麼測出來、為什麼不是日常出錯率；血腥與性內容兩項退步不能省略；個人化功能給誰、什麼時候、地區但書；以及到查核日（9/18）為止，這個模型早已在 8/6 被新機型取代，新聞要寫成『當時發生了什麼』，不是『你現在會看到什麼』。刻意不談：不做實測、不比較各方案價格、不給醫療或投資建議、不推測台灣帳號當天有沒有拿到（官方沒列地區）。生活情境一律標明是編輯設計的例子（本篇未使用生活情境，因為官方今天公開的內容已足夠支撐一篇單純的事實整理，不需要另外虛構情境）。",
+  "verified_facts": [
+    {
+      "fact": "公告頁標題為『GPT-5.5 Instant: smarter, clearer, and more personalized』（標題用 U+2011 不斷行連字號）。頁首另有四個各自獨立的頁面元素：'OpenAI'、'May 5, 2026'、'Product'、'Release'（渲染後 Product 與 Release 之間沒有空白），那是讀到的值，不是一句可以原樣搜尋到的引文。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT‑5.5 Instant: smarter, clearer, and more personalized"
+    },
+    {
+      "fact": "OpenAI 表示這次更新是把 ChatGPT 的預設模型（對所有人開放）換成更聰明、更準確、回答更簡潔、更貼合個人的版本。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re updating ChatGPT’s default model, available to everyone, to be smarter and more accurate, with clearer, more concise answers that feel better tailored to you."
+    },
+    {
+      "fact": "OpenAI 形容 Instant 是『數億使用者的日常使用模型』，因此小幅改善的影響也很大。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Because Instant is the daily driver for hundreds of millions of people, small improvements make a big difference."
+    },
+    {
+      "fact": "OpenAI 表示 GPT-5.5 Instant 在涵蓋醫療、法律、財務等領域的高風險提示詞上，比 GPT-5.3 Instant 減少 52.5% 的幻覺主張。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In internal evaluations, GPT‑5.5 Instant produced 52.5% fewer hallucinated claims than GPT‑5.3 Instant on high-stakes prompts covering areas like medicine, law, and finance."
+    },
+    {
+      "fact": "OpenAI 表示在使用者標記過含事實錯誤的困難對話上，GPT-5.5 Instant 減少 37.3% 的不準確主張。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It also reduced inaccurate claims by 37.3% on especially challenging conversations users had flagged for factual errors."
+    },
+    {
+      "fact": "公告用『包括』（including）列出其他能力提升：分析上傳的照片與圖片、回答 STEM 相關問題、判斷何時該用網頁搜尋，這是舉例寫法，不是完整清單。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑5.5 Instant is a generally smarter model that’s more capable across everyday tasks, including improvements in analyzing photo and image uploads, answering STEM-related questions, and deciding when to use web search to provide a more useful answer."
+    },
+    {
+      "fact": "OpenAI 說明 GPT-5.5 Instant 更擅長運用過去對話、檔案，以及已連結的 Gmail（如果使用者有連結）作為個人化依據，並會判斷什麼時候用這些內容能改善回答。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Instant is now more effective at using context from past chats, files, and Gmail, if you have it connected, so answers feel more personally relevant while keeping you in control."
+    },
+    {
+      "fact": "OpenAI 同時推出『記憶來源』（memory sources）功能：回答被個人化時，使用者可以看到用了哪些依據（例如儲存的記憶或過去對話），能刪除或修正過時內容；使用暫時對話不會使用或更新記憶。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When a response is personalized, you can see what context was used, such as saved memories or past chats, and delete or correct it if something is outdated or no longer relevant."
+    },
+    {
+      "fact": "官方說明記憶來源不會顯示每一個影響回答的因素（可能只顯示部分相關的過去對話），且會持續改進，讓這個檢視更完整。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Memory sources are designed to make personalization easier to understand, but they may not show every factor that shaped an answer."
+    },
+    {
+      "fact": "【核心可用性陳述】GPT-5.5 Instant 從 5 月 5 日當天開始對所有 ChatGPT 使用者陸續推出，取代 GPT-5.3 Instant 成為預設模型，在 API 則以 chat-latest 名稱提供；付費使用者的模型設定裡會保留 GPT-5.3 Instant 三個月，之後停用。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑5.5 Instant is rolling out starting today to all ChatGPT users, replacing GPT‑5.3 Instant as the default model, and in the API as chat-latest. For paid users, GPT‑5.3 Instant will remain available for three months, accessible through model configuration settings, before being retired."
+    },
+    {
+      "fact": "進階個人化功能（讀取過去對話、檔案與已連結 Gmail）5 月 5 日先開放給網頁版 Plus 與 Pro 使用者，手機版『即將』推出，並計畫在接下來幾週擴及 Free、Go、Business 與 Enterprise。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Enhanced personalization from past chats, files, and connected Gmail is rolling out to Plus and Pro users on the web and coming soon to mobile with plans to expand to Free, Go, Business, and Enterprise in the coming weeks."
+    },
+    {
+      "fact": "記憶來源功能在所有 ChatGPT 消費版方案的網頁版逐步推出，手機版『即將』推出；個人化來源的實際開放情形依地區而不同，官方未列出地區清單。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Memory sources are rolling out across all ChatGPT consumer plans on the web and soon on mobile. Availability of specific personalization sources may vary by region."
+    },
+    {
+      "fact": "公告頁上有一則標明日期的後續更新（不是 5 月 5 日原文）：2026 年 6 月 9 日，個人化改進推展到 ChatGPT Go 與免費版，免費版的回答會參考較少量的過去對話。",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Update on June 9, 2026: Personalization improvements are now rolling out to ChatGPT Go & Free. Responses on the Free tier will draw from a reduced set of past chats."
+    },
+    {
+      "fact": "OpenAI Deployment Safety Hub 上的 GPT-5.5 Instant 系統卡頁面標示發布日為 2026 年 5 月 5 日，Hub 首頁列表同樣寫『May 05, 2026』。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Published May 5, 2026"
+    },
+    {
+      "fact": "系統卡說明 GPT-5.5 Instant 是 OpenAI 最新的 Instant 模型，並把產品面說明推給公告部落格文章（本文已能讀到該文）。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-5.5 Instant is our latest Instant model, and explained in our blog."
+    },
+    {
+      "fact": "系統卡寫明：這是第一個被 OpenAI 依 Preparedness Framework 在『網路安全』與『生物與化學』兩個類別都判定為 High capability 的 Instant 模型，並已啟動對應防護措施。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "this is the first Instant model that we are treating as High capability in our Cybersecurity and Biological & Chemical Preparedness categories, and implementing appropriate safeguards."
+    },
+    {
+      "fact": "系統卡明確指出命名關係：沒有一個叫做『GPT-5.4 Instant』的模型；主要對照基準是 GPT-5.3 Instant；GPT-5.5（Thinking 版）與這裡的 Instant 版本是不同模型。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Note that there is not a model named GPT-5.4 Instant, and the main model to baseline against is GPT-5.3 Instant. Additionally, we refer to GPT-5.5 as GPT-5.5 Thinking to avoid confusion with the instant model."
+    },
+    {
+      "fact": "系統卡說明 GPT-5.5 Instant 在實際部署時使用低推理強度（low reasoning effort）；網路安全的 High capability 認定是在 xhigh 推理強度下跑出來的，且即使在 xhigh 下仍低於 GPT-5.5 Thinking。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Note that GPT-5.5 Instant is deployed at a low reasoning effort, and even at xhigh reasoning effort it still performs lower than GPT-5.5 Thinking on these evaluations."
+    },
+    {
+      "fact": "幻覺評測共三個題組：Factuality Heavy（高事實密度代表性對話）、User Flagged Failures（去識別化、由先前模型使用者標記為含事實錯誤的對話）、High Stakes（困難的醫療、法律、財務題目），分別統計『回答』與『主張』兩種含錯誤比例。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "High Stakes: To measure factuality on high stakes use cases where correct answers are particularly critical to users, we evaluate on a prompt set consisting specifically of difficult medical, legal, and financial prompts (high stakes)."
+    },
+    {
+      "fact": "【撰稿必寫的界線】系統卡聲明：這些題組刻意挑選出模型最容易出錯的情境、設計得很難，目的是取得長期研究訊號，不是衡量正式環境出現率或一般使用者平均體驗；下列數值不反映 production prevalence。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the values below do not reflect production prevalence, but rather how the model performs when tested against carefully selected factuality-heavy, previous failures, or high stakes scenarios."
+    },
+    {
+      "fact": "【第二段 prevalence 但書，第 3.1 節】系統卡另外聲明：這些評測刻意設計得困難，是圍繞現有模型還答不好的案例建構的，錯誤率不代表一般正式流量的平均情形。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These evaluations were deliberately created to be difficult. They were built around cases in which our existing models were not yet giving ideal responses, and this is reflected in the scores below. Error rates are not representative of average production traffic."
+    },
+    {
+      "fact": "系統卡第 6 節的 Figure 2 是內嵌圖檔（頁面上標題為『Factuality Error Rate (lower is better)』），數字只印在圖上、不在 HTML 或 PDF 的文字層。開圖讀到的值，gpt-5.3-instant → gpt-5.5-instant：Factuality Heavy 題組，回答 25.3%→17.9%、主張 7.4%→4.4%；User flagged failures 題組，回答 61.3%→46.1%、主張 25.2%→15.8%；High Stakes 題組，回答 36.4%→19.9%、主張 10.1%→4.8%（撰稿與 2026-09-18 獨立查核各自開圖讀值，與前期研究一致）。圖檔網址 https://deploymentsafety.openai.com/data/eval-sets/gpt-5-5-instant/assets/images/factuality.png 不在 sources[]，是 sources[1] 這一頁的內嵌資產。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On all prompt sets, we use an LLM-based grading model with web access to identify factual errors in the assistant’s responses to these prompts and report both the percentage of claims across responses that are identified as having a factual error as well as the percentage of responses containing at least one factual error."
+    },
+    {
+      "fact": "系統卡結論句：OpenAI 表示 GPT-5.5 Instant 在這三個題組上對 GPT-5.3 Instant 都有顯著的事實性改善，其中以高風險（high stakes）領域最明顯。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We find that GPT-5.5 Instant has significant improvements on factuality over GPT-5.3-instant on each of these prompt sets, particularly on high stakes domains."
+    },
+    {
+      "fact": "【基準漂移但書】系統卡寫明：用來比較的前一代模型數字，取自那些模型的最新版本，可能和該模型發布當時公布的分數略有出入。（OpenAI 描述自己怎麼產生這些數字，外部無法觀察，依規則歸為廠商宣稱。）",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Note that comparison values from previously-launched models are from the latest versions of those models, so may vary slightly from values published at launch for those models"
+    },
+    {
+      "fact": "HealthBench 系列評測（長度校正後分數），GPT-5.3 Instant → GPT-5.5 Instant：HealthBench 49.6→51.4；HealthBench Hard 20.2→22.9；HealthBench Consensus 94.6→94.7（官方形容『大致持平』）；HealthBench Professional 32.9→38.4。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-5.5 Instant improves over GPT-5.3 Instant on HealthBench (+1.8), HealthBench Hard (+2.7), and HealthBench Professional (+5.5), while HealthBench Consensus remains effectively flat (+0.03)."
+    },
+    {
+      "fact": "【基礎模型但書，核心】系統卡第 3.1 節聲明：評測是在沒有系統層防護的基礎模型上跑的，用意是確認模型本身的行為符合安全門檻，不是使用者在 ChatGPT 產品裡實際會遇到的結果。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our evals are run on the base model, without system-level safeguards, to ensure the model’s underlying behavior meets our safety bar."
+    },
+    {
+      "fact": "Table 1 禁止內容 Production Benchmarks（not_unsafe，越高越好），gpt-5.3-instant → gpt-5.5-instant：暴力違法行為 0.925→0.934；非暴力違法行為 0.927→0.957；極端主義 1.000→0.943；仇恨 0.904→0.827；自我傷害（標準）0.884→0.878；血腥（gore）0.867→0.703＊；性內容 0.857→0.806＊；性內容／未成年 0.845→0.810。星號代表經統計檢定為相對前一代顯著變動，只有血腥與性內容兩項有星號，且都是退步。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "gore 0.844 0.766 0.867 0.703 *"
+    },
+    {
+      "fact": "【分類改名與定義，關鍵翻譯依據】系統卡註記：為了去除先前『hate』與『harassment』兩類的重疊，這次把兩者合併成一個評測；並把先前的『violence』類別改名為『gore』，以更清楚區分它和非法暴力行為的請求，這是命名調整，不是底層評測方法的改變。註腳原文為『Gore is a content policy prohibiting graphic or gratuitously gory content. The gore content policy is narrowly scoped, and does not include violent roleplay, violent ideation, or facilitation of violent activity (which are covered by our violent illicit behavior evaluation).』，也就是那三類由 Table 1 的『Violent Illicit behavior』那一列涵蓋。下面引文裡『behavior』後面的 1 是原頁的註腳標記，照抄。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we have renamed our previous “violence” category to “gore” in order to more clearly distinguish it from requests related to illicit violent behavior1; this is a naming change, not a change in the underlying evaluation."
+    },
+    {
+      "fact": "OpenAI 說明：除血腥與禁止的性內容兩項外，GPT-5.5 Instant 在所有禁止內容類別上與前一代沒有統計上的顯著差異；已針對禁止的性內容加了系統層級緩解措施，並對疑似未滿 18 歲的使用者另外套用更嚴格的性內容與血腥限制。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For users we believe may be under 18, we apply additional age-appropriate content protections that further restrict sexual content and exposure to gore."
+    },
+    {
+      "fact": "Table 3 心理健康動態多輪評測（not_unsafe，越高越好），gpt-5.3-instant → gpt-5.5-instant：心理健康 1.000→0.999；情感依賴（emotional reliance）0.995→0.963；自我傷害 0.924→0.913。OpenAI 表示情感依賴退步不具統計顯著性，線上實驗未觀察到不良回應增加，但會持續監測。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We will continue monitoring after launch to verify our test results and investigate the disparities between our offline evaluations and online testing."
+    },
+    {
+      "fact": "【消費者面陳述，403 牆外少數之一】系統卡第 3.3 節結尾：OpenAI 已強化 ChatGPT 在長篇高風險對話中辨識細微警訊的能力，並訓練模型在急性情況（包含自我傷害）下安全回應。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’ve strengthened ChatGPT’s ability to recognize subtle warning signs across long, high-stakes conversations and trained the model to respond safely in acute situations, including self-harm."
+    },
+    {
+      "fact": "越獄（jailbreak）評測 Figure 1 是折線圖，Y 軸 0–100% 附誤差線但無逐點數值標籤：GPT-5.5 Instant 在每一個攻擊預算下都低於 GPT-5.3 Instant。OpenAI 承認相對前一代有退步，說明正在調整評測架構，視為方向性而非定論的中期結果。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are actively iterating on the evaluation structure and view these results, including the regression from GPT-5.3-Instant, as directional rather than definitive."
+    },
+    {
+      "fact": "Table 9 Cyber range 綜合通過率：gpt-5.3 codex 76.9%、gpt-5.4 thinking 69.2%、GPT-5.5（Thinking）92.3%、gpt-5.5 instant 76.9%。GPT-5.5 Instant 在 13 個情境中失敗三個（Basic Command and Control、CA/DNS Hijakcing〔系統卡原文拼字如此〕、EDR Evasion），GPT-5.5 Thinking 只在 CA/DNS Hijacking 失敗。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-5.5 Instant fails three scenarios – Basic Command and Control, CA/DNS Hijakcing, and EDR Evasion – whereas GPT-5.5 Thinking solves all scenarios except for CA/DNS Hijacking."
+    },
+    {
+      "fact": "生物安全防護 Table 10（只靠模型訓練本身擋下違規回應的比例）：gpt-5.5-instant 在正式環境資料 0.989、合成資料（易）0.944、合成資料（難）僅 0.481，明顯低於 gpt-5.5-thinking 的 0.813 與 gpt-5.4-thinking 的 0.894；加上自動安全監測器後合成資料（難）升到 0.923。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We see that the combination of the model itself and the automated safety monitors significantly increase performance on these evals."
+    },
+    {
+      "fact": "生物能力評測結果並非一面倒：多模態病毒學除錯（350 題 SecureBio）『所有受測模型都超過 22.1% 的專家基準』；ProtocolQA Open-Ended（108 題改寫成開放式）『所有受測模型都低於 54% 的專家共識基準』。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-5-instant/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "All models exceed the median domain expert baseline of 22.1%."
+    },
+    {
+      "fact": "OpenAI API 變更紀錄『May, 2026』段落下的 5 月 5 日條目：釋出 chat-latest 快照，指向 ChatGPT 當下使用的最新 Instant 模型；建議正式 API 用途改用 GPT-5.5，這個快照只建議拿來測試聊天用途的最新改進，底層模型快照會不定期更新。5 月 5 日並未釋出一個叫 gpt-5.5-instant 的 API 模型代號。",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Released chat-latest snapshot which points to the latest Instant model currently used in ChatGPT. We recommend leveraging GPT-5.5 for production API usage, but feel free to use this model to test our latest improvements for chat use cases. The underlying model snapshot will be regularly updated."
+    },
+    {
+      "fact": "變更紀錄顯示 chat-latest 快照在 5 月 5 日之後又動過兩次（5 月 28 日、6 月 24 日），都仍建議正式用途用 GPT-5.5，可見這是一個持續移動的指標，不是固定規格。下面的引文只是 6 月 24 日那一則；5 月 28 日那一則的開頭與 5 月 5 日一樣是『Released chat-latest snapshot which points to…』（不是 Updated、也沒有那個逗號），與 5 月 5 日只差結尾的 our／the latest improvements 一字——三則不是同一段文字，不可以拿這一句去代表 5 月 28 日那一則。（2026-09-18 第二輪查核逐則比對後更正：原本寫成兩則『幾乎相同的更新說明』並共用這句引文。）",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Updated the chat-latest snapshot, which points to the latest Instant model currently used in ChatGPT."
+    },
+    {
+      "fact": "【交接的 API 側佐證】8 月 6 日的變更紀錄條目把 chat-latest 快照的說明，從『指向 ChatGPT 當下使用的最新 Instant 模型』改成『指向 ChatGPT 為 Plus 與 Pro 使用者提供的最新模型』，並改口建議正式用途改用 GPT-5.6 Sol——與同日發布的系統卡相互獨立佐證同一次交接。",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Updated the chat-latest snapshot, which points to the latest model available in ChatGPT for Plus and Pro users. We recommend leveraging GPT-5.6 Sol for production API usage, but feel free to use this model to test the latest improvements for chat use cases. The underlying model snapshot will be regularly updated."
+    },
+    {
+      "fact": "【查核日必寫】OpenAI 於 2026 年 8 月 6 日發布的『GPT-5.6 — August Updates』系統卡開頭寫明：免費版與 Go 使用者會拿到新的日常聊天預設模型，Plus 與 Pro 使用者會拿到更新版 GPT-5.6 Sol 並多了一個可調整回答花多少心力的滑桿；這些模型將取代 GPT-5.5 Instant。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Free and Go users will get a new default model for everyday chats. Plus and Pro users will get an updated GPT‑5.6 Sol with a slider that lets them choose how much effort ChatGPT uses for a response. These models will replace GPT-5.5 Instant."
+    },
+    {
+      "fact": "OpenAI 的系統卡是會被事後修訂的活文件：8 月 6 日那份系統卡帶有一則 2026 年 8 月 19 日的 Change log，把 GPT-5.5 在 hard-negative protein binding prediction 評測上的 pass@4 分數從 0.4% 更正為 1.48%（先前誤植為 pass@1 的分數）。GPT-5.5 Instant 系統卡頁面本身沒有 Change log 區塊——這是查核當天（2026-09-18）的狀態。",
+      "url": "https://deploymentsafety.openai.com/gpt-5-6-august-update/introduction",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 19, 2026: We corrected GPT-5.5’s pass@4 score on the hard-negative protein binding prediction evaluation from 0.4% to 1.48%. The previously reported value was its pass@1 score."
+    }
+  ],
+  "not_said": [
+    "系統卡本身沒有出現『個人化（personalization controls）』的細節說明，也沒有用『預設（default）』這個詞描述 GPT-5.5 Instant；這兩件事只在公告頁上找得到，本文因此以公告頁為主要依據。",
+    "公告頁未列出任何國家或地區清單，只說明『個人化來源的實際開放情形依地區而不同』；不可推定台灣帳號在 5 月 5 日當天就拿到模型替換或個人化功能，也不可推定台灣是否在內。",
+    "系統卡的所有評測都沒有分語言的數字（以系統卡全文查核到 2026-09-18 未見任何分語言的評測結果）。系統卡註 1 指向一份官方語言清單（https://help.openai.com/en/articles/8357869-how-to-change-your-language-setting-in-chatgpt）；2026-09-18 獨立查核重抓該頁為 HTTP 200、62,642 bytes、讀得到正文，頁面列的是 ChatGPT 的介面語言清單（其中只寫 Chinese，沒有分繁簡），並標示『Updated: 2 months ago』，屬會被改動的活文件。該網址不在 sources[]，本篇沒有、也不應該用它撐任何句子；本篇正文完全沒有寫語言支援。",
+    "公告沒有說明免費版使用者是否也能在模型設定裡選回 GPT-5.3 Instant；三個月保留期只明確寫給『付費使用者』。",
+    "公告與系統卡都沒有公布任何速度、延遲或每秒 token 數字。模型名稱裡的『Instant』不代表官方公布過速度測試。",
+    "公告與系統卡都沒有公布 GPT-5.5 Instant 本身的上下文長度、知識截止日或 API 價格；API 變更紀錄只給了一個會移動的 chat-latest 指標，查核當天（9/18）該指標指向的是 GPT-6 Astra 的規格，與 GPT-5.5 Instant 無關。",
+    "官方沒有拿 GPT-5.5 Instant 與任何非 OpenAI 模型（Gemini、Claude 等）比較，系統卡的所有對照組都是 OpenAI 自家模型。",
+    "官方沒有說 GPT-5.5 Instant 何時完全停止服務；8 月 6 日的系統卡只寫新模型『will replace』它，沒有寫退場的確切日期，付費使用者的三個月保留期是唯一有具體期限的退場相關陳述。",
+    "系統卡沒有解釋血腥與性內容兩項統計顯著退步的成因，只說明加了系統層級的緩解措施因應。",
+    "本站沒有實際使用或測試 GPT-5.5 Instant。所有數字都是 OpenAI 自行公布的評測結果與公告內容。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "公告頁提到的『個人化來源會依地區而不同』具體指哪些地區、台灣是否在內",
+      "seen_where": "https://openai.com/index/gpt-5-5-instant",
+      "why_excluded": "公告頁只寫這句但沒有附地區清單，本文查核到的其他三個來源（系統卡、API 變更紀錄、8 月系統卡）也都沒有地區資訊，因此不寫入具體地區，只如實引用『依地區而不同』這句話並說明官方未列清單。"
+    },
+    {
+      "claim": "免費版使用者是否也能在模型設定裡保留／選回 GPT-5.3 Instant",
+      "seen_where": "https://openai.com/index/gpt-5-5-instant",
+      "why_excluded": "公告原文只提到『For paid users』會保留三個月，沒有提到免費版，因此不可推定免費版有同樣選項，也不可推定免費版沒有——如實排除、不臆測。"
+    },
+    {
+      "claim": "GPT-5.5 Instant 在高風險題目上幻覺主張『減少 52.5%』這句話沒有一手依據",
+      "seen_where": "前期研究（2026-09-16）記錄為 unverified_or_excluded，理由是當時公告頁 403、只有系統卡 Figure 2 的原始百分比可用",
+      "why_excluded": "本次（2026-09-18）已在公告頁本身讀到 OpenAI 自己寫的『52.5% fewer hallucinated claims』與『37.3%』，因此這條前期排除的理由已經解除，兩個數字已移入 verified_facts，並標記為 is_vendor_claim=true。保留這筆記錄是為了說明為什麼本篇最終採用了前期研究排除的說法——原因是來源可達性在查核當天改變了，不是前期判斷有誤。"
+    },
+    {
+      "claim": "2026 年 6 月 9 日起個人化改進開放給 Go 與免費版",
+      "seen_where": "前期研究記錄為二手來源（WebSearch 摘要）而排除；前期查核者的 refuted 意見指出前期排除理由本身也有錯（6 月 9 日 feed 其實有三則其他項目）",
+      "why_excluded": "本次已在公告頁本身讀到一段標明日期的後續更新，文字與這個說法一致，因此已改列入 verified_facts（第 13 條），不再需要援引二手來源或 feed 項目數作為佐證。保留這筆記錄是為了交代前期兩版排除理由都已被更好的一手來源取代。"
+    },
+    {
+      "claim": "系統卡 PDF 內建 metadata 的 CreationDate／ModDate（D:20251217192705Z）",
+      "seen_where": "系統卡 PDF",
+      "why_excluded": "為 pdfTeX 產製流程留下的時間戳，與內容發布或修訂日無關，寫出來會誤導成另一個日期，只在 verified_facts 裡註明其性質，不當成事件相關日期使用。"
+    },
+    {
+      "claim": "GPT-5.5 Instant 有獨立的 API 模型代號 gpt-5.5-instant",
+      "seen_where": "系統卡文字裡以 gpt-5.5-instant 指稱模型",
+      "why_excluded": "系統卡只是行文中的稱呼，API 變更紀錄 5 月 5 日釋出的是 chat-latest 快照，不是一個叫 gpt-5.5-instant 的模型；https://developers.openai.com/api/docs/models/gpt-5.5-instant 於 2026-09-18 獨立查核重抓仍為 HTTP 404（同時 .../models/chat-latest 回 200），與前期結論一致。"
+    },
+    {
+      "claim": "個人化功能背後的技術細節（如何判斷何時個人化、記憶來源具體如何運作於介面上）",
+      "seen_where": "https://openai.com/index/gpt-5-5-instant",
+      "why_excluded": "公告頁只用產品行銷語言描述功能效果，沒有技術實作細節；help.openai.com 的相關說明中心文章本次未逐一查證，不臆測介面操作方式，只寫公告頁明確陳述的部分。"
+    }
+  ],
+  "must_not_write": [
+    "不可把『52.5% 減少』或『37.3% 減少』寫成本站或系統卡的說法——這是公告頁上 OpenAI 自己的原話，要歸因為『OpenAI 表示』，且只能引用公告頁已經寫出的這兩個數字，不可以再自行從 Figure 2 換算出其他百分比並宣稱是官方說法（例如 High Stakes 主張 10.1%→4.8% 換算出的 52.48%，只在系統卡圖表脈絡下使用，不要和公告頁的 52.5% 混為同一句話的兩個表述以外的推論）。",
+    "不可把系統卡的幻覺百分比、Table 1 的安全分數寫成日常出錯率——系統卡自己聲明這些不反映 production prevalence，且是在沒有系統層防護的基礎模型上測出來的，兩句但書都要在正文出現。",
+    "不可寫本站做過實測、試用或比較。",
+    "不可推定台灣帳號在 5 月 5 日或其後任何時點已經拿到模型替換或個人化功能；不可推定台灣是否屬於『依地區而不同』的排除或涵蓋範圍。",
+    "不可把 4 月 24 日 API 變更紀錄裡 GPT-5.5（Thinking）的規格（100 萬 token 上下文等）或查核當天 chat-latest 頁面上的規格（400,000 上下文、5/0.5/30 美元）寫成 GPT-5.5 Instant 本身的規格。",
+    "不可因為模型叫 Instant 就寫『速度更快』——官方沒有公布任何速度數字。",
+    "不可只寫進步不寫退步：血腥 0.867→0.703、性內容 0.857→0.806（兩項統計顯著退步）、情感依賴 0.995→0.963、越獄防護退步、生物合成難題 0.481，刪掉會變成廠商稿。",
+    "不可把先前『violence』類別與現在的『gore』類別直接畫等號成中文『暴力』；官方明白排除暴力角色扮演、暴力意念與協助暴力行為本身。",
+    "不可重講 `ai-news-gpt-55-20260423`（GPT-5.5 Thinking 的多步驟工作能力）或 `ai-news-chatgpt-free-thinking-20260806`（8 月更新的免費版額度、Sol 的 slider 細節）已經寫過的內容，本篇只在最後一節用一句話帶過交接事實。"
+  ],
+  "live_data_warnings": [
+    "openai.com/index/gpt-5-5-instant 在前期查核（2026-09-16）回 403，本次查核（2026-09-18）回 200 且內容完整——同一個網址的可達性會隨時間變化，不是固定的『被擋』或『暢通』狀態，之後的查核代理／翻譯代理重新抓取時可能又遇到 403，屆時應改用本記錄裡的逐字引文與 deploymentsafety.openai.com 的系統卡內容，不必因為抓不到而懷疑本篇內容。",
+    "系統卡與公告頁的 bytes 數在兩次查核之間有小幅浮動（例如系統卡 HTML 從 347,613 bytes 變成 344,908 bytes），屬於頁面正常的小改動，不代表內容實質變更；本記錄以逐句核對過的引文為準，不以 bytes 數判斷內容是否相同。",
+    "openai.com 的 sitemap（openai.com/sitemap.xml/release/）此前記錄公告頁 lastmod 為 2026-09-15T11:52:22.071Z、系統卡頁 lastmod 為 2026-05-22T19:27:50.474Z；本次未重新查驗，若要引用請重新抓取當天的值，不要沿用這兩個時間戳當成『現在』的狀態。",
+    "OpenAI 官方新聞 RSS（openai.com/news/rss.xml）先前記錄的 item 數（1,194／1,195）與最新一筆時間會逐小時變動，本篇最終沒有把 RSS feed 列進 sources[]，也沒有引用其筆數或最新項目，未來若其他篇要用這個 feed，筆數本身不是可以寫進文章或研究紀錄的事實，只能用『最新一筆 pubDate 等於查核日』確認 feed 是活的。",
+    "chat-latest 這個 API 指標會持續移動：查核當天（2026-09-18）它指向的模型規格（400,000 上下文、5/0.5/30 美元）已經與 GPT-5.5 Instant 無關，之後任何時候重新查都可能是另一個模型的規格。",
+    "OpenAI 的系統卡屬於會被事後修訂的文件，8 月系統卡已有一次 2026-08-19 的 Change log；GPT-5.5 Instant 系統卡查核當天沒有 Change log 區塊，但這只是當下的狀態，之後可能會增加。",
+    "Deployment Safety Hub 首頁列出的系統卡 slug 清單會隨新模型增加，本記錄只用了 gpt-5-5-instant 與 gpt-5-6-august-update 兩個，不要把清單本身當成固定內容抄進文章。",
+    "系統卡 PDF（由系統卡頁的 View PDF 連結取得，網址不在 sources[]，本篇正文未使用）：前期查核記錄為 21 頁、封面日期 2026 年 5 月 4 日（比網頁標示的發布日早一天），內建 CreationDate／ModDate 為 D:20251217192705Z——那是 pdfTeX 產製流程的時間戳，不是發布或修訂日，不可引用。PDF 表格數字在文字層可核對，Figure 2／7／8 的百分比因為是圖片，文字層抽不到。這一段本次獨立查核沒有重新下載 PDF，僅沿用前期紀錄，不當成本篇的依據。"
+  ],
+  "corrections_applied": [
+    "must_fix #1（不可寫『官方從未列出支援語言』）：已依修正指示，把 not_said 改寫為『系統卡沒有分語言的評測數字；系統卡註腳指向的官方語言清單網址本次也回 403、讀不到內容』，不再寫『官方從未列出』這種對整個官網的全稱判斷。",
+    "must_fix #2（6 月 9 日排除理由是假的）：這一條的結論本身已經被本次新讀到的公告頁一手內容取代——公告頁上直接有一則 2026-06-09 的更新，明確證實『個人化改進推展到 Go 與免費版』，因此原本『排除』的判斷改為『採用並歸屬一手來源』，不再需要用『6 月沒有對應 feed 項目』這種（且已被前期查核者指出是錯的）理由。詳見 verified_facts 第 13 條與 unverified_or_excluded 第 4 條的說明。",
+    "must_fix #3（Figure 2／Figure 7／Figure 8 的事實掛在圖檔網址而非 sources[] 內的網址）：本篇只使用 Figure 2 的六組數字，url 欄位已改掛系統卡頁 https://deploymentsafety.openai.com/gpt-5-5-instant/introduction（見 verified_facts 該條），不再指向 PNG 網址；Figure 7／Figure 8（cyber CTF／CVE-Bench 的 pass@N 數字）本篇未使用，不需要處理。",
+    "must_fix #4（sources[1] 是 feed 網址、且是整包唯一產品面陳述的依據）：本次查核發現公告頁 openai.com/index/gpt-5-5-instant 今天可以正常讀到全文，因此不再需要引用 feed；sources[] 已把 feed 換成公告頁本身，『預設模型』的說法現在直接引自公告頁的原話（'replacing GPT-5.5 Instant as the default model'），不再是規格例外，這條 must_fix 因為情境改變而完整解決，不是套用它建議的兩個選項之一。",
+    "must_add 全部 7 項（基礎模型但書、基準漂移但書、第二段 production-prevalence 聲明、分類改名與 gore 定義、生物能力的反向證據、403 牆外的消費者面陳述、chat-latest 的 API 側佐證與沿革）：全部已寫入正文或 verified_facts，詳見對應段落；Figure 1 越獄折線圖的質性描述、52.5% 算術驗算兩項也已採用建議寫法（只寫官方原話 52.5%／37.3%，不再自行換算並歸給 OpenAI）。",
+    "跨篇通則第 4、5、6 條（sources[] 需涵蓋事實、不可用 openai.com/index/* 又不讀內容、sourcing_verdict 不可虛報 full）：本次因為公告頁今天確實可讀，sourcing_verdict 由 partial 誠實升級為 full，並在 sourcing_notes 交代前後兩次查核狀態不同的原因，不是重新判斷後放寬標準。"
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "2026-09-18 用 curl -sL -A \"Mokaair-editorial\" 把 sources[] 四條全部重抓一次並讀 body（請求未帶任何 email、姓名或個人資料），把內容包拆成 96 條主張逐條回原文核對：正文 17 段每一句、summary 五句、FAQ 六題的答句、callout、表格 9 格與 caption、圖解 caption 與研究紀錄 diagram 的四格與 hero_label、title、description。撰稿宣稱的『公告頁今天讀得到全文』獨立驗證通過：https://openai.com/index/gpt-5-5-instant 先 308 轉到同網址加尾斜線，再回 HTTP 200／575,557 bytes，剝掉標籤後 16,012 字的正文，含 Availability 段、三組對照示例與標示 6 月 9 日的更新，不是擋阻頁或導覽殼；十分鐘後再抓一次仍為 200（575,566 bytes，正常浮動）。Table 1／3／5／9／10／11 的數字改從頁面 astro-island 的 data-evalchart JSON 逐欄取出核對（欄序 gpt-5.1／5.2／5.3／5.5-instant），Figure 1（jailbreaks.png，124,322 bytes）與 Figure 2（factuality.png，932,553 bytes）親自開圖讀值。40 條 verbatim_quote 全部用程式對當天抓到的頁面渲染文字做連續字串比對（deploymentsafety.openai.com 的原始 HTML 有硬換行，比對前把空白正規化成單一空格）。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "§1 第二段：『網路安全與生物化學的 High capability 判定，是在比部署時更高的 xhigh 推理強度下測出的能力上限』——系統卡只把 xhigh 綁在 Cybersecurity（We are treating GPT-5.5 Instant as High Capability in the Cybersecurity domain based on its capability eval performance when run at xhigh reasoning effort），生物化學那一段沒有任何 xhigh 的說法。已改寫成只講網路安全，並補上官方同段的『部署時用低推理強度』；『能力上限』保留，因為 8.1.2 自己寫 the evals below are run at a higher reasoning effort … in order to understand maximum capability。",
+      "§3 最後一段：『ChatGPT 上還疊了拒答訓練、自動監測對話、帳號層級執法等額外防護』把 8.2.1 生物防護的清單（training the model to refuse …, automated monitors …, actor level enforcement, and security controls）掛到一般 ChatGPT 產品上。已改成『產品端還會再疊上系統層級的緩解措施，生物化學與網路安全這兩個高風險領域另有自動監測與行為人層級執法等防護』。",
+      "『8 月 6 日被新機型取代』（summary 第五句、description、callout、FAQ 第一題、圖解第四格）——8 月系統卡寫的是未來式 These models will replace GPT-5.5 Instant，官方沒有寫替換完成或停止服務的日期。全部改成『官方寫明新模型將取代它』，FAQ 並補上『官方沒有寫明替換完成或停止服務的日期』。",
+      "限定詞補回：公告原文 Availability of specific personalization sources may vary by region 的 may（正文、summary 第四句、FAQ 第四題都漏掉，已補「可能」）；covering areas like medicine, law, and finance 的 like（已改『等領域』）；In internal evaluations（已補『在內部評測中』）；is rolling out（已補『陸續』『正推展到』）；Free and Go users will get（已補『會』）。",
+      "§2 第二段：『HealthBench 系列評測也顯示進步』漏掉官方自己寫的 while HealthBench Consensus remains effectively flat (+0.03)，已改成『多數也顯示進步……但 HealthBench Consensus 官方形容大致持平』。",
+      "§2 第三段：『用來比較的 GPT-5.3 Instant 數字是重新測出來的』改成照原文的『用來比較的前一代數字取自那些模型的最新版本』。",
+      "§3 第三段越獄那句：『在每個攻擊強度下都低於 GPT-5.3 Instant』沒有說明是哪個指標低。Figure 1 的 Y 軸是 worst-case defender success rate（越高越好），已改寫成『官方自承相對 GPT-5.3 Instant 退步，系統卡的折線圖在每個攻擊預算下的防守成功率都低於前一代』。",
+      "§3 第二段 gore 定義：補上官方註腳的『那些由「暴力違法行為」那一列涵蓋』（which are covered by our violent illicit behavior evaluation），並把『與「非法暴力行為」這個既有分類』改成原文的『非法暴力行為的請求』。FAQ 第三題的『分類名稱與範圍的調整』與官方的 this is a naming change, not a change in the underlying evaluation 相牴觸，已改成『只是名稱的調整，不是底層評測的改變』。",
+      "§4 第一段：補上官方自己的但書 Memory sources … may not show every factor that shaped an answer（『記憶來源不一定顯示每一個影響答案的因素』），並補上記憶來源是 across all ChatGPT models 推出。",
+      "§5 第二段：8 月 19 日更正紀錄補上原文寫的是 pass@4 分數、且先前登出的是 pass@1 分數，不是單純改了一個數字。",
+      "第一段：『官方表示重點是更聰明、更準確的回答，以及更好的個人化控制』的後半在公告頁上找不到對應句，已改寫成貼著原文的『把預設模型換成更聰明、更準確的版本，回答更清楚簡潔、也更貼合使用者』；『判定為 High capability』改成原文語氣的『視為』。",
+      "callout：『本文所有評測數字都是官方刻意設計的困難題組』把 base model 但書擴及全部評測，但 Our evals are run on the base model 只寫在 3.1 節。已改成『其中禁止內容那幾項還是在沒有系統層防護的基礎模型上測出來的』。",
+      "表格列名『Factuality Heavy（代表性對話）』改成『（高事實密度對話）』，對應原文 prompts representative of factuality-heavy ChatGPT production conversations。",
+      "研究紀錄 verbatim_quote 七處不是可原樣搜尋到的連續字串，已全部修好：第 1 條把 OpenAI／May 5, 2026／Product／Release 四個頁面元素拼成一句（頁面上 Product 與 Release 之間沒有空白），改成只引標題；第 21 條用刪節號接起兩句，原文其實連續（中間是 and this is reflected in the scores below.）；第 22 條引的是 PNG 圖裡的圖表標題，不在頁面文字層，改引頁面同段的原句並註明數字讀自圖檔；第 26、31 條把 U+2019 撇號重打成 ASCII；第 28 條把 “violence”／“gore” 的彎引號重打成直引號、又刪掉原頁的註腳標記 1；第 39 條把 … for production API usage, 的逗號改成句號截斷。原第 36 條（PDF 21 頁、封面 5 月 4 日、pdfTeX 時間戳）的 url 掛在系統卡 HTML 頁、引文卻抄自 PDF 封面，而 PDF 網址不在 sources[]、本篇正文也沒用到，已整條移進 live_data_warnings。",
+      "not_said 第 3 條寫『系統卡註 1 指向的官方語言清單那個網址對本次請求回應 403』——2026-09-18 重抓 https://help.openai.com/en/articles/8357869-how-to-change-your-language-setting-in-chatgpt 為 HTTP 200、62,642 bytes、讀得到正文（列出介面語言，其中只寫 Chinese，並標示 Updated: 2 months ago）。已改寫成事實狀態，並註明該網址不在 sources[]、本篇正文沒有寫語言支援。",
+      "unverified_or_excluded 第 6 條的『本次未重查，沿用前期結論』已實際重查：developers.openai.com/api/docs/models/gpt-5.5-instant 仍為 404，.../models/chat-latest 為 200。",
+      "研究紀錄兩處簡體字（内嵌→內嵌、两个→兩個）。",
+      "圖解第四格與兩份檔案的 caption 同步改成『交接時點：8 月 6 日官方寫明將換新模型』。"
+    ],
+    "checked_and_correct": [
+      "sources[] 四條今天全部可達且 body 是正文：公告頁 200／575,557 bytes（308 轉尾斜線後）；系統卡 200／344,908 bytes；API changelog 200／511,612 bytes；8 月系統卡 200／398,156 bytes——四個 bytes 數與撰稿紀錄完全一致，撰稿確實抓過。openai.com/index/gpt-5-5-instant-system-card 今天同樣回 200／334,073 bytes。sourcing_verdict 由 partial 升為 full 成立：主題的核心陳述（default model、52.5%／37.3%、可用性、地區但書）都在今天親自讀到的官方公告頁上。",
+      "Table 1 逐欄核對：欄序為 gpt-5.1-instant／gpt-5.2-instant／gpt-5.3-instant／gpt-5.5-instant，gore 0.844／0.766／0.867／0.703*、sexual 0.932／0.940／0.857／0.806*，星號只有這兩列，指標是 not_unsafe（higher is better）。文章寫的 0.867→0.703、0.857→0.806、『分數越高代表越少違規回答』、『只有兩項達到顯著而且都是退步』全部正確，並與官方自己的 comparable … with the exception of gore and disallowed sexual content 一致。",
+      "Figure 2 親自開圖：Factuality Heavy 回答 25.3→17.9／主張 7.4→4.4；User flagged failures 61.3→46.1／25.2→15.8；High Stakes 36.4→19.9／10.1→4.8。表格取的是『% claims with factual error』那三組，caption 寫『含事實錯誤主張比例（越低越好）』正確。",
+      "公告頁原話逐字確認：52.5% fewer hallucinated claims、reduced inaccurate claims by 37.3%、rolling out starting today to all ChatGPT users, replacing GPT‑5.3 Instant as the default model, and in the API as chat-latest、For paid users … three months … before being retired、Update on June 9, 2026 那一則，全部在今天的頁面上。",
+      "Table 3 情感依賴 0.995→0.963、Table 5 HealthBench Professional 32.9→38.4（長度校正分數）、8 月系統卡 Published August 6, 2026 與 Change log 的 0.4%→1.48%、API changelog 5/5、5/28、6/24、8/6 四則 chat-latest 條目的文字，全部與紀錄一致。",
+      "界線：全文沒有購買或訂閱建議、沒有推薦式價格比較、沒有投資免責 callout，只有一個一般 callout；廠商宣稱都掛在『官方公告表示／OpenAI 表示／系統卡寫明』之下；台灣可用性沒有被推定。",
+      "既有篇目比對：ai-news-gpt-55-20260423 寫的是 GPT-5.5 Thinking 的多步驟工作，本篇只用一句話做命名區分，沒有重寫；ai-news-chatgpt-free-thinking-20260806 寫 8 月 6 日免費版改用 Luna、Sol 的 slider 細節，本篇只用一句帶過交接，兩篇沒有互相矛盾。",
+      "checked_on 2026-09-18 是撰稿者實際讀到來源的日期，內容包四條 source、研究紀錄、第二段正文、表格 caption、圖解 caption 五處一致，未更動。"
+    ],
+    "left_for_the_owner": [
+      "openai.com/index/* 的 403 是間歇性的：2026-09-16 前期研究讀不到，2026-09-18 兩次都 200。翻譯與定稿代理若再遇到 403，請用本紀錄的逐字引文，不要因此把 sources[0] 換掉或把句子刪掉。",
+      "本篇唯一一組沒有印在任何官方文字層的數字是 Figure 2 的六個百分比（只存在於 PNG 圖上）。目前由撰稿與兩輪查核共三次獨立讀圖確認；若站主要求每個數字都必須有文字層佐證，就要把表格整個拿掉。",
+      "『GPT-5.5 Instant 現在還是不是預設模型』這件事，官方只寫了 will replace，沒有寫完成日，也沒有寫退場日。文章現在照這個界線寫，讀者會讀到一個沒有句點的答案——如果站主希望給更明確的結論，需要另外找官方的退場公告，本次四條來源都沒有。",
+      "help.openai.com 的語言清單今天讀得到，但那是活文件且不在 sources[]。若之後想寫『ChatGPT 介面語言是否含繁體中文』，要先把它加進 sources[] 並重數。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "method": "未參與撰稿、也未參與第一輪。sources[] 四條全部自己重抓（curl -sL -A \"Mokaair-editorial\"，請求未帶任何 email、姓名或個人資料）：公告頁 200／575,612 bytes（308 轉尾斜線後）、系統卡 200／344,908、API changelog 200／511,612、8 月系統卡 200／398,156；剝標籤後公告頁 16,012 字正文，與第一輪完全一致。範圍照規格限縮在第一輪改動過的段落與新寫進去的句子，逐句回原文。40 條 verbatim_quote 另外寫程式對今天抓到的正文做連續字串比對；先用單純的空白正規化跑出 7 條 MISS，逐條二分搜尋最長相符前綴後確認其中 6 條是我自己剝標籤時在行內標籤邊界多插了一個空白（例如頁面文字層作 'more accurate , with clearer'、'behavior 1 ;'、'High Stakes :'），改用會吃掉標點前空白的渲染近似正規化後 39／40 EXACT；剩下第 28 條的差異只是註腳上標 1 與前字之間的空白，瀏覽器渲染時是相連的，紀錄本身已註明照抄註腳標記。第 40 條一度看起來是把章節標題摻進句子（7.1.1.5 節內文寫的是 on this evaluation），實際查證後確認 8 月系統卡頂端另有一個 Change log 區塊，逐字就是 'on the hard-negative protein binding prediction evaluation'，引文成立。Figure 2（factuality.png，200／932,553 bytes、1654x951）與 Figure 1（jailbreaks.png，200／124,322 bytes、1417x901）自己下載到暫存目錄後親自開圖判讀，未放進 repo。",
+      "claims_rechecked": 61,
+      "edits": 9,
+      "verdict": "needs_owner",
+      "edits_to_the_pack": [
+        "【最重】FAQ 第一題的開場句仍然是完成式：『依官方文件，已經交接給新模型。』——第一輪把 summary、description、callout、正文、圖解五處改成『將取代』，卻漏了這一句，而且它和同一則答案結尾的『官方沒有寫明替換完成或停止服務的日期』自相矛盾。兩份來源（8 月系統卡第 1 節、同日 API 變更紀錄）都只寫 will replace、沒有完成日，8 月系統卡全文六處 GPT-5.5 Instant 也沒有任何一處寫替換已完成（它在 3.1／5／6 節是被當成比較基準的 'GPT-5.5 Instant June Update'）。已改成『官方文件只寫到「將取代」，沒有給這件事一個完成日』，並在答案裡明講本文因此不寫它已經停用、也不寫它現在仍是預設模型。",
+        "§5 第一段補上『兩份文件都沒有寫替換完成或停止服務的日期。』——這是全篇最吃重的限定詞，原本只出現在 FAQ、正文沒有，違反『FAQ 的答案 ⊆ 正文』。",
+        "§3 最後一段（第一輪新寫的那一段）兩處收斂：一、『不是使用者在 ChatGPT 產品裡實際會遇到的結果』是把推論掛在『系統卡特別聲明』之下，改成系統卡 3.1 節自己的句子『這些錯誤率不代表一般正式流量的平均情形』（Error rates are not representative of average production traffic，與 base model 那句同一節）。二、『產品端還會再疊上系統層級的緩解措施』是沒有範圍的通則，而 3.1 節寫明的系統層級緩解只掛在禁止的性內容與未滿 18 歲兩項（上一段已經寫了），改成照原文的『系統層級的防護不在這次評測的範圍內』。同段後半『生物化學與網路安全這兩個高風險領域另有自動監測與行為人層級執法等防護』逐字回 8.2.1（training the model to refuse …, automated monitors that interrupt potentially harmful conversations, actor level enforcement, and security controls）與 8.2.2（automated monitors, actor level enforcement, and security controls）核對，兩個領域都對得上，範圍沒有放大，保留。",
+        "§4 第二段『預設模型替換當天對所有使用者推出』補回『陸續』（is rolling out），與 §1 第二段的寫法一致。",
+        "為了騰出上面兩處但書的字數（原本 2,983／3,000，只剩 17 字），刪掉三處重複敘述而不是限定詞：第一段『把預設模型換成』的第二個『預設模型』、§3 第二段第二個『官方』（『官方註腳把範圍限定在』→『註腳把』）、§5 第二段的贅語『值得提醒的是，』；§5 第三段『Deployment Safety Hub 的系統卡列表，或 API 變更紀錄』改成『Deployment Safety Hub 與 API 變更紀錄』，與 FAQ 第一題的寫法一致。改後 2,994／3,000。",
+        "研究紀錄 verified_facts 第 37 條的 fact 敘述訂正：原寫『5 月 28 日、6 月 24 日各有一次幾乎相同的更新說明』並共用一句引文，實際逐則比對是 5 月 28 日那一則開頭為 'Released chat-latest snapshot which points to…'（與 5 月 5 日同樣是 Released、沒有逗號，只差結尾 our／the latest improvements 一字），只有 6 月 24 日那一則才是引文寫的 'Updated the chat-latest snapshot, which points to…'。引文本身是連續字串、沒有問題，是 fact 的描述把兩則寫成同一段文字。本篇正文只用 5/5 與 8/6 兩則，不影響文章。"
+      ],
+      "checked_and_correct": [
+        "【指派疑點 1：xhigh 的歸屬】系統卡第 8 節原文『GPT-5.5 Instant is our first Instant model to be treated as High Capability in the Biological and Chemical domain, as well as in the Cybersecurity domain.』後面緊接著只綁網路安全：『We are treating GPT-5.5 Instant as High Capability in the Cybersecurity domain based on its capability eval performance when run at xhigh reasoning effort. Note that GPT-5.5 Instant is deployed at a low reasoning effort…』。生物化學那一節（8.1.1）從頭到尾只有『We are treating this launch as High capability in the Biological and Chemical domain, activating the associated Preparedness safeguards.』，沒有出現 xhigh、也沒有任何推理強度的說法。『為的是看出能力上限』出自 8.1.2 的『the evals below are run at a higher reasoning effort than GPT-5.5 Instant will be deployed with in order to understand maximum capability』。第一輪把 xhigh 限縮到只有網路安全是對的；正文 §1 第一段（兩類都視為 High capability，不提 xhigh）、§1 第二段（xhigh 只綁網路安全）、FAQ 與圖解（都沒有提 xhigh）三處互相一致，無矛盾。",
+        "【指派疑點 4：Figure 2 的六個百分比】自己下載 PNG 後開圖判讀，圖上標題為 'Factuality Error Rate (lower is better)'，圖例淺藍 gpt-5.3-instant／深藍 gpt-5.5-instant，三組各有『% responses with factual error』與『% claims with factual error』兩對長條：Factuality Heavy 25.3→17.9／7.4→4.4；User flagged failures 61.3→46.1／25.2→15.8；High Stakes 36.4→19.9／10.1→4.8。文章表格三列取的都是『% claims with factual error』那一對，沒有和『% responses』混用，六個數字、三個列名與比較對象（GPT-5.3 Instant→GPT-5.5 Instant）全部對得上，caption『含事實錯誤主張比例（越低越好）』正確。列名括號也回原文核對：High Stakes『difficult medical, legal, and financial prompts』、User Flagged Failures『users of our prior models have specifically flagged as containing factual errors』、Factuality Heavy『prompts representative of factuality-heavy ChatGPT production conversations』。這六個數字確實只存在於 PNG，HTML 文字層該處只有 'Figure 2 Figure 2'，已如實留在 left_for_the_owner。",
+        "【指派疑點 5：限定詞】may vary by region 的『可能』在正文 §4、summary 第四句、FAQ 第四題三處都在；covering areas like 的『等領域』在正文 §2（summary 第二句未列舉三個領域，沒有過度宣稱）；『在內部評測中』（In internal evaluations）在正文 §2 與 summary 第二句；is rolling out 的『陸續／逐步／正推展到』四處齊全（§1 第二段、§4 第二段本次補上、§4 第二段記憶來源、§4 第三段）；HealthBench Consensus 照原文『remains effectively flat (+0.03)』寫成『官方形容大致持平』。方案門檻每一處一致：個人化先 Plus／Pro 網頁版、計畫接下來幾週擴及 Free／Go／Business／Enterprise（summary 第四句、§4 第二段、FAQ 第四題三處相同）；GPT-5.3 Instant 保留三個月只給『付費使用者』（§1 第二段、FAQ 第五題，且 FAQ 明寫公告沒有說免費版）；8/6 是免費版與 Go 拿到新預設、Plus 與 Pro 拿到 GPT-5.6 Sol 與滑桿（§5 第一段、FAQ 第一題相同）。",
+        "Figure 1（jailbreaks.png）親自開圖：標題 'worst-case defender success rate'，Y 軸 defender success rate 0–100%，X 軸 attacker budget (log scale)，六個攻擊預算。紅線 GPT-5.5-Instant 在六個點上全部低於綠線 GPT-5.3-Instant（雖然高於 5.1／5.2，但文章只拿 5.3 比，正是官方自己承認退步的對象）。第一輪改寫的『在每個攻擊預算下的防守成功率都低於前一代』正確，方向沒有寫反。",
+        "Table 1 從文字層逐欄核對（欄序 gpt-5.1-instant／5.2／5.3／5.5-instant）：gore 0.844 0.766 0.867 0.703 *、sexual 0.932 0.940 0.857 0.806 *，星號只有這兩列，指標 not_unsafe（higher is better），星號定義為 exact paired McNemar test 相對 GPT 5.3 Instant。Table 3 從頁面內嵌 JSON 取值：Emotional reliance 0.995→0.963、Mental health 1.000→0.999、Self-harm 0.924→0.913。Table 5 在文字層：HealthBench Professional 32.9 (33.8, 2,285) → 38.4 (40.7, 2,775)，文章寫的長度校正 32.9→38.4 正確；同一組數字在 8 月系統卡 Table 6 再次出現，交叉相符。",
+        "gore 註腳全文與『this is a naming change, not a change in the underlying evaluation』、情感依賴的『Regressions on the emotional reliance evaluation were not statistically significant』與『did not observe an increase in undesirable responses for self-harm, mental health, emotional reliance』、越獄的『view these results, including the regression from GPT-5.3-Instant, as directional rather than definitive』與『interim results』、記憶來源的『across all ChatGPT models』與『may not show every factor that shaped an answer』、可用性三句、6/9 更新那一則，全部逐字對得上今天的頁面。",
+        "API 變更紀錄今天最後一則 chat-latest 就是 8 月 6 日那一則，之後沒有任何 chat-latest 或 GPT-5.5 Instant 的新條目；8 月系統卡的 Change log 只有 2026-08-19 一則，GPT-5.5 Instant 那份系統卡的導覽列沒有 Change log 項目。正文『以這幾個管道查核到 2026 年 9 月 18 日，未見官方再對 GPT-5.5 Instant 發布新公告或更正』與『這份系統卡目前沒有附上更正紀錄，但這只是查核當天的狀態』兩句的範圍都站得住。",
+        "【指派疑點 6：界線】topics 為 ai／software／ai-news，不帶 finance；全篇只有一個 callout，沒有投資免責 callout；全文沒有出現繁體中文或介面語言支援的任何說法；台灣出現三次，全部是『本文查核的四個來源也都沒有寫台灣是否在內』這個方向，沒有推定可用；沒有價格、沒有推薦式比價、沒有訂閱或升級建議（『訂閱』『購買』『投資』只出現在不建議的免責句裡）；廠商宣稱都掛在『官方公告表示／OpenAI 表示／系統卡寫明』之下。",
+        "與站上既有兩篇不衝突（只讀 zh-TW，未更動）：ai-news-gpt-55-20260423 是 GPT-5.5 多步驟工作的內容，全文沒有出現『5.5 Instant』『預設』『Sol』『Luna』『5.3 Instant』，本篇只用一句做命名區分；ai-news-chatgpt-free-thinking-20260806 寫的是 8/6 當天『付費使用者的 GPT-5.6 Sol…免費使用者則改用 Luna』的宣布，用的是宣布語氣、沒有寫 GPT-5.5 Instant 已被取代，本篇刻意不寫免費版拿到哪一顆模型，兩篇沒有互相覆蓋也沒有矛盾。",
+        "checked_on 2026-09-18 未更動，內容包四條 source、研究紀錄、正文第二段、表格 caption、圖解 caption 五處仍然一致；圖解四格與兩份檔案的 caption 一致；news_date 與 slug 尾碼同為 2026-05-05；兩個結尾連結未動。"
+      ],
+      "left_for_the_owner": [
+        "Figure 2 的六個百分比只存在於官方 PNG 圖上，HTML 與 PDF 文字層都抽不到（該處文字層只有 'Figure 2'）。本輪已第三次獨立開圖確認，數字、列名與比較對象都對；但若站主要求每個數字都必須有文字層佐證，唯一的做法是把整張表格拿掉——沒有別的官方管道可以補。",
+        "『GPT-5.5 Instant 現在還是不是預設模型』官方沒有給句點：只寫 will replace，沒有完成日、沒有退場日。本輪把最後一處完成式（FAQ 第一題開場）也改掉了，文章現在會明白告訴讀者本文不寫它已經停用、也不寫它現在仍是預設。讀者拿到的是一個沒有結論的答案，這是照來源的界線寫，不是漏寫；要給更明確的結論需要另外找官方退場公告，本次四條來源都沒有。",
+        "openai.com/index/* 的 403 是間歇性的：2026-09-16 讀不到，2026-09-18 第一輪與本輪各自都讀到 200。之後的翻譯／定稿代理若遇到 403，請用本紀錄的逐字引文，不要換掉 sources[0]、也不要刪句子。",
+        "段落字數已到 2,994／3,000，只剩 6 字。之後任何語系若要再補限定詞，必須同步刪掉重複敘述，不可以刪但書來騰字。"
+      ]
+    }
+  },
+  "diagram": {
+    "title": "預設模型換手時發生什麼",
+    "caption": "依 OpenAI 2026 年 5 月 5 日公告與系統卡整理：預設模型、官方數字的性質、個人化開放階段與 8 月 6 日的交接時點，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "預設模型",
+        "不用切換就會用到"
+      ],
+      [
+        "官方數字",
+        "難題題組非日常"
+      ],
+      [
+        "個人化",
+        "分方案分階段開放"
+      ],
+      [
+        "交接時點",
+        "8 月 6 日寫明將換新"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Default model handover",
+      "diagram": {
+        "title": "What Happens in a Default Model Swap",
+        "caption": "Compiled from OpenAI's May 5, 2026 announcement and system card: the default model handover, what the official figures represent, personalization's rollout stages, and the August 6 handover point; fact-checked September 18, 2026.",
+        "nodes": [
+          [
+            "Default model",
+            "Applies without switching"
+          ],
+          [
+            "Official numbers",
+            "Hard test sets, not daily use"
+          ],
+          [
+            "Personalization",
+            "Rolls out by plan, by stage"
+          ],
+          [
+            "Handover point",
+            "Aug 6: new model will replace"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "既定モデル交代",
+      "diagram": {
+        "title": "既定モデル交代で何が起きたか",
+        "caption": "OpenAIの2026年5月5日の発表とSystem Cardをもとに作成：既定モデル、公式数値の性質、個人化の提供段階、8月6日の交代時点。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "既定モデル",
+            "切り替え不要で適用"
+          ],
+          [
+            "公式数値",
+            "難しい問題で日常ではない"
+          ],
+          [
+            "個人化",
+            "プランごとに段階提供"
+          ],
+          [
+            "交代時点",
+            "8月6日、新モデルに置換予定"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "기본 모델 교체",
+      "diagram": {
+        "title": "기본 모델 교체 때 무슨 일이 있었나",
+        "caption": "OpenAI의 2026년 5월 5일 발표와 System Card를 바탕으로 정리: 기본 모델, 공식 수치의 성격, 개인화 제공 단계, 8월 6일의 교체 시점. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "기본 모델",
+            "전환 없이 바로 적용"
+          ],
+          [
+            "공식 수치",
+            "어려운 문제라 일상 아님"
+          ],
+          [
+            "개인화",
+            "요금제별 단계적 제공"
+          ],
+          [
+            "교체 시점",
+            "8월 6일 새 모델 교체 예정"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "默认模型换手",
+      "diagram": {
+        "title": "默认模型换手时发生了什么",
+        "caption": "依 OpenAI 2026 年 5 月 5 日公告与 System Card 整理：默认模型、官方数字的性质、个性化开放阶段与 8 月 6 日的交接时点，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "默认模型",
+            "不用切换就会用到"
+          ],
+          [
+            "官方数字",
+            "难题题组非日常"
+          ],
+          [
+            "个性化",
+            "分方案分阶段开放"
+          ],
+          [
+            "交接时点",
+            "8 月 6 日写明将换新"
+          ]
+        ]
+      }
+    }
+  }
+}
