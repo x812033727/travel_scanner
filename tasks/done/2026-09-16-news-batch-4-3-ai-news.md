@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-news-batch-4-3-ai-news
 title: News batch 4.3: AI news catch-up and backfill
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-17T22:16:02Z
 created_at: 2026-09-16T13:21:40Z
-completed_at:
+completed_at: 2026-09-18T03:22:59Z
 branch: claude/news-batch-4-3-ai
 depends_on:
   - 2026-09-16-news-batch-4-0-crypto-and
@@ -189,8 +189,11 @@ npm run check:tasks
 - [x] 既有索引 `ai-news-2026-january-september-index` 原地改版（`update_index.py ai`：拿掉篇數、加 12 篇連結、五語新標題），連帶改 30 個既有包的連結文字（scope 已逐一列出）
 - [x] `related`（延伸閱讀）、`pack_cli relink` ×12、`build_assets.py ai`（60 張圖＋contact sheet 已逐張看過）
 - [x] 驗證：12 篇 `check_article.py --full --assets` 全 OK、`pack_cli lint --kind life` 0 error、內容測試 164 passed、`check:tasks` OK
-- [ ] 站主驗收、合併 PR、部署、`guides-import --slug` ×43（12 新＋索引＋30 既有；先 `--dry-run --publish` 核對），見 HANDOVER 第 1c／2.4 節
-- [ ] 留給站主決定的事（HANDOVER 第 1c 節）
+- [x] 站主 2026-09-18 明確選「合併並發布」：PR #548 squash 為 `d5a97c6f`（樹與 PR head 相同）→ 部署 `deploy_20260918_031614`（03:16–03:19Z，無 migration，health 3/3、alembic `0080_crypto_and_tech_topics`、首頁 200）
+  → `guides-import --slug` ×43 同一次匯入（先 `--dry-run --publish`：43 篇、create 60、update 147、無別的 slug、新篇全是 create 才 publish；`taxonomy_updated` 12、`failed: null`）
+  → 正式站驗證：65 個網址（12 篇＋索引 × 5 語）全數 200、可索引、都在 sitemap、主圖 65 張 200；12 篇都有 `#article-summary` 與 FAQPage；索引標題已是「1 月至 9 月」、頁面上 50 個 ai-news 連結、沒有任何篇數字樣；
+  既有文章（例 `ai-news-gpt-54-20260305`）指向索引的連結文字已更新；新篇的延伸閱讀已套上（例 gpt-live-1-api → gemini-38-live、gpt-live-voice、storage-scale）
+- [ ] 留給站主決定的事（HANDOVER 第 1c 節；都是發布後仍可修訂的，不擋結案）
 
 ## 交接（2026-09-17）
 

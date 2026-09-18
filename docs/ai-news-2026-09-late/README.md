@@ -7,7 +7,7 @@
 > **現況（2026-09-18）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md) 第 1c 節。
 > 十二篇都是五語、都經過兩輪獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet、`related` 與 relink 都做完了；
 > 既有索引 `ai-news-2026-january-september-index` 已原地改版（拿掉篇數、加 12 篇連結）。
-> **還沒合併、還沒匯入發布，等站主驗收與指示**；匯入時要連同 30 個只改了連結文字的既有包（清單在 HANDOVER 第 2.4 節）。
+> **PR #548 已於 2026-09-18 合併、部署並匯入發布**（12 篇＋索引＋30 個只改了連結文字的既有包同一次 `--slug` 匯入；清單在 HANDOVER 第 2.4 節）。
 > 固定值：`topics` 是 `["ai", "ai-news"]`（需要時加 `software`／`gadgets`），主色 TEAL，眉標 `MOKAAIR  /  AI NEWS`，
 > `display_order` 十二篇 149–160；**沒有免責 callout**（含 B8 金融服務那篇，理由見 `ai.md`）。
 > 實際發給代理的六份規格在 [`docs/news-2026-batch-4/agents/ai/`](../news-2026-batch-4/agents/ai)。
@@ -82,10 +82,7 @@ uv run python ../../docs/news-2026-batch-4/update_index.py ai
 
 ## 票
 
-[`tasks/open/2026-09-16-news-batch-4-3-ai-news.md`](../../tasks/open/2026-09-16-news-batch-4-3-ai-news.md)（重要新聞）與
+[`tasks/done/2026-09-16-news-batch-4-3-ai-news.md`](../../tasks/done/2026-09-16-news-batch-4-3-ai-news.md)（重要新聞，2026-09-18 發布後結案）與
 [`tasks/open/2026-09-16-news-batch-4-4-the-8.md`](../../tasks/open/2026-09-16-news-batch-4-4-the-8.md)（8/1 起的次要新聞）。
 
-B8（`ai-news-chatgpt-financial-services-20260910`）帶不帶 `finance` 還沒定案：`ai.md` 說
-AI 篇不帶，AI 那張票說 B8 帶且必附免責。工具兩種讀法都擋得住（callout 數與免責都看內容包
-自己的 `topics`），但規格要先統一——
-[`tasks/open/2026-09-16-ai-md-and-b8-disagree-about.md`](../../tasks/open/2026-09-16-ai-md-and-b8-disagree-about.md)。
+B8（`ai-news-chatgpt-financial-services-20260910`）**不帶 `finance`、沒有投資免責 callout**，照 `ai.md` 的決定發布；它的一般 callout 明講「不是理財建議」。
