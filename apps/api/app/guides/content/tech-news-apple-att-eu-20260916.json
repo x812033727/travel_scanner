@@ -1,0 +1,1225 @@
+{
+  "slug": "tech-news-apple-att-eu-20260916",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-16",
+  "featured": false,
+  "display_order": 313,
+  "locales": {
+    "zh-TW": {
+      "title": "Apple 調整歐盟 App 追蹤透明度詢問框：五國強制新版、設定改名、一年可再問",
+      "description": "2026 年 9 月 16 日，Apple 在開發者新聞公告歐盟的 App 追蹤透明度詢問框將推出另一版本：自 iOS 27.2 與 iPadOS 27.2 起，德國、法國、義大利、波蘭與羅馬尼亞五國只能使用新版；歐盟的裝置設定也改名，開發者還可以在使用者上次回答滿一年後再問一次。本文依 Apple 官方公告與說明頁，整理改了什麼、沒有改什麼，以及公告未提及台灣的部分。",
+      "hero": {
+        "src": "/guides/tech-news-apple-att-eu-20260916/hero.jpg",
+        "alt": "原創插圖：畫面左側是一個對話框的幾何外框，框內一分為二，一半維持原本樣式、一半以虛線重繪代表另一版本；對話框下方延伸出兩條線，一條連向排成一列的五個小方塊，另一條連向一個時鐘圖示，代表地區差異與滿一年後的再次詢問",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 16 日，Apple 在 Apple Developer 的新聞頁公告一項調整：歐盟的 App 追蹤透明度（App Tracking Transparency，ATT）系統詢問框將出現另一個版本。Apple 表示這些調整是「與部分歐洲競爭主管機關達成的協議」的一部分，但沒有點名任何一個主管機關，也沒有說這次調整依據的是哪一部法律。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，讀的是這則開發者新聞公告全文，以及公告連到的「App Store 使用者隱私權與資料使用」說明頁；本站沒有安裝新版系統，也不描述介面畫面，不提供任何規避追蹤或反制廣告的操作教學。以下每一項規則都是 Apple 官方頁面目前寫的內容，實際畫面與生效時間以 Apple 屆時公布的版本為準。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 16 日，Apple 公告歐盟的 App 追蹤透明度詢問框將推出另一版本，自 iOS 27.2 與 iPadOS 27.2 起開發者可以選用。",
+            "德國、法國、義大利、波蘭與羅馬尼亞五個國家只能使用新版詢問框；Apple 表示歐盟的裝置設定「Allow Apps to Request to Track」也改了名稱。",
+            "歐盟的開發者可以在使用者上次回答滿一年後、不論當初是同意或拒絕，再顯示一次詢問框；必須取得許可的情形與拒絕後廣告識別碼歸零的規則都沒有改變。",
+            "Apple 沒有點名主管機關，也沒有說這次調整依據哪一部法律，沒有給 iOS 27.2 的推出日期，公告內容也未提及台灣。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 16 日，Apple 對開發者公告了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則公告貼在 Apple Developer 的新聞頁，英文標題是「Updates to App Tracking Transparency in the European Union」，頁面印的日期是 September 16, 2026。公告正文只有一段，末尾連到「App Store 使用者隱私權與資料使用」說明頁；調整的細節寫在那一頁專講歐盟的一節裡，不在公告本身，本文兩條來源就是這兩頁。"
+        },
+        {
+          "type": "paragraph",
+          "text": "調整的核心是詢問框本身：自 iOS 27.2 與 iPadOS 27.2 起，開發者將有機會使用另一版本的 App 追蹤透明度系統詢問框；兩個頁面都沒有寫 iOS 27.2 或 iPadOS 27.2 的推出日期，這段調整也只寫這兩個系統，沒有說 macOS、tvOS、watchOS 或 visionOS 會不會比照。看到版本號不代表看到日期，這點值得先說清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這項調整其實分成兩塊：一是詢問框本身在歐盟另有版本，並且在五個國家是唯一可用的版本；二是歐盟的開發者可以在使用者上次回答滿一年後、不論是同意還是拒絕，再顯示一次詢問框。這兩塊各自獨立，下面兩節分開說明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新版詢問框，以及五個國家的差別"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 說明，新版詢問框「版面與文字經過調整」，並且讓開發者可以選擇加上一個文字按鈕，標示為「Additional Information」；這個按鈕讓開發者進一步說明自己的請求，也就是把自家 App 蒐集到的使用者或裝置資料，和其他公司旗下 App、網站或線下管道蒐集到的資料串連，用於精準廣告或廣告成效評估，或是把資料分享給資料仲介。詢問框完整的文案，Apple 沒有用文字寫出來；說明頁在這一段旁邊嵌了一張畫面圖，本文不描述介面畫面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁的常見問答還補充了兩件事：歐盟的開發者也可以用這個按鈕，為了遵循當地隱私法等法律要求提供更細的同意選項，但按鈕後面的內容完全由開發者自己負責；而且在使用者於詢問框給出許可之前，開發者一樣不能取得裝置的廣告識別碼，也不能依詢問框所述蒐集、使用 App 的使用者或裝置資料。換句話說，多一個按鈕不等於多一條繞過詢問框的路。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 寫明，「基於法律要求」，德國、法國、義大利、波蘭與羅馬尼亞這五個國家，開發者只能使用新版詢問框，沒有選擇現行版本的空間；在這五國以外的歐盟國家，要不要改用新版是開發者自己的選擇。Apple 同樣沒有點名是哪一部法律，也沒有說為什麼是這五個國家。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要留意的是，什麼時候必須取得使用者許可，這件事沒有變：Apple 在同一段文字裡寫明，必須取得許可的情形維持不變，改變的只是詢問框長什麼樣子、用什麼文字問，不是問不問的門檻本身。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "歐盟以外",
+            "歐盟其他國家",
+            "德法義波羅五國"
+          ],
+          "rows": [
+            [
+              "詢問框版本",
+              "現行版本",
+              "現行版本或新版本",
+              "只能用新版本"
+            ],
+            [
+              "Additional Information 按鈕",
+              "不適用",
+              "開發者可加",
+              "開發者可加"
+            ],
+            [
+              "裝置設定名稱",
+              "Allow Apps to Request to Track",
+              "已改名，見內文",
+              "已改名，見內文"
+            ],
+            [
+              "滿一年後可否再問",
+              "官方頁未提及",
+              "開發者可以",
+              "開發者可以"
+            ]
+          ],
+          "caption": "整理自 Apple 2026 年 9 月 16 日的開發者公告與說明頁，查核日 2026 年 9 月 18 日；兩個頁面都是英文，設定名稱照英文原文列。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定改名，以及一年後可以再問一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二項改變在使用者的裝置設定裡。Apple 寫明，使用者可以透過關閉一項設定，讓自己不會再被詢問；這項設定目前的名稱是「Allow Apps to Request to Track」，Apple 表示在歐盟改名為「Allow Apps to Request to Link Your Activity Across Companies」。本文讀到的公告與說明頁都是英文，兩頁都沒有給這兩個名稱的中文寫法，所以文中出現的中文說法（例如「允許 App 要求追蹤」）是本站翻譯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一段還寫了一項只給歐盟的彈性：開發者可以在使用者上次於這個 App 裡做出選擇的一年之後，透過同一個系統詢問框再問一次，不論使用者當初選的是同意或拒絕。Apple 用的字是「you can reprompt」，這是給開發者的許可，不是對使用者一定會被再問的預測；而且只要使用者把前面那項裝置設定關閉，就不會再被詢問。說明頁沒有寫歐盟以外能不能這樣再問一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 另外列出四份技術文件供開發者參考，其中兩份標示為新增：一份是搭配 Additional Information 按鈕使用的新版授權請求方法，一份是搭配 Markdown 格式使用說明文字的欄位；另外兩份是既有的授權請求方法與使用說明文字欄位。兩份標示新增，代表新版詢問框對應的是一組新的程式介面。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-apple-att-eu-20260916/diagram-1.svg",
+          "alt": "四格圖解：詢問框版本在歐盟另有新版、德法義波羅五國只能用新版、裝置設定在歐盟改名、開發者可在滿一年後再顯示一次詢問框",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理自 Apple 2026 年 9 月 16 日的開發者公告與說明頁，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "沒有改變的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個沒有改變的地方，上一節已經提過：什麼時候必須取得使用者許可，規則維持原樣。Apple 在同一份頁面解釋，從 iOS 14.5、iPadOS 14.5 與 tvOS 14.5 起，開發者若要追蹤使用者或存取裝置的廣告識別碼，就需要透過 App 追蹤透明度框架取得使用者許可；這個起點與這次的歐盟調整無關，歐盟的新版詢問框問的仍然是同一件事，只是問法不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個沒有改變的地方，是使用者拒絕之後的結果。Apple 寫明，除非使用者同意，否則裝置的廣告識別碼會全部變成零，開發者也不得依前述方式追蹤使用者；這一句沒有區分歐盟或其他地區，公告也沒有說它改了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個沒有改變的地方，是 App Store 審查規範。說明頁的常見問答寫明，依審查指南 5.1.2(i)，App 不得以同意追蹤作為使用功能的條件，也不得用誘因換取同意；依審查指南 5.1.1 (iv)，App 必須尊重使用者的許可設定，不得操弄、誘導或強迫使用者同意不必要的資料存取。9 月 16 日那則公告沒有提到這兩條。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方沒有說的事，包含有沒有提到台灣"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 這份公告沒有點名任何一個「歐洲競爭主管機關」，也沒有說這次調整依據的是哪一部法律，只用「法律要求」帶過五個國家為什麼只能用新版詢問框。說明頁的常見問答確實出現過歐盟隱私法的名字，舉的是 ePrivacy 與 GDPR，但那是在說開發者可以用新按鈕遵循當地隱私法，不是 Apple 為這次調整給出的依據；本文因此不去猜是哪一個機關或哪一部法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "頁面也沒有用文字寫出新版詢問框的完整文案，只寫了「版面與文字經過調整」和一個按鈕的標示文字；兩個頁面都沒有任何一項數字是關於同意率或拒絕率的變化，Apple 沒有公布，本站也沒有做任何實測，所以無從比較新舊版本對廣告或使用者選擇的影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台灣的部分，兩個頁面都沒有出現「台灣」或「Taiwan」字樣，調整的描述也限定在歐盟；本文查核到 2026 年 9 月 18 日，讀到的兩個頁面都只有英文。這句話只能理解成官方公告沒有涵蓋台灣、沒有針對台灣說明，不能理解成台灣會不會出現同樣的調整——那是官方沒有寫的事，本文不代替 Apple 回答。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "那個追蹤詢問框到底在問什麼？",
+              "answer": "Apple 的說明是，詢問框問的是使用者要不要讓這個 App 把它蒐集到的使用者或裝置資料，跟其他公司旗下 App、網站或線下管道蒐集到的資料串連起來，用於精準廣告或廣告成效評估，或是把資料分享給資料仲介。這個定義寫在說明頁一般性的段落，不在歐盟那一節裡；這次調整的是詢問框的版面、文字與提問的時機，不是這個定義本身。"
+            },
+            {
+              "question": "如果我按下不允許，會發生什麼事？",
+              "answer": "裝置的廣告識別碼會變成全部是零，開發者也不得依 Apple 定義的方式追蹤使用者；說明頁寫這項規則時沒有分歐盟或其他地區，這次公告也沒有說它改了。另依 Apple 的審查指南，App 不得以同意追蹤作為使用功能的條件，也不得用誘因或誘導換取同意。"
+            },
+            {
+              "question": "歐盟的新版詢問框跟現行版本差在哪裡？",
+              "answer": "Apple 的說法是「版面與文字經過調整」，並且開發者可以選擇加上一個標示為「Additional Information」的文字按鈕，用來進一步說明這項請求，或在歐盟提供更細的同意選項。Apple 沒有用文字寫出完整文案，說明頁只在該段旁邊嵌了一張畫面圖，本文不描述介面畫面。"
+            },
+            {
+              "question": "哪五個國家只能使用新版詢問框？",
+              "answer": "德國、法國、義大利、波蘭與羅馬尼亞。Apple 說這是「基於法律要求」，但沒有點名是哪一部法律。"
+            },
+            {
+              "question": "我在歐盟會不會一直被重複詢問？",
+              "answer": "Apple 給開發者的是「可以」在使用者上次回答滿一年後、不論當初同意或拒絕，再顯示一次詢問框的許可，不是保證使用者一定會被再問。如果把裝置設定裡那項追蹤要求開關（英文原名 Allow Apps to Request to Track，Apple 表示在歐盟已改名）關掉，就不會再被詢問。"
+            },
+            {
+              "question": "台灣的使用者會看到這個新版詢問框嗎？",
+              "answer": "Apple 這則公告只寫歐盟，兩個頁面都沒有出現「台灣」或「Taiwan」字樣，也沒有說明「在歐盟散布的 App」是依商店前台、裝置地區還是其他方式判斷。這句話只代表官方公告沒有涵蓋台灣，不是官方表示台灣會或不會出現同樣的調整。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三件事不要混在一起",
+          "text": "詢問框在歐盟另有版本、五個國家只能用這一版、裝置設定改名並且開發者可以在滿一年後再問一次——這三件事各自獨立，發生的範圍也都限定在歐盟。Apple 沒有給 iOS 27.2 的推出日期，沒有點名主管機關，也沒有說這次調整依據哪一部法律；本文查核到 2026 年 9 月 18 日的頁面內容裡，兩個頁面都沒有出現台灣或 Taiwan 字樣。想確認最新狀態，可以直接查 Apple Developer 新聞頁與「App Store 使用者隱私權與資料使用」說明頁，兩者都會隨官方更新而改變。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 公布歐盟新版 App 商業條款：核心技術抽成 5%、可同時用替代付款",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Updates to App Tracking Transparency in the European Union",
+          "url": "https://developer.apple.com/news/?id=idsft9ai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "User privacy and data use - App Store",
+          "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "Apple Adjusts EU App Tracking Transparency Prompt: Five Countries Get the New Version, a Renamed Setting, Yearly Reprompts",
+      "description": "On September 16, 2026, Apple announced that the EU's App Tracking Transparency prompt will get an alternative version: from iOS 27.2 and iPadOS 27.2, Germany, France, Italy, Poland, and Romania can only use it, and the EU device setting has been renamed. Developers can now ask again a year after a user's last response. Based on Apple's announcement and support page, this article covers what changed, what did not, and what the announcement does not mention, including Taiwan.",
+      "hero": {
+        "src": "/guides/tech-news-apple-att-eu-20260916/hero-en.jpg",
+        "alt": "Original illustration: a dialog box outline split in half, one side redrawn in dashed lines for the alternative version; two lines below lead to a row of five small squares and a clock icon",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 16, 2026, Apple posted an update on the Apple Developer News page: the App Tracking Transparency (ATT) system prompt in the European Union will get an alternative version. Apple describes these changes as part of \"agreements with select European competition authorities,\" but does not name any authority, and does not say which law this update is based on."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026, against the full text of this Apple Developer News announcement and the \"User privacy and data use - App Store\" support page it links to. This site has not installed the new system software and does not describe the on-screen interface, and offers no instructions for evading tracking or countering advertising. Every rule below is what Apple's official pages currently state; the actual screens and effective dates follow whatever version Apple publishes when the time comes."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 16, 2026, Apple announced that the App Tracking Transparency prompt in the European Union will get an alternative version, which developers can opt to use starting with iOS 27.2 and iPadOS 27.2.",
+            "Germany, France, Italy, Poland, and Romania can only use the alternative prompt; Apple says the EU device setting \"Allow Apps to Request to Track\" has also been renamed.",
+            "EU developers can show the prompt again a year after a user's last response, whether that response was to accept or reject; the rule on when permission is required and the rule zeroing out the advertising identifier after a refusal are both unchanged.",
+            "Apple does not name any authority, does not say which law this update is based on, does not give a rollout date for iOS 27.2, and the announcement does not mention Taiwan."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Apple Told Developers on September 16"
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement is posted on the Apple Developer News page, titled \"Updates to App Tracking Transparency in the European Union,\" and the page is dated September 16, 2026. The announcement itself is a single paragraph that ends with a link to the \"User privacy and data use - App Store\" support page; the details of the change are written in that page's section on the European Union, not in the announcement itself. Both of this article's sources are these two pages."
+        },
+        {
+          "type": "paragraph",
+          "text": "The change centers on the prompt itself: beginning with iOS 27.2 and iPadOS 27.2, developers will have the option to use an alternative version of the App Tracking Transparency system prompt. Neither page gives a rollout date for iOS 27.2 or iPadOS 27.2, and this change is written only for these two systems -- neither page says whether macOS, tvOS, watchOS, or visionOS will follow suit. A version number is not a date, and that is worth stating up front."
+        },
+        {
+          "type": "paragraph",
+          "text": "The change actually comes in two parts: first, the prompt itself has an alternative version in the EU, one that is the only version available in five countries; second, EU developers can show the prompt again a year after a user's last response, whether that response was to accept or reject. The two parts are independent of each other, and the next two sections cover them separately."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Alternative Prompt, and How Five Countries Differ"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple explains that the alternative prompt has \"modified formatting and language,\" and gives developers the option to add a text button labeled \"Additional Information.\" The button lets developers surface more detail about their request -- that is, linking user or device data collected from their own app with data collected from other companies' apps, websites, or offline channels, for targeted advertising or advertising measurement, or sharing user or device data with a data broker. Apple does not spell out the prompt's full wording in text; the support page embeds a screenshot next to this passage, and this article does not describe the on-screen interface."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same page's FAQ adds two more points: EU developers can also use this button to offer more granular consent options in order to comply with local privacy laws or other applicable legal requirements, but whatever appears behind the button is entirely the developer's own responsibility. And until the user grants permission in the prompt, developers still cannot obtain the device's advertising identifier, or otherwise collect and use the app's user or device data as described in the prompt. In other words, one more button does not mean one more way around the prompt."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple states that \"due to legal requirements,\" developers in five countries -- Germany, France, Italy, Poland, and Romania -- can only use the alternative prompt, with no option to keep the current version; in EU countries outside these five, switching to the alternative version is the developer's own choice. Apple again does not name which law, or say why these five countries."
+        },
+        {
+          "type": "paragraph",
+          "text": "One thing worth noting: when permission is required has not changed. Apple states in the same passage that \"the requirements for when you must seek permission to track users will remain the same\" -- what changes is only what the prompt looks like and what words it uses to ask, not the threshold for whether to ask at all."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Outside the EU",
+            "Other EU countries",
+            "Germany, France, Italy, Poland, Romania"
+          ],
+          "rows": [
+            [
+              "Prompt version",
+              "Current version",
+              "Current or alternative version",
+              "Alternative version only"
+            ],
+            [
+              "\"Additional Information\" button",
+              "Not applicable",
+              "Developers may add it",
+              "Developers may add it"
+            ],
+            [
+              "Device setting name",
+              "Allow Apps to Request to Track",
+              "Renamed, see article",
+              "Renamed, see article"
+            ],
+            [
+              "Reprompt after a year",
+              "Not mentioned on the official pages",
+              "Developers may",
+              "Developers may"
+            ]
+          ],
+          "caption": "Compiled from Apple's developer announcement and support page dated September 16, 2026, checked September 18, 2026; both pages are in English, and setting names are listed as they appear in English."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A Renamed Setting, and Reprompting After a Year"
+        },
+        {
+          "type": "paragraph",
+          "text": "The second change is in a device setting. Apple states that users can turn off a setting so they will not be asked again; that setting is currently named \"Allow Apps to Request to Track,\" and Apple says it has been renamed to \"Allow Apps to Request to Link Your Activity Across Companies\" in the EU."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same passage also states a flexibility given only in the EU: developers can, via the same system prompt, ask again a year after the user's last choice in that app, regardless of whether the user originally chose to accept or reject. Apple's own wording is \"you can reprompt\" -- that is permission granted to the developer, not a prediction that the user will definitely be asked again; and if the user has turned off the device setting mentioned above, they will not be asked again. The support page does not say whether this kind of reprompting is allowed outside the EU."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple also lists four technical documents for developers, two of them marked as new: one is the new authorization-request method that pairs with the Additional Information button, and one is a usage-description field that pairs with Markdown formatting; the other two are the existing authorization-request method and usage-description field. The two \"new\" labels mean the alternative prompt corresponds to a new set of programming interfaces."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-apple-att-eu-20260916/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the EU prompt has an alternative version, only that version is allowed in five countries, the device setting was renamed in the EU, and developers can reprompt after a year",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from Apple's developer announcement and support page dated September 16, 2026, checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Has Not Changed"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first thing that has not changed was already mentioned in the previous section: the rule for when user permission is required stays the same. Apple explains, on the same page, that starting with iOS 14.5, iPadOS 14.5, and tvOS 14.5, developers who want to track users or access a device's advertising identifier need to obtain the user's permission through the App Tracking Transparency framework; that starting point has nothing to do with this EU change, and the EU's alternative prompt is still asking about the same thing, just in a different way."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second thing that has not changed is what happens after a user declines. Apple states that unless the user grants permission, the device's advertising identifier value will be all zeros, and developers may not track the user in the way described above; this statement does not distinguish between the EU and other regions, and the announcement does not say it has changed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The third thing that has not changed is the App Store review guidelines. The support page's FAQ states that under App Review Guidelines 5.1.2(i), an app may not gate functionality on agreeing to be tracked, and may not offer an incentive in exchange for consent; and under App Review Guidelines 5.1.1 (iv), apps must respect the user's permission settings and not attempt to manipulate, trick, or force people to consent to unnecessary data access. The September 16 announcement does not mention either guideline."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Apple Has Not Said, Including Whether It Mentions Taiwan"
+        },
+        {
+          "type": "paragraph",
+          "text": "This Apple announcement does not name any \"European competition authority,\" and does not say which law this update is based on -- it only cites \"legal requirements\" for why the five countries can only use the alternative prompt. The support page's FAQ does name EU privacy laws -- it cites ePrivacy and GDPR as examples -- but that is in the context of developers using the new button to comply with local privacy laws, not as the basis Apple gives for this update. This article therefore does not guess which authority or which law."
+        },
+        {
+          "type": "paragraph",
+          "text": "The pages also do not spell out the alternative prompt's full wording in text, only stating \"modified formatting and language\" and the label on one button; neither page gives any figures on changes in consent or refusal rates. Apple has not published any, and we have not tested this ourselves, so there is no way to compare how the old and new versions affect advertising or user choices."
+        },
+        {
+          "type": "paragraph",
+          "text": "As for Taiwan: neither page contains the word \"Taiwan,\" and the description of the change is limited to the European Union. As checked through September 18, 2026, both pages this article read are in English only. This can only be read as the official announcement not covering Taiwan and not addressing Taiwan specifically -- it cannot be read as saying whether or not the same change will come to Taiwan. That is something Apple has not written, and this article does not answer on Apple's behalf."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "What is the tracking prompt actually asking?",
+              "answer": "Apple's explanation is that the prompt asks whether the user will let this app link the user or device data it has collected with data collected from other companies' apps, websites, or offline channels, for targeted advertising or advertising measurement, or share user or device data with a data broker. This definition is written in the support page's general section, not in the EU-specific section; what this update changes is the prompt's formatting, wording, and timing, not this definition itself."
+            },
+            {
+              "question": "What happens if I tap Don't Allow?",
+              "answer": "The device's advertising identifier value becomes all zeros, and developers may not track the user in the way Apple defines; the support page states this rule without distinguishing the EU from other regions, and this announcement does not say it has changed. Also, under Apple's review guidelines, an app may not gate functionality on agreeing to be tracked, or use an incentive or inducement in exchange for consent."
+            },
+            {
+              "question": "How does the EU's alternative prompt differ from the current version?",
+              "answer": "Apple's own words are \"modified formatting and language,\" and developers can choose to add a text button labeled \"Additional Information\" to further explain the request, or, in the EU, to offer more granular consent options. Apple does not spell out the full wording in text; the support page only embeds a screenshot next to that passage, and this article does not describe the on-screen interface."
+            },
+            {
+              "question": "Which five countries can only use the alternative prompt?",
+              "answer": "Germany, France, Italy, Poland, and Romania. Apple says this is \"due to legal requirements,\" but does not name which law."
+            },
+            {
+              "question": "Will I keep being asked repeatedly in the EU?",
+              "answer": "What Apple gives developers is permission that they \"can\" show the prompt again a year after the user's last response, whether that response was accept or reject -- it is not a guarantee that the user will definitely be asked again. If you turn off the tracking-request toggle in your device settings (its English name is Allow Apps to Request to Track, which Apple says has been renamed in the EU), you will not be asked again."
+            },
+            {
+              "question": "Will users in Taiwan see this alternative prompt?",
+              "answer": "This Apple announcement covers only the EU; neither page contains the word \"Taiwan,\" and neither explains whether \"apps distributed in the EU\" is determined by storefront, device region, or some other method. This only means the official announcement does not cover Taiwan -- it is not Apple saying whether or not the same change will come to Taiwan."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Three Things Not to Conflate",
+          "text": "The prompt having an alternative version in the EU, five countries being limited to that version, and the device setting being renamed along with developers being able to ask again after a year are three separate things, each limited in scope to the EU. Apple has not given a rollout date for iOS 27.2, has not named any authority, and has not said which law this update is based on; as of the page content checked through September 18, 2026, neither page contains the word Taiwan. To confirm the latest status, check the Apple Developer News page and the \"User privacy and data use - App Store\" support page directly -- both will change as Apple updates them."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple Announces New EU App Business Terms: A 5% Core Technology Commission, and Alternative Payments Alongside Apple In-App Purchase",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Updates to App Tracking Transparency in the European Union",
+          "url": "https://developer.apple.com/news/?id=idsft9ai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "User privacy and data use - App Store",
+          "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Apple、EU向けApp Tracking Transparency確認画面を調整：5カ国は新版が必須に、設定名も変更、1年後に再確認も可能",
+      "description": "2026年9月16日、AppleはDeveloper Newsで、欧州連合(EU)のApp Tracking Transparency確認画面に新たなバージョンが登場すると発表しました。iOS 27.2およびiPadOS 27.2以降、ドイツ・フランス・イタリア・ポーランド・ルーマニアの5カ国では新版のみが使用可能になり、EUのデバイス設定名も変更されます。さらに開発者は、利用者の前回の回答から1年が経過した後に再度確認画面を表示できるようになります。本記事はAppleの公式発表とサポートページに基づき、変更点と変更されていない点、そして発表が台湾に触れていない点を整理しています。",
+      "hero": {
+        "src": "/guides/tech-news-apple-att-eu-20260916/hero-ja.jpg",
+        "alt": "オリジナルイラスト：画面左側にダイアログボックスの幾何学的な外枠があり、枠の中は半分ずつに分かれていて、一方は元のスタイルのまま、もう一方は点線で描き直されて新版を表す。ダイアログボックスの下からは2本の線が伸びており、1本は横に並んだ5つの小さな四角につながり、もう1本は時計のアイコンにつながっていて、地域による違いと1年後の再確認を表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月16日、AppleはApple Developerのニュースページで、欧州連合(EU)のApp Tracking Transparency(ATT)システム確認画面に新たなバージョンが登場すると発表しました。Appleはこれらの変更を「一部の欧州競争当局との合意」の一環だと説明していますが、当局を一つも名指ししておらず、今回の変更が何の法律に基づくのかも述べていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月18日に、この開発者向けニュース発表の全文と、そこからリンクされている「User privacy and data use - App Store」サポートページを確認して作成しました。当サイトは新版のシステムをインストールしておらず、画面そのものについては説明せず、追跡を回避したり広告に対抗したりする操作方法も紹介しません。以下の各ルールは、Appleの公式ページに現在記載されている内容であり、実際の画面や適用開始時期は、その時点でAppleが公開するバージョンに従います。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月16日、Appleは欧州連合(EU)のApp Tracking Transparency確認画面に新たなバージョンが登場すると発表しました。開発者はiOS 27.2およびiPadOS 27.2以降、これを選んで使用できます。",
+            "ドイツ、フランス、イタリア、ポーランド、ルーマニアの5カ国では新版の確認画面しか使用できません。Appleによれば、EUのデバイス設定「Allow Apps to Request to Track」も改称されました。",
+            "EUの開発者は、利用者の前回の回答から1年後に、当初の回答が同意でも拒否でも確認画面を再度表示できます。許可をいつ取得しなければならないかというルールと、拒否後に広告識別子がゼロになるルールはどちらも変わっていません。",
+            "Appleは当局を名指ししておらず、今回の変更が何の法律に基づくかも述べておらず、iOS 27.2の展開日も示しておらず、発表は台湾にも触れていません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月16日、Appleが開発者に発表した内容"
+        },
+        {
+          "type": "paragraph",
+          "text": "この発表はApple Developerのニュースページに掲載されており、英語のタイトルは「Updates to App Tracking Transparency in the European Union」、ページに記載された日付はSeptember 16, 2026です。発表の本文は1段落のみで、末尾で「User privacy and data use - App Store」サポートページにリンクしています。変更の詳細は発表自体にはなく、サポートページ内のEUに関するセクションに書かれており、本記事の2件の情報源はこの2つのページです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更の中心は確認画面そのものです。iOS 27.2およびiPadOS 27.2以降、開発者はApp Tracking Transparencyシステム確認画面の新版を使用する選択肢を持つことになります。どちらのページもiOS 27.2やiPadOS 27.2の展開日を示しておらず、この変更が書かれているのはこの2つのシステムのみで、macOS、tvOS、watchOS、visionOSが追随するかどうかはどちらのページにも書かれていません。バージョン番号は日付ではない、という点はあらかじめ述べておく価値があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回の変更は実は2つの部分に分かれています。1つ目は確認画面そのものにEU向けの新版があり、それが5カ国では唯一使用できる版であること。2つ目は、EUの開発者が利用者の前回の回答から1年後に、当初の回答が同意でも拒否でも同じシステム確認画面を通じて再度尋ねられるようになることです。この2つは互いに独立しており、次の2つのセクションで分けて説明します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新版の確認画面と、5カ国の違い"
+        },
+        {
+          "type": "paragraph",
+          "text": "Appleの説明では、新版の確認画面は「レイアウトと文言に変更を加えた」ものであり、開発者は「Additional Information」と表示されたテキストボタンを追加する選択肢を持ちます。このボタンにより、開発者は自分のリクエストについてさらに説明できます。つまり、自社のAppが収集した利用者またはデバイスのデータを、他社のApp、ウェブサイト、オフラインの手段で収集されたデータと結び付けて、ターゲティング広告や広告効果測定に使用すること、あるいは利用者やデバイスのデータをデータブローカーと共有することです。Appleは確認画面の完全な文言を文字では示しておらず、サポートページはこの箇所の横にスクリーンショットを1枚埋め込んでいるだけで、本記事では画面そのものについては説明しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じページのよくある質問には、さらに2点補足されています。EUの開発者はこのボタンを使って、現地のプライバシー法などの法的要件を遵守するために、よりきめ細かな同意の選択肢を提供することもできますが、ボタンの先の内容については開発者自身が全面的に責任を負います。また、利用者が確認画面で許可を与えるまでは、開発者は引き続きデバイスの広告識別子を取得できず、確認画面に記載された方法でAppの利用者やデバイスのデータを収集・利用することもできません。つまり、ボタンが1つ増えたからといって、確認画面を回避する経路が1つ増えるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Appleは、「法的要件に基づき」、ドイツ、フランス、イタリア、ポーランド、ルーマニアの5カ国では、開発者は新版の確認画面しか使用できず、現行版を選ぶ余地はないと明記しています。この5カ国以外のEU加盟国では、新版に切り替えるかどうかは開発者自身の選択です。Appleはここでも、どの法律かは名指ししておらず、なぜこの5カ国なのかも述べていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここで注意したいのは、利用者の許可をいつ取得しなければならないかは変わっていないという点です。Appleは同じ文章の中で、許可を取得しなければならない状況は変わらないと明記しており、変わるのは確認画面の見た目とどのような文言で尋ねるかだけであり、尋ねるかどうかの基準そのものではありません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "EU域外",
+            "EUのその他の国",
+            "独仏伊ポーランド・ルーマニアの5カ国"
+          ],
+          "rows": [
+            [
+              "確認画面のバージョン",
+              "現行版",
+              "現行版または新版",
+              "新版のみ"
+            ],
+            [
+              "Additional Informationボタン",
+              "対象外",
+              "開発者が追加可能",
+              "開発者が追加可能"
+            ],
+            [
+              "デバイス設定名",
+              "Allow Apps to Request to Track",
+              "改称、本文参照",
+              "改称、本文参照"
+            ],
+            [
+              "1年後の再表示可否",
+              "公式ページに記載なし",
+              "開発者が可能",
+              "開発者が可能"
+            ]
+          ],
+          "caption": "Appleの2026年9月16日付の開発者向け発表とサポートページをもとに作成。確認日2026年9月18日。両ページとも英語で、設定名は英語の原文どおりに記載しています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定名の変更と、1年後に再度確認できる仕組み"
+        },
+        {
+          "type": "paragraph",
+          "text": "2つ目の変更は、利用者のデバイス設定に関するものです。Appleは、ある設定をオフにすることで、以後この確認を受けずに済むと説明しています。この設定の現在の名称は「Allow Apps to Request to Track」で、Appleによれば、EUでは「Allow Apps to Request to Link Your Activity Across Companies」に改称されたとのことです。本記事が読んだ発表とサポートページはいずれも英語であり、この2つの名称の日本語表記は示されていません。そのため、本文中に日本語での言い換え（たとえば「Appにトラッキングの許可を求めることを許可する」）が出てくる場合、それは当サイトによる訳です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ箇所には、EUに限って認められる柔軟な仕組みも書かれています。開発者は、利用者がそのApp内で前回選択してから1年が経過した後、同じシステム確認画面を通じて再度確認を行うことができ、利用者が当初「同意」を選んでいたか「拒否」を選んでいたかは問いません。Appleが使っている表現は「you can reprompt」であり、これは開発者に与えられた許可であって、利用者が必ず再度確認されるという予測ではありません。また、利用者が前述のデバイス設定をオフにしていれば、再度確認されることはありません。EU以外でもこの形で再確認できるかどうかについて、サポートページには記載がありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Appleはこのほか、開発者向けに4件の技術文書を挙げており、そのうち2件には「新規」の表示があります。1件はAdditional Informationボタンと組み合わせて使う新しい認可リクエスト方式、もう1件はMarkdown形式の説明文と組み合わせて使うフィールドです。残る2件は既存の認可リクエスト方式と説明文フィールドです。2件に「新規」と表示されていることは、新版の確認画面が新しいプログラミングインターフェースの組に対応していることを意味します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-apple-att-eu-20260916/diagram-1-ja.svg",
+          "alt": "4コマの図解：EUでは確認画面に新版がある、ドイツ・フランス・イタリア・ポーランド・ルーマニアの5カ国は新版のみ使用可能、デバイス設定がEUで改称された、開発者は1年後に確認画面を再表示できる",
+          "width": 1600,
+          "height": 900,
+          "caption": "Appleの2026年9月16日付の開発者向け発表とサポートページをもとに作成。確認日2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "変わっていない部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "変わっていない点の1つ目は、前のセクションですでに触れました。利用者の許可をいつ取得しなければならないかというルールは、これまでと変わりません。Appleは同じページで、iOS 14.5、iPadOS 14.5、tvOS 14.5以降、開発者が利用者を追跡したり、デバイスの広告識別子にアクセスしたりする場合には、App Tracking Transparencyフレームワークを通じて利用者の許可を取得する必要があると説明しています。この起点は今回のEU向けの変更とは関係がなく、EUの新版確認画面が尋ねているのも同じ内容で、尋ね方が違うだけです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変わっていない点の2つ目は、利用者が拒否した後の結果です。Appleは、利用者から同意を得ない限り、デバイスの広告識別子はすべてゼロになり、開発者は前述の方法で利用者を追跡できないと明記しています。この記述はEUと他の地域を区別しておらず、今回の発表もこれが変わったとは述べていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変わっていない点の3つ目は、App Storeの審査基準です。サポートページのFAQには、審査ガイドライン5.1.2(i)により、Appは追跡への同意を機能利用の条件にしてはならず、同意と引き換えに何らかの特典を提供してもならないと明記されています。また審査ガイドライン5.1.1 (iv)により、Appは利用者の許可設定を尊重し、不要なデータアクセスへの同意を得るために利用者を操作したり、だましたり、強制したりしてはならないとされています。9月16日の発表では、この2つの項目には触れていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "公式が語っていないこと、台湾に触れているかどうかを含めて"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回のAppleの発表は、「欧州の競争当局」を一つも名指ししておらず、今回の変更が何の法律に基づくものかも述べていません。5カ国が新版の確認画面しか使えない理由については「法的要件」という表現で済ませています。サポートページのFAQにはEUのプライバシー法の名称が実際に登場し、ePrivacyとGDPRが例として挙げられていますが、これは開発者が新しいボタンを使って現地のプライバシー法を遵守できるという文脈での言及であり、Appleが今回の変更の根拠として示したものではありません。そのため本記事では、どの当局あるいはどの法律なのかを推測することはしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "また、ページには新版の確認画面の完全な文言は文字として書かれておらず、「レイアウトと文言に変更を加えた」という説明と、1つのボタンの表示文言があるだけです。両ページとも、同意率や拒否率の変化に関する数字は一つも記載がありません。Appleがこれを公表しておらず、当サイトも実地の検証を行っていないため、新旧バージョンが広告や利用者の選択に与える影響を比較することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾については、両ページとも「台湾」あるいは「Taiwan」という語は出てきておらず、変更の説明もEUに限定されています。本記事は2026年9月18日まで確認しており、読んだ2つのページはいずれも英語のみです。これは、公式発表が台湾を対象に含んでいない、台湾について説明していないという意味にしか理解できず、台湾で同様の変更が行われるかどうかを示すものとしては理解できません。それはAppleが書いていないことであり、本記事はAppleに代わって答えるものではありません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "そもそも、あの追跡に関する確認画面は何を聞いているのですか。",
+              "answer": "Appleの説明によれば、確認画面が聞いているのは、このAppが収集した利用者またはデバイスのデータを、他社のApp、ウェブサイト、オフラインの手段で収集されたデータと結び付けて、ターゲティング広告や広告効果測定に使用するか、あるいは利用者やデバイスのデータをデータブローカーと共有するか、という点です。この定義はサポートページの一般的な段落に書かれており、EUに関するセクションにあるわけではありません。今回の変更が対象としているのは確認画面のレイアウト、文言、表示するタイミングであり、この定義自体ではありません。"
+            },
+            {
+              "question": "「許可しない」を選ぶとどうなりますか。",
+              "answer": "デバイスの広告識別子はすべてゼロになり、開発者はAppleが定義する方法で利用者を追跡できなくなります。サポートページはこのルールをEUと他の地域で区別せずに記載しており、今回の発表もこれが変わったとは述べていません。またAppleの審査ガイドラインにより、Appは追跡への同意を機能利用の条件にしたり、特典や誘導で同意を得たりしてはなりません。"
+            },
+            {
+              "question": "EUの新版の確認画面は、現行版とどこが違うのですか。",
+              "answer": "Appleの説明は「レイアウトと文言に変更を加えた」というもので、開発者は「Additional Information」と表示されたテキストボタンを追加し、このリクエストについてさらに説明したり、EUでよりきめ細かな同意の選択肢を示したりすることを選べます。Appleは完全な文言を文字では示しておらず、サポートページはその箇所の横にスクリーンショットを1枚埋め込んでいるだけです。本記事では画面そのものについては説明しません。"
+            },
+            {
+              "question": "新版の確認画面しか使えないのはどの5カ国ですか。",
+              "answer": "ドイツ、フランス、イタリア、ポーランド、ルーマニアです。Appleは「法的要件に基づく」としていますが、どの法律かは名指ししていません。"
+            },
+            {
+              "question": "EUでは何度も繰り返し確認されるのでしょうか。",
+              "answer": "Appleが開発者に与えているのは、利用者の前回の回答から1年が経過した後、当初の回答が同意でも拒否でも確認画面を再度表示「できる」という許可であり、利用者が必ず再確認されるという保証ではありません。デバイス設定にある追跡リクエストのスイッチ（英語の名称はAllow Apps to Request to Trackで、Appleによれば、EUで改称されたとのことです）をオフにしていれば、再度確認されることはありません。"
+            },
+            {
+              "question": "台湾の利用者にも、この新版の確認画面が表示されるのですか。",
+              "answer": "今回のAppleの発表が対象としているのはEUのみで、両ページとも「台湾」や「Taiwan」という語は出てきません。また、「EU向けに配信されているApp」をストアフロント、デバイスの地域設定、あるいは他の方法のどれで判定するのかについても説明がありません。これは公式発表が台湾を対象に含んでいないという意味にすぎず、Appleが台湾で同様の変更が行われるかどうかを表明しているわけではありません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "混同しないでほしい3つのこと",
+          "text": "EUでは確認画面に別版がある、5カ国はその新版しか使えない、そしてデバイス設定が改称され開発者は1年後に再度確認できる、この3つはそれぞれ独立した事柄であり、いずれも範囲はEUに限定されています。AppleはiOS 27.2の展開日を示しておらず、当局を名指ししておらず、今回の変更が何の法律に基づくかも述べていません。本記事が2026年9月18日まで確認したページの内容には、いずれのページにも「台湾」や「Taiwan」という語は出てきません。最新の状況を確認したい場合は、Apple Developerのニュースページと「User privacy and data use - App Store」サポートページを直接確認してください。どちらも公式の更新に応じて内容が変わります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Appleが欧州連合向けの新App事業条件を発表：コアテクノロジー手数料は5%に、代替決済との併用も可能に",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Updates to App Tracking Transparency in the European Union",
+          "url": "https://developer.apple.com/news/?id=idsft9ai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "User privacy and data use - App Store",
+          "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Apple, EU App Tracking Transparency 프롬프트 조정: 5개국 새 버전 의무화, 설정 명칭 변경, 1년 후 재요청 가능",
+      "description": "2026년 9월 16일, Apple은 Developer News를 통해 유럽연합(EU)의 App Tracking Transparency 프롬프트에 새 버전이 등장한다고 발표했습니다. iOS 27.2 및 iPadOS 27.2부터 독일, 프랑스, 이탈리아, 폴란드, 루마니아 5개국은 새 버전만 사용할 수 있으며, EU의 기기 설정 이름도 변경됩니다. 또한 개발자는 사용자의 마지막 응답으로부터 1년이 지난 후 프롬프트를 다시 표시할 수 있게 됩니다. 본 기사는 Apple의 공식 공지와 지원 페이지를 바탕으로 변경된 점과 변경되지 않은 점, 그리고 공지에서 대만을 언급하지 않은 부분을 정리합니다.",
+      "hero": {
+        "src": "/guides/tech-news-apple-att-eu-20260916/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 화면 왼쪽에 대화상자의 기하학적 윤곽선이 있고, 그 안은 반으로 나뉘어 한쪽은 원래 스타일을 유지하고 다른 한쪽은 점선으로 다시 그려져 새 버전을 나타냅니다. 대화상자 아래로 두 개의 선이 이어지는데, 하나는 나란히 배열된 다섯 개의 작은 사각형으로, 다른 하나는 시계 아이콘으로 연결되어 지역별 차이와 만 1년 후 재요청을 나타냅니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 16일, Apple은 Apple Developer 뉴스 페이지에서 유럽연합(EU)의 App Tracking Transparency(ATT) 시스템 프롬프트에 새로운 버전이 등장한다고 발표했습니다. Apple은 이러한 조정이 '일부 유럽 경쟁 당국과의 합의'의 일환이라고 설명하지만, 어떤 당국도 지목하지 않았으며 이번 조정이 어떤 법률에 근거하는지도 밝히지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일에 이 개발자 뉴스 공지 전문과, 공지에서 링크된 'User privacy and data use - App Store' 지원 페이지를 확인해 작성했습니다. 본 사이트는 새 버전의 시스템을 설치하지 않았고, 화면 자체를 설명하지 않으며, 추적을 회피하거나 광고에 대응하는 조작법도 제공하지 않습니다. 아래의 각 규칙은 Apple 공식 페이지에 현재 적혀 있는 내용이며, 실제 화면과 적용 시점은 그 시점에 Apple이 공개하는 버전을 따릅니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 16일, Apple은 유럽연합(EU)의 App Tracking Transparency 프롬프트에 새 버전이 등장한다고 발표했습니다. 개발자는 iOS 27.2 및 iPadOS 27.2부터 이를 선택해 사용할 수 있습니다.",
+            "독일, 프랑스, 이탈리아, 폴란드, 루마니아 5개국은 새 프롬프트만 사용할 수 있습니다. Apple에 따르면 EU의 기기 설정 'Allow Apps to Request to Track'도 명칭이 변경되었습니다.",
+            "EU의 개발자는 사용자의 마지막 응답으로부터 1년이 지난 후, 당시 응답이 동의였든 거부였든 프롬프트를 다시 표시할 수 있습니다. 허용을 언제 받아야 하는지에 대한 규칙과, 거부 후 광고 식별자가 0이 되는 규칙은 모두 변경되지 않았습니다.",
+            "Apple은 당국을 지목하지 않았고, 이번 조정이 어떤 법률에 근거하는지도 밝히지 않았으며, iOS 27.2의 출시일도 제시하지 않았고, 공지는 대만도 언급하지 않습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 16일, Apple이 개발자에게 발표한 내용"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 공지는 Apple Developer 뉴스 페이지에 게시되어 있으며, 영어 제목은 'Updates to App Tracking Transparency in the European Union'이고, 페이지에 표기된 날짜는 September 16, 2026입니다. 공지 본문은 한 단락뿐이며, 끝부분에서 'User privacy and data use - App Store' 지원 페이지로 연결됩니다. 조정의 세부 내용은 공지 자체가 아니라 그 지원 페이지의 EU 관련 섹션에 적혀 있으며, 본 기사의 두 출처는 바로 이 두 페이지입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 조정의 핵심은 프롬프트 자체입니다. iOS 27.2 및 iPadOS 27.2부터 개발자는 App Tracking Transparency 시스템 프롬프트의 새 버전을 사용할 수 있는 선택지를 갖게 됩니다. 두 페이지 모두 iOS 27.2나 iPadOS 27.2의 출시일을 밝히지 않았으며, 이 조정은 이 두 시스템에 대해서만 적혀 있을 뿐, macOS, tvOS, watchOS, visionOS가 뒤따를지는 어느 페이지에도 나와 있지 않습니다. 버전 번호는 날짜가 아니라는 점을 먼저 짚어둘 필요가 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 조정은 사실 두 부분으로 나뉩니다. 첫째, 프롬프트 자체가 EU에서 별도의 새 버전을 가지며, 그 새 버전이 5개국에서는 유일하게 사용 가능한 버전이라는 것입니다. 둘째, EU의 개발자는 사용자가 해당 App에서 마지막으로 응답한 지 1년이 지난 후, 당시 응답이 동의였든 거부였든 같은 시스템 프롬프트를 통해 다시 물어볼 수 있다는 것입니다. 이 두 부분은 서로 독립적이며, 다음 두 섹션에서 나누어 설명합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "새 프롬프트, 그리고 5개국의 차이"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple의 설명에 따르면 새 프롬프트는 '레이아웃과 문구를 조정'했으며, 개발자는 'Additional Information'이라고 표시된 텍스트 버튼을 추가하는 선택지를 갖습니다. 이 버튼을 통해 개발자는 자신의 요청에 대해 더 설명할 수 있습니다. 즉 자사 App이 수집한 사용자 또는 기기 데이터를 다른 회사의 App, 웹사이트, 오프라인 경로에서 수집한 데이터와 연결해 타겟 광고나 광고 효과 측정에 사용하거나, 사용자나 기기 데이터를 데이터 브로커와 공유하는 것입니다. Apple은 프롬프트의 전체 문구를 텍스트로 밝히지 않았으며, 지원 페이지는 이 부분 옆에 스크린샷 한 장을 넣어두었을 뿐이고, 본 기사는 화면 자체를 설명하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 페이지의 자주 묻는 질문에는 두 가지가 더 보충되어 있습니다. EU 개발자는 이 버튼을 이용해 현지 개인정보 보호법 등 법적 요구 사항을 준수하기 위해 더 세분화된 동의 옵션을 제공할 수도 있지만, 버튼 뒤의 내용에 대해서는 개발자가 전적으로 책임을 집니다. 또한 사용자가 프롬프트에서 허용을 하기 전까지는 개발자가 여전히 기기의 광고 식별자를 얻을 수 없고, 프롬프트에 설명된 방식으로 App의 사용자나 기기 데이터를 수집·이용할 수도 없습니다. 다시 말해 버튼이 하나 늘었다고 해서 프롬프트를 우회하는 경로가 하나 느는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple은 '법적 요구 사항에 따라' 독일, 프랑스, 이탈리아, 폴란드, 루마니아 5개국에서는 개발자가 새 프롬프트만 사용할 수 있으며 현행 버전을 선택할 여지가 없다고 명시합니다. 이 5개국 이외의 EU 회원국에서는 새 버전으로 전환할지 여부가 개발자 자신의 선택입니다. Apple은 여기서도 어떤 법률인지 지목하지 않았으며, 왜 이 5개국인지도 밝히지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여기서 주의할 점은, 언제 사용자 허용을 받아야 하는지는 변하지 않았다는 것입니다. Apple은 같은 단락에서 허용을 받아야 하는 상황은 그대로 유지된다고 명시하며, 바뀌는 것은 프롬프트의 모양과 어떤 문구로 묻는지일 뿐, 물어볼지 말지를 가르는 기준 자체가 아닙니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "EU 역외",
+            "EU의 다른 국가",
+            "대상 5개국"
+          ],
+          "rows": [
+            [
+              "프롬프트 버전",
+              "현행 버전",
+              "현행 버전 또는 새 버전",
+              "새 버전만"
+            ],
+            [
+              "Additional Information 버튼",
+              "해당 없음",
+              "개발자가 추가 가능",
+              "개발자가 추가 가능"
+            ],
+            [
+              "기기 설정 이름",
+              "Allow Apps to Request to Track",
+              "명칭 변경, 본문 참고",
+              "명칭 변경, 본문 참고"
+            ],
+            [
+              "1년 후 재요청 가능 여부",
+              "공식 페이지에 언급 없음",
+              "개발자가 가능",
+              "개발자가 가능"
+            ]
+          ],
+          "caption": "Apple의 2026년 9월 16일자 개발자 공지와 지원 페이지를 바탕으로 정리. 확인일 2026년 9월 18일. 두 페이지 모두 영어로 작성되어 있으며, 설정 이름은 영어 원문 그대로 표기합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "설정 명칭 변경, 그리고 1년 후 재요청 가능"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째 변화는 사용자의 기기 설정에 있습니다. Apple은 사용자가 한 설정을 꺼두면 더 이상 이 요청을 받지 않게 된다고 설명합니다. 이 설정의 현재 이름은 'Allow Apps to Request to Track'이며, Apple에 따르면 EU에서는 'Allow Apps to Request to Link Your Activity Across Companies'로 명칭이 변경되었습니다. 본 기사가 확인한 공지와 지원 페이지는 모두 영어로 되어 있으며, 두 곳 모두 이 두 명칭의 한국어 표기를 제공하지 않습니다. 따라서 본문에 한국어 표현(예: '앱이 추적을 요청하도록 허용')이 등장한다면, 이는 본 사이트가 옮긴 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 구절에는 EU에서만 허용되는 유연성도 나와 있습니다. 개발자는 사용자가 해당 App에서 마지막으로 선택한 지 1년이 지난 후, 같은 시스템 프롬프트를 통해 다시 물어볼 수 있으며, 사용자가 당시 '동의'를 선택했는지 '거부'를 선택했는지는 상관없습니다. Apple이 쓴 표현은 'you can reprompt'로, 이는 개발자에게 주어지는 허용이지 사용자가 반드시 다시 질문받는다는 예측이 아닙니다. 또한 사용자가 앞서 말한 기기 설정을 꺼두면 다시 질문받지 않습니다. EU 외 지역에서도 이런 방식으로 재요청할 수 있는지는 지원 페이지에 나와 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple은 개발자를 위해 4건의 기술 문서도 나열했으며, 그중 2건에는 '신규' 표시가 있습니다. 하나는 Additional Information 버튼과 함께 사용하는 새 권한 요청 방식이고, 다른 하나는 Markdown 형식의 사용 설명 텍스트와 함께 사용하는 필드입니다. 나머지 2건은 기존의 권한 요청 방식과 사용 설명 텍스트 필드입니다. 2건에 '신규' 표시가 있다는 것은 새 프롬프트가 새로운 프로그래밍 인터페이스 세트에 대응한다는 뜻입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-apple-att-eu-20260916/diagram-1-ko.svg",
+          "alt": "네 칸 도해: EU에는 별도의 새 프롬프트 버전이 있음, 독일·프랑스·이탈리아·폴란드·루마니아 5개국은 새 버전만 사용 가능, 기기 설정이 EU에서 명칭 변경됨, 개발자는 1년 후 프롬프트를 다시 표시할 수 있음",
+          "width": 1600,
+          "height": 900,
+          "caption": "Apple의 2026년 9월 16일자 개발자 공지와 지원 페이지를 바탕으로 정리. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "변경되지 않은 부분"
+        },
+        {
+          "type": "paragraph",
+          "text": "변경되지 않은 첫 번째 부분은 앞 섹션에서 이미 언급했습니다. 사용자 허용을 언제 받아야 하는지에 대한 규칙은 그대로입니다. Apple은 같은 페이지에서, iOS 14.5, iPadOS 14.5, tvOS 14.5부터 개발자가 사용자를 추적하거나 기기의 광고 식별자에 접근하려면 App Tracking Transparency 프레임워크를 통해 사용자의 허용을 받아야 한다고 설명합니다. 이 기준 시점은 이번 EU 조정과는 무관하며, EU의 새 프롬프트가 묻는 내용도 동일하고 묻는 방식만 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변경되지 않은 두 번째 부분은 사용자가 거부한 이후의 결과입니다. Apple은 사용자의 동의를 받지 않는 한 기기의 광고 식별자 값이 모두 0이 되며, 개발자는 앞서 설명한 방식으로 사용자를 추적할 수 없다고 명시합니다. 이 문장은 EU와 다른 지역을 구분하지 않으며, 이번 공지에서도 이것이 바뀌었다고는 말하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변경되지 않은 세 번째 부분은 App Store 심사 지침입니다. 지원 페이지의 FAQ는 심사 지침 5.1.2(i)에 따라 App은 추적 동의를 기능 사용의 조건으로 걸어서는 안 되며, 동의의 대가로 인센티브를 제공해서도 안 된다고 명시합니다. 또한 심사 지침 5.1.1 (iv)에 따라 App은 사용자의 허용 설정을 존중해야 하며, 불필요한 데이터 접근에 동의하도록 사용자를 조작하거나 속이거나 강요해서는 안 됩니다. 9월 16일 공지에서는 이 두 조항을 언급하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "공식적으로 밝히지 않은 것, 대만 언급 여부를 포함해"
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 Apple 공지는 '유럽 경쟁 당국'을 한 곳도 지목하지 않았으며, 이번 조정이 어떤 법률에 근거하는지도 밝히지 않았습니다. 5개국이 새 프롬프트만 사용할 수 있는 이유는 '법적 요구 사항'이라는 표현으로 넘어갑니다. 지원 페이지의 FAQ에는 실제로 EU 개인정보 보호법의 이름이 등장하며, ePrivacy와 GDPR을 예로 들고 있지만, 이는 개발자가 새 버튼을 이용해 현지 개인정보 보호법을 준수할 수 있다는 맥락에서 나온 것이지, Apple이 이번 조정의 근거로 제시한 것이 아닙니다. 따라서 본 기사는 어느 당국인지, 어느 법률인지 추측하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "또한 페이지에는 새 프롬프트의 전체 문구가 텍스트로 나와 있지 않으며, '레이아웃과 문구를 조정했다'는 설명과 버튼 하나의 표시 문구만 적혀 있습니다. 두 페이지 모두 동의율이나 거부율 변화에 관한 수치는 전혀 없습니다. Apple이 이를 공개하지 않았고, 본 사이트도 직접 시험해 보지 않았으므로, 신구 버전이 광고나 사용자 선택에 미치는 영향은 비교할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대만과 관련해서는, 두 페이지 모두 '대만' 또는 'Taiwan'이라는 단어가 나오지 않으며, 조정에 대한 설명도 EU로 한정되어 있습니다. 본 기사는 2026년 9월 18일까지 확인했으며, 확인한 두 페이지 모두 영어로만 되어 있습니다. 이는 공식 공지가 대만을 다루지 않았고 대만을 대상으로 설명하지 않았다는 의미로만 이해할 수 있으며, 대만에서도 같은 조정이 이루어질지 여부를 나타내는 것으로 이해해서는 안 됩니다. 그것은 Apple이 밝히지 않은 부분이며, 본 기사가 Apple을 대신해 답하지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "그 추적 관련 프롬프트는 정확히 무엇을 묻는 건가요?",
+              "answer": "Apple의 설명에 따르면, 이 프롬프트는 이 App이 수집한 사용자 또는 기기 데이터를 다른 회사의 App, 웹사이트, 오프라인 경로에서 수집한 데이터와 연결해 타겟 광고나 광고 효과 측정에 사용할지, 또는 사용자나 기기 데이터를 데이터 브로커와 공유할지를 묻습니다. 이 정의는 지원 페이지의 일반적인 단락에 적혀 있으며, EU 관련 섹션에 있는 것이 아닙니다. 이번 조정이 바꾸는 것은 프롬프트의 레이아웃, 문구, 표시 시점이며, 이 정의 자체가 아닙니다."
+            },
+            {
+              "question": "'허용 안 함'을 누르면 어떻게 되나요?",
+              "answer": "기기의 광고 식별자 값이 모두 0이 되며, 개발자는 Apple이 정의하는 방식으로 사용자를 추적할 수 없습니다. 지원 페이지는 이 규칙을 설명할 때 EU와 다른 지역을 구분하지 않으며, 이번 공지도 이것이 바뀌었다고 말하지 않습니다. 또한 Apple의 심사 지침에 따라 App은 추적 동의를 기능 사용의 조건으로 걸거나, 인센티브나 유도로 동의를 얻어서는 안 됩니다."
+            },
+            {
+              "question": "EU의 새 프롬프트는 현행 버전과 어떻게 다른가요?",
+              "answer": "Apple의 설명은 '레이아웃과 문구를 조정했다'는 것이며, 개발자는 'Additional Information'이라고 표시된 텍스트 버튼을 추가해 이 요청에 대해 더 설명하거나, EU에서 더 세분화된 동의 옵션을 제공하도록 선택할 수 있습니다. Apple은 전체 문구를 텍스트로 밝히지 않았으며, 지원 페이지는 해당 부분 옆에 스크린샷 한 장을 넣어두었을 뿐입니다. 본 기사는 화면 자체를 설명하지 않습니다."
+            },
+            {
+              "question": "새 프롬프트만 사용할 수 있는 5개국은 어디인가요?",
+              "answer": "독일, 프랑스, 이탈리아, 폴란드, 루마니아입니다. Apple은 이것이 '법적 요구 사항에 따른 것'이라고 밝혔지만, 어떤 법률인지는 명시하지 않았습니다."
+            },
+            {
+              "question": "EU에서는 계속 반복해서 질문을 받게 되나요?",
+              "answer": "Apple이 개발자에게 부여하는 것은 사용자의 마지막 응답으로부터 1년이 지난 후, 당시 응답이 동의였든 거부였든 프롬프트를 다시 표시할 '수 있다'는 허용이며, 사용자가 반드시 다시 질문받는다는 보장이 아닙니다. 기기 설정에 있는 추적 요청 스위치(영어 명칭은 Allow Apps to Request to Track이며, Apple에 따르면 EU에서 명칭이 변경되었습니다)를 꺼두면 다시 질문받지 않습니다."
+            },
+            {
+              "question": "대만 사용자에게도 이 새 프롬프트가 표시되나요?",
+              "answer": "이번 Apple 공지가 다루는 범위는 EU뿐이며, 두 페이지 모두 '대만' 또는 'Taiwan'이라는 단어가 나오지 않습니다. 또한 'EU에 배포되는 App'을 스토어프론트, 기기 지역, 혹은 다른 방식 중 무엇으로 판단하는지도 설명하지 않습니다. 이는 공식 공지가 대만을 다루지 않는다는 의미일 뿐이며, Apple이 대만에서도 같은 조정이 이루어질지 여부를 밝힌 것이 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "혼동하지 말아야 할 세 가지",
+          "text": "EU에는 별도의 새 프롬프트 버전이 있다는 것, 5개국은 그 새 버전만 사용할 수 있다는 것, 그리고 기기 설정의 명칭이 변경되면서 개발자가 1년 후 다시 물어볼 수 있게 되었다는 것, 이 세 가지는 각각 독립된 사안이며 모두 적용 범위가 EU로 한정됩니다. Apple은 iOS 27.2의 출시일을 밝히지 않았고, 당국을 지목하지 않았으며, 이번 조정이 어떤 법률에 근거하는지도 말하지 않았습니다. 본 기사가 2026년 9월 18일까지 확인한 페이지 내용에는 두 페이지 모두 '대만' 또는 'Taiwan'이라는 단어가 나오지 않습니다. 최신 상태를 확인하려면 Apple Developer 뉴스 페이지와 'User privacy and data use - App Store' 지원 페이지를 직접 확인하십시오. 두 페이지 모두 Apple의 업데이트에 따라 내용이 바뀔 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple, EU 대상 새 App 사업 조건 발표: 코어 테크놀로지 수수료 5%로, 대체 결제도 동시 사용 가능",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Updates to App Tracking Transparency in the European Union",
+          "url": "https://developer.apple.com/news/?id=idsft9ai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "User privacy and data use - App Store",
+          "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Apple 调整欧盟 App 追踪透明度询问框：五国强制新版、设置改名、一年可再问",
+      "description": "2026 年 9 月 16 日，Apple 在开发者新闻公告欧盟的 App 追踪透明度询问框将推出另一版本：自 iOS 27.2 与 iPadOS 27.2 起，德国、法国、意大利、波兰与罗马尼亚五国只能使用新版；欧盟的设备设置也改名，开发者还可以在用户上次回答满一年后再问一次。本文依 Apple 官方公告与说明页，整理改了什么、没有改什么，以及公告未提及台湾的部分。",
+      "hero": {
+        "src": "/guides/tech-news-apple-att-eu-20260916/hero-zh-cn.jpg",
+        "alt": "原创插图：画面左侧是一个对话框的几何外框，框内一分为二，一半维持原本样式、一半以虚线重绘代表另一版本；对话框下方延伸出两条线，一条连向排成一列的五个小方块，另一条连向一个时钟图示，代表地区差异与满一年后的再次询问",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 16 日，Apple 在 Apple Developer 的新闻页公告一项调整：欧盟的 App 追踪透明度（App Tracking Transparency，ATT）系统询问框将出现另一个版本。Apple 表示这些调整是“与部分欧洲竞争主管机关达成的协议”的一部分，但没有点名任何一个主管机关，也没有说这次调整依据的是哪一部法律。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核，读的是这则开发者新闻公告全文，以及公告连到的“User privacy and data use - App Store”说明页；本站没有安装新版系统，也不描述界面画面，不提供任何规避追踪或反制广告的操作教学。以下每一项规则都是 Apple 官方页面目前写的内容，实际画面与生效时间以 Apple 届时公布的版本为准。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 16 日，Apple 公告欧盟的 App 追踪透明度询问框将推出另一版本，自 iOS 27.2 与 iPadOS 27.2 起开发者可以选用。",
+            "德国、法国、意大利、波兰与罗马尼亚五个国家只能使用新版询问框；Apple 表示欧盟的设备设置“Allow Apps to Request to Track”也改了名称。",
+            "欧盟的开发者可以在用户上次回答满一年后、不论当初是同意或拒绝，再显示一次询问框；必须取得许可的情形与拒绝后广告标识符归零的规则都没有改变。",
+            "Apple 没有点名主管机关，也没有说这次调整依据哪一部法律，没有给 iOS 27.2 的推出日期，公告内容也未提及台湾。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 16 日，Apple 对开发者公告了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "这则公告贴在 Apple Developer 的新闻页，英文标题是“Updates to App Tracking Transparency in the European Union”，页面印的日期是 September 16, 2026。公告正文只有一段，末尾连到“User privacy and data use - App Store”说明页；调整的细节写在那一页专讲欧盟的一节里，不在公告本身，本文两条来源就是这两页。"
+        },
+        {
+          "type": "paragraph",
+          "text": "调整的核心是询问框本身：自 iOS 27.2 与 iPadOS 27.2 起，开发者将有机会使用另一版本的 App 追踪透明度系统询问框；两个页面都没有写 iOS 27.2 或 iPadOS 27.2 的推出日期，这段调整也只写这两个系统，没有说 macOS、tvOS、watchOS 或 visionOS 会不会比照。看到版本号不代表看到日期，这点值得先说清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这项调整其实分成两块：一是询问框本身在欧盟另有版本，并且在五个国家是唯一可用的版本；二是欧盟的开发者可以在用户上次回答满一年后、不论是同意还是拒绝，再显示一次询问框。这两块各自独立，下面两节分开说明。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新版询问框，以及五个国家的差别"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 说明，新版询问框“版面与文字经过调整”，并且让开发者可以选择加上一个文字按钮，标示为“Additional Information”；这个按钮让开发者进一步说明自己的请求，也就是把自家 App 收集到的用户或设备数据，和其他公司旗下 App、网站或线下渠道收集到的数据串连，用于精准广告或广告效果评估，或是把数据分享给数据经纪商。询问框完整的文案，Apple 没有用文字写出来；说明页在这一段旁边嵌了一张画面图，本文不描述界面画面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一页的常见问答还补充了两件事：欧盟的开发者也可以用这个按钮，为了遵循当地隐私法等法律要求提供更细的同意选项，但按钮后面的内容完全由开发者自己负责；而且在用户于询问框给出许可之前，开发者一样不能取得设备的广告标识符，也不能依询问框所述收集、使用 App 的用户或设备数据。换句话说，多一个按钮不等于多一条绕过询问框的路。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 写明，“基于法律要求”，德国、法国、意大利、波兰与罗马尼亚这五个国家，开发者只能使用新版询问框，没有选择现行版本的空间；在这五国以外的欧盟国家，要不要改用新版是开发者自己的选择。Apple 同样没有点名是哪一部法律，也没有说为什么是这五个国家。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要留意的是，什么时候必须取得用户许可，这件事没有变：Apple 在同一段文字里写明，必须取得许可的情形维持不变，改变的只是询问框长什么样子、用什么文字问，不是问不问的门槛本身。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "欧盟以外",
+            "欧盟其他国家",
+            "德法意波罗五国"
+          ],
+          "rows": [
+            [
+              "询问框版本",
+              "现行版本",
+              "现行版本或新版本",
+              "只能用新版本"
+            ],
+            [
+              "Additional Information 按钮",
+              "不适用",
+              "开发者可加",
+              "开发者可加"
+            ],
+            [
+              "设备设置名称",
+              "Allow Apps to Request to Track",
+              "已改名，见正文",
+              "已改名，见正文"
+            ],
+            [
+              "满一年后可否再问",
+              "官方页面未提及",
+              "开发者可以",
+              "开发者可以"
+            ]
+          ],
+          "caption": "整理自 Apple 2026 年 9 月 16 日的开发者公告与说明页，查核日 2026 年 9 月 18 日；两个页面都是英文，设置名称照英文原文列出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "设置改名，以及一年后可以再问一次"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二项改变在用户的设备设置里。Apple 写明，用户可以通过关闭一项设置，让自己不会再被询问；这项设置目前的名称是“Allow Apps to Request to Track”，Apple 表示在欧盟改名为“Allow Apps to Request to Link Your Activity Across Companies”。本文读到的公告与说明页都是英文，两页都没有给这两个名称的中文写法，所以文中出现的中文说法（例如“允许 App 要求追踪”）是本站翻译。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一段还写了一项只给欧盟的弹性：开发者可以在用户上次于这个 App 里做出选择的一年之后，通过同一个系统询问框再问一次，不论用户当初选的是同意或拒绝。Apple 用的字是“you can reprompt”，这是给开发者的许可，不是对用户一定会被再问的预测；而且只要用户把前面那项设备设置关闭，就不会再被询问。说明页没有写欧盟以外能不能这样再问一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 另外列出四份技术文档供开发者参考，其中两份标示为新增：一份是搭配 Additional Information 按钮使用的新版授权请求方法，一份是搭配 Markdown 格式使用说明文字的字段；另外两份是既有的授权请求方法与使用说明文字字段。两份标示新增，代表新版询问框对应的是一组新的程序接口。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-apple-att-eu-20260916/diagram-1-zh-cn.svg",
+          "alt": "四格图解：询问框版本在欧盟另有新版、德法意波罗五国只能用新版、设备设置在欧盟改名、开发者可在满一年后再显示一次询问框",
+          "width": 1600,
+          "height": 900,
+          "caption": "整理自 Apple 2026 年 9 月 16 日的开发者公告与说明页，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "没有改变的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一个没有改变的地方，上一节已经提过：什么时候必须取得用户许可，规则维持原样。Apple 在同一份页面解释，从 iOS 14.5、iPadOS 14.5 与 tvOS 14.5 起，开发者若要追踪用户或存取设备的广告标识符，就需要通过 App 追踪透明度框架取得用户许可；这个起点与这次的欧盟调整无关，欧盟的新版询问框问的仍然是同一件事，只是问法不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二个没有改变的地方，是用户拒绝之后的结果。Apple 写明，除非用户同意，否则设备的广告标识符会全部变成零，开发者也不得依前述方式追踪用户；这句话没有区分欧盟或其他地区，公告也没有说它改了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三个没有改变的地方，是 App Store 审查规范。说明页的常见问答写明，依审查指南 5.1.2(i)，App 不得以同意追踪作为使用功能的条件，也不得用激励换取同意；依审查指南 5.1.1 (iv)，App 必须尊重用户的许可设置，不得操纵、诱导或强迫用户同意不必要的数据访问。9 月 16 日那则公告没有提到这两条。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方没有说的事，包含有没有提到台湾"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 这份公告没有点名任何一个“欧洲竞争主管机关”，也没有说这次调整依据的是哪一部法律，只用“法律要求”带过五个国家为什么只能用新版询问框。说明页的常见问答确实出现过欧盟隐私法的名字，举的是 ePrivacy 与 GDPR，但那是在说开发者可以用新按钮遵循当地隐私法，不是 Apple 为这次调整给出的依据；本文因此不去猜是哪一个机关或哪一部法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "页面也没有用文字写出新版询问框的完整文案，只写了“版面与文字经过调整”和一个按钮的标示文字；两个页面都没有任何一项数字是关于同意率或拒绝率的变化，Apple 没有公布，本站也没有做任何实测，所以无从比较新旧版本对广告或用户选择的影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾的部分，两个页面都没有出现“台湾”或“Taiwan”字样，调整的描述也限定在欧盟；本文查核到 2026 年 9 月 18 日，读到的两个页面都只有英文。这句话只能理解成官方公告没有涵盖台湾、没有针对台湾说明，不能理解成台湾会不会出现同样的调整——那是官方没有写的事，本文不代替 Apple 回答。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "那个追踪询问框到底在问什么？",
+              "answer": "Apple 的说明是，询问框问的是用户要不要让这个 App 把它收集到的用户或设备数据，跟其他公司旗下 App、网站或线下渠道收集到的数据串连起来，用于精准广告或广告效果评估，或是把数据分享给数据经纪商。这个定义写在说明页一般性的段落里，不在欧盟那一节里；这次调整的是询问框的版面、文字与提问的时机，不是这个定义本身。"
+            },
+            {
+              "question": "如果我按下不允许，会发生什么事？",
+              "answer": "设备的广告标识符会变成全部是零，开发者也不得依 Apple 定义的方式追踪用户；说明页写这项规则时没有分欧盟或其他地区，这次公告也没有说它改了。另依 Apple 的审查指南，App 不得以同意追踪作为使用功能的条件，也不得用激励或诱导换取同意。"
+            },
+            {
+              "question": "欧盟的新版询问框跟现行版本差在哪里？",
+              "answer": "Apple 的说法是“版面与文字经过调整”，并且开发者可以选择加上一个标示为“Additional Information”的文字按钮，用来进一步说明这项请求，或在欧盟提供更细的同意选项。Apple 没有用文字写出完整文案，说明页只在该段旁边嵌了一张画面图，本文不描述界面画面。"
+            },
+            {
+              "question": "哪五个国家只能使用新版询问框？",
+              "answer": "德国、法国、意大利、波兰与罗马尼亚。Apple 说这是“基于法律要求”，但没有点名是哪一部法律。"
+            },
+            {
+              "question": "我在欧盟会不会一直被重复询问？",
+              "answer": "Apple 给开发者的是“可以”在用户上次回答满一年后、不论当初同意或拒绝，再显示一次询问框的许可，不是保证用户一定会被再问。如果把设备设置里那项追踪请求开关（英文原名 Allow Apps to Request to Track，Apple 表示在欧盟已改名）关掉，就不会再被询问。"
+            },
+            {
+              "question": "台湾的用户会看到这个新版询问框吗？",
+              "answer": "Apple 这则公告只写欧盟，两个页面都没有出现“台湾”或“Taiwan”字样，也没有说明“在欧盟散布的 App”是依商店前台、设备地区还是其他方式判断。这句话只代表官方公告没有涵盖台湾，不是官方表示台湾会或不会出现同样的调整。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三件事不要混在一起",
+          "text": "询问框在欧盟另有版本、五个国家只能用这一版、设备设置改名并且开发者可以在满一年后再问一次——这三件事各自独立，发生的范围也都限定在欧盟。Apple 没有给 iOS 27.2 的推出日期，没有点名主管机关，也没有说这次调整依据哪一部法律；本文查核到 2026 年 9 月 18 日的页面内容里，两个页面都没有出现台湾或 Taiwan 字样。想确认最新状态，可以直接查 Apple Developer 新闻页与“User privacy and data use - App Store”说明页，两者都会随官方更新而改变。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 公布欧盟新版 App 商业条款：核心技术抽成 5%、可同时使用替代支付",
+              "kind": "life",
+              "slug": "tech-news-apple-eu-business-terms-20260818"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Updates to App Tracking Transparency in the European Union",
+          "url": "https://developer.apple.com/news/?id=idsft9ai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "User privacy and data use - App Store",
+          "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  },
+  "related": [
+    "tech-news-apple-eu-business-terms-20260818",
+    "tech-news-app-store-bundles-multiseat-20260916",
+    "tech-news-eu-kids-act-20260917"
+  ]
+}

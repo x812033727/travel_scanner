@@ -1,0 +1,248 @@
+{
+ "slug": "ai-news-chatgpt-sponsored-agents-20260916",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All three recorded sources were fetched from this container on 2026-09-18 with curl -sL -A \"Mokaair-editorial\"; no personal data in any header, query string or form. Observed: https://openai.com/index/reimagining-advertising-with-ai/ 200 / 380,345 bytes; https://openai.com/index/testing-ads-in-chatgpt/ 200 / 423,891 bytes; https://ads.openai.com/ 200 / 201,647 bytes. All three returned real body. ACCESS NOTE: earlier rounds of this batch recorded openai.com/index/* as 403 and fell back to web.archive.org. On 2026-09-18 these pages answered 200 to plain curl; the block is intermittent. Nothing here comes from an archive. LIVE-DOCUMENT WARNING, and it is the central one for this article: https://openai.com/index/testing-ads-in-chatgpt/ is not a news post, it is a running page. It prints 'Originally published on February 9, 2026' at the foot and carries four stacked updates above it, dated August 11, May 7 and March 26, newest first. The market list in this record is the state of that page on 2026-09-18 and it will change without the URL changing. It must be re-read on the day the article is finalised, and the article must say which day it read it. ads.openai.com is a marketing page with a sales form and no dates at all; it is used here only for OpenAI's own public description of the ad experience, never for dates. A fourth page, https://help.openai.com/en/articles/12263849-ads-in-chatgpt, was guessed and returned 404 (25,629 bytes) - recorded here so nobody guesses that identifier again, per the BRIEF's rule that guessed URLs count as fabrication even when they resolve. No news media, aggregator or search snippet was used.",
+ "sources": [
+  {
+   "title": "Reimagining advertising with AI",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Testing ads in ChatGPT",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Advertise in ChatGPT | OpenAI Ads",
+   "url": "https://ads.openai.com/",
+   "publisher": "OpenAI",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "event_date": "2026-09-16",
+ "event_date_basis": "TAIPEI CONVENTION APPLIED, per docs/news-2026-batch-4/agents/DELTA-4-5.md section 6 (\"事件日：以前期研究紀錄的 event_date 與 event_date_basis 為準（已換算台北時間）\"). Here the conversion changes nothing, so the publisher's date and the Taipei date are the same and the article has only one date to print. The page's own date line reads 'OpenAI September 16, 2026', filed under Product. OpenAI's official feed (https://openai.com/news/rss.xml, read 2026-09-18) gives pubDate Wed, 16 Sep 2026 13:00:00 GMT - a real time, not one of the 00:00:00 GMT placeholders. 13:00 GMT is 2026-09-16 21:00 in Taipei, still 16 September. Contrast the same day's misalignment post at 17:00 GMT, which does cross into 17 September Taipei time - the two OpenAI items from 2026-09-16 therefore end up with DIFFERENT event dates in this batch, and that is correct, not an error. SEPARATE DATE INSIDE THE STORY: one announced item is dated forward. OpenAI writes that the Shopify app 'will be available internationally in markets where ChatGPT Ads are available starting September 23'. That is a future availability date, it carries no year in OpenAI's sentence, and it must not be folded into the event date.",
+ "verified_facts": [
+  {
+   "fact": "OpenAI published this on 2026-09-16; the page's own date line reads 'OpenAI September 16, 2026' and it is filed under Product.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "OpenAI September 16, 2026"
+  },
+  {
+   "fact": "The standfirst states the scope of the announcement: new AI-powered experiences for ChatGPT Ads.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Introducing new AI-powered experiences for ChatGPT Ads."
+  },
+  {
+   "fact": "Four things were announced together: Sponsored Agents in testing, ad creation by prompt in ChatGPT Work, new AI creative tools in Ads Manager, and integrations with HubSpot (first CRM partner) and Shopify (first ecommerce partner).",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Finally, new integrations with HubSpot, our first CRM partner, and Shopify, our first ecommerce partner, are bringing ChatGPT Ads into the tools businesses already use."
+  },
+  {
+   "fact": "Sponsored Agents, defined in OpenAI's own words: after clicking an ad in ChatGPT, a user can start a conversation with a business-sponsored agent. OpenAI describes it as something it is testing, not shipping.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We’re testing Sponsored Agents, which let people start a conversation with a business-sponsored agent after clicking an ad in ChatGPT."
+  },
+  {
+   "fact": "The user-side condition that matters most: the sponsored conversation is opt-in ('can choose'), is described as clearly labeled, and OpenAI says the user can follow a link to the business's website when ready.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "After seeing a relevant ad, a user can choose to start a clearly labeled conversation with a business-sponsored agent in ChatGPT."
+  },
+  {
+   "fact": "OpenAI draws two separations for Sponsored Agents: the sponsored conversation is distinct from ChatGPT's independent answers, and it is separate from the original conversation the user was having.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The conversation with a Sponsored Agent is distinct from ChatGPT’s independent answers and separate from the original conversation that the user started in ChatGPT."
+  },
+  {
+   "fact": "AVAILABILITY OF SPONSORED AGENTS, stated in one sentence and the tightest limit in the announcement: a test, with selected advertisers, in the United States.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Sponsored Agents are now being tested with select advertisers in the United States."
+  },
+  {
+   "fact": "Advertiser-side change 1: advertisers can create, update and analyse campaigns with natural-language prompts inside ChatGPT via the Ads Manager plugin, including turning a website or brief into a campaign.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Advertisers can now use simple, natural-language prompts to create, update, and analyze campaigns directly in ChatGPT with the Ads Manager plugin."
+  },
+  {
+   "fact": "Advertiser-side change 2: AI assistance inside Ads Manager suggests ad copy and imagery based on the landing page and campaign objective, and OpenAI states the advertiser reviews and edits before adding anything to a campaign.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Advertisers remain in control: they can review and edit suggestions before choosing whether to add them to a campaign."
+  },
+  {
+   "fact": "Advertiser-side change 3, and the one a reader will actually notice: an opt-in AI text customization that adapts an advertiser's existing headlines and descriptions to the context of a conversation and automatically translates ad copy into the user's preferred language.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "If enabled, it adapts an advertiser’s existing headlines and descriptions to better fit the context of a conversation and automatically translates ad copy to a user’s preferred language."
+  },
+  {
+   "fact": "HubSpot integration availability: from the day of the announcement, businesses managing customers in HubSpot can connect a ChatGPT Ads account, create ads, track performance and follow up on leads inside HubSpot.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Starting today, businesses managing their customers in HubSpot can connect a ChatGPT Ads account"
+  },
+  {
+   "fact": "Shopify integration availability, and the two-step rollout that must not be flattened: the ChatGPT Ads app in the Shopify App Store is available to US-based Shopify merchants on the day of the announcement.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Also available today, US-based Shopify merchants can use the new ChatGPT Ads app"
+  },
+  {
+   "fact": "The international step is dated and conditional: the Shopify app becomes available internationally only in markets where ChatGPT Ads are already available, starting September 23. OpenAI does not write the year on that sentence.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The app will be available internationally in markets where ChatGPT Ads are available starting September 23."
+  },
+  {
+   "fact": "OpenAI states that its ads principles are unchanged by this announcement.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Throughout this work, our ads principles remain unchanged, and protecting the trust people place in ChatGPT remains our North Star."
+  },
+  {
+   "fact": "OpenAI's framing of where this is going: it describes the announcement as building an advertising platform with AI at its centre, reimagining both how people engage with businesses and how businesses create and manage ads.",
+   "url": "https://openai.com/index/reimagining-advertising-with-ai/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Together, these launches reflect how we’re building an advertising platform with AI at its center"
+  },
+  {
+   "fact": "WHO SEES ADS AT ALL, from OpenAI's running ads page: the test is for logged-in adult users on the Free and Go subscription tiers, and Plus, Pro, Business, Enterprise and Education tiers do not have ads. This is the single most useful fact for a reader asking whether ads apply to them.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The test will be for logged-in adult users on the Free and Go subscription tiers. Plus, Pro, Business, Enterprise, and Education tiers will not have ads."
+  },
+  {
+   "fact": "OpenAI's two standing commitments on that page: ads do not influence ChatGPT's answers, and conversations are kept private from advertisers.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Ads do not influence the answers ChatGPT gives you, and we keep your conversations with ChatGPT private from advertisers."
+  },
+  {
+   "fact": "MARKET HISTORY, as printed on that page on 2026-09-18, newest first. The most recent update is dated August 11, 2026 and names five markets as launched.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Update on August 11, 2026: ChatGPT Ads has now launched in the United Kingdom, Mexico, Brazil, Japan, and South Korea. We’re continuing to expand to more markets this year."
+  },
+  {
+   "fact": "The earlier expansion step, dated March 26, 2026, named Canada, Australia and New Zealand as the first markets beyond the U.S., and stated a hope rather than a commitment about further markets.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In the coming weeks, we’ll begin expanding beyond the U.S., starting with pilots in Canada, Australia, and New Zealand."
+  },
+  {
+   "fact": "The original post is dated February 9, 2026 and began the test in the U.S. The page prints that date at the foot of the stack of updates.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Originally published on February 9, 2026"
+  },
+  {
+   "fact": "OpenAI's own early-results claim from the March 26 update, which is unverifiable from outside and must be attributed: no impact on consumer trust metrics, low dismissal rates, improving relevance.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We’re seeing no impact on consumer trust metrics, low dismissal rates of ads, and ongoing improvements in the relevance of ads as we learn from feedback."
+  },
+  {
+   "fact": "OpenAI states the reason it gives for running ads at all: keeping the Free and Go tiers fast and reliable requires infrastructure and investment, and ads help fund that.",
+   "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Ads help fund that work, supporting broader access to AI through higher quality free and low cost options"
+  },
+  {
+   "fact": "OpenAI's public advertiser-facing page states three user-side commitments in three short headings with one line each: ads are clearly identified, ads remain distinct from ChatGPT's responses, and people control how their data is used for ads.",
+   "url": "https://ads.openai.com/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Clearly labeled Ads are clearly identified in the experience. Separate from answers Ads remain distinct from ChatGPT’s responses. Choice and control People control how their data is used for ads."
+  },
+  {
+   "fact": "The same page describes why OpenAI thinks ChatGPT is different from search for advertisers, in its own words.",
+   "url": "https://ads.openai.com/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In ChatGPT, people share richer context, enabling advertising that is more relevant, personalized, and useful."
+  },
+  {
+   "fact": "The advertiser page names four early advertisers by brand - Newegg, Best Buy, Lowe's and VistaPrint - and carries a quote from Newegg's performance marketing manager. No results figures are given for any of them.",
+   "url": "https://ads.openai.com/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Advertisers are already seeing the benefits of AI-native advertising."
+  }
+ ],
+ "not_said": [
+  "TAIWAN IS NOT NAMED ANYWHERE, and neither is any market beyond the nine the running page lists (United States; Canada, Australia, New Zealand; United Kingdom, Mexico, Brazil, Japan, South Korea). As checked on all three pages to 2026-09-18, Taiwan does not appear. The article must write '官方未把台灣列入已開放市場' - a statement about the published list - and must NOT write 'ChatGPT 廣告不會出現在台灣', because OpenAI also says it is continuing to expand and gives no exclusion list.",
+  "No launch date for Sponsored Agents beyond the US test. OpenAI does not say when the test ends, how many advertisers are in it, how a business joins it, or whether it will ship at all.",
+  "No statement about whether a Sponsored Agent's conversation is used for training, how long it is retained, or what the sponsoring business can see of it. OpenAI says only that the conversation is separate from the original one and distinct from ChatGPT's answers.",
+  "No detail on the automatic translation. OpenAI says ad copy is automatically translated to a user's preferred language but names no languages, no quality control, and no way for a user to see the original wording. Whether Traditional Chinese is covered is not stated.",
+  "No pricing anywhere in the 9/16 post - no cost for Sponsored Agents, no cost for the AI creative tools, no change to bidding.",
+  "No numbers of any kind in the 9/16 post: no advertiser count, no impression or click figure, no revenue figure, no result from any named advertiser.",
+  "No year on the 'starting September 23' sentence. The surrounding post is dated 2026, but OpenAI did not write the year on that line.",
+  "No statement that ChatGPT Ads is available in every market where ChatGPT is. The Shopify sentence says the opposite - the app follows the markets where ChatGPT Ads already exist.",
+  "No definition of the 'Go' tier on any of these three pages, even though Go is one of only two tiers that sees ads.",
+  "No independent verification of the 'no impact on consumer trust metrics' claim, and no methodology, sample or period for it."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The current list of markets where ChatGPT Ads runs.",
+   "seen_where": "https://openai.com/index/testing-ads-in-chatgpt/, read 2026-09-18, whose newest update is dated August 11, 2026.",
+   "why_excluded": "Not excluded, but it is a live page, not a snapshot, and OpenAI states on it that expansion is continuing. Write the list with the date the page was read and the date of the newest update on it, and re-read before publication. Do not present it as a settled list."
+  },
+  {
+   "claim": "That Sponsored Agents are a ChatGPT feature users will encounter.",
+   "seen_where": "Reader inference from the announcement.",
+   "why_excluded": "OpenAI's own sentence is 'now being tested with select advertisers in the United States'. Three limits at once - test, selected advertisers, one country. Any Taiwanese-reader framing that suggests otherwise is wrong."
+  },
+  {
+   "claim": "HubSpot and Shopify availability applies to Taiwanese merchants.",
+   "seen_where": "The 9/16 post says 'Starting today' for HubSpot and 'Also available today, US-based Shopify merchants' for Shopify.",
+   "why_excluded": "The Shopify step is explicitly US-only on day one and goes international on September 23 only in markets where ChatGPT Ads already exist. The HubSpot sentence carries no geography at all, which is not the same as being worldwide - it is an absence. Write the Shopify condition precisely and say the HubSpot post does not state a region."
+  },
+  {
+   "claim": "Advertiser results for Newegg, Best Buy, Lowe's or VistaPrint.",
+   "seen_where": "https://ads.openai.com/ under 'Results from early advertisers on ChatGPT'.",
+   "why_excluded": "The heading promises results but the page gives none - only brand logos and one quote about wanting to 'be part of the conversation'. Treat the brands as named participants, never as evidence that the format performs."
+  },
+  {
+   "claim": "Anything from https://help.openai.com/en/articles/12263849-ads-in-chatgpt.",
+   "seen_where": "A guessed help-centre identifier.",
+   "why_excluded": "Returned 404 (25,629 bytes). Recorded so that nobody re-derives it. Per the BRIEF, a guessed URL is fabrication even if it happens to resolve."
+  },
+  {
+   "claim": "Any connection between Sponsored Agents and the Agents API or the Apps SDK.",
+   "seen_where": "Not stated. The post never says what a Sponsored Agent is built on.",
+   "why_excluded": "The site already has ai-news-openai-agents-api-20260910, and it would be easy to assume the two are the same technology. OpenAI does not say so. Do not connect them."
+  },
+  {
+   "claim": "Market-by-market advertising rules, or how this interacts with EU or Taiwanese advertising law.",
+   "seen_where": "Not on any of the three pages.",
+   "why_excluded": "No regulator is named anywhere. The site has ai-news-eu-transparency-20260802 on EU AI labelling, but OpenAI draws no link and neither should this article."
+  }
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md's AI secondary list pairs '2026-08-11 Testing ads in ChatGPT' and '2026-08-18 ChatGPT Ads expands across Europe' and suggests combining them into one article. Reading the pages changes that plan: openai.com/index/testing-ads-in-chatgpt/ is not an 8/11 news post at all - it is a living page originally published 2026-02-09 with stacked updates dated March 26, May 7 and August 11. The feed's 8/11 pubDate is the date of an update to an older page. Treating it as an August event would put the wrong date in a slug.",
+  "The same list gives the August 11 item no content. Its actual contents are the tier rule (Free and Go see ads; Plus, Pro, Business, Enterprise, Education do not) and the market history - which is the reader-facing half of the whole ads story and is missing from the existing ai-news-chatgpt-ads-20260505 pack, whose four sources are the May post and three developers.openai.com pages, i.e. entirely advertiser-side.",
+  "candidates-tech-and-ai.md records openai.com/index/* as 403. On 2026-09-18 every openai.com/index/* URL tried returned 200 to plain curl with the Mokaair-editorial UA. The block is intermittent, so 'blocked' should be re-tested rather than inherited."
+ ],
+ "must_not_write": [
+  "Do not write that ChatGPT users will see Sponsored Agents. It is a test, with selected advertisers, in the United States - all three limits in one sentence.",
+  "Do not write that ChatGPT ads are not shown in Taiwan. Write that Taiwan is not on OpenAI's published market list as read on 2026-09-18, and that OpenAI says expansion is continuing.",
+  "Do not present the market list as settled. Name the day it was read and the date of the newest update on the page.",
+  "Do not write 'September 23' without a year, and do not describe it as the day the feature arrives everywhere - it is the day the Shopify app goes international, only in markets where ChatGPT Ads already exist.",
+  "Do not say a paid plan removes ads without naming the tiers OpenAI actually names. Free and Go see ads; Plus, Pro, Business, Enterprise and Education do not.",
+  "Do not present 'no impact on consumer trust metrics' as a finding. It is OpenAI's own March update with no methodology, sample or period. Write 'OpenAI 表示'.",
+  "Do not imply the named brands prove the format works - OpenAI publishes no results for any of them.",
+  "Do not connect Sponsored Agents to the Agents API or Apps SDK; OpenAI does not say what they are built on.",
+  "Do not re-explain how ChatGPT ads are bought, the four-layer account structure, bidding or targeting - that is ai-news-chatgpt-ads-20260505's material.",
+  "Do not write '我們試用'. Nobody at this site has seen a Sponsored Agent.",
+  "Do not draw any logo, wordmark, UI screenshot or product icon in the diagram, and do not put a number in the diagram that is not in the body."
+ ],
+ "overlaps_existing_article": "One existing pack is a direct predecessor and was read in full.\n\n1. ai-news-chatgpt-ads-20260505 'ChatGPT 廣告開放自助購買：OpenAI 5 月公告的工具、計費與鎖定機制' (news_date 2026-05-05, display_order 152; sources openai.com/index/new-ways-to-buy-chatgpt-ads/ plus three developers.openai.com pages; sections: the May self-serve beta, the four-layer account/campaign/ad-group/ad structure, how the three campaign objectives bill, bidding strategies, and targeting by region, platform and context hints). DIVISION, and it is clean: that article is entirely about HOW A BUSINESS BUYS an ad, from advertiser-side documentation. This one is about WHAT CHANGES INSIDE THE CONVERSATION - a sponsored agent the reader can end up talking to, ad copy rewritten to fit the conversation and auto-translated, and which tiers and markets are involved at all. Do not re-derive the four-layer structure or any bidding mechanics. This is the natural 相關新聞 link.\n\n2. ai-news-openai-agents-api-20260910 'OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置' (news_date 2026-09-10). Adjacent by the word 'agent' only. OpenAI never says what Sponsored Agents are built on, so the two must not be joined. If the writer feels tempted, that is exactly the inference the BRIEF forbids.\n\n3. ai-news-eu-transparency-20260802 '歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？' (news_date 2026-08-02). Thematically close - labelling AI content - and a reader may connect them. OpenAI names no regulator here, so any connection is the site's own observation and must be marked as such, or left out.\n\nNothing on the site covers who sees ChatGPT ads, on which tier, in which market. That gap is the strongest reason to write this piece rather than treat 9/16 as a business-press item.\n\nFirst link (本垂直索引) is ai-news-2026-january-september-index, zh-TW title read on 2026-09-18 as '2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用'; read the pack at writing time because check_article.py asserts link.text equals the target title. display_order continues from 160, the current maximum.",
+ "editorial_brief": "READER AND ANGLE. Written for a Taiwanese general reader who uses the free ChatGPT and has started to wonder what the sponsored things in it are. The question the article answers is not 'is OpenAI selling ads' - the site covered the buying side in May - but 'what is now allowed to happen inside my conversation, and does any of it reach me'. The spine is that on 2026-09-16 the ad stopped being a box beside the answer and became something a user can talk to: a sponsored agent, in a separate thread, that the user chooses to open.\n\nTHE CENTRAL FACT TO GET RIGHT. Sponsored Agents carry three limits in a single sentence - a test, with selected advertisers, in the United States - and Taiwan is not on OpenAI's published market list for ChatGPT Ads at all. Write both as statements about what OpenAI published, not as predictions. The second thing to get right is the tier rule, because it is the one line in this whole story that changes what a reader does: Free and Go see ads, Plus/Pro/Business/Enterprise/Education do not.\n\nWHY IT MATTERS EVEN THOUGH IT IS NOT LIVE HERE. Two of the four announced changes are about the ad adapting itself to the reader: copy rewritten to fit the context of the conversation, and copy auto-translated into the user's preferred language. That means the ad a Taiwanese reader eventually sees may not be a translation anyone at the advertiser wrote or checked - and OpenAI publishes no quality control for it. That is a concrete, checkable thing to watch for, and it belongs in the piece.\n\nSUGGESTED FIVE SECTIONS. (1) What was announced on 2026-09-16, and the one-sentence definition of a Sponsored Agent with its three limits attached. (2) The two separations OpenAI promises - distinct from ChatGPT's answers, separate from the original conversation - and the three commitments on its advertiser page; ends with the required table (max 4 columns: 項目 / 開放對象 / 地區 / 狀態; 4-6 rows covering Sponsored Agents, Ads Manager plugin, AI creative tools, text customization, HubSpot, Shopify; caption dated 2026-09-18). (3) Who sees ChatGPT ads at all: the tier rule, the market history from the running page with its update dates, and why 'not on the list' is not 'never'; diagram goes here. (4) The ad that rewrites itself: context adaptation and automatic translation, what OpenAI says the advertiser controls, and what it does not say about the translation. (5) What OpenAI did not say, and what a reader can check for themselves - the label on a sponsored conversation, the tier they are on, and the fact that this site has tested nothing.\n\nORIGINAL SCENARIO, to be labelled as an editorial example per BRIEF. A reader comparing two dehumidifiers taps a sponsored result and lands in a separate thread with the brand's own agent, which answers in fluent Chinese. The editorial point is not that this is sinister but that three things are true at once: the thread is not ChatGPT's own answer, the wording may have been machine-translated rather than written by the brand, and the reader chose to open it. Knowing which of the three applies is the whole skill.\n\nTONE AND SCOPE. Plain, not alarmist, no advice about blocking or avoiding ads. Deliberately out of scope: how to buy an ad, bidding, targeting and the four-layer structure (May's article); any comparison with Google or Meta advertising (OpenAI makes none); any claim about EU or Taiwanese advertising rules; any link between Sponsored Agents and the Agents API; any hands-on impression.\n\nHERO LABEL SUGGESTION (zh-TW, <= 12 chars): 廣告開始會說話\n\nDIAGRAM SUGGESTION, 2x2, title '一則廣告的四個條件' (<= 20 chars), caption to carry the 2026-09-18 check date. Nodes, top-left to bottom-right: ['你點了才開始', '贊助對話要自己選擇開啟'] / ['另開一條對話', '與原本的問答分開'] / ['方案決定有沒有', '免費與 Go 才會看到'] / ['地區決定有沒有', '官方清單上沒有台灣']. Every string must also appear in the body, and no numeral appears in the diagram."
+}

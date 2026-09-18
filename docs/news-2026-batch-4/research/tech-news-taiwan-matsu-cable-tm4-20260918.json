@@ -1,0 +1,189 @@
+{
+ "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+ "event_date": "2026-09-18",
+ "event_date_basis": "中華電信 press release page cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100 shows the visible date line '2026/09/18' and opens '中華電信今（18）日宣布' - so the announcement date and the event date are the same day, 2026-09-18. The index listing at cht.com.tw/zh-tw/home/cht/messages also files it under 2026/09/18, tag 公司. CAUTION: 2026-09-18 is the date CHT ANNOUNCED completion. CHT does not give a date for when 建置、登陸、測通 finished, nor a date for when TM4 entered commercial service. Do not invent one, and do not write that it 'went live on 18 September'.",
+ "checked_on": "2026-09-18",
+ "title_hint_zh_TW": "中華電信宣布臺馬第四海纜完工：三路由備援與 1.9 Tbps，官方沒說的還有哪些",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All three sources fetched with curl -sL -A \"Mokaair-editorial\" on 2026-09-18, all HTTP 200: (1) www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100 200, 154,303 bytes, body is server-rendered HTML inside <p> tags; (2) moda.gov.tw/major-policies/subseacable/1747 200, 122,629 bytes; (3) moda.gov.tw/press/press-releases/19976 200, 90,686 bytes (the 2026-06-23 release, kept as the before-picture). HOW THE CHT RELEASE WAS FOUND, because this defeats the obvious routes and the next agent will need it: www.cht.com.tw/zh-tw/home/cht/messages/news returns HTTP 404 (with a 139,959-byte soft-404 body). robots.txt gives Sitemap: https://www.cht.com.tw/home/eshop/sitemap/sitemap.xml, which returns 200 and 721,522 bytes with 6,829 <loc> entries - but the 4,893 /messages/ URLs in it are almost all HiNet maintenance notices, and the press releases are NOT individually listed there. The working route is the index page https://www.cht.com.tw/zh-tw/home/cht/messages (200, 179,446 bytes), which IS server-rendered: each item is a div.list-item carrying a message-id, a tag (新聞稿 / 重要公告 / 業務訊息 with sub-tags 公司/業務/財務/人資/ESG), an h3.list-item-head title and a div.list-item-date, and the page states 共有 3957 項結果. Items are reachable at /zh-tw/home/cht/messages/<year>/<MMDD-HHMM>. Verbatim strings above were taken from the raw <p> elements, not from tag-stripped text - naive stripping inserts spaces around numbers, which would have turned 近300公里 into '近 300 公里' and 約1.9 Tbps into '約 1.9 Tbps'. Two CHT headings use the ideographic space U+3000 as a separator; the title in the index is '中華電信完成「臺馬第四海纜」建設　建構三路由備援　全面強化馬祖通訊韌性'.",
+ "sources": [
+  {
+   "title": "中華電信完成「臺馬第四海纜」建設　建構三路由備援　全面強化馬祖通訊韌性",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "publisher": "中華電信股份有限公司",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "最新海纜狀況",
+   "url": "https://moda.gov.tw/major-policies/subseacable/1747",
+   "publisher": "數位發展部",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "數發部積極推動臺馬四號海纜及馬祖4鄉微波站建設 強化離島通訊韌性",
+   "url": "https://moda.gov.tw/press/press-releases/19976",
+   "publisher": "數位發展部",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "2026-09-18，中華電信宣布臺馬第四海纜已完成建置、登陸、測通作業，並正式納入臺馬聯外通訊體系。全長為「近300公里」。原文用的是「今（18）日宣布」。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": false,
+   "verbatim_quote": "中華電信今（18）日宣布，全長近300公里的「臺馬第四海纜」已順利完成建置、登陸、測通作業，正式納入臺馬聯外通訊體系。"
+  },
+  {
+   "fact": "中華電信說明第四海纜與既有的第二、第三海纜形成「三路由互為備援」，再結合微波與多軌衛星通訊。三路由這個說法是中華電信自己的框架，不是主管機關的。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": true,
+   "verbatim_quote": "隨著第四海纜佈纜完成，將與既有的第二、第三海纜形成「三路由互為備援」，再結合微波與多軌衛星通訊"
+  },
+  {
+   "fact": "投資金額：中華電信寫「斥資近14億元」（小標）與「投入近新臺幣14億元推動臺馬第四海纜工程」（內文）。兩處都用「近」，不是確數。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": false,
+   "verbatim_quote": "投入近新臺幣14億元推動臺馬第四海纜工程，串聯本島至馬祖東引、南竿、西莒通訊鏈路。"
+  },
+  {
+   "fact": "登陸點：中華電信寫「串聯本島至馬祖東引、南竿、西莒通訊鏈路」。注意這裡是「西莒」，而數發部 2026-06-23 新聞稿講微波系統時寫的是「東引、北竿、南竿與莒光鄉」。兩份官方文件用的地名不同，寫稿時要分開引述，不可混用。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": false,
+   "verbatim_quote": "串聯本島至馬祖東引、南竿、西莒通訊鏈路。"
+  },
+  {
+   "fact": "容量：中華電信寫臺馬聯外海纜由兩條擴增為三條，整體傳輸容量大幅提升至約1.9 Tbps。小標另寫「臺馬頻寬大躍進至1.9 Tbps」。1.9 Tbps 是「整體」容量，不是單條海纜的容量。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": false,
+   "verbatim_quote": "隨著第四海纜加入，臺馬聯外海纜由兩條擴增為三條，整體傳輸容量大幅提升至約1.9 Tbps。"
+  },
+  {
+   "fact": "非海纜備援：中華電信寫已部署12.6 Gbps臺馬微波骨幹，並整合低、中、高軌多元衛星，合稱「海纜、微波、衛星」異質備援網。12.6 Gbps 掛的是微波骨幹，不是海纜，兩個數字不可放在同一句裡比較。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": false,
+   "verbatim_quote": "中華電信亦已部署12.6 Gbps臺馬微波骨幹，並整合低、中、高軌多元衛星，打造「海纜、微波、衛星」異質備援網。"
+  },
+  {
+   "fact": "中華電信對施工難度的說明：馬祖地處離島、聚落分散，海象及施工條件極為複雜，並寫「過去聯外海纜更屢遭外力破壞」。這是中華電信的敘述，沒有列出事件、次數或肇因。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": true,
+   "verbatim_quote": "馬祖地處離島，聚落分散，海象及施工條件極為複雜，過去聯外海纜更屢遭外力破壞。"
+  },
+  {
+   "fact": "中華電信對效益的說法是「不僅大幅提升馬祖居民的日常通訊品質，更能保障軍警政消、醫療、教育及公共服務的穩定運作」。這是廠商宣稱，沒有任何量測數據支撐，本站也沒有實測。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0918-1100",
+   "is_vendor_claim": true,
+   "verbatim_quote": "不僅大幅提升馬祖居民的日常通訊品質，更能保障軍警政消、醫療、教育及公共服務的穩定運作，為國家數位韌性築起關鍵防線。"
+  },
+  {
+   "fact": "名稱不一致，而且兩邊都是官方：中華電信全篇稱「臺馬第四海纜」；數位發展部的新聞稿與海纜清單都稱「臺馬四號海纜」，英文簡稱 TM4。寫稿時兩個名稱都要出現一次，並說明是同一條。",
+   "url": "https://moda.gov.tw/major-policies/subseacable/1747",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺馬四號海纜"
+  },
+  {
+   "fact": "數發部「最新海纜狀況」頁在 2026-09-18 查核時寫「臺灣目前擁有16條國際通訊海纜與11條國內通訊海纜」。這是頁面當下的值，是活資料，寫進文章一定要標出處與查核時點。",
+   "url": "https://moda.gov.tw/major-policies/subseacable/1747",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺灣目前擁有16條國際通訊海纜與11條國內通訊海纜。"
+  },
+  {
+   "fact": "同一頁的「我國國內海纜清單」在查核時列出 11 條，其中臺馬相關的有四條，序號 2 至 5：臺馬一號海纜（TM1-D）、臺馬二號海纜（TDM2）、臺馬三號海纜（TM3）、臺馬四號海纜（TM4）。清單只列名稱與簡稱，沒有任何欄位說明哪一條在服務中。",
+   "url": "https://moda.gov.tw/major-policies/subseacable/1747",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺馬一號海纜"
+  },
+  {
+   "fact": "前情（2026-06-23 數發部新聞稿）：臺馬四號海纜與馬祖東引、北竿、南竿與莒光鄉間微波通訊系統，是透過前瞻預算補助中華電信建置的，當時的說法是「即將於近期完工」。",
+   "url": "https://moda.gov.tw/press/press-releases/19976",
+   "is_vendor_claim": false,
+   "verbatim_quote": "透過前瞻預算補助中華電信建置之「臺馬四號」海纜，以及馬祖東引、北竿、南竿與莒光鄉間微波通訊系統，即將於近期完工"
+  },
+  {
+   "fact": "同一份 6 月新聞稿已經預告了啟用後的樣子，數字與中華電信 9 月的說法一致：「臺馬四號啟用後，臺灣與馬祖間將有3條海纜，且北竿、南竿、東引與莒光鄉，每個鄉都至少有2組微波系統可對外聯繫」。",
+   "url": "https://moda.gov.tw/press/press-releases/19976",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺馬四號啟用後，臺灣與馬祖間將有3條海纜，且北竿、南竿、東引與莒光鄉，每個鄉都至少有2組微波系統可對外聯繫，有效強化其通訊韌性。"
+  },
+  {
+   "fact": "6 月新聞稿也寫明了延誤原因：「臺馬四號海纜工程雖受中東局勢影響，原料船運稍有延遲」。這是數發部的說法。",
+   "url": "https://moda.gov.tw/press/press-releases/19976",
+   "is_vendor_claim": false,
+   "verbatim_quote": "臺馬四號海纜工程雖受中東局勢影響，原料船運稍有延遲，但在中華電信持續努力下，預計將於近期完工。"
+  },
+  {
+   "fact": "6 月新聞稿記錄了一次已發生的中斷：「日前臺馬二號、三號海纜在東引地區同時發生障礙時，海巡署及中華電信同仁第一時間啟動備援」。數發部沒有寫那次障礙的日期，只寫「日前」，也沒有寫修復完成日。",
+   "url": "https://moda.gov.tw/press/press-releases/19976",
+   "is_vendor_claim": false,
+   "verbatim_quote": "日前臺馬二號、三號海纜在東引地區同時發生障礙時，海巡署及中華電信同仁第一時間啟動備援"
+  },
+  {
+   "fact": "6 月新聞稿的政策脈絡：數發部以「備援再備援」為原則，透過前瞻預算等補助或輔導措施，促請中華、遠傳及台灣大哥大三家電信業者加速、加量建設。",
+   "url": "https://moda.gov.tw/press/press-releases/19976",
+   "is_vendor_claim": false,
+   "verbatim_quote": "促請中華、遠傳及台灣大哥大三家電信業者加速、加量建設，以強化行動通訊涵蓋及網路韌性。"
+  }
+ ],
+ "not_said": [
+  "中華電信沒有寫完工日、測通日或商轉日，只寫 9 月 18 日宣布已完成。也沒有寫第四海纜什麼時候開始承載用戶流量。不要替它補一個日期。",
+  "中華電信沒有寫第四海纜單條的容量，1.9 Tbps 是「整體傳輸容量」。單條容量、與第二／第三海纜各自的容量，三個數字官方都沒給。",
+  "中華電信沒有說臺馬一號海纜（TM1-D）的狀態。它寫的是「與既有的第二、第三海纜形成三路由」，而數發部的國內海纜清單同時列著臺馬一號到四號共四條。兩者不矛盾也不互相解釋：以 2026-09-18 查核所見，中華電信的新聞稿未提及臺馬一號。絕對不可以寫成「臺馬一號已經廢止／已停用」。",
+  "近14億元沒有寫是誰出的。數發部 6 月新聞稿寫的是「透過前瞻預算補助中華電信建置」，中華電信 9 月新聞稿寫的是「中華電信……投入近新臺幣14億元」。兩邊各自的說法都要照抄，不要自己算出補助比例。",
+  "沒有寫「多軌衛星」是哪些系統、哪家業者、幾條鏈路。原文只有「低、中、高軌多元衛星」。",
+  "沒有寫 12.6 Gbps 微波骨幹是什麼時候部署的，只寫「亦已部署」。",
+  "沒有任何量測數據：延遲、可用率、實際下載速度、斷纜復原時間都沒有。中華電信說的「大幅提升」「有效防範」都是敘述。",
+  "沒有寫馬祖居民端的資費、方案或申辦方式會不會改變。",
+  "數發部到 2026-09-18 查核時，新聞發布頁（moda.gov.tw/press/press-releases/372）上沒有 9 月 18 日的海纜完工新聞稿；最新兩則是 9 月 17 日的 MyData 就學貸款與 9 月 16 日的部長訪美。也就是說，這則完工消息目前只有中華電信一方的公告。要寫成「以 2026 年 9 月 18 日查核，數發部新聞發布頁未見對應公告」，不要寫成「數發部沒有回應」。",
+  "沒有提到臺馬四號與 2026 年上半年任何一次斷纜事件的因果關係。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "臺馬一號海纜（TM1-D）目前是否在服務中。",
+   "seen_where": "數發部「最新海纜狀況」頁的國內海纜清單把它列在序號 2；中華電信 9 月 18 日新聞稿只提第二、第三、第四海纜。",
+   "why_excluded": "清單沒有任何狀態欄位，中華電信也沒有說。缺席不等於否定。文章只能寫「數發部清單列有臺馬一至四號，中華電信的新聞稿談的是第二、第三與第四條」。"
+  },
+  {
+   "claim": "數發部『海纜障礙狀況』與『海纜計畫性維修狀況』兩個子頁的即時內容。",
+   "seen_where": "moda.gov.tw/major-policies/subseacable/1747 上的兩個連結。",
+   "why_excluded": "兩個子頁沒有在這次查核中開啟。它們是活資料頁，如果文章要引用，定稿當天必須重抓並標出時點；不可以拿今天的印象寫。"
+  },
+  {
+   "claim": "臺馬二號、三號海纜 2026 年上半年那次同時障礙的日期、原因與修復完成日。",
+   "seen_where": "數發部 2026-06-23 新聞稿只寫「日前」；既有文章 tech-news-taiwan-matsu-cable-20260623 另外引了中華電信 2026-05-25 的 TDM2 障礙修復說明。",
+   "why_excluded": "本次查核沒有重新開啟那份 2026-05-25 的中華電信說明（cht.com.tw/zh-tw/home/cht/messages/2026/msg-260525-022553）。要寫那次事件的日期，必須自己重抓那一頁並加進 sources。"
+  },
+  {
+   "claim": "「近300公里」與「近14億元」的確切值。",
+   "seen_where": "中華電信新聞稿，兩處都用「近」。",
+   "why_excluded": "官方自己給的是近似值。照抄「近」字，不要四捨五入成 300 公里或 14 億元，也不要自己換算成美元。"
+  },
+  {
+   "claim": "臺馬四號海纜的登陸站點名、纜線規格、光纖對數、設計壽命、承包廠商與布纜船。",
+   "seen_where": "完全沒有出現。",
+   "why_excluded": "三份來源都沒有印。不要從任何海纜資料庫或百科補。"
+  },
+  {
+   "claim": "媒體對這則公告的報導與評論。",
+   "seen_where": "沒有查閱。",
+   "why_excluded": "BRIEF.md 禁止整合站與媒體進 sources。本紀錄只用中華電信與數發部自己的頁面。"
+  }
+ ],
+ "editorial_brief": "RECOMMENDATION: IMPORTANT (重要). 這是本視窗內唯一一則「台灣本地、有具體數字、而且讀者真的會有感」的科技新聞，而且它把站上既有的一篇未完成的故事收尾了。\n\nREADER: 看過 2026 年上半年馬祖斷網新聞的一般台灣讀者，想知道「那件事現在解決了嗎」。也包含對海纜韌性這個題目有興趣、但不懂電信工程的人。\n\nANGLE, 而且這是這篇存在的理由：站上既有的 tech-news-taiwan-matsu-cable-20260623 停在數發部說「即將於近期完工」。三個月後，中華電信自己宣布完工，而且給出了 6 月新聞稿沒有的三個數字——近300公里、近14億元、整體容量約1.9 Tbps。這篇要做的事是把「預告」與「完工公告」兩份官方文件並排，指出哪些數字對得上（3 條海纜、每鄉至少 2 組微波）、哪些是新的、哪些到現在還是沒有寫（完工日、商轉日、單條容量）。這是一篇「追蹤報導」，不是重寫。\n\nSECOND ANGLE, 值得兩段：備援不是只有海纜。中華電信這次公告的結構其實是三層——海纜三路由、12.6 Gbps 微波骨幹、低中高軌多元衛星，它自己叫「海、地、星、空」。對讀者最有解釋價值的是「為什麼一條海纜斷了不會馬上全島斷網，以及為什麼備援的頻寬差這麼多」：1.9 Tbps 對 12.6 Gbps，這兩個數字差了約 150 倍，但是——這句一定要寫清楚——這是編輯把兩個官方數字擺在一起比較，官方自己沒有做這個比較，也沒有說微波在災時要承擔多少流量。要嘛明寫是編輯換算，要嘛只並列兩個數字不做除法。\n\nSTRUCTURE FIT: 五個 H2 小節 - (1) 9 月 18 日中華電信宣布了什麼；(2) 從 6 月的「近期完工」到 9 月的「已完成」，兩份官方文件對照，表格放在第 2 節末；(3) 三路由＋微波＋衛星的備援結構，圖解放在第 3 節末；(4) 數發部海纜清單上的臺馬四條與「三路由」怎麼看；(5) 官方到現在還沒說的事。TABLE（最多 4 欄、儲存格短、caption 寫查核日 2026 年 9 月 18 日）：建議欄位 項目 / 數發部 2026-06-23 的說法 / 中華電信 2026-09-18 的說法 / 備註，列出 海纜條數、微波、完工時程、金額。DIAGRAM 2x2：海纜三路由 / 微波骨幹 / 多軌衛星 / 官方未說明——圖上每個數字（3、近300公里、1.9 Tbps、12.6 Gbps）都必須在正文出現過。\n\nLIVED-EXPERIENCE EXAMPLE 要標明是編輯設計的例子，照 BRIEF.md。安全的一個：一位在南竿工作的讀者想知道「以後還會不會斷」——答案只能引官方寫的那句「即便未來遭遇天災或突發事故導致單一路由受損，其他系統也能即時支援」，並註明那是中華電信的說法，不是保證。\n\nSUMMARY block: 第一句是答案——2026 年 9 月 18 日中華電信宣布全長近 300 公里的臺馬第四海纜完成建置、登陸與測通。接著是條件——臺馬聯外海纜由兩條增為三條、整體傳輸容量提升至約 1.9 Tbps，另有 12.6 Gbps 微波骨幹與低中高軌衛星。最後一句是但書——中華電信沒有寫完工日與商轉日，數發部新聞發布頁在查核日也還沒有對應公告。\n\nFAQ candidates these sources genuinely answer: 臺馬第四海纜和臺馬四號海纜是同一條嗎（是，兩個名稱分別來自中華電信與數發部）; 現在臺灣到馬祖有幾條海纜（中華電信說聯外海纜由兩條增為三條；數發部清單列有臺馬一至四號四條，清單沒有狀態欄位）; 花了多少錢（中華電信寫近新臺幣 14 億元，數發部 6 月寫是前瞻預算補助）; 海纜斷了怎麼辦（官方說還有 12.6 Gbps 微波骨幹與低中高軌衛星）; 什麼時候正式啟用（官方沒有寫，只寫已完成建置、登陸、測通）.",
+ "must_not_write": [
+  "不要寫臺馬一號海纜已停用、已廢止或已報廢。中華電信只提第二、第三、第四條，數發部清單同時列著四條，兩者都沒有說一號的狀態。",
+  "不要寫完工日、通電日、商轉日或啟用日。中華電信只寫 9 月 18 日宣布已完成建置、登陸、測通。",
+  "不要把「近300公里」「近14億元」的『近』字拿掉，也不要換算成美元或其他單位。",
+  "不要把 1.9 Tbps 說成單條海纜的容量——官方寫的是「整體傳輸容量」。",
+  "不要把 1.9 Tbps 與 12.6 Gbps 相除後當成事實陳述。要比較就明寫是編輯換算，或只並列兩個數字。",
+  "不要把中華電信的效益宣稱寫成事實。「大幅提升馬祖居民的日常通訊品質」「有效防範對外通訊中斷的風險」「為國家數位韌性築起關鍵防線」一律寫成「中華電信表示」。本站沒有實測，不可寫「我們實測」。",
+  "不要推測斷纜原因、肇事船隻或任何地緣政治動機。中華電信只寫「過去聯外海纜更屢遭外力破壞」，沒有點名任何人。",
+  "不要混用兩份官方文件的地名。中華電信寫「東引、南竿、西莒」（海纜），數發部寫「東引、北竿、南竿與莒光鄉」（微波），各自照抄。",
+  "不要寫成電信業者比較或申辦建議——tech.md 禁止購買建議。",
+  "不要把數發部海纜狀況頁的 16／11 條寫成常數。那是活資料，要標出處與查核時點，定稿當天重抓一次。",
+  "不寫投資免責 callout——tech.md 規定科技垂直不帶。",
+  "主圖與 SVG 圖解不畫任何商標、字標、圖示或介面截圖；產品與機構名稱用純文字。",
+  "不要列表、不要 Markdown、不要 emoji，zh-TW 包不得出現簡體字。"
+ ],
+ "overlaps_existing_article": "DIRECT FOLLOW-UP to tech-news-taiwan-matsu-cable-20260623 ('臺馬四號海纜與馬祖微波站：數發部稱「近期完工」，馬祖通訊備援現況', news_date 2026-06-23)，而且那一篇的 sources 裡已經有 moda 19976 與 moda 的最新海纜狀況頁。這不是重寫：既有文章的事件是數發部 6 月 23 日的『即將完工』預告加上 2026 上半年的中斷與備援經過；這一篇的事件是中華電信 9 月 18 日的完工公告，帶著三個 6 月沒有的數字。DIVIDE IT THIS WAY — 既有那篇擁有：前瞻預算補助的來龍去脈、2026 上半年臺馬二號／三號的中斷與修復經過、新臺馬輪行動通訊改善、馬祖四鄉微波站的政策背景。這一篇擁有：完工公告本身、近300公里／近14億元／1.9 Tbps／12.6 Gbps 這四個數字、三路由的架構說明、以及數發部清單列四條與中華電信說三路由之間的落差。既有那篇是第二個 link 的最佳選擇，正文要明說「本站先前報導過數發部的預告」並連過去，不要把 6 月的內容再講一次。另一個相關但不衝突的是 tech-news-taiwan-6g-spectrum-20260910（數發部 6G 研討會），同屬台灣電信政策但主題不同。FIRST LINK: 用索引包 tech-news-2026-index.json，其 zh-TW title 是「2026 年科技新聞總整理：硬體、平台、電信與法規的重點」，link 的 text 必須等於這一串。",
+ "standalone_or_secondary": "STANDALONE, important. 一手素材實際有：1 個完工公告、4 個具名數字（近300公里、近14億元、約1.9 Tbps、12.6 Gbps）、3 個登陸地點、3 層備援結構、1 組與 6 月官方預告的逐項對照、1 份列有 11 條國內海纜的官方清單，以及一組官方彼此不一致的命名（臺馬第四海纜 vs 臺馬四號海纜 TM4）。這足以撐滿五節格式，而且台灣讀者的關聯度是本批次最高的一則。"
+}

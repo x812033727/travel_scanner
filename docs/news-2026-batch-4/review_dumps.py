@@ -89,13 +89,18 @@ def dump(pack: dict, record: dict, locale: str) -> str:
 
 
 def main() -> int:
-    if len(sys.argv) != 3 or sys.argv[1] not in BY_NAME:
-        print("usage: review_dumps.py <" + "|".join(BY_NAME) + "> <out-dir>")
+    if len(sys.argv) < 3 or sys.argv[1] not in BY_NAME:
+        print("usage: review_dumps.py <" + "|".join(BY_NAME) + "> <out-dir> [slug...]")
         return 2
     vertical, out = BY_NAME[sys.argv[1]], Path(sys.argv[2])
+    # Only the articles named, when a later batch adds a few to a vertical whose earlier
+    # packs were reviewed already (and whose research records may live in another workspace).
+    only = set(sys.argv[3:])
     out.mkdir(parents=True, exist_ok=True)
     written = 0
     for path in sorted(CONTENT.glob(f"{vertical.prefix}*.json")):
+        if only and path.stem not in only:
+            continue
         pack = json.loads(path.read_text(encoding="utf-8"))
         research = ROOT / vertical.workspace / "research" / f"{pack['slug']}.json"
         record = json.loads(research.read_text(encoding="utf-8")) if research.is_file() else {}

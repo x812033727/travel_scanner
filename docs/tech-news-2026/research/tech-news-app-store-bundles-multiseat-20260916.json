@@ -1,0 +1,518 @@
+{
+  "slug": "tech-news-app-store-bundles-multiseat-20260916",
+  "event_date": "2026-09-16",
+  "event_date_basis": "developer.apple.com/news/?id=likeohx4 carries the visible article date line September 16, 2026; the announcement's own text states \"Starting today, multiseat purchases are enabled by default for subscriptions in App Store Connect,\" which is the one change that takes effect on the announcement date itself. Two other dates on the same page are forward-looking and are kept separate in this article: Volume Purchasing launches 2026-10-22, and Group Purchases and Bundles/Suites are only dated \"this winter\" or \"later this year\" with no calendar date. A fourth, earlier date lives only in the ENGLISH App Store Connect help page: subscriptions created before 2026-09-14 that do not use StoreKit 2 or that have Family Sharing on are opted out by default -- that cutoff is two days before the announcement and is written in the article as a threshold, not as an event. The Traditional-Chinese version of that same help page does not carry the 2026-09-14 date at all (verified 2026-09-18 by substring search on both pages), so the article attributes the cutoff to the English version explicitly.",
+  "title": "App Store 訂閱新規則：組合方案最多五個開發者、多名額購買預設開啟、大量採購 10 月 22 日上路",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Get your subscriptions ready for iOS 27",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "publisher": "Apple (Apple Developer News)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Create Bundles and Suites for auto-renewable subscriptions",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "publisher": "Apple (Apple Developer)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Manage purchase options for an auto-renewable subscription",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "publisher": "Apple (App Store Connect Help)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "管理自動續訂型訂閱的購買選項",
+      "url": "https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "publisher": "Apple (App Store Connect 說明，繁體中文版)",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18, independent factcheck re-fetch. All four sources fetched with curl -sL -A \"Mokaair-editorial\" (no email, name or personal data in any UA, header, query string or form) into the session scratchpad before any editing: (1) https://developer.apple.com/news/?id=likeohx4 -> HTTP 200, 117,728 bytes, article body present; (2) https://developer.apple.com/app-store/subscriptions/bundles-and-suites/ -> HTTP 200, 115,481 bytes, body present including the Q&A block; (3) https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions -> HTTP 200, 370,868 bytes, body present; (4) https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions -> HTTP 200, 370,996 bytes, fully translated body present. Byte counts for (1)-(3) are identical to the writing pass earlier the same day.\n\nSOURCE-LIST CHANGE MADE BY THE FACTCHECK: source (4) is new. The writing pass and the prior research pass both recorded that \"Apple has not published a Traditional-Chinese version\" and that \"/tw/ returns HTTP 404\", generalising from the one /tw/ URL that was actually tried (the news item). Each /tw/ URL was tested separately: developer.apple.com/tw/news/?id=likeohx4 -> 404 (81,990-byte soft 404); developer.apple.com/tw/app-store/subscriptions/bundles-and-suites/ -> 404 (82,022 bytes); but the help page's /tw/ URL -> 200 with a complete Traditional-Chinese translation titled 〈管理自動續訂型訂閱的購買選項〉.\n\nLOCALISATION, RE-TESTED IN FULL BY THE SECOND ROUND. The first factcheck tested only /tw/ and /cn/ and then wrote \"the announcement is zh-CN only\", which is a second over-generalisation of the same kind. Measured 2026-09-18: announcement /cn/ 200 (118,619 bytes), /jp/ 200 (126,192, headline 「iOS 27に向けたサブスクリプションの準備」), /kr/ 200 (124,432), /tw/ 404; Bundles page /tw/ 404, /cn/ 404 (83,051), /jp/ 404 (84,886); help page /tw/ 200 and /cn/ 200 (370,625). So the announcement is translated into several languages but not Traditional Chinese, the Bundles page is unlocalised in every language tested, and the help page exists in both Chinese scripts. The article's paragraph 2 states this per page and names only the languages actually tested.\n\nTERMINOLOGY CONSEQUENCE: because the zh-TW help page exists, Apple's own Traditional-Chinese wording is available and BRIEF.md's rule (介面名稱對照各語言的官方說明頁，不要自己翻) applies. Apple's zh-TW page writes 多名額購買 (multiseat purchases), 名額 (seat), 群組購買者 (group purchaser), 自動續訂型訂閱 (auto-renewable subscription), 「Apple 商務」 (Apple Business), 「Apple 校務管理」 (Apple School Manager), 大量採購 (volume purchase), 以群組形式購買 (purchase as a group). The article previously used the invented 多人席次購買／席次／團體購買人／量購／團體購買; it has been changed to Apple's published zh-TW terms wherever Apple publishes one. Bundle and Suite have NO Chinese page of any kind (the zh-CN announcement even labels its link to the Bundles page 「(英文)」), so 組合方案 and 套組 remain this site's translations and are flagged as such in paragraph 2.\n\nONE MORE WORD IS THIS SITE'S, NOT APPLE'S -- corrected by the second round. 群組購買 (Group Purchases, as a product name) is NOT published in zh-TW: all five occurrences of that string on the zh-TW help page are inside 群組購買者 (group purchaser). What Apple publishes for the act is the verb phrase 以群組形式購買. 大量採購 IS published as a noun (「僅能在「Apple 商務」中大量採購」, twice). So the zh-TW words taken verbatim from Apple are 多名額購買, 名額, 群組購買者, 自動續訂型訂閱, 「Apple 商務」, 「Apple 校務管理」, 大量採購 and 以群組形式購買; 組合方案, 套組 and the product name 群組購買 are this site's, and the article prints the English original beside each of the three.\n\nFOR THE zh-CN TRANSLATION, Apple is split between its own two pages and the translator must not merge them. The zh-CN announcement uses 套装 (Bundle), 套件 (Suite), 多席位购买, 席位, 批量购买, 群组购买, Apple 商务, Apple 校园教务管理. The zh-CN help page -- the same document as sources 3 and 4 -- uses 多名额购买, 名额, 群组购买者, 自动续期订阅, 批量购买, Apple 商务, Apple 校园教务管理, and contains 多席位购买 and 席位 zero times. Pick per page and say which page each word came from; do not reuse the zh-TW words in either case.\n\nNON-BREAKING SPACES: every verbatim_quote below was tested as an exact substring against the saved page, not assumed. U+00A0 placement on developer.apple.com is inconsistent even within one page (the news item has 'Volume' + U+00A0 + 'Purchasing' in the launch-date sentence but an ordinary space in 'With Volume Purchasing, organizations...'), so pattern-matching the entity rather than testing the position produces quotes that cannot be found. Two quotes carried over from the writing pass failed that test today and were corrected: fact 3 had 'With' + U+00A0 + 'Suites' where the page has an ordinary space, and fact 11 had 'Volume' + U+00A0 + 'Purchasing' where that sentence has an ordinary space. 17 of the writing pass's 19 quotes passed unchanged; all 30 quotes in this record, including the 11 added by this check, were verified as exact substrings after the fix. The second round re-fetched all four pages (identical byte counts) and re-ran the same exact-substring test: 30/30 passed unchanged, and the 3 quotes it added bring the record to 33/33.\n\nSOURCE'S OWN TYPO, reproduced rather than silently fixed: the English help page joins two sentences with a comma -- 'Existing customers' subscriptions continue to renew until the group purchaser cancels, New seats cannot be added, but can be removed by the group purchaser.' The capital N after the comma is Apple's, not ours.\n\nNot opened this session: the two WWDC26 session videos linked from the news item, and the request-access form itself (behind a developer account login).",
+  "verified_facts": [
+    {
+      "fact": "The announcement's general advice to developers preparing for iOS 27 subscription changes: start by confirming apps use StoreKit 2 for Apple In-App Purchases.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can start preparing today by making sure your apps use StoreKit 2 to handle your Apple In-App Purchases."
+    },
+    {
+      "fact": "Bundle definition: multiple subscriptions accessible in one purchase, spanning a single app, multiple apps from the same developer, or even multiple different developers' apps.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "With Bundles, people can access multiple subscriptions in one purchase — across a single app, multiple apps from the same developer, or even spanning multiple developers’ apps."
+    },
+    {
+      "fact": "Suite definition, distinct from Bundle: a single subscription that works across a set of apps from one developer, not multiple subscriptions combined. Note this is a definition, not a stated prohibition -- Apple nowhere says a Suite may not span developers, so the article says 官方定義為同一開發者 rather than 僅限單一開發者.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "With Suites, people get access to a single subscription that seamlessly works across a set of apps from a single developer."
+    },
+    {
+      "fact": "The hard ceiling on a multi-developer Bundle: up to five developers.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Up to five developers can participate in a multi-developer Bundle."
+    },
+    {
+      "fact": "Two further numeric caps, stated only in the Bundles page Q&A and missed by both earlier passes: a Bundle may contain up to 5 subscriptions, and a Suite may span up to 15 apps. These are different quantities from the five-developer ceiling and the article now states both so the two fives are not conflated.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can include up to 5 subscriptions in a Bundle. A Suite can provide a subscription across up to 15 apps."
+    },
+    {
+      "fact": "Apple's own illustrations (not observed products): a single-developer Bundle example is a music-streaming subscription plus a podcast subscription sold together at a lower price than subscribing separately; a multi-developer Bundle example is a fitness-tracking app and a nutrition-planning app from two different developers partnering on a health-and-wellness Bundle.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Single developer Bundle: People can purchase multiple auto-renewable subscriptions from the same Apple Developer account as a Bundle, at a lower price than subscribing to each individually."
+    },
+    {
+      "fact": "A subscriber can modify a Bundle purchase at any time through their Apple Account, choosing to keep individual services or cancel the whole Bundle. The partial-keep option is stated for Bundles only.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If someone needs to modify their Bundle purchase, they can do so at any time through their Apple Account, where they can choose to stay subscribed to individual services or cancel the entire Bundle."
+    },
+    {
+      "fact": "When those changes take effect -- the qualifier the writing pass dropped. Cancelling a Bundle or Suite is possible at any time, but cancellations and partial changes land at the next renewal date; only upgrades are immediate.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Any cancellations or partial changes will take effect at the next renewal date. Upgrades take effect immediately, giving subscribers instant access to their additional content at the time of purchase."
+    },
+    {
+      "fact": "What happens to an existing standalone subscriber who buys a Bundle containing it: immediate upgrade plus a prorated refund for the remainder of the standalone period. Both earlier research passes listed this under not_said as something Apple never addresses; the Bundles page Q&A answers it directly.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If someone purchases a Bundle that includes a subscription they’ve already purchased, they’ll be upgraded and immediately get access to all subscriptions it includes. They’ll also receive a prorated refund for the remainder of their standalone subscription period."
+    },
+    {
+      "fact": "Requirement that every subscription in a Bundle share the same duration -- a monthly and an annual subscription cannot be combined.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Offer the same subscription duration for each auto-renewable subscription included in a Bundle."
+    },
+    {
+      "fact": "Availability of Bundles and Suites is a vague period plus a version floor, no date: later this year on iOS 27, iPadOS 27, macOS 27, tvOS 27 or later. Access is also gated behind a request form; the page's own section heading for that gate is 'Request access and submit for review'. That heading string is present in bundles-and-suites and absent from the news item -- searched on both pages today, confirming the writing pass's re-attribution away from the news URL.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Request access and submit for review"
+    },
+    {
+      "fact": "Extra conditions on a multi-developer Bundle, from the same section: every participating developer files its own interest form and signs a named legal addendum before configuration starts; and Bundles and Suites are configured and published in batches.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Each participating developer will need to sign the Multi-Developer Bundle Program Legal Addendum and provide Apple with their subscription details through an intake form before configuration can begin."
+    },
+    {
+      "fact": "Pricing is settled privately per Bundle during configuration, which is also where each Bundle's go-live date is set. Apple publishes no prices and no commission terms anywhere in these pages.",
+      "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This includes gathering details about your subscription, as well as confirming your pricing and go-live date."
+    },
+    {
+      "fact": "Same availability sentence appears (independently) on the news item, phrased as a direct statement about Bundles and Suites.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Bundles and Suites will be available later this year in iOS 27, iPadOS 27, macOS 27, tvOS 27, or later."
+    },
+    {
+      "fact": "Multiseat purchasing took effect on the announcement day itself: enabled by default for subscriptions in App Store Connect starting that day, with full developer control to disable it entirely or manage availability per store.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Starting today, multiseat purchases are enabled by default for subscriptions in App Store Connect."
+    },
+    {
+      "fact": "Volume Purchasing mechanics: organizations using Apple Business and Apple School Manager buy through a single Apple In-App Purchase and assign seats using a device management provider.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "With Volume Purchasing, organizations that use Apple Business and Apple School Manager can buy your subscriptions through a single Apple In-App Purchase and assign seats using a device management provider."
+    },
+    {
+      "fact": "Group Purchases mechanics: a subscriber buys multiple seats in one Apple In-App Purchase and invites others to join, with Apple handling seat assignment and invitations.",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "With Group Purchases, a subscriber can buy multiple seats in a single Apple In-App Purchase and invite others to join."
+    },
+    {
+      "fact": "The one calendar date in the announcement's body, next to an undated one: Volume Purchasing launches October 22, 2026; Group Purchases will launch 'this winter' with no hemisphere or exact date given. (The page's own dateline, September 16, 2026, is a date too, so the article says 公告正文只寫出一個明確的未來日期 rather than calling 10-22 the only date on the page.)",
+      "url": "https://developer.apple.com/news/?id=likeohx4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Volume Purchasing launches on October 22, 2026, and Group Purchases will launch this winter."
+    },
+    {
+      "fact": "Definition of multiseat purchasing and the group purchaser role: a customer can buy a subscription in quantities greater than 1; that customer, called the group purchaser, manages the shared subscription and controls access, letting a team, classroom or organization share access under one purchase.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Multiseat purchases allow a customer to buy a subscription in quantities greater than 1. This customer, known as the group purchaser, manages the shared subscription and controls who has access, making it possible for a team, classroom, or organization to share access under a single purchase."
+    },
+    {
+      "fact": "Store split: on the App Store, customers can buy individually or as a group; inside Apple Business and Apple School Manager, only the multiseat purchase mode is supported. These three are sales channels, not regions -- the article says so explicitly so the 'no region is named' point does not read as contradicting them.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In Apple Business and Apple School Manager, only multiseat purchases are supported."
+    },
+    {
+      "fact": "The default-on rule applies to all auto-renewable subscriptions, not just new ones, with one dated exception whose two conditions are joined by OR, not AND: a subscription created before September 14, 2026 is opted out by default if it does not use StoreKit 2, or if it has Family Sharing turned on -- either one is enough. The article now spells this out because the Chinese 沒有使用 StoreKit 2 或開啟家人共享 can be misread as negating both.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Multiseat purchases are turned on by default for all auto-renewable subscriptions. Subscriptions created prior to September 14, 2026 that do not use StoreKit 2 or that have Family Sharing turned on are set to opted out by default."
+    },
+    {
+      "fact": "The same English page restates the opt-out rule a second time WITHOUT any date, and adds the reverse move the article now mentions: an opted-out subscription can be switched on at any time.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Default settings for existing subscriptions: Subscriptions are set to opted out by default if the app doesn't use StoreKit 2 or has Family Sharing turned on. If you want to offer multiseat purchases, you can turn them on at any time in App Store Connect."
+    },
+    {
+      "fact": "A carve-out neither earlier pass recorded, and a real limit on the article's 'developers can just turn it off' sentence: custom apps cannot manage purchase options at all and may not opt out of multiseat.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Managing purchase options is not available for subscriptions in custom apps. Subscriptions for custom apps will automatically be available on Apple Business, and Apple School Manager and you may not opt out of multiseat purchases."
+    },
+    {
+      "fact": "The help page's own, looser availability sentence for multiseat gives no dates at all, unlike the news item's routes: available for Business and Education organizations, and for App Store customers, later this year.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Multiseat purchases will be available for Business and Education organizations, and for App Store customers later this year."
+    },
+    {
+      "fact": "Advice to a developer who wants multiseat off: turn it off in App Store Connect, and the stated reason is to avoid impact to customers.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you don't want to allow multiseat purchasing for your subscription, edit your purchase options in App Store Connect to avoid any impact to customers."
+    },
+    {
+      "fact": "Consequences of disabling multiseat after approval: new customers cannot buy multiple seats and the subscription is removed from Apple Business and Apple School Manager; existing customers keep renewing until the group purchaser cancels; new seats cannot be added, but the group purchaser can remove seats. Quoted with Apple's own comma splice before 'New'.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Existing customers' subscriptions continue to renew until the group purchaser cancels, New seats cannot be added, but can be removed by the group purchaser."
+    },
+    {
+      "fact": "English page on Family Sharing plus multiseat: the two CAN both be on, and the consequence is that only the group purchaser's access includes Family Sharing. Turning Family Sharing on is irreversible.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you've enabled multiseat purchases for a subscription, only the group purchaser's access will include Family Sharing. Once you turn on Family Sharing, you won't be able to turn it off."
+    },
+    {
+      "fact": "The English page's second and more explicit coexistence sentence, added by the second-round check because the article's section 4 quotes its 'when both ... are turned on' clause and the 其餘名額僅供個人使用 half, which the note above does not cover. Apple presents coexistence as a state the developer confirms, not one it forbids.",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "only the group purchaser will be able to share with family members when both multiseat purchases and Family Sharing are turned on. All other seats will be for individual use only"
+    },
+    {
+      "fact": "The Traditional-Chinese page ALSO states coexistence -- it translates both English sentences faithfully -- so the contradiction is not a clean English-vs-Chinese split. This is the zh-TW rendering, which opens the extra section and matches the English page, one sentence before the same section reverses itself. Note Apple uses 群組組織者 here and 群組購買者 five times elsewhere on the same page; the article follows the majority term.",
+      "url": "https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "若訂閱項目已開啟多名額購買功能，只有群組組織者具備使用「家人共享」的資格，所購買的其餘份數僅供個人使用。"
+    },
+    {
+      "fact": "The reversal itself. The Traditional-Chinese page carries a section headed 「家人共享」和多名額購買 that the English page does not have ('Family Sharing and multiseat' appears 0 times in the English page, checked 2026-09-18), and its last two sentences say the opposite of everything above: enabling Family Sharing auto-disables multiseat, and the two cannot be enabled together. '9 月 14 日' appears 0 times in the Chinese page. The article reports the divergence, quotes the 無法...同時啟用 clause, and says it follows the English version without ruling either version wrong.",
+      "url": "https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "當你為已啟用多名額購買的訂閱項目開啟「家人共享」，系統會自動關閉其多名額購買功能。你可以隨時重新開啟多名額購買功能，但「家人共享」無法與多名額購買同時啟用。"
+    },
+    {
+      "fact": "A consequence stated only on the Traditional-Chinese page and deliberately left out of the article for length: Apple says it WILL auto-disable multiseat on every existing auto-renewable subscription that has Family Sharing on. Future tense (會), not 已 -- do not write it as already done.",
+      "url": "https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "所有開啟「家人共享」的現有自動續訂型訂閱項目，Apple 會自動關閉其多名額購買功能。"
+    },
+    {
+      "fact": "Apple's published Traditional-Chinese wording for the feature and the role, which the article now follows instead of inventing its own: 多名額購買 for multiseat purchases, 群組購買者 for group purchaser, 自動續訂型訂閱 for auto-renewable subscription.",
+      "url": "https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "多名額購買允許客戶一次購買不止一份的訂閱項目。這名客戶（即群組購買者）負責管理共享的訂閱項目並控管其存取權限，讓團隊、課堂或機構僅需一次購買就能共享存取權限。"
+    },
+    {
+      "fact": "Apple's published Traditional-Chinese names for the two organisation stores and for buying in volume or as a group: 「Apple 商務」, 「Apple 校務管理」, 大量採購, 以群組形式購買.",
+      "url": "https://developer.apple.com/tw/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+      "is_vendor_claim": false,
+      "verbatim_quote": "在 App Store 中，客戶可選擇個別購買訂閱項目，或以群組形式購買；「Apple 商務」和「Apple 校務管理」則僅支援多名額購買。"
+    }
+  ],
+  "not_said": [
+    "No country or region is named anywhere in the bodies of the four pages for Bundles, Suites, Volume Purchasing or Group Purchases, and Taiwan is not mentioned. Write 官方未說明地區範圍, never 台灣可用 or 台灣不可用. Scope this to countries and regions only: the pages DO name three sales channels (App Store, Apple Business, Apple School Manager) and the help page's 'which stores can sell it' control refers to those three, not to regional storefronts. The article says so explicitly rather than claiming no storefront is mentioned at all.",
+    "No prices, no fee percentages, no commission or revenue split for a multi-developer Bundle. None of the pages says how revenue is divided among up to five developers, or whether the standard App Store commission changes. Apple says only that pricing is confirmed with the developer during configuration and that each participating developer signs the Multi-Developer Bundle Program Legal Addendum; the addendum's contents are not published.",
+    "No release date for iOS 27, iPadOS 27, macOS 27 or tvOS 27 themselves -- 'later this year' and 'this winter' are the only timing words besides the single 2026-10-22 date, plus the per-Bundle go-live date that Apple settles privately.",
+    "No minimum or maximum seat count for a group purchase -- only 'quantities greater than 1' on the help page. (This is separate from the Bundle/Suite caps of 5 subscriptions and 15 apps, which ARE published.)",
+    "Nothing on what happens if a participating developer withdraws from a multi-developer Bundle, or how disputes between bundled developers are handled.",
+    "CORRECTED TWICE -- read this whole entry before touching section 4's last paragraph. (1) Both pre-factcheck passes wrote that Apple never says whether Family Sharing and multiseat can coexist; Apple says so repeatedly. (2) The first factcheck then framed it as English-says-X, Chinese-says-Y, which is also wrong. The second round's per-sentence reading: the English page states coexistence twice and never denies it; the Traditional-Chinese page translates BOTH of those sentences faithfully AND adds a section the English page has no counterpart for, whose last two sentences deny coexistence. So the zh-TW page contradicts itself inside one paragraph, and the divergence is between that added section and everything else. Write it that way. Do not write 'the two language versions say the opposite', do not write a flat 'the two cannot coexist' or 'Apple does not say', and do not rule either version wrong -- the article may only state that it follows the English version and why.",
+    "No figures on uptake, adoption or how many developers are expected to use any of this.",
+    "No description of the consumer-side purchase screen, price display or App Store UI for a Bundle or Suite. The news item does say the App Store 'displays all apps included in your Bundle or Suite,' but describing that further would cross into UI description this site has not tested, so it is not used.",
+    "CORRECTED -- the earlier entry here was wrong. Both previous passes wrote that no page says whether an existing standalone subscriber can convert into a Bundle or what happens to the remaining paid period. The Bundles page Q&A answers exactly that: immediate upgrade plus a prorated refund for the remainder of the standalone period. Conversion into a Suite, or into a seat, is still not addressed.",
+    "CORRECTED TWICE. Both pre-factcheck passes wrote that Apple has published no Traditional-Chinese version at all; the first factcheck fixed that but then wrote that the announcement is 'zh-CN only'. Full per-URL testing on 2026-09-18 (second round): the App Store Connect help page has a complete zh-TW version (200) and a zh-CN version (200); the announcement returns 200 in zh-CN, Japanese and Korean and 404 in zh-TW; the Bundles and Suites page returns 404 in zh-TW, zh-CN and Japanese alike. So only the Bundles page is genuinely unlocalised, and the announcement is translated into several languages but not Traditional Chinese. Bundle and Suite therefore have no Chinese page of any kind, and 組合方案 and 套組 remain this site's translations; everything Apple does publish in zh-TW is used verbatim. Never state a language the check did not test."
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Content of the two WWDC26 session videos linked from the news item (Bundles and Suites video; a second video timestamped at 530 seconds).",
+      "seen_where": "Linked from developer.apple.com/news/?id=likeohx4.",
+      "why_excluded": "Not opened in either session. No transcript was fetched, so nothing may be attributed to them."
+    },
+    {
+      "claim": "The full eligibility and configuration fields behind the 'Request access and submit for review' form on the Bundles and Suites page.",
+      "seen_where": "developer.apple.com/app-store/subscriptions/bundles-and-suites/ -- the heading and the surrounding prose were read, the form itself sits behind a developer account login.",
+      "why_excluded": "Never opened; do not describe form fields nobody here has seen."
+    },
+    {
+      "claim": "How revenue is split in a multi-developer Bundle, and whether Apple's commission changes for bundled purchases.",
+      "seen_where": "Nowhere in the four sources; the Multi-Developer Bundle Program Legal Addendum is named but not published.",
+      "why_excluded": "Apple does not say. The honest answer is 官方未說明, which is what the article uses."
+    },
+    {
+      "claim": "That multiseat purchasing responds to a specific competitor's feature or to regulatory pressure (e.g. the same week's EU app-store announcements).",
+      "seen_where": "Not stated anywhere in the four sources; a tempting frame given other stories in this batch.",
+      "why_excluded": "Apple gives only a market rationale (letting a team subscribe without IT or procurement). Supplying a motive would be invention."
+    },
+    {
+      "claim": "The Simplified-Chinese version of the same App Store Connect help page, read by the second round purely to test the Family Sharing divergence. It is a third version of the document and it settles nothing in the article's favour by itself, but it is the reason this check is confident the zh-TW section is the outlier: the zh-CN page carries the SAME extra 「家人共享」和多名额购买 section and the same auto-disable sentence, yet its third sentence reads 「你可以随时开启多名额购买，但『家人共享』不适用于多名额购买的其他名额」 -- other seats, not a ban on coexistence -- which agrees with the English page, while the zh-TW page's third sentence says the two 無法...同時啟用. The zh-CN page also omits the September 14, 2026 date, and its 現有訂閱預設值 sentence flips the condition to 未开启「家人共享」, the opposite of the English and zh-TW wording.",
+      "seen_where": "https://developer.apple.com/cn/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions -> HTTP 200, 370,625 bytes, full body.",
+      "why_excluded": "Not in sources[] and deliberately not added: the spec bars using a new URL to supply a fact, the article is already at the 4-source ceiling, and the article's stated reason for following the English version rests only on sources[] (the English page has no such section; inside the zh-TW page the contradiction is confined to one clause). Logged here so a later pass does not have to re-derive it, and so nobody 'fixes' the article by declaring the zh-TW sentence a mistranslation -- that call is Apple's to make, not this site's."
+    },
+    {
+      "claim": "Whether the 2026-09-14 cutoff corresponds to a specific server-side change, a build release, or an internal policy date.",
+      "seen_where": "The English help page's opening note. The Chinese version of the same page omits the date entirely.",
+      "why_excluded": "Apple states the cutoff and nothing about what happened on that date. It is reported as a stated threshold, not as an event."
+    },
+    {
+      "claim": "The retention messaging item on the Bundles page -- that the Retention Messaging API can be used today and that configuring retention messages in App Store Connect arrives later this year.",
+      "seen_where": "developer.apple.com/app-store/subscriptions/bundles-and-suites/, under 'To further enhance your offering'. It is on the Bundles page, NOT in the announcement -- the earlier editorial_brief called it the announcement's third item, which is wrong.",
+      "why_excluded": "Deliberately out of scope: it is a cancellation-flow feature, not a combined-purchase or multi-person-purchase feature. Confirmed on 2026-09-18 that the pack contains no mention of it in any field (0 hits for 保留訊息, retention, Retention, 挽留, 取消前)."
+    },
+    {
+      "claim": "The consumer-facing purchase screen -- what a Bundle or Suite looks like in the App Store, or how its price is displayed.",
+      "seen_where": "One sentence on the news item ('The App Store provides the purchase experience, which displays all apps included in your Bundle or Suite') describes this in passing.",
+      "why_excluded": "must_not_write bars describing the user-side purchase screen or price display; this site has not tested the flow, and no screenshot exists in the sources."
+    },
+    {
+      "claim": "Apple's own framing of who multiseat is for (a work team splitting a productivity app's cost, a small business outfitting a few employees, a department in a larger company, a group of collaborators sharing a creative tool) 'without going through IT or procurement.'",
+      "seen_where": "developer.apple.com/news/?id=likeohx4.",
+      "why_excluded": "Not excluded from the article, but flagged here as a vendor claim about audience and motive, not an observed fact; used in the article only as background for the editorially-labelled four-person example, not as a claim about real usage."
+    }
+  ],
+  "editorial_brief": "讀者是在台灣使用或開發 App 的一般讀者。角度是：這篇公告同時鬆動 App Store 購買模式的兩個假設——組合方案／套組鬆動「一次購買只對應一個訂閱」，多名額購買鬆動「一次購買只給一個人用」。結構對應文章五節：(1) 公告談了什麼、哪一項當天生效；(2) 組合方案與套組的差別與條件，表格收尾；(3) 多名額購買的兩條路（大量採購與群組購買），圖解收尾；(4) 預設值變了——9 月 14 日這個分界，含自訂 App 的例外、Apple 給不想要此功能的開發者的建議與關閉後果，以及英文版與繁中版在家人共享上的不一致；(5) 官方沒有寫的事——地區、價格、分潤、席次上限，收尾放編輯設計的四人情境與『怎麼自己查』。全文刻意不談 Bundles 頁上的保留訊息 API（Retention Messaging API）——那是取消流程的功能，離本文的合購／多人購買主題較遠；它在 Bundles 頁，不在公告裡。用詞一律照 Apple 自己的繁體中文說明頁（多名額購買、名額、群組購買者、Apple 商務、Apple 校務管理、大量採購），只有 Bundle 與 Suite 沒有任何中文官方頁，才用本站翻譯的組合方案與套組並附英文原詞。",
+  "must_not_write": [
+    "不可以寫台灣可用或不可用；四頁正文都沒有寫出國家或地區，也沒有提到台灣，一律寫官方未說明地區範圍。但要把 App Store／Apple 商務／Apple 校務管理講成銷售管道，不要說成『連商店都沒提到』——頁面上有這三個管道。",
+    "不可以把 iOS 27、iPadOS 27、macOS 27、tvOS 27 換算成實際日期；官方唯一給的確定未來日期是 2026 年 10 月 22 日的大量採購。",
+    "不可以把 this winter 寫成某個月份，引用時要保留是 Apple 原文用詞、且未說明是哪個半球或哪一年。",
+    "不可以編造多開發者組合方案的分潤規則或抽成比例；官方只寫要簽 Multi-Developer Bundle Program Legal Addendum，附約內容未公開。",
+    "不可以把 2026 年 9 月 14 日的兩個條件寫成要同時成立；原文是 or，未使用 StoreKit 2、或開啟家人共享，符合其中一個就預設關閉。也不可以把這個日期寫成某件事發生的日子。",
+    "不可以在家人共享與多名額購買能否並存這件事上選邊，也不可以寫成『英文版與繁中版說法相反』：英文版兩次寫可以並存、從未否認，繁中版把那兩句都譯進去了，卻另外多出一節說不能並存——矛盾在繁中多寫的那一節與其餘內容之間。要寫出兩邊的句子並註明出處，只能說明本文以英文版為準的理由。",
+    "不可以再寫『Apple 沒有發布繁體中文版』，也不可以寫『公告只有簡體中文版』：App Store Connect 說明頁有完整繁中版與簡中版（都回 200），公告的簡中、日文、韓文版都回 200、繁中網址回 404，Bundles 頁的繁中、簡中、日文網址則全部回 404。沒實測過的語言不要寫。",
+    "不可以自創 Apple 已經發布過的中文介面名；多名額購買、名額、群組購買者、自動續訂型訂閱、Apple 商務、Apple 校務管理、大量採購一律照繁中說明頁。只有 Bundle 與 Suite 沒有中文官方頁，才用本站翻譯並附英文原詞。zh-CN 譯文另有 Apple 自己的簡體用詞（套装、套件、多席位购买、席位、批量购买、群组购买），不可以把繁中詞直接搬過去。",
+    "不可以寫『開發者不想要就能關掉』而不提例外；自訂 App 無法管理購買選項，也不能停用多名額購買。",
+    "不可以把組合方案的「最多五個開發者」與「最多五個訂閱」混為一談，套組另有「最多十五個 App」。",
+    "不可以描述使用者端的購買畫面或價格顯示；四頁都沒有截圖，本站也沒有實測。",
+    "不可以引用兩支 WWDC26 影片的內容，本次查核沒有開啟。",
+    "不寫划不划算、該不該訂——tech.md 禁止購買建議；整理條件差異可以，下結論不行。",
+    "不寫投資免責 callout——tech.md 規定科技垂直不帶。",
+    "主圖與 SVG 圖解不得出現商標、字標、圖示或介面截圖，產品名稱用純文字。",
+    "不要列表、不要 Markdown、不要 emoji，zh-TW 包不得出現簡體字。"
+  ],
+  "live_data_warnings": [
+    "All four pages are living documents Apple can revise. All four byte counts were identical across the writing pass, the first factcheck and the second round on 2026-09-18, which supports but does not guarantee no later change. The zh-TW help page is the most volatile of the four: it already differs from the English page in both directions (it has a Family Sharing section the English page lacks; the English page has a 2026-09-14 date it lacks), which is what a mid-translation page looks like, and the zh-CN version of the same section differs from the zh-TW one again. Re-fetch and update checked_on before any revision, and re-check whether the divergence has been resolved -- if Apple aligns the zh-TW section with the English page, section 4's last paragraph and the FAQ item on 9 月 14 日 both have to be rewritten, not just trimmed.",
+    "No feed, registry or dashboard counts appear in this article's sources, so the live-data risk that applies to the AI/crypto verticals' rosters and feeds does not apply here in the same way.",
+    "The /tw/ and /cn/ localisation status is itself live data: a Traditional-Chinese version of the announcement or of the Bundles page could appear at any time, which would change paragraph 2 and could supply official Chinese words for Bundle and Suite."
+  ],
+  "corrections_applied": [],
+  "hero_label": "訂閱合購與多名額購買",
+  "diagram": {
+    "title": "訂閱新玩法四個重點",
+    "caption": "依 Apple 開發者公告整理：組合方案、多名額購買、大量採購與群組購買，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "組合方案",
+        "最多五個開發者"
+      ],
+      [
+        "多名額購買",
+        "預設開啟"
+      ],
+      [
+        "大量採購",
+        "10 月 22 日上線"
+      ],
+      [
+        "群組購買",
+        "預告今年冬天"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Bundles & Multiseat",
+      "diagram": {
+        "title": "Four Key Points on New Subscriptions",
+        "caption": "Compiled from Apple's developer announcement: Bundles, multiseat purchases, Volume Purchasing, and Group Purchases, checked September 18, 2026.",
+        "nodes": [
+          [
+            "Bundle",
+            "Up to five developers"
+          ],
+          [
+            "Multiseat Purchase",
+            "On by default"
+          ],
+          [
+            "Volume Purchasing",
+            "Launches Oct. 22"
+          ],
+          [
+            "Group Purchases",
+            "Previewed for this winter"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "まとめ購入とマルチシート",
+      "diagram": {
+        "title": "定期購読の新機能4つのポイント",
+        "caption": "Appleの開発者向け発表をもとに作成：バンドル、マルチシート購入、一括購入、グループ購入。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "バンドル",
+            "開発者最大5社"
+          ],
+          [
+            "マルチシート購入",
+            "デフォルトでオン"
+          ],
+          [
+            "一括購入",
+            "10月22日開始"
+          ],
+          [
+            "グループ購入",
+            "この冬と予告"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "번들과 다중 시트 구매",
+      "diagram": {
+        "title": "구독 신기능 4가지 포인트",
+        "caption": "Apple 개발자 발표를 바탕으로 정리: 번들, 다중 시트 구매, 볼륨 구매, 그룹 구매. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "번들",
+            "개발자 최대 5개사"
+          ],
+          [
+            "다중 시트 구매",
+            "기본 활성화"
+          ],
+          [
+            "볼륨 구매",
+            "10월 22일 시작"
+          ],
+          [
+            "그룹 구매",
+            "올겨울 예고"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "订阅合购与多席位购买",
+      "diagram": {
+        "title": "订阅新玩法四个重点",
+        "caption": "依 Apple 开发者公告整理：套装、多席位购买、批量购买与群组购买，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "套装",
+            "最多五家开发者"
+          ],
+          [
+            "多席位购买",
+            "默认开启"
+          ],
+          [
+            "批量购买",
+            "10 月 22 日上线"
+          ],
+          [
+            "群组购买",
+            "预告今年冬天"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "Re-fetched all three drafted sources plus four localisation variants with curl -sL -A \"Mokaair-editorial\" (no personal data in any request) and read the bodies rather than trusting status codes; stripped each page to text and checked the article claim by claim -- every paragraph sentence, all 5 summary items, all 7 FAQ answers, the callout, all 20 table cells plus caption, the diagram caption and its four nodes, hero_label, title and description, about 95 checkable assertions. Every verbatim_quote in this record was tested as an exact substring against the saved page, including U+00A0 placement. Also grepped the whole pack for the deliberately-excluded retention-messaging item (0 hits) and for Simplified characters (0 hits).",
+    "verdict": "needs_second_round -- more than ten factual edits, and one of them (Apple's published Traditional-Chinese terminology) changes the article's vocabulary throughout, including the title.",
+    "edits_to_the_pack": [
+      "Terminology, throughout title/summary/headings/table/FAQ/callout/diagram: 多人席次購買→多名額購買, 席次→名額, 團體購買人→群組購買者, 量購→大量採購, 團體購買→群組購買, Apple Business→Apple 商務, Apple School Manager→Apple 校務管理, 自動續訂訂閱→自動續訂型訂閱. Reason: the zh-TW help page exists and publishes all of these; BRIEF.md requires official interface names.",
+      "Paragraph 2: 'This three pages are English-only, the /tw/ URLs return 404' replaced with the per-page status actually measured today (help page zh-TW 200; announcement zh-CN 200 and zh-TW 404; Bundles page zh-TW 404), and with which words are Apple's and which are this site's.",
+      "Section 4, new final paragraph: the English/Traditional-Chinese contradiction on Family Sharing plus multiseat, attributed to both versions, with a statement that the article follows the English one.",
+      "Section 4 paragraph 1: added the custom-apps carve-out (cannot manage purchase options, may not opt out).",
+      "Section 4 paragraph 2: the 2026-09-14 conditions rewritten so the OR cannot be read as a negated AND, with an explicit 不是要兩個條件同時成立; added that an opted-out subscription can be turned on at any time; removed the absolute 唯一的例外.",
+      "Section 2 paragraph 2: added the two published caps (up to 5 subscriptions in a Bundle, up to 15 apps in a Suite); corrected 'both Bundles and Suites let you keep individual items' to keep-individual being stated for Bundles only; added that cancellations and partial changes take effect at the next renewal date and upgrades immediately.",
+      "Section 2 paragraph 3 and section 5 paragraph 2: added that pricing and a go-live date are settled with Apple during configuration, and that each developer in a multi-developer Bundle signs the Multi-Developer Bundle Program Legal Addendum (contents unpublished).",
+      "Section 1 paragraph 1: added the per-developer filing and the addendum for multi-developer Bundles.",
+      "Section 1 paragraph 2 and callout: '多人席次購買有一半當天生效' replaced with the developer-side default switch, which is what the source says; '開發者不需要另外申請' softened to 公告沒有像組合方案那樣要求送件申請.",
+      "Section 3 paragraph 3: '公告裡唯一給出的確定日期' softened to 公告正文只寫出一個明確的未來日期 -- the page's own dateline is a date too.",
+      "Section 5 paragraph 1 and FAQ 6: '三個頁面都沒有提到任何地區、國家或商店前台' narrowed to countries and regions, with the three sales channels named, because the article's own section 3 discusses those channels.",
+      "Section 5 paragraph 2: '價格與分潤同樣沒有寫' narrowed to 沒有公布 plus what Apple does say about pricing being confirmed during configuration.",
+      "Table: Suite row 僅限單一開發者→同一開發者，最多十五個 App; Bundle row gained 五個訂閱; 事後調整 row 官方未說明期限→下一個續訂日生效.",
+      "Taiwan usage: 訪問權→(removed, now 共用創作工具的協作者); 續約→續訂; 計費週期→期間長度.",
+      "Diagram alt and caption, hero_label, research title and diagram.caption re-synced to the new terminology. hero.alt untouched, per the spec."
+    ],
+    "checked_and_correct": [
+      "The Suite definition is not conflated with Bundle anywhere: Suite = one subscription across a set of apps from one developer, sourced to the news item's own sentence. Confirmed correct as drafted.",
+      "'Request access and submit for review' is on the Bundles and Suites page and is NOT on the news item -- searched both. The writing pass's re-attribution away from the news URL was right.",
+      "The 2026-09-14 rule really is OR, not AND, and really does coexist with 'turned on by default for all auto-renewable subscriptions'. The draft had the logic right; only the Chinese phrasing was ambiguous.",
+      "2026-10-22 for Volume Purchasing and 'this winter' for Group Purchases are in one sentence on the news item; the help page's vaguer 'later this year' is a separate sentence on a separate page. Both were attributed to the right page.",
+      "The retention-messaging item is absent from the pack entirely, as intended.",
+      "All three drafted sources return HTTP 200 with real article bodies -- no soft 404, no block page, no redirect shell.",
+      "checked_on is 2026-09-18 in all four places (each source entry, this record, paragraph 2, table and diagram captions) and is the day the writer and this check both read the pages; left unchanged.",
+      "No purchase advice, no recommendation-style price comparison, no finance disclaimer callout, exactly one callout, and Apple's claims (the Bundle examples, the audience framing) are labelled as Apple's.",
+      "news_date, the slug's date suffix and the first paragraph's date are all 2026-09-16 and agree with event_date."
+    ],
+    "left_for_the_owner": [
+      "TERMINOLOGY CALL: the article now uses Apple's published zh-TW words (多名額購買／名額／群組購買者／自動續訂型訂閱／大量採購／Apple 商務／Apple 校務管理) rather than the drafted 多人席次購買／席次／團體購買人／量購／團體購買. This changes the zh-TW title, so the coordinator must re-sync the index entry and any already-commissioned hero or diagram text. Second-round correction to this item: 群組購買 is NOT one of Apple's published zh-TW words -- every occurrence of that string on Apple's page is inside 群組購買者 -- so 組合方案, 套組 and 群組購買 are all this site's renderings and the article prints the English original beside each. The four translations must start from these words and must NOT reuse them for zh-CN, where Apple itself is split: the zh-CN announcement writes 多席位购买／席位／套装／套件 while the zh-CN help page writes 多名额购买／名额／群组购买者 and never uses 多席位购买 at all.",
+      "APPLE'S OWN CONTRADICTION -- restated by the second round, because the first factcheck described it wrongly. It is not a clean English-versus-Chinese split. The English help page states twice that Family Sharing and multiseat can both be on; the zh-TW page translates both of those sentences AND adds a section with no English counterpart whose last two sentences say the opposite, so the zh-TW page contradicts itself. The zh-CN page carries that same added section but its closing sentence agrees with the English one instead (logged under unverified_or_excluded; not used in the article). The zh-TW page also omits the 2026-09-14 cutoff. The article reports both sides, quotes each, follows the English version and says why, and rules neither wrong. If Apple resolves this later, section 4's last paragraph and the FAQ item on 9 月 14 日 will need revisiting.",
+      "SOURCE LIST: a fourth source was added (the zh-TW help page) because the article now quotes its content. That is within the 2-4 bound but the coordinator should confirm it is wanted, since it is the same document as source 3 in another language.",
+      "hero.alt was left exactly as drafted, per the spec, but it no longer matches the article's vocabulary in spirit (it describes the imagery only, so nothing is wrong); the coordinator rewrites it from the finished artwork anyway.",
+      "The second closing link's text was copied from the current title of tech-news-apple-att-eu-20260916 and was not touched."
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "scope": "Every paragraph the first factcheck rewrote and every sentence it newly wrote, plus the six points named in the assignment. All four sources re-fetched with curl -sL -A \"Mokaair-editorial\" (no email, name or personal data in any UA, header, query string or form); byte counts identical to both earlier passes. Eight further localisation URLs fetched to test paragraph 2's negatives.",
+      "claims_checked": 62,
+      "edits_made": 12,
+      "verdict": "ok -- the article no longer states anything the four sources do not support, and the two remaining judgement calls (the terminology switch and following the English version on Family Sharing) are the coordinator's to confirm, not factual defects.",
+      "edits": [
+        "Section 4, last paragraph (backbone, rewritten): the first factcheck framed the Family Sharing divergence as English-says-X / Chinese-says-Y. Per-sentence reading shows the zh-TW page translates the English coexistence sentence faithfully and then contradicts itself in the same paragraph. The paragraph now says the contradiction sits inside the zh-TW page, quotes the English clause verbatim (both multiseat purchases and Family Sharing are turned on) alongside the zh-TW clause 「『家人共享』無法與多名額購買同時啟用」, follows the English version because the contrary claim appears only in the section the zh-TW page adds, and states outright that it does not judge which version is right. The old reason ('because the 9/14 cutoff is only in the English version') was an inference and is gone; that fact still appears in the FAQ.",
+        "Paragraph 2: '公告只有簡體中文版' was false. The announcement returns 200 in Japanese and Korean as well. Rewritten to the per-language result actually measured, and '三頁的中文版狀況' -> '三頁的翻譯狀況'. The Bundles page's zh-CN and ja URLs were tested for the first time (both 404), which is what now supports 'Bundles 頁的繁體與簡體網址也都 404'.",
+        "Section 5, last paragraph: '另外兩個支援頁' -> '另外三個官方頁'. The first factcheck added a fourth source and left this count behind.",
+        "Table, 事後調整 row: '可保留個別項目或取消整包' -> '組合方案可只保留部分項目，兩者都可取消整包'. The row sat in a table whose other rows are Bundle and Suite, so the unscoped cell re-broadened exactly the claim the first factcheck had narrowed in the body (Apple states partial keep for Bundles only).",
+        "Callout title: '三個時程不要混在一起' -> '這幾個時程不要混在一起'. The callout enumerates four timings (今年稍晚, 9-16, 10-22, 今年冬天), so the three was a count the editor made up.",
+        "Section 5 paragraph 1: '台灣也完全沒有被提到' -> '台灣也沒有被提到' (dropped an intensifier), and '不是台灣可用，也不是台灣不可用' -> '不能推論台灣可用或不可用'; the guardrail is unchanged and also stands in FAQ 6.",
+        "Six length-neutral trims to pay for the longer section 4 paragraph, all of them repeated narration rather than qualifiers: the third copy of the four-OS list (section 2, the full list stays in section 1, the table and FAQ 5), 官方用的字是「無縫」 (kept in FAQ 1), 沒有限定新舊 (duplicated the preceding sentence), the English gloss after 避免影響顧客, 月費和年費不能包在同一個組合方案裡 -> 不能混包, and two repetitions of 共用創作工具 / 這幾個官方頁面. No 但書, 限定詞 or attribution was removed. Paragraph characters 2994 -> 2996, still inside 1800-3000.",
+        "Research record: three verbatim_quote entries added, 30 -> 33 (the English 'when both ... are turned on' sentence the article now quotes and which no existing quote covered; the zh-TW page's own coexistence sentence; the zh-TW auto-disable note, flagged 會 not 已); the two CORRECTED not_said entries and the two matching must_not_write lines rewritten; sourcing_notes given the full localisation matrix; the zh-CN help page logged under unverified_or_excluded as read-for-rebuttal, not as a source."
+      ],
+      "checked_and_correct": [
+        "All 30 pre-existing verbatim_quote entries re-tested as exact substrings against today's fetches, U+00A0 placement included: 30/30, no drift from the first factcheck's fix.",
+        "The four named additions all match their pages word for word: 'you may not opt out of multiseat purchases'; 'You can include up to 5 subscriptions in a Bundle. A Suite can provide a subscription across up to 15 apps.'; 'Any cancellations or partial changes will take effect at the next renewal date.' The Bundles page Q&A's three questions were read in full.",
+        "Partial keep is nowhere re-broadened to Suites now that the table cell is fixed: section 2, FAQ 1 and FAQ 2 all scope it to Bundles and say Suites are only documented as cancellable whole.",
+        "this winter is kept in English with 沒有寫是哪一年或哪個半球; 今年稍晚, 需申請審查 and 預告 all still present in the body, table, diagram nodes and callout.",
+        "sources[] is 4 entries, identical in the pack and this record, all checked_on 2026-09-18, and every verified_facts url is one of the four.",
+        "Country/region: the four page BODIES (nav and footer excluded) contain Taiwan, 台灣, country, countries, region, storefront, 國家 and 地區 zero times. The zh-TW body does contain 店面 once, in 可供銷售的店面 -- Apple's rendering of 'which stores can sell it', i.e. the three sales channels the article already names as channels rather than regions.",
+        "title 54 characters (<= 60), description 188 (120-200), paragraph characters 2992 (1800-3000), zero Simplified characters, zero mentions of the deliberately excluded retention-messaging item.",
+        "The second closing link's text and target were not touched, and neither was tech-news-apple-att-eu-20260916. hero.alt untouched per the spec.",
+        "checked_on 2026-09-18 remains correct and consistent in all four places; the second round read the sources on the same date, so nothing needed moving."
+      ],
+      "left_for_the_owner": [
+        "Unchanged from the first round: the terminology call, the four-source list and the Apple contradiction -- but read the corrected versions of all three above, since the first round's descriptions of the second and third were not accurate.",
+        "One fact was verified and deliberately left out of the body for length: the zh-TW page says Apple 會 (will) auto-disable multiseat on every existing subscription that has Family Sharing on. It is a real consequence for Taiwanese developers and is quoted in verified_facts, so if the coordinator can spare the characters it belongs in section 4."
+      ]
+    }
+  }
+}

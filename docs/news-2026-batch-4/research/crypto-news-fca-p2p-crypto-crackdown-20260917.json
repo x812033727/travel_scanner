@@ -1,0 +1,206 @@
+{
+ "slug": "crypto-news-fca-p2p-crypto-crackdown-20260917",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "拿到全文，可以寫完整篇。實際取得狀況（2026-09-18 於本容器實測，全部 curl -sL -A \"Mokaair-editorial\"）：\nOK — https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading 回 HTTP 200、175,752 bytes，是本次新聞稿本文。\nOK — https://www.fca.org.uk/news/press-releases/fca-leads-first-crackdown-illegal-crypto-trading 回 HTTP 200、176,507 bytes，是 2026 年 4 月那次行動的新聞稿，頁上標「First published: 22/04/2026 Last updated: 18/05/2026」，並在頁面上方載明 5 月 18 日更新了第二段的措辭。\nOK — https://www.fca.org.uk/consumers/check-if-firm-fca-authorised 回 HTTP 200、85,989 bytes，是 FCA Firm Checker 的說明頁，本篇用它來寫「查登記」這件事的界線。\nOK（管道確認，未列入 sources）— https://www.fca.org.uk/news 回 200、185,794 bytes，列表把本則標成 Press Releases、17/09/2026。同一份列表在當天稍後再抓一次，內容沒有新增 18/09 的項目。\n未查／未讀：本次行動涉及的三處場所、業者名稱與後續刑事偵查進度（FCA 沒有公布）；英國政府的 National Risk Assessment of Money Laundering and Terrorist Financing 原文（只在 4 月那篇被引述，本次未抓）；FCA Firm Checker 的查詢結果本身（該工具是互動式查詢，本次只讀說明頁，沒有查詢任何業者）。",
+ "sources": [
+  {
+   "title": "FCA and partners continues crackdown on illegal crypto trading (press release)",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "publisher": "Financial Conduct Authority (UK)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "FCA leads first crackdown on illegal crypto trading (press release, first published 22/04/2026, last updated 18/05/2026)",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-leads-first-crackdown-illegal-crypto-trading",
+   "publisher": "Financial Conduct Authority (UK)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "FCA Firm Checker (consumer guidance page)",
+   "url": "https://www.fca.org.uk/consumers/check-if-firm-fca-authorised",
+   "publisher": "Financial Conduct Authority (UK)",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "event_date": "2026-09-17",
+ "event_date_basis": "⚠ 這一篇有兩個日期，而且兩個都在來源裡寫得很清楚，文章第一段就要同時寫出來：\n(1) 2026-09-10 — 行動當天。新聞稿的 Notes to editors 逐字寫「The action took place on 10 September 2026.」\n(2) 2026-09-17 — FCA 對外公布這次行動的日期。FCA 新聞列表把這則標成 17/09/2026、分類 Press Releases。\nevent_date 取 2026-09-17，理由是本篇要寫的新聞事件是「主管機關公布查緝結果」這件事本身，這也和批次 3 把 slug 改成官方發布日的先例一致；而且批次 4.5 的取材窗口（2026-09-16 至 2026-09-18）是以發布日界定的，用 09-10 會讓這篇看起來落在窗口外。\n但 BRIEF 寫的是「日期是事件日，不是發布日」，照那句話讀，slug 尾巴應該是 20260910。這一點請站主或編務裁示；本紀錄採 20260917，並已在 corrections_to_candidate_list 提出。不論裁示為何，正文都必須把 9/10 與 9/17 兩個日期分開寫。\n另有兩個更早的日期不可混進來：2026-04-22 是前一次行動的新聞稿發布日，2026-05-18 是那篇新聞稿的更新日。",
+ "verified_facts": [
+  {
+   "fact": "2026 年 9 月 17 日，英國金融行為監理總署（FCA）公布它與合作單位再次對倫敦的非法點對點（peer-to-peer）加密資產交易採取行動。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The FCA and partners have taken further action against illegal peer-to-peer crypto trading in London."
+  },
+  {
+   "fact": "行動當天是 2026 年 9 月 10 日，比公布日早七天。這一句寫在新聞稿的 Notes to editors 裡。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The action took place on 10 September 2026."
+  },
+  {
+   "fact": "合作單位是英國稅務海關總署（HM Revenue & Customs，HMRC）與倫敦警察廳（Metropolitan Police Service），行動針對三處涉嫌從事非法點對點加密資產交易的場所。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Working with HM Revenue & Customs (HMRC) and the Metropolitan Police Service, the FCA targeted 3 premises suspected of illegal peer-to-peer crypto trading."
+  },
+  {
+   "fact": "三處場所都收到停止並終止（cease and desist）通知書，要求交易者停止任何涉嫌非法的加密資產業務。新聞稿沒有提到逮捕、起訴或裁罰。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Cease and desist letters were issued at all 3 premises, requiring traders to stop any suspected illegal crypto businesses."
+  },
+  {
+   "fact": "FCA 在新聞稿裡自己定義什麼是點對點交易，並說明登記義務：個人之間直接買賣加密資產就是點對點交易；在英國以營業方式（by way of business）從事這件事的人，必須取得適當的登記。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Peer-to-peer trading is when individuals buy and sell crypto directly with each other. Anyone doing this by way of business in the UK requires appropriate registration."
+  },
+  {
+   "fact": "FCA 表示英國目前沒有任何一家在 FCA 登記的點對點加密資產業者。這一句在 2026 年 4 月與 2026 年 9 月兩篇新聞稿裡逐字相同。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "There are currently no FCA registered peer-to-peer crypto businesses operating in the UK."
+  },
+  {
+   "fact": "FCA 說明它為什麼盯這件事：以營業方式經營而未登記的點對點加密資產交易者，可能成為犯罪者移轉與洗淨不法資金的管道；因為在 FCA 的登記制度之外運作，他們規避了用來偵測與防制洗錢的控管。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Unregistered peer-to-peer crypto traders operating by way of business in the UK can provide a route for criminals to move and launder illicit funds. By operating outside the FCA’s registration regime, they avoid controls designed to detect and prevent money laundering."
+  },
+  {
+   "fact": "行動的法源是英國 2017 年洗錢、資助恐怖主義與資金移轉（付款人資訊）規則（Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations 2017，簡稱 MLRs）。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Action was taken under the Money Laundering, Terrorist Financing and Transfer of Funds (Information on the Payer) Regulations 2017."
+  },
+  {
+   "fact": "新聞稿的 Notes to editors 說明現階段英國對加密資產的規範範圍：加密資產在英國大致上仍未受規範，例外是洗錢防制與財務推銷（financial promotion），這個狀態持續到 2027 年 10 月。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Crypto is a high-risk investment and remains largely unregulated in the UK, except for anti-money laundering and financial promotion until October 2027."
+  },
+  {
+   "fact": "FCA 執法與市場監理執行董事 Steve Smart 的談話。這是 FCA 的說法，不是客觀事實。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Working with partners, we continue to track and disrupt illegal crypto activity. Anyone running an unregistered peer-to-peer crypto business should assume we are looking at them."
+  },
+  {
+   "fact": "倫敦警察廳警長 Sathish Alalasundaram 的談話：數位資產的複雜性，加上資金可以跨轄區快速移轉的速度，對偵辦者持續構成挑戰。這是警方的說法。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Law enforcement and partner agencies are working significantly hard to tackle criminal activity involving digital assets. The complex nature of cryptocurrency, combined with the speed at which funds can be moved across jurisdictions, presents ongoing challenges for those investigating."
+  },
+  {
+   "fact": "這是第二次行動。FCA 表示本次行動接續它在 4 月對非法點對點加密資產交易業者採取的行動，並說那次行動蒐集到的證據正被用來支持刑事偵查與其他執法行動。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Evidence gathered during that operation is being used to support criminal investigations and other enforcement action."
+  },
+  {
+   "fact": "4 月那次行動的規模與合作單位都不同：新聞稿發布日 2026-04-22，合作單位是 HMRC 與西南區域組織犯罪小組（South West Regional Organised Crime Unit，SWROCU），針對八處場所。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-leads-first-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Working with HM Revenue & Customs (HMRC) and the South West Regional Organised Crime Unit (SWROCU), the FCA targeted 8 premises suspected of illegal peer-to-peer crypto trading."
+  },
+  {
+   "fact": "4 月那篇新聞稿在 2026 年 5 月 18 日被 FCA 自己修訂過，修訂的目的是把「登記義務」的範圍講窄：頁面上方的更新說明載明，第二段改成「在英國以營業方式從事該活動者需要適當登記，沒有登記就是違法；以個人身分進行的點對點交易不需要 FCA 登記」。這句話是本篇最重要的但書。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-leads-first-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Peer-to-peer transactions carried out on a personal basis do not require FCA registration."
+  },
+  {
+   "fact": "4 月那篇新聞稿的版本資訊逐字寫首次發布與最後更新日期，分別是 2026-04-22 與 2026-05-18。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-leads-first-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "First published: 22/04/2026"
+  },
+  {
+   "fact": "FCA 在兩篇新聞稿裡都列舉更早的相關執法紀錄，寫法是「including」，不是完整清單：起訴一名非法經營加密資產 ATM 網路的人；2024 年 6 月與倫敦警察廳合作逮捕兩名涉嫌經營非法加密資產交易所的人。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-leads-first-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In June 2024, the FCA worked with the Metropolitan Police Service to arrest 2 individuals suspected of running an illegal cryptoasset exchange."
+  },
+  {
+   "fact": "FCA 給消費者的行動建議只有一條：用 FCA 的 Firm Checker 查該加密資產業者有沒有正確登記。",
+   "url": "https://www.fca.org.uk/news/press-releases/fca-and-partners-continues-crackdown-illegal-crypto-trading",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Consumers can check whether a crypto firm is correctly registered with the FCA using the"
+  },
+  {
+   "fact": "Firm Checker 自己的說明頁寫出這個工具的界線：它無法確認金融服務補償計畫（FSCS）或金融申訴專員服務（Financial Ombudsman Service）的保障在出事時是否一定適用，並提醒使用者要自行查證該產品或服務是否符合需求。",
+   "url": "https://www.fca.org.uk/consumers/check-if-firm-fca-authorised",
+   "is_vendor_claim": false,
+   "verbatim_quote": "It's important you do your own checks to make sure the product or service meets your needs."
+  },
+  {
+   "fact": "Firm Checker 說明頁也寫明它的用途是查一家金融業者是否經 FCA 授權、以及是否具有提供你所要服務的許可，並說在英國幾乎所有金融業者都必須經 FCA 授權或登記；FCA 同時說明使用已授權且具正確許可的業者「不會消除所有風險」，但能大幅降低受害風險。",
+   "url": "https://www.fca.org.uk/consumers/check-if-firm-fca-authorised",
+   "is_vendor_claim": true,
+   "verbatim_quote": "While it won't remove all risk, using an authorised firm with the correct permissions will greatly reduce your risk of harm."
+  }
+ ],
+ "not_said": [
+  "FCA 沒有公布這三處場所的地址、業者名稱或負責人姓名，也沒有說有多少人被查訪。",
+  "FCA 沒有說本次行動有人被逮捕、起訴或裁罰。新聞稿只寫發出停止並終止通知書。",
+  "FCA 沒有說涉及的金額、交易量或幣種。三份來源以 2026-09-18 查核未見任何金額。",
+  "FCA 沒有說 4 月那次行動的八處場所後來如何處理，只說蒐集到的證據正被用來支持刑事偵查與其他執法行動。",
+  "FCA 沒有說台灣或任何其他國家有同類問題。三份來源未見 Taiwan 一詞。",
+  "FCA 沒有說「面交換幣一定是洗錢」。它說的是以營業方式未登記者可能成為犯罪者移轉與洗淨資金的管道，而且明說以個人身分進行的點對點交易不需要 FCA 登記。",
+  "FCA 沒有在這三份來源裡給出「已登記的加密資產業者」的家數，只說點對點這一類目前是零家。",
+  "本站沒有使用 Firm Checker 查詢任何業者，也沒有查證任何場所，不可寫成「我們查了」。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "被查處的三家店是做什麼生意的（例如兌幣店、手機行、便利商店）。",
+   "seen_where": "新聞稿只寫 premises（場所）",
+   "why_excluded": "FCA 沒有描述場所型態。任何「面交店」「換匯店」的具體想像都是推測，不寫。要舉例說明什麼是面交換幣時，必須標明是編輯設計的例子。"
+  },
+  {
+   "claim": "英國目前有多少家加密資產業者依 MLRs 登記。",
+   "seen_where": "無——三份來源都沒有給這個數字",
+   "why_excluded": "FCA 只說點對點這一類是零家，沒有給整體登記家數。不自行到 FCA 的登記名冊上數，那是活文件的當下快照，不是事實。"
+  },
+  {
+   "claim": "台灣是否有相同的面交換幣查緝行動，或台灣的法規怎麼規範。",
+   "seen_where": "無一手來源",
+   "why_excluded": "本次沒有查到金管會或法務部調查局在 2026-09-16 至 09-18 的相關公告（金管會新聞列表以「虛擬資產」查到的最新一則是 2026-08-04）。要在文章裡對照台灣，必須另外指到台灣的一手來源，否則只寫英國的事。"
+  },
+  {
+   "claim": "英國政府的 National Risk Assessment of Money Laundering and Terrorist Financing 說了什麼。",
+   "seen_where": "2026 年 4 月那篇新聞稿引述它指出加密資產愈來愈常被用來洗淨犯罪所得",
+   "why_excluded": "本次沒有抓該報告原文，只讀到 FCA 的一句轉述。要寫只能寫成「FCA 引述政府的國家風險評估指出」，不得寫成報告自己的數據或結論。"
+  },
+  {
+   "claim": "這次行動代表英國執法轉趨嚴格，或與 2027 年新制上路有因果關係。",
+   "seen_where": "這是這類新聞常見的解讀",
+   "why_excluded": "FCA 沒有把兩件事連在一起。新聞稿只在 Notes to editors 提到現階段的規範範圍持續到 2027 年 10 月。因果推論不寫。"
+  },
+  {
+   "claim": "「非法」等於「犯罪已成立」。",
+   "seen_where": "新聞稿標題用 illegal crypto trading",
+   "why_excluded": "新聞稿內文用的是 suspected（涉嫌）與 cease and desist（停止並終止），沒有任何定罪或裁罰。繁中不可寫成「查獲非法業者」，要寫成「針對涉嫌從事非法交易的三處場所」。"
+  }
+ ],
+ "must_not_write": [
+  "不可寫「FCA 查獲三家非法業者」。新聞稿用的是 suspected（涉嫌），而且只發出停止並終止通知書，沒有定罪、起訴或裁罰。",
+  "不可把公布日 2026-09-17 與行動日 2026-09-10 寫成同一天，也不可只寫其中一個。",
+  "不可寫「在英國個人之間買賣加密貨幣是違法的」。FCA 在 2026-05-18 特別修訂過措辭，明說以個人身分進行的點對點交易不需要 FCA 登記，登記義務針對的是以營業方式從事者。",
+  "不可寫「面交換幣就是洗錢」或把一般使用者描述成犯罪者。",
+  "不可寫台灣的情況是「一樣的」或「也會這樣查」。本次沒有查到台灣主管機關在同一窗口的相關公告，要對照必須另找台灣的一手來源。",
+  "不可推測三處場所的位置、業者名稱、店型或經營者身分。",
+  "不可寫「查得到登記就安全」。FCA 自己的 Firm Checker 頁面說該工具無法確認 FSCS 或金融申訴專員的保障是否一定適用，也說使用已授權業者不會消除所有風險。",
+  "不可出現幣價、漲跌幅、市值、交易量、報酬率或任何金額——三份來源都沒有給金額，寫出來就是自己編的。",
+  "不可點名或推薦任何交易所、錢包或兌幣管道，也不可提供「怎麼安全地面交」這種操作指南。",
+  "不可把「英國大致上仍未受規範」寫成「英國不管加密貨幣」。原文的限定語是 largely unregulated，例外是洗錢防制與財務推銷，而且加了 until October 2027 的時間條件。",
+  "不可下投資建議、不可寫買賣時機或值不值得持有。幣圈篇必須另帶免責 callout，且「不是投資建議」六個字逐字不可改。",
+  "不可寫「本站實測」「我們查了」。本文沒有使用 Firm Checker 查詢任何業者。"
+ ],
+ "overlaps_existing_article": "apps/api/app/guides/content/ 目前 12 個 crypto-news-* 內容包裡，沒有任何一篇寫執法行動、洗錢防制查緝或消費者自保，也沒有任何一篇寫英國。既有篇目全部是法規文本與監理草案（台灣 VASP 法、歐盟 MiCA 與 EBA、美國 GENIUS Act 四篇與 SEC 兩篇、日本 FSA 兩篇），所以沒有已發布文章重疊。\n本批次（4.5）內會重疊的是 crypto-news-fca-perimeter-guidance-20260916，兩篇都是 FCA。分界建議如下：\n那一篇寫的是 2027-10-25 才生效的新授權制度、2026-09-30 開放申請的窗口，以及 PS26/18 的 perimeter 指引；本篇寫的是在新制生效之前，英國對加密資產的規範其實只有洗錢防制與財務推銷兩塊，而 FCA 正在用 MLRs 2017 對未登記的面交業者執法。\n本篇可以、也應該用一兩句交代「新制 2027 年 10 月 25 日才生效」這個背景（新聞稿 Notes to editors 自己有寫 until October 2027），但申請窗口、七項受規範活動、排除條款這些細節留給那一篇；反過來那一篇不應該把查緝細節寫進去。\n兩篇如果都採用，建議把本篇排在後面，並讓兩篇的第二個 link 互指。",
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-crypto.md 的「還沒查的方向」列了「詐騙型態與一般人的自保方式」（在 crypto.md 的可寫清單裡），但沒有給任何管道。實測可用：FCA 的新聞列表 https://www.fca.org.uk/news 把 Warnings 與 Press Releases 分類列出、每則帶 dd/mm/yyyy，是這個方向最穩定的一手來源之一。",
+  "本篇踩到 BRIEF 第 11 點「日期混用」的一個新型態，建議補進規格或候選清單：執法類新聞的「行動日」與「公布日」常常差一週以上（本例 9/10 對 9/17），而 FCA 把行動日藏在 Notes to editors 而不是內文。抄標題日期會寫錯。",
+  "FCA 會回頭修訂已發布的新聞稿，而且會在頁面上方標明改了哪一段。本例 2026-04-22 那篇在 2026-05-18 被修訂，加上「以個人身分進行的點對點交易不需要 FCA 登記」這句關鍵但書——只讀最初版本會把整件事寫錯。引用 FCA 新聞稿時要一併記下頁面的 First published 與 Last updated，並讀更新說明。"
+ ],
+ "editorial_brief": "讀者：在台灣、手上有加密資產、聽過「面交換幣」但不清楚它和洗錢防制有什麼關係的一般使用者。\n本篇的核心任務有兩個：一是把「以營業方式」和「個人之間偶爾買賣」分開——這正是 FCA 自己在 2026-05-18 特地回頭修訂新聞稿要講清楚的事；二是把「行動日 9/10」和「公布日 9/17」分開。\n第一段第一句就寫出「2026 年 9 月 17 日 FCA 公布 9 月 10 日的行動」；第二段寫本文查核日 2026 年 9 月 18 日、本文不做實測、不評價任何業者也不提供任何操作指南。\n五節建議：\n1) 發生了什麼——FCA 與 HMRC、倫敦警察廳於 2026-09-10 對倫敦三處涉嫌從事非法點對點加密資產交易的場所採取行動，三處都收到停止並終止通知書；FCA 於 2026-09-17 公布。沒有逮捕、起訴或裁罰的資訊。\n2) 為什麼這算違法——依 MLRs 2017，在英國以營業方式從事點對點加密資產交易必須登記；FCA 表示英國目前沒有任何一家登記的點對點加密資產業者，因此這類生意在制度上等於全都未登記。節尾放表格：3 欄（做什麼／英國現行規定／FCA 的說法），4 到 5 列，儲存格短，caption 寫查核日 2026-09-18。\n3) 「以營業方式」這四個字——寫出 FCA 在 4 月那篇新聞稿於 5 月 18 日補上的但書：以個人身分進行的點對點交易不需要 FCA 登記。這一節是全篇最重要的地方，要寫得讓讀者不會誤以為「和朋友換幣就犯法」。節尾放圖解 /guides/crypto-news-fca-p2p-crypto-crackdown-20260917/diagram-1.svg。\n4) 兩次行動的差別與現在的制度位置——4 月是八處、合作單位是 SWROCU；9 月是三處、合作單位是倫敦警察廳。並寫清楚背景：英國加密資產在 2027 年 10 月 25 日新制生效前，規範主要只有洗錢防制與財務推銷兩塊（FCA 原文寫 largely unregulated 與 until October 2027，限定語要留著）。\n5) 一般人可以怎麼做——FCA 給的唯一建議是查登記（Firm Checker），同時要寫出這個工具自己承認的界線：它無法確認 FSCS 或金融申訴專員的保障是否一定適用，使用已授權業者也不會消除所有風險。可延伸成一個可遷移的方法：在任何國家交易前，先確認對方是以什麼身分受規範、查得到什麼、查不到什麼。\n生活情境如果要寫，必須標明是編輯設計的例子，而且不得寫成「怎麼安全地面交」的操作指南。\n刻意不談：涉案場所與業者身分、金額、幣價、台灣是否有同類行動的推測、英國執法是否轉趨嚴格的評價。\n免責 callout 照 crypto.md 逐字，查核日填 2026-09-18。"
+}

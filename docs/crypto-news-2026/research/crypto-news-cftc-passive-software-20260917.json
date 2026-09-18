@@ -1,0 +1,437 @@
+{
+  "slug": "crypto-news-cftc-passive-software-20260917",
+  "event_date": "2026-09-17",
+  "event_date_basis": "事件日 2026-09-17 是市場參與者部門（MPD）發出 CFTC Letter No. 26-25 的日子，三條線索一致：（1）該函報頭逐字寫「CFTC Letter No. 26-25   No-Action   September 17, 2026」；（2）CFTC 新聞稿頁面日期欄寫「September 17, 2026」，編號「Release Number 9300-26」；（3）新聞稿內文提到的前一封信 Letter 26-09 報頭則逐字寫「CFTC Letter No. 26-09   No-Action   March 17, 2026」，是另一個、更早的日期，不可與本次事件日混用。Letter 26-09 內文另載其受理的申請人來信日期為 2026-03-13。本函全文沒有生效日或失效日，只有條件式的邊界：適用到『委員會就介紹經紀商登記要求如何適用於軟體開發者，完成相關法規制定或發布指引的生效日』為止。",
+  "title": "美國 CFTC 無異議函擴大至所有被動軟體提供者：十項條件劃出的界線",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "CFTC Staff Issues No-Action Position to Providers of Passive Software (Release Number 9300-26)",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9300-26",
+      "publisher": "U.S. Commodity Futures Trading Commission",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "CFTC Letter No. 26-25 (PDF) — No-Action Position regarding IB Registration Requirement under Section 4d(g) and AP Registration Requirement under Section 4k(1) of the Commodity Exchange Act",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "publisher": "U.S. Commodity Futures Trading Commission, Market Participants Division",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "CFTC Letter No. 26-09 — No-Action Position issued to Phantom Technologies, Inc. (PDF)",
+      "url": "https://www.cftc.gov/csl/26-09/download",
+      "publisher": "U.S. Commodity Futures Trading Commission, Market Participants Division",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "三條 sources 於 2026-09-18 在本機重新抓取，全部用 curl -sL -A \"Mokaair-editorial\"，並讀了 body（不是只看狀態碼），與 2026-09-18 前期研究紀錄的位元組數逐一核對一致：（1）https://www.cftc.gov/PressRoom/PressReleases/9300-26 回 HTTP 200、34,508 bytes、text/html；stripped 後的內文只有兩段，逐句核對過與 verified_facts 引用的英文原句相符，包含正確的彎引號（Commission’s，U+2019，非直式撇號）。（2）https://www.cftc.gov/csl/26-25/download 回 HTTP 200、232,223 bytes、application/pdf；本機用 <ROOT>/apps/api/.venv/Scripts/python.exe 安裝 pypdf 後抽取，得 7 頁、19,527 字元，與前期研究紀錄數字一致。（3）https://www.cftc.gov/csl/26-09/download 回 HTTP 200、312,032 bytes、application/pdf，同法抽取得 7 頁、19,293 字元，同樣一致。三個位元組數與前期研究紀錄逐一相同，可視為穩定內容，非快照易變的活頁面。PDF 抽取的已知瑕疵：pypdf 會在原文字距處插入多餘空白（例如「26 -09」「TS V」），也會把段落攔腰截成多行。本紀錄的 verbatim_quote 一律只取抽取結果中同一行、且沒有斷字瑕疵的連續字串；凡原句跨行或落在有多餘空白的行內，一律改寫成敘述、verbatim_quote 留空，不把抽取造成的空白當成官方原文的錯字。未讀：Phantom 2026-03-13 申請書原文（未公開，只在 Letter 26-09 內被引述與摘要）；CFTC Staff Letter 06-29、08-07、08-12（TSV 系列解釋函本文，Letter 26-25 註腳 12 只列出網址，本次未抓）；NFA Compliance Rule 2-29 與 Interpretive Notice 9003（nfa.futures.org 不在 crypto.md 的一手來源白名單內）。RSS 與列表頁（https://www.cftc.gov/RSS/RSSGP/rssgp.xml、https://www.cftc.gov/PressRoom/PressReleases）僅用於確認 9300-26 是當期最新公告，兩者都不在 sources[] 內，其筆數與內容未寫入正文或研究紀錄的事實陳述。",
+  "verified_facts": [
+    {
+      "fact": "2026 年 9 月 17 日，CFTC 市場參與者部門（MPD）宣布已經為被動軟體提供者的利益核發一項無異議立場。",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9300-26",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Commodity Futures Trading Commission’s Market Participants Division today announced it has issued a no-action position for the benefit of providers of passive software."
+    },
+    {
+      "fact": "新聞稿說明這個立場與 Letter 26-09 給的相似，現在廣泛開放給這類提供者使用。",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9300-26",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The position is similar to that provided in Staff Letter 26-09 and now is broadly available to such providers."
+    },
+    {
+      "fact": "這封信的內容：在符合特定條件下，MPD 不會建議委員會對該提供者或其相關人員，因未登記為介紹經紀商或介紹經紀商業務員而採取執法行動。",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9300-26",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The letter states that, subject to certain specified conditions, MPD will not recommend the Commission take enforcement action against any such provider or their relevant personnel for failure to register as an introducing broker or associated person of an introducing broker."
+    },
+    {
+      "fact": "這個立場的適用範圍限定在提供並行銷讓使用者與已登記的期貨佣金商、介紹經紀商及指定契約市場交易的軟體這件事本身。",
+      "url": "https://www.cftc.gov/PressRoom/PressReleases/9300-26",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This applies solely in relation to their provision and marketing of software to facilitate trading by the provider’s users with registered futures commission merchants, introducing brokers, and designated contract markets."
+    },
+    {
+      "fact": "Letter 26-25 的報頭逐字標示編號、性質與日期，具名人是市場參與者部門主管 DJ Hennes。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CFTC Letter No. 26-25   No-Action   September 17, 2026"
+    },
+    {
+      "fact": "Letter 26-09 的報頭逐字標示編號、性質與日期是 2026 年 3 月 17 日，具名人是當時的代理部門主管 Thomas J. Smith。",
+      "url": "https://www.cftc.gov/csl/26-09/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CFTC Letter No. 26-09   No-Action   March 17, 2026"
+    },
+    {
+      "fact": "Letter 26-09 的申請人是 Phantom Technologies, Inc.，其業務是開發與散布自我保管的加密資產錢包軟體。",
+      "url": "https://www.cftc.gov/csl/26-09/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Phantom’s current business involves the development and distribution of self-custodial"
+    },
+    {
+      "fact": "商品交易法第 4d(g) 條規定，未登記為介紹經紀商而以介紹經紀商身分行事是違法的。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Pursuant to Section 4d(g) of the Act,7 it is unlawful for any person to act in the capacity of"
+    },
+    {
+      "fact": "委員會的前身部門之一「清算與中介監理處」（DCIO）過去對若干技術服務供應商發過一系列解釋函。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Specifically, one of the Division’s predecessors, the Division of Clearing and Intermediary"
+    },
+    {
+      "fact": "MPD 認為，給予所有被動軟體提供者與 Letter 26-09 實質相同條件的無異議立場是有理由的。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Division believes that a no-action position for all PSPs on substantially the same terms"
+    },
+    {
+      "fact": "信中有一則註腳明白排除「這是加密資產專屬措施」的讀法：被動軟體提供者不限於提供加密資產相關軟體的業者。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For the avoidance of doubt, PSPs are not limited to providers of crypto asset related software."
+    },
+    {
+      "fact": "信中明文允許把這個下單介面做成既有錢包軟體裡的內嵌功能，可以是獨立產品，也可以是既有軟體的內嵌功能。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The PSP will offer this proposed User interface either as a standalone product or as an"
+    },
+    {
+      "fact": "條件所要求遞交的文件與通知，要送交市場參與者部門主管的信箱並註明本函。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Each document or notice required to be submitted under these conditions"
+    },
+    {
+      "fact": "這封信與其中的立場，只代表市場參與者部門的見解，不必然代表委員會或其他辦公室與部門的立場。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This letter, and the position taken herein, represent the views of the Division only, and do"
+    },
+    {
+      "fact": "信中依序列出編號 1 到 10 的條件（摘要）：(1) 提供者、其負責人與參與招攬使用者的個人不得有法定失格事由（除非部門豁免），發生時應即通知部門；(2) 向每位使用者揭露與相關登記業者的關係及潛在利益衝突（含費用）並取得確認收到；(3) 就委員會規則 1.55(b) 風險揭露聲明所涵蓋的風險提供揭露，範圍以該提供者所促成的交易活動為限，並留存使用者確認紀錄，但若登記業者已登記且依規則 1.55 負有向該使用者提供風險揭露聲明的義務，本項不適用；(4) 使用者須以 DCM 直接會員或 FCM／IB 客戶身分開戶，且持續能夠不透過提供者直接接觸該登記業者；(5) 訂定並執行合理設計的政策與程序，就對外溝通與行銷比照已登記 IB 所適用的委員會與 NFA 規則；(6) 不得從事若其已登記為 IB 即須經 NFA 依 Compliance Rule 2-29 事前核准的廣告或促銷；(7) 提供者與其每一家登記業者書面簽署承諾，就提供者或其人員從事適用活動時違反本法或委員會規則負連帶責任並接受委員會調查與執法管轄，承諾書送交部門；(8) 依委員會規則 1.31 保存合規與受管制業務的紀錄；(9) 無力償還或進入破產程序須通知部門；(10) 向部門遞交同意遵守上述條件並接受委員會管轄的通知。第十項本身就是十項條件之一，不是十項之外另加的手續。以上為對信件原文的摘要改寫，未附逐字引文，因十項條件在 PDF 抽取結果中跨多行且多處有斷字瑕疵。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "適用活動（Covered Activities）採封閉式定義（原文為 includes only the following activities，後接項目符號清單，信中未給這些項目編號，本紀錄依原文順序整理）：開發並散布前端介面軟體，讓使用者查看行情、彙總部位與商品資訊，並直接向登記業者送出受委員會管制的衍生性商品委託（原文舉例 including 事件契約、永續契約與其他受委員會管制的衍生性商品），提供者在委託送出上的角色僅限於在使用者裝置上提供軟體，不對任何個別委託有積極介入；與一家以上登記業者簽約，該業者「可以」（may）同意把相關收入的特定比例分給提供者，提供者也與使用者締約（例如透過使用條款），該約定「可以」（may）讓提供者直接向使用者收取以交易為基礎的費用；行銷自己的服務與和登記業者的關係，包括宣傳特定衍生性商品契約的可得性；把使用者介紹給、並招攬使用者往來特定登記業者，但使用者不受契約或操作上的限制、可不透過提供者直接接觸那些業者；把這個介面做成獨立產品或既有錢包軟體的內嵌功能，做成內嵌功能時介面須「清楚而顯著地」（clearly and conspicuously）區分使用者何時是在從事受委員會管制的活動。以上為信件原文的摘要改寫，因該段在 PDF 抽取結果中跨多行，未附逐字引文。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "信中畫出提供者不得跨越的線：任何時候都不得持有、控制或保管使用者資產，不得產生明示的買進或賣出訊號，也不得對使用者委託的路由或執行行使裁量。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "適用活動有結構上的限制：僅限使用者在指定契約市場（DCM）交易，且以該 DCM 會員身分直接交易，或以身為該 DCM 會員的期貨佣金商、介紹經紀商之客戶身分間接交易；擔保其衍生性商品部位的資金「或其他財產」須保管在該 DCM 的結算機構（DCO）「與／或」（and/or）身為該 DCO 會員的期貨佣金商。信中稱這是與現行場內衍生性商品市場結構一致的「保管式」交易模式。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "依委員會規則 17 CFR 140.99(a)(2)，無異議函只有受益人可以援用，本函對委員會或其他委員會職員沒有拘束力。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "過去對技術服務供應商（TSV）的解釋函，是建立在 DCIO 所倚賴的一組 TSV 陳述上——兩封信的原文都寫「relied on representations from the TSV that required, among other things」，所以那不是一份窮盡的清單；信中把其中編號 (1) 到 (6) 的六項合稱「TSV Letter Requirements」，第 (1) 項是每位「客戶」（customer，非信中定義的 User）都必須已經和期貨佣金商或介紹經紀商建立獨立於其與該 TSV 關係的既有關係。Letter 26-09 申請人所提的活動「有一部分」落在這些前提之外，信中以 e.g. 舉出的例子是登記業者與使用者不需要有既有關係（26-09 用的詞是 Collaborator，26-25 改稱 Registrant），因此無法援用舊的解釋函。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "信末的副本收受者是美國全國期貨協會（NFA）在芝加哥的法遵部門與紐約的 OTC 衍生性商品部門各一位人員。",
+      "url": "https://www.cftc.gov/csl/26-25/download",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    }
+  ],
+  "not_said": [
+    "CFTC 沒有說加密資產錢包軟體從此不必登記。以 2026-09-18 查核兩封信全文，立場只涵蓋信中列舉的適用活動，且附十項條件，並隨時可被修改或終止。",
+    "CFTC 沒有說這是針對 DeFi 或去中心化協議的措施。信中的模式是使用者與已登記的 DCM／FCM／IB 往來、資金保管在結算機構或結算會員 FCM，信中自稱這是「保管式」模式。",
+    "CFTC 沒有說目前有幾家業者已經或將要遞交同意書。信中要求遞交通知給 MPD，但沒有公布名單或家數；以本文三條 sources 查核到 2026-09-18 未見這樣的名單，本紀錄不就 cftc.gov 全站作否定陳述。",
+    "CFTC 沒有說這個立場適用於美國以外的使用者或業者，也沒有提到台灣。以 2026-09-18 對兩封信的 PDF 抽取全文不分大小寫檢索，Taiwan 一詞在 26-25 與 26-09 各出現 0 次。",
+    "CFTC 沒有評價任何一款錢包或任何一種衍生性商品，也沒有給出價格、成交量或報酬數字。",
+    "委員會（Commission）本身沒有對這件事表態。這是部門層級的無異議函，信中自己寫明不拘束委員會。",
+    "信中沒有寫這個立場的失效日期。它的界線是「直到委員會完成相關法規制定或指引的生效日」，那是條件不是日期。",
+    "本站沒有使用任何被動軟體提供者的產品，不寫成「我們試過」。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Phantom Technologies, Inc. 的公司規模、使用者數或市佔。",
+      "seen_where": "Letter 26-09 只描述它開發自我保管加密資產錢包軟體，可用於 Bitcoin、Ethereum、Solana 等主要區塊鏈",
+      "why_excluded": "除了函中這段描述以外沒有一手資料，不寫使用者數、市佔或公司背景，也不評價這家公司的產品功能。"
+    },
+    {
+      "claim": "Phantom 2026-03-13 申請書的完整內容與具體承諾。",
+      "seen_where": "Letter 26-09 引述並摘要",
+      "why_excluded": "申請書原文沒有公開，只能引述 CFTC 在函中的摘要，不寫成申請人自己的原話。"
+    },
+    {
+      "claim": "TSV 系列解釋函（06-29、08-07、08-12）的具體內容。",
+      "seen_where": "Letter 26-25 註腳 12 列出三個 cftc.gov 的 PDF 網址",
+      "why_excluded": "本次沒有抓取這三份，只讀到 Letter 26-25 對它們的摘要，文章寫成「Letter 26-25 所整理的規定」，不直接引用那三封函。"
+    },
+    {
+      "claim": "NFA Compliance Rule 2-29 與 Interpretive Notice 9003 的具體內容。",
+      "seen_where": "Letter 26-25 條件 6 與相關註腳連到 nfa.futures.org",
+      "why_excluded": "nfa.futures.org 不在 crypto.md 的一手來源白名單內，本次未抓，只寫「若已登記為介紹經紀商即須經 NFA 事前核准的廣告或促銷不得為之」，不描述該規則本身的內容。"
+    },
+    {
+      "claim": "「永續契約」（perpetual contracts）在美國的合法地位、上市或交易條件。",
+      "seen_where": "Letter 26-25 的適用活動把它與事件契約並列為可透過該軟體送單的商品類型",
+      "why_excluded": "信中只是列舉商品類型，沒有說明這些商品的上市、核准或適用規則，任何關於能不能交易、在哪裡交易的說法都沒有一手依據，不寫。"
+    },
+    {
+      "claim": "這封信對台灣使用者或台灣業者的影響。",
+      "seen_where": "無一手來源",
+      "why_excluded": "兩封信都沒有提到台灣，也沒有任何官方文件把兩者連在一起，只能寫「這是美國國內的登記義務問題」，不推論對台灣的影響。"
+    },
+    {
+      "claim": "這代表美國監理對加密產業轉趨友善。",
+      "seen_where": "這是這類新聞常見的解讀角度",
+      "why_excluded": "評價性推論，沒有一手依據；信中反而明說立場不拘束委員會、可隨時終止，且註腳明言被動軟體提供者不限於加密資產軟體業者。"
+    },
+    {
+      "claim": "CFTC 新聞稿 RSS 與新聞稿列表頁當下的項目筆數。",
+      "seen_where": "https://www.cftc.gov/RSS/RSSGP/rssgp.xml、https://www.cftc.gov/PressRoom/PressReleases，2026-09-18 查核時各有可讀內容",
+      "why_excluded": "這兩個網址只用來確認 9300-26 是當期最新公告，筆數是活資料、查核當天就可能變動，不寫進正文或當成事實引用。"
+    }
+  ],
+  "editorial_brief": "讀者是在台灣、用過加密資產錢包 App、看到「錢包裡可以直接下單交易」這種功能會好奇「這樣合法嗎、誰負責」的一般使用者，不是法遵人員。核心任務是把「無異議函」這個文件類型講清楚：它不是法律、不是規則，是主管機關某個部門說「在這些條件下我不會建議告你」，而且自己寫明不拘束委員會、隨時可以收回——這是最容易被讀成「美國放行了」的一類文件。第一段第一句寫事件日 2026 年 9 月 17 日並點出「這是部門層級的無異議函，不是新規則」；第二段寫查核日 2026 年 9 月 18 日、不做實測、不評價任何錢包或商品。五節安排：(1) 發生了什麼——Letter 26-25 把 Letter 26-09 從單一申請人擴大到所有被動軟體提供者，以及為什麼要擴大（17 CFR 140.99(a)(2) 的援用限制）；(2) 原本的登記問題——IB／AP 登記義務、舊的 TSV 解釋函六項前提為何不適用，節尾放兩封信的比較表；(3) 這封信劃的線——適用活動的五項允許與三項不允許，節尾放圖解；(4) 十項條件裡與一般使用者有關的幾項；(5) 怎麼判讀這類新聞——no-action letter 與委員會規則、聯名解釋令的位階差異，並帶到同批已發布的 2026-03-23 SEC／CFTC 聯名解釋令作對照，銜接到結尾第二個連結。刻意不談：任何錢包或商品的優劣、永續契約與事件契約能不能交易、這代表美國政策轉向、對台灣的影響推論、Phantom 公司背景。免責 callout 照 crypto.md 逐字，查核日填 2026-09-18。",
+  "must_not_write": [
+    "不可寫「CFTC 通過新規則」或「美國放行加密錢包交易期貨」。這是部門層級的無異議函，不是規則，也不是委員會的決定，信中自己寫明不拘束委員會。",
+    "不可寫「從此不用登記」。無異議函的效果只是該部門不會建議執法，條件有十項，部門保留修改、暫停與終止的權限。",
+    "不可寫這是「加密資產專屬」的措施。信中註腳明文寫被動軟體提供者不限於提供加密資產相關軟體的業者。",
+    "不可寫「去中心化交易從此合法」。信中的模式是使用者與已登記的 DCM／FCM／IB 往來、資產保管在結算機構或結算會員 FCM，信中自稱是保管式模式。",
+    "不可點名或推薦任何錢包、交易所或衍生性商品，也不可描述某個錢包的功能好壞；Phantom 只能以 Letter 26-09 申請人這個法律事實出現。",
+    "不可出現幣價、漲跌幅、市值、交易量、報酬率、質押報酬或空投數字；可以說明信中把事件契約與永續契約列為可送單的商品類型，但不得寫任何獲利相關內容。",
+    "不可把「PSP 可以向使用者收取以交易為基礎的費用」寫成費率比較或推薦。",
+    "不可猜測或改寫函號；正確寫法是 CFTC Letter No. 26-25（2026-09-17）與 CFTC Letter No. 26-09（2026-03-17），新聞稿編號 9300-26。",
+    "不可把 PDF 抽取造成的多餘空白（例如字距造成的斷字）當成官方原文的錯字照抄進文章。",
+    "不可寫「美國監理轉向」「對產業友善」這類評價，也不可推論政治動機。",
+    "不可寫這封信對台灣使用者的影響；兩封信都沒有提到台灣。",
+    "不可下投資建議、不可寫買賣時機或值不值得持有；免責 callout 的「不是投資建議」六個字逐字不可改。",
+    "不可寫「本站實測」「我們試用」；本文不做任何實測。"
+  ],
+  "live_data_warnings": "本文沒有引用任何活資料（名冊列數、feed 筆數、意見件數）當成文章事實。CFTC 新聞稿 RSS（https://www.cftc.gov/RSS/RSSGP/rssgp.xml）於 2026-09-18 查核時有 10 則 item、最新一則即為 9300-26；新聞稿列表頁（https://www.cftc.gov/PressRoom/PressReleases）同日可讀。這兩個網址只用來確認 9300-26 是當期最新、可信的公告，筆數本身會隨時間變動，未寫入正文、研究紀錄事實或摘要。CFTC Staff Letters 歷來累積多少封信、編號到哪裡，本文未查也未寫。",
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "三條 sources 於 2026-09-18 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body：新聞稿 34,508 bytes 的 HTML 去標籤後逐句比對，兩份 PDF（232,223 與 312,032 bytes）以系統 python 的 pypdf 6.16.2 同時用預設與 layout 兩種模式抽字（26-25 七頁 19,527 字元、26-09 七頁 19,293 字元，與研究紀錄一致），layout 模式保留欄位縮排，用來逐項核對十項條件與五段 Covered Activities。正文每一句、summary 四句、FAQ 七題、兩個 callout、表格五列與 caption、圖解 caption 與四格、title、description 共約 95 條主張逐條回原文核對。第 5 節提到的 2026-03-23 SEC／CFTC 聯名解釋令不在本篇 sources[] 內，改以既有文章 crypto-news-sec-crypto-interpretation-20260323 的來源鏈路交叉核對，並另外讀了 Federal Register API 的 2026-05635.json（publication_date 與 effective_on 同為 2026-03-23、agencies 為 CFTC 與 SEC、citation 91 FR 13714）；該網址只用於反駁查證，沒有寫進 sources[]。沒有用 sources[] 以外的網址替文章補任何事實。",
+    "verdict": "needs_second_round（骨幹正確且全部可回溯到兩封信原文，但共改了 15 處事實或限定詞，其中兩處是實質錯誤：把第十項條件寫成十項之外的額外手續，以及把 Letter 26-25 的「向部門職員陳述的事實」寫成「申請人陳述的事實」——26-25 沒有申請人）",
+    "edits_to_the_pack": [
+      "第 4 節第 2 段「十項條件之外，提供者還要另外遞交一份同意遵守這些條件、接受委員會管轄的通知」改成「第十項條件則是向部門遞交一份通知……」：那就是條件 10（The PSP files a notice with the Division agreeing to satisfy these conditions and consenting to the Commission's jurisdiction…），不是十項以外另加的手續。",
+      "第 5 節第 1 段「這個立場建立在申請人向部門陳述的事實與情況上」改成「建立在向部門職員陳述的事實與情況上」：原文是 based upon the facts and circumstances presented to the Division staff，沒有主詞；Letter 26-25 是普遍性的函，本來就沒有申請人。",
+      "第 1 節第 2 段「相同條件」改成「實質相同條件」：原文是 on substantially the same terms，substantially 是 BRIEF 明列不可刪的限定詞。同段刪掉「會有這次擴大，是因為 3 月那封信只保護一家公司」這句自撰因果，改為照原文分述「收到詢問」與「部門認為有理由」。",
+      "第 2 節第 2 段與 FAQ 第 7 題「那些解釋函建立在六項前提上」改成「建立在該供應商所作的一組陳述上，信中把其中六項合稱『TSV 函前提』」：原文是 relied on representations from the TSV that required, among other things: (1)…(6)，among other things 表示六項不是全部。",
+      "同兩處「每位使用者」改成「每位客戶」：TSV Letter Requirements 第 (1) 項原文是 each customer，而 User 在這兩封信裡是另有定義的用語（DCM 參與者或 FCM／IB 客戶），混用會改變主體。",
+      "同兩處「有一部分不符合這些前提——登記業者與使用者不需要有既有關係——」改成「有一部分落在這些前提之外（信中舉的例子是……）」：原文是 (e.g., the Registrant and User did not need to have a pre-existing relationship)，是舉例不是唯一原因。",
+      "第 4 節第 1 段的風險揭露條件補回三件原文有、草稿沒有的東西：規則編號 1.55(b)、範圍限定 to the extent relevant to the trading activity facilitated by the PSP，以及整條的例外 This condition shall not be applicable if a Registrant is registered with the Commission and obligated to provide a risk disclosure statement to the User consistent with Commission Regulation 1.55。",
+      "第 4 節第 2 段「提供者的對外溝通與行銷要比照已登記介紹經紀商的規則辦理」改成「要訂定並執行合理設計的政策與程序，讓對外溝通與行銷比照……」：條件 5 的原文是 adopts and enforces policies and procedures reasonably designed to ensure compliance，義務的客體是政策與程序。同段補上條件 1（法定失格事由）、條件 7 的承諾書須送交部門、條件 8 的規則編號 1.31 與「受管制業務」範圍。",
+      "第 3 節第 1 段「只包含信中列出的五項」改成「只包含信中條列的這些」：原文 includes only the following activities 之後是無編號的項目符號，五這個數字是編輯數出來的。",
+      "第 3 節第 1 段與 FAQ 第 2 題「軟體介面必須清楚區分」補回 clearly and conspicuously 的「而顯著地」，並補上原文的 either as a standalone product or（獨立產品或內嵌功能）。",
+      "第 3 節第 1 段補回原文 The PSP's involvement in order submission will be limited to providing software on the User's device… will not have any affirmative involvement with any particular orders（提供者只在使用者裝置上提供軟體、不積極介入任何個別委託）；這句原本只出現在圖解格子上，正文沒有。同段的分潤改寫成照原文的 may（業者「可以同意」分給提供者），商品名補回「衍生性商品契約」。",
+      "第 3 節第 2 段的結構限制改寫：原句「以該會員的期貨佣金商、介紹經紀商客戶身分」把主從關係寫反了，原文是 as a customer of an FCM or IB that is a member of the DCM；同句「資金」補回 or other property、「或」改成原文的 and/or（與／或），並把保管對象寫清楚是該 DCO 的會員 FCM。",
+      "「隨時修改或終止」四處（摘要第 4 句、第 5 節第 1 段、本文提醒 callout、FAQ 第 1 題）改成「依其裁量」：原文是 retains the authority to condition further, modify, suspend, terminate, or otherwise restrict … in its discretion，沒有「隨時」；第 5 節同時補回 as with all staff letters。摘要第 3 句的「買賣訊號」補回 express 的「明示的」。",
+      "標題「十項條件劃出四條線」改成「十項條件劃出的界線」：四這個數字不在任何來源，信中那句禁止規定列的是三件事（持有／控制／保管資產、產生明示買賣訊號、對路由或執行行使裁量）。研究紀錄 title 與圖解第四格（原為「不得下單訊號」）同步改。",
+      "「僅對單一申請人生效」「一封只對一家公司生效的信」改成「只有一家公司能援用」：140.99(a)(2) 與註腳 6 講的是 only the Beneficiary … may rely on it，是援用資格不是生效與否。description 同步改。",
+      "FAQ 第 4 題刪掉「以 2026 年 9 月 18 日查核，尚未見到這樣的法規制定或指引」：本篇三條 sources 撐不起這個否定句，沒有做過聯邦公報或 CFTC 全站的查核。",
+      "FAQ 第 6 題「兩封信全文都未見『台灣』一詞」改成「未見 Taiwan 一詞」：信是英文，用中文詞去描述檢索結果會誤導。",
+      "表格「取得方式」欄的「MPD 主動擴大」改成「符合條件者遞交通知」：信中寫的是 MPD 收到其他提供者與其律師的詢問後認為有理由，並以條件 10 要求遞交通知，不是機關自行發動。",
+      "sources[1] 的 title 改成貼近該函 Re: 行的寫法（含 Section 4d(g) 與 Section 4k(1)）；原本的寫法省掉兩個條號。受 200 字元上限所限，IB／AP 沿用該函自己的縮寫。",
+      "第 5 節第 2 段「處理加密資產在什麼情況下受投資契約規範的證券法問題」改成「處理聯邦證券法如何適用於特定類型的加密資產與相關交易」，貼近該解釋令的正式標題；同段末尾刪掉與 callout 重複的一句以騰出字數。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-17：Letter 26-25 報頭逐字 CFTC Letter No. 26-25   No-Action   September 17, 2026，新聞稿頁日期欄 September 17, 2026、編號 Release Number 9300-26；slug 尾碼、news_date 與第一段日期三者一致。Letter 26-09 的 2026-03-17（報頭）與申請書的 2026-03-13（內文 your letter … dated March 13, 2026）分開寫，沒有混用。",
+      "具名人：26-25 是 DJ Hennes, Director, Market Participants Division；26-09 是 Thomas J. Smith, Acting Director。兩人與職稱都對。",
+      "三段引文與新聞稿原文逐字相符（today announced it has issued a no-action position for the benefit of providers of passive software／The position is similar to that provided in Staff Letter 26-09 and now is broadly available to such providers）。",
+      "法條與條號全部正確：Section 4d(g)、Section 4k(1)、Commission Regulation 3.12(a)、17 CFR 140.99 與 140.99(a)(2)、1.55(b)、1.31、3.1、NFA Compliance Rule 2-29；註腳 14 的 For the avoidance of doubt, PSPs are not limited to providers of crypto asset related software 逐字核對無誤。",
+      "禁止事項三句與原文一字不差：At no point would the PSP hold, control, or take into custody User assets, generate express \"buy\" or \"sell\" signals, or exercise discretion with respect to the routing or execution of User orders。",
+      "效力界線寫成條件而非日期（until the effective date of a Commission rulemaking or guidance addressing the application of the IB registration requirement to software developers），沒有換算成任何日曆日。",
+      "第 5 節引用的 2026-03-23 聯名解釋令：Federal Register API 的 2026-05635.json 顯示 publication_date 與 effective_on 同為 2026-03-23、agencies 為 CFTC 與 SEC、citation 91 FR 13714，既有文章另以署名欄 By the Commissions. Dated: March 17, 2026. 佐證是委員會層級；「刊登當天就生效」與「委員會層級的聯名文件」成立。第二個 link 的 text 與該篇 zh-TW title 逐字相同，第一個 link 的 text 與幣圈索引 zh-TW title 逐字相同。",
+      "免責 callout 的 title 與 text 與 crypto.md 樣板逐字相同（含「不是投資建議」六個字），查核日 2026-09-18；checked_on 在內容包三條 source、研究紀錄、第二段、表格 caption 與兩個 callout 一致，本次沒有更動。",
+      "界線：全文沒有任何幣價、市值、交易量、報酬或費率比較；事件契約與永續契約只以「信中列為可送單的商品類型」出現，Phantom 只以 Letter 26-09 申請人與其自述業務出現；沒有推薦語氣，沒有把任何錢包或商品寫成選項；沒有「本站實測」。本篇不是草案文件，無須加註「草案」。",
+      "summary 的每個數字（2026-09-17、2026-03-17、十項）都在正文出現；FAQ 答案都是純文字沒有網址；全文沒有簡體字。"
+    ],
+    "left_for_the_owner": [
+      "第 1 節寫「回應的是 Phantom … 在 2026 年 3 月 13 日提出的申請」。嚴格說，26-09 原文是 your letter on behalf of Phantom Technologies, Inc., dated March 13, 2026 … as supplemented by additional correspondence with Division staff (together, the \"Request\")——申請是由律師代為提出，且 Request 還包含後續補充往來。要不要寫到這個顆粒度請站主決定；目前寫法在日期上正確。",
+      "26-25 footnote 2 把公司名印成「Phantom Technologies, Inc」（Inc 後面沒有句點），26-09 內文則是「Phantom Technologies, Inc.」。文章與表格採用 26-09 的寫法。這是來源自己的不一致，沒有代為訂正。",
+      "26-09 的 Re: 行把條號印成 Section 4(k)，內文與 26-25 都是 Section 4k(1)。文章一律採內文的 4k(1)，沒有照抄 Re: 行的錯字，也沒有在文章裡說明——要不要加註請站主決定。",
+      "zh-TW 段落字數 2,992／3,000（第二輪改版後；第一輪交稿時自檢輸出的是 2,993，本欄原寫 2,994 為筆誤），只剩 8 個字的餘裕。翻譯與後續審稿若要補任何一句，必須同時從別處刪掉等量的字，且不得用刪但書或限定詞來湊。",
+      "沒有查也沒有寫：TSV 系列解釋函 06-29／08-07／08-12 本文、NFA Compliance Rule 2-29 與 Interpretive Notice 9003（nfa.futures.org 不在白名單）、Phantom 申請書原文（未公開）。這幾項沿用撰稿階段的排除理由，本次未改變。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "method": "未參與撰稿與第一輪。三條 sources 於 2026-09-18 再以 curl -sL -A \"Mokaair-editorial\" 重抓，位元組數與第一輪逐一相同（34,508／232,223／312,032）；兩份 PDF 用系統 python 的 pypdf 6.16.2 以預設與 layout 兩種模式重抽，layout 模式逐項核對條件 1–10 與 Covered Activities 五段項目符號。範圍：第一輪改動過的每一段與新寫進去的每一句、研究紀錄 14 條非空 verbatim_quote 的連續字串比對、summary／FAQ／callout／表格／圖解與正文的同步、界線與否定句。約 60 條主張，改了 13 處。抽字字元數的可重現配方：七頁 extract_text() 以 \"\\n\".join 相接才是 sourcing_notes 記的 19,527／19,293；直接相接（不加分隔字元）是 19,521／19,287，第一輪報告寫成後者的算法是筆誤，文件本身沒有變。Taiwan／China／Asia 以詞界比對在兩封信各 0 次，複驗成立。第 5 節引用的 2026-03-23 聯名解釋令仍不在 sources[] 內，改以既有文章 crypto-news-sec-crypto-interpretation-20260323 的內容包交叉核對，沒有新增任何 sources[] 以外的網址當依據。",
+      "verdict": "ok（骨幹與第一輪的 20 處改動全部複驗成立，沒有一處需要推翻；第二輪另改 13 處，最重的是第一輪的三項訂正沒有同步到 summary 與 FAQ，以及條件 1 的但書 absent a waiver by the Division 從頭到尾沒寫進正文）",
+      "edits_to_the_pack": [
+        "summary 第 1 句「僅對單一申請人生效的 Letter 26-09」改成「僅有單一申請人能援用的」：第一輪已把第一段、第 1 節標題與 description 從「生效」改成「援用」（依據是註腳 6 的 only the Beneficiary … may rely on it），但 summary 沒跟著改，文章內部因此自相矛盾。",
+        "summary 第 2 句補回 solely 的「僅」：「MPD 不會建議委員會因為這些提供者未登記……而對他們採取執法行動」改成「不會僅因為……就建議委員會對他們採取執法行動」。原文是 solely as a result of them engaging in the Covered Activities，正文第一段本來就有「僅」，摘要掉了會讀成未登記一概不究。",
+        "FAQ 第 2 題「由業者同意把相關收入的特定比例分給它」改成「業者可以同意把……」：原文 which may also agree to share a specified portion of their relevant revenues，第一輪已在正文補回 may，FAQ 沒跟著補。",
+        "第 4 節第 2 段補回條件 1 的但書「除非部門豁免」：原文 The PSP, its principals … are not subject to statutory disqualification, absent a waiver by the Division。這條例外第一輪與撰稿階段都沒寫進正文（全文「豁免」出現 0 次），等於把一條有例外的資格條件寫成絕對禁止；研究紀錄的條件摘要本來就有這一句。",
+        "第 5 節第 2 段「2026 年 3 月 23 日……聯名發布過一份解釋令」改成「聯名的解釋令刊登在聯邦公報」：那份文件是 2026-03-17 由兩個委員會作成、2026-03-23 刊登兼生效（既有文章 crypto-news-sec-crypto-interpretation-20260323 三個日期分開寫），寫成「3 月 23 日發布」是 BRIEF 型態 11 的日期混用，也與被連結的那篇不一致。同句後半的「刊登當天就生效」保留。",
+        "圖解 caption（內容包 image 與研究紀錄 diagram 同步）「依 CFTC Letter No. 26-25 的十項條件可以做與不能做的事」改成「依 CFTC Letter No. 26-25 定義的『適用活動』」：圖上四格（開發下單介面、收費與分潤、不得保管資產、不得給買賣訊號）全部出自信中第 6 頁 Covered Activities 的定義，不是第 4–5 頁編號 1–10 的條件；圖又掛在講適用活動的第 3 節末尾。",
+        "圖解第一格說明「前端軟體，不介入個別委託」改成「不積極介入個別委託」：原文是 The PSP will not have any affirmative involvement with any particular orders，正文寫的是「不積極介入」，圖上少了 affirmative 就成了更強的主張。",
+        "圖解第二、三格的「用戶」改成「使用者」：正文、摘要與 FAQ 一律用「使用者」，BRIEF 也要求台灣用語；改後兩格說明各 12 字，仍在 15 字上限內。",
+        "第 4 節第 1 段條件 4「持續能夠不透過這個軟體直接使用背後的登記業者」與 FAQ 第 3 題同一句，改成「不透過提供者」：原文是 they continue to have the ability to access the respective Registrant independently of the PSP，以及 Covered Activities 那段的 without the PSP's involvement——限制的對象是提供者，不是它的軟體，寫成軟體會把範圍收窄。",
+        "FAQ 第 7 題「促成這次無異議函的申請活動裡」改成「Letter 26-09 申請人所提的活動裡」：落在 TSV 函前提之外的是 26-09 申請人所提的活動（In relation to Letter 26-09 … As certain of these activities fell outside of the TSV Letter Requirements），不是 26-25 本身；正文第 2 節第 2 段寫的就是這個說法。",
+        "FAQ 第 7 題補回「在適當情形下」：原文 Commission staff has, under appropriate circumstances, determined that certain TSVs need not register，正文有這個限定詞，FAQ 掉了。",
+        "第 1 節第 2 段「Phantom 以外的提供者不能引用該函」的「引用」改成「援用」：rely on 全篇其餘七處都寫「援用」，同一個概念不混用兩個詞。",
+        "為上面兩處加字騰出字數，刪掉三處重複敘述而非限定詞：第 3 節第 1 段「用封閉式定義畫出『適用活動』（Covered Activities），只包含信中條列的這些」改成「把『適用活動』（Covered Activities）定義成只包含信中條列的這些」（封閉式的意思由「只包含」承擔）、第 4 節第 2 段刪「那種」與「則是……一份」。zh-TW 段落字數 2,993 → 2,992。"
+      ],
+      "checked_and_correct": [
+        "第一輪的 20 處改動逐處回原文複驗，全部成立，沒有一處需要推翻。特別複驗過：條件 3 的 Commission Regulation 1.55(b)、to the extent relevant to the trading activity facilitated by the PSP 與整條例外 This condition shall not be applicable if a Registrant is registered with the Commission and obligated to provide a risk disclosure statement to the User consistent with Commission Regulation 1.55；條件 5 的 adopts and enforces policies and procedures reasonably designed…；條件 1 的 statutory disqualification 與 promptly notify；條件 7 的 The PSP files each of these undertakings with the Division；條件 8 的 Commission Regulation 1.31；條件 10 的 The PSP files a notice with the Division agreeing to satisfy these conditions…（確實是第十項，不是十項之外）。",
+        "「六項前提」三處寫法成立：among other things（正文寫「一組陳述……其中六項合稱」）、each customer（正文與 FAQ 都寫「每位客戶」，沒有用信中另有定義的 User）、e.g.（正文與 FAQ 都寫成「信中舉的例子」）。",
+        "第一輪還原的五處限定詞今天再查一次都在正文：substantially（實質相同條件）、clearly and conspicuously（清楚而顯著）、may（分潤與收費兩處）、and/or（與／或）、or other property（或其他財產）。express（明示）在正文、摘要、FAQ 與圖解 caption 共四處都在。",
+        "in its discretion（依其裁量）在摘要第 4 句、第 5 節第 1 段、本文提醒 callout、FAQ 第 1 題與 FAQ 第 4 題共五處，全部對得上 the Division retains the authority to condition further, modify, suspend, terminate, or otherwise restrict the terms of the position taken herein, in its discretion；「隨時」全文 0 次；as with all staff letters 的「如同所有職員函」在第 5 節第 1 段。",
+        "研究紀錄 14 條非空 verbatim_quote，全部是今天重抽正文裡原樣可搜尋的連續字串（raw 比對即命中），沒有一條用刪節號或直線把不同段落拼起來，`url` 三條都在 sources[] 內。",
+        "免責 callout 的 title 與 text 與 crypto.md 樣板程式比對逐字相同（含「不是投資建議」六個字），本次沒有動；checked_on 2026-09-18 在內容包三條 source、研究紀錄、第二段、表格 caption 與兩個 callout 六處一致。",
+        "FAQ 第 6 題的否定句複驗：兩份 PDF 抽取全文以詞界比對（不是子字串）檢索，taiwan 在 26-25 與 26-09 各 0 次，china／chinese／asia／asian／hong kong／japan／korea 同樣各 0 次。句子已限縮在「兩封信的英文全文」與查核日，成立。",
+        "界線：全文沒有幣價、漲跌幅、市值、交易量、資金流、殖利率或任何報酬與費率比較；事件契約與永續契約只以信中列舉的可送單商品類型出現；Phantom 只以 Letter 26-09 的受益人與其自述業務出現，沒有評價它的產品；沒有推薦語氣，沒有「本站實測」。本篇不是草案文件。",
+        "表格五列與 caption 複驗成立，包含「兩封信皆為 MPD 依 17 CFR 140.99 發出、對委員會皆無拘束力」——26-09 第 7 頁與 26-25 第 7 頁各有一段幾乎相同的 not binding on the Commission，兩封信也都以 140.99 為依據。",
+        "日期與具名人再查一次無誤：26-25 報頭 September 17, 2026、具名 DJ Hennes, Director；26-09 報頭 March 17, 2026、具名 Thomas J. Smith, Acting Director、內文 your letter on behalf of Phantom Technologies, Inc. (\"Phantom\"), dated March 13, 2026；新聞稿日期欄 September 17, 2026、Release Number 9300-26。三條 sources 今天都回 HTTP 200 且 body 是正文，位元組數與第一輪相同。"
+      ],
+      "left_for_the_owner": [
+        "第一輪留下的五件事全部維持，沒有代為決定：申請由律師代提且 Request 含後續補充往來的顆粒度、26-25 註腳 2 的「Inc」少一個句點、26-09 Re: 行印成 Section 4(k)、字數餘裕、以及沒有查也沒有寫的那三類文件。",
+        "第 5 節第 2 段講 2026-03-23 聯名解釋令的那一句，依據不在本篇 sources[] 內（本篇三條都是 CFTC 的新聞稿與兩封信），是以站上既有文章 crypto-news-sec-crypto-interpretation-20260323 為準寫的。第二輪已把說法改到與那篇一致（刊登在聯邦公報、刊登當天生效），但若站主希望每一句都由本篇自己的 sources[] 撐住，就要把聯邦公報那條加進 sources[]（會變成四條，仍在 2–4 的上限內）。",
+        "圖解要重畫：第一格說明改成「前端軟體，不積極介入個別委託」、第二格「向使用者收費、與業者分潤」、第三格「不得持有或保管使用者資產」，caption 也改成「依 CFTC Letter No. 26-25 定義的『適用活動』」。第四格維持第一輪的版本。"
+      ]
+    }
+  },
+  "hero_label": "被動軟體提供者無異議函",
+  "diagram": {
+    "title": "被動軟體提供者：可以與不可以",
+    "caption": "被動軟體提供者依 CFTC Letter No. 26-25 定義的「適用活動」可以做與不能做的事：開發下單介面、收費與分潤是允許的；持有或保管使用者資產、產生明示的買賣訊號是不允許的。",
+    "nodes": [
+      [
+        "開發下單介面",
+        "前端軟體，不積極介入個別委託"
+      ],
+      [
+        "收費與分潤",
+        "向使用者收費、與業者分潤"
+      ],
+      [
+        "不得保管資產",
+        "不得持有或保管使用者資產"
+      ],
+      [
+        "不得給買賣訊號",
+        "不得產生明示訊號或行使裁量"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "PSP No-Action Letter",
+      "diagram": {
+        "title": "PSP: What's Allowed, What Isn't",
+        "caption": "What a passive software provider may and may not do under the \"Covered Activities\" that CFTC Letter No. 26-25 defines: building an order-entry interface and charging fees or sharing revenue are allowed; holding or custodying user assets and generating an express buy or sell signal are not.",
+        "nodes": [
+          [
+            "Order Interface",
+            "No active role in orders"
+          ],
+          [
+            "Fees & Sharing",
+            "Charge users, share revenue"
+          ],
+          [
+            "No Custody",
+            "Can't hold user assets"
+          ],
+          [
+            "No Trade Signals",
+            "No signals or discretion"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "PSPノーアクションレター",
+      "diagram": {
+        "title": "PSPにできること・できないこと",
+        "caption": "CFTC Letter No. 26-25が定義する「対象行為」のもとで受動的ソフトウェア提供者ができること・できないことを示しています。注文インターフェースの構築、手数料の徴収と収益分配は許されますが、利用者資産の保有・保管、明示の売買シグナルの発信は許されません。",
+        "nodes": [
+          [
+            "発注画面の開発",
+            "個別注文に積極関与せず"
+          ],
+          [
+            "手数料と分配",
+            "利用者に課金し業者と分配"
+          ],
+          [
+            "資産の保管不可",
+            "利用者資産は保管できない"
+          ],
+          [
+            "売買シグナル不可",
+            "明示のシグナルや裁量行使なし"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "PSP 비조치의견서",
+      "diagram": {
+        "title": "PSP: 가능한 일과 불가능한 일",
+        "caption": "CFTC Letter No. 26-25가 정의하는 '적용대상 행위' 아래에서 수동적 소프트웨어 제공자가 할 수 있는 일과 할 수 없는 일입니다. 주문 인터페이스 구축, 수수료 부과와 수익 배분은 허용되지만, 이용자 자산의 보유·보관과 명시적 매수·매도 신호 발생은 허용되지 않습니다.",
+        "nodes": [
+          [
+            "주문화면 개발",
+            "개별 주문에 관여 안 함"
+          ],
+          [
+            "수수료·수익배분",
+            "이용자 과금, 업체와 배분"
+          ],
+          [
+            "자산 보관 불가",
+            "이용자 자산 보관 못 함"
+          ],
+          [
+            "매매신호 불가",
+            "명시적 신호·재량 금지"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "被动软件提供者无异议函",
+      "diagram": {
+        "title": "被动软件提供者：可以与不可以",
+        "caption": "被动软件提供者依 CFTC Letter No. 26-25 定义的“适用活动”可以做与不能做的事：开发下单界面、收费与分润是允许的；持有或保管用户资产、产生明示的买卖信号是不允许的。",
+        "nodes": [
+          [
+            "开发下单界面",
+            "前端软件，不积极介入个别委托"
+          ],
+          [
+            "收费与分润",
+            "向用户收费、与服务商分润"
+          ],
+          [
+            "不得保管资产",
+            "不得持有或保管用户资产"
+          ],
+          [
+            "不得给买卖信号",
+            "不得产生明示信号或行使裁量"
+          ]
+        ]
+      }
+    }
+  }
+}

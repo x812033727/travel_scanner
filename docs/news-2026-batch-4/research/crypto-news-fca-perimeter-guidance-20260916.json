@@ -1,0 +1,269 @@
+{
+ "slug": "crypto-news-fca-perimeter-guidance-20260916",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "拿到全文，可以寫完整篇。實際取得狀況（2026-09-18 於本容器實測，全部 curl -sL -A \"Mokaair-editorial\"）：\nOK — https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies 回 HTTP 200、175,820 bytes，是新聞稿本文。\nOK — https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance 回 HTTP 200、177,578 bytes，是 PS26/18 的出版品頁，頁上有「Consultation opens 15/04/2026／Consultation closes 03/06/2026／Policy statement 16/09/2026」與「First published: 16/09/2026」。\nOK — https://www.fca.org.uk/publication/policy/ps26-18.pdf 回 HTTP 200、1,579,276 bytes、application/pdf，用 pypdf 抽出 140 頁、316,691 字元，本篇的章節內容都讀自這一份。\nOK（背景，未列入 sources）— https://www.fca.org.uk/news 回 200，列表顯示這則的日期是 16/09/2026。\n⚠ PDF 引文的注意事項：PDF 的文字是 pypdf 抽出來的，抽取結果保留了原檔自己的斷字與多餘空白（例如「ou r perimeter」「stablecoi ns」「58 responses to  Question 2.」的兩個空白）。本紀錄凡引用 PDF 的 verbatim_quote，一律只取抽取結果中同一行內、且沒有斷字瑕疵的連續字串，並照抄多餘空白；有斷字瑕疵的句子改成敘述，不當逐字引文。要引用乾淨句子時優先用兩個 HTML 頁。\n未查／未讀：英國政府新提出的 statutory instrument 原文（連到 legislation.gov.uk，不在 crypto.md 的白名單內，本次沒有抓，也不引述其內容）；PS26/9 至 PS26/13 五份 2026-06-30 的政策聲明本文（只從本篇讀到它們存在與編號）；FCA 的 webinar 內容與 PASS 預約頁。",
+ "sources": [
+  {
+   "title": "Crypto firms get guidance on how the new regime applies (press release)",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "publisher": "Financial Conduct Authority (UK)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "PS26/18: Cryptoasset perimeter guidance (publication page)",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "publisher": "Financial Conduct Authority (UK)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Policy Statement PS26/18 — Cryptoasset Perimeter Guidance (PDF, 140 pages)",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "publisher": "Financial Conduct Authority (UK)",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "event_date": "2026-09-16",
+ "event_date_basis": "事件日 2026-09-16 有兩條一手佐證，而且兩條都是 FCA 自己給的日期：\n(1) PS26/18 出版品頁的欄位逐字寫「Policy statement 16/09/2026」與「First published: 16/09/2026 Last updated: 16/09/2026」。\n(2) FCA 新聞列表把新聞稿「Crypto firms get guidance on how the new regime applies」標成 16/09/2026。\n文章裡必須把下面四個日期分開寫，它們不是同一件事：\n- 2026-02-04：國會通過 Cryptoasset Regulations（PS26/18 第 1.7 段寫「passed by Parliament on 4 February 2026」）。\n- 2026-09-16：本政策聲明與最終指引發布日（＝事件日）。\n- 2026-09-30：授權申請窗口開放日（尚未到）。\n- 2027-10-25：新制生效日（尚未到）。\n另外 2027-02-28 是「想用過渡（savings）規定者」的申請截止日，不是新制生效日。",
+ "verified_facts": [
+  {
+   "fact": "FCA 於 2026 年 9 月 16 日發布政策聲明 PS26/18《Cryptoasset perimeter guidance》，內容是「加密資產活動在什麼情況下需要 FCA 授權」的最終指引。出版品頁把它歸類為 Policy statements，首次發布與最後更新都是 2026-09-16。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We have published final guidance on when cryptoasset activities need FCA authorisation."
+  },
+  {
+   "fact": "新制的生效日是 2027 年 10 月 25 日。FCA 新聞稿逐字寫這一句。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The regime comes into force on 25 October 2027."
+  },
+  {
+   "fact": "授權申請自 2026 年 9 月 30 日開放。FCA 在新聞稿裡把「現在就需要這份指引」的理由掛在這個日期上。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": false,
+   "verbatim_quote": "With applications for authorisation opening from 30 September 2026, firms need this guidance now to help them prepare."
+  },
+  {
+   "fact": "新聞稿另有一句更直接的說法：授權窗口（authorisation gateway）於 2026 年 9 月 30 日開放。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The authorisation gateway for firms will open on 30 September 2026."
+  },
+  {
+   "fact": "申請窗口 2026 年 9 月 30 日開放、2027 年 2 月 28 日關閉，而關閉日只針對「想使用過渡（transitional）安排」的業者。出版品頁把這兩個日期寫在同一句。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The application window opens on 30 September 2026 and closes on 28 February 2027 for firms wanting to use the transitional arrangements."
+  },
+  {
+   "fact": "這份指引涵蓋的活動，新聞稿列出的寫法是「包含」：發行合格穩定幣、經營加密資產交易平台、自營與居間安排交易、保管加密資產、安排加密資產質押。這是 including 起頭的舉例，不是全清單。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The guidance covers activities including issuing qualifying stablecoins, operating cryptoasset trading platforms, dealing and arranging deals, safeguarding cryptoassets and arranging cryptoasset staking."
+  },
+  {
+   "fact": "PS26/18 第 4.1 段自己列出的「新的受規範加密資產活動」是七項：在英國發行合格穩定幣；保管與安排保管合格加密資產及相關的特定投資加密資產；經營合格加密資產交易平台（QCATP）；以自己名義自營合格加密資產；以代理人身分交易合格加密資產；安排合格加密資產的交易；安排合格加密資產質押。第 4.2 段另外說明，加密資產的借與貸落在 dealing 或 arranging 之內。（此條不附 verbatim_quote：PDF 抽取在這段的項目符號裡有斷字瑕疵，例如「stablecoi ns」，照抄會被誤讀成錯字。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "這套制度的法源是 2026 年 2 月 4 日由國會通過的 Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026（PS26/18 稱之為 the Cryptoasset Regulations）。PS26/18 第 1.7 段載明本指引對應的是這部已完成立法的法規，還不包含政府後來提出的新 statutory instrument。",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "the Cryptoasset Regulations passed by Parliament on 4 February 2026"
+  },
+  {
+   "fact": "出版品頁用另一種寫法說同一件事：自 2027 年 10 月 25 日起，Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026 會把新的加密資產受規範活動納入 FCA 的監理範圍（perimeter）。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "From 25 October 2027, the Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026 (the Cryptoasset Regulations) will introduce new regulated activities for cryptoassets into our perimeter."
+  },
+  {
+   "fact": "既有的登記或許可不會自動轉換。出版品頁與 PS26/18 第 1.25 段都寫了這件事，措辭略有不同：出版品頁寫「Existing registrations and permissions won't convert automatically.」，PS26/18 內文寫「Existing registrations or permissions will not convert automatically.」",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Existing registrations or permissions will not convert automatically."
+  },
+  {
+   "fact": "PS26/18 第 1.25 段進一步說明，受影響的包含目前依 FSMA 取得授權者、依洗錢防制規則（MLRs）登記者、依支付服務規則或電子貨幣規則取得授權或登記者；只要在英國以營業方式從事一項以上受規範加密資產活動、且沒有可用的排除或豁免，就必須取得適當的授權。（此條不附 verbatim_quote：該段在 PDF 抽取結果中跨行，且含斷字瑕疵。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "這份最終指引來自 2026 年 4 月的諮詢文件 CP26/13。出版品頁的日期欄寫諮詢 2026-04-15 開始、2026-06-03 結束；PS26/18 第 1.9 段寫收到 78 份回應。",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We received a total of 78 responses to CP26/13."
+  },
+  {
+   "fact": "出版品頁用同一個數字交代背景：2026 年 4 月諮詢、收到 78 份回應。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "and received 78 responses."
+  },
+  {
+   "fact": "PS26/18 第 1.10 段記載：多數（60%）回應者大致支持所提的 perimeter 指引，並同意它能釐清受規範加密資產活動如何適用監理範圍；許多回應者也歡迎把加密資產的 perimeter 指引整合進既有的 PERG 架構。（此條不附 verbatim_quote：該段在 PDF 抽取結果中跨行。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PS26/18 第 3.7、3.8 段：關於「新的特定投資標的（合格加密資產與合格穩定幣）」那一題，共收到 58 份回應，其中 59% 支持、29% 中立或立場不明、12% 不支持。",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We received a total of 58 responses to  Question 2."
+  },
+  {
+   "fact": "PS26/18 第 5.5 段：關於「排除條款」那一題，共收到 61 份回應，其中 52% 支持、20% 中立、28% 不支持。",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We received a total of 61 responses to Question 4"
+  },
+  {
+   "fact": "PS26/18 第 3.3 段列出被排除在「合格加密資產」定義之外的資產，寫法是「including」：電子貨幣、法定貨幣、央行數位貨幣，以及只能向發行人贖回並用於向發行人購買商品或服務、或只能向發行人贖回並在有限網路內使用的加密資產。第 3.4 段另載明，落入其他特定投資標的類別的加密資產也被排除。（此條不附 verbatim_quote：該段在 PDF 抽取結果中跨行且為項目符號清單。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PS26/18 第 5.2 段說明 Cryptoasset Regulations 裡有兩項一般排除：一是為銷售商品或提供服務而從事該活動（Article 9Z10），二是附隨於受規範之專門職業或營業（Article 9Z11），兩者對所有受規範加密資產活動都適用。",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The proposed guidance set out that there are 2 general exclusions in the Cryptoasset"
+  },
+  {
+   "fact": "PS26/18 第 5.3 段特別提醒：國會並沒有把 RAO 裡其他既有的一般排除全部（或原樣）複製到受規範加密資產活動上，因此不能假設適用於傳統受規範活動的排除，會以相同方式、或根本會適用於加密資產活動。（此條不附 verbatim_quote：該段在 PDF 抽取結果中跨行。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PS26/18 第 5.7 段記載，有 13% 的回應者質疑國會沒有為受規範加密資產活動設立「Overseas Persons Exclusion（OPE）」；另有少數（5%）要求釐清排除條款如何適用於只與英國業者往來的境外業者。也就是說，境外業者的排除問題在這份文件裡是「回應者提出的意見」，不是 FCA 已經給出的結論。（此條不附 verbatim_quote：該段在 PDF 抽取結果中跨行。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "PS26/18 第 1.14 至 1.16 段說明 PERG 的定位：PERG 是 FCA 對法律的解釋，不能用來擴張、限縮或改變國會在立法中設定的監理範圍；只有法院能對法律作出權威解釋；要改變監理範圍本身必須修法。FCA 也說明 PERG 是一般性指引，不適合針對個別商業模式提供細部指引，有需要者可自行尋求獨立法律意見或向 FCA 申請個別指引。（此條不附 verbatim_quote：該段在 PDF 抽取結果中跨行。）",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": ""
+  },
+  {
+   "fact": "政府已另外對這部法規提出「targeted」的修正，FCA 表示這些修改不會影響多數加密資產業者，業者現在就可以用這份指引準備申請；FCA 將於 10 月就這些法律變動對指引提出進一步諮詢。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": false,
+   "verbatim_quote": "These changes will not affect most crypto firms, which can use this guidance now to prepare for authorisation. The FCA will, however, consult in October on targeted updates to this guidance in light of these legal changes."
+  },
+  {
+   "fact": "新聞稿的「Notes to editors」把 10 月那場諮詢的範圍列出來（用的是 cover 一詞）：英國合格穩定幣、自營與造市、某些技術供應商、去中心化協議、涉及中央證券保管機構的保管安排，以及財務推銷（financial promotions）。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The consultation in October will cover the targeted changes relating to UK qualifying stablecoins, proprietary trading and market making, certain technology providers, decentralised protocols, safeguarding arrangements involving central securities depositaries and financial promotions."
+  },
+  {
+   "fact": "出版品頁對後續時程的寫法比新聞稿再多一句：FCA 計畫在 2026 年稍晚就 perimeter 指引的進一步修改進行諮詢，並以 2027 年初發布修訂後的指引為目標。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We plan to consult on further changes to our perimeter guidance in late 2026, following a Government statutory instrument amending the underlying regulations. We aim to publish that guidance in early 2027."
+  },
+  {
+   "fact": "FCA 表示這份指引接續它 2026 年 6 月定案的規則與指引。出版品頁載明，2026 年 6 月 30 日 FCA 發布了一系列政策聲明，分別處理上架與揭露及市場濫用（PS26/9）、穩定幣發行（PS26/10）、受規範加密資產活動（PS26/11）、審慎規則（PS26/12），以及 FCA Handbook 的適用（PS26/13）。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "On 30 June 2026, we published a series of policy statements on our cryptoasset regime."
+  },
+  {
+   "fact": "出版品頁列出這份指引的適用對象（用 relevant to 起頭的舉例清單）：正在或打算在英國從事受規範加密資產活動的業者、已取得授權但可能需要額外許可的業者、依洗錢防制規則登記的業者、電子貨幣發行人與支付服務業者、正在探索加密資產市場的傳統金融業者，以及向英國消費者提供加密資產服務的境外業者。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": false,
+   "verbatim_quote": "overseas firms providing cryptoasset services to UK consumers"
+  },
+  {
+   "fact": "FCA 消費者、支付與競爭執行董事 David Geale 在新聞稿中的談話：這是 FCA 的說法，不是客觀事實。",
+   "url": "https://www.fca.org.uk/news/press-releases/crypto-firms-get-guidance-how-new-regime-applies",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We are building a crypto regime that firms, consumers and international partners can trust. Getting ready for regulation starts with understanding how the regime applies to your business. This guidance gives firms the clarity they’ve asked for so they can prepare with confidence."
+  },
+  {
+   "fact": "FCA 表示它正在以多種方式協助業者準備，包含申請前會談（pre-application discussions／PASS）與線上研討會；出版品頁另提醒受雙重監理的業者也要聯繫審慎監理總署（PRA）。",
+   "url": "https://www.fca.org.uk/publications/policy-statements/ps26-18-cryptoasset-perimeter-guidance",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Dual-regulated firms should also contact the Prudential Regulation Authority (PRA)."
+  },
+  {
+   "fact": "PS26/18 的 PDF 封面標示為「Policy Statement PS26/18 Cryptoasset Perimeter Guidance September 2026」，目次分七章加四個附錄與一份附件（Appendix 1 Made rules (legal instrument)）：第 1 章摘要、第 2 章 PERG 18 導論、第 3 章新的特定投資標的、第 4 章新的受規範加密資產活動、第 5 章排除、第 6 章與現行洗錢防制架構的互動、第 7 章相關修正。",
+   "url": "https://www.fca.org.uk/publication/policy/ps26-18.pdf",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Appendix 1 Made rules (legal instrument)"
+  }
+ ],
+ "not_said": [
+  "FCA 沒有說英國的新制會影響台灣的使用者或台灣的業者。三份來源以 2026-09-18 查核到全文，未見 Taiwan 一詞。任何「對台灣的影響」都只能寫成編輯的對照說明，不能寫成 FCA 的說法。",
+  "FCA 沒有在這三份來源裡點名任何一家交易所、錢包或發行人，也沒有說哪些業者會通過或不會通過授權。",
+  "FCA 沒有說 2027 年 10 月 25 日之後未取得授權的業者會怎麼處置，也沒有給出罰則金額。",
+  "FCA 沒有公布已經有幾家業者提出申請、或預期會有幾家。9 月 30 日申請窗口尚未開放。",
+  "FCA 沒有說這份指引改變了監理範圍。PS26/18 第 1.15 段反過來說 PERG 不能擴張或限縮國會設定的範圍。",
+  "FCA 沒有把 78 份回應的名單全部公開；PDF 的 Annex 1 標題是「List of non-confidential respondents」，也就是只列非機密者。本篇不寫回應者是誰。",
+  "FCA 沒有在這三份來源裡說明新 statutory instrument 的條文內容，只說政府已提出、將於 10 月諮詢。本篇不得引述該 SI 的內容。",
+  "FCA 沒有提到任何幣價、市值、交易量或報酬率。",
+  "本站沒有申請也沒有實測 FCA 的授權流程，不可寫成「我們試過」。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "政府修法（statutory instrument）的具體條文與生效時程。",
+   "seen_where": "FCA 新聞稿把「amendments to that legislation」連到 https://www.legislation.gov.uk/ukdsi/2026/9780348287233/contents",
+   "why_excluded": "該網址不在 crypto.md 的白名單內，本次也沒有抓取、沒有讀到正文。只寫 FCA 自己說的兩件事：政府已提出 targeted 修正、FCA 將於 10 月諮詢。不引述 SI 的任何條文或編號。"
+  },
+  {
+   "claim": "PS26/9 至 PS26/13 五份政策聲明的具體內容。",
+   "seen_where": "PS26/18 出版品頁與 PDF 第 1.3 段列出它們的編號與主題",
+   "why_excluded": "只讀到編號與一句話主題，沒有讀這五份的本文。文章可以寫「2026 年 6 月 30 日另發布五份政策聲明，分別處理上架揭露與市場濫用、穩定幣發行、受規範活動、審慎規則與 Handbook 適用」，不得進一步敘述其內容。"
+  },
+  {
+   "claim": "英國新制與歐盟 MiCA、台灣《虛擬資產服務法》的比較結論（誰比較嚴、誰比較早）。",
+   "seen_where": "無一手來源",
+   "why_excluded": "三份 FCA 來源都沒有做這個比較。文章若要並列時程，必須各自指到各自的來源（台灣的部分指到本站既有文章與金管會、全國法規資料庫），而且只陳述日期與制度名稱，不做優劣評價。"
+  },
+  {
+   "claim": "「60%」「59%」「52%」這些支持度數字代表業界對新制的整體態度。",
+   "seen_where": "PS26/18 第 1.10、3.8、5.5 段",
+   "why_excluded": "這些是對 CP26/13 特定問題的回應比例，母數各不相同（第 2 題 58 份、第 4 題 61 份、總回應 78 份），不能相加、不能互推，也不能當成「業界支持度」。要寫就連著題號與母數一起寫。"
+  },
+  {
+   "claim": "目前有多少家業者依洗錢防制規則（MLRs）在英國登記。",
+   "seen_where": "無——三份來源都沒有給這個數字",
+   "why_excluded": "沒有一手數字。不寫家數。"
+  },
+  {
+   "claim": "台灣使用者現在用的平台會不會因此停止服務英國客戶、或反過來影響台灣帳號。",
+   "seen_where": "這是這類新聞最常見的延伸問題",
+   "why_excluded": "沒有任何一手來源說明。只能寫「英國制度管的是在英國以營業方式從事這些活動的業者」，不推論對台灣帳號的影響。"
+  }
+ ],
+ "must_not_write": [
+  "不可寫「英國通過加密貨幣新法」。2026-02-04 通過的是 Cryptoasset Regulations，本次 9/16 發布的是 FCA 的最終指引（policy statement 與 PERG 指引），兩件事不同。",
+  "不可寫「新制 2026 年 9 月 16 日上路」。生效日是 2027 年 10 月 25 日，9/16 只是指引發布日，9/30 是申請窗口開放日。",
+  "不可把 2027 年 2 月 28 日寫成「申請截止日」而不加條件。它只針對想使用過渡（savings）規定的業者，FCA 的原文是 for firms wanting to use the transitional arrangements。",
+  "不可把新聞稿那句 including 起頭的活動清單寫成「共五種受規範活動」。PS26/18 第 4.1 段自己列的是七項，而新聞稿是舉例。",
+  "不可寫「既有登記會自動變成新制的許可」。FCA 兩處都明說不會自動轉換。",
+  "不可引述或改寫政府那份 statutory instrument 的條文——本次沒有讀到，而且來源不在白名單。",
+  "不可寫哪些交易所、錢包或穩定幣會受惠或會退出英國，也不可評價任何業者的合規能力。",
+  "不可出現幣價、漲跌幅、市值、交易量、報酬率、質押報酬或空投數字。可以說明「安排合格加密資產質押」是一項受規範活動，但不得寫質押可以拿到多少。",
+  "不可寫「在英國拿到授權＝安全」或「沒授權＝一定是詐騙」。FCA 自己的 Firm Checker 頁面也說該工具無法確認 FSCS 或金融申訴專員的保障是否適用。",
+  "不可把百分比寫成業界共識，也不可把三個題目的母數混用。",
+  "不可寫「台灣也應該比照」或任何政策建議。",
+  "不可下投資建議、不可寫買賣時機或值不值得持有。幣圈篇必須另帶免責 callout，且「不是投資建議」六個字逐字不可改。",
+  "不可寫「本站實測」「我們試用」。本文不做任何實測。"
+ ],
+ "overlaps_existing_article": "apps/api/app/guides/content/ 目前有 12 個 crypto-news-* 內容包（含索引）。最接近的三篇與本篇的分界如下：\n1) crypto-news-mica-transition-ends-20260701（歐盟 MiCA 過渡期 7 月 1 日屆滿）——同樣是「某個法域把加密資產納管、舊身分不自動延續」的題材，但法域不同（歐盟 vs 英國），而且 MiCA 那篇談的是過渡期結束，本篇談的是制度還沒生效、申請才要開始。本篇可以用一句話點出「英國不是歐盟成員、MiCA 不適用於英國」，細節留給那一篇。\n2) crypto-news-taiwan-vasp-act-20260630（台灣《虛擬資產服務法》三讀）——兩篇都是「從洗錢防制登記制走向許可制」。本篇適合在第四或第五節做時程對照：台灣是公布日 2026-07-22、施行日由行政院定之且 2026-09-18 查核仍為未定；英國是 2026-02-04 通過、2027-10-25 生效、2026-09-30 開放申請。對照只寫日期與制度名稱，不評價哪一邊比較好。\n3) crypto-news-eba-psd2-mica-20260212（EBA 對 PSD2 與 MiCA 銜接的意見書）——同樣涉及「舊授權與新制的銜接」，但那是歐盟的電子貨幣代幣與支付服務授權問題，本篇是英國的 perimeter 指引，兩者不重疊，不要互相牽引。\n本批次（4.5）內若同時採用 crypto-news-fca-p2p-crypto-crackdown-20260917，兩篇都是 FCA，必須分界清楚：那一篇寫的是現行洗錢防制登記制下的查緝行動（依 MLRs 2017），本篇寫的是 2027 年才生效的新授權制度。本篇可以用一句話提到「在新制生效前，英國對加密資產的規範主要落在洗錢防制與財務推銷」（新聞稿 Notes to editors 有這句），但查緝細節留給那一篇。",
+ "corrections_to_candidate_list": [
+  "docs/news-2026-batch-4/candidates-crypto.md 的「還沒查的方向」沒有把英國 FCA 列進去（只列了台灣、亞太的日韓星港、美國、技術與產業）。但 crypto.md 的白名單第一段就寫了「其他：英國 FCA」，而 2026 年英國的加密資產制度正在落地，是這個垂直目前最缺的「非美非歐盟」線索來源。建議把 FCA 補進候選清單的方向表。",
+  "FCA 的官方管道在本容器完全可用，可以補進候選清單的管道表：https://www.fca.org.uk/news 回 HTTP 200、185,794 bytes，是伺服器端算好的列表，每則都帶 dd/mm/yyyy 日期與分類（Press Releases／News stories／Speeches／Statements／Blogs／Warnings）；新聞稿與出版品頁也都回 200。另有 RSS：https://www.fca.org.uk/news/rss.xml（本次未測）。",
+  "FCA 的出版品頁（/publications/policy-statements/...）比新聞稿好用：它把「Consultation opens／Consultation closes／Policy statement」三個日期分欄列出，還有「First published／Last updated」，正好解決 BRIEF 第 11 點「日期混用」的問題，不必從版面猜。",
+  "英國新制的四個日期彼此很容易被寫混，建議直接記進候選清單：2026-02-04 國會通過、2026-09-16 最終指引發布、2026-09-30 申請窗口開放、2027-02-28 過渡申請截止、2027-10-25 制度生效。"
+ ],
+ "editorial_brief": "讀者：在台灣、手上有加密資產帳號、會看到「英國要管加密貨幣了」這種標題，但分不清「法通過了」「指引出來了」「制度上路了」是三件事的一般使用者。\n本篇的核心任務只有一個：把四個日期拆開，並說明「指引」在監理裡是什麼位置——它不是新法，而是主管機關告訴業者「你這門生意算不算在管制範圍裡」。\n第一段第一句就寫出事件日「2026 年 9 月 16 日」與「這是最終指引，不是新制上路」；第二段寫本文查核日 2026 年 9 月 18 日、資料以 FCA 當期公告為準、本文不做實測也不評價任何業者。\n五節建議：\n1) 發生了什麼——FCA 於 2026-09-16 發布政策聲明 PS26/18《Cryptoasset perimeter guidance》，是 2026 年 4 月 CP26/13 諮詢（收到 78 份回應）的定案；法源是 2026-02-04 國會通過的 Financial Services and Markets Act 2000 (Cryptoassets) Regulations 2026。\n2) 時間表——2026-09-30 開放申請、2027-02-28 是想用過渡規定者的截止日、2027-10-25 制度生效；既有登記與許可不會自動轉換。節尾放表格：3 欄（日期／發生什麼／對誰有影響），4 到 5 列，儲存格短，caption 寫查核日 2026-09-18。\n3) 指引在管什麼——七項新的受規範活動（發行合格穩定幣、保管與安排保管、經營合格加密資產交易平台、自營、代理交易、安排交易、安排質押），以及哪些東西被排除在「合格加密資產」之外（電子貨幣、法定貨幣、央行數位貨幣、只能向發行人贖回並在有限網路內使用者）。節尾放圖解 /guides/crypto-news-fca-perimeter-guidance-20260916/diagram-1.svg。\n4) 這份指引不能做什麼——PERG 是 FCA 對法律的解釋，不能擴張或限縮國會設定的範圍，只有法院能作權威解釋；FCA 也說 PERG 不適合處理個別商業模式。另外寫清楚「還沒定案的部分」：政府提出的新 statutory instrument 尚未納入，FCA 將於 10 月諮詢、目標 2027 年初發布修訂版。\n5) 台灣讀者可以怎麼看——把它當成一個可遷移的判讀方法：看到「某國要管加密貨幣」的新聞時，先分辨這是法案、指引還是生效日；再看申請窗口與過渡期。並與台灣對照：台灣《虛擬資產服務法》2026-07-22 公布、施行日由行政院定之，全國法規資料庫在 2026-09-18 查核仍顯示最後生效日期未定。對照只列日期，不評價。\n生活情境如果要寫，必須標明是編輯設計的例子。\n刻意不談：任何代幣的價格與是否值得持有、哪些業者會受惠或退出、英國制度對台灣帳號的影響推論、政府新 SI 的條文。\n免責 callout 照 crypto.md 逐字，查核日填 2026-09-18。"
+}

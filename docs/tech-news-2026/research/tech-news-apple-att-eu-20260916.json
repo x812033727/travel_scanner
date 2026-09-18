@@ -1,0 +1,408 @@
+{
+  "slug": "tech-news-apple-att-eu-20260916",
+  "event_date": "2026-09-16",
+  "event_date_basis": "developer.apple.com/news/?id=idsft9ai 的 <p class=\"lighter article-date\"> 印出「September 16, 2026」；developer.apple.com/news/rss/news.rss 對同一篇的 pubDate 是 2026-09-16T17:00:11+00:00（台北時間為 2026-09-17 01:00，本文採公告頁印出的日期2026-09-16，換算細節不寫進正文，只在此註記依據）。調整本身沒有日期，只有版本號（iOS 27.2／iPadOS 27.2），本文不把版本號換算成日期。",
+  "title": "Apple 調整歐盟 App 追蹤透明度詢問框：五國強制新版、設定改名、一年可再問",
+  "checked_on": "2026-09-18",
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 重新抓取兩條來源，結果與前期研究紀錄（2026-09-18 探索代理版本）完全一致：(1) developer.apple.com/news/?id=idsft9ai 回 HTTP 200，106,682 bytes；(2) developer.apple.com/app-store/user-privacy-and-data-use/ 回 HTTP 200，131,579 bytes。位元組數與前期紀錄逐字相同，可視為同一版本內容。獨立查核當天（2026-09-18）再抓一次，兩條的狀態碼與位元組數仍然相同。重讀時另外確認一個前期紀錄沒有完整處理的細節：user-privacy 頁面本身不同段落的空白字元不一致——「as part of agreements...」那段開頭四處使用一般空白，但頁面稍後「In iOS 14.5, iPadOS 14.5...」那句在數字與單位間用的是 HTML 實體 &nbsp;（例如 iOS&nbsp;14.5）而不是一般空白，逐字比對時必須把這個實體原樣保留才找得到，本紀錄的 verified_facts 已依此修正。同一頁的 h2「ATT in the European&nbsp;Union」也用實體，而新聞頁那一段用的是 U+00A0 字元本身（news.html 共 23 個 U+00A0、1 個 &nbsp; 實體；privacy.html 共 0 個 U+00A0、18 個 &nbsp; 實體），兩頁的存法不同，逐字搜尋要分開處理。引用 App Review Guidelines 的錨點文字也有排版不一致：5.1.2(i) 沒有空格、5.1.1 (iv) 有空格，本紀錄同樣原樣保留兩種寫法。關於中文版：developer.apple.com/tw/news/?id=idsft9ai 今天回 HTTP 404（81,990 bytes），但那不是軟性 404，而是真的 404 狀態碼；而且 developer.apple.com/tw/news/ 這個路徑本身就回 404（81,978 bytes），developer.apple.com/jp/news/?id=idsft9ai 與 /cn/ 版則是 200 但 302 落到英文的 developer.apple.com/news/ 列表頁（504,440 bytes）。也就是說 Apple Developer News 根本沒有語系化的單篇網址，那個 404 不能拿來證明「這一篇沒有中文版」。文章與本紀錄因此只保留可驗證的說法：本文讀到的兩個頁面都是英文，兩頁都沒有給設定名稱的中文寫法。",
+  "sources": [
+    {
+      "title": "Updates to App Tracking Transparency in the European Union",
+      "url": "https://developer.apple.com/news/?id=idsft9ai",
+      "publisher": "Apple (Apple Developer News)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "User privacy and data use - App Store",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "publisher": "Apple (Apple Developer)",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "2026 年 9 月 16 日 Apple 在開發者新聞公告，將調整歐盟的 App 追蹤透明度框架；Apple 將原因歸給「與部分歐洲競爭主管機關達成協議」，沒有點名任何一個主管機關。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As part of agreements with select European competition authorities, Apple is introducing changes to its App Tracking Transparency framework in the European Union."
+    },
+    {
+      "fact": "改變自 iOS 27.2 與 iPadOS 27.2 起生效，是版本號不是日期；頁面沒有寫這兩個版本的推出日期。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Beginning with iOS 27.2 and iPadOS 27.2, developers will have the option to use an alternative version of the App Tracking Transparency system prompt in the EU."
+    },
+    {
+      "fact": "必須取得使用者許可才能追蹤的觸發條件本身沒有改變，改變的只是詢問框的呈現方式。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The requirements for when you must seek permission to track users will remain the same."
+    },
+    {
+      "fact": "德國、法國、義大利、波蘭、羅馬尼亞五個國家的 App 只能使用新版詢問框，Apple 說是「基於法律要求」，沒有點名法律。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Due to legal requirements, only the alternative version of the system prompt is available for apps distributed in Germany, France, Italy, Poland, and Romania."
+    },
+    {
+      "fact": "新版詢問框「版面與文字經過調整」，並提供一個標示為 Additional Information 的文字按鈕，可讓使用者看到更多關於資料如何被串連或分享給資料仲介的說明；頁面沒有附上完整畫面或逐字文案。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The alternative version of the App Tracking Transparency system prompt has modified formatting and language and provides you the option to use a text button labeled “Additional Information.” This allows you to surface additional information about your request to link user or device data collected from your app with user or device data collected from other companies’ apps, websites, or offline properties for targeted advertising or advertising measurement purposes, or to share user or device data with a data broker."
+    },
+    {
+      "fact": "歐盟的開發者可以在使用者上次於同一個 App 做出選擇的一年後，透過同一個系統詢問框再問一次，不論當初是同意或拒絕；can reprompt 是給開發者的許可，不是預測使用者一定會被再問。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In addition, for users in the European Union, you can reprompt a user via the App Tracking Transparency system prompt one year after the user’s previous choice in your app’s App Tracking Transparency system prompt, regardless of whether that choice was to accept or reject."
+    },
+    {
+      "fact": "使用者只要關閉裝置設定裡原本名為「Allow Apps to Request to Track」的選項，就不會被再次詢問；Apple 表示這項設定在歐盟改名為「Allow Apps to Request to Link Your Activity Across Companies」。頁面沒有提供這個新名稱的官方中文譯法。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A user cannot be re-prompted if they have disabled “Allow Apps to Request to Track” (renamed to “Allow Apps to Request to Link Your Activity Across Companies” in the EU) in their device’s Settings."
+    },
+    {
+      "fact": "使用者若未同意追蹤，裝置的廣告識別碼會變成全部是零，開發者不得依 Apple 定義的方式追蹤；此規則不因這次歐盟調整而改變。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Unless you receive permission from the user to enable tracking, the device’s advertising identifier value will be all zeros and you may not track them as described above."
+    },
+    {
+      "fact": "App 不得操弄、誘導或強迫使用者同意不必要的資料存取，依 App Review Guidelines 5.1.1 (iv)；此規範沿用既有審查指南，不是本次公告新增。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "apps must respect the user's permission settings and not attempt to manipulate, trick, or force people to consent to unnecessary data access."
+    },
+    {
+      "fact": "自 iOS 14.5、iPadOS 14.5 與 tvOS 14.5 起，開發者若要追蹤使用者或存取裝置廣告識別碼，就需要透過 ATT 框架取得許可；這是既有基準，不是這次歐盟調整的內容。原始頁面文字在數字與單位間使用 HTML 的 &nbsp; 實體（例如 iOS&nbsp;14.5），本欄位依來源原樣保留。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In iOS&nbsp;14.5, iPadOS&nbsp;14.5, and tvOS&nbsp;14.5 or later, you need to receive the user’s permission through the App&nbsp;Tracking&nbsp;Transparency (ATT) framework in order to track them or access their device’s advertising identifier."
+    },
+    {
+      "fact": "App 不得以同意追蹤作為使用功能的條件、也不得以誘因換取同意，依 App Review Guidelines 5.1.2(i)；此規範同樣沿用既有審查指南。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "App Review Guidelines: 5.1.2(i)"
+    },
+    {
+      "fact": "頁面引用審查指南 5.1.1 條時，錨點文字寫的是「5.1.1 (iv)」（條號與 (iv) 之間有空格），與 5.1.2(i)（無空格）的排版不一致；本欄位依來源原樣保留這個不一致，不代替 Apple 統一格式。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "App Review Guidelines: 5.1.1 (iv)"
+    },
+    {
+      "fact": "公告頁面的 <h2 class=\"article-title\"> 標題是 Updates to App Tracking Transparency in the European Union，貼在 Apple Developer 新聞頁（網址帶 id=idsft9ai），文章日期印的是 September 16, 2026。頁面標題在 European 與 Union 之間用的是不斷行空格（U+00A0），不是一般空格，逐字比對時要保留。公告正文只有一段（第二輪查核訂正：<div class=\"article-text\"> 裡實際上有兩個 <p>，第一個是那段正文，第二個只放一個連到 user-privacy-and-data-use 的 Learn more 連結，不是正文段落）；本次調整的其餘細節都不在公告頁上。",
+      "url": "https://developer.apple.com/news/?id=idsft9ai",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Updates to App Tracking Transparency in the European Union"
+    },
+    {
+      "fact": "獨立查核新增：說明頁的常見問答有一則專門寫歐盟的問題，題目裡出現兩個法規名稱 ePrivacy 與 GDPR。這是兩個頁面唯一出現法規名稱的地方，而且是在說開發者可以用 Additional Information 按鈕遵循當地隱私法，不是 Apple 為這次調整給出的法律依據——原稿「整頁沒有看到能夠對應到特定機關或法規的文字」因此不成立，文章已改成只說 Apple 沒有說這次調整依據哪一部法律，並寫出這則問答。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Can I provide additional information and consent controls with my app’s ATT prompt implementation, to comply with local privacy laws in the European Union, such as ePrivacy or GDPR?"
+    },
+    {
+      "fact": "獨立查核新增：同一則常見問答說明 Additional Information 按鈕的用途不只是顯示更多說明，還可以提供更細的同意選項；Apple 並寫明按鈕後面的內容完全由開發者自己負責。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In the European Union, you have the option to use the “Additional Information” text button in the ATT prompt to surface additional information and more granular consent controls to comply with local privacy laws or other applicable legal requirements"
+    },
+    {
+      "fact": "獨立查核新增：用了這種分層作法也不能繞過 ATT——使用者在詢問框給出許可之前，開發者仍不得取得裝置的廣告識別碼。這是對讀者最有用的一句，原稿沒有寫，已補進第 2 節。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "However, you cannot access the device’s advertising identifier, or otherwise collect and use device or user data from your app as described in the App Tracking Transparency system prompt, until the user has granted your app permission in that prompt."
+    },
+    {
+      "fact": "獨立查核新增：說明頁在歐盟那一節的第二段旁邊嵌了一張畫面圖（檔名 screen-att-eu-sheet-medium_2x.png，放在 device-iphone-16-pro-titanium 的手機外框裡，alt 是空字串）。該圖網址以 curl -A \"Mokaair-editorial\" 抓到 HTTP 200、66,000 bytes、image/png。原稿三處寫「Apple 沒有附圖」「沒有提供完整畫面」不成立，已改成 Apple 沒有用文字寫出完整文案、頁面旁邊嵌了一張畫面圖、本文不描述介面畫面。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<img src=\"/app-store/user-privacy-and-data-use/images/screen-att-eu-sheet-medium_2x.png\" width=\"100%\" alt=\"\" aria-label=\"\">"
+    },
+    {
+      "fact": "說明頁在歐盟那一節末尾列出四份開發者文件，兩份的標題後面帶 (new)：Requesting Authorization with Expanded Interface (new)、Requesting Authorization、Tracking Markdown Usage Description (new)、Tracking Usage Description。四份文件本身在本次查核沒有開啟；文章只寫有四份、兩份標示新增，以及頁面上那兩個連結分別指向授權請求方法（/documentation/apptrackingtransparency/attrackingmanager/requesttrackingauthorization(usingexpandedinterface:additionalinformationaction:completionhandler:)）與 Info.plist 的說明文字欄位（/documentation/bundleresources/information-property-list/nsusertrackingmarkdownusagedescription）。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Requesting Authorization with Expanded Interface (new)"
+    },
+    {
+      "fact": "第二輪查核新增：「tracking」的定義寫在說明頁一般性的「Ask permission to track」一節（在歐盟那一節之前），不在歐盟那一節裡；歐盟那一節只是在描述 Additional Information 按鈕的用途時重複同一組用語。這一條是 FAQ 第 1 題「這個定義寫在說明頁一般性的段落，不在歐盟那一節裡」的依據，第一輪改寫了那一句但沒有留下對應的 fact。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Tracking refers to the act of linking user or device data collected from your app with user or device data collected from other companies’ apps, websites, or offline properties for targeted advertising or advertising measurement purposes. Tracking also refers to sharing user or device data with data brokers."
+    },
+    {
+      "fact": "第二輪查核新增：Apple 寫明，透過 Additional Information 文字按鈕提供的補充說明或更細的同意選項，「完全」由開發者自己負責（entirely your responsibility）。第一輪把這件事寫進第 2 節時漏掉 entirely，正文已補成「完全由開發者自己負責」。同一則問答也把這個選項的用途限定在遵循當地隱私法或其他適用的法律要求（to comply with local privacy laws or other applicable legal requirements，這串字就在第 15 條 fact 的引文尾段），正文已補上這個限定。",
+      "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Any additional information related to your request or more granular consent controls provided via the text button are entirely your responsibility."
+    }
+  ],
+  "not_said": [
+    "Apple 沒有點名任何一個「歐洲競爭主管機關」，也沒有說這次調整依據的是哪一部法律：公告與說明頁的同一段只寫 agreements with select European competition authorities 與 Due to legal requirements。注意這句不能寫成「整頁沒有出現任何法規名稱」——說明頁的常見問答裡有 ePrivacy 與 GDPR，但那是在講開發者可以用新按鈕遵循當地隱私法，不是這次調整的依據（獨立查核 2026-09-18 以 grep 在 privacy.html 查到 GDPR 1 次、ePrivacy 1 次，都在同一則問答）。",
+    "Apple 沒有給 iOS 27.2 或 iPadOS 27.2 的推出日期，也沒有給新版詢問框開始出現在使用者面前的日期。",
+    "兩個頁面都沒有出現「台灣」或「Taiwan」字樣；官方沒有說明「在歐盟散布的 App」是依商店前台、裝置地區或其他方式判定。",
+    "Apple 沒有公布任何與同意率、拒絕率或廣告成效有關的數字，本站也沒有做任何實測，所以無法比較新舊版本的效果。",
+    "本文讀到的兩個來源頁面都是英文，兩頁都沒有給「Allow Apps to Request to Track」或歐盟新名稱的中文寫法，所以文中的中文說法是本站翻譯。（獨立查核訂正：不可以再寫「Apple 沒有發布這則公告的繁體中文版」。依據本來是 developer.apple.com/tw/news/?id=idsft9ai 回 404，但 developer.apple.com/tw/news/ 這個路徑本身就回 404、/jp/ 與 /cn/ 版則 302 落到英文列表頁，Apple Developer News 根本沒有語系化的單篇網址，那個 404 撐不起這個否定句。也不可以寫成「不是 Apple 官方用語」——iOS 介面有沒有官方中文字串不在這兩條來源的範圍內。）",
+    "Apple 沒有說明「can reprompt」在實務上是否每個開發者都會使用，也沒有說明歐盟使用者實際被再次詢問的比例。",
+    "兩個頁面都沒有提到 2026-08-18 的歐盟商業條款公告（tech-news-apple-eu-business-terms-20260818 涵蓋的主題），彼此互不引用。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "新版詢問框的完整畫面、逐字文案，以及 Additional Information 按鈕點開後顯示的完整內容。",
+      "seen_where": "user-privacy-and-data-use 頁面只用「modified formatting and language」與按鈕標籤帶過，並在旁邊嵌了一張截圖（screen-att-eu-sheet-medium_2x.png），本文依規定不描述介面截圖。",
+      "why_excluded": "沒有看過完整畫面，且規格禁止描述詢問框的畫面或介面截圖；只轉述 Apple 用文字寫出的部分。"
+    },
+    {
+      "claim": "「與部分歐洲競爭主管機關達成協議」具體是哪個機關、哪個案件。",
+      "seen_where": "兩個來源都只寫 select European competition authorities，沒有名字。",
+      "why_excluded": "指名會是本文自己的推測，不是來源內容；規格明確禁止點名。"
+    },
+    {
+      "claim": "這次調整依據的是《數位市場法》（DMA）或其他特定法規。",
+      "seen_where": "解釋這次調整的那一段只寫 legal requirements 與 agreements with select European competition authorities；兩頁全文以 grep 查 DMA 與 Digital Markets 各 0 次（獨立查核 2026-09-18 複查）。頁面上唯一出現的法規名稱是常見問答裡的 ePrivacy 與 GDPR，而那一則講的是開發者如何遵循當地隱私法。",
+      "why_excluded": "與 tech-news-apple-eu-business-terms-20260818 遇到的是同一種陷阱：來源沒寫就不能補上一個聽起來合理的法規名稱。"
+    },
+    {
+      "claim": "四份開發者技術文件（Requesting Authorization with Expanded Interface 等）各自的完整內容。",
+      "seen_where": "user-privacy 頁面只列出四個文件標題與連結，本次查核沒有另外開啟這四份文件本身。",
+      "why_excluded": "只核實了標題與其中兩個標示「(new)」，沒有讀文件內文，因此文章只提到有四份、兩份為新增，不描述內容細節。"
+    },
+    {
+      "claim": "「在歐盟散布的 App」的判定方式（依商店前台、裝置地區或 IP）。",
+      "seen_where": "reprompt 段落用「apps distributed in Germany, France, Italy, Poland, and Romania」，但沒有解釋判定依據。",
+      "why_excluded": "來源沒有說明判定方法，寫出具體機制會是本文自己的推論。"
+    },
+    {
+      "claim": "這項改變對廣告產業、App 開發者營收或使用者同意率的影響。",
+      "seen_where": "不存在於任何一個來源頁面。",
+      "why_excluded": "沒有一手來源提供這類數字或結論，寫出來會是評論而非查證得到的事實。"
+    }
+  ],
+  "editorial_brief": "讀者是看過『允許 App 要求追蹤』彈窗、但不清楚它在歐盟正在改版的台灣一般讀者。角度是：同一個隱私詢問框正在變成依地區而不同的產品——歐盟另有版本、五個國家強制用新版、裝置設定改名、開發者可在一年後再問——但觸發許可的門檻、拒絕後廣告識別碼歸零、App 不得以同意換取功能，這些都沒有變。第二個角度是台灣讀者最容易誤解的地方：官方公告沒有涵蓋台灣，這句話不等於台灣不會改，也不等於台灣會改，只是官方目前沒有說。五段結構：(1) 9/16 公告了什麼、(2) 新版詢問框與五國差異＋表格、(3) 設定改名與一年再問＋圖解、(4) 沒有改變的部分、(5) 官方沒有說的事（含台灣）。",
+  "must_not_write": [
+    "不可以把《數位市場法》（DMA）或任何法規寫成原因；Apple 只寫「與部分歐洲競爭主管機關達成協議」與「法律要求」。",
+    "不可以點名任何競爭主管機關。",
+    "不可以把 iOS 27.2 或 iPadOS 27.2 換算成日期或月份。",
+    "不可以描述新版詢問框的完整畫面、逐字文案或介面截圖。",
+    "不可以寫台灣也會改、或台灣不會改；只能寫官方公告未提及台灣。",
+    "不可以把「開發者可以在一年後再問一次」寫成「使用者一年後會被再問一次」。",
+    "不可以估計這項改變對同意率、拒絕率或廣告產業的影響；Apple 沒有給數字，本站沒有實測。",
+    "不可以把 2026-08-18 的歐盟商業條款公告和這次 ATT 調整說成同一件事或同一份和解。",
+    "不可以自己發明歐盟那個設定的正式中文譯名；本文讀到的兩個來源頁面都是英文、兩頁都沒有給這兩個名稱的中文寫法，中文說法要標明是本站翻譯。（第二輪查核訂正：本條原本寫「Apple 沒有發布這則公告的繁體中文版（/tw/ 404）」，那個理由不成立，見 not_said 第 5 條與 sourcing_notes；禁止自創譯名的規則本身不變。）",
+    "不寫任何規避追蹤或反制廣告的操作教學。",
+    "不寫購買建議、不比較手機。",
+    "不寫投資免責 callout。",
+    "主圖與 SVG 圖解不得出現商標、字標、圖示或介面截圖；產品名稱用純文字。",
+    "不要列表、不要 Markdown、不要 emoji，zh-TW 包不得出現簡體字。"
+  ],
+  "live_data_warnings": [
+    "沒有在文章中使用任何名冊列數、feed 筆數或即時計數類的活資料；兩個來源都是敘述性文字頁面，不是儀表板或清單。",
+    "developer.apple.com 的新聞頁與說明頁都可能在未來被 Apple 編輯更新而不改變網址，之後要引用本文時應重新查核，不能假設 2026-09-18 讀到的內容之後仍然一樣。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "歐盟版追蹤詢問框",
+  "diagram": {
+    "title": "歐盟版 ATT 詢問框四項調整",
+    "caption": "整理自 Apple 2026 年 9 月 16 日的開發者公告與說明頁，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "詢問框版本",
+        "歐盟另有新版"
+      ],
+      [
+        "五國唯一版本",
+        "德法義波羅只能用新版"
+      ],
+      [
+        "設定改名",
+        "裝置設定歐盟改名"
+      ],
+      [
+        "滿一年可再問",
+        "開發者可再顯示一次"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "EU ATT Prompt",
+      "diagram": {
+        "title": "Four Changes to the EU ATT Prompt",
+        "caption": "Compiled from Apple's developer announcement and support page dated September 16, 2026, checked September 18, 2026.",
+        "nodes": [
+          [
+            "Prompt Version",
+            "EU has an alternative version"
+          ],
+          [
+            "Five Countries",
+            "Only the new version allowed"
+          ],
+          [
+            "Setting Renamed",
+            "Device setting renamed in EU"
+          ],
+          [
+            "Yearly Reprompt",
+            "Developers may ask again"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "EU版ATT確認画面",
+      "diagram": {
+        "title": "EU版ATT確認画面の4つの変更点",
+        "caption": "Appleの2026年9月16日付の開発者向け発表とサポートページをもとに作成。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "確認画面バージョン",
+            "EUに新版あり"
+          ],
+          [
+            "対象は5カ国",
+            "新版のみ使用可"
+          ],
+          [
+            "設定名変更",
+            "EUで改称"
+          ],
+          [
+            "1年後に再表示",
+            "開発者が可能"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "EU ATT 프롬프트",
+      "diagram": {
+        "title": "EU ATT 프롬프트 4가지 변경점",
+        "caption": "Apple의 2026년 9월 16일자 개발자 공지와 지원 페이지를 바탕으로 정리. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "프롬프트 버전",
+            "EU에 새 버전 있음"
+          ],
+          [
+            "대상 5개국",
+            "새 버전만 허용"
+          ],
+          [
+            "설정 명칭 변경",
+            "EU에서 명칭 변경"
+          ],
+          [
+            "1년 후 재요청",
+            "개발자가 가능"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "欧盟版追踪询问框",
+      "diagram": {
+        "title": "欧盟版 ATT 询问框四项调整",
+        "caption": "整理自 Apple 2026 年 9 月 16 日的开发者公告与说明页，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "询问框版本",
+            "欧盟另有新版"
+          ],
+          [
+            "五国唯一版本",
+            "德法意波罗只能用新版"
+          ],
+          [
+            "设置改名",
+            "设备设置欧盟改名"
+          ],
+          [
+            "满一年可再问",
+            "开发者可再显示一次"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "兩條 sources 當天以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body：news 200／106,682 bytes（正文一段 <p> 加 Learn more）、user-privacy 200／131,579 bytes（含 ATT in the European Union 一節與整段常見問答），位元組數與研究紀錄逐字相同。把文章拆成 74 條主張逐條回原文比對：正文 16 段、summary 4 句、FAQ 6 題答句、callout、表格 4 列與 caption、圖解 caption、title、description。13 條 verbatim_quote 全部以程式在該頁原始 HTML 搜尋，13/13 命中（第 9 條的 iOS&nbsp;14.5 只在原始 HTML 命中，那是對的：privacy.html 用 &nbsp; 實體、news.html 用 U+00A0 字元）。另外為了反駁而讀（沒有進 sources）：developer.apple.com/news/rss/news.rss（200，該篇 pubDate Wed, 16 Sep 2026 10:00:11 PDT）、developer.apple.com/tw/news/?id=idsft9ai（404）、developer.apple.com/tw/news/（404）、developer.apple.com/tw/app-store/user-privacy-and-data-use/（404）、developer.apple.com/jp/ 與 /cn/ 的同一篇（200 但落到英文列表頁）、說明頁嵌的 screen-att-eu-sheet-medium_2x.png（200、66,000 bytes、image/png）。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "「Apple 沒有附圖也沒有列出完整文字」不成立：說明頁在歐盟那一段旁邊嵌了 screen-att-eu-sheet-medium_2x.png（curl 200、66,000 bytes）。第 2 節、第 5 節與 FAQ 第 3 題三處都改成「Apple 沒有用文字寫出完整文案，頁面旁邊嵌了一張畫面圖，本文不描述介面畫面」。",
+      "「兩個頁面沒有看到能夠對應到特定機關或法規的文字」不成立：說明頁的常見問答出現 ePrivacy 與 GDPR。第 5 節改寫成 Apple 沒有說這次調整依據哪一部法律，並寫出那則問答的脈絡；summary 第 4 句與 callout 同步改成「沒有點名主管機關，也沒有說這次調整依據哪一部法律」。",
+      "「Apple 目前只發布英文版公告」「Apple 還沒有發布這則公告的繁體中文版本」刪掉：依據的 /tw/news/?id= 404 撐不起這句話，因為 /tw/news/ 整個路徑就是 404、/jp/ 與 /cn/ 只會落到英文列表頁。第 3 節與第 5 節改成「本文讀到的兩個頁面都是英文，兩頁都沒有給這兩個名稱的中文寫法，所以中文說法是本站翻譯」。",
+      "「在大多數歐盟國家是開發者可以自行選擇」是自己數出來的比較：來源沒有印歐盟有幾國。改成「在這五國以外的歐盟國家，要不要改用新版是開發者自己的選擇」。",
+      "「頁面沒有提到 macOS、tvOS、watchOS 或 visionOS」不成立：這四個字在新聞頁的全站導覽裡都有，tvOS 更出現在說明頁的 iOS&nbsp;14.5 那句正文。改成「這段調整也只寫這兩個系統，沒有說 macOS、tvOS、watchOS 或 visionOS 會不會比照」。",
+      "Additional Information 按鈕補上來源真的寫了、原稿漏掉的兩件事：可以提供更細的同意選項、內容由開發者自己負責，以及使用者在詢問框給出許可之前開發者仍不得取得廣告識別碼。原稿的「按下之後可以看到更多說明」改成按來源的主詞寫（是開發者去說明，不是 Apple 顯示）。",
+      "表格三處：Additional Information 按鈕的「歐盟以外：沒有」改成「不適用」（那個按鈕只存在於歐盟版詢問框，不是頁面說歐盟以外沒有）；設定名稱的「歐盟以外：允許 App 要求追蹤」改成來源印的英文 Allow Apps to Request to Track，歐盟兩欄改成「已改名，見內文」；caption 改註兩頁都是英文、設定名稱照英文原文列。",
+      "「改名的同時，歐盟多了一項既有規則沒有的彈性」改成「同一段還寫了一項只給歐盟的彈性」，並補一句「說明頁沒有寫歐盟以外能不能這樣再問一次」——來源只有 for users in the European Union 這一句，沒有寫舊規則是什麼（全頁 reprompt／re-prompt 各 1 次，都在歐盟那一段）。",
+      "「標示新增等於在說……不是把舊版詢問框換個顏色而已」的後半是沒有來源的畫面評論，刪掉。",
+      "「這兩條規範沿用既有的審查指南，不是這次公告新增的規則」改成可驗證的寫法：「這兩條寫在說明頁的常見問答裡，9 月 16 日那則公告沒有提到它們」。",
+      "FAQ 第 2 題的「App 不能因為使用者拒絕而關閉其他功能」改回來源的方向：「不得以同意追蹤作為使用功能的條件」（5.1.2(i) 問的是 gate functionality on agreeing）。",
+      "FAQ 第 1 題「這個定義在歐盟與其他地區相同」改成「這個定義寫在說明頁一般性的段落，不在歐盟那一節裡」；第 2 節「能不能跳過詢問框」改成來源的「什麼時候必須取得使用者許可」。",
+      "研究紀錄：新增 5 條 verified_facts（歐盟版常見問答的 ePrivacy／GDPR 題、按鈕可提供更細同意選項、未取得許可不得取得廣告識別碼、內嵌的畫面圖、四份文件清單）；改寫 not_said 的第 1 與第 5 條、unverified_or_excluded 第 3 條的 seen_where，並在 sourcing_notes 記下 /tw/ 404 的真正意義與兩頁 &nbsp; 存法不同。"
+    ],
+    "checked_and_correct": [
+      "13 條 verbatim_quote 全部在該頁原始 HTML 搜尋得到，含刻意保留的 iOS&nbsp;14.5 與標題的 U+00A0——這是本批少見的乾淨。",
+      "五國名單逐字正確（Germany, France, Italy, Poland, and Romania），五個、沒有多也沒有少，且「基於法律要求」有歸因、沒有點名法律。",
+      "審查指南條號的排版差異照來源保留：5.1.2(i) 無空格、5.1.1 (iv) 有空格，兩種寫法在來源各自存在，不是筆誤，沒有被統一。",
+      "版本號沒有被換算成日期；iOS 27.2／iPadOS 27.2 全文只當版本號用，沒有出現任何推測的上市月份。",
+      "reprompt 一律寫成給開發者的許可（you can reprompt），沒有寫成使用者一定會被再問；設定關掉就不會被再問也照來源寫。",
+      "拒絕後廣告識別碼全零、必須取得許可的門檻不變、iOS 14.5／iPadOS 14.5／tvOS 14.5 的起點，三條都與來源一致。",
+      "台灣的寫法正確：兩頁 grep「台灣」「Taiwan」各 0 次，文章只寫官方公告未提及台灣，沒有預測台灣會不會改。",
+      "界線：沒有購買建議、沒有推薦式比價、沒有機型或價格比較、沒有投資免責 callout（科技垂直不帶），廠商說法一律寫成「Apple 說明／Apple 表示／Apple 寫明」。",
+      "同意率、拒絕率、廣告成效一個數字都沒有——兩頁 grep 百分比只有 img 的 width=\"100%\"，文章也明寫沒有數字可比。",
+      "與既有的 tech-news-apple-eu-business-terms-20260818 沒有矛盾：那篇的主體是歐盟商業條款與抽成、Apple 說的對象是歐盟執委會；這篇沒有把兩件事說成同一份和解，也沒有互相覆蓋的事實。",
+      "事件日 2026-09-16 三處一致（slug 尾碼、news_date、正文第一段），依據是公告頁自己印的 September 16, 2026。"
+    ],
+    "left_for_the_owner": [
+      "RSS 的 pubDate 是 Wed, 16 Sep 2026 10:00:11 PDT，換成台北時間是 2026-09-17 凌晨 1 點。文章採用 Apple 頁面印出的 9 月 16 日（與 slug、news_date 一致），台北時間的換算只記在 event_date_basis，沒有寫進正文——要不要在正文補一句「台北時間為 9 月 17 日凌晨」是編輯決定，查核代理不代決定。",
+      "「允許 App 要求追蹤」這個中文說法：本文兩條來源都是英文，所以文章寫成本站翻譯。iOS 繁體中文介面可能本來就有官方字串，但那要另外加一條來源才寫得了，本次沒有加。",
+      "本文寫「Apple 沒有說明『在歐盟散布的 App』怎麼判定」，而 tech-news-apple-eu-business-terms-20260818 依它自己的來源寫商業條款是看商店前台。兩篇的來源不同、主題不同，不衝突，但若站主希望讀者不誤會，可在編輯階段加一句互相對照。",
+      "hero.alt 與圖解 alt 未動（依規格由協調者依實際畫面改寫）；圖解四格與 caption 內容未變，圖上沒有數字。"
+    ],
+    "second_round": {
+      "checked_by": "second-round independent factcheck agent (no part in drafting or in the first round)",
+      "checked_on": "2026-09-18",
+      "method": "兩條 sources 當天自行以 curl -sL -A \"Mokaair-editorial\" 重抓：news 200／106,682 bytes、user-privacy 200／131,579 bytes，與第一輪報告與本紀錄的位元組數逐字相同。從 privacy.html 原始 HTML 切出「ATT in the European Union」整節（h2 起至下一個 h2 止，3,467 bytes：3 段正文＋1 張內嵌圖＋4 個文件連結）與常見問答整段，程式切出 17 則問答逐則讀過（第一輪說 17 則，複點相符）。覆核範圍：第一輪改動過的每一段與新寫的每一句共 31 條主張，另加指派訊息點名的 8 個疑點。18 條 verbatim_quote 全部以連續字串比對原始 HTML，18/18 命中（含 iOS&nbsp;14.5 實體與標題的 U+00A0）。另以程式複點：GDPR privacy 1 次／news 0 次、ePrivacy privacy 1 次／news 0 次、DMA 與 Digital Markets 兩頁皆 0 次、Taiwan 與台灣兩頁皆 0 次、reprompt privacy 1 次、re-prompted 1 次、5.1.2(i) 無空格 1 次、5.1.1 (iv) 有空格、iOS&nbsp;14.5 只以實體存在、兩頁百分比只有 img 的 width=\"100%\"。為了反駁而讀（沒有進 sources）：內嵌的 screen-att-eu-sheet-medium_2x.png（200、66,000 bytes、image/png，第一輪數字複驗成立）與 developer.apple.com/news/rss/news.rss（200，該篇 pubDate Wed, 16 Sep 2026 10:00:11 PDT）。",
+      "claims_rechecked": 31,
+      "edits": 6,
+      "verdict": "ok",
+      "edits_to_the_pack": [
+        "第 1 節第 1 段：「Apple 表示這是『與部分歐洲競爭主管機關達成協議』後的調整」改成「Apple 表示這些調整是『與部分歐洲競爭主管機關達成的協議』的一部分」。來源是 As part of agreements with select European competition authorities, Apple is introducing changes...，寫的是「屬於協議的一部分」，不是「達成協議之後」的時間先後。同一句的「也沒有指出依據的是哪一部法律」改成「也沒有說這次調整依據的是哪一部法律」，與 summary 第 4 句、callout、第 5 節第 1 段同樣限縮到「這次調整」——這是全篇四處唯一還沒限縮範圍的一處。",
+        "第 2 節第 1 段：「也就是把使用者或裝置資料，和其他公司旗下 App…串連」改成「也就是把自家 App 蒐集到的使用者或裝置資料…」。來源兩處都寫 user or device data collected from your app，漏掉這個限定會把串連的來源資料寫得比 Apple 寬；FAQ 第 1 題本來就寫「把它蒐集到的」，改後兩處一致。",
+        "第 2 節第 2 段（第一輪新寫、沒有第二人看過的那一段）補回兩個被省掉的限定：一是這個選項的用途限定在「為了遵循當地隱私法等法律要求」（to comply with local privacy laws or other applicable legal requirements；用「等法律要求」避免把 or other applicable legal requirements 寫成封閉清單），二是責任歸屬的 entirely，改成「完全由開發者自己負責」。",
+        "同一段的「開發者一樣不能取得裝置的廣告識別碼」補上來源同一句的後半：「也不能依詢問框所述蒐集、使用 App 的使用者或裝置資料」。原本只寫廣告識別碼，撐不起緊接著的結論句「多一個按鈕不等於多一條繞過詢問框的路」；補上後那句結論才完全落在 fact 16 的引文範圍內。",
+        "研究紀錄 must_not_write 第 9 條：原本寫「Apple 沒有發布這則公告的繁體中文版（/tw/ 404）」，與同一份紀錄 not_said 第 5 條（第一輪已認定這個 404 撐不起該否定句）自相矛盾。理由改寫成「兩個來源頁面都是英文、都沒有給中文寫法」，禁止自創譯名的規則本身不變。這是整份紀錄裡唯一殘留的那個錯誤前提。",
+        "研究紀錄第 13 條 fact：「<div class=\"article-text\"> 裡一個 <p>」與原始 HTML 不符——該 div 裡有兩個 <p>，第二個只放 Learn more 連結。已改成兩個 <p> 並說明第二個不是正文段落；正文「公告正文只有一段」的說法不受影響，維持原樣。"
+      ],
+      "checked_and_correct": [
+        "指派訊息疑點 (a)：第 2 節新增段逐句落在來源上——更細的同意選項與用途限定出自第 17 則問答（In the European Union, you have the option to use the “Additional Information” text button… to comply with local privacy laws or other applicable legal requirements）、責任歸屬出自同一則的 entirely your responsibility、未取得許可不得取得廣告識別碼出自同一則的 However, you cannot access the device’s advertising identifier… until the user has granted your app permission in that prompt。三件事同屬第 17 則問答，不是把不同段落拼在一起，方向與主詞都對。",
+        "指派訊息疑點 (b)：ePrivacy 與 GDPR 在 privacy.html 各 1 次、news.html 各 0 次，都在第 17 則問答的題目裡，寫法是 such as ePrivacy or GDPR；正文用「舉的是」呈現，沒有寫成完整清單，也沒有寫成 Apple 為這次調整給出的法律依據。DMA 與 Digital Markets 兩頁仍是 0 次，正文與 summary、callout、FAQ 也都是 0 次。",
+        "指派訊息疑點 (c)：全篇 grep 繁體中文／中文版／英文版／只發布／尚未／還沒 皆 0 次，沒有任何依賴 /tw/news/?id= 404 的否定句；第 3 節與第 5 節都限縮成「本文讀到的兩個頁面都是英文」。",
+        "指派訊息疑點 (d)：三處寫法互不矛盾——第 2 節與 FAQ 第 3 題都寫「Apple 沒有用文字寫出完整文案／說明頁在該段旁邊嵌了一張畫面圖／本文不描述介面畫面」，第 5 節第 2 段寫的是「沒有用文字寫出完整文案」，是限定在文字的說法，沒有再次否定圖的存在。EU 那一節確實只有一張 <img>，FAQ 的「只…一張」成立。",
+        "指派訊息疑點 (e)：三件複驗成立的事一個字都沒有動——Allow Apps to Request to Track 與 Allow Apps to Request to Link Your Activity Across Companies 逐字相同；5.1.2(i) 無空格、5.1.1 (iv) 有空格兩種排版照來源分開保留；iOS&nbsp;14.5 只在研究紀錄的引文裡以實體保留，正文用一般空白的中文寫法。",
+        "指派訊息疑點 (f)：27.2 全文 10 次都只當版本號用，沒有換算成日期或月份（上市／月起 皆 0 次）；you can reprompt 在第 3 節與 FAQ 第 5 題都明寫成「給開發者的許可」而非對使用者的預測；台灣只寫「官方公告沒有涵蓋台灣、沒有針對台灣說明」，並明說不能理解成台灣會不會出現同樣的調整。",
+        "指派訊息疑點 (g)：slug 尾碼 20260916、news_date 2026-09-16、正文第 1 段「2026 年 9 月 16 日」三者一致，依據是公告頁自己印的 September 16, 2026；RSS pubDate Wed, 16 Sep 2026 10:00:11 PDT（台北 2026-09-17 01:00）只留在 event_date_basis，正文 grep「台北」0 次，沒有自行加上台北時間。",
+        "指派訊息疑點 (h)：查核前 2,817 字，本輪補回限定詞後 2,881 字，仍在 1,800–3,000 內；本輪只加字、沒有為了字數刪掉任何但書、限定詞或歸因。",
+        "兩個結尾連結都沒有動：第一個逐字等於索引現行標題；第二個逐字等於 tech-news-apple-eu-business-terms-20260818 內容包的 zh-TW title（程式比對 True）。本篇 title 未改，同批 tech-news-app-store-bundles-multiseat-20260916 指回本篇的第二個連結仍然逐字相符（程式比對 True）。",
+        "界線複掃：topics 只有 tech／tech-news、沒有 finance；只有一個 info callout、沒有投資免責段落；全篇沒有購買建議、沒有推薦式比價、沒有機型或價格比較、沒有規避追蹤的操作教學；廠商說法一律寫成 Apple 表示／說明／寫明；沒有把預告寫成已生效（27.2 一律寫成版本號、沒有推出日期）。",
+        "summary 四句、FAQ 六題答句、callout、表格四列與 caption、圖解四格與 caption 都能在正文找到對應；圖解四格沒有數字，僅有的數量詞（五國、一年）正文都有。",
+        "FAQ 第 1 題「這個定義寫在說明頁一般性的段落，不在歐盟那一節裡」複驗成立：Tracking refers to the act of… 這段在歐盟那一節之前的「Ask permission to track」一節（原始 HTML 位置 86,653–92,162），歐盟那一節（92,162 起）只在描述按鈕用途時重複同一組用語。本輪為這一句補了對應的 verified_fact。",
+        "第一輪其餘 16 條改動抽樣回原文複核，方向與範圍都對，沒有反轉或過度限縮：五國名單、27.2、設定改名、一年再問、必須取得許可的門檻不變、拒絕後廣告識別碼全零、四份文件兩份 (new)、5.1.2(i) 的 gate functionality 方向、表格三格改寫，全部與來源一致。"
+      ],
+      "left_for_the_owner": [
+        "第一輪留下的四件事本輪全部複驗、結論不變，仍然是站主的編輯決定：RSS 的台北時間要不要寫進正文（本輪確認 pubDate 仍是 Wed, 16 Sep 2026 10:00:11 PDT）、設定的中文名要不要另外加一條 iOS 繁中介面來源、與 tech-news-apple-eu-business-terms-20260818 那處張力要不要加一句互相對照、hero.alt 與圖解 alt 由協調者依實際畫面改寫。",
+        "第 3 節寫「文中出現的中文說法（例如「允許 App 要求追蹤」）是本站翻譯」，但第一輪把表格那一格改成英文之後，這個中文說法在全篇只剩這個括號裡出現一次。句子本身沒有錯（它就是在標示自己），若站主覺得讀起來繞，可在編輯階段改成「本文若出現中文說法…」，不影響任何事實。"
+      ]
+    }
+  }
+}

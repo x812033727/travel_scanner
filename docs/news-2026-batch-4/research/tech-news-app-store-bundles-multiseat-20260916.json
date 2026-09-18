@@ -1,0 +1,189 @@
+{
+ "slug": "tech-news-app-store-bundles-multiseat-20260916",
+ "event_date": "2026-09-16",
+ "event_date_basis": "developer.apple.com/news/?id=likeohx4 carries the visible article date line 'September 16, 2026'; the Apple Developer news feed gives pubDate 2026-09-16T17:02:58+00:00 for the same item (2026-09-17 01:02 Taipei - convert or name the source, do not mix). One thing on the page IS dated to that day: 'Starting today, multiseat purchases are enabled by default for subscriptions in App Store Connect.' Two other dates in the same item are forward-looking and must be kept apart from the announcement date: Volume Purchasing launches 2026-10-22, Group Purchases 'this winter', and Bundles and Suites 'later this year'. A fourth date lives only in the App Store Connect help page: subscriptions created before 2026-09-14 that do not use StoreKit 2 or have Family Sharing on are opted out by default - that is a cut-off two days BEFORE the announcement, so do not fold it into the announcement date.",
+ "checked_on": "2026-09-18",
+ "title_hint_zh_TW": "App Store 訂閱要能綁在一起賣：組合方案、多人席次與 10 月 22 日的量購",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All three sources fetched with curl -sL -A \"Mokaair-editorial\" on 2026-09-18, all HTTP 200: (1) developer.apple.com/news/?id=likeohx4 200, 117,728 bytes; (2) developer.apple.com/app-store/subscriptions/bundles-and-suites/ 200, 115,481 bytes (the page the news item links as 'Bundles and Suites page'); (3) developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions 200, 370,868 bytes (linked as 'Manage purchase options for an auto-renewable subscription'). NON-BREAKING SPACES ARE EVERYWHERE in the news item's body and they land inside the sentences a writer will most want to quote. Verified by scanning for U+00A0: the body contains 'iOS\\u00a027', 'StoreKit\\u00a02', 'Apple\\u00a0In-App\\u00a0Purchases', 'App\\u00a0Store', 'Bundles\\u00a0and\\u00a0Suites', 'or\\u00a0later', 'App\\u00a0Store\\u00a0Connect', 'Volume\\u00a0Purchasing', 'Group\\u00a0Purchases'. The verbatim_quote fields below reproduce them as U+00A0 exactly as Apple published them; a checker searching with ordinary spaces will get zero hits and must not conclude the text is absent. The Bundles page and the help page use ordinary spaces in the sentences quoted from them. Also checked and NOT available: developer.apple.com/tw/news/?id=likeohx4 returns HTTP 404 (81,990-byte soft-404), so there is no Traditional-Chinese version; two WWDC26 session videos are linked from the news item (developer.apple.com/videos/play/wwdc2026/391/ and .../210/?time=530) and were NOT opened, so nothing here comes from them.",
+ "sources": [
+  {
+   "title": "Get your subscriptions ready for iOS 27",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "publisher": "Apple (Apple Developer News)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Create Bundles and Suites for auto-renewable subscriptions",
+   "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+   "publisher": "Apple (Apple Developer)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Manage purchase options for an auto-renewable subscription",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+   "publisher": "Apple (App Store Connect Help)",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "On 2026-09-16 Apple told developers how subscriptions change in iOS 27, and named a prerequisite: apps must use StoreKit 2 to handle Apple In-App Purchases.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": false,
+   "verbatim_quote": "You can start preparing today by making sure your apps use StoreKit 2 to handle your Apple In-App Purchases."
+  },
+  {
+   "fact": "Two new constructs are introduced, and they are different things. A Bundle lets people access multiple subscriptions in one purchase - within a single app, across multiple apps from the same developer, or spanning multiple developers' apps. A Suite gives a subscriber access to content across multiple apps from ONE developer.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": false,
+   "verbatim_quote": "With Bundles, people can access multiple subscriptions in one purchase — across a single app, multiple apps from the same developer, or even spanning multiple developers’ apps."
+  },
+  {
+   "fact": "The hard ceiling on a multi-developer Bundle, stated only on the Bundles and Suites page: 'Up to five developers can participate in a multi-developer Bundle.'",
+   "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Up to five developers can participate in a multi-developer Bundle."
+  },
+  {
+   "fact": "Apple's own example of a single-developer Bundle is a music streaming subscription plus a podcast subscription sold together 'at a lower price than subscribing to each individually'; its example of a multi-developer Bundle is a fitness tracking app and a nutrition planning app from two different developers. These are Apple's illustrations, not observed products.",
+   "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "People can purchase multiple auto-renewable subscriptions from the same Apple Developer account as a Bundle, at a lower price than subscribing to each individually."
+  },
+  {
+   "fact": "What a subscriber can do afterwards, per the Bundles page: 'If someone needs to modify their Bundle purchase, they can do so at any time through their Apple Account, where they can choose to stay subscribed to individual services or cancel the entire Bundle.'",
+   "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "they can choose to stay subscribed to individual services or cancel the entire Bundle."
+  },
+  {
+   "fact": "Requirements for Bundles and Suites, from the Bundles page: use StoreKit 2; support iOS 27, iPadOS 27, macOS 27 and tvOS 27 or later; and 'Offer the same subscription duration for each auto-renewable subscription included in a Bundle.' The same-duration rule is a real constraint - a monthly and an annual subscription cannot be bundled.",
+   "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Offer the same subscription duration for each auto-renewable subscription included in a Bundle."
+  },
+  {
+   "fact": "Availability of Bundles and Suites is stated as a vague period plus a version floor, with no date: 'later this year in iOS 27, iPadOS 27, macOS 27, tvOS 27, or later'. Access is also gated by a request form - Apple's own heading is 'Request access and submit for review'.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Bundles and Suites will be available later this year in iOS 27, iPadOS 27, macOS 27, tvOS 27, or later."
+  },
+  {
+   "fact": "The second change, multiseat purchasing, is the one that took effect on the announcement day: 'Starting today, multiseat purchases are enabled by default for subscriptions in App Store Connect.' Developers can disable it entirely or manage availability per store.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Starting today, multiseat purchases are enabled by default for subscriptions in App Store Connect."
+  },
+  {
+   "fact": "The two multiseat routes are distinct. Volume Purchasing: organisations using Apple Business and Apple School Manager buy through a single Apple In-App Purchase and assign seats using a device management provider. Group Purchases: a subscriber buys multiple seats in a single Apple In-App Purchase and invites others, with Apple handling seat assignment and the invitation flow.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": false,
+   "verbatim_quote": "With Group Purchases, a subscriber can buy multiple seats in a single Apple In-App Purchase and invite others to join."
+  },
+  {
+   "fact": "The only firm date in the whole announcement, plus one soft one: 'Volume Purchasing launches on October 22, 2026, and Group Purchases will launch this winter.' Apple does not date 'this winter' and does not say which hemisphere's winter.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Volume Purchasing launches on October 22, 2026, and Group Purchases will launch this winter."
+  },
+  {
+   "fact": "The App Store Connect help page defines the roles and the store split: the buyer is called the 'group purchaser' and manages the shared subscription and who has access; on the App Store customers can buy individually or as a group, but 'In Apple Business and Apple School Manager, only multiseat purchases are supported.'",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In Apple Business and Apple School Manager, only multiseat purchases are supported."
+  },
+  {
+   "fact": "The opt-out cut-off, stated only on the help page and dated two days BEFORE the announcement: 'Subscriptions created prior to September 14, 2026 that do not use StoreKit 2 or that have Family Sharing turned on are set to opted out by default.' Everything else is on by default - 'Multiseat purchases are turned on by default for all auto-renewable subscriptions.'",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Subscriptions created prior to September 14, 2026 that do not use StoreKit 2 or that have Family Sharing turned on are set to opted out by default."
+  },
+  {
+   "fact": "Availability for the two multiseat audiences is phased, and the help page's wording is looser than the news item's: 'Multiseat purchases will be available for Business and Education organizations, and for App Store customers later this year.' The help page gives no dates at all.",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Multiseat purchases will be available for Business and Education organizations, and for App Store customers later this year."
+  },
+  {
+   "fact": "What happens if a developer turns multiseat off after approval, from the help page: new customers cannot buy multiple seats, the subscription is removed from Apple Business and Apple School Manager, and existing customers' subscriptions continue to renew until the group purchaser cancels; new seats cannot be added but can be removed by the group purchaser.",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-subscriptions/manage-purchase-options-for-auto-renewable-subscriptions",
+   "is_vendor_claim": false,
+   "verbatim_quote": "New seats cannot be added, but can be removed by the group purchaser."
+  },
+  {
+   "fact": "Apple's own framing of who this is for, worth quoting because it is unusually concrete for a developer note: a work team splitting the cost of a productivity app, a small business outfitting a handful of employees, a department within a larger company, or a group of collaborators sharing access to a creative tool - and Apple's point is that they can subscribe 'without going through IT or procurement'.",
+   "url": "https://developer.apple.com/news/?id=likeohx4",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Any of these groups can become paying subscribers today, without going through IT or procurement."
+  },
+  {
+   "fact": "One further change is dated only as 'later this year': retention messaging. Apple says the Retention Messaging API can be used today and that configuring retention messages in App Store Connect arrives later this year. Apple describes it as reaching subscribers at the moment they choose to cancel 'without adding friction to the cancellation flow'.",
+   "url": "https://developer.apple.com/app-store/subscriptions/bundles-and-suites/",
+   "is_vendor_claim": true,
+   "verbatim_quote": "You can use the Retention Messaging API to do this today and later this year, you’ll be able to configure retention messages in App Store Connect."
+  }
+ ],
+ "not_said": [
+  "No region information of any kind. Apple names no country, no storefront and no launch region for Bundles, Suites, Volume Purchasing or Group Purchases. Taiwan is not mentioned on any of the three pages. Write 官方未說明地區範圍, never 台灣可用 or 台灣不可用.",
+  "No prices, no fee percentages, no commission split for multi-developer Bundles. Apple never says how revenue is divided among the up-to-five developers in a multi-developer Bundle, nor whether the usual App Store commission changes.",
+  "No release date for iOS 27, iPadOS 27, macOS 27 or tvOS 27. 'later this year' and 'this winter' are the only timing words apart from the single 2026-10-22 date.",
+  "No number for how many seats a group purchase may contain - only 'quantities greater than 1'. No minimum and no maximum.",
+  "Apple does not say what happens to a Bundle if one participating developer withdraws, or how disputes between bundled developers are handled.",
+  "Apple does not say whether Family Sharing and multiseat can coexist. The help page only states that existing subscriptions WITH Family Sharing on are opted out by default; it never says the two are incompatible going forward. Do not write that they are.",
+  "No figures on uptake, revenue, or how many developers are expected to use any of this.",
+  "The news item never uses the word 'user' about consumers seeing a price - it is written entirely for developers. There is no consumer-facing Apple page in these sources describing how a Bundle looks in the App Store beyond 'the App Store displays all the apps included in their Bundle or Suite'.",
+  "Apple published no Traditional-Chinese version (developer.apple.com/tw/news/?id=likeohx4 returns HTTP 404 as of 2026-09-18), so there is no official Chinese term for Bundle, Suite, Volume Purchasing, Group Purchases or group purchaser. Any Chinese rendering is our translation and must be flagged.",
+  "Neither page says whether an existing subscriber can convert an individual subscription into a Bundle or a seat, or what happens to their remaining paid period."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Anything said in the two WWDC26 session videos Apple links ('Bundles and Suites video' at developer.apple.com/videos/play/wwdc2026/391/ and developer.apple.com/videos/play/wwdc2026/210/?time=530).",
+   "seen_where": "Linked from the news item.",
+   "why_excluded": "Not opened in this session. Video transcripts were not fetched, so nothing may be attributed to them."
+  },
+  {
+   "claim": "The full eligibility and configuration rules on the Bundles and Suites page below the 'Request access and submit for review' heading, and the contents of the request form.",
+   "seen_where": "developer.apple.com/app-store/subscriptions/bundles-and-suites/ - the section heading was read, the form itself was not followed.",
+   "why_excluded": "The form is behind a developer account. Do not describe fields nobody here has seen."
+  },
+  {
+   "claim": "How revenue is split in a multi-developer Bundle, and whether Apple's commission changes.",
+   "seen_where": "Nowhere in the three sources.",
+   "why_excluded": "Apple does not say. This is the first question a developer would ask and the honest answer is 官方未說明."
+  },
+  {
+   "claim": "That multiseat purchasing is Apple's answer to a specific competitor or regulatory pressure.",
+   "seen_where": "Not stated; a tempting frame given the same week's EU announcements.",
+   "why_excluded": "Apple gives a market rationale only ('without going through IT or procurement'). Do not supply a motive."
+  },
+  {
+   "claim": "Whether the 2026-09-14 cut-off in the help page corresponds to a server-side change, a release, or a policy date.",
+   "seen_where": "The help page's opening Note.",
+   "why_excluded": "Apple states the cut-off and nothing about what happened on that date. Report it as a stated cut-off, not as an event."
+  },
+  {
+   "claim": "Any consumer-side screenshot, price display or purchase flow.",
+   "seen_where": "Described only in prose.",
+   "why_excluded": "No screenshot exists in the sources and the site did no testing. Do not describe a UI."
+  }
+ ],
+ "editorial_brief": "RECOMMENDATION: SECONDARY (次要) leaning important. The material is unusually concrete for a developer announcement - a five-developer ceiling, a same-duration rule, an on-by-default switch, a 2026-09-14 opt-out cut-off and one firm date, 2026-10-22 - but the subject is a platform capability that has not shipped to consumers yet. If the site owner wants a fifth or sixth important tech piece this round, this can carry it; otherwise it is the best of the secondary items.\n\nREADER: anyone in Taiwan who pays for App Store subscriptions and has wondered why they cannot buy two apps' subscriptions together, or why a small team has to buy five separate copies of the same app. Secondarily, Taiwanese indie developers.\n\nANGLE, and the reason it is worth writing: the App Store's purchase model has been one person, one app, one subscription. Two of those three assumptions are being dropped at once. Bundles and Suites drop 'one app' - up to five developers can sell access in a single purchase, provided every subscription in the Bundle has the same duration. Multiseat drops 'one person' - a group purchaser buys several seats in one In-App Purchase and Apple handles the invitations. The third assumption, that you buy through the App Store, is exactly what the EU pieces on this site are about, so the contrast is available without stretching.\n\nSECOND ANGLE worth two paragraphs, and the one only a careful reader will find: the defaults moved. Multiseat is on by default for all auto-renewable subscriptions, and the only subscriptions opted out are those created before 2026-09-14 that either do not use StoreKit 2 or have Family Sharing turned on. Apple's own advice to developers who do not want it is to go and turn it off 'to avoid any impact to customers'. That is a platform-wide default change announced in a help-page note rather than a headline, and pointing it out is the kind of thing this site can do because it opened all three pages.\n\nSTRUCTURE FIT: five H2 sections - (1) 9 月 16 日 Apple 公告了什麼，以及哪一項是當天就生效的；(2) Bundle 與 Suite 的差別與條件（同一週期、最多五個開發者、要 StoreKit 2、要 iOS 27 起跳），表格放在第 2 節末；(3) 多人席次的兩條路：量購與團體購買，圖解放在第 3 節末；(4) 預設值變了：2026 年 9 月 14 日這個分界；(5) 官方沒有說的事——沒有地區、沒有價格、沒有分潤規則、沒有台灣。TABLE（最多 4 欄、儲存格短、caption 寫查核日 2026 年 9 月 18 日）：建議欄位 功能 / 誰買 / 官方給的時程 / 條件，列出 Bundle、Suite、Volume Purchasing、Group Purchases。DIAGRAM 2x2：組合方案 / 套組 / 量購 / 團體購買——圖上每個數字（5、2026-10-22、2026-09-14、27）都必須在正文出現過。\n\nTAIWAN FRAME: 誠實而且短。三頁都沒有寫地區，也沒有提到台灣，所以能寫的只有「官方未說明地區範圍」。對台灣讀者真正有用的是把兩個名詞講清楚（Bundle 與 Suite 不一樣；量購與團體購買不一樣），以及一個可以自己查的動作：訂閱的管理入口在 Apple 帳戶，官方寫明可以只退訂其中一項或整包取消。\n\nLIVED-EXPERIENCE EXAMPLE 要標明是編輯設計的例子：一個四人小工作室想共用一個設計工具的訂閱——這正好落在 Apple 自己列舉的情境（a group of collaborators sharing access to a creative tool），但要寫清楚團體購買官方說是 this winter，量購是 2026 年 10 月 22 日，而且沒有說台灣。\n\nSUMMARY block: 第一句是答案——2026 年 9 月 16 日 Apple 公告 iOS 27 的訂閱新功能，多個訂閱可以合併成一筆 App 內購買。接著是條件——多開發者組合方案最多五個開發者、同一個組合裡的訂閱週期必須相同、App 要用 StoreKit 2 並支援 iOS 27 起的系統；多人席次當天起在 App Store Connect 預設開啟。最後一句是但書——量購 2026 年 10 月 22 日推出、團體購買官方只寫 this winter，三頁都沒有說明地區範圍，也沒有提到台灣。\n\nFAQ candidates these sources genuinely answer: Bundle 和 Suite 差在哪（Bundle 可跨開發者，最多五個；Suite 是同一個開發者的多個 App）; 買了組合方案之後可以只退一項嗎（官方寫可以在 Apple 帳戶選擇只留其中一項或整包取消）; 一個組合可以混月費和年費嗎（不行，官方要求組合內每個訂閱的週期相同）; 團隊共用訂閱什麼時候可以用（量購 2026 年 10 月 22 日；團體購買官方只寫 this winter）; 開發者要做什麼才用得到（用 StoreKit 2、支援 iOS 27 起的系統、送出申請並過審）; 台灣買得到嗎（官方三頁都沒有說明地區範圍）.",
+ "must_not_write": [
+  "不可以寫台灣可用或不可用。三頁都沒有寫地區，也沒有提到台灣。寫『官方未說明地區範圍』。",
+  "不可以把 iOS 27、iPadOS 27、macOS 27、tvOS 27 換算成日期。Apple 只給了一個確定日期：2026 年 10 月 22 日的量購。",
+  "不可以把 this winter 寫成某個月份，也不可以寫成『冬天』而不註明那是 Apple 的原文用詞、且未說明是哪個半球。",
+  "不可以編造多開發者組合方案的分潤規則或抽成比例。官方完全沒說。",
+  "不可以寫 Family Sharing 與多人席次不能並存。官方只寫『2026 年 9 月 14 日前建立、且沒有用 StoreKit 2 或開啟家人共享的訂閱，預設為關閉』。",
+  "不可以把 2026 年 9 月 14 日這個分界寫成某件事發生的日子。官方只把它當成一個分界點。",
+  "不可以描述使用者端的購買畫面或價格顯示。三頁都沒有截圖，本站也沒有實測。",
+  "不可以引用兩支 WWDC26 影片的內容——本次查核沒有開啟。",
+  "不可以自己創造 Bundle、Suite、Volume Purchasing、Group Purchases、group purchaser 的官方中文譯名。Apple 沒有發布這則公告的繁體中文版（/tw/ 網址回 404），任何中文說法都要標明是本站翻譯並附上英文原詞。",
+  "不寫『划不划算』『該不該訂』——tech.md 禁止購買建議。整理條件差異可以，下結論不行。",
+  "不寫投資免責 callout——tech.md 規定科技垂直不帶。",
+  "主圖與 SVG 圖解不得出現商標、字標、圖示或介面截圖；產品名稱用純文字。",
+  "不要列表、不要 Markdown、不要 emoji，zh-TW 包不得出現簡體字。"
+ ],
+ "overlaps_existing_article": "NO existing pack covers App Store subscription mechanics, in-app purchase or App Store Connect. The nearest is tech-news-apple-eu-business-terms-20260818 ('Apple 公布歐盟新版 App 商業條款：核心技術抽成 5%、可同時用替代付款'), which owns the EU fee structure and alternative payments. DIVIDE IT THIS WAY: that article is about WHO GETS PAID and under which regional terms; this one is about WHAT YOU CAN BUY - one purchase covering several subscriptions, and one purchase covering several people. They intersect only if someone asks how commission applies to a multi-developer Bundle, and Apple does not say, so the honest move is one sentence noting the fee question is unanswered, with a link across. That article is the natural second link. ALSO note the sibling candidate tech-news-apple-att-eu-20260916 from this same batch: it is the SAME Apple Developer news day (three items were posted on 2026-09-16) but a completely different subject, and the coordinator should avoid publishing both in the same week with the same second link. FIRST LINK: the index pack tech-news-2026-index.json, zh-TW title '2026 年科技新聞總整理：硬體、平台、電信與法規的重點'; link text must equal that string exactly.",
+ "standalone_or_secondary": "SECONDARY recommended, with enough substance to promote if the coordinator wants a sixth important piece. First-party material actually available: 2 new constructs with a stated difference, a five-developer ceiling, a same-duration constraint, a StoreKit 2 prerequisite, a four-OS version floor, 2 multiseat routes with distinct mechanics, 1 firm date (2026-10-22), 1 soft date ('this winter'), 1 default-state change effective on announcement day, 1 opt-out cut-off (2026-09-14), the group-purchaser role definition, and the turn-it-off consequences. If it stays secondary, keep sections 1 to 3 and the table, and drop the defaults section."
+}

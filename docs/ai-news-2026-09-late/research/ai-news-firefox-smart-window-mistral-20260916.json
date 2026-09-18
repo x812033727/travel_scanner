@@ -1,0 +1,445 @@
+{
+  "slug": "ai-news-firefox-smart-window-mistral-20260916",
+  "event_date": "2026-09-16",
+  "event_date_basis": "Confirmed independently today (2026-09-18) on all three fetched pages, not merely copied from the exploratory record. (1) Mistral's post prints 'September 16, 2026' under its title with byline 'By Mistral and Mozilla'. (2) Mozilla's partnership post prints 'September 16, 2026' under its own title. (3) The August Smart Window post carries a stacked update block headed 'Update on September 16, 2026'. All three are dates, not timestamps -- mistral.ai gives no time of day at all, and no clock time is written into the article for this reason. Mistral's forward-looking market language ('expected to follow later this year') and Mozilla's ('planning additional European expansion later this year') are not dates and are written in the article exactly as the vendors phrased them, not converted into a deadline.",
+  "title": "Firefox Smart Window 加入 Mistral 模型：兩份公告，各寫各的市場",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Mistral x Mozilla: Private, Multilingual AI Browsing",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "publisher": "Mistral AI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Mozilla and Mistral: Partnering to expand AI competition and preserve user choice",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "publisher": "Mozilla (The Mozilla Blog)",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Smart Window: Finish what you start online",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "publisher": "Mozilla (The Mozilla Blog)",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "Re-verified independently on 2026-09-18 (this is the writer's own fetch, done after reading the 2026-09-18 exploratory research record at docs/news-2026-batch-4/research/ai-news-firefox-smart-window-mistral-20260916.json, and used to check that record rather than just copy it). curl -sL -A \"Mokaair-editorial\" against all three URLs, no email, name or personal data in any header, query string or form: https://mistral.ai/news/mistral-x-mozilla/ -> HTTP 200 / 243,456 bytes (exact match with the exploratory record); https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/ -> HTTP 200 / 69,692 bytes (the exploratory record logged 69,671 bytes for the same URL earlier the same day -- a 21-byte difference on a live blog page, not evidence of a different document); https://blog.mozilla.org/en/firefox/firefox-smart-window/ -> HTTP 200 / 71,906 bytes (exact match). All three bodies were read in full. Every verbatim_quote below was re-derived today with a script searching the freshly saved HTML, not copied from the exploratory record, specifically to catch a transcription error before it reached the article; none was found. Two checks worth recording. First, the string 'Mistral Small 4' does appear on mistral.ai's page, but only inside a sitewide product-navigation card (class names group-hover/link:translate-x-8, font-mistral) that lists Mistral's product line, not inside the announcement's own prose -- this confirms, rather than contradicts, that Mistral's post never names a version in its own words. Second, a raw case-insensitive search for Taiwan/Japan/Korea returns one hit each on both Mozilla pages, but every hit sits inside a <select> element listing all world countries (a sitewide contact- or newsletter-form region picker), e.g. '<option value=\"tw\">Taiwan</option>', not in the article body -- confirmed by reading the surrounding HTML before treating the negative ('the article text does not name Taiwan') as safe to write. The misspelling 'Mistal's scientific innovations' (curly apostrophe, U+2019) was located in the body text and is kept verbatim in the record; the correctly spelled CEO quote lower on the same page is recorded separately. mistral.ai/news carries no machine-readable date anywhere in its markup, only the human string 'September 16, 2026' under the title. No news outlet, aggregator or search snippet was used for any fact.",
+  "verified_facts": [
+    {
+      "fact": "Mistral published its announcement on 2026-09-16 with a joint byline.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 16, 2026 By Mistral and Mozilla"
+    },
+    {
+      "fact": "What was announced, in Mistral's own opening sentence: a partnership with Mozilla for people using AI to browse.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today, we are announcing a partnership with Mozilla to bring privacy, control and choice to people using AI to browse online."
+    },
+    {
+      "fact": "Mistral names no model version in its own post, only 'Mistral models', unnumbered.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Firefox Smart Window (beta), Mozilla’s AI browsing assistant, is now powered by Mistral models."
+    },
+    {
+      "fact": "What Smart Window does, per Mistral's own description of the product.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Smart Window helps you make sense of complex searches, remember something important you clicked away from and source information important to you based on your browser tabs."
+    },
+    {
+      "fact": "Mistral's market sentence: France and North America now, UK and Germany expected later this year, no date given.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mistral will help power Smart Window for users in France and North America, with the United Kingdom and Germany expected to follow later this year."
+    },
+    {
+      "fact": "Mistral's own post contains a misspelling of its own name ('Mistal') in the body text, distinct from the correctly spelled CEO quote lower on the page.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This partnership represents two open source advocates working together to bring Mistal’s scientific innovations to consumers around the world."
+    },
+    {
+      "fact": "The two data-handling sentences Mistral states about the partnership: not saved on Mozilla's servers by default, and zero data retention for partners including Mistral.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Privacy protections are built into how Firefox Smart Window works: conversations aren’t saved on Mozilla’s servers by default, and partners like Mistral agree to zero data retention."
+    },
+    {
+      "fact": "Mistral's own framing of why it is reaching consumers through this deal: it normally serves the enterprise and reaches consumers through ecosystem partners like Firefox.",
+      "url": "https://mistral.ai/news/mistral-x-mozilla/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "While we traditionally focus on serving the enterprise, by partnering with ecosystem leaders like Firefox, we extend beyond businesses and reach their consumers worldwide."
+    },
+    {
+      "fact": "Mozilla published its own account of the same partnership the same day.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 16, 2026"
+    },
+    {
+      "fact": "Mozilla's market sentence names the model and splits geography differently from Mistral's: Mistral Small 4 for US/Canada users, France gets beta access plus French-language support.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "becoming a new AI model for Smart Window users in the US and Canada, while expanding Smart Window beta access and French-language support to Firefox users in France"
+    },
+    {
+      "fact": "Mozilla's own tense and framing for the model change, added by the independent factcheck on 2026-09-18: the model 'is coming to' the beta and becomes 'a new AI model', i.e. an added option, not a swap of the existing one. Mozilla gives no start date; '9 月 16 日起' appears nowhere on the page. Corroborated first-party by the Mozilla Connect thread Mozilla links from its own August post, whose slug reads 'smart-window-expands-to-france-with-mistral-as-a-new-model'.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mistral Small 4 is coming to Firefox Smart Window beta"
+    },
+    {
+      "fact": "Mozilla's own answer to the reader's default-and-off-switch question, added by the independent factcheck on 2026-09-18: Smart Window is opt-in, the user picks the model, and AI Controls can turn it off entirely.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Smart Window is optional. You choose when to use it, what browsing context it can use to help with a task, and which AI model you want to use."
+    },
+    {
+      "fact": "The same paragraph names the one place to manage or disable it. 'AI Controls' is plain text on the page, not a link, and no policy or support document is linked from it.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Firefox’s AI Controls gives you one place to manage Smart Window, including turning it off entirely, so you can easily choose the browsing experience you want."
+    },
+    {
+      "fact": "Mozilla DOES publish an inclusive availability statement, contrary to the exploratory record's assumption that it never enumerates the markets: the August post names the U.S. and Canada, in English, and offers a notification sign-up for everywhere else. This is an inclusion list, not an exclusion list -- Taiwan is still not named, and 'not available in Taiwan' still may not be written.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It’s currently available in English to people in the U.S. and Canada. If it’s not available where you are yet, you can sign up to be notified when it is."
+    },
+    {
+      "fact": "The August post dates Smart Window's own existence to well before 2026-08-18: that day added capabilities to something already in beta for months. 8/18 is therefore not Smart Window's launch date either.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We’ve spent the last several months building and testing Smart Window in beta with our community."
+    },
+    {
+      "fact": "Mozilla does not name the UK or Germany; its forward-looking sentence is unnamed and Europe-wide.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "France is the first new market for Smart Window with official French-language support. Mozilla is planning additional European expansion later this year."
+    },
+    {
+      "fact": "Mozilla states users keep the ability to choose other AI models across every market where Smart Window beta exists.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Across all markets where Smart Window beta is available, Firefox users can still choose from a multitude of other AI models."
+    },
+    {
+      "fact": "Mozilla's stated reason for picking this model: evaluated performance for Smart Window Beta, including multilingual performance.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Mozilla selected Mistral Small 4 after evaluating its performance for Smart Window Beta, including multilingual performance, an important part of the fit."
+    },
+    {
+      "fact": "Mozilla's framing of the competitive landscape: from 'which model is best' to whether people can access different models through the products they use.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Practically overnight, competition has expanded from “which AI model is best?” to a new high-stakes battle over which models people can access, through which products, and whether people have meaningful choice about AI at all."
+    },
+    {
+      "fact": "Mozilla's CEO, quoted by name and title, argues the browser should be where AI providers compete.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "said Anthony Enzor-DeMeo, CEO of Mozilla Corporation"
+    },
+    {
+      "fact": "Mozilla's one-line statement of the two-sided arrangement: Mistral reaches users without owning the browser, Mozilla integrates without removing choice.",
+      "url": "https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Mistral can reach Firefox users without owning the browser, and Mozilla can integrate and recommend Mistral without removing user choice."
+    },
+    {
+      "fact": "The original Smart Window post, published 2026-08-18, now carries a dated update block confirming what happened on 2026-09-16 from a third angle: France as Smart Window's first expansion beyond North America.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Update on September 16, 2026: Smart Window is now rolling out in France, marking its first expansion beyond North America."
+    },
+    {
+      "fact": "That original post's own byline date, confirming Smart Window itself predates the Mistral deal by about a month.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 18, 2026"
+    },
+    {
+      "fact": "Mozilla's own definition of what Smart Window uses, with the consent condition: open tabs and relevant browsing history the user chooses to share.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It works with the context you choose to share, such as your open tabs and relevant browsing history, so you can get back to what you were doing without retracing your steps."
+    },
+    {
+      "fact": "Smart Window also draws on a separate partnership with Exa for live web retrieval and sourcing, distinct from the chat model.",
+      "url": "https://blog.mozilla.org/en/firefox/firefox-smart-window/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Through our new partnership with Exa, Smart Window can now retrieve current web information and show the sources behind its response without taking you to a separate search results page."
+    }
+  ],
+  "not_said": [
+    "Taiwan is not named by either company, and no Asian market is named at all. Re-checked independently on all three pages on 2026-09-18: the only markets named anywhere in the article prose are France, North America / the US and Canada, and the United Kingdom and Germany. A raw substring search returns 'Taiwan', 'Japan' and 'Korea' once or twice on each Mozilla page, but every hit sits inside the sitewide newsletter country-selector <select> (e.g. '<option value=\"tw\">Taiwan</option>'); mistral.ai contains none of the three strings at all. Confirmed by inspecting the surrounding HTML. The article must write that neither company's announcement names Taiwan or any Asian market, and must not write that Smart Window is unavailable in Taiwan. CORRECTED BY THE INDEPENDENT FACTCHECK: the reason is NOT that Mozilla never enumerates its markets -- the August post does say 'currently available in English to people in the U.S. and Canada' -- the reason is that neither company publishes an EXCLUSION list, and Mozilla's own sentence points anyone outside those markets at a notification sign-up rather than saying a country is ruled out. Mistral separately claims the partnership reaches Firefox users 'worldwide', which is one more reason not to convert the silence into a denial.",
+    "No release channel and no Firefox version number. Neither page says which Firefox version contains Smart Window. CORRECTED BY THE INDEPENDENT FACTCHECK: the August post does tell a reader outside the named markets what to do -- 'you can sign up to be notified when it is' -- and links firefox.com/smart-window (and .../?view=enable), so the earlier 'neither page says how a user checks whether they have it' was too strong.",
+    "No language list beyond French and English. Mistral claims fine-tuning on regional languages and dialects but names none. CORRECTED BY THE INDEPENDENT FACTCHECK: Mozilla names TWO languages across the three pages, not one -- French in the partnership post and English in the August post ('currently available in English'). Traditional Chinese support is not addressed on any of the three pages. SECOND ROUND, 2026-09-18: the same country-selector trap applies to Chinese as to Taiwan -- a raw search for '正體中文' hits both Mozilla pages, every time inside the sitewide newsletter LANGUAGE picker (alongside Deutsch, Español, Русский), never in the prose; the Latin string 'Chinese' is absent from all three pages. The article's negative was therefore scoped to the prose ('三頁正文都沒有提到') so that it is true at the string level too.",
+    "No price, and no statement about whether Smart Window will remain free.",
+    "No detail behind 'zero data retention' or 'by default': no duration, scope, audit mechanism, or published policy document is linked from either page.",
+    "No benchmark, score or evaluation methodology behind Mozilla's claim that it evaluated Mistral Small 4's performance.",
+    "No enumeration of the 'multitude of other AI models' Firefox users can otherwise choose.",
+    "No commercial terms: no statement of who pays whom, or how long the arrangement runs.",
+    "No user numbers, adoption figures or beta participant count on any of the three pages.",
+    "No mention of any regulator, competition authority or the EU Digital Markets Act, despite both posts being framed around competition and user choice."
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "A single, combined answer to 'which markets get Mistral in Smart Window'.",
+      "seen_where": "Mistral: France and North America now, UK and Germany expected later this year. Mozilla: the model itself for US/Canada, while France gets beta access and French-language support, plus unnamed further European expansion.",
+      "why_excluded": "Both are first-party and they are not the same list -- Mistral folds France into the markets it powers, Mozilla describes France as getting beta access and language support rather than the model swap. The article prints both, attributed, in the table, and does not merge them into one figure."
+    },
+    {
+      "claim": "That Smart Window itself launched on 2026-09-16.",
+      "seen_where": "Both posts read, at a glance, like a launch.",
+      "why_excluded": "Smart Window's own byline reads 2026-08-18, and that post states the team had spent months building and testing it in beta before this update. 9/16 is the Mistral partnership plus the France expansion, not Smart Window's debut; the article separates these explicitly in its opening section."
+    },
+    {
+      "claim": "That Mistral is Smart Window's AI provider, full stop.",
+      "seen_where": "Mistral's own headline framing: 'now powered by Mistral models'.",
+      "why_excluded": "Mozilla's own sentence in the same announcement says Firefox users can still choose other models, and Mozilla's August post separately names Exa as the web-retrieval partner. The article treats Mistral as one option among several, not as Smart Window's engine."
+    },
+    {
+      "claim": "'Mistral's scientific innovations' as a clean paraphrase of Mistral's own wording.",
+      "seen_where": "The body of mistral.ai/news/mistral-x-mozilla/ actually spells it 'Mistal’s'.",
+      "why_excluded": "The published text carries the typo; a verbatim quote must keep it and say so. The article does not quote this sentence directly for that reason and paraphrases instead."
+    },
+    {
+      "claim": "Any identification of which company Mozilla means by 'Big Tech-default browser ecosystems' or 'global tech monopolies'.",
+      "seen_where": "The meta description and body of the Mozilla partnership post.",
+      "why_excluded": "Mozilla names no company in either phrase. Naming one (e.g. Google) would put words in Mozilla's mouth that the source does not contain, so the article omits both phrases rather than gloss them."
+    },
+    {
+      "claim": "Any number describing how many people this reaches, or Firefox's market share.",
+      "seen_where": "Not present on any of the three pages read.",
+      "why_excluded": "No first-party figure exists, and a third-party statistic is out of scope for this batch's sourcing rules. The article makes no size or reach claim."
+    },
+    {
+      "claim": "Ajit Varma's quote on Smart Window's design intent, as a claim worth including.",
+      "seen_where": "https://blog.mozilla.org/en/firefox/firefox-smart-window/, 'With Smart Window, we’re exploring how to make more of that context useful while keeping you in control.'",
+      "why_excluded": "Accurate and on-topic, but the 1,800-3,000 character budget was already spent on the two-account comparison and the data-retention section; left out of the running text to avoid diluting the article's central point, not because it is doubtful."
+    }
+  ],
+  "editorial_brief": "讀者是用 Firefox、或只是好奇為何每個瀏覽器都在加入 AI 助理的台灣一般讀者，不是開發者或企業採購。這則消息在時程上碰不到台灣：具名的市場只有法國、北美、以及預計稍後跟進的英國與德國，讀者現在用不到。文章的價值因此不在「馬上能用」，而在兩件可以搬到其他情境的事：第一，這是今年很清楚的一個例子，說明瀏覽器把 AI 模型當成可以抽換的插槽，而不是固定寫死的引擎——Mozilla 自己說使用者仍可以選別的模型，另外還花錢跟 Exa 買了網路檢索能力；第二，這是一次乾淨的讀公告練習，因為兩家一手來源同一天發布、對同一件事寫出不完全相同的版本。核心是不要幫兩家公司做出結論：Mistral 的市場句與 Mozilla 的市場句分開印，各自標明出處，表格是這個分歧最自然的落腳處。第二個要顧好的地方是「沒說的」要寫成沒說，不能寫成「不行」——台灣與亞洲完全沒有出現在兩份公告的正文裡，這是「官方沒有提到」，不是「官方說台灣不能用」，兩者是本文一定要分清楚的差異。刻意不談的範圍：任何跟其他瀏覽器內建 AI 助理的比較、開放權重模型的技術定義（不是這次的主題）、任何競爭法或市場獨占的角度（兩家公司都沒有點名任何對手）、本站沒有做過的手動測試心得。",
+  "must_not_write": [
+    "Do not pick one company's market list as the answer; print Mistral's and Mozilla's versions side by side, each attributed to its publisher.",
+    "Do not write that Smart Window is unavailable in Taiwan. Write that neither company's announcement names Taiwan or any Asian market.",
+    "Do not attribute the model name 'Mistral Small 4' to Mistral; that wording is Mozilla's. Mistral's own post says only 'Mistral models'.",
+    "Do not write that Smart Window is powered by Mistral, full stop; Mozilla says users can still choose other models, and separately names Exa for web retrieval.",
+    "Do not date Smart Window itself to 2026-09-16; it was announced 2026-08-18 and had already been in beta for months.",
+    "Do not present 'zero data retention' or 'not saved by default' as a verified, documented policy; they are the vendors' own statements, with no linked policy document and no explanation of what 'by default' means.",
+    "Do not name Google, or any other company, as the target of Mozilla's 'Big Tech-default browser ecosystems' or 'global tech monopolies' language; Mozilla names nobody.",
+    "Do not mention the EU Digital Markets Act or any regulator; neither company does.",
+    "Do not claim Traditional Chinese support at any level; Mistral names no language, Mozilla names only French.",
+    "Do not write that the site tried or tested Smart Window; nobody at this site has used it.",
+    "Do not quote 'Mistal's scientific innovations' as if it were a normal spelling without flagging that the misspelling is the source's own.",
+    "Do not draw any logo, wordmark or UI screenshot in the hero or diagram, and do not put a number on the artwork that the body text does not also state."
+  ],
+  "live_data_warnings": [
+    "https://blog.mozilla.org/en/firefox/firefox-smart-window/ is a live document: it is an August post carrying a stacked 'Update on September 16, 2026' block, and Mozilla can add further dated updates to the same URL without changing it. Anyone re-checking this article later should look for additional update blocks rather than assume today's snapshot is final.",
+    "mistral.ai/news exposes no feed and no ISO timestamps anywhere in its markup, only human-readable date strings such as 'September 16, 2026'; a later re-check of this article should not assume an article URL can be guessed (a guess at /news/mistral-mozilla-firefox returns a soft 404 that still serves a full-size page) or that a machine-readable date will be available.",
+    "The two byte counts recorded for https://blog.mozilla.org/en/firefox/mozilla-mistral-partnership/ (69,671 bytes in the same-day exploratory record, 69,692 bytes in this writer's own later fetch) differ by 21 bytes; treated here as the same live page at two moments, not as evidence of two different documents. THIRD DATA POINT from the independent factcheck's own fetch later on 2026-09-18: 69,671 bytes again, i.e. back to the exploratory record's figure. The page oscillates by a few bytes between requests, so byte count is a fetch-success test here and nothing more -- it must not be used as a version identifier.",
+    "mistral.ai/news/mistral-x-mozilla/ DOES carry a JSON-LD NewsArticle block, contrary to the note above that says the page has no machine-readable date anywhere in its markup. The block is unusable rather than absent: both 'datePublished' and 'dateModified' are the literal placeholder string 'YYYY-MM-DD', and its '@id' and 'mainEntityOfPage' point at https://mistral.ai/news/mistral-mozilla-partnership, a URL different from the canonical one that actually serves the post. The only real date on the page remains the human string 'September 16, 2026'.",
+    "mistral.ai/news/mistral-x-mozilla/ has two different titles and a later re-checker will meet both. The <title>, og:title and twitter:title all read 'Mistral x Mozilla: Private, Multilingual AI Browsing' (recorded in sources[] above), while the on-page <h1> and the JSON-LD 'headline' both read 'Mistral and Mozilla are bringing open, private and multilingual AI to your web browser'. The article's running text was changed by the independent factcheck so that it no longer presents either string as the post's headline."
+  ],
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "Did not take part in the writing. All three sources[] URLs re-fetched today with curl -sL -A \"Mokaair-editorial\" -- no email, name or personal data in any UA, header, query string or form -- and all three bodies read in full. 94 claims checked one by one: title, description, both opening paragraphs, the 4 summary sentences, every sentence of the 11 body paragraphs, all 5 FAQ answers, the callout, all 16 table cells plus the caption, the diagram caption and the record's own 4 diagram nodes and hero_label. All 20 pre-existing verbatim_quote values were re-derived by script against the freshly saved HTML after Unicode normalisation: 20/20 exact, 0 misses. Every new quote added below was verified the same way before being written. No URL outside sources[] was used to support any sentence in the article; the sitewide navigation, the JSON-LD block and the newsletter country <select> were read only to test negative claims. checked_on was NOT moved: the writer's 2026-09-18 is the day they read the sources and is also the day of this re-check, and it is consistent across the pack's three sources, this record, the second paragraph, the table caption and the diagram caption.",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "THE BIGGEST ONE, corrected in 9 places: the article called this a model swap ('換模型', '改用', '換上', '模型換人'). Mozilla's own sentence is 'Mistral Small 4 is coming to Firefox Smart Window beta ... becoming a NEW AI model for Smart Window users in the US and Canada', and the same post adds 'Firefox users can still choose from a multitude of other AI models'. The Mozilla Connect thread Mozilla itself links calls it 'mistral-as-a-new-model'. Changed everywhere to an added option ('多一個模型選項' / '多了 Mistral 的模型'): paragraph 1, summary sentences 2 and 3, the section-1 heading, section 1 paragraphs 1 and 3, section 2 paragraph 1, section 3 paragraph 3, FAQ 2, the table's Mozilla row, and the record's own diagram node.",
+      "Deleted the invented start date '從 9 月 16 日起，美國與加拿大的 Smart Window 使用者將改用 Mistral 的模型'. Mozilla publishes no start date for the model; it writes 'is coming to'. Replaced with Mozilla's own tense and the 'a new AI model' wording, attributed.",
+      "'Smart Window 在 2026 年 8 月 18 日已經推出' was wrong in 4 places (paragraph 1, summary 3, section 1 paragraph 3, FAQ 2). The 8/18 post says 'We've spent the last several months building and testing Smart Window in beta with our community' and 'Today, we're adding new capabilities' -- 8/18 added capabilities to something that already existed. Rewritten as what Mozilla wrote on that date; the article's central point (Smart Window predates 9/16) survives and is now correctly sourced.",
+      "'Mozilla 執行長 Anthony Enzor-DeMeo' -> 'Mozilla Corporation 執行長'. Both pages print 'CEO of Mozilla Corporation'; the Mozilla Foundation and the Mozilla Corporation are separate legal entities and neither source supports the shortened form. Also changed '在公告中被引述' to '在兩份公告中都被引述', which is verifiable: the same quote appears on mistral.ai as 'Anthony Enzor-DeMeo, CEO, Mozilla Corporation'.",
+      "Added Mozilla's own answer to the default/off-switch question, which the draft left out although it is the reader's first practical question: 'Smart Window is optional. You choose when to use it, what browsing context it can use ..., and which AI model you want to use' and 'Firefox's AI Controls gives you one place to manage Smart Window, including turning it off entirely.' Added to section 3 and to FAQ 3.",
+      "Added Mozilla's availability sentence to the Taiwan section and FAQ 1: 'It's currently available in English to people in the U.S. and Canada. If it's not available where you are yet, you can sign up to be notified when it is.' The draft's guard ('不是「台灣用不到」') is kept verbatim -- the addition is an inclusion list, not an exclusion list -- but hiding a first-party availability statement from a reader asking '台灣用得到嗎' was the wrong kind of caution.",
+      "Scoped the model-name negative to the announcement's prose: 'Mistral 自己的公告只提到「Mistral 的模型」' -> '公告正文', with the check written out ('以 2026 年 9 月 18 日查核，「Mistral Small 4」在該頁只出現在全站的產品選單，不在公告內文'). The string does occur twice on mistral.ai, both times inside the sitewide 'Latest models' navigation card. Same fix in the table's Mistral row and in FAQ 3.",
+      "'Mozilla 這次只點名法文' -> 'Mozilla 點名的語言只有法文與英文（8 月原文寫的是目前以英文提供）'. The August post names English, so 'only French' was a false negative.",
+      "'已經變成' -> '已經從…擴大到…'. Mozilla writes 'competition HAS EXPANDED FROM \"which AI model is best?\" TO ...' -- expansion, not replacement.",
+      "'Smart Window 正式在法國推出' -> '「開始在法國推出」'. The update block says 'is now rolling out in France' and 'People in France WILL BE ABLE TO download and try the Smart Window beta in French'. '正式' overstated a beta rollout.",
+      "Taiwan negative scoped and dated: '以查證範圍來說' -> '以 2026 年 9 月 18 日查核的這三頁正文來說'; the language paragraph's '兩份公告' -> '三頁', since the negative was tested on all three sources.",
+      "Table: Mozilla's forward-looking cell gained the qualifier Mozilla actually prints ('「規劃」今年稍後歐洲擴展'); the August-update row's '無新增計畫' -> '更新區塊未再提', because the August page does carry a 'What's next' section (browsing journeys, form filling) even though the update block does not.",
+      "The data paragraph and FAQ 4 now say what the reader actually wants to know is missing: neither page states whether the conversation is sent to Mistral's servers for processing. '兩份公告' -> '三個來源頁面' in the same sentence, since the absence of a linked policy document was verified on all three (every <a> in all three article bodies was listed; there is no privacy, data or AI-Controls document among them).",
+      "Removed the English title 〈Mistral x Mozilla: Private, Multilingual AI Browsing〉 from paragraph 2. It is the page's <title>/og:title, but the on-page <h1> and the JSON-LD headline read differently, so presenting it as the post's headline was not supportable. sources[] keeps it as the page title.",
+      "Four purely editorial trims to stay inside the 3,000-character budget after the additions ('讀者可以自己比較', '或其他常用軟體', and two shortenings inside sentences added by this factcheck). No qualifier, hedge or attribution was removed to make room."
+    ],
+    "checked_and_correct": [
+      "The three dates are clean: Mistral's page prints 'September 16, 2026 By Mistral and Mozilla', Mozilla's prints 'September 16, 2026', the August post prints 'August 18, 2026' and its stacked block is headed 'Update on September 16, 2026'. slug suffix, news_date and the first paragraph all read 2026-09-16.",
+      "The refusal to merge the two market lists holds. Mistral's sentence and Mozilla's sentence are printed separately, each with its publisher, in the body, the summary, the table and the diagram; no blended list appears anywhere.",
+      "Not one sentence says Smart Window is unavailable in Taiwan. The Taiwan paragraph, the callout and FAQ 1 all state the absence and then explicitly refuse the inference -- this was the point the writing agent flagged and it survives the re-check intact.",
+      "All 20 pre-existing verbatim_quote values are exact continuous strings on the pages they cite, including the source's own misspelling 'Mistal’s' with the curly apostrophe. Every sources[] URL in this record is in the pack and vice versa.",
+      "Boundary check clean: no purchase or upgrade advice, no recommendation-style comparison, no price, no market-share or user-count figure, no benchmark number, no competition-law or DMA angle, and no company named as the target of Mozilla's 'Big Tech' phrasing. Every vendor claim carries 'Mistral 表示' / 'Mozilla 說明' or an equivalent attribution, and the article states twice that the site has never used Smart Window. One callout, info tone, no investment disclaimer.",
+      "Every forward-looking item is still forward-looking and still hedged: '預計今年稍後' for the UK and Germany, '規劃' for Mozilla's European expansion, and the beta status is stated in the title area, the summary, the table, the callout and three body paragraphs.",
+      "No number in the summary or on the artwork is absent from the body, and the diagram carries no numeral at all.",
+      "Exa is correctly kept separate from the chat model and correctly sourced to the August post."
+    ],
+    "left_for_the_owner": [
+      "Mistral's post claims the partnership reaches Firefox users 'worldwide' twice ('extends this capability to people who use Firefox worldwide', 'reach their consumers worldwide') while its own market sentence names four countries. That is a third first-party inconsistency, and the article does not print it -- the 3,000-character budget is spent (2,990). If the owner wants it, it is the cleanest remaining illustration of why '台灣用不到' cannot be inferred, and something else has to come out to fit it.",
+      "The article says nothing about Mozilla's own account of where Smart Window came from ('Last November, we shared an early concept called \"AI Window\"'), which would date the feature even earlier. Left out for the same budget reason, not because it is doubtful.",
+      "sources[] records mistral.ai's <title> as the post's title while the page's <h1> and JSON-LD headline say something else. If the house style is to cite the visible headline, the pack and this record both need the longer string; the body no longer depends on either. SECOND ROUND, 2026-09-18, this is now a one-line decision rather than an open question: the other two sources[] entries ALREADY quote the <h1>, not the <title>. Mozilla's partnership post is titled 'Mozilla and Mistral partner to expand AI competition, user choice' in <title> but sources[] carries its <h1>, 'Mozilla and Mistral: Partnering to expand AI competition and preserve user choice'; the August post's <title> is 'Smart Window, privacy-first, AI-powered browsing with Firefox' but sources[] carries its <h1>, 'Smart Window: Finish what you start online'. So the list is 2-to-1 in favour of the <h1>, and only the mistral.ai row departs from it. Both strings are genuinely on the page and the pack and this record agree with each other, so the second round did not change it unilaterally; if the owner confirms the <h1> convention, the one edit is sources[0].title -> 'Mistral and Mozilla are bringing open, private and multilingual AI to your web browser' in BOTH files.",
+      "This record's own live_data_warnings now list three different byte counts for the Mozilla partnership page on the same day. Anyone re-checking should read the body, not compare sizes."
+    ],
+    "second_round": {
+      "checked_by": "second-round independent factcheck agent (took part in neither the writing nor the first round)",
+      "checked_on": "2026-09-18",
+      "method": "Scope per agents/ai/SECOND-ROUND.md: every paragraph the first round changed, and every sentence it newly wrote, re-checked sentence by sentence against sources[] prose fetched again by this agent -- curl -sL -A \"Mokaair-editorial\", no email, name or personal data in any UA, header, query string or form. All three returned HTTP 200 with the real article body: mistral.ai 243,456 bytes, blog.mozilla.org/.../mozilla-mistral-partnership/ 69,692 bytes (a FOURTH same-day figure, matching the writer's rather than the first round's -- the page does oscillate, exactly as live_data_warnings says), blog.mozilla.org/.../firefox-smart-window/ 71,906 bytes. All 25 verbatim_quote values were re-derived independently by script against the freshly saved HTML after NFC normalisation and whitespace collapsing: 25/25 exact continuous strings, 0 misses, including the source's own typo 'Mistal’s' with the curly apostrophe. No quote contains '...', '…' or '|', so no quote is a splice of separate passages. 38 claims re-checked: the 15 first-round edits, the sentences they newly introduced, the 4 diagram nodes, hero_label, the summary, the table and all 5 FAQ answers. No URL outside sources[] was used to support any sentence.",
+      "verdict": "ok",
+      "edits": [
+        "FAQ 3, the one substantive error: the first round's new sentence put the model picker inside AI Controls ('也可以在 Firefox 的「AI Controls」裡決定要用哪個模型、或把功能整個關掉'). Mozilla's August post does not say that. It writes two adjacent but separate sentences -- 'You choose when to use it, what browsing context it can use to help with a task, and which AI model you want to use.' and 'Firefox’s AI Controls gives you one place to manage Smart Window, including turning it off entirely' -- so the model choice is not attributed to AI Controls, and only the off-switch is. Note the body got this right in section 3 ('使用者自己決定…用哪一個 AI 模型，並可在 Firefox 的「AI Controls」統一管理，包含完全關閉'); it was the FAQ restatement that merged the two. Rewritten to keep them separate and to name the August post as the source.",
+        "Scope of the 'no policy document' negative, in the section-4 paragraph and in FAQ 4: '三個來源頁面都沒有附上完整的政策文件連結' -> '這三頁的正文都沒有附上完整的政策文件連結', and the trailing '官方頁面上都沒有寫' -> '正文都沒有寫'. As written it was false of the PAGES: all three carry a sitewide Privacy Policy link in the footer or the newsletter form. It is true of the PROSE, and the first round's own note says that is what it tested. Verified again here by listing every <a> inside each article body: mistral.ai links only the Smart Window blog post and firefox.com; the partnership post links only mistral.ai and the Smart Window post; the August post links firefox.com/smart-window, Mozilla Connect, firefox.com/smart-window/?view=enable, the Exa companion post and the AI Window post. No privacy, data-retention or AI-Controls document among them.",
+        "Same scope fix for the language negative in section 5: '三頁都沒有提到' -> '三頁正文都沒有提到'. '正體中文' really is present on both Mozilla pages -- in the sitewide newsletter LANGUAGE picker, the same trap this record already documents for the Taiwan country picker. Recorded in not_said.",
+        "FAQ 1: '兩份公告都沒有列出排除地區的清單' -> '這三頁都沒有列出排除地區的清單'. The answer quotes the August post (the third page) one clause earlier, so scoping the negative to two pages was internally inconsistent; the negative was tested on three.",
+        "Section 1, Mistral's description of the product: '記得使用者剛切換掉的頁面' -> '記得使用者點開後又離開的重要內容'. Mistral writes 'remember something important you clicked away from' -- there is no 'just' (剛) in the source and 'something important' is not narrowed to a page.",
+        "diagram node 4 detail: '仍可改用其他模型' -> '仍可選用其他模型'. The claim is right (Mozilla: 'Firefox users can still choose from a multitude of other AI models') but 改用 was one of the swap verbs the first round removed from the body, and it was the last place it survived; 選用 also matches the body's own wording."
+      ],
+      "checked_and_correct": [
+        "The backbone rewrite holds at all 9 sites. Mozilla's sentence is 'Mistral Small 4 is coming to Firefox Smart Window beta ..., becoming a new AI model for Smart Window users in the US and Canada, while expanding Smart Window beta access and French-language support to Firefox users in France', immediately followed by 'Across all markets where Smart Window beta is available, Firefox users can still choose from a multitude of other AI models.' Both re-read in full context today. Paragraph 1, summary 2 and 3, the section-1 heading, section 1 paragraphs 1 and 3, section 2 paragraph 1, section 3 paragraph 3, FAQ 2, the table's Mozilla row and the diagram node all now say added option, and none contradicts another.",
+        "The three sentences named for word-by-word re-checking are exact against Mozilla's own prose: 'a new AI model' (multiple option), 'can still choose from a multitude of other AI models' (other models remain selectable), 'including turning it off entirely' (AI Controls can disable it). The first round's Mozilla Connect corroboration also holds: the thread Mozilla links from its own August post resolves to https://connect.mozilla.org/t5/discussions/smart-window-expands-to-france-with-mistral-as-a-new-model/m-p/138422/thread-id/56209 -- 'mistral-as-a-new-model' in a Mozilla-operated URL.",
+        "No invented start date survives anywhere. A scan of every reader-visible string (title, description, paragraphs, summary, headings, table, captions, FAQ, callout, link text) returns only 2026-09-16, 2026-08-18 and 2026-09-18, and every '起' in the article is 一起 or 存起來, never a date. Mozilla publishes no start date for the model and the article no longer asserts one.",
+        "'Mistral Small 4' appears exactly twice in mistral.ai's raw HTML, both inside the sitewide 'Latest models' navigation card next to Mistral OCR 4, Mistral Medium 3.5 and Voxtral TTS, and ZERO times in the announcement's prose, whose only model wording is 'now powered by Mistral models'. The article's scoped claim ('公告正文只提到「Mistral 的模型」…「Mistral Small 4」在該頁只出現在全站的產品選單，不在公告內文') matches what is on the page today.",
+        "The August availability sentence is handled as an inclusion list throughout. Body section 5 and FAQ 1 both print 'currently available in English to people in the U.S. and Canada' with Mozilla's own conditional follow-up ('If it’s not available where you are yet, you can sign up to be notified when it is'), and both then refuse the inference in as many words. Not one sentence in the pack says or implies Smart Window is unavailable in Taiwan.",
+        "sources[].title is identical in the pack and in this record for all three entries, and each string is genuinely on its page. The mistral.ai row quotes the <title>/og:title while the page's <h1> and JSON-LD headline read differently -- left as the first round left it, with the decision sharpened in left_for_the_owner.",
+        "Diagram and prose agree: node 1 vs Mistral's market sentence, node 2 vs Mozilla's, node 3 vs the Taiwan/Asia negative, node 4 vs 'still choose from a multitude of other AI models'. diagram.caption is byte-identical to the pack's image caption, hero_label matches the section-3 heading, and no numeral appears on the artwork.",
+        "Boundary re-scan clean: topics are ai/software/ai-news with no finance, exactly one callout (info tone), no investment disclaimer, no purchase, upgrade, subscription or investment advice, no recommendation-style price comparison, no price, market-share, user-count or benchmark figure, no regulator or DMA angle, and no company named as the target of Mozilla's 'Big Tech' phrasing. Every vendor claim keeps its attribution, every forward-looking item keeps its hedge ('預計今年稍後' for the UK and Germany, '規劃' for Mozilla's European expansion), and beta status is stated in the title area, summary, table, callout and body. No hedge, qualifier or attribution was removed to make room for this round's additions.",
+        "summary sentences all appear in the body; FAQ answers are all supported by body content; checked_on is 2026-09-18 in all four places (pack sources x3, this record, the second paragraph, the table and diagram captions)."
+      ],
+      "claims_checked": 38,
+      "edits_made": 6,
+      "self_check": "OK ai-news-firefox-smart-window-mistral-20260916 zh-TW paragraphs 2993"
+    }
+  },
+  "hero_label": "瀏覽器把模型當插槽",
+  "diagram": {
+    "title": "同一天兩份官方說法",
+    "caption": "查核於 2026 年 9 月 18 日；同一天，Mistral 與 Mozilla 對市場與模型各自給出不同版本的官方說法。",
+    "nodes": [
+      [
+        "模型商怎麼說",
+        "法國與北美，之後英德"
+      ],
+      [
+        "瀏覽器怎麼說",
+        "美加多一個模型，法國開語言"
+      ],
+      [
+        "都沒說的",
+        "台灣與亞洲市場"
+      ],
+      [
+        "能自己決定的",
+        "仍可選用其他模型"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Browser's Model Slot",
+      "diagram": {
+        "title": "Same Day, Two Official Accounts",
+        "caption": "Checked September 18, 2026; on the same day, Mistral and Mozilla each gave a different official account of the market and the model.",
+        "nodes": [
+          [
+            "What Mistral says",
+            "France, N. America; UK/DE next"
+          ],
+          [
+            "What Mozilla says",
+            "US/CA model; France language"
+          ],
+          [
+            "What neither says",
+            "Taiwan, Asian markets"
+          ],
+          [
+            "Still Your Choice",
+            "Can still choose other models"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "ブラウザはモデルを差込口に",
+      "diagram": {
+        "title": "同じ日の2つの公式発表",
+        "caption": "確認日は2026年9月18日。同じ日に、Mistral と Mozilla は市場とモデルについてそれぞれ異なる公式の説明をしています。",
+        "nodes": [
+          [
+            "モデル提供元の説明",
+            "仏・北米、次に英独"
+          ],
+          [
+            "ブラウザ側の説明",
+            "米加はモデル追加、仏は言語追加"
+          ],
+          [
+            "両社とも未言及",
+            "台湾・アジア市場"
+          ],
+          [
+            "自分で決められること",
+            "他モデルも選択可能"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "브라우저는 모델을 선택하게 한다",
+      "diagram": {
+        "title": "같은 날, 두 개의 공식 발표",
+        "caption": "확인일 2026년 9월 18일. 같은 날, Mistral과 Mozilla는 시장과 모델에 대해 서로 다른 공식 설명을 내놓았습니다.",
+        "nodes": [
+          [
+            "모델사의 설명",
+            "프랑스·북미, 다음 영·독"
+          ],
+          [
+            "브라우저의 설명",
+            "미·캐나다 모델추가, 프랑스 언어추가"
+          ],
+          [
+            "둘 다 언급 없음",
+            "대만·아시아 시장"
+          ],
+          [
+            "스스로 정할 수 있는 것",
+            "다른 모델도 선택 가능"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "浏览器把模型当插槽",
+      "diagram": {
+        "title": "同一天两份官方说法",
+        "caption": "查核于 2026 年 9 月 18 日；同一天，Mistral 与 Mozilla 对市场与模型各自给出不同版本的官方说法。",
+        "nodes": [
+          [
+            "模型商怎么说",
+            "法国与北美，之后英德"
+          ],
+          [
+            "浏览器怎么说",
+            "美加多一个模型，法国开语言"
+          ],
+          [
+            "都没说的",
+            "台湾与亚洲市场"
+          ],
+          [
+            "能自己决定的",
+            "仍可选用其他模型"
+          ]
+        ]
+      }
+    }
+  }
+}

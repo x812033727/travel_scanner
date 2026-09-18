@@ -7,6 +7,8 @@
 > **現況（2026-09-18）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md) 第 1c 節。
 > 十二篇都是五語、都經過兩輪獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet、`related` 與 relink 都做完了；
 > 既有索引 `ai-news-2026-january-september-index` 已原地改版（拿掉篇數、加 12 篇連結）。
+> **批次 4.5（2026-09-16 起的新消息）**：本工作區再加六篇（`ai-news-chatgpt-sponsored-agents-20260916`、`ai-news-firefox-smart-window-mistral-20260916`、`ai-news-openai-misalignment-reports-20260917`、`ai-news-anthropic-pace-metrics-20260917`、`ai-news-astra-for-law-20260917`、`ai-news-google-cc-family-agent-20260918`，display_order 161–166），研究紀錄直接寫在 `research/`，索引原地增補；現況見 HANDOVER 第 1d 節。
+>
 > **PR #548 已於 2026-09-18 合併、部署並匯入發布**（12 篇＋索引＋30 個只改了連結文字的既有包同一次 `--slug` 匯入；清單在 HANDOVER 第 2.4 節）。
 > 固定值：`topics` 是 `["ai", "ai-news"]`（需要時加 `software`／`gadgets`），主色 TEAL，眉標 `MOKAAIR  /  AI NEWS`，
 > `display_order` 十二篇 149–160；**沒有免責 callout**（含 B8 金融服務那篇，理由見 `ai.md`）。

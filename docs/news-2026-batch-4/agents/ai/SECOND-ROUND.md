@@ -4,7 +4,7 @@
 
 ## 先讀
 
-1. 第一輪用的規格（規則全部適用）：`C:\Users\x8120\AppData\Local\Temp\claude\C--Users-x8120-mokaair--claude-worktrees-travel-guide-articles-planning-eab8c5\6bc15b49-339e-47bf-9727-38b4d1d65292\scratchpad\agents\ai\FACTCHECK-AI.md`
+1. 第一輪用的規格（規則全部適用）：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5\docs\news-2026-batch-4\agents\ai\FACTCHECK.md`
 2. 第一輪的報告：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5\docs\news-2026-batch-4\factcheck-draft\<slug>.md`
 3. 草稿的兩個檔：內容包 `...\apps\api\app\guides\content\<slug>.json`、研究紀錄 `...\docs\ai-news-2026-09-late\research\<slug>.json`
 

@@ -1,0 +1,147 @@
+{
+ "slug": "tech-news-taiwan-gsn-idc-20260916",
+ "event_date": "2026-09-16",
+ "event_date_basis": "中華電信 press release page cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830 shows the visible date line '2026/09/16' and the index at cht.com.tw/zh-tw/home/cht/messages files it under 2026/09/16 with the tag 業務. IMPORTANT: the release is dated 2026-09-16 but the CEREMONY it reports happened the day before - the opening sentence is 「本公司於9月15日舉辦『GSN IDC新機房落成啟用暨營運授權交接典禮』」. Two dates, and BRIEF.md rule 11 says keep them apart: 典禮日 2026-09-15, 發布日 2026-09-16. Using the publication date for news_date and the slug suffix is the safer choice here because the release, not the ceremony, is the first-party record; the article must state both dates in the body. A third date is the build completion: 於115年6月完成整體建置 - that is 2026-06, not September.",
+ "checked_on": "2026-09-18",
+ "title_hint_zh_TW": "政府網際服務網換了新機房：GSN IDC 的規格、進駐時程與官方沒說的事",
+ "sourcing_verdict": "partial",
+ "sourcing_notes": "One source read in full with curl -sL -A \"Mokaair-editorial\" on 2026-09-18, HTTP 200: cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830, 153,184 bytes, body in server-rendered <p> elements. VERDICT IS 'partial' AND THE WRITER MUST FIX THIS BEFORE DRAFTING: BRIEF.md requires at least two first-party sources, and only one was obtained. 數位發展部 is quoted in the release (數位政府司司長王誠明) but, checked on 2026-09-18, the ministry's press-release index moda.gov.tw/press/press-releases/372 (200, 109,447 bytes) carries nothing about this - its newest items are 2026-09-17 MyData 就學貸款 and 2026-09-16 部長訪美. So as of the check there is no moda press release to pair with it. The obvious second source is the ministry's own GSN page under 數位政府, which was NOT located in this session: moda.gov.tw/digital-affairs/digital-service/operations/8265 was tried and returned HTTP 404 (4,014 bytes) - that path was a guess and is recorded here only so the next agent does not repeat it. DO NOT cite that URL. The writer must navigate moda.gov.tw/digital-affairs/digital-service/ from the ministry's own menu (核心業務 > 數位政府) and fetch the real GSN page, or find the corresponding 政府網際服務網 official site, before this becomes publishable. HOW THE CHT RELEASE WAS FOUND: not via the sitemap (the press releases are not individually listed in cht.com.tw/home/eshop/sitemap/sitemap.xml) and not via /zh-tw/home/cht/messages/news (HTTP 404 with a 139,959-byte soft-404 body), but via the server-rendered index at cht.com.tw/zh-tw/home/cht/messages, where each item is a div.list-item with a tag, an h3.list-item-head and a div.list-item-date, and items live at /zh-tw/home/cht/messages/<year>/<MMDD-HHMM>. Verbatim strings were taken from the raw <p> elements; naive tag-stripping inserts spaces around Latin/digit runs and would corrupt 「7×24 智慧環控監控」 and 「2N雙迴路」. Note the release itself contains an inconsistent space: 「高速頻寬直連 GSN骨幹」 has a space before GSN but not after - that is the source's own typography.",
+ "sources": [
+  {
+   "title": "中華電信GSN IDC新機房啟用攜手打造政府數位韌性新里程碑",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "publisher": "中華電信股份有限公司",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "典禮日與出席者：中華電信於 2026 年 9 月 15 日舉辦「GSN IDC新機房落成啟用暨營運授權交接典禮」，中華電信資訊技術分公司總經理陳明崇出席，數位發展部數位政府司司長王誠明率同仁與會。新聞稿發布日是 2026 年 9 月 16 日。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": false,
+   "verbatim_quote": "本公司於9月15日舉辦「GSN IDC新機房落成啟用暨營運授權交接典禮」，中華電信資訊技術分公司總經理陳明崇出席見證，數位發展部數位政府司司長王誠明率同仁蒞臨與會"
+  },
+  {
+   "fact": "GSN 是什麼：中華電信的定義是「政府網際服務網（GSN）長期提供政府機關網路連線、跨機關資訊交換及數位服務運作所需的重要環境」。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": false,
+   "verbatim_quote": "政府網際服務網（GSN）長期提供政府機關網路連線、跨機關資訊交換及數位服務運作所需的重要環境。"
+  },
+  {
+   "fact": "建置期間：自民國 113 年 6 月正式啟動建置，於民國 115 年 6 月完成整體建置。換算成西元是 2024 年 6 月到 2026 年 6 月，但官方用的是民國紀年，正文要兩種都寫或註明換算。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": false,
+   "verbatim_quote": "推動GSN IDC升級與移轉作業，自113年6月正式啟動建置，於115年6月完成整體建置"
+  },
+  {
+   "fact": "機房規格，全部是中華電信自述：2N 雙迴路供電與冷卻系統、封閉熱通道散熱技術、新世代高可用基礎設施架構、高速頻寬直連 GSN 骨幹。中華電信說這些帶來「更佳的系統承載能力、營運穩定性及擴充彈性」，沒有給任何量化指標。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GSN IDC新機房導入2N雙迴路供電與冷卻系統、封閉熱通道散熱技術、新世代高可用基礎設施架構及高速頻寬直連 GSN骨幹"
+  },
+  {
+   "fact": "安全與監控措施，同樣是自述：「結合7×24 智慧環控監控與六層實體門禁，建置完善的監控、備援及資安防護機制」。六層實體門禁是新聞稿裡唯一一個帶數字的安全描述，但沒有說明是哪六層。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "結合7×24 智慧環控監控與六層實體門禁，建置完善的監控、備援及資安防護機制"
+  },
+  {
+   "fact": "進駐時程，帶一個可查核的目標值：各機關自 115 年 7 月起陸續進駐及移轉，預計 115 年 12 月達到 70% 進駐率，116 年完成所有機關移轉作業。70% 是中華電信寫的「預計」，是目標不是成績。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "各機關自115年7月起陸續進駐及移轉，預計115年12月達到70%進駐率，116年完成所有機關移轉作業"
+  },
+  {
+   "fact": "移轉期間的服務品質：中華電信說「透過完善規劃與驗證機制，確保既有服務穩定運作，達成移轉期間服務不中斷目標」。「不中斷」是廠商說法，沒有可用率數據，本站也沒有實測。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "確保既有服務穩定運作，達成移轉期間服務不中斷目標"
+  },
+  {
+   "fact": "新機房的定位：中華電信說啟用後「將成為政府網際服務網重要節點，支撐政府數位服務穩定運作」。原文用的是「重要節點」，不是「唯一節點」或「主節點」。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "GSN IDC新機房正式啟用後，將成為政府網際服務網重要節點，支撐政府數位服務穩定運作。"
+  },
+  {
+   "fact": "推動的主從關係：中華電信寫的是「中華電信配合數位發展部規劃，推動GSN IDC升級與移轉作業」。也就是規劃在數發部、執行在中華電信。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": false,
+   "verbatim_quote": "中華電信配合數位發展部規劃，推動GSN IDC升級與移轉作業"
+  },
+  {
+   "fact": "數發部一方在新聞稿裡的表態，由中華電信轉述：數位政府司司長王誠明「肯定中華電信長期協助政府推動GSN相關基礎設施建設」，並「期許未來持續強化政府關鍵數位基礎設施量能」。這是中華電信轉述的，不是數發部自己的公告。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "數位發展部數位政府司司長王誠明於典禮中肯定中華電信長期協助政府推動GSN相關基礎設施建設"
+  },
+  {
+   "fact": "升級的理由，中華電信自述為三項：政府數位轉型、資通安全及營運持續需求。",
+   "url": "https://www.cht.com.tw/zh-tw/home/cht/messages/2026/0916-1830",
+   "is_vendor_claim": true,
+   "verbatim_quote": "因應政府數位轉型、資通安全及營運持續需求"
+  }
+ ],
+ "not_said": [
+  "沒有金額。建置費用、契約金額、由誰支付、是不是標案，一個字都沒有。",
+  "沒有地點。新機房在哪個縣市、哪個園區、舊機房在哪裡、舊機房會不會退役，全部沒有寫。",
+  "沒有規模。機櫃數、樓地板面積、用電容量、設計 PUE、頻寬數值都沒有。「高速頻寬直連 GSN骨幹」沒有附任何數字。",
+  "沒有說「六層實體門禁」是哪六層，也沒有說 7×24 智慧環控監控涵蓋哪些項目。",
+  "沒有說有多少機關要移轉、目前進駐幾家。只有「預計115年12月達到70%進駐率」這個目標值，沒有查核日當下的實際比率。",
+  "沒有說「營運授權交接」交接的是什麼、從誰交給誰、授權期間多長。標題裡有這六個字，內文沒有解釋。",
+  "沒有說這座機房與國家級的其他資料中心（例如政府雲）之間是什麼關係。",
+  "沒有任何可用率、故障率、演練結果或第三方稽核／認證（例如 Uptime Institute 分級、ISO 認證）的敘述。不要因為寫了 2N 就推論它是某個等級。",
+  "數位發展部到 2026-09-18 查核時，新聞發布頁沒有對應的公告。要寫成「以 2026 年 9 月 18 日查核，數發部新聞發布頁未見對應公告」，不是「數發部沒有回應」。",
+  "沒有提到馬祖、離島或海纜。這是政府網路的機房題目，與同批次的臺馬第四海纜是兩件事，不要混在一起講成同一套韌性工程。"
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "數位發展部這一側對 GSN IDC 的任何說明，包括 GSN 的官方定義、機關數與服務範圍。",
+   "seen_where": "中華電信新聞稿轉述了數位政府司司長的談話；數發部的網站選單有「核心業務 > 數位政府」。",
+   "why_excluded": "數發部的 GSN 頁面在本次查核沒有找到。試過 moda.gov.tw/digital-affairs/digital-service/operations/8265，回 HTTP 404（4,014 bytes）——那是猜出來的路徑，記在這裡只是為了避免下一個代理重複，絕對不可以拿去當來源。撰稿前必須從數發部自己的選單走到真正的 GSN 頁面並抓下來。"
+  },
+  {
+   "claim": "「2N 雙迴路」「封閉熱通道」代表的可用率等級或業界分級。",
+   "seen_where": "中華電信列出這些名詞，沒有接任何等級。",
+   "why_excluded": "從架構名詞推論分級是編輯自己的算術，來源沒有印。要解釋 2N 是什麼可以，但只能寫成一般性的技術說明，不可以推導出這座機房達到某個等級。"
+  },
+  {
+   "claim": "115 年 12 月的 70% 進駐率是否達成。",
+   "seen_where": "新聞稿寫「預計」。",
+   "why_excluded": "那是 2026 年 12 月的目標，查核日是 2026 年 9 月 18 日，還沒到。一律寫成「中華電信預計」，並註明本文查核時尚未到期。"
+  },
+  {
+   "claim": "新機房的地點。",
+   "seen_where": "完全沒有出現。",
+   "why_excluded": "不要從中華電信其他機房的位置或任何地圖服務推測。政府關鍵基礎設施的位置也不是本站該去補齊的資訊。"
+  },
+  {
+   "claim": "標案資訊、決標金額與契約期間。",
+   "seen_where": "沒有查閱政府電子採購網或公開資訊觀測站。",
+   "why_excluded": "本次查核沒有開啟任何採購或財報管道。要寫金額必須先取得官方文件並加進 sources。"
+  },
+  {
+   "claim": "媒體對這則公告的報導。",
+   "seen_where": "沒有查閱。",
+   "why_excluded": "BRIEF.md 禁止整合站與媒體進 sources。"
+  }
+ ],
+ "editorial_brief": "RECOMMENDATION: SECONDARY (次要), AND NOT PUBLISHABLE UNTIL A SECOND FIRST-PARTY SOURCE IS ADDED. 目前只有中華電信一方的公告，BRIEF.md 要求 sources 至少兩條。撰稿者的第一件事是把數發部的 GSN 頁面找出來抓下來（從 moda.gov.tw 的「核心業務 > 數位政府」走，不要猜路徑）。若找不到，這一則就不要寫。\n\nREADER: 會用報稅、勞保查詢、戶政線上申辦這類政府網站的一般台灣使用者，想知道「政府網站背後是什麼在跑」。不是資訊人員。\n\nANGLE: 政府網站不是憑空存在的，它們跑在一個叫政府網際服務網（GSN）的東西上，而那個東西的機房剛剛換了一座。這一則的解釋價值在於把一個平常看不見的層次講出來：機關之間的資訊交換、線上申辦的連線，都要經過這一層。中華電信給的規格詞（2N 雙迴路供電與冷卻、封閉熱通道、六層實體門禁、7×24 智慧環控）剛好可以拿來當「資料中心到底在防什麼」的教材——防斷電、防過熱、防有人走進去——但一定要寫成一般性的技術說明加「中華電信表示」，不可以從架構名詞推導出等級。\n\nSECOND ANGLE worth two paragraphs: 換機房不是換一天。這座機房 113 年 6 月啟動建置、115 年 6 月完成、115 年 7 月起機關才陸續進駐、預計 115 年 12 月到 70%、116 年才全部移轉完。也就是說 9 月 15 日的「落成啟用」是一條兩年半長的線上的一個點，而不是終點。把這條時間線畫出來，比引用任何規格詞都有用。\n\nSTRUCTURE FIT（若當次要新聞併入合輯，取第 1、2 節即可）: (1) 9 月 15 日的典禮與 9 月 16 日的公告；(2) GSN 是什麼、這座機房在裡面是什麼角色，表格放在第 2 節末；(3) 兩年半的建置與移轉時間線，圖解放在第 3 節末；(4) 規格詞在防什麼；(5) 官方沒說的事：金額、地點、規模、機關數。TABLE（最多 4 欄、儲存格短、caption 寫查核日 2026 年 9 月 18 日）：建議欄位 時點（民國／西元）/ 發生什麼 / 資料來源，列出 113年6月、115年6月、115年7月、115年12月（預計）、116年（預計）。DIAGRAM 2x2：啟動建置 / 完成建置 / 陸續進駐 / 全部移轉——圖上每個時點都必須在正文出現過，而且要標明哪兩格是「預計」。\n\nLIVED-EXPERIENCE EXAMPLE 要標明是編輯設計的例子：一位讀者在報稅期間覺得網站很慢，好奇「這是哪一段的問題」——但要寫清楚這只是用來說明架構分層，中華電信的公告完全沒有談到任何政府網站的效能，也沒有把這座機房和任何一個線上服務對應起來。\n\nSUMMARY block: 第一句是答案——中華電信 2026 年 9 月 16 日發布新聞稿，說明前一天（9 月 15 日）舉行 GSN IDC 新機房落成啟用暨營運授權交接典禮。接著是條件——新機房自民國 113 年 6 月啟動建置、115 年 6 月完成，各機關自 115 年 7 月起陸續移轉，中華電信預計 115 年 12 月達七成、116 年全部完成。最後一句是但書——中華電信沒有寫金額、地點與規模，數發部新聞發布頁在查核日也沒有對應公告。\n\nFAQ candidates these sources genuinely answer: GSN 是什麼（中華電信的定義：提供政府機關網路連線、跨機關資訊交換及數位服務運作的環境）; 新機房什麼時候蓋好的（民國 115 年 6 月完成整體建置，9 月 15 日舉行落成啟用典禮）; 機關都搬過去了嗎（還沒，自 115 年 7 月起陸續移轉，中華電信預計 116 年完成）; 誰規劃、誰執行（中華電信寫『配合數位發展部規劃』）; 花了多少錢、蓋在哪裡（官方新聞稿沒有寫）.",
+ "must_not_write": [
+  "在補上第二條一手來源之前不要動筆。只有一條 source 不符合 BRIEF.md。",
+  "不要引用 moda.gov.tw/digital-affairs/digital-service/operations/8265——那是本次查核猜錯的路徑，回 HTTP 404，絕對不可以進 sources。",
+  "不要從「2N 雙迴路」推導出任何可用率百分比、Tier 分級或 ISO 認證。來源沒有印。",
+  "不要寫新機房的地點、機櫃數、用電容量或頻寬數值。官方一個都沒給，也不要從其他管道補政府關鍵基礎設施的位置。",
+  "不要把「預計115年12月達到70%進駐率」寫成已經達成或已經接近。查核日 2026 年 9 月 18 日，那個時點還沒到。",
+  "不要把中華電信的自述寫成事實。「更佳的系統承載能力」「完善的監控、備援及資安防護機制」「服務不中斷」「重要節點」一律寫成「中華電信表示」。本站沒有實測。",
+  "不要寫成「政府網站從此不會當機」或任何效能承諾。公告沒有把這座機房和任何一個線上服務對應起來。",
+  "不要把這一則和同批次的臺馬第四海纜合寫成同一套國家韌性工程。兩則來源之間沒有任何交叉引用。",
+  "不要寫成資安防護教學，也不要描述任何可能被利用的實體或網路弱點。tech.md 禁止可操作的攻擊細節。",
+  "民國與西元紀年不要只寫一種。官方用民國，正文要註明換算。",
+  "不寫投資免責 callout——tech.md 規定科技垂直不帶。",
+  "主圖與 SVG 圖解不得出現商標、字標或機房照片式的介面截圖；公司與機關名稱用純文字。",
+  "不要列表、不要 Markdown、不要 emoji，zh-TW 包不得出現簡體字。"
+ ],
+ "overlaps_existing_article": "NO OVERLAP. 站上沒有任何一篇寫資料中心、政府網路或數位政府基礎建設。三篇數發部題材——tech-news-taiwan-6g-spectrum-20260910、tech-news-taiwan-matsu-cable-20260623、tech-news-taiwan-sovereign-ai-corpus-20260915——分別是頻譜、海纜與語料庫，主體都不同。最接近的類比其實是 tech-news-taiwan-matsu-cable-20260623 的「通訊韌性」框架，但那是離島對外鏈路，這是政府內部網路的機房，兩者的來源之間沒有任何交叉引用，不可以合寫。DIVIDE IT THIS WAY: 海纜那兩篇擁有『臺灣對外與離島之間的實體鏈路』；這一篇擁有『政府機關內部連線與跨機關資訊交換所在的機房』。第二個 link 建議指向 tech-news-taiwan-sovereign-ai-corpus-20260915（同為數位政府／資料治理面），把海纜留給本批次的 tech-news-taiwan-matsu-cable-tm4-20260918。FIRST LINK: 索引包 tech-news-2026-index.json，zh-TW title「2026 年科技新聞總整理：硬體、平台、電信與法規的重點」。",
+ "standalone_or_secondary": "SECONDARY，而且是本批次六則裡素材最薄的一則。一手素材實際有：1 場典禮（2026-09-15）、1 則公告（2026-09-16）、5 個時點的時間線（113/6、115/6、115/7、115/12 預計、116 預計）、1 個目標百分比（70%）、4 個規格名詞、1 個帶數字的安全描述（六層實體門禁）、2 位具名出席者。沒有金額、沒有地點、沒有規模、沒有機關數。建議放次要新聞那一格，或在補到數發部的 GSN 官方頁面之後再評估是否值得獨立成篇。"
+}

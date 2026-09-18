@@ -1,0 +1,285 @@
+{
+ "slug": "ai-news-anthropic-pace-metrics-20260917",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "All three recorded sources were fetched from this container on 2026-09-18 with curl -sL -A \"Mokaair-editorial\"; no personal data in any header, query string or form. Observed: https://www.anthropic.com/institute/measuring-pace-of-ai-development 200 / 217,865 bytes, no redirect; https://www.anthropic.com/news 200 / 462,587 bytes; https://www.anthropic.com/policy-on-the-ai-exponential 200 / 140,750 bytes. All returned real body. Anthropic still has no RSS feed - candidates-tech-and-ai.md records /rss.xml and /news/rss.xml as 404 and that was not re-tested; the newsroom page was parsed instead. That page is a Next.js RSC payload, so the article list is JSON embedded in the HTML rather than markup: 265 distinct entries carrying a publishedOn timestamp, plus a separate 'featured grid' block whose entries carry a plain date field. This announcement appears ONLY in the featured grid (date 2026-09-17), not in the publishedOn list, because it lives under /institute/ rather than /news/ - anyone scanning Anthropic by slug alone will miss it. LIVE-DOCUMENT WARNING: the measurement page is explicitly a prototype and a snapshot. Anthropic writes that it plans to publish these regularly; the compute figure covers one week (13-20 July) and the automation and oversight figures are 'as of August 2026'. Every number here is bound to a stated window and must be written with that window attached. Two further first-party pages were fetched but are NOT recorded as sources and no fact rests on them: https://www.anthropic.com/institute/recursive-self-improvement (200, 238,922 bytes - read, but it prints no publication date anywhere, so it cannot be dated and is unsafe to cite) and https://www.anthropic.com/aug-2026-risk-report (200, redirects to a 4,569,677-byte PDF on www-cdn.anthropic.com - downloaded but NOT read, so per the BRIEF it stays out of sources[]). No news media, aggregator or search snippet was used.",
+ "sources": [
+  {
+   "title": "Measurements for understanding the pace of AI development inside frontier labs",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "publisher": "The Anthropic Institute",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Newsroom",
+   "url": "https://www.anthropic.com/news",
+   "publisher": "Anthropic",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "Policy on the AI Exponential",
+   "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+   "publisher": "Anthropic",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "event_date": "2026-09-17",
+ "event_date_basis": "TAIPEI CONVENTION APPLIED, per docs/news-2026-batch-4/agents/DELTA-4-5.md section 6 (\"事件日：以前期研究紀錄的 event_date 與 event_date_basis 為準（已換算台北時間）\"). Here the conversion cannot be applied because Anthropic publishes no time at all, and the newsroom date stands. THE ARTICLE PAGE ITSELF PRINTS NO DATE: a full scan of https://www.anthropic.com/institute/measuring-pace-of-ai-development on 2026-09-18 found no byline date, no 'Published' line and no article:published_time meta tag; the only 2026-09-18 string in the HTML is the CMS field siteSettings._updatedAt (2026-09-18T00:02:35Z), which belongs to the whole site's settings object, not to this page. The date therefore comes from Anthropic's own newsroom: the featured-grid entry for this piece carries date 2026-09-17 beside its title and summary. That is first-party but it is a listing, so the article should write '2026 年 9 月 17 日' and attribute it to Anthropic 官方新聞室的日期標記 rather than to the piece itself. NO TIME IS PUBLISHED ANYWHERE, so there is nothing to convert to Taipei time and the article must not invent a time of day. Also keep the measurement windows separate from the publication date: the automation and oversight figures are stated 'As of August 2026', the compute snapshot covers 13-20 July 2026, and the automation methodology sampled each week of July 2026. None of those is the event date.",
+ "verified_facts": [
+  {
+   "fact": "Anthropic's own newsroom dates this piece 2026-09-17 and gives it this summary, which is also the clearest one-sentence statement of what was announced.",
+   "url": "https://www.anthropic.com/news",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development."
+  },
+  {
+   "fact": "What was published: three measurements intended to let the public track AI development inside frontier labs - how much AI R&D is performed by AI itself, how well AI agents' actions are overseen, and how compute is allocated.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "To do that, we’re sharing three measurements that will help the public track AI development inside frontier AI labs"
+  },
+  {
+   "fact": "Anthropic frames the reason in one sentence at the top of the piece.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "AI systems are getting more powerful, and they’re increasingly being used to build the next version of themselves."
+  },
+  {
+   "fact": "Anthropic states that it plans to embed independent third-party evaluators from multiple organizations, with access comparable to internal risk assessment teams, to verify safety practices, report incidents and monitor metrics like these. This is a plan, not something already in place.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We plan to embed independent third-party evaluators from multiple organizations at Anthropic, and give them access to internal processes, systems, and data comparable to what internal risk assessment teams have."
+  },
+  {
+   "fact": "Anthropic says the numbers themselves would be expected to move if labs coordinated on pacing, and ties that explicitly to its CEO's call.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "It’s important to note that we would expect these numbers to shift if there were coordination on pacing the frontier, as called for by Anthropic CEO Dario Amodei."
+  },
+  {
+   "fact": "Measurement 1 is called the Anthropic R&D Automation Index, and Anthropic describes it as a prototype built by cataloguing the kinds of AI R&D work at the company, rating how automated each is, and aggregating the ratings.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We built a prototype index of how much of Anthropic’s AI research and development (R&D) is performed by Claude, called the Anthropic R&D Automation Index."
+  },
+  {
+   "fact": "The rating scale is not Anthropic's own: it is an Automation Level (AL) scale developed by Epoch AI running from AL0 to AL5. At AL3 AI 'collaborates' - large chunks of work under close human direction. At AL4 AI 'leads' - most of the task end-to-end from a high-level prompt, with the human supervising.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "we use an automation rating scale developed by Epoch AI that measures “Automation Level,” or AL. It runs from AL0 (no AI involvement) to AL5 (AI operates fully autonomously, with no human in the loop)."
+  },
+  {
+   "fact": "The three headline results of measurement 1, all stated 'As of August 2026': Claude is not operating fully autonomously for any measured subset of AI R&D work; Claude 'leads' 26% of Anthropic's AI R&D work; and the share of work at or above 'AI collaborates' is above 90%.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Claude is not operating fully autonomously for any measured subset of AI R&D work. Claude “leads” 26% of Anthropic’s AI R&D work. The share of work at or above “AI collaborates” is above 90%."
+  },
+  {
+   "fact": "Anthropic names two obstacles to comparing labs: no common methodology, and the fact that it is using its own models to evaluate its own systems, so the judge model could repeat the errors of the model it is checking.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Second, we’re using our own models to evaluate our systems, which could mean that the “judge” model could make the same kinds of errors as the model it is checking."
+  },
+  {
+   "fact": "Measurement 2 covers three oversight metrics, defined by Anthropic as coverage (share of an agent's actions passing through a monitor), review latency (time between an action and its review) and escalation rate (share blocked, redirected or flagged).",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "we consider three different metrics: coverage, which describes the share of an agent’s actions that pass through a monitor before or after execution; review latency , which is the time between an action and its review, first by an automated monitor and then by a human; and escalation rate, which is the share of agent activities that are either blocked/redirected (in the case of online monitors) or flagged for further review (in the case of offline monitors)."
+  },
+  {
+   "fact": "Scale, with its scope limit attached: as of August 2026 roughly 30,000 agents were doing research and engineering work at Anthropic at any one time on its most-used internal platform, and Anthropic says the measurements cover that platform only.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "As of August 2026, there were approximately 30,000 agents doing research and engineering work at Anthropic at any one time in our most-used internal platform. These measurements cover this platform only."
+  },
+  {
+   "fact": "Online monitors check actions in real time and either block dangerous actions or steer misbehaviour automatically; Anthropic's stated example of what they are for is an agent copying model weights out of its systems.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "They’re built to address harms that would happen quickly and could not be undone, such as an agent copying model weights out of our systems."
+  },
+  {
+   "fact": "Coverage figures: Anthropic states 100% of these agents' actions pass through the online monitor before execution, usually within seconds, and 100% are ingested by the offline monitor after they are taken.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "100% of these agents’ actions pass through the online monitor before they are executed, usually within seconds."
+  },
+  {
+   "fact": "Review latency: automated review happens before the action; humans review any blocked actions within one week. The offline monitor flags roughly 100,000 transcripts per week, most of which are resolved by classifiers, with approximately ~50 per week escalated to human review.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "The monitor flags roughly 100,000 transcripts per week that are then reviewed by multiple classifiers for false-positives and initial oversight review. Most of the flags are resolved by this process, and the highest priority flags (approximately ~50 per week) are escalated to human review."
+  },
+  {
+   "fact": "Blocking rate, with its exact denominator and window: Anthropic says it analysed over a billion decisions from its research and engineering agents over August 2026 and found 0.002% of them - about 1 in 47,000 - were blocked by the online monitor. Separately, the offline monitor flags roughly one to two transcripts in every thousand for further review.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "We analyzed over a billion decisions from our research & engineering agents over August 2026 and found that 0.002% of them (about 1 in 47,000) were blocked by this monitor."
+  },
+  {
+   "fact": "Anthropic's own caveat about rare events at scale, which is the sentence that makes the 0.002% figure meaningful rather than reassuring.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In our monitoring data to date, individual agents rarely misbehave. But when there are millions or billions of agents operating in the economy, even rare events can happen regularly."
+  },
+  {
+   "fact": "Anthropic states that METR has independently red-teamed its offline monitoring platform in the past.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "In the past, METR has independently red-teamed our offline monitoring platform ."
+  },
+  {
+   "fact": "Measurement 3 is a compute snapshot covering one week, 13 to 20 July 2026, in which every workload was sorted into categories and the safety share of AI R&D compute was calculated.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "We examined a snapshot of how Anthropic used all of its compute from July 13 to July 20"
+  },
+  {
+   "fact": "The two compute results, which must always be written as a pair because they have different denominators: about 6% of compute that went to AI R&D went to safety, and about 12% of compute that went to AI-driven AI R&D went to safety.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Over the examined week, about 6% of compute that went to AI R&D was allocated toward safety, and about 12% of compute that went to AI-driven AI R&D was allocated toward safety."
+  },
+  {
+   "fact": "Anthropic labels those two figures deliberately conservative and explains one rule that makes them so: a token that advanced capabilities as much as safety was not counted. It also says the figures exclude safeguards classifiers, which it describes as a separate, comparable amount of compute.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "These are deliberately conservative estimates. For example, if a token was used to advance capabilities as much as it was to advance safety, it was not counted in these metrics."
+  },
+  {
+   "fact": "Anthropic states plainly that compute is an imperfect proxy for how much a company focuses on safety, because safety research is researcher-time-intensive rather than compute-intensive, and says the value of the metric is comparison over time rather than the absolute numbers.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Safety research tends to use less compute than frontier training runs by its nature, so compute is an imperfect proxy for how much a company focuses on safety."
+  },
+  {
+   "fact": "Anthropic anticipates the obvious objection to a self-reported safety share and says where the burden of proof should sit.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "Safety research is hard to distinguish from capabilities research, and each developer will be tempted to draw the line generously. The burden of proof should sit with the developer to show that work is safety-related."
+  },
+  {
+   "fact": "Methodology for the automation index, published in the appendix: for each week in July 2026 Anthropic randomly sampled 20% of staff from each department in the model R&D loop, had a Claude research agent list that person's tasks from Slack and internal documentation, and built a flat list of roughly 15,000 granular model R&D tasks.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "For each week in July 2026, we randomly sampled 20% of staff from each department that make up the model R&D loop."
+  },
+  {
+   "fact": "Those tasks were organised by Claude into a frozen hierarchical tree of 542 nodes, of which 378 are leaves, with examples named such as 'eval platform defect diagnosis and fixes'.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The resulting tree has 542 nodes at different depths, of which 378 are leaves like “eval platform defect diagnosis and fixes,” “RL sandbox egress and network policy,” and “serving incident postmortems.”"
+  },
+  {
+   "fact": "The rating is done by Claude too: a Claude agent researches each node and an independent Claude judge assigns one of six automation levels, seeing only evidence from the rated month or earlier.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "When we rate a given month’s automation, we only allow the research agents that do the ratings to see evidence from that month or earlier."
+  },
+  {
+   "fact": "Weighting is by person-time rather than by editorial judgement of importance.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Rather than deciding ourselves what kinds of work are more important than others, we used the amount of person-time dedicated to that task as a proxy."
+  },
+  {
+   "fact": "Anthropic states in a footnote that AL5 is a level it has not yet reached, and describes what it would look like: the model would monitor for failures itself, scope the investigation, design, implement, test and deploy the fix, with no human involved unless one wanted to be.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "a level we have not yet reached"
+  },
+  {
+   "fact": "A second footnote limits the compute figure further: Anthropic manages compute as a single fungible pool directed dynamically, so the week is a snapshot of where capacity happened to go, not a fixed allocation, and the categories do not correspond to how expenses are classified.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": false,
+   "verbatim_quote": "so this is a snapshot of how capacity happened to be directed in one week, not a fixed allocation"
+  },
+  {
+   "fact": "Anthropic's closing statement of purpose, which is the piece's thesis in one line.",
+   "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+   "is_vendor_claim": true,
+   "verbatim_quote": "As the world considers pacing the frontier, we should do everything possible to minimize the gap between what frontier labs know and what the public knows."
+  },
+  {
+   "fact": "The Advanced AI Framework (AAIF) that the piece refers to is a published Anthropic policy proposal, described on Anthropic's policy page as covering transparency, independent evaluation, and government authority to block or deter dangerous deployments. It is a proposal to governments, not an existing rule.",
+   "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The first, our Advanced AI Framework, offers a roadmap for governing increasingly capable systems, from transparency and independent evaluation to government authority to block or deter dangerous deployments."
+  },
+  {
+   "fact": "Anthropic's policy page states the framing behind both proposals.",
+   "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+   "is_vendor_claim": true,
+   "verbatim_quote": "AI is advancing at exponential speed, and the policymaking process was built for a slower world."
+  }
+ ],
+ "not_said": [
+  "NO REGION, PRODUCT OR USER IMPACT. This is a transparency proposal about how Anthropic builds models. As checked to 2026-09-18, the page names no country, no market, no product change and no user-facing feature. Nothing here changes what a Claude user in Taiwan can do, and the article must not suggest otherwise.",
+  "No other lab's numbers. Anthropic publishes only its own figures and says any frontier developer 'could' publish the same measures. As checked on the page to 2026-09-18, no other company's automation share, oversight coverage or safety compute share appears. The article must not present 26% or 6%/12% as an industry figure or imply anyone else is higher or lower.",
+  "No commitment to a publication schedule. Anthropic says it hopes to model transparency and 'will continue to do so', and that any developer 'could publish these measures regularly'. It does not commit to a cadence, a next publication date, or a fixed methodology.",
+  "No third-party verification of any figure published here. Anthropic says it plans to embed independent evaluators and that METR has red-teamed its offline monitoring platform in the past; it does not say any outside party has checked the 26%, the 30,000 agents, the 0.002%, or the 6%/12%.",
+  "No absolute compute figures. The compute section publishes only shares of AI R&D compute. No chip count, no spend, no total.",
+  "No headcount and no cost. The automation index is weighted by person-time but no staff number is published, and the piece says nothing about jobs at Anthropic.",
+  "No definition of 'safety work' that anyone outside Anthropic can apply. Anthropic says category definitions should be published alongside and checked by an independent third party, and that developers should converge on a shared definition ahead of time - which means there is not one yet.",
+  "No scope beyond one internal platform for the oversight numbers. Anthropic states the agent measurements cover its most-used internal platform only, and says nothing about agents running elsewhere in the company or in customer deployments.",
+  "No claim that recursive self-improvement is close or inevitable on this page. It defines the term and says the measurement exists to understand how close the world is to it. The article must not add a timeline.",
+  "No response from any other lab, and no reference to OpenAI's misalignment reporting framework published the previous day. Anthropic names no competitor anywhere in the piece."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "Figures from Anthropic's August 2026 risk report, which the piece cites as the place it published all the oversight measurements.",
+   "seen_where": "https://www.anthropic.com/aug-2026-risk-report, which 200s and redirects to a 4,569,677-byte PDF on www-cdn.anthropic.com.",
+   "why_excluded": "The PDF was downloaded but not read. The BRIEF forbids putting a URL in sources[] with a checked_on date unless its body was actually read, and forbids citing a document known only by size or hash. Nothing in this record depends on it. If the writer wants risk-report material, it must be read first and added as a fourth source."
+  },
+  {
+   "claim": "'Anthropic engineers on average ship 8x as much code per quarter as they did from 2021-2025.'",
+   "seen_where": "https://www.anthropic.com/institute/recursive-self-improvement ('When AI builds itself'), fetched 2026-09-18, HTTP 200, 238,922 bytes, linked from the measurement piece.",
+   "why_excluded": "That page prints no publication date anywhere - a full scan found no byline, no 'Published' line and no date meta tag, only CMS timestamps. An undated page cannot be dated in a news article, and the figure is not repeated on the dated piece. Leave it out rather than guess when it was published."
+  },
+  {
+   "claim": "That 26% means a quarter of Anthropic's work is done without humans.",
+   "seen_where": "The natural misreading of 'Claude “leads” 26% of Anthropic’s AI R&D work'.",
+   "why_excluded": "AL4 'leads' is explicitly defined as the human supervising while the model completes most of the task from a high-level prompt. AL5, the autonomous level, is stated as not reached for any measured subset. 'Leads' is not 'alone', and the article must spell that out."
+  },
+  {
+   "claim": "That the 0.002% block rate shows the oversight system works.",
+   "seen_where": "Reader inference from the oversight table.",
+   "why_excluded": "Anthropic itself pairs it with the opposite point: rare events happen regularly at scale. The rate is also a share of decisions blocked by one online monitor over one month on one platform, not a measure of how much misbehaviour exists. Report it with its window and its counterweight or not at all."
+  },
+  {
+   "claim": "That the measurements are verified, audited or externally validated.",
+   "seen_where": "The presence of METR and 'third-party evaluators' in the text.",
+   "why_excluded": "METR's red-teaming is described in the past tense and applies to the monitoring platform, not to these figures. The third-party evaluator programme is stated as a plan ('We plan to embed'). Both must be written in the tense Anthropic used."
+  },
+  {
+   "claim": "Epoch AI's Automation Level scale as an independently described standard.",
+   "seen_where": "The piece links to https://epochai.substack.com/p/toward-an-onet-for-ai-r-and-d .",
+   "why_excluded": "Not fetched, and it is a third party rather than a first-party source under the BRIEF. Describe the scale only as Anthropic describes it, and attribute the scale's authorship to Epoch AI because Anthropic says so."
+  },
+  {
+   "claim": "A link between this piece and OpenAI's model misalignment reporting framework of 2026-09-16.",
+   "seen_where": "Not on the page. Anthropic names no other lab.",
+   "why_excluded": "The two announcements are one day apart on the same theme, and the site is covering both, but neither company mentions the other. Any comparison is the site's own editorial observation and must be labelled as such."
+  }
+ ],
+ "corrections_to_candidate_list": [
+  "candidates-tech-and-ai.md lists Anthropic as 'no feed, scrape anthropic.com/news' and leaves it in the 'not yet swept' pile. Two concrete findings for whoever sweeps it next. (1) The newsroom page is a Next.js RSC payload: the usable article list is JSON inside the HTML under publishedOn plus a slug and title, 265 entries on 2026-09-18, and only 10 /news/ hrefs appear as actual markup - a link-scraper will see 10 items and conclude Anthropic publishes almost nothing. (2) This announcement is NOT in that publishedOn list at all. It lives at /institute/... and appears only in the separate featured-grid block, with a plain date field. Anthropic publishes under at least two path families and a sweep that only reads /news/ will miss the Institute entirely.",
+  "candidates-tech-and-ai.md's AI section has no Anthropic entry after 2026-09-10. As of 2026-09-18 there are two items with dates at or after 2026-09-16: this one (2026-09-17) and Introducing the Life Sciences Verification Program (publishedOn 2026-09-17T15:56:00.000Z).",
+  "The Anthropic entries in ai.md's existing-articles table stop at ai-news-pace-the-frontier-20260912, which sources darioamodei.com and three x.com posts. This piece is the first Anthropic-published follow-up to that essay with numbers in it, and it explicitly names Amodei's call - so the two are a chain, not a duplicate."
+ ],
+ "must_not_write": [
+  "Do not write that Claude does 26% of Anthropic's work by itself. AL4 'leads' means the human supervises; Anthropic states AL5 autonomous has not been reached for any measured subset.",
+  "Do not detach any number from its window. Write '2026 年 8 月的數字' for the automation and oversight figures and '7 月 13 日至 20 日那一週' for the compute figures, every time.",
+  "Do not put 6% and 12% in the same sentence without their different denominators (AI R&D compute vs AI-driven AI R&D compute). They are not two views of the same base.",
+  "Do not add the 6% and 12% to anything, divide them, or compare them with another company. Anthropic publishes no one else's figure.",
+  "Do not write that the measurements are verified or audited. Third-party evaluators are a plan; METR's red-teaming is past tense and about the monitoring platform.",
+  "Do not write '首次' or '唯一' about the metrics. Anthropic says any developer could publish them and describes its own as a prototype.",
+  "Do not attribute a publication time of day. No time is printed anywhere, so there is nothing to convert to Taipei time.",
+  "Do not cite the August 2026 risk report PDF - it was downloaded but not read.",
+  "Do not cite the 8x-code figure or anything else from /institute/recursive-self-improvement; that page carries no publication date.",
+  "Do not restate Amodei's three-step pacing plan - that is ai-news-pace-the-frontier-20260912's material. Reference it and move on.",
+  "Do not attribute to Anthropic any comparison with OpenAI's framework of the previous day. Anthropic names no competitor.",
+  "Do not draw any logo, wordmark, UI screenshot or product icon in the diagram, and do not put a number in the diagram that is not in the body."
+ ],
+ "overlaps_existing_article": "No existing pack covers this event. Three are adjacent; all three were read rather than judged from their titles.\n\n1. ai-news-pace-the-frontier-20260912 'Amodei 呼籲放慢前沿 AI：〈We Must Pace the Frontier〉的主張與界線' (news_date 2026-09-12, display_order 147, sources darioamodei.com plus three x.com posts; sections: what 'slowing' means and does not mean, the three-step plan starting with resident evaluators, who responded publicly and how, the difficulties the essay admits, and what it means for ordinary users). THIS IS THE PARENT ARTICLE and the required 相關新聞 link. The measurement piece names Amodei's call directly and is in effect step one of that essay's plan turned into numbers. DIVISION: the earlier article owns the argument and the responses; this one owns the three metrics, their windows, their denominators and their admitted weaknesses. Do not re-teach what 'pacing the frontier' means beyond one sentence of context.\n\n2. ai-news-anthropic-threat-report-20260910 'Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰' (news_date 2026-09-10). Same publisher, also a transparency publication, nine days earlier. DIVISION: that report is about outsiders misusing Claude. This piece is about Anthropic measuring its own development process and its own internal agents. The 30,000 internal agents here are Anthropic's own, not attackers - if both are cited in one paragraph, readers will merge them.\n\n3. ai-news-claude-fable-51-20260901 and ai-news-claude-opus-5-20260724 are model launches from the same company and are not related to this beyond sharing the brand. Nothing to divide.\n\nIF THE COORDINATOR MERGES: this record and ai-news-openai-misalignment-reports-20260917 are two companies' announcements one day apart on the same theme. They are genuinely separate events and each stands alone, which is why they are filed separately; if merged, OpenAI's should be the spine because it carries concrete incidents, and these three metrics become one section. Do not write both as separate articles AND a combined one.\n\nFirst link (本垂直索引) is ai-news-2026-january-september-index, zh-TW title read on 2026-09-18 as '2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用'; read the pack at writing time because check_article.py asserts link.text equals the target title. display_order continues from 160, the current maximum.",
+ "editorial_brief": "READER AND ANGLE. Written for a Taiwanese general reader who followed the 9/12 story about Anthropic's CEO calling for the frontier to be slowed down and asked the obvious next question: slowed down from what, measured how, and who would check? This piece is the answer one company gave five days later, and it is unusual because it is a company publishing numbers about itself that nobody can currently audit. The spine is therefore not 'AI is building AI' - that headline is available anywhere - but 'what does a measurable claim about a lab look like, and what would it take for the public to trust one'.\n\nTHE CENTRAL FACT TO GET RIGHT. 26% is 'Claude leads', which on Epoch AI's scale means the human still supervises; Anthropic states that fully autonomous has not been reached for any measured subset. Every published figure is also bound to a window - August 2026 for automation and oversight, 13-20 July for compute - and to a scope, in the oversight case a single internal platform. A reviewer will check the 26% framing first and the windows second.\n\nWHAT MAKES THIS WORTH A READER'S TIME. The three numbers each carry their own visible weakness, and Anthropic printed the weaknesses itself: the automation index is rated by Claude judging Claude; the oversight figures cover one platform; the compute share admits that safety research is not compute-hungry so the proxy is poor. That is the actual story - a first attempt at a public yardstick, published with its own caveats attached, by the only party who can currently read the underlying data. The reader's takeaway is a way to read any future 'AI safety' number: ask the window, the denominator, the scope and who checked.\n\nSUGGESTED FIVE SECTIONS. (1) What Anthropic published on 2026-09-17 and why it says it did, including that it expects the numbers to move if labs coordinate. (2) The three measurements in plain language, ending with the required table (max 4 columns: 指標 / 期間 / 官方數字 / 官方自己標的限制; 3-4 rows; caption dated 2026-09-18). (3) Why a self-reported number is not yet a verified one: Claude judging Claude, one internal platform, 'we plan to embed' evaluators, METR in the past tense; diagram goes here. (4) The two numbers most likely to be misread - 26% 'leads' versus autonomous, and 0.002% blocked versus 'rare events happen regularly at scale'. (5) What Anthropic did not say, and how this connects to the 9/12 essay without restating it.\n\nORIGINAL SCENARIO, to be labelled as an editorial example per BRIEF. A reader sees a company report that '99.9% of requests passed a safety check'. The editorial point is that the sentence is unreadable until you know the window, the denominator, the scope and who verified it - the same four questions this piece hands you, applied to a claim the reader will actually meet in a product page or a press release.\n\nTONE AND SCOPE. Plain, neither credulous nor cynical; Anthropic is grading itself and saying so. Deliberately out of scope: any comparison with OpenAI or any other lab (Anthropic makes none); any timeline for recursive self-improvement; any restatement of the 9/12 three-step plan; any material from the risk-report PDF or the undated 'When AI builds itself' page; any claim about Claude users in Taiwan, since this announcement changes nothing for them.\n\nHERO LABEL SUGGESTION (zh-TW, <= 12 chars): 自己量給外面看\n\nDIAGRAM SUGGESTION, 2x2, title '三個指標與一個問號' (<= 20 chars), caption to carry the 2026-09-18 check date. Nodes, top-left to bottom-right: ['誰在做研發', '從協作到主導的分級'] / ['代理人怎麼看管', '事前攔截與事後翻查'] / ['算力分給誰', '安全佔研發的比例'] / ['誰來查證', '第三方評估者仍是計畫']. Every string must also appear in the body, and no numeral appears in the diagram."
+}

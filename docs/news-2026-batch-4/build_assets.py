@@ -733,6 +733,198 @@ def _frontier_governance(accent: str) -> str:
     return b + f'<rect x="1150" y="260" width="220" height="110" rx="14" fill="#FFFFFF" stroke="{accent}" stroke-width="6" stroke-dasharray="22 16"/>'
 
 
+# --- batch 4.5: the news since 2026-09-16 ---------------------------------------------------
+
+
+def _eu_kids_act(accent: str) -> str:
+    # Three doors, small to large: the first a dashed frame (no account before 13), the second
+    # ajar with a padlock beside it (a guardian's mini account), the third open. On the right a
+    # ticked sheet still inside a dashed outline: design duties, in a proposal.
+    other = second_colour(accent)
+    b = f'<rect x="230" y="360" width="150" height="260" rx="20" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="22 16"/>'
+    b += rect(450, 300, 190, 320, "#FFFFFF", accent, 20) + rect(480, 330, 70, 290, PALE, "none", 12) + padlock(640, 470, 0.6, other)
+    b += rect(740, 240, 230, 380, "#FFFFFF", accent, 20) + rect(770, 270, 200, 350, PALE, "none", 12)
+    b += arrow(1010, 1100, 430, other)
+    return b + outline(1120, 240, 300, 380, other) + sheet(1165, 285, 210, 290, accent, rows=5) + tick(1345, 320, 40, accent)
+
+
+def _chatgpt_sponsored_agents(accent: str) -> str:
+    # A chat bubble with a smaller bubble nested inside it -- the sponsored conversation that
+    # opens beside the chat -- a dashed line keeping the two apart, and a three-step funnel:
+    # plan, region and test decide who sees an ad at all.
+    other = second_colour(accent)
+    b = bubble(230, 250, 520, 340, accent) + bubble(420, 380, 260, 150, other)
+    b += "".join(line(280, 320 + i * 36, 560 - (i % 2) * 60, 320 + i * 36, "#C4CCCC", 10) for i in range(2))
+    b += dashed(830, 240, 830, 640, INK, 8)
+    for i, width in enumerate((440, 320, 200)):
+        x = 1160 - width / 2
+        b += rect(x, 280 + i * 120, width, 90, "#FFFFFF" if i % 2 else PALE, accent if i % 2 == 0 else other, 16)
+    return b
+
+
+def _firefox_smart_window_mistral(accent: str) -> str:
+    # A browser window drawn as an outline, a slot cut into its right edge with a hexagon
+    # sliding in, and two more hexagons waiting beside it: the model as a part that can be
+    # swapped, not a brand.
+    other = second_colour(accent)
+    b = rect(230, 240, 720, 420, "#FFFFFF", INK, 24) + line(230, 310, 950, 310, INK, 6)
+    b += "".join(circle(270 + i * 34, 275, 10, other if i == 0 else PALE, "none") for i in range(3))
+    b += rect(270, 350, 420, 40, PALE, "none", 12) + rect(270, 420, 560, 40, PALE, "none", 12) + rect(270, 490, 340, 40, PALE, "none", 12)
+    b += slot(870, 400, 130, accent, broken=False) + hexagon(935, 465, 52, accent, PALE)
+    b += arrow(1180, 1040, 465, other)
+    return b + hexagon(1250, 400, 52, other, "#FFFFFF") + hexagon(1250, 540, 52, accent, "#FFFFFF")
+
+
+def _google_cc_family_agent(accent: str) -> str:
+    # A house drawn as an outline, one node at its centre -- the agent's own account -- and
+    # lines from it to six small dots on the frame, the members; one line carries a tick,
+    # because acting needs a member's permission.
+    other = second_colour(accent)
+    b = f'<path d="M 800 230 L 1150 410 L 1150 660 L 450 660 L 450 410 Z" fill="#FFFFFF" stroke="{INK}" stroke-width="8" stroke-linejoin="round"/>'
+    points = ((450, 530), (600, 660), (800, 660), (1000, 660), (1150, 530), (800, 230))
+    for i, (x, y) in enumerate(points):
+        b += line(800, 470, x, y, other if i % 2 else accent, 8)
+        b += circle(x, y, 18, "#FFFFFF", other if i % 2 else accent)
+    b += tick(700, 565, 34, accent)
+    return b + circle(800, 470, 70, PALE, accent) + circle(800, 470, 26, accent, "none")
+
+
+def _taiwan_matsu_cable_tm4(accent: str) -> str:
+    # The main island as a rounded block, Matsu as a small square, three cables arched across
+    # the strait -- the third now solid -- a microwave tower beside them and three dots in an
+    # arc above: the orbits of the satellites the announcement lists as the last layer.
+    other = second_colour(accent)
+    b = rect(230, 280, 260, 380, PALE, accent, 40) + rect(1180, 400, 130, 130, PALE, accent, 20)
+    for i, lift in enumerate((150, 90, 30)):
+        b += curve(490, 470, 835, 470 - lift * 2, 1180, 470, accent if i % 2 == 0 else other, 12)
+    b += tower(1385, 430, other, 110)
+    b += "".join(circle(700 + i * 130, 240 - (i == 1) * 30, 14, other, "none") for i in range(3))
+    return b + f'<path d="M 660 260 Q 830 150 1000 260" fill="none" stroke="{other}" stroke-width="4" stroke-dasharray="14 14"/>'
+
+
+def person(x, y, color=BLUE):
+    """A figure reduced to a head and a rounded body."""
+    return circle(x, y, 34, "#FFFFFF", color) + f'<path d="M {x - 62} {y + 150} v -50 a 62 62 0 0 1 124 0 v 50 Z" fill="{PALE}" stroke="{color}" stroke-width="6"/>'
+
+
+def _fca_p2p_crackdown(accent: str) -> str:
+    # A notice with a prohibition sign, two figures joined by a dashed two-way arrow -- trade
+    # between persons -- and a timeline underneath with two dots: the day of the operation and
+    # the day it was announced, a week apart.
+    other = second_colour(accent)
+    b = sheet(240, 240, 240, 320, accent, rows=4)
+    b += circle(400, 300, 40, "#FFFFFF", other) + line(372, 272, 428, 328, other, 10)
+    b += person(720, 330, accent) + person(1180, 330, other)
+    b += dashed(810, 400, 1090, 400, INK, 8)
+    b += f'<path d="M 830 380 L 800 400 L 830 420 Z M 1070 380 L 1100 400 L 1070 420 Z" fill="{INK}"/>'
+    b += line(560, 640, 1360, 640, "#C4CCCC", 8) + dashed(760, 640, 1160, 640, other, 8)
+    return b + circle(760, 640, 22, accent, "none") + circle(1160, 640, 22, other, "none")
+
+
+def clock(x, y, r=60, color=BLUE):
+    return circle(x, y, r, "#FFFFFF", color) + line(x, y, x, y - r * 0.6, color, 8) + line(x, y, x + r * 0.45, y, color, 8)
+
+
+def _apple_att_eu(accent: str) -> str:
+    # A prompt dialog split down the middle -- one half drawn solid, the other dashed, the
+    # second version -- and two lines from it: one to a row of five small squares, the
+    # countries where only the new version may be shown, one to a clock, the year after which
+    # a developer may ask again.
+    other = second_colour(accent)
+    b = rect(330, 240, 300, 260, "#FFFFFF", accent, 24)
+    b += f'<rect x="630" y="240" width="300" height="260" rx="24" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="22 16"/>'
+    b += line(630, 240, 630, 500, INK, 6)
+    b += "".join(line(370, 300 + i * 40, 590, 300 + i * 40, "#C4CCCC", 10) for i in range(3)) + rect(370, 430, 100, 40, PALE, "none", 10)
+    b += "".join(line(670, 300 + i * 40, 890, 300 + i * 40, "#C4CCCC", 10) for i in range(3)) + rect(670, 430, 100, 40, PALE, "none", 10) + rect(790, 430, 100, 40, "#FFFFFF", other, 10)
+    b += line(480, 500, 480, 600, INK, 6) + line(880, 500, 880, 600, INK, 6)
+    b += "".join(rect(280 + i * 90, 600, 70, 70, PALE if i % 2 == 0 else "#FFFFFF", accent, 14) for i in range(5))
+    return b + clock(880, 660, 60, other)
+
+
+def _fca_perimeter_guidance(accent: str) -> str:
+    # A document on the left and a timeline on the right with four nodes: the first two solid
+    # -- Parliament's rules and the guidance published -- the last two dashed, the application
+    # window and the regime's commencement still ahead.
+    other = second_colour(accent)
+    b = sheet(240, 240, 260, 340, accent, rows=6)
+    b += line(600, 450, 1380, 450, "#C4CCCC", 8)
+    for i, x in enumerate((660, 880, 1100, 1320)):
+        colour = accent if i % 2 == 0 else other
+        if i < 2:
+            b += circle(x, 450, 26, colour, "none")
+        else:
+            b += f'<circle cx="{x}" cy="450" r="26" fill="#FFFFFF" stroke="{colour}" stroke-width="6" stroke-dasharray="12 10"/>'
+        b += rect(x - 60, 520 if i % 2 == 0 else 320, 120, 60, "#FFFFFF" if i < 2 else PALE, colour, 12)
+    return b
+
+
+def _astra_for_law(accent: str) -> str:
+    # A magnifier over a stack of documents, light to dark -- sources that can be opened and
+    # checked -- and four small squares in a row underneath: model, index, the selected firms,
+    # the data terms.
+    other = second_colour(accent)
+    b = "".join(rect(560 + i * 40, 250 + i * 40, 320, 240, PALE if i == 2 else "#FFFFFF", accent if i % 2 == 0 else other, 20) for i in range(3))
+    b += "".join(line(680, 370 + i * 36, 830, 370 + i * 36, "#C4CCCC", 10) for i in range(3))
+    b += magnifier(990, 300, 80, other)
+    return b + "".join(rect(560 + i * 130, 600, 90, 70, "#FFFFFF" if i % 2 else PALE, accent if i % 2 == 0 else other, 14) for i in range(4))
+
+
+def _cftc_passive_software(accent: str) -> str:
+    # A letter with a round stamp -- a staff no-action letter -- a phone whose screen is split
+    # into an ordinary area and a shaded regulated area, and three blocks wired to the phone
+    # underneath: the registered firms the software hands orders to.
+    other = second_colour(accent)
+    b = letter(240, 300, 300, 200, accent) + circle(490, 330, 40, "none", other) + circle(490, 330, 14, other, "none")
+    b += phone(760, 180, 240, 440, INK)
+    b += line(782, 400, 978, 400, INK, 6) + rect(782, 406, 196, 154, other, "none", 12)
+    b += "".join(line(730 + i * 200, 660, 880, 620, "#C4CCCC", 8) for i in range(3))
+    b += "".join(rect(660 + i * 200, 660, 140, 60, "#FFFFFF", accent if i % 2 == 0 else other, 12) for i in range(3))
+    return b
+
+
+def _anthropic_pace_metrics(accent: str) -> str:
+    # Three gauges side by side, each needle at a different mark, and a question mark drawn
+    # as an outline above them: numbers a lab measured about itself, still awaiting a reader
+    # from outside.
+    other = second_colour(accent)
+    b = ""
+    for i, (x, angle) in enumerate(((420, 150), (800, 60), (1180, 120))):
+        colour = accent if i % 2 == 0 else other
+        b += f'<path d="M {x - 150} 620 A 150 150 0 0 1 {x + 150} 620" fill="none" stroke="{colour}" stroke-width="16" stroke-linecap="round"/>'
+        b += f'<path d="M {x - 110} 620 A 110 110 0 0 1 {x + 110} 620" fill="none" stroke="{PALE}" stroke-width="12" stroke-linecap="round"/>'
+        rad = math.radians(angle)
+        b += line(x, 620, x - 120 * math.cos(rad), 620 - 120 * math.sin(rad), INK, 10) + circle(x, 620, 16, INK, "none")
+    return b + f'<path d="M 760 290 q 0 -60 70 -60 q 70 0 70 55 q 0 35 -40 55 q -30 15 -30 40" fill="none" stroke="{INK}" stroke-width="12" stroke-linecap="round"/>' + circle(830, 415, 10, INK, "none")
+
+
+def _openai_misalignment_reports(accent: str) -> str:
+    # An upright document carrying six small squares in two rows -- the six reports -- and
+    # beside it a stepped arrow climbing to a magnifier: published first, explained step by
+    # step afterwards.
+    other = second_colour(accent)
+    b = sheet(360, 230, 340, 440, accent, rows=0)
+    b += "".join(rect(400 + (i % 3) * 95, 300 + (i // 3) * 110, 70, 70, PALE if i % 2 == 0 else "#FFFFFF", accent if i % 2 == 0 else other, 12) for i in range(6))
+    b += line(400, 540, 660, 540, "#C4CCCC", 10) + line(400, 590, 600, 590, "#C4CCCC", 10)
+    b += f'<path d="M 800 640 h 90 v -80 h 90 v -80 h 90 v -80 h 60" fill="none" stroke="{other}" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>'
+    b += f'<path d="M 1110 380 l 30 20 l -30 20" fill="none" stroke="{other}" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>'
+    return b + magnifier(1240, 380, 80, accent)
+
+
+def _app_store_bundles_multiseat(accent: str) -> str:
+    # Five equal blocks in a ring, each tied by a line to one receipt in the middle -- several
+    # subscriptions sold as one purchase -- and on the right three figures over one shared
+    # disc: one purchase used by several people.
+    other = second_colour(accent)
+    b = ""
+    for i in range(5):
+        rad = math.radians(-90 + i * 72)
+        x, y = 470 + 200 * math.cos(rad), 450 + 200 * math.sin(rad)
+        b += line(470, 450, x, y, "#C4CCCC", 8) + rect(x - 40, y - 40, 80, 80, PALE if i % 2 == 0 else "#FFFFFF", accent if i % 2 == 0 else other, 14)
+    b += sheet(410, 385, 120, 130, accent, rows=3)
+    b += "".join(person(960 + i * 150, 330, other if i % 2 else accent) for i in range(3))
+    return b + circle(1110, 600, 60, PALE, accent) + circle(1110, 600, 20, accent, "none")
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -775,6 +967,20 @@ _DRAWINGS = {
     "ai-news-openai-broadcom-chip-20260624": _openai_broadcom_chip,
     "ai-news-chatgpt-ads-20260505": _chatgpt_ads,
     "ai-news-frontier-governance-20260528": _frontier_governance,
+    # batch 4.5
+    "tech-news-eu-kids-act-20260917": _eu_kids_act,
+    "ai-news-chatgpt-sponsored-agents-20260916": _chatgpt_sponsored_agents,
+    "ai-news-firefox-smart-window-mistral-20260916": _firefox_smart_window_mistral,
+    "ai-news-google-cc-family-agent-20260918": _google_cc_family_agent,
+    "tech-news-taiwan-matsu-cable-tm4-20260918": _taiwan_matsu_cable_tm4,
+    "crypto-news-fca-p2p-crypto-crackdown-20260917": _fca_p2p_crackdown,
+    "tech-news-apple-att-eu-20260916": _apple_att_eu,
+    "crypto-news-fca-perimeter-guidance-20260916": _fca_perimeter_guidance,
+    "ai-news-astra-for-law-20260917": _astra_for_law,
+    "crypto-news-cftc-passive-software-20260917": _cftc_passive_software,
+    "ai-news-anthropic-pace-metrics-20260917": _anthropic_pace_metrics,
+    "ai-news-openai-misalignment-reports-20260917": _openai_misalignment_reports,
+    "tech-news-app-store-bundles-multiseat-20260916": _app_store_bundles_multiseat,
 }
 
 

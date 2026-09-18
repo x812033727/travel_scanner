@@ -5,6 +5,8 @@
 
 > **現況與未完成事項（2026-09-17）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md)。
 > 十一篇加索引都是五語、都經過獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet 與 relink 都做完了；
+> **批次 4.5（2026-09-16 起的新消息）**：本工作區再加三篇（`crypto-news-fca-perimeter-guidance-20260916`、`crypto-news-cftc-passive-software-20260917`、`crypto-news-fca-p2p-crypto-crackdown-20260917`，display_order 211–213），索引新開「英國」組（`update_index.py crypto`，不重跑 `build_crypto_index.py`）；現況見 HANDOVER 第 1d 節。
+>
 > **2026-09-17 已匯入發布**（12 篇 × 5 語系）；日後修訂照 HANDOVER 2.1–2.3。
 
 ## 這個目錄放什麼

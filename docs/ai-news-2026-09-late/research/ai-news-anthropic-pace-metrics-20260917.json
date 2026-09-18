@@ -1,0 +1,553 @@
+{
+  "slug": "ai-news-anthropic-pace-metrics-20260917",
+  "event_date": "2026-09-17",
+  "event_date_basis": "研究紀錄的 event_date_basis 已指出原頁面不印任何日期或時刻；本文查核代理於 2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 重新抓取 https://www.anthropic.com/institute/measuring-pace-of-ai-development （HTTP 200、217,865 bytes，逐字比對與前期研究相同），全文找不到 article:published_time、datePublished 或任何署名／發布日期字串；唯一含日期的字串是整站設定物件的 siteSettings._updatedAt（2026-09-18T00:02:35Z），不屬於這篇文章。事件日改依 https://www.anthropic.com/news 精選區塊今天重新讀到的結果：該區塊為本篇標題緊接印出 <time>Sep 17, 2026</time>，與前期研究一致，因此以 2026-09-17 為事件日。原文全程沒有印出任何時刻，本文不寫發布的確切時間，也不換算台北時間的時刻。",
+  "title": "Anthropic 公布三項前沿 AI 指標：26% 是「主導」不是「自主」",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Anthropic：Measurements for understanding the pace of AI development inside frontier labs",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "publisher": "The Anthropic Institute",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Anthropic Newsroom（新聞總覽頁，本篇收錄於精選區塊並標註 Sep 17, 2026）",
+      "url": "https://www.anthropic.com/news",
+      "publisher": "Anthropic",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Anthropic：Policy on the AI Exponential",
+      "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+      "publisher": "Anthropic",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 本人以 curl -sL -A \"Mokaair-editorial\" 重新抓取全部三條 sources[]（請求沒有帶任何 email 或個人資料），逐一讀 body 後才登記 checked_on，結果與前期探索代理的紀錄一致：\n(1) https://www.anthropic.com/institute/measuring-pace-of-ai-development → HTTP 200、217,865 bytes，字數與前期研究完全相同；body 是含大量內嵌 JSON 的 Next.js 頁面，正文段落以 <p class=\"...serif post-text\">...</p> 呈現，本文引用的每一句逐字比對過。\n(2) https://www.anthropic.com/news → HTTP 200、462,587 bytes；本篇出現在頁面的 FeaturedGrid 區塊，緊接的 <time> 節點印 \"Sep 17, 2026\"，摘要文字與 verified_facts 第一條逐字相符；本篇網址不在 publishedOn 清單那組 <a href=\"/news/...\"> 連結裡，只出現在這個精選區塊，與前期研究的判斷一致。\n(3) https://www.anthropic.com/policy-on-the-ai-exponential → HTTP 200、140,750 bytes；「Advanced AI Framework」與「AI is advancing at exponential speed」兩句逐字比對過。\n另外重新確認過但不列入 sources[]、文中也沒有引用其內容：/institute/recursive-self-improvement（今日同樣讀不到任何發布日期字串，因此仍不引用其中數字）與 /aug-2026-risk-report（今日同樣轉址到一份大型 PDF，本輪沒有下載或閱讀，維持不引用）。取得配方與位元組數與前期研究一致，本輪視為獨立複現成功，沒有發現任何落地網址、狀態碼或 body 內容的差異。",
+  "verified_facts": [
+    {
+      "fact": "Anthropic 官方新聞總覽頁把這篇文章標註在 2026-09-17，摘要句是本篇公布內容最清楚的一句話。",
+      "url": "https://www.anthropic.com/news",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development."
+    },
+    {
+      "fact": "公布內容：三項指標，用來讓外界追蹤前沿 AI 實驗室內部的研發進展——AI 自己完成多少研發、AI 代理人的行動被如何看管，以及算力怎麼分配。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To do that, we’re sharing three measurements that will help the public track AI development inside frontier AI labs"
+    },
+    {
+      "fact": "官方在文章開頭一句話講明原因。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AI systems are getting more powerful, and they’re increasingly being used to build the next version of themselves."
+    },
+    {
+      "fact": "官方表示預期若各實驗室協調放慢腳步，這些數字會跟著改變，並直接點名 Amodei 的呼籲。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It’s important to note that we would expect these numbers to shift if there were coordination on pacing the frontier, as called for by Anthropic CEO Dario Amodei."
+    },
+    {
+      "fact": "官方自己說明這三項量測的定位：這些「被提議的量測與政策」合起來，是從實驗室外監測 AI 發展步調的一個起點。（第二輪新增：正文原本用「Amodei 主張放慢能力提升速度、讓風險防範有時間跟上」來交代這一段，但那是本站另一篇文章整理 darioamodei.com 原文得到的內容，不在本篇 sources[] 裡；已換成這一句本篇真正印出來的話。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Together, these proposed measurements and policies are a starting point for monitoring the pace of AI development from outside the labs."
+    },
+    {
+      "fact": "專文只用一句話帶到 Amodei，並把「as called for by Anthropic CEO Dario Amodei」超連結到 darioamodei.com/post/we-must-pace-the-frontier；專文本身沒有複述那篇的主張，也沒有印出〈We Must Pace the Frontier〉這個標題（可見文字裡 \"We Must Pace\" 0 次，只有連結網址帶這個 slug）。因此三步驟計畫的內容一律是跨篇引用，正文只能寫成「出自本站另一篇整理」。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "as called for by Anthropic CEO Dario Amodei"
+    },
+    {
+      "fact": "指標一稱為「Anthropic 研發自動化指數」，官方形容是一份雛形指數。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We built a prototype index of how much of Anthropic’s AI research and development (R&D) is performed by Claude, called the Anthropic R&D Automation Index."
+    },
+    {
+      "fact": "評分量表是 Epoch AI 開發的 Automation Level（AL），從 AL0 到 AL5。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we use an automation rating scale developed by Epoch AI that measures “Automation Level,” or AL. It runs from AL0 (no AI involvement) to AL5 (AI operates fully autonomously, with no human in the loop)."
+    },
+    {
+      "fact": "AL4「主導」的定義：AI 從高層次指令出發完成大部分工作，人類仍在監督。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In AL4, AI “leads”: it can complete most of the task end-to-end from a high-level prompt, while the human supervises"
+    },
+    {
+      "fact": "以 2026 年 8 月為準的第一個主要數字：任何有量測的 AI 研發工作子集都沒有完全自主運作。（獨立查核註：原文把三個結果排成三個並列的列表項目，不是一個連續句子，因此拆成三條分別記錄；前一版把三句用空格接成一段 verbatim_quote，在來源頁搜尋不到。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude is not operating fully autonomously for any measured subset of AI R&D work."
+    },
+    {
+      "fact": "以 2026 年 8 月為準的第二個主要數字：「主導」占 Anthropic AI 研發工作的 26%。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude “leads” 26% of Anthropic’s AI R&D work."
+    },
+    {
+      "fact": "以 2026 年 8 月為準的第三個主要數字：「協作」以上的工作比重逾 90%。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The share of work at or above “AI collaborates” is above 90%."
+    },
+    {
+      "fact": "AL3「協作」的定義：AI 能在人類近距離指導下完成大塊工作（前一版只記了 AL4 的定義，AL3 沒有引文）。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In AL3, AI “collaborates”: it can do large chunks of work under close human direction."
+    },
+    {
+      "fact": "官方把這兩件事寫成「擋在跨實驗室比較前面的兩個障礙」，不是「這個指數的兩個限制」：第一是沒有共通方法論，第二是用自己的模型評自己的系統，評審可能重複被評對象的錯誤。兩個障礙都掛在「跨實驗室比較」上，不能只把第一個寫成不能跟別家比。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Two obstacles stand in the way of cross-lab comparison on this type of reporting."
+    },
+    {
+      "fact": "第二個障礙的原文，含兩層 could（可能導致、可能犯同一種錯）。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Second, we’re using our own models to evaluate our systems, which could mean that the “judge” model could make the same kinds of errors as the model it is checking."
+    },
+    {
+      "fact": "指標二的三個角度：涵蓋率、審查時延、升級比率，官方逐一定義。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we consider three different metrics: coverage, which describes the share of an agent’s actions that pass through a monitor before or after execution; review latency, which is the time between an action and its review, first by an automated monitor and then by a human; and escalation rate, which is the share of agent activities that are either blocked/redirected (in the case of online monitors) or flagged for further review (in the case of offline monitors)."
+    },
+    {
+      "fact": "規模與範圍：以 2026 年 8 月為準，約 3 萬個代理人同時在 Anthropic 內部最常用平台做研發工作，這些量測只涵蓋這個平台。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As of August 2026, there were approximately 30,000 agents doing research and engineering work at Anthropic at any one time in our most-used internal platform. These measurements cover this platform only."
+    },
+    {
+      "fact": "涵蓋率：100% 的代理人行動事前經線上監控（通常幾秒內），事後 100% 進入離線監控。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "100% of these agents’ actions pass through the online monitor before they are executed, usually within seconds."
+    },
+    {
+      "fact": "審查時延：離線監控每週標記約 10 萬則對話紀錄，多數由分類器處理，其中「優先度最高的」約 50 則升級到人工審查。（獨立查核訂正：highest priority 這個限定詞不能省，省掉會讀成每週隨機抽 50 則。同格另有一句：自動審查發生在行動之前，被攔截的行動由人類在一週內審查。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The monitor flags roughly 100,000 transcripts per week that are then reviewed by multiple classifiers for false-positives and initial oversight review. Most of the flags are resolved by this process, and the highest priority flags (approximately ~50 per week) are escalated to human review."
+    },
+    {
+      "fact": "攔截率：2026 年 8 月分析逾 10 億筆決策，0.002%（約 47,000 分之 1）被線上監控攔截。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We analyzed over a billion decisions from our research & engineering agents over August 2026 and found that 0.002% of them (about 1 in 47,000) were blocked by this monitor."
+    },
+    {
+      "fact": "官方提醒規模效應：就目前的監控資料看，單一代理人很少亂來，但當「整個經濟體」裡有數百萬、數十億個代理人運作，罕見事件也「可能」經常發生。（獨立查核訂正三處：這句在原文第二節的開頭「Why measure oversight of agents?」，不是 0.002% 那一格之後，不能寫「緊接著」；原文的規模是 operating in the economy，不是 Anthropic 平台上的代理人數；can happen regularly 是「可能經常發生」，不是「會定期發生」。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In our monitoring data to date, individual agents rarely misbehave. But when there are millions or billions of agents operating in the economy, even rare events can happen regularly."
+    },
+    {
+      "fact": "METR 過去曾獨立紅隊測試 Anthropic 的離線監控平台，用的是過去式。（獨立查核註：前一版引文在 platform 與句點之間多了一個空格，那是原始碼裡 </a> 標籤的殘留，在頁面上搜尋不到；已改成頁面上真正連續的字串。原文這句的連結指向 www-cdn.anthropic.com 上的 Redacted Risk Report August 2026 PDF，該 PDF 本輪未讀，不引用。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In the past, METR has independently red-teamed our offline monitoring platform."
+    },
+    {
+      "fact": "第三方評估者常駐：官方在前言寫的是「計劃」把多個組織的獨立第三方評估者常駐於 Anthropic，存取權限比照內部風險評估團隊。前一版把它記成官方原話「計畫邀請」，但 embed 不是 invite，引號內不可用「邀請」兩個字。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We plan to embed independent third-party evaluators from multiple organizations at Anthropic, and give them access to internal processes, systems, and data comparable to what internal risk assessment teams have."
+    },
+    {
+      "fact": "同一件事在第二項指標那一節另有一句、時態不同：官方在那裡寫目前「正在建立」外部第三方評估者。兩句合看是「已經開始建立、但還沒有外部單位查核過這些數字」，不能只憑 We plan to embed 就寫成「純粹只是計畫、還沒有在做」。（獨立查核新增：前一版漏了這一句，草稿據此寫成「這是計畫，不是已經在做的事」，被來源自己的句子推翻。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As described above, we are now setting up external third party evaluators at Anthropic."
+    },
+    {
+      "fact": "指標三是算力快照，涵蓋 2026 年 7 月 13 日至 20 日一週。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We examined a snapshot of how Anthropic used all of its compute from July 13 to July 20"
+    },
+    {
+      "fact": "兩個算力占比結果，分母不同：AI 研發算力約 6% 投入安全；AI 主導的 AI 研發算力約 12% 投入安全。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Over the examined week, about 6% of compute that went to AI R&D was allocated toward safety, and about 12% of compute that went to AI-driven AI R&D was allocated toward safety."
+    },
+    {
+      "fact": "官方形容這兩個數字是刻意保守的估計，並舉一條計算規則：一個 token 若對能力提升的貢獻「和對安全一樣多（as much as）」就不算進安全那一邊；另外還排除安全防護分類器的算力（另一筆相當規模）。（獨立查核訂正：as much as 是「一樣多」，不是「同時有貢獻」——寫成「同時貢獻」會把規則放寬成任何沾到能力的都不算，範圍比原文大。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These are deliberately conservative estimates. For example, if a token was used to advance capabilities as much as it was to advance safety, it was not counted in these metrics."
+    },
+    {
+      "fact": "官方自陳算力是不完美的替代指標，因為安全研究比前沿訓練更仰賴研究人員時間而非算力。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Safety research tends to use less compute than frontier training runs by its nature, so compute is an imperfect proxy for how much a company focuses on safety."
+    },
+    {
+      "fact": "官方寫這個指標的價值在哪：不是絕對數字，而是提供一個「跨開發者、跨時間」拿同類比同類的機制。（獨立查核訂正：前一版與草稿都寫成「意義在於未來跟自己比較」，把 across developers 這一半刪掉了。）",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The value of this metric, therefore, is less the absolute numbers and more that it provides a straightforward mechanism to compare like with like, across developers and over time."
+    },
+    {
+      "fact": "官方在附錄印出自己對「安全工作」的定義，並自陳這只是眾多合理選擇之一，換一家開發者或主管機關可能畫在不同地方。所以「這篇沒有給安全工作下定義」是錯的；沒有的是各家共通的定義。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Safety work was defined as work whose dominant purpose is making AI systems safer, more understandable, or more secure."
+    },
+    {
+      "fact": "官方對共通定義的用語是「會有好處」而不是「應該」，主體包含開發者、政府與更廣的研究社群。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Developers, governments, and the wider research community would benefit from converging on a shared definition ahead of time."
+    },
+    {
+      "fact": "分類定義一起公布、由獨立第三方查核，官方寫的是「任何前沿開發者都可以」這麼做，是建議不是既成事實。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Any frontier developer could publish what share of its AI R&D compute goes to safety work, with the category definitions published alongside and the classification checked by an independent third party."
+    },
+    {
+      "fact": "官方在附錄寫明計劃定期重建那份任務清單，並視情況為已公布的自動化數字重新標示版本——這是「以後還會不會公布」這個問題目前唯一有原文支撐的答案。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Nevertheless, we plan to rebuild the basket of tasks periodically and re-version our published automation numbers as appropriate."
+    },
+    {
+      "fact": "自動化指數方法論：2026 年 7 月每週從模型研發相關各部門隨機抽樣 20% 員工，由 Claude 研究代理人列出其任務，彙整成約 1.5 萬項細顆粒度任務。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For each week in July 2026, we randomly sampled 20% of staff from each department that make up the model R&D loop."
+    },
+    {
+      "fact": "這些任務被 Claude 整理成一棵 542 個節點的樹狀結構，其中 378 個是葉節點，並舉出「eval platform defect diagnosis and fixes」等例子。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The resulting tree has 542 nodes at different depths, of which 378 are leaves like “eval platform defect diagnosis and fixes,” “RL sandbox egress and network policy,” and “serving incident postmortems.”"
+    },
+    {
+      "fact": "評分方式：每月由獨立的 Claude 評審從六個自動化等級中挑一個，而原文限制「看不看得到證據」的對象是做評分的 research agents，不是評審本身；轉述時要照原文寫「做評分的代理人只看得到那個月或更早的證據」。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When we rate a given month’s automation, we only allow the research agents that do the ratings to see evidence from that month or earlier."
+    },
+    {
+      "fact": "AL5 是官方自陳目前尚未達到的等級（用於註腳，說明其定義而非已發生的事）。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a level we have not yet reached"
+    },
+    {
+      "fact": "算力數字的第二個註腳限制：Anthropic 把算力視為單一可動態調度的資源池，因此這一週是快照，不是固定配額，分類也不對應費用分類方式。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": false,
+      "verbatim_quote": "so this is a snapshot of how capacity happened to be directed in one week, not a fixed allocation"
+    },
+    {
+      "fact": "官方的收尾主張：世界正考慮放慢前沿腳步之際，應盡量縮小前沿實驗室與外界資訊之間的落差。",
+      "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As the world considers pacing the frontier, we should do everything possible to minimize the gap between what frontier labs know and what the public knows."
+    },
+    {
+      "fact": "Advanced AI Framework 是 Anthropic 已發表的政策提案，涵蓋透明度、獨立評估到政府在必要時阻止或嚇阻危險部署的權限，是路線圖不是現行規定。（獨立查核訂正：不可寫成「提交給各國政府」——同一頁另有一句寫明這份框架主要是為美國聯邦政府而寫。）",
+      "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The first, our Advanced AI Framework, offers a roadmap for governing increasingly capable systems, from transparency and independent evaluation to government authority to block or deter dangerous deployments."
+    },
+    {
+      "fact": "政策頁自己寫明框架的對象：主要是為美國聯邦政府而寫。",
+      "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Our framework is written primarily with the US federal government in mind."
+    },
+    {
+      "fact": "政策頁沒有印出任何發布日期：2026-09-18 以 curl 重抓 140,750 bytes 的全文，datePublished、article:published_time、\"Published\" 三個字串各 0 次，可見文字裡沒有任何日期；唯一的 2026-09 字串是整站 siteSettings._updatedAt。因此文章不得寫政策頁「與專文同一天發布」或任何其他日期。",
+      "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Policy on the AI Exponential"
+    },
+    {
+      "fact": "政策頁的開場主張：AI 正以指數速度進展，而政策制定過程是為一個較慢的世界設計的。",
+      "url": "https://www.anthropic.com/policy-on-the-ai-exponential",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AI is advancing at exponential speed, and the policymaking process was built for a slower world."
+    }
+  ],
+  "not_said": [
+    "沒有地區、產品或使用者影響。這是一篇說明 Anthropic 怎麼衡量自己內部研發過程的透明度文章，以查核到 2026-09-18 的內容為準，頁面沒有點名任何國家、市場、產品變化或使用者可見的功能調整。文章不得暗示台灣的 Claude 使用者會因此受到影響。",
+    "沒有其他實驗室的數字。Anthropic 只公布自己的數字，並寫任何前沿開發者「都可以」公布類似指標，不代表已經有其他公司這麼做；文章不得把 26% 或 6%／12% 寫成業界共通數字，也不得暗示其他公司比較高或比較低。",
+    "沒有固定公布週期的承諾。官方寫希望示範透明度、會持續這樣做，也寫任何前沿開發者都可以定期公布這類指標，但沒有寫出自己的下一次公布日期。（獨立查核修正：不可寫成「也沒有給出固定方法」——附錄整節就是方法論，官方另外寫明計劃定期重建任務清單並為已公布數字重新標示版本。）",
+    "沒有任何外部單位驗證過這裡公布的數字本身。但要注意官方用了兩種時態：前言寫「計劃」把第三方評估者常駐，第二節寫「目前正在建立」外部第三方評估者；METR 的紅隊測試是過去式且測試對象是監控平台。三句都不等於已有外部單位查核過 26%、3 萬個代理人、0.002% 或 6%／12%，但也不可以寫成「這只是計畫、還沒有在做」。",
+    "沒有算力絕對數字。算力段落只公布占比，沒有晶片數量、支出金額或總量。",
+    "沒有員工人數或成本。自動化指數用人力時間加權，但沒有公布員工人數，文章也沒有提到 Anthropic 的職位或人力成本。",
+    "沒有的是各家共通的「安全工作」定義，不是沒有定義。（獨立查核修正：前一版與草稿都寫成「這篇沒有替安全研究訂出外部人士能套用的定義」，但附錄白紙黑字印出 Safety work was defined as…，還附了分類器提示詞節錄與邊界案例；官方自己說的是這只是眾多合理選擇之一、換一家開發者或主管機關可能畫在別的地方，並認為各方事先談好共通定義「會有好處」。分類定義一起公布、由獨立第三方查核是官方寫「任何前沿開發者都可以」做的建議，不是「應該」。）",
+    "監督數字的範圍只到一個內部平台。官方明寫這些代理人量測只涵蓋內部最常用的那一個平台，沒有提到公司其他地方或客戶部署環境裡的代理人。",
+    "這一頁沒有說遞迴自我改進已經逼近或無可避免。頁面只定義這個詞、說明量測是為了理解世界距離它有多近，文章不得替它加上時間表。",
+    "沒有提到任何其他實驗室的回應，也沒有提到前一天 OpenAI 發布的錯誤對齊回報框架。Anthropic 在這篇文章裡沒有點名任何競爭對手。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "文章所稱「已在 2026 年 8 月風險報告發布這些監督量測」的完整內容。",
+      "seen_where": "https://www.anthropic.com/aug-2026-risk-report，2026-09-18 重新確認仍是 200 後轉址到 www-cdn.anthropic.com 上一份約 4.57MB 的 PDF。",
+      "why_excluded": "本輪沒有下載閱讀這份 PDF，維持前期研究的判斷：沒有讀到 body 的文件不得列進 sources[] 或據以下筆。若日後要引用，須先完整讀取並另列為第四條來源。"
+    },
+    {
+      "claim": "「Anthropic 工程師平均每季出的程式碼量是 2021-2025 年的 8 倍」。",
+      "seen_where": "https://www.anthropic.com/institute/recursive-self-improvement，2026-09-18 重新讀取仍是 HTTP 200，全文掃描不到任何署名、「Published」字樣或日期中繼標籤。",
+      "why_excluded": "頁面沒有可查的發布日期，且這個數字不在本篇有日期的文章裡重複出現，不寫入。"
+    },
+    {
+      "claim": "「26% 代表四分之一的工作完全不用人管」的直覺讀法。",
+      "seen_where": "對「Claude “leads” 26% of Anthropic’s AI R&D work」一句最直接的誤讀。",
+      "why_excluded": "AL4「主導」官方定義是人類仍監督，AI 從高層次指令完成大部分工作；AL5 全自主，官方寫的是任何量測子集都還沒有達到。文章第四節專門拆解這個誤讀，不能把 26% 寫成「AI 自己做完不用人管」。"
+    },
+    {
+      "claim": "「0.002% 的攔截率證明監督系統有效」的推論。",
+      "seen_where": "讀者對攔截率表格最直接的推論。",
+      "why_excluded": "官方原文緊接著寫「罕見事件在大規模下仍會規律發生」，兩句必須一起引用，不能只寫前半句。"
+    },
+    {
+      "claim": "這些指標已經過稽核或外部驗證。",
+      "seen_where": "文中出現 METR 與「第三方評估者」字樣，容易被讀成已查證。",
+      "why_excluded": "METR 紅隊測試是過去式、對象是監控平台本身；第三方評估者常駐寫的是「計畫邀請」，尚未發生。兩者都要照官方原本的時態寫，不能寫成「已查核」。"
+    },
+    {
+      "claim": "Epoch AI 的 Automation Level 量表本身作為獨立第三方標準來源。",
+      "seen_where": "原文連到 https://epochai.substack.com/p/toward-an-onet-for-ai-r-and-d 。",
+      "why_excluded": "本輪沒有另外抓取這個第三方頁面，量表定義一律照 Anthropic 原文轉述，並註明量表本身是 Epoch AI 開發。"
+    },
+    {
+      "claim": "這篇文章與前一天 OpenAI 錯誤對齊回報框架之間的關聯。",
+      "seen_where": "兩篇公告發布時間只差一天、主題相近，但 Anthropic 全文沒有提到任何競爭對手。",
+      "why_excluded": "既然官方沒有連結兩者，任何比較都會是編輯自己的推論而非官方主張，本篇選擇不寫，避免暗示官方做了它沒做的比較。"
+    }
+  ],
+  "editorial_brief": "讀者是看過 9/12 Amodei 那篇文章的台灣一般讀者，接著會問的問題是：放慢的呼籲之後，誰真的拿出了可以檢查的數字？這篇文章的骨架不是「AI 在打造 AI」——那個標題到處都找得到——而是「一家公司自己公布關於自己的可量測主張，長什麼樣子，外界又該怎麼判斷該不該信」。\n\n最重要的一件事：26% 是「主導」不是「自主」，AL5 全自主官方寫的是還沒有任何量測子集達到；每個數字都要繫著自己的期間（自動化與監督用 2026 年 8 月，算力用 7 月 13 日至 20 日）與範圍（監督只涵蓋一個內部平台）。\n\n五節安排：一、公布了什麼、為什麼，以及這篇沒有印出發布時刻的細節；二、三項指標本身（結尾放表）；三、為什麼這是自報而非已查證的數字：Claude 評 Claude、一個平台、\"計劃邀請\"、METR 過去式（結尾放圖）；四、兩個最容易被誤讀的數字：26% 與 0.002%；五、沒有寫進這篇的部分（地區／其他公司／公布週期／外部驗證），以及和放慢前沿呼籲的關聯，不重講三步驟計畫本身。\n\n刻意不寫：任何跟 OpenAI 或其他實驗室的比較；遞迴自我改進的時間表；重講 9/12 那篇的三步驟計畫本身；風險報告 PDF 或未署日期的 8 倍程式碼那一頁的任何數字；任何暗示台灣 Claude 使用者會受影響的句子。",
+  "must_not_write": [
+    "不寫 Claude 自己完成 26% 的工作。AL4「主導」是人類監督下、AI 從高層次指令完成大部分工作；AL5 全自主，官方寫的是任何量測子集都還沒有達到。",
+    "不把任何數字脫離它的期間：自動化與監督數字每次出現都要繫 2026 年 8 月，算力數字每次出現都要繫 7 月 13 日至 20 日那一週。",
+    "不把 6% 和 12% 放進同一句話卻不交代分母不同（AI 研發算力對 AI 主導的 AI 研發算力）。",
+    "不把 6% 和 12% 相加、相除，或拿去跟其他公司比較——官方沒有公布其他公司的數字。",
+    "不寫這些量測已經過查核或稽核。第三方評估者是計畫；METR 的紅隊測試是過去式，對象是監控平台。",
+    "不寫「首次」或「唯一」。官方說任何開發者都可以公布類似指標，並形容自己的是雛形。",
+    "不替這篇文章安上發布的時刻。原文沒有印出任何時刻，沒有可換算的台北時間。",
+    "不引用 2026 年 8 月風險報告 PDF——本輪下載了但沒有讀。",
+    "不引用「8 倍程式碼」或 /institute/recursive-self-improvement 頁面的任何其他數字，那一頁沒有發布日期。",
+    "不重講 Amodei 三步驟放慢計畫的細節——那是 ai-news-pace-the-frontier-20260912 的內容，本篇只點出關聯。",
+    "不替 Anthropic 安上跟 OpenAI 前一天框架的比較——Anthropic 全文沒有點名任何競爭對手。",
+    "圖解不畫任何商標、字標或介面截圖，圖上不放任何正文沒有的數字。"
+  ],
+  "live_data_warnings": [
+    "Anthropic 新聞總覽頁是動態頁面，精選區塊的排列與收錄項目會隨新公告改變；本文只用它來確認這篇文章的標註日期（Sep 17, 2026），不引用頁面上其他文章的清單或計數。",
+    "研發自動化指數與代理人監督數字都明白標示是 2026 年 8 月的快照，算力占比是 2026 年 7 月 13 至 20 日單週快照；官方寫日後會持續量測，這些數字之後可能更新，本文查核日為 2026-09-18，之後如需引用新數字要重新查核。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "自己量給外面看",
+  "diagram": {
+    "title": "三個指標與一個問號",
+    "caption": "Anthropic 2026 年 9 月 17 日公布三項指標的整理：研發自動化、代理人監督與安全算力占比，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "誰在做研發",
+        "從協作到主導的分級"
+      ],
+      [
+        "代理人怎麼看管",
+        "事前攔截與事後翻查"
+      ],
+      [
+        "算力分給誰",
+        "安全占研發的比例"
+      ],
+      [
+        "誰來查證",
+        "外部評估者正在建立"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Measured In, Shown Out",
+      "diagram": {
+        "title": "Three Metrics and One Question Mark",
+        "caption": "A summary of the three metrics Anthropic published on September 17, 2026: R&D automation, agent oversight, and the share of compute spent on safety. Fact-checked September 18, 2026.",
+        "nodes": [
+          [
+            "Who Does the R&D",
+            "From Collaborates to Leads"
+          ],
+          [
+            "Agent Oversight",
+            "Blocked Before, Checked After"
+          ],
+          [
+            "Who Gets Compute",
+            "Safety's Share of R&D"
+          ],
+          [
+            "Who Verifies It",
+            "External Evaluators Underway"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "自分で測り、外へ見せる",
+      "diagram": {
+        "title": "3つの指標と1つの疑問符",
+        "caption": "Anthropicが2026年9月17日に公表した三つの指標の整理：研究開発の自動化、エージェントの監督、安全性への計算資源の割合。確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "研究開発の担い手",
+            "協働から主導への段階"
+          ],
+          [
+            "エージェントの監督",
+            "事前遮断と事後点検"
+          ],
+          [
+            "計算資源は誰に",
+            "研究開発に占める安全性の割合"
+          ],
+          [
+            "誰が検証するか",
+            "外部評価者は構築中"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "자체 측정, 외부 공개용",
+      "diagram": {
+        "title": "지표 세 개와 물음표 하나",
+        "caption": "Anthropic가 2026년 9월 17일 공개한 세 가지 지표 정리: 연구개발 자동화, 에이전트 감독, 안전 컴퓨팅 비중. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "연구개발의 주체",
+            "협업에서 주도까지 단계"
+          ],
+          [
+            "에이전트 감독",
+            "사전 차단과 사후 점검"
+          ],
+          [
+            "컴퓨팅은 누구에게",
+            "연구개발 중 안전 비중"
+          ],
+          [
+            "누가 검증하나",
+            "외부 평가자 구축 중"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "自己量给外面看",
+      "diagram": {
+        "title": "三个指标与一个问号",
+        "caption": "Anthropic 2026 年 9 月 17 日公布三项指标的整理：研发自动化、代理人监督与安全算力占比，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "谁在做研发",
+            "从协作到主导的分级"
+          ],
+          [
+            "代理人怎么看管",
+            "事前拦截与事后翻查"
+          ],
+          [
+            "算力分给谁",
+            "安全占研发的比例"
+          ],
+          [
+            "谁来查证",
+            "外部评估者正在建立"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "未參與撰稿。sources[] 三條全部在 2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（請求的 UA、標頭、查詢字串都沒有帶任何 email 或個人資料），位元組數與撰稿者紀錄逐一相符：measuring-pace-of-ai-development 200／217,865、news 200／462,587、policy-on-the-ai-exponential 200／140,750，三條都是 0 次轉址、body 是正文。主來源抽成 28,942 字的純文字後，把內容包拆成約 140 條主張逐條回原文核對：正文 13 段每一句、summary 四句、FAQ 六題答句、callout、表格 16 格與 caption、圖解 caption 與研究紀錄的四格與 hero_label、title、description。研究紀錄 29 條 verbatim_quote 以程式做連續字串比對（同時比對可見文字與 RSC payload 解碼後的字串），3 條不通過。另外讀了既有的 ai-news-pace-the-frontier-20260912 內容包 zh-TW 全文，確認本篇沒有重寫它、沒有與它矛盾，第二個結尾連結的 text 與它的 zh-TW title 逐字相同。沒有使用 sources[] 以外的任何網址替文章補事實。",
+    "verdict": "needs_fixes（已於本輪全部改完）",
+    "edits_to_the_pack": [
+      "第三方評估者：草稿寫「這是計畫，不是已經在做的事」，被來源自己的句子推翻——原文第二節寫 \"As described above, we are now setting up external third party evaluators at Anthropic.\"。已改成兩句都寫出來（前言的「計劃常駐」與第二節的「目前正在建立」），結論仍是「都不等於已經有人查核過」。連帶改了 description、summary 第四句、FAQ 第三題、callout 與圖解第四格。",
+      "「罕見事件」那句改了三處：(a) 位置——原文在第二節開頭的 Why measure oversight of agents?，不在 0.002% 之後，「官方緊接著提醒」不成立，已改成「官方在原文這一節的開頭先提醒」；(b) 規模——原文是 millions or billions of agents operating in the economy（整個經濟體），不是 Anthropic 平台上的代理人變多，已補回經濟體；(c) 語氣——can happen regularly 是「可能經常發生」，草稿寫「會定期發生」把 can 刪掉、還把 regularly 讀成「定期」。正文、表格第三列、FAQ 第二題三處都改。",
+      "「這篇專文沒有替安全研究訂出外部人士能套用的明確定義」是錯的：附錄印著 \"Safety work was defined as work whose dominant purpose is making AI systems safer, more understandable, or more secure.\"，還附了分類器提示詞節錄。已改寫成「附錄寫出自己的定義，但官方自陳這只是眾多合理選擇之一，換一家開發者或主管機關可能把線畫在別的地方」，並把「應該事先談好共通定義」降回原文的「會有好處」。",
+      "「同一天，Anthropic 另一份政策頁面……」的「同一天」沒有依據：policy-on-the-ai-exponential 全文沒有任何發布日期（datePublished／article:published_time／\"Published\" 各 0 次）。已刪掉「同一天」。同句的「提交給各國政府的治理提案路線圖」也改掉——該頁另有一句 \"Our framework is written primarily with the US federal government in mind.\"，已改成「主要是為美國聯邦政府而寫」。",
+      "「官方緊接著提醒」以外的四個限定詞被刪：離線監控每週約 50 則漏了 highest priority（已補「優先度最高的」）；算力保守規則的 as much as 被寫成「同時有貢獻」（已改成「貢獻若和對安全一樣多」）；6%／12% 漏了 about（已補「約」）；\"compare like with like, across developers and over time\" 的 across developers 被刪掉、只剩「未來跟自己比較」（已改成「能跨開發者、跨時間做同類比較」）。",
+      "AL3／AL4 的定義漏掉 can（那是等級的能力定義，不是已發生的事），已補「能」；「任何一項有量測的研發工作」漏掉 AI 與 subset 的範圍，已改成「任何一類有量測的 AI 研發工作」；AL5 的「尚未達到」改為照註腳原文寫「一個我們尚未達到的等級」。",
+      "「官方自己列出研發自動化指數的兩個限制」誤讀了結構：原文寫的是 \"Two obstacles stand in the way of cross-lab comparison on this type of reporting.\"，兩個障礙都掛在跨實驗室比較上。已改成「兩個擋在跨實驗室比較前面的障礙」。同段「評審評某個月份時只看得到……」的主體也改回原文的 research agents。",
+      "6%／12% 的分母是 \"allocated toward safety\"，而附錄定義的是 safety work（涵蓋能力研究以外的安全相關工作），不等於「安全研究」。正文、表格、summary 三處的「用在安全研究」已改成「分給安全工作」；只有官方確實寫 safety research 的那一句（安全研究比前沿訓練更仰賴研究人員時間）保留「安全研究」。",
+      "「Anthropic 在專文開頭寫道，現在外界看不到 AI 實驗室內部在發生什麼事」出處寫錯：那句是新聞總覽頁精選區塊的摘要，不在專文裡。已改成「Anthropic 官方新聞總覽頁為這篇專文寫的摘要是……」。",
+      "AI 垂直不帶投資免責，第二段的「也不提供投資建議」已刪除（全篇沒有任何財經內容）。另外三處小訂正：約 3 萬個代理人做的是 research and engineering work（已改成「研究與工程工作」）；「其他開發者也可以」改成原文的「任何前沿開發者都可以」；「沒有提到任何國家」改成「沒有點名任何國家或市場」，因為原文確實出現過 labs in democratic countries 這個類別說法。",
+      "FAQ 第五題原本寫「沒有給出下一次公布的日期或固定方法」，後半不成立——附錄整節就是方法論。已改成「沒有寫出下一次公布的日期，也沒有承諾往後會沿用同一套方法」，並補上原文 \"we plan to rebuild the basket of tasks periodically and re-version our published automation numbers as appropriate\"。",
+      "研究紀錄的 verbatim_quote 三條不是連續字串，已修：(1) 26%／逾 90%／未完全自主是原文三個並列的列表項目，被用空格接成一句，已拆成三條各自的引文；(2) \"review latency , which\" 的逗號前多一個空格，是 <em> 標籤的殘留；(3) \"platform .\" 的句點前多一個空格，是 </a> 的殘留。另新增 10 條本輪才讀進來的引文（now setting up、AL3 定義、Two obstacles、compare like with like、Safety work was defined、would benefit from、Any frontier developer could publish what share、rebuild the basket、US federal government、政策頁無日期）。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-17 成立：專文頁面確實不印任何日期（218KB 全文中 datePublished／article:published_time／\"Published\" 各 0 次，唯一的 2026-09-18 是整站 siteSettings._updatedAt）；新聞總覽頁的 FeaturedGrid 區塊為本篇印 <time>Sep 17, 2026</time>，RSC payload 裡對應的欄位是 \"date\":\"2026-09-17\"。原文全程沒有印任何時刻，文章也沒有替它安上時刻或台北時間換算。",
+      "三個核心數字與其期間、範圍逐一對得上原文：26%／逾 90% 繫 2026 年 8 月；約 3 萬個代理人與 100%／100% 涵蓋率、每週 10 萬則、0.002%（約 1/47,000）都繫 2026 年 8 月且都寫明只涵蓋內部最常用的一個平台；6%／12% 繫 7 月 13 至 20 日那一週，分母不同這件事在正文、表格、summary 三處都寫明，全篇沒有把兩者相加、相除或跟其他公司比較。",
+      "界線檢查全部通過：沒有購買建議、沒有推薦式比價、沒有價格或方案內容；廠商宣稱一律帶「官方寫道／官方表示／官方稱」；沒有寫「首次」「唯一」「業界第一」；沒有把預告寫成已完成；沒有替 Anthropic 建立與同日 OpenAI 錯誤對齊框架的任何關聯（全篇未出現 OpenAI）；callout 只有一個，沒有投資免責段落。",
+      "與既有 ai-news-pace-the-frontier-20260912 沒有重疊也沒有矛盾：那篇的三步驟表格第一列是「一：常駐評估者」，本篇只用一句話點出關聯並把細節交給文末連結，沒有重講三步驟內容。第二個連結的 text 與該內容包 zh-TW title 逐字相同。",
+      "summary 四句的每個數字都在正文出現；FAQ 六題答案都是純文字、沒有網址；圖解四格與 hero_label 都沒有數字；表格 4 欄 4 列、caption 帶查核日；checked_on 在內容包三條 source、研究紀錄、第二段與表格 caption 四處都是 2026-09-18，今天就是那一天，未改動。",
+      "sources[] 三條都不是擋阻頁或軟性 404，三條都被文章實際引用：專文撐絕大多數句子，新聞總覽頁只用來撐日期（符合指派訊息的限制），政策頁只撐 Advanced AI Framework 那一句。風險報告 PDF 與未署日期的 /institute/recursive-self-improvement 都沒有進 sources[]，文中也沒有引用其內容。"
+    ],
+    "left_for_the_owner": [
+      "原文寫算力快照那一句是 \"from July 13 to July 20\"，沒有印年份。（第二輪訂正計數：同頁 July 共出現七次，其中五次寫成 July 2026——抽樣週兩次、彙整那一句、凍結基準、一月對照組——另一次是 \"the January and July baskets of tasks\"，本身也沒有年份，只是回指前一句的 July 2026；前一輪報告寫「其餘六處全部是 July 2026」計數有誤。）文章因此寫「2026 年 7 月 13 日到 20 日」，這是編輯依同頁其他日期做的判讀，不是原文印出來的字串；若站主偏好嚴格照印，正文、表格第四列與 summary 第三句三處要同步拿掉「2026 年」。本輪依指派訊息先保留現行寫法。",
+      "（第二輪已處理，留下來備查。）第一輪的正文與 FAQ 把「Amodei 那篇提出三步驟計畫、第一步是邀請外部評估者常駐」寫成事實陳述，依據是本站既有的 ai-news-pace-the-frontier-20260912（其來源是 darioamodei.com），不在本篇 sources[] 裡；第一節也用「Amodei 主張放慢能力提升速度、讓風險防範有時間跟上」交代動機，同樣出自那一篇。本篇不得用非 sources[] 的頁面撐句子，因此第二輪把三處都改成「出自本站另一篇整理，不在本文引用的頁面裡」，動機那一句則換成本篇真正印出來的 \"Together, these proposed measurements and policies are a starting point…\"。〈We Must Pace the Frontier〉這個標題本篇也沒有印出來，只出現在超連結網址的 slug 與本站另一篇的標題裡——兩處提到它的地方現在都緊接著「出自本站另一篇整理」，站主若仍嫌鬆，可把書名號整個拿掉。",
+      "專文正文裡出現一次 \"labs in democratic countries\"。文章寫的是「沒有點名任何國家或市場」，那句話成立（沒有任何具體國名，Taiwan／China／United States 等字串各 0 次），但如果之後有人要把它寫成「完全沒有提到國家」，那會不成立。",
+      "指標二的數字官方說已經發表在 2026 年 8 月的風險報告裡（\"We published all of these measurements in our recent risk report.\"）。那份 PDF（www-cdn.anthropic.com，約 4.57MB）本輪與前一輪都沒有讀，因此文章沒有引用它，也沒有寫「這些數字首次公布」。若站主想補這條脈絡，必須先完整讀那份 PDF 並把它列為第四條來源。"
+    ],
+    "second_round": {
+      "checked_by": "second-round independent factcheck agent（未參與撰稿，也未參與第一輪）",
+      "checked_on": "2026-09-18",
+      "method": "sources[] 三條全部重抓：curl -sL -A \"Mokaair-editorial\"，請求的 UA、標頭、查詢字串都沒有帶任何 email 或個人資料。三條都是 HTTP 200、0 次轉址、body 是正文，位元組數與前兩輪逐一相同（217,865／462,587／140,750）。主來源抽成 28,948 字可見純文字，另把 Next.js 的 RSC payload 解碼成 128,541 字對照。覆核範圍＝第一輪改動過的每一段與新寫進去的每一句（12 類共 23 處），逐句回原文；研究紀錄全部 verbatim_quote 以程式做連續字串比對（同時比對可見文字與 RSC 解碼字串），另加指派訊息點名的九個疑點（a–i）。沒有使用 sources[] 以外的任何網址替文章補事實。",
+      "claims_checked": 118,
+      "quotes_compared": 43,
+      "edits_this_round": 5,
+      "verdict": "needs_owner（第二輪改完）",
+      "edits": [
+        "（跨篇引用，三處）第一輪留給站主的第 2 件，本輪直接處理掉：第一節第一段的「Amodei 主張放慢前沿 AI 的能力提升速度，讓風險防範有時間跟上」、第五節第三段與 FAQ 第六題的「Amodei 那篇提出三步驟計畫、第一步是邀請外部評估者常駐」，三處都是本站 ai-news-pace-the-frontier-20260912 的內容，不在本篇 sources[] 裡，卻寫成事實陳述。第一節那句換成本篇真正印出來的 \"Together, these proposed measurements and policies are a starting point for monitoring the pace of AI development from outside the labs.\"；另兩處改成「三步驟計畫與『第一步是外部評估者常駐』出自本站另一篇整理，不在本文引用的頁面裡」。連帶使「邀請」一詞歸零（原文是 embed／setting up，不是 invite）。",
+        "（限定詞，第三節第一段）\"which could mean that the “judge” model could make the same kinds of errors as the model it is checking\" 有兩層 could，而且沒有斷言被檢查的模型已經犯過錯。第一輪寫成「評分者可能重複被評分對象犯過的同一種錯誤」——「犯過的」把對方的錯誤講成既成事實。已改成「官方自己寫這可能表示擔任評審的模型，會犯下和被它檢查的模型同一種錯誤」。",
+        "（限定詞，summary 第二句）AL4 的定義漏掉 can：第一輪只在正文與 FAQ 補了「能」，summary 仍寫「人類監督下由 AI 完成大部分工作」，讀起來像已發生的事而不是等級定義。已改成「人類監督下、AI 能從高層次指令出發完成大部分工作」，與正文一致。",
+        "（字數，第三節第一段）為了讓上面三處的加字有空間等量騰出，把同段「研究用的 Claude 代理人先蒐集每個項目的證據，再由另一個獨立的 Claude 擔任評審」精簡成「研究用的 Claude 代理人先蒐集證據，再由獨立的 Claude 擔任評審」——刪的是重複敘述，不是但書；第一輪特地改回原文的「做評分的代理人只看得到那個月或更早的證據」原封不動保留。段落字數 2,955 → 2,986，仍在 3,000 以內。",
+        "（研究紀錄）新增兩條本輪才用到的引文：\"Together, these proposed measurements and policies are a starting point…\"（撐改寫後的第一節）與 \"as called for by Anthropic CEO Dario Amodei\"（記錄專文對 Amodei 只有一句話＋一個超連結、沒有複述，且全文可見文字裡 \"We Must Pace\" 0 次）。引文總數 41 → 43。"
+      ],
+      "checked_and_correct": [
+        "43 條 verbatim_quote 全部以連續字串比對通過，0 條失敗；沒有一條含 ...、… 或 |，所以沒有跨段落拼接的風險。其中四條（Epoch AI 量表、三個監督指標的定義、METR 紅隊、\"As described above, we are now setting up…\"）只在渲染後的可見文字裡連續，在原始碼與 RSC payload 裡被 <em>／<a> 切開——第一輪把那兩個標籤殘留的多餘空格修掉是對的。",
+        "(a) 第三方評估者：兩句時態都在，且互相一致。前言 \"We plan to embed independent third-party evaluators from multiple organizations at Anthropic, and give them access to internal processes, systems, and data comparable to what internal risk assessment teams have.\"（計劃常駐）；第二節結尾 \"As described above, we are now setting up external third party evaluators at Anthropic.\"（目前正在建立）。逐句核對第一輪連帶改的六處——description、summary 第四句、FAQ 第三題、callout、第三節第二段、圖解第四格「外部評估者正在建立」——六處寫法一致，結論都停在「不等於已經有人查核過」，沒有一處把 setting up 讀成 set up。",
+        "(b)「罕見事件」句三件事都對：位置在第二節 \"Why measure oversight of agents?\" 的第二段（在 What we measured／What we found 與 0.002% 那一格之前），正文寫「這一節的開頭」成立；規模是 operating in the economy，正文、表格第三列、FAQ 第二題都寫「經濟體裡」；can 在——三處都是「也可能經常發生」，全篇「定期發生」0 次。",
+        "(c) 安全工作定義：附錄確有 \"Safety work was defined as work whose dominant purpose is making AI systems safer, more understandable, or more secure.\"，正文照寫成正面陳述，沒有任何「沒有定義」的殘留；共通定義照 \"would benefit from converging on a shared definition ahead of time\" 寫成「會有好處」，不是「應該」；\"Any frontier developer could publish…\" 照寫成「任何前沿開發者都可以」。",
+        "(d) 政策頁：重抓 140,750 bytes，datePublished／article:published_time／\"Published\" 各 0 次，可見文字裡唯一的四位數年份是頁尾 \"© 2026 Anthropic PBC\"，原始碼裡唯一的 2026-09 仍是整站 siteSettings._updatedAt（2026-09-18T00:02:35Z）。內容包全文「同一天」0 次、「各國政府」0 次；\"Our framework is written primarily with the US federal government in mind.\" 逐字對得上正文的「主要是為美國聯邦政府而寫」。",
+        "(e) 第一輪補回的限定詞全部還在：\"the highest priority flags (approximately ~50 per week)\"→「優先度最高的約 50 則」；\"as much as\"→「貢獻若和對安全一樣多」；\"about 6%\"／\"about 12%\"→正文與表格都有「約」；AL3／AL4 的 can→正文、FAQ、summary 三處都有「能」（summary 本輪補上）；\"compare like with like, across developers and over time\"→「能跨開發者、跨時間做同類比較」。",
+        "(f) \"from July 13 to July 20\" 確實沒有印年份；同頁 July 共七次，五次是 July 2026，一次是回指用的 \"January and July baskets of tasks\"。依指派訊息本輪保留「2026 年」的寫法，並在 left_for_the_owner 訂正第一輪「其餘六處」的計數。",
+        "(h) 內容包與研究紀錄全文 OpenAI 0 次；主來源與政策頁全文也都是 OpenAI 0 次，沒有替 Anthropic 建立與同日 OpenAI 那篇的任何關聯。",
+        "事件日 2026-09-17 再次獨立複現：專文全文 datePublished／article:published_time／dateModified／\"Sep 17\"／\"2026-09-17\" 各 0 次；新聞總覽頁的 FeaturedGrid 為本篇印 <time>Sep 17, 2026</time>，RSC payload 對應物件是 \"_type\":\"featuredGridLink\",\"date\":\"2026-09-17\"，摘要與標題逐字相符。",
+        "界線再掃一次全部通過：topics 沒有 finance；「投資」「免責」「推薦」「值得」「購買」「訂閱」「首次」「唯一」「業界第一」各 0 次；callout 只有一個且沒有投資免責語；廠商宣稱一律帶「官方寫道／官方表示／官方稱」；沒有推定台灣可用（只寫使用方式不會因此改變，且已限縮到本文查核到的內容）。",
+        "與 ai-news-pace-the-frontier-20260912 仍然沒有矛盾：那篇寫的是「Anthropic 打算在近期邀請一支外部審查團隊常駐」「第一步由 Anthropic 單方面承諾」，本篇改寫後只說那是本站另一篇整理的內容，沒有重講也沒有牴觸；第二個結尾連結的 text 與該內容包 zh-TW title 逐字相同。",
+        "summary 四句每個數字都在正文出現、每句都是正文的子集；FAQ 六題答案都是純文字且都能在正文找到對應段落（第六題本輪隨正文同步改寫）；圖解四格與 hero_label 沒有數字；表格 4 欄 4 列、caption 帶查核日；checked_on 在內容包三條 source、研究紀錄、第二段、表格 caption 四處都是 2026-09-18，未改。"
+      ],
+      "left_for_the_owner": [
+        "「2026 年 7 月 13 日到 20 日」的年份仍是編輯依同頁其他處補的（見上面 left_for_the_owner 第 1 條）。要嚴格照印就三處同步拿掉「2026 年」。",
+        "〈We Must Pace the Frontier〉這個標題本篇沒有印出來，只在超連結網址的 slug 與本站另一篇的標題裡；本輪已讓兩處提到它的地方緊接著「出自本站另一篇整理」，站主若要更嚴可整個拿掉書名號。",
+        "2026 年 8 月風險報告 PDF（約 4.57MB）三輪都沒有讀，文章因此沒有引用它，也沒有寫「這些數字首次公布」。要補這條脈絡得先完整讀 PDF 並列為第四條來源。",
+        "段落字數 2,986／3,000，只剩 14 字餘裕。翻譯階段若要補句子，得先從別處等量精簡，且不可刪任何但書或限定詞。"
+      ]
+    }
+  }
+}

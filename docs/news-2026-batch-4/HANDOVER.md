@@ -130,6 +130,62 @@ description 與正文拿掉所有篇數、月份表拿掉「本輯新聞篇數�
   審稿者建議全批統一「核实」；本站 tech 批次 131 處用「查核」、crypto 用「核查」——三批各異，要不要統一請站主定。
 - **ko 的「本文」**分「본 기사」與「이 글」兩種，**ja 的「本文」**同樣有兩種寫法，各篇內部一致，沒有統一。
 
+## 1d. 9 月 16 日起的十三篇（批次 4.5）：AI 六篇、科技四篇、幣圈三篇，三個索引原地增補
+
+PR #550。這一批只寫 2026-09-16 之後的新消息（站主決定不做 4.4 那 15 則 8/1–9/15 的次要新聞）：三位探索代理掃官方 feed 後由站主圈選 13 篇，
+每篇五語、**兩輪**獨立查核（一律第二輪）、逐語審稿（一語兩組、八位）；13 篇都過 `check_article.py --full --assets`，`pack_cli lint --kind life` 0 error。
+與 4.1–4.3 的差異寫在 [`agents/DELTA-4-5.md`](agents/DELTA-4-5.md)：沒有前期 corrections 段落、研究紀錄直接寫在各垂直工作區、
+`display_order` 由 `check_article.py` 的 `RELATED` 決定（AI 161–166、科技 313–316、幣圈 211–213）、第二個結尾連結指向既有文章（兩篇指向同批）。
+
+| slug | order | 查核（第一輪；第二輪） | 逐語審稿採用（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- |
+| `ai-news-chatgpt-sponsored-agents-20260916` | 161 | 95／22；再改 3 | 0／6／1／6 |
+| `ai-news-firefox-smart-window-mistral-20260916` | 162 | 94／15；再改 6 | 4／1／5／3 |
+| `ai-news-openai-misalignment-reports-20260917` | 163 | 118／31；再改 11 | 5／7／1／1 |
+| `ai-news-anthropic-pace-metrics-20260917` | 164 | 101／23；再改 5 | 0／7／7／2 |
+| `ai-news-astra-for-law-20260917` | 165 | 146／28；再改 12 | 0／2／5／0 |
+| `ai-news-google-cc-family-agent-20260918` | 166 | 139／16；再改 19 | 8／6／7／1 |
+| `tech-news-apple-att-eu-20260916` | 313 | 84／26；再改 6 | 0／3／3／0 |
+| `tech-news-app-store-bundles-multiseat-20260916` | 314 | 95／16；再改 12 | 4／29／6／1 |
+| `tech-news-eu-kids-act-20260917` | 315 | 124／16；再改 5 | 4／4／10／1 |
+| `tech-news-taiwan-matsu-cable-tm4-20260918` | 316 | 96／12；再改 5 | 3／5／5／0 |
+| `crypto-news-fca-perimeter-guidance-20260916` | 211 | 96／18；再改 8 | 1／1／32／0（ko 主要是 암호자산→가상자산） |
+| `crypto-news-cftc-passive-software-20260917` | 212 | 95／20；再改 13 | 0／6／22／1（ko 主要是 노액션레터→비조치의견서） |
+| `crypto-news-fca-p2p-crypto-crackdown-20260917` | 213 | 109／17；再改 8 | 0／5／16／1 |
+
+查核報告在 [`factcheck-draft/`](factcheck-draft)（每份都有「第二輪」一節），研究紀錄在各垂直工作區的 `research/`
+（[`../ai-news-2026-09-late/research/`](../ai-news-2026-09-late/research)、[`../tech-news-2026/research/`](../tech-news-2026/research)、
+[`../crypto-news-2026/research/`](../crypto-news-2026/research)）；候選清單在 `candidates-since-0916-{ai,tech,crypto}.md`，前期研究紀錄在 [`research/`](research)
+（兩個沒選的候選 `tech-news-moda-mydata-student-loan-20260917`、`tech-news-taiwan-gsn-idc-20260916` 留著）。
+審稿採用的 248 筆（八位：ja／ko 用 opus、en／zh-CN 用 sonnet，AI 六篇一組、科技四篇加幣圈三篇一組）同在 [`translation-corrections.json`](translation-corrections.json)，協調者自己的修訂在 [`coordinator-corrections.json`](coordinator-corrections.json)（含 ko 三篇 74 處「공식은／공식이」主語改成公司名、四個譯文標題的用語統一）。
+
+**三個索引都原地增補**（`update_index.py`，不重跑 `build_*_index.py`——那兩支會整份重寫 zh-TW、蓋掉 relink 與譯文）：
+AI 索引把「2026-09-15 與 2026-09-18 兩度增補」改成「之後多次增補（最近一次 2026-09-18）」——下次只換 `EXPANDED_ON` 這個常數——第二段加一句點名六篇、
+9 月組尾端加六個連結、多引六條來源；科技索引在平台、台灣、歐盟三組各插一段新敘述（`INSERT` 表，五語）、四個連結進所屬組、查核句加增補日；
+幣圈索引新開「英國」組（散文一節＋連結列一節）、CFTC 職員函併進「美國：證券法的解釋、提案與 CFTC 職員函」、開頭的月份範圍與地區數改掉、description 加英國。
+`update_index.py` 這次多了 `INSERT` 表（`link:`／`heading:`／`paragraph:` 三種 anchor）與 `NEW` 的逐語系 heading anchor；`COUNT_RULE` 只守 AI 索引
+（科技、幣圈索引的「那一篇」「兩篇微軟公告」會被篇數規則假命中）。
+
+### 留給站主決定的事（發布後仍可修訂）
+
+- **活頁面，發布當天要重讀**：sponsored（`testing-ads-in-chatgpt` 是持續疊加更新的頁，市場清單與「台灣不在清單」最可能先過期）、google-cc（`gemini.google` 產品頁無日期、頁尾細則會無預警改）、
+  astra（外掛目錄）、kids（四頁 `Last update` 2026-09-17）、fca-p2p（9 月新聞稿沒有修訂紀錄區塊，4 月那篇是發布後 26 天才補關鍵但書）、perimeter（法規資料庫頁尾「整編資料截止日」每週五更新；
+  9/30 申請窗口開放後 FAQ 第一題與第 5 節要改；10 月諮詢一開第 4 節過期）。
+- **misalignment** 的發布時刻（UTC 9/16 17:00＝台北 9/17 01:00）只印在 OpenAI 官方新聞 feed，feed 不在 `sources[]`（規格禁止 feed 進 sources、四條已滿）；正文三處都點名「官方新聞 feed」。
+  `GPT‑5.6 Sol`／`5.6-sol`／`5.6-Sol` 三種官方寫法並存，文中是本站排版。段落 2,995／3,000。
+- **pace-metrics** 的「2026 年 7 月 13 日至 20 日」年份是依同頁其他處 `July 2026` 補的（原文那句沒印年份）；8 月風險報告 PDF 三輪都沒讀；三步驟計畫是本站 9/12 那篇的內容，正文已改成「出自本站另一篇整理」。
+- **astra**：公告點名的 Harvey／Legora 等 API 客戶與「法律科技公司」對象因字數沒寫進去（研究紀錄有），日後擴寫不可反寫成只有事務所能用；24% 參考判例數字未寫。
+- **firefox**：`sources[0].title` 用的是 mistral.ai 的 `<title>`，另外兩條用 `<h1>`（三條裡二比一）；Mistral 兩度自稱觸及 Firefox 使用者 `worldwide` 與四國市場句不一致，字數已滿沒進文章。
+- **bundles**：「組合方案／套組／群組購買」是本站自譯（Apple 繁中頁只有「多名額購買／名額／群組購買者／大量採購／Apple 商務／Apple 校務管理」）；繁中說明頁自己前後矛盾（家人共享能否與多名額購買並存），本文以英文版為準、不判斷哪版正確；
+  繁中頁另寫 Apple「會」自動關閉已開啟家人共享的既有訂閱的多名額購買，查證屬實但字數沒放。zh-CN 用 Apple 簡中公告那套（套装／套件／多席位购买／席位／批量购买／群组购买），與說明頁的「多名额购买／名额」不同，第二段有說明。
+- **att-eu**：RSS `pubDate` 是台北 9/17 01:00，文章採 Apple 印的 9/16；「允許 App 要求追蹤」這類中文設定名是本站翻譯（兩頁都只有英文）。
+- **kids**：factsheet FS/26/1891 仍 404；提案本體、Communication、SWD 三份未讀，全篇不引條號；第五個官方頁 `/en/policies/kids-act` 多寫了「也適用應用程式商店與作業系統」與「部分服務擬豁免」，`sources[]` 已四條沒換。
+- **matsu**：標題的「完工」是編輯用語（中華電信寫「完成建置、登陸、測通」），callout 已劃界；數發部兩個海纜子頁未開；數發部若補發新聞稿，第 5 節末段與 summary 第 4 句要更新。
+- **perimeter**：PS26/18 第 5 章列的三項新 SI 排除刻意未寫（`legislation.gov.uk` 不在白名單）；第一輪把台灣對照改成直接引全國法規資料庫（第四條來源），查核日統一 2026-09-18。
+- **cftc**：第 5 節講 3/23 聯名解釋令那句的依據是本站既有文章、不在本篇 `sources[]`；26-09 由律師代提且含補充往來，「Phantom 提出的申請」顆粒度較粗；來源自身兩處不一致（`Inc` 無句點、Re: 行印成 `Section 4(k)`）未代為訂正。
+- **fca-p2p**：第 4 節第 3 段「規範範圍還在擴大中」是編輯過場句（來源只印 `until October 2027`）。
+- **ko 的「가상자산／암호자산」**：perimeter 譯者用了「암호자산」，審稿統一成站上的「가상자산」；**ja 的「莒」**（西莒／莒光）與「虛擬資產服務法」的繁體字會被 `translation_checks.py` 的 cp932 檢查標出，是假陽性。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）

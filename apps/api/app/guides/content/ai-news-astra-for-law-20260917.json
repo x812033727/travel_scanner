@@ -1,0 +1,1310 @@
+{
+  "slug": "ai-news-astra-for-law-20260917",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-17",
+  "featured": false,
+  "display_order": 165,
+  "locales": {
+    "zh-TW": {
+      "title": "Astra for Law 發布：OpenAI 的法律工具，加的是索引，不是新模型",
+      "description": "2026 年 9 月 17 日，OpenAI 發布 Astra for Law，官方的說法是把 GPT‑6 Astra 配置成法律用的 AI 基礎，加上美國法律索引、Trusted Access 與資料條款，將先開放給選定的事務所。本文依 2026 年 9 月 18 日查核，整理官方評測代表什麼、還沒公布的地區與價格；本站未使用，內容不是法律意見。",
+      "hero": {
+        "src": "/guides/ai-news-astra-for-law-20260917/hero.jpg",
+        "alt": "原創插圖：一個放大鏡懸停在一疊由淺到深排列的文件上方，象徵可以點開核對的出處；下方四個小方塊由左到右排列，代表模型、索引、選定的事務所與資料條款四個環節；不含任何商標或介面畫面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 17 日，OpenAI 發布公告《Introducing Astra for Law》。OpenAI 的說法是把「我們最強大的模型」配置成一套新的法律用 AI 基礎：結合 GPT‑6 Astra，加上為專業法律工作打造的設定、工具與情境。同一天，OpenAI 也發布客戶案例，介紹國際律師事務所 Cooley 用另一項產品 ChatGPT Work 打造的 GO Public。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核 OpenAI 官方公告頁、Cooley 客戶案例頁與 OpenAI 外掛目錄的法律類別頁。本站沒有實際使用 Astra for Law，以下的功能描述、評測數字與客戶說法都是官方或其客戶自己的說法；本文不是法律意見，也不建議讀者以本文取代律師的專業判斷。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 於 2026 年 9 月 17 日發布 Astra for Law，官方的說法是把 GPT‑6 Astra 配置成法律用的 AI 基礎，配上法律用的設定、工具，以及一套超過 2.3 億筆網址的美國法律索引。",
+            "官方表示，在 200 題來自 Vals AI 私有驗證集的美國法律研究問題、兩邊都用最高推理量的條件下，Astra for Law 在 54.0% 的題目通過評測的整體正確性檢查，只靠網路搜尋的 GPT‑6 Astra 是 38.7%，官方稱為 40% 的相對進步；另在經稽核的目標段落集合上、雙方推理量相同時，官方表示最多可以多檢索到 54% 來自正確法院意見書的相關段落。",
+            "這項服務將先開放給選定的事務所透過 Trusted Access 在 ChatGPT 與 Codex 使用，API 即將開放；公告寫明可以與 OpenAI 聯絡，但沒有說明可申請的地區與合資格標準，也沒有公布價格。",
+            "官方同一天也讓 ChatGPT for Word 全面開放，用來校對與抓格式問題，但沒有說明適用的方案、地區或語言。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026 年 9 月 17 日公告了什麼：為什麼「配置」不是「新模型」"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告開頭把 Astra for Law 定位成「我們最強大的模型，配置成一套新的法律用 AI 基礎」，內文沒有提到另外訓練新模型，改變的是模型之外的部分；不過它在模型選單裡會顯示成「GPT‑6 Astra Law」，API 代號是 gpt-6-astra-law。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些新增的部分——一套法律用的檢索索引、一組工具，以及使用資格與資料處理的條款——後面幾節分別說明。本站一週前介紹過 OpenAI 給金融機構用的 ChatGPT（事件日 2026 年 9 月 10 日），這次換成法律事務所，索引、評測與資格條件是另外一組，本文不重複那一篇已經寫過的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT‑6 Astra 是公告裡形容為「最新、最強大」的那個模型，能力細節本站已另文介紹（事件日 2026 年 9 月 3 日），這裡不重複；本文只談配置成法律用基礎之後多出來的部分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "實際上加了什麼：一套美國法律索引，和查得到出處的引用"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告說，Astra for Law 可以檢索美國的判例、法規、法院規則與行政決定，索引規模「超過 2.3 億筆網址」，且「每日新增來源」。這裡要分清楚兩件事：索引範圍明確是美國，官方原文以「U.S.」起頭涵蓋整串清單；但選定的事務所要在哪個國家或地區，官方沒有說明，兩者不能互相推論。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判例的部分，OpenAI 表示是與非營利組織 Free Law Project 合作，也就是 CourtListener 背後的機構，判例收錄「涵蓋超過 99.9% 已公布的美國判決先例」。官方也說明，這套索引是補充事務所既有的授權內容與專門產品，不是取代，並舉 Thomson Reuters 為例；公告另外寫了一句「在 OpenAI 上建置應該是從生態系得到更多，而不是取代它」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢索之外，官方特別強調的賣點是出處查得到、打得開：官方的說法是研究基礎更紮實，會附上「律師可以自己查看的可靠出處」。這是本文認為對一般讀者最有意義的一點——不是模型變聰明了，是它現在附帶一套可以自己查核的來源。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "內容",
+            "開放對象",
+            "官方未說明的部分"
+          ],
+          "rows": [
+            [
+              "模型",
+              "同一個 GPT‑6 Astra，公告未提另外訓練新模型",
+              "隨 Astra for Law 開放的事務所",
+              "未來是否推出獨立的法律模型"
+            ],
+            [
+              "法律索引",
+              "美國判例、法規、法院規則與行政決定，超過 2.3 億筆網址、每日新增",
+              "使用 Astra for Law 的事務所",
+              "是否涵蓋美國以外的法域"
+            ],
+            [
+              "Trusted Access",
+              "將先在 ChatGPT 與 Codex 開放，API 即將開放",
+              "選定的法律事務所",
+              "可申請地區、事務所規模與合資格標準"
+            ],
+            [
+              "資料條款",
+              "API 端零資料保留，ChatGPT Enterprise 用量預設不納入人工審閱",
+              "合資格事務所",
+              "條款是否適用於合資格事務所以外"
+            ],
+            [
+              "外掛與社群技能",
+              "26 個夥伴外掛同日上線，另有 9 個社群外掛帶 47 項自訂技能",
+              "使用外掛的事務所",
+              "完整外掛清單與各自的定價"
+            ],
+            [
+              "ChatGPT for Word",
+              "校對、給修改建議、標出格式問題，同日全面開放",
+              "官方寫全面開放，未進一步分眾",
+              "適用的方案、地區與語言"
+            ]
+          ],
+          "caption": "依 OpenAI 2026 年 9 月 17 日發布的官方公告整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方的評測怎麼讀：200 題、私有驗證集與同等推理量"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 公布的評測都是官方自己做的，本站沒有獨立驗證：兩邊都用最高推理量，從 Vals AI「Legal Research Bench」私有驗證集抽 200 題美國法律研究問題，測試 Astra for Law 的完整組合。官方表示，Astra for Law 在 54.0% 的題目通過評測的整體正確性檢查，只靠網路搜尋的 GPT‑6 Astra 是 38.7%，官方稱為「40% 的相對進步」。私有驗證集代表題目不公開，外界無法重跑這 200 題，只能引用官方公布的結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檢索方面，官方另外指出，在經稽核的目標段落集合上、雙方使用相同推理量時，Astra for Law 最多可以多檢索到 54% 來自正確法院意見書的相關段落（原文 up to 54% more relevant passages from the correct court opinions）；這個「最多」是官方原文自帶的限定詞，代表不是每一題都會多出 54%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把這幾個數字放在一起看，官方想強調的是索引與檢索方式的改善，不是單純比模型聰明；這四個百分比都只在官方自訂的測試條件下成立，換一組題目可能就不同。公告裡兩段直接評論 Astra for Law 的外部引言，用字是「預覽早期版本」「這個早期階段」與「早期測試」，講的是階段性印象，不是正式成果。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-astra-for-law-20260917/diagram-1.svg",
+          "alt": "四格圖解：同一個模型、一套法律索引與查得到的出處、選定的事務所才能用、資料條款另外談",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 9 月 17 日發布的官方公告整理，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰能用、資料怎麼處理：選定的事務所與兩項資料條款"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告把使用資格寫得很窄：Astra for Law 將先開放給選定的法律事務所，透過 Trusted Access 在 ChatGPT 與 Codex 使用，API 則即將開放，服務對象是合資格事務所的律師與在其督導下工作的人員，用於專業法律工作；但合資格標準、事務所規模與名額，公告都沒有寫，「即將開放」也沒有給時間表。公告結尾只留一句：想先取得使用機會或把它做進自己的產品，就與 OpenAI 聯絡，此外沒有公開的申請流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料條款另外談：官方列出兩項規定，都限定在合資格事務所範圍內——API 端零資料保留，ChatGPT Enterprise 用量預設不納入人工審閱。官方也提到，正在和它形容為 AI 治理領先者的事務所 Latham & Watkins 合作，針對資訊授權、資訊隔離牆、客戶指示與事務所監督做設計；另一家 Wachtell, Lipton, Rosen & Katz 則被寫成一起探索 AI 能怎麼支援需要專業判斷的工作。公告把兩者都寫成進行中的合作，還不是公開的標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外掛的部分，OpenAI 另外維護一個外掛目錄，2026 年 9 月 18 日讀取時，篩選類別除了法律，還有小型企業、生產力、工程與 IT、資料與研究、財務等。這次公告當天上線 26 個由夥伴打造的外掛；另外 9 個由律師與法律工程師自己寫的社群外掛，帶來 47 項自訂技能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份公告另外用一段介紹三家事務所的客製應用程式，但用的字眼是調整 ChatGPT Enterprise，不是 Astra for Law，Cooley 是其中之一，做的是 GO Public。同一天發布的 Cooley 客戶案例卻寫明 GO Public 建立在 ChatGPT Work 之上，並提到 Cooley 在 2025 年為全球 180 件交易提供顧問、總額超過 515 億美元——這是事務所整體業務規模，官方沒有把它和 AI 成果連在一起，本文也不把兩者接著讀。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方沒說清楚的事，以及一般讀者用得到的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理三頁官方頁面查到 2026 年 9 月 18 日為止，有幾件事官方都沒有寫：沒有公布價格；沒有列出合資格事務所的地區清單，台灣的事務所能不能申請，官方未說明；沒有給 API 開放的時間表；公告內文也沒有提到一般 ChatGPT 個人帳號，看不出未來會不會開放給個人使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告裡跟一般讀者比較有關的一件事，是 ChatGPT for Word 同一天全面開放：可以幫忙校對、給修改建議、標出格式問題，方便律師在原本就在用的 Word 裡工作。但官方只講全面開放，沒有說明適用哪些方案、地區或語言，本文只能照官方寫的範圍轉述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是編輯設計的例子，不是實測：如果讀者拿到 AI 生成的一段合約說明，裡面引用了一條其實不存在的法條，這次公告示範的解法不是換一個更聰明的模型，而是接上一套標明來源、可以點開核對的檢索系統。這個方法用在日常遇到的 AI 回答上也一樣：先問這句話可以打開來源查嗎，再決定要不要相信。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Astra for Law 是一個全新的 AI 模型嗎？",
+              "answer": "官方沒有這樣說。OpenAI 在公告裡把它定位成「我們最強大的模型，配置成一套新的法律用 AI 基礎」，寫出來的做法是把既有的 GPT‑6 Astra，加上為法律工作設計的設定、工具與一套法律索引，公告內文沒有提到另外訓練新模型。不過它在模型選單裡會顯示成「GPT‑6 Astra Law」，API 代號是 gpt-6-astra-law。"
+            },
+            {
+              "question": "這套法律索引查得到台灣或其他國家的法律嗎？",
+              "answer": "官方公告寫的索引範圍是美國：原文以「U.S.」起頭，涵蓋判例、法規、法院規則與行政決定整串清單。這幾頁沒有提到美國以外的法域，本文也沒有查到官方另外說明其他國家的版本，讀者不應假設它能查台灣或其他地區的法律。"
+            },
+            {
+              "question": "台灣的法律事務所可以申請使用 Astra for Law 嗎？",
+              "answer": "官方公告與 Trusted Access 的說明都沒有列出可以申請的國家或地區名單，只寫選定的、合資格的事務所，本文查到 2026 年 9 月 18 日為止沒有看到台灣是否在內的說明。索引查的法域和使用者能不能申請是兩回事，不能因為索引以美國為主，就推論只有美國事務所能申請，也不能反過來推論台灣事務所可以申請；實際情形要洽 OpenAI 官方確認。"
+            },
+            {
+              "question": "官方公布 54.0% 對 38.7% 的評測結果，代表這個工具的答案一定比較準確嗎？",
+              "answer": "這是 OpenAI 自己做、自己公布的測試，本站沒有獨立驗證。條件是兩邊都用最高推理量，題目是從 Vals AI 私有驗證集裡抽出的 200 題美國法律研究問題；「私有」代表外界看不到題目本身，也就無法重新驗算。這個結果適合當成 OpenAI 自己的說法參考，不宜直接當成客觀、可以套用到所有情境的準確率。"
+            },
+            {
+              "question": "案例裡提到的事務所 Cooley，是不是已經在用 Astra for Law？",
+              "answer": "公告把 Cooley 列在協助打造客製應用程式的事務所之中，用的字眼是調整 ChatGPT Enterprise；OpenAI 同一天發布的 Cooley 客戶案例也明確寫著，Cooley 的 GO Public 是建立在 ChatGPT Work 之上，用的是另一項產品，不是 Astra for Law。兩頁對照著看才不會誤會。"
+            },
+            {
+              "question": "這次公告裡，沒有法律事務所帳號的一般讀者用得到什麼？",
+              "answer": "官方同一天也宣布 ChatGPT for Word 全面開放，可以用來校對文件、給修改建議、標出格式問題；但公告只說全面開放，沒有講適用哪些方案、地區或語言，本文查到 2026 年 9 月 18 日為止也沒有在其他頁面找到補充說明。其餘像法律索引查詢、Trusted Access 這些功能都限定在選定的合資格事務所，一般個人帳號用不到。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇寫的是事務所工具，不是法律意見",
+          "text": "Astra for Law 是 OpenAI 先提供給選定的合資格法律事務所的工具，需要透過 Trusted Access 取得資格，不是一般 ChatGPT 個人帳號可以直接使用的功能，本站也沒有實際使用過這項產品。本文整理的是官方公告寫了什麼、還沒說清楚什麼，文中的檢索範圍、評測數字與客戶說法都是官方或其客戶自己的說法，不是本站的實測結果，也不是法律意見；讀者不應該用本文或官方頁面取代律師的判斷，更不要自己拿一般 AI 工具處理需要專業把關的法律事務。官方沒有說明合資格事務所的地區範圍，台灣的事務所是否能夠申請、費用與時程，請直接洽詢 OpenAI 官方；本文查核日為 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 發布：金融機構的 AI 工具，跟個人帳號無關",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing Astra for Law",
+          "url": "https://openai.com/index/astra-for-law/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "How Cooley is accelerating IPO work with ChatGPT",
+          "url": "https://openai.com/index/cooley-gopublic/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Plugins | Secure integrations for enterprise workflows",
+          "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "Astra for Law Launches: OpenAI's Legal Tool Adds an Index, Not a New Model",
+      "description": "On September 17, 2026, OpenAI launched Astra for Law. OpenAI's own framing is that it configures GPT‑6 Astra into an AI foundation for law, adding a U.S. legal index, Trusted Access, and data terms, and it will be initially offered to selected law firms. Checked September 18, 2026, this article covers what OpenAI's benchmarks mean and what region and pricing details are still missing; we have not used it, and nothing here is legal advice.",
+      "hero": {
+        "src": "/guides/ai-news-astra-for-law-20260917/hero-en.jpg",
+        "alt": "Original illustration: a magnifying glass over stacked documents, symbolizing checkable sources; four squares below show the model, index, selected firms, and data terms; no logos or interface shown",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 17, 2026, OpenAI published the announcement “Introducing Astra for Law.” OpenAI's own framing is that it configured “our most powerful model” into a new AI foundation for law: combining GPT‑6 Astra with settings, tools, and context built for professional legal work. The same day, OpenAI also published a customer story about the international law firm Cooley, which built GO Public using a different product, ChatGPT Work."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026, against OpenAI's official announcement page, the Cooley customer story page, and the legal category of OpenAI's plugin directory. We have not used Astra for Law ourselves; the feature descriptions, benchmark figures, and customer statements below are all OpenAI's own claims or those of its customers. This article is not legal advice, and we do not suggest it as a substitute for a lawyer's professional judgment."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI launched Astra for Law on September 17, 2026. OpenAI's own framing is that it configures GPT‑6 Astra into an AI foundation for law, adding settings and tools for legal work plus a U.S. legal index covering more than 230 million URLs.",
+            "OpenAI says that at the highest reasoning effort, Astra for Law passed 54.0% of 200 private-validation-set questions from Vals AI, versus 38.7% for GPT‑6 Astra alone — a 40% relative improvement; it also found up to 54% more relevant passages from correct court opinions at matched effort.",
+            "The service will be initially offered to selected law firms through Trusted Access in ChatGPT and Codex, with the API coming soon; the announcement says firms can contact OpenAI, but does not state which regions may apply, the eligibility criteria, or a price.",
+            "OpenAI also made ChatGPT for Word generally available the same day, for proofreading and flagging formatting issues, but did not state which plans, regions, or languages it covers."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Was Announced on September 17, 2026: Why “Configured” Is Not “New Model”"
+        },
+        {
+          "type": "paragraph",
+          "text": "The official announcement opens by positioning Astra for Law as “our most powerful model, configured into a new AI foundation for law”; the text does not mention training a separate new model, and what changed sits outside the model itself. Even so, it will appear in the model picker as “GPT‑6 Astra Law,” and its API identifier is gpt-6-astra-law."
+        },
+        {
+          "type": "paragraph",
+          "text": "These additions — a legal search index, a set of tools, and terms governing eligibility and data handling — are explained section by section below. We covered OpenAI's version of ChatGPT for financial institutions a week earlier (event date September 10, 2026); this time it's law firms, with a different index, benchmark, and eligibility conditions, and this article does not repeat what that one already covered."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT‑6 Astra is the model the announcement describes as its “latest and most powerful”; we've already covered its capabilities in a separate article (event date September 3, 2026) and won't repeat that here. This article covers only what's added once it's configured into a legal foundation."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Was Actually Added: a U.S. Legal Index, and Citations You Can Check"
+        },
+        {
+          "type": "paragraph",
+          "text": "The official announcement says Astra for Law can search U.S. case law, statutes, regulations, court rules, and administrative decisions, with an index described as “more than 230 million URLs” and “sources added daily.” Two things need to be kept separate here: the index's scope is explicitly the United States — OpenAI's own text prefixes the entire list with “U.S.” — but which country or region selected law firms may come from is not stated, and the two cannot be inferred from each other."
+        },
+        {
+          "type": "paragraph",
+          "text": "On case law, OpenAI says it worked with the nonprofit Free Law Project, the organization behind CourtListener, whose case-law collection “covers more than 99.9% of published U.S. precedential case law.” OpenAI also states that this index complements, rather than replaces, the licensed content and specialist products firms already rely on, citing Thomson Reuters as an example; the announcement adds, “Building on OpenAI should mean getting more from the ecosystem, not replacing it.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond retrieval, the selling point OpenAI emphasizes most is that sources can be checked and opened: OpenAI's own framing is a stronger research foundation, with “reliable authorities the lawyer can examine for herself.” This is the point this article thinks matters most for general readers — not that the model got smarter, but that it now comes with a set of sources you can check yourself."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "What it is",
+            "Who gets it",
+            "What OpenAI hasn't stated"
+          ],
+          "rows": [
+            [
+              "Model",
+              "The same GPT‑6 Astra; the announcement does not mention training a separate new model",
+              "Firms given access to Astra for Law",
+              "Whether a standalone legal model is coming"
+            ],
+            [
+              "Legal index",
+              "U.S. case law, statutes, court rules, and administrative decisions; more than 230 million URLs, added daily",
+              "Firms using Astra for Law",
+              "Whether it covers jurisdictions outside the U.S."
+            ],
+            [
+              "Trusted Access",
+              "Initially offered in ChatGPT and Codex; coming soon to the API",
+              "Selected law firms",
+              "Which regions may apply, firm size, and eligibility criteria"
+            ],
+            [
+              "Data terms",
+              "Zero Data Retention on the API; ChatGPT Enterprise usage excluded from human review by default",
+              "Eligible firms",
+              "Whether the terms extend beyond eligible firms"
+            ],
+            [
+              "Plugins and community skills",
+              "26 partner plugins launched the same day; 9 community plugins add 47 custom skills",
+              "Firms using the plugins",
+              "The full plugin list and individual pricing"
+            ],
+            [
+              "ChatGPT for Word",
+              "Proofreading, suggested edits, and flagging formatting issues; generally available the same day",
+              "OpenAI says generally available, without further detail",
+              "Which plans, regions, and languages it covers"
+            ]
+          ],
+          "caption": "Compiled from OpenAI's official announcement published September 17, 2026; checked September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Read OpenAI's Benchmark: 200 Questions, a Private Validation Set, and Matched Reasoning Effort"
+        },
+        {
+          "type": "paragraph",
+          "text": "Every benchmark OpenAI published is a test OpenAI ran itself; we have not independently verified any of it. With both systems at the highest reasoning effort, OpenAI tested Astra for Law's complete setup on 200 U.S. legal research questions drawn from Vals AI's “Legal Research Bench” private validation set. OpenAI says Astra for Law passed the evaluation's overall correctness check on 54.0% of questions, versus 38.7% for GPT‑6 Astra using web search alone, which OpenAI calls a “40% relative improvement.” “Private” means the questions themselves are not public, so outsiders cannot rerun these 200 questions and can only cite the results OpenAI published."
+        },
+        {
+          "type": "paragraph",
+          "text": "On retrieval, OpenAI separately states that on an audited set of target passages, when comparing the two systems at the same reasoning effort, Astra for Law retrieved “up to 54% more relevant passages from the correct court opinions.” That “up to” is a hedge in OpenAI's own text, meaning not every question sees a 54% gain."
+        },
+        {
+          "type": "paragraph",
+          "text": "Taken together, what OpenAI is emphasizing with these figures is an improvement in indexing and retrieval, not simply a smarter model; all four percentages hold only under OpenAI's own test conditions, and a different set of questions could produce different results. The two outside quotes in the announcement that directly comment on Astra for Law use phrases like “preview early versions,” “this early stage,” and “early testing” — impressions from an early stage, not formal results."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-astra-for-law-20260917/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the same model; a legal index with checkable sources; only selected firms can use it; data terms are a separate matter",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI's official announcement published September 17, 2026; checked September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Who Can Use It and How Data Is Handled: Selected Firms and Two Data Terms"
+        },
+        {
+          "type": "paragraph",
+          "text": "The official announcement draws eligibility narrowly: Astra for Law will be initially offered to selected law firms, through Trusted Access in ChatGPT and Codex, with the API coming soon; it's meant for lawyers at eligible firms and people working under their supervision, for professional legal work. But the announcement does not state the eligibility criteria, firm size, or number of spots, and “coming soon” comes with no timeline. The announcement closes with a single line: to explore early access or build it into your own product, contact OpenAI — beyond that, there's no public application process."
+        },
+        {
+          "type": "paragraph",
+          "text": "Data terms are handled separately: OpenAI lists two provisions, both scoped to eligible firms — Zero Data Retention on the API, and ChatGPT Enterprise usage excluded from human review by default. OpenAI also mentions it is working with Latham & Watkins, which it describes as a leader in AI governance, to design for information permissions, ethical walls, client instructions, and firm oversight; a separate firm, Wachtell, Lipton, Rosen & Katz, is described as exploring together how AI can support work that requires professional judgment. The announcement frames both as ongoing collaborations, not yet a published standard."
+        },
+        {
+          "type": "paragraph",
+          "text": "On plugins, OpenAI separately maintains a plugin directory; as read on September 18, 2026, its filter categories include Legal alongside Small Business, Productivity, Engineering & IT, Data & Research, Finance, and others. The announcement says 26 partner-built plugins launched the same day, and a further 9 community plugins written by lawyers and legal engineers add 47 custom skills."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same announcement separately describes custom applications built with three firms, using the phrase “adapting ChatGPT Enterprise” rather than Astra for Law; Cooley is one of them, with GO Public. Yet Cooley's customer story, published the same day, states plainly that GO Public is built on ChatGPT Work, and notes that in 2025 Cooley advised on 180 deals globally, totaling more than $51.5 billion — a figure about the firm's overall business, which OpenAI does not connect to any AI outcome, and this article does not read the two together either."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What OpenAI Hasn't Made Clear, and the One Thing General Readers Can Use"
+        },
+        {
+          "type": "paragraph",
+          "text": "Across three official pages checked through September 18, 2026, several things go unstated: no price is published; no regional list of eligible firms is given, and whether Taiwanese firms can apply is not addressed; no timeline is given for API availability; and the announcement's body never mentions personal ChatGPT accounts, so it's unclear whether it will ever open to individual users."
+        },
+        {
+          "type": "paragraph",
+          "text": "The one thing in this announcement more relevant to general readers is that ChatGPT for Word became generally available the same day: it can help proofread, suggest edits, and flag formatting issues, making it easier for lawyers to work inside Word, the tool they already use. But OpenAI states only that it's generally available, without saying which plans, regions, or languages are covered, so this article can only relay the scope OpenAI actually wrote."
+        },
+        {
+          "type": "paragraph",
+          "text": "Here is an example designed by the editors, not a hands-on test: if a reader receives an AI-generated explanation of a contract clause that cites a statute that doesn't actually exist, the fix this announcement demonstrates isn't a smarter model — it's a retrieval system with labeled sources you can click open and check. The same approach applies to any AI answer you run into day to day: ask first whether you can open the source it cites, then decide whether to trust it."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is Astra for Law a brand-new AI model?",
+              "answer": "OpenAI does not say so. In the announcement, OpenAI frames it as “our most powerful model, configured into a new AI foundation for law”: the approach described is taking the existing GPT‑6 Astra and adding settings, tools, and a legal index built for legal work, and the text does not mention training a separate new model. Even so, it will appear in the model picker as “GPT‑6 Astra Law,” with the API identifier gpt-6-astra-law."
+            },
+            {
+              "question": "Can this legal index look up Taiwanese or other countries' law?",
+              "answer": "The official announcement states the index's scope as the United States: the original text prefixes the whole list with “U.S.,” covering case law, statutes, court rules, and administrative decisions. These pages don't mention any jurisdiction outside the U.S., and this article found no OpenAI statement about versions for other countries; readers should not assume it can look up Taiwanese or other regional law."
+            },
+            {
+              "question": "Can Taiwanese law firms apply to use Astra for Law?",
+              "answer": "Neither the official announcement nor the Trusted Access description lists which countries or regions may apply — they only say selected, eligible firms, and this article found nothing stating whether Taiwan is included as of September 18, 2026. Which jurisdiction the index searches and who can apply are two different things: the index being U.S.-focused doesn't mean only U.S. firms may apply, and it doesn't mean Taiwanese firms may apply either. Anyone who needs to know should contact OpenAI directly."
+            },
+            {
+              "question": "OpenAI published a benchmark result of 54.0% versus 38.7% — does that mean this tool's answers are necessarily more accurate?",
+              "answer": "This is a test OpenAI ran and published itself, and we have not independently verified it. The conditions were both systems at the highest reasoning effort, with questions drawn from 200 U.S. legal research questions in Vals AI's private validation set; “private” means outsiders cannot see the questions themselves and so cannot rerun the numbers. It's reasonable to treat this result as OpenAI's own claim for reference, not as an objective accuracy figure that applies to every situation."
+            },
+            {
+              "question": "Is Cooley, the firm mentioned in the customer story, already using Astra for Law?",
+              "answer": "The announcement lists Cooley among the firms it helped build custom applications for, using the phrase “adapting ChatGPT Enterprise.” OpenAI's Cooley customer story, published the same day, states plainly that Cooley's GO Public is built on ChatGPT Work — a different product, not Astra for Law. Reading both pages together avoids the mix-up."
+            },
+            {
+              "question": "What can a general reader without a law-firm account get out of this announcement?",
+              "answer": "OpenAI also announced the same day that ChatGPT for Word is now generally available, for proofreading documents, suggesting edits, and flagging formatting issues; but the announcement only says it's generally available, without stating which plans, regions, or languages it covers, and this article found no further detail on other pages as of September 18, 2026. Everything else — the legal index search, Trusted Access — is restricted to selected, eligible firms and isn't available to individual accounts."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "This Article Covers a Law-Firm Tool, Not Legal Advice",
+          "text": "Astra for Law is a tool OpenAI is initially offering to selected, eligible law firms, which requires gaining access through Trusted Access; it is not a feature individual ChatGPT accounts can use directly, and we have not actually used this product ourselves. This article covers what the official announcement states and what it leaves unclear; the retrieval scope, benchmark figures, and customer statements in it are all claims from OpenAI or its customers, not results this site has tested, and not legal advice. Readers should not use this article or the official pages as a substitute for a lawyer's judgment, and should not use general AI tools for legal matters that need professional oversight. OpenAI has not stated which regions eligible firms may come from; whether Taiwanese firms can apply, the cost, and the timeline should be confirmed directly with OpenAI. This article was checked on September 18, 2026."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services Launches: An AI Tool for Financial Institutions, Not Your Personal Account",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing Astra for Law",
+          "url": "https://openai.com/index/astra-for-law/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "How Cooley is accelerating IPO work with ChatGPT",
+          "url": "https://openai.com/index/cooley-gopublic/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Plugins | Secure integrations for enterprise workflows",
+          "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Astra for Law 発表：OpenAIの法務ツールに加わったのは索引、新モデルではない",
+      "description": "2026年9月17日、OpenAIはAstra for Lawを発表しました。OpenAIによると、GPT‑6 Astraを法務向けのAI基盤として構成し、米国の法律インデックス、Trusted Access、データに関する条項を加えたもので、対象となる事務所に先行して提供される予定です。本稿は2026年9月18日時点で確認した内容をもとに、公式の評価指標が何を示すか、まだ公表されていない地域と価格を整理しました。当サイトは利用しておらず、法律助言ではありません。",
+      "hero": {
+        "src": "/guides/ai-news-astra-for-law-20260917/hero-ja.jpg",
+        "alt": "オリジナルイラスト：虫眼鏡が濃淡の異なる書類の山の上に浮かび、開いて確認できる出典を象徴する。下部の4つの四角は左から右へ、モデル・索引・選定された事務所・データ条項を表す。商標や画面は描かれていない。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月17日、OpenAIは発表「Introducing Astra for Law」を公開しました。OpenAIの説明では、「当社の最も強力なモデル」を法務向けの新しいAI基盤として構成したもので、専門的な法律業務のために調整された設定・ツール・コンテキストとともにGPT‑6 Astraを組み合わせています。同日、OpenAIは国際法律事務所Cooleyが別の製品ChatGPT Workを使って構築したGO Publicの事例も公開しました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、OpenAIの公式発表ページ、Cooleyの導入事例ページ、OpenAIのプラグインディレクトリの法務カテゴリを確認しました。当サイトはAstra for Lawを実際に利用しておらず、以下の機能説明、評価指標の数値、顧客のコメントはすべてOpenAIまたはその顧客自身による説明です。本稿は法律助言ではなく、弁護士の専門的な判断の代わりとして利用することも勧めません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAIは2026年9月17日にAstra for Lawを発表しました。OpenAIによると、GPT‑6 Astraを法務向けのAI基盤として構成し、法律業務向けの設定・ツールに加え、2.3億件を超えるURLをカバーする米国の法律インデックスを備えています。",
+            "OpenAIによると、Vals AIの非公開検証セットから抽出した米国法律リサーチに関する200問について、両システムとも最高推論量の条件で、Astra for Lawは評価の総合正確性チェックを54.0%の問題で通過し、ウェブ検索のみのGPT‑6 Astraは38.7%で、OpenAIはこれを40%の相対的改善と呼んでいます。また、監査済みの対象パッセージ集合において、両者の推論量を揃えた場合、正しい判例意見書からの関連パッセージを最大54%多く検索できたとしています。",
+            "このサービスは、対象となる事務所にTrusted Accessを通じてChatGPTとCodexで先行提供される予定で、APIは近日提供予定です。発表にはOpenAIへの連絡先が明記されていますが、申請可能な地域や資格基準、価格については説明されていません。",
+            "OpenAIは同日、ChatGPT for Wordの一般提供も開始しました。校正や書式の問題の指摘に使えるものですが、対象となるプラン・地域・言語については説明がありません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026年9月17日に発表された内容：なぜ「構成」であって「新モデル」ではないのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表冒頭は、Astra for Lawを「当社の最も強力なモデルを、法務向けの新しいAI基盤として構成したもの」と位置づけており、本文には別のモデルを新たに学習させたという記載はなく、変更点はモデルそのものの外側にあります。ただし、モデル選択画面には「GPT‑6 Astra Law」と表示され、APIでの識別子はgpt-6-astra-lawです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回追加されたもの——法律検索インデックス、一連のツール、利用資格とデータ取り扱いに関する条項——は、以降の節でそれぞれ説明します。当サイトは1週間前に、OpenAIが金融機関向けに提供するChatGPT版を紹介しました（事件日2026年9月10日）。今回は対象が法律事務所であり、インデックス・評価指標・資格条件はそれぞれ別のものです。本稿はそちらの記事で既に説明した内容を繰り返しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT‑6 Astraは、発表内で「最新かつ最も強力」と説明されているモデルで、その能力の詳細は別稿（事件日2026年9月3日）で既に紹介しており、ここでは繰り返しません。本稿では、法務向け基盤として構成されたことで追加された部分のみを扱います。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "実際に追加されたもの：米国の法律インデックスと、出典を確認できる引用"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表によると、Astra for Lawは米国の判例、制定法、規則、裁判所規則、行政決定を検索でき、インデックスの規模は「2.3億件を超えるURL」で、「情報源は毎日追加」されるとしています。ここで区別すべき点が2つあります。インデックスの対象範囲は明確に米国であり、OpenAIの原文は一覧全体の先頭に「U.S.」を付けています。一方、対象となる事務所がどの国・地域に所在するかは説明されておらず、両者を互いに推測することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判例については、OpenAIは非営利団体Free Law Project（CourtListenerの運営元）と協力しているとしており、その判例集は「公表された米国の先例判例の99.9%以上をカバーする」としています。OpenAIはまた、このインデックスは事務所が既に利用しているライセンスコンテンツや専門製品を補完するものであり、置き換えるものではないとし、例としてThomson Reutersを挙げています。発表にはさらに「OpenAI上に構築することは、エコシステムから得られるものを増やすことを意味するべきであり、それを置き換えることではない」とも記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索機能に加えて、OpenAIが特に強調しているセールスポイントは、出典を確認して開けることです。OpenAIの説明では、より確かな調査基盤が得られ、「弁護士自身が確認できる信頼できる典拠」が付与されるとしています。本稿が一般読者にとって最も意味があると考えるのはこの点です——モデルが賢くなったことではなく、自分で確認できる出典のセットが付いてくるようになったことです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "内容",
+            "対象",
+            "OpenAIが説明していない点"
+          ],
+          "rows": [
+            [
+              "モデル",
+              "同じGPT‑6 Astra。発表には別のモデルを新たに学習させたという記載はない",
+              "Astra for Lawへのアクセスを得た事務所",
+              "独立した法律専用モデルが今後登場するか"
+            ],
+            [
+              "法律インデックス",
+              "米国の判例・制定法・規則・行政決定、2.3億件超のURL、毎日追加",
+              "Astra for Lawを利用する事務所",
+              "米国以外の法域をカバーするか"
+            ],
+            [
+              "Trusted Access",
+              "ChatGPTとCodexで先行提供、APIは近日提供予定",
+              "対象となる法律事務所",
+              "申請可能な地域、事務所の規模、資格基準"
+            ],
+            [
+              "データ条項",
+              "APIでのゼロデータ保持、ChatGPT Enterpriseの利用はデフォルトで人によるレビュー対象外",
+              "資格を満たす事務所",
+              "資格を満たす事務所以外にも適用されるか"
+            ],
+            [
+              "プラグインとコミュニティスキル",
+              "同日26のパートナー製プラグインが公開、さらに9のコミュニティプラグインが47のカスタムスキルを追加",
+              "プラグインを利用する事務所",
+              "プラグインの完全な一覧と個別の価格"
+            ],
+            [
+              "ChatGPT for Word",
+              "校正、修正提案、書式の問題の指摘。同日一般提供開始",
+              "OpenAIは一般提供としか説明していない",
+              "対象となるプラン・地域・言語"
+            ]
+          ],
+          "caption": "OpenAIが2026年9月17日に発表した公式発表をもとに整理。確認日2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAIの評価指標はどう読むべきか：200問、非公開検証セット、同等の推論量"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIが公表した評価結果はすべてOpenAI自身が実施したテストによるものであり、当サイトによる独立検証は行っていません。両システムとも最高推論量の条件で、Vals AIの「Legal Research Bench」の非公開検証セットから抽出した米国法律リサーチに関する200問を使い、Astra for Lawの完全な構成をテストしたとしています。OpenAIによると、Astra for Lawは評価の総合正確性チェックを54.0%の問題で通過し、ウェブ検索のみのGPT‑6 Astraは38.7%で、OpenAIはこれを「40%の相対的改善」と呼んでいます。「非公開」とは、問題そのものが公開されていないことを意味し、外部の人間がこの200問を再実行することはできず、OpenAIが公表した結果を引用するしかありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索については、OpenAIは別途、監査済みの対象パッセージ集合において、両システムの推論量を揃えて比較した場合、Astra for Lawは「正しい判例意見書からの関連パッセージを最大54%多く」検索したとしています（原文 up to 54% more relevant passages from the correct court opinions）。この「最大」はOpenAIの原文自体に付いている限定であり、すべての問題で54%多くなるわけではないことを意味します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これらの数字を合わせて見ると、OpenAIが強調しているのはインデックスと検索方法の改善であり、単にモデルが賢くなったということではありません。この4つの割合はいずれもOpenAI自身が設定したテスト条件下でのみ成立するもので、別の問題セットを使えば結果は変わり得ます。発表内でAstra for Lawについて直接コメントしている外部からの引用は2件のみで、「初期バージョンをプレビュー」「この初期段階」「初期テスト」という言葉が使われており、いずれも段階的な印象であって正式な成果ではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-astra-for-law-20260917/diagram-1-ja.svg",
+          "alt": "4コマ図解：同じモデル、出典を確認できる法律インデックス、対象事務所のみ利用可、データ条項は別途",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIが2026年9月17日に発表した公式発表をもとに整理。確認日2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰が使えるか、データはどう扱われるか：対象事務所と2つのデータ条項"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表は利用資格を狭く定めています。Astra for Lawは、対象となる法律事務所にTrusted Accessを通じてChatGPTとCodexで先行提供される予定で、APIは近日提供予定です。対象は資格を満たす事務所の弁護士、およびその監督下で働く人々で、専門的な法律業務のために利用します。ただし資格基準、事務所の規模、枠数については発表に記載がなく、「近日提供予定」にも具体的な時期は示されていません。発表の最後には一文だけ、早期アクセスを検討したい場合や自社製品に組み込みたい場合はOpenAIに連絡するようにとあり、それ以外に公開された申請手続きはありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データ条項は別に説明されています。OpenAIは2つの規定を挙げており、いずれも資格を満たす事務所に限定されます——APIでのゼロデータ保持と、ChatGPT Enterpriseの利用をデフォルトで人によるレビュー対象外とすることです。OpenAIはまた、AIガバナンスのリーダーと形容する事務所Latham & Watkinsと協力し、情報アクセス権限、倫理的な情報遮断、依頼者の指示、事務所の監督について設計を進めているとしています。別の事務所Wachtell, Lipton, Rosen & Katzについては、専門的な判断が必要な業務をAIがどう支援できるかを共に探っていると記されています。発表はいずれも進行中の協力として位置づけており、公開された標準ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインについては、OpenAIが別途プラグインディレクトリを管理しており、2026年9月18日に確認した時点でのフィルターカテゴリには、法務のほかにスモールビジネス、生産性、エンジニアリング・IT、データ・リサーチ、財務などが含まれていました。発表によると、同日26のパートナー製プラグインが公開され、さらに弁護士や法務エンジニアが作成した9のコミュニティプラグインが47のカスタムスキルを追加しました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ発表では、3つの事務所と構築したカスタムアプリケーションについても一段落で説明していますが、そこで使われている表現は「ChatGPT Enterpriseを調整する」であり、Astra for Lawではありません。Cooleyはその1社で、GO Publicを構築しました。ところが同日公開されたCooleyの導入事例には、GO PublicはChatGPT Workの上に構築されたと明記されています。また、Cooleyは2025年に世界で180件の案件に助言し、総額515億ドルを超えたとも記されていますが、これは事務所全体の事業規模を示す数字であり、OpenAIはこれをAIの成果と結び付けておらず、本稿もこの2つを続けて読むことはしません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAIが明らかにしていないこと、一般読者が使える1つのこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年9月18日までに確認した公式ページ3件を整理すると、いくつかの点が記載されていません。価格は公表されていません。資格を満たす事務所の地域一覧はなく、台湾の事務所が申請できるかどうかについても説明はありません。APIの提供時期についてのスケジュールもありません。また発表本文には一般のChatGPT個人アカウントへの言及がなく、将来的に個人ユーザーに開放されるかどうかも分かりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この発表の中で一般読者に比較的関係があるのは、ChatGPT for Wordが同日に一般提供されたことです。校正、修正提案、書式の問題の指摘に使え、弁護士が既に使っているWordの中で作業しやすくなります。ただしOpenAIは一般提供としか説明しておらず、対象となるプラン・地域・言語については述べていないため、本稿もOpenAIが記載した範囲のみを伝えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は編集部が作成した例であり、実際のテストではありません。読者がAIによって生成された契約条項の説明を受け取り、そこに実在しない条文が引用されていたとします。今回の発表が示す解決策は、より賢いモデルに切り替えることではなく、出典が明示され、開いて確認できる検索システムを組み込むことです。この考え方は、日常で目にするAIの回答全般にも当てはまります。まずその回答が引用する出典を開いて確認できるかを問い、それから信じるかどうかを判断するということです。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Astra for Lawはまったく新しいAIモデルですか？",
+              "answer": "OpenAIはそのようには説明していません。発表の中でOpenAIはこれを「当社の最も強力なモデルを、法務向けの新しいAI基盤として構成したもの」と位置づけています。実際に書かれている内容は、既存のGPT‑6 Astraに、法律業務向けの設定・ツールと法律インデックスを追加するというもので、本文には別のモデルを新たに学習させたという記載はありません。ただし、モデル選択画面には「GPT‑6 Astra Law」と表示され、APIでの識別子はgpt-6-astra-lawです。"
+            },
+            {
+              "question": "この法律インデックスで台湾や他国の法律を調べられますか？",
+              "answer": "公式発表に記載されているインデックスの対象範囲は米国です。原文は判例、制定法、規則、行政決定の一覧全体の先頭に「U.S.」を付けています。これらのページには米国以外の法域についての記載はなく、本稿も他国向けのバージョンについてOpenAIが説明している箇所を確認できませんでした。読者は台湾やその他の地域の法律を調べられると想定すべきではありません。"
+            },
+            {
+              "question": "台湾の法律事務所はAstra for Lawの利用を申請できますか？",
+              "answer": "公式発表もTrusted Accessの説明も、申請可能な国や地域の一覧を示しておらず、対象となる資格を満たす事務所とだけ記載されています。本稿が2026年9月18日までに確認した範囲では、台湾が対象に含まれるかどうかについての記載は見当たりませんでした。インデックスが対象とする法域と、利用者が申請できるかどうかは別の問題です。インデックスが米国中心だからといって米国の事務所しか申請できないと推測することはできず、逆に台湾の事務所が申請できると推測することもできません。実際の状況はOpenAIに直接確認する必要があります。"
+            },
+            {
+              "question": "OpenAIが公表した54.0%対38.7%という評価結果は、このツールの回答が必ず正確であることを意味しますか？",
+              "answer": "これはOpenAI自身が実施し、自ら公表したテストであり、当サイトによる独立検証は行っていません。条件は両システムとも最高推論量で、問題はVals AIの非公開検証セットから抽出した米国法律リサーチに関する200問です。「非公開」とは、外部の人間が問題そのものを見ることができず、再計算もできないことを意味します。この結果はOpenAI自身の説明として参考にするのが適切であり、あらゆる状況にそのまま当てはまる客観的な正確性の数字として扱うべきではありません。"
+            },
+            {
+              "question": "事例に登場する事務所Cooleyは、すでにAstra for Lawを使っているのですか？",
+              "answer": "発表はCooleyを、カスタムアプリケーションの構築を支援した事務所の1社として挙げており、そこで使われている表現は「ChatGPT Enterpriseを調整する」です。OpenAIが同日公開したCooleyの導入事例には、CooleyのGO PublicはChatGPT Workの上に構築されたと明記されています。これは別の製品であり、Astra for Lawではありません。両方のページを照らし合わせて読むことで誤解を避けられます。"
+            },
+            {
+              "question": "この発表の中で、法律事務所のアカウントを持たない一般読者が使えるものは何ですか？",
+              "answer": "OpenAIは同日、ChatGPT for Wordの一般提供も発表しました。文書の校正、修正提案、書式の問題の指摘に使えます。ただし発表は一般提供としか説明しておらず、対象となるプラン・地域・言語については記載がなく、本稿が2026年9月18日までに確認した範囲でも他のページに補足説明は見当たりませんでした。それ以外の法律インデックス検索やTrusted Accessといった機能は、対象となる資格を満たす事務所に限定されており、一般の個人アカウントでは利用できません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本稿が扱うのは事務所向けツールであり、法律助言ではありません",
+          "text": "Astra for Lawは、OpenAIが対象となる資格を満たす法律事務所に先行して提供するツールで、Trusted Accessを通じてアクセス権を得る必要があり、一般のChatGPT個人アカウントが直接利用できる機能ではありません。当サイトもこの製品を実際に利用したことはありません。本稿がまとめているのは公式発表が何を述べ、何をまだ明らかにしていないかであり、文中の検索範囲、評価指標の数値、顧客のコメントはすべてOpenAIまたはその顧客自身の説明であって、当サイトが検証した結果でも法律助言でもありません。読者は本稿や公式ページを弁護士の判断の代わりに用いるべきではなく、専門的な確認が必要な法律業務に一般的なAIツールを自己判断で使うべきでもありません。OpenAIは資格を満たす事務所の地域範囲を説明しておらず、台湾の事務所が申請できるかどうか、費用、時期については、OpenAIに直接お問い合わせください。本稿の確認日は2026年9月18日です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 発表：金融機関向けAIツール、個人アカウントとは無関係",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing Astra for Law",
+          "url": "https://openai.com/index/astra-for-law/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "How Cooley is accelerating IPO work with ChatGPT",
+          "url": "https://openai.com/index/cooley-gopublic/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Plugins | Secure integrations for enterprise workflows",
+          "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Astra for Law 발표: OpenAI의 법률 도구, 추가된 것은 색인이지 새 모델이 아님",
+      "description": "2026년 9월 17일, OpenAI는 Astra for Law를 발표했습니다. OpenAI에 따르면 GPT‑6 Astra를 법률 분야용 AI 기반으로 구성하고, 미국 법률 색인과 Trusted Access, 데이터 관련 조항을 추가한 것으로, 선정된 로펌에 우선 제공될 예정입니다. 이 글은 2026년 9월 18일 기준으로 확인한 내용을 바탕으로 공식 평가 지표가 의미하는 바와 아직 공개되지 않은 지역 및 가격을 정리했습니다. 본 사이트는 이를 사용해 보지 않았으며, 법률 조언이 아닙니다.",
+      "hero": {
+        "src": "/guides/ai-news-astra-for-law-20260917/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 돋보기가 짙기가 다른 문서 더미 위에 떠 있어 열어서 확인할 수 있는 출처를 상징한다. 아래쪽 네 개의 사각형은 왼쪽부터 순서대로 모델, 색인, 선정된 로펌, 데이터 조항을 나타낸다. 상표나 인터페이스 화면은 그리지 않았다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 17일, OpenAI는 공식 발표 \"Introducing Astra for Law\"를 공개했습니다. OpenAI의 설명에 따르면 \"당사의 가장 강력한 모델\"을 법률 분야를 위한 새로운 AI 기반으로 구성한 것으로, 전문 법률 업무에 맞춰진 설정, 도구, 맥락과 함께 GPT‑6 Astra를 결합했습니다. 같은 날 OpenAI는 국제 로펌 Cooley가 또 다른 제품인 ChatGPT Work를 이용해 구축한 GO Public에 관한 고객 사례도 함께 공개했습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 18일에 OpenAI의 공식 발표 페이지, Cooley 고객 사례 페이지, OpenAI 플러그인 디렉터리의 법률 카테고리를 확인해 작성했습니다. 본 사이트는 Astra for Law를 실제로 사용해 보지 않았으며, 아래의 기능 설명과 평가 수치, 고객의 발언은 모두 OpenAI 또는 그 고객 자신의 설명입니다. 이 글은 법률 조언이 아니며, 변호사의 전문적인 판단을 대신할 목적으로 읽어서는 안 됩니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI는 2026년 9월 17일 Astra for Law를 발표했습니다. OpenAI에 따르면 GPT‑6 Astra를 법률 분야용 AI 기반으로 구성하고, 법률 업무용 설정과 도구에 더해 2억 3,000만 건이 넘는 URL을 아우르는 미국 법률 색인을 갖췄습니다.",
+            "OpenAI에 따르면 Vals AI의 비공개 검증 세트에서 추출한 미국 법률 리서치 질문 200개에 대해 양쪽 시스템 모두 최고 추론량 조건에서, Astra for Law는 평가의 전체 정확성 검사를 54.0%의 문항에서 통과했고, 웹 검색만 사용한 GPT‑6 Astra는 38.7%로, OpenAI는 이를 40%의 상대적 개선이라고 밝혔습니다. 또한 감사된 대상 구절 집합에서 양측의 추론량을 동일하게 맞췄을 때, 올바른 판결문에서 나온 관련 구절을 최대 54% 더 많이 검색했다고 밝혔습니다.",
+            "이 서비스는 선정된 로펌에 Trusted Access를 통해 ChatGPT와 Codex에서 우선 제공될 예정이며, API는 곧 제공될 예정입니다. 발표문에는 OpenAI에 문의할 수 있다고 적혀 있지만, 신청 가능한 지역이나 자격 기준, 가격에 대해서는 설명되어 있지 않습니다.",
+            "OpenAI는 같은 날 ChatGPT for Word도 정식 출시했습니다. 교정과 서식 문제 표시에 사용할 수 있지만, 적용되는 요금제와 지역, 언어에 대해서는 설명이 없습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026년 9월 17일 발표된 내용: 왜 \"구성\"이지 \"새 모델\"이 아닌가"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표는 서두에서 Astra for Law를 \"당사의 가장 강력한 모델을 법률 분야를 위한 새로운 AI 기반으로 구성한 것\"으로 규정하고 있으며, 본문에는 별도의 새 모델을 훈련시켰다는 언급이 없고, 달라진 부분은 모델 자체가 아닌 그 바깥쪽입니다. 다만 모델 선택 화면에는 \"GPT‑6 Astra Law\"로 표시되며, API 식별자는 gpt-6-astra-law입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번에 추가된 부분—법률 검색 색인, 일련의 도구, 이용 자격과 데이터 처리에 관한 조항—은 이어지는 절에서 각각 설명합니다. 본 사이트는 일주일 전 OpenAI가 금융기관용으로 내놓은 ChatGPT 버전을 소개했습니다(사건일 2026년 9월 10일). 이번에는 대상이 로펌이며, 색인과 평가, 자격 조건이 각각 다른 세트입니다. 이 글은 그 글에서 이미 다룬 내용을 반복하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT‑6 Astra는 발표문에서 \"최신이자 가장 강력한\" 모델로 설명된 것으로, 그 능력에 관한 세부 내용은 본 사이트가 이미 별도 기사(사건일 2026년 9월 3일)에서 다뤘으므로 여기서는 반복하지 않습니다. 이 글은 법률 분야용 기반으로 구성되면서 추가된 부분만 다룹니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "실제로 추가된 것: 미국 법률 색인과 확인 가능한 출처가 달린 인용"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표에 따르면 Astra for Law는 미국의 판례, 제정법, 규정, 법원 규칙, 행정 결정을 검색할 수 있으며, 색인 규모는 \"2억 3,000만 건이 넘는 URL\"이고 \"출처는 매일 추가\"됩니다. 여기서 구분해야 할 두 가지가 있습니다. 색인의 범위는 명확히 미국이며, OpenAI 원문은 목록 전체 앞에 \"U.S.\"를 붙여 놓았습니다. 반면 선정된 로펌이 어느 국가나 지역에 있어야 하는지는 설명되어 있지 않으며, 두 가지를 서로 추론해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "판례와 관련해 OpenAI는 비영리 단체 Free Law Project(CourtListener의 운영 주체)와 협력했다고 밝혔으며, 그 판례 컬렉션은 \"공개된 미국 선례 판례의 99.9% 이상을 아우른다\"고 설명했습니다. OpenAI는 또한 이 색인이 로펌이 이미 이용 중인 라이선스 콘텐츠와 전문 제품을 대체하는 것이 아니라 보완하는 것이라고 설명하며 Thomson Reuters를 예로 들었습니다. 발표문에는 \"OpenAI 위에 구축한다는 것은 생태계로부터 더 많은 것을 얻는다는 의미여야지, 그것을 대체한다는 의미가 아니다\"라는 문장도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색 기능 외에 OpenAI가 특히 강조하는 강점은 출처를 확인하고 열어볼 수 있다는 점입니다. OpenAI의 설명에 따르면 더 탄탄한 리서치 기반을 제공하며, \"변호사가 직접 검토할 수 있는 신뢰할 수 있는 출처\"가 함께 제공된다고 합니다. 이 글이 일반 독자에게 가장 의미 있다고 보는 지점이 바로 이것입니다—모델이 더 똑똑해진 것이 아니라, 이제 스스로 확인할 수 있는 출처 세트가 함께 제공된다는 점입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "내용",
+            "제공 대상",
+            "OpenAI가 밝히지 않은 부분"
+          ],
+          "rows": [
+            [
+              "모델",
+              "동일한 GPT‑6 Astra. 발표문에 별도의 새 모델을 훈련시켰다는 언급 없음",
+              "Astra for Law에 접근 권한을 받은 로펌",
+              "향후 독립된 법률 전용 모델이 나올지 여부"
+            ],
+            [
+              "법률 색인",
+              "미국 판례·제정법·규정·법원 규칙·행정 결정, 2억 3,000만 건 이상의 URL, 매일 추가",
+              "Astra for Law를 이용하는 로펌",
+              "미국 외 법역을 포괄하는지 여부"
+            ],
+            [
+              "Trusted Access",
+              "ChatGPT와 Codex에서 우선 제공, API는 곧 제공 예정",
+              "선정된 로펌",
+              "신청 가능한 지역, 로펌 규모, 자격 기준"
+            ],
+            [
+              "데이터 조항",
+              "API에서 제로 데이터 보존, ChatGPT Enterprise 사용량은 기본적으로 사람의 검토 대상에서 제외",
+              "자격을 갖춘 로펌",
+              "자격을 갖춘 로펌 이외에도 적용되는지 여부"
+            ],
+            [
+              "플러그인과 커뮤니티 스킬",
+              "같은 날 파트너 제작 플러그인 26개 출시, 별도로 커뮤니티 플러그인 9개가 커스텀 스킬 47개 추가",
+              "플러그인을 이용하는 로펌",
+              "전체 플러그인 목록과 개별 가격"
+            ],
+            [
+              "ChatGPT for Word",
+              "교정, 수정 제안, 서식 문제 표시. 같은 날 정식 출시",
+              "OpenAI는 정식 출시라고만 설명",
+              "적용되는 요금제, 지역, 언어"
+            ]
+          ],
+          "caption": "OpenAI가 2026년 9월 17일 발표한 공식 발표를 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI의 평가 지표는 어떻게 읽어야 할까: 문항 200개, 비공개 검증 세트, 동일한 추론량"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI가 공개한 평가 지표는 모두 OpenAI 자체적으로 실시한 테스트이며, 본 사이트가 독립적으로 검증하지는 않았습니다. 양쪽 시스템 모두 최고 추론량 조건에서, Vals AI의 \"Legal Research Bench\" 비공개 검증 세트에서 추출한 미국 법률 리서치 질문 200개를 사용해 Astra for Law의 전체 구성을 테스트했다고 합니다. OpenAI에 따르면 Astra for Law는 평가의 전체 정확성 검사를 54.0%의 문항에서 통과했고, 웹 검색만 사용한 GPT‑6 Astra는 38.7%로, OpenAI는 이를 \"40%의 상대적 개선\"이라고 표현했습니다. \"비공개\"란 문항 자체가 공개되지 않았다는 뜻으로, 외부에서는 이 200개 문항을 다시 실행해 볼 수 없고 OpenAI가 공개한 결과를 인용할 수밖에 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색과 관련해 OpenAI는 별도로, 감사된 대상 구절 집합에서 양쪽 시스템의 추론량을 동일하게 맞춰 비교했을 때 Astra for Law가 \"올바른 판결문에서 나온 관련 구절을 최대 54% 더 많이\" 검색했다고 밝혔습니다(원문 up to 54% more relevant passages from the correct court opinions). 이 \"최대\"는 OpenAI 원문 자체에 붙은 한정어로, 모든 문항에서 54% 더 많아진다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 수치들을 함께 놓고 보면 OpenAI가 강조하려는 것은 색인과 검색 방식의 개선이지, 단순히 모델이 더 똑똑해졌다는 것이 아닙니다. 이 네 가지 백분율은 모두 OpenAI 자체 테스트 조건에서만 성립하며, 다른 문항 세트를 사용하면 결과가 달라질 수 있습니다. 발표문에서 Astra for Law를 직접 언급한 외부 인용은 두 건으로, \"초기 버전을 미리 사용\", \"이 초기 단계\", \"초기 테스트\"라는 표현이 쓰였는데, 이는 단계적인 인상일 뿐 공식 성과가 아닙니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-astra-for-law-20260917/diagram-1-ko.svg",
+          "alt": "4컷 도해: 동일한 모델, 확인 가능한 출처가 있는 법률 색인, 선정된 로펌만 이용 가능, 데이터 조항은 별도",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI가 2026년 9월 17일 발표한 공식 발표를 바탕으로 정리. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "누가 이용할 수 있고 데이터는 어떻게 처리되는가: 선정된 로펌과 두 가지 데이터 조항"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표는 이용 자격을 좁게 규정하고 있습니다. Astra for Law는 선정된 로펌에 Trusted Access를 통해 ChatGPT와 Codex에서 우선 제공될 예정이며, API는 곧 제공될 예정입니다. 대상은 자격을 갖춘 로펌의 변호사와 그 감독 아래 일하는 사람들로, 전문 법률 업무에 사용됩니다. 다만 자격 기준, 로펌 규모, 참여 인원 수는 발표문에 나와 있지 않으며, \"곧 제공\"에도 구체적인 일정은 제시되지 않았습니다. 발표문은 마지막에 한 문장만 남겨 두었는데, 조기 이용 기회를 알아보거나 자사 제품에 통합하고 싶다면 OpenAI에 문의하라는 것으로, 그 밖에 공개된 신청 절차는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터 조항은 별도로 설명됩니다. OpenAI는 두 가지 규정을 제시했으며, 둘 다 자격을 갖춘 로펌으로 범위가 한정됩니다—API에서의 제로 데이터 보존과, ChatGPT Enterprise 사용량이 기본적으로 사람의 검토 대상에서 제외된다는 점입니다. OpenAI는 또한 AI 거버넌스 분야의 선두 주자로 표현한 로펌 Latham & Watkins와 협력해 정보 접근 권한, 윤리적 정보 차단벽, 의뢰인 지시, 로펌 감독을 설계하고 있다고 밝혔습니다. 또 다른 로펌 Wachtell, Lipton, Rosen & Katz와는 전문적인 판단이 필요한 업무를 AI가 어떻게 지원할 수 있을지 함께 탐색하고 있다고 설명합니다. 발표문은 둘 다 진행 중인 협력으로 규정하고 있으며, 아직 공개된 표준은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인과 관련해 OpenAI는 별도로 플러그인 디렉터리를 운영하고 있으며, 2026년 9월 18일 확인 시점의 필터 카테고리에는 법률 외에도 소상공인, 생산성, 엔지니어링·IT, 데이터·리서치, 재무 등이 포함되어 있었습니다. 발표문에 따르면 같은 날 파트너가 제작한 플러그인 26개가 출시되었고, 변호사와 법률 엔지니어가 직접 만든 커뮤니티 플러그인 9개가 커스텀 스킬 47개를 추가로 제공합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 발표문은 세 곳의 로펌과 함께 만든 맞춤형 애플리케이션도 한 단락에서 설명하는데, 여기서 쓰인 표현은 \"ChatGPT Enterprise를 조정한다\"이지 Astra for Law가 아닙니다. Cooley도 그중 한 곳으로, GO Public을 만들었습니다. 그런데 같은 날 공개된 Cooley 고객 사례에는 GO Public이 ChatGPT Work 위에 구축되었다고 명확히 적혀 있습니다. 또한 Cooley가 2025년 전 세계적으로 180건의 거래에 자문을 제공했고 그 총액이 515억 달러를 넘는다고도 적혀 있는데, 이는 로펌 전체의 사업 규모를 나타내는 수치로 OpenAI는 이를 AI 성과와 연결 짓지 않았으며, 이 글도 두 가지를 이어서 읽지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI가 명확히 밝히지 않은 것, 그리고 일반 독자가 실제로 쓸 수 있는 한 가지"
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 18일까지 확인한 공식 페이지 세 곳을 정리하면 몇 가지가 명시되어 있지 않습니다. 가격이 공개되지 않았습니다. 자격을 갖춘 로펌의 지역 목록이 없고, 대만의 로펌이 신청할 수 있는지도 설명되어 있지 않습니다. API 제공 시기에 대한 일정도 없습니다. 또한 발표 본문에는 일반 ChatGPT 개인 계정에 대한 언급이 전혀 없어, 앞으로 개인 사용자에게 개방될지도 알 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 발표에서 일반 독자와 비교적 관련이 있는 것은 ChatGPT for Word가 같은 날 정식 출시되었다는 점입니다. 교정, 수정 제안, 서식 문제 표시에 도움이 되어 변호사가 이미 사용하던 Word 안에서 작업하기 편해집니다. 다만 OpenAI는 정식 출시라고만 설명했을 뿐 적용되는 요금제와 지역, 언어는 밝히지 않아, 이 글도 OpenAI가 실제로 적은 범위만 전달합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 편집부가 만든 예시로, 실제 테스트가 아닙니다. 독자가 AI가 생성한 계약 조항 설명을 받았는데 그 안에 실제로는 존재하지 않는 법 조항이 인용되어 있다고 가정해 봅시다. 이번 발표가 보여 주는 해법은 더 똑똑한 모델로 바꾸는 것이 아니라, 출처가 표시되어 열어서 확인할 수 있는 검색 시스템을 붙이는 것입니다. 이 방법은 일상에서 마주치는 AI 답변에도 똑같이 적용됩니다. 먼저 그 답변이 인용한 출처를 열어서 확인할 수 있는지 묻고, 그다음에 믿을지 말지를 판단하는 것입니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Astra for Law는 완전히 새로운 AI 모델인가요?",
+              "answer": "OpenAI는 그렇게 설명하지 않습니다. 발표문에서 OpenAI는 이를 \"당사의 가장 강력한 모델을 법률 분야를 위한 새로운 AI 기반으로 구성한 것\"으로 규정합니다. 실제로 적혀 있는 방식은 기존의 GPT‑6 Astra에 법률 업무용 설정과 도구, 법률 색인을 추가하는 것으로, 본문에는 별도의 새 모델을 훈련시켰다는 언급이 없습니다. 다만 모델 선택 화면에는 \"GPT‑6 Astra Law\"로 표시되며, API 식별자는 gpt-6-astra-law입니다."
+            },
+            {
+              "question": "이 법률 색인으로 대만이나 다른 나라의 법률도 찾아볼 수 있나요?",
+              "answer": "공식 발표문에 적힌 색인의 범위는 미국입니다. 원문은 판례, 제정법, 규정, 법원 규칙, 행정 결정 목록 전체 앞에 \"U.S.\"를 붙였습니다. 이 페이지들에는 미국 외 법역에 대한 언급이 없으며, 이 글도 다른 나라 버전에 대해 OpenAI가 별도로 설명한 부분을 찾지 못했습니다. 독자는 이 색인으로 대만이나 다른 지역의 법률을 찾아볼 수 있다고 가정해서는 안 됩니다."
+            },
+            {
+              "question": "대만의 로펌도 Astra for Law 이용을 신청할 수 있나요?",
+              "answer": "공식 발표문과 Trusted Access 설명 모두 신청 가능한 국가나 지역의 목록을 제시하지 않으며, 선정되고 자격을 갖춘 로펌이라고만 적혀 있습니다. 이 글이 2026년 9월 18일까지 확인한 범위에서는 대만이 포함되는지 여부에 대한 설명을 찾지 못했습니다. 색인이 다루는 법역과 이용자가 신청할 수 있는지는 별개의 문제입니다. 색인이 미국 중심이라고 해서 미국 로펌만 신청할 수 있다고 추론할 수도 없고, 반대로 대만 로펌이 신청할 수 있다고 추론할 수도 없습니다. 실제 상황은 OpenAI에 직접 확인해야 합니다."
+            },
+            {
+              "question": "OpenAI가 공개한 54.0% 대 38.7%라는 평가 결과는 이 도구의 답변이 반드시 더 정확하다는 뜻인가요?",
+              "answer": "이는 OpenAI가 스스로 실시하고 스스로 공개한 테스트이며, 본 사이트가 독립적으로 검증한 것이 아닙니다. 조건은 양쪽 시스템 모두 최고 추론량이며, 문항은 Vals AI의 비공개 검증 세트에서 추출한 미국 법률 리서치 질문 200개입니다. \"비공개\"란 외부에서 문항 자체를 볼 수 없어 다시 계산해 볼 수도 없다는 뜻입니다. 이 결과는 OpenAI 자체의 설명으로 참고하는 것이 적절하며, 모든 상황에 그대로 적용되는 객관적인 정확도 수치로 다뤄서는 안 됩니다."
+            },
+            {
+              "question": "사례에 나오는 로펌 Cooley는 이미 Astra for Law를 사용하고 있나요?",
+              "answer": "발표문은 Cooley를 맞춤형 애플리케이션 구축을 도운 로펌 중 하나로 언급하며, 여기서 쓰인 표현은 \"ChatGPT Enterprise를 조정한다\"입니다. OpenAI가 같은 날 공개한 Cooley 고객 사례에는 Cooley의 GO Public이 ChatGPT Work 위에 구축되었다고 명확히 적혀 있습니다. 이는 다른 제품이며 Astra for Law가 아닙니다. 두 페이지를 함께 대조해서 읽어야 오해를 피할 수 있습니다."
+            },
+            {
+              "question": "이번 발표에서 로펌 계정이 없는 일반 독자가 실제로 쓸 수 있는 것은 무엇인가요?",
+              "answer": "OpenAI는 같은 날 ChatGPT for Word의 정식 출시도 발표했습니다. 문서 교정, 수정 제안, 서식 문제 표시에 사용할 수 있습니다. 다만 발표문은 정식 출시라고만 설명했을 뿐 적용되는 요금제, 지역, 언어는 밝히지 않았고, 이 글이 2026년 9월 18일까지 확인한 범위에서도 다른 페이지에서 추가 설명을 찾지 못했습니다. 그 밖의 법률 색인 검색이나 Trusted Access 같은 기능은 선정되고 자격을 갖춘 로펌으로 한정되어 있어 일반 개인 계정은 이용할 수 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 글이 다루는 것은 로펌용 도구이며, 법률 조언이 아닙니다",
+          "text": "Astra for Law는 OpenAI가 선정되고 자격을 갖춘 로펌에 우선 제공하는 도구로, Trusted Access를 통해 접근 권한을 얻어야 하며, 일반 ChatGPT 개인 계정이 곧바로 이용할 수 있는 기능이 아닙니다. 본 사이트도 이 제품을 실제로 사용해 본 적이 없습니다. 이 글이 정리한 것은 공식 발표문이 무엇을 밝혔고 무엇을 아직 밝히지 않았는가이며, 글 속의 검색 범위, 평가 수치, 고객의 발언은 모두 OpenAI 또는 그 고객 자신의 설명일 뿐 본 사이트가 검증한 결과도 법률 조언도 아닙니다. 독자는 이 글이나 공식 페이지를 변호사의 판단을 대신하는 용도로 사용해서는 안 되며, 전문적인 확인이 필요한 법률 업무에 일반 AI 도구를 스스로 판단해 사용해서도 안 됩니다. OpenAI는 자격을 갖춘 로펌의 지역 범위를 밝히지 않았으므로, 대만의 로펌이 신청할 수 있는지, 비용과 일정은 어떻게 되는지는 OpenAI에 직접 문의하시기 바랍니다. 이 글의 확인일은 2026년 9월 18일입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 발표: 금융기관용 AI 도구, 개인 계정과는 무관",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing Astra for Law",
+          "url": "https://openai.com/index/astra-for-law/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "How Cooley is accelerating IPO work with ChatGPT",
+          "url": "https://openai.com/index/cooley-gopublic/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Plugins | Secure integrations for enterprise workflows",
+          "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Astra for Law 发布：OpenAI 的法律工具，加的是索引，不是新模型",
+      "description": "2026 年 9 月 17 日，OpenAI 发布 Astra for Law，官方的说法是把 GPT‑6 Astra 配置成法律用的 AI 基础，加上美国法律索引、Trusted Access 与数据条款，将先开放给选定的事务所。本文依 2026 年 9 月 18 日查核，整理官方评测代表什么、还没公布的地区与价格；本站未使用，内容不是法律意见。",
+      "hero": {
+        "src": "/guides/ai-news-astra-for-law-20260917/hero-zh-cn.jpg",
+        "alt": "原创插图：一个放大镜悬停在一叠由浅到深排列的文件上方，象征可以点开核对的出处；下方四个小方块由左到右排列，代表模型、索引、选定的事务所与数据条款四个环节；不含任何商标或界面画面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 17 日，OpenAI 发布公告《Introducing Astra for Law》。OpenAI 的说法是把“我们最强大的模型”配置成一套新的法律用 AI 基础：结合 GPT‑6 Astra，加上为专业法律工作打造的设定、工具与情境。同一天，OpenAI 也发布客户案例，介绍国际律师事务所 Cooley 用另一项产品 ChatGPT Work 打造的 GO Public。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核 OpenAI 官方公告页、Cooley 客户案例页与 OpenAI 插件目录的法律类别页。本站没有实际使用 Astra for Law，以下的功能描述、评测数字与客户说法都是官方或其客户自己的说法；本文不是法律意见，也不建议读者以本文取代律师的专业判断。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 于 2026 年 9 月 17 日发布 Astra for Law，官方的说法是把 GPT‑6 Astra 配置成法律用的 AI 基础，配上法律用的设定、工具，以及一套超过 2.3 亿条网址的美国法律索引。",
+            "官方表示，在 200 道来自 Vals AI 私有验证集的美国法律研究问题、两边都用最高推理量的条件下，Astra for Law 在 54.0% 的题目通过评测的整体正确性检查，只靠网络搜索的 GPT‑6 Astra 是 38.7%，官方称为 40% 的相对进步；另在经稽核的目标段落集合上、双方推理量相同时，官方表示最多可以多检索到 54% 来自正确法院意见书的相关段落。",
+            "这项服务将先开放给选定的事务所通过 Trusted Access 在 ChatGPT 与 Codex 使用，API 即将开放；公告写明可以与 OpenAI 联系，但没有说明可申请的地区与合资格标准，也没有公布价格。",
+            "官方同一天也让 ChatGPT for Word 全面开放，用来校对与抓格式问题，但没有说明适用的方案、地区或语言。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2026 年 9 月 17 日公告了什么：为什么“配置”不是“新模型”"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告开头把 Astra for Law 定位成“我们最强大的模型，配置成一套新的法律用 AI 基础”，内文没有提到另外训练新模型，改变的是模型之外的部分；不过它在模型菜单里会显示成“GPT‑6 Astra Law”，API 代号是 gpt-6-astra-law。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这些新增的部分——一套法律用的检索索引、一组工具，以及使用资格与数据处理的条款——后面几节分别说明。本站一周前介绍过 OpenAI 给金融机构用的 ChatGPT（事件日 2026 年 9 月 10 日），这次换成法律事务所，索引、评测与资格条件是另外一组，本文不重复那一篇已经写过的内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT‑6 Astra 是公告里形容为“最新、最强大”的那个模型，能力细节本站已另文介绍（事件日 2026 年 9 月 3 日），这里不重复；本文只谈配置成法律用基础之后多出来的部分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "实际上加了什么：一套美国法律索引，和查得到出处的引用"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告说，Astra for Law 可以检索美国的判例、法规、法院规则与行政决定，索引规模“超过 2.3 亿条网址”，且“每日新增来源”。这里要分清楚两件事：索引范围明确是美国，官方原文以“U.S.”起头涵盖整串清单；但选定的事务所要在哪个国家或地区，官方没有说明，两者不能互相推论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判例的部分，OpenAI 表示是与非营利组织 Free Law Project 合作，也就是 CourtListener 背后的机构，判例收录“涵盖超过 99.9% 已公布的美国判决先例”。官方也说明，这套索引是补充事务所既有的授权内容与专门产品，不是取代，并举 Thomson Reuters 为例；公告另外写了一句“在 OpenAI 上建置应该是从生态系得到更多，而不是取代它”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检索之外，官方特别强调的卖点是出处查得到、打得开：官方的说法是研究基础更扎实，会附上“律师可以自己查看的可靠出处”。这是本文认为对一般读者最有意义的一点——不是模型变聪明了，是它现在附带一套可以自己查核的来源。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "内容",
+            "开放对象",
+            "官方未说明的部分"
+          ],
+          "rows": [
+            [
+              "模型",
+              "同一个 GPT‑6 Astra，公告未提另外训练新模型",
+              "随 Astra for Law 开放的事务所",
+              "未来是否推出独立的法律模型"
+            ],
+            [
+              "法律索引",
+              "美国判例、法规、法院规则与行政决定，超过 2.3 亿条网址、每日新增",
+              "使用 Astra for Law 的事务所",
+              "是否涵盖美国以外的法域"
+            ],
+            [
+              "Trusted Access",
+              "将先在 ChatGPT 与 Codex 开放，API 即将开放",
+              "选定的法律事务所",
+              "可申请地区、事务所规模与合资格标准"
+            ],
+            [
+              "数据条款",
+              "API 端零数据保留，ChatGPT Enterprise 用量默认不纳入人工审阅",
+              "合资格事务所",
+              "条款是否适用于合资格事务所以外"
+            ],
+            [
+              "插件与社区技能",
+              "26 个合作伙伴打造的插件同日上线，另有 9 个社区插件带 47 项自定义技能",
+              "使用插件的事务所",
+              "完整插件清单与各自的定价"
+            ],
+            [
+              "ChatGPT for Word",
+              "校对、给修改建议、标出格式问题，同日全面开放",
+              "官方写全面开放，未进一步分众",
+              "适用的方案、地区与语言"
+            ]
+          ],
+          "caption": "依 OpenAI 2026 年 9 月 17 日发布的官方公告整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方的评测怎么读：200 题、私有验证集与同等推理量"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 公布的评测都是官方自己做的，本站没有独立验证：两边都用最高推理量，从 Vals AI“Legal Research Bench”私有验证集抽取 200 道美国法律研究问题，测试 Astra for Law 的完整组合。官方表示，Astra for Law 在 54.0% 的题目通过评测的整体正确性检查，只靠网络搜索的 GPT‑6 Astra 是 38.7%，官方称为“40% 的相对进步”。私有验证集代表题目不公开，外界无法重跑这 200 道题目，只能引用官方公布的结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检索方面，官方另外指出，在经稽核的目标段落集合上、双方使用相同推理量时，Astra for Law 最多可以多检索到 54% 来自正确法院意见书的相关段落（原文 up to 54% more relevant passages from the correct court opinions）；这个“最多”是官方原文自带的限定词，代表不是每一题都会多出 54%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把这几个数字放在一起看，官方想强调的是索引与检索方式的改善，不是单纯比模型聪明；这四个百分比都只在官方自行设定的测试条件下成立，换一组题目可能就不同。公告里两段直接评论 Astra for Law 的外部引言，用字是“预览早期版本”“这个早期阶段”与“早期测试”，讲的是阶段性印象，不是正式成果。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-astra-for-law-20260917/diagram-1-zh-cn.svg",
+          "alt": "四格图解：同一个模型、一套法律索引与查得到的出处、选定的事务所才能用、数据条款另外谈",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 9 月 17 日发布的官方公告整理，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "谁能用、数据怎么处理：选定的事务所与两项数据条款"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告把使用资格写得很窄：Astra for Law 将先开放给选定的法律事务所，通过 Trusted Access 在 ChatGPT 与 Codex 使用，API 则即将开放，服务对象是合资格事务所的律师与在其督导下工作的人员，用于专业法律工作；但合资格标准、事务所规模与名额，公告都没有写，“即将开放”也没有给时间表。公告结尾只留一句：想先取得使用机会或把它做进自己的产品，就与 OpenAI 联系，此外没有公开的申请流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数据条款另外谈：官方列出两项规定，都限定在合资格事务所范围内——API 端零数据保留，ChatGPT Enterprise 用量默认不纳入人工审阅。官方也提到，正在和它形容为 AI 治理领先者的事务所 Latham & Watkins 合作，针对信息授权、信息隔离墙、客户指示与事务所监督做设计；另一家 Wachtell, Lipton, Rosen & Katz 则被写成一起探索 AI 能怎么支持需要专业判断的工作。公告把两者都写成进行中的合作，还不是公开的标准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插件的部分，OpenAI 另外维护一个插件目录，2026 年 9 月 18 日读取时，筛选类别除了法律，还有小型企业、生产力、工程与 IT、数据与研究、财务等。这次公告当天上线 26 个由合作伙伴打造的插件；另外 9 个由律师与法律工程师自己写的社区插件，带来 47 项自定义技能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份公告另外用一段介绍三家事务所的定制应用，但用的字眼是调整 ChatGPT Enterprise，不是 Astra for Law，Cooley 是其中之一，做的是 GO Public。同一天发布的 Cooley 客户案例却写明 GO Public 建立在 ChatGPT Work 之上，并提到 Cooley 在 2025 年为全球 180 件交易提供顾问、总额超过 515 亿美元——这是事务所整体业务规模，官方没有把它和 AI 成果连在一起，本文也不把两者接着读。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "官方没说清楚的事，以及一般读者用得到的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理三页官方页面查到 2026 年 9 月 18 日为止，有几件事官方都没有写：没有公布价格；没有列出合资格事务所的地区清单，台湾的事务所能不能申请，官方未说明；没有给 API 开放的时间表；公告内文也没有提到一般 ChatGPT 个人账号，看不出未来会不会开放给个人用户。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告里跟一般读者比较有关的一件事，是 ChatGPT for Word 同一天全面开放：可以帮忙校对、给修改建议、标出格式问题，方便律师在原本就在用的 Word 里工作。但官方只讲全面开放，没有说明适用哪些方案、地区或语言，本文只能照官方写的范围转述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是编辑设计的例子，不是实测：如果读者拿到 AI 生成的一段合同说明，里面引用了一条其实不存在的法条，这次公告示范的解法不是换一个更聪明的模型，而是接上一套标明来源、可以点开核对的检索系统。这个方法用在日常遇到的 AI 回答上也一样：先问这句话可以打开来源查吗，再决定要不要相信。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Astra for Law 是一个全新的 AI 模型吗？",
+              "answer": "官方没有这样说。OpenAI 在公告里把它定位成“我们最强大的模型，配置成一套新的法律用 AI 基础”，写出来的做法是把既有的 GPT‑6 Astra，加上为法律工作设计的设定、工具与一套法律索引，公告内文没有提到另外训练新模型。不过它在模型菜单里会显示成“GPT‑6 Astra Law”，API 代号是 gpt-6-astra-law。"
+            },
+            {
+              "question": "这套法律索引查得到台湾或其他国家的法律吗？",
+              "answer": "官方公告写的索引范围是美国：原文以“U.S.”起头，涵盖判例、法规、法院规则与行政决定整串清单。这几页没有提到美国以外的法域，本文也没有查到官方另外说明其他国家的版本，读者不应假设它能查台湾或其他地区的法律。"
+            },
+            {
+              "question": "台湾的法律事务所可以申请使用 Astra for Law 吗？",
+              "answer": "官方公告与 Trusted Access 的说明都没有列出可以申请的国家或地区名单，只写选定的、合资格的事务所，本文查到 2026 年 9 月 18 日为止没有看到台湾是否在内的说明。索引查的法域和用户能不能申请是两回事，不能因为索引以美国为主，就推论只有美国事务所能申请，也不能反过来推论台湾事务所可以申请；实际情形要洽 OpenAI 官方确认。"
+            },
+            {
+              "question": "官方公布 54.0% 对 38.7% 的评测结果，代表这个工具的答案一定比较准确吗？",
+              "answer": "这是 OpenAI 自己做、自己公布的测试，本站没有独立验证。条件是两边都用最高推理量，题目是从 Vals AI 私有验证集里抽出的 200 道美国法律研究问题；“私有”代表外界看不到题目本身，也就无法重新验算。这个结果适合当成 OpenAI 自己的说法参考，不宜直接当成客观、可以套用到所有情境的准确率。"
+            },
+            {
+              "question": "案例里提到的事务所 Cooley，是不是已经在用 Astra for Law？",
+              "answer": "公告把 Cooley 列在协助打造定制应用的事务所之中，用的字眼是调整 ChatGPT Enterprise；OpenAI 同一天发布的 Cooley 客户案例也明确写着，Cooley 的 GO Public 是建立在 ChatGPT Work 之上，用的是另一项产品，不是 Astra for Law。两页对照着看才不会误会。"
+            },
+            {
+              "question": "这次公告里，没有法律事务所账号的一般读者用得到什么？",
+              "answer": "官方同一天也宣布 ChatGPT for Word 全面开放，可以用来校对文件、给修改建议、标出格式问题；但公告只说全面开放，没有讲适用哪些方案、地区或语言，本文查到 2026 年 9 月 18 日为止也没有在其他页面找到补充说明。其余像法律索引查询、Trusted Access 这些功能都限定在选定的合资格事务所，一般个人账号用不到。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇写的是事务所工具，不是法律意见",
+          "text": "Astra for Law 是 OpenAI 先提供给选定的合资格法律事务所的工具，需要通过 Trusted Access 取得资格，不是一般 ChatGPT 个人账号可以直接使用的功能，本站也没有实际使用过这项产品。本文整理的是官方公告写了什么、还没说清楚什么，文中的检索范围、评测数字与客户说法都是官方或其客户自己的说法，不是本站的实测结果，也不是法律意见；读者不应该用本文或官方页面取代律师的判断，更不要自己拿一般 AI 工具处理需要专业把关的法律事务。官方没有说明合资格事务所的地区范围，台湾的事务所是否能够申请、费用与时程，请直接洽询 OpenAI 官方；本文查核日为 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT for Financial Services 发布：金融机构的 AI 工具，跟个人账号无关",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-financial-services-20260910"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing Astra for Law",
+          "url": "https://openai.com/index/astra-for-law/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "How Cooley is accelerating IPO work with ChatGPT",
+          "url": "https://openai.com/index/cooley-gopublic/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Plugins | Secure integrations for enterprise workflows",
+          "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  },
+  "related": [
+    "ai-news-chatgpt-financial-services-20260910",
+    "ai-news-openai-misalignment-reports-20260917"
+  ]
+}

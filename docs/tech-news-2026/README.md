@@ -5,6 +5,8 @@
 
 > **現況（2026-09-18）**：見 [`docs/news-2026-batch-4/HANDOVER.md`](../news-2026-batch-4/HANDOVER.md) 第 1b 節。
 > 十三篇加索引都是五語、都經過兩輪獨立查核與逐語審稿，圖檔、`manifest.json`、contact sheet、`related` 與 relink 都做完了；
+> **批次 4.5（2026-09-16 起的新消息）**：本工作區再加四篇（`tech-news-apple-att-eu-20260916`、`tech-news-app-store-bundles-multiseat-20260916`、`tech-news-eu-kids-act-20260917`、`tech-news-taiwan-matsu-cable-tm4-20260918`，display_order 313–316），索引用 `update_index.py tech` 原地增補（不重跑 `build_tech_index.py`）；現況見 HANDOVER 第 1d 節。
+>
 > **2026-09-18 已合併（PR #546）並匯入發布**（14 篇 × 5 語系）；日後修訂與要重查的活資料列在那一節。
 > 固定值：`topics` 是 `["tech", "tech-news"]`（需要時加 `gadgets`／`software`），主色 BLUE，眉標 `MOKAAIR  /  TECH NEWS`，
 > `display_order` 十三篇 300–312、索引 299；**沒有免責 callout**。索引用 [`build_tech_index.py`](../news-2026-batch-4/build_tech_index.py) 產生 zh-TW。

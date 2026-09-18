@@ -1,0 +1,167 @@
+{
+ "slug": "tech-news-apple-att-eu-20260916",
+ "event_date": "2026-09-16",
+ "event_date_basis": "developer.apple.com/news/?id=idsft9ai carries the visible article date line 'September 16, 2026' inside <p class=\"lighter article-date\">, and the Apple Developer news feed (developer.apple.com/news/rss/news.rss) gives pubDate 2026-09-16T17:00:11+00:00 for the same item. Taipei time for that pubDate is 2026-09-17 01:00, so the article must either use the UTC date with the source named, or convert and say so - do not silently mix. Announcement date = 2026-09-16. The CHANGE itself has no date: Apple says it begins 'with iOS 27.2 and iPadOS 27.2', and gives no release date for those versions on this page. Do not turn a version number into a date.",
+ "checked_on": "2026-09-18",
+ "title_hint_zh_TW": "Apple 調整歐盟的 App 追蹤透明度：新版詢問框、設定改名、一年可再問一次",
+ "sourcing_verdict": "full",
+ "sourcing_notes": "Both sources fetched with curl -sL -A \"Mokaair-editorial\" on 2026-09-18, both HTTP 200: (1) developer.apple.com/news/?id=idsft9ai 200, 106,682 bytes - the body is one <p> inside <div class=\"article-text\"> plus a 'Learn more' link; (2) developer.apple.com/app-store/user-privacy-and-data-use/ 200, 131,579 bytes - the 'Learn more' target, which carries a section headed 'ATT in the European Union' with three paragraphs that go well beyond the news item. THE TRAP, and it is exactly the one BRIEF.md section 1 warns about: the SAME paragraph appears on both pages with DIFFERENT whitespace. On the news page it contains four non-breaking spaces - 'European\\u00a0Union', 'iOS\\u00a027.2', 'iPadOS\\u00a027.2', 'and\\u00a0Romania.' - while on the user-privacy page the identical sentence uses ordinary spaces throughout (verified by scanning both for U+00A0). Any verbatim_quote from the NEWS page must reproduce the non-breaking spaces; the quotes recorded below are taken from the USER-PRIVACY page, which needs no special characters, and that is why their url field points there. A checker who searches the news page for the plain-space version will get zero hits and must not conclude the text is absent. Also checked and NOT available: developer.apple.com/tw/news/?id=idsft9ai returns HTTP 404 (81,990-byte soft-404 page), so there is no Traditional-Chinese version of this announcement; the same is true for the other 2026-09-16 items. Apple Newsroom (www.apple.com/newsroom/rss-feed.rss, an Atom feed, 20 entries, newest 2026-09-16T13:59:28.902Z) carries nothing about this - the only 2026-09-16 Newsroom entry is a photography-exhibition piece. So Apple announced this to developers only.",
+ "sources": [
+  {
+   "title": "Updates to App Tracking Transparency in the European Union",
+   "url": "https://developer.apple.com/news/?id=idsft9ai",
+   "publisher": "Apple (Apple Developer News)",
+   "checked_on": "2026-09-18"
+  },
+  {
+   "title": "User privacy and data use - App Store",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "publisher": "Apple (Apple Developer)",
+   "checked_on": "2026-09-18"
+  }
+ ],
+ "verified_facts": [
+  {
+   "fact": "On 2026-09-16 Apple told developers it is changing App Tracking Transparency in the European Union. Apple attributes the change to 'agreements with select European competition authorities' and does not name any of them.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "As part of agreements with select European competition authorities, Apple is introducing changes to its App Tracking Transparency framework in the European Union."
+  },
+  {
+   "fact": "The change starts with specific OS versions, not a date: 'Beginning with iOS 27.2 and iPadOS 27.2, developers will have the option to use an alternative version of the App Tracking Transparency system prompt in the EU.' No release date for iOS 27.2 or iPadOS 27.2 appears on either page. macOS, tvOS, watchOS and visionOS are not mentioned in this context at all.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Beginning with iOS 27.2 and iPadOS 27.2, developers will have the option to use an alternative version of the App Tracking Transparency system prompt in the EU."
+  },
+  {
+   "fact": "What does NOT change: 'The requirements for when you must seek permission to track users will remain the same.' The trigger for needing permission is untouched; only the prompt changes.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The requirements for when you must seek permission to track users will remain the same."
+  },
+  {
+   "fact": "In five named EU countries the alternative prompt is not optional - it is the only one available. Apple's stated reason is 'legal requirements' and it names no law: 'Due to legal requirements, only the alternative version of the system prompt is available for apps distributed in Germany, France, Italy, Poland, and Romania.' That is exactly five countries.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Due to legal requirements, only the alternative version of the system prompt is available for apps distributed in Germany, France, Italy, Poland, and Romania."
+  },
+  {
+   "fact": "What the alternative prompt actually looks like, per the user-privacy page: it 'has modified formatting and language' and gives the developer the option of a text button labelled 'Additional Information', which surfaces more detail about the tracking request.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "The alternative version of the App Tracking Transparency system prompt has modified formatting and language and provides you the option to use a text button labeled “Additional Information.”"
+  },
+  {
+   "fact": "The second EU-only change, and the one users will actually feel: re-prompting. In the EU a developer may show the ATT prompt again one year after the user's previous choice, whether that choice was to accept or to reject.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "for users in the European Union, you can reprompt a user via the App Tracking Transparency system prompt one year after the user’s previous choice in your app’s App Tracking Transparency system prompt, regardless of whether that choice was to accept or reject."
+  },
+  {
+   "fact": "The user's escape hatch, and a settings rename that is EU-only: a user cannot be re-prompted if they have turned off the device setting, and that setting has a different name in the EU. Apple states the rename in parentheses on the same page.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "(renamed to “Allow Apps to Request to Link Your Activity Across Companies” in the EU)"
+  },
+  {
+   "fact": "Apple points developers at four API references for the EU variant, two of them marked new: 'Requesting Authorization with Expanded Interface (new)', 'Requesting Authorization', 'Tracking Markdown Usage Description (new)', 'Tracking Usage Description'. The two '(new)' items tell you the alternative prompt is a distinct API surface, and that its purpose string supports Markdown.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "For technical details on using the alternative App Tracking Transparency system prompt and optional text button in the European Union, see:"
+  },
+  {
+   "fact": "Baseline, for readers who do not know what ATT is, from the same page: since iOS 14.5, iPadOS 14.5 and tvOS 14.5, a developer needs the user's permission through the ATT framework in order to track them or access the device's advertising identifier.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "In iOS 14.5, iPadOS 14.5, and tvOS 14.5 or later, you need to receive the user’s permission through the App Tracking Transparency (ATT) framework in order to track them or access their device’s advertising identifier."
+  },
+  {
+   "fact": "Apple's own definition of 'tracking', which is what the permission covers: linking user or device data collected from your app with user or device data collected from other companies' apps, websites, or offline properties for targeted advertising or advertising measurement, and also sharing user or device data with data brokers.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Tracking also refers to sharing user or device data with data brokers."
+  },
+  {
+   "fact": "What happens if the user says no, unchanged by this announcement: 'Unless you receive permission from the user to enable tracking, the device’s advertising identifier value will be all zeros and you may not track them as described above.'",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Unless you receive permission from the user to enable tracking, the device’s advertising identifier value will be all zeros and you may not track them as described above."
+  },
+  {
+   "fact": "Apple's standing rules that the EU change does not touch, useful context for readers who wonder whether an app can nag them: apps may not gate functionality on agreeing to tracking or incentivise agreement (App Review Guidelines 5.1.2(i)), and may not 'manipulate, trick, or force people to consent to unnecessary data access' (5.1.1(iv)). Apple also states that permission obtained on a website does not substitute for the ATT prompt for data collected in the app.",
+   "url": "https://developer.apple.com/app-store/user-privacy-and-data-use/",
+   "is_vendor_claim": false,
+   "verbatim_quote": "apps must respect the user's permission settings and not attempt to manipulate, trick, or force people to consent to unnecessary data access."
+  },
+  {
+   "fact": "THE WHITESPACE FINDING, recorded as a fact because it changes how a checker must search: the identical opening paragraph appears on both pages, but the news page (developer.apple.com/news/?id=idsft9ai) uses non-breaking spaces (U+00A0) in four places - after 'European', after 'iOS', after 'iPadOS', and after 'and' in 'and Romania.' - while the user-privacy page uses ordinary spaces in all four. Both are Apple pages published the same week.",
+   "url": "https://developer.apple.com/news/?id=idsft9ai",
+   "is_vendor_claim": false,
+   "verbatim_quote": "Updates to App Tracking Transparency in the European Union"
+  }
+ ],
+ "not_said": [
+  "Apple does not name the competition authorities. It says only 'select European competition authorities'. Do not supply names, and do not write that this was the German Bundeskartellamt, the French Autorité de la concurrence or anyone else.",
+  "Apple does not name a law. 'Due to legal requirements' is the whole of it - no DMA, no GDPR, no national statute. This is the same trap as tech-news-apple-eu-business-terms-20260818, where Apple's announcement never mentioned the DMA. Do not write DMA as the cause.",
+  "Apple does not say why those five countries specifically (Germany, France, Italy, Poland, Romania) and not the other EU member states.",
+  "Apple gives no release date for iOS 27.2 or iPadOS 27.2 on either page, and no date for when the alternative prompt starts appearing to users.",
+  "Apple does not say whether the alternative prompt is expected to raise or lower opt-in rates, and publishes no figures of any kind. There is not one number about consent rates anywhere.",
+  "Apple does not show the alternative prompt. There is no screenshot, no wording, and no description beyond 'modified formatting and language' plus the 'Additional Information' button label.",
+  "Apple does not say what happens to macOS, tvOS, watchOS or visionOS. The announcement names only iOS 27.2 and iPadOS 27.2.",
+  "Taiwan is not mentioned on either page, and neither is any non-EU territory. The change is described as EU-only. Write 官方公告未提及台灣, and do not write that Taiwanese users will or will not see it.",
+  "Apple does not say how an app 'distributed in' one of the five countries is determined - by storefront, by device region, by IP, or otherwise.",
+  "Apple does not say whether the one-year re-prompt clock applies per app, per developer or per device, beyond the phrase 'in your app'.",
+  "Apple published no Traditional-Chinese version: developer.apple.com/tw/news/?id=idsft9ai returns HTTP 404 as of 2026-09-18. There is therefore no official Chinese wording for the renamed EU setting; any Chinese rendering in the article is our translation and must be flagged as such."
+ ],
+ "unverified_or_excluded": [
+  {
+   "claim": "The exact on-screen wording of the alternative ATT prompt, and what the 'Additional Information' sheet contains.",
+   "seen_where": "Described only in prose on the user-privacy page; the four API references ('Requesting Authorization with Expanded Interface', 'Tracking Markdown Usage Description' and the two existing ones) were NOT opened in this session.",
+   "why_excluded": "Not read. A writer who wants to describe the prompt's strings must fetch those documentation pages first and add them to sources. Do not describe a UI nobody here has seen."
+  },
+  {
+   "claim": "The names of the competition authorities and the proceedings behind 'agreements with select European competition authorities'.",
+   "seen_where": "Nowhere in the two sources.",
+   "why_excluded": "Apple does not say, and no authority's own publication was checked. Naming one would be reconstruction. Write only 'Apple 表示是與部分歐洲競爭主管機關達成協議後的調整'."
+  },
+  {
+   "claim": "That this is a response to the Digital Markets Act.",
+   "seen_where": "A natural inference from 'European competition authorities' plus the five named member states.",
+   "why_excluded": "Apple never writes DMA. BRIEF.md's rule is that what the vendor did not say does not get supplied. The existing pack tech-news-apple-eu-business-terms-20260818 hit exactly this and handled it the same way."
+  },
+  {
+   "claim": "Whether Apple's 2026-08-18 EU business-terms change and this ATT change are part of the same settlement.",
+   "seen_where": "Both are Apple Developer news items about the EU, three weeks apart.",
+   "why_excluded": "Neither announcement references the other. Link the two articles as related reading; do not assert a connection Apple did not make."
+  },
+  {
+   "claim": "Any effect on advertising revenue, app monetisation or the ad industry.",
+   "seen_where": "Not stated; no figures exist on either page.",
+   "why_excluded": "Apple publishes nothing on this and the site does no measurement. Any such sentence would be commentary."
+  },
+  {
+   "claim": "Whether an EU user who already answered the prompt will be asked again in practice, and when.",
+   "seen_where": "Apple says a developer 'can reprompt' after one year.",
+   "why_excluded": "'Can' is a permission granted to developers, not a prediction about behaviour. Write 開發者可以在一年後再問一次, never 使用者一年後會被再問一次."
+  }
+ ],
+ "editorial_brief": "RECOMMENDATION: IMPORTANT (重要), but a short important one - four sections of substance rather than five padded ones. If the site owner prefers, it merges cleanly into a single 'Apple 的歐盟特別待遇' piece with the 2026-08-18 business-terms story, but that story already has its own pack, so a standalone follow-up is cleaner.\n\nREADER: a Taiwanese iPhone user who has seen the 'Allow [App] to track your activity across other companies' apps and websites?' box many times and has no idea what it is legally, plus the smaller group of Taiwanese developers who ship to the EU.\n\nANGLE, and the reason this is worth a whole article rather than a line: a single permission prompt is turning into a per-region product. From iOS 27.2 and iPadOS 27.2, the EU gets an alternative prompt with different formatting and language and an optional 'Additional Information' button; in five named countries - Germany, France, Italy, Poland and Romania - it is the ONLY prompt available; the device setting itself is renamed in the EU from 'Allow Apps to Request to Track' to 'Allow Apps to Request to Link Your Activity Across Companies'; and EU developers may ask again one year after the user's previous answer, whether that answer was yes or no. Everywhere else, none of that. That is a concrete, checkable illustration of something this site has now said three times in different words - the same app behaves differently depending on where you are - and here it lands on a screen every reader has actually seen.\n\nSECOND ANGLE worth two paragraphs: what did NOT change, which is the part a reader is most likely to get wrong. Apple states plainly that the requirements for when permission must be sought are unchanged, that a refusal still zeroes the advertising identifier, and that apps still may not gate features on consent or trick users into it. So this is a change to the wording and the cadence of the question, not to the answer's power. Saying that clearly is more useful than the usual 'Apple loosens tracking rules' framing, and it is fully sourced.\n\nSTRUCTURE FIT: five H2 sections - (1) 9 月 16 日 Apple 對開發者公告了什麼；(2) 新版詢問框與五個國家的差別，表格放在第 2 節末；(3) 設定改名與一年可再問一次，圖解放在第 3 節末；(4) 沒有改變的部分（觸發條件、拒絕後的廣告識別碼、不可綁功能）；(5) 官方沒有說的事，包含沒點名主管機關、沒點名法律、沒有 iOS 27.2 的日期、沒有提到台灣。TABLE（最多 4 欄、儲存格短、caption 寫查核日 2026 年 9 月 18 日）：建議欄位 項目 / 歐盟以外 / 歐盟（一般）/ 德法義波羅五國，列出 詢問框版本、Additional Information 按鈕、設定名稱、能否一年後再問。DIAGRAM 2x2：詢問框版本 / 地區關卡 / 設定改名 / 再問一次的條件——圖上每個數字（27.2、5 個國家、1 年、14.5）都必須在正文出現過。\n\nTAIWAN FRAME: honest and short. Apple 只說歐盟，沒有提台灣，所以台灣使用者看到的仍是既有的詢問框與既有的設定名稱——但這句話要寫成「官方公告只涵蓋歐盟、未提及台灣」，不是「台灣不會改」。對台灣讀者真正有用的是第二個角度：看懂那個框在問什麼（Apple 對 tracking 的定義是把你的資料和其他公司 App 或網站的資料連起來做廣告，或分享給資料仲介），以及拒絕之後會發生什麼（廣告識別碼變成全零）。這兩點在台灣同樣成立，而且來源就在同一頁。\n\nLIVED-EXPERIENCE EXAMPLE 要標明是編輯設計的例子：一位讀者在歐洲旅行時打開常用 App，想知道自己看到的框會不會不一樣——答案只能寫「Apple 說的是『在歐盟散布的 App』，但沒有說明是依商店前台、裝置地區還是其他方式判斷」。這正是官方未說明的一項，剛好可以當例子。\n\nSUMMARY block: 第一句是答案——2026 年 9 月 16 日 Apple 公告，自 iOS 27.2 與 iPadOS 27.2 起，歐盟的 App 追蹤透明度詢問框會有另一個版本。接著是條件——德國、法國、義大利、波蘭、羅馬尼亞這五國只能用新版；歐盟的裝置設定改名；開發者可在使用者上次回答的一年後再問一次。最後一句是但書——Apple 沒有點名任何主管機關或法律，也沒有給 iOS 27.2 的推出日期，公告未提及台灣。\n\nFAQ candidates these sources genuinely answer: 那個追蹤詢問框到底在問什麼（Apple 的定義：把你的資料與其他公司 App、網站的資料連起來做目標式廣告或廣告成效評估，或分享給資料仲介）; 按了不允許會怎樣（廣告識別碼回傳全零，開發者不得追蹤）; 歐盟的框哪裡不一樣（版面與文字不同，可加一個 Additional Information 文字按鈕）; 哪五個國家只能用新版（德國、法國、義大利、波蘭、羅馬尼亞）; 我會被重複問嗎（歐盟開發者可在上次回答滿一年後再問；把裝置設定關掉就不會被問）; 台灣呢（Apple 公告只寫歐盟，未提及台灣）.",
+ "must_not_write": [
+  "不可以把《數位市場法》（DMA）寫成原因。Apple 兩頁都沒有提到 DMA，只寫『與部分歐洲競爭主管機關達成協議』與『法律要求』。這和 tech-news-apple-eu-business-terms-20260818 是同一個陷阱。",
+  "不可以點名任何競爭主管機關。Apple 用的是 'select European competition authorities'，沒有名字。",
+  "不可以把 iOS 27.2 或 iPadOS 27.2 換算成日期或月份。Apple 沒有給推出日。",
+  "不可以描述新版詢問框的畫面或字句。Apple 只寫『版面與文字不同』加一個標示為 Additional Information 的文字按鈕；四份 API 文件在本次查核沒有開啟。",
+  "不可以寫台灣也會改、或台灣不會改。寫『Apple 的公告只涵蓋歐盟，未提及台灣』。",
+  "不可以把『開發者可以在一年後再問一次』寫成『使用者一年後會被再問一次』。can 是給開發者的許可，不是對行為的預測。",
+  "不可以寫這項改變會讓廣告允許率上升或下降，也不可以估計對廣告產業的影響。Apple 一個數字都沒有給，本站也沒有實測。",
+  "不可以把 8 月 18 日的歐盟商業條款與這次的 ATT 調整說成同一件事或同一份和解。兩則公告互不引用。",
+  "不可以自己發明歐盟那個設定的中文官方名稱。Apple 沒有發布這則公告的繁體中文版（/tw/ 網址回 404），任何中文說法都要標明是本站翻譯。",
+  "不寫任何規避追蹤或反制廣告的操作教學；照實寫官方給的設定位置與後果就好。",
+  "不寫購買建議、不比較手機——tech.md 的界線。",
+  "不寫投資免責 callout——tech.md 規定科技垂直不帶。",
+  "主圖與 SVG 圖解不得出現商標、字標、圖示或介面截圖（尤其不要畫那個詢問框）；產品名稱用純文字。",
+  "不要列表、不要 Markdown、不要 emoji，zh-TW 包不得出現簡體字。"
+ ],
+ "overlaps_existing_article": "CLOSEST existing pack is tech-news-apple-eu-business-terms-20260818 ('Apple 公布歐盟新版 App 商業條款：核心技術抽成 5%、可同時用替代付款', news_date 2026-08-18). DIVIDE IT THIS WAY: that article owns Apple's EU FEES AND DISTRIBUTION - the 5% Core Technology Commission, the 26%/20%/15% tiers, alternative payments, the 2026-10-01 effective date. This article owns Apple's EU PRIVACY PROMPT - the alternative ATT prompt, the five-country mandate, the setting rename, the one-year re-prompt. There is zero factual overlap; the only shared element is the 'Apple 表示是與歐盟／歐洲主管機關合作後的調整，但沒有點名法律' pattern, which should be noted in one sentence with a link across, not re-argued. That article is the natural second link. ALSO RELATED but different: tech-news-eu-kids-act-20260917 from this same batch (EU rules on platforms, but a legislative proposal, not a vendor change) - whichever of the two is published second may link to the first instead, if the coordinator prefers to spread the links. No existing pack covers App Tracking Transparency, the advertising identifier, or app privacy prompts at all. FIRST LINK: the index pack tech-news-2026-index.json, zh-TW title '2026 年科技新聞總整理：硬體、平台、電信與法規的重點'; the link text must equal that string exactly.",
+ "standalone_or_secondary": "STANDALONE, important but compact. First-party material actually available: 1 announcement, 2 distinct EU-only behaviour changes (alternative prompt, one-year re-prompt), 5 named countries where the alternative prompt is mandatory, 1 renamed device setting with both names quoted, 2 named OS versions, 4 API references (2 marked new), plus the unchanged baseline (iOS/iPadOS/tvOS 14.5 origin, the all-zeros advertising identifier, two App Review Guidelines clauses). That is enough for a tight five-section piece. If the site owner wants fewer tech pieces this round, this is the one that merges most naturally into the existing Apple-EU article as a new section - but as a merge it would break that pack's news_date, so a standalone follow-up is the cleaner option."
+}

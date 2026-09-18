@@ -1,0 +1,511 @@
+{
+  "slug": "ai-news-astra-for-law-20260917",
+  "event_date": "2026-09-17",
+  "event_date_basis": "OpenAI 官方公告頁本身的日期列印的是「September 17, 2026」，篇章分類 Company。同一天發布、與這篇公告配對的 Cooley 客戶案例頁，日期列印的也是同一天。本文 2026-09-18 自己用 curl -sL -A \"Mokaair-editorial\" 重新讀取公告頁全文，把 HTML 標籤剝掉之後搜尋，確認「September 17, 2026」這串文字本身可以連續搜尋得到；但同時發現頁面上緊接在「OpenAI」這個作者標籤之後就是這串日期，兩者之間沒有空格或其他字元（原始 HTML 是兩個各自獨立的版面元素），所以「OpenAI September 17, 2026」不能當成一個連續逐字字串使用，本文只把日期本身當成逐字引文，作者標籤另外描述。前期研究紀錄另外記錄 OpenAI 官方新聞 RSS（openai.com/news/rss.xml）裡這篇項目的 pubDate 是 Thu, 17 Sep 2026 00:00:00 GMT——00:00:00 GMT 是這個 feed 常見的佔位時刻，日期可用、時刻不可用；配對的 Cooley 項目 pubDate 是 12:00:00 GMT，換算台北時間是 9 月 17 日 20 時，兩個換算後仍是同一天，互相印證，本文沒有另外重抓這條 RSS。因此 slug 尾碼、news_date 與正文開頭都取 2026-09-17，不需要做時區跨日的換算。",
+  "title": "Astra for Law 發布：OpenAI 的法律工具，加的是索引，不是新模型",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "Introducing Astra for Law",
+      "url": "https://openai.com/index/astra-for-law/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "How Cooley is accelerating IPO work with ChatGPT",
+      "url": "https://openai.com/index/cooley-gopublic/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Plugins | Secure integrations for enterprise workflows",
+      "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 本文自己用 curl -sL -A \"Mokaair-editorial\" 把 sources[] 三條全部重抓一次，請求的 UA、查詢字串與表頭都沒有放任何 email 或個人資料，暫存於 SCRATCH\\agents\\ai\\ai-news-astra-for-law-20260917\\。結果：(1) astra-for-law/ → HTTP 200、516,162 bytes；(2) cooley-gopublic/ → HTTP 200、382,570 bytes；(3) business/plugins/?tab=plugins-legal → HTTP 200、2,025,061 bytes。三條都是本站當天直接讀到的完整正文，不是擋阻頁、轉址殼或封存頁；前期研究紀錄記錄的 403 沒有在今天重現，判斷是間歇性的擋阻。三頁都是前端渲染頁，正文常被行內 <a>／<span> 標籤切開，本文用 Python 把 <script>／<style> 整段拿掉、其餘標籤去掉但不補空白之後才搜尋逐字字串，確認去標籤後的純文字仍是連續字串才採用為 verbatim_quote；含捲曲撇號（’）與 U+2011 不斷行連字號（GPT‑6 Astra 的顯示名稱用這個字元，API 代號 gpt-6-astra-law 則是一般連字號）的段落都用同樣方法逐一比對過，不是用肉眼讀畫面判斷。獨立驗證時另外發現一處前期研究紀錄沒有寫清楚的地方：公告頁介紹 Sullivan & Cromwell、Ropes & Gray、Cooley 三家事務所客製應用程式那一段，官方原文寫的是「our forward-deployed engineers have been adapting ChatGPT Enterprise with custom interfaces and integrations to proprietary data」，也就是這三個案例官方自己的用字是調整 ChatGPT Enterprise、不是 Astra for Law；這一點和 Cooley 客戶案例頁「built on ChatGPT Work」的說法方向一致，本文把它寫得更明確，用官方原文字句佐證，而不是只靠兩頁互相矛盾去推論。",
+  "verified_facts": [
+    {
+      "fact": "公告頁日期列印的是 2026 年 9 月 17 日，緊接在「OpenAI」作者標籤之後（原始網頁兩者之間沒有空格）。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 17, 2026"
+    },
+    {
+      "fact": "公告的定位句把 Astra for Law 稱為「我們最強大的模型，配置成一套新的法律用 AI 基礎」，用的是「配置」而非「訓練新模型」。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our most powerful model, configured into a new AI foundation for law."
+    },
+    {
+      "fact": "開頭第一句定義三個組成部分：GPT‑6 Astra 本身，加上為專業法律工作打造的設定、工具與情境；「GPT‑6 Astra」用的是 U+2011 不斷行連字號，不是一般鍵盤連字號。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It combines GPT‑6 Astra, our latest and most powerful model, with settings, tools, and context tailored for professional legal work."
+    },
+    {
+      "fact": "法律索引的範圍與規模：可檢索美國判例、法規、法院規則與行政決定，超過 2.3 億筆網址，每日新增來源。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Astra for Law can search U.S. case law, statutes, regulations, court rules, and administrative decisions across a corpus of more than 230 million URLs, with sources added daily."
+    },
+    {
+      "fact": "索引清單以「U.S.」起頭涵蓋整串清單（原文只印一次 U.S.，不是每一類各印一次；全篇 U.S. 共出現三次：索引清單、99.9% 判例、200 題評測），以 2026-09-18 讀到的公告內文查核未見其他國家或法域的名稱；索引的美國範圍是明確寫出的，事務所可以從哪個國家申請則沒有寫。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "search U.S. case law, statutes, regulations, court rules, and administrative decisions"
+    },
+    {
+      "fact": "判例來源合作對象是非營利組織 Free Law Project（CourtListener 背後的機構），官方形容其判例收錄涵蓋超過 99.9% 已公布的美國判決先例。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our work with Free Law Project, the nonprofit behind CourtListener, brings its case-law collection covering more than 99.9% of published U.S. precedential case law"
+    },
+    {
+      "fact": "官方把這套索引定位成補充、不是取代事務所既有付費資料，並舉 Thomson Reuters 為既有供應商的例子。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "complements the licensed content and specialist products firms rely on from providers such as Thomson Reuters"
+    },
+    {
+      "fact": "官方對「出處查得到」的原句：結果是更紮實的研究基礎，附上「律師可以自己查看的可靠出處」。原文沒有把這件事寫成針對 AI 編造引註的解方，正文不可以把那層對比併進官方的說法裡（第一版查核寫成「而不是只給流暢卻可能編造依據的答案」，第二輪已刪）。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The result is a stronger research foundation for advising on a deal, assessing a dispute, or developing a legal strategy, with reliable authorities the lawyer can examine for herself."
+    },
+    {
+      "fact": "評測條件：兩邊都用最高推理量，題目是 Vals AI「Legal Research Bench」私有驗證集裡的 200 題美國法律研究問題，測的是 Astra for Law 的完整組合。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we tested Astra for Law’s complete setup on 200 U.S. legal research questions from the private validation set of Vals AI’s Legal Research Bench"
+    },
+    {
+      "fact": "評測主結果：在兩邊都用最高推理量的條件下，Astra for Law 在 54.0% 的題目通過評測的「整體正確性檢查」（原文是 passed the evaluation's overall correctness check on 54.0% of questions，主詞是通過檢查的題目比例，不是籠統的「正確率」），只靠網路搜尋的 GPT‑6 Astra 是 38.7%，官方稱為 40% 的相對進步；原句用的是 en dash。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At the highest reasoning effort for both systems, Astra for Law passed the evaluation’s overall correctness check on 54.0% of questions, compared with 38.7% for GPT‑6 Astra using web search alone – a 40% relative improvement."
+    },
+    {
+      "fact": "檢索結果：54% 這個數字掛著三個條件——限於「經稽核的目標段落集合」（audited set of target passages）、只算「來自正確法院意見書」的段落、雙方推理量相同；「up to」是官方原文自帶的限定詞。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On the audited set of target passages, it retrieved up to 54% more relevant passages from the correct court opinions, when comparing the systems at the same reasoning effort."
+    },
+    {
+      "fact": "同一段還有一個文章沒有採用的數字：在最高推理量下，針對以判例為主的題目，Astra for Law 找到的參考判例比只靠網路搜尋的 GPT‑6 Astra 多 24%。文章不寫這個數字，不是因為查不到，而是評測段已經帶了四個百分比。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On case-law-focused questions, Astra for Law found 24% more reference cases than GPT‑6 Astra using web search alone at the highest reasoning effort."
+    },
+    {
+      "fact": "它有自己的名字：模型選單顯示為「GPT‑6 Astra Law」（U+2011 連字號），API 代號是 gpt-6-astra-law（一般 ASCII 連字號）。這一點與「不是新模型」的說法並存，文章兩處都寫出來。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It will appear in the model picker as “GPT‑6 Astra Law” and in the API as gpt-6-astra-law."
+    },
+    {
+      "fact": "公告結尾留了一條管道：想取得早期使用機會、把它做進自己的產品、或圍繞事務所專長開發工具，就與 OpenAI 聯絡。這推翻「申請管道公告沒有寫」的說法——公告沒寫的是合資格標準、規模門檻與名額，不是連怎麼接洽都沒寫。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To explore early access to Astra for Law, build it into your product, or develop tools around your firm’s expertise, contact OpenAI."
+    },
+    {
+      "fact": "使用資格與管道：官方用的是未來式（will be initially offered），將先開放給選定的法律事務所透過 ChatGPT 與 Codex 使用 Trusted Access，API 則即將開放，沒有給時間表。公告全頁 invite／invited／invitation 各 0 次，selected 3 次、eligible 2 次，不可寫成「受邀」，也不可寫成公告當天就已經開通。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Astra for Law will be initially offered to selected law firms through Trusted Access in ChatGPT and Codex, and will be coming soon to the API."
+    },
+    {
+      "fact": "對象不只事務所：公告開頭把 Astra for Law 定位成給法律事務所「與法律科技公司」用的基礎，並點名 Harvey 與 Legora 等 API 客戶將可以在它之上開發。文章目前只在第 4 節寫到「把它做進自己的產品」這條管道，沒有寫出法律科技公司這一類對象，是刻意的取捨（字數），不是漏查；若日後補寫，不可寫成只有法律事務所能用。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "API customers including Harvey and Legora will be able to build on Astra for Law"
+    },
+    {
+      "fact": "Trusted Access Program 的服務對象：合資格事務所的律師，以及在其督導下工作的人員，用於專業法律工作。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We’ve created a special Trusted Access Program for eligible law firms to give lawyers and people working under their supervision access to Astra for Law for professional legal work."
+    },
+    {
+      "fact": "資料條款兩項，且都限定在合資格事務所範圍內：API 端零資料保留（ZDR），ChatGPT Enterprise 用量預設不納入人工審閱。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For eligible firms, the offering includes Zero Data Retention (ZDR) on our API, and usage of ChatGPT Enterprise is excluded from human review by default."
+    },
+    {
+      "fact": "治理設計的合作對象是 Latham & Watkins（官方形容為 AI 治理的領先者），涵蓋資訊授權、資訊隔離牆、客戶指示與事務所監督，用字是 design for。這一條在第一版研究紀錄與草稿裡被寫成 Wachtell, Lipton, Rosen & Katz——那是公告最後一節另一段、另一家事務所的另一件事（explore 探索），2026-09-18 重讀公告確認：Latham 在頁面出現 3 次、Wachtell 2 次，兩段相隔數百字。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We are also working with Latham & Watkins, a leader in AI governance, to design for information permissions, ethical walls, client instructions, and firm oversight."
+    },
+    {
+      "fact": "外掛上線數量：當天上線 26 個夥伴打造的外掛。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today, we’re launching 26 partner-built plugins"
+    },
+    {
+      "fact": "社群外掛與自訂技能數量：9 個由律師與法律工程師自己寫的社群外掛，帶來 47 項自訂技能。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The launch includes 9 community plugins from lawyers and legal engineers at LegalQuants, LECG, and Skills.law, with 47 custom skills"
+    },
+    {
+      "fact": "三家事務所客製應用程式段落的關鍵字眼：官方寫的是「調整 ChatGPT Enterprise」，不是 Astra for Law；forward-deployed engineers 協助各事務所改造既有介面與整合。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "our forward-deployed engineers have been adapting ChatGPT Enterprise with custom interfaces and integrations to proprietary data, creating tools for each firm’s workflows"
+    },
+    {
+      "fact": "Cooley 在這段裡的描述：GO Public 幫助把資本市場專長帶進公司準備上市的流程，從撰寫 IPO 申報文件到找出管理層該注意的風險。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cooley built GO Public to bring its capital markets expertise into how companies prepare to go public, from drafting the IPO filing to identifying the risks that deserve management’s attention."
+    },
+    {
+      "fact": "Wachtell 的合作被描述為探索性質，不是已上線的應用程式。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Our work with Wachtell, Lipton, Rosen & Katz brings the firm’s litigation and corporate expertise together with our frontier research and engineering to explore how AI can support the work involved in providing sophisticated legal judgment."
+    },
+    {
+      "fact": "ChatGPT for Word 同一天全面開放，功能是校對、給修改建議、標出格式問題；官方只講「全面開放」，沒有加地區、方案或語言的限定詞。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We’re also making ChatGPT for Word generally available today, so lawyers can proofread, get suggested edits, and flag formatting issues in the tool they already rely on for drafting."
+    },
+    {
+      "fact": "官方對既有法律科技生態的定位句：在 OpenAI 上建置應該是從生態系得到更多，而不是取代它。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Building on OpenAI should mean getting more from the ecosystem, not replacing it."
+    },
+    {
+      "fact": "公告裡直接評論 Astra for Law 的引言只有兩段（頁面自己標示 1 of 2）：Sullivan & Cromwell 合夥人 John Savva 用「preview early versions」與「at this early stage」，Harvey 的 Niko Grupen 用「In our early testing」，都是階段性印象，不是正式成果。注意不可以推廣成「頁面上所有引言都是早期測試措辭」——同頁還有 Latham、Cooley、Thomson Reuters、Ropes & Gray、Wachtell 的引言，講的是合作與策略，不是早期測試（草稿原本寫成全稱，已改）。",
+      "url": "https://openai.com/index/astra-for-law/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In our early testing, Astra for Law showed strength across key aspects of legal research: grounding answers in on-point authorities, citing with precision, and offering practical, advisory guidance."
+    },
+    {
+      "fact": "Cooley 客戶案例頁日期列印的也是 2026 年 9 月 17 日，緊接在「OpenAI」作者標籤之後（同一種版面排列，兩者之間沒有空格）。",
+      "url": "https://openai.com/index/cooley-gopublic/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 17, 2026"
+    },
+    {
+      "fact": "客戶案例頁對 Cooley 的定性是「國際律師事務所」，不是「美國律師事務所」（草稿第一段原本寫美國，已改）。同段另寫該所在美國發行人端 IPO 市場的長期紀錄，但事務所本身的描述是 international；頁面側欄的 Region 欄位寫的是 North America。",
+      "url": "https://openai.com/index/cooley-gopublic/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cooley is an international law firm with a reputation for helping companies navigate capital markets and initial public offerings (IPOs)."
+    },
+    {
+      "fact": "GO Public 的技術基礎：官方原文直接寫明是建立在 ChatGPT Work 之上，是 Cooley 自己的產品，不是 Astra for Law。",
+      "url": "https://openai.com/index/cooley-gopublic/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cooley developed GO Public, a proprietary AI product offering built on ChatGPT Work."
+    },
+    {
+      "fact": "運作方式：一套代理式（agentic）處理流程分析資訊，讓律師可以檢視與確認結果，強調人工複核而非直接產出。",
+      "url": "https://openai.com/index/cooley-gopublic/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Its agentic harness analyzes information so lawyers can review and validate the work."
+    },
+    {
+      "fact": "Cooley 的規模數字明確標注是 2025 年：全球處理 180 件交易、總額超過 515 億美元；這是事務所整體業務規模，不是 AI 帶來的成果數字。",
+      "url": "https://openai.com/index/cooley-gopublic/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In 2025, the firm advised on 180 deals globally, totaling more than $51.5 billion in deal volume."
+    },
+    {
+      "fact": "OpenAI 外掛目錄 2026-09-18 讀到的篩選列依序印出 All、Small Business、Productivity、Engineering & IT、Data & Research、Legal、Design & Creative、Finance、Sales & Commerce，法律是其中之一。類別的「個數」是數出來的、頁面沒有印，依 BRIEF 第 9 條不寫成事實；這是活頁面，文章只寫讀取時點與部分類別並加「等」。每個標籤是各自獨立的版面元素，整列連起來不是一個連續字串，所以只取單一標籤當逐字引文。",
+      "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Engineering & IT"
+    },
+    {
+      "fact": "外掛目錄對外掛作用的一般說明：把使用者自己的工具與資料帶進 ChatGPT 與 API，協助建立、分析與在同一個地方採取行動。",
+      "url": "https://openai.com/business/plugins/?tab=plugins-legal",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Plugins bring context from your tools and data into ChatGPT and the API, helping you create, analyze, and take action in one place."
+    }
+  ],
+  "not_said": [
+    "沒有寫可以申請 Trusted Access 的國家或地區名單；索引的美國法律範圍和選定的事務所可以來自哪裡是兩件不同的事，不能互相推論，台灣是否在內三頁都沒有提到。",
+    "沒有公布 Astra for Law 本身、外掛或任何相關服務的價格。",
+    "沒有列出合資格事務所的認定標準、事務所規模門檻或名額。注意這裡的界線：公告結尾確實寫了一條接洽管道（想取得早期使用機會或把它做進產品，就與 OpenAI 聯絡），所以不可以寫成「連申請管道都沒有寫」——第一版草稿就是這樣寫的，已改。",
+    "沒有給 API 開放的時間表，「coming soon」沒有搭配任何日期。",
+    "沒有說明 Astra for Law 未來是否、或何時會開放給一般 ChatGPT 個人帳號；公告全文沒有提到個人帳號。",
+    "沒有在私有驗證集以外提供任何準確率或錯誤率數字，也沒有說明答案引用來源出錯時會發生什麼。",
+    "沒有提供任何獨立第三方查核評測結果，Vals AI 與 Free Law Project 的頁面都只是連結，本文沒有另外抓取。",
+    "沒有提供任何客戶的具體成效數字（省下多少時間、成本或案件量），三家事務所與 Cooley 都只有敘述沒有數字化成果。",
+    "沒有提到專業責任、執業疏失、律師公會規則，或 AI 協助完成的文件出錯時由誰負責；治理設計目前只和一家事務所一起討論，不是公開標準。",
+    "沒有說明零資料保留與排除人工審閱這兩項條款是否適用於合資格事務所以外的任何情形。",
+    "沒有說明 ChatGPT for Word 全面開放適用哪些方案、地區或語言，只寫『全面開放』一句。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Astra for Law 是一個全新訓練的模型。",
+      "seen_where": "公告標題 Introducing Astra for Law 給人的直覺印象。",
+      "why_excluded": "官方自己的定位句是「我們最強大的模型，配置成一套新的法律用 AI 基礎」，開頭第一句也明講是 GPT‑6 Astra 加上設定、工具與情境組合而成，不是另外訓練的新模型；本文採用官方原字，不採直覺印象。"
+    },
+    {
+      "claim": "Cooley 的 GO Public 是 Astra for Law 的案例。",
+      "seen_where": "公告在介紹三家事務所客製應用程式時把 Cooley 和 Sullivan & Cromwell、Ropes & Gray 放在一起。",
+      "why_excluded": "同一天發布的 Cooley 客戶案例頁明確寫著 GO Public 建立在 ChatGPT Work 之上；獨立查證時也發現公告原文對這三個案例用的字眼是「調整 ChatGPT Enterprise」，不是 Astra for Law，兩個一手來源方向一致，本文不把 Cooley 寫成 Astra for Law 的案例。"
+    },
+    {
+      "claim": "54.0%、38.7%、40%、54% 這幾個評測數字可以直接當成客觀、可推廣的準確率。",
+      "seen_where": "評測段落的圖表與文字敘述。",
+      "why_excluded": "官方自己標注的條件是 200 題、私有驗證集、最高或相同推理量；私有驗證集代表外界無法重新驗算，本文只把數字當成 OpenAI 自己的說法引用，並保留「up to」等限定詞。"
+    },
+    {
+      "claim": "外掛目錄裡法律類別目前有幾個外掛上架。",
+      "seen_where": "2026-09-18 讀取 business/plugins/?tab=plugins-legal 時看到的即時篩選結果。",
+      "why_excluded": "外掛目錄是沒有日期標記、內容會隨時變動的產品型錄；本文只用它確認法律是官方分類之一與外掛的一般說明，外掛的實際數量一律採用公告本文寫出的 26、9、47 這三個帶日期的數字，不採目錄當下顯示的即時計數。"
+    },
+    {
+      "claim": "台灣的法律事務所可以、或不可以申請 Trusted Access。",
+      "seen_where": "讀者容易自行推論的方向。",
+      "why_excluded": "三頁官方頁面都沒有列出選定事務所的國家或地區清單；索引以美國法律為主，不代表申請資格限定美國事務所，本文把「索引範圍」與「申請資格」分開寫，兩者都不推論。"
+    },
+    {
+      "claim": "Astra for Law 是 OpenAI 第一個產業別產品，或法律是全新的一個垂直。",
+      "seen_where": "公告的敘事角度容易讓人這樣讀。",
+      "why_excluded": "本站既有文章 ai-news-chatgpt-financial-services-20260910 已經介紹過一週前發布的金融機構版 ChatGPT，外掛目錄本身也列了法律以外的多個產業類別（個數是數出來的、頁面沒有印，不寫成事實）；三頁都沒有出現「第一」「首個」這類字眼，本文不自行加上。"
+    }
+  ],
+  "editorial_brief": "讀者是不會用到這項工具、但常聽到「AI 要取代專業工作」這類說法的台灣一般讀者。文章要回答的問題是：一家前沿實驗室把同一個模型配置給一個專業領域時，實際上多做了什麼，而這件事反過來說明了通用模型原本做不到什麼。答案出乎意料地具體：OpenAI 沒有另外訓練模型，而是加了一套美國法律的檢索索引、一組工具，以及圍繞使用資格與資料處理訂出的條款。對一般讀者最有意義的一點，是這次公告把「查得到、打得開的出處」當成賣點，而不是模型變聰明——這正好可以用來檢驗讀者自己日常收到的 AI 回答。\n\n最容易寫錯的兩件事：第一，索引的美國法律範圍和使用資格的地理範圍是兩回事，讀到索引就推論「僅限美國事務所申請」或反過來推論「台灣事務所可以申請」都是錯的，官方沒有寫地區清單。第二，Cooley 的 GO Public 建立在 ChatGPT Work 之上，不是 Astra for Law；公告本身把三家事務所的客製應用程式段落定調為「調整 ChatGPT Enterprise」，這一點獨立查證時才確認，比單純對照兩頁矛盾更站得住腳。\n\n刻意不談：GPT-6 Astra 本身的能力（既有文章 ai-news-gpt-6-astra-20260903 的範圍，本文只帶一句上下文）；「產業版 ChatGPT 一般是怎麼回事」（既有文章 ai-news-chatgpt-financial-services-20260910 的範圍，本文結尾連向它，不重講）；任何法律意見或建議讀者用 AI 處理自己法律事務的語氣；與 Harvey、Legora、Thomson Reuters 等競品的比較；任何對評測數字的獨立驗算。",
+  "must_not_write": [
+    "不寫 Astra for Law 是新模型；官方原字是「配置」既有的 GPT‑6 Astra，不是訓練新模型。",
+    "不寫台灣事務所可以或不可以申請 Trusted Access；官方沒有公布可申請的地區清單，只能寫『官方未說明』。",
+    "不把索引的美國法律範圍和產品的使用資格地理範圍混為一談；前者有寫，後者沒寫。",
+    "不省略 54.0%、38.7%、40%、54% 這幾個數字的條件（200 題、私有驗證集、最高或相同推理量），一律歸因為『OpenAI 表示』。",
+    "不省略『up to 54%』的『up to』限定詞。",
+    "不寫 Cooley 的 GO Public 建立在 Astra for Law 之上；官方客戶案例頁明確寫的是 ChatGPT Work，公告本身對這三個案例用的字眼是調整 ChatGPT Enterprise。",
+    "不把 Cooley 2025 年的交易數字和 AI 帶來的成果放在同一句話裡建立因果關係。",
+    "不寫『第一個法律垂直產品』或任何『首創』字句；本站一週前已介紹過金融機構版，外掛目錄本身也列了法律以外的多個產業類別；類別的個數是數出來的、頁面沒有印，也不寫進文章。",
+    "外掛數量只採用公告本文寫出的 26、9、47，不採外掛目錄當下顯示的即時篩選結果。",
+    "不把 ChatGPT for Word 的全面開放延伸解讀成適用所有方案、地區或語言；官方只寫『全面開放』一句。",
+    "不寫『我們試用』；本站沒有實際使用這項產品。頁面上只有兩段引言（Sullivan & Cromwell 的 John Savva、Harvey 的 Niko Grupen）談的是早期測試印象，其餘引言講的是合作與策略，不可推廣成『所有引言都是早期測試』；這兩段也不全是律師，Niko Grupen 是 AI 公司 Harvey 的研究主管，正文不寫成『律師引言』。",
+    "不提供法律意見，也不建議讀者用任何 AI 工具處理自己的法律事務。",
+    "不重講 GPT-6 Astra 本身的發布內容（ai-news-gpt-6-astra-20260903 的範圍），也不重講產業版 ChatGPT 的一般介紹（ai-news-chatgpt-financial-services-20260910 的範圍）。",
+    "圖解不畫任何商標、字標或介面截圖，圖上也不放正文沒有出現過的數字。"
+  ],
+  "live_data_warnings": [
+    "OpenAI 外掛目錄（business/plugins/?tab=plugins-legal）是即時篩選頁面，內容會隨時增減；本文沒有使用它當下顯示的任何計數，只用來確認法律類別存在與外掛的一般說明。",
+    "官方新聞 RSS 的 pubDate 為 00:00:00 GMT 屬於常見佔位時刻，前期研究紀錄已指出這點；本文延用其日期判斷，沒有另外把任何 RSS 筆數寫進文章。",
+    "OpenAI 若之後修訂公告內容、新增合資格地區或公布定價，本文引用的內容仍是 2026-09-18 讀到的版本，需要在下次查核時重新核對三個網址。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "加的是來源，不是聰明",
+  "diagram": {
+    "title": "一個專業版加了什麼",
+    "caption": "依 OpenAI 2026 年 9 月 17 日發布的官方公告整理，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "同一個模型",
+        "設定與工具換過"
+      ],
+      [
+        "一套法律索引",
+        "查得到、打得開的出處"
+      ],
+      [
+        "選定才能用",
+        "先給選定的事務所"
+      ],
+      [
+        "資料條款另談",
+        "合資格者才有的待遇"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Sources, not smarts",
+      "diagram": {
+        "title": "What a Professional Edition Adds",
+        "caption": "Compiled from OpenAI's official announcement published September 17, 2026; checked September 18, 2026.",
+        "nodes": [
+          [
+            "Same model",
+            "Settings and tools changed"
+          ],
+          [
+            "Legal index",
+            "Checkable, openable sources"
+          ],
+          [
+            "Selected firms",
+            "Selected firms get it first"
+          ],
+          [
+            "Data terms apart",
+            "Only for eligible firms"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "加わったのは出典、賢さではない",
+      "diagram": {
+        "title": "専門版に追加されたもの",
+        "caption": "OpenAIが2026年9月17日に発表した公式発表をもとに整理。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "同じモデル",
+            "設定とツールが変更"
+          ],
+          [
+            "法律インデックス",
+            "確認して開ける出典"
+          ],
+          [
+            "選定事務所のみ",
+            "対象事務所に先行提供"
+          ],
+          [
+            "データ条項は別",
+            "資格事務所限定の条件"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "똑똑함 아닌 출처 추가",
+      "diagram": {
+        "title": "전문가용 버전에 추가된 것",
+        "caption": "OpenAI가 2026년 9월 17일 발표한 공식 발표를 바탕으로 정리. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "동일한 모델",
+            "설정과 도구만 바뀜"
+          ],
+          [
+            "법률 색인",
+            "확인 가능한 출처"
+          ],
+          [
+            "선정 로펌만",
+            "선정된 로펌에 우선 제공"
+          ],
+          [
+            "데이터 조항 별도",
+            "자격 갖춘 로펌만 해당"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "加的是来源，不是聪明",
+      "diagram": {
+        "title": "一个专业版加了什么",
+        "caption": "依 OpenAI 2026 年 9 月 17 日发布的官方公告整理，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "同一个模型",
+            "设定与工具换过"
+          ],
+          [
+            "一套法律索引",
+            "查得到、打得开的出处"
+          ],
+          [
+            "选定才能用",
+            "先给选定的事务所"
+          ],
+          [
+            "数据条款另谈",
+            "合资格者才有的待遇"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "sources[] 三條全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（請求的 UA、標頭、查詢字串都沒有任何 email 或個人資料），用 Python 剝掉 <script>／<style> 後去標籤、不補空白，逐條比對 verbatim_quote 是否為連續字串（原 28 條全部通過，修正與增補後 32 條仍全部通過；Latham 那句只有在「不補空白」的版本才是連續字串，補空白的版本會在事務所名稱後多一個空格，這是連結邊界造成的假象），再把 title、description、正文 16 段、摘要 4 句、表格 6 列 24 格與 caption、圖解 caption 與四格、FAQ 6 題、callout、兩條 link 共約 146 條主張逐條回原文核對。沒有使用 sources[] 以外的任何網址補事實；重抓結果 astra-for-law 200／516,164 bytes、cooley-gopublic 200／382,574 bytes、business/plugins 200／2,025,068 bytes，與撰稿者記錄的位元組數相差 2～4 bytes，屬於已知漂移，內容相同。",
+    "verdict": "needs_second_round（事實層級的修正超過十處，且動到骨幹敘述：治理合作對象換人、可用性從「受邀才能用」改成「選定＋公告留有接洽管道」、「不是新模型」從官方陳述改為官方沒有這樣說）",
+    "edits_to_the_pack": [
+      "治理設計的合作對象由 Wachtell, Lipton, Rosen & Katz 改為 Latham & Watkins（官方形容為 AI 治理領先者），並把 Wachtell 那段還原成它自己的事（explore 探索）。原文兩段相隔數百字，草稿把 Latham 那句的四個治理項目掛到了 Wachtell 身上。研究紀錄同一條的 verbatim_quote 也補成完整句子。",
+      "檢索的 54% 補回兩個被刪掉的條件：限於「經稽核的目標段落集合」（On the audited set of target passages）、只算「來自正確法院意見書」的段落。原句三個條件草稿只留了「相同推理量」一個。",
+      "54.0% 的主詞改成「在 54.0% 的題目通過評測的整體正確性檢查」，不再寫成「整體正確率是 54.0%」；38.7% 的比較對象（只靠網路搜尋的 GPT‑6 Astra）與「40% 的相對進步」原本正確，未動。",
+      "「公告列出的每一類都加上 U.S.」不成立：原文只印一次 U.S. 起頭涵蓋整串清單（全篇 U.S. 共 3 次），正文與 FAQ 兩處已改。這一條是前期研究紀錄就寫錯、草稿照抄的。",
+      "「申請管道公告全部沒有寫」不成立：公告結尾寫著想取得早期使用機會或把它做進自己的產品就與 OpenAI 聯絡。已改成沒有寫的是合資格標準、規模與名額，並把那條管道寫進正文與摘要。",
+      "全篇 13 處「受邀」改為「選定」（內容包原有 14 處，只剩 hero.alt 那一處依規格不動）：公告用的是 selected law firms 與 eligible law firms，整頁 invite／invited 出現 0 次，「受邀才能用」是草稿加上去的機制推論，配上上一條會讓讀者以為連接洽都不可能。標題列（第 4 節）、表格、摘要、FAQ、callout、圖解 alt 與研究紀錄的圖解第三格一起改；hero.alt 依規格不動，留給協調者改寫。",
+      "「OpenAI 表示，Astra for Law 不是全新的模型」改為「OpenAI 的說法是把最強大的模型配置成一套新的法律用 AI 基礎」：公告全文 new model 與 train 各 0 次，OpenAI 從未說「這不是新模型」，那是本文的閱讀。description、摘要第一句、正文第一段、第 1 節與 FAQ 第 1 題五處一致改掉，並補上它在模型選單裡有自己的名字「GPT‑6 Astra Law」、API 代號 gpt-6-astra-law，讓讀者自己判斷。",
+      "47 項自訂技能從「26 個夥伴外掛加 9 個社群外掛共帶來 47 項」改成掛在 9 個社群外掛上：原句是 9 community plugins … with 47 custom skills。正文與表格兩處。",
+      "Cooley 由「美國律師事務所」改為「國際律師事務所」：客戶案例頁的定性是 an international law firm；另把「2025 年全球處理 180 件交易」改成「為全球 180 件交易提供顧問」（advised on）。",
+      "「頁面引用的律師與事務所評語用字也都是早期測試、這個階段」收窄成公告裡直接評論 Astra for Law 的兩段引言（頁面自己標 1 of 2），並照原文寫出三個措辭；同頁 Latham、Cooley、Thomson Reuters、Ropes & Gray、Wachtell 的引言講的是合作與策略，不是早期測試。",
+      "外掛目錄的「八個類別」拿掉：個數是數出來的、頁面沒有印，而且那是沒有日期的活頁面。改成標明 2026-09-18 讀取時點、只列部分類別並加「等」。",
+      "「三個百分比都只在官方自訂的測試條件下成立」改成「這四個百分比」：文章實際引用了 54.0%、38.7%、40%、54% 四個。",
+      "兩處來源外的事實改寫成站內互引：GPT‑6 Astra 的 9 月 3 日發布日與金融機構版「用同一個模型打造」都不在 sources[] 裡，改成公告自己的形容（最新、最強大）與本站既有文章的事件日。",
+      "「分析結果可以追回原始的判例或條文，讓使用者自己核對」改成官方原句的說法（研究基礎更紮實、附上「律師可以自己查看的可靠出處」）；主詞由使用者改為律師，並刪掉把 Ropes & Gray 自家系統的 trace findings back to the source 混進來的成分。",
+      "「等於點名自己和既有法律資料庫供應商是互補，不是競爭」這個推論，改成引官方自己那句「在 OpenAI 上建置應該是從生態系得到更多，而不是取代它」。",
+      "「公告裡唯一跟一般讀者直接有關的事」的「唯一」拿掉；「公告全文沒有提到一般 ChatGPT 個人帳號」改為「公告內文」，把頁尾全站導覽排除在否定句範圍外。",
+      "字數：上述補條件之後 zh-TW 段落一度到 3,071 字（上限 3,000），改以刪除重複敘述與冗詞回到 2,970 字，沒有為了湊字數刪掉任何但書、限定詞或條件。"
+    ],
+    "checked_and_correct": [
+      "三條 sources 今天都是自己讀到正文，不是擋阻頁、轉址殼或封存；前期紀錄擔心的 openai.com/index/* 403 沒有重現。checked_on 2026-09-18 與內容包三條 source、研究紀錄、第二段、表格與圖解 caption 四處一致，未更動。",
+      "28 條 verbatim_quote 全部是去標籤後可連續搜尋到的字串，含 U+2011 的 GPT‑6 Astra 與 en dash 的評測句；內容包全篇 9 處 GPT‑6 都是 U+2011，沒有混入 ASCII 連字號。",
+      "事件日 2026-09-17 與 slug 尾碼、news_date、正文第一段一致；Cooley 的 2025 年數字、ChatGPT for Word 的同日開放與事件日三者在文中是分開的。",
+      "索引本身的數字與範圍：美國判例、法規、法院規則與行政決定，超過 2.3 億筆網址、每日新增，Free Law Project／CourtListener 與「超過 99.9% 已公布的美國判決先例」，全部與原文相符且都歸因給官方。",
+      "兩項資料條款（API 端零資料保留、ChatGPT Enterprise 用量預設不納入人工審閱）都寫明限於合資格事務所，沒有外溢。",
+      "Cooley 的 GO Public 建立在 ChatGPT Work 之上、三家事務所那段官方用的是「調整 ChatGPT Enterprise」——這兩點草稿寫對了，是本篇最容易寫錯的地方，未動。2025 年的交易數字也沒有和任何 AI 成果建立因果。",
+      "界線：全文沒有購買建議、沒有推薦式比價、沒有和 Harvey／Legora／Thomson Reuters 的競品比較、沒有法律意見、沒有「我們試用」；所有效能與評測數字都帶「官方表示」。AI 篇只有一個 callout，沒有投資免責段落，也沒有掛 finance 主題。",
+      "分批開放與未定狀態都在：先給選定事務所、API「即將開放」沒有時間表、治理設計還不是公開標準、ChatGPT for Word 只寫全面開放而沒有方案／地區／語言。",
+      "地域沒有混寫：索引是美國，可申請地區官方未說明，兩者在正文、表格、FAQ 三處都分開寫，沒有推定台灣可用，也沒有反過來推定只限美國事務所。",
+      "與既有 ai-news-chatgpt-financial-services-20260910 沒有矛盾，也沒有重寫它的題目（產業版 ChatGPT 是什麼）；第二條 link 的 text 與該內容包 zh-TW title 逐字相同。",
+      "摘要四句的每個數字都在正文出現；FAQ 六題的答案都是純文字、沒有連結；圖解四格沒有數字；全文沒有簡體字。",
+      "價格、合資格地區清單、API 時間表、個人帳號這四個否定句今天逐一重驗：price／pricing／cost、region／country／Taiwan、language 在公告內文各 0 次。"
+    ],
+    "left_for_the_owner": [
+      "第 4 節的治理段現在同時出現 Latham & Watkins 與 Wachtell 兩家事務所，比原稿長。若站主覺得一般讀者不需要兩家，刪掉 Wachtell 那半句即可，但 Latham 那半句不能再換回 Wachtell。",
+      "公告另有一個沒有寫進文章的數字：最高推理量下、以判例為主的題目，找到的參考判例多 24%（已補進研究紀錄）。目前段落 2,970／3,000 字，要補得從別處刪等量的字，是編輯取捨。",
+      "外掛目錄是沒有日期的活頁面，出刊當天若要保留那句類別敘述，需要再讀一次確認篩選列沒有變。",
+      "hero.alt 仍寫「受邀事務所」，依規格查核代理不動；協調者依實際主圖改寫時請一併改成「選定的事務所」，以免與正文不一致。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent（未參與撰稿，也未參與第一輪）",
+      "checked_on": "2026-09-18",
+      "method": "sources[] 三條在 2026-09-18 以 curl -sL -A \"Mokaair-editorial\" 自行重抓（請求的 UA、標頭、查詢字串都沒有任何 email 或個人資料），結果 astra-for-law 200／516,160 bytes、cooley-gopublic 200／382,573 bytes、business/plugins 200／2,025,111 bytes，與第一輪記錄相差 1～43 bytes，屬已知漂移、內容相同，三條都是自己讀到的正文而非擋阻頁。用 Python 剝掉 <script>／<style> 後去標籤、不補空白，對 32 條 verbatim_quote 做連續字串比對：32 條全部 count>=1（第 25 條在頁面上重複兩次，是輪播元件的重複渲染，不是拼接），沒有任何一條含 ...／…／| 的拼接引文。覆核範圍：第一輪改動過的 28 處段落與新寫進去的每一句逐句回原文，另用程式清點關鍵詞。清點結果：invite／invited／invitation 各 0 次，selected 3 次、eligible 2 次，new model 0 次、train 0 次，U.S. 全頁 3 次（索引清單、99.9% 判例、200 題）且索引清單只在句首印一次，price／pricing／cost 0 次，region／country／Taiwan 0 次，language 0 次，personal account 0 次，Latham 3 次、Wachtell 2 次。外掛目錄今天的篩選列與第一輪記錄逐字相同（All、Small Business、Productivity、Engineering & IT、Data & Research、Legal、Design & Creative、Finance、Sales & Commerce）。沒有使用 sources[] 以外的任何網址替文章補事實。",
+      "claims_rechecked": "約 60 條（第一輪改動的 28 處、新寫的每一句、32 條逐字引文，外加界線與否定句範圍複查）",
+      "verdict": "ok（第二輪又改 12 處，其中 9 處在內容包、3 類在研究紀錄；沒有再發現骨幹層級的錯誤，第一輪對 Latham／Wachtell、54% 三條件、受邀→選定、「不是新模型」、U.S. 只印一次這五項的修正全部複核無誤）",
+      "edits_this_round": [
+        "內容包：刪掉「而不是只給流暢卻可能編造依據的答案」。原句把這層對比掛在「官方的說法是」底下，但公告原文只寫到 with reliable authorities the lawyer can examine for herself，沒有提編造引註；這是第一輪新寫進去、歸因過頭的一句。已另立一條 verified_fact 記錄原文。",
+        "內容包：把「兩段直接評論 Astra for Law 的律師引言」改成「外部引言」。兩段引言之一的 Niko Grupen 是 AI 公司 Harvey 的 Head of Applied Research，不是律師，寫成「律師引言」不成立。",
+        "內容包：可用性改為未來式共 4 處（description、摘要第三句、表格 Trusted Access 列、第 4 節第 1 段）——官方原文是 will be initially offered／will be coming soon，公告當天尚未開通，原本的「先開放給」讀起來像已經上線。",
+        "內容包：FAQ 第 1 題「在模型選單裡有自己的名字」改為「會顯示成」，對齊原文 It will appear in the model picker as。",
+        "內容包：第 2 節第 2 段「補充事務所本來就在付費使用的內容」改為「補充事務所既有的授權內容與專門產品」——原文是 licensed content and specialist products firms rely on，沒有寫「付費」，那是推論。",
+        "內容包：第 4 節第 2 段「兩者都還不是公開的標準」改為「公告把兩者都寫成進行中的合作，還不是公開的標準」，把否定句限縮回公告寫了什麼（Latham 是 to design for、Wachtell 是 to explore，都是進行式）。",
+        "內容包：摘要第三句「公告只留下與 OpenAI 聯絡這一條管道」改為「公告寫明可以與 OpenAI 聯絡，但…」——頁首另有 Contact Legal sales 這個入口，摘要裡不設範圍的「只有一條」不成立；正文「公告結尾只留一句」有限定在結尾，未動。",
+        "研究紀錄：第一輪說「全篇 13 處受邀改為選定」但只改了內容包，研究紀錄仍有 4 處殘留（verified_facts 的使用資格條、not_said 第 1 條、unverified_or_excluded 第 5 條、must_not_write 第 2 條），已全部改掉並在該條 fact 補上詞頻與未來式的提醒。",
+        "研究紀錄：must_not_write 第 11 條仍寫「頁面上所有引言都是受訪者自己的早期測試印象」——第一輪已在正文推翻這個全稱，但沒有回頭改這條拘束句，會讓後續譯稿或改寫再犯一次。已改寫成兩段引言的實況，並註明其中一位不是律師。",
+        "研究紀錄：unverified_or_excluded 第 6 條與 must_not_write 第 8 條仍寫「外掛目錄有八個產業類別」——第一輪已把這個數出來的數字從正文拿掉，但兩條理由句還留著，已改成不帶個數的寫法。",
+        "研究紀錄：新增 verified_fact 一條，記錄第 2 節第 3 段所依據的官方原句（stronger research foundation／reliable authorities the lawyer can examine for herself），第一輪寫了這句但沒有留下對應的逐字引文。",
+        "研究紀錄：新增 verified_fact 一條，記錄公告開頭把對象寫成「法律事務所與法律科技公司」、並點名 Harvey 與 Legora 等 API 客戶將可在其上開發；文章因字數只寫了「把它做進自己的產品」這條管道，留下明確標記以免日後被改寫成「只有法律事務所能用」。"
+      ],
+      "rechecked_and_correct": [
+        "治理合作對象：Latham & Watkins 拿的是 design for information permissions, ethical walls, client instructions, and firm oversight 四項，在 Legal-grade trust and controls 一節；Wachtell, Lipton, Rosen & Katz 在最後一節 Build with us，用字是 explore。兩段相隔數百字，正文、表格與 FAQ 都分開寫，沒有再混。",
+        "檢索 54% 的三個條件逐字對過：On the audited set of target passages（經稽核的目標段落集合）、from the correct court opinions（來自正確法院意見書）、at the same reasoning effort（相同推理量），加上 up to（最多）四者在正文第 3 節第 2 段與摘要第二句都在。",
+        "「受邀」在內容包只剩 hero.alt 一處（依規格查核代理不動，已在報告點名）；title、description、summary、表格、FAQ、callout、圖解 alt、第 4 節標題全部是選定／合資格。",
+        "「不是新模型」五處都已是官方定位句（Our most powerful model, configured into a new AI foundation for law），並附模型選單名「GPT‑6 Astra Law」與 API 代號 gpt-6-astra-law；內容包 10 處 GPT‑6 全是 U+2011，gpt-6-astra-law 兩處全是 ASCII 連字號。",
+        "U.S. 全頁 3 次、索引清單只在句首印一次的修正已落實；研究紀錄 verified_facts 沒有殘留舊的「每一類都加 U.S.」寫法。",
+        "地域三處（正文第 2 節、表格 Trusted Access 列、FAQ 第 3 題）仍分開寫索引範圍與申請資格，沒有推定台灣可用，也沒有反推只限美國事務所。",
+        "狀態詞逐一對來源：26 個夥伴外掛與 ChatGPT for Word 是 today（已開放）、Trusted Access 與 API 是 will／coming soon（未開放、無時間表）、治理設計與 Wachtell 合作是進行式，本輪把前後不一致的四處補成未來式後全部對齊。",
+        "界線：沒有購買建議、沒有推薦式比價、沒有投資免責 callout（全篇只有一個 info callout）、沒有 finance 主題、沒有法律意見、沒有「我們試用」；公告頁尾那段與 Claude Fable 5.1 的同題比較，文章完全沒有引用，符合不做競品比較的界線。",
+        "第二個結尾連結 ai-news-chatgpt-financial-services-20260910 的既有內容包今天打開核對，zh-TW title 與 link text 逐字相同、事件日 2026-09-10 與正文「一週前」相符；ai-news-gpt-6-astra-20260903 也存在且 news_date 為 2026-09-03，第 1 節第 3 段的事件日互引成立。兩篇都沒有被本文改寫或矛盾。",
+        "摘要四句的每個數字都仍在正文出現；FAQ 六題答案都是純文字；圖解四格沒有數字；沒有簡體字；checked_on 2026-09-18 在內容包三條 source、研究紀錄、正文第二段、表格與圖解 caption 一致，未更動。"
+      ],
+      "left_for_the_owner": [
+        "hero.alt 仍寫「受邀事務所」，第二輪同樣依規格不動；這是內容包最後一處與正文不一致的用詞，協調者重畫主圖改寫 alt 時務必一併改成「選定的事務所」。",
+        "第一輪留下的三件事（Latham/Wachtell 兩家是否都保留、要不要補 24% 那個數字、出刊當天要不要重讀外掛目錄）第二輪沒有替站主決定，維持原狀；目前段落 2,961／3,000 字，補 24% 那句大約需要 30 字，現有空檔剛好夠，但那仍是編輯取捨。",
+        "文章沒有寫出公告點名的 API 客戶（Harvey、Legora）與「法律科技公司」這一類對象，是字數取捨；已寫進研究紀錄，若日後擴寫請不要反過來寫成只有法律事務所能用。"
+      ]
+    }
+  }
+}
