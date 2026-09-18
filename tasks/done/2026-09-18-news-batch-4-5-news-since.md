@@ -1,13 +1,13 @@
 ---
 id: 2026-09-18-news-batch-4-5-news-since
 title: News batch 4.5: news since 2026-09-16 for the three verticals
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-18T05:17:48Z
 created_at: 2026-09-18T05:17:33Z
-completed_at:
+completed_at: 2026-09-18T08:44:16Z
 branch: claude/news-batch-4-5-since-0916
 depends_on: []
 scope:
@@ -76,10 +76,10 @@ with the differences written down in `docs/news-2026-batch-4/agents/DELTA-4-5.md
 - [x] Two rounds of independent fact-checking per article (reports in `factcheck-draft/`,
       `factcheck` + `second_round` in each research record) and a per-language review applied
       through `apply_corrections.py`.
-- [ ] The three indexes expanded in place in five languages (`update_index.py`), without rerunning
+- [x] The three indexes expanded in place in five languages (`update_index.py`), without rerunning
       `build_*_index.py`.
-- [ ] `pack_cli lint --kind life` 0 errors, content tests green, `npm run check:tasks` green.
-- [ ] Published: deploy, then `guides-import --slug` for the 13 articles and the 3 indexes in one run
+- [x] `pack_cli lint --kind life` 0 errors, content tests green, `npm run check:tasks` green.
+- [x] Published: deploy, then `guides-import --slug` for the 13 articles and the 3 indexes in one run
       (dry-run first), then the public URLs verified.
 
 ## Steps
@@ -91,9 +91,9 @@ with the differences written down in `docs/news-2026-batch-4/agents/DELTA-4-5.md
 - [x] Translators (sonnet) x13, `translation_checks.py`, `normalize_locales.py`.
 - [x] Reviewers: two groups per language (ja/ko opus, en/zh-CN sonnet), 248 corrections applied.
 - [x] `align_links.py`, `sync_captions.py`, `related`, `pack_cli relink`, image builds.
-- [ ] `update_index.py` for all three verticals (INSERT table: tech group paragraphs, crypto UK section).
-- [ ] Checks, HANDOVER 1d, workspace READMEs, PR.
-- [ ] Owner's explicit choice to merge and publish; deploy; import; verify.
+- [x] `update_index.py` for all three verticals (INSERT table: tech group paragraphs, crypto UK section).
+- [x] Checks, HANDOVER 1d, workspace READMEs, PR.
+- [x] Owner's explicit choice to merge and publish; deploy; import; verify.
 
 ## How to verify
 
@@ -106,6 +106,9 @@ cd ../.. && npm run check:tasks
 ```
 
 ## Notes
+
+- Done 2026-09-18: PR #550 squash-merged as f5cf4950, deploy_20260918_083808, `guides-import --slug` x16
+  (create 65 / update 15, failed null), 80 public URLs verified (200, sitemap, hero). Details in HANDOVER 1d.
 
 - Scope lists the batch directory file by file: the whole directory would cover the only scope file
   of task 2026-09-16-news-batch-4-4-the-8, which stays open for the 8/1-9/15 items.
