@@ -1,0 +1,490 @@
+{
+  "slug": "ai-news-chatgpt-storage-scale-20260911",
+  "event_date": "2026-09-11",
+  "event_date_basis": "OpenAI 官方新聞 RSS feed（sources[1]）對這篇文章的 <pubDate> 是 Fri, 11 Sep 2026 10:00:00 GMT；文章頁面本身（sources[0]）在標題正上方印著『September 11, 2026』；兩個官方管道一致，且都是今天（2026-09-18）親自重新讀到的。文章沒有另外的生效日或上線日——這是一篇說明性質的工程部落格，沒有任何東西在特定日期對使用者上線，因此事件日就是這篇文章的發布日。",
+  "title": "OpenAI 揭露 Habitat 儲存架構：每週逾十億人使用背後的規模與極限",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI 官方工程部落格：Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI News（官方新聞 RSS feed）",
+      "url": "https://openai.com/news/rss.xml",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 官方網站地圖：Engineering 分類",
+      "url": "https://openai.com/sitemap.xml/engineering/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18 依 WRITER-AI.md 規定，全部用 curl -sL -A \"Mokaair-editorial\" 重抓，沒有在任何請求標頭、查詢字串或表單放入個人資料。(1) https://openai.com/index/scaling-storage-one-billion-users-part-one/ → HTTP 200、550,655 bytes（curl -w size_download）。比對頁面 <title>、byline『By Jon Lee, Chaomin Yu, and Ben Ries, Members of Technical Staff』、headline 規模句、三個統計方塊、Rust 改寫段落（含 U+2011 連字號版本的 GPT‑5.5，index 198498，與頁尾一般連字號版本 index 215746 並存）等十餘處逐字比對，確認是文章正文，不是任何形式的攔截頁——2026-09-16 前期撰稿與獨立查核用同一 User-Agent 對這個網址一律拿到 HTTP 403（9,869 bytes 的邊緣挑戰頁），本次是存取限制解除後的第一次直接讀取，因此本輪不需要引用 web.archive.org 或 x.com 佐證核心事實，sources[] 只放這三條，sourcing_verdict 由前一輪的『full』（實際上全靠封存、不成立）改為『本輪的 full』（真的讀到官方線上頁面本身）。(2) https://openai.com/news/rss.xml → HTTP 200、736,773 bytes；本篇項目 pubDate『Fri, 11 Sep 2026 10:00:00 GMT』、category『Engineering』、link 不帶結尾斜線；摘要另寫『22M requests per second』，經比對正文全文查無此數字的敘述式出現。(3) https://openai.com/sitemap.xml/engineering/ → HTTP 200、192,116 bytes；22 個 <url>（20 篇文章、2 篇清單頁 /news/ 與 /news/engineering/），本篇文章的 <lastmod> 讀到 2026-09-17T21:51:03.895Z（兩天前另一次查核讀到的是 2026-09-12T02:19:32.976Z，證實是會變動的建置時間戳），沒有 part-two 對應的 <loc>。三條來源的 checked_on 一律 2026-09-18（台北時間），與內容包、正文第二段一致。另外嘗試重抓徵才頁 https://openai.com/careers/software-engineer-habitat-(online-data)-seattle/ 確認出站連結存在，回應是存取限制頁，因此不列入 sources[]、不引用其內容，只在正文與研究紀錄描述『文末附上一個工程職缺連結』。",
+  "verified_facts": [
+    {
+      "fact": "頁面標題與作者列：文章標題印為「Rapidly scaling online storage to serve over 1 billion ChatGPT users」，頁面日期印「September 11, 2026」，分類標「Engineering」，byline 具名三位技術人員。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By Jon Lee, Chaomin Yu, and Ben Ries, Members of Technical Staff"
+    },
+    {
+      "fact": "副標寫明這篇文章要說明的是 Habitat 這個應用儲存平台怎麼用 Python 撐過規模成長。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "How we adapted our application storage platform, Habitat, in Python to manage unprecedented growth."
+    },
+    {
+      "fact": "Habitat 的定義句與規模主張：OpenAI 自陳 Habitat 現在每秒處理超過 7000 萬次請求，支撐旗下產品每週被超過 10 億人使用，涵蓋近 40 個地理區域。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Habitat now handles more than 70 million requests every second, supporting products used by over 1 billion people each week, across almost 40 geographic regions."
+    },
+    {
+      "fact": "頁面三個統計方塊分別寫 70M+／requests per second、1B+／people each week、500 PB+／data。獨立查核 2026-09-18 註記：這六段文字在原始碼裡是六個各自獨立的 <div>（`text-h2` 放數字、`text-p2` 放說明），連起來的那一串在頁面上搜尋不到，因此 verbatim_quote 只保留其中一個可原樣搜尋到的片段，其餘是讀到的值。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "500 PB+"
+    },
+    {
+      "fact": "起源與現況對比：Habitat 最早於 2023 年 DevDay 為支援 GPTs 而推出，當時是連到單一資料庫的 Python 用戶端函式庫，如今已是存放逾 500 PB 資料的複雜分散式系統。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Habitat first launched to support GPTs at DevDay 2023, starting as a simple Python client-side library connected to a single database."
+    },
+    {
+      "fact": "成長速度：OpenAI 表示過去三年，Habitat 的規模每年成長超過 10 倍。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we've grown more than 10x year-over-year for the last three years"
+    },
+    {
+      "fact": "官方新聞 RSS feed 對這篇文章的紀錄：pubDate 為 Fri, 11 Sep 2026 10:00:00 GMT，category 為 Engineering，link 網址不帶結尾斜線（與內容包引用的網址在尾斜線上不同，兩者實際指向同一頁）。",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<pubDate>Fri, 11 Sep 2026 10:00:00 GMT</pubDate>"
+    },
+    {
+      "fact": "RSS feed 與頁面中繼資料的摘要另外寫著『22M requests per second』，但這個數字在 550,655 bytes 的正文全文中查無出現（正文自己給的數字是現在 70M+、Python 尖峰 20M+），摘要與正文用的是兩個不同數字，文章沒有交代兩者關係。",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Learn how OpenAI evolved Habitat from a Python library into a globally distributed storage platform serving 1 billion ChatGPT users and 22M requests per second."
+    },
+    {
+      "fact": "這篇是儲存主題兩篇系列文章的第一篇。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This post is the first in a two-part series on how we scaled online storage."
+    },
+    {
+      "fact": "第二篇（part two）承諾的內容：多租戶可靠性、讀取效能的分層優化策略，以及和 Azure Cosmos DB 合作擴大的方式；這是 OpenAI 對未來出版的承諾，標記為廠商宣稱。截至查核日（2026-09-18），官方 Engineering 網站地圖 sources[2]（22 個 <url>，其中 20 篇是文章、2 篇是清單頁）與官方新聞 feed sources[1] 都沒有第二篇的項目，也沒有公布日期。第二輪查核 2026-09-18 更正：本條的 verbatim_quote 出自文章頁 sources[0]，原本卻把 url 掛在網站地圖上——那句話在網站地圖裡搜尋不到，是本紀錄 27 條引文中唯一對不上自己 url 的一條，已把 url 改回引文真正所在的文章頁；『網站地圖與 feed 都沒有第二篇』的證據另在 sources[2] 與 sources[1]，本輪也各自重抓確認（兩者的 part-two 字串命中數皆為 0）。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In a future post, we’ll go into detail about how we made multi-tenancy reliability at scale, our layered strategy for optimizing read performance, and how we scaled our partnership with Azure Cosmos DB to reliably handle unprecedented demand."
+    },
+    {
+      "fact": "另有第二個、與 part two 不同的後續承諾：OpenAI 說之後會另外寫一篇分享這次 Rust 改寫的心得，同樣沒有公布日期，也沒有和 part two 混在一起講。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We plan to share more learnings in a future blog."
+    },
+    {
+      "fact": "尾端延遲的機制說明：一般使用者的一次請求平均牽涉幾百次資料庫呼叫，其中最慢的一次決定使用者的體感速度。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When the average user request results in hundreds of database calls, the slowest database call is the one the user feels."
+    },
+    {
+      "fact": "Statsig 設定檔案案例：Statsig（文中定義為管理功能開關、可用於 A/B 測試等用途的工具）『預設』（by default）設定成每分鐘無時間差重新輪詢設定，且那份設定包含每個服務的每一條正式環境規則（every production rule across every service）；疊上『一個 Pod 最多跑 8 個 Python 處理程序』的架構決定後，變成每分鐘每個 Pod 都會有某個瞬間（some moment），它的所有工作處理程序停下手上正在處理的請求、改去解析一份龐大的設定檔。修法是部署範圍更小的設定、拉長輪詢間隔並替這類背景工作加入隨機時間差。獨立查核 2026-09-18 更正：前一輪把原文的 all of its workers 寫成『幾乎所有處理程序』並漏掉『某個瞬間』，已照原文改回。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "every minute each pod would have some moment where all of its workers stalled processing in-flight requests and instead would spend their CPU cycles parsing a giant configuration file"
+    },
+    {
+      "fact": "asyncio 抖動的官方機制說明：asyncio 能讓 I/O 密集工作並行，但無法繞開 Python GIL、提供不了 CPU 平行處理能力，這是抖動的根本原因。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Asyncio helps Python execute I/O-bound workloads concurrently, but does not help work around the Python GIL and provide CPU parallelism."
+    },
+    {
+      "fact": "連線池案例：Python 的 aiohttp TCPConnector 預設優先重複使用最近釋出的連線（LIFO），OpenAI 說那平常是合理的預設；但一波突增流量下，較慢、已經過載的伺服器比較晚把連線還回池子，因此更常被後續請求選中，流量逐漸集中到本來就吃力的 Pod 上。OpenAI 把這個情況稱為一種 metastable failure（原文同時說這是團隊成員在先前工作中熟悉的一類故障）：造成過載的用戶端停掉之後，一部分處理程序仍持續惡化，要重啟才恢復。改成優先使用最早釋出的連線（FIFO）後解掉回饋循環，連穩態（steady state）的請求量變異也變小，現在大多交給 Istio 與 Envoy 處理連線池與負載平衡。獨立查核 2026-09-18 更正：前一輪把這個案例稱為『驚群效應』（thundering herd）是張冠李戴——原文的 thundering herd 出現在另一節『Avoiding flooding downstream resources』，指的是處理程序一多、大量連線把下游依賴壓垮，與 LIFO 連線池的回饋循環不是同一件事。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "During a burst of requests, requests to slower overloaded servers returned connections to the pool later and were therefore selected more frequently by subsequent requests, gradually concentrating more traffic on the pods already struggling."
+    },
+    {
+      "fact": "驚群效應（thundering herd）在原文指的是另一件事：為了壓低 asyncio 延遲而跑非常多 Python 處理程序的副作用，是很容易用大量連線把下游依賴壓垮，原文在這裡才用了 thundering herd 這個詞。這一段與上一條的 LIFO 連線池案例分屬不同小節，不可互相借用名詞。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "One side effect of tuning for low asyncio delay and having so many Python processes is that it becomes very easy to overwhelm downstream dependencies with the vast number of connections (known as a “thundering herd”)."
+    },
+    {
+      "fact": "Habitat 在 OpenAI 內部的份量：是全公司核心數第二大的服務（Envoy 使用量排第四）。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "being the second largest service by core count at OpenAI (and fourth for our Envoy footprint)"
+    },
+    {
+      "fact": "Python 尖峰吞吐量：Python 服務在尖峰時每秒處理超過 2000 萬次請求。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At its peak, Python helped us serve more than 20 million requests every second."
+    },
+    {
+      "fact": "Rust 改寫細節，含非 ASCII 連字號：2026 年第二季，兩名工程師搭配 Codex 與 GPT-5.5（原文連字號為 U+2011 不斷行連字號，與頁尾導覽列一般連字號的 GPT-5.5 不同）完成整套服務改寫成 Rust；新版本處理 95% 正式流量，計畫『未來幾週』內完全停用 Python，官方數據顯示 CPU 效率 6 倍、記憶體效率 15 倍、平均與尾端延遲都顯著降低——methodology、測試情境與第三方查核都沒有公布。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In Q2 2026, with just 2 engineers, Codex, and GPT‑5.5, we were able to rewrite the entire service in Rust."
+    },
+    {
+      "fact": "Habitat 的 API 設計哲學：刻意提供簡化的 NoSQL API、不開放任意 SQL 查詢，明文表述『沒有無界查詢可以拖垮 Habitat，但複雜的 join 與圖走訪需要產品團隊自己做一部分粗活，這有助於整體上做出更有效率的設計』；escape hatch 是透過 CDC 串流到各團隊自行維運的 Rockset 實例，原句是『每個客戶端團隊要為自己的複雜查詢需求負責擴充自己的 Rockset 實例』（前一輪研究把這句話截斷並自行補上句號，本輪已改回完整句）。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "There are no unbounded queries that can overload Habitat and complex joins and graph traversals require product teams to do some of the heavy-lifting which helps overall optimize for more efficient designs."
+    },
+    {
+      "fact": "Figure 01（『What is Habitat?』示意圖）逐一核對 DOM 標記，是 7 組 label｜sub-label（不是 8 項）：Caching｜Caches、ACL policies｜Authorization、Placement & data residency｜Data residency、Encryption｜Data security、Isolation｜Multi-tenancy、Rate limiting｜Request shaping、Routing｜Schema lookup · Data residency。Nanobase 只在這張圖的資料裡出現（渲染後 HTML 與其背後 JSON 各一次、同一個資料點），全文其餘地方沒有再解釋這個詞。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Schema lookup · Data residency"
+    },
+    {
+      "fact": "Figure 02（『Habitat service』示意圖）標出的三個資料庫端點代號 habitat-cosmos-db-us0、-us1、-eu0，是圖裡的範例標籤，不是官方公布的地區清單，全文沒有其他地區、國家或城市名稱。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "habitat-cosmos-db-us0"
+    },
+    {
+      "fact": "Figure 03（asyncio 延遲示意圖）的座標軸標的是『Illustrative time』，讀數為『0.0 / 40 illustrative units』，圖說本身即自陳是示意用途；全文找不到任何一張標示實際測得延遲數字的圖表，唯一的延遲量級描述是抖動可達『數百毫秒、極端情況下數秒』與未附數字的『顯著降低』。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "0.0 / 40 illustrative units"
+    },
+    {
+      "fact": "『10 億』在同一個頁面上有四種寫法，OpenAI 沒有交代彼此的關係：可見標題與 og:title／twitter:title 寫『over 1 billion ChatGPT users』（文末 part II 那句也是『over 1 billion ChatGPT users』）；正文的規模句寫『products used by over 1 billion people each week』（以週計的使用人數，且主詞是 products，不是 ChatGPT）；meta description／og:description／twitter:description 寫『serving 1 billion ChatGPT users and 22M requests per second』；og:image:alt 與 twitter:image:alt 寫『nearly 1 billion ChatGPT users』。獨立查核 2026-09-18 逐一在今天抓下的 HTML 裡確認四處都在。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Rapidly scaling online storage to serve nearly 1 billion ChatGPT users."
+    },
+    {
+      "fact": "文末的行動呼籲是應徵工程職缺，不是任何使用者可用的功能或設定；連結指向西雅圖的 Habitat 團隊職缺頁（該職缺頁本身在本次查核對 curl 回應存取限制，僅能確認連結存在，不引用其內容）。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "check out this open role on our team"
+    },
+    {
+      "fact": "由『2025 年年中』推遲到『2026 年第二季』之間的唯一時間長度說法：OpenAI 說推遲 Python 改寫一年，讓團隊在超高速成長期間先處理更急迫的問題。",
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Deferring a Python rewrite for a year allowed us to focus on more urgent and impactful challenges during our hypergrowth."
+    },
+    {
+      "fact": "Engineering 網站地圖今天（2026-09-18）記錄這篇文章的 <lastmod> 為 2026-09-17T21:51:03.895Z；兩天前（2026-09-16）另一份查核記錄的同一欄位是 2026-09-12T02:19:32.976Z。兩次查核之間文章內容沒有已知變動，這個值本身卻換了兩次，證實它是網站建置時間戳，不是文章的發布日或更新日，不可以當成『最後一次改動』的證據，也不是『唯一』的時間戳（頁面本身之外，@OpenAIDevs 等其他官方發布管道也各自帶有自己的時間戳）。",
+      "url": "https://openai.com/sitemap.xml/engineering/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<lastmod>2026-09-17T21:51:03.895Z</lastmod>"
+    }
+  ],
+  "not_said": [
+    "耐久性：全文沒有出現 durability、replica、restore、disaster recovery 字樣（逐一以詞界比對確認為 0 次），也沒有任何備援份數或復原政策的說明；只提到把部分關鍵資料放進跨地區分散的 Azure Cosmos DB 帳戶以『縮小單一地區故障的影響範圍』。",
+    "可用性／SLA：全文沒有出現 uptime、backup 字樣（詞界比對 0 次）；以子字串比對『SLA』會得到 27 次假陽性命中，但全部落在 CSS 工具類名（例如 translate-y 裡的 sla 片段），用 \\bSLA\\b 詞界比對後是 0 次真正出現（第二輪 2026-09-18 重驗：uptime、backup、SLA 的詞界命中數皆為 0，且渲染後正文只出現一個百分比「95%」，沒有任何可用性數字）。文章描述了幾次自家系統出過的狀況，但沒有附上事故日期、時長或對使用者的實際影響。第二輪查核 2026-09-18 更正：原本寫『自己造成的事故』不成立——回滾那次原文寫的是某個團隊『因為不相干的原因（for unrelated reasons）』把服務回滾到帶有問題的舊用戶端，不是失誤。",
+    "地區／資料所在地：全文只有『近 40 個地理區域』一個地理規模詞，沒有把任何國家或城市寫成資料存放地點，沒有提到台灣或亞洲。第二輪查核 2026-09-18 更正：原本寫的『沒有列出任何國家、城市名稱』與『唯一的地區相關字串』兩個說法都不成立——文末職缺連結的 href 是 careers/software-engineer-habitat-(online-data)-seattle/，網址裡就有城市名（渲染後的可見連結文字則沒有，Seattle 一詞在可見正文 0 次），頁尾語系切換器另外印著 United States。比較接近地區資訊的有兩處：Figure 02 裡三個範例代號（us0／us1／eu0，是示意標籤不是公布清單）與職缺連結網址裡的城市名。",
+    "Habitat 實際存放什麼資料：文章舉了登入、查看 Codex 設定、開新對話等情境，原文寫的是這些動作『可能』（may require）需要多次資料查詢；只說過一次這裡是保護使用者資料、防止外部、內部與代理程式（external, internal, and agent actors）未經授權存取的關鍵位置，但沒有明講對話內容本身是否存放在 Habitat。第二輪查核 2026-09-18 更正：原本的『反覆強調』不成立，protecting user data 在正文只出現 1 次。",
+    "加密與保存期限細節：Encryption／Data security 只出現在 Figure 01 的圖解標籤與『產品工程師不用再自己處理加密』這類列舉裡，沒有靜態加密與傳輸加密的區分，沒有金鑰管理方，沒有保存期限或刪除時程。",
+    "Rust 改寫的方法學：6 倍 CPU、15 倍記憶體與 95% 正式流量三個數字都沒有附測試方法、工作負載定義、硬體規格、量測期間或第三方查核；『平均與尾端延遲都顯著降低』沒有附任何數字。",
+    "Python 停用日期與 part two／改寫心得兩篇後續的日期：三者都只用『未來幾週』『未來』這類沒有日期的說法，查核當下的官方網站地圖與新聞 feed 都沒有對應項目。",
+    "使用者端的變化：文章沒有公布任何新產品、價格、地區或設定，沒有一句話說使用者將感覺到更快或更省。",
+    "成本：文章談到『可觀的 CPU 與記憶體規模成本』與核心數，但沒有任何金額、百分比成本節省或伺服器／核心／pod／叢集數量。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "OpenAI 官方新聞 RSS feed 與 Engineering 網站地圖裡 <item>／<url> 的總筆數。",
+      "seen_where": "今天（2026-09-18）重抓 rss.xml 與 sitemap.xml/engineering/ 時親眼看到的即時計數。",
+      "why_excluded": "BRIEF 與本垂直跨篇通則第 1、4 條明文禁止把 feed／sitemap 的筆數寫進文章或研究紀錄當成事實：這批 12 篇裡有 9 篇曾把同一個 feed 的筆數記成 1,193／1,194／1,195／1,196 四種不同數字，兩天內就會漂移。本紀錄只用『當天能不能讀到這篇文章的項目』判斷取得成敗，不記總數。"
+    },
+    {
+      "claim": "Engineering 網站地圖裡這篇文章的 <lastmod> 具體時間戳。",
+      "seen_where": "sources[2]，今天讀到 2026-09-17T21:51:03.895Z；兩天前的查核讀到 2026-09-12T02:19:32.976Z。",
+      "why_excluded": "已記進 verified_facts 與 live_data_warnings 供追蹤『這是建置時間戳、會變動』的證據，但明確排除在文章正文之外：它不是發布日、更新日或事件日，寫進正文只會誤導讀者以為文章在那個時間點改過內容。"
+    },
+    {
+      "claim": "22M requests per second 這個數字實際代表什麼。",
+      "seen_where": "sources[1] 的 RSS 摘要與 sources[0] 頁面中繼資料（og:description／meta description），兩處文字相同。",
+      "why_excluded": "正文全文（550,655 bytes）逐字搜尋不到『22M』或『22 million』做為敘述句的一部分（只在中繼資料與少數巧合的產生式 id 字串裡出現），OpenAI 自己沒有解釋這個數字和文中 70M+／20M+ 的關係。文章與研究紀錄都如實記下『這個數字只在摘要出現、正文沒有』，但不猜測它是什麼。"
+    },
+    {
+      "claim": "Habitat 實際使用哪些國家／地區的資料中心，以及是否含台灣或亞洲其他地點。",
+      "seen_where": "全文搜尋不到任何國家、城市名稱；唯一的地區線索是 Figure 02 的三個範例資料庫代號（us0／us1／eu0）。",
+      "why_excluded": "代號本身標明是圖解範例，不是公布清單；本文與研究紀錄都不把示意標籤當成地區清單使用，也不推論或猜測台灣是否在範圍內。"
+    },
+    {
+      "claim": "西雅圖工程職缺頁（careers/software-engineer-habitat-(online-data)-seattle/）的實際內容，例如職缺描述、待遇或申請條件。",
+      "seen_where": "文章内文的出站連結 href。",
+      "why_excluded": "今天（2026-09-18）用 curl -sL -A \"Mokaair-editorial\" 重抓該連結，回應是 OpenAI 的存取限制頁（非文章本身），因此只確認連結存在並描述『文末附上一個工程職缺連結』，不引用職缺頁的任何內容，也不把它列進 sources[]。"
+    },
+    {
+      "claim": "Rust 改寫的測試方法、工作負載定義、量測窗口，以及是否有第三方稽核。",
+      "seen_where": "全文搜尋 Rust 改寫段落前後文，沒有找到任何方法學描述。",
+      "why_excluded": "文章沒有寫，本文也不代為推測或補一個方法學說法；6 倍／15 倍／95% 一律標記為 OpenAI 自己公布、未經第三方查核的數字。"
+    },
+    {
+      "claim": "Figure 01 的功能清單究竟是 7 項還是 8 項（前一輪研究記成 8 項、獨立查核指出應為 7 項）。",
+      "seen_where": "今天直接解析頁面原始 HTML 的 featureTitle／featureDescription 標記，逐一列出 7 組 label｜sub-label，Routing 與『Schema lookup · Data residency』同屬一組。",
+      "why_excluded": "不是排除，是本輪已用原始標記重新核實為 7 項並寫進 verified_facts；文章正文刻意不寫這個數字（不論 7 或 8），避免對一般讀者沒有意義的計數爭議，只列舉功能的性質（快取、存取控制、加密等）。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般 ChatGPT／Codex 使用者，不是工程師。切入點是 OpenAI 自己放在文章最前面的那句話：現在每秒處理超過 7000 萬次請求、每週支撐超過 10 億人使用旗下產品、資料量超過 500 PB。文章的任務是把這句話講清楚，同時誠實面對它的邊界——這是一篇工程部落格，目的是徵才與分享 Python 規模化的經驗，不是要告訴使用者關於自己資料的任何事。五節安排：一、這篇文章是什麼、不是什麼（工程分類、系列文章第一篇、文末徵才、不是產品公告）；二、OpenAI 自己講的規模數字（70M+、1B+、近 40 個地區、500 PB+、10 倍成長），並在節末用表格把摘要寫的 22M 和正文的 70M／20M 放在一起，誠實呈現落差；三、為什麼一次變慢的查詢使用者會感覺到（尾端延遲、Statsig 設定檔案例、連線池 LIFO/FIFO 案例），圖解放在這裡；四、OpenAI 沒有說的事（耐久性、SLA、地區、資料內容、加密細節、Rust 改寫沒有方法學）；五、讀者可以怎麼看待這篇文章（不影響使用方式、自陳數字要保留判斷、怎麼自己查後續）。刻意不寫：Habitat 是否存放對話內容本身（文章沒有明講）、任何國家或地區名稱、Figure 01 功能項目的確切計數（7 或 8，避免無意義的計數爭議）、與既有文章 ai-news-openai-agents-api-20260910 重疊的 Agents API 資料保留與計費規則。生活情境只在讀者提醒段落點出『任何服務都有自己的可用性設計』，不使用具名情境，避免被讀成使用建議。",
+  "must_not_write": [
+    "不要把『22M requests per second』寫成 Habitat 現在的處理量；那個數字只在摘要與中繼資料出現，正文自己給的數字是 70M+（現在）與 20M+（Python 尖峰）。",
+    "不要把『超過 10 億使用者』寫成 ChatGPT 的註冊帳號數；正文原句是『products used by over 1 billion people each week』（以週為單位的使用人數，主詞是產品）。第二輪查核 2026-09-18 更正本條自身：原本這一條寫著『是全部產品加總』，但『全部』與『加總』原文都沒有，而且『加總』在語意上會變成重複計算——OpenAI 沒有說哪些產品計入，也沒有交代幾種寫法怎麼換算。同一頁另有三種官方寫法：標題與 og:title／twitter:title 的『over 1 billion ChatGPT users』（文末 part II 那句也是）、meta description／og:description／twitter:description 的『1 billion ChatGPT users and 22M requests per second』、og:image:alt／twitter:image:alt 的『nearly 1 billion ChatGPT users』。title、description、摘要與正文每一處一律照本文採用的正文那一句寫，各語系不可互換這四種寫法，也不可以挑數字最大或語氣最確定的那一種。",
+    "不要寫『文章沒有列出任何國家或城市名稱』，也不要寫『唯一的地區相關文字是示意圖上的標籤』：文末職缺連結的網址裡就有城市名（seattle），頁尾語系切換器還印著 United States，這兩個說法會和本文自己第 1 節、第 4 節的敘述互相矛盾。要否定只能限縮成『沒有把任何國家或城市寫成資料存放地點』。也不要從 us0／us1／eu0 推論成『美國兩區、歐洲一區』，或說 OpenAI 註明了那三個代號是示意用的——自陳為 Simplified 的是那張圖（Simplified Habitat request flow），不是代號。",
+    "不要把『網站地圖上標的時間和頁面印出的發布日期對不起來』寫成 OpenAI 的說明、官方定義或網站行為的通則；那是本文查核當天自己比對出來的觀察，正文與 FAQ 都要保留『這是本文查核當天的觀察』這個限定，各語系同理。",
+    "不要陳述或暗示任何耐久性、備份或資料保存份數的保證，也不要借用 Azure Cosmos DB 自己的產品文件補這一塊——OpenAI 這篇文章完全沒有談這些。",
+    "不要指名任何國家或說台灣使用者的資料在或不在某個地區；OpenAI 只公布『近 40 個地理區域』，加三個示意用的範例資料庫代號。",
+    "不要說 Rust 改寫讓 ChatGPT 對使用者而言變快或變便宜；OpenAI 只對自己的服務講平均與尾端延遲『顯著降低』，沒有任何使用者端的主張。",
+    "不要把 6 倍 CPU、15 倍記憶體、95% 正式流量寫成已驗證或已稽核的數字；一律寫『OpenAI 表示』或『OpenAI 公布的內部量測』。",
+    "不要解釋 Nanobase 是什麼；它只在 Figure 01 的圖解資料裡出現，正文從未定義。",
+    "不要寫對話內容本身存放在 Habitat；OpenAI 沒有說 Habitat 裡實際存放哪些資料類型。",
+    "不要報導 part two 或『改寫心得』後續文章的具體內容，也不要替兩者任一個編一個日期。",
+    "不要宣稱做過任何實測，也不要引用或連結任何新聞媒體、聚合網站或百科作為佐證。",
+    "不要說 OpenAI 在 2026 年 9 月 11 日『發表新產品』或『宣布』；這是一篇工程部落格，文末是徵才連結，沒有任何東西上市給使用者。",
+    "不要把文中提到的幾次事故（回滾到有問題的舊版本、Postgres 熱路徑查詢、連線池 metastable 案例）寫成有具體日期、時長或使用者影響數字的事件——原文三者都沒有附這些。",
+    "不要把連線池 LIFO／FIFO 那個案例叫做「驚群效應」（thundering herd）。原文在那一段用的詞是 metastable failure；thundering herd 出現在另一節『Avoiding flooding downstream resources』，指的是處理程序一多、大量連線壓垮下游依賴。兩者不可互換，翻譯時各語系也要分開處理。",
+    "不要把那次跨地區 Azure Cosmos DB 帳戶遷移寫成已經完成：原文是「我們想要（we wanted to）」，而且那段故事的結尾是旗標還沒啟用就出了事故。",
+    "不要說 OpenAI 用 Statsig 跑 A/B 測試：原文只說 Statsig 是管理功能開關的工具、「可以用來」跑 A/B 測試等用途。"
+  ],
+  "live_data_warnings": [
+    "Engineering 網站地圖的 <lastmod>：本次查核讀到 2026-09-17T21:51:03.895Z，兩天前的查核讀到 2026-09-12T02:19:32.976Z——同一篇文章、同一個欄位、內容應無變動，數值卻換了兩次，證實它是網站建置時間戳而非文章發布日或更新日，寫進正文前務必重查並清楚標注時點。",
+    "openai.com 文章頁本身的可讀性：2026-09-16 兩位前期代理（撰稿與獨立查核）用相同 User-Agent 對這個網址一律拿到 HTTP 403 邊緣攔截頁；2026-09-18（本次）同一網址回 HTTP 200，能直接讀到 550,655 bytes 的正文全文，且與 2026-09-14 的 Internet Archive 封存內容逐句吻合。這代表存取限制在這兩天之間解除了，不代表以後一定持續可讀，之後若要重查請重新確認一次。",
+    "RSS feed 與網站地圖的項目筆數：兩者都是活資料，本輪查核沒有把任何筆數寫進文章或本紀錄；只用『能不能找到這篇文章的項目、以及有沒有找到 part two 的項目』做取得成敗的判斷。",
+    "『第二篇尚未發布』與『改寫心得後續尚未發布』都是查核當下（2026-09-18）的狀態，靠的是官方網站地圖與新聞 feed 目前都沒有對應項目；兩者都可能在未來任何時間點改變，正文已寫成『查核當下尚未發布，也沒有公布日期』，不是『官方確認沒有』。",
+    "70M+、1B+、近 40 個地區、500 PB+、10 倍成長、6 倍／15 倍／95% 等全部是 OpenAI 自陳的營運數字，沒有第三方稽核或驗證，會隨 OpenAI 自己未來的更新而變動，一律寫『OpenAI 表示』。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（X 串真實時間戳 2026-09-11T20:00:41Z 等三個）：本輪判斷不將 x.com 列入 sources[]——今天官方文章頁本身已可直接讀到（HTTP 200），不需要再靠 X 串或封存頁佐證核心規模數字，X 串內容因此完全沒有用於本文，這條修正對本次草稿沒有適用對象。",
+    "must_fix 2（feed 筆數與 lastBuildDate 是活文件診斷值、不是事實）：已套用。今天重抓 feed 與網站地圖時看到的筆數、lastBuildDate 均未寫入 verified_facts 或正文，只用來判斷『這篇文章的項目今天找不找得到』。",
+    "must_fix 3（sources[0] 是 403、從未讀到卻掛 checked_on）：已解決，而且是用更根本的方式解決——今天（2026-09-18）親自以 curl -sL -A \"Mokaair-editorial\" 重抓 https://openai.com/index/scaling-storage-one-billion-users-part-one/ 得到 HTTP 200、550,655 bytes 的正文全文，sources[0] 的 checked_on: 2026-09-18 如實反映今天真的讀到了這一頁；不再需要靠 web.archive.org 撐證據鏈，archive 完全沒有出現在本次 sources[] 或 verified_facts 裡。",
+    "must_fix 4（sourcing_notes 誤把 22 個 <url> 說成 22 篇文章）：已套用。本紀錄與正文都寫『22 個 <url>，其中 20 篇是文章、2 篇是清單頁』，不再籠統說『22 篇』。",
+    "must_fix 5（Rockset 那句引文被截斷又自己補句號）：已套用。verified_facts 與正文改述都使用完整句：『Each client team is responsible for scaling their own Rockset instance for their complex querying needs.』。",
+    "must_fix 6（『沒有無界查詢』那句引文被截斷又自己補句號）：已套用。verified_facts 使用完整句，正文改述也保留『複雜 join 與圖走訪需要產品團隊自己做一部分粗活』這個但書，不寫成沒有但書的絕對句。",
+    "must_fix 7（Figure 01 是 7 項不是 8 項）：已套用並重新驗證——本輪直接解析頁面原始 HTML 的 featureTitle／featureDescription 標記，確認是 7 組 label｜sub-label，Routing 與『Schema lookup · Data residency』同屬一組；正文刻意不寫這個數字本身（7 或 8 都不寫），只列舉功能性質，避免對一般讀者沒有意義的計數爭議，同時避免重蹈計數錯誤。",
+    "must_fix 8（sitemap lastmod 是『唯一』時間戳，說法無法成立）：已套用，且用本輪自己重查到的新證據加強——同一欄位兩天內從 2026-09-12T02:19:32.976Z 變成 2026-09-17T21:51:03.895Z，證實它會變動、不是穩定的『最後改動』時間戳，『唯一』一詞已從研究紀錄與正文拿掉，改寫進 live_data_warnings。",
+    "must_fix 9（『之後會再發一篇』標成非廠商宣稱）：已套用。本輪把這句話與另一句『之後會分享改寫心得的部落格』都標記 is_vendor_claim: true，兩者在正文與研究紀錄都清楚寫成 OpenAI 的說法、且都沒有日期。",
+    "must_add（第二個後續承諾／一年時間差／X 串真實時間戳／GIL 機制／Figure 03 純示意／Keep reading 對照／三條外連／22M 與敏感詞計數／U+2011 連字號）：除『X 串真實時間戳』（本輪未使用 X 串，見 must_fix 1 說明）與『Keep reading 區塊其他文章日期對照』（本輪改用更直接的證據：同一欄位兩次查核間本身就變動了兩次，見 must_fix 8）之外，其餘全部已套用：第二個後續承諾已寫入正文與 verified_facts；一年時間差已寫入 verified_facts；GIL 機制已寫入 verified_facts（正文為一般讀者簡化未點名 GIL，改用『幾乎所有處理程序會在同一瞬間停下手上的請求』的白話說法）；Figure 03 純示意已寫入 not_said；三條外連（metastable failure、TAO 論文、徵才頁）今天重新確認仍存在於頁面 href 中；22M 與敏感詞（durability／backup／uptime／SLA 等）計數已用詞界比對重新驗證，並發現『SLA』子字串比對會有 27 次來自 CSS class 名稱的假陽性，已記入 not_said 供後續代理參考；GPT-5.5 的 U+2011 連字號已在 verified_facts 註明並在研究紀錄裡逐字保留。"
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "三條 sources 今天全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（任何請求的標頭、查詢字串與表單都沒有放入 email 或個人資料）：sources[0] HTTP 200、550,689 bytes（撰稿者同日記的是 550,655，頁面帶隨機產生的元素 id，逐次略有差異），<title> 為「Rapidly scaling online storage to serve over 1 billion ChatGPT users | OpenAI」，body 內含全文十節、Figure 01–05 與頁尾，不含任何 Request Access／Access Denied／meta refresh 字串，確認是正文不是擋阻頁；sources[1] HTTP 200、736,773 bytes，本篇 <item> 的 pubDate 為 Fri, 11 Sep 2026 10:00:00 GMT（台北時間同日 18:00，不跨日）；sources[2] HTTP 200、192,116 bytes、22 個 <url>（20 篇文章＋/news/ 與 /news/engineering/ 兩個清單頁），查無 part-two 的 <loc>。逐句把正文、summary、FAQ、表格每一格、callout、title、description 對回原文；否定結論一律用詞界比對（\\bdurability\\b、\\bbackup\\b、\\breplica\\b、\\bSLA\\b、\\buptime\\b、\\brestore\\b、\\bdisaster recovery\\b 在整份 HTML 都是 0 次；22M 在渲染後正文 0 次、原始 HTML 7 次全在 meta／JSON／CSS id）；verified_facts 的 verbatim_quote 全部用程式做連續字串比對。沒有使用 sources[] 以外的網址替文章補任何事實。",
+    "verdict": "needs_second_round（改了 20 處，其中一處是骨幹敘述：連線池案例被冠上錯誤的官方名詞）",
+    "edits_to_the_pack": [
+      "第 3 節第 3 段：把連線池案例的『OpenAI 稱之為一種「驚群效應」』改成『OpenAI 稱這是一種「亞穩態故障」（metastable failure）』。原文的 thundering herd 在另一節（Avoiding flooding downstream resources），講的是處理程序一多、大量連線壓垮下游依賴；LIFO 連線池那一段原文寫的是 metastable failure。這是把兩個東西的歸屬接在一起。",
+      "同一段：把『這個機制會讓愈來愈多流量集中到原本已經吃緊的處理程序上』改成照原文的因果——較慢、已過載的伺服器比較晚把連線還回池子，因此更常被後續請求選中，流量集中到本來就吃力的 Pod（原文是 pods，不是 processes）；並補上 metastable failure 的具體現象（造成過載的用戶端停掉後仍持續惡化、要重啟才恢復）。",
+      "同一段：『連請求量波動也跟著變小』補回原文的 steady state，改成『連穩態下的請求量落差也跟著變小』。",
+      "第 3 節第 2 段（Statsig）：『變成每分鐘幾乎所有處理程序都會停下手上的請求』改成『每分鐘每個 Pod 都會有某個瞬間，所有工作處理程序同時停下手上的請求』——原文是 each pod would have some moment where all of its workers stalled，『幾乎所有』與漏掉『某個瞬間』都改了主張。",
+      "同一段：『Habitat 用 Statsig 這套工具管理功能開關與 A/B 測試』改成『Statsig 這套功能開關工具』。原文只說 Statsig 是管理功能開關的工具、can be used to run A/B tests and more，沒有說 OpenAI 用它跑 A/B 測試。",
+      "同一段：『設定檔包含所有服務的規則』改成『包含每個服務的每一條正式環境規則』（every production rule across every service）；『原本設定成』改成『預設』（by default）；『替背景工作加上隨機時間差』補回原文的 like these，改成『這類背景工作』。",
+      "第 3 節第 1 段：『Python 服務在這個規模下最大的挑戰』改成『主要挑戰』（原文 the main challenge），並把『一次請求背後可能牽涉幾百次資料庫查詢』改回原文的條件句式（When the average user request results in hundreds of database calls）。",
+      "第 4 節第 1 段：『OpenAI 提到把部分關鍵資料放進跨地區分散的 Azure Cosmos DB 帳戶』改成『只描述過一次想把最關鍵的資料集移到……的經過』。原文是 we wanted to … by migrating them to，而且那段故事的結尾是遷移還沒啟用就出了事故，沒有一句說遷移完成。",
+      "同一段：『把某個服務誤回滾到有問題的舊版本』改成『某個團隊因為不相干的原因把自己的服務回滾到帶有問題用戶端的舊版本』——原文寫的是 for unrelated reasons，不是失誤；另把『幾次自己造成的事故』改成『幾次自家系統出過的狀況』。",
+      "同一段：『文章通篇沒有提到「耐用性」「備份」或「資料復原」』改成寫出查法的版本『本文以英文原詞逐字比對，文章沒有出現 durability、backup、replica 這幾個字』。",
+      "第 4 節第 2 段與 FAQ 第 3 題：刪掉兩處『唯一』。文章的職缺連結網址裡就有城市名（careers/software-engineer-habitat-(online-data)-seattle/），而草稿自己在第 1 節寫了『西雅圖的工程職缺』，兩句互相矛盾；改成『比較接近地區資訊的，是示意圖上那三個資料庫代號，以及職缺連結網址裡的城市名』。",
+      "同一段：『只反覆強調這裡是保護使用者資料』改成『只說』（原文只出現一次），並補上原文點名的三種對象（external, internal, and agent actors）。",
+      "第 2 節第 1 段：『只在示意圖上用三個範例代號標示美國兩區、歐洲一區的分布方式，並註明那是示意用的標籤』改成『只在一張自陳為「簡化」的示意圖上，出現 us0、us1、eu0 三個範例資料庫代號』。把 us／eu 讀成美國與歐洲是本文的推論，原文沒有寫；OpenAI 也沒有註明那三個代號是示意用的，自陳為簡化的是那張圖。",
+      "第 2 節第 3 段：『這套系統過去 3 年，每年成長幅度超過 10 倍』改成『過去 3 年他們每年成長幅度超過 10 倍』（原文主詞是 we，不是 Habitat）；並把『工程團隊通常抓 10 倍成長做系統設計，並預留下一個 10 倍的空間』補回原文漏掉的 hope for it to hold for a few years。",
+      "FAQ 第 2 題：問句原本寫『文章標題寫「超過 10 億使用者」』，但本文標題並沒有這一句；答案原本把正文那句解釋成『OpenAI 全部產品加總、以週為單位的使用人數』，『加總』與『全部產品』是原文沒有的推論。改寫成把 OpenAI 自己的四種寫法並列（可見標題與 og:title 的 over 1 billion ChatGPT users、正文的 products used by over 1 billion people each week、meta description 的 1 billion ChatGPT users、og:image:alt 的 nearly 1 billion），並說明 OpenAI 沒有交代彼此關係、也沒有說哪些產品計入。",
+      "title：『支撐每週十億使用者背後的規模與極限』改成『每週逾十億人使用背後的規模與極限』——原文是 over 1 billion people，掉了『超過』就比來源強，而『使用者』也不是原文的 people；研究紀錄的 title 同步改。",
+      "FAQ 第 5 題：刪掉『網站地圖裡每篇文章都附有各自的更新時間』。網站地圖的 <lastmod> 是網站端的建置時間戳：今天這份地圖給 jalapeno-first-results／continuous-voice-interaction-with-gpt-live／gpt-5-6-frontier-intelligence-efficiency 的值是 2026-09-17 與 2026-09-15，而文章頁自己的「Keep reading」區塊把這三篇印成 Aug 25 2026、Aug 3 2026、Jul 29 2026——同一批來源裡就互相推翻了。改成明說那不是文章的發布日或更新日。",
+      "第 5 節第 3 段：刪掉『兩者都會在有新文章發布時更新』這個對 OpenAI 系統行為的推定，改寫成本文實際做了什麼；並依協調者指示，把『網站地圖上的時間是網站端時間戳』標明為本文的觀察，不是官方說明。",
+      "表格：『7000 萬/秒』『2000 萬/秒』『500 PB+』『10 倍』四格補上『逾』。原文四個數字都是 more than／70M+／500 PB+，儲存格裡掉了限定詞。",
+      "第 1 節第 1 段『一次查詢變慢』改成『這些查詢一慢』（原文 If those requests are slow 是複數）；第 1 節第 2 段統計方塊那句拿掉『使用旗下產品』（方塊上印的只有 1B+／people each week）；第 1 節第 3 段『邀請讀者加入團隊』改成『歡迎有興趣的人自己去看』（原文是 If you want to … 的條件句）；第 4 節第 3 段『95% 的正式流量』改成『95% 的正式環境請求』（production requests），並補上『OpenAI 說自家數據顯示』（Our data shows）；第 2 段查核段把『文中的情境舉例都會另外標明是編輯設計的例子』改成『本文沒有使用虛構的生活情境』——文章裡本來就沒有任何情境舉例。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-11：頁面標題上方印 September 11, 2026，RSS 的 pubDate 是 Fri, 11 Sep 2026 10:00:00 GMT（台北時間同日 18:00，不跨日），與 slug 尾碼、news_date 一致。",
+      "70M+／1B+／500 PB+／almost 40 geographic regions／more than 10x year-over-year for the last three years／more than 20 million requests every second（Python 尖峰）／6x CPU／15x memory／95%／Q2 2026 與 2 engineers＋Codex＋GPT-5.5，逐句與原文吻合，且文章與摘要每一處都寫成 OpenAI 的說法。",
+      "22M 這條負面結論成立：渲染後正文 0 次、22 million 0 次，原始 HTML 的 7 次全部落在 meta description／og:description／twitter:description／RSC payload／一段 SVG path 與一個元素 id；RSS 摘要確實寫 22M requests per second。",
+      "耐久性與 SLA 的負面結論成立：durability、durable、backup、replica、replication、SLA、uptime、restore、disaster recovery、retention 以詞界比對在整份 HTML 皆為 0 次（撰稿者提到的 27 次 SLA 是 CSS 類名的子字串假陽性，詞界比對後為 0）。",
+      "part two 與『再發一篇分享更多心得』是兩個不同的後續承諾，兩者都沒有日期；今天的 Engineering 網站地圖沒有 part-two 的 <loc>、RSS 沒有對應 <item>，文章寫成『查核到 2026 年 9 月 18 日未見』而不是『官方確認沒有』。",
+      "作者三人具名、Engineering 分類、文末職缺連結（careers/software-engineer-habitat-(online-data)-seattle/）、這是兩篇系列文的第一篇，四項皆與今天抓到的頁面一致。",
+      "界線：全文沒有購買或升級建議、沒有推薦式比價、沒有價格，所有廠商數字都有歸屬，沒有免責 callout，callout 只有一個，沒有掛 finance 主題。",
+      "checked_on 2026-09-18 在內容包三條 source、研究紀錄、正文第二段、表格 caption 與圖解 caption 六處一致，且確實是撰稿者與本代理都讀到來源的那一天，未更動。"
+    ],
+    "left_for_the_owner": [
+      "openai.com/index/* 的可讀性是浮動的：2026-09-16 兩位代理拿到 403 邊緣攔截頁，2026-09-18 本代理與撰稿者都拿到 HTTP 200 的正文全文。日後重查若又被擋，不代表本文引用的內容有問題，但也不要再以『讀不到』為由改掉已經查證過的句子。",
+      "文章正文第 3 節現在同時出現『亞穩態故障（metastable failure）』這個專有名詞與白話解釋。若站主覺得對一般讀者太技術，可以只留白話解釋、拿掉括號裡的英文；但不可以換回『驚群效應』，那是原文另一節的名詞。",
+      "OpenAI 對『10 億』有四種寫法（見 verified_facts 與 FAQ 第 2 題）。本文選擇照正文那一句寫、並在 FAQ 把四種並列。若站主希望標題完全避開這個數字，需要重擬 title，並連動已指向本篇的 ai-news-openai-broadcom-chip-20260624 連結文字。",
+      "check_article.py 仍有兩個 FAIL，都是協調者事後處理的項目：索引內容包 ai-news-2026-january-september-index 的標題尚未更新，以及第二個連結指向的 ai-news-openai-broadcom-chip-20260624 標題比對。本代理依規格未動那兩個連結。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent（未參與撰稿，也未參與第一輪）",
+      "checked_on": "2026-09-18",
+      "scope": "覆核第一輪改動過的每一段與新寫進去的每一句，不重做全篇。第一輪自列的新寫段落：第 3 節第 2、3 段、第 4 節第 1、2 段、第 5 節第 3 段、FAQ 第 2、3、5 題、title、表格四格。",
+      "method": "三條 sources 今天自己重抓（curl -sL -A \"Mokaair-editorial\"，任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有用 sources[] 以外的網址替文章補事實）：sources[0] HTTP 200、550,676 bytes，<title> 為「Rapidly scaling online storage to serve over 1 billion ChatGPT users | OpenAI」，Request Access／Access Denied／meta refresh 皆 0 次，確認是正文；sources[1] HTTP 200、736,773 bytes；sources[2] HTTP 200、192,116 bytes、22 個 <url>。把 HTML 抽成純文字後，逐句把上述新寫段落回貼原文比對；27 條 verbatim_quote 用程式做連續字串比對，而且這一輪把每條引文綁回它自己的 url 搜尋（第一輪是跨來源搜尋，因此漏掉一條）；否定結論一律用詞界比對重驗。位元組數提醒：撰稿者 550,655、第一輪 550,689、本輪 550,676——頁面帶隨機產生的元素 id，位元組數不可當版本識別。",
+      "claims_checked": 63,
+      "edits": 14,
+      "findings": [
+        "研究紀錄第 10 條事實的 verbatim_quote（In a future post, we’ll go into detail…）出自文章頁，url 卻掛在 Engineering 網站地圖上，在該頁搜尋不到——這是 27 條引文中唯一對不上自己 url 的一條，第一輪跨來源搜尋所以判成全部通過。已把 url 改回文章頁，並在事實文字裡分開標明『網站地圖與 feed 沒有第二篇』的證據各自在 sources[2] 與 sources[1]。",
+        "第 4 節第 2 段、FAQ 第 3 題與摘要第 4 句都寫著『沒有列出任何國家或城市名稱』，卻又在同一句（或同一篇）承認職缺連結網址裡有城市名——第一輪拿掉了『唯一』，沒有拿掉這個同樣不成立的全稱否定，文章因此自相矛盾。三處都限縮成『沒有把任何國家或城市寫成資料存放地點』；FAQ 第 3 題另外把殘留的『只有示意圖上的範例代號』改成與正文一致的兩處並列。研究紀錄 not_said 第 3 條有同樣的毛病（『唯一的地區相關字串』），一併更正，並加一條 must_not_write 擋住翻譯階段再犯。",
+        "第 4 節第 2 段把原文的 may require 寫成『都需要查資料』（第 1 節保留了『可能』，第 4 節掉了），已補回『都可能需要查資料』。",
+        "第 3 節第 3 段『那些處理程序仍然持續惡化』漏掉原文的 a subset of processes，已改成『仍有一部分處理程序持續惡化』。",
+        "第 3 節第 2 段『OpenAI 說修法很單純』掉了原文的條件 once CPU profiling helped us root cause the issue，已補成『一旦用 CPU 剖析定位到根因，修法就很單純』。",
+        "第 4 節第 1 段『反而引發他們原本想避免的事故』的『他們』會被讀成回滾的那個團隊，原文是 the outage we had worked so hard to avoid（作者團隊），已拿掉『他們』。",
+        "第 5 節第 3 段把 <lastmod> 斷定成『網站端的時間戳』，那是推論不是觀察；已縮到只寫本文真正看到的事（網站地圖上標的時間和頁面印出的發布日期對不起來）並標明『這是本文查核當天的觀察』。FAQ 第 5 題原本把同一件事寫成不帶限定的通則，已改成與正文一致的觀察式寫法。",
+        "第 1 節第 3 段『網址指向西雅圖的職缺』是對讀不到的職缺頁下判斷（該頁本輪仍回存取限制頁），已改成『網址裡帶著西雅圖的地名』，與第 4 節的寫法一致。",
+        "摘要第 3 句『多租戶穩定性』與原文 multi-tenancy reliability 及正文第 1 節的『多租戶可靠性』不一致，已統一成『可靠性』。",
+        "研究紀錄 must_not_write 第 2 條自己還寫著『是全部產品加總、以週為單位的人數』——那正是第一輪從 FAQ 第 2 題刪掉的推論，留在這裡會在翻譯階段被照抄回去。已改寫成四種官方寫法並列＋『各語系不可互換、不可挑最大的那個』。",
+        "研究紀錄 not_said 第 2 條的『幾次自己造成的事故』與第 4 條的『反覆強調』，也是第一輪在正文改掉、卻沒有同步回研究紀錄的兩處，已一併更正（protecting user data 在正文只出現 1 次）。",
+        "為了騰出字數，刪掉第 2 節第 3 段末尾『這種自陳的成長數字沒有第三方查核或稽核，本文只能引用 OpenAI 自己的說法』——同一個但書在 callout（明白點名『成長倍數』）、第 4 節第 3 段與第 5 節第 2 段各出現一次，屬重複敘述；刪的是重複，不是但書本身。段落字數 2,973 → 2,956。"
+      ],
+      "verified_unchanged": [
+        "第一輪對連線池那一段的名詞更正成立且本輪重驗：metastable failure 在該小節出現 2 次（This was a class of failures … : metastable failure／In this case, it created a metastable failure for us），thundering herd 只出現 1 次、在另一節 Avoiding flooding downstream resources，指的是處理程序一多、大量連線壓垮下游依賴。正文只用亞穩態故障、沒有出現驚群效應，兩者沒有互換。",
+        "因果照原文：During a burst of requests, requests to slower overloaded servers returned connections to the pool later and were therefore selected more frequently by subsequent requests, gradually concentrating more traffic on the pods already struggling——正文『比較晚把連線還回池子，反而更常被後續請求選中，流量逐漸集中到本來就吃力的 Pod 上』逐項對得上，也沒有替官方補一個原文沒有的解釋。",
+        "『超過 10 億』四種官方寫法本輪逐一在今天抓下的 HTML 裡確認：<title>／og:title／twitter:title 與文末 part II 句為 over 1 billion ChatGPT users；正文規模句為 supporting products used by over 1 billion people each week；meta description／og:description／twitter:description 為 1 billion ChatGPT users and 22M requests per second；og:image:alt／twitter:image:alt 為 nearly 1 billion ChatGPT users。title（每週逾十億人使用）、摘要第 1 句、第 1 節第 2 段（統計方塊 1B+ people each week）、第 2 節第 1 段各自對得上正文那一種、都不比它強；description 不提這個數字。FAQ 第 2 題四種並列的引述逐字無誤。",
+        "22M 只在中繼資料與 RSS 摘要：渲染後正文 22M 0 次、22 million 0 次；原始 HTML 9 次全落在三個 meta 標籤、RSC payload、一段 SVG path 座標與一個隨機元素 id（第一輪記 7 次，差額來自頁面隨機 id，結論不變）。正文第 2 節第 2 段與表格那一格都帶了出處（官方 RSS feed 與網頁中繼資料）。",
+        "表格四格的限定詞與出處欄：more than 70 million requests every second／more than 20 million requests every second／more than 500 petabytes（統計方塊 500 PB+）／more than 10x year-over-year for the last three years，四格的『逾』都對得上；『近 40 個』對 almost 40 geographic regions。",
+        "耐久性與 SLA 的否定結論重驗：durability、durable、backup(s)、replica(s)、replication、SLA、uptime、restore、disaster recovery、retention、redundancy、failover 在整份 HTML 的詞界命中數全為 0；渲染後正文只有一個百分比 95%。",
+        "事件日與 feed：RSS 這篇 <item> 的 pubDate 仍是 Fri, 11 Sep 2026 10:00:00 GMT（台北時間同日 18:00，不跨日），category Engineering，頁面標題上方印 September 11, 2026。網站地圖與 RSS 全文搜尋 part-two 皆 0 次。",
+        "第 5 節第 3 段那個觀察本輪自己重現得到：這篇文章的 <lastmod> 是 2026-09-17T21:51:03.895Z，頁面印的發布日是 September 11, 2026；同一份地圖給 jalapeno-first-results（2026-09-17T01:12:55.639Z）、continuous-voice-interaction-with-gpt-live（2026-09-17T11:33:44.594Z）、gpt-5-6-frontier-intelligence-efficiency（2026-09-17T11:33:45.692Z）的值，對上文章頁『Keep reading』印的 Aug 25, 2026／Aug 3, 2026／Jul 29, 2026，四組全部對不起來。正文寫成本文的觀察，沒有寫成 OpenAI 的說明。",
+        "界線重掃：topics 沒有 finance；只有一個 info callout、沒有投資免責段落；全文沒有訂閱、購買、升級或投資建議，沒有價格與推薦式比價；廠商宣稱（70M+／1B+／500 PB+／10 倍／6 倍／15 倍／95%／改寫成效）全部帶歸屬；預告（part II、Rust 心得、停用 Python）都寫成沒有日期；沒有推定台灣可用。",
+        "checked_on 2026-09-18 在內容包三條 source、研究紀錄、正文第二段、表格 caption、圖解 caption 六處仍然一致，本輪未改（今天確實是撰稿者、第一輪與本輪都讀到來源的那一天）。",
+        "摘要每一句仍 ⊆ 正文，FAQ 答案與正文不衝突，圖解四格的數字（7000 萬、40）都在正文出現；段落字數 2,956（1,800–3,000），每節 3 段，title 39 字、description 175 字。"
+      ],
+      "left_for_the_owner": [
+        "第一輪留的四項全部仍然成立，本輪沒有推翻任何一項：openai.com/index/* 的可讀性浮動、metastable failure 這個名詞要不要留白話版、title 要不要完全避開『十億』、兩個 FAIL 由協調者處理。",
+        "職缺頁（careers/software-engineer-habitat-(online-data)-seattle/）本輪重抓仍是存取限制頁。文章現在只說『網址裡帶著西雅圖的地名』，沒有斷言職缺在西雅圖；若日後該頁可讀且站主想寫明，要重新查證後才改。",
+        "『沒有把任何國家或城市寫成資料存放地點』是本輪替三處全稱否定做的限縮寫法。翻譯各語系時要照這個限縮翻，不可以回到『沒有列出任何國家或城市名稱』——must_not_write 已加上這一條。"
+      ],
+      "verdict": "ok（第二輪改了 14 處，其中 3 處是第一輪留下的自相矛盾或引文掛錯來源，其餘為限定詞與歸屬的回補；沒有動到骨幹敘述，不需要第三輪）"
+    }
+  },
+  "hero_label": "Habitat 的規模與極限",
+  "diagram": {
+    "title": "Habitat：官方說了與沒說的",
+    "caption": "整理自 OpenAI 2026 年 9 月 11 日發布的工程部落格；查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "儲存平台",
+        "Habitat 負責資料存取"
+      ],
+      [
+        "每秒請求",
+        "官方稱逾 7000 萬次"
+      ],
+      [
+        "涵蓋地區",
+        "官方稱近 40 個地區"
+      ],
+      [
+        "官方未說",
+        "耐久性與資料所在地"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Habitat: Scale & Limits",
+      "diagram": {
+        "title": "Habitat: What OpenAI Said and Did Not",
+        "caption": "Compiled from the engineering blog post OpenAI published on September 11, 2026; checked on September 18, 2026.",
+        "nodes": [
+          [
+            "Storage platform",
+            "Habitat handles data access"
+          ],
+          [
+            "Requests/sec",
+            "OpenAI states over 70M"
+          ],
+          [
+            "Regions covered",
+            "OpenAI states nearly 40"
+          ],
+          [
+            "Not stated",
+            "Durability and data location"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "Habitatの規模と限界",
+      "diagram": {
+        "title": "Habitatの公式説明と未説明点",
+        "caption": "OpenAIが2026年9月11日に公開したエンジニアリングブログ記事をもとに整理。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "ストレージ基盤",
+            "データアクセスを管理"
+          ],
+          [
+            "毎秒のリクエスト",
+            "公式は7000万件超と説明"
+          ],
+          [
+            "対応地域",
+            "公式は40地域近くと説明"
+          ],
+          [
+            "公式未説明",
+            "耐久性とデータ所在地"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "Habitat의 규모와 한계",
+      "diagram": {
+        "title": "Habitat 공식 설명과 미설명",
+        "caption": "OpenAI가 2026년 9월 11일 게시한 엔지니어링 블로그 글을 바탕으로 정리. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "스토리지 플랫폼",
+            "데이터 접근을 관리"
+          ],
+          [
+            "초당 요청",
+            "7000만 건 초과로 설명"
+          ],
+          [
+            "서비스 지역",
+            "40개 가까이로 설명"
+          ],
+          [
+            "공식 미설명",
+            "내구성과 데이터 위치"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "Habitat 的规模与极限",
+      "diagram": {
+        "title": "Habitat：官方说了与没说的",
+        "caption": "整理自 OpenAI 2026 年 9 月 11 日发布的工程博客；查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "存储平台",
+            "Habitat 负责数据访问"
+          ],
+          [
+            "每秒请求",
+            "官方称逾 7000 万次"
+          ],
+          [
+            "覆盖地区",
+            "官方称近 40 个地区"
+          ],
+          [
+            "官方未说",
+            "耐久性与数据所在地"
+          ]
+        ]
+      }
+    }
+  }
+}

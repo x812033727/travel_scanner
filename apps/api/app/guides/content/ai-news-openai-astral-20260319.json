@@ -1,0 +1,1205 @@
+{
+  "slug": "ai-news-openai-astral-20260319",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-03-19",
+  "featured": false,
+  "display_order": 149,
+  "related": [
+    "ai-news-nvidia-hugging-face-20260903",
+    "ai-news-openai-funding-20260331",
+    "ai-news-openai-s1-20260608"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI 宣布收購 Astral：uv、Ruff、ty 三個開源工具的去向",
+      "description": "2026 年 3 月 19 日，OpenAI 與開發者工具公司 Astral 同日各自發布公告，OpenAI 表示將收購 Astral、Astral 表示將加入 OpenAI 的 Codex 團隊。本文依兩份官方公告、Astral 官方網站首頁與 PyPI 頁面，說明 uv、Ruff、ty 三個工具在查核當天的狀態，以及官方公告怎麼寫這樁交易的完成條件。",
+      "hero": {
+        "src": "/guides/ai-news-openai-astral-20260319/hero.jpg",
+        "alt": "原創插圖：左邊三個並排的小方框代表 uv、Ruff、ty 三個工具，一支虛線箭頭穿過一個虛線圓圈指向右邊，右邊是一個虛線外框裡的螢幕，代表交易已宣布、要等完成條件到齊才會併入。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 3 月 19 日，OpenAI 與開發者工具公司 Astral 同一天各自發出公告：OpenAI 表示將收購 Astral，Astral 則表示已與 OpenAI 達成協議、將以 Codex 團隊一員的身分加入 OpenAI。Astral 是 uv、Ruff 與 ty 這三個開源 Python 工具的開發公司；兩份公告都沒有提到交易金額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，讀的是 OpenAI 與 Astral 在 3 月 19 日各自發出的公告全文、Astral 官方網站首頁，以及 uv 在 PyPI 上的套件頁面。本站沒有為這篇文章測試或評比這三個工具，也不提供任何投資或採購建議；以下會分開標明哪些是公告當下的說法、哪些是查核當天讀到的狀態，交易條件與時程仍可能改變。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 3 月 19 日，OpenAI 宣布將收購開發者工具公司 Astral，Astral 同日宣布將以 Codex 團隊一員的身分加入 OpenAI，交易金額兩份公告都沒有公布。",
+            "OpenAI 自己在公告裡寫明，這筆收購要等監理機關核准等交易完成條件到齊，在那之前 OpenAI 與 Astral 仍是兩家各自獨立的公司。",
+            "Astral 開發的 uv、Ruff 與 ty 是三個開源的 Python 開發工具，本文查核當天，uv 在 PyPI 上最新版本是 2026 年 9 月 15 日發布的 0.12.15，授權欄寫的是 MIT 或 Apache-2.0。",
+            "OpenAI 的公告一處寫完成後「打算」支援 Astral 的開源產品、一處寫「會繼續支援」這些開源專案，Astral 寫的是 OpenAI 會繼續支援開源工具，兩份公告都沒有說明授權或收費方式會不會調整。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "發生了什麼：雙方官方公告各自怎麼說"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在自己的公告頁寫道，將收購 Astral，把這家公司的開源開發者工具帶進 Codex 生態系；標題直接寫「OpenAI to acquire Astral」，用的是「收購」（acquire）這個字。Astral 創辦人 Charlie Marsh 則在自家部落格用另一個動詞：公告標題是「Astral to join OpenAI」，內文寫「已與 OpenAI 達成協議、將以 Codex 團隊一員的身分加入 OpenAI」，用的是「加入」（join）。兩份公告說的是同一筆交易，只是各自選了不同的動詞。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的公告解釋收購動機：OpenAI 表示 Astral 打造了「一些最被廣泛使用的開源 Python 工具」，這些工具「支撐著數百萬個開發者工作流程」，兩句都是 OpenAI 自報、本站無法查證的說法。Marsh 在自己的公告裡則說，過去幾年 Astral 的工具「從零成長到 Ruff、uv 與 ty 合計每月數億次下載」，這是 Astral 自己的說法，本站沒有查證這個數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "促成這筆交易的角度，Marsh 寫的是 AI 正在快速改變軟體開發的方式，而他認為 AI 與軟體的前緣就是 Codex，因此決定讓 Astral 的工具與專長加入 OpenAI；OpenAI 的公告則寫，目標是讓 Codex 從單純產生程式碼，走向能參與整個開發流程的系統，包括規劃改動、修改程式庫、執行工具、驗證結果與長期維護軟體，而 Astral 的工具本來就在這個工作流程裡。兩邊都沒有提到交易金額或 Astral 的估值。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "uv、Ruff、ty 是什麼，誰會碰到它們"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在公告裡用一句話分別介紹三個工具：uv「簡化相依套件與環境的管理」，Ruff「提供極快的程式碼檢查與格式化」，ty「協助在程式碼庫中落實型別安全」。OpenAI 接著寫，這三者合起來幫開發者管理專案、維持品質，並在開發過程早期就抓出錯誤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "uv 自己的 PyPI 套件頁把它形容成「一個以 Rust 寫成、速度極快的 Python 套件與專案管理工具」；Astral 官方網站首頁則把 Ruff 定位成「速度極快的 Python 程式碼檢查工具」，首頁公告區列的 ty 那篇寫的是「速度極快的 Python 型別檢查器與語言伺服器」。三者的共同點是都以 Rust 寫成、強調速度快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "誰會直接碰到這三個工具，OpenAI 與 Astral 的公告都沒有明講，但從功能描述可以看出對象：uv 面對的是要安裝套件、管理虛擬環境或鎖定相依版本的人；Ruff 面對的是要在程式碼送出前做風格檢查與排版的人；ty 面對的是想在執行前先抓出型別錯誤的人。以本站為例，Mokaair 後端服務的專案設定檔就用 uv 鎖定相依套件、並在設定裡指定了 ruff 的版本範圍，屬於會直接用到 Astral 工具鏈的那類專案。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "OpenAI 官方一句話說明",
+            "查核日看到的狀態"
+          ],
+          "rows": [
+            [
+              "uv",
+              "簡化相依套件與環境的管理",
+              "PyPI 最新版 0.12.15，2026 年 9 月 15 日發布，授權 MIT 或 Apache-2.0"
+            ],
+            [
+              "Ruff",
+              "提供極快的程式碼檢查與格式化",
+              "名稱與連結仍列在 Astral 官方網站首頁"
+            ],
+            [
+              "ty",
+              "協助在程式碼庫中落實型別安全",
+              "名稱與連結仍列在 Astral 官方網站首頁"
+            ]
+          ],
+          "caption": "依 OpenAI 2026 年 3 月 19 日公告與 PyPI、astral.sh 頁面整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩份公告承諾了什麼，沒有寫到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 自己把交易現況寫得很明確：「這筆收購的完成，取決於一般常見的完成條件，包括取得監理機關核准。在完成之前，OpenAI 與 Astral 仍是兩家各自獨立的公司。」也就是說，完成與否取決於監理核准等條件；查核當天讀到的四個頁面都沒有交易已完成的訊息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一件事，兩份公告用的動詞不只一種。OpenAI 一處寫「交易完成後，OpenAI 打算支援 Astral 的開源產品」，另一處寫「我們會繼續支援這些開源專案」；Astral 的公告寫的是「交易完成後，OpenAI 會繼續支援我們的開源工具」。「打算」與「會繼續」語氣不同，本文照各自原文分開寫。兩邊都沒有說明支援的具體方式與期限，也沒有承諾授權或收費方式不會改變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "團隊去留方面，OpenAI 寫的是「交易完成後，Astral 團隊將加入 OpenAI 的 Codex 團隊」，但沒有給出人數，也沒有說是否每一位 Astral 員工都會加入。至於 Codex 之後會怎麼運用這三個工具，兩份公告都用「探索」談更緊密的整合；OpenAI 另外寫，交易完成後把這些系統與 Codex 整合，會讓 AI 代理更直接使用開發者每天倚賴的工具。兩邊都沒有列出功能、版本或時程。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-astral-20260319/diagram-1.svg",
+          "alt": "四格圖解：這樁收購已宣布、查核當天四個頁面未見完成公告、完成前雙方仍各自獨立、uv 在 9 月 15 日仍發布新版",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 3 月 19 日公告整理：收購已宣布，完成須經監理核准，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "約六個月後：查核當天看到的實際狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "查核當天重新讀 Astral 官方網站首頁，最上方仍掛著一條橫幅公告，寫著「Astral to join OpenAI as part of the Codex team」，點進去就是 3 月 19 日那篇公告；首頁其餘版位以 Ruff 為主，頁尾仍同時列出 Ruff、uv、ty 三個工具的連結，網域也仍是 astral.sh，不是 OpenAI 網域下的頁面。將近六個月過去，這一頁對這樁交易的說法還是「將加入」，沒有改成已經完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三個工具的 PyPI 頁面裡，本文只查了 uv 那一頁。查核當天的 PyPI 頁面顯示，uv 最新版本是 0.12.15，發布時間是 2026 年 9 月 15 日，作者欄列的是 Astral Software Inc.，授權欄寫的是 MIT 或 Apache-2.0 二選一，整個頁面沒有出現「OpenAI」這個字。也就是說，以查核當天讀到的 PyPI 頁面而言，uv 的套件身分與授權都還沒有出現跟 OpenAI 有關的變化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這不代表交易破局或延後——本文查核的這四個頁面上沒有任何取消或延遲的訊息；官方公告本來就寫交易完成前雙方仍是兩家各自獨立的公司。讀者若擔心工具會忽然停止維護或改變授權，以查核到 2026 年 9 月 18 日的這四個頁面而言，都沒有這樣的訊息。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "如果你依賴這些工具，現在能做什麼檢查"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇文章談的是一筆企業併購案，本站不建議任何人換或不換工具，也沒有評估這三個工具本身。如果你的專案用到 uv、Ruff 或 ty，下面兩個地方是本文查核當天自己讀過、讀者也查得到的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一個是 Astral 與 OpenAI 的公告頁，看有沒有新增「交易已完成」之類的更新；另一個是 PyPI 上 uv 的套件頁，看版本號與授權欄位有沒有變動。這兩處都不必等媒體報導，自己就查得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文只根據 2026 年 9 月 18 日查核當天讀到的兩份官方公告、Astral 官方網站首頁與 PyPI 頁面整理，交易條件、完成進度與工具的授權方式都可能在之後改變。這四個頁面也沒有出現任何地區、國家或市場別的限制字樣，本站沒有查證這三個工具在各地實際取得的情形；兩家公司的股權、財務或估值細節不在本文查證範圍內。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "這筆收購完成了嗎？",
+              "answer": "本文查核到 2026 年 9 月 18 日為止，讀到的官方頁面都沒有交易已完成的訊息。OpenAI 自己的公告寫明，交易要等一般常見的完成條件到齊，包括取得監理機關核准，在那之前 OpenAI 與 Astral 仍是兩家各自獨立的公司。本文查的是 OpenAI 那篇公告、Astral 的公告與首頁、PyPI 上的 uv 頁面這四個地方，沒有再查別的管道。"
+            },
+            {
+              "question": "為什麼 OpenAI 說「收購」、Astral 卻說「加入」？",
+              "answer": "這是同一筆交易，但雙方公告用的動詞不同。OpenAI 自己的公告標題是「OpenAI to acquire Astral」，用的是「收購」；Astral 創辦人 Charlie Marsh 的公告標題是「Astral to join OpenAI」，用的是「加入」，內文寫的是「已與 OpenAI 達成協議、以 Codex 團隊一員的身分加入 OpenAI」。這是同一件事的兩種官方說法，本文兩種都保留。"
+            },
+            {
+              "question": "我現在用的 uv、Ruff 或 ty 會馬上被收費或關閉開源嗎？",
+              "answer": "本文查核的官方頁面上沒有這樣的公告。以查核當天讀到的 PyPI 頁面，uv 0.12.15 的授權欄寫的是 MIT 或 Apache-2.0，這兩種都是開源授權；OpenAI 的公告一處寫完成後「打算支援」Astral 的開源產品、一處寫「會繼續支援」這些開源專案，Astral 的公告寫的是 OpenAI 會「繼續支援」開源工具，兩邊都沒有提到收費或授權變更，也沒有承諾未來永遠不變。"
+            },
+            {
+              "question": "這跟台灣的開發者有關係嗎？",
+              "answer": "本文查核的四個頁面都沒有出現任何地區、國家或市場別的限制字樣，本站也沒有查證這三個工具在各地實際取得的情形，所以不寫「哪裡用得到」。以本站為例，Mokaair 後端服務的專案設定檔本身就用了 uv 與 Ruff。工具的版本與授權之後會不會變，兩份公告都沒有說明。"
+            },
+            {
+              "question": "Astral 拿到的收購金額是多少？",
+              "answer": "查核讀到的兩份官方公告都沒有公布。OpenAI 與 Astral 的公告都沒有提到交易金額、Astral 的估值或任何財務數字，本文查證範圍內的官方來源也沒有這項資訊，因此本文不提供任何金額推測。"
+            },
+            {
+              "question": "之後要怎麼自己追蹤這筆收購的進度？",
+              "answer": "可以直接查 Astral 的部落格與 OpenAI 公告同一頁面，看有沒有更新完成交易的訊息；工具本身的狀態則可以查 PyPI 上的套件頁，本文查的是 uv 那一頁的版本紀錄與授權欄位，這是不需要等媒體報導、自己就能查證的兩個管道。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查核日之後，狀態可能已經改變",
+          "text": "本文根據 OpenAI 與 Astral 2026 年 3 月 19 日的官方公告、Astral 官方網站首頁與 PyPI 上 uv 的套件頁面整理，查核日為 2026 年 9 月 18 日。查核當天讀到的這四個頁面都沒有交易已完成的訊息；OpenAI 的公告寫明完成須取得監理機關核准等一般常見條件，在完成之前雙方仍是兩家各自獨立的公司。交易金額、Astral 團隊加入人數、工具未來的授權與收費方式，這四個頁面都沒有說明。本文不做任何實測，也不是投資或採購建議，最新進度請以 Astral 與 OpenAI 官方公告及 PyPI 頁面為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA 宣布收購 Hugging Face：公告之外，還有哪些沒說明？",
+              "kind": "life",
+              "slug": "ai-news-nvidia-hugging-face-20260903"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Astral 公告「Astral to join OpenAI」",
+          "url": "https://astral.sh/blog/openai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 公告「OpenAI to acquire Astral」",
+          "url": "https://openai.com/index/openai-to-acquire-astral/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Astral 官方網站首頁",
+          "url": "https://astral.sh/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "uv · PyPI",
+          "url": "https://pypi.org/project/uv/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "OpenAI Announces It Will Acquire Astral: What’s Next for Open Source Tools uv, Ruff, and ty",
+      "description": "On March 19, 2026, OpenAI and developer-tools company Astral each published their own announcement on the same day: OpenAI said it will acquire Astral, and Astral said it will join OpenAI’s Codex team. Drawing on both official announcements, Astral’s official homepage, and uv’s page on PyPI, this article lays out the state of the open source tools uv, Ruff, and ty as of the day we checked, and how the official announcements describe the conditions for closing this deal.",
+      "hero": {
+        "src": "/guides/ai-news-openai-astral-20260319/hero-en.jpg",
+        "alt": "Original illustration: three boxes on the left represent uv, Ruff, and ty. A dashed arrow crosses a dashed circle to a dashed screen on the right, showing the deal is announced but not yet closed.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On March 19, 2026, OpenAI and developer-tools company Astral each published their own announcement on the same day: OpenAI said it will acquire Astral, while Astral said it had reached an agreement with OpenAI and would join OpenAI as part of the Codex team. Astral is the company behind three open source Python tools, uv, Ruff, and ty; neither announcement mentioned the deal’s price."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026, based on the full text of the announcements OpenAI and Astral each published on March 19, Astral’s official homepage, and uv’s package page on PyPI. This site has not tested or evaluated these three tools for this article, and this is not investment or purchasing advice; below we separately note which statements come from the time of the announcement and which describe the state we read on the day we checked, since the deal’s conditions and timeline may still change."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On March 19, 2026, OpenAI announced it would acquire developer-tools company Astral, and Astral announced the same day that it would join OpenAI as part of the Codex team; neither announcement disclosed the deal’s price.",
+            "OpenAI’s own announcement states that the acquisition is subject to closing conditions, including regulatory approval, and that until then OpenAI and Astral remain separate and independent companies.",
+            "Astral develops three open source Python tools, uv, Ruff, and ty. As of the day we checked, uv’s latest version on PyPI was 0.12.15, released on September 15, 2026, with its license field listed as MIT or Apache-2.0.",
+            "OpenAI’s announcement says in one place that after closing it ‘plans to’ support Astral’s open source products, and elsewhere that it ‘will continue to support’ these projects; Astral says OpenAI will continue supporting its open source tools. Neither says whether licensing or pricing will change."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Happened: What Each Company’s Official Announcement Says"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI’s own announcement page says it will acquire Astral, bringing the company’s open source developer tools into the Codex ecosystem; the headline reads flatly, “OpenAI to acquire Astral,” using the word acquire. Astral founder Charlie Marsh used a different verb on his own company blog: the announcement is headlined “Astral to join OpenAI,” and the text says Astral “entered into an agreement to join OpenAI as part of the Codex team,” using the word join. Both announcements describe the same deal, but each chose a different verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI’s announcement explains its reasoning for the acquisition: OpenAI says Astral has built “some of the most widely used open source Python tools,” and that these tools “power millions of developer workflows” — both are OpenAI’s own claims, which this site cannot verify. In his own announcement, Marsh says that over the past few years Astral’s tools have “grown from zero to hundreds of millions of downloads per month” combined across Ruff, uv, and ty; this is Astral’s own claim, and this site has not verified the figure."
+        },
+        {
+          "type": "paragraph",
+          "text": "On what drove the deal, Marsh writes that AI is rapidly changing how software is developed, that he sees Codex as the frontier where AI and software meet, and that this is why he decided to bring Astral’s tools and expertise into OpenAI. OpenAI’s announcement, meanwhile, says its goal is to move Codex beyond simply generating code and toward a system that can participate in the entire development workflow — helping plan changes, modify codebases, run tools, verify results, and maintain software over time — and that Astral’s tools already sit inside that workflow. Neither side mentions the deal’s price or Astral’s valuation."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What uv, Ruff, and ty Are, and Who Uses Them"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI’s announcement describes each of the three tools in one line: uv “simplifies dependency and environment management,” Ruff “provides extremely fast linting and formatting,” and ty “helps enforce type safety across codebases.” OpenAI goes on to say that together, these tools help developers manage projects, enforce quality, and catch errors early in the development process."
+        },
+        {
+          "type": "paragraph",
+          "text": "uv’s own PyPI package page describes it as “an extremely fast Python package and project manager, written in Rust”; Astral’s official homepage positions Ruff as “an extremely fast Python linter,” and the entry for ty in the homepage’s announcements section describes it as “an extremely fast Python type checker and language server.” All three share the same traits: written in Rust, and built for speed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Neither OpenAI’s nor Astral’s announcement spells out exactly who uses these three tools directly, but their feature descriptions point to an audience: uv is for people installing packages, managing virtual environments, or pinning dependency versions; Ruff is for people who want to check style and formatting before code is submitted; ty is for people who want to catch type errors before running their code. As one example, this site’s own backend service uses uv to pin its dependencies and specifies a version range for ruff in its configuration, making it the kind of project that uses Astral’s tools directly."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Tool",
+            "OpenAI’s One-Line Description",
+            "State Seen on the Day We Checked"
+          ],
+          "rows": [
+            [
+              "uv",
+              "Simplifies dependency and environment management",
+              "Latest version 0.12.15 on PyPI, released September 15, 2026, licensed MIT or Apache-2.0"
+            ],
+            [
+              "Ruff",
+              "Provides extremely fast linting and formatting",
+              "Name and link still listed on Astral’s official homepage"
+            ],
+            [
+              "ty",
+              "Helps enforce type safety across codebases",
+              "Name and link still listed on Astral’s official homepage"
+            ]
+          ],
+          "caption": "Compiled from OpenAI’s March 19, 2026 announcement and the PyPI and astral.sh pages, as of the check date September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the Two Announcements Promise, and What They Leave Unsaid"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI states the deal’s current status plainly: “The closing of the acquisition is subject to customary closing conditions, including receipt of regulatory approval. Until the closing, OpenAI and Astral will remain separate and independent companies.” In other words, whether the deal closes depends on conditions such as regulatory approval; none of the four pages read on the day we checked said the deal had closed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The two announcements use more than one verb for the same thing. OpenAI says in one place that “after closing OpenAI plans to support Astral’s open source products,” and in another that “we’ll continue to support these open source projects”; Astral’s announcement says “OpenAI will continue supporting our open source tools” after the deal closes. ‘Plans to’ and ‘will continue’ carry a different tone, and this article keeps them separate, following each original wording. Neither side specifies exactly how or for how long support will continue, and neither promises that licensing or pricing will stay unchanged."
+        },
+        {
+          "type": "paragraph",
+          "text": "On where the team ends up, OpenAI says “after closing, the Astral team will join the Codex team at OpenAI,” without giving a headcount or saying whether every Astral employee will join. As for how Codex will make use of the three tools going forward, both announcements use the word “explore” when discussing closer integration; OpenAI separately writes that integrating these systems with Codex after closing will let AI agents work more directly with the tools developers already rely on every day. Neither side lists specific features, versions, or a timeline."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-astral-20260319/diagram-1-en.svg",
+          "alt": "Four-panel diagram: the deal is announced; none of the four pages checked showed a closing announcement; the two firms stay separate until closing; uv still shipped a new release on September 15.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI’s March 19, 2026 announcement: the acquisition has been announced, and closing requires regulatory approval; checked as of September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "About Six Months Later: The State We Saw on the Day We Checked"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rereading Astral’s official homepage on the day we checked, a banner announcement still sits at the top of the page, reading “Astral to join OpenAI as part of the Codex team,” which links through to the March 19 announcement; the rest of the homepage is mostly about Ruff, and the footer still lists links for all three tools, Ruff, uv, and ty, and the domain is still astral.sh, not a page under an OpenAI domain. Nearly six months later, this page still describes the deal as something that “will” happen, not something that has already closed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Of the three tools’ PyPI pages, this article checked only uv’s. On the day we checked, uv’s PyPI page showed its latest version as 0.12.15, released September 15, 2026, with the author field listed as Astral Software Inc. and the license field as a choice between MIT or Apache-2.0; the word “OpenAI” did not appear anywhere on the page. In other words, based on the PyPI page read on the day we checked, neither uv’s package identity nor its license shows any change connected to OpenAI yet."
+        },
+        {
+          "type": "paragraph",
+          "text": "This does not mean the deal has fallen through or been delayed — none of the four pages checked for this article contained any message about cancellation or delay, and the official announcements always said the two companies would remain separate and independent until closing. For readers worried that these tools might suddenly stop being maintained or change license, none of the four pages, as checked through September 18, 2026, carried any such message."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "If You Rely on These Tools, What You Can Check Right Now"
+        },
+        {
+          "type": "paragraph",
+          "text": "This article is about a corporate acquisition; this site does not recommend that anyone switch tools or stay put, and it has not evaluated these three tools on their own merits. If your project uses uv, Ruff, or ty, the two places below are ones this article itself read on the day we checked, and that readers can check for themselves too."
+        },
+        {
+          "type": "paragraph",
+          "text": "One is the announcement pages from Astral and OpenAI, to see whether an update such as “deal completed” has been added; the other is uv’s package page on PyPI, to see whether the version number or license field has changed. Neither requires waiting for media coverage — both can be checked directly."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article is based only on the two official announcements, Astral’s official homepage, and the PyPI page, as read on the day we checked, September 18, 2026; the deal’s conditions, progress toward closing, and how the tools are licensed may all change afterward. None of these four pages carried any wording limiting the deal or the tools by region, country, or market, and this site has not verified how these three tools are actually accessed in different places; the companies’ equity, financial details, or valuation are outside the scope of what this article checked."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Has this acquisition closed?",
+              "answer": "As of the day we checked, September 18, 2026, none of the official pages we read contained any message that the deal had closed. OpenAI’s own announcement states that the deal is subject to customary closing conditions, including receipt of regulatory approval, and that until then OpenAI and Astral remain separate and independent companies. For this article we checked four places — OpenAI’s announcement, Astral’s announcement and homepage, and uv’s page on PyPI — and did not check any other channel."
+            },
+            {
+              "question": "Why does OpenAI say “acquire” while Astral says “join”?",
+              "answer": "It’s the same deal, but the two announcements use different verbs. OpenAI’s own announcement is headlined “OpenAI to acquire Astral,” using the word acquire; Astral founder Charlie Marsh’s announcement is headlined “Astral to join OpenAI,” using the word join, and the text says Astral “entered into an agreement to join OpenAI as part of the Codex team.” These are two official ways of describing the same event, and this article keeps both."
+            },
+            {
+              "question": "Will the uv, Ruff, or ty I use now suddenly start charging money or stop being open source?",
+              "answer": "None of the official pages checked for this article carry any such announcement. On the PyPI page read on the day we checked, uv 0.12.15’s license field lists MIT or Apache-2.0, both open source licenses; OpenAI’s announcement says in one place that after closing it ‘plans to support’ Astral’s open source products, and in another that it ‘will continue to support’ these open source projects, while Astral’s announcement says OpenAI will ‘continue supporting’ its open source tools. Neither side mentions charging money or changing the license, and neither promises this will never change in the future."
+            },
+            {
+              "question": "Does this matter for developers in Taiwan?",
+              "answer": "None of the four pages checked for this article carried any wording about a region, country, or market limitation, and this site has not verified how these three tools are actually accessed in different places, so this article does not say where they can be used. As one example, this site’s own backend service configuration already uses uv and Ruff. Whether the tools’ versions or licenses will change later is something neither announcement addresses."
+            },
+            {
+              "question": "How much did Astral get paid for the acquisition?",
+              "answer": "Neither of the two official announcements checked for this article disclosed a figure. Neither OpenAI’s nor Astral’s announcement mentions the deal’s price, Astral’s valuation, or any financial figures, and none of the official sources within this article’s scope provides this information, so this article does not offer any guess at a figure."
+            },
+            {
+              "question": "How can I keep track of this acquisition’s progress myself going forward?",
+              "answer": "You can check Astral’s blog and the same page as OpenAI’s announcement directly, to see whether either has been updated to say the deal has closed; the state of the tools themselves can be checked on their PyPI package pages — this article checked uv’s version history and license field — and both are channels you can verify yourself without waiting for media coverage."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "The Situation May Have Changed Since the Day We Checked",
+          "text": "This article is based on the official announcements OpenAI and Astral published on March 19, 2026, Astral’s official homepage, and uv’s package page on PyPI, as of the check date September 18, 2026. None of the four pages read on the day we checked contained any message that the deal had closed; OpenAI’s announcement states that closing requires customary conditions such as regulatory approval, and that until then the two companies remain separate and independent. The deal’s price, how many Astral staff will join, and how the tools will be licensed or priced in the future are not addressed on any of these four pages. This article is not based on hands-on testing and is not investment or purchasing advice; for the latest status, refer to Astral’s and OpenAI’s official announcements and the PyPI page."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA Announces Acquisition of Hugging Face: What the Announcement Doesn't Say",
+              "kind": "life",
+              "slug": "ai-news-nvidia-hugging-face-20260903"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Astral’s announcement, “Astral to join OpenAI”",
+          "url": "https://astral.sh/blog/openai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI’s announcement, “OpenAI to acquire Astral”",
+          "url": "https://openai.com/index/openai-to-acquire-astral/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Astral’s official homepage",
+          "url": "https://astral.sh/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "uv · PyPI",
+          "url": "https://pypi.org/project/uv/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "OpenAI、Astral買収を発表：オープンソースツールuv・Ruff・tyの行方",
+      "description": "2026年3月19日、OpenAIと開発者向けツール企業のAstralが同じ日にそれぞれ発表を行いました。OpenAIはAstralを買収すると述べ、AstralはOpenAIのCodexチームの一員として参加すると述べています。本記事は両社の公式発表、Astral公式サイトのトップページ、PyPIのページをもとに、uv、Ruff、tyという3つのツールが確認当日時点でどのような状態だったか、そして公式発表がこの取引の完了条件をどう書いているかをまとめています。",
+      "hero": {
+        "src": "/guides/ai-news-openai-astral-20260319/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側に並んだ3つの小さな四角がuv、Ruff、tyの3つのツールを表し、点線の矢印が点線の円を通り抜けて右側を指しています。右側には点線の枠で囲われた画面があり、取引は発表されたが完了条件が揃うまでは統合されないことを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年3月19日、OpenAIと開発者向けツール企業のAstralは同じ日にそれぞれ発表を行いました。OpenAIはAstralを買収すると述べ、AstralはOpenAIとの合意に達し、Codexチームの一員としてOpenAIに参加すると述べています。AstralはオープンソースのPythonツールであるuv、Ruff、tyの3つを開発する企業です。両社の発表とも取引金額には触れていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月18日に確認したもので、OpenAIとAstralが3月19日にそれぞれ発表した文書の全文、Astral公式サイトのトップページ、そしてPyPI上のuvのパッケージページを読んだ内容にもとづいています。当サイトはこの記事のためにこれら3つのツールについて実地の検証や比較評価を行っておらず、投資や購入を勧めるものでもありません。以下では、発表当時の内容と確認当日に読み取った状態を分けて示します。取引の条件や時期は今後変わる可能性があります。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年3月19日、OpenAIは開発者向けツール企業のAstralを買収すると発表し、Astralも同じ日にCodexチームの一員としてOpenAIに参加すると発表しました。取引金額はどちらの発表にも記載されていません。",
+            "OpenAI自身の発表によれば、この買収は規制当局の承認など取引完了に必要な条件が揃うことが前提で、それまではOpenAIとAstralはそれぞれ独立した別会社のままだとしています。",
+            "Astralが開発するuv、Ruff、tyはオープンソースのPython開発ツールです。本記事の確認当日、uvのPyPI上の最新バージョンは2026年9月15日公開の0.12.15で、ライセンス欄にはMIT又はApache-2.0と記載されていました。",
+            "OpenAIの発表は、取引完了後にAstralのオープンソース製品を「支援する予定」だと書く一方で、別の箇所では「引き続き支援する」とも書いています。Astralの発表では、OpenAIはオープンソースツールを引き続き支援するとしています。ライセンスや料金体系が変わるかどうかは、どちらの発表にも記載がありません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "何が起きたのか：両社の公式発表がそれぞれ何を書いているか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは自社の発表ページで、Astralを買収し、同社のオープンソース開発者ツールをCodexのエコシステムに取り込むと書いています。見出しはそのまま「OpenAI to acquire Astral」で、「買収」（acquire）という言葉を使っています。一方、Astralの創業者Charlie Marsh氏は自社ブログで別の動詞を使いました。発表の見出しは「Astral to join OpenAI」で、本文には「OpenAIとの合意に達し、Codexチームの一員として参加する」と書かれており、「参加」（join）という言葉が使われています。両方の発表は同じ取引について述べていますが、それぞれ異なる動詞を選んでいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIの発表は買収の動機を説明しています。OpenAIは、Astralが「最も広く使われているオープンソースのPythonツールの一部」を作り上げたと述べ、これらのツールは「数百万の開発者のワークフローを支えている」としています。どちらもOpenAI自身の主張であり、当サイトでは検証できません。Marsh氏は自身の発表の中で、ここ数年でAstralのツールはRuff、uv、ty合わせて「ゼロから月間数億回のダウンロードにまで成長した」と述べていますが、これはAstral自身の主張であり、当サイトはこの数字を検証していません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この取引に至った経緯について、Marsh氏はAIがソフトウェア開発のあり方を急速に変えつつあり、その中でCodexこそがAIとソフトウェアの最前線だと考えたため、Astralのツールと専門知識をOpenAIに加える決断をしたと書いています。一方OpenAIの発表では、目標はCodexを単にコードを生成するだけの存在から、変更の計画、コードベースの修正、ツールの実行、結果の検証、ソフトウェアの長期的な保守まで、開発フロー全体に関わるシステムへと進化させることだとしており、Astralのツールはもともとこのワークフローの中にあったとしています。どちらの発表も取引金額やAstralの評価額には触れていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "uv、Ruff、tyとは何か、誰が関わるのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは発表の中で3つのツールをそれぞれ一文で紹介しています。uvは「依存関係と環境管理を簡素化する」、Ruffは「非常に高速なリンティングとフォーマットを提供する」、tyは「コードベース全体での型安全性の徹底を助ける」としています。OpenAIはさらに、この3つを合わせることで開発者はプロジェクトを管理し、品質を保ち、開発の早い段階でエラーを見つけられるようになると書いています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "uv自身のPyPIパッケージページでは、「Rustで書かれた、非常に高速なPythonのパッケージおよびプロジェクト管理ツール」と説明されています。Astral公式サイトのトップページではRuffを「非常に高速なPythonのリンター」と位置づけており、トップページのお知らせ欄に掲載されたtyの紹介文には「非常に高速なPythonの型チェッカーおよび言語サーバー」と書かれています。3つに共通するのは、いずれもRustで書かれており、速度を重視している点です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この3つのツールに直接関わるのが誰かについて、OpenAIとAstralの発表はどちらもはっきりとは書いていませんが、機能の説明からは対象が見えてきます。uvはパッケージのインストールや仮想環境の管理、依存バージョンの固定を行う人向けです。Ruffはコードを提出する前にスタイルチェックや整形を行う人向けです。tyは実行前に型エラーを見つけたい人向けです。一例を挙げると、当サイトのバックエンドサービスのプロジェクト設定ファイルはuvで依存パッケージを固定しており、設定でruffのバージョン範囲も指定しています。つまりAstralのツールチェーンを直接使っているプロジェクトの一つです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ツール",
+            "OpenAI公式の一文説明",
+            "確認日に見られた状態"
+          ],
+          "rows": [
+            [
+              "uv",
+              "依存関係と環境管理を簡素化する",
+              "PyPI上の最新バージョンは0.12.15、2026年9月15日公開、ライセンスはMIT又はApache-2.0"
+            ],
+            [
+              "Ruff",
+              "非常に高速なリンティングとフォーマットを提供する",
+              "名称とリンクは今もAstral公式サイトのトップページに掲載"
+            ],
+            [
+              "ty",
+              "コードベース全体での型安全性の徹底を助ける",
+              "名称とリンクは今もAstral公式サイトのトップページに掲載"
+            ]
+          ],
+          "caption": "OpenAIの2026年3月19日の発表、およびPyPI、astral.shの各ページをもとに作成。確認日は2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2つの発表が約束していること、書かれていないこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは取引の現状について明確に書いています。「本買収の完了は、規制当局の承認を含む一般的な完了条件を満たすことが前提となります。完了までの間、OpenAIとAstralはそれぞれ独立した別会社であり続けます」。つまり、完了するかどうかは規制当局の承認などの条件次第だということです。確認当日に読んだ4つのページのいずれにも、取引が完了したという記載はありませんでした。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ内容について、2つの発表では複数の動詞が使われています。OpenAIはある箇所で「取引完了後、OpenAIはAstralのオープンソース製品を支援する予定です」と書き、別の箇所では「私たちはこれらのオープンソースプロジェクトを引き続き支援します」と書いています。Astralの発表では「取引完了後、OpenAIは私たちのオープンソースツールを引き続き支援します」としています。「支援する予定」と「引き続き支援する」ではニュアンスが異なるため、本記事ではそれぞれの原文どおりに分けて書いています。どちらの発表も、支援の具体的な方法や期間については説明しておらず、ライセンスや料金体系が変わらないという約束もしていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "チームの行方については、OpenAIは「取引完了後、AstralチームはOpenAIのCodexチームに加わります」と書いていますが、人数は示されておらず、Astralの全従業員が加わるのかどうかも書かれていません。Codexが今後この3つのツールをどう活用するかについては、両方の発表とも「模索する」という言葉でより緊密な統合について触れています。OpenAIはさらに、取引完了後にこれらのシステムをCodexと統合することで、AIエージェントが開発者が日々頼っているツールをより直接使えるようになるとも書いています。どちらの発表も、具体的な機能やバージョン、時期は示していません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-astral-20260319/diagram-1-ja.svg",
+          "alt": "4コマ図解：この買収はすでに発表されている、確認当日は4つのページのいずれにも完了の発表は見当たらなかった、完了までは両社はそれぞれ独立したまま、uvは9月15日にも新しいバージョンを公開している",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAIの2026年3月19日の発表をもとに作成：買収は発表済みだが、完了には規制当局の承認が必要です。確認日は2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "およそ半年後：確認当日に見られた実際の状態"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認当日にAstral公式サイトのトップページを改めて読むと、一番上には今も「Astral to join OpenAI as part of the Codex team」というバナー告知が掲げられており、クリックすると3月19日のあの発表ページに移動します。トップページの残りの部分は主にRuffの紹介が中心で、フッターには今もRuff、uv、tyの3つのツールへのリンクが並んでいます。ドメインも今なおastral.shのままで、OpenAIのドメイン配下のページにはなっていません。半年近くが経っても、このページがこの取引について書いている内容は「参加する予定」のままで、完了したという表記には変わっていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3つのツールのPyPIページのうち、本記事で確認したのはuvのページだけです。確認当日のPyPIページによると、uvの最新バージョンは0.12.15、公開日は2026年9月15日、作者欄にはAstral Software Inc.と記載され、ライセンス欄にはMIT又はApache-2.0のいずれかと書かれています。ページ全体を通して「OpenAI」という語は一度も出てきませんでした。つまり、確認当日に読んだPyPIページに関する限り、uvのパッケージとしての帰属やライセンスにはまだOpenAIに関連した変化は見られないということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これは取引が破談になった、あるいは延期されたことを意味するものではありません。本記事で確認した4つのページのいずれにも、取消や延期に関する記載はありませんでした。公式発表はもともと、取引完了前は両社がそれぞれ独立した別会社であり続けると書いています。ツールが急に保守されなくなったりライセンスが変わったりするのではと心配する読者もいるかもしれませんが、2026年9月18日までに確認したこの4つのページには、そのような記載は見当たりませんでした。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "これらのツールを使っている場合、今できる確認は何か"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事が扱っているのは1件の企業買収であり、当サイトはツールを乗り換えるべきかどうかを勧めるものではなく、3つのツール自体を評価するものでもありません。あなたのプロジェクトがuv、Ruff、tyのいずれかを使っている場合、以下の2か所は本記事が確認当日に実際に読んだ場所であり、読者自身でも確認できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "1つはAstralとOpenAIの発表ページで、「取引完了」といった更新が追加されていないかを確認できます。もう1つはPyPI上のuvのパッケージページで、バージョン番号やライセンス欄に変更がないかを確認できます。どちらも報道を待つ必要はなく、自分で確認できるものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月18日の確認当日に読んだ2つの公式発表、Astral公式サイトのトップページ、PyPIのページのみにもとづいてまとめたものであり、取引の条件、完了の進捗、ツールのライセンスの扱いは今後変わる可能性があります。この4つのページには地域や国、市場ごとの制限を示す記載も見当たらず、当サイトはこの3つのツールが各地で実際にどう利用できるかは検証していません。両社の株式、財務、評価額の詳細は本記事の確認範囲には含まれていません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "この買収は完了したのですか?",
+              "answer": "本記事が2026年9月18日まで確認した限り、読んだ公式ページのいずれにも取引が完了したという記載はありませんでした。OpenAI自身の発表は、規制当局の承認を含む一般的な完了条件が揃うことが取引成立の前提であり、それまではOpenAIとAstralはそれぞれ独立した別会社であり続けると明記しています。本記事ではOpenAIの発表、Astralの発表とトップページ、PyPI上のuvのページという4か所を確認しており、それ以外の情報源は確認していません。"
+            },
+            {
+              "question": "なぜOpenAIは「買収」と言い、Astralは「参加」と言っているのですか?",
+              "answer": "同じ取引についての話ですが、両社の発表は異なる動詞を使っています。OpenAI自身の発表の見出しは「OpenAI to acquire Astral」で、「買収」という言葉を使っています。Astralの創業者Charlie Marsh氏の発表の見出しは「Astral to join OpenAI」で、「参加」という言葉を使っており、本文には「OpenAIとの合意に達し、Codexチームの一員として参加する」と書かれています。これは同じ出来事についての2つの公式な言い方であり、本記事ではその両方をそのまま残しています。"
+            },
+            {
+              "question": "今使っているuv、Ruff、tyはすぐに有料化されたり、オープンソースでなくなったりしますか?",
+              "answer": "本記事が確認した公式ページには、そうした発表はありません。確認当日に読んだPyPIのページでは、uv 0.12.15のライセンス欄にMIT又はApache-2.0と記載されており、どちらもオープンソースライセンスです。OpenAIの発表は、取引完了後にAstralのオープンソース製品を「支援する予定」だとする箇所と、「引き続き支援する」とする箇所の両方があり、Astralの発表ではOpenAIがオープンソースツールを「引き続き支援する」としています。どちらも有料化やライセンス変更には触れておらず、将来にわたって変わらないという約束もしていません。"
+            },
+            {
+              "question": "これは台湾の開発者に関係がありますか?",
+              "answer": "本記事が確認した4つのページには、地域や国、市場ごとの制限を示す記載は見当たらず、当サイトもこの3つのツールが各地で実際にどう利用できるかは検証していないため、「どこで使えるか」については書いていません。一例を挙げると、当サイトのバックエンドサービスのプロジェクト設定ファイル自体がuvとRuffを使用しています。ツールのバージョンやライセンスが今後変わるかどうかについては、どちらの発表も説明していません。"
+            },
+            {
+              "question": "Astralが得た買収額はいくらですか?",
+              "answer": "確認した2つの公式発表のどちらにも金額は公表されていません。OpenAIとAstralの発表はどちらも取引金額、Astralの評価額、その他の財務上の数字に触れておらず、本記事が確認した範囲の公式情報源にもこの情報はありません。そのため本記事では金額についての推測は行いません。"
+            },
+            {
+              "question": "今後、この買収の進捗を自分で追うにはどうすればよいですか?",
+              "answer": "Astralのブログと、OpenAIの発表と同じページを直接確認すれば、取引完了を知らせる更新が追加されていないかがわかります。ツール自体の状態については、PyPI上の各パッケージページで確認できます。本記事ではuvのページのバージョン履歴とライセンス欄を確認しました。どちらも報道を待たずに自分で確認できる方法です。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "確認日以降、状況が変わっている可能性があります",
+          "text": "本記事はOpenAIとAstralが2026年3月19日に発表した公式文書、Astral公式サイトのトップページ、PyPI上のuvのパッケージページにもとづいてまとめたものです。確認日は2026年9月18日です。確認当日に読んだこの4つのページのいずれにも、取引が完了したという記載はありませんでした。OpenAIの発表は、規制当局の承認を含む一般的な条件を満たすことが完了の前提であり、それまでは両社がそれぞれ独立した別会社であり続けると明記しています。取引金額、Astralチームのうち何人がOpenAIに加わるのか、ツールの今後のライセンスや料金体系については、この4つのページのいずれにも説明がありません。本記事は実地の検証を行っておらず、投資や購入を勧めるものでもありません。最新の状況はAstralとOpenAIの公式発表およびPyPIのページをご確認ください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIAがHugging Faceの買収を発表：発表文に書かれていないことは",
+              "kind": "life",
+              "slug": "ai-news-nvidia-hugging-face-20260903"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Astralの発表「Astral to join OpenAI」",
+          "url": "https://astral.sh/blog/openai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAIの発表「OpenAI to acquire Astral」",
+          "url": "https://openai.com/index/openai-to-acquire-astral/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Astral公式サイトのトップページ",
+          "url": "https://astral.sh/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "uv · PyPI",
+          "url": "https://pypi.org/project/uv/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "OpenAI, Astral 인수 발표: 오픈소스 도구 uv·Ruff·ty의 향방",
+      "description": "2026년 3월 19일, OpenAI와 개발자 도구 기업 Astral이 같은 날 각각 발표를 냈습니다. OpenAI는 Astral을 인수하겠다고 밝혔고, Astral은 OpenAI의 Codex 팀 일원으로 합류하겠다고 밝혔습니다. 본 기사는 양사의 공식 발표문, Astral 공식 홈페이지, PyPI 페이지를 바탕으로 uv, Ruff, ty 세 도구가 확인 당일 어떤 상태였는지, 그리고 공식 발표문이 이 거래의 완료 조건을 어떻게 적고 있는지를 정리합니다.",
+      "hero": {
+        "src": "/guides/ai-news-openai-astral-20260319/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽에 나란히 놓인 세 개의 작은 사각형은 uv, Ruff, ty 세 도구를 나타내고, 점선 화살표가 점선 원을 지나 오른쪽을 가리킵니다. 오른쪽에는 점선 테두리 안의 화면이 있으며, 거래가 발표되었으나 완료 조건이 갖춰져야 비로소 합쳐짐을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 3월 19일, OpenAI와 개발자 도구 기업 Astral은 같은 날 각각 발표문을 냈습니다. OpenAI는 Astral을 인수하겠다고 밝혔고, Astral은 OpenAI와 합의에 도달했으며 Codex 팀의 일원으로 OpenAI에 합류하겠다고 밝혔습니다. Astral은 오픈소스 Python 도구인 uv, Ruff, ty 세 가지를 개발하는 기업입니다. 두 발표문 모두 거래 금액은 언급하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일에 확인한 내용으로, OpenAI와 Astral이 3월 19일에 각각 낸 발표문 전문, Astral 공식 홈페이지, 그리고 PyPI에 있는 uv의 패키지 페이지를 읽고 작성했습니다. 본 사이트는 이 기사를 위해 이 세 가지 도구를 직접 시험해 보거나 비교 평가하지 않았으며, 이 기사는 투자 조언이나 구매 조언을 제공하지 않습니다. 아래에서는 발표 당시의 표현과 확인 당일에 읽은 상태를 구분해서 표시하며, 거래 조건과 일정은 앞으로도 바뀔 수 있습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 3월 19일, OpenAI는 개발자 도구 기업 Astral을 인수하겠다고 발표했고, Astral도 같은 날 Codex 팀의 일원으로 OpenAI에 합류하겠다고 발표했습니다. 거래 금액은 두 발표문 모두 공개하지 않았습니다.",
+            "OpenAI는 발표문에서 이번 인수가 규제 당국의 승인 등 거래 완료 조건이 모두 충족되어야 하며, 그전까지 OpenAI와 Astral은 각각 독립된 별개의 회사로 남는다고 직접 밝혔습니다.",
+            "Astral이 개발한 uv, Ruff, ty는 오픈소스 Python 개발 도구 세 가지입니다. 본 기사의 확인 당일 기준, uv의 PyPI 최신 버전은 2026년 9월 15일에 공개된 0.12.15였고, 라이선스 항목에는 MIT 또는 Apache-2.0이라고 적혀 있었습니다.",
+            "OpenAI의 발표문은 한 곳에서는 거래 완료 후 Astral의 오픈소스 제품을 '지원할 계획'이라고 적었고, 다른 곳에서는 '계속 지원하겠다'고 적었습니다. Astral의 발표문에는 OpenAI가 오픈소스 도구를 계속 지원할 것이라고 적혀 있습니다. 라이선스나 요금 방식이 바뀔지는 두 발표문 모두 설명하지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "무슨 일이 있었나: 양사 공식 발표문이 각각 말하는 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 자사 발표 페이지에서 Astral을 인수해 이 회사의 오픈소스 개발자 도구를 Codex 생태계로 들여온다고 적었습니다. 제목은 그대로 'OpenAI to acquire Astral'로, '인수'(acquire)라는 단어를 사용했습니다. 반면 Astral의 창업자 Charlie Marsh는 자사 블로그에서 다른 동사를 썼습니다. 발표문 제목은 'Astral to join OpenAI'였고, 본문에는 'OpenAI와 합의에 도달했으며 Codex 팀의 일원으로 합류한다'고 적혀 있어 '합류'(join)라는 단어를 사용했습니다. 두 발표문은 같은 거래를 이야기하고 있지만, 각자 다른 동사를 선택한 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI의 발표문은 인수 동기를 설명합니다. OpenAI는 Astral이 '가장 널리 쓰이는 오픈소스 Python 도구 중 일부'를 만들었으며, 이 도구들이 '수백만 개의 개발자 워크플로를 떠받치고 있다'고 말합니다. 두 문장 모두 OpenAI 자신의 주장으로, 본 사이트가 검증할 수 있는 내용은 아닙니다. Marsh는 자신의 발표문에서 지난 몇 년간 Astral의 도구가 Ruff, uv, ty를 합쳐 '0에서 월간 수억 건의 다운로드로 성장했다'고 말했는데, 이는 Astral 자신의 주장이며 본 사이트는 이 수치를 검증하지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 거래를 이끈 배경에 대해 Marsh는 AI가 소프트웨어 개발 방식을 빠르게 바꾸고 있으며, 자신은 Codex가 바로 그 AI와 소프트웨어의 최전선이라고 생각하기 때문에 Astral의 도구와 전문성을 OpenAI에 합류시키기로 결정했다고 적었습니다. 반면 OpenAI의 발표문은 목표가 Codex를 단순히 코드를 생성하는 것을 넘어, 변경 사항 계획, 코드베이스 수정, 도구 실행, 결과 검증, 소프트웨어의 장기적인 유지 관리까지 개발 과정 전체에 참여할 수 있는 시스템으로 발전시키는 것이며, Astral의 도구는 원래부터 이 작업 흐름 안에 있었다고 적었습니다. 양쪽 모두 거래 금액이나 Astral의 기업 가치는 언급하지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "uv, Ruff, ty는 무엇이고 누가 사용하나"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 발표문에서 세 도구를 각각 한 문장으로 소개합니다. uv는 '의존성과 환경 관리를 단순화'하고, Ruff는 '매우 빠른 린팅과 포매팅을 제공'하며, ty는 '코드베이스 전반의 타입 안전성 확보를 돕는다'고 적었습니다. OpenAI는 이어서 이 세 가지가 합쳐지면 개발자가 프로젝트를 관리하고 품질을 유지하며 개발 초기 단계에서 오류를 찾아내는 데 도움이 된다고 적었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "uv 자체의 PyPI 패키지 페이지는 이를 'Rust로 작성된, 매우 빠른 Python 패키지 및 프로젝트 관리 도구'라고 설명합니다. Astral 공식 홈페이지는 Ruff를 '매우 빠른 Python 린터'로 소개하고, 홈페이지 공지 영역에 실린 ty 소개 글에는 '매우 빠른 Python 타입 체커이자 언어 서버'라고 적혀 있습니다. 세 도구의 공통점은 모두 Rust로 작성되었고 속도를 강조한다는 점입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 세 도구를 직접 사용하는 사람이 누구인지 OpenAI와 Astral의 발표문 모두 명확히 밝히지는 않았지만, 기능 설명을 보면 대상을 짐작할 수 있습니다. uv는 패키지를 설치하고 가상 환경을 관리하거나 의존성 버전을 고정하려는 사람을 위한 것입니다. Ruff는 코드를 제출하기 전에 스타일 검사와 정렬을 하려는 사람을 위한 것입니다. ty는 실행 전에 타입 오류를 미리 찾아내려는 사람을 위한 것입니다. 예를 들어 본 사이트의 백엔드 서비스 프로젝트 설정 파일은 uv로 의존 패키지를 고정하고 설정에서 ruff의 버전 범위까지 지정하고 있어, Astral의 도구 체인을 직접 사용하는 부류의 프로젝트에 해당합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "도구",
+            "OpenAI 공식 한 줄 설명",
+            "확인일에 본 상태"
+          ],
+          "rows": [
+            [
+              "uv",
+              "의존성과 환경 관리를 단순화",
+              "PyPI 최신 버전 0.12.15, 2026년 9월 15일 공개, 라이선스 MIT 또는 Apache-2.0"
+            ],
+            [
+              "Ruff",
+              "매우 빠른 린팅과 포매팅 제공",
+              "이름과 링크가 여전히 Astral 공식 홈페이지에 게재"
+            ],
+            [
+              "ty",
+              "코드베이스 전반의 타입 안전성 확보 지원",
+              "이름과 링크가 여전히 Astral 공식 홈페이지에 게재"
+            ]
+          ],
+          "caption": "OpenAI의 2026년 3월 19일 발표문과 PyPI, astral.sh 페이지를 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "두 발표문이 약속한 것, 적지 않은 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 거래의 현재 상태를 명확히 밝히고 있습니다. '본 인수의 완료는 규제 당국의 승인을 포함한 일반적인 완료 조건 충족에 달려 있습니다. 완료 전까지 OpenAI와 Astral은 각각 독립된 별개의 회사로 남습니다.' 다시 말해 완료 여부는 규제 당국의 승인 등 조건에 달려 있으며, 확인 당일에 읽은 네 개 페이지 중 어디에도 거래가 완료되었다는 내용은 없었습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 사안을 두고 두 발표문은 한 가지 이상의 동사를 사용합니다. OpenAI는 한 곳에서 '거래 완료 후 OpenAI는 Astral의 오픈소스 제품을 지원할 계획입니다'라고 적었고, 다른 곳에서는 '저희는 이 오픈소스 프로젝트들을 계속 지원하겠습니다'라고 적었습니다. Astral의 발표문에는 '거래 완료 후 OpenAI는 저희의 오픈소스 도구를 계속 지원할 것입니다'라고 적혀 있습니다. '지원할 계획'과 '계속 지원'은 어조가 다르므로, 본 기사는 각자의 원문 그대로 구분해서 적습니다. 양쪽 모두 지원의 구체적인 방식이나 기간은 설명하지 않았고, 라이선스나 요금 방식이 바뀌지 않는다고 약속하지도 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "팀의 거취와 관련해 OpenAI는 '거래 완료 후 Astral 팀은 OpenAI의 Codex 팀에 합류합니다'라고 적었지만, 인원수는 밝히지 않았고 Astral 직원 전원이 합류하는지도 적지 않았습니다. Codex가 앞으로 이 세 도구를 어떻게 활용할지에 대해서는 두 발표문 모두 '모색한다'는 표현으로 더 긴밀한 통합을 이야기합니다. OpenAI는 별도로, 거래 완료 후 이 시스템들을 Codex와 통합하면 AI 에이전트가 개발자들이 매일 의존하는 도구를 더 직접적으로 사용할 수 있게 된다고도 적었습니다. 양쪽 모두 구체적인 기능이나 버전, 일정은 나열하지 않았습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-astral-20260319/diagram-1-ko.svg",
+          "alt": "네 칸짜리 도해: 이 인수는 이미 발표되었다, 확인 당일 네 개 페이지 어디에도 완료 발표는 보이지 않았다, 완료 전까지 양사는 각자 독립적으로 남는다, uv는 9월 15일에도 새 버전을 공개했다",
+          "width": 1600,
+          "height": 900,
+          "caption": "OpenAI의 2026년 3월 19일 발표문을 바탕으로 정리: 인수는 발표되었으나 완료에는 규제 당국의 승인이 필요합니다. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "약 6개월 후: 확인 당일에 본 실제 상태"
+        },
+        {
+          "type": "paragraph",
+          "text": "확인 당일 Astral 공식 홈페이지를 다시 읽어 보니, 맨 위에는 여전히 'Astral to join OpenAI as part of the Codex team'이라는 배너 공지가 걸려 있었고, 클릭하면 3월 19일의 그 발표문으로 이동했습니다. 홈페이지의 나머지 영역은 주로 Ruff를 소개하고 있었고, 하단에는 여전히 Ruff, uv, ty 세 도구로 가는 링크가 함께 나열되어 있었습니다. 도메인도 여전히 astral.sh로, OpenAI 도메인 아래의 페이지가 아니었습니다. 거의 6개월이 지났지만 이 페이지가 이 거래에 대해 말하는 내용은 여전히 '합류할 예정'이며, 완료되었다는 표현으로 바뀌지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 도구의 PyPI 페이지 중 본 기사가 확인한 것은 uv 페이지 하나뿐입니다. 확인 당일 PyPI 페이지에는 uv의 최신 버전이 0.12.15, 공개 시점은 2026년 9월 15일로 나와 있었고, 작성자 항목에는 Astral Software Inc.가, 라이선스 항목에는 MIT 또는 Apache-2.0 중 하나라고 적혀 있었습니다. 페이지 전체에서 'OpenAI'라는 단어는 한 번도 나오지 않았습니다. 즉 확인 당일에 읽은 PyPI 페이지를 기준으로 보면, uv의 패키지 소속이나 라이선스에는 아직 OpenAI와 관련된 변화가 나타나지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이것이 거래가 무산되었거나 지연되었다는 뜻은 아닙니다. 본 기사가 확인한 이 네 개 페이지 어디에도 취소나 지연에 관한 내용은 없었습니다. 공식 발표문은 애초에 거래 완료 전까지 양사가 각자 독립된 별개의 회사로 남는다고 적고 있습니다. 도구가 갑자기 유지 보수가 중단되거나 라이선스가 바뀌지는 않을지 걱정하는 독자가 있다면, 2026년 9월 18일까지 확인한 이 네 개 페이지에는 그런 내용이 없었습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 도구들에 의존하고 있다면 지금 확인할 수 있는 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 기사가 다루는 것은 하나의 기업 인수 건이며, 본 사이트는 도구를 바꾸거나 바꾸지 말라고 권하지 않고 세 도구 자체를 평가하지도 않습니다. 여러분의 프로젝트가 uv, Ruff, ty 중 하나를 사용하고 있다면, 아래 두 곳은 본 기사가 확인 당일 직접 읽은 곳이면서 독자 여러분도 직접 확인할 수 있는 곳입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "하나는 Astral과 OpenAI의 발표 페이지로, '거래 완료' 같은 업데이트가 추가되었는지 볼 수 있습니다. 다른 하나는 PyPI에 있는 uv의 패키지 페이지로, 버전 번호나 라이선스 항목에 변화가 있는지 볼 수 있습니다. 둘 다 언론 보도를 기다릴 필요 없이 직접 확인할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일 확인 당일에 읽은 두 개의 공식 발표문, Astral 공식 홈페이지, PyPI 페이지만을 근거로 정리한 것이며, 거래 조건과 완료 진행 상황, 도구의 라이선스 방식은 이후 바뀔 수 있습니다. 이 네 개 페이지에는 지역이나 국가, 시장별 제한을 나타내는 문구도 없었으며, 본 사이트는 이 세 도구가 각지에서 실제로 어떻게 이용 가능한지는 검증하지 않았습니다. 양사의 지분, 재무, 기업 가치에 관한 세부 사항은 본 기사의 확인 범위에 포함되지 않습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "이 인수는 완료되었나요?",
+              "answer": "본 기사가 2026년 9월 18일까지 확인한 바로는, 읽은 공식 페이지 어디에도 거래가 완료되었다는 내용은 없었습니다. OpenAI 자신의 발표문은 규제 당국의 승인을 포함한 일반적인 완료 조건이 모두 충족되어야 하며, 그전까지 OpenAI와 Astral은 각각 독립된 별개의 회사로 남는다고 명시하고 있습니다. 본 기사는 OpenAI의 발표문, Astral의 발표문과 홈페이지, PyPI의 uv 페이지, 이 네 곳을 확인했으며 다른 경로는 확인하지 않았습니다."
+            },
+            {
+              "question": "왜 OpenAI는 '인수'라고 하고 Astral은 '합류'라고 하나요?",
+              "answer": "같은 거래를 두고 하는 말이지만, 양사의 발표문은 서로 다른 동사를 씁니다. OpenAI 자신의 발표문 제목은 'OpenAI to acquire Astral'로 '인수'라는 단어를 썼습니다. Astral의 창업자 Charlie Marsh의 발표문 제목은 'Astral to join OpenAI'로 '합류'라는 단어를 썼고, 본문에는 'OpenAI와 합의에 도달했으며 Codex 팀의 일원으로 합류한다'고 적혀 있습니다. 같은 사건을 말하는 두 가지 공식적인 표현이며, 본 기사는 두 표현을 모두 그대로 남겨 두었습니다."
+            },
+            {
+              "question": "지금 쓰고 있는 uv, Ruff, ty가 바로 유료로 바뀌거나 오픈소스가 아니게 되나요?",
+              "answer": "본 기사가 확인한 공식 페이지에는 그런 발표가 없었습니다. 확인 당일 읽은 PyPI 페이지 기준으로 uv 0.12.15의 라이선스 항목에는 MIT 또는 Apache-2.0이라고 적혀 있었으며, 둘 다 오픈소스 라이선스입니다. OpenAI의 발표문은 한 곳에서 거래 완료 후 Astral의 오픈소스 제품을 '지원할 계획'이라고 적었고, 다른 곳에서는 '계속 지원하겠다'고 적었으며, Astral의 발표문에는 OpenAI가 오픈소스 도구를 '계속 지원'한다고 적혀 있습니다. 양쪽 모두 유료화나 라이선스 변경은 언급하지 않았고, 앞으로도 영원히 바뀌지 않는다고 약속하지도 않았습니다."
+            },
+            {
+              "question": "이것이 대만 개발자와 관계가 있나요?",
+              "answer": "본 기사가 확인한 네 개 페이지에는 지역이나 국가, 시장별 제한을 나타내는 문구가 없었고, 본 사이트도 이 세 도구가 각지에서 실제로 어떻게 이용 가능한지는 검증하지 않았기 때문에 '어디에서 쓸 수 있는지'는 적지 않습니다. 예를 들어 본 사이트 백엔드 서비스의 프로젝트 설정 파일 자체가 uv와 Ruff를 사용하고 있습니다. 도구의 버전이나 라이선스가 앞으로 바뀔지에 대해서는 두 발표문 모두 설명하지 않았습니다."
+            },
+            {
+              "question": "Astral이 받은 인수 금액은 얼마인가요?",
+              "answer": "확인한 두 공식 발표문 모두 금액을 공개하지 않았습니다. OpenAI와 Astral의 발표문 모두 거래 금액, Astral의 기업 가치, 그 밖의 재무 수치를 언급하지 않았으며, 본 기사의 확인 범위 안에 있는 공식 출처에도 이 정보는 없습니다. 따라서 본 기사는 금액에 대한 어떠한 추측도 제시하지 않습니다."
+            },
+            {
+              "question": "앞으로 이 인수의 진행 상황을 직접 추적하려면 어떻게 해야 하나요?",
+              "answer": "Astral의 블로그와 OpenAI의 발표문이 있는 페이지를 직접 확인하면 거래 완료를 알리는 업데이트가 추가되었는지 볼 수 있습니다. 도구 자체의 상태는 PyPI의 패키지 페이지에서 확인할 수 있으며, 본 기사는 uv 페이지의 버전 기록과 라이선스 항목을 확인했습니다. 둘 다 언론 보도를 기다리지 않고 직접 확인할 수 있는 방법입니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "확인일 이후 상황이 바뀌었을 수 있습니다",
+          "text": "본 기사는 OpenAI와 Astral이 2026년 3월 19일에 발표한 공식 문서, Astral 공식 홈페이지, PyPI에 있는 uv의 패키지 페이지를 바탕으로 정리했으며, 확인일은 2026년 9월 18일입니다. 확인 당일 읽은 이 네 개 페이지 어디에도 거래가 완료되었다는 내용은 없었습니다. OpenAI의 발표문은 규제 당국의 승인을 포함한 일반적인 조건이 충족되어야 완료되며, 그전까지 양사는 각자 독립된 별개의 회사로 남는다고 명시하고 있습니다. 거래 금액, Astral 팀 중 몇 명이 합류하는지, 도구의 향후 라이선스와 요금 방식에 대해서는 이 네 개 페이지 어디에도 설명이 없습니다. 본 사이트는 직접 시험해 보지 않았고, 이 기사는 투자 조언도 구매 관련 조언도 아닙니다. 최신 상황은 Astral과 OpenAI의 공식 발표문 및 PyPI 페이지를 확인해 주십시오."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA, Hugging Face 인수 발표: 발표문에 없는 내용은?",
+              "kind": "life",
+              "slug": "ai-news-nvidia-hugging-face-20260903"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Astral의 발표문 'Astral to join OpenAI'",
+          "url": "https://astral.sh/blog/openai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI의 발표문 'OpenAI to acquire Astral'",
+          "url": "https://openai.com/index/openai-to-acquire-astral/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Astral 공식 홈페이지",
+          "url": "https://astral.sh/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "uv · PyPI",
+          "url": "https://pypi.org/project/uv/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "OpenAI 宣布收购 Astral：uv、Ruff、ty 三个开源工具的去向",
+      "description": "2026 年 3 月 19 日，OpenAI 与开发者工具公司 Astral 同日各自发布公告，OpenAI 表示将收购 Astral、Astral 表示将加入 OpenAI 的 Codex 团队。本文依两份官方公告、Astral 官方网站首页与 PyPI 页面，说明 uv、Ruff、ty 三个工具在查核当天的状态，以及官方公告怎么写这桩交易的完成条件。",
+      "hero": {
+        "src": "/guides/ai-news-openai-astral-20260319/hero-zh-cn.jpg",
+        "alt": "原创插图：左边三个并排的小方框代表 uv、Ruff、ty 三个工具，一支虚线箭头穿过一个虚线圆圈指向右边，右边是一个虚线外框里的屏幕，代表交易已宣布、要等完成条件到齐才会并入。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 3 月 19 日，OpenAI 与开发者工具公司 Astral 同一天各自发出公告：OpenAI 表示将收购 Astral，Astral 则表示已与 OpenAI 达成协议、将以 Codex 团队一员的身份加入 OpenAI。Astral 是 uv、Ruff 与 ty 这三个开源 Python 工具的开发公司；两份公告都没有提到交易金额。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核，读的是 OpenAI 与 Astral 在 3 月 19 日各自发出的公告全文、Astral 官方网站首页，以及 uv 在 PyPI 上的软件包页面。本站没有为这篇文章测试或评比这三个工具，也不提供任何投资或采购建议；以下会分开标明哪些是公告当下的说法、哪些是查核当天读到的状态，交易条件与时程仍可能改变。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 3 月 19 日，OpenAI 宣布将收购开发者工具公司 Astral，Astral 同日宣布将以 Codex 团队一员的身份加入 OpenAI，交易金额两份公告都没有公布。",
+            "OpenAI 自己在公告里写明，这笔收购要等监管机构核准等交易完成条件到齐，在那之前 OpenAI 与 Astral 仍是两家各自独立的公司。",
+            "Astral 开发的 uv、Ruff 与 ty 是三个开源的 Python 开发工具，本文查核当天，uv 在 PyPI 上最新版本是 2026 年 9 月 15 日发布的 0.12.15，授权栏写的是 MIT 或 Apache-2.0。",
+            "OpenAI 的公告一处写完成后“打算”支持 Astral 的开源产品、一处写“会继续支持”这些开源项目，Astral 写的是 OpenAI 会继续支持开源工具，两份公告都没有说明授权或收费方式会不会调整。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "发生了什么：双方官方公告各自怎么说"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在自己的公告页写道，将收购 Astral，把这家公司的开源开发者工具带进 Codex 生态系统；标题直接写“OpenAI to acquire Astral”，用的是“收购”（acquire）这个词。Astral 创始人 Charlie Marsh 则在自家博客用另一个动词：公告标题是“Astral to join OpenAI”，正文写“已与 OpenAI 达成协议、将以 Codex 团队一员的身份加入 OpenAI”，用的是“加入”（join）。两份公告说的是同一笔交易，只是各自选了不同的动词。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的公告解释收购动机：OpenAI 表示 Astral 打造了“一些最被广泛使用的开源 Python 工具”，这些工具“支撑着数百万个开发者工作流程”，两句都是 OpenAI 自己的说法、本站无法查证。Marsh 在自己的公告里则说，过去几年 Astral 的工具“从零成长到 Ruff、uv 与 ty 合计每月数亿次下载”，这是 Astral 自己的说法，本站没有查证这个数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "促成这笔交易的角度，Marsh 写的是 AI 正在快速改变软件开发的方式，而他认为 AI 与软件的前沿就是 Codex，因此决定让 Astral 的工具与专长加入 OpenAI；OpenAI 的公告则写，目标是让 Codex 从单纯生成代码，走向能参与整个开发流程的系统，包括规划改动、修改代码库、运行工具、验证结果与长期维护软件，而 Astral 的工具本来就在这个工作流程里。两边都没有提到交易金额或 Astral 的估值。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "uv、Ruff、ty 是什么，谁会接触到它们"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在公告里用一句话分别介绍三个工具：uv“简化依赖包与环境的管理”，Ruff“提供极快的代码检查与格式化”，ty“协助在代码库中落实类型安全”。OpenAI 接着写，这三者合起来帮开发者管理项目、维持质量，并在开发过程早期就抓出错误。"
+        },
+        {
+          "type": "paragraph",
+          "text": "uv 自己的 PyPI 软件包页面把它形容成“一个用 Rust 编写、速度极快的 Python 软件包与项目管理工具”；Astral 官方网站首页则把 Ruff 定位成“速度极快的 Python 代码检查工具”，首页公告区列出的 ty 那篇写的是“速度极快的 Python 类型检查器与语言服务器”。三者的共同点是都用 Rust 编写、强调速度快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "谁会直接接触到这三个工具，OpenAI 与 Astral 的公告都没有明说，但从功能描述可以看出对象：uv 面向的是要安装软件包、管理虚拟环境或锁定依赖版本的人；Ruff 面向的是要在代码提交前做风格检查与排版的人；ty 面向的是想在运行前先抓出类型错误的人。以本站为例，Mokaair 后端服务的项目配置文件就用 uv 锁定依赖包、并在配置里指定了 ruff 的版本范围，属于会直接用到 Astral 工具链的那类项目。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "OpenAI 官方一句话说明",
+            "查核日看到的状态"
+          ],
+          "rows": [
+            [
+              "uv",
+              "简化依赖包与环境的管理",
+              "PyPI 最新版 0.12.15，2026 年 9 月 15 日发布，授权 MIT 或 Apache-2.0"
+            ],
+            [
+              "Ruff",
+              "提供极快的代码检查与格式化",
+              "名称与链接仍列在 Astral 官方网站首页"
+            ],
+            [
+              "ty",
+              "协助在代码库中落实类型安全",
+              "名称与链接仍列在 Astral 官方网站首页"
+            ]
+          ],
+          "caption": "依 OpenAI 2026 年 3 月 19 日公告与 PyPI、astral.sh 页面整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "两份公告承诺了什么，没有写到什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 自己把交易现状写得很明确：“这笔收购的完成，取决于一般常见的完成条件，包括取得监管机构核准。在完成之前，OpenAI 与 Astral 仍是两家各自独立的公司。”也就是说，完成与否取决于监管核准等条件；查核当天读到的四个页面都没有交易已完成的信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一件事，两份公告用的动词不只一种。OpenAI 一处写“交易完成后，OpenAI 打算支持 Astral 的开源产品”，另一处写“我们会继续支持这些开源项目”；Astral 的公告写的是“交易完成后，OpenAI 会继续支持我们的开源工具”。“打算”与“会继续”语气不同，本文照各自原文分开写。两边都没有说明支持的具体方式与期限，也没有承诺授权或收费方式不会改变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队去留方面，OpenAI 写的是“交易完成后，Astral 团队将加入 OpenAI 的 Codex 团队”，但没有给出人数，也没有说是否每一位 Astral 员工都会加入。至于 Codex 之后会怎么运用这三个工具，两份公告都用“探索”谈更紧密的整合；OpenAI 另外写，交易完成后把这些系统与 Codex 整合，会让 AI 代理更直接使用开发者每天依赖的工具。两边都没有列出功能、版本或时程。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-astral-20260319/diagram-1-zh-cn.svg",
+          "alt": "四格图解：这桩收购已宣布、查核当天四个页面未见完成公告、完成前双方仍各自独立、uv 在 9 月 15 日仍发布新版",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 3 月 19 日公告整理：收购已宣布，完成须经监管核准，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "约六个月后：查核当天看到的实际状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "查核当天重新读 Astral 官方网站首页，最上方仍挂着一条横幅公告，写着“Astral to join OpenAI as part of the Codex team”，点进去就是 3 月 19 日那篇公告；首页其余部分以 Ruff 为主，页脚仍同时列出 Ruff、uv、ty 三个工具的链接，域名也仍是 astral.sh，不是 OpenAI 域名下的页面。将近六个月过去，这一页对这桩交易的说法还是“将加入”，没有改成已经完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三个工具的 PyPI 页面里，本文只查了 uv 那一页。查核当天的 PyPI 页面显示，uv 最新版本是 0.12.15，发布时间是 2026 年 9 月 15 日，作者栏列的是 Astral Software Inc.，授权栏写的是 MIT 或 Apache-2.0 二选一，整个页面没有出现“OpenAI”这个词。也就是说，以查核当天读到的 PyPI 页面而言，uv 的软件包身份与授权都还没有出现跟 OpenAI 有关的变化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这不代表交易破局或延后——本文查核的这四个页面上没有任何取消或延迟的信息；官方公告本来就写交易完成前双方仍是两家各自独立的公司。读者若担心工具会忽然停止维护或改变授权，以查核到 2026 年 9 月 18 日的这四个页面而言，都没有这样的信息。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "如果你依赖这些工具，现在能做什么检查"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇文章谈的是一桩企业并购案，本站不建议任何人换或不换工具，也没有评估这三个工具本身。如果你的项目用到 uv、Ruff 或 ty，下面两个地方是本文查核当天自己读过、读者也查得到的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一个是 Astral 与 OpenAI 的公告页，看有没有新增“交易已完成”之类的更新；另一个是 PyPI 上 uv 的软件包页面，看版本号与授权栏有没有变动。这两处都不必等媒体报道，自己就查得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文只根据 2026 年 9 月 18 日查核当天读到的两份官方公告、Astral 官方网站首页与 PyPI 页面整理，交易条件、完成进度与工具的授权方式都可能在之后改变。这四个页面也没有出现任何地区、国家或市场别的限制字样，本站没有查证这三个工具在各地实际取得的情形；两家公司的股权、财务或估值细节不在本文查证范围内。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "这笔收购完成了吗？",
+              "answer": "本文查核到 2026 年 9 月 18 日为止，读到的官方页面都没有交易已完成的信息。OpenAI 自己的公告写明，交易要等一般常见的完成条件到齐，包括取得监管机构核准，在那之前 OpenAI 与 Astral 仍是两家各自独立的公司。本文查的是 OpenAI 那篇公告、Astral 的公告与首页、PyPI 上的 uv 页面这四个地方，没有再查别的渠道。"
+            },
+            {
+              "question": "为什么 OpenAI 说“收购”、Astral 却说“加入”？",
+              "answer": "这是同一笔交易，但双方公告用的动词不同。OpenAI 自己的公告标题是“OpenAI to acquire Astral”，用的是“收购”；Astral 创始人 Charlie Marsh 的公告标题是“Astral to join OpenAI”，用的是“加入”，正文写的是“已与 OpenAI 达成协议、以 Codex 团队一员的身份加入 OpenAI”。这是同一件事的两种官方说法，本文两种都保留。"
+            },
+            {
+              "question": "我现在用的 uv、Ruff 或 ty 会马上被收费或关闭开源吗？",
+              "answer": "本文查核的官方页面上没有这样的公告。以查核当天读到的 PyPI 页面，uv 0.12.15 的授权栏写的是 MIT 或 Apache-2.0，这两种都是开源授权；OpenAI 的公告一处写完成后“打算支持”Astral 的开源产品、一处写“会继续支持”这些开源项目，Astral 的公告写的是 OpenAI 会“继续支持”开源工具，两边都没有提到收费或授权变更，也没有承诺未来永远不变。"
+            },
+            {
+              "question": "这跟台湾的开发者有关系吗？",
+              "answer": "本文查核的四个页面都没有出现任何地区、国家或市场别的限制字样，本站也没有查证这三个工具在各地实际取得的情形，所以不写“哪里用得到”。以本站为例，Mokaair 后端服务的项目配置文件本身就用了 uv 与 Ruff。工具的版本与授权之后会不会变，两份公告都没有说明。"
+            },
+            {
+              "question": "Astral 拿到的收购金额是多少？",
+              "answer": "查核读到的两份官方公告都没有公布。OpenAI 与 Astral 的公告都没有提到交易金额、Astral 的估值或任何财务数字，本文查证范围内的官方来源也没有这项信息，因此本文不提供任何金额推测。"
+            },
+            {
+              "question": "之后要怎么自己追踪这笔收购的进度？",
+              "answer": "可以直接查 Astral 的博客与 OpenAI 公告同一页面，看有没有更新完成交易的信息；工具本身的状态则可以查 PyPI 上的软件包页面，本文查的是 uv 那一页的版本记录与授权栏，这是不需要等媒体报道、自己就能查证的两个渠道。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "查核日之后，状态可能已经改变",
+          "text": "本文根据 OpenAI 与 Astral 2026 年 3 月 19 日的官方公告、Astral 官方网站首页与 PyPI 上 uv 的软件包页面整理，查核日为 2026 年 9 月 18 日。查核当天读到的这四个页面都没有交易已完成的信息；OpenAI 的公告写明完成须取得监管机构核准等一般常见条件，在完成之前双方仍是两家各自独立的公司。交易金额、Astral 团队加入人数、工具未来的授权与收费方式，这四个页面都没有说明。本文不做任何实测，也不是投资或采购建议，最新进度请以 Astral 与 OpenAI 官方公告及 PyPI 页面为准。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA 宣布收购 Hugging Face：公告之外，还有哪些没说明？",
+              "kind": "life",
+              "slug": "ai-news-nvidia-hugging-face-20260903"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Astral 公告“Astral to join OpenAI”",
+          "url": "https://astral.sh/blog/openai",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 公告“OpenAI to acquire Astral”",
+          "url": "https://openai.com/index/openai-to-acquire-astral/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Astral 官方网站首页",
+          "url": "https://astral.sh/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "uv · PyPI",
+          "url": "https://pypi.org/project/uv/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1166 @@
+{
+  "slug": "ai-news-openai-broadcom-chip-20260624",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "gadgets",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-06-24",
+  "featured": false,
+  "display_order": 155,
+  "related": [
+    "ai-news-chatgpt-storage-scale-20260911",
+    "ai-news-openai-funding-20260331",
+    "ai-news-openai-s1-20260608"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI 與 Broadcom 發表 Jalapeño 晶片：官方說的階段、分工，與還沒公布的事",
+      "description": "2026 年 6 月 24 日，OpenAI 與 Broadcom 共同發表客製化推論晶片 Jalapeño，官方稱其為 OpenAI 第一款 Intelligence Processor。本文依兩家公司官方文章全文，說明依官方說法這顆晶片只到工程樣片與實驗室測試、9 個月完成 tape-out 的階段，部署時程與效能數字仍是廠商說法，以及它和 2025 年那筆 100 億瓦合作案為何要分開看。",
+      "hero": {
+        "src": "/guides/ai-news-openai-broadcom-chip-20260624/hero.jpg",
+        "alt": "原創插圖：左邊一個對話泡泡代表語言模型，一條線向右連到中央一顆晶片，晶片外圍畫著一圈虛線框，代表還在實驗室測試、尚未定案的階段；再一支虛線箭頭指向右邊一座虛線外框的機櫃，代表仍在規劃中的部署。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 6 月 24 日，OpenAI 與晶片大廠 Broadcom（博通）共同發表一款名為 Jalapeño 的客製化晶片，兩家公司的官方文章都稱它是 OpenAI 第一款「Intelligence Processor」，用途是模型「推論」（使用者送出提問後、模型產生回覆的運算步驟）。兩邊下的標題不盡相同：Broadcom 寫的是「LLM-Optimized Intelligence Processor」，OpenAI 自己寫的是「LLM-optimized inference chip」；兩篇文章的正文都沒有出現「GPU」這個詞。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，讀的是 Broadcom 投資人關係網站上這篇新聞稿全文、OpenAI 官方網站同一天發布的原文全文，以及 Broadcom 在 2025 年 10 月 13 日發布的前一份合作新聞稿全文。本站沒有做任何實測，也不提供購買或投資建議；以下每一項都是這三篇官方文章裡的說法，多半還沒有可驗證的數字。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 6 月 24 日，OpenAI 與 Broadcom 共同發表客製化晶片 Jalapeño，官方稱其為 OpenAI 第一款用於大型語言模型推論的「Intelligence Processor」，兩篇官方文章的正文都沒有出現「GPU」這個詞。",
+            "兩家公司表示，Jalapeño 在 9 個月內完成從設計到量產前置作業（tape-out），目前是工程樣片在實驗室以量產目標的頻率與功耗執行 GPT-5.3-Codex-Spark 等工作；兩篇 6 月 24 日的官方文章沒有寫出貨或上市的任何時間。",
+            "Broadcom 與 OpenAI 表示，這個多世代運算平台「規劃在 2026 年底前開始初步部署」，並點名微軟是資料中心合作夥伴之一；但 Broadcom 自己把部署十億瓦等級資料中心列為前瞻性陳述，提醒「不宜過度倚賴」。",
+            "這次發表和 2025 年 10 月 13 日雙方宣布的「100 億瓦客製化 AI 加速器」合作是兩則分開的公告，兩篇官方文章都沒有把 Jalapeño 和那筆 100 億瓦的規模直接掛勾。",
+            "兩篇官方文章都沒有公布效能實測數字、售價或和其他廠商晶片的比較，只說「每瓦效能將顯著優於現有最佳水準」，OpenAI 也表示自己仍在測量最終效能。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "6 月 24 日的聯合發表：一款不叫 GPU 的晶片"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩家公司發出的其實大半是同一份文稿：開頭都寫著這是「圍繞 OpenAI 對大型語言模型推論未來願景所打造的加速器」，也都寫著 Jalapeño「設計上保有彈性，能搭配所有大型語言模型」，並說這是依 OpenAI 對業界現有與未來 AI 模型推論需求的理解而設計。兩篇文章都沒有寫 Jalapeño 會出售、出租或提供給 OpenAI 以外的公司，也沒有點名任何第三方客戶。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文章描述了交付畫面：Jalapeño 由 Broadcom 總裁暨執行長 Hock Tan 與另一位主管 Charlie Kawwas，交給 OpenAI 執行長 Sam Altman 與總裁 Greg Brockman。Brockman 的話分成兩段：「世界正走向一個由運算力驅動的經濟」，以及「Jalapeño 是我們長期全端基礎設施策略的一部分，目的是讓運算力更充裕，使 AI 更快、更可靠，並對個人與企業更負擔得起……」"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰做了哪一塊：OpenAI 的設計，Broadcom 的矽晶與網路"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方描述的分工是：OpenAI 依自己對大型語言模型運算特性的理解，從零設計晶片架構，再由 Broadcom 與 Celestica 一起把這個平台「產業化」。兩篇文章結尾把兩家再分開：Broadcom 提供矽晶實作、網路與連接技術（其中只點名 Tomahawk 網路晶片一項產品），Celestica 提供電路板、機櫃與系統的專業能力。這是官方對自己角色的描述，本站無法獨立查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意的是，Celestica 的角色在本文引用的三篇官方文章裡，全部只有 Broadcom 與 OpenAI 的單方面敘述；這三篇文章沒有任何一句話出自 Celestica，本文也沒有引用 Celestica 自己的說明作為佐證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇官方文章也都寫著，設計過程用到 OpenAI 自己的模型來加速部分設計與最佳化工作，並說「提供給使用者的同一批模型，正在幫助改善用來運行未來模型的基礎設施」。這是兩家公司自己的說法，外界無從查證。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "參與者",
+            "官方角色說明",
+            "公告原文用語"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "從零設計晶片架構，依模型與服務系統需求決定方向",
+              "designed the chip from scratch"
+            ],
+            [
+              "Broadcom",
+              "矽晶實作、網路與連接技術（含 Tomahawk 網路晶片）",
+              "silicon implementation, networking, and connectivity technologies"
+            ],
+            [
+              "Celestica",
+              "電路板、機櫃與系統的專業能力（只有 Broadcom 與 OpenAI 的敘述）",
+              "board, rack and system expertise"
+            ]
+          ],
+          "caption": "依 Broadcom 與 OpenAI 2026 年 6 月 24 日各自發布的官方文章整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "現在是什麼階段：9 個月做完 tape-out，還在實驗室裡跑模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇官方文章都有一組看起來相近、其實不同的說法：條列重點寫「從設計到量產（production）只花 9 個月」，內文卻寫「從最初設計到量產前置作業（tape-out）只花 9 個月」。Tape-out 是晶片設計定案、交付製造的階段，不等於已經量產出貨；兩篇文章的小標題也都寫著「Nine-month tape-out」。以內文與小標題為準，兩家公司說的是 9 個月內完成 tape-out，不是 9 個月內量產；這個數字也是公司自己說的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩家公司表示，目前是工程樣片在實驗室、以量產目標的頻率與功耗執行機器學習工作，包含 GPT-5.3-Codex-Spark；兩篇文章寫到這裡就停了，沒有再說這些樣片和出貨產品的關係，也沒有寫出貨或上市的時間。效能目前只有方向性描述：OpenAI 表示自己「仍在測量最終效能」，早期測試顯示每瓦效能「顯著優於現有最佳水準」，但沒有定義「現有最佳水準」是什麼、也沒有點名任何廠商；官方說詳細技術報告要等「未來幾個月」才會公布。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一句「最快的 ASIC 開發週期」，兩家公司用了不同的保留字：Broadcom 寫的是「可能是（what may be）高效能先進半導體有史以來最快的 ASIC 開發週期」，OpenAI 自己的文章同一句寫的卻是「我們相信是（what we believe to be）」。兩邊都帶保留語氣，本文照原文並列。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-broadcom-chip-20260624/diagram-1.svg",
+          "alt": "四格圖解：聯合公布、設計定案、實驗室測試、規劃部署",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Broadcom 與 OpenAI 2026 年 6 月 24 日聯合發表整理：從公布到規劃部署的四個階段，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "部署時程與更早的一次合作：兩則公告，不要混在一起"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇官方文章都只用「gigawatt scale（十億瓦等級）」描述部署規模，沒有寫出吉瓦數字、晶片顆數或資料中心地點；官方說法是這個多世代平台「規劃在 2026 年底前開始初步部署，並在未來幾年持續擴大」。Hock Tan 點名微軟是資料中心合作夥伴之一，原話是「2026 年開始，與微軟及其他合作夥伴部署十億瓦等級的資料中心」——微軟是兩篇官方文章裡唯一被點名的資料中心合作夥伴，其餘一律寫成「其他合作夥伴」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這段部署時程有一個容易被忽略的但書：Broadcom 在新聞稿末尾放了一段依美國證券法規定的「前瞻性陳述」聲明，明確把「部署十億瓦等級資料中心」列為前瞻性陳述之一，並寫明「不應該過度倚賴這類陳述」——這段時程是 Broadcom 自己承認還沒發生、也可能改變的規劃。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外要分開看的是 2025 年 10 月 13 日的一則更早公告：當時雙方宣布合作部署 100 億瓦（10 gigawatts）客製化 AI 加速器，並寫明 Broadcom 部署機櫃「目標 2026 年下半年開始、2029 年底前完成」，雙方已簽署部署機櫃的意向書（term sheet）；那則公告也寫著 OpenAI 當時「已成長到超過 8 億週活躍使用者」。2026 年 6 月這篇沒有重複「100 億瓦」這個數字，也沒有寫 Jalapeño 就是那筆加速器——這是兩則分開的公告，不能直接畫上等號。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼讀這篇公告：哪些是事實，哪些是廠商的話"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇公告混合了三種不同性質的內容：一種是外部看得到的動作事實，例如兩家公司在 6 月 24 日各自發布官方文章、兩篇的用字差在哪裡；一種是只有公司內部看得到、外界無法查證的說法，例如 9 個月完成 tape-out、工程樣片在實驗室運作、「每瓦效能顯著優於現有最佳水準」、「超過 8 億週活躍使用者」；還有一種是對未來的規劃，例如部署時程，Broadcom 自己都提醒不要過度倚賴。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇官方文章都有一句常被過度解讀的話：「如果 AI 能幫助工程師更快設計出更好的晶片，就有機會降低整個產業的運算成本、讓更多人用得起先進 AI」——這句話以「如果」開頭、講的是整個產業，沒有附任何數字或百分比，也沒有說 Jalapeño 本身便宜多少；查核到 2026 年 9 月 18 日，兩篇文章都沒有出現任何成本節省的百分比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文查核到 2026 年 9 月 18 日為止，兩篇官方文章都沒有寫晶片用什麼製程、哪一家代工廠生產、記憶體種類與容量、耗電瓦數，也沒有和 NVIDIA 或其他廠商的晶片做任何直接比較。OpenAI 的文章有一句沒有日期的條件句，說成本、速度與可靠性的改善「有可能呈現為」更快的 ChatGPT 回覆、打造成本更低的 API 產品等；除此之外，沒有任何一句話說使用者會在哪一天感受到差異。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "現在可以買到或租用 Jalapeño 這顆晶片嗎？",
+              "answer": "兩篇官方文章都沒有提到這顆晶片會出售、出租或提供給 OpenAI 以外的公司使用，也沒有點名任何第三方客戶或公布任何訂購管道。依官方說法，它目前的狀態是工程樣片在實驗室執行機器學習工作，兩篇 6 月 24 日的官方文章沒有寫任何出貨或上市時間。"
+            },
+            {
+              "question": "Jalapeño 比 NVIDIA 的晶片快嗎？便宜多少？",
+              "answer": "官方文章沒有回答這個問題。OpenAI 與 Broadcom 只說 Jalapeño 的每瓦效能「顯著優於現有最佳水準」，但沒有定義「現有最佳水準」是哪一款晶片，也沒有點名 NVIDIA 或任何其他廠商，更沒有公布任何測試數字或價格比較；官方說詳細的效能技術報告要等未來幾個月才會公布。"
+            },
+            {
+              "question": "這是不是代表 OpenAI 以後都用自己的晶片、不用其他廠商的晶片了？",
+              "answer": "兩篇官方文章都沒有這樣說。公告談的是 OpenAI 設計了一款用於自家模型推論的客製化晶片，並沒有提到 OpenAI 會停用其他供應商的晶片或運算平台，這方面官方文章完全沒有著墨。"
+            },
+            {
+              "question": "Jalapeño 和 2025 年那筆「100 億瓦」的合作是同一件事嗎？",
+              "answer": "不是同一則公告。2025 年 10 月 13 日的公告談的是一項部署 100 億瓦客製化 AI 加速器的多年期合作，其中 Broadcom 部署機櫃的目標是 2026 年下半年開始、2029 年底前完成；2026 年 6 月 24 日這篇公告發表 Jalapeño 晶片本身，但沒有重複那個 100 億瓦的數字，也沒有明確說 Jalapeño 就是那筆合作案裡要部署的加速器。兩者要分開看待，不宜自行畫上等號。"
+            },
+            {
+              "question": "這件事會讓我用的 ChatGPT 變快或變便宜嗎？",
+              "answer": "OpenAI 的文章有一句條件句，說成本、速度與可靠性的每一分改善「有可能呈現為」更快的 ChatGPT 回覆、更少等待的 Codex 工作、打造成本更低的 API 產品等，但那句話沒有附任何日期、百分比或保證，也沒有說是 Jalapeño 造成的。依官方說法，Jalapeño 目前還在實驗室測試階段，離部署到實際服務都還有一段規劃中的時程。"
+            },
+            {
+              "question": "「Intelligence Processor」是什麼，和一般說的 GPU 有什麼不同？",
+              "answer": "這是 Broadcom 與 OpenAI 為 Jalapeño 選用的官方稱呼；查核到 2026 年 9 月 18 日，兩篇官方文章的正文都沒有出現「GPU」這個詞。官方說法是這顆晶片為現代大型語言模型推論而設計，不是從過去其他 AI 工作負載改造而來的通用型加速器，但官方文章沒有公布製程、電晶體數量或其他技術規格，所以無法在本文進一步比較它和 GPU 在硬體設計上的具體差異。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇公告哪些是事實，哪些是規劃",
+          "text": "外界看得到的只有一件事：2026 年 6 月 24 日 OpenAI 與 Broadcom 各自公布了這則消息。其餘都是兩家公司自己的說法或對未來的規劃：「9 個月內完成 tape-out」「工程樣片正在實驗室運作」——外界無從查證；「2026 年底前開始部署」——Broadcom 在新聞稿末尾把部署十億瓦等級資料中心列為前瞻性陳述，並提醒不宜過度倚賴；「每瓦效能顯著優於現有最佳水準」——OpenAI 說自己仍在測量最終效能；「超過 8 億週活躍使用者」——這是 2025 年 10 月 13 日那則公告裡的自報數字。本文沒有做任何實測，也不比較晶片售價或提供任何投資建議。查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 揭露 Habitat 儲存架構：每週逾十億人使用背後的規模與極限",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-storage-scale-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+          "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "OpenAI and Broadcom Unveil the Jalapeño Chip: The Official Stage, Division of Labor, and What's Not Yet Announced",
+      "description": "On June 24, 2026, OpenAI and Broadcom jointly unveiled the custom inference chip Jalapeño, calling it OpenAI's first Intelligence Processor. Based on both companies' official articles, this piece explains that the chip is still at the engineering-sample and lab-testing stage, with tape-out completed in nine months, that deployment timing and performance figures remain vendor statements, and why this should be treated separately from the 10-gigawatt deal announced in 2025.",
+      "hero": {
+        "src": "/guides/ai-news-openai-broadcom-chip-20260624/hero-en.jpg",
+        "alt": "Original illustration: a speech bubble (language model) links to a chip in a dashed outline (lab-tested only); a dashed arrow points to a dashed rack, showing deployment that is still only planned.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On June 24, 2026, OpenAI and chip maker Broadcom jointly unveiled a custom chip called Jalapeño. Both companies' official articles call it OpenAI's first “Intelligence Processor,” built for model “inference” (the computation that runs after a user submits a prompt and before the model produces a reply). The two companies' headlines are not quite the same: Broadcom's reads “LLM-Optimized Intelligence Processor,” while OpenAI's own reads “LLM-optimized inference chip.” The word “GPU” does not appear in the body of either article."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026, against the full text of the press release on Broadcom's investor relations site, the full text of OpenAI's own article published the same day, and the full text of Broadcom's earlier collaboration press release from October 13, 2025. This site has not tested any of this itself and does not offer purchase or investment advice. Everything below is a statement from one of these three official articles, and most of it still has no verifiable figures behind it."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On June 24, 2026, OpenAI and Broadcom jointly unveiled the custom chip Jalapeño, which the companies call OpenAI's first “Intelligence Processor” for large language model inference; the word “GPU” does not appear in the body of either official article.",
+            "The companies say Jalapeño went from design to tape-out in nine months, and that engineering samples are now running workloads such as GPT-5.3-Codex-Spark in the lab at production-target frequency and power; neither June 24 article states a shipping or launch date.",
+            "Broadcom and OpenAI say this multi-generation platform is “designed for initial deployment by the end of 2026” and name Microsoft as a data-center partner; Broadcom itself lists that deployment as a forward-looking statement and warns against undue reliance on it.",
+            "This announcement and the “10-gigawatt custom AI accelerator” collaboration the two companies announced on October 13, 2025 are two separate announcements; neither June 24 article directly ties Jalapeño to that 10-gigawatt figure.",
+            "Neither official article publishes measured performance figures, a price, or any comparison with another vendor's chip; both say only that performance per watt will be “substantially better than current state-of-the-art,” and OpenAI says it is still measuring final performance."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The June 24 joint announcement: a chip that isn't called a GPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "What the two companies published is, in fact, largely the same text. Both open by calling it “an accelerator architected around OpenAI's vision for the future of LLM inference,” and both say Jalapeño “is designed with flexibility to work with all LLMs,” guided by OpenAI's insights into the inference needs of current and future AI models across the industry. Neither article says Jalapeño will be sold, rented, or offered to any company besides OpenAI, and neither names any third-party customer."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official articles describe a handover scene: Jalapeño was delivered to OpenAI CEO Sam Altman and President Greg Brockman by Broadcom President and CEO Hock Tan and another Broadcom executive, Charlie Kawwas. Brockman's words come in two parts: “The world is moving to a compute-powered economy,” and “Jalapeño is part of our long-term full-stack infrastructure strategy to make compute more abundant, resulting in AI which is faster, more reliable, more affordable for people and businesses…”"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Who did which part: OpenAI's design, Broadcom's silicon and networking"
+        },
+        {
+          "type": "paragraph",
+          "text": "The division of labor as officially described: OpenAI designed the chip architecture from scratch based on its own understanding of large-language-model computing, and Broadcom and Celestica then helped “industrialize” the platform together. The closing lines of both articles then split the two apart: Broadcom contributed silicon implementation, networking, and connectivity technologies (naming only one product, the Tomahawk networking silicon), while Celestica contributed board, rack, and system expertise. This is the companies' own description of their roles, which this site cannot independently verify."
+        },
+        {
+          "type": "paragraph",
+          "text": "One thing worth noting: across all three official articles cited in this piece, Celestica's role is described only from Broadcom's and OpenAI's side. None of the three articles quotes Celestica directly, and this article does not cite any statement from Celestica itself as corroboration."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both official articles also state that the design process used OpenAI's own models to speed up parts of the design and optimization work, saying that “the same models served to users” are helping improve the infrastructure that will run future models. This is the two companies' own account, which outsiders have no way to verify."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Participant",
+            "Official Role Description",
+            "Original Announcement Wording"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "Designed the chip architecture from scratch, guided by model and serving-system needs",
+              "designed the chip from scratch"
+            ],
+            [
+              "Broadcom",
+              "Silicon implementation, networking and connectivity technologies (including Tomahawk networking silicon)",
+              "silicon implementation, networking, and connectivity technologies"
+            ],
+            [
+              "Celestica",
+              "Board, rack and system expertise (described only by Broadcom and OpenAI)",
+              "board, rack and system expertise"
+            ]
+          ],
+          "caption": "Compiled from the official articles Broadcom and OpenAI each published on June 24, 2026; checked on September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What stage things are at now: tape-out done in nine months, still running models in the lab"
+        },
+        {
+          "type": "paragraph",
+          "text": "Both official articles contain a pair of statements that look similar but are not the same: the bullet points say the chip went from design to “production” in just nine months, while the body text says it went “from initial design to manufacturing tape-out in just nine months.” Tape-out is the stage where a chip's design is finalized and handed off for manufacturing; it is not the same as already being in mass production and shipping. Both articles' own subheading also reads “Nine-month tape-out.” Going by the body text and the subheading, what the two companies are saying is that tape-out was completed within nine months, not that mass production was completed within nine months; this figure, too, is the companies' own statement."
+        },
+        {
+          "type": "paragraph",
+          "text": "The companies say that, for now, engineering samples are running machine-learning workloads, including GPT-5.3-Codex-Spark, in the lab at production-target frequency and power. Both articles stop there — neither says how these samples relate to a shipping product, and neither gives a shipping or launch date. Performance is described only in directional terms so far: OpenAI says it is “still measuring final performance,” and early testing shows performance per watt “substantially better than current state-of-the-art,” but neither article defines what “current state-of-the-art” means or names any vendor; the companies say a detailed technical report will be presented “in the coming months.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "For the same claim about the “fastest ASIC development cycle,” the two companies hedge it differently: Broadcom's own wording is “what may be the fastest ASIC development cycle ever achieved in high-performance advanced semiconductors,” while OpenAI's own article uses “what we believe to be” for the identical sentence. Both versions are hedged, and this article presents them side by side exactly as written rather than merging them."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-broadcom-chip-20260624/diagram-1-en.svg",
+          "alt": "Four-panel diagram: joint announcement, design finalized, lab testing, planned deployment",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from Broadcom and OpenAI's joint June 24, 2026 announcement: the four stages from announcement to planned deployment; checked on September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Deployment timing and an earlier collaboration: two announcements, not to be mixed up"
+        },
+        {
+          "type": "paragraph",
+          "text": "Both official articles describe the deployment scale only as “gigawatt scale,” with no gigawatt figure, chip count, or data-center location given; the official line is that this multi-generation platform is “designed for initial deployment by the end of 2026, and expanding in the years ahead.” Hock Tan names Microsoft as one data-center partner, in his own words: “we are enabling the deployment of gigawatt scale data centers with Microsoft and other partners beginning in 2026.” Microsoft is the only data-center partner named by name in either official article; everyone else is referred to only as “other partners.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "This deployment timeline carries a caveat that is easy to miss: at the end of its press release, Broadcom includes a “forward-looking statements” notice required under U.S. securities law, which explicitly lists “the deployment of gigawatt scale data centers” as one of the forward-looking statements and states that “undue reliance should not be placed on such statements.” In other words, Broadcom itself is acknowledging that this timeline is a plan that has not happened yet and could change."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also to be kept separate is an earlier announcement from October 13, 2025: the two companies then announced a collaboration to deploy 10 gigawatts of custom AI accelerators, stating that Broadcom's deployment of racks was “targeted to start in the second half of 2026, to complete by end of 2029,” and that the two sides had signed a term sheet to deploy the racks; that announcement also stated that OpenAI had, at that time, “grown to over 800 million weekly active users.” The June 2026 article does not repeat the “10 gigawatts” figure and does not state that Jalapeño is that accelerator — these are two separate announcements, and they should not be treated as the same thing."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to read this announcement: what is fact and what is the companies' own words"
+        },
+        {
+          "type": "paragraph",
+          "text": "This announcement mixes three different kinds of content: externally observable facts, such as both companies publishing official articles on June 24 and exactly where the wording of the two differs; statements that are visible only inside the companies and cannot be verified from outside, such as tape-out being completed in nine months, engineering samples running in the lab, “performance per watt substantially better than current state-of-the-art,” and “over 800 million weekly active users”; and plans for the future, such as the deployment timeline, which even Broadcom itself warns not to over-rely on."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both official articles contain one sentence that is often over-read: “If AI can help engineers design better chips faster, it can lower the cost of compute across the industry and help democratize access to advanced AI.” This sentence opens with “if,” is about the industry as a whole, carries no number or percentage, and does not say how much cheaper Jalapeño itself is. As checked through September 18, 2026, neither article contains any cost-savings percentage of any kind."
+        },
+        {
+          "type": "paragraph",
+          "text": "As checked through September 18, 2026, neither official article states the chip's manufacturing process, which foundry makes it, the memory type and capacity, or its power draw in watts, and neither makes any direct comparison with an NVIDIA chip or any other vendor's chip. OpenAI's article does have one undated, conditional sentence saying that improvements in cost, speed, and reliability “can show up as” a faster ChatGPT reply, an API product that is cheaper to build, and more; beyond that, no sentence states on what date users would notice any difference."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Can I buy or rent the Jalapeño chip right now?",
+              "answer": "Neither official article mentions the chip being sold, rented, or offered to any company besides OpenAI, and neither names a third-party customer or announces any way to order one. According to the companies, its current status is that engineering samples are running machine-learning workloads in the lab; neither of the June 24 official articles states any shipping or launch date."
+            },
+            {
+              "question": "Is Jalapeño faster than NVIDIA's chips? How much cheaper is it?",
+              "answer": "The official articles don't answer this question. OpenAI and Broadcom say only that Jalapeño's performance per watt is “substantially better than current state-of-the-art,” but they don't define which chip “current state-of-the-art” refers to, and they don't name NVIDIA or any other vendor, let alone publish any test figures or price comparison. The companies say a detailed technical performance report will be published in the coming months."
+            },
+            {
+              "question": "Does this mean OpenAI will only use its own chips from now on, and drop other vendors' chips?",
+              "answer": "Neither official article says that. The announcement is about OpenAI having designed a custom chip for inference on its own models; it does not say OpenAI will stop using other suppliers' chips or compute platforms — the official articles simply don't address that question at all."
+            },
+            {
+              "question": "Is Jalapeño the same thing as the “10-gigawatt” collaboration from 2025?",
+              "answer": "No, it's not the same announcement. The October 13, 2025 announcement covers a multi-year collaboration to deploy 10 gigawatts of custom AI accelerators, with Broadcom's deployment of racks “targeted to start in the second half of 2026, to complete by end of 2029.” The June 24, 2026 announcement unveils the Jalapeño chip itself, but it does not repeat that 10-gigawatt figure and does not explicitly say Jalapeño is the accelerator to be deployed under that collaboration. The two should be treated as separate and should not be assumed to be the same thing."
+            },
+            {
+              "question": "Will this make the ChatGPT I use faster or cheaper?",
+              "answer": "OpenAI's article has one conditional sentence saying that every improvement in cost, speed, and reliability “can show up as” a faster ChatGPT reply, a Codex task that needs less waiting, an API product that is cheaper to build, and more — but that sentence carries no date, no percentage, and no guarantee, and it doesn't say the improvement comes from Jalapeño specifically. According to the companies, Jalapeño is currently still at the lab-testing stage, and there is still a planned timeline between that and deployment into an actual service."
+            },
+            {
+              "question": "What is an “Intelligence Processor,” and how is it different from a GPU?",
+              "answer": "This is the official name Broadcom and OpenAI chose for Jalapeño; as checked through September 18, 2026, the word “GPU” does not appear in the body of either official article. Officially, the chip is described as designed for modern large-language-model inference rather than as a general-purpose accelerator adapted from other, older AI workloads — but the official articles don't publish the manufacturing process, transistor count, or other technical specifications, so this article cannot compare its specific hardware design against a GPU's any further."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "What in this announcement is fact, and what is a plan",
+          "text": "There is exactly one thing the outside world can observe: OpenAI and Broadcom each published this news on June 24, 2026. Everything else is either the two companies' own statements or a plan for the future. “Tape-out completed within nine months” and “engineering samples are running in the lab” — outsiders have no way to verify these. “Deployment beginning by the end of 2026” — Broadcom's own press release lists the deployment of gigawatt-scale data centers as a forward-looking statement at the end of the release and cautions against undue reliance on it. “Performance per watt substantially better than current state-of-the-art” — OpenAI says it is still measuring final performance. “Over 800 million weekly active users” — this is a self-reported figure from the October 13, 2025 announcement. This article has not tested any of this itself and does not compare chip prices or offer any investment advice. Checked on September 18, 2026."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI Discloses Habitat Storage Architecture: The Scale and Limits Behind Over 1 Billion Weekly Users",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-storage-scale-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+          "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "OpenAIとBroadcomがJalapeñoチップを発表：公式が語る段階、役割分担、そしてまだ発表されていないこと",
+      "description": "2026年6月24日、OpenAIとBroadcomはカスタム推論チップ「Jalapeño」を共同発表し、公式はこれをOpenAI初の「Intelligence Processor」と呼んでいます。本記事は両社の公式記事全文に基づき、公式発表によればこのチップはまだエンジニアリングサンプルによる実験室テストの段階で、9か月でtape-outを終えたこと、導入時期や性能数値はあくまで企業側の説明であること、そして2025年に発表された100億ワット（10ギガワット）規模の協業とは別物として扱うべき理由を説明します。",
+      "hero": {
+        "src": "/guides/ai-news-openai-broadcom-chip-20260624/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側の吹き出しが言語モデルを表し、そこから右へ伸びる線が中央のチップにつながっている。チップの周囲は破線の枠で囲まれ、まだ実験室でのテスト段階にあり、最終決定していないことを示す。さらに破線の矢印が右側の、破線の枠で描かれたラックを指し、これはまだ計画段階の導入を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年6月24日、OpenAIと半導体大手Broadcomは、Jalapeñoと呼ばれるカスタムチップを共同発表しました。両社の公式記事はいずれも、これをOpenAI初の「Intelligence Processor」と呼び、用途はモデルの「推論」（ユーザーが質問を送ってからモデルが回答を生成するまでの計算処理）だとしています。両社の見出しは完全には一致しません。Broadcomは「LLM-Optimized Intelligence Processor」と書き、OpenAI自身は「LLM-optimized inference chip」と書いています。両記事とも、本文中に「GPU」という語は一度も登場しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は2026年9月18日に、Broadcomの投資家向けサイトに掲載されたプレスリリース全文、同日にOpenAI公式サイトで公開された原文全文、そして2025年10月13日にBroadcomが発表した以前の協業に関するプレスリリース全文を確認したうえで執筆しています。当サイトは実地の検証を行っておらず、購入や投資を勧めるものでもありません。以下はすべて、この3本の公式記事に書かれている内容であり、その大半はまだ検証可能な数値を伴っていません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年6月24日、OpenAIとBroadcomはカスタムチップ「Jalapeño」を共同発表しました。公式はこれを大規模言語モデルの推論向けにOpenAI初の「Intelligence Processor」と呼んでおり、両公式記事とも本文に「GPU」という語は登場しません。",
+            "両社によれば、Jalapeñoは設計から量産前工程（tape-out）までを9か月で完了しており、現在はエンジニアリングサンプルが実験室で量産目標の周波数と消費電力によりGPT-5.3-Codex-Sparkなどの処理を実行している段階だといいます。6月24日付の両公式記事とも、出荷や発売の時期については一切記載していません。",
+            "BroadcomとOpenAIによれば、この複数世代にわたる計算基盤は「2026年末までの初期導入を目指して設計」されており、データセンターのパートナーの一社としてMicrosoftの名を挙げています。ただしBroadcom自身は、ギガワット規模のデータセンター導入を将来予測に関する記述（forward-looking statement）の一つに位置づけ、「過度に依拠すべきではない」と注記しています。",
+            "今回の発表と、2025年10月13日に両社が発表した「100億ワット規模のカスタムAIアクセラレータ」の協業は別々の発表であり、両公式記事ともJalapeñoをその100億ワットという規模に直接結び付けてはいません。",
+            "両公式記事とも、実測性能の数値や価格、他社チップとの比較は一切公表しておらず、「ワットあたりの性能は既存の最高水準を大きく上回る見込み」としか述べていません。OpenAIも自ら、最終的な性能はまだ計測中であるとしています。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "6月24日の共同発表：GPUとは呼ばれないチップ"
+        },
+        {
+          "type": "paragraph",
+          "text": "両社が発表した文章は、実のところ大部分が同じ原稿です。冒頭はどちらも「OpenAIが描く大規模言語モデル推論の未来像を軸に設計されたアクセラレータ」だと書いており、Jalapeñoは「あらゆる大規模言語モデルに対応できるよう柔軟に設計されている」と両記事とも述べたうえで、これは業界全体の現在および将来のAIモデル推論ニーズに関するOpenAIの理解に基づいて設計されたものだとしています。両記事とも、JalapeñoがOpenAI以外の企業に販売・貸与・提供されるとは書いておらず、第三者の顧客名も一切挙げていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式記事には引き渡しの場面が描かれています。JalapeñoはBroadcomの社長兼CEOであるHock Tanと、もう一人の幹部Charlie Kawwasから、OpenAIのCEOであるSam Altmanとプレジデントを務めるGreg Brockmanへと手渡されました。Brockmanの発言は二つに分かれています。「世界はコンピューティング能力によって動く経済へと向かっています」、そして「Jalapeñoは、コンピューティング能力をより豊富にし、AIをより速く、より信頼でき、個人にとっても企業にとってもより手頃な価格にするという、私たちの長期的なフルスタックインフラ戦略の一部です……」"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰がどこを担当したのか：OpenAIの設計、Broadcomのシリコンとネットワーキング"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式が説明する役割分担は次のとおりです。OpenAIは大規模言語モデルの計算特性に関する自社の理解に基づき、チップアーキテクチャをゼロから設計し、BroadcomとCelesticaがこのプラットフォームを共に「産業化」したといいます。両記事の末尾ではこの二社をさらに分けて説明しています。Broadcomはシリコン実装、ネットワーキングおよび接続技術を提供し（挙げられている製品はTomahawkネットワークシリコン一つのみ）、Celesticaは基板、ラック、システムに関する専門知識を提供したとしています。これはあくまで公式による自社の役割説明であり、当サイトが独自に検証することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "注意しておきたいのは、本記事が引用する3本の公式記事すべてにおいて、Celesticaの役割はBroadcomとOpenAI側からの一方的な説明にとどまっている点です。3本のうちどの記事にも、Celestica自身の発言は一つも含まれておらず、本記事もCelestica自身による説明を裏付けとして引用していません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "両公式記事はまた、設計工程の一部を高速化・最適化するためにOpenAI自身のモデルを利用したとも述べており、「ユーザーに提供されているのと同じモデル群が、将来のモデルを動かすための基盤の改善を助けている」としています。これは両社自身の説明であり、外部から検証する手段はありません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "関係者",
+            "公式の役割説明",
+            "発表原文の表現"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "モデルとサービスシステムの要件に基づき、チップアーキテクチャをゼロから設計",
+              "designed the chip from scratch"
+            ],
+            [
+              "Broadcom",
+              "シリコン実装、ネットワーキングおよび接続技術（Tomahawkネットワークシリコンを含む）",
+              "silicon implementation, networking, and connectivity technologies"
+            ],
+            [
+              "Celestica",
+              "基板、ラック、システムに関する専門知識（BroadcomとOpenAIのみが説明）",
+              "board, rack and system expertise"
+            ]
+          ],
+          "caption": "BroadcomとOpenAIがそれぞれ2026年6月24日に発表した公式記事をもとに作成。確認日：2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "現在の段階：9か月でtape-outを完了、実験室でモデルを動かしている"
+        },
+        {
+          "type": "paragraph",
+          "text": "両公式記事には、似ているようで実は異なる二つの表現があります。箇条書きの要点には「設計から量産（production）までわずか9か月」とある一方、本文には「最初の設計から量産前工程（tape-out）までわずか9か月」と書かれています。tape-outとは、チップの設計が確定し製造に引き渡される段階を指し、すでに量産・出荷されていることを意味しません。両記事の小見出しもどちらも「Nine-month tape-out」となっています。本文と小見出しに従えば、両社が述べているのは9か月以内にtape-outを終えたということであり、9か月以内に量産したということではありません。この数字自体も両社の自己申告です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "両社によれば、現在はエンジニアリングサンプルが実験室で、量産目標の周波数と消費電力によりGPT-5.3-Codex-Sparkを含む機械学習の処理を実行している段階だといいます。両記事ともここで記述を止めており、このサンプルと出荷製品との関係や、出荷・発売の時期については一切触れていません。性能についても現時点では方向性を示す表現にとどまります。OpenAIは自ら「最終的な性能はまだ計測中」だとしたうえで、初期テストではワットあたりの性能が「既存の最高水準を大きく上回る」と示されているとしていますが、「既存の最高水準」が何を指すかは定義されておらず、特定のメーカー名も挙げられていません。詳細な技術レポートは「今後数か月のうちに」公表されるとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「史上最速のASIC開発サイクル」という同じ主張について、両社は異なる留保表現を用いています。Broadcomの表現は「高性能先進半導体においてこれまでに達成された中で最速かもしれない（what may be）ASIC開発サイクル」であり、同じ一文についてOpenAI自身の記事では「私たちが信じるところでは（what we believe to be）」となっています。どちらも留保付きの表現であり、本記事は原文どおり両方を並べて示します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-broadcom-chip-20260624/diagram-1-ja.svg",
+          "alt": "4コマ図解：共同発表、設計確定、実験室テスト、導入計画",
+          "width": 1600,
+          "height": 900,
+          "caption": "BroadcomとOpenAIによる2026年6月24日の共同発表をもとに作成：発表から導入計画までの4段階。確認日：2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "導入時期とそれより前の協業：二つの発表を混同しない"
+        },
+        {
+          "type": "paragraph",
+          "text": "両公式記事とも、導入規模については「gigawatt scale（ギガワット級）」としか記述しておらず、具体的なギガワット数、チップの個数、データセンターの所在地は書かれていません。公式の説明では、この複数世代にわたるプラットフォームは「2026年末までの初期導入を目指して設計されており、その後数年かけて拡大していく」とされています。Hock Tanはデータセンターのパートナーの一社としてMicrosoftの名を挙げており、その言葉をそのまま引くと「2026年からMicrosoftおよびその他のパートナーとともにギガワット規模のデータセンターを導入する」としています。Microsoftは両公式記事の中で名前が挙げられている唯一のデータセンターパートナーであり、それ以外は一律「その他のパートナー」と書かれています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この導入時期の記述には見落としやすい注記が一つあります。Broadcomはプレスリリースの末尾に、米国証券法に基づく「将来予測に関する記述」の注記を置き、その中で「ギガワット規模のデータセンターの導入」を将来予測に関する記述の一つとして明確に位置づけたうえで、「これらの記述に過度に依拠すべきではない」と明記しています。つまりこの導入時期は、Broadcom自身がまだ実現しておらず、変更される可能性もあると認めている計画にすぎません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もう一つ分けて考えるべきなのが、2025年10月13日のそれより前の発表です。当時両社は、100億ワット（10ギガワット）規模のカスタムAIアクセラレータを共同で導入すると発表し、Broadcomによるラック導入は「2026年後半の開始、2029年末までの完了を目標とする」と明記、両社はラック導入に関するterm sheet（意向書）にすでに署名していました。この発表ではまた、OpenAIが当時「すでに週間アクティブユーザー数8億人超に成長していた」とも書かれています。2026年6月のこの記事は「100億ワット」という数字を繰り返しておらず、Jalapeñoがそのアクセラレータであるとも書いていません。これらは別々の発表であり、そのまま同一視すべきではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "この発表をどう読むか：何が事実で、何が企業側の発言か"
+        },
+        {
+          "type": "paragraph",
+          "text": "この発表には性質の異なる3種類の内容が混在しています。一つは外部から確認できる行動の事実で、例えば両社が6月24日にそれぞれ公式記事を発表したことや、両記事の表現がどこで異なるかといった点です。もう一つは社内でしか把握できず外部からは検証できない説明で、例えば9か月でのtape-out完了、実験室でのエンジニアリングサンプルの稼働、「ワットあたりの性能が既存の最高水準を大きく上回る」、「週間アクティブユーザー8億人超」といった内容です。そして三つ目は将来に関する計画であり、導入時期などがこれにあたりますが、これについてはBroadcom自身も過度に依拠しないよう注意を促しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "両公式記事には、過剰に解釈されがちな一文があります。「AIがエンジニアによるより良いチップのより迅速な設計を助けられるなら、業界全体の計算コストを引き下げ、先進的なAIへのアクセスをより多くの人に広げる一助となり得る」というものです。この一文は「もし」で始まり、業界全体について述べており、具体的な数字や割合は一切付いておらず、Jalapeño自体がどれだけ安くなるかも述べていません。2026年9月18日時点で確認した限り、両記事にコスト削減の割合を示す記述は一切登場しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事が2026年9月18日まで確認した限り、両公式記事ともチップの製造プロセス、製造を担うファウンドリ、メモリの種類と容量、消費電力（ワット数）については記載しておらず、NVIDIAや他社のチップとの直接比較も一切行っていません。OpenAIの記事には日付のない条件文が一つあり、コスト・速度・信頼性の改善は「より速いChatGPTの回答」や「構築コストがより低いAPI製品」などとして「現れ得る（can show up as）」としています。それ以外に、ユーザーがいつ違いを感じられるかを述べた文は一つもありません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Jalapeñoというチップは今すぐ購入やレンタルができますか？",
+              "answer": "両公式記事とも、このチップがOpenAI以外の企業に販売・貸与・提供されるとは書いておらず、第三者の顧客名や購入方法についても一切触れていません。公式の説明によれば、現在の状態はエンジニアリングサンプルが実験室で機械学習の処理を実行している段階であり、6月24日付の両公式記事とも出荷や発売の時期は記載していません。"
+            },
+            {
+              "question": "JalapeñoはNVIDIAのチップより速いのですか？どれくらい安いのですか？",
+              "answer": "公式記事はこの問いに答えていません。OpenAIとBroadcomは、Jalapeñoのワットあたりの性能が「既存の最高水準を大きく上回る」としか述べておらず、「既存の最高水準」がどのチップを指すのかも定義しておらず、NVIDIAや他のメーカーの名前も挙げていません。テストの数値や価格比較も公表されていません。公式によれば、詳細な性能に関する技術レポートは今後数か月のうちに公表されるとしています。"
+            },
+            {
+              "question": "これはOpenAIが今後、他社のチップを使わず自社チップだけを使うということですか？",
+              "answer": "両公式記事ともそのようには書いていません。この発表は、OpenAIが自社モデルの推論向けにカスタムチップを設計したという内容であり、OpenAIが他の供給元のチップや計算基盤の利用をやめるとは述べていません。この点について公式記事はまったく触れていません。"
+            },
+            {
+              "question": "Jalapeñoは、2025年の「100億ワット」の協業と同じものですか？",
+              "answer": "同じ発表ではありません。2025年10月13日の発表は、100億ワット規模のカスタムAIアクセラレータを導入する複数年にわたる協業についてのもので、そのうちBroadcomによるラック導入は「2026年後半の開始、2029年末までの完了」を目標としています。2026年6月24日のこの発表はJalapeñoチップそのものを発表したものですが、その100億ワットという数字は繰り返しておらず、Jalapeñoがその協業で導入されるアクセラレータであるとも明言していません。両者は別物として捉えるべきであり、自己判断で同一視すべきではありません。"
+            },
+            {
+              "question": "これによって私が使っているChatGPTは速くなったり安くなったりしますか？",
+              "answer": "OpenAIの記事には条件文が一つあり、コスト・速度・信頼性のあらゆる改善は「より速いChatGPTの回答」、「待ち時間が減るCodexタスク」、「構築コストがより低いAPI製品」などとして「現れ得る（can show up as）」としています。ただしこの一文には日付も割合も保証も付いておらず、それがJalapeñoによるものだとも述べていません。公式によれば、Jalapeñoは現在も実験室でのテスト段階にあり、実際のサービスへの導入までにはまだ計画段階の期間が残っています。"
+            },
+            {
+              "question": "「Intelligence Processor」とは何ですか。一般的なGPUとは何が違いますか？",
+              "answer": "これはBroadcomとOpenAIがJalapeñoのために選んだ公式な呼び方です。2026年9月18日時点で確認した限り、両公式記事の本文に「GPU」という語は一度も登場しません。公式の説明では、このチップは現代の大規模言語モデルの推論向けに設計されたものであり、過去の他のAIワークロード向けに作られたものを転用した汎用アクセラレータではないとされています。ただし公式記事は製造プロセスやトランジスタ数などの技術仕様を公表していないため、本記事ではハードウェア設計上GPUと具体的に何が違うのかについて、これ以上比較することはできません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "この発表のうち何が事実で、何が計画か",
+          "text": "外部から確認できることは一つだけです。2026年6月24日にOpenAIとBroadcomがそれぞれこのニュースを公表したという事実です。それ以外はすべて、両社自身の説明か、将来に関する計画にすぎません。「9か月以内にtape-outを完了」「エンジニアリングサンプルが実験室で稼働中」——これらは外部から検証する手段がありません。「2026年末までに導入を開始」——Broadcomは自社のプレスリリース末尾で、ギガワット規模のデータセンター導入を将来予測に関する記述の一つとして位置づけ、過度に依拠しないよう注記しています。「ワットあたりの性能は既存の最高水準を大きく上回る」——OpenAIは自ら最終的な性能をまだ計測中だとしています。「週間アクティブユーザー8億人超」——これは2025年10月13日の発表に含まれる自己申告の数字です。本記事は実地の検証を一切行っておらず、チップの価格比較や投資に関する助言も行っていません。確認日：2026年9月18日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAIがHabitatストレージ基盤を公開：毎週10億人超の利用を支える規模と限界",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-storage-scale-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+          "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "OpenAI와 Broadcom, Jalapeño 칩 공개: 공식 발표가 말하는 단계, 역할 분담, 그리고 아직 밝히지 않은 것",
+      "description": "2026년 6월 24일, OpenAI와 Broadcom은 맞춤형 추론 칩 Jalapeño를 공동 발표했으며, 공식적으로 이를 OpenAI의 첫 번째 'Intelligence Processor'라고 부릅니다. 본 기사는 두 회사의 공식 게시글 전문을 바탕으로, 공식 발표에 따르면 이 칩은 아직 엔지니어링 샘플 단계로 실험실 테스트 중이며 9개월 만에 tape-out을 마쳤다는 점, 배포 일정과 성능 수치는 여전히 업체 측 주장이라는 점, 그리고 2025년에 발표된 100억 와트(10기가와트) 규모의 협력과는 별개로 봐야 하는 이유를 설명합니다.",
+      "hero": {
+        "src": "/guides/ai-news-openai-broadcom-chip-20260624/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽 말풍선(언어 모델)에서 선이 이어져 중앙의 칩으로 연결된다. 칩은 점선 테두리로 그려져 아직 실험실 테스트 단계이며 확정되지 않았음을 나타낸다. 점선 화살표는 점선 테두리로 그려진 오른쪽 랙을 가리키며, 아직 계획 단계인 배포를 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 6월 24일, OpenAI와 반도체 대기업 Broadcom은 Jalapeño라는 이름의 맞춤형 칩을 공동으로 공개했습니다. 두 회사의 공식 게시글은 모두 이를 OpenAI의 첫 번째 'Intelligence Processor'라고 부르며, 용도는 모델 '추론'(사용자가 질문을 보낸 뒤 모델이 답변을 생성하기까지의 연산 과정)이라고 설명합니다. 두 회사의 제목은 완전히 같지는 않습니다. Broadcom은 'LLM-Optimized Intelligence Processor'라고 썼고, OpenAI는 자체적으로 'LLM-optimized inference chip'이라고 썼습니다. 두 게시글 본문 어디에도 'GPU'라는 단어는 등장하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 2026년 9월 18일, Broadcom 투자자 관계 사이트에 게재된 보도자료 전문, 같은 날 OpenAI 공식 사이트에 게시된 원문 전문, 그리고 2025년 10월 13일 Broadcom이 발표한 이전 협력 관련 보도자료 전문을 확인해 작성했습니다. 본 사이트는 직접 시험해 보지 않았고, 구매나 투자를 권하지도 않습니다. 아래 내용은 모두 이 세 개의 공식 게시글에 나온 설명이며, 그 대부분은 아직 검증 가능한 수치를 동반하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 6월 24일, OpenAI와 Broadcom은 맞춤형 칩 Jalapeño를 공동 발표했습니다. 공식적으로는 이를 대형 언어 모델 추론에 쓰이는 OpenAI의 첫 번째 'Intelligence Processor'라고 부르며, 두 공식 게시글 본문 모두에 'GPU'라는 단어는 등장하지 않습니다.",
+            "두 회사에 따르면 Jalapeño는 설계부터 양산 전 단계(tape-out)까지를 9개월 만에 마쳤으며, 현재는 엔지니어링 샘플이 실험실에서 양산 목표 주파수와 전력으로 GPT-5.3-Codex-Spark 등의 작업을 실행하고 있는 단계입니다. 6월 24일 자 두 공식 게시글 모두 출하나 출시 시점은 전혀 언급하지 않습니다.",
+            "Broadcom과 OpenAI에 따르면 이 여러 세대에 걸친 컴퓨팅 플랫폼은 '2026년 말까지 초기 배포를 목표로 설계'되었으며, 데이터센터 파트너 중 하나로 Microsoft를 언급합니다. 다만 Broadcom 스스로 기가와트급 데이터센터 배포를 전망 진술(forward-looking statement) 중 하나로 분류하며 '지나치게 의존해서는 안 된다'고 명시합니다.",
+            "이번 발표는 2025년 10월 13일 양사가 발표한 '100억 와트 규모 맞춤형 AI 가속기' 협력과는 별개의 발표이며, 두 공식 게시글 모두 Jalapeño를 그 100억 와트 규모와 직접 연결 짓지 않습니다.",
+            "두 공식 게시글 모두 실측 성능 수치, 판매가, 다른 업체 칩과의 비교를 공개하지 않았으며, 단지 '와트당 성능이 기존 최고 수준을 크게 웃돌 것'이라고만 밝혔습니다. OpenAI 역시 스스로 최종 성능을 아직 측정 중이라고 밝혔습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "6월 24일 공동 발표: GPU라 부르지 않는 칩"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 회사가 발표한 글은 사실 대부분 같은 원고입니다. 두 글 모두 서두에서 이를 'OpenAI가 그리는 LLM 추론의 미래상을 중심으로 설계된 가속기'라고 소개하며, Jalapeño가 '모든 LLM과 호환되도록 유연하게 설계'되었다고 밝히고, 이는 업계 전반의 현재 및 향후 AI 모델 추론 수요에 대한 OpenAI의 이해를 바탕으로 설계된 것이라고 설명합니다. 두 게시글 모두 Jalapeño가 OpenAI 이외의 기업에 판매, 대여, 제공될 것이라고 쓰지 않았으며, 제3의 고객사도 전혀 언급하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 게시글은 전달식 장면을 묘사합니다. Jalapeño는 Broadcom 사장 겸 CEO인 Hock Tan과 또 다른 임원인 Charlie Kawwas가 OpenAI CEO인 Sam Altman과 사장인 Greg Brockman에게 전달했습니다. Brockman의 발언은 두 부분으로 나뉩니다. '세계는 컴퓨팅 파워가 이끄는 경제로 나아가고 있습니다'라는 말과, 'Jalapeño는 컴퓨팅 자원을 더 풍부하게 만들어 AI를 더 빠르고 더 신뢰할 수 있으며 개인과 기업 모두에게 더 저렴하게 만드는, 우리의 장기적인 풀스택 인프라 전략의 일부입니다……'라는 말입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "누가 어떤 부분을 맡았나: OpenAI의 설계, Broadcom의 실리콘과 네트워킹"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식적으로 설명하는 역할 분담은 다음과 같습니다. OpenAI는 대형 언어 모델의 연산 특성에 대한 자체 이해를 바탕으로 칩 아키텍처를 처음부터 설계했고, Broadcom과 Celestica가 함께 이 플랫폼을 '산업화'하는 데 힘을 보탰습니다. 두 게시글 모두 마지막 부분에서 두 회사를 다시 구분합니다. Broadcom은 실리콘 구현, 네트워킹 및 연결 기술을 제공했고(언급된 제품은 Tomahawk 네트워킹 실리콘 하나뿐입니다), Celestica는 보드, 랙, 시스템 관련 전문성을 제공했다고 합니다. 이는 어디까지나 두 회사가 스스로 밝힌 역할 설명이며, 본 사이트가 독자적으로 검증할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주의할 점은, 본 기사가 인용하는 세 개의 공식 게시글 전체에서 Celestica의 역할은 오직 Broadcom과 OpenAI 쪽의 설명으로만 나온다는 것입니다. 세 게시글 어디에도 Celestica 자신의 발언은 한 마디도 없으며, 본 기사 역시 Celestica 자체의 설명을 근거로 인용하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 공식 게시글은 또한 설계 과정에서 일부 설계 및 최적화 작업을 가속화하기 위해 OpenAI 자체 모델을 활용했다고 밝히며, '사용자에게 제공되는 것과 동일한 모델들이 향후 모델을 구동할 인프라를 개선하는 데 도움을 주고 있다'고 설명합니다. 이는 두 회사 자체의 설명이며, 외부에서 검증할 방법은 없습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "참여자",
+            "공식 역할 설명",
+            "공식 발표 원문 표현"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "모델 및 서빙 시스템 요구 사항에 따라 칩 아키텍처를 처음부터 설계",
+              "designed the chip from scratch"
+            ],
+            [
+              "Broadcom",
+              "실리콘 구현, 네트워킹 및 연결 기술(Tomahawk 네트워킹 실리콘 포함)",
+              "silicon implementation, networking, and connectivity technologies"
+            ],
+            [
+              "Celestica",
+              "보드, 랙, 시스템 전문성(Broadcom과 OpenAI만 설명)",
+              "board, rack and system expertise"
+            ]
+          ],
+          "caption": "Broadcom과 OpenAI가 각각 2026년 6월 24일에 발표한 공식 게시글을 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "현재 단계는 어디까지인가: 9개월 만의 tape-out, 아직 실험실에서 모델 실행 중"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 공식 게시글에는 비슷해 보이지만 실제로는 다른 두 표현이 있습니다. 요약 항목에는 '설계부터 양산(production)까지 단 9개월'이라고 되어 있지만, 본문에는 '최초 설계부터 제조를 위한 tape-out까지 단 9개월'이라고 적혀 있습니다. tape-out은 칩 설계가 확정되어 제조로 넘어가는 단계를 가리키며, 이미 양산되어 출하되었다는 의미가 아닙니다. 두 게시글의 소제목 역시 모두 'Nine-month tape-out'입니다. 본문과 소제목을 기준으로 보면, 두 회사가 말하는 것은 9개월 안에 tape-out을 마쳤다는 것이지 9개월 안에 양산을 마쳤다는 것이 아니며, 이 수치 자체도 두 회사 스스로 밝힌 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 회사에 따르면 현재는 엔지니어링 샘플이 실험실에서 양산 목표 주파수와 전력으로 GPT-5.3-Codex-Spark를 포함한 머신러닝 작업을 실행하고 있는 단계입니다. 두 게시글 모두 여기서 설명을 멈추며, 이 샘플과 실제 출하 제품 사이의 관계나 출하·출시 시점에 대해서는 더 이상 언급하지 않습니다. 성능에 대해서도 현재는 방향성 수준의 설명만 있습니다. OpenAI는 스스로 '아직 최종 성능을 측정 중'이라고 밝혔고, 초기 테스트에서는 와트당 성능이 '기존 최고 수준을 크게 웃돈다'고 나타났다고 했지만, '기존 최고 수준'이 무엇을 가리키는지는 정의하지 않았고 특정 업체명도 언급하지 않았습니다. 자세한 기술 보고서는 '향후 몇 달 안에' 공개될 예정이라고 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "'역대 가장 빠른 ASIC 개발 주기'라는 동일한 주장에 대해 두 회사는 서로 다른 유보 표현을 사용합니다. Broadcom은 '고성능 첨단 반도체 분야에서 지금까지 달성된 것 중 가장 빠를 수도 있는(what may be) ASIC 개발 주기'라고 썼고, 같은 문장을 두고 OpenAI 자체 게시글에서는 '우리가 믿기로는(what we believe to be)'이라고 썼습니다. 양쪽 모두 유보하는 표현을 쓰고 있으며, 본 기사는 원문 그대로 두 표현을 나란히 제시합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-broadcom-chip-20260624/diagram-1-ko.svg",
+          "alt": "4단계 도해: 공동 발표, 설계 확정, 실험실 테스트, 배포 계획",
+          "width": 1600,
+          "height": 900,
+          "caption": "Broadcom과 OpenAI의 2026년 6월 24일 공동 발표를 바탕으로 정리: 발표부터 배포 계획까지의 4단계. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "배포 일정과 그보다 앞선 협력: 두 발표를 섞지 말 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "두 공식 게시글 모두 배포 규모를 'gigawatt scale(기가와트급)'이라고만 설명할 뿐, 구체적인 기가와트 수치나 칩 개수, 데이터센터 위치는 밝히지 않습니다. 공식 설명에 따르면 이 여러 세대에 걸친 플랫폼은 '2026년 말까지 초기 배포를 목표로 설계되었으며, 향후 몇 년에 걸쳐 계속 확대'될 예정입니다. Hock Tan은 데이터센터 파트너 중 하나로 Microsoft를 언급했는데, 그의 말을 그대로 옮기면 '2026년부터 Microsoft 및 다른 파트너들과 함께 기가와트급 데이터센터 배포를 가능하게 한다'는 것입니다. Microsoft는 두 공식 게시글에서 이름이 언급된 유일한 데이터센터 파트너이며, 그 외에는 모두 '다른 파트너들'이라고만 적혀 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 배포 일정에는 놓치기 쉬운 단서가 하나 있습니다. Broadcom은 보도자료 말미에 미국 증권법에 따른 '전망 진술(forward-looking statements)' 고지를 싣고, 그 안에서 '기가와트급 데이터센터 배포'를 전망 진술 중 하나로 명확히 분류하며 '이러한 진술에 지나치게 의존해서는 안 된다'고 명시합니다. 즉 이 배포 일정은 Broadcom 스스로도 아직 실현되지 않았고 바뀔 수도 있다고 인정하는 계획인 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "따로 구분해서 봐야 할 것이 하나 더 있습니다. 2025년 10월 13일에 있었던 더 이른 발표입니다. 당시 양사는 100억 와트(10기가와트) 규모의 맞춤형 AI 가속기를 함께 배포하기로 했다고 발표했으며, Broadcom의 랙 배포는 '2026년 하반기 시작, 2029년 말까지 완료를 목표로 한다'고 명시했고, 양사는 랙 배포에 관한 term sheet(의향서)에 이미 서명한 상태였습니다. 이 발표에는 또한 당시 OpenAI가 '이미 주간 활성 사용자 8억 명 이상으로 성장했다'는 내용도 담겨 있습니다. 2026년 6월의 이번 발표는 '100억 와트'라는 수치를 다시 언급하지 않았고, Jalapeño가 바로 그 가속기라고 명시하지도 않았습니다. 두 발표는 별개이며, 곧바로 같은 것으로 봐서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 발표를 어떻게 읽어야 할까: 무엇이 사실이고 무엇이 업체 측 발언인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 발표에는 성격이 다른 세 종류의 내용이 섞여 있습니다. 하나는 외부에서 확인 가능한 행위 사실로, 예를 들어 두 회사가 6월 24일 각각 공식 게시글을 발표했다는 점과 두 글의 표현이 어디서 다른지가 여기에 해당합니다. 다른 하나는 회사 내부에서만 확인 가능해 외부에서 검증할 수 없는 설명으로, 9개월 만의 tape-out 완료, 실험실에서의 엔지니어링 샘플 가동, '와트당 성능이 기존 최고 수준을 크게 웃돈다', '주간 활성 사용자 8억 명 이상' 같은 내용이 여기에 속합니다. 나머지 하나는 미래에 대한 계획으로, 배포 일정이 이에 해당하며 Broadcom 스스로도 지나치게 의존하지 말라고 당부하는 부분입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 공식 게시글에는 지나치게 해석되기 쉬운 문장이 하나 있습니다. 'AI가 엔지니어들이 더 나은 칩을 더 빠르게 설계하도록 도울 수 있다면, 업계 전반의 컴퓨팅 비용을 낮추고 더 많은 사람이 첨단 AI를 이용할 수 있도록 돕는 데 기여할 수 있다'는 문장입니다. 이 문장은 '만약'으로 시작하며 업계 전체를 이야기할 뿐 구체적인 수치나 비율은 전혀 붙어 있지 않고, Jalapeño 자체가 얼마나 저렴해지는지도 말하지 않습니다. 2026년 9월 18일까지 확인한 바로는, 두 게시글 어디에도 비용 절감 비율은 등장하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사가 2026년 9월 18일까지 확인한 바에 따르면, 두 공식 게시글 모두 칩의 제조 공정, 어느 파운드리에서 생산하는지, 메모리 종류와 용량, 소비 전력(와트 수)에 대해서는 적혀 있지 않으며, NVIDIA나 다른 업체의 칩과 직접 비교하는 내용도 전혀 없습니다. OpenAI의 게시글에는 날짜가 없는 조건문이 하나 있는데, 비용·속도·신뢰성의 개선이 더 빠른 ChatGPT 응답, 구축 비용이 더 낮은 API 제품 등으로 '나타날 수 있다(can show up as)'는 내용입니다. 그 외에는 사용자가 언제 차이를 체감하게 될지 말하는 문장이 전혀 없습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "지금 Jalapeño 칩을 구매하거나 대여할 수 있나요?",
+              "answer": "두 공식 게시글 모두 이 칩이 OpenAI 이외의 기업에 판매, 대여, 제공될 것이라고 언급하지 않으며, 제3의 고객사나 주문 경로도 전혀 밝히지 않습니다. 공식 설명에 따르면 현재 상태는 엔지니어링 샘플이 실험실에서 머신러닝 작업을 실행하고 있는 단계이며, 6월 24일 자 두 공식 게시글 모두 출하나 출시 시점은 적혀 있지 않습니다."
+            },
+            {
+              "question": "Jalapeño가 NVIDIA 칩보다 빠른가요? 얼마나 더 저렴한가요?",
+              "answer": "공식 게시글은 이 질문에 답하지 않습니다. OpenAI와 Broadcom은 Jalapeño의 와트당 성능이 '기존 최고 수준을 크게 웃돈다'고만 밝혔을 뿐, '기존 최고 수준'이 어떤 칩을 가리키는지 정의하지 않았고 NVIDIA나 다른 업체명도 언급하지 않았으며, 테스트 수치나 가격 비교도 공개하지 않았습니다. 공식에 따르면 자세한 성능 기술 보고서는 앞으로 몇 달 안에 공개될 예정입니다."
+            },
+            {
+              "question": "이는 앞으로 OpenAI가 다른 업체의 칩은 쓰지 않고 자체 칩만 쓴다는 뜻인가요?",
+              "answer": "두 공식 게시글 모두 그렇게 말하지 않습니다. 이번 발표는 OpenAI가 자사 모델의 추론을 위한 맞춤형 칩을 설계했다는 내용이며, OpenAI가 다른 공급업체의 칩이나 컴퓨팅 플랫폼 사용을 중단한다는 언급은 없습니다. 이 부분에 대해 공식 게시글은 전혀 다루지 않습니다."
+            },
+            {
+              "question": "Jalapeño는 2025년의 '100억 와트' 협력과 같은 것인가요?",
+              "answer": "같은 발표가 아닙니다. 2025년 10월 13일 발표는 100억 와트 규모의 맞춤형 AI 가속기를 배포하는 다년간의 협력에 관한 것으로, 그중 Broadcom의 랙 배포 목표는 '2026년 하반기 시작, 2029년 말까지 완료'입니다. 2026년 6월 24일 이번 발표는 Jalapeño 칩 자체를 공개한 것이지만, 그 100억 와트라는 수치를 다시 언급하지 않았고 Jalapeño가 그 협력에서 배포될 가속기라고 명확히 밝히지도 않았습니다. 두 발표는 별개로 봐야 하며, 임의로 같은 것으로 단정해서는 안 됩니다."
+            },
+            {
+              "question": "이 소식 때문에 제가 쓰는 ChatGPT가 더 빨라지거나 저렴해지나요?",
+              "answer": "OpenAI의 게시글에는 조건문이 하나 있는데, 비용·속도·신뢰성의 모든 개선이 더 빠른 ChatGPT 응답, 대기 시간이 줄어드는 Codex 작업, 구축 비용이 더 낮은 API 제품 등으로 '나타날 수 있다(can show up as)'는 내용입니다. 다만 이 문장에는 날짜도, 비율도, 보장도 붙어 있지 않으며, 그것이 Jalapeño 때문이라고 밝히지도 않습니다. 공식에 따르면 Jalapeño는 현재 아직 실험실 테스트 단계에 있으며, 실제 서비스에 배포되기까지는 아직 계획 단계의 시간이 남아 있습니다."
+            },
+            {
+              "question": "'Intelligence Processor'란 무엇이며, 흔히 말하는 GPU와는 무엇이 다른가요?",
+              "answer": "이는 Broadcom과 OpenAI가 Jalapeño를 위해 선택한 공식 명칭입니다. 2026년 9월 18일까지 확인한 바로는, 두 공식 게시글 본문 어디에도 'GPU'라는 단어는 등장하지 않습니다. 공식 설명에 따르면 이 칩은 현대의 대형 언어 모델 추론을 위해 설계된 것이며, 과거의 다른 AI 작업 부하용으로 만들어졌다가 전용된 범용 가속기가 아니라고 합니다. 다만 공식 게시글이 제조 공정이나 트랜지스터 수 같은 기술 사양을 공개하지 않았기 때문에, 본 기사에서는 하드웨어 설계상 GPU와 구체적으로 무엇이 다른지 더 이상 비교할 수 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 발표에서 무엇이 사실이고, 무엇이 계획인가",
+          "text": "외부에서 확인할 수 있는 것은 단 하나, 2026년 6월 24일 OpenAI와 Broadcom이 각각 이 소식을 공개했다는 사실뿐입니다. 나머지는 모두 두 회사 스스로의 설명이거나 미래에 대한 계획입니다. '9개월 안에 tape-out 완료', '엔지니어링 샘플이 실험실에서 가동 중'—이는 외부에서 검증할 방법이 없습니다. '2026년 말까지 배포 시작'—Broadcom은 보도자료 말미에서 기가와트급 데이터센터 배포를 전망 진술 중 하나로 분류하며 지나치게 의존하지 말라고 당부합니다. '와트당 성능이 기존 최고 수준을 크게 웃돈다'—OpenAI는 스스로 아직 최종 성능을 측정 중이라고 밝혔습니다. '주간 활성 사용자 8억 명 이상'—이는 2025년 10월 13일 발표에 담긴 자체 보고 수치입니다. 본 기사는 직접 시험해 보지 않았으며, 칩 가격을 비교하거나 투자 조언을 제공하지도 않습니다. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI, Habitat 스토리지 아키텍처 공개: 매주 10억 명 넘게 사용하는 규모와 한계",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-storage-scale-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+          "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "OpenAI 与 Broadcom 发布 Jalapeño 芯片：官方说的阶段、分工，与还没公布的事",
+      "description": "2026 年 6 月 24 日，OpenAI 与 Broadcom 共同发布定制推理芯片 Jalapeño，官方称其为 OpenAI 第一款 Intelligence Processor。本文依据两家公司官方文章全文，说明依官方说法这颗芯片目前只到工程样片与实验室测试、9 个月完成 tape-out 的阶段，部署时间表与性能数字仍是厂商说法，以及它与 2025 年那笔 100 亿瓦合作为何要分开看待。",
+      "hero": {
+        "src": "/guides/ai-news-openai-broadcom-chip-20260624/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一个对话气泡代表语言模型，一条线向右连到中央一颗芯片，芯片外围画着一圈虚线框，代表还在实验室测试、尚未定案的阶段；再一支虚线箭头指向右边一座虚线外框的机柜，代表仍在规划中的部署。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 6 月 24 日，OpenAI 与芯片大厂 Broadcom 共同发布一款名为 Jalapeño 的定制芯片，两家公司的官方文章都称它是 OpenAI 第一款“Intelligence Processor”，用途是模型“推理”（用户提交问题后、模型生成回复的运算步骤）。两边拟的标题并不完全相同：Broadcom 写的是“LLM-Optimized Intelligence Processor”，OpenAI 自己写的是“LLM-optimized inference chip”；两篇文章正文都没有出现“GPU”这个词。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日查核，读的是 Broadcom 投资者关系网站上这篇新闻稿全文、OpenAI 官方网站同一天发布的原文全文，以及 Broadcom 在 2025 年 10 月 13 日发布的前一份合作新闻稿全文。本站没有做任何实测，也不提供购买或投资建议；以下每一项都是这三篇官方文章里的说法，大多还没有可核实的数字。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 6 月 24 日，OpenAI 与 Broadcom 共同发布定制芯片 Jalapeño，官方称其为 OpenAI 第一款用于大语言模型推理的“Intelligence Processor”，两篇官方文章正文都没有出现“GPU”这个词。",
+            "两家公司表示，Jalapeño 在 9 个月内完成从设计到量产前置作业（tape-out），目前是工程样片在实验室以量产目标的频率与功耗运行 GPT-5.3-Codex-Spark 等任务；两篇 6 月 24 日的官方文章没有写出货或上市的任何时间。",
+            "Broadcom 与 OpenAI 表示，这个多世代计算平台“规划在 2026 年底前开始初步部署”，并点名 Microsoft 是数据中心合作伙伴之一；但 Broadcom 自己把部署吉瓦等级数据中心列为前瞻性陈述，提醒“不宜过度依赖”。",
+            "这次发布和 2025 年 10 月 13 日双方宣布的“100 亿瓦定制 AI 加速器”合作是两则分开的公告，两篇官方文章都没有把 Jalapeño 和那笔 100 亿瓦的规模直接挂钩。",
+            "两篇官方文章都没有公布性能实测数字、售价或与其他厂商芯片的比较，只说“每瓦性能将显著优于现有最佳水准”，OpenAI 也表示自己仍在测量最终性能。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "6 月 24 日的联合发布：一款不叫 GPU 的芯片"
+        },
+        {
+          "type": "paragraph",
+          "text": "两家公司发出的其实大半是同一份文稿：开头都写着这是“围绕 OpenAI 对大语言模型推理未来愿景所打造的加速器”，也都写着 Jalapeño“设计上保有灵活性，能搭配所有大语言模型”，并说这是依据 OpenAI 对业界现有与未来 AI 模型推理需求的理解而设计的。两篇文章都没有写 Jalapeño 会出售、出租或提供给 OpenAI 以外的公司，也没有点名任何第三方客户。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文章描述了交付画面：Jalapeño 由 Broadcom 总裁兼首席执行官 Hock Tan 与另一位高管 Charlie Kawwas，交给 OpenAI 首席执行官 Sam Altman 与总裁 Greg Brockman。Brockman 的话分成两段：“世界正走向一个由算力驱动的经济”，以及“Jalapeño 是我们长期全栈基础设施战略的一部分，目的是让算力更充裕，使 AI 更快、更可靠，并让个人与企业都能以更低成本负担……”"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "谁做了哪一块：OpenAI 的设计，Broadcom 的硅实现与网络"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方描述的分工是：OpenAI 依自己对大语言模型运算特性的理解，从零设计芯片架构，再由 Broadcom 与 Celestica 一起把这个平台“产业化”。两篇文章结尾把两家再分开说明：Broadcom 提供硅实现、网络与连接技术（其中只点名 Tomahawk 网络芯片一项产品），Celestica 提供电路板、机柜与系统的专业能力。这是官方对自己角色的描述，本站无法独立核实。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要注意的是，Celestica 的角色在本文引用的三篇官方文章里，全部只有 Broadcom 与 OpenAI 的单方面叙述；这三篇文章没有任何一句话出自 Celestica，本文也没有引用 Celestica 自己的说明作为佐证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇官方文章也都写着，设计过程用到 OpenAI 自己的模型来加速部分设计与优化工作，并说“提供给用户的同一批模型，正在帮助改善用来运行未来模型的基础设施”。这是两家公司自己的说法，外界无从核实。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "参与者",
+            "官方角色说明",
+            "公告原文用语"
+          ],
+          "rows": [
+            [
+              "OpenAI",
+              "从零设计芯片架构，依据模型与服务系统需求决定方向",
+              "designed the chip from scratch"
+            ],
+            [
+              "Broadcom",
+              "硅实现、网络与连接技术（含 Tomahawk 网络芯片）",
+              "silicon implementation, networking, and connectivity technologies"
+            ],
+            [
+              "Celestica",
+              "电路板、机柜与系统的专业能力（只有 Broadcom 与 OpenAI 的叙述）",
+              "board, rack and system expertise"
+            ]
+          ],
+          "caption": "依据 Broadcom 与 OpenAI 2026 年 6 月 24 日各自发布的官方文章整理，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "现在是什么阶段：9 个月做完 tape-out，还在实验室里跑模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇官方文章都有一组看起来相近、其实不同的说法：要点部分写“从设计到量产（production）只花 9 个月”，正文却写“从最初设计到量产前置作业（tape-out）只花 9 个月”。Tape-out 是芯片设计定案、交付制造的阶段，不等于已经量产出货；两篇文章的小标题也都写着“Nine-month tape-out”。以正文与小标题为准，两家公司说的是 9 个月内完成 tape-out，不是 9 个月内量产；这个数字也是公司自己说的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两家公司表示，目前是工程样片在实验室、以量产目标的频率与功耗运行机器学习任务，包含 GPT-5.3-Codex-Spark；两篇文章写到这里就停了，没有再说这些样片和出货产品的关系，也没有写出货或上市的时间。性能目前只有方向性描述：OpenAI 表示自己“仍在测量最终性能”，早期测试显示每瓦性能“显著优于现有最佳水准”，但没有定义“现有最佳水准”是什么、也没有点名任何厂商；官方说详细技术报告要等“未来几个月”才会公布。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一句“最快的 ASIC 开发周期”，两家公司用了不同的保留措辞：Broadcom 写的是“可能是（what may be）高性能先进半导体有史以来最快的 ASIC 开发周期”，OpenAI 自己的文章同一句写的却是“我们相信是（what we believe to be）”。两边都带保留语气，本文照原文并列。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-broadcom-chip-20260624/diagram-1-zh-cn.svg",
+          "alt": "四格图解：联合公布、设计定案、实验室测试、规划部署",
+          "width": 1600,
+          "height": 900,
+          "caption": "依据 Broadcom 与 OpenAI 2026 年 6 月 24 日联合发表整理：从公布到规划部署的四个阶段，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "部署时间表与更早的一次合作：两则公告，不要混在一起"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇官方文章都只用“gigawatt scale（吉瓦等级）”描述部署规模，没有写出吉瓦数字、芯片颗数或数据中心地点；官方说法是这个多世代平台“规划在 2026 年底前开始初步部署，并在未来几年持续扩大”。Hock Tan 点名 Microsoft 是数据中心合作伙伴之一，原话是“2026 年开始，与 Microsoft 及其他合作伙伴部署吉瓦等级的数据中心”——Microsoft 是两篇官方文章里唯一被点名的数据中心合作伙伴，其余一律写成“其他合作伙伴”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这段部署时间表有一个容易被忽略的但书：Broadcom 在新闻稿末尾放了一段依美国证券法规定的“前瞻性陈述”声明，明确把“部署吉瓦等级数据中心”列为前瞻性陈述之一，并写明“不应该过度依赖这类陈述”——这段时间表是 Broadcom 自己承认还没发生、也可能改变的规划。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外要分开看的是 2025 年 10 月 13 日的一则更早公告：当时双方宣布合作部署 100 亿瓦（10 吉瓦）定制 AI 加速器，并写明 Broadcom 部署机柜“目标 2026 年下半年开始、2029 年底前完成”，双方已签署部署机柜的意向书（term sheet）；那则公告也写着 OpenAI 当时“已成长到超过 8 亿周活跃用户”。2026 年 6 月这篇没有重复“100 亿瓦”这个数字，也没有写 Jalapeño 就是那笔加速器——这是两则分开的公告，不能直接画上等号。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎么读这篇公告：哪些是事实，哪些是厂商的话"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇公告混合了三种不同性质的内容：一种是外部看得到的动作事实，例如两家公司在 6 月 24 日各自发布官方文章、两篇的用字差在哪里；一种是只有公司内部看得到、外界无法核实的说法，例如 9 个月完成 tape-out、工程样片在实验室运行、“每瓦性能显著优于现有最佳水准”、“超过 8 亿周活跃用户”；还有一种是对未来的规划，例如部署时间表，Broadcom 自己都提醒不要过度依赖。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇官方文章都有一句常被过度解读的话：“如果 AI 能帮助工程师更快设计出更好的芯片，就有机会降低整个行业的计算成本、让更多人用得起先进 AI”——这句话以“如果”开头、讲的是整个行业，没有附任何数字或百分比，也没有说 Jalapeño 本身便宜多少；查核到 2026 年 9 月 18 日为止，两篇文章都没有出现任何成本节省的百分比。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文查核到 2026 年 9 月 18 日为止，两篇官方文章都没有写芯片用什么制程、哪一家代工厂生产、内存种类与容量、耗电瓦数，也没有和 NVIDIA 或其他厂商的芯片做任何直接比较。OpenAI 的文章有一句没有日期的条件句，说成本、速度与可靠性的改善“有可能呈现为”更快的 ChatGPT 回复、打造成本更低的 API 产品等；除此之外，没有任何一句话说用户会在哪一天感受到差异。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "现在可以买到或租用 Jalapeño 这颗芯片吗？",
+              "answer": "两篇官方文章都没有提到这颗芯片会出售、出租或提供给 OpenAI 以外的公司使用，也没有点名任何第三方客户或公布任何订购渠道。依官方说法，它目前的状态是工程样片在实验室运行机器学习任务，两篇 6 月 24 日的官方文章没有写任何出货或上市时间。"
+            },
+            {
+              "question": "Jalapeño 比 NVIDIA 的芯片快吗？便宜多少？",
+              "answer": "官方文章没有回答这个问题。OpenAI 与 Broadcom 只说 Jalapeño 的每瓦性能“显著优于现有最佳水准”，但没有定义“现有最佳水准”是哪一款芯片，也没有点名 NVIDIA 或任何其他厂商，更没有公布任何测试数字或价格比较；官方说详细的性能技术报告要等未来几个月才会公布。"
+            },
+            {
+              "question": "这是不是代表 OpenAI 以后都用自己的芯片、不用其他厂商的芯片了？",
+              "answer": "两篇官方文章都没有这样说。公告谈的是 OpenAI 设计了一款用于自家模型推理的定制芯片，并没有提到 OpenAI 会停用其他供应商的芯片或计算平台，这方面官方文章完全没有涉及。"
+            },
+            {
+              "question": "Jalapeño 和 2025 年那笔“100 亿瓦”的合作是同一件事吗？",
+              "answer": "不是同一则公告。2025 年 10 月 13 日的公告谈的是一项部署 100 亿瓦定制 AI 加速器的多年期合作，其中 Broadcom 部署机柜的目标是 2026 年下半年开始、2029 年底前完成；2026 年 6 月 24 日这篇公告发布 Jalapeño 芯片本身，但没有重复那个 100 亿瓦的数字，也没有明确说 Jalapeño 就是那笔合作案里要部署的加速器。两者要分开看待，不宜自行画上等号。"
+            },
+            {
+              "question": "这件事会让我用的 ChatGPT 变快或变便宜吗？",
+              "answer": "OpenAI 的文章有一句条件句，说成本、速度与可靠性的每一分改善“有可能呈现为”更快的 ChatGPT 回复、更少等待的 Codex 任务、打造成本更低的 API 产品等，但那句话没有附任何日期、百分比或保证，也没有说是 Jalapeño 造成的。依官方说法，Jalapeño 目前还在实验室测试阶段，离部署到实际服务都还有一段规划中的时间表。"
+            },
+            {
+              "question": "“Intelligence Processor”是什么，和一般说的 GPU 有什么不同？",
+              "answer": "这是 Broadcom 与 OpenAI 为 Jalapeño 选用的官方称呼；查核到 2026 年 9 月 18 日，两篇官方文章正文都没有出现“GPU”这个词。官方说法是这颗芯片为现代大语言模型推理而设计，不是从过去其他 AI 工作负载改造而来的通用型加速器，但官方文章没有公布制程、晶体管数量或其他技术规格，所以无法在本文进一步比较它和 GPU 在硬件设计上的具体差异。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇公告哪些是事实，哪些是规划",
+          "text": "外界看得到的只有一件事：2026 年 6 月 24 日 OpenAI 与 Broadcom 各自公布了这则消息。其余都是两家公司自己的说法或对未来的规划：“9 个月内完成 tape-out”“工程样片正在实验室运行”——外界无从核实；“2026 年底前开始部署”——Broadcom 在新闻稿末尾把部署吉瓦等级数据中心列为前瞻性陈述，并提醒不宜过度依赖；“每瓦性能显著优于现有最佳水准”——OpenAI 说自己仍在测量最终性能；“超过 8 亿周活跃用户”——这是 2025 年 10 月 13 日那则公告里的自报数字。本文没有做任何实测，也不比较芯片售价或提供任何投资建议。查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 揭露 Habitat 存储架构：每周逾十亿人使用背后的规模与极限",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-storage-scale-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+          "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+          "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

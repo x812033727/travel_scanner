@@ -103,6 +103,20 @@ RELATED: dict[str, str] = {
     "tech-news-nvidia-cuda-q-20260914": "tech-news-nvidia-vera-rubin-20260915",
     "tech-news-nvidia-mediatek-20260831": "tech-news-nvidia-vera-rubin-20260915",
     "tech-news-nvidia-vera-rubin-20260915": "tech-news-nvidia-cuda-q-20260914",
+    # AI, batch 4.3, in the owner's list order (B1-B10, A1, A3): `display_order` 149-160. The
+    # index is the existing `ai-news-2026-january-september-index`, retitled in place.
+    "ai-news-openai-astral-20260319": "ai-news-nvidia-hugging-face-20260903",
+    "ai-news-openai-funding-20260331": "ai-news-openai-s1-20260608",
+    "ai-news-gpt-55-instant-20260505": "ai-news-gemini-38-live-20260915",
+    "ai-news-chatgpt-ads-20260505": "ai-news-chatgpt-financial-services-20260910",
+    "ai-news-frontier-governance-20260528": "ai-news-gpt-55-instant-20260505",
+    "ai-news-openai-s1-20260608": "ai-news-openai-funding-20260331",
+    "ai-news-openai-broadcom-chip-20260624": "ai-news-chatgpt-storage-scale-20260911",
+    "ai-news-chatgpt-financial-services-20260910": "ai-news-chatgpt-ads-20260505",
+    "ai-news-gpt-live-1-api-20260910": "ai-news-gemini-38-live-20260915",
+    "ai-news-chatgpt-storage-scale-20260911": "ai-news-openai-broadcom-chip-20260624",
+    "ai-news-gemini-38-live-20260915": "ai-news-gpt-live-1-api-20260910",
+    "ai-news-nvidia-hugging-face-20260903": "ai-news-openai-astral-20260319",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

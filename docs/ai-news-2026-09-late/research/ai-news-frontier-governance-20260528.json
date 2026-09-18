@@ -1,0 +1,611 @@
+{
+  "slug": "ai-news-frontier-governance-20260528",
+  "event_date": "2026-05-28",
+  "event_date_basis": "2026-05-28 is the pubDate of the FGF item on OpenAI's official news RSS feed (source 4), re-fetched 2026-09-18 and byte-for-byte identical to the prior batch research's record: title 'OpenAI’s Frontier Governance Framework', category 'Safety', pubDate 'Thu, 28 May 2026 00:00:00 GMT'. Cross-checked against the FGF PDF's own blob header (Last-Modified Wed, 27 May 2026 16:04:12 GMT, one day earlier, consistent with an upload-before-publish workflow) and its md5 efeae18be97ece7b1a71e7afcf2019d6, which is unchanged from the prior check, confirming the PDF read today is the launch version.",
+  "title": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI《Frontier Governance Framework》全文（PDF）",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "加州法典 Business and Professions Code 第 25.1 章（Transparency in Frontier Artificial Intelligence Act）現行條文",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI《Preparedness Framework》第 2 版全文（PDF）",
+      "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 官方新聞頻道 RSS（發布日期紀錄）",
+      "url": "https://openai.com/news/rss.xml",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "All four sources were fetched today (2026-09-18) with `curl -sL -A \"Mokaair-editorial\"` and read as full text, not just HTTP 200 status. (1) FGF PDF: HTTP 200, Content-Length 6136955, Last-Modified Wed, 27 May 2026 16:04:12 GMT; md5 of the downloaded bytes is efeae18be97ece7b1a71e7afcf2019d6, an exact match to the prior batch research's hash, confirming this is still the launch-version file; text extracted with pypdf 6.16.2 (system `python`, not the apps/api venv, which lacks pypdf) -- 22 pages, ~30,400 characters of extracted text, read in full. (2) California codes_displayText page (BPC chapter 25.1): HTTP 200, 161,728 bytes of HTML; stripped to ~23,500 characters of text and read in full -- confirmed it carries the complete text of sections 22757.10 through 22757.16, each closing with the identical '(Added by Stats. 2025, Ch. 138, Sec. 2. (SB 53) Effective January 1, 2026.)' and no 'Amended by' anywhere. This single page turned out to cover everything the prior research needed the bill-text page, the effective-date gap and several must_add items for, so it fully replaced the bill-text URL as source 2 rather than being added as a fifth source. (3) Preparedness Framework v2 PDF: HTTP 200, Content-Length 170399, Last-Modified Mon, 09 Jun 2025 21:27:02 GMT -- identical to the prior check, confirming the file has not been revised; 22 pages, ~67,000 characters extracted and read in full. (4) OpenAI news RSS feed: HTTP 200, XML read in full; the FGF item was located by matching both the title text and the canonical link (not by count), and its fields are unchanged from the prior batch research. The feed's newest item today ('Introducing Astra for Law', pubDate Thu, 17 Sep 2026) is dated the day before checked_on, which is used only to show the feed is live -- no item count is recorded anywhere in this file or the article, per the batch's cross-cutting rule against writing feed counts. openai.com/index/* was not re-tested today since no claim in this article depends on it; the prior batch research and factcheck both already established it returns HTTP 403 to curl and to WebFetch.",
+  "verified_facts": [
+    {
+      "fact": "OpenAI's official news feed carries the item 'OpenAI's Frontier Governance Framework' with pubDate 'Thu, 28 May 2026 00:00:00 GMT' and category 'Safety'; re-fetched 2026-09-18 and unchanged from the prior check.",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<title><![CDATA[OpenAI’s Frontier Governance Framework]]></title> ... <category><![CDATA[Safety]]></category> <pubDate>Thu, 28 May 2026 00:00:00 GMT</pubDate>"
+    },
+    {
+      "fact": "The FGF PDF is 22 pages, 6,136,955 bytes, md5 efeae18be97ece7b1a71e7afcf2019d6 (re-hashed 2026-09-18, matches the prior check exactly), blob last-modified Wed, 27 May 2026 16:04:12 GMT, metadata only {Author/Creator/Producer: 'Super PDF Plugin'}, no CreationDate/ModDate.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "OpenAI states it built the FGF 'to explain how we fulfill our regulatory obligations and to document our current technical and organizational processes for systemic risk assessment and mitigation across key risk categories, including cybersecurity, CBRN (chemical, biological, radiological, and nuclear), harmful manipulation, and loss of control risks.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we have developed this Frontier Governance Framework (FGF) to explain how we fulfill our regulatory obligations and to document our current technical and organizational processes for systemic risk assessment and mitigation across key risk categories, including cybersecurity, CBRN (chemical, biological, radiological, and nuclear), harmful manipulation, and loss of control risks."
+    },
+    {
+      "fact": "FGF: 'Our FGF is designed to meet the baseline legal requirements of various frontier AI laws, including:' then names the TFAIA framework role and the EU CoP publicly-available-summary role. 'Including' is open-ended; the FGF never says these are the only two.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our FGF is designed to meet the baseline legal requirements of various frontier AI laws, including:"
+    },
+    {
+      "fact": "FGF: 'The FGF overlaps in some areas with our existing Preparedness Framework (PF) ... it may use different definitions of catastrophic risk and does not depend on specific legal compute thresholds like the FGF.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "it may use different definitions of catastrophic risk and does not depend on specific legal compute thresholds like the FGF"
+    },
+    {
+      "fact": "The Preparedness Framework PDF cover reads 'Preparedness Framework Version 2. Last updated: 15th April, 2025'; its blob last-modified is Mon, 09 Jun 2025 21:27:02 GMT, unchanged when re-fetched 2026-09-18 (170,399 bytes, same as prior check).",
+      "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Preparedness Framework Version 2. Last updated: 15th April, 2025"
+    },
+    {
+      "fact": "FGF on its risk-assessment process: 'This process draws on our own internal research and signals, and, where appropriate, incorporates feedback from academic researchers, independent domain experts, industry bodies such as the Frontier Model Forum, and the U.S. government, the European Commission and other government agencies.' 'Where appropriate' makes this discretionary, not a commitment.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This process draws on our own internal research and signals, and, where appropriate, incorporates feedback from"
+    },
+    {
+      "fact": "FGF's definition of systemic risk: 'includes foreseeable and material risks of severe harm from the development, storage, use, or deployment of our most advanced frontier models, including risks that a model will materially contribute to greater than 50 fatalities or $1 billion of property damages or losses arising from a single incident.' (This is not described as the only two numbers in the document — the 2021 CBRN baseline, the 6/12-month and 30-day cadences, and the ISO/SOC standard names are also in it.)",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "including risks that a model will materially contribute to greater than 50 fatalities or $1 billion of property damages or losses arising from a single incident"
+    },
+    {
+      "fact": "SB 53 / BPC 22757.11(c)(1): 'Catastrophic risk means a foreseeable and material risk that a frontier developer's development, storage, use, or deployment of a frontier model will materially contribute to the death of, or serious injury to, more than 50 people or more than one billion dollars ($1,000,000,000) in damage to, or loss of, property arising from a single incident involving a frontier model doing any of the following...' Uses 'frontier model', not 'foundation model'.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“Catastrophic risk” means a foreseeable and material risk that a frontier developer’s development, storage, use, or deployment of a frontier model will materially contribute to the death of, or serious injury to, more than 50 people or more than one billion dollars ($1,000,000,000) in damage to, or loss of, property arising from a single incident"
+    },
+    {
+      "fact": "SB 53 / BPC 22757.11(c)(2) excludes three things from 'catastrophic risk': (A) information a frontier model outputs that is otherwise publicly accessible in similar form from a non-foundation-model source; (B) lawful federal government activity; (C) harm from a frontier model combined with other software if the frontier model did not materially contribute.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“Catastrophic risk” does not include a foreseeable and material risk from any of the following: (A) Information that a frontier model outputs if the information is otherwise publicly accessible in a substantially similar form from a source other than a foundation model. (B) Lawful activity of the federal government. (C) Harm caused by a frontier model in combination with other software if the frontier model did not materially contribute to the harm."
+    },
+    {
+      "fact": "SB 53 / BPC 22757.16: 'The loss of value of equity does not count as damage to or loss of property for the purposes of this chapter.'",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The loss of value of equity does not count as damage to or loss of property for the purposes of this chapter."
+    },
+    {
+      "fact": "Every one of BPC 22757.10 through 22757.16 (7 sections) carries the identical closing note '(Added by Stats. 2025, Ch. 138, Sec. 2. (SB 53) Effective January 1, 2026.)' with no 'Amended by' anywhere, confirming (a) the January 1, 2026 effective date and (b) that the text read today is still the operative version.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(Added by Stats. 2025, Ch. 138, Sec. 2. (SB 53) Effective January 1, 2026.)"
+    },
+    {
+      "fact": "SB 53 / BPC 22757.11(f) and (i): a 'foundation model' is trained on a broad data set, designed for generality of output and adaptable to a wide range of tasks; a 'frontier model' is a foundation model 'trained using a quantity of computing power greater than 10^26 integer or floating-point operations.'",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“Frontier model” means a foundation model that was trained using a quantity of computing power greater than 10^26 integer or floating-point operations."
+    },
+    {
+      "fact": "SB 53 / BPC 22757.11(j): a 'large frontier developer' is a frontier developer that together with its affiliates 'collectively had annual gross revenues in excess of five hundred million dollars ($500,000,000) in the preceding calendar year.'",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“Large frontier developer” means a frontier developer that together with its affiliates collectively had annual gross revenues in excess of five hundred million dollars ($500,000,000) in the preceding calendar year."
+    },
+    {
+      "fact": "Preparedness Framework's severe-harm footnote, read in full: 'By “severe harm” in this document, we mean the death or grave injury of thousands of people or hundreds of billions of dollars of economic damage. Our safety stack addresses a broad spectrum of risks, including many with harms below this severity. In choosing to set a high bar here, we aim to ensure that the most severe risks receive attention commensurate with their magnitude.'",
+      "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By “severe harm” in this document, we mean the death or grave injury of thousands of people or hundreds of billions of dollars of economic damage. Our safety stack addresses a broad spectrum of risks, including many with harms below this severity. In choosing to set a high bar here, we aim to ensure that the most severe risks receive attention commensurate with their magnitude."
+    },
+    {
+      "fact": "FGF names exactly four systemic risk categories: cyber offense, CBRN, harmful manipulation, and loss of control, each with its own short description.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "FGF on cyber offense tiers: 'we have established a tier system that seeks to quantify model capabilities against cybersecurity threats and incorporates risk estimates and other suitable metrics. We use these measurable thresholds for decision-making related to offensive cyber capabilities.' No public scores, scales or cut-offs are printed for any tier.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we have established a tier system that seeks to quantify model capabilities against cybersecurity threats and incorporates risk estimates and other suitable metrics. We use these measurable thresholds for decision-making related to offensive cyber capabilities."
+    },
+    {
+      "fact": "FGF CBRN Tier 2: 'The model can provide meaningful counterfactual assistance (relative to unlimited access to baseline of tools available in 2021) to novice actors (anyone with a basic relevant technical background) that enables them to create known biological or chemical threats.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The model can provide meaningful counterfactual assistance (relative to unlimited access to baseline of tools available in 2021) to novice actors (anyone with a basic relevant technical background) that enables them to create known biological or chemical threats."
+    },
+    {
+      "fact": "FGF CBRN Tier 3: 'The model can enable an expert to develop a highly dangerous novel threat vector (e.g., comparable to a novel CDC Class A biological agent) OR the model can be connected to tools and equipment to complete the full engineering and/or synthesis cycle of a regulated or novel biological threat without human intervention.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The model can enable an expert to develop a highly dangerous novel threat vector (e.g., comparable to a novel CDC Class A biological agent) OR the model can be connected to tools and equipment to complete the full engineering and/or synthesis cycle of a regulated or novel biological threat without human intervention."
+    },
+    {
+      "fact": "FGF on harmful manipulation: 'OpenAI's approach to harmful manipulation remains exploratory due to its nascency as a systemic risk area. This risk tier is subject to further research and may be substantially changed over time.' No tier table is given for this category.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI’s approach to harmful manipulation remains exploratory due to its nascency as a systemic risk area. This risk tier is subject to further research and may be substantially changed over time."
+    },
+    {
+      "fact": "FGF: 'OpenAI will complete a Framework Assessment at least once every 12 months from the Effective Dates of the TFAIA and the EU Code of Practice.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI will complete a Framework Assessment at least once every 12 months from the Effective Dates of the TFAIA and the EU Code of Practice"
+    },
+    {
+      "fact": "FGF: material updates go to the OpenAI Foundation board's Safety and Security Committee and to the OpenAI Ireland Limited board, 'with changes and justifications for material updates documented in a changelog and published within 30 days of the update.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "with changes and justifications for material updates documented in a changelog and published within 30 days of the update"
+    },
+    {
+      "fact": "FGF's Model Report update section opens: 'For models in scope of this Framework that are subject to the EU AI Act, if we have reasonable grounds to believe that the basis for considering the model's systemic risks acceptable has been materially undermined, we will update our Model Report as appropriate after completing a systemic risk assessment.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For models in scope of this Framework that are subject to the EU AI Act, if we have reasonable grounds to believe that the basis for considering the model’s systemic risks acceptable has been materially undermined, we will update our Model Report as appropriate after completing a systemic risk assessment."
+    },
+    {
+      "fact": "FGF continues: 'We will in any event determine whether to update the Model Report for our most capable frontier models once every six months.' Three stated exceptions: no material capability change since last update; a more capable model due within a month; or the model is 'similarly safe or safer (under Appendix 2.2 of the Code of Practice).'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We will in any event determine whether to update the Model Report for our most capable frontier models once every six months."
+    },
+    {
+      "fact": "FGF: 'results of our systemic risk assessment and mitigation processes and measures are documented in a Safety and Security Model Report (referred to as “Transparency Reports” under the TFAIA).'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "documented in a Safety and Security Model Report (referred to as “Transparency Reports” under the TFAIA)"
+    },
+    {
+      "fact": "SB 53 / BPC 22757.12(b): a large frontier developer must review and, as appropriate, update its framework 'at least once per year'; after a material modification it must publish the modified framework and a justification 'within 30 days.'",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A large frontier developer shall review and, as appropriate, update its frontier AI framework at least once per year. ... the large frontier developer shall clearly and conspicuously publish the modified frontier AI framework and a justification for that modification within 30 days."
+    },
+    {
+      "fact": "SB 53 / BPC 22757.12(c)(1): before or concurrently with deploying a new or substantially modified frontier model, a frontier developer must publish on its website a 'transparency report' with specified contents.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Before, or concurrently with, deploying a new frontier model or a substantially modified version of an existing frontier model, a frontier developer shall clearly and conspicuously publish on its internet website a transparency report"
+    },
+    {
+      "fact": "SB 53 / BPC 22757.13(c): a critical safety incident must be reported to the Office of Emergency Services 'within 15 days of discovering' it; one posing 'an imminent risk of death or serious physical injury' must be disclosed 'within 24 hours' to an authority with jurisdiction.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a frontier developer shall report any critical safety incident pertaining to one or more of its frontier models to the Office of Emergency Services within 15 days of discovering the critical safety incident. ... the frontier developer shall disclose that incident within 24 hours to an authority"
+    },
+    {
+      "fact": "SB 53 / BPC 22757.15: a large frontier developer that fails required publication/transmission, makes a prohibited statement, fails to report an incident, or fails to comply with its own framework, faces 'a civil penalty ... that does not exceed one million dollars ($1,000,000) per violation', recoverable 'in a civil action brought only by the Attorney General.'",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "shall be subject to a civil penalty in an amount dependent upon the severity of the violation that does not exceed one million dollars ($1,000,000) per violation. ... A civil penalty described in this section shall be recovered in a civil action brought only by the Attorney General."
+    },
+    {
+      "fact": "Added by the second round. FGF's own description of the harmful-manipulation category, which the first round rendered as '操縱輿論、介入選舉或其他破壞民主程序的協同行動': the document's list is 'influence operations, election interference, or other coordinated campaigns to manipulate public opinion or undermine democratic processes', under the head clause 'Risks stemming from the strategic distortion of human behavior, including...'. S3P3 now keeps the document's own three items in the document's order.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Risks stemming from the strategic distortion of human behavior, including the use of model capabilities to conduct influence operations, election interference, or other coordinated campaigns to manipulate public opinion or undermine democratic processes."
+    },
+    {
+      "fact": "Added by the second round. FGF's harmful-manipulation note is two sentences with two different subjects: OpenAI's APPROACH 'remains exploratory due to its nascency as a systemic risk area', and THIS RISK TIER 'is subject to further research and may be substantially changed over time'. The first round quoted both halves as one phrase attached to 作法. S3P3 and FAQ 5 now keep the two subjects apart.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI’s approach to harmful manipulation remains exploratory due to its nascency as a systemic risk area. This risk tier is subject to further research and may be substantially changed over time."
+    },
+    {
+      "fact": "Added by the second round. FGF's CBRN tier system 'quantifies model capabilities AGAINST weapons and threat development uplift metrics' -- the uplift metrics are the yardstick, not the thing quantified. The first round wrote 'CBRN 說它「量化」能力提升', which swaps the object; S3P1 now says the tiers quantify model capability, keeping the three-verb contrast with cyber ('seeks to quantify') and loss of control ('describes'). The cyber sentence's 'for decision-making related to offensive cyber capabilities' also does not say 'internal', so S3P1's '內部決策' was dropped to '決策'.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For CBRN risks, we have established a tier system that quantifies model capabilities against weapons and threat development uplift metrics."
+    },
+    {
+      "fact": "Added by the independent factcheck. SB 53 / BPC 22757.11(c)(1) does not stop at the 50/$1bn numbers: the single incident must involve 'a frontier model doing any of the following: (A) Providing expert-level assistance in the creation or release of a chemical, biological, radiological, or nuclear weapon. (B) Engaging in conduct with no meaningful human oversight, intervention, or supervision that is either a cyberattack or, if the conduct had been committed by a human, would constitute the crime of murder, assault, extortion, or theft, including theft by false pretense. (C) Evading the control of its frontier developer or user.' The first draft presented the two numbers as the whole statutory test; S2P2 and FAQ 2 now state this condition. The second round corrected two renderings of it: (A) is assistance 'in the creation or release of' a CBRN weapon, not unspecified CBRN-weapon assistance, and (C) is 'its frontier developer OR user', which the first round wrote as '開發者與使用者' (and).",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "arising from a single incident involving a frontier model doing any of the following:"
+    },
+    {
+      "fact": "Added by the independent factcheck. SB 53 / BPC 22757.11(l) defines property for the whole chapter as tangible OR intangible. The first draft wrote that the $1bn counts '實體財產' (physical property), which the statute contradicts; 22757.16's equity carve-out is a separate, narrower exclusion.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“Property” means tangible or intangible property."
+    },
+    {
+      "fact": "Added by the independent factcheck. Who each duty falls on, read off the subject of each subdivision: 22757.12(a) framework publication, 22757.12(b) annual review and 30-day republication, 22757.12(d) quarterly internal-use summaries to OES and 22757.15 penalties all say 'large frontier developer'; 22757.12(c)(1) transparency report and 22757.13(c) incident reporting say 'frontier developer'. The first draft said only large frontier developers carried the reporting duties, which widens the exemption.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A large frontier developer shall write, implement, comply with, and clearly and conspicuously publish on its internet website a frontier AI framework"
+    },
+    {
+      "fact": "Added by the independent factcheck, corrected by the second round. SB 53 / BPC 22757.12(f)(1): when a frontier developer publishes documents to comply with THIS SECTION (22757.12), it may redact what is necessary to protect its trade secrets, its cybersecurity, public safety, the national security of the United States, 'or to comply with any federal or state law' -- five grounds, not the four the first round wrote. (f)(2): it must describe the character and justification of the redaction in the published version 'to the extent permitted by the concerns that justify redaction' -- a limit the first round dropped -- and must retain the unredacted INFORMATION (not 'version') for five years. Section 4 of the article asks who can track the framework, so this limit on what 'published' means belongs in it; it is in the article's FAQ 7.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "frontier developer’s cybersecurity, public safety, or the national security of the United States or to comply with any federal or state law. | shall describe the character and justification of the redaction in any published version of the document to the extent permitted by the concerns that justify redaction and shall retain the unredacted information for five years."
+    },
+    {
+      "fact": "Added by the second round. SB 53 / BPC 22757.11(h) defines the layer the first round's fix relied on but never printed: a 'frontier developer' is a person who has trained, or initiated the training of, a frontier model with at least the computing power in subdivision (i). The article used '所有前沿開發者' without ever defining the term; S2P3 now carries the definition, so the '大型前沿開發者' sentence has a subject and the two layers are distinguishable.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "“Frontier developer” means a person who has trained, or initiated the training of, a frontier model, with respect to which the person has used, or intends to use, at least as much computing power to train the frontier model as would meet the technical specifications found in subdivision (i)."
+    },
+    {
+      "fact": "Added by the second round. SB 53 / BPC 22757.12(c)(2): the transparency report a plain frontier developer must publish under (c)(1) carries only the website, contact mechanism, release date, languages, output modalities, intended uses and use restrictions; it is a LARGE frontier developer that must additionally include summaries of the catastrophic-risk assessments, their results, the extent of third-party evaluator involvement and other framework steps. So the duty is shared but its contents are not; the article's FAQ 7 now says so.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a large frontier developer shall include in the transparency report required by paragraph (1) summaries of all of the following: (A) Assessments of catastrophic risks from the frontier model conducted pursuant to the large frontier developer’s frontier AI framework. (B) The results of those assessments. (C) The extent to which third-party evaluators were involved."
+    },
+    {
+      "fact": "Added by the independent factcheck, corrected by the second round. SB 53 / BPC 22757.13(f): incident reports to the Office of Emergency Services, internal-use catastrophic-risk assessments under 22757.12 and covered-employee reports are all exempt from the California Public Records Act -- so the public cannot obtain them THROUGH THAT ACT, which is what the article now says. 22757.13(g)(1) makes OES 'produce' the annual anonymized and aggregated report from 2027-01-01, and (g)(3) makes it 'transmit' that report to the Legislature and the Governor. The statute never says OES publishes it, so the first round's '每年公布' was wrong about who gets the report; the article now says OES produces it and sends it to the Legislature and the Governor. Both are in the article's FAQ 7.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "are exempt from the California Public Records Act | Beginning January 1, 2027, and annually thereafter, the Office of Emergency Services shall produce a report with anonymized and aggregated information about critical safety incidents | The Office of Emergency Services shall transmit a report pursuant to this subdivision to the Legislature, pursuant to Section 9795, and to the Governor."
+    },
+    {
+      "fact": "Added by the independent factcheck. SB 53 / BPC 22757.12(e)(2): the prohibition on materially false or misleading statements 'does not apply to a statement that was made in good faith and was reasonable under the circumstances.' FAQ 4 now carries this carve-out.",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=8.&title=&part=&chapter=25.1.&article=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This subdivision does not apply to a statement that was made"
+    },
+    {
+      "fact": "Added by the independent factcheck. The three FGF tier systems are described in three different ways, so one blanket 'quantifiable thresholds' sentence overstates two of them. Cyber: 'a tier system that seeks to quantify model capabilities ... We use these measurable thresholds for decision-making'. CBRN: 'a tier system that quantifies model capabilities against weapons and threat development uplift metrics.' Loss of control: 'a tier system that describes model capabilities in light of a model’s level of autonomy, ability to deceive, and the potential to take unsanctioned or unauthorized action. Outside of risks related to AI self-improvement, these risk tiers remain exploratory and may evolve substantially.'",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Outside of risks related to AI self-improvement, these risk tiers remain exploratory and may evolve substantially."
+    },
+    {
+      "fact": "Added by the independent factcheck; re-run independently by the second round on its own extractions. FGF CBRN Tier 3 is byte-identical to the PF's Biological and Chemical [Critical] threshold; FGF CBRN Tier 2 and the PF's [High] threshold differ only in the quotation marks around 'novice'. FGF Cyber Tier 3 and PF Cybersecurity [Critical] differ in exactly two provable places: FGF has 'OR the model can devise' where PF has 'OR model can devise', and FGF has 'a high-level desired goal' where PF has 'a high level desired goal' (both un-broken in their own PDFs). The first round also counted 'real-world' as a difference; it is not provable -- the PF line-breaks that word exactly at the hyphen ('real-\\nworld'), so the extraction cannot tell a typed hyphen from a TeX break, and the FGF prints 'real-world' un-broken. The article's FAQ 6 now claims one article and one hyphenation difference, and names both.",
+      "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The model can provide meaningful counterfactual assistance (relative to unlimited access to baseline of tools available in 2021) to"
+    },
+    {
+      "fact": "Added by the independent factcheck. PF v2 has exactly three Tracked Categories -- Biological and Chemical, Cybersecurity, AI Self-improvement -- with High and Critical capability thresholds, which is what the article's table row says. Nuclear and Radiological, Long-range Autonomy, Autonomous Replication and Adaptation, Sandbagging and Undermining Safeguards are Research Categories, not Tracked ones.",
+      "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "focusing on biological and chemical capability, cybersecurity, and AI self-improvement"
+    },
+    {
+      "fact": "Added by the independent factcheck. The FGF does name one industry body as an example of external input -- 'industry bodies such as the Frontier Model Forum' -- so the first draft's blanket '沒有指名特定第三方' was wrong. What it never names is a third-party evaluator: section 5 only says 'We may solicit and obtain input from external experts ... This may include independent third-party evaluators', with no organisation named ('third' appears twice in the whole 22 pages, both generic).",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We may solicit and obtain input from external experts in relevant"
+    },
+    {
+      "fact": "Added by the independent factcheck, supporting the article's PF-version sentence from a listed source rather than from a blob header: OpenAI's news feed carries 'Our updated Preparedness Framework', pubDate 'Tue, 15 Apr 2025 00:00:00 GMT', and today's fetch has no later Preparedness Framework item (the only other match is 'Frontier risk and preparedness', 26 Oct 2023).",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<title><![CDATA[Our updated Preparedness Framework]]></title>"
+    },
+    {
+      "fact": "Added by the independent factcheck. Word-boundary, case-insensitive count over the FGF's extracted 22 pages on 2026-09-18: Taiwan 0, Japan 0, Korea 0, China 0, United Kingdom 0, India 0, Canada 0, Singapore 0, Australia 0; Ireland 4, California 1, United States 1, European 2. Separately '10^26', '500', 'five hundred' and 'million' return 0, which is what lets the article attribute those two figures to the statute and not to OpenAI.",
+      "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    }
+  ],
+  "not_said": [
+    "The FGF PDF carries no date, version number or changelog anywhere in its 22 pages; the 2026-05-28 date used as the event date comes from OpenAI's news feed, not from the document itself.",
+    "The FGF does not present 50 fatalities / $1 billion as the only quantities in the document -- do not repeat that overclaim. The 2021 CBRN baseline year, the six-month/12-month/30-day cadences and the named standards (ISO 42001, ISO 27001 family, SOC 2 Type II) are also printed in it.",
+    "The FGF never states the effective dates of the TFAIA or the EU Code of Practice in its own text. The 2026-01-01 TFAIA effective date used in this article comes from the codified BPC chapter 25.1 text on leginfo (source 2), not from the FGF PDF.",
+    "The FGF never names a single OpenAI model, states which models are in scope, or says any model has crossed a risk tier.",
+    "The FGF's own text does not state the 10^26 compute figure or the $500 million revenue figure; those numbers are stated only in SB 53's codified text (source 2), and must be attributed to the statute, not to OpenAI.",
+    "The FGF does not name any external expert, third-party evaluator or red-teaming organisation, and does not commit to mandatory external review; its wording is 'we may solicit and obtain input from external experts'.",
+    "The FGF says nothing about consumer-facing products, prices, plans, regions or languages, and does not claim to change anything a user sees in ChatGPT.",
+    "The FGF mentions no jurisdiction other than California/the United States and the EU/Ireland. Taiwan, Japan, Korea, the UK and China are not mentioned anywhere in it.",
+    "The FGF does not mention penalties, fines or enforcement consequences. The $1,000,000-per-violation figure and the Attorney General's exclusive right of action are stated only in SB 53 (source 2), not in OpenAI's document.",
+    "The FGF gives no tier table for harmful manipulation; three of the four categories (cyber offense, CBRN, loss of control) have numbered tiers, harmful manipulation does not.",
+    "Neither the FGF nor the codified TFAIA chapter states that any regulator approved, endorsed or certified OpenAI's framework.",
+    "The '27/7/365 incident response capabilities' string on FGF page 17 (almost certainly a typo for 24/7/365) is deliberately left out of this article -- not quoted and not silently corrected."
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Whether OpenAI's HTML announcement page (openai.com/index/openai-frontier-governance-framework/) frames the FGF differently from the PDF, or what headline copy or on-page links it uses.",
+      "seen_where": "Not re-tested today; the prior batch research and factcheck both record it as HTTP 403 to curl and to WebFetch.",
+      "why_excluded": "Never read by this writer either; nothing about that page's own wording or links is stated in this article. The article cites the PDF and the feed item directly instead."
+    },
+    {
+      "claim": "Whether the EU Code of Practice's Safety and Security chapter (its Measure 7.6, 10.1 and 10.2) imposes its own six-monthly Model Report duty on signatories, and what its exact carve-outs are.",
+      "seen_where": "Present in the prior batch research/factcheck, sourced to ec.europa.eu/newsroom/dae/redirection/document/118119, a 43-page PDF.",
+      "why_excluded": "That EU chapter PDF was not re-fetched today and is not one of this article's four sources[]. To stay within the 2-4 source budget and avoid citing a document not read today, the article describes only what OpenAI's own FGF text commits to (which does name 'Appendix 2.2 of the Code of Practice' as an exception), not the EU Code's own measure numbers."
+    },
+    {
+      "claim": "Whether the Preparedness Framework v2 PDF (cover-dated 15 April 2025) is still the exact version FGF's undated phrase 'our existing Preparedness Framework' refers to as of 2026-09-18.",
+      "seen_where": "The PF v2 PDF blob is unchanged since 2025-06-09 (re-confirmed today: identical byte count 170,399 and last-modified header on refetch); the FGF text never names a PF version or date.",
+      "why_excluded": "An unchanged blob only proves that one file was not overwritten in place; it cannot prove no newer PF version exists at a different URL. The article states only what PF version is currently published, not that FGF necessarily points at it."
+    },
+    {
+      "claim": "How many models OpenAI currently treats as 'covered models' under the FGF, or how many Transparency Reports / internal-use risk summaries it has filed with California's Office of Emergency Services.",
+      "seen_where": "Not stated in any of the four sources read today.",
+      "why_excluded": "SB 53 22757.12(d) filings to OES are exempt from the California Public Records Act (confirmed in the codified text, source 2), so this is not publicly checkable from any source, not just an omission on OpenAI's part."
+    },
+    {
+      "claim": "That the FGF's Tier 1/2/3 risk tiers map one-to-one onto the Preparedness Framework's High/Critical thresholds.",
+      "seen_where": "A natural-looking reading if the two PDFs are placed side by side (their CBRN and cyber tier language visibly overlaps).",
+      "why_excluded": "Neither document states such a mapping; the FGF only says the PF 'may use different definitions'. Not built into the article or the table; the table lists each document's own scheme separately."
+    },
+    {
+      "claim": "Any reaction, expert commentary, media coverage or regulator response to the FGF's publication.",
+      "seen_where": "Not searched for; out of scope for a four-source, first-party-only article.",
+      "why_excluded": "No first-party reaction source was read; the article does not imply there was a public response of any kind."
+    },
+    {
+      "claim": "SB 53's federal-equivalence safe harbour (22757.13(h)-(j)), the Attorney General's annual covered-employee report (22757.14(d)), and the EU chapter's Measure 10.2 'similarly safe or safer model' publication carve-outs.",
+      "seen_where": "Confirmed present in the codified BPC text (source 2) for the first two; the EU carve-out is only in the EU chapter PDF that is not a source this round.",
+      "why_excluded": "Left out of the article on word-budget and scope grounds, not because they are unverified -- the first two are genuinely in source 2 and could be added by a fact-checker with room to spare; the EU carve-out cannot be added without also adding the EU chapter PDF back into sources[]."
+    }
+  ],
+  "editorial_brief": "讀者：在台灣用 ChatGPT 的一般使用者，以及公司裡要判斷『這家 AI 廠商可不可以信』的人。角度：2026 年 5 月 28 日 OpenAI 公開一份 22 頁的 Frontier Governance Framework，這不是新的安全承諾，而是一份同時交給加州與歐盟主管機關看的合規文件。五節骨架：(1) 5/28 發生了什麼、FGF 同時對應哪兩套法規；(2) 50 人、10 億美元的門檻其實是加州 SB 53 的法定定義，附三個排除與股權除外，並與 OpenAI 自己 Preparedness Framework 的更高門檻對照（表格收尾）；(3) 三級風險分級實際寫了什麼、CBRN 的 2021 年基準是什麼意思、有害操弄為何還沒有分級表（圖解收尾）；(4) 公布之後誰能追蹤：12 個月總檢視、30 天內公布異動、受歐盟法規範模型的 6 個月模型報告更新、SB 53 的年度檢視與最高 100 萬美元罰鍰；(5) 文件沒提到台灣、介面沒有變化、讀者怎麼自己查證。topics 定為 [\"ai\",\"ai-news\"]（治理框架屬公司層級新聞，不掛 software；不掛 finance，即使題目談的是罰鍰與門檻）。兩個 link：第一個是索引 ai-news-2026-january-september-index（text 逐字照抄協調者給的新標題）；第二個是 ai-news-gpt-55-instant-20260505（本文撰寫時該篇尚未成稿，text 暫填研究紀錄裡建議的方向標題，等協調者事後用工具統一換成正式標題）。刻意不談：歐盟 AI 法第 50 條標示義務（ai-news-eu-transparency-20260802 的主題）、前沿 AI 放慢與否的價值辯論（ai-news-pace-the-frontier-20260912 的主題）、OpenAI 募資與 S-1、FGF 與 PF 風險分級文字的逐字重疊（見 must_add，本輪未寫入正文）。",
+  "must_not_write": [
+    "Do not call this a new safety policy or say OpenAI 'tightened' its rules -- the FGF text itself frames it as overlapping with the existing Preparedness Framework and documenting compliance with two laws.",
+    "Do not attribute the '50 fatalities / $1 billion' figures to OpenAI's own risk appetite; they are California SB 53's statutory definition, and the article says so in the same sentence each time it uses them.",
+    "Do not say the framework was approved, accepted, endorsed or certified by the European Commission, the AI Office, the California Attorney General or the Office of Emergency Services -- no source says that.",
+    "Do not write 'we tested' or 'we verified' about any capability, tier or security claim; all such claims are OpenAI's own wording, attributed as 'OpenAI 表示' / 'FGF 文件寫道'.",
+    "Do not treat this as investment or corporate news, and do not connect it to OpenAI's fundraising or any S-1 filing -- AI vertical only, no finance topic, no investment framing.",
+    "Do not tell readers in Taiwan that any of these rules protect them; the TFAIA is Californian and the Code of Practice is EU, and the article says explicitly that neither names Taiwan.",
+    "Do not re-explain the EU AI Act's Article 50 chatbot/deepfake labelling rules -- that is the existing article ai-news-eu-transparency-20260802's subject, a different part of the same law, and this article does not mention it at all.",
+    "Do not re-argue whether frontier AI should be slowed down -- that is ai-news-pace-the-frontier-20260912's subject; this article only links to it, it does not restate its argument.",
+    "Do not quote '27/7/365' and do not silently correct it to 24/7 -- leave the figure out entirely, which this article does.",
+    "Do not invent a fifth risk category or a harmful-manipulation tier table, and do not state numeric scores for any tier -- the FGF publishes none.",
+    "Do not cite openai.com/index/openai-frontier-governance-framework/ (or any /index/ page) as a fetched source -- it returns HTTP 403 and was not read by this writer."
+  ],
+  "live_data_warnings": [
+    "OpenAI's news feed item counts, lastBuildDate and 'newest item' title are live values that drift within the same day (the prior batch research and this writer's own re-fetch already disagree on the item count) -- never written into the article or this record as a fixed number. Feed liveness is instead shown only by the fact that the FGF item's own pubDate matches exactly on re-fetch, and the newest item in today's fetch is dated the day before checked_on.",
+    "The Preparedness Framework v2 PDF's unchanged blob header (byte count and Last-Modified, re-confirmed today) proves only that this one file was not overwritten in place; it does not prove no newer PF version exists elsewhere, so the article avoids asserting FGF necessarily points at PF v2.",
+    "The codified TFAIA chapter's lack of any 'Amended by' annotation is a snapshot of 2026-09-18; if the statute is amended later this would change without the article being re-checked."
+  ],
+  "corrections_applied": [
+    "must_fix 1 (foundation model vs frontier model in the 50/$1bn definition): fixed -- both the article and the codes_displayText re-fetch confirm the statute says 'frontier model'; the article never writes 'foundation model' for this clause.",
+    "must_fix 2 ('the only two quantities in the whole document' / matching not_said claim): fixed -- neither the article nor not_said claims completeness; the 2021 CBRN baseline and the 6/12-month, 30-day cadences are stated as additional figures that exist in the document.",
+    "must_fix 3 (Measure 7.6 EU-chapter fragment dropping its condition): resolved by scope, not by re-quoting -- the EU Code of Practice chapter PDF is not one of this round's four sources[], so that specific EU-side claim is not made at all; see unverified_or_excluded.",
+    "must_fix 4 (FGF's own six-month Model Report rule needs its EU AI Act scoping sentence): fixed -- S4P2 states the EU AI Act scoping sentence immediately before the six-month commitment, in that order.",
+    "must_fix 5 ('where appropriate' dropped from the external-input sentence): fixed -- S1P3 keeps the discretionary framing ('視情況'/'可能徵詢').",
+    "must_fix 6 (cyber tiers mischaracterised as 'described not numerically scored'): the draft over-corrected -- S3P1 applied one 'quantifiable threshold' sentence to all three tier systems, which the FGF's own wording contradicts for loss of control. The factcheck rewrote S3P1 to give each category the document's own verb (cyber 'seeks to quantify' + 'measurable thresholds', CBRN 'quantifies', loss of control 'describes' and, outside AI self-improvement, 'remain exploratory'), keeping the 'no scores are published' point.",
+    "must_fix 7 (Chapter 138 citation not traceable to the bill-text URL): fixed -- source 2 was switched from the bill-text page to the codified BPC chapter 25.1 page, which itself prints 'Stats. 2025, Ch. 138, Sec. 2', re-verified today.",
+    "must_fix 8 (same as must_fix 4, EU AI Act framing of the update mechanism): fixed together with must_fix 4.",
+    "must_fix 9 ('two regimes at once' overclaim on FGF's open-ended 'various ... including' list): fixed -- the article frames California and the EU as the two regimes the article itself covers, without asserting the FGF names only two laws; the verified_facts entry keeps the 'including' wording intact.",
+    "must_fix 10 (Framework Assessment 'at least every 12 months' cadence): kept as 'at least' throughout (S4P1, summary).",
+    "must_fix 11 (TFAIA effective date wrongly excluded): fixed -- source 2 is now the codified codes_displayText page, re-fetched today (HTTP 200), confirming 2026-01-01 effective date under all seven sections and no 'Amended by' anywhere. The factcheck dropped the '~5 months later' framing the corrections list suggested: '約五個月' is the editor's own arithmetic over two dates, and the draft's '才公布' read as a judgement about lateness that no source makes. S2P1 now prints the two dates side by side and lets the reader do the subtraction, which is what BRIEF error type 9 asks for.",
+    "must_fix 12 (feed count figures going stale within the same day): not written anywhere -- see live_data_warnings; only pubDate-level liveness is stated, never a count.",
+    "must_fix 13 (event date not supported by any listed source): fixed -- the RSS feed URL is source 4, re-fetched today, and the FGF item's title/pubDate/category were re-confirmed byte-for-byte.",
+    "must_add (TFAIA effective date + no 'Amended by' anywhere): added -- see verified_facts and S2P1.",
+    "must_add (FGF risk-tier text lifted near-verbatim from the Preparedness Framework): added by the factcheck, as FAQ 7. Leaving it out was the misleading kind of omission, because the article's table sets the two documents' tier schemes side by side as if they were different schemes, when FGF CBRN Tier 2/3 are word-for-word the PF's Biological and Chemical High/Critical thresholds. Put in the FAQ rather than the body because the body was already at the top of the 1,800-3,000 character range.",
+    "must_add (PF severe-harm footnote's dropped middle sentence): added in full -- S2P4 quotes 'our safety stack addresses a broad spectrum of risks, including many with harms below this severity' alongside the higher PF bar.",
+    "must_add (SB 53 22757.11(c)(2) three exclusions): added -- S2P2.",
+    "must_add (SB 53 22757.16 equity carve-out): added -- S2P2.",
+    "must_add (SB 53 22757.13(h)-(j) federal safe-harbour): still NOT added, and the factcheck agrees. It only deems a developer compliant with Section 22757.13 (incident reporting), not with 22757.12 or with its own framework, so it does not touch the article's actual penalty sentence; and it is contingent on OES first adopting regulations designating a federal law and on the developer declaring intent, neither of which any of the four sources says has happened. Writing it would need more hedging than the fact is worth. Left for the owner.",
+    "must_add (SB 53 22757.14(d) Attorney General annual covered-employee report): still NOT added -- whistleblower-focused and tangential. The factcheck added the closer relative instead, 22757.13(g)'s annual Office of Emergency Services incident report from 2027-01-01, in FAQ 8, because that one is what a reader asking '誰追得到' can actually read.",
+    "must_add by the factcheck (SB 53 22757.12(f) redaction right and 22757.13(f) Public Records Act exemption): added as FAQ 8. Section 4 is headed '公布之後，誰能追蹤這份文件有沒有兌現' and the draft listed seven publication and reporting duties without saying that published documents may be lawfully redacted and that the OES filings are not publicly obtainable at all. That is the one omission in this article that would leave a reader with a false picture, so it was worth the words.",
+    "must_add (EU chapter Measure 10.2 carve-outs / Measure 1.1 timeline-estimate gap): NOT added -- this round's sources[] does not include the EU Code of Practice chapter PDF at all, so these EU-specific measure numbers are outside what this article can support without adding that source back; noted in unverified_or_excluded.",
+    "source_list_fix 1 (event date needs a source): fixed -- feed added as source 4.",
+    "source_list_fix 2 (facts on the EU chapter Measure 7.6/10.1/10.2 need that PDF in sources[] or must be dropped): resolved by dropping those specific EU-measure claims rather than adding a fifth/replacement source; see must_fix 3.",
+    "source_list_fix 3 (codes_displayText page should replace or join the bill-text page): applied -- it fully replaced the bill-text page as source 2.",
+    "source_list_fix 5 (ai-news-eu-transparency-20260802 overlap -- at most one sentence of date context): applied by omission -- this article does not mention the EU's 2026-08-02 enforcement start or Article 50 labelling at all, so there is no overlap to manage."
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "All four sources[] were re-fetched on 2026-09-18 with `curl -sL -A \"Mokaair-editorial\"` and read as full text, not by status code. The two PDFs were re-extracted with system python + pypdf 6.16 (FGF 22 pages / 30,700 chars, PF v2 22 pages / 67,259 chars); the leginfo page was stripped to 21,390 characters of text and read whole; the RSS feed was parsed and the FGF item located by title and canonical link. Every sentence of the five sections, the two opening paragraphs, all five summary items, all table cells and the caption, the callout, every FAQ answer, the title, the description and the research record's diagram nodes and hero_label were taken back to the source text one claim at a time -- 96 claims. All 27 verbatim_quote values in verified_facts were re-tested as contiguous substrings after NFKC/quote/hyphenation normalisation: 27/27 pass. The one apparent miss ('T ransparency Reports') is a pypdf kerning artefact -- the same extraction splits 'T ype II', 'U pdate', 'F rontier' and 'G overnance' -- not a discrepancy in the document. Negative claims were re-tested with word-boundary regexes rather than substring greps.",
+    "verdict": "needs_fixes_applied -- 19 places changed, 4 of them claims the sources contradict outright",
+    "edits_to_the_pack": [
+      "S2P3 and S4P3: the draft said only 'large frontier developers' carried the framework, reporting and penalty duties. BPC 22757.12(c)(1) (transparency report) and 22757.13(c) (15-day / 24-hour incident reporting) are written on 'a frontier developer'; only 22757.12(a),(b),(d) and 22757.15 say 'large'. Both paragraphs now split the two layers, and the unsourced 'OpenAI 屬於這一類' (no source prints OpenAI's revenue) was replaced with what the FGF itself says -- that it calls this document its TFAIA Frontier AI Framework.",
+      "S2P2: '10 億美元算的是實體財產' is contradicted by BPC 22757.11(l), '\"Property\" means tangible or intangible property'. Rewritten to the statute's own words plus the 22757.16 equity carve-out. Also added the (A)(B)(C) condition the draft dropped -- the statutory test is not '50 deaths or $1bn' alone -- and restored 'substantially' in exclusion (A) ('實質上類似').",
+      "S3P2: the draft's CBRN Tier 2 read '讓不具專業背景的人也能製造已知的生化威脅', the opposite of the FGF's 'novice actors (anyone with a basic relevant technical background)'; and '2021 年時任何人都能取得的工具' is not 'unlimited access to baseline of tools available in 2021'. Both corrected.",
+      "S3P1: one blanket '文件說這是「可量化的門檻」' was applied to all three tier systems. The FGF uses a different verb for each (cyber 'seeks to quantify' + 'measurable thresholds', CBRN 'quantifies', loss of control 'describes'), and it says the loss-of-control tiers 'remain exploratory and may evolve substantially' outside AI self-improvement -- a qualifier the draft's framing hid by treating only harmful manipulation as exploratory.",
+      "S1P3: '沒有指名特定第三方' is refuted by the FGF's own 'industry bodies such as the Frontier Model Forum'. Narrowed to what is true -- no third-party evaluator is named -- and the two sentences the draft had merged (the section 2.1 'where appropriate' sentence and the section 5 'We may solicit' sentence) are now attributed to their own sections. '主要靠公司內部研究' dropped: the FGF says the process 'draws on' internal research, not that it mainly relies on it.",
+      "S2P1: '定義為' became '定義「包含」' (the FGF says its definition 'includes ... including'); '50 人以上 / 10 億美元以上' became '超過' (statute and FGF both say 'greater than' / 'more than'); the statute's 'or serious injury to' was restored. The '即 TFAIA 生效約五個月後 OpenAI 才公布 FGF' clause was removed -- '約五個月' is the editor's arithmetic and '才' implies a judgement about lateness that no source makes; the paragraph now prints both dates.",
+      "S1P1 and the table's 適用依據 row: 'FGF 要同時滿足兩地法定要求' / '加州 TFAIA 與歐盟行為準則' read as a closed list. The FGF says 'various frontier AI laws, including:' before naming two. Now '要滿足多部前沿人工智慧法規的基本法定要求，文件舉出兩項' and '加州 TFAIA、歐盟行為準則等'. 'baseline' restored as '基本'.",
+      "S1P1 opening paragraph: '目前' added -- the FGF says 'this FGF definition currently addresses the following systemic risk categories'.",
+      "Section 1 P1 and the second opening paragraph: '確認讀到的就是當初發布的版本' and '確認今天讀到的 FGF 內容與發布當時相同' overstate what a matching md5 and a Last-Modified header prove. Rewritten to 'this file has not been overwritten since 5/27, which does not prove no newer version exists elsewhere', which is the corrections list's own live_data_warning.",
+      "S1P2: 'OpenAI 目前公開的 PF 是 ... 第 2 版' asserted a current-version fact the draft could only support from a blob header. It is now carried by source 4 instead: the news feed's last Preparedness Framework update item is 2025-04-15 and no later one exists in today's fetch. '在某些方面' restored ('overlaps in some areas').",
+      "S3P3 and FAQ 5: 'may be best addressed' had lost its 'may' and its attribution. Now 'OpenAI 認為這類風險「可能」更適合 ...'. The category description was also widened to the FGF's own wording, which includes 'or other coordinated campaigns to manipulate public opinion or undermine democratic processes'.",
+      "S4P2: restored 'as appropriate' ('視情況') on the Model Report update, 'or safer' on the Appendix 2.2 exception, 'we plan to' on the one-month exception, and rewrote the EU AI Act scoping so it reports the document's order ('For models ... subject to the EU AI Act ...' then 'We will in any event ...') instead of asserting that the six-month rule is itself limited to EU models -- the FGF does not say that in so many words.",
+      "S4P3: 'Before, or concurrently with, deploying a new frontier model or a substantially modified version' had been shortened to '部署新模型前'. Restored. The 24-hour trigger is now the statute's 'imminent risk of death or serious physical injury' rather than '已構成人身傷亡立即風險'.",
+      "S4P4: 'a civil penalty in an amount dependent upon the severity of the violation' restored ('依情節輕重'); '發布不實聲明' became the statute's 'materially false or misleading statement'. The draft's closing editorial line -- '公開這份文件，等於讓 OpenAI 的承諾多了一層可以被追究的法律效力' -- was cut: it is the article's own conclusion, and it is the exact claim that 22757.12(f) redactions and the 22757.13(f) records exemption qualify.",
+      "New FAQ 8 '這些文件公布之後，一般人看得到多少？': the redaction right (22757.12(f), with the five-year retention duty), the Public Records Act exemption for OES filings (22757.13(f)) and the annual OES report from 2027-01-01 (22757.13(g)). Judged the one must_add whose omission would actually mislead, in a section headed '誰能追蹤'.",
+      "New FAQ 7 'FGF 和 OpenAI 原本的 Preparedness Framework 差在哪？': the verbatim overlap between the FGF's CBRN/cyber tiers and the PF's High/Critical thresholds, re-verified today by contiguous-substring comparison of both extracted PDFs. The corrections list's must_add, and it corrects the impression the article's own table gives.",
+      "FAQ 4: added 22757.12(e)(2)'s good-faith carve-out. FAQ 2 rewritten: 'FGF 只是引用同一個門檻' claimed a citation the FGF does not make (it cites no section numbers at all); it now says the FGF names no source but defers to the TFAIA's definition of catastrophic risk, and carries the (A)(B)(C) condition and the property definition.",
+      "Summary items 2, 4 and 5 and the callout were re-pointed at the corrected body wording ('包含' not '定義為', '超過' not '以上', the penalty's subject, '以本文抽取全文比對 ... 未見台灣字樣' rather than a bare '沒有提到台灣'). The callout's 'FGF 是一份揭露文件，不是新的安全承諾' became '不是產品或服務公告': the FGF does contain commitments (12-month assessment, 30-day changelog), so the flat negative was the article's own characterisation.",
+      "S5P1, S5P2 and FAQ 3: every absolute negative was scoped to 'this document, extracted in full and compared on 2026-09-18, does not contain X', with word-boundary counts recorded in verified_facts. 'ChatGPT 介面不會因此變化' (a prediction) became 'the document does not announce any interface change'. The third closing paragraph was folded into the second, because it repeated FAQ 6 almost word for word and the body had no room."
+    ],
+    "checked_and_correct": [
+      "The event date: the feed item's title, canonical link, category 'Safety' and pubDate 'Thu, 28 May 2026 00:00:00 GMT' are byte-for-byte what the record says. 00:00:00 GMT is one of the feed's placeholder times, so only the date is used, and 00:00 GMT on 5/28 is still 5/28 in Taipei.",
+      "The FGF PDF is the same file: HTTP 200, 6,136,955 bytes, md5 efeae18be97ece7b1a71e7afcf2019d6, Last-Modified Wed, 27 May 2026 16:04:12 GMT, 22 pages, metadata only {Author/Creator/Producer: 'Super PDF Plugin'} with no CreationDate/ModDate. PF v2: HTTP 200, 170,399 bytes, cover 'Version 2. Last updated: 15th April, 2025'.",
+      "The codified chapter: 'Effective January 1, 2026.' appears under all seven sections (22757.10-22757.16) and 'Amended by' appears 0 times. The page prints '10^26' literally, not as a superscript.",
+      "The PF severe-harm footnote including its middle sentence, the 12-month Framework Assessment cadence with 'at least', the 30-day changelog wording, the two board bodies, the $1,000,000-per-violation cap and the Attorney General's exclusive right of action, the three catastrophic-risk exclusions, the equity carve-out, the 10^26 and $500,000,000 definitions, the Safety and Security Model Report / Transparency Report equivalence, the four risk categories and the absence of a harmful-manipulation tier table.",
+      "PF v2's three Tracked Categories (biological and chemical, cybersecurity, AI self-improvement) and its two thresholds (High, Critical), which is what the table's second and third rows say.",
+      "Boundary checks: no buying advice, no recommendation-shaped price comparison, no unattributed vendor claim left (every FGF commitment now reads 'OpenAI 承諾/表示' or '文件寫道'), no missing preview/draft/staged-rollout status -- the FGF is a published document, not an announcement of anything staged. No finance topic, no investment disclaimer callout, exactly one callout. '27/7/365' is still neither quoted nor silently corrected."
+    ],
+    "left_for_the_owner": [
+      "SB 53 22757.13(h)-(j), the federal-equivalence safe harbour, is deliberately still out. It narrows only the incident-reporting duty, and it is doubly contingent (OES must adopt designating regulations; the developer must declare intent), with nothing in the four sources saying either has happened. If the owner wants it, it needs its own sentence and its own hedge.",
+      "The article's second closing link points at ai-news-gpt-55-instant-20260505 with a placeholder title, and the index link text is the old index title. Both self-check FAILs are the two the batch spec allows; the coordinator's align_links pass owns them.",
+      "The leginfo page came back 160,832 bytes today against the 161,728 the writer recorded. That is the JSF ViewState token, not the statute -- the seven sections and their annotations are identical. The record's sourcing_notes still prints the writer's own byte count, which is correct for the writer's own fetch.",
+      "The EU Code of Practice Safety and Security chapter is still not in sources[], so the article says nothing about Measures 1.1, 7.6, 10.1 or 10.2 -- including the corrections list's observation that Measure 1.1 wants timeline estimates the FGF does not publish. Adding any of it means spending one of the four source slots."
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent (did not write the draft, did not run the first round)",
+      "checked_on": "2026-09-18",
+      "method": "All four sources[] were re-fetched independently with `curl -sL -A \"Mokaair-editorial\"` and re-extracted into this agent's own files rather than reusing the first round's: FGF PDF HTTP 200, 6,136,955 bytes, md5 efeae18be97ece7b1a71e7afcf2019d6 (unchanged), 22 pages, 30,722 characters, metadata only {Author/Creator/Producer: 'Super PDF Plugin'}; leginfo HTTP 200, 161,280 bytes today (a third different byte count -- ViewState, not statute), stripped to 21,390 characters covering 22757.10-22757.16; PF v2 HTTP 200, 170,399 bytes, md5 648b1dfe1af9fa3fe37bc17100835371, 22 pages, 67,281 characters, cover 'Version 2. Last updated: 15th April, 2025'; RSS HTTP 200, 1,207 items parsed (count not written anywhere in the article). Scope per the second-round spec: every paragraph the first round changed and every sentence it newly wrote, taken back to the source one claim at a time -- 71 claims, with FAQ 6 and FAQ 7 (the first round's two new FAQs, which nobody had checked) done line by line against the FGF/PF extractions and the leginfo text. All 38 verbatim_quote values with text were re-tested as contiguous substrings; 38/38 pass once two PDF-extraction artefacts are handled -- pypdf renders 'Transparency' as 'T ransparency' (same extraction also splits 'T ype II', 'U pdate', 'F rontier', 'G overnance') and line-breaks 'self-improvement' at its hyphen. Negative claims were re-counted with word-boundary regexes on this agent's own extraction: Taiwan 0, Japan 0, Korea 0, China 0, United Kingdom 0, India 0, Canada 0, Singapore 0, Australia 0, ChatGPT 0, language(s) 0, price 0, region 0, subscription 0; Ireland 4, California 1, United States 1, European 2, third 2. 'Effective January 1, 2026.' appears 7 times in the codified chapter and 'Amended by' 0 times. The FGF/PF tier comparison was re-run from scratch with a normaliser that marks line-break hyphens instead of silently deleting them.",
+      "verdict": "needs_fixes_applied -- 71 claims re-checked, 14 places changed; 3 of them are claims the statute contradicts, all three inside the first round's own new material",
+      "edits_to_the_pack": [
+        "FAQ 7 (the first round's new '一般人看得到多少'), the annual OES report: the first round wrote that the Office of Emergency Services '每年公布' the anonymised report from 2027-01-01. 22757.13(g)(1) says OES shall 'produce' it and (g)(3) says OES shall 'transmit' it to the Legislature and the Governor. The statute never says publish. In a FAQ whose whole point is that 公開 does not mean 看得到, the closing sentence was telling readers they get an annual report the statute does not promise them. Now: '每年做出一份去識別化、彙整過的事故報告，送交州議會與州長'.",
+        "FAQ 7, redaction grounds: 22757.12(f)(1) lists five grounds and the first round printed four, dropping 'or to comply with any federal or state law'. Restored. (f)(2)'s limit on the duty to explain a redaction -- 'to the extent permitted by the concerns that justify redaction' -- had also been dropped; restored. 'Retain the unredacted information' had become '保留未遮蔽版本'; corrected to 資訊. The redaction right was also scoped to documents published to comply with that section, which is what the statute says.",
+        "FAQ 7, '一般人無法調閱': an exemption from the California Public Records Act means the public cannot get the documents THROUGH THAT ACT. Narrowed to '無法循該法調閱'.",
+        "FAQ 7 gained the 22757.12(c)(2) layer: the transparency-report duty is on every frontier developer, but only a large frontier developer must put the catastrophic-risk assessments, their results and the extent of third-party evaluator involvement into it. Put in the FAQ rather than S4P3 because the body was 12 characters from the 3,000 ceiling.",
+        "FAQ 6 (the first round's new PF-overlap answer): the first round's conclusion -- 'FGF 新增的主要是比 PF 的 High 更低的第 1 級…不是最上面兩級的門檻本身' -- was the article's own evaluation drawn from two identical passages, and it generalised a CBRN/cyber comparison to the whole framework. Cut. Replaced with the scope the comparison actually has: it covers CBRN and cyber only, FGF's loss of control and harmful manipulation have no counterpart among PF's three Tracked Categories, and neither document says its tiers map onto the other's.",
+        "FAQ 6, the comparison result itself, re-run independently: 'CBRN 第 2 級與第 3 級…逐字相同' is true of Tier 3 but not Tier 2, which differs in the quotation marks around 'novice' -- the first round knew this and wrote it in its report but not in the article. And '兩處連字號寫法' is one: 'high-level'/'high level' is provable, but 'real-world' is not, because the PF line-breaks it exactly at the hyphen. The answer now names both differences instead of counting them.",
+        "S1P1 and summary item 1: 'TFAIA 要求公布的「前沿人工智慧框架」'. Only a LARGE frontier developer must publish a frontier AI framework (22757.12(a)), and S2P3 says so, so calling the FGF the framework TFAIA requires classifies OpenAI as a large frontier developer -- the classification the first round removed from S2P3 for the same reason (no source prints OpenAI's revenue). Changed to '所稱的', which is the FGF's own 'Under California's TFAIA, this FGF is our Frontier AI Framework'.",
+        "S2P3: '和關係企業合計、前一年總營收超過 5 億美元的，是「大型前沿開發者」' had no subject at all, and '所有前沿開發者' was used in the same sentence although the article never defined a frontier developer. Added 22757.11(h)'s definition and made the large tier a subset of it; 'preceding calendar year' restored as 前一曆年.",
+        "S4P3: '重大安全事故要在發現後 15 天內通報' also had no subject, two clauses after a sentence about large frontier developers. 22757.13(c)(1) puts it on a frontier developer; now stated.",
+        "S2P2 and FAQ 2: 22757.11(c)(1)(A) is assistance 'in the creation or release of' a CBRN weapon, not unspecified weapon assistance; (C) is 'its frontier developer OR user', written as 開發者與使用者. Both corrected in both places.",
+        "S2P1: '這不是 OpenAI 自訂的數字' is the article's inference -- no source says it. Replaced with what FAQ 2 already said correctly and what the documents support: the FGF does not print a source for the two figures, but it says the California side is the TFAIA's catastrophic risk, whose statutory threshold is those figures.",
+        "S3P1: 'CBRN 說它「量化」能力提升' swaps the object of the FGF's sentence, which is 'quantifies model capabilities against weapons and threat development uplift metrics'. Now '「量化」模型能力', keeping the three-verb contrast. '做內部決策' lost 內部: the FGF says 'for decision-making related to offensive cyber capabilities', not internal decision-making.",
+        "S3P3 and FAQ 5: the first round quoted '仍屬探索性質，日後可能大幅調整' as one phrase about OpenAI's 作法. They are two FGF sentences with two subjects -- the approach remains exploratory, the risk TIER may be substantially changed. Separated. S3P3's rendering of the category also restored the document's own first item, 'influence operations', which had been folded into 操縱輿論.",
+        "S5P1: '沒有一手來源顯示' was unbounded; scoped to the four sources this article read. S5P2's closing sentence ('依 OpenAI 的說法，FGF 是寫下公司目前的技術與組織流程、說明如何履行法規義務') was cut to pay for the additions above: it is a third printing of what S1P2 and the callout already say with the same attribution, so no hedge, qualifier or attribution was lost anywhere. zh-TW paragraph characters 2,988 -> 2,987.",
+        "diagram node 3: '3 級，但仍屬探索性質' -> '3 級，除自我改良外探索中'. The FGF's sentence is 'Outside of risks related to AI self-improvement, these risk tiers remain exploratory'; S3P1 carries the carve-out and the node did not. Please draw the new label."
+      ],
+      "checked_and_correct": [
+        "The first round's four source-contradicted fixes all hold on independent re-reading: 22757.12(c)(1) and 22757.13(c) really do say 'a frontier developer' while 22757.12(a),(b),(d) and 22757.15 say 'large'; 22757.11(l) really is 'tangible or intangible property'; FGF CBRN Tier 2 really is 'novice actors (anyone with a basic relevant technical background)' with the 2021 baseline as 'unlimited access to baseline of tools available in 2021'; and the FGF really does name 'industry bodies such as the Frontier Model Forum' while naming no third-party evaluator ('third' appears twice, both generic).",
+        "The deleted paragraph was checked for lost material: the first round removed S5's third paragraph as a near-duplicate of the FAQ on how to verify the document yourself. That FAQ still carries the whole method (OpenAI's site for the PDF, leginfo by SB 53 or BPC chapter 25.1) and the callout repeats the same advice, so nothing but repetition was lost. summary items 1-5 all still have a body sentence behind them after this round's edits.",
+        "The two dates stand side by side with no verdict attached: '才', '終於', '遲了', '拖延', '落後', '約五個月' and '五個月' appear zero times in the whole pack, and S2P1 prints 2026-01-01 and 2026-05-28 without subtracting them. S4P2 still reports the FGF's order and words ('開頭限定在…', '接著文件寫「無論如何」') without concluding that the six-month rule is itself limited to EU-scoped models.",
+        "'27/7/365' is on FGF page 17 (confirmed again today, 1 occurrence) and appears nowhere in the pack, neither quoted nor silently corrected to 24/7 ('24/7' is 0 occurrences too).",
+        "Event date and versions: the RSS item 'OpenAI's Frontier Governance Framework', link openai.com/index/openai-frontier-governance-framework, category 'Safety', pubDate 'Thu, 28 May 2026 00:00:00 GMT'; 'Our updated Preparedness Framework' pubDate 'Tue, 15 Apr 2025 00:00:00 GMT' with no later PF item in today's fetch (the only other preparedness title is 'Frontier risk and preparedness', 26 Oct 2023). PF cover 'Version 2. Last updated: 15th April, 2025'. FGF mentions the PF twice and never with a version number.",
+        "Boundaries: topics are [ai, ai-news] with no finance; exactly one callout and no investment disclaimer; no buying, subscribing or upgrading advice and no price comparison (the FGF prints no price -- 'price', 'subscription', 'region' and 'language' are 0 in it); every OpenAI commitment is attributed; no legal opinion is offered and the article says so in its second paragraph; nothing assumes the rules reach Taiwan; no judgement is passed on whether OpenAI complies with anything.",
+        "Statutory figures still attributable: '10^26', '500', 'five hundred' and 'million' return 0 in the FGF, so the compute and revenue thresholds belong to the statute; '$1 billion' and '50 fatalities' are in the FGF, which is why S2P1 can put the FGF's own wording and the statute's side by side."
+      ],
+      "left_for_the_owner": [
+        "The federal-equivalence safe harbour (22757.13(h)-(j)) is still out, and the second round agrees with the first round's reasoning after reading the subdivisions again: (i)(2)(A) deems a developer compliant with Section 22757.13 only, it is contingent on OES first adopting a designating regulation and on the developer declaring intent, and nothing in the four sources says either has happened.",
+        "The article still does not print statute section numbers anywhere, so a reader who wants to check FAQ 7 has to find 22757.12(f) and 22757.13(f)-(g) inside BPC chapter 25.1 themselves. Adding section numbers would help verification but would introduce a citation style the rest of the batch does not use -- an owner's call.",
+        "22757.13(f) exempts three kinds of report from the Public Records Act and the article names two; the third is the covered-employee (whistleblower) report, deliberately out of scope for this article the way 22757.14(d) is.",
+        "zh-TW paragraph characters are 2,987 of the 1,800-3,000 range, so there are 13 characters of headroom left. Anything the owner wants to add to the body has to come out of the body first."
+      ]
+    }
+  },
+  "hero_label": "前沿治理框架公開",
+  "diagram": {
+    "title": "FGF 四類系統性風險",
+    "caption": "依 OpenAI 2026 年 5 月 28 日公布的 Frontier Governance Framework 整理：四類系統性風險與其分級狀態，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "網路攻擊",
+        "3 級，分數不公開"
+      ],
+      [
+        "CBRN",
+        "第 2 級基準是 2021 年"
+      ],
+      [
+        "喪失控制",
+        "3 級，除自我改良外探索中"
+      ],
+      [
+        "有害操弄",
+        "沒有分級，仍探索中"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Framework goes public",
+      "diagram": {
+        "title": "FGF's Four Systemic Risk Categories",
+        "caption": "Compiled from OpenAI's Frontier Governance Framework, published May 28, 2026: the four categories of systemic risk and their tiering status. Checked September 18, 2026.",
+        "nodes": [
+          [
+            "Cyber Offense",
+            "3 tiers, no public scores"
+          ],
+          [
+            "CBRN",
+            "Tier 2 baseline is 2021"
+          ],
+          [
+            "Loss of Control",
+            "3 tiers, mostly exploratory"
+          ],
+          [
+            "Manipulation",
+            "No tiers, still exploratory"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "フロンティア統治枠組み公開",
+      "diagram": {
+        "title": "FGFの4つのシステミックリスク分類",
+        "caption": "OpenAIが2026年5月28日に公開したFrontier Governance Frameworkに基づき作成：4つのシステミックリスクの分類とその等級づけの状況。確認日2026年9月18日。",
+        "nodes": [
+          [
+            "サイバー攻撃",
+            "3段階、スコア非公開"
+          ],
+          [
+            "CBRN",
+            "第2段階の基準は2021年"
+          ],
+          [
+            "制御喪失",
+            "3段階、自己改善以外は探索中"
+          ],
+          [
+            "有害な操作",
+            "等級表なし、探索中"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "프런티어 거버넌스 공개",
+      "diagram": {
+        "title": "FGF 네 가지 시스템적 위험 범주",
+        "caption": "OpenAI가 2026년 5월 28일 공개한 Frontier Governance Framework를 바탕으로 정리: 네 가지 시스템적 위험 범주와 등급 설정 현황. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "사이버 공격",
+            "3단계, 점수 비공개"
+          ],
+          [
+            "CBRN",
+            "2단계 기준은 2021년"
+          ],
+          [
+            "통제 상실",
+            "3단계, 자기개선 제외 탐색 중"
+          ],
+          [
+            "유해한 조작",
+            "등급표 없음, 탐색 중"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "前沿治理框架公开",
+      "diagram": {
+        "title": "FGF 四类系统性风险",
+        "caption": "依 OpenAI 2026 年 5 月 28 日公布的 Frontier Governance Framework 整理：四类系统性风险与其分级状态，核实日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "网络攻击",
+            "3 级，分数不公开"
+          ],
+          [
+            "CBRN",
+            "第 2 级基准是 2021 年"
+          ],
+          [
+            "丧失控制",
+            "3 级，除自我改进外探索中"
+          ],
+          [
+            "有害操纵",
+            "没有分级，仍探索中"
+          ]
+        ]
+      }
+    }
+  }
+}

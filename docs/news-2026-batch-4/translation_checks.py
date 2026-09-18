@@ -1,4 +1,7 @@
-"""Mechanical checks on translations that a schema cannot see: ``translation_checks.py <prefix>``.
+"""Mechanical checks on translations that a schema cannot see: ``translation_checks.py <prefix> [slug...]``.
+
+Named slugs limit the run to those packs: the AI vertical's prefix also matches the thirty-eight
+articles batch 3 shipped, which are not this batch's to re-read.
 
 Batch 4.2 had its drafts translated by a smaller model, and one Japanese article came back with whole
 runs of mistyped kanji (北竹 for 北竿), Korean had syllables that do not exist (겑), and the Chinese
@@ -34,8 +37,11 @@ def unencodable(text: str, pattern: str, codec: str) -> list[str]:
 
 def main() -> int:
     prefix = sys.argv[1] if len(sys.argv) > 1 else "tech-news-"
+    only = set(sys.argv[2:])
     hits = 0
     for path in sorted(CONTENT.glob(prefix + "*.json")):
+        if only and path.stem not in only:
+            continue
         pack = json.loads(path.read_text(encoding="utf-8"))
         locales = pack["locales"]
         zh = json.dumps(locales["zh-TW"], ensure_ascii=False)

@@ -1,0 +1,533 @@
+{
+  "slug": "ai-news-chatgpt-ads-20260505",
+  "event_date": "2026-05-05",
+  "event_date_basis": "2026-05-05 是公告原文頁 https://openai.com/index/new-ways-to-buy-chatgpt-ads/ 自己印在標題上方的日期：頁面上印出來的日期字串是「May 5, 2026」（在 <p class=\"text-meta\"> 裡，RSC 酬載的欄位是 publicationDateText），緊鄰的作者標記「OpenAI」是另一個元素，兩者在去標籤後的純文字裡會黏成「OpenAIMay 5, 2026」，所以逐字引文只取「May 5, 2026」。分類標記是 Product 與 ChatGPT。官方新聞 feed 對同一則記的 pubDate 是 Tue, 05 May 2026 00:00:00 GMT，與頁面日期一致；但 00:00:00 GMT 是這個 feed 的佔位時刻（同一份 feed 裡有數百筆同樣是 00:00:00 GMT），因此只採用日期、不採用時刻，也不做台北時間的時刻換算。公告頁本身沒有印時刻，HTML 裡也沒有 datePublished 之類的結構化時間欄位，所以事件日就是頁面印的 2026-05-05，不再推算。",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI 官方公告：New ways to buy ChatGPT ads（買 ChatGPT 廣告的新方式）",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 開發者文件：Ads 總覽（Overview - Ads）",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 開發者文件：出價與預算（Bidding & Budgets - Ads）",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 開發者文件：鎖定設定（Targeting - Ads）",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18（台北時間）以 curl -sL -A \"Mokaair-editorial\" 抓取四條 sources，全部 HTTP 200 且 body 是真正的正文（非阻擋頁、非轉址殼）：openai.com/index/new-ways-to-buy-chatgpt-ads/（376,485 bytes HTML，去標籤後 7,200 字，含標題、日期、四個小節與全部內文）；developers.openai.com/ads/api-overview（378,465 bytes）；bidding-and-budgets（406,052 bytes）；campaign-targeting（424,107 bytes）。文章引用的每一句都已用 Python 對去標籤後的純文字做連續字串比對確認，含 U+2019 彎引號、U+2014 破折號與 × 乘號。\n\n**來源清單於獨立查核時重建。** 前一版的 sources[0] 是 openai.com/news/rss.xml，理由是「公告正文頁在本查核環境回傳存取阻擋、讀不到」。查核代理當天以同樣的 curl 指令重試，公告頁回 200 並送回完整正文（連抓三次分別是 376,489／376,525／376,481 bytes，內容一致），openai.com/index/* 底下另外三則廣告公告（testing-ads-in-chatgpt、chatgpt-ads-expands-across-europe、our-approach-to-advertising-and-expanding-access）同樣都回 200 與真實正文。**那個阻擋是撰稿當時放棄的一條路徑，不是環境限制**，因此依 BRIEF「sources 放的是文章頁的網址，不是 feed 的網址」把 sources[0] 換成公告原文頁，並把文章裡所有「讀不到公告正文、只能引用 RSS 摘要」的敘述刪除、改以公告正文重寫。\n\nsources 上限是 4 條（check_article.py 逐條驗），四個名額已用在公告原文頁與三份撐起文章四個小節的開發者文件上，因此 RSS feed 退出 sources[]，原本掛在 feed 上的 2026-01-16、2026-08-11、2026-08-18 三則公告摘要一併移出文章（詳見 factcheck.left_for_the_owner）。",
+  "verified_facts": [
+    {
+      "fact": "公告原文頁在標題上方印的日期是 2026 年 5 月 5 日，分類標記是 Product 與 ChatGPT；標題是 New ways to buy ChatGPT ads。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "May 5, 2026"
+    },
+    {
+      "fact": "公告的引言句：OpenAI 表示正在擴大 ChatGPT 廣告，替廣告主增加購買與管理廣告活動的方式，並依循自家的廣告原則。這是 OpenAI 對自家產品的描述。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re expanding ChatGPT ads with new ways for advertisers to buy and manage campaigns—built around our ads principles."
+    },
+    {
+      "fact": "公告內文分成四節，小標依序是 Expanding how businesses can buy ChatGPT ads、Launching CPC bidding、Developing more ways to measure results、Building the ChatGPT ad platform。文章寫「內文分成四節」即依此。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Launching CPC bidding"
+    },
+    {
+      "fact": "OpenAI 表示一開始是直接與一小群廣告主合作在 ChatGPT 投放廣告，隨著試行計畫擴大才透過合作夥伴放寬門檻，接著才推出測試版自助工具。這是公司對自己流程的敘述。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We initially worked directly with a small group of advertisers to launch campaigns in ChatGPT."
+    },
+    {
+      "fact": "OpenAI 表示 5 月 5 日當天開始推出測試版自助廣告管理工具，廣告主可以自己註冊、直接購買在 ChatGPT 出現的廣告；企業可以註冊成為廣告主、填付款資料、設定預算、出價與投放節奏、上傳廣告、開關與管理活動，並在後台看成效。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, we’re beginning to roll out a beta self-serve Ads Manager that allows advertisers to sign up and purchase ads directly to appear in ChatGPT."
+    },
+    {
+      "fact": "分批開放的狀態：OpenAI 寫明自助廣告管理工具是一邊測試一邊調整、逐步開放給更多企業，不是一次全面上線。文章的「測試版」「逐步開放」都掛在這一句。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re gradually opening Ads Manager to more businesses as we continue to test and refine the experience."
+    },
+    {
+      "fact": "公告提到的代理商與技術夥伴都是非窮舉的清單：代理商那句用 including（Dentsu、Omnicom、Publicis、WPP），技術夥伴那句用 such as（Adobe、Criteo、Kargo、Pacvue、StackAdapt）。文章因此只寫「用的是包括與例如的寫法，不是完整名單」，不列名單、不寫家數。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We’ve also added technology partners such as Adobe, Criteo, Kargo, Pacvue, and StackAdapt, and will continue to invest in and expand our partner ecosystem."
+    },
+    {
+      "fact": "CPM 與 CPC 的先後：OpenAI 表示試行計畫第一階段廣告主只能以千次曝光（CPM）方式購買，用來先理解需求、投放與初期成效；5 月 5 日這次加入按點擊（CPC）出價。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In the first phase of the pilot, advertisers could buy ChatGPT ads on a CPM (cost-per-mille impressions) basis, as a preliminary means to understand demand, delivery, and early performance in a new environment."
+    },
+    {
+      "fact": "OpenAI 寫明廣告主只依點擊結果付費，而且表示會繼續同時支援 CPM 與 CPC 兩種買法。這兩句是 OpenAI 對自家計費規則的敘述。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’ll continue to support CPM and CPC buying, and over time expect to support more ways for advertisers to bid and optimize for the outcomes they care about most."
+    },
+    {
+      "fact": "量測：OpenAI 表示最近推出 Conversions API 與像素量測，並表示廣告主收到的是彙整過的成效資料、看不到個別對話；新的購買與量測方式不會把對話或個人資料交給廣告主。以上都是廠商對自家隱私設計的宣稱，本站無法外部觀察。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Advertisers receive aggregated performance insights that help them understand campaign impact, without access to individual conversations."
+    },
+    {
+      "fact": "「不會把對話或個人資料交給廣告主」這一句有自己的原文出處，在公告開頭的總述段（不在量測那一節）：OpenAI 說新的購買、管理與量測方式不會把對話或個人資料分享給廣告主。這是廠商對自家隱私設計的宣稱。摘要第 1 句、正文第一節第二段與 FAQ 第 5 題都掛在這一句。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "without sharing conversations or personal details with advertisers"
+    },
+    {
+      "fact": "第四節的小標是 Building the ChatGPT ad platform（進行式），內文第一句是 OpenAI 自陳在 ChatGPT 建立廣告這件事上還很早期，後面才接「隨時間繼續演進」的計畫。因此正文寫的是「正在打造」，不可以寫成「接下來才要建」——那會把已經在做的事說成未來式。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re still early in building advertising in ChatGPT"
+    },
+    {
+      "fact": "OpenAI 陳述的廣告原則：ChatGPT 的答案保持獨立、對話保持私密、使用者保有對體驗的控制權；OpenAI 並自陳在 ChatGPT 建立廣告這件事上還很早期。FAQ 第 5 題掛在這一句，並明寫是 OpenAI 自己的說法。",
+      "url": "https://openai.com/index/new-ways-to-buy-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "that ChatGPT’s answers stay independent, conversations stay private, and users remain in control of their experience."
+    },
+    {
+      "fact": "四層結構與各層設定：Ad account 之下是 Campaign、之下是 Ad group、之下是 Ad。文件的表格逐層列出設定內容——帳戶是品牌資料、幣別、時區、帳戶存取權限、花費上限；活動是目標、預算、排程、地區與平台鎖定、受眾的納入與排除、轉換事件；廣告組是出價策略、context hints、受眾出價加成、商品組合；廣告是素材、圖片或商品範本、到達網址。這是表格的四列，不是單一句子，因此引文只取其中一格。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Objective, budget, schedule, geographic and platform targeting, audience inclusion and exclusion, conversion events"
+    },
+    {
+      "fact": "帳戶狀態顯示為 active（已啟用）也可能還有審核項目沒有結案。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An account marked active may still have an outstanding review."
+    },
+    {
+      "fact": "Ads Manager 的位置與金鑰取得方式：要有一個廣告帳戶與一組廣告主 API 金鑰，金鑰在 Ads Manager 的設定頁建立。（引文取自 HTML 頁面去標籤後的純文字；同一句在 .md 版本裡帶有 Markdown 連結語法，那個帶語法的字串在被引用的 HTML 網址上搜尋不到，因此不當作逐字引文。）本站沒有登入 Ads Manager，文章不描述介面。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You will need an ad account and an Advertiser API key. You can create your Advertiser API key within the Settings page in Ads Manager."
+    },
+    {
+      "fact": "文件示範的素材類型是 chat_card，要填標題、內文與到達網址，並上傳至少 640 × 640 像素的圖片；建立廣告即把素材送審。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Creating an ad submits its creative for review."
+    },
+    {
+      "fact": "啟用只是讓廣告在其餘要求都符合時開始投放；預覽只能看外觀，不代表符合上線資格。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Activation enables delivery when the remaining requirements are satisfied."
+    },
+    {
+      "fact": "更新紀錄有日期的條目從 2026-06-03 起算，到 2026-09-10 為止，內容包含地區鎖定與 /geo_lookup/search、轉換設定與回報端點、依商品與國家和裝置細分的成效資料、自訂受眾的 Add／Remove／Replace／Merge 操作、替採後付發票制（postpaid invoice billing）廣告帳戶開放的每日花費上限，以及把網頁平台細分成 desktop_web／ios_web／android_web。再往前只有一則未標日期的 v1。因此這份文件不能拿來描述 2026-05-05 當天的功能範圍。**帶日期的更新紀錄只長在 api-overview 這一頁**：bidding-and-budgets 與 campaign-targeting 兩頁上出現的 Changelog 字樣是整站側邊導覽的連結（與 Deprecations、Supported countries 並列），不是那兩頁自己的更新紀錄，正文提到 9/10 的細分時不可以寫成「同一份文件（＝鎖定設定頁）的更新紀錄」。另外 campaign-targeting 全頁沒有出現 desktop_web／ios_web／android_web，只列 ios_app／android_app／web 三個廣義分組。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Added granular web platform targeting with desktop_web, ios_web, and android_web in targeting.platforms.included."
+    },
+    {
+      "fact": "9 月 9 日那筆帳戶每日花費上限的開放對象帶條件，原文限定在採後付發票制的廣告帳戶，文章照抄這個限定語。",
+      "url": "https://developers.openai.com/ads/api-overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Added daily account spending limits for ad accounts on postpaid invoice billing."
+    },
+    {
+      "fact": "出價與預算說明頁的目標／計費／出價對照表列出三種活動目標：impressions（billing_event_type impression，只有 fixed_bid）；clicks（click，fixed_bid 或 maximize_clicks）；conversions（click，fixed_bid 或 maximize_conversions）。轉換目標的計費事件因此仍是 click。範圍限定在這一頁的那張表，不寫成「恰好三種」或全站唯一。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Use the following combinations of campaign objective and ad-group billing and bidding parameters: Campaign objective (bidding_type) Billing event (bidding_config.billing_event_type) Bid strategy (bidding_config.strategy) impressions impression fixed_bid clicks click fixed_bid clicks click maximize_clicks conversions click fixed_bid conversions click maximize_conversions"
+    },
+    {
+      "fact": "轉換目標按有效點擊計費（本篇最反直覺的一句，逐字回原文確認沒有讀反）：文件寫轉換活動朝選定的動作最佳化，但按有效點擊計費。同一頁另有一句寫兩種 Maximize Results 策略都使用 billing_event_type: \"click\"。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Conversion campaigns optimize for the selected action and bill for valid clicks."
+    },
+    {
+      "fact": "maximize_clicks 與 maximize_conversions 統稱 Maximize Results，兩者都要用每日預算、都要省略 max_bid_micros（不能自己填出價金額）；fixed_bid 則每日預算與總預算（daily or lifetime）都能用。預算欄位只能二選一，同一個活動不能同時有每日與總預算。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Maximize Results is the name for the maximize_clicks and maximize_conversions strategies. Both are available for standard and product-feed campaigns."
+    },
+    {
+      "fact": "金額用整數 micros 表示，一個帳戶幣別的主要單位等於 1000000 micros，同一換算規則適用於其他帳戶幣別；那一頁寫明預算與出價的範例用的是示範性質（illustrative）的美元金額，不是牌價。原句限定在「預算與出價的範例」，不可以寫成「頁面上／文件裡的金額」這種全稱。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Budget and bid examples use illustrative USD amounts."
+    },
+    {
+      "fact": "門檻是兩句不同的話，不可以合併：每日預算的最低金額依帳戶幣別而定，低於門檻的請求會回錯誤訊息並告知需要的金額；出價的上下限與可用的金額精度則依帳戶幣別「與活動目標」而定。兩句都沒有印出任何具體數字。原文是 return an error with the required amount，回的是「需要的金額」，不是「還差多少」——各語系翻譯時不可以寫成差額。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Bid limits and permitted monetary precision depend on the account currency and campaign objective."
+    },
+    {
+      "fact": "新建立的資源預設是暫停狀態，讓廣告主先完成設定再開投。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "New resources are created paused so you can finish setup before enabling delivery."
+    },
+    {
+      "fact": "活動預算與帳戶花費上限各自獨立，調高活動預算不會讓已經用完的帳戶花費上限重新打開；投放另外還取決於活動排程、資源狀態、審核、鎖定與可用版位。原文用的是「還取決於」，沒有說「這些條件同時都要滿足」。而且 Delivery also depends 的 also 接的是它前面那兩句講的活動預算與帳戶花費上限，那一段沒有提到出價，所以正文只能寫「除了預算與帳戶花費上限之外」，不可以寫成「除了預算與出價之外」。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Campaign budgets and ad account spend limits apply independently. Raising a campaign budget does not override an exhausted account spend limit. Delivery also depends on the campaign schedule, resource statuses, reviews, targeting, and available inventory."
+    },
+    {
+      "fact": "帳戶層級的花費上限期間帶開放限制：官方寫明只開放給部分帳戶。",
+      "url": "https://developers.openai.com/ads/bidding-and-budgets",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Spend-limit windows are available only to some accounts."
+    },
+    {
+      "fact": "地區、平台與受眾三種鎖定一起生效，符合其中一項不會讓其他項失效。（前一版只寫「地區與平台」兩種，漏了受眾。）",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Geographic, platform, and audience settings work together; matching one setting does not override the others."
+    },
+    {
+      "fact": "排除優先這條規則的適用範圍是「受眾」名單，不是地區名單：原文限定在同一個人同時屬於納入受眾與排除受眾的情形。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Exclusions take precedence when someone belongs to both an included audience and an excluded audience."
+    },
+    {
+      "fact": "地區鎖定用 ISO 3166-1 alpha-2 國碼；地區的納入與排除清單最多 2,500 個 ID，而且原文緊接著加註帳戶的可用範圍與活動模式還可能有額外限制（前一版漏掉這個但書，也把上限寫成兩份清單「各自」2,500，原文沒有這樣分）。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can include up to 2,500 IDs in geographic inclusion and exclusion lists. Account availability and campaign mode can impose additional restrictions."
+    },
+    {
+      "fact": "國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要看支援的廣告投放地區。四條 sources 都沒有列出那份地區清單，因此台灣是否已開放，文章不回答、也不推測。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A code’s ISO validity does not mean it is available for advertising in your account; use supported advertising locations."
+    },
+    {
+      "fact": "平台鎖定列的是三個「廣義」平台分組（broad platform groups）：ios_app、android_app、web，其中 web 含桌面與行動網頁；建立活動時沒有設定平台鎖定的話預設是全部平台。「廣義」這個限定語不可省略——同一站的更新紀錄在 2026-09-10 於 web 之下另加了 desktop_web／ios_web／android_web，省略之後兩段會互相打架。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Use these broad platform groups:"
+    },
+    {
+      "fact": "官方舉例：用 iPhone 瀏覽器開 ChatGPT 網站算進 web 版位，不是 iOS 應用程式分組。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An iPhone user visiting ChatGPT in a browser belongs to web inventory rather than the iOS app group."
+    },
+    {
+      "fact": "受眾上傳可用的識別碼是 email、電話、這兩者「官方支援的」SHA-256 形式，以及 GAID；名單檔案不得大於 500,000,000 bytes。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Audience uploads support email, phone, their supported SHA-256 variants, and GAID identifiers. Use the audience-specific normalization rules before hashing; do not assume another API uses the same phone normalization. Files must be no larger than 500,000,000 bytes."
+    },
+    {
+      "fact": "context hints 用來補充廣告組裡這些廣告的資訊，描述素材與到達網址可能沒完全涵蓋的相關產品、使用情境或需求；文件明寫這些提示不是完全比對的關鍵字，也不能取代地區、平台或受眾的明確鎖定。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Hints are not exact-match keywords. They also do not replace explicit geographic, platform, or audience targeting."
+    },
+    {
+      "fact": "context hints 的寫法表格附一句明確的免保證語：那些範例只是示範寫法，不保證某一段對話真的會觸發廣告。文章的「不保證觸發」掛在這一句，並寫明是表格裡的範例。",
+      "url": "https://developers.openai.com/ads/campaign-targeting",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These examples illustrate writing style, not a guarantee that a particular conversation will trigger an ad."
+    }
+  ],
+  "not_said": [
+    "公告與本文查核到的三份開發者文件，都沒有說明廣告在 ChatGPT 介面上實際如何標示、出現在對話的哪個位置。「答案保持獨立、對話保持私密、使用者保有控制權」是公告裡 OpenAI 自陳的原則，不是介面說明。",
+    "公告與三份開發者文件，沒有一處說明現在哪些付費方案的使用者會看到廣告；公告裡沒有出現任何方案名稱（以 free／Go／Plus 逐詞查核到 2026-09-18，公告頁去標籤後的純文字裡未見）。",
+    "四條 sources 都沒有印出最低出價、最低預算或任何典型 CPC／CPM 金額；出價與預算頁的美元數字都寫明是示範用途。",
+    "四條 sources 都沒有列出可以投放廣告的國家或地區清單。campaign-targeting 只把讀者導向「支援的廣告投放地區」與 ads.openai.com 上的地點代碼目錄，而且自己寫明國碼合法不等於帳戶可投放，因此台灣是否已開放（不論對廣告主或對使用者），本文沒有答案。",
+    "公告原文頁裡沒有出現 Taiwan、Europe、Sponsored 這幾個字（以 2026-09-18 抓到的 376,485 bytes 頁面去標籤後逐詞查核，未見）。",
+    "開發者文件的頁面本身沒有標示發布日或版本號，只有更新紀錄的條目帶日期，最早的有日期條目是 2026-06-03；因此這些文件不能拿來描述 2026-05-05 當天確切存在哪些功能。",
+    "本站沒有登入 Ads Manager（ads.openai.com），沒有建立過廣告帳戶、廣告活動或廣告，也沒有看過廣告在 ChatGPT 裡實際出現的畫面；文章因此不描述後台畫面或註冊流程。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "同一條廣告產品線的其他官方公告：2026-01-16〈Our approach to advertising and expanding access to ChatGPT〉（計畫在美國為免費與 Go 方案測試廣告）、2026-08-11〈Testing ads in ChatGPT〉、2026-08-18 22:00 GMT〈ChatGPT Ads expands across Europe〉（31 個歐洲市場）、2026-08-31〈A milestone in expanding access to AI〉、2026-09-16〈Reimagining advertising with AI〉。",
+      "seen_where": "openai.com/news/rss.xml 的項目摘要；五則的公告原文頁在 2026-09-18 也都可以讀到（各回 HTTP 200 與真實正文）。",
+      "why_excluded": "sources 上限 4 條已經用在公告原文頁與三份撐起文章四個小節的開發者文件上，這五則沒有名額。**前一版文章把 1/16、8/11、8/18 三則寫進正文並掛在 feed 上，本輪一併移出。** 若站主要保留 8/11 與 8/18 那一段，每一則都要自己的 sources 名額，得換掉一份開發者文件（連帶砍掉對應的小節）。順帶記錄時區：8/18 那則的 pubDate 是 Tue, 18 Aug 2026 22:00:00 GMT，換算台北時間是 2026-08-19 清晨 6 點，繁中正文若要寫必須寫 8 月 19 日或註明 GMT。"
+    },
+    {
+      "claim": "上傳受眾名單用於納入或出價加成時，至少要比對到 25,000 名使用者；ready 的排除受眾沒有最低人數；比對到的人數不等於上傳的列數。",
+      "seen_where": "developers.openai.com/ads/campaign-targeting（在 sources[] 內，同一頁出現兩次）；另一份未列入 sources 的 custom-audiences 把 25,000 定調為「公開的規劃門檻」，並說明隱私保護機制會影響實際邊界、上傳 25,000 筆識別碼也不保證比對到足夠人數。",
+      "why_excluded": "數字本身在 sources 內，寫得出來；但兩份官方頁對它的強度不一致（campaign-targeting 寫成硬性要求 require at least，custom-audiences 寫成 public planning threshold 加但書），BRIEF 第 8 條要求兩個官方版本不可以挑一個當唯一說法。承載但書的那一頁沒有名額，因此整段不寫。**查核代理已確認：25,000 這個數字在正文、摘要、FAQ、表格、圖解裡一次都沒有出現，所以不存在「少了但書」的問題。**"
+    },
+    {
+      "claim": "廣告主看到的受眾比對人數是隱私保護過的區間（under_25k、25k_100k 等），官方並提醒不要用這個區間判斷是否該鎖定。",
+      "seen_where": "developers.openai.com/ads/custom-audiences。",
+      "why_excluded": "該頁未列入 sources[]。文章改用 campaign-targeting 已有的內容（上傳識別碼種類與檔案大小上限）回答「廣告主上傳了我的什麼」，但沒有回答「廣告主看到的回傳資料長什麼樣子」這一半。"
+    },
+    {
+      "claim": "轉換目標（oCPC）不是每個廣告帳戶都能直接使用：建立活動時若收到 403 與「Conversion bidding is not enabled」，要聯絡 OpenAI 的合作對象窗口。",
+      "seen_where": "developers.openai.com/ads/conversion-optimized-campaigns。",
+      "why_excluded": "該頁未列入 sources[]。文章改以 sources 內確實有的兩個分批開放事實（公告的「逐步開放給更多企業」、bidding-and-budgets 的「花費上限期間只開放給部分帳戶」）滿足 BRIEF 對開放狀態的要求。"
+    },
+    {
+      "claim": "ads.openai.com/assets/openai-geotargets.csv 這份地點代碼目錄可以讀到（2026-09-18 回 HTTP 200、44,595,955 bytes、615,788 列），裡面有 391 列的國碼是 TW，含一列 Target Type 為 Country 的台灣。",
+      "seen_where": "ads.openai.com/assets/openai-geotargets.csv，由 campaign-targeting 連出去。",
+      "why_excluded": "**不能拿來回答「台灣能不能投廣告」**：campaign-targeting 自己寫明國碼合法不代表帳戶可投放，要看「支援的廣告投放地區」，而那份目錄是可填的地點代碼，不是可投放地區清單。該網址也不在 sources[] 內。前一版文章寫「那份清單所在的網址在本站的查核環境讀不到」——這句不成立，已刪，改成「四條來源都沒有列出地區清單」。",
+      "why_excluded_note": "檔案大小、列數與 TW 列數都是活資料的快照，只記在這裡，不進文章。"
+    },
+    {
+      "claim": "OpenAPI 規格（openapi.json）裡 CreateCampaignBody 另有文件未說明的 objective 欄位（含 reach）、business_agent_id 與 landing_page_configuration。",
+      "seen_where": "developers.openai.com/ads/openapi.json。",
+      "why_excluded": "未列入 sources[]。文章因此不描述規格細節，也不做「恰好三種目標」這類需要規格才能反駁的全稱主張——三種目標一律限定在出價與預算頁的那張表。"
+    },
+    {
+      "claim": "成效報表的欄位清單（impressions、clicks、spend、ctr、cpc、cpm、conversions、cpa、post_click_cvr 等），以及 view-through 回報的可用條件。",
+      "seen_where": "developers.openai.com/ads/reporting 與 measurement-pixel。",
+      "why_excluded": "兩頁都未列入 sources[]，文章不描述成效報表欄位，也不描述 view-through 回報。"
+    },
+    {
+      "claim": "現有內容包 chatgpt-ads-status.json 記載的台灣未列入自助可用名單、Free／Go 方案顯示廣告、未滿十八歲帳號不顯示廣告等說法。",
+      "seen_where": "apps/api/app/guides/content/chatgpt-ads-status.json（另一篇既有文章），其來源包含兩個在本環境讀不到的 help.openai.com 頁面。",
+      "why_excluded": "那是另一篇文章的內容，不是本文自己讀到的一手來源；本文的四條來源裡沒有任何一條支持這些說法，因此不重複、也不引用該文章的結論。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣的一般 ChatGPT 使用者，不是廣告代理商，想知道「我在對話裡看到的廣告是怎麼來的」。切入點是賣方的機制，不是「我現在能不能買」（那是既有的 chatgpt-ads-status.json 負責的角度，本文不重寫）：2026 年 5 月 5 日 OpenAI 公告推出測試版自助廣告管理工具、加入按點擊（CPC）出價、擴充量測工具；廣告主要先建廣告帳戶，再建廣告活動、廣告組，最後才是廣告本身，每一層都有各自的設定與各自的暫停／啟用狀態；活動目標分曝光、點擊、轉換三種，轉換目標仍然按有效點擊計費；地區、平台與受眾鎖定一起生效，context hints 不保證觸發廣告。第二個重點是界線：公告是 OpenAI 自己的說法、本站沒有實測；開發者文件反映的是查核當天（2026-09-18）讀到的版本，不是 5/5 當天的快照，文中用更新紀錄的日期範圍佐證這一點。\n\n這篇刻意不談：台灣是否已開放廣告（四條來源都沒有地區清單）、目前哪些付費方案會看到廣告（來源未載）、最低預算或實際廣告費（官方未公布）、Ads Manager 介面（沒有登入過）、25,000 比對使用者門檻與隱私區間機制（兩份官方頁強度不一致，承載但書的頁面沒有 sources 名額）、以及 1/16、8/11、8/18 等其他公告（沒有 sources 名額）。",
+  "must_not_write": [
+    "不得描述現在哪些付費方案會看到廣告，也不得提到未滿十八歲帳號；這些說法只出現在本文四條來源以外的頁面。",
+    "不得寫出任何最低預算、最低出價、典型 CPC／CPM 或任何實際價格；文件裡的金額一律標明是示範用途。",
+    "不得斷言台灣是否已經開放廣告（不論廣告主或使用者角度）；四條來源都沒有可投放地區清單，ads.openai.com 的地點代碼目錄不是那份清單。",
+    "不得描述 Ads Manager 介面畫面、註冊流程或後台操作；本站沒有登入過。",
+    "不得把開發者文件的內容當成 2026-05-05 當天就存在的功能範圍來寫；文件沒有標發布日，更新紀錄最早一筆是 2026-06-03。",
+    "不得把 RSS feed 的項目總數、最新一筆或 sitemap 的 lastmod 寫進文章或研究紀錄。",
+    "不得把「三種活動目標」「三個平台分組」寫成全站唯一或恰好幾種；兩者都要限定在印出它的那一頁，平台那句還要保留「廣義分組」這個限定語。",
+    "不得把公告裡以 including／such as 起頭的代理商與技術夥伴名單寫成完整名單或家數。",
+    "不得重寫既有 chatgpt-ads-status.json 那篇的地區資格／品牌準備角度；本文的角度是機制（怎麼買、怎麼計費、怎麼鎖定）。",
+    "不得寫任何投放建議、效益判斷或平台比價。"
+  ],
+  "live_data_warnings": [
+    "developers.openai.com/ads 底下的頁面是持續維護的說明頁，頁面本身沒有發布日或版本號，只有更新紀錄的條目帶日期；下次查核如果發現更新紀錄多了新條目，代表內容已經變動，不能假設本文查到的細節仍然成立。平台分組那一節尤其要重看：2026-09-10 已經在 web 之下加了三個細分值。",
+    "openai.com/news/rss.xml 的 <item> 總數在同一天之內就會變動（本批不同時點記過 1,194／1,195／1,196／1,207），feed 的筆數與「最新一筆是什麼」都不是事實，不進文章也不進本紀錄的正式欄位。",
+    "openai.com 與 developers.openai.com 的頁面 bytes 數每次抓都會差幾十到幾百 bytes（公告頁連抓三次是 376,489／376,525／376,481），不可拿位元組數當版本識別。",
+    "ads.openai.com/assets/openai-geotargets.csv 是活檔案，列數與內容會變；而且它是地點代碼目錄，不是可投放地區清單。"
+  ],
+  "corrections_applied": [
+    "must_fix 1（feed 項目數與最新一筆 pubDate）：已避免。文章與研究紀錄都沒有寫 item 總數或「最新一筆」。",
+    "must_fix 2（「5/5 是六則裡第四則」算錯）：已避免使用相關主張，文章不做排序或計數式的斷言。",
+    "must_fix 3（「9/16 最新一筆是 Reimagining advertising with AI」）：不適用，文章不引用查核當天的「最新一則」。",
+    "must_fix 4／5（openapi.json 的 objective／reach；「恰好三個活動目標」）：openapi.json 未列入 sources，文章把「三種」限定在出價與預算說明頁的那張表，不用「恰好」。",
+    "must_fix 6（「self-serve」錯掛 api-overview）：已套用，而且本輪連根解決——「測試版自助廣告管理工具」現在掛在公告原文頁（beta self-serve Ads Manager 就印在那一頁上），不再掛 api-overview，也不再掛 RSS 摘要。",
+    "must_fix 7（25,000 寫成硬性下限、漏掉 custom-audiences 的但書）：已避免使用相關主張，25,000 這個數字全篇一次都沒有出現；理由記在 unverified_or_excluded 第 2 條。",
+    "must_fix 8（成效指標清單寫成窮舉）：不適用，reporting 頁未列入 sources。",
+    "must_fix 9（sitemap 引文是重排拼接）：不適用，本輪不引用 sitemap。",
+    "must_fix 10（view-through 回報的條件句）：不適用，measurement-pixel 未列入 sources。",
+    "must_fix 11（「OpenAI 自動調整出價」「只在有效點擊時收費」不可寫成觀察到的行為）：已套用，出價與計費一律寫成「文件的說法」「文件寫明」，公告裡的對應句則寫成「公告說」「OpenAI 表示」。",
+    "must_add（UTC 與台北時間跨日）：本輪因來源名額移除了 8/18 那一段，文章裡不再有需要換算的時刻；換算結果（22:00 GMT＝台北 8/19 清晨 6 點）改記在 unverified_or_excluded，供站主決定是否補回那一段時使用。5/5 的 pubDate 00:00:00 GMT 是佔位值，事件日改以公告頁自己印的 May 5, 2026 為準，不做時刻換算。",
+    "must_add（oCPC 的 403 例外提示、custom-audiences 的隱私區間機制）：仍未套用，兩頁都沒有 sources 名額；改以公告的「逐步開放給更多企業」與 bidding-and-budgets 的「花費上限期間只開放給部分帳戶」滿足分批開放的要求。",
+    "must_add（campaign-targeting 的具體數字）：已套用，並補上前一版漏掉的但書「帳戶的可用範圍與活動模式還可能有額外限制」，以及把 2,500 的「各自」拿掉（原文沒有分開算）。",
+    "must_add（api-overview 的「帳戶顯示 active 不代表審核已通過」）：已套用。",
+    "must_add（重疊警告不可放寬）：已遵守，本文角度限定在購買機制、計費與鎖定設定。",
+    "source_list_fix（sources[] 需要重建）：已套用。前一版的三個問題裡，第 1 條（事實掛在 sources 以外的網址）本輪逐條檢查，正文每一句都掛得到四條 sources 之一；第 2 條見 must_fix 6；第 3 條（sources[0] 是 feed 網址）本輪解除——公告原文頁實測可讀，已換成公告頁，feed 退出。"
+  ],
+  "hero_label": "自助廣告，逐步開放",
+  "diagram": {
+    "title": "ChatGPT 廣告的四個重點",
+    "caption": "整理自 OpenAI 開發者廣告文件的四層架構、計費方式、出價策略與鎖定機制，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "四層架構",
+        "帳戶到廣告逐層設定"
+      ],
+      [
+        "計費方式",
+        "點擊與轉換都算點擊"
+      ],
+      [
+        "出價策略",
+        "手動出價或自動調整"
+      ],
+      [
+        "鎖定與提示",
+        "不保證觸發特定廣告"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Self-serve, rolling out",
+      "diagram": {
+        "title": "Four Things to Know About ChatGPT Ads",
+        "caption": "Compiled from OpenAI's developer ad documentation covering the four-layer structure, billing, bidding strategies, and targeting; fact-checked September 18, 2026.",
+        "nodes": [
+          [
+            "Four-layer setup",
+            "Account down to each ad"
+          ],
+          [
+            "How billing works",
+            "Conversions bill by click too"
+          ],
+          [
+            "Bidding strategy",
+            "Manual bid or auto-adjust"
+          ],
+          [
+            "Targeting & hints",
+            "No guaranteed ad trigger"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "セルフサーブ広告、順次提供",
+      "diagram": {
+        "title": "ChatGPT広告の4つの要点",
+        "caption": "OpenAIの開発者向け広告ドキュメントに基づき、4階層構造・課金方法・入札戦略・ターゲティングの仕組みを整理。確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "4階層構造",
+            "アカウントから広告まで設定"
+          ],
+          [
+            "課金方式",
+            "コンバージョンでもクリック課金"
+          ],
+          [
+            "入札戦略",
+            "手動入札か自動調整か"
+          ],
+          [
+            "配信対象",
+            "会話への表示は保証外"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "셀프서브 광고, 단계적 확대",
+      "diagram": {
+        "title": "ChatGPT 광고의 네 가지 핵심",
+        "caption": "OpenAI 개발자 광고 문서의 4단계 구조, 과금 방식, 입찰 전략, 타겟팅 방식을 정리. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "4단계 구조",
+            "계정부터 광고까지 설정"
+          ],
+          [
+            "과금 방식",
+            "클릭·전환 모두 클릭 과금"
+          ],
+          [
+            "입찰 전략",
+            "수동 입찰 또는 자동 조정"
+          ],
+          [
+            "타겟팅·힌트",
+            "특정 대화 노출은 보장 안 됨"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "自助广告，逐步开放",
+      "diagram": {
+        "title": "ChatGPT 广告的四个要点",
+        "caption": "整理自 OpenAI 开发者广告文档的四层结构、计费方式、出价策略与定向机制，查核日期 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "四层结构",
+            "账户到广告逐层设置"
+          ],
+          [
+            "计费方式",
+            "点击与转化都算点击"
+          ],
+          [
+            "出价策略",
+            "手动出价或自动调整"
+          ],
+          [
+            "定向与提示",
+            "不保证触发特定广告"
+          ]
+        ]
+      }
+    }
+  },
+  "title": "ChatGPT 廣告開放自助購買：OpenAI 5 月公告的工具、計費與鎖定機制",
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "未參與撰稿。以 curl -sL -A \"Mokaair-editorial\" 重抓四條 sources 並讀 body；三份開發者文件的 HTML 去標籤後用 Python 做連續字串比對，逐句核對正文、摘要四句、FAQ 五題、callout、表格四列與 caption、圖解 caption 與四格、title 與 description；RSS 以 ElementTree 解析、逐項核對 pubDate 與 description。另外重試了前一版宣告為「被擋」的四個網址（公告原文頁、ads.openai.com、地點代碼 CSV、其餘三則公告頁），全部回 HTTP 200 與真實正文——這是本輪最大的發現，只用於反駁，未拿來替文章補事實，但據此改了 sources[]。查核期間沒有猜任何網址或識別碼。",
+    "verdict": "needs_second_round（推翻的是骨幹前提：文章原本有五處宣稱公告正文讀不到。sources[0] 已換成公告原文頁，第一節整段重寫，另有 8 處事實修正與 3 段刪除，改動幅度超過一輪查核的安全範圍）",
+    "edits_to_the_pack": [
+      "sources[0] 由 openai.com/news/rss.xml 換成 https://openai.com/index/new-ways-to-buy-chatgpt-ads/：公告原文頁 2026-09-18 實測回 200、376,485 bytes、7,200 字正文，連抓三次一致；前一版宣稱的「存取阻擋」不成立。",
+      "刪掉全文五處「公告原文網頁讀不到正文、只能引用新聞摘要那一句」的敘述（第二段、第一節、第五節、callout、FAQ 第 5 題），改以公告正文重寫。",
+      "第一節兩段整段重寫：原本的 1/16＋8/11＋8/18 三則 feed 摘要段落移除（沒有 sources 名額），改寫成公告自己講的試行階段、逐步開放、CPM 到 CPC 的改變、量測工具與隱私說法。",
+      "「最低出價與最低預算依帳戶幣別而定」拆開：原文是兩句不同的話——每日預算最低金額依帳戶幣別而定（低於門檻回錯誤訊息並告知金額），出價上下限依帳戶幣別「與活動目標」而定。前一版把兩句合併並漏掉「與活動目標」。",
+      "「文件的原句是這些條件同時都要滿足」刪除：bidding-and-budgets 的原句是 Delivery also depends on…（還取決於），沒有「同時都要滿足」這個意思；那個語意來自 api-overview 談啟用的另一句，文章別處已經用過。",
+      "平台分組補上「廣義」：原文是 broad platform groups，而同站更新紀錄 2026-09-10 已在 web 之下加了 desktop_web／ios_web／android_web。少了這個限定語，第四節與第五節互相打架。",
+      "「排除優先」限縮到受眾：原文限定在同一個人同時屬於納入受眾與排除受眾，前一版寫成泛指的「納入與排除名單」，會被讀成地區清單也適用。",
+      "地區清單上限改寫：拿掉「各自」（原文 up to 2,500 IDs in geographic inclusion and exclusion lists 沒有分開算），並補上原文緊接著的但書「帳戶的可用範圍與活動模式還可能有額外限制」。",
+      "「地區與平台鎖定分開設定、同時生效」補回受眾：原文是 Geographic, platform, and audience settings work together。",
+      "表格與第二節補齊被漏掉的層級設定：廣告活動層還有「受眾的納入與排除」與「轉換事件」，廣告組層還有「商品組合」；第三欄改成每一層都預設暫停（New resources are created paused），前一版只寫廣告活動預設暫停。",
+      "「文件裡出現的金額都標明是示範用途」限縮到出價與預算頁（原文 Budget and bid examples use illustrative USD amounts，只涵蓋那一頁的預算與出價範例）；FAQ 第 2 題同步改。",
+      "第三節末補上 bidding-and-budgets 的開放限制「帳戶層級的花費上限期間只開放給部分帳戶」（Spend-limit windows are available only to some accounts），第五節的 9/9 更新紀錄補上「採後付發票制」這個限定語。",
+      "context hints 的敘述改為原文說法（描述相關的產品、使用情境或需求、不是完全比對的關鍵字），前一版的「自由文字」是推論；「範例」改寫為「表格裡的範例」。",
+      "受眾識別碼補上「官方支援的」SHA-256 形式（their supported SHA-256 variants）；「500 MB」的編輯換算拿掉，只留原文印的 500,000,000 bytes。",
+      "FAQ 第 4 題（台灣）的理由改寫：前一版寫「那份清單所在的網址在本站的查核環境讀不到」——該網址實測可讀，改成「四條來源都沒有列出可投放地區清單」，並補上帳戶可用範圍與活動模式的額外限制。",
+      "description 與 callout 同步改寫，不再說依據是「官方新聞摘要」。"
+    ],
+    "checked_and_correct": [
+      "**轉換目標按有效點擊計費**（撰稿者點名要重查的反直覺結論）：逐字回 bidding-and-budgets 原文，沒有讀反。該頁三處互相印證——目標對照表的 conversions 列 billing event 是 click；內文 Conversion campaigns optimize for the selected action and bill for valid clicks.；Maximize Results 一節 Both strategies use billing_event_type: \"click\".。設定表也寫明 Billing event 決定的是 Whether you pay for impressions or clicks。",
+      "**全文刻意不回答「台灣能不能投／看得到廣告」是正確的，而且是必要的**：四條來源逐詞查核到 2026-09-18，沒有任何一份列出地區清單。campaign-targeting 只有一句 use supported advertising locations 與一個指向 ads.openai.com 目錄的連結，而它自己寫明國碼合法不等於帳戶可投放。那份目錄本輪實際下載得到（615,788 列，含 391 列 TW），但它是地點代碼目錄、不是可投放地區清單，所以即使讀得到也回答不了這個問題——理由已在文章與研究紀錄裡改成正確的那一個。",
+      "**25,000 沒有少但書的問題**：該數字在正文、摘要、FAQ、表格與圖解裡一次都沒有出現。值得注意的是它其實出現在 sources 內的 campaign-targeting（同一頁兩次，寫成硬性要求 require at least 25,000 matched users），與未列入 sources 的 custom-audiences（寫成 public planning threshold 加隱私邊界但書）強度不同；依 BRIEF 第 8 條不可挑一個當唯一說法，維持不寫是對的。",
+      "RSS 四則項目逐字重抓確認（雖然 feed 本輪已退出 sources）：5/5 的 title、pubDate Tue, 05 May 2026 00:00:00 GMT、category Product、link 與 guid（isPermaLink=true）全部與紀錄相符；8/11 是 10:00:00 GMT（台北同日 18:00）、8/18 是 22:00:00 GMT（台北 8/19 清晨 6 點）、1/16 是 00:00:00 GMT 佔位值。前一版正文對 8/18 寫「台北時間 8 月 19 日清晨」是正確的處理。",
+      "事件日 2026-05-05 經公告頁自己印的 OpenAI May 5, 2026 獨立確認，不再只靠 feed 的佔位 pubDate；slug 尾碼、news_date 與 event_date 三處一致。",
+      "四層架構、chat_card、640 × 640、預覽不等於上線資格、帳戶 active 仍可能有未結案審核、micros 換算、Maximize Results 的每日預算與省略出價金額、fixed_bid 可用每日或總預算、活動預算與帳戶花費上限各自獨立、iPhone 瀏覽器算 web 版位、500,000,000 bytes、context hints 不保證觸發——全部逐字回原文確認無誤。",
+      "更新紀錄的日期範圍 2026-06-03 至 2026-09-10 與「再往前只有一則未標日期的 v1」逐條核對無誤。",
+      "界線：全文沒有投放建議、沒有效益判斷、沒有平台比價、沒有「值得投／該試試」這類結論；廠商宣稱一律寫成「公告說」「OpenAI 表示」「文件寫明」；分批開放狀態（測試版、逐步開放、花費上限只給部分帳戶、每日花費上限限後付發票制帳戶）四處都寫出來了。AI 篇只有一個 callout，沒有投資免責段落。",
+      "摘要四句的每個數字都在正文出現；FAQ 五題的答案都是純文字、沒有網址；圖解四格與 hero_label 沒有任何數字；研究紀錄的 title 與內容包 zh-TW title 相同、diagram.caption 與 image caption 相同。"
+    ],
+    "left_for_the_owner": [
+      "**指派訊息要求本篇「含 8/11、8/18 兩則更新」，本輪把那一段移除了。** 原因是 sources 上限 4 條（check_article.py 硬性驗證 2–4），四個名額已經用在公告原文頁與三份撐起四個小節的開發者文件上，而那兩則各自需要自己的網址。三個可選方案：(a) 維持現狀，本文只講 5/5 與機制；(b) 換掉一份開發者文件、放進 8/18〈ChatGPT Ads expands across Europe〉，代價是砍掉對應的小節；(c) 另開一篇以 8/11 或 8/18 為事件日的新聞。兩則的公告頁 2026-09-18 都可讀（423,935 與 394,806 bytes）。若要寫回 8/18，繁中正文必須寫「8 月 19 日清晨（台北時間）」或註明 GMT，不可寫 8 月 18 日。",
+      "**openai.com/index/* 在本環境並沒有被擋。** BRIEF 與 corrections-ai.md 都把「openai.com/index/* 全站 403」當成既定前提，AI 垂直另有三篇（chatgpt-financial-services、chatgpt-storage-scale、openai-funding）據此把 sources[0] 指向 403 頁、正文改用 web.archive.org 封存。本輪實測那個前提在 2026-09-18 不成立，建議協調者讓那三篇也重試一次自己的公告頁。",
+      "zh-TW 段落字數改寫後是 2,9xx／3,000（見自檢輸出），幾乎沒有餘裕。要再補任何一句（例如 oCPC 的 403 例外、25,000 門檻與隱私區間）都得先換掉 sources 名額，而且要從別處刪等量的字——但不可以刪但書或限定詞來湊字數。",
+      "check_article.py 仍是兩條 FAIL，都在規格允許的清單內、且查核前後完全相同：AI 索引內容包尚未建立，兩個結尾連結的 text 都還是佔位字串，要等索引與相關文章由協調者處理。查核代理沒有動那兩個 link。",
+      "本文用的是 https://openai.com/index/new-ways-to-buy-chatgpt-ads/（帶尾斜線，curl -L 最後落地的網址）；不帶斜線的版本會 308 轉到這一個。RSS 的 link 與 guid 給的是不帶斜線的形式，兩者指向同一頁。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-18",
+      "method": "沒有參與撰稿，也沒有參與第一輪。四條 sources 當天自己以 curl -sL -A \"Mokaair-editorial\" 重抓（announce 200／376,525 bytes、api-overview 200／378,465、bidding-and-budgets 200／406,052、campaign-targeting 200／424,107，四份都是真正的正文），去標籤後用 Python 對 37 條 verbatim_quote 與另外 63 條正文主張做連續字串比對。重點放在第一輪改過與新寫的每一句：第一節兩段、第三節的門檻與投放條件、第四節的平台與地區、FAQ 第 2 與第 4 題、callout、description、event_date_basis。沒有猜任何網址，所有請求都不帶任何 email 或個人資料。",
+      "claims_checked": 100,
+      "edits": 12,
+      "findings": [
+        "verified_facts[0] 的 verbatim_quote「OpenAI May 5, 2026」不是連續字串：頁面印的是「May 5, 2026」，「OpenAI」是相鄰的作者元素，兩者只有在去標籤後才會黏在一起。引文與 event_date_basis 都已改；事件日本身（2026-05-05）不受影響。",
+        "正文第四節把 9/10 的網頁細分寫成「同一份文件的更新紀錄」，但那一段講的是 campaign-targeting，而帶日期的更新紀錄只長在 api-overview；campaign-targeting 上的 Changelog 字樣是整站側邊導覽。已改成「文件總覽頁的更新紀錄」。",
+        "第一節第一段把小標 Building the ChatGPT ad platform 寫成「接下來要建」，但該節第一句是 We’re still early in building advertising in ChatGPT——正在做，不是未來式。已改成「正在打造」。",
+        "第三節「文件寫的是除了預算與出價之外，還取決於…」：Delivery also depends 的 also 接的是前兩句的活動預算與帳戶花費上限，那段沒有提到出價。已改成「除了預算與帳戶花費上限之外」，並把「各層資源的狀態」收回原文的「資源狀態」。",
+        "FAQ 第 2 題把 return an error with the required amount 寫成「被告知差多少」（差額），與正文第三節的「告知需要多少」互相矛盾。已改成「需要的金額」。",
+        "「出價與預算頁裡的美元金額都寫明是示範用途」是全稱，原句限定在 Budget and bid examples。正文與 FAQ 第 2 題都已收回「預算與出價範例」。",
+        "摘要第 1 句與 FAQ 第 5 題的「不會把對話或個人資料交給廣告主」在正文找不到對應句（正文只有量測那一節的『彙整過的成效資料、看不到個別對話』）。已在第一節第二段補上這一句並歸因給公告，另外為它建一條 verified_fact（原文在公告開頭的總述段）。",
+        "第一輪為了來源名額移出的 2026-01-16／08-11／08-18 三則更新，在正文、摘要、FAQ、表格、圖解 nodes、image alt、description 裡逐詞掃過都沒有殘留（『摘要』『RSS』『feed』『讀不到』『擋』『8 月』『歐洲』各 0 次）；文章裡剩下的後續日期只有 2026-06-03 至 2026-09-10 的更新紀錄區間與 9/10 這一筆，兩者都由 sources[1]（api-overview）的 Changelog 撐住。",
+        "地區：campaign-targeting 全頁沒有可投放地區清單，只有『ISO 合法≠帳戶可投放』與一個連到 ads.openai.com 目錄的連結。正文與 FAQ 第 4 題都只寫「本文查核的四條來源都沒有列出地區清單」，沒有推定台灣可投放、也沒有寫成台灣不能投放；地點代碼目錄一次都沒有被當成依據（全文沒有 ads.openai.com）。",
+        "分批開放的四個狀態（測試版、逐步開放給更多企業、花費上限期間只給部分帳戶、每日花費上限限後付發票制帳戶）逐處核對一致；第二段裡『不是一次全面上線』是同一句內對『逐步開放給更多企業』的重複敘述，為了騰出字數刪掉，限定語本身在全文仍有六處。",
+        "轉換目標按有效點擊計費：bidding-and-budgets 四處互證（目標對照表兩列 billing event 都是 click、Conversion campaigns optimize for the selected action and bill for valid clicks.、Use billing_event_type: \"click\" for both Maximize Results strategies.、Both strategies use billing_event_type: \"click\".）——第一輪的結論成立。",
+        "broad 平台分組、『排除優先』限於受眾、2,500 的但書、地區／平台／受眾三項，在正文、表格、FAQ 與圖解 nodes 四處一致；『三組不是全部可填的值』與 9/10 的細分不再打架。"
+      ],
+      "verdict": "ok。第一輪的 needs_second_round 到此解除：骨幹（公告原文頁可讀、sources[0] 換頁、第一節重寫）本輪逐句回原文覆核成立，另修 12 處，其中 5 處是事實或歸因錯誤。重抓的 37 條 verbatim_quote 全部通過連續字串比對。zh-TW 段落字數 2,996／3,000。自檢只剩兩條規格允許的 FAIL（兩個結尾連結的 text 仍是佔位字串）。"
+    }
+  }
+}

@@ -1,0 +1,506 @@
+{
+  "slug": "ai-news-openai-broadcom-chip-20260624",
+  "event_date": "2026-06-24",
+  "event_date_basis": "Broadcom's press-release page carries JSON-LD \"datePublished\": \"2026-06-24T09:00:48-0400\" and the dateline \"SAN FRANCISCO and PALO ALTO, Calif., June  24, 2026  (GLOBE NEWSWIRE)\". CORRECTED BY THE INDEPENDENT FACT-CHECKER 2026-09-18: the writer's pass recorded that OpenAI's own post \"carries no independent dateline\". It does. The rendered page prints <p class=\"text-meta text-primary-100\">June 24, 2026</p> in its meta region, and the RSC payload carries \"publicationDateText\":\"June 24, 2026\" for slug index/openai-broadcom-jalapeno-inference-chip. So the 2026-06-24 event date is now corroborated by a visible first-party date on BOTH companies' own pages, not by Broadcom alone. Both companies describe the same single announcement. The two publication timestamps that previous agents recorded (OpenAI feed pubDate 06:00 GMT vs Broadcom IR 13:00 GMT) are seven hours apart on the same calendar day and both fall on 2026-06-24 in Taipei (14:00 and 21:00), so news_date 2026-06-24 is safe. The EFFECTIVE date is different and must not be conflated: the platform is \"designed for initial deployment by the end of 2026\", with gigawatt-scale data centres \"with Microsoft and other partners beginning in 2026\" per Hock Tan. No ship date, general-availability date or purchase date is stated anywhere.",
+  "title": "OpenAI 與 Broadcom 發表 Jalapeño 晶片：官方說的階段、分工，與還沒公布的事",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "publisher": "Broadcom Inc.",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI and Broadcom announce strategic collaboration to deploy 10 gigawatts of OpenAI-designed AI accelerators",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+      "publisher": "Broadcom Inc.",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI and Broadcom unveil LLM-optimized inference chip",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "Upgraded from the prior two passes (2026-09-16 researcher and fact-checker), both of which held OpenAI's own post to be permanently 403 and therefore either included the RSS feed in sources[] (a BRIEF violation) or downgraded the verdict. Re-tested today, 2026-09-18, and the access picture has changed materially.\n\nRECIPE, all curl -sL, no personal data in any request:\n(1) https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor -> with -A \"Mokaair-editorial\": connection fails (this run: curl exit 56, \"Failure with receiving network data\", HTTP_STATUS 000, 0 bytes, request hung past 120s before failing). With curl's default User-Agent (no -A flag), same URL -> HTTP 200, 70,913 bytes, byte-for-byte the same size the 2026-09-16 researcher recorded. This is a THIRD independent reproduction of the same host-level quirk, each run surfacing a different curl exit code (researcher: 52 \"Empty reply from server\"; fact-checker: 92 \"HTTP/2 stream INTERNAL_ERROR\"; this run: 56) but always on investors.broadcom.com specifically and always resolved by dropping the custom UA on that one host. Confirmed genuine article body: <title> matches, and Jalape/Celestica/Tomahawk/GLOBE NEWSWIRE/tape-out/Brockman/Hock Tan/Richard Ho/\"may be the fastest\"/\"substantially better than current state-of-the-art\"/\"designed for initial deployment by the end of 2026\"/\"undue reliance\" all present by direct grep.\n(2) https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10 -> default UA -> HTTP 200, 71,384 bytes (again identical to both prior agents' byte counts). Confirmed genuine: title matches, \"800 million weekly active users\", \"second half of 2026\", \"end of 2029\", \"term sheet\", \"Kawwas\", \"Altman\" all present.\n(3) https://openai.com/index/openai-broadcom-jalapeno-inference-chip -> WITH \"Mokaair-editorial\" (no fallback needed) -> 1 redirect to the canonical .../jalapeno-inference-chip/ (trailing slash), HTTP 200, 403,576-403,585 bytes (two fetches a few minutes apart varied by ~9 bytes, immaterial). This is the FIRST successful read of OpenAI's own post in this article's research history; both 2026-09-16 passes got HTTP 403 with a ~9.8 KB Cloudflare body on this exact URL and its variants. Sites' bot-protection configurations are not static; today's fetch is genuine, not a fluke of URL guessing (the URL itself is unchanged from what the official RSS feed printed on 2026-09-16). The page is a Next.js app-router page: the readable prose is not in the initial HTML as plain <p> text but inside `self.__next_f.push([1,\"...\"])` RSC-stream chunks, each a JSON-encoded string. Extracted with a small Python script that bracket-matches each push(...) call and json.loads()s the array, then filtered the resulting quoted strings for prose (>=35 chars, >=5 spaces, >=25 letters, not a URL/className). This produced 72 candidate strings that included the full article body, all four section headings, all three quotes, and the meta description/og:description. Cross-checked every sentence used in the article against this extraction before writing verbatim_quote fields below. The RSS feed (openai.com/news/rss.xml) was NOT re-fetched and is NOT in sources[], per corrections-ai.md source_list_fix #1 (two Broadcom pages already meet the 2-4 minimum, and BRIEF says sources holds article-page URLs, not feed URLs); this also removes the need to carry the four feed-only facts (exact RSS <item> pubDate/description, and the two 2026-08-25 follow-up post titles) that the prior research record leaned on — none of those four are used as article evidence here.\n\nAll five corrections-ai.md must_fix items and all corrections-ai.md must_add items were re-verified against today's own fetches (not copied from the correction file) before being applied; see corrections_applied.",
+  "verified_facts": [
+    {
+      "fact": "The announcement was made jointly by OpenAI and Broadcom, dated 2026-06-24 by Broadcom's dateline and JSON-LD.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SAN FRANCISCO and PALO ALTO, Calif., June  24, 2026  (GLOBE NEWSWIRE) -- OpenAI and Broadcom (NASDAQ: AVGO) today unveiled Jalapeño"
+    },
+    {
+      "fact": "The product name is spelled Jalapeño (tilde n) in both companies' own text, never \"Jalapeno\".",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Jalapeño"
+    },
+    {
+      "fact": "Broadcom's own headline differs from OpenAI's own headline for the same announcement: Broadcom capitalises it as an 'Intelligence Processor', OpenAI's own page calls it an 'inference chip'. Both are first-party.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI and Broadcom Unveil LLM-Optimized Intelligence Processor"
+    },
+    {
+      "fact": "OpenAI's own page title for the same announcement, read directly (not via feed).",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI and Broadcom unveil LLM-optimized inference chip"
+    },
+    {
+      "fact": "Broadcom's category word for Jalapeño is 'Intelligence Processor'; the word GPU never appears in either company's own post.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI and Broadcom (NASDAQ: AVGO) today unveiled Jalapeño, OpenAI’s first Intelligence Processor: an accelerator architected around OpenAI’s vision for the future of LLM inference, and the first AI accelerator in a multi-generation compute platform the companies are building together to make advanced AI faster, more reliable, and more accessible to more people."
+    },
+    {
+      "fact": "Division of labour, OpenAI's and Broadcom's own description of who did what. Self-description of credit and process, not externally observable -> vendor claim (flipped from false to true per corrections-ai.md must_fix #1).",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI designed the chip from scratch around its deep understanding of LLM fundamentals, informed by its roadmap of models, kernels, serving systems, and product needs, with partners Broadcom and Celestica, helping industrialize the platform through chip implementation, board, rack system integration, high-performance networking, and scalable production systems."
+    },
+    {
+      "fact": "Jalapeño's architecture is described as flexible enough to work with any LLM, guided by OpenAI's own insight into industry-wide inference needs. This is the sentence most likely to be misread as 'the chip will be sold to others' — it is an architecture claim, and neither post says the chip will be sold, rented or benchmarked externally, or names any third-party customer. Promoted into verified_facts per corrections-ai.md must_add (previously only sat inside not_said).",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Jalapeño is designed with flexibility to work with all LLMs guided by OpenAI’s insights into the inference needs of current and future AI models across the industry."
+    },
+    {
+      "fact": "THE ROLE SPLIT. This closing sentence is the only place in either 2026-06-24 page that says which partner does what: Broadcom = silicon implementation, networking and connectivity technologies; Celestica = board, rack and system expertise. The earlier sentence ('with partners Broadcom and Celestica, helping industrialize the platform through chip implementation, board, rack system integration, high-performance networking, and scalable production systems') lumps the whole list onto BOTH partners and must not be used to assign board/rack work to Broadcom. Re-verified verbatim on both pages today; OpenAI's page differs only by a serial comma ('board, rack, and system expertise') and by dropping the comma before 'and expanding'. is_vendor_claim flipped false->true by the independent fact-checker 2026-09-18: who contributed which part is a self-description of process and credit, externally unobservable, same reasoning corrections-ai.md must_fix #1 applied to the division-of-labour fact. Celestica's own newsroom and RSS were checked on 2026-09-16 by the previous fact-checker and NOT re-checked on 2026-09-18; they are not in sources[], so no article sentence rests on them and the article now says only that the three cited documents contain no statement from Celestica.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "combining OpenAI-designed accelerators with Broadcom silicon implementation, networking, and connectivity technologies; and Celestica’s board, rack and system expertise"
+    },
+    {
+      "fact": "The only Broadcom product family named anywhere in either 2026-06-24 page is Tomahawk networking silicon (searched today: 'Tomahawk' 1 occurrence in the Broadcom release body, 1 in OpenAI's post body; no other Broadcom product name present — Ethernet, PCIe, Jericho, Trident and Thor are all 0 on both 2026-06-24 pages). Note the source's own 'including', so this is not a complete list of what Broadcom contributes. SCOPE WARNING added by the second-round fact-checker 2026-09-18: this 'only' holds for the two 2026-06-24 pages ONLY. The third cited source, the 2025-10-13 release, names Broadcom's Ethernet (5 occurrences), PCIe and optical connectivity portfolios in Charlie Kawwas's quote, so an unscoped 'the only Broadcom product named' would be false across sources[]. The article therefore writes the parenthetical as '其中只點名 Tomahawk 網路晶片一項產品', tied to the 2026-06-24 role-split sentence it sits in.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Broadcom’s silicon implementation and networking technologies, including Tomahawk networking silicon, help bring the platform to large-scale production."
+    },
+    {
+      "fact": "Physical handover scene: Hock Tan and Charlie Kawwas delivered the chip to Sam Altman and Greg Brockman. NOTE ON TITLE DRIFT: Broadcom's own page titles Kawwas 'Semiconductor Solutions President'; OpenAI's own page, describing the identical scene, titles him only 'President' (drops the qualifier). Confirmed by direct string search on both fetched pages today — not a transcription error by either prior agent. The article uses only Hock Tan by name (title identical on both pages: 'Broadcom President and CEO') and does not attach a title to Kawwas, to avoid mixing the two releases' wording.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Jalapeño was delivered to OpenAI CEO Sam Altman and President Greg Brockman by Broadcom President and CEO Hock Tan and Semiconductor Solutions President Charlie Kawwas, marking an important step in OpenAI’s strategy to build the full stack behind its models and products."
+    },
+    {
+      "fact": "As of the announcement, engineering samples of the chip are running ML workloads in the lab at production target frequency and power, including GPT-5.3-Codex-Spark. The page never says 'not a shipping product' — that framing was the prior researcher's own inference and has been removed per corrections-ai.md must_fix #1; only the official sentence is used. An unobservable in-lab status self-reported by the companies is a vendor claim.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Engineering samples of the Jalapeño chip are running ML workloads in the lab at production target frequency and power, including GPT-5.3-Codex-Spark."
+    },
+    {
+      "fact": "OpenAI says it is still measuring final performance; the only performance statement offered is directional and unitless: perf/watt 'substantially better than current state-of-the-art', from early testing. No named baseline, no competitor named anywhere in either post. REFINED BY THE INDEPENDENT FACT-CHECKER 2026-09-18: corrections-ai.md must_add described a bullet-vs-body gap on this claim ('better' vs 'substantially better') and told the writer to use the body wording and note the difference. Having now read BOTH pages, the gap exists on BROADCOM'S PAGE ONLY. Broadcom's bullet 3: 'Will deliver performance per watt better than current state-of-the-art, based on early testing'. OpenAI's bullet 3 is worded differently AND already carries the hedge: 'Early testing shows that the first-generation accelerator will deliver performance per watt substantially better than current state-of-the-art'. Both bodies say 'substantially better'. So three of the four first-party renderings say 'substantially'; the article uses 'substantially' and this is now the majority wording, not a contested one.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "While OpenAI is still measuring final performance, early testing shows that Jalapeño will deliver performance per watt substantially better than current state-of-the-art."
+    },
+    {
+      "fact": "A detailed technical report on measured performance is promised for a later, unspecified date. A promise about a future publication, not an observed fact -> vendor claim (per corrections-ai.md must_fix #1, 'lighter' item).",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A detailed technical report on performance will be presented in the coming months."
+    },
+    {
+      "fact": "Architecture claim, qualitative only, no utilization percentage given.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The architecture reduces data movement and balances compute, memory, and networking resources to achieve realized utilization much closer to theoretical peak performance."
+    },
+    {
+      "fact": "The 'nine months' schedule figure is stated two ways on the same page: the bullet says design-to-PRODUCTION, the body says design-to-manufacturing-TAPE-OUT. Broadcom's own section heading on both its page and OpenAI's page independently corroborates tape-out as the official framing for this stage, not production/mass manufacturing. Body wording and section heading used in the article; bullet's 'production' wording explicitly not used per must_not_write.",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Nine-month tape-out, accelerated by OpenAI models"
+    },
+    {
+      "fact": "Full sentence for the nine-months/tape-out claim (duration itself is company-stated -> vendor claim per corrections-ai.md must_fix #1 'lighter' item).",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Jalapeño was co-developed from initial design to manufacturing tape-out in just nine months, and the custom AI accelerator program represents what we believe to be the fastest ASIC development cycle ever achieved in high-performance advanced semiconductors."
+    },
+    {
+      "fact": "IMPORTANT WORDING DIFFERENCE, confirmed by direct comparison of both companies' own pages today: Broadcom hedges the 'fastest ASIC' claim as 'what MAY BE the fastest'; OpenAI's own post, describing the identical claim, hedges it differently as 'what WE BELIEVE TO BE the fastest'. Not a transcription error on either side — both strings independently confirmed present verbatim on their respective official pages. Do not merge into one quote or silently pick one; the article presents both. FULL PAGE-VS-PAGE DIFF, run block by block by the SECOND-ROUND fact-checker 2026-09-18 (difflib over whitespace-folded, NFKC-normalised text; 19 Broadcom blocks against 24 OpenAI blocks) so nobody has to guess how big the difference is: ELEVEN blocks are word-for-word identical — bullets 1, 2, 4 and 5; the opening 'today unveiled Jalapeño' paragraph (Broadcom's only extra is its GLOBE NEWSWIRE dateline); the 'While OpenAI is still measuring final performance' paragraph; the Richard Ho quote; the Hock Tan quote; and all three shared section headings plus the 'blank-slate design' paragraph and the 'The same models served to users' paragraph. FIVE blocks genuinely differ, all of them small: (1) bullet 3, the largest difference — Broadcom 'Will deliver performance per watt better than current state-of-the-art, based on early testing' vs OpenAI 'Early testing shows that the first-generation accelerator will deliver performance per watt substantially better than current state-of-the-art'; (2) the handover paragraph, 'Semiconductor Solutions President Charlie Kawwas' vs 'President Charlie Kawwas'; (3) the Brockman attribution, 'President and Co-Founder, OpenAI' vs 'President and Co-Founder of OpenAI'; (4) 'what may be' vs 'what we believe to be'; (5) the closing role-split sentence, where OpenAI drops the comma before 'and expanding' and adds a serial comma in 'board, rack, and system expertise'. Plus the typography cases in the TYPOGRAPHY fact, and the two different headlines. STRUCTURAL difference: OpenAI's page carries FOUR paragraphs Broadcom's does not ('That is the full-stack advantage...', 'Jalapeño strengthens the flywheel...', 'The point of this work is simple...', 'Democratizing AI means...') plus a FOURTH section heading, 'Making advanced AI more broadly available'; Broadcom's page carries the dateline, About/Press Contacts and the Cautionary Note that OpenAI's does not. So neither 'two different framings' nor 'byte-identical' is true: the shared prose is the same copy, and OpenAI's page is longer. The article says '大半是同一份文稿' for exactly this reason.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the custom AI accelerator program represents what may be the fastest ASIC development cycle ever achieved in high-performance advanced semiconductors"
+    },
+    {
+      "fact": "TYPOGRAPHY, added by the independent fact-checker 2026-09-18 so that future agents do not 'correct' a source. The two companies publish largely the SAME press-release prose, but not the same characters, and an exact-substring search for a quote taken from one page can fail on the other. Three confirmed cases: (1) apostrophe in the flexibility sentence — Broadcom prints ASCII \"OpenAI's insights\" (U+0027), OpenAI prints \"OpenAI’s insights\" (U+2019), while every other OpenAI possessive on Broadcom's page uses U+2019; (2) the model name — Broadcom prints GPT-5.3-Codex-Spark with ASCII hyphens, OpenAI prints GPT‑5.3‑Codex‑Spark with U+2011 NON-BREAKING HYPHEN, the same U+2011 trap BRIEF warns about for link text; (3) the closing sentence uses a serial comma and no comma before 'and expanding' on OpenAI's page only. The article writes GPT-5.3-Codex-Spark with ASCII hyphens, matching the Broadcom page it is cited from.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Jalapeño is designed with flexibility to work with all LLMs guided by OpenAI's insights into the inference needs of current and future AI models across the industry."
+    },
+    {
+      "fact": "Deployment timing: 'designed for' is the official hedge, not a committed date. This sentence is inside the scope of Broadcom's own forward-looking-statements notice (see next fact) -> vendor claim (flipped from false to true per corrections-ai.md must_fix #1).",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Jalapeño is the first step in a multi-generation compute platform designed for initial deployment by the end of 2026, and expanding in the years ahead"
+    },
+    {
+      "fact": "Broadcom's release carries an explicit forward-looking-statements notice under U.S. securities law naming the Jalapeño delivery and the gigawatt-scale data-centre deployment as forward-looking, with the issuer's own instruction against over-relying on them. This point is written directly into the article body, not left in notes only, per corrections-ai.md live_data_warnings / must_not_write #15.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": false,
+      "verbatim_quote": "undue reliance should not be placed on such statements"
+    },
+    {
+      "fact": "Hock Tan (Broadcom President and CEO — identical title on both companies' own pages) names Microsoft as one data-centre partner; the only partner named anywhere in either post besides Celestica.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By co-developing our industry-leading silicon directly with OpenAI, we are enabling the deployment of gigawatt scale data centers with Microsoft and other partners beginning in 2026."
+    },
+    {
+      "fact": "Greg Brockman quote, FRAGMENT 1 of 2. SPLIT BY THE INDEPENDENT FACT-CHECKER 2026-09-18: the writer's single joined string was the only one of this record's 26 verbatim_quote values that failed exact-substring verification against today's fetches, because on the page the two quoted fragments are separated by the attribution — the page reads: “The world is moving to a compute-powered economy,” said Greg Brockman, President and Co-Founder, OpenAI. “Jalapeño is part of our long-term... The writer's version also silently changed the fragment-ending comma to a full stop. Recorded as two separate contiguous quotes per corrections-ai.md must_fix #2 and BRIEF error type 1.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The world is moving to a compute-powered economy,"
+    },
+    {
+      "fact": "Greg Brockman quote, FRAGMENT 2 of 2: frames the chip as part of a full-stack strategy for more abundant compute and cheaper, more reliable AI. Attribution wording differs between the two first-party pages: Broadcom prints 'President and Co-Founder, OpenAI', OpenAI's own page prints 'President and Co-Founder of OpenAI'. The article quotes the two fragments as two fragments and marks the truncation with an ellipsis rather than ending the quote early at a point the page does not end it.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Jalapeño is part of our long-term full-stack infrastructure strategy to make compute more abundant, resulting in AI which is faster, more reliable, more affordable for people and businesses, and can be used to solve more important problems. By designing more of the stack ourselves, we can serve more intelligence with greater efficiency and keep pushing advanced AI toward broader access."
+    },
+    {
+      "fact": "OpenAI's own post states, in a conditional, industry-wide, numberless sentence, that AI-assisted chip design could lower industry-wide compute cost. This sentence is present verbatim on BOTH companies' own pages (confirmed by direct string search today), so must_not_write's old blanket 'no cost language' instruction was wrong; corrections-ai.md must_add narrows the ban to only the unsourced '50% cheaper than GPUs' figure, which was searched for directly today in both full page texts and is absent from both (0 occurrences of '50%', '50 percent' or 'cheaper than' on either official page).",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If AI can help engineers design better chips faster, it can lower the cost of compute across the industry and help democratize access to advanced AI."
+    },
+    {
+      "fact": "BACKGROUND (2025-10-13, a separate earlier announcement): a collaboration for 10 gigawatts of custom AI accelerators, OpenAI designing, Broadcom developing and deploying.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI and Broadcom Inc. (NASDAQ: AVGO) today announced a collaboration for 10 gigawatts of custom AI accelerators. OpenAI will design the accelerators and systems, which will be developed and deployed in partnership with Broadcom."
+    },
+    {
+      "fact": "BACKGROUND (2025-10-13): stated rollout window. A future schedule commitment -> vendor claim (flipped from false to true per corrections-ai.md must_fix #1 'lighter' item).",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Broadcom to deploy racks of AI accelerator and network systems targeted to start in the second half of 2026, to complete by end of 2029"
+    },
+    {
+      "fact": "BACKGROUND (2025-10-13): commercial status at the time was a signed term sheet plus longer-standing co-development/supply agreements, not a completed, priced contract.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI and Broadcom have long-standing agreements on the co-development and supply of the AI accelerators. The two companies have signed a term sheet to deploy racks incorporating the AI accelerators and Broadcom networking solutions."
+    },
+    {
+      "fact": "BACKGROUND (2025-10-13): self-reported user count, dated to that release, absent from the 2026-06-24 release entirely. Clearest mislabel in the prior research record -> flipped from false to true per corrections-ai.md must_fix #1, and the article attaches the 2025-10-13 date every time it is used.",
+      "url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI has grown to over 800 million weekly active users and strong adoption across global enterprises, small businesses, and developers."
+    },
+    {
+      "fact": "Neither the 2026-06-24 release nor OpenAI's own post repeats the '10 gigawatts' figure or states that Jalapeño is the accelerator covered by the 2025-10-13 collaboration. Checked today by full-text search of all three sources: '10 gigawatts' appears 0 times in either 2026-06-24 page; 'gigawatt' appears only in the unquantified 'gigawatt scale' phrase.",
+      "url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To be deployed at gigawatt scale with data center partners, over multiple generations"
+    }
+  ],
+  "not_said": [
+    "NO PRICE of any kind for Jalapeño. No unit price, per-token price, or cost-per-inference figure; no statement that any ChatGPT or API price will change on any date.",
+    "NO MANUFACTURING DETAIL. No foundry named (TSMC is absent from both pages), no process node, die size, transistor count, package type, clock frequency or wattage. 'Production target frequency and power' carries no number.",
+    "NO MEMORY SPECIFICATION. HBM, memory capacity and bandwidth are not mentioned; 'memory' and 'memory movement' appear only as architectural words.",
+    "NO BENCHMARK NUMBER anywhere in either company's own text: no tokens/second, no latency figure, no perf-per-watt ratio, no percentage, no comparison table. Confirmed today by full-text search of the OpenAI post as well as both Broadcom pages.",
+    "NO NAMED COMPETITOR. 'current state-of-the-art' is never defined; NVIDIA, AMD, Google TPU and Trainium are absent from all three sources (checked today: 0 occurrences of 'NVIDIA', 'Nvidia' or 'GPU' in the OpenAI post).",
+    "NO COST-SAVINGS PERCENTAGE. '50%', '50 percent' and 'cheaper than' all return 0 occurrences on both the Broadcom unveil page and OpenAI's own post, checked today. The only cost language present on both pages is the conditional, numberless, industry-wide sentence recorded as a verified fact above.",
+    "NO QUANTITY. Number of chips, racks, systems or data-centre sites is not stated anywhere.",
+    "NO EXACT DEPLOYMENT DATE, region or site list. Only 'by the end of 2026' and 'beginning in 2026'.",
+    "NO EXTERNAL SALE. 'Designed with flexibility to work with all LLMs' is an architecture claim; neither page says the chip will be sold, rented, or benchmarked by any outside party, and no third-party customer is named.",
+    "NO CONSUMER-FACING COMMITMENT WITH A DATE. OpenAI's own post has one conditional sentence about what infrastructure improvements 'can show up as' (a faster ChatGPT answer, a cheaper API product, etc.) but it names no date, no percentage and no guarantee; treated in the article as OpenAI's own hedge, not a promise.",
+    "NO REGIONAL INFORMATION. Taiwan, Asia, or any country besides the US datelines/Microsoft mention is absent from all three sources.",
+    "NO MODEL-SUPPORT LIST beyond GPT-5.3-Codex-Spark as one lab workload on engineering samples.",
+    "NO FINANCIAL TERMS of the OpenAI-Broadcom arrangement in the 2026-06-24 release (no order value, volume commitment, or duration); the 2025-10-13 release goes only as far as 'a term sheet'.",
+    "NO SECOND-GENERATION DETAIL. 'Multi-generation roadmap' and 'over multiple generations' are asserted with no names, dates or specs for any later generation.",
+    "NO REGULATORY, EXPORT-CONTROL OR SUPPLY-CHAIN CONDITION mentioned in any of the three sources."
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Jalapeño costs roughly 50% less than typical AI GPUs ('50% cheaper than Nvidia GPUs').",
+      "seen_where": "Search-result snippets and aggregator/news coverage (TechCrunch, Bloomberg, Seeking Alpha and similar) surfaced while researching this event.",
+      "why_excluded": "Checked directly today against the full text of both the Broadcom unveil page and OpenAI's own post (now readable): 0 occurrences of '50%', '50 percent' or 'cheaper than' on either. The figure exists nowhere in first-party text reachable from here; not written."
+    },
+    {
+      "claim": "Jalapeño is 'OpenAI's first custom chip' (unqualified).",
+      "seen_where": "TechCrunch-style headline framing seen in search results.",
+      "why_excluded": "The official wording is narrower and is used instead: 'OpenAI's first Intelligence Processor' / 'the first AI accelerator in a multi-generation compute platform'."
+    },
+    {
+      "claim": "OpenAI's 2026-08-25 follow-up posts ('Jalapeño's first results show industry-leading speed and efficiency in AI inference'; 'The full stack behind abundant intelligence', a CFO piece) and any figures in them.",
+      "seen_where": "Previously known only via openai.com/news/rss.xml, which is not in this article's sources[] (see sourcing_notes). Not re-fetched as article pages today because they are out of scope for the 2026-06-24 event and would need their own sourcing pass.",
+      "why_excluded": "With the feed out of sources[], no fact whose only support was the feed can be written. These two posts are left for a separate future article rather than summarised here from a source that is not cited."
+    },
+    {
+      "claim": "Broadcom's Q3 FY2026 AI semiconductor revenue figures as evidence of Jalapeño demand.",
+      "seen_where": "Broadcom's Q3 FY2026 earnings release, dated 2026-09-02 (checked by the 2026-09-16 researcher, not re-fetched today since it is not in sources[]).",
+      "why_excluded": "That release was reported to contain zero occurrences of 'Jalapeño' or 'OpenAI'. Also financial/market framing, out of scope for this vertical regardless."
+    },
+    {
+      "claim": "The PDF version of the Broadcom release and the www.broadcom.com/company/news/product-releases corporate-newsroom mirror.",
+      "seen_where": "Linked from the Broadcom IR page / found via search.",
+      "why_excluded": "PDF: valid application/pdf per the 2026-09-16 pass but unreadable in this container (image-encoded stream, no usable text extraction). Newsroom mirror: a JS shell whose body never reaches curl, only the <title>. Neither read, neither cited."
+    },
+    {
+      "claim": "That Jalapeño is the accelerator being deployed under the 10 GW / 'complete by end of 2029' schedule from 2025-10-13.",
+      "seen_where": "The natural reading of the two Broadcom releases and OpenAI's own post side by side.",
+      "why_excluded": "Checked today: none of the three sources states this. '10 gigawatts' does not appear in either 2026-06-24 page. Written as two separate, separately dated announcements."
+    },
+    {
+      "claim": "OpenAI's conditional sentence about infrastructure improvements 'showing up as' a faster ChatGPT answer, a Codex task needing less waiting, or a cheaper API product.",
+      "seen_where": "OpenAI's own post, read in full today.",
+      "why_excluded": "Considered for inclusion and ultimately left out of the article body for space; it is a real, verifiable sentence (conditional, numberless, no date) but is not essential to the five-section structure and risks being skimmed as a promise even though it is hedged. Recorded here so a future editor knows it exists and is usable if the article is expanded."
+    }
+  ],
+  "editorial_brief": "READER: a Taiwanese general reader who uses ChatGPT or a similar assistant and has no hardware background. Question answered: 'why does the company that makes the model now make the chip, and what does that change for me?' — not 'is this chip good'. ANGLE: an AI service is a stack (product, model, serving system, chip); on 2026-06-24 OpenAI and Broadcom showed the bottom layer of that stack for the first time, and the interesting part is what an announcement at this stage can and cannot tell you. SPINE: the gap between announcement and availability — a chip that has taped out and is running in a lab on engineering samples, a deployment 'designed for' the end of 2026, a performance report promised 'in the coming months', and a formal forward-looking-statements notice attached by Broadcom itself. FIVE SECTIONS: (1) what was announced and in whose words, noting the two companies' own headlines differ; (2) who did which part — OpenAI the architecture, Broadcom the silicon and Tomahawk networking, Celestica the board/rack/system (uncorroborated by Celestica itself) — table here; (3) what stage it is actually at: nine months to tape-out (not production, and the two companies even hedge the 'fastest ever' claim differently from each other), engineering samples running GPT-5.3-Codex-Spark, no measured numbers — diagram here; (4) deployment: gigawatt scale, end of 2026, Microsoft named, the forward-looking-statement caveat, and the separate, earlier 2025-10-13 10 GW collaboration kept distinct; (5) how to read a chip announcement — observed fact vs vendor claim vs forward-looking statement, including the conditional industry-wide cost sentence that both companies' own pages carry (not a Jalapeño-specific savings figure). TONE: only figures that appear in the body are used in the table/diagram: 2026-06-24, nine months, end of 2026, 2025-10-13, 100 億瓦/10 gigawatts (attached to the 2025 announcement only), second half of 2026 and end of 2029 (2025 announcement only), and over 800 million weekly active users (2025-10-13 only, always dated). DELIBERATELY OUT OF SCOPE: whether this threatens NVIDIA, Broadcom's or OpenAI's finances, chip-industry supply-chain politics, Taiwanese suppliers, any judgement on whether custom silicon is the right strategy.",
+  "must_not_write": [
+    "Do not write any cost or price comparison with a number, in particular the unsourced '50% cheaper than GPUs' figure. (Narrowed per corrections-ai.md must_add: the conditional, numberless, industry-wide sentence about AI helping lower compute cost IS in both official pages and MAY be used, clearly hedged as conditional.)",
+    "Do not write a foundry, process node, memory type/capacity, transistor count, clock speed or wattage. None is stated on any of the three sources.",
+    "Do not write that Jalapeño beats NVIDIA or any named chip. The only claim is 'performance per watt substantially better than current state-of-the-art', undefined and unmeasured, and OpenAI says it is still measuring final performance.",
+    "Do not write that the chip is 'in production' or '量產'. Both companies' own pages describe tape-out and engineering samples in the lab; Broadcom's own section heading independently confirms 'tape-out' as the official framing.",
+    "Do not attach the '10 GW' or 'by end of 2029' figures to Jalapeño, or claim it is the accelerator from the 2025-10-13 collaboration. Keep the two announcements separately dated.",
+    "Do not write that anyone can buy, rent, order or benchmark the chip, or that it will be offered to other companies.",
+    "Do not promise users anything with a date: no 'ChatGPT will get faster on X date', no 'prices will fall'. OpenAI's own conditional sentence about possible downstream effects, if used, must keep its hedge ('can show up as') intact.",
+    "Do not write about Taiwan availability, Taiwanese suppliers or local pricing — absent from all three sources.",
+    "Do not write investment framing of any kind: no AVGO share price, no revenue figures, no buy/sell language. This AI-vertical article carries no finance topic and no investment disclaimer.",
+    "Do not describe it as a GPU. Official words only: Intelligence Processor, AI accelerator, inference chip, custom AI chip.",
+    "Do not claim 'fastest ASIC development ever' as settled fact — write both companies' own hedges ('may be' / 'we believe to be') and do not merge them into one quote.",
+    "Do not re-explain what Codex or GPT-5.3-Codex is; ai-news-gpt-53-codex-20260205 already covers it.",
+    "Do not attach a specific title to Charlie Kawwas without checking which release is being quoted — Broadcom's own page and OpenAI's own page title him differently for the same scene.",
+    "Do not say 'we tested it' or imply hands-on measurement. Every performance sentence reads as attributed to Broadcom and/or OpenAI.",
+    "Do not omit the forward-looking-statements point: Broadcom's own notice says the deployment language should not be unduly relied on. This is in the article body, not only in notes."
+  ],
+  "live_data_warnings": [
+    "The openai.com bot-protection state is not stable: both 2026-09-16 passes got HTTP 403 on OpenAI's own post; on 2026-09-18 the same URL returned HTTP 200 with full content on the first attempt using the mandated UA 'Mokaair-editorial', reproduced independently THREE times that day (writer, first-round fact-checker, second-round fact-checker). The byte count drifts between fetches — 403,575 / ~403,585 in the morning runs, 403,533 in the second-round run — because the page embeds a rotating 'latest posts' rail; the article body inside the RSC stream was identical in all of them (230,738-230,739 characters). A future re-check could go either way and must be re-tested, not assumed from this record.",
+    "investors.broadcom.com continues to refuse the User-Agent 'Mokaair-editorial' — now FIVE independent reproductions with four distinct curl exit codes (researcher 52 'Empty reply from server', 2026-09-16 fact-checker 92 'HTTP/2 stream INTERNAL_ERROR', writer 56 'Failure with receiving network data', 2026-09-18 first-round fact-checker 28 timeout after 60s, 2026-09-18 second-round fact-checker 28 timeout after 45s, 0 bytes, HTTP 000). The failure mode is unstable but the host is not: dropping the custom UA on this host specifically returns HTTP 200 every time, byte-identical (70,913 and 71,384) across all five runs. Anyone re-verifying must fall back to curl's default UA on investors.broadcom.com, or they will wrongly conclude the source is dead. No other host in this record needs the fallback, and no request on any host may carry an email, name or other personal data.",
+    "'Over 800 million weekly active users' is a 2025-10-13 snapshot self-reported by OpenAI in a press release; it is not re-measured here and must not be presented as current.",
+    "Byte counts for the two Broadcom pages (70,913 and 71,384) and OpenAI's page (~403,580, varied by under 10 bytes between two fetches minutes apart) are today's live values, recorded for reproducibility, not facts for the article."
+  ],
+  "corrections_applied": [
+    "must_fix 1 (five is_vendor_claim mislabels: division-of-labour self-description, 'engineering samples' status, 'designed for initial deployment by the end of 2026', 'to be deployed at gigawatt scale...', 'over 800 million weekly active users'): all five re-verified against today's own fetches and applied as is_vendor_claim: true, each attributed to 'Broadcom 與 OpenAI 表示' / 'OpenAI 表示' in the article body. The lighter-weight items in the same must_fix bullet (nine-months duration itself, the 2025-10-13 H2-2026-to-2029 window, the 'coming months' technical-report promise) were also flipped to true.",
+    "must_fix 2 (verbatim_quote for the five opening bullets joined with ' / ', which does not exist on the page as a string): not reproduced as a joined string anywhere in this record or the article; each bullet's content is either paraphrased in prose or cited as its own separate verbatim_quote.",
+    "must_add (cost language exists and must_not_write #1 was too broad): the conditional 'If AI can help engineers design better chips faster...' sentence is now a verified_fact (is_vendor_claim true) and appears in the article body, clearly hedged; confirmed present verbatim on BOTH companies' own pages today, which the prior two passes could not do since OpenAI's page was unreadable to them.",
+    "must_add ('designed with flexibility to work with all LLMs' promoted from not_said to verified_facts): applied, is_vendor_claim true, with the no-external-sale caveat kept in the same article sentence.",
+    "must_add (bullet-vs-body discrepancy on performance wording, 'better' vs 'substantially better'): applied — article uses the body's 'substantially better than current state-of-the-art' wording throughout.",
+    "must_add (three unrecorded section headings, middle one corroborating tape-out): applied — 'Nine-month tape-out, accelerated by OpenAI models' is cited directly as a verified_fact and referenced in the article as independent corroboration that production/量產 is not the official framing. (A fourth heading, 'Making advanced AI more broadly available', was found on OpenAI's own page today but is not needed by the article and is not written up as a separate fact.)",
+    "must_add (Richard Ho quote quirk, 'do not silently fix'): the quote is confirmed to read identically on OpenAI's own page (not just Broadcom's, as the prior researcher could only show), so the oddity is genuine and not a Broadcom transcription artefact. Not used in the article body for space; recorded here rather than quoted-and-fixed.",
+    "must_add (Kawwas/Altman title drift across the two 2026-06-24 pages, not just across the two dates): re-discovered independently today — Broadcom's page says 'Semiconductor Solutions President Charlie Kawwas', OpenAI's own page (same scene) says only 'President Charlie Kawwas'. The article does not state a title for Kawwas at all, sidestepping the conflict rather than picking one source silently.",
+    "must_add (Celestica uncorroborated): kept in the article as an explicit caveat sentence.",
+    "must_add (date handling, UTC/Taipei, two publication timestamps 7 hours apart but same calendar day): re-confirmed via event_date_basis above; news_date 2026-06-24 used.",
+    "source_list_fix 1 (drop the RSS feed URL from sources[]): applied — sources[] holds only article-page URLs. Facts that depended solely on the feed (exact <item> metadata, the two 2026-08-25 follow-up titles) are not used as article evidence; recorded in unverified_or_excluded instead.",
+    "source_list_fix 2 (sourcing_verdict 'full' was overstated because OpenAI's own post was unread): superseded by today's successful fetch of OpenAI's own post — sourcing_verdict is 'full' on its merits today, not by carrying forward the prior overstatement, with the reasoning and re-test recipe recorded in sourcing_notes so a future agent can tell this apart from the earlier, unjustified 'full'.",
+    "source_list_fix 3 (investors.broadcom.com UA quirk, must be documented so future agents don't misdiagnose the source as dead): reproduced a third time with a third curl exit code (56); documented in sourcing_notes and live_data_warnings.",
+    "source_list_fix 4/5/6 (no guessed identifiers; Q3 earnings has zero Jalapeño/OpenAI mentions; repo-side counts): not independently re-verified today (out of scope for a two-file writer pass over apps/api/app/guides/content while other agents write neighbouring slugs); carried forward from the fact-checker's 2026-09-16 confirmation without re-claiming them as re-verified today.",
+    "Schema-compliance note (corrections-ai.md '額外'): this record supplies title (verbatim equal to the zh-TW title), hero_label and diagram, all three of which were missing from the original 2026-09-16 research record."
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "2026-09-18 把 sources[] 三條全部重抓一次並讀 body（請求未帶任何 email、姓名或個人資料）。investors.broadcom.com 兩條先用 curl -A \"Mokaair-editorial\" 試，第四次重現該主機的拒絕（本次是 exit 28、逾時 60 秒、0 bytes），改用 curl 預設 UA 得到 HTTP 200；openai.com 那條用規定的 Mokaair-editorial 直接 HTTP 200。OpenAI 的頁是 Next.js app-router，正文不在初始 HTML 的 <p> 裡，用 bracket-matching 解出 self.__next_f.push([1,\"…\"]) 的 RSC chunk（8 段、230,738 字元）再濾出 70 條 prose，取得全文四個小標、五個條列、三段引言與全部內文。把內容包拆成 106 條主張逐條回原文核對：正文 16 段每一句、summary 五句、FAQ 六題的答句、callout、表格三列九格與 caption、圖解四格與 caption、title 與 description。26 條 verbatim_quote 全部用程式對今天抓到的原始檔做連續字串比對（僅折疊空白、不改任何字元），25 條逐字成立、1 條不成立。撰稿者點名的三處否定句另外用同義詞重掃：Nvidia／nvidia／GPU／graphics processing／AMD／TPU／Trainium／Blackwell／Rubin／Hopper／nm／nanometer／TSMC／foundry／fab／wafer／transistor／die／package／HBM／DRAM／GB／TB／bandwidth／gigawatt／GW／megawatt／watt／percent／%／cheaper than／50%，並逐一確認原始 HTML 裡的命中是 CSS 或 Next.js 資產字串而非正文。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "第一節第一段：刪掉『Broadcom 形容它是…；OpenAI 則說…』這個對比——兩句話都逐字出現在兩家公司的頁面上，兩篇根本是同一份文稿，對比是虛構的。改寫成『兩家公司發出的其實是同一份文稿』，並把真正的差異（標題、may be／we believe to be、Kawwas 職稱）留在各自該講的地方。",
+      "表格與第二節第一段：把 Broadcom 的角色從『電路板與機櫃系統整合』改成『矽晶實作、網路與連接技術』。兩篇文章結尾唯一做分工的那句寫的是 Broadcom silicon implementation, networking, and connectivity technologies; and Celestica's board, rack and system expertise——電路板與機櫃是 Celestica 的。原稿把 Celestica 的工作寫給了 Broadcom，而且和同一篇的下一段自相矛盾。",
+      "第一段：『這是 OpenAI 第一款自行設計…的晶片』改成官方較窄的說法『OpenAI 第一款 Intelligence Processor』——unverified_or_excluded 自己就把無限定的『第一款客製晶片』列為排除項。",
+      "第四節第一段：『這是兩篇官方文章裡唯一被點名的合作對象』改成『微軟是唯一被點名的資料中心合作夥伴』——Celestica 也是被點名的 partner，原句與同一篇第二節自相矛盾。",
+      "FAQ 第 5 題：『官方文章沒有提到任何一款產品會因此變快、變便宜』不成立。OpenAI 的文章寫著 Every improvement in cost, speed, and reliability can show up as a faster ChatGPT answer, a Codex task that can take more steps with less waiting, an API product that is cheaper to build…。改成照原文寫出這句條件句，並說明它沒有日期、沒有百分比、沒有保證，也沒說是 Jalapeño 造成的。第五節第三段同步補上這句，避免那段的否定句被讀成『官方什麼都沒說』。",
+      "summary 第二句與 FAQ 第 1 題：刪掉『還沒有對外出貨』『不是已出貨的產品』——corrections-ai.md must_fix #1 已經認定『NOT SHIPPING PRODUCT』是研究者的推論、頁面從來沒有這句話，而正文自己也寫著『官方文章沒有講這代表還不是出貨產品』，前後打架。改成『官方文章沒有寫出貨或上市的任何時間』。",
+      "第三節第三段：『史上最快的 ASIC 開發週期』補回被刪掉的限定語——兩家原文都是 the fastest ASIC development cycle ever achieved in high-performance advanced semiconductors，少了『高效能先進半導體』就是把宣稱放大。",
+      "第三節第二段、第五節第一段、callout：把 9 個月 tape-out 與『工程樣片在實驗室運作』從『可驗證的動作事實』移到廠商宣稱。實驗室內的狀態外部觀察不到，corrections-ai.md must_fix #1 已經要求這樣標，但正文與 callout 仍把它們列在『已完成／可驗證』那一欄。",
+      "第一節第一段末、summary 第一句、FAQ 第 6 題：『都沒有用 GPU 這個詞』加上『正文』與查核日的範圍限縮（BRIEF 錯誤型態 6）。實查：兩篇正文 GPU 皆 0 次，OpenAI 原始 HTML 的 2 次是 Next.js 的頁面變體清單 gpu-debug，不是正文。",
+      "第二節第二段：刪掉『Celestica 自己的官方新聞頁與新聞稿 RSS 目前都沒有出現…』——那兩個網址不在 sources[] 裡，而且是 2026-09-16 的快照、今天沒有重查，卻寫成『目前』。改成限縮到本文引用的三篇文件。",
+      "第一節第二段：Brockman 的引言原本用一對引號把頁面上被『，」said Greg Brockman…「』隔開的兩段接成一句，還把後半段砍掉一半當成完整引文。改成明講分成兩段，並用刪節號標出截斷。",
+      "第二節第三段：『OpenAI 也提到…』改成『兩篇官方文章也都寫著』（那句話兩邊都有），並刪掉句尾『不是本站查證到的財務數字』——這篇沒有任何財務數字，是殘句。",
+      "第五節第二段：『OpenAI 自己的文章裡也有一句』改成『兩篇官方文章都有一句』——If AI can help engineers design better chips faster… 逐字出現在 Broadcom 的新聞稿與 OpenAI 的文章兩邊。",
+      "第四節第三段：『規劃到 2029 年底的合作』改成照原文『Broadcom 部署機櫃目標 2026 年下半年開始、2029 年底前完成』（2029 掛在部署機櫃上，不是合作本身）；『OpenAI 也提到…8 億使用者』改成『那則公告也寫著』（那句是新聞稿的敘述，沒有具名到 OpenAI 的人）。",
+      "summary 第三句與 callout：『Broadcom 自己把這段部署時程／這句話列為前瞻性陳述』改成『把部署十億瓦等級資料中心列為前瞻性陳述』——Cautionary Note 點名的是 the deployment of gigawatt scale datacenters，不是『2026 年底前開始部署』那一句。",
+      "第三節第一段：『Tape-out 是晶片設計定案、送代工廠做光罩的階段』改成『設計定案、交付製造的階段』——三篇來源都沒有提到任何代工廠或光罩，不要用文章自己的技術敘述引進來源沒有的細節。",
+      "description：『說明這顆晶片目前只到工程樣片與實驗室測試』改成『說明依官方說法…』，句尾『為何是兩件事』改成『為何要分開看』。",
+      "整篇把『雙方官方文章』統一成『兩篇官方文章』，段落總字數由 2,824 調整為 2,975（上限 3,000），沒有為了湊字數刪掉任何但書或限定詞。"
+    ],
+    "checked_and_correct": [
+      "撰稿者點名的第 1 件事成立，而且沒有讀反：what may be the fastest 只出現在 Broadcom 的頁面（1 次，OpenAI 的頁面 0 次），what we believe to be the fastest 只出現在 OpenAI 的頁面（1 次，Broadcom 的頁面 0 次）。兩句其餘部分逐字相同。文章的歸屬正確，中文『可能是』『我們相信是』都沒有比原文強；並列不合併的作法維持。",
+      "撰稿者點名的第 2 件事成立：If AI can help engineers design better chips faster, it can lower the cost of compute across the industry and help democratize access to advanced AI. 逐字存在於 Broadcom 新聞稿與 OpenAI 文章兩邊（各 1 次），位置都在 Nine-month tape-out 那一節的最後一段。它是新聞稿敘述，沒有具名到任何人，所以文章不歸給個人是對的；條件句、講全產業、沒有數字、不是已實現的語氣，也都保住了。只把歸屬從『OpenAI 自己的文章』改成『兩篇官方文章』。",
+      "撰稿者點名的第 3 件事全部成立（範圍限縮在本文引用的三頁、查核日 2026-09-18）：NVIDIA／nvidia 在三頁正文 0 次；AMD／TPU／Trainium／Blackwell／Rubin／Hopper／Instinct 0 次；GPU 在兩篇正文 0 次；graphics processing 0 次；nm／nanometer／process node／TSMC／foundry／fab／wafer／transistor／die size／package 0 次；HBM／DRAM／SRAM／GB／TB／bandwidth 0 次；percent 0 次、% 在正文 0 次；50%／50 percent／cheaper than 0 次；10 gigawatts 在兩篇 2026-06-24 頁面 0 次，gigawatt 只以 gigawatt scale 出現；watt 只以 performance per watt 出現，沒有耗電瓦數；Taiwan／Asia 0 次。原始 HTML 的命中（Broadcom 的 % 52 次與 cost 49 次、OpenAI 的 50% 與 gpu）逐一確認都在 CSS 與 Next.js 資產字串裡，不在正文。",
+      "26 條 verbatim_quote 中 25 條對今天抓到的原始檔逐字成立（只折疊空白），包含 ñ、U+2019 與 U+2011 在內的每一個字元。唯一不成立的是 Brockman 那條（已拆成兩條）。",
+      "三條 sources[] 今天全部讀到正文，checked_on 2026-09-18 屬實；內容包三條、研究紀錄三條與正文第二段、表格 caption、圖解 caption 的查核日五處一致，沒有因為我今天重查而更動。",
+      "sources[] 已經照 corrections-ai.md source_list_fix #1 拿掉 RSS feed 網址，三條全是文章頁；106 條主張沒有任何一條需要 sources[] 以外的網址才站得住。",
+      "界線：全文沒有購買建議、沒有推薦式比價、沒有任何價格或估值、沒有 AVGO 股價或營收、沒有上市或利多語氣，也沒有多出一個投資免責 callout（AI 篇只有一個 callout，正確）。topics 是 ai／gadgets／ai-news，沒有 finance。沒有『我們試用』這類實測語氣。",
+      "狀態詞正確：deployment 一律寫成『規劃』『目標』『開始部署』，designed for 沒有被寫成承諾日；tape-out 沒有被寫成量產；工程樣片沒有被寫成上市。",
+      "日期分得乾淨：事件日 2026-06-24、更早的公告 2025-10-13、規劃部署 2026 年底、2025 年那份的 2026 下半年與 2029 年底，五個日期沒有互相污染；8 億週活躍使用者每次出現都帶 2025-10-13。news_date 與 slug 尾碼一致。",
+      "圖解四格與 hero_label 沒有動；圖上三個數字（6/24、9 個月、2026 年底）與 summary 的每一個數字都能在正文找到。內容包 title 與研究紀錄 title 逐字相同，image caption 與研究紀錄 diagram.caption 逐字相同。",
+      "全文沒有簡體字，沒有列表、Markdown 或 emoji。"
+    ],
+    "left_for_the_owner": [
+      "check_article.py 仍是 FAIL，只剩兩條允許保留的：ai-news-2026-january-september-index 與 ai-news-chatgpt-storage-scale-20260911 的 link text 不等於目標文章的 title。兩個結尾連結依規格未動，索引與相關文章由協調者事後原地更新；這兩條失敗在查核前後完全相同，不是本次編輯造成的。",
+      "段落總字數 2,984／3,000（第二輪由 2,975 調整而來），只剩 16 字。之後任何一句要加，都得從別處刪等量的字——但不可以刪但書或限定詞。翻譯階段若要照抄段落結構，也要注意這個餘裕。",
+      "OpenAI 文章裡還有四段沒進中文正文（全端飛輪、democratizing AI、以及 Making advanced AI more broadly available 整節）。研究紀錄的 unverified_or_excluded 第 7 條已經記下其中那句條件句；本次把它補進第五節與 FAQ 第 5 題，其餘三段仍是編輯取捨，字數上也放不下。",
+      "Broadcom 的條列第 3 點少了內文的 substantially，OpenAI 的條列第 3 點有。這個『條列 vs 內文』落差只發生在 Broadcom 那一頁，文章統一用 substantially（顯著優於），但正文只註明了 production／tape-out 那一處落差，沒有註明效能這一處——字數已滿，是否補寫請站主決定。第二輪補充：文章引用的『顯著優於現有最佳水準』取自內文那一句（While OpenAI is still measuring final performance, early testing shows that Jalapeño will deliver performance per watt substantially better than current state-of-the-art.），而這一句在兩家頁面上逐字相同，所以文章沒有踩到 Broadcom 條列的落差；歸屬（OpenAI 表示仍在測量／兩篇官方文章只說）在正文、summary、FAQ、callout 四處一致。",
+      "Richard Ho 被介紹為 who leads OpenAI's hardware program，引言卻是 using detailed insights from our close collaboration with OpenAI researchers。今天確認兩家頁面印的一模一樣，不是 Broadcom 的轉寫瑕疵。文章沒有引用這段（字數），若日後要用，必須照原樣引、不可以偷偷修好。",
+      "investors.broadcom.com 對 Mokaair-editorial 的拒絕已經五次重現、四種 curl 結束碼。若站主要把重抓自動化，這個主機要單獨列成例外，否則會被誤判成來源已死。",
+      "FAQ 第 6 題用了 blank-slate design 那一句（『不是從過去其他 AI 工作負載改造而來的通用型加速器』），這句話有一手來源、逐字成立，但它沒有出現在中文正文裡，嚴格說不符合『FAQ 的答案 ⊆ 正文』。第二輪沒有動它：要補進正文需要約 30 字，而字數只剩 16 字。是否改寫或刪掉請站主決定。"
+    ],
+    "second_round": {
+      "checked_by": "second-round independent factcheck agent (did not write, did not run the first round)",
+      "checked_on": "2026-09-18",
+      "method": "sources[] 三條全部自己重抓（請求未帶任何 email、姓名或個人資料）：investors.broadcom.com 兩條先用 -A \"Mokaair-editorial\" 試，第五次重現該主機的拒絕（exit 28、逾時 45 秒、HTTP 000、0 bytes），改用 curl 預設 UA 得到 200／70,913 與 200／71,384，與前四次逐位元組相同；openai.com 用規定的 UA 直接 200／403,533 bytes，自己 bracket-match 解出 self.__next_f.push 的 RSC chunk（230,739 字元）取得全文。覆核範圍：第一輪改動過的每一段與新寫進去的每一句逐句回原文，加上 29 條 verbatim_quote 用程式對今天抓到的原始檔做連續字串比對（只折疊空白），以及 78 個關鍵詞在三份正文的出現次數表。另外把 Broadcom 與 OpenAI 兩頁逐段對過一次（difflib、NFKC、折疊空白，19 個 Broadcom 區塊對 24 個 OpenAI 區塊），結果寫進 verified_facts 的 IMPORTANT WORDING DIFFERENCE 那一條。共核對 118 條主張。",
+      "quote_check": "29 條 verbatim_quote 全部是所引頁面上的連續字串（29/29 通過，含 ñ、U+2019、U+2011 每一個字元），沒有任何一條帶 ... 、… 或 | 需要分段驗證。第一輪把 Brockman 那條拆成兩條的作法今天複驗成立：兩段各自逐字存在，合併版本不存在。",
+      "edits": [
+        "FAQ 第 4 題『一項規劃到 2029 年底、部署 100 億瓦客製化 AI 加速器的多年期合作』——2029 年底是機櫃部署的完成目標，不是合作本身的期限。第一輪在第四節第三段改對了，FAQ 漏改。已照原文改成『部署 100 億瓦客製化 AI 加速器的多年期合作，其中 Broadcom 部署機櫃的目標是 2026 年下半年開始、2029 年底前完成』（Broadcom to deploy racks of AI accelerator and network systems targeted to start in the second half of 2026, to complete by end of 2029）。",
+        "第四節第一段『Broadcom 與 OpenAI 都只用 gigawatt scale 描述部署規模，沒有寫出吉瓦數字』——這句話沒有限定是哪兩篇，卻被同一節第三段的『100 億瓦（10 gigawatts）』打臉，因為那個數字就在 sources[] 的 2025-10-13 稿裡。已改成『兩篇官方文章都只用…』，把範圍釘在 2026-06-24 那兩頁。",
+        "summary 第二句與 FAQ 第 1 題的『官方文章沒有寫出貨或上市的任何時間』同樣沒有限定範圍。2025-10-13 那份確實印了時程與規模（10 gigawatts、second half of 2026、end of 2029），雖然主詞是機櫃部署而不是這顆晶片上市，否定句仍不該涵蓋到它。兩處都改成『兩篇 6 月 24 日的官方文章…』。",
+        "同一條否定句在正文沒有落腳點（summary ⊆ 正文、FAQ ⊆ 正文）。第三節第二段的『官方文章寫到這裡就停了，沒有再說這些樣片和出貨產品的關係』已擴寫成『兩篇文章寫到這裡就停了，沒有再說這些樣片和出貨產品的關係，也沒有寫出貨或上市的時間』。",
+        "第二節第一段『（唯一被點名的產品是 Tomahawk 網路晶片）』是全稱說法：Jalapeño 與 GPT-5.3-Codex-Spark 也是被點名的產品，而 2025-10-13 那份還點名了 Ethernet 與 PCIe。已改成『（其中只點名 Tomahawk 網路晶片一項產品）』，範圍跟著它所屬的 2026-06-24 分工句走。",
+        "表格 Broadcom 那列的『公告原文用語』寫 silicon implementation and networking technologies（取自 Tomahawk 那一句），中文卻寫『矽晶實作、網路與連接技術』（取自結尾分工句）。兩欄不同源。已把英文換成分工句原文 silicon implementation, networking, and connectivity technologies，和 Celestica 那列同源。",
+        "第一節第一段『兩家公司發出的其實是同一份文稿』。逐段比對後：11 個區塊逐字相同、5 個真的不同、OpenAI 那頁另有四段內文與第四個小標（其中一段正是第五節引用的 can show up as 那句），所以『同一份文稿』說得太滿，還和第五節『OpenAI 的文章有一句…』自相矛盾。已改成『其實大半是同一份文稿』，完整比對結果記進 verified_facts。",
+        "第五節第三段『OpenAI 的文章只有一句沒有日期的條件句』——同一節上一段才引了另一句沒有日期的條件句（If AI can help engineers design better chips faster…）。刪掉『只有』，後半句『除此之外，沒有任何一句話說使用者會在哪一天感受到差異』保留，限定力不變。",
+        "第五節第三段與 FAQ 第 5 題的『更便宜的 API 產品』——原文是 an API product that is cheaper to build，便宜的是打造成本，不是售價。已改成『打造成本更低的 API 產品』，並在兩處補『等』，因為原文那一串有四項（另含 more dependable access when demand is high），文章只列了其中兩到三項。can show up as／『有可能呈現為』、無日期、無百分比、無保證全部保留。",
+        "第四節第三段、第五節第一段與 callout 的『每週超過 8 億使用者』補回原文的 active：over 800 million weekly active users → 『超過 8 億週活躍使用者』，三處一致，2025-10-13 的日期與自報屬性未動。",
+        "第二段『以下每一項都是兩篇官方文章裡的說法』——這篇也用了 2025-10-13 那份（第四節第三段、summary 第四句、FAQ 第 4 題），已改成『這三篇官方文章』。"
+      ],
+      "checked_and_correct": [
+        "指派點名的第 1 個疑點：兩頁逐段對完，文章對『差異』的描述沒有比實際大，也沒有替兩家公司解釋為什麼不同。第三節第三段只陳述 what may be／what we believe to be 兩種保留字並說『本文照原文並列』，沒有推測動機。實測：what may be 在 Broadcom 正文 1 次、OpenAI 正文 0 次；what we believe to be 在 OpenAI 正文 1 次、Broadcom 正文 0 次；兩句其餘部分逐字相同。",
+        "指派點名的第 2 個疑點：Broadcom＝silicon implementation／networking／connectivity、Celestica＝board, rack and system 這個分工，在正文第二節第一段、表格三列、圖解四格、image alt、summary、FAQ 六題、callout、description 全部一致，沒有任何一處把電路板或機櫃寫給 Broadcom。表格英文欄已同源化（見 edits）。全文的『唯一』類全稱說法只剩兩處，都已帶範圍：『微軟是兩篇官方文章裡唯一被點名的資料中心合作夥伴』（實測 Microsoft 在兩篇 2026-06-24 頁各 1 次、2025-10-13 頁 0 次）與上述 Tomahawk 那一處。",
+        "指派點名的第 5 個疑點：tape-out 全文沒有被寫成量產（第三節第一段明說『不等於已經量產出貨』）、工程樣片沒有被寫成上市、9 個月與實驗室樣片四處都帶歸因（第三節第一段末『這個數字也是公司自己說的』、第三節第二段『兩家公司表示』、summary 第二句『兩家公司表示』、callout『外界無從查證』、第五節第一段列在『外界無法查證的說法』欄）。high-performance advanced semiconductors 的限定語在第三節第三段完整保留為『高效能先進半導體有史以來最快的』。",
+        "指派點名的第 6 個疑點：文章引用的『顯著優於現有最佳水準』來自兩頁逐字相同的內文句，不是 Broadcom 少了 substantially 的那一條條列，歸屬也對（OpenAI 表示仍在測量最終效能／兩篇官方文章只說）。實測 substantially 在 Broadcom 正文 1 次（內文）、OpenAI 正文 2 次（條列＋內文）。",
+        "指派點名的第 8 個疑點（界線）：全文沒有 AVGO 股價、營收、估值或利多語氣，沒有把這件事寫成與 Nvidia 的輸贏（FAQ 第 2 題直接寫『官方文章沒有回答這個問題』），topics 是 ai／gadgets／ai-news 不帶 finance，callout 只有一個。沒有購買建議、沒有推薦式比價、沒有『我們試用』語氣、沒有推定台灣可用。",
+        "否定句範圍全篇重掃，每一句都指名是哪幾份文件或已被前一句限定：GPU（兩篇正文各 0 次；原始 HTML 的命中在 Next.js 資產字串）、NVIDIA／AMD／TPU／Trainium／Blackwell／Rubin／Hopper 三頁皆 0、TSMC／foundry／fab／wafer／transistor／nanometer／process node／mask／reticle 三頁皆 0、HBM／DRAM／SRAM／bandwidth 三頁皆 0、percent／%／$／price／50 三頁皆 0、cheaper 只在 OpenAI 的 cheaper to build 出現 1 次、Taiwan／Asia 三頁皆 0、10 gigawatts 在兩篇 2026-06-24 頁 0 次而在 2025-10-13 頁 2 次、watt 只以 performance per watt 出現。",
+        "前瞻性陳述那一段複驗：Broadcom 2026-06-24 的 Cautionary Note 原文點名的是 delivering Jalapeño to OpenAI 與 the deployment of gigawatt scale datacenters 兩件事，且寫 include, but are not limited to。文章第四節第二段用『列為前瞻性陳述之一』是對的，summary 與 callout 沒有寫成『唯一』。",
+        "事件日複驗：Broadcom JSON-LD datePublished 2026-06-24T09:00:48-0400；OpenAI 頁面 meta 區印 June 24, 2026，RSC payload 也帶 publicationDateText June 24, 2026。event_date_basis 第一輪的更正屬實。",
+        "checked_on 2026-09-18 五處一致（內容包三條 source、研究紀錄三條、正文第二段、表格 caption、圖解 caption），沒有因為第二輪重查而更動。",
+        "圖解四格、hero_label、hero.alt 未動（hero.alt 依規格不查不改）。圖上三個數字（6/24、9 個月、2026 年底）與 summary 的每一個數字都能在正文找到；內容包 title 與研究紀錄 title 逐字相同，image caption 與研究紀錄 diagram.caption 逐字相同。"
+      ],
+      "verdict": "needs_owner",
+      "conclusion": "118 條主張、29 條 verbatim_quote 複核後，文章骨幹全部站得住，沒有任何一條被來源推翻。第二輪改的 11 處集中在否定句範圍（三處把 2025-10-13 那份的時程與規模掃進去）、一處漏改的時程主詞（FAQ 第 4 題的 2029 年底）、一處全稱說法、一處表格英文與中文不同源，以及兩處把來源的 cheaper to build 與 can show up as 寫得比原文肯定的措辭。段落字數由 2,975 增為 2,984，沒有為了字數刪掉任何但書或限定詞。仍是 needs_owner，理由只有兩個結尾連結的 title 尚未對齊（協調者處理）與 left_for_the_owner 裡的四件編輯取捨。"
+    }
+  },
+  "hero_label": "公布了，還沒量產",
+  "diagram": {
+    "title": "從公布到部署的四個階段",
+    "caption": "依 Broadcom 與 OpenAI 2026 年 6 月 24 日聯合發表整理：從公布到規劃部署的四個階段，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "聯合公布",
+        "6/24 發表"
+      ],
+      [
+        "設計定案",
+        "9 個月 tape-out"
+      ],
+      [
+        "實驗室測試",
+        "工程樣片運作中"
+      ],
+      [
+        "規劃部署",
+        "目標 2026 年底"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Unveiled, pre-production",
+      "diagram": {
+        "title": "From Announcement to Deployment",
+        "caption": "Compiled from Broadcom and OpenAI's joint June 24, 2026 announcement: the four stages from announcement to planned deployment; checked on September 18, 2026.",
+        "nodes": [
+          [
+            "Joint announcement",
+            "Unveiled June 24"
+          ],
+          [
+            "Design finalized",
+            "9-month tape-out"
+          ],
+          [
+            "Lab testing",
+            "Engineering samples running"
+          ],
+          [
+            "Planned deployment",
+            "Targeting end of 2026"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "発表のみ、量産前",
+      "diagram": {
+        "title": "発表から導入までの4段階",
+        "caption": "BroadcomとOpenAIによる2026年6月24日の共同発表をもとに作成：発表から導入計画までの4段階。確認日：2026年9月18日。",
+        "nodes": [
+          [
+            "共同発表",
+            "6/24に発表"
+          ],
+          [
+            "設計確定",
+            "9か月でtape-out"
+          ],
+          [
+            "実験室テスト",
+            "エンジニアリングサンプル稼働中"
+          ],
+          [
+            "導入計画",
+            "2026年末が目標"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "발표뿐, 양산은 아직",
+      "diagram": {
+        "title": "발표부터 배포까지의 4단계",
+        "caption": "Broadcom과 OpenAI의 2026년 6월 24일 공동 발표를 바탕으로 정리: 발표부터 배포 계획까지의 4단계. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "공동 발표",
+            "6/24 공개"
+          ],
+          [
+            "설계 확정",
+            "9개월 tape-out"
+          ],
+          [
+            "실험실 테스트",
+            "엔지니어링 샘플 가동 중"
+          ],
+          [
+            "배포 계획",
+            "2026년 말 목표"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "公布了，还没量产",
+      "diagram": {
+        "title": "从公布到部署的四个阶段",
+        "caption": "依据 Broadcom 与 OpenAI 2026 年 6 月 24 日联合发表整理：从公布到规划部署的四个阶段，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "联合公布",
+            "6/24 发表"
+          ],
+          [
+            "设计定案",
+            "9 个月 tape-out"
+          ],
+          [
+            "实验室测试",
+            "工程样片运行中"
+          ],
+          [
+            "规划部署",
+            "目标 2026 年底"
+          ]
+        ]
+      }
+    }
+  }
+}

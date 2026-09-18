@@ -1,0 +1,575 @@
+{
+  "slug": "ai-news-openai-funding-20260331",
+  "event_date": "2026-03-31",
+  "event_date_basis": "The announcement page itself (sources[0], read directly today with HTTP 200, not via any archive) carries its own byline 'March 31, 2026' immediately under the OpenAI byline, filed under the category 'Company', and opens 'Today, we closed our latest funding round...'. The close and the announcement therefore share the same date, 2026-03-31. This is distinct from the money-in dates: SoftBank's own releases show its first USD 10.0bn tranche executed 2026-04-01 (referenced by title in the 2026-07-01 release used as sources[2]), the second executed 2026-07-01, and a third planned for 2026-10-01; Amazon's own release (sources[3], dated 2026-02-27) splits its $50bn into an initial $15bn and a later $35bn. news_date and the slug date are 2026-03-31, the announcement/close date, not any of these background or payment dates.",
+  "title": "OpenAI 完成 1,220 億美元募資：公告承諾了什麼，又沒承諾什麼",
+  "checked_on": "2026-09-18",
+  "sources": [
+    {
+      "title": "OpenAI raises $122 billion to accelerate the next phase of AI",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Follow-on Investments in OpenAI",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "publisher": "SoftBank Group Corp.",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Execution of Follow-on Investment (Second Tranche) in OpenAI",
+      "url": "https://group.softbank/en/news/press/20260701",
+      "publisher": "SoftBank Group Corp.",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI and Amazon Announce Strategic Partnership",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "publisher": "Amazon.com, Inc.",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-18, all four sources[] URLs fetched directly with curl -sL -A \"Mokaair-editorial\" (no email or personal data in any request) and read to the article body, not just a 200 status. openai.com/index/accelerating-the-next-phase-ai/ -> HTTP 200, 375,656 bytes; this is a change from the 403 Cloudflare block this project's prior research recorded on 2026-09-16, so the block that made must_fix 5's Wayback question live appears to have been lifted since then -- confirmed genuine by matching <title> ('OpenAI raises $122 billion to accelerate the next phase of AI | OpenAI') and og:description against OpenAI's own RSS description fetched the same session. No web.archive.org URL was used anywhere in this pass. group.softbank/en/news/press/20260227 -> HTTP 200, 206,950 bytes, full press-release body including the tranche table. group.softbank/en/news/press/20260701 -> HTTP 200, 193,924 bytes, confirms the second tranche executed and references the April 1 first-tranche release by title. press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership -> HTTP 200, 155,750 bytes, full release with both executive quotes. Two further URLs were read directly (HTTP 200) purely as corroboration, not as sources[] entries because no article sentence is pinned to them: openai.com/news/rss.xml (confirms the canonical link/guid and the pubDate Tue, 31 Mar 2026 13:00:00 GMT for this item, and separately carries OpenAI's own confidential-S-1 item dated Mon, 08 Jun 2026 14:00:00 GMT, consistent with the second article's slug date) and openai.com/sitemap.xml/company/ (confirms the canonical <loc> and a zh-Hant hreflang alternate for this same URL, itself returning 403 and therefore not read). nvidianews.nvidia.com/releases.xml was re-fetched (HTTP 200) and still does not reach back to March 2026, independently re-confirming that no NVIDIA amount can be sourced. No claim in the article or in verified_facts rests on a media outlet, aggregator, or archived page; sources[] entries 2-4 replace the prior research's reliance on the 2026-04-01 SoftBank release with the 2026-02-27 release (which already carries the full three-tranche schedule and the pre-money valuation) plus the 2026-07-01 release (added, to show two of the three tranches as actually executed rather than only planned).",
+  "verified_facts": [
+    {
+      "fact": "OpenAI's announcement page carries its own byline 'March 31, 2026' directly under the OpenAI name, filed under the category 'Company'.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI\nMarch 31, 2026\nCompany"
+    },
+    {
+      "fact": "The page's headline is 'OpenAI raises $122 billion to accelerate the next phase of AI'.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI raises $122 billion to accelerate the next phase of AI"
+    },
+    {
+      "fact": "OpenAI says it closed the round that day with $122 billion in committed capital at a post-money valuation of $852 billion; the post's own wording is 'committed capital', not cash received.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, we closed our latest funding round with $122 billion in committed capital at a post money valuation of $852 billion."
+    },
+    {
+      "fact": "OpenAI says the round was anchored by strategic partners Amazon, NVIDIA and SoftBank, with continued participation from long-term partner Microsoft; SoftBank co-led alongside a16z, D. E. Shaw Ventures, MGX, TPG, and accounts advised by T. Rowe Price Associates, Inc. No dollar amount is given for any of these investors anywhere in the post.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The round was anchored by our strategic partners Amazon, NVIDIA, and SoftBank, with continued participation from our long-term partner, Microsoft. SoftBank co-led the round alongside a16z, D. E. Shaw Ventures, MGX, TPG, and accounts advised by T. Rowe Price Associates, Inc."
+    },
+    {
+      "fact": "OpenAI says there was 'significant participation from a diverse set of global institutions including' a named list (Altimeter, Appaloosa LP, ARK Invest, funds affiliated with BlackRock, Blackstone, Coatue and others). 'Including' marks this as a non-exhaustive list, not the full roster of participants.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "There was also significant participation from a diverse set of global institutions including Altimeter, Appaloosa LP, ARK Invest, affiliated funds of BlackRock, Blackstone, Coatue"
+    },
+    {
+      "fact": "OpenAI says that for the first time it extended participation to investors through bank channels, raising over $3 billion from individual investors. No bank or channel is named, and no country list is given.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For the first time, we extended participation to investors through bank channels, raising over $3 billion from individual investors."
+    },
+    {
+      "fact": "OpenAI says it is also announcing that OpenAI will be included in several exchange-traded funds managed by ARK Invest. No fund name, ticker or inclusion date is given.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, we’re also announcing that OpenAI will be included in several exchange-traded funds managed by ARK Invest"
+    },
+    {
+      "fact": "OpenAI says ChatGPT is 'the overwhelming leader in consumer AI' with more than 900 million weekly active users and over 50 million subscribers. No definition of 'weekly active user' or 'subscriber' is given.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT is the overwhelming leader in consumer AI with more than 900 million weekly active users, and over 50 million subscribers."
+    },
+    {
+      "fact": "OpenAI says it was the fastest technology platform to reach 10 million users and 100 million users, and will soon be the fastest to reach 1 billion weekly active users. No date is given for the 1-billion milestone.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI was the fastest technology platform to reach 10 million users, the fastest to 100 million users, and soon the fastest to 1 billion weekly active users."
+    },
+    {
+      "fact": "OpenAI says it reached $1B in revenue within a year of launching ChatGPT, was generating $1B per quarter by the end of 2024, and is now generating $2B in revenue per month.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Within a year of launching ChatGPT, we reached $1B in revenue. By the end of 2024 we were generating $1B per quarter. We are now generating $2B in revenue per month."
+    },
+    {
+      "fact": "OpenAI says that at this stage it is growing revenue four times faster than 'the companies who defined the Internet and mobile eras, including Alphabet and Meta'. Alphabet and Meta are given as examples inside a larger, unnamed comparison set (via 'including'), not as a one-to-one benchmark; the article does not narrow this into 'four times faster than Alphabet and Meta'.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At this stage, we are growing revenue four times faster than the companies who defined the Internet and mobile eras, including Alphabet and Meta."
+    },
+    {
+      "fact": "OpenAI says ChatGPT has 6x the monthly web visits and mobile sessions of the next-largest AI app, that total AI time spent is 4x the next-largest AI app and 4x all other apps combined, that search usage has 'nearly tripled in a year', and that its ads pilot reached more than $100 million in ARR in under six weeks. No measurement source is named for any of these comparisons.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT has 6x the monthly web visits and mobile sessions than the next largest AI app, while total AI time spent is 4x the next largest AI app and 4x all others combined. Search usage has nearly tripled in a year, and our ads pilot reached more than $100 million in ARR in under six weeks."
+    },
+    {
+      "fact": "OpenAI says enterprise now makes up more than 40% of its revenue and is on track to reach parity with consumer revenue by the end of 2026.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Momentum is just as strong on the enterprise side, which now makes up more than 40% of our revenue, and is on track to reach parity with consumer by the end of 2026."
+    },
+    {
+      "fact": "OpenAI says its APIs now process more than 15 billion tokens per minute, and that Codex serves over 2 million weekly users, up 5x in the past three months, with usage growing more than 70% month over month.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our APIs now process more than 15 billion tokens per minute. Codex now serves over 2 million weekly users, up 5x in the past three months, with usage growing more than 70% month over month."
+    },
+    {
+      "fact": "OpenAI describes its infrastructure portfolio as spanning cloud through Microsoft, Oracle, AWS, CoreWeave and Google Cloud; silicon through NVIDIA, AMD, AWS Trainium, Cerebras and its own chip built in partnership with Broadcom; and data centers through partnerships with Oracle, SBE and SoftBank.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This strategy now spans: cloud through Microsoft, Oracle, AWS, CoreWeave, and Google Cloud; silicon through NVIDIA, AMD, AWS Trainium, Cerebras, and our own chip in partnership with Broadcom; and data centers through partnerships with Oracle, SBE, and SoftBank."
+    },
+    {
+      "fact": "OpenAI says Nvidia 'remains the foundation of our infrastructure', that its training fleet and the majority of its inference stack continue to run on Nvidia GPUs, and that this funding round deepens that partnership.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Nvidia remains the foundation of our infrastructure. Our training fleet and the majority of our inference stack continue to run on Nvidia GPUs, and with this round we are deepening that partnership as we scale."
+    },
+    {
+      "fact": "OpenAI's own explanation for why compute spending matters: new generations of infrastructure train more capable models, while algorithmic and hardware improvements reduce the cost to serve each token. The post attaches no figure, date or product promise to this argument, and makes no promise about ChatGPT's speed, price or usage limits anywhere in the text.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With each new generation of infrastructure, we train more capable models, making each token more intelligent than before. At the same time, algorithmic and hardware improvements reduce the cost to serve each token, lowering the cost per unit of intelligence."
+    },
+    {
+      "fact": "OpenAI's post mentions in passing that it 'recently launched GPT‑5.4' and expanded Codex into a coding agent, and separately expanded into health, scientific discovery and commerce; the source page prints the model name with a non-breaking hyphen (U+2011), not an ASCII hyphen.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We recently launched GPT‑5.4, our most capable model yet, with meaningful gains in intelligence and workflow performance. We expanded Codex into a flagship coding agent."
+    },
+    {
+      "fact": "OpenAI says it is building a unified AI 'superapp' that will bring together ChatGPT, Codex, browsing and its broader agentic capabilities into one agent-first experience. No launch date, product name, price, plan tier or region is given anywhere in the post, and it does not say whether the existing separate apps will be merged or retired.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our superapp will bring together ChatGPT, Codex, browsing, and our broader agentic capabilities into one agent-first experience."
+    },
+    {
+      "fact": "OpenAI frames the superapp as a response to usability, not capability: as models get more capable, it says, the limiting factor shifts from intelligence to usability.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As models become more capable, the limiting factor shifts from intelligence to usability."
+    },
+    {
+      "fact": "On the page as fetched directly on 2026-09-18, word-boundary case-insensitive searches of the article body (from 'Today, we closed' to 'Let's go build') return 0 hits each for IPO, listing, initial public offering, public offering, Nasdaq, NYSE, stock and shares. This is a statement about this one page as read on the check date, not about what OpenAI has ever said.",
+      "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": ""
+    },
+    {
+      "fact": "SoftBank Group Corp. announced that on February 27, 2026 (U.S. time) it entered a definitive agreement with OpenAI Group PBC to participate in OpenAI's fundraising round and to make follow-on investments of USD 30.0 billion via SoftBank Vision Fund 2, subject to customary closing conditions.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Follow-on Investment is subject to the satisfaction of customary closing conditions."
+    },
+    {
+      "fact": "SoftBank says that on completion, its cumulative investment in OpenAI is expected to total USD 64.6 billion, an ownership interest of approximately 13%; it had already invested an aggregate of USD 34.6 billion in OpenAI through SoftBank Vision Fund 2 since September 2024.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SBG’s cumulative investment in OpenAI is expected to total USD 64.6 billion, representing an ownership interest of approximately 13%."
+    },
+    {
+      "fact": "SoftBank's own tranche table for this USD 30.0 billion commitment lists the round's pre-money valuation as USD 730 billion; the table's row label is 'Pre-money valuation'. Neither source prints any addition of this figure to OpenAI's USD 122 billion, so the article states the USD 730 billion on its own and does not derive or assert any sum.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "USD 730 billion"
+    },
+    {
+      "fact": "SoftBank's tranche table sets the first tranche's investment timing as April 1, 2026 (Japan time), the second as July 1, 2026 (Japan time), and the third as October 1, 2026 (Japan time), each for USD 10 billion, as scheduled on February 27, 2026.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "April 1, 2026"
+    },
+    {
+      "fact": "SoftBank's table records the securities acquired as preferred shares, described as 'automatically convertible into common shares of OpenAI upon an IPO or related listing transaction'. This is a mechanical term of the securities, not a statement that a listing is scheduled.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Preferred Shares (automatically convertible into common shares of OpenAI upon an IPO or related listing transaction)"
+    },
+    {
+      "fact": "SoftBank's release carries a footnote *4 stating the closing dates 'may be subject to acceleration in the event of a public listing of OpenAI shares'. In the Timeline section the *4 marker sits on the Second Tranche and Third Tranche closing rows only, not on the First Tranche row; the footnote's own wording is plural ('Closing dates'). The article states it for the second and third tranches, matching the marker placement.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Closing dates may be subject to acceleration in the event of a public listing of OpenAI shares."
+    },
+    {
+      "fact": "SoftBank's board resolved on the follow-on investment on February 20, 2026 (Japan time); the agreement itself was executed February 27, 2026 (U.S. time).",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "February 20, 2026 (Japan time)"
+    },
+    {
+      "fact": "SoftBank says the consideration for the investment is expected to be financed initially through bridge loans and other financing arrangements from major financial institutions, and later replaced through other financing measures.",
+      "url": "https://group.softbank/en/news/press/20260227",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The consideration for the Follow-on Investment is expected to be financed initially through bridge loans and other financing arrangements from major financial institutions"
+    },
+    {
+      "fact": "SoftBank confirmed that on July 1, 2026 (Japan time) it executed the second tranche of USD 10.0 billion in OpenAI Group PBC via SoftBank Vision Fund 2, part of the USD 30.0 billion total announced February 27, 2026.",
+      "url": "https://group.softbank/en/news/press/20260701",
+      "is_vendor_claim": false,
+      "verbatim_quote": "on July 1, 2026 (Japan time), it executed the follow-on investment (second tranche) of USD 10.0 billion"
+    },
+    {
+      "fact": "The July 1 release lists a reference to a separate SoftBank announcement dated April 1, 2026 titled 'Execution of Follow-on Investment (First Tranche) in OpenAI', confirming the first tranche had already been executed by that date.",
+      "url": "https://group.softbank/en/news/press/20260701",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Execution of Follow-on Investment (First Tranche) in OpenAI"
+    },
+    {
+      "fact": "As of the July 1, 2026 release, SoftBank said it still 'plans to complete the third tranche, in the amount of USD 10.0 billion, on October 1, 2026 (Japan time)'; no source found in this record shows the third tranche as executed or accelerated as of the 2026-09-18 check date (October 1, 2026 had not yet arrived on the check date).",
+      "url": "https://group.softbank/en/news/press/20260701",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SBG plans to complete the third tranche, in the amount of USD 10.0 billion, on October 1, 2026 (Japan time)"
+    },
+    {
+      "fact": "SoftBank says it borrowed USD 10.0 billion on July 1, 2026 under a bridge facility agreement entered into on March 27, 2026, to fund the second tranche.",
+      "url": "https://group.softbank/en/news/press/20260701",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SBG made borrowings of USD 10.0 billion on July 1, 2026 (Japan time), under the bridge facility agreement entered into on March 27, 2026"
+    },
+    {
+      "fact": "SoftBank repeats the acceleration-on-listing language in the July 1 release, but there it is printed in the singular and hangs off the third-tranche sentence: the *2 marker sits at the end of 'SBG plans to complete the third tranche ... on October 1, 2026 (Japan time). *2', and the footnote reads 'The closing date may be subject to acceleration in the event of a public listing of OpenAI Group PBC shares.' Taken with the 2026-02-27 release, where *4 sits on the second and third tranche rows only, the acceleration language covers the second and third tranches and never the first.",
+      "url": "https://group.softbank/en/news/press/20260701",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The closing date may be subject to acceleration in the event of a public listing of OpenAI Group PBC shares."
+    },
+    {
+      "fact": "Amazon announced it will invest $50 billion in OpenAI, starting with an initial $15 billion investment and followed by another $35 billion 'in the coming months when certain conditions are met'. Amazon does not state what those conditions are anywhere in the release.",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Amazon will also invest $50 billion in OpenAI, starting with an initial $15 billion investment and followed by another $35 billion in the coming months when certain conditions are met."
+    },
+    {
+      "fact": "Amazon's release is dated February 27, 2026, a little over a month before OpenAI's 2026-03-31 funding announcement; it announces a separate multi-year strategic partnership, not part of the March 31 funding post itself.",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SAN FRANCISCO & SEATTLE--(BUSINESS WIRE)-- OpenAI and Amazon (NASDAQ: AMZN) today announced a multi-year strategic partnership"
+    },
+    {
+      "fact": "Amazon says AWS will be the exclusive third-party cloud distribution provider for OpenAI Frontier.",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AWS will be the exclusive third-party cloud distribution provider for OpenAI Frontier"
+    },
+    {
+      "fact": "Amazon says OpenAI and AWS are expanding their existing $38 billion multi-year agreement by $100 billion over 8 years, with OpenAI committing to consume approximately 2 gigawatts of Trainium capacity.",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI and AWS are expanding their existing $38 billion multi-year agreement by $100 billion over 8 years."
+    },
+    {
+      "fact": "Amazon says this Trainium commitment spans both Trainium3 and next-generation Trainium4 chips, and that Trainium4 is 'expected to begin delivery in 2027'.",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This commitment spans both Trainium3 and next-generation Trainium4 chips"
+    },
+    {
+      "fact": "Amazon says the jointly developed Stateful Runtime Environment, available through Amazon Bedrock, 'is expected to launch in the next few months' as of the release date.",
+      "url": "https://press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Stateful Runtime Environment is expected to launch in the next few months."
+    }
+  ],
+  "not_said": [
+    "OpenAI does not say the funding will make ChatGPT faster, cheaper, or raise any usage limit anywhere in the post; the only related statement is a general argument that better infrastructure lowers the cost per unit of intelligence over time.",
+    "OpenAI gives no launch date, product name, price, plan tier or country list for the 'superapp', and does not say whether the existing separate ChatGPT and Codex apps will continue, be merged, or be retired.",
+    "OpenAI gives no per-investor amounts anywhere in the post; Amazon's, NVIDIA's, SoftBank's and Microsoft's individual figures are not stated there.",
+    "OpenAI does not say how much of the $122 billion had actually been received at close; it says 'committed capital' and gives no payment schedule.",
+    "OpenAI does not name the banks or channels through which individual investors participated, nor which countries were eligible; nothing indicates Taiwanese readers could take part.",
+    "OpenAI does not name the ARK Invest ETFs, give tickers, give an inclusion date, or say what proportion of any fund OpenAI would represent.",
+    "OpenAI does not define 'weekly active user' or 'subscriber', and names no measurement source for the 6x/4x app-comparison figures or for 'search usage nearly tripled'.",
+    "This post, as read on 2026-09-18, contains no occurrence of IPO, listing, public offering, Nasdaq, NYSE, stock or shares (word-boundary search, re-run on the whole fetched page in the second round: 0 hits each, not merely 0 in the body slice). None of the four sources[] pages mentions an S-1 at all (word-boundary search for 'S-1' returns 0 on all four). The article therefore asserts nothing about the S-1: the body states only that these four documents do not mention it and points to the site's separate article, whose link text carries the subject.",
+    "OpenAI does not mention Taiwan, Traditional Chinese, or any Asian market anywhere in the post.",
+    "Amazon does not say what the 'certain conditions' attached to its second $35 billion are.",
+    "No first-party NVIDIA page about this funding round was found; nvidianews.nvidia.com/releases.xml, re-checked on the check date, does not reach back to March 2026.",
+    "No first-party ARK Invest page confirming the ETF inclusion was found on ark-funds.com or ark-invest.com; the claim rests on OpenAI's own wording alone.",
+    "Nothing first-party in this record establishes whether Amazon's second $35 billion tranche had been paid as of the check date.",
+    "SoftBank's own releases do not describe a specific listing date, venue or filing; the IPO-linked language (conversion on listing, acceleration on listing) is boilerplate deal mechanics, not a forecast."
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "NVIDIA invested a specific dollar amount (commonly reported around $30 billion) in the round.",
+      "seen_where": "Widely reported in financial media coverage of the 2026-03-31 announcement.",
+      "why_excluded": "No first-party NVIDIA page states an amount. nvidianews.nvidia.com/releases.xml, re-fetched on the check date, still does not reach back to March 2026, and OpenAI's own post names NVIDIA as an anchor investor without stating a figure. The amount is not written."
+    },
+    {
+      "claim": "Amazon's remaining $35 billion is contingent on OpenAI going public or reaching an AGI milestone.",
+      "seen_where": "Reported in financial media coverage citing unnamed sources.",
+      "why_excluded": "Amazon's own release says only 'when certain conditions are met' and never identifies the conditions; writing 'IPO or AGI' would put a media inference into Amazon's mouth."
+    },
+    {
+      "claim": "This was the largest funding round in history, or a record-breaking round.",
+      "seen_where": "Headline framing in general financial media coverage.",
+      "why_excluded": "OpenAI never makes this claim in its own post, and no first-party source in this record ranks it against other rounds. A superlative with no official backing is not written."
+    },
+    {
+      "claim": "OpenAI raised $3 billion specifically from 'retail investors'.",
+      "seen_where": "Financial media coverage using the term 'retail investors'.",
+      "why_excluded": "OpenAI's own wording is 'over $3 billion from individual investors' through 'bank channels'. The official phrase is what is written; 'retail' is a media framing with a slightly different meaning."
+    },
+    {
+      "claim": "A specific ticker or fund name for the ARK Invest ETFs OpenAI will be included in.",
+      "seen_where": "Not stated by OpenAI; only 'several exchange-traded funds managed by ARK Invest'.",
+      "why_excluded": "No first-party ARK Invest page was found confirming which funds or tickers are involved. Mentioning ARK stays at 'OpenAI 表示' level with no ticker, per this batch's rule for this exact situation."
+    },
+    {
+      "claim": "A precise breakdown of how the $122 billion splits across all named investors.",
+      "seen_where": "Attempted by summing SoftBank's $30 billion and Amazon's $50 billion against the $122 billion headline.",
+      "why_excluded": "SoftBank ($30bn) and Amazon ($50bn) together are only $80bn of the $122bn; no first-party source states what the remaining roughly $42bn comprises or how NVIDIA, Microsoft and the other named institutions divide it. The article treats SoftBank and Amazon strictly as two illustrative examples of the committed-capital-versus-tranches mechanic, not as an exhaustive accounting of the round, and never adds their two figures together or presents them as the whole."
+    },
+    {
+      "claim": "Whether the SoftBank third tranche (planned 2026-10-01) or the remaining Amazon $35 billion had been paid by the check date.",
+      "seen_where": "Not found in any source.",
+      "why_excluded": "2026-10-01 is after the 2026-09-18 check date, so no execution announcement could exist yet for SoftBank's third tranche; SoftBank's own press-release listing page runs through 2026-09-09 with no such notice. Amazon has published no update on its second tranche's conditions. The article states both as still pending, not as resolved either way."
+    },
+    {
+      "claim": "Official Traditional Chinese wording for 'superapp', 'committed capital' or 'weekly active users'.",
+      "seen_where": "OpenAI's own sitemap lists a zh-Hant translation path for this announcement.",
+      "why_excluded": "That translated path was not fetched in this check; the writer uses plain Taiwanese Chinese wording and does not claim it is OpenAI's official translation."
+    },
+    {
+      "claim": "Any figure for how many of ChatGPT's 900 million-plus weekly users are in Taiwan, or any Taiwan-specific effect of the funding.",
+      "seen_where": "Not found in any source.",
+      "why_excluded": "No first-party source breaks the user number down by market, and none of the four sources mentions Taiwan. No local angle is invented; the article says plainly that Taiwan is not mentioned."
+    }
+  ],
+  "editorial_brief": "Written for a Taiwanese reader who already uses ChatGPT and keeps seeing large AI funding numbers without knowing whether any of it changes the product on their phone. The angle is deliberately not investment: what does the announcement promise a user, and what does it pointedly not promise. Four threads: (1) the headline numbers, attributed as OpenAI's own claims -- $122bn committed capital, $852bn post-money, 900M+ weekly users, 50M+ subscribers, revenue figures, all framed as OpenAI 表示; (2) the gap between 'committed capital' and cash in hand, shown with two independent first-party examples -- SoftBank's $30bn arriving as three $10bn tranches (two confirmed executed by the check date, the third not yet due) and Amazon's $50bn split into $15bn now plus $35bn later under undisclosed conditions; (3) what the money funds (compute/infrastructure) and what it explicitly does not buy the reader -- no promised change to ChatGPT's speed, price or limits, illustrated with a labelled editorial example; (4) the 'superapp' plan and the open questions, including a brief, non-speculative note on the IPO-linked mechanics in SoftBank's own preferred-share terms, pointing to the separate S-1 article rather than re-covering it. Deliberately out of scope: valuation analysis, whether or how to invest, IPO prediction, market/share-price commentary, and re-explaining GPT-5.4, GPT-6 Astra or the Agents API (link out instead).",
+  "must_not_write": [
+    "Do not write that ChatGPT will become faster, cheaper, have higher limits, or gain any specific new feature because of this funding; the announcement promises none of it.",
+    "Do not give the superapp a launch date, name, price, plan tier or region, and do not say existing apps will be retired or merged on any timetable.",
+    "Do not attribute a dollar amount to NVIDIA or Microsoft; no first-party source reached gives one.",
+    "Do not state what Amazon's 'certain conditions' for the second $35 billion are, and in particular do not write 'IPO or AGI'.",
+    "Do not call it the largest funding round in history, a record, or any similar superlative.",
+    "Do not present $122 billion as money OpenAI received on 2026-03-31; it is committed capital, and SoftBank's and Amazon's own releases show it arriving over time.",
+    "Do not suggest, imply or explain how a reader could invest in OpenAI; do not say Taiwanese readers can participate through banks or ETFs; name no ARK ticker.",
+    "Do not predict an IPO, a listing date or a venue; the only first-party material is deal mechanics (conversion and acceleration clauses) that exist regardless of whether or when a listing happens.",
+    "Do not write OpenAI's self-reported metrics as independently established fact; every one of them is OpenAI 表示 / OpenAI 說.",
+    "Do not write that this site tested or independently verified any of these numbers.",
+    "Do not re-explain GPT-5.4, GPT-6 Astra or the Agents API; the site already has articles on each, and this post mentions GPT-5.4 only in passing.",
+    "Do not claim any Chinese wording is OpenAI's official translation; the zh-Hant page was not read in this check.",
+    "Do not put a number in the diagram, hero label or summary that does not also appear in the body paragraphs.",
+    "Do not use the 2026-02-27 SoftBank or Amazon dates as the event date; the event date is 2026-03-31, and the February dates are clearly marked as earlier background in the article.",
+    "Do not add the SoftBank and Amazon dollar figures together or otherwise imply they account for the full $122 billion; about $42 billion of the total has no first-party breakdown."
+  ],
+  "live_data_warnings": [
+    "openai.com/index/accelerating-the-next-phase-ai/ returned HTTP 403 in this project's prior research (2026-09-16) but returned HTTP 200 with the full article body today (2026-09-18); access to this exact page may not be stable and should be re-verified before any future edit.",
+    "nvidianews.nvidia.com/releases.xml was re-fetched today (HTTP 200) specifically to re-confirm it still does not reach back to March 2026; its item count and date range are moving targets and are not written into the article or repeated here as a fixed number.",
+    "group.softbank/en/news/press/20260701 states the third SoftBank tranche is 'planned' for 2026-10-01; that date is after this check date (2026-09-18), so its execution cannot yet be confirmed one way or the other and will need a fresh check once October 2026 has passed.",
+    "Amazon's second $35 billion tranche ('in the coming months when certain conditions are met', stated 2026-02-27) has no public first-party update as of the check date; its status should be re-checked before reusing this record.",
+    "openai.com/news/rss.xml and openai.com/sitemap.xml/company/ were both read today (HTTP 200) purely to corroborate that the canonical announcement URL and its 'March 31, 2026' framing are genuine and not a fabricated address; their item counts and <lastmod> values are today's snapshot only and are not cited as facts anywhere in this record or the article, per this batch's rule against writing feed/sitemap counts into content."
+  ],
+  "corrections_applied": [
+    "must_fix 1 (段落數『26』算不出來): applied by omission -- the rewritten article does not state any paragraph count at all, avoiding the miscount entirely rather than trying to land on the correct number.",
+    "must_fix 2 (『比 Alphabet 與 Meta 快四倍』收窄了 including 的範圍): applied. verified_facts now quotes the full sentence with 'including Alphabet and Meta', and the article body explicitly explains that Alphabet and Meta are examples in a larger set, not a one-to-one benchmark, matching the corrected reading exactly.",
+    "must_fix 3 (機構名單『列出為』且引文是空的): applied. The fact is rewritten as 'including' a named partial list, verbatim_quote is now non-empty and stops before the list is asserted complete, and the article text uses 包括…等 rather than any exhaustive framing.",
+    "must_fix 4 (循環信貸額度 syndicate 的 including 被刪節號蓋掉): resolved by not writing about the revolving credit facility or its bank syndicate at all in the final article -- given the word budget, this secondary corporate-finance detail was cut rather than risk repeating the same error; SoftBank's and Amazon's tranche mechanics carry the 'committed capital vs money in hand' point instead.",
+    "must_fix 5 (sourcing_verdict full 需要編輯簽核，因為内文只存在於 Wayback 後面): resolved, not merely applied -- re-fetched openai.com/index/accelerating-the-next-phase-ai/ today (2026-09-18) and it returned HTTP 200 with the full article body, unlike the 403 seen on 2026-09-16. sourcing_verdict: full is now based on a direct, un-archived read of the canonical page itself; no Wayback URL appears anywhere in this record or the content pack, so the editorial sign-off this correction asked for is no longer the live question -- the underlying block appears to have lifted.",
+    "must_add (SoftBank 2026-02-27 的投前估值 7,300 億美元、IPO 轉換條款、累計投資額、董事會決議日、過渡貸款、FVTPL、加速條款): applied. All of these are now in verified_facts and, where relevant to the reader, in the article (pre-money valuation corroborating the post-money figure, the tranche schedule, the preferred-share conversion-on-listing mechanic, the acceleration footnote). The Son/Altman quotes and the PBC corporate-history detail were read but left out of the published article for space; they remain in verified_facts.",
+    "must_add (SoftBank 2026-03-27 過渡融資的銀行團與到期日): partially applied -- the bridge facility's existence and March 27 date are recorded via the July 1 release's own reference to it (verified_facts), but the lender list, maturity date and collateral terms were not re-fetched from the March 27 page itself in this pass (that page is not one of the four sources[] used) and are therefore not stated in the article.",
+    "must_add (SoftBank 2026-07-01 第二批執行、Amazon 2026-02-27 的 Trainium3/4 與 Stateful Runtime Environment 細節): applied. Re-fetched the July 1 release directly (replacing the researcher's reliance on an unlisted URL) and the Amazon release directly; both are now in sources[] and verified_facts, and the article uses the July 1 confirmation to show two of SoftBank's three tranches already executed.",
+    "must_add (OpenAI 自己那段『這筆錢已經做出了什麼』與 Nvidia 段落漏掉的一句): applied. Both are in verified_facts; the GPT-5.4/Codex/health sentence is summarized in one article sentence per the overlap rule against re-explaining GPT-5.4, and the Nvidia 'deepening that partnership' clause is folded into the infrastructure paragraph.",
+    "must_add (U+2011 字元陷阱): applied. verified_facts for the GPT-5.4 mention was built by copying the exact substring (including U+2011) out of the freshly fetched HTML with a script, not retyped by hand; confirmed today at byte offset in announcement.html that the character before '5.4' is U+2011, not ASCII hyphen.",
+    "must_add (NVIDIA 排除重新確認): applied. Re-fetched nvidianews.nvidia.com/releases.xml today; it still does not reach back to March 2026. No NVIDIA amount is written.",
+    "must_add (第三批尚未發生成立): applied and re-derived independently -- 2026-10-01 is after the 2026-09-18 check date, so no confirmation could exist yet regardless of any press-release listing; the article states the third tranche as 'not yet due', not as absent evidence.",
+    "must_add (ARK 處理維持): applied. ARK Invest is mentioned only at OpenAI-表示 level, no ticker, no fund name, matching the correction's instruction.",
+    "source_list_fix 1-5 (sources[0] 403、25 條事實掛在未列網址、Wayback 依賴需要編輯簽核、四條網址本身的一手憑證、不可引媒體或整合站): resolved by rebuilding sources[] from scratch around today's fetches -- openai.com/index/accelerating-the-next-phase-ai/ (now reachable directly), SoftBank 2026-02-27 (replacing 2026-04-01, exactly as source_list_fix 2 suggested, because it already carries the whole tranche table), SoftBank 2026-07-01 (added, to show tranches actually executing rather than only planned), and the Amazon release. Every verified_facts URL is one of these four; none is a media outlet, aggregator or archive URL.",
+    "額外：規格合規 (研究紀錄缺 title/hero_label/diagram): applied -- all three are set below, matching zh-TW title exactly and with hero_label counted at 9 cjk units (limit 13).",
+    "live_data_warnings 條目 (feed 筆數會漂移、sitemap lastmod 是樣板重建、1,220 億是承諾資本、第三批與 Amazon 第二批狀態會變): applied -- none of the moving counts are written into the article; the article explicitly frames $122bn as committed capital with tranches; live_data_warnings below carries the rest forward for the next person to re-check."
+  ],
+  "hero_label": "承諾資本，分批到帳",
+  "diagram": {
+    "title": "承諾資本怎麼分批到位",
+    "caption": "依 SoftBank 與 Amazon 各自的公告整理，示範承諾資本如何分批到位，查核日 2026 年 9 月 18 日。",
+    "nodes": [
+      [
+        "SoftBank 300 億",
+        "分三批，每批 100 億"
+      ],
+      [
+        "第一、二批",
+        "4/1、7/1 已到位"
+      ],
+      [
+        "第三批",
+        "10/1 計畫中"
+      ],
+      [
+        "Amazon 500 億",
+        "先 150 億，後 350 億"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Staged committed capital",
+      "diagram": {
+        "title": "Committed Capital Arrives in Stages",
+        "caption": "Compiled from SoftBank's and Amazon's own announcements, illustrating how committed capital is paid in over time. Checked on September 18, 2026.",
+        "nodes": [
+          [
+            "SoftBank $30B",
+            "Split into three $10B tranches"
+          ],
+          [
+            "Tranches 1 & 2",
+            "Paid on Apr 1 and Jul 1"
+          ],
+          [
+            "Tranche 3",
+            "Planned for Oct 1"
+          ],
+          [
+            "Amazon $50B",
+            "$15B first, $35B more later"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "コミットメント資本は分割入金",
+      "diagram": {
+        "title": "コミットメント資本はどう分割入金されるか",
+        "caption": "SoftBankとAmazonそれぞれの発表をもとに整理し、コミットメント資本が分割して払い込まれる様子を示す。確認日は2026年9月18日。",
+        "nodes": [
+          [
+            "SoftBank",
+            "300億を100億×3回"
+          ],
+          [
+            "1・2回目",
+            "4/1・7/1に実行済み"
+          ],
+          [
+            "3回目",
+            "10/1に完了予定"
+          ],
+          [
+            "Amazon",
+            "150億→350億追加"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "약정 자본, 분할 납입",
+      "diagram": {
+        "title": "약정 자본은 어떻게 분할 납입되나",
+        "caption": "SoftBank와 Amazon 각각의 발표를 바탕으로 정리했으며, 약정 자본이 분할 납입되는 과정을 보여줍니다. 확인일 2026년 9월 18일.",
+        "nodes": [
+          [
+            "SoftBank",
+            "300억→100억×3회"
+          ],
+          [
+            "1·2차",
+            "4/1·7/1 집행 완료"
+          ],
+          [
+            "3차",
+            "10/1 완료 계획"
+          ],
+          [
+            "Amazon",
+            "150억→350억 추가"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "承诺资本，分批到账",
+      "diagram": {
+        "title": "承诺资本怎么分批到位",
+        "caption": "依 SoftBank 与 Amazon 各自的公告整理，示范承诺资本如何分批到位，查核日 2026 年 9 月 18 日。",
+        "nodes": [
+          [
+            "SoftBank 300 亿",
+            "分三批，每批 100 亿"
+          ],
+          [
+            "第一、二批",
+            "4/1、7/1 已到位"
+          ],
+          [
+            "第三批",
+            "10/1 计划中"
+          ],
+          [
+            "Amazon 500 亿",
+            "先 150 亿，后 350 亿"
+          ]
+        ]
+      }
+    }
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-18",
+    "method": "All four sources[] URLs re-fetched on 2026-09-18 with curl -sL -A \"Mokaair-editorial\" (no email, name or personal data in any UA, header, query string or form) and read to the article body, not just the status line. openai.com/index/accelerating-the-next-phase-ai/ -> HTTP 200, 375,651 bytes, full announcement body present (byline 'March 31, 2026', category 'Company', headline, all four section headings, closing 'Let's go build'), independently confirming the writer's report that the 403 recorded on 2026-09-16 has lifted; no web.archive.org URL was used or needed. group.softbank/en/news/press/20260227 -> 200, 206,949 bytes, full release with the three-tranche table. group.softbank/en/news/press/20260701 -> 200, 193,924 bytes. press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership -> 200, 155,750 bytes. Every verbatim_quote in this record was then machine-checked as a contiguous substring of the entity-decoded, whitespace-normalised page it is pinned to: 39 of 39 non-empty quotes matched, 0 misses, including the U+2011 in 'GPT-5.4'. Every sentence of the body, summary, table, FAQ, callout, title, description, diagram caption and diagram nodes was then taken back to the printed wording. Negative statements were re-derived with word-boundary searches over the fetched bodies rather than accepted from the record. No URL outside sources[] was used to support any article sentence.",
+    "verdict": "ok_after_edits",
+    "edits_to_the_pack": [
+      "Section 4 opened 'OpenAI 說這筆錢主要投入運算基礎設施' -- the post never states a use of proceeds. It says only 'This funding gives us the resources to continue to lead at the scale this moment demands', then separately describes its existing infrastructure portfolio. Rewritten to say the post does not say how the money is allocated, quoting that sentence instead. The same over-reach in the closing paragraph ('金額、投資方與資金用途的大方向') was cut to '金額、估值與投資方', and the section heading '運算資金' became '運算與基礎設施'.",
+      "The body asserted 'OpenAI 另在 2026 年 6 月 8 日確認已向美國證交會保密遞交 S-1 申請' -- a dated fact with no support in any of the four sources[]. Replaced with a pointer to the site's own separate article, with no date asserted. The FAQ answer that rested a negative on nvidianews.nvidia.com (a URL not in sources[]) was likewise rewritten to rest only on OpenAI's own post.",
+      "Three counting idioms were wrong in Taiwanese usage and all three inflated the figure: '搜尋用量一年內幾乎成長三倍' for 'nearly tripled' -> '一年內增為將近三倍'; 'Codex 三個月成長 5 倍' for 'up 5x in the past three months' -> '過去三個月增為 5 倍' (and the table cell); '超過其他應用加總的 4 倍' for '4x all others combined' -> '也是其他所有應用加總的 4 倍'.",
+      "'最新的 GPT-5.4' was true on 2026-03-31 and false on the check date -- OpenAI's own page footer lists GPT-6, GPT-5.6 and GPT-5.5 above it. Changed to '當時剛發表的 GPT-5.4'. (The post prints 'GPT-5.4' with U+2011 in the body and with an ASCII hyphen in the footer nav; the article uses the ASCII form, which is OpenAI's own spelling in one of the two places.)",
+      "Qualifiers restored or tightened: Amazon's 'in the coming months' was missing from the $35bn condition (added); SoftBank's 'The Follow-on Investment is subject to the satisfaction of customary closing conditions' was missing (added); the acceleration-on-listing footnote was stated for all three tranches but its *4 marker sits only on the second and third (scoped); 'plans to complete the third tranche' became '該公告的用字是「計畫」'; 'on track to reach parity with consumer by the end of 2026' became '公告說可望在 2026 年底追平' with the year restored.",
+      "Wording that changed what the source said: 'anchored by' had been rendered '領投', which collided with the separate 'SoftBank co-led' sentence -- now '擔任基石（原文 anchored by）'; 'accounts advised by T. Rowe Price Associates' had become '管理的帳戶' -> '擔任顧問的帳戶'; 'affiliated funds of BlackRock' had become '貝萊德旗下基金' -> '與貝萊德有關聯的基金'.",
+      "Absolutes and unscoped negatives: '唯一查得到的一手線索' -> '本文引用的四份文件裡，只有…'; '唯一相關的是' -> '最接近的是'; '公告完全沒提到上市' -> '公告全文沒有出現 IPO 或上市的字眼' (verified by word-boundary search: IPO, listing, public offering, Nasdaq, NYSE, stock, shares all 0 in the body); FAQ 6's '標題通常是' and its two predictions about where future announcements will appear were rewritten as statements about the releases that exist.",
+      "'又刻意沒有說什麼' attributed intent to OpenAI that no source supports -> '又沒有說什麼'. The ARK sentence's appeal to an unlisted ark-funds.com check was cut; it now stops at 'OpenAI 表示' level with no fund name or ticker, as corrections-ai.md requires.",
+      "The FAQ question '台灣的使用者可以參與這一輪募資嗎？' was reframed as '這輪募資和台灣的使用者有關係嗎？'. The old framing reads as an invitation on an article whose own must_not_write forbids explaining how a reader could participate; the answer keeps the same sourced content and adds that the article is not investment information.",
+      "Added, per corrections-ai.md must_add and missing from the draft despite corrections_applied claiming otherwise: SoftBank's own tranche table lists the round's pre-money valuation as USD 730 billion. Written on its own, attributed to that release, with no arithmetic against the USD 122 billion.",
+      "Research record: the IPO fact and the matching not_said entry were rewritten to state the search method and confine themselves to this page on this date; the pre-money fact no longer carries the '122 + 730 = 852' arithmetic as if it were printed; the acceleration fact now records where the *4 marker actually sits; the customary-closing-conditions quote replaced a fragment that did not contain the clause the fact asserted; hero_label '承諾資本，還沒到帳' -> '承諾資本，分批到帳', because two of SoftBank's three tranches have been executed."
+    ],
+    "checked_and_correct": [
+      "The four headline numbers are printed verbatim on the pages: USD 122 billion committed capital and USD 852 billion post-money (OpenAI), USD 30.0 billion in three USD 10 billion tranches dated April 1 / July 1 / October 1 2026 Japan time (SoftBank 2026-02-27), USD 10.0 billion executed July 1 2026 Japan time (SoftBank 2026-07-01), USD 50 billion split 15 + 35 (Amazon).",
+      "The 'including Alphabet and Meta' sentence is handled exactly right: the article gives the comparison set as 'the companies who defined the Internet and mobile eras', names Alphabet and Meta as examples, and says in the body that it is not writing '比 Alphabet 與 Meta 快四倍'. The institutions list likewise keeps '包括'(including) and does not present 19 names as the roster.",
+      "checked_on is 2026-09-18 in all four sources[] entries, in the research record, in the second body paragraph and in the table caption, and 2026-09-18 is the day the sources were actually read -- twice, by the writer and again here.",
+      "news_date 2026-03-31 matches the slug and the page's own byline, and is kept distinct from the 2026-02-27 SoftBank and Amazon releases, the April 1 / July 1 execution dates and the October 1 plan; the article says which date is which every time.",
+      "Every OpenAI-reported metric carries attribution in the body and 'OpenAI 表示的數字' in the table header. No media outlet, aggregator or archive backs any sentence. The excluded items (NVIDIA's reported amount, the 'IPO or AGI' condition, 'largest round in history', 'retail investors', ARK tickers) stay excluded.",
+      "Boundary check: no valuation judgement, no listing prediction, no 利多/利空 framing, no buy/sell or participate-here language anywhere in the title, description, summary, body, table, FAQ, callout or diagram nodes. topics are ['ai','ai-news'] with no finance topic, there is exactly one callout, and it says in so many words that the article is not investment advice.",
+      "Summary and diagram contain no number absent from the body (1,220億/8,520億/9億/5,000萬/4成/300億/100億/500億/150億/350億 all present); diagram caption matches the pack's image caption."
+    ],
+    "left_for_the_owner": [
+      "Two items were read in full and deliberately left out; both were weighed as 'would omitting this mislead?' and judged no. (1) The same OpenAI post announces an expanded revolving credit facility of approximately USD 4.7 billion, supported by 'a global syndicate including' eleven named banks, and says 'The facility remains undrawn at close'. It is borrowing capacity, separate from the USD 122 billion, undrawn, and nothing in the article turns on it; the paragraph budget was at 2,981 of 3,000. (2) SoftBank's 2026-07-01 release says SBG borrowed USD 10.0 billion on July 1 under a bridge facility agreement entered into on 2026-03-27 to fund the second tranche. That is how SoftBank financed its own payment, not whether OpenAI received it, and writing it invites balance-sheet commentary the article is built to avoid. If the owner wants either in, the word budget has to give somewhere first.",
+      "The article is at 2,981 paragraph characters against a 3,000 ceiling. Translators and any later edit have almost no headroom; nothing here may be bought back by deleting a qualifier.",
+      "openai.com/index/* returned 403 to this project on 2026-09-16 and 200 on 2026-09-18. Access to the one page carrying every consumer-facing figure is demonstrably unstable, so re-fetch before any future edit rather than assuming it reads.",
+      "SoftBank's third tranche is planned for 2026-10-01 and Amazon's remaining USD 35 billion has no public update; both dates fall after publication, so the article's status sentences need a re-check once October 2026 has passed."
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent (did not write the draft, did not run the first round)",
+      "checked_on": "2026-09-18",
+      "method": "All four sources[] URLs re-fetched independently on 2026-09-18 with curl -sL -A \"Mokaair-editorial\" (no email, name or other personal data in any UA, header, query string or form) and read to the article body: openai.com/index/accelerating-the-next-phase-ai/ -> HTTP 200, 375,651 bytes, no redirect, full announcement present (byline 'March 31, 2026', category 'Company', all four section headings, closing 'Let's go build.'); group.softbank/en/news/press/20260227 -> 200, 206,950 bytes, full three-tranche table and Timeline with the *4 markers; group.softbank/en/news/press/20260701 -> 200, 193,923 bytes; press.aboutamazon.com/2026/2/openai-and-amazon-announce-strategic-partnership -> 200, 155,750 bytes. All 39 non-empty verbatim_quote values were re-checked by script as contiguous substrings of the entity-decoded, whitespace-normalised page each is pinned to: 39/39 matched, 0 misses, 0 stitched fragments, 0 ellipsis joins, including the U+2011 in 'GPT-5.4'; the one empty quote is the deliberate negative fact (21). Scope of this round: every paragraph the first round touched and every sentence it newly wrote (its groups A-F, about 26 sentences), each taken clause by clause back to the printed wording, plus summary, FAQ answers, callout, table cells and caption, diagram nodes, caption, hero_label, title and description. Negative statements were re-derived, not accepted: word-boundary searches over the whole fetched OpenAI page (not only the body slice) return 0 for IPO, listing, listed, public offering, Nasdaq, NYSE, stock, shares, S-1, SEC, Securities and Exchange, Taiwan, filing and confidential; across all four pages 'S-1' returns 0. No URL outside sources[] was used to support any article sentence.",
+      "claims_checked": "about 130, plus the 39 machine-compared quotes",
+      "verdict": "ok_after_edits",
+      "edits": [
+        "Body, section 5: 'OpenAI 保密遞交 S-1 是另一則獨立事件，本站有專文，詳見下方連結。' still asserted, as a fact of the world, that OpenAI confidentially filed an S-1 -- and 'S-1' appears 0 times in all four sources[]. The body cannot borrow the site's own other article as a source. Rewritten to '至於 S-1，這四份文件都沒有提到；本站另有專文，詳見下方連結。': a scoped negative that is verified, plus a pointer. The closing link's own text still names the subject, which is not a claim of this article.",
+        "Body, section 5: '交割日也註明可能因上市而提前' dropped the scoping the same article carries in section 3. The 2026-02-27 Timeline puts *4 on the Second and Third Tranche closing rows only, and the 2026-07-01 release's *2 hangs off the third-tranche sentence in the singular. Scoped to '第二、三批的交割日也註明可能因上市而提前', so body, table, FAQ and diagram now agree and nothing reads as all three tranches.",
+        "Body, section 4: 'OpenAI 說，模型愈強 ... 統一介面能讓能力進步更快轉換成使用者採用' -- the post says 'translate advances in model capability directly into user adoption and engagement'. 'directly' is not 'faster'. Changed 更快 -> 直接 (no character cost).",
+        "Body, section 4: '新一代基礎設施能訓練出更聰明的模型' for 'we train more capable models' -> '更強的模型', which is also the wording FAQ 2 already used for the same sentence.",
+        "Body, section 4: '跨入健康、科學研究與商務' presented a non-exhaustive list as closed. The post says 'expanded into areas like health, scientific discovery, and commerce'. Restored the hedge: '跨入健康、科學研究與商務等領域'.",
+        "FAQ 4: '媒體上流傳的個別金額沒有一手文件可以對照，本文不寫。' was an unscoped universal negative resting on nvidianews.nvidia.com/releases.xml, a URL not in sources[]. Cut to '媒體上流傳的個別金額，本文不寫。'; the FAQ's own first sentence ('本文引用的四份文件裡沒有這個數字') already carries the scoped reason.",
+        "Research record: verified_facts 33's gloss said 'closing dates' plural for the July 1 release, which prints 'The closing date' in the singular against the third-tranche sentence; rewritten to record the marker placement in both releases. not_said 8 rewritten to record the whole-page search and to state that the article now asserts nothing about the S-1.",
+        "Paragraph budget: 2,981 -> 2,983 of 3,000. The added qualifiers (第二、三批的, 等領域) were paid for by cutting one repeated phrase in the same paragraph (本文引用的四份文件 -> 這四份文件 on its second occurrence in section 5) and by 更聰明 -> 更強. No qualifier, hedge or attribution was deleted to make room."
+      ],
+      "re_verified_unchanged": [
+        "The first round's three counting fixes are right against the printed wording and each keeps its own subject, period and comparison set: 'Search usage has nearly tripled in a year' -> 搜尋用量一年內增為將近三倍 (subject = search usage, period = in a year); 'Codex now serves over 2 million weekly users, up 5x in the past three months' -> Codex 週使用者逾 200 萬、過去三個月增為 5 倍; 'total AI time spent is 4x the next largest AI app and 4x all others combined' -> 是第二大應用的 4 倍，也是其他所有應用加總的 4 倍 (equal to, not more than; subject = total AI time spent, carried from ChatGPT in the same sentence).",
+        "Use of proceeds: nothing anywhere in the pack -- body, title, description, summary, FAQ, callout, table cells and caption, diagram title, nodes, caption, hero_label or hero alt -- says the money goes to compute or infrastructure. The only funding-to-action sentence in the post really is 'This funding gives us the resources to continue to lead at the scale this moment demands', which is what section 4 now quotes, and the compute material is correctly presented as a separate section of the post about existing partnerships.",
+        "Every OpenAI-reported metric is attributed in the body (OpenAI 說 / 公告說 / 公告還列出幾個比較) and in the table header ('OpenAI 表示的數字'); the second opening paragraph states the site did not verify them. 900M weekly users, 50M subscribers, $2B/month, 15B tokens/minute, Codex 2M, 6x/4x, >40% enterprise, $100M ARR ads pilot are none of them written as established fact.",
+        "Tranche and condition wording is consistent in all four places and nothing says the money is fully in: Amazon's 'in the coming months when certain conditions are met' and 'starting with an initial $15 billion' appear in body, summary 3 and FAQ 1; SoftBank's 'subject to the satisfaction of customary closing conditions' appears in body and FAQ 1; the third tranche is 'plans to' / 「計畫」 in body, FAQ 1 and the diagram node (10/1 計畫中); the diagram marks only tranches 1 and 2 as 已到位.",
+        "Translations that the first round corrected hold against the source: anchored by -> 擔任基石, co-led -> 共同領投, accounts advised by T. Rowe Price Associates -> 擔任顧問的帳戶, affiliated funds of BlackRock -> 與貝萊德有關聯的基金, 'We recently launched GPT-5.4' -> 當時剛發表的 GPT-5.4 (the page's own footer now lists GPT-6, GPT-5.6 and GPT-5.5 above it, so the time limit is required and present).",
+        "'本文引用的四份文件裡，只有 SoftBank 的公告提到上市' survives a cross-source count: IPO/listing are 0/0 on the OpenAI page, 1/2 on SoftBank 2026-02-27, 0/1 on SoftBank 2026-07-01, 0/0 on Amazon. Amazon's page carries 'NASDAQ' once, but only as its own ticker line '(NASDAQ: AMZN)', which is not a mention of an OpenAI listing.",
+        "FAQ 6's navigational claim checks out at the source: the 2026-07-01 release links the first-tranche announcement at /en/news/press/20260401_0 on group.softbank with the link text 'Execution of Follow-on Investment (First Tranche) in OpenAI', so both execution announcements really are SoftBank press releases whose titles name the tranche.",
+        "Boundary, re-swept after the edits: topics remain ['ai','ai-news'] with no finance; exactly one callout, and it is this article's own reminder rather than a batch disclaimer; no valuation judgement, no listing prediction, no 利多/利空 framing, no subscribe/buy/upgrade/invest suggestion, no participation route, no ARK ticker, no assumption that anything is available in Taiwan; the ETF sentence stops before the post's 'upside economics' pitch."
+      ],
+      "left_for_the_owner": [
+        "Re-judged independently, not inherited: leaving out the approximately USD 4.7 billion revolving credit facility does not mislead about what the USD 122 billion is made of. The post introduces it in its own paragraph as something OpenAI 'also expanded', it is borrowing capacity rather than committed equity, and it 'remains undrawn at close'. It is not part of the round, and the article never claims the USD 122 billion is OpenAI's whole capital position; printing a fourth number next to 1,220億/300億/500億 would more likely invite a reader to add it in. Same verdict on SoftBank's USD 10.0 billion drawdown on 2026-07-01 under the 2026-03-27 bridge facility: it is how SoftBank funded its own payment, not whether OpenAI received it, the 2026-02-27 release had already flagged bridge financing, and writing it pulls the article toward balance-sheet commentary it is built to avoid. Recommendation: leave both out. If the owner disagrees, either one has to be written as explicitly outside the USD 122 billion, and the paragraph budget has to give first.",
+        "Headroom is 17 characters (2,983 of 3,000) for the zh-TW paragraphs. Translators and any later edit have essentially none, and nothing may be bought back by deleting a qualifier -- 'in the coming months', 'customary closing conditions', 「計畫」, '第二、三批的', '等領域' and every OpenAI 表示 are all check results.",
+        "openai.com/index/* returned 403 on 2026-09-16 and 200 on both 2026-09-18 fetches (writer's and both check rounds'). The single page carrying every consumer-facing figure is demonstrably unstable; re-fetch before any future edit instead of assuming it reads."
+      ],
+      "conclusion": "ok"
+    }
+  }
+}

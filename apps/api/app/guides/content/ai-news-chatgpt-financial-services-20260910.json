@@ -1,0 +1,1156 @@
+{
+  "slug": "ai-news-chatgpt-financial-services-20260910",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-10",
+  "featured": false,
+  "display_order": 156,
+  "related": [
+    "ai-news-chatgpt-ads-20260505",
+    "ai-news-gpt-6-astra-20260903",
+    "ai-news-chatgpt-storage-scale-20260911"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "ChatGPT for Financial Services 發布：金融機構的 AI 工具，跟個人帳號無關",
+      "description": "2026 年 9 月 10 日，OpenAI 發布 ChatGPT for Financial Services，官方表示起點鎖定投資銀行與股票研究，是內建金融資料並結合 GPT-6 Astra 推理能力的 ChatGPT Work 客製版本，開放給合資格的金融機構洽談。本文依 2026 年 9 月 18 日查核，整理官方評測代表什麼、還沒公布的價格、地區與時程；本站未實際使用，內容不是投資建議。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-financial-services-20260910/hero.jpg",
+        "alt": "原創插圖：左邊三疊高低不一的文件代表多家資料商的資料，一條細線從其中一個小方塊延伸到右邊的放大鏡，代表把數字追回原始表格；下方四個小方塊由左至右排列，代表資料、範本、權限與聯絡四個環節。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，OpenAI 發布公告《Introducing ChatGPT for Financial Services》，推出一款專門給金融機構使用的 ChatGPT Work 客製版本。OpenAI 表示這項服務結合內建金融資料與 GPT-6 Astra 的推理能力，協助團隊處理研究、財務模型與客製化的客戶文件等工作；產品方向是與摩根士丹利（Morgan Stanley）、Evercore 兩家設計夥伴合作打磨出來的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 18 日查核，直接讀取 OpenAI 官方公告頁與 OpenAI 官方 ChatGPT 說明文件的定價頁；網頁內容隨時可能更動，本文依查核當天讀到的版本整理。本站沒有實際使用這項產品，也不提供投資、採購或導入建議，下文的評測數字與功能描述都是 OpenAI 官方自己公布的說法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 於 2026 年 9 月 10 日發布 ChatGPT for Financial Services，官方表示產品的起點是投資銀行與股票研究，是內建 Daloopa、PitchBook、LSEG News、Crunchbase 等資料商資料的 ChatGPT Work 客製版本。",
+            "OpenAI 公布三張評測圖，GPT-6 Astra 在三張圖上都是分數最高的模型：OfficeQA Pro 圖說寫 69.9% 對 60.2%，BoxBench 圖說寫 77% 對 74%（官方註明是外部夥伴提供的 Eval），專業簡報製作的內部評測裡，對 Opus 5 的勝率是 55.6%。",
+            "這項服務開放給「合資格的金融機構」洽談業務，公告沒有寫價格、地區或開放時程，也沒有說一般 ChatGPT 個人帳號會因此獲得新功能。",
+            "網頁內容隨時可能更動，本文依 2026 年 9 月 18 日查核當天讀到的版本整理。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI 推出金融機構專用的 ChatGPT"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告寫的定位語是「為金融服務打造的前沿智慧」（原文 Frontier intelligence, built for financial services）。OpenAI 說明這款產品把團隊需要的金融資料整合在一起；官方表示產品的起點是投資銀行與股票研究，與夥伴的合作會用在後續訓練與產品改進，以及擴展到金融服務業的其他類別。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 表示，摩根士丹利與 Evercore 是這項產品的設計夥伴，這層合作讓 OpenAI 找出自己能為金融機構解決的最大挑戰；而對這兩家夥伴的團隊來說，最大的痛點是能不能可靠取得資料，以及能不能做出高品質的產出。官方公告引用了兩家公司的說法（署名到公司，沒有具名到個人），形容這是雙方一起測試構想、逐步形塑產品的過程；公告沒有寫這兩家機構已經正式導入或購買這項服務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這是一個要另外洽談的企業服務：官方公告正文沒有提到一般消費者，也沒有說現有 ChatGPT Plus、Pro 或 Business 使用者能不能透過升級取得這些功能。本文後面會說明官方寫清楚與還沒說清楚的部分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "內建資料與既有訂閱怎麼串接"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把資料這一段總結成三件事：納入進階金融資料、簡化既有的資料商連線、改善 MCP 效能。第一件是內建資料：OpenAI 表示產品內建了 Daloopa、PitchBook、LSEG News、Crunchbase 等資料商的資料，涵蓋法說會逐字稿、財務報表、公司基本面與未上市公司資訊等；這些資料由 OpenAI 自己索引、存放在自家基礎設施上，團隊可以直接使用，不必另外簽合約或設定連接器。OpenAI 並宣稱這樣做可以提高正確性，帶來逐格溯源這類功能，讓使用者把數字與說法追回原本的表格與段落查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件是既有訂閱：OpenAI 表示知道許多客戶原本就有資料訂閱，因此「正在與」S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's 合作開發共用登入與權限對接，資料商「將能」透過使用者的 ChatGPT 登入身分辨識使用者，自動取得原本就有權限的資料；公告沒有給時程，也沒有寫這件事已經上線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件是更廣的連接器生態：OpenAI 表示要有效使用資料商的 MCP 連接器可能有困難，官方因此把金融服務業最常用的部分 MCP 最佳化成可以在產品裡直接使用，讓團隊花更少時間排查連線問題、更多時間做分析。官方公告寫連接器生態「超過 50 個以上」（官方原文本身重複用詞，寫成 over 50+ connectors），並點名 Datasite、Box、Preqin、FactSet 與 Intapp 作為例子，不是完整清單。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "串接方式",
+            "資料來源（官方用詞）",
+            "目前狀態"
+          ],
+          "rows": [
+            [
+              "內建資料",
+              "Daloopa、PitchBook、LSEG News、Crunchbase 等",
+              "官方表示可直接取用，免簽約、免設定連接器"
+            ],
+            [
+              "既有訂閱整合中",
+              "S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's",
+              "官方表示正在合作開發共用登入，未提供時程"
+            ],
+            [
+              "更廣連接器生態",
+              "Datasite、Box、Preqin、FactSet、Intapp 等",
+              "官方表示「超過 50 個以上」，已優化部分常用連接器"
+            ]
+          ],
+          "caption": "依 OpenAI 官方公告整理資料串接方式，查核日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6 Astra 的三項評測，怎麼讀"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 表示 GPT-6 Astra 在金融服務工作所需核心能力中的三項上都達到業界領先水準：資訊檢索、財務推理與成果產出。官方的說法是，這個模型能讀懂財務文件裡的數字、表格與附註，能根據輸入的資料執行財務分析並整理出結論，還能把分析結果整理成文件、試算表與簡報等具體產出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公布了三張評測圖，GPT-6 Astra 在三張圖上都是分數最高的模型；三張圖各有三個受測模型，圖說都只點名其中兩個。第一張 OfficeQA Pro 測的是模型能不能在美國財政部公報裡找到並分析資訊，包含複雜的財務表格、圖表與附註，圖說寫 GPT-6 Astra 得 69.9%、GPT-5.6 Sol 得 60.2%，圖說沒提到的第三個模型 Claude Fable 5.1 是 62.4%；這張圖沒有像另外兩張那樣註明評測是誰做的。第二張 BoxBench 測的是模型能不能把複雜商業流程裡的文件整理成完整產出，圖說寫 77% 對 74%，並註明「這是外部夥伴提供的 Eval」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三張是專業簡報製作的評比，官方在圖上與圖說都註明這是內部評測、由人工比較各模型做出來的簡報，對手在圖上標示為 Opus 5，GPT-6 Astra 的勝率是 55.6%。官方這張圖說在另一個對照數字上和圖表本身的資料兜不起來，本文只採用圖說與圖表一致的部分；三張圖的評測方法、題數與評分者人數，公告頁上都沒有寫，適合看成廠商自己公布的比較結果，不是獨立的排名。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-financial-services-20260910/diagram-1.svg",
+          "alt": "四格圖解：內建資料、逐格溯源、範本產出、機構限定",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 9 月 10 日發布的官方公告整理，查核日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "範本產出與安全治理"
+        },
+        {
+          "type": "paragraph",
+          "text": "分析做完之後要變成看得懂的產出。OpenAI 表示，管理者可以透過專屬的後台頁面發布公司自己的 Excel、Word 與 PowerPoint 範本；設定好公司範本與風格指南之後，團隊就能把分析結果轉成符合公司格式與風格的估值模型、研究報告與提案簡報。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全與治理的部分建立在 ChatGPT Enterprise 既有的功能上：單一登入、帳號自動化佈建與角色式存取控制。OpenAI 表示企業的業務資料預設不會用來訓練模型，資料在靜態儲存與傳輸過程都會加密，管理者可以自行設定工作區的資料保留期限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "法遵團隊可以透過 OpenAI Compliance Platform，把支援的工作區紀錄匯出到既有的稽核與調查流程；企業也能依角色管理誰能使用哪些技能與應用程式，並建立多個工作區來執行資訊隔離牆。官方在這一節開頭寫的理由是，保護重大未公開資訊與客戶機密，對金融機構至關重要。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰能用、還沒說清楚什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 表示 ChatGPT for Financial Services 只是服務客戶的其中一種方式，金融產業的需求需要一整套解決方案，機構與開發者也可以直接用 OpenAI 的 API 打造自己的專屬應用程式。「供應狀況」段落只有兩句話：這項服務開放給「合資格的金融機構」使用，有興趣要聯絡 OpenAI 業務或自己的客戶經理；公告裡沒有出現任何價格、地區或開放時程的說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則公告沒有寫出這項服務的費用、最低採用規模或合約長度，也沒有說明是哪些國家或地區可以申請；OpenAI 官方 ChatGPT 說明文件的定價頁上，查核到 2026 年 9 月 18 日為止同樣找不到這項服務的價格。台灣的金融機構能不能申請、要花多少錢，官方公告與本文查到的資料都沒有答案，讀者若有需要，只能直接聯絡 OpenAI 業務洽詢。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則公告談的是資料、範本與治理，沒有重講 GPT-6 Astra 的完整能力，也沒有說明 ChatGPT Work 怎麼交辦任務；這兩塊，以及 OpenAI Agents API 的計費與資料位置，本站先前都已經分別整理過。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "ChatGPT for Financial Services 是什麼？",
+              "answer": "這是 OpenAI 於 2026 年 9 月 10 日發布的產品，官方形容它是為金融機構打造的客製化 ChatGPT Work 版本，內建金融資料並結合 GPT-6 Astra 的推理能力，協助團隊處理研究、財務模型與客製化的客戶文件等工作。官方公告寫的是開放給合資格的金融機構、請聯絡業務洽談，公告裡沒有把它寫成 ChatGPT 既有方案的新功能。"
+            },
+            {
+              "question": "我平常用的 ChatGPT 帳號（Free、Plus、Pro 或 Business）會不會自動多出這些功能？",
+              "answer": "官方公告沒有這樣說。公告只寫這項服務開放給「合資格的金融機構」，需要另外聯絡業務或客戶經理，並未提到個人帳號或既有 ChatGPT Business 工作區會因此取得新功能。以本文查核的官方公告頁與 OpenAI 官方 ChatGPT 說明文件的定價頁查到 2026 年 9 月 18 日為止，未見任何個人方案適用的說明。"
+            },
+            {
+              "question": "摩根士丹利、Evercore 或公告點名的資料商，是不是已經正式採用這個產品？",
+              "answer": "官方只稱摩根士丹利與 Evercore 為「設計夥伴」，用來協助打磨產品方向，並引用兩家公司的說法說明合作方向；公告沒有寫這兩家已經導入、購買或全面使用這項產品。Daloopa、PitchBook、LSEG News、Crunchbase 等資料商的角色是提供內建資料，屬於供應商合作，不代表它們是這項產品的使用者。"
+            },
+            {
+              "question": "這項產品會不會推薦股票、判斷估值或提供投資建議？",
+              "answer": "本文查核的官方頁面描述的是資料整理、財務模型建立與簡報產出等工作流程，查到 2026 年 9 月 18 日為止沒有提供任何股票代碼、報酬率或買賣時機的建議；本文說明的也只是產品功能與現況，不是投資建議，讀者不應把本文或官方頁面的內容當成投資判斷的依據。"
+            },
+            {
+              "question": "官方公布的評測數字，代表這個模型比較準嗎？",
+              "answer": "這些數字都是 OpenAI 在自己的公告頁上公布的，不是本站實測的結果。BoxBench 官方註明是外部夥伴提供的 Eval，專業簡報製作的比較官方註明是內部評測，OfficeQA Pro 那張圖則沒有註明評測是誰做的；三張圖的評測方式、題目與評分者，公告頁上都沒有寫，適合當成廠商自己的說法參考，不宜直接當成客觀排名。"
+            },
+            {
+              "question": "台灣的銀行或金融機構可以申請使用嗎？要多少錢？",
+              "answer": "官方公告沒有提到台灣、亞洲或任何地區的開放狀況，也沒有公布價格、最低採用規模或合約長度，只說明合資格的金融機構可以聯絡業務洽詢。以本文查核的兩個官方頁面查到 2026 年 9 月 18 日為止，未見任何地區或費用資訊；本站無法代讀者判斷某一家機構是否符合資格。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這篇寫的是機構工具，不是理財建議",
+          "text": "ChatGPT for Financial Services 是 OpenAI 提供給金融機構、需要聯絡業務洽談的企業服務，官方公告寫明開放給「合資格的金融機構」，不是個人 ChatGPT 帳號可以直接使用的功能，本站也沒有實際試用這項產品。本文整理的是官方公告寫了什麼、還沒說清楚什麼，內容不涉及任何股票、基金或加密資產的推薦，也不是投資建議；文中的財務模型、估值與簡報製作等用詞，指的是官方描述的產品功能，讀者不應把它們當成理財或投資的依據。實際能不能申請、費用與導入時程，請以 OpenAI 官方公告與洽談結果為準；本文查核日為 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 廣告開放自助購買：OpenAI 5 月公告的工具、計費與鎖定機制",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing ChatGPT for Financial Services",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Pricing",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "en": {
+      "title": "ChatGPT for Financial Services Launches: An AI Tool for Financial Institutions, Not Your Personal Account",
+      "description": "On September 10, 2026, OpenAI launched ChatGPT for Financial Services. OpenAI says it starts with investment banking and equity research: a customized ChatGPT Work edition with built-in financial data and GPT-6 Astra's reasoning, open to eligible institutions that contact sales. Checked September 18, 2026, this article covers what OpenAI's benchmark charts show and what price, region, and timeline details are missing; we have not used it, and nothing here is investment advice.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-financial-services-20260910/hero-en.jpg",
+        "alt": "Original illustration: uneven document stacks stand for several data providers; a line traces one figure to a magnifying glass. Four squares below: data, templates, permissions, contact.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 10, 2026, OpenAI published the announcement \"Introducing ChatGPT for Financial Services,\" launching a customized ChatGPT Work edition built specifically for financial institutions. OpenAI says the service combines built-in financial data with GPT-6 Astra's reasoning to help teams handle work such as research, financial models, and customized client materials; the product's direction was shaped through a design partnership with Morgan Stanley and Evercore."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 18, 2026, reading directly from OpenAI's official announcement page and the pricing page of OpenAI's official ChatGPT documentation; web pages can change at any time, and this article reflects the version read on the day it was checked. We have not used this product ourselves, and we are not offering investment, procurement, or adoption advice; the benchmark figures and feature descriptions below are all OpenAI's own published claims."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI launched ChatGPT for Financial Services on September 10, 2026. OpenAI says the product starts with investment banking and equity research, as a customized ChatGPT Work edition with built-in data from providers including Daloopa, PitchBook, LSEG News, and Crunchbase.",
+            "OpenAI published three benchmark charts; GPT-6 Astra scores highest on all three: OfficeQA Pro reads 69.9% vs. 60.2%, BoxBench reads 77% vs. 74% (an Eval OpenAI says an external partner provided), and an internal slide-creation evaluation puts its win rate against Opus 5 at 55.6%.",
+            "The service is available to \"eligible financial institutions\" that contact sales; the announcement does not state a price, region, or rollout timeline, and does not say regular ChatGPT personal accounts will gain any new features because of it.",
+            "Web page content can change at any time; this article reflects the version read when it was checked on September 18, 2026."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI Launches a ChatGPT Built for Financial Institutions"
+        },
+        {
+          "type": "paragraph",
+          "text": "The positioning line in the official announcement is \"Frontier intelligence, built for financial services.\" OpenAI explains that the product brings together the financial data teams need; OpenAI says the product starts with investment banking and equity research, with the partnership feeding into further training and product improvements and expansion into other categories of financial services."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI says Morgan Stanley and Evercore are this product's design partners, and that the collaboration helped OpenAI pinpoint the biggest challenges it can solve for financial institutions; for these two partners' teams, the biggest pain points were whether they could reliably access data and whether they could produce high-quality output. The announcement quotes statements from both companies (attributed to the companies, not to named individuals), describing a process of testing ideas together and shaping the product step by step; the announcement does not say either institution has formally adopted or purchased the service."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is an enterprise service that requires a separate sales conversation: the body of the announcement does not mention individual consumers, and does not say whether existing ChatGPT Plus, Pro, or Business users can get these features by upgrading. The rest of this article covers what OpenAI has stated clearly and what it has not."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How the Built-In Data and Existing Subscriptions Connect"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI sums up the data section as three things: adding premium financial data, simplifying connections to existing data providers, and improving MCP performance. The first is built-in data: OpenAI says the product has built-in data from providers such as Daloopa, PitchBook, LSEG News, and Crunchbase, covering earnings call transcripts, financial statements, company fundamentals, and private-company information; this data is indexed by OpenAI itself and hosted on its own infrastructure, so teams can use it directly without signing separate contracts or setting up connectors. OpenAI also claims this improves accuracy and enables features like granular citations, letting users trace figures and claims back to their original tables and passages to check them."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second is existing subscriptions: OpenAI says it knows many customers already have data subscriptions, so it is \"working with\" S&P Capital IQ, LSEG, MSCI, Dow Jones Factiva, and Moody's on shared sign-in and entitlement integrations; data providers \"will be able\" to recognize users through their ChatGPT sign-in and automatically grant access to data they are already entitled to. The announcement gives no timeline and does not say this is already live."
+        },
+        {
+          "type": "paragraph",
+          "text": "The third is the broader connector ecosystem: OpenAI says it can be challenging to use data providers' MCP connectors effectively, so it has optimized some of the most-used MCPs in financial services for immediate use in the product, so teams can spend less time troubleshooting connections and more time on analysis. The announcement puts the connector ecosystem at \"over 50+\" connectors (OpenAI's own wording repeats itself that way) and names Datasite, Box, Preqin, FactSet, and Intapp as examples, not a complete list."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Connection type",
+            "Data source (OpenAI's wording)",
+            "Current status"
+          ],
+          "rows": [
+            [
+              "Built-in data",
+              "Daloopa, PitchBook, LSEG News, Crunchbase, and others",
+              "OpenAI says it's ready to use directly, no contract or connector setup needed"
+            ],
+            [
+              "Existing subscriptions (in progress)",
+              "S&P Capital IQ, LSEG, MSCI, Dow Jones Factiva, Moody's",
+              "OpenAI says it is working on shared sign-in; no timeline given"
+            ],
+            [
+              "Broader connector ecosystem",
+              "Datasite, Box, Preqin, FactSet, Intapp, and others",
+              "OpenAI says \"over 50+\"; some commonly used connectors already optimized"
+            ]
+          ],
+          "caption": "Compiled from OpenAI's official announcement; checked on September 18, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6 Astra's Three Benchmarks, and How to Read Them"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI says GPT-6 Astra is state of the art across three of the core capabilities financial-services work requires: information retrieval, financial reasoning, and artifact generation. OpenAI's own description is that the model can navigate the numbers, tables, and footnotes in financial documents, can run financial analysis on input data and draw conclusions, and can synthesize the results into concrete output such as documents, spreadsheets, and slides."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI published three benchmark charts, and GPT-6 Astra is the top-scoring model on all three; each chart tested three models, and each caption names only two of them. The first, OfficeQA Pro, tests whether a model can find and analyze information across U.S. Treasury Bulletins, including complex financial tables, charts, and footnotes; the caption reads GPT-6 Astra at 69.9% and GPT-5.6 Sol at 60.2%, while the third model the caption does not mention, Claude Fable 5.1, scored 62.4%. Unlike the other two charts, this one does not note who ran the evaluation. The second, BoxBench, tests whether a model can turn documents from complex business workflows into complete deliverables; the caption reads 77% versus 74%, noting \"this is an Eval provided by an External partner.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "The third chart is a professional slide-creation comparison; both the chart and its caption note this is an internal evaluation, with slides from each model compared by human reviewers. The rival is labeled \"Opus 5\" on the chart, and GPT-6 Astra's win rate is 55.6%. This caption disagrees with the chart's own underlying data on another comparison figure, so this article only uses the number the caption and the chart agree on. None of the three charts states its evaluation method, number of questions, or number of raters, so it is best to read them as the vendor's own comparison, not an independent ranking."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-financial-services-20260910/diagram-1-en.svg",
+          "alt": "Four-panel diagram: built-in data, granular citations, template output, institutions only",
+          "width": 1600,
+          "height": 900,
+          "caption": "Compiled from OpenAI's official announcement published September 10, 2026; checked on September 18, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Template Output and Security Governance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the analysis is done, it needs to become something people can read. OpenAI says administrators can publish a firm's own Excel, Word, and PowerPoint templates through a dedicated admin page; once a firm's templates and style guide are configured, teams can turn analysis into valuation models, research notes, and pitchbooks in the firm's own format and style."
+        },
+        {
+          "type": "paragraph",
+          "text": "Security and governance build on ChatGPT Enterprise's existing capabilities: SAML single sign-on, SCIM-based account provisioning, and role-based access controls. OpenAI says a firm's business data is not used to train its models by default, that data is encrypted at rest and in transit, and that admins can configure workspace data retention."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compliance teams can use the OpenAI Compliance Platform to export supported workspace logs into their existing audit and investigation workflows; firms can also manage who can use which skills and apps by role and can create multiple workspaces to enforce information barriers. OpenAI frames this section around protecting material non-public information and client confidentiality, which it says matters enormously to financial institutions."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Who Can Use It, and What's Still Unclear"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI says ChatGPT for Financial Services is just one way it serves customers, and that the needs of the finance industry require a range of solutions; institutions and developers can also use OpenAI's API directly to build their own specialized applications. The \"Availability\" section is only two sentences: the service is available to \"eligible financial institutions,\" and interested parties should contact OpenAI sales or their account team; the announcement includes no price, region, or rollout timeline at all."
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement does not state this service's cost, minimum adoption size, or contract length, nor which countries or regions can apply; as of the September 18, 2026 check, the pricing page of OpenAI's official ChatGPT documentation also has no price for this service. Whether Taiwan's financial institutions can apply, and how much it would cost, is a question neither OpenAI's announcement nor anything else this article found can answer; readers who need to know should contact OpenAI sales directly."
+        },
+        {
+          "type": "paragraph",
+          "text": "This announcement covers data, templates, and governance; it does not repeat GPT-6 Astra's full capabilities or explain how ChatGPT Work assigns tasks. We have already covered both of those separately, along with the billing and data location of OpenAI's Agents API."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "What is ChatGPT for Financial Services?",
+              "answer": "It's a product OpenAI launched on September 10, 2026. OpenAI describes it as a customized ChatGPT Work edition built for financial institutions, with built-in financial data and GPT-6 Astra's reasoning, to help teams handle work such as research, financial models, and customized client materials. The announcement says it is available to eligible financial institutions that contact sales, and does not describe it as a new feature of an existing ChatGPT plan."
+            },
+            {
+              "question": "Will my regular ChatGPT account (Free, Plus, Pro, or Business) automatically get these features?",
+              "answer": "The announcement does not say so. It only states that the service is available to \"eligible financial institutions\" that separately contact sales or their account team, and it does not mention personal accounts or existing ChatGPT Business workspaces gaining new features as a result. As of the September 18, 2026 check of the official announcement page and the pricing page of OpenAI's official ChatGPT documentation, we found no mention of this applying to any personal plan."
+            },
+            {
+              "question": "Have Morgan Stanley, Evercore, or the data providers named in the announcement formally adopted this product?",
+              "answer": "OpenAI refers to Morgan Stanley and Evercore only as \"design partners\" who helped shape the product's direction, and quotes statements from both companies; the announcement does not say either institution has adopted, purchased, or fully deployed the product. Data providers such as Daloopa, PitchBook, LSEG News, and Crunchbase supply the built-in data as a vendor relationship, which does not mean they are users of this product."
+            },
+            {
+              "question": "Does this product recommend stocks, judge valuations, or offer investment advice?",
+              "answer": "The official pages this article checked describe workflows such as organizing data, building financial models, and producing presentations; as of the September 18, 2026 check, we found no stock tickers, return figures, or buy/sell timing advice. What this article describes is only the product's features and current status, not investment advice, and readers should not treat this article or the official pages as a basis for investment decisions."
+            },
+            {
+              "question": "Do the benchmark figures OpenAI published mean this model is more accurate?",
+              "answer": "These figures were all published by OpenAI on its own announcement page; they are not results this site tested itself. OpenAI notes that BoxBench is an Eval provided by an external partner, and that the professional slide-creation comparison is an internal evaluation; the OfficeQA Pro chart does not note who ran it. None of the three charts states its evaluation method, number of questions, or number of raters, so it's best treated as the vendor's own claim for reference, not as an objective ranking."
+            },
+            {
+              "question": "Can banks or financial institutions in Taiwan apply to use this? How much does it cost?",
+              "answer": "The announcement does not mention Taiwan, Asia, or the availability status of any region, and does not publish a price, minimum adoption size, or contract length; it only says eligible financial institutions can contact sales. As of the September 18, 2026 check of the two official pages, we found no information on region or cost; this site cannot determine on a reader's behalf whether any particular institution is eligible."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "This Article Covers an Institutional Tool, Not Financial Advice",
+          "text": "ChatGPT for Financial Services is an enterprise service from OpenAI for financial institutions that requires contacting sales; the official announcement states it is available to \"eligible financial institutions,\" and it is not a feature individual ChatGPT accounts can use directly. We have not actually tried this product ourselves. This article covers what the official announcement states and what it leaves unclear; it does not involve recommending any stock, fund, or crypto asset, and it is not investment advice. Terms used here such as financial models, valuation, and slide creation refer to the product features OpenAI describes, and readers should not treat them as a basis for financial or investment decisions. Whether an institution can actually apply, the cost, and the adoption timeline should be confirmed through OpenAI's official announcement and sales conversations; this article was checked on September 18, 2026."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT Ads Open Up to Self-Serve Buying: The Tools, Billing, and Targeting from OpenAI's May Announcement",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing ChatGPT for Financial Services",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Pricing",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ChatGPT for Financial Services 発表：金融機関向けAIツール、個人アカウントとは無関係",
+      "description": "2026年9月10日、OpenAIはChatGPT for Financial Servicesを発表しました。OpenAIによると出発点は投資銀行と株式リサーチで、金融データを組み込みGPT-6 Astraの推論力を備えたChatGPT Workのカスタム版であり、対象となる金融機関が営業担当に問い合わせて利用できます。本稿は2026年9月18日時点で確認した内容をもとに、公式の評価指標が何を示すか、まだ公表されていない価格・地域・時期を整理しました。当サイトは実際に利用しておらず、投資助言ではありません。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-financial-services-20260910/hero-ja.jpg",
+        "alt": "オリジナルイラスト：左側に高さの異なる3つの書類の山があり、複数のデータ提供元のデータを表す。1つの小さな四角から右側の虫眼鏡まで細い線が伸び、数字を元の表までたどることを表す。下部には4つの小さな四角が左から右に並び、データ・テンプレート・権限・連絡という4つの段階を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月10日、OpenAIは公式発表「Introducing ChatGPT for Financial Services」を公開し、金融機関専用にカスタマイズしたChatGPT Workの新版を打ち出しました。OpenAIによると、このサービスは組み込みの金融データとGPT-6 Astraの推論力を組み合わせ、リサーチや財務モデル、顧客向けにカスタマイズした資料作成などの業務をチームが進める助けになるとしています。製品の方向性はMorgan StanleyとEvercoreという2社のデザインパートナーとの協業を通じて磨き上げられました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は2026年9月18日に、OpenAIの公式発表ページとOpenAI公式ChatGPTサポート文書の料金ページを直接確認しました。ウェブページの内容はいつでも変わり得るため、本稿は確認した当日に読めた内容を整理したものです。当サイトはこの製品を実際に利用しておらず、投資、購入、導入に関する助言も行いません。以下の評価指標や機能説明は、すべてOpenAI自身が公表している内容です。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAIは2026年9月10日にChatGPT for Financial Servicesを発表しました。OpenAIによると出発点は投資銀行と株式リサーチで、Daloopa、PitchBook、LSEG News、Crunchbaseなどのデータ提供元のデータを組み込んだChatGPT Workのカスタム版です。",
+            "OpenAIは3枚の評価チャートを公開しており、GPT-6 Astraはいずれのチャートでも最高スコアのモデルです。OfficeQA Proのキャプションは69.9%対60.2%、BoxBenchのキャプションは77%対74%（外部パートナーが提供したEvalだと注記）、専門的なスライド作成の内部評価ではOpus 5に対する勝率が55.6%と記されています。",
+            "このサービスは「対象となる金融機関」からの問い合わせに応じて提供され、発表には価格・地域・提供時期の記載がなく、一般のChatGPT個人アカウントに新機能が追加されるとも書かれていません。",
+            "ウェブページの内容はいつでも変わり得るため、本稿は2026年9月18日の確認時点で読めた内容を整理したものです。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI、金融機関専用のChatGPTを発表"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式発表に記されている位置づけの言葉は「金融サービスのために作られたフロンティア・インテリジェンス」（原文 Frontier intelligence, built for financial services）です。OpenAIは、この製品がチームに必要な金融データを一つにまとめるものだと説明しています。OpenAIによると出発点は投資銀行と株式リサーチで、パートナーとの協業は今後のトレーニングや製品改善、さらに金融サービス業の他分野への展開にも活かされるとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIによると、Morgan StanleyとEvercoreはこの製品のデザインパートナーであり、この協業を通じてOpenAIは金融機関のために解決できる最大の課題を見極めることができたとしています。そして、この2社のチームにとって最大の悩みは、データに確実にアクセスできるかどうか、そして質の高い成果物を作れるかどうかだったといいます。公式発表は両社のコメントを引用していますが（会社名義であり、個人名は明記されていません）、これはアイデアを一緒に試しながら製品を段階的に形作っていくプロセスだったと説明しています。発表には、この2社がすでに正式に導入または購入したとは書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これは別途相談が必要な法人向けサービスです。公式発表の本文には一般消費者への言及はなく、既存のChatGPT Plus、Pro、Business利用者がアップグレードでこれらの機能を得られるかどうかも書かれていません。以降では、OpenAIが明確に書いていることと、まだ書かれていないことを整理します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "組み込みデータと既存サブスクリプションの連携"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIはデータに関する部分を3つにまとめています。高度な金融データの組み込み、既存データ提供元との接続の簡素化、MCPパフォーマンスの改善です。1つ目は組み込みデータです。OpenAIによると、製品にはDaloopa、PitchBook、LSEG News、Crunchbaseなどのデータ提供元のデータが組み込まれており、決算説明会の書き起こし、財務諸表、企業のファンダメンタルズ、非上場企業の情報などをカバーしています。これらのデータはOpenAI自身がインデックス化し、自社インフラ上に保管しているため、チームは別途契約やコネクタ設定をすることなく直接利用できます。OpenAIはさらに、これによって精度が高まり、数値や記述を元の表や段落までたどって確認できる「granular citations」のような新機能が実現すると説明しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2つ目は既存サブスクリプションです。OpenAIは、多くの顧客がすでに他のデータサブスクリプションを契約していることを認識しているとして、S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody'sと「協力して」共通のサインインと権限（エンタイトルメント）連携の開発を進めているとしています。データ提供元は今後、利用者のChatGPTサインインを通じて本人を認識し、もともと権限を持つデータに自動的にアクセスできるように「なる予定」だとしていますが、発表には時期の記載がなく、すでに稼働しているとも書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3つ目はより広いコネクタのエコシステムです。OpenAIは、データ提供元のMCPコネクタを効果的に使うのは難しい場合があるとしたうえで、金融サービス業でよく使われる一部のMCPを製品内ですぐに使えるよう最適化し、チームが接続のトラブル対応に費やす時間を減らし、分析により多くの時間を使えるようにしたと説明しています。発表ではコネクタのエコシステムについて「50以上」（公式の原文自体がover 50+ connectorsという重複した表現になっています）と記されており、例としてDatasite、Box、Preqin、FactSet、Intappの名が挙げられていますが、完全な一覧ではありません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "連携方法",
+            "データソース（公式の表現）",
+            "現在の状況"
+          ],
+          "rows": [
+            [
+              "組み込みデータ",
+              "Daloopa、PitchBook、LSEG News、Crunchbaseなど",
+              "公式は契約やコネクタ設定なしで直接利用できるとしている"
+            ],
+            [
+              "既存サブスクリプション連携中",
+              "S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's",
+              "公式は共通サインインの開発を協力中とし、時期は未提供"
+            ],
+            [
+              "より広いコネクタのエコシステム",
+              "Datasite、Box、Preqin、FactSet、Intappなど",
+              "公式は「50以上」とし、一部のよく使われるコネクタを最適化済み"
+            ]
+          ],
+          "caption": "OpenAIの公式発表をもとにデータ連携の方法を整理。確認日2026年9月18日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6 Astraの3つの評価指標、どう読むか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIによると、GPT-6 Astraは金融サービス業務に必要な中核的能力のうち3つ、情報検索・財務推論・成果物生成で業界最高水準にあるとしています。OpenAIの説明では、このモデルは財務文書の数値、表、注記を読み解くことができ、入力されたデータをもとに財務分析を行い結論を導き出すことができ、さらにその分析結果を文書、表計算シート、スライドなどの具体的な成果物としてまとめることができるとしています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIは3枚の評価チャートを公開しており、GPT-6 Astraはいずれのチャートでも最高スコアのモデルです。3枚とも評価対象は3つのモデルですが、キャプションはそれぞれ2つのモデルしか名指ししていません。1枚目のOfficeQA Proは、複雑な財務の表、グラフ、注記を含む米財務省公報（U.S. Treasury Bulletins）から情報を見つけて分析できるかを測るもので、キャプションにはGPT-6 Astraが69.9%、GPT-5.6 Solが60.2%と記されており、キャプションに記載のない3つ目のモデルであるClaude Fable 5.1は62.4%でした。このチャートは他の2枚と異なり、評価を実施したのが誰かを注記していません。2枚目のBoxBenchは、複雑な業務フローの中の文書を完全な成果物にまとめられるかを測るもので、キャプションには77%対74%と記され、「これは外部パートナーが提供したEvalである」と注記されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3枚目は専門的なスライド作成の評価で、これはチャート自体とキャプションの両方で社内評価であると明記されています。対戦相手はチャート上で「Opus 5」と表示されており、GPT-6 Astraの人間による比較での勝率は55.6%です。このキャプションは同じチャートが示す別の数値と食い違っているため、本稿はキャプションとチャートの数値が一致する部分だけを採用しています。3枚のチャートいずれも評価方法、設問数、評価者の人数は公式発表ページに記載がなく、独立したランキングではなく、あくまでベンダー自身による比較結果として参考にするのが適切です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-financial-services-20260910/diagram-1-ja.svg",
+          "alt": "4コマ図解：組み込みデータ、granular citations、テンプレート出力、対象機関限定",
+          "width": 1600,
+          "height": 900,
+          "caption": "2026年9月10日発表のOpenAI公式発表をもとに整理。確認日2026年9月18日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "テンプレート出力とセキュリティ・ガバナンス"
+        },
+        {
+          "type": "paragraph",
+          "text": "分析が終わったら、それを読める形にする必要があります。OpenAIによると、管理者は専用の管理者ページを通じて自社のExcel、Word、PowerPointのテンプレートを公開できます。自社のテンプレートとスタイルガイドを設定しておけば、チームは分析結果を自社の書式とスタイルに沿ったバリュエーションモデル、リサーチノート、ピッチブックに変換できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "セキュリティとガバナンスの部分はChatGPT Enterpriseの既存機能を基盤としています。SAMLによるシングルサインオン（SSO）、SCIMによるアカウントの自動プロビジョニング、ロールベースのアクセス制御です。OpenAIによると、企業の業務データはデフォルトでモデルの学習には使われず、保存時および転送時に暗号化され、管理者はワークスペースのデータ保持期間を設定できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンプライアンスチームはOpenAI Compliance Platformを通じて、対応するワークスペースのログを既存の監査・調査フローにエクスポートできます。企業はロールごとに誰がどのスキルやアプリを使えるかを管理でき、複数のワークスペースを作成して情報隔壁（information barriers）を設けることもできます。OpenAIはこの節の冒頭で、重要な未公開情報と顧客の機密を守ることが金融機関にとって極めて重要だと述べています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰が使えるか、まだ明らかでないこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAIによると、ChatGPT for Financial Servicesは顧客に対応する方法の一つにすぎず、金融業界のニーズに応えるには幅広いソリューションが必要だとしています。金融機関や開発者は、OpenAIのAPIを直接使って自社専用のアプリケーションを作ることもできます。「提供状況」の段落はわずか2文で、このサービスは「対象となる金融機関」に提供され、関心がある場合はOpenAIの営業担当または自社の担当者に連絡するようにとだけ書かれており、価格・地域・提供時期についての説明は一切ありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この発表には、このサービスの費用、最低導入規模、契約期間についての記載がなく、どの国や地域で申し込めるかについても書かれていません。OpenAI公式ChatGPTサポート文書の料金ページにも、2026年9月18日の確認時点でこのサービスの価格は見当たりません。台湾の金融機関が申し込めるかどうか、いくらかかるのかについては、公式発表にも本稿が調べた範囲にも答えがなく、必要な読者はOpenAIの営業担当に直接問い合わせるほかありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この発表が扱っているのはデータ、テンプレート、ガバナンスであり、GPT-6 Astraの能力全体を改めて説明するものでも、ChatGPT Workがどのようにタスクを振り分けるかを説明するものでもありません。これら2点、およびOpenAI Agents APIの課金とデータの保管場所については、当サイトですでにそれぞれ記事にまとめています。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "ChatGPT for Financial Servicesとは何ですか？",
+              "answer": "OpenAIが2026年9月10日に発表した製品です。OpenAIは、金融機関向けにカスタマイズしたChatGPT Work版で、金融データを組み込みGPT-6 Astraの推論力を組み合わせ、リサーチや財務モデル、顧客向けにカスタマイズした資料作成などの業務をチームが進める助けになると説明しています。発表では、対象となる金融機関に営業担当への問い合わせを通じて提供されるとされており、既存のChatGPTプランの新機能としては書かれていません。"
+            },
+            {
+              "question": "普段使っているChatGPTアカウント（Free、Plus、Pro、Business）にこれらの機能が自動的に追加されますか？",
+              "answer": "公式発表にはそのような記載はありません。発表では、このサービスは「対象となる金融機関」に対し、別途営業担当または自社の担当者への問い合わせを通じて提供されるとだけ書かれており、個人アカウントや既存のChatGPT Businessワークスペースに新機能が追加されるとは述べられていません。本稿が確認した公式発表ページとOpenAI公式ChatGPTサポート文書の料金ページには、2026年9月18日時点で個人向けプランに適用されるという説明は見当たりませんでした。"
+            },
+            {
+              "question": "Morgan Stanley、Evercore、あるいは発表で名指しされたデータ提供元は、すでにこの製品を正式に導入しているのですか？",
+              "answer": "OpenAIはMorgan StanleyとEvercoreを製品の方向性を磨き上げる「デザインパートナー」とだけ呼んでおり、両社のコメントを引用して協業の方向性を説明しています。発表には、この2社がすでに導入、購入、全面的に利用しているとは書かれていません。Daloopa、PitchBook、LSEG News、Crunchbaseなどのデータ提供元の役割は組み込みデータの提供であり、供給側の協力関係であって、これらの企業がこの製品の利用者であることを意味するものではありません。"
+            },
+            {
+              "question": "この製品は株式を推奨したり、バリュエーションを判断したり、投資助言を行ったりしますか？",
+              "answer": "本稿が確認した公式ページに書かれているのは、データ整理、財務モデル構築、スライド作成といった業務フローについてであり、2026年9月18日の確認時点で、銘柄コード、リターン、売買タイミングに関する助言は見当たりませんでした。本稿が説明しているのも製品の機能と現状のみであり、投資助言ではありません。読者は本稿や公式ページの内容を投資判断の根拠にすべきではありません。"
+            },
+            {
+              "question": "公式が公表した評価指標の数値は、このモデルがより正確であることを意味しますか？",
+              "answer": "これらの数値はすべてOpenAIが自社の発表ページで公表したものであり、当サイトが実測した結果ではありません。BoxBenchは外部パートナーが提供したEvalであるとOpenAIが注記しており、専門的なスライド作成の比較は社内評価であると注記されています。OfficeQA Proのチャートには評価を実施したのが誰かの記載がありません。3枚のチャートいずれも評価方法、設問数、評価者の人数は公式発表ページに記載がなく、客観的なランキングとしてではなく、ベンダー自身の見解の参考として捉えるのが適切です。"
+            },
+            {
+              "question": "台湾の銀行や金融機関は申し込んで利用できますか？費用はいくらですか？",
+              "answer": "公式発表には台湾、アジア、その他いずれの地域の提供状況についても言及がなく、価格、最低導入規模、契約期間も公表されていません。対象となる金融機関は営業担当に問い合わせるようにとだけ書かれています。本稿が確認した2つの公式ページには、2026年9月18日時点で地域や費用に関する情報は見当たりませんでした。当サイトは、特定の機関が対象条件を満たすかどうかを読者に代わって判断することはできません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本稿が扱うのは法人向けツールであり、資産運用の助言ではありません",
+          "text": "ChatGPT for Financial Servicesは、OpenAIが金融機関向けに提供する、営業担当への問い合わせが必要な法人向けサービスです。公式発表には「対象となる金融機関」に提供されると明記されており、個人のChatGPTアカウントが直接使える機能ではありません。当サイトもこの製品を実際に試したことはありません。本稿がまとめているのは、公式発表が何を書いており、何をまだ書いていないかであり、株式、ファンド、暗号資産のいずれについても推奨する内容は含まれておらず、投資助言でもありません。本文中の財務モデル、バリュエーション、スライド作成といった言葉は、OpenAIが説明する製品機能を指すものであり、読者はこれらを資産運用や投資の判断根拠にすべきではありません。実際に申し込めるかどうか、費用、導入までの時期については、OpenAIの公式発表および商談の結果を確認してください。本稿の確認日は2026年9月18日です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT広告がセルフサーブ購入に対応：OpenAIが5月に発表したツールと課金・ターゲティングの仕組み",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing ChatGPT for Financial Services",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Pricing",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "ko": {
+      "title": "ChatGPT for Financial Services 발표: 금융기관용 AI 도구, 개인 계정과는 무관",
+      "description": "2026년 9월 10일, OpenAI는 ChatGPT for Financial Services를 발표했습니다. OpenAI에 따르면 시작점은 투자은행과 주식 리서치이며, 금융 데이터를 내장하고 GPT-6 Astra의 추론 능력을 결합한 ChatGPT Work 맞춤 버전으로, 적격 금융기관이 영업팀에 문의해 이용할 수 있습니다. 이 글은 2026년 9월 18일 기준으로 확인한 내용을 바탕으로 공식 평가 지표가 의미하는 바와 아직 공개되지 않은 가격, 지역, 일정을 정리했습니다. 본 사이트는 직접 사용해 보지 않았으며, 투자 조언이 아닙니다.",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-financial-services-20260910/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽에는 높이가 다른 세 개의 문서 더미가 있어 여러 데이터 제공업체의 자료를 나타냅니다. 그중 작은 사각형 하나에서 오른쪽 돋보기까지 가는 선이 이어져 숫자를 원본 표까지 추적하는 것을 나타냅니다. 아래쪽에는 작은 사각형 네 개가 왼쪽에서 오른쪽으로 배열되어 데이터, 템플릿, 권한, 연락이라는 네 단계를 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 10일, OpenAI는 공식 발표 'Introducing ChatGPT for Financial Services'를 공개하고, 금융기관 전용으로 맞춤화한 ChatGPT Work 버전을 선보였습니다. OpenAI에 따르면 이 서비스는 내장된 금융 데이터와 GPT-6 Astra의 추론 능력을 결합해, 팀이 리서치, 재무 모델, 고객 맞춤 문서 작업 등을 처리하는 데 도움을 준다고 합니다. 제품의 방향성은 Morgan Stanley와 Evercore 두 디자인 파트너와의 협업을 통해 다듬어졌습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 2026년 9월 18일에 OpenAI 공식 발표 페이지와 OpenAI 공식 ChatGPT 안내 문서의 요금 페이지를 직접 확인해 작성했습니다. 웹페이지 내용은 언제든 바뀔 수 있으며, 이 글은 확인 당일 읽은 버전을 기준으로 정리한 것입니다. 본 사이트는 이 제품을 실제로 사용해 보지 않았으며, 투자·구매·도입에 관한 조언도 제공하지 않습니다. 아래의 평가 수치와 기능 설명은 모두 OpenAI가 직접 공개한 내용입니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI는 2026년 9월 10일 ChatGPT for Financial Services를 발표했습니다. OpenAI에 따르면 시작점은 투자은행과 주식 리서치이며, Daloopa, PitchBook, LSEG News, Crunchbase 등 데이터 제공업체의 자료를 내장한 ChatGPT Work 맞춤 버전입니다.",
+            "OpenAI는 평가 차트 3장을 공개했으며, GPT-6 Astra는 세 차트 모두에서 가장 높은 점수를 받은 모델입니다. OfficeQA Pro 캡션은 69.9% 대 60.2%, BoxBench 캡션은 77% 대 74%(외부 파트너가 제공한 Eval이라고 명시)라고 적혀 있고, 전문 슬라이드 제작에 대한 내부 평가에서는 Opus 5 대비 승률이 55.6%라고 되어 있습니다.",
+            "이 서비스는 '적격 금융기관'의 문의를 통해 제공되며, 발표에는 가격, 지역, 제공 시기가 적혀 있지 않고, 일반 ChatGPT 개인 계정에 새 기능이 추가된다는 말도 없습니다.",
+            "웹페이지 내용은 언제든 바뀔 수 있으며, 이 글은 2026년 9월 18일 확인 당시 읽은 버전을 기준으로 정리한 것입니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI, 금융기관 전용 ChatGPT 발표"
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 발표에 적힌 포지셔닝 문구는 '금융 서비스를 위해 만든 프런티어 인텔리전스'(원문 Frontier intelligence, built for financial services)입니다. OpenAI는 이 제품이 팀에 필요한 금융 데이터를 한데 모은 것이라고 설명합니다. OpenAI에 따르면 시작점은 투자은행과 주식 리서치이며, 파트너와의 협업은 이후의 추가 학습과 제품 개선, 그리고 금융 서비스업의 다른 분야로의 확장에도 활용될 예정입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI에 따르면 Morgan Stanley와 Evercore는 이 제품의 디자인 파트너이며, 이 협업을 통해 OpenAI는 금융기관을 위해 해결할 수 있는 가장 큰 과제를 짚어낼 수 있었다고 합니다. 그리고 이 두 파트너의 팀에게 가장 큰 고충은 데이터에 안정적으로 접근할 수 있는지, 그리고 품질 높은 결과물을 만들어낼 수 있는지였다고 설명합니다. 공식 발표는 두 회사의 발언을 인용하고 있지만(개인이 아닌 회사 명의로만 표기), 이는 아이디어를 함께 시험하며 제품을 단계적으로 다듬어 간 과정이라고 설명합니다. 발표에는 이 두 기관이 이미 정식으로 도입하거나 구매했다는 내용은 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이는 별도로 상담이 필요한 기업용 서비스입니다. 공식 발표 본문에는 일반 소비자에 대한 언급이 없고, 기존 ChatGPT Plus, Pro, Business 이용자가 업그레이드를 통해 이 기능을 이용할 수 있는지도 적혀 있지 않습니다. 이어지는 내용에서는 OpenAI가 명확히 밝힌 부분과 아직 밝히지 않은 부분을 정리합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "내장 데이터와 기존 구독은 어떻게 연결되나"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 데이터 관련 내용을 세 가지로 정리합니다. 고급 금융 데이터 도입, 기존 데이터 제공업체와의 연결 간소화, MCP 성능 개선입니다. 첫 번째는 내장 데이터입니다. OpenAI에 따르면 제품에는 Daloopa, PitchBook, LSEG News, Crunchbase 등 데이터 제공업체의 자료가 내장되어 있으며, 실적 발표 녹취록, 재무제표, 기업 펀더멘털, 비상장기업 정보 등을 포함합니다. 이 데이터는 OpenAI가 직접 색인화해 자체 인프라에 저장하므로, 팀은 별도 계약이나 커넥터 설정 없이 바로 사용할 수 있습니다. OpenAI는 이를 통해 정확도가 높아지고, 숫자와 서술을 원본 표와 단락까지 추적해 확인할 수 있는 'granular citations'와 같은 새로운 기능이 가능해진다고 주장합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째는 기존 구독입니다. OpenAI는 많은 고객이 이미 다른 데이터 구독 서비스를 이용 중이라는 점을 알고 있다며, 그래서 S&P Capital IQ, LSEG, MSCI, Dow Jones Factiva, Moody's와 '협력해' 공동 로그인과 권한(entitlement) 연동을 개발하고 있다고 밝혔습니다. 데이터 제공업체는 향후 이용자의 ChatGPT 로그인을 통해 해당 이용자를 식별하고, 원래 권한이 있던 데이터에 자동으로 접근할 수 있게 '될 예정'이라고 하지만, 발표에는 시기가 나와 있지 않고 이미 시작됐다는 언급도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 번째는 더 넓은 커넥터 생태계입니다. OpenAI는 데이터 제공업체의 MCP 커넥터를 효과적으로 사용하기가 어려울 수 있다고 밝히며, 그래서 금융 서비스업에서 가장 많이 쓰이는 일부 MCP를 제품 안에서 바로 쓸 수 있도록 최적화해, 팀이 연결 문제 해결에 쓰는 시간을 줄이고 분석에 더 많은 시간을 쓸 수 있게 했다고 설명합니다. 발표는 커넥터 생태계를 '50개 이상'(공식 원문 자체가 over 50+ connectors라는 중복된 표현을 쓰고 있음)이라고 적었으며, Datasite, Box, Preqin, FactSet, Intapp을 예로 들었지만 전체 목록은 아닙니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "연결 방식",
+            "데이터 출처(공식 표현)",
+            "현재 상태"
+          ],
+          "rows": [
+            [
+              "내장 데이터",
+              "Daloopa, PitchBook, LSEG News, Crunchbase 등",
+              "OpenAI는 계약이나 커넥터 설정 없이 바로 쓸 수 있다고 설명"
+            ],
+            [
+              "기존 구독 연동 중",
+              "S&P Capital IQ, LSEG, MSCI, Dow Jones Factiva, Moody's",
+              "OpenAI는 공동 로그인을 협력 개발 중이라 설명, 시기는 미공개"
+            ],
+            [
+              "더 넓은 커넥터 생태계",
+              "Datasite, Box, Preqin, FactSet, Intapp 등",
+              "OpenAI는 '50개 이상'이라 설명, 자주 쓰이는 일부 커넥터는 최적화 완료"
+            ]
+          ],
+          "caption": "OpenAI 공식 발표를 바탕으로 정리. 확인일 2026년 9월 18일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6 Astra의 평가 지표 3가지, 어떻게 읽어야 할까"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI에 따르면 GPT-6 Astra는 금융 서비스 업무에 필요한 핵심 역량 중 정보 검색, 재무적 추론, 결과물 생성 세 가지 모두에서 업계 최고 수준이라고 합니다. OpenAI의 설명에 따르면 이 모델은 금융 문서의 숫자, 표, 각주를 파악할 수 있고, 입력된 데이터를 바탕으로 재무 분석을 수행해 결론을 도출할 수 있으며, 이 분석 결과를 문서, 스프레드시트, 슬라이드 등 구체적인 결과물로 정리할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 평가 차트 3장을 공개했으며, GPT-6 Astra는 세 차트 모두에서 가장 높은 점수를 받은 모델입니다. 세 차트 모두 평가 대상 모델은 3개씩이지만, 캡션은 그중 2개만 이름을 밝히고 있습니다. 첫 번째 OfficeQA Pro는 복잡한 재무 표, 차트, 각주를 포함한 미국 재무부 공보(U.S. Treasury Bulletins)에서 정보를 찾아 분석할 수 있는지를 측정하는 것으로, 캡션에는 GPT-6 Astra가 69.9%, GPT-5.6 Sol이 60.2%로 적혀 있고, 캡션에 언급되지 않은 세 번째 모델인 Claude Fable 5.1은 62.4%였습니다. 이 차트는 다른 두 차트와 달리 평가를 누가 진행했는지 명시하지 않았습니다. 두 번째 BoxBench는 복잡한 비즈니스 워크플로의 문서를 완성된 결과물로 정리할 수 있는지를 측정하는 것으로, 캡션에는 77% 대 74%로 적혀 있고 '이는 외부 파트너가 제공한 Eval'이라고 명시되어 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 번째 차트는 전문 슬라이드 제작에 대한 평가로, 차트와 캡션 모두 이것이 사내 평가라고 명시하고 있습니다. 경쟁 상대는 차트에 'Opus 5'로 표시되어 있고, 사람이 직접 비교한 평가에서 GPT-6 Astra의 승률은 55.6%입니다. 이 캡션은 같은 차트가 보여주는 다른 수치와 서로 어긋나기 때문에, 이 글에서는 캡션과 차트가 일치하는 수치만 사용합니다. 세 차트 모두 평가 방법, 문항 수, 평가자 수는 발표 페이지에 나와 있지 않으므로, 독립적인 순위가 아니라 OpenAI 자체의 비교 결과로 참고하는 것이 적절합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-financial-services-20260910/diagram-1-ko.svg",
+          "alt": "4분할 도해: 내장 데이터, granular citations, 템플릿 출력, 기관 한정",
+          "width": 1600,
+          "height": 900,
+          "caption": "2026년 9월 10일 발표된 OpenAI 공식 발표를 바탕으로 정리. 확인일 2026년 9월 18일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "템플릿 출력과 보안·거버넌스"
+        },
+        {
+          "type": "paragraph",
+          "text": "분석이 끝나면 이를 읽을 수 있는 결과물로 바꿔야 합니다. OpenAI에 따르면 관리자는 전용 관리자 페이지를 통해 회사 자체의 Excel, Word, PowerPoint 템플릿을 게시할 수 있습니다. 회사 템플릿과 스타일 가이드를 설정해두면, 팀은 분석 결과를 회사 형식과 스타일에 맞는 밸류에이션 모델, 리서치 노트, 피치북으로 바꿀 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "보안과 거버넌스 부분은 ChatGPT Enterprise의 기존 기능을 기반으로 합니다. SAML 기반 싱글사인온(SSO), SCIM 기반 계정 자동 프로비저닝, 역할 기반 접근 제어입니다. OpenAI에 따르면 기업의 업무 데이터는 기본적으로 모델 학습에 사용되지 않으며, 저장 및 전송 과정에서 암호화되고, 관리자는 워크스페이스의 데이터 보존 기간을 직접 설정할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "컴플라이언스 팀은 OpenAI Compliance Platform을 통해 지원되는 워크스페이스 로그를 기존의 감사·조사 절차로 내보낼 수 있습니다. 기업은 역할별로 누가 어떤 스킬과 앱을 사용할 수 있는지 관리할 수 있고, 여러 워크스페이스를 만들어 정보차단벽(information barriers)을 두는 것도 가능합니다. OpenAI는 이 절의 도입부에서 미공개 중요정보와 고객 기밀을 보호하는 일이 금융기관에 매우 중요하다고 밝히고 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "누가 쓸 수 있고, 아직 밝혀지지 않은 것은 무엇인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI에 따르면 ChatGPT for Financial Services는 고객을 지원하는 여러 방식 중 하나일 뿐이며, 금융 산업의 요구를 충족하려면 종합적인 솔루션이 필요하다고 설명합니다. 금융기관과 개발자는 OpenAI의 API를 직접 사용해 자체 전용 애플리케이션을 만들 수도 있습니다. '제공 현황' 단락은 단 두 문장으로, 이 서비스는 '적격 금융기관'에 제공되며 관심이 있으면 OpenAI 영업팀이나 담당 계정 매니저에게 문의하라고만 적혀 있을 뿐, 가격·지역·제공 시기에 대한 설명은 전혀 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 발표에는 서비스 비용, 최소 도입 규모, 계약 기간이 적혀 있지 않고, 어느 국가나 지역에서 신청할 수 있는지도 나와 있지 않습니다. OpenAI 공식 ChatGPT 안내 문서의 요금 페이지에도 2026년 9월 18일 확인 시점 기준으로 이 서비스의 가격은 없습니다. 대만의 금융기관이 신청할 수 있는지, 비용이 얼마인지는 공식 발표에도, 이 글이 조사한 범위에도 답이 없으며, 필요한 독자는 OpenAI 영업팀에 직접 문의할 수밖에 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 발표가 다루는 것은 데이터, 템플릿, 거버넌스이며, GPT-6 Astra의 전체 역량을 다시 설명하거나 ChatGPT Work에 작업을 어떻게 맡기는지를 설명하지는 않습니다. 이 두 가지와 OpenAI Agents API의 과금 및 데이터 저장 위치에 대해서는 본 사이트가 이미 각각 따로 정리한 바 있습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "ChatGPT for Financial Services는 무엇인가요?",
+              "answer": "OpenAI가 2026년 9월 10일 발표한 제품입니다. OpenAI는 이를 금융기관을 위해 맞춤화한 ChatGPT Work 버전이라고 설명하며, 금융 데이터를 내장하고 GPT-6 Astra의 추론 능력을 결합해 팀이 리서치, 재무 모델, 고객 맞춤 문서 작업 등을 처리하도록 돕는다고 밝혔습니다. 발표에는 적격 금융기관이 영업팀에 문의해 이용할 수 있다고 적혀 있으며, 기존 ChatGPT 요금제의 새 기능으로는 설명하지 않습니다."
+            },
+            {
+              "question": "제가 평소 쓰는 ChatGPT 계정(Free, Plus, Pro, Business)에 이 기능이 자동으로 추가되나요?",
+              "answer": "공식 발표에는 그런 내용이 없습니다. 발표는 이 서비스가 '적격 금융기관'에게 별도로 영업팀이나 담당 계정 매니저를 통해 제공된다고만 적혀 있으며, 개인 계정이나 기존 ChatGPT Business 워크스페이스에 새 기능이 추가된다는 언급은 없습니다. 이 글이 확인한 공식 발표 페이지와 OpenAI 공식 ChatGPT 안내 문서의 요금 페이지에는 2026년 9월 18일 기준으로 개인 요금제에 적용된다는 설명이 보이지 않았습니다."
+            },
+            {
+              "question": "Morgan Stanley, Evercore, 혹은 발표에서 언급된 데이터 제공업체는 이미 이 제품을 정식으로 도입했나요?",
+              "answer": "OpenAI는 Morgan Stanley와 Evercore를 제품 방향을 다듬는 데 도움을 준 '디자인 파트너'라고만 칭하며, 두 회사의 발언을 인용해 협업 방향을 설명합니다. 발표에는 두 기관이 이미 도입, 구매, 전면 사용하고 있다는 내용은 없습니다. Daloopa, PitchBook, LSEG News, Crunchbase 등 데이터 제공업체의 역할은 내장 데이터를 제공하는 공급업체 협력 관계이며, 이들이 이 제품의 이용자라는 의미는 아닙니다."
+            },
+            {
+              "question": "이 제품이 주식을 추천하거나, 밸류에이션을 판단하거나, 투자 조언을 제공하나요?",
+              "answer": "이 글이 확인한 공식 페이지에 나오는 것은 데이터 정리, 재무 모델 구축, 슬라이드 제작 같은 업무 흐름이며, 2026년 9월 18일 확인 시점까지 종목 코드, 수익률, 매매 타이밍에 대한 조언은 보이지 않았습니다. 이 글이 설명하는 것 역시 제품의 기능과 현재 상태일 뿐이며 투자 조언이 아닙니다. 독자는 이 글이나 공식 페이지의 내용을 투자 판단의 근거로 삼아서는 안 됩니다."
+            },
+            {
+              "question": "OpenAI가 공개한 평가 수치는 이 모델이 더 정확하다는 뜻인가요?",
+              "answer": "이 수치들은 모두 OpenAI가 자사 발표 페이지에 공개한 것으로, 본 사이트가 직접 시험해 얻은 결과가 아닙니다. OpenAI는 BoxBench가 외부 파트너가 제공한 Eval이라고 명시했고, 전문 슬라이드 제작 비교는 사내 평가라고 명시했습니다. OfficeQA Pro 차트는 평가를 누가 진행했는지 명시하지 않았습니다. 세 차트 모두 평가 방법, 문항 수, 평가자 수가 발표 페이지에 나와 있지 않으므로, 객관적인 순위가 아니라 OpenAI 자체의 설명 정도로 참고하는 것이 적절합니다."
+            },
+            {
+              "question": "대만의 은행이나 금융기관도 신청해서 쓸 수 있나요? 비용은 얼마인가요?",
+              "answer": "공식 발표에는 대만, 아시아를 비롯한 어떤 지역의 제공 현황도 언급되어 있지 않고, 가격, 최소 도입 규모, 계약 기간도 공개되어 있지 않습니다. 적격 금융기관은 영업팀에 문의하면 된다고만 적혀 있습니다. 이 글이 확인한 두 공식 페이지에는 2026년 9월 18일 기준으로 지역이나 비용에 관한 정보가 보이지 않았습니다. 본 사이트는 특정 기관이 자격 조건에 해당하는지를 독자 대신 판단할 수 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 글이 다루는 것은 기관용 도구이며, 재테크 조언이 아닙니다",
+          "text": "ChatGPT for Financial Services는 OpenAI가 금융기관에 제공하는, 영업팀과의 별도 상담이 필요한 기업용 서비스입니다. 공식 발표에는 '적격 금융기관'에 제공된다고 명시되어 있으며, 개인 ChatGPT 계정이 바로 사용할 수 있는 기능이 아닙니다. 본 사이트도 이 제품을 실제로 사용해 보지 않았습니다. 이 글이 정리한 것은 공식 발표가 무엇을 밝혔고 무엇을 아직 밝히지 않았는가이며, 어떤 주식, 펀드, 암호자산에 대한 추천도 포함하지 않고, 투자 조언도 아닙니다. 본문에 나오는 재무 모델, 밸류에이션, 슬라이드 제작 같은 표현은 OpenAI가 설명하는 제품 기능을 가리키는 것으로, 독자는 이를 재테크나 투자 판단의 근거로 삼아서는 안 됩니다. 실제로 신청할 수 있는지, 비용과 도입 시기는 OpenAI의 공식 발표와 상담 결과를 기준으로 확인해야 합니다. 이 글의 확인일은 2026년 9월 18일입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 광고, 셀프서브 구매 시작: OpenAI가 5월에 발표한 도구·과금·타겟팅 방식",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing ChatGPT for Financial Services",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Pricing",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "ChatGPT for Financial Services 发布：金融机构的 AI 工具，跟个人账号无关",
+      "description": "2026 年 9 月 10 日，OpenAI 发布 ChatGPT for Financial Services，官方表示起点锁定投资银行与股票研究，是内置金融数据并结合 GPT-6 Astra 推理能力的 ChatGPT Work 定制版本，开放给符合资格的金融机构洽谈。本文依 2026 年 9 月 18 日核实，整理官方评测代表什么、尚未公布的价格、地区与时间表；本站没有实际使用，内容不是投资建议。",
+      "hero": {
+        "src": "/guides/ai-news-chatgpt-financial-services-20260910/hero-zh-cn.jpg",
+        "alt": "原创插图：左边三叠高低不一的文件代表多家数据提供商的数据，一条细线从其中一个小方块延伸到右边的放大镜，代表把数字追回原始表格；下方四个小方块由左至右排列，代表数据、模板、权限与联系四个环节。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 10 日，OpenAI 发布公告《Introducing ChatGPT for Financial Services》，推出一款专门给金融机构使用的 ChatGPT Work 定制版本。OpenAI 表示这项服务结合内置金融数据与 GPT-6 Astra 的推理能力，帮助团队处理研究、财务模型与定制化的客户文件等工作；产品方向是与 Morgan Stanley、Evercore 两家设计伙伴合作打磨出来的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 18 日核实，直接读取 OpenAI 官方公告页与 OpenAI 官方 ChatGPT 说明文档的定价页；网页内容随时可能变动，本文依核实当天读到的版本整理。本站没有实际使用这项产品，也不提供投资、采购或导入建议，下文的评测数字与功能描述都是 OpenAI 官方自己公布的说法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 于 2026 年 9 月 10 日发布 ChatGPT for Financial Services，官方表示产品的起点是投资银行与股票研究，是内置 Daloopa、PitchBook、LSEG News、Crunchbase 等数据提供商数据的 ChatGPT Work 定制版本。",
+            "OpenAI 公布三张评测图，GPT-6 Astra 在三张图上都是分数最高的模型：OfficeQA Pro 图说写 69.9% 对 60.2%，BoxBench 图说写 77% 对 74%（官方注明是外部伙伴提供的 Eval），专业演示文稿制作的内部评测里，对 Opus 5 的胜率是 55.6%。",
+            "这项服务开放给“符合资格的金融机构”洽谈业务，公告没有写价格、地区或开放时间表，也没有说一般 ChatGPT 个人账号会因此获得新功能。",
+            "网页内容随时可能变动，本文依 2026 年 9 月 18 日核实当天读到的版本整理。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "OpenAI 推出金融机构专用的 ChatGPT"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公告写的定位语是“为金融服务打造的前沿智能”（原文 Frontier intelligence, built for financial services）。OpenAI 说明这款产品把团队需要的金融数据整合在一起；官方表示产品的起点是投资银行与股票研究，与伙伴的合作会用在后续训练与产品改进，以及扩展到金融服务业的其他类别。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 表示，Morgan Stanley 与 Evercore 是这项产品的设计伙伴，这层合作让 OpenAI 找出自己能为金融机构解决的最大挑战；而对这两家伙伴的团队来说，最大的痛点是能不能可靠取得数据，以及能不能做出高质量的产出。官方公告引用了两家公司的说法（署名到公司，没有具名到个人），形容这是双方一起测试构想、逐步塑造产品的过程；公告没有写这两家机构已经正式导入或购买这项服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这是一个需要另外洽谈的企业服务：官方公告正文没有提到一般消费者，也没有说现有 ChatGPT Plus、Pro 或 Business 用户能不能通过升级取得这些功能。本文后面会说明官方写清楚与还没说清楚的部分。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "内置数据与现有订阅怎么对接"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把数据这一段总结成三件事：纳入高级金融数据、简化现有的数据提供商连接、改善 MCP 性能。第一件是内置数据：OpenAI 表示产品内置了 Daloopa、PitchBook、LSEG News、Crunchbase 等数据提供商的数据，涵盖财报电话会议记录、财务报表、公司基本面与非上市公司信息等；这些数据由 OpenAI 自己索引、存放在自家基础设施上，团队可以直接使用，不必另外签合约或设置连接器。OpenAI 并宣称这样做可以提高准确性，带来逐格溯源这类功能，让用户把数字与说法追回原本的表格与段落查证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二件是现有订阅：OpenAI 表示知道许多客户原本就有数据订阅，因此“正在与”S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's 合作开发共用登录与权限对接，数据提供商“将能”通过用户的 ChatGPT 登录身份识别用户，自动取得原本就有权限的数据；公告没有给时间表，也没有写这件事已经上线。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三件是更广的连接器生态：OpenAI 表示要有效使用数据提供商的 MCP 连接器可能有困难，官方因此把金融服务业最常用的部分 MCP 优化成可以在产品里直接使用，让团队花更少时间排查连接问题、更多时间做分析。官方公告写连接器生态“超过 50 个以上”（官方原文本身重复用词，写成 over 50+ connectors），并点名 Datasite、Box、Preqin、FactSet 与 Intapp 作为例子，不是完整清单。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "对接方式",
+            "数据来源（官方用词）",
+            "目前状态"
+          ],
+          "rows": [
+            [
+              "内置数据",
+              "Daloopa、PitchBook、LSEG News、Crunchbase 等",
+              "官方表示可直接取用，免签约、免设置连接器"
+            ],
+            [
+              "现有订阅整合中",
+              "S&P Capital IQ、LSEG、MSCI、Dow Jones Factiva、Moody's",
+              "官方表示正在合作开发共用登录，未提供时间表"
+            ],
+            [
+              "更广连接器生态",
+              "Datasite、Box、Preqin、FactSet、Intapp 等",
+              "官方表示“超过 50 个以上”，已优化部分常用连接器"
+            ]
+          ],
+          "caption": "依 OpenAI 官方公告整理数据对接方式，核实日 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6 Astra 的三项评测，怎么读"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 表示 GPT-6 Astra 在金融服务工作所需核心能力中的三项上都达到业界领先水平：信息检索、财务推理与成果产出。官方的说法是，这个模型能读懂财务文件里的数字、表格与附注，能根据输入的数据执行财务分析并整理出结论，还能把分析结果整理成文档、电子表格与演示文稿等具体产出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方公布了三张评测图，GPT-6 Astra 在三张图上都是分数最高的模型；三张图各有三个受测模型，图说都只点名其中两个。第一张 OfficeQA Pro 测的是模型能不能在美国财政部公报（U.S. Treasury Bulletins）里找到并分析信息，包含复杂的财务表格、图表与附注，图说写 GPT-6 Astra 得 69.9%、GPT-5.6 Sol 得 60.2%，图说没提到的第三个模型 Claude Fable 5.1 是 62.4%；这张图没有像另外两张那样注明评测是谁做的。第二张 BoxBench 测的是模型能不能把复杂商业流程里的文件整理成完整产出，图说写 77% 对 74%，并注明“这是外部伙伴提供的 Eval”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三张是专业演示文稿制作的评比，官方在图上与图说都注明这是内部评测、由人工比较各模型做出来的演示文稿，对手在图上标示为 Opus 5，GPT-6 Astra 的胜率是 55.6%。官方这张图说在另一个对照数字上和图表本身的数据对不上，本文只采用图说与图表一致的部分；三张图的评测方法、题数与评分者人数，公告页上都没有写，适合看成厂商自己公布的比较结果，不是独立的排名。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-chatgpt-financial-services-20260910/diagram-1-zh-cn.svg",
+          "alt": "四格图解：内置数据、逐格溯源、模板产出、机构限定",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 OpenAI 2026 年 9 月 10 日发布的官方公告整理，核实日 2026 年 9 月 18 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "模板产出与安全治理"
+        },
+        {
+          "type": "paragraph",
+          "text": "分析做完之后要变成看得懂的产出。OpenAI 表示，管理员可以通过专属的后台页面发布公司自己的 Excel、Word 与 PowerPoint 模板；设定好公司模板与风格指南之后，团队就能把分析结果转成符合公司格式与风格的估值模型、研究报告与提案演示文稿。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全与治理的部分建立在 ChatGPT Enterprise 现有的功能上：SAML 单点登录（SSO）、SCIM 账号自动化配置与基于角色的访问控制。OpenAI 表示企业的业务数据默认不会用来训练模型，数据在静态存储与传输过程都会加密，管理员可以自行设定工作区的数据保留期限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合规团队可以通过 OpenAI Compliance Platform，把支持的工作区记录导出到现有的审计与调查流程；企业也能依角色管理谁能使用哪些技能与应用，并建立多个工作区来执行信息隔离墙。官方在这一节开头写的理由是，保护重大未公开信息与客户机密，对金融机构至关重要。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "谁能用、还没说清楚什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 表示 ChatGPT for Financial Services 只是服务客户的其中一种方式，金融产业的需求需要一整套解决方案，机构与开发者也可以直接用 OpenAI 的 API 打造自己的专属应用。“供应状况”段落只有两句话：这项服务开放给“符合资格的金融机构”使用，有兴趣要联系 OpenAI 销售团队或自己的客户经理；公告里没有出现任何价格、地区或开放时间表的说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这则公告没有写出这项服务的费用、最低采用规模或合约长度，也没有说明是哪些国家或地区可以申请；OpenAI 官方 ChatGPT 说明文档的定价页上，核实到 2026 年 9 月 18 日为止同样找不到这项服务的价格。台湾的金融机构能不能申请、要花多少钱，官方公告与本文查到的资料都没有答案，读者若有需要，只能直接联系 OpenAI 销售团队洽询。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这则公告谈的是数据、模板与治理，没有重讲 GPT-6 Astra 的完整能力，也没有说明 ChatGPT Work 怎么交办任务；这两块，以及 OpenAI Agents API 的计费与数据位置，本站先前都已经分别整理过。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "ChatGPT for Financial Services 是什么？",
+              "answer": "这是 OpenAI 于 2026 年 9 月 10 日发布的产品，官方形容它是为金融机构打造的定制化 ChatGPT Work 版本，内置金融数据并结合 GPT-6 Astra 的推理能力，帮助团队处理研究、财务模型与定制化的客户文件等工作。官方公告写的是开放给符合资格的金融机构、请联系销售团队洽谈，公告里没有把它写成 ChatGPT 现有方案的新功能。"
+            },
+            {
+              "question": "我平常用的 ChatGPT 账号（Free、Plus、Pro 或 Business）会不会自动多出这些功能？",
+              "answer": "官方公告没有这样说。公告只写这项服务开放给“符合资格的金融机构”，需要另外联系销售团队或客户经理，并未提到个人账号或现有 ChatGPT Business 工作区会因此取得新功能。以本文核实的官方公告页与 OpenAI 官方 ChatGPT 说明文档的定价页查到 2026 年 9 月 18 日为止，未见任何个人方案适用的说明。"
+            },
+            {
+              "question": "Morgan Stanley、Evercore 或公告点名的数据提供商，是不是已经正式采用这个产品？",
+              "answer": "官方只称 Morgan Stanley 与 Evercore 为“设计伙伴”，用来协助打磨产品方向，并引用两家公司的说法说明合作方向；公告没有写这两家已经导入、购买或全面使用这项产品。Daloopa、PitchBook、LSEG News、Crunchbase 等数据提供商的角色是提供内置数据，属于供应商合作，不代表它们是这项产品的用户。"
+            },
+            {
+              "question": "这项产品会不会推荐股票、判断估值或提供投资建议？",
+              "answer": "本文核实的官方页面描述的是数据整理、财务模型建立与演示文稿产出等工作流程，查到 2026 年 9 月 18 日为止没有提供任何股票代码、回报率或买卖时机的建议；本文说明的也只是产品功能与现状，不是投资建议，读者不应把本文或官方页面的内容当成投资判断的依据。"
+            },
+            {
+              "question": "官方公布的评测数字，代表这个模型比较准吗？",
+              "answer": "这些数字都是 OpenAI 在自己的公告页上公布的，不是本站实测的结果。BoxBench 官方注明是外部伙伴提供的 Eval，专业演示文稿制作的比较官方注明是内部评测，OfficeQA Pro 那张图则没有注明评测是谁做的；三张图的评测方式、题目与评分者，公告页上都没有写，适合当成厂商自己的说法参考，不宜直接当成客观排名。"
+            },
+            {
+              "question": "台湾的银行或金融机构可以申请使用吗？要多少钱？",
+              "answer": "官方公告没有提到台湾、亚洲或任何地区的开放状况，也没有公布价格、最低采用规模或合约长度，只说明符合资格的金融机构可以联系销售团队洽询。以本文核实的两个官方页面查到 2026 年 9 月 18 日为止，未见任何地区或费用信息；本站无法代读者判断某一家机构是否符合资格。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "这篇写的是机构工具，不是理财建议",
+          "text": "ChatGPT for Financial Services 是 OpenAI 提供给金融机构、需要联系销售团队洽谈的企业服务，官方公告写明开放给“符合资格的金融机构”，不是个人 ChatGPT 账号可以直接使用的功能，本站也没有实际试用这项产品。本文整理的是官方公告写了什么、还没说清楚什么，内容不涉及任何股票、基金或加密资产的推荐，也不是投资建议；文中的财务模型、估值与演示文稿制作等用词，指的是官方描述的产品功能，读者不应把它们当成理财或投资的依据。实际能不能申请、费用与导入时间表，请以 OpenAI 官方公告与洽谈结果为准；本文核实日为 2026 年 9 月 18 日。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ChatGPT 广告开放自助购买：OpenAI 5 月公告的工具、计费与定向机制",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-20260505"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing ChatGPT for Financial Services",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Pricing",
+          "url": "https://learn.chatgpt.com/docs/pricing",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

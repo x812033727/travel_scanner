@@ -80,7 +80,12 @@ def walk(node, fix):
 
 prefix = sys.argv[1]
 apply = "--apply" in sys.argv
+# Named slugs limit the run: the AI prefix also matches batch 3's articles, whose research
+# records live in another workspace and whose text is not this batch's to touch.
+only = {a for a in sys.argv[2:] if not a.startswith("--")}
 for path in sorted(CONTENT.glob(prefix + "*.json")):
+    if only and path.stem not in only:
+        continue
     pack = json.loads(path.read_text(encoding="utf-8"))
     record_path = workspace_of(pack["slug"]) / "research" / path.name
     record = json.loads(record_path.read_text(encoding="utf-8"))
