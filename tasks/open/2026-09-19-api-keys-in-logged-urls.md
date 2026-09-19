@@ -52,7 +52,7 @@ public there. It still reaches any process log that runs httpx at INFO.
 - [x] Move `key` from `params` to a header in the six calls; keep the request counters and budgets as they are.
 - [x] Quiet httpx in `scheduler.py` next to its `basicConfig`; check the api and worker processes for the same.
 - [x] Add `apps/api/tests/test_api_keys_not_in_urls.py` (mock transport, assert header present and URL has no `key`).
-- [ ] After the deploy, `docker compose logs --since 10m hotspot-collector | grep -c 'key=AIza'` is 0.
+- [x] After the deploy, `docker compose logs --since 10m hotspot-collector | grep -c 'key=AIza'` is 0.
 - [ ] Ask the owner to rotate the keys in Google Cloud and update them in /admin/settings.
 
 ## How to verify
@@ -85,3 +85,9 @@ docker compose -f docker-compose.prod.yml logs --since 30m hotspot-collector | g
   must be 0; rotate the YouTube key (and Maps / Travel Impact if their logs show them) in
   Google Cloud and update /admin/settings. The old key stays in the retained container logs
   until they rotate out.
+
+### 2026-09-19 post-deploy check (claude-opus-5)
+
+- #561 deployed 2026-09-19 09:22 UTC (`f521b902`). Right after, `docker compose logs --since 10m <svc> | grep -c 'key=AIza'` was 0 for all seven app services (collector, api, worker, alert-worker, alert-scheduler, analytics-scheduler, community-sweeper), and the collector logged no `HTTP Request:` lines at all.
+- Not yet exercised live: that run reported `youtube` and `brave` as `quota_exhausted` (six deploys that day each triggered a collector startup run with guide backfill), so no YouTube call has gone out with the header yet. The next run after the daily quota reset is the first live check.
+- Left for the owner: rotate the YouTube key in Google Cloud and paste the new one into /admin/settings; this ticket stays in review until then.
