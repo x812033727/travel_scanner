@@ -55,3 +55,9 @@ The keepalive task is already present in origin/main but its deployment ticket s
 the site template and CI harness in review. This user-authorized image fix only changes
 the page limit zone references in those two files; its keepalive directives remain intact.
 No production activation is included in this task's current authorization.
+
+### 2026-09-19 補註
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+程式已隨 PR #470（2026-09-14 合併）和之後的部署上線。剩下的只有主機 nginx 設定的啟用；主機上是否已套用這次的 limit zone 引用沒有紀錄，接手時先比對 `/etc/nginx` 與 `ops/nginx`，改正式主機設定要站主同意。

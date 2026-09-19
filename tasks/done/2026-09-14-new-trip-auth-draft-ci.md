@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-new-trip-auth-draft-ci
 title: Repair PR 468 draft persistence and article content CI
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-pr468-ci
 claimed_at: 2026-09-14T00:57:48Z
 created_at: 2026-09-14T00:57:08Z
-completed_at:
+completed_at: 2026-09-19T04:11:50Z
 branch: codex/pr468-ci-fix
 depends_on: []
 scope:
@@ -50,14 +50,14 @@ the original article task's overlapping review scope.
 
 - [x] Definitive 400/401/403/422/429 rejection preserves an editable draft on remount.
 - [x] Numbered lifestyle diagrams have corresponding visible step descriptions.
-- [ ] Local checks and updated PR #468 CI pass.
+- [x] Local checks and updated PR #468 CI pass.
 
 ## Steps
 
 - [x] Reproduce the draft deletion with five regression cases before fixing the handler.
 - [x] Replace deletion with synchronous preservation of form fields, retiring only pending.
 - [x] Push the draft fix to codex/travel-articles-batch5; its full web CI passed.
-- [ ] Push the caption correction and verify the final API CI rerun.
+- [x] Push the caption correction and verify the final API CI rerun.
 
 ## How to verify
 
@@ -77,3 +77,9 @@ The user explicitly confirmed PR #468 is the requested CI repair. The unrelated 
 retry fix remains on codex/article-image-retry and is not part of this PR.
 The original article worktree has a different local HEAD, so use this isolated checkout
 and a normal fast-forward push to the PR branch. Do not merge or deploy.
+
+### 標記完成（由站主授權，非原持有者，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+PR #468 於 2026-09-14T02:20:35Z 合併。最後一個 head 的四項必要檢查 `api`、`web`、`containers`、`full-stack-smoke` 都是 SUCCESS，而分支保護要四項全綠才能合併，所以原本沒勾的兩項（本機檢查與 PR #468 CI 通過、推上圖說修正並確認 API CI 重跑）由合併紀錄證明，已改為打勾。原持有者 codex-pr468-ci 的認領停在 2026-09-14，這張票的 scope 擋住 3 張票。

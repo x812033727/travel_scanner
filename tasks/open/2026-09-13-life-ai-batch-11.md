@@ -1,11 +1,11 @@
 ---
 id: 2026-09-13-life-ai-batch-11
 title: 生活分享 AI 系列批次 11：生活應用、3C 與旅途中的 AI（20 篇）
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-15T08:19:21Z
+owner:
+claimed_at:
 created_at: 2026-09-13T11:56:00Z
 completed_at:
 branch:
@@ -116,3 +116,11 @@ npm run check:tasks
 ## Notes
 
 - 前三批旅遊文章的經驗：兩篇一個代理會在半小時左右撞到額度，一篇一個代理、先寫檔再寫報告最穩。
+
+### 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+原持有者 claude-fable-5-1 於 2026-09-15 認領，之後沒有進度：清單零勾、`branch` 欄位空白，遠端也找不到這張票的分支。
+
+這張票的 scope 擋住 2 張票，所以改回 open。若某個本機 worktree 有草稿，原作者重新認領即可接續。

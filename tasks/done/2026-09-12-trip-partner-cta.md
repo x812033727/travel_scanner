@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-trip-partner-cta
 title: Day-level and post-AI partner call-to-actions in the trip planner
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T13:27:22Z
 created_at: 2026-09-12T13:27:20Z
-completed_at:
+completed_at: 2026-09-19T04:11:47Z
 branch: claude/trip-partner-offers
 depends_on:
   - 2026-09-12-trip-partner-offer-availability
@@ -65,3 +65,9 @@ A plain `<details>` does not lazy-mount in React (`DayHealthStrip` fetches while
 so the block tracks `open` via `onToggle` and renders the panel only then. `2026-09-09-site-
 experience-settings` (blocked) lists `trip-editor.tsx` and `apps/web/messages`; rebase when it
 unblocks. Anonymous clickouts record `placement=trip` but no `trip_id`.
+
+### 標記完成（由站主授權，非原持有者，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+完成條件 7／7 都已打勾，工作隨 PR #436 於 2026-09-12 合併，之後部署過多次。原持有者 claude-fable-5-1 的認領從 2026-09-12 起沒有更新，這張票的 scope 擋住 4 張票。
