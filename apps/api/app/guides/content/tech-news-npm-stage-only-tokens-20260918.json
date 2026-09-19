@@ -1,0 +1,222 @@
+{
+  "slug": "tech-news-npm-stage-only-tokens-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news",
+    "software"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 317,
+  "locales": {
+    "zh-TW": {
+      "title": "npm 新增「只送審」權杖：自動化只能送件，免 2FA 直接發版預計 2027 年 1 月移除",
+      "description": "2026 年 9 月 18 日，GitHub 在官方異動紀錄宣布 npm 新增可選的 Read and write (stage only) 權限等級，讓自動化流程只能送出待審版本，由維護者以 2FA 核准後才能上架。本文依 GitHub Changelog 與 npm 說明頁，整理送件與核准怎麼分工、權杖保留哪些權限，以及 2027 年 1 月移除免 2FA 權杖直接發布能力的時程怎麼讀。",
+      "hero": {
+        "src": "/guides/tech-news-npm-stage-only-tokens-20260918/hero.jpg",
+        "alt": "原創插圖：左邊一把鑰匙形圖案被一個虛線方框圍住，代表送出後暫時停留在待審區；一支箭頭從方框指向中央一個打勾盾牌，代表雙因素驗證核准；另一支箭頭從盾牌指向右側一個上傳中的雲朵圖示，代表核准後才真正上架",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 18 日（美國太平洋時間），GitHub 在官方異動紀錄宣布，建立 npm 細緻權限存取權杖（granular access token）時，多了一個可選的權限等級 Read and write (stage only)：讓自動化流程把新版本送進待審區，卻不把「直接發布到 npm registry」的權限交給這個權杖，目的是自動化只能送件、不能自己放行上架。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 20 日查核，讀的是這則 GitHub Changelog 全文、npm 說明中心的 About access tokens 與 Staged publishing 兩頁，以及 7 月 31 日那則先預告 2027 年時程的較早公告。本站沒有登入 npm 帳號，也沒有建立權杖或跑過送審流程；下文不做「該不該換權杖」的建議，只整理官方頁面寫出來的條件與時限。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 18 日，GitHub 在 changelog 宣布 npm 新增 Read and write (stage only) 這個可選的權限等級，讓自動化流程只能把新版本送進待審區，不能直接發布到 npm registry，即使該權杖被設定成可以略過 2FA 也一樣。",
+            "送出待審版本（npm stage publish）不需要 2FA，但維護者核准上架（npm stage approve）一定要用 2FA；只送審權杖仍保有搬移 dist-tag 與標記版本棄用的權限，官方也說明這不是通用的安全邊界。",
+            "這一版是 opt-in，不會動到既有權杖與它們直接發布的能力；npm 的目標是 2027 年 1 月移除免 2FA 權杖的直接發布，但官方兩份頁面用詞不完全一致，而且查核當天官方仍寫著目前還可以直接發布。",
+            "只送審權杖只適用於已經上架的既有套件，全新套件無法送審；要試用需要有發布權限、帳號開啟 2FA、npm CLI 11.15.0 以上與 Node.js 22.14.0 以上。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 18 日公告了什麼：一個新的權限等級"
+        },
+        {
+          "type": "paragraph",
+          "text": "GitHub 把這則公告歸在「supply chain security（供應鏈安全）」標籤底下，說明寫得很直接：自動化流程用 npm stage publish 送出版本，套件維護者再以雙因素驗證（2FA）複查並核准發布，兩個動作分屬不同角色、不同權限。這種設計是要在不擋住自動化的前提下，把「誰能真的把套件推上 registry」收回到一個會被 2FA 保護的人身上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方特別點出一句整篇公告最重要的話：只送審權杖直接呼叫 npm publish 會被 npm 拒絕，即使這個權杖被設定成可以略過 2FA 也一樣。也就是說，「略過 2FA」這個選項這次不會讓自動化流程繞過送審這一關；官方同時提醒，只送審權杖仍然要和其他任何寫入權杖一樣小心保管。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這次更新是 opt-in，要自己到 npm 網站建立新權杖才會用到；官方寫明這一版不會動到任何既有權杖，也不會拿掉既有權杖直接發布的能力。換句話說，工作流程如果不主動更換權杖類型，9 月 18 日之後仍會照舊運作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "送件、複查、放行三步，以及權杖還能做什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列出換成只送審權杖的三個步驟：替工作流程需要的套件建立一個 Read and write (stage only) 權杖；把工作流程裡的發布權杖換成這一個，指令從 npm publish 改成 npm stage publish；再請一位維護者用 2FA 複查、核准待審版本。npm 說明中心把兩種讀寫等級並列：Read and write (publish and stage) 可以直接把新版本發布到 registry，Read and write (stage only) 不能直接發布，而是送去待審，由維護者複查後「拔擢」（promote）上架。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只送審權杖不是被拿掉所有寫入權限。npm 說明頁列出它能做的三件事：用 npm stage publish 送出待審版本、把版本標記為棄用（deprecate）、搬移 dist-tag；不能做的只有直接發布新版本——硬發會拿到 E_STAGE_REQUIRED 錯誤。維護者核准時用 npm stage approve 指令搭配 stage-id 與 --otp 參數拔擢上架，或用 npm stage reject 指令丟掉；官方頁面沒有寫丟掉後會不會通知，也沒寫保留期限。"
+        },
+        {
+          "type": "table",
+          "header": ["權限動作", "Read and write (publish and stage)", "Read and write (stage only)"],
+          "rows": [
+            ["直接發布新版本到 registry", "可以", "不行，會出現 E_STAGE_REQUIRED 錯誤"],
+            ["用 npm stage publish 送出待審版本", "官方頁未特別說明", "可以"],
+            ["搬移 dist-tag", "官方頁未特別說明", "可以（仍保留的權限）"],
+            ["把版本標記為棄用", "官方頁未特別說明", "可以（仍保留的權限）"]
+          ],
+          "caption": "依 GitHub Changelog 與 npm 說明中心整理，查核日 2026 年 9 月 20 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼是「送審」而不是「禁止」"
+        },
+        {
+          "type": "paragraph",
+          "text": "2FA 落在核准那一步，不是送件那一步：npm 說明頁寫明 npm stage publish 不需要 2FA，需要 2FA 的是維護者核准的那個動作。這個分界正是只送審權杖能放進無人值守 CI 的原因——自動化流程本來就沒辦法在管線裡輸入一次性密碼，把「需要 2FA」的關卡移到人身上，流程才有辦法一路自動跑到待審這一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方自己也把話講死：只送審只限制新版本的直接發布，它不是一道通用的安全邊界。這句話值得留意——只送審權杖同時保有搬移 dist-tag 與標記棄用的權限，這兩個動作分別能讓別人裝到的「最新版」改變、或讓既有版本被標成不建議使用，都不是「直接發新版本」，卻仍然會影響套件的下游使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一個容易被忽略的門檻：只送審發布只對已經存在的 npm 套件有效，全新的套件不能用這個方式送審。也就是說，要用這個機制的前提是這個套件本來就已經在 npm registry 上；一個團隊如果要發布全新套件的第一個版本，還是得用有直接發布權限的權杖。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-npm-stage-only-tokens-20260918/diagram-1.svg",
+          "alt": "四格圖解：自動化送件、維護者複查、2FA 放行、權杖仍保有其他權限",
+          "width": 1600,
+          "height": 900,
+          "caption": "npm「只送審」權杖的發版流程整理：自動化送件、維護者以 2FA 核准後才上架，查核日 2026 年 9 月 20 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2027 年 1 月的預告怎麼讀"
+        },
+        {
+          "type": "paragraph",
+          "text": "2027 年 1 月這個時程不是這次才提出來的。GitHub 在 2026 年 7 月 31 日較早的一則 changelog 就寫著「以 2027 年 1 月為目標」，要讓免 2FA 權杖失去直接發布的能力，發布面縮到只剩讀取私有套件與送出待審版本兩件事；9 月 18 日這則公告又重申一次同樣的目標月份，並寫明「如先前所公告」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "7 月 31 日那一次已經先動一步：從 2026 年 8 月起，設定成略過 2FA 的權杖不能再做帳號身分或治理類動作，包括改 email 或密碼、改動 2FA 設定、建立與管理權杖，以及新增或移除套件維護者；但那一次的範圍寫得很清楚，只影響 npm 的細緻權限存取權杖，不影響 GitHub 個人存取權杖、GitHub App 權杖，也不影響 Actions 裡的 GITHUB_TOKEN。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份官方頁面講 2027 年這一項時用詞不完全一致：兩則 changelog 都寫「targeting」（以……為目標），範圍限定在「免 2FA 權杖的直接發布」；About access tokens 說明頁卻寫成「will be removed」（會被移除），主詞是「用細緻權限存取權杖直接發布新版本的能力」，範圍看起來比較寬。本文以 changelog 的範圍為主述，兩種寫法都照抄，不擅自選一邊當唯一答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "截至查核日 2026 年 9 月 20 日，這一刀還沒有落下：npm 的說明頁明寫「目前，免 2FA 權杖仍然可以用來直接發布」，而且四份來源都只印到「2027 年 1 月」這個月份，沒有任何一頁寫出確切日期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "現在實際上要做什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "已經在發布套件的人，若想知道工作流程符不符合資格，可以對照官方條件：套件必須已經在 npm registry 上、要有發布權限、npm 帳號已啟用 2FA、npm CLI 在 11.15.0 以上，以及 Node.js 在 22.14.0 以上。符合後，步驟是建立一個 Read and write (stage only) 權杖、把 npm publish 換成 npm stage publish，再請維護者用 2FA 核准待審版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "npm 把只送審權杖定位成一條遷移路徑，提供給還沒改用 trusted publishing（以 OIDC 免權杖發布）的權杖式自動化；已經在用 trusted publishing 的團隊，官方也寫明兩者可以合用，維護者一樣要用 2FA 複查待審套件。只安裝套件、不自己發版的一般工程師，這次不必調整設定——這是本文依報導範圍的判讀，四份來源談的都是發布端的變化，沒有一句話是對安裝端使用者的指示。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "換成只送審權杖之後，套件是不是就多了一層安全保障？",
+              "answer": "多了一層核准，但官方自己講得很清楚：只送審限制的只有新版本的直接發布，它不是一道通用的安全邊界。這種權杖仍然保有搬移 dist-tag 與把版本標記為棄用的權限，這兩個動作一樣會影響套件的下游使用者，因此不能把換權杖當成解決供應鏈風險的萬靈丹，只是把「誰能把新版本推上架」多加了一道由人核准的關卡。"
+            },
+            {
+              "question": "自動化流程送出待審版本，需要先開 2FA 嗎？",
+              "answer": "不需要。npm 說明頁寫得很明確：npm stage publish 這個送件動作不需要 2FA，需要 2FA 的是維護者核准的那一步（npm stage approve）。這個分界正是只送審權杖能放進無人值守 CI 的原因，因為自動化本來就沒辦法在管線裡輸入一次性密碼。"
+            },
+            {
+              "question": "我想發布一個全新的套件，可以用只送審權杖嗎？",
+              "answer": "不行。官方說明頁寫明只送審發布只對已經存在的 npm 套件有效，全新的套件不能用這個方式送審。如果是要發布一個套件的第一個版本，還是需要有直接發布權限的權杖。"
+            },
+            {
+              "question": "免 2FA 權杖現在已經不能直接發布了嗎？",
+              "answer": "還沒有。9 月 18 日這一版是 opt-in，官方寫明不會動到既有權杖，也不會拿掉既有權杖直接發布的能力；npm 的說明頁在查核當天（2026 年 9 月 20 日）仍寫著「目前，免 2FA 權杖仍然可以用來直接發布」。npm 的目標是 2027 年 1 月拿掉這條路，但兩份官方頁面對範圍的寫法不完全一致，而且都只印到月份，沒有寫出確切日期，屬於預告時程，不是已生效的規定。"
+            },
+            {
+              "question": "我只是 npm install 別人的套件、不自己發版，這件事跟我有關嗎？",
+              "answer": "以本文查到的四份來源，這次的異動談的都是發布套件的人要做什麼，沒有一句話是對只安裝套件的使用者下指示；這次不必調整任何設定，是本文依這個範圍做出的判讀，官方頁面本身沒有直接對安裝端使用者說明。"
+            },
+            {
+              "question": "要開始試用只送審權杖，需要滿足什麼條件？",
+              "answer": "官方列出的條件是：這個套件必須已經在 npm registry 上、擁有它的發布權限、npm 帳號已經啟用 2FA、npm CLI 版本在 11.15.0 以上，以及 Node.js 版本在 22.14.0 以上。滿足之後，步驟是建立一個 Read and write (stage only) 權限的權杖、把工作流程裡的 npm publish 換成 npm stage publish，再請一位維護者用 2FA 核准待審版本。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "2027 年 1 月是目標，不是已生效的規定",
+          "text": "GitHub 在 2026 年 9 月 18 日與 7 月 31 日兩則公告，都用「以 2027 年 1 月為目標」描述移除免 2FA 權杖直接發布的計畫；npm 的說明頁講同一件事時卻寫「會被移除」，主詞也寫得比較寬。兩份頁面查核當天（2026 年 9 月 20 日）都沒有印出確切日期，說明頁並且明寫「目前，免 2FA 權杖仍然可以用來直接發布」。正式時程與最終範圍如有更新，請以 npm 與 GitHub 官方頁面當下內容為準，本文不建議是否該切換權杖類型。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-eu-cra-reporting-20260911"
+        }
+      ],
+      "sources": [
+        {
+          "title": "GitHub Changelog：Stage-only npm tokens for safer automation",
+          "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "npm Docs：About access tokens",
+          "url": "https://docs.npmjs.com/about-access-tokens/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "npm Docs：Staged publishing for npm packages",
+          "url": "https://docs.npmjs.com/staged-publishing/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "GitHub Changelog：Restricting npm bypass-2FA granular access tokens",
+          "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+          "checked_on": "2026-09-20"
+        }
+      ]
+    }
+  }
+}
