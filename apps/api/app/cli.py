@@ -39,6 +39,7 @@ from app.guides.links_cli import check_guide_links, rebuild_guide_links
 from app.guides.search_cli import reindex_guide_search, seed_guide_aliases
 from app.holidays.refresh import HolidaySourceError
 from app.holidays.refresh import refresh as refresh_holidays
+from app.hotspots import guide_scan
 from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.candidate_generation import generate_candidates
 from app.hotspots.cities import CITY_BY_CODE
@@ -546,6 +547,69 @@ async def review_guide_backlog(
     }
 
 
+def _guide_ids(values: list[str], path: Path | None) -> list[UUID]:
+    """Ids given on the command line and one per line in ``path`` (blank and # lines skipped)."""
+    raw = list(values)
+    if path is not None:
+        raw.extend(
+            line.split("#", 1)[0].strip() for line in path.read_text(encoding="utf-8").splitlines()
+        )
+    ids: list[UUID] = []
+    for value in raw:
+        if not value:
+            continue
+        try:
+            ids.append(UUID(value))
+        except ValueError as error:
+            raise SystemExit(f"Not a guide id: {value}") from error
+    return ids
+
+
+async def scan_misplaced_guides(
+    *,
+    locales: list[str],
+    statuses: list[str],
+    limit: int | None,
+    skip: list[UUID],
+    reject: list[UUID],
+    apply: bool,
+    actor_email: str | None,
+    verbose: bool,
+) -> dict[str, Any]:
+    """List (and with --apply reject) approved guides that are about another country."""
+    async with SessionFactory() as session:
+        actor = None
+        if apply:
+            if not actor_email:
+                raise SystemExit("--actor-email is required with --apply")
+            actor = await _admin_user(session, actor_email) or await _env_owner(
+                session, actor_email
+            )
+            if actor is None:
+                raise SystemExit("The actor must be an active administrator")
+        report = await guide_scan.run(
+            session,
+            statuses=statuses,
+            locales=locales,
+            skip=skip,
+            reject=reject,
+            limit=limit,
+            actor_id=actor.id if actor is not None else None,
+        )
+    shown = report.findings if verbose else report.findings[:60]
+    for finding in shown:
+        print(
+            f"  {finding.locale:<5} {finding.content_type:<7} "
+            f"{finding.hotspot_name}（{finding.city}）→ {finding.elsewhere}  "
+            f"{finding.title[:60]}  {finding.guide_id}"
+        )
+    if len(report.findings) > len(shown):
+        print(f"  ... {len(report.findings) - len(shown)} more (use --verbose)")
+    for guide_id, status, title in report.named:
+        print(f"  named  {status:<9} {title[:60]}  {guide_id}")
+    return report.as_dict()
+
+
 def _read_text(path: Path) -> str:
     """Read a file from an async command; the CLI is single-user and blocking here is fine."""
     return path.read_text(encoding="utf-8")
@@ -1009,6 +1073,51 @@ def main() -> None:
     guide_review.add_argument(
         "--verbose", action="store_true", help="Print every decision, not just the first 40"
     )
+    guide_scan_parser = subparsers.add_parser(
+        "guides-foreign-place-scan",
+        help=(
+            "List approved hotspot guides whose title and summary name another country and "
+            "never this attraction (the foreign_place rule the review uses); "
+            "--apply rejects them with an audit entry."
+        ),
+    )
+    guide_scan_parser.add_argument(
+        "--locale", action="append", default=[], help="Only this locale (repeatable)"
+    )
+    guide_scan_parser.add_argument(
+        "--status",
+        action="append",
+        default=[],
+        help="Review status to read (repeatable; default approved)",
+    )
+    guide_scan_parser.add_argument("--limit", type=int, help="Stop after this many rows")
+    guide_scan_parser.add_argument(
+        "--skip-id",
+        action="append",
+        default=[],
+        help="Guide id the rule flags wrongly; left as it is (repeatable)",
+    )
+    guide_scan_parser.add_argument(
+        "--skip-ids-file", type=Path, help="File with one guide id per line to skip"
+    )
+    guide_scan_parser.add_argument(
+        "--reject-id",
+        action="append",
+        default=[],
+        help="Guide id to reject as well, although the rule cannot see it (repeatable)",
+    )
+    guide_scan_parser.add_argument(
+        "--reject-ids-file", type=Path, help="File with one guide id per line to reject as well"
+    )
+    guide_scan_parser.add_argument(
+        "--apply", action="store_true", help="Reject the rows instead of only listing them"
+    )
+    guide_scan_parser.add_argument(
+        "--actor-email", help="Administrator recorded on each rejection (required with --apply)"
+    )
+    guide_scan_parser.add_argument(
+        "--verbose", action="store_true", help="Print every finding, not just the first 60"
+    )
     english_names = subparsers.add_parser(
         "backfill-merchant-english-names",
         help=(
@@ -1083,6 +1192,20 @@ def main() -> None:
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "guides-links-rebuild":
         outcome = asyncio.run(rebuild_guide_links(dry_run=args.dry_run))
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "guides-foreign-place-scan":
+        outcome = asyncio.run(
+            scan_misplaced_guides(
+                locales=args.locale,
+                statuses=args.status or ["approved"],
+                limit=args.limit,
+                skip=_guide_ids(args.skip_id, args.skip_ids_file),
+                reject=_guide_ids(args.reject_id, args.reject_ids_file),
+                apply=args.apply,
+                actor_email=args.actor_email,
+                verbose=args.verbose,
+            )
+        )
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "guides-links-check":
         outcome = asyncio.run(check_guide_links(locale=args.locale))

@@ -8,10 +8,13 @@ owner:
 claimed_at:
 created_at: 2026-09-13T12:50:11Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - docs/catalog-content-reviews/2026-09-13-misplaced-guides.md
+  - apps/api/app/hotspots/guide_scan.py
+  - apps/api/app/cli.py
+  - apps/api/tests/test_hotspot_guide_scan.py
 ---
 
 # 五十二篇已公開的景點介紹講的是別的國家，逐筆退掉
@@ -34,7 +37,7 @@ scope:
 - [ ] 下面 52 筆全部 `rejected`，公開的探索清單與景點頁都查不到。
 - [ ] 用同一條規則（`app.hotspots.guides.foreign_place`）把所有 `approved` 的介紹掃過一次——五個語系、
       文章與影片都算，不只這份從公開視窗查到的 52 筆。
-- [ ] 逐筆結果寫進 `docs/catalog-content-reviews/2026-09-13-misplaced-guides.md`。
+- [x] 逐筆結果寫進 `docs/catalog-content-reviews/2026-09-13-misplaced-guides.md`。（2026-09-19：清單、狀態與指令已寫入；主機跑完後補掃描結果）
 
 ## Steps
 
@@ -185,3 +188,17 @@ curl -s "https://mokaair.com/api/travel/discovery/search?type=article&limit=50&l
   只因為列了「日本橋（來遠橋）」而被判成日本。會安不在目的地目錄裡，所以沒有東西指回越南。
 - 另一筆留著沒退、值得看一眼：`eff4dc8f-6ea0-4392-abed-f7bf7d6e0e72`（Funliday 的西公園頁，掛在福岡西公園）
   摘要整段是旅行社的統編與註冊編號，不確定是哪一個西公園，先不退。
+
+### 2026-09-19 進度（claude-fable-5-1）
+
+- 公開 API 逐筆查：52 筆**全部仍公開**（`/api/travel/discovery/content/{kind}/{id}` 都回 200）。
+- 這台機器沒有正式站的管理員登入，退件改成給站主一條在 api 容器跑的指令：新增
+  `python -m app.cli guides-foreign-place-scan`（`apps/api/app/hotspots/guide_scan.py`，scope 已加上這支模組、
+  `cli.py` 與測試）。它用覆核現在用的同一條規則 `foreign_place`、同一組 own_terms（本地化名稱、aliases、
+  search_terms），掃全部 `approved` 的列（五語系、文章與影片），列出命中；`--apply --actor-email` 時用後台端點寫的
+  同一組欄位退件並寫一筆 `hotspot_guides_reviewed` 稽核（metadata 有 `source`）。`--skip-id` 帶著已知誤判，
+  `--reject-id` 指名規則看不見的四支影片；已退過與不存在的 id 分別回報。6 個單元測試。
+- 指令、四個 `--reject-id`、一個 `--skip-id` 與 52 筆的表都在 `docs/catalog-content-reviews/2026-09-13-misplaced-guides.md`。
+- 剩下要站主做的：部署後在主機跑文件裡的三步（先列、再 `--apply`、再重跑確認 0 筆），把輸出貼回文件的「掃描結果」
+  一節，再 `done`。第 1 步若命中超過 52 筆，多出來的是公開視窗看不到的或其他語系的列，逐筆看標題後一起退。
+  認領已釋出。
