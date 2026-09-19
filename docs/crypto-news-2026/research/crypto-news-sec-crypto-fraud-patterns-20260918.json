@@ -501,5 +501,204 @@
       ]
     ]
   },
-  "factcheck": {}
+  "factcheck": {
+    "checked_by": "independent factcheck agent（第一輪；未參與撰稿）",
+    "checked_on": "2026-09-20",
+    "method": "未參與撰稿，假設草稿有錯、逐條回一手來源反駁。sources[] 四條全部於 2026-09-20 依本紀錄 sourcing_notes 的配方重抓：本機 Microsoft Edge --headless=new --disable-gpu --no-first-run --no-default-browser-check --user-data-dir=<每頁各一個全新空白暫存目錄> --user-agent=\"Mokaair-editorial\" --virtual-time-budget=12000 --dump-dom；請求的 UA、標頭、查詢字串都沒有帶任何人的 email 或個人資料，也沒有沿用任何既有 cookie 或登入狀態。四頁都拿到正文而不是 sec.gov 的 403 封鎖頁：演講頁 94,975 bytes（<title> SEC.gov | Remarks Before 12th Annual Government Enforcement Institute，與撰稿輪完全相同）、lr-26608 73,268 bytes（<title> SEC.gov | Goliath Ventures, Inc.; Christopher A. Delgado）、新聞稿 2025-144 70,790 bytes、investor.gov 警示頁 62,467 bytes。後三頁比撰稿輪多出 362／362／2 bytes，逐段比對後確認差異都在導覽與追蹤腳本，本紀錄引用的每一段正文一字未變；演講頁頁尾的 「Last Reviewed or Updated: Sept. 18, 2026」也沒有變，代表講詞沒有被事後修訂。WebFetch 的摘要全程未採用，也沒有動用任何二手幣圈媒體或封存站。\n\n核對方式：把四頁的 DOM 依文字層級元素（p／h1–h6／li／blockquote／td／th／span／strong／em／a／time／div 欄位）切成單一元素的純文字，再把內容包拆成可核對的主張逐條對回原文——title、description、17 個正文段落的每一句、summary 四句、FAQ 六題答句、兩個 callout、表格 3 欄 12 格與 caption、圖解 caption 與研究紀錄 diagram 的四格與 hero_label、兩個結尾連結的 text、sources[] 四條，去掉重複後共 112 條。研究紀錄 58 條 verbatim_quote 以程式做「落在單一元素內」的連續字串比對，58 條全部通過（其中 Dallas, Texas、2025-144 的副標、警示頁的 Dec. 22, 2025 三條落在 <div> 欄位而不是 <p>，各自仍是單一元素內的連續文字）。\n\n另做了指派訊息點名的機械檢查，全部以 2026-09-20 抓下的講詞正文（[As Prepared] 起到 Thank you for your time.，共 44 個段落／小標）做詞界比對：crypto 4 次且全部落在第 15、16 兩個元素（即那兩段案例）、token 1 次（Security Token Offerings）、rule／rules／rulemaking／regulation／regulations／guidance 各 0 次、policy 1 次（對辯護律師那一段的 This policy supports clarity…）、most common 與 fastest 各 0 次、exchange／wallet／stablecoin／bitcoin 各 0 次、Taiwan／Taipei／China／Asia／Japan／Korea 各 0 次。但同一次比對也查出講詞正文出現 U.S. 5 次、American 1 次、foreign 4 次、overseas 1 次、Texas 4 次、Colorado 1 次，因此「沒有提到任何國家」這個全稱否定句不成立——見 changes 第 21 條。另確認演講頁沒有本場演講的影音或現場逐字稿（頁面只有導覽的 /newsroom/videos 連結與 YouTube 追蹤腳本）、新聞稿 2025-144 的頁尾 Last Reviewed or Updated 仍是 Dec. 22, 2025。\n\n沒有用 sources[] 以外的任何網址替文章補事實；兩案的 complaint PDF 本輪同樣沒有下載，文章也沒有引用它們的細節。",
+    "claims_checked": 112,
+    "verdict": "needs_fixes（24 處已於本輪改完；改後自檢 OK，zh-TW paragraphs 2947）",
+    "changes": [
+      {
+        "where": "description",
+        "before": "在演講備稿中，以個人身分舉出兩起加密資產詐騙起訴案：",
+        "after": "在演講備稿中舉出兩起加密資產詐騙起訴案，講稿聲明內容代表他個人意見：",
+        "why": "「以個人身分」與來源相反。講稿的免責聲明是兩層的：他是以官方身分發言，但內容代表個人意見。正文第一段本來就寫對了，description 寫成「個人身分」等於推翻正文。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：I am speaking today in my official capacity as Director of the Division of Enforcement. My remarks represent my own views and do not necessarily reflect the views of the Commission, the Commissioners, or my colleagues on the staff."
+      },
+      {
+        "where": "description",
+        "before": "一起指控以「合夥」名義誘投流動性池",
+        "after": "一起指控以「合夥」名義誘投號稱的流動性池",
+        "why": "來源全程用 purported 修飾那些池子，而起訴書指控錢根本沒進過任何池子。刪掉限定詞會把「號稱的池子」寫成真的存在的池子。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：investors would “partner” with Goliath to invest in purported crypto asset liquidity pools managed by Goliath；同頁 Defendants did not invest any investor funds or crypto assets into any crypto asset liquidity pool"
+      },
+      {
+        "where": "第一段（正文開頭）",
+        "before": "SEC 沒有提供影音或現場逐字稿",
+        "after": "這一頁沒有提供影音或現場逐字稿",
+        "why": "否定句超出「這一頁沒有寫」的範圍。本輪只能證明演講頁上沒有影音或逐字稿（頁內 video 字串只出現在導覽的 /newsroom/videos 與 YouTube 追蹤腳本），不能證明 SEC 在別處也沒有提供。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：頁面標示 [As Prepared]，全頁沒有任何本場演講的影音或逐字稿連結"
+      },
+      {
+        "where": "summary 第 2 句",
+        "before": "誘使投資人投入加密資產流動性池",
+        "after": "誘使投資人投入號稱的加密資產流動性池",
+        "why": "同 description，purported 這個限定詞被刪掉。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：purported crypto asset liquidity pools managed by Goliath"
+      },
+      {
+        "where": "summary 第 3 句",
+        "before": "賠償與罰款金額仍待法院裁定",
+        "after": "不法所得追繳與罰款金額仍待法院裁定",
+        "why": "來源寫的是 disgorgement with prejudgment interest and a civil penalty，是吐出不法所得與民事罰款，不是對被害人的賠償。寫「賠償」會暗示受害者可以循某個管道求償，而四份一手文件都沒有寫發還或分配基金；must_not_write 也禁止寫出任何「賠償金額」。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：Delgado agreed that the Court shall order disgorgement with prejudgment interest and a civil penalty in amounts that shall be determined by the Court upon motion by the SEC."
+      },
+      {
+        "where": "summary 第 4 句",
+        "before": "兩案共通的辨識點包括：",
+        "after": "兩案文件合起來的辨識點包括：",
+        "why": "四個辨識點不是兩案都有：「承諾固定月配息並保證本金」只出現在 Goliath 案，「平台自稱持有執照」與「提領前被要求先付費」只出現在 Morocoin 案。正文第三節本來就是逐條各自標出處的，summary 卻寫成兩案共通。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608（monthly profit distributions…and guaranteed the return of investors’ principal）與 https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted（which falsely claimed to have government licenses, as alleged；demanding that they pay advance fees）"
+      },
+      {
+        "where": "第 1 節第 1 段結尾",
+        "before": "，那一天沒有任何一件案子被新起訴，也沒有任何規則或函釋公布。",
+        "after": "；講稿本身沒有宣布任何新的規則或函釋，也沒有寫到當天有新起訴。",
+        "why": "原句是對「2026 年 9 月 18 日一整天」的全稱否定，本輪讀的四份文件沒有一份能支撐它（沒有人查過當天 SEC 有沒有別的訴訟公告或規則）。改成限縮到講稿本身，這是詞界比對查得到的：rule／rulemaking／regulation／guidance 在講詞正文各 0 次。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：講詞正文 44 個段落／小標，rule、rulemaking、regulation、guidance 以詞界比對各 0 次"
+      },
+      {
+        "where": "第 1 節第 2 段",
+        "before": "兩段都放在「案例亮點」小節，前後緊接著的是境外不法行為人、假冒 SEC 申報等其他案例。",
+        "after": "兩段都放在「案例亮點」小節，緊接著的是境外不法行為人、假冒 SEC 申報等其他案例。",
+        "why": "「前後」不成立：兩段加密案例之前是該小節的引言句（A number of recent matters highlight a visible Enforcement Division…），境外不法行為人那一段在後面。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：Case Highlights 小節依序為引言、bread-and butter 那一段、In late-2025 那一段、Our mandate also includes taking decisive action to disrupt foreign bad actors…"
+      },
+      {
+        "where": "第 1 節第 2 段結尾",
+        "before": "其餘篇幅談的是執法處自己的組織與程序。",
+        "after": "其餘篇幅談的是其他案件與執法處自己的組織、程序。",
+        "why": "與同段前一句自相矛盾，也與原文不符：其餘篇幅還包含財報與內控的個案、境外不法行為人個案，不只組織與程序。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：earlier this year the SEC brought charges against— 之後三個項目；以及 In August, the SEC brought charges in the District of Colorado against 38 entities…"
+      },
+      {
+        "where": "第 2 節第 1 段",
+        "before": "第一起案子，正式案名 SEC v. Goliath Ventures，",
+        "after": "第一起案子，案名簡稱 SEC v. Goliath Ventures，",
+        "why": "那不是正式案名。演講註腳 1 與訴訟公告報頭印的是 SEC v. Goliath Ventures, Inc. and Christopher A. Delgado。改成「案名簡稱」既不必把全名塞進正文，也不會把簡稱當成正式名稱。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826 註腳 1：SEC v. Goliath Ventures, Inc. and Christopher A. Delgado, No. 26-cv-01741 (M.D. Fla. filed Aug. 11, 2026)"
+      },
+      {
+        "where": "第 2 節第 1 段結尾",
+        "before": "執行長另挪用至少 5,100 萬美元購買房產、名車、遊艇與旅遊。",
+        "after": "執行長另挪用至少 5,100 萬美元購買房屋、名車、遊艇與旅遊。",
+        "why": "兩份來源的措辭不同，原句把兩邊混寫：演講寫 real estate、沒有 travel，訴訟公告寫 homes 與 travel。這一段整段歸給起訴書（訴訟公告），四個項目就必須是 homes／luxury vehicles／a yacht／travel，「房產」要改成對應 homes 的「房屋」。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：Delgado misappropriated at least $51 million of investor funds for personal use, including the purchase of homes, luxury vehicles, a yacht, and travel."
+      },
+      {
+        "where": "第 2 節第 2 段",
+        "before": "2025 年 11 月新錢進不來，配息停發，整個架構崩掉，",
+        "after": "起訴書指控到 2025 年 11 月新錢進不來、配息停發，整個架構崩掉，",
+        "why": "兩個問題：這句把起訴書的指控寫成既成事實（must_not_write 要求一律寫「起訴書指控」），而且來源寫的是 by November 2025（到 2025 年 11 月為止），不是「2025 年 11 月」這個時點。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：The complaint further alleges that by November 2025, Goliath could no longer raise new investor money quickly enough to repay existing investors, it halted monthly distributions, and the scheme collapsed."
+      },
+      {
+        "where": "第 2 節第 3 段",
+        "before": "第二起案子，正式案名 SEC v. Morocoin Tech Corp.，",
+        "after": "第二起案子，案名簡稱 SEC v. Morocoin Tech Corp.，",
+        "why": "同上。演講註腳 2 印的是 SEC v. Morocoin Tech Corp., et al.，少了 et al. 就不是正式案名。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826 註腳 2：SEC v. Morocoin Tech Corp., et al., No. 25-cv-04102 (D. Colo. filed Dec. 22, 2025)"
+      },
+      {
+        "where": "第 2 節第 3 段",
+        "before": "SEC 官員把手法講成一條鏈：",
+        "after": "SEC 的新聞稿與投資人警示把手法拆成一條鏈：",
+        "why": "歸錯出處。那條鏈有三個來源：D’Allaird 的引述只講到社群廣告、群組裡假扮金融專業人士、AI 明牌、假平台；WhatsApp 與假 STO 來自新聞稿正文；「訊號」這個詞只出現在 investor.gov 的警示頁（AI-generated “signals”），新聞稿用的是 AI-generated investment tips。全部掛在「SEC 官員」名下等於把三份文件寫成同一個人說的。",
+        "source": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted（from at least January 2024 to January 2025…using WhatsApp…；In reality, no trading took place…）與 https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams（the professors and assistants circulated trade recommendations in the group chats that they claimed were based on AI-generated “signals.”）"
+      },
+      {
+        "where": "第 2 節第 4 段",
+        "before": "被告還謊稱那三個平台持有政府核發的執照。",
+        "after": "那三個平台還謊稱持有政府核發的執照。",
+        "why": "來源寫的是那三個平台自己謊稱持有執照，不是別的被告替它們宣稱。同一節第三段已把平台與社團分開寫，主詞換掉會讓讀者以為是投資社團在講。",
+        "source": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted：purported crypto asset trading platforms Morocoin, Berge, and Cirkor, which falsely claimed to have government licenses, as alleged"
+      },
+      {
+        "where": "第 3 節第 2 段",
+        "before": "還謊稱帳戶即將因主管機關調查而被凍結",
+        "after": "還謊稱帳戶即將因 SEC 調查而被凍結",
+        "why": "來源點名的是 SEC investigations。改寫成泛稱的「主管機關」不但丟掉來源自己印出的細節，在一篇同時談台灣讀者的文章裡還可能被讀成金管會。",
+        "source": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams：The defendants then allegedly charged investors bogus fees to withdraw their money, falsely telling investors that their accounts were about to be frozen due to SEC investigations."
+      },
+      {
+        "where": "第 3 節第 2 段結尾",
+        "before": "Goliath 案「對帳單有獲利」同樣是假的。",
+        "after": "Goliath 案起訴書指控的「對帳單有獲利」同樣是偽造的。",
+        "why": "缺「起訴書指控」，把指控寫成事實。Goliath 案的每一項事實都還只是起訴書的指控，Delgado 的判決也還沒經法院核准。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：…while fabricating account balance and investment performance metrics to make it appear that investors were earning profits…（整段前置為 as the complaint alleges）"
+      },
+      {
+        "where": "第 4 節第 1 段",
+        "before": "但需法院核准，禁制令與罰款金額都由法院裁定，",
+        "after": "但禁制令要由法院核准，不法所得追繳與罰款金額也由法院裁定，",
+        "why": "原句把「禁制令」與「金額」混成一件事，也漏掉不法所得追繳。來源分成兩件：永久禁制令等民事救濟是 subject to court approval，disgorgement 與 civil penalty 的金額由法院另行裁定。與 summary、FAQ 的用語同步改。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：Delgado consented to the entry of a judgment, subject to court approval, that would permanently enjoin him…；In addition, Delgado agreed that the Court shall order disgorgement with prejudgment interest and a civil penalty in amounts that shall be determined by the Court upon motion by the SEC."
+      },
+      {
+        "where": "第 4 節第 3 段開頭",
+        "before": "講稿在提到這兩起案子之前，先宣布新設 Retail Fraud Working Group（零售詐騙工作小組）",
+        "after": "講稿在這兩起案子之後另宣布新設 Retail Fraud Working Group（零售詐騙工作小組）",
+        "why": "順序寫反了。兩段加密案例在 Case Highlights 小節（講詞正文第 13–16 個元素），Retail Fraud Working Group 在後面的 New Initiatives Strengthening Enforcement 小節（第 26 個小標、第 29 個元素）。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：Case Highlights → …In late-2025, the Commission charged three purported crypto asset trading platforms… → New Initiatives Strengthening Enforcement → In addition, we launched the Retail Fraud Working Group…"
+      },
+      {
+        "where": "第 5 節第 1 段",
+        "before": "但那是美國自己的資料庫，查不到台灣業者。",
+        "after": "但那是美國自己的資料庫，不是台灣業者的登記名單。",
+        "why": "「查不到台灣業者」是對第三方資料庫涵蓋範圍的斷言，四份來源都沒有寫，本輪也不得為了補這一句去查 sources[] 以外的網址。改成描述它是什麼，同樣撐得住後面那個編輯類比。",
+        "source": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted：The SEC encourages investors to use Investor.gov to check the background of anyone offering or selling them an investment.（來源只寫用途，未寫涵蓋範圍）"
+      },
+      {
+        "where": "第 5 節第 2 段開頭",
+        "before": "這場演講沒有提到台灣、亞洲或任何國家，",
+        "after": "這場演講沒有提到台灣，也沒有出現亞洲或日韓中等字樣，",
+        "why": "「任何國家」這個全稱否定被來源直接推翻：本輪以詞界比對，講詞正文出現 U.S. 5 次、American 1 次、foreign 4 次、overseas 1 次，另有 Texas 4 次、Colorado 1 次。撐得住的只有 Taiwan／Taipei／China／Asia／Japan／Korea 各 0 次這件事，所以否定句限縮到這些字樣。",
+        "source": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826：Our mandate also includes taking decisive action to disrupt foreign bad actors targeting U.S. markets and investors.；…several of whom appear to be located overseas…；…harm American investors."
+      },
+      {
+        "where": "第 5 節第 3 段",
+        "before": "兩起案子的起訴書都用「號稱的」「假的」描述那些平台與募集，",
+        "after": "兩起案子的一手文件用「號稱的」「假的」這類字眼描述那些平台與募集，",
+        "why": "「都用」不成立：fake 只出現在 Morocoin 案的新聞稿，lr-26608 對 Goliath 用的是 purported，沒有用 fake。另外本輪沒有讀過兩案的 complaint PDF，措辭的出處是訴訟公告與新聞稿，不是起訴書本身。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：purported crypto asset liquidity pools；https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted：no trading took place on the trading platforms, which were fake"
+      },
+      {
+        "where": "FAQ 第 3 題答句",
+        "before": "但判決仍待法院核准，賠償與罰款金額也由法院另行裁定",
+        "after": "但判決仍待法院核准，不法所得追繳與罰款金額也由法院另行裁定",
+        "why": "同 summary 第 3 句：disgorgement 不是對被害人的賠償。",
+        "source": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608：disgorgement with prejudgment interest and a civil penalty in amounts that shall be determined by the Court"
+      },
+      {
+        "where": "FAQ 第 5 題答句",
+        "before": "那是美國自己的資料庫，查不到台灣業者。",
+        "after": "那是美國自己的資料庫，不是台灣業者的登記名單。",
+        "why": "同第 5 節第 1 段。",
+        "source": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted：The SEC encourages investors to use Investor.gov to check the background of anyone offering or selling them an investment."
+      }
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-18 成立，而且三個日期沒有被混寫。演講頁 field--name-field-publish-date 印 Sept. 18, 2026（<time datetime=\"2026-09-18T14:40:06Z\">，換算台北時間 2026-09-18 22:40，仍在同一天），location 欄印 Dallas, Texas；兩案起訴日分別是 2026-08-11（lr-26608 報頭 Litigation Release No. 26608 / August 11, 2026）與 2025-12-22（新聞稿 Washington D.C., Dec. 22, 2025）。內容包的 slug 後綴、news_date、正文第一段、第 1 節、第 4 節第 2 段與 FAQ 第 2 題都把演講日與兩個起訴日分開寫，沒有任何一處寫成「SEC 於 9/18 出手」。",
+      "標題與各處都沒有回到「點名」的寫法：title 用「談」，全篇沒有出現「SEC 宣布」「SEC 認定」「SEC 點名」「美國主管機關表示」。",
+      "報酬率數字沒有溜進任何欄位：內容包全文（含 summary、FAQ、表格、caption）沒有任何百分比、殖利率、質押或空投數字，lr-26608 印的每月 3% 到 10% 只留在研究紀錄裡。也沒有幣價、漲跌幅、市值、交易量或 ETF 資金流；「漲跌」兩字只出現在免責 callout 樣板的「漲跌幅」裡，「推薦」三處全部是否定句。",
+      "兩案措辭沒有被寫成判決：全篇的動詞是「指控」「起訴書指控」「同意和解」「仍待法院核准」「仍在起訴階段」，沒有任何一處寫成已判決、已定罪或已認定詐騙成立。",
+      "表格「個人被告同意和解，待法院核准」對得上原句 Delgado has agreed to a bifurcated settlement 與 consented to the entry of a judgment, subject to court approval；另一格「仍在起訴階段」也對得上新聞稿全篇的 alleged／according to the complaint 與頁尾未更新（Last Reviewed or Updated: Dec. 22, 2025）。",
+      "免責 callout 的 title 與 text 與 crypto.md 的樣板逐字相同（只有查核日 2026-09-20 不同），含「不是投資建議」六個字。",
+      "兩個結尾連結的 text 與目標包的 zh-TW title 逐字相同：crypto-news-2026-index 的「2026 年加密貨幣新聞總整理：法規、技術與產業的重點」、crypto-news-sec-regulation-crypto-assets-20260821 的「SEC 提出 Regulation Crypto Assets 草案：兩項募集豁免與一個安全港，尚未定案」。",
+      "sources 仍是四條，全部是 sec.gov 與 investor.gov 的一手頁面，沒有二手幣圈媒體；Woodcock 的到任日與年資（新聞稿 2026-35 的 effective May 4, 2026）沒有出現在正文任何一處，兩案 complaint PDF 的細節也沒有被引用。",
+      "「比例證據」那一句成立：crypto 以詞界比對在講詞正文只有 4 次，全部落在第 15、16 兩個元素，內容包第 1 節第 2 段的說法與此相符；title 與導言也沒有暗示整場演講在談加密。",
+      "第 2 節第 3 段的 1,400 萬美元沒有把新聞稿的兩種寫法混成一句：文章取的是後段的 misappropriated at least $14 million from U.S.-based retail investors and funneled those funds overseas through a web of bank accounts and crypto asset wallets，「至少」「美國散戶」「匯到境外」三個元素同出一句。",
+      "第 3 節第 1 段把新聞稿的 government licenses 與警示頁的「包含 SEC 在內」分開寫、各自標出處，沒有混成一句。",
+      "投資人警示頁沒有被寫成 SEC 的規定或法律見解，文章一律寫「警示頁寫／點名／提醒」；也沒有寫成 2026 年 9 月才發布的新警示。",
+      "流動性池與證券型代幣發行都只以「被拿來包裝的名詞」出現，沒有被寫成可以參與或持有的東西；文章也明說不整理任何「安全平台」清單。",
+      "圖解 caption 與研究紀錄 diagram.caption 逐字相同，四格節點只放辨識點、沒有畫成可照做的流程，圖上沒有正文沒有的數字。"
+    ],
+    "open_questions": [
+      "兩案都還沒結束，而本輪距離發布還有時間差：lr-26608 寫 The SEC’s continuing investigation、Delgado 的判決 subject to court approval、金額待法院裁定，新聞稿 2025-144 仍全篇 alleged。發布當天要用同一條 Edge 配方再抓一次這兩頁；只要出現判決、和解金額或新的訴訟公告，第 2 節第 2 段、第 4 節第 1 段、表格「案件現況」那一列、summary 第 3 句與 FAQ 第 3 題都要改寫。",
+      "investor.gov 的警示頁是活文件（本輪 62,467 bytes、正文 31 段，日期欄 Dec. 22, 2025）。發布當天要重抓並比對文章引用的五句（zero-risk, high-profit／bogus fees 與 SEC investigations／The promise of high returns with little or no risk…／Sending crypto assets to an unknown wallet or individual／Be wary of any group chat…）。",
+      "「案名簡稱」是本輪為了不把簡稱寫成正式案名而採的折衷。若站主偏好在正文印出完整案名（SEC v. Goliath Ventures, Inc. and Christopher A. Delgado／SEC v. Morocoin Tech Corp., et al.），第 2 節第 1、3 段各要多約 30 字，現行 zh-TW 段落字數 2,947，尚有空間但會逼近 3,000 的上限。",
+      "第 3 節的小標仍是「兩案共通的辨識清單」。本輪把 summary 第 4 句改成「兩案文件合起來的辨識點」，小標留著沒動（第 3 節內文是逐條各自標出處的，讀起來不會誤導）；若站主要求完全一致，小標也可改成「兩案文件合起來的辨識清單」。",
+      "Woodcock 那句結論 The lesson, of course, is that fraud changes shape, but investor harm looks the same. 在文章與 hero_label 裡寫成「包裝會換，（投資人受的）傷害一樣」。這是意譯而非逐字翻譯（原文是 fraud changes shape），editorial_brief 已經指定這個寫法，本輪保留，但站主若要嚴格對字，兩處都要改成「詐騙會換形狀，投資人受的傷害一樣」。"
+    ]
+  }
 }
