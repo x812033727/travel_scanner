@@ -1,0 +1,109 @@
+{
+  "slug": "ai-workflow-basics",
+  "title": "AI 工作流是什麼：從一次對話到可重跑的流程",
+  "checked_on": "2026-09-18",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Building Effective AI Agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LangGraph overview",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Anthropic 把「流程（workflow）」定義為 LLM 與工具依照預先寫定的程式路徑被調度的系統",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Workflows are systems where LLMs and tools are orchestrated through predefined code paths."
+    },
+    {
+      "fact": "Anthropic 把「代理」定義為 LLM 自己動態指揮流程與工具使用、對完成任務保有主控權的系統",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks."
+    },
+    {
+      "fact": "Anthropic 建議任務明確時用流程換取可預期與一致性，需要彈性與模型自主判斷時才用代理",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "workflows offer predictability and consistency for well-defined tasks, whereas agents are the better option when flexibility and model-driven decision-making are needed at scale"
+    },
+    {
+      "fact": "OpenAI 的 Agents SDK 用 Sessions 這個持久記憶層，維持一次 agent loop 執行過程裡的工作內容",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A persistent memory layer for maintaining working context within an agent loop."
+    },
+    {
+      "fact": "OpenAI 建議想自己掌控迴圈、工具呼叫順序與狀態時，直接使用 Responses API 而非 Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "you want to own the loop, tool dispatch, and state handling yourself"
+    },
+    {
+      "fact": "OpenAI 建議想讓執行環境代為管理回合、工具執行、防護機制與交接時，改用 Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "you want the runtime to manage turns, tool execution, guardrails, handoffs, or sessions"
+    },
+    {
+      "fact": "LangGraph 官方文件將自己定位成用來建置、管理與部署長時間執行、有狀態代理的低階流程調度框架與執行環境",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LangGraph is a low-level orchestration framework and runtime for building, managing, and deploying long-running, stateful agents."
+    },
+    {
+      "fact": "LangGraph 讓開發者可以在同一張圖裡混用寫死的步驟與模型自行判斷的步驟",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LangGraph gives you fine-grained control to mix deterministic, hand-coded steps with LLM-driven agentic steps in the same graph, so you can build bespoke agents that behave exactly the way your application requires."
+    }
+  ],
+  "unverified_or_excluded": [
+    "OpenAI 的文件裡是否有像 Anthropic 那樣正式定義『workflow』一詞——查了 openai.github.io/openai-agents-python/，文件多半把 workflow 當成泛稱使用，沒有給出對照 Anthropic 的正式定義，所以本文的流程定義只引用 Anthropic。",
+    "Google ADK、Microsoft Agent Framework 是否也適合放進三層框架的比較——這篇不比較代理框架，框架的安裝、授權與最小範例系列裡「Agent 框架入門」一文已經整理過，這裡不重複查證。",
+    "LangGraph 的 StateGraph／加 node 與 edge 的實際呼叫方式——這篇不寫程式操作 LangGraph，只引用它官方文件對自身定位的說明，實際呼叫方式留給之後串接 LangGraph 的技術篇查證。",
+    "要不要把『提示詞串接』的完整設計原則搬進這篇——決定不搬，系列裡已有專文「提示詞串接（Prompt Chaining）是什麼」，這裡只點名，不重講判斷責任、保留來源等細節。",
+    "OpenAI 文件提到 Agents SDK 是『前一代實驗 Swarm 的正式升級版』，考慮過要不要多寫一句 Swarm 的背景——決定不寫，文件本身只有一句帶過，沒有更多可查證的細節，寫多了會超出這篇要講的分層範圍。"
+  ],
+  "must_not_write": [
+    "不寫 OpenAI Agents SDK、Claude Agent SDK、LangGraph 的安裝指令、授權與最小範例——那是「Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph」一文的內容。",
+    "不寫代理迴圈內部判斷、行動、回饋的運作機制——那是「代理迴圈（Agent Loop）是什麼：判斷、操作與回饋」一文的內容。",
+    "不寫提示詞串接怎麼分配每一步責任、怎麼保留來源、怎麼擋錯誤往下傳——那是「提示詞串接（Prompt Chaining）是什麼」一文的內容。",
+    "不寫怎麼把流程裡的某一步換成別的模型負責、怎麼估算成本與延遲——那是系列後面兩篇的主題。",
+    "不寫任何呼叫模型 API 的程式碼——這篇是入門篇，重點在分層概念本身，不在串接實作。"
+  ],
+  "editorial_brief": "這是系列第一篇，只講對話、流程、代理三個層次要怎麼分，以及步驟、狀態、重試、輸入輸出契約這幾個詞在講什麼，用同一個會議紀錄轉待辦的例子把三層走一遍。刻意不碰怎麼把流程拆給多個模型、怎麼算成本與延遲、怎麼寫結構化輸出的規格，這些留給系列後面幾篇；提到代理迴圈、代理框架與提示詞串接時，只點名對應的既有文章，不重講它們自己的定義或範例。",
+  "code_samples": [],
+  "hero_label": "三層看懂 AI 工作流",
+  "diagram": {
+    "layout": "flow",
+    "title": "三層有什麼不同",
+    "caption": "對話、流程、代理三個層次的示意（查證：2026 年 9 月）",
+    "nodes": [
+      [
+        "一次對話",
+        "人腦記狀態、想下一步"
+      ],
+      [
+        "寫成流程",
+        "步驟、契約、可重試"
+      ],
+      [
+        "交給代理",
+        "模型自己判斷下一步"
+      ]
+    ]
+  }
+}

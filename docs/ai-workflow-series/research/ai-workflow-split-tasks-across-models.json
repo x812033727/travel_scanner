@@ -1,0 +1,116 @@
+{
+  "slug": "ai-workflow-split-tasks-across-models",
+  "title": "一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法",
+  "checked_on": "2026-09-18",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Models overview",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Models",
+      "url": "https://platform.openai.com/docs/models",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Anthropic 把「先把任務拆成一串步驟，一次模型呼叫處理前一次呼叫的輸出」的做法稱為 prompt chaining（提示鏈）。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
+    },
+    {
+      "fact": "Anthropic 舉的 prompt chaining 例子之一是先寫大綱、確認大綱合格，再依大綱寫成完整文件。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Writing an outline of a document, checking that the outline meets certain criteria, then writing the document based on the outline."
+    },
+    {
+      "fact": "Anthropic 舉的 prompt chaining 另一個例子是先寫文案，再把文案翻譯成另一種語言。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Generating Marketing copy, then translating it into a different language."
+    },
+    {
+      "fact": "Anthropic 把「先把輸入分類、再導向對應後續處理」的做法稱為 routing（路由）。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Routing classifies an input and directs it to a specialized followup task."
+    },
+    {
+      "fact": "Anthropic 舉過把常見、簡單的問題導向輕量、便宜的模型，把少見、困難的問題導向能力更強的模型的例子。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Routing easy/common questions to smaller, cost-efficient models like Claude Haiku 4.5 and hard/unusual questions to more capable models like Claude Sonnet 4.5 to optimize for best performance."
+    },
+    {
+      "fact": "Anthropic 把「一個模型當中樞、動態拆分任務並分派給其他工作模型，再彙整結果」的做法稱為 orchestrator-workers（協調者與工作者）。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In the orchestrator-workers workflow, a central LLM dynamically breaks down tasks, delegates them to worker LLMs, and synthesizes their results."
+    },
+    {
+      "fact": "Claude 的模型文件把 Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5、Claude Haiku 4.5 這組一般模型之外，另外列出一組 Specialized models（專用模型）。",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Haiku 4.5 Specialized models"
+    },
+    {
+      "fact": "OpenAI 的模型文件把一組模型稱為 Specialized models，形容成是為特定任務打造的模型。",
+      "url": "https://platform.openai.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Specialized models Purpose-built for specific tasks."
+    }
+  ],
+  "unverified_or_excluded": [
+    "Anthropic 的頁面附註提醒代理搭建的工具做法已經更新，並連到 Managed Agents 文件，但那是代理搭建工具的最新做法，跟本文『怎麼把工作拆給多個模型』的判斷依據是不同主題，沒有另外查證那份文件。",
+    "OpenAI 頁面列出的各個專用模型（資安、生命科學、圖像、即時語音）完整清單與細節沒有一一查證，本文只引用『這是一組為特定任務打造的模型』這件事，不列出每個模型的名字。",
+    "沒有查證任何一家雲端服務目前是否用 API 資料訓練模型、資料保留多久，因為條款常變動，本文只提醒讀者上傳前自行到當下的官方頁面確認，不寫死結論。",
+    "Google Gemini 的模型頁面沒有在這篇另外查證，本文沒有點名 Google 的任何模型，提到雲端模型時只泛稱，不需要另外引用。"
+  ],
+  "must_not_write": [
+    "同一家旗艦、中階、輕量模型的完整名單、價格與比較，留給《同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選》。",
+    "代理協調與子代理的完整定義與例子，留給對應的兩篇詞彙文章，這裡只一句帶過。",
+    "怎麼估算省下多少成本、多少時間的算法，留給《成本、品質、延遲：多模型流程怎麼取捨》。",
+    "系統自己判斷信心不足、動態升級到更強模型的執行機制（路由／級聯的實作），留給《模型路由與級聯：便宜先試、貴的兜底》。",
+    "在自己電腦上跑開放權重模型的實際安裝與設定步驟，留給《本機開放權重模型與雲端模型混搭》。"
+  ],
+  "editorial_brief": "這篇的切角是拆的判斷依據本身：依步驟、依能力、依風險、依資料敏感度四種切法，各配一個決策依據與一個生活例子，最後併成一張流程圖，是入門篇，不講 API 也不放程式。跟《AI 工作流是什麼》的分工是：那篇談對話、流程、代理三層的分別，這篇假設流程裡已經放了不只一個模型，接著談怎麼分工。跟《成本、品質、延遲》、《模型路由與級聯》的分工是：那兩篇分別處理怎麼估算成本速度品質、以及系統自己動態升級的機制，這篇只在該提到的地方一句帶過，不重複算法或機制。",
+  "code_samples": [],
+  "hero_label": "四種切法：怎麼拆給模型",
+  "diagram": {
+    "layout": "flow",
+    "title": "四個問題決定切法",
+    "caption": "四個問題依序決定切法（2026 年 9 月查證）",
+    "nodes": [
+      [
+        "有先後順序",
+        "依步驟切"
+      ],
+      [
+        "需要不同專長",
+        "依能力切"
+      ],
+      [
+        "答錯後果嚴重",
+        "依風險切"
+      ],
+      [
+        "涉及個資機密",
+        "依資料敏感度切"
+      ],
+      [
+        "以上皆非",
+        "一個模型做完就好"
+      ]
+    ]
+  }
+}
