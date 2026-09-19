@@ -100,6 +100,8 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 
 ## Notes
 
+- PR #572（2026-09-20）：11 create／0 update；兩輪查核合計改 327 處＋35 條協調者裁決；出圖 11 篇；索引增補另開 `2026-09-19-4-6-11-zh-tw-update`。等站主明確選「合併並發布」。
+
 - **NCC 官網已改成 Angular SPA**，舊 `news.aspx` 網址失效、API 的 folder id 在 bundle 裡找不到；探索代理依 BRIEF「猜網址等同捏造」沒去猜。
   下批探索前要先確認 NCC 新聞稿的可抓取入口，否則科技垂直會系統性漏掉 NCC（已寫進 `tech.md` 的維護待辦）。
 - **Accenture 事件日裁決 2026-09-18**：頁面自印 Sep 18；`publishedOn` 16:00Z 是整點排程佔位（台北恰 09-19 00:00），沿用上一輪 OpenAI `00:00` 判例。
