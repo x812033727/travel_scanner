@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-edge-rate-limit-refuses-search-crawlers
 title: Edge rate limit refuses search crawlers with 429
-status: review
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5
 claimed_at: 2026-09-19T14:05:00Z
 created_at: 2026-09-19T13:55:14Z
-completed_at:
+completed_at: 2026-09-19T17:13:22Z
 branch: claude/google-indexing-issues-efbfb9
 depends_on: []
 scope:
@@ -54,7 +54,7 @@ the indexing work belongs in `2026-09-19-home-page-renders-as-a-skeleton` and
 - [x] `/robots.txt`, `/sitemap.xml`, `/sitemaps/*` and `/llms.txt` are never rate limited
 - [x] "was it a crawler that got refused?" is answerable with one grep
 - [x] ordinary traffic is still limited
-- [ ] the same changes are merged into `ops/nginx/` in the repository (blocked, see Notes)
+- [x] the same changes are merged into `ops/nginx/` in the repository (#568)
 
 ## Steps
 
@@ -99,13 +99,18 @@ Do not answer that question from the User-Agent alone — check the client addre
 
 ## Notes
 
-**The host is now ahead of the repository, and that is a drift risk.** `ops/nginx/` is held by
-`2026-09-12-nginx-deploy-checks-false-pass` (`claude-fable-5-1`, active), so `claim` refused
-the scope and this task was narrowed to `tools/`. Until someone merges these three changes
-into `ops/nginx/10-rate-limit.conf` and `ops/nginx/mokaair.conf.example`, anyone re-running
-`ops/nginx/install.sh` or merging from the example will quietly undo them. The exact host
-files are reproducible: run `node tools/nginx-crawler-ranges.mjs` for the geo block, and the
-other two diffs are described in Steps above.
+**The drift is closed (#568).** For a while the host was ahead of the repository: `ops/nginx/`
+was held by `2026-09-12-nginx-deploy-checks-false-pass`, so `claim` refused the scope and this
+task was narrowed to `tools/`. That mattered more than housekeeping -- `install.sh:27`
+overwrites `conf.d/mokaair-rate-limit.conf` from the repo, and that ticket's own step 1 runs
+`install.sh`, so its verification could not pass until the repo carried this config. The two
+halves were ordered, which is why the site owner had the ops ticket taken over and both done
+together. `ops/nginx/` now carries `05-crawler-ranges.conf`, the chained key maps, the
+crawl-control locations and the `ci-validate.conf` include that keeps CI's `nginx -t` green.
+
+Confirmed afterwards on the host: `install.sh` run twice is idempotent, and the only thing it
+changes is an eight-line comment. 40 concurrent requests to `/robots.txt` -> 40 x 200, the same
+to `/zh-TW` -> 20 x 429.
 
 **Why addresses and not User-Agents.** `docs/anti-scraping.md:94` already says there is no
 User-Agent blocking on purpose. Exempting on a UA is the same mistake pointed the other way:
