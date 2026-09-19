@@ -1,4 +1,4 @@
-"""Affiliate click report: which partner, surface, module and destination get clicks.
+"""Affiliate click report: which partner, surface, article, module and destination get clicks.
 
 Reads only the append-only ``affiliate_clicks`` ledger, never a provider API, so it
 counts redirects and cannot claim a booking or a commission. Modelled on
@@ -11,7 +11,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import ColumnElement, func, select
+from sqlalchemy import ColumnElement, case, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.affiliates.sub_id import is_catalog_sub_id
@@ -21,13 +21,23 @@ from app.models import AffiliateClick
 
 LIMIT = 10
 UNKNOWN = "unknown"
-# (report key, column). The nullable columns are coalesced: rows written before the
-# surface started recording its placement, or before brands existed, count as unknown
+# Which article placed the button. An offer click from an article carries the slug in
+# ``article_slug``; the partner-link clicks (``status='clicked'``) carried it in
+# ``destination_summary`` from 2026-09-13 until that column existed, and the ledger is
+# append-only, so those rows are read from there. Every other click has no article and
+# counts as unknown below, like a row without a destination.
+ARTICLE = func.coalesce(
+    AffiliateClick.article_slug,
+    case((AffiliateClick.status == "clicked", AffiliateClick.destination_summary)),
+)
+# (report key, column or expression). The nullable ones are coalesced: rows written before
+# the surface started recording its placement, or before brands existed, count as unknown
 # rather than vanishing from the totals.
 DIMENSIONS: tuple[tuple[str, Any], ...] = (
     ("by_partner", AffiliateClick.partner),
     ("by_module", AffiliateClick.module),
     ("by_placement", AffiliateClick.placement),
+    ("by_article", ARTICLE),
     ("by_destination", AffiliateClick.destination_id),
     ("by_brand", AffiliateClick.brand),
     ("by_target_host", AffiliateClick.target_host),

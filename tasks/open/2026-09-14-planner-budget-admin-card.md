@@ -1,21 +1,25 @@
 ---
 id: 2026-09-14-planner-budget-admin-card
 title: Planner budget cannot be lowered without a restart
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:12:49Z
 created_at: 2026-09-14T13:50:02Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/admin/service.py
   - apps/api/tests/test_admin_provider_settings.py
   - apps/web/components/admin-settings-panel.tsx
   - apps/web/components/admin-settings-panel.test.tsx
-  - apps/web/messages
+  - apps/web/messages/en/admin.json
+  - apps/web/messages/ja/admin.json
+  - apps/web/messages/ko/admin.json
+  - apps/web/messages/zh-TW/admin.json
+  - apps/web/messages/zh-CN/admin.json
 ---
 
 # Planner budget cannot be lowered without a restart

@@ -41,12 +41,21 @@ const LABEL_KEYS: Record<AffiliateModule, string> = {
   connectivity: "affiliateConnectivity",
 };
 
+/** The clickout URL the API built, plus the article that placed the button when there is
+ *  one. The API keeps the slug only when it is shaped like one of ours and drops it
+ *  otherwise; nothing else about the click, its `sub_id` included, depends on it. */
+function clickoutUrl(url: string, article?: string): string {
+  if (!article) return url;
+  return `${url}${url.includes("?") ? "&" : "?"}article=${encodeURIComponent(article)}`;
+}
+
 export function DestinationAffiliateOptions({
   destinationId,
   modules = MODULES,
   contextual = false,
   destinationLabel,
   placement = "destination",
+  article,
 }: {
   destinationId: string;
   modules?: AffiliateModule[];
@@ -55,6 +64,9 @@ export function DestinationAffiliateOptions({
   /** Which public surface renders the buttons. The API decides per placement whether
    *  offers may show at all, and records it on every click. */
   placement?: HotelBookingPlacement;
+  /** The slug of the article whose page renders the buttons, recorded on every click so
+   *  the report can say which article placed them. Not part of the request identity. */
+  article?: string;
 }) {
   const t = useTranslations("travelServices");
   const locale = useLocale();
@@ -117,7 +129,7 @@ export function DestinationAffiliateOptions({
               {response.options.map((option) => (
                 <form
                   key={option.id}
-                  action={option.clickout_url}
+                  action={clickoutUrl(option.clickout_url, article)}
                   method="post"
                   target="_blank"
                   rel="noopener"

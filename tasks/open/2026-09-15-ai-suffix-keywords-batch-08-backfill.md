@@ -1,14 +1,14 @@
 ---
 id: 2026-09-15-ai-suffix-keywords-batch-08-backfill
 title: 批次 08 落地後補 14 篇字尾關鍵字（生圖、去背、簡報、影片、配音、作曲、3D、Canva、字幕、版權）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:09:29Z
 created_at: 2026-09-15T01:11:35Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/guides/content/ai-slides-generation-tools.json
@@ -27,6 +27,7 @@ scope:
   - apps/api/app/guides/content/ai-image-copyright-taiwan.json
   - docs/ai-suffix-keywords.md
 ---
+
 # 批次 08 落地後補 14 篇字尾關鍵字（生圖、去背、簡報、影片、配音、作曲、3D、Canva、字幕、版權）
 
 ## Why

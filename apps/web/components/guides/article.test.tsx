@@ -10,7 +10,7 @@ vi.mock("@/components/ads/article-ad-slot", () => ({
 }));
 
 vi.mock("@/components/destination-affiliate-options", () => ({
-  DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[]; placement?: string; contextual?: boolean; destinationLabel?: string }) => (
+  DestinationAffiliateOptions: (props: { destinationId: string; modules?: string[]; placement?: string; contextual?: boolean; destinationLabel?: string; article?: string }) => (
     <div
       data-testid="affiliate"
       data-destination={props.destinationId}
@@ -18,6 +18,7 @@ vi.mock("@/components/destination-affiliate-options", () => ({
       data-placement={props.placement}
       data-contextual={String(Boolean(props.contextual))}
       data-label={props.destinationLabel ?? ""}
+      data-article={props.article ?? ""}
     />
   ),
 }));
@@ -68,6 +69,8 @@ describe("GuideArticle partner buttons", () => {
     expect(panel.getAttribute("data-modules")).toBe("connectivity");
     expect(panel.getAttribute("data-placement")).toBe("guide");
     expect(panel.getAttribute("data-contextual")).toBe("true");
+    // The click is attributed to this article, not just to the guide surface.
+    expect(panel.getAttribute("data-article")).toBe("tokyo-esim");
   });
 
   it("folds Kyoto into the shared Osaka-Kyoto catalog destination", () => {
@@ -120,6 +123,8 @@ describe("GuideArticle partner buttons placed by the editor", () => {
     expect(panels[0].getAttribute("data-destination")).toBe("tokyo");
     expect(panels[0].getAttribute("data-label")).toBe("東京");
     expect(panels[1].getAttribute("data-modules")).toBe("activities");
+    // Inline and end panel both attribute their clicks to the article.
+    expect(panels.map((panel) => panel.getAttribute("data-article"))).toEqual(["tokyo-esim", "tokyo-esim"]);
     // The body around it is intact, and the editor's heading sits above the buttons.
     expect(screen.getByRole("heading", { level: 3, name: "先買車票" })).toBeTruthy();
     expect(screen.getByText("跟著指標走。")).toBeTruthy();

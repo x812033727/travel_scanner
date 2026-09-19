@@ -1,19 +1,20 @@
 ---
 id: 2026-09-16-travel-guides-doc-article-ending
 title: Article anatomy in docs/travel-guides.md still ends with the other-language list
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:10:05Z
 created_at: 2026-09-16T14:08:04Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-16-news-date-field-and-news-list
 scope:
   - docs/travel-guides.md
 ---
+
 # Article anatomy in docs/travel-guides.md still ends with the other-language list
 
 ## Why

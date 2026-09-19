@@ -1,14 +1,14 @@
 ---
 id: 2026-09-07-add-a-meal-to-a-day
 title: 行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal|append
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:10:01Z
 created_at: 2026-09-07T00:45:41Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/foods/router.py

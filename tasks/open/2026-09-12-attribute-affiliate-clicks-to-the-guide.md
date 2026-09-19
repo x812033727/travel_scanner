@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-attribute-affiliate-clicks-to-the-guide
 title: Attribute affiliate clicks to the guide article that placed them
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:07:25Z
 created_at: 2026-09-12T17:42:18Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-12-guide-offer-content-block
 scope:
@@ -17,7 +17,7 @@ scope:
   - apps/api/app/affiliates/router.py
   - apps/api/app/analytics/affiliates.py
   - apps/api/tests/test_affiliates.py
-  - apps/api/tests/test_affiliate_analytics.py
+  - apps/api/tests/test_analytics_affiliates.py
   - apps/web/components/destination-affiliate-options.tsx
   - apps/web/components/destination-affiliate-options.test.tsx
   - apps/web/components/admin-analytics-panel.tsx
@@ -25,6 +25,9 @@ scope:
   - apps/web/components/guides/article.tsx
   - apps/web/components/guides/article.test.tsx
   - docs/affiliate-configuration.md
+  - apps/api/app/guides/service.py
+  - apps/api/tests/test_guide_partner_links.py
+  - docs/travel-guides.md
 ---
 
 # Attribute affiliate clicks to the guide article that placed them

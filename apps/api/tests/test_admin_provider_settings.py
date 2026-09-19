@@ -11,6 +11,7 @@ from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.admin.service as admin_service
+import app.ai.itinerary as itinerary_module
 from app.admin.schemas import ProviderSettingsUpdate
 from app.admin.service import (
     _default_provider_enabled,
@@ -27,7 +28,11 @@ from app.admin.service import (
     settings_snapshot,
     update_provider_settings,
 )
-from app.ai.itinerary import AIItineraryPlanner
+from app.ai.itinerary import (
+    PLANNER_WARNING_BUDGET_REACHED,
+    AIItineraryPlanner,
+    plan_within_budget,
+)
 from app.auth.service import current_user
 from app.config import Settings
 from app.db import get_session
@@ -36,6 +41,7 @@ from app.models import AdminAuditLog, ProviderConfig, User
 from app.problems import AppError
 from app.providers.usage_meter import record_google_maps_request, record_youtube_request
 from app.trips.routing import GoogleRoutesProbeResult, NavitimeProbeResult, RoutePoint
+from tests.test_ai_itinerary import request_for
 
 
 class ScalarRows:
@@ -1614,3 +1620,120 @@ def test_affiliate_ttls_are_admin_editable_on_the_travelpayouts_card() -> None:
     settings = apply_runtime_overrides(Settings(), [row])
     assert settings.affiliate_link_cache_ttl_seconds == 120
     assert settings.affiliate_clickout_token_ttl_seconds == 300
+
+
+def test_planner_budgets_are_editable_from_the_planner_card_and_clear_back_to_the_environment(
+) -> None:
+    """Both ceilings sit in the ai_planner allowlist beside the token cap they were split
+    from, so the card can lower them without anyone touching the host. Clearing one hands
+    the field back to the environment value rather than storing an empty override."""
+    lowered = _validate_provider_values(
+        "ai_planner",
+        {"ai_planner_mode": "auto"},
+        ProviderSettingsUpdate(config={"ai_planner_user_budget": 1, "ai_planner_ip_budget": 3}),
+    )
+    assert lowered == {
+        "ai_planner_mode": "auto",
+        "ai_planner_user_budget": 1,
+        "ai_planner_ip_budget": 3,
+    }
+    cleared = _validate_provider_values(
+        "ai_planner",
+        lowered,
+        ProviderSettingsUpdate(config={"ai_planner_user_budget": None, "ai_planner_ip_budget": None}),
+    )
+    assert cleared == {"ai_planner_mode": "auto"}
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("ai_planner_user_budget", 0),
+        ("ai_planner_user_budget", 1_001),
+        ("ai_planner_ip_budget", 0),
+        ("ai_planner_ip_budget", 10_001),
+    ],
+)
+def test_planner_budgets_keep_the_settings_bounds_from_the_card(field: str, value: int) -> None:
+    # The same bounds that stop an env file switching a ceiling off with 0 stop the card.
+    with pytest.raises(AppError) as error:
+        _validate_provider_values("ai_planner", {}, ProviderSettingsUpdate(config={field: value}))
+    assert error.value.status == 422
+    assert error.value.code == "provider_setting_invalid"
+
+
+@pytest.mark.asyncio
+async def test_a_lowered_planner_budget_reaches_the_gate_on_the_next_request(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """What the card stores is what plan_within_budget hands the counter, with no restart
+    in between: every planning route calls load_runtime_settings, which re-reads the row
+    on each request. And the spent ceiling degrades to the catalogue plan, it does not
+    refuse -- the reason the card has to spell out what the number does."""
+    base = Settings(
+        app_secret_key="test-app-secret-at-least-thirty-two-characters",
+        ai_planner_mode="auto",
+        openai_api_key="k",
+        ai_planner_user_budget=40,
+        ai_planner_ip_budget=120,
+        ai_planner_user_budget_window_seconds=3_600,
+    )
+    row = ProviderConfig(
+        provider="ai_planner",
+        enabled=True,
+        config=_validate_provider_values(
+            "ai_planner",
+            {},
+            ProviderSettingsUpdate(config={"ai_planner_user_budget": 1, "ai_planner_ip_budget": 2}),
+        ),
+        secret_config_encrypted=None,
+    )
+    effective = apply_runtime_overrides(base, [row])
+    assert (effective.ai_planner_user_budget, effective.ai_planner_ip_budget) == (1, 2)
+
+    counted: list[tuple[str, str, int, int]] = []
+    spent: set[str] = set()
+    vendor_calls: list[AIItineraryPlanner] = []
+
+    async def budget_spent(
+        namespace: str, identifier: str, *, limit: int, window_seconds: int
+    ) -> bool:
+        counted.append((namespace, identifier, limit, window_seconds))
+        return namespace in spent
+
+    async def redis_write(namespace: str, identifier: str) -> None:
+        return None
+
+    class PlannerSpy:
+        def __init__(self, settings: Settings) -> None:
+            self.settings = settings
+
+        async def generate(self, request: object) -> object:
+            vendor_calls.append(cast(AIItineraryPlanner, self))
+            return itinerary_module.catalog_result(
+                cast(Any, request), [], datetime.now(UTC)
+            )
+
+    monkeypatch.setattr(itinerary_module, "budget_spent", budget_spent)
+    monkeypatch.setattr(itinerary_module, "record_rate_limit_hit", redis_write)
+    monkeypatch.setattr(itinerary_module, "refund_named_rate_limit", redis_write)
+    monkeypatch.setattr(itinerary_module, "AIItineraryPlanner", PlannerSpy)
+
+    user_id = uuid4()
+    await plan_within_budget(
+        effective, request_for(), user_id=user_id, source_ip="203.0.113.7"
+    )
+    assert counted == [
+        ("ai-planner-llm-user", str(user_id), 1, 3_600),
+        ("ai-planner-llm-ip", "203.0.113.7", 2, 3_600),
+    ]
+    assert len(vendor_calls) == 1
+
+    spent.add("ai-planner-llm-user")
+    result = await plan_within_budget(
+        effective, request_for(), user_id=user_id, source_ip="203.0.113.7"
+    )
+    assert len(vendor_calls) == 1
+    assert result.planning.status == "fallback"
+    assert result.planning.provider == "catalog"
+    assert PLANNER_WARNING_BUDGET_REACHED in result.planning.warnings

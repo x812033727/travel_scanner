@@ -25,6 +25,26 @@ export function discoveryDetailHref(item: Pick<DiscoveryItem, "kind" | "id">, re
   url.searchParams.set("content", `${item.kind}:${item.id.split(":").at(-1)}`);
   return `${url.pathname}${url.search}${url.hash}`;
 }
+// One formatter per reader locale: a feed renders dozens of cards in one pass.
+const languageNames = new Map<string, Intl.DisplayNames>();
+/** The content language in the reader's own words: 日文 for a zh-TW reader, Japanese for an en
+ *  reader. CLDR does the translating, so there is no five-way table to keep in step. Null when
+ *  the two locales match, when the tag has no name or cannot be parsed, or when the runtime has
+ *  no Intl.DisplayNames: in every one of those cases the card stays exactly as it was. Locales
+ *  compare as whole canonical tags, the same test the feed's ordering key applies, so zh-TW
+ *  readers still see simplified-Chinese content named. */
+export function contentLanguageName(readerLocale: string, contentLocale: string | null | undefined): string | null {
+  try {
+    if (typeof contentLocale !== "string" || !contentLocale.trim()) return null;
+    const [reader] = Intl.getCanonicalLocales(readerLocale); const [content] = Intl.getCanonicalLocales(contentLocale.trim());
+    if (reader === content) return null;
+    let names = languageNames.get(reader);
+    if (!names) { names = new Intl.DisplayNames(reader, { type: "language", fallback: "none" }); languageNames.set(reader, names); }
+    return names.of(content) ?? null;
+  } catch {
+    return null;
+  }
+}
 function SavedCount({ item }: { item: Pick<DiscoveryItem, "saved_count"> }) {
   // Catalogued in messages/, not lib/discovery-copy.ts: check-i18n rejects new display
   // text there. The community `saves` message already reads a count in all five locales.
@@ -40,6 +60,7 @@ export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDism
   const returnTo = `${pathname}${params.size ? `?${params}` : ""}`;
   const href = discoveryDetailHref(item, returnTo);
   const thumbnail = safeExternalHref(item.thumbnail_url, ["https:"]);
+  const language = contentLanguageName(locale, item.locale);
   const cover = item.content?.media?.[0];
   const remember = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0) navigation?.remember(event.currentTarget, href);
@@ -55,7 +76,7 @@ export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDism
       <CardMetadata item={item} />
       <h3 className={styles.cardTitle}><Link href={href} scroll={false} onClick={remember}>{item.title}</Link></h3>
       {item.summary?.trim() && <p className={styles.cardSummary}>{item.summary}</p>}
-      <p className={styles.cardMeta}>{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}{item.published_at && <> · <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time></>}</p>
+      <p className={styles.cardMeta}>{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}{item.published_at && <> · <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time></>}{language && <span className="inline-flex items-center self-center whitespace-nowrap rounded-full border border-[var(--line)] px-2 text-[11px] leading-4"><span className="sr-only">{c.language}: </span><span>{language}</span></span>}</p>
       {item.recommendation_reason && <p className={styles.reason}><span className="sr-only">{c.reason}: </span>{getRecommendationReason(locale, item.recommendation_reason)}</p>}
       <div className={styles.cardFooter}><SavedContentAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><TravelPlanAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><SavedCount item={item} /></div>
       {onDismiss && <button type="button" onClick={() => onDismiss(item)} className="min-h-11 self-start rounded-lg text-xs text-[var(--muted)] underline underline-offset-4 focus-visible:outline focus-visible:outline-2">{c.dismiss}</button>}

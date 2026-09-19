@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-full-trip-search
 title: 彈性日期區塊的價格標籤寫死 full_trip_search
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:14:46Z
 created_at: 2026-09-06T20:32:08Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/web/components/flight-date-options.tsx

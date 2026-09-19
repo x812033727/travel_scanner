@@ -763,7 +763,11 @@ partner links →
 a table of contents once there are three level-2 headings (`section-N` anchors the renderer
 numbers across the whole body) → the body in slices around each `offer` and `partner_link`
 block → the end
-panel → related reading → topic chips → sources → other languages. `lib/guides.ts` holds
+panel → related reading → topic chips → sources, where the article ends. No list of the other
+languages follows it (dropped 2026-09-16): a translation is offered by `alternates.languages`
+in the head for crawlers, by the header's language switcher for the reader, and by the "not
+translated yet" screen (`guides.notTranslated`) when the article is missing in this language,
+which lists the languages that do have it (Per-locale hreflang, below). `lib/guides.ts` holds
 `splitGuideBlocks`, `guideHeadings` and `readingMinutes` (CJK by character, the rest by
 word); `article.tsx` stays synchronous and the page (`article-page.tsx`) does the fetching.
 

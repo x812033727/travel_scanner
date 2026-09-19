@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-discovery-card-language-badge
 title: 推薦流卡片標示內容語言（語言方向 1）
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:09:26Z
 created_at: 2026-09-11T22:04:42Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/web/components/discovery/card.tsx

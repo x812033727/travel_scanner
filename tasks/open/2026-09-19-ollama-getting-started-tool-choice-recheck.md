@@ -1,14 +1,14 @@
 ---
 id: 2026-09-19-ollama-getting-started-tool-choice-recheck
 title: ollama-getting-started says tool_choice is unsupported but the Ollama OpenAI-compatibility page now lists it
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:15:05Z
 created_at: 2026-09-19T01:09:18Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/guides/content/ollama-getting-started.json
