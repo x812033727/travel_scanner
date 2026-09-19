@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Mapping
+from functools import lru_cache
 from typing import Final
 
 from app.destinations.catalog import DESTINATIONS, DestinationProfile
@@ -500,9 +501,7 @@ def _build_country_hints() -> dict[str, tuple[str, ...]]:
     which is also a district of Hong Kong), airport codes. A wrong hint only ever withholds
     a conclusion, so the ambiguity is safe here and would not be safe among the names.
     """
-    hints: dict[str, list[str]] = {
-        country: list(words) for country, words in COUNTRY_TERMS.items()
-    }
+    hints: dict[str, list[str]] = {country: list(words) for country, words in COUNTRY_TERMS.items()}
     for profile in DESTINATIONS:
         words = hints.setdefault(profile.country, [])
         for word in profile.aliases:
@@ -517,25 +516,84 @@ COUNTRY_HINTS: Final[Mapping[str, tuple[str, ...]]] = _build_country_hints()
 # A Latin name must not be found inside a longer word, and the capital letter is part of
 # the evidence: Vietnam's Huế is written "Hue" in English, which is also an ordinary noun.
 _LATIN: Final[re.Pattern[str]] = re.compile(r"[A-Za-z]")
+# A katakana name is a whole word or nothing, for the same reason: 「タイ」 names Thailand
+# and opens タイム, スタイル and タイプ. The middle dot (・) and a space separate words; the
+# long vowel mark (ー) continues one.
+_KANA: Final[str] = "\u30a1-\u30fa\u30fc-\u30ff"
+_KATAKANA_WORD: Final[re.Pattern[str]] = re.compile(rf"^[{_KANA}]+$")
 # 臺 and 台 are the same character to a reader: the tourism bureau writes 臺灣 and 臺南,
 # the catalog and most travel writing write 台灣 and 台南. Neither spelling may hide a
 # place from the other.
 _VARIANTS: Final[Mapping[str, str]] = {"臺": "台"}
+# Landmarks whose name carries another country's: Hội An's covered bridge is 日本橋 (來遠橋)
+# and stands in Vietnam, the 日本庭園 of a Taipei park is in Taiwan, the 韓國街 of 新大久保
+# is in Japan. A text is searched for the countries it names with these read out first;
+# what points at *this* country is still read from the whole text.
+FOREIGN_NAMED_LANDMARKS: Final[tuple[str, ...]] = (
+    "日本橋",
+    "日本庭園",
+    "韓國街",
+    "韓国街",
+    "韓國城",
+)
+# Brackets and spaces are how a directory decorates a name it lists: 「MEGA(メガ)ドン・キホーテ
+# 渋谷本店」 is NAVITIME's spelling of MEGAドン・キホーテ渋谷本店.
+_DECORATION: Final[re.Pattern[str]] = re.compile(r"\([^()]*\)|（[^（）]*）|\s+")
 
 
 def _normalize(text: str) -> str:
     return "".join(_VARIANTS.get(character, character) for character in text)
 
 
+@lru_cache(maxsize=4096)
+def _pattern(term: str) -> re.Pattern[str]:
+    escaped = re.escape(_normalize(term))
+    if _LATIN.search(term):
+        return re.compile(rf"(?<![A-Za-z]){escaped}(?![A-Za-z])")
+    if _KATAKANA_WORD.match(term):
+        return re.compile(rf"(?<![{_KANA}]){escaped}(?![{_KANA}])")
+    return re.compile(escaped)
+
+
 def _mentions(text: str, term: str) -> bool:
-    if not _LATIN.search(term):
-        return _normalize(term) in _normalize(text)
-    return re.search(rf"(?<![A-Za-z]){re.escape(term)}(?![A-Za-z])", text) is not None
+    return _pattern(term).search(_normalize(text)) is not None
+
+
+def _positions(text: str, term: str) -> list[int]:
+    return [match.start() for match in _pattern(term).finditer(_normalize(text))]
+
+
+def _without_landmarks(text: str) -> str:
+    for landmark in FOREIGN_NAMED_LANDMARKS:
+        text = text.replace(landmark, " ")
+    return text
+
+
+def _undecorated(text: str) -> str:
+    return _DECORATION.sub("", text)
 
 
 def mentions_place(text: str, term: str) -> bool:
-    """Whether ``text`` writes this place name, either 臺 or 台 spelling counting for both."""
-    return bool(term) and _mentions(text, term)
+    """Whether ``text`` writes this place name, either 臺 or 台 spelling counting for both,
+    with or without the brackets and spaces a directory adds to it."""
+    if not term:
+        return False
+    return _mentions(text, term) or _mentions(_undecorated(text), _undecorated(term))
+
+
+def district_words(city_code: str | None) -> tuple[str, ...]:
+    """The districts of this city in every locale: 「渋谷区」 points at Tokyo as surely as 東京.
+
+    A directory page writes the ward and not the city, and the catalog's aliases stop at
+    the city. Like the country hints, a district can only ever withhold a conclusion.
+    """
+    words: list[str] = []
+    for area in HOTSPOT_AREAS.get(city_code or "", ()):
+        for name in area.names.values():
+            for word in _area_segments(name):
+                if word not in words:
+                    words.append(word)
+    return tuple(words)
 
 
 def country_mentions(text: str) -> dict[str, str]:
@@ -543,8 +601,10 @@ def country_mentions(text: str) -> dict[str, str]:
 
     A search result never says which language it is written in, so all five locales count
     at once: 「台灣」, 「台湾」, "Taiwan" and "대만" all name Taiwan, and so does 「台北」.
-    Catalog order decides which word is reported for a country named more than once.
+    Catalog order decides which word is reported for a country named more than once. A
+    landmark named after another country (會安的日本橋) names no country here.
     """
+    text = _without_landmarks(text)
     found: dict[str, str] = {}
     for country, terms in COUNTRY_TERMS.items():
         for term in terms:
@@ -552,6 +612,34 @@ def country_mentions(text: str) -> dict[str, str]:
                 found[country] = term
                 break
     return found
+
+
+def named_country(text: str) -> tuple[str, str] | None:
+    """The country ``text`` names most often, with the word that first named it.
+
+    ``country_mentions`` says *which* countries; a rejection reason needs *the* country,
+    and the first in catalog order is the wrong answer for a blog index that lists 台南,
+    台北 and one 沖繩 trip. Ties go to the country named earliest: the title comes before
+    the summary in the text these rules read.
+    """
+    text = _without_landmarks(text)
+    best: tuple[int, int, str, str] | None = None
+    for country, terms in COUNTRY_TERMS.items():
+        count = 0
+        first: tuple[int, str] | None = None
+        for term in terms:
+            positions = _positions(text, term)
+            if not positions:
+                continue
+            count += len(positions)
+            if first is None or positions[0] < first[0]:
+                first = (positions[0], term)
+        if first is None:
+            continue
+        candidate = (-count, first[0], country, first[1])
+        if best is None or candidate[:2] < best[:2]:
+            best = candidate
+    return None if best is None else (best[2], best[3])
 
 
 def mentions_country(text: str, country: str) -> bool:
