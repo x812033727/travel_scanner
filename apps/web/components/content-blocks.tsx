@@ -16,6 +16,9 @@ import type { ArticleReference } from "@/lib/guide-series";
  *  caller that renders only the four shared blocks (the legal pages) passes nothing. */
 export type ContentBlockLabels = {
   imageCredit: string;
+  /** The toggle over an image's folded long description. Without it the disclosure is named
+   *  after the picture (its alt) rather than drawn blank. */
+  imageDescription?: string;
   tip: string;
   warning: string;
   info: string;
@@ -173,6 +176,11 @@ export function ContentBlocks({
       const src = contentImageSrc(block.src);
       if (!src) return null;
       const caption = block.caption?.trim() ?? "";
+      // A diagram's long description (its `<desc>`: the fares, times and labels it draws) goes
+      // under the caption as a native disclosure, folded. The text is in the HTML for a
+      // crawler and a screen reader while first paint stays what it was. Text only: the SVG
+      // itself is never inlined, because `contentImageSrc` vets the path, not the file.
+      const description = block.description?.trim() ?? "";
       return (
         <figure key={index} className="my-2">
           <GuideImage src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
@@ -182,6 +190,12 @@ export function ContentBlocks({
               {caption && block.credit ? " · " : null}
               {block.credit ? <ImageCreditLine credit={block.credit} prefix={labels?.imageCredit ?? ""} /> : null}
             </figcaption>
+          ) : null}
+          {description ? (
+            <details className="text-sm leading-6 text-[var(--muted)]">
+              <summary className="cursor-pointer py-2.5 font-semibold">{labels?.imageDescription ?? block.alt}</summary>
+              <p className="whitespace-pre-wrap pb-2">{description}</p>
+            </details>
           ) : null}
         </figure>
       );

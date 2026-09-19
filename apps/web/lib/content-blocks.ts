@@ -26,6 +26,9 @@ export type ImageBlock = {
   width: number;
   height: number;
   caption?: string;
+  /** A diagram's long description -- its `<desc>`, lifted into the block so the fares and
+   *  times drawn in the picture are text on the page. Empty or absent for a photograph. */
+  description?: string;
   credit?: ImageCredit | null;
 };
 export type TableBlock = { type: "table"; header: string[]; rows: string[][]; caption?: string };
@@ -142,6 +145,7 @@ export function isRichContentBlock(block: unknown): block is RichContentBlock {
   if (entry.type === "image") {
     return contentImageSrc(entry.src) !== null && typeof entry.alt === "string"
       && isImageSize(entry.width) && isImageSize(entry.height) && isOptionalText(entry.caption)
+      && isOptionalText(entry.description)
       && (entry.credit === null || entry.credit === undefined || isImageCredit(entry.credit));
   }
   if (entry.type === "table") {

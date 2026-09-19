@@ -7,7 +7,7 @@ from pydantic import ValidationError
 
 from app.guides.admin_service import _ordinary_urls
 from app.guides.pack_ingest import _body_length, _document_text, missing_diagram_numbers
-from app.guides.schemas import CodeBlock, GuideDocument, RichParagraphBlock
+from app.guides.schemas import CodeBlock, GuideDocument, ImageBlock, RichParagraphBlock
 from tests import test_guides as guides
 
 database = guides.database
@@ -175,3 +175,24 @@ async def test_inline_link_cannot_bypass_affiliate_validation(database, actor) -
         )
         assert response.status_code == 422, response.text
         assert response.json()["code"] == "content_link_affiliate"
+
+
+def test_image_description_is_optional_plain_text() -> None:
+    """A diagram's ``<desc>`` lifted into the block: absent for a photograph, stripped and kept
+    free of HTML and control bytes like every other text field, and capped at a paragraph's
+    length. Every pack written before the field existed validates unchanged."""
+    base = {
+        "type": "image",
+        "src": "/guides/korea-ktx-srt-ticket-guide/diagram-1.svg",
+        "alt": "路線圖",
+        "width": 1600,
+        "height": 900,
+    }
+    assert ImageBlock.model_validate(base).description == ""
+    lifted = ImageBlock.model_validate(
+        {**base, "description": " 一般室 52,200 韓元，最快 2 小時 11 分。\r\n"}
+    )
+    assert lifted.description == "一般室 52,200 韓元，最快 2 小時 11 分。"
+    for refused in ("<b>52,200</b>", "x" * 4001, "a\x07b"):
+        with pytest.raises(ValidationError):
+            ImageBlock.model_validate({**base, "description": refused})
