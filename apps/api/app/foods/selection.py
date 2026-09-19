@@ -1,62 +1,38 @@
-"""Write a verified merchant into a trip's lunch or dinner slot."""
+"""Describe a verified merchant (optionally with a dish) as a trip place."""
 
 from __future__ import annotations
 
-from datetime import date
 from typing import Any
 from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.analytics.service import record_event
 from app.destinations.catalog import destination_for_id
 from app.foods.service import load_food_names, merchant_names
 from app.hotspots.maps import build_map_links
 from app.localized_names import item_names, join_localized_names
 from app.models import FoodMerchant, TravelFood
-from app.problems import AppError
-from app.trips.router import (
-    hydrate_legacy_items,
-    load_items,
-    owned_trip,
-    persist_system_schedule_change,
-)
+from app.trips.selections import SelectionPlace, TripSelectionRequest, place_trip_selection
 from app.warnings import warning_code
 
 
-async def apply_merchant_meal_selection(
+async def apply_merchant_selection(
     session: AsyncSession,
     user_id: UUID,
     *,
     merchant: FoodMerchant,
     food: TravelFood | None,
-    trip_id: UUID,
-    version: int,
-    day_date: date,
-    meal_role: str,
+    request: TripSelectionRequest,
 ) -> dict[str, Any]:
-    """Point a trip meal card at ``merchant`` (optionally naming the dish) and re-plan the day.
+    """Put ``merchant`` (optionally naming the dish) on the trip day ``request`` asks for.
 
-    The selection is recorded as a user choice so AI re-planning keeps it, the same
-    way restaurant picks are protected. The card stores the dish and merchant in
-    every site locale plus their original script, so the label follows the
-    traveller's language afterwards.
+    Both ``/foods`` endpoints land here, so one adapter covers the dish card and the
+    merchant card. The place stores the dish and merchant in every site locale plus
+    their original script, so the label follows the traveller's language afterwards;
+    where it lands (a new stop, or the day's lunch or dinner card) is the shared
+    placement's business — see :mod:`app.trips.selections`.
     """
 
-    trip = await owned_trip(session, user_id, trip_id)
-    if (
-        trip.start_date is None
-        or trip.end_date is None
-        or not trip.start_date <= day_date <= trip.end_date
-    ):
-        raise AppError(422, "itinerary_date_out_of_range", "用餐日期超出旅程範圍")
-    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-    meal = next(
-        (item for item in rows if item.day_date == day_date and item.system_role == meal_role),
-        None,
-    )
-    if meal is None:
-        raise AppError(422, "trip_meal_slot_unavailable", "這一天沒有可設定的餐食卡")
     city = destination_for_id(merchant.destination_id)
     map_links = build_map_links(
         name=merchant.name,
@@ -71,44 +47,40 @@ async def apply_merchant_meal_selection(
     )
     merchant_labels = merchant_names(merchant)
     dish_labels = (await load_food_names(session, [food]))[food.id] if food else None
-    meal.title = f"{food.local_name} · {merchant.name}" if food else merchant.name
-    meal.location_name = merchant.address or merchant.name
-    meal.names_json = item_names(
-        title=join_localized_names(dish_labels, merchant_labels) if food else merchant_labels,
-        # An address is written once, in the local script; only a bare merchant
-        # name follows the locale.
-        location_name=None if merchant.address else merchant_labels,
+    place = SelectionPlace(
+        title=f"{food.local_name} · {merchant.name}" if food else merchant.name,
+        location_name=merchant.address or merchant.name,
+        names_json=item_names(
+            title=join_localized_names(dish_labels, merchant_labels) if food else merchant_labels,
+            # An address is written once, in the local script; only a bare merchant
+            # name follows the locale.
+            location_name=None if merchant.address else merchant_labels,
+        ),
+        latitude=merchant.latitude,
+        longitude=merchant.longitude,
+        coordinate_source_type=merchant.coordinate_source_type,
+        coordinate_source_url=merchant.coordinate_source_url,
+        coordinate_verified_at=merchant.coordinate_verified_at,
+        provider_place_id=merchant.google_place_id,
+        location_source=merchant.coordinate_source_type,
+        # An appended merchant is an ordinary stop, the way the trip editor's own
+        # place browser adds one; a meal card keeps its type and duration.
+        item_type="custom",
+        duration_minutes=60,
+        data={
+            "meal_selection_kind": "food_merchant",
+            "food_id": str(food.id) if food else None,
+            "merchant_id": str(merchant.id),
+            "merchant_area_id": str(merchant.area_id) if merchant.area_id else None,
+            "merchant_map_links": map_links,
+        },
     )
-    meal.provider_place_id = merchant.google_place_id
-    meal.latitude = merchant.latitude
-    meal.longitude = merchant.longitude
-    meal.coordinate_source_type = merchant.coordinate_source_type
-    meal.coordinate_source_url = merchant.coordinate_source_url
-    meal.coordinate_verified_at = merchant.coordinate_verified_at
-    meal.location_source = merchant.coordinate_source_type
-    meal.is_estimated = False
-    meal.is_skipped = False
-    meal.data = {
-        **meal.data,
-        "meal_selection_source": "user",
-        "meal_selection_kind": "food_merchant",
-        "food_id": str(food.id) if food else None,
-        "merchant_id": str(merchant.id),
-        "merchant_area_id": str(merchant.area_id) if merchant.area_id else None,
-        "merchant_map_links": map_links,
-    }
-    # Both /foods endpoints land here, so one call covers the dish card and the
-    # merchant card without either router knowing about analytics.
-    await record_event(
-        session, "place_added_to_trip", path="/foods", user_id=user_id,
-        properties={"kind": "food_merchant", "slot": meal_role, "from_dish": food is not None},
-    )
-    return await persist_system_schedule_change(
+    return await place_trip_selection(
         session,
-        trip,
         user_id,
-        version,
-        rows,
+        request=request,
+        place=place,
         warning=warning_code("food_selection_changed"),
-        target_day=day_date,
+        event_path="/foods",
+        event_properties={"kind": "food_merchant", "from_dish": food is not None},
     )

@@ -282,6 +282,8 @@ const aiPlannerProvider = {
     minimax_model: "minimax-model-a",
     gemini_model: "gemini-model-a",
     ai_planner_timeout_seconds: 15,
+    ai_planner_user_budget: 40,
+    ai_planner_ip_budget: 120,
   },
   config_sources: {
     ai_planner_mode: "environment",
@@ -291,6 +293,8 @@ const aiPlannerProvider = {
     minimax_model: "environment",
     gemini_model: "environment",
     ai_planner_timeout_seconds: "environment",
+    ai_planner_user_budget: "environment",
+    ai_planner_ip_budget: "environment",
   },
   secrets: {},
   field_options: modelOptions,
@@ -1431,6 +1435,31 @@ describe("AdminSettingsPanel", () => {
     expect(body.config.openai_model).toBe("openai-model-b");
     expect(body.config.anthropic_model).toBeUndefined();
     expect(body.config.minimax_model).toBeUndefined();
+  });
+
+  it("lowers both planner budgets as whole numbers and says the spent ceiling degrades instead of refusing", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 行程規劃");
+    const perAccount = within(section).getByRole("spinbutton", { name: /^每個帳號的 AI 規劃次數上限/ }) as HTMLInputElement;
+    const perAddress = within(section).getByRole("spinbutton", { name: /^每個來源 IP 的 AI 規劃次數上限/ }) as HTMLInputElement;
+    expect(perAccount.value).toBe("40");
+    expect(perAddress.value).toBe("120");
+    // A reader expects a limit to refuse; this one hands back the catalogue plan, and only
+    // /intents answers 429, so the card has to say so next to the number.
+    const accountField = perAccount.closest("[data-settings-field]")!.textContent!;
+    expect(accountField).toContain("已審核的目錄");
+    expect(accountField).toContain("/intents 會回 429 planner_budget_reached");
+    expect(accountField).toContain("不必重啟");
+    expect(perAddress.closest("[data-settings-field]")!.textContent).toContain("429 planner_budget_reached");
+
+    fireEvent.change(perAccount, { target: { value: "1" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect((fetchMock.mock.calls[1] as unknown[])[0]).toBe("/api/travel/admin/provider-settings/ai_planner");
+    expect(savedBody(fetchMock).config).toEqual({ ai_planner_user_budget: 1 });
   });
 
   it("reveals a text input for a custom model id and sends the typed value", async () => {

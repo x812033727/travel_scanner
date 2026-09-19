@@ -83,6 +83,7 @@ import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { TripPetPanel } from "@/components/community/pets";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient } from "@/lib/api";
+import { searchUsageOperation } from "@/lib/usage-catalog";
 import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import { formatMoney } from "@/lib/locale-format";
 import { formatTime, groupTripItems, isActiveRouteItem, isFlightAnchor, isLogisticsItem, missingSegmentCount, originalItemName, deriveDayTimeline, segmentsForRows, type RouteSegment, type ScheduleDefaults, type TravelMode, type Trip, type TripItem } from "@/lib/trip-types";
@@ -320,7 +321,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const aiCharge = useOperationCharge("ai_itinerary_generation");
   const optimizationCharge = useOperationCharge("itinerary_optimization");
   const repriceCharge = useOperationCharge("price_reoptimization");
-  const flightSearchCharge = useOperationCharge("travel_search");
+  // The link opens /search?trip_id=…, which sends the trip and the flight module alone;
+  // derive its price the way that page and the server do instead of naming it here.
+  const flightSearchCharge = useOperationCharge(searchUsageOperation({ modules: ["flight"] }));
   const flightStatusCharge = useOperationCharge("flight_status_lookup");
   const locale = useLocale();
   const t = useTranslations("trips");

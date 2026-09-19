@@ -633,8 +633,9 @@ Partner buttons:
    (airport transport at the end of an entry-rules notice is fine; a shopping notice gets none).
 3. Nothing on an expired notice — the renderer already enforces it.
 4. The end panel skips modules already placed inline, so a button never shows twice.
-5. Which article converts is read from `affiliate_clicks` once
-   `2026-09-12-attribute-affiliate-clicks-to-the-guide` lands; revisit placements after a month.
+5. Which article converts is read from `affiliate_clicks.article_slug` (the article page
+   sends its slug with every clickout; the click report's `by_article` groups by it);
+   revisit placements after a month.
 
 Partner links (non-travel programs, mostly in 生活分享):
 
@@ -763,7 +764,11 @@ partner links →
 a table of contents once there are three level-2 headings (`section-N` anchors the renderer
 numbers across the whole body) → the body in slices around each `offer` and `partner_link`
 block → the end
-panel → related reading → topic chips → sources → other languages. `lib/guides.ts` holds
+panel → related reading → topic chips → sources, where the article ends. No list of the other
+languages follows it (dropped 2026-09-16): a translation is offered by `alternates.languages`
+in the head for crawlers, by the header's language switcher for the reader, and by the "not
+translated yet" screen (`guides.notTranslated`) when the article is missing in this language,
+which lists the languages that do have it (Per-locale hreflang, below). `lib/guides.ts` holds
 `splitGuideBlocks`, `guideHeadings` and `readingMinutes` (CJK by character, the rest by
 word); `article.tsx` stays synchronous and the page (`article-page.tsx`) does the fetching.
 
@@ -893,9 +898,10 @@ the catalog's approval of travel offers.
   currently published translation — never trusting the request for a partner or URL — and
   writes one `affiliate_clicks` row with no identity: `partner` and `brand` are the program
   code, `module` its category, `placement` `life` or `guide`, `sub_id`
-  `cnt_<category>_<locale>_<placement>` (stored only, never sent), `destination_summary` the
-  article slug until `2026-09-12-attribute-affiliate-clicks-to-the-guide` adds a column, and
-  `status='clicked'` because nothing was redirected. Drafts, hidden or expired articles,
+  `cnt_<category>_<locale>_<placement>` (stored only, never sent), `article_slug` and
+  `destination_summary` both the article slug (rows from before the column existed have only
+  the latter, and the report reads whichever is set), and `status='clicked'` because nothing
+  was redirected. Drafts, hidden or expired articles,
   other locales and unknown keys answer 404 and write nothing. The count is a floor: a
   reader without JavaScript or with a blocker follows the link uncounted.
 - **Editor.** The block's program list comes from `GET /admin/guides/partners`; without it

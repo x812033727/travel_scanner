@@ -42,15 +42,26 @@
 - **待批次 NN**：`docs/life-ai-series.md` 排了、內容包還沒有；字尾詞由該批次的指派帶進去。
 - **批次 12**：哪裡都沒有，排進 `docs/life-ai-series.md` 的批次 12（本文最後一節）。
 
-已寫落點有沒有真的補到，用這段檢查（在 repo 根目錄）：
+已寫落點有沒有真的補到，用這段檢查（在 repo 根目錄）。「導言第一段」是第一個 h2 之前的第一個 `paragraph` 或
+`rich_paragraph` 區塊：站內連結會把段落改成 `rich_paragraph`，批次 08 有兩篇以 `summary` 區塊開頭，所以不能只讀
+`blocks[0]["text"]`：
 
 ```bash
 python3 - <<'PY'
 import json, re
 rows = re.findall(r"^\| ([^|]+?) \|[^|]*\|[^|]*\| `([a-z0-9-]+)` \| 已寫", open("docs/ai-suffix-keywords.md", encoding="utf-8").read(), re.M)
+def intro(blocks):
+    for block in blocks:
+        if block["type"] == "heading":
+            return ""
+        if block["type"] == "paragraph":
+            return block["text"]
+        if block["type"] == "rich_paragraph":
+            return "".join(node["text"] for node in block["inlines"])
+    return ""
 for keyword, slug in rows:
     doc = json.load(open(f"apps/api/app/guides/content/{slug}.json", encoding="utf-8"))["locales"]["zh-TW"]
-    first = doc["blocks"][0]["text"]
+    first = intro(doc["blocks"])
     ok = keyword in doc["description"] and keyword in first and 120 <= len(doc["description"]) <= 200
     print("ok " if ok else "MISS", slug, keyword, len(doc["description"]))
 PY
@@ -70,7 +81,7 @@ PY
 | 旅行翻譯 AI | 出國翻譯 AI | 出國即時對話翻譯 | `ai-translation-apps-travel` | 待批次 11 | 帶入 |  |  |
 | 寫作 AI | 文章 AI、潤稿 AI | 寫出像自己寫的長文 | `claude-writing-style-guide` | 已寫 | 補描述 |  |  |
 | 文案 AI | 貼文 AI | 寫商品文案與社群貼文 | `ai-for-social-media-content`；備 `claude-writing-style-guide` | 待批次 09 | 帶入 |  |  |
-| 簡報 AI | PPT AI | 把內容做成簡報 | `ai-slides-generation-tools`；備 `gemini-canvas-guide` | 待批次 08 | 帶入（備選已補描述） |  |  |
+| 簡報 AI | PPT AI | 把內容做成簡報 | `ai-slides-generation-tools`；備 `gemini-canvas-guide` | 已寫 | 補描述（兩篇） |  |  |
 | 履歷 AI | 求職信 AI | 改履歷與求職信 | `chatgpt-for-resume-cover-letter` | 已寫 | 補描述 |  |  |
 | 面試 AI | 模擬面試 AI | 練面試 | `ai-job-interview-practice` | 待批次 11 | 帶入 |  |  |
 | Email AI | 寫信 AI | 寫商務信 | `chatgpt-for-email-writing`；`ai-email-management` | 已寫 | 補描述 |  |  |
@@ -85,7 +96,7 @@ PY
 | 會議記錄 AI | 會議 AI | 會議轉錄與摘要 | `ai-meeting-notes-tools` | 待批次 09 | 帶入 |  |  |
 | 逐字稿 AI | 錄音轉文字 AI | 錄音變文字 | `transcription-desktop-tools`；`whisper-local-transcription` | 已寫（系列外） | 補描述（兩篇） |  |  |
 | 語音轉文字 AI | 聽打 AI | 了解語音辨識在做什麼 | `ai-term-automatic-speech-recognition` | 已寫（系列外） | 補描述 |  |  |
-| 字幕 AI | 上字幕 AI | 替影片上字幕與翻譯 | `ai-video-subtitles-translation` | 待批次 08 | 帶入 |  |  |
+| 字幕 AI | 上字幕 AI | 替影片上字幕與翻譯 | `ai-video-subtitles-translation` | 已寫 | 補描述 |  |  |
 | 學英文 AI | 英文 AI、口說 AI | 用 AI 練英文 | `chatgpt-for-english-learning`；`chatgpt-voice-mode-guide`；`ai-language-learning-apps` | 已寫 | 補描述 |  |  |
 | 口說 AI | 口譯 AI | 用語音模式練口說、出國口譯 | `chatgpt-voice-mode-guide` | 已寫 | 補描述 |  |  |
 | Gmail AI | 文件 AI | 在 Gmail、Docs 裡用 AI | `gemini-in-gmail-docs-sheets` | 已寫 | 補描述 |  |  |
@@ -94,24 +105,24 @@ PY
 
 | 關鍵字 | 變體 | 讀者要做的事 | 對應 slug | 狀態 | 動作 | 實際查詢 | 曝光 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 生圖 AI | 繪圖 AI、畫圖 AI | 用文字生成圖片 | `ai-image-tools-overview-2026`；備 `chatgpt-image-generation-guide`、`ai-term-text-to-image` | 待批次 08 | 帶入（備選已補描述） |  |  |
+| 生圖 AI | 繪圖 AI、畫圖 AI | 用文字生成圖片 | `ai-image-tools-overview-2026`；備 `chatgpt-image-generation-guide`、`ai-term-text-to-image` | 已寫 | 補描述（三篇） |  |  |
 | 畫圖 AI | ChatGPT 畫圖 | 用 ChatGPT 畫圖 | `chatgpt-image-generation-guide` | 已寫 | 補描述 |  |  |
 | 修圖 AI | 改圖 AI | 局部修改照片 | `nano-banana-image-editing` | 已寫 | 補描述 |  |  |
-| 去背 AI | 圖片放大 AI | 去背與放大 | `ai-remove-background-upscale` | 待批次 08 | 帶入 |  |  |
-| 老照片 AI | 照片修復 AI | 修復老照片 | `ai-photo-restoration-old-photos` | 待批次 08 | 帶入 |  |  |
-| 商品圖 AI | 商品照 AI | 做商品圖 | `ai-product-photo-for-sellers` | 待批次 08 | 帶入 |  |  |
+| 去背 AI | 圖片放大 AI | 去背與放大 | `ai-remove-background-upscale` | 已寫 | 補描述 |  |  |
+| 老照片 AI | 照片修復 AI | 修復老照片 | `ai-photo-restoration-old-photos` | 已寫 | 補描述 |  |  |
+| 商品圖 AI | 商品照 AI | 做商品圖 | `ai-product-photo-for-sellers` | 已寫 | 補描述 |  |  |
 | Logo AI | 標誌 AI | 做 Logo | `logo-design-tools-budget` | 已寫（系列外） | 補描述 |  |  |
-| 影片 AI | 生成影片 AI | 用文字生成影片 | `ai-video-tools-compared`；備 `veo-video-generation-guide` | 待批次 08 | 帶入（備選已補描述） |  |  |
+| 影片 AI | 生成影片 AI | 用文字生成影片 | `ai-video-tools-compared`；備 `veo-video-generation-guide` | 已寫 | 補描述（兩篇） |  |  |
 | 影片生成 AI | 文字生影片 AI | 了解影片生成在做什麼 | `ai-term-text-to-video` | 已寫（系列外） | 補描述 |  |  |
-| 動畫 AI | 動漫 AI | 生成動畫風格圖 | `ai-art-prompt-styles-reference` | 待批次 08 | 帶入 |  |  |
-| 虛擬主播 AI | 數位人 AI | 做虛擬主播影片 | `ai-avatar-video-tools` | 待批次 08 | 帶入 |  |  |
+| 動畫 AI | 動漫 AI | 生成動畫風格圖 | `ai-art-prompt-styles-reference` | 已寫 | 補描述 |  |  |
+| 虛擬主播 AI | 數位人 AI | 做虛擬主播影片 | `ai-avatar-video-tools` | 已寫 | 補描述 |  |  |
 | 配音 AI | 文字轉語音 AI | 把文字變成聲音 | `minimax-speech-tts-guide`；備 `ai-term-text-to-speech` | 已寫 | 補描述（兩篇） |  |  |
-| 翻唱 AI | 聲音克隆 AI | 複製聲音 | `ai-voice-cloning-elevenlabs` | 待批次 08 | 帶入 |  |  |
-| 作曲 AI | 音樂 AI、做歌 AI | 生成音樂 | `suno-music-generation-guide`；備 `minimax-music-generation` | 待批次 08 | 帶入（備選已補描述） |  |  |
-| 3D AI | 3D 模型 AI | 生成 3D 模型 | `ai-3d-model-generation` | 待批次 08 | 帶入 |  |  |
+| 翻唱 AI | 聲音克隆 AI | 複製聲音 | `ai-voice-cloning-elevenlabs` | 已寫 | 補描述 |  |  |
+| 作曲 AI | 音樂 AI、做歌 AI | 生成音樂 | `suno-music-generation-guide`；備 `minimax-music-generation` | 已寫 | 補描述（兩篇） |  |  |
+| 3D AI | 3D 模型 AI | 生成 3D 模型 | `ai-3d-model-generation` | 已寫 | 補描述 |  |  |
 | 換臉 AI | 深偽 AI | 辨識與防範換臉 | `ai-term-deepfake`；`ai-scams-deepfake-taiwan` | 已寫（系列外） | 補描述 |  |  |
 | 設計 AI | UI AI | 用 AI 做介面設計 | `ai-design-prompt-workflow` | 已寫（系列外） | 補描述 |  |  |
-| Canva AI | Canva 魔法 AI | Canva 裡的 AI 功能 | `canva-ai-features-guide` | 待批次 08 | 帶入 |  |  |
+| Canva AI | Canva 魔法 AI | Canva 裡的 AI 功能 | `canva-ai-features-guide` | 已寫 | 補描述 |  |  |
 
 ### 程式與網站
 
@@ -168,7 +179,7 @@ PY
 | 搜尋 AI | AI 搜尋引擎 | 用 AI 搜尋 | `perplexity-ai-search-guide`；備 `google-ai-mode-search`、`chatgpt-search-vs-google` | 已寫 | 補描述（三篇） |  |  |
 | 瀏覽器 AI | Chrome AI | 瀏覽器裡的 AI | `ai-browsers-guide`；備 `claude-in-chrome-browser-agent`、`gemini-in-chrome-guide` | 待批次 09 | 帶入（備選已補描述） |  |  |
 | 語音 AI | 講話 AI | 用講的跟 AI 對話 | `gemini-live-voice-camera` | 已寫 | 補描述 |  |  |
-| 版權 AI | 著作權 AI | AI 生成內容的版權 | `ai-image-copyright-taiwan`；`ai-and-copyright-law-taiwan` | 待批次 08 | 帶入 |  |  |
+| 版權 AI | 著作權 AI | AI 生成內容的版權 | `ai-image-copyright-taiwan`；`ai-and-copyright-law-taiwan` | 已寫 | 補描述 |  |  |
 | 開源 AI | 開放權重 AI | 開源模型 | `ai-term-open-source-ai`；`ai-open-vs-closed-models` | 已寫（系列外） | 已在標題，不動 |  |  |
 | 生成式 AI | 生成 AI | 生成式 AI 是什麼 | `ai-term-generative-ai` | 已寫（系列外） | 已在標題，不動 |  |  |
 
@@ -217,3 +228,6 @@ npm run test:tools
 
 - 2026-09-14：總表建立，61 篇已寫落點補了描述與導言（`tasks/open/2026-09-14-ai-suffix-keywords-backfill.md`）；
   其中 12 篇是批次 06、07 在同一天併入 main 後補的。沒有搜尋量資料；Search Console 匯出日期待記。
+- 2026-09-19：批次 08 併入 main 後，14 篇「待批次 08」落點補了描述與導言（`tasks/open/2026-09-15-ai-suffix-keywords-batch-08-backfill.md`）；
+  `canva-ai-features-guide` 的描述原本就帶「Canva AI」，只加導言一句。「狀態怎麼看」的檢查改成讀第一個 h2 前的第一段，
+  因為既有落點的導言都已是 `rich_paragraph`，原本的 `blocks[0]["text"]` 會直接報錯。仍沒有搜尋量資料。

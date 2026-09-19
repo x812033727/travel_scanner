@@ -107,6 +107,63 @@ async def test_report_groups_the_window_by_surface_and_folds_legacy_sub_ids() ->
 
 
 @pytest.mark.asyncio
+async def test_report_attributes_clicks_to_the_article_that_placed_the_button() -> None:
+    engine, factory = await _factory()
+    try:
+        async with factory() as session:
+            session.add_all(
+                [
+                    # Offer clicks from an article page carry the slug in the column.
+                    click(placement="guide", destination_id="tokyo", article_slug="tokyo-esim"),
+                    click(placement="guide", destination_id="tokyo", article_slug="tokyo-esim"),
+                    click(placement="guide", destination_id="tokyo", article_slug="tokyo-metro"),
+                    # A partner-link click from before the column existed: the slug is in
+                    # destination_summary only, and the ledger is append-only.
+                    click(
+                        partner="hostinger",
+                        brand="hostinger",
+                        module="hosting",
+                        placement="life",
+                        sub_id="cnt_hosting_zh-TW_life",
+                        destination_summary="claude-code-vps",
+                        target_host="www.hostinger.com",
+                        status="clicked",
+                    ),
+                    # One written since: both fields, and the two rows are one article.
+                    click(
+                        partner="hostinger",
+                        brand="hostinger",
+                        module="hosting",
+                        placement="life",
+                        sub_id="cnt_hosting_zh-TW_life",
+                        destination_summary="claude-code-vps",
+                        article_slug="claude-code-vps",
+                        target_host="www.hostinger.com",
+                        status="clicked",
+                    ),
+                    # Redirects without an article: destination_summary is a destination label
+                    # on these, never an article, so it must not be read as one.
+                    click(placement="guide", destination_id="tokyo"),
+                    click(placement="city", destination_id="seoul", destination_summary="seoul"),
+                ]
+            )
+            await session.commit()
+        async with factory() as session:
+            report = await affiliate_report(session, "7d", now=NOW)
+    finally:
+        await engine.dispose()
+
+    assert report["by_article"] == [
+        {"key": "claude-code-vps", "value": 2},
+        {"key": "tokyo-esim", "value": 2},
+        {"key": "unknown", "value": 2},
+        {"key": "tokyo-metro", "value": 1},
+    ]
+    # The partner-side label is untouched by the attribution.
+    assert report["top_sub_ids"][0] == {"key": "dst_hotel_tokyo_zh-TW_guide", "value": 5}
+
+
+@pytest.mark.asyncio
 async def test_report_caps_each_dimension_and_tolerates_an_empty_ledger() -> None:
     engine, factory = await _factory()
     try:

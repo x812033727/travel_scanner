@@ -133,6 +133,14 @@
     "ai_planner_max_output_tokens": {
       "label": "Max output tokens"
     },
+    "ai_planner_user_budget": {
+      "label": "AI planning attempts per account per window",
+      "help": "Every AI planning attempt an account makes inside the window counts, answered or not; the window is AI_PLANNER_USER_BUDGET_WINDOW_SECONDS (one hour by default) and the default is 40. Once spent, planning does not refuse: the itinerary comes from the reviewed catalogue with a planner_budget_reached note, and only /intents answers 429 planner_budget_reached. A lower number applies to the next request, no restart needed."
+    },
+    "ai_planner_ip_budget": {
+      "label": "AI planning attempts per source address per window",
+      "help": "The same count per source IP address (120 by default), so freshly minted accounts share one ceiling. Keep it well above the per-account number so a household, an office or a carrier NAT never meets it; reaching it falls back to the catalogue plan the same way, and /intents answers 429 planner_budget_reached."
+    },
     "hotspot_guide_ai_default_provider": {
       "label": "Default vendor for hotspot AI search"
     },

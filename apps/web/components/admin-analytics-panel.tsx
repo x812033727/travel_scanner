@@ -26,7 +26,7 @@ type Dashboard = {
   authoritative: Record<string, number>;
   data_quality: Record<string, string | number | boolean | null>;
 };
-type AffiliateDimension = "by_partner" | "by_placement" | "by_module" | "by_destination" | "by_brand" | "by_target_host" | "top_sub_ids";
+type AffiliateDimension = "by_partner" | "by_placement" | "by_article" | "by_module" | "by_destination" | "by_brand" | "by_target_host" | "top_sub_ids";
 type AffiliateReport = Record<AffiliateDimension, Row[]> & {
   range: Range;
   timezone: string;
@@ -36,11 +36,12 @@ type AffiliateReport = Record<AffiliateDimension, Row[]> & {
 };
 
 const ranges: Range[] = ["24h", "7d", "30d", "90d", "12m"];
-// Outbound affiliate clicks by the surface that rendered the button and by partner. These
-// are redirect counts from the append-only ledger, never bookings or commission. The tile
-// titles are ASCII until the message catalogs are free to take new keys.
+// Outbound affiliate clicks by the surface that rendered the button, by the article that
+// placed it and by partner. These are redirect counts from the append-only ledger, never
+// bookings or commission. The tile titles are ASCII until the message catalogs are free to
+// take new keys.
 const affiliateDimensions: Array<[AffiliateDimension, string]> = [
-  ["by_partner", "Partner"], ["by_placement", "Placement"], ["by_module", "Module"],
+  ["by_partner", "Partner"], ["by_placement", "Placement"], ["by_article", "Article"], ["by_module", "Module"],
   ["by_destination", "Destination"], ["by_brand", "Brand"], ["by_target_host", "Target host"], ["top_sub_ids", "Sub ID"],
 ];
 // The tiles the dashboard shows, not everything the API returns: `summary` now carries

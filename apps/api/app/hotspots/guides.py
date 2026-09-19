@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import ipaddress
 import re
-from collections.abc import Awaitable, Sequence
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
@@ -746,7 +746,7 @@ async def consume_search_budget(redis: Redis, provider: str, limit: int) -> bool
         "if n==1 then redis.call('EXPIRE',KEYS[1],172800) end; return n"
     )
     try:
-        count = await cast(Awaitable[Any], redis.eval(script, 1, key, str(limit)))
+        count = await redis.eval(script, 1, key, str(limit))
     except RedisError:
         return False
     return int(count) >= 0

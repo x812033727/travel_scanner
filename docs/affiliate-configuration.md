@@ -212,8 +212,15 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
 把同一個面板、單一模組，放在「怎麼買票」「門票」那一段後面；`destination_id` 可以覆蓋文章的，
 讓跨城市的情報（例如東京與京都的紅葉）每一段指向自己的城市。按鈕來源、驗證與 `placement='guide'`
 的紀錄都和文末面板相同，文末面板會略過內文已放過的模組，內文有按鈕時主圖下方多一行揭露。
-規則細節在 `docs/travel-guides.md`。目前 `affiliate_clicks` 記不到是哪一篇文章帶來的點擊
-（`sub_id` 只到目的地×模組×語系×置入面），`2026-09-12-attribute-affiliate-clicks-to-the-guide` 追蹤補欄位。
+規則細節在 `docs/travel-guides.md`。
+
+哪一篇文章帶來的點擊記在 `affiliate_clicks.article_slug`（migration 0081；可為空、有索引）：
+文章頁把自己的 slug 接在 clickout 網址後面（`?placement=guide&article=<slug>`，內文 `offer` 區塊
+與文末面板都帶），API 只在它符合文章 slug 格式（小寫英數與單一連字號、120 字以內）時存下，
+否則當作沒帶；轉址與其他欄位完全不變。`sub_id` 仍只到目的地×模組×語系×置入面：那是送給
+夥伴的標籤，64 字上限、格式失敗即拒絕，放不下 slug。後台「聯盟外連」多一張 `by_article`
+（`GET /admin/analytics/affiliates`）；沒有文章的點擊（搜尋、行程、城市頁）歸在 `unknown`，
+補欄位之前的舊列不回填，讀不出文章。
 
 生活分享文章的規則不同，因為生活主題（AI、教學、軟體、3C…）本來就對不到任何旅遊模組：
 **編輯自己填的 `destination_id` 就是唯一的情境訊號**，填了才顯示，而且顯示該城市的全部模組
@@ -244,8 +251,10 @@ Skyscanner 的合作申請清單見 [`skyscanner-partnership-application.md`](sk
   `/api/travel/guides/{kind}/{slug}/partner-links/{key}/click`，API 從目前公開的版本找出那條連結，
   寫一筆 `affiliate_clicks`：`partner`＝`brand`＝方案代碼、`module`＝類別、`placement`＝`life` 或 `guide`、
   `sub_id`＝`cnt_<類別>_<語系>_<placement>`（**只存在本站，不會送給夥伴**，連結本身就是夥伴的網址）、
-  `destination_summary`＝文章 slug、`status`＝`clicked`（沒有轉址）、沒有任何使用者身分。
-  報表的 `by_partner`／`by_placement`／`top_sub_ids` 直接看得到；`by_destination` 會把它們歸在 `unknown` 那一列。
+  `destination_summary`＝文章 slug、`article_slug`＝文章 slug（2026-09-13 到 migration 0081 之間的列
+  只有前者，所以兩個都寫）、`status`＝`clicked`（沒有轉址）、沒有任何使用者身分。
+  報表的 `by_partner`／`by_placement`／`top_sub_ids` 直接看得到；`by_article` 對 `status='clicked'` 的列讀
+  `coalesce(article_slug, destination_summary)`，所以舊列也算到文章；`by_destination` 會把它們歸在 `unknown` 那一列。
 - **揭露。** 文章主圖下方一行「本文含合作連結，透過連結購買或訂閱，本站可能獲得分潤，不另向你加價。」
   （五語系，ja／ko 的徽章用「広告」／「광고」），每個連結旁再有一個徽章。
 - **一般連結不能再夾帶分潤。** 文章的 `link` 區塊、資料來源、圖片出處，以及法律頁的連結，

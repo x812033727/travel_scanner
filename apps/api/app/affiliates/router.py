@@ -41,6 +41,7 @@ from app.affiliates.sub_id import coarse_sub_id
 from app.auth.service import CurrentUser, OptionalCurrentUser
 from app.db import get_session
 from app.destinations.catalog import destination_for_code, destination_for_id, match_destination
+from app.guides.schemas import SLUG_PATTERN
 from app.i18n import Locale, active_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.models import (
@@ -79,6 +80,15 @@ def _destination_id(value: str | None, fallback: str) -> str | None:
         or match_destination(fallback)
     )
     return profile.id if profile else None
+
+
+def _article_slug(value: str | None) -> str | None:
+    # The article page appends its own slug to the clickout URL so the click row can say
+    # which article placed the button. Anything not shaped like one of our slugs is dropped
+    # rather than refused: the redirect is the reader's, the attribution is only ours.
+    if value and len(value) <= 120 and SLUG_PATTERN.match(value):
+        return value
+    return None
 
 
 async def _ready_destination_offers(
@@ -245,6 +255,7 @@ async def destination_affiliate_clickout(
     user: OptionalCurrentUser,
     token: str | None = None,
     placement: BookingPlacement = "destination",
+    article: str | None = None,
 ) -> RedirectResponse:
     await enforce_named_rate_limit(
         "destination-affiliate-clickout",
@@ -314,6 +325,7 @@ async def destination_affiliate_clickout(
             service_type=None,
             placement=placement,
             destination_id=offer.destination_id,
+            article_slug=_article_slug(article),
             module=offer.module,
             sub_id=sub_id[:64],
             destination_summary=offer.destination_id,

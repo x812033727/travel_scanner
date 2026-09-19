@@ -4,7 +4,6 @@ import time
 from collections.abc import Callable
 from datetime import UTC, date, datetime
 from decimal import Decimal, InvalidOperation
-from typing import cast
 
 import httpx
 from redis.asyncio import Redis
@@ -45,14 +44,16 @@ class FxRateProvider:
                 return None
             return value
         try:
-            value = await asyncio.wait_for(
+            stored = await asyncio.wait_for(
                 self.redis.get(key),
                 timeout=self.settings.airline_crawler_cache_backend_timeout_seconds,
             )
-            return cast(str | None, value)
         except (TimeoutError, RedisError, OSError):
             self._redis_available = False
             return await self._get(key)
+        # GET is typed as bytes or str: the app's client decodes responses, so this is
+        # a str in practice, but a client without decode_responses must not break here.
+        return stored.decode() if isinstance(stored, bytes) else stored
 
     async def _set(self, key: str, value: str, ttl: int) -> None:
         self._memory_cache[key] = (time.monotonic() + ttl, value)

@@ -207,6 +207,8 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "ai_planner_timeout_seconds",
             "ai_planner_total_timeout_seconds",
             "ai_planner_max_output_tokens",
+            "ai_planner_user_budget",
+            "ai_planner_ip_budget",
         ),
         (),
         "ai_planner_enabled",

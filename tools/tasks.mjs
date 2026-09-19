@@ -171,8 +171,17 @@ export function validate(tasks, { now = new Date() } = {}) {
   const byId = new Map();
   for (const task of tasks) {
     const where = task.file;
-    if (byId.has(task.id)) errors.push(`${where}: task id '${task.id}' is already used by ${byId.get(task.id).file}`);
-    else byId.set(task.id, task);
+    if (byId.has(task.id)) {
+      const other = byId.get(task.id);
+      // An open copy beside a finished one is what an interrupted 'done' leaves behind (see
+      // removeArchivedCopy); say so, rather than leaving the reader to guess which to keep.
+      const pair = [task, other].sort((left, right) => left.folder.localeCompare(right.folder));
+      const leftover =
+        pair[0].folder === "done" && pair[1].folder === "open" && pair[0].status === "done"
+          ? `; the open copy is what an interrupted 'done' leaves behind — compare the two and delete ${pair[1].file} by hand`
+          : "";
+      errors.push(`${where}: task id '${task.id}' is already used by ${other.file}${leftover}`);
+    } else byId.set(task.id, task);
     if (!ID_PATTERN.test(task.id)) errors.push(`${where}: id must look like 2026-09-05-short-slug`);
     else if (task.name !== `${task.id}.md`) errors.push(`${where}: the file name must match the id (${task.id}.md)`);
     if (!task.title) errors.push(`${where}: title is required`);
@@ -512,11 +521,44 @@ function commandDone(root, id, now) {
   if (task.status === "done") return { code: 0, lines: [`${task.id} was already done.`] };
   const unchecked = (task.body.match(/^\s*- \[ \]/gm) ?? []).length;
   writeTask(root, { ...task, status: "done", completed_at: stamp(now) });
-  rmSync(path.join(openDir(root), `${task.id}.md`), { force: true });
+  // Delete the file that was actually read, not a path rebuilt from the id: with
+  // `force: true` a rebuilt path that misses the file is silently "already gone".
+  const leftover = removeArchivedCopy(path.join(root, ...task.file.split("/")));
   writeBoard(root);
+  if (leftover) throw new Error(leftover);
   const lines = [`${task.id} moved to tasks/done/.`];
   if (unchecked) lines.push(`Note: ${unchecked} checklist item(s) are still unticked in the archived file.`);
   return { code: 0, lines };
+}
+
+// Windows has twice left the open copy behind after 'done' had already answered "moved":
+// a file another process holds open (an editor, an indexer, a sync client) can survive
+// its own deletion there, and a sync client can put a deleted file back. The queue then
+// holds the same id twice and 'check' refuses it, one command later than the command
+// that caused it. So the deletion is verified, retried briefly, and reported as the
+// failure it is; the done copy is the newer record and stays. Returns the message to
+// fail with, or null once the open copy is gone.
+export function removeArchivedCopy(file, { remove = rmSync, exists = existsSync, sleep = pause } = {}) {
+  let reason = "";
+  for (const wait of [0, 50, 100, 200, 400, 800]) {
+    if (wait) sleep(wait);
+    try {
+      remove(file, { force: true });
+    } catch (error) {
+      reason = error.code ?? error.message;
+    }
+    if (!exists(file)) return null;
+  }
+  const relative = file.split(path.sep).slice(-3).join("/");
+  return (
+    `${relative} is still there after the done copy was written${reason ? ` (${reason})` : ""}. ` +
+    "Close whatever holds it open (an editor, an indexer, a sync client), delete that open copy by " +
+    "hand and run 'check'; tasks/done/ already has the finished task."
+  );
+}
+
+function pause(milliseconds) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 }
 
 // The board is ignored by git, so the copy on any one machine is a scratch file that is

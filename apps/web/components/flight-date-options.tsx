@@ -3,6 +3,7 @@
 import { CalendarRange, LoaderCircle } from "lucide-react";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { twd } from "@/lib/api";
+import type { UsageOperation } from "@/lib/usage-catalog";
 
 export type FlightDateOption = {
   shift_days: number;
@@ -25,16 +26,23 @@ export function FlightDateOptions({
   options,
   selected,
   busy,
+  operation,
   onSelect,
   onApply,
 }: {
   options: FlightDateOption[];
   selected?: FlightDateOption;
   busy?: boolean;
+  /**
+   * What applying an option will be charged as. The server derives the operation from
+   * the payload it receives (lib/usage-catalog's searchUsageOperation is its mirror), so
+   * the caller that builds that payload names it; this block never guesses from here.
+   */
+  operation: UsageOperation;
   onSelect: (option: FlightDateOption) => void;
   onApply: (option: FlightDateOption) => void;
 }) {
-  const charge = useOperationCharge("full_trip_search");
+  const charge = useOperationCharge(operation);
   if (!options.length) return null;
   return (
     <section aria-labelledby="flexible-dates-title" className="mb-5 rounded-2xl border border-[var(--line)] bg-white p-4">

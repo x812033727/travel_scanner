@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-attribute-affiliate-clicks-to-the-guide
 title: Attribute affiliate clicks to the guide article that placed them
-status: open
+status: review
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:07:25Z
 created_at: 2026-09-12T17:42:18Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-12-guide-offer-content-block
 scope:
@@ -17,7 +17,7 @@ scope:
   - apps/api/app/affiliates/router.py
   - apps/api/app/analytics/affiliates.py
   - apps/api/tests/test_affiliates.py
-  - apps/api/tests/test_affiliate_analytics.py
+  - apps/api/tests/test_analytics_affiliates.py
   - apps/web/components/destination-affiliate-options.tsx
   - apps/web/components/destination-affiliate-options.test.tsx
   - apps/web/components/admin-analytics-panel.tsx
@@ -25,6 +25,9 @@ scope:
   - apps/web/components/guides/article.tsx
   - apps/web/components/guides/article.test.tsx
   - docs/affiliate-configuration.md
+  - apps/api/app/guides/service.py
+  - apps/api/tests/test_guide_partner_links.py
+  - docs/travel-guides.md
 ---
 
 # Attribute affiliate clicks to the guide article that placed them
@@ -40,26 +43,26 @@ attribution is our own column.
 
 ## Definition of done
 
-- [ ] `affiliate_clicks.article_slug` (String(120), nullable, indexed) via an additive
+- [x] `affiliate_clicks.article_slug` (String(120), nullable, indexed) via an additive
       migration; the append-only trigger only blocks UPDATE/DELETE, so no trigger change.
-- [ ] `POST /affiliates/destination-offers/{id}/clickout?placement=guide&article=<slug>`
+- [x] `POST /affiliates/destination-offers/{id}/clickout?placement=guide&article=<slug>`
       stores the slug when it matches `SLUG_PATTERN` and ignores it otherwise; no other
       behaviour of the clickout changes.
-- [ ] `DestinationAffiliateOptions` takes `article?: string` and appends it to the clickout
+- [x] `DestinationAffiliateOptions` takes `article?: string` and appends it to the clickout
       URL; the article page passes `state.slug` for both inline and end-panel islands.
-- [ ] `GET /admin/analytics/affiliates` gains `by_article`, and the admin analytics panel
+- [x] `GET /admin/analytics/affiliates` gains `by_article`, and the admin analytics panel
       shows it.
 
 ## Steps
 
-- [ ] Check `ls apps/api/migrations/versions | tail -3` right before writing the migration
+- [x] Check `ls apps/api/migrations/versions | tail -3` right before writing the migration
       — parallel sessions take numbers — and revise the current head.
-- [ ] Router, model, analytics dimension, web prop, panel, tests, docs §8.
+- [x] Router, model, analytics dimension, web prop, panel, tests, docs §8.
 
 ## How to verify
 
 ```bash
-cd apps/api && uv run pytest tests/test_affiliates.py tests/test_affiliate_analytics.py -q
+cd apps/api && uv run pytest tests/test_affiliates.py tests/test_analytics_affiliates.py tests/test_guide_partner_links.py tests/test_affiliate_sub_id.py tests/test_schema.py -q
 cd apps/web && npx vitest run components/destination-affiliate-options.test.tsx components/admin-analytics-panel.test.tsx components/guides/article.test.tsx
 ```
 
@@ -78,3 +81,39 @@ Then on production: open an article, click a partner button, and read one row ba
   waiting for this column would have lost the attribution for good. When `article_slug`
   lands, write it there as well, and backfill nothing: the report can read
   `coalesce(article_slug, destination_summary)` for `status='clicked'` rows.
+
+### 2026-09-19 done in repo (claude-fable-5-1)
+
+- Migration `0081_affiliate_click_article` (revises `0080_crypto_and_tech_topics`): adds
+  `affiliate_clicks.article_slug` String(120) NULL plus `ix_affiliate_clicks_article_slug`, guarded
+  like 0079 (a fresh database already has it from `0001_initial`). Additive only: the append-only
+  trigger fires on UPDATE/DELETE, so it is untouched, and nothing is backfilled.
+- Clickout: `article=` is a plain query parameter on `POST /affiliates/destination-offers/{id}/clickout`.
+  It is stored only when it matches the guides' `SLUG_PATTERN` and is at most 120 characters (the
+  column width); anything else is stored as NULL, never a 4xx. Not gated on `placement='guide'`,
+  because `life` articles send their slug the same way. The redirect, `sub_id`, `placement` and
+  `destination_summary` are unchanged and the new test pins all four.
+- `record_partner_click` now writes `article_slug` and keeps writing `destination_summary`; the
+  rows written between 2026-09-13 and this column only have the latter. The report's `by_article`
+  reads `coalesce(article_slug, case when status='clicked' then destination_summary end)`, so those
+  rows still count; clicks with no article (search, trip, city) fold into `unknown` like the other
+  dimensions do.
+- Web: `DestinationAffiliateOptions` appends `&article=<encoded slug>` to the API-built clickout URL
+  client-side; it is not part of the request identity, so a rerender with or without it does not
+  refetch. The article page passes `state.slug` to the inline `offer` islands and the end panel.
+  The admin panel's "Article" tile keeps the ASCII title convention of its siblings, so no
+  message catalog changed.
+- Scope corrections: the report tests live in `tests/test_analytics_affiliates.py` (the
+  `test_affiliate_analytics.py` this ticket named never existed); `app/guides/service.py`,
+  `tests/test_guide_partner_links.py` and `docs/travel-guides.md` (two "until this ticket lands"
+  sentences) were added to the scope before they were edited. `2026-09-13-google-ads-conversion-
+  measurement` (blocked, unowned) lists the same files; nothing there was touched.
+- Verified: the API and web commands in "How to verify" plus `ruff`, `mypy app`, `mypy tests`,
+  `lint:web`, `typecheck:web`, `check:i18n` all pass. `test_migration_dead_branches.py` needs no
+  case: the guarded branch only adds an empty column and index.
+- Owner, after the deploy runs `alembic upgrade head`: open a guide that shows a partner button,
+  click it, then `select article_slug, placement, module, status from affiliate_clicks order by
+  created_at desc limit 1;` should show that article's slug with `placement='guide'` (or `life`)
+  and `status='redirected'`. A partner-link click shows `status='clicked'` with the slug in both
+  `article_slug` and `destination_summary`. The "Article" tile under 聯盟外連 in admin analytics
+  should list it. Rows from before the migration keep `article_slug` NULL by design.

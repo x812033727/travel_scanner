@@ -133,6 +133,14 @@
     "ai_planner_max_output_tokens": {
       "label": "最大出力トークン"
     },
+    "ai_planner_user_budget": {
+      "label": "アカウントごとの AI プラン作成回数上限",
+      "help": "期間内の AI プラン作成の試行を、ベンダーの応答有無にかかわらず 1 回ずつ数えます。期間は AI_PLANNER_USER_BUDGET_WINDOW_SECONDS（既定 1 時間）、既定値は 40 回です。使い切っても拒否はせず、審査済みカタログから行程を組んで planner_budget_reached の注記を付けます。/intents だけは 429 planner_budget_reached を返します。下げた値は次のリクエストから反映され、再起動は不要です。"
+    },
+    "ai_planner_ip_budget": {
+      "label": "送信元 IP ごとの AI プラン作成回数上限",
+      "help": "同じ数え方を送信元 IP アドレス単位でも行い（既定 120 回）、作りたてのアカウントも 1 つの上限を共有します。家庭やオフィス、キャリアの NAT が届かないよう、アカウントごとの値より十分大きくしてください。上限に達した場合も同様にカタログ行程へ切り替わり、/intents は 429 planner_budget_reached を返します。"
+    },
     "hotspot_guide_ai_default_provider": {
       "label": "スポット AI 検索の既定ベンダー"
     },

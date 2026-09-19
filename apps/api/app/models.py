@@ -287,6 +287,10 @@ class AffiliateClick(Base):
     service_type: Mapped[str | None] = mapped_column(String(16), nullable=True)
     placement: Mapped[str | None] = mapped_column(String(24), nullable=True)
     destination_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    # The guide article that placed the button, for clicks that came from one. Our own
+    # column: ``sub_id`` is what the partners see, capped at 64 characters and fail-closed
+    # on anything but catalog labels, so a slug cannot ride there.
+    article_slug: Mapped[str | None] = mapped_column(String(120), nullable=True, index=True)
     search_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
     trip_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
     offer_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)

@@ -64,7 +64,9 @@ async def test_google_start_uses_pkce_and_one_time_server_state(
     assert query["redirect_uri"] == ["https://mokaair.com/api/auth/oauth/google/callback"]
     assert query["scope"] == ["openid email"]
     assert query["code_challenge_method"] == ["S256"]
-    flow = json.loads(await redis.get(f"oauth-flow:{result.flow_id}"))
+    raw_flow = await redis.get(f"oauth-flow:{result.flow_id}")
+    assert raw_flow is not None
+    flow = json.loads(raw_flow)
     assert flow["locale"] == "ja"
     assert flow["next"] == "/"
     assert flow["binding"] != "binding_abcdefghijklmnopqrstuvwxyz123456"

@@ -1,6 +1,8 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchExperience } from "./search-experience";
+import { UsageCatalogProvider } from "./usage-catalog-provider";
+import { defaultUsageCatalog, searchUsageOperation } from "@/lib/usage-catalog";
 
 const { location, router } = vi.hoisted(() => ({
   location: { search: "" },
@@ -473,6 +475,47 @@ describe("SearchExperience", () => {
     FakeEventSource.instances[0].emit("search.completed", { usage: { status: "charged", uses: 1, reference: "u-1" } });
     fireEvent.click(await screen.findByRole("tab", { name: "機票" }));
     expect(await screen.findByRole("button", { name: "比較更多來源 · 不扣次" })).toBeTruthy();
+  });
+
+  it("quotes the flexible-date re-search at the price of the payload it then sends", async () => {
+    location.search = `${criteria}&resume=search`;
+    const dateOptions = [
+      { shift_days: 0, departure_date: "2026-11-10", return_date: "2026-11-15", lowest_price: 15000, currency: "TWD", provider: "mock", source_mode: "live", is_current: true, offer_count: 4 },
+      { shift_days: 2, departure_date: "2026-11-12", return_date: "2026-11-17", lowest_price: 12800, currency: "TWD", provider: "mock", source_mode: "estimate", is_current: false, offer_count: 2 },
+    ];
+    const api = stubApi({ signedIn: true });
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/searches/search-1")) return json({ status: "completed", result: { modules: {}, plans: [plan], flight_date_options: dateOptions }, warnings: [] });
+      return api(input, init);
+    }));
+    // Priced apart on purpose: at one use each, a label naming the wrong operation still
+    // shows the right number, which is how a hard-coded one went unnoticed.
+    const catalog = {
+      ...defaultUsageCatalog,
+      operation_costs: { ...defaultUsageCatalog.operation_costs, full_trip_search: 3, flexible_flight_search: 2, travel_search: 1 },
+    };
+    render(<UsageCatalogProvider state={{ status: "ready", catalog }}><SearchExperience /></UsageCatalogProvider>);
+
+    await waitFor(() => expect(FakeEventSource.instances).toHaveLength(1));
+    FakeEventSource.instances[0].emit("search.completed", { usage: { status: "charged", uses: 3, reference: "u-1" } });
+    fireEvent.click(await screen.findByRole("tab", { name: "機票" }));
+    fireEvent.click(await screen.findByRole("button", { name: /晚 2 日/ }));
+    const apply = screen.getByRole("button", { name: /^套用並重新搜尋整趟/ });
+    const quoted = apply.textContent;
+    fireEvent.click(apply);
+    await waitFor(() => expect(postCalls("/searches")).toHaveLength(2));
+
+    // The server derives the operation from the body; the button must have quoted the
+    // price of that same operation, whichever one the body works out to.
+    const body = requestBody(postCalls("/searches")[1]);
+    const operation = searchUsageOperation({
+      tripType: body.trip_type as string,
+      modules: body.modules as string[],
+      optimizationMode: (body.preferences as { optimization_mode?: string }).optimization_mode,
+      flexibleDates: Boolean(body.flexible_dates),
+    });
+    expect(operation).toBe("full_trip_search");
+    expect(quoted).toContain(`消耗 ${catalog.operation_costs[operation]} 次`);
   });
 });
 

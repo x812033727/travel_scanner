@@ -252,6 +252,7 @@ export function GuideArticle({
                   contextual={state.kind !== "life"}
                   destinationLabel={island.offer.destination_id ? undefined : state.destination_label ?? undefined}
                   placement={placement}
+                  article={state.slug}
                 />
               </section>
             ) : null}
@@ -266,6 +267,7 @@ export function GuideArticle({
           contextual={state.kind !== "life"}
           destinationLabel={state.destination_label ?? undefined}
           placement={placement}
+          article={state.slug}
         />
       ) : null}
 

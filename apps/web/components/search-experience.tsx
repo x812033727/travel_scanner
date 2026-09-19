@@ -307,6 +307,11 @@ function parseInterests(raw: string): string[] {
 
 const TRIP_DATE_ISSUES = ["trip_dates_required", "trip_dates_past", "trip_dates_too_short"];
 
+// What a search without a trip asks for. The server prices a search off its modules and
+// optimization mode, so the start button and the flexible-date re-search read their
+// charge from this same list rather than naming an operation of their own.
+const FULL_TRIP_MODULES = ["flight", "hotel", "activities", "transport"];
+
 // The server's job times out at 120s; allow a margin for the final events to land.
 const SEARCH_TIMEOUT_MS = 150_000;
 
@@ -473,16 +478,22 @@ export function SearchExperience() {
   // A trip search nobody edited sends the trip and nothing else, so the server derives
   // the criteria fresh at request time. Editing them pins them, and pinned flexible
   // dates are a separately priced operation — so read the price off the payload that
-  // will actually be sent, not off the mode.
+  // will actually be sent, not off the mode. searchUsageOperation mirrors the server's
+  // derivation line by line; the values below are the ones begin() puts in the body.
   const tripCriteriaPinned = Boolean(tripId) && Boolean(structuredParsed);
-  const charge = useOperationCharge(
-    tripId
-      ? searchUsageOperation({
-          modules: ["flight"],
-          flexibleDates: tripCriteriaPinned && Boolean(parsed?.flex_days),
-        })
-      : "full_trip_search",
-  );
+  function searchOperation(flexDays: number) {
+    if (tripId && !tripCriteriaPinned) return searchUsageOperation({ modules: ["flight"] });
+    return searchUsageOperation({
+      tripType: "round_trip",
+      modules: tripId ? ["flight"] : FULL_TRIP_MODULES,
+      optimizationMode: "balanced",
+      flexibleDates: flexDays > 0,
+    });
+  }
+  const charge = useOperationCharge(searchOperation(parsed?.flex_days || 0));
+  // Applying a flexible-date estimate re-runs begin() with flex_days pinned to 0, so
+  // the block that offers it quotes the price of that payload.
+  const dateOptionOperation = searchOperation(0);
   const [providerStatus, setProviderStatus] = useState<ProviderStatus | null>(
     null,
   );
@@ -795,7 +806,7 @@ export function SearchExperience() {
               children_ages: parsed.travelers.children_ages || [],
               rooms: parsed.travelers.rooms || 1,
             },
-            modules: tripId ? ["flight"] : ["flight", "hotel", "activities", "transport"],
+            modules: tripId ? ["flight"] : FULL_TRIP_MODULES,
             preferences: {
               budget_twd: parsed.budget_twd,
               avoid_red_eye: parsed.avoid_red_eye,
@@ -1845,6 +1856,7 @@ export function SearchExperience() {
                   options={flightDateOptions}
                   selected={selectedDateOption}
                   busy={busy}
+                  operation={dateOptionOperation}
                   onSelect={setSelectedDateOption}
                   onApply={applyDateOption}
                 />

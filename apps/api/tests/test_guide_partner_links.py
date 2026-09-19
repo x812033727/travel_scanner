@@ -241,6 +241,7 @@ async def test_a_click_writes_one_anonymous_row_and_never_redirects(
     assert row.sub_id == f"cnt_hosting_zh-TW_{placement}"
     assert SUB_ID_RE.fullmatch(row.sub_id)
     assert row.destination_summary == "claude-code-vps"
+    assert row.article_slug == "claude-code-vps"
     assert row.target_host == "www.hostinger.com"
     assert row.status == "clicked"
     assert row.user_id is None and row.trip_id is None and row.search_id is None

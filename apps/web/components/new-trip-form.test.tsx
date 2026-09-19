@@ -145,9 +145,45 @@ it("shows one page with editable default travelers and optional preferences coll
     expect(String(fetchMock.mock.calls[0][0])).toMatch(/\/trips$/);
     expect(JSON.parse(String(fetchMock.mock.calls[0][1].body))).toMatchObject({
       name: "東京・6 天", source: "blank", planning_mode: "manual_blank", destination_place_id: null,
-      travelers: { adults: 2, children: 0, rooms: 1 },
+      origin_airport: "TPE", travelers: { adults: 2, children: 0, rooms: 1 },
       routing: { auto_compute: false, default_travel_mode: "transit", default_buffer_minutes: 10 },
     });
+  });
+
+  it("asks for the departure airport alongside the travelers and sends the chosen one", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "khh-trip" }), { status: 201 }));
+    stubFetch(fetchMock);
+    await renderReady();
+    const airport = screen.getByLabelText("出發機場") as HTMLSelectElement;
+    // The same three airports the planning workbench offers, under the same names.
+    expect(Array.from(airport.options).map((option) => [option.value, option.textContent]))
+      .toEqual([["TPE", "桃園 TPE"], ["TSA", "松山 TSA"], ["KHH", "高雄 KHH"]]);
+    expect(airport).toHaveValue("TPE");
+    expect(airport.closest("details")).toContainElement(screen.getByLabelText("成人"));
+    fireEvent.change(airport, { target: { value: "KHH" } });
+    fillRequiredFields();
+    submit();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/khh-trip"));
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1].body))).toMatchObject({ origin_airport: "KHH" });
+  });
+
+  it("restores a drafted airport, and an airport it does not offer never blocks the trip", async () => {
+    window.sessionStorage.setItem("mokaair-new-trip-draft:member-a", JSON.stringify({ form: { origin_airport: "KHH" } }));
+    const first = await renderReady();
+    await waitFor(() => expect(screen.getByLabelText("出發機場")).toHaveValue("KHH"));
+    first.unmount();
+
+    // A code the API would refuse must not be sent: the trip is created from Taoyuan
+    // instead, and /search still asks when a trip has no airport at all.
+    window.sessionStorage.setItem("mokaair-new-trip-draft:member-a", JSON.stringify({ form: { origin_airport: "ZZZ" } }));
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "tpe-trip" }), { status: 201 }));
+    stubFetch(fetchMock);
+    await renderReady();
+    expect(screen.getByLabelText("出發機場")).toHaveValue("TPE");
+    fillRequiredFields();
+    submit();
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/tpe-trip"));
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1].body)).origin_airport).toBe("TPE");
   });
 
   it("preserves a custom name across city changes and can restore automatic naming", async () => {

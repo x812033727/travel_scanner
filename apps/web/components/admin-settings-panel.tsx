@@ -165,6 +165,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   ai_planner_timeout_seconds: { localized: true, type: "number" },
   ai_planner_total_timeout_seconds: { localized: true, type: "number" },
   ai_planner_max_output_tokens: { localized: true, type: "number" },
+  ai_planner_user_budget: { localized: true, type: "number" },
+  ai_planner_ip_budget: { localized: true, type: "number" },
   hotspot_guide_ai_default_provider: { localized: true, options: [{ value: "minimax", label: "MiniMax" }, { value: "openai", label: "OpenAI" }, { value: "anthropic", label: "Claude" }, { value: "gemini", label: "Gemini" }] },
   hotspot_guide_ai_timeout_seconds: { localized: true, type: "number" },
   hotspot_guide_ai_max_output_tokens: { localized: true, type: "number" },

@@ -1,14 +1,11 @@
-from datetime import date
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
-from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
@@ -31,10 +28,10 @@ from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import item_names
 from app.locations.coordinates import has_durable_coordinates
 from app.locations.map_identity import catalog_map_identities
-from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
+from app.models import HotspotPlaceProfile, TravelHotspot
 from app.problems import AppError
 from app.trips.hours import fresh_hours
-from app.trips.router import load_items, owned_trip, persist_system_schedule_change
+from app.trips.selections import SelectionPlace, TripSelectionRequest, place_trip_selection
 from app.warnings import warning_code
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
@@ -42,10 +39,8 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
 
 
-class HotspotTripSelectionRequest(BaseModel):
-    trip_id: UUID
-    version: int = Field(ge=1)
-    day_date: date
+class HotspotTripSelectionRequest(TripSelectionRequest):
+    """``mode``, ``meal`` and ``overwrite`` are the shared placement contract."""
 
 
 def _resolve_destination(
@@ -342,21 +337,6 @@ async def select_hotspot_for_trip(
         )
     ):
         raise AppError(404, "hotspot_not_found", "找不到可加入行程的景點")
-    trip = await owned_trip(session, user.id, payload.trip_id)
-    if (
-        trip.start_date is None
-        or trip.end_date is None
-        or not trip.start_date <= payload.day_date <= trip.end_date
-    ):
-        raise AppError(422, "itinerary_date_out_of_range", "景點日期超出旅程範圍")
-    rows = await load_items(session, trip.id)
-    position = (
-        max(
-            (item.position for item in rows if item.day_date == payload.day_date),
-            default=-1,
-        )
-        + 1
-    )
     map_links = build_map_links(
         name=hotspot.name,
         local_name=hotspot.metadata_json.get("local_name"),
@@ -375,11 +355,7 @@ async def select_hotspot_for_trip(
     place_profile = await session.scalar(
         select(HotspotPlaceProfile).where(HotspotPlaceProfile.hotspot_id == hotspot.id)
     )
-    item = TripPlanItem(
-        trip_plan_id=trip.id,
-        item_type="activity",
-        day_date=payload.day_date,
-        position=position,
+    place = SelectionPlace(
         title=hotspot.name,
         location_name=hotspot.name,
         names_json=item_names(title=names, location_name=names),
@@ -406,22 +382,14 @@ async def select_hotspot_for_trip(
             ),
         },
     )
-    session.add(item)
-    rows.append(item)
-    # The exploring surfaces used to end in a toast; this is the count that says
-    # whether browsing them turns into a trip at all.
-    await record_event(
-        session, "place_added_to_trip", path="/hotspots", user_id=user.id,
-        properties={"kind": "hotspot"},
-    )
-    return await persist_system_schedule_change(
+    return await place_trip_selection(
         session,
-        trip,
         user.id,
-        payload.version,
-        rows,
+        request=payload,
+        place=place,
         warning=warning_code("hotspot_added"),
-        target_day=payload.day_date,
+        event_path="/hotspots",
+        event_properties={"kind": "hotspot"},
     )
 
 

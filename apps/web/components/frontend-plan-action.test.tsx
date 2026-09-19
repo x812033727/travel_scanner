@@ -145,15 +145,52 @@ describe("shared frontend planning action", () => {
     expect(within(dialog).getByRole("button", { name: copy.confirm }).hasAttribute("disabled")).toBe(true);
     expect(writes()).toHaveLength(0);
     fireEvent.change(within(dialog).getByLabelText(copy.chooseMerchant), { target: { value: merchantId } });
-    fireEvent.change(within(dialog).getByLabelText(copy.meal), { target: { value: "dinner" } });
+    // A dish lands in the lunch card unless the reader says otherwise.
+    expect((within(dialog).getByLabelText(copy.placement) as HTMLSelectElement).value).toBe("lunch");
+    fireEvent.change(within(dialog).getByLabelText(copy.placement), { target: { value: "dinner" } });
     fireEvent.change(within(dialog).getByLabelText(copy.chooseDay), { target: { value: "2026-11-12" } });
     expect(within(dialog).getByText(copy.mealWarning)).toBeTruthy();
     fireEvent.click(within(dialog).getByRole("button", { name: copy.confirm }));
     await screen.findByRole("link", { name: copy.openTrip });
     expect(writes()[0][0]).toBe(`/foods/${contentId}/trip-selections`);
     expect(JSON.parse(String(writes()[0][1]?.body))).toEqual({
-      trip_id: tripId, version: 3, day_date: "2026-11-12", merchant_id: merchantId, meal_role: "dinner",
+      trip_id: tripId, version: 3, day_date: "2026-11-12", merchant_id: merchantId, mode: "replace_meal", meal: "dinner",
     });
+  });
+
+  it("adds a hotspot as the day's lunch when asked, and appends by default without a mode", async () => {
+    setupTransport();
+    render(<TravelPlanAction item={item()} returnTo={returnTo} />);
+    const dialog = await open();
+    const placement = within(dialog).getByLabelText(copy.placement) as HTMLSelectElement;
+    expect(placement.value).toBe("append");
+    expect([...placement.options].map((option) => option.textContent)).toEqual([copy.placementAppend, copy.placementLunch, copy.placementDinner]);
+    expect(within(dialog).queryByText(copy.mealWarning)).toBeNull();
+    fireEvent.change(placement, { target: { value: "lunch" } });
+    expect(within(dialog).getByText(copy.mealWarning)).toBeTruthy();
+    fireEvent.click(within(dialog).getByRole("button", { name: copy.confirm }));
+    await screen.findByRole("link", { name: copy.openTrip });
+    expect(JSON.parse(String(writes()[0][1]?.body))).toEqual({ trip_id: tripId, version: 3, day_date: "2026-11-11", mode: "replace_meal", meal: "lunch" });
+  });
+
+  it("explains an occupied meal card and overwrites only on a second, explicit tap", async () => {
+    const transport = setupTransport();
+    transport.write.mockRejectedValueOnce(new ApiError("Occupied", 409, "meal_slot_occupied"));
+    render(<TravelPlanAction item={item()} returnTo={returnTo} />);
+    const dialog = await open();
+    fireEvent.change(within(dialog).getByLabelText(copy.placement), { target: { value: "dinner" } });
+    fireEvent.click(within(dialog).getByRole("button", { name: copy.confirm }));
+    await within(dialog).findByText(copy.mealOccupied);
+    // Not the version-conflict lockout: the reader can still confirm, or overwrite.
+    expect(within(dialog).queryByText(copy.conflict)).toBeNull();
+    expect(within(dialog).getByRole("button", { name: copy.confirm }).hasAttribute("disabled")).toBe(false);
+    expect(screen.queryByRole("link", { name: copy.openTrip })).toBeNull();
+    fireEvent.click(within(dialog).getByRole("button", { name: copy.overwrite }));
+    await screen.findByRole("link", { name: copy.openTrip });
+    const [first, second] = writes();
+    expect(JSON.parse(String(first[1]?.body))).not.toHaveProperty("overwrite");
+    expect(JSON.parse(String(second[1]?.body))).toEqual({ trip_id: tripId, version: 3, day_date: "2026-11-11", mode: "replace_meal", meal: "dinner", overwrite: true });
+    expect(new Headers(first[1]?.headers).get("Idempotency-Key")).not.toBe(new Headers(second[1]?.headers).get("Idempotency-Key"));
   });
 
   it("shows the every-day hotel replacement warning and waits for explicit confirmation", async () => {

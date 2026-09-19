@@ -17,6 +17,7 @@ const affiliates = {
   range: "30d", timezone: "Asia/Taipei", total: 17, previous_total: 10, change: 70,
   by_partner: [{ key: "travelpayouts", value: 12 }, { key: "klook", value: 5 }],
   by_placement: [{ key: "guide", value: 9 }, { key: "city", value: 4 }, { key: "unknown", value: 4 }],
+  by_article: [{ key: "tokyo-esim", value: 6 }, { key: "claude-code-vps", value: 2 }, { key: "unknown", value: 9 }],
   by_module: [{ key: "activities", value: 11 }, { key: "hotel", value: 6 }],
   by_destination: [{ key: "tokyo", value: 10 }],
   by_brand: [{ key: "klook", value: 5 }],
@@ -46,13 +47,15 @@ describe("AdminAnalyticsPanel", () => {
     expect(screen.getByText("權威營運總量")).toBeTruthy();
   });
 
-  it("breaks affiliate clicks down by partner and by the surface that rendered the button", async () => {
+  it("breaks affiliate clicks down by partner, by the surface that rendered the button and by the article", async () => {
     stubFetch();
     render(<AdminAnalyticsPanel />);
     expect((await screen.findByTestId("affiliate-total")).textContent).toBe("17");
     const section = screen.getByRole("region", { name: "聯盟外連" });
     expect(section.textContent).toContain("Placement");
     expect(section.textContent).toContain("guide");
+    expect(section.textContent).toContain("Article");
+    expect(section.textContent).toContain("tokyo-esim");
     expect(section.textContent).toContain("travelpayouts");
     expect(section.textContent).toContain("dst_activities_tokyo_zh-TW_guide");
     expect(section.textContent).toContain("70%");

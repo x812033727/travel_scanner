@@ -597,10 +597,12 @@ async def record_partner_click(
             module=partner.category,
             placement=placement,
             destination_id=None,
-            # The article that placed the link, until affiliate_clicks has a column of its own
-            # (2026-09-12-attribute-affiliate-clicks-to-the-guide). The table is append-only,
-            # so waiting for the column would lose this attribution for good.
+            # The article that placed the link. It went into destination_summary first, before
+            # article_slug existed, because the table is append-only and waiting would have
+            # lost the attribution for good; it stays there too, so the click report can read
+            # coalesce(article_slug, destination_summary) across both generations of rows.
             destination_summary=article.slug[:128],
+            article_slug=article.slug[:120],
             sub_id=coarse_sub_id("cnt", partner.category, None, locale, placement),
             target_host=(urlsplit(view.url).hostname or "")[:255],
             status="clicked",

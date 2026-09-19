@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-ask-origin-airport-at-trip-creation
 title: 建立旅程時就問出發機場，不要等到查機票才問
-status: open
+status: review
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:21:01Z
 created_at: 2026-09-06T20:33:00Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/web/components/new-trip-form.tsx
@@ -18,6 +18,7 @@ scope:
   - apps/web/messages/ko/newTrip.json
   - apps/web/messages/zh-TW/newTrip.json
   - apps/web/messages/zh-CN/newTrip.json
+  - apps/web/e2e/full-stack.spec.ts
 ---
 
 # 建立旅程時就問出發機場，不要等到查機票才問
@@ -34,14 +35,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 建立旅程的表單有出發機場，預設 TPE，桃園／松山／高雄三選一（和規劃工作台同一組）。
-- [ ] 新建立的旅程按「查機票」直接開始搜尋，不再被出發地面板攔一次。
-- [ ] 沒填也不會擋住建立旅程：後端仍然接受沒有出發地的旅程，`/search` 的面板仍是後備。
+- [x] 建立旅程的表單有出發機場，預設 TPE，桃園／松山／高雄三選一（和規劃工作台同一組）。
+- [x] 新建立的旅程按「查機票」直接開始搜尋，不再被出發地面板攔一次。
+- [x] 沒填也不會擋住建立旅程：後端仍然接受沒有出發地的旅程，`/search` 的面板仍是後備。
 
 ## Steps
 
-- [ ] `new-trip-form.tsx` 的旅伴那一步加上出發機場，送進 `POST /trips` 的 `origin_airport`。
-- [ ] 文案進五個語系的 `newTrip.json`；機場名稱沿用 `search.workbench.originTpe/Tsa/Khh`
+- [x] `new-trip-form.tsx` 的旅伴那一步加上出發機場，送進 `POST /trips` 的 `origin_airport`。
+- [x] 文案進五個語系的 `newTrip.json`；機場名稱沿用 `search.workbench.originTpe/Tsa/Khh`
       的說法，不要再寫一組。
 - [ ] （選配，會超出目前 scope）把預設值改成讀會員偏好，需要 API 那邊多一個欄位，
       要做的話另開一張 api 的任務，不要在這張裡動後端。
@@ -60,3 +61,50 @@ npm run check:i18n && npm run typecheck:web
 
 - 後端不用改：`origin_airport` 從 PR B 起就在 `SaveTripRequest`，PR #249 又補上 `PATCH`。
 - `/search` 的出發地面板留著：從搜尋存下來的舊旅程、或使用者略過這一格時仍然需要它。
+
+### 2026-09-19 done in repo (claude-fable-5-1)
+
+改了什麼：
+
+- `new-trip-form.tsx` 旅伴那一段（`<details>`「這趟有誰一起去？」）在成人／兒童／房間
+  之後多一個「出發機場」下拉，預設 TPE，選項 TPE／TSA／KHH（`originAirports`，和
+  `search-workbench.tsx` 同一組）。收合時 summary 會在人數旁邊顯示目前的機場，所以不展開
+  也看得到預設值是什麼。
+- 機場名稱直接 `useTranslations("search.workbench")` 讀 `originTpe/Tsa/Khh`：表單本來就
+  讀 `search.catalog`，next-intl 把所有 namespace 合成同一份 catalog（測試的 setup 也是），
+  所以沒有複製到 newTrip.json。newTrip.json 只新增這一格自己的文案 `travelers.origin`
+  （標籤）與 `travelers.originHelp`（說明），五個語系都有。
+- 送出的 body 多 `origin_airport`；值只在是三個代碼之一時才送，否則送 `null`。草稿是從
+  sessionStorage 還原的，一個 API 會 422 的代碼反而會擋住建立旅程，所以還原時
+  （`oneOf(originAirports, …)`，不認得就留 TPE）與組 body 時各擋一次。`validate()` 完全
+  不看這一格，沒填不會擋，後端 `origin_airport=None` 照收。
+- 沒動後端；選配的「預設值讀會員偏好」沒做（要 API 多一個欄位，另開 api 票）。
+- 說明文字刻意沒寫「之後可以改」：目前只有 `/search` 在旅程缺出發地時會問一次並 PATCH，
+  沒有其他地方能改既有旅程的出發機場。
+- 測試（`new-trip-form.test.tsx`）：預設送 TPE（加進既有的「requires only city and
+  dates」斷言）；選項正是工作台的三個名字、欄位和成人／兒童在同一個 `<details>`、選高雄
+  送 `KHH`；草稿還原 KHH、草稿裡不認得的 `ZZZ` 退回 TPE 且照樣建立成功。
+
+驗證（本機）：
+
+```
+npx vitest run components/new-trip-form.test.tsx
+ Test Files  1 passed (1)
+      Tests  44 passed (44)
+npm run check:i18n     -> Validated 5 locales across 25 namespaces.
+npm run typecheck:web  -> tsc --noEmit（exit 0）
+npm run lint:web       -> eslint . --max-warnings=0（exit 0）
+```
+
+留給 owner 的手動檢查（DoD 第二項在瀏覽器裡的確認）：建立一個空白旅程並選高雄，開旅程頁按
+「查機票 · 消耗 N 次」，應直接進搜尋條件，沒有「這趟旅程還沒有出發機場」那一段。
+`trip.data.origin_airport` 由 `search_criteria.trip_origin_airport()` 讀取，這次沒改它。
+
+**2026-09-19, after the first CI run (claude-fable-5-1).** The full-stack journey
+`a saved trip searches flights from its own criteria and takes a quote back` still expected the
+search page's 「這趟旅程還沒有出發機場」 prompt for a freshly created trip; with the form now
+sending `origin_airport: "TPE"` that prompt is gone, exactly as this ticket asks, and the journey
+timed out waiting for the 「桃園 TPE」 radio. The journey now asserts the create request carries
+`origin_airport: "TPE"`, that the search page shows the criteria at once with no prompt, and goes
+on to the search. The prompt itself is still covered for trips saved without an airport by the
+search-experience unit tests.

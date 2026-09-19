@@ -1637,6 +1637,35 @@ for _admin_auth_locale in LOCALES:
     ERROR_DETAILS[_admin_auth_locale].update(_ADMIN_AUTH_ERRORS[_admin_auth_locale])
 
 
+# The four trip-selections endpoints (app.trips.selections): a meal card the traveller
+# already chose a place for is only replaced when the request says so.
+_TRIP_SELECTION_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "meal_slot_occupied": (
+            "This meal already has a place you chose. Confirm again to replace it."
+        ),
+    },
+    "ja": {
+        "meal_slot_occupied": (
+            "この食事にはすでに選んだお店があります。置き換えるにはもう一度確認してください。"
+        ),
+    },
+    "ko": {
+        "meal_slot_occupied": (
+            "이 식사에는 이미 직접 고른 장소가 있습니다. 바꾸려면 다시 확인하세요."
+        ),
+    },
+    "zh-TW": {
+        "meal_slot_occupied": "這一餐已經有你選好的店家，確認要換掉再送出一次。",
+    },
+    "zh-CN": {
+        "meal_slot_occupied": "这一餐已经有你选好的店家，确认要换掉再提交一次。",
+    },
+}
+for _trip_selection_locale in LOCALES:
+    ERROR_DETAILS[_trip_selection_locale].update(_TRIP_SELECTION_ERRORS[_trip_selection_locale])
+
+
 def request_locale(headers: object) -> Locale:
     getter = getattr(headers, "get", None)
     return normalize_locale(getter("x-travel-locale") if callable(getter) else None)

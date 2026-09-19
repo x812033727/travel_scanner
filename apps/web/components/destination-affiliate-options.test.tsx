@@ -86,6 +86,21 @@ describe("DestinationAffiliateOptions", () => {
     await waitFor(() => expect(fetch).toHaveBeenCalledTimes(5));
   });
 
+  it("appends the article that placed the buttons to the clickout URL, and only then", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(ok({
+      destination_id: "tokyo", module: "activities", disclosure: "Disclosure",
+      options: [{ id: "offer-1", brand: "klook", display_name: "Klook", destination_id: "tokyo", module: "activities", cta: "到 Klook 查看", clickout_url: "/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide" }],
+    }))));
+    const view = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["activities"]} contextual placement="guide" article="tokyo-esim" />);
+    const button = await screen.findByRole("button", { name: /Klook/ });
+    expect(button.closest("form")?.getAttribute("action")).toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide&article=tokyo-esim");
+    // Without an article the URL is exactly what the API built, and the article is not part
+    // of the request identity: the offers are not fetched again.
+    view.rerender(<DestinationAffiliateOptions destinationId="tokyo" modules={["activities"]} contextual placement="guide" />);
+    expect(screen.getByRole("button", { name: /Klook/ }).closest("form")?.getAttribute("action")).toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide");
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
   it("renders nothing when no reviewed destination offer is public", async () => {
     vi.stubGlobal(
       "fetch",

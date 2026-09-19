@@ -133,6 +133,14 @@
     "ai_planner_max_output_tokens": {
       "label": "最大输出 Tokens"
     },
+    "ai_planner_user_budget": {
+      "label": "每个账号的 AI 规划次数上限",
+      "help": "时段内每次 AI 规划尝试都计一次，不论供应商是否响应；时段长度由 AI_PLANNER_USER_BUDGET_WINDOW_SECONDS 决定（默认一小时），默认 40 次。用完不会拒绝：行程改由已审核的目录排出，并附 planner_budget_reached 提示，只有 /intents 会返回 429 planner_budget_reached。调低后下一次请求即生效，无需重启。"
+    },
+    "ai_planner_ip_budget": {
+      "label": "每个来源 IP 的 AI 规划次数上限",
+      "help": "同一套计数改以来源 IP 为单位（默认 120 次），让新注册的账号共用同一个上限；请保持远高于每个账号的数字，家庭、办公室或运营商 NAT 才不会碰到。达到上限同样退回目录行程，/intents 则返回 429 planner_budget_reached。"
+    },
     "hotspot_guide_ai_default_provider": {
       "label": "景点 AI 搜索默认供应商"
     },

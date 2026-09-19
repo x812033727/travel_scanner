@@ -139,9 +139,9 @@ async def create_identity_batch(
         previous = json.loads(existing)
         if previous["digest"] != digest:
             raise AppError(409, "idempotency_conflict", "相同請求代碼不可用於不同配對批次")
-        state = await redis.get(batch_key(previous["id"]))
-        if state:
-            return dict(json.loads(state))
+        stored = await redis.get(batch_key(previous["id"]))
+        if stored:
+            return dict(json.loads(stored))
         raise AppError(409, "map_identity_batch_expired", "配對批次已過期，請建立新批次")
     await enforce_named_rate_limit(
         "map-identities-batch", str(user.id), limit=6, window_seconds=3600
@@ -156,7 +156,7 @@ async def create_identity_batch(
         key, json.dumps({"id": str(batch_id), "digest": digest}), ex=BATCH_TTL_SECONDS, nx=True
     ):
         raise AppError(409, "map_identity_batch_in_progress", "配對批次正在建立，請稍候")
-    state = {
+    state: dict[str, Any] = {
         "id": str(batch_id),
         "status": "queued",
         "total": len(payload.targets),
