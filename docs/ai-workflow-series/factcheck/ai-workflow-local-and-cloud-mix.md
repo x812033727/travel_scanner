@@ -245,3 +245,186 @@ FAQ 第 2 與第 4 題、摘要第 4 句全部重寫），第 2 條整段重寫�
 第四節第一段末與第三段、callout 全段、表格第五欄十一格、
 FAQ 第 1、2、4、6 題、摘要第 1 與第 4 句、導言第一段末句，
 以及三個 code 區塊改動過的行（`LOCAL_MODELS`、兩處 `with_options`、`OpenAI(timeout=…)`、`gemma4:31b`）。
+
+## 第二輪
+
+第二輪查核代理：未參與撰稿，也未參與第一輪。查核日 **2026-09-19**（與第一輪同一天）。
+文章的 `checked_on` 仍是 **2026-09-18**：本輪同樣**沒有依今天的頁面改掉任何一個數字**
+（七頁逐列重抄，全部與第一輪相同），依規格**不改這個日期**。
+
+範圍：只覆核第一輪改動過的每一段與新寫進去的每一句（第一輪報告結尾那份清單），
+加上研究紀錄 31 條 `verbatim_quote`、三個 code 區塊、界線七項與兄弟篇標題。
+**檢查了約 95 條主張，改了 11 處**（內容包 10 處、程式 2 塊；研究紀錄另外 6 處）。
+沒有打任何需要金鑰的 API，沒有用 `sources[]` 以外的網址替文章補事實，
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料**。
+
+### 重抓結果：七條今天都讀到正文
+
+| source | HTTP | bytes | body 是正文嗎 |
+| --- | --- | --- | --- |
+| `docs.ollama.com/api/openai-compatibility` | 200 | 499,325 | **是**（`<title>` OpenAI compatibility - Ollama；Direct cloud access／Local server usage／Endpoints／Supported request fields／Models 齊全） |
+| `docs.ollama.com/api` | 200 | 252,306 | **是**（Introduction - Ollama；Base URLs 表三列、Ollama API example 都在） |
+| `docs.ollama.com/cloud` | 200 | 277,581 | **是**（Cloud - Ollama；API Key／Models／Retirements／Data handling 六節齊全） |
+| `docs.ollama.com/faq` | 200 | 485,466 | **是**（FAQ - Ollama；三題隱私／綁定／停用雲端都讀得到） |
+| `ollama.com/library/gemma4` | 200 | 121,046 | **是**（50 個標籤、讀我檔、兩張表都在） |
+| `ollama.com/library/qwen3.6` | 200 | 84,737 | **是**（35 個標籤、讀我檔在；全份 HTML `cloud` **0 次**） |
+| `ollama.com/library/gpt-oss` | 200 | 88,805 | **是**（5 個標籤、MXFP4 一節在） |
+
+bytes 與第一輪完全相同，沒有一頁是 JS 空殼。
+
+### 研究紀錄的 `verbatim_quote`：程式比對，31 條全過
+
+用腳本把每條引文**綁回它自己的 `url`**，對「HTML 標籤去掉」的正文做連續字串比對
+（同時試原樣與空白收斂兩種）：**第一輪的 31 條今天全部命中，一條都不用換**。
+本輪另外**新增 3 條**（gemma4:31b-cloud 那一列、讀我檔「Ollama’s cloud」一節、模型庫頁四個分頁），
+重跑後 **34 條全過**。
+
+### 程式範例重驗
+
+| # | label | `py_compile` | 行數 | 本輪比對／改動 |
+| --- | --- | --- | --- | --- |
+| 1 | `hybrid_client.py` | **ok** | 43 → **49** | 新增 `ensure_local_tag()`；`OpenAI(base_url=, api_key=, timeout=30.0)`、`chat.completions.create(model=, messages=)`、`os.environ["OLLAMA_API_KEY"]` 逐字對讀我檔與 Ollama 兩頁 |
+| 2 | `redact_locally.py` | **ok** | 24 → **25** | 補上 `ensure_local_tag(model)`；`client.with_options(timeout=60.0)`、`response_format={"type": "json_object"}` |
+| 3 | `finish_in_cloud.py` | **ok** | 29 | 未動；`with_options(timeout=60.0)`、`gemma4:31b`、`str.replace`、`dict[str, str]` |
+
+- `OpenAI(timeout=…)` 與 `client.with_options(timeout=…).chat.completions.create(…)` 兩種寫法，
+  今天重讀 `https://raw.githubusercontent.com/openai/openai-python/main/README.md`（200、41,584 bytes）
+  的 Timeouts 一節，原文仍是
+  「`# Configure the default for all requests: client = OpenAI(timeout=20.0,)`」與
+  「`# Override per-request: client.with_options(timeout=5.0).chat.completions.create(...)`」——**文章寫對了**。
+  `create()` 沒有 `timeout` 關鍵字這件事也仍然成立。
+- `response_format` 這個關鍵字本輪另外拉了套件原始碼核簽名
+  （`openai-python/src/openai/resources/chat/completions/completions.py`，200、182,333 bytes）：
+  `response_format: completion_create_params.ResponseFormat | Omit = omit`，
+  文件字串寫「Setting to `{ "type": "json_object" }` enables the older JSON mode」——拼法與值的形狀都對。
+- `base_url` 兩種字面、`api_key='ollama'`（`# required but ignored`）今天原文未變，維持不動。
+- 三塊都沒有字面金鑰、沒有 `<YOUR_KEY>`、沒有 `eval`、沒有刪檔命令；
+  雲端金鑰只從 `os.environ["OLLAMA_API_KEY"]` 讀。
+- **白名單邏輯離線實跑**（用假的 `OpenAI` 用戶端，沒有連網）：
+  `gemma4:cloud`、`gemma4:31b-cloud`、`gpt-oss:20b-cloud` 在 `ask("local", …)` 與
+  `redact_locally(model=…)` 兩處都擋下來，錯誤訊息 `… is not a downloaded local tag`；
+  `get_client("local")` 回 `http://localhost:11434/v1` / `'ollama'` / `30.0`，
+  `get_client("cloud")` 回 `https://ollama.com/v1` / 環境變數金鑰 / `30.0`。
+
+### 改掉的 11 處
+
+1. **骨幹的反向錯誤（最重的一處）。** 第三節第一段第一輪改寫後寫成
+   「要判斷一個標籤到底在自己機器上跑還是送到 Ollama 的雲端，**看的是下面這張表最後一欄**，不是呼叫方式」——
+   把「標籤」單獨當成判準，正好是第一輪骨幹修正的**反面**，而且和本篇自己的程式打架
+   （第三塊 code 把**不帶 cloud** 的 `gemma4:31b` 當雲端模型送到 `https://ollama.com/v1`）。
+   `sources[2]` 的 Models 一節原文是
+   「`For API requests to ollama.com, use the name returned by this list, such as gemma4:31b.`」
+   ——不帶 cloud 的名稱送到 ollama.com 一樣跑在雲端。
+   已改成「看的**不是呼叫方式，而是網址加標籤**：這張表最後一欄只管標籤這一半，
+   雲端頁寫對 ollama.com 送請求用的正是 gemma4:31b 這種不帶 cloud 的名稱」。
+2. **第二節的 h2 標題也還停在舊骨幹上。** 「同一支 Python：**base_url 決定資料去哪裡**」
+   與第一輪的結論（base_url 一件事決定不了）矛盾，已改成「**base_url 和標籤**決定資料去哪裡」。
+3. **表格 `gemma4:31b` 那一格自相矛盾。** 欄名是「跑在哪裡」，格子卻寫
+   「**本機**；也是官方直接雲端存取範例寫的模型名稱」。依 `sources[2]` 上面那句原文，
+   已改成「下載後在本機；雲端頁寫對 ollama.com 送 API 請求也用這個名稱，那一種就跑在雲端」。
+4. **表格 cloud 那一格超出原文。** 原本寫兩個標籤都「讀我檔列在「Ollama’s cloud」底下」，
+   但 `sources[4]` 讀我檔那一節底下只有一行 `ollama run gemma4:31b-cloud`，
+   `gemma4:cloud` 只出現在上面的標籤清單。已改成
+   「讀我檔的「Ollama’s cloud」一節寫 ollama run gemma4:31b-cloud」。
+5. **程式：白名單擋不到真正碰個資的那支函式。** 第一輪新增的 `LOCAL_MODELS` 檢查只寫在 `ask()` 裡，
+   但 `redact_locally()` 自己收一個 `model` 參數、直接呼叫 `get_client("local")`，**完全繞過檢查**——
+   與正文和 callout 講的「去識別化那支函式要同時釘死網址與標籤」不一致。
+   已把檢查抽成 `ensure_local_tag()`，`ask()` 與 `redact_locally()` 進本機那一步之前都跑一次；
+   第二塊的 `label` 同步改成「延續 hybrid_client.py 的 get_client 與 ensure_local_tag」，
+   第四節第二段與第三段的敘述一併改。行數 43→49、24→25，三塊 `py_compile` 全過。
+6. **導言末句與第二節、FAQ 第一題打架。** 導言寫「程式上本機與雲端**只差 base_url 那一行**」，
+   但第一輪已經把第二節與 FAQ 第一題改成「差別只有兩處：`base_url`、`api_key` 與 `model`」，
+   程式本身也是換三個值。已改成「差的只有 base_url、api_key 和 model」。
+7. **Base URLs 表的歸屬放錯頁。** 正文第二節第一段與摘要第二句都寫成「**OpenAI 相容端點**文件」的表，
+   但那張表在 `sources[1]`（`docs.ollama.com/api`，API 介紹頁），
+   「OpenAI compatibility」只是表裡的一列；`sources[0]` 那一頁沒有這張表。
+   兩處都改成「Ollama 的 **API 文件**……同一張 **Base URLs 表**裡，OpenAI 相容那一列」。
+8. **兩處否定句超出「本文引用的這幾頁」。** 第五節第一段「**沒有一頁**公開本機和雲端實際回覆要等多久」
+   與 FAQ 第五題「因為**沒有一份官方頁**公開這個數字」是對所有官方頁的全稱否定，
+   我們只讀了七頁。兩處都改成「**本文引用的官方頁**沒有公開……」。
+9. **一個沒有來源的最高級。** 第四節第一段「這裡示範**最常見**的敏感步驟」改成「一個**典型**的敏感步驟」。
+10. **研究紀錄：一條引文的涵蓋範圍寫寬了。** 第 21 條說「gemma4:cloud 與 gemma4:31b-cloud 那兩列」，
+    但引文 `- · 256K context window · Text, Image · 2 months ago` 只是 gemma4:cloud 那一列
+    （31b-cloud 那一列是 `5 months ago`）。已把 `fact` 寫精確，並補上 31b-cloud 那一列自己的引文。
+    另補兩條（「Ollama’s cloud」一節、模型庫頁的四個分頁），`must_not_write` 新增兩條
+    （反向的單一條件、只在 `ask` 擋標籤）。
+11. **字數。** 為了容納上面的修正，刪掉兩句**同段已經講過**的贅述——
+    第四節第一段的「這樣走一趟，送出去的就只有代號版本的文字」與
+    第五節第一段的「能確定的只有上面那張表裡的規格數字」。
+    **沒有刪掉任何但書、限定詞或歸屬**（本輪反而補回兩個限定詞，見第 8 條）。
+    段落字數 2,913 → **2,955**。
+
+### 查過而且正確、本輪沒有動的部分
+
+- **第一輪的骨幹修正站得住。** `sources[0]`「`Through a signed-in local server, select a cloud model such as gemma4:cloud.`」
+  與 `sources[1]`「`To use cloud models through your local server, sign in to Ollama.`」今天逐字未變，
+  第一節第二段、callout、FAQ 第 2／第 4 題、摘要第 4 句的新寫法全部撐得住。
+- **callout 全段重驗通過**：大小欄「-」、`Cloud models do not need to be downloaded.`、
+  已登入本機伺服器選 `gemma4:cloud`、`Ollama can run in local only mode by disabling Ollama’s cloud features.`
+  四項都有原文，停用雲端的**設定方式**確實只用一句帶過並指向「Ollama 入門」，沒有重講。
+- **雲端範例模型 `gemma4:31b` 正確。** `ollama.com/library/gemma4` 的標籤清單上有
+  `gemma4:31b 20GB · 256K context window · Text, Image`（全頁 1 次），
+  `sources[0]` 的 Direct cloud access 範例寫 `model="gemma4:31b"`，
+  `sources[2]` 的 Models 一節也寫 `such as gemma4:31b`——**「31b 這個標籤存在」與「官方拿它當雲端範例」兩件事都有原文**。
+- **`:cloud` 跑在 Ollama 雲端、不帶 cloud 的標籤跑本機**：前半有原文（`sources[0]` 稱 `gemma4:cloud` 為 cloud model、
+  `sources[2]` 寫 App/CLI 用 `gemma4:cloud`、雲端模型不用下載）；
+  **後半只在「已下載的標籤在本機跑」這個範圍內成立**，不能反過來當成單一判準（見改動第 1、3 條）。
+- **「三頁四個分頁」今天逐頁確認**：gemma4／qwen3.6／gpt-oss 上方都是 `CLI cURL Python JavaScript`，
+  cURL 分頁印的都是 `curl http://localhost:11434/api/chat`。
+- **qwen3.6 的限縮寫法仍然正確**：今天整份 HTML 搜尋 `cloud` **0 次**，
+  文章寫的是「查證當天那一頁沒有列出」，不是「沒有雲端版本」。
+- **標籤與規格逐列重抄全部相同**（7.2GB／9.6GB／7.6GB／19GB／20GB／18GB／23GB／14GB／65GB 與各列上下文視窗），
+  `26B (Mixture of Experts model with 4B active parameters)`、MXFP4 的 16GB／80GB、
+  `lower latency, local, or specialized use-cases.`、退場與資料處理兩段、常見問答三句，今天原文全部未變。
+- **界線重掃全部通過**：全篇 `個資法`／`法規`／`合規`／`GDPR` 各 **0** 次；沒有購買、訂閱或投資建議；
+  沒有推薦式比價、沒有價格數字；廠商宣稱全部帶歸屬（官方／讀我檔／雲端頁／常見問答）；
+  沒有 beta／預覽被寫成已推出；沒有「台灣可用」；只有**一個** `warning` callout、**沒有**免責段落；
+  沒有驚嘆號、沒有簡體字（檢查器已驗）。「本站沒有實測」在正文、摘要、FAQ 共 4 處。
+- **`summary` ⊆ 正文、FAQ 答案 ⊆ 正文、表格每一格與圖解四格的數字**都在正文或表格裡（檢查器的 summary／diagram 數字規則通過）；
+  `diagram.caption` 與內容包一致，`hero_label` 未動。
+- **結尾兩個 link 逐字正確**：第一個 `多模型 AI 工作流教學：從拆任務到串接不同模型` → hub；
+  第二個 → `ollama-getting-started`，text 逐字等於那篇的 zh-TW title
+  `Ollama 入門：Windows、Mac 安裝與第一個模型`。
+- **正文點名的六個站內標題今天逐字比對全部相同**：
+  `一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法`、
+  `統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式`、
+  `模型之間交接資料：JSON Schema 與結構化輸出`（`ai-workflow-structured-handoff`）、
+  `Ollama 入門：Windows、Mac 安裝與第一個模型`、
+  `本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算`、`本機 RAG：跟自己的文件聊天`。
+  協調者另外點名的 `失敗案例與防護：迴圈、費用爆炸與代理間注入` 與
+  `一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端` 本篇沒有點名，不需要處理。
+- **與三篇必連文的分工**：本篇沒有與它們矛盾的句子；第一輪換掉表格第五欄與 FAQ 第六題之後，
+  剩下的重複只有 gemma4 五列的**數字**（數字只有一種寫法）與「11434 埠預設綁定」一句，
+  兩者都是一句帶過，沒有整段重講；安裝、成本試算、RAG 三個主題各一句並指名文章。
+- **`models-seen.json`**：本輪**沒有新增也沒有修改**（清單目前 31 筆，其他代理另外加過 2 筆）。
+  第一輪新增的四筆今天重驗，`gemma4:cloud`、`gemma4:31b-cloud`、`gpt-oss:20b-cloud`、`gpt-oss:120b-cloud`
+  的 verbatim 在各自的模型庫頁上都搜尋得到；本輪沒有引入任何清單外的模型 id。
+
+### 留給站主的事
+
+1. **第一輪那四件事本輪都沒有改變**：`base_url` 帶不帶結尾斜線、與「Ollama 入門」重複的 gemma4 數字、
+   雲端收尾要不要寫回 `gpt-oss:120b`（要寫回就得先把 `https://ollama.com/api/tags` 加進 `sources[]`）、
+   `openai` 套件沒裝在本 repo 的 venv 裡（`with_options` 與 `OpenAI(timeout=…)` 只核對簽名、沒有實跑真請求）。
+2. **必連文章「Ollama 入門」有一句看起來過時了。** 那篇寫「相容到什麼程度官方逐項列了：……**不支援 `tool_choice`**」，
+   但 `https://docs.ollama.com/api/openai-compatibility` 今天的 `/v1/chat/completions`
+   「Supported request fields」清單裡**有 `tool_choice`**。本篇沒有提 `tool_choice`，所以不構成矛盾，
+   本輪也不能動那個檔；建議站主替那一篇排一次重查。
+3. **表格「跑在哪裡」這一欄的語意**本輪只修到與來源一致（標籤這一半），
+   若站主覺得欄名仍容易被讀成單一判準，可以把欄名改成「標籤這一半：本機還是雲端」。
+
+### 自檢
+
+```
+WARN - lint raw_internal_url: 2 article link(s) as raw URLs; run `pack_cli relink` so they become article inlines that follow the target's publication
+OK ai-workflow-local-and-cloud-mix paragraphs 2955 code_blocks 3 sources 7
+```
+
+`OK`，沒有 FAIL。`raw_internal_url` 這個 WARN 是預期的。
+段落字數 **2,955**（1,800–3,000），code 區塊 3 塊（49／25／29 行），sources 7 條。
+
+### 第二輪結論
+
+`ok`。改的 11 處裡有 4 處（第 1、2、3、5 條）是第一輪骨幹修正**沒有改乾淨的殘留**：
+正文、h2 標題與表格仍把「標籤」當成單一判準，而白名單也還沒擋到真正碰個資的那支函式。
+補完之後，正文、標題、表格、callout、FAQ 與三塊程式對「資料往哪裡走」的說法已經一致，
+每一句都回得到 `sources[]` 的原文。沒有換掉任何程式範例，沒有動到查證過的數字與日期。
