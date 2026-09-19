@@ -40,6 +40,8 @@ scope:
   - apps/web/public/guides/tech-news-apple-september-hardware-20260909
   - apps/api/app/guides/content/crypto-news-eba-third-party-risk-20260918.json
   - apps/web/public/guides/crypto-news-eba-third-party-risk-20260918
+  - apps/api/app/guides/content/crypto-news-occ-three-trust-charters-20260918.json
+  - apps/web/public/guides/crypto-news-occ-three-trust-charters-20260918
 ---
 
 # News batch 4.6: news since 2026-09-18 (AI 4, tech 4, crypto 3, zh-TW only) plus two updates
