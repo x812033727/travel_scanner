@@ -335,6 +335,71 @@ def _hub(accent: str) -> str:
     return b + arrow(1185, 1275, 440, INK, 8) + tick(1335, 440, 52, other)
 
 
+# --- batch 2: swapping the model behind a coding agent ---------------------------------------
+
+
+def _cc_custom_model(accent: str) -> str:
+    # A terminal, the two variables drawn as one card with a lock, and two destinations: the
+    # default endpoint nothing goes to any more, and the endpoint the variables name.
+    other = OTHER
+    b = terminal(230, 330, 320, 250, accent)
+    b += arrow(570, 670, 455, INK, 8)
+    b += card(670, 370, 200, 170, accent, PALE, rows=2)
+    b += lock(700, 570)
+    b += line(870, 455, 950, 455, INK, 8)
+    b += line(950, 455, 1030, 330, INK, 8) + line(950, 455, 1030, 580, INK, 8)
+    b += cloud(1040, 230, 320, 200, other)
+    return b + model(1200, 600, 78, accent)
+
+
+def _codex_providers(accent: str) -> str:
+    # One configuration file whose provider blocks each point at their own model; the dashed
+    # frame is the table they all live in, the lock is the key that stays in the environment.
+    other = OTHER
+    b = sheet(240, 250, 320, 400, accent, rows=0)
+    for i in range(3):
+        y = 310 + i * 120
+        b += rect(280, y, 240, 84, PALE if i == 0 else "#FFFFFF", accent, 16)
+        b += arrow(600, 800, y + 42, INK, 7)
+        b += model(900, y + 42, 54, accent if i == 0 else other)
+    return b + outline(820, 250, 480, 400, other) + lock(1150, 390)
+
+
+def _glm_plan(accent: str) -> str:
+    # The alias the interface shows, the mapping in the middle, and the model that answers:
+    # what you see and what runs are two different cards.
+    other = OTHER
+    b = terminal(230, 320, 300, 250, accent)
+    b += arrow(540, 650, 445, INK, 8)
+    b += card(650, 340, 260, 210, other, PALE, rows=3)
+    b += arrow(920, 1040, 445, INK, 8)
+    b += model(1160, 445, 88, accent)
+    return b + tick(1320, 620, 40, other)
+
+
+def _ollama_agent(accent: str) -> str:
+    # The machine on the left holds the model. One client reaches it directly; the other has
+    # to pass through a translating step first.
+    other = OTHER
+    b = rect(220, 320, 330, 280, "#FFFFFF", INK, 28) + model(385, 460, 74, accent)
+    b += arrow(560, 700, 340, INK, 8) + terminal(700, 230, 300, 220, accent)
+    b += arrow(560, 660, 570, INK, 8) + card(660, 500, 190, 140, other, PALE, rows=2)
+    return b + arrow(860, 1000, 570, INK, 8) + terminal(1000, 460, 300, 220, other)
+
+
+def _litellm_gateway(accent: str) -> str:
+    # Two clients on the left, one gateway in the middle, three upstreams on the right: the
+    # shape the article argues for.
+    other = OTHER
+    b = terminal(210, 250, 280, 200, accent) + terminal(210, 490, 280, 200, other)
+    b += arrow(500, 640, 350, INK, 8) + arrow(500, 640, 590, INK, 8)
+    b += rect(640, 300, 260, 330, PALE, accent, 28) + gear(770, 465, 62, accent)
+    for i in range(3):
+        y = 300 + i * 150
+        b += arrow(910, 1090, y, INK, 7) + model(1190, y, 56, accent if i == 1 else other)
+    return b
+
+
 _DRAWINGS: dict[str, object] = {
     HUB: _hub,
     "ai-workflow-basics": _basics,
@@ -349,6 +414,11 @@ _DRAWINGS: dict[str, object] = {
     "ai-workflow-local-and-cloud-mix": _local_cloud,
     "ai-workflow-tracing-evals": _tracing_evals,
     "ai-workflow-failures-and-guardrails": _failures_guardrails,
+    "ai-workflow-claude-code-custom-model": _cc_custom_model,
+    "ai-workflow-codex-model-providers": _codex_providers,
+    "ai-workflow-glm-coding-plan": _glm_plan,
+    "ai-workflow-ollama-coding-agent": _ollama_agent,
+    "ai-workflow-litellm-gateway": _litellm_gateway,
 }
 
 

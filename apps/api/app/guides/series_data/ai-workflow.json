@@ -18,6 +18,10 @@
     {
       "id": "D",
       "title": "營運：本機混搭、追蹤與防護"
+    },
+    {
+      "id": "E",
+      "title": "換模型：指到別家、本機與自架端點"
     }
   ],
   "paths": [
@@ -52,6 +56,17 @@
         "ai-workflow-coding-agents-division",
         "ai-workflow-tracing-evals",
         "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "id": "swap",
+      "title": "換模型路線",
+      "slugs": [
+        "ai-workflow-claude-code-custom-model",
+        "ai-workflow-codex-model-providers",
+        "ai-workflow-glm-coding-plan",
+        "ai-workflow-ollama-coding-agent",
+        "ai-workflow-litellm-gateway"
       ]
     }
   ],
@@ -462,6 +477,176 @@
         "ai-workflow-tracing-evals",
         "ai-workflow-structured-handoff",
         "ai-workflow-local-and-cloud-mix"
+      ]
+    },
+    {
+      "slug": "ai-workflow-claude-code-custom-model",
+      "title": "把 Claude Code 指到別的模型端點：ANTHROPIC_BASE_URL 與憑證怎麼設",
+      "outcome": "Claude Code 只要設好 ANTHROPIC_BASE_URL 與一個憑證變數，就會把每一次請求送到你指定的網址。",
+      "sources": [
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+        "https://docs.claude.com/en/docs/claude-code/env-vars",
+        "https://docs.claude.com/en/docs/claude-code/model-config"
+      ],
+      "number": 13,
+      "group": "E",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "ANTHROPIC_BASE_URL",
+        "ANTHROPIC_AUTH_TOKEN",
+        "閘道",
+        "gateway",
+        "apiKeyHelper",
+        "自訂端點"
+      ],
+      "prerequisites": [
+        "ai-workflow-coding-agents-division"
+      ],
+      "related": [
+        "ai-workflow-glm-coding-plan",
+        "ai-workflow-litellm-gateway",
+        "ai-workflow-codex-model-providers"
+      ]
+    },
+    {
+      "slug": "ai-workflow-codex-model-providers",
+      "title": "Codex CLI 換模型：config.toml 的 model_providers 怎麼寫",
+      "outcome": "Codex 把「要連到哪個模型」拆成兩個設定：model 決定模型名稱，model_provider 指向一個你自己定義的供應商區塊。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/config-file/config-basic",
+        "https://learn.chatgpt.com/docs/config-file/config-advanced",
+        "https://developers.openai.com/codex/config-file/config-reference",
+        "https://docs.ollama.com/openai"
+      ],
+      "number": 14,
+      "group": "E",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "model_providers",
+        "config.toml",
+        "wire_api",
+        "oss_provider",
+        "openai_base_url"
+      ],
+      "prerequisites": [
+        "ai-workflow-coding-agents-division"
+      ],
+      "related": [
+        "ai-workflow-claude-code-custom-model",
+        "ai-workflow-litellm-gateway",
+        "ai-workflow-ollama-coding-agent"
+      ]
+    },
+    {
+      "slug": "ai-workflow-glm-coding-plan",
+      "title": "用 GLM Coding Plan 驅動 Claude Code：Z.ai 官方文件的設定與額度",
+      "outcome": "Z.ai 的 GLM Coding Plan 提供一個 Anthropic 格式的端點，官方文件教的接法就是把 Claude Code 的 ANTHROPIC_BASE_URL 指過去。",
+      "sources": [
+        "https://docs.z.ai/scenario-example/develop-tools/claude",
+        "https://docs.z.ai/devpack/overview",
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway"
+      ],
+      "number": 15,
+      "group": "E",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "GLM",
+        "Z.ai",
+        "GLM Coding Plan",
+        "模型對應",
+        "點數",
+        "訂閱"
+      ],
+      "prerequisites": [
+        "ai-workflow-claude-code-custom-model"
+      ],
+      "related": [
+        "ai-workflow-claude-code-custom-model",
+        "ai-workflow-litellm-gateway",
+        "ai-workflow-cost-quality-latency"
+      ]
+    },
+    {
+      "slug": "ai-workflow-ollama-coding-agent",
+      "title": "本機 Ollama 接命令列編碼代理：Codex 有內建，Claude Code 要轉一手",
+      "outcome": "把自己電腦上的模型接給命令列編碼代理，兩邊的難度差很多：Codex 內建本機供應商，加上一個旗標就跑；Claude Code 只認 Anthropic Messages 格式，中間必須有人翻譯。",
+      "sources": [
+        "https://docs.ollama.com/openai",
+        "https://docs.ollama.com/faq",
+        "https://learn.chatgpt.com/docs/config-file/config-advanced",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol"
+      ],
+      "number": 16,
+      "group": "E",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Ollama",
+        "本機模型",
+        "oss",
+        "tool_choice",
+        "OLLAMA_CONTEXT_LENGTH",
+        "num_ctx"
+      ],
+      "prerequisites": [
+        "ai-workflow-local-and-cloud-mix",
+        "ai-workflow-codex-model-providers"
+      ],
+      "related": [
+        "ai-workflow-codex-model-providers",
+        "ai-workflow-litellm-gateway",
+        "ai-workflow-local-and-cloud-mix"
+      ]
+    },
+    {
+      "slug": "ai-workflow-litellm-gateway",
+      "title": "自架一個閘道，同時餵 Claude Code 與 Codex：LiteLLM Proxy 實作",
+      "outcome": "Claude Code 講 Anthropic Messages，Codex 講 Responses，兩邊要接同一批模型就需要一個中間層。",
+      "sources": [
+        "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+        "https://docs.litellm.ai/docs/tutorials/openai_codex",
+        "https://docs.litellm.ai/docs/proxy/quick_start",
+        "https://docs.litellm.ai/docs/anthropic_unified",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+        "https://docs.ollama.com/openai"
+      ],
+      "number": 17,
+      "group": "E",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "LiteLLM",
+        "Proxy",
+        "自架閘道",
+        "虛擬金鑰",
+        "master_key",
+        "config.yaml"
+      ],
+      "prerequisites": [
+        "ai-workflow-claude-code-custom-model",
+        "ai-workflow-codex-model-providers"
+      ],
+      "related": [
+        "ai-workflow-claude-code-custom-model",
+        "ai-workflow-codex-model-providers",
+        "ai-workflow-ollama-coding-agent"
       ]
     }
   ]

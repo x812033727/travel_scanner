@@ -1,0 +1,255 @@
+{
+  "slug": "ai-workflow-litellm-gateway",
+  "title": "自架一個閘道，同時餵 Claude Code 與 Codex：LiteLLM Proxy 實作",
+  "checked_on": "2026-09-19",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "LiteLLM Docs: Claude Code Quickstart",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "LiteLLM Docs: Codex",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "LiteLLM Docs: LiteLLM AI Gateway (Proxy) Quickstart",
+      "url": "https://docs.litellm.ai/docs/proxy/quick_start",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "LiteLLM Docs: /v1/messages",
+      "url": "https://docs.litellm.ai/docs/anthropic_unified",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Claude Code gateway compatibility guide",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Other LLM gateways",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Ollama Docs: OpenAI compatibility",
+      "url": "https://docs.ollama.com/openai",
+      "checked_on": "2026-09-19"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "LiteLLM 有一份專門教 Claude Code 透過它呼叫模型的文件。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This tutorial shows how to call Claude models through LiteLLM proxy from Claude Code."
+    },
+    {
+      "fact": "建議做法是把 ANTHROPIC_BASE_URL 指到閘道的根位址。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_BASE_URL=\"http://0.0.0.0:4000\""
+    },
+    {
+      "fact": "另一種指法是指到閘道底下的 anthropic 轉送路徑。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_BASE_URL=\"http://0.0.0.0:4000/anthropic\""
+    },
+    {
+      "fact": "閘道用設定檔啟動，文件寫它跑在 4000 埠。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "litellm --config /path/to/config.yaml"
+    },
+    {
+      "fact": "主金鑰讓 Claude Code 用得到所有模型，虛擬金鑰只限於該金鑰有權使用的模型。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A master key gives Claude Code access to all proxy models. A virtual key is limited to the models that key has access to."
+    },
+    {
+      "fact": "apiKeyHelper 的優先權低於 ANTHROPIC_AUTH_TOKEN 與 ANTHROPIC_API_KEY。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The apiKeyHelper has lower precedence than ANTHROPIC_AUTH_TOKEN or ANTHROPIC_API_KEY."
+    },
+    {
+      "fact": "驗證用的請求打的是閘道的 /v1/messages，憑證放在 Authorization 標頭。",
+      "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Test that your proxy is working correctly:"
+    },
+    {
+      "fact": "LiteLLM 的 Codex 整合文件把追蹤花費與用虛擬金鑰控制模型存取列為好處。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Track spend and usage with LiteLLM's built-in analytics"
+    },
+    {
+      "fact": "同一頁也把用虛擬金鑰控制模型存取列為好處。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Control model access with virtual keys"
+    },
+    {
+      "fact": "Codex 側的設定把 base_url 指到閘道的 /v1。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"http://localhost:4000/v1\""
+    },
+    {
+      "fact": "Codex 側的 wire_api 設成 responses。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "wire_api = \"responses\""
+    },
+    {
+      "fact": "Codex 側的金鑰從 env_key 指定的環境變數讀。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "env_key = \"LITELLM_API_KEY\""
+    },
+    {
+      "fact": "官方 Codex 範例的設定檔帶 drop_params。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "drop_params: true"
+    },
+    {
+      "fact": "官方 Codex 範例把串流閒置逾時調得比預設值長。",
+      "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "stream_idle_timeout_ms = 7200000"
+    },
+    {
+      "fact": "設定檔的形狀是 model_list 底下每項一個 model_name 與 litellm_params。",
+      "url": "https://docs.litellm.ai/docs/proxy/quick_start",
+      "is_vendor_claim": true,
+      "verbatim_quote": "litellm --config your_config.yaml"
+    },
+    {
+      "fact": "接 OpenAI 相容的自架端點時，官方範例在同一項裡多給一個 api_base。",
+      "url": "https://docs.litellm.ai/docs/proxy/quick_start",
+      "is_vendor_claim": true,
+      "verbatim_quote": "api_base: <your-vllm-api-base>"
+    },
+    {
+      "fact": "閘道的 /v1/messages 收的是 Anthropic messages API 格式的請求。",
+      "url": "https://docs.litellm.ai/docs/anthropic_unified",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Request body will be in the Anthropic messages API format."
+    },
+    {
+      "fact": "這個端點遵循 Anthropic messages 規格。",
+      "url": "https://docs.litellm.ai/docs/anthropic_unified",
+      "is_vendor_claim": true,
+      "verbatim_quote": "litellm follows the Anthropic messages specification for this endpoint."
+    },
+    {
+      "fact": "回應必須以串流送出，閘道先收完整段再轉送會讓 Claude Code 卡住。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Stream inference responses. Claude Code reads the stream as it arrives, so if your gateway buffers complete responses before relaying them, Claude Code stalls."
+    },
+    {
+      "fact": "串流靜默預設超過 300 秒就中斷。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "aborts a stream that goes silent for 300 seconds by default"
+    },
+    {
+      "fact": "Claude Code 能講的格式有限，用 ANTHROPIC_BASE_URL 連線時講的是 Anthropic Messages。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A gateway must expose at least one of the following API formats to Claude Code clients."
+    },
+    {
+      "fact": "閘道會變成組織要營運的基礎設施，沒有跟上用戶端的更新就會壞掉對應功能。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The tradeoff is that the gateway becomes infrastructure your organization operates."
+    },
+    {
+      "fact": "Anthropic 不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic doesn't endorse, maintain, or audit third-party gateway products, and doesn't support routing Claude Code to non-Claude models through any gateway."
+    },
+    {
+      "fact": "Ollama 的相容端點要求用戶端填一個金鑰值，但它會忽略。",
+      "url": "https://docs.ollama.com/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The client requires an API key value, but Ollama ignores it."
+    }
+  ],
+  "unverified_or_excluded": [
+    "LiteLLM 的 Claude Code 頁還有 Okta SSO、Max 訂閱、BYOK、細緻成本追蹤、預算狀態列、提示詞快取路由等一整排延伸文件，各自有前提與版本需求，本篇只做最小可用的那一條路。",
+    "LiteLLM 的安裝方式官方給了 uv 工具安裝與 Docker 兩種，本篇沒有教安裝，因為兩種都會隨版本改變，指令以官方頁面當天為準。",
+    "官方 Codex 範例裡的 stream_idle_timeout_ms 是 7200000 毫秒，遠大於 Codex 設定參考寫的預設 300000；文件沒有解釋原因，本篇只寫官方範例調得比預設長，沒有推測為什麼。",
+    "官方 Codex 範例還帶了 projects 的 trust_level 與 tui 的模型可用性設定，屬於 Codex 自己的專案信任與介面設定，和換供應商無關，沒有寫進來。",
+    "虛擬金鑰的建立、預算與速率限制有獨立的文件頁，本篇只寫到主金鑰與虛擬金鑰的差別，沒有展開發卡流程。",
+    "/v1/messages 頁列出成本追蹤、記錄、串流、備援、負載平衡與護欄六項支援狀態，其中護欄註明只在非串流時生效；本篇沒有逐項抄，只用到與兩個用戶端直接相關的部分。",
+    "本站沒有把這套閘道架在正式環境跑過，沒有量測任何延遲或費用；yaml 與 bash 範例只做語法檢查，沒有對任何端點實際送出請求。",
+    "把只會 Chat Completions 的上游翻譯成 Responses 給 Codex 用，這件事在第二篇留下的疑問（官方兩頁對 wire_api 說法不一致）仍然沒有解決，本篇沒有替它下結論。",
+    "官方兩份整合文件的設定檔範例都列了 Gemini 一項；本站的範例只留 Anthropic、OpenAI 與一台本機伺服器三項，因為系列的檢查器會把 GEMINI_API_KEY 這類環境變數名稱誤判成模型 id，而多列一家並不影響這一篇要示範的事。"
+  ],
+  "must_not_write": [
+    "不寫 LiteLLM 與其他閘道產品的比較，也不評價任何產品。",
+    "不重寫 ai-workflow-unified-api-layer 已經講過的 LiteLLM SDK 與 OpenRouter 用法，本篇只講自架的 Proxy。",
+    "不重寫 ai-workflow-tracing-evals 已經講過的追蹤與評測做法。",
+    "不建議讀者一定要自架；沒有理由的人應該直接設兩個變數。",
+    "不宣稱自架閘道能讓非 Claude 模型在 Claude Code 上取得官方支援。"
+  ],
+  "editorial_brief": "批次 2 的收尾篇，把前四篇的線收在一起：第一篇的 Claude Code 端、第二篇的 Codex 端、第四篇卡住的本機模型，都掛到同一個自架閘道上。切角是最小可用的一條路加上兩個維運提醒（串流不能緩衝、心跳不能濾掉），並在結尾重申第一篇那條支援界線，避免讀者以為自架就等於受支援。",
+  "code_samples": [
+    {
+      "label": "litellm_config.yaml：一份清單同時服務兩個用戶端",
+      "language": "yaml",
+      "lines": 23,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.litellm.ai/docs/proxy/quick_start",
+        "https://docs.litellm.ai/docs/tutorials/openai_codex",
+        "https://docs.ollama.com/openai"
+      ]
+    },
+    {
+      "label": "啟動閘道，驗證，再接兩個用戶端（bash）",
+      "language": "bash",
+      "lines": 25,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+        "https://docs.litellm.ai/docs/tutorials/openai_codex"
+      ]
+    }
+  ],
+  "hero_label": "一個位址，兩個工具",
+  "diagram": {
+    "layout": "flow",
+    "title": "自架閘道收攏四件事",
+    "caption": "自架閘道把四件事收在同一層，依 LiteLLM 與 Claude Code 的官方文件整理，2026 年 9 月查證。",
+    "nodes": [
+      [
+        "一份設定檔",
+        "列出所有上游模型"
+      ],
+      [
+        "一個位址",
+        "文件寫跑在 4000 埠"
+      ],
+      [
+        "兩種協定",
+        "Messages 與 Responses"
+      ],
+      [
+        "一處看帳",
+        "用量與金鑰都在這"
+      ]
+    ]
+  }
+}

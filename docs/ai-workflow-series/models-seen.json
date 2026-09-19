@@ -249,6 +249,38 @@
       "verbatim": "send model=openrouter/<your-openrouter-model> to send it to open router",
       "checked_on": "2026-09-19",
       "notes": "Composed string, so the verbatim is the page's prefix rule rather than the id itself: LiteLLM's openrouter/ prefix plus the OpenRouter catalog id google/gemini-3.8-flash recorded separately above. The page's own worked example is model=\"openrouter/google/palm-2-chat-bison\"; the key comes from OPENROUTER_API_KEY."
+    },
+    {
+      "id": "glm-5.3",
+      "vendor": "Z.ai (Zhipu)",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "verbatim": "GLM-5.3",
+      "checked_on": "2026-09-19",
+      "notes": "Latest Models table row: input $1.4, cached input $0.26, output $4.4 per 1M tokens. The docs print the id capitalised as GLM-5.3; API requests use the lower-case spelling, the way the Claude Code page writes glm-4.7."
+    },
+    {
+      "id": "glm-5.3-flash",
+      "vendor": "Z.ai (Zhipu)",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "verbatim": "GLM-5.3-Flash",
+      "checked_on": "2026-09-19",
+      "notes": "Latest Models table row: input $0.15, cached input $0.03, output $0.50 per 1M tokens."
+    },
+    {
+      "id": "glm-4.7",
+      "vendor": "Z.ai (Zhipu)",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "verbatim": "\"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"glm-4.7\"",
+      "checked_on": "2026-09-19",
+      "notes": "The Claude Code page's settings.json example. The GLM Coding Plan overview page says requests for GLM-4.7 are automatically routed to GLM-5.3-Flash, so the id is still accepted but no longer names what answers."
+    },
+    {
+      "id": "glm-4.5-air",
+      "vendor": "Z.ai (Zhipu)",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "verbatim": "\"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"glm-4.5-air\"",
+      "checked_on": "2026-09-19",
+      "notes": "Same settings.json example; the page's default mapping for the haiku alias."
     }
   ]
 }

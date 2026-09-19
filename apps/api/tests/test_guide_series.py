@@ -28,16 +28,17 @@ def test_catalogue_is_complete_and_references_are_valid():
 
 
 def test_the_ai_workflow_catalogue_is_complete_and_references_are_valid():
-    """Twelve zh-TW tutorials behind one hub, in four groups and three reading paths; every
-    entry is a shipped pack whose display_order follows the catalogue's numbering."""
+    """Seventeen zh-TW tutorials behind one hub -- batch 1's twelve in groups A-D, batch 2's
+    five in group E -- across four reading paths; every entry is a shipped pack whose
+    display_order follows the catalogue's numbering."""
     from app.guides.content_pack import load_packs
 
     catalogue = next(item for item in catalogues() if item.slug == "ai-workflow")
     assert catalogue.hub == "ai-workflow-tutorials"
     assert catalogue.locale == "zh-TW"
-    assert len(catalogue.entries) == 12
-    assert [group.id for group in catalogue.groups] == ["A", "B", "C", "D"]
-    assert [path.id for path in catalogue.paths] == ["concepts", "builder", "operator"]
+    assert len(catalogue.entries) == 17
+    assert [group.id for group in catalogue.groups] == ["A", "B", "C", "D", "E"]
+    assert [path.id for path in catalogue.paths] == ["concepts", "builder", "operator", "swap"]
     packs = {pack.slug: pack for pack in load_packs()}
     assert catalogue.hub in packs
     for entry in catalogue.entries:

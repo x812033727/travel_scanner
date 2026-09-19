@@ -1,0 +1,207 @@
+{
+  "slug": "ai-workflow-codex-model-providers",
+  "title": "Codex CLI 換模型：config.toml 的 model_providers 怎麼寫",
+  "checked_on": "2026-09-19",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Codex Docs: Config basics",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Codex Docs: Advanced Configuration",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Codex configuration reference",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Ollama Docs: OpenAI compatibility",
+      "url": "https://docs.ollama.com/openai",
+      "checked_on": "2026-09-19"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "使用者層設定在 ~/.codex/config.toml，專案層另有一份 .codex/config.toml。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex stores user-level configuration at `~/.codex/config.toml`. To scope settings to a specific project or subfolder, add a `.codex/config.toml` file in your repo."
+    },
+    {
+      "fact": "專案層的 .codex 設定只有在使用者信任該專案時才會載入。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For security, Codex loads project `.codex/` layers only when you trust the project."
+    },
+    {
+      "fact": "設定的先後順序包含專案層、--profile 指定的設定檔、使用者層與系統層 /etc/codex/config.toml。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+      "is_vendor_claim": true,
+      "verbatim_quote": "System config (if present): `/etc/codex/config.toml` on Unix"
+    },
+    {
+      "fact": "供應商定義的是 Codex 怎麼連到模型，含位址、wire API、驗證與可選標頭；openai、ollama、lmstudio 是保留的內建 id。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A model provider defines how Codex connects to a model (base URL, wire API, authentication, and optional HTTP headers). Custom providers can't reuse the reserved built-in provider IDs: `openai`, `ollama`, and `lmstudio`."
+    },
+    {
+      "fact": "只想把內建 OpenAI 供應商指到代理或路由器時，設 openai_base_url，不要另外定義供應商。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you just need to point the built-in OpenAI provider at an LLM proxy, router, or data-residency enabled project, set `openai_base_url` in `config.toml` instead of defining a new provider."
+    },
+    {
+      "fact": "不要建立 [model_providers.openai]，因為內建供應商 id 不能覆寫。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To change the base URL for the built-in OpenAI provider, use `openai_base_url`; don't create `[model_providers.openai]`, because you can't override built-in provider IDs."
+    },
+    {
+      "fact": "本機開源供應商用 --oss，預設值寫在 oss_provider。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "oss_provider = \"ollama\" # or \"lmstudio\""
+    },
+    {
+      "fact": "--oss 與 oss_provider 都沒設定時，互動模式會詢問，codex exec 直接以錯誤結束。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "interactive CLI prompts you to choose; `codex exec` exits with an error."
+    },
+    {
+      "fact": "進階設定頁的 Ollama 範例位址是本機 11434 埠加上 /v1。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"http://localhost:11434/v1\""
+    },
+    {
+      "fact": "auth 指令不會收到標準輸入，必須把 token 印到標準輸出，且不可與 env_key 等併用。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The auth command receives no `stdin` and must print the token to stdout."
+    },
+    {
+      "fact": "進階設定頁在說明 model_verbosity 時提到使用 Chat Completions 的供應商會忽略該設定，與設定參考頁的 wire_api 說法不一致。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`model_verbosity` applies only to providers using the Responses API. Chat Completions providers will ignore the setting."
+    },
+    {
+      "fact": "wire_api 的 responses 是唯一支援的值，省略時也是這個值。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Protocol used by the provider. `responses` is the only supported value, and it is the default when omitted.\""
+    },
+    {
+      "fact": "model_provider 的預設值是 openai。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Provider id from `model_providers` (default: `openai`).\""
+    },
+    {
+      "fact": "env_key 是提供供應商 API 金鑰的環境變數名稱。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Environment variable supplying the provider API key.\""
+    },
+    {
+      "fact": "base_url 是供應商的 API 位址。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"API base URL for the model provider.\""
+    },
+    {
+      "fact": "query_params 是附加在請求上的額外查詢參數。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Extra query parameters appended to provider requests.\""
+    },
+    {
+      "fact": "request_max_retries 預設 4 次。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Retry count for HTTP requests to the provider (default: 4).\""
+    },
+    {
+      "fact": "stream_max_retries 預設 5 次。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Retry count for SSE streaming interruptions (default: 5).\""
+    },
+    {
+      "fact": "stream_idle_timeout_ms 預設 300000 毫秒。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Idle timeout for SSE streams in milliseconds (default: 300000).\""
+    },
+    {
+      "fact": "直接寫死 bearer token 的做法被文件標為不建議，建議改用 env_key。",
+      "url": "https://developers.openai.com/codex/config-file/config-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"Direct bearer token for the provider (discouraged; use `env_key`).\""
+    },
+    {
+      "fact": "Ollama 的相容端點需要用戶端填一個金鑰值，但 Ollama 會忽略它。",
+      "url": "https://docs.ollama.com/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The client requires an API key value, but Ollama ignores it."
+    }
+  ],
+  "unverified_or_excluded": [
+    "設定參考頁開頭列出一批在受管設定裡會被忽略的鍵，其中就包含 model_provider 與 model_providers；這牽涉到企業受管部署的規則，個人使用者不會碰到，本篇沒有寫。",
+    "內建的 amazon-bedrock 供應商與它的 aws.profile、aws.region 兩個巢狀覆寫查證過，但需要 AWS 帳號才驗得了，本篇只在驗證程式的 BUILT_IN 清單裡帶到，正文沒有展開。",
+    "Azure 供應商範例裡的 query_params 版本字串（api-version）是官方頁面上的示例值，會隨 Azure 自己的版本更新，本篇沒有抄進正文，避免寫死一個會過期的日期。",
+    "supports_websockets 與 supports_standalone_web_search 兩個鍵查證過；後者文件寫明仍在開發中、預設關閉，而且把供應商能力設成 true 也不會啟用，寫進來只會誤導讀者以為可以打開，因此略過。",
+    "auth 區塊的 timeout_ms 預設 5000 毫秒、refresh_interval_ms 預設 300000 毫秒查證過，正文只寫到有主動更新機制，沒有逐一列出，避免和重試那一段的三個數字混淆。",
+    "profiles 與 requirements.toml 的寫法在設定文件裡有，屬於多環境管理的題目，不是換模型的題目，留給後續篇章。",
+    "本站沒有對任何第三方端點實際發出請求；bash 範例只做語法檢查，Python 範例只做編譯檢查與本機設定讀取，兩者都沒有連網。"
+  ],
+  "must_not_write": [
+    "不寫哪一家供應商比較好用，也不做任何供應商的評比。",
+    "不重寫 ai-workflow-coding-agents-division 已經講過的 codex exec 非互動旗標與三工具分工。",
+    "不重寫 ai-workflow-claude-code-custom-model 講的 Claude Code 端設定，提到時只點名。",
+    "不替 wire_api 兩頁不一致的說法選邊，也不猜哪一頁比較新。",
+    "不寫任何供應商的價格，價格留給講 GLM 方案的那一篇。"
+  ],
+  "editorial_brief": "批次 2 的第二篇，和第一篇是對稱的一對：第一篇講 Claude Code 怎麼換端點，這一篇講 Codex 怎麼換。切角放在設定檔本身——兩層設定、保留 id、wire_api 這個目前有矛盾的鍵、本機模型的 --oss 路徑，以及憑證與逾時的預設值。刻意留一節誠實處理官方兩頁說法不一致的地方，並附一支離線的設定驗證程式，讓讀者不必靠對帳單才發現設定寫錯。",
+  "code_samples": [
+    {
+      "label": "在 config.toml 追加一個自訂供應商（bash）",
+      "language": "bash",
+      "lines": 23,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://learn.chatgpt.com/docs/config-file/config-advanced",
+        "https://developers.openai.com/codex/config-file/config-reference"
+      ]
+    },
+    {
+      "label": "開工前驗一次 config.toml（Python 3.11+，只用內建 tomllib）",
+      "language": "python",
+      "lines": 44,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://developers.openai.com/codex/config-file/config-reference",
+        "https://learn.chatgpt.com/docs/config-file/config-basic"
+      ]
+    }
+  ],
+  "hero_label": "換供應商，不換指令",
+  "diagram": {
+    "layout": "flow",
+    "title": "自訂供應商的四個欄位",
+    "caption": "Codex 自訂供應商的四個欄位與它們的順序，依官方設定文件整理，2026 年 9 月查證。",
+    "nodes": [
+      ["挑 base_url", "對方的 API 位址"],
+      ["對 wire_api", "文件只列 responses"],
+      ["env_key 放名稱", "金鑰留在環境裡"],
+      ["model_provider", "指到這一個 id"]
+    ]
+  }
+}

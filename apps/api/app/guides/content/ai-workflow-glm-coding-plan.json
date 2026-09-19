@@ -1,0 +1,275 @@
+{
+  "slug": "ai-workflow-glm-coding-plan",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 414,
+  "related": [
+    "ai-workflow-claude-code-custom-model",
+    "ai-workflow-litellm-gateway",
+    "ai-workflow-cost-quality-latency"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "用 GLM Coding Plan 驅動 Claude Code：Z.ai 官方文件的設定與額度",
+      "description": "Z.ai 的 GLM Coding Plan 提供一個 Anthropic 格式的端點，官方文件教的接法就是把 Claude Code 的 ANTHROPIC_BASE_URL 指過去。這篇整理官方的三個設定值、介面顯示 Claude 名稱實際跑 GLM 的模型對應、額度怎麼換算成 token，以及兩頁官方文件對 GLM-4.7 的說法為什麼不一樣，最後說明 Anthropic 對這種接法的立場。",
+      "hero": {
+        "src": "/guides/ai-workflow-glm-coding-plan/hero.jpg",
+        "alt": "原創插圖：一個命令列介面顯示的模型名稱，與實際回答的模型名稱分寫在兩側，中間用一條轉接線相連。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Z.ai 的 GLM Coding Plan 是一個以訂閱計費的方案，它提供的其中一個端點講的是 Anthropic 的 Messages 格式，所以官方文件教的接法，就是把 Claude Code 的 ANTHROPIC_BASE_URL 指到那個位址，再放一把 Z.ai 的金鑰。整個設定只有兩到三個值，真正需要看懂的是介面顯示的模型名稱、實際回答的模型，以及額度怎麼算這三件事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 docs.z.ai 上三頁官方文件整理：Claude Code 的設定頁、GLM Coding Plan 的總覽頁，以及模型價格頁；Anthropic 那一端的立場則引自 docs.claude.com 的閘道說明。文中所有數字都是 2026 年 9 月 19 日在官網讀到的，價格與額度是會變的東西，動手前請以當天的官網為準。本站沒有訂閱這個方案，也沒有實際連線測試，不對它的品質或速度做任何評價。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "官方文件教的設定只有兩個必要值：ANTHROPIC_BASE_URL 指到 Z.ai 的 Anthropic 端點，ANTHROPIC_AUTH_TOKEN 放 Z.ai 的金鑰，另外附帶一個很長的 API_TIMEOUT_MS。",
+            "訂閱設定好之後，官方說會套用伺服器端的預設模型對應，你在介面上看到的是 Claude 的模型名稱，實際回答的是 GLM 的模型。",
+            "Claude Code 設定頁寫的預設對應是 GLM-4.7 與 GLM-4.5-Air，但方案總覽頁寫所有方案支援 GLM-5.3 與 GLM-5.3-Flash，而且送往 GLM-4.7 的請求會自動改由 GLM-5.3-Flash 處理，兩頁的說法要一起讀。",
+            "方案同時受 5 小時額度與每週額度兩道限制，Lite、Pro、Max 三檔的每週額度分別是 10,000、60,000 與 140,000 點，官網寫最低每月 18 美元起。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這個方案接的是哪一條路"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把位置講清楚。GLM Coding Plan 是一個針對 AI 寫程式設計的訂閱方案，官方總覽頁寫它可以用在 Claude Code、Cline 與 OpenCode 這類工具上。對 Claude Code 來說，它就是一個講 Anthropic Messages 格式的端點：Claude Code 不知道自己接到了誰，只知道有人在同一個網址上回應 /v1/messages。前一篇講的那套機制——兩個變數、憑證送進哪個標頭、設定檔寫在哪一層——在這裡原封不動適用，這一篇只補上 Z.ai 這一端要填什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件列的前置條件是 Node.js 18 或更新版本，以及用 npm 安裝好的 Claude Code；macOS 建議用 nvm 安裝 Node.js，避免權限問題，Windows 另外要裝 Git for Windows。文件也寫了它驗證過的版本：官方原文說他們驗證過 Claude Code 2.0.14 與其他版本，並建議使用最新版。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "照文件把設定值填好"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "取得金鑰的步驟是到 Z.ai 的開放平台註冊或登入，在 API Keys 管理頁建立一把金鑰。設定的部分，官方給了三種做法：跑官方的 coding-helper 工具、在 macOS 或 Linux 上跑官方的安裝指令稿，或是自己動手改設定檔。第一種是一行 npx 指令，由它引導你安裝工具、載入方案與管理 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 伺服器；第二種只支援 macOS 與 Linux，文件明講不支援 Windows。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "三種做法最後改的是同一個檔案。官方寫，那個指令稿會自動修改使用者家目錄下的 .claude/settings.json，填進 ANTHROPIC_AUTH_TOKEN、ANTHROPIC_BASE_URL 與 API_TIMEOUT_MS 三個值，位址是 Z.ai 的 anthropic 端點。想自己寫的話，文件給的就是下面這個形狀；照前一篇的理由，這個檔案放在家目錄，不要放進會被提交的專案設定裡。"
+        },
+        {
+          "type": "code",
+          "label": "使用者家目錄的 .claude/settings.json（照官方文件的欄位）",
+          "language": "json",
+          "code": "{\n  \"env\": {\n    \"ANTHROPIC_BASE_URL\": \"https://api.z.ai/api/anthropic\",\n    \"API_TIMEOUT_MS\": \"3000000\"\n  },\n  \"apiKeyHelper\": \"/usr/local/bin/mokaair-zai-token\"\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方範例是把金鑰直接寫成 ANTHROPIC_AUTH_TOKEN 的值。上面的版本改成由 apiKeyHelper 這個指令去拿，是本站在不改變行為的前提下做的調整：Claude Code 的文件說那個指令只要把憑證印到標準輸出就好，這樣設定檔裡就不會留下金鑰字串。想照官方原樣寫也可以，那就把 ANTHROPIC_AUTH_TOKEN 加回 env 區塊。另外，官方那個 API_TIMEOUT_MS 的值是 3000000 毫秒，換算起來是 50 分鐘，比 Claude Code 文件示例裡的 1200000 長得多；文件沒有解釋為什麼要設這麼長，照抄之前值得知道自己設了什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows 的做法在文件上是另外兩段：命令提示字元用 setx 設兩個環境變數，PowerShell 則用 SetEnvironmentVariable 把同樣兩個值寫成使用者層變數。文件提醒設定環境變數時通常沒有輸出，只要沒有錯誤訊息就算成功，而且要開新的視窗才會生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "三種做法的指令列在下面。官方那支自動指令稿是從網路下載後執行的，本文只寫到它存在、位址以官方文件為準，因為下載網址是會換的東西；真的要用，請照官方頁面當天的指令抓下來，讀過內容再執行，不要把下載到的內容直接接給 bash。"
+        },
+        {
+          "type": "code",
+          "label": "官方的三種設定方式，擇一（bash）",
+          "language": "bash",
+          "code": "# 做法一：自己設兩個變數，再從同一個視窗開 claude。\nexport ANTHROPIC_BASE_URL=\"https://api.z.ai/api/anthropic\"\nexport ANTHROPIC_AUTH_TOKEN=\"$(cat ~/.config/mokaair/zai-key)\"\nclaude\n\n# 做法二：官方的引導工具，由它安裝工具、載入方案與管理 MCP 伺服器。\nnpx @z_ai/coding-helper\n\n# 做法三：官方在 macOS 與 Linux 上另有一支自動設定指令稿，\n# 下載位址以官方文件當天的寫法為準；先抓下來讀過再執行，\n# 不要把下載到的內容直接接給 bash。\n\n# 三種做法設好之後都一樣：先看一眼設定檔，再進去用 /status 對位址。\npython3 -m json.tool \"$HOME/.claude/settings.json\""
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "介面上的名字和實際回答的模型不是同一個"
+        },
+        {
+          "type": "paragraph",
+          "text": "這是整篇最容易誤會的一段。官方文件寫，訂閱設定成功之後會套用伺服器端的預設模型對應，你在介面上看到的是 Claude 的模型，實際使用的是 GLM 的模型。也就是說，Claude Code 的 /model 選單仍然顯示 opus、sonnet、haiku 這幾個別名，但每一個別名背後是 Z.ai 決定的一個 GLM 模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 設定頁列的預設對應是：opus 與 sonnet 兩個別名都指向 GLM-4.7，haiku 指向 GLM-4.5-Air。文件同時建議不要手動改這個對應，理由是寫死之後，方案更新模型時你不會自動跟上；已經寫死舊對應的人，把 settings.json 裡的對應刪掉就會回到最新的預設值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但方案總覽頁寫的是另一組名字：所有方案支援 GLM-5.3 與 GLM-5.3-Flash，而且送往 GLM-5.2 與 GLM-5.1 的請求會自動改由 GLM-5.3 處理，送往 GLM-4.7 的請求會自動改由 GLM-5.3-Flash 處理。兩頁放在一起讀，結論是：Claude Code 設定頁上的 GLM-4.7 是還能用的名字，但它已經不代表真正回答的模型。本站沒有訂閱這個方案，無法實測；這裡只照兩頁官方文件如實寫出差異，並建議接上之後在自己的工作階段裡確認一次目前是哪個模型在回答。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-glm-coding-plan/diagram-1.svg",
+          "alt": "流程圖：Claude Code 顯示的別名、Z.ai 的預設對應、方案的自動改派，最後是實際回答的模型。",
+          "width": 1600,
+          "height": 900,
+          "caption": "介面上的別名到實際回答模型之間的三段轉換，依 Z.ai 兩頁官方文件整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "額度怎麼算，以及和按量計費差在哪"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個方案不是用 token 數直接計費，而是先換算成點數。官方寫的公式是：模型點數等於輸入 token 乘上輸入倍率，加上快取輸入 token 乘上快取倍率，加上輸出 token 乘上輸出倍率，再除以 10,000；MCP 工具的點數則是呼叫次數乘上輸出倍率。倍率依模型而定，官方表上 GLM-5.3 的輸入與輸出倍率分別是 6.9 與 24，GLM-5.3-Flash 是 2.3 與 8。"
+        },
+        {
+          "type": "paragraph",
+          "text": "額度有兩道限制。官方寫，每個方案同時受一個 5 小時額度與一個每週額度約束：5 小時額度是動態刷新的，消耗之後 5 小時回補；每週額度從訂閱起算，每 7 天重置一次。三個方案的數字列在下面的表裡，官網另外寫最低每月 18 美元起。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "5 小時額度（點）",
+            "每週額度（點）"
+          ],
+          "rows": [
+            [
+              "Lite",
+              "2,000",
+              "10,000"
+            ],
+            [
+              "Pro",
+              "12,000",
+              "60,000"
+            ],
+            [
+              "Max",
+              "28,000",
+              "140,000"
+            ]
+          ],
+          "caption": "依 Z.ai 的 GLM Coding Plan 總覽頁整理，2026 年 9 月查證；官網寫方案最低每月 18 美元起。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一個時段折扣值得知道。官方寫，離峰時段的模型用量只按標準點數費率的 50% 計算，而尖峰時段定義為星期一到星期五、新加坡標準時間 14:00 到 18:00。新加坡標準時間和台灣時間同屬世界協調時間加八小時，所以對台灣的讀者來說就是平日下午兩點到六點。官方給的每週 token 估算表也是照這個折扣推出來的：全部用在離峰時段是上限，全部落在尖峰時段是下限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你想比較的是訂閱與按量計費，價格頁的數字是另一個起點：以每百萬 token 計價，GLM-5.3 的輸入 1.4 美元、輸出 4.4 美元，GLM-5.3-Flash 的輸入 0.15 美元、輸出 0.50 美元。要不要換成訂閱，取決於你每週實際送出多少 token，而不是單看哪個數字比較小——本系列另一篇談成本、品質與延遲的文章談的就是這個算法。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接之前要接受的兩個前提"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個前提來自 Anthropic 那一端。它的閘道說明頁寫明，Anthropic 不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。這一句和 Z.ai 的文件不衝突：Z.ai 教的是可行的設定，Anthropic 說的是支援範圍。實際的意思是，這樣接之後 Claude Code 本身出問題，不會有官方支援可以求助，功能對不對得自己驗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個前提是文件的時效。Z.ai 的 Claude Code 設定頁在寫這篇時，內文還停留在 GLM-4.7 的對應與 2.0.14 這個版本號，導言裡甚至還留著給 2025 年 9 月 30 日之前使用者看的說明，而同一站的方案總覽頁已經在講 GLM-5.3。這不代表哪一頁寫錯，而是提醒：這類第三方接法的設定細節更新得很快，照著做之前先自己開一次官網，確認位址與模型名稱仍然是文件上的那一組。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文查證到的界線",
+          "text": "本站沒有訂閱 GLM Coding Plan，沒有實際連線測試，也沒有比較它與其他方案的品質或速度。文中的設定值、模型對應、額度與價格全部照 2026 年 9 月 19 日的 docs.z.ai 抄錄，其中價格與額度是官方會調整的項目。Anthropic 對這種接法的立場引自 docs.claude.com 的閘道說明頁，同樣以官網當天的內容為準。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "設好之後，我在 Claude Code 裡看到的模型名稱為什麼還是 Claude？",
+              "answer": "官方文件寫，訂閱設定成功之後會套用伺服器端的預設模型對應，介面上顯示的是 Claude 的模型，實際使用的是 GLM 的模型。設定頁列的預設對應是 opus 與 sonnet 指向 GLM-4.7、haiku 指向 GLM-4.5-Air。文件也建議不要手動改這個對應，因為寫死之後方案更新模型時不會自動跟上。"
+            },
+            {
+              "question": "文件寫 GLM-4.7，可是方案頁說支援 GLM-5.3，到底跑的是哪一個？",
+              "answer": "兩頁要一起讀。方案總覽頁寫所有方案支援 GLM-5.3 與 GLM-5.3-Flash，並且送往 GLM-5.2 與 GLM-5.1 的請求會自動改由 GLM-5.3 處理，送往 GLM-4.7 的請求會自動改由 GLM-5.3-Flash 處理。所以 Claude Code 設定頁上的 GLM-4.7 仍然是能用的名字，但不代表最後回答的模型。本站沒有訂閱這個方案，無法替你實測，建議接上之後自己確認一次。"
+            },
+            {
+              "question": "額度是怎麼換算成 token 的？",
+              "answer": "官方公式是輸入 token 乘輸入倍率，加快取輸入 token 乘快取倍率，加輸出 token 乘輸出倍率，再除以 10,000。倍率依模型而定，官方表上 GLM-5.3 的輸入與輸出倍率是 6.9 與 24，GLM-5.3-Flash 是 2.3 與 8。另外官方寫離峰時段只按標準費率的 50% 計算，尖峰時段是星期一到星期五、新加坡標準時間 14:00 到 18:00。"
+            },
+            {
+              "question": "這樣接會不會違反 Anthropic 的規定？",
+              "answer": "Anthropic 的閘道說明頁寫明，它不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。這是一段關於支援範圍的說明，不是本站能替你解讀的授權條款。要確認自己的用法是否符合各方條款，請直接讀 Anthropic 與 Z.ai 各自的使用條款，或詢問它們的客服。"
+            },
+            {
+              "question": "Windows 上要怎麼設？",
+              "answer": "官方文件在 Windows 上給了兩種寫法：命令提示字元用 setx 設定兩個環境變數，PowerShell 則用 SetEnvironmentVariable 把同樣的值寫成使用者層變數。文件提醒設定環境變數通常不會有輸出，只要沒有錯誤就算成功，而且要開一個新的視窗才會生效。官方的自動安裝指令稿只支援 macOS 與 Linux，Windows 要用手動設定或官方的 coding-helper 工具。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "成本、品質、延遲：多模型流程怎麼取捨",
+              "kind": "life",
+              "slug": "ai-workflow-cost-quality-latency"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Z.AI Docs: Methods for Using the GLM Coding Plan in Claude Code",
+          "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Z.AI Docs: GLM Coding Plan Overview",
+          "url": "https://docs.z.ai/devpack/overview",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Z.AI Docs: Pricing",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Other LLM gateways",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

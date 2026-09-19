@@ -1,0 +1,225 @@
+{
+  "slug": "ai-workflow-claude-code-custom-model",
+  "title": "把 Claude Code 指到別的模型端點：ANTHROPIC_BASE_URL 與憑證怎麼設",
+  "checked_on": "2026-09-19",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Claude Code Docs: Other LLM gateways",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Connect Claude Code to an LLM gateway",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Claude Code gateway compatibility guide",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Environment variables",
+      "url": "https://docs.claude.com/en/docs/claude-code/env-vars",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Model configuration",
+      "url": "https://docs.claude.com/en/docs/claude-code/model-config",
+      "checked_on": "2026-09-19"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Anthropic 不背書、不維護、不稽核第三方閘道產品，也不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic doesn't endorse, maintain, or audit third-party gateway products, and doesn't support routing Claude Code to non-Claude models through any gateway."
+    },
+    {
+      "fact": "憑證變數或 apiKeyHelper 生效時，claude.ai 訂閱不會被用到，訂閱的用量限制也不適用。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "a developer's claude.ai subscription isn't used: the credential replaces the subscription login for that session, and the subscription's usage limits don't apply."
+    },
+    {
+      "fact": "ANTHROPIC_AUTH_TOKEN 送進 Authorization: Bearer，ANTHROPIC_API_KEY 送進 x-api-key，apiKeyHelper 兩個標頭都送。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Each variable sends the credential in a different HTTP header: `ANTHROPIC_AUTH_TOKEN` in `Authorization: Bearer`, `ANTHROPIC_API_KEY` in `x-api-key`, and `apiKeyHelper` in both."
+    },
+    {
+      "fact": "沒有被告知憑證屬於哪一種時，官方建議先用 ANTHROPIC_AUTH_TOKEN。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you weren't told which kind, use `ANTHROPIC_AUTH_TOKEN`"
+    },
+    {
+      "fact": "驗證請求的成功判準是回應以 msg_ 開頭的 id 並帶 content 欄位。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A JSON response that starts with `{\"id\":\"msg_`"
+    },
+    {
+      "fact": "回一個不認得的模型名稱也算驗證通過，因為請求已先通過驗證才被擋下。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An error naming an unknown model still proves the URL and credential work, since the gateway authenticated the request before rejecting the model name"
+    },
+    {
+      "fact": "不要把憑證放進專案的 .claude/settings.json，那個檔案會被提交並分享給每一個複製程式庫的人。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Don't put the credential in a project's `.claude/settings.json`. That file is committed and shared with everyone who clones the repository."
+    },
+    {
+      "fact": "shell export 與設定檔 env 區塊設同一個變數時，設定檔的值生效。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When both a shell export and a settings-file `env` block set the same variable, the settings-file value applies."
+    },
+    {
+      "fact": "apiKeyHelper 是一個把目前憑證印到標準輸出的指令。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The helper is any shell command that prints the current credential to stdout."
+    },
+    {
+      "fact": "Slack 裡的 Claude Code 與雲端工作階段一律走 Anthropic 的 API，不屬於閘道部署。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "always use Anthropic's API; they aren't part of a gateway deployment."
+    },
+    {
+      "fact": "v2.1.196 起，base URL 指向非 Anthropic 主機會停用遠端遙控。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Before v2.1.196, a non-Anthropic base URL didn't block Remote Control."
+    },
+    {
+      "fact": "模型探索由 CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1 開啟。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To enable it, set `CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1` in your shell or in the `env` block of `~/.claude/settings.json`."
+    },
+    {
+      "fact": "算 token 的端點是唯一可選的端點，缺少時 Claude Code 改用字元數推估上下文用量。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Token-counting endpoints are the only optional ones: when they're absent, Claude Code falls back to a character-based estimate of context usage."
+    },
+    {
+      "fact": "回應必須以串流送出；對方先收完整段再轉送會讓 Claude Code 卡住。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Stream inference responses. Claude Code reads the stream as it arrives, so if your gateway buffers complete responses before relaying them, Claude Code stalls."
+    },
+    {
+      "fact": "串流靜默預設超過 300 秒就中斷。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "aborts a stream that goes silent for 300 seconds by default"
+    },
+    {
+      "fact": "Anthropic Messages 格式的端點會收到 HEAD /api/hello 的暖機探測。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An Anthropic Messages-format gateway receives a `HEAD /api/hello` connection-warming probe"
+    },
+    {
+      "fact": "不認得的模型 id，Claude Code 假設 200K 上下文，帶 1m 標記時假設 1M。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code assumes 200K, or 1M when the ID carries `[1m]`"
+    },
+    {
+      "fact": "base URL 指向非第一方主機時 MCP 工具搜尋預設關閉，確定對方會轉送 tool_reference 才開 ENABLE_TOOL_SEARCH。",
+      "url": "https://docs.claude.com/en/docs/claude-code/env-vars",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set `ENABLE_TOOL_SEARCH=true` if your proxy forwards `tool_reference` blocks."
+    },
+    {
+      "fact": "ANTHROPIC_DEFAULT_HAIKU_MODEL 決定 haiku 別名指向哪個模型 id。",
+      "url": "https://docs.claude.com/en/docs/claude-code/env-vars",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Model ID that the `haiku` alias resolves to"
+    },
+    {
+      "fact": "自訂端點上，Claude Code 假設的上下文視窗可能與模型真正的視窗不同。",
+      "url": "https://docs.claude.com/en/docs/claude-code/model-config",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code can assume a context window for the model ID that differs from the model's real window"
+    },
+    {
+      "fact": "ANTHROPIC_CUSTOM_MODEL_OPTION 在 /model 選單加一個自訂項目，不取代內建別名。",
+      "url": "https://docs.claude.com/en/docs/claude-code/model-config",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use `ANTHROPIC_CUSTOM_MODEL_OPTION` to add a single custom entry to the `/model` picker without replacing the built-in aliases."
+    }
+  ],
+  "unverified_or_excluded": [
+    "Claude apps gateway（Anthropic 自家的自架閘道）有獨立的簽入流程與 OTLP 遙測，文件另有專頁；本篇只寫開發者自己設兩個變數的路徑，不比較兩種閘道，避免和相容性規格那一頁的營運者視角混在一起。",
+    "Amazon Bedrock（ANTHROPIC_BEDROCK_BASE_URL 加 CLAUDE_CODE_USE_BEDROCK=1）與 Google Cloud Agent Platform（ANTHROPIC_VERTEX_BASE_URL 加 CLAUDE_CODE_USE_VERTEX=1）兩種格式查證過，但需要雲端帳號才能實際驗證，且本篇的切角是換端點不是換雲，只在第一節點名存在。",
+    "Microsoft Foundry 的 ANTHROPIC_FOUNDRY_BASE_URL 與 Claude Platform on AWS 的 ANTHROPIC_AWS_BASE_URL、anthropic-workspace-id 標頭在相容性規格頁上有，但各自另有專頁，本篇沒有寫。",
+    "prompt cache 的一小時 TTL 在三種連線方式下的差異（extended-cache-ttl 這個 anthropic-beta 值要不要轉送）查到了，屬於閘道營運者要做的事，不是讀者設兩個變數會碰到的，略過。",
+    "VS Code 擴充功能的 claudeCode.environmentVariables、桌面應用程式的第三方推論設定，以及 GitHub Actions 的 env 寫法都查證過，但三者各自有前提（擴充功能的登入檢查、桌面版的開發者模式、動作的啟動檢查），寫進來會讓篇幅失焦，留給後續篇章。",
+    "CLAUDE_CODE_MAX_CONTEXT_TOKENS 搭配 CLAUDE_CODE_DISABLE_1M_CONTEXT、DISABLE_COMPACT 的三種套用情形，以及 v2.1.259 之前對日期後綴的處理差異，文件寫得很細，本篇只寫到有三種情形、要照文件對一次，沒有逐條複述。",
+    "本站沒有實測任何第三方閘道產品，也沒有實際跑過文中的 curl 指令對任何真實端點；程式範例只做語法檢查。"
+  ],
+  "must_not_write": [
+    "不寫哪一家閘道產品比較好，也不寫任何產品的評比或推薦。",
+    "不重寫 ai-workflow-unified-api-layer 已經講過的 OpenAI 相容端點與 LiteLLM SDK 用法。",
+    "不重寫 ai-workflow-coding-agents-division 已經講過的三支命令列工具分工。",
+    "不寫任何一家第三方端點的價格；價格留給講 GLM 方案的那一篇。",
+    "不替讀者判斷把 Claude Code 接到非 Claude 模型是否值得，只照官方文件寫出支援與否的界線。"
+  ],
+  "editorial_brief": "批次 2 的第一篇，也是後面四篇的共同基礎：先把 Claude Code 這一端的換端點機制講清楚（兩個變數、兩個標頭、設定檔層級、模型名稱與視窗、換過去之後會失去什麼），後面三篇才分別接 GLM 訂閱、本機 Ollama 與自架閘道。刻意只用 docs.claude.com 的一手文件，不提任何第三方產品名稱，讓這一篇在任何供應商都成立。與 ai-workflow-unified-api-layer 的分工是：那一篇講程式怎麼換 base_url，這一篇講命令列工具怎麼換端點。",
+  "code_samples": [
+    {
+      "label": "先驗證端點再開 claude（需要 curl）",
+      "language": "bash",
+      "lines": 19,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol"
+      ]
+    },
+    {
+      "label": "~/.claude/settings.json：位址寫在檔案裡，憑證交給 helper",
+      "language": "json",
+      "lines": 7,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+        "https://docs.claude.com/en/docs/claude-code/env-vars",
+        "https://docs.claude.com/en/docs/claude-code/model-config"
+      ]
+    }
+  ],
+  "hero_label": "換掉端點，不換工具",
+  "diagram": {
+    "layout": "flow",
+    "title": "換端點的四個步驟",
+    "caption": "把 Claude Code 指向自有端點的四個步驟，依 docs.claude.com 的說明頁整理，2026 年 9 月查證。",
+    "nodes": [
+      [
+        "設兩個變數",
+        "網址與憑證各一個"
+      ],
+      [
+        "先用 curl 打",
+        "回 msg_ 才算通"
+      ],
+      [
+        "寫進設定檔",
+        "背景工作也吃得到"
+      ],
+      [
+        "看 /status",
+        "確認走的是哪一條"
+      ]
+    ]
+  }
+}

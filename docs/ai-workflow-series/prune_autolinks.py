@@ -1,14 +1,15 @@
 """Undo autolink's links on a few aliases that mislead in this series: the bare word AI,
-參數 (which here means an API parameter, not a model weight) and GenAI inside the
-OpenTelemetry convention name. Article inlines with those texts become text again; a
-rich paragraph left with only text turns back into a plain paragraph.
+參數 (which here means an API parameter, not a model weight), GenAI inside the
+OpenTelemetry convention name, and 標記 (batch 2 uses it for a marker in a model id and for
+ticking a field supported or not, never for a token). Article inlines with those texts become
+text again; a rich paragraph left with only text turns back into a plain paragraph.
 
     prune_autolinks.py <content-dir> <slug>...
 """
 import json, sys
 from pathlib import Path
 
-PRUNE = {"ai", "參數", "genai"}  # compared case-folded: autolink matches ASCII aliases case-insensitively
+PRUNE = {"ai", "參數", "genai", "標記"}  # compared case-folded: autolink matches ASCII aliases case-insensitively
 
 
 def prune_block(block):

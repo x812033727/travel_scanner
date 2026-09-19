@@ -1,0 +1,249 @@
+{
+  "slug": "ai-workflow-glm-coding-plan",
+  "title": "用 GLM Coding Plan 驅動 Claude Code：Z.ai 官方文件的設定與額度",
+  "checked_on": "2026-09-19",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Z.AI Docs: Methods for Using the GLM Coding Plan in Claude Code",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Z.AI Docs: GLM Coding Plan Overview",
+      "url": "https://docs.z.ai/devpack/overview",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Z.AI Docs: Pricing",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Claude Code Docs: Other LLM gateways",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "checked_on": "2026-09-19"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "官方指令稿寫進 settings.json 的位址是 Z.ai 的 anthropic 端點。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_BASE_URL\": \"https://api.z.ai/api/anthropic\""
+    },
+    {
+      "fact": "官方指令稿同時寫進 API_TIMEOUT_MS，值是 3000000。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"API_TIMEOUT_MS\": \"3000000\""
+    },
+    {
+      "fact": "訂閱設定成功後套用伺服器端預設對應，介面顯示 Claude 模型、實際使用 GLM 模型。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "After successfully configuring the subscription, the default server model mapping is applied, where you see the Claude model in the interface but the GLM model is actually used."
+    },
+    {
+      "fact": "預設對應把 opus 與 sonnet 指向 GLM-4.7、haiku 指向 GLM-4.5-Air。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"glm-4.5-air\","
+    },
+    {
+      "fact": "官方不建議手動調整模型對應，因為寫死之後方案更新模型時不會自動跟上。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It is generally not recommended to manually adjust the model mapping"
+    },
+    {
+      "fact": "官方驗證過 Claude Code 2.0.14 與其他版本，並建議使用最新版。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We have verified compatibility with Claude Code 2.0.14 and other versions."
+    },
+    {
+      "fact": "前置條件是 Node.js 18 或更新版本。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Node.js 18 or newer"
+    },
+    {
+      "fact": "官方提供一行 npx 指令的 coding-helper 工具。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "npx @z_ai/coding-helper"
+    },
+    {
+      "fact": "官方自動指令稿只支援 macOS 與 Linux，不支援 Windows。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Attention only macOS Linux environment is supported, this method does not support Windows"
+    },
+    {
+      "fact": "設定環境變數時通常沒有輸出，只要沒有錯誤就算成功。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Some commands show no output when setting environment variables — that’s normal as long as no errors appear."
+    },
+    {
+      "fact": "方案可用在 Claude Code、Cline 與 OpenCode 這類工具上。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The plan can be applied to coding tools such as Claude Code, Cline, and OpenCode"
+    },
+    {
+      "fact": "所有方案支援 GLM-5.3 與 GLM-5.3-Flash。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "All plans support **GLM-5.3**, GLM-5.3-Flash."
+    },
+    {
+      "fact": "送往 GLM-5.2 與 GLM-5.1 的請求自動改由 GLM-5.3 處理，送往 GLM-4.7 的請求自動改由 GLM-5.3-Flash 處理。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Requests for GLM-5.2/GLM-5.1 will be automatically routed to GLM-5.3, requests for GLM-4.7 will automatically be routed to GLM-5.3-Flash."
+    },
+    {
+      "fact": "每個方案同時受 5 小時額度與每週額度兩道限制。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Each plan is subject to both a 5-hour usage limit and a weekly usage limit."
+    },
+    {
+      "fact": "5 小時額度動態刷新、消耗後 5 小時回補；每週額度自訂閱起算、每 7 天重置。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "**Weekly credits**: Activated upon subscription; resets every 7 days."
+    },
+    {
+      "fact": "Lite、Pro、Max 的 5 小時額度是 2,000、12,000、28,000 點，每週額度是 10,000、60,000、140,000 點。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "|    Lite   |      2,000     |     10,000     |"
+    },
+    {
+      "fact": "官網寫方案最低每月 18 美元起。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Starting at just 18 USD per month"
+    },
+    {
+      "fact": "點數公式是輸入、快取輸入與輸出各乘倍率後除以 10,000；MCP 工具點數是呼叫次數乘輸出倍率。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Model credit usage = (Input tokens × Input multiplier + Cached Input tokens × Cached Input multiplier + Output tokens × Output multiplier) / 10,000"
+    },
+    {
+      "fact": "離峰時段模型用量按標準點數費率的 50% 計算。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "**During off-peak hours, model usage is charged at 50% of the standard credit rate**."
+    },
+    {
+      "fact": "尖峰時段是星期一到星期五、新加坡標準時間 14:00 到 18:00。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "**Peak hours**: Monday to Friday, 14:00–18:00 Singapore Standard Time (UTC+8)."
+    },
+    {
+      "fact": "GLM-5.3 的輸入與輸出倍率是 6.9 與 24。",
+      "url": "https://docs.z.ai/devpack/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "<td style={{ textAlign: \"left\" }}>6.9</td>"
+    },
+    {
+      "fact": "價格頁以每百萬 token 計價。",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Prices per 1M tokens."
+    },
+    {
+      "fact": "GLM-5.3 每百萬 token 輸入 1.4 美元、輸出 4.4 美元。",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "| GLM-5.3        | \\$1.4  | \\$0.26       | Limited-time Free    | \\$4.4  |"
+    },
+    {
+      "fact": "GLM-5.3-Flash 每百萬 token 輸入 0.15 美元、輸出 0.50 美元。",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "| GLM-5.3-Flash  | \\$0.15 | \\$0.03       | Limited-time Free    | \\$0.50 |"
+    },
+    {
+      "fact": "Anthropic 不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。",
+      "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic doesn't endorse, maintain, or audit third-party gateway products, and doesn't support routing Claude Code to non-Claude models through any gateway."
+    },
+    {
+      "fact": "官方自動指令稿的下載位址與執行方式。",
+      "url": "https://docs.z.ai/scenario-example/develop-tools/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "curl -O \"https://cdn.bigmodel.cn/install/claude_code_zai_env.sh\" && bash ./claude_code_zai_env.sh"
+    }
+  ],
+  "unverified_or_excluded": [
+    "三頁官方文件都提供 .md 版本，表格類的事實（方案額度、倍率、每百萬 token 價格）引用的是該版本的表格列，因為渲染後的 HTML 把每個儲存格切成獨立元素，沒有可連續擷取的字串。數字本身兩種版本一致。",
+    "總覽頁上的 GLM-5.3-Flash 活動（活動期間每天 23:00 到隔天 09:00 於 ZCode 無限使用）查證過，但那是限時活動、隨時可能結束，寫進一篇教學會很快過期，因此沒有寫。",
+    "總覽頁的每週 token 估算表（依 95%、96%、98% 三種快取命中率，列出三個方案的 token 區間）查證過；那些區間建立在一連串假設上，抄進文章只會讓讀者以為是保證值，只寫了區間怎麼推導出來的原則。",
+    "官方說 GLM 系列在發表時於開源模型中達到 SOTA 的說法查證過，是廠商自述且沒有列出評測細節，依本站規則不寫跑分。",
+    "Team Plan 的用量限制另有專頁，本篇只寫個人方案的三檔。",
+    "Vision、Web Search、Web Reader、Zread 四個 MCP 伺服器在方案裡都有，屬於另一個題目，本篇只在點數公式裡帶到工具呼叫怎麼算。",
+    "本站沒有訂閱 GLM Coding Plan，沒有對 api.z.ai 發出任何請求，也沒有驗證過模型對應在實際工作階段裡顯示什麼。文中 settings.json 範例只做 JSON 語法檢查。",
+    "Z.ai 的 Claude Code 設定頁導言仍寫著給 2025-09-30 之前使用者的說明、版本號寫 2.0.14，本篇把這件事寫成時效提醒，但沒有推測該頁多久沒更新。"
+  ],
+  "must_not_write": [
+    "不寫 GLM 與 Claude、GPT 或 Gemini 的品質比較，本站沒有實測。",
+    "不建議讀者訂閱或不訂閱任何方案。",
+    "不重寫 ai-workflow-claude-code-custom-model 已經講過的兩個憑證變數與設定檔層級。",
+    "不重寫 ai-workflow-cost-quality-latency 已經講過的成本算法。",
+    "不解讀任何一方的使用條款，也不判斷這種接法在授權上是否被允許。"
+  ],
+  "editorial_brief": "批次 2 的第三篇，是第一篇機制的第一個實例：站主明確點名 GLM。切角刻意不放在推薦，而放在三個讀者一定會撞到的落差——介面顯示的別名與實際模型不同、兩頁官方文件的模型名稱不同、訂閱的點數不是 token。結尾用一節把 Anthropic 的支援界線與 Z.ai 文件的時效並列，讓讀者自己決定。與第一篇的分工是：那一篇講機制，這一篇只補 Z.ai 這一端要填什麼。",
+  "code_samples": [
+    {
+      "label": "使用者家目錄的 .claude/settings.json（照官方文件的欄位）",
+      "language": "json",
+      "lines": 7,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.z.ai/scenario-example/develop-tools/claude",
+        "https://docs.claude.com/en/docs/claude-code/llm-gateway"
+      ]
+    },
+    {
+      "label": "官方的三種設定方式，擇一（bash）",
+      "language": "bash",
+      "lines": 14,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.z.ai/scenario-example/develop-tools/claude"
+      ]
+    }
+  ],
+  "hero_label": "同一個工具，換一家模型",
+  "diagram": {
+    "layout": "flow",
+    "title": "從別名到實際模型",
+    "caption": "介面上的別名到實際回答模型之間的三段轉換，依 Z.ai 兩頁官方文件整理，2026 年 9 月查證。",
+    "nodes": [
+      [
+        "介面的別名",
+        "opus、sonnet、haiku"
+      ],
+      [
+        "方案的對應",
+        "文件寫 GLM-4.7"
+      ],
+      [
+        "方案的改派",
+        "改由 GLM-5.3-Flash"
+      ],
+      [
+        "實際回答",
+        "自己再確認一次"
+      ]
+    ]
+  }
+}

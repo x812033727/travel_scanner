@@ -1,0 +1,291 @@
+{
+  "slug": "ai-workflow-claude-code-custom-model",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 412,
+  "related": [
+    "ai-workflow-glm-coding-plan",
+    "ai-workflow-litellm-gateway",
+    "ai-workflow-codex-model-providers"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "把 Claude Code 指到別的模型端點：ANTHROPIC_BASE_URL 與憑證怎麼設",
+      "description": "Claude Code 只要設好 ANTHROPIC_BASE_URL 與一個憑證變數，就會把每一次請求送到你指定的網址。這篇照官方文件說明兩個憑證變數分別送進哪個標頭、為什麼先用 curl 打一次再開 claude、設定檔該寫在哪一層才不會把憑證推上版本控制，以及換掉端點之後哪些功能會停用。Anthropic 的文件同時寫明，它不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。",
+      "hero": {
+        "src": "/guides/ai-workflow-claude-code-custom-model/hero.jpg",
+        "alt": "原創插圖：一台終端機的請求從預設路徑分岔到一個自訂端點，旁邊標出網址與憑證兩個設定點。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude Code 讀兩個環境變數，就會改變它把請求送到哪裡：ANTHROPIC_BASE_URL 決定網址，另一個憑證變數決定它用什麼身分敲門。官方文件把這件事叫做接上 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 閘道，設定本身不到十行，真正要弄清楚的是換過去之後有哪些東西跟著變。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇整理 docs.claude.com 上五頁官方說明：閘道總覽、開發者端的連線步驟、給閘道營運者看的相容性規格，以及環境變數與模型設定兩份參考。讀完你會知道兩個憑證變數分別送進哪一個 HTTP 標頭、怎麼在開 claude 之前先用 curl 確認端點通不通、設定該寫進哪一個檔案，還有換掉端點之後哪些功能會直接停用。你需要一台裝好 Claude Code 的電腦、對方給你的網址與憑證，以及 curl。本站沒有實測任何第三方閘道產品，文中的網址與憑證都是示意值。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "ANTHROPIC_BASE_URL 決定 Claude Code 把請求送到哪個網址，ANTHROPIC_AUTH_TOKEN 會放進 Authorization: Bearer 標頭，ANTHROPIC_API_KEY 會放進 x-api-key，憑證放錯變數會以對方沒在讀的標頭送出，請求回 401。",
+            "寫進設定檔之前先用 curl 打一次 Messages 端點：回應開頭是 msg_ 就代表網址與憑證都通，就算回一個不認得這個模型的錯誤也算通過。",
+            "憑證變數一生效，claude.ai 訂閱就不會被用到，遠端遙控與語音聽寫也不能用；從 v2.1.196 起，ANTHROPIC_BASE_URL 指向 api.anthropic.com 以外的主機同樣會停掉遠端遙控。",
+            "Anthropic 的文件寫明，它不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Claude Code 眼中的端點是什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方的相容性規格把 Claude Code 能講的協定列成三種格式，其中最常用的一種叫 Anthropic Messages，由 ANTHROPIC_BASE_URL 選定，必要的端點是 /v1/messages，另外還有一個可選的 /v1/messages/count_tokens。文件寫明，算 token 的端點是唯一可以不提供的；沒有它的時候，Claude Code 會退回以字元數推估上下文用量。另外兩種格式分別對應 Amazon Bedrock 與 Google Cloud 的 Agent Platform，各自用自己的變數選定，這篇不處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規格裡還有兩件會直接影響體感的要求。第一是串流：文件要求端點把推論回應以串流送出，Claude Code 是邊收邊讀的，對方如果等整段回應收完才轉送，Claude Code 就會卡住。第二是心跳。在 ANTHROPIC_BASE_URL 這條路上，Claude Code 會數對方轉送的每一個位元組，連串流事件裡的 ping 與註解行都算，預設靜默超過 300 秒就中斷這條串流。模型長時間思考時，唯一還在流動的就是上游的 ping，對方如果把它濾掉或緩衝起來，那段停頓就會被判成斷線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一種你會在對方的紀錄裡看到、但不必緊張的流量：文件說 Anthropic Messages 格式的端點會收到一個 HEAD /api/hello 的暖機探測，拒絕它不影響功能。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩個憑證變數，差在送進哪個標頭"
+        },
+        {
+          "type": "paragraph",
+          "text": "憑證要放進哪個變數不是偏好問題，而是看對方讀哪個標頭。文件寫得很直接：ANTHROPIC_AUTH_TOKEN 會放進 Authorization: Bearer，ANTHROPIC_API_KEY 會放進 x-api-key，而 apiKeyHelper 兩個標頭都會送。憑證放錯變數，就會以對方沒在讀的標頭送過去，結果是 401。文件也給了沒有人告訴你是哪一種時的預設做法：先用 ANTHROPIC_AUTH_TOKEN。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定的位置",
+            "憑證送進哪個標頭",
+            "什麼時候用這一個"
+          ],
+          "rows": [
+            [
+              "ANTHROPIC_AUTH_TOKEN",
+              "Authorization: Bearer",
+              "對方說這是 bearer token 或 Authorization 標頭；不確定時先試這個"
+            ],
+            [
+              "ANTHROPIC_API_KEY",
+              "x-api-key",
+              "對方說這是 API key 或 x-api-key"
+            ],
+            [
+              "apiKeyHelper",
+              "兩個標頭都送",
+              "憑證會過期，或來自金鑰保管庫、SSO 指令"
+            ]
+          ],
+          "caption": "依 docs.claude.com 的閘道連線說明頁整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "決定之前先用 curl 打一次，比直接開 claude 好除錯：失敗時你知道問題在網址或憑證，而不是在 Claude Code 這一層。文件給的判準也很具體。回應開頭是 msg_ 開頭的 id、而且帶 content 欄位，就代表端點連得到、憑證也通。就算回一個不認得這個模型的錯誤也算通過，因為那表示請求先通過驗證才被擋下，所以你不必為了測試去找一個對方真的有的模型名稱。只有 401 才是憑證被拒，這時就換另一個變數再試一次。"
+        },
+        {
+          "type": "code",
+          "label": "先驗證端點再開 claude（需要 curl）",
+          "language": "bash",
+          "code": "# 1. 先用 shell 變數試一次；確認通了再決定要不要寫進設定檔。\nexport ANTHROPIC_BASE_URL=\"https://llm-gateway.example.com\"\nexport ANTHROPIC_AUTH_TOKEN=\"$(cat ~/.config/mokaair/gateway-token)\"\n\n# 2. 直接打 Messages 端點，只要一個 token 的回應。\ncurl -sS -X POST \"$ANTHROPIC_BASE_URL/v1/messages\" \\\n  -H \"Authorization: Bearer $ANTHROPIC_AUTH_TOKEN\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -H \"content-type: application/json\" \\\n  --max-time 30 \\\n  -d '{\"model\": \"claude-sonnet-5\", \"max_tokens\": 1,\n       \"messages\": [{\"role\": \"user\", \"content\": \".\"}]}'\n\n# 回應開頭是 msg_ 開頭的 id 就通了；回一個不認得的模型名稱也算通。\n# 回 401 表示憑證送錯標頭：改設 ANTHROPIC_API_KEY，\n# 並把上面那行 Authorization 換成 x-api-key: $ANTHROPIC_API_KEY。\n\n# 3. 從同一個終端機開 claude，讓它繼承這兩個變數，再用 /status 對一次。\nclaude"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個憑證變數還有一個差別，在於它們怎麼跟你既有的登入相處。文件寫，憑證變數的優先權高於已存檔的 claude.ai 登入或 Console 金鑰：用 ANTHROPIC_AUTH_TOKEN 時變數立刻生效，用 ANTHROPIC_API_KEY 時，互動模式下會先問你一次要不要用這把金鑰。原本的登入不會消失，只是被晾在一邊，把變數取消掉就會回到它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定要寫在哪一層"
+        },
+        {
+          "type": "paragraph",
+          "text": "shell 的 export 只對那個終端機視窗與它開出來的程式有效，從 Dock 或開始功能表點開的編輯器看不到。文件另外提醒一件容易漏掉的事：只在 shell 裡設定的閘道，不一定傳得到由監督程序代管的背景工作；要讓背景工作也一律走同一個端點，就得寫進設定檔的 env 區塊。"
+        },
+        {
+          "type": "code",
+          "label": "~/.claude/settings.json：位址寫在檔案裡，憑證交給 helper",
+          "language": "json",
+          "code": "{\n  \"env\": {\n    \"ANTHROPIC_BASE_URL\": \"https://llm-gateway.example.com\",\n    \"ANTHROPIC_CUSTOM_HEADERS\": \"X-Org-Route: prod\"\n  },\n  \"apiKeyHelper\": \"/usr/local/bin/mokaair-gateway-token\"\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定檔分兩層。使用者家目錄下的 settings.json 對你所有專案生效，Windows 的路徑在使用者資料夾的 .claude 底下；專案裡另外有一個只對這個專案生效的 settings.local.json。文件同時警告，不要把憑證寫進專案的 .claude/settings.json，因為那個檔案會被提交，分享給每一個複製這個程式庫的人。上面的例子把憑證交給 apiKeyHelper，理由就在這裡：它是一個把目前憑證印到標準輸出的指令，設定檔裡只留下指令的路徑，不留字串本身。文件補了一個實務上很容易踩到的細節，這個指令只能印憑證，從 v2.1.227 起，跟著印出來的橫幅或日誌行會讓 helper 失敗。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個變數同時出現在 shell 與設定檔的 env 區塊時，設定檔的值生效。設好之後在 Claude Code 裡跑 /status，狀態頁上會多出一行 Anthropic base URL 指向你的網址；這一行只有在有設定位址時才會出現，沒看到就表示變數根本沒有進到這個工作階段。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "模型名稱與上下文視窗要自己交代"
+        },
+        {
+          "type": "paragraph",
+          "text": "換掉端點之後，Claude Code 送出去的模型名稱還是它自己那一套。文件說，用 Anthropic Messages 格式連線時，Claude Code 會把對方當成 Claude API，看不出背後接的是誰，預設就送 Anthropic 的模型 id。要讓別名指到對方認得的名稱，就設 ANTHROPIC_DEFAULT_OPUS_MODEL、ANTHROPIC_DEFAULT_SONNET_MODEL 與 ANTHROPIC_DEFAULT_HAIKU_MODEL 這三個變數，其中 haiku 那一個同時決定背景工作用哪一個模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上下文視窗要另外處理。文件寫，遇到不認得的模型 id，Claude Code 假設 200K，id 裡帶 1m 標記時假設 1M；假設錯了，自動壓縮的時機就會錯。要自己宣告就設 CLAUDE_CODE_MAX_CONTEXT_TOKENS，但它套用的條件分成三種情形：對方自訂的拼法、同一個拼法再加上 1m 標記，以及其他所有 id，文件各自寫了規則，設之前值得照著對一次。如果對方的端點提供自己的模型清單，把 CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY 設成 1，Claude Code 會在啟動時去問一次，把名稱加進 /model 選單；只想加一個名稱就用 ANTHROPIC_CUSTOM_MODEL_OPTION。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-claude-code-custom-model/diagram-1.svg",
+          "alt": "流程圖：設兩個變數、先用 curl 打一次、寫進設定檔、用 /status 確認。",
+          "width": 1600,
+          "height": 900,
+          "caption": "把 Claude Code 指向自有端點的四個步驟，依 docs.claude.com 的說明頁整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "換掉端點之後，哪些東西會不一樣"
+        },
+        {
+          "type": "paragraph",
+          "text": "最大的一件是計費。文件寫，只要憑證變數或 apiKeyHelper 生效，你的 claude.ai 訂閱就不會被用到，訂閱的用量限制也不適用，那段流量會按 token 向憑證背後的擁有者計費。只設 ANTHROPIC_BASE_URL 而不設憑證是另一回事：請求照樣走你指定的網址，但已存檔的 claude.ai 登入仍然是有效憑證，訂閱的限制與計費照算。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其次是幾個會直接消失的功能。文件寫，遠端遙控與語音聽寫都依賴 claude.ai 的身分，只要 ANTHROPIC_API_KEY、ANTHROPIC_AUTH_TOKEN 或 apiKeyHelper 生效就不能用；從 v2.1.196 起，ANTHROPIC_BASE_URL 指向 api.anthropic.com 以外的主機時，遠端遙控也會被停用，光是用 claude.ai 登入不夠。環境變數參考另外寫，base URL 指向非第一方主機時，"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 的工具搜尋預設關閉，除非你確定對方會轉送 tool_reference 區塊，才把 ENABLE_TOOL_SEARCH 設成 true。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "還有兩條路不在這個設定的涵蓋範圍。文件寫，Slack 裡的 Claude Code 與雲端工作階段一律走 Anthropic 的 API，不屬於閘道部署的一部分，在雲端工作階段的環境設定裡放這些變數不會生效；如果你的流量必須全部留在自有端點上，就不要為那些使用者開這兩條路。另外，快速模式的可用性檢查與 WebFetch 的網域安全檢查都直接打 api.anthropic.com，不跟著 ANTHROPIC_BASE_URL 走；封鎖直連的網路裡這兩件事會報錯，推論本身卻是正常的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一句要從官方文件原樣轉述：Anthropic 寫明它不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。接得上跟受支援是兩件事。本系列接下來幾篇示範的 GLM 訂閱方案、本機 Ollama 與自架閘道，都落在這句話的範圍內。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "專案裡的 .claude/settings.json 會被提交",
+          "text": "官方文件提醒，不要把憑證放進專案的 .claude/settings.json，因為那個檔案會被提交，分享給每一個複製這個程式庫的人。要在專案層設定就用 .claude/settings.local.json，Claude Code 自己存設定到那裡時會順手加進你的全域 gitignore；如果是你手寫或請 Claude 寫的，先自己把它加進 gitignore 再寫入。憑證會輪替或來自金鑰保管庫時，改用 apiKeyHelper，設定檔裡就只剩指令路徑。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "只設 ANTHROPIC_BASE_URL，我的 claude.ai 訂閱還會被用到嗎？",
+              "answer": "會。文件寫，只設 base URL 而沒有設憑證變數時，請求確實會改走你指定的網址，但已存檔的 claude.ai 登入仍然是有效憑證，訂閱的用量限制與計費照算。要讓訂閱不被用到，得同時設定憑證變數或 apiKeyHelper；一旦其中之一生效，文件說訂閱就不會被使用，訂閱的用量限制也不適用，那段流量改為按 token 向憑證背後的擁有者計費。"
+            },
+            {
+              "question": "兩個憑證變數要選哪一個？",
+              "answer": "看對方讀哪個標頭。ANTHROPIC_AUTH_TOKEN 會把憑證放進 Authorization: Bearer，ANTHROPIC_API_KEY 會放進 x-api-key，apiKeyHelper 兩個都送。對方說是 bearer token 就選前者，說是 API key 就選後者。文件建議，沒有人告訴你是哪一種時先用 ANTHROPIC_AUTH_TOKEN，用 curl 打一次，回 401 再換另一個。"
+            },
+            {
+              "question": "換了端點之後，遠端遙控與語音聽寫為什麼不見了？",
+              "answer": "兩者都依賴 claude.ai 的身分：遠端遙控要把正在跑的工作階段跟你的帳號配對，語音聽寫要連到 claude.ai 的轉寫端點。文件寫，只要 ANTHROPIC_API_KEY、ANTHROPIC_AUTH_TOKEN 或 apiKeyHelper 生效，這兩個功能就不能用；從 v2.1.196 起，base URL 指向 api.anthropic.com 以外的主機時，遠端遙控也會被停用。要恢復語音聽寫就取消憑證變數，要恢復遠端遙控則連 ANTHROPIC_BASE_URL 一起取消，並用 claude.ai 登入。"
+            },
+            {
+              "question": "可以用這個方法把 Claude Code 接到非 Claude 的模型嗎？",
+              "answer": "技術上只要對方提供 Anthropic Messages 格式的端點就連得上，本系列後面幾篇也示範了這種接法。但 Anthropic 的文件寫明，它不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。也就是說，出問題時官方不會受理，功能是否正常由你自己驗證。這是一個要先接受再決定的條件，不是一句免責宣告。"
+            },
+            {
+              "question": "怎麼確認 Claude Code 真的走了我設的端點？",
+              "answer": "在工作階段裡跑 /status，狀態頁上會有一行 Anthropic base URL。文件說這一行只有在有設定位址時才會出現，所以沒看到就表示變數沒有傳進這個工作階段，通常是設在別的終端機、或是從 Dock 直接點開的程式沒有繼承到。同一頁還會顯示目前生效的憑證來源，指到 ANTHROPIC_AUTH_TOKEN、ANTHROPIC_API_KEY 或 apiKeyHelper 的其中一個；如果顯示的是 claude.ai 帳號，表示憑證沒生效。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
+              "kind": "life",
+              "slug": "ai-workflow-coding-agents-division"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Code Docs: Other LLM gateways",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Connect Claude Code to an LLM gateway",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-connect",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Claude Code gateway compatibility guide",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Environment variables",
+          "url": "https://docs.claude.com/en/docs/claude-code/env-vars",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Model configuration",
+          "url": "https://docs.claude.com/en/docs/claude-code/model-config",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

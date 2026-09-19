@@ -32,22 +32,29 @@ GROUPS = [
     {"id": "B", "title": "接線：統一 API、路由與交接"},
     {"id": "C", "title": "協作：互審、代理分工與 MCP"},
     {"id": "D", "title": "營運：本機混搭、追蹤與防護"},
+    {"id": "E", "title": "換模型：指到別家、本機與自架端點"},
 ]
-GROUP_OF = {slug: "ABCD"[i // 3] for i, slug in enumerate(SLUGS)}
+# Batch 1 fills A-D three at a time; batch 2's five articles are all group E.
+GROUP_OF = {slug: "ABCDE"[min(i // 3, 4)] for i, slug in enumerate(SLUGS)}
 
-S = dict(zip(range(1, 13), SLUGS))
+S = dict(zip(range(1, 18), SLUGS))
 PATHS = [
     {"id": "concepts", "title": "觀念路線", "slugs": [S[1], S[2], S[3], S[12]]},
     {"id": "builder", "title": "接線路線", "slugs": [S[1], S[4], S[5], S[6], S[9], S[10]]},
     {"id": "operator", "title": "營運路線", "slugs": [S[3], S[7], S[8], S[11], S[12]]},
+    {"id": "swap", "title": "換模型路線", "slugs": [S[13], S[14], S[15], S[16], S[17]]},
 ]
-LEVEL = {**{S[i]: "beginner" for i in (1, 2, 3)}, **{S[i]: "intermediate" for i in range(4, 11)}, **{S[i]: "advanced" for i in (11, 12)}}
-PLATFORMS = {**{S[i]: ["web"] for i in (1, 2, 3)}, **{S[i]: ["cli"] for i in range(4, 13)}}
+LEVEL = {**{S[i]: "beginner" for i in (1, 2, 3)}, **{S[i]: "intermediate" for i in range(4, 11)},
+         **{S[i]: "advanced" for i in (11, 12)}, **{S[i]: "advanced" for i in range(13, 18)}}
+PLATFORMS = {**{S[i]: ["web"] for i in (1, 2, 3)}, **{S[i]: ["cli"] for i in range(4, 18)}}
 PREREQUISITES = {S[2]: [S[1]], S[3]: [S[1]], S[4]: [S[3]], S[5]: [S[3], S[4]], S[6]: [S[4]], S[7]: [S[6]],
-                 S[8]: [S[1]], S[9]: [S[8]], S[10]: [S[4]], S[11]: [S[7]], S[12]: [S[11]]}
+                 S[8]: [S[1]], S[9]: [S[8]], S[10]: [S[4]], S[11]: [S[7]], S[12]: [S[11]],
+                 S[13]: [S[8]], S[14]: [S[8]], S[15]: [S[13]], S[16]: [S[10], S[14]], S[17]: [S[13], S[14]]}
 RELATED = {S[1]: [S[2], S[3], S[12]], S[2]: [S[1], S[3], S[5]], S[3]: [S[2], S[5], S[11]], S[4]: [S[5], S[6], S[10]],
            S[5]: [S[3], S[4], S[6]], S[6]: [S[5], S[7], S[12]], S[7]: [S[6], S[11], S[12]], S[8]: [S[9], S[6], S[7]],
-           S[9]: [S[8], S[10], S[4]], S[10]: [S[9], S[4], S[12]], S[11]: [S[7], S[3], S[12]], S[12]: [S[11], S[6], S[10]]}
+           S[9]: [S[8], S[10], S[4]], S[10]: [S[9], S[4], S[12]], S[11]: [S[7], S[3], S[12]], S[12]: [S[11], S[6], S[10]],
+           S[13]: [S[15], S[17], S[14]], S[14]: [S[13], S[17], S[16]], S[15]: [S[13], S[17], S[3]],
+           S[16]: [S[14], S[17], S[10]], S[17]: [S[13], S[14], S[16]]}
 ALIASES = {
     S[1]: ["工作流", "workflow", "代理", "agent", "提示詞串接"],
     S[2]: ["拆任務", "分工", "子代理", "資料敏感度"],
@@ -61,6 +68,11 @@ ALIASES = {
     S[10]: ["Ollama", "本機", "開放權重", "去識別化", "gemma4"],
     S[11]: ["追蹤", "tracing", "評測", "evals", "JSONL", "OpenTelemetry"],
     S[12]: ["防護", "guardrails", "提示詞注入", "預算", "迴圈"],
+    S[13]: ["ANTHROPIC_BASE_URL", "ANTHROPIC_AUTH_TOKEN", "閘道", "gateway", "apiKeyHelper", "自訂端點"],
+    S[14]: ["model_providers", "config.toml", "wire_api", "oss_provider", "openai_base_url"],
+    S[15]: ["GLM", "Z.ai", "GLM Coding Plan", "模型對應", "點數", "訂閱"],
+    S[16]: ["Ollama", "本機模型", "oss", "tool_choice", "OLLAMA_CONTEXT_LENGTH", "num_ctx"],
+    S[17]: ["LiteLLM", "Proxy", "自架閘道", "虛擬金鑰", "master_key", "config.yaml"],
 }
 
 

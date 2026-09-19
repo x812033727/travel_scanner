@@ -1,0 +1,274 @@
+{
+  "slug": "ai-workflow-ollama-coding-agent",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 415,
+  "related": [
+    "ai-workflow-codex-model-providers",
+    "ai-workflow-litellm-gateway",
+    "ai-workflow-local-and-cloud-mix"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "本機 Ollama 接命令列編碼代理：Codex 有內建，Claude Code 要轉一手",
+      "description": "把自己電腦上的模型接給命令列編碼代理，兩邊的難度差很多：Codex 內建本機供應商，加上一個旗標就跑；Claude Code 只認 Anthropic Messages 格式，中間必須有人翻譯。這篇照官方文件整理兩條路的差別，以及四個會讓本機模型接上去卻不好用的限制：預設上下文只有 4096 token、沒有 tool_choice、有狀態的回應端點不支援，還有記憶體怎麼被吃掉。",
+      "hero": {
+        "src": "/guides/ai-workflow-ollama-coding-agent/hero.jpg",
+        "alt": "原創插圖：一台本機電腦連出兩條線，一條直接接到命令列工具，另一條中間多了一個轉接方塊。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把自己電腦上跑的模型接給命令列編碼代理，聽起來是同一件事，實際上分成兩種難度。Codex 內建了本機供應商，加一個旗標就能用；Claude Code 只認 Anthropic 的 Messages 格式，而 Ollama 提供的是 OpenAI 相容端點，兩者形狀不同，中間必須有人翻譯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 Ollama 的官方相容性與常見問題頁、Codex 的進階設定頁，以及 Claude Code 的閘道相容性規格，把兩條路各自要做什麼寫清楚，再列出四個接上去之後才會發現的限制。前提是你已經裝好 Ollama、拉過一個模型，並且能跑 Python 3。需要的硬體、模型該選多大，本站另有專文，這篇只談接上編碼代理這一段。本站沒有在這一輪對任何本機模型做品質或速度測試。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Codex 內建本機供應商，官方文件寫加上 --oss 就能對著 Ollama 或 LM Studio 執行，單次執行用 --local-provider 指定，要固定就寫 oss_provider。",
+            "Claude Code 走的是 Anthropic Messages 格式，官方規格列的端點是 /v1/messages；Ollama 提供的是 OpenAI 相容端點，所以要嘛中間放一個會翻譯的閘道，要嘛就走 Codex 那條路。",
+            "Ollama 官方文件寫，預設上下文只有 4096 token，可以用 OLLAMA_CONTEXT_LENGTH 調大，但需要的記憶體會隨著平行請求數乘上上下文長度一起放大。",
+            "相容端點支援 tools，但不支援 tool_choice，/v1/responses 也不支援有狀態的用法，這三件事都會影響編碼代理能不能穩定地呼叫工具。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩條路的差別在格式"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 官方文件開宗明義寫，它讓 OpenAI 的用戶端連到 Ollama，支援的是 OpenAI API 的一個子集。本機伺服器的位址是 11434 埠加上 /v1，文件也寫明用戶端需要填一個金鑰值，但 Ollama 會忽略它。這決定了它能直接被誰接走：任何講 OpenAI 那套形狀的工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 正好是其中之一，而且更進一步。它的進階設定頁寫，Codex 可以對著本機的開源供應商執行，例如 Ollama 或 LM Studio，方法是加上 --oss；單次執行用 --local-provider 挑一個，要固定就把 oss_provider 寫進設定檔。文件也寫了兩者都沒設定時的行為：互動模式會問你選哪一個，codex exec 直接以錯誤結束。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 這邊就不一樣了。它的閘道相容性規格寫，用 ANTHROPIC_BASE_URL 連線時講的是 Anthropic Messages 格式，端點是 /v1/messages，另有一個可選的算 token 端點。Ollama 的相容清單裡沒有這個格式，所以把 ANTHROPIC_BASE_URL 直接指到 11434 埠不會成功——那不是設定寫錯，是兩邊講的話不一樣。要接，中間就得有一個把 Messages 格式翻成 OpenAI 形狀的閘道，這正是本系列下一篇要做的事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Codex 那條路怎麼走"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "實際操作只有幾行，但第一行最重要：先把"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "調大再啟動伺服器。Ollama 的常見問題頁寫，預設的上下文視窗是 4096 token；這個數字對聊天夠用，對「讀一個檔案再改它」的工作太小，代理送進去的"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "加上幾個檔案就滿了。文件給的做法是用 OLLAMA_CONTEXT_LENGTH 覆寫，或在互動模式裡改 num_ctx 參數。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "label": "先調大上下文，再讓 Codex 用本機供應商（bash）",
+          "language": "bash",
+          "code": "# 1. 預設上下文只有 4096 token，對讀程式庫的工作太小；啟動時就調大。\n#    記憶體會隨著上下文長度成長，先從保守的數字開始試。\nOLLAMA_CONTEXT_LENGTH=32768 ollama serve\n\n# 2. 另開一個視窗，拉一個模型下來；標籤與下載大小看官方模型庫。\nollama pull qwen3.6\n\n# 3. 確認它跑在顯示卡還是 CPU，順便看記憶體用掉多少。\nollama ps\n\n# 4. Codex 內建本機供應商，加一個旗標就能用。\ncodex --oss --local-provider ollama\n\n# 5. 要固定走本機，就把 oss_provider 寫進設定檔；\n#    沒設好的話，非互動的 codex exec 會直接以錯誤結束。\nprintf '\\noss_provider = \"ollama\"\\n' >> \"$HOME/.codex/config.toml\""
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶體是這裡最容易失控的一項。官方文件寫，每個模型同時處理的平行請求數由 OLLAMA_NUM_PARALLEL 決定，預設是 1，而需要的記憶體會隨著平行請求數乘上上下文長度一起放大。也就是說，把上下文從 4096 調到 32768 已經是八倍，再把平行數調到 4 就是三十二倍；先調一個、跑 ollama ps 看實際用量，比兩個一起調安全。另外還有一個 OLLAMA_MAX_QUEUE，官方寫它是忙碌時最多排隊幾個請求，超過就拒絕，預設 512。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接上去之後才會發現的四件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "編碼代理和聊天不一樣的地方在於它要呼叫工具：讀檔、寫檔、跑指令。Ollama 的相容性頁把每個請求欄位逐一標記支援與否，其中三項直接決定代理好不好用。tools 是支援的，所以模型收得到工具定義，也回得了工具呼叫；但 tool_choice 是不支援的，代理沒辦法強制模型這一輪一定要呼叫某個工具，只能靠提示詞請它這麼做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三項是 /v1/responses 的有狀態用法。文件寫 previous_response_id 與 conversation 兩個欄位都不支援，並直接註明有狀態的 responses 不支援。對自己寫程式的人，這表示每一輪都要把完整對話重新送一次；對現成的代理，就要看它有沒有假設對方記得上一輪。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "官方文件寫的狀態",
+            "對編碼代理的影響"
+          ],
+          "rows": [
+            [
+              "tools（工具定義）",
+              "支援",
+              "模型收得到工具，也回得了工具呼叫"
+            ],
+            [
+              "tool_choice（指定呼叫哪個工具）",
+              "不支援",
+              "不能強制這一輪一定要用某個工具"
+            ],
+            [
+              "有狀態的 /v1/responses",
+              "不支援",
+              "每一輪都要把整段對話重送"
+            ],
+            [
+              "預設上下文長度",
+              "4096 token",
+              "讀大一點的檔案就會被截掉"
+            ],
+            [
+              "Anthropic Messages 格式",
+              "相容清單裡沒有",
+              "Claude Code 不能直接指過來"
+            ]
+          ],
+          "caption": "依 Ollama 的 OpenAI 相容性與常見問題頁、Claude Code 的閘道相容性規格整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第四件事比較瑣碎但很實用：有些工具寫死了 OpenAI 的預設模型名稱。官方文件給的解法是用 ollama cp 把現有模型複製成那個名字，讓工具找得到。這是一個暫時的別名，不是改模型本身。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把工具接上之前，最省時間的一步是先確認這個模型真的會回工具呼叫。同一個模型在聊天時很流暢，遇到工具定義卻只回一段文字描述，是相當常見的情況。下面這支程式只用 Python 標準函式庫，送一個帶工具定義的請求到本機端點，把回來的工具呼叫印出來；沒有工具呼叫就以非零狀態結束，可以直接放進你自己的檢查流程。"
+        },
+        {
+          "type": "code",
+          "label": "接代理之前先確認模型會回工具呼叫（Python，只用標準函式庫）",
+          "language": "python",
+          "code": "\"\"\"送一個帶工具定義的請求到本機 Ollama，看它回不回工具呼叫。\"\"\"\nimport json\nimport os\nimport urllib.request\n\nBASE = os.environ.get(\"LOCAL_BASE_URL\", \"http://localhost:11434/v1\")\nMODEL = os.environ.get(\"LOCAL_MODEL\", \"qwen3.6\")\nTOOLS = [\n  {\n    \"type\": \"function\",\n    \"function\": {\n      \"name\": \"read_file\",\n      \"description\": \"讀取工作目錄底下的一個檔案\",\n      \"parameters\": {\n        \"type\": \"object\",\n        \"properties\": {\"path\": {\"type\": \"string\"}},\n        \"required\": [\"path\"],\n      },\n    },\n  }\n]\n\n\ndef ask(prompt: str) -> dict:\n  body = json.dumps(\n    {\n      \"model\": MODEL,\n      \"messages\": [{\"role\": \"user\", \"content\": prompt}],\n      \"tools\": TOOLS,\n      \"stream\": False,\n    }\n  ).encode(\"utf-8\")\n  request = urllib.request.Request(\n    f\"{BASE}/chat/completions\",\n    data=body,\n    headers={\n      \"Content-Type\": \"application/json\",\n      # 相容端點要求用戶端填一個金鑰值，但 Ollama 會忽略它。\n      \"Authorization\": \"Bearer ollama\",\n    },\n  )\n  with urllib.request.urlopen(request, timeout=120) as response:\n    return json.loads(response.read())\n\n\ndef main() -> int:\n  answer = ask(\"請讀取 README.md，並回報它的第一行。\")\n  message = answer[\"choices\"][0][\"message\"]\n  calls = message.get(\"tool_calls\") or []\n  print(f\"模型 {answer.get('model')}：工具呼叫 {len(calls)} 次\")\n  for call in calls:\n    print(\" \", call[\"function\"][\"name\"], call[\"function\"][\"arguments\"])\n  if not calls:\n    print(\"沒有工具呼叫；接上編碼代理多半只會得到一段說明文字。\")\n  return 0 if calls else 1\n\n\nif __name__ == \"__main__\":\n  raise SystemExit(main())"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-ollama-coding-agent/diagram-1.svg",
+          "alt": "四格圖解：Codex 內建直連、Claude Code 需要翻譯、上下文預設太小、工具呼叫有缺口。",
+          "width": 1600,
+          "height": 900,
+          "caption": "本機模型接編碼代理的兩條路與兩個限制，依 Ollama 與兩家命令列工具的官方文件整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "什麼時候值得接，什麼時候不值得"
+        },
+        {
+          "type": "paragraph",
+          "text": "把上面這些條件擺在一起，答案其實蠻清楚的。資料不能離開這台機器、或是網路本來就連不出去的時候，本機模型是唯一的選項，多花的設定工夫是必要成本。反過來，如果你的理由只是想省錢，那要先算一筆：上下文調到能讀一個中型程式庫的程度，記憶體就得跟著上去，而編碼代理一輪對話會反覆重送整段上下文，本機跑起來的等待時間常常比省下來的錢更難忍受。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一種實務上最常見的折衷：只把某幾個步驟留在本機。像是先在本機把檔案裡的個資換成代號，再把乾淨的文字送到雲端模型收尾；或是把格式轉換、分類這類不需要強推理的步驟交給本機。這種混合式做法本系列另有一篇專門在講，這裡就不重複。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後回到 Claude Code 那一邊。既然它只認 Messages 格式，而本機端點講的是 OpenAI 形狀，那條路就一定要經過一個會翻譯的中間層。好消息是，這個中間層同時也解決了另外兩件事：它可以把多個上游收在同一個位址底下，也可以在一個地方看到用量與費用。下一篇就來架這個東西。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先調一個變數，再看 ollama ps",
+          "text": "上下文長度與平行請求數兩個設定會相乘影響記憶體。官方文件寫，需要的記憶體會隨著平行請求數乘上上下文長度一起放大，而平行請求數預設是 1。所以調整的順序是：先把上下文調到你真的需要的長度，跑一次 ollama ps 看模型跑在顯示卡還是 CPU、吃掉多少記憶體，確認還有餘裕再考慮動平行數。兩個一起調，遇到爆記憶體時會分不出是哪一個造成的。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "可以把 Claude Code 的 ANTHROPIC_BASE_URL 直接指到本機的 Ollama 嗎？",
+              "answer": "不行，而且這不是設定寫錯。Claude Code 的閘道相容性規格寫，用那個變數連線時講的是 Anthropic Messages 格式，必要端點是 /v1/messages；Ollama 的官方文件說它提供的是 OpenAI API 的一個子集。兩邊的請求形狀不同，中間必須有一個會翻譯的閘道。Codex 則不需要，因為它內建了本機供應商。"
+            },
+            {
+              "question": "為什麼本機模型讀不完我的檔案？",
+              "answer": "多半是上下文太小。Ollama 的常見問題頁寫，預設的上下文視窗是 4096 token，編碼代理光是系統提示詞與工具定義就會用掉一部分，再塞幾個檔案就滿了。可以用 OLLAMA_CONTEXT_LENGTH 這個環境變數在啟動伺服器時調大，或在互動模式裡改 num_ctx 參數。要注意記憶體會跟著成長。"
+            },
+            {
+              "question": "調大上下文之後記憶體不夠，要先動哪一個設定？",
+              "answer": "先把上下文調回你真正需要的長度，再檢查平行請求數。官方文件寫，需要的記憶體會隨著平行請求數乘上上下文長度一起放大，平行請求數的預設值是 1。另外還有一個排隊上限，官方寫忙碌時最多排 512 個請求，超過就拒絕。每次只動一個變數，並用 ollama ps 確認模型是跑在顯示卡還是 CPU。"
+            },
+            {
+              "question": "為什麼模型不肯呼叫工具？",
+              "answer": "先確認模型本身會不會回工具呼叫，再懷疑代理。相容端點支援 tools 欄位，所以工具定義送得進去；但它不支援 tool_choice，代理沒辦法強制模型這一輪一定要用某個工具，只能用提示詞請它這麼做。不同模型對工具的服從度差很多，文中那支只用標準函式庫的小程式就是為了在接代理之前先分辨這件事。"
+            },
+            {
+              "question": "工具寫死了 OpenAI 的模型名稱怎麼辦？",
+              "answer": "Ollama 官方文件針對這種情況給了一個做法：用 ollama cp 把一個現有模型複製成工具預期的那個名字，讓它找得到。這只是建立一個暫時的別名，不會改變模型本身，也不代表那個模型的行為會和原本那個名字一樣。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+              "kind": "life",
+              "slug": "ai-workflow-local-and-cloud-mix"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama Docs: OpenAI compatibility",
+          "url": "https://docs.ollama.com/openai",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Ollama Docs: FAQ",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Codex Docs: Advanced Configuration",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Claude Code gateway compatibility guide",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "slug": "ai-workflow-litellm-gateway",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 416,
+  "related": [
+    "ai-workflow-claude-code-custom-model",
+    "ai-workflow-codex-model-providers",
+    "ai-workflow-ollama-coding-agent"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "自架一個閘道，同時餵 Claude Code 與 Codex：LiteLLM Proxy 實作",
+      "description": "Claude Code 講 Anthropic Messages，Codex 講 Responses，兩邊要接同一批模型就需要一個中間層。這篇照 LiteLLM 官方的兩份整合文件，把一份模型清單同時開成兩種協定：Claude Code 指到閘道根位址，Codex 指到同一個閘道的 /v1，本機 Ollama 也掛在同一份清單裡，最後談這一層自己變成基礎設施之後要顧的事。",
+      "hero": {
+        "src": "/guides/ai-workflow-litellm-gateway/hero.jpg",
+        "alt": "原創插圖：兩個命令列工具各自連到同一個方塊，方塊後面再分出三條線通往不同的模型供應商。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "前面四篇各自處理一個用戶端：Claude Code 只認 Anthropic 的 Messages 格式，Codex 的自訂供應商走 Responses，本機的 Ollama 講的是 OpenAI 相容那一套。三種協定要接同一批模型，最省事的做法不是讓每個工具各自設定，而是在中間放一個會講多種話的閘道。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 LiteLLM 官方的 Claude Code 與 Codex 兩份整合文件，加上它的 Messages 端點說明，示範用一份設定檔把上游模型列好，再讓兩個命令列工具接到同一個位址；本機模型也掛在同一份清單裡，等於順手補上前一篇留下的缺口。前提是你能在自己的機器上跑一個常駐的服務，並且手上有各家供應商的金鑰。本站沒有把這套閘道放到正式環境跑過，文中的位址與金鑰路徑都是示意值。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "一份 config.yaml 的 model_list 就是這個閘道的全部菜單：每一項給一個對外的名稱，底下寫實際要打去哪一家、金鑰從哪個環境變數讀。",
+            "官方文件寫，閘道啟動後跑在 4000 埠；Claude Code 把 ANTHROPIC_BASE_URL 指到根位址，Codex 則在 config.toml 裡把 base_url 指到同一個閘道的 /v1，並把 wire_api 設成 responses。",
+            "憑證可以是主金鑰或虛擬金鑰，官方寫主金鑰讓 Claude Code 用得到閘道上所有模型，虛擬金鑰只限於那把金鑰有權使用的模型。",
+            "這一層一旦架起來就是你要維運的基礎設施：Anthropic 的文件提醒，閘道沒有跟上用戶端的更新時，對應的功能就會壞掉。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼值得自己架一層"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一個理由是協定。Claude Code 的相容性規格把它能講的格式列得很清楚，用 ANTHROPIC_BASE_URL 連線時就是 Anthropic Messages，端點是 /v1/messages。Codex 的設定參考則寫，自訂供應商的 wire_api 只列 responses 這個值。兩邊都不肯遷就對方，中間那一層就得同時開兩種門。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個理由是把散落的東西收攏。金鑰留在閘道這一台機器上，每個人手上拿的是閘道發的金鑰；換供應商時改的是閘道的設定檔，不必去每台機器改環境變數；用量與費用也集中在同一個地方看。LiteLLM 的 Codex 整合頁把這幾點寫成它的賣點，包括用內建分析追蹤花費與用量、用虛擬金鑰控制誰能用哪些模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三個理由才是本系列真正在意的：有了這一層，前一篇卡住的本機模型就能接進 Claude Code。Ollama 只講 OpenAI 那一套，但閘道可以把 Messages 格式的請求翻譯過去。這件事不必另外寫程式，只要在同一份清單裡多加一項。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一份設定檔，列出所有上游"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定檔的形狀在官方快速上手頁上：最上層是 model_list，每一項有一個對外的 model_name，底下的 litellm_params 才寫真正要打去哪裡。金鑰不直接寫在檔案裡，而是寫成讀取環境變數的形式。要接一個 OpenAI 相容的自架端點時，官方的範例是在同一個項目裡多給一個 api_base。"
+        },
+        {
+          "type": "code",
+          "label": "litellm_config.yaml：一份清單同時服務兩個用戶端",
+          "language": "yaml",
+          "code": "model_list:\n  # 對外的名稱可以自己取；Claude Code 與 Codex 看到的都是這一欄。\n  - model_name: claude-sonnet-5\n    litellm_params:\n      model: anthropic/claude-sonnet-5\n      api_key: os.environ/ANTHROPIC_API_KEY\n  - model_name: gpt-5.6-terra\n    litellm_params:\n      model: openai/gpt-5.6-terra\n      api_key: os.environ/OPENAI_API_KEY\n  # 本機那一台照 OpenAI 相容端點的寫法掛進來，多給一個 api_base。\n  # Ollama 的文件寫用戶端要填金鑰值，但它會忽略這個值。\n  - model_name: local-small\n    litellm_params:\n      model: openai/qwen3.6\n      api_base: http://localhost:11434/v1\n      api_key: ollama\n\ngeneral_settings:\n  master_key: os.environ/LITELLM_MASTER_KEY\n\nlitellm_settings:\n  drop_params: true"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後那兩個區塊各有用處。master_key 是這個閘道的主金鑰，官方文件在 Claude Code 那一頁解釋了它和虛擬金鑰的差別：主金鑰讓 Claude Code 用得到閘道上所有模型，虛擬金鑰只限於那把金鑰有權使用的模型。drop_params 則是官方 Codex 範例裡就有的設定，用意是把上游不認得的參數丟掉，而不是讓整個請求失敗——這在同一份清單裡混了好幾家供應商時特別有感。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "把兩個工具指到同一個位址"
+        },
+        {
+          "type": "paragraph",
+          "text": "啟動的指令是把設定檔交給 litellm，官方文件寫它會跑在 4000 埠。接工具之前先用 curl 打一次 Messages 端點，和第一篇的理由一樣：失敗時你知道問題在閘道，而不是在用戶端。官方的驗證範例用的就是這個端點，憑證放在 Authorization 標頭裡。"
+        },
+        {
+          "type": "code",
+          "label": "啟動閘道，驗證，再接兩個用戶端（bash）",
+          "language": "bash",
+          "code": "# 1. 上游的金鑰留在這一台機器的環境裡，設定檔只寫變數名稱。\nexport ANTHROPIC_API_KEY=\"$(cat ~/.config/mokaair/anthropic-key)\"\nexport OPENAI_API_KEY=\"$(cat ~/.config/mokaair/openai-key)\"\nexport LITELLM_MASTER_KEY=\"$(cat ~/.config/mokaair/litellm-master-key)\"\nlitellm --config ./litellm_config.yaml\n\n# 2. 另開一個視窗，先確認 Messages 端點通了再接工具。\ncurl -sS -X POST \"http://0.0.0.0:4000/v1/messages\" \\\n  -H \"Authorization: Bearer $LITELLM_MASTER_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  --max-time 60 \\\n  -d '{\"model\": \"claude-sonnet-5\", \"max_tokens\": 16,\n       \"messages\": [{\"role\": \"user\", \"content\": \".\"}]}'\n\n# 3. Claude Code 指到閘道的根位址。\nexport ANTHROPIC_BASE_URL=\"http://0.0.0.0:4000\"\nexport ANTHROPIC_AUTH_TOKEN=\"$LITELLM_MASTER_KEY\"\nclaude\n\n# 4. Codex 走同一個閘道的 /v1；位址與協定寫在 ~/.codex/config.toml，\n#    金鑰照 env_key 指定的變數名稱放在環境裡。\nexport LITELLM_API_KEY=\"$LITELLM_MASTER_KEY\"\ncodex"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 這邊，官方文件給了兩種指法：一種是指到閘道的根位址，文件標為建議做法；另一種是指到閘道底下的 anthropic 這條轉送路徑。憑證用的是閘道發的金鑰，放在 ANTHROPIC_AUTH_TOKEN。金鑰會輪替的話，官方也示範了用一支指令去拿金鑰的做法，並且寫明那支 helper 的優先權低於 ANTHROPIC_AUTH_TOKEN 與 ANTHROPIC_API_KEY——如果你兩邊都設了，helper 不會生效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 那邊不設環境變數，而是照第二篇講過的形狀在 config.toml 裡定義一個供應商：位址是閘道的 /v1，金鑰從 env_key 指定的變數讀，協定寫 responses。官方範例還把串流閒置逾時調得比預設值長很多，理由文件沒有解釋；從第二篇的角度看，這是在替「模型思考很久才吐第一個字」留餘裕。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用戶端",
+            "指到哪個位址",
+            "憑證放哪裡",
+            "講哪一種協定"
+          ],
+          "rows": [
+            [
+              "Claude Code",
+              "閘道的根位址",
+              "ANTHROPIC_AUTH_TOKEN",
+              "Anthropic Messages"
+            ],
+            [
+              "Codex",
+              "閘道的 /v1",
+              "config.toml 的 env_key",
+              "Responses"
+            ],
+            [
+              "自己寫的程式",
+              "閘道的 /v1",
+              "程式自己的環境變數",
+              "OpenAI 相容"
+            ]
+          ],
+          "caption": "同一個閘道對三種用戶端的接法，依 LiteLLM 兩份整合文件整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-litellm-gateway/diagram-1.svg",
+          "alt": "流程圖：一份設定檔、一個位址、兩種協定、一處看帳。",
+          "width": 1600,
+          "height": 900,
+          "caption": "自架閘道把四件事收在同一層，依 LiteLLM 與 Claude Code 的官方文件整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "架起來之後要顧的事"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的閘道說明頁講了一句話，值得在決定自架之前先看一次：這樣做的代價，是閘道變成你的組織要營運的基礎設施；用戶端每一版都會增加新能力，閘道沒有跟著轉送，對應的功能就會壞掉。也就是說，這一層不是設定完就結束，而是一個要跟著別人版本走的東西。"
+        },
+        {
+          "type": "paragraph",
+          "text": "相容性規格裡有兩條最容易被忽略的要求。第一，回應必須以串流送出；閘道如果等整段回應收完才轉送，Claude Code 會卡住。第二，心跳要原樣轉送；在這條路上，Claude Code 會數對方送來的每一個位元組，連串流事件裡的 ping 都算，預設靜默超過 300 秒就中斷。模型長時間思考時，唯一還在流動的就是上游的 ping，閘道把它濾掉或緩衝起來，那段停頓就會被判成斷線。自己架的時候，這兩件事比模型清單更值得先測。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "好處那一面也要說完整。金鑰集中之後，離職或換人只要作廢一把閘道金鑰；每一個請求都經過同一個位址，用量與費用自然落在同一份紀錄裡，本系列談追蹤與"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "那一篇要的資料，這裡就順手有了。要控制誰能用哪些模型，官方的做法是發虛擬金鑰，而不是把主金鑰發給每一個人。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "最後一句仍然要回到第一篇那條界線：Anthropic 寫明它不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。自架閘道不會改變這件事，只是把選擇權與責任一起拿到自己手上。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先測串流，再測模型清單",
+          "text": "自架閘道最常見的失敗不是接不上，而是接上之後對話會停住。Claude Code 的相容性規格寫，回應必須以串流送出，閘道如果先把整段收完再轉送就會讓它卡住；同一份文件也寫，這條路上的串流靜默超過 300 秒預設會被中斷，而長時間思考時唯一在流動的就是上游的心跳訊息。所以第一次架好時，先找一個會想比較久的請求測一次，確認畫面上的字是一點一點出現的，再去煩惱模型清單要放幾個。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "一定要自架嗎？只接一家模型也需要這一層嗎？",
+              "answer": "只有一個人、只接一家模型的話，直接設兩個環境變數就好，多一層只是多一個會壞的東西。自架的理由通常是其中之一：兩個以上的用戶端講不同協定、金鑰要集中保管與作廢、用量與費用要在同一個地方看，或是要把本機模型接給只認 Anthropic 格式的用戶端。四個都不成立時，不必架。"
+            },
+            {
+              "question": "Claude Code 要指到哪個位址？",
+              "answer": "官方文件給了兩種：一種是指到閘道的根位址，文件標為建議做法；另一種是指到閘道底下的 anthropic 轉送路徑。憑證放在 ANTHROPIC_AUTH_TOKEN，值可以是閘道的主金鑰或虛擬金鑰。文件寫，主金鑰讓 Claude Code 用得到閘道上所有模型，虛擬金鑰只限於那把金鑰有權使用的模型。"
+            },
+            {
+              "question": "Codex 為什麼不是設環境變數？",
+              "answer": "因為 Codex 換供應商靠的是設定檔。官方範例在 config.toml 裡定義一個供應商，位址指到閘道的 /v1，金鑰從 env_key 指定的環境變數讀，協定寫 responses，再用最上層的 model_provider 指過去。環境變數在這裡只負責存放金鑰本身。"
+            },
+            {
+              "question": "本機的 Ollama 要怎麼掛進同一份清單？",
+              "answer": "照 OpenAI 相容端點的寫法多給一個 api_base，指到本機伺服器的位址即可。Ollama 的官方文件寫用戶端需要填一個金鑰值，但它會忽略這個值，所以那一欄填什麼都可以。掛好之後，原本只認 Anthropic 格式的用戶端也能用到這台本機模型，因為翻譯是閘道做的。"
+            },
+            {
+              "question": "自架之後，Anthropic 還會支援嗎？",
+              "answer": "它的閘道說明頁寫明，Anthropic 不背書、不維護、也不稽核第三方閘道產品，而且不支援透過任何閘道把 Claude Code 接到非 Claude 的模型。同一頁也提醒，閘道會變成你自己要營運的基礎設施，用戶端每一版新增的能力，閘道沒有跟著轉送就會壞掉。這兩句話是自架之前要先接受的條件。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "追蹤、評測與可觀測性：知道流程哪一步出錯",
+              "kind": "life",
+              "slug": "ai-workflow-tracing-evals"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LiteLLM Docs: Claude Code Quickstart",
+          "url": "https://docs.litellm.ai/docs/tutorials/claude_responses_api",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "LiteLLM Docs: Codex",
+          "url": "https://docs.litellm.ai/docs/tutorials/openai_codex",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "LiteLLM Docs: LiteLLM AI Gateway (Proxy) Quickstart",
+          "url": "https://docs.litellm.ai/docs/proxy/quick_start",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "LiteLLM Docs: /v1/messages",
+          "url": "https://docs.litellm.ai/docs/anthropic_unified",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Claude Code gateway compatibility guide",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway-protocol",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Code Docs: Other LLM gateways",
+          "url": "https://docs.claude.com/en/docs/claude-code/llm-gateway",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Ollama Docs: OpenAI compatibility",
+          "url": "https://docs.ollama.com/openai",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

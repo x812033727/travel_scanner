@@ -1,0 +1,264 @@
+{
+  "slug": "ai-workflow-codex-model-providers",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 413,
+  "related": [
+    "ai-workflow-claude-code-custom-model",
+    "ai-workflow-litellm-gateway",
+    "ai-workflow-ollama-coding-agent"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Codex CLI 換模型：config.toml 的 model_providers 怎麼寫",
+      "description": "Codex 把「要連到哪個模型」拆成兩個設定：model 決定模型名稱，model_provider 指向一個你自己定義的供應商區塊。這篇照官方設定參考整理供應商要交代哪幾個鍵、為什麼 wire_api 只剩一個合法值、本機模型為什麼不必自己定義供應商，以及金鑰怎麼留在環境變數而不是設定檔裡，最後附一支開工前先驗設定的小程式。",
+      "hero": {
+        "src": "/guides/ai-workflow-codex-model-providers/hero.jpg",
+        "alt": "原創插圖：一個設定檔區塊往三個不同的模型端點分出三條線，線上標著位址、協定與金鑰三個欄位。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Codex 換模型不靠參數，靠設定檔。它把這件事拆成兩層：model 決定模型名稱，model_provider 指向一個供應商區塊，而供應商區塊才寫位址、協定與金鑰要從哪個環境變數讀。看懂這兩層之後，接自架閘道、接別家 API、接本機模型就是同一種寫法的三個版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇照 developers.openai.com 與 learn.chatgpt.com 上的 Codex 設定文件整理：設定檔的位置與先後順序、供應商區塊的每一個鍵、wire_api 目前只剩哪一個合法值、本機模型為什麼走另一條路，以及憑證、重試與逾時該怎麼配。前提是你已經裝好 Codex，手上有一個對方給的位址與金鑰，並且能跑 Python 3.11 以上（最後那支驗證程式用內建的 tomllib）。本站沒有實際連線測試任何第三方供應商，文中的位址與金鑰都是示意值。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Codex 的個人設定在使用者家目錄的 .codex/config.toml，專案層另有一份，文件寫明專案層只有在你信任那個專案時才會載入。",
+            "一個自訂供應商至少要交代 base_url，通常再加 env_key；openai、ollama 與 lmstudio 這三個內建 id 被保留，不能覆寫，只想改內建 OpenAI 供應商的位址就用 openai_base_url。",
+            "設定參考寫 wire_api 的 responses 是唯一支援的值，省略時也是這個值；但進階設定頁另一段仍然提到使用 Chat Completions 的供應商，兩頁的說法不一致，接之前要先問對方講哪一種協定。",
+            "本機的 Ollama 與 LM Studio 不必自己定義供應商，用 --oss 就好；兩者都沒指定時，互動模式會問你要哪一個，codex exec 則直接以錯誤結束。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "設定檔在哪裡，誰先誰後"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件寫，Codex 的使用者層設定放在家目錄的 .codex/config.toml；要把設定縮到某個專案或子資料夾，就在那個程式庫裡加一份 .codex/config.toml。這裡有一條安全規則值得記住：文件寫明，Codex 只有在你信任那個專案時，才會載入專案層的 .codex 設定。也就是說，從別人的程式庫複製下來的設定不會自動生效，這對一個能改模型端點的檔案來說是必要的防線。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份文件也列出了整條先後順序，由近而遠是專案層的設定、用 --profile 指定的設定檔、使用者層的 config.toml，最後才是系統層的 /etc/codex/config.toml。實務上的用法是把共用的預設值寫在使用者層，把每個環境不一樣的值放進各自的設定檔，不要把兩者混在一起。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一個供應商要交代哪幾件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件對供應商的定義很乾脆：它描述 Codex 怎麼連到一個模型，包含位址、wire API、驗證方式與可選的 HTTP 標頭。這些寫在 model_providers 底下、以你自己取的 id 命名的區塊裡，再用最上層的 model_provider 指過去；設定參考寫，model_provider 的預設值是 openai。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有三個 id 不能用：文件寫明 openai、ollama 與 lmstudio 是保留的內建供應商 id，自訂供應商不能重用它們。這一點最容易誤解的地方是「我只是想換內建 OpenAI 供應商的位址」——文件的答案是不要建立同名區塊，改設最上層的 openai_base_url，它會把內建供應商的位址換掉，不必另外定義一個供應商。想接的是公司自架的代理、路由器或開啟資料落地的專案時，這通常才是正確的一步。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定鍵",
+            "它在說什麼",
+            "文件寫的預設值"
+          ],
+          "rows": [
+            [
+              "model_provider",
+              "要用 model_providers 裡的哪一個 id",
+              "openai"
+            ],
+            [
+              "base_url",
+              "這個供應商的 API 位址",
+              "沒有預設，要自己寫"
+            ],
+            [
+              "env_key",
+              "存放金鑰的環境變數名稱",
+              "沒有預設"
+            ],
+            [
+              "wire_api",
+              "對方講的協定",
+              "responses，也是唯一列出的值"
+            ],
+            [
+              "query_params",
+              "附加在每個請求後面的查詢參數",
+              "沒有預設"
+            ],
+            [
+              "request_max_retries",
+              "HTTP 請求的重試次數",
+              "4"
+            ],
+            [
+              "stream_idle_timeout_ms",
+              "串流閒置多久就放棄（毫秒）",
+              "300000"
+            ]
+          ],
+          "caption": "依 Codex 設定參考頁整理，2026 年 9 月查證；同頁另有標頭、WebSocket 與重試的其他鍵。"
+        },
+        {
+          "type": "code",
+          "label": "在 config.toml 追加一個自訂供應商（bash）",
+          "language": "bash",
+          "code": "# 動任何設定之前先備份一份，出錯時可以整個換回來。\nCONFIG=\"$HOME/.codex/config.toml\"\nmkdir -p \"$(dirname \"$CONFIG\")\"\ncp -n \"$CONFIG\" \"$CONFIG.bak\" 2>/dev/null || true\n\ncat >> \"$CONFIG\" <<'TOML'\n\n# 最上層：預設用哪一個模型、走哪一個供應商。\nmodel = \"gpt-5.6-terra\"\nmodel_provider = \"mokaair_gateway\"\n\n[model_providers.mokaair_gateway]\nname = \"Mokaair gateway\"\nbase_url = \"https://llm-gateway.example.com/v1\"\nenv_key = \"MOKAAIR_GATEWAY_KEY\"\nwire_api = \"responses\"\nrequest_max_retries = 4\nstream_idle_timeout_ms = 300000\nTOML\n\n# env_key 只記變數名稱，金鑰本身留在環境裡，不進設定檔。\nexport MOKAAIR_GATEWAY_KEY=\"$(cat ~/.config/mokaair/gateway-key)\"\ncodex"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "wire_api：文件只列一個值，但兩頁說法不一致"
+        },
+        {
+          "type": "paragraph",
+          "text": "wire_api 是這一批設定裡最需要查證的一個。設定參考寫得很明確：它是對方使用的協定，responses 是唯一支援的值，而且省略時就是這個值。照這句話，一個只提供 Chat Completions 形狀端點的供應商，不能靠改這個鍵接進來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但同一套文件的進階設定頁，在講 model_verbosity 的時候又寫了一句：這個設定只對使用 Responses API 的供應商有效，使用 Chat Completions 的供應商會忽略它。兩句話放在一起是矛盾的——如果 responses 真的是唯一合法值，就不會有「使用 Chat Completions 的供應商」。本站沒有實測，不去猜哪一頁比較新，只把兩句都寫出來，並給一個保守的做法：接之前先問清楚對方的端點講哪一種協定，接上之後用一次真正的對話驗證，不要只看 Codex 有沒有啟動成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這件事也決定了自架閘道要怎麼做。把一個只會 Chat Completions 的上游包起來時，要嘛閘道自己把形狀翻譯成 Responses，要嘛就別走 Codex 這條路。本系列最後一篇談自架閘道時會再回到這個取捨。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "本機模型不必自己定義供應商"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你要接的是自己電腦上的模型，文件給的是另一條路：Codex 可以對著本機的開源供應商執行，例如 Ollama 或 LM Studio，方法是加上 --oss。要在單次執行裡挑一個就用 --local-provider，要固定就把 oss_provider 寫進設定檔。文件也寫了兩者都沒指定的情形：互動模式會問你選哪一個，codex exec 則直接以錯誤結束——這一句對寫排程腳本的人特別重要，因為那正是沒有人能回答提示的場合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "進階設定頁的範例裡另外有一個手寫的 Ollama 供應商，位址是本機的 11434 埠加上 /v1。兩種寫法都在官方頁面上，差別在於 --oss 是 Codex 自己維護的內建路徑，手寫的那一個則是把本機端點當成一般的自訂供應商。值得一提的是，Ollama 的官方文件寫明用戶端需要填一個金鑰值，但 Ollama 會忽略它，所以本機那一個區塊通常不必寫 env_key。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-codex-model-providers/diagram-1.svg",
+          "alt": "流程圖：挑位址、對協定、金鑰放環境變數、最後用 model_provider 指過去。",
+          "width": 1600,
+          "height": 900,
+          "caption": "Codex 自訂供應商的四個欄位與它們的順序，依官方設定文件整理，2026 年 9 月查證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "憑證、重試與逾時"
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰有兩種給法。固定的金鑰用 env_key，設定參考說它就是提供金鑰的環境變數名稱，值本身不會進設定檔。金鑰會輪替、或必須從外部憑證工具拿的時候，改用供應商底下的 auth 區塊：文件寫，這個指令不會收到標準輸入，而且必須把 token 印到標準輸出，Codex 會去掉前後空白、把空字串當成錯誤，並依 refresh_interval_ms 主動更新；同一份文件也寫明，auth 不可以和 env_key、experimental_bearer_token 或 requires_openai_auth 併用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重試與逾時三個鍵各有預設值：HTTP 請求重試 4 次，串流中斷重試 5 次，串流閒置逾時 300000 毫秒。要接的端點如果排隊時間長、首個 token 出來得慢，先動的是最後那一個，而不是把重試次數往上加——重試次數愈多，一個本來就會失敗的請求就會付愈多次費用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定檔寫壞的症狀往往不是明顯的錯誤，而是 Codex 安靜地用了別的供應商。開工前跑一支小程式把設定讀過一遍，比事後對帳單快得多。下面這支只用 Python 3.11 起內建的 tomllib，不連網路，檢查四件事：有沒有覆寫保留 id、有沒有漏掉 base_url、wire_api 是不是文件列出的值，以及 env_key 指到的變數在目前環境有沒有值。"
+        },
+        {
+          "type": "code",
+          "label": "開工前驗一次 config.toml（Python 3.11+，只用內建 tomllib）",
+          "language": "python",
+          "code": "\"\"\"檢查 Codex 的自訂供應商設定，只讀本機檔案，不連網路。\"\"\"\nimport os\nimport tomllib\nfrom pathlib import Path\n\nRESERVED = {\"openai\", \"ollama\", \"lmstudio\"}  # 文件寫這三個不能覆寫\nBUILT_IN = RESERVED | {\"amazon-bedrock\"}  # 內建但可直接指定\nWIRE_API = {\"responses\"}  # 設定參考目前只列這一個\n\n\ndef problems_in(config: dict) -> list[str]:\n  found = []\n  providers = config.get(\"model_providers\", {})\n  for name, provider in providers.items():\n    if name in RESERVED:\n      found.append(f\"{name}：保留的內建 id，不能覆寫\")\n    if not provider.get(\"base_url\"):\n      found.append(f\"{name}：少了 base_url\")\n    wire = provider.get(\"wire_api\", \"responses\")\n    if wire not in WIRE_API:\n      found.append(f\"{name}：wire_api 是 {wire}，設定參考只列 responses\")\n    key = provider.get(\"env_key\")\n    if key and not os.environ.get(key):\n      found.append(f\"{name}：env_key {key} 在目前環境沒有值\")\n    if \"auth\" in provider and \"env_key\" in provider:\n      found.append(f\"{name}：auth 不可以和 env_key 併用\")\n  chosen = config.get(\"model_provider\", \"openai\")\n  if chosen not in BUILT_IN and chosen not in providers:\n    found.append(f\"model_provider 是 {chosen}，卻沒有對應的區塊\")\n  return found\n\n\ndef main() -> int:\n  home = os.environ.get(\"CODEX_HOME\") or str(Path.home() / \".codex\")\n  path = Path(home) / \"config.toml\"\n  config = tomllib.loads(path.read_text(encoding=\"utf-8\"))\n  found = problems_in(config)\n  for line in found:\n    print(line)\n  print(f\"供應商 {len(config.get('model_providers', {}))} 個，問題 {len(found)} 個\")\n  return 1 if found else 0\n\n\nif __name__ == \"__main__\":\n  raise SystemExit(main())"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "專案層設定只有在你信任專案時才載入",
+          "text": "文件寫明，基於安全考量，Codex 只有在你信任該專案時才會載入專案層的 .codex 設定。這條規則的意義是：一份從網路上複製下來的程式庫，就算帶著自己的 .codex/config.toml，也不會自動改掉你的模型端點。反過來說，一旦你把某個專案標成信任，那份設定裡的 base_url 與 env_key 就會生效，所以在信任一個陌生專案之前，值得先打開它的 .codex 資料夾看一眼。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我只想把內建的 OpenAI 供應商指到公司的代理，需要自己定義一個供應商嗎？",
+              "answer": "不需要。文件寫，只要把內建的 OpenAI 供應商指到 LLM 代理、路由器或開啟資料落地的專案，就設最上層的 openai_base_url，不必另外定義供應商區塊。文件同時提醒不要建立名為 openai 的區塊，因為內建供應商 id 不能覆寫。"
+            },
+            {
+              "question": "wire_api 到底能不能填 Chat Completions？",
+              "answer": "設定參考寫 responses 是唯一支援的值，省略時也採用它；但進階設定頁在說明 model_verbosity 時，又提到使用 Chat Completions 的供應商會忽略該設定。兩頁的說法不一致，本站沒有實測，因此不替任何一頁背書。實務上的做法是接之前先問對方的端點講哪一種協定，接好之後用一次真正的對話確認，而不是只看有沒有啟動成功。"
+            },
+            {
+              "question": "金鑰一定要寫進環境變數嗎？",
+              "answer": "env_key 是把金鑰留在環境的做法，設定參考說它就是提供金鑰的環境變數名稱。如果金鑰會過期或來自外部憑證工具，可以改用供應商底下的 auth 區塊，讓 Codex 執行一個指令去拿；文件寫，那個指令不會收到標準輸入，必須把 token 印到標準輸出，而且不可以和 env_key 併用。文件另外把直接寫死 token 的做法標為不建議。"
+            },
+            {
+              "question": "本機模型要怎麼接？",
+              "answer": "文件給的路徑是加上 --oss，Codex 就會對著本機的開源供應商執行，例如 Ollama 或 LM Studio；單次執行用 --local-provider 選一個，要固定就把 oss_provider 寫進設定檔。兩者都沒設定時，互動模式會問你選哪一個，codex exec 會直接以錯誤結束，所以排程腳本一定要先把預設值寫好。進階設定頁上另外有一個手寫本機供應商的範例，位址是本機的 11434 埠加上 /v1。"
+            },
+            {
+              "question": "連線常常中斷，應該調哪一個設定？",
+              "answer": "先看是哪一種中斷。如果是等太久才有第一個字，先調 stream_idle_timeout_ms，它的預設值是 300000 毫秒。如果是請求本身失敗，request_max_retries 預設重試 4 次、stream_max_retries 預設 5 次，可以往上加，但每一次重試都是一次計費的請求，所以先確認失敗不是設定寫錯造成的，再考慮加次數。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+              "kind": "life",
+              "slug": "ai-workflow-unified-api-layer"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Codex Docs: Config basics",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Codex Docs: Advanced Configuration",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Codex configuration reference",
+          "url": "https://developers.openai.com/codex/config-file/config-reference",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Ollama Docs: OpenAI compatibility",
+          "url": "https://docs.ollama.com/openai",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

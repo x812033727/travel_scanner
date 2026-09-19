@@ -1,4 +1,11 @@
-# 工作區：「多模型 AI 工作流」教學系列（12 篇＋hub，zh-TW）
+# 工作區：「多模型 AI 工作流」教學系列（17 篇＋hub，zh-TW）
+
+> **批次 2（2026-09-19，待發布）**：站主要求「新增 AI 的更多相關教學，workflow 串接或是 GLM 本地端之類的
+> model 串接 codex、claude」，因此在同一個系列下加了五篇（`display_order` 412–416，群組 E「換模型」，
+> 新增第四條路線 `swap`）：`ai-workflow-claude-code-custom-model`、`ai-workflow-codex-model-providers`、
+> `ai-workflow-glm-coding-plan`、`ai-workflow-ollama-coding-agent`、`ai-workflow-litellm-gateway`。
+> 票在 `tasks/open/2026-09-19-ai-workflow-batch-2-model-swap.md`，那張票記著這一輪的做法、兩處官方文件
+> 互相矛盾的地方、檢查器的誤判，以及**這一輪沒有做獨立查核、沒有 `factcheck/` 報告**這件事。
 
 > **現況（2026-09-19）**：12 篇＋目錄篇**已發布**（PR #553 `a69763b5`；站主選擇發布後部署、`guides-import --slug` 13 篇同一趟、正式站驗證完畢）。票 `tasks/done/2026-09-18-ai-workflow-tutorial-series-12-zh.md` 已結案；
 > 交接、「留給站主的事」與發布紀錄都在本頁最後一節。計畫來源：站主 2026-09-18 要求「新增幾篇 workflow 相關的教學與介紹，可以介紹比較高技術面的串不同的 model」，

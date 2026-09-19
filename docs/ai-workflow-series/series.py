@@ -1,9 +1,14 @@
 """The fixed values of the AI workflow tutorial series, in one place (the way ``verticals.py`` holds
 the news verticals'). ``check_article.py`` and ``build_assets.py`` import from here.
 
-Twelve articles and a hub, zh-TW only, registered as the ``ai-workflow`` series under the
+Seventeen articles and a hub, zh-TW only, registered as the ``ai-workflow`` series under the
 ``ai-coding`` topic. ``display_order`` follows the news verticals' convention of "hub one below
-the band": the hub is 399, the articles 400-411 in the order of ``SLUGS``.
+the band": the hub is 399, the articles 400-416 in the order of ``SLUGS``.
+
+Batch 1 (400-411) is the concepts-to-operations arc. Batch 2 (412-416) is the follow-up the site
+owner asked for on 2026-09-19: pointing Claude Code and Codex at a model that isn't their
+vendor's own, from the two clients' own configuration to a GLM subscription, a local Ollama
+server and a self-hosted gateway that serves both clients at once.
 """
 from __future__ import annotations
 
@@ -39,6 +44,12 @@ SLUGS = (
     "ai-workflow-local-and-cloud-mix",
     "ai-workflow-tracing-evals",
     "ai-workflow-failures-and-guardrails",
+    # Batch 2 (2026-09-19): swapping the model behind a coding agent.
+    "ai-workflow-claude-code-custom-model",
+    "ai-workflow-codex-model-providers",
+    "ai-workflow-glm-coding-plan",
+    "ai-workflow-ollama-coding-agent",
+    "ai-workflow-litellm-gateway",
 )
 #: Articles the assignment marks 入門: no code block is required of them.
 INTRO = SLUGS[:3]
