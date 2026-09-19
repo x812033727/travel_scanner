@@ -21,6 +21,7 @@ import { organization, webSite } from "@/lib/structured-data";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { discoveryFeedPath, getInitialDiscoveryFeed } from "@/lib/discovery.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { featureEnabled } from "@/lib/site-features";
 
 export default async function Home() {
   const [locale, t, tc, discovery, visibility] = await Promise.all([
@@ -35,8 +36,11 @@ export default async function Home() {
     { key: "route", icon: CalendarClock, text: t("routeBenefit") },
     { key: "cost", icon: CircleDollarSign, text: t("costBenefit") },
   ];
-  const hotspotsEnabled = visibility.status === "ready" && visibility.features.hotspots_enabled;
-  const tripsEnabled = visibility.status === "ready" && visibility.features.trips_enabled;
+  // Through featureEnabled, not an inline status check: a settings read that timed out is not
+  // a closed feature, and the home page should not drop its quick cards or its SearchAction
+  // graph over one slow moment.
+  const hotspotsEnabled = featureEnabled(visibility, "hotspots");
+  const tripsEnabled = featureEnabled(visibility, "trips");
   // The feed the gate is about to render, fetched here so it is in the response body rather
   // than three grey rectangles. `/explore` has done this since it was written; the home page
   // never did, which is why its whole body -- hero, rail and all -- was a skeleton to a
