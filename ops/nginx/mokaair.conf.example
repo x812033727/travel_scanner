@@ -94,6 +94,11 @@ server {
     error_log /var/log/nginx/error.log error;
     error_log /var/log/nginx/mokaair-limit.log warn;
 
+    # And who is being refused, which mokaair-limit.log cannot say: its lines name the zone,
+    # the client address, the request and the host, but not the user agent, so answering "was
+    # that Googlebot?" meant joining it to access.log by address and timestamp. One grep now.
+    access_log /var/log/nginx/mokaair-limited.log mokaair_limited if=$mokaair_is_limited;
+
     client_max_body_size 6m;    # just above the app's own 5 MiB cap, so the app answers
     limit_conn mokaair_conns 20;
 
@@ -134,9 +139,38 @@ server {
         proxy_read_timeout 300s;
     }
 
+    # Crawl control. Tiny files, and refusing one costs far more than serving it: a 429 on
+    # /robots.txt or /sitemap.xml is a crawler losing its instructions for the whole site.
+    # Exempt from the page budget for the same reason /_next/static/ is.
+    location = /robots.txt {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    location = /sitemap.xml {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    location = /llms.txt {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    # The eleven children the sitemap index points at. ^~ so it wins over the catch-all.
+    location ^~ /sitemaps/ {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
     location / {
         include /etc/nginx/snippets/mokaair-proxy-headers.conf;
         limit_req zone=mokaair_content_pages burst=20 nodelay;
+        # A verified search engine is keyed into mokaair_crawlers instead and has an empty
+        # key in the zone above, so the two never both count one request. Ranges come from
+        # conf.d/05-mokaair-crawler-ranges.conf; never from the User-Agent, which is a claim
+        # anyone can make.
+        limit_req zone=mokaair_crawlers burst=60 nodelay;
         proxy_pass http://mokaair_web;
     }
 }
