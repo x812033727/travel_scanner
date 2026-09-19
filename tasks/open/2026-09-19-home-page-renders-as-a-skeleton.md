@@ -1,7 +1,7 @@
 ---
 id: 2026-09-19-home-page-renders-as-a-skeleton
 title: Home page renders as a skeleton to crawlers: SSR the discovery feed
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5

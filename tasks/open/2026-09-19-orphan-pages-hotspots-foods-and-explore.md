@@ -1,7 +1,7 @@
 ---
 id: 2026-09-19-orphan-pages-hotspots-foods-and-explore
 title: Orphan pages: hotspots, foods and explore have no internal links
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5
