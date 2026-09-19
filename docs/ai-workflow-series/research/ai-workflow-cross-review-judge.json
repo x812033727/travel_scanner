@@ -346,5 +346,53 @@
         "轉人工複核"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 八條全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（GitHub 檔案走 raw.githubusercontent.com），逐句把 title、description、正文、摘要、FAQ、callout、表格每一格與 caption、圖解 caption 與節點對回原文；研究紀錄的 verbatim_quote 用程式做連續字串比對（同時比對原始 HTML 與去標籤後的正文）；三塊 code 重新抽出用 python -m py_compile 編譯，多數決那塊在暫存目錄實際執行並補跑平手、奇偶數、門檻等邊界案例；程式裡每個匯入、建構子參數、方法名與參數名逐一對回官方文件；模型 id 另外到 platform.openai.com/docs/models、platform.claude.com 模型總覽、ai.google.dev/gemini-api/docs/models 三頁確認仍在。沒有用 sources[] 以外的網址替文章補任何事實，任何請求都沒有帶入 email 或個人資料。",
+    "verdict": "ok",
+    "edits_to_the_pack": [
+      "多數決範例在平手時會硬選一邊：majority_vote([\"A\",\"A\",\"B\",\"B\"]) 實跑回傳 \"A\"、majority_vote([\"A\",\"B\"]) 回傳 \"A\"，與摘要、正文、FAQ、圖解寫的「沒有過半就回傳沒有結論」矛盾。改成先擋並列最高票，門檻改成必須「超過」quorum，並加一組二比二的示例；正文、摘要第 5 句與 FAQ 第 4 題同步補上並列最高票這個情況。",
+      "「交換順序再評一次」原本寫成「本站另外建議一個沒有寫在官方文件裡……的做法」：這是無範圍的否定，而且這個檢查站內「以語言模型擔任評審（LLM-as-a-Judge）是什麼」已經寫過。改成範圍句（本文查證當天讀的三份官方文件都沒有寫），並點名那篇既有文章；callout 也補上「是本站的建議，不是官方文件寫的做法」。",
+      "Gemini 結構化輸出被寫成保證：「回傳的內容一定要符合這個 Schema」。官方同一頁的 Best practices 與 Limitations 寫 output 只保證語法正確、要自己驗值、要處理符合 Schema 但語意不對的輸出，而且不是所有 JSON Schema 功能都支援。改成照文件寫，並補上這三個限制。",
+      "OpenAI 那段緩解建議漏掉限定詞：原本寫「先用能力最好的模型當評審，再視情況換成比較快或比較便宜的模型」，文件的條件是要先跟人工標註持續一致才擴大使用。改成照原句寫，並把「文件給的緩解方式」改成「文件在同一段列的建議」。",
+      "評分準則那段掛在 Anthropic 名下的對照例「回答要夠專業」是草稿自己造的，文件沒有這句。換成文件真的有的 Purely qualitative evaluations 與 several rubrics 兩句。",
+      "冗長偏誤的說明「即使長的那份沒有講出更多重點」文件沒有寫，改成貼著原文的說法；同段補一句說明這兩個詞站內 LLM-as-a-Judge 篇已經解釋過，本篇只補官方出處與多評審情境。",
+      "FAQ 第 3 題的「同一顆模型評自己家答案的情況目前沒有查到可歸因的官方說法」是無範圍否定，改成「本文查證當天讀的這三份官方文件都沒有提到」，並補上 Anthropic 範例註解裡「最好用跟產生答案不同的模型來評分」這條有出處的說法，同時寫明「不同廠商」那一層是本文自己的做法。",
+      "「程式本身能編譯、能執行」與同句的「站方沒有拿真實金鑰實際呼叫」互相打架，改成「只通過編譯」。",
+      "研究紀錄：Google 那條 verbatim_quote「client.interactions.create」在抓下的頁面上搜尋不到連續字串（語法高亮把識別字拆進不同標籤），換成同頁 REST 範例的端點 https://generativelanguage.googleapis.com/v1beta/interactions，並另外補 response_format 欄位名與 model_json_schema 兩條。",
+      "研究紀錄：新增 11 條 verified_facts（Anthropic 五條、OpenAI 兩條、Google 四條），OpenAI Evals 平台停用那條補上唯讀日 2026-10-31 與原句用的 scheduled；多數決 code_sample 的 lines 25 改 31、compiled_on 改 2026-09-19。"
+    ],
+    "checked_and_correct": [
+      "sources[] 八條今天都回 HTTP 200 且讀到正文，不是擋阻頁或空殼。",
+      "OpenAI 的位置偏誤與冗長偏誤：原句 Challenges : Position bias (response order), verbosity bias (preferring longer responses) 今天仍在 evaluation-best-practices 上，歸因與內容相符。",
+      "「官方文件目前舉的例子是 gpt-6-astra」：原句 Start with gpt-6-astra when you need a strong LLM judge, then validate agreement against your human labels before optimizing for cost or latency. 今天仍在同一頁，id 與句子都沒變，所以這條 source 的 checked_on 維持 2026-09-18。",
+      "三塊 code 的匯入、建構子與方法名逐字對得上：from openai import OpenAI／OpenAI(timeout=20.0)／client.responses.create(model=..., input=[{\"role\": \"developer\"...}])／response.output_text（openai-python README 與 evals 指南）；from anthropic import Anthropic／Anthropic(timeout=20.0)／client.messages.create(model=..., max_tokens=..., messages=[...])／next(block.text for block in message.content if block.type == \"text\")（Claude Python SDK 頁與 develop-tests 頁的範例一字不差）；from google import genai／from google.genai import types／genai.Client(http_options=types.HttpOptions(timeout=...))（google-genai README）／client.interactions.create 搭 response_format 的 type、mime_type、schema 與 Verdict.model_json_schema()、interaction.output_text（結構化輸出頁的 Python 範例）。HttpOptions.timeout 在 types.py 是 Optional[int]、單位毫秒，20000 等於 20 秒。",
+      "模型 id：gpt-5.6-luna、claude-haiku-4-5-20251001、gemini-3.8-flash、gpt-6-astra 今天都還在各自的官方模型頁上，models-seen.json 不需要新增條目。",
+      "成本表格三列與正文自洽：n+m 在 n=2、m=1 是 3 次，在 n=2、m=3 是 5 次；n+2m 在 n=2、m=3 是 8 次，每個數字正文都算得出來；caption 寫了「公式為本站整理，非官方公布數字（2026 年 9 月）」。",
+      "結構化輸出頁唯一標 Preview 的是「Structured outputs with tools」（僅限 Gemini 3 系列），本文範例沒有用到工具，不缺預覽狀態的限定詞。",
+      "界線：全篇只有一個 callout、沒有免責段落、沒有訂閱或購買建議、沒有未經實測的排名或快慢比較、沒有寫「台灣可用」；必連三篇各只用一句帶過，且與 gemini-cli-subagent-review-workflow 的「衝突不自動採多數決」沒有矛盾（本篇把程式碼審查明確劃出去）。"
+    ],
+    "left_for_the_owner": [
+      "用語不一致：本篇寫「位置偏誤」「冗長偏誤」，站內「以語言模型擔任評審（LLM-as-a-Judge）是什麼」寫「位置偏差」「冗長偏差」。BRIEF 的統一用語表沒有收這兩個詞，本代理沒有自行統一，請站主決定全站要用哪一個。",
+      "摘要與 description 用「倍增」形容呼叫次數，但 n+m 是線性相加，只有加上交換順序那一列才真的把評分次數乘二。算式與數字都對，用字偏強，是否改成「一路往上加」請站主決定。",
+      "第二塊 code 直接沿用前一塊的 QUESTION、answer_a、answer_b，單獨執行會 NameError；正文與程式註解都寫明了，是否要改成可獨立執行請站主決定。",
+      "結尾兩個純 link 區塊等協調者跑 relink（自檢的 raw_internal_url WARN 就是這個）。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "兩個模型各答一次（需要 openai、anthropic 套件）",
+        "result": "ok"
+      },
+      {
+        "label": "第三個模型依 rubric 評分並輸出 JSON（需要 google-genai、pydantic 套件）",
+        "result": "ok"
+      },
+      {
+        "label": "多數決函式（純 Python，離線可跑）",
+        "result": "ok"
+      }
+    ]
   }
 }

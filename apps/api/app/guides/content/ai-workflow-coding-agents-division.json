@@ -83,7 +83,7 @@
               "Claude Code",
               "-p（完整寫法 --print）",
               "--output-format：text、json、stream-json",
-              "--json-schema 直接在命令列吃一段 JSON Schema，文件寫代理流程跑完後給出符合 schema 的輸出；schema 本身不合法就以錯誤結束",
+              "--json-schema 直接在命令列吃一段 JSON Schema，文件寫代理流程跑完後給出符合 schema 的輸出；schema 本身不合法就以錯誤結束，format 關鍵字只當註解、不做用戶端驗證",
               "規劃：只讀專案、寫步驟到 plan.md，不改檔案"
             ],
             [
@@ -133,17 +133,17 @@
           "type": "callout",
           "tone": "warning",
           "title": "沒人能回答核准提示時，三支 CLI 的文件寫的不是同一件事",
-          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 在沒有另外設定時用 default 核准模式，官方文件寫 --permission-prompt-tool 可以指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 決定誰來回答，傳 none 表示沒有人能回答、Claude Code 改成拒絕；核准模式那一頁也寫 dontAsk 模式下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never 兩個值，文件寫它控制 Codex 什麼時候暫停等人核准；codex exec 自己的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，而且預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測三支 CLI 在沒人回答時的實際行為，這裡只轉述各自文件寫了什麼。"
+          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 在沒有另外設定時用 default 核准模式，官方文件寫 --permission-prompt-tool 可以指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 傳 none 表示沒有人能回答、Claude Code 改成拒絕；核准模式那一頁也寫 dontAsk 模式下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never 兩個值，文件寫它控制 Codex 什麼時候暫停等人核准；codex exec 自己的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測，這裡只轉述各自文件寫了什麼。"
         },
         {
           "type": "code",
           "language": "bash",
           "label": "workflow.sh：串接 claude -p、codex exec 與 gemini -p（需要三支 CLI 都已登入，Python 3.11 以上只用內建的 json）",
-          "code": "#!/usr/bin/env bash\n# workflow.sh -- plan with Claude Code, execute with Codex, review with Gemini CLI.\n# Usage: ./workflow.sh \"<task description>\"\n# Requires: claude, codex and gemini already installed and signed in.\nset -euo pipefail\n\ntask=\"$1\"\nout=\".handoff\"\nmkdir -p \"$out\"\n\n# 1) plan: Claude Code only reads the repo and writes plain-text steps.\ntimeout 300 claude -p \\\n  \"$task. List the files and steps to change; do not edit anything.\" \\\n  --output-format text \\\n  --permission-mode plan \\\n  >\"$out/plan.md\"\n\n# 2) execute: Codex edits the working tree, then we diff it ourselves.\ntimeout 900 codex exec \\\n  --sandbox workspace-write \\\n  --skip-git-repo-check \\\n  --output-last-message \"$out/codex-final.txt\" \\\n  \"Follow $out/plan.md and make the smallest change that satisfies it.\"\ngit diff >\"$out/change.patch\"\n\n# 3) review: Gemini CLI grades the patch. --output-format json only wraps a\n#    \"response\" string, so the review.json shape below is this site's own\n#    convention, parsed and rewritten here rather than validated by the CLI.\nprompt=\"Read $out/change.patch against $out/plan.md. Reply with only a JSON \"\nprompt+='object: {\"verdict\": \"approve\" or \"changes_requested\", \"issues\": [], \"summary\": \"...\"}'\ntimeout 300 gemini -p \"$prompt\" \\\n  --approval-mode=plan \\\n  --output-format json \\\n  >\"$out/raw-response.json\"\n\npython3 - \"$out/raw-response.json\" \"$out/review.json\" <<'PY'\nimport json\nimport sys\n\nraw_path, review_path = sys.argv[1], sys.argv[2]\nwith open(raw_path, encoding=\"utf-8\") as handle:\n  envelope = json.load(handle)\ntry:\n  review = json.loads(envelope[\"response\"])\nexcept (KeyError, json.JSONDecodeError):\n  review = {\n    \"verdict\": \"changes_requested\",\n    \"issues\": [],\n    \"summary\": \"reviewer did not return valid JSON\",\n  }\nwith open(review_path, \"w\", encoding=\"utf-8\") as handle:\n  json.dump(review, handle, ensure_ascii=False, indent=2)\nPY\n\nverdict=$(python3 -c \"import json;print(json.load(open('$out/review.json'))['verdict'])\")\nif [[ \"$verdict\" == \"approve\" ]]; then\n  echo \"approved: $out/change.patch\"\nelse\n  echo \"changes requested, see $out/review.json\" >&2\n  exit 1\nfi\n"
+          "code": "#!/usr/bin/env bash\n# workflow.sh -- plan with Claude Code, execute with Codex, review with Gemini CLI.\n# Usage: ./workflow.sh \"<task description>\"\n# Requires: claude, codex and gemini already installed and signed in, and a\n# git repository: codex exec refuses to run outside one, and step 2 diffs it.\nset -euo pipefail\n\ntask=\"$1\"\nout=\".handoff\"\nmkdir -p \"$out\"\n\n# 1) plan: Claude Code only reads the repo and writes plain-text steps.\ntimeout 300 claude -p \\\n  \"$task. List the files and steps to change; do not edit anything.\" \\\n  --output-format text \\\n  --permission-mode plan \\\n  >\"$out/plan.md\"\n\n# 2) execute: Codex edits the working tree, then we diff it ourselves. Codex\n#    prints progress on stderr and the final message on stdout; -o keeps that\n#    message for debugging. \"git add -N\" is what makes files Codex created\n#    show up in git diff; the handoff directory stays out of the patch.\ntimeout 900 codex exec \\\n  --sandbox workspace-write \\\n  --output-last-message \"$out/codex-final.txt\" \\\n  \"Follow $out/plan.md and make the smallest change that satisfies it.\"\ngit add -N -- . \":(exclude)$out\"\ngit diff -- . \":(exclude)$out\" >\"$out/change.patch\"\n\n# 3) review: Gemini CLI grades the patch. --approval-mode=plan is this site's\n#    extension of a mode the docs describe for planning, not reviewing.\n#    --output-format json wraps the answer in a \"response\" string, so the\n#    review.json shape below is this site's own convention: parsed and\n#    rewritten here rather than validated by the CLI.\nprompt=\"Read $out/change.patch against $out/plan.md. Reply with only a JSON \"\nprompt+='object: {\"verdict\": \"approve\" or \"changes_requested\", \"issues\": [], \"summary\": \"...\"}'\ntimeout 300 gemini -p \"$prompt\" \\\n  --approval-mode=plan \\\n  --output-format json \\\n  >\"$out/raw-response.json\"\n\npython3 - \"$out/raw-response.json\" \"$out/review.json\" <<'PY'\nimport json\nimport sys\n\nraw_path, review_path = sys.argv[1], sys.argv[2]\nwith open(raw_path, encoding=\"utf-8\") as handle:\n  envelope = json.load(handle)\ntry:\n  review = json.loads(envelope[\"response\"])\nexcept (KeyError, json.JSONDecodeError):\n  review = {\n    \"verdict\": \"changes_requested\",\n    \"issues\": [],\n    \"summary\": \"reviewer did not return valid JSON\",\n  }\nwith open(review_path, \"w\", encoding=\"utf-8\") as handle:\n  json.dump(review, handle, ensure_ascii=False, indent=2)\nPY\n\nverdict=$(python3 -c \"import json;print(json.load(open('$out/review.json'))['verdict'])\")\nif [[ \"$verdict\" == \"approve\" ]]; then\n  echo \"approved: $out/change.patch\"\nelse\n  echo \"changes requested, see $out/review.json\" >&2\n  exit 1\nfi\n"
         },
         {
           "type": "paragraph",
-          "text": "腳本最後只看 review.json 裡的 verdict：不是 approve 就讓腳本以非零狀態結束，把要修的地方留在 review.json 裡，不自動合併。這一步刻意不去比較三支 CLI 各自的結束代碼數字，因為只有 Gemini CLI 的文件把結束代碼列成完整對照表；Claude Code 與 Codex 的文件只提到特定旗標失敗時會以錯誤結束，沒有列出完整的數字對照，腳本能穩定判斷的只有『退出碼是不是 0』，不要假設某個非零數字在三支工具之間代表同一種錯誤。"
+          "text": "腳本最後只看 review.json 裡的 verdict：不是 approve 就讓腳本以非零狀態結束，把要修的地方留在 review.json 裡，不自動合併。前面三支呼叫則交給 set -euo pipefail：任何一支回非零，管線就停在那一步，不會拿半成品往下走。"
         },
         {
           "type": "image",
@@ -174,7 +174,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這支腳本是教學用的最小版本，正式排程或 CI 裡至少要再加重試、人工通知與整條管線的總花費上限——這些留給系列另一篇《失敗案例與防護：迴圈、費用爆炸與代理間注入》，這裡只示範交接檔本身。退出碼部分，Gemini CLI 的文件列出完整對照表：0 是成功，1 是一般錯誤或 API 失敗，42 是輸入錯誤，53 是對話輪數超過上限；Claude Code 與 Codex 查到的文件只在個別旗標說明裡提到失敗會以錯誤結束，沒有給同樣完整的數字對照，串接時只能統一用『退出碼是不是 0』當成敗依據。"
+          "text": "這支腳本是教學用的最小版本，正式排程或 CI 裡至少要再加重試、人工通知與整條管線的總花費上限——這些留給系列另一篇《失敗案例與防護：迴圈、費用爆炸與代理間注入》，這裡只示範交接檔本身。退出碼部分，Gemini CLI 的無頭模式文件列出四個：0 是成功，1 是一般錯誤或 API 失敗，42 是輸入錯誤，53 是對話輪數超過上限；本文這次讀到的 Claude Code 與 Codex 頁面只在個別旗標的說明裡提到失敗會以錯誤結束，沒有列出這樣的數字對照，串接時只能統一用『退出碼是不是 0』當成敗依據。"
         },
         {
           "type": "faq",
@@ -185,19 +185,19 @@
             },
             {
               "question": "claude -p、codex exec 與 gemini -p 都能拿到通過驗證的結構化 JSON 輸出嗎？",
-              "answer": "不完全一樣。Claude Code 的 --json-schema 與 Codex 的 --output-schema 都會讓 CLI 自己拿一份 JSON Schema 檔驗證最終輸出，schema 不合法時 Claude Code 會直接以錯誤結束；Gemini CLI 的 --output-format json 只保證外層固定有 response、stats 與 error 三個欄位，response 裡面是不是我們要的 JSON 結構，CLI 不會替你驗證，得自己解析再檢查。"
+              "answer": "不完全一樣。Claude Code 的 --json-schema 在命令列直接吃一段 JSON Schema，文件寫它會在代理流程跑完後給出符合 schema 的輸出；Codex 的 --output-schema 吃的是一份 schema 檔，文件寫 Codex 會拿它驗證工具輸出。Gemini CLI 的無頭模式文件列出的是 response、stats 與選用的 error 三個外層欄位，本文查證當天沒有在那幾頁看到對應的 schema 驗證旗標，response 裡的結構得自己解析再檢查。"
             },
             {
               "question": "plan.md、patch、review.json 是 Claude Code、Codex 或 Gemini CLI 官方定義的檔案格式嗎？",
-              "answer": "不是。這三個檔名與欄位是這篇文章自己設計的交接慣例，三支 CLI 的非互動旗標都只管一次呼叫怎麼跑、輸出長什麼樣子，沒有定義工具之間該怎麼交接。挑 Markdown、patch 與 JSON 三種格式，是因為它們剛好對應規劃、執行、審查三個階段最自然的產出，讀者可以照自己的流程改檔名或欄位。"
+              "answer": "不是。這三個檔名與欄位是這篇文章自己設計的交接慣例，本文查證的三家文件都只講一次呼叫怎麼跑、輸出長什麼樣子，沒有定義工具之間該怎麼交接。挑 Markdown、patch 與 JSON 三種格式，是因為它們剛好對應規劃、執行、審查三個階段最自然的產出，讀者可以照自己的流程改檔名或欄位。"
             },
             {
               "question": "為什麼腳本裡每一支 CLI 呼叫都包了一層 timeout？",
-              "answer": "因為三支 CLI 的核准機制預設都假設有人在螢幕前確認，一旦沒有明確指定核准或沙盒層級，非互動呼叫可能卡在等待核准，或者模型本身跑得比預期久。腳本用 timeout 幫每一步設一個上限，卡住時讓那一步直接失敗，而不是讓整條管線無限期等下去。"
+              "answer": "因為模型要跑多久沒有上限，而三家對「沒人能回答核准提示」的處理各寫各的：Claude Code 可以指定工具回答或直接拒絕，Codex 用 --ask-for-approval 控制什麼時候暫停等人核准，Gemini CLI 的 Plan Mode 文件寫它會停下來等你確認。腳本用 timeout 幫每一步設一個上限，那一步超時就直接失敗，而不是讓整條管線無限期等下去。"
             },
             {
               "question": "三支 CLI 的結束代碼（exit code）代表的意義一樣嗎？",
-              "answer": "不一樣，而且能查到的完整程度也不同。Gemini CLI 的文件列出完整對照表：0 是成功，1 是一般錯誤或 API 失敗，42 是輸入錯誤，53 是對話輪數超過上限；Claude Code 與 Codex 這次查到的文件都只在個別旗標的說明裡提到失敗會用錯誤結束，沒有列出同樣完整的數字對照。串接時能穩定依賴的只有『退出碼是不是 0』，不要假設某個非零數字在三支工具之間代表同一種錯誤。"
+              "answer": "不一樣，而且能查到的詳細程度也不同。Gemini CLI 的無頭模式文件列出 0、1、42、53 四個結束代碼與各自的意義；本文這次讀到的 Claude Code 與 Codex 頁面只在個別旗標的說明裡提到失敗會用錯誤結束，沒有列出這樣的數字對照。串接時能穩定依賴的只有『退出碼是不是 0』，不要假設某個非零數字在三支工具之間代表同一種錯誤。"
             },
             {
               "question": "一定要照這篇的分工——Claude Code 規劃、Codex 執行、Gemini CLI 審查——嗎？",

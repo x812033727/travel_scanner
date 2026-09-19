@@ -99,11 +99,11 @@
               "團隊共用：專案根目錄的 .mcp.json；只給自己看：~/.claude.json",
               "JSON，鍵是 mcpServers",
               "claude mcp add --transport stdio flight-desk -- python flight_server.py",
-              "permissions 規則裡指定 mcp__flight-desk__flight_status"
+              "權限規則裡指定 mcp__flight-desk__flight_status"
             ],
             [
               "Codex",
-              "~/.codex/config.toml，或專案內的 .codex/config.toml",
+              "預設 ~/.codex/config.toml；也能用專案內的 .codex/config.toml，文件註明僅限受信任的專案",
               "TOML，區段是 [mcp_servers.flight-desk]",
               "codex mcp add flight-desk -- python flight_server.py",
               "config.toml 裡設 enabled_tools 只列 flight_status"

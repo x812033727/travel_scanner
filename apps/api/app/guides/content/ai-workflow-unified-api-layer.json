@@ -92,7 +92,7 @@
           "type": "code",
           "language": "python",
           "label": "litellm 套件：completion() 換三個 model 字串（需要 litellm 套件）",
-          "code": "import os\n\nfrom litellm import completion\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 三個字串分屬三家供應商，completion() 的呼叫方式完全相同\nmodel_ids = [\n  \"openai/gpt-5.6-terra\",\n  \"anthropic/claude-sonnet-5\",\n  \"openrouter/google/gemini-3.8-flash\",\n]\n\nfor model_id in model_ids:\n  reply = completion(model=model_id, messages=question, timeout=30)\n  print(model_id, \"->\", reply.choices[0].message.content)\n"
+          "code": "import os\n\nfrom litellm import completion\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 三個字串分屬三家供應商，completion() 的呼叫方式完全相同\nmodel_ids = [\n  \"openai/gpt-5.6-terra\",\n  \"anthropic/claude-sonnet-5\",\n  \"openrouter/google/gemini-3.8-flash\",\n]\n\n# 金鑰不寫進程式：LiteLLM 從環境變數讀，先確認三把都設好了\nfor name in (\"OPENAI_API_KEY\", \"ANTHROPIC_API_KEY\", \"OPENROUTER_API_KEY\"):\n  if name not in os.environ:\n    raise SystemExit(f\"請先設定環境變數 {name}\")\n\nfor model_id in model_ids:\n  reply = completion(model=model_id, messages=question, timeout=30)\n  print(model_id, \"->\", reply.choices[0].message.content)\n"
         },
         {
           "type": "paragraph",
@@ -117,7 +117,7 @@
           "alt": "流程圖：你的程式 → 換兩個值 → 託管閘道 → 自架閘道 → 到供應商",
           "width": 1600,
           "height": 900,
-          "caption": "由左到右：程式先選好要用哪一支用戶端或函式庫，接著只換 base_url 與 model 字串；第三、四格是兩種常見的中介做法，OpenRouter 是別人已經架好的託管閘道，LiteLLM 可以在自己程序裡呼叫、也能自架成閘道；最後都送到供應商自己的伺服器。查證於 2026 年 9 月。",
+          "caption": "由左到右：程式先選好要用哪一支用戶端或函式庫，接著只換 base_url、金鑰與 model 字串；第三、四格是兩種常見的中介做法，OpenRouter 是別人已經架好的託管閘道，LiteLLM 可以在自己程序裡呼叫、也能自架成閘道；最後都送到供應商自己的伺服器。查證於 2026 年 9 月。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair"

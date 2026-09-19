@@ -208,6 +208,150 @@
       "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
       "is_vendor_claim": true,
       "verbatim_quote": "--exclude-tools: A comma-separated list of tools to exclude."
+    },
+    {
+      "fact": "MCP 官網把 MCP 定義成連接 AI 應用與外部系統的開放原始碼標準（查核代理補）",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems."
+    },
+    {
+      "fact": "Python SDK 目前是 v2，README 自稱現行穩定版（查核代理補）",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This is v2 of the MCP Python SDK, the current stable release line."
+    },
+    {
+      "fact": "沒有預設值的參數會落在輸入 Schema 的 required 裡（查核代理補）",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Both arguments are in required because neither has a default."
+    },
+    {
+      "fact": "stdio 是主機把你的檔案當子行程啟動，走它的標準輸入與標準輸出（查核代理補）",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The host launches your file as a subprocess and speaks over its stdin and stdout."
+    },
+    {
+      "fact": "stdio 沒有埠號（查核代理補）",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You never gave it a port. There isn't one."
+    },
+    {
+      "fact": "Claude Code 的 -- 分隔號規則與它分開的三個選項（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For stdio servers, the -- (double dash) separates Claude’s own options, such as --transport, --env, and --scope, from the command and arguments that run the server. Everything after -- is passed to the server untouched."
+    },
+    {
+      "fact": "沒有 -- 時 Claude Code 會把伺服器的旗標當成自己的選項解析（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Without --, Claude Code would try to parse the server’s flags, like --port above, as its own options."
+    },
+    {
+      "fact": "Claude Code 的 stdio 伺服器是在本機跑的行程（查核代理補；同一節的基本語法行是 claude mcp add、選項、名稱、兩個連字號、指令與參數，因為含有頁面自己的刪節號而不逐字引）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Stdio servers run as local processes on your machine."
+    },
+    {
+      "fact": "每一道 claude mcp add 指令都寫進 local scope，除非加 --scope project 或 --scope user（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Each command writes to local scope unless you add --scope project or --scope user."
+    },
+    {
+      "fact": "Claude Code 的 local scope 是預設值（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Local scope is the default."
+    },
+    {
+      "fact": "Claude Code 要團隊共用，文件要你把 .mcp.json 簽進版控（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Check .mcp.json into version control so everyone on your team gets the same MCP tools and services."
+    },
+    {
+      "fact": "claude mcp add 印出的 Added 那一行只代表設定被寫進去（查核代理補；原句前半含有頁面自己的刪節號，這裡引可逐字搜尋的後半）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "line, which means the configuration was written."
+    },
+    {
+      "fact": "claude mcp list 會在每一台旁邊顯示健康狀態，例如 Connected（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude mcp list then shows a health status next to each server it lists, such as ✔ Connected"
+    },
+    {
+      "fact": "要確認 Claude Code 連上了，文件叫你跑 claude mcp get（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To check that Claude Code connected, run claude mcp get <name>"
+    },
+    {
+      "fact": "Claude Code 文件在說明工具可呼叫名稱時，列出權限規則、Skill 的 allowed-tools、子代理 tools 與 hook 比對條件四個用處（查核代理補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use this full name when referencing the tool in permission rules, a skill’s allowed-tools list, a subagent’s tools field, or a hook matcher."
+    },
+    {
+      "fact": "codex mcp add 的完整語法，把 stdio 伺服器指令放在 -- 後面（查核代理補）",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "codex mcp add <server-name> --env VAR1=VALUE1 --env VAR2=VALUE2 -- <stdio server-command>"
+    },
+    {
+      "fact": "Codex 的 stdio 伺服器用 command 這個必填鍵指定啟動指令（查核代理補）",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "command (required): The command that starts the server."
+    },
+    {
+      "fact": "Codex 的 args 是選填鍵，放傳給伺服器的參數（查核代理補）",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "args (optional): Arguments to pass to the server."
+    },
+    {
+      "fact": "codex mcp list 看的是已設定的伺服器（查核代理補）",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Run codex mcp list to see configured servers."
+    },
+    {
+      "fact": "Codex 的 TUI 用 /mcp 看作用中的 MCP 伺服器（查核代理補）",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In the codex TUI, use /mcp to see your active MCP servers."
+    },
+    {
+      "fact": "gemini mcp add 的 -s, --scope 預設值標成 project（查核代理補）",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "-s, --scope: Configuration scope (user or project). [default: \"project\"]"
+    },
+    {
+      "fact": "Gemini CLI 文件唯一帶 -- 的加入指令示範，是把它放在伺服器自己的旗標前面（查核代理補）",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "gemini mcp add python-server python server.py -- --server-arg my-value"
+    },
+    {
+      "fact": "沒有指定 includeTools 時，伺服器的工具預設全部開放（查核代理補）",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If not specified, all tools from the server are enabled by default."
+    },
+    {
+      "fact": "gemini mcp list 對 stdio 伺服器顯示 Connected，以目前資料夾被信任為前提，否則顯示 Disconnected，要用 gemini trust 信任（查核代理補；原文是 markdown 引用區塊，引文為去掉 > 與反引號的呈現形式）",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For security, stdio MCP servers (those using the command property) are only tested and displayed as \"Connected\" if the current folder is trusted. If the folder is untrusted, they will show as \"Disconnected\". Use gemini trust to trust the current folder."
     }
   ],
   "unverified_or_excluded": [
@@ -215,12 +359,16 @@
     "Claude Code 的 claude mcp add 指令是否有專屬的工具白名單旗標：文件只找到用 mcp__伺服器__工具 這種名稱寫進權限規則、Skill 允許清單等地方限制，沒看到 add 指令本身有對應旗標，所以本文用權限規則說明，不寫成 add 的參數。",
     "MCP 規格版本號目前顯示是 2026-07-28，但本文不逐條比較這個版本跟前一版差在哪裡，因為跟三個客戶端共用同一支伺服器的主題無關，不寫進正文。",
     "官方 SDK 文件裡的 mcp install 指令：查證後這個指令只認得 Claude Desktop，不是本文要講的 Claude Code，所以只在確認範圍時看過，沒有寫進正文。",
-    "Gemini CLI 的加入指令在伺服器參數本身帶類似旗標的字串時要不要加 --：官方範例只示範了一次帶 -- 的用法，沒有像 Claude Code、Codex 那樣寫成固定語法，所以本文只講不需要這個分隔號的基本語法，不深入這個邊界案例。"
+    "Gemini CLI 的加入指令為什麼在伺服器旗標前面要加 --：官方頁只給了一個帶 -- 的示範（gemini mcp add python-server python server.py -- --server-arg my-value），沒有寫規則也沒有寫理由，所以正文只描述頁面示範的形狀，不替它補一個解釋。",
+    "Codex 的 default_tools_approval_mode 有一個 writes 模式，文件寫它會對沒有標成唯讀的工具跳確認：這是三家文件裡唯一把唯讀標註接到實際行為上的地方，但本篇的切角是設定檔與白名單，沒有寫進正文。（查核代理補）",
+    "Gemini CLI 的 mcp.allowed 與 mcp.excluded 是伺服器層級的允許與排除清單，跟本文講的工具層級白名單不是同一層，沒有寫進正文。（查核代理補）",
+    "Claude Code 外掛伺服器的工具名稱是 mcp__plugin_<外掛名>_<伺服器名>__<工具名>，跟非外掛伺服器的形式不同：本篇的範例不是外掛伺服器，所以只用 mcp__伺服器名稱__工具名稱 這一種。（查核代理補）",
+    "Claude Code 的 allowedMcpServers／deniedMcpServers 與機構端的 connector tool controls：那是伺服器層級與機構層級的控制，不是本文講的自己動手收窄工具，沒有寫進正文。（查核代理補）"
   ],
   "must_not_write": [
     "MCP 整體架構（主機、客戶端、伺服器的分工，resources 與 prompts 的細節）：留給「模型上下文協定（MCP）是什麼」那篇。",
     "在 Claude 一般對話應用裡加連接器的操作畫面：留給「在 Claude 裡怎麼加 MCP 連接器」那篇。",
-    "怎麼設計多個工具的名稱、分頁、空結果處理：留給「Claude Code：設計 MCP 工具名稱、輸入 Schema 與分頁」那篇。",
+    "怎麼設計多個工具的名稱、分頁、空結果處理：留給「Claude Code｜設計 MCP 工具名稱、輸入 Schema 與分頁」那篇（標題逐字，含全形直線）。",
     "現成 MCP 伺服器清單與各自的帳號方案：留給「MCP 伺服器實用清單」那篇。",
     "OAuth 遠端伺服器登入流程、WebSocket 傳輸、Claude Code 的 managed configuration：跟三個客戶端共用同一支伺服器的主題無關，本文不寫。",
     "多個模型之間怎麼分工、路由或級聯：是系列其他篇的主題，本文只談同一支伺服器怎麼給三個客戶端用。"
@@ -231,7 +379,7 @@
       "label": "flight_server.py（套件：mcp[cli]；Python 3.10 以上）",
       "language": "python",
       "lines": 30,
-      "compiled_on": "2026-09-18",
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
         "https://py.sdk.modelcontextprotocol.io/servers/tools/",
@@ -241,8 +389,8 @@
     {
       "label": "三個客戶端登記同一支 stdio 伺服器的指令",
       "language": "bash",
-      "lines": 8,
-      "compiled_on": "2026-09-18",
+      "lines": 9,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://code.claude.com/docs/en/mcp",
         "https://learn.chatgpt.com/docs/extend/mcp",
@@ -252,8 +400,8 @@
     {
       "label": "只放行 flight_status：Codex 與 Gemini CLI 的白名單設定",
       "language": "bash",
-      "lines": 10,
-      "compiled_on": "2026-09-18",
+      "lines": 13,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://learn.chatgpt.com/docs/extend/mcp",
         "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md"
@@ -272,7 +420,7 @@
       ],
       [
         "各自登記",
-        "設定檔位置格式都不同"
+        "位置與指令都不同"
       ],
       [
         "各自收窄",
@@ -282,6 +430,54 @@
         "各自核對",
         "用自己的清單指令確認"
       ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 七條全部以 curl -sL -A \"Mokaair-editorial\" 今天重抓並讀 body（GitHub 檔案走 raw.githubusercontent.com）；把 title、description、正文每一句、summary 四句、FAQ 五題答句、callout、表格十五格與 caption、圖解 caption 與研究紀錄 diagram 的格子、hero_label、三個 code 區塊的每一個識別字逐條對回原文；三塊範例重新抽出重驗（python3 -m py_compile、bash -n），TOML 內容另外用 tomllib 解析過；28 條原有 verbatim_quote 以去標記後的連續字串比對，全數通過。任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有用 sources[] 以外的網址替文章補事實。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "三處『格式都不一樣』（description、summary 第 1 句、圖解格子）與 FAQ 第 1 題的『三種格式互不相容』：跟本文自己的表格矛盾（Claude Code 與 Gemini CLI 都是 JSON 的 mcpServers，只有 Codex 是 TOML）。四處都改成照實寫。",
+      "code 區塊 2 的 Claude Code 註解原本寫 writes into this project's .mcp.json：文件寫 Each command writes to local scope unless you add --scope project or --scope user，預設落在家目錄的使用者設定檔，不是 .mcp.json。註解改寫，正文那句本來就是對的。",
+      "code 區塊 3 原本用 cat >> ~/.codex/config.toml 直接把 [mcp_servers.flight-desk] 附加到使用者設定檔尾巴——同一支伺服器在同一個檔案裡會出現第二張同名表。改成寫到另一個檔案，並在正文說明要把 enabled_tools 加進 codex mcp add 已經寫好的那張表。",
+      "『Claude Code 這邊沒有獨立的白名單參數』這個無條件否定，改成『本文查證當天，它的 MCP 文件裡沒有列出……』的範圍句。",
+      "Gemini CLI 的 -- 概括（『只有伺服器自己的參數長得像旗標時才需要加上去，避免被參數解析器誤判』）是頁面沒有的規則與理由，收窄成頁面實際示範的形狀；Claude Code 那半句改成明講是 Claude Code 文件寫的，Codex 那頁沒有這段文字。（正文與 FAQ 第 4 題兩處）",
+      "『Gemini CLI……團隊共用是預設行為』：Gemini 的頁面從頭到尾沒有提團隊共用或版控，只寫 -s, --scope 預設 project。刪掉這個說法，並補上兩邊文件各自的原用詞。",
+      "驗收清單的 Gemini 那一條補回文件的前提：stdio 伺服器只有在目前資料夾被信任時才會顯示 Connected，否則顯示 Disconnected，要用 gemini trust 信任。",
+      "『三邊都顯示已連線』改掉：codex mcp list 的原文是 to see configured servers，不報連線狀態；同段補上 Claude Code 文件把『寫進設定』與『連得上』分開的原句。",
+      "callout 的『另外兩邊預設還是拿得到伺服器公開的全部工具』只有 Gemini CLI 的文件寫得出來，改成引它的原句，其餘寫成『在一邊收窄不會連帶影響另外兩邊』。",
+      "FAQ 第 3 題的『下一次呼叫 tools/list』改成『下次重新連上它、呼叫 tools/list』；FAQ 第 5 題與 summary 第 4 句的『MCP 官方文件』改成『官方 Python SDK 的文件』（那句原文出自 py.sdk.modelcontextprotocol.io）。",
+      "前言把 mcp[cli] 寫成跟著做的必要條件，README 寫 install plain mcp if you don't need it，改成『照官方安裝指令裝好 mcp 這個套件』。",
+      "必連文章「Claude Code｜設計 MCP 工具名稱、輸入 Schema 與分頁」原本全篇沒有點名，補一句帶過並劃清界線；must_not_write 裡它的標題原本寫成全形冒號，改成逐字的全形直線。"
+    ],
+    "checked_and_correct": [
+      "Python 範例的每一個 SDK 符號都對得上今天的官方頁：from mcp.server import MCPServer（README 與 Tools 頁都是 MCPServer，不是 FastMCP）、from mcp.types import ToolAnnotations、@mcp.tool(title=..., annotations=ToolAnnotations(read_only_hint=True, open_world_hint=False))、Annotated[str, Field(description=...)]、if __name__ == \"__main__\": mcp.run()。欄位名是 snake_case，官方頁沒有 readOnlyHint 這種寫法。",
+      "三個客戶端的加入指令與設定鍵逐字無誤：claude mcp add --transport stdio <名稱> -- <指令>、--scope local/project/user、.mcp.json 與家目錄的使用者設定檔；codex mcp add <名稱> -- <指令>、[mcp_servers.<名稱>]、command／args／enabled_tools／disabled_tools；gemini mcp add [options] <名稱> <指令> [參數]、settings.json 的 mcpServers、includeTools／excludeTools、--include-tools／--exclude-tools。",
+      "developers.openai.com/codex/mcp/ 今天 302 到 learn.chatgpt.com/docs/extend/mcp?surface=cli，內容與 sources[5] 同一頁（457,640 bytes），所以 sources 不需要換。docs.claude.com 那條本來就已經寫成 code.claude.com，直接 200。",
+      "checked_on 2026-09-18 在內容包七條 source 與研究紀錄一致，今天的頁面沒有任何數字或名稱改動，依規格不動它。",
+      "界線：沒有購買、訂閱或投資建議，沒有推薦式比價，沒有價格；廠商宣稱全部有歸屬；只有一個 callout、沒有免責段落；沒有寫台灣可用；沒有碰系列其他篇（headless 用法、把工具回傳當資料而非指令）的題目。",
+      "文章沒有出現任何模型 id，models-seen.json 不需要新增。"
+    ],
+    "left_for_the_owner": [
+      "code 區塊 3 現在把整張 TOML 表寫到 flight-desk.codex.toml 這個另外的檔案，讀者要自己貼進 ~/.codex/config.toml。官方頁沒有示範用指令改這張表的做法，若站主想改成直接編輯使用者設定檔，要自己承擔覆寫風險。",
+      "Claude Code 那條『工具可呼叫名稱用在權限規則、Skill 的 allowed-tools、子代理 tools、hook 比對條件』的原句，出現在文件講外掛伺服器的那一節；非外掛伺服器的 mcp__伺服器__工具 形式，同一段只以 mcp__database-tools__.* 這個 hook 比對例子出現。本文寫成『文件要你用完整名稱去指定……』，沒有說這是非外掛專屬的規定。",
+      "段落字數 2,946，離上限 3,000 只剩 54 字。翻譯或後續補句前要先看字數。",
+      "兩個結尾 link 仍是純 link（自檢的 raw_internal_url WARN），等協調者 relink。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "flight_server.py（套件：mcp[cli]；Python 3.10 以上）",
+        "result": "ok"
+      },
+      {
+        "label": "三個客戶端登記同一支 stdio 伺服器的指令",
+        "result": "ok"
+      },
+      {
+        "label": "只放行 flight_status：Codex 與 Gemini CLI 的白名單設定",
+        "result": "ok"
+      }
     ]
   }
 }
