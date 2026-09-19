@@ -1,0 +1,292 @@
+{
+  "slug": "ai-workflow-model-routing-cascade",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 404,
+  "related": [
+    "ai-workflow-cost-quality-latency",
+    "ai-workflow-unified-api-layer",
+    "ai-workflow-structured-handoff"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "模型路由與級聯：便宜先試、貴的兜底",
+      "description": "多模型級聯（cascade）讓便宜的輕量模型先答，模型自己評估的信心不夠、逾時或呼叫失敗才升級到更貴的模型，藉此把大多數請求的成本壓低，同時對少數困難的請求保留品質。這篇說明規則路由怎麼依長度、語言與任務類型決定起點，信心怎麼觸發升級，逾時、重試與 fallback 三者有什麼不同，以及每次請求的成本上限怎麼擋住最壞情況；範例是一段純 Python 程式，OpenRouter 與 LiteLLM 內建的路由功能只做對照。",
+      "hero": {
+        "src": "/guides/ai-workflow-model-routing-cascade/hero.jpg",
+        "alt": "原創插圖：三個由小到大排成階梯的圓角方塊，最下面一個旁邊畫著問號與往上指的箭頭。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一個工作流要串好幾個模型時，多數請求其實不需要動用最貴的那一顆：把便宜、快的輕量模型放在前面讓它先答，只有當它自己評估信心不夠，或呼叫逾時、出錯，才把同一個問題交給更貴、更強的模型，這種做法叫級聯（cascade），目的是把多數簡單請求的成本壓在輕量模型的價位，同時保留少數困難請求的答題品質。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇會講規則路由怎麼依長度、語言與任務類型決定第一個要打的模型，模型怎麼替自己的答案評信心，信心不夠時怎麼升級，呼叫逾時或出錯時怎麼跟「信心不夠」分開處理成 fallback，以及每次請求另外設一個成本上限。範例要跑起來需要 Python 3.11 以上、安裝官方的 anthropic 套件、並把 API 金鑰放進環境變數 ANTHROPIC_API_KEY；OpenRouter 與 LiteLLM 本身內建的路由功能不是這篇的重點，只用一段和一張對照表列出它們官方文件怎麼稱呼同樣的概念。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "多模型級聯（cascade）指同一個請求先讓便宜的輕量模型作答，模型自己評估的信心不夠，或呼叫逾時、出錯，才升級到更貴、更強的模型，藉此把多數請求的成本壓在輕量模型的價位。",
+            "路由的起點由長度、語言與任務類型等規則決定，不是每次都從最輕量的模型開始，遇到明顯困難的任務可以直接跳過輕量層。",
+            "逾時、重試與 fallback 是三件不同的事：逾時是呼叫等待時間的上限，重試是同一個模型因暫時性錯誤再打一次，fallback 是換成下一階模型。",
+            "每次請求另外設一個成本上限，累積花費碰到上限就不再升級，避免一次級聯把所有層級都打過一輪。",
+            "OpenRouter 的 Auto Router 與 LiteLLM 的 Router 各自有現成的路由與 fallback 機制，這篇只列它們官方文件怎麼稱呼、不取代手刻的級聯範例。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "規則路由：用長度、語言與任務類型決定起點"
+        },
+        {
+          "type": "paragraph",
+          "text": "級聯的第一步不是丟給模型判斷，而是用幾個簡單、幾乎不花錢的規則先決定要打哪一顆模型。常見的規則有三種：輸入的長度（字數短的閒聊或翻查用詞，多半輕量模型就能處理，長文摘要或整篇改寫通常要換到中階以上）、輸入用的語言或混用的程度（單一語言的短句一般較容易，中英夾雜或包含大量專有名詞的輸入本身就比較吃模型能力）、以及任務類型的關鍵字（提到「程式」「合約」「法律」這類字眼，或要求輸出結構化欄位，代表這題本來就不簡單）。這些規則只決定起點，不是最終答案；規則怎麼切、門檻放在哪裡要看自己的流量調整，本站沒有實測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則路由的重點是快、不用另外呼叫模型去判斷難度，因為判斷難度本身如果也要打一次 API，那還不如直接用輕量模型作答，讓下一步的信心評估去處理「答得好不好」。這篇只借用「先便宜、有需要再升級」這個方向，不重講路由本身以外的取捨。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讓模型自己說有多確定：自評信心與升級"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則決定起點之後，實際要不要繼續往上升級，這篇用最簡單的做法：請模型在回答之後自己多輸出一行信心分數，例如「CONFIDENCE: 0.4」，分數愈接近 1 代表模型自己愈確定答案正確。呼叫端用一個簡單的規則運算式（regular expression）抓出這一行，跟一個門檻比較，低於門檻就把同一個問題交給下一階更強的模型再答一次，直到信心夠高、打到最頂層，或碰到後面會提到的成本上限為止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自評信心不是校準過的機率，這篇把它當成一個粗略、幾乎不用額外成本的訊號，用來決定要不要多花一次呼叫；這一點下面的提醒會再講清楚。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "自評信心不是機率",
+          "text": "模型自己回報的信心分數只是它自己的猜測，不是統計上校準過的機率：同一題分開問兩次，可能一次接近 1、一次不到 0.5，也可能講得很肯定但答案其實是錯的。這篇把信心分數當成「要不要多打一次、換更強模型」的粗略訊號，不是「答案正確」的證明；正式上線前，答案內容的正確性還是要靠獨立的規則或架構驗證去檢查，不能只看模型自己打的分數。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "逾時、重試與 fallback：呼叫失敗時怎麼處理"
+        },
+        {
+          "type": "paragraph",
+          "text": "信心不夠是「這顆模型答完了，但不太確定」，逾時、出錯或被限流則是另一回事：這顆模型這次根本沒有正常回應。這篇把兩者分開處理。逾時（timeout）是幫每次呼叫設一個等待上限，超過就不再乾等；重試（retry）是同一顆模型因為網路或暫時性的錯誤，用同樣的問題再打一次；fallback 則是重試也不行之後，直接換成下一階的模型，不再糾結原本那一顆。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 官方的 Python 套件文件寫，用戶端預設逾時是十分鐘，可以用 timeout 這個選項調整，接受一個秒數，或更細緻的物件；連線錯誤、408、409、429 與 500 以上的伺服器內部錯誤，預設都會自動重試兩次，重試次數用 max_retries 這個選項調整，逾時的請求同樣預設重試兩次，而逾時時套件丟出的是 APITimeoutError。這篇的範例只靠這兩個選項處理「同一顆模型該不該再試一次」，fallback（換到下一階模型）則是自己在級聯迴圈裡寫的邏輯：捕捉到逾時或錯誤，就把索引往上移一階，而不是留在原地一直重試；整個級聯另外再設一個最大嘗試次數，計的是實際打出去的呼叫次數，升級與 fallback 各算一次，同一顆模型的重試由套件在一次呼叫內部處理、不算進這個計數。範例直接把這個上限設成階數：迴圈每失敗或升級一次就往上一階，每一階最多只打一次，所以在這個範例裡寫成比階數大的數字永遠不會生效。三個上限疊在一起，請求才不會卡住不放。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-model-routing-cascade/diagram-1.svg",
+          "alt": "流程圖：規則路由 → 輕量模型作答 → 信心檢查 → 升級模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "多模型級聯：規則路由決定起點，模型自評信心不足或逾時就升級一階（資料查證於 2026 年 9 月）",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "純 Python 的級聯：規則路由、信心升級與成本上限"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面兩段程式把前面三節的邏輯串起來：規則路由決定第一階要打哪顆模型，模型自評信心決定要不要升級，逾時或出錯則直接跳去下一階，整個過程另外設一個成本上限。程式用 Python 3.11 以上與 Anthropic 官方的 anthropic 套件（pip install anthropic），API 金鑰從環境變數 ANTHROPIC_API_KEY 讀，不寫死在程式裡。範例把同一家供應商的三個模型當成級聯的三個階，由輕到重是 claude-haiku-4-5-20251001、claude-sonnet-5 與 claude-opus-5；同一家供應商為什麼會分成這樣的層級，「同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選」那篇已經講過，這裡直接借用這個分層當級聯的階梯；依 Anthropic 的模型頁，由輕到重的輸入與輸出單價各差到五倍，也是先用輕量模型划算的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次呼叫前，級聯依序檢查下面四件事："
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "目前是不是已經到最大嘗試次數",
+            "累積花費是不是已經到這次請求的成本上限",
+            "這一階模型有沒有在時限內正常回應",
+            "回應裡的信心分數有沒有到門檻"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "route_and_call.py：規則路由與單層呼叫（需要 pip install anthropic）",
+          "code": "\"\"\"route_and_call.py -- rule-based starting tier, one timed call with a self-rated confidence.\"\"\"\nimport re\n\nTIERS = [\n  {\"model\": \"claude-haiku-4-5-20251001\", \"in_price\": 1.0, \"out_price\": 5.0},\n  {\"model\": \"claude-sonnet-5\", \"in_price\": 2.0, \"out_price\": 10.0},\n  {\"model\": \"claude-opus-5\", \"in_price\": 5.0, \"out_price\": 25.0},\n]  # USD per MTok, read on the official models overview page (see sources)\n\nCONFIDENCE_RE = re.compile(r\"CONFIDENCE:\\s*([01](?:\\.\\d+)?)\")\nHARD_TASK_WORDS = (\"程式\", \"合約\", \"法律\", \"重構\", \"逐字稿\")\n\n\ndef choose_start_tier(prompt: str) -> int:\n  \"\"\"Length, script and task-type rules pick the first rung; they do not answer the question.\"\"\"\n  cjk_count = sum(\"一\" <= ch <= \"鿿\" for ch in prompt)\n  looks_hard = any(word in prompt for word in HARD_TASK_WORDS)\n  if looks_hard or len(prompt) > 400 or cjk_count > 200:\n    return 1  # start at Sonnet; skip Haiku for long or specialised requests\n  return 0  # short, plain-language requests start at Haiku\n\n\ndef call_tier(client, tier: dict, prompt: str, timeout: float) -> dict:\n  \"\"\"One timed call. Asks the model to end its own answer with a confidence line.\"\"\"\n  ask = prompt + \"\\n\\n最後另起一行，格式 CONFIDENCE: 0 到 1 的小數，越確定答案正確越接近 1。\"\n  message = client.with_options(timeout=timeout).messages.create(\n    model=tier[\"model\"],\n    max_tokens=1024,\n    messages=[{\"role\": \"user\", \"content\": ask}],\n  )\n  text = \"\".join(block.text for block in message.content if block.type == \"text\")\n  match = CONFIDENCE_RE.search(text)\n  confidence = float(match.group(1)) if match else 0.0\n  cost = (\n    message.usage.input_tokens * tier[\"in_price\"]\n    + message.usage.output_tokens * tier[\"out_price\"]\n  ) / 1_000_000\n  return {\"text\": text, \"confidence\": confidence, \"cost\": cost, \"model\": tier[\"model\"]}\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一段程式定義三個階的模型與價格、規則路由的起點判斷，以及打一次某一階模型、抓出信心分數與這次呼叫花費的函式；範例把「語言」這條規則簡化成數中文字數，要分辨中英夾雜得另外寫。第二段程式是實際的級聯迴圈：每次呼叫前先看上面四件事，逾時或出錯就升級成 fallback，信心不夠門檻就升級成正常的下一階，兩種升級走的是同一個索引往上移的動作，差別只在觸發的原因。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "cascade.py：升級、fallback 與成本上限（延續上一段的 route_and_call.py）",
+          "code": "\"\"\"cascade.py -- escalate on low confidence, fall back on error, both capped.\"\"\"\nimport os\nfrom anthropic import Anthropic, APIConnectionError, APIStatusError, APITimeoutError\nfrom route_and_call import TIERS, call_tier, choose_start_tier\n\nCONFIDENCE_THRESHOLD = 0.6\nMAX_ATTEMPTS = len(TIERS)  # one call per tier; SDK retries happen inside one call\nPER_CALL_TIMEOUT = 20.0    # seconds\nCOST_CAP_USD = 0.05        # this cascade's own limit for one end-user request\n\n\ndef run_cascade(prompt: str) -> dict:\n  client = Anthropic(api_key=os.environ[\"ANTHROPIC_API_KEY\"], max_retries=2)\n  tier_index = choose_start_tier(prompt)\n  spent = 0.0\n  calls = 0\n  best = {\"text\": \"\", \"confidence\": -1.0, \"cost\": 0.0, \"model\": None}\n  for _ in range(MAX_ATTEMPTS):\n    if spent >= COST_CAP_USD:\n      break  # checked before the call, so this round never spends anything\n    tier = TIERS[tier_index]\n    calls += 1\n    try:\n      result = call_tier(client, tier, prompt, PER_CALL_TIMEOUT)\n    except (APITimeoutError, APIConnectionError, APIStatusError):\n      if tier_index >= len(TIERS) - 1:\n        break  # already on the strongest tier, nothing left to fall back to\n      tier_index += 1  # fallback: this tier failed outright, not just unsure\n      continue\n    spent += result[\"cost\"]\n    if result[\"confidence\"] > best[\"confidence\"]:\n      best = result\n    if result[\"confidence\"] >= CONFIDENCE_THRESHOLD or tier_index >= len(TIERS) - 1:\n      break\n    tier_index += 1  # escalate: this tier answered but is not confident enough\n  best[\"attempts\"] = calls  # calls really made, not loop rounds\n  best[\"spent_usd\"] = round(spent, 6)\n  return best\n\n\nif __name__ == \"__main__\":\n  outcome = run_cascade(\"幫我用三句話說明報稅的基本流程\")\n  print(outcome)  # 示意：實際文字與信心依當次呼叫而定\n"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "每次請求的成本上限，與 OpenRouter／LiteLLM 內建路由的對照"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有成本上限時，最壞情況是每個請求都真的把三個層級都打過一輪：先問輕量模型，信心不夠再問中階，還是不夠再問旗艦，一個請求付出三顆模型的錢。這篇在級聯外面另外加一個以美元計的成本上限，累積花費碰到上限就不再升級，直接把目前最好的答案回傳，即使那時候的信心還沒到門檻。這個上限只防最壞情況，不是估算平均成本的方法；怎麼幫成本、品質與延遲三個量抓出可比較的估算表，是本系列《成本、品質、延遲：多模型流程怎麼取捨》那篇的主題，這篇不重複，只借用「先便宜、有需要再升級」這個方向。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenRouter 與 LiteLLM 這兩個工具自己也各有一套路由邏輯，這篇不重講怎麼用它們串接不同供應商——那是本系列《統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式》那篇的主題——這裡只照官方文件列出兩邊怎麼稱呼跟這篇同樣的概念，方便對照。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenRouter 把這類功能叫 Auto Router，模型設成 openrouter/auto 之後，OpenRouter 的文件寫，會用一個輕量的分類器把提示詞分成大約三十種任務類型，再依 OpenRouter 社群過去七天在同類任務上的花費占比挑模型，另外可以用 cost_tier 這個設定選價格帶，由便宜到最強是 low、medium、high、xhigh、max 五個值，文件註明那是一條帶不是上限，比該帶便宜的模型一樣會被排除；同一份文件也寫，分類或排名萬一暫時不可用，路由會退回一組預設模型，不會直接讓請求失敗。LiteLLM 的 Router 則是在自己設定的多個節點之間分流，挑節點的方式在 Router 類別上用 routing_strategy 這個參數指定，文件把這一頁上的策略列成 simple-shuffle、least-busy、usage-based-routing-v2、latency-based-routing 與 cost-based-routing 五個值，並建議正式環境用預設的 simple-shuffle；另外還有 allowed_fails 與 cooldown_time 可以把常失敗的節點暫時移出名單，重試次數與間隔則是 num_retries 與 retry_after，文件並註明 num_retries 是 LiteLLM 自己的重試迴圈，跟供應商套件的 max_retries 不是同一個設定。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "這篇的純 Python 級聯",
+            "OpenRouter",
+            "LiteLLM"
+          ],
+          "rows": [
+            [
+              "路由依據",
+              "規則（長度、語言、任務關鍵字）決定起點，模型自評信心決定要不要往上升",
+              "Auto Router 依過去七天社群花費占比，把提示詞分成約三十種任務類型後選模型；cost_tier 可另外選價格帶",
+              "在自己設定的多個節點之間分流，Router 類別的 routing_strategy 參數指定策略，文件列出 simple-shuffle（預設）、least-busy、usage-based-routing-v2、latency-based-routing 與 cost-based-routing 五個值"
+            ],
+            [
+              "升級或容錯",
+              "信心低於門檻，或呼叫逾時、出錯，就換下一階模型",
+              "Auto Router 分類或排名不可用時退回一組預設模型；一般模型呼叫也能用 models 陣列依序 fallback",
+              "allowed_fails 與 cooldown_time 把常失敗的節點暫時移出名單，再靠 fallback 換模型"
+            ],
+            [
+              "逾時與重試",
+              "呼叫另設 timeout，重試次數交給官方套件的 max_retries 處理",
+              "這篇讀到的 Auto Router 與 Model Fallbacks 兩頁沒有列出獨立的逾時或重試參數，失敗時走的是上一列的 fallback",
+              "num_retries 控制重試次數，retry_after 設最短等待間隔"
+            ],
+            [
+              "成本控制",
+              "累積花費碰到本文設的每請求上限就停止再升級",
+              "cost_tier 只選價格帶，不是金額上限；文件寫，要限制一次請求的花費得用 provider.max_price，它依價格篩掉端點",
+              "rpm、tpm 是各節點每分鐘的用量上限，用來挑節點或濾掉超限的節點，不是每次請求的金額上限"
+            ]
+          ],
+          "caption": "資料查證於 2026 年 9 月（來源見文末）"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "級聯一定要從最便宜的模型開始嗎？",
+              "answer": "不一定。規則路由會先看輸入的長度、語言與任務類型，遇到明顯困難的任務，例如提到「程式」「合約」這類關鍵字，或輸入本身很長，可以直接跳過輕量模型、從中階開始，不用每次都從最便宜的那一顆試起。"
+            },
+            {
+              "question": "模型自己說信心很高，代表答案一定對嗎？",
+              "answer": "不代表。模型自己回報的信心分數只是它自己的猜測，不是統計上校準過的機率，可能講得很肯定但答案其實是錯的。這篇把信心分數當成要不要多打一次、換更強模型的粗略訊號，真正要確認答案內容，還是要靠獨立的規則或架構驗證。"
+            },
+            {
+              "question": "升級（escalate）跟 fallback 有什麼不同？",
+              "answer": "升級是這一階模型正常回應了，但信心分數沒到門檻，所以換下一階再問一次；fallback 是這一階模型呼叫逾時或出錯，根本沒有正常回應，所以直接換下一階，不會在原地一直重試。兩者最後都是把問題交給更強的模型，但觸發的原因不一樣。"
+            },
+            {
+              "question": "為什麼還要另外設每次請求的成本上限？",
+              "answer": "因為級聯最壞的情況是一個請求把輕量、中階、旗艦三個層級都打過一輪，等於付了三顆模型的錢。這篇在信心門檻與最大嘗試次數之外，另外用一個以美元計的成本上限擋住這種最壞情況：累積花費碰到上限就不再升級，直接回傳目前最好的答案。"
+            },
+            {
+              "question": "OpenRouter 的 Auto Router 或 LiteLLM 的 Router 可以取代這篇的做法嗎？",
+              "answer": "可以是另一種選擇。OpenRouter 的 Auto Router 是平台端寫好的路由，依 OpenRouter 社群整體的花費挑模型；LiteLLM 的 Router 則是跑在自己程式裡的套件，在自己設定的多個節點之間分流。兩邊依據的訊號跟能調的參數都跟這篇不完全一樣，這篇只照官方文件列出兩邊怎麼稱呼相關概念做對照，不是教學主體；要不要換成它們，看團隊想不想自己控制升級與成本的判斷邏輯。"
+            },
+            {
+              "question": "範例裡的 timeout、max_retries 與成本上限這些數字要怎麼設？",
+              "answer": "這篇範例裡的信心門檻、逾時秒數與成本上限都只是示意，用來示範這幾個機制怎麼串在一起，不是建議值；最大嘗試次數則是直接設成階數，不是另外挑的數字；實際要設多少，需要依請求的長度、模型的正常回應時間與能接受的花費調整，量測成本、品質與延遲的方法在本系列另一篇會講。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "成本、品質、延遲：多模型流程怎麼取捨",
+              "kind": "life",
+              "slug": "ai-workflow-cost-quality-latency"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Auto Router",
+          "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Model Fallbacks",
+          "url": "https://openrouter.ai/docs/guides/routing/model-fallbacks",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Router - Load Balancing",
+          "url": "https://docs.litellm.ai/docs/routing",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Models overview",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Get started with Claude",
+          "url": "https://platform.claude.com/docs/en/get-started",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Python SDK",
+          "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Create a Message",
+          "url": "https://platform.claude.com/docs/en/api/messages/create",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

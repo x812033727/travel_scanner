@@ -1,0 +1,391 @@
+{
+  "slug": "ai-workflow-unified-api-layer",
+  "title": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "OpenRouter Quickstart（base_url、Authorization Bearer、選用排行榜標頭、OpenAI SDK 範例）",
+      "url": "https://openrouter.ai/docs/quickstart",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenRouter API Reference: Overview（/api/v1/chat/completions 端點、與 OpenAI 格式的差異、不支援參數被忽略）",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LiteLLM Docs（Python SDK 與 Proxy 兩種形態、uv add litellm、completion() 範例、例外類別）",
+      "url": "https://docs.litellm.ai/docs/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LiteLLM Docs: Input Params（completion() 函式簽名、get_supported_openai_params()、drop_params）",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LiteLLM Docs: OpenRouter（model 字串要加 openrouter/ 前綴、OPENROUTER_API_KEY 與 OPENROUTER_API_BASE）",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "openai-python README（base_url 建構參數、OPENAI_BASE_URL 環境變數、Python 3.10+、timeout 預設 10 分鐘）",
+      "url": "https://github.com/openai/openai-python",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Groq Docs: OpenAI Compatibility（大致相容的宣告、base_url 與 GROQ_API_KEY、不支援欄位收到 400 錯誤）",
+      "url": "https://console.groq.com/docs/openai",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Groq Docs: Models（MODEL ID 欄位上的 openai/gpt-oss-120b、GPT-OSS 120B 的模型說明）",
+      "url": "https://console.groq.com/docs/models",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "OpenRouter 的請求要送到 /api/v1/chat/completions 這個端點。",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "request to the /api/v1/chat/completions endpoint"
+    },
+    {
+      "fact": "OpenRouter 官方 quickstart 把 base_url 設成 https://openrouter.ai/api/v1。",
+      "url": "https://openrouter.ai/docs/quickstart",
+      "is_vendor_claim": true,
+      "verbatim_quote": "https://openrouter.ai/api/v1"
+    },
+    {
+      "fact": "如果選到的模型不支援某個請求參數，OpenRouter 會把那個參數忽略，其餘參數照樣轉送。",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "then the parameter is ignored."
+    },
+    {
+      "fact": "OpenRouter 提供 HTTP-Referer 與 X-OpenRouter-Title 兩個選用標頭，用來讓應用程式出現在排行榜上。",
+      "url": "https://openrouter.ai/docs/quickstart",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Optional. Site URL for rankings on openrouter.ai."
+    },
+    {
+      "fact": "openai 套件的用戶端可以用 base_url 這個建構參數指到別的位置，也可以改用 OPENAI_BASE_URL 環境變數。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Or use the `OPENAI_BASE_URL` env var"
+    },
+    {
+      "fact": "openai 套件安裝方式是 pip install openai。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "pip install openai"
+    },
+    {
+      "fact": "openai 套件官方文件寫，這個函式庫支援 Python 3.10 以上。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Python 3.10+"
+    },
+    {
+      "fact": "openai 用戶端預設請求逾時是 10 分鐘，可以用 timeout 這個參數調整。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default requests time out after 10 minutes."
+    },
+    {
+      "fact": "LiteLLM 官方文件把自己的 Python SDK 定位成 OpenAI 用戶端的直接替代品。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Drop-in replacement for the OpenAI client."
+    },
+    {
+      "fact": "LiteLLM 的 Proxy 官方文件定位成給平台團隊管理整個組織 LLM 存取的自架閘道。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Self-hosted gateway for platform teams managing LLM access across an organization."
+    },
+    {
+      "fact": "LiteLLM 官方文件給的安裝指令是 uv add litellm。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "uv add litellm"
+    },
+    {
+      "fact": "LiteLLM 的 completion() 範例把供應商名稱放在 model 字串最前面，例如 openai/gpt-5.6-terra。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model=\"openai/gpt-5.6-terra\""
+    },
+    {
+      "fact": "LiteLLM 把跨供應商的認證、速率限制等錯誤統一成自己的例外類別，例如 litellm.AuthenticationError。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "except litellm.AuthenticationError as e:"
+    },
+    {
+      "fact": "LiteLLM 的 completion() 函式簽名裡，timeout 是型別為 float 或 int 的可選參數。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "timeout: Optional[Union[float, int]] = None,"
+    },
+    {
+      "fact": "LiteLLM 預設遇到不支援的 OpenAI 參數會丟出例外，而不是默默忽略。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default, LiteLLM raises an exception if the openai param being passed in isn't supported."
+    },
+    {
+      "fact": "要讓 LiteLLM 捨棄不支援的參數，需要設定 litellm.drop_params = True。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "litellm.drop_params = True"
+    },
+    {
+      "fact": "LiteLLM 提供 get_supported_openai_params() 函式查某個 model／供應商支援哪些 OpenAI 參數。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "get_supported_openai_params(model=\"anthropic.claude-sonnet-5\", custom_llm_provider=\"bedrock\")"
+    },
+    {
+      "fact": "透過 LiteLLM 呼叫 OpenRouter 時，model 字串要寫成 openrouter/ 加上 OpenRouter 自己的供應商／模型代號。",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model=\"openrouter/google/palm-2-chat-bison\""
+    },
+    {
+      "fact": "LiteLLM 呼叫 OpenRouter 用的 OPENROUTER_API_BASE 是選用欄位，預設就是 https://openrouter.ai/api/v1。",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "is_vendor_claim": true,
+      "verbatim_quote": "[OPTIONAL] defaults to https://openrouter.ai/api/v1"
+    },
+    {
+      "fact": "Groq 官方文件寫，Groq API 設計成大致相容 OpenAI 的用戶端函式庫。",
+      "url": "https://console.groq.com/docs/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We designed Groq API to be mostly compatible with OpenAI's client libraries"
+    },
+    {
+      "fact": "Groq 的 OpenAI 相容 base URL 是 https://api.groq.com/openai/v1。",
+      "url": "https://console.groq.com/docs/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url=\"https://api.groq.com/openai/v1\""
+    },
+    {
+      "fact": "Groq 的官方文件把 logprobs、logit_bias、top_logprobs、messages[].name 四個欄位列為目前不支援，帶了會收到 400 錯誤。",
+      "url": "https://console.groq.com/docs/openai",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The following fields are currently not supported and will result in a 400 error"
+    },
+    {
+      "fact": "openai/gpt-oss-120b 是 Groq 模型頁 Production Models 表格 MODEL ID 欄位上的代號。",
+      "url": "https://console.groq.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT OSS 120B openai/gpt-oss-120b"
+    },
+    {
+      "fact": "Groq 的模型頁把 GPT-OSS 120B 寫成 OpenAI 的旗艦開放權重模型。",
+      "url": "https://console.groq.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-OSS 120B is OpenAI's flagship open-weight language model with 120 billion parameters"
+    },
+    {
+      "fact": "Groq 的模型頁寫，託管模型就是用頁面上列出的那些 model ID 呼叫。",
+      "url": "https://console.groq.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Hosted models are directly accessible through the GroqCloud Models API endpoint using the model IDs mentioned above."
+    },
+    {
+      "fact": "LiteLLM 的 OpenRouter 文件頁明講，model 送 openrouter/ 加上 OpenRouter 的模型代號，請求就會被送到 OpenRouter。",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "is_vendor_claim": true,
+      "verbatim_quote": "send model=openrouter/<your-openrouter-model> to send it to open router"
+    },
+    {
+      "fact": "LiteLLM 的 drop_params 只會捨棄不支援的 OpenAI 參數，非 OpenAI 的參數一律當成供應商自有參數照送。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This ONLY DROPS UNSUPPORTED OPENAI PARAMS"
+    },
+    {
+      "fact": "LiteLLM 官方文件的 Anthropic 範例用 model=\"anthropic/claude-sonnet-5\" 這個字串，並在同一段設定 ANTHROPIC_API_KEY。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model=\"anthropic/claude-sonnet-5\""
+    },
+    {
+      "fact": "LiteLLM 官方文件把每把虛擬金鑰各自的預算、集中記錄與快取、管理介面列為 Proxy 的功能。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Virtual keys with per-key/team/user budgets"
+    },
+    {
+      "fact": "LiteLLM 官方文件呼叫自架 Proxy 的範例把 api_key 填成 anything、base_url 指到 http://0.0.0.0:4000。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "openai.OpenAI(api_key=\"anything\", base_url=\"http://0.0.0.0:4000\")"
+    },
+    {
+      "fact": "LiteLLM 的 completion() timeout 以秒為單位，文件寫預設 600 秒。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Timeout in seconds for completion requests (Defaults to 600 seconds)"
+    },
+    {
+      "fact": "openai 套件的用戶端建構式接受 timeout，官方 README 的範例是 timeout=20.0。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "# 20 seconds (default is 10 minutes)"
+    },
+    {
+      "fact": "LiteLLM 首頁 Quick Start 示範某一家供應商時，會在同一段範例裡設好那一家的環境變數，例如 Anthropic 那一頁籤設的是 ANTHROPIC_API_KEY。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "os.environ[\"ANTHROPIC_API_KEY\"] = \"your-api-key\""
+    },
+    {
+      "fact": "OpenRouter 的 API 參考在請求 schema 的註解裡，示範用 supported_parameters 這個條件篩出支援工具呼叫的模型。",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "See models supporting tool calling: openrouter.ai/models?supported_parameters=tools"
+    }
+  ],
+  "unverified_or_excluded": [
+    "LiteLLM 的 Proxy CLI 完整旗標與 config.yaml 全部欄位：這篇只示範最小可行的一段，其餘旗標留給官方文件，避免塞進太多用不到的細節。",
+    "OpenRouter 的 X-OpenRouter-Categories 標頭：查到但這篇的程式沒有用到行銷分類功能，只在正文提一次，不放進程式碼。",
+    "Groq 對 Audio Transcription／Translation 欄位（vtt、srt 不支援）與 Responses API 的細節：跟這篇的 Chat Completions 範例無關，不放進來，避免離題。",
+    "LiteLLM 呼叫 Azure OpenAI、Bedrock、Vertex AI 的完整設定：這篇的重點是 OpenRouter 與另一個原生相容端點的對照，其餘供應商細節留給讀者自己查 LiteLLM 的 Providers 文件。",
+    "Groq 與 OpenRouter 的定價、免費額度：這篇不比價，留給系列的成本文章處理。",
+    "OpenRouter 單一模型頁上是否逐項列出該模型支援哪些欄位：sources 裡的兩頁 OpenRouter 文件都沒有這句話，第二輪把原本的寫法換成 API 參考真的寫得出來的 supported_parameters 篩選。"
+  ],
+  "must_not_write": [
+    "OpenRouter 的儲值、手續費、免費模型與隱私設定：站上《OpenRouter：一把金鑰用遍各家模型》已經整理過。",
+    "怎麼依成本、品質或延遲選擇要路由去哪一家：屬於系列另外兩篇的主題。",
+    "本站對任何模型輸出品質或速度的實測結果：本站沒有實測。",
+    "不可寫成「LiteLLM 依前綴決定要呼叫哪一家的 API、該讀哪一組環境變數的金鑰」：sources 裡的三頁 LiteLLM 文件都沒有這句機制說明（prefix 一字 0 次），只有 OpenRouter 那一頁寫 send model=openrouter/<...> 會送到 OpenRouter，其餘是範例的寫法與各自設定的環境變數。各語系照這個限縮翻。",
+    "不可把 LiteLLM 的 anthropic/claude-sonnet-5（前綴＋Anthropic 自己的代號，讀 ANTHROPIC_API_KEY）與 OpenRouter 目錄裡同形的 anthropic/claude-sonnet-5 混為一談，兩者語意不同。",
+    "Groq 不支援欄位的清單要四個一起寫（logprobs、logit_bias、top_logprobs、messages[].name），不可只寫三個；「目前」這個限定詞不可刪。",
+    "不可寫成「LiteLLM 官方文件的每個範例都把供應商名稱寫在 model 字串最前面」：同一頁的 Logging 與 Track Costs 範例用的是沒有前綴的 model=\"gpt-5.6-terra\"，Proxy 那段呼叫的是 config 裡取的 model_name。限縮成「示範每一家供應商時」才成立，各語系照這個限縮翻。"
+  ],
+  "editorial_brief": "這篇的切角是「OpenAI 相容」這一層本身：base_url 與 model 字串怎麼換、OpenRouter 這種已經架好的託管閘道和 LiteLLM 的 SDK／Proxy 有什麼差別、相容的範圍到哪裡。OpenRouter 自己的帳號、費用與隱私設定交給《OpenRouter：一把金鑰用遍各家模型》，怎麼依成本或路由規則選供應商交給系列另外兩篇，這篇只示範程式碼怎麼寫、寫完之後行為哪裡會不一樣。",
+  "code_samples": [
+    {
+      "label": "openai 套件：同一段程式換兩個 OpenAI 相容 base_url（需要 openai 套件）",
+      "language": "python",
+      "lines": 34,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://openrouter.ai/docs/quickstart",
+        "https://openrouter.ai/docs/api-reference/overview",
+        "https://github.com/openai/openai-python",
+        "https://console.groq.com/docs/openai",
+        "https://console.groq.com/docs/models"
+      ]
+    },
+    {
+      "label": "litellm 套件：completion() 換三個 model 字串（需要 litellm 套件）",
+      "language": "python",
+      "lines": 22,
+      "compiled_on": "2026-09-19",
+      "checked_against": [
+        "https://docs.litellm.ai/docs/",
+        "https://docs.litellm.ai/docs/completion/input",
+        "https://docs.litellm.ai/docs/providers/openrouter"
+      ]
+    }
+  ],
+  "hero_label": "換端點不換程式",
+  "diagram": {
+    "layout": "flow",
+    "title": "OpenAI 相容端點怎麼接",
+    "caption": "由左到右：程式先選好要用哪一支用戶端或函式庫，接著只換 base_url、金鑰與 model 字串；第三、四格是兩種常見的中介做法，OpenRouter 是別人已經架好的託管閘道，LiteLLM 可以在自己程序裡呼叫、也能自架成閘道；最後都送到供應商自己的伺服器。查證於 2026 年 9 月。",
+    "nodes": [
+      [
+        "你的程式",
+        "openai／litellm"
+      ],
+      [
+        "換三個值",
+        "base_url、金鑰、model"
+      ],
+      [
+        "託管閘道",
+        "OpenRouter架好的"
+      ],
+      [
+        "自架閘道",
+        "LiteLLM自己接"
+      ],
+      [
+        "到供應商",
+        "各家自己的伺服器"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 八條全部以 curl -sL -A \"Mokaair-editorial\" 今天重抓並讀 body（github.com 被本工作階段的代理擋成 403，README 依規格改抓 raw.githubusercontent.com）；正文每句、summary、FAQ、callout、表格每格、兩個 caption、圖解節點、title、description 逐條回貼原文；兩個 code 區塊抽出後 python3 -m py_compile；每個 base_url、環境變數名、標頭、函式簽名、參數名與模型 id 逐字比對官方頁；23 條原引文用連續字串比對（HTML 去標籤後的兩種接法都試）。請求未帶任何 email 或個人資料，未用 sources[] 以外的網址替文章補事實。",
+    "verdict": "ok",
+    "edits_to_the_pack": [
+      "研究紀錄第 23 條引文 \"model\": \"openai/gpt-oss-120b\" 在 console.groq.com/docs/models 的可讀正文裡找不到（只存在於頁面 RSC payload 的跳脫字串，且那是 Responses API 的 input 範例），改成表格上找得到的 GPT OSS 120B openai/gpt-oss-120b，來源標題的「範例請求」一併改掉。",
+      "「openai/gpt-oss-120b 也是 OpenAI 自己開放權重的 gpt-oss 模型在 Groq 上跑的版本」沒有歸屬，改成 Groq 模型頁自己的說法：那一頁把 GPT-OSS 120B 寫成 OpenAI 的旗艦開放權重模型；代號改寫成模型頁 MODEL ID 欄位上的值。",
+      "「LiteLLM 認供應商的方式是看 model 字串」與 FAQ「LiteLLM 依這個前綴決定要呼叫哪一家的 API、該讀哪一組環境變數的金鑰」不是文件寫的機制（三頁 LiteLLM 文件 prefix 一字 0 次），改成文件範例的寫法＋OpenRouter 那一頁明講的 send model=openrouter/<...> 會送到 OpenRouter。",
+      "「三次呼叫…LiteLLM 自己會決定要打哪一家的網址、帶哪一把金鑰」同上，改成文件寫的「把各家錯誤對應成 OpenAI 的例外型別」。",
+      "Groq 不支援欄位漏了官方清單的第四項，正文與 callout 都補上 messages[].name，callout 補回「目前」。",
+      "callout 與正文補上 drop_params 的範圍限定：文件註明它只會捨棄不支援的 OpenAI 參數。",
+      "FAQ「Groq 則是照它自己模型頁列出的代號填」收斂成「填它模型頁表格 MODEL ID 欄位上的代號」。",
+      "Proxy 那段「api_key 隨便填一個字串即可，因為認證是自架的 Proxy 自己在管」的因果不是文件寫的，改成文件範例填的是 anything、存取控制由 Proxy 的虛擬金鑰管；同段「你付費使用的託管閘道」刪掉（本篇來源沒有費用資訊）。",
+      "FAQ 5「OpenRouter…金鑰的花費上限與存取規則要照對方提供的設定做」本篇來源撐不住，改成中性寫法。",
+      "表格「LiteLLM SDK」那列的相容範圍由「Providers 文件頁」改成實際列參數的 Input Params 文件頁，model 字串欄補上與 OpenRouter 同形不同意的提醒。",
+      "正文加一句點明兩段程式裡同形的 anthropic/claude-sonnet-5 語意不同（LiteLLM 前綴＋Anthropic 代號 vs OpenRouter 目錄代號）。",
+      "導言、圖解節點與 image caption 的「只換 base_url 與 model 字串兩個值」與正文、FAQ 的「三個地方」不一致，統一成 base_url、金鑰與 model 三個。",
+      "第二個 code 區塊原本 import os 卻沒用到，改成用它檢查三個環境變數是否設好（17 → 22 行，今天重新 py_compile）。"
+    ],
+    "checked_and_correct": [
+      "兩個 base_url 逐字無誤：https://openrouter.ai/api/v1（quickstart）與 https://api.groq.com/openai/v1（Groq OpenAI Compatibility），都含 /v1、都沒有結尾斜線。",
+      "金鑰環境變數名逐字無誤：OPENROUTER_API_KEY（quickstart 的 Python SDK 範例用 os.getenv 讀它）、GROQ_API_KEY（Groq 文件範例用 os.environ.get 讀它）、OPENAI_API_KEY 與 ANTHROPIC_API_KEY（LiteLLM 文件範例）。",
+      "OpenRouter 的選用標頭拼法無誤：HTTP-Referer 與 X-OpenRouter-Title，quickstart 兩個都標 Optional，API 參考另註 X-Title also accepted；「不設也能呼叫、設了才上排行榜」對得上原文。",
+      "timeout 的傳法無誤：openai-python README 的範例就是 OpenAI(timeout=20.0)（另有 with_options(timeout=...) 可逐次覆寫），LiteLLM completion() 簽名的 timeout 是 Optional[Union[float, int]]、以秒計。",
+      "OpenRouter 對不支援參數的處理逐字對得上：非 OpenAI 模型的 logit_bias、OpenAI 模型的 top_k 會被忽略，其餘照送。",
+      "LiteLLM 三個 model 字串：openai/gpt-5.6-terra 與 anthropic/claude-sonnet-5 是文件首頁範例的原字串；openrouter/google/gemini-3.8-flash 的前綴規則出自 OpenRouter 供應商頁，模型半段是 models-seen.json 記過的 OpenRouter 代號。",
+      "Proxy 段的 http://0.0.0.0:4000、api_key=\"anything\"、虛擬金鑰預算、集中記錄與快取、管理介面，逐項對得上文件首頁。",
+      "界線：全篇沒有價格、免費額度、購買或訂閱建議，沒有推薦式比價，沒有「台灣可用」，沒有實測宣稱，只有一個 callout、沒有免責段落；OpenRouter 的帳號與費用、路由與 fallback、Ollama 端點都只有一句帶過，沒有重講必連文章。",
+      "結尾兩個 link 的 text 與 openrouter-multi-model-api 的 zh-TW title 逐字相同；正文點名的《成本、品質、延遲：多模型流程怎麼取捨》《模型路由與級聯：便宜先試、貴的兜底》《第一次呼叫 Claude API：金鑰、費用與十行 Python》《AI Studio 與第一個 Gemini API 呼叫》四個標題都與內容包逐字相同。",
+      "checked_on 2026-09-18 在八條 source 與研究紀錄一致，今天重抓的頁面內容與撰稿者所記相同，因此不改。"
+    ],
+    "left_for_the_owner": [
+      "models-seen.json 的 mistral-small-2603 那筆（不是本篇用的 id，依規格未動）：verbatim「Click to copy: mistral-small-2603」只存在於頁面的 title 屬性，去標籤後搜尋不到；id 本身、alias mistral-small-latest、GA 與 Apache 2.0 在 docs.mistral.ai/models/mistral-small-4-0-26-03 上都在。要不要把 verbatim 換成正文可見的字串由站主決定。",
+      "第一個 code 區塊的 OpenRouter 半段與《OpenRouter：一把金鑰用遍各家模型》的 Python 範例高度相似（都是 base_url＋extra_headers），差別在本篇多了第二個用戶端與從環境變數讀金鑰；這是指派要求的切角，若站主覺得仍嫌重複，可考慮把第一段改成只保留 Groq 那半。",
+      "openai-python README 現在把 Responses API 寫成主要介面、Chat Completions 是「previous standard (supported indefinitely)」；本篇談的相容層都是 Chat Completions 形狀，日後若要補一句，記得回 README 重查。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "openai 套件：同一段程式換兩個 OpenAI 相容 base_url（需要 openai 套件）",
+        "result": "ok"
+      },
+      {
+        "label": "litellm 套件：completion() 換三個 model 字串（需要 litellm 套件）",
+        "result": "ok"
+      }
+    ],
+    "second_round": {
+      "checked_by": "second independent factcheck agent (did not write, did not run round one)",
+      "checked_on": "2026-09-19",
+      "method": "八條 source 今天再以 curl -sL -A \"Mokaair-editorial\" 重抓一次讀 body（github.com 仍被本工作階段的代理擋成 403，README 依規格抓 raw.githubusercontent.com，200／41,584 bytes）；重點放在第一輪改動過的每一段與新寫進去的每一句，逐句回貼來源原文；研究紀錄全部 32 條 verbatim_quote 用程式做連續字串比對（HTML 去標籤「換空白」「直接刪」兩種接法，另外把 RSC payload 的跳脫字串單獨當一種，確認沒有一條只靠 payload 成立）；兩個 code 區塊重新抽出跑 python3 -m py_compile；兩個 base_url、四個環境變數名、兩個選用標頭、OpenAI(timeout=)、completion() 的三個 model 字串與環境變數檢查逐字對文件；模型 id 全部比對 models-seen.json。請求未帶任何 email 或個人資料，未用 sources[] 以外的網址替文章補事實。",
+      "claims_checked": 99,
+      "edits": [
+        "summary 第 1 句還留著第一輪要修掉的「只換 base_url 或 model 字串」，與正文、導言、圖解的「base_url、金鑰與 model 三個」矛盾，改成「官方 openai 套件換 base_url、金鑰與 model 字串，LiteLLM 換 model 字串」。",
+        "「官方文件的每個範例都把供應商名稱寫在最前面」在 docs.litellm.ai/docs/ 上不成立（同頁 Logging 與 Track Costs 範例是沒有前綴的 model=\"gpt-5.6-terra\"，Proxy 呼叫用的是 config 的 model_name），正文與 FAQ 4 都收斂成「官方文件示範每一家供應商時」；must_not_write 加一條擋住翻譯階段寫回去。",
+        "「OpenRouter 則是把整份模型清單放在公開的 API 上，每個模型頁也會列出它支援哪些欄位」的後半在兩頁 OpenRouter 文件上都找不到（「公開」也沒寫），整句改成 API 參考請求 schema 註解真的寫的 supported_parameters 篩選，並補一條 verbatim。",
+        "「帶入 model 與供應商名稱就能查到一份清單，比自己一個個手動試更快」的比較沒有來源，刪掉後半句。",
+        "「這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號」改成「OpenRouter 目錄裡的代號」：models-seen.json 這一筆是從 openrouter.ai/api/v1/models 抄的，quickstart 也只寫 catalog，與同段後面「OpenRouter 目錄裡的代號」一致。",
+        "圖解節點的三個值寫成「端點、金鑰、model」，與正文、caption、alt 的 base_url 不同字，改成「base_url、金鑰、model」（11.15 單位，仍在 14 字以內）。",
+        "FAQ 3「OpenRouter 是固定的『供應商／模型』格式」的「固定」太絕對：quickstart 自己的範例是帶 ~ 的 latest alias ~openai/gpt-sol-latest，改成「用的是『供應商／模型』這種格式」。",
+        "「request 裡帶了工具呼叫」的 request 改成「請求」，照系列的台灣用語規則。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}

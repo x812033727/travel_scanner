@@ -15,6 +15,7 @@ import io
 import json
 import py_compile
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -72,7 +73,10 @@ CODE_LANGUAGES = {"python", "bash", "json", "yaml"}
 CODE_MAX_LINES = 80
 SECRET = re.compile(r"sk-[A-Za-z0-9_-]{8,}|AKIA[0-9A-Z]{16}|api[_-]?key\s*[=:]\s*[\"'][^\"'$<{]{12,}", re.I)
 PLACEHOLDER = re.compile(r"<YOUR[_ -]?[A-Z_ ]*KEY>|YOUR_API_KEY|your-api-key-here", re.I)
+# Git for Windows' bash on the machine the series was planned on, else whatever bash is on PATH.
 BASH = Path(r"C:\Program Files\Git\bin\bash.exe")
+if not BASH.is_file():
+    BASH = Path(shutil.which("bash") or "bash")
 
 
 def models_seen() -> set[str]:

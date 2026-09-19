@@ -1,0 +1,306 @@
+{
+  "slug": "ai-workflow-tracing-evals",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 410,
+  "related": [
+    "ai-workflow-cross-review-judge",
+    "ai-workflow-cost-quality-latency",
+    "ai-workflow-failures-and-guardrails"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "追蹤、評測與可觀測性：知道流程哪一步出錯",
+      "description": "多模型工作流串起幾個步驟後，一步答錯或變慢，只看最後輸出看不出問題在哪，必須每一步都留下可查的紀錄。本篇示範只用 Python 標準函式庫自寫一支 JSONL 追蹤器，記下每次呼叫的輸入雜湊、模型、token 數、延遲與結果，再用離線評測集把新舊兩版流程跑過同一批題目，比較分數與退步清單，也對照 OpenTelemetry 的 GenAI 語意慣例命名，讀完能不接追蹤 SaaS 就看出哪一步出錯、哪一版更好。",
+      "hero": {
+        "src": "/guides/ai-workflow-tracing-evals/hero.jpg",
+        "alt": "原創插圖：一條時間軸上排著幾個方塊，每個方塊旁邊貼著寫有雜湊、模型與延遲的小標籤，最後兩份時間軸並排比較分數。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "多模型工作流只要串起三、四個步驟，任何一步答錯或變慢，光看最後顯示給使用者的那一句話完全找不出問題出在哪一步；解法是替每一步都留下可以查、可以重放的紀錄，再用同一批題目跑過新舊兩個版本比較分數，而不是憑印象覺得這次感覺比較順。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇會示範只用 Python 標準函式庫寫一支輕量的追蹤器（tracer），替流程裡每一次呼叫記下輸入雜湊、用了哪個模型、token 數、延遲與結果，一行一筆存成 JSON Lines；接著建立一組固定的離線評測集，把新舊兩版流程跑過同一批題目、逐題比對分數與退步清單。需要 Python 3.11 以上，範例只用 hashlib、json、time、functools 與 pathlib 這些標準函式庫，不必安裝套件、不必連網，也不必先申請任何供應商的 API 金鑰就能整段跑完；文中也會對照 OpenTelemetry 的 GenAI 語意慣例，說明它的屬性命名和目前的穩定性狀態，留著以後要接上正式觀測系統時參考。以下引用的官方文件查證於 2026 年 9 月。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "多模型工作流只看最後輸出沒辦法定位是哪一步出錯，需要替每一步留下可查的紀錄，再用同一批題目比較新舊版本的分數。",
+            "本文的 JSONL 追蹤器只用 Python 標準函式庫的 hashlib、json、time、functools 與 pathlib，每次呼叫記下輸入雜湊、模型、token 數、延遲與結果，一行一筆，不綁任何追蹤 SaaS。",
+            "離線評測集把輸入、預期結果與判分規則固定下來，讓兩版流程跑過同一組題目，用通過率與退步清單比較優劣，而不是只看一次順利的執行結果。",
+            "OpenTelemetry 的 GenAI 語意慣例定義了 gen_ai.operation.name、gen_ai.usage.input_tokens 等屬性名稱，本文查證當天該登錄檔列出的 72 個 gen_ai. 屬性全部標示為 Development，本文只拿來對照命名，不實際串接。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼要追蹤每一步，不能只看最後結果"
+        },
+        {
+          "type": "paragraph",
+          "text": "把一件事拆成好幾個模型接力處理之後，任何一步都可能出錯：路由選錯模型、某一步逾時、回傳的結構化輸出解析失敗，或者前面步驟的結果被後面誤用。使用者只看得到最後顯示出來的那一句話，開發者如果也只盯著最終輸出，遇到問題只能整段重跑、用猜的縮小範圍，沒辦法直接指出是哪一步、哪一次呼叫出的錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代理系統維運（AgentOps）是什麼一文，已經談過怎麼把一個任務的完整執行軌跡串起來看，區分回答成功與操作成功；本篇要往下一層，講清楚追蹤裡一步具體該記哪些欄位、格式怎麼設計，並且自己動手寫一支不依賴任何服務的追蹤器，讓小型專案不必先評估、採購一整套觀測平台，也能從今天開始留紀錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "每一步該記什麼欄位"
+        },
+        {
+          "type": "paragraph",
+          "text": "要能回頭指出問題出在哪，每一次呼叫至少要記六件事：這一步屬於流程裡的哪個階段、輸入的雜湊、實際呼叫了哪個模型、輸入與輸出各自的 token 數、從送出到拿到結果經過的延遲，以及這次呼叫成功還是失敗、失敗時是什麼錯誤類別。整理成清單如下。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "step：這一次呼叫屬於流程裡的哪一段，例如分類、摘要或審查",
+            "input_hash：對輸入內容取 SHA-256 雜湊再截斷，用來比對兩次呼叫是不是同一組輸入",
+            "model：實際呼叫的模型 id，串多個供應商時尤其要記，不能只靠印象猜當時用的是哪一個",
+            "input_tokens_est／output_tokens_est：輸入與輸出各自的 token 數，離線環境先用估計值",
+            "latency_ms：從送出到拿到結果經過的毫秒數",
+            "status：成功時的簡短標記，失敗時記下錯誤類別"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用雜湊而不是直接存輸入原文，是因為輸入常常帶著使用者的個人資料或商業內容，沒有必要整份複製一次；雜湊只用來判斷這兩次呼叫的輸入是不是同一份，真的需要回放原始內容除錯時，應該另外設計有存取控制的儲存方式，不能把原文和追蹤紀錄放在同一個檔案裡。token 數在離線、不安裝任何套件的前提下沒有供應商的計數工具可以呼叫，本文用字串長度除以一個固定倍數概估，正式串接後應該改讀供應商回應裡的實際用量欄位。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自己寫一支 JSONL 追蹤器"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文採用的 JSON Lines（JSONL）寫法是一行一個獨立的 JSON 物件，新紀錄用附加的方式接在檔尾，不需要讀出整個檔案、修改後再整份寫回去；一般常見的 JSON 檔案通常是一個大陣列，中途要新增一筆就得整份重寫，追蹤紀錄這種一直往後長、幾乎不回頭修改的資料，用 JSONL 比較合適，之後要匯入試算表或資料庫也能一行一列讀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面的裝飾器（decorator）只用 Python 標準函式庫：用 hashlib 對輸入算雜湊、time.perf_counter 量進出這次呼叫經過的時間、functools.wraps 讓包裝過的函式保留原本的名字與說明文字（Python 官方文件說少了這個裝飾器，被包住的函式名字會變成 wrapper、原本的說明文字會遺失），最後把整筆紀錄用 json 轉成一行文字附加到檔案尾端。只要在原本的函式上面加一行 @traced(...)，就能替任何一步加上追蹤，不用改函式本體的邏輯。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "tracer.py：JSONL 追蹤裝飾器（純標準函式庫）",
+          "code": "\"\"\"tracer.py -- self-contained JSONL step tracer (standard library only).\"\"\"\nimport functools\nimport hashlib\nimport json\nimport time\nfrom pathlib import Path\n\nTRACE_PATH = Path(\"trace.jsonl\")\n\n\ndef _input_hash(args, kwargs) -> str:\n  raw = json.dumps({\"args\": args, \"kwargs\": kwargs}, ensure_ascii=False, default=str, sort_keys=True)\n  return hashlib.sha256(raw.encode(\"utf-8\")).hexdigest()[:16]\n\n\ndef _approx_tokens(text: str) -> int:\n  # Rough offline estimate; swap for the provider's real usage field once online.\n  return max(1, len(text) // 4)\n\n\ndef traced(step: str, model: str = \"claude-sonnet-5\"):\n  \"\"\"Decorator that appends one JSON line per call to TRACE_PATH.\"\"\"\n\n  def decorator(fn):\n    @functools.wraps(fn)\n    def wrapper(*args, **kwargs):\n      start = time.perf_counter()\n      status, output = \"ok\", None\n      try:\n        output = fn(*args, **kwargs)\n        return output\n      except Exception as exc:  # noqa: BLE001\n        status = f\"error:{exc.__class__.__name__}\"\n        raise\n      finally:\n        latency_ms = round((time.perf_counter() - start) * 1000, 1)\n        record = {\n          \"ts\": round(time.time(), 3),\n          \"step\": step,\n          \"model\": model,\n          \"input_hash\": _input_hash(args, kwargs),\n          \"input_tokens_est\": _approx_tokens(json.dumps([args, kwargs], default=str)),\n          \"output_tokens_est\": _approx_tokens(str(output)) if output is not None else 0,\n          \"latency_ms\": latency_ms,\n          \"status\": status,\n        }\n        with TRACE_PATH.open(\"a\", encoding=\"utf-8\") as fp:\n          fp.write(json.dumps(record, ensure_ascii=False) + \"\\n\")\n\n    return wrapper\n\n  return decorator\n\n\n@traced(step=\"summarize\", model=\"claude-sonnet-5\")\ndef summarize(text: str) -> str:\n  # Placeholder for a real model call, offline-safe so this file runs standalone.\n  return text[:40]\n\n\nif __name__ == \"__main__\":\n  summarize(\"Mokaair 的多模型工作流追蹤示範文字。\")\n  print(TRACE_PATH.read_text(encoding=\"utf-8\"))\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果專案已經在用 Python 標準函式庫的 logging 模組管理一般的應用程式紀錄，也可以把追蹤疊上去：先用 addHandler 掛一個只輸出 JSON 的處理器，再用 info() 的 extra 參數把追蹤欄位塞進每一筆紀錄。官方文件特別提醒，extra 傳入的鍵不能跟 logging 系統本身使用的鍵衝突。本文的範例不依賴 logging，直接開檔案寫入，好處是任何專案都能直接複製貼上，不用先弄懂 Handler 的階層架構。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-tracing-evals/diagram-1.svg",
+          "alt": "流程圖：呼叫發生、立即記錄雜湊與模型、寫成一行 JSON、離線比對兩個版本的分數，四個步驟由左到右串接。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每一步呼叫先記下雜湊、模型與延遲，兩版流程再離線跑同一批題目比較分數（2026 年 9 月查證）。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "離線評測集：兩版流程跑過同一批題目"
+        },
+        {
+          "type": "paragraph",
+          "text": "先讀模型與代理評測（Evals）是什麼，裡面已經完整說明怎麼設計案例、選評分器、判斷通過與否；本篇只示範怎麼用程式把這件事自動化：固定一組題目、跑兩個版本的流程、把每一題的結果和整體分數印出來，順便列出從通過變成失敗的題目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇的範例用的是程式評分：判斷輸出字串是否與預期完全相符。Anthropic 的文件把 output == golden_answer 這種完全相符列為程式評分的例子，並形容程式評分最快、最穩定、極易擴大規模，但遇到需要較少規則式判斷的複雜情況就不夠細緻。人工評分與以模型當評審各自的取捨，那一篇已經比較過，本篇不重複；換成自己的任務時，判分規則要照任務的性質選。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的 Evals 文件把一個評測拆成兩個要素：一個是測試資料的欄位格式，另一個是判斷模型輸出是否正確的評分器；本文的離線範例把這兩者簡化成一份 Python 清單和一個相等比較函式，觀念相同，只是不必先把測試資料上傳到平台、不必排隊等待非同步的執行結果，跑完馬上看到分數。如果只想比較 Claude Code 單一流程的兩種做法，Claude Code｜比較流程品質、用量與執行時間一文已經示範怎麼用固定案例與原始紀錄比較；本篇的離線評測集比較，示範的是更通用、不限定於單一工具的兩版流程打分方式。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "eval_compare.py：離線評測集跑分與版本比較（純標準函式庫）",
+          "code": "\"\"\"eval_compare.py -- run a fixed eval set through two pipeline versions offline.\"\"\"\nimport time\n\nEVAL_SET = [\n  {\"id\": \"ascii-upper\", \"input\": \"hello\", \"expected\": \"HELLO\"},\n  {\"id\": \"zh-tag\", \"input\": \"你好\", \"expected\": \"你好[v2]\"},\n  {\"id\": \"empty\", \"input\": \"\", \"expected\": \"\"},\n  {\"id\": \"digits\", \"input\": \"42\", \"expected\": \"42\"},\n]\n\n\ndef pipeline_a(text: str) -> str:\n  # Version A: upper-cases ASCII input, leaves other scripts untouched.\n  return text.upper() if text.isascii() else text\n\n\ndef pipeline_b(text: str) -> str:\n  # Version B: appends a version tag unless the input is empty; regresses the two ASCII cases.\n  return f\"{text}[v2]\" if text else text\n\n\ndef run(pipeline, cases):\n  rows = []\n  for case in cases:\n    start = time.perf_counter()\n    actual = pipeline(case[\"input\"])\n    latency_ms = round((time.perf_counter() - start) * 1000, 3)\n    rows.append({\"id\": case[\"id\"], \"passed\": actual == case[\"expected\"], \"latency_ms\": latency_ms})\n  return rows\n\n\ndef compare(cases, a, b):\n  rows_a, rows_b = run(a, cases), run(b, cases)\n  score_a = sum(r[\"passed\"] for r in rows_a) / len(cases)\n  score_b = sum(r[\"passed\"] for r in rows_b) / len(cases)\n  regressions = [ra[\"id\"] for ra, rb in zip(rows_a, rows_b) if ra[\"passed\"] and not rb[\"passed\"]]\n  return {\"score_a\": score_a, \"score_b\": score_b, \"regressions\": regressions}\n\n\nif __name__ == \"__main__\":\n  report = compare(EVAL_SET, pipeline_a, pipeline_b)\n  print(report)  # illustrative only: scores depend entirely on your own eval set\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "上面的例子只是示意：四題固定案例跑下來，版本 A 通過三題、版本 B 通過兩題。版本 B 多了一個版本標籤，讓原本不會被處理的非 ASCII 那一題從不通過變成通過，卻讓 ascii-upper 與 digits 兩題從通過變成失敗，退步清單列出的就是這兩題。總分只告訴你 B 比較低，看不出它在某一類輸入上其實變好了，所以要逐題把退步的題目列出來、人工看過，才能決定要不要換版本；固定案例只有四題，只夠驗證程式怎麼跑，換成自己的任務時，題目要涵蓋一般情況、缺漏與少見情況，數量也要夠多，結論才站得住。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "只看總分會蓋住退步的題目",
+          "text": "比較兩版流程時，若只看整體通過率從 A 版變好，可能忽略某些題目從通過變成失敗。應該像追蹤器一樣逐題記錄結果，另外列出 A 通過、B 失敗的退步清單，人工檢查這些題目，不要只憑一個總分決定要不要換版本。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "跟 OpenTelemetry 的 GenAI 語意慣例對一下命名"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenTelemetry 原本在自己的規格網站上放了一頁 GenAI 語意慣例，現在那一頁的標題是 Moved: Generative AI semantic conventions，內文寫著 GenAI 語意慣例已經搬到 OpenTelemetry 的 GenAI 語意慣例儲存庫、這一頁不再於原本的儲存庫維護，連過去的是 open-telemetry 底下的 semantic-conventions-genai；本文實際讀的就是該儲存庫 main 分支 docs 目錄裡的兩份檔案：屬性登錄檔與 GenAI spans 頁。本文查證當天，屬性登錄檔列出 72 個 gen_ai. 開頭的欄位，包含模型名稱、呼叫的操作類型、輸入與輸出 token 數等等，每一條都在穩定性欄位寫著目前的狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文查證當天逐列數過那 72 個屬性的穩定性欄位：全部標成 Development，沒有一個標成 Stable。反而是 span 上一起使用、但不屬於 gen_ai 命名空間的 error.type，在 GenAI spans 頁上標的是 Stable，該頁把它連回 OpenTelemetry 通用語意慣例的 error 屬性頁。換句話說，GenAI 這一段命名本身還在調整，本文不會直接拿它當追蹤器的正式欄位，只整理成對照表，方便以後要把資料送進支援 OpenTelemetry 的觀測系統時，知道欄位名稱怎麼換算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文件也定義了 span 命名的慣例：一個 GenAI 呼叫的 span 名稱建議是操作名稱加上請求的模型名稱；操作名稱本身列了一組常用值（well-known values），像是 chat、generate_content、text_completion，登錄檔寫的是其中一個適用時就必須用該值、否則才可以自訂。這一點正好對應到本文追蹤器裡的 step 欄位，只是命名習慣不同。GenAI spans 頁另外寫著 span 應該涵蓋整個操作的時間長度，從操作發動開始、到回應完整收到或因錯誤與取消而終止為止。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "追蹤器欄位",
+            "對應的 OpenTelemetry 屬性",
+            "目前穩定性狀態"
+          ],
+          "rows": [
+            [
+              "step",
+              "gen_ai.operation.name",
+              "development"
+            ],
+            [
+              "input_hash",
+              "那 72 個屬性裡沒有雜湊欄位；最接近的是記錄輸入對話內容的 gen_ai.input.messages，登錄檔另外警告它很可能含使用者個資",
+              "development"
+            ],
+            [
+              "model",
+              "gen_ai.request.model",
+              "development"
+            ],
+            [
+              "input_tokens_est／output_tokens_est",
+              "gen_ai.usage.input_tokens／gen_ai.usage.output_tokens",
+              "development"
+            ],
+            [
+              "latency_ms",
+              "那 72 個屬性裡沒有整體延遲的欄位，只有串流首個區塊的 gen_ai.response.time_to_first_chunk；spans 頁則寫 span 本身要涵蓋整個操作的時間長度",
+              "development（time_to_first_chunk）"
+            ],
+            [
+              "status（錯誤類別）",
+              "error.type，只在操作失敗時才需要",
+              "stable"
+            ]
+          ],
+          "caption": "屬性名稱逐字取自官方屬性登錄檔與 GenAI spans 頁，穩定性狀態照頁面原文標示（2026 年 9 月查證）。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "一定要接 OpenTelemetry 才能開始追蹤嗎？",
+              "answer": "不用。本文的 JSONL 追蹤器只用 Python 標準函式庫，一支檔案就能記錄每一步的輸入雜湊、模型、token 數、延遲與結果，不需要先裝 SDK 或串接任何追蹤服務。OpenTelemetry 的 GenAI 語意慣例只是拿來對照屬性命名，等專案需要跟其他系統共用觀測資料時再考慮接上。"
+            },
+            {
+              "question": "token 數為什麼是概估，不能直接算嗎？",
+              "answer": "本文的範例只用標準函式庫、不裝任何套件，所以既沒有呼叫供應商的計數工具，也沒有引入任何 tokenizer 套件，只用字串長度除以固定倍數估算，跟實際計費用量會有落差。正式串接時應該改讀供應商回應裡的用量欄位，只有在完全離線、沒有網路呼叫的情況下才適合先用概估值看趨勢。"
+            },
+            {
+              "question": "追蹤紀錄要保留輸入原文嗎？",
+              "answer": "本文的做法是只存輸入的 SHA-256 雜湊，不存原文，用意是能比對兩次呼叫是不是同一組輸入，同時不必擔心把使用者資料或商業內容整份寫進檔案。如果真的需要回放原始輸入來除錯，應該另外設計遮蔽或有存取控制的儲存方式，不要直接放進追蹤檔。"
+            },
+            {
+              "question": "離線評測集的分數，可以直接當成兩個模型的效能排名嗎？",
+              "answer": "不行。文中的評測集只用固定字串轉換當範例，用來示範跑分與比較的程式怎麼寫，不是任何模型的實際表現；分數也只反映這組題目涵蓋到的情境，題目數量少或型態單一時，總分差異不代表哪一版全面更好，還要看退步清單裡的個別題目。"
+            },
+            {
+              "question": "JSONL 格式跟一般的 JSON 檔案有什麼不同？",
+              "answer": "JSONL 是一行一個獨立的 JSON 物件，新紀錄用附加的方式接在檔尾，不用讀出整個檔案再重新寫回去；一般的 JSON 檔案通常是一個大陣列或物件，中途新增一筆就得整份重寫。追蹤紀錄一直增加，用 JSONL 比較合適。"
+            },
+            {
+              "question": "OpenTelemetry 的 GenAI 屬性名稱可以直接拿來當我自己追蹤器的欄位名嗎？",
+              "answer": "可以參考命名方式，但要注意本文查證當天，登錄檔列出的 72 個 gen_ai. 屬性全部標示為 Development，代表規格本身還可能調整；本文的表格只列出對照關係，方便以後要接上正式的觀測系統時知道欄位怎麼換算，實際採用前應該重新查一次當時的規格頁面。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Python 官方文件：logging — Logging facility for Python",
+          "url": "https://docs.python.org/3/library/logging.html",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Python 官方文件：functools — Higher-order functions and operations on callable objects",
+          "url": "https://docs.python.org/3/library/functools.html",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "OpenTelemetry：Moved: Generative AI semantic conventions（原規格站的 GenAI 語意慣例頁）",
+          "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "OpenTelemetry semantic-conventions-genai：屬性登錄檔 gen_ai",
+          "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "OpenTelemetry semantic-conventions-genai：GenAI spans",
+          "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-spans.md",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "OpenAI Platform：Working with evals",
+          "url": "https://developers.openai.com/api/docs/guides/evals",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Claude Platform Docs：Define success criteria and build evaluations",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

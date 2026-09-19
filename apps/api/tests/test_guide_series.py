@@ -24,6 +24,26 @@ def test_catalogue_is_complete_and_references_are_valid():
     assert catalogue.hub == "claude-code-tutorials"
 
 
+def test_the_ai_workflow_catalogue_is_complete_and_references_are_valid():
+    """Twelve zh-TW tutorials behind one hub, in four groups and three reading paths; every
+    entry is a shipped pack whose display_order follows the catalogue's numbering."""
+    from app.guides.content_pack import load_packs
+
+    catalogue = next(item for item in catalogues() if item.slug == "ai-workflow")
+    assert catalogue.hub == "ai-workflow-tutorials"
+    assert catalogue.locale == "zh-TW"
+    assert len(catalogue.entries) == 12
+    assert [group.id for group in catalogue.groups] == ["A", "B", "C", "D"]
+    assert [path.id for path in catalogue.paths] == ["concepts", "builder", "operator"]
+    packs = {pack.slug: pack for pack in load_packs()}
+    assert catalogue.hub in packs
+    for entry in catalogue.entries:
+        pack = packs[entry.slug]
+        assert pack.display_order == 399 + entry.number, entry.slug
+        assert pack.locales["zh-TW"].title == entry.title, entry.slug
+        assert set(entry.related) <= {other.slug for other in catalogue.entries}, entry.slug
+
+
 def test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve():
     """A registry row is a promise the section page will keep: its hub is a shipped pack,
     an ``api-series`` row has a catalogue, and its topic is in the lifestyle vocabulary."""
@@ -38,6 +58,7 @@ def test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve():
         "gemini",
         "ai-terms",
         "ai-search-terms",
+        "ai-workflow",
     ]
     shipped = {pack.slug: pack.kind for pack in load_packs()}
     catalogued = {item.slug for item in catalogues()}
@@ -247,7 +268,9 @@ async def test_series_route_precedes_kind_route_and_requires_published_hub(datab
 async def test_unavailable_targets_leave_no_public_navigation_or_inline_link(
     database, actor, state, numbers
 ):
-    catalogue = catalogues()[0]
+    # By slug, not by position: the catalogues load in file-name order, and this test
+    # publishes the Claude Code hub, so it must read the Claude Code catalogue.
+    catalogue = next(item for item in catalogues() if item.slug == "claude-code")
     source_slug = catalogue.entries[numbers[0] - 1].slug
     target_slug = catalogue.entries[numbers[1] - 1].slug
     document = rich_document()

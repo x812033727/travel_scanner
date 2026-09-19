@@ -1,0 +1,372 @@
+{
+  "slug": "ai-workflow-local-and-cloud-mix",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 409,
+  "related": [
+    "ai-workflow-mcp-shared-tools",
+    "ai-workflow-unified-api-layer",
+    "ai-workflow-failures-and-guardrails"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+      "description": "這篇教你用 Ollama 的 OpenAI 相容端點，把分類與去識別化這類會碰到原始個資的步驟留在本機執行，換成代號的乾淨文字才送進雲端模型收尾，同一支 Python 程式靠 base_url 切換兩端。本機範例只用 Ollama 模型庫查得到的 gemma4、qwen3.6 與 gpt-oss，標籤大小、上下文視窗與硬體提示照官方頁當天的數字寫，本機和雲端實際跑起來差多少本站沒有實測；哪些資料留在機器裡、哪些會送出去，也逐條對照官方文件寫清楚。",
+      "hero": {
+        "src": "/guides/ai-workflow-local-and-cloud-mix/hero.jpg",
+        "alt": "原創插圖：畫面左邊是一台筆電，螢幕上有一個上鎖的文件圖示，代表原始個資留在本機；右邊是一朵雲，中間一枝箭頭只連著去識別化後、已經打上代號的文字方塊。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇回答一個問題：多模型工作流裡，哪一段該放在本機、哪一段可以交給雲端——結論是用 Ollama 的 OpenAI 相容端點跑本機模型，處理分類、去識別化這類會碰到原始個資的步驟，等文字乾淨了才送進雲端模型收尾。程式上本機與雲端差的只有 base_url、api_key 和 model，但要讓資料真的留在機器裡，模型標籤也得一起挑對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有一支能在本機與雲端間切換的 Python 程式，還有一套先在本機去識別化、再讓雲端模型寫出最終答案的流程，範例照 Ollama 官方文件與模型庫頁當天的原文寫成。動手需要 Python 3.11 以上、跑著的本機 Ollama、執行過 pip install openai，雲端那端的金鑰放進環境變數，不寫進程式裡；本機模型只用 Ollama 模型庫查得到的 gemma4、qwen3.6 與 gpt-oss。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "這篇示範一套本機和雲端混搭的做法：分類與去識別化這類會碰到原始個資的步驟留在本機的 Ollama 執行，換成代號的乾淨文字才送進雲端模型寫出最終答案，同一支 Python 程式靠 base_url 切換兩端。",
+            "Ollama 的 API 文件把本機和雲端的網址寫在同一張 Base URLs 表裡，OpenAI 相容那一列：本機是 http://localhost:11434/v1，Ollama 自己的雲端是 https://ollama.com/v1，官方文件寫本機請求不需要金鑰、雲端請求需要，本機預設綁定 127.0.0.1 的 11434 埠。",
+            "本機模型只用 Ollama 模型庫查得到的 gemma4、qwen3.6 與 gpt-oss；gpt-oss:20b 下載 14GB、讀我檔寫量化後最低 16GB 記憶體就能跑，gpt-oss:120b 是 65GB，讀我檔寫可以塞進一張 80GB 的顯示卡。",
+            "模型庫裡不少名字同時有本機標籤和帶 cloud 字樣的標籤，例如 gemma4:cloud 或 gpt-oss:20b-cloud，這些是在 Ollama 自己的雲端執行；官方文件還寫，透過已登入的本機伺服器一樣選得到雲端模型，所以去識別化那一步要把網址和標籤一起釘死。",
+            "延遲與速度這篇只引用模型庫頁上的規格數字，本機和雲端實際跑起來差多少，本站沒有實測。"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "為什麼要把敏感步驟留在本機、交給雲端收尾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "多模型工作流通常要決定每一步交給哪個模型，其中一種切法是照資料敏不敏感分——原始文字裡有沒有姓名、電話、病歷這類碰不得的內容，是分類這一步就能判斷出來的事，系列裡《一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法》把這種切法和另外三種放在一起講，這篇只把「照資料敏感度分」這一種做完整：分類與去識別化這兩步留在本機的 Ollama，判斷過、遮蔽過的文字才進入下一步，下一步才輪到雲端模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個界線在 Ollama 的文件裡也找得到對應的說法。官方常見問答被問「會不會把提示詞和回覆送回 ollama.com」，回答第一句是「Ollama 是在本機執行的，你在本機執行時我們看不到你的提示詞或資料」；同一份文件另一題寫，Ollama 預設綁定 127.0.0.1 的 11434 埠，要讓網路上的其他裝置連得到，得自己改 OLLAMA_HOST 這個環境變數。不過「呼叫本機端點」不等於「資料留在本機」：OpenAI 相容性那頁寫，透過已登入的本機伺服器也可以選用雲端模型，例如 gemma4:cloud，API 介紹頁同樣寫要透過本機伺服器使用雲端模型就登入 Ollama。所以這篇的界線要兩件事同時成立——網址指到本機，而且模型標籤是已經下載到這台機器的本機標籤。"
+        },
+        {
+          "type": "heading",
+          "text": "同一支 Python：base_url 和標籤決定資料去哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 API 文件把本機和雲端的網址並排寫在同一張 Base URLs 表裡，OpenAI 相容那一列：本機是 http://localhost:11434/v1，Ollama 自己的雲端是 https://ollama.com/v1；官方原文寫「雲端請求需要 API 金鑰，本機請求不用」。用 openai 這個 Python 套件接兩邊時，程式碼幾乎一樣，差的只有兩處：OpenAI() 建構子裡的 base_url 與 api_key，以及呼叫時填的 model 名稱；如果要接的不是 Ollama 自己的雲端，而是 OpenRouter、LiteLLM 這類統一多家供應商的閘道，系列裡《統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式》另外講那一種寫法。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "hybrid_client.py：用 base_url 切換本機與雲端（pip install openai）",
+          "code": "import os\n\nfrom openai import OpenAI\n\n# Ollama 的 OpenAI 相容端點：本機是 http://localhost:11434/v1，\n# Ollama 自己的雲端是 https://ollama.com/v1（官方文件的 Base URLs 表）。\nLOCAL_BASE_URL = \"http://localhost:11434/v1\"\nCLOUD_BASE_URL = \"https://ollama.com/v1\"\n\n# 只有下載到這台機器的標籤才算本機；帶 cloud 字樣的標籤會送到 Ollama 的雲端，\n# 即使 base_url 指的是本機伺服器也一樣。\nLOCAL_MODELS = {\"gpt-oss:20b\", \"qwen3.6:35b\", \"gemma4:12b\"}\n\n\ndef ensure_local_tag(model: str) -> None:\n  \"\"\"本機那一步的守門員：標籤不在白名單就不要送出去。\"\"\"\n  if model not in LOCAL_MODELS:\n    raise ValueError(f\"{model} is not a downloaded local tag\")\n\n\ndef get_client(target: str) -> OpenAI:\n  \"\"\"target 是 'local' 或 'cloud'，換的只有 base_url 和金鑰。\"\"\"\n  if target == \"local\":\n    # 本機不檢查金鑰，用戶端仍要求填一個值，官方範例填 'ollama'。\n    return OpenAI(base_url=LOCAL_BASE_URL, api_key=\"ollama\", timeout=30.0)\n  if target == \"cloud\":\n    # 雲端要求真正的金鑰，一律從環境變數讀，不寫進程式。\n    return OpenAI(\n      base_url=CLOUD_BASE_URL,\n      api_key=os.environ[\"OLLAMA_API_KEY\"],\n      timeout=30.0,\n    )\n  raise ValueError(f\"unknown target: {target}\")\n\n\ndef ask(target: str, model: str, prompt: str) -> str:\n  if target == \"local\":\n    ensure_local_tag(model)\n  client = get_client(target)\n  response = client.chat.completions.create(\n    model=model,\n    messages=[{\"role\": \"user\", \"content\": prompt}],\n  )\n  return response.choices[0].message.content\n\n\nif __name__ == \"__main__\":\n  # 本機模型只留在自己的機器上執行。\n  print(ask(\"local\", \"gpt-oss:20b\", \"用一句話說明什麼是去識別化\"))"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機那組範例官方文件寫得直白：「這些範例接的是你本機的 Ollama 伺服器，用戶端仍要求填一個金鑰值，但 Ollama 會忽略它」，所以程式裡的 api_key=\"ollama\" 不是要保密的密碼，是用戶端建構子硬性要求的欄位；真正的金鑰只有指到 https://ollama.com/v1 的雲端那支才需要，官方文件自己的範例把金鑰放進環境變數讀出來。逾時也照官方套件的讀我檔寫：建構子的 timeout 設全域預設，單次呼叫要另外算就用 with_options(timeout=…) 覆寫。模型名稱則有一個容易搞混的地方：雲端頁寫，直接對 ollama.com 送 API 請求時用清單回傳的名稱，例如 gemma4:31b，在 Ollama 的 App 或 CLI 裡則用 gemma4:cloud；OpenAI 相容性那頁還寫了第三種情況，透過已登入的本機伺服器也可以選用 gemma4:cloud 這種雲端模型。cloud 是接在冒號後面的標籤，模型庫頁上另外看得到 gemma4:31b-cloud 這種把尺寸和 cloud 併在一起的寫法。"
+        },
+        {
+          "type": "heading",
+          "text": "本機扛得動什麼：gemma4、qwen3.6 與 gpt-oss 的標籤與大小",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇的本機模型只挑 Ollama 模型庫裡查證過的三個名字：gemma4、qwen3.6 與 gpt-oss，各自的標籤、下載大小與上下文視窗都照模型庫頁當天寫的數字，標籤寫法也照頁面上的樣子，一律小寫加冒號。三頁上方都排著 CLI、cURL、Python、JavaScript 四個分頁，cURL 那個分頁印出來的位址就是本機的 11434 埠；但要判斷一段文字跑在哪裡，看的不是呼叫方式，而是網址加標籤：這張表最後一欄只管標籤這一半，雲端頁寫對 ollama.com 送請求用的正是 gemma4:31b 這種不帶 cloud 的名稱。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "模型標籤",
+            "下載大小",
+            "上下文視窗",
+            "型態",
+            "跑在哪裡"
+          ],
+          "rows": [
+            [
+              "gemma4:e2b",
+              "7.2GB",
+              "128K",
+              "文字、圖片",
+              "本機"
+            ],
+            [
+              "gemma4:e4b（latest）",
+              "9.6GB",
+              "128K",
+              "文字、圖片",
+              "本機"
+            ],
+            [
+              "gemma4:12b",
+              "7.6GB",
+              "256K",
+              "文字、圖片",
+              "本機"
+            ],
+            [
+              "gemma4:26b",
+              "19GB",
+              "256K",
+              "文字、圖片",
+              "本機"
+            ],
+            [
+              "gemma4:31b",
+              "20GB",
+              "256K",
+              "文字、圖片",
+              "下載後在本機；雲端頁寫對 ollama.com 送 API 請求也用這個名稱，那一種就跑在雲端"
+            ],
+            [
+              "gemma4:cloud、gemma4:31b-cloud",
+              "大小欄寫「-」",
+              "256K",
+              "文字、圖片",
+              "Ollama 的雲端；讀我檔的「Ollama's cloud」一節寫 ollama run gemma4:31b-cloud"
+            ],
+            [
+              "qwen3.6:27b",
+              "18GB",
+              "256K",
+              "文字、圖片",
+              "本機"
+            ],
+            [
+              "qwen3.6:35b（latest）",
+              "23GB",
+              "256K",
+              "文字、圖片",
+              "本機；查證當天這一頁沒有列出帶 cloud 的標籤"
+            ],
+            [
+              "gpt-oss:20b（latest）",
+              "14GB",
+              "128K",
+              "文字",
+              "本機；讀我檔寫量化後最低 16GB 記憶體可跑"
+            ],
+            [
+              "gpt-oss:120b",
+              "65GB",
+              "128K",
+              "文字",
+              "本機；讀我檔寫可塞進單張 80GB 顯示卡"
+            ],
+            [
+              "gpt-oss:20b-cloud、gpt-oss:120b-cloud",
+              "大小欄寫「-」",
+              "128K",
+              "文字",
+              "Ollama 的雲端；官方寫雲端模型不用下載"
+            ]
+          ],
+          "caption": "Ollama 模型庫的 gemma4、qwen3.6、gpt-oss 三頁，標籤、大小、上下文視窗與執行的位置，2026 年 9 月查證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其中 gpt-oss 的讀我檔把硬體門檻寫得最具體："
+            },
+            {
+              "type": "article",
+              "text": "MoE",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            },
+            {
+              "type": "text",
+              "text": " 權重量化成 MXFP4 格式之後，讀我原文寫這讓較小的模型可以在「最低只有 16GB 記憶體」的機器上跑、較大的模型塞得進單張 80GB 顯示卡，並形容 20B 是「設計給更低延遲、本機或特定用途使用的」。至於哪些名字有雲端版本：gemma4 的讀我檔有一節就叫「Ollama's cloud」，底下寫著 ollama run gemma4:31b-cloud，gpt-oss 的標籤清單也列著 20b-cloud 與 120b-cloud，大小欄同樣是「-」；qwen3.6 那一頁在本文查證當天沒有列出任何帶 cloud 字樣的標籤——這是當天那一頁的狀態，不是官方宣告過它不會有雲端版本。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "流程：本機先去識別化，雲端模型才收尾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡示範一個典型的敏感步驟——去識別化：原始文字裡的姓名、電話、地址先在本機被換成像 [PERSON_1] 這樣的代號，換過的對照表留在本機的記憶體或檔案裡，只有代號版本的文字連同問題送進雲端模型；雲端寫出回覆之後，代號再由本機換回真正的姓名或電話，這一步也在本機做。要提醒的是，遮蔽這一步是交給模型判斷的，抓不抓得乾淨沒有人替你保證，正式用之前要自己拿真實樣本驗過。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client 與 ensure_local_tag）",
+          "code": "import json\n\nREDACT_PROMPT = (\n  \"找出下面文字中的姓名、電話、身分證號與地址，\"\n  \"把每一個換成像 [PERSON_1]、[PHONE_1] 這樣的代號，\"\n  \"同一個人或號碼要用同一個代號，只回傳 JSON，\"\n  \"格式是 {\\\"masked\\\": \\\"...\\\", \\\"map\\\": {\\\"[PERSON_1]\\\": \\\"原文\\\"}}。\"\n)\n\n\ndef redact_locally(text: str, model: str = \"qwen3.6:35b\") -> tuple[str, dict[str, str]]:\n  \"\"\"原始文字留在本機，只有這支函式呼叫本機模型。\"\"\"\n  ensure_local_tag(model)\n  client = get_client(\"local\")\n  # 單次呼叫要另外算逾時，官方套件的寫法是 with_options。\n  response = client.with_options(timeout=60.0).chat.completions.create(\n    model=model,\n    messages=[\n      {\"role\": \"system\", \"content\": REDACT_PROMPT},\n      {\"role\": \"user\", \"content\": text},\n    ],\n    response_format={\"type\": \"json_object\"},\n  )\n  payload = json.loads(response.choices[0].message.content)\n  return payload[\"masked\"], payload[\"map\"]"
+        },
+        {
+          "type": "paragraph",
+          "text": "這支函式接續前面 hybrid_client.py 定義的 get_client(\"local\") 與 ensure_local_tag，只是把提示詞換成要求模型找出個資並回傳固定格式的 JSON；Ollama 的 OpenAI 相容端點支援 response_format 這個欄位，才能穩定拿回 JSON 而不是一段夾雜說明文字的回答。這種把本機那一步的輸出用固定格式交給下一步的做法，系列裡《模型之間交接資料：JSON Schema 與結構化輸出》講得更完整。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "finish_in_cloud.py：把去識別化後的文字交給雲端模型收尾（延續同一支程式）",
+          "code": "def finish_in_cloud(masked_text: str, question: str, model: str = \"gemma4:31b\") -> str:\n  \"\"\"雲端只看得到代號版本的文字，原文與代號的對照表留在本機。\n\n  官方文件直接雲端存取的範例用的就是 gemma4:31b 這個名稱。\n  \"\"\"\n  client = get_client(\"cloud\")\n  prompt = (\n    f\"以下是去識別化後的內容，代號不用還原，直接根據內容回答問題。\\n\\n\"\n    f\"{masked_text}\\n\\n問題：{question}\"\n  )\n  response = client.with_options(timeout=60.0).chat.completions.create(\n    model=model,\n    messages=[{\"role\": \"user\", \"content\": prompt}],\n  )\n  return response.choices[0].message.content\n\n\ndef restore(answer: str, mapping: dict[str, str]) -> str:\n  \"\"\"還原代號只在本機做這一步，雲端的回覆從頭到尾沒看過真正的姓名或電話。\"\"\"\n  for placeholder, original in mapping.items():\n    answer = answer.replace(placeholder, original)\n  return answer\n\n\nif __name__ == \"__main__\":\n  raw = \"王小明，電話 0912-345-678，想詢問退款進度。\"\n  masked, mapping = redact_locally(raw)\n  reply = finish_in_cloud(masked, \"幫這位客人寫一封回覆，說明退款需要 5 個工作天。\")\n  print(restore(reply, mapping))"
+        },
+        {
+          "type": "paragraph",
+          "text": "finish_in_cloud 呼叫的是 get_client(\"cloud\")，也就是走 https://ollama.com/v1 這條路，模型名稱用官方直接雲端存取範例寫的 gemma4:31b；restore 那個函式才是還原代號的地方。整段程式從讀取原始文字到印出最終答案，只有 finish_in_cloud 那一次網路呼叫的內容離開本機；ask 和 redact_locally 走本機那一步之前都先跑 ensure_local_tag，擋掉「網址指到本機、標籤卻挑到雲端」這種把原文送出去的寫法。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-local-and-cloud-mix/diagram-1.svg",
+          "alt": "流程圖：使用者輸入到本機去識別化、雲端模型收尾、本機還原代號的四個步驟，下方標出本機呼叫的埠號。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右：原始文字先在本機去識別化，只有代號版本送進雲端模型收尾，回覆再由本機把代號換回原文；本機端點呼叫的是 11434 埠（2026 年 9 月查證 Ollama 官方文件）。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "去識別化那一步，網址和標籤要一起釘死",
+          "text": "Ollama 的模型庫裡，同一個名字常常同時有本機標籤和帶 cloud 字樣的標籤，例如 gemma4:cloud、gemma4:31b-cloud，或是 gpt-oss:20b-cloud、gpt-oss:120b-cloud；模型庫頁把這些標籤的大小欄寫成「-」，雲端頁也寫雲端模型不需要下載。真正容易踩的坑是：只把 base_url 寫死成 http://localhost:11434/v1 並不夠。OpenAI 相容性那頁寫，透過已登入的本機伺服器一樣可以選用 gemma4:cloud 這種雲端模型——網址指到本機、標籤卻挑到雲端，原始文字在被遮蔽之前就已經送出這台機器，整套「先本機再雲端」的設計等於白做。所以去識別化那支函式要同時釘死兩件事：網址指到本機，模型只用已經下載下來的本機標籤。想讓整台機器完全叫不到雲端模型，官方常見問答寫可以把 Ollama 切成只能本機模式、停用雲端功能，設定方式「Ollama 入門」那篇寫過。"
+        },
+        {
+          "type": "heading",
+          "text": "延遲與硬體的現實：官方數字之外，先不要相信排名",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本機模型跑不跑得動，Ollama 的模型庫頁只給得出下載大小、上下文視窗與 gpt-oss 讀我檔那種記憶體門檻這類規格數字，本文引用的官方頁沒有公開本機和雲端實際回覆要等多久；本站也沒有拿同一段文字在本機顯示卡和雲端之間各跑一次計時，所以本站沒有實測，這篇不排名誰比較快、誰比較準。而讀我檔替 120B 開出的那張 80GB 顯示卡，本身就說明了為什麼收尾那一步常常不放在自己的機器上。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "雲端模型還有本機模型沒有的一種現實：雲端頁的「退場」一節寫，帳號的用量設定頁會列出最近用過、即將退場的模型，要在退場日期前換掉；同一段話也寫「已下載的本機模型不受影響」，這是選擇本機的另一個理由，不只是隱私。本機安裝的完整步驟，以及本機和雲端哪個比較省錢的試算，「Ollama 入門：Windows、Mac 安裝與第一個模型」和「本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算」兩篇已經寫過；如果本機模型要處理的是自己的文件而不是這篇的去識別化，「本機 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "：跟自己的文件聊天」示範了完整的檢索流程，這篇不重複那三篇的內容。"
+            }
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "本機模型和雲端模型真的可以用同一支程式嗎？",
+              "answer": "可以。差別只有兩處：OpenAI() 建構子裡的 base_url 從本機的 11434 埠換成 Ollama 雲端的網址、api_key 從官方範例的 'ollama' 換成環境變數裡的真正金鑰，以及呼叫時填的 model 換成雲端那邊跑得動的名稱，其餘寫法完全一樣。"
+            },
+            {
+              "question": "去識別化之後，雲端還會看到原始的姓名或電話嗎？",
+              "answer": "這套流程送出去的只有代號版本的文字和問題，姓名、電話這類原文和代號的對照表留在本機的記憶體或檔案裡，雲端回覆之後才在本機把代號換回原文，這一步同樣不經過網路。前提是本機那一步真的跑在本機：網址指到 11434 埠，模型也用已下載的本機標籤。另外遮蔽是由模型判斷的，抓不抓得乾淨要自己拿真實樣本驗過。"
+            },
+            {
+              "question": "本機一定要用 gemma4、qwen3.6 或 gpt-oss 嗎？",
+              "answer": "這篇的範例只用這三個名字，因為標籤、大小和上下文視窗都是查證當天在 Ollama 模型庫讀到的數字；模型庫裡還有更多名字，換成別的模型前，同樣要自己到模型庫頁確認標籤怎麼寫、大小是多少。"
+            },
+            {
+              "question": "Ollama 自己的雲端也算本機嗎？",
+              "answer": "不算。base_url 指到 Ollama 雲端的網址就是離開這台機器；而且官方文件寫，透過已登入的本機伺服器也可以選用 gemma4:cloud 這種雲端模型，所以只把網址指到本機還不夠，模型標籤也要挑已經下載下來的本機標籤。"
+            },
+            {
+              "question": "為什麼不直接比較本機和雲端的速度？",
+              "answer": "因為本文引用的官方頁沒有公開這個數字，本站也沒有拿同一段文字在本機和雲端各跑一次計時比較，所以本站沒有實測，這篇只引用模型庫頁上的下載大小、上下文視窗和記憶體門檻這類規格數字。"
+            },
+            {
+              "question": "怎麼確認本機那一步真的沒有把資料送出去？",
+              "answer": "看兩件事：base_url 是不是指到本機的 11434 埠，以及模型標籤是不是已經下載到這台機器的本機標籤。模型庫頁把雲端標籤的大小欄寫成「-」、名字帶 cloud 字樣，這種標籤是送到 Ollama 自己的雲端執行，就算網址指到本機也一樣。"
+            },
+            {
+              "question": "雲端模型會不會忽然被下架？",
+              "answer": "雲端模型有退場機制，帳號的用量設定頁會列出最近用過、即將退場的模型，需要在退場日期前換掉；已經下載到本機的模型不在這個機制裡，不受退場影響。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama 說明文件：OpenAI 相容性（本機與 Ollama 雲端的 base_url、api_key 處理、模型名稱寫法）",
+          "url": "https://docs.ollama.com/api/openai-compatibility",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Ollama 說明文件：API 介紹（Ollama API、OpenAI 相容與 Anthropic 相容三種端點的本機／雲端網址表）",
+          "url": "https://docs.ollama.com/api",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Ollama 說明文件：雲端（API 金鑰、模型命名 gemma4:31b 對 gemma4:cloud、退場機制、資料處理）",
+          "url": "https://docs.ollama.com/cloud",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Ollama 說明文件：常見問答（本機隱私聲明、127.0.0.1:11434 預設綁定、停用雲端功能）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Ollama 模型庫：gemma4（各標籤下載大小、上下文視窗與 cloud 標籤）",
+          "url": "https://ollama.com/library/gemma4",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Ollama 模型庫：qwen3.6（各標籤下載大小與上下文視窗）",
+          "url": "https://ollama.com/library/qwen3.6",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Ollama 模型庫：gpt-oss（各標籤下載大小、上下文視窗與 MXFP4 量化後的記憶體／顯示卡門檻）",
+          "url": "https://ollama.com/library/gpt-oss",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

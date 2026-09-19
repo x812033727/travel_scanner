@@ -4,24 +4,24 @@
 讀者是台灣的一般使用者與會寫一點程式的人；入門篇不假設會寫程式，技術篇假設讀者會跑 Python 與命令列。
 你會拿到這份規格加一段「指派」（slug、標題、切角、程度、必連的站內文章、不可重複的既有文章、來源種子網址、`display_order`）。
 
-- repo 根目錄（worktree）：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5`（以下 ROOT）
-- 暫存目錄：`C:\Users\x8120\AppData\Local\Temp\claude\C--Users-x8120-mokaair--claude-worktrees-travel-guide-articles-planning-eab8c5\6bc15b49-339e-47bf-9727-38b4d1d65292\scratchpad`（以下 SCRATCH）
-- 系列工作區：`ROOT\docs\ai-workflow-series\`（`README.md`、`series.py`、`check_article.py`、`models-seen.json`、`research/`）
+- repo 根目錄：指派會給實際路徑（以下 ROOT；路徑一律用正斜線寫，Windows 也接受）
+- 暫存目錄：指派會給實際路徑（以下 SCRATCH）
+- 系列工作區：`ROOT/docs/ai-workflow-series/`（`README.md`、`series.py`、`check_article.py`、`models-seen.json`、`research/`）
 
 ## 0. 先讀
 
-1. `ROOT\docs\ai-workflow-series\models-seen.json`：查證當日官方模型頁抄下的模型 id 清單（id、url、verbatim、checked_on）。**正文與程式裡出現的模型 id 只能用這份清單裡的**；清單沒有而你需要的，自己到官方模型頁查證後**加進去**（一樣要 verbatim 與 url），不可以憑記憶寫。
-2. 站上與你這篇相鄰的既有文章（指派會列 slug）：用 Read 讀 `ROOT\apps\api\app\guides\content\<slug>.json` 的 zh-TW `title` 與前幾段，**不要重寫它們講過的事**，該引用時用結尾的 link。
+1. `ROOT/docs/ai-workflow-series/models-seen.json`：查證當日官方模型頁抄下的模型 id 清單（id、url、verbatim、checked_on）。**正文與程式裡出現的模型 id 只能用這份清單裡的**；清單沒有而你需要的，自己到官方模型頁查證後**加進去**（一樣要 verbatim 與 url），不可以憑記憶寫。
+2. 站上與你這篇相鄰的既有文章（指派會列 slug）：用 Read 讀 `ROOT/apps/api/app/guides/content/<slug>.json` 的 zh-TW `title` 與前幾段，**不要重寫它們講過的事**，該引用時用結尾的 link。
 3. 一篇已完成的同系列文章（指派若有給）當形狀範本。
 
 ## 1. 交付物（只動這兩個檔）
 
 | 檔案 | 內容 |
 | --- | --- |
-| `ROOT\apps\api\app\guides\content\<slug>.json` | 內容包（第 2 節），**先寫這個**，寫完就存 |
-| `ROOT\docs\ai-workflow-series\research\<slug>.json` | 研究紀錄（第 5 節） |
+| `ROOT/apps/api/app/guides/content/<slug>.json` | 內容包（第 2 節），**先寫這個**，寫完就存 |
+| `ROOT/docs/ai-workflow-series/research/<slug>.json` | 研究紀錄（第 5 節） |
 
-不要在 repo 裡留任何暫存檔（`out*.txt` 一律寫到 `SCRATCH\agents\workflow\<slug>\`）；不要 git add／commit；不要跑 `pack_cli ingest`（它會拒絕子主題）；圖檔由協調者依你的研究紀錄畫，你不畫圖。
+不要在 repo 裡留任何暫存檔（`out*.txt` 一律寫到 `SCRATCH/agents/workflow/<slug>/`）；不要 git add／commit；不要跑 `pack_cli ingest`（它會拒絕子主題）；圖檔由協調者依你的研究紀錄畫，你不畫圖。
 
 ## 2. 內容包的形狀
 
@@ -62,13 +62,13 @@
 
 ## 4. 文字規則
 
-- **事實先查再寫**：方案名、價格、免費額度、模型名、功能是否已推出、速率限制、上下文長度，全部今天到供應商官網確認並寫進 `sources` 與研究紀錄；官網打不開就寫「以官網為準」，不猜數字。今天的日期用 `date +%F` 取得；你訓練資料裡的模型與價格多半已過時，**不能憑記憶寫**。
+- **事實先查再寫**：方案名、價格、免費額度、模型名、功能是否已推出、速率限制、上下文長度，全部今天到供應商官網確認並寫進 `sources` 與研究紀錄；官網打不開就寫「以官網為準」，不猜數字。今天的日期在開工時用 `date -u +%F` 取**一次**，整篇（每條 source、研究紀錄、表格與圖解 caption）都用同一個值；你訓練資料裡的模型與價格多半已過時，**不能憑記憶寫**。
 - 系列統一用語：token（不寫「詞元」）、上下文視窗、提示詞、推理模型、代理（Agent）、工具呼叫（tool calling）、結構化輸出、路由（routing）、級聯（cascade）、評審模型（judge）、追蹤（tracing）、評測（evals）、幻覺；第一次出現可括號附英文。台灣用語（軟體、網路、資料、程式、使用者、品質）。
 - 廠商宣稱一律歸因（「OpenAI 表示」「Google 的文件寫」）；比較速度、品質時只引官方公布的數字，不寫自己沒測過的排名；本站沒有實測就寫「本站沒有實測」。
 - 不寫「作為一個 AI」「總結來說」這類贅語；不用驚嘆號；不對任何產品做人身式的褒貶；不寫訂閱、購買或投資建議；不寫「台灣可用」除非官方頁寫了。
 - 提到 Claude Code、Codex、Gemini CLI 等本站已有系列的工具時，只講本篇需要的用法，其餘連到既有文章（指派會給 slug）。
 
-## 5. 研究紀錄 `ROOT\docs\ai-workflow-series\research\<slug>.json`
+## 5. 研究紀錄 `ROOT/docs/ai-workflow-series/research/<slug>.json`
 
 ```json
 {"slug":"<slug>","title":"<逐字等於 zh-TW title>","checked_on":"<date +%F>","level":"入門|進階",
@@ -88,9 +88,10 @@
 
 ## 6. 網路與工具
 
-- 抓頁用 `curl -sL -A "Mokaair-editorial"`（主機拒絕這個 UA 時可退回 curl 預設 UA，不可自訂別的）；**任何請求的 UA、標頭、查詢字串、表單都不得帶入任何人的 email 或個人資料**。GitHub 官方 repo 的 README 可用 `raw.githubusercontent.com`。PDF 用系統 `python`（有 `pypdf`）抽字。
+- 抓頁用 `curl -sL -A "Mokaair-editorial"`（主機拒絕這個 UA 時可退回 curl 預設 UA，不可自訂別的）；**任何請求的 UA、標頭、查詢字串、表單都不得帶入任何人的 email 或個人資料**。GitHub 官方 repo 的 README 可用 `raw.githubusercontent.com`。PDF 用有 `pypdf` 的 Python 抽字（沒有就不要用 PDF 來源）。
 - 自檢（從 `apps/api`，不要用 `uv run`）：
-  `cd "C:/Users/x8120/mokaair/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/ai-workflow-series/check_article.py <slug>`
+  `cd ROOT/apps/api && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 VENV_PYTHON ../../docs/ai-workflow-series/check_article.py <slug>`
+  （`VENV_PYTHON` 是 API 專案 venv 的直譯器，指派會給實際路徑：Windows 是 `./.venv/Scripts/python.exe`，Linux／macOS 是 `./.venv/bin/python3`）
   要印出 `OK` 才算完成；只允許留下的 FAIL 是「link text must be the title of ai-workflow-tutorials」（目錄篇還沒寫好時）。不可以為了過檢查而刪掉查證過的條件或限制。
 - 用 Write／Edit 寫檔（含非 ASCII 的檔案不要用 heredoc、`sed -i`、`perl -pi`）。
 

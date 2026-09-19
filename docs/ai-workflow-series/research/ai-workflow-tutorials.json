@@ -1,0 +1,135 @@
+{
+  "slug": "ai-workflow-tutorials",
+  "title": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+  "checked_on": "2026-09-19",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "OpenAI Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "What is the Model Context Protocol (MCP)?",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Structured model outputs",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "LiteLLM Docs",
+      "url": "https://docs.litellm.ai/docs/",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Working with evals",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "checked_on": "2026-09-19"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Anthropic 把流程（workflow）定義成 LLM 與工具依照預先寫定的程式路徑被調度的系統",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Workflows are systems where LLMs and tools are orchestrated through predefined code paths."
+    },
+    {
+      "fact": "OpenAI 官方文件把 Agents SDK 描述成抽象概念很少、輕量好用的套件",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI Agents SDK enables you to build agentic AI apps in a lightweight, easy-to-use package with very few abstractions."
+    },
+    {
+      "fact": "MCP 官方文件把它描述成一個開放協定，橫跨大量客戶端與伺服器都支援",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MCP is an open protocol supported across a wide range of clients and servers."
+    },
+    {
+      "fact": "OpenAI 官方文件把 Structured Outputs 描述成保證模型輸出一定符合開發者提供的 JSON Schema 的功能",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Structured Outputs is a feature that ensures the model will always generate responses that adhere to your supplied"
+    },
+    {
+      "fact": "LiteLLM 官方文件把自己描述成開源套件，提供單一、統一的介面呼叫一百多家 LLM",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LiteLLM is an open-source library that gives you a single, unified interface to call 100+ LLMs (OpenAI, Anthropic, Vertex AI, Bedrock, and more) using the OpenAI format."
+    },
+    {
+      "fact": "OpenAI 官方文件把 evals 定義成用來檢查模型輸出是否符合設定的風格與內容準則的測試",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Evaluations (often called evals) test model outputs to ensure they meet style and content criteria that you specify."
+    }
+  ],
+  "unverified_or_excluded": [
+    "各篇目前實際的模型 id、價格與速率限制沒有在這篇重新查證或列出：每篇文章已經各自標好查證日期與來源，這篇只做路線導覽，不重複那些會過期的數字。",
+    "沒有把『這系列一共幾篇』寫進正文：目錄由網站的 SeriesHub 元件依 display_order 自動列出，這篇正文刻意不寫篇數與課序編號。",
+    "查過 OpenRouter、LiteLLM 官方文件裡目前列出的完整供應商清單，沒有把清單本身寫進這篇：那是《統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式》那篇的主題，這裡只點名去那篇看。",
+    "查過 OWASP 十大風險清單裡 LLM05:2025 與 LLM10:2025 的完整條目定義，沒有在這篇重複逐字引用：那屬於《失敗案例與防護：迴圈、費用爆炸與代理間注入》那篇已經查證過的內容，這篇只用一句話點出案例存在。"
+  ],
+  "must_not_write": [
+    "不寫這系列一共十二篇文章，或任何一篇的課序編號（第一篇、第 3 課這類寫法）",
+    "不重寫任何一篇文章裡已經查證過的價格、模型 id、速率限制等會過期的數字",
+    "不對 Claude Code、Codex、Gemini CLI 或任何供應商的模型做優劣評比或人身式褒貶",
+    "不放 code 區塊，也不重講任何一篇的程式範例內容",
+    "不寫訂閱、購買或投資建議，不寫免責聲明式的重複提醒"
+  ],
+  "editorial_brief": "這篇是系列的目錄與導讀，把十二篇文章分成觀念、接線、協作與工具、營運四條路線，每條路線用一段 rich_paragraph 把該路線的文章依序點名，說明每篇解決什麼問題、跟前後篇怎麼銜接，不重複任一篇已經寫過的技術細節或查證數字。每篇的程式範例、模型 id 與查證留給各自的文章處理，這篇只負責告訴讀者從哪裡開始、接下來去哪裡。",
+  "code_samples": [],
+  "hero_label": "四條路線導讀",
+  "diagram": {
+    "layout": "flow",
+    "title": "系列四條路線",
+    "caption": "觀念、接線、協作與工具、營運四條路線各自要解決的問題（查證：2026 年 9 月）",
+    "nodes": [
+      ["觀念", "看依據、算代價"],
+      ["接線", "換供應商、串格式"],
+      ["協作與工具", "代理分工、共用工具"],
+      ["營運", "互審、追蹤、擋失敗"]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 六條全部以 curl -sL -A \"Mokaair-editorial\" 今天重抓並讀 body，研究紀錄六條 verbatim_quote 逐條綁回自己的 url 做連續字串比對；十二篇的內容包逐一打開，把目錄篇 article inline 的 text 與各篇當下的 zh-TW title 逐字比對，表格那一列與路線段落的描述回貼各篇的 description、summary 與正文核對；全篇（含 summary、表格、FAQ、callout、caption、description）以正規表示式掃過篇數與課序寫法。任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有用 sources[] 以外的網址替文章補任何事實。",
+    "verdict": "ok",
+    "edits_to_the_pack": [
+      "路線一段落「決定要拆之後，《一件事拆給多個模型…》整理出…四種切法」與該篇 description（『先想清楚不拆會怎樣』）和本篇表格那一列（『決定要不要拆、怎麼拆』）矛盾，也與下一段開頭重複同一句；改成「接著要判斷該不該拆、又該怎麼拆」，後半併改為「決定要不要拆、又該挑哪一種切法」。",
+      "路線二段落與表格第四列寫「只換 base_url 與 model 字串」，漏掉金鑰；《統一 API 層》的 description 寫的是「程式只要換 base_url、金鑰與 model 字串」，同篇 summary 第四句也寫金鑰的環境變數名稱會不同。兩處都補上金鑰，正文的「只」字拿掉。",
+      "summary 第三句「同一套去識別化流程怎麼同時給…本機與雲端共用」誤述《本機去識別化、雲端收尾》：那篇是把碰到原始個資的步驟留在本機、乾淨文字才送雲端，不是本機與雲端共用同一套流程。整句改寫成與正文一致的說法。",
+      "路線四段落「各自配一種對應的防護，讓流程在還在跑的時候就先停下來」對三種防護以偏概全：《失敗案例與防護》的第三種防護是把上游輸出包成資料再交下游，並不會停住流程。改成「讓流程在失控之前就先擋下來」。",
+      "FAQ 第三題與 callout 重疊（查證日期、價格與模型 id 以官方頁為準幾乎逐句相同），且答案內容只出現在 callout、不在正文，違反 FAQ 答案 ⊆ 正文；整題換成「接線的幾篇和協作與工具的幾篇，差別在哪裡？」，答案逐句取自正文兩段路線段落。",
+      "h2 第一、二節標題「先懂三個觀念」「接線三步」把該路線的文章數寫死在標題裡，與『不寫篇數、不寫課序』相牴觸；改成「先懂觀念」「接線」，四個 h2 的開頭字詞與表格「路線」欄的四個值（觀念、接線、協作與工具、營運）完全一致。",
+      "圖解原本用拆解任務、接線交接、協作與工具、追蹤防護四個名字，與表格「路線」欄的四個值只有一個相同，同一篇出現兩套四格名稱；節點小標改成四條路線的名字，第四格說明補上互審（營運路線含《多模型互審》），caption 與 alt 同步改寫，研究紀錄 diagram 的 title、caption 與 nodes 一併更新。"
+    ],
+    "checked_and_correct": [
+      "十二篇的 article inline text 今天逐字等於各篇當下的 zh-TW title，十二列表格的篇名欄同樣逐字相同；十二個 slug 一個不漏、沒有多餘的。",
+      "路線歸屬與 ASSIGNMENTS 相同：1、2、3 觀念，4、5、6 接線，7、11、12 營運，8、9、10 協作與工具；表格列的順序也照這個分組。",
+      "每篇的一句話描述回貼各篇 description、summary 與正文都對得上，沒有宣稱任何一篇沒有的東西（沒有替任何一篇說有價目表、有某個範例或有官方規格）。",
+      "callout 的「這系列每一篇文章都自己在文中標好查證日期」成立：十二篇的表格或圖解 caption 都寫了查證年月（《成本、品質、延遲》寫到日）。",
+      "全篇（含 summary、表格、FAQ、callout、caption、description）掃不到十二篇、12 篇、第 N 篇、第 N 課這類寫法；正文只用『觀念的幾篇』『接線的幾篇』這種不帶數字的說法。",
+      "六條 sources 今天全部 HTTP 200 且拿到正文；六條 verbatim_quote 綁回各自的 url 全部是可搜尋到的連續字串。MCP intro 的入口網址會轉到帶日期的 /docs/2026-07-28/ 路徑，內容包與研究紀錄都記入口網址、兩邊一致，落地頁有正文。",
+      "界線：沒有訂閱、購買或投資建議，沒有推薦式比價或產品優劣評比，沒有沒歸屬的廠商宣稱（對供應商與協定的陳述都寫成某一篇示範什麼），只有一個 callout、沒有免責段落，沒有寫台灣可用。",
+      "用語照 BRIEF 第四節：token、路由、級聯、結構化輸出、代理、追蹤、評測、防護、幻覺相關寫法一致，沒有出現詞元等對岸用語；簡體字檢查由自檢通過。",
+      "研究紀錄的 title、sources（順序與內容）與 diagram.caption 與內容包一致；checked_on 2026-09-19 在六條 source 與研究紀錄共七處一致，本輪沒有依今天的頁面改任何數字，所以不改。"
+    ],
+    "left_for_the_owner": [
+      "《統一 API 層》自己的 summary 第一句寫「只換 base_url 或 model 字串」，與同篇 description 的「base_url、金鑰與 model 字串」鬆緊不同。目錄篇已照 description 寫；那篇內部要不要一致，屬於該篇查核代理的範圍，本代理沒有動任何一篇文章。",
+      "目錄篇帶六條 sources 但正文只做導讀、沒有直接引用它們，支撐它們的是研究紀錄的六條 verified_facts。檢查器要求 3-8 條，所以沒有動；若站主希望目錄篇的來源與正文有更直接的對應，需要改寫正文而不是刪來源。",
+      "四條路線的名字（觀念、接線、協作與工具、營運）與 ASSIGNMENTS 的『協作／工具』只差一個連接符號，語意相同；本篇全篇統一用『協作與工具』，若站主要改成斜線寫法，表格、四個 h2、summary、圖解與主圖說明要一起改。"
+    ],
+    "code_recompiled": []
+  }
+}

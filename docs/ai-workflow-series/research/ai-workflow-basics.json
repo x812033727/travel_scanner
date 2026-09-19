@@ -1,0 +1,198 @@
+{
+  "slug": "ai-workflow-basics",
+  "title": "AI 工作流是什麼：從一次對話到可重跑的流程",
+  "checked_on": "2026-09-18",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LangGraph overview",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Anthropic 把「流程（workflow）」定義為 LLM 與工具依照預先寫定的程式路徑被調度的系統",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Workflows are systems where LLMs and tools are orchestrated through predefined code paths."
+    },
+    {
+      "fact": "Anthropic 把「代理」定義為 LLM 自己動態主導自身的處理過程與工具使用、對完成任務保有主控權的系統。原文 their own processes 指的是模型自己的處理過程，不是本文定義的「流程（workflow）」",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks."
+    },
+    {
+      "fact": "Anthropic 建議：確實需要更複雜的做法時，界定清楚的任務用流程換可預期與一致；需要彈性與模型自主判斷、而且要做到規模時，代理才是比較好的選擇（at scale 是原文的限定詞）",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When more complexity is warranted, workflows offer predictability and consistency for well-defined tasks, whereas agents are the better option when flexibility and model-driven decision-making are needed at scale."
+    },
+    {
+      "fact": "Anthropic 寫：很多應用把單次呼叫做好、搭配檢索與脈絡內範例，通常就夠了（usually 是原文的限定詞）",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For many applications, however, optimizing single LLM calls with retrieval and in-context examples is usually enough."
+    },
+    {
+      "fact": "Anthropic 寫：代理式系統往往是拿延遲與費用去換取任務表現，要先想清楚這個取捨划不划算。主詞是 agentic systems，不是泛指「把系統做得更複雜」",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Agentic systems often trade latency and cost for better task performance, and you should consider when this tradeoff makes sense."
+    },
+    {
+      "fact": "Anthropic 寫：代理適合難以預測需要幾步、沒辦法寫死一條固定路徑的開放式問題",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Agents can be used for open-ended problems where it’s difficult or impossible to predict the required number of steps, and where you can’t hardcode a fixed path."
+    },
+    {
+      "fact": "這篇文章的標題是 Building effective agents，發表日期印在標題下方：2024 年 12 月 19 日（瀏覽器分頁標題另作 Building Effective AI Agents \\ Anthropic，不是文章標題）",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Published Dec 19, 2024"
+    },
+    {
+      "fact": "同一頁頂端有一則編按：這篇文章描述的工具生態自 2024 年 12 月以來多半已經改變。本文只引用它的定義與取捨建議，不引用它的工具清單",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Note: Much of the tooling landscape described in this post has changed since December 2024."
+    },
+    {
+      "fact": "OpenAI 的 Agents SDK 用 Sessions 這個持久記憶層，維持一次 agent loop 執行過程裡的工作內容",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A persistent memory layer for maintaining working context within an agent loop."
+    },
+    {
+      "fact": "OpenAI 建議想自己掌握迴圈、工具派送（tool dispatch）與狀態時，直接使用 Responses API。tool dispatch 是工具的派送，不是工具呼叫的順序",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "you want to own the loop, tool dispatch, and state handling yourself"
+    },
+    {
+      "fact": "OpenAI 建議想讓執行環境代為管理回合、工具執行、護欄、交接或 session 時，改用 Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "you want the runtime to manage turns, tool execution, guardrails, handoffs, or sessions"
+    },
+    {
+      "fact": "OpenAI 文件寫明這不是全域二選一：同一個應用可以一邊用 SDK 跑受管的流程，一邊直接呼叫 Responses API 走低階路徑",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You do not need to choose one globally. Many applications use the SDK for managed workflows and call the Responses API directly for lower-level paths."
+    },
+    {
+      "fact": "LangGraph 官方文件將自己定位成用來建置、管理與部署長時間執行、有狀態代理的低階流程調度框架與執行環境（本文正文沒有重述這個定位，留給「Agent 框架入門」一文）",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LangGraph is a low-level orchestration framework and runtime for building, managing, and deploying long-running, stateful agents."
+    },
+    {
+      "fact": "LangGraph 讓開發者可以在同一張圖裡混用寫死的步驟與模型自行判斷的步驟",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LangGraph gives you fine-grained control to mix deterministic, hand-coded steps with LLM-driven agentic steps in the same graph, so you can build bespoke agents that behave exactly the way your application requires."
+    }
+  ],
+  "unverified_or_excluded": [
+    "OpenAI 的文件裡是否有像 Anthropic 那樣正式定義『workflow』一詞——查了 openai.github.io/openai-agents-python/，文件多半把 workflow 當成泛稱使用，沒有給出對照 Anthropic 的正式定義，所以本文的流程定義只引用 Anthropic。",
+    "Google ADK、Microsoft Agent Framework 是否也適合放進三層框架的比較——這篇不比較代理框架，框架的安裝、授權與最小範例系列裡「Agent 框架入門」一文已經整理過，這裡不重複查證。",
+    "LangGraph 的 StateGraph／加 node 與 edge 的實際呼叫方式——這篇不寫程式操作 LangGraph，只引用它官方文件對自身定位的說明，實際呼叫方式留給之後串接 LangGraph 的技術篇查證。",
+    "要不要把『提示詞串接』的完整設計原則搬進這篇——決定不搬，系列裡已有專文「提示詞串接（Prompt Chaining）是什麼」，這裡只點名，不重講判斷責任、保留來源等細節。",
+    "OpenAI 文件提到 Agents SDK 是『前一代實驗 Swarm 的正式升級版』，考慮過要不要多寫一句 Swarm 的背景——決定不寫，文件本身只有一句帶過，沒有更多可查證的細節，寫多了會超出這篇要講的分層範圍。",
+    "查核階段刪掉：第 1 節原有一句『一次對話能放進去的內容也有限，話題一多、來回一多，最早提到的內容可能被擠到看不見的地方』——上下文視窗的長度與擠出行為在本文三條 sources 的任何一頁都找不到支撐句，依規格不得用 sources 以外的網址補證，整句改寫成不含這個機制的說法。",
+    "查核階段收短：原本用一整段重述 LangGraph 的官方定位（低階流程調度框架與執行環境、長時間執行、有狀態），以及 Agents SDK 與 Responses API 的完整取捨清單——這兩段與必連文章「Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph」正文幾乎同義（該文已寫『LangGraph 的官方定位是低階的協調框架與執行環境』與『想自己掌握迴圈、工具派送與狀態…才輪到 Agents SDK』），依分工各收成一句，只留與本篇三層論點直接相關的部分。",
+    "流程那一節『先定好最多重試幾次，不能無限重試下去』是工程慣例，不是引用：sources 裡最接近的一句是 Anthropic 談代理時寫的 stopping conditions（such as a maximum number of iterations），講的是代理迴圈的停止條件，不是流程重試上限，所以正文寫成本文的建議，沒有掛給任何廠商。",
+    "Anthropic 那頁頂端的編按（工具生態自 2024 年 12 月起多半已改變）與它現在指向的 Claude Managed Agents——正文只補上文章的發表年月，不引用該頁的工具清單，也不追進編按連到的新頁面（那些網址不在 sources 裡）。"
+  ],
+  "must_not_write": [
+    "不寫 OpenAI Agents SDK、Claude Agent SDK、LangGraph 的安裝指令、授權與最小範例——那是「Agent 框架入門：OpenAI Agents SDK、Claude Agent SDK、LangGraph」一文的內容。",
+    "不寫代理迴圈內部判斷、行動、回饋的運作機制——那是「代理迴圈（Agent Loop）是什麼：判斷、操作與回饋」一文的內容。",
+    "不寫提示詞串接怎麼分配每一步責任、怎麼保留來源、怎麼擋錯誤往下傳——那是「提示詞串接（Prompt Chaining）是什麼」一文的內容。",
+    "不寫怎麼把流程裡的某一步換成別的模型負責、怎麼估算成本與延遲——那是系列後面兩篇的主題。",
+    "不寫任何呼叫模型 API 的程式碼——這篇是入門篇，重點在分層概念本身，不在串接實作。",
+    "不要把 Anthropic 那篇寫成《Building Effective AI Agents》——那是瀏覽器分頁標題（Building Effective AI Agents \\ Anthropic），文章自己印的標題是 Building effective agents，站上其他六篇也都這樣寫。各語系翻譯時標題保留英文原樣。",
+    "不要把 OpenAI 文件的 tool dispatch 譯成「工具呼叫順序」——那是工具的派送，站上既有文章用的是「工具派送」。同理 guardrails 用「護欄」、turns 用「回合」。",
+    "不要把 Anthropic 代理定義裡的 their own processes 譯成「流程」——本文的「流程」是 workflow 的譯名，兩者對撞會把定義講反；要寫「模型自己的處理過程」。",
+    "不要再把 Agents SDK 與 Responses API 的取捨寫成非黑即白的二選一——官方頁下一句就寫 You do not need to choose one globally。",
+    "點名系列其他文章時要用完整標題，不可縮寫（例如「一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法」不能縮成「四種切法」），也不可替還沒寫的文章描述它有什麼內容。",
+    "summary 與 FAQ 引用 Anthropic 的代理定義時，要跟正文用同一組字（自己動態主導自己的處理過程、工具使用、對怎麼完成任務保有主控權），不可以把本文自己的補充（例如「要不要多問一輪」）也掛進「這是 Anthropic 的定義」底下。",
+    "不要把本文自己舉的例子放進「同一篇也寫」「官方文件寫」這種歸屬句的射程裡——Building effective agents 那頁自己舉的代理例子只有 SWE-bench coding agent 與 computer use，沒有會議紀錄、追問或資料來源。",
+    "不要把 OpenAI 那頁「迴圈、工具派送與狀態自己管還是交給執行環境管」的分界，說成就是本文「程式先寫死 vs 模型自己決定」的那條界線——兩者是不同的軸。"
+  ],
+  "editorial_brief": "這是系列第一篇，只講對話、流程、代理三個層次要怎麼分，以及步驟、狀態、重試、輸入輸出契約這幾個詞在講什麼，用同一個會議紀錄轉待辦的例子把三層走一遍。刻意不碰怎麼把流程拆給多個模型、怎麼算成本與延遲、怎麼寫結構化輸出的規格，這些留給系列後面幾篇；提到代理迴圈、代理框架與提示詞串接時，只點名對應的既有文章，不重講它們自己的定義或範例。",
+  "code_samples": [],
+  "hero_label": "三層看懂 AI 工作流",
+  "diagram": {
+    "layout": "flow",
+    "title": "三層有什麼不同",
+    "caption": "對話、流程、代理三個層次的示意（查證：2026 年 9 月）",
+    "nodes": [
+      [
+        "一次對話",
+        "人腦記狀態、想下一步"
+      ],
+      [
+        "寫成流程",
+        "步驟、契約、可重試"
+      ],
+      [
+        "交給代理",
+        "模型自己判斷下一步"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "三條 sources 今天全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（HTTP 200／211,506、76,263、852,166 bytes，三頁都拿到正文而非空殼）；正文每句、summary 四句、FAQ 五題答句、callout、表格 15 格與 caption、圖解三組節點與 hero_label、title、description 逐條回貼原文；研究紀錄每條 verbatim_quote 綁回它自己的 url 做連續字串比對（HTML 標籤剝除後）；三篇必連文章與五篇同系列既有文章的內容包逐段讀過做分工比對。hero.alt 未查（協調者繪圖）。任何請求的 UA、標頭與查詢字串都沒有放入 email 或個人資料，也沒有用 sources 以外的網址替文章補任何事實。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "第 1 節第 2 段：刪掉沒有來源支撐的上下文視窗機制句；把 trade latency and cost 的主詞從「把系統疊得更複雜」改回「代理式系統（agentic systems）」；補回 usually（通常就夠了）；補上文章發表年月 2024 年 12 月。",
+      "第 1 節第 2 段與 sources[0]：《Building Effective AI Agents》改成文章自己印的標題 Building effective agents（前者是瀏覽器分頁標題；站上其他六篇引用同一頁都用後者）。研究紀錄 sources 同步。",
+      "代理定義：「LLM 自己動態指揮流程與工具使用」改成「自己動態主導自己的處理過程與工具使用」——原文 their own processes 是模型自己的處理過程，用「流程」會與本文 workflow 的譯名對撞。",
+      "第 3 節第 2 段：tool dispatch 的譯法由「工具呼叫順序」改為「工具派送」；「底層的 API／現成的代理框架」這組對比收成一句分界線，並補上官方下一句 You do not need to choose one globally（不是全域二選一）。整段原本與必連文「Agent 框架入門」幾乎同義，依分工收短。",
+      "第 3 節第 3 段：刪掉重述 LangGraph 官方定位的那一句（與必連文重疊），只留「同一張圖裡可以混用寫死與模型判斷的步驟」這一句，並接到本篇的論點：流程與代理不是二選一。",
+      "第 5 節第 1 段：「一件事拆給多個模型：四種切法」補成完整標題「一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法」。",
+      "第 5 節第 2 段：補上 Anthropic 何時用流程、何時用代理的原句（含 when more complexity is warranted 與 at scale 兩個限定詞）與代理適合開放式問題的原句；「成本、品質、延遲：多模型流程怎麼取捨」的「有估算表」改成「會處理」（那篇尚未寫，不能描述它有什麼）。"
+    ],
+    "checked_and_correct": [
+      "Anthropic 對 workflow 與 agent 的兩句定義，剝除 <strong> 標籤後都是頁面上的連續字串，譯文沒有增減條件；「調度」對 orchestrated、「主控權」對 maintaining control over how they accomplish tasks（限定範圍「對怎麼完成任務」有保留，沒有擴大成對整個系統的主導）。",
+      "三層比較表「代理」欄四格全是描述性寫法（誰決定下一步、路徑固不固定、出錯怎麼辦、例子），沒有任何一格說代理比流程好；callout 反向提醒多一層不會自動變準，表與 callout 沒有互相矛盾。",
+      "OpenAI Agents SDK 與 LangGraph 兩條來源在正文被引用的每一句，都能在今天的頁面上找到對應原句（Sessions 的記憶層、迴圈／工具派送／狀態的分界、不必全域二選一、同一張圖混用兩種步驟），沒有寫進頁面沒說的功能。",
+      "Claude Agent SDK 被歸為代理框架有來源：Anthropic 該頁的 frameworks 清單第一項就是 The Claude Agent SDK。",
+      "三篇必連文章的標題在正文與結尾連結逐字相符；結尾第二個連結指向 ai-term-prompt-chaining 且 text 等於它的 zh-TW title。",
+      "界線：沒有訂閱、購買或投資建議，沒有價格與推薦式比價，沒有免責段落，只有一個 callout，沒有「台灣可用」，廠商宣稱全部有歸屬。",
+      "checked_on 2026-09-18 在三條 source 與研究紀錄一致；三個頁面今天都沒有改動本文引用的任何句子，也沒有任何數字被改寫，依規格不因重查而改日期。"
+    ],
+    "left_for_the_owner": [
+      "Anthropic 那頁頂端有編按，說這篇描述的工具生態自 2024 年 12 月以來多半已改變，並指向 Claude Managed Agents。本文只引用它的定義與取捨建議（那些不在編按的射程內），並已補上發表年月；若站主想更保守，可在第 1 節再加半句說明編按的存在。",
+      "同一個「社團會議紀錄→待辦→通知」情境，必連文「提示詞串接（Prompt Chaining）是什麼」也在用。這是指派指定的例子，本輪沒有改；若站主希望兩篇區隔更明顯，要換掉其中一篇的情境。",
+      "orchestration 的譯名在站上不一致：本篇用「流程調度」，「Agent 框架入門」用「協調框架」，「代理協調（Agent Orchestration）」另立一詞。本輪沒有跨篇統一。",
+      "「成本、品質、延遲：多模型流程怎麼取捨」在本輪查核途中才被另一個代理寫出來（ai-workflow-cost-quality-latency.json，本代理沒有動它），title 與本篇正文寫的逐字相同，而且它確實帶一張成本估算表。本篇保守改成「會處理」；等那個檔落地，站主要把「有估算表」寫回來是成立的。"
+    ],
+    "code_recompiled": [],
+    "second_round": {
+      "checked_on": "2026-09-19",
+      "claims_checked": 89,
+      "edits": [
+        "summary 第 3 句：「代理讓模型自己判斷下一步要不要呼叫工具、要不要多問一輪，對怎麼完成任務保有主控權，這是 Anthropic 工程部落格對代理的定義」改成「代理讓模型自己動態主導自己的處理過程與工具使用、對怎麼完成任務保有主控權，這是 Anthropic 工程部落格對代理的定義」。第一輪只把正文的代理定義改對，summary 沒有同步：舊句把「要不要多問一輪」掛在「這是 Anthropic 對代理的定義」底下，但頁面的定義句是 Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.，沒有這一項，反而少了 their own processes。改後逐項對得上原文，也仍然 ⊆ 正文（正文同段有同一句話）。",
+        "第 3 節第 2 段：「這條界線在官方文件上也看得到：OpenAI 的 Agents SDK 文件把…，並且寫明這不是全域二選一，同一個應用可以兩種混用」改成「要留意的是，官方文件切的不一定是同一條線：OpenAI 的 Agents SDK 文件是把…，而且寫明這不是全域二選一，同一個應用可以一邊用它跑受管的流程、一邊自己直接走低階路徑」。兩個問題：一是第一輪把這一段收短之後，「這條界線」的前文變成講代理迴圈那一篇，指代斷掉；二是 OpenAI 那頁切的是「迴圈、工具派送與狀態自己管還是交給執行環境管」，與本文的「程式先寫死還是模型自己決定」不是同一條線，寫成「也看得到」會把兩條線混為一談。混用的講法改成貼著原文 Many applications use the SDK for managed workflows and call the Responses API directly for lower-level paths.",
+        "第 5 節第 2 段：「同一篇也寫，代理適合的是…開放式問題——例如要不要追問、要跳過哪個資料來源，這種下一步本身就是難題的場合」改成「…開放式問題。回到上面的例子，待辦寫得含糊時要不要先回頭問你，就是這種下一步本身就是難題的場合」。第一輪補這一句時把兩個例子放進「同一篇也寫」的歸屬範圍裡，但那一頁自己舉的例子是 A coding Agent to resolve SWE-bench tasks 與 computer use reference implementation，沒有「追問」或「跳過資料來源」；「跳過哪個資料來源」全篇其他地方也沒出現。改成本文自己的會議紀錄例子（第 4 節與表格都有），例子移出歸屬範圍。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}
