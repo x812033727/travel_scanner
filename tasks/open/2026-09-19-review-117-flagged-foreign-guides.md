@@ -37,7 +37,7 @@ and the rule's reason, is `docs/catalog-content-reviews/2026-09-19-foreign-guide
 
 - [x] Every one of the 117 is marked in the JSON as `reject` or `keep`, with a one-line reason for each `keep`.
 - [ ] The `reject` rows are rejected on the host and no longer public; the `keep` rows stay approved.
-- [ ] Rule misfires that repeat (a shape, not a single row) are written down for whoever tunes `foreign_place`.
+- [x] Rule misfires that repeat (a shape, not a single row) are written down for whoever tunes `foreign_place`. （2026-09-19：見 `2026-09-19-foreign-guides-review.md` 的三種誤判形狀，另開票 `2026-09-19-foreign-place-reason`。）
 
 ## Steps
 
