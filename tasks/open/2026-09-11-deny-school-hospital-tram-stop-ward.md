@@ -1,11 +1,11 @@
 ---
 id: 2026-09-11-deny-school-hospital-tram-stop-ward
 title: Deny school, hospital, tram stop, ward and military base types in hotspot discovery
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: claude-opus-5
-claimed_at: 2026-09-11T16:53:59Z
+owner:
+claimed_at:
 created_at: 2026-09-11T16:53:58Z
 completed_at:
 branch: claude/attractions-review-progress-55bb39
@@ -80,3 +80,11 @@ building, Q5327369 chōchō (each had at least one approved row). A type is deni
 The 173 Gemini reject recommendations from catalog-review run `d943205e` are a
 separate, time-limited operational step: the next discovery pass rewrites those rows,
 which changes their snapshot fingerprint and makes the assessments unappliable.
+
+### 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+PR #403 於 2026-09-11 合併。原持有者 claude-opus-5（2026-09-11 認領）。剩下的兩項都是 2026-09-15 那一輪探索之後的查核，還沒有紀錄。
+
+這張票和 `2026-09-12-denylist-tombstones-real-attractions`（P1）的 scope 完全相同，持有它就讓那張認領不到，所以改回 open。建議由接手 denylist-tombstones 的人一起做這裡的查核。

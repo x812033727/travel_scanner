@@ -1,11 +1,11 @@
 ---
 id: 2026-09-09-site-experience-settings
 title: Mokaair site experience palettes and managed information pages
-status: blocked
+status: open
 priority: P1
 area: web
-owner: codex-site-experience
-claimed_at: 2026-09-09T10:58:26Z
+owner:
+claimed_at:
 created_at: 2026-09-09T10:58:08Z
 completed_at:
 branch: codex/site-experience-settings
@@ -161,3 +161,11 @@ Merge follow-up (2026-09-09): the user explicitly authorized merging PR #380. Re
 The integrated head 660b55b1 passed all push/PR checks: API 2,847 passed / 15 skipped; Web 1,496 passed; browser UI 410 passed / 4 skipped. Main then advanced to 584dd438 (#381 catalog-review call limits); reconciliation has no application-code conflicts, only the generated task board. Keep that upstream functionality unchanged and gate the combined head on fresh CI before merging. Manual preview acceptance remains blocked, not completed by this merge authorization.
 
 Integration CI on a52ef7a8: all push checks passed. The PR run found two independent failures: a community setup GET /community/me transport ECONNRESET before recovery/deletion assertions, and an existing discovery test's raw "999" substring check falsely matching timestamp microseconds 729996. Relevant community/BFF code was unchanged, and the same-head push full-stack passed. Preserve that original browser failure and rerun unchanged with the next CI. Replace only the erroneous discovery test's text scan with structural private-field/value assertions plus deterministic timestamp/identifier coverage; do not change production serializers or relax publication gates.
+
+### 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+程式已隨 PR #380 於 2026-09-09 合併。這張票從那之後以 blocked 狀態持有 scope，擋住 17 張票，原持有者是 codex-site-experience（2026-09-09 認領），所以改回 open。
+
+剩下兩項：前端關閉／返回／焦點流程的回歸測試與桌面／手機瀏覽器證據；在核准的隔離預覽上用內建瀏覽器做人工驗收。人工驗收要站主本人參與，接手前先問站主。

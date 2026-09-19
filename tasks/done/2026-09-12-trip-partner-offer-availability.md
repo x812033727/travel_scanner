@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-trip-partner-offer-availability
 title: Trip payloads carry partner offer availability and trip-sourced options carry the trip placement
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-12T13:27:21Z
 created_at: 2026-09-12T13:27:18Z
-completed_at:
+completed_at: 2026-09-19T04:11:49Z
 branch: claude/trip-partner-offers
 depends_on: []
 scope:
@@ -63,3 +63,9 @@ RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_integration_postgres_redis.py -
 `_option_destination_id` (an Osaka/Kyoto trip resolves to `osaka-kyoto`). The full payload
 now costs one settings read, one config read and, only when the catalog is on, one offers
 query. `2026-09-07-contextual-travel-services` (open, unowned) lists these directories.
+
+### 標記完成（由站主授權，非原持有者，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+完成條件 6／6 都已打勾，工作隨 PR #436 於 2026-09-12 合併，之後部署過多次。原持有者 claude-fable-5-1 的認領從 2026-09-12 起沒有更新，這張票的 scope 擋住 7 張票。

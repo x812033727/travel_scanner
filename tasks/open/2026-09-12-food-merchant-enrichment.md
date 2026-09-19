@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-food-merchant-enrichment
 title: 反向用美食定位平台補齊待審店家資料（Gemini 補齊模式與瀏覽器批次匯入）
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-12T06:14:34Z
+owner:
+claimed_at:
 created_at: 2026-09-12T06:14:22Z
 completed_at:
 branch: claude/food-merchant-enrichment
@@ -98,3 +98,11 @@ AI 與批次永遠不寫座標、地圖身分、審核狀態。既有 `catalog_r
   - 新錯誤碼 `catalog_enrichment_nothing_pending`、`catalog_source_untrusted` 已加五語系（`apps/api/app/i18n.py`）。
   - 資料檔骨架 `apps/api/app/foods/data/enrichment/2026-09-12-pending-merchants.json`（`records: []`），研究批次另開 PR。
   - E（部署後研究批次）尚未開始；需先合併部署 PR 1，再匯出工作清單。
+
+### 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+A–D 已隨 PR #432 於 2026-09-12 合併並部署。原持有者 claude-fable-5-1（2026-09-12 認領）。票上記錄 E（部署後匯出工作清單、瀏覽器研究 30 家試點、dry-run、套用、報告）尚未開始。
+
+這張票的 scope 擋住 8 張票，所以改回 open；要跑 E 的人重新認領。
