@@ -17,12 +17,7 @@ from app.localized_names import item_names
 from app.models import RestaurantFavorite, RestaurantPlace, TripPlan
 from app.problems import AppError
 from app.restaurants.editorial import editorial_by_google_place_id
-from app.trips.router import (
-    hydrate_legacy_items,
-    load_items,
-    owned_trip,
-    persist_system_schedule_change,
-)
+from app.trips.selections import SelectionPlace, TripSelectionRequest, place_trip_selection
 from app.warnings import warning_code
 
 router = APIRouter(prefix="/restaurants", tags=["restaurants"])
@@ -37,11 +32,11 @@ SAVED_RESTAURANT_LABELS: dict[str, str] = {
 }
 
 
-class RestaurantTripSelectionRequest(BaseModel):
-    trip_id: UUID
-    version: int = Field(ge=1)
-    day_date: date
-    meal_role: Literal["lunch", "dinner"]
+class RestaurantTripSelectionRequest(TripSelectionRequest):
+    """``mode``, ``meal`` and ``overwrite`` are the shared placement contract.
+
+    ``meal_role`` alone still fills that meal card, as it did before ``mode`` existed.
+    """
 
 
 async def _place(session: AsyncSession, place_id: str) -> RestaurantPlace:
@@ -171,24 +166,6 @@ async def select_restaurant_for_trip(
     session: Session,
 ) -> dict[str, object]:
     place = await _place(session, place_id)
-    trip = await owned_trip(session, user.id, payload.trip_id)
-    if (
-        trip.start_date is None
-        or trip.end_date is None
-        or not trip.start_date <= payload.day_date <= trip.end_date
-    ):
-        raise AppError(422, "itinerary_date_out_of_range", "餐廳日期超出旅程範圍")
-    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-    meal = next(
-        (
-            item
-            for item in rows
-            if item.day_date == payload.day_date and item.system_role == payload.meal_role
-        ),
-        None,
-    )
-    if meal is None:
-        raise AppError(422, "trip_meal_slot_unavailable", "這一天沒有可設定的餐食卡")
     editorial = (await editorial_by_google_place_id(session, [place.google_place_id])).get(
         place.google_place_id
     )
@@ -199,37 +176,36 @@ async def select_restaurant_for_trip(
         dict[str, float] | None,
         editorial.get("ride_location") if editorial else None,
     )
-    meal.title = title
-    meal.location_name = str(editorial.get("address") or editorial["name"]) if editorial else title
-    # Editorial names are single-language source text; the placeholder label
-    # exists in every site locale, so store it and let the card follow the UI.
-    meal.names_json = (
-        {} if editorial else item_names(title=fallback_names, location_name=fallback_names)
+    selection = SelectionPlace(
+        title=title,
+        location_name=str(editorial.get("address") or editorial["name"]) if editorial else title,
+        # Editorial names are single-language source text; the placeholder label
+        # exists in every site locale, so store it and let the card follow the UI.
+        names_json=(
+            {} if editorial else item_names(title=fallback_names, location_name=fallback_names)
+        ),
+        latitude=Decimal(str(ride_location["latitude"])) if ride_location is not None else None,
+        longitude=Decimal(str(ride_location["longitude"])) if ride_location is not None else None,
+        provider_place_id=place.google_place_id,
+        location_source="travel_scanner_editorial" if editorial else "google_place_id",
+        is_estimated=editorial is None,
+        # An appended restaurant is an ordinary stop, the way the trip editor's own
+        # place browser adds one; a meal card keeps its type and duration.
+        item_type="custom",
+        duration_minutes=60,
+        data={
+            "restaurant_place_id": place.google_place_id,
+            "restaurant_maps_url": place.generated_maps_url,
+            "restaurant_editorial_source": editorial.get("source_kind") if editorial else None,
+        },
     )
-    meal.provider_place_id = place.google_place_id
-    meal.latitude = Decimal(str(ride_location["latitude"])) if ride_location is not None else None
-    meal.longitude = Decimal(str(ride_location["longitude"])) if ride_location is not None else None
-    meal.location_source = "travel_scanner_editorial" if editorial else "google_place_id"
-    meal.is_estimated = editorial is None
-    meal.is_skipped = False
-    meal.data = {
-        **meal.data,
-        "meal_selection_source": "user",
-        "restaurant_place_id": place.google_place_id,
-        "restaurant_maps_url": place.generated_maps_url,
-        "restaurant_editorial_source": editorial.get("source_kind") if editorial else None,
-    }
-    await record_event(
-        session, "place_added_to_trip", path="/restaurants", user_id=user.id,
-        properties={"kind": "restaurant", "slot": payload.meal_role},
-    )
-    result = await persist_system_schedule_change(
+    result = await place_trip_selection(
         session,
-        trip,
         user.id,
-        payload.version,
-        rows,
+        request=payload,
+        place=selection,
         warning=warning_code("restaurant_changed"),
-        target_day=payload.day_date,
+        event_path="/restaurants",
+        event_properties={"kind": "restaurant"},
     )
     return cast(dict[str, object], result)

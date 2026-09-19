@@ -149,11 +149,3 @@ class FoodCitiesResponse(BaseModel):
 
 class FoodCategoriesResponse(BaseModel):
     items: list[FacetCategoryView]
-
-
-class MerchantTripSelectionRequest(BaseModel):
-    trip_id: UUID
-    version: int = Field(ge=1)
-    day_date: date
-    meal_role: Literal["lunch", "dinner"]
-    food_id: UUID | None = None

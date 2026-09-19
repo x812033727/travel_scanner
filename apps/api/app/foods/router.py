@@ -11,13 +11,8 @@ from app.auth.service import CurrentUser
 from app.db import get_session
 from app.destinations.catalog import destination_for_id
 from app.foods.publication import publishable_merchant_filters
-from app.foods.schemas import (
-    FoodCategoriesResponse,
-    FoodCitiesResponse,
-    MerchantListResponse,
-    MerchantTripSelectionRequest,
-)
-from app.foods.selection import apply_merchant_meal_selection
+from app.foods.schemas import FoodCategoriesResponse, FoodCitiesResponse, MerchantListResponse
+from app.foods.selection import apply_merchant_selection
 from app.foods.service import (
     food_facets,
     foods_for_planner,
@@ -32,6 +27,7 @@ from app.i18n import Locale, current_locale
 from app.locations.coordinates import has_durable_coordinates
 from app.models import FoodMerchant, FoodMerchantFood, TravelFood
 from app.problems import AppError
+from app.trips.selections import TripSelectionRequest
 
 router = APIRouter(prefix="/foods", tags=["foods"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -40,12 +36,20 @@ FoodKind = Literal["main", "noodle_soup", "street_food", "dessert", "drink"]
 MealType = Literal["breakfast", "lunch", "dinner", "snack", "dessert", "drink"]
 
 
-class FoodTripSelectionRequest(BaseModel):
-    trip_id: UUID
+class FoodTripSelectionRequest(TripSelectionRequest):
+    """A dish goes on the trip as one of its verified merchants.
+
+    ``mode``, ``meal`` and ``overwrite`` are the shared placement contract;
+    ``meal_role`` alone still fills that meal card, as it did before ``mode`` existed.
+    """
+
     merchant_id: UUID
-    version: int = Field(ge=1)
-    day_date: date
-    meal_role: Literal["lunch", "dinner"]
+
+
+class MerchantTripSelectionRequest(TripSelectionRequest):
+    """Same contract; ``food_id`` names the dish the card should mention, if any."""
+
+    food_id: UUID | None = None
 
 
 @router.get("")
@@ -177,15 +181,8 @@ async def select_merchant_for_trip(
     food = await session.scalar(dish_query.limit(1))
     if payload.food_id is not None and food is None:
         raise AppError(404, "food_merchant_not_found", "這家店沒有這道料理")
-    return await apply_merchant_meal_selection(
-        session,
-        user.id,
-        merchant=merchant,
-        food=food,
-        trip_id=payload.trip_id,
-        version=payload.version,
-        day_date=payload.day_date,
-        meal_role=payload.meal_role,
+    return await apply_merchant_selection(
+        session, user.id, merchant=merchant, food=food, request=payload
     )
 
 
@@ -224,13 +221,6 @@ async def select_food_for_trip(
         merchant.coordinate_source_url,
     ):
         raise AppError(422, "food_merchant_location_unverified", "店家地點尚未完成驗證")
-    return await apply_merchant_meal_selection(
-        session,
-        user.id,
-        merchant=merchant,
-        food=food,
-        trip_id=payload.trip_id,
-        version=payload.version,
-        day_date=payload.day_date,
-        meal_role=payload.meal_role,
+    return await apply_merchant_selection(
+        session, user.id, merchant=merchant, food=food, request=payload
     )
