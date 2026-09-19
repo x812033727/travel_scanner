@@ -1,0 +1,146 @@
+{
+  "slug": "ai-workflow-cost-quality-latency",
+  "title": "成本、品質、延遲：多模型流程怎麼取捨",
+  "checked_on": "2026-09-18",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Pricing - Claude Platform Docs",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Pricing | OpenAI API",
+      "url": "https://platform.openai.com/docs/pricing",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Gemini Developer API pricing",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Prompt caching - Claude Platform Docs",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Optimizing for cost and intelligence - Claude Platform Docs",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Claude Opus 5 的輸入單價是每百萬 token 5 美元、輸出單價是每百萬 token 25 美元",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Opus 5 $5 / MTok $6.25 / MTok $10 / MTok $0.50 / MTok $25 / MTok"
+    },
+    {
+      "fact": "Claude Sonnet 5 的輸入單價是每百萬 token 2 美元、輸出單價是每百萬 token 10 美元",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Sonnet 5 $2 / MTok $2.50 / MTok $4 / MTok $0.20 / MTok $10 / MTok"
+    },
+    {
+      "fact": "GPT-6 Astra 標準價的輸入單價是每百萬 token 10 美元、輸出單價是每百萬 token 50 美元",
+      "url": "https://platform.openai.com/docs/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Model Input Cached input Cache writes Output Input Cached input Cache writes Output gpt-6-astra $10.00 $1.00 $12.50 $50.00"
+    },
+    {
+      "fact": "Gemini 3.5 Flash-Lite 的輸入單價是每百萬 token 0.30 美元、輸出單價是每百萬 token 2.50 美元",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Input price Free of charge $0.30 (text / image / video / audio) Output price (including thinking tokens) Free of charge $2.50"
+    },
+    {
+      "fact": "Gemini 3.8 Flash 的輸入價格在 2026 年 12 月 31 日前是每百萬 token 0.75 美元，之後調整為 1.50 美元",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Input price Free of charge $0.75 through December 31, 2026. $1.50 starting January 1, 2027."
+    },
+    {
+      "fact": "Anthropic 的定價頁把批次處理列為輸入與輸出 token 都打 50% 折扣的非同步處理",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Batch API allows asynchronous processing of large volumes of requests with a 50% discount on both input and output tokens."
+    },
+    {
+      "fact": "OpenAI 的批次價格是標準價的一半（以 gpt-6-astra 為例，標準輸入 10 美元對批次輸入 5 美元）",
+      "url": "https://platform.openai.com/docs/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "All models Batch Short context Long context Model Input Cached input Cache writes Output Input Cached input Cache writes Output gpt-6-astra $5.00 $0.50 $6.25 $25.00"
+    },
+    {
+      "fact": "Google 把批次 API 列為付費層級的功能，並標註 50% 的成本折減",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "check_circle Batch API (50% cost reduction)"
+    },
+    {
+      "fact": "Anthropic 的文件把批次處理列在比較表裡，標註 50% 的節省、對品質沒有影響，結果通常在 24 小時內送達",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Batch API 50% None Results within 24 hours"
+    },
+    {
+      "fact": "Anthropic 的文件用一句話寫批次處理的取捨方向：批次處理拿延遲換折扣",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "batch processing trades latency for its discount"
+    },
+    {
+      "fact": "Anthropic 的文件描述了用同一套測試題、同樣預設參數比較不同型號的方法",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic ran recent Claude Opus, Claude Sonnet, and Claude Fable models through the same harness on the SWE-bench Pro 3 subset, each at its shipped defaults and priced at list rates"
+    },
+    {
+      "fact": "Anthropic 的文件寫，工作進入正式環境後成本會變成第一線的設計限制，最強的模型可能貴到無法規模化、最便宜的模型可能不夠聰明",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The most capable model can be too expensive at scale, and the least expensive model can fall short on quality."
+    }
+  ],
+  "unverified_or_excluded": [
+    "Google 官方定價頁上語音、翻譯、影像生成等模型的定價——與本篇三個文字模型的情境無關，查了但沒寫進來。",
+    "各家模型實際回應秒數的實測——本環境沒有可呼叫的 API 金鑰可以實際計時，只能引官方定價頁與文件描述的取捨方向（例如批次是拿延遲換折扣），沒有寫成具體秒數，正文已注明「本站沒有實測」。",
+    "Claude 快取讀寫的精確倍率（0.1 倍讀取、1.25 倍 5 分鐘寫入等）——已經在《Claude API 省錢：提示快取與批次處理怎麼用》整理過，這篇只提概念，不重複數字。",
+    "GPT-5.6 Sol、Terra、Luna 與 Claude Fable 5.1、Haiku 4.5 的價格——今天也查證過（見已保存的 openai-pricing.txt 與 claude-pricing.txt），但本篇三個範例情境只需要 Opus 5、Sonnet 5、GPT-6 Astra 與 Gemini 3.5 Flash-Lite 四個型號，其餘沒有寫進正文。",
+    "跨供應商的完整旗艦／中階／輕量價格比較表——《API 價格比較：每百萬 token 各家多少》已經整理過，這篇不重列，只引用查證過的單價做估算表。"
+  ],
+  "must_not_write": [
+    "各家實際模型回應的秒數（沒有實測）",
+    "Claude 快取的精確折扣倍率與存活設定方式",
+    "怎麼用程式接上多個模型的 API（留給後面技術篇）",
+    "路由規則怎麼判斷要不要升級、評審模型的評分標準設計"
+  ],
+  "editorial_brief": "這篇是系列第三篇，負責把成本、品質、延遲三個量的量法講清楚，並用單一旗艦、級聯、並行互審三種架構的估算表把三個量放在一起比較。跨供應商的完整價格表留給《API 價格比較》，token 計數方法留給《token 計算與費用估算》，Claude 快取與批次的實作細節留給《Claude API 省錢》，路由規則與評審設計則留給系列後面的《模型路由與級聯》與《多模型互審》。",
+  "code_samples": [],
+  "hero_label": "成本、品質、延遲",
+  "diagram": {
+    "layout": "flow",
+    "title": "三種流程的成本估算",
+    "caption": "三種流程處理同一個假設請求（輸入 3,000 個 token、輸出 600 個 token）的估算成本；單價查證於 2026 年 9 月官方定價頁，實際費用以官網當日公告為準。",
+    "nodes": [
+      [
+        "共同假設",
+        "輸入3,000／輸出600"
+      ],
+      [
+        "單一旗艦",
+        "一次 0.03 美元"
+      ],
+      [
+        "級聯",
+        "平均 0.0114 美元"
+      ],
+      [
+        "並行互審",
+        "一次 0.1004 美元"
+      ]
+    ]
+  }
+}

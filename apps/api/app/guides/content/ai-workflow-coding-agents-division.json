@@ -127,7 +127,7 @@
         },
         {
           "type": "paragraph",
-          "text": "下面這支腳本把三支 CLI 接成一條管線：Claude Code 用 --permission-mode plan 進入規劃模式，只讀專案寫步驟，輸出存成 plan.md；Codex 用 --sandbox workspace-write 允許它修改工作目錄——官方文件寫預設沙盒是唯讀——跑完用 git diff 存成 change.patch；Gemini CLI 用 --approval-mode plan 讀 patch 與 plan.md，--output-format json 只回傳一個物件，審查結果包在 response 欄位的文字裡，腳本再用一段 Python 解析、驗證後寫成這篇定義的 review.json。三支呼叫都包了 timeout，避免卡在等待核准或回應時讓整條管線卡住。"
+          "text": "下面這支腳本把三支 CLI 接成一條管線：Claude Code 用 --permission-mode plan 進入規劃模式，官方文件寫這個模式讓 Claude 讀檔案、寫計畫，但不會真的修改原始碼，輸出存成 plan.md；Codex 用 --sandbox workspace-write 允許它修改工作目錄——官方文件寫預設沙盒是唯讀——跑完用 git diff 存成 change.patch；Gemini CLI 用 --approval-mode=plan 讀 patch 與 plan.md，官方文件把這個模式定義成唯讀的研究環境，--output-format json 只回傳一個物件，審查結果包在 response 欄位的文字裡，腳本再用一段 Python 解析、驗證後寫成這篇定義的 review.json。三支呼叫都包了 timeout，避免卡在等待核准或回應時讓整條管線卡住。"
         },
         {
           "type": "callout",
@@ -139,7 +139,7 @@
           "type": "code",
           "language": "bash",
           "label": "workflow.sh：串接 claude -p、codex exec 與 gemini -p（需要三支 CLI 都已登入，Python 3.11 以上只用內建的 json）",
-          "code": "#!/usr/bin/env bash\n# workflow.sh -- plan with Claude Code, execute with Codex, review with Gemini CLI.\n# Usage: ./workflow.sh \"<task description>\"\n# Requires: claude, codex and gemini already installed and signed in.\nset -euo pipefail\n\ntask=\"$1\"\nout=\".handoff\"\nmkdir -p \"$out\"\n\n# 1) plan: Claude Code only reads the repo and writes plain-text steps.\ntimeout 300 claude -p \\\n  \"$task. List the files and steps to change; do not edit anything.\" \\\n  --output-format text \\\n  --permission-mode plan \\\n  >\"$out/plan.md\"\n\n# 2) execute: Codex edits the working tree, then we diff it ourselves.\ntimeout 900 codex exec \\\n  --sandbox workspace-write \\\n  --skip-git-repo-check \\\n  --output-last-message \"$out/codex-final.txt\" \\\n  \"Follow $out/plan.md and make the smallest change that satisfies it.\"\ngit diff >\"$out/change.patch\"\n\n# 3) review: Gemini CLI grades the patch. --output-format json only wraps a\n#    \"response\" string, so the review.json shape below is this site's own\n#    convention, parsed and rewritten here rather than validated by the CLI.\nprompt=\"Read $out/change.patch against $out/plan.md. Reply with only a JSON \"\nprompt+='object: {\"verdict\": \"approve\" or \"changes_requested\", \"issues\": [], \"summary\": \"...\"}'\ntimeout 300 gemini -p \"$prompt\" \\\n  --approval-mode plan \\\n  --output-format json \\\n  >\"$out/raw-response.json\"\n\npython3 - \"$out/raw-response.json\" \"$out/review.json\" <<'PY'\nimport json\nimport sys\n\nraw_path, review_path = sys.argv[1], sys.argv[2]\nwith open(raw_path, encoding=\"utf-8\") as handle:\n  envelope = json.load(handle)\ntry:\n  review = json.loads(envelope[\"response\"])\nexcept (KeyError, json.JSONDecodeError):\n  review = {\n    \"verdict\": \"changes_requested\",\n    \"issues\": [],\n    \"summary\": \"reviewer did not return valid JSON\",\n  }\nwith open(review_path, \"w\", encoding=\"utf-8\") as handle:\n  json.dump(review, handle, ensure_ascii=False, indent=2)\nPY\n\nverdict=$(python3 -c \"import json;print(json.load(open('$out/review.json'))['verdict'])\")\nif [[ \"$verdict\" == \"approve\" ]]; then\n  echo \"approved: $out/change.patch\"\nelse\n  echo \"changes requested, see $out/review.json\" >&2\n  exit 1\nfi\n"
+          "code": "#!/usr/bin/env bash\n# workflow.sh -- plan with Claude Code, execute with Codex, review with Gemini CLI.\n# Usage: ./workflow.sh \"<task description>\"\n# Requires: claude, codex and gemini already installed and signed in.\nset -euo pipefail\n\ntask=\"$1\"\nout=\".handoff\"\nmkdir -p \"$out\"\n\n# 1) plan: Claude Code only reads the repo and writes plain-text steps.\ntimeout 300 claude -p \\\n  \"$task. List the files and steps to change; do not edit anything.\" \\\n  --output-format text \\\n  --permission-mode plan \\\n  >\"$out/plan.md\"\n\n# 2) execute: Codex edits the working tree, then we diff it ourselves.\ntimeout 900 codex exec \\\n  --sandbox workspace-write \\\n  --skip-git-repo-check \\\n  --output-last-message \"$out/codex-final.txt\" \\\n  \"Follow $out/plan.md and make the smallest change that satisfies it.\"\ngit diff >\"$out/change.patch\"\n\n# 3) review: Gemini CLI grades the patch. --output-format json only wraps a\n#    \"response\" string, so the review.json shape below is this site's own\n#    convention, parsed and rewritten here rather than validated by the CLI.\nprompt=\"Read $out/change.patch against $out/plan.md. Reply with only a JSON \"\nprompt+='object: {\"verdict\": \"approve\" or \"changes_requested\", \"issues\": [], \"summary\": \"...\"}'\ntimeout 300 gemini -p \"$prompt\" \\\n  --approval-mode=plan \\\n  --output-format json \\\n  >\"$out/raw-response.json\"\n\npython3 - \"$out/raw-response.json\" \"$out/review.json\" <<'PY'\nimport json\nimport sys\n\nraw_path, review_path = sys.argv[1], sys.argv[2]\nwith open(raw_path, encoding=\"utf-8\") as handle:\n  envelope = json.load(handle)\ntry:\n  review = json.loads(envelope[\"response\"])\nexcept (KeyError, json.JSONDecodeError):\n  review = {\n    \"verdict\": \"changes_requested\",\n    \"issues\": [],\n    \"summary\": \"reviewer did not return valid JSON\",\n  }\nwith open(review_path, \"w\", encoding=\"utf-8\") as handle:\n  json.dump(review, handle, ensure_ascii=False, indent=2)\nPY\n\nverdict=$(python3 -c \"import json;print(json.load(open('$out/review.json'))['verdict'])\")\nif [[ \"$verdict\" == \"approve\" ]]; then\n  echo \"approved: $out/change.patch\"\nelse\n  echo \"changes requested, see $out/review.json\" >&2\n  exit 1\nfi\n"
         },
         {
           "type": "paragraph",
@@ -245,6 +245,16 @@
         {
           "title": "Gemini CLI cheatsheet",
           "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Choose a permission mode",
+          "url": "https://code.claude.com/docs/en/permission-modes",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Plan Mode",
+          "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/plan-mode.md",
           "checked_on": "2026-09-18"
         }
       ]

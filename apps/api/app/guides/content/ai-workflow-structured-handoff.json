@@ -28,7 +28,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "多模型工作流最常卡住的地方，不是模型答得好不好，而是前一個模型的輸出換到下一個模型手上就對不上格式。這篇要處理的問題是：怎麼把『模型之間交接的資料』寫成一份雙方都遵守的契約，讓下游程式不用猜格式、也不必每次都手動修正。結論是把這份契約寫成 JSON Schema，讓上游模型的輸出先過 jsonschema 驗證，驗證失敗就帶著錯誤訊息重試，只有通過驗證的欄位才准許往下游送。"
+          "text": "多模型工作流很容易卡住的地方，不是模型答得好不好，而是前一個模型的輸出換到下一個模型手上就對不上格式。這篇要處理的問題是：怎麼把『模型之間交接的資料』寫成一份雙方都遵守的契約，讓下游程式不用猜格式、也不必每次都手動修正。結論是把這份契約寫成 JSON Schema，讓上游模型的輸出先過 jsonschema 驗證，驗證失敗就帶著錯誤訊息重試，只有通過驗證的欄位才准許往下游送。"
         },
         {
           "type": "paragraph",
@@ -63,15 +63,15 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 的文件把這個功能叫做 Structured Outputs。在 Chat Completions API 裡，設定放在 response_format 欄位下，型別是 json_schema，裡面再包一個 schema 欄位與一個 strict 旗標；同一個功能搬到比較新的 Responses API，位置換成 text.format，Python SDK 也提供 text_format 這個參數，可以直接傳 Pydantic 類別進去，不用自己組 JSON Schema。OpenAI 的文件寫，這項功能從 GPT-4o 開始支援，新專案建議直接用 gpt-6-astra。"
+          "text": "OpenAI 的文件把這個功能叫做 Structured Outputs。在 Chat Completions API 裡，設定放在 response_format 欄位下，型別是 json_schema，裡面再包一個 schema 欄位與一個 strict 旗標；同一個功能改用 Responses API 呼叫時，位置換成 text.format，Python SDK 也提供 text_format 這個參數，可以直接傳 Pydantic 類別進去，不用自己組 JSON Schema。OpenAI 的文件寫，這項功能從 GPT-4o 開始支援，新專案建議直接用 gpt-6-astra。"
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的位置不一樣，設定放在 output_config.format 底下，一樣有 type 是 json_schema 與一個 schema 欄位；Anthropic 的文件寫，這個參數原本要另外帶一個 beta 標頭才能用，現在已經搬進正式的 output_config.format，不再需要那個標頭，但 API 暫時還接受舊寫法過渡。Anthropic 另外有一個容易搞混的 strict 旗標，放在工具定義裡面，管的是工具呼叫的參數符不符合 schema，跟這裡講的『整段回覆是不是合法 JSON』是兩件事。支援的模型上，Anthropic 文件列出的名單包含 claude-sonnet-5、claude-opus-5 與 claude-haiku-4-5-20251001 這幾個目前看得到的版本。"
+          "text": "Anthropic 的位置不一樣，設定放在 output_config.format 底下，一樣有 type 是 json_schema 與一個 schema 欄位；Anthropic 的文件寫，舊的 output_format 參數已經搬到 output_config.format，beta 標頭不再是必要的，舊標頭與舊欄位在過渡期還會被接受；同一段也註明 Python SDK 1.0 之後在 client.beta.messages.create() 上不接受 output_format={...}，會丟 TypeError。Anthropic 另外有一個容易搞混的 strict 旗標，放在工具定義裡面，管的是工具呼叫的參數符不符合 schema，跟這裡講的『整段回覆是不是合法 JSON』是兩件事。支援的模型上，Anthropic 的相容性表列的是系列名而不是 API id：Fable 5 與 5.1、Mythos 5、5.1 與 Preview、Opus 4.5、4.6、4.7、4.8 與 5、Sonnet 4.5、4.6 與 5、Haiku 4.5；頁面範例實際帶進 output_config 的 id 是 claude-opus-5。"
         },
         {
           "type": "paragraph",
-          "text": "Google 的欄位又是另一種放法。目前的 Gemini API 文件是以 Interactions API 為準，呼叫 client.interactions.create 時，把 response_format 設成一個物件，type 固定是 text，mime_type 設成 application/json，schema 欄位放實際的 JSON Schema；REST 端點目前仍然掛在 v1beta 這個路徑下。Google 的文件也提醒，結構化輸出如果要跟 Google 搜尋、程式碼執行這類內建工具一起用，目前還是 Preview，只開放給 Gemini 3 系列模型，本篇不會用到這個組合。"
+          "text": "Google 的欄位又是另一種放法。這一頁目前示範的呼叫方式只有 Interactions API 一種：呼叫 client.interactions.create 時，把 response_format 設成一個物件，type 固定是 text，mime_type 設成 application/json，schema 欄位放實際的 JSON Schema；REST 範例打的端點是 v1beta 路徑底下的 /interactions。Google 的文件也提醒，結構化輸出如果要跟 Google 搜尋、程式碼執行這類內建工具一起用，目前還是 Preview，只開放給 Gemini 3 系列模型，本篇不會用到這個組合。"
         },
         {
           "type": "paragraph",
@@ -89,24 +89,24 @@
           "rows": [
             [
               "OpenAI",
-              "Chat Completions 的 response_format；較新的 Responses API 在 text.format",
+              "Chat Completions 的 response_format；Responses API 在 text.format",
               "type 為 json_schema，schema 與 strict 包在裡面",
-              "正式功能，文件寫從 GPT-4o 起支援，新專案建議用 gpt-6-astra",
-              "gpt-6-astra 等 GPT-4o 以後的模型"
+              "頁面沒有標 beta 或預覽；文件寫從 GPT-4o 起的較新模型支援，新專案建議用 gpt-6-astra",
+              "gpt-6-astra；文件只寫『較新的大型語言模型，從 GPT-4o 起』，沒有逐一列出型號"
             ],
             [
               "Anthropic",
               "output_config.format",
               "type 為 json_schema，schema 包在裡面；另有獨立的 strict 旗標管工具呼叫",
-              "已從 beta 轉為正式功能，不再需要額外的 beta 標頭",
-              "claude-sonnet-5、claude-opus-5、claude-haiku-4-5-20251001"
+              "文件寫 output_format 已移到 output_config.format、beta 標頭不再必要；舊標頭與舊欄位過渡期仍接受",
+              "文件列的是系列名：Fable 5、5.1；Mythos 5、5.1、Preview；Opus 4.5、4.6、4.7、4.8、5；Sonnet 4.5、4.6、5；Haiku 4.5"
             ],
             [
               "Google",
               "Interactions API 的 response_format",
               "type 固定 text，mime_type 設 application/json，schema 包在裡面",
               "REST 端點仍在 v1beta；搭配內建工具時是 Preview，只給 Gemini 3 系列",
-              "gemini-3.8-flash 等 Gemini 系列"
+              "頁面範例用 gemini-3.8-flash"
             ]
           ],
           "caption": "三家結構化輸出參數比較（2026 年 9 月查證）"
@@ -128,7 +128,7 @@
         },
         {
           "type": "paragraph",
-          "text": "上面的 call_model 只負責把提示詞跟 schema 送出去，回傳的是模型輸出的原始文字，這段文字有沒有真的符合 schema，程式目前還沒有檢查。因為 schema 已經把 additionalProperties 設成 false、required 又把四個欄位都列進去，符合 strict 模式的要求，理論上模型應該只會輸出這四個欄位；但『理論上』不是保證，網路逾時、模型中斷、或者剛好卡在某些例外狀況，都可能讓回傳的文字不是合法 JSON，這就是驗證要接手的地方。"
+          "text": "上面的 call_model 只負責把提示詞跟 schema 送出去，回傳的是模型輸出的原始文字，這段文字有沒有真的符合 schema，程式目前還沒有檢查。因為 schema 已經把 additionalProperties 設成 false、required 又把四個欄位都列進去，符合 strict 模式的要求，理論上模型應該只會輸出這四個欄位；但『理論上』不是保證：OpenAI 的文件自己列了兩種例外，一是模型基於安全理由拒答，回覆會多出一個 refusal 欄位、不一定照 schema，二是碰到 max tokens 上限、回覆被截斷而不完整，這就是驗證要接手的地方。"
         },
         {
           "type": "heading",
@@ -137,7 +137,7 @@
         },
         {
           "type": "paragraph",
-          "text": "jsonschema 套件的最上層函式是 validate()，一次呼叫做兩件事：先確認 schema 本身合法，再拿 instance 去比對，其中一步不通過就丟出例外，schema 本身有問題丟的是 jsonschema.exceptions.SchemaError，instance 不符合 schema 丟的是 jsonschema.exceptions.ValidationError。同一份 schema 如果要重複驗證很多筆資料，官方文件建議改用 Draft202012Validator 這類版本化的驗證器物件，先建立一次再重複呼叫，不用每次都重新檢查 schema 本身；它的 iter_errors() 方法會把所有不符合的地方一次列完，不是抓到第一個錯誤就停，每個錯誤物件都有一個 message 屬性，是給人看的說明文字，很適合直接夾回提示詞裡讓模型自己修正。"
+          "text": "jsonschema 套件的最上層函式是 validate()，一次呼叫做兩件事：先確認 schema 本身合法，再拿 instance 去比對，其中一步不通過就丟出例外，schema 本身有問題丟的是 jsonschema.exceptions.SchemaError，instance 不符合 schema 丟的是 jsonschema.exceptions.ValidationError。官方文件寫，如果你已經確定 schema 本身沒問題、又要拿同一份 schema 驗很多筆資料，多半會偏好直接用 Draft202012Validator 這類版本化的驗證器物件，先建立一次再重複呼叫，不用每次都重新檢查 schema 本身；它的 iter_errors() 方法會把所有不符合的地方一次列完，不是抓到第一個錯誤就停，每個錯誤物件都有一個 message 屬性，是給人看的說明文字，很適合直接夾回提示詞裡讓模型自己修正。要注意的是，同一頁也寫，JSON Schema 的 format 關鍵字預設不做驗證，要另外把 format_checker 掛到驗證器上才會生效，所以下面範例的 new_date 就算標了 format 是 date，預設也不會真的去驗那串日期。"
         },
         {
           "type": "list",
@@ -153,7 +153,7 @@
           "type": "code",
           "language": "python",
           "label": "validate_and_handoff.py（需要 jsonschema）",
-          "code": "import json\n\nfrom jsonschema import Draft202012Validator\n\nfrom schema_and_upstream import CHANGE_SCHEMA, call_model  # 延續上一段程式\n\nMAX_ATTEMPTS = 3\nUPSTREAM_MODEL = \"gpt-6-astra\"\n\n\ndef parse_and_validate(prompt: str) -> dict:\n  \"\"\"驗證失敗就把錯誤訊息夾回提示詞，最多重試 MAX_ATTEMPTS 次。\"\"\"\n  validator = Draft202012Validator(CHANGE_SCHEMA)\n  attempt_prompt = prompt\n  for attempt in range(1, MAX_ATTEMPTS + 1):\n    raw = call_model(attempt_prompt, CHANGE_SCHEMA, UPSTREAM_MODEL)\n    try:\n      data = json.loads(raw)\n    except json.JSONDecodeError as error:\n      attempt_prompt = f\"{prompt}\\n上一次輸出不是合法 JSON：{error}，請重新輸出。\"\n      continue\n    errors = sorted(validator.iter_errors(data), key=str)\n    if not errors:\n      # 只把 schema 定義過的欄位交給下游，其餘一律丟棄\n      return {key: data[key] for key in CHANGE_SCHEMA[\"properties\"]}\n    messages = \"；\".join(error.message for error in errors)\n    attempt_prompt = f\"{prompt}\\n上一次輸出不符合欄位規則：{messages}，請修正後重新輸出。\"\n  raise ValueError(f\"重試 {MAX_ATTEMPTS} 次後仍未通過驗證，最後一次輸出：{raw}\")\n\n\ndef forward_to_downstream(validated: dict) -> str:\n  \"\"\"下游模型只讀 validated 這個字典，看不到任何未驗證過的原始文字。\"\"\"\n  reply_schema = {\n    \"type\": \"object\",\n    \"properties\": {\"reply\": {\"type\": \"string\"}},\n    \"required\": [\"reply\"],\n    \"additionalProperties\": False,\n  }\n  summary = (\n    f\"訂位 {validated['booking_id']} 要求 {validated['change_type']}，\"\n    f\"新日期 {validated['new_date']}，原因：{validated['reason']}\"\n  )\n  prompt = f\"用一句客氣的繁體中文回覆旅客，內容只能根據：{summary}\"\n  raw = call_model(prompt, reply_schema, UPSTREAM_MODEL)\n  return json.loads(raw)[\"reply\"]\n"
+          "code": "import json\n\nfrom jsonschema import Draft202012Validator\n\nfrom schema_and_upstream import CHANGE_SCHEMA, call_model  # 延續上一段程式\n\nMAX_ATTEMPTS = 3\nUPSTREAM_MODEL = \"gpt-6-astra\"\n# 這個範例上下游都接 OpenAI；換成別家只要改 call_model 裡的端點與標頭\nDOWNSTREAM_MODEL = \"gpt-6-astra\"\n\n\ndef parse_and_validate(prompt: str) -> dict:\n  \"\"\"驗證失敗就把錯誤訊息夾回提示詞，最多重試 MAX_ATTEMPTS 次。\"\"\"\n  validator = Draft202012Validator(CHANGE_SCHEMA)\n  attempt_prompt = prompt\n  for attempt in range(1, MAX_ATTEMPTS + 1):\n    raw = call_model(attempt_prompt, CHANGE_SCHEMA, UPSTREAM_MODEL)\n    try:\n      data = json.loads(raw)\n    except json.JSONDecodeError as error:\n      attempt_prompt = f\"{prompt}\\n上一次輸出不是合法 JSON：{error}，請重新輸出。\"\n      continue\n    errors = sorted(validator.iter_errors(data), key=str)\n    if not errors:\n      # 只把 schema 定義過的欄位交給下游，其餘一律丟棄\n      return {key: data[key] for key in CHANGE_SCHEMA[\"properties\"]}\n    messages = \"；\".join(error.message for error in errors)\n    attempt_prompt = f\"{prompt}\\n上一次輸出不符合欄位規則：{messages}，請修正後重新輸出。\"\n  raise ValueError(f\"重試 {MAX_ATTEMPTS} 次後仍未通過驗證，最後一次輸出：{raw}\")\n\n\ndef forward_to_downstream(validated: dict) -> str:\n  \"\"\"下游模型只讀 validated 這個字典，看不到任何未驗證過的原始文字。\"\"\"\n  reply_schema = {\n    \"type\": \"object\",\n    \"properties\": {\"reply\": {\"type\": \"string\"}},\n    \"required\": [\"reply\"],\n    \"additionalProperties\": False,\n  }\n  summary = (\n    f\"訂位 {validated['booking_id']} 要求 {validated['change_type']}，\"\n    f\"新日期 {validated['new_date']}，原因：{validated['reason']}\"\n  )\n  prompt = f\"用一句客氣的繁體中文回覆旅客，內容只能根據：{summary}\"\n  raw = call_model(prompt, reply_schema, DOWNSTREAM_MODEL)\n  return json.loads(raw)[\"reply\"]\n"
         },
         {
           "type": "heading",
@@ -166,7 +166,7 @@
         },
         {
           "type": "paragraph",
-          "text": "如果只有一個模型、不需要交接給別的模型，本站《Claude Code｜把 claude -p 接進有驗證的 JSON 流程》示範的是同一個概念的單模型版本，把 --json-schema 接到自己寫的驗證與重試邏輯。多模型的差別只在於，上游輸出經過驗證以後，還要決定要不要先摘要或者換句話說，才送進下一個模型的提示詞，畢竟下游模型看到的還是文字，不是真的 Python 物件。"
+          "text": "如果只有一個模型、不需要交接給別的模型，本站《Claude Code｜把 claude -p 接進有驗證的 JSON 流程》示範的是同一個概念的單模型版本，把 claude -p 輸出的 JSON 接進自己寫的驗證邏輯，再決定要不要往下一步送。多模型的差別只在於，上游輸出經過驗證以後，還要決定要不要先摘要或者換句話說，才送進下一個模型的提示詞，畢竟下游模型看到的還是文字，不是真的 Python 物件。"
         },
         {
           "type": "image",
@@ -191,7 +191,7 @@
           "items": [
             {
               "question": "為什麼不能只跟模型說『請回傳 JSON』就好？",
-              "answer": "因為模型即使回傳一個空物件或漏了幾個欄位，語法上仍然是合法 JSON，這種要求沒辦法保證有哪些欄位、型別對不對。把要求寫成 JSON Schema，再搭配 OpenAI 的 strict 模式或 jsonschema 的驗證，才能確保下游一定拿得到固定形狀的資料。"
+              "answer": "因為模型即使回傳一個空物件或漏了幾個欄位，語法上仍然是合法 JSON，這種要求沒辦法保證有哪些欄位、型別對不對。把要求寫成 JSON Schema，再搭配 OpenAI 的 strict 模式或 jsonschema 的驗證，才能在資料送進下游之前先確認它的形狀。"
             },
             {
               "question": "OpenAI、Anthropic、Google 的結構化輸出參數可以共用同一份 schema 嗎？",

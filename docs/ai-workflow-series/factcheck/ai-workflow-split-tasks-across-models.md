@@ -192,7 +192,7 @@ OK ai-workflow-split-tasks-across-models paragraphs 2806 code_blocks 0 sources 3
 
 **needs_owner**。
 
-事實錯誤改了 8 條 11 處，其中「拆開比較快」（4 處）與 `orchestrator-workers` 的歸屬
+事實錯誤改了 8 條、動到 10 個欄位，其中「拆開比較快」（4 個欄位）與 `orchestrator-workers` 的歸屬
 是會誤導讀者的兩處，其餘是譯名、限定詞與全稱否定。
 骨幹論述（四種切法、決策順序、四個判斷依據）查下來站得住，沒有換掉，
 也沒有動任何程式範例（本篇沒有），所以不需要第二輪。
