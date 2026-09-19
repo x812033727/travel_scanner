@@ -61,3 +61,14 @@ one `pull_request` run per workflow for the newest commit, the older one cancell
   request waiting on a check that will never report.
 - Workflows that only run on `workflow_dispatch`, `schedule` or `workflow_run` are not
   affected and were left alone.
+
+### 2026-09-19 evidence and result (claude-fable-5-1)
+
+- Before the change, on #556's push of `20918222` (04:50 UTC): each of the three started a
+  `push` run (Planner UX #1529, Food map and reservations #1322, Travel discovery acceptance
+  #1514, all created 04:50:19) and a `pull_request` run (#1530, #1323, #1515, created
+  04:50:22), six browser jobs for one commit. `CI` and `SEO audit`, already on the new
+  shape, ran once each.
+- The change is the same block as `ci.yml` with the workflow's own group prefix. The push
+  carrying it (`f905f1f0`) and the next one are the observation; see the notes below for the
+  run numbers.

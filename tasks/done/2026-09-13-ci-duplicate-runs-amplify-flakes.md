@@ -105,3 +105,9 @@ checks.
 - The push carrying this note is the second push in quick succession. Expected: #3556
   cancelled, one live `pull_request` run for the new head, the four required checks still
   reported on the pull request. The observed run numbers are recorded in #556's description.
+- Seen 04:54 UTC on the same pull request: #555 had just merged and #556 was in conflict
+  with `main`, and the push of `f905f1f0` started no run at all. A `pull_request` run needs
+  the merge commit, which a conflicted pull request does not have, and the branch `push`
+  run that used to cover that case no longer exists. That is the intended trade (a
+  conflicted pull request cannot merge anyway, and CI comes back with the push that resolves
+  it), but it is worth knowing when a push seems to have produced nothing.
