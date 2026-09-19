@@ -80,7 +80,9 @@ def test_no_new_warning_is_written_as_a_finished_sentence() -> None:
             if detail.search(line):
                 continue
             if emits.search(line) or emits.search(window):
-                found.add((str(path), number, line.strip()))
+                # The allowlist is written with forward slashes; on Windows str(path)
+                # would use backslashes and exempt nothing.
+                found.add((path.as_posix(), number, line.strip()))
 
     unexpected = [row for row in sorted(found) if row[0] not in {path for path, _ in allowed}]
     listed = "\n".join(f"  {path}:{number}: {text}" for path, number, text in unexpected)

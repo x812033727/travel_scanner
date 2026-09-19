@@ -1,0 +1,6 @@
+# guides-foreign-place-scan --skip-ids-file：規則命中但要保留（不退件）的介紹 id，一行一筆。
+# 來源：2026-09-19-foreign-guides-unreviewed.json 裡 verdict=keep 的列，加上 2026-09-13 起就要帶著的 eff4dc8f。
+# 判讀紀錄：2026-09-19-foreign-guides-review.md。每次重跑掃描都要帶著這份檔。
+6da32c2d-96a5-48ac-bde3-edee52eb28d6  # NAVITIME 的 MEGAドン・キホーテ渋谷本店頁（東京），規則因摘要的「タイ」判成泰國
+c4706b00-7c1d-4eac-9d5e-96229a20f0be  # Hoiana 的會安古鎮文章（會安古城），規則因「日本橋」判成日本；原網址已 404，另案處理
+eff4dc8f-6ea0-4392-abed-f7bf7d6e0e72  # Funliday 的西公園頁（福岡），2026-09-13 起就在 --skip-id 裡

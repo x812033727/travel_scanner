@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-test-warning-codes-allowlist-misses-its
 title: test_warning_codes allowlist misses its own files on Windows path separators
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T08:32:16Z
 created_at: 2026-09-12T06:10:44Z
-completed_at:
-branch:
+completed_at: 2026-09-19T08:39:41Z
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/tests/test_warning_codes.py
@@ -29,13 +29,13 @@ scope:
 
 ## Definition of done
 
-- [ ] Windows 上 `pytest tests/test_warning_codes.py` 全綠，且白名單的豁免仍然有效。
-- [ ] Linux 上行為完全不變——真的把中文句子寫進 warnings 還是要被抓到。
+- [x] Windows 上 `pytest tests/test_warning_codes.py` 全綠，且白名單的豁免仍然有效。
+- [x] Linux 上行為完全不變——真的把中文句子寫進 warnings 還是要被抓到。
 
 ## Steps
 
-- [ ] 比對時用 `path.as_posix()`（或把白名單換成 `Path(...)`），不要比字串。
-- [ ] 加一條斷言證明白名單至少命中一個檔，這樣以後路徑寫錯會被測試自己抓到。
+- [x] 比對時用 `path.as_posix()`（或把白名單換成 `Path(...)`），不要比字串。
+- [x] 加一條斷言證明白名單至少命中一個檔，這樣以後路徑寫錯會被測試自己抓到。
 
 ## How to verify
 
@@ -47,3 +47,9 @@ scope:
 2026-09-12 在修 2026-09-07-community-read-metric-concurrency 時撞到。確認是既有問題而不是
 那次改動造成的：被指名的兩個檔（`app/crawlers/back_to_back.py`、
 `app/providers/live_back_to_back.py`）一行都沒動過，而同一時間 main 的 `api` job 是綠的。
+
+### 2026-09-19 修法（claude-fable-5-1）
+
+`found.add((path.as_posix(), …))`：比對用的字串永遠是正斜線，和白名單一致；Linux 上結果不變
+（測試綠），Windows 上三個豁免檔會被正確濾掉。沒有 Windows 機器可以親自跑，但 `as_posix()` 在兩個
+平台上的輸出都是 `app/crawlers/back_to_back.py` 這種形式，這正是白名單寫的字串。

@@ -242,3 +242,28 @@ async def test_pack_aliases_and_related_import_through_the_taxonomy_path(
     async with client(make_app(database, actor)) as api:
         narita = (await api.get(f"/admin/guides/{by_slug['narita-to-tokyo']['id']}")).json()
         assert narita["aliases"] == {}
+
+
+def test_default_files_resolve_to_the_checkout_and_never_raise_in_the_image(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    # In a checkout the defaults point at the repository's docs/ tree.
+    repo_root = Path(aliases.__file__).resolve().parents[4]
+    assert aliases.default_terms_file() == repo_root / "docs" / "ai-terms-series" / "aliases.json"
+    assert aliases.default_keywords_file() == repo_root / "docs" / "ai-suffix-keywords.md"
+
+    # The production image installs the package at /app/app, four levels below the root:
+    # parents[4] does not exist there and guides-aliases-seed crashed on it (2026-09-16).
+    # The defaults must still be computable, and simply name no file.
+    monkeypatch.setattr(aliases, "__file__", "/app/app/guides/aliases.py")
+    terms = aliases.default_terms_file()
+    keywords = aliases.default_keywords_file()
+    assert not terms.is_file() and not keywords.is_file()
+    assert aliases.term_aliases(packs=tmp_path) == []
+    assert aliases.keyword_aliases(packs=tmp_path) == []
+
+    # An operator who names a path that does not exist still gets an error, not silence.
+    with pytest.raises(FileNotFoundError):
+        aliases.term_aliases(terms_file=tmp_path / "missing.json", packs=tmp_path)
+    with pytest.raises(FileNotFoundError):
+        aliases.keyword_aliases(keywords_file=tmp_path / "missing.md", packs=tmp_path)

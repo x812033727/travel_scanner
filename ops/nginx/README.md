@@ -19,7 +19,7 @@ It exists to close two gaps that the application cannot close by itself:
 | `10-rate-limit.conf` | `conf.d/mokaair-rate-limit.conf` | The `limit_req` / `limit_conn` zones (http context only) |
 | `proxy-headers.conf` | `snippets/mokaair-proxy-headers.conf` | Header hygiene, included by every proxying location |
 | `upstream-keepalive.conf` | `snippets/mokaair-upstream-keepalive.conf` | Connection pool to Next.js, included inside `upstream mokaair_web` |
-| `mokaair.conf.example` | `sites-available/mokaair.conf` | Server blocks. Seeded once; yours thereafter |
+| `mokaair.conf.example` | `sites-available/mokaair.conf`, on a fresh host only | Server blocks. On a host that already has a site file, whatever its name, a merge source and not a drop-in |
 | `ci-validate.conf` | — | A self-contained wrapper so CI can run `nginx -t` |
 | `install.sh` | — | Idempotent installer |
 
@@ -29,43 +29,199 @@ It exists to close two gaps that the application cannot close by itself:
 sudo bash ops/nginx/install.sh
 ```
 
-Then edit every `EDIT` marker in `/etc/nginx/sites-available/mokaair.conf` (server names and
-certificate paths), link it into `sites-enabled/`, and:
+The installer overwrites the three files this project owns, never reloads nginx, and looks at
+what is enabled before it goes near the site file. It says which of these two cases it found:
+
+- **Nothing enabled looks like this site.** It seeds `sites-available/mokaair.conf` from
+  `mokaair.conf.example`. Edit every `EDIT` marker (server names and certificate paths), link
+  the file into `sites-enabled/`, then test and reload.
+- **The site is already enabled from a file of its own.** Production is
+  `sites-enabled/mokaair.com -> sites-available/mokaair.com`. The installer seeds nothing and
+  prints that file. Merge `mokaair.conf.example` into it; do not copy the example over it. The
+  example's header lists what the host copy has that the example does not (the ACME webroot
+  certbot renews through, the extra domains and their certificates, inline TLS parameters,
+  `default_server`), and all of it has to survive the merge. A second site file next to the
+  enabled one is what made the 2026-09-12 rollout a no-op: its `EDIT` markers were edited,
+  `nginx -t` passed, the reload succeeded, and nginx had not read a byte of it.
+
+In both cases the site's main `server {}` block needs these two lines. The example carries
+them; a host file merged before they existed does not. Why both, and what goes wrong without
+them, is under [the rate-limit log](#the-limits-apply-to-pages-but-not-to-assets) below.
+
+```nginx
+error_log /var/log/nginx/error.log error;
+error_log /var/log/nginx/mokaair-limit.log warn;
+```
+
+Then:
 
 ```bash
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-The installer never reloads nginx itself. Re-run it after upgrading a release: it overwrites
-the three files this project owns and leaves your site file alone. A site file written before
-`upstream-keepalive.conf` existed has `keepalive 32;` in its upstream block; replace that line
-with the `include` from `mokaair.conf.example`, or the new snippet is installed and never read.
-The installer prints a reminder while no enabled config includes it.
+Re-run the installer after upgrading a release: it overwrites the three files this project owns
+and leaves your site file alone. A site file written before `upstream-keepalive.conf` existed
+has `keepalive 32;` in its upstream block; replace that line with the `include` from
+`mokaair.conf.example`, or the new snippet is installed and never read. The installer prints a
+reminder while no enabled config includes it.
 
 ## Verify
 
-### The forged address is ignored
+The order below is the deployment order. The edge goes live before the application release
+that reads the headers it sets, so the first check needs nothing but nginx, and the second
+needs the application -- and says so, instead of passing, while the application is not there
+yet. Every check in this section was rewritten after a rollout on which all of them passed and
+none of them had proved anything (task `2026-09-12-nginx-deploy-checks-false-pass`). A check
+that cannot fail is the one thing this section must not contain.
 
-This is the check that matters. Everything else here is a convenience; this one is the
-reason the directory exists.
+### 1. The forged address is discarded at the edge
 
-The application's counters are keyed `rate:{namespace}:{sha256(identifier)}`
-(`apps/api/app/infra.py`), so you can ask Redis directly whether a forged address managed to
-open a bucket of its own:
+This is the reason the directory exists: nginx must drop the caller's `X-Travel-Client-IP`,
+`X-Forwarded-For` and `X-Real-IP` and send its own. The proof is a second nginx process that
+reads the **installed** snippet and proxies to an echo server. It touches neither the live
+configuration nor the application, so it can run the moment `install.sh` has put the snippet
+on disk -- before the reload, and before any application release. As root on the host:
 
 ```bash
-curl -s -o /dev/null \
-  -H 'X-Travel-Client-IP: 198.51.100.1' \
-  -H 'X-Forwarded-For: 198.51.100.1' \
-  https://example.com/zh-TW/foods
+ss -ltn '( sport = :9080 or sport = :9081 )'    # both ports must be free
+mkdir -p /root/nginxtest && cd /root/nginxtest
 
-key="rate:public-read-ip-minute:$(python3 -c "import hashlib;print(hashlib.sha256(b'198.51.100.1').hexdigest())")"
-docker compose -f docker-compose.prod.yml exec redis redis-cli -a "$REDIS_PASSWORD" EXISTS "$key"
+cat > test.conf <<'NGINX'
+# An isolated instance: its own pid file (without one it would overwrite the live nginx's
+# /run/nginx.pid), its own log and temp paths, one location, the installed snippet.
+pid       /root/nginxtest/nginx.pid;
+error_log /root/nginxtest/error.log warn;
+events {}
+http {
+    access_log off;
+    client_body_temp_path /root/nginxtest/client_body;
+    proxy_temp_path       /root/nginxtest/proxy;
+    fastcgi_temp_path     /root/nginxtest/fastcgi;
+    uwsgi_temp_path       /root/nginxtest/uwsgi;
+    scgi_temp_path        /root/nginxtest/scgi;
+    server {
+        listen 127.0.0.1:9080;
+        location / {
+            include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+            proxy_pass http://127.0.0.1:9081;
+        }
+    }
+}
+NGINX
+
+# The echo server answers every GET with the request headers it received, one per line.
+cat > echo.py <<'PY'
+import http.server
+class Echo(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        body = "".join(f"{k}: {v}\n" for k, v in self.headers.items()).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+    def log_message(self, *_):
+        pass
+http.server.HTTPServer(("127.0.0.1", 9081), Echo).serve_forever()
+PY
+python3 echo.py & echo_pid=$!
+
+nginx -t -c /root/nginxtest/test.conf -p /root/nginxtest
+nginx -c /root/nginxtest/test.conf -p /root/nginxtest
+curl -s -H 'X-Travel-Client-IP: 198.51.100.1' -H 'X-Forwarded-For: 198.51.100.1' \
+     -H 'X-Real-IP: 198.51.100.1' http://127.0.0.1:9080/ | tee upstream-saw.txt
+
+nginx -c /root/nginxtest/test.conf -p /root/nginxtest -s quit; kill "$echo_pid"
 ```
 
-`0` passes. `1` means the forged header was believed the whole way through and per-source
-counting can be bypassed. (`PUBLIC_READ_RATE_LIMIT_MODE` must be `observe` or `enforce`;
-`observe` counts without refusing, which is enough for this check.)
+Expected output. The two address lines and the missing `X-Travel-Client-IP` are what the
+2026-09-12 run on `hostinger2` (nginx 1.28.3) recorded; the rest follows from the snippet and
+curl's defaults, and the header order and curl version are incidental:
+
+```
+X-Forwarded-For: 127.0.0.1
+X-Real-IP: 127.0.0.1
+X-Forwarded-Proto: http
+Host: 127.0.0.1
+User-Agent: curl/8.5.0
+Accept: */*
+```
+
+Three things make that a pass, and this decides all three at once:
+
+```bash
+if ! grep -q '198.51.100.1' upstream-saw.txt \
+   && ! grep -qi '^x-travel-client-ip:' upstream-saw.txt \
+   && [ "$(grep -ciE '^x-(forwarded-for|real-ip): 127.0.0.1$' upstream-saw.txt)" = 2 ]; then
+  echo PASS
+else
+  echo FAIL
+fi
+```
+
+The forged value appears nowhere: replaced, not appended, which is what
+`$proxy_add_x_forwarded_for` would have done. `X-Travel-Client-IP` is absent altogether, not
+present and empty; an empty `proxy_set_header` value removes the header. And both address
+headers carry the connection's own address, which is what the application's per-source counting
+will read. A `FAIL` means the snippet on disk is not the one in this directory:
+`cmp ops/nginx/proxy-headers.conf /etc/nginx/snippets/mokaair-proxy-headers.conf` says where.
+
+This proves the snippet. It does not prove that every proxying location in the live site
+includes it, which is a separate way to lose the property, so count both in the loaded
+configuration -- the two numbers must be equal:
+
+```bash
+sudo nginx -T 2>/dev/null | grep -cE '^\s*include\s+\S*mokaair-proxy-headers\.conf;'
+sudo nginx -T 2>/dev/null | grep -cE '^\s*proxy_pass\s'
+```
+
+### 2. The forged address opens no counter
+
+The application keys its counters `rate:{namespace}:{sha256(identifier)}`
+(`apps/api/app/infra.py`), and `PublicReadRateLimitMiddleware` writes
+`rate:public-read-ip-minute:…` for the address the BFF forwarded to it. So Redis can say
+whether a forged address managed to open a bucket of its own -- **but only once something is
+writing those keys.** The middleware and this nginx configuration shipped in the same pull
+request (#411) and the edge is meant to go live first, so at the natural moment to run this
+the answer is `0` whatever nginx does. On 2026-09-12 the edge went live while production still
+ran #406, `EXISTS` returned `0`, and the check "passed". It therefore has two preconditions, and
+each one fails out loud.
+
+**Is anything counting?** The setting reaches the container through `env_file`:
+
+```bash
+cd /srv/travel-scanner/current
+docker compose -f docker-compose.prod.yml exec -T api sh -c 'printenv PUBLIC_READ_RATE_LIMIT_MODE' \
+  || echo 'NOT YET: PUBLIC_READ_RATE_LIMIT_MODE is not in the api container environment. This check cannot be done until a release carrying PublicReadRateLimitMiddleware runs with it set; check 1 is the proof until then.'
+```
+
+`observe` or `enforce` means go on (`observe` counts without refusing, which is enough). `off`,
+or the `NOT YET` line, means stop here and write down that this check has not been done: the
+Redis command below would print `0` now and read as a pass. A value proves that the variable
+reached the container, not yet that the code reading it is what is running; the second
+precondition covers that.
+
+**Was this very request counted?** Send one request carrying the forged headers, then ask for
+two keys: the one for the address nginx actually saw, which must exist, and the forged one,
+which must not. The minute key expires after `PUBLIC_READ_IP_WINDOW_SECONDS` (60 s by default),
+so run the block as one:
+
+```bash
+stamp=$(date +%s)
+curl -s -o /dev/null -H 'X-Travel-Client-IP: 198.51.100.1' -H 'X-Forwarded-For: 198.51.100.1' \
+     -H 'X-Real-IP: 198.51.100.1' "https://example.com/zh-TW/foods?edge=$stamp"
+me=$(sudo grep -F "edge=$stamp" /var/log/nginx/access.log | tail -n 1 | awk '{print $1}')   # what nginx saw, hence what it forwarded
+key() { python3 -c 'import hashlib, sys; print("rate:public-read-ip-minute:" + hashlib.sha256(sys.argv[1].encode()).hexdigest())' "$1"; }
+rexists() { docker compose -f docker-compose.prod.yml exec -T redis sh -c 'REDISCLI_AUTH="$REDIS_PASSWORD" redis-cli EXISTS "$1"' _ "$1"; }
+echo "mine ($me): $(rexists "$(key "$me")")   forged: $(rexists "$(key 198.51.100.1)")"
+```
+
+`mine: 1   forged: 0` is the pass. `mine: 0` means nothing counted this request -- the running
+release predates the setting, the mode is `off`, the forwarded address was not believed
+(`TRUST_PROXY_CLIENT_IP`, or `INTERNAL_PROXY_TOKEN` set on one side only), or the page did not
+reach `/api/v1` -- and the `forged: 0` next to it proves nothing; stop and find out which.
+`forged: 1` means the forged header was believed the whole way through and per-source counting
+can be bypassed.
 
 ### The limits apply to pages but not to assets
 
@@ -74,12 +230,42 @@ for i in $(seq 1 200); do curl -s -o /dev/null -w '%{http_code}\n' https://examp
 for i in $(seq 1 200); do curl -s -o /dev/null -w '%{http_code}\n' https://example.com/_next/static/<a real filename>; done | sort | uniq -c
 ```
 
-The first should show 429s once the burst is spent; the second should be all 200. Then check
-who is actually being limited — if it is Googlebot, the rate is too low:
+The first should show 429s once the burst is spent (2026-09-12: 72 × 200 and 128 × 429); the
+second should be all 200 (200 × 200 that day). Then check who is actually being limited -- if
+it is Googlebot, the rate is too low.
+
+**That needs a log that accepts `warn`.** `10-rate-limit.conf` sets `limit_req_log_level warn`,
+which names a level and not a destination, and the stock Debian/Ubuntu `nginx.conf` says
+`error_log /var/log/nginx/error.log;` -- no level, which means `error`, one step above `warn`.
+So every limiting event is dropped before it is written. On 2026-09-12 that was 200 requests
+and 128 refusals, all of them in `access.log` and `error.log` never touched, and
+`grep 'limiting requests' /var/log/nginx/error.log` returned nothing and looked like "nobody
+is being limited". The site's main `server {}` block must carry both of these lines. They are
+in `mokaair.conf.example`; a host file merged before they existed has to be given them:
+
+```nginx
+error_log /var/log/nginx/error.log error;
+error_log /var/log/nginx/mokaair-limit.log warn;
+```
+
+Both, because a server-level `error_log` replaces the inherited one rather than adding to it:
+with the second line alone this server's real errors would stop reaching `error.log`. The
+stock `/etc/logrotate.d/nginx` rotates `/var/log/nginx/*.log`, so the new file needs no
+rotation of its own. Confirm the lines are loaded, then count. The number of new
+`limiting requests` lines must equal the number of 429s you just received:
 
 ```bash
-sudo grep 'limiting requests' /var/log/nginx/error.log | tail -20
+sudo nginx -T 2>/dev/null | grep -c 'mokaair-limit.log'      # at least 1
+before=$(sudo grep -c 'limiting requests' /var/log/nginx/mokaair-limit.log 2>/dev/null || true)
+codes=$(seq 1 80 | xargs -P 8 -I{} curl -s -o /dev/null -w '%{http_code}\n' https://example.com/zh-TW)
+after=$(sudo grep -c 'limiting requests' /var/log/nginx/mokaair-limit.log || true)
+printf '%s\n' "$codes" | sort | uniq -c
+echo "429s: $(printf '%s\n' "$codes" | grep -c '^429$')   logged: $(( ${after:-0} - ${before:-0} ))"   # equal, unless someone else was limited meanwhile
+sudo tail -n 20 /var/log/nginx/mokaair-limit.log
 ```
+
+A line there names the zone, the client address, the request and the host, but not the user
+agent; to see who a client address is, look it up in `access.log`.
 
 ### The canonical-origin redirect still works
 
@@ -138,11 +324,15 @@ be uncommented and filled in before any of these limits mean anything.
 
 ## Trust boundary
 
-- **These files have only been syntax-checked, never run on a real host by anyone who
-  wrote them.** CI runs `nginx -t` over the snippets through `ci-validate.conf`; the site
-  template is not covered by it, because it names certificates that exist only on the host,
-  and was checked structurally instead. Rehearse on staging before applying to production. This is the
-  same caveat this repository records for `ops/deployer/install.sh`.
+- **Applied to production once, by hand, on 2026-09-12** (`hostinger2`, nginx 1.28.3): the
+  three owned files through `install.sh`, the server blocks merged into the host's
+  `sites-available/mokaair.com`. The numbers quoted in the checks above are from that run; the
+  record, including where the previous `/etc/nginx` was backed up, is in task
+  `2026-09-12-nginx-deploy-checks-false-pass`. CI runs `nginx -t` over the snippets through
+  `ci-validate.conf`; the site template is not covered by it, because it names certificates
+  that exist only on the host, and was checked structurally instead. Rehearse a merge on
+  staging, and run check 1 against the installed snippet, before reloading production. This is
+  the same caveat this repository records for `ops/deployer/install.sh`.
 - The rate limits bound volume per address. They do not identify anyone, and they do not
   stop a distributed crawl: many addresses each staying under the limit is not something
   this layer can see.
@@ -151,7 +341,7 @@ be uncommented and filled in before any of these limits mean anything.
   through nginx at all; that is what `INTERNAL_PROXY_TOKEN` is for.
 - Thresholds are deliberately loose. Corporate NAT and carrier-grade NAT put many real
   people behind one address, and a wrong refusal here breaks a whole page rather than one
-  API call. Tighten only against what the error log actually shows.
+  API call. Tighten only against what `mokaair-limit.log` actually shows.
 - The API on `127.0.0.1:8090` is not proxied here and must not be. Reaching it directly
   skips the BFF's same-origin check and header allowlist.
 

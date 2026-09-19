@@ -1,14 +1,14 @@
 ---
 id: 2026-09-19-api-keys-in-logged-urls
 title: Google API keys ride in request URLs and the collector logs them
-status: open
+status: review
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T08:32:15Z
 created_at: 2026-09-19T08:01:09Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/hotspots/guides.py
@@ -41,17 +41,17 @@ public there. It still reaches any process log that runs httpx at INFO.
 
 ## Definition of done
 
-- [ ] No Google API key is sent in a URL query string; each call uses the `X-Goog-Api-Key` header.
-- [ ] The collector no longer logs request URLs at INFO (httpx/httpcore at WARNING), or logs them redacted.
-- [ ] A regression test fails if any of these clients puts `key=` in a request URL.
+- [x] No Google API key is sent in a URL query string; each call uses the `X-Goog-Api-Key` header.
+- [x] The collector no longer logs request URLs at INFO (httpx/httpcore at WARNING), or logs them redacted.
+- [x] A regression test fails if any of these clients puts `key=` in a request URL.
 - [ ] The owner has rotated the YouTube key, since the old one sits in the retained container logs.
       The Maps and Travel Impact keys too, if their process logs show them.
 
 ## Steps
 
-- [ ] Move `key` from `params` to a header in the six calls; keep the request counters and budgets as they are.
-- [ ] Quiet httpx in `scheduler.py` next to its `basicConfig`; check the api and worker processes for the same.
-- [ ] Add `apps/api/tests/test_api_keys_not_in_urls.py` (mock transport, assert header present and URL has no `key`).
+- [x] Move `key` from `params` to a header in the six calls; keep the request counters and budgets as they are.
+- [x] Quiet httpx in `scheduler.py` next to its `basicConfig`; check the api and worker processes for the same.
+- [x] Add `apps/api/tests/test_api_keys_not_in_urls.py` (mock transport, assert header present and URL has no `key`).
 - [ ] After the deploy, `docker compose logs --since 10m hotspot-collector | grep -c 'key=AIza'` is 0.
 - [ ] Ask the owner to rotate the keys in Google Cloud and update them in /admin/settings.
 
@@ -68,3 +68,20 @@ docker compose -f docker-compose.prod.yml logs --since 30m hotspot-collector | g
   copied here or anywhere else; read it from /admin/settings when rotating.
 - `2026-09-14-redis-py-8-migration` (open, unowned) also lists `hotspots/guides.py`; the changes do not
   touch the same lines.
+
+### 2026-09-19 done in repo (claude-fable-5-1)
+
+- All six calls send the key as `X-Goog-Api-Key` (`GOOGLE_API_KEY_HEADER` in `hotspots/guides.py`,
+  imported by `places/router.py` and `providers/google_travel_impact.py`); `params` keep only the
+  query fields. Request counters and budgets are untouched.
+- `scheduler.configure_logging()` keeps `basicConfig(INFO)` and sets `httpx` and `httpcore` to
+  WARNING; `main()` calls it. The api (uvicorn) and worker (rq) processes never call
+  `basicConfig`, so httpx's INFO lines had no handler there; nothing to change.
+- `tests/test_api_keys_not_in_urls.py`: YouTube search + import and Travel Impact through a
+  recording MockTransport (header present, `key` absent from the URL), a source check that
+  none of the three modules builds a `"key":` params entry (covers the Places photo call,
+  which opens its own client inside the route), and the collector logging levels.
+- Still the owner's: deploy, then `docker compose logs --since 30m hotspot-collector | grep -c 'key=AIza'`
+  must be 0; rotate the YouTube key (and Maps / Travel Impact if their logs show them) in
+  Google Cloud and update /admin/settings. The old key stays in the retained container logs
+  until they rotate out.

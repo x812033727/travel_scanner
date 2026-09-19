@@ -1,14 +1,14 @@
 ---
 id: 2026-09-16-guides-aliases-seed-crashes-in-the
 title: guides-aliases-seed crashes in the production image
-status: open
+status: review
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T08:32:15Z
 created_at: 2026-09-16T05:39:18Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/guides/aliases.py
@@ -44,15 +44,15 @@ series keywords only」，`term_aliases` 也備好了 `if not path.is_file(): re
 
 ## Definition of done
 
-- [ ] 在正式映像裡 `python -m app.cli guides-aliases-seed --dry-run` 不帶檔案參數也能跑完，
+- [x] 在正式映像裡 `python -m app.cli guides-aliases-seed --dry-run` 不帶檔案參數也能跑完，
       沒有 `docs/` 時照 docstring 說的只種系列關鍵字，不丟例外。
-- [ ] 操作者自己指定、但指錯的路徑仍然是錯誤（`FileNotFoundError`），這個行為不能被一起改掉。
+- [x] 操作者自己指定、但指錯的路徑仍然是錯誤（`FileNotFoundError`），這個行為不能被一起改掉。
 
 ## Steps
 
-- [ ] `default_terms_file` 與 `default_keywords_file` 改成算不出 repo 根時回一個必定不存在的路徑
+- [x] `default_terms_file` 與 `default_keywords_file` 改成算不出 repo 根時回一個必定不存在的路徑
       （或讓呼叫端接住），而不是讓 `parents[4]` 自己丟 `IndexError`。
-- [ ] 加一個測試，在套件被放到淺層目錄的情況下（例如 monkeypatch `aliases.__file__` 或直接
+- [x] 加一個測試，在套件被放到淺層目錄的情況下（例如 monkeypatch `aliases.__file__` 或直接
       驗 `default_terms_file()` 不丟例外）證明兩個函式都不炸。
 
 ## How to verify
@@ -75,3 +75,14 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
 2026-09-16 部署 #531 時的繞法：把 repo 的兩個檔案 `docker cp` 進 api 容器再用參數指定，
 種子有跑成功（`inserted` 307、`reindexed` 142、`unknown_slugs` 158 篇是還沒發布的內容包）。
 繞法只是當次可用 —— 容器一重建就沒了，所以下一次部署如果照文件跑，還是會踩到同一個 traceback。
+
+### 2026-09-19 修法（claude-fable-5-1）
+
+- `aliases.repository_file(*parts)`：有 repo 根（parents 超過四層）就用 `parents[4]`，沒有就錨在
+  檔案系統根目錄，所以 `/app/app/guides/aliases.py` 算出來的是 `/docs/ai-terms-series/aliases.json`
+  ——不存在的檔，`term_aliases` 與 `keyword_aliases` 走既有的「預設檔不在就回空」路徑；操作者指定
+  的錯路徑仍是 `FileNotFoundError`（那段沒動）。`default_terms_file` 與 `default_keywords_file` 都改用它。
+- 測試 `test_default_files_resolve_to_the_checkout_and_never_raise_in_the_image`：checkout 版面指到
+  repo 的 docs、monkeypatch `__file__` 成 `/app/app/guides/aliases.py` 後兩個預設都算得出且不是檔案、
+  兩個 loader 回空、指錯路徑仍丟例外。
+- 部署後在正式站跑票上 How to verify 的兩條確認（第一條回 JSON、第二條報錯）即可 done。

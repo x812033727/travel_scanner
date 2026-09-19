@@ -17,6 +17,7 @@ from app.auth.service import CurrentUser
 from app.db import get_session
 from app.destinations import localized
 from app.destinations.catalog import DESTINATIONS, SEARCHABLE_DESTINATIONS
+from app.hotspots.guides import GOOGLE_API_KEY_HEADER
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.places.google import GoogleTravelService
@@ -178,11 +179,8 @@ async def place_photo(
         async with httpx.AsyncClient(timeout=settings.provider_timeout_seconds) as client:
             response = await client.get(
                 url,
-                params={
-                    "maxWidthPx": 960,
-                    "skipHttpRedirect": "true",
-                    "key": settings.google_maps_api_key,
-                },
+                headers={GOOGLE_API_KEY_HEADER: settings.google_maps_api_key},
+                params={"maxWidthPx": 960, "skipHttpRedirect": "true"},
             )
     except httpx.HTTPError as exc:
         raise AppError(503, "photo_provider_unavailable", "地點照片服務暫時無法使用") from exc

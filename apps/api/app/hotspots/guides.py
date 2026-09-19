@@ -168,6 +168,11 @@ def classify_content_locale(
     return requested, Decimal("0.500")
 
 
+# Google accepts the key in this header on every API used here; a key in the query string
+# is written to any log that records request URLs (httpx at INFO does), a header is not.
+GOOGLE_API_KEY_HEADER = "X-Goog-Api-Key"
+
+
 class YouTubeGuideProvider:
     def __init__(
         self,
@@ -189,8 +194,8 @@ class YouTubeGuideProvider:
             await record_youtube_request(self._redis, "search_list")
         response = await self._client.get(
             "https://www.googleapis.com/youtube/v3/search",
+            headers={GOOGLE_API_KEY_HEADER: self.api_key},
             params={
-                "key": self.api_key,
                 "part": "snippet",
                 "type": "video",
                 "order": "viewCount",
@@ -209,8 +214,8 @@ class YouTubeGuideProvider:
             await record_youtube_request(self._redis, "videos_list")
         details = await self._client.get(
             "https://www.googleapis.com/youtube/v3/videos",
+            headers={GOOGLE_API_KEY_HEADER: self.api_key},
             params={
-                "key": self.api_key,
                 "part": "snippet,statistics,contentDetails,status",
                 "id": ",".join(ids),
                 "hl": YOUTUBE_LANGUAGE[locale],
@@ -259,8 +264,8 @@ class YouTubeGuideProvider:
             await record_youtube_request(self._redis, "videos_list")
         response = await self._client.get(
             "https://www.googleapis.com/youtube/v3/videos",
+            headers={GOOGLE_API_KEY_HEADER: self.api_key},
             params={
-                "key": self.api_key,
                 "part": "snippet,statistics,status",
                 "id": video_id,
                 "hl": YOUTUBE_LANGUAGE[locale],

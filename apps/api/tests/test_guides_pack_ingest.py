@@ -17,17 +17,21 @@ import httpx
 import pytest
 from PIL import Image
 
+from app.guides import pack_ingest
 from app.guides.pack_ingest import (
     FINANCE_DISCLAIMER_MARKERS,
     HERO_MAX_BYTES,
     PHOTO_MAX_BYTES,
+    USER_AGENT,
     PackIngestError,
     UrllibTransport,
     catalogue_slugs,
     check_svg,
+    commons_client,
     commons_file_info,
     diagram_numbers,
     errors,
+    fetch_image,
     fit_bytes,
     ingest,
     license_allowed,
@@ -272,7 +276,12 @@ def test_license_allowlist(short_name: str, allowed: bool) -> None:
 
 
 def _commons_payload(
-    license_name: str, artist: str = '<a href="x">Someone</a>'
+    license_name: str,
+    artist: str = '<a href="x">Someone</a>',
+    *,
+    url: str = "https://upload.wikimedia.org/original.jpg",
+    thumburl: str = "https://upload.wikimedia.org/thumb.jpg",
+    descriptionurl: str = "https://commons.wikimedia.org/wiki/File:Desk.jpg",
 ) -> dict[str, object]:
     return {
         "query": {
@@ -280,13 +289,13 @@ def _commons_payload(
                 "1": {
                     "imageinfo": [
                         {
-                            "url": "https://upload.wikimedia.org/original.jpg",
-                            "thumburl": "https://upload.wikimedia.org/thumb.jpg",
+                            "url": url,
+                            "thumburl": thumburl,
                             "thumbwidth": 1600,
                             "thumbheight": 1067,
                             "width": 4000,
                             "height": 2667,
-                            "descriptionurl": "https://commons.wikimedia.org/wiki/File:Desk.jpg",
+                            "descriptionurl": descriptionurl,
                             "extmetadata": {
                                 "LicenseShortName": {"value": license_name},
                                 "Artist": {"value": artist},
@@ -561,6 +570,7 @@ def test_lint_all_counts_sitemap_rows_but_has_no_ceiling_to_warn_about(tmp_path:
 
 # --- the Commons transport ------------------------------------------------------------------
 
+
 def _redirecting_server(location: str) -> tuple[HTTPServer, str]:
     """A one-shot HTTP server that answers `/start` with a 302 to `location`."""
 
@@ -579,9 +589,19 @@ def _redirecting_server(location: str) -> tuple[HTTPServer, str]:
         def log_message(self, *_: object) -> None:
             return
 
-    server = HTTPServer(("127.0.0.1", 0), Handler)
+    return _serve(Handler)
+
+
+def _serve(handler: type[BaseHTTPRequestHandler]) -> tuple[HTTPServer, str]:
+    server = HTTPServer(("127.0.0.1", 0), handler)
     Thread(target=server.serve_forever, daemon=True).start()
     return server, f"http://127.0.0.1:{server.server_port}"
+
+
+def _on_the_wire(value: str) -> str:
+    """What `send_header` needs in order to put `value`'s UTF-8 bytes on the wire: it encodes
+    its argument as ISO-8859-1, one character per byte."""
+    return value.encode("utf-8").decode("latin-1")
 
 
 @pytest.mark.parametrize("scheme", ["file", "ftp", "data"])
@@ -596,9 +616,7 @@ def test_the_commons_transport_refuses_a_url_that_is_not_http(scheme: str) -> No
             client.get(f"{scheme}://example.invalid/whatever")
 
 
-@pytest.mark.parametrize(
-    "location", ["file:///etc/hostname", "ftp://example.invalid/x"]
-)
+@pytest.mark.parametrize("location", ["file:///etc/hostname", "ftp://example.invalid/x"])
 def test_a_redirect_cannot_leave_http(location: str) -> None:
     """The half that is easy to get wrong, and was.
 
@@ -625,3 +643,119 @@ def test_an_ordinary_redirect_is_still_followed() -> None:
             assert client.get(f"{base}/start").text == "ok"
     finally:
         server.shutdown()
+
+
+# 瑞鳳殿 -- the Sendai mausoleum whose best photograph batch 7 could not ingest.
+JAPANESE_NAME = "瑞鳳殿.jpg"
+JAPANESE_NAME_ENCODED = "%E7%91%9E%E9%B3%B3%E6%AE%BF.jpg"
+# The shape the API gave for such a file on 2026-09-19: the name percent-encoded in the path,
+# a tracking query string appended, and the rendition wider than the 1600 px asked for.
+UTM = "?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content="
+THUMB_PATH = (
+    f"/wikipedia/commons/thumb/7/72/{JAPANESE_NAME_ENCODED}/1920px-{JAPANESE_NAME_ENCODED}"
+    f"{UTM}thumbnail"
+)
+
+
+def _commons_like_server(jpeg: bytes) -> tuple[HTTPServer, str, list[str]]:
+    """A server that answers the way Commons does for a Japanese-named file, plus the one
+    thing that broke the ingest: a response header carrying the name as raw UTF-8 bytes.
+
+    Today's `thumb.wikimedia.org` names the file percent-encoded (RFC 5987) in
+    `Content-Disposition`, which is plain ASCII; which header carried the bytes on the day
+    batch 7 hit it is not on record. The quoted-name form of `Content-Disposition` is the
+    common way a server puts a file name on the wire unencoded, and any header with a byte
+    over 0x7F fails the same way, so that is the one this server sends. `seen` records
+    every request path.
+    """
+    seen: list[str] = []
+    picture_headers = {
+        "Content-Type": "image/jpeg",
+        "Content-Disposition": _on_the_wire(f'inline;filename="{JAPANESE_NAME}"'),
+    }
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self) -> None:  # noqa: N802 -- BaseHTTPRequestHandler's own spelling
+            seen.append(self.path)
+            base = f"http://{self.headers['Host']}"
+            if self.path.startswith("/w/api.php?"):
+                payload = _commons_payload(
+                    "CC BY-SA 4.0",
+                    url=f"{base}/wikipedia/commons/7/72/{JAPANESE_NAME_ENCODED}{UTM}original",
+                    thumburl=f"{base}{THUMB_PATH}",
+                    descriptionurl=f"https://commons.wikimedia.org/wiki/File:{JAPANESE_NAME_ENCODED}",
+                )
+                self._answer(json.dumps(payload).encode(), {"Content-Type": "application/json"})
+            elif self.path == THUMB_PATH:
+                self._answer(jpeg, picture_headers)
+            else:
+                self._answer(b"not here", {"Content-Type": "text/plain"}, status=404)
+
+        def _answer(self, body: bytes, headers: dict[str, str], *, status: int = 200) -> None:
+            self.send_response(status)
+            for name, value in headers.items():
+                self.send_header(name, value)
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def log_message(self, *_: object) -> None:
+            return
+
+    server, base = _serve(Handler)
+    return server, base, seen
+
+
+def test_a_japanese_file_name_survives_the_metadata_call_and_the_download(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Batch 7's 瑞鳳殿 photograph. The request side was never the problem -- httpx
+    percent-encodes the title in the API query and the name in the thumbnail path before
+    urllib sees them -- but `http.client` decodes response headers as ISO-8859-1, and handing
+    those strings to `httpx.Response` re-encoded them as ASCII: the first header byte over
+    0x7F was `UnicodeEncodeError`, and the ingest was over."""
+    server, base, seen = _commons_like_server(_jpeg_bytes((64, 48)))
+    monkeypatch.setattr(pack_ingest, "COMMONS_API", f"{base}/w/api.php")
+    try:
+        with commons_client() as client:
+            info = commons_file_info(client, f"File:{JAPANESE_NAME}")
+            picture = fetch_image(client, info.image_url)
+            answer = client.get(info.image_url, headers={"User-Agent": USER_AGENT})
+    finally:
+        server.shutdown()
+    assert info.title == f"File:{JAPANESE_NAME}"
+    assert info.image_url == f"{base}{THUMB_PATH}"
+    assert info.file_page == f"https://commons.wikimedia.org/wiki/File:{JAPANESE_NAME_ENCODED}"
+    assert picture.size == (64, 48)
+    # Both hops went out percent-encoded, and the header reads back as the UTF-8 it was.
+    assert f"titles=File%3A{JAPANESE_NAME_ENCODED}" in seen[0]
+    assert seen[1] == THUMB_PATH
+    assert answer.headers["content-disposition"] == f'inline;filename="{JAPANESE_NAME}"'
+
+
+def test_a_redirect_to_a_non_ascii_location_is_followed() -> None:
+    # The 3xx branch builds its Response the same way, so a `Location` carrying raw UTF-8
+    # used to fail identically; httpx now reads the bytes as UTF-8 and encodes the next hop.
+    server, base = _redirecting_server(_on_the_wire(f"/{JAPANESE_NAME}"))
+    try:
+        with httpx.Client(transport=UrllibTransport(), follow_redirects=True) as client:
+            answer = client.get(f"{base}/start")
+    finally:
+        server.shutdown()
+    assert answer.text == "ok"
+    assert answer.url.raw_path == f"/{JAPANESE_NAME_ENCODED}".encode()
+
+
+def test_ingest_knows_every_topic_the_write_path_accepts() -> None:
+    """``ingest`` used to read the parent topics only and refused 805 published packs."""
+    from app.guides.pack_ingest import _known_topics
+    from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS
+
+    life = _known_topics("life")
+    assert life == {slug for slug, _ in LIFE_SEED_TOPICS} | {
+        slug for slug, _parent, _labels in LIFE_SEED_SUBTOPICS
+    }
+    # The pair that exposed it: a sister pack carries ai-plans, a subtopic of ai.
+    assert {"ai", "software", "ai-plans", "claude-code", "ai-terms"} <= life
+    # Travel has no subtopics, so its vocabulary is exactly its parents.
+    assert _known_topics("howto") == {slug for slug, _ in SEED_TOPICS}

@@ -29,10 +29,26 @@ AliasSource = Literal["term", "keyword", "series", "editor"]
 MAX_ALIAS_LENGTH = 120
 
 
+def repository_file(*parts: str) -> Path:
+    """A file that ships with the repository rather than the package.
+
+    In a checkout this module sits at ``<root>/apps/api/app/guides/aliases.py``, four
+    levels below the root. The production image copies the package to ``/app/app``, which
+    leaves only four parents in total, so ``parents[4]`` raised ``IndexError`` the first
+    time ``guides-aliases-seed`` ran there without file arguments (2026-09-16). Without a
+    repository above the package the path is anchored at the filesystem root instead: it
+    names no file, and the callers already treat an absent default as "seed the series
+    keywords only", which is what a container without ``docs/`` should do.
+    """
+    parents = Path(__file__).resolve().parents
+    root = parents[4] if len(parents) > 4 else parents[-1]
+    return root.joinpath(*parts)
+
+
 def default_terms_file() -> Path:
     """The glossary's alias list, which ships with the repository rather than the package;
     a container without ``docs/`` seeds the series keywords only."""
-    return Path(__file__).resolve().parents[4] / "docs" / "ai-terms-series" / "aliases.json"
+    return repository_file("docs", "ai-terms-series", "aliases.json")
 
 
 @dataclass(frozen=True)
@@ -85,7 +101,7 @@ def term_aliases(terms_file: Path | None = None, packs: Path | None = None) -> l
 
 def default_keywords_file() -> Path:
     """The suffix-keyword table, which also ships with the repository rather than the package."""
-    return Path(__file__).resolve().parents[4] / "docs" / "ai-suffix-keywords.md"
+    return repository_file("docs", "ai-suffix-keywords.md")
 
 
 # One data row of the keyword table: keyword, variants, what the reader wants to do, the
