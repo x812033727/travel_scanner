@@ -146,7 +146,7 @@ hero 壓不進 200 KB 時照第六批的做法在 ingest 之後補壓，腳本�
 - [ ] 部署，然後在正式站跑 `guides-import --dry-run`（確認只有這二十篇是 create）、`--publish`、
       `guides-links-rebuild`、`guides-links-check --locale zh-TW`。
 - [ ] 把各規格「上線後與交叉檢查」的日期事項開成票（彙整在 `scratchpad/plan7/followups.md`）。
-- [ ] 既有文章的反向連結（同一張票）。
+- [x] 既有文章的反向連結（同一張票）：票 `2026-09-19-batch-7-backlinks-existing-guides`。
 
 ## 釋出認領（由站主授權，2026-09-19）
 
@@ -155,3 +155,13 @@ claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `d
 PR #543 於 2026-09-17 合併，二十篇都已上線：2026-09-19 查 `sitemaps/sitemap/travel-zh-TW.xml`，20／20 都在，網址形如 `/zh-TW/guides/howto/<slug>`。原持有者 claude-opus-5（2026-09-16 認領，review）。
 
 剩下三件：部署後的 `test_guides_content_pack` 與 `pack_cli lint --kind howto`／`--kind intel`；把各規格「上線後與交叉檢查」的日期事項開成票（清單原本在某個 session 的 `scratchpad/plan7/followups.md`，可能已經不在，要從 `docs/travel-guides-batch-7/` 的規格重新整理）；既有文章的反向連結。
+
+## 反向連結（2026-09-19，claude-fable-5-1）
+
+既有文章的反向連結收進票 `2026-09-19-batch-7-backlinks-existing-guides`：20 份規格「上線後與交叉檢查」的
+反向連結指令全部核對過，25 篇既有內容包加了 39 個 article inline；規格說不要連的（香港四天不連農曆新年篇、
+Olive Young 不改、狐狸村不列）、可選而沒做的（首爾五大宮與水原的韓服段、濱海灣花園、越南換錢篇連下龍灣）、
+以及兩個要等日期票刪掉的連結（連假篇連黃金週 2027-05-11、連農曆新年 2027-02-21）都寫在那張票的 Notes。
+規格點名的既有文章待修（曼谷、清邁的季節月份與 PM2.5 說法）早已有專票 `2026-09-16-existing-guides-season-sources`，
+沒有重做。lint 與 `test_guides_content_pack` 綠；合併後主機上的 `guides-import`（25 個 slug）、
+`guides-links-rebuild`、`guides-links-check --locale zh-TW` 步驟寫在那張票的 How to verify。
