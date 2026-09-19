@@ -2,7 +2,7 @@
  "slug": "crypto-news-occ-three-trust-charters-20260918",
  "event_date": "2026-09-18",
  "event_date_basis": "三份 PDF 的信函抬頭都印 September 18, 2026，OCC 索引頁的 Date of Letter 欄對這三列也都是 09/18/2026，兩邊互相對上，所以事件日取 2026-09-18。三份文件的文字層全文沒有印任何時刻，因此沒有可換算成台北時刻的依據。我另外讀到的是中繼資料而不是文件內容：三份 PDF 的 /CreationDate 分別是 D:20260918141915-04'00'、D:20260918142018-04'00'、D:20260918144905-04'00'，/ModDate 落在同日 14:54–14:55 -04'00'，三份的 HTTP Last-Modified 都是 Fri, 18 Sep 2026 19:55:30 GMT——換算台北時間是 2026-09-19 03:55。也就是說，以台北時間看，這三個檔案上架時已經是 9 月 19 日凌晨。但「檔案上架」與「決定作成」是兩件事，而且中繼資料不是 OCC 印出來的內容，所以事件日仍以 OCC 自己印的信函日期為準，slug 尾碼、news_date 與正文第一段一律寫 2026-09-18，並在正文標明那是美東時間，不寫台北時刻、也不寫「台北時間 9 月 18 日」。",
- "title": "美國 OCC 同日核准三家加密信託銀行：一張改制、兩張初步，六項條件相同",
+ "title": "美國 OCC 同日核准三家加密信託銀行：一張改制、兩張初步，六項條件同一架構",
  "checked_on": "2026-09-20",
  "sources": [
   {
@@ -644,7 +644,7 @@
    ],
    [
     "六項條件",
-    "其中四項只管前三年"
+    "其中四項有三年期限"
    ],
    [
     "資本門檻",
@@ -652,9 +652,169 @@
    ],
    [
     "不是存款",
-    "不收存款也不受保"
+    "兩份明寫不受 FDIC 保險"
    ]
   ]
  },
- "factcheck": {}
+ "factcheck": {
+  "checked_by": "independent factcheck agent (first round)",
+  "checked_on": "2026-09-20",
+  "method": "未參與撰稿。2026-09-20 以 curl -sSL -A \"Mokaair-editorial\" 重抓 sources[] 四條並讀 body（請求的 UA、標頭、查詢字串與表單都沒有帶任何人的 email 或個人資料）：cd1391.pdf HTTP 200／467,588 bytes／0 次轉址／md5 5fb177a27d5ee989c7899e9300923ba6；cd1392.pdf 200／534,784／md5 6dc0123583bedca459c89e572ee503f1；cd1393.pdf 200／516,631／md5 1eb76246023675d5e3c374d0f1ac344e——三個 md5 與 sourcing_notes 記的完全相同；Interpretations and Decisions 索引頁 200／102,733 bytes，解析出 81 列，Date of Letter 為 09/18/2026 的正好三列（Corporate Decision 1391／1392／1393），描述與三份 PDF 的抬頭互相對上。三份 PDF 以 pdftotext 同時抽 -layout 與預設兩種版本逐字對照。把內容包拆成約 130 條可核對主張逐條回原文：title、description、正文 16 段每一句、summary 四句、表格 16 格與 caption、圖解 caption、FAQ 六題答句、兩個 callout、四條 source、兩個結尾連結的 text，以及研究紀錄的 diagram 四格與 hero_label。研究紀錄 85 條 verbatim_quote 以程式做連續字串比對（正規化空白、引號與連字號字形後同時比對兩種抽取版本），85 條全部命中，verified_facts 的 url 也都在 sources[] 裡。另外重抓了不列入 sources[] 的 OCC 新聞 RSS（200、10 筆 item、最新一筆 pubDate 為 17 Sep 2026 13:00:02 -0400），只用來確認正文那句「查核日未見這三件的新聞稿」今天仍成立。兩個結尾連結的 text 與 crypto-news-2026-index、crypto-news-genius-act-occ-20260302 的 zh-TW title 逐字相同；第五節台灣段落逐條比對 crypto-news-taiwan-vasp-act-20260630 已核實的條文。沒有用 sources[] 以外的網址替文章補任何事實。",
+  "claims_checked": "約 130 條內容包主張，另以程式核對研究紀錄 85 條 verbatim_quote（全數命中）",
+  "changes": [
+   {
+    "where": "內容包 zh-TW title 與研究紀錄 title",
+    "before": "……一張改制、兩張初步，六項條件相同",
+    "after": "……一張改制、兩張初步，六項條件同一架構",
+    "why": "六項條件只有編號與主題相同，資本金額（600 萬對 1,000 萬）、流動性加碼（300 萬對 500 萬）與期限都不同，同一個內容包的 description 自己就寫「資本門檻與流動性要求不盡相同」。「相同」正是 must_not_write 第 2、3、5 條要擋的誤解。",
+    "source": "cd1391 條件 4／5 與 cd1392、cd1393 條件 4／5"
+   },
+   {
+    "where": "第一節第一段（正文第三段）",
+    "before": "OCC 沒有另發新聞稿，查核日讀到的 OCC 新聞 RSS 最新一筆停在 9 月 17 日，公開紀錄只有索引頁與三份決定書。",
+    "after": "查核日讀到的 OCC 新聞 RSS 未見這三件的新聞稿，最新一筆停在 9 月 17 日；本文讀到的公告管道是索引頁與三份決定書。",
+    "why": "「公開紀錄只有」是查不到的全稱否定：unverified_or_excluded 第 9 條自己寫著 2026 年的 weekly bulletin 沒讀到，「不能說它有登、也不能說它沒登」。改成查核日以 RSS 讀到的範圍與本文實際讀到的管道。",
+    "source": "https://www.occ.gov/rss/occ_news.xml（2026-09-20 重抓：200、10 筆 item、最新 17 Sep 2026 13:00:02 -0400）；unverified_or_excluded 第 9 條"
+   },
+   {
+    "where": "第一節第二段（正文第四段）",
+    "before": "資本未在 12 個月內募足，或未在 18 個月內開業，核准同樣自動失效。",
+    "after": "資本未在 12 個月內募足，或未在 18 個月內開業，核准同樣失效。",
+    "why": "「自動」是從 #1391 的 will automatically terminate 搬過來的。#1392／#1393 印的是 this approval expires，下一句還寫 OCC 只在最特殊情形下才給展延，寫成「自動」會讀成毫無轉圜。",
+    "source": "cd1392／cd1393「If the capital for the Bank is not raised within 12 months or if the Bank is not opened for business within 18 months from the preliminary conditional approval date, this approval expires.」"
+   },
+   {
+    "where": "第一節第三段（正文第五段）",
+    "before": "……不受數量限制、擔保品要求與低品質資產禁令拘束。",
+    "after": "……不受數量限制、擔保品要求與低品質資產禁令拘束；附註另載，該交易仍受安全穩健要求拘束。",
+    "why": "原句讀起來像整筆交易脫離 Regulation W。#1393 註 16 明寫該交易仍受 12 CFR 223.13 的安全穩健要求拘束，漏掉這一層會把豁免寫得比原文寬。",
+    "source": "cd1393 註 16「The transaction remains subject to Regulation W's safety and soundness requirement, set forth in 12 CFR 223.13.」"
+   },
+   {
+    "where": "第一節第三段（正文第五段）",
+    "before": "這是文件裡唯一點名的穩定幣，只以被監理對象出現。",
+    "after": "AUSD 與 #1391 提到的 USDC 一樣，在文件裡只以被監理對象出現。",
+    "why": "「唯一點名的穩定幣」直接被來源推翻：#1391 正文寫客戶可把託管資產與法幣、USDC 互轉，#1391 註 11 與 #1393 註 8 還提到 PAX Gold 與 BUSD。本紀錄的 not_said 第 7 條自己也寫著「AUSD、USDC 都只以業務對象出現」。",
+    "source": "cd1391「permitting customers to transfer and exchange custodied assets into and out of fiat currency and USDC」；cd1391 註 11；cd1393 註 8"
+   },
+   {
+    "where": "第二節第二段（正文第七段）",
+    "before": "附註定義為扣除全部負債後仍剩餘、未被設質或可抵銷的流動資產，且限四類——",
+    "after": "附註定義為扣除全部須償還負債後仍剩餘、未被設質或可抵銷的流動資產，不含關係企業的債務，且限四類——",
+    "why": "原文扣的是「反映對任何一方返還資金義務」的負債，不是全部負債；而且定義最後一句另外排除關係企業的債務。兩處都是 must_not_write 第 7 條點名的「漏掉這一層會讓門檻聽起來比實際寬鬆」。",
+    "source": "三份決定的 Eligible Liquid Assets 附註「means only Liquid Assets that exceed the aggregate amount of all deposits, borrowed funds, and other liabilities … that reflect an obligation to repay funds to any party … shall not include any obligation of any affiliate.」"
+   },
+   {
+    "where": "第二節第三段（正文第八段）",
+    "before": "……不含只有正常營運才有的支出，例如研發費用。",
+    "after": "……不必包含只有正常營運才有的支出，例如研發費用。",
+    "why": "原文是 need not include（不必包含），不是 shall not include（不得包含）。",
+    "source": "三份決定的 180 天附註「need not include expenses that would apply only in a normal operating scenario」"
+   },
+   {
+    "where": "第二節第三段（正文第八段）",
+    "before": "條件 3 到 6（含資本與流動性）都只在開業後前三年有效。",
+    "after": "條件 3 到 6（含資本與流動性）限於營運前三年，#1392、#1393 的條件 3、6 另及於籌設期間。",
+    "why": "#1392 與 #1393 的條件 3、6 明寫 throughout the in-organization period and during the … first three years of operation，寫成「只在開業後前三年」是把來源的範圍收窄了。#1391 才是四項都只掛營運前三年。",
+    "source": "cd1392 條件 3「This condition shall remain in effect throughout the Proposed Bank's in-organization period and during the Bank's first three years of operation.」、條件 6 同旨；cd1393 條件 3、6 同旨"
+   },
+   {
+    "where": "第四節第一段（正文第十一段）",
+    "before": "三份決定都寫明這些銀行不是存款機構。",
+    "after": "三份決定從不同角度寫到存款與存款保險。",
+    "why": "只有 #1391 寫「不收存款、不受 FDIC 保險」，#1393 寫「不會是受保存款機構」；#1392 全文沒有任何一句寫這家銀行不收存款或不受保，它寫的是穩定幣不是 FDI Act 下的存款。「三份都寫明」是把來源沒說的寫成來源說了。",
+    "source": "cd1391「The Bank will not take deposits and will not be insured by the Federal Deposit Insurance Corporation.」；cd1393「As noted, the Bank will not be an insured depository institution.」；cd1392 全文查核到 2026-09-20 未見對該行本身的同類句子"
+   },
+   {
+    "where": "第四節第三段（正文第十三段）",
+    "before": "……流動性標準與消費者保護不足（#1393 另多列準備金要求）。",
+    "after": "……缺乏流動性標準與消費者保護（#1393 另多列準備金要求）。",
+    "why": "原文是 the absence of liquidity standards or consumer protection（缺乏），不是「不足」。",
+    "source": "cd1392／cd1393 Public Comments and Analysis"
+   },
+   {
+    "where": "第五節第一段（正文第十四段）",
+    "before": "把境內提供虛擬資產服務的業者分成七種，依種類分別取得主管機關許可（第 7 條）",
+    "after": "境內提供虛擬資產服務的業者分成七種，須依種類分別取得主管機關許可（第 7 條第 1 項）",
+    "why": "條號掛錯：分成七種的是第 6 條第 2 項，第 7 條第 1 項規定的是「應依這些種類分別取得許可及發給許可證照，始得營業」。改成只把許可規定掛在第 7 條第 1 項。",
+    "source": "既有文章 crypto-news-taiwan-vasp-act-20260630 已核實的條文敘述"
+   },
+   {
+    "where": "第五節第三段（正文第十六段）",
+    "before": "台灣的分類許可制則連授權子法與施行日期都沒公告。",
+    "after": "台灣的分類許可制則仍在等授權子法與施行日期。",
+    "why": "「都沒公告」是查不到的全稱否定；既有文章只核實到金管會表示「將持續積極辦理授權子法之擬訂」、子法幾項與何時完成新聞稿沒有寫。",
+    "source": "既有文章 crypto-news-taiwan-vasp-act-20260630"
+   },
+   {
+    "where": "summary 第三句",
+    "before": "……三家銀行都不收存款，也不受聯邦存款保險保障。",
+    "after": "……#1391 明寫銀行不收存款、不受聯邦存款保險保障，#1393 確認銀行不是受保存款機構。",
+    "why": "與第四節第一段同一個問題：#1392 沒有寫，#1393 也沒有寫「不收存款」。",
+    "source": "同上"
+   },
+   {
+    "where": "FAQ 第一題答句",
+    "before": "GENIUS Act 在三份文件裡只用來說明國會承認無保險國民銀行有發行穩定幣的權限，以及條件 2 要求日後不符就要調整、停止或處分。",
+    "after": "GENIUS Act 在三份文件裡的角色是說明國會承認無保險國民銀行有發行穩定幣的權限、條件 2 要求日後不符就要調整、停止或處分，以及在 #1392 用來說明穩定幣不是《聯邦存款保險法》下的存款，都不是執照的法源。",
+    "why": "「只用來說明……兩件事」被來源推翻：#1392 另外用 GENIUS Act 說明支付型穩定幣不算存款、不受 FDIC 保險、不得表示為受保，並定義聯邦合格發行人包含無保險國民銀行。答案的重點（法源是國民銀行法）不變，但不能寫成「只有兩個身分」。",
+    "source": "cd1392「the GENIUS Act defines a payment stablecoin as not including a digital asset that is a deposit, states that payment stablecoins shall not be subject to deposit insurance by the FDIC, and makes it unlawful to represent payment stablecoins as subject to Federal deposit insurance.」"
+   },
+   {
+    "where": "FAQ 第一題答句",
+    "before": "三份文件的附註都以「See, e.g.」列舉 2025 年 12 月以來的同類核准，屬於例示，不是完整名單",
+    "after": "三份文件的附註都在列舉 2025 年 12 月以來的同類核准，#1391 與 #1392 以「See, e.g.」起頭，#1393 寫的是「recently approved several charters」，都屬於例示，不是完整名單",
+    "why": "#1393 列同類核准的註 6、7、12 起頭都是單純的 See，沒有 e.g.（註 12 還寫「five trust bank applications」）。用「三份都以 See, e.g. 起頭」去撐「不是完整名單」這個論點，論點成立但依據抄錯。",
+    "source": "cd1393 註 6「The OCC recently approved several charters for national trust banks … See OCC Corporate Decision 1380 …」；cd1391 註 8、cd1392 註 7 則為 See, e.g."
+   },
+   {
+    "where": "FAQ 第二題答句",
+    "before": "……或銀行未在 18 個月內開業，核准同樣自動失效。",
+    "after": "……或銀行未在 18 個月內開業，核准同樣失效；OCC 並寫明除最特殊情形外反對展延。",
+    "why": "同第一節第二段：#1392／#1393 印的是 expires，且下一句另有展延的但書，原文沒有「自動」二字。",
+    "source": "cd1392／cd1393「The OCC is opposed to granting extensions, except under the most extenuating circumstances …」"
+   },
+   {
+    "where": "FAQ 第三題答句",
+    "before": "三份決定都寫明銀行不收存款，也不受聯邦存款保險公司（FDIC）保險。",
+    "after": "#1391 寫明銀行不收存款，也不受聯邦存款保險公司（FDIC）保險；#1393 確認銀行不會是受保存款機構；#1392 寫的是穩定幣不是《聯邦存款保險法》下的存款。",
+    "why": "同 summary 第三句與第四節第一段。",
+    "source": "同上"
+   },
+   {
+    "where": "第一個 callout（核准不是最終定案）",
+    "before": "若所依據的資訊在核准後發生重大變更，OCC 得修改、暫停或撤銷這項核准。",
+    "after": "若 OCC 所依據的資訊在本決定所涉交易日之前發生重大變更，OCC 得修改、暫停或撤銷這項核准。",
+    "why": "原文的時間窗是 prior to the date of the transaction to which this decision pertains（本決定所涉交易日之前），不是「核准後」——兩者不是同一段期間。",
+    "source": "三份決定 Conclusion 末段「The OCC may modify, suspend, or rescind this approval if a material change in the information on which the OCC relied occurs prior to the date of the transaction to which this decision pertains.」"
+   },
+   {
+    "where": "表格 caption",
+    "before": "……流動性加碼取「資本 50%」與括號內金額兩者較高者。",
+    "after": "……流動性加碼取「資本 50%」與所列金額兩者較高者。",
+    "why": "表格格子裡沒有括號（寫的是「300 萬美元或資本 50%」），caption 指向一個不存在的版面元素。",
+    "source": "本內容包表格"
+   },
+   {
+    "where": "研究紀錄 diagram 第二格 detail",
+    "before": "其中四項只管前三年",
+    "after": "其中四項有三年期限",
+    "why": "與第二節第三段同一個錯：#1392、#1393 的條件 3、6 還涵蓋籌設期間，不是「只管前三年」。",
+    "source": "cd1392、cd1393 條件 3 與 6"
+   },
+   {
+    "where": "研究紀錄 diagram 第四格 detail",
+    "before": "不收存款也不受保",
+    "after": "兩份明寫不受 FDIC 保險",
+    "why": "與 summary 第三句同一個錯：三份裡只有 #1391 與 #1393 明寫不受保，#1392 沒有。",
+    "source": "cd1391、cd1393"
+   }
+  ],
+  "open_questions": [
+   "本紀錄 must_not_write 第 1 條自己寫著「三份文件的註腳……以 See, e.g. 起頭」，但 #1393 列同類核准的註 6、7、12 起頭都是單純的 See。內容包已改，這條撰稿禁令的措辭留著沒動（它是給撰稿者的界線，不是刊出去的主張），第二輪若要收斂可以一併改。",
+   "#1392 全文沒有任何一句寫「這家銀行不收存款」或「不受 FDIC 保險」，只有 #1391、#1393 有。內容包現在一律逐份歸屬。若站主想要一句涵蓋三家的「都不受保」，需要三份 PDF 以外的來源，本輪沒有。",
+   "「查核日在 OCC 新聞 RSS 未見這三件的新聞稿」這句依據的是 https://www.occ.gov/rss/occ_news.xml，它不在 sources[]（四條已滿）。本輪 2026-09-20 重抓確認仍成立（200、10 筆、最新 17 Sep 2026）。若站主要求每一句都指得到 sources[] 裡的網址，這一句應改寫或刪掉。",
+   "修正後 zh-TW 段落字數 2,987（上限 3,000），只剩 13 字餘裕；之後任何增補都要同時刪去等量的字。"
+  ]
+ }
 }
