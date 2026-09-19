@@ -1,13 +1,13 @@
 ---
 id: 2026-09-18-ai-workflow-tutorial-series-12-zh
 title: AI workflow tutorial series: 12 zh-TW articles and a series hub on chaining different models
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-18T08:47:59Z
 created_at: 2026-09-18T08:47:33Z
-completed_at:
+completed_at: 2026-09-19T03:39:12Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -65,7 +65,7 @@ itself waits for the weekly usage window to reset (it needs 12 writers and 12 fa
       (registry list and a catalogue test); the hub page lists the articles through `SeriesHub`.
 - [x] `pack_cli lint --kind life` 0 errors, `pytest tests/test_guide_series.py tests/test_guides_content_pack.py
       tests/test_guides_pack_ingest.py` green, `npm run check:tasks` green.
-- [ ] Owner's explicit choice to publish; deploy first (registry into the API), then
+- [x] Owner's explicit choice to publish; deploy first (registry into the API), then
       `guides-import --slug` hub + 12 in one run; `/zh-TW/life/ai-workflow-tutorials` shows the catalogue.
 
 ## Steps
@@ -76,7 +76,7 @@ itself waits for the weekly usage window to reset (it needs 12 writers and 12 fa
 - [x] Fact-checkers (opus) x13, plus a second round on 1, 3, 4, 5, 6, 8, 9, 10, 11, 12 (all `ok`).
 - [x] Coordinator read-through, `_DRAWINGS` x13, `build_assets.py`, `related`, relink/autolink (autolink pruned by `prune_autolinks.py`).
 - [x] Registry, catalogue (`build_catalogue.py`), tests; lint; PR from `claude/travel-scanner-pr-552-rpq36m`.
-- [ ] Publish after the owner's explicit choice; verify 13 URLs and the series endpoint.
+- [x] Publish after the owner's explicit choice; verify 13 URLs and the series endpoint.
 
 ## How to verify
 
@@ -85,10 +85,24 @@ cd apps/api
 PYTHONUTF8=1 ./.venv/Scripts/python.exe ../../docs/ai-workflow-series/check_article.py <slug> --assets   # Linux: ./.venv/bin/python3
 ./.venv/Scripts/python.exe -m app.guides.pack_cli lint --kind life
 ./.venv/Scripts/python.exe -m pytest tests/test_guide_series.py tests/test_guides_content_pack.py tests/test_guides_pack_ingest.py -q
-curl -s 'https://mokaair.com/api/v1/guides/series?locale=zh-TW' | grep -c ai-workflow   # after publishing
+curl -s 'https://mokaair.com/api/travel/guides/series?locale=zh-TW' | grep -c ai-workflow   # after publishing
+curl -s 'https://mokaair.com/api/travel/guides/series/ai-workflow?locale=zh-TW'              # 12 entries
 ```
 
 ## Notes
+
+- Done 2026-09-19: PR #553 squash-merged as a69763b5, deploy_20260919_032927 (no migration, health 3/3).
+  At the owner's choice ("發布 13 篇") one run of `guides-import --locale zh-TW --slug` x13 `--publish`,
+  after a second dry-run matched the one shown to the owner byte for byte: created 13 / published 13 /
+  taxonomy_updated 12 / failed null, and a replay dry-run reports all 13 `unchanged`. Public checks:
+  13 URLs 200 with their real titles and no robots meta, 13 `hero.jpg` 200, 13 entries in
+  `sitemaps/sitemap/life-zh-TW.xml`, the hub page links the 12 articles, and the series list shows
+  `ai-workflow` (source `api-series`, topic `ai-coding`, entries 12, hub `ai-workflow-tutorials`).
+  Deploy, import and checks run by claude-opus-5.
+- The public API lives behind the web BFF at `/api/travel/...`. The `https://mokaair.com/api/v1/guides/series`
+  this file and the README first gave answers 404, so both now use the BFF path.
+- Every article page embeds 「這篇文章目前看不到」 as the `unavailableTitle` string, published or not;
+  grep for it proves nothing, so check the `<title>` and the robots meta instead.
 
 - 2026-09-19: everything but publication is done on `claude/travel-scanner-pr-552-rpq36m`. The full handover
   (what shipped, check results, the environment differences, the nine model ids added, the per-article
