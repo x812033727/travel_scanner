@@ -1,8 +1,9 @@
 import hashlib
+import shutil
 import sqlite3
 from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 from uuid import uuid4
 
 import pytest
@@ -92,6 +93,30 @@ def prepared_executor(
     return DatabaseExecutor(config, store, runner), store, runner
 
 
+class DiskUsage(NamedTuple):
+    total: int
+    used: int
+    free: int
+
+
+def pin_free_disk(monkeypatch: pytest.MonkeyPatch, free: int) -> list[Path]:
+    """Decide what the overview's disk gate measures instead of reading the host disk.
+
+    The gate itself is untouched: the executor keeps its real ``min_free_bytes`` and only
+    ``shutil.disk_usage`` answers with ``free`` bytes. Without this the catalog test read
+    the developer's own free space, and failed on a laptop with less than 5 GiB left. The
+    returned list collects every path the gate measured.
+    """
+    measured: list[Path] = []
+
+    def disk_usage(path: str | Path) -> DiskUsage:
+        measured.append(Path(path))
+        return DiskUsage(total=2 * free, used=free, free=free)
+
+    monkeypatch.setattr(shutil, "disk_usage", disk_usage)
+    return measured
+
+
 def test_database_store_replays_and_serializes_all_host_operations(tmp_path: Path) -> None:
     config = agent_config(tmp_path)
     store = AgentStore(config.state_path)
@@ -139,8 +164,12 @@ def test_manual_backup_is_verified_hashed_and_persisted(tmp_path: Path) -> None:
     assert catalog[0]["checksum_sha256"] == job["checksum_sha256"]
 
 
-def test_deployment_backup_is_visible_in_verified_catalog(tmp_path: Path) -> None:
+def test_deployment_backup_is_visible_in_verified_catalog(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     executor, store, _runner = prepared_executor(tmp_path)
+    # This test is about the catalog, so the disk gate gets plenty of room.
+    measured = pin_free_disk(monkeypatch, free=2 * executor.config.min_free_bytes)
     deployment_id = str(uuid4())
     result = executor._create_verified_backup(  # noqa: SLF001
         executor.config.releases_path / ("a" * 40), "a" * 40
@@ -149,6 +178,7 @@ def test_deployment_backup_is_visible_in_verified_catalog(tmp_path: Path) -> Non
 
     overview = executor.database_overview()
 
+    assert measured == [executor.config.backup_path.parent]
     assert overview["available"] is True
     assert len(overview["backups"]) == 1
     assert overview["backups"][0] == {
@@ -157,6 +187,36 @@ def test_deployment_backup_is_visible_in_verified_catalog(tmp_path: Path) -> Non
         "source_job_id": deployment_id,
         "verified_at": overview["backups"][0]["verified_at"],
     }
+
+
+def test_low_backup_disk_blocks_operations_but_keeps_the_verified_catalog(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The production gate the test above pins its way past is still the 5 GiB one.
+
+    Below it the centre reports itself unavailable with ``backup_disk`` as the only failed
+    check, and the verified backups stay listed: a full disk is exactly when an operator
+    needs to see what there is to restore from.
+    """
+    executor, _store, _runner = prepared_executor(tmp_path)
+    minimum = executor.config.min_free_bytes
+    assert minimum == 5 * 1024**3
+    result = executor._create_verified_backup(  # noqa: SLF001
+        executor.config.releases_path / ("a" * 40), "a" * 40
+    )
+    measured = pin_free_disk(monkeypatch, free=minimum - 1)
+
+    overview = executor.database_overview()
+
+    assert measured == [executor.config.backup_path.parent]
+    assert overview["available"] is False
+    failed = [check for check in overview["checks"] if check["status"] == "failed"]
+    assert failed == [{"name": "backup_disk", "status": "failed", "detail": "可用空間 4 GiB"}]
+    assert [item["backup_name"] for item in overview["backups"]] == [result["backup_name"]]
+
+    # Exactly the minimum is enough: the gate is "at least", not "more than".
+    pin_free_disk(monkeypatch, free=minimum)
+    assert executor.database_overview()["available"] is True
 
 
 def test_failed_backup_validation_removes_partial_and_sanitizes(tmp_path: Path) -> None:
