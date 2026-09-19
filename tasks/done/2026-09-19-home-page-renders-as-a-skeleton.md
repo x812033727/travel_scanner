@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-home-page-renders-as-a-skeleton
 title: Home page renders as a skeleton to crawlers: SSR the discovery feed
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-19T13:55:21Z
 created_at: 2026-09-19T13:55:04Z
-completed_at:
+completed_at: 2026-09-19T16:00:02Z
 branch: claude/google-indexing-issues-efbfb9
 depends_on: []
 scope:
@@ -83,3 +83,7 @@ fix. The footer's `/destinations` link still reaches all 33.
 `resolveDiscoveryStatus` (`lib/discovery.ts:84`) returns the server prop while the client store
 is loading, so seeding `initialEnabled` with `false` on a failed read causes no hydration
 mismatch: both sides render the marketing body on the first pass and the store corrects after.
+
+**Verified on production after #566 (`ecc6cbc0`) deployed 2026-09-19 15:56 UTC.** Visible
+text as Googlebot: `/zh-TW` **361 -> 1,775 chars**, `/en` **753 -> 3,991**. The skeleton
+string (正在載入旅行靈感 / Loading travel ideas) is gone from both.

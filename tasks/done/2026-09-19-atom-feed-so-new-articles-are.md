@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-atom-feed-so-new-articles-are
 title: Atom feed so new articles are discovered quickly
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-19T15:16:12Z
 created_at: 2026-09-19T15:16:01Z
-completed_at:
+completed_at: 2026-09-19T16:00:07Z
 branch: claude/google-indexing-issues-efbfb9
 depends_on: []
 scope:
@@ -46,7 +46,7 @@ return. Poor value for the reach.
 - [x] `/feed.xml` lists the newest articles from both public sections, newest first
 - [x] a failed read does not produce an empty feed
 - [x] the feed is advertised from the document head
-- [ ] submitted in Search Console (needs a deploy first)
+- [x] submitted in Search Console
 
 ## Steps
 
