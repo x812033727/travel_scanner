@@ -1,0 +1,384 @@
+{
+  "slug": "tech-news-npm-stage-only-tokens-20260918",
+  "event_date": "2026-09-18",
+  "event_date_basis": "來源頁自己印出的日期是 September 18, 2026（版面上的分類標籤是 Improvement，日期後面接一個 • 與 1 minute read）。同一頁的 JSON-LD 兩塊都寫 \"datePublished\":\"2026-09-18T09:37:50-07:00\"，Yoast 的 @graph 另寫 datePublished 2026-09-18T16:37:50+00:00、dateModified 2026-09-18T16:45:50+00:00（<meta property=\"article:modified_time\" content=\"2026-09-18T16:45:50+00:00\" />），網址 slug 也是 2026-09-18。**要寫清楚的張力**：16:37:50 UTC 換算台北是 2026-09-19 00:37:50，逐字換算會掉到 9/19。本篇不採逐字換算，理由有三：(1) 這不是 DELTA-4-6 第 7 條講的整點佔位時刻，但落點只比台北午夜晚 37 分，而 GitHub 自己用美西時間把這件事定名為 September 18, 2026，版面、網址與 JSON-LD 三處一致；(2) 科技垂直已有同型判例 docs/tech-news-2026/research/tech-news-pixel-drop-20260915.json——blog.google 的 datePublished 是 2026-09-15T18:00:00+00:00（台北 09-16 02:00），事件日仍取頁面自印的 'Sep 15, 2026'；(3) DELTA-4-6 第 4 條的指派表把本篇 slug 定為 -20260918，slug 後綴、news_date 與正文第一段三者必須一致。所以 event_date = 2026-09-18，正文第一段寫「2026 年 9 月 18 日（美國太平洋時間）」，**全篇不寫任何時刻，也不寫換算後的台北鐘點**。dateModified 與 datePublished 同一天、相隔 8 分鐘，不移動事件日。",
+  "title": "npm 新增「只送審」權杖：自動化只能送件，免 2FA 直接發版預計 2027 年 1 月移除",
+  "checked_on": "2026-09-20",
+  "sources": [
+    {
+      "title": "GitHub Changelog：Stage-only npm tokens for safer automation",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "publisher": "GitHub",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "npm Docs：About access tokens",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "publisher": "npm, Inc.（GitHub）",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "npm Docs：Staged publishing for npm packages",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "publisher": "npm, Inc.（GitHub）",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "GitHub Changelog：Restricting npm bypass-2FA granular access tokens",
+      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+      "publisher": "GitHub",
+      "checked_on": "2026-09-20"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條 sources[] 全部由本人於 2026-09-20（台北）以 curl -sSL -A \"Mokaair-editorial\" 重抓、讀完 body 之後才登記 checked_on；請求只帶這一個自訂 User-Agent，**沒有任何 email、帳號或其他個人資料**，也沒有加任何查詢字串或表單。\n落地結果（本次抓取的當下值，不是可寫進文章的事實）：\n(1) github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation → 1 次 301 到同網址加尾斜線，HTTP 200、96,648 bytes；正文區（從版面上的 Improvement / September 18, 2026 到 Back to changelog）共 1,783 字元，是完整內文，不是導覽殼。\n(2) docs.npmjs.com/about-access-tokens → 1 次 301 到尾斜線版，HTTP 200、513,037 bytes；頁面是 npm Docs 的伺服器端渲染頁，左側導覽很長，正文區（About access tokens 的 Table of contents 到 Edit this page on GitHub）共 6,745 字元，含 About stage-only tokens、Publishing with a stage-only token、Direct publishing is being deprecated 三節。\n(3) docs.npmjs.com/staged-publishing → 1 次 301 到尾斜線版，HTTP 200、525,755 bytes；正文區 2,797 字元。\n(4) github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens → HTTP 200、102,883 bytes；正文區 1,982 字元。\nsources[] 一律登記**最後落地**的尾斜線網址（兩個網域的無斜線網址都是 301 永久轉址，GitHub 自己的內文連結則寫無斜線版）；og:url 印的也是尾斜線版。內容包的 sources 必須與這四條逐字相同、順序相同，check_article.py 會比對。\nverbatim_quote 共 40 條，全部以程式對「去標籤但不插空白」的頁面文字做連續字串比對，40/40 通過；撇號一律是 U+2019（you’ve、doesn’t、can’t、You’ll、workflow’s），npm Docs 的破折號是 U+2014（— you cannot stage a brand-new package），照抄時不要自己打成 ASCII。\n沒有使用這四條以外的任何網址替文章補事實；GitHub 社群討論串（changelog 內文連到的 github.com/orgs/community/discussions/208130 與 7/31 那則連到的 201329）都**沒有讀**，也不列為來源，理由與處置寫在 unverified_or_excluded。\nfactcheck 欄位留空物件，由後續的獨立查核代理填寫。",
+  "verified_facts": [
+    {
+      "fact": "版面日期：GitHub Changelog 這則的日期行印的是 2026 年 9 月 18 日（同頁的分類標籤是 Improvement）。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 18, 2026"
+    },
+    {
+      "fact": "公告的主體：建立 npm granular access token（細緻權限存取權杖）時，多了一個可選的權限等級 Read and write (stage only)。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can now select Read and write (stage only) when creating an npm granular access token."
+    },
+    {
+      "fact": "這個權限等級的用途：讓自動化流程把套件版本「送去待審」，但不給它直接把新版本發布到 npm registry 的權限。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This lets your automated workflows stage package versions for review without giving the token permission to publish new versions directly to the npm registry."
+    },
+    {
+      "fact": "流程：自動化流程用 npm stage publish 送出版本，再由套件維護者以雙因素驗證（2FA）複查並核准發布。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your workflow uses npm stage publish to submit a version. A package maintainer then reviews and approves its release with two-factor authentication (2FA)."
+    },
+    {
+      "fact": "關鍵限制：拿這種權杖直接呼叫 npm publish 會被 npm 拒絕，**即使該權杖被設定成可以略過 2FA 也一樣**。這一句是整則公告最重要的一句。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "npm rejects direct npm publish attempts with that token, even if you’ve configured it to bypass 2FA for automation."
+    },
+    {
+      "fact": "只送審權杖**仍然保有其他套件寫入權限**，官方自己舉的例子是搬移 dist-tag 與把版本標記為棄用（deprecate）。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Stage-only tokens retain other package write permissions, including moving dist-tags and deprecating versions."
+    },
+    {
+      "fact": "官方同一段的叮嚀：這種權杖要和任何其他寫入權杖一樣小心保管。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Protect them with the same care as any other write token."
+    },
+    {
+      "fact": "這一版是 opt-in（要自己去選），**不會動到既有權杖，也不會拿掉既有權杖直接發版的能力**。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This release is opt-in and doesn’t change existing tokens or their direct-publish capabilities."
+    },
+    {
+      "fact": "時程（**是預告目標，不是已定案**）：npm 以 2027 年 1 月為目標，移除「透過免 2FA 權杖直接發布」這條路；原文用的動詞是 targeting，而且明寫這是先前就公告過的事。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As previously announced, npm is targeting January 2027 to remove direct publishing through bypass-2FA tokens."
+    },
+    {
+      "fact": "官方給的定位：對還沒辦法改用 trusted publishing 的人，只送審權杖是以權杖為基礎的自動化的一條遷移路徑。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you can’t move to trusted publishing yet, stage-only tokens offer a migration path for token-based automation."
+    },
+    {
+      "fact": "適用前提與版本需求：送審發布只對**已經存在**的 npm 套件有效；另需有該套件的發布權限、npm 帳號已啟用 2FA、npm CLI 11.15.0 以上、Node.js 22.14.0 以上。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Staged publishing works with existing npm packages. You’ll need publish access to the package, 2FA enabled on your npm account, npm CLI 11.15.0 or later, and Node.js 22.14.0 or later."
+    },
+    {
+      "fact": "官方列的三個步驟之一：替工作流程需要的套件建立一個 Read and write (stage only) 權限的 granular access token。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Create a granular access token with Read and write (stage only) permissions for the packages your workflow needs."
+    },
+    {
+      "fact": "官方列的三個步驟之二：把工作流程裡的發布權杖換掉，並把 npm publish 改成 npm stage publish。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Replace your workflow’s publishing token and use npm stage publish instead of npm publish."
+    },
+    {
+      "fact": "官方列的三個步驟之三：請一位維護者用 2FA 複查並核准待審的版本。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Have a maintainer review and approve staged versions with 2FA."
+    },
+    {
+      "fact": "GitHub 把這則 changelog 歸在「supply chain security（供應鏈安全）」這個標籤底下。",
+      "url": "https://github.blog/changelog/2026-09-18-stage-only-npm-tokens-for-safer-automation/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "supply chain security"
+    },
+    {
+      "fact": "官方說明頁把 Read and write 拆成兩種：publish and stage 可以直接把新版本發到 registry。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Read and write (publish and stage): the token can publish new package versions directly to the registry."
+    },
+    {
+      "fact": "另一種是 stage only：不能直接發布新版本，只能把版本送去待審，由套件維護者複查後「拔擢」（promote）上架。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Read and write (stage only): the token cannot publish new package versions directly. Instead, it stages a version for a package maintainer to review and promote."
+    },
+    {
+      "fact": "說明頁逐條列出只送審權杖**可以**做的三件事之一：用 npm stage publish 把新版本送去待審。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Stage a new package version for review, using npm stage publish"
+    },
+    {
+      "fact": "只送審權杖可以做的第二件事：把套件版本標記為棄用。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Deprecate package versions"
+    },
+    {
+      "fact": "只送審權杖可以做的第三件事：搬移 dist-tag。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Move dist-tags"
+    },
+    {
+      "fact": "只送審權杖**不能**做的事只有一件：直接發布新版本；硬發會拿到 E_STAGE_REQUIRED 這個錯誤。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Publish a new package version directly. Attempting to publish a new version fails with the error E_STAGE_REQUIRED."
+    },
+    {
+      "fact": "官方自己先把話講死：只送審**只限制新版本的直接發布**，它不是一道通用的安全邊界。這句要寫進文章，避免讀者以為換了權杖就萬事大吉。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Stage-only restricts direct publishing of new versions only. It is not a general-purpose security boundary"
+    },
+    {
+      "fact": "核准那一步的細節：維護者啟用 2FA 後，用 npm stage approve <stage-id> --otp <code> 把待審版本拔擢上架，或用 npm stage reject <stage-id> 丟掉。（reject 這個指令只出現在本頁，staged publishing 那一頁沒有寫。）",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A maintainer with 2FA enabled promotes the staged version to the registry with npm stage approve <stage-id> --otp <code>, or discards it with npm stage reject <stage-id>."
+    },
+    {
+      "fact": "說明頁對 2027 年那一項的措辭：免 2FA 且有直接發布權限的權杖正在被淘汰。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Bypass-2FA tokens with direct-publish access are being deprecated."
+    },
+    {
+      "fact": "**兩份官方頁措辭不一致，要並列、不可挑一邊**：說明頁這一句用的是 will be removed（會被移除），而且主詞寫成「用 granular access token 直接發布新版本的能力」，範圍看起來比 changelog 的「bypass-2FA 權杖」寬。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The ability to publish new package versions directly with a granular access token will be removed in January 2027."
+    },
+    {
+      "fact": "**已經生效的部分**：自 2026 年 8 月起，設定成略過 2FA 的權杖不能再做帳號身分／帳號治理類的動作（改 email 或密碼、改動或停用 2FA 設定、建立與管理權杖、增刪套件維護者、組織與團隊治理）。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Starting August 2026, tokens with Bypass 2FA enabled can no longer be used to perform account-identity or account-governance actions."
+    },
+    {
+      "fact": "說明頁查核當天仍明寫：目前免 2FA 權杖還是可以用來直接發布。這是「2027 年那一刀還沒落下」最直接的證據。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "At the moment, bypass-2FA tokens can still be used for direct publishing."
+    },
+    {
+      "fact": "背景：2025 年 11 月起 npm 只支援 granular access token，舊式（legacy）存取權杖已經移除。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As of November 2025, only Granular access tokens are supported. Legacy access tokens have been removed."
+    },
+    {
+      "fact": "頁面自印的最後編輯資訊（**活資料，只當佐證、不要寫成事實**）：Last edited by Tayvon on September 10, 2026——也就是說明頁在 9/18 的 changelog 之前就已經寫上了 stage-only 這一節。",
+      "url": "https://docs.npmjs.com/about-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Last edited by Tayvon on September 10, 2026"
+    },
+    {
+      "fact": "送審發布的本質：在套件真正上架到 npm registry 之前多加一道核准步驟。",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Staged publishing adds an approval step before packages go live on the npm registry."
+    },
+    {
+      "fact": "版本需求（與 changelog 一致，但說明頁用的是 Node version 22.14.0 or higher 的寫法）：npm CLI 11.15.0 以上、Node 22.14.0 以上。",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Note: Staged publishing requires npm CLI version 11.15.0 or later and Node version 22.14.0 or higher."
+    },
+    {
+      "fact": "前提條件之一，而且是很容易誤會的一條：套件必須已經在 npm registry 上，**全新套件不能走送審**。",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The package already exists on the npm registry — you cannot stage a brand-new package"
+    },
+    {
+      "fact": "2FA 落在哪一步：送件那一步（npm stage publish）**不需要** 2FA，需要 2FA 的是維護者核准那一步。這正是它能放進無人值守的 CI 的原因。",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Note: npm stage publish does not require 2FA."
+    },
+    {
+      "fact": "與 trusted publishing（OIDC）的關係：已經用 OIDC 從 CI/CD 發版的人也可以再加一道送審，維護者仍然要用 2FA 複查核准。",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you use trusted publishing (OIDC) from CI/CD, you can use staged publishing to submit a package for review before it goes live. A maintainer must still review and approve the staged package with 2FA."
+    },
+    {
+      "fact": "頁面自印的最後編輯資訊（**活資料**）：Last edited by karenjli on May 20, 2026——送審發布這個機制本身比 9/18 的權杖等級早就寫進說明頁。",
+      "url": "https://docs.npmjs.com/staged-publishing/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Last edited by karenjli on May 20, 2026"
+    },
+    {
+      "fact": "2027 年這條時程的出處（2026 年 7 月 31 日的 changelog，版面標籤是 Retired）：官方在那裡就寫了以 2027 年 1 月為目標。",
+      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are targeting January 2027 for this update."
+    },
+    {
+      "fact": "2027 年那一刀**切掉的是什麼**：免 2FA 權杖會失去直接發布；它的發布面會縮到「讀取私有套件」與「送出待審版本（再由維護者以 2FA 核准）」兩件事。",
+      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "2FA-bypass tokens will also lose direct publish. Their publishing surface will reduce to reading private packages and staging a publish, which a maintainer approves with 2FA."
+    },
+    {
+      "fact": "7 月 31 日那一次已經改掉的事：設定成略過 2FA 的 npm granular access token（GAT）不能再做敏感的帳號、組織與套件管理動作。",
+      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "npm granular access tokens (GATs) configured to bypass 2FA can no longer perform sensitive account, org, and package management actions."
+    },
+    {
+      "fact": "**範圍界線，寫錯會誤導一大票 GitHub Actions 使用者**：7 月 31 日那一次只影響 npm 的 granular access token，不影響 GitHub 個人存取權杖、GitHub App 權杖，也不影響 Actions 裡的 GITHUB_TOKEN。（這句只綁 7/31 那一次變更，不可套到 2027 年那一項。）",
+      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This only impacts npm granular access tokens. This does not affect GitHub personal access tokens, GitHub App tokens, or GITHUB_TOKEN in Actions."
+    },
+    {
+      "fact": "7 月 31 日那則的版面日期是 2026 年 7 月 31 日。",
+      "url": "https://github.blog/changelog/2026-07-31-restricting-npm-bypass-2fa-granular-access-tokens/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "July 31, 2026"
+    }
+  ],
+  "not_said": [
+    "**沒有任何影響範圍的數字。** 以 9/18 changelog 正文（1,783 字元）查核到 2026-09-20 未見套件數、開發者數、下載量、百分比或任何統計；四份來源合起來也只出現 January 2027、August 2026、November 2025 這幾個時間點與 11.15.0／22.14.0 兩個版本號。文章不得寫「影響 N 萬個套件」「佔 npm 下載量的 X%」這類句子，也不得自己換算。",
+    "**沒有點名任何一起供應鏈攻擊事件或惡意套件。** 以四份來源正文查核到 2026-09-20，malware／worm／incident／compromise／breach 各 0 次；attack 只在 7/31 那則出現 2 次，而且是泛稱的 credential-based attack surfaces 與 An attacker could previously use a leaked 2FA-bypass token…，沒有指名任何事件、套件或攻擊者。文章不得補上任何事件名、套件名或攻擊手法。",
+    "**沒有提到任何其他套件庫。** 以四份來源正文查核到 2026-09-20，PyPI／RubyGems／crates.io／Maven／NuGet 各 0 次。不得寫「其他語言的套件庫也跟進」或做跨 registry 比較。",
+    "**沒有 2027 年 1 月的確切日期。** 四份來源都只寫到「January 2027」這個月份，沒有任何一頁印出日。生效日一律照來源寫月份，不得補上日期、不得寫「1 月 1 日起」。",
+    "**沒有說免 2FA 權杖本身會被停用。** 7/31 那則寫的是它會失去直接發布，發布面縮到讀私有套件與送出待審版本；不得寫成「免 2FA 權杖 2027 年起不能用」。",
+    "**沒有說 trusted publishing（OIDC）會不會被 2027 年那一項波及。** 以四份來源查核到 2026-09-20 未見相關句子；staged publishing 說明頁只寫兩者可以合用。不得寫「OIDC 也要跟著改」或「OIDC 不受影響」。",
+    "**沒有寫待審版本會留多久、未核准會不會自動過期。** 以四份來源查核到 2026-09-20，retention／TTL 各 0 次，expire 只出現在 about access tokens 的 Set a token expiration date（講權杖有效期，不是待審版本）。不得寫保留天數。",
+    "**沒有地區、價格、方案或帳號等級的差別。** 以四份來源查核到 2026-09-20 未見任何國家名（含 Taiwan／台灣）、價格、免費／付費方案或企業版、自架 registry 的說明。不得寫「台灣開發者要在某日前完成」這種在地化的強制語氣。",
+    "**沒有說只送審權杖會變成預設或強制。** 9/18 原文寫 This release is opt-in…，說明頁的 Bypass 2FA 選項也寫 is set to false by default at token creation（講的是另一個選項的預設值）。不得寫「npm 已改為預設只送審」。",
+    "**版面上沒有印作者，也沒有印時刻。** 9/18 頁面可見區只有 Improvement / September 18, 2026 / 1 minute read；JSON-LD 裡有 \"author\":{\"@type\":\"Person\",\"name\":\"Allison\"}，但那不是版面上的署名，文章不寫作者，也不寫任何鐘點。",
+    "**這一頁沒有說一般使用者（只 npm install、不發版的人）要做什麼。** 以四份來源查核到 2026-09-20，沒有任何一句是對安裝端使用者的指示。文章第五節要寫「安裝端這次不用做任何設定」時，必須寫成編輯的判讀（因為四份來源都只講發版端），不可假託官方。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "GitHub 社群討論串（9/18 changelog 末尾連到的 npm community discussion category）裡的問答與遷移阻礙。",
+      "seen_where": "9/18 changelog 內文連結 https://github.com/orgs/community/discussions/208130；7/31 那則的 community discussion 連到 https://github.com/orgs/community/discussions/201329。",
+      "why_excluded": "兩個都是使用者發文的社群討論串，不是官方說明。BRIEF 規定論壇與整合站只當線索、不進 sources[]。本輪**完全沒有讀這兩個網址**，因此文章不得引用其中任何內容，也不得描述「開發者的反應」。"
+    },
+    {
+      "claim": "7/31 changelog 自稱「This continues the deprecation we announced on July 8」裡那次 7 月 8 日的公告內容。",
+      "seen_where": "7/31 changelog 正文，該處的 July 8 連結指向 https://github.com/orgs/community/discussions/201329。",
+      "why_excluded": "連結落點是社群討論串而不是 changelog，本輪沒有讀；文章可以照抄「官方寫這延續 7 月 8 日宣布的淘汰計畫」這件事本身，但不得描述 7/8 公告的內容、範圍或日期以外的任何細節。"
+    },
+    {
+      "claim": "npmjs.com 網站上建立權杖的實際畫面裡是否真的看得到 Read and write (stage only) 這個選項、以及 Staged Packages 分頁長什麼樣子。",
+      "seen_where": "只在 9/18 changelog 與 about access tokens、staged publishing 兩頁的文字描述裡看到（staged publishing 頁寫 Open the Staged Packages tab…）。",
+      "why_excluded": "建立權杖與 Staged Packages 分頁都要登入 npm 帳號才看得到，本站不做實測也不登入任何帳號。文章只能寫「官方說明頁列出這個選項」，不得寫「打開頁面就會看到」或描述介面位置。"
+    },
+    {
+      "claim": "npm CLI 11.15.0 是哪一天釋出、npm stage 子指令從哪一版開始存在。",
+      "seen_where": "兩則 changelog 與兩頁說明都只寫版本門檻（11.15.0 or later／22.14.0 or later 或 higher），沒有釋出日。",
+      "why_excluded": "四條 sources[] 都查不到釋出日，沒有去 registry 或 GitHub releases 另抓（那會多出第五條來源）。文章只寫版本門檻，不寫「從 X 月起」。"
+    },
+    {
+      "claim": "「about access tokens 說明頁在 9/18 之前就寫好了 stage-only 這一節」這個推論。",
+      "seen_where": "頁面自印 Last edited by Tayvon on September 10, 2026。",
+      "why_excluded": "這是頁面當下印出的活資料，而且「最後編輯日」不能證明某一小節在那天就存在。可以在文章裡寫成「說明頁自印的最後編輯日是 2026 年 9 月 10 日」，但不得據此宣稱功能早於公告上線、也不得推論任何時間先後。"
+    },
+    {
+      "claim": "兩份官方頁對 2027 年那一項的範圍寫法不一致，到底哪一個才算數。",
+      "seen_where": "9/18 與 7/31 兩則 changelog 都寫「bypass-2FA 權杖」的直接發布；about access tokens 那句的主詞是「用 granular access token 直接發布新版本的能力」，看起來涵蓋所有 GAT。",
+      "why_excluded": "四條來源裡沒有任何一句出面裁決，本輪不去猜。文章的寫法固定為：以 changelog 的範圍（免 2FA 權杖）為主述，並在同一段把說明頁那句的寬寫法一起列出、註明兩頁措辭不同；不得只挑一邊當唯一答案。"
+    },
+    {
+      "claim": "待審版本被拒絕（npm stage reject）之後會發生什麼、有沒有通知、是否留紀錄。",
+      "seen_where": "只有 about access tokens 出現 npm stage reject <stage-id>；staged publishing 那一頁完全沒有提 reject（該頁 reject 0 次），兩頁都沒寫後續。",
+      "why_excluded": "官方沒寫，不補。文章提到可以丟掉待審版本時，只能引 about access tokens 那一句。"
+    },
+    {
+      "claim": "本次抓到的位元組數（96,648／513,037／525,755／102,883）與正文字元數（1,783／6,745／2,797／1,982）。",
+      "seen_where": "2026-09-20 本輪 curl 的回應。",
+      "why_excluded": "依 BRIEF 第 4 條，這些是取得成敗的判準，不是可以寫進文章或當成事實引用的數字。只留在 sourcing_notes。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣的開發者，以及「不寫 npm 套件、但每天 npm install 別人套件」的一般工程師。供應鏈投毒是近兩年最常波及一般使用者的資安問題——出事的通常不是你的程式，而是你相依的某個套件被推上一個有毒的新版本。這篇要講的不是又有誰中招（**一個案例細節都不寫**），而是 npm 在 2026 年 9 月 18 日拿出的一個具體機制與一個具體時程：把「機器人可以自己把新版本推上 registry」這條路，先給一個可選的替代品，再預告要關掉。\n\n文章的骨架是三句話：(1) 新的權杖等級只能把版本送進待審區，硬發會被拒，**連設定成略過 2FA 也一樣**；(2) 放行那一步一定要有一個活人拿 2FA 核准——送件不需要 2FA，核准才需要，這個分界正是它能塞進無人值守 CI 的原因；(3) 免 2FA 權杖的直接發布，npm 的目標是 2027 年 1 月移除，**這是預告的時程，不是已經生效的規定**。\n\n同時要把兩條容易被寫漏的限制講清楚，因為它們正好抵銷讀者最可能產生的誤解：只送審權杖**仍然能搬 dist-tag、仍然能把版本標成棄用**，官方自己寫它不是通用的安全邊界；而且**全新的套件不能送審**，只有已經在 registry 上的套件適用。\n\n五節的安排：\n一、9 月 18 日公告了什麼：新的權限等級 Read and write (stage only)，opt-in，不動既有權杖。第一段第一句就要寫出「2026 年 9 月 18 日（美國太平洋時間）」，**不寫時刻**。\n二、送件、複查、放行三步，以及權杖到底還能做什麼——這一節結尾放表格，建議 3 欄（項目／Read and write (publish and stage)／Read and write (stage only)）、4 列（直接發布新版本、送出待審版本、搬移 dist-tag、標記棄用），caption 寫查核日 2026 年 9 月 20 日；每一格的內容都要指得到 about access tokens 那一頁的原文。\n三、為什麼是「送審」而不是「禁止」：2FA 落在核准那一步，送件那一步不用 2FA；以及官方自己畫的界線（只限制新版本直接發布、不是安全邊界、全新套件不適用）。這一節結尾放圖解。\n四、2027 年 1 月的預告怎麼讀：7/31 那則就寫了 targeting，9/18 再講一次；8 月起免 2FA 權杖已經不能做帳號與治理動作；說明頁查核當天仍寫「目前還是可以直接發布」。同一段要把兩份官方頁措辭不同這件事寫出來（changelog 寫 targeting、說明頁寫 will be removed；changelog 的範圍是免 2FA 權杖、說明頁那句寫得比較寬），並說明本文以 changelog 的範圍為準。\n五、讀者現在實際要做什麼：有在發布套件的人可以先建一個只送審權杖試跑（需求：已上架的套件、發布權限、帳號已開 2FA、npm CLI 11.15.0 以上、Node.js 22.14.0 以上）；只安裝套件的一般工程師這次不必改設定——**這一句要寫成編輯的判讀，因為四份來源都只講發版端**。\n\n語氣：全篇不做「該不該改」的建議式結論（tech.md 禁購買建議的同一個原則），只整理條件讓讀者自己判斷；科技篇不帶投資免責 callout。callout 放一個就好，建議寫「這是預告時程，正式日期以 npm 屆時公告為準」。\n\n結尾連結：第一個照 DELTA-4-6 第 5 條逐字抄索引標題「2026 年科技新聞總整理：硬體、平台、電信與法規的重點」→ https://mokaair.com/zh-TW/life/tech-news-2026-index。第二個由指派訊息指定；若指派訊息沒給，既有已發布的科技文章裡最貼題的是 tech-news-eu-cra-reporting-20260911（軟體安全通報義務），其 zh-TW title 逐字為「歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報」，**採用前務必打開該內容包再抄一次**。display_order 依 DELTA-4-6 第 4 條為 317。",
+  "must_not_write": [
+    "不寫「npm 已經禁止機器人直接發版」或「直接發布已經關閉」。9/18 這一版是 opt-in，原文明寫不動既有權杖與它們的直接發布能力；說明頁查核當天還寫著免 2FA 權杖目前仍可直接發布。",
+    "不把 targeting January 2027 寫成已定案、已生效或已排定的法規。一律寫成「npm 的目標是 2027 年 1 月」「預計」，並在文章裡點明這是廠商自己預告的時程、可能變動。",
+    "不寫 2027 年 1 月的任何一個日子。四份來源都只印到月份，補上日期就是文章自己的算術。",
+    "不把移除範圍放大成「所有 granular access token 都不能再直接發版」，也不可以只挑說明頁那句寬寫法當唯一答案。主述用 changelog 的範圍（免 2FA／bypass-2FA 權杖的直接發布），並把說明頁的不同措辭一起列出。",
+    "不把 7/31 那句「不影響 GitHub 個人存取權杖、GitHub App 權杖與 GITHUB_TOKEN」套到 2027 年那一項上。那句只綁 7 月 31 日那一次變更。",
+    "不寫只送審權杖等於「最小權限」或「安全邊界」。官方自己寫 It is not a general-purpose security boundary，而且它仍能搬 dist-tag、標記棄用；文章提到它的好處時必須同時寫出這兩項殘留權限。",
+    "不寫任何供應鏈攻擊案例、惡意套件名稱、攻擊手法或入侵指標（tech.md 的硬規則）。可以泛泛地說「被盜用的發版權杖是供應鏈投毒的常見入口」，但不得引任何具體事件——四份來源也沒有點名任何一件。",
+    "不寫受影響的套件數、開發者數、下載量或任何百分比。四份來源沒有印出任何這類數字。",
+    "不寫其他套件庫（PyPI、crates.io、RubyGems、Maven、NuGet…）的做法或跟進情況。四份來源一次都沒有提到。",
+    "不把 npm stage publish 寫成需要 2FA。說明頁明寫 npm stage publish does not require 2FA，需要 2FA 的是維護者核准那一步；寫反了整篇的重點就沒了。",
+    "不寫「新發布的套件也能走送審」。說明頁寫全新套件不能送審，changelog 寫只對既有套件有效。",
+    "不替這則公告寫任何時刻，也不寫換算後的台北鐘點；文章只寫 2026 年 9 月 18 日（美國太平洋時間）。",
+    "不寫作者名。版面上沒有署名，Allison 只存在於 JSON-LD。",
+    "不寫本站試過 npm CLI、建過權杖或跑過 stage 流程。本站沒有實測，也沒有登入任何 npm 帳號。",
+    "不寫台灣開發者「必須」在某日前完成遷移。四份來源沒有提到任何國家、地區或強制期限。",
+    "不引用 GitHub 社群討論串的任何內容或「開發者反應」——本輪沒有讀那兩個討論串。",
+    "不把說明頁自印的 Last edited 日期拿來推論功能上線時間先後。",
+    "圖解與 hero 不畫 npm、GitHub 的商標、字標或任何介面截圖；圖上不放正文沒有的數字。"
+  ],
+  "live_data_warnings": [
+    "**2027 年 1 月是廠商預告的目標，不是已生效的規定，隨時可能改動或延後。** 9/18 與 7/31 兩則 changelog 用的都是 targeting（「以……為目標」），而 about access tokens 說明頁同一件事寫成 will be removed in January 2027，兩者的語氣並不一致；且說明頁在查核當天仍寫 At the moment, bypass-2FA tokens can still be used for direct publishing。文章必須寫成預告時程，並註明查核日 2026-09-20；日後若要更新這篇，第一件事就是重抓這三頁確認時程與措辭有沒有變。",
+    "**npm Docs 是會被持續編輯的活文件。** about access tokens 查核當天自印 Last edited by Tayvon on September 10, 2026，staged publishing 自印 Last edited by karenjli on May 20, 2026。這兩個字串、頁面的段落結構與版本門檻（11.15.0／22.14.0）都可能在不另發 changelog 的情況下被改掉。所有引自這兩頁的句子都要繫「查核日 2026 年 9 月 20 日」，定稿當天要再抓一次。",
+    "**changelog 頁面的 Related Posts 區塊是動態的。** 本輪在該區塊看到 9/17、9/10、9/09、9/08、9/03、8/13、8/04、7/31、7/28 共九則相關公告，這個清單會隨新公告改變。本文只用它找到 7/31 那一則的網址，不引用清單本身，也不寫「npm 今年已經做了 N 次相關調整」這種靠清點得來的數字。",
+    "**本次抓取的位元組數與字元數是當下值，不是事實。** 96,648／513,037／525,755／102,883 bytes 與1,783／6,745／2,797／1,982 字元只用來判斷「有沒有拿到正文」，不得寫進文章，也不得寫進摘要或圖說。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "自動化只能送件",
+  "diagram": {
+    "title": "發版流程多了一道放行",
+    "caption": "npm「只送審」權杖的發版流程整理：自動化送件、維護者以 2FA 核准後才上架，查核日 2026 年 9 月 20 日。",
+    "nodes": [
+      [
+        "自動化送件",
+        "版本先進待審區"
+      ],
+      [
+        "維護者複查",
+        "可列出、檢視、下載"
+      ],
+      [
+        "2FA 放行",
+        "核准後才上架"
+      ],
+      [
+        "權杖仍有其他權限",
+        "可搬 dist-tag、標棄用"
+      ]
+    ]
+  },
+  "factcheck": {}
+}
