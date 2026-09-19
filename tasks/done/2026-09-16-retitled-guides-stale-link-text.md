@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-retitled-guides-stale-link-text
 title: 17 篇文章仍以四篇改過的舊標題當連結文字
-status: review
+status: done
 priority: P3
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:28:04Z
 created_at: 2026-09-16T03:49:41Z
-completed_at:
+completed_at: 2026-09-19T11:00:36Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-15-guide-titles-competing-queries
@@ -50,7 +50,7 @@ scope 裡的 17 篇（`grep -l` 四個舊標題找出來的）還以舊標題當
 
 - [x] 17 篇裡指向這四篇的 `article` inline，`text` 改成新標題或描述目標內容的短語（例如「GGUF 量化怎麼選」）。
 - [x] `grep -l` 四個舊標題在 `apps/api/app/guides/content/` 下找不到任何檔案。
-- [ ] 正式站以 `--slug` 限定匯入這 17 篇並發布。
+- [x] 正式站以 `--slug` 限定匯入這 17 篇並發布。
 
 ## Steps
 
@@ -110,3 +110,8 @@ python -m app.cli guides-import --actor-email <admin> --dry-run \
   --slug ollama-with-code-editors --slug qwen-local-deployment
 # 應列 17 篇 zh-TW 的更新；確認後同一串參數把 --dry-run 換成 --publish，再勾上面第三項並 done。
 ```
+
+### 2026-09-19 主機匯入（claude-opus-5，站主同意；部署 `14ce467d` 之後）
+
+- #563 改到的 571 個內容包先 dry-run：402 篇只有 `update`／`unchanged`、169 篇含 `create`（未發布的 AI coding、Claude Code、Codex 等，屬 `2026-09-15-publish-held-ai-coding-content` 的發布決定，全數排除，包括 zh-TW 更新、其他語系新建、分類會變的 `codex-beginner-guide`）。站主選「發布 402 篇更新」：發布前重跑計畫 402 篇、分類全 `unchanged`、無 `create`，`--publish` 結果 `updated 467`、`unchanged 51`、`published 467`、`created 0`、`failed null`；重跑 518 個語系全 `unchanged`。`guides-links-check --locale zh-TW` 仍是原本 32 筆（27 `missing` 指向待發布內容、5 `raw_url`），沒有新增。
+- 本票點名、且被 #563 改到的內容包全部在已發布的 402 篇裡；`transcription-desktop-tools` 是改名的目標文章本身，這次沒改到它。
