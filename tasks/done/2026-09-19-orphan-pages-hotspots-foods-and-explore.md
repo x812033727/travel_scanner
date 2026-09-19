@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-orphan-pages-hotspots-foods-and-explore
 title: Orphan pages: hotspots, foods and explore have no internal links
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-19T13:55:22Z
 created_at: 2026-09-19T13:55:12Z
-completed_at:
+completed_at: 2026-09-19T16:00:03Z
 branch: claude/google-indexing-issues-efbfb9
 depends_on: []
 scope:
@@ -82,3 +82,7 @@ that is absent from exactly the response bodies this task exists to fix.
 the HTML of every page, and the same for `MobileNav` and `AppBottomNav`. It is a larger,
 riskier change (it alters what paints before hydration on every route) and belongs in its own
 task.
+
+**Verified on production after #566 (`ecc6cbc0`) deployed 2026-09-19 15:56 UTC.** Clean
+anchors now present in the server HTML of `/zh-TW` and `/en`: `/hotspots`, `/foods`,
+`/explore` -- all three were zero before.
