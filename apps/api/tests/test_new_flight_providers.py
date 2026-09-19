@@ -159,7 +159,9 @@ async def test_flightaware_requires_exact_date_route_and_uses_cache() -> None:
 @pytest.mark.asyncio
 async def test_google_tim_enriches_with_selected_cabin_and_model_version() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
-        assert request.url.params["key"] == "key"
+        # The key travels in the header so no request log ever sees it (2026-09-19).
+        assert request.headers["X-Goog-Api-Key"] == "key"
+        assert "key" not in request.url.params
         flights = request.json()["flights"] if hasattr(request, "json") else None
         assert flights is None  # httpx Request intentionally exposes raw content only
         return httpx.Response(

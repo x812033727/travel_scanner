@@ -8,6 +8,7 @@ import httpx
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
+from app.hotspots.guides import GOOGLE_API_KEY_HEADER
 from app.providers.schemas import FlightOffer, FlightSegment
 
 
@@ -54,7 +55,7 @@ class GoogleTravelImpactProvider:
             if self.client is not None:
                 response = await self.client.post(
                     f"{self.settings.google_travel_impact_base_url}/flights:computeFlightEmissions",
-                    params={"key": key},
+                    headers={GOOGLE_API_KEY_HEADER: key},
                     json={"flights": flights},
                 )
             else:
@@ -63,7 +64,7 @@ class GoogleTravelImpactProvider:
                 ) as client:
                     response = await client.post(
                         f"{self.settings.google_travel_impact_base_url}/flights:computeFlightEmissions",
-                        params={"key": key},
+                        headers={GOOGLE_API_KEY_HEADER: key},
                         json={"flights": flights},
                     )
         except httpx.HTTPError as exc:
@@ -108,9 +109,7 @@ class GoogleTravelImpactProvider:
                 row = rows_by_flight.get(value)
                 if row is None:
                     row = (
-                        rows[index]
-                        if index < len(rows) and isinstance(rows[index], dict)
-                        else None
+                        rows[index] if index < len(rows) and isinstance(rows[index], dict) else None
                     )
                 if row is not None and model_version and "modelVersion" not in row:
                     row = {

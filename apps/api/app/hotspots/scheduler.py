@@ -21,8 +21,21 @@ async def run() -> None:
         await asyncio.sleep(settings.hotspot_collection_interval_seconds)
 
 
-def main() -> None:
+def configure_logging() -> None:
+    """INFO for the collector's own progress lines, WARNING for the HTTP client.
+
+    httpx logs every request URL at INFO, and until 2026-09-19 those URLs carried the
+    YouTube API key, which the Docker log driver then kept. The keys travel in a header
+    now, but query strings still carry search terms and place names, so the client's
+    request log stays off.
+    """
     logging.basicConfig(level=logging.INFO)
+    for noisy in ("httpx", "httpcore"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)
+
+
+def main() -> None:
+    configure_logging()
     asyncio.run(run())
 
 
