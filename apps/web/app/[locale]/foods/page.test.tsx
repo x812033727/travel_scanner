@@ -20,4 +20,20 @@ describe("foods SSR filter identity", () => {
     expect(load).toHaveBeenCalledWith("en", expected);
     expect(screen.getByRole("status").textContent).toBe(JSON.stringify(expected));
   });
+
+  it("filters the guides' ?city= links on the server, with destination_id still first", async () => {
+    const byCity = { destinationId: "kanazawa", area: "", category: "", query: "" };
+    const { container } = render(await FoodsPage({
+      params: Promise.resolve({ locale: "zh-TW" }),
+      searchParams: Promise.resolve({ city: " kanazawa " }),
+    }));
+    expect(load).toHaveBeenLastCalledWith("zh-TW", byCity);
+    expect(container.querySelector("output")?.textContent).toBe(JSON.stringify(byCity));
+
+    await FoodsPage({
+      params: Promise.resolve({ locale: "zh-TW" }),
+      searchParams: Promise.resolve({ destination_id: "tokyo", city: "kanazawa" }),
+    });
+    expect(load).toHaveBeenLastCalledWith("zh-TW", { ...byCity, destinationId: "tokyo" });
+  });
 });

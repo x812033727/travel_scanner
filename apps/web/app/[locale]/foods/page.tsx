@@ -21,7 +21,7 @@ export default async function FoodsPage({ params, searchParams }: {
 }) {
   const [{ locale }, query] = await Promise.all([params, searchParams]);
   const search = new URLSearchParams();
-  for (const key of ["destination_id", "area", "category", "style", "q"]) {
+  for (const key of ["destination_id", "city", "area", "category", "style", "q"]) {
     const value = query[key];
     const first = Array.isArray(value) ? value[0] : value;
     if (first !== undefined) search.set(key, first);
