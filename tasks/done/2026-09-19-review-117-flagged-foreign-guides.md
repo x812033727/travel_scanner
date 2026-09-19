@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-review-117-flagged-foreign-guides
 title: Review the 117 introductions the foreign-place rule flagged beyond the vetted 52
-status: review
+status: done
 priority: P2
 area: ops
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T08:32:20Z
 created_at: 2026-09-19T08:01:09Z
-completed_at:
+completed_at: 2026-09-19T09:59:10Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -36,7 +36,7 @@ and the rule's reason, is `docs/catalog-content-reviews/2026-09-19-foreign-guide
 ## Definition of done
 
 - [x] Every one of the 117 is marked in the JSON as `reject` or `keep`, with a one-line reason for each `keep`.
-- [ ] The `reject` rows are rejected on the host and no longer public; the `keep` rows stay approved.
+- [x] The `reject` rows are rejected on the host and no longer public; the `keep` rows stay approved.
 - [x] Rule misfires that repeat (a shape, not a single row) are written down for whoever tunes `foreign_place`. （2026-09-19：見 `2026-09-19-foreign-guides-review.md` 的三種誤判形狀，另開票 `2026-09-19-foreign-place-reason`。）
 
 ## Steps
@@ -45,7 +45,7 @@ and the rule's reason, is `docs/catalog-content-reviews/2026-09-19-foreign-guide
 - [x] Put the `keep` ids in a skip list and run the scan with `--skip-ids-file`, list only, to confirm the
       remaining findings are exactly the `reject` rows. (Skip list written; the confirmation run itself is the
       owner's, on the host — commands in `2026-09-19-foreign-guides-review.md`.)
-- [ ] With the owner's go-ahead, run the same command with `--apply --actor-email` (see the host commands in
+- [x] With the owner's go-ahead, run the same command with `--apply --actor-email` (see the host commands in
       `docs/catalog-content-reviews/2026-09-13-misplaced-guides.md`), then re-run list-only and expect 0.
 
 ## How to verify
@@ -77,3 +77,10 @@ After the apply this lists nothing.
   台北指南宮頁）、`c039721a`（觀光署景點總覽）、`94f810a9`（JETRO 觀光市場分析）——理由都在 `verdict_reason`。
 - 第 2 個 Step 的確認跑（`--skip-ids-file` list-only = 115 筆）與第 3 個 Step 的 `--apply` 都在主機上，由站主執行；
   這台機器沒有正式站。
+
+### 2026-09-19 主機執行（claude-opus-5，站主同意；部署 `f521b902` 之後）
+
+- 保留名單改用三個 `--skip-id` 帶入（不必把檔案 `docker compose cp` 進容器），內容與 `2026-09-19-foreign-guides-keep-ids.txt` 相同。
+- 只列不寫：findings 115，與 JSON 裡 `verdict=reject` 的 115 筆逐一相同（extra []、missing []），skipped 3。
+- 寫入前重跑清單未變，`--apply`（actor 取容器 `ADMIN_EMAILS`）：`rejected 115`、`already_rejected 0`、`missing 0`、skipped 3。
+- 再跑只列不寫：findings 0。規則命中的 165 筆全部處理完：兩輪合計退件 167 筆（52＋115；第一輪的 52 筆含 4 支規則看不到、用 `--reject-id` 點名的影片），保留 2 筆；`eff4dc8f` 從 2026-09-13 起就一直跳過。
