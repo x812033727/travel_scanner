@@ -403,7 +403,7 @@
         "13 至 17 歲預設體驗"
       ],
       [
-        "台灣現在有",
+        "台灣能對照的",
         "家長控制與年齡預測"
       ],
       [
@@ -648,6 +648,105 @@
       "PDF 網址裡那組不透明識別碼會不會被原地換掉：本輪重抓仍是 1,624,663 bytes、7 頁、同一組 metadata，43 條引文全中，但 PDF 沒有 CreationDate／ModDate，版本無法從檔案本身判斷。刊出前若再隔幾天，要照同一份配方再驗一次。",
       "藍圖對澳洲法制的描述（Privacy Act 1988、eSafety Codes 與 Standards、National Classification Scheme、Digital Duty of Care 草案、Productivity Commission 的建議）本輪同樣只讀到 OpenAI 的自述，沒有讀澳洲政府原文；正文每一處都已寫成「OpenAI 在藍圖裡寫／描述」。要寫成可信賴的澳洲法制現況，得加澳洲官方來源，那會超過 sources[] 的 4 條上限。",
       "ChatGPT for Teens 的開放地區隨時可能擴大，全篇繫在 2026-09-20 這個查核日；日後更新不能只改日期，要重讀 sources[2] 與新公告。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (second round)",
+      "checked_on": "2026-09-20",
+      "method": "2026-09-20（台北）第二輪獨立查核。四條 sources[] 全部今天以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body；所有請求只帶這個 User-Agent，UA、標頭、查詢字串與表單都沒有任何人的 email 或個人資料。結果：(1) 公告頁 HTTP 200、337,827 bytes，落地 https://openai.com/index/australian-youth-safety-blueprint/，body 是正文（指派訊息提到的間歇性 403 這輪沒發生，兩次重試都不必用）；(2) cdn.openai.com 的 PDF HTTP 200、1,624,663 bytes、content-type application/pdf，pypdf 讀到 7 頁，metadata 仍只有 {'/Title': 'An Australian Youth Safety Blueprint', '/Producer': 'Skia/PDF m155 Google Docs Renderer'}；(3) chatgpt-for-teens HTTP 200、441,097 bytes，body 是正文；(4) introducing-parental-controls HTTP 200、418,774 bytes，body 是正文，頁首仍是 Update on July 13, 2026。PDF 照 sourcing_notes 的配方處理：extract_text() 之後 re.sub(r'\\s+', ' ')，得到 18,620 字元的正規化全文；連字 ﬀ 11 次、ﬁ 33 次、ﬂ 5 次、ﬃ 1 次、ﬄ 2 次一律原樣保留，負面詞頻則另外還原連字後再以詞界比對重數。比對做了五件事：(a) 43 條 verbatim_quote 用程式對各自來源做連續字串比對，43 條全中、0 條落空；全篇沒有任何一條引文含 …／...／| 的拼接，不存在把兩處接成一句的問題。(b) 內容包拆成 118 條可核對單位（17 段正文逐句、summary 5 句、表格 22 格與 caption、圖解 caption 與 alt、FAQ 6 題答句、callout、兩個 link 的 text 與 url、title、description、4 條 source）逐條回來源，連同 (a) 共 161 條。(c) 指派訊息點名的第一輪新句逐字回原文：『內文沒有寫這項體驗在哪些國家或地區推出』、『沒有自稱是第一份或唯一一份』、『Kids Helpine（原文如此）』、『年齡判定這個流程』、『人類權威』、三處『以這四條來源查核到 2026 年 9 月 20 日』、以及所有 should 的中譯。(d) 否定句以還原連字後的詞界比對重數：四頁 Taiwan／Taiwanese／台灣 皆 0 次；8 月那頁 Australia／country／countries／region／regions／worldwide／global／globally／available in／Japan／Europe／EEA／New Zealand／Canada／United Kingdom 皆 0 次（頁上確有 Virginia、Texas、Miami 各 1 次，頁尾語言選單有 United States）；藍圖與公告頁 only／unique／sole 皆 0 次，公告頁 first 0 次，PDF first 3 次全部是 first generation ×2 與 Put teen safety first ×1、沒有一次在講文件順位，PDF globally 2 次、region 1 次、available in 1 次（Parental controls like those available in ChatGPT for Teens，不是地區清單）。(e) 公告頁的 <p> 結構重數一次，正文確實只有三段，且責任歸屬句在第二段段尾、Australia has an opportunity 在第三段、企業問責緊接六支柱那句之後——第一輪第 2、9 兩處改動成立。沒有替文章補任何 sources[] 以外的網址，sources[] 四條維持不動。",
+      "claims_checked": 161,
+      "changes": [
+        {
+          "where": "summary 第 4 句",
+          "before": "台灣的 ChatGPT 帳號現在有的，是 2025 年 9 月 29 日起對所有使用者開放的既有家長控制",
+          "after": "台灣的 ChatGPT 帳號能對照的，是 2025 年 9 月 29 日公告對所有使用者開放的家長控制",
+          "why": "第一輪的協調者裁決只改了 H4 第一句，summary 還留著被裁掉的『現在有的』。summary 必須 ⊆ 正文，而正文已經不再這樣斷言；這也正是『台灣段兩個方向都不寫死』要擋的那一個方向。整句照 H4 的定案寫法改齊。",
+          "source": "https://openai.com/index/introducing-parental-controls"
+        },
+        {
+          "where": "第 1 節第 2 段",
+          "before": "PDF 封面印的文件名稱是《An Australian Youth Safety Blueprint》，副標只印到月份「September 2026」",
+          "after": "PDF 開頭印的文件名稱是《An Australian Youth Safety Blueprint》，下方只印到月份「September 2026」",
+          "why": "兩個錯。(1) 這份 PDF 沒有獨立封面頁：pypdf 抽出的第 1 頁是 An Australian Youth Safety Blueprint September 2026 Foreword Today's young people will be the ﬁrst generation…，標題、月份與 Foreword 同在第 1 頁（2,060 字元），寫『封面』會讓讀者以為是一頁只有書名的封面。(2)『September 2026』是日期行不是副標；全篇唯一的副標在公告頁（OpenAI's approach to protecting, empowering, and creating safer experiences for young people）。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        },
+        {
+          "where": "第 1 節第 3 段",
+          "before": "兩者都寫 8 月起的 ChatGPT for Teens 在澳洲上路，對象是被判定為 13 至 17 歲的使用者，防護配合他們的發展需求。",
+          "after": "兩者都寫 8 月起的 ChatGPT for Teens 在澳洲上路，對象是被判定為 13 至 17 歲的使用者；公告頁那句還寫防護配合他們的發展需求。",
+          "why": "『兩者都寫』把只有公告頁有的字句算到 PDF 頭上。公告頁寫 with updated safeguards designed around their developmental needs；PDF 同一件事寫的是 This experience builds on OpenAI's existing eﬀorts to help young people learn, grow, and develop study skills, with updated guardrails designed to provide a safer environment，完全沒有 developmental needs。兩處真正都有的只有『在澳洲』與『13 至 17 歲』。",
+          "source": "https://openai.com/index/australian-youth-safety-blueprint"
+        },
+        {
+          "where": "第 2 節第 2 段",
+          "before": "第四項寫得比較具體：",
+          "after": "第四項裡的一句是：",
+          "why": "『比較具體』是拿第四項和其他五項相比的判斷，來源撐不住：第五、六兩項各自帶一串條列（預設通知已連結家長、轉介 Triple Zero 等四個管道、長時段休息提醒；電子郵件邀請連結帳號、管理記憶與位置、安靜時段與學習時段…），並不比第四項含糊。改成不作比較的指路句。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        },
+        {
+          "where": "第 3 節第 2 段（求助管道）",
+          "before": "是提供給澳洲讀者的資源",
+          "after": "是給澳洲使用者的資源",
+          "why": "藍圖寫的是把表達自殺意念的使用者轉介到這些現實世界資源（Supporting users who express suicidal intent in seeking help and referring them to real-world resources such as…），對象是使用者；這份文件自己的讀者是政策制定者，不是這四支電話的對象。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        },
+        {
+          "where": "第 3 節第 2 段（Privacy Act 1988）",
+          "before": "繫在澳洲現行法規《Privacy Act 1988》上",
+          "after": "繫在澳洲的《Privacy Act 1988》上",
+          "why": "『現行法規』是對澳洲法制現況的斷言，本輪（與第一輪）都沒有讀澳洲政府原文；unverified_or_excluded 第 5 條明文要求 Privacy Act 1988 只能照 OpenAI 的敘述寫。藍圖原文只有 Consistent with the Privacy Act 1988, we will continue to minimise the personal information collected through this process.，沒有交代這部法的效力狀態。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        },
+        {
+          "where": "第 4 節第 1 段",
+          "before": "公告只列出可設定的項目，沒有討論各種家庭情境要怎麼取捨。",
+          "after": "公告列出的是可設定的項目，沒有給不同家庭情境的取捨建議。",
+          "why": "『只列出可設定的項目』不成立：同一頁還寫了連結帳號的流程、連結後自動加上的內容防護、自傷傾向的通知系統、家長資源頁，以及 2026 年 7 月 13 日那段可直接開 Study Mode 的更新。真正成立的是它沒有給取捨建議——頁面對這件事只寫 These settings are optional and ﬂexible so families can choose what works best for them。",
+          "source": "https://openai.com/index/introducing-parental-controls"
+        },
+        {
+          "where": "第 4 節第 2 段",
+          "before": "既有家長控制加上這套全球共用的方法",
+          "after": "既有家長控制加上這套年齡預測方法",
+          "why": "同一段前面已經把『全球共用』歸因給 OpenAI（OpenAI 表示…和它在全球使用的是同一套），隔一句之後又用沒有歸因的『全球共用的方法』把廠商宣稱說成事實。改成指回同一件事、不重述宣稱的寫法。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        },
+        {
+          "where": "第 4 節第 3 段",
+          "before": "擴大到更多需要成人即時介入的情況",
+          "after": "擴大到更多可能需要成人緊急支援的情況",
+          "why": "原文是 additional situations where a teen may need urgent adult support：may 這個但書被刪掉，而且 support（支援）被寫成『介入』，比來源強。同一則更新接著自己限縮 These notiﬁcations are designed to be narrow…，方向正好相反。",
+          "source": "https://openai.com/index/introducing-parental-controls"
+        },
+        {
+          "where": "第 5 節第 3 段",
+          "before": "用意是在青少年安全立法還沒定案前先攤開自己的立場。…只有 2025 年 9 月 29 日起就有的家長控制",
+          "after": "用意是在澳洲青少年安全立法定案前先攤開自己的立場。…只有 2025 年 9 月 29 日起開放的家長控制",
+          "why": "兩處。(1)『青少年安全立法還沒定案』沒有國別，讀起來像對全世界作結；本輪唯一的依據是 OpenAI 對澳洲 Digital Duty of Care 的自述（exposure draft legislation currently out for consultation、if enacted），所以限在澳洲。(2)『9 月 29 日起就有的』把 2025 年那句 Available to all ChatGPT users starting today 推成一路存在到今天，正是本篇 live_data_warnings 第 4 條與協調者裁決要避開的推論；改成『起開放的』，只說來源說過的那一天。",
+          "source": "https://openai.com/index/introducing-parental-controls"
+        },
+        {
+          "where": "FAQ 第 5 題答句與 callout",
+          "before": "藍圖第五項支柱列給澳洲讀者的在地求助資源…而不是藍圖裡列出的澳洲專線／callout：藍圖裡列出的求助專線",
+          "after": "藍圖第五項支柱舉出的澳洲在地求助資源…而不是藍圖裡舉出的澳洲專線／callout：藍圖裡舉出的求助專線",
+          "why": "第一輪把正文改成『舉出…例如』（原文是 real-world resources such as，是舉例不是全清單），但 FAQ 與 callout 還留著『列給／列出』，會被讀成完整名單；順手把 FAQ 的『澳洲讀者』改成與正文一致的說法。三處統一。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        },
+        {
+          "where": "圖解 alt（內容包）與本紀錄 diagram.nodes 第 3 格",
+          "before": "alt：…台灣現在有家長控制與年齡預測…／nodes：[\"台灣現在有\", \"家長控制與年齡預測\"]",
+          "after": "alt：…台灣能對照的是家長控制與年齡預測…／nodes：[\"台灣能對照的\", \"家長控制與年齡預測\"]",
+          "why": "圖上這一格還寫著協調者已經裁掉的『台灣現在有』，而且正文從來沒說台灣有年齡預測——只說 OpenAI 表示辨識澳洲未成年使用者的方法和它全球使用的是同一套。SVG 本輪仍未產出（第一輪 left_for_the_owner 第 5 條），現在就改節點，出圖時才不會把被裁掉的說法畫上去。節點長度 6 個 CJK 單位，仍在 9 以內。",
+          "source": "https://cdn.openai.com/pdf/7e70543d-a803-44b7-8754-ca00b3f2ff0c/australian-youth-safety-blueprint.pdf"
+        }
+      ],
+      "open_questions": [
+        "第 4 節第 2 段的『這套年齡預測方法』之所以可以不重述歸因，是因為同一段前面就寫了『OpenAI 表示…和它在全球使用的是同一套』。日後若有人拆段或重寫這一段，歸因必須一起帶走，否則又會變成沒有歸因的廠商宣稱。",
+        "圖解四格與 hero 仍未出圖，--assets 這一輪同樣沒跑。本輪已把第 3 格改成『台灣能對照的』，出圖時請照改過的節點畫，並再與第 4 節正文對一次。",
+        "第一輪 left_for_the_owner 第 4 條（第二個結尾連結是不是『既有已發布』文章）已由指派訊息裁決：ai-news-google-cc-family-agent-20260918 是批次 4.5 已發布的文章。今天再把 link text 與 apps/api/app/guides/content/ai-news-google-cc-family-agent-20260918.json 的 zh-TW title 逐字比過，完全相同；兩個結尾連結本輪都沒有動。",
+        "PDF 的版本仍然無法從檔案本身判斷（沒有 CreationDate／ModDate）。今天重抓仍是 1,624,663 bytes、7 頁、同一組 metadata，43 條引文全中；刊出日若不是 2026-09-20，要照同一份配方再驗一次。",
+        "本輪沒有發現需要回一手來源裁決的『原稿疑似有誤』：藍圖自己的錯字（Kids Helpine、life-thretening、documental）依規格照印或不引用，PDF 的文法錯誤（policies that empowers）文章只作意譯、沒有當引文重現。"
+      ]
+    }
   }
 }
