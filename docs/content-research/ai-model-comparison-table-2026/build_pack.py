@@ -205,7 +205,7 @@ pack = {
     "slug": SLUG,
     "kind": "life",
     "destination_id": None,
-    "topics": ["ai", "software"],  # ai-plans re-added after ingest; see the filed task on pack_ingest._known_topics
+    "topics": ["ai", "software", "ai-plans"],
     "valid_until": None,
     "featured": False,
     "display_order": 100,

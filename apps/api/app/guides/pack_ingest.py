@@ -66,7 +66,7 @@ from app.guides.schemas import (
     TableBlock,
     section_of,
 )
-from app.guides.taxonomy import LIFE_SEED_TOPICS, SEED_TOPICS
+from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS
 from app.i18n import Locale
 from app.problems import AppError
 from app.site_pages.schemas import HeadingBlock, LinkBlock, ListBlock, ParagraphBlock
@@ -302,11 +302,7 @@ def lint_document(
                 f"no link block into this site ({SITE_ORIGIN}...): readers have nowhere to go next",
             )
         )
-    raw_urls = [
-        url
-        for url in _raw_site_urls(document)
-        if SITE_LINK.match(url) is not None
-    ]
+    raw_urls = [url for url in _raw_site_urls(document) if SITE_LINK.match(url) is not None]
     if raw_urls:
         problems.append(
             Problem(
@@ -750,8 +746,17 @@ class IngestReport:
 
 
 def _known_topics(kind: Kind) -> set[str]:
-    seeds = LIFE_SEED_TOPICS if section_of(kind) == "life" else SEED_TOPICS
-    return {slug for slug, _ in seeds}
+    """Every topic slug the write path accepts for this section: parents and subtopics.
+
+    ``admin_service._resolve_topics`` resolves against the ``guide_topics`` rows the
+    migrations seed from these same tuples, so a pack that names a subtopic imports fine;
+    until 2026-09-16 this check read the parents only and refused 805 published packs.
+    """
+    if section_of(kind) == "life":
+        return {slug for slug, _ in LIFE_SEED_TOPICS} | {
+            slug for slug, _parent, _labels in LIFE_SEED_SUBTOPICS
+        }
+    return {slug for slug, _ in SEED_TOPICS}
 
 
 def _load_json(path: Path) -> Any:

@@ -561,6 +561,7 @@ def test_lint_all_counts_sitemap_rows_but_has_no_ceiling_to_warn_about(tmp_path:
 
 # --- the Commons transport ------------------------------------------------------------------
 
+
 def _redirecting_server(location: str) -> tuple[HTTPServer, str]:
     """A one-shot HTTP server that answers `/start` with a 302 to `location`."""
 
@@ -596,9 +597,7 @@ def test_the_commons_transport_refuses_a_url_that_is_not_http(scheme: str) -> No
             client.get(f"{scheme}://example.invalid/whatever")
 
 
-@pytest.mark.parametrize(
-    "location", ["file:///etc/hostname", "ftp://example.invalid/x"]
-)
+@pytest.mark.parametrize("location", ["file:///etc/hostname", "ftp://example.invalid/x"])
 def test_a_redirect_cannot_leave_http(location: str) -> None:
     """The half that is easy to get wrong, and was.
 
@@ -625,3 +624,18 @@ def test_an_ordinary_redirect_is_still_followed() -> None:
             assert client.get(f"{base}/start").text == "ok"
     finally:
         server.shutdown()
+
+
+def test_ingest_knows_every_topic_the_write_path_accepts() -> None:
+    """``ingest`` used to read the parent topics only and refused 805 published packs."""
+    from app.guides.pack_ingest import _known_topics
+    from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS
+
+    life = _known_topics("life")
+    assert life == {slug for slug, _ in LIFE_SEED_TOPICS} | {
+        slug for slug, _parent, _labels in LIFE_SEED_SUBTOPICS
+    }
+    # The pair that exposed it: a sister pack carries ai-plans, a subtopic of ai.
+    assert {"ai", "software", "ai-plans", "claude-code", "ai-terms"} <= life
+    # Travel has no subtopics, so its vocabulary is exactly its parents.
+    assert _known_topics("howto") == {slug for slug, _ in SEED_TOPICS}

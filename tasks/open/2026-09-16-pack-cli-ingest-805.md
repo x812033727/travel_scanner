@@ -1,18 +1,21 @@
 ---
 id: 2026-09-16-pack-cli-ingest-805
 title: pack_cli ingest 不認子主題，805 篇已上線的內容包重跑會被擋
-status: open
+status: review
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T08:32:15Z
 created_at: 2026-09-16T13:31:06Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/guides/pack_ingest.py
+  - apps/api/tests/test_guides_pack_ingest.py
+  - docs/content-research/ai-model-comparison-table-2026/build_pack.py
 ---
+
 # pack_cli ingest 不認子主題，805 篇已上線的內容包重跑會被擋
 
 ## Why
@@ -49,17 +52,17 @@ finance-basics 15、ai-plans 11、ads 11、credit 9、tax-insurance 5
 
 ## Definition of done
 
-- [ ] 帶子主題的內容包可以直接 `pack_cli ingest`，不需要先拿掉再補回。
-- [ ] `ingest` 認得的主題集合跟寫入路徑（`admin_service._resolve_topics`）一致，
+- [x] 帶子主題的內容包可以直接 `pack_cli ingest`，不需要先拿掉再補回。
+- [x] `ingest` 認得的主題集合跟寫入路徑（`admin_service._resolve_topics`）一致，
       兩邊將來一起改，不會再各自漂移。
-- [ ] 有一個測試會在兩邊不一致時失敗，而不是等到有人跑 ingest 才發現。
+- [x] 有一個測試會在兩邊不一致時失敗，而不是等到有人跑 ingest 才發現。
 
 ## Steps
 
-- [ ] `_known_topics` 併入 `LIFE_SEED_SUBTOPICS`（以及旅遊側對應的子主題，如果有的話）。
-- [ ] 確認 travel 側的 `SEED_TOPICS` 有沒有同樣的漏洞，一起補。
-- [ ] 加一個測試：拿站上實際用過的主題集合去跑 `_known_topics`，有一個對不上就失敗。
-- [ ] 回頭把 `ai-model-comparison-table-2026` 的 `pack.json` 與 `build_pack.py` 裡那行
+- [x] `_known_topics` 併入 `LIFE_SEED_SUBTOPICS`（以及旅遊側對應的子主題，如果有的話）。
+- [x] 確認 travel 側的 `SEED_TOPICS` 有沒有同樣的漏洞，一起補。
+- [x] 加一個測試：拿站上實際用過的主題集合去跑 `_known_topics`，有一個對不上就失敗。
+- [x] 回頭把 `ai-model-comparison-table-2026` 的 `pack.json` 與 `build_pack.py` 裡那行
       「ai-plans re-added after ingest」的繞法註解拿掉，重跑一次 ingest 驗證。
 
 ## How to verify
@@ -79,3 +82,14 @@ uv run pytest tests/test_guides_pack_ingest.py tests/test_guides_content_pack.py
 `taxonomy.py:70-72` 寫得很明白：那兩個 tuple 是 append-only，
 `tests/test_guides_migration.py` 會拿 migration 0075／0076 的清單逐項比對，
 搬動任何一個 slug 都會跟線上資料庫對不起來。要改的是 `_known_topics` 這一邊。
+
+### 2026-09-19 修法（claude-fable-5-1）
+
+- `_known_topics("life")` = `LIFE_SEED_TOPICS` ∪ `LIFE_SEED_SUBTOPICS` 的 slug；travel 側沒有子主題
+  tuple（`taxonomy.py` 只有 `SEED_TOPICS`），維持原樣。沒有動兩個 append-only tuple。
+- 測試 `test_ingest_knows_every_topic_the_write_path_accepts`：直接拿 taxonomy 的 tuple 算集合比對，
+  兩邊將來一起改；不一致就紅。
+- `docs/content-research/ai-model-comparison-table-2026/build_pack.py` 的 topics 改回
+  `["ai", "software", "ai-plans"]`，繞法註解拿掉（`pack.json` 本來就含 `ai-plans`）。
+  `pack_cli ingest --from ../../docs/content-research --slug ai-model-comparison-table-2026 --dry-run`
+  現在通過（「dry run: nothing written」，沒有 `topic_unknown`）。
