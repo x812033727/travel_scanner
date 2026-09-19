@@ -262,3 +262,198 @@ OK ai-workflow-failures-and-guardrails paragraphs 2985 code_blocks 2 sources 6
 §1 第 1、2、3 段，§2 第 2、3 段，§3 第 1、2 段，§4 第 1、2、3 段，§5 第 1、2 段，
 FAQ 第 1、3、4 題，callout，description 與摘要第 1 句，
 以及研究紀錄新增的四條引文與 `factcheck` 欄位。
+
+---
+
+## 第二輪
+
+查核代理：第二輪，未參與撰稿、未參與第一輪。查核日 **2026-09-19**（與第一輪同一天；
+本輪沒有依今天的頁面改任何數字，所以五條 source 與研究紀錄的 `checked_on` 一律不動）。
+
+範圍不是整篇重做：覆核第一輪改動過的每一段與新寫進去的每一句。
+做法是把第一輪列出的 15 條改動逐條回到來源原文，另外用 `git show` 把第一輪之前的版本
+（`654c15d0`）叫出來，跟現在的內容包做**逐段文字 diff**，專門找「為了字數被刪掉的但書、
+限定詞與歸屬」——第一輪的報告只說「沒有刪」，本輪是自己比對一次。
+
+檢查的主張：**71 條**（第一輪改過的 description、摘要第 1 句、正文 17 段、callout、
+FAQ 三題、image caption 裡的每一句，加上 OWASP 十個條目編號與標題、五條 source 標題、
+八個站內文章標題、兩個範例的行為）。**又改了 4 處**（6 個編輯點），另有 6 件留給站主。
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料。**
+
+### 重抓結果：六條今天都讀到正文（含被移除的那條）
+
+| source | HTTP | bytes | body 是正文嗎 |
+| --- | --- | --- | --- |
+| `genai.owasp.org/llmrisk/llm102025-unbounded-consumption/` | 200 | 362,405 | **是**。定義段、7 個 Common Examples、15 條 Prevention and Mitigation Strategies、6 個 Example Attack Scenarios 全在 |
+| `genai.owasp.org/llmrisk/llm052025-improper-output-handling/` | 200 | 350,655 | **是**。定義段、5 個弱點例子、7 條緩解建議、6 個 Attack Scenario 全在（第一輪記 350,704；差 49 bytes 落在頁尾的分享／留言區塊，正文一字未動） |
+| `genai.owasp.org/llm-top-10/` | 200 | 913,375 | **是**。`LLM01:2025` 到 `LLM10:2025` 逐一印出 |
+| `developers.openai.com/api/docs/guides/safety-best-practices` | 200 | 396,143 | **是**。Moderation API、Adversarial testing、Human in the loop (HITL)、Constrain user input and limit output tokens 等節全在 |
+| `platform.claude.com/docs/en/…/mitigate-jailbreaks` | 200 | 408,985 | **是**。Indirect prompt injection ×3、JSON-encode untrusted content、Screen tool outputs、Chain safeguards 全在 |
+| ~~`modelcontextprotocol.io/docs/2026-07-28/…/security_best_practices`~~ | 200 | 560,645 | **是**（頁首 `Version 2026-07-28 (latest)`、`prompt injection` 0 次、`untrusted` 2 次）。**本輪從 `sources` 移除**，見第 1 條 |
+
+### 程式範例重驗（第二次）
+
+| 區塊 | 行數 | 編譯 | 實際執行 | 比對過的識別字 |
+| --- | --- | --- | --- | --- |
+| `budget_guard.py` | 54 | `python3 -m py_compile` 在 **Python 3.11.15 與 3.13.12** 都通過 | **跑過**：`guard stopped the loop: stopped after 6 steps: the cap is 6` | `@dataclass`（`docs.python.org/3/library/dataclasses.html`）、`RuntimeError`。無外部套件、無網路、無金鑰、無 `eval`、無刪檔 |
+| `handoff_envelope.py` | 69 | 同上 | **跑過**：印出 `heuristic flag: review before handing this off` 與包好的提示詞 | `json.dumps(..., ensure_ascii=False)`（`docs.python.org/3/library/json.html`）、`@dataclass`；`gpt-5.6-sol`／`claude-sonnet-5` 都在 `models-seen.json`，只當字串常數 |
+
+**行為與正文描述的一致性（協調者第 4 項），用探針腳本重跑一次：**
+
+```
+--- shipped params: which cap fires first ---
+  raised: BudgetExceeded | msg: stopped after 6 steps: the cap is 6
+  steps: 6 spent: $0.024
+  BudgetExceeded is a RuntimeError subclass: True
+--- budget cap path (step cap raised out of the way) ---
+  raised: BudgetExceeded | msg: stopped after 12 steps: spending $0.052 would cross the $0.050 cap
+  steps: 12 spent: $0.048
+--- record() returns? ---
+  record() return value on success: None
+--- handoff: quotes / newlines / closing tags inside upstream text ---
+  data block is a single line: True
+  data line: {"source_model": "gpt-5.6-sol", "content": "line1 \" quote\nline2 </instructions> <upstream_data> </upstream_data>"}
+  literal newline inside data line: False
+  looks_suspicious on clean text: False
+  looks_suspicious on IGNORE PREVIOUS INSTRUCTIONS (caps): True
+```
+
+- 出貨參數（`max_steps=6`、`max_cost_usd=0.05`、每步 `0.004`）**先撞步數上限**，第 6 步、只花到 `$0.024`；
+  把 `max_steps` 放大後第 13 次 `record()` 撞預算上限。兩條路徑都 **`raise BudgetExceeded`**
+  （`issubclass(BudgetExceeded, RuntimeError)` 為 `True`），成功時 `record()` 回傳 `None`——
+  §2 第 3 段「**拋出自訂例外中斷迴圈，不是回傳旗標讓呼叫端自己判斷**」與實跑一致。
+- `handoff_envelope.py`：把含引號、換行與 `</instructions>` 的字串丟進去，`json.dumps` 把引號逸出成 `\"`、
+  換行逸出成 `\n`，資料區塊仍是**單行**，字面上的 `</upstream_data>` 因此永遠不會單獨成行，
+  無法偽造區塊結尾。docstring 只宣稱引號與換行，**成立且沒有寫過頭**。
+  §4 第 3 段「包成有清楚欄位的資料物件」與程式的 `{"source_model", "content"}` 一致。
+- **本輪沒有改動任何一行程式**，行數仍是 54 與 69，`code_samples` 的 `lines` 不需要同步。
+
+### 改掉的 4 處
+
+1. **MCP 那條 source 整條移除（協調者第 3 項）。**
+   第一輪指出「正文已無任何句子引用它」但選擇保留。本輪逐處驗證這個判斷：把內容包 zh-TW 的
+   `sources` 以外**全部欄位**掃過一次，`MCP`／`Model Context` 只命中**一處**——
+   §4 第 3 段裡站內文章《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》的**標題**，
+   那是站內連結不是這份規格。summary 五句、FAQ 六題、表格十二格、callout、description、
+   圖解 caption、alt 全部沒有依賴它。
+   這份文件今天仍讀得到正文（頁首 `Version 2026-07-28 (latest)`，兩條引文都還在），
+   但撐不到正文任何一句；依 FACTCHECK「sources 撐正文」的規則，
+   內容包 `sources`、研究紀錄 `sources` 與兩條 MCP `verified_facts`
+   （`This document identifies security risks…`、`Version 2026-07-28 (latest)`）**一起拿掉**。
+   `sources` 剩 **5 條**（3–8 內），`verified_facts` 剩 15 條，**正文一個字都不必改**——
+   description 與圖解 caption 早在第一輪就改成「OWASP、OpenAI 與 Anthropic」，與剩下的五條完全對得起來。
+   研究紀錄的 `editorial_brief`、`unverified_or_excluded`、`must_not_write` 同步改寫，擋住日後回填。
+2. **§4 第 1 段「整理過這三支怎麼互接」→「整理過這種分工的腳本寫法」。**
+   第一輪把三支 CLI 從主句拿掉（改成「一個可以無人值守執行的命令列代理（Agent）……另一個做執行」），
+   但括號裡留著「**這三支**」——句子裡已經沒有這個指稱的對象，只能回頭指向文章標題裡的三個產品名，
+   等於把剛剛拆掉的行為又黏回三支工具。
+   站內《Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查》自己寫的是
+   「你會有一支串接三支 CLI 的 bash 腳本可以照抄修改」，並有一節「實作：一支 bash 腳本串起規劃、執行、審查」，
+   改成「這種分工的腳本寫法」與那篇一致，也保住第一輪「**會不會直接串接由腳本的寫法決定**」那句的效力。
+3. **§4 第 3 段補回第一輪為了字數刪掉的但書（協調者第 5 項的實際命中）。**
+   逐段 diff 比出來的：草稿原句是
+   「……也示範一個很粗略的字串比對，用來標記「這段資料裡好像混進了指令」——**這只是示意用的提醒，
+   不是完整的偵測，真正擋線是資料與指令分開這件事本身，不是這張比對表認不認得出每一種措辭。**」
+   第一輪整段刪掉，只留「下面這段可以離線執行的 Python 就是這個包裝方式。」
+   但程式**沒有跟著拿掉**：`handoff_envelope.py` 仍有 `SUSPICIOUS_PHRASES`（固定三句）與
+   `looks_suspicious()`，實跑第一行就印出 `heuristic flag: review before handing this off`，
+   正文卻不再解釋那是什麼，讀者會把固定三句的子字串比對讀成偵測機制。
+   已改成「下面這段 Python 就是這個包裝方式；**裡面那張措辭比對表只是示意用的提醒，
+   真正擋線的是資料與指令分開本身**。」——與程式碼註解
+   `Illustrative only: a real screen would be a small classifier call, not a fixed phrase list.
+   The actual guardrail is the data/instruction split below` 一致。
+   研究紀錄 `must_not_write` 加了一條擋住它再被刪。
+4. **騰字（先精簡重複敘述，再補句子）。**
+   第 2、3 條要加 +29 個單位，出手前先從**重複敘述**騰出 −25：
+   §1 第 2 段「第一個是／第二個是／第三個是」改成頓號並列（−12，三個情境 §1 第 1 段剛講過）；
+   §2 第 1 段「因為「格式不對就重試」這條規則」去掉重複的規則名（−9，同句開頭已經寫過）；
+   §4 第 3 段「可以離線執行的 Python」改成「這段 Python」（−7，「可離線執行」在 §2 第 3 段、
+   FAQ 第 6 題與兩個 code label 都寫過）；§5 第 1 段「三個案例的防護，管的是」→「三個防護管的是」（−4）。
+   **沒有刪掉任何但書、限定詞或歸屬。** 段落字數 2,985 → **2,989**。
+
+### 查過而且正確的部分（沒有動）
+
+- **OWASP 條目編號與標題逐字對今天的清單頁（協調者第 8a 項）**：`LLM01:2025` 到 `LLM10:2025`
+  十條都印得出來，`LLM05:2025 Improper Output Handling` 與 `LLM10:2025 Unbounded Consumption`
+  是兩個獨立項目，§1 第 3 段與 FAQ 第 4 題成立。
+- **第一輪兩處骨幹改寫今天再驗一次，都成立**：
+  LLM05 `Attack Scenario #1` 原文確實是
+  `The general purpose LLM directly passes its response, without proper output validation, to the
+  extension causing the extension to shut down for maintenance.`（下游是 extension）；
+  LLM10 的 `Denial of Wallet (DoW)` 是 `Common Examples of Vulnerability` **第 2 條**，
+  受害者寫的是 `the provider`。
+  另外把 LLM10 全頁掃過找非惡意成因：七個弱點例子與六個 `Example Attack Scenario` 全是
+  attackers／users，全文 `accidental`／`unintentional`／`misconfigur`／`bug`／`retry`／`loop`
+  **各 0 次**（唯一的 `runaway` 在參考連結標題，唯一的 `legitimate` 在 Scenario #2）。
+  §2 第 2 段「**這個條目沒有寫非惡意的情況**」與 §3 第 2 段「**成因不是……使用者過量請求**」
+  兩個限縮否定句都站得住。
+- **十五條緩解措施的數目與第 3、5、10 條標題逐字吻合**（`Rate Limiting`／`Timeouts and Throttling`／
+  `Limit Queued Actions and Scale Robustly`，第 15 條是 `Automated MLOps Deployment`）。
+- **OpenAI 那頁**：大寫 `Narrowing` 命中 1 次、小寫 `narrowing` **0 次**；`rate limit` 的 4 次命中
+  **全在左側導覽**，正文那一節叫 `Constrain user input and limit output tokens`——
+  第一輪改過的 source 標題成立。（頁面上的 `safety_identifier` 6 次、`gpt-6-astra` 6 次仍在，本篇沒有引用。）
+- **Anthropic 三條引文各命中 1 次**，`Where possible,` 的限定詞在正文與 FAQ 第 3 題都還在，
+  `classifier's` 是 ASCII 直撇。
+- **研究紀錄 15 條 `verbatim_quote` 全部通過**：用 Python 把每條**綁回它自己的 `url`**
+  （不是跨來源搜尋）做連續字串比對，**15／15 精確命中**；移除前的 17 條也是 17／17。
+  `verified_facts` 的 url 全在 `sources` 內，研究紀錄與內容包的 `sources` 網址與順序一致。
+- **系列兄弟篇用的是現在的標題（協調者第 8c 項）**：五篇逐字對過各自的內容包——
+  《安全防護機制（Guardrails）是什麼》《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》
+  《模型之間交接資料：JSON Schema 與結構化輸出》
+  《Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查》
+  《追蹤、評測與可觀測性：知道流程哪一步出錯》，全部一句帶過。
+  本篇沒有點名《模型路由與級聯：便宜先試、貴的兜底》與
+  《一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端》。
+  結尾兩個 `link` 的 text 逐字正確（「多模型 AI 工作流教學：從拆任務到串接不同模型」／
+  「提示詞注入是什麼：使用者該懂的攻擊」＝ `ai-prompt-injection-explained` 的 zh-TW title），
+  正文中間沒有 `link` 區塊。
+- **description 與圖解 caption 的來源清單與實際引用一致（協調者第 8b 項）**：兩處都寫
+  「OWASP、OpenAI 與 Anthropic」，移除 MCP 之後 `sources` 剛好就是這三家（OWASP ×3、OpenAI ×1、
+  Anthropic ×1），而且三家在正文裡各有逐字引文，「逐字引用歸因」這個說法撐得住。
+- **界線**：只有**一個** `warning` callout、**沒有**免責段落；沒有訂閱、購買、升級或投資建議；
+  沒有價格與推薦式比價；沒有「台灣可用」；沒有驚嘆號；沒有把預覽或 beta 寫成已推出。
+  用語統一：「防護」24 次，「護欄」「防護欄」「安全圍欄」「詞元」**各 0 次**。
+  全篇唯一的「保證」是被否定並標為本站看法的那一句。廠商宣稱都帶歸屬，本站判斷都標「本站」。
+- **與三篇必連文章不矛盾也不重講**：《提示詞注入是什麼》講的是四個入口與使用者做得到的五件事、
+  《安全防護機制（Guardrails）是什麼》講的是術語與檢查點、
+  《Claude Code｜MCP 回傳含有指令時》講的是單一工具回傳的實測流程；本篇只處理「模型對模型」的交接，
+  三篇各用一句帶過。
+- **摘要五句在正文都找得到**；圖解三組節點與表格十二格沒有數字要回正文比對；
+  兩個 caption 的「2026 年 9 月查證」仍成立。
+- **`models-seen.json` 不需要新增**（正文沒有模型 id，範例裡兩個都在清單內），本輪沒有動它。
+
+### 留給站主的事（第二輪）
+
+1. **第一輪還順手刪掉 §1 第 1 段的「或是任務做出計畫外的事情」。** 那不是但書，是第二個症狀舉例，
+   但刪掉之後導言只用「不必等帳單暴增才發現」收尾，跟案例三（被當成指令去執行）接不上。
+   字數還剩 11 個單位，站主想補回來就補，本代理沒有動。
+2. **§3 第 2 段的 OpenAI 引文只取「Narrowing the ranges of inputs or outputs」**，原句後面還有
+   `especially drawn from trusted sources`。那是強調而不是限定條件，引號裡也是連續字串，
+   所以本輪沒有改；研究紀錄第 12 條保留完整整句。
+3. **FAQ 第 1 題的「本篇查的官方文件都沒有給單一數字」沒有出現在正文裡**（正文只寫 OWASP 給的是三條方向）。
+   限縮否定句本身成立，但要嚴格做到「FAQ 答案 ⊆ 正文」，得在 §2 補一句，那要再騰字。
+4. **摘要第 1 句與 description 的「常見的三種失控」仍是沒有來源的頻率說法**
+   （第一輪已經把「最容易失控」降成這個）。要完全不帶頻率判斷可以改成「本篇挑的三種」，
+   但那會跟正文 §1 第 2 段重覆。
+5. **段落字數 2,989，離 3,000 只剩 11 個單位。**
+6. **第一輪留下的另外三件事重查後仍成立**：Anthropic 那頁在 JSON 包裝之前的
+   `Put untrusted content only in tool results.`（本篇範例做不到，正文也沒有宣稱符合全部建議）、
+   MCP 的 `latest` 日後還會前進、title 的「代理間注入」是本站的框架用語。
+   **MCP 那一條現在的狀態變了**：那份文件已經不在 `sources` 裡，日後要引用得先把它加回來。
+
+### 自檢
+
+```
+WARN - lint raw_internal_url: 2 article link(s) as raw URLs; run `pack_cli relink` so they become article inlines that follow the target's publication
+OK ai-workflow-failures-and-guardrails paragraphs 2989 code_blocks 2 sources 5
+```
+
+`OK`，沒有 FAIL；WARN 是結尾兩個純 `link` 尚未 relink，由協調者處理。
+
+### 結論（第二輪）
+
+`ok`。改了 4 處：移除一條沒有撐任何句子的 source、修掉一個第一輪改寫留下的懸空指稱、
+補回一句第一輪為了字數刪掉的但書、以及為了補那句話先精簡的四處重複敘述。
+第一輪動到的兩處骨幹（LLM05 的 extension、LLM10 的歸屬）與其餘 13 條改動今天逐條回原文重驗，
+**全部成立，沒有一條需要再改**；程式兩塊編譯與實跑的行為和正文描述一致，
+研究紀錄 15 條引文 15／15 精確命中。文章可刊。

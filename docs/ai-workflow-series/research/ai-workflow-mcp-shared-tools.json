@@ -114,6 +114,12 @@
       "verbatim_quote": "A local-scoped server loads only in the project where you added it and stays private to you."
     },
     {
+      "fact": "Claude Code 的 local scope 伺服器存在家目錄的 ~/.claude.json（第二輪查核補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code stores it in ~/.claude.json under that project’s path, so the same server won’t appear in your other projects."
+    },
+    {
       "fact": "Claude Code 的 project scope 把設定寫進專案根目錄的 .mcp.json，用版控跟團隊共用",
       "url": "https://code.claude.com/docs/en/mcp",
       "is_vendor_claim": true,
@@ -484,6 +490,47 @@
         "label": "只放行 flight_status：Codex 與 Gemini CLI 的白名單設定",
         "result": "ok"
       }
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (second round, did not write or first-round the article)",
+      "checked_on": "2026-09-19",
+      "claims_checked": 61,
+      "method": "只覆核第一輪改動過的段落與新寫進去的句子，不整篇重做：sources[] 七條今天全部以 curl -sL -A \"Mokaair-editorial\" 重抓（HTTP 200、bytes 與第一輪相同、body 都讀得到正文），研究紀錄 53 條 verbatim_quote（原 28 條＋第一輪新增 25 條）全部用程式做連續字串比對，HTML 來源只做空白與引號正規化、markdown 來源（README 與 gemini-cli 的 mcp-server.md）另外還原引用符號、行內反引號與硬斷行後比對，53 條全中，沒有一條需要改寫或刪除。三塊程式重新抽出重驗：python3 -m py_compile、bash -n、bash -n 全數通過，第三塊 heredoc 裡的 TOML 另用 tomllib 解析成 {'mcp_servers': {'flight-desk': {'command': 'python', 'args': ['flight_server.py'], 'enabled_tools': ['flight_status']}}}。任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有用 sources[] 以外的網址替文章補事實。",
+      "verdict": "ok",
+      "edits": [
+        "正文第 4 節第 1 段：「也就是 codex mcp add 已經幫你寫好的那一張表」改成「而文件說設定檔裡一支伺服器一張表，所以已經用 codex mcp add 登記過的話」——Codex 那一頁只寫 Configure each MCP server with a [mcp_servers.<server-name>] table in the configuration file.，沒有一句說 codex mcp add 會寫出這張表，第一輪把推論寫成了文件的話。同段結尾「方便你對照後貼過去」改成「你再把 enabled_tools 那一行加進去」，與 code 區塊 3 註解的 copy enabled_tools into the table 一致，避免讀者整張表貼過去又變成兩張同名表。",
+        "正文第 4 節第 2 段：「文件要你用這個完整名稱去指定權限規則、Skill 的 allowed-tools 清單、子代理的 tools 欄位或 hook 的比對條件」改成「文件講外掛伺服器的工具名稱時寫著，要用完整名稱去指定……，同一段也拿只寫伺服器名稱的形式當 hook 比對的例子」——Use this full name when referencing the tool in permission rules, a skill's allowed-tools list, a subagent's tools field, or a hook matcher. 這句出現在文件講外掛伺服器工具名稱的那一節，那裡的 full name 指的是 mcp__plugin_<plugin-name>_<server-name>__<tool-name>；本文用的非外掛形式在同一段只以 bare server key 的 mcp__database-tools__.* 出現。第一輪把這件事留給站主，第二輪直接把歸屬寫準。",
+        "正文第 3 節第 3 段：local scope 的「設定存在家目錄的使用者設定檔」改成「設定存在家目錄的設定檔」——文件把 local 與 user 兩個 scope 都存在 ~/.claude.json，叫它「使用者設定檔」會和 user scope 混淆（MCP local-scoped servers are stored in ~/.claude.json (your home directory)）。",
+        "為了騰出字數又不刪但書，精簡四處重複敘述：第 1 節第 1 段三個行程的並列句、第 1 節第 2 段結尾與導言重複的「只講怎麼讓三個客戶端一起用同一支」、第 3 節第 1 段與表格 caption 重複的表格引言、第 4 節第 2 段結尾與 callout 重複的「而不是圖方便整包放行」。段落字數維持 2,964。"
+      ],
+      "checked_and_correct": [
+        "第一輪換掉的 code 區塊 3：[mcp_servers.flight-desk] 與 command／args／enabled_tools 四個識別字逐字對得上 Codex 頁的欄位說明（command (required): The command that starts the server.、args (optional): Arguments to pass to the server.、enabled_tools (optional): Tool allow list.）與 config.toml examples 的表形狀；cat > flight-desk.codex.toml 只寫到讀者自己的暫存檔，不碰 ~/.codex/config.toml。",
+        "code 區塊 2 的三行指令與第一輪改過的兩行註解都對：claude mcp add [options] <name> -- <command> [args...]、Local scope is the default.、codex mcp add <server-name> ... -- <stdio server-command>、gemini mcp add [options] <name> <commandOrUrl> [args...] 與 -s, --scope 的 [default: \"project\"]。claude mcp add 這一頁列出的旗標只有 --transport、--env、--scope、--header、--client-id、--client-secret、--callback-port、--force，沒有工具白名單旗標，第一輪的範圍句成立。",
+        "Python 範例的每一個符號今天重抓後沒變：README 仍是 from mcp.server import MCPServer / mcp = MCPServer(\"Demo\") / @mcp.tool()（不是 FastMCP），Requirements 仍是 Python 3.10+.；Tools 頁仍是 from mcp.types import ToolAnnotations 與 annotations=ToolAnnotations(read_only_hint=True, open_world_hint=False)、Annotated[str, Field(description=...)]；run 頁仍是 With no argument, the transport is stdio. 與 mcp.run(transport=\"streamable-http\", port=3001)。",
+        "正文點名的四篇必連文章標題逐字等於它們內容包現在的 zh-TW title；本文沒有點名任何一篇 ai-workflow 系列兄弟篇，所以沒有用到舊標題的問題。結尾兩個 link 的 text 也逐字相符。",
+        "界線重掃：只有一個 warning callout、沒有免責段落、沒有價格與額度、沒有購買或訂閱建議、沒有寫台灣可用；廠商宣稱全部有歸屬；否定句都掛在「這一頁」或「本文查證當天」。",
+        "checked_on 2026-09-18 今天沒有任何數字或名稱跟著頁面改動，依規格不動；models-seen.json 不需要新增（全篇沒有模型 id）。"
+      ],
+      "left_for_the_owner": [
+        "code 區塊 3 仍然只把整張 TOML 表寫到 flight-desk.codex.toml，讀者要自己把 enabled_tools 那一行搬進 ~/.codex/config.toml。Codex 那一頁沒有任何用指令設定工具白名單的做法，這是文件的缺口，不是本文的。",
+        "本文說 codex mcp add 登記過的伺服器在設定檔裡已經有一張 [mcp_servers.<名稱>] 表，是從「設定存在 config.toml」加「一支伺服器一張表」推出來的，文件沒有一句直接這樣寫；第二輪已把句子改成條件句，若站主要寫得更死需要另一份文件佐證。",
+        "段落字數 2,964，離上限 3,000 只剩 36 字，和第一輪相同（本輪補的三處都用精簡重複敘述換來）。翻譯或後續補句前要先看字數，不可以刪但書或限定詞來湊。",
+        "兩個結尾 link 仍是純 link（自檢的 raw_internal_url WARN），等協調者 relink。"
+      ],
+      "code_recompiled": [
+        {
+          "label": "flight_server.py（套件：mcp[cli]；Python 3.10 以上）",
+          "result": "ok"
+        },
+        {
+          "label": "三個客戶端登記同一支 stdio 伺服器的指令",
+          "result": "ok"
+        },
+        {
+          "label": "只放行 flight_status：Codex 與 Gemini CLI 的白名單設定",
+          "result": "ok"
+        }
+      ]
+    }
   }
 }

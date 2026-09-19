@@ -237,6 +237,18 @@
       "url": "https://github.com/openai/openai-python",
       "is_vendor_claim": true,
       "verbatim_quote": "# 20 seconds (default is 10 minutes)"
+    },
+    {
+      "fact": "LiteLLM 首頁 Quick Start 示範某一家供應商時，會在同一段範例裡設好那一家的環境變數，例如 Anthropic 那一頁籤設的是 ANTHROPIC_API_KEY。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "os.environ[\"ANTHROPIC_API_KEY\"] = \"your-api-key\""
+    },
+    {
+      "fact": "OpenRouter 的 API 參考在請求 schema 的註解裡，示範用 supported_parameters 這個條件篩出支援工具呼叫的模型。",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "See models supporting tool calling: openrouter.ai/models?supported_parameters=tools"
     }
   ],
   "unverified_or_excluded": [
@@ -244,7 +256,8 @@
     "OpenRouter 的 X-OpenRouter-Categories 標頭：查到但這篇的程式沒有用到行銷分類功能，只在正文提一次，不放進程式碼。",
     "Groq 對 Audio Transcription／Translation 欄位（vtt、srt 不支援）與 Responses API 的細節：跟這篇的 Chat Completions 範例無關，不放進來，避免離題。",
     "LiteLLM 呼叫 Azure OpenAI、Bedrock、Vertex AI 的完整設定：這篇的重點是 OpenRouter 與另一個原生相容端點的對照，其餘供應商細節留給讀者自己查 LiteLLM 的 Providers 文件。",
-    "Groq 與 OpenRouter 的定價、免費額度：這篇不比價，留給系列的成本文章處理。"
+    "Groq 與 OpenRouter 的定價、免費額度：這篇不比價，留給系列的成本文章處理。",
+    "OpenRouter 單一模型頁上是否逐項列出該模型支援哪些欄位：sources 裡的兩頁 OpenRouter 文件都沒有這句話，第二輪把原本的寫法換成 API 參考真的寫得出來的 supported_parameters 篩選。"
   ],
   "must_not_write": [
     "OpenRouter 的儲值、手續費、免費模型與隱私設定：站上《OpenRouter：一把金鑰用遍各家模型》已經整理過。",
@@ -252,7 +265,8 @@
     "本站對任何模型輸出品質或速度的實測結果：本站沒有實測。",
     "不可寫成「LiteLLM 依前綴決定要呼叫哪一家的 API、該讀哪一組環境變數的金鑰」：sources 裡的三頁 LiteLLM 文件都沒有這句機制說明（prefix 一字 0 次），只有 OpenRouter 那一頁寫 send model=openrouter/<...> 會送到 OpenRouter，其餘是範例的寫法與各自設定的環境變數。各語系照這個限縮翻。",
     "不可把 LiteLLM 的 anthropic/claude-sonnet-5（前綴＋Anthropic 自己的代號，讀 ANTHROPIC_API_KEY）與 OpenRouter 目錄裡同形的 anthropic/claude-sonnet-5 混為一談，兩者語意不同。",
-    "Groq 不支援欄位的清單要四個一起寫（logprobs、logit_bias、top_logprobs、messages[].name），不可只寫三個；「目前」這個限定詞不可刪。"
+    "Groq 不支援欄位的清單要四個一起寫（logprobs、logit_bias、top_logprobs、messages[].name），不可只寫三個；「目前」這個限定詞不可刪。",
+    "不可寫成「LiteLLM 官方文件的每個範例都把供應商名稱寫在 model 字串最前面」：同一頁的 Logging 與 Track Costs 範例用的是沒有前綴的 model=\"gpt-5.6-terra\"，Proxy 那段呼叫的是 config 裡取的 model_name。限縮成「示範每一家供應商時」才成立，各語系照這個限縮翻。"
   ],
   "editorial_brief": "這篇的切角是「OpenAI 相容」這一層本身：base_url 與 model 字串怎麼換、OpenRouter 這種已經架好的託管閘道和 LiteLLM 的 SDK／Proxy 有什麼差別、相容的範圍到哪裡。OpenRouter 自己的帳號、費用與隱私設定交給《OpenRouter：一把金鑰用遍各家模型》，怎麼依成本或路由規則選供應商交給系列另外兩篇，這篇只示範程式碼怎麼寫、寫完之後行為哪裡會不一樣。",
   "code_samples": [
@@ -293,7 +307,7 @@
       ],
       [
         "換三個值",
-        "端點、金鑰、model"
+        "base_url、金鑰、model"
       ],
       [
         "託管閘道",

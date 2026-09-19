@@ -73,7 +73,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁 MODEL ID 欄位上的代號，那一頁把它寫成 OpenAI 的旗艦開放權重模型。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
+          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁 MODEL ID 欄位上的代號，那一頁把它寫成 OpenAI 的旗艦開放權重模型。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 目錄裡的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
         },
         {
           "type": "heading",
@@ -86,7 +86,7 @@
         },
         {
           "type": "paragraph",
-          "text": "LiteLLM 的 model 字串自己帶著供應商：官方文件的每個範例都把供應商名稱寫在最前面、用斜線隔開，例如 model=\"openai/gpt-5.6-terra\"，並在同一段範例裡設好對應的環境變數（OPENAI_API_KEY、ANTHROPIC_API_KEY）；透過 OpenRouter 轉接時要多包一層，文件寫送 model=openrouter/ 加上你的 OpenRouter 模型，請求就會送到 OpenRouter，範例是 model=\"openrouter/google/palm-2-chat-bison\"，金鑰讀 OPENROUTER_API_KEY，OPENROUTER_API_BASE 是選用欄位，不設定時預設就是 https://openrouter.ai/api/v1。下面同一段迴圈換了三次 model 字串，其他呼叫方式完全沒變；google/gemini-3.8-flash 一樣是 OpenRouter 上的代號，要直接向 Google 申請金鑰、建立第一支呼叫，見《AI Studio 與第一個 Gemini API 呼叫》。"
+          "text": "LiteLLM 的 model 字串自己帶著供應商：官方文件示範每一家供應商時，都把供應商名稱寫在最前面、用斜線隔開，例如 model=\"openai/gpt-5.6-terra\"，並在同一段範例裡設好對應的環境變數（OPENAI_API_KEY、ANTHROPIC_API_KEY）；透過 OpenRouter 轉接時要多包一層，文件寫送 model=openrouter/ 加上你的 OpenRouter 模型，請求就會送到 OpenRouter，範例是 model=\"openrouter/google/palm-2-chat-bison\"，金鑰讀 OPENROUTER_API_KEY，OPENROUTER_API_BASE 是選用欄位，不設定時預設就是 https://openrouter.ai/api/v1。下面同一段迴圈換了三次 model 字串，其他呼叫方式完全沒變；google/gemini-3.8-flash 一樣是 OpenRouter 上的代號，要直接向 Google 申請金鑰、建立第一支呼叫，見《AI Studio 與第一個 Gemini API 呼叫》。"
         },
         {
           "type": "code",
@@ -130,11 +130,11 @@
         },
         {
           "type": "paragraph",
-          "text": "換 base_url 與 model 字串解決的是「程式不用為每家供應商重寫一份呼叫邏輯」，但解決不了其他幾件事。價格、免費額度、速率限制是供應商自己訂的，換一個相容端點不會讓它們變得一樣，這篇不比價，系列另一篇《成本、品質、延遲：多模型流程怎麼取捨》會專門整理怎麼在三者之間取捨。同樣地，相容層幫忙轉接的是單一次請求，request 裡帶了工具呼叫（tool calling）之類的功能，底層模型本身支不支援仍然是那個模型自己的事。"
+          "text": "換 base_url 與 model 字串解決的是「程式不用為每家供應商重寫一份呼叫邏輯」，但解決不了其他幾件事。價格、免費額度、速率限制是供應商自己訂的，換一個相容端點不會讓它們變得一樣，這篇不比價，系列另一篇《成本、品質、延遲：多模型流程怎麼取捨》會專門整理怎麼在三者之間取捨。同樣地，相容層幫忙轉接的是單一次請求，請求裡帶了工具呼叫（tool calling）之類的功能，底層模型本身支不支援仍然是那個模型自己的事。"
         },
         {
           "type": "paragraph",
-          "text": "要確定某個模型、某個供應商實際支援哪些參數，LiteLLM 官方文件提供一個 get_supported_openai_params() 函式，帶入 model 與供應商名稱就能查到一份清單，比自己一個個手動試更快；OpenRouter 則是把整份模型清單放在公開的 API 上，每個模型頁也會列出它支援哪些欄位。這篇只示範兩個直連的端點與一段 LiteLLM 程式，還沒有真的依價格或失敗與否切換供應商，那部分屬於系列另一篇《模型路由與級聯：便宜先試、貴的兜底》要講的內容，這裡不重複。"
+          "text": "要確定某個模型、某個供應商實際支援哪些參數，LiteLLM 官方文件提供一個 get_supported_openai_params() 函式，帶入 model 與供應商名稱就能查到一份清單；OpenRouter 則是在 API 參考的註解裡示範，用 supported_parameters 篩出支援工具呼叫的模型。這篇只示範兩個直連的端點與一段 LiteLLM 程式，還沒有真的依價格或失敗與否切換供應商，那部分屬於系列另一篇《模型路由與級聯：便宜先試、貴的兜底》要講的內容，這裡不重複。"
         },
         {
           "type": "table",
@@ -195,7 +195,7 @@
             },
             {
               "question": "LiteLLM 的 model 字串為什麼要加供應商前綴？",
-              "answer": "官方文件的每個範例都把供應商名稱寫在 model 字串最前面、用斜線隔開，例如 openai/gpt-5.6-terra、anthropic/claude-sonnet-5，並在同一段範例裡設好對應的環境變數；OpenRouter 那一頁還明講，送 openrouter/ 加上你的 OpenRouter 模型，請求就會送到 OpenRouter。這篇的範例都照這個寫法。要注意 anthropic/claude-sonnet-5 這種字串在 LiteLLM 與在 OpenRouter 同形不同意：前者是 LiteLLM 前綴加 Anthropic 自己的代號，後者是 OpenRouter 目錄裡的代號。"
+              "answer": "官方文件示範每一家供應商時，都把供應商名稱寫在 model 字串最前面、用斜線隔開，例如 openai/gpt-5.6-terra、anthropic/claude-sonnet-5，並在同一段範例裡設好對應的環境變數；OpenRouter 那一頁還明講，送 openrouter/ 加上你的 OpenRouter 模型，請求就會送到 OpenRouter。這篇的範例都照這個寫法。要注意 anthropic/claude-sonnet-5 這種字串在 LiteLLM 與在 OpenRouter 同形不同意：前者是 LiteLLM 前綴加 Anthropic 自己的代號，後者是 OpenRouter 目錄裡的代號。"
             },
             {
               "question": "要自己架 LiteLLM 的 Proxy，還是直接用 OpenRouter 比較好？",
