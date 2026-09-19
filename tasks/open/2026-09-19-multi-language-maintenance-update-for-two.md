@@ -41,8 +41,8 @@ scope:
 
 ## Steps
 
-- [ ] 馬祖：來源 moda 新聞稿 20670（2026-09-18；三家電信各一個應用：中華電信「AI數位文化科技應用」、遠傳「五官鏡」5G 智慧醫療、台灣大「Smart Campus 智慧校園大可能」），新小標「同日在馬祖：數發部與三大電信展示 5G 應用」
-- [ ] Apple：來源 Apple 台灣 Newsroom「最新 iPhone、Apple Watch 與 AirPods 系列產品登陸全球 Apple 直營店」（事件日 2026-09-18；台灣版發布日 09-19 台北），新小標「9 月 18 日：全球直營店開賣」，只寫開賣日與公告點名的機型
+- [ ] 馬祖：來源 https://moda.gov.tw/press/press-releases/20670（2026-09-18；三家電信各一個應用：中華電信「AI數位文化科技應用」、遠傳「五官鏡」5G 智慧醫療、台灣大「Smart Campus 智慧校園大可能」），新小標「同日在馬祖：數發部與三大電信展示 5G 應用」
+- [ ] Apple：來源 https://www.apple.com/tw/newsroom/2026/09/the-latest-iphone-apple-watch-and-airpods-lineups-arrive-in-stores-worldwide/ 「最新 iPhone、Apple Watch 與 AirPods 系列產品登陸全球 Apple 直營店」（事件日 2026-09-18；台灣版發布日 09-19 台北），新小標「9 月 18 日：全球直營店開賣」，只寫開賣日與公告點名的機型
 - [ ] 四語翻譯（照 4.2／4.5 的 TRANSLATE.md）與逐語審稿，或站主決定只補 zh-TW 並接受四語 parity 例外（要改 checker 或改規則，另議）
 
 ## How to verify
