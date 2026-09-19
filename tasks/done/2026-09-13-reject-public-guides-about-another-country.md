@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-reject-public-guides-about-another-country
 title: 五十二篇已公開的景點介紹講的是別的國家，逐筆退掉
-status: open
+status: done
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-19T07:58:53Z
 created_at: 2026-09-13T12:50:11Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-09-19T08:00:04Z
+branch: claude/host-steps-2026-09-19
 depends_on: []
 scope:
   - docs/catalog-content-reviews/2026-09-13-misplaced-guides.md
@@ -34,14 +34,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 下面 52 筆全部 `rejected`，公開的探索清單與景點頁都查不到。
-- [ ] 用同一條規則（`app.hotspots.guides.foreign_place`）把所有 `approved` 的介紹掃過一次——五個語系、
+- [x] 下面 52 筆全部 `rejected`，公開的探索清單與景點頁都查不到。
+- [x] 用同一條規則（`app.hotspots.guides.foreign_place`）把所有 `approved` 的介紹掃過一次——五個語系、
       文章與影片都算，不只這份從公開視窗查到的 52 筆。
 - [x] 逐筆結果寫進 `docs/catalog-content-reviews/2026-09-13-misplaced-guides.md`。（2026-09-19：清單、狀態與指令已寫入；主機跑完後補掃描結果）
 
 ## Steps
 
-- [ ] 用既有的後台端點退件，理由一致（需要 `content.manage` 權限的管理員；一次最多 100 筆，52 筆一批即可）：
+- [x] 用既有的後台端點退件，理由一致（需要 `content.manage` 權限的管理員；一次最多 100 筆，52 筆一批即可）：
 
 ```http
 POST /api/v1/admin/hotspots/guides/review
@@ -105,8 +105,8 @@ POST /api/v1/admin/hotspots/guides/review
 ]
 ```
 
-- [ ] 退完後重跑本票 Notes 裡的掃描，確認 0 筆。
-- [ ] 再跑一次全語系、含影片的掃描，把新查到的帶回這張票或另開一張。
+- [x] 退完後重跑本票 Notes 裡的掃描，確認 0 筆。
+- [x] 再跑一次全語系、含影片的掃描，把新查到的帶回這張票或另開一張。
 
 ## How to verify
 
@@ -202,3 +202,10 @@ curl -s "https://mokaair.com/api/travel/discovery/search?type=article&limit=50&l
 - 剩下要站主做的：部署後在主機跑文件裡的三步（先列、再 `--apply`、再重跑確認 0 筆），把輸出貼回文件的「掃描結果」
   一節，再 `done`。第 1 步若命中超過 52 筆，多出來的是公開視窗看不到的或其他語系的列，逐筆看標題後一起退。
   認領已釋出。
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- 先跑 `guides-foreign-place-scan --skip-id eff4dc8f-… --verbose`（只列不寫）：掃 6,061 筆 approved，命中 **165 筆**。其中 48 筆在上表的 52 筆裡，上表另外 4 筆就是規則看不到、要用 `--reject-id` 點名的影片；**117 筆不在上表**。
+- 站主選「只退核對過的 52 筆」：117 筆逐一 `--skip-id`，加 4 個 `--reject-id` 與 `--apply`，actor 取容器的 `ADMIN_EMAILS`。結果 `rejected 52`、`already_rejected 0`、`missing 0`，走的是 #559 的 CLI（寫後台端點同一組欄位加一筆稽核），不是後台端點本身。
+- 重跑只列不寫：剩 117 筆，**上表 52 筆一筆都不在**。公開 API `discovery/search?type=article&destination=hanoi` 查 `ecfc44df` 為 0。
+- 117 筆沒有逐筆看過：多數確實掛錯（釜山國際市場掛 JNTO 訪日市場統計、順化孝陵掛台灣旅遊部落格、札幌圓山公園掛台北圓山），也有誤判（`6da32c2d` 是 NAVITIME 介紹澀谷店本身，被判成泰國）。清單在 `docs/catalog-content-reviews/2026-09-19-foreign-guides-unreviewed.json`，另開票 `2026-09-19-review-117-flagged-foreign-guides` 逐筆處理。

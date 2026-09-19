@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-non-japan-reservation-sweep
 title: 台灣、新加坡、泰國、越南的訂位連結再掃一輪
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-19T07:58:56Z
 created_at: 2026-09-12T13:54:35Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-09-19T08:00:05Z
+branch: claude/host-steps-2026-09-19
 depends_on: []
 scope:
   - apps/api/app/foods/data/platform_reviews/2026-09-13-non-japan-platforms.json
@@ -38,7 +38,7 @@ scope:
 
 - [x] 這四國沒有訂位連結的店家都用第二輪的方法查過一次。（2026-09-13：105 間全部查過，
       結果寫在 `docs/catalog-content-reviews/2026-09-13-non-japan-platforms.md`）
-- [ ] 能訂位的公開，不能訂位的存成停用，結果走 `apply-food-platform-reviews --file` 匯入。
+- [x] 能訂位的公開，不能訂位的存成停用，結果走 `apply-food-platform-reviews --file` 匯入。
       （這一輪沒有任何一家變成可訂位；104 筆待匯入）
 
 ## Steps
@@ -47,7 +47,7 @@ scope:
 - [x] 每一國都改用該平台**自己的搜尋介面**查，而不是只看上一輪的候選頁；
       每個管道都先用平台上已知存在的店家驗證過會回傳正確結果。
 - [x] 候選頁一律實際打開、依頁面上本店自己的訂位控制項機械化判斷。
-- [ ] 產出 review 檔與查核摘要（已完成），PR、合併、部署、試跑、`--apply`。
+- [x] 產出 review 檔與查核摘要（已完成），PR、合併、部署、試跑、`--apply`。
 
 ## How to verify
 
@@ -113,3 +113,8 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-fo
 
 （`--file` 參數名以 `python -m app.cli apply-food-platform-reviews --help` 為準。）套用後把 stdout 貼回本票再
 `done`。inline 的三筆懸案（高雄舊振南、ACME 北美館店）仍未解，不在這次套用範圍。認領已釋出。
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- 試跑 `apply-food-platform-reviews --file app/foods/data/platform_reviews/2026-09-13-non-japan-platforms.json`：104 筆，`would_update 98`、`would_create 6`、0 skipped，和票上預期一致。
+- 套用 `--apply`：`applied: true`、`updated 98`、`created 6`、0 skipped；狀態 `not_found 102`、`disabled 2`，沒有 verified，所以這批只寫入查證結果，不新增公開的訂位按鈕。

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-tables-coffee-closed
 title: TABLES Coffee Bakery & Diner 已停業，仍公開在大阪美食清單
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-19T07:58:57Z
 created_at: 2026-09-12T05:58:48Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-09-19T08:00:06Z
+branch: claude/host-steps-2026-09-19
 depends_on: []
 scope:
   - apps/api/app/foods/data/trend_merchants.json
@@ -25,12 +25,12 @@ scope:
 ## Definition of done
 
 - [x] 確認是否真的停業（官方帳號、Google 地圖、當地報導其中之一）。（2026-09-19：經營公司官方公告，見 Notes）
-- [ ] 若已停業，從公開清單下架，並記下判定來源。
+- [x] 若已停業，從公開清單下架，並記下判定來源。
 
 ## Steps
 
 - [x] 查證。
-- [ ] 下架或保留，兩種結果都把證據寫進票裡。
+- [x] 下架或保留，兩種結果都把證據寫進票裡。
 - [x] 順手看看同一批種子裡有沒有別家也是三個平台同時查無。（2026-09-19：三份平台查核檔裡只有這一家帶停業字樣；其餘「closed」都是公休日）
 
 ## How to verify
@@ -59,3 +59,8 @@ Bakery & Diner」、ぐるなび `c018405` 轉回首頁、ホットペッパー 
 「停用」（`POST /api/v1/admin/foods/merchants/batch`，`action: "disable"`，會把 `review_status` 設為 `disabled`、
 `is_active` 設為 false，留稽核）。之後用 `https://mokaair.com/api/travel/foods/merchants?limit=50` 逐頁確認
 查不到，再把本票 `done`。認領已釋出。
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- 站主在 `/zh-TW/admin/foods?tab=catalog&section=merchants` 勾選本店後按「批次停用」（`POST /admin/foods/merchants/batch`，action `disable`）。資料庫 2026-09-19 07:53:13 UTC 起為 `review_status = disabled`、`is_active = false`；公開 API 在 `osaka-kyoto` 查 `TABLES` 為 0 筆。
+- 批次端點不收理由，判定來源就是本票上面的官方閉店公告與三個平台的狀態。

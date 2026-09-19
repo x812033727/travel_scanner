@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-re-add-the-seoul-national-folk
 title: Re-add the Seoul National Folk Museum after its Wikidata QID was tombstoned
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-19T07:58:58Z
 created_at: 2026-09-12T02:09:36Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-09-19T08:00:06Z
+branch: claude/host-steps-2026-09-19
 depends_on: []
 scope:
   - docs/hotspot-review-next-batch.md
@@ -30,10 +30,10 @@ The catalog now holds no row for it at all — a genuine Seoul attraction is mis
 
 ## Definition of done
 
-- [ ] The museum exists in the catalog under Seoul with an exact map identity (Naver for
+- [x] The museum exists in the catalog under Seoul with an exact map identity (Naver for
       KR, per the publication gate), durable coordinates and their source, and is approved.
 - [ ] It appears in the public rankings for the Seoul destination.
-- [ ] The wrong Busan row stays rejected, or is corrected in place through a reviewed
+- [x] The wrong Busan row stays rejected, or is corrected in place through a reviewed
       process — no blanket un-rejection of tombstones.
 
 ## Steps
@@ -42,7 +42,7 @@ The catalog now holds no row for it at all — a genuine Seoul attraction is mis
       manifest, or a reviewed correction of the existing row's destination.
 - [x] Get the identity the gate requires (KR rows need an exact Naver map URL, not a
       Google Place ID) and take coordinates from Wikidata P625 with its source URL.
-- [ ] Apply through the normal admin review flow so the audit records a real actor.
+- [x] Apply through the normal admin review flow so the audit records a real actor.
 
 ## How to verify
 
@@ -104,3 +104,10 @@ manifest 仍寫進文件備查（`{"city_code": "ICN", "candidates": [{"name": "
 **兩點更正給下一位：** 新福宮 Q10306724 依同一份文件的第四批次已於 2026-09-13 改歸 `taipei` 並以
 `admin_verified` 座標核准，不再是 pending（上面的 SQL 會一併證實）；兩個 QID 在 step 2 落地前都該留在
 catalog-review 的 skip list 上。本次沒有寫入任何資料庫，也沒有 commit。
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- Wikidata Q486449 re-read before writing: P625 37.581625, 126.97909, revision 2515870060, as the review document records.
+- In `/zh-TW/admin/hotspots?tab=places&section=identity&hotspot_id=557a6eb0-…`: moved to `seoul` with the review document's reason (admin said 「已移動 1 筆景點至 seoul」), then the location editor saved the P625 pair, source `wikidata` + `https://www.wikidata.org/wiki/Q486449`, Naver `https://map.naver.com/p/entry/place/11620599`, `verified`, and the same reason. The owner pressed 核准.
+- Database afterwards: `ICN / seoul / approved / is_active / verified`, Naver URL set, reviewed 2026-09-19 07:56:07 UTC.
+- Still open: the public rankings item. The day's `HotspotRanking` snapshot was rebuilt by the collector right after the 07:41 deploy, before this approval, so the museum joins the Seoul ranking on the next 6-hourly refresh.

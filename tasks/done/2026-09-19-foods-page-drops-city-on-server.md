@@ -45,13 +45,13 @@ request is wasted.
 - [x] The server render hands `?city=` to `getInitialFoods` and to the first-rendered controls,
       exactly as it does `?destination_id=`.
 - [x] `destination_id` still wins when a URL carries both.
-- [ ] After the deploy, the production HTML of `/zh-TW/foods?city=kanazawa` is the filtered page.
+- [x] After the deploy, the production HTML of `/zh-TW/foods?city=kanazawa` is the filtered page.
 
 ## Steps
 
 - [x] Add `city` to the keys `page.tsx` copies; precedence stays in `readFoodBrowserFilters`.
 - [x] Extend `page.test.tsx` with both cases.
-- [ ] Deploy, then compare the three URLs again.
+- [x] Deploy, then compare the three URLs again.
 
 ## How to verify
 
@@ -71,3 +71,7 @@ After the deploy the second size should drop to about the third (both filtered),
   (`load` last called with an empty `destinationId`) and passes with the fix. `lint:web`,
   `check:i18n` and `typecheck:web` are clean, and the seven foods test files (44 tests) pass.
   The two unticked items are the post-merge deploy and the three-URL size comparison.
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- 2026-09-19 after the 06:45 UTC deploy of #557: `/zh-TW/foods` 516,549 bytes (3 × kanazawa), `?city=kanazawa` 355,737 (30), `?destination_id=kanazawa` 355,777 (30) — the server HTML is now the filtered page.

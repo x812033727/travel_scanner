@@ -35,7 +35,7 @@ Read on production after that deploy (2026-09-19): of the four genuine sights th
 
 - [x] 鎮平台 is `approved` under Huế with a verified map identity, durable coordinates and their
       source, and a review reason that records why it was restored.
-- [ ] It appears in the public listing for the Huế destination.
+- [x] It appears in the public listing for the Huế destination.
 - [x] The evidence and the action are written in `docs/catalog-content-reviews/2026-09-19-tran-binh-dai.md`.
 
 ## Steps
@@ -78,3 +78,7 @@ for page in '' '&after_rank=50'; do curl -s "https://mokaair.com/api/travel/hots
 - Still open by design: the public listing item. The day's ranking snapshot was built before the
   approval, so `/api/travel/hotspots/rankings?destination_id=hue` still showed 53 rows without it;
   it appears after the next 6-hourly refresh.
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- 2026-09-19: the collector run that followed the 07:41 UTC deploy restart rebuilt today's snapshot with 鎮平台 in it (3 ranking rows); `/api/travel/hotspots/rankings?destination_id=hue` now totals 54 (53 before) and returns it.
