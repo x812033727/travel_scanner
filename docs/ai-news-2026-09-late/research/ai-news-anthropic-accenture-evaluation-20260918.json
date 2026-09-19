@@ -313,7 +313,7 @@
     {
       "claim": "「兩家合計投入 20 億美元」這個加總。",
       "seen_where": "對 \"each expect to invest at least $1 billion\" 與 \"The companies each expect to invest at least $1 billion\" 最直接的誤讀。",
-      "why_excluded": "原文是各自至少 10 億、未來五年、而且是 expect（預期）。相加是研究者自己的算術，Accenture 的前瞻性陳述段還明講這不是保證。文章不得出現 20 億，也不得寫成已經投入。"
+      "why_excluded": "原文是各自至少 10 億、未來五年、而且是 expect（預期）。相加是研究者自己的算術，Accenture 的前瞻性陳述段還明講這不是保證。文章不得出現 20 億，也不得寫成已經投入。（協調者 2026-09-20 裁決：只允許 FAQ 一處以否定形式出現，其餘不印數字）"
     },
     {
       "claim": "公告頁下方 Related content 三張卡片的內容，特別是 Improving our alignment and security efforts 那張摘要提到的「7 月 30 日三起 Claude 取得未授權存取的事故」與「計畫與 METR 做獨立檢視」。",
@@ -387,6 +387,98 @@
     ]
   },
   "factcheck": {
-    "status": "尚未查核。本檔由研究紀錄代理於 2026-09-20 寫成，未經任何獨立查核。第一輪查核代理請自行重抓 sources[] 四條、重做 39 條 verbatim_quote 的連續字串比對，並把 checked_by／checked_on／method／verdict／edits_to_the_pack／checked_and_correct／left_for_the_owner 填進這個物件。"
+    "checked_by": "independent factcheck agent（第一輪；未參與撰稿與研究紀錄）",
+    "checked_on": "2026-09-20",
+    "method": "2026-09-20（台北）未參與撰稿，逐條重抓 sources[] 全部四條並讀 body：curl -sL -A \"Mokaair-editorial\"，請求只帶這一個自訂標頭，沒有查詢字串、沒有表單、沒有 cookie，任何請求都沒有帶入任何人的 email 或個人資料。結果與研究紀錄逐一相符：(1) https://www.anthropic.com/news/accenture-embedded-evaluation → HTTP 200、144,587 bytes、0 次轉址、text/html; charset=utf-8，<article> 內 9 個 <p>、去標籤後 2,957 字元，是正文；(2) https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic → HTTP 200、9,244 bytes、0 次轉址，是實際稿件（日期行、標題、副標、電頭、兩段引述、About Accenture、Forward Looking Statements 都在 HTML 裡）；(3) https://newsroom.accenture.com/news/2026/accenture-completes-acquisition-of-faculty → HTTP 200、14,520 bytes、0 次轉址，是實際稿件；(4) https://www.anthropic.com/news → HTTP 200、462,566 bytes、0 次轉址，PublicationList 第一列為本篇並印 <time>Sep 18, 2026</time>。把內容包拆成 153 條可核對主張逐條回原文比對：title、description、正文 13 段每一句、summary 五句、FAQ 七題答句、callout、表格 12 格與 caption、圖解 caption 與研究紀錄的四格與 hero_label、兩個結尾連結的 text、sources 四條。研究紀錄 39 條 verbatim_quote 以程式做連續字串比對（對象是去標籤、還原 HTML 實體後的可見文字），39 條全部通過、0 條失敗。must_not_write 20 條與 not_said 14 條逐條檢查，發現 3 條被違反（見 changes 第 1、2、7 項）。事件日 2026-09-18 依 DELTA-4-6 第 7 條為已裁決事項，本輪只確認兩家公司自己印的日期字串仍是 Sep 18, 2026 / September 18, 2026，沒有重新推導、沒有寫任何時刻、沒有做任何時區換算。兩個結尾連結的 text 與目標內容包的 zh-TW title 以程式逐字比對，兩條都完全相同。沒有使用 sources[] 以外的任何網址替文章補事實；為了核對本站既有文章的標題與範圍，另讀了 repo 內的 ai-news-pace-the-frontier-20260912、ai-news-anthropic-pace-metrics-20260917、ai-news-2026-january-september-index 三個內容包，只用於比對標題與確認沒有重寫，沒有據以下筆。只改了內容包與本研究紀錄兩個檔，沒有 git add／commit。",
+    "claims_checked": 153,
+    "changes": [
+      {
+        "where": "第一節第二段（apps/api/app/guides/content/ai-news-anthropic-accenture-evaluation-20260918.json，zh-TW blocks）",
+        "before": "技術長暨 Faculty 執行長 Marc Warner 表示，常駐評估是新興領域，期待加速這類評估者的發展。",
+        "after": "董事長暨執行長 Julie Sweet 表示……並說常駐評估是新興領域，期待與 Anthropic 一起加速常駐評估者的發展；技術長暨 Faculty 執行長 Marc Warner 則表示，Faculty 現在是 Accenture 的一部分，創立時的信念是 AI 應該在設計上就安全，而不是碰巧安全。",
+        "why": "引述張冠李戴：「常駐評估是新興領域……加速常駐評估者的發展」整句在來源頁上屬於 Julie Sweet 那一段引述的後半，不是 Marc Warner 說的。原稿把它掛到 Warner 名下，等於捏造了一句當事人沒說的話，同時也把 Warner 真正說的內容整段漏掉。改成各自歸位，Warner 改寫他自己那段引述的第一句。另把 Sweet 的 a dedicated team 補回「專責團隊」。",
+        "source": "https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic — “Accenture is bringing together a dedicated team with deep AI, security and industry expertise to work alongside Anthropic,” said Julie Sweet, chair and CEO, Accenture. “Safety requires both deep technical expertise and a clear understanding of how AI is used in the real world. Embedded evaluation is an emerging area and we look forward to partnering with Anthropic to help accelerate the development of embedded evaluators, which we see as an important part of the safety landscape going forward.\" ／ Dr. Marc Warner, chief technology officer, Accenture and CEO, Faculty, added, “Faculty, which is now part of Accenture, was founded on the belief that AI should be safe by design, not safe by accident."
+      },
+      {
+        "where": "第一節第二段、第五節第一段、summary 第五句、FAQ 第七題（共四處）",
+        "before": "兩份公告都沒有提到任何國家或市場（FAQ 版：兩份公告都沒有提到任何國家、市場）",
+        "after": "第一節：「Anthropic 公告內文沒有提到任何國家或市場，Accenture 稿只在電頭與 Faculty 背景提到美國與英國；兩份都沒有提到台灣」；其餘三處：「兩份公告都沒有提到台灣或亞洲市場」",
+        "why": "原句是錯的，而且與文章自己的內容互相矛盾。Accenture 稿的電頭印 NEW YORK and SAN FRANCISCO，正文提到 UK National Health Service，併購稿印 LONDON 並寫 UK‑based；文章自己在同一段寫「電頭寫紐約與舊金山發布」、在第三節寫「英國的 AI 公司」「英國國民保健署」。研究紀錄 not_said 第一條本來就把「沒有任何國家或市場」限定在 Anthropic 公告的 9 個 <p>，並註明「英國只出現在 Accenture 的兩份稿裡」，原稿把限定範圍放大成兩份稿。改後仍以程式確認：Anthropic 公告 <article> 純文字（2,957 字元）Taiwan／Asia／Europe／UK 各 0 次；兩份 Accenture 稿 Taiwan、Asia 各 0 次，故「沒有提到台灣或亞洲市場」成立。",
+        "source": "https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic — NEW YORK and SAN FRANCISCO; Sept. 18, 2026 ／ Faculty's work spans government, defense, healthcare and infrastructure, including development of the UK National Health Service's Early Warning System during the COVID-19 pandemic. ／ https://newsroom.accenture.com/news/2026/accenture-completes-acquisition-of-faculty — LONDON; March 16, 2026"
+      },
+      {
+        "where": "表格第四列「是否獨家」的查核註記",
+        "before": "兩份公告都沒有點名其他組織",
+        "after": "兩份公告都沒有點名未來會加入的評估者或開發者",
+        "why": "原句是錯的：Anthropic 公告確實點名了一個組織——METR（We are also in dialogue with METR and other nonprofit evaluators）。來源沒有點名的是「未來幾週會公布的其他評估者」與「Accenture 會合作的其他 AI 開發者」，研究紀錄 not_said 也是這樣寫的。改後把否定句收回它撐得住的範圍。",
+        "source": "https://www.anthropic.com/news/accenture-embedded-evaluation — We are also in dialogue with METR and other nonprofit evaluators to pilot elements of embedded evaluation using their own funding. ／ Our partnership is non-exclusive; Anthropic will work with other evaluators to be announced in the coming weeks, and Accenture will work with other AI developers in similar capacities."
+      },
+      {
+        "where": "callout「商業合作公告，不是稽核結果」",
+        "before": "兩份公告都沒有提到任何法規或稽核程序。",
+        "after": "兩份公告都沒有提到任何稽核或認證程序，也沒有說這是主管機關的要求。",
+        "why": "「沒有提到任何法規」對 Accenture 稿不成立：它的前瞻性陳述段寫 could harm our business, damage our reputation or give rise to legal or regulatory action，並引用 Private Securities Litigation Reform Act of 1995 與向 SEC 申報的 10-K。研究紀錄 not_said 的「沒有主管機關、法規、稽核或認證」是以 Anthropic 公告內文的詞頻查出來的，範圍不該放大到兩份稿。改後只保留今天實際查得住的兩件事：兩份稿 audit／certification 各 0 次，兩份稿都沒有說這是主管機關要求的程序。",
+        "source": "https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic — These risks include, without limitation, that the partnership might not achieve its anticipated benefits and risks and uncertainties related to the development and use of AI, including advanced AI, could harm our business, damage our reputation or give rise to legal or regulatory action"
+      },
+      {
+        "where": "第三節第一段與表格第一列註記（共兩處）",
+        "before": "Faculty 是 2026 年 3 月完成併購的 Accenture 子公司，併購於 3 月 16 日完成，Faculty 是一家英國的 AI 公司 ／ Faculty 為 2026 年 3 月併購完成的 Accenture 子公司",
+        "after": "Faculty 是 Accenture 於 2026 年 3 月 16 日完成併購的英國 AI 公司 ／ Faculty 為 2026 年 3 月 16 日併購完成、現屬 Accenture 的英國 AI 公司",
+        "why": "兩份來源都沒有印「子公司」這個法律身分：Anthropic 寫 Accenture's specialist AI business，Accenture 寫 acquisition of Faculty 與 Faculty, which is now part of Accenture。「子公司」是編輯替它安上的公司結構描述，改成來源撐得住的「現屬 Accenture」「Accenture 完成併購」。順手把原句重複兩次的併購日期併成一次（「3 月完成併購」＋「3 月 16 日完成」），日期照來源印的 March 16, 2026。",
+        "source": "https://newsroom.accenture.com/news/2026/accenture-completes-acquisition-of-faculty — LONDON; March 16, 2026 – Accenture (NYSE: ACN) has completed the acquisition of Faculty, a leading UK‑based AI company ／ https://www.anthropic.com/news/accenture-embedded-evaluation — The partnership will be led by Faculty, Accenture's specialist AI business"
+      },
+      {
+        "where": "第三節第二段",
+        "before": "Accenture 稱它是歐洲歷史最久、規模領先的應用 AI 公司之一",
+        "after": "Accenture 稱它是歐洲領先且歷史最久的應用 AI 公司之一",
+        "why": "原文的 leading 沒有指明是哪一種領先，原稿把它具體化成「規模領先」，是來源沒有印的資訊。改成照原文的兩個形容詞並排。",
+        "source": "https://newsroom.accenture.com/news/2026/accenture-completes-acquisition-of-faculty — Founded in 2014, Faculty is one of Europe’s leading and longest standing applied AI companies."
+      },
+      {
+        "where": "FAQ 第一題答句",
+        "before": "9 月 12 日 Amodei 發表〈We Must Pace the Frontier〉，提出三步驟計畫，第一步是讓外部評估者常駐；9 月 17 日 Anthropic 公布三項前沿 AI 指標。這次公告是第一步承諾的具體安排，……三步驟計畫的細節與先前的指標數字這篇不重講。",
+        "after": "9 月 12 日 Amodei 發表〈We Must Pace the Frontier〉、9 月 17 日 Anthropic 公布前沿 AI 指標，本站各有一篇整理。這次公告自己寫道，它是朝向〈We Must Pace the Frontier〉中「讓評估者常駐 Anthropic」這項承諾邁出的重要一步；……該文的計畫細節與先前的指標數字這篇不重講。",
+        "why": "違反 must_not_write 第 8 條：「三步驟計畫」「第一步是讓外部評估者常駐」都不在本篇 sources[] 的任何一頁裡，它們出自 darioamodei.com 與本站既有的 ai-news-pace-the-frontier-20260912。答句一邊說「三步驟計畫的細節不重講」、一邊已經把它講了一次。改後只留指涉（本站各有一篇整理），承諾的內容改用本篇公告自己印出來的那一句。同段把「該文」改寫成明確篇名，避免指向前一句的指標那篇。",
+        "source": "https://www.anthropic.com/news/accenture-embedded-evaluation — This is an important step toward the commitment, made in our CEO’s essay “We Must Pace the Frontier,” to embed evaluators within Anthropic."
+      },
+      {
+        "where": "第一段",
+        "before": "那篇文章與後續的三項前沿 AI 指標，本站已各有一篇整理",
+        "after": "那篇文章與後續公布的前沿 AI 指標，本站已各有一篇整理",
+        "why": "同上條的延伸：依指派規則，9/17 那篇的指標只能是指涉、不得重講數字，「三項」是那篇的計數。第五節仍以篇名〈Anthropic 公布三項前沿 AI 指標〉指涉，那是引用本站文章的標題、不是複述其內容，保留。",
+        "source": "repo 內 apps/api/app/guides/content/ai-news-anthropic-pace-metrics-20260917.json（zh-TW title：Anthropic 公布三項前沿 AI 指標：26% 是「主導」不是「自主」）"
+      },
+      {
+        "where": "第一段與 summary 第一句（共兩處）",
+        "before": "Anthropic 與 Accenture 同步發布公告 ／ Anthropic 與 Accenture 同步宣布合作",
+        "after": "Anthropic 與 Accenture 同日發布公告 ／ Anthropic 與 Accenture 同日宣布合作",
+        "why": "「同步」指向同一時刻，但兩份稿都只印日期、沒有印時刻，文章自己在第二段也寫明不寫發布時間、不做時區換算。來源撐得住的只有「同一天」：Accenture 稿寫 today announced，兩頁的可見日期都是 9 月 18 日。",
+        "source": "https://newsroom.accenture.com/news/2026/accenture-and-anthropic-partner-to-build-team-of-embedded-evaluators-at-anthropic — Accenture (NYSE: ACN) and Anthropic today announced ／ https://www.anthropic.com/news/accenture-embedded-evaluation — Sep 18, 2026"
+      },
+      {
+        "where": "第二節第一段",
+        "before": "Anthropic 寫明由 Faculty 主導這支常駐評估團隊",
+        "after": "Anthropic 寫明這次合作由 Faculty 主導",
+        "why": "句子以「Anthropic 寫明」起頭，措辭就要照原文。原文寫的是 The partnership will be led by Faculty，主導的受詞是這次合作，不是那支團隊；團隊由兩家公司共同建立（Accenture 稿：partnering to establish a team of embedded evaluators）。",
+        "source": "https://www.anthropic.com/news/accenture-embedded-evaluation — The partnership will be led by Faculty, Accenture’s specialist AI business"
+      },
+      {
+        "where": "第一段",
+        "before": "由 Accenture 旗下的 AI 事業 Faculty 主導",
+        "after": "由 Accenture 旗下的專門 AI 事業 Faculty 主導",
+        "why": "原文是 specialist AI business，原稿掉了 specialist。補回限定詞，不改其他措辭。",
+        "source": "https://www.anthropic.com/news/accenture-embedded-evaluation — Faculty, Accenture’s specialist AI business"
+      }
+    ],
+    "open_questions": [
+      "「20 億美元」在文章裡出現四處（summary 第二句、正文第二節第二段、表格第二列註記、FAQ 第三題），全部是否定句——「不是合計 20 億」「不能相加寫成 20 億」。研究紀錄 unverified_or_excluded 對這筆加總寫的是「文章不得出現 20 億」，但同一份檔案的 editorial_brief 又把「不是合計 20 億」列為本篇的骨幹之一，兩句互相衝突。本輪判定保留：四處都在阻止讀者做那個加法，沒有一處把 20 億當成事實或官方說法。若協調者採嚴格讀法，四處都要改寫成只講「各自至少 10 億、預期、未來五年」，本輪不自行決定。",
+      "第二段末「也不提供投資或法律建議」與 callout 末句「本文不是投資建議」：依 ai.md，AI 篇不掛 finance 主題、沒有投資免責 callout，只有 B8 那篇要在一般 callout 裡明講不是投資建議。本篇不是 B8，這兩句留著不違規（也不是獨立的免責段落），但並非規格要求；是否精簡留給站主。",
+      "正文兩處以〈Amodei 呼籲放慢前沿 AI〉與〈Anthropic 公布三項前沿 AI 指標〉指涉本站既有文章，兩者都只取主標，原題各自還有副標（…：〈We Must Pace the Frontier〉的主張與界線／…：26% 是「主導」不是「自主」）。文末兩個連結的 text 則已與目標內容包的 zh-TW title 逐字相同，本輪沒有動。",
+      "字數：本輪改動後 zh-TW 段落 2,961 字（上限 3,000，改動前 2,861）。第二輪若還要補限定詞，得先從重複敘述精簡，不可刪但書。",
+      "研究紀錄 event_date_basis 第 (3) 點引用的「267 個 publishedOn、99 個整點、16:00:00.000Z 出現 23 次」是活資料，本輪未重數（事件日已由協調者裁決，且該組數字依 live_data_warnings 本來就不得寫進文章）。文章全篇沒有時刻、沒有時區換算，本輪確認無誤。"
+    ],
+    "coordinator_rulings": [
+      "「20 億」的矛盾裁決（2026-09-20）：研究紀錄 unverified_or_excluded 寫「不得出現 20 億」、editorial_brief 卻以「不是合計 20 億」為骨幹。裁決：正文、summary、表格一律只寫「兩筆不能相加」、不印 20 億這個數字；只保留 FAQ 一題「加起來是 20 億美元嗎？」以否定形式出現，因為那正是讀者會問的問題。已改 summary、第 8 段、表格三處。"
+    ]
   }
 }
