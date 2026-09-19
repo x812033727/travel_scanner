@@ -18,7 +18,7 @@ import { AnalyticsProvider } from "@/components/analytics-provider";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
 import type { AdsenseConfig } from "@/lib/adsense";
 import { routing } from "@/i18n/routing";
-import { alternatesFor, routePathFromRequest, siteUrl } from "@/lib/seo";
+import { alternatesFor, FEED_PATH, routePathFromRequest, siteUrl } from "@/lib/seo";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { NAVIGATION_HISTORY_BOOTSTRAP_SCRIPT } from "@/lib/navigation-history";
 import { TEXT_SIZE_BOOTSTRAP_SCRIPT } from "@/lib/text-size";
@@ -60,7 +60,13 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
     metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
-    alternates: alternatesFor(locale, path),
+    alternates: {
+      ...alternatesFor(locale, path),
+      // How a feed is advertised. Only pages that inherit this carry it -- an article sets
+      // its own `alternates` and Next replaces the whole field -- and the home page and the
+      // section hubs are where a reader or a crawler looks for one anyway.
+      types: { "application/atom+xml": [{ url: `${siteUrl}${FEED_PATH}`, title: "Mokaair" }] },
+    },
     openGraph: {
       // Only the home page carries the site-level social copy. Everywhere else these are left
       // out on purpose: Next's postProcessMetadata fills og:title and og:description from the
