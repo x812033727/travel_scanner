@@ -267,7 +267,14 @@ async def test_append_is_the_default_and_leaves_the_meal_cards_alone(
     rows = await harness.day_rows()
     assert len(rows) == len(before) + 1
     added = next(row for row in rows if row.system_role is None)
-    assert added.position == max(row.position for row in before) + 1
+    # Appended at max(position) + 1; the canonical order every read applies then keeps
+    # the closing hotel anchor last, so the stop shows after the day's last stop.
+    by_position = sorted(rows, key=lambda row: row.position)
+    assert [row.system_role for row in by_position] == [
+        *(row.system_role for row in before if row.system_role != "hotel_end"),
+        None,
+        "hotel_end",
+    ]
     assert added.provider_place_id == expected_place_id(harness, kind)
     assert "meal_selection_source" not in added.data
     for role in ("lunch", "dinner"):
@@ -409,7 +416,7 @@ async def test_planner_suggestions_and_placeholders_are_replaced_without_asking(
 async def test_wrong_day_and_stale_version_keep_their_own_answers(harness: Harness) -> None:
     outside = await harness.client.post(
         harness.path("hotspot"),
-        json={**harness.body("hotspot"), "day_date": "2027-03-20", "mode": "replace_meal", "meal": "lunch"},
+        json={**harness.body("hotspot", mode="replace_meal", meal="lunch"), "day_date": "2027-03-20"},
     )
     assert outside.status_code == 422
     assert outside.json()["code"] == "itinerary_date_out_of_range"

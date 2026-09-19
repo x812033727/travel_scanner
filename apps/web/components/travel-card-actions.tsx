@@ -29,6 +29,8 @@ type TripOption = {
 type PlanningCapability = { kind: "hotspot" | "food" | "merchant" | "hotel"; id: string; destination_id?: string; selection_path?: string; product_id?: string; merchants?: Array<{id: string; name: string; destination_id?: string; selection_path?: string}> };
 type PlanningDetails = DiscoveryItem & { detail?: { planning?: PlanningCapability | null } };
 type TripOptions = { items: TripOption[]; can_create?: boolean; count?: number; limit?: number };
+/** Where a chosen place lands on the day: after its last stop, or in its lunch or dinner card. */
+type Placement = "append" | "lunch" | "dinner";
 const normalizedDestination = (value: string | null | undefined) => value?.trim().toLocaleLowerCase();
 function sameDestination(trip: TripOption, content?: PlanningDetails) {
   const destinationId = content?.detail?.planning?.destination_id || content?.destination?.id;
@@ -60,7 +62,8 @@ function TravelPlanSession({ item, returnTo, compact, resumeEnabled }: { item: D
   const [tripId, setTripId] = useState("");
   const [day, setDay] = useState("");
   const [merchantId, setMerchantId] = useState("");
-  const [meal, setMeal] = useState<"lunch" | "dinner">("lunch");
+  const [placement, setPlacement] = useState<Placement>("append");
+  const [occupied, setOccupied] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [failed, setFailed] = useState(false);
@@ -96,7 +99,8 @@ function TravelPlanSession({ item, returnTo, compact, resumeEnabled }: { item: D
       setLoaded({ content, options: tripOptions });
       if (!operation.current) { setTripId(preferred?.trip_id || ""); setDay(preferred?.start_date || ""); }
       const plan = content.detail?.planning;
-      if (!operation.current) setMerchantId(plan?.kind === "merchant" ? plan.id : "");
+      // Dishes and merchants default to the lunch card, as they always did; a hotspot is a stop.
+      if (!operation.current) { setMerchantId(plan?.kind === "merchant" ? plan.id : ""); setPlacement(plan?.kind === "food" || plan?.kind === "merchant" ? "lunch" : "append"); }
       setFailed(false); setBlocked(false); setAuthExpired(false);
     }).catch((reason: unknown) => { if (!controller.signal.aborted) { setFailed(true); setAuthExpired(reason instanceof ApiError && reason.status === 401); setError(reason instanceof ApiError && reason.status === 401 ? copy.login : copy.error); } });
     return () => controller.abort();
@@ -114,15 +118,17 @@ function TravelPlanSession({ item, returnTo, compact, resumeEnabled }: { item: D
     if (!user || !rememberPlanningIntent(user.id, item.kind, id, returnTo)) { setError(copy.error); return; }
     router.push("/trips/new?resume_plan=1");
   }
-  async function confirm() {
+  async function confirm(overwrite = false) {
     if (!canPlan || !selected || !capability || busy || blocked || (uncertain && !isHotel)) return;
     const selectionPath = capability.selection_path;
     if (!isHotel && (!selectionPath || !/^\/(hotspots|foods(?:\/merchants)?)\/[a-f0-9-]+\/trip-selections$/i.test(selectionPath))) { setError(copy.unavailable); return; }
     const path = isHotel ? `/trips/${selected.trip_id}/travel-services` : selectionPath!;
-    const body = JSON.stringify(isHotel ? { product_id: capability.product_id, version: selected.version } : { trip_id: selected.trip_id, version: selected.version, day_date: day, ...(isMeal ? { ...(capability.kind === "food" ? { merchant_id: merchantId } : {}), meal_role: meal } : {}) });
+    // "append" is the API's default and stays implicit. A meal placement names the card, and only
+    // a second tap after the occupied-card message asks the API to overwrite the reader's own pick.
+    const body = JSON.stringify(isHotel ? { product_id: capability.product_id, version: selected.version } : { trip_id: selected.trip_id, version: selected.version, day_date: day, ...(capability.kind === "food" ? { merchant_id: merchantId } : {}), ...(placement === "append" ? {} : { mode: "replace_meal", meal: placement, ...(overwrite ? { overwrite: true } : {}) }) });
     if (operation.current && !uncertain && (operation.current.path !== path || operation.current.body !== body)) { setBlocked(true); setError(copy.conflict); return; }
     operation.current ||= { path, body, key: crypto.randomUUID() };
-    setBusy(true); setLocked(true); setError("");
+    setBusy(true); setLocked(true); setError(""); setOccupied(false);
     try {
       // Hotel selections support replay. Keep the exact original version and key
       // when a response is lost, including after closing and reopening the panel.
@@ -133,7 +139,10 @@ function TravelPlanSession({ item, returnTo, compact, resumeEnabled }: { item: D
       if (!active.current) return;
       if (reason instanceof ApiError && [400, 401, 403, 404, 409, 422, 429].includes(reason.status)) { operation.current = null; setLocked(false); setUncertain(false); }
       else { setUncertain(true); }
-      if (reason instanceof ApiError && reason.status === 409) { setBlocked(true); setError(copy.conflict); }
+      // The meal card already holds the reader's own pick. That is a question, not the
+      // version-conflict lockout: say so and offer the overwrite as a second, explicit tap.
+      if (reason instanceof ApiError && reason.status === 409 && reason.code === "meal_slot_occupied") { setOccupied(true); setError(copy.mealOccupied); }
+      else if (reason instanceof ApiError && reason.status === 409) { setBlocked(true); setError(copy.conflict); }
       else setError(copy.error);
     } finally { if (active.current) setBusy(false); }
   }
@@ -145,14 +154,14 @@ function TravelPlanSession({ item, returnTo, compact, resumeEnabled }: { item: D
       {!user ? <Link href={loginPath(planningResumeUrl(returnTo, item.kind, id))} className="inline-flex min-h-12 items-center rounded-xl bg-[var(--teal)] px-5 font-semibold text-white">{copy.login}</Link> : <>
         {authExpired && <Link href={loginPath(planningResumeUrl(returnTo, item.kind, id))} className="inline-flex min-h-12 items-center rounded-xl bg-[var(--teal)] px-5 font-semibold text-white">{copy.login}</Link>}
         {!loaded && !failed && <p role="status">{copy.loading}</p>}
-        {uncertain && !isHotel ? <div role="alert" className="my-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3"><p>{copy.uncertain}</p><Link href={`/trips/${tripId}`} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{copy.openTrip}</Link></div> : error && <div role="alert" className="my-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3"><p>{error}</p>{(failed || blocked) && <Button secondary className="mt-3" onClick={() => { setLoaded(undefined); setFailed(false); setError(""); setAttempt((value) => value + 1); }}>{copy.retry}</Button>}</div>}
+        {uncertain && !isHotel ? <div role="alert" className="my-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3"><p>{copy.uncertain}</p><Link href={`/trips/${tripId}`} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{copy.openTrip}</Link></div> : error && <div role="alert" className="my-3 rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3"><p>{error}</p>{(failed || blocked) && <Button secondary className="mt-3" onClick={() => { setLoaded(undefined); setFailed(false); setError(""); setAttempt((value) => value + 1); }}>{copy.retry}</Button>}{occupied && <Button secondary className="mt-3" disabled={busy} onClick={() => void confirm(true)}>{copy.overwrite}</Button>}</div>}
         {loaded && (!capability ? <p className="py-5 leading-7">{item.kind === "food" ? copy.noMerchant : copy.unavailable}</p> : <div className="space-y-5">
           {loaded.options.items.length === 0 ? <p>{copy.empty}</p> : <>
             <label className="block font-semibold">{copy.chooseTrip}<select className={fieldClass} value={tripId} disabled={busy || locked} onChange={(event) => { const trip = options.find((row) => row.trip_id === event.target.value); setTripId(trip?.trip_id || ""); setDay(trip?.start_date || ""); }}><option value="">{copy.chooseTrip}</option>{options.map((trip) => <option key={trip.trip_id} value={trip.trip_id}>{matches(trip) ? `${copy.destinationMatch} · ` : ""}{trip.name} · {trip.destination_name} · {trip.start_date} – {trip.end_date}</option>)}</select></label>
             {!isHotel && <label className="block font-semibold">{copy.chooseDay}<select className={fieldClass} disabled={!selected || busy || locked} value={day} onChange={(event) => setDay(event.target.value)}><option value="">{copy.chooseDay}</option>{days.map((entry) => <option key={entry.value} value={entry.value}>{copy.day} {entry.number} · {entry.label}</option>)}</select></label>}
             {capability.kind === "food" && <label className="block font-semibold">{copy.chooseMerchant}<select className={fieldClass} value={merchantId} disabled={busy || locked} onChange={(event) => setMerchantId(event.target.value)}><option value="">{copy.chooseMerchant}</option>{capability.merchants?.map((merchant) => <option key={merchant.id} value={merchant.id}>{merchant.name}</option>)}</select></label>}
-            {isMeal && <label className="block font-semibold">{copy.meal}<select className={fieldClass} value={meal} disabled={busy || locked} onChange={(event) => setMeal(event.target.value as "lunch" | "dinner")}><option value="lunch">{copy.lunch}</option><option value="dinner">{copy.dinner}</option></select></label>}
-            {(isHotel || isMeal) && <p className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm leading-6">{isHotel ? copy.hotelWarning : copy.mealWarning}</p>}
+            {!isHotel && <label className="block font-semibold">{copy.placement}<select className={fieldClass} value={placement} disabled={busy || locked} onChange={(event) => { setPlacement(event.target.value as Placement); setOccupied(false); setError(""); }}><option value="append">{copy.placementAppend}</option><option value="lunch">{copy.placementLunch}</option><option value="dinner">{copy.placementDinner}</option></select></label>}
+            {(isHotel || placement !== "append") && <p className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm leading-6">{isHotel ? copy.hotelWarning : copy.mealWarning}</p>}
             <Button disabled={!canPlan || busy || blocked || (uncertain && !isHotel)} onClick={() => void confirm()} className="w-full">{busy ? copy.loading : isHotel ? copy.confirmHotel : copy.confirm}</Button>
           </>}
           {loaded.options.can_create !== false && <Button secondary disabled={busy || locked} onClick={createTrip}>{copy.create}</Button>}
@@ -201,7 +210,9 @@ function LegacyTravelCardActions({
   const [trips, setTrips] = useState<TripOption[]>([]);
   const [tripId, setTripId] = useState("");
   const [dayDate, setDayDate] = useState("");
-  const [mealRole, setMealRole] = useState<"lunch" | "dinner">("lunch");
+  // Dishes and merchants default to the lunch card, as they always did; a hotspot is a stop.
+  const [placement, setPlacement] = useState<Placement>(merchantId ? "lunch" : "append");
+  const [occupied, setOccupied] = useState(false);
   const [busy, setBusy] = useState(false);
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState("");
@@ -213,6 +224,7 @@ function LegacyTravelCardActions({
     setNotice("");
     setNoticeHref("");
     setError("");
+    setOccupied(false);
   }
 
   function requireAuth(action: () => void, intent?: "save" | "trip") {
@@ -273,7 +285,7 @@ function LegacyTravelCardActions({
     catch (reason) { setError((reason as Error).message); }
     finally { setSaving(false); }
   }
-  async function submitTrip() {
+  async function submitTrip(overwrite = false) {
     const trip = trips.find((item) => item.trip_id === tripId);
     if (!trip || !dayDate) return;
     setBusy(true);
@@ -285,9 +297,12 @@ function LegacyTravelCardActions({
           trip_id: trip.trip_id,
           version: trip.version,
           day_date: dayDate,
-          ...(merchantId
-            ? { merchant_id: merchantId, meal_role: mealRole }
-            : {}),
+          ...(merchantId ? { merchant_id: merchantId } : {}),
+          // "append" is the API's default and stays implicit; overwrite only rides on the
+          // second tap after the occupied-card message.
+          ...(placement === "append"
+            ? {}
+            : { mode: "replace_meal", meal: placement, ...(overwrite ? { overwrite: true } : {}) }),
         }),
       });
       // A toast alone was a dead end: the reader had no way to see where the
@@ -300,7 +315,10 @@ function LegacyTravelCardActions({
         setNoticeHref("");
       }, 8000);
     } catch (reason) {
-      setError((reason as Error).message);
+      // The meal card already holds the reader's own pick: explain it and offer the
+      // overwrite as a second, explicit tap instead of showing the raw problem text.
+      if (reason instanceof ApiError && reason.code === "meal_slot_occupied") { setOccupied(true); setError(common("cardActions.mealOccupied")); }
+      else setError((reason as Error).message);
     } finally {
       setBusy(false);
     }
@@ -475,23 +493,18 @@ function LegacyTravelCardActions({
                         className="app-field"
                       />
                     </label>
-                    {merchantId && (
-                      <label className="grid gap-2 text-sm font-bold">
-                        {common("cardActions.meal")}
-                        <select
-                          value={mealRole}
-                          onChange={(event) =>
-                            setMealRole(
-                              event.target.value as "lunch" | "dinner",
-                            )
-                          }
-                          className="app-field"
-                        >
-                          <option value="lunch">{common("cardActions.lunch")}</option>
-                          <option value="dinner">{common("cardActions.dinner")}</option>
-                        </select>
-                      </label>
-                    )}
+                    <label className="grid gap-2 text-sm font-bold">
+                      {common("cardActions.placement")}
+                      <select
+                        value={placement}
+                        onChange={(event) => { setPlacement(event.target.value as Placement); setOccupied(false); }}
+                        className="app-field"
+                      >
+                        <option value="append">{common("cardActions.placementAppend")}</option>
+                        <option value="lunch">{common("cardActions.placementLunch")}</option>
+                        <option value="dinner">{common("cardActions.placementDinner")}</option>
+                      </select>
+                    </label>
                     <button
                       type="button"
                       disabled={busy}
@@ -500,6 +513,16 @@ function LegacyTravelCardActions({
                     >
                       {common("cardActions.confirm")}
                     </button>
+                    {occupied && (
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() => void submitTrip(true)}
+                        className="min-h-12 rounded-2xl border border-[var(--line)] px-5 font-bold disabled:opacity-50"
+                      >
+                        {common("cardActions.overwrite")}
+                      </button>
+                    )}
                   </div>
                 )}
               </div>

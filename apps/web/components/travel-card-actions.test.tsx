@@ -125,7 +125,72 @@ describe("travel card actions", () => {
     const link = await screen.findByRole("link", { name: "查看旅程" });
     expect(link.getAttribute("href")).toBe("/trips/trip-1");
     const selection = vi.mocked(fetch).mock.calls.find(([input]) => String(input).includes("/trip-selections"));
-    expect(JSON.parse(String(selection?.[1]?.body))).toMatchObject({ trip_id: "trip-1", version: 3, day_date: "2026-11-10" });
+    const body = JSON.parse(String(selection?.[1]?.body));
+    expect(body).toMatchObject({ trip_id: "trip-1", version: 3, day_date: "2026-11-10" });
+    // Appending is the API's default; a hotspot sends no mode unless the reader picks a meal.
+    expect(body).not.toHaveProperty("mode"); expect(body).not.toHaveProperty("meal_role");
+  });
+
+  function tripFetch(onSelection: () => Response) {
+    return vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/trips/options")) {
+        return new Response(JSON.stringify({ items: [
+          { trip_id: "trip-1", name: "東京五日", version: 3, start_date: "2026-11-10", end_date: "2026-11-14" },
+        ] }));
+      }
+      if (url.includes("/trip-selections")) return onSelection();
+      return new Response(JSON.stringify({ items: [] }));
+    });
+  }
+  function selectionBodies() {
+    return vi.mocked(fetch).mock.calls.filter(([input]) => String(input).includes("/trip-selections")).map(([, init]) => JSON.parse(String(init?.body)));
+  }
+
+  it("offers lunch and dinner placement and sends it as mode and meal, never meal_role", async () => {
+    vi.stubGlobal("fetch", tripFetch(() => new Response(JSON.stringify({ ok: true }))));
+    render(card());
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
+      expect(screen.getByRole("dialog")).toBeTruthy();
+    });
+    const placement = (await screen.findByLabelText("加入方式")) as HTMLSelectElement;
+    expect(placement.value).toBe("append");
+    expect([...placement.options].map((option) => option.textContent)).toEqual(["接在這天最後", "當作午餐", "當作晚餐"]);
+    fireEvent.change(placement, { target: { value: "lunch" } });
+    fireEvent.click(screen.getByRole("button", { name: "加入" }));
+
+    await screen.findByRole("link", { name: "查看旅程" });
+    expect(selectionBodies()).toEqual([{ trip_id: "trip-1", version: 3, day_date: "2026-11-10", mode: "replace_meal", meal: "lunch" }]);
+  });
+
+  it("explains an occupied meal card and overwrites only on a second, explicit tap", async () => {
+    let attempts = 0;
+    vi.stubGlobal("fetch", tripFetch(() => {
+      attempts += 1;
+      if (attempts === 1) return new Response(JSON.stringify({ code: "meal_slot_occupied", detail: "occupied" }), { status: 409 });
+      return new Response(JSON.stringify({ ok: true }));
+    }));
+    render(card());
+
+    await waitFor(() => {
+      fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
+      expect(screen.getByRole("dialog")).toBeTruthy();
+    });
+    fireEvent.change(await screen.findByLabelText("加入方式"), { target: { value: "dinner" } });
+    fireEvent.click(screen.getByRole("button", { name: "加入" }));
+
+    expect(await screen.findByText("這一餐已經有你選好的店家，要換成這個地點嗎？")).toBeTruthy();
+    expect(screen.queryByRole("link", { name: "查看旅程" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "換成這個" }));
+
+    await screen.findByRole("link", { name: "查看旅程" });
+    const bodies = selectionBodies();
+    expect(bodies).toHaveLength(2);
+    expect(bodies[0]).toEqual({ trip_id: "trip-1", version: 3, day_date: "2026-11-10", mode: "replace_meal", meal: "dinner" });
+    expect(bodies[1]).toEqual({ ...bodies[0], overwrite: true });
   });
 
   it("offers to create a trip when the member has none yet", async () => {
