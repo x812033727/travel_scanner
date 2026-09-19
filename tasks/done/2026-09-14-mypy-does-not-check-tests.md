@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-mypy-does-not-check-tests
 title: mypy does not check tests, so a signature change breaks integration tests silently
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:28:30Z
 created_at: 2026-09-14T04:33:01Z
-completed_at:
+completed_at: 2026-09-19T10:12:50Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -64,7 +64,7 @@ person looks and still be broken.
         — `arg-type` above all, which is exactly what would have caught `_digest`.
 - [x] Add the check to `.github/workflows/ci.yml` next to `uv run mypy app`, as its own step
       so a failure names itself.
-- [ ] Re-run the scenario that motivated this: change a signature in `app/`, leave a `tests/`
+- [x] Re-run the scenario that motivated this: change a signature in `app/`, leave a `tests/`
       caller alone, and confirm the check fails.
 
 ## How to verify
@@ -143,3 +143,12 @@ and kwargs, `cast(AsyncSession, fake)` for test doubles, `Base.metadata.tables[.
 where the stub is the problem (`add_exception_handler`, partial `model_construct`).
 
 CI: `uv run mypy tests` runs as its own step after `uv run mypy app`.
+
+**Scenario re-run (2026-09-19).** `district_words(city_code: str | None)` in
+`app/destinations/localized.py` temporarily changed to `int`, tests left alone:
+`uv run mypy tests` → three `arg-type` errors in `tests/test_destinations_localized.py`, exit 1;
+reverted, green again. Final state: `uv run mypy app` clean (338 files), `uv run mypy tests` clean
+(252 files), `uv run pytest` 3940 passed / 343 skipped, `ruff check .` clean.
+
+Not fixed here, filed separately: `tests/test_discovery_migration.py` fails one case when collected
+alone (`2026-09-19-test-discovery-migration-discovery-preferences-user`); pre-existing.
