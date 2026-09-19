@@ -11,7 +11,7 @@
 **任何請求的 UA、標頭與查詢字串都沒有放入 email 或任何個人資料**，
 也**沒有使用 `sources[]` 以外的網址替文章補任何事實**。
 
-結果：**改了 8 條（11 個編輯點）**，另有 4 件留給站主。這是入門篇、**沒有 code 區塊**，
+結果：**改了 8 條（內容包 10 個欄位、16 處字句）**，另有 3 件留給站主。這是入門篇、**沒有 code 區塊**，
 所以錯誤型態不是參數與旗標，而是**譯名、歸屬與沒有來源的效益宣稱**。
 
 ## 重抓結果：三條 sources 今天都讀到正文，不是空殼
@@ -168,9 +168,9 @@ parallelization 底下的 `Sectioning : Breaking a task into independent subtask
    指派只給了這兩篇的 slug、沒有給標題。那兩篇定稿若換標題，這裡要回頭改。
 2. **括號體例不一致**：`ai-workflow-basics` 點名兄弟篇用「…」，這篇用《…》。
    `autolink` 比對的是詞彙別名不是標題，兩種都不影響連結，但系列讀起來會不一致，請站主定一種。
-3. `ai-workflow-basics` 文末預告這篇時寫的是「一件事拆給多個模型：**四種切法**」，
-   與這篇實際標題（「……依步驟、能力、風險、資料敏感度四種切法」）不同。那個檔不在本次可動範圍。
-4. Claude 模型文件目錄的 `Specialized models` 底下是 Claude Mythos 5.1 與 Claude Mythos 5，
+   （`ai-workflow-basics` 文末預告這篇的標題，本代理開工時還是簡寫的「四種切法」，
+   查核期間已被另一個代理同步成完整標題、逐字相符，那一項不必再處理。）
+3. Claude 模型文件目錄的 `Specialized models` 底下是 Claude Mythos 5.1 與 Claude Mythos 5，
    但**這一頁沒有印出它們的 API id**，所以沒有加進 `models-seen.json`（依規定不憑記憶寫 id）。
    之後哪一篇要點名，得先開個別模型頁查 id 再補進清單。
 
@@ -196,5 +196,5 @@ OK ai-workflow-split-tasks-across-models paragraphs 2806 code_blocks 0 sources 3
 是會誤導讀者的兩處，其餘是譯名、限定詞與全稱否定。
 骨幹論述（四種切法、決策順序、四個判斷依據）查下來站得住，沒有換掉，
 也沒有動任何程式範例（本篇沒有），所以不需要第二輪。
-剩下的四件事都要站主決定：兩篇未寫文章的標題、括號體例、`ai-workflow-basics` 的預告標題，
+剩下的三件事要站主決定：兩篇未寫文章的標題、點名兄弟篇的括號體例，
 以及 Mythos 的 id 要不要補進 `models-seen.json`。
