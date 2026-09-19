@@ -81,12 +81,32 @@
         },
         {
           "type": "table",
-          "header": ["權限動作", "Read and write (publish and stage)", "Read and write (stage only)"],
+          "header": [
+            "權限動作",
+            "Read and write (publish and stage)",
+            "Read and write (stage only)"
+          ],
           "rows": [
-            ["直接發布新版本到 registry", "可以", "不行，會出現 E_STAGE_REQUIRED 錯誤"],
-            ["用 npm stage publish 送出待審版本", "可以（等級名稱即 publish and stage）", "可以"],
-            ["搬移 dist-tag", "官方頁未特別說明", "可以（仍保留的權限）"],
-            ["把版本標記為棄用", "官方頁未特別說明", "可以（仍保留的權限）"]
+            [
+              "直接發布新版本到 registry",
+              "可以",
+              "不行，會出現 E_STAGE_REQUIRED 錯誤"
+            ],
+            [
+              "用 npm stage publish 送出待審版本",
+              "可以（等級名稱即 publish and stage）",
+              "可以"
+            ],
+            [
+              "搬移 dist-tag",
+              "官方頁未特別說明",
+              "可以（仍保留的權限）"
+            ],
+            [
+              "把版本標記為棄用",
+              "官方頁未特別說明",
+              "可以（仍保留的權限）"
+            ]
           ],
           "caption": "依 GitHub Changelog 與 npm 說明中心整理，查核日 2026 年 9 月 20 日。"
         },
@@ -190,14 +210,26 @@
           "text": "GitHub 在 2026 年 9 月 18 日與 7 月 31 日兩則公告，都用「以 2027 年 1 月為目標」描述移除免 2FA 權杖直接發布的計畫；npm 的說明頁講同一件事時卻寫「會被移除」，主詞也寫得比較寬。這些頁面查核當天（2026 年 9 月 20 日）都沒有印出確切日期，說明頁並且明寫「目前，免 2FA 權杖仍然可以用來直接發布」。正式時程與最終範圍如有更新，請以 npm 與 GitHub 官方頁面當下內容為準，本文不建議是否該切換權杖類型。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [

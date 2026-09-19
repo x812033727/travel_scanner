@@ -82,11 +82,31 @@
         },
         {
           "type": "table",
-          "header": ["公告", "開放對象", "管理員開關", "官方寫的鋪開節奏"],
+          "header": [
+            "公告",
+            "開放對象",
+            "管理員開關",
+            "官方寫的鋪開節奏"
+          ],
           "rows": [
-            ["開學工具", "企業、Individual 訂閱者、個人帳號", "群組或 OU 開 Notebook", "9 月 15 日起，可能逾 15 天"],
-            ["筆記本開放學校與企業", "企業與 Individual（EEA 外）、個人全球", "群組或 OU 開 Notebook＋Gemini", "9 月 14 日起，最多 15 天"],
-            ["Expert Intelligence", "企業、Individual 訂閱者、個人帳號（都要已啟用三項）", "OU 開 Notebook＋Play＋Books", "現在已可使用"]
+            [
+              "開學工具",
+              "企業、Individual 訂閱者、個人帳號",
+              "群組或 OU 開 Notebook",
+              "9 月 15 日起，可能逾 15 天"
+            ],
+            [
+              "筆記本開放學校與企業",
+              "企業與 Individual（EEA 外）、個人全球",
+              "群組或 OU 開 Notebook＋Gemini",
+              "9 月 14 日起，最多 15 天"
+            ],
+            [
+              "Expert Intelligence",
+              "企業、Individual 訂閱者、個人帳號（都要已啟用三項）",
+              "OU 開 Notebook＋Play＋Books",
+              "現在已可使用"
+            ]
           ],
           "caption": "依 Google 2026 年 9 月 17 日至 18 日三則 Workspace 公告整理，查核日 2026 年 9 月 20 日。"
         },
@@ -190,14 +210,26 @@
           "text": "本文整理的是 Google 在 2026 年 9 月 15 日到 18 日發布的四份官方文件，查核日為 2026 年 9 月 20 日，本站沒有實際使用 Gemini Notebook 的這些功能，文中的能力描述、開放對象與方案內容都是 Google 的說法。四份文件都沒有交代台灣帳號是否在開放範圍內，也沒有列出支援語言清單；官方寫的是漸進鋪開，查核當天能不能在自己的帳號上看到，要以 App 或網頁當下顯示的畫面為準。本文不構成使用或購買建議。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Gemini 3.8 Live 與 Extended Thinking：新語音模型，你的帳號能用嗎？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-gemini-38-live-20260915"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Gemini 3.8 Live 與 Extended Thinking：新語音模型，你的帳號能用嗎？",
+              "kind": "life",
+              "slug": "ai-news-gemini-38-live-20260915"
+            }
+          ]
         }
       ],
       "sources": [

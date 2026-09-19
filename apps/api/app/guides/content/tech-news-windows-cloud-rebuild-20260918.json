@@ -85,12 +85,32 @@
         },
         {
           "type": "table",
-          "header": ["特點", "官方說法", "對讀者的意義"],
+          "header": [
+            "特點",
+            "官方說法",
+            "對讀者的意義"
+          ],
           "rows": [
-            ["映像與驅動一起下載", "從 Windows Update 抓目標系統映像與裝置驅動程式", "不用另外找驅動程式"],
-            ["不需要 USB 安裝媒體", "官方表示不需要 USB 媒體", "不用另外準備開機碟"],
-            ["不依賴現有系統的完整性", "官方表示不依賴目前已安裝系統的完整性", "作業系統本身有問題也能用"],
-            ["同時服務兩種對象", "說明文件開頭寫明是 IT 管理者與一般使用者", "公司與個人都是設計對象"]
+            [
+              "映像與驅動一起下載",
+              "從 Windows Update 抓目標系統映像與裝置驅動程式",
+              "不用另外找驅動程式"
+            ],
+            [
+              "不需要 USB 安裝媒體",
+              "官方表示不需要 USB 媒體",
+              "不用另外準備開機碟"
+            ],
+            [
+              "不依賴現有系統的完整性",
+              "官方表示不依賴目前已安裝系統的完整性",
+              "作業系統本身有問題也能用"
+            ],
+            [
+              "同時服務兩種對象",
+              "說明文件開頭寫明是 IT 管理者與一般使用者",
+              "公司與個人都是設計對象"
+            ]
           ],
           "caption": "整理自微軟 Cloud rebuild 說明文件，查核日 2026 年 9 月 20 日。"
         },
@@ -190,14 +210,26 @@
           "text": "Cloud rebuild 這次新增的抹除磁碟與 IT 遠端啟動，目前只在 Windows Insider 的 Experimental 頻道、Build 26340.9502，微軟自己的說明文件標題就掛著 (Preview)，並要求只拿非正式環境的裝置做評估；版本說明也寫明測試版功能有可能永遠不會正式推出。文中所有效果描述都是微軟官方所述，本站沒有實機測試，也不提供是否應該升級或加入 Insider 計畫的建議。抹除磁碟的實際結果取決於裝置的儲存硬體，Windows 沒辦法自行驗證儲存裝置做了什麼；要依政策或法規報廢、轉移裝置，請先向製造商確認，不支援時改用製造商工具。本文查核日為 2026 年 9 月 20 日，實際功能與時程請以微軟官方頁面最新版本為準。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-windows-project-zenith-20260904"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻",
+              "kind": "life",
+              "slug": "tech-news-windows-project-zenith-20260904"
+            }
+          ]
         }
       ],
       "sources": [

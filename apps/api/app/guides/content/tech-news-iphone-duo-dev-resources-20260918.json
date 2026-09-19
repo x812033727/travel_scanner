@@ -2,7 +2,11 @@
   "slug": "tech-news-iphone-duo-dev-resources-20260918",
   "kind": "life",
   "destination_id": null,
-  "topics": ["tech", "tech-news", "software"],
+  "topics": [
+    "tech",
+    "tech-news",
+    "software"
+  ],
   "valid_until": null,
   "news_date": "2026-09-18",
   "featured": false,
@@ -81,12 +85,32 @@
         },
         {
           "type": "table",
-          "header": ["情況", "系統怎麼處理", "文件給開發者的建議"],
+          "header": [
+            "情況",
+            "系統怎麼處理",
+            "文件給開發者的建議"
+          ],
           "rows": [
-            ["摺痕（division）", "把一個大畫面切成較小的畫面；半摺時生效、全開時失效", "版面依場景或容器範圍計算，不要寫死畫面尺寸"],
-            ["鏡頭遮蔽（occlusion）", "內鏡頭啟用時可能擋住內容，外鏡頭永遠擋著", "讀出保留區域的框，據此調整版面"],
-            ["工具列項目只有文字", "系統不會把它排進直式工具列", "加上圖示，或收進溢出選單"],
-            ["工具列項目是自訂視圖", "系統同樣不會把它排進直式工具列", "改成同時指定圖示與標題的項目"]
+            [
+              "摺痕（division）",
+              "把一個大畫面切成較小的畫面；半摺時生效、全開時失效",
+              "版面依場景或容器範圍計算，不要寫死畫面尺寸"
+            ],
+            [
+              "鏡頭遮蔽（occlusion）",
+              "內鏡頭啟用時可能擋住內容，外鏡頭永遠擋著",
+              "讀出保留區域的框，據此調整版面"
+            ],
+            [
+              "工具列項目只有文字",
+              "系統不會把它排進直式工具列",
+              "加上圖示，或收進溢出選單"
+            ],
+            [
+              "工具列項目是自訂視圖",
+              "系統同樣不會把它排進直式工具列",
+              "改成同時指定圖示與標題的項目"
+            ]
           ],
           "caption": "依 Apple「為 iPhone Duo 準備 App」技術文件整理，查核日 2026 年 9 月 20 日。"
         },
@@ -190,14 +214,26 @@
           "text": "本文只整理 Apple 給開發者的資源與時間表，不是任何第三方 App 是否已支援 iPhone Duo 的名單，也不是官方的使用者版更新時程——四份來源都沒有寫這些。文中對 Apple 自家工具與課程效果的描述（例如設計檔的內容、工作坊的學習成果）一律是 Apple 的說法，本站沒有實際使用測試。Xcode 27.1 目前仍是 beta，Apple 的技術文件也會持續更動，本文引用的內容以查核日 2026 年 9 月 20 日讀到的版本為準；工作坊的可報名人數與報名截止時間隨時在變，請以 Apple 官方頁面當下顯示的資訊為準，本文不做購買或升級建議。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Apple 發表 iPhone Duo：螢幕、電池與台灣上市時程整理",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-iphone-duo-20260909"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Apple 發表 iPhone Duo：螢幕、電池與台灣上市時程整理",
+              "kind": "life",
+              "slug": "tech-news-iphone-duo-20260909"
+            }
+          ]
         }
       ],
       "sources": [
