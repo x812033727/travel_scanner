@@ -196,7 +196,7 @@
           "items": [
             {
               "question": "三個客戶端可以直接共用同一份設定檔嗎？",
-              "answer": "不行。Claude Code 用 .mcp.json 或 ~/.claude.json，Codex 用 ~/.codex/config.toml，Gemini CLI 用 settings.json，三種格式互不相容；能共用的是同一支伺服器程式跟同一個啟動指令，三邊各自登記一次就好。"
+              "answer": "不行，三邊讀的是三個不同的檔案。Claude Code 用 .mcp.json 或 ~/.claude.json，Gemini CLI 用 settings.json，這兩邊都是 JSON 的 mcpServers 物件，但檔案位置與其他設定不同；Codex 用的是 ~/.codex/config.toml，寫成 TOML 的 [mcp_servers.<伺服器名稱>] 區段。能共用的是同一支伺服器程式跟同一個啟動指令，三邊各自登記一次就好。"
             },
             {
               "question": "一定要用 stdio 嗎？",
@@ -204,7 +204,7 @@
             },
             {
               "question": "伺服器的工具改了，三邊要各自更新嗎？",
-              "answer": "伺服器程式本身只要改一次，三個客戶端下一次呼叫 tools/list 的時候都會拿到新的輸入 Schema，不用分別修改。但如果連工具名稱都改了，而這個名稱已經寫進某個客戶端的白名單，像 Codex 的 enabled_tools 或 Gemini CLI 的 --include-tools，那個白名單也要跟著改，不然新名字會直接被擋下來。"
+              "answer": "伺服器程式本身只要改一次，三個客戶端下次重新連上它、呼叫 tools/list 的時候都會拿到新的輸入 Schema，不用分別修改。但如果連工具名稱都改了，而這個名稱已經寫進某個客戶端的白名單，像 Codex 的 enabled_tools 或 Gemini CLI 的 --include-tools，那個白名單也要跟著改，不然新名字會直接被擋下來。"
             },
             {
               "question": "加入指令裡，為什麼有的地方要加 --，有的不用？",

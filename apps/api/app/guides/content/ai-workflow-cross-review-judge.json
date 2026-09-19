@@ -91,7 +91,7 @@
         },
         {
           "type": "paragraph",
-          "text": "兩個模型答完之後，把兩份回答連同準則一起交給第三個模型評分。這裡選 Google 的模型當評審，是因為它的官方文件示範了直接用 Pydantic 類別定義 JSON Schema，再用 response_format 強制模型做結構化輸出，回傳的內容一定要符合這個 Schema，不需要另外寫程式從一段文字裡把 JSON 挖出來。下面的 judge() 函式接續上一段的 QUESTION、answer_a、answer_b，對每一條準則各自判斷通過或不通過，再給一個整體較佳的一方。"
+          "text": "兩個模型答完之後，把兩份回答連同準則一起交給第三個模型評分。這裡選 Google 的模型當評審，是因為它的官方文件示範了直接用 Pydantic 類別產生 JSON Schema，再用 response_format 指定輸出格式，官方範例把回傳的 interaction.output_text 交給 Pydantic 驗證，不必另外寫程式從一段文字裡把 JSON 挖出來。同一頁也寫了限制：不是所有 JSON Schema 功能都支援，而且輸出只保證是語法正確的 JSON，Google 建議在自己的程式裡再驗一次值，並為「符合 Schema 但語意不對」的輸出寫錯誤處理。下面的 judge() 函式接續上一段的 QUESTION、answer_a、answer_b，對每一條準則各自判斷通過或不通過，再給一個整體較佳的一方。"
         },
         {
           "type": "code",
