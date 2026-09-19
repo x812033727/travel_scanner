@@ -1,0 +1,287 @@
+{
+  "slug": "ai-workflow-mcp-shared-tools",
+  "title": "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "What is the Model Context Protocol (MCP)?",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "MCP Python SDK (README)",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Tools - MCP Python SDK",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Running your server - MCP Python SDK",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Connect Claude Code to tools via MCP",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Model Context Protocol (Codex)",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "MCP servers with Gemini CLI",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "MCP 官方網站把跨客戶端支援描述成一次打造、到處可用",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MCP is an open protocol supported across a wide range of clients and servers. AI assistants like Claude and ChatGPT, development tools like Visual Studio Code, Cursor, MCPJam, and many others all support MCP — making it easy to build once and integrate everywhere."
+    },
+    {
+      "fact": "Python SDK 的套件名稱是 mcp，要用 CLI 工具就裝 mcp[cli] 這個附加元件",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "uv add \"mcp[cli]\"      # or: pip install \"mcp[cli]\""
+    },
+    {
+      "fact": "SDK 要求 Python 3.10 以上",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Python 3.10+."
+    },
+    {
+      "fact": "伺服器物件從 mcp.server 這個模組匯入，類別名稱是 MCPServer",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "from mcp.server import MCPServer"
+    },
+    {
+      "fact": "宣告工具只需要在函式上加 @mcp.tool()，這是唯一要學的 API",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You declare one by putting @mcp.tool() on a plain Python function. That's the whole API."
+    },
+    {
+      "fact": "函式的型別提示會在客戶端呼叫 tools/list 時被轉成 JSON Schema 送過去",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "From those type hints the SDK generates a JSON Schema and sends it to the client during tools/list"
+    },
+    {
+      "fact": "工具的回傳分成 content 與 structured_content 兩部分",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "content is the text the model reads. structured_content is typed data for the client application."
+    },
+    {
+      "fact": "annotations（如 read_only_hint）只是提示，不是安全機制，客戶端可以不理會",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "They are hints, not security. Never rely on a client honouring them."
+    },
+    {
+      "fact": "ToolAnnotations 這個型別從 mcp.types 匯入",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "from mcp.types import ToolAnnotations"
+    },
+    {
+      "fact": "mcp.run() 不帶參數時，傳輸方式預設是 stdio",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With no argument, the transport is stdio."
+    },
+    {
+      "fact": "要換成 Streamable HTTP，在 mcp.run() 加 transport 與 port 參數即可",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "mcp.run(transport=\"streamable-http\", port=3001)"
+    },
+    {
+      "fact": "Claude Code 的 local scope 是預設值，只有登記的人自己看得到",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A local-scoped server loads only in the project where you added it and stays private to you."
+    },
+    {
+      "fact": "Claude Code 的 project scope 把設定寫進專案根目錄的 .mcp.json，用版控跟團隊共用",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Project-scoped servers enable team collaboration by storing configurations in a .mcp.json file at your project’s root directory."
+    },
+    {
+      "fact": "claude mcp add 用兩個連字號分開自己的選項跟伺服器的啟動指令",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude mcp add --env KEY=value --transport stdio myserver -- python server.py --port 8080"
+    },
+    {
+      "fact": "非外掛伺服器的 MCP 工具可呼叫名稱是 mcp__伺服器名稱__工具名稱，用在權限規則等地方",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A hook matcher written against the bare server key, such as mcp__database-tools__.*, never fires for a plugin-bundled server."
+    },
+    {
+      "fact": "Claude Code 官方文件提醒連接伺服器前要先確認信任，抓外部內容的伺服器可能有提示詞注入風險",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Verify you trust each server before connecting it. Servers that fetch external content can expose you to prompt injection risk."
+    },
+    {
+      "fact": "Codex 的 MCP 設定預設寫在 ~/.codex/config.toml，也可以用專案內的 .codex/config.toml",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex stores MCP configuration in config.toml alongside other Codex configuration settings. By default this is ~/.codex/config.toml, but you can also scope MCP servers to a project with .codex/config.toml (trusted projects only)."
+    },
+    {
+      "fact": "codex mcp add 用兩個連字號分開自己的選項跟 stdio 伺服器指令",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "codex mcp add context7 -- npx -y @upstash/context7-mcp"
+    },
+    {
+      "fact": "Codex 用 [mcp_servers.<伺服器名稱>] 這個 TOML 區段設定每支伺服器",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Configure each MCP server with a [mcp_servers.<server-name>] table in the configuration file."
+    },
+    {
+      "fact": "Codex 的 enabled_tools 欄位是工具白名單",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "enabled_tools (optional): Tool allow list."
+    },
+    {
+      "fact": "Codex 的 disabled_tools 欄位是工具黑名單，在 enabled_tools 之後套用",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "disabled_tools (optional): Tool deny list (applied after enabled_tools)."
+    },
+    {
+      "fact": "Gemini CLI 用 settings.json 裡的 mcpServers 設定去連 MCP 伺服器",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Gemini CLI uses the mcpServers configuration in your settings.json file to locate and connect to MCP servers."
+    },
+    {
+      "fact": "gemini mcp add 的基本語法是名稱後面直接接指令，不需要額外的分隔號",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "gemini mcp add [options] <name> <commandOrUrl>"
+    },
+    {
+      "fact": "gemini mcp add 預設把伺服器寫進專案設定 .gemini/settings.json，除非指定使用者層級",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Based on the scope (-s, --scope), it will be added to either the user config ~/.gemini/settings.json or the project config .gemini/settings.json file."
+    },
+    {
+      "fact": "Gemini CLI 的 includeTools 是允許清單，只有列出的工具會開放",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "includeTools (string[]): List of tool names to include from this MCP server. When specified, only the tools listed here will be available from this server (allowlist behavior)."
+    },
+    {
+      "fact": "Gemini CLI 的 excludeTools 是排除清單，即使伺服器有公開也不開放給模型",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "excludeTools (string[]): List of tool names to exclude from this MCP server. Tools listed here will not be available to the model, even if they are exposed by the server."
+    },
+    {
+      "fact": "gemini mcp add 有 --include-tools 這個逗號分隔的旗標",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--include-tools: A comma-separated list of tools to include."
+    },
+    {
+      "fact": "gemini mcp add 有 --exclude-tools 這個逗號分隔的旗標",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--exclude-tools: A comma-separated list of tools to exclude."
+    }
+  ],
+  "unverified_or_excluded": [
+    "Codex 的 codex mcp add 這個 CLI 指令是否有專屬旗標可以直接設定 enabled_tools/disabled_tools：官方文件只在 config.toml 的欄位說明看到這兩個名字，加入指令那段沒有對應旗標，所以本文只示範用 config.toml 設定，不假設 CLI 有這個旗標。",
+    "Claude Code 的 claude mcp add 指令是否有專屬的工具白名單旗標：文件只找到用 mcp__伺服器__工具 這種名稱寫進權限規則、Skill 允許清單等地方限制，沒看到 add 指令本身有對應旗標，所以本文用權限規則說明，不寫成 add 的參數。",
+    "MCP 規格版本號目前顯示是 2026-07-28，但本文不逐條比較這個版本跟前一版差在哪裡，因為跟三個客戶端共用同一支伺服器的主題無關，不寫進正文。",
+    "官方 SDK 文件裡的 mcp install 指令：查證後這個指令只認得 Claude Desktop，不是本文要講的 Claude Code，所以只在確認範圍時看過，沒有寫進正文。",
+    "Gemini CLI 的加入指令在伺服器參數本身帶類似旗標的字串時要不要加 --：官方範例只示範了一次帶 -- 的用法，沒有像 Claude Code、Codex 那樣寫成固定語法，所以本文只講不需要這個分隔號的基本語法，不深入這個邊界案例。"
+  ],
+  "must_not_write": [
+    "MCP 整體架構（主機、客戶端、伺服器的分工，resources 與 prompts 的細節）：留給「模型上下文協定（MCP）是什麼」那篇。",
+    "在 Claude 一般對話應用裡加連接器的操作畫面：留給「在 Claude 裡怎麼加 MCP 連接器」那篇。",
+    "怎麼設計多個工具的名稱、分頁、空結果處理：留給「Claude Code：設計 MCP 工具名稱、輸入 Schema 與分頁」那篇。",
+    "現成 MCP 伺服器清單與各自的帳號方案：留給「MCP 伺服器實用清單」那篇。",
+    "OAuth 遠端伺服器登入流程、WebSocket 傳輸、Claude Code 的 managed configuration：跟三個客戶端共用同一支伺服器的主題無關，本文不寫。",
+    "多個模型之間怎麼分工、路由或級聯：是系列其他篇的主題，本文只談同一支伺服器怎麼給三個客戶端用。"
+  ],
+  "editorial_brief": "這篇是系列第九篇，切角限定在同一支 MCP 伺服器同時給 Claude Code、Codex、Gemini CLI 三個客戶端用這件事：三邊各自的設定檔位置與加入指令、工具契約怎麼在三邊維持一致，以及三邊分開做的權限最小化。MCP 本身的概念、Claude 一般應用怎麼加連接器、單一伺服器裡工具要怎麼設計，都是站上其他篇的範圍，這裡只點名不重講。範例刻意只做一個唯讀工具，讓三個客戶端的設定差異成為主角，而不是工具設計本身。",
+  "code_samples": [
+    {
+      "label": "flight_server.py（套件：mcp[cli]；Python 3.10 以上）",
+      "language": "python",
+      "lines": 30,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "https://py.sdk.modelcontextprotocol.io/run/"
+      ]
+    },
+    {
+      "label": "三個客戶端登記同一支 stdio 伺服器的指令",
+      "language": "bash",
+      "lines": 8,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md"
+      ]
+    },
+    {
+      "label": "只放行 flight_status：Codex 與 Gemini CLI 的白名單設定",
+      "language": "bash",
+      "lines": 10,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md"
+      ]
+    }
+  ],
+  "hero_label": "一支伺服器，三邊共用",
+  "diagram": {
+    "layout": "flow",
+    "title": "一支伺服器，三邊各自登記",
+    "caption": "同一支伺服器登記進三個客戶端的四個步驟（2026 年 9 月查證）",
+    "nodes": [
+      [
+        "寫一支伺服器",
+        "一個工具、一份契約"
+      ],
+      [
+        "各自登記",
+        "設定檔位置格式都不同"
+      ],
+      [
+        "各自收窄",
+        "白名單只留必要工具"
+      ],
+      [
+        "各自核對",
+        "用自己的清單指令確認"
+      ]
+    ]
+  }
+}

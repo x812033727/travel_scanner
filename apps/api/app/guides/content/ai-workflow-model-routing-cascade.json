@@ -155,7 +155,7 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenRouter 把這類功能叫 Auto Router，模型設成 openrouter/auto 之後，OpenRouter 的文件寫，會用一個輕量的分類器把提示詞分成大約三十種任務類型，再依 OpenRouter 社群過去七天在同類任務上的花費占比挑模型，另外可以用cost_tier 這個設定選便宜到最強的價格帶；同一份文件也寫，分類或排名萬一暫時不可用，路由會退回一組預設模型，不會直接讓請求失敗。LiteLLM 則是在自己的 Router 類別上設 routing_strategy 這個參數，官方文件列出的策略包含simple-shuffle（預設）、依剩餘配額挑節點、依延遲挑節點與依價格挑節點等好幾種，另外還有 allowed_fails 與cooldown_time 可以把常失敗的節點暫時移出名單，重試次數與間隔則是 num_retries 與 retry_after 兩個參數。"
+          "text": "OpenRouter 把這類功能叫 Auto Router，模型設成 openrouter/auto 之後，OpenRouter 的文件寫，會用一個輕量的分類器把提示詞分成大約三十種任務類型，再依 OpenRouter 社群過去七天在同類任務上的花費占比挑模型，另外可以用 cost_tier 這個設定選便宜到最強的價格帶；同一份文件也寫，分類或排名萬一暫時不可用，路由會退回一組預設模型，不會直接讓請求失敗。LiteLLM 則是在自己的 Router 類別上設 routing_strategy 這個參數，官方文件列出的策略包含 simple-shuffle（預設）、依剩餘配額挑節點、依延遲挑節點與依價格挑節點等好幾種，另外還有 allowed_fails 與 cooldown_time 可以把常失敗的節點暫時移出名單，重試次數與間隔則是 num_retries 與 retry_after 兩個參數。"
         },
         {
           "type": "table",

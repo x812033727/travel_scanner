@@ -22,7 +22,7 @@
   ],
   "verified_facts": [
     {
-      "fact": "Anthropic 把「先把任務拆成一串步驟，一次模型呼叫處理前一次呼叫的輸出」的做法稱為 prompt chaining（提示鏈）。",
+      "fact": "Anthropic 把「先把任務拆成一連串步驟，每一次模型呼叫都處理前一次呼叫的輸出」的做法稱為 prompt chaining；本站既有的 ai-term-prompt-chaining 把它譯成提示詞串接，正文照這個譯名，不另造「提示鏈」。",
       "url": "https://www.anthropic.com/engineering/building-effective-agents",
       "is_vendor_claim": true,
       "verbatim_quote": "Prompt chaining decomposes a task into a sequence of steps, where each LLM call processes the output of the previous one."
@@ -58,30 +58,77 @@
       "verbatim_quote": "In the orchestrator-workers workflow, a central LLM dynamically breaks down tasks, delegates them to worker LLMs, and synthesizes their results."
     },
     {
-      "fact": "Claude 的模型文件把 Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5、Claude Haiku 4.5 這組一般模型之外，另外列出一組 Specialized models（專用模型）。",
+      "fact": "Claude 的模型文件在模型目錄裡，把 Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5、Claude Haiku 4.5 這幾個通用模型，跟另外一組 Specialized models（專用模型）分開列。這一組在頁面上是目錄分組，不是比較表的欄位，所以正文只寫「分開列」，不寫成兩種等級。",
       "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
       "is_vendor_claim": true,
       "verbatim_quote": "Claude Haiku 4.5 Specialized models"
     },
     {
-      "fact": "OpenAI 的模型文件把一組模型稱為 Specialized models，形容成是為特定任務打造的模型。",
+      "fact": "OpenAI 的模型文件把一組模型稱為 Specialized models，形容成是為特定任務打造的模型。同一頁把 GPT-6 Astra、GPT-5.6 Sol、Terra、Luna 四個通用模型放在 Flagship models 底下，沒有分成旗艦、中階、輕量三欄，所以正文不寫成三階對專用。",
       "url": "https://platform.openai.com/docs/models",
       "is_vendor_claim": true,
       "verbatim_quote": "Specialized models Purpose-built for specific tasks."
+    },
+    {
+      "fact": "Anthropic 寫可以在提示詞串接的任何中間步驟加上程式檢查，確認流程還在正軌上（正文「好抓錯」那一句的依據）。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "on any intermediate steps to ensure that the process is still on track."
+    },
+    {
+      "fact": "Anthropic 寫提示詞串接的主要目的是把每一次模型呼叫變成比較容易的工作，拿延遲換取更高的正確率；同一頁另寫代理式系統常是拿延遲與成本換取更好的任務表現。拆開因此不能寫成「更快」。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The main goal is to trade off latency for higher accuracy, by making each LLM call an easier task."
+    },
+    {
+      "fact": "Anthropic 寫協調者與工作者的關鍵差別，在於子任務不是事先定好、而是由中樞模型依當下輸入決定，所以正文不能把事先分得出來的分工直接叫做協調者與工作者。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "subtasks aren't pre-defined, but determined by the orchestrator based on the specific input."
+    },
+    {
+      "fact": "Anthropic 把平行化（parallelization）底下的切段（sectioning）定義成把一件任務拆成幾個彼此獨立、同時執行的子任務，這才是正文依能力切那個例子對應的做法。",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Breaking a task into independent subtasks run in parallel."
+    },
+    {
+      "fact": "Claude 的模型文件自己就建議依工作性質挑模型：多數工作從 Claude Opus 5 開始，吃重推理與長時程代理工作改用 Claude Fable 5.1。",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you're unsure which model to use, start with Claude Opus 5 for most workloads."
+    },
+    {
+      "fact": "OpenAI 的模型文件同樣建議依工作性質挑模型：要在能力與成本之間平衡選 GPT-5.6 Terra，成本敏感、量大的工作選 GPT-5.6 Luna。",
+      "url": "https://platform.openai.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Choose GPT-5.6 Terra to balance intelligence and cost, or GPT-5.6 Luna for cost-sensitive, high-volume workloads."
+    },
+    {
+      "fact": "Claude 的模型文件把價目表上最便宜的那個模型（每百萬 token 輸入 1 美元、輸出 5 美元）形容成最快的模型，這是正文「便宜、快的模型」的依據；價格數字本文不寫，留給旗艦中階輕量那篇。",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Haiku 4.5 The fastest model with near-frontier intelligence"
     }
   ],
   "unverified_or_excluded": [
     "Anthropic 的頁面附註提醒代理搭建的工具做法已經更新，並連到 Managed Agents 文件，但那是代理搭建工具的最新做法，跟本文『怎麼把工作拆給多個模型』的判斷依據是不同主題，沒有另外查證那份文件。",
     "OpenAI 頁面列出的各個專用模型（資安、生命科學、圖像、即時語音）完整清單與細節沒有一一查證，本文只引用『這是一組為特定任務打造的模型』這件事，不列出每個模型的名字。",
     "沒有查證任何一家雲端服務目前是否用 API 資料訓練模型、資料保留多久，因為條款常變動，本文只提醒讀者上傳前自行到當下的官方頁面確認，不寫死結論。",
-    "Google Gemini 的模型頁面沒有在這篇另外查證，本文沒有點名 Google 的任何模型，提到雲端模型時只泛稱，不需要另外引用。"
+    "Google Gemini 的模型頁面沒有在這篇另外查證，本文沒有點名 Google 的任何模型，提到雲端模型時只泛稱，不需要另外引用。",
+    "查核時（2026-09-19）重讀 Claude 模型文件，發現目錄裡 Specialized models 那一組底下放的是 Claude Mythos 5.1 與 Claude Mythos 5，但那是目錄的側邊資料，這一頁沒有印出它們的 API id，沒有再去開個別模型頁，所以沒有把任何 Mythos 的 id 加進 models-seen.json，正文也不點名。",
+    "查核時重讀 OpenAI 模型頁，Specialized models 底下分成資安（Daybreak）、生命科學、影像、即時語音幾類，正文只引用「為特定任務打造」這件事，不列類別也不列模型名，以免這一節變成模型清單。",
+    "本站沒有實測過任何一種拆法的速度或品質，所以正文只寫官方文件寫過的取捨（延遲換正確率），不寫哪一種拆法比較快、比較準。"
   ],
   "must_not_write": [
     "同一家旗艦、中階、輕量模型的完整名單、價格與比較，留給《同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選》。",
     "代理協調與子代理的完整定義與例子，留給對應的兩篇詞彙文章，這裡只一句帶過。",
     "怎麼估算省下多少成本、多少時間的算法，留給《成本、品質、延遲：多模型流程怎麼取捨》。",
     "系統自己判斷信心不足、動態升級到更強模型的執行機制（路由／級聯的實作），留給《模型路由與級聯：便宜先試、貴的兜底》。",
-    "在自己電腦上跑開放權重模型的實際安裝與設定步驟，留給《本機開放權重模型與雲端模型混搭》。"
+    "在自己電腦上跑開放權重模型的實際安裝與設定步驟，留給《本機開放權重模型與雲端模型混搭》。",
+    "不要把「拆給多個模型」寫成更快：來源只寫拿延遲換正確率、拿延遲與成本換任務表現，本站也沒有實測；描述、摘要、正文、表格都要一致。",
+    "prompt chaining 在本站固定譯成提示詞串接（ai-term-prompt-chaining 的用語），不要另造提示鏈。"
   ],
   "editorial_brief": "這篇的切角是拆的判斷依據本身：依步驟、依能力、依風險、依資料敏感度四種切法，各配一個決策依據與一個生活例子，最後併成一張流程圖，是入門篇，不講 API 也不放程式。跟《AI 工作流是什麼》的分工是：那篇談對話、流程、代理三層的分別，這篇假設流程裡已經放了不只一個模型，接著談怎麼分工。跟《成本、品質、延遲》、《模型路由與級聯》的分工是：那兩篇分別處理怎麼估算成本速度品質、以及系統自己動態升級的機制，這篇只在該提到的地方一句帶過，不重複算法或機制。",
   "code_samples": [],

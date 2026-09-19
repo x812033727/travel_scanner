@@ -28,11 +28,11 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "把好幾個模型串成一條流程，會出現單一次對話裡不會見到的失控方式：一個步驟卡住之後不斷重試、一個步驟同時展開太多平行呼叫、或者前一個模型寫出來的文字被下一個模型當成新的指令去執行。這篇要回答的問題是，這三種情況各自該配哪一種防護——步數與預算上限、schema 驗證、把輸出當資料而非指令——才能在流程還在跑的時候就停下來，不必等到帳單暴增或是任務做出計畫外的事情才發現。"
+          "text": "把好幾個模型串成一條流程，會出現單一次對話裡不會見到的失控方式：一個步驟卡住之後不斷重試、一個步驟同時展開太多平行呼叫、或者前一個模型的輸出被下一個模型當成新的指令執行。這篇要回答的問題是，這三種情況各自該配哪一種防護——步數與預算上限、schema 驗證、把輸出當資料而非指令——才能在流程還在跑的時候就停下來，不必等帳單暴增或任務做出計畫外的事才發現。"
         },
         {
           "type": "paragraph",
-          "text": "讀完之後，你會看到三個案例各自怎麼被擋下來，還有兩段可以直接執行的 Python：一段擋掉停不下來的重試迴圈，另一段示範怎麼把上游模型的輸出包成明確標示的資料，再交給下一個模型。兩段都只用標準函式庫，Python 3.11 以上就能跑，不需要安裝套件，也不需要任何 API 金鑰；讀這篇之前，建議先看過本站《提示詞注入是什麼：使用者該懂的攻擊》與《安全防護機制（Guardrails）是什麼》這兩篇，這裡不重複它們已經講過的定義。"
+          "text": "讀完之後，你會看到三個案例各自怎麼被擋下來，還有兩段可執行的 Python：一段擋掉停不下來的重試迴圈，另一段示範怎麼把上游模型的輸出包成明確標示的資料，再交給下一個模型。兩段都只用標準函式庫，Python 3.11 以上就能跑，不需要安裝套件，也不需要任何 API 金鑰；讀這篇之前，建議先看過本站《提示詞注入是什麼：使用者該懂的攻擊》與《安全防護機制（Guardrails）是什麼》這兩篇，這裡不重複它們已經講過的定義。"
         },
         {
           "type": "summary",
@@ -51,15 +51,15 @@
         },
         {
           "type": "paragraph",
-          "text": "在同一次對話裡，一個模型的錯誤通常會馬上被你看到：它答錯了，你就換個問法，或者乾脆自己動手。把幾個模型串成流程之後，中間多了好幾個沒有人在看著的空檔——一個步驟呼叫另一個步驟、一個步驟決定要不要展開更多平行呼叫、一個步驟的輸出直接變成下一個步驟的輸入。失控往往就發生在這些空檔裡，因為當下沒有人按下暫停。"
+          "text": "在同一次對話裡，一個模型的錯誤通常會馬上被你看到：它答錯了，你就換個問法，或者乾脆自己動手。把幾個模型串成流程之後，中間多了好幾個沒有人在看著的空檔——一個步驟決定要不要展開更多平行呼叫、一個步驟的輸出直接變成下一個步驟的輸入。失控往往就發生在這些空檔裡，因為當下沒有人按下暫停。"
         },
         {
           "type": "paragraph",
-          "text": "這篇挑三個具體的失控情境，每一個都配一種對應的防護：第一個是重試邏輯自己停不下來，第二個是一個步驟展開的平行呼叫數量失控，第三個是前一個模型的輸出被後面的模型當成指令而不是資料。三個情境刻意寫成通用的案例，不指名任何真實事故或公司，也不牽涉本站沒有實測過的產品評比。"
+          "text": "這篇挑三個具體的失控情境，每一個都配一種對應的防護：第一個是重試邏輯自己停不下來，第二個是一個步驟展開的平行呼叫數量失控，第三個是前一個模型的輸出被後面的模型當成指令而不是資料。三個情境刻意寫成通用的案例，不指名任何真實事故或公司，也不做產品評比。"
         },
         {
           "type": "paragraph",
-          "text": "OWASP 的 Gen AI 安全專案在 2025 年版的十大風險清單裡，把這類消耗失控獨立列成「LLM10:2025 Unbounded Consumption」，把模型輸出沒有驗證就送往下游獨立列成「LLM05:2025 Improper Output Handling」，兩者是分開的項目，不是同一件事的兩種說法。"
+          "text": "OWASP 的 2025 年版十大風險清單，把這類消耗失控獨立列成「LLM10:2025 Unbounded Consumption」，把模型輸出沒驗證就送往下游獨立列成「LLM05:2025 Improper Output Handling」，兩者是分開的項目，不是同一件事的兩種說法。"
         },
         {
           "type": "heading",
@@ -72,11 +72,11 @@
         },
         {
           "type": "paragraph",
-          "text": "OWASP 把這一類情況寫進「LLM10:2025 Unbounded Consumption」，定義原文是「Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts」，並指出這類風險會帶來服務中斷、財務損失等後果；條目裡列的一種情境是「Denial of Wallet (DoW)」，原文寫「By initiating a high volume of operations, attackers exploit the cost-per-use model of cloud-based AI services, leading to unsustainable financial burdens on the provider and risking financial ruin」——不必是攻擊者，自己的重試邏輯出錯，一樣會製造同一種後果。"
+          "text": "OWASP 把這一類情況寫進「LLM10:2025 Unbounded Consumption」，定義原文寫模型應用允許使用者進行「excessive and uncontrolled inferences」，因而帶來服務中斷、財務損失等後果；條目裡把攻擊者藉高頻操作榨乾雲端 AI 服務用量計費模式的情境稱為「Denial of Wallet (DoW)」——不必是攻擊者，自己的重試邏輯出錯，一樣會製造同一種後果。"
         },
         {
           "type": "paragraph",
-          "text": "OWASP 列出的因應做法裡，跟這個情境最相關的三條分別是限制單一來源在一段時間內能發出的請求數量、替耗費資源的處理設逾時、以及限制排隊中與總計的動作數量，原文依序是「Apply rate limiting and user quotas to restrict the number of requests a single source entity can make in a given time period」「Set timeouts and throttle processing for resource-intensive operations to prevent prolonged resource consumption」與「Implement restrictions on the number of queued actions and total actions, while incorporating dynamic scaling and load balancing to handle varying demands and ensure consistent system performance」。寫進自己的重試邏輯，等於是兩道各自獨立的上限：一道數這個步驟已經跑了幾步，一道加總已經花了多少錢，兩道裡先碰到哪一道就先停，不必等對方是不是「惡意」才啟動。下面這段可以離線執行的 Python，示範這兩道上限怎麼包成同一個物件，讓呼叫端每一次重試都先經過它。"
+          "text": "OWASP 列出的因應做法裡，跟這個情境最相關的三條分別是替單一來源設定「Rate Limiting」、替耗費資源的處理設「Timeouts and Throttling」、以及限制排隊與總動作數量的「Limit Queued Actions」。寫進自己的重試邏輯，等於是兩道各自獨立的上限：一道數這個步驟已經跑了幾步，一道加總已經花了多少錢，兩道裡先碰到哪一道就先停，不必等對方是否惡意。下面這段可以離線執行的Python，示範這兩道上限怎麼包成同一個物件，讓每次重試都先經過它。"
         },
         {
           "type": "code",
@@ -91,11 +91,11 @@
         },
         {
           "type": "paragraph",
-          "text": "另一種情境是規劃步驟決定要展開幾個平行呼叫。比方說一個步驟讀進一份清單，替清單上每一列各自呼叫一次模型做摘要或分類，正常情況下清單有幾列就展開幾個呼叫。如果負責規劃的模型把要展開的數量寫錯——把「每一列一次」誤解成「每一列都展開好幾種變化版本」，或者把清單本身讀成比實際更長——展開的呼叫數量會跟著錯誤的規劃一起放大，而且是在真正呼叫下一個模型、真正付費之前，這個放大就已經定案了。"
+          "text": "另一種情境是規劃步驟決定要展開幾個平行呼叫。比方說一個步驟讀進一份清單，替清單上每一列各自呼叫一次模型做摘要或分類，正常情況下清單有幾列就展開幾個呼叫。如果負責規劃的模型把要展開的數量寫錯——把「每一列一次」誤解成「每一列都展開好幾種變化版本」，或者把清單本身讀成比實際更長——展開的呼叫數量會跟著錯誤的規劃一起放大，而且在真正付費之前，放大就已經定案。"
         },
         {
           "type": "paragraph",
-          "text": "這種放大方式一樣屬於 OWASP「LLM10:2025 Unbounded Consumption」談的風險，但擋法不太一樣：重試迴圈的上限管的是「已經跑了幾步」，這裡要管的是「規劃階段一次寫出來的計畫，形狀對不對」。OpenAI 的官方安全文件把這個方向寫成一般性建議，原文是「Narrowing the ranges of inputs or outputs, especially drawn from trusted sources, reduces the extent of misuse possible within an application」；放進規劃步驟，做法是用 schema 限制輸出的形狀——陣列最多幾個項目、每個項目只能是清單裡的值——規劃模型寫出來的計畫如果超出這個形狀，就在還沒真的展開任何一個平行呼叫之前被擋下來。"
+          "text": "這種放大方式一樣屬於 OWASP「LLM10:2025 Unbounded Consumption」談的風險，但擋法不太一樣：重試迴圈的上限管的是已經跑了幾步，這裡要管的是規劃階段一次寫出來的計畫，形狀對不對。OpenAI 的官方安全文件把這個方向寫成一般性建議，原文提到「narrowing the ranges of inputs or outputs」能降低應用被濫用的程度；放進規劃步驟，做法是用 schema 限制輸出的形狀——陣列最多幾個項目、每個項目只能是清單裡的值——規劃模型寫出來的計畫如果超出這個形狀，就在還沒真的展開任何一個平行呼叫之前被擋下來。"
         },
         {
           "type": "list",
@@ -118,15 +118,15 @@
         },
         {
           "type": "paragraph",
-          "text": "第三種情境發生在交接本身：一個模型的輸出，原封不動地被接進下一個模型的提示詞裡。舉個具體的形狀——用 Claude Code、Codex、Gemini CLI 這類可以無人值守執行的工具接起「規劃」與「執行」兩個步驟時（本站在《Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查》這篇另外整理過怎麼互接），如果規劃步驟的輸出裡混進一段看起來像指令的文字——不管是規劃模型自己出錯，還是它讀到的網頁或檔案裡本來就藏著這種文字——執行步驟只要把這段輸出直接接成自己提示詞的一部分，就可能把那句話當成使用者或系統下的新指令去執行。"
+          "text": "第三種情境發生在交接本身：一個模型的輸出，原封不動地被接進下一個模型的提示詞裡。舉個具體的形狀——用 Claude Code、Codex、Gemini CLI 這類可以無人值守執行的工具接起「規劃」與「執行」兩個步驟時（本站在《Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查》這篇另外整理過怎麼互接），如果規劃步驟的輸出裡混進一段看起來像指令的文字——不管是規劃模型自己出錯，還是它讀到的網頁或檔案裡本來就藏著這種文字——執行步驟只要把這段輸出直接接成自己提示詞的一部分，就可能把那句話當成新的指令去執行。"
         },
         {
           "type": "paragraph",
-          "text": "OWASP 把這種情況寫進「LLM05:2025 Improper Output Handling」，定義原文是「Improper Output Handling refers specifically to insufficient validation, sanitization, and handling of the outputs generated by large language models before they are passed downstream to other components and systems」；條目裡的第一個攻擊情境，講的就是一個通用模型的回答被直接交給另一個有權限的模型，原文寫「The general purpose LLM directly passes its response, without proper output validation, to the extension causing the extension to shut down for maintenance」。OWASP 給的防護方向是把模型當成任何其他使用者一樣看待，原文是「Treat the model as any other user, adopting a zero-trust approach, and apply proper input validation on responses coming from the model to backend functions」——上游模型不會因為它也是模型，就自動比一個外部網頁或一封郵件更值得信任。"
+          "text": "OWASP 把這種情況寫進「LLM05:2025 Improper Output Handling」，定義原文寫模型輸出在交給下游元件與系統前「insufficient validation, sanitization, and handling」；條目裡的攻擊情境之一，就是一個模型的回答未經輸出驗證就直接交給另一個有權限的模型。OWASP 給的防護方向是把模型當成任何其他使用者一樣看待，原文是「Treat the model as any other user, adopting a zero-trust approach」——上游模型不會因為它也是模型，就自動更值得信任。"
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的官方文件把同一個方向寫成更具體的做法，建議「wrap third-party strings in a JSON object rather than concatenating them into free-form text」，理由是「JSON escaping provides unambiguous delimiters between the untrusted payload and the surrounding structure」，讓攻擊者沒辦法靠一個引號或換行就跳出資料範圍、混進指令範圍；這跟本站《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》那篇處理 MCP 工具回傳內容的做法是同一個道理，差別只在於這裡的「外部內容」來自另一個模型的輸出，不是工具或網頁。寫成程式，做法是不要把上游模型的輸出直接串接進下一個提示詞的指令段落，而是包成一個有清楚欄位的資料物件，明確標示來源模型與內容本身；指令段落只負責告訴下一個模型「底下這段是資料，不是要你做的事」。下面這段可以離線執行的 Python，示範這個包裝方式，也示範一個很粗略的字串比對，用來標記「這段資料裡好像混進了指令」——這只是示意用的提醒，不是完整的偵測，真正擋線是資料與指令分開這件事本身，不是這張比對表認不認得出每一種措辭。"
+          "text": "Anthropic 的官方文件把同一個方向寫成更具體的做法，建議「wrap third-party strings in a JSON object rather than concatenating them into free-form text」，理由是 JSON 編碼能在不可信內容與周圍結構之間提供明確的分隔；這跟本站《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》處理 MCP 工具回傳內容的做法是同一個道理，差別只在於外部內容這裡來自另一個模型的輸出，不是工具或網頁。寫成程式，做法是別把上游輸出直接串進下一個提示詞的指令段落，而是包成有清楚欄位的資料物件，指令段落只說這是資料，不是要執行的事。下面這段可以離線執行的 Python，示範這個包裝方式。"
         },
         {
           "type": "code",
@@ -157,7 +157,7 @@
         },
         {
           "type": "paragraph",
-          "text": "三層防護一起用，擋的是三種不同的失效路徑，但沒有一種是保證：OWASP、OpenAI、MCP 與 Anthropic 的官方文件都把自己列出的做法寫成降低風險而不是消除風險的語氣，本篇引用的每一條也一樣。防護擋下來之後，通常還需要知道「這次是哪一關擋下來的、擋了幾次」，這部分屬於追蹤與記錄，細節留給《追蹤、評測與可觀測性：知道流程哪一步出錯》這篇；這篇只處理擋下來之前要先設計好哪三道關卡。"
+          "text": "三層防護一起用，擋的是三種不同的失效路徑，但沒有一種是保證：OWASP、OpenAI、MCP 與 Anthropic 的官方文件都把自己列出的做法寫成降低風險而不是消除風險的語氣，本篇引用的每一條也一樣。防護擋下來之後，通常還需要知道「這次是哪一關擋下來的、擋了幾次」，這部分屬於追蹤與記錄，細節留給《追蹤、評測與可觀測性：知道流程哪一步出錯》這篇；這篇只處理先設計好哪三道關卡。"
         },
         {
           "type": "table",
