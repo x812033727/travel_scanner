@@ -197,3 +197,167 @@ OK ai-workflow-unified-api-layer paragraphs 2975 code_blocks 2 sources 8
 `ok`。改了 14 處、16 個編輯點，全部是歸屬、限定詞、來源撐不住的機制句與一條搜尋不到的引文，
 **沒有動到骨幹論述，也沒有換掉任何一個程式範例**（第二塊只加了三行環境變數檢查，讓原本沒用到的
 `import os` 有了用途）。不需要第二輪。
+
+## 第二輪
+
+第二位查核代理：沒有參與撰稿，也沒有參與第一輪。查核日 **2026-09-19**（與第一輪同一天，
+`checked_on` 仍是 **2026-09-18**，八條 source 與研究紀錄一致，今天的頁面沒有一個數字改變，依規格**不動**）。
+
+範圍：第一輪改動過的每一段與新寫進去的每一句逐句回貼 `sources[]` 原文，其餘正文、`summary`、
+FAQ、callout、表格每一格、兩個 caption、圖解節點、`hero_label`、title、description 一併複驗
+（合計與第一輪同一組 **99 條主張**），外加研究紀錄 **34 條 `verbatim_quote`**（第一輪 23＋9，本輪再加 2）
+與兩塊程式約 35 個識別字。來源全部自己重抓、重讀 body；
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料**，
+也**沒有使用 `sources[]` 以外的網址替文章補任何事實**。**改了 8 處。**
+
+### 重抓結果：八條今天再讀一次，都是正文
+
+| source | HTTP | bytes | body |
+| --- | --- | --- | --- |
+| `openrouter.ai/docs/quickstart` | 200 | 767,035 | 是（`Using the OpenAI SDK` 的 Python 範例、兩個 `Optional.` 標頭註解、`~openai/gpt-sol-latest` 的 latest alias 說明都在） |
+| `openrouter.ai/docs/api-reference/overview` | 200 | 644,001 | 是（`Non-standard parameters`、`Headers`、請求 schema 的 `supported_parameters=tools` 註解都在） |
+| `docs.litellm.ai/docs/` | 200 | 106,555 | 是（Quick Start 六個供應商頁籤、`Exception Handling`、Proxy 兩步驟都在） |
+| `docs.litellm.ai/docs/completion/input` | 200 | 99,698 | 是（`Translated OpenAI params` 表、`note` 的 drop_params 段、`def completion(...)` 簽名都在） |
+| `docs.litellm.ai/docs/providers/openrouter` | 200 | 115,205 | 是（`Usage`、`OpenRouter Completion Models` 表都在） |
+| `github.com/openai/openai-python` | **403** | 378 | 否——仍被本工作階段的代理擋掉（回的是 `GitHub access to this repository is not enabled for this session`）。依規格改抓 `raw.githubusercontent.com/openai/openai-python/main/README.md`：**200、41,584 bytes、README 全文** |
+| `console.groq.com/docs/openai` | 200 | 301,135 | 是（`Currently Unsupported OpenAI Features` 的四個欄位、`base_url` 範例都在） |
+| `console.groq.com/docs/models` | 200 | 404,628 | 是（Featured 的 GPT-OSS 120B 說明、Production Models 表的 `MODEL ID` 欄都在） |
+
+### 研究紀錄的引文：34 條全部通過連續字串比對
+
+用程式比對，HTML 去標籤後試三種接法（標籤換空白、標籤直接刪、另外把 Next.js flight payload 的跳脫字串
+單獨當一種），並確認**沒有任何一條只靠 payload 成立**——第一輪改掉的第 23 條現在是表格上的
+`GPT OSS 120B openai/gpt-oss-120b`，在「換空白」那一種裡就找得到。八條引文只在「標籤直接刪」那一種命中，
+逐一看過前後文，全部是程式碼區塊被語法高亮切成 span 的結果（例如
+`os.environ["ANTHROPIC_API_KEY"] = "your-api-key"`、`timeout: Optional[Union[float, int]] = None,`），不是拼接。
+
+### 程式範例：兩塊再編譯一次，沒有動
+
+| 區塊 | 行數 | `python3 -m py_compile` | 本輪再對過的識別字 |
+| --- | --- | --- | --- |
+| `openai 套件：同一段程式換兩個 OpenAI 相容 base_url` | 34 | **ok** | `https://openrouter.ai/api/v1`／`https://api.groq.com/openai/v1`（兩頁逐字、都含 `/v1`、無結尾斜線）、`OPENROUTER_API_KEY`／`GROQ_API_KEY`／`SITE_URL`／`SITE_NAME`（前兩個是文件上的名字，後兩個是讀者自己的值，對應文件的 `<YOUR_SITE_URL>`／`<YOUR_SITE_NAME>`）、`HTTP-Referer`／`X-OpenRouter-Title`（quickstart 兩個都註 `Optional.`；API 參考另寫 `X-Title also accepted`）、`OpenAI(base_url=, api_key=, timeout=)`（README `## Timeouts`：`timeout=20.0`、`By default requests time out after 10 minutes.`，所以 `timeout=30.0` 這個 float 成立）、`extra_headers`（README `#### Undocumented request params`）、`choices[0].message.content` |
+| `litellm 套件：completion() 換三個 model 字串` | 22 | **ok** | `completion(model=, messages=, timeout=)`（`timeout: Optional[Union[float, int]] = None,`、`Timeout in seconds ... (Defaults to 600 seconds)`，所以 `timeout=30` 這個 int 成立）、`openai/gpt-5.6-terra` 與 `anthropic/claude-sonnet-5`（首頁 Quick Start 原字串）、`openrouter/google/gemini-3.8-flash`（前綴規則＋目錄代號的組合，見下）、`OPENAI_API_KEY`／`ANTHROPIC_API_KEY`／`OPENROUTER_API_KEY` 的三個環境變數檢查 |
+
+兩塊與第一輪交出來的位元組完全相同，`lines` 34／22 與研究紀錄一致（檢查器算法是 `code.count("\n") + 1`），
+所以 `code_samples` 不必改。沒有字面金鑰、`<YOUR_KEY>`、`eval` 或刪檔命令，兩處網路呼叫都帶 `timeout`，沒有捏造輸出。
+
+### 改掉的 8 處
+
+1. **`summary` 第 1 句還留著第一輪要修掉的那個數字（最重的一處）。**
+   第一輪把導言、`description`、圖解節點、圖解 `alt` 與 image caption 的「只換兩個值」統一成
+   base_url、金鑰與 model 三個，但**漏了摘要**：
+   「官方 openai 套件與 LiteLLM 都能**只換 base_url 或 model 字串**切換供應商」。
+   正文第 2 節與 FAQ 3 寫的是「base_url、金鑰讀的環境變數，以及 model 字串三個地方」，摘要與正文互相矛盾，
+   也違反「summary ⊆ 正文」。已改成
+   「官方 openai 套件換 base_url、金鑰與 model 字串，LiteLLM 換 model 字串，就能切換供應商」。
+2. **「官方文件的**每個**範例都把供應商名稱寫在最前面」在文件上不成立（第二重）。**
+   `docs.litellm.ai/docs/` 同一頁的 `Logging & Observability` 與 `Track Costs & Usage` 範例用的是
+   **沒有前綴**的 `model="gpt-5.6-terra"`（今天以連續字串確認在頁面上），Proxy 那段呼叫用的是 config 裡取的
+   `model="gpt-5.6-luna"`。真正成立的是：文件**示範某一家供應商**時才帶前綴——
+   `openai/`、`anthropic/`、`vertex_ai/`、`bedrock/`、`ollama/`、`azure/` 六個頁籤都是。
+   正文與 FAQ 4 已收斂成「官方文件**示範每一家供應商時**，都把供應商名稱寫在最前面、用斜線隔開」，
+   研究紀錄 `must_not_write` 加一條擋住翻譯階段寫回絕對句，並補一條事實
+   （`os.environ["ANTHROPIC_API_KEY"] = "your-api-key"`）撐「在同一段範例裡設好對應的環境變數」。
+3. **「每個模型頁也會列出它支援哪些欄位」沒有來源（第三重）。**
+   本篇 `sources[]` 的兩頁 OpenRouter 文件都沒有這句話；「整份模型清單放在**公開的** API 上」的「公開」
+   也沒寫（quickstart 只寫 `list every available slug programmatically via the GET /api/v1/models endpoint`）。
+   頁面真的寫得出來的是 API 參考請求 schema 裡的註解
+   `See models supporting tool calling: openrouter.ai/models?supported_parameters=tools`。
+   整句已改成「OpenRouter 則是在 API 參考的註解裡示範，用 `supported_parameters` 篩出支援工具呼叫的模型」，
+   研究紀錄補這條 verbatim，`unverified_or_excluded` 記下原本那半為什麼拿掉。
+4. **「比自己一個個手動試更快」是沒有來源的比較。**
+   `get_supported_openai_params()` 那一段，文件只寫
+   `Use this function to get an up-to-date list of supported openai params for any model + provider.`，
+   沒有任何快慢比較。已刪掉這半句（也騰出字數給第 3 點的新句子）。
+5. **FAQ 3「OpenRouter 是**固定的**『供應商／模型』格式」太絕對。**
+   quickstart 自己的範例就是帶 `~` 的 latest alias `~openai/gpt-sol-latest`
+   （`a latest alias that always resolves to the newest model in the OpenAI GPT Sol family`）。
+   已改成「OpenRouter 用的是『供應商／模型』這種格式」。
+6. **「這裡用到的 `anthropic/claude-sonnet-5` 是 OpenRouter **模型頁**上的代號」的出處不對。**
+   `models-seen.json` 這一筆是從 `openrouter.ai/api/v1/models` 抄的，quickstart 也只寫
+   `Browse the full catalog at openrouter.ai/models`；同一篇後面本來就寫「OpenRouter **目錄**裡的代號」。
+   已統一成「OpenRouter 目錄裡的代號」。
+7. **圖解節點的三個值與正文不同字。** 第一輪把節點改成「換三個值／**端點**、金鑰、model」，
+   但正文、image caption 與 `alt` 寫的都是 `base_url`。已把節點細項改成
+   「base_url、金鑰、model」（11.15 個單位，仍在規格的 14 字以內），三處用字一致。
+8. **「request 裡帶了工具呼叫」的 `request`** 依系列的台灣用語規則改成「請求」（同句的
+   工具呼叫（tool calling）維持不動）。
+
+### 查過而且正確、本輪沒有動的部分
+
+- **第一輪最重的那三處都站得住**：Groq 的歸屬句對得上 Featured 區原文
+  `GPT-OSS 120B is OpenAI's flagship open-weight language model with 120 billion parameters`；
+  `GPT OSS 120B openai/gpt-oss-120b` 在 Production Models 表（不是 Preview）上找得到；
+  「LiteLLM 依前綴決定呼叫哪一家」的機制句確實已經換成文件寫法，`prefix` 一字在三頁 LiteLLM 文件仍是 0 次。
+- **Groq 不支援欄位四個一起寫**（`logprobs`／`logit_bias`／`top_logprobs`／`messages[].name`）、
+  `currently` 對應的「目前」、`400` 這個狀態碼，正文與 callout 兩處都在。
+  同段的 `If N is supplied, it must be equal to 1.` 與 Audio 的 `vtt`／`srt` 依研究紀錄維持不寫。
+- **`drop_params` 的範圍限定**（`This ONLY DROPS UNSUPPORTED OPENAI PARAMS`）正文與 callout 都在；
+  OpenRouter 側的 `logit_bias`（非 OpenAI 模型）與 `top_k`（OpenAI 模型）逐字對得上
+  `then the parameter is ignored. The rest are forwarded to the underlying model API.`。
+- **例外型別那句**對得上 `LiteLLM maps every provider's errors to the OpenAI exception types`，
+  `litellm.AuthenticationError`、`litellm.RateLimitError` 都在同一段程式裡。
+- **Proxy 段**逐項對得上：`Self-hosted gateway for platform teams managing LLM access across an organization.`、
+  `openai.OpenAI(api_key="anything", base_url="http://0.0.0.0:4000")`、
+  `Virtual keys with per-key/team/user budgets`、`Centralized logging, guardrails, and caching`、
+  `Admin UI for monitoring and management`。
+- **排行榜那句**維持第一輪改過的「就能」，對得上
+  `Setting them allows your app to appear on the OpenRouter leaderboards.` 與同段的 `are optional`。
+- **界線再掃一次全部通過**：只有 **1 個** callout、1 張圖解、**沒有**免責段落；全篇沒有價格、免費額度、
+  手續費、購買、升級或訂閱建議，沒有推薦式比價，沒有「台灣可用」，沒有本站沒做過的實測宣稱，沒有驚嘆號；
+  廠商宣稱都有歸屬。表格 16 格裡出現的三個數字（`120`、兩個 `5`，都在模型 id 裡）正文都有；
+  摘要與圖解沒有任何數字。
+- **與必連文章的分工**：OpenRouter 的帳號／金鑰／儲值、Claude 與 Gemini 的第一次呼叫、路由與 fallback
+  都各只有一句帶過；《OpenRouter：一把金鑰用遍各家模型》談的是價格、手續費、隱私與路由，本篇一個價格數字都沒有，
+  沒有矛盾也沒有整段重講。
+- **正文點名的四個系列兄弟篇，標題與今天的內容包逐字相同**：
+  《模型路由與級聯：便宜先試、貴的兜底》《成本、品質、延遲：多模型流程怎麼取捨》
+  《第一次呼叫 Claude API：金鑰、費用與十行 Python》《AI Studio 與第一個 Gemini API 呼叫》
+  （本篇沒有點名 `ai-workflow-local-and-cloud-mix` 與 `ai-workflow-structured-handoff`）。
+  結尾第一個 link 的 text 與 `ai-workflow-tutorials` 的 zh-TW title
+  「多模型 AI 工作流教學：從拆任務到串接不同模型」逐字相同（目錄篇已經寫好，所以連這一個 FAIL 都沒有），
+  第二個指向 `openrouter-multi-model-api`、text 與它的 zh-TW title 逐字相同；正文中間沒有 link 區塊。
+- **兩處「換 base_url 與 model 字串」沒有動**：第 2 節的標題與第 5 節開頭那句都只是在點名這個做法、
+  **沒有宣告個數**（第一輪修掉的是「只需要換……兩個值」這種有數字的寫法），與正文的「三個地方」不衝突。
+
+### 留給站主的事
+
+1. **`models-seen.json` 的 `openrouter/google/gemini-3.8-flash`（第一輪新增）本輪判定成立，但它是組合字串。**
+   它的 `verbatim` 是 `send model=openrouter/<your-openrouter-model> to send it to open router`——
+   今天在 `docs.litellm.ai/docs/providers/openrouter` 上以連續字串確認得到，符合清單「verbatim 是那一頁上的連續字串」
+   的定義；**但 id 本身沒有出現在任何頁面上**（該頁的實例是 `openrouter/google/palm-2-chat-bison`，
+   `gemini-3.8-flash` 在那一頁 0 次）。id 的兩半分別有據：前綴出自這句規則，模型半段
+   `google/gemini-3.8-flash` 是清單裡另一筆、抄自 `openrouter.ai/api/v1/models`。
+   條目的 `notes` 已經寫明這件事，所以**沒有新增修正條目、也沒有動它**；
+   若站主希望清單只收「頁面上逐字出現過的 id」，這一筆要改成註記型條目，請站主決定。
+   同一輪新增的 `openai/gpt-5.6-terra` 沒有這個問題：`model="openai/gpt-5.6-terra"` 今天在首頁 Quick Start 找得到。
+2. **`mistral-small-2603` 那筆仍未動**（不是本篇用的 id，依規格不改別人的條目）；第一輪已寫明它的
+   `verbatim` 只存在於徽章的 `title=` 屬性。
+3. **openai-python README 的主要介面是 Responses API**，Chat Completions 標成
+   `The previous standard (supported indefinitely)`。本篇談的相容層都是 Chat Completions 形狀，
+   目前沒寫錯；日後若要補一句狀態說明，請回 README 重查那兩行。
+4. **第一個 `code` 區塊的 OpenRouter 半段與《OpenRouter：一把金鑰用遍各家模型》的 Python 範例仍然相似**
+   （第一輪已列，本輪沒有動）：本篇多了第二個用戶端、金鑰從環境變數讀、加了 `timeout`。
+
+### `models-seen.json`
+
+**本輪沒有新增、沒有修改、沒有刪除任何條目**（今天讀到的是 31 筆）。本篇正文與兩塊程式用到的
+`openai/gpt-oss-120b`、`anthropic/claude-sonnet-5`、`openai/gpt-5.6-terra`、`google/gemini-3.8-flash`、
+`openrouter/google/gemini-3.8-flash` 全部在清單裡，檢查器也沒有對任何一個模型 id 發警告。
+
+### 自檢
+
+```
+WARN - lint raw_internal_url: 2 article link(s) as raw URLs; run `pack_cli relink` so they become article inlines that follow the target's publication
+OK ai-workflow-unified-api-layer paragraphs 2968 code_blocks 2 sources 8
+```
+
+`OK`，沒有 FAIL；`raw_internal_url` 是結尾兩個純 link 尚未 relink 的預期警告。
+段落字數從 **2,975** 降到 **2,968**（1,800–3,000）：本輪補的句子比刪掉的短，
+**沒有為了字數刪掉任何但書、限定詞或歸因**。code 區塊 2 塊（34 行、22 行）、sources 8 條都沒有變。
+
+### 結論
+
+`ok`。第二輪再改 8 處：一處是第一輪漏掉的摘要數字（與正文矛盾），兩處是來源撐不住的絕對句與無出處的欄位說明，
+其餘是沒有來源的比較句、出處寫錯的代號、圖解用字與一個英文詞。
+**骨幹論述、章節結構與兩個程式範例都沒有動**，`checked_on` 依規格維持 2026-09-18。不需要第三輪。

@@ -238,3 +238,160 @@ OK ai-workflow-mcp-shared-tools paragraphs 2964 code_blocks 3 sources 7
 第 3 節第 1 段（stdio）、`--` 那一段、預設值那一段、第 4 節第 1 段與 Claude Code 那一段、
 驗收清單三條與其後那一段、callout、FAQ 第 1／3／4／5 題、description、summary 第 1／3／4 句、
 表格第 2 列第 2 格與第 1 列第 5 格，以及 `code` 區塊 2 的兩行註解與 `code` 區塊 3 的全部十三行。
+
+## 第二輪
+
+查核代理：未參與撰稿，也未參與第一輪。查核日 **2026-09-19**（與第一輪同日，不同代理）。
+範圍依指派：**只覆核第一輪改動過的每一段與新寫進去的每一句**，不整篇重做。
+文章的 `checked_on` 仍是 **2026-09-18**，今天重抓後七頁都沒有任何數字或名稱改動，依規格**不動它**。
+
+檢查的主張：**108 條**（description 1、summary 第 1／3／4 句共 4、前言第 2 段 2、正文第 1 節 2、
+第 2 節第 2 段 4、第 3 節三段 21、第 4 節兩段 9、驗收清單三條 9、其後那段 2、callout 2、
+FAQ 第 1／3／4／5 題 9、表格兩格 3，外加 `code` 區塊 2 的 14 個、區塊 3 的 13 個、
+區塊 1 的 13 個識別字），**改了 4 處**，研究紀錄新增 1 條引文。`hero.alt` 依規格不查不改。
+
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料**，
+也**沒有使用 `sources[]` 以外的網址替文章補任何事實**（本輪一個外部網址都沒有多抓）。
+
+### 重抓結果：七條 sources 今天仍然都讀到正文
+
+| source | HTTP | bytes | 與第一輪 | body 是正文嗎 |
+| --- | --- | --- | --- | --- |
+| `modelcontextprotocol.io/docs/2026-07-28/getting-started/intro` | 200 | 290,696 | 相同 | **是**。`open-source standard`、`USB-C`、`Broad ecosystem support` 全在 |
+| `raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md` | 200 | 5,724 | 相同 | **是**。原始 markdown，v2 說明、`Python 3.10+.`、`from mcp.server import MCPServer` 都在 |
+| `py.sdk.modelcontextprotocol.io/servers/tools/` | 200 | 74,235 | 相同 | **是**。`Your first tool` 到 `Recap` 十節俱全 |
+| `py.sdk.modelcontextprotocol.io/run/` | 200 | 62,816 | 相同 | **是**。傳輸方式表格、`mcp.run()`、`Streamable HTTP`、`Recap` 都在 |
+| `code.claude.com/docs/en/mcp` | 200 | 1,463,045 | 相同 | **是**。四種安裝方式、`MCP installation scopes`、`Server status` 都在 |
+| `learn.chatgpt.com/docs/extend/mcp` | 200 | 457,640 | 相同 | **是**。`Configure with the CLI`、`Configure with config.toml`、`config.toml examples` 都在 |
+| `raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md` | 200 | 41,902 | 相同 | **是**。原始 markdown，`mcpServers` 屬性表、`gemini mcp add` 那節都在 |
+
+七條的 bytes 與第一輪一字不差，頁面這一天內沒有改版。
+
+### 研究紀錄的引文：53 條全部命中，一條都不用換
+
+第一輪留下的 **53 條**（原有 28 條＋第一輪新增 25 條）用程式綁回**它自己的 `url`** 做連續字串比對：
+
+- HTML 的五條來源（s1、s3、s4、s5、s6）只做**空白收合與彎引號正規化**就全部命中，
+  不需要第一輪用過的「忽略空白」寬鬆比對。
+- markdown 的兩條來源（README、`mcp-server.md`）另外還原 markdown 的呈現語法後命中：
+  去掉行內反引號、粗體星號、清單符號與 `>` 引用前綴，並把段落的硬斷行接回一行。
+  需要這層還原的有 8 條，其中 7 條只是行內反引號，1 條是 `gemini mcp list` 底下那個
+  `> [!NOTE]` 引用區塊（跨四行硬斷行）——這條研究紀錄本來就註明「引文為去掉 > 與反引號的呈現形式」，
+  在 GitHub 上渲染出來就是那一整句，判定**維持原樣**，不改寫也不拆短。
+
+**結論：沒有一條 `verbatim_quote` 需要換成別的片段，也沒有一條事實需要刪。**
+本輪新增 1 條（見下），共 54 條。
+
+### 程式範例：第二次重驗
+
+| 區塊 | 語言 | 行數 | 重驗 | 本輪逐字對過的識別字與文件 |
+| --- | --- | --- | --- | --- |
+| `flight_server.py（套件：mcp[cli]；Python 3.10 以上）` | python | 30 | `python3 -m py_compile` **通過** | `from mcp.server import MCPServer`、`MCPServer("...")`、`@mcp.tool(title=, annotations=)`、`from mcp.types import ToolAnnotations`、`ToolAnnotations(read_only_hint=, open_world_hint=)`、`Annotated[str, Field(description=...)]`、`if __name__ == "__main__":`、`mcp.run()`。README 今天仍寫 `This is v2 of the MCP Python SDK, the current stable release line.` 與 `from mcp.server import MCPServer`（**不是** `FastMCP`）、`Python 3.10+.`；Tools 頁仍寫 `annotations=ToolAnnotations(read_only_hint=True, open_world_hint=False)`（snake_case，頁面上沒有 `readOnlyHint`），其餘兩個標註是 `destructive_hint`、`idempotent_hint`；run 頁仍寫 `With no argument, the transport is stdio.`。**十三個符號一個都沒變。** |
+| `三個客戶端登記同一支 stdio 伺服器的指令` | bash | 9 | `bash -n` **通過** | `claude mcp add`／`--transport stdio`／`--`（頁面基本語法 `claude mcp add [options] <name> -- <command> [args...]`）、`Local scope is the default.`、`--scope project` → `.mcp.json`；`codex mcp add flight-desk -- python flight_server.py`（語法 `codex mcp add <server-name> --env VAR1=VALUE1 --env VAR2=VALUE2 -- <stdio server-command>`）、`~/.codex/config.toml`、`[mcp_servers.flight-desk]`；`gemini mcp add flight-desk python flight_server.py`（語法 `gemini mcp add [options] <name> <commandOrUrl> [args...]`）、`-s, --scope` 的 `[default: "project"]` → `.gemini/settings.json`。**兩行註解與三行指令都對。** |
+| `只放行 flight_status：Codex 與 Gemini CLI 的白名單設定`（第一輪整塊換掉） | bash | 13 | `bash -n` **通過**；heredoc 內的 TOML 用 `tomllib` 解析成 `{'mcp_servers': {'flight-desk': {'command': 'python', 'args': ['flight_server.py'], 'enabled_tools': ['flight_status']}}}` | 表名與四個鍵逐字對 Codex 頁：`Configure each MCP server with a [mcp_servers.<server-name>] table in the configuration file.`、`command (required): The command that starts the server.`、`args (optional): Arguments to pass to the server.`、`enabled_tools (optional): Tool allow list.`，表的形狀與 `config.toml examples` 裡的 `[mcp_servers.context7]`（`command` + `args`）和 `[mcp_servers.chrome_devtools]`（`enabled_tools = ["open", "screenshot"]`）一致。`cat > flight-desk.codex.toml` 只寫讀者自己的暫存檔，**不碰 `~/.codex/config.toml`**。第二行的 `gemini mcp add --include-tools flight_status flight-desk python flight_server.py` 的旗標在前、名稱、指令、參數的順序，符合頁面語法與 `--include-tools: A comma-separated list of tools to include.`。 |
+
+**第一輪換掉的第三塊，本輪判定成立**：它不再附加第二張同名表，也不再寫使用者設定檔。
+唯一要修的不是程式，是正文對它的說明（下面第 1 處）。
+Codex 那一頁今天列出的 `codex mcp add` 旗標仍然只有 `--env`、`--url`、`--oauth-client-id`、
+`--oauth-client-registration`，**沒有**工具白名單旗標，所以「只能自己編設定檔」這個前提沒有變。
+
+### 改掉的 4 處
+
+1. **正文把「`codex mcp add` 會幫你寫好那張表」寫成了文件的話。**
+   原文：「兩個欄位都放在 `[mcp_servers.<伺服器名稱>]` 這個區段裡，**也就是 `codex mcp add` 已經幫你寫好的那一張表**，
+   所以是把 `enabled_tools` 加進那張表……」。Codex 那一頁寫的是
+   「Codex stores MCP configuration in config.toml alongside other Codex configuration settings.
+   By default this is `~/.codex/config.toml`」與
+   「Configure each MCP server with a `[mcp_servers.<server-name>]` table in the configuration file.」
+   ——**沒有任何一句說 `codex mcp add` 會寫出這張表**，那是從兩句推出來的。
+   已改成條件句：「**而文件說設定檔裡一支伺服器一張表，所以已經用 `codex mcp add` 登記過的話**，
+   是把 `enabled_tools` 加進那張表，不是另外再寫一張同名的」。
+   （第一輪整塊換掉第三塊的理由沒有受影響：無論那張表是指令寫的還是手寫的，一支伺服器就是一張表。）
+2. **同段結尾與 `code` 區塊 3 的註解不一致，讀者可能整張表貼過去。**
+   原文：「下面這段先把整張表寫到另一個檔案，**方便你對照後貼過去**。」
+   ——「貼過去」讀起來像貼整張表，那正是第一輪要避免的「同一個檔案兩張同名表」。
+   程式註解寫的是 `copy enabled_tools into the table 'codex mcp add' already wrote`。
+   已改成「**你再把 `enabled_tools` 那一行加進去**」，與註解一致。
+   （正文與註解都明寫範例寫到另外的檔案，**不會覆寫讀者自己的設定檔**，這點本輪確認無誤。）
+3. **Claude Code 工具名稱那句的歸屬仍然不精確**（第一輪把它列為「留給站主」，本輪直接改掉）。
+   原文：「以這篇的例子來說就是 `mcp__flight-desk__flight_status`，**文件要你用這個完整名稱**去指定權限規則、
+   Skill 的 `allowed-tools` 清單、子代理的 `tools` 欄位或 hook 的比對條件。」
+   文件那句
+   「Use this full name when referencing the tool in permission rules, a skill's `allowed-tools` list,
+   a subagent's `tools` field, or a hook matcher.」
+   出現在**講外掛伺服器工具名稱**的那一節，那裡的 full name 指的是
+   `mcp__plugin_<plugin-name>_<server-name>__<tool-name>`；本文用的非外掛形式在同一段只以
+   「bare server key」的 `mcp__database-tools__.*` 出現（今天把整頁 `mcp__` 掃過一遍，
+   工具名稱的形狀只在這一段出現，其餘四處都是 `/mcp__servername__promptname` 的**提示詞**用法）。
+   已改成「**文件講外掛伺服器的工具名稱時寫著**，要用完整名稱去指定……，
+   **同一段也拿只寫伺服器名稱的形式當 hook 比對的例子**」。
+4. **local scope 的存放位置被寫成「使用者設定檔」，會跟 user scope 混淆。**
+   文件把 **local** 與 **user** 兩個 scope 都存在 `~/.claude.json`，還特別寫
+   「MCP local-scoped servers are stored in `~/.claude.json` (your home directory)」。
+   原文「設定存在**家目錄的使用者設定檔**」已改成「設定存在**家目錄的設定檔**」；
+   確切檔名留在表格那一格（`~/.claude.json`）。
+   （試過把檔名寫進正文，會讓自檢多出一個 `prose names model 'claude.json'` 的誤判 WARN，故不寫。）
+
+**為了騰出字數，精簡了四處重複敘述**（規格禁止刪但書或限定詞來湊字數，本輪一個都沒刪）：
+第 1 節第 1 段三個行程的並列句、第 1 節第 2 段結尾與導言重複的「只講怎麼讓三個客戶端一起用同一支」、
+第 3 節第 1 段與表格 caption 重複的表格引言、第 4 節第 2 段結尾與 callout 重複的「而不是圖方便整包放行」。
+段落字數維持 **2,964**，與第一輪相同。
+
+**研究紀錄新增 1 條引文**（支撐表格與 FAQ 裡的 `~/.claude.json`，原本只有「stays private to you」那句）：
+`Claude Code stores it in ~/.claude.json under that project's path, so the same server won't appear in your other projects.`
+
+### 本輪查過、沒有動的部分
+
+- **第一輪改過的其餘 13 處今天全部複查通過**：`--` 那一段與 FAQ 第 4 題的三家寫法
+  （Claude Code 有規則、Codex 那頁沒有這段文字、Gemini CLI 只有一個帶 `--` 的示範且沒寫理由）、
+  預設值那一段的兩組原用詞（`Local scope is the default.`／`[default: "project"]`）、
+  「簽進版控」只掛 Claude Code、驗收清單三條（`claude mcp get`／`claude mcp list` 的健康狀態／
+  `codex mcp list` 只看已設定的伺服器／`codex` TUI 的 `/mcp`／`gemini mcp list` 與資料夾信任的前提）、
+  `Added` 那行只代表設定被寫進去、callout 的 `includeTools` 預設全開、
+  FAQ 第 3 題的「重新連上」、FAQ 第 5 題與 summary 第 4 句歸給「官方 Python SDK 的文件」、
+  前言的「照官方安裝指令裝好 mcp 這個套件」與 Python 3.10、
+  表格的「僅限受信任的專案」與「權限規則裡指定」、TOML／JSON 的分法。
+- **否定句全部仍然掛在範圍內**：「本文查證當天，它的 MCP 文件裡沒有列出……」、
+  「Codex 那一頁沒有這段文字說明」、「那一頁唯一帶 `--` 的示範」、
+  「Gemini CLI 的這一頁沒有提版控或團隊共用」、「頁面沒有說明理由，所以本文也不替它補一個」。
+- **兄弟篇標題（協調者點名的第 8 項）**：正文**沒有點名任何一篇 `ai-workflow-*` 兄弟篇**，
+  所以沒有用到舊標題的問題；點名的四篇是必連文章，標題逐字等於它們內容包現在的 zh-TW title
+  （`ai-term-model-context-protocol`、`claude-mcp-explained`、`claude-code-mcp-tool-contracts`、
+  `mcp-servers-for-everyone`，逐一比對過）。
+- **結尾兩個 link**：第一個 text 逐字是「多模型 AI 工作流教學：從拆任務到串接不同模型」，
+  第二個指向 `mcp-servers-for-everyone`、text 逐字是「MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器」，
+  與該篇現在的 zh-TW title 相同。
+- **界線重掃**：只有**一個** `warning` callout、**沒有**免責段落、沒有價格與額度、
+  沒有購買或訂閱建議、沒有推薦式比價、沒有寫「台灣可用」；廠商宣稱全部有歸屬
+  （本輪把第 3 處的歸屬再收窄一次）；沒有與四篇必連文章矛盾或整段重講。
+- **`summary` ⊆ 正文、FAQ 答案 ⊆ 正文、表格每一格與圖解四格的內容**都在正文找得到對應；
+  圖解與 summary 沒有任何數字（自檢的數字比對也通過）。
+- **文章沒有出現任何模型 id**，`models-seen.json` **沒有新增**（也沒有動別人的條目）。
+- **`checked_on` 2026-09-18** 在內容包七條 source 與研究紀錄仍一致，未更動。
+
+### 留給站主的事
+
+1. **`code` 區塊 3 仍然只把整張 TOML 表寫到 `flight-desk.codex.toml`**，讀者要自己把
+   `enabled_tools` 那一行搬進 `~/.codex/config.toml`。這是 Codex 文件的缺口
+   （那一頁沒有任何用指令設定工具白名單的做法），不是本文的。
+2. **「`codex mcp add` 登記過的伺服器，設定檔裡已經有一張 `[mcp_servers.<名稱>]` 表」是推論，不是原句。**
+   本輪已把正文改成條件句；若站主想寫得更肯定，需要 Codex 文件裡一句直接這樣寫的話。
+3. **段落字數 2,964，離上限 3,000 只剩 36 字**（與第一輪相同：本輪補的三處都用精簡重複敘述換來）。
+   翻譯或後續補句前要先看字數，**不可以刪但書或限定詞來湊**。
+4. **兩個結尾 link 仍是純 link**（自檢的 `raw_internal_url` WARN），等協調者 `relink`。
+
+### 自檢
+
+```
+WARN - lint raw_internal_url: 2 article link(s) as raw URLs; run `pack_cli relink` so they become article inlines that follow the target's publication
+OK ai-workflow-mcp-shared-tools paragraphs 2964 code_blocks 3 sources 7
+```
+
+`OK`，沒有 FAIL；唯一的 WARN 是規格說明過、由協調者 `relink` 處理的那一個。
+段落字數 **2,964**（1,800–3,000），code 區塊 30／9／13 行。
+
+### 結論
+
+`ok`。第一輪換掉的第三塊程式本輪重驗通過，53 條引文全數命中，7 條來源今天仍是同一份正文；
+本輪只改 4 處，都是**歸屬與說明的精確度**（推論寫成文件原話 2 處、外掛那一節的句子套到非外掛形式 1 處、
+local 與 user scope 的用詞混淆 1 處），沒有動骨幹論述，也沒有再換掉任何程式範例。
