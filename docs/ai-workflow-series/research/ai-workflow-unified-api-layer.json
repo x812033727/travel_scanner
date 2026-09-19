@@ -369,6 +369,22 @@
         "label": "litellm 套件：completion() 換三個 model 字串（需要 litellm 套件）",
         "result": "ok"
       }
-    ]
+    ],
+    "second_round": {
+      "checked_by": "second independent factcheck agent (did not write, did not run round one)",
+      "checked_on": "2026-09-19",
+      "method": "八條 source 今天再以 curl -sL -A \"Mokaair-editorial\" 重抓一次讀 body（github.com 仍被本工作階段的代理擋成 403，README 依規格抓 raw.githubusercontent.com，200／41,584 bytes）；重點放在第一輪改動過的每一段與新寫進去的每一句，逐句回貼來源原文；研究紀錄全部 32 條 verbatim_quote 用程式做連續字串比對（HTML 去標籤「換空白」「直接刪」兩種接法，另外把 RSC payload 的跳脫字串單獨當一種，確認沒有一條只靠 payload 成立）；兩個 code 區塊重新抽出跑 python3 -m py_compile；兩個 base_url、四個環境變數名、兩個選用標頭、OpenAI(timeout=)、completion() 的三個 model 字串與環境變數檢查逐字對文件；模型 id 全部比對 models-seen.json。請求未帶任何 email 或個人資料，未用 sources[] 以外的網址替文章補事實。",
+      "claims_checked": 41,
+      "edits": [
+        "summary 第 1 句還留著第一輪要修掉的「只換 base_url 或 model 字串」，與正文、導言、圖解的「base_url、金鑰與 model 三個」矛盾，改成「官方 openai 套件換 base_url、金鑰與 model 字串，LiteLLM 換 model 字串」。",
+        "「官方文件的每個範例都把供應商名稱寫在最前面」在 docs.litellm.ai/docs/ 上不成立（同頁 Logging 與 Track Costs 範例是沒有前綴的 model=\"gpt-5.6-terra\"，Proxy 呼叫用的是 config 的 model_name），正文與 FAQ 4 都收斂成「官方文件示範每一家供應商時」；must_not_write 加一條擋住翻譯階段寫回去。",
+        "「OpenRouter 則是把整份模型清單放在公開的 API 上，每個模型頁也會列出它支援哪些欄位」的後半在兩頁 OpenRouter 文件上都找不到（「公開」也沒寫），整句改成 API 參考請求 schema 註解真的寫的 supported_parameters 篩選，並補一條 verbatim。",
+        "「帶入 model 與供應商名稱就能查到一份清單，比自己一個個手動試更快」的比較沒有來源，刪掉後半句。",
+        "「這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號」改成「OpenRouter 目錄裡的代號」：models-seen.json 這一筆是從 openrouter.ai/api/v1/models 抄的，quickstart 也只寫 catalog，與同段後面「OpenRouter 目錄裡的代號」一致。",
+        "圖解節點的三個值寫成「端點、金鑰、model」，與正文、caption、alt 的 base_url 不同字，改成「base_url、金鑰、model」（11.15 單位，仍在 14 字以內）。",
+        "「request 裡帶了工具呼叫」的 request 改成「請求」，照系列的台灣用語規則。"
+      ],
+      "verdict": "ok"
+    }
   }
 }
