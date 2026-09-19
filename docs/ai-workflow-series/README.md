@@ -1,7 +1,7 @@
 # 工作區：「多模型 AI 工作流」教學系列（12 篇＋hub，zh-TW）
 
 > **現況（2026-09-18）**：工作區、規格、檢查器、出圖與模型白名單就緒，**文章還沒寫**——撰稿與查核代理要等週額度重置後開工
-> （票 `tasks/open/2026-09-18-ai-workflow-tutorial-series.md`）。計畫來源：站主 2026-09-18 要求「新增幾篇 workflow 相關的教學與介紹，
+> （票 `tasks/open/2026-09-18-ai-workflow-tutorial-series-12-zh.md`）。計畫來源：站主 2026-09-18 要求「新增幾篇 workflow 相關的教學與介紹，
 > 可以介紹比較高技術面的串不同的 model」，定案為 12 篇＋一個系列 hub、只做 zh-TW、登記為獨立系列 `ai-workflow`（topic `ai-coding`）。
 
 ## 這個目錄放什麼

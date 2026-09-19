@@ -8,9 +8,38 @@ owner: claude-fable-5-1
 claimed_at: 2026-09-18T08:47:59Z
 created_at: 2026-09-18T08:47:33Z
 completed_at:
-branch: claude/ai-workflow-series-workspace
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
+  - docs/ai-workflow-series
+  - apps/api/app/guides/content/ai-workflow-tutorials.json
+  - apps/api/app/guides/content/ai-workflow-basics.json
+  - apps/api/app/guides/content/ai-workflow-split-tasks-across-models.json
+  - apps/api/app/guides/content/ai-workflow-cost-quality-latency.json
+  - apps/api/app/guides/content/ai-workflow-unified-api-layer.json
+  - apps/api/app/guides/content/ai-workflow-model-routing-cascade.json
+  - apps/api/app/guides/content/ai-workflow-structured-handoff.json
+  - apps/api/app/guides/content/ai-workflow-cross-review-judge.json
+  - apps/api/app/guides/content/ai-workflow-coding-agents-division.json
+  - apps/api/app/guides/content/ai-workflow-mcp-shared-tools.json
+  - apps/api/app/guides/content/ai-workflow-local-and-cloud-mix.json
+  - apps/api/app/guides/content/ai-workflow-tracing-evals.json
+  - apps/api/app/guides/content/ai-workflow-failures-and-guardrails.json
+  - apps/web/public/guides/ai-workflow-tutorials
+  - apps/web/public/guides/ai-workflow-basics
+  - apps/web/public/guides/ai-workflow-split-tasks-across-models
+  - apps/web/public/guides/ai-workflow-cost-quality-latency
+  - apps/web/public/guides/ai-workflow-unified-api-layer
+  - apps/web/public/guides/ai-workflow-model-routing-cascade
+  - apps/web/public/guides/ai-workflow-structured-handoff
+  - apps/web/public/guides/ai-workflow-cross-review-judge
+  - apps/web/public/guides/ai-workflow-coding-agents-division
+  - apps/web/public/guides/ai-workflow-mcp-shared-tools
+  - apps/web/public/guides/ai-workflow-local-and-cloud-mix
+  - apps/web/public/guides/ai-workflow-tracing-evals
+  - apps/web/public/guides/ai-workflow-failures-and-guardrails
+  - apps/api/app/guides/series_registry.json
+  - apps/api/app/guides/series_data/ai-workflow.json
   - apps/api/tests/test_guide_series.py
 ---
 
