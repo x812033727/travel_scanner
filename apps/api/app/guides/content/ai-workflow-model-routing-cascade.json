@@ -87,7 +87,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 官方的 Python 套件文件寫，用戶端預設逾時是十分鐘，可以用 timeout 這個選項調整，接受一個秒數，或更細緻的物件；連線錯誤、408、409、429 與 500 以上的伺服器內部錯誤，預設都會自動重試兩次，重試次數用 max_retries 這個選項調整，逾時的請求同樣預設重試兩次，而逾時時套件丟出的是 APITimeoutError。這篇的範例只靠這兩個選項處理「同一顆模型該不該再試一次」，fallback（換到下一階模型）則是自己在級聯迴圈裡寫的邏輯：捕捉到逾時或錯誤，就把索引往上移一階，而不是留在原地一直重試；整個級聯另外再設一個最大嘗試次數，計的是升級與 fallback 的次數，同一顆模型的重試由套件在一次呼叫內部處理、不算進這個計數，三個上限疊在一起，請求才不會卡住不放。"
+          "text": "Anthropic 官方的 Python 套件文件寫，用戶端預設逾時是十分鐘，可以用 timeout 這個選項調整，接受一個秒數，或更細緻的物件；連線錯誤、408、409、429 與 500 以上的伺服器內部錯誤，預設都會自動重試兩次，重試次數用 max_retries 這個選項調整，逾時的請求同樣預設重試兩次，而逾時時套件丟出的是 APITimeoutError。這篇的範例只靠這兩個選項處理「同一顆模型該不該再試一次」，fallback（換到下一階模型）則是自己在級聯迴圈裡寫的邏輯：捕捉到逾時或錯誤，就把索引往上移一階，而不是留在原地一直重試；整個級聯另外再設一個最大嘗試次數，計的是實際打出去的呼叫次數，升級與 fallback 各算一次，同一顆模型的重試由套件在一次呼叫內部處理、不算進這個計數。範例直接把這個上限設成階數：迴圈每失敗或升級一次就往上一階，每一階最多只打一次，所以在這個範例裡寫成比階數大的數字永遠不會生效。三個上限疊在一起，請求才不會卡住不放。"
         },
         {
           "type": "image",
@@ -138,7 +138,7 @@
           "type": "code",
           "language": "python",
           "label": "cascade.py：升級、fallback 與成本上限（延續上一段的 route_and_call.py）",
-          "code": "\"\"\"cascade.py -- escalate on low confidence, fall back on error, both capped.\"\"\"\nimport os\nfrom anthropic import Anthropic, APIConnectionError, APIStatusError, APITimeoutError\nfrom route_and_call import TIERS, call_tier, choose_start_tier\n\nCONFIDENCE_THRESHOLD = 0.6\nMAX_ATTEMPTS = 4          # escalations and fallbacks; SDK retries happen inside one call\nPER_CALL_TIMEOUT = 20.0   # seconds\nCOST_CAP_USD = 0.05       # this cascade's own limit for one end-user request\n\n\ndef run_cascade(prompt: str) -> dict:\n  client = Anthropic(api_key=os.environ[\"ANTHROPIC_API_KEY\"], max_retries=2)\n  tier_index = choose_start_tier(prompt)\n  spent = 0.0\n  best = {\"text\": \"\", \"confidence\": -1.0, \"cost\": 0.0, \"model\": None}\n  for attempt in range(1, MAX_ATTEMPTS + 1):\n    if spent >= COST_CAP_USD:\n      break\n    tier = TIERS[tier_index]\n    try:\n      result = call_tier(client, tier, prompt, PER_CALL_TIMEOUT)\n    except (APITimeoutError, APIConnectionError, APIStatusError):\n      if tier_index >= len(TIERS) - 1:\n        break  # already on the strongest tier, nothing left to fall back to\n      tier_index += 1  # fallback: this tier failed outright, not just unsure\n      continue\n    spent += result[\"cost\"]\n    if result[\"confidence\"] > best[\"confidence\"]:\n      best = result\n    if result[\"confidence\"] >= CONFIDENCE_THRESHOLD or tier_index >= len(TIERS) - 1:\n      break\n    tier_index += 1  # escalate: this tier answered but is not confident enough\n  best[\"attempts\"] = attempt\n  best[\"spent_usd\"] = round(spent, 6)\n  return best\n\n\nif __name__ == \"__main__\":\n  outcome = run_cascade(\"幫我用三句話說明報稅的基本流程\")\n  print(outcome)  # 示意：實際文字與信心依當次呼叫而定\n"
+          "code": "\"\"\"cascade.py -- escalate on low confidence, fall back on error, both capped.\"\"\"\nimport os\nfrom anthropic import Anthropic, APIConnectionError, APIStatusError, APITimeoutError\nfrom route_and_call import TIERS, call_tier, choose_start_tier\n\nCONFIDENCE_THRESHOLD = 0.6\nMAX_ATTEMPTS = len(TIERS)  # one call per tier; SDK retries happen inside one call\nPER_CALL_TIMEOUT = 20.0    # seconds\nCOST_CAP_USD = 0.05        # this cascade's own limit for one end-user request\n\n\ndef run_cascade(prompt: str) -> dict:\n  client = Anthropic(api_key=os.environ[\"ANTHROPIC_API_KEY\"], max_retries=2)\n  tier_index = choose_start_tier(prompt)\n  spent = 0.0\n  calls = 0\n  best = {\"text\": \"\", \"confidence\": -1.0, \"cost\": 0.0, \"model\": None}\n  for _ in range(MAX_ATTEMPTS):\n    if spent >= COST_CAP_USD:\n      break  # checked before the call, so this round never spends anything\n    tier = TIERS[tier_index]\n    calls += 1\n    try:\n      result = call_tier(client, tier, prompt, PER_CALL_TIMEOUT)\n    except (APITimeoutError, APIConnectionError, APIStatusError):\n      if tier_index >= len(TIERS) - 1:\n        break  # already on the strongest tier, nothing left to fall back to\n      tier_index += 1  # fallback: this tier failed outright, not just unsure\n      continue\n    spent += result[\"cost\"]\n    if result[\"confidence\"] > best[\"confidence\"]:\n      best = result\n    if result[\"confidence\"] >= CONFIDENCE_THRESHOLD or tier_index >= len(TIERS) - 1:\n      break\n    tier_index += 1  # escalate: this tier answered but is not confident enough\n  best[\"attempts\"] = calls  # calls really made, not loop rounds\n  best[\"spent_usd\"] = round(spent, 6)\n  return best\n\n\nif __name__ == \"__main__\":\n  outcome = run_cascade(\"幫我用三句話說明報稅的基本流程\")\n  print(outcome)  # 示意：實際文字與信心依當次呼叫而定\n"
         },
         {
           "type": "heading",
@@ -155,7 +155,7 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenRouter 把這類功能叫 Auto Router，模型設成 openrouter/auto 之後，OpenRouter 的文件寫，會用一個輕量的分類器把提示詞分成大約三十種任務類型，再依 OpenRouter 社群過去七天在同類任務上的花費占比挑模型，另外可以用 cost_tier 這個設定選價格帶，由便宜到最強是 low、medium、high、xhigh、max 五個值，文件註明那是一條帶不是上限，比該帶便宜的模型一樣會被排除；同一份文件也寫，分類或排名萬一暫時不可用，路由會退回一組預設模型，不會直接讓請求失敗。LiteLLM 則是在自己的 Router 類別上設 routing_strategy 這個參數，官方文件的範例用到的值有 simple-shuffle、usage-based-routing、latency-based-routing 與 cost-based-routing，文件建議正式環境用預設的 simple-shuffle；另外還有 allowed_fails 與 cooldown_time 可以把常失敗的節點暫時移出名單，重試次數與間隔則是 num_retries 與 retry_after，文件並註明 num_retries 是 LiteLLM 自己的重試迴圈，跟供應商套件的 max_retries 不是同一個設定。"
+          "text": "OpenRouter 把這類功能叫 Auto Router，模型設成 openrouter/auto 之後，OpenRouter 的文件寫，會用一個輕量的分類器把提示詞分成大約三十種任務類型，再依 OpenRouter 社群過去七天在同類任務上的花費占比挑模型，另外可以用 cost_tier 這個設定選價格帶，由便宜到最強是 low、medium、high、xhigh、max 五個值，文件註明那是一條帶不是上限，比該帶便宜的模型一樣會被排除；同一份文件也寫，分類或排名萬一暫時不可用，路由會退回一組預設模型，不會直接讓請求失敗。LiteLLM 的 Router 則是在自己設定的多個節點之間分流，挑節點的方式在 Router 類別上用 routing_strategy 這個參數指定，文件把這一頁上的策略列成 simple-shuffle、least-busy、usage-based-routing-v2、latency-based-routing 與 cost-based-routing 五個值，並建議正式環境用預設的 simple-shuffle；另外還有 allowed_fails 與 cooldown_time 可以把常失敗的節點暫時移出名單，重試次數與間隔則是 num_retries 與 retry_after，文件並註明 num_retries 是 LiteLLM 自己的重試迴圈，跟供應商套件的 max_retries 不是同一個設定。"
         },
         {
           "type": "table",
@@ -170,7 +170,7 @@
               "路由依據",
               "規則（長度、語言、任務關鍵字）決定起點，模型自評信心決定要不要往上升",
               "Auto Router 依過去七天社群花費占比，把提示詞分成約三十種任務類型後選模型；cost_tier 可另外選價格帶",
-              "Router 類別的 routing_strategy 參數指定策略，文件範例用到 simple-shuffle（預設）、usage-based-routing、latency-based-routing 與 cost-based-routing"
+              "在自己設定的多個節點之間分流，Router 類別的 routing_strategy 參數指定策略，文件列出 simple-shuffle（預設）、least-busy、usage-based-routing-v2、latency-based-routing 與 cost-based-routing 五個值"
             ],
             [
               "升級或容錯",
@@ -218,7 +218,7 @@
             },
             {
               "question": "範例裡的 timeout、max_retries 與成本上限這些數字要怎麼設？",
-              "answer": "這篇範例裡的門檻、逾時秒數、最大嘗試次數與成本上限都只是示意，用來示範這幾個機制怎麼串在一起，不是建議值；實際要設多少，需要依請求的長度、模型的正常回應時間與能接受的花費調整，量測成本、品質與延遲的方法在本系列另一篇會講。"
+              "answer": "這篇範例裡的信心門檻、逾時秒數與成本上限都只是示意，用來示範這幾個機制怎麼串在一起，不是建議值；最大嘗試次數則是直接設成階數，不是另外挑的數字；實際要設多少，需要依請求的長度、模型的正常回應時間與能接受的花費調整，量測成本、品質與延遲的方法在本系列另一篇會講。"
             }
           ]
         },

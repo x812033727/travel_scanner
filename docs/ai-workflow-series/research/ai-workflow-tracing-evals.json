@@ -84,6 +84,12 @@
       "verbatim_quote": "Without the use of this decorator factory, the name of the example function"
     },
     {
+      "fact": "OpenTelemetry 規格站原本那一頁的 <title> 今天是「Moved: Generative AI semantic conventions | OpenTelemetry」，<h1> 是同一句去掉站名的「Moved: Generative AI semantic conventions」（正文逐字引的就是 <h1> 這一句）",
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Moved: Generative AI semantic conventions | OpenTelemetry"
+    },
+    {
       "fact": "OpenTelemetry 規格站原本的 GenAI 語意慣例頁，標題今天是「Moved: Generative AI semantic conventions」，內文寫 GenAI 語意慣例已搬到 OpenTelemetry GenAI semantic conventions 儲存庫",
       "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
       "is_vendor_claim": true,
@@ -238,7 +244,8 @@
     "把 OpenTelemetry SDK 實際接上專案的安裝與設定步驟：本文只對照屬性命名，不示範安裝 SDK。",
     "模型價格、速率限制、上下文視窗等跟追蹤與評測切角無關的資訊。",
     "不可以把「幾乎所有 gen_ai. 屬性都是 development」這種印象式說法寫回去：這是可以數的，寫成查證當天的列數與計數（本輪為 72 個全部 Development）。各語系翻譯時連同「本文查證當天」這個限定一起翻。",
-    "不可以把 eval_compare.py 的結果寫成「只有一題退步」：實際跑出來 A 通過三題、B 通過兩題，退步的是 ascii-upper 與 digits 兩題。"
+    "不可以把 eval_compare.py 的結果寫成「只有一題退步」：實際跑出來 A 通過三題、B 通過兩題，退步的是 ascii-upper 與 digits 兩題（eval_compare.py 裡 pipeline_b 的註解也寫 two ASCII cases，翻譯時不要改成單數）。",
+    "談 OpenTelemetry 那一頁搬遷時，不可以只寫「已搬遷」就算數：要照頁面用語寫出標題 Moved: Generative AI semantic conventions，並說明本文實際讀的是搬過去之後 semantic-conventions-genai 儲存庫 main 分支 docs 目錄裡的屬性登錄檔與 GenAI spans 頁（即 sources 第 4、5 條）。標題是英文原文，各語系翻譯時不要翻譯這一句。"
   ],
   "editorial_brief": "本篇是系列第十一篇，講多模型工作流「追蹤與評測」這一層：每一步該記什麼欄位、怎麼自己寫一支不綁 SaaS 的 JSONL 追蹤器，以及怎麼用離線評測集比較新舊兩版流程的分數與退步清單。跟代理系統維運（AgentOps）是什麼的分工：那篇談把整個任務的執行軌跡看成一條線、區分回答與操作是否成功；本篇只專注在「一步」要記什麼欄位，記完之後怎麼拿去跑評測。跟模型與代理評測（Evals）是什麼的分工：那篇講怎麼設計案例與評分器、並比較三種評分方式；本篇假設案例已經存在，只示範程式怎麼自動跑分、比較兩版，評分方式只寫本篇範例用到的程式評分。也對照 OpenTelemetry 的 GenAI 語意慣例命名與穩定性狀態，但不實際串接 SDK。",
   "code_samples": [

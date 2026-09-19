@@ -298,6 +298,24 @@
       "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
       "is_vendor_claim": true,
       "verbatim_quote": "except anthropic.APIStatusError as e:"
+    },
+    {
+      "fact": "LiteLLM Router 頁自己把這一頁上的策略列成 simple-shuffle、least-busy、usage-based-routing-v2、latency-based-routing、cost-based-routing 五個值",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "so it works with every strategy on this page (simple-shuffle, least-busy, usage-based-routing-v2, latency-based-routing, cost-based-routing)"
+    },
+    {
+      "fact": "LiteLLM 的 Router 是在使用者自己設定的多個節點（deployment）之間分流",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Load-balance across multiple deployments (e.g. Azure/OpenAI)"
+    },
+    {
+      "fact": "LiteLLM 文件也有 routing_strategy=\"least-busy\" 的範例",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "router = Router(model_list=model_list, routing_strategy=\"least-busy\")"
     }
   ],
   "unverified_or_excluded": [
@@ -337,7 +355,7 @@
     {
       "label": "cascade.py：升級、fallback 與成本上限（延續上一段的 route_and_call.py）",
       "language": "python",
-      "lines": 42,
+      "lines": 44,
       "compiled_on": "2026-09-18",
       "checked_against": [
         "https://platform.claude.com/docs/en/get-started",

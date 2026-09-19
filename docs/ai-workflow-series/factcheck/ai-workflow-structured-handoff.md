@@ -272,3 +272,257 @@ Anthropic 的支援模型清單被改寫成該頁上不存在的 API id，
 以及必連文章 `claude-code-structured-cli-pipeline` 被安上不存在的 `--json-schema` 旗標。
 建議第二輪特別重看 Anthropic 那一段（系列名 vs API id 的寫法讀起來仍偏技術），
 以及新加的 `format` 但書是否和 callout 重複到需要合併。
+
+## 第二輪
+
+第二輪查核代理：未參與撰稿，也未參與第一輪。查核日 **2026-09-19**（與第一輪同日、不同代理）。
+範圍不是整篇重做：覆核第一輪改動過的每一段與新寫進去的每一句、研究紀錄每一條 `verbatim_quote`、
+兩個程式範例、`summary`／FAQ／表格／圖解的內含關係、界線與站內分工，加上協調者點名的四件事。
+
+`checked_on` 依 FACTCHECK 規則**維持 2026-09-18**：今天重抓沒有任何數字因為頁面改版而變動，
+第二輪改掉的都是讀法與缺漏的但書。`code` 未動，`code_samples` 的 `lines`（49／47）與
+`compiled_on` 因此不變。`models-seen.json` **沒有新增**（見下文第 1 點的取捨）。
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料**，
+也沒有用 `sources[]` 以外的網址替文章補任何事實。
+
+### 重抓結果：六條 sources 今天仍然讀得到正文
+
+| source | HTTP | bytes | body 是正文嗎 |
+| --- | --- | --- | --- |
+| `platform.openai.com/docs/guides/structured-outputs` | 200 | 3,253,904 | **是**（與第一輪同 bytes）。`Supported models`／`Supported schemas`／`Structured Outputs vs JSON mode`／`Step 3: Handle edge cases` 俱全 |
+| `platform.claude.com/docs/en/build-with-claude/structured-outputs` | 200 | 1,628,992 | **是**（第一輪 1,629,202，差 210 bytes，是頁內腳本雜湊；`Migrating from beta?`、`JSON Schema limitations`、頁尾 `Compatibility` 表逐字未變） |
+| `ai.google.dev/gemini-api/docs/structured-output` | 200 | 330,012 | **是**（同 bytes）。五組範例與 `Structured outputs with tools` 都在 |
+| `python-jsonschema.readthedocs.io/` | 200 | 35,895 | **是**（同 bytes） |
+| `python-jsonschema.readthedocs.io/en/stable/validate/` | 200 | 113,244 | **是**（同 bytes） |
+| `python-jsonschema.readthedocs.io/en/stable/errors/` | 200 | 82,169 | **是**（同 bytes） |
+
+### 查了幾條
+
+**131 個查核點**：第一輪改動過的段落與新句 **24 句／子句**；
+`summary` 4 句、FAQ 6 題答句、表格 15 格、表格與圖解 caption 各 1、圖解 5 組節點、
+callout、步驟列 4 項、兩個結尾 `link`、title 與 description 共 **41 項**；
+研究紀錄 **36 條 `verbatim_quote`**（第一輪 32 條加本輪新增 4 條）；程式 **30 個識別字**。
+表格與 summary 有幾項同時屬於第一輪編輯點，重複計入。
+
+`verbatim_quote` 用程式做 NFKC 正規化後的**連續字串**比對（不靠肉眼、不用 `...` 拼接）：
+**32 條全中、0 條落空**，本輪新增的 4 條也各自逐字驗過，合計 36 條全中。
+沒有任何一條需要換片段或刪事實。
+
+### 改掉的 5 條（7 個編輯點）
+
+1. **第一輪自己新寫的否定句是錯的：OpenAI「沒有逐一列出型號」。**（最重的一處）
+   第一輪把草稿的「GPT-4o 以後的模型」改成
+   「從 GPT-4o 起的較新模型支援，**沒有逐一列出型號**」，正文與表格都寫了。
+   但同一頁 `Structured Outputs vs JSON mode` 一節寫的是
+   「`However, Structured Outputs with response_format: {type: "json_schema", ...} is only supported
+   with the gpt-4o-mini , gpt-4o-mini-2024-07-18 , and gpt-4o-2024-08-06 model snapshots and later.`」，
+   下面的對照表還有一列「`Compatible models gpt-4o-mini , gpt-4o-2024-08-06 , and later`」——
+   **這一頁確實逐一列了型號**，只是列在另一節。
+   正文改成「OpenAI 的文件寫，這項功能是從 GPT-4o 起的較新模型支援，新專案建議直接用 gpt-6-astra。」
+   （刪掉否定句，正文少 9 個字）；
+   表格「支援模型」欄改成
+   「gpt-6-astra；文件寫『較新的大型語言模型，從 GPT-4o 起』，與 JSON mode 的對照表另外列出相容的 gpt-4o 快照版本與之後的模型」。
+   **沒有**把 `gpt-4o-mini`／`gpt-4o-2024-08-06` 逐字寫進文章：那兩個 id 不在 `models-seen.json` 裡，
+   寫進去就得動第四個檔，指派只允許動三個檔；改用「gpt-4o 快照版本」這個涵蓋兩者的說法，
+   並把三個 id 記進研究紀錄的 `verified_facts` 與 `unverified_or_excluded`。
+2. **三家的 schema 被寫成可以無條件共用——三頁都自己寫了「只支援子集」。**
+   正文原本寫「把 Anthropic 或 Google 換進來**只是** HTTP 呼叫那幾行不同，
+   **schema** 與驗證、重試的邏輯不用改」，FAQ 第 2 題寫
+   「換供應商時要改的是外層怎麼包，**不是 schema 內容本身**」。
+   這是 FACTCHECK 點名的「可以直接換」型相容性宣稱，而三頁各自寫：
+   OpenAI「`Supported schemas Structured Outputs supports a subset of the JSON Schema language.`」、
+   Google「`Gemini's structured output mode supports a subset of the JSON Schema specification.`」、
+   Anthropic「`Structured outputs support standard JSON Schema with some limitations.
+   Both JSON outputs and strict tool use share these limitations.`」。
+   正文改成「……**主要是** HTTP 呼叫那幾行不同，驗證與重試的邏輯不用改；
+   但三家文件都寫自己只支援 JSON Schema 的一個子集，換家前要照各自的限制確認 schema。」
+   FAQ 第 2 題同步補上同一個但書。研究紀錄加三條 `verified_facts` 與一條 `must_not_write`。
+3. **`Python SDK 1.0 之後` → `Python SDK v1.0 起`。**
+   原文是「`but the Python SDK (v1.0 and later) does not accept output_format={...} on
+   client.beta.messages.create() or count_tokens() and raises a TypeError ; use output_config instead.`」。
+   「1.0 之後」在中文裡讀得出「不含 1.0」，`(v1.0 and later)` 是含的。其餘部分逐字正確（見下）。
+4. **`summary` 與 FAQ 都寫「重試上限設在三次」，但正文沒有這個數字。**
+   三次只出現在程式（`MAX_ATTEMPTS = 3`）與 FAQ。步驟列第 4 項補成
+   「重試達到上限（**本篇範例設成三次**）還沒過，就丟出例外並保留最後一次輸出」，
+   讓 `summary` ⊆ 正文、FAQ ⊆ 正文都成立。
+5. **第一輪漏改的頻率宣稱。** 第一輪把導言的「最常卡住」軟化成「很容易卡住」，
+   但 `summary` 第 1 句的「多模型交接失敗**多半**不是模型變笨」原封不動——
+   那是沒有來源也沒有實測的多數宣稱。已改成
+   「多模型交接失敗**不見得**是模型變笨，**很容易只是**雙方沒有先講好輸出的格式」，與導言一致。
+
+正文字數 2,895 → **2,923**（上限 3,000）。加但書的兩處靠刪掉第 1 點那個錯誤否定句、
+把「只是」改「主要是」來騰位置，**沒有為了字數刪掉任何但書、限定詞或歸因**。
+回掃第一輪的完整 diff（`654c15d0..HEAD`）確認：第一輪每一處改動都是補限定詞或改正讀法，
+沒有任何一處是刪去既有的但書或歸因。
+
+### 協調者點名的四件事
+
+**(a) Anthropic 的系列名拼法與範圍——正確，不用改。**
+今天頁尾逐字仍是
+「`Compatibility Supported models Fable 5 and 5.1 Mythos 5, 5.1, and Preview Opus 4.5, 4.6, 4.7, 4.8,
+and 5 Sonnet 4.5, 4.6, and 5 Haiku 4.5 Supported platforms Claude API Claude Platform on AWS
+Amazon Bedrock 1 Google Cloud Microsoft Foundry`」。
+正文「Fable 5 與 5.1、Mythos 5、5.1 與 Preview、Opus 4.5、4.6、4.7、4.8 與 5、Sonnet 4.5、4.6 與 5、Haiku 4.5」
+與表格那一格，拼法、順序與範圍都逐字對得上，五個系列一個不多一個不少。
+頁面範例確實是 `client.messages.create( model = "claude-opus-5" , … output_config = {` ——
+「頁面範例實際帶進 output_config 的 id 是 claude-opus-5」成立。
+（該頁的 Bedrock 腳註另寫 `Claude Opus 4.6, Claude Sonnet 4.6, Claude Sonnet 4.5, Claude Opus 4.5,
+and Claude Haiku 4.5`，研究紀錄 `unverified_or_excluded` 已說明本篇不寫 Bedrock 子集。）
+
+**(b) TypeError 那句——逐字對得上，範圍也沒寫過頭；只動了 `v1.0` 的寫法。**
+原文整句：「`The output_format parameter has moved to output_config.format , and beta headers are no
+longer required. The API continues to accept the old beta header ( structured-outputs-2025-11-13 )
+and the output_format request field for a transition period, but the Python SDK (v1.0 and later)
+does not accept output_format={...} on client.beta.messages.create() or count_tokens() and raises a
+TypeError ; use output_config instead.`」
+正文把限定範圍寫成「在 `client.beta.messages.create()` 與 `count_tokens()` 上」，與原文一致，
+沒有擴大成「整個 SDK 不收 output_format」。這點很重要：同一頁另外寫
+「`The Python SDK's client.messages.parse() still accepts output_format as a convenience parameter
+and translates it to output_config.format internally.`」——**正文沒有和這句矛盾**，
+而且刻意沒有把這個便利寫法寫進去（已記進 `unverified_or_excluded`）。
+
+**(c) Google 的 Interactions API——今天重抓確認，正文範圍正確。**
+`ai.google.dev/gemini-api/docs/structured-output`（200、330,012 bytes）字串比對：
+`client . interactions . create (` **15 次**、`v1beta/interactions` **5 次**、
+`x-goog-api-key` **5 次**、`response_format` **16 次**、`mime_type` **16 次**；
+`generateContent` **0 次**、`response_schema` **0 次**、`responseSchema` **0 次**、
+`response_json_schema` **0 次**、`response_mime_type` **0 次**。
+第一個 Python 範例逐字是
+`interaction = client . interactions . create ( model = "gemini-3.8-flash" , input = prompt ,
+response_format = { "type" : "text" , "mime_type" : "application/json" , "schema" : … }, )`。
+正文寫的是「**這一頁**目前示範的呼叫方式只有 Interactions API 一種」——
+範圍限在這一頁，**沒有**寫成「Gemini API 只有這條路」這種全站級斷言（這正是第一輪修掉的東西，本輪確認沒有回退）。
+`Preview: This feature is available only to Gemini 3 series models.` 只出現 1 次，
+就掛在 `Structured outputs with tools` 標題底下，正文的「搭配內建工具時」範圍正確；
+內建工具清單（`Grounding with Google Search , URL Context , Code Execution , File Search ,
+and Function Calling`）也對得上正文的「Google 搜尋、程式碼執行這類內建工具」。
+
+**(d) 系列兄弟篇的標題——今天全部逐字相符。**
+正文點名四篇，`apps/api/app/guides/content/` 的 zh-TW `title` 今天逐字比對：
+
+| 正文寫的 | 內容包的 zh-TW title | 結果 |
+| --- | --- | --- |
+| 《成本、品質、延遲：多模型流程怎麼取捨》 | `ai-workflow-cost-quality-latency`：成本、品質、延遲：多模型流程怎麼取捨 | 逐字相符 |
+| 《API 檔案與 JSON：結構化輸出及驗證》 | `gemini-api-files-structured-output`：API 檔案與 JSON：結構化輸出及驗證 | 逐字相符（也是結尾第二個 link 的 text） |
+| 《Claude Code｜把 claude -p 接進有驗證的 JSON 流程》 | `claude-code-structured-cli-pipeline`：Claude Code｜把 claude -p 接進有驗證的 JSON 流程 | 逐字相符 |
+| 《工具呼叫（Tool Calling）是什麼：模型如何請程式做事》 | `ai-term-tool-calling`：工具呼叫（Tool Calling）是什麼：模型如何請程式做事 | 逐字相符 |
+
+**第一輪留給站主的第 1 件事已經自然解決**：`ai-workflow-cost-quality-latency` 的內容包在第二輪時已經存在，
+標題正是《成本、品質、延遲：多模型流程怎麼取捨》，與 FAQ 第 3 題寫的一字不差，不需要改。
+協調者另外點名的 `ai-workflow-cross-review-judge`（多模型互審：LLM 當評審、投票與集成怎麼做）、
+`ai-workflow-failures-and-guardrails`（失敗案例與防護：迴圈、費用爆炸與代理間注入）、
+`ai-workflow-model-routing-cascade`（模型路由與級聯：便宜先試、貴的兜底）**本篇沒有點名**，
+所以沒有可能對不上的標題。
+
+### 程式範例第二次重驗
+
+| # | label | 語言 | 行數 | venv `py_compile` | 系統 `python3 -m py_compile` |
+| --- | --- | --- | --- | --- | --- |
+| 1 | `schema_and_upstream.py（需要標準庫 urllib）` | python | 49（未改） | **通過** | **通過** |
+| 2 | `validate_and_handoff.py（需要 jsonschema）` | python | 47（未改） | **通過** | **通過** |
+
+第一輪新增的 `DOWNSTREAM_MODEL` 與正文一致：常數值 `gpt-6-astra` 在 `models-seen.json` 裡，
+註解「這個範例上下游都接 OpenAI；換成別家只要改 call_model 裡的端點與標頭」
+呼應正文「範例只接上 OpenAI 一家」，`forward_to_downstream()` 的呼叫確實改用了它，
+`UPSTREAM_MODEL` 只留給 `parse_and_validate()`——上下游兩個角色在程式裡分得開，
+和「交接給下游模型」的主旨不再打架。
+安全面重驗：金鑰只從 `os.environ["OPENAI_API_KEY"]` 讀、沒有字面金鑰或 `<YOUR_KEY>`、
+沒有 `eval`、沒有刪檔命令、`urlopen(request, timeout=30)` 有逾時、沒有捏造的輸出。
+
+**抽查的 30 個識別字**（第一輪比對過 116 個，本輪抽關鍵的 30 個逐字回原文，全部命中）：
+
+code 1（對 `platform.openai.com/docs/guides/structured-outputs`）
+1. 端點 `curl https://api.openai.com/v1/chat/completions`
+2. `-H "Authorization: Bearer $OPENAI_API_KEY"`
+3. `-H "Content-Type: application/json"`
+4. 請求欄位 `"model": "gpt-6-astra"`
+5. 請求欄位 `"messages": [ { "role": "system", "content"`
+6. 請求欄位 `"response_format": { "type": "json_schema"`
+7. `"json_schema": { "name": "math_reasoning", "schema"`
+8. `"additionalProperties": false }, "strict": true } }`
+9. 回應路徑 `choices[0].message.content`
+10. `All fields must be required`
+11. `additionalProperties: false must always be set in objects`
+12. schema 關鍵字 `enum`
+13. `Predefined formats for strings. Currently supported: date-time time date duration email hostname ipv4 ipv6 uuid`
+14. `it is possible to emulate an optional parameter by using a union type with null`
+15. schema 關鍵字 `description`（`"description": "The type of the UI component"`）
+16. `"schema": { "type": "object", "properties"`
+17. 模型 id `For new projects, start with gpt-6-astra`
+18. Responses API `text: { format: { type: "json_schema", "strict": true`
+19. SDK 參數 `text_format = CalendarEvent`
+
+code 2（對 `…/en/stable/validate/`、`…/en/stable/errors/`、`python-jsonschema.readthedocs.io/`）
+20. 匯入符號 `Draft202012Validator`
+21. 建構子 `Draft202012Validator ( schema )`
+22. 方法簽名 `iter_errors ( instance : Any ) -> Iterable [ ValidationError ]`
+23. 官方範例同款寫法 `sorted ( v . iter_errors ([ 2 , 3 , 4 ]), key = str )`
+24. `A human readable message explaining the error.`（`error.message`）
+25. `jsonschema.exceptions.ValidationError`
+26. `jsonschema.exceptions.SchemaError`
+27. `Lazily yield each of the validation errors in the given instance.`
+28. `By default, as per the specification, no validation is enforced.`
+29. 參數 `format_checker`（`if unprovided, no format validation is done, and the presence of format within schemas is strictly informational`）
+30. `Full support for Draft 2020-12`
+
+**沒有一個識別字找不到出處，因此本輪沒有改動任何參數名、旗標、端點或回應路徑。**
+（第 22、23 兩項第一次用我猜的空白寫法搜不到，回頁面抓原始排版後逐字命中——
+文件站把程式碼渲染成帶空白的 token，比對時要用頁面上的實際寫法。）
+
+### 界線再掃一次
+
+- **只有一個 `callout`**（`warning`／「格式對不等於內容對」），**沒有免責段落**。區塊順序：
+  兩段導言 → `summary` → 四個 `heading` 章節（含兩個 `code`、一個 `list`）→ `image` → `callout` → `faq` → 兩個 `link`。
+- 廠商宣稱都有歸屬：「OpenAI 的文件寫」「OpenAI 的文件自己列了」「Anthropic 的文件寫」
+  「Google 的文件也提醒」「官方文件寫」「三家文件都寫」。
+- 限定詞齊全：beta 標頭不再必要但過渡期仍接受、Python SDK v1.0 起丟 `TypeError`、
+  搭配內建工具是 Preview 且只給 Gemini 3 系列、REST 在 v1beta、
+  `format` 預設不驗、三家只支援 JSON Schema 子集（本輪補）。
+- 沒有訂閱／購買／投資建議，沒有推薦式比價，沒有速度或品質排名，沒有寫「台灣可用」。
+- 否定句都限縮在「本文引用的這幾頁、查核日」：「**這一頁**目前示範的呼叫方式只有 Interactions API 一種」、
+  「**頁面**沒有標 beta 或預覽」（今天重新確認：該頁 `preview`／`Preview` 在正文 **0 次**、
+  `generally available` **0 次**、`beta` 2 次都在 `client.beta.chat.completions.stream(` 上、
+  `Beta` 1 次是側欄的 `GitLab (Beta)`）。第一輪寫的「沒有逐一列出型號」是唯一越界的否定句，已刪。
+- 必連三篇：`claude-code-structured-cli-pipeline` 今天重新字串比對，
+  `--json-schema`／`json-schema`／`jsonschema`／`--output-format` 仍是 **0 次**，
+  它的做法確實是 `automation/schema.json` ＋ `automation/result.mjs`（`structured_output` 6 次），
+  第一輪改後的句子「把 `claude -p` 輸出的 JSON 接進自己寫的驗證邏輯，再決定要不要往下一步送」
+  與它自己寫的「解析器先確認外層是成功結果，再檢查欄位型別」「正式流程讀取的是驗證後資料」相符；
+  `gemini-api-files-structured-output` 的 description 逐字寫
+  「學完後，你會知道『收到合法 JSON』與『內容確實來自檔案』是兩件需要分別檢查的事」，
+  本篇那一句帶過正確；`ai-term-tool-calling` 只被當成「不同機制」點名一次。三篇都沒有被整段重講。
+- `summary` ⊆ 正文（補完「三次」之後四句全部成立）、FAQ 六題答句 ⊆ 正文、
+  表格 15 格的每個數字（4.5／4.6／4.7／4.8／5、v1beta、Gemini 3、gpt-6-astra、gemini-3.8-flash）
+  都在正文出現、圖解五組節點沒有任何數字、兩個 caption 與研究紀錄一致。
+
+### 本輪留給站主的事
+
+1. **`MAX_ATTEMPTS = 3` 是「整輪最多送三次」（第一次加兩次重試），但正文、`summary`、FAQ
+   與程式 docstring 一律寫「重試三次」。** 四處用語彼此一致，所以本代理沒有動；
+   若要精確成「最多送三次」，這四處得一起改。
+2. **FAQ 第 1 題的「模型即使回傳一個空物件……語法上仍然是合法 JSON」與必連文
+   `claude-code-structured-cli-pipeline` 的 `description` 幾乎同句。**
+   不是矛盾、也不到「整段重講」，但兩篇同時上線讀起來會重複，站主可考慮換句話。
+3. **第一輪的兩個數字不一致**：研究紀錄 `factcheck.method` 寫「共 118 條主張」，
+   報告正文寫「204 條」。本代理沒有替第一輪改寫它自己的紀錄，只在此註記。
+4. **兩個結尾連結仍是純 URL**（自檢的 `raw_internal_url` WARN），
+   依指派是協調者 `pack_cli relink` 的工作，本輪同樣沒有碰。
+5. **Anthropic 相容性表仍然只能寫系列名**（第一輪留下的第 2 件事，維持原判）；
+   **程式上下游仍同為 `gpt-6-astra`**（第一輪第 3 件事，維持原判：
+   結構化輸出頁只在 JSON mode 對照表列 gpt-4o 快照，沒有為 `gpt-5.6-luna` 這類 id 背書）。
+
+### 第二輪自檢
+
+```
+WARN - lint raw_internal_url: 2 article link(s) as raw URLs; run `pack_cli relink` so they become article inlines that follow the target's publication
+OK ai-workflow-structured-handoff paragraphs 2923 code_blocks 2 sources 6
+```
+
+### 第二輪結論
+
+`ok`。第一輪 14 條改動裡，**13 條經覆核成立**（含兩處硬錯誤的修正都正確），
+只有一條是它自己新寫錯的——OpenAI「沒有逐一列出型號」這個否定句，該頁另一節明明列了；
+另外第一輪漏掉一條沒有來源的相容性宣稱（三家 schema 可共用）與一處沒跟著軟化的頻率宣稱。
+本輪改 **5 條主張、7 個編輯點**，全部有來源頁逐字支撐；
+36 條 `verbatim_quote` 全中、兩塊程式重新編譯通過、30 個關鍵識別字逐字命中、
+四家必連／兄弟篇標題逐字相符、界線全數通過。事實面已收斂，不需要第三輪。
