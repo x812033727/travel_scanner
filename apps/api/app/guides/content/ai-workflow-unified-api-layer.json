@@ -37,7 +37,7 @@
         {
           "type": "summary",
           "items": [
-            "OpenAI 相容端點指供應商提供和 OpenAI Chat Completions 格式相同的 REST 介面，官方 openai 套件與 LiteLLM 都能只換 base_url 或 model 字串切換供應商，不必改寫呼叫程式碼。",
+            "OpenAI 相容端點指供應商提供和 OpenAI Chat Completions 格式相同的 REST 介面，官方 openai 套件換 base_url、金鑰與 model 字串，LiteLLM 換 model 字串，就能切換供應商，不必改寫呼叫程式碼。",
             "OpenRouter 是已經架好、直接連線就能用的託管端點；LiteLLM 除了能在自己的 Python 程序裡呼叫，也能另外自架一個 Proxy 伺服器，讓其他語言的用戶端一樣用同一個 base_url 存取多家模型。",
             "官方文件寫，OpenRouter 收到某個模型不支援的參數時會直接忽略、其餘照送；LiteLLM 預設遇到不支援的 OpenAI 參數會丟出例外，要自己開啟 drop_params 才會改成忽略。",
             "換供應商時，金鑰要放的環境變數名稱與 model 字串的寫法都不同，程式應該只從環境變數讀金鑰，並在每次外部呼叫都設好逾時。"

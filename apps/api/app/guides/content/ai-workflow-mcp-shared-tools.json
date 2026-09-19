@@ -130,7 +130,7 @@
         },
         {
           "type": "paragraph",
-          "text": "預設值也不一樣，兩邊的文件都寫明了。Claude Code 的文件說 local scope 是預設值，每一道加入指令都寫進 local scope，除非你自己加上 --scope project 或 --scope user；這種伺服器只在你加它的那個專案載入，只有你看得到，設定存在家目錄的 ~/.claude.json，不在專案裡。Gemini CLI 的 gemini mcp add 則把 -s, --scope 的預設值標成 project，直接寫進目前專案的 .gemini/settings.json，要放到使用者層級才另外指定。Claude Code 要讓團隊共用，得指定 --scope project 寫進專案根目錄的 .mcp.json，文件要你把這個檔案簽進版控，團隊每個人才會拿到同一份設定；Gemini CLI 的這一頁沒有提版控或團隊共用，只說 scope 決定寫進使用者設定還是專案設定。"
+          "text": "預設值也不一樣，兩邊的文件都寫明了。Claude Code 的文件說 local scope 是預設值，每一道加入指令都寫進 local scope，除非你自己加上 --scope project 或 --scope user；這種伺服器只在你加它的那個專案載入，只有你看得到，設定存在家目錄的設定檔，不在專案裡。Gemini CLI 的 gemini mcp add 則把 -s, --scope 的預設值標成 project，直接寫進目前專案的 .gemini/settings.json，要放到使用者層級才另外指定。Claude Code 要讓團隊共用，得指定 --scope project 寫進專案根目錄的 .mcp.json，文件要你把這個檔案簽進版控，團隊每個人才會拿到同一份設定；Gemini CLI 的這一頁沒有提版控或團隊共用，只說 scope 決定寫進使用者設定還是專案設定。"
         },
         {
           "type": "image",
