@@ -161,12 +161,31 @@ def test_botanical_gardens_publish_and_the_measured_floods_stay_with_a_human() -
 
 def test_measured_non_attraction_types_are_rejected() -> None:
     # Measured 2026-09-12 against every approved attraction; see DENIED_TYPES.
-    for noise_type in ("Q9842", "Q56351315", "Q55521176", "Q16917", "Q2175765", "Q687188"):
+    for noise_type in ("Q56351315", "Q55521176", "Q2175765", "Q687188"):
         assert classify_types({noise_type})[1] == "rejected", noise_type
-    assert classify_types({"Q245016"})[1] == "rejected"
     # Each of these also types an approved attraction, so a human still decides.
     for kept_type in ("Q5358913", "Q285783"):
         assert classify_types({kept_type}) == ("culture", "pending", "unknown_type"), kept_type
+
+
+def test_types_that_also_describe_real_sights_reach_the_human_queue() -> None:
+    # Released 2026-09-19: reading the pending rows found a gusuku ruin and a citadel
+    # bastion typed as military bases, a gazetted monument typed as a primary school and
+    # the Hiroshima hypocentre typed as a hospital. A rejection is a tombstone that
+    # discovery never revisits, so these go to a human instead; see DENIED_TYPES.
+    for released_type in ("Q245016", "Q9842", "Q16917"):
+        assert released_type not in DENIED_TYPES
+        assert classify_types({released_type}) == (
+            "culture",
+            "pending",
+            "unknown_type",
+        ), released_type
+    # A denied type wins over an allowed one on the same item: that precedence is why a
+    # released type had to leave the set rather than gain a heritage override.
+    assert classify_types({"Q2175765", "Q33506"}) == ("culture", "rejected", "denylisted_type")
+    # A released type beside an allowed one is decided by the allowed one, like any
+    # other unknown type.
+    assert classify_types({"Q16917", "Q33506"}) == ("culture", "auto_approved", None)
 
 
 @pytest.mark.asyncio
@@ -188,7 +207,7 @@ async def test_denied_type_outside_the_radius_stays_rejected() -> None:
                         }
                         for qid, label, type_id in (
                             ("Q1", "遠方博物館", "Q33506"),
-                            ("Q2", "遠方小學", "Q9842"),
+                            ("Q2", "遠方學校", "Q3914"),
                         )
                     }
                 },
@@ -211,7 +230,7 @@ async def test_denied_type_outside_the_radius_stays_rejected() -> None:
                 "query": {
                     "geosearch": [
                         {"pageid": 1, "title": "遠方館", "lat": 25.2, "lon": 121.5654},
-                        {"pageid": 2, "title": "遠方小學", "lat": 25.2, "lon": 121.5654},
+                        {"pageid": 2, "title": "遠方學校", "lat": 25.2, "lon": 121.5654},
                     ]
                 }
             },

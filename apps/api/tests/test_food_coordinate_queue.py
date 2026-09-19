@@ -9,6 +9,7 @@ from app.foods import coordinate_queue
 from app.foods.coordinate_queue import (
     CandidateMatch,
     apply_approval,
+    coordinate_queue_statement,
     extract_match,
     judge,
     merchant_search_query,
@@ -132,9 +133,11 @@ def own_the_place(monkeypatch: pytest.MonkeyPatch, owners: dict[str, Any]) -> No
 
 
 @pytest.mark.asyncio
-async def test_approval_writes_admin_verified_and_flips_verified(
+async def test_approval_records_the_identity_and_never_googles_coordinates(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    """A merchant with no coordinates at all gets its Place ID and a verified map identity,
+    and nothing else: Google's coordinates are provider data the catalogue may not keep."""
     merchant = make_merchant()
     match = make_match()
     own_the_place(monkeypatch, {})
@@ -149,21 +152,29 @@ async def test_approval_writes_admin_verified_and_flips_verified(
         now=now,
     )
     assert outcome == "verified"
-    assert merchant.coordinate_source_type == "admin_verified"
-    assert merchant.coordinate_source_url == match.google_maps_url
-    assert float(merchant.latitude) == match.latitude
     assert merchant.google_place_id == match.place_id
     assert merchant.map_match_status == "verified"
     assert merchant.verified_by_user_id == actor
-    assert merchant.coordinate_verified_at == now
+    assert merchant.verified_at == now
+    assert merchant.latitude is None and merchant.longitude is None
+    assert merchant.coordinate_source_type is None
+    assert merchant.coordinate_source_url is None
+    assert merchant.coordinate_verified_at is None
 
 
 @pytest.mark.asyncio
-async def test_approval_without_a_maps_url_still_cites_an_https_source(
+async def test_approval_leaves_existing_coordinates_and_their_provenance_alone(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    merchant = make_merchant()
-    match = make_match(google_maps_url=None)
+    """Coordinates the merchant already carries -- here a pair the catalogue does not trust
+    -- are neither overwritten with Google's nor relabelled; only the identity is written."""
+    merchant = make_merchant(
+        latitude=Decimal("22.981"),
+        longitude=Decimal("120.225"),
+        coordinate_source_type="google_places",
+        coordinate_source_url=None,
+    )
+    match = make_match(latitude=22.980, longitude=120.224)
     own_the_place(monkeypatch, {})
     outcome = await apply_approval(
         None,
@@ -173,13 +184,34 @@ async def test_approval_without_a_maps_url_still_cites_an_https_source(
         actor_id=uuid4(),
     )
     assert outcome == "verified"
-    assert merchant.coordinate_source_url == (
-        f"https://www.google.com/maps/place/?q=place_id:{match.place_id}"
-    )
+    assert merchant.google_place_id == match.place_id
+    assert (merchant.latitude, merchant.longitude) == (Decimal("22.981"), Decimal("120.225"))
+    assert merchant.coordinate_source_type == "google_places"
+    assert merchant.coordinate_source_url is None
 
 
 @pytest.mark.asyncio
-async def test_korean_merchants_keep_coordinates_but_wait_for_naver(
+async def test_a_maps_url_from_google_is_never_written_as_provenance(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    for match in (make_match(), make_match(google_maps_url=None)):
+        merchant = make_merchant()
+        own_the_place(monkeypatch, {})
+        assert (
+            await apply_approval(
+                None,
+                google_returning(match),  # type: ignore[arg-type]
+                merchant,
+                expected_place_id=match.place_id,
+                actor_id=uuid4(),
+            )
+            == "verified"
+        )
+        assert merchant.coordinate_source_url is None
+
+
+@pytest.mark.asyncio
+async def test_korean_merchants_record_the_identity_but_wait_for_naver(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     merchant = make_merchant(country_code="KR", destination_id="seoul")
@@ -192,10 +224,12 @@ async def test_korean_merchants_keep_coordinates_but_wait_for_naver(
         expected_place_id=match.place_id,
         actor_id=uuid4(),
     )
-    assert outcome == "coordinates_saved"
-    assert merchant.coordinate_source_type == "admin_verified"
+    assert outcome == "identity_saved"
+    assert merchant.google_place_id == match.place_id
     assert merchant.map_match_status == "unverified"
     assert merchant.verified_at is None
+    assert merchant.latitude is None
+    assert merchant.coordinate_source_type is None
 
 
 @pytest.mark.asyncio
@@ -212,11 +246,12 @@ async def test_approval_refuses_when_google_changed_its_mind(
         actor_id=uuid4(),
     )
     assert outcome == "candidate_changed"
+    assert merchant.google_place_id is None
     assert merchant.coordinate_source_type is None
 
 
 @pytest.mark.asyncio
-async def test_approval_skips_conflicts_missing_results_and_done_rows(
+async def test_approval_skips_conflicts_missing_results_and_ineligible_rows(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     match = make_match()
@@ -232,6 +267,7 @@ async def test_approval_skips_conflicts_missing_results_and_done_rows(
         )
         == "place_id_taken"
     )
+    assert taken.google_place_id is None
     assert (
         await apply_approval(
             None,
@@ -241,22 +277,6 @@ async def test_approval_skips_conflicts_missing_results_and_done_rows(
             actor_id=uuid4(),
         )
         == "no_result"
-    )
-    durable = make_merchant(
-        latitude=Decimal("22.98"),
-        longitude=Decimal("120.22"),
-        coordinate_source_type="wikidata",
-        coordinate_source_url="https://www.wikidata.org/wiki/Q1",
-    )
-    assert (
-        await apply_approval(
-            None,
-            google_returning(match),  # type: ignore[arg-type]
-            durable,
-            expected_place_id=match.place_id,
-            actor_id=uuid4(),
-        )
-        == "already_durable"
     )
     for ineligible in (
         make_merchant(review_status="rejected"),
@@ -275,11 +295,40 @@ async def test_approval_skips_conflicts_missing_results_and_done_rows(
 
 
 @pytest.mark.asyncio
-async def test_a_durable_type_without_a_source_url_is_still_repairable(
+async def test_genuine_durable_coordinates_survive_an_identity_approval(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """The publication gate also demands an https source URL, so a row with only the
-    type set must stay reachable by the queue instead of being stuck unpublishable."""
+    """A Wikidata pair is the separately verified, permanent kind; approval must keep it
+    and its provenance exactly as they are while still recording the identity."""
+    match = make_match(latitude=22.9801, longitude=120.2241)
+    own_the_place(monkeypatch, {})
+    durable = make_merchant(
+        latitude=Decimal("22.98"),
+        longitude=Decimal("120.22"),
+        coordinate_source_type="wikidata",
+        coordinate_source_url="https://www.wikidata.org/wiki/Q1",
+    )
+    outcome = await apply_approval(
+        None,
+        google_returning(match),  # type: ignore[arg-type]
+        durable,
+        expected_place_id=match.place_id,
+        actor_id=uuid4(),
+    )
+    assert outcome == "verified"
+    assert durable.google_place_id == match.place_id
+    assert (durable.latitude, durable.longitude) == (Decimal("22.98"), Decimal("120.22"))
+    assert durable.coordinate_source_type == "wikidata"
+    assert durable.coordinate_source_url == "https://www.wikidata.org/wiki/Q1"
+
+
+@pytest.mark.asyncio
+async def test_a_durable_type_without_a_source_url_is_not_given_a_google_one(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The publication gate also demands an https source URL. Approval used to "repair" a
+    missing one with Google's Maps link, which is exactly the provenance the gate exists
+    to refuse; the row now stays unpublishable until a citable URL is added by hand."""
     match = make_match()
     own_the_place(monkeypatch, {})
     half_durable = make_merchant(
@@ -296,7 +345,15 @@ async def test_a_durable_type_without_a_source_url_is_still_repairable(
         actor_id=uuid4(),
     )
     assert outcome == "verified"
-    assert half_durable.coordinate_source_url == match.google_maps_url
+    assert half_durable.coordinate_source_url is None
+    assert half_durable.coordinate_source_type == "wikidata"
+
+
+def test_the_queue_skips_merchants_whose_identity_is_already_recorded() -> None:
+    # Approval writes the Place ID and nothing else, so a merchant that has one would
+    # otherwise come straight back to the queue after every approval.
+    sql = str(coordinate_queue_statement())
+    assert "food_merchants.google_place_id IS NULL" in sql
 
 
 @pytest.mark.asyncio

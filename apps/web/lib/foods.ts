@@ -173,8 +173,12 @@ export const emptyFoodBrowserFilters: FoodBrowserFilters = {
 
 export function readFoodBrowserFilters(search: string): FoodBrowserFilters {
   const params = new URLSearchParams(search);
+  // Guide articles link the city's food list as `?city=<destination_id>` (the batch briefs'
+  // documented shape, on 60 shipped packs); the browser itself writes `destination_id`.
+  // Read both, canonical first, so those links filter instead of landing on every city.
+  const destinationId = (params.get("destination_id") ?? "").trim() || (params.get("city") ?? "").trim();
   return {
-    destinationId: (params.get("destination_id") ?? "").trim(),
+    destinationId,
     area: (params.get("area") ?? "").trim(),
     category: (params.get("category") ?? "").trim(),
     ...(params.has("style") ? { style: (params.get("style") ?? "").trim() } : {}),

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-12-denylist-tombstones-real-attractions
 title: Military base, primary school and hospital deny types will tombstone real attractions on 2026-09-15
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T04:22:10Z
 created_at: 2026-09-12T06:10:00Z
-completed_at:
-branch:
+completed_at: 2026-09-19T04:46:51Z
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/hotspots/discovery.py
@@ -46,12 +46,12 @@ when an allowed one is present on the same item.
 
 ## Definition of done
 
-- [ ] Q245016, Q9842 and Q16917 no longer auto-reject; they reach the human queue like
+- [x] Q245016, Q9842 and Q16917 no longer auto-reject; they reach the human queue like
       Q5358913 and Q285783 already do, with a comment recording the false-positive rate.
-- [ ] Q2175765 and Q56351315 stay denied — measured at zero false positives across eight rows.
-- [ ] A test covers "denied type on an item that is also an allowed type" and the three
+- [x] Q2175765 and Q56351315 stay denied — measured at zero false positives across eight rows.
+- [x] A test covers "denied type on an item that is also an allowed type" and the three
       released types.
-- [ ] Check whether the same "count approved rows only" reasoning was used for any other
+- [x] Check whether the same "count approved rows only" reasoning was used for any other
       entry in `DENIED_TYPES`, and say so either way.
 
 ## How to verify
@@ -72,3 +72,23 @@ claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `d
 期限已過：2026-09-15 那一輪探索已經跑過，四筆（Q38278536 喜屋武城、Q8669747 鎮平台、Q10911386 原花園尋常小學校本館、Q2410409 島醫院）可能已被判退成墓碑，接手第一步是確認它們現在的 `review_status`。探索間隔是 `hotspot_discovery_interval_seconds` 604,800 秒（每週），下一輪約在 2026-09-22，程式修正要在那之前部署。
 
 原本鎖住這張票 scope 的 `2026-09-11-deny-school-hospital-tram-stop-ward` 已在同一次整理釋出，現在可以直接認領。
+
+### 2026-09-19 done in code (claude-fable-5-1)
+
+- `DENIED_TYPES` no longer carries Q245016, Q9842 or Q16917; the comment above the
+  2026-09-12 block records the pending-row reading (2 of 3, 1 of 2, 1 of 4 genuine) and
+  why a type alone cannot reject them. Q2175765 and Q56351315 stay (0 of 8 genuine).
+  Q687188 and Q55521176 also stay, but only on the approved-rows measurement: they held no
+  pending rows on 2026-09-12, so nobody has read a pending row of theirs yet.
+- The "count approved rows only" reasoning was used for exactly that 2026-09-12 block of
+  seven. Every earlier entry was measured both ways: observed as the bulk of the 2026-09
+  queue (141 of 172 rows) and checked against the attractions kept, and each describes
+  something no traveller visits (a person, a company, a station, an airport, a city, a
+  country), so the pending-row question does not arise for them.
+- Tests: `test_types_that_also_describe_real_sights_reach_the_human_queue` covers the three
+  released types, a denied type beside an allowed one (denied still wins) and a released
+  type beside an allowed one; the radius test now uses Q3914 (school) as its denied example.
+- Still owed after deploy (owner): read the four rows' current `review_status` in
+  production (Q38278536, Q8669747, Q10911386, Q2410409). The 2026-09-15 pass ran before
+  this fix, so they may already be `rejected`; if so they need re-seeding by hand. Deploy
+  before the next pass (about 2026-09-22) so no further rows are lost.

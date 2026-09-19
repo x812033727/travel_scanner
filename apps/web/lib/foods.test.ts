@@ -31,6 +31,17 @@ describe("food browser filters", () => {
     expect(activeFilterCount(filters)).toBe(3);
     expect(merchantsQuery(filters, "MjA")).toContain("style=artsy&limit=20&cursor=MjA");
   });
+  it("accepts the guides' ?city= alias but keeps destination_id canonical", () => {
+    // Every guide ends with `/foods?city=<destination_id>`; it must filter like destination_id.
+    expect(readFoodBrowserFilters("?city=sapporo").destinationId).toBe("sapporo");
+    // When both are present the canonical parameter wins.
+    expect(readFoodBrowserFilters("?destination_id=seoul&city=sapporo").destinationId).toBe("seoul");
+    // A blank canonical value falls through to the alias rather than clearing the filter.
+    expect(readFoodBrowserFilters("?destination_id=&city=sapporo").destinationId).toBe("sapporo");
+    // What the browser writes back never carries `city`, so the canonical URL is unchanged.
+    expect(foodBrowserSearch(readFoodBrowserFilters("?city=sapporo"))).toBe("destination_id=sapporo");
+  });
+
   it("reads and writes the query string in a stable order", () => {
     const filters = readFoodBrowserFilters(
       "?category=ramen&q=%20noodles%20&destination_id=tokyo&area=tokyo-shinjuku",

@@ -129,13 +129,28 @@ DENIED_TYPES = {
     # they held about 50 rows of the pending queue. Deliberately absent although they
     # flood too: elementary school in Japan (Q5358913, 袋町小学校平和資料館 is approved)
     # and intersection (Q285783, the Shibuya scramble and 銀座四丁目 are approved).
-    "Q9842",  # primary school
+    #
+    # That measurement only asked whether an APPROVED row carries the type. Reading the
+    # 17 pending rows that carried one of the seven (2026-09-12) against their Wikipedia
+    # extracts found four genuine sights, so three of the seven were released back to the
+    # human queue on 2026-09-19 (the same treatment as Q5358913 and Q285783):
+    #   Q245016 military base    2 of 3 pending rows genuine (喜屋武城, a Ryukyu gusuku
+    #                            ruin; 鎮平台, the Trấn Bình đài bastion of the Huế citadel)
+    #   Q9842   primary school   1 of 2 (原花園尋常小學校本館, a gazetted Tainan monument)
+    #   Q16917  hospital         1 of 4 (島醫院, the Hiroshima hypocentre)
+    # Wikidata's P31 is correct on all four -- a gusuku is a fortification, an old school
+    # building is a school -- and none carries a heritage designation to key on, so the
+    # type alone cannot reject them. The four below stay denied: tram stop and Japanese
+    # high school were read at zero genuine rows across eight, and the last two held no
+    # pending rows at all, so for them the approved-rows measurement is still the only
+    # evidence; re-read the pending queue before trusting it further. The entries above
+    # this block were measured the other way round as well -- observed as the bulk of
+    # the 2026-09 queue (141 of 172 rows) and checked against the attractions we kept --
+    # and describe things no traveller visits (a person, a company, a station, a city).
     "Q56351315",  # Japanese high school
     "Q55521176",  # lower secondary school in Japan
-    "Q16917",  # hospital
     "Q2175765",  # tram stop
     "Q687188",  # ward of Vietnam
-    "Q245016",  # military base
 }
 
 

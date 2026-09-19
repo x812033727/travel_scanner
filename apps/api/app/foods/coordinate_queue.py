@@ -1,14 +1,17 @@
-"""Batch queue that turns Google-corroborated merchant locations into admin-verified ones.
+"""Batch queue that records a merchant's Google identity after an admin has looked at the match.
 
-The catalogue refuses provider coordinates as a durable source — a Places result may be
+The catalogue refuses provider coordinates as a durable source -- a Places result may be
 cached for at most thirty days, so ``google_places`` can never satisfy the publication
-gate. What a provider result CAN do is stand next to the merchant we imported so a human
-can compare the two. This module renders that comparison a page at a time and, on
-approval, records the human's judgement as ``admin_verified`` with the public Google Maps
-page as the auditable source URL.
+gate, and ``coordinate_fill`` deliberately never reads coordinates out of an embedded
+Google map. This queue used to copy Google's coordinates onto the merchant on approval and
+label them ``admin_verified`` with a Google Maps URL as provenance, which turned exactly
+that provider data into durable catalogue data (2026-09-08). It no longer touches
+coordinates at all: approval records the Place ID the human confirmed, flips the map
+identity to verified where the country allows it, and leaves latitude, longitude and
+their provenance to an independent, citable source (Wikidata, an official tourism or
+merchant page, or an admin typing them in with such a URL).
 
-The approve path never trusts coordinates from the browser: it re-resolves the merchant
-server-side (a Redis-cached repeat of the query the queue page just ran, so no extra
+The server re-resolves every merchant before writing (respecting the negative cache and
 quota) and refuses to write when Google no longer returns the place the admin looked at.
 """
 
@@ -26,11 +29,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.hotspots.candidates import NAME_THRESHOLD, name_score
 from app.hotspots.discovery import haversine_km
 from app.hotspots.maps import has_exact_map_identity, is_exact_naver_map_url
-from app.locations.coordinates import (
-    DURABLE_COORDINATE_SOURCES,
-    has_durable_coordinates,
-    valid_coordinate_pair,
-)
+from app.locations.coordinates import DURABLE_COORDINATE_SOURCES, valid_coordinate_pair
 from app.models import FoodMerchant
 from app.places.google import GoogleTravelService
 
@@ -166,6 +165,10 @@ def coordinate_queue_statement() -> Select[tuple[FoodMerchant]]:
             # An admin who marked a match ambiguous or disabled made a deliberate call;
             # batch approval must not quietly overturn it.
             FoodMerchant.map_match_status.not_in(("ambiguous", "disabled")),
+            # Approval records the Google identity and nothing else, so a merchant that
+            # already carries one has nothing left to gain here: without this the row
+            # would come straight back after every approval.
+            FoodMerchant.google_place_id.is_(None),
             lacks_durable_coordinates_clause(),
         )
         .order_by(
@@ -266,20 +269,18 @@ async def apply_approval(
     actor_id: UUID,
     now: datetime | None = None,
 ) -> str:
-    """Re-resolve one merchant and write the admin's verdict. Returns an outcome tag."""
+    """Re-resolve one merchant and record the admin's verdict. Returns an outcome tag.
+
+    Only the identity is written. Whatever coordinates the merchant has -- none, a
+    durable pair, or a pair from a source the catalogue does not trust -- are left exactly
+    as they were, and no provenance is invented for them.
+    """
     if merchant.review_status in ("rejected", "disabled") or merchant.map_match_status in (
         "ambiguous",
         "disabled",
     ):
         # The queue never lists these; a stale browser tab could still submit one.
         return "not_eligible"
-    if has_durable_coordinates(
-        merchant.latitude,
-        merchant.longitude,
-        merchant.coordinate_source_type,
-        merchant.coordinate_source_url,
-    ):
-        return "already_durable"
     match = await resolve_merchant(google, merchant)
     if match is None:
         return "no_result"
@@ -287,7 +288,7 @@ async def apply_approval(
         return "no_result"
     if match.place_id != expected_place_id:
         # Google now resolves the query to a different place than the one the admin saw;
-        # writing anyway would verify a location no human looked at.
+        # writing anyway would verify an identity no human looked at.
         return "candidate_changed"
     owners = await taken_place_ids(session, [match.place_id])
     taken_by = owners.get(match.place_id)
@@ -295,14 +296,7 @@ async def apply_approval(
         return "place_id_taken"
 
     moment = now or datetime.now(UTC)
-    merchant.latitude = match.latitude  # type: ignore[assignment]
-    merchant.longitude = match.longitude  # type: ignore[assignment]
     merchant.google_place_id = match.place_id
-    merchant.coordinate_source_type = "admin_verified"
-    merchant.coordinate_source_url = match.google_maps_url or (
-        f"https://www.google.com/maps/place/?q=place_id:{match.place_id}"
-    )
-    merchant.coordinate_verified_at = moment
     if has_exact_map_identity(
         merchant.country_code, merchant.google_place_id, merchant.naver_map_url
     ):
@@ -310,6 +304,6 @@ async def apply_approval(
         merchant.verified_at = moment
         merchant.verified_by_user_id = actor_id
         return "verified"
-    # KR without a Naver page: the coordinates are now durable but publication still
-    # waits on the exact-map-identity requirement.
-    return "coordinates_saved"
+    # KR without a Naver page: the identity is recorded, but publication still waits on
+    # the exact-map-identity requirement.
+    return "identity_saved"
