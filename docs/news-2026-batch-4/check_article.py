@@ -133,6 +133,13 @@ RELATED: dict[str, str] = {
     "crypto-news-fca-perimeter-guidance-20260916": "crypto-news-mica-transition-ends-20260701",
     "crypto-news-cftc-passive-software-20260917": "crypto-news-sec-crypto-interpretation-20260323",
     "crypto-news-fca-p2p-crypto-crackdown-20260917": "crypto-news-fca-perimeter-guidance-20260916",
+    # Batch 4.6 (2026-09-19): the 9/18 AI announcements. Appended for the same reason as 4.5 --
+    # the position here is the display_order, so 167 and 168 follow 166. OpenAI's 9/18 item (the
+    # Australian Youth Safety Blueprint) is not here: openai.com returns 403 to curl and the
+    # official RSS carries only a one-line description, so there is no first-party page to write
+    # from. See the batch's task for that decision.
+    "ai-news-anthropic-accenture-evaluation-20260918": "ai-news-anthropic-pace-metrics-20260917",
+    "ai-news-google-flow-fashion-20260918": "ai-news-google-cc-family-agent-20260918",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

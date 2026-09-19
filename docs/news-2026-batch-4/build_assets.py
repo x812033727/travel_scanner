@@ -928,6 +928,32 @@ def _app_store_bundles_multiseat(accent: str) -> str:
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
+def _anthropic_accenture_evaluation(accent: str) -> str:
+    # An institution with a dashed room drawn inside it -- the evaluator sitting where the work
+    # happens rather than outside the door -- a lens in that room, and one report leaving it.
+    other = second_colour(accent)
+    b = bank(250, 230, 560, accent)
+    b += outline(390, 450, 300, 190, other)
+    b += magnifier(520, 530, 58, other)
+    b += arrow(830, 1020, 545, INK, 8)
+    return b + sheet(1040, 400, 240, 290, accent, rows=4) + tick(1300, 660, 40, other)
+
+
+def _google_flow_fashion(accent: str) -> str:
+    # A runway seen from above, a column of swappable styling blocks on one side and a column
+    # of lighting positions on the other: the two tools drawn as what each of them changes.
+    other = second_colour(accent)
+    b = f'<path d="M 700 220 L 900 220 L 985 680 L 615 680 Z" fill="#FFFFFF" stroke="{INK}" stroke-width="8" stroke-linejoin="round"/>'
+    for i in range(4):
+        b += slot(250, 250 + i * 110, 84, accent)
+        b += line(340, 292 + i * 110, 600, 450, "#C4CCCC", 6)
+    for i in range(4):
+        b += circle(1230, 290 + i * 110, 32, PALE, other)
+        b += line(1198, 290 + i * 110, 1000, 450, "#C4CCCC", 6)
+    b += arrow(430, 580, 450, INK, 8)
+    return b + arrow(1160, 1030, 450, INK, 8)
+
+
 _DRAWINGS = {
     "crypto-news-taiwan-vasp-act-20260630": _taiwan_vasp_act,
     "crypto-news-mica-transition-ends-20260701": _mica_transition,
@@ -981,6 +1007,9 @@ _DRAWINGS = {
     "ai-news-anthropic-pace-metrics-20260917": _anthropic_pace_metrics,
     "ai-news-openai-misalignment-reports-20260917": _openai_misalignment_reports,
     "tech-news-app-store-bundles-multiseat-20260916": _app_store_bundles_multiseat,
+    # batch 4.6
+    "ai-news-anthropic-accenture-evaluation-20260918": _anthropic_accenture_evaluation,
+    "ai-news-google-flow-fashion-20260918": _google_flow_fashion,
 }
 
 

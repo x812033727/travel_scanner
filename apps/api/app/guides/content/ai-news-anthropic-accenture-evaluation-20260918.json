@@ -1,0 +1,1120 @@
+{
+  "slug": "ai-news-anthropic-accenture-evaluation-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 167,
+  "locales": {
+    "zh-TW": {
+      "title": "Anthropic 請 Accenture 進駐當評估者：雙方各投至少 10 億美元",
+      "description": "Anthropic 在 2026 年 9 月 18 日宣布和 Accenture 合作，把獨立評估者放進公司內部，給予接近員工的存取權限。本文依官方公告與執行長那篇文章的原文，整理內嵌式評估要做什麼、和現在的外部評估差在哪、錢怎麼出，以及官方自己承認還沒有答案的部分。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/hero.jpg",
+        "alt": "原創插圖：一棟建築物裡面多了一組外來的觀察者座位，旁邊標出存取權限與通報兩條線。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 在 2026 年 9 月 18 日發布公告，宣布與 Accenture 合作，對前沿 AI 進行獨立評估。官方把這件事稱為內嵌式評估：和現在在公司外面做事的外部評估者不同，內嵌式的評估者會在 AI 公司內部工作，拿到的存取權限接近一名員工。這次合作由 Accenture 旗下專攻 AI 的 Faculty 主導，內容包括評估與"
+            },
+            {
+              "type": "article",
+              "text": "紅隊測試",
+              "kind": "life",
+              "slug": "ai-term-red-teaming"
+            },
+            {
+              "type": "text",
+              "text": "模型、進行對齊評估，以及測試模型的防護措施。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 19 日查核，讀的是 Anthropic 官方公告全文、公告裡點名的那篇執行長文章原文，以及 Anthropic 新聞總覽頁上這篇的日期標示。本站沒有參與也沒有查證這項合作的執行細節，文中所有說法都標明是哪一方講的；官方自己在公告裡寫了不少「還沒有答案」，那些段落照原樣寫出來，不替它補上結論。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 9 月 18 日宣布與 Accenture 合作做前沿 AI 的獨立評估，由 Accenture 旗下的 Faculty 主導，工作包括評估與紅隊測試模型、對齊評估與測試防護措施。",
+            "官方說內嵌式評估者和今天的外部評估者不同，他們會在 AI 公司內部工作，存取權限接近一名員工，因此看得到模型在訓練中成形、跟得上建置與部署的決策，也能直接和員工談。",
+            "雙方各自預期未來五年在這件事上至少投入 10 億美元；目前的錢由 Anthropic 直接支付給 Accenture，官方說長期而言經費應該來自共同集資或政府。",
+            "官方同時寫明還沒有標準：評估者應該拿到哪些資訊、要怎麼回報所發現的事，目前都沒有定論，這次合作也是非專屬的。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這則公告在說什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的標題是與 Accenture 在內嵌式評估上合作，日期標示為 2026 年 9 月 18 日。開頭第一句就把定位講清楚：這是對前沿 AI 進行獨立評估的合作，而且官方把它形容成朝向一項既有承諾邁出的重要一步——那項承諾寫在執行長那篇名為〈我們必須為前沿設定節奏〉的文章裡，內容是把評估者放進 Anthropic 內部。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合作的執行單位是 Accenture 旗下專門做 AI 的事業體 Faculty。官方列出的工作有三類：評估與紅隊測試模型、進行對齊評估，以及測試模型的防護措施。Anthropic 也解釋了為什麼挑這家：Accenture 協助許多產業的企業與政府部署 AI，官方認為它對企業實際怎麼使用 AI 的理解會影響它的安全觀點，而這個視角正是它要帶進模型評估的東西。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規模方面，公告寫的是雙方各自預期未來五年在建立這方面的能量上至少投入 10 億美元。官方沒有說明這筆錢會怎麼分配、包含哪些項目，也沒有給出人數或時程。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "內嵌式評估和現在的外部評估差在哪"
+        },
+        {
+          "type": "paragraph",
+          "text": "這是整篇公告最值得一讀的一段。官方寫，內嵌式評估是新的做法，很多運作細節還在討論當中；和今天的外部評估者不同，內嵌式的評估者會在 AI 公司裡面工作，拿到的存取權限相當於一名員工。這個位置讓他們可以看著模型在訓練過程中成形，跟上決定這些模型怎麼被建置與部署的那些決策，也能直接和員工對話。"
+        },
+        {
+          "type": "paragraph",
+          "text": "從這個位置能做什麼，官方也列了出來：評估一家公司實際是怎麼運作的、查核它有沒有遵守自己做出的安全承諾、找出盲點；此外還能通報事件，並且給大眾一份對利益與風險比較有依據的說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告另外放了一句劃界線的話，避免被讀成責任外包：官方寫，獨立的內嵌式評估者不會減少 Anthropic 自己的責任，而是讓這份責任更能被驗證，模型的安全仍然是 Anthropic 自己的責任。下面這張表把公告裡寫明的幾件事整理在一起，沒有寫的欄位就留白，不替它推測。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "這次公告寫到的項目",
+            "官方的說法"
+          ],
+          "rows": [
+            [
+              "誰來做",
+              "由 Accenture 旗下專攻 AI 的 Faculty 主導"
+            ],
+            [
+              "做哪些事",
+              "評估與紅隊測試模型、進行對齊評估、測試模型的防護措施"
+            ],
+            [
+              "投入多少",
+              "雙方各自預期未來五年至少投入 10 億美元"
+            ],
+            [
+              "錢由誰出",
+              "目前由 Anthropic 直接支付 Accenture 的費用"
+            ],
+            [
+              "是不是專屬合作",
+              "非專屬；雙方都會再與其他對象合作"
+            ]
+          ],
+          "caption": "依 Anthropic 2026 年 9 月 18 日的公告整理，2026 年 9 月 19 日查核；公告未說明的欄位沒有列入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "錢從哪裡來，官方自己說還沒有標準"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告用了一整段講尚未解決的問題，措辭相當直接：到目前為止，對於內嵌式評估者應該取得哪些資訊、又該如何回報他們所發現的事，都還沒有標準；獨立評估的經費也還沒有一套定案的制度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長期的方向官方寫得很明白：經費應該來自共同集資或政府的來源，這是他們在六月的一份框架文件裡就呼籲過的事。但因為兩者目前都不存在，他們打算在不同的經費安排下與不同的評估者合作。考量到這件事的重要性與急迫性，這一次 Anthropic 會直接支付 Accenture 的費用。官方同時提到，他們也正在與 METR 等非營利評估機構討論，用那些機構自己的經費試行內嵌式評估的部分做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "由受評估的一方付錢給評估者，是這類安排最常被質疑的地方。公告沒有迴避這個結構，但也沒有說明在這段過渡期間要用什麼方式處理其中的利益衝突。本站把官方的原話與這個未解的問題並列，讓讀者自己判斷。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/diagram-1.svg",
+          "alt": "四格圖解：進到公司裡、看得到訓練過程、查核與通報、雙方各投 10 億美元。",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Anthropic 2026 年 9 月 18 日公告整理的四個重點，2026 年 9 月 19 日查核。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這件事的源頭：一篇執行長的文章"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告開頭點名的那篇文章，把內嵌式評估者列為三個步驟裡的第一步。文章寫的內容是：每一家前沿 AI 公司承諾，讓一組第三方的內嵌評估者取得持續的、像員工一樣的存取權限，角色是查核公司有沒有遵守安全做法與承諾、通報事件，並協助評估不只是已完成模型、還包括訓練流程與各項程序的對齊狀況。文章把這一步稱為任何節奏承諾要能被驗證的關鍵，並指出銀行業有類似的前例，那裡有時會讓主管機關的監理人員與員工一起進駐。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇文章裡，Anthropic 表明自己現在就單方面承諾這一步。文章也解釋了為什麼作者認為這件事看起來程序性、實際上很關鍵，並列了三個理由：可驗證，因為中立的第三方才看得到細節；透明，因為在這之前，要公開什麼、略過什麼，都是公司自己決定的；以及第二意見，一個沒有商業誘因的外部視角，常常只是點出員工沒想到、但知道之後願意修正的事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把這兩份文件放在一起讀，這次公告的位置就清楚了：它不是一個新的主張，而是九月十二日那篇文章所提的第一步，開始有了第一個具名的執行對象。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還沒有交代的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告本身就列了不少空白，這裡照原樣整理。第一，評估者可以取得哪些資訊、要怎麼回報，都沒有標準。第二，經費制度還沒有定案，目前的安排是受評估的一方直接付費。第三，官方預期前沿實驗室會同時與好幾個組織合作，這次的合作是非專屬的：Anthropic 表示接下來幾週會宣布其他評估者，Accenture 也會以類似的角色與其他 AI 開發商合作，但沒有點名對象或時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有幾件事公告沒有提到，本站也不推測：評估者發現問題之後，公開的門檻與時程是什麼；評估者與員工之間的保密安排怎麼設計；以及這套做法會不會、或什麼時候適用到 Anthropic 以外的公司。公告的結尾只寫到，他們會繼續訓練與發布前沿模型，並希望獨立評估者在這個過程中一起參與，現在把早期的做法分享出來，是為了讓外界與其他 AI 開發商看得到他們的流程，而且預期做法會隨著這個領域成熟而調整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對台灣的讀者來說，這則消息的實際意義不在產品，而在於一種治理做法正在被試出形狀。它會不會成為業界慣例，要看接下來幾週還有誰加入、以及經費與回報的標準怎麼長出來；在那之前，這是一家公司的單方面安排，不是一套制度。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "內嵌式評估者和現在的外部評估者有什麼不同？",
+              "answer": "官方寫，和今天的外部評估者不同，內嵌式的評估者會在 AI 公司內部工作，取得的存取權限相當於一名員工。這個位置讓他們可以看著模型在訓練過程中成形、跟上決定模型怎麼建置與部署的那些決策，也能直接和員工對話，因此能評估一家公司實際怎麼運作、查核它有沒有遵守安全承諾、找出盲點，並通報事件。"
+            },
+            {
+              "question": "評估者的錢是誰出的？",
+              "answer": "目前是 Anthropic 直接支付 Accenture 的費用，官方說理由是這件工作的重要性與急迫性。官方同時寫明，長期而言他們認為經費應該來自共同集資或政府的來源，那是他們在六月的框架文件裡就呼籲過的事，但因為兩者目前都不存在，他們打算在不同的經費安排下與不同的評估者合作。公告沒有說明這段期間怎麼處理利益衝突。"
+            },
+            {
+              "question": "這樣是不是等於 Anthropic 把安全責任交出去了？",
+              "answer": "官方在公告裡特別寫了一句話否認這個讀法：獨立的內嵌式評估者不會減少他們的責任，而是讓這份責任更能被驗證，模型的安全仍然是 Anthropic 自己的責任。"
+            },
+            {
+              "question": "其他 AI 公司也會這樣做嗎？",
+              "answer": "公告沒有說。官方只寫了他們預期前沿實驗室會同時與好幾個組織合作，而且這次的合作是非專屬的：Anthropic 接下來幾週會宣布其他評估者，Accenture 也會以類似的角色與其他 AI 開發商合作。公告沒有點名任何對象，也沒有給時間表，所以本文不推測其他公司會不會跟進。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文查核到的重點與限制",
+          "text": "本文依據的是 Anthropic 2026 年 9 月 18 日的官方公告、公告點名的那篇執行長文章，以及官方新聞總覽頁上的日期標示，查核日是 2026 年 9 月 19 日。本站沒有參與這項合作，也沒有獨立查證任何執行細節；文中每一項說法都標明出自哪一方。官方自己寫明還沒有標準、經費制度也還沒定案，這些空白在文中照原樣列出，沒有替它補上結論。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic 公布三項前沿 AI 指標：26% 是「主導」不是「自主」",
+              "kind": "life",
+              "slug": "ai-news-anthropic-pace-metrics-20260917"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Partnering with Accenture on embedded evaluation",
+          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Dario Amodei：We Must Pace the Frontier",
+          "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Anthropic Newsroom（新聞總覽頁，本篇標註 Sep 18, 2026）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    },
+    "en": {
+      "title": "Anthropic Brings Accenture In-House as an Evaluator: At Least $1 Billion Each",
+      "description": "On 18 September 2026 Anthropic announced a partnership with Accenture that places independent evaluators inside the company with access comparable to an employee's. This article follows the official announcement and the CEO essay it cites: what embedded evaluation involves, how it differs from external evaluation today, who pays, and what Anthropic itself says is still undecided.",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/hero-en.jpg",
+        "alt": "Original illustration: a building with an extra set of seats for outside observers, with access and reporting drawn as two lines.",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On 18 September 2026 Anthropic published an announcement saying it is partnering with Accenture on independent evaluation of frontier AI. The company calls the arrangement embedded evaluation: unlike today's external evaluators, who work outside the company, embedded evaluators will work inside AI companies with access comparable to an employee's. The partnership is led by Faculty, Accenture's specialist AI business, and covers evaluating and red-teaming models, conducting alignment assessments, and testing model safeguards."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on 19 September 2026 against the full text of Anthropic's announcement, the CEO essay the announcement names, and the date shown for the post on Anthropic's newsroom listing. Mokaair took no part in this partnership and has verified none of its operational detail, so every claim below is attributed to whoever made it. The announcement itself states several open questions, and those passages are reported as written rather than resolved here."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On 18 September 2026 Anthropic announced a partnership with Accenture on independent evaluation of frontier AI, led by Accenture's Faculty, covering model evaluation and red-teaming, alignment assessments and safeguard testing.",
+            "The company says embedded evaluators differ from today's external evaluators: they work inside AI companies with access comparable to an employee's, so they can watch models take shape in training, follow build and deployment decisions, and speak directly to employees.",
+            "Each side expects to invest at least $1 billion in this capacity over the next five years; for now Anthropic funds Accenture's work directly, while saying long-term funding should come from pooled or government sources.",
+            "The announcement also states that no standards yet exist for what information embedded evaluators should access or how they should report findings, and that the partnership is non-exclusive."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the announcement says"
+        },
+        {
+          "type": "paragraph",
+          "text": "The post is titled \"Partnering with Accenture on embedded evaluation\" and dated 18 September 2026. Its first line sets the frame: this is a partnership on independent evaluation of frontier AI, and the company describes it as an important step toward a commitment already made in the CEO essay \"We Must Pace the Frontier\" — the commitment to embed evaluators within Anthropic."
+        },
+        {
+          "type": "paragraph",
+          "text": "The work is led by Faculty, Accenture's specialist AI business. Anthropic lists three kinds of work: evaluating and red-teaming models, conducting alignment assessments, and testing model safeguards. It also explains the choice of partner: Accenture helps businesses and governments deploy AI across many industries, and Anthropic says that understanding of how enterprises use AI in practice informs Accenture's safety approach, which is the perspective it will bring to evaluating the models."
+        },
+        {
+          "type": "paragraph",
+          "text": "On scale, the announcement says each side expects to invest at least $1 billion in building capacity in this area over the next five years. It does not break that figure down, name the items it covers, or give headcounts or a timetable."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How embedded evaluation differs from external evaluation today"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is the part of the announcement most worth reading closely. Anthropic writes that embedded evaluation is new and that many details of how it will operate are still being worked out; unlike today's external evaluators, embedded evaluators will work inside AI companies with access comparable to an employee's. That position lets them watch models take shape in training, follow the decisions that govern how those models are built and deployed, and speak directly to employees."
+        },
+        {
+          "type": "paragraph",
+          "text": "What that vantage point makes possible is listed too: embedded evaluators can assess how a company operates, verify that it is keeping its safety commitments, and identify blind spots. They can also report incidents and give the public a more informed account of benefits and risks."
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement then draws a line, so the arrangement is not read as outsourcing responsibility: independent embedded evaluators do not reduce Anthropic's accountability, the company writes, but help make it more verifiable, and the safety of its models remains its own responsibility. The table below collects what the announcement states outright; anything it leaves unsaid is left out rather than guessed at."
+        },
+        {
+          "type": "table",
+          "header": [
+            "What the announcement covers",
+            "What Anthropic says"
+          ],
+          "rows": [
+            [
+              "Who does the work",
+              "Led by Faculty, Accenture's specialist AI business"
+            ],
+            [
+              "What the work is",
+              "Evaluating and red-teaming models, alignment assessments, testing model safeguards"
+            ],
+            [
+              "How much is invested",
+              "Each side expects at least $1 billion over the next five years"
+            ],
+            [
+              "Who pays",
+              "For now, Anthropic funds Accenture's work directly"
+            ],
+            [
+              "Is it exclusive",
+              "No; both sides will work with others as well"
+            ]
+          ],
+          "caption": "Compiled from Anthropic's announcement of 18 September 2026; checked on 19 September 2026. Items the announcement does not address are not listed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where the money comes from, and what has no standard yet"
+        },
+        {
+          "type": "paragraph",
+          "text": "A whole paragraph of the announcement is given over to what is unresolved, and it is blunt: there are, as yet, no standards for what information embedded evaluators should have access to, or how they should report what they find, and there is also no settled system for funding independent evaluation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The long-term direction is stated plainly: funding should come from pooled or government sources, which the company says it called for in its Advanced AI Framework in June. Because neither exists today, it plans to work with different evaluators under different funding arrangements. Given the importance and urgency of the work, Anthropic will fund Accenture's work directly for now. The announcement adds that it is in dialogue with METR and other nonprofit evaluators about piloting elements of embedded evaluation using those organisations' own funding."
+        },
+        {
+          "type": "paragraph",
+          "text": "The party being evaluated paying the evaluator is the structure this kind of arrangement is most often questioned on. The announcement does not hide that structure, but it also does not describe how the conflict of interest is handled during this interim period. This article sets the company's own wording beside that open question and leaves the judgement to the reader."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/diagram-1-en.svg",
+          "alt": "Four-panel diagram: inside the company, visible during training, verification and reporting, and at least $1 billion each.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Four points from Anthropic's announcement of 18 September 2026; checked on 19 September 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where this came from: a CEO essay"
+        },
+        {
+          "type": "paragraph",
+          "text": "The essay the announcement names lists embedded evaluators as the first of three steps. The commitment reads: each frontier AI company commits to giving ongoing, employee-like access to a team of embedded third-party evaluators, such as METR, whose role is to verify adherence to safety practices and commitments, report incidents, and help assess the alignment of not just completed AI models but training pipelines and processes. The essay calls this the key step for the verifiability of any pacing commitments, and notes a precedent in banking, where regulatory supervisors are sometimes embedded alongside employees."
+        },
+        {
+          "type": "paragraph",
+          "text": "In that same essay Anthropic states that it is unilaterally committing to this step now. The essay also explains why a step that sounds procedural matters, under three headings: verifiability, because only a neutral third party can see the details; transparency, because until now the company has been the one choosing what to include and what to omit; and a second opinion, a view free of commercial incentives that often simply points out something employees had not considered but are happy to fix once aware."
+        },
+        {
+          "type": "paragraph",
+          "text": "Read side by side, the announcement's place becomes clear. It is not a new claim but the first named partner for the first of the steps that essay proposed."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What is still unaddressed"
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement lists its own gaps, and they are reported here as written. First, there is no standard for what information evaluators may access or how they should report. Second, the funding system is unsettled, and the present arrangement has the evaluated party paying directly. Third, the company expects frontier labs to work with several organisations at once, and this partnership is non-exclusive: Anthropic says other evaluators will be announced in the coming weeks and that Accenture will work with other AI developers in similar capacities, without naming anyone or giving dates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Several further questions the announcement does not raise are left open here rather than guessed at: the threshold and timing for publishing what evaluators find, how confidentiality between evaluators and employees is arranged, and whether or when this practice would extend beyond Anthropic. The post closes by saying the company will continue to train and release frontier models and wants independent evaluators working alongside it, that it is sharing these early efforts now so people and other AI developers can see its process, and that it expects its approach to evolve as the field matures."
+        },
+        {
+          "type": "paragraph",
+          "text": "For readers outside the United States, the practical significance here is not a product but a governance practice taking shape in public. Whether it becomes an industry norm depends on who joins in the coming weeks and on what standards for funding and reporting actually emerge. Until then it is one company's unilateral arrangement, not a system."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "How do embedded evaluators differ from external evaluators today?",
+              "answer": "Anthropic writes that, unlike today's external evaluators, embedded evaluators will work inside AI companies with access comparable to an employee's. That position lets them watch models take shape in training, follow the decisions that govern how models are built and deployed, and speak directly to employees, so they can assess how a company operates, verify that it is keeping its safety commitments, identify blind spots and report incidents."
+            },
+            {
+              "question": "Who pays the evaluators?",
+              "answer": "For now Anthropic funds Accenture's work directly, and the company gives the importance and urgency of the work as the reason. It also states that long-term it thinks funding should come from pooled or government sources, as it called for in its Advanced AI Framework in June, and that because neither exists today it plans to work with different evaluators under different funding arrangements. The announcement does not describe how the conflict of interest is handled in the meantime."
+            },
+            {
+              "question": "Does this hand Anthropic's safety responsibility to someone else?",
+              "answer": "The announcement rejects that reading in one sentence: independent embedded evaluators do not reduce the company's accountability but help make it more verifiable, and the safety of its models remains its own responsibility."
+            },
+            {
+              "question": "Will other AI companies do the same?",
+              "answer": "The announcement does not say. It states only that the company expects frontier labs to work with several organisations at once and that this partnership is non-exclusive: Anthropic will announce other evaluators in the coming weeks and Accenture will work with other AI developers in similar capacities. No names or dates are given, so this article does not predict whether others will follow."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "What this article checked, and its limits",
+          "text": "This article draws on Anthropic's announcement of 18 September 2026, the CEO essay that announcement names, and the date shown on the company's newsroom listing; the check date is 19 September 2026. Mokaair took no part in the partnership and independently verified none of its operational detail, so every claim is attributed. The announcement itself states that no standards and no settled funding system exist yet; those gaps are reported as written rather than filled in here."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic Publishes Three Frontier AI Metrics: 26% Is “Leads,” Not “Fully Autonomous”",
+              "kind": "life",
+              "slug": "ai-news-anthropic-pace-metrics-20260917"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Partnering with Accenture on embedded evaluation",
+          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Dario Amodei: We Must Pace the Frontier",
+          "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Anthropic Newsroom (listing, where this post is dated Sep 18, 2026)",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Anthropic、Accenture を社内に入れる評価者に：双方が5年で10億ドル以上",
+      "description": "Anthropic は 2026 年 9 月 18 日、独立した評価者を社内に置き、従業員並みのアクセス権を与える取り組みで Accenture と提携すると発表しました。本記事は公式発表と、そこで名指しされた CEO の論考の原文に沿って、埋め込み型評価とは何をするのか、現在の外部評価と何が違うのか、費用は誰が出すのか、そして公式が「まだ決まっていない」と書いている点を整理します。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/hero-ja.jpg",
+        "alt": "オリジナルイラスト：建物の内側に外部の観察者の席が追加され、アクセス権と報告の二本の線が描かれている。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic は 2026 年 9 月 18 日に発表を公開し、フロンティア AI の独立した評価について Accenture と提携すると明らかにしました。同社はこれを埋め込み型評価と呼んでいます。社外で活動する現在の外部評価者とは異なり、埋め込み型の評価者は AI 企業の内部で働き、従業員に匹敵するアクセス権を得ます。この提携は Accenture の AI 専門事業である Faculty が主導し、モデルの評価とレッドチーミング、アラインメント評価、モデルのセーフガードのテストを含みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は 2026 年 9 月 19 日に確認し、Anthropic の公式発表の全文、発表が名指しした CEO の論考の原文、そして Anthropic のニュース一覧ページに表示された日付を読んでいます。当サイトはこの提携に関与しておらず、運用上の詳細を検証してもいないため、記載はすべて誰の発言かを明示しています。発表自体が未解決の点をいくつも書いており、その部分は結論を補わず、書かれたとおりに伝えます。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic は 2026 年 9 月 18 日、フロンティア AI の独立評価について Accenture と提携すると発表しました。Accenture の Faculty が主導し、モデルの評価とレッドチーミング、アラインメント評価、セーフガードのテストを行います。",
+            "公式によれば、埋め込み型の評価者は現在の外部評価者と異なり AI 企業の内部で働き、従業員に匹敵するアクセス権を持つため、訓練中にモデルが形になる過程を見られ、構築と展開の判断を追え、従業員と直接話せます。",
+            "双方は今後 5 年でこの能力の構築に少なくとも 10 億ドルを投じる見込みです。当面は Anthropic が Accenture の費用を直接負担し、長期的には共同出資または政府の財源が望ましいとしています。",
+            "公式は同時に、評価者がどの情報にアクセスできるか、発見をどう報告するかについての基準はまだ存在せず、この提携も非独占的であると書いています。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "この発表が言っていること"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表の見出しは「埋め込み型評価における Accenture との提携」で、日付は 2026 年 9 月 18 日と表示されています。冒頭の一文で位置づけが明確になります。これはフロンティア AI の独立した評価に関する提携であり、公式はこれを既存の約束に向けた重要な一歩だと説明しています。その約束は CEO の論考「We Must Pace the Frontier」に書かれたもので、評価者を Anthropic の内部に置くという内容です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行を担うのは Accenture の AI 専門事業 Faculty です。公式が挙げる作業は三つ、モデルの評価とレッドチーミング、アラインメント評価、モデルのセーフガードのテストです。相手を選んだ理由も説明されています。Accenture は多くの産業で企業や政府の AI 導入を支援しており、企業が実際にどう AI を使っているかについての理解がその安全面の考え方を形づくっている、そしてその視点をモデルの評価に持ち込む、というものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規模については、双方が今後 5 年でこの分野の能力構築に少なくとも 10 億ドルを投じる見込みだと書かれています。内訳、対象となる項目、人数や工程表は示されていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "埋め込み型評価は現在の外部評価と何が違うか"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表の中で最も丁寧に読む価値があるのがこの段落です。公式は、埋め込み型評価は新しい取り組みで運用の詳細の多くはまだ検討中だとしたうえで、現在の外部評価者とは異なり、埋め込み型の評価者は AI 企業の内部で従業員に匹敵するアクセス権を持って働くと書いています。その位置にいることで、訓練の過程でモデルが形になっていくのを見て、モデルがどう構築され展開されるかを左右する判断を追い、従業員と直接話すことができます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "その立ち位置で何ができるのかも列挙されています。企業が実際にどう運営されているかを評価し、安全に関する約束を守っているかを検証し、盲点を特定すること。さらにインシデントを報告し、利益とリスクについてより根拠のある説明を社会に提供することです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表はさらに、責任の外部委託と読まれないように一線を引いています。独立した埋め込み型評価者は Anthropic の説明責任を減らすものではなく、それをより検証可能にするものであり、モデルの安全性は引き続き同社自身の責任だ、という一文です。下の表は発表に明記されている事項だけをまとめたもので、書かれていない欄は推測せず省いています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "発表が触れている項目",
+            "公式の説明"
+          ],
+          "rows": [
+            [
+              "誰が行うか",
+              "Accenture の AI 専門事業 Faculty が主導"
+            ],
+            [
+              "何を行うか",
+              "モデルの評価とレッドチーミング、アラインメント評価、セーフガードのテスト"
+            ],
+            [
+              "投資規模",
+              "双方が今後 5 年で少なくとも 10 億ドルを見込む"
+            ],
+            [
+              "費用の負担",
+              "当面は Anthropic が Accenture の費用を直接負担"
+            ],
+            [
+              "独占契約か",
+              "非独占。双方とも他の相手とも組む"
+            ]
+          ],
+          "caption": "Anthropic の 2026 年 9 月 18 日の発表をもとに整理、2026 年 9 月 19 日確認。発表が触れていない項目は含めていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "費用はどこから出るのか、そして基準はまだない"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表は未解決の点にまるまる一段落を割いており、書き方はかなり率直です。現時点では、埋め込み型の評価者がどの情報にアクセスすべきか、発見したことをどう報告すべきかについての基準はなく、独立評価の資金についても確立した仕組みはない、と書かれています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長期の方向性は明快です。資金は共同出資または政府の財源から出るべきで、それは 6 月の枠組み文書で求めたことだとしています。ただし現時点ではどちらも存在しないため、異なる資金の取り決めのもとで異なる評価者と協働する予定だとしています。この仕事の重要性と緊急性を踏まえ、今回は Anthropic が Accenture の費用を直接負担します。発表はまた、METR をはじめとする非営利の評価機関とも、それらの機関自身の資金で埋め込み型評価の一部を試行することについて対話中だと述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "評価される側が評価者に支払うという構図は、この種の取り決めで最も問われやすい点です。発表はその構図を隠してはいませんが、この移行期間に利益相反をどう扱うのかは説明していません。本記事は公式の言葉とこの未解決の問いを並べて置き、判断は読者に委ねます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/diagram-1-ja.svg",
+          "alt": "4コマ図解：社内に入る、訓練中から見える、検証と報告、双方が10億ドル。",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic の 2026 年 9 月 18 日の発表から整理した 4 つの要点、2026 年 9 月 19 日確認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "出発点にある CEO の論考"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表が名指しした論考は、埋め込み型評価者を三つの段階の第一歩として挙げています。その内容は、各フロンティア AI 企業が、第三者の埋め込み評価チームに継続的で従業員に近いアクセス権を与えると約束するというもので、役割は安全上の慣行と約束の遵守を検証し、インシデントを報告し、完成したモデルだけでなく訓練パイプラインやプロセスのアラインメントの評価を助けることです。論考はこれをあらゆるペース配分の約束を検証可能にする鍵と呼び、規制当局の監督者が従業員とともに常駐することがある銀行業界に前例があると指摘しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ論考の中で Anthropic は、この一歩に今、一方的に取り組むと表明しています。論考は、手続き的に見える事柄がなぜ重要なのかを三つの見出しで説明しています。検証可能性、細部を見られるのは中立の第三者だけだから。透明性、これまでは何を載せ何を省くかを決めていたのは会社自身だったから。そして第二の意見、商業的な動機から自由な視点は、従業員が思い至らなかったものの、指摘されれば直したいと考える点を示してくれることが多いからです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "二つの文書を並べて読むと、今回の発表の位置が見えてきます。これは新しい主張ではなく、その論考が提案した第一歩に、初めて名前のある実行相手がついたということです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まだ説明されていない部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表は自ら空白を列挙しており、ここではそのまま伝えます。第一に、評価者がどの情報にアクセスできるか、どう報告するかの基準がありません。第二に、資金の仕組みは未確定で、現状は評価される側が直接支払う形です。第三に、公式はフロンティア研究所が複数の組織と同時に協働することを見込んでおり、今回の提携は非独占です。Anthropic は今後数週間のうちに他の評価者を発表するとし、Accenture も同様の立場で他の AI 開発企業と協働するとしていますが、相手や時期は示されていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表が触れていない点も、推測せずに残しておきます。評価者が見つけたことを公表する基準と時期、評価者と従業員のあいだの守秘の取り決め、そしてこの慣行が Anthropic 以外にも及ぶのか、及ぶとすればいつか。発表の結びは、今後もフロンティアモデルの訓練と公開を続け、その過程で独立した評価者に並走してほしいこと、初期の取り組みを今共有するのは人々や他の AI 開発企業に自社のプロセスを見てもらうためであること、そして分野の成熟に応じて手法は変わると見込んでいることを述べるにとどまっています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日本の読者にとって、このニュースの実際的な意味は製品ではなく、統治の手法が公開の場で形をとりつつあるという点にあります。それが業界の慣行になるかどうかは、今後数週間で誰が加わるか、資金と報告の基準がどう育つかにかかっています。それまでは一社の一方的な取り決めであって、制度ではありません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "埋め込み型の評価者は現在の外部評価者と何が違うのですか。",
+              "answer": "公式は、現在の外部評価者とは異なり、埋め込み型の評価者は AI 企業の内部で従業員に匹敵するアクセス権を持って働くと書いています。その位置にいることで、訓練中にモデルが形になる過程を見て、モデルの構築と展開を左右する判断を追い、従業員と直接話すことができ、企業が実際にどう運営されているかを評価し、安全上の約束の遵守を検証し、盲点を特定し、インシデントを報告できるとしています。"
+            },
+            {
+              "question": "評価者の費用は誰が負担しますか。",
+              "answer": "当面は Anthropic が Accenture の費用を直接負担します。公式はその理由をこの仕事の重要性と緊急性だとしています。同時に、長期的には資金は共同出資または政府の財源から出るべきで、それは 6 月の枠組み文書で求めたことだが、現時点ではどちらも存在しないため、異なる資金の取り決めのもとで異なる評価者と協働する予定だと書いています。その間の利益相反の扱いについては説明がありません。"
+            },
+            {
+              "question": "これは安全の責任を他社に渡したということですか。",
+              "answer": "発表はその読み方を一文で否定しています。独立した埋め込み型評価者は同社の説明責任を減らすものではなく、それをより検証可能にするものであり、モデルの安全性は引き続き同社自身の責任だ、というものです。"
+            },
+            {
+              "question": "他の AI 企業も同じことをしますか。",
+              "answer": "発表には書かれていません。公式はフロンティア研究所が複数の組織と同時に協働することを見込んでいること、そして今回の提携が非独占であることだけを述べています。Anthropic は今後数週間で他の評価者を発表し、Accenture も同様の立場で他の AI 開発企業と協働するとしていますが、相手も時期も示されていないため、本記事は他社が追随するかどうかを予測しません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本記事が確認した範囲と限界",
+          "text": "本記事は Anthropic の 2026 年 9 月 18 日の発表、その発表が名指しした CEO の論考、および同社ニュース一覧ページの日付表示に基づいており、確認日は 2026 年 9 月 19 日です。当サイトはこの提携に関与しておらず、運用上の詳細を独自に検証してもいないため、記載はすべて出所を明示しています。発表自体が基準も資金の仕組みもまだ存在しないと述べており、その空白は結論を補わず書かれたとおりに伝えています。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic、フロンティアAIの指標を3つ公表：26%は「主導」であって「自律」ではない",
+              "kind": "life",
+              "slug": "ai-news-anthropic-pace-metrics-20260917"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Partnering with Accenture on embedded evaluation",
+          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Dario Amodei：We Must Pace the Frontier",
+          "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Anthropic Newsroom（ニュース一覧。本記事は Sep 18, 2026 と表示）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Anthropic, Accenture를 사내 평가자로: 양측 각각 5년간 10억 달러 이상",
+      "description": "Anthropic은 2026년 9월 18일 독립 평가자를 회사 내부에 두고 직원에 준하는 접근 권한을 주는 방식으로 Accenture와 협력한다고 발표했습니다. 이 글은 공식 발표문과 발표가 지목한 CEO 글의 원문에 따라 내장형 평가가 무엇을 하는지, 지금의 외부 평가와 무엇이 다른지, 비용은 누가 내는지, 그리고 회사 스스로 아직 정해지지 않았다고 밝힌 부분을 정리합니다.",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 건물 안쪽에 외부 관찰자의 자리가 추가되고, 접근 권한과 보고가 두 개의 선으로 표시된 그림.",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 2026년 9월 18일 발표문을 공개하고, 프런티어 AI의 독립 평가를 위해 Accenture와 협력한다고 밝혔습니다. 회사는 이를 내장형 평가라고 부릅니다. 회사 바깥에서 일하는 지금의 외부 평가자와 달리, 내장형 평가자는 AI 기업 내부에서 일하며 직원에 준하는 접근 권한을 받습니다. 이번 협력은 Accenture의 AI 전문 사업부 Faculty가 주도하며, 모델 평가와 레드팀 테스트, 정렬 평가, 모델 안전장치 시험을 포함합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 기사는 2026년 9월 19일에 확인했으며, Anthropic 공식 발표문 전문과 발표가 지목한 CEO 글의 원문, 그리고 Anthropic 뉴스 목록 페이지에 표시된 날짜를 읽었습니다. 본 사이트는 이 협력에 참여하지 않았고 운영 세부 사항을 검증하지도 않았으므로, 모든 서술은 누구의 말인지 밝혀 두었습니다. 발표문 자체가 아직 정해지지 않은 점을 여러 군데 적고 있으며, 그 부분은 결론을 보태지 않고 적힌 그대로 전합니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic은 2026년 9월 18일 프런티어 AI의 독립 평가를 위해 Accenture와 협력한다고 발표했습니다. Accenture의 Faculty가 주도하며 모델 평가와 레드팀 테스트, 정렬 평가, 안전장치 시험을 맡습니다.",
+            "회사는 내장형 평가자가 지금의 외부 평가자와 달리 AI 기업 내부에서 직원에 준하는 접근 권한으로 일한다고 설명합니다. 그래서 훈련 중 모델이 만들어지는 과정을 보고, 구축과 배포 결정을 따라가며, 직원과 직접 이야기할 수 있습니다.",
+            "양측은 앞으로 5년 동안 이 역량을 갖추는 데 각각 최소 10억 달러를 투자할 것으로 보고 있습니다. 당분간은 Anthropic이 Accenture의 비용을 직접 부담하며, 장기적으로는 공동 기금이나 정부 재원이 맞다고 밝혔습니다.",
+            "회사는 동시에 평가자가 어떤 정보에 접근해야 하는지, 발견한 것을 어떻게 보고해야 하는지에 대한 기준이 아직 없으며 이번 협력도 비독점이라고 적었습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "이 발표는 무엇을 말하고 있나"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문의 제목은 내장형 평가에서 Accenture와 협력한다는 것이고 날짜는 2026년 9월 18일로 표시되어 있습니다. 첫 문장이 성격을 분명히 합니다. 이것은 프런티어 AI의 독립 평가를 위한 협력이며, 회사는 이를 이미 해 둔 약속을 향한 중요한 한 걸음이라고 설명합니다. 그 약속은 CEO의 글 We Must Pace the Frontier에 적힌 것으로, 평가자를 Anthropic 내부에 두겠다는 내용입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실행은 Accenture의 AI 전문 사업부 Faculty가 맡습니다. 회사가 밝힌 작업은 세 가지로 모델 평가와 레드팀 테스트, 정렬 평가, 모델 안전장치 시험입니다. 상대를 고른 이유도 설명되어 있습니다. Accenture는 여러 산업에서 기업과 정부의 AI 도입을 돕고 있으며, 기업이 실제로 AI를 어떻게 쓰는지에 대한 이해가 그들의 안전 접근법을 형성한다는 것, 그리고 그 관점을 모델 평가에 가져온다는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "규모에 대해서는 양측이 앞으로 5년 동안 이 분야의 역량을 갖추는 데 각각 최소 10억 달러를 투자할 것으로 본다고 적혀 있습니다. 그 금액의 내역이나 포함 항목, 인원과 일정은 나와 있지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "내장형 평가는 지금의 외부 평가와 무엇이 다른가"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문에서 가장 꼼꼼히 읽을 가치가 있는 대목입니다. 회사는 내장형 평가가 새로운 방식이고 운영 세부 사항의 상당수가 아직 논의 중이라고 밝히면서, 지금의 외부 평가자와 달리 내장형 평가자는 AI 기업 내부에서 직원에 준하는 접근 권한으로 일하게 된다고 적었습니다. 그 자리에 있으면 훈련 과정에서 모델이 모습을 갖추는 것을 지켜보고, 그 모델이 어떻게 구축되고 배포되는지를 좌우하는 결정을 따라가며, 직원과 직접 이야기할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그 위치에서 무엇을 할 수 있는지도 열거되어 있습니다. 회사가 실제로 어떻게 운영되는지 평가하고, 안전 약속을 지키고 있는지 검증하며, 사각지대를 찾아내는 일입니다. 여기에 더해 사건을 보고하고, 이익과 위험에 대해 더 근거 있는 설명을 대중에게 제공할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문은 이어서 책임을 외부에 넘긴 것으로 읽히지 않도록 선을 긋습니다. 독립적인 내장형 평가자는 Anthropic의 책임을 줄이는 것이 아니라 그 책임을 더 검증 가능하게 만들며, 모델의 안전은 여전히 회사 자신의 책임이라는 문장입니다. 아래 표는 발표문에 분명히 적힌 항목만 모은 것으로, 적히지 않은 칸은 추측하지 않고 넣지 않았습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "발표문이 다룬 항목",
+            "회사의 설명"
+          ],
+          "rows": [
+            [
+              "누가 하는가",
+              "Accenture의 AI 전문 사업부 Faculty가 주도"
+            ],
+            [
+              "무엇을 하는가",
+              "모델 평가와 레드팀 테스트, 정렬 평가, 모델 안전장치 시험"
+            ],
+            [
+              "투자 규모",
+              "양측 각각 앞으로 5년간 최소 10억 달러 예상"
+            ],
+            [
+              "비용 부담",
+              "당분간 Anthropic이 Accenture 비용을 직접 부담"
+            ],
+            [
+              "독점 여부",
+              "비독점. 양측 모두 다른 상대와도 협력"
+            ]
+          ],
+          "caption": "Anthropic의 2026년 9월 18일 발표문을 정리, 2026년 9월 19일 확인. 발표문이 다루지 않은 항목은 넣지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "돈은 어디서 나오는가, 그리고 아직 기준이 없다"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문은 미해결 사안에 한 단락을 통째로 할애했고 표현도 상당히 직설적입니다. 현재로서는 내장형 평가자가 어떤 정보에 접근해야 하는지, 발견한 것을 어떻게 보고해야 하는지에 대한 기준이 없으며, 독립 평가의 재원에 대해서도 정해진 제도가 없다고 적혀 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "장기 방향은 분명합니다. 재원은 공동 기금이나 정부 재원에서 나와야 하며 이는 6월의 프레임워크 문서에서 이미 요구한 것이라고 밝혔습니다. 다만 지금은 둘 다 존재하지 않으므로 서로 다른 재원 구조 아래에서 서로 다른 평가자와 협력할 계획이라고 합니다. 이 일의 중요성과 시급성을 고려해 이번에는 Anthropic이 Accenture의 비용을 직접 부담합니다. 발표문은 또한 METR 등 비영리 평가 기관과도 그 기관 자체 재원으로 내장형 평가의 일부를 시범 적용하는 문제를 논의 중이라고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "평가받는 쪽이 평가자에게 돈을 내는 구조는 이런 방식에서 가장 자주 지적되는 지점입니다. 발표문은 그 구조를 감추지 않지만, 이 과도기 동안 이해충돌을 어떻게 다루는지는 설명하지 않습니다. 이 기사는 회사의 표현과 이 미해결 질문을 나란히 두고 판단은 독자에게 맡깁니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/diagram-1-ko.svg",
+          "alt": "네 칸 도해: 회사 안으로, 훈련 중부터 보임, 검증과 보고, 양측 각각 10억 달러.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic의 2026년 9월 18일 발표문에서 정리한 네 가지 요점, 2026년 9월 19일 확인."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "출발점이 된 CEO의 글"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문이 지목한 글은 내장형 평가자를 세 단계 가운데 첫 단계로 제시합니다. 내용은 각 프런티어 AI 기업이 제3자 내장 평가팀에 지속적이고 직원에 준하는 접근 권한을 주기로 약속한다는 것이고, 역할은 안전 관행과 약속의 준수를 검증하고 사건을 보고하며, 완성된 모델뿐 아니라 훈련 파이프라인과 절차의 정렬까지 평가하도록 돕는 것입니다. 글은 이를 어떤 속도 조절 약속이든 검증 가능하게 만드는 핵심 단계라고 부르며, 규제 당국의 감독관이 직원과 함께 상주하기도 하는 은행업에 선례가 있다고 지적합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 글에서 Anthropic은 지금 이 단계를 일방적으로 이행하겠다고 밝힙니다. 글은 절차처럼 보이는 일이 왜 중요한지를 세 가지 항목으로 설명합니다. 검증 가능성, 세부를 볼 수 있는 것은 중립적인 제3자뿐이기 때문입니다. 투명성, 지금까지 무엇을 넣고 무엇을 뺄지 정한 것은 회사 자신이었기 때문입니다. 그리고 두 번째 의견, 상업적 동기에서 자유로운 시각은 직원이 미처 생각하지 못했지만 알고 나면 기꺼이 고치려는 점을 짚어 주는 경우가 많기 때문입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 문서를 나란히 읽으면 이번 발표의 위치가 분명해집니다. 새로운 주장이 아니라, 그 글이 제안한 첫 단계에 이름 있는 첫 실행 상대가 생겼다는 것입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "아직 설명되지 않은 부분"
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문은 스스로 빈칸을 열거하고 있어 여기서는 그대로 전합니다. 첫째, 평가자가 어떤 정보에 접근할 수 있고 어떻게 보고해야 하는지에 대한 기준이 없습니다. 둘째, 재원 제도가 정해지지 않았고 현재는 평가받는 쪽이 직접 지급하는 형태입니다. 셋째, 회사는 프런티어 연구소가 여러 기관과 동시에 협력할 것으로 보며 이번 협력은 비독점입니다. Anthropic은 앞으로 몇 주 안에 다른 평가자를 발표하겠다고 했고 Accenture도 비슷한 자격으로 다른 AI 개발사와 일하겠다고 했지만, 상대도 시점도 밝히지 않았습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문이 언급하지 않은 점도 추측하지 않고 남겨 둡니다. 평가자가 발견한 것을 공개하는 기준과 시점, 평가자와 직원 사이의 비밀 유지 방식, 그리고 이 관행이 Anthropic 밖으로 확대되는지 확대된다면 언제인지입니다. 발표문의 맺음은 앞으로도 프런티어 모델을 훈련하고 공개할 것이며 그 과정에 독립 평가자가 함께하기를 바란다는 것, 초기 시도를 지금 공유하는 이유는 사람들과 다른 AI 개발사가 자사의 절차를 볼 수 있게 하기 위해서라는 것, 그리고 분야가 성숙함에 따라 방식이 달라질 것으로 본다는 정도입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "한국의 독자에게 이 소식의 실질적 의미는 제품이 아니라, 거버넌스 방식 하나가 공개된 자리에서 모양을 잡아 가고 있다는 점입니다. 그것이 업계 관행이 될지는 앞으로 몇 주 안에 누가 합류하는지, 재원과 보고의 기준이 어떻게 자라는지에 달려 있습니다. 그때까지는 한 회사의 일방적 조치이지 제도가 아닙니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "내장형 평가자는 지금의 외부 평가자와 무엇이 다른가요?",
+              "answer": "회사는 지금의 외부 평가자와 달리 내장형 평가자가 AI 기업 내부에서 직원에 준하는 접근 권한으로 일한다고 적었습니다. 그 자리에 있으면 훈련 중 모델이 만들어지는 과정을 지켜보고, 모델의 구축과 배포를 좌우하는 결정을 따라가며, 직원과 직접 이야기할 수 있어 회사가 실제로 어떻게 운영되는지 평가하고, 안전 약속의 준수를 검증하며, 사각지대를 찾고 사건을 보고할 수 있다고 합니다."
+            },
+            {
+              "question": "평가자의 비용은 누가 내나요?",
+              "answer": "당분간은 Anthropic이 Accenture의 비용을 직접 부담하며, 회사는 그 이유를 이 일의 중요성과 시급성이라고 밝혔습니다. 동시에 장기적으로는 재원이 공동 기금이나 정부에서 나와야 한다고 보며 그것은 6월 프레임워크 문서에서 요구한 내용이지만, 지금은 둘 다 없기 때문에 서로 다른 재원 구조로 서로 다른 평가자와 협력할 계획이라고 적었습니다. 그 사이 이해충돌을 어떻게 다루는지는 설명하지 않았습니다."
+            },
+            {
+              "question": "안전 책임을 다른 회사에 넘긴 것인가요?",
+              "answer": "발표문은 그런 해석을 한 문장으로 부정합니다. 독립적인 내장형 평가자는 회사의 책임을 줄이는 것이 아니라 그 책임을 더 검증 가능하게 만들며, 모델의 안전은 여전히 회사 자신의 책임이라는 것입니다."
+            },
+            {
+              "question": "다른 AI 기업도 같은 방식을 택할까요?",
+              "answer": "발표문에는 없습니다. 회사는 프런티어 연구소가 여러 기관과 동시에 협력할 것으로 본다는 점과 이번 협력이 비독점이라는 점만 밝혔습니다. Anthropic은 앞으로 몇 주 안에 다른 평가자를 발표하고 Accenture도 비슷한 자격으로 다른 AI 개발사와 일하겠다고 했지만 상대도 시점도 나와 있지 않으므로, 이 기사는 다른 기업의 동참 여부를 예측하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "이 기사가 확인한 범위와 한계",
+          "text": "이 기사는 Anthropic의 2026년 9월 18일 발표문, 그 발표문이 지목한 CEO의 글, 그리고 회사 뉴스 목록 페이지의 날짜 표시에 근거했으며 확인일은 2026년 9월 19일입니다. 본 사이트는 이 협력에 참여하지 않았고 운영 세부 사항을 독자적으로 검증하지도 않았으므로 모든 서술의 출처를 밝혀 두었습니다. 발표문 자체가 기준도 재원 제도도 아직 없다고 밝히고 있으며, 그 빈칸은 결론을 보태지 않고 적힌 그대로 전했습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic, 프런티어 AI 지표 3종 공개: 26%는 '주도'이지 '자율'이 아니다",
+              "kind": "life",
+              "slug": "ai-news-anthropic-pace-metrics-20260917"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Partnering with Accenture on embedded evaluation",
+          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Dario Amodei: We Must Pace the Frontier",
+          "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Anthropic Newsroom(뉴스 목록. 이 글은 Sep 18, 2026으로 표시)",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Anthropic 请 Accenture 进驻当评估者：双方各投至少 10 亿美元",
+      "description": "Anthropic 在 2026 年 9 月 18 日宣布与 Accenture 合作，把独立评估者放进公司内部，给予接近员工的访问权限。本文依据官方公告与公告点名的那篇 CEO 文章原文，整理内嵌式评估要做什么、和现在的外部评估差在哪、钱怎么出，以及官方自己承认还没有答案的部分。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/hero-zh-cn.jpg",
+        "alt": "原创插图：一栋建筑物里面多了一组外来观察者的座位，旁边标出访问权限与上报两条线。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 9 月 18 日发布公告，宣布与 Accenture 合作，对前沿 AI 进行独立评估。官方把这件事称为内嵌式评估：和现在在公司外面做事的外部评估者不同，内嵌式的评估者会在 AI 公司内部工作，拿到的访问权限接近一名员工。这次合作由 Accenture 旗下专攻 AI 的 Faculty 主导，内容包括评估与红队测试模型、进行对齐评估，以及测试模型的防护措施。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文于 2026 年 9 月 19 日核查，读的是 Anthropic 官方公告全文、公告里点名的那篇 CEO 文章原文，以及 Anthropic 新闻总览页上这篇的日期标注。本站没有参与也没有核实这项合作的执行细节，文中所有说法都标明是哪一方讲的；官方自己在公告里写了不少“还没有答案”，那些段落照原样写出来，不替它补上结论。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 9 月 18 日宣布与 Accenture 合作做前沿 AI 的独立评估，由 Accenture 旗下的 Faculty 主导，工作包括评估与红队测试模型、对齐评估与测试防护措施。",
+            "官方说内嵌式评估者和今天的外部评估者不同，他们会在 AI 公司内部工作，访问权限接近一名员工，因此看得到模型在训练中成形、跟得上构建与部署的决策，也能直接和员工谈。",
+            "双方各自预期未来五年在这件事上至少投入 10 亿美元；目前的钱由 Anthropic 直接支付给 Accenture，官方说长期而言经费应该来自共同集资或政府。",
+            "官方同时写明还没有标准：评估者应该拿到哪些信息、要怎么上报所发现的事，目前都没有定论，这次合作也是非独家的。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这则公告在说什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的标题是与 Accenture 在内嵌式评估上合作，日期标注为 2026 年 9 月 18 日。开头第一句就把定位讲清楚：这是对前沿 AI 进行独立评估的合作，而且官方把它形容成朝向一项既有承诺迈出的重要一步——那项承诺写在 CEO 那篇名为 We Must Pace the Frontier 的文章里，内容是把评估者放进 Anthropic 内部。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合作的执行单位是 Accenture 旗下专门做 AI 的事业体 Faculty。官方列出的工作有三类：评估与红队测试模型、进行对齐评估，以及测试模型的防护措施。Anthropic 也解释了为什么挑这家：Accenture 协助许多行业的企业与政府部署 AI，官方认为它对企业实际怎么使用 AI 的理解会影响它的安全观点，而这个视角正是它要带进模型评估的东西。"
+        },
+        {
+          "type": "paragraph",
+          "text": "规模方面，公告写的是双方各自预期未来五年在建立这方面的能力上至少投入 10 亿美元。官方没有说明这笔钱会怎么分配、包含哪些项目，也没有给出人数或时间表。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "内嵌式评估和现在的外部评估差在哪"
+        },
+        {
+          "type": "paragraph",
+          "text": "这是整篇公告最值得一读的一段。官方写，内嵌式评估是新的做法，很多运作细节还在讨论当中；和今天的外部评估者不同，内嵌式的评估者会在 AI 公司里面工作，拿到的访问权限相当于一名员工。这个位置让他们可以看着模型在训练过程中成形，跟上决定这些模型怎么被构建与部署的那些决策，也能直接和员工对话。"
+        },
+        {
+          "type": "paragraph",
+          "text": "从这个位置能做什么，官方也列了出来：评估一家公司实际是怎么运作的、核查它有没有遵守自己做出的安全承诺、找出盲点；此外还能上报事件，并且给公众一份对收益与风险比较有依据的说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告另外放了一句划界线的话，避免被读成责任外包：官方写，独立的内嵌式评估者不会减少 Anthropic 自己的责任，而是让这份责任更能被验证，模型的安全仍然是 Anthropic 自己的责任。下面这张表把公告里写明的几件事整理在一起，没有写的栏位就留白，不替它推测。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "这次公告写到的项目",
+            "官方的说法"
+          ],
+          "rows": [
+            [
+              "谁来做",
+              "由 Accenture 旗下专攻 AI 的 Faculty 主导"
+            ],
+            [
+              "做哪些事",
+              "评估与红队测试模型、进行对齐评估、测试模型的防护措施"
+            ],
+            [
+              "投入多少",
+              "双方各自预期未来五年至少投入 10 亿美元"
+            ],
+            [
+              "钱由谁出",
+              "目前由 Anthropic 直接支付 Accenture 的费用"
+            ],
+            [
+              "是不是独家合作",
+              "非独家；双方都会再与其他对象合作"
+            ]
+          ],
+          "caption": "依据 Anthropic 2026 年 9 月 18 日的公告整理，2026 年 9 月 19 日核查；公告未说明的栏位没有列入。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "钱从哪里来，官方自己说还没有标准"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告用了一整段讲尚未解决的问题，措辞相当直接：到目前为止，对于内嵌式评估者应该取得哪些信息、又该如何上报他们所发现的事，都还没有标准；独立评估的经费也还没有一套定案的制度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "长期的方向官方写得很明白：经费应该来自共同集资或政府的来源，这是他们在六月的一份框架文件里就呼吁过的事。但因为两者目前都不存在，他们打算在不同的经费安排下与不同的评估者合作。考虑到这件事的重要性与紧迫性，这一次 Anthropic 会直接支付 Accenture 的费用。官方同时提到，他们也正在与 METR 等非营利评估机构讨论，用那些机构自己的经费试行内嵌式评估的部分做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "由受评估的一方付钱给评估者，是这类安排最常被质疑的地方。公告没有回避这个结构，但也没有说明在这段过渡期间要用什么方式处理其中的利益冲突。本站把官方的原话与这个未解的问题并列，让读者自己判断。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-accenture-evaluation-20260918/diagram-1-zh-cn.svg",
+          "alt": "四格图解：进到公司里、看得到训练过程、核查与上报、双方各投 10 亿美元。",
+          "width": 1600,
+          "height": 900,
+          "caption": "依据 Anthropic 2026 年 9 月 18 日公告整理的四个重点，2026 年 9 月 19 日核查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "这件事的源头：一篇 CEO 的文章"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告开头点名的那篇文章，把内嵌式评估者列为三个步骤里的第一步。文章写的内容是：每一家前沿 AI 公司承诺，让一组第三方的内嵌评估者取得持续的、像员工一样的访问权限，角色是核查公司有没有遵守安全做法与承诺、上报事件，并协助评估不只是已完成模型、还包括训练流程与各项程序的对齐状况。文章把这一步称为任何节奏承诺要能被验证的关键，并指出银行业有类似的先例，那里有时会让监管机构的监督人员与员工一起进驻。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一篇文章里，Anthropic 表明自己现在就单方面承诺这一步。文章也解释了为什么作者认为这件事看起来程序化、实际上很关键，并列了三个理由：可验证，因为中立的第三方才看得到细节；透明，因为在这之前，要公开什么、略过什么，都是公司自己决定的；以及第二意见，一个没有商业动机的外部视角，常常只是点出员工没想到、但知道之后愿意修正的事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把这两份文件放在一起读，这次公告的位置就清楚了：它不是一个新的主张，而是那篇文章所提的第一步，开始有了第一个具名的执行对象。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "还没有交代的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告本身就列了不少空白，这里照原样整理。第一，评估者可以取得哪些信息、要怎么上报，都没有标准。第二，经费制度还没有定案，目前的安排是受评估的一方直接付费。第三，官方预期前沿实验室会同时与好几个机构合作，这次的合作是非独家的：Anthropic 表示接下来几周会宣布其他评估者，Accenture 也会以类似的角色与其他 AI 开发商合作，但没有点名对象或时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "还有几件事公告没有提到，本站也不推测：评估者发现问题之后，公开的门槛与时间是什么；评估者与员工之间的保密安排怎么设计；以及这套做法会不会、或什么时候适用到 Anthropic 以外的公司。公告的结尾只写到，他们会继续训练与发布前沿模型，并希望独立评估者在这个过程中一起参与，现在把早期的做法分享出来，是为了让外界与其他 AI 开发商看得到他们的流程，而且预期做法会随着这个领域成熟而调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对中文读者来说，这则消息的实际意义不在产品，而在于一种治理做法正在被试出形状。它会不会成为业界惯例，要看接下来几周还有谁加入、以及经费与上报的标准怎么长出来；在那之前，这是一家公司的单方面安排，不是一套制度。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "内嵌式评估者和现在的外部评估者有什么不同？",
+              "answer": "官方写，和今天的外部评估者不同，内嵌式的评估者会在 AI 公司内部工作，取得的访问权限相当于一名员工。这个位置让他们可以看着模型在训练过程中成形、跟上决定模型怎么构建与部署的那些决策，也能直接和员工对话，因此能评估一家公司实际怎么运作、核查它有没有遵守安全承诺、找出盲点，并上报事件。"
+            },
+            {
+              "question": "评估者的钱是谁出的？",
+              "answer": "目前是 Anthropic 直接支付 Accenture 的费用，官方说理由是这件工作的重要性与紧迫性。官方同时写明，长期而言他们认为经费应该来自共同集资或政府的来源，那是他们在六月的框架文件里就呼吁过的事，但因为两者目前都不存在，他们打算在不同的经费安排下与不同的评估者合作。公告没有说明这段期间怎么处理利益冲突。"
+            },
+            {
+              "question": "这样是不是等于 Anthropic 把安全责任交出去了？",
+              "answer": "官方在公告里特别写了一句话否认这个读法：独立的内嵌式评估者不会减少他们的责任，而是让这份责任更能被验证，模型的安全仍然是 Anthropic 自己的责任。"
+            },
+            {
+              "question": "其他 AI 公司也会这样做吗？",
+              "answer": "公告没有说。官方只写了他们预期前沿实验室会同时与好几个机构合作，而且这次的合作是非独家的：Anthropic 接下来几周会宣布其他评估者，Accenture 也会以类似的角色与其他 AI 开发商合作。公告没有点名任何对象，也没有给时间表，所以本文不推测其他公司会不会跟进。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "本文核查到的重点与限制",
+          "text": "本文依据的是 Anthropic 2026 年 9 月 18 日的官方公告、公告点名的那篇 CEO 文章，以及官方新闻总览页上的日期标注，核查日是 2026 年 9 月 19 日。本站没有参与这项合作，也没有独立核实任何执行细节；文中每一项说法都标明出自哪一方。官方自己写明还没有标准、经费制度也还没定案，这些空白在文中照原样列出，没有替它补上结论。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic 公布三项前沿 AI 指标：26% 是“主导”不是“自主”",
+              "kind": "life",
+              "slug": "ai-news-anthropic-pace-metrics-20260917"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Partnering with Accenture on embedded evaluation",
+          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Dario Amodei：We Must Pace the Frontier",
+          "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Anthropic Newsroom（新闻总览页，本篇标注 Sep 18, 2026）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

@@ -9,6 +9,13 @@
 > 既有索引 `ai-news-2026-january-september-index` 已原地改版（拿掉篇數、加 12 篇連結）。
 > **批次 4.5（2026-09-16 起的新消息）**：本工作區再加六篇（`ai-news-chatgpt-sponsored-agents-20260916`、`ai-news-firefox-smart-window-mistral-20260916`、`ai-news-openai-misalignment-reports-20260917`、`ai-news-anthropic-pace-metrics-20260917`、`ai-news-astra-for-law-20260917`、`ai-news-google-cc-family-agent-20260918`，display_order 161–166），研究紀錄直接寫在 `research/`，索引原地增補；現況見 HANDOVER 第 1d 節。
 >
+> **批次 4.6（2026-09-19，待發布）**：本工作區再加兩篇 9 月 18 日的 AI 公告
+> （`ai-news-anthropic-accenture-evaluation-20260918`、`ai-news-google-flow-fashion-20260918`，
+> display_order 167–168），研究紀錄在 `research/`，既有索引已原地增補（五語各兩個連結、日期句改到 9 月 19 日）。
+> 票在 `tasks/open/2026-09-19-ai-news-batch-4-6-since.md`，那張票記著 OpenAI 同日那則為什麼沒寫、
+> 索引來源為什麼只引用一篇、`update_index.py` 這次改了哪幾張表，
+> 以及**這一輪沒有獨立查核、`factcheck/` 沒有這兩篇**這件事。
+>
 > **PR #548 已於 2026-09-18 合併、部署並匯入發布**（12 篇＋索引＋30 個只改了連結文字的既有包同一次 `--slug` 匯入；清單在 HANDOVER 第 2.4 節）。
 > 固定值：`topics` 是 `["ai", "ai-news"]`（需要時加 `software`／`gadgets`），主色 TEAL，眉標 `MOKAAIR  /  AI NEWS`，
 > `display_order` 十二篇 149–160；**沒有免責 callout**（含 B8 金融服務那篇，理由見 `ai.md`）。
