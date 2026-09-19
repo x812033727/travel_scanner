@@ -8,6 +8,7 @@ vi.mock("./server", () => ({ getCommunityState: communityState }));
 
 import {
   loadPetPlace, loadPetPlaces, loadPost, loadPublicProfile, metaDescription,
+  PET_PLACE_SITEMAP_BUDGET_MS, PET_PLACE_SITEMAP_PAGE_LIMIT, PET_PLACE_SITEMAP_PAGE_SIZE, petPlaceSitemapEntries,
 } from "./public.server";
 
 const OPEN = { status: "ready", flags: { enabled: true, posting_enabled: true, comments_enabled: true, messaging_enabled: true, translation_enabled: true, pet_reports_enabled: true } };
@@ -127,5 +128,127 @@ describe("metaDescription", () => {
 
   it("leaves a short description exactly as written", () => {
     expect(metaDescription("Travels with a corgi.")).toBe("Travels with a corgi.");
+  });
+});
+
+describe("petPlaceSitemapEntries, the enumeration behind the sitemap", () => {
+  const verified = { ...place, id: "p1", verified_at: "2026-09-01T09:30:00Z" };
+  const undated = { ...place, id: "p2", verified_at: null };
+  const first = { items: [verified, undated], next_cursor: "c1" };
+  const last = { items: [{ ...place, id: "p3", verified_at: "2026-09-10T00:00:00Z" }], next_cursor: null };
+  /** What the first page reads as: the id, and the date only where there was a real one. */
+  const read = [{ id: "p1", verified_at: "2026-09-01T09:30:00Z" }, { id: "p2" }];
+
+  /** Answers each call with a fresh Response for the next payload, repeating the last one. A
+   *  Response body reads once, so `answering` above cannot serve two pages. */
+  function answeringPages(...payloads: unknown[]) {
+    let call = 0;
+    const fetch = vi.fn().mockImplementation(
+      async () => new Response(JSON.stringify(payloads[Math.min(call++, payloads.length - 1)])),
+    );
+    vi.stubGlobal("fetch", fetch);
+    return fetch;
+  }
+
+  it("follows next_cursor through the public directory at the API's page maximum, verified places only", async () => {
+    const fetch = answeringPages(first, last);
+    await expect(petPlaceSitemapEntries()).resolves.toEqual({
+      entries: [...read, { id: "p3", verified_at: "2026-09-10T00:00:00Z" }], complete: true,
+    });
+    // `include_uncertain` is the API's default, sent anyway: the set listed is the places whose
+    // rules are verified, and that must not change under a change of default.
+    expect(fetch.mock.calls.map((call) => String(call[0]))).toEqual([
+      "http://api.test/api/v1/pet-friendly/places?limit=50&include_uncertain=false",
+      "http://api.test/api/v1/pet-friendly/places?limit=50&include_uncertain=false&cursor=c1",
+    ]);
+    expect(PET_PLACE_SITEMAP_PAGE_SIZE).toBe(50);
+    // The same treatment as the directory page's own read: no store, the locale header, and a
+    // timeout on every page.
+    for (const [, init] of fetch.mock.calls) {
+      expect(init).toMatchObject({ cache: "no-store", headers: expect.objectContaining({ "X-Travel-Locale": "zh-TW" }) });
+      expect(init).not.toHaveProperty("next");
+      expect(init.signal).toBeInstanceOf(AbortSignal);
+    }
+  });
+
+  it("reads nothing while the switch is off or unreadable, and that is complete", async () => {
+    // Nothing is public, which is the truth and not a failure -- the same answer the directory
+    // page gives, with no API call behind it.
+    const fetch = answeringPages(first, last);
+    communityState.mockResolvedValue(CLOSED);
+    await expect(petPlaceSitemapEntries()).resolves.toEqual({ entries: [], complete: true });
+    communityState.mockResolvedValue(UNAVAILABLE);
+    await expect(petPlaceSitemapEntries()).resolves.toEqual({ entries: [], complete: true });
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("keeps the pages it read when a later one fails, and says the picture is not whole", async () => {
+    const failures = [
+      () => new Response("upstream", { status: 502 }),
+      () => new Response(JSON.stringify({ detail: "community_unavailable" })),
+      // A timed-out page rejects, as an aborted fetch does.
+      () => Promise.reject(new DOMException("timed out", "TimeoutError")),
+    ];
+    for (const failure of failures) {
+      vi.stubGlobal("fetch", vi.fn()
+        .mockResolvedValueOnce(new Response(JSON.stringify(first)))
+        .mockImplementationOnce(async () => failure()));
+      await expect(petPlaceSitemapEntries()).resolves.toEqual({ entries: read, complete: false });
+    }
+    // A failed first page: nothing, and not complete -- an outage is not an empty directory.
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
+    await expect(petPlaceSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
+  });
+
+  it("stops at the page cap with a cursor still in hand", async () => {
+    const full = {
+      items: Array.from({ length: PET_PLACE_SITEMAP_PAGE_SIZE }, (_, index) => ({ ...place, id: `p${index}` })),
+      next_cursor: "more",
+    };
+    const fetch = answeringPages(full);
+    const result = await petPlaceSitemapEntries();
+    expect(fetch).toHaveBeenCalledTimes(PET_PLACE_SITEMAP_PAGE_LIMIT);
+    expect(result.entries).toHaveLength(PET_PLACE_SITEMAP_PAGE_LIMIT * PET_PLACE_SITEMAP_PAGE_SIZE);
+    expect(result.complete).toBe(false);
+    // Twenty pages of fifty: a thousand places, five sitemap rows each.
+    expect(PET_PLACE_SITEMAP_PAGE_LIMIT).toBe(20);
+  });
+
+  it("gives up on the time budget before the page cap, and gives the last page only what is left", async () => {
+    // Each page takes four seconds of a ten-second budget: the third starts with two left and
+    // gets a two-second timeout rather than the usual three; a fourth never starts.
+    expect(PET_PLACE_SITEMAP_BUDGET_MS).toBe(10_000);
+    const step = 4_000;
+    vi.useFakeTimers({ toFake: ["Date"] });
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    try {
+      let call = 0;
+      vi.stubGlobal("fetch", vi.fn().mockImplementation(async () => {
+        vi.setSystemTime(Date.now() + step);
+        const page = call++;
+        return new Response(JSON.stringify({ items: [{ ...place, id: `p${page}` }], next_cursor: `c${page + 1}` }));
+      }));
+      await expect(petPlaceSitemapEntries()).resolves.toEqual({
+        entries: [{ id: "p0" }, { id: "p1" }, { id: "p2" }], complete: false,
+      });
+      expect(globalThis.fetch).toHaveBeenCalledTimes(3);
+      expect(timeout.mock.calls.map(([ms]) => ms)).toEqual([3000, 3000, PET_PLACE_SITEMAP_BUDGET_MS - 2 * step]);
+    } finally {
+      timeout.mockRestore();
+      vi.useRealTimers();
+    }
+  });
+
+  it("skips a row it cannot put into a URL, and a date it cannot parse, rather than the file", async () => {
+    // Next writes the id into <loc> unescaped and calls toISOString() on the date, so a bad id
+    // would cost the whole file and a bad date a 500; each here costs one row or one field.
+    answeringPages({
+      items: [
+        { ...place, id: "a&b" }, { ...place, id: "../admin" }, { ...place, id: 42 }, { name: "no id" }, null,
+        { ...place, id: "ok-1", verified_at: "yesterday" }, { ...place, id: "ok-2", verified_at: 1_700_000_000 },
+      ],
+      next_cursor: null,
+    });
+    await expect(petPlaceSitemapEntries()).resolves.toEqual({ entries: [{ id: "ok-1" }, { id: "ok-2" }], complete: true });
   });
 });

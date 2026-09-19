@@ -12,6 +12,7 @@ import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getCommunityState } from "@/lib/community/server";
 import { closedCommunity, type CommunityState } from "@/lib/community/types";
+import { petPlaceSitemapEntries, type PetPlaceSitemapEntry } from "@/lib/community/public.server";
 import sitemap, {
   dynamic, generateSitemaps, listedSitemapChildren, parseSitemapChild, SITEMAP_CHILDREN, SITEMAP_ROUTES,
   sitemapChildId, sitemapChildPath, sitemapChildren,
@@ -50,6 +51,15 @@ const unavailableSummary = { counts: [] as GuideSitemapCount[], available: false
 // default here too: /pet-friendly is the one route listed behind it.
 vi.mock("@/lib/community/server", () => ({ getCommunityState: vi.fn() }));
 const OPEN_COMMUNITY: CommunityState = { status: "ready", flags: { ...closedCommunity.flags, enabled: true } };
+// The place enumeration is stubbed like the guide reads, and empty by default, so every count
+// below is of the routes. The place cases at the bottom opt in to rows.
+vi.mock("@/lib/community/public.server", async (original) => ({
+  ...await original<typeof import("@/lib/community/public.server")>(),
+  petPlaceSitemapEntries: vi.fn(async () => ({ entries: [], complete: true })),
+}));
+/** What the enumeration read: the places, and whether it read the whole directory. */
+const mockPlaces = (rows: PetPlaceSitemapEntry[], complete = true) =>
+  vi.mocked(petPlaceSitemapEntries).mockReset().mockResolvedValue({ entries: rows, complete });
 
 const APP = join(import.meta.dirname, "..");
 // Both trees serve /{locale}/…: the second is a route group with its own root layout.
@@ -158,6 +168,7 @@ describe("sitemap", () => {
     vi.mocked(guideTopicSitemapEntries).mockReset().mockResolvedValue([]);
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
+    mockPlaces([]);
     entries = await child("static");
   });
 
@@ -325,6 +336,7 @@ describe("guide articles in the section children", () => {
     vi.mocked(guideTopicSitemapEntries).mockReset().mockResolvedValue([]);
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
+    mockPlaces([]);
   }
   async function build(entries = rows, complete = true) {
     arrange(entries, complete);
@@ -496,6 +508,7 @@ describe("section hubs in a language with nothing published", () => {
     vi.mocked(guideTopicSitemapEntries).mockReset().mockResolvedValue([]);
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
+    mockPlaces([]);
     return (await child("static")).map((entry) => entry.url);
   }
 
@@ -535,6 +548,7 @@ describe("section hubs in a language with nothing published", () => {
     vi.mocked(guideTopicSitemapEntries).mockReset().mockResolvedValue([]);
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
+    mockPlaces([]);
     const all = await child("static");
     const hub = all.find((entry) => entry.url === `${siteUrl}/zh-TW/guides/intel`);
     // Pointing hreflang at /en/guides/intel would advertise the page this file just refused
@@ -567,6 +581,7 @@ describe("topic hubs in the section children", () => {
     vi.mocked(guideTopicSitemapEntries).mockReset().mockResolvedValue(hubs);
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
+    mockPlaces([]);
     return (await everything()).filter((entry) => new URL(entry.url).pathname.includes("/topics/"));
   }
 
@@ -609,5 +624,102 @@ describe("topic hubs in the section children", () => {
     await build();
     vi.mocked(guideTopicSitemapEntries).mockResolvedValue([]);
     expect((await everything()).some((entry) => entry.url.includes("/topics/"))).toBe(false);
+  });
+});
+
+describe("pet-friendly place pages in the static child", () => {
+  // One verified on a real date and one the API has no date for: the first carries lastmod,
+  // the second must carry none rather than "now".
+  const cafe: PetPlaceSitemapEntry = { id: "5b6c0b1e-9a4e-4f1c-8c3e-2f4d1a7b9c01", verified_at: "2026-09-01T09:30:00Z" };
+  const park: PetPlaceSitemapEntry = { id: "5b6c0b1e-9a4e-4f1c-8c3e-2f4d1a7b9c02" };
+  const places = [cafe, park];
+
+  function arrange(rows: PetPlaceSitemapEntry[] = places, complete = true, community: CommunityState = OPEN_COMMUNITY) {
+    vi.mocked(getSiteVisibility).mockReset().mockResolvedValue({ status: "ready", features: openSiteVisibility });
+    mockEntries([]);
+    vi.mocked(guideSitemapSummary).mockReset().mockResolvedValue(unavailableSummary);
+    vi.mocked(guideTopicSitemapEntries).mockReset().mockResolvedValue([]);
+    vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
+    vi.mocked(getCommunityState).mockReset().mockResolvedValue(community);
+    mockPlaces(rows, complete);
+  }
+  /** Place pages only. `/pet-friendly` itself is a static route and belongs to the checks above. */
+  const placeEntries = (all: Awaited<ReturnType<typeof sitemap>>) =>
+    all.filter((entry) => /\/pet-friendly\/[^/]+$/.test(new URL(entry.url).pathname));
+  const placeUrl = (locale: string, place: PetPlaceSitemapEntry) => `${siteUrl}/${locale}/pet-friendly/${place.id}`;
+
+  it("lists every place once per locale, after the routes, with all five locales and x-default", async () => {
+    arrange([]);
+    const routesOnly = await child("static");
+    arrange();
+    const all = await child("static");
+    // The routes first and unchanged -- /pet-friendly among them, since the switch is on --
+    // and then the places, in the directory's order, each in every locale.
+    expect(all.slice(0, routesOnly.length)).toEqual(routesOnly);
+    expect(routesOnly.map((entry) => entry.url)).toContain(`${siteUrl}/en/pet-friendly`);
+    const listed = placeEntries(all);
+    expect(listed).toEqual(all.slice(routesOnly.length));
+    expect(listed.map((entry) => entry.url)).toEqual(places.flatMap((place) => locales.map((locale) => placeUrl(locale, place))));
+    for (const entry of listed) {
+      const languages = (entry.alternates?.languages ?? {}) as Record<string, string>;
+      expect(Object.keys(languages).sort()).toEqual([...locales, "x-default"].sort());
+      // The href matters as much as the key set, as with the articles: a wrong target would be
+      // invisible to a check of the keys alone.
+      const path = new URL(entry.url).pathname.replace(/^\/[^/]+/, "");
+      for (const [language, href] of Object.entries(languages)) {
+        expect(href).toBe(`${siteUrl}/${language === "x-default" ? "en" : language}${path}`);
+      }
+      expect(entry.changeFrequency).toBe("monthly");
+      expect(entry.priority).toBe(0.5);
+    }
+    expect(routeExists(`/pet-friendly/${cafe.id}`)).toBe(true);
+  });
+
+  it("lists no place while the community switch is off or unreachable, whatever the read returned", async () => {
+    // Behind a closed switch the page itself answers noindex, so a read that raced the switch
+    // must not put its rows in the file either.
+    const unreachable: CommunityState = { status: "unavailable", flags: { ...closedCommunity.flags, enabled: true } };
+    for (const community of [closedCommunity, unreachable]) {
+      arrange(places, true, community);
+      const all = await child("static");
+      expect(placeEntries(all)).toEqual([]);
+      expect(all.map((entry) => entry.url)).not.toContain(`${siteUrl}/en/pet-friendly`);
+    }
+  });
+
+  it("keeps the routes when the read failed, and the places it did read when it stopped early", async () => {
+    arrange([]);
+    const routesOnly = await child("static");
+    arrange([], false);
+    expect(await child("static")).toEqual(routesOnly);
+    arrange([cafe], false);
+    const partial = await child("static");
+    expect(partial.slice(0, routesOnly.length)).toEqual(routesOnly);
+    expect(placeEntries(partial).map((entry) => entry.url)).toEqual(locales.map((locale) => placeUrl(locale, cafe)));
+  });
+
+  it("dates a place by its verification and never by the crawl", async () => {
+    arrange();
+    const all = await child("static");
+    for (const locale of locales) {
+      expect(all.find((entry) => entry.url === placeUrl(locale, cafe))!.lastModified).toEqual(new Date("2026-09-01T09:30:00Z"));
+      // No date of any kind: the omitted field is a missing signal, an invented one is the lie
+      // the static routes' own lastmod check exists to prevent.
+      expect(all.find((entry) => entry.url === placeUrl(locale, park))).not.toHaveProperty("lastModified");
+    }
+  });
+
+  it("lists a repeated place once", async () => {
+    arrange([cafe, cafe, park]);
+    const urls = placeEntries(await child("static")).map((entry) => entry.url);
+    expect(urls).toHaveLength(places.length * locales.length);
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+
+  it("never reads the directory for a section child, whose rows are articles", async () => {
+    arrange();
+    const sections = (await Promise.all(SITEMAP_CHILDREN.filter((id) => id !== "static").map(child))).flat();
+    expect(placeEntries(sections)).toEqual([]);
+    expect(petPlaceSitemapEntries).not.toHaveBeenCalled();
   });
 });
