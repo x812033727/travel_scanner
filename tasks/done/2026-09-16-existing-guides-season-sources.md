@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-existing-guides-season-sources
 title: 既有文章依第七批規劃修正：沒有出處的季節月份與霧霾說法
-status: review
+status: done
 priority: P3
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:34:17Z
 created_at: 2026-09-16T23:06:29Z
-completed_at:
+completed_at: 2026-09-19T11:00:37Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -98,3 +98,8 @@ python -m app.cli guides-import --actor-email <admin> --dry-run \
 # 應列 3 篇 zh-TW 的更新（modified_at 會動，屬預期）；確認後同一串參數把 --dry-run 換成 --publish，
 # 再打開三篇的季節段與季節篇對一次，之後 done。
 ```
+
+### 2026-09-19 主機匯入（claude-opus-5，站主同意；部署 `14ce467d` 之後）
+
+- #563 改到的 571 個內容包先 dry-run：402 篇只有 `update`／`unchanged`、169 篇含 `create`（未發布的 AI coding、Claude Code、Codex 等，屬 `2026-09-15-publish-held-ai-coding-content` 的發布決定，全數排除，包括 zh-TW 更新、其他語系新建、分類會變的 `codex-beginner-guide`）。站主選「發布 402 篇更新」：發布前重跑計畫 402 篇、分類全 `unchanged`、無 `create`，`--publish` 結果 `updated 467`、`unchanged 51`、`published 467`、`created 0`、`failed null`；重跑 518 個語系全 `unchanged`。`guides-links-check --locale zh-TW` 仍是原本 32 筆（27 `missing` 指向待發布內容、5 `raw_url`），沒有新增。
+- 三篇（`bangkok-4-day-itinerary`、`chiang-mai-3-day-itinerary`、`da-nang-hoi-an-4-day-itinerary`）都在已發布的 402 篇裡；公開頁 `/zh-TW/guides/howto/bangkok-4-day-itinerary` 已引用泰國觀光局（TAT）的月份資料。
