@@ -1,0 +1,103 @@
+{
+  "slug": "ai-workflow-tutorials",
+  "title": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+  "checked_on": "2026-09-19",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "OpenAI Agents SDK",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "What is the Model Context Protocol (MCP)?",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Structured model outputs",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "LiteLLM Docs",
+      "url": "https://docs.litellm.ai/docs/",
+      "checked_on": "2026-09-19"
+    },
+    {
+      "title": "Working with evals",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "checked_on": "2026-09-19"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Anthropic 把流程（workflow）定義成 LLM 與工具依照預先寫定的程式路徑被調度的系統",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Workflows are systems where LLMs and tools are orchestrated through predefined code paths."
+    },
+    {
+      "fact": "OpenAI 官方文件把 Agents SDK 描述成抽象概念很少、輕量好用的套件",
+      "url": "https://openai.github.io/openai-agents-python/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI Agents SDK enables you to build agentic AI apps in a lightweight, easy-to-use package with very few abstractions."
+    },
+    {
+      "fact": "MCP 官方文件把它描述成一個開放協定，橫跨大量客戶端與伺服器都支援",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MCP is an open protocol supported across a wide range of clients and servers."
+    },
+    {
+      "fact": "OpenAI 官方文件把 Structured Outputs 描述成保證模型輸出一定符合開發者提供的 JSON Schema 的功能",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Structured Outputs is a feature that ensures the model will always generate responses that adhere to your supplied"
+    },
+    {
+      "fact": "LiteLLM 官方文件把自己描述成開源套件，提供單一、統一的介面呼叫一百多家 LLM",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LiteLLM is an open-source library that gives you a single, unified interface to call 100+ LLMs (OpenAI, Anthropic, Vertex AI, Bedrock, and more) using the OpenAI format."
+    },
+    {
+      "fact": "OpenAI 官方文件把 evals 定義成用來檢查模型輸出是否符合設定的風格與內容準則的測試",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Evaluations (often called evals) test model outputs to ensure they meet style and content criteria that you specify."
+    }
+  ],
+  "unverified_or_excluded": [
+    "各篇目前實際的模型 id、價格與速率限制沒有在這篇重新查證或列出：每篇文章已經各自標好查證日期與來源，這篇只做路線導覽，不重複那些會過期的數字。",
+    "沒有把『這系列一共幾篇』寫進正文：目錄由網站的 SeriesHub 元件依 display_order 自動列出，這篇正文刻意不寫篇數與課序編號。",
+    "查過 OpenRouter、LiteLLM 官方文件裡目前列出的完整供應商清單，沒有把清單本身寫進這篇：那是《統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式》那篇的主題，這裡只點名去那篇看。",
+    "查過 OWASP 十大風險清單裡 LLM05:2025 與 LLM10:2025 的完整條目定義，沒有在這篇重複逐字引用：那屬於《失敗案例與防護：迴圈、費用爆炸與代理間注入》那篇已經查證過的內容，這篇只用一句話點出案例存在。"
+  ],
+  "must_not_write": [
+    "不寫這系列一共十二篇文章，或任何一篇的課序編號（第一篇、第 3 課這類寫法）",
+    "不重寫任何一篇文章裡已經查證過的價格、模型 id、速率限制等會過期的數字",
+    "不對 Claude Code、Codex、Gemini CLI 或任何供應商的模型做優劣評比或人身式褒貶",
+    "不放 code 區塊，也不重講任何一篇的程式範例內容",
+    "不寫訂閱、購買或投資建議，不寫免責聲明式的重複提醒"
+  ],
+  "editorial_brief": "這篇是系列的目錄與導讀，把十二篇文章分成觀念、接線、協作與工具、營運四條路線，每條路線用一段 rich_paragraph 把該路線的文章依序點名，說明每篇解決什麼問題、跟前後篇怎麼銜接，不重複任一篇已經寫過的技術細節或查證數字。每篇的程式範例、模型 id 與查證留給各自的文章處理，這篇只負責告訴讀者從哪裡開始、接下來去哪裡。",
+  "code_samples": [],
+  "hero_label": "四條路線導讀",
+  "diagram": {
+    "layout": "flow",
+    "title": "系列四個階段",
+    "caption": "拆解任務、接線交接、協作與工具、追蹤防護四個階段的示意（查證：2026 年 9 月）",
+    "nodes": [
+      ["拆解任務", "看依據、算代價"],
+      ["接線交接", "換供應商、串格式"],
+      ["協作與工具", "代理分工、共用工具"],
+      ["追蹤防護", "找錯誤、擋風險"]
+    ]
+  }
+}
