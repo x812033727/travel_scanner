@@ -1,7 +1,7 @@
 # 工作區：「多模型 AI 工作流」教學系列（12 篇＋hub，zh-TW）
 
-> **現況（2026-09-19）**：12 篇＋目錄篇**全部寫完並查核完畢**，圖檔、`related`、relink／autolink、系列登記與測試都已完成，分支 `claude/travel-scanner-pr-552-rpq36m`，等站主決定發布（票 `tasks/open/2026-09-18-ai-workflow-tutorial-series-12-zh.md`；
-> 交接見本頁最後一節）。計畫來源：站主 2026-09-18 要求「新增幾篇 workflow 相關的教學與介紹，可以介紹比較高技術面的串不同的 model」，
+> **現況（2026-09-19）**：12 篇＋目錄篇**已發布**（PR #553 `a69763b5`；站主選擇發布後部署、`guides-import --slug` 13 篇同一趟、正式站驗證完畢）。票 `tasks/done/2026-09-18-ai-workflow-tutorial-series-12-zh.md` 已結案；
+> 交接、「留給站主的事」與發布紀錄都在本頁最後一節。計畫來源：站主 2026-09-18 要求「新增幾篇 workflow 相關的教學與介紹，可以介紹比較高技術面的串不同的 model」，
 > 定案為 12 篇＋一個系列 hub、只做 zh-TW、登記為獨立系列 `ai-workflow`（topic `ai-coding`）。
 
 ## 這個目錄放什麼
@@ -61,4 +61,6 @@
 - 第 12 篇：Anthropic 另有「不可信內容只放 tool_result」一條，本篇範例做不到、正文未宣稱符合；MCP 規格頁已不在 sources，日後要引用得先加回來。
 - 用語：「位置偏誤／偏差」「orchestration 的三種譯名」「in-context examples」跨篇不一致，屬全站用語表的事。
 
-**發布（站主明確選擇後）**：先部署（registry 與 `series_data/ai-workflow.json` 進 API），再 `guides-import --slug` hub＋12 篇同一趟；驗證 `https://mokaair.com/zh-TW/life/ai-workflow-tutorials` 會用 SeriesHub 列出 12 篇、`curl -s 'https://mokaair.com/api/v1/guides/series?locale=zh-TW' | grep -c ai-workflow` 為 1、13 個網址 200。
+**發布（站主明確選擇後）**：先部署（registry 與 `series_data/ai-workflow.json` 進 API），再 `guides-import --slug` hub＋12 篇同一趟；驗證 `https://mokaair.com/zh-TW/life/ai-workflow-tutorials` 會用 SeriesHub 列出 12 篇、`curl -s 'https://mokaair.com/api/travel/guides/series?locale=zh-TW' | grep -c ai-workflow` 為 1、13 個網址 200。（公開 API 走 web BFF 的 `/api/travel/…`；原本寫的 `https://mokaair.com/api/v1/guides/series` 在公開網域是 404。）
+
+**發布紀錄（2026-09-19）**：PR #553 squash 為 `a69763b5`；部署 `deploy_20260919_032927`（無 migration、health 3/3）。站主選「發布 13 篇」後，`guides-import --locale zh-TW --slug` ×13 `--publish` 一趟。發布前重跑 dry-run，與給站主看的計畫逐位元組相同（13 篇皆 create）。結果 created 13／published 13／taxonomy_updated 12／failed null，重跑 dry-run 13 篇皆 `unchanged`。正式站：13 個網址 200、標題正確、沒有 robots meta；13 張 `hero.jpg` 200；`sitemaps/sitemap/life-zh-TW.xml` 有 13 筆；目錄頁連出 12 篇。`/api/travel/guides/series?locale=zh-TW` 列出 `ai-workflow`（`api-series`、`ai-coding`、entries 12、hub `ai-workflow-tutorials`），`/api/travel/guides/series/ai-workflow` 依序 12 篇。注意：每個文章頁的 HTML 都內嵌「這篇文章目前看不到」（`unavailableTitle` 翻譯字串），已發布的也一樣，不能用它判斷是否上線，要看 `<title>` 與 robots。
