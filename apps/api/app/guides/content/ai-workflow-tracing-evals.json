@@ -38,9 +38,9 @@
           "type": "summary",
           "items": [
             "多模型工作流只看最後輸出沒辦法定位是哪一步出錯，需要替每一步留下可查的紀錄，再用同一批題目比較新舊版本的分數。",
-            "本文的 JSONL 追蹤器只用 Python 標準函式庫的 hashlib、json、time 與 functools，每次呼叫記下輸入雜湊、模型、token 數、延遲與結果，一行一筆，不綁任何追蹤 SaaS。",
+            "本文的 JSONL 追蹤器只用 Python 標準函式庫的 hashlib、json、time、functools 與 pathlib，每次呼叫記下輸入雜湊、模型、token 數、延遲與結果，一行一筆，不綁任何追蹤 SaaS。",
             "離線評測集把輸入、預期結果與判分規則固定下來，讓兩版流程跑過同一組題目，用通過率與退步清單比較優劣，而不是只看一次順利的執行結果。",
-            "OpenTelemetry 的 GenAI 語意慣例定義了 gen_ai.operation.name、gen_ai.usage.input_tokens 等屬性名稱，目前幾乎都標示為 development，本文只拿來對照命名，不實際串接。"
+            "OpenTelemetry 的 GenAI 語意慣例定義了 gen_ai.operation.name、gen_ai.usage.input_tokens 等屬性名稱，本文查證當天該登錄檔列出的 72 個 gen_ai. 屬性全部標示為 Development，本文只拿來對照命名，不實際串接。"
           ]
         },
         {
@@ -79,7 +79,7 @@
         },
         {
           "type": "paragraph",
-          "text": "用雜湊而不是直接存輸入原文，是因為輸入常常帶著使用者的個人資料或商業內容，沒有必要整份複製一次；雜湊只用來判斷這兩次呼叫的輸入是不是同一份，真的需要回放原始內容除錯時，應該另外設計有存取控制的儲存方式，不能把原文和追蹤紀錄放在同一個檔案裡。token 數在離線環境沒有供應商的計數工具可以呼叫，本文用字串長度除以一個固定倍數概估，正式串接後應該改讀供應商回應裡的實際用量欄位。"
+          "text": "用雜湊而不是直接存輸入原文，是因為輸入常常帶著使用者的個人資料或商業內容，沒有必要整份複製一次；雜湊只用來判斷這兩次呼叫的輸入是不是同一份，真的需要回放原始內容除錯時，應該另外設計有存取控制的儲存方式，不能把原文和追蹤紀錄放在同一個檔案裡。token 數在離線、不安裝任何套件的前提下沒有供應商的計數工具可以呼叫，本文用字串長度除以一個固定倍數概估，正式串接後應該改讀供應商回應裡的實際用量欄位。"
         },
         {
           "type": "heading",
@@ -88,11 +88,11 @@
         },
         {
           "type": "paragraph",
-          "text": "JSON Lines（JSONL）是一行一個獨立的 JSON 物件，新紀錄用附加的方式接在檔尾，不需要讀出整個檔案、修改後再整份寫回去；一般常見的 JSON 檔案通常是一個大陣列，中途要新增一筆就得整份重寫，追蹤紀錄這種一直往後長、幾乎不回頭修改的資料，用 JSONL 比較合適，之後要匯入試算表或資料庫也能一行一列讀。"
+          "text": "本文採用的 JSON Lines（JSONL）寫法是一行一個獨立的 JSON 物件，新紀錄用附加的方式接在檔尾，不需要讀出整個檔案、修改後再整份寫回去；一般常見的 JSON 檔案通常是一個大陣列，中途要新增一筆就得整份重寫，追蹤紀錄這種一直往後長、幾乎不回頭修改的資料，用 JSONL 比較合適，之後要匯入試算表或資料庫也能一行一列讀。"
         },
         {
           "type": "paragraph",
-          "text": "下面的裝飾器（decorator）只用 Python 標準函式庫：用 hashlib 對輸入算雜湊、time 量進出這次呼叫經過的時間、functools 讓包裝過的函式保留原本的名字與說明文字，最後把整筆紀錄用 json 轉成一行文字附加到檔案尾端。只要在原本的函式上面加一行 @traced(...)，就能替任何一步加上追蹤，不用改函式本體的邏輯。"
+          "text": "下面的裝飾器（decorator）只用 Python 標準函式庫：用 hashlib 對輸入算雜湊、time.perf_counter 量進出這次呼叫經過的時間、functools.wraps 讓包裝過的函式保留原本的名字與說明文字（Python 官方文件說少了這個裝飾器，被包住的函式名字會變成 wrapper、原本的說明文字會遺失），最後把整筆紀錄用 json 轉成一行文字附加到檔案尾端。只要在原本的函式上面加一行 @traced(...)，就能替任何一步加上追蹤，不用改函式本體的邏輯。"
         },
         {
           "type": "code",
@@ -127,11 +127,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的文件把評分器分成三種：程式評分最快、最穩定，也最容易大量重複執行，但遇到需要較少規則式判斷的複雜情況就不夠細緻；人工評分最有彈性、品質最高，但速度慢、成本高，文件建議能避免就避免；以模型當評審速度快、也能處理複雜判斷，但要先驗證可靠，才適合大量使用。本篇的範例屬於第一種，用字串是否完全相符判斷通過與否，換成自己的任務時，判分規則要照任務的性質選。"
+          "text": "本篇的範例用的是程式評分：判斷輸出字串是否與預期完全相符。Anthropic 的文件把 output == golden_answer 這種完全相符列為程式評分的例子，並形容程式評分最快、最穩定、極易擴大規模，但遇到需要較少規則式判斷的複雜情況就不夠細緻。人工評分與以模型當評審各自的取捨，模型與代理評測（Evals）是什麼已經比較過，本篇不重複；換成自己的任務時，判分規則要照任務的性質選。"
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 的 Evals 文件把一個評測拆成兩個要素：一個是測試資料的欄位格式，另一個是判斷模型輸出是否正確的評分器；本文的離線範例把這兩者簡化成一份 Python 清單和一個相等比較函式，觀念相同，只是不必透過 API 上傳資料、不必排隊等待非同步的執行結果，跑完馬上看到分數。如果只想比較 Claude Code 單一流程的兩種做法，Claude Code｜比較流程品質、用量與執行時間一文已經示範怎麼用固定案例與原始紀錄比較；本篇的離線評測集比較，示範的是更通用、不限定於單一工具的兩版流程打分方式。"
+          "text": "OpenAI 的 Evals 文件把一個評測拆成兩個要素：一個是測試資料的欄位格式，另一個是判斷模型輸出是否正確的評分器；本文的離線範例把這兩者簡化成一份 Python 清單和一個相等比較函式，觀念相同，只是不必先把測試資料上傳到平台、不必排隊等待非同步的執行結果，跑完馬上看到分數。如果只想比較 Claude Code 單一流程的兩種做法，Claude Code｜比較流程品質、用量與執行時間一文已經示範怎麼用固定案例與原始紀錄比較；本篇的離線評測集比較，示範的是更通用、不限定於單一工具的兩版流程打分方式。"
         },
         {
           "type": "code",
@@ -141,7 +141,7 @@
         },
         {
           "type": "paragraph",
-          "text": "上面的例子只是示意：兩個版本刻意設計成互有勝負，版本 B 多了一個版本標籤，讓原本不會被處理的非 ASCII 那一題從不通過變成通過，卻讓原本會把 ASCII 轉大寫的那一題失敗。這種結果沒辦法只靠一個總分判斷哪一版更好，需要把退步的題目列出來，人工看過才能決定要不要換版本；固定案例只有四題，只夠驗證程式怎麼跑，換成自己的任務時，題目要涵蓋一般情況、缺漏與少見情況，數量也要夠多，結論才站得住。"
+          "text": "上面的例子只是示意：四題固定案例跑下來，版本 A 通過三題、版本 B 通過兩題。版本 B 多了一個版本標籤，讓原本不會被處理的非 ASCII 那一題從不通過變成通過，卻讓 ascii-upper 與 digits 兩題從通過變成失敗，退步清單列出的就是這兩題。總分只告訴你 B 比較低，看不出它在某一類輸入上其實變好了，所以要逐題把退步的題目列出來、人工看過，才能決定要不要換版本；固定案例只有四題，只夠驗證程式怎麼跑，換成自己的任務時，題目要涵蓋一般情況、缺漏與少見情況，數量也要夠多，結論才站得住。"
         },
         {
           "type": "callout",
@@ -156,15 +156,15 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenTelemetry 原本在自己的規格網站上放了一頁 GenAI 語意慣例，現在那一頁已經標成已搬遷，官方把內容移到另一個專屬的 GenAI 語意慣例儲存庫維護；裡面的屬性登錄檔列出數十個 gen_ai. 開頭的欄位，包含模型名稱、呼叫的操作類型、輸入與輸出 token 數等等，每一條都清楚寫著目前的穩定性狀態。"
+          "text": "OpenTelemetry 原本在自己的規格網站上放了一頁 GenAI 語意慣例，現在那一頁的標題已經改成 Moved，頁面寫著 GenAI 語意慣例已經搬到 OpenTelemetry 的 GenAI 語意慣例儲存庫，這一頁不再於原本的儲存庫維護；搬過去的屬性登錄檔，本文查證當天列出 72 個 gen_ai. 開頭的欄位，包含模型名稱、呼叫的操作類型、輸入與輸出 token 數等等，每一條都在穩定性欄位寫著目前的狀態。"
         },
         {
           "type": "paragraph",
-          "text": "登錄檔裡幾乎所有 gen_ai. 開頭的屬性，穩定性狀態都標成 development；反而是 span 上一起使用、但不是 gen_ai 專屬的欄位，例如描述錯誤類別的 error.type，繼承自更通用的規範，已經是 stable。換句話說，GenAI 這一段命名本身還在調整，本文不會直接拿它當追蹤器的正式欄位，只整理成對照表，方便以後要把資料送進支援 OpenTelemetry 的觀測系統時，知道欄位名稱怎麼換算。"
+          "text": "本文查證當天逐列數過那 72 個屬性的穩定性欄位：72 個全部標成 Development，沒有一個標成 Stable。反而是 span 上一起使用、但不屬於 gen_ai 命名空間的 error.type，在 GenAI spans 頁上標的是 Stable，該頁把它連回 OpenTelemetry 通用語意慣例的 error 屬性頁。換句話說，GenAI 這一段命名本身還在調整，本文不會直接拿它當追蹤器的正式欄位，只整理成對照表，方便以後要把資料送進支援 OpenTelemetry 的觀測系統時，知道欄位名稱怎麼換算。"
         },
         {
           "type": "paragraph",
-          "text": "官方文件也定義了 span 命名的慣例：一個 GenAI 呼叫的 span 名稱建議是操作名稱加上請求的模型名稱；操作名稱本身也有一組建議值，像是 chat、generate_content、text_completion，這一點正好對應到本文追蹤器裡的 step 欄位，只是命名習慣不同。"
+          "text": "官方文件也定義了 span 命名的慣例：一個 GenAI 呼叫的 span 名稱建議是操作名稱加上請求的模型名稱；操作名稱本身列了一組常用值（well-known values），像是 chat、generate_content、text_completion，登錄檔寫的是其中一個適用時就必須用該值、否則才可以自訂。這一點正好對應到本文追蹤器裡的 step 欄位，只是命名習慣不同。GenAI spans 頁另外寫著 span 應該涵蓋整個操作的時間長度，從操作發動開始、到回應完整收到或因錯誤與取消而終止為止。"
         },
         {
           "type": "table",
@@ -181,7 +181,7 @@
             ],
             [
               "input_hash",
-              "登錄檔沒有雜湊欄位，改記完整的 gen_ai.input.messages",
+              "那 72 個屬性裡沒有雜湊欄位；最接近的是記錄輸入對話內容的 gen_ai.input.messages，登錄檔另外警告它很可能含使用者個資",
               "development"
             ],
             [
@@ -196,8 +196,8 @@
             ],
             [
               "latency_ms",
-              "不是獨立屬性，由 span 自己的起訖時間表示",
-              "不適用"
+              "那 72 個屬性裡沒有整體延遲的欄位，只有串流首個區塊的 gen_ai.response.time_to_first_chunk；spans 頁則寫 span 本身要涵蓋整個操作的時間長度",
+              "development（time_to_first_chunk）"
             ],
             [
               "status（錯誤類別）",
@@ -205,7 +205,7 @@
               "stable"
             ]
           ],
-          "caption": "屬性名稱逐字取自官方登錄檔，穩定性狀態照頁面原文標示（2026 年 9 月查證）。"
+          "caption": "屬性名稱逐字取自官方屬性登錄檔與 GenAI spans 頁，穩定性狀態照頁面原文標示（2026 年 9 月查證）。"
         },
         {
           "type": "faq",
@@ -216,7 +216,7 @@
             },
             {
               "question": "token 數為什麼是概估，不能直接算嗎？",
-              "answer": "離線環境沒有呼叫供應商的計數工具，也沒有正式的 tokenizer，本文的範例只用字串長度除以固定倍數估算，跟實際計費用量會有落差。正式串接時應該改讀供應商回應裡的用量欄位，只有在完全離線、沒有網路呼叫的情況下才適合先用概估值看趨勢。"
+              "answer": "本文的範例只用標準函式庫、不裝任何套件，所以既沒有呼叫供應商的計數工具，也沒有引入任何 tokenizer 套件，只用字串長度除以固定倍數估算，跟實際計費用量會有落差。正式串接時應該改讀供應商回應裡的用量欄位，只有在完全離線、沒有網路呼叫的情況下才適合先用概估值看趨勢。"
             },
             {
               "question": "追蹤紀錄要保留輸入原文嗎？",
@@ -232,7 +232,7 @@
             },
             {
               "question": "OpenTelemetry 的 GenAI 屬性名稱可以直接拿來當我自己追蹤器的欄位名嗎？",
-              "answer": "可以參考命名方式，但要注意這些屬性目前幾乎都標示為 development，代表規格本身還可能調整；本文的表格只列出對照關係，方便以後要接上正式的觀測系統時知道欄位怎麼換算，實際採用前應該重新查一次當時的規格頁面。"
+              "answer": "可以參考命名方式，但要注意本文查證當天，登錄檔列出的 72 個 gen_ai. 屬性全部標示為 Development，代表規格本身還可能調整；本文的表格只列出對照關係，方便以後要接上正式的觀測系統時知道欄位怎麼換算，實際採用前應該重新查一次當時的規格頁面。"
             }
           ]
         },
@@ -251,32 +251,37 @@
         {
           "title": "Python 官方文件：logging — Logging facility for Python",
           "url": "https://docs.python.org/3/library/logging.html",
-          "checked_on": "2026-09-18"
+          "checked_on": "2026-09-19"
         },
         {
-          "title": "OpenTelemetry：Generative AI semantic conventions（頁面已標示搬遷）",
+          "title": "Python 官方文件：functools — Higher-order functions and operations on callable objects",
+          "url": "https://docs.python.org/3/library/functools.html",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "OpenTelemetry：Moved: Generative AI semantic conventions（原規格站的 GenAI 語意慣例頁）",
           "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
-          "checked_on": "2026-09-18"
+          "checked_on": "2026-09-19"
         },
         {
           "title": "OpenTelemetry semantic-conventions-genai：屬性登錄檔 gen_ai",
           "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
-          "checked_on": "2026-09-18"
+          "checked_on": "2026-09-19"
         },
         {
           "title": "OpenTelemetry semantic-conventions-genai：GenAI spans",
           "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-spans.md",
-          "checked_on": "2026-09-18"
+          "checked_on": "2026-09-19"
         },
         {
           "title": "OpenAI Platform：Working with evals",
           "url": "https://developers.openai.com/api/docs/guides/evals",
-          "checked_on": "2026-09-18"
+          "checked_on": "2026-09-19"
         },
         {
           "title": "Claude Platform Docs：Define success criteria and build evaluations",
           "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
-          "checked_on": "2026-09-18"
+          "checked_on": "2026-09-19"
         }
       ]
     }

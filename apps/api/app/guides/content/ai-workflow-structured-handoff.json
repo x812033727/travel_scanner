@@ -63,11 +63,11 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 的文件把這個功能叫做 Structured Outputs。在 Chat Completions API 裡，設定放在 response_format 欄位下，型別是 json_schema，裡面再包一個 schema 欄位與一個 strict 旗標；同一個功能改用 Responses API 呼叫時，位置換成 text.format，Python SDK 也提供 text_format 這個參數，可以直接傳 Pydantic 類別進去，不用自己組 JSON Schema。OpenAI 的文件寫，這項功能從 GPT-4o 開始支援，新專案建議直接用 gpt-6-astra。"
+          "text": "OpenAI 的文件把這個功能叫做 Structured Outputs。在 Chat Completions API 裡，設定放在 response_format 欄位下，型別是 json_schema，裡面再包一個 schema 欄位與一個 strict 旗標；同一個功能改用 Responses API 呼叫時，位置換成 text.format，Python SDK 也提供 text_format 這個參數，可以直接傳 Pydantic 類別進去，不用自己組 JSON Schema。OpenAI 的文件寫，這項功能是從 GPT-4o 起的較新模型支援，沒有逐一列出型號，新專案建議直接用 gpt-6-astra。"
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的位置不一樣，設定放在 output_config.format 底下，一樣有 type 是 json_schema 與一個 schema 欄位；Anthropic 的文件寫，舊的 output_format 參數已經搬到 output_config.format，beta 標頭不再是必要的，舊標頭與舊欄位在過渡期還會被接受；同一段也註明 Python SDK 1.0 之後在 client.beta.messages.create() 上不接受 output_format={...}，會丟 TypeError。Anthropic 另外有一個容易搞混的 strict 旗標，放在工具定義裡面，管的是工具呼叫的參數符不符合 schema，跟這裡講的『整段回覆是不是合法 JSON』是兩件事。支援的模型上，Anthropic 的相容性表列的是系列名而不是 API id：Fable 5 與 5.1、Mythos 5、5.1 與 Preview、Opus 4.5、4.6、4.7、4.8 與 5、Sonnet 4.5、4.6 與 5、Haiku 4.5；頁面範例實際帶進 output_config 的 id 是 claude-opus-5。"
+          "text": "Anthropic 的位置不一樣，設定放在 output_config.format 底下，一樣有 type 是 json_schema 與一個 schema 欄位；Anthropic 的文件寫，舊的 output_format 參數已經搬到 output_config.format，beta 標頭不再是必要的，舊標頭與舊欄位在過渡期還會被接受；同一段也註明 Python SDK 1.0 之後在 client.beta.messages.create() 與 count_tokens() 上不接受舊的 output_format 寫法，會丟 TypeError。Anthropic 另外有一個容易搞混的 strict 旗標，放在工具定義裡面，管的是工具呼叫的參數符不符合 schema，跟這裡講的『整段回覆是不是合法 JSON』是兩件事。支援的模型上，Anthropic 的相容性表列的是系列名而不是 API id：Fable 5 與 5.1、Mythos 5、5.1 與 Preview、Opus 4.5、4.6、4.7、4.8 與 5、Sonnet 4.5、4.6 與 5、Haiku 4.5；頁面範例實際帶進 output_config 的 id 是 claude-opus-5。"
         },
         {
           "type": "paragraph",

@@ -145,10 +145,10 @@
       "verbatim_quote": "model = \"claude-opus-5\""
     },
     {
-      "fact": "Anthropic 的遷移說明另有但書：Python SDK 1.0 以後在 client.beta.messages.create() 與 count_tokens() 上不接受 output_format={...}，會丟 TypeError",
+      "fact": "Anthropic 的遷移說明另有但書：Python SDK v1.0 以後在 client.beta.messages.create() 與 count_tokens() 上不接受舊的 output_format 寫法，會丟 TypeError（原句中間夾了大括號省略號，這裡引的是該句沒有省略號的後半段）",
       "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
       "is_vendor_claim": true,
-      "verbatim_quote": "the Python SDK (v1.0 and later) does not accept output_format={...} on client.beta.messages.create() or count_tokens() and raises a TypeError"
+      "verbatim_quote": "on client.beta.messages.create() or count_tokens() and raises a TypeError"
     },
     {
       "fact": "Google 的結構化輸出欄位是 response_format，內含 mime_type 與 schema",
@@ -234,13 +234,17 @@
     "Google 文件的 Structured outputs with tools（結構化輸出＋內建工具）目前是 Preview，範例用的模型 id 是 gemini-3.1-pro-preview；這個 id 不在 models-seen.json 白名單裡，本篇只用一句話帶過這個限定，不把它寫進程式或逐字列出型號。",
     "OpenAI 文件另外列出 enum 數量上限（1000 個）與單一 enum 屬性的字串長度上限（超過 250 個值時 15000 字元）；本篇只挑 5000 個屬性、10 層巢狀這一組上限當例子，其餘限額留給讀者自己查文件，避免表格塞太多數字。",
     "Anthropic 文件提到結構化輸出用約束取樣（constrained sampling）並有 schema 編譯與 24 小時快取，會影響第一次呼叫的延遲；這屬於效能特性而不是欄位命名，跟本篇『契約放哪裡』的切角不同，留給談成本與延遲的文章處理。",
-    "jsonschema 文件另外有 best_match()（從多個錯誤裡挑最相關的一個）與 ErrorTree（把錯誤依欄位分組）兩個進階工具；本篇的重試迴圈只用 iter_errors() 取全部錯誤訊息就夠用，沒有引入這兩個以避免範例過於複雜。"
+    "jsonschema 文件另外有 best_match()（從多個錯誤裡挑最相關的一個）與 ErrorTree（把錯誤依欄位分組）兩個進階工具；本篇的重試迴圈只用 iter_errors() 取全部錯誤訊息就夠用，沒有引入這兩個以避免範例過於複雜。",
+    "查核時另外開了 ai.google.dev/gemini-api/docs/text-generation 與 /docs/text 對照 Gemini 的呼叫方式（前者 200、全篇只出現 v1beta/interactions，generateContent 0 次；後者已 404）。這兩頁只用來反證『結構化輸出頁寫的 Interactions API 不是孤例』，不是本篇的來源，也沒有寫進 sources。",
+    "Anthropic 文件在同一頁列了 schema 複雜度上限（strict 工具 20 個、選填參數 24 個、union 型別參數 16 個、編譯逾時 180 秒）與 24 小時語法快取；本篇談的是欄位放在哪裡，這些效能與配額數字沒有寫進表格。"
   ],
   "must_not_write": [
     "不重講 gemini-api-files-structured-output、claude-code-structured-cli-pipeline、ai-term-tool-calling 三篇已經講過的完整內容，只在文字裡一句帶過。",
     "不寫『驗證範圍』之類的免責聲明式 callout；唯一的 callout 講的是『格式驗證不等於內容正確』這個本篇特有的重點。",
     "不深入重試上限與費用爆炸的防護設計（那是失敗案例與防護一篇的主題），本篇只點出重試要設上限。",
-    "不比較三家模型的速度或品質高低，因為本站沒有自己實測過。"
+    "不比較三家模型的速度或品質高低，因為本站沒有自己實測過。",
+    "不要寫 claude-code-structured-cli-pipeline 有 --json-schema 這個旗標：那一篇通篇沒有這個字串，它的做法是 automation/schema.json 加上 automation/result.mjs 自己解析 structured_output 外殼，而且那一篇明說『本篇只摘要假資料，因此重試比較單純』，不能說成有重試迴圈。",
+    "不要把 Anthropic 相容性表上的系列名（Fable 5、Opus 4.5 至 5、Sonnet 4.5 至 5、Haiku 4.5）改寫成 API id：那一頁只出現 claude-opus-5 一個 id。"
   ],
   "editorial_brief": "本篇把『交接契約』定義成 JSON Schema，逐字對照 OpenAI、Anthropic、Google 目前把結構化輸出參數放在請求的哪個欄位、現況是不是 beta，再用 jsonschema 套件示範驗證、失敗重試與下游只讀驗證過欄位的完整流程。跟本站已有的 gemini-api-files-structured-output（單一供應商、檔案輸入）、claude-code-structured-cli-pipeline（單一供應商、CLI 腳本）與 ai-term-tool-calling（工具呼叫這個不同機制）分工，本篇的重點是『不同供應商的欄位命名不同、但驗證與交接邏輯可以共用一套』。",
   "code_samples": [
@@ -256,11 +260,13 @@
     {
       "label": "validate_and_handoff.py（需要 jsonschema）",
       "language": "python",
-      "lines": 45,
-      "compiled_on": "2026-09-18",
+      "lines": 47,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://python-jsonschema.readthedocs.io/",
-        "https://python-jsonschema.readthedocs.io/en/stable/validate/"
+        "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+        "https://python-jsonschema.readthedocs.io/en/stable/errors/",
+        "https://platform.openai.com/docs/guides/structured-outputs"
       ]
     }
   ],
@@ -290,6 +296,48 @@
         "才交下游",
         "只送驗證過欄位"
       ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 六條全部以 curl -sL -A \"Mokaair-editorial\" 今天重抓並讀 body（全部 HTTP 200、全部含正文，不是 JS 空殼或擋阻頁）；把 title、description、正文每一句、summary 四句、表格 15 格與 caption、圖解 caption 與五組節點、callout、FAQ 六題答句、兩個 code 區塊的每一個識別字逐條對回原文，共 118 條主張。研究紀錄原有的 21 條 verbatim_quote 用程式做正規化後的連續字串比對，21 條全中。兩個 code 區塊抽到暫存目錄跑 python3 -m py_compile；venv 與系統 python 都沒有 jsonschema 套件，因此驗證行為改用官方文件比對函式簽名，沒有實際執行。任何請求的 UA、標頭與查詢字串都沒有帶 email 或個人資料；除了為反證而讀的 ai.google.dev/gemini-api/docs/text-generation 與 /docs/text（只寫進報告，沒有成為文章依據），沒有用 sources[] 以外的網址補任何事實。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "Anthropic 支援模型：草稿寫『文件列出的名單包含 claude-sonnet-5、claude-opus-5 與 claude-haiku-4-5-20251001』。原文的相容性表列的是系列名（Fable 5 and 5.1／Mythos 5, 5.1, and Preview／Opus 4.5, 4.6, 4.7, 4.8, and 5／Sonnet 4.5, 4.6, and 5／Haiku 4.5），整頁沒有 claude-sonnet-5 與 claude-haiku-4-5-20251001 這兩個字串，只有範例裡的 claude-opus-5。正文與表格都改成照原文列系列名，並註明範例用的 id。",
+      "站內文章分工：草稿寫 claude-code-structured-cli-pipeline『把 --json-schema 接到自己寫的驗證與重試邏輯』。那一篇內容包通篇沒有 --json-schema／json-schema 字串，做法是 automation/schema.json 加 automation/result.mjs 解析 structured_output 外殼，而且自陳『本篇只摘要假資料，因此重試比較單純』。已改寫成不點名旗標、也不說它有重試迴圈。",
+      "Anthropic beta 遷移：補回原文同一段的但書——Python SDK 1.0 以後在 client.beta.messages.create() 與 count_tokens() 上不接受舊的 output_format 寫法、會丟 TypeError。表格『現況』欄的『已從 beta 轉為正式功能』改成文件真正寫的『output_format 已移到 output_config.format、beta 標頭不再必要；舊標頭與舊欄位過渡期仍接受』。",
+      "OpenAI 表格『現況』欄的『正式功能』是從『頁面沒標 beta』推出來的，改成『頁面沒有標 beta 或預覽』這種可查證的寫法；『支援模型』欄的『GPT-4o 以後的模型』改成文件真正的寫法『較新的大型語言模型，從 GPT-4o 起』，並註明文件沒有逐一列型號。",
+      "程式範例第二塊原本把下游呼叫也傳 UPSTREAM_MODEL，與本篇『交給下游模型』的主旨互相打架；新增 DOWNSTREAM_MODEL 常數（一樣是 gpt-6-astra，文件明寫新專案從它開始）與一行說明，47 行、重新 py_compile 通過。",
+      "『理論上不是保證』那句原本舉的例子（網路逾時、模型中斷）來源頁沒有寫，改成 OpenAI 文件自己列的兩種：安全理由拒答（回覆多一個 refusal 欄位、不一定照 schema）與達到 max tokens 上限被截斷。",
+      "jsonschema 段落：『官方文件建議改用 Draft202012Validator』補回原文的前提（已經確定 schema 本身合法），措辭改成文件的『多半會偏好』；另補一句原文的 format 但書——format 關鍵字預設不做驗證，要掛 format_checker 才生效，範例的 new_date 因此不會被驗日期。",
+      "Google 段落：『目前的 Gemini API 文件是以 Interactions API 為準』這種全站級斷言，改成可查證的『這一頁目前示範的呼叫方式只有 Interactions API 一種』，端點寫成『v1beta 路徑底下的 /interactions』。",
+      "三處措辭：導言『最常卡住的地方』改『很容易卡住的地方』（沒有實測或來源支撐的頻率宣稱）；『搬到比較新的 Responses API』改『改用 Responses API 呼叫時』（來源頁沒有說哪個比較新）；FAQ 第 1 題『確保下游一定拿得到固定形狀的資料』改『在資料送進下游之前先確認它的形狀』（同頁明寫拒答與截斷仍可能不照 schema）。"
+    ],
+    "checked_and_correct": [
+      "OpenAI：response_format 的 {type: json_schema, json_schema: {name, schema, strict}} 形狀、Responses API 的 text.format 與 SDK 的 text_format、端點 https://api.openai.com/v1/chat/completions、Authorization: Bearer $OPENAI_API_KEY 與 Content-Type: application/json 兩個標頭、回覆路徑 choices[0].message.content、All fields must be required、additionalProperties: false must always be set in objects、字串 format 清單含 date、union type 加 null 的可選欄位寫法、5000 屬性與 10 層巢狀上限，全部逐字吻合。",
+      "Google：client.interactions.create、response_format 的 type=text／mime_type=application/json／schema、REST 端點 https://generativelanguage.googleapis.com/v1beta/interactions、標頭 x-goog-api-key、『Preview: This feature is available only to Gemini 3 series models.』與內建工具清單，全部逐字吻合；整頁 generateContent、response_schema、response_mime_type 各 0 次，草稿寫成 Interactions API 是對的。",
+      "Anthropic：output_config.format 的 type=json_schema 與 schema、tools 裡的 strict: true 是另一套機制、『beta headers are no longer required』與過渡期仍收舊寫法，全部逐字吻合。",
+      "jsonschema：validate() 先驗 schema 再比 instance、ValidationError／SchemaError 兩種例外、Draft202012Validator 建構子與 iter_errors(instance)、sorted(..., key=str) 的用法（與官方範例同款）、error.message 是 human readable message、支援六個 draft、pip install jsonschema，全部逐字吻合。",
+      "模型 id：正文與程式出現的 gpt-6-astra、claude-opus-5、gemini-3.8-flash 都在 models-seen.json，且都能在來源頁上找到；程式用的是 gpt-6-astra（文件明寫新專案從它開始），不是 gpt-4o。",
+      "界線：全篇沒有購買、訂閱或投資建議，沒有推薦式比價，沒有速度或品質排名；廠商宣稱都有歸屬；只有一個 callout、沒有免責段落；beta／Preview／過渡期等限定詞都在；必連的三篇沒有被整段重講，各一句帶過。",
+      "結尾兩個 link 的 text 與 url 未更動：第一個是系列目錄逐字標題，第二個逐字等於 gemini-api-files-structured-output 的 zh-TW title。"
+    ],
+    "left_for_the_owner": [
+      "FAQ 第 3 題點名的《成本、品質、延遲：多模型流程怎麼取捨》還沒有內容包（ai-workflow-cost-quality-latency 不在 content 目錄）。這個標題與 basics、split-tasks、unified-api-layer、model-routing-cascade、cross-review-judge 五篇用的完全一致，所以本代理沒有動它；那一篇定稿時若改標題，這六處要一起改。",
+      "Anthropic 相容性表的系列名（Fable、Mythos）沒有對應的 API id 可寫，本篇因此只能照抄系列名。若站主希望表格只列 API id，需要另外開 models overview 頁當來源，那會改動 sources[]。",
+      "程式範例上下游都用 gpt-6-astra。要改成便宜的下游模型（例如 gpt-5.6-luna）在編輯上更漂亮，但結構化輸出頁只寫『從 GPT-4o 起的較新模型』、沒有逐一列型號，本代理不在沒有頁面依據的情況下換 id。",
+      "checked_on 維持 2026-09-18：六條 source 與研究紀錄本來就一致，本輪重查也沒有因為頁面改了數字而更動任何數字，只修正撰稿者的讀法。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "schema_and_upstream.py（需要標準庫 urllib）",
+        "result": "ok"
+      },
+      {
+        "label": "validate_and_handoff.py（需要 jsonschema）",
+        "result": "ok"
+      }
     ]
   }
 }
