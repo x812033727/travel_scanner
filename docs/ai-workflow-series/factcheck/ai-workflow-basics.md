@@ -114,9 +114,10 @@ Anthropic 那兩句定義在原始 HTML 裡被 `<strong>` 切開（`<li><strong>
 13. **兩個站內文章的名字：一個縮寫、一個描述了還不存在的內容。**
     「一件事拆給多個模型：**四種切法**」是縮寫，真正的 zh-TW title 是
     「一件事拆給多個模型：**依步驟、能力、風險、資料敏感度**四種切法」，已補全（`autolink` 要靠它比對）。
-    「成本、品質、延遲：多模型流程怎麼取捨」草稿寫它「**有估算表**」——那篇還沒有寫，
-    內容包不存在，不能描述它有什麼。已改成「會處理」。（標題本身保留：同系列
-    `ai-workflow-split-tasks-across-models` 正文也用同一個標題，見「留給站主的事」。）
+    「成本、品質、延遲：多模型流程怎麼取捨」草稿寫它「**有估算表**」——查核開始時那篇的內容包
+    還不存在，不能描述一篇還沒寫的文章有什麼。已改成「會處理」。（標題本身保留：同系列
+    `ai-workflow-split-tasks-across-models` 正文也用同一個標題，且查核途中該篇已被另一個代理寫出來，
+    title 逐字相同，見「留給站主的事」。）
 
 **另補兩句有來源的話**（都在第 5 節，回填草稿原本沒有歸屬的判斷）：
 Anthropic 何時用流程、何時用代理那一句，含原文兩個限定詞
@@ -164,8 +165,11 @@ required number of steps, and where you can’t hardcode a fixed path.`
    這是指派指定給本篇的例子，本輪沒有改。兩篇並排時讀者可能覺得重複，要區隔就得換掉其中一篇的情境。
 3. **`orchestration` 的譯名站上三套並存**：本篇「流程調度」、「Agent 框架入門」「協調框架」、
    另有「代理協調（Agent Orchestration）」。本輪只在本篇內部保持一致，沒有跨篇統一——這要站主決定。
-4. **「成本、品質、延遲：多模型流程怎麼取捨」這篇還不存在**，但標題已經寫進本篇與
-   `ai-workflow-split-tasks-across-models` 兩篇正文。真寫出來時若標題不同，兩篇都要改。
+4. **「成本、品質、延遲：多模型流程怎麼取捨」在本輪查核途中才被另一個代理寫出來**
+   （`apps/api/app/guides/content/ai-workflow-cost-quality-latency.json`，本代理沒有動它）。
+   它的 zh-TW title 與本篇、與 `ai-workflow-split-tasks-across-models` 正文寫的逐字相同，
+   而且它確實帶一張成本估算表。本篇保守寫成「會處理」；等那個檔落地之後，
+   站主若要把「有估算表」寫回來，是成立的。
 5. **結尾兩個純 link 的 `raw_internal_url` WARN 由協調者 `pack_cli relink` 處理**，本代理沒有動。
 
 ## 自檢
