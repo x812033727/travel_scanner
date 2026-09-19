@@ -397,7 +397,9 @@ def diagram_svg_text(data: dict) -> str:
             x = 80 + i * (width + gap)
             colour = ACCENT if i % 2 == 0 else OTHER
             body += rect(x, y, width, h, "#FFFFFF", colour)
-            body += circle(x + 50, y + 54, 20, colour, "none") + label(x + 50, y + 66, str(i + 1), 30, "#FFFFFF")
+            # A dot, not an ordinal: the arrows carry the order, and a numeral on the picture that the
+            # article never states would fail the diagram-number rule (``missing_diagram_numbers``).
+            body += circle(x + 50, y + 54, 20, colour, "none")
             body += label(x + width / 2, y + 150, heading, 40 if n <= 4 else 34, max_width=width - 40)
             body += label(x + width / 2, y + 240, detail, 28 if n <= 4 else 24, "#5C6B6B", max_width=width - 40)
             if i < n - 1:
