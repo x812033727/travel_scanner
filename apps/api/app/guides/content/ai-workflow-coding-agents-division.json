@@ -32,7 +32,7 @@
         },
         {
           "type": "paragraph",
-          "text": "讀完這篇，你會有一支串接三支 CLI 的 bash 腳本可以照抄修改，也會知道三支工具在非互動模式下各自用什麼旗標決定輸出格式與核准方式。你需要一台已經安裝並各自登入 Claude Code、Codex 與 Gemini CLI 三支命令列代理（Agent）的電腦，命令列環境能跑 bash 與 Python 3.11 以上——腳本裡只用標準函式庫內建的 json 模組，不必另外安裝套件——並且三支 CLI 都已經完成官方要求的登入或金鑰設定；這篇不重講怎麼安裝或登入，只講三支工具湊在同一條腳本裡時，非互動旗標與交接檔要注意的地方。"
+          "text": "讀完這篇，你會有一支串接三支 CLI 的 bash 腳本可以照抄修改，也會知道三支工具在非互動模式下各自用什麼旗標決定輸出格式與核准方式。你需要一台已經裝好 Claude Code、Codex 與 Gemini CLI 三支命令列代理（Agent），而且三支都完成官方要求的登入或金鑰設定的電腦，命令列環境能跑 bash 與 Python 3.11 以上——腳本裡只用標準函式庫內建的 json 模組，不必另外安裝套件；這篇不重講怎麼安裝或登入，只講三支工具湊在同一條腳本裡時，非互動旗標與交接檔要注意的地方。"
         },
         {
           "type": "summary",
@@ -133,7 +133,7 @@
           "type": "callout",
           "tone": "warning",
           "title": "核准提示沒人回答時，三家文件寫的不一樣",
-          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 沒另外設定時用 default 核准模式，文件寫 --permission-prompt-tool 可指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 傳 none 表示沒人能回答、Claude Code 改成拒絕；核准模式那頁也寫 dontAsk 下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never，文件寫它控制 Codex 何時暫停等人核准；codex exec 的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測，這裡只轉述各自文件寫了什麼。"
+          "text": "串接前先查這支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 沒另外設定時用 default 核准模式，文件寫 --permission-prompt-tool 可指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts（文件註明要 v2.1.259 以上）傳 none 表示沒人能回答、Claude Code 改成拒絕；核准模式那頁也寫 dontAsk 下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval，文件只列出 on-request 與 never，寫它控制 Codex 何時暫停等人核准；codex exec 的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測，這裡只轉述各自文件寫了什麼。"
         },
         {
           "type": "code",
