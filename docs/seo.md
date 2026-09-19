@@ -33,7 +33,8 @@ results. Historical task notes describe their original snapshots, not necessaril
 | An article hub in a locale with nothing published (`/guides`, `/guides/{kind}`, `/life`) | `noindex, follow`, and absent from the sitemap for that locale |
 | Hotspots, pricing, flight status, airline fares | Indexable only while the effective Web switch is enabled |
 | Privacy, terms, about, contact | Only the requested locale's published document is indexable |
-| Community/discovery/pet public shells | Existing `noindex` retained pending public server content |
+| Community/discovery public shells | Existing `noindex` retained pending public server content |
+| Pet-friendly directory and place pages (`/pet-friendly`, `/pet-friendly/{id}`) | Indexable while the community switch is on -- the directory once its list is in the server HTML, a place page once its record was read -- and `noindex, follow` otherwise; both are in the static sitemap child behind the same switch |
 | Account, trips, alerts, search results, auth forms | `noindex` regardless of feature switches |
 | Article search (`/search/articles`) | `noindex, follow`: a result set is a different ranking of the same articles, and the articles are what rank; `follow` so a crawler arriving from a shared link still reaches them |
 | Admin | `noindex, nofollow`, plus robots exclusion |
@@ -68,12 +69,14 @@ frozen at build. The index lists a section child only while `GET /guides/sitemap
 reports a published row for it, and every child when the summary cannot be read -- an
 outage is not an empty section, and an empty child is a valid file.
 
-The static child is at most **385 URLs**: five locales times eleven base routes, 33
-destination guides, and 33 services pages. Four base routes are conditional; all four
-closed/unavailable gives **365 URLs**. The three `/guides` hubs and `/life` carry no feature
-switch, so they are never among the conditional ones -- but they are listed per locale rather
-than per route (from the same summary), which is the second way the static count can fall
-short of 385.
+The static child's routes are at most **395 URLs**: five locales times thirteen base routes,
+33 destination guides, and 33 services pages -- and, with the community switch on, five rows
+per published pet-friendly place follow them (below). Six base routes are conditional (the four
+feature switches, the discovery switch for `/explore`, the community switch for
+`/pet-friendly`); all six closed/unavailable gives **365 URLs**. The three `/guides` hubs and
+`/life` carry no feature switch, so they are never among the conditional ones -- but they are
+listed per locale rather than per route (from the same summary), which is the second way the
+route count can fall short of 395.
 
 ### An article hub in a locale that has nothing published
 
@@ -128,9 +131,9 @@ The number of slices comes from `GET /guides/sitemap/summary` when a crawler ask
 (`generateSitemaps` runs per request, and Next answers 404 for an id it did not return);
 the eleven base children exist whatever the counts say, and a read that fails -- as it does
 during `next build`, where there is no API -- yields exactly those. The old per-child lint
-warning is gone with the ceiling (2026-09-16). They are the only entries carrying `lastmod`: the
-timestamp of the revision readers currently see (`modified_at`), which moves on every
-republication, falling back to the first `published_at` when an older API omits it. An
+warning is gone with the ceiling (2026-09-16). Each carries `lastmod`: the timestamp of the
+revision readers currently see (`modified_at`), which moves on every republication, falling
+back to the first `published_at` when an older API omits it. An
 article's alternates name only the locales it is genuinely published in (the API sends
 them on every row, so a one-language child can still point at the others), with `x-default`
 only where English is one of them, and an expired intel notice leaves the sitemap while
@@ -138,12 +141,27 @@ keeping its page. If the guides API fails or times out, the static child is unaf
 each section child degrades to the pages it did read, or to an empty file, rather than the
 index failing or emptying.
 
+The pet-friendly place pages (`/pet-friendly/{id}`) are in the `static` child too, after the
+routes (`petPlaceSitemap`, `2026-09-14-sitemap-lists-pet-friendly-places`), because the
+community switch that child already reads
+is what decides whether a place page exists: with it off there are no place rows, whatever a
+read that raced the switch returned. `petPlaceSitemapEntries` walks the public directory
+(`GET /api/v1/pet-friendly/places` with `include_uncertain=false`, so only places whose rules
+are currently verified) in pages of 50, the API's maximum, through at most 20 pages, with 3 s
+per page inside a 10 s budget for the whole read, and it never throws: a failed page, a timeout
+or either cap ends the read with the entries it has, so the first thousand places still list.
+Each place is one entry per locale with the full five-language alternate set, at `0.5` /
+`monthly`, and its `lastmod` is `verified_at` -- when its rules were last verified, the one
+real date a place has -- only when the API sent one; a place without it gets no date rather
+than "now".
+
 The four managed site documents stay outside the sitemap. `site-information-page.tsx` returns
 `noindex` until an administrator publishes that locale's document, so listing them now would
 only accumulate "Excluded by noindex"; they wait for `2026-09-06-legal-content-from-owner` and
-remain discoverable through footer links. Private and client shell routes stay out. Nothing
-outside the guides emits `lastmod`, because the sitemap does not know when a city guide's places
-last moved.
+remain discoverable through footer links. Private and client shell routes stay out. Outside
+the articles, only the pet-friendly place pages emit `lastmod` (from `verified_at`, above); the
+routes and the hubs emit none, because the sitemap does not know when a city guide's places
+last moved and a hub's date would be the invented signal this file warns about.
 
 Tests verify each listed path resolves to an App Router page, language URLs agree, private
 routes are absent, and each feature can close/reopen without a rebuild. The browser suite
