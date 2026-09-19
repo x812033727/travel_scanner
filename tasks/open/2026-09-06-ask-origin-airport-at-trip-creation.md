@@ -18,6 +18,7 @@ scope:
   - apps/web/messages/ko/newTrip.json
   - apps/web/messages/zh-TW/newTrip.json
   - apps/web/messages/zh-CN/newTrip.json
+  - apps/web/e2e/full-stack.spec.ts
 ---
 
 # 建立旅程時就問出發機場，不要等到查機票才問
@@ -98,3 +99,12 @@ npm run lint:web       -> eslint . --max-warnings=0（exit 0）
 留給 owner 的手動檢查（DoD 第二項在瀏覽器裡的確認）：建立一個空白旅程並選高雄，開旅程頁按
 「查機票 · 消耗 N 次」，應直接進搜尋條件，沒有「這趟旅程還沒有出發機場」那一段。
 `trip.data.origin_airport` 由 `search_criteria.trip_origin_airport()` 讀取，這次沒改它。
+
+**2026-09-19, after the first CI run (claude-fable-5-1).** The full-stack journey
+`a saved trip searches flights from its own criteria and takes a quote back` still expected the
+search page's 「這趟旅程還沒有出發機場」 prompt for a freshly created trip; with the form now
+sending `origin_airport: "TPE"` that prompt is gone, exactly as this ticket asks, and the journey
+timed out waiting for the 「桃園 TPE」 radio. The journey now asserts the create request carries
+`origin_airport: "TPE"`, that the search page shows the criteria at once with no prompt, and goes
+on to the search. The prompt itself is still covered for trips saved without an airport by the
+search-experience unit tests.

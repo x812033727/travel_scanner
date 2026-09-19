@@ -14,8 +14,9 @@ async function createBlankTrip(page: Page) {
   await page.getByRole("button", { name: "開始安排", exact: true }).click();
   const response = await created;
   expect(response.status()).toBe(201);
+  // The form's travelers step now sends the origin airport, TPE unless changed.
   expect(response.request().postDataJSON()).toMatchObject({
-    source: "blank", planning_mode: "manual_blank", routing: { auto_compute: false },
+    source: "blank", planning_mode: "manual_blank", routing: { auto_compute: false }, origin_airport: "TPE",
   });
   const trip = await response.json();
   expect(trip.items.filter((item: { system_role?: string }) => item.system_role === "outbound_flight")).toHaveLength(1);
@@ -280,8 +281,10 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   await createBlankTrip(page);
   const tripUrl = page.url();
 
-  // The outbound anchor card is the entry. A blank trip has no home airport yet,
-  // so the search page asks once and writes the answer back to the trip.
+  // The outbound anchor card is the entry. The trip was created with the origin
+  // airport the form defaults to (TPE), so the search page goes straight to the
+  // criteria instead of asking for an airport first; the prompt stays for trips
+  // saved without one.
   // The timeline renders only the selected day; the return anchor is on day 5.
   // Both persisted anchors are asserted against the real create response above.
   await expect(page.locator(".planner-flight-card")).toHaveCount(1);
@@ -289,8 +292,7 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   await page.locator(".planner-flight-card").first().getByRole("link", { name: /^查機票 · / }).click();
   await expect(page).toHaveURL(/\/search\?trip_id=/);
   await expect(page.getByRole("heading", { name: "為〈東京查機票〉找機票" })).toBeVisible();
-  await page.getByRole("radio", { name: "桃園 TPE" }).click();
-  await page.getByRole("button", { name: "儲存出發地" }).click();
+  await expect(page.getByRole("button", { name: /^確認條件並開始搜尋 · / })).toBeVisible();
   await expect(page.getByText("這趟旅程還沒有出發機場")).toBeHidden();
   await page.getByRole("button", { name: /^確認條件並開始搜尋 · / }).click();
   await expect(page.getByText("分析完成")).toBeVisible({ timeout: 60_000 });
