@@ -123,8 +123,8 @@ digit for digit in that document's blocks, that the provenance clause is still p
 length. Lengths went from 115–292 (median 188) to 178–200 (median 197); the 18 originals longer than
 200 all came down to 200 or less.
 
-14 old descriptions did not end with the provenance clause (it sat at the start or in the
-middle: `japan-drugstore-shopping-list`, `japan-entry-2026-visit-japan-web`, `japan-esim-sim-wifi`, `japan-ski-season-2026-2027`, `japan-winter-illumination-2026`, `japan-year-end-new-year-2026-2027`, `korea-esim-sim-wifi`, `korea-olive-young-tax-refund-shopping`, `narita-haneda-to-tokyo`, `okinawa-4-day-itinerary`, `osaka-kyoto-where-to-stay`, `tokyo-disney-guide`, `tokyo-transit-passes`, `yokohama-day-trip-from-tokyo`); the same wording now closes the description. Two had no dated 查證 clause at all (`japan-drugstore-shopping-list`, `japan-esim-sim-wifi`): those now end with the
+11 old descriptions did not end with the provenance clause (it sat at the start or in the
+middle: `japan-drugstore-shopping-list`, `japan-entry-2026-visit-japan-web`, `japan-esim-sim-wifi`, `japan-winter-illumination-2026`, `korea-esim-sim-wifi`, `korea-olive-young-tax-refund-shopping`, `narita-haneda-to-tokyo`, `osaka-kyoto-where-to-stay`, `tokyo-disney-guide`, `tokyo-transit-passes`, `yokohama-day-trip-from-tokyo`); the same wording now closes the description. Two had no dated 查證 clause at all (`japan-drugstore-shopping-list`, `japan-esim-sim-wifi`): those now end with the
 date and sources the document's own first paragraph states, nothing new. `1.5%` and `go.kr` (which the ticket's `.` split would cut) sit in the
 enumeration, never in the answer sentence.
 
