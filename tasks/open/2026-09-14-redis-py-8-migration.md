@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-redis-py-8-migration
 title: Migrate the API from redis-py 6 to redis-py 8
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-fable-5-1

@@ -242,7 +242,9 @@ async def test_locate_search_stays_on_the_pro_field_mask() -> None:
 
     cache_keys = await redis.keys("places:google:v2:*")
     assert len(cache_keys) == 1
-    cached_place = json.loads(await redis.get(cache_keys[0]))
+    raw_place = await redis.get(cache_keys[0])
+    assert raw_place is not None
+    cached_place = json.loads(raw_place)
     assert "plusCode" not in cached_place
 
     usage = await redis.hgetall("provider-usage:google_maps:" + _billing_month())

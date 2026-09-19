@@ -212,7 +212,9 @@ async def test_restaurant_coordinates_use_an_enforced_30_day_redis_ttl() -> None
     await cache_restaurant_location(redis, snapshot, Settings(), observed_at)
 
     key = f"{RESTAURANT_LOCATION_CACHE_PREFIX}:{snapshot.place_id}"
-    cached = json.loads(await redis.get(key))
+    raw = await redis.get(key)
+    assert raw is not None
+    cached = json.loads(raw)
     assert cached == {
         "latitude": 34.397,
         "longitude": 132.455,

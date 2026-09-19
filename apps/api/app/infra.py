@@ -2,10 +2,9 @@ import hashlib
 import hmac
 import ipaddress
 import logging
-from collections.abc import Awaitable, Mapping
+from collections.abc import Mapping
 from datetime import UTC, datetime
 from functools import lru_cache
-from typing import Any, cast
 from uuid import UUID
 
 from fastapi import Request
@@ -20,7 +19,14 @@ logger = logging.getLogger(__name__)
 
 @lru_cache
 def get_redis() -> Redis:
-    return cast(Redis, Redis.from_url(get_settings().redis_url, decode_responses=True))
+    # redis-py 8 reads every reply under a 5 s socket timeout by default, where 6.x
+    # had none, and a timed-out read is retried rather than surfaced. This one client
+    # also serves ``XREAD ... BLOCK 15000`` in the search event stream, which under that
+    # default would stop blocking at 5 s, reconnect and retry ten times, and then fail.
+    # No read timeout keeps every call site on the behaviour it was written for; the
+    # 5 s connect timeout the library now applies stays, because it only makes an
+    # unreachable Redis fail sooner.
+    return Redis.from_url(get_settings().redis_url, decode_responses=True, socket_timeout=None)
 
 
 PROXY_TOKEN_HEADER = "X-Travel-Proxy-Token"  # noqa: S105 -- a header name, not its value
@@ -92,11 +98,8 @@ async def _incr_window(namespace: str, identifier: str, *, window_seconds: int) 
     has to be a shrug. Returning the ambiguity keeps that choice where it belongs.
     """
     try:
-        count = await cast(
-            Awaitable[Any],
-            get_redis().eval(
-                _WINDOW_SCRIPT, 1, _rate_key(namespace, identifier), str(window_seconds)
-            ),
+        count = await get_redis().eval(
+            _WINDOW_SCRIPT, 1, _rate_key(namespace, identifier), str(window_seconds)
         )
     except RedisError:
         logger.warning("rate limit window %s could not be counted", namespace, exc_info=True)
@@ -171,8 +174,8 @@ async def record_rate_limit_hit(namespace: str, identifier: str) -> None:
     key = f"abuse:{namespace}:{datetime.now(UTC).date().isoformat()}"
     try:
         redis = get_redis()
-        await cast(Awaitable[Any], redis.hincrby(key, digest, 1))
-        await cast(Awaitable[Any], redis.expire(key, 7 * 86_400))
+        await redis.hincrby(key, digest, 1)
+        await redis.expire(key, 7 * 86_400)
     except RedisError:
         logger.warning("could not record a %s hit", namespace, exc_info=True)
 
@@ -189,7 +192,7 @@ async def refund_named_rate_limit(namespace: str, identifier: str) -> None:
         "if n and tonumber(n)>0 then return redis.call('DECR',KEYS[1]) end; return 0"
     )
     try:
-        await cast(Awaitable[Any], get_redis().eval(script, 1, _rate_key(namespace, identifier)))
+        await get_redis().eval(script, 1, _rate_key(namespace, identifier))
     except RedisError:
         return
 
