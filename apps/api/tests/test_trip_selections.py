@@ -220,6 +220,8 @@ async def harness(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[Harness]:
                 "merchant": merchant.id,
                 "food": food.id,
                 "place_id": place.google_place_id,
+                "hotspot_place_id": hotspot.google_place_id,
+                "merchant_place_id": merchant.google_place_id,
             }
 
         async def database() -> AsyncIterator[Any]:
@@ -247,11 +249,9 @@ async def harness(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[Harness]:
 
 
 def expected_place_id(h: Harness, kind: str) -> str:
-    if kind == "hotspot":
-        return f"hotspot-place-{h.ids['place_id'].removeprefix('restaurant-place-')}"
-    if kind == "restaurant":
-        return str(h.ids["place_id"])
-    return f"merchant-place-{h.ids['place_id'].removeprefix('restaurant-place-')}"
+    """The Google place id the row should point at after selecting ``kind``."""
+    key = {"hotspot": "hotspot_place_id", "restaurant": "place_id"}.get(kind, "merchant_place_id")
+    return str(h.ids[key])
 
 
 @pytest.mark.parametrize("kind", KINDS)
@@ -426,7 +426,7 @@ async def test_unknown_places_are_still_404(harness: Harness) -> None:
     missing: UUID = uuid4()
     for path in (
         f"/hotspots/{missing}/trip-selections",
-        f"/restaurants/no-such-place/trip-selections",
+        "/restaurants/no-such-place/trip-selections",
         f"/foods/{missing}/trip-selections",
         f"/foods/merchants/{missing}/trip-selections",
     ):
