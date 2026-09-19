@@ -101,6 +101,18 @@
       "verbatim_quote": "Use pairwise comparison or pass/fail for more reliability"
     },
     {
+      "fact": "OpenAI 建議能用最有能力的模型評分就用。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use the most capable model to grade if you can."
+    },
+    {
+      "fact": "OpenAI 寫要等評審模型變得更快、更便宜，而且跟人工標註持續一致，才擴大使用。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Once the LLM judge reaches a point where it’s faster, cheaper, and consistently agrees with human annotations, scale up"
+    },
+    {
       "fact": "OpenAI 提醒語言模型整體偏好較長的輸出，評分時要控制回答長度這個變數。",
       "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
       "is_vendor_claim": true,
@@ -131,10 +143,40 @@
       "verbatim_quote": "Have detailed, clear rubrics"
     },
     {
+      "fact": "Anthropic 寫同一個使用情境、甚至同一條成功標準，可能需要好幾條準則才能做完整評估。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "might require several rubrics for holistic evaluation."
+    },
+    {
+      "fact": "Anthropic 建議把評審的輸出限定成可以窮舉的選項，例如只回答 correct／incorrect 或一到五分。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "or to judge from a scale of 1–5."
+    },
+    {
+      "fact": "Anthropic 寫純質性的評價很難快速、大量判斷。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Purely qualitative evaluations are hard to assess quickly and at scale."
+    },
+    {
       "fact": "Anthropic 建議先讓評審模型推理再產生分數，之後可以捨棄推理過程。",
       "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
       "is_vendor_claim": true,
       "verbatim_quote": "Encourage reasoning: Ask the LLM to reason first before producing an evaluation score, and then discard the reasoning."
+    },
+    {
+      "fact": "Anthropic 寫先推理再評分能提升評分表現，尤其是需要複雜判斷的任務。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This increases evaluation performance, particularly for tasks requiring complex judgment."
+    },
+    {
+      "fact": "Anthropic 的評分範例在註解裡寫，一般來說最好用跟產生答案不同的模型來評分。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Generally best practice to use a different model to evaluate than the model used to generate the evaluated output"
     },
     {
       "fact": "Anthropic 官方評分範例用 client.messages.create(...) 呼叫模型，範例模型是 claude-opus-5。",
@@ -173,10 +215,40 @@
       "verbatim_quote": "In addition to supporting JSON Schema in the REST API, the Google GenAI SDKs"
     },
     {
-      "fact": "Google 官方範例用 client.interactions.create(model=..., input=..., response_format={...}) 要求輸出符合指定的 JSON Schema。",
+      "fact": "Gemini 的結構化輸出走 interactions 這個資源，Python 範例是 client.interactions.create(model=..., input=..., response_format={...})，同一頁的 REST 範例打的端點就叫 interactions。",
       "url": "https://ai.google.dev/gemini-api/docs/structured-output",
       "is_vendor_claim": false,
-      "verbatim_quote": "client.interactions.create"
+      "verbatim_quote": "https://generativelanguage.googleapis.com/v1beta/interactions"
+    },
+    {
+      "fact": "response_format 的三個欄位是 type、mime_type、schema；JSON 輸出用 \"mime_type\": \"application/json\"。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"mime_type\": \"application/json\""
+    },
+    {
+      "fact": "Python 範例把 Pydantic 類別的 model_json_schema() 當成 response_format 的 schema 傳進去。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": false,
+      "verbatim_quote": "model_json_schema"
+    },
+    {
+      "fact": "Google 寫結構化輸出的產物只保證是語法正確的 JSON，值還是要在自己的程式裡驗。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": true,
+      "verbatim_quote": "While output is syntactically correct JSON, always validate values in your application."
+    },
+    {
+      "fact": "Google 要求為「符合 Schema 但語意不對」的輸出寫錯誤處理。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Implement robust error handling for schema-compliant but semantically incorrect outputs."
+    },
+    {
+      "fact": "Google 在同一頁的限制寫明：不是所有 JSON Schema 功能都支援。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Not all JSON Schema features are supported."
     },
     {
       "fact": "google-genai 的 Python SDK 匯入方式是 from google import genai。",
@@ -204,10 +276,10 @@
     }
   ],
   "unverified_or_excluded": [
-    "自我偏好偏誤（judge 傾向偏好與自己同源的模型輸出）：查了 OpenAI 的 evaluation-best-practices、Anthropic 的 develop-tests，以及 Google Cloud 的 evaluation-overview／side-by-side-eval／determine-eval 三頁，都沒有用這個詞或明確描述這個現象，不是這次查得到的官方文件說法，所以沒有寫進正文，只在 FAQ 裡提到查無官方說法。",
+    "自我偏好偏誤（judge 傾向偏好與自己同源的模型輸出）：查了 OpenAI 的 evaluation-best-practices、Anthropic 的 develop-tests，以及 Google Cloud 的 evaluation-overview／side-by-side-eval／determine-eval 三頁，都沒有用這個詞或明確描述這個現象，所以沒有寫進正文；FAQ 只寫「本文查證當天讀的這三份官方文件都沒有提到」這個範圍句，不寫成「沒有官方說法」。站內「以語言模型擔任評審（LLM-as-a-Judge）是什麼」引 Zheng 等人的研究提過自我偏好，那是學術文獻不是供應商文件，本篇不重講也不否定。",
     "OpenAI 的 score_model 圖表器（fine-tuning graders API，輸出 {result, steps} 的 JSON）：那是專門給強化微調用的評分器，model 參數目前只支援 gpt-4o 系列等舊模型，跟 models-seen.json 的白名單對不上，跟本文一問一答的互審場景也不同，所以沒有放進範例，只在研究過程參考過。",
     "Google Cloud Vertex AI 的 AutoSxS（side-by-side 自動評測，可輸出 model A/B 勝率與信心分數）：是另一個產品線，需要額外的資料集欄位設定，跟本文示範的輕量 SDK 呼叫不是同一條路，超出這篇的範圍，沒有寫進正文。",
-    "OpenAI Evals 平台的 testing_criteria／string_check 設定介面：官方文件寫明這個平台將於 2026 年 11 月 30 日停止服務，不適合當作長期參考的做法，所以範例改成直接呼叫模型 API，不使用這個介面。",
+    "OpenAI Evals 平台的 testing_criteria／string_check 設定介面：官方文件寫「OpenAI is deprecating the Evals platform.」，並寫現有使用者的 Evals 將於 2026 年 10 月 31 日轉為唯讀、平台預定 2026 年 11 月 30 日關閉（原句 the platform is scheduled to shut down），不適合當作長期參考的做法，所以範例改成直接呼叫模型 API，不使用這個介面。這兩個日期只記在研究紀錄，沒有寫進正文。",
     "評審模型之間要不要共用同一份對話歷史或前一輪的評語：沒有查到官方文件正面討論這件事，屬於工程上可以自行設計的部分，這篇沒有下判斷，留給讀者依情境決定。"
   ],
   "must_not_write": [
@@ -244,8 +316,8 @@
     {
       "label": "多數決函式（純 Python，離線可跑）",
       "language": "python",
-      "lines": 25,
-      "compiled_on": "2026-09-18",
+      "lines": 31,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://docs.python.org/3/library/collections.html"
       ]

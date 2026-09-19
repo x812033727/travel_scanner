@@ -14,7 +14,7 @@
   "locales": {
     "zh-TW": {
       "title": "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
-      "description": "同一支用官方 Python SDK 寫成的 MCP 伺服器，不必改一行程式碼就能同時登記進 Claude Code、Codex 與 Gemini CLI：三邊的設定檔位置與加入指令都不一樣，Codex 寫成 TOML、另外兩邊是 JSON，但讀到的是同一份工具名稱、輸入 Schema 與回傳格式。這篇列出三個客戶端各自的設定檔與加入指令，並說明 Codex 的 enabled_tools、Gemini CLI 的 --include-tools 與 Claude Code 的權限規則，要怎麼分別把工具收窄到剛好夠用。",
+      "description": "同一支用官方 Python SDK 寫成的 MCP 伺服器，不必改一行程式碼就能同時登記進 Claude Code、Codex 與 Gemini CLI：三邊的設定檔位置與加入指令都不一樣，Codex 寫成 TOML、另外兩邊是 JSON，但讀到的是同一份工具名稱、輸入 Schema 與回傳格式。這篇列出三邊的設定檔與加入指令，並說明 Codex 的 enabled_tools、Gemini CLI 的 --include-tools 與 Claude Code 的權限規則，要怎麼分別把工具收窄到剛好夠用。",
       "hero": {
         "src": "/guides/ai-workflow-mcp-shared-tools/hero.jpg",
         "alt": "原創插圖：一支貼著單一工具標籤的伺服器，三條線分別接到 Claude Code、Codex、Gemini CLI 三個客戶端方塊。",
@@ -54,7 +54,7 @@
         },
         {
           "type": "paragraph",
-          "text": "MCP 完整的角色分工，包括主機、客戶端、伺服器怎麼分工，站上「模型上下文協定（MCP）是什麼：連接工具與資料的共同介面」已經整理過，這裡不重講；在 Claude 這個一般對話應用裡加連接器，是另一篇「在 Claude 裡怎麼加 MCP 連接器：讀資料夾與查行事曆的設定示範」的主題，跟本篇要講的 Claude Code 指令列工具是兩回事。一支伺服器裡多個工具怎麼命名、輸入 Schema 與分頁怎麼設計，是「Claude Code｜設計 MCP 工具名稱、輸入 Schema 與分頁」的範圍，本篇的範例刻意只留一個工具，好讓三邊的設定差異成為主角。手上還沒有想接的伺服器，也可以先看「MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器」找現成的；這篇假設你已經決定要接哪一支，只講怎麼讓三個客戶端一起用同一支。"
+          "text": "MCP 完整的角色分工，包括主機、客戶端、伺服器怎麼分工，站上「模型上下文協定（MCP）是什麼：連接工具與資料的共同介面」已經整理過，這裡不重講；在 Claude 這個一般對話應用裡加連接器，是另一篇「在 Claude 裡怎麼加 MCP 連接器：讀資料夾與查行事曆的設定示範」的主題，跟本篇要講的 Claude Code 指令列工具是兩回事。一支伺服器裡多個工具怎麼命名、輸入 Schema 與分頁怎麼設計，是「Claude Code｜設計 MCP 工具名稱、輸入 Schema 與分頁」的範圍，本篇的範例刻意只留一個工具。手上還沒有想接的伺服器，也可以先看「MCP 伺服器實用清單：檔案、Google、Notion、瀏覽器」找現成的；這篇假設你已經決定要接哪一支，只講怎麼讓三個客戶端一起用同一支。"
         },
         {
           "type": "heading",
@@ -120,17 +120,17 @@
         },
         {
           "type": "paragraph",
-          "text": "三邊的加入指令長得不一樣，語法也有差。Claude Code 的文件把規則寫出來了：對 stdio 伺服器來說，兩個連字號（--）把 Claude 自己的選項（文件點名 --transport、--env、--scope）跟啟動伺服器的指令與參數分開，-- 後面的內容原封不動交給伺服器；文件也說，沒有這個分隔號的話，Claude Code 會把伺服器的旗標當成自己的選項來解析。Codex 那一頁沒有這段文字說明，但 codex mcp add 的語法與範例同樣把 stdio 伺服器指令放在 -- 後面。Gemini CLI 的文件寫的基本語法是 gemini mcp add [options] <name> <commandOrUrl> [args...]，伺服器名稱後面直接接指令與參數，不帶這個分隔號；那一頁唯一帶 -- 的示範，是把它放在伺服器自己的旗標前面，頁面沒有說明理由，所以本文也不替它補一個。"
+          "text": "三邊的加入指令長得不一樣，語法也有差。Claude Code 的文件把規則寫出來了：對 stdio 伺服器來說，兩個連字號（--）把 Claude 自己的選項（文件點名 --transport、--env、--scope）跟啟動伺服器的指令與參數分開，-- 後面的內容原封不動交給伺服器；文件也說，沒有這個分隔號的話，Claude Code 會把伺服器的旗標當成自己的選項來解析。Codex 那一頁沒有這段文字說明，但 codex mcp add 的語法與範例同樣把 stdio 伺服器指令放在 -- 後面。Gemini CLI 的文件寫的基本語法，是 gemini mcp add 後面依序接選項、伺服器名稱、指令或網址，再接指令自己的參數，中間不帶這個分隔號；那一頁唯一帶 -- 的示範，是把它放在伺服器自己的旗標前面，頁面沒有說明理由，所以本文也不替它補一個。"
         },
         {
           "type": "code",
           "language": "bash",
           "label": "三個客戶端登記同一支 stdio 伺服器的指令",
-          "code": "# Claude Code: local scope by default, so this lands in ~/.claude.json\n# (add --scope project to write .mcp.json at the project root instead)\nclaude mcp add --transport stdio flight-desk -- python flight_server.py\n\n# Codex: writes into ~/.codex/config.toml under [mcp_servers.flight-desk]\ncodex mcp add flight-desk -- python flight_server.py\n\n# Gemini CLI: --scope defaults to project, so this lands in .gemini/settings.json\ngemini mcp add flight-desk python flight_server.py\n"
+          "code": "# Claude Code: local scope by default, so this lands in your home-directory\n# config (add --scope project to write .mcp.json at the project root instead)\nclaude mcp add --transport stdio flight-desk -- python flight_server.py\n\n# Codex: writes into ~/.codex/config.toml under [mcp_servers.flight-desk]\ncodex mcp add flight-desk -- python flight_server.py\n\n# Gemini CLI: --scope defaults to project, so this lands in .gemini/settings.json\ngemini mcp add flight-desk python flight_server.py\n"
         },
         {
           "type": "paragraph",
-          "text": "預設值也不一樣，而且兩邊的文件都自己寫明了。Claude Code 的文件說 local scope 是預設值，每一道加入指令都寫進 local scope，除非你自己加上 --scope project 或 --scope user；local scope 的伺服器只在你加它的那個專案載入，而且只有你看得到，設定放在家目錄的 ~/.claude.json。Gemini CLI 的 gemini mcp add 則把 -s, --scope 的預設值標成 project，直接寫進目前專案的 .gemini/settings.json，要放到使用者層級才另外指定。Claude Code 要讓團隊共用，得指定 --scope project 寫進專案根目錄的 .mcp.json，文件要你把這個檔案簽進版控，團隊每個人才會拿到同一份設定；Gemini CLI 的這一頁沒有提版控或團隊共用，只說 scope 決定寫進使用者設定還是專案設定。"
+          "text": "預設值也不一樣，兩邊的文件都寫明了。Claude Code 的文件說 local scope 是預設值，每一道加入指令都寫進 local scope，除非你自己加上 --scope project 或 --scope user；這種伺服器只在你加它的那個專案載入，只有你看得到，設定存在家目錄的使用者設定檔，不在專案裡。Gemini CLI 的 gemini mcp add 則把 -s, --scope 的預設值標成 project，直接寫進目前專案的 .gemini/settings.json，要放到使用者層級才另外指定。Claude Code 要讓團隊共用，得指定 --scope project 寫進專案根目錄的 .mcp.json，文件要你把這個檔案簽進版控，團隊每個人才會拿到同一份設定；Gemini CLI 的這一頁沒有提版控或團隊共用，只說 scope 決定寫進使用者設定還是專案設定。"
         },
         {
           "type": "image",
@@ -151,7 +151,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同一支伺服器如果本來就只公開一個工具，三邊天生就是最小權限；但伺服器通常不會只有一個工具，這時候要收窄的是每個客戶端各自的白名單，而且三邊要分開做，做了其中一邊不會連帶影響另外兩邊。Codex 的文件把 enabled_tools 寫成工具的允許清單、disabled_tools 寫成拒絕清單，而且說拒絕清單在允許清單之後才套用；兩個欄位都放在 [mcp_servers.<伺服器名稱>] 這個區段裡，也就是 codex mcp add 已經幫你寫好的那一張表，所以是把 enabled_tools 加進那張表，不是另外再寫一張同名的。下面這段把整張表寫到一個另外的檔案，方便你對照後自己貼過去。"
+          "text": "同一支伺服器如果本來就只公開一個工具，三邊天生就是最小權限；但伺服器通常不會只有一個工具，這時候要收窄的是每個客戶端各自的白名單，而且三邊要分開做，做了其中一邊不會連帶影響另外兩邊。Codex 的文件把 enabled_tools 寫成工具的允許清單、disabled_tools 寫成拒絕清單，而且說拒絕清單在允許清單之後才套用；兩個欄位都放在 [mcp_servers.<伺服器名稱>] 這個區段裡，也就是 codex mcp add 已經幫你寫好的那一張表，所以是把 enabled_tools 加進那張表，不是另外再寫一張同名的；下面這段先把整張表寫到另一個檔案，方便你對照後貼過去。"
         },
         {
           "type": "code",
@@ -208,11 +208,11 @@
             },
             {
               "question": "加入指令裡，為什麼有的地方要加 --，有的不用？",
-              "answer": "Claude Code 跟 Codex 的加入指令都用 -- 把自己的選項（像 --transport、--env）跟接下來要啟動伺服器的指令分開，-- 後面的內容原封不動交給伺服器；Gemini CLI 的基本語法不需要這個分隔號，只有伺服器自己的參數長得像旗標時才需要加上去。"
+              "answer": "Claude Code 的文件寫，-- 把 Claude 自己的選項（文件點名 --transport、--env、--scope）跟啟動伺服器的指令分開，-- 後面的內容原封不動交給伺服器，沒有它 Claude Code 會把伺服器的旗標當成自己的選項解析。Codex 那一頁沒有這段說明，但它的 codex mcp add 語法同樣把伺服器指令放在 -- 後面。Gemini CLI 文件寫的基本語法則是伺服器名稱後面直接接指令與參數，不帶這個分隔號；那一頁唯一帶 -- 的示範，是把它放在伺服器自己的旗標前面，頁面沒有解釋原因。"
             },
             {
               "question": "把 read_only_hint 設成 true，客戶端就不會再跳確認了嗎？",
-              "answer": "不一定。MCP 官方文件把 read_only_hint 這類標註寫成給客戶端參考的提示，不是強制的安全機制，客戶端可以選擇忽略。真正決定要不要跳確認、或乾脆不讓模型看到某個工具的，是客戶端自己的權限設定，像 Codex 的 enabled_tools 或 Gemini CLI 的 --include-tools，這些才是三邊各自要分開做的事。"
+              "answer": "不一定。官方 Python SDK 的文件把 read_only_hint 這類標註寫成給客戶端參考的提示，不是強制的安全機制，還特別要你不要指望客戶端會照做。真正決定要不要跳確認、或乾脆不讓模型看到某個工具的，是客戶端自己的權限設定，像 Codex 的 enabled_tools 或 Gemini CLI 的 --include-tools，這些才是三邊各自要分開做的事。"
             }
           ]
         },

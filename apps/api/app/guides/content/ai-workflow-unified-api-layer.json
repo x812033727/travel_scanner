@@ -28,7 +28,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "「OpenAI 相容」指的是供應商把自己的推論服務包成和 OpenAI Chat Completions 端點同樣形狀的 REST 介面；只要程式呼叫的是這個形狀，換一家供應商通常只需要換 base_url 與 model 字串兩個值，其餘程式碼不用動。這篇說明 OpenAI 相容端點的意思與能相容到什麼程度，再用 openai 套件與 LiteLLM 兩種做法實際切換供應商。"
+          "text": "「OpenAI 相容」指的是供應商把自己的推論服務包成和 OpenAI Chat Completions 端點同樣形狀的 REST 介面；只要程式呼叫的是這個形狀，換一家供應商通常只需要換 base_url、金鑰與 model 字串，其餘程式碼不用動。這篇說明 OpenAI 相容端點的意思與能相容到什麼程度，再用 openai 套件與 LiteLLM 兩種做法實際切換供應商。"
         },
         {
           "type": "paragraph",
@@ -54,7 +54,7 @@
         },
         {
           "type": "paragraph",
-          "text": "「相容」指的是形狀，不是每一個參數。OpenRouter 的 API 參考寫得很直接：如果選到的模型不支援某個請求參數，例如非 OpenAI 模型不支援 logit_bias、OpenAI 模型不支援 top_k，那個參數會被忽略，其餘的參數照樣轉送到底層那家供應商的 API。Groq 官方文件把自己寫成「大致相容」，同時明講 logprobs、logit_bias、top_logprobs 這幾個欄位目前不支援，帶了會直接收到 400 錯誤，不是默默忽略。同一個「相容」，兩家處理方式並不一樣，實際能用哪些參數，還是得查供應商自己的文件。"
+          "text": "「相容」指的是形狀，不是每一個參數。OpenRouter 的 API 參考寫得很直接：如果選到的模型不支援某個請求參數，例如非 OpenAI 模型不支援 logit_bias、OpenAI 模型不支援 top_k，那個參數會被忽略，其餘的參數照樣轉送到底層那家供應商的 API。Groq 官方文件把自己寫成「大致相容」，同時明講 logprobs、logit_bias、top_logprobs 與 messages[].name 這幾個欄位目前不支援，帶了會直接收到 400 錯誤，不是默默忽略。同一個「相容」，兩家處理方式並不一樣，實際能用哪些參數，還是得查供應商自己的文件。"
         },
         {
           "type": "heading",
@@ -73,7 +73,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁上列出的代號，也是 OpenAI 自己開放權重的 gpt-oss 模型在 Groq 上跑的版本。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
+          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁 MODEL ID 欄位上的代號，那一頁把它寫成 OpenAI 的旗艦開放權重模型。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
         },
         {
           "type": "heading",
@@ -86,7 +86,7 @@
         },
         {
           "type": "paragraph",
-          "text": "LiteLLM 認供應商的方式是看 model 字串：官方文件的例子把供應商名稱寫在最前面、用斜線隔開，例如 model=\"openai/gpt-5.6-terra\"，依對應的環境變數（OPENAI_API_KEY、ANTHROPIC_API_KEY）去拿金鑰；透過 OpenRouter 轉接時要多包一層，寫成 openrouter/ 加上 OpenRouter 自己的供應商／模型代號，範例是 model=\"openrouter/google/palm-2-chat-bison\"，金鑰讀 OPENROUTER_API_KEY，OPENROUTER_API_BASE 是選用欄位，不設定時預設就是 https://openrouter.ai/api/v1。下面同一段迴圈換了三次 model 字串，其他呼叫方式完全沒變；google/gemini-3.8-flash 一樣是 OpenRouter 上的代號，要直接向 Google 申請金鑰、建立第一支呼叫，見《AI Studio 與第一個 Gemini API 呼叫》。"
+          "text": "LiteLLM 的 model 字串自己帶著供應商：官方文件的每個範例都把供應商名稱寫在最前面、用斜線隔開，例如 model=\"openai/gpt-5.6-terra\"，並在同一段範例裡設好對應的環境變數（OPENAI_API_KEY、ANTHROPIC_API_KEY）；透過 OpenRouter 轉接時要多包一層，文件寫送 model=openrouter/ 加上你的 OpenRouter 模型，請求就會送到 OpenRouter，範例是 model=\"openrouter/google/palm-2-chat-bison\"，金鑰讀 OPENROUTER_API_KEY，OPENROUTER_API_BASE 是選用欄位，不設定時預設就是 https://openrouter.ai/api/v1。下面同一段迴圈換了三次 model 字串，其他呼叫方式完全沒變；google/gemini-3.8-flash 一樣是 OpenRouter 上的代號，要直接向 Google 申請金鑰、建立第一支呼叫，見《AI Studio 與第一個 Gemini API 呼叫》。"
         },
         {
           "type": "code",
@@ -96,7 +96,7 @@
         },
         {
           "type": "paragraph",
-          "text": "三次呼叫用的是同一個 completion() 函式、同一份 messages，差別只有 model 這一個字串，LiteLLM 自己會決定要打哪一家的網址、帶哪一把金鑰，回傳的錯誤也統一成 litellm.AuthenticationError、litellm.RateLimitError 這類同一組例外類別。官方文件也寫，completion() 預設遇到某個供應商不支援的 OpenAI 參數會直接丟出例外，要自己在呼叫時加 drop_params=True，或整體設定 litellm.drop_params = True，才會改成像 OpenRouter 那樣悄悄忽略；這點放進下面的提醒框。"
+          "text": "三次呼叫用的是同一個 completion() 函式、同一份 messages，差別只有 model 這一個字串；官方文件寫，LiteLLM 把各家的錯誤對應成 OpenAI 的例外型別，例如 litellm.AuthenticationError、litellm.RateLimitError。第二個字串和第一段程式裡的 anthropic/claude-sonnet-5 同形不同意：這裡是 LiteLLM 前綴加 Anthropic 自己的代號、讀 ANTHROPIC_API_KEY，那裡是 OpenRouter 目錄裡的代號。官方文件也寫，completion() 預設遇到不支援的 OpenAI 參數會直接丟出例外，要自己在呼叫時加 drop_params=True，或整體設定 litellm.drop_params = True 才會改成忽略，而且只會捨棄不支援的 OpenAI 參數；這點放進下面的提醒框。"
         },
         {
           "type": "heading",
@@ -109,7 +109,7 @@
         },
         {
           "type": "paragraph",
-          "text": "架起來之後，呼叫方式反而回到最一開始那個樣子：官方文件的範例直接用 openai 套件的用戶端，把 base_url 指到自己架的位址，範例寫的是 http://0.0.0.0:4000，api_key 隨便填一個字串即可，因為認證是自架的 Proxy 自己在管，不是原本那些供應商在管。這樣看下來，OpenRouter 與 LiteLLM 的 Proxy 其實是同一種角色的兩種做法：OpenRouter 是別人已經架好、你付費使用的託管閘道；LiteLLM 的 Proxy 是同樣的角色但自己架、自己維護，換來的是能自己設定金鑰的花費上限與存取規則；自己維運一台伺服器也是實際的成本，兩者怎麼選要看團隊有沒有人力顧到那台伺服器。"
+          "text": "架起來之後，呼叫方式反而回到最一開始那個樣子：官方文件的範例直接用 openai 套件的用戶端，把 base_url 指到自己架的位址，範例寫的是 http://0.0.0.0:4000，api_key 填的是 anything 這個字串，實際的存取控制由 Proxy 自己的虛擬金鑰管。這樣看下來，OpenRouter 與 LiteLLM 的 Proxy 是同一種角色的兩種做法：一種別人架好、一種自己架自己維護，換來的是能自己設定每把金鑰的預算與存取規則；怎麼選要看團隊有沒有人力顧那台伺服器。"
         },
         {
           "type": "image",
@@ -130,7 +130,7 @@
         },
         {
           "type": "paragraph",
-          "text": "換 base_url 與 model 字串解決的是「程式不用為每家供應商重寫一份呼叫邏輯」，但解決不了其他幾件事。價格、免費額度、速率限制是供應商自己訂的，換一個相容端點不會讓它們變得一樣，這篇不比價，系列另一篇《成本、品質、延遲：多模型流程怎麼取捨》會專門整理怎麼在三者之間取捨。同樣地，相容層幫忙轉接的是單一次請求，request 裡帶了工具呼叫（tool calling）之類的功能，底層模型本身支不支援仍然是那個模型自己的事，相容層不會替它補上原本沒有的功能。"
+          "text": "換 base_url 與 model 字串解決的是「程式不用為每家供應商重寫一份呼叫邏輯」，但解決不了其他幾件事。價格、免費額度、速率限制是供應商自己訂的，換一個相容端點不會讓它們變得一樣，這篇不比價，系列另一篇《成本、品質、延遲：多模型流程怎麼取捨》會專門整理怎麼在三者之間取捨。同樣地，相容層幫忙轉接的是單一次請求，request 裡帶了工具呼叫（tool calling）之類的功能，底層模型本身支不支援仍然是那個模型自己的事。"
         },
         {
           "type": "paragraph",
@@ -160,8 +160,8 @@
             [
               "LiteLLM SDK",
               "從 litellm 匯入的 completion() 函式",
-              "供應商前綴＋原生代號，例如 anthropic/claude-sonnet-5",
-              "LiteLLM 的 Providers 文件頁"
+              "供應商前綴＋原生代號，例如 anthropic/claude-sonnet-5（與 OpenRouter 那一列同形不同意）",
+              "LiteLLM 的 Input Params 文件頁，它列出各供應商支援哪些 OpenAI 參數"
             ],
             [
               "LiteLLM Proxy",
@@ -176,7 +176,7 @@
           "type": "callout",
           "tone": "warning",
           "title": "同一個參數，三層的預設反應不一樣",
-          "text": "OpenRouter 的 API 參考寫，收到模型不支援的參數時會直接忽略、其餘照送，程式不會報錯，但那個參數也不會生效。Groq 的官方文件則寫，logprobs、logit_bias、top_logprobs 這幾個欄位不支援，帶了會直接收到 400 錯誤。LiteLLM 官方文件又寫，completion() 預設遇到不支援的 OpenAI 參數會丟出例外，要自己設定 drop_params=True，或整體設定 litellm.drop_params = True，才會改成忽略。同一段呼叫換著這三層用，「被吃掉卻沒報錯」「直接收到 400」「先噴出例外」都可能發生，換層之前先確認是哪一層在處理這個參數。"
+          "text": "OpenRouter 的 API 參考寫，收到模型不支援的參數時會直接忽略、其餘照送，程式不會報錯，但那個參數也不會生效。Groq 的官方文件則寫，logprobs、logit_bias、top_logprobs 與 messages[].name 這幾個欄位目前不支援，帶了會直接收到 400 錯誤。LiteLLM 官方文件又寫，completion() 預設遇到不支援的 OpenAI 參數會丟出例外，要自己設定 drop_params=True，或整體設定 litellm.drop_params = True，才會改成忽略，而且文件註明它只會捨棄不支援的 OpenAI 參數。同一段呼叫換著這三層用，「被吃掉卻沒報錯」「直接收到 400」「先噴出例外」都可能發生，換層之前先確認是哪一層在處理這個參數。"
         },
         {
           "type": "faq",
@@ -191,15 +191,15 @@
             },
             {
               "question": "換供應商時，程式碼真的只需要改 base_url 和 model 嗎？",
-              "answer": "以這篇示範的兩個呼叫來說是的：openai 套件的用戶端只換了 base_url、金鑰讀的環境變數，和 model 字串三個地方，其餘程式碼沒有變。要注意的是不同供應商的 model 字串寫法不一樣：OpenRouter 是固定的「供應商／模型」格式，Groq 則是照它自己模型頁列出的代號填，兩邊不一定長得一樣。"
+              "answer": "以這篇示範的兩個呼叫來說是的：openai 套件的用戶端只換了 base_url、金鑰讀的環境變數，和 model 字串三個地方，其餘程式碼沒有變。要注意的是不同供應商的 model 字串寫法不一樣：OpenRouter 是固定的「供應商／模型」格式，Groq 則是填它模型頁表格 MODEL ID 欄位上的代號，兩邊不一定長得一樣。"
             },
             {
               "question": "LiteLLM 的 model 字串為什麼要加供應商前綴？",
-              "answer": "官方文件的例子把供應商名稱寫在 model 字串最前面、用斜線隔開，例如 openai/gpt-5.6-terra、anthropic/claude-sonnet-5，LiteLLM 依這個前綴決定要呼叫哪一家的 API、該讀哪一組環境變數的金鑰；這篇的範例都照這個寫法，比較不會猜錯要連去哪一家。"
+              "answer": "官方文件的每個範例都把供應商名稱寫在 model 字串最前面、用斜線隔開，例如 openai/gpt-5.6-terra、anthropic/claude-sonnet-5，並在同一段範例裡設好對應的環境變數；OpenRouter 那一頁還明講，送 openrouter/ 加上你的 OpenRouter 模型，請求就會送到 OpenRouter。這篇的範例都照這個寫法。要注意 anthropic/claude-sonnet-5 這種字串在 LiteLLM 與在 OpenRouter 同形不同意：前者是 LiteLLM 前綴加 Anthropic 自己的代號，後者是 OpenRouter 目錄裡的代號。"
             },
             {
               "question": "要自己架 LiteLLM 的 Proxy，還是直接用 OpenRouter 比較好？",
-              "answer": "這篇沒有幫你決定，兩者是不同的取捨。OpenRouter 不用自己維運伺服器，但金鑰的花費上限與存取規則要照對方提供的設定做；LiteLLM 的 Proxy 需要自己架設與維運，換來的是能自己設定每把金鑰的花費上限與存取規則。要哪一種看團隊有沒有人力顧到自架的那台伺服器。"
+              "answer": "這篇沒有幫你決定，兩者是不同的取捨。OpenRouter 不用自己維運伺服器，能設定的就是 openrouter.ai 那一端提供的項目；LiteLLM 的 Proxy 需要自己架設與維運，換來的是官方文件列出的那些自架功能，例如每把虛擬金鑰各自的預算、集中記錄與快取。要哪一種看團隊有沒有人力顧到自架的那台伺服器。"
             }
           ]
         },

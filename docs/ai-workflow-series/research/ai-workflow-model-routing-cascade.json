@@ -369,5 +369,53 @@
         "到頂層或預算就停"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "七條 sources 今天全部用 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（另外重抓 openrouter.ai/docs/features/model-routing 與 platform.claude.com/docs/en/about-claude/models/overview，兩者都 302 導到 sources 裡的同一頁；github.com/anthropics/anthropic-sdk-python 的 raw README 今天只剩指向 platform.claude.com 的存根，所以 SDK 的參數一律以 sources 裡的 Python SDK 文件頁為準）。把 title、description、正文每一句、summary 五句、callout、表格十六格與 caption、FAQ 六題、圖解四格與 hero_label、兩個 code 區塊的每一個識別字拆成主張逐條回原文比對；研究紀錄原有 22 條 verbatim_quote 用程式做連續字串比對，全數通過。兩個範例重新 python -m py_compile，並在暫存目錄用假的 anthropic 模組跑過七種情境（信心夠、連升兩階、全部低信心、逾時、連線錯誤、狀態錯誤、長輸入直接從中階起跑）與一次成本上限觸發，確認行為與正文描述一致。沒有真的打任何 API，任何請求都沒有帶入 email 或個人資料，也沒有用 sources 以外的網址替文章補事實。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "H2-3 第 2 段：「同一顆重試或換模型升級都算進同一個計數」與範例程式相反（迴圈每次失敗都往上一階，同一顆的重試是套件在一次呼叫內部做的）→ 改成「計的是升級與 fallback 的次數，同一顆模型的重試由套件在一次呼叫內部處理、不算進這個計數」，並同步改 code2 的 MAX_ATTEMPTS 註解。",
+      "H2-3 第 2 段：「五百以上的伺服器錯誤」→「500 以上的伺服器內部錯誤」（原文 >=500 Internal errors）；「超過重試仍然逾時會丟出 APITimeoutError」補上文件另一句「Note that requests that time out are retried twice by default.」。",
+      "code2：except 只捕捉 (APITimeoutError, APIStatusError)，官方錯誤表列的 APIConnectionError 會直接穿出迴圈，與正文「捕捉到逾時或錯誤就升級」不符 → import 與 except 都補上 APIConnectionError。",
+      "H2-5 第 3 段與表格：cost_tier 補上文件的五個值與「那是一條帶不是上限，比該帶便宜的模型一樣會被排除」；成本控制那一格補上同一頁的 provider.max_price。",
+      "H2-5 第 3 段與表格：LiteLLM 的策略從中文描述改成文件範例用的值 simple-shuffle、usage-based-routing、latency-based-routing、cost-based-routing，補上文件建議正式環境用預設的 simple-shuffle，以及 num_retries 不是供應商套件的 max_retries。",
+      "表格成本控制／LiteLLM：「可依 rpm、tpm 限流，同樣不是每請求的金額上限」→「rpm、tpm 是各節點每分鐘的用量上限，用來挑節點或濾掉超限的節點，不是每次請求的金額上限」（Router 頁只講到這個用途，Budget Routing 是另一個沒讀的文件頁）。",
+      "表格逾時與重試／OpenRouter：把「這篇讀到的頁面」寫明是 Auto Router 與 Model Fallbacks 兩頁（兩頁以詞界比對 timeout／retry／retries 皆 0 次，只有 JS 的 setTimeout 與別頁的中繼資料）。",
+      "FAQ 第 5 題：「它們是平台或套件已經寫好、跑在自己使用者流量上的路由邏輯」對 LiteLLM 不成立 → 分開寫 OpenRouter 依社群整體花費挑模型、LiteLLM 在自己設定的節點之間分流。",
+      "H2-4 第 1 段：「三階的輸入輸出價格差好幾倍」沒有歸屬 → 「依 Anthropic 的模型頁，由輕到重的輸入與輸出單價各差到五倍」（$1→$5 與 $5→$25，都是五倍）。",
+      "code1 註解：「from the official pricing page」掛錯來源（sources 裡是 Models overview，不是 Pricing 頁）→ 「read on the official models overview page」。",
+      "code1 後那一段：補上範例把「語言」這條規則簡化成數中文字數，要分辨中英夾雜得另外寫。",
+      "H2-1：補「規則怎麼切、門檻放在哪裡要看自己的流量調整，本站沒有實測」。",
+      "description 與導言第 2 段：「只放進對照表」「只在對照表列出」與正文不符（H2-5 有一整段散文）→ 改成「只做對照」「只用一段和一張對照表列出」。",
+      "H2-5 第 2 段：「這兩個平台」→「這兩個工具」（LiteLLM 是套件與自架 Proxy，不是平台）。"
+    ],
+    "checked_and_correct": [
+      "三個模型 id claude-haiku-4-5-20251001、claude-sonnet-5、claude-opus-5 今天仍列在 Claude 模型頁的 Claude API ID 欄；六個單價 $1／$5、$2／$10、$5／$25 逐格對上，與 code1 的 TIERS 相同，也與本系列第 3 篇用的 Opus 5 單價一致。三個 id 本來就在 models-seen.json，沒有新增。",
+      "Auto Router 的 openrouter/auto、約 30 種任務類型的輕量分類器、過去 7 天社群花費占比、分類或排名不可用時退回預設模型集，四句逐字對上。",
+      "Anthropic Python SDK 的預設逾時 10 分鐘、timeout 接受浮點數或 httpx2.Timeout、with_options 覆寫單次呼叫、max_retries 預設 2、連線錯誤與 408／409／429／>=500 自動重試、逾時丟 APITimeoutError，全部在 sources 的 SDK 文件頁上；GitHub README 已經是存根，撐這兩個參數的就是這一頁。",
+      "回應的 content 區塊有 type 與 text、usage 有 input_tokens 與 output_tokens，對上 Messages API 的回應範例，所以 call_tier 抽文字與算成本的寫法成立。",
+      "自評信心從頭到尾都寫成「這篇的做法」（H2-2、callout、FAQ 第 2 題），沒有寫成供應商建議；官方文件也沒有這種建議，unverified_or_excluded 已記。",
+      "界線：整篇一個 warning callout、沒有免責段落、沒有購買或訂閱建議、沒有推薦式比價、沒有「台灣可用」；廠商宣稱都有歸屬；正文中間沒有 link 區塊；FAQ 答案沒有網址。",
+      "分工：與 ai-model-tiers-explained（標題逐字相同）只用一句帶過分層，與第 3 篇 ai-workflow-cost-quality-latency 的估算表、第 4 篇 ai-workflow-unified-api-layer 的 base_url／相容端點都沒有重講，也沒有矛盾。",
+      "checked_on 2026-09-18 在內容包七條 source 與研究紀錄一致；七頁今天重抓後內容沒有變動，依規格不因重查而改。"
+    ],
+    "left_for_the_owner": [
+      "MAX_ATTEMPTS = 4 在目前的三階級聯裡永遠碰不到：迴圈每次失敗或升級都往上一階，從最底層起算最多只會跑三次。要讓這個上限真的有作用，得讓同一階可以重打（那會變成另一種設計），或把它當成階數變多時的保險。查核只改了會誤導的註解與正文，沒有動迴圈。",
+      "run_cascade 回傳的 attempts 是迴圈計數，碰到成本上限那一圈沒有真的呼叫，所以會比實際呼叫次數多一。要精確就得多一行計數器，會動到 code_samples 的 lines。",
+      "前提段寫「需要 Python 3.11 以上」；Anthropic 的 SDK 文件今天寫的最低版本是 Python 3.10。3.11 是本系列技術篇的統一環境要求，不是套件需求，站主若要一致可改寫成「本系列統一用 3.11 以上」。",
+      "第二個結尾連結指向的 ai-workflow-cost-quality-latency 今天已經存在，標題逐字相同，自檢不再有 FAIL；只剩 pack_cli relink 的 WARN，那是協調者的事。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "route_and_call.py：規則路由與單層呼叫（需要 pip install anthropic）",
+        "result": "ok"
+      },
+      {
+        "label": "cascade.py：升級、fallback 與成本上限（延續上一段的 route_and_call.py）",
+        "result": "ok"
+      }
+    ]
   }
 }

@@ -14,7 +14,7 @@
   "locales": {
     "zh-TW": {
       "title": "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
-      "description": "把 Claude Code、Codex 與 Gemini CLI 接成規劃、執行、審查的一條管線，靠的是三支命令列各自的非互動旗標，不是官方提供的整合功能。這篇會列出 claude -p、codex exec 與 gemini -p 在腳本裡實際會用到的輸出格式旗標，並示範用 plan.md、patch 與 review.json 三個檔案讓三支工具接力完成同一件事；讀者需要能在終端機執行這三支 CLI，並各自完成登入或金鑰設定，不需要另外寫 Python 以外的程式。",
+      "description": "把 Claude Code、Codex 與 Gemini CLI 接成規劃、執行、審查的一條管線，靠的是三支命令列各自的非互動旗標，本文查證的文件沒有跨工具的整合功能。這篇會列出 claude -p、codex exec 與 gemini -p 在腳本裡實際會用到的輸出格式旗標，並示範用 plan.md、patch 與 review.json 三個檔案讓三支工具接力完成同一件事；讀者需要能在終端機執行這三支 CLI 並各自登入，腳本只用 bash 與 Python 內建的 json 模組。",
       "hero": {
         "src": "/guides/ai-workflow-coding-agents-division/hero.jpg",
         "alt": "原創插圖：三個幾何圖示分別代表規劃、執行與審查，中間用箭頭串成一條線，象徵三支命令列工具接力完成同一個任務。",
@@ -28,7 +28,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "Claude Code 的 claude -p、Codex 的 codex exec 與 Gemini CLI 的 gemini -p，都能把提示詞丟進去、跑完一次任務就結束，不用打開對話畫面；但三家把『非互動』做成不同的樣子：核准旗標名稱不同、輸出格式旗標不同，連能不能讓 CLI 自己驗證輸出是不是合法 JSON 都不一樣。這篇要回答：想讓這三支 CLI 接力完成同一個編碼任務——一支規劃、一支執行、一支審查——該讀哪幾個旗標、用什麼檔案交接；答案是非互動旗標得各自對官方文件核對，交接檔則要自己設計，因為三家都沒有共通規格。"
+          "text": "Claude Code 的 claude -p、Codex 的 codex exec 與 Gemini CLI 的 gemini -p，都能把提示詞丟進去、跑完一次任務就結束，不用打開對話畫面；但三家把『非互動』做成不同的樣子：核准旗標三家各叫各的名字，輸出格式旗標只有其中兩家同名，連文件有沒有寫「CLI 會照 JSON Schema 驗證輸出」也不一樣。這篇要回答：想讓這三支 CLI 接力完成同一個編碼任務——一支規劃、一支執行、一支審查——該讀哪幾個旗標、用什麼檔案交接；答案是非互動旗標得各自對官方文件核對，交接檔則要自己設計，因為本文查證的三家文件都沒有定義工具之間的交接格式。"
         },
         {
           "type": "paragraph",
@@ -37,10 +37,10 @@
         {
           "type": "summary",
           "items": [
-            "claude -p、codex exec 與 gemini -p 都能在腳本裡跑完一次任務就結束，但決定核准與輸出格式的旗標名稱三家都不同，用哪一支做規劃、執行或審查前都得先讀該廠商當天的官方文件。",
+            "claude -p、codex exec 與 gemini -p 都能在腳本裡跑完一次任務就結束，但核准旗標三家各叫各的名字，輸出格式旗標只有 Claude Code 與 Gemini CLI 同名，用哪一支做規劃、執行或審查前都得先讀該廠商當天的官方文件。",
             "本篇示範的 plan.md、patch 與 review.json 是這個網站自己設計的交接檔慣例，不是 Claude Code、Codex 或 Gemini CLI 任何一家的官方規格。",
-            "只有 Claude Code 的 --json-schema 與 Codex 的 --output-schema 會讓 CLI 自己驗證最終輸出是否符合結構；Gemini CLI 的 --output-format json 只保證外層有 response、stats 與 error 三個欄位。",
-            "Gemini CLI 的文件列出完整的結束代碼對照表：0 是成功、1 是一般錯誤或 API 失敗、42 是輸入錯誤、53 是對話輪數超過上限；Claude Code 與 Codex 這次查到的文件都沒有列出同樣完整的對照表。"
+            "Claude Code 的 --json-schema 與 Codex 的 --output-schema，官方文件都寫了 CLI 會照 JSON Schema 驗證輸出；Gemini CLI 的無頭模式文件只列出 response、stats 與選用的 error 三個外層欄位，本文查證當天沒有在那幾頁看到對應的 schema 驗證旗標。",
+            "Gemini CLI 的無頭模式文件列出四個結束代碼：0 是成功、1 是一般錯誤或 API 失敗、42 是輸入錯誤、53 是對話輪數超過上限；本文這次讀到的 Claude Code 與 Codex 頁面沒有列出這樣的數字對照。"
           ]
         },
         {
@@ -67,7 +67,7 @@
         },
         {
           "type": "paragraph",
-          "text": "三支 CLI 觸發非互動模式的方式也不一樣：Claude Code 是 claude -p（完整寫法 --print）加提示詞，官方範例執行完就結束，也能用管線接檔案內容；Codex 的指令參考文件把 codex exec 標成 Stable 等級，提示詞接在後面就會開始跑；Gemini CLI 是 gemini -p（或 --prompt）加提示詞，官方文件寫這個位置引數預設會進互動模式，要靠 -p／--prompt 才強制轉成非互動。輸出格式的旗標，Claude Code 與 Gemini CLI 同名都叫 --output-format，可選 text、json、stream-json；Codex 靠 --json（別名 --experimental-json）印換行分隔的 JSON 事件，細節列在下表。"
+          "text": "三支 CLI 觸發非互動模式的方式也不一樣：Claude Code 是 claude -p（完整寫法 --print）加提示詞，官方範例執行完就結束，也能用管線接檔案內容；Codex 的指令參考文件把 codex exec 標成 Stable 等級，提示詞接在後面就會開始跑；Gemini CLI 是 gemini -p（或 --prompt）加提示詞，官方文件寫位置引數在 TTY 裡預設是互動模式，要靠 -p／--prompt 才強制轉成非互動。輸出格式的旗標，Claude Code 與 Gemini CLI 同名都叫 --output-format，可選 text、json、stream-json；Codex 靠 --json（別名 --experimental-json）印換行分隔的 JSON 事件，細節列在下表。"
         },
         {
           "type": "table",
@@ -83,21 +83,21 @@
               "Claude Code",
               "-p（完整寫法 --print）",
               "--output-format：text、json、stream-json",
-              "--json-schema 讓 CLI 自己驗證最終輸出符合指定的 JSON Schema，不合法就以錯誤結束",
+              "--json-schema 直接在命令列吃一段 JSON Schema，文件寫代理流程跑完後給出符合 schema 的輸出；schema 本身不合法就以錯誤結束",
               "規劃：只讀專案、寫步驟到 plan.md，不改檔案"
             ],
             [
               "Codex",
               "codex exec 加一段提示詞",
               "--json（別名 --experimental-json）印出換行分隔的 JSON 事件",
-              "--output-schema 指定一份 JSON Schema 檔，CLI 依它驗證最終回應；另有 --output-last-message 只存最後一則訊息",
-              "執行：在 --sandbox workspace-write 下修改檔案，跑完用 git diff 存成 patch"
+              "--output-schema 指定一份 JSON Schema 檔，文件寫 Codex 拿它驗證工具輸出；--output-last-message（-o）另外把最後一則訊息寫成檔案，stdout 仍會印出",
+              "執行：在 --sandbox workspace-write 下修改檔案，跑完用 git add -N 與 git diff 存成 patch"
             ],
             [
               "Gemini CLI",
               "-p（完整寫法 --prompt）",
               "--output-format（別名 -o）：text、json、stream-json",
-              "json 格式只保證外層有 response、stats、error 三個欄位，response 裡面的結構不會被驗證",
+              "無頭模式文件列出 response、stats 與選用的 error 三個外層欄位；本文查證當天沒有在那幾頁看到 schema 驗證旗標",
               "審查：讀 patch 與 plan.md，把結論解析後寫成 review.json"
             ]
           ],
@@ -105,7 +105,7 @@
         },
         {
           "type": "paragraph",
-          "text": "表格裡『結構化輸出驗證』這一欄差最多。Claude Code 的 --json-schema 與 Codex 的 --output-schema 都會把一份 JSON Schema 檔交給 CLI 驗證最終回應，schema 不合法時 Claude Code 直接以錯誤結束；Gemini CLI 的 --output-format json 只保證外層有 response、stats、error 三個欄位，response 裡面是不是我們要的結構，CLI 自己不驗證。旗標縮寫也不共通：-o 在 Codex 裡是 --output-last-message，在 Gemini CLI 裡卻是 --output-format，意思完全不同，抄範例前要認清是哪一支工具。"
+          "text": "表格裡『結構化輸出驗證』這一欄差最多。Claude Code 的 --json-schema 在命令列直接吃一段 JSON Schema，文件寫它在代理流程跑完後給出符合 schema 的輸出，schema 本身不合法就以錯誤結束；Codex 的 --output-schema 吃的是一份 schema 檔，文件寫 Codex 會拿它驗證工具輸出。Gemini CLI 的無頭模式文件只列出 response、stats 與選用的 error 三個外層欄位，本文查證當天沒有在那幾頁看到對應的 schema 驗證旗標，response 裡的結構要自己解析後再檢查。旗標縮寫也不共通：-o 在 Codex 裡是 --output-last-message，在 Gemini CLI 裡卻是 --output-format，抄範例前要認清是哪一支工具。"
         },
         {
           "type": "heading",
@@ -114,7 +114,7 @@
         },
         {
           "type": "paragraph",
-          "text": "plan.md、patch 與 review.json 是這個網站自己在這篇裡設計的交接慣例，Claude Code、Codex 與 Gemini CLI 都沒有定義這三個檔名或欄位——三支的非互動旗標只管一次呼叫怎麼跑、輸出長什麼樣子，怎麼接成下一步的輸入得自己決定。挑這三個檔案是因為它們對應規劃、執行、審查三個階段最自然的產出：規劃是文字步驟，寫成 Markdown 最好讀；執行是程式碼變更，patch（統一格式的 diff）是版本控制系統本來就看得懂的格式；審查是判斷加理由，適合寫成固定欄位的 JSON。"
+          "text": "plan.md、patch 與 review.json 是這個網站自己在這篇裡設計的交接慣例，本文查證的三家文件都沒有定義這三個檔名或欄位——上面那些非互動旗標只管一次呼叫怎麼跑、輸出長什麼樣子，怎麼接成下一步的輸入得自己決定。挑這三個檔案是因為它們對應規劃、執行、審查三個階段最自然的產出：規劃是文字步驟，寫成 Markdown 最好讀；執行是程式碼變更，patch（統一格式的 diff）是版本控制系統本來就看得懂的格式；審查是判斷加理由，適合寫成固定欄位的 JSON。"
         },
         {
           "type": "paragraph",
@@ -127,13 +127,13 @@
         },
         {
           "type": "paragraph",
-          "text": "下面這支腳本把三支 CLI 接成一條管線：Claude Code 用 --permission-mode plan 進入規劃模式，官方文件寫這個模式讓 Claude 讀檔案、寫計畫，但不會真的修改原始碼，輸出存成 plan.md；Codex 用 --sandbox workspace-write 允許它修改工作目錄——官方文件寫預設沙盒是唯讀——跑完用 git diff 存成 change.patch；Gemini CLI 用 --approval-mode=plan 讀 patch 與 plan.md，官方文件把這個模式定義成唯讀的研究環境，--output-format json 只回傳一個物件，審查結果包在 response 欄位的文字裡，腳本再用一段 Python 解析、驗證後寫成這篇定義的 review.json。三支呼叫都包了 timeout，避免卡在等待核准或回應時讓整條管線卡住。"
+          "text": "下面這支腳本把三支 CLI 接成一條管線：Claude Code 用 --permission-mode plan 進入規劃模式，官方文件寫這個模式讓 Claude 讀檔案、寫計畫但不會修改原始碼，而且在沒有互動終端機的 -p 執行裡一樣擋著，輸出存成 plan.md；Codex 用 --sandbox workspace-write 允許它修改工作目錄——官方文件寫預設沙盒是唯讀——跑完先 git add -N 再 git diff，新建的檔案才會進到 change.patch；Gemini CLI 用 --approval-mode=plan 讀 patch 與 plan.md，--output-format json 回傳一個物件，審查結果包在 response 欄位的文字裡，腳本再用一段 Python 解析後寫成這篇定義的 review.json。把 Plan Mode 拿來審查是本文的延伸用法：官方文件說它是給實作前設計解法用的唯讀環境，只準在計畫目錄裡寫 .md 檔。三支呼叫都包了 timeout，模型跑太久時讓那一步先失敗。"
         },
         {
           "type": "callout",
           "tone": "warning",
-          "title": "沒設核准旗標，非互動呼叫可能卡住",
-          "text": "三支 CLI 的核准機制預設都假設有人在螢幕前確認。Claude Code 的 -p 在沒有另外指定核准旗標時用的是 default 模式，官方文件提到非互動情境下要靠 --permission-prompt-tool 把核准提示交給一個 MCP 工具處理；Codex 的文件直接建議在自動化裡明確指定 --sandbox 的存取層級，因為預設是唯讀，改不了任何檔案；Gemini CLI 要用 --approval-mode 選一個不是 default 的值，官方文件把舊版的 --yolo 全自動核准旗標標成 Deprecated，要改用 --approval-mode=yolo。排程或 CI 裡三支 CLI 只要有一支漏掉這一步，輕則卡到 timeout 逾時，重則因為找不到人核准直接失敗，而不是安靜地把事情做完。"
+          "title": "沒人能回答核准提示時，三支 CLI 的文件寫的不是同一件事",
+          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 在沒有另外設定時用 default 核准模式，官方文件寫 --permission-prompt-tool 可以指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 決定誰來回答，傳 none 表示沒有人能回答、Claude Code 改成拒絕；同一頁也寫 dontAsk 模式下會提示的動作一律被拒絕，工作階段不等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never 兩個值，文件寫它控制 Codex 什麼時候暫停等人核准；codex exec 自己的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，而且預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測三支 CLI 在沒人回答時的實際行為，這裡只轉述各自文件寫了什麼。"
         },
         {
           "type": "code",

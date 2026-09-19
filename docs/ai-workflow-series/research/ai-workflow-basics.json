@@ -180,6 +180,16 @@
       "orchestration 的譯名在站上不一致：本篇用「流程調度」，「Agent 框架入門」用「協調框架」，「代理協調（Agent Orchestration）」另立一詞。本輪沒有跨篇統一。",
       "「成本、品質、延遲：多模型流程怎麼取捨」在本輪查核途中才被另一個代理寫出來（ai-workflow-cost-quality-latency.json，本代理沒有動它），title 與本篇正文寫的逐字相同，而且它確實帶一張成本估算表。本篇保守改成「會處理」；等那個檔落地，站主要把「有估算表」寫回來是成立的。"
     ],
-    "code_recompiled": []
+    "code_recompiled": [],
+    "second_round": {
+      "checked_on": "2026-09-19",
+      "claims_checked": 89,
+      "edits": [
+        "summary 第 3 句：「代理讓模型自己判斷下一步要不要呼叫工具、要不要多問一輪，對怎麼完成任務保有主控權，這是 Anthropic 工程部落格對代理的定義」改成「代理讓模型自己動態主導自己的處理過程與工具使用、對怎麼完成任務保有主控權，這是 Anthropic 工程部落格對代理的定義」。第一輪只把正文的代理定義改對，summary 沒有同步：舊句把「要不要多問一輪」掛在「這是 Anthropic 對代理的定義」底下，但頁面的定義句是 Agents, on the other hand, are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.，沒有這一項，反而少了 their own processes。改後逐項對得上原文，也仍然 ⊆ 正文（正文同段有同一句話）。",
+        "第 3 節第 2 段：「這條界線在官方文件上也看得到：OpenAI 的 Agents SDK 文件把…，並且寫明這不是全域二選一，同一個應用可以兩種混用」改成「要留意的是，官方文件切的不一定是同一條線：OpenAI 的 Agents SDK 文件是把…，而且寫明這不是全域二選一，同一個應用可以一邊用它跑受管的流程、一邊自己直接走低階路徑」。兩個問題：一是第一輪把這一段收短之後，「這條界線」的前文變成講代理迴圈那一篇，指代斷掉；二是 OpenAI 那頁切的是「迴圈、工具派送與狀態自己管還是交給執行環境管」，與本文的「程式先寫死還是模型自己決定」不是同一條線，寫成「也看得到」會把兩條線混為一談。混用的講法改成貼著原文 Many applications use the SDK for managed workflows and call the Responses API directly for lower-level paths.",
+        "第 5 節第 2 段：「同一篇也寫，代理適合的是…開放式問題——例如要不要追問、要跳過哪個資料來源，這種下一步本身就是難題的場合」改成「…開放式問題。回到上面的例子，待辦寫得含糊時要不要先回頭問你，就是這種下一步本身就是難題的場合」。第一輪補這一句時把兩個例子放進「同一篇也寫」的歸屬範圍裡，但那一頁自己舉的例子是 A coding Agent to resolve SWE-bench tasks 與 computer use reference implementation，沒有「追問」或「跳過資料來源」；「跳過哪個資料來源」全篇其他地方也沒出現。改成本文自己的會議紀錄例子（第 4 節與表格都有），例子移出歸屬範圍。"
+      ],
+      "verdict": "ok"
+    }
   }
 }
