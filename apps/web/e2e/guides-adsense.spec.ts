@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { defaultUsageCatalog } from "../lib/usage-catalog";
 import { siteFeatureKeys } from "../lib/site-features";
 import { ADSENSE_SCRIPT_ORIGIN } from "../lib/adsense";
+import { ADS_TXT_FALLBACK_PUBLISHER_ID } from "../app/ads.txt/ads-txt";
 
 /**
  * Advertising is decided on the server, cached per process, and gated on the production
@@ -15,7 +16,9 @@ import { ADSENSE_SCRIPT_ORIGIN } from "../lib/adsense";
  * `stay22-script.spec.ts` does, and drives it through the canonical host.
  */
 const canonical = "https://mokaair.com";
-const PUBLISHER = "ca-pub-4140966684432854";
+// Google's shape, and deliberately not the account `/ads.txt` falls back to: the ads.txt case
+// below can then only pass when the file is built from what this double answers.
+const PUBLISHER = "ca-pub-1234567890123456";
 const SLOT = "1234567890";
 const articlePath = "/zh-TW/guides/howto/tokyo-esim";
 const hubPath = "/zh-TW/guides/howto";
@@ -280,8 +283,12 @@ test("only an article route relaxes the content security policy", async ({ reque
   expect(hub.headers()["content-security-policy-report-only"]).toContain("frame-src https://www.google.com https://www.stay22.com https://www.youtube-nocookie.com;");
 });
 
-test("ads.txt is served verbatim and is not sent through locale routing", async ({ request, site }) => {
+test("ads.txt names the configured publisher and is not sent through locale routing", async ({ request, site }) => {
+  // The fixture's id is not the one the route falls back to, so this can only pass when the
+  // file is built from what the API answered rather than from anything checked in.
+  expect(PUBLISHER).not.toBe(ADS_TXT_FALLBACK_PUBLISHER_ID);
   const response = await request.get(`${site.origin}/ads.txt`, { maxRedirects: 0 });
   expect(response.status()).toBe(200);
-  expect((await response.text()).trim()).toBe("google.com, pub-4140966684432854, DIRECT, f08c47fec0942fa0");
+  expect(response.headers()["content-type"]).toContain("text/plain");
+  expect((await response.text()).trim()).toBe(`google.com, ${PUBLISHER.replace(/^ca-/, "")}, DIRECT, f08c47fec0942fa0`);
 });
