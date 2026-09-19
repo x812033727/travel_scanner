@@ -22,6 +22,7 @@ from app.ai.itinerary import (
     AIItineraryRequest,
     AIPlannerCandidate,
     AIPlanningResult,
+    AIProviderName,
     PlanningMetadata,
     draft_to_itinerary,
     normalize_draft,
@@ -183,7 +184,7 @@ def planning_from(
     *,
     pool: list[AIPlannerCandidate] | None = None,
     status: str = "live",
-    provider: str = "openai",
+    provider: AIProviderName = "openai",
     warnings: list[str] | None = None,
 ) -> AIPlanningResult:
     """Turn (day, candidate_key, HH:MM) triples into a planner result."""

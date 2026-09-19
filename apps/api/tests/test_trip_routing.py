@@ -1,7 +1,7 @@
 import json
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
-from typing import cast
+from typing import Any, cast
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
@@ -21,6 +21,7 @@ from app.trips.routing import (
     OdsayProbeResult,
     OdsayRouteProvider,
     RoutePoint,
+    RouteProvider,
     RouteSegment,
     RouteService,
     estimate_leg_minutes,
@@ -572,7 +573,7 @@ async def test_odsay_probe_handles_structured_no_result_error() -> None:
 def rapidapi_navitime(
     client: httpx.AsyncClient,
     redis: fakeredis.aioredis.FakeRedis | None = None,
-    **overrides: int,
+    **overrides: Any,
 ) -> NavitimeRouteProvider:
     return NavitimeRouteProvider(
         Settings(
@@ -1255,7 +1256,7 @@ async def test_route_service_recommends_the_fastest_non_transit_option() -> None
     service = RouteService(
         fakeredis.aioredis.FakeRedis(decode_responses=True),
         Settings(route_cache_ttl_seconds=300),
-        google=UnsortedOptionsProvider(),
+        google=cast(RouteProvider, UnsortedOptionsProvider()),  # compute_options only
     )
 
     options = await service.compute_options(

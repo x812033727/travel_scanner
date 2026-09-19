@@ -189,6 +189,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左至右看：提示詞送出後先得到四張預覽，挑一張才進入變化與放大，最後在 Organize 頁下載；框裡的分鐘數是官方列的大致 GPU 成本。",
+          "description": "六個步驟的流程圖，分成上下兩排。上排由左至右：輸入提示詞，網頁版在 Create 頁的 Imagine bar 打字、Discord 打 /imagine 指令；一次生成四張圖，SD 尺寸 1024 x 1024 像素，約 0.8 分鐘 GPU 時間，HD 提示詞約 1.3 分鐘；挑一張做變化，Vary 分 Subtle 小幅與 Strong 大幅，Discord 用 U1 到 U4 分圖、V1 到 V4 做變化，分圖不計費。流程接著折回下排左側，由左至右：放大 Upscale，Subtle 盡量維持原樣、Creative 放大時補新細節，尺寸變成 2048 x 2048，約 2 分鐘；編輯與外擴，Editor 裡有 Pan、Zoom Out 與 Vary Region 局部重繪，在 HD 圖上做會降回 SD；下載與整理，在 Organize 頁下載圖片，可排序、篩選、放進資料夾，也能框選多張批次處理。最下方一條提醒：參數一律寫在提示詞最後面，中間留一個空格、不加標點，例如 a paper boat on a wet street --ar 1:1 --v 8.2 --s 100。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

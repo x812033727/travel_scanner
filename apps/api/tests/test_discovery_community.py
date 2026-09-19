@@ -13,8 +13,6 @@ from uuid import UUID, uuid4
 import pytest
 from pydantic import ValidationError
 from sqlalchemy import delete, func, inspect, null, select, update
-from test_community_foundation import Harness
-from test_community_foundation import harness as community_harness
 
 from app.community import collections as private_collections
 from app.community.content import public_media_refs, published_post, serialize_post
@@ -43,6 +41,8 @@ from app.models import (
     User,
 )
 from app.problems import AppError
+from tests.test_community_foundation import Harness
+from tests.test_community_foundation import harness as community_harness
 
 VIDEO = "dQw4w9WgXcQ"
 OTHER_VIDEO = "abcdefghijk"

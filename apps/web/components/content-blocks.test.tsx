@@ -250,6 +250,11 @@ describe("the rich block guard", () => {
     expect(isContentBlockList([summary(2)])).toBe(false);
   });
 
+  it("accepts an image's long description as text and refuses anything else there", () => {
+    expect(isRichContentBlockList([{ ...image, description: "一般室 52,200 韓元。" }])).toBe(true);
+    expect(isRichContentBlockList([{ ...image, description: ["not", "text"] }])).toBe(false);
+  });
+
   it.each([
     ["an image hosted elsewhere", { ...image, src: "https://example.test/x.jpg" }],
     ["an image without a size", { ...image, width: undefined }],
@@ -345,5 +350,53 @@ describe("rendering the rich blocks", () => {
   it("drops an image whose path fails the rule rather than fetching it", () => {
     render(<ContentBlocks blocks={[{ ...blocks[1], src: "https://example.test/x.jpg" } as RichContentBlock]} />);
     expect(screen.queryByRole("img")).toBeNull();
+  });
+});
+
+/**
+ * A diagram's long description: its `<desc>`, lifted into the block. It has to reach the HTML
+ * (the fares and times it states appear nowhere else in the article) without changing what a
+ * reader sees first, and without ever inlining the SVG, whose path is vetted but whose
+ * contents are not.
+ */
+describe("an image's long description", () => {
+  const labels = { imageCredit: "圖片：", imageDescription: "閱讀完整文字說明", tip: "小提醒", warning: "注意", info: "補充" };
+  const photo: RichContentBlock = {
+    type: "image", src: "/guides/korea-ktx-srt-ticket-guide/diagram-1.svg", alt: "首爾／水西到釜山的 KTX 與 SRT 路線圖",
+    width: 1600, height: 900, caption: "先看兩條線各從哪一站出發。",
+    credit: { author: "Mokaair", license: "© Mokaair", source_url: null },
+  };
+  const diagram: RichContentBlock = {
+    ...photo, description: "SRT 水西到釜山最快 2 小時 11 分，一天 44 班，一般室 52,200 韓元、特室 75,700 韓元。",
+  };
+
+  it("sits in the figure after the caption as a disclosure that is folded by default", () => {
+    const { container } = render(<ContentBlocks blocks={[diagram]} labels={labels} />);
+    const figure = container.querySelector("figure")!;
+    const details = figure.querySelector("details")!;
+    expect(details.open).toBe(false);
+    expect(figure.querySelector("figcaption")!.nextElementSibling).toBe(details);
+    expect(within(details).getByText("閱讀完整文字說明").tagName).toBe("SUMMARY");
+    // Folded or not, the text is in the DOM: that is what a crawler reads.
+    expect(within(details).getByText(/52,200 韓元/).tagName).toBe("P");
+    expect(details.textContent).toContain("2 小時 11 分");
+  });
+
+  it("still references the SVG by its path and inlines none of its markup", () => {
+    const { container } = render(<ContentBlocks blocks={[diagram]} labels={labels} />);
+    expect(screen.getByRole("img", { name: photo.alt }).getAttribute("src")).toBe(photo.src);
+    expect(container.querySelector("svg")).toBeNull();
+    expect(container.innerHTML).not.toContain("<svg");
+  });
+
+  it("draws no disclosure for a picture without one, or with a blank one", () => {
+    const { container } = render(<ContentBlocks blocks={[photo, { ...photo, description: "  " }]} labels={labels} />);
+    expect(container.querySelectorAll("figure")).toHaveLength(2);
+    expect(container.querySelector("details")).toBeNull();
+  });
+
+  it("names the disclosure after the picture when a caller passes no words for it", () => {
+    render(<ContentBlocks blocks={[diagram]} />);
+    expect(screen.getByText(photo.alt, { selector: "summary" })).toBeTruthy();
   });
 });

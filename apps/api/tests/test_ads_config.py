@@ -36,7 +36,7 @@ async def ads_api(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[tuple]:
     loaded = AsyncMock(return_value=get_settings())
     monkeypatch.setattr(ads_router, "load_runtime_settings", loaded)
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(ads_router.router, prefix="/api/v1")
     async with AsyncClient(transport=ASGITransport(app), base_url="http://test") as client:
         yield client, loaded

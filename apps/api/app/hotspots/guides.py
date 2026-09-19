@@ -23,9 +23,10 @@ from app.destinations.localized import (
     COUNTRY_BY_CODE,
     city_words,
     country_label_for,
-    country_mentions,
+    district_words,
     mentions_country,
     mentions_place,
+    named_country,
 )
 from app.i18n import LOCALES, Locale
 from app.models import (
@@ -526,17 +527,22 @@ def foreign_place(
 
     A scorer that reads titles approves 「玉山山脈 > 交通部觀光署」 for 玉山祠 — the name it
     was searched with is right there. Reading the geography instead is decisive: a
-    candidate that names another country, and never this country, this city or this
-    attraction, is an introduction to somewhere else.
+    candidate that names another country, and never this country, this city, one of its
+    districts or this attraction, is an introduction to somewhere else. The country
+    reported is the one the text names most, not the first the catalog lists: a Taiwanese
+    blog index that mentions one 沖繩 trip is about Taiwan.
     """
     country = COUNTRY_BY_CODE.get((hotspot.country_code or "").upper())
-    mentions = country_mentions(text)
-    if country is None or not mentions or mentions_country(text, country):
+    named = named_country(text)
+    if country is None or named is None or named[0] == country:
         return None
-    for term in (hotspot.name, hotspot.city_name, hotspot.country_name, *own_terms):
+    if mentions_country(text, country):
+        return None
+    home = (hotspot.name, hotspot.city_name, hotspot.country_name, *own_terms)
+    for term in (*home, *district_words(hotspot.city_code)):
         if mentions_place(text, term):
             return None
-    return next(iter(mentions.values()))
+    return named[1]
 
 
 def manual_guide_filter() -> ColumnElement[bool]:

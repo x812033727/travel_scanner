@@ -236,6 +236,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左往右看：先選一個觸發節點，中間的 AI Agent 掛上模型、記憶與工具三種 sub-node，右邊是把結果送出去的一般節點。",
+          "description": "流程由左至右分成三段。左邊是觸發節點，可選 n8n Form Trigger、Webhook、Schedule Trigger 或 Chat Trigger，工作流從這裡開始。中間是 AI Agent 節點，它決定要呼叫哪個工具、用什麼順序，官方文件規定至少要接一個工具 sub-node。AI Agent 下方掛著三組 sub-node：模型（chat model）可選 OpenAI Chat Model、Anthropic Chat Model、Google Gemini Chat Model 或本機的 Ollama Chat Model；記憶（memory）最容易上手的是 Simple Memory，也可換成 Redis、Postgres 或 MongoDB 的 Chat Memory 存久一點；工具（tools）包含 Call n8n Workflow Tool、Custom Code Tool、HTTP Request Tool，以及連外部伺服器的 MCP Client Tool。右邊是輸出節點，寄信用 Gmail、通知用 Slack、寫紀錄用 Google Sheets，LINE 則用 HTTP Request 節點。圖下方提醒：金鑰一律建成憑證，不要打在節點欄位裡；AI 節點讀到的外部內容當成不可信輸入，先用測試資料手動執行、看過執行紀錄再發布。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

@@ -90,7 +90,9 @@ async def test_anonymous_hotspot_content_stops_before_protected_work(
 
 @pytest.mark.asyncio
 async def test_public_rankings_hide_source_urls(monkeypatch: pytest.MonkeyPatch) -> None:
-    rankings = AsyncMock(return_value={"items": [{"id": "one", "source_urls": ["https://example.com"]}]})
+    rankings = AsyncMock(
+        return_value={"items": [{"id": "one", "source_urls": ["https://example.com"]}]}
+    )
     monkeypatch.setattr(hotspots_router, "list_rankings", rankings)
     monkeypatch.setattr(
         hotspots_router,
@@ -170,7 +172,7 @@ async def test_authenticated_photo_miss_calls_google_once_then_uses_cache(
         "load_runtime_settings",
         AsyncMock(return_value=Settings(google_maps_api_key="key")),
     )
-    monkeypatch.setattr(places_router.httpx, "AsyncClient", lambda **_kwargs: provider)
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **_kwargs: provider)
     monkeypatch.setattr(places_router, "record_google_maps_request", usage)
     monkeypatch.setattr(places_router, "enforce_named_rate_limit", limiter)
     request = Request(

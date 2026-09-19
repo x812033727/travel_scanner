@@ -69,6 +69,7 @@ def test_pending_content_preserves_prior_identities_and_marks_gaps(city, reviewe
             with pytest.raises(AppError, match="service_identity_required"):
                 require_product_review(p)
             area = next(a for a in city_areas("ICN") if a.code == p.facts.area_code)
+            assert p.facts.latitude is not None and p.facts.longitude is not None
             assert (
                 haversine_km(area.latitude, area.longitude, p.facts.latitude, p.facts.longitude)
                 <= area.radius_km

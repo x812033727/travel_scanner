@@ -4,7 +4,7 @@ import importlib.util
 import os
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -111,7 +111,7 @@ async def fixture(monkeypatch):
         AsyncMock(side_effect=AssertionError("Direct Klook must not request Travelpayouts links")),
     )
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(admin.router, prefix="/api/v1")
     app.include_router(hotel_admin.router, prefix="/api/v1")
     app.include_router(router.router, prefix="/api/v1")
@@ -602,7 +602,7 @@ async def test_postgres_channel_migration_preserves_ids_and_refuses_unsafe_downg
         def verify(sync):
             if fresh:
                 # This is the same current metadata path used by 0001_initial.
-                TravelServiceBrand.__table__.create(sync)
+                cast(sa.Table, TravelServiceBrand.__table__).create(sync)
             else:
                 # Frozen 0063-era table: the column and new constraints do not exist.
                 table = sa.Table(

@@ -154,7 +154,9 @@ def _exercise_0042(connection: Connection) -> None:
         connection.execute(
             sa.text("SELECT id, notes FROM trip_plans WHERE id IN (:kept, :blank, :absent)"),
             {"kept": kept, "blank": blank, "absent": absent},
-        ).all()
+        )
+        .tuples()
+        .all()
     )
     assert notes[kept] == "  帶泳衣，週三看煙火  "
     assert notes[blank] is None
@@ -246,7 +248,9 @@ def _exercise_0044(connection: Connection) -> None:
             sa.text(
                 "SELECT slug, review_status FROM travel_hotspots WHERE slug LIKE 'dead-branch-%'"
             )
-        ).all()
+        )
+        .tuples()
+        .all()
     )
     assert statuses == {
         "dead-branch-quoted": "approved",
@@ -453,8 +457,7 @@ def _plant_event(session: Session, name: str) -> None:
 
 def _constraint_names(connection: Connection) -> set[str]:
     return {
-        check["name"]
-        for check in sa.inspect(connection).get_check_constraints("analytics_events")
+        check["name"] for check in sa.inspect(connection).get_check_constraints("analytics_events")
     }
 
 
@@ -494,7 +497,6 @@ async def test_0055_rollback_restores_the_check_only_when_every_row_still_fits()
         await connection.run_sync(
             in_a_rolled_back_transaction(_exercise_0055_rollback_with_a_new_name_present)
         )
-
 
 
 def _guide_checks(connection: Connection, table: str) -> dict[str, str]:
@@ -546,14 +548,27 @@ def _exercise_0074_on_a_0072_shaped_database(connection: Connection) -> None:
     run_upgrade(connection, "0074_lifestyle_guides")
 
     assert "ck_guide_topic_section" in _guide_checks(connection, "guide_topics")
-    assert connection.execute(
-        sa.text("SELECT section FROM guide_topics WHERE slug = 'operator-added'")
-    ).scalar() == "travel"
-    life = connection.execute(
-        sa.text("SELECT slug FROM guide_topics WHERE section = 'life' ORDER BY display_order")
-    ).scalars().all()
+    assert (
+        connection.execute(
+            sa.text("SELECT section FROM guide_topics WHERE slug = 'operator-added'")
+        ).scalar()
+        == "travel"
+    )
+    life = (
+        connection.execute(
+            sa.text("SELECT slug FROM guide_topics WHERE section = 'life' ORDER BY display_order")
+        )
+        .scalars()
+        .all()
+    )
     assert life == [
-        "ai", "tutorial", "software", "gadgets", "productivity", "daily", "misc",
+        "ai",
+        "tutorial",
+        "software",
+        "gadgets",
+        "productivity",
+        "daily",
+        "misc",
     ]
     assert "'life'" in _guide_checks(connection, "guide_articles")["ck_guide_article_kind"]
 

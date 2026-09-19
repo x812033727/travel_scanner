@@ -9,8 +9,6 @@ from alembic.migration import MigrationContext
 from alembic.operations import Operations
 from sqlalchemy import inspect, select
 from sqlalchemy.ext.asyncio import create_async_engine
-from test_discovery_flow import block_detail_provider_clients, seed_reservation_merchant
-from test_travel_discovery import harness as harness
 
 from app.foods.admin_router import (
     MerchantPlatformLinkPayload,
@@ -41,6 +39,8 @@ from app.models import (
     User,
 )
 from app.problems import AppError
+from tests.test_discovery_flow import block_detail_provider_clients, seed_reservation_merchant
+from tests.test_travel_discovery import harness as harness
 
 
 @pytest.mark.parametrize(
@@ -493,7 +493,7 @@ async def test_platform_save_preserves_merchant_relations_and_other_platform(
             [dict(item) for item in (await session.execute(select(model.__table__))).mappings()]
             for model in models
         ]
-        created = await update_merchant_platform_link(
+        created: dict[str, Any] = await update_merchant_platform_link(
             merchant.id,
             MerchantPlatformLinkPayload(
                 provider=provider, status="verified", expected_checked_at=None,
@@ -517,7 +517,7 @@ async def test_platform_save_preserves_merchant_relations_and_other_platform(
         audit = (await session.scalars(select(AdminAuditLog))).one()
         assert audit.actor_user_id == admin.id
         assert audit.metadata_json["provider"] == provider
-        refreshed = await get_merchant_platform_links(merchant.id, admin, session)
+        refreshed: dict[str, Any] = await get_merchant_platform_links(merchant.id, admin, session)
         assert refreshed["platform_links"] == created["platform_links"]
         assert len(refreshed["available_platforms"]) == len(PLATFORMS_BY_PROVIDER)
 

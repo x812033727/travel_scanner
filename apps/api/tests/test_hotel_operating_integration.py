@@ -3,6 +3,7 @@
 import json
 from datetime import UTC, date, datetime
 from types import SimpleNamespace
+from typing import cast
 from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
@@ -13,12 +14,14 @@ from starlette.requests import Request
 from starlette.responses import Response
 
 from app.config import Settings
+from app.db import get_session
 from app.models import (
     AffiliateClick,
     HotelBookingClick,
     HotelBookingOption,
     TravelServiceProduct,
     TripPlan,
+    User,
 )
 from app.problems import AppError, app_error_handler
 from app.travel_services import hotel_options, hotel_quotes, router, service, stay22_script
@@ -168,7 +171,7 @@ async def test_selection_rejects_overlap_before_hydrating_or_writing_trip(bounda
     with pytest.raises(AppError) as caught:
         await router.select_service(
             trip.id, SelectInput(product_id=product.id, version=2), "operation-1",
-            SimpleNamespace(id=uuid4()), session,
+            cast(User, SimpleNamespace(id=uuid4())), session,
         )
     assert caught.value.code == "hotel_operating_unavailable"
     load_items.assert_not_called()
@@ -246,9 +249,9 @@ async def test_browser_post_form_cannot_bypass_rule(boundaries, monkeypatch, bod
     session.add = Mock()
     monkeypatch.setattr(hotel_options, "matching_offer", AsyncMock(return_value=None))
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(router.router, prefix="/api/v1")
-    app.dependency_overrides[router.get_session] = lambda: session
+    app.dependency_overrides[get_session] = lambda: session
     async with AsyncClient(transport=ASGITransport(app), base_url="http://test") as client:
         response = await client.post(
             f"/api/v1/travel-services/{product.id}/booking-options/"
@@ -295,9 +298,9 @@ def test_import_retains_valid_operating_policy_and_rejects_bad_policy():
 
 async def browser_click(session, path, body="check_in=2027-01-12&check_out=2027-01-14"):
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(router.router, prefix="/api/v1")
-    app.dependency_overrides[router.get_session] = lambda: session
+    app.dependency_overrides[get_session] = lambda: session
     async with AsyncClient(transport=ASGITransport(app), base_url="http://test") as client:
         return await client.post(
             f"/api/v1/{path}", content=body,
@@ -414,9 +417,9 @@ async def test_legacy_affiliate_saved_query_blocks_before_resolution(
 
 async def browser_booking_details(session, product_id):
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(router.router, prefix="/api/v1")
-    app.dependency_overrides[router.get_session] = lambda: session
+    app.dependency_overrides[get_session] = lambda: session
     async with AsyncClient(transport=ASGITransport(app), base_url="http://test") as client:
         return await client.get(f"/api/v1/travel-services/{product_id}/booking-details")
 

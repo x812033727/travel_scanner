@@ -15,7 +15,7 @@ import pytest
 from app.guides import autolink
 from app.guides.autolink import AliasIndex, autolink_document, parse_site_link, relink_document
 from app.guides.pack_cli import main
-from app.guides.schemas import GuideDocument
+from app.guides.schemas import GuideDocument, Kind
 
 
 def pack(slug: str, blocks: list[dict], *, kind: str = "life", aliases: dict | None = None) -> dict:
@@ -50,7 +50,7 @@ def write(directory: Path, *packs: dict) -> Path:
     return directory
 
 
-KINDS = {"ai-term-fine-tuning": "life", "narita-to-tokyo": "howto", "me": "life"}
+KINDS: dict[str, Kind] = {"ai-term-fine-tuning": "life", "narita-to-tokyo": "howto", "me": "life"}
 
 
 def test_site_links_name_an_article_only_under_a_locale_and_an_article_route() -> None:

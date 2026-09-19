@@ -20,9 +20,9 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.auth.service import current_user
 from app.config import get_settings
-from app.db import get_session
+from app.db import Base, get_session
 from app.destinations.catalog import match_destination
-from app.models import Base, SearchRequest, TripPlan, TripPlanItem, User
+from app.models import SearchRequest, TripPlan, TripPlanItem, User
 from app.problems import AppError, app_error_handler
 from app.search.schemas import SearchCreate, SearchModule
 from app.trips import router as trips
@@ -137,6 +137,7 @@ async def harness(request, monkeypatch):
                         "selection_source": "user",
                         "price_snapshot": {"total_price": "18000", "currency": "TWD"},
                     }
+            assert trip.start_date is not None
             session.add(
                 TripPlanItem(
                     trip_plan_id=trip.id,
@@ -154,7 +155,7 @@ async def harness(request, monkeypatch):
             )
             await session.commit()
             app = FastAPI()
-            app.add_exception_handler(AppError, app_error_handler)
+            app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
             app.include_router(trips.router)
             app.dependency_overrides[get_session] = lambda: session
 

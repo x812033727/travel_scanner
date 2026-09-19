@@ -150,7 +150,8 @@ export function AdminGuidesPanel() {
   const row = detail?.locales.find((entry) => entry.locale === locale) ?? null;
   const blockLabels: ContentBlockLabels = {
     summary: t("blocks.summary"), faq: t("blocks.faq"),
-    imageCredit: t("imageCredit"), tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
+    imageCredit: t("imageCredit"), imageDescription: t("imageDescriptionToggle"),
+    tip: t("toneTip"), warning: t("toneWarning"), info: t("toneInfo"),
     code: seriesCopy(interfaceLocale),
   };
   const extraCopy = seriesCopy(interfaceLocale);

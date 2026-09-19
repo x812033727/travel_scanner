@@ -236,6 +236,7 @@ def test_additive_migration_preserves_legacy_identity_and_coordinates(monkeypatc
 
     path = Path(__file__).parents[1] / "migrations/versions/0070_map_identity_metadata.py"
     spec = importlib.util.spec_from_file_location("map_identity_migration", path)
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
@@ -254,13 +255,14 @@ def test_additive_migration_preserves_legacy_identity_and_coordinates(monkeypatc
             )
         )
         before = connection.execute(sa.text("SELECT * FROM food_merchants")).first()
+        assert before is not None
         with Operations.context(MigrationContext.configure(connection)):
             module.upgrade()
             module.upgrade()
             after = connection.execute(sa.text("SELECT * FROM food_merchants")).first()
             assert after[:5] == tuple(before) and after[5] == "{}"
             module.downgrade()
-            assert tuple(
-                connection.execute(sa.text("SELECT * FROM food_merchants")).first()
-            ) == tuple(before)
+            restored = connection.execute(sa.text("SELECT * FROM food_merchants")).first()
+            assert restored is not None
+            assert tuple(restored) == tuple(before)
     engine.dispose()

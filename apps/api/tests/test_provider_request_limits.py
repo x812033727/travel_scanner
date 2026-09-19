@@ -85,7 +85,7 @@ async def test_route_compute_rejects_unbounded_provider_fanout(
     trip_id = uuid4()
     user_id = uuid4()
     trip = SimpleNamespace(id=trip_id, version=1)
-    rows = [
+    rows: list[object] = [
         SimpleNamespace(
             day_date=date(2026, 9, 1),
             position=position,

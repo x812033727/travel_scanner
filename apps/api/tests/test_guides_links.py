@@ -5,8 +5,9 @@ who cites this article. Proven through the endpoints the editor and the reader u
 from __future__ import annotations
 
 from datetime import timedelta
+from typing import cast
 
-from sqlalchemy import func, select, update
+from sqlalchemy import Table, func, select, update
 
 from app.guides.links_cli import check_guide_links, rebuild_guide_links
 from app.guides.models import GuideArticle, GuideArticleLink, GuideArticleLocale
@@ -288,7 +289,7 @@ async def test_rebuild_restores_missing_rows_and_drops_stale_ones(database, acto
         await published(api, "source", linking("來源", ("howto", "target")))
         await published(api, "gone", linking("撤下", ("howto", "target")), kind="intel")
     async with database() as session:
-        await session.execute(GuideArticleLink.__table__.delete())
+        await session.execute(cast(Table, GuideArticleLink.__table__).delete())
         gone = await session.scalar(select(GuideArticle).where(GuideArticle.slug == "gone"))
         assert gone is not None
         # A withdrawal that bypassed the write path leaves the pointer clear and (after the

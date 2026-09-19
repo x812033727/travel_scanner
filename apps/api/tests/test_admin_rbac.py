@@ -211,7 +211,7 @@ async def test_all_owner_removing_entrypoints_use_the_shared_guard(
         entered.append("entered")
         yield
 
-    expected = AdminUserDetail.model_construct()
+    expected = AdminUserDetail.model_construct()  # type: ignore[call-arg]  # sentinel only
     role_impl = AsyncMock(return_value=expected)
     suspension_impl = AsyncMock(return_value=expected)
     erasure_impl = AsyncMock(return_value=expected)
@@ -570,7 +570,7 @@ async def test_permanent_suspension_revokes_sessions_and_records_reason(
         is_active=True,
     )
     session = AsyncMock(spec=AsyncSession)
-    detail = AdminUserDetail.model_construct()
+    detail = AdminUserDetail.model_construct()  # type: ignore[call-arg]  # sentinel only
     monkeypatch.setattr(admin_users, "_user_and_account", AsyncMock(return_value=(target, None)))
     monkeypatch.setattr(admin_users, "_ensure_not_last_owner", AsyncMock())
     monkeypatch.setattr(admin_users, "_idempotency_replay", AsyncMock(return_value=False))
@@ -769,7 +769,7 @@ async def test_erasure_is_scheduled_for_24_hours_and_wakes_worker(
     target = User(id=uuid4(), email="member@example.com", password_hash="unused", is_active=True)
     session = AsyncMock(spec=AsyncSession)
     session.scalar.return_value = None
-    detail = AdminUserDetail.model_construct()
+    detail = AdminUserDetail.model_construct()  # type: ignore[call-arg]  # sentinel only
     monkeypatch.setattr(admin_users, "_user_and_account", AsyncMock(return_value=(target, None)))
     monkeypatch.setattr(admin_users, "_ensure_not_last_owner", AsyncMock())
     monkeypatch.setattr(admin_users, "_idempotency_replay", AsyncMock(return_value=False))
@@ -1005,11 +1005,8 @@ async def test_cancel_erasure_locks_job_before_user_and_request(
 
     session.scalar.side_effect = scalar
     session.scalars.side_effect = scalars
-    monkeypatch.setattr(
-        admin_users,
-        "admin_user_detail",
-        AsyncMock(return_value=AdminUserDetail.model_construct()),
-    )
+    detail = AdminUserDetail.model_construct()  # type: ignore[call-arg]  # sentinel only
+    monkeypatch.setattr(admin_users, "admin_user_detail", AsyncMock(return_value=detail))
 
     await admin_users.cancel_admin_erasure(
         session,

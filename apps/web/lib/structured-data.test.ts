@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { siteUrl } from "@/lib/seo";
-import { definedTerm, faqPage, breadcrumbs, guideArticle, itemList, organization, touristDestination, webSite } from "@/lib/structured-data";
+import {
+  definedTerm, faqPage, breadcrumbs, foodEstablishment, foodEstablishments, guideArticle, itemList, organization,
+  touristDestination, webSite, type MerchantCard,
+} from "@/lib/structured-data";
 
 const parse = (value: object | null) => JSON.parse(JSON.stringify(value));
 
@@ -279,5 +282,100 @@ describe("definedTerm", () => {
     expect(data.inDefinedTermSet).toEqual({ "@type": "DefinedTermSet", name: "AI 名詞總索引", url: `${siteUrl}/zh-TW/life/ai-terms-index` });
     expect(parse(definedTerm("zh-TW", { path: "/life/x", name: "X", description: "d", set: { name: "S", path: "/life/s" } })))
       .not.toHaveProperty("alternateName");
+  });
+});
+
+describe("foodEstablishment", () => {
+  // The labels the card can badge, as the page resolves them for the reader's language.
+  const awards = { bib_gourmand: "必比登推介", one_star: "米其林一星" };
+  const hankook: MerchantCard = {
+    id: "merchant-1",
+    name: "Hankook Jib",
+    local_name: "한국집",
+    destination_name: "首爾",
+    address: "Seoul, Jung-gu",
+    sources: [
+      { title: "Michelin Guide Seoul", url: "https://guide.michelin.example/hankook-jib", distinction: "bib_gourmand" },
+      // The card prints this title as text: `safeExternalHref` refuses the scheme, so no link.
+      { title: "Visit Seoul listing", url: "javascript:alert(1)", distinction: null },
+    ],
+  };
+
+  it("describes the card: name, original-script name, address line, city, badge and sources", () => {
+    const data = parse(foodEstablishment("zh-TW", hankook, awards));
+    expect(data["@context"]).toBe("https://schema.org");
+    expect(data["@type"]).toBe("FoodEstablishment");
+    // The card's own anchor, which the share button hands out.
+    expect(data["@id"]).toBe(`${siteUrl}/zh-TW/foods#merchant-merchant-1`);
+    expect(data.name).toBe("Hankook Jib");
+    expect(data.alternateName).toBe("한국집");
+    expect(data.address).toEqual({ "@type": "PostalAddress", streetAddress: "Seoul, Jung-gu", addressLocality: "首爾" });
+    expect(data.award).toBe("必比登推介");
+    expect(data.citation).toEqual([
+      { "@type": "CreativeWork", name: "Michelin Guide Seoul", url: "https://guide.michelin.example/hankook-jib" },
+      { "@type": "CreativeWork", name: "Visit Seoul listing" },
+    ]);
+  });
+
+  it("badges the first source the card would badge, and nothing when no source carries a known one", () => {
+    const first = parse(foodEstablishment("en", {
+      ...hankook,
+      sources: [
+        { title: "Guide", url: "https://a.example/", distinction: "one_star" },
+        { title: "Guide, later edition", url: "https://b.example/", distinction: "bib_gourmand" },
+      ],
+    }, awards));
+    expect(first.award).toBe("米其林一星");
+    // A distinction the card has no label for stays off the graph as it stays off the card.
+    const unknown = parse(foodEstablishment("en", {
+      ...hankook, sources: [{ title: "Guide", url: "https://a.example/", distinction: "plate" }],
+    }, awards));
+    expect(unknown).not.toHaveProperty("award");
+    const none = parse(foodEstablishment("en", { ...hankook, sources: [{ ...hankook.sources[0], distinction: null }] }, awards));
+    expect(none).not.toHaveProperty("award");
+    expect(none.citation).toHaveLength(1);
+  });
+
+  it("omits what the card has no value for rather than emitting an empty field", () => {
+    const data = parse(foodEstablishment("en", { ...hankook, local_name: "Hankook Jib", address: null, sources: [] }, awards));
+    expect(data).not.toHaveProperty("alternateName");
+    expect(data.address).toEqual({ "@type": "PostalAddress", addressLocality: "首爾" });
+    expect(data).not.toHaveProperty("citation");
+    expect(data).not.toHaveProperty("award");
+  });
+
+  it("claims nothing the card does not show: no rating, review, hours, coordinates or website", () => {
+    const data = parse(foodEstablishment("en", hankook, awards));
+    expect(Object.keys(data).sort()).toEqual(["@context", "@id", "@type", "address", "alternateName", "award", "citation", "name"]);
+    // Nothing on this site collects a rating; the interest score is Mokaair's own signal.
+    const text = JSON.stringify(data);
+    for (const forbidden of ["aggregateRating", "\"review\"", "Review", "Rating", "openingHours", "geo", "sameAs", "servesCuisine"]) {
+      expect(text).not.toContain(forbidden);
+    }
+  });
+});
+
+describe("foodEstablishments", () => {
+  const awards = { bib_gourmand: "Bib Gourmand" };
+  const card: MerchantCard = {
+    id: "a", name: "A", local_name: "A", destination_name: "Tokyo", address: "東京都中央区築地5-2-1",
+    sources: [{ title: "Tokyo tourism", url: "https://www.gotokyo.org/a", distinction: null }],
+  };
+
+  it("marks up the seed's items, one FoodEstablishment each, in the order the cards render", () => {
+    const seed = { total: 2, has_more: false, next_cursor: null, items: [card, { ...card, id: "b", name: "B" }], facets: {} };
+    const data = foodEstablishments("ja", seed, awards).map(parse);
+    expect(data.map((node) => node["@type"])).toEqual(["FoodEstablishment", "FoodEstablishment"]);
+    expect(data.map((node) => node["@id"])).toEqual([`${siteUrl}/ja/foods#merchant-a`, `${siteUrl}/ja/foods#merchant-b`]);
+  });
+
+  it("describes no merchant the server did not draw: a seed that never arrived, or is not a merchant list", () => {
+    // The API withholds moderated and unverified merchants before they reach `items`; what is
+    // left for the page is the seed that failed to load, when the browser renders after hydration.
+    expect(foodEstablishments("en", null, awards)).toEqual([]);
+    expect(foodEstablishments("en", undefined, awards)).toEqual([]);
+    expect(foodEstablishments("en", { countries: [] }, awards)).toEqual([]);
+    expect(foodEstablishments("en", { items: [] }, awards)).toEqual([]);
+    expect(foodEstablishments("en", "not a list", awards)).toEqual([]);
   });
 });

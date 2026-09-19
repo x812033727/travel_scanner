@@ -19,6 +19,7 @@ from app.db import engine
 async def test_legacy_hotels_keep_ids_and_trip_links_and_upgrade_is_idempotent():
     path = Path(__file__).parents[1] / "migrations/versions/0057_hotel_booking_options.py"
     spec = importlib.util.spec_from_file_location("hotel_option_migration", path)
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     await engine.dispose(close=False)

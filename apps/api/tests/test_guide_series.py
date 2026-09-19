@@ -1,15 +1,18 @@
 """Publication boundaries are identical for the directory, navigation and inline links."""
 
 from datetime import timedelta
+from typing import cast
 
 import pytest
 from pydantic import ValidationError
 from sqlalchemy import update
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.guides.admin_service import _ordinary_urls
 from app.guides.models import GuideArticle, GuideArticleLocale
 from app.guides.schemas import GuideDocument
 from app.guides.series import catalogues
+from app.i18n import Locale
 from tests import test_guides as guides
 
 database = guides.database
@@ -161,21 +164,23 @@ async def test_codex_navigation_uses_live_locale_withdrawal_and_unit_boundaries(
         }
 
     monkeypatch.setattr(series, "published_documents", documents)
-    for locale in ["zh-TW", "zh-CN", "en", "ja", "ko"]:
-        value = await series.article_navigation(None, "life", "codex-account-usage", locale)
+    session = cast(AsyncSession, None)  # published_documents is patched; nothing reads it
+    locales: list[Locale] = ["zh-TW", "zh-CN", "en", "ja", "ko"]
+    for locale in locales:
+        value = await series.article_navigation(session, "life", "codex-account-usage", locale)
         assert value.hub.title.startswith(locale)
         assert value.previous.slug == "codex-beginner-guide"
         assert value.next is None  # CLI is in the next unit, not the current route.
         assert value.current.minutes == 10
         assert value.current.operation_minutes
     public.remove("codex-account-usage")
-    directory = await series.public_series(None, "codex", "ja")
+    directory = await series.public_series(session, "codex", "ja")
     assert "codex-account-usage" not in {entry.slug for entry in directory.entries}
     assert all("codex-account-usage" not in path.slugs for path in directory.paths)
-    nav = await series.article_navigation(None, "life", "codex-beginner-guide", "ja")
+    nav = await series.article_navigation(session, "life", "codex-beginner-guide", "ja")
     assert nav.next is None
     public.remove("codex-learning-hub")
-    assert await series.public_series(None, "codex", "ja") is None
+    assert await series.public_series(session, "codex", "ja") is None
 
 
 def rich_document():

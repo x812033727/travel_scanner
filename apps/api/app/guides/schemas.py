@@ -156,6 +156,11 @@ class ImageBlock(StrictModel):
     width: int = Field(ge=1, le=MAX_IMAGE_SIDE, strict=True)
     height: int = Field(ge=1, le=MAX_IMAGE_SIDE, strict=True)
     caption: PlainText = Field(default="", max_length=300)
+    # A diagram's long description: the fares, times and labels its ``<desc>`` states, as text
+    # in the document, so a page that references the file rather than inlining it still
+    # carries them. Drawn folded under the caption; empty for a photograph. Capped where a
+    # paragraph is.
+    description: PlainText = Field(default="", max_length=4000)
     credit: ImageCredit | None = None
 
 

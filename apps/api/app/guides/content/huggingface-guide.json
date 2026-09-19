@@ -233,7 +233,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "text": "GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體",
               "kind": "life",
               "slug": "gguf-quantization-explained"
             }
@@ -318,6 +318,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從搜尋到本機執行的五個關卡，右欄是每一關要看的東西與要下的指令。",
+          "description": "由上而下的五段流程圖。第一段是搜尋與篩選：Models 頁左欄可選 Tasks、Libraries、Languages、Licenses 等篩選欄，要找 GGUF 量化檔就用函式庫標籤篩選，篩選條件會寫進網址列。第二段是讀模型頁：Model card 看說明，Files and versions 是檔案與提交歷史，標籤列顯示任務、函式庫與授權，授權標籤來自模型卡的 YAML。第三段是確認授權與 gated：授權代號是 other 就要去讀倉庫裡的 LICENSE 檔，標籤不是法律意見；gated 模型要登入並按同意，作者可以設自動或人工核准。第四段是下載：hf auth login 之後用 hf download，先加 --dry-run 看檔案大小，預設會存進 HF_HOME 指定的快取，要指定資料夾用 --local-dir。第五段是本機執行：GGUF 檔交給 llama.cpp、Ollama、LM Studio 或 GPT4All，safetensors 交給 transformers 之類的函式庫載入。圖下方註記：下載公開模型不需要帳號，gated 模型一定要登入。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

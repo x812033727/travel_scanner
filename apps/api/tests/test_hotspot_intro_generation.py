@@ -23,9 +23,10 @@ from app.hotspots.intro_generation import (
     length_ok,
     review_draft,
 )
+from app.i18n import Locale
 from app.models import TravelHotspot
 
-LOCALES = ["zh-TW", "en"]
+LOCALES: list[Locale] = ["zh-TW", "en"]
 
 
 class FakeProvider:
@@ -156,7 +157,9 @@ async def test_the_place_s_own_text_never_becomes_an_instruction() -> None:
 
 
 @pytest.mark.asyncio
-async def test_a_draft_that_states_opening_hours_never_reaches_the_queue() -> None:
+async def test_a_draft_that_states_opening_hours_never_reaches_the_queue(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     provider = FakeProvider(
         [draft("zh-TW", GOOD_ZH.replace("清晨人最少", "營業時間 09:00 到 17:00"))]
     )
@@ -167,17 +170,13 @@ async def test_a_draft_that_states_opening_hours_never_reaches_the_queue() -> No
         written.append(kwargs["locale"])
         return SimpleNamespace(), True
 
-    original = intro_generation.upsert_hotspot_intro_draft
-    intro_generation.upsert_hotspot_intro_draft = fake_upsert  # type: ignore[assignment]
-    try:
-        report = await generate_intro_drafts(
-            session,  # type: ignore[arg-type]
-            hotspot(),
-            locales=["zh-TW"],
-            provider=provider,  # type: ignore[arg-type]
-        )
-    finally:
-        intro_generation.upsert_hotspot_intro_draft = original  # type: ignore[assignment]
+    monkeypatch.setattr(intro_generation, "upsert_hotspot_intro_draft", fake_upsert)
+    report = await generate_intro_drafts(
+        session,  # type: ignore[arg-type]
+        hotspot(),
+        locales=["zh-TW"],
+        provider=provider,  # type: ignore[arg-type]
+    )
 
     assert written == []
     assert report["created"] == []
@@ -186,7 +185,9 @@ async def test_a_draft_that_states_opening_hours_never_reaches_the_queue() -> No
 
 
 @pytest.mark.asyncio
-async def test_good_drafts_are_stored_as_pending_with_their_provenance() -> None:
+async def test_good_drafts_are_stored_as_pending_with_their_provenance(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     provider = FakeProvider([draft("zh-TW", GOOD_ZH), draft("en", GOOD_EN)])
     session = FakeSession()
     calls: list[dict[str, Any]] = []
@@ -195,18 +196,14 @@ async def test_good_drafts_are_stored_as_pending_with_their_provenance() -> None
         calls.append(kwargs)
         return SimpleNamespace(), True
 
-    original = intro_generation.upsert_hotspot_intro_draft
-    intro_generation.upsert_hotspot_intro_draft = fake_upsert  # type: ignore[assignment]
-    try:
-        report = await generate_intro_drafts(
-            session,  # type: ignore[arg-type]
-            hotspot(),
-            locales=LOCALES,
-            provider=provider,  # type: ignore[arg-type]
-            run_id=UUID(int=7),
-        )
-    finally:
-        intro_generation.upsert_hotspot_intro_draft = original  # type: ignore[assignment]
+    monkeypatch.setattr(intro_generation, "upsert_hotspot_intro_draft", fake_upsert)
+    report = await generate_intro_drafts(
+        session,  # type: ignore[arg-type]
+        hotspot(),
+        locales=LOCALES,
+        provider=provider,  # type: ignore[arg-type]
+        run_id=UUID(int=7),
+    )
 
     assert report["created"] == ["zh-TW", "en"]
     assert report["usage"]["output_tokens"] == 20
@@ -222,46 +219,42 @@ async def test_good_drafts_are_stored_as_pending_with_their_provenance() -> None
 
 
 @pytest.mark.asyncio
-async def test_an_approved_paragraph_is_reported_as_kept_not_created() -> None:
+async def test_an_approved_paragraph_is_reported_as_kept_not_created(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     provider = FakeProvider([draft("zh-TW", GOOD_ZH)])
 
     async def fake_upsert(_session: Any, **kwargs: Any) -> tuple[Any, bool]:
         return SimpleNamespace(), False
 
-    original = intro_generation.upsert_hotspot_intro_draft
-    intro_generation.upsert_hotspot_intro_draft = fake_upsert  # type: ignore[assignment]
-    try:
-        report = await generate_intro_drafts(
-            FakeSession(),  # type: ignore[arg-type]
-            hotspot(),
-            locales=["zh-TW"],
-            provider=provider,  # type: ignore[arg-type]
-        )
-    finally:
-        intro_generation.upsert_hotspot_intro_draft = original  # type: ignore[assignment]
+    monkeypatch.setattr(intro_generation, "upsert_hotspot_intro_draft", fake_upsert)
+    report = await generate_intro_drafts(
+        FakeSession(),  # type: ignore[arg-type]
+        hotspot(),
+        locales=["zh-TW"],
+        provider=provider,  # type: ignore[arg-type]
+    )
 
     assert report["created"] == []
     assert report["kept_approved"] == ["zh-TW"]
 
 
 @pytest.mark.asyncio
-async def test_a_locale_the_model_skipped_is_reported_rather_than_lost() -> None:
+async def test_a_locale_the_model_skipped_is_reported_rather_than_lost(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     provider = FakeProvider([draft("zh-TW", GOOD_ZH)])
 
     async def fake_upsert(_session: Any, **kwargs: Any) -> tuple[Any, bool]:
         return SimpleNamespace(), True
 
-    original = intro_generation.upsert_hotspot_intro_draft
-    intro_generation.upsert_hotspot_intro_draft = fake_upsert  # type: ignore[assignment]
-    try:
-        report = await generate_intro_drafts(
-            FakeSession(),  # type: ignore[arg-type]
-            hotspot(),
-            locales=LOCALES,
-            provider=provider,  # type: ignore[arg-type]
-        )
-    finally:
-        intro_generation.upsert_hotspot_intro_draft = original  # type: ignore[assignment]
+    monkeypatch.setattr(intro_generation, "upsert_hotspot_intro_draft", fake_upsert)
+    report = await generate_intro_drafts(
+        FakeSession(),  # type: ignore[arg-type]
+        hotspot(),
+        locales=LOCALES,
+        provider=provider,  # type: ignore[arg-type]
+    )
 
     assert report["created"] == ["zh-TW"]
     assert {"locale": "en", "reason": "not_returned"} in report["rejected"]

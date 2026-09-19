@@ -2,6 +2,7 @@
 
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
+from typing import cast
 from unittest.mock import AsyncMock
 from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
@@ -9,7 +10,7 @@ from uuid import uuid4
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import select
+from sqlalchemy import Table, select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.config import Settings
@@ -32,12 +33,15 @@ from app.travel_services.stay22 import BOOKING_PLACEMENTS
 async def click_api(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[tuple]:
     engine = create_async_engine("sqlite+aiosqlite://")
     tables = [
-        TravelServiceProduct.__table__,
-        HotelBookingOption.__table__,
-        HotelBookingClick.__table__,
-        AffiliateClick.__table__,
-        TravelServiceBrand.__table__,
-        TravelServiceOffer.__table__,
+        cast(Table, model.__table__)
+        for model in (
+            TravelServiceProduct,
+            HotelBookingOption,
+            HotelBookingClick,
+            AffiliateClick,
+            TravelServiceBrand,
+            TravelServiceOffer,
+        )
     ]
     async with engine.begin() as connection:
         await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
@@ -87,7 +91,7 @@ async def click_api(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[tuple]:
                 hotel_options, "safe_click_target", AsyncMock(side_effect=lambda opt: opt.url)
             )
             app = FastAPI()
-            app.add_exception_handler(AppError, app_error_handler)
+            app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
             app.include_router(router.router, prefix="/api/v1")
             app.dependency_overrides[get_session] = lambda: session
             async with AsyncClient(transport=ASGITransport(app), base_url="http://test") as client:
@@ -332,8 +336,11 @@ async def test_discovery_nearby_offer_redirects_without_dropping_placement(
         id=uuid4(), code="booking", channel="travelpayouts", project_id="fixture"
     )
     offer = TravelServiceOffer(
-        id=uuid4(), product_id=product.id, brand_id=brand.id,
-        target_url="https://www.booking.com/city/jp/tokyo.html", scope="destination",
+        id=uuid4(),
+        product_id=product.id,
+        brand_id=brand.id,
+        target_url="https://www.booking.com/city/jp/tokyo.html",
+        scope="destination",
     )
     session.add_all([brand, offer])
     await session.commit()

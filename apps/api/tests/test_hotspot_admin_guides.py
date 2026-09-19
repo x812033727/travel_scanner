@@ -1,14 +1,18 @@
 from decimal import Decimal
 from types import SimpleNamespace
+from typing import cast
 from uuid import UUID, uuid4
 
 import pytest
+from redis.asyncio import Redis
+from sqlalchemy import Table
 
 from app.config import get_settings
 from app.hotspots import admin_router
 from app.hotspots.admin_router import ManualGuideRequest, add_manual_guide
 from app.hotspots.guides import GuideCandidate
 from app.models import HotspotGuide
+from app.problems import AppError
 
 
 class FakeSession:
@@ -115,7 +119,7 @@ async def test_manual_video_keeps_the_chosen_locale_and_is_approved(monkeypatch,
         url="https://youtu.be/dQw4w9WgXcQ",
     )
 
-    result = await add_manual_guide(payload, stack.user, stack.session, object())
+    result = await add_manual_guide(payload, stack.user, stack.session, cast(Redis, object()))
 
     candidate = stack.captured["candidate"]
     assert isinstance(candidate, GuideCandidate)
@@ -163,7 +167,7 @@ async def test_existing_link_is_relocalised_and_approved(monkeypatch, stack) -> 
         summary="一日遊路線",
     )
 
-    result = await add_manual_guide(payload, stack.user, stack.session, object())
+    result = await add_manual_guide(payload, stack.user, stack.session, cast(Redis, object()))
 
     candidate = stack.captured["candidate"]
     assert isinstance(candidate, GuideCandidate)
@@ -194,7 +198,7 @@ async def test_manual_article_can_stay_pending(monkeypatch, stack) -> None:
         approve=False,
     )
 
-    result = await add_manual_guide(payload, stack.user, stack.session, object())
+    result = await add_manual_guide(payload, stack.user, stack.session, cast(Redis, object()))
 
     assert result["created"] == 1
     assert result["review_status"] == "pending"
@@ -210,16 +214,16 @@ async def test_manual_article_requires_title_and_creator(monkeypatch, stack) -> 
         content_type="article",
         url="https://blog.example/tokyo",
     )
-    with pytest.raises(admin_router.AppError) as error:
-        await add_manual_guide(payload, stack.user, stack.session, object())
+    with pytest.raises(AppError) as error:
+        await add_manual_guide(payload, stack.user, stack.session, cast(Redis, object()))
     assert error.value.code == "hotspot_guide_metadata_required"
 
 
-def _provider_check(table: object) -> str:
+def _provider_check(table: Table) -> str:
     """The SQL text of a table's provider CHECK, as the model declares it."""
     from sqlalchemy import CheckConstraint
 
-    for constraint in table.constraints:  # type: ignore[attr-defined]
+    for constraint in table.constraints:
         if isinstance(constraint, CheckConstraint) and "provider" in constraint.name:
             return str(constraint.sqltext)
     raise AssertionError("no provider check constraint")
@@ -234,7 +238,8 @@ def test_every_provider_the_router_accepts_passes_the_run_check() -> None:
     from app.hotspots.ai_search import AI_PROVIDER_NAMES
     from app.models import HotspotGuideAISearchRun, HotspotIntroRun
 
-    for table in (HotspotGuideAISearchRun.__table__, HotspotIntroRun.__table__):
+    for model in (HotspotGuideAISearchRun, HotspotIntroRun):
+        table = cast(Table, model.__table__)
         check = _provider_check(table)
         for provider in AI_PROVIDER_NAMES:
             assert f"'{provider}'" in check, f"{table.name} rejects {provider}"
@@ -250,4 +255,4 @@ def test_the_guide_run_check_matches_the_migration_that_widened_it() -> None:
     versions = Path(__file__).resolve().parents[1] / "migrations/versions"
     migration = versions / "0051_guide_run_gemini.py"
     assert widened in migration.read_text("utf-8")
-    assert _provider_check(HotspotGuideAISearchRun.__table__) == widened
+    assert _provider_check(cast(Table, HotspotGuideAISearchRun.__table__)) == widened

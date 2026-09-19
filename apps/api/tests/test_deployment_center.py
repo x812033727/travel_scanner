@@ -6,7 +6,7 @@ import sqlite3
 import time
 from http import HTTPStatus
 from pathlib import Path
-from typing import cast
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
@@ -16,6 +16,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import can_deploy_user
 from app.config import Settings, get_settings
 from app.deployments import service as deployment_service
+from app.deployments.agent import DeploymentAgentClient
 from app.deployments.schemas import AgentCreateResponse, DeploymentCreateRequest, DeploymentOverview
 from app.models import AdminAuditLog, DeploymentRun, User
 from app.problems import AppError
@@ -170,7 +171,7 @@ async def test_deployment_job_id_mismatch_terminalizes_the_active_run(
         ),
     )
     monkeypatch.setattr(
-        deployment_service.DeploymentAgentClient,
+        DeploymentAgentClient,
         "create",
         AsyncMock(return_value=AgentCreateResponse(job_id=str(uuid4()), status="preflight")),
     )
@@ -220,7 +221,7 @@ async def test_deployment_job_id_mismatch_terminalizes_the_active_run(
 def test_enabled_production_deployments_require_secure_configuration(
     override: dict[str, object],
 ) -> None:
-    values: dict[str, object] = {
+    values: dict[str, Any] = {
         "app_env": "production",
         "app_secret_key": "jwt-secret-that-is-random-and-at-least-32-chars",
         "settings_encryption_key": "settings-secret-that-is-separate-and-at-least-32",

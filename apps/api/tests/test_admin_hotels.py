@@ -1,13 +1,13 @@
 import asyncio
 import os
 from collections.abc import AsyncIterator
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
 from pydantic import ValidationError
-from sqlalchemy import event, select, text
+from sqlalchemy import Table, event, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.config import Settings
@@ -43,7 +43,7 @@ async def session(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[AsyncSession
         connection.create_function("pg_advisory_xact_lock", 1, lambda _key: 0)
 
     tables = [
-        model.__table__
+        cast(Table, model.__table__)
         for model in (
             TravelServiceProduct,
             HotelBookingOption,

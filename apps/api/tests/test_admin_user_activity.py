@@ -1,9 +1,11 @@
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
+from typing import cast
 from uuid import UUID
 
 import pytest
+from sqlalchemy import Table
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.admin.users import list_admin_users
@@ -21,16 +23,19 @@ from app.models import (
 )
 
 TABLES = [
-    User.__table__,
-    UsageAccount.__table__,
-    SearchRequest.__table__,
-    TripPlan.__table__,
-    PriceAlert.__table__,
-    Post.__table__,
-    Comment.__table__,
-    AdminRoleAssignment.__table__,
-    UserAuthIdentity.__table__,
-    AccountErasureRequest.__table__,
+    cast(Table, model.__table__)
+    for model in (
+        User,
+        UsageAccount,
+        SearchRequest,
+        TripPlan,
+        PriceAlert,
+        Post,
+        Comment,
+        AdminRoleAssignment,
+        UserAuthIdentity,
+        AccountErasureRequest,
+    )
 ]
 
 

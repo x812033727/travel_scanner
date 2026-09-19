@@ -79,6 +79,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由上往下讀四層狀態與各層的官方控制項：每一層只讓下一層有資格發生，沒有一層是保證。",
+          "description": "由上往下四層：第一層 HTTP 成功，伺服器正常回應、頁面打得開，這一層的官方控制項是狀態碼與轉址，頁面壞掉後面三層都不會發生。第二層可被抓取，robots.txt 沒有擋住這個路徑，控制項是 robots.txt 的 allow 與 disallow，規範寫明它不是存取授權。第三層已被索引，內容被分析並存進索引資料庫，控制項是 noindex、canonical、hreflang，網站地圖只是告知不是保證。第四層出現在結果裡，包含一般結果與生成式答案，控制項是 nosnippet、data-nosnippet、max-snippet，官方說明寫著已建立索引也不保證出現。每一層只讓下一層有資格發生，沒有一層是保證。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 from pydantic import ValidationError
 
@@ -5,7 +7,7 @@ from app.config import Settings
 
 
 def secure_production_settings(**overrides: object) -> Settings:
-    values: dict[str, object] = {
+    values: dict[str, Any] = {
         "app_env": "production",
         "app_secret_key": "jwt-secret-that-is-random-and-at-least-32-chars",
         "settings_encryption_key": "settings-secret-that-is-separate-and-at-least-32",

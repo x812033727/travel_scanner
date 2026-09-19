@@ -12,14 +12,17 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.config import Settings
+from app.db import Base
 from app.i18n import LOCALES
-from app.models import Base, TripPlan, TripPlanItem, TripRouteSegment, User
+from app.models import TripPlan, TripPlanItem, TripRouteSegment, User
+from app.places.google import GoogleTravelService
 from app.problems import AppError
 from app.trips import router
 from app.trips.map_identities import item_route_point, location_map_links, trip_map_identities
 from app.trips.routing import (
     GoogleRouteProvider,
     RoutePoint,
+    RouteService,
     external_navigations,
     korean_external_route_reason,
     route_map_capabilities,
@@ -110,9 +113,13 @@ def test_only_independent_verified_google_identity_is_used_as_google_waypoint():
         "place_id": "ChIJ-google-exact",
         "status": "pending",
     }
-    assert "placeId" not in GoogleRouteProvider.waypoint(item_route_point(item))
+    pending = item_route_point(item)
+    assert pending is not None
+    assert "placeId" not in GoogleRouteProvider.waypoint(pending)
     item.data["map_identities"]["google_places"]["status"] = "verified"
-    assert GoogleRouteProvider.waypoint(item_route_point(item)) == {"placeId": "ChIJ-google-exact"}
+    verified = item_route_point(item)
+    assert verified is not None
+    assert GoogleRouteProvider.waypoint(verified) == {"placeId": "ChIJ-google-exact"}
     assert trip_map_identities(item)["naver_maps"]["place_id"] == "12345"
 
 
@@ -216,7 +223,7 @@ async def test_unavailable_preview_keeps_reasons_on_every_external_navigation(
 ):
     session, user, trip, first, second, _ = trip_db
     compute = AsyncMock(return_value=[])
-    monkeypatch.setattr(router.RouteService, "compute_options", compute)
+    monkeypatch.setattr(RouteService, "compute_options", compute)
     monkeypatch.setattr(router, "active_locale", lambda: locale)
     monkeypatch.setattr(
         router, "load_runtime_settings",
@@ -282,7 +289,7 @@ async def test_link_only_survives_reload_preserves_manual_route_and_replays(trip
     lookup = AsyncMock(
         return_value={"place_id": "ChIJ-confirmed", "latitude": 37.5796, "longitude": 126.977}
     )
-    monkeypatch.setattr(router.GoogleTravelService, "place_details", lookup)
+    monkeypatch.setattr(GoogleTravelService, "place_details", lookup)
     before = (
         first.title,
         first.latitude,
@@ -331,7 +338,7 @@ async def test_identity_requires_owner_current_version_and_same_place(trip_db, m
     lookup = AsyncMock(
         return_value={"place_id": "ChIJ-confirmed", "latitude": 35, "longitude": 139}
     )
-    monkeypatch.setattr(router.GoogleTravelService, "place_details", lookup)
+    monkeypatch.setattr(GoogleTravelService, "place_details", lookup)
     with pytest.raises(AppError) as conflict:
         await router.supplement_trip_map_identity(
             trip.id, first.id, payload, user, session, "version-key"
@@ -351,7 +358,7 @@ async def test_identity_requires_owner_current_version_and_same_place(trip_db, m
 async def test_navigation_is_read_only_and_does_not_call_provider(trip_db, monkeypatch):
     session, user, trip, first, second, _ = trip_db
     compute = AsyncMock(side_effect=AssertionError("navigation must not compute routes"))
-    monkeypatch.setattr(router.RouteService, "compute_options", compute)
+    monkeypatch.setattr(RouteService, "compute_options", compute)
     response = await router.trip_route_navigation(
         trip.id, first.id, second.id, user, session, "transit"
     )
@@ -381,7 +388,7 @@ async def test_navigation_describes_korean_query_limits_before_search(
 ):
     session, user, trip, first, second, route = trip_db
     compute = AsyncMock(side_effect=AssertionError("capabilities cannot query a provider"))
-    monkeypatch.setattr(router.RouteService, "compute_options", compute)
+    monkeypatch.setattr(RouteService, "compute_options", compute)
     before_time = second.start_time
     before_duration = route.duration_minutes
     response = await router.trip_route_navigation(
@@ -545,7 +552,7 @@ async def test_other_user_cannot_supplement_trip_identity(trip_db, monkeypatch):
     session, _, trip, first, _, _ = trip_db
     other_user = User(id=uuid4(), email=f"other-{uuid4().hex}@example.test")
     lookup = AsyncMock(side_effect=AssertionError("ownership must precede Google lookup"))
-    monkeypatch.setattr(router.GoogleTravelService, "place_details", lookup)
+    monkeypatch.setattr(GoogleTravelService, "place_details", lookup)
     with pytest.raises(AppError) as error:
         await router.supplement_trip_map_identity(
             trip.id,
@@ -644,7 +651,7 @@ async def test_supplement_rejects_invalid_google_coordinates(
 ):
     session, user, trip, first, _, _ = trip_db
     monkeypatch.setattr(
-        router.GoogleTravelService,
+        GoogleTravelService,
         "place_details",
         AsyncMock(return_value={
             "place_id": "ChIJ-invalid-coordinates", "latitude": latitude, "longitude": longitude,

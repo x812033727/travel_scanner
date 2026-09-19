@@ -3,11 +3,30 @@
 import { useLocale, useTranslations } from "next-intl";
 import { type FormEvent, useState, useSyncExternalStore } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import { type Locale, locales } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
 import { trackAnalytics } from "@/lib/analytics";
 import { safeNextPath } from "@/lib/navigation";
 import { SocialLoginButtons } from "@/components/social-login-buttons";
+
+/**
+ * `/zh-TW/trips/x?tab=1` -> `{ locale: "zh-TW", pathname: "/trips/x?tab=1" }`; a bare
+ * `/trips/x` comes back as it is, with no locale.
+ *
+ * The localized router adds the locale prefix itself, so a `next` that already carried one
+ * landed on `/zh-TW/zh-TW/trips/...` and a 404. Such values are ordinary: the admin layout
+ * and the price-alert button build `next` from the raw request path, and a pasted URL has
+ * the prefix too. The prefix has to be a whole segment (`/japan` is not `/ja`) and is
+ * matched without regard to case, because the middleware serves `/zh-tw/` as well; the
+ * query string stays with the path. Only one prefix is taken, exactly as the middleware does.
+ */
+function splitLocalePrefix(pathname: string): { locale?: Locale; pathname: string } {
+  const first = pathname.slice(1).split(/[/?#]/, 1)[0];
+  const locale = locales.find((candidate) => candidate.toLowerCase() === first.toLowerCase());
+  if (!locale) return { pathname };
+  const rest = pathname.slice(first.length + 1);
+  return { locale, pathname: rest.startsWith("/") ? rest : `/${rest}` };
+}
 
 export function AuthForm({ mode, nextPath = "/", oauthError }: { mode: "login" | "register"; nextPath?: string; oauthError?: string }) {
   const router = useRouter();
@@ -34,7 +53,12 @@ export function AuthForm({ mode, nextPath = "/", oauthError }: { mode: "login" |
       const preferredLocale = result.user?.preferred_locale || locale;
       if (mode === "register") trackAnalytics("registration_completed");
       document.cookie = `travel_locale=${preferredLocale}; path=/; max-age=31536000; samesite=lax`;
-      router.push(safeNextPath(nextPath), { locale: preferredLocale });
+      const { locale: pathLocale, pathname } = splitLocalePrefix(safeNextPath(nextPath));
+      // A locale named in `next` is the route the visitor was on, so it wins over the account's
+      // preferred locale; a bare path follows the preference as before. Either way the router
+      // adds the prefix exactly once. The second safeNextPath catches a remainder that only
+      // becomes protocol-relative once the prefix is gone (`/zh-TW//evil.example`).
+      router.push(safeNextPath(pathname), { locale: pathLocale ?? preferredLocale });
       router.refresh();
     } catch (reason) {
       setError((reason as Error).message);

@@ -3,9 +3,11 @@ from dataclasses import replace
 from datetime import UTC, datetime
 from decimal import Decimal
 from types import SimpleNamespace
+from typing import Any, cast
 from uuid import uuid4
 
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.foods import service
 from app.foods.catalog import FOOD_SEEDS
@@ -28,9 +30,9 @@ NOW = datetime(2026, 9, 7, tzinfo=UTC)
 
 class FoodSeedSession:
     def __init__(self) -> None:
-        self.rows: list[object] = []
+        self.rows: list[Any] = []
 
-    async def scalars(self, statement: object) -> SimpleNamespace:
+    async def scalars(self, statement: Any) -> SimpleNamespace:
         column = statement.column_descriptions[0]
         model = column["entity"]
         rows = [row for row in self.rows if isinstance(row, model)]
@@ -48,7 +50,7 @@ class FoodSeedSession:
                 row.id = uuid4()
 
 
-def snapshot(row: object) -> dict[str, object]:
+def snapshot(row: Any) -> dict[str, object]:
     return {column.key: deepcopy(getattr(row, column.key)) for column in row.__table__.columns}
 
 
@@ -64,7 +66,7 @@ def isolated_catalog(monkeypatch: pytest.MonkeyPatch) -> None:
 @pytest.mark.parametrize("status", ["pending", "rejected", "disabled", "approved"])
 async def test_dish_reseed_preserves_admin_names_sources_and_review(status: str) -> None:
     session = FoodSeedSession()
-    await service.seed_food_catalog(session)
+    await service.seed_food_catalog(cast(AsyncSession, session))
     food = next(row for row in session.rows if isinstance(row, TravelFood))
     localization = next(row for row in session.rows if isinstance(row, FoodLocalization))
     food.source = "admin"
@@ -79,7 +81,7 @@ async def test_dish_reseed_preserves_admin_names_sources_and_review(status: str)
     row_count = len(session.rows)
 
     for _ in range(2):
-        assert await service.seed_food_catalog(session) == 1
+        assert await service.seed_food_catalog(cast(AsyncSession, session)) == 1
 
     assert (snapshot(food), snapshot(localization)) == before
     assert len(session.rows) == row_count
@@ -90,13 +92,13 @@ async def test_dish_seed_text_updates_do_not_publish_a_held_dish(
     status: str, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     session = FoodSeedSession()
-    await service.seed_food_catalog(session)
+    await service.seed_food_catalog(cast(AsyncSession, session))
     food = next(row for row in session.rows if isinstance(row, TravelFood))
     food.review_status = status
     food.is_active = False
     monkeypatch.setattr(service, "FOOD_SEEDS", (replace(FOOD_SEED, romanized_name="New seed"),))
 
-    await service.seed_food_catalog(session)
+    await service.seed_food_catalog(cast(AsyncSession, session))
 
     assert food.romanized_name == "New seed"
     assert food.review_status == status
@@ -109,7 +111,7 @@ async def seed_merchant(
     monkeypatch.setattr(service, "MERCHANT_SEEDS", (MERCHANT_SEED,))
     monkeypatch.setattr(service, "MERCHANT_DIRECT_SOURCE_SEEDS", (DIRECT_SOURCE,))
     session = FoodSeedSession()
-    await service.seed_food_catalog(session)
+    await service.seed_food_catalog(cast(AsyncSession, session))
     merchant = next(row for row in session.rows if isinstance(row, FoodMerchant))
     return session, merchant
 
@@ -128,7 +130,7 @@ async def test_fresh_merchant_sources_and_reseeding_are_idempotent(
     row_count = len(session.rows)
 
     for _ in range(2):
-        await service.seed_food_catalog(session)
+        await service.seed_food_catalog(cast(AsyncSession, session))
 
     assert len(session.rows) == row_count
     assert (snapshot(merchant), [snapshot(row) for row in sources]) == before
@@ -166,7 +168,7 @@ async def test_merchant_review_identity_and_source_edits_survive_seed(
     row_count = len(session.rows)
 
     for _ in range(2):
-        await service.seed_food_catalog(session)
+        await service.seed_food_catalog(cast(AsyncSession, session))
 
     assert len(session.rows) == row_count
     assert (snapshot(merchant), [snapshot(row) for row in sources]) == before
@@ -180,7 +182,7 @@ async def test_unverified_merchant_with_deleted_sources_is_not_treated_as_new(
     merchant.official_website_url = None
     merchant.official_website_verified_at = None
 
-    await service.seed_food_catalog(session)
+    await service.seed_food_catalog(cast(AsyncSession, session))
 
     assert not any(isinstance(row, FoodMerchantSource) for row in session.rows)
     assert merchant.official_website_url is None

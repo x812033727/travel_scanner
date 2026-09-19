@@ -188,3 +188,60 @@ def test_mentions_place_reads_a_name_in_either_taiwan_spelling() -> None:
     assert localized.mentions_place("臺北101 觀景台怎麼去", "台北101") is True
     assert localized.mentions_place("台北101 觀景台怎麼去", "臺北101") is True
     assert localized.mentions_place("台北101 觀景台怎麼去", "") is False
+
+
+def test_a_katakana_country_name_is_a_whole_word() -> None:
+    # 「タイ」 names Thailand; it also opens タイム, スタイル and タイプ. NAVITIME's page for
+    # a Shibuya shop was reported as Thailand over a 「タイムセール」 in its summary.
+    assert localized.country_mentions("渋谷区のドンキホーテ タイムセール情報") == {}
+    assert localized.country_mentions("スタイルとタイプで選ぶ") == {}
+    assert localized.country_mentions("タイ旅行の準備") == {"Thailand": "タイ"}
+    # The middle dot and a particle end a word; the catalog order still picks the word.
+    assert localized.country_mentions("バンコク・タイの屋台") == {"Thailand": "タイ"}
+    assert localized.mentions_country("タイ人観光客に人気", "Thailand") is True
+    assert localized.country_mentions("ソウル旅行") == {"South Korea": "ソウル"}
+    assert localized.mentions_country("ソウルフードの店", "South Korea") is False
+
+
+def test_a_landmark_named_after_another_country_names_no_country() -> None:
+    # 會安的日本橋 (來遠橋) is in Vietnam; the Hoiana article that listed it was reported
+    # as Japan, twice.
+    assert localized.country_mentions("會安古鎮：來遠橋（日本橋）、燈籠街與河畔咖啡") == {}
+    assert localized.named_country("會安古鎮：來遠橋（日本橋）、燈籠街與河畔咖啡") is None
+    assert localized.country_mentions("東京日本橋の老舗") == {"Japan": "東京"}
+    # What points at this country is still read from the whole text.
+    assert localized.mentions_country("日本橋三越本店", "Japan") is True
+
+
+def test_named_country_is_the_one_the_text_names_most() -> None:
+    # A Taiwanese blog index that lists 台南, 台北 and one 沖繩 trip is about Taiwan; the
+    # first country in catalog order is Japan, and the rejection reason said 沖繩.
+    blog = "旅遊景點美食親子景點介紹 @ 青青小熊＊旅遊札記 台南美食、沖繩親子行程、台北景點"
+    assert localized.named_country(blog) == ("Taiwan", "台南")
+    # ``country_mentions`` still answers in catalog order: 台北 is listed before 台南.
+    assert localized.country_mentions(blog) == {"Japan": "沖繩", "Taiwan": "台北"}
+    # 指南宮 in Taipei keeps a Buddha a Thai field marshal gave; the page is about Taiwan.
+    temple = "指南宮位於台北市文山區，殿內供奉泰國巴博元帥致贈的金佛，台北捷運動物園站步行可達"
+    assert localized.named_country(temple) == ("Taiwan", "台北")
+    # A tie goes to the country named first: the title comes before the summary.
+    assert localized.named_country("沖繩親子行程｜青青小熊 台南美食") == ("Japan", "沖繩")
+    assert localized.named_country("還劍湖旅遊指南｜熱門景點資訊、交通地圖") is None
+    # Either Taiwan spelling counts, and the catalog's spelling is the word reported.
+    assert localized.named_country("南臺灣的中央山脈西側，臺灣南投縣") == ("Taiwan", "台灣")
+
+
+def test_mentions_place_reads_through_a_directory_s_brackets_and_spaces() -> None:
+    # NAVITIME writes 「MEGA(メガ)ドン・キホーテ 渋谷本店」 for MEGAドン・キホーテ渋谷本店.
+    title = "MEGA(メガ)ドン・キホーテ 渋谷本店 | 渋谷区のドンキホーテ・アクセス・地図 - NAVITIME"
+    assert localized.mentions_place(title, "MEGAドン・キホーテ渋谷本店") is True
+    assert localized.mentions_place("會安古城（Hội An）一日遊", "Hội An") is True
+    # Joining words never makes a longer word match a shorter one.
+    assert localized.mentions_place("Hoiana Resort & Golf", "Hoi An") is False
+
+
+def test_district_words_name_the_wards_of_a_city_in_every_locale() -> None:
+    words = localized.district_words("NRT")
+    assert {"澀谷", "原宿", "渋谷", "Shibuya", "Harajuku", "新宿"} <= set(words)
+    assert len(words) == len(set(words))
+    assert localized.district_words(None) == ()
+    assert localized.district_words("XXX") == ()

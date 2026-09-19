@@ -8,7 +8,7 @@ an administrator just removed.
 
 from datetime import UTC, datetime
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, cast
 from uuid import UUID, uuid4
 
 import pytest
@@ -22,11 +22,11 @@ from app.hotspots.admin_router import (
     create_hotspot_theme,
     update_hotspot_theme,
 )
-from app.models import AdminAuditLog, HotspotTheme, HotspotThemeLink, TravelHotspot
+from app.models import AdminAuditLog, HotspotTheme, HotspotThemeLink, TravelHotspot, User
 from app.problems import AppError
 
 NAMES = {"zh-TW": "賞櫻", "zh-CN": "赏樱", "en": "Cherry Blossoms", "ja": "桜", "ko": "벚꽃"}
-USER = SimpleNamespace(id=uuid4())
+USER = cast(User, SimpleNamespace(id=uuid4()))
 STAMP = datetime(2026, 9, 7, tzinfo=UTC)
 
 
@@ -232,7 +232,7 @@ async def test_assigning_an_unknown_theme_is_refused_before_anything_is_written(
         await assign_hotspot_themes(
             hotspot.id,
             HotspotThemesPutPayload(themes=[HotspotThemeAssignment(slug="bogus")]),
-            USER,  # type: ignore[arg-type]
+            USER,
             session,  # type: ignore[arg-type]
             "zh-TW",
         )
@@ -260,7 +260,7 @@ async def test_assigning_replaces_seed_links_with_tombstones_and_deletes_the_res
             themes=[HotspotThemeAssignment(slug="illumination", months=[12], note="丸之內")],
             reason="季節校正",
         ),
-        USER,  # type: ignore[arg-type]
+        USER,
         session,  # type: ignore[arg-type]
         "zh-TW",
     )
@@ -293,7 +293,7 @@ async def test_reassigning_an_existing_link_takes_it_over_rather_than_duplicatin
     await assign_hotspot_themes(
         hotspot.id,
         HotspotThemesPutPayload(themes=[HotspotThemeAssignment(slug="sakura", months=[5])]),
-        USER,  # type: ignore[arg-type]
+        USER,
         session,  # type: ignore[arg-type]
         "zh-TW",
     )
@@ -316,7 +316,7 @@ async def test_clearing_every_theme_keeps_the_seed_tombstone() -> None:
     result = await assign_hotspot_themes(
         hotspot.id,
         HotspotThemesPutPayload(themes=[]),
-        USER,  # type: ignore[arg-type]
+        USER,
         session,  # type: ignore[arg-type]
         "zh-TW",
     )
@@ -334,7 +334,7 @@ async def test_assigning_to_a_missing_hotspot_is_not_found() -> None:
         await assign_hotspot_themes(
             uuid4(),
             HotspotThemesPutPayload(themes=[HotspotThemeAssignment(slug="sakura")]),
-            USER,  # type: ignore[arg-type]
+            USER,
             session,  # type: ignore[arg-type]
             "zh-TW",
         )
@@ -353,7 +353,7 @@ async def test_months_on_a_shop_theme_are_refused_when_assigning() -> None:
         await assign_hotspot_themes(
             hotspot.id,
             HotspotThemesPutPayload(themes=[HotspotThemeAssignment(slug="drugstore", months=[3])]),
-            USER,  # type: ignore[arg-type]
+            USER,
             session,  # type: ignore[arg-type]
             "zh-TW",
         )

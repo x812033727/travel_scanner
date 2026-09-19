@@ -3,13 +3,14 @@
 from collections.abc import AsyncIterator
 from datetime import date
 from decimal import Decimal
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from sqlalchemy import Table
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 import app.trips.stay_router as stay_router
@@ -184,7 +185,9 @@ async def area_api(
     monkeypatch: pytest.MonkeyPatch,
 ) -> AsyncIterator[tuple[FastAPI, AsyncSession, User, TripPlan]]:
     engine = create_async_engine("sqlite+aiosqlite://")
-    tables = [User.__table__, SearchRequest.__table__, TripPlan.__table__, TripPlanItem.__table__]
+    tables = [
+        cast(Table, model.__table__) for model in (User, SearchRequest, TripPlan, TripPlanItem)
+    ]
     async with engine.begin() as connection:
         await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
     try:
@@ -210,7 +213,7 @@ async def area_api(
 
             app = FastAPI()
             app.include_router(stay_router.router, prefix="/api/v1")
-            app.add_exception_handler(AppError, app_error_handler)
+            app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
             app.dependency_overrides[get_session] = lambda: session
             app.dependency_overrides[current_user] = lambda: user
             monkeypatch.setattr(stay_router, "enforce_named_rate_limit", AsyncMock())

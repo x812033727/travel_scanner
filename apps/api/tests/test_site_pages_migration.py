@@ -6,6 +6,7 @@ import importlib.util
 import os
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import cast
 from uuid import uuid4
 
 import pytest
@@ -19,6 +20,10 @@ from sqlalchemy.pool import NullPool
 from app.config import get_settings
 from app.db import Base
 from app.models import SitePage, SitePageRevision, User
+
+USERS = cast(sa.Table, User.__table__)
+SITE_PAGES = cast(sa.Table, SitePage.__table__)
+SITE_PAGE_REVISIONS = cast(sa.Table, SitePageRevision.__table__)
 
 
 def migration():
@@ -34,7 +39,7 @@ def plant_history(connection):
     user_id, page_id, revision_id = uuid4(), uuid4(), uuid4()
     now = datetime.now(UTC)
     connection.execute(
-        User.__table__.insert().values(
+        USERS.insert().values(
             id=user_id,
             email=f"migration-{user_id}@example.com",
             is_active=True,
@@ -42,7 +47,7 @@ def plant_history(connection):
         )
     )
     connection.execute(
-        SitePage.__table__.insert().values(
+        SITE_PAGES.insert().values(
             id=page_id,
             slug="privacy",
             locale="en",
@@ -54,7 +59,7 @@ def plant_history(connection):
         )
     )
     connection.execute(
-        SitePageRevision.__table__.insert().values(
+        SITE_PAGE_REVISIONS.insert().values(
             id=revision_id,
             page_id=page_id,
             version=1,
@@ -73,9 +78,9 @@ def test_upgrade_existing_or_fresh_is_idempotent_and_does_not_seed(monkeypatch, 
     monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
-        tables = [User.__table__]
+        tables = [USERS]
         if fresh_metadata:
-            tables += [SitePage.__table__, SitePageRevision.__table__]
+            tables += [SITE_PAGES, SITE_PAGE_REVISIONS]
         Base.metadata.create_all(connection, tables=tables)
         with Operations.context(MigrationContext.configure(connection)):
             module.upgrade()
@@ -114,7 +119,7 @@ def test_upgrade_existing_or_fresh_is_idempotent_and_does_not_seed(monkeypatch, 
 
 
 def test_models_have_uniqueness_bounds_and_locale_slug_checks():
-    constraints = {constraint.name for constraint in SitePage.__table__.constraints}
+    constraints = {constraint.name for constraint in SITE_PAGES.constraints}
     assert {
         "uq_site_page_slug_locale",
         "ck_site_page_slug",
@@ -123,7 +128,7 @@ def test_models_have_uniqueness_bounds_and_locale_slug_checks():
         "ck_site_page_published_version",
     } <= constraints
     assert "uq_site_page_revision_version" in {
-        constraint.name for constraint in SitePageRevision.__table__.constraints
+        constraint.name for constraint in SITE_PAGE_REVISIONS.constraints
     }
 
 
@@ -150,7 +155,7 @@ async def test_postgresql_migration_guard_is_append_only_and_preserves_existing_
 
             def run(sync):
                 # No unrelated production-shaped tables or credentials are read.
-                User.__table__.create(sync, checkfirst=False)
+                USERS.create(sync, checkfirst=False)
                 with Operations.context(MigrationContext.configure(sync)):
                     module.upgrade()
                     revision_id = plant_history(sync)

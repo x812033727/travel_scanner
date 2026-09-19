@@ -14,6 +14,7 @@ import json
 import re
 from datetime import UTC, date, datetime
 from pathlib import Path
+from typing import Any, cast
 from uuid import UUID, uuid4
 
 import sqlalchemy as sa
@@ -115,7 +116,7 @@ async def test_the_news_order_pages_without_repeating_or_dropping_an_article(
         seen: list[str] = []
         cursor = None
         while True:
-            params = {"locale": "zh-TW", "limit": 2, "sort": "news"}
+            params: dict[str, Any] = {"locale": "zh-TW", "limit": 2, "sort": "news"}
             if cursor:
                 params["cursor"] = cursor
             page = (await api.get("/guides", params=params)).json()
@@ -133,7 +134,7 @@ async def test_a_news_cursor_is_refused_under_another_order_and_the_other_way_ro
         for index in range(3):
             day = f"2026-09-0{index + 1}"
             await news_article(api, database, f"n-{index}", news_date=day, day=1)
-        first = {"locale": "zh-TW", "limit": 1}
+        first: dict[str, Any] = {"locale": "zh-TW", "limit": 1}
         news = (await api.get("/guides", params={**first, "sort": "news"})).json()["next_cursor"]
         latest = (await api.get("/guides", params=first)).json()["next_cursor"]
         curated = (await api.get("/guides", params={**first, "sort": "curated"})).json()[
@@ -290,7 +291,7 @@ def test_0079_adds_the_column_once_and_its_rollback_drops_only_it(monkeypatch) -
 
     fresh = sa.create_engine("sqlite://")
     with fresh.begin() as connection:
-        GuideArticle.__table__.create(connection)
+        cast(sa.Table, GuideArticle.__table__).create(connection)
         with Operations.context(MigrationContext.configure(connection)):
             module.upgrade()
             assert "news_date" in {

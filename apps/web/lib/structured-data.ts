@@ -1,4 +1,6 @@
 import type { Locale } from "@/i18n/routing";
+import type { FoodMerchant, MerchantSource } from "@/lib/foods";
+import { safeExternalHref } from "@/lib/navigation";
 import { localeUrl, siteUrl } from "@/lib/seo";
 
 /**
@@ -277,6 +279,94 @@ export function definedTerm(
     ...(aliases.length ? { alternateName: aliases } : {}),
     inDefinedTermSet: { "@type": "DefinedTermSet", name: input.set.name, url: localeUrl(locale, input.set.path) },
   };
+}
+
+/** The fields of a merchant card this graph reads; a `FoodMerchant` satisfies it. */
+export type MerchantCard = Pick<FoodMerchant, "id" | "name" | "local_name" | "destination_name" | "address"> & {
+  sources: readonly Pick<MerchantSource, "title" | "url" | "distinction">[];
+};
+
+/** The distinction badges a card can draw, by catalog key, spelled as the card spells them in
+ *  the reader's language. Resolved by the caller, so the builder stays free of translation
+ *  lookups. */
+export type Awards = Readonly<Record<string, string>>;
+
+/**
+ * One merchant of the food directory, read off its card on `/foods`.
+ *
+ * A restaurant is the clearest kind of entity an answer engine meets -- a name, a place, and
+ * the sources it was checked against -- and the card already prints all three. Every property
+ * here is something the card draws:
+ * - `@id` is the card's own anchor, `#merchant-<id>`: the fragment the share button hands out
+ *   and `useSharedAnchor` scrolls to.
+ * - `alternateName` is the original-script name under the heading, when it differs.
+ * - `address` carries the one address line the catalog stores as `streetAddress`, and the
+ *   destination the card names beside the pin as `addressLocality`. No country, region or
+ *   postcode: the card prints none as such, and the line usually holds them anyway.
+ * - `award` is the distinction badge: the first source whose distinction the card has a label
+ *   for, which is how the card picks it.
+ * - `citation` is the source list under the card, one `CreativeWork` per source, with its `url`
+ *   only when the card drew the title as a link -- through `safeExternalHref`, the same test the
+ *   card applies, so the graph never names a link the page refused to draw.
+ *
+ * Deliberately absent, and not oversights:
+ * - `aggregateRating` and `review`. Nothing on this site collects a rating: the interest score
+ *   is Mokaair's own signal, not a reader's, and rating markup over it would be invented review
+ *   markup -- the line `docs/seo.md` draws against Product/Offer markup, drawn again here.
+ * - The "Sources checked on" date under the source list. It says when *we* checked the
+ *   merchant's sources, which is `lastReviewed`, a WebPage property; a merchant has no page of
+ *   its own here, and stamping the date on the list page would claim one review date for a
+ *   page that shows twenty. The trap `guideArticle` records for `dateAccessed`, one level up.
+ * - `url` and `sameAs` from `official_website_url`. The card draws that link only after a
+ *   stricter check than `safeExternalHref` (https only, no credentials, no bare or local hosts)
+ *   that lives inside the card's link component, so naming the raw field could name a website
+ *   the card refused to draw.
+ * - `servesCuisine` from the category chips, which mix cuisines with venue types (a cafe is not
+ *   a cuisine), and `geo`, `openingHours`, `telephone`, `priceRange`, `hasMenu`: the card
+ *   renders none of them.
+ */
+export function foodEstablishment(locale: Locale, card: MerchantCard, awards: Awards): object {
+  const distinction = card.sources
+    .map((source) => source.distinction)
+    .find((value): value is string => !!value && Object.hasOwn(awards, value));
+  const award = distinction ? awards[distinction] : "";
+  const postal = {
+    ...(card.address ? { streetAddress: card.address } : {}),
+    ...(card.destination_name ? { addressLocality: card.destination_name } : {}),
+  };
+  return {
+    "@context": CONTEXT,
+    "@type": "FoodEstablishment",
+    "@id": `${localeUrl(locale, "/foods")}#merchant-${card.id}`,
+    name: card.name,
+    ...(card.local_name && card.local_name !== card.name ? { alternateName: card.local_name } : {}),
+    ...(Object.keys(postal).length ? { address: { "@type": "PostalAddress", ...postal } } : {}),
+    ...(award ? { award } : {}),
+    ...(card.sources.length
+      ? { citation: card.sources.map((source) => {
+          const url = safeExternalHref(source.url);
+          return { "@type": "CreativeWork", name: source.title, ...(url ? { url } : {}) };
+        }) }
+      : {}),
+  };
+}
+
+/**
+ * The merchants the server-rendered `/foods` drew, one `FoodEstablishment` each.
+ *
+ * `seed` is the merchant list the page hands `FoodBrowser` as `initialMerchants`, as the API
+ * returned it, and the cards on the server-rendered page are that list's `items` and nothing
+ * else -- so the graph reads the array the cards read. That is what keeps it honest about the
+ * directory's withheld states: a merchant under moderation, without an exact map identity or
+ * without a current source never reaches `items` (the API's publication gate filters them in
+ * SQL, and the list is fetched `no-store`), and when the seed did not arrive the server rendered
+ * no card and the browser fetches the list after hydration -- a list this graph must never run
+ * ahead of, so it returns nothing. The `Array.isArray(items)` test is the browser's own.
+ */
+export function foodEstablishments(locale: Locale, seed: unknown, awards: Awards): object[] {
+  const items = typeof seed === "object" && seed !== null ? (seed as { items?: unknown }).items : undefined;
+  if (!Array.isArray(items)) return [];
+  return (items as MerchantCard[]).map((card) => foodEstablishment(locale, card, awards));
 }
 
 /**

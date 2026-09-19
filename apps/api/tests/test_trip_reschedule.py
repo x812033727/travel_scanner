@@ -77,7 +77,8 @@ class FakeSession:
             raise AssertionError(f"unexpected insert: {instance!r}")
 
     async def delete(self, instance: object) -> None:
-        for bucket in (self.items, self.day_settings, self.segments):
+        buckets: tuple[list[Any], ...] = (self.items, self.day_settings, self.segments)
+        for bucket in buckets:
             if instance in bucket:
                 bucket.remove(instance)
                 if isinstance(instance, TripPlanItem):
@@ -141,10 +142,10 @@ class FakeSession:
             seen.add(value)
 
 
-def phase_is_order_safe(
-    before: Mapping[Hashable, date],
-    after: Mapping[Hashable, date],
-    partition: Callable[[Hashable], tuple[Any, ...]],
+def phase_is_order_safe[K: Hashable](
+    before: Mapping[K, date],
+    after: Mapping[K, date],
+    partition: Callable[[K], tuple[Any, ...]],
 ) -> bool:
     """True when the phase survives being applied one row at a time, in any order.
 
@@ -454,9 +455,11 @@ async def test_shifting_a_fully_populated_trip_keeps_every_day_keyed_invariant()
     # 3. Nothing is stranded outside the new range - that is what permanently
     #    422s PUT /trips/{id}/itinerary.
     assert {row.day_date for row in rows} == set(new_days)
-    assert all(row.day_date == original_days[row.id] + timedelta(days=2) for row in rows
-               if row.id in original_days and row.system_role not in {"outbound_flight",
-                                                                      "return_flight"})
+    assert all(
+        row.day_date == original_days[row.id] + timedelta(days=2)
+        for row in rows
+        if row.id in original_days and row.system_role not in {"outbound_flight", "return_flight"}
+    )
 
     # 4. Exactly one flight anchor per role, on the new first and last day.
     assert role_days(rows, "outbound_flight") == [new_days[0]]
@@ -484,9 +487,10 @@ async def test_shifting_a_fully_populated_trip_keeps_every_day_keyed_invariant()
     assert activity.day_date == new_days[1]
     assert activity.start_time is not None
     assert activity.start_time.astimezone(TOKYO).date() == new_days[1]
-    assert activity.start_time.astimezone(TOKYO).timetz() == old_activity_start.astimezone(
-        TOKYO
-    ).timetz()
+    assert (
+        activity.start_time.astimezone(TOKYO).timetz()
+        == old_activity_start.astimezone(TOKYO).timetz()
+    )
 
     # 9. The traveller's own restaurant choice survives the move.
     assert lunch_pick.day_date == new_days[1]
@@ -827,6 +831,7 @@ def test_uuids_for_new_system_slots_do_not_encode_the_day() -> None:
     )
     assert all(isinstance(value, UUID) for value in first.values())
 
+
 # --------------------------------------------------------------------------
 # The endpoint layer: request contract, shrink gate, trip.data cleanup.
 # --------------------------------------------------------------------------
@@ -995,9 +1000,7 @@ def test_patch_request_normalizes_name_and_rejects_blank_or_empty_updates() -> N
 
     from app.trips.router import TripMetadataPatchRequest
 
-    request = TripMetadataPatchRequest.model_validate(
-        {"version": 3, "name": "  東京五日  "}
-    )
+    request = TripMetadataPatchRequest.model_validate({"version": 3, "name": "  東京五日  "})
     assert request.name == "東京五日"
     with pytest.raises(ValidationError):
         TripMetadataPatchRequest.model_validate({"version": 3, "name": "   "})
@@ -1012,9 +1015,7 @@ def test_patch_request_pins_status_and_cover_image_rules() -> None:
 
     from app.trips.router import TripMetadataPatchRequest
 
-    request = TripMetadataPatchRequest.model_validate(
-        {"version": 1, "status": "travelling"}
-    )
+    request = TripMetadataPatchRequest.model_validate({"version": 1, "status": "travelling"})
     assert request.status == "travelling"
     with pytest.raises(ValidationError):
         TripMetadataPatchRequest.model_validate({"version": 1, "status": "archived"})

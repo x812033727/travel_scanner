@@ -1,5 +1,6 @@
 from datetime import date, datetime
 from decimal import Decimal
+from typing import Any
 
 import fakeredis.aioredis
 import httpx
@@ -25,7 +26,7 @@ def test_hybrid_candidates_use_required_order_and_block_test_data_in_production(
         amadeus_client_secret="secret",
         amadeus_env="production",
     )
-    candidates = build_module_provider_candidates(redis, settings)["flight"]
+    candidates: list[Any] = build_module_provider_candidates(redis, settings)["flight"]
     assert [provider.name for provider in candidates] == ["skyscanner", "duffel", "amadeus"]
 
     production = flight_provider_status(

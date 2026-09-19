@@ -14,9 +14,9 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.auth.service import current_user
-from app.db import get_session
+from app.db import Base, get_session
 from app.hotspots.admin_router import router
-from app.models import Base, TravelHotspot, User
+from app.models import TravelHotspot, User
 
 
 @pytest_asyncio.fixture(

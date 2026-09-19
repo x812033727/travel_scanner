@@ -5,6 +5,7 @@ import importlib.util
 import os
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import cast
 from uuid import uuid4
 
 import pytest
@@ -12,14 +13,14 @@ import sqlalchemy as sa
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
 from sqlalchemy.exc import IntegrityError
-from test_community_foundation import Harness
-from test_community_foundation import harness as community_harness
-from test_saved_flow import guide
 
 from app.community.models import Collection, CollectionItem
 from app.config import get_settings
 from app.models import RestaurantFavorite, RestaurantPlace, User
 from app.saved import service as saved_service
+from tests.test_community_foundation import Harness
+from tests.test_community_foundation import harness as community_harness
+from tests.test_saved_flow import guide
 
 harness = community_harness
 
@@ -27,6 +28,7 @@ harness = community_harness
 def migration():
     path = Path(__file__).parents[1] / "migrations/versions/0067_collection_inbox.py"
     spec = importlib.util.spec_from_file_location("collection_inbox_migration", path)
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -37,7 +39,7 @@ def verify_upgrade(connection, module, fresh):
     users = sa.Table("users", metadata, sa.Column("id", sa.Uuid(), primary_key=True))
     if fresh:
         metadata.create_all(connection)
-        Collection.__table__.create(connection)
+        cast(sa.Table, Collection.__table__).create(connection)
     else:
         # Frozen 0066 table shape, not current model metadata dressed up as an old DB.
         sa.Table(
@@ -51,7 +53,7 @@ def verify_upgrade(connection, module, fresh):
         )
         metadata.create_all(connection)
     if fresh:
-        CollectionItem.__table__.create(connection)
+        cast(sa.Table, CollectionItem.__table__).create(connection)
     else:
         legacy = sa.MetaData()
         sa.Table("community_collections", legacy, autoload_with=connection)
@@ -107,12 +109,16 @@ def verify_upgrade(connection, module, fresh):
         is None
     )
     connection.execute(
-        Collection.__table__.insert().values(
+        cast(sa.Table, Collection.__table__)
+        .insert()
+        .values(
             id=uuid4(), user_id=user, name="Another normal list", created_at=now, updated_at=now
         )
     )
     connection.execute(
-        Collection.__table__.insert().values(
+        cast(sa.Table, Collection.__table__)
+        .insert()
+        .values(
             id=uuid4(),
             user_id=user,
             name="Private inbox",
@@ -123,7 +129,9 @@ def verify_upgrade(connection, module, fresh):
     )
     with pytest.raises(IntegrityError), connection.begin_nested():
         connection.execute(
-            Collection.__table__.insert().values(
+            cast(sa.Table, Collection.__table__)
+            .insert()
+            .values(
                 id=uuid4(),
                 user_id=user,
                 name="Duplicate inbox",
@@ -236,6 +244,7 @@ async def test_postgresql_saved_lock_allows_legacy_favorite_foreign_key_insert(
         place_id = place.id
     async with h.factory() as current:
         user = await current.get(User, h.ids[0])
+        assert user is not None
         await saved_service.lock_account(current, user)
 
         async def legacy_insert() -> None:

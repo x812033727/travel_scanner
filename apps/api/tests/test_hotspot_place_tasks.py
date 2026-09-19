@@ -1,5 +1,8 @@
 from types import SimpleNamespace
+from typing import Any
 from uuid import uuid4
+
+from redis import Redis as SyncRedis
 
 from app.hotspots import place_tasks
 
@@ -7,7 +10,7 @@ from app.hotspots import place_tasks
 def test_enrichment_queue_chunks_all_450_hotspots_in_batches_of_25(
     monkeypatch,
 ) -> None:
-    queued: list[tuple[tuple[object, ...], dict[str, object]]] = []
+    queued: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
     queue_names: list[str] = []
 
     class FakeQueue:
@@ -18,7 +21,7 @@ def test_enrichment_queue_chunks_all_450_hotspots_in_batches_of_25(
             queued.append((args, kwargs))
             return SimpleNamespace(id=f"job-{len(queued)}")
 
-    monkeypatch.setattr(place_tasks.SyncRedis, "from_url", lambda _url: object())
+    monkeypatch.setattr(SyncRedis, "from_url", lambda _url: object())
     monkeypatch.setattr(place_tasks, "Queue", FakeQueue)
 
     jobs = place_tasks.enqueue_place_enrichment_run(

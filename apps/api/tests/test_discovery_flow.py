@@ -8,8 +8,6 @@ from uuid import uuid4
 import httpx
 import pytest
 from sqlalchemy import update
-from test_travel_discovery import harness as harness
-from test_travel_discovery import hotspot
 
 from app.models import (
     FoodDestination,
@@ -28,6 +26,8 @@ from app.models import (
     TravelServiceProduct,
     TripPlan,
 )
+from tests.test_travel_discovery import harness as harness
+from tests.test_travel_discovery import hotspot
 
 
 def food(name="Fixture ramen"):

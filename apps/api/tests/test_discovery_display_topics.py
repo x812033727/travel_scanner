@@ -5,9 +5,6 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import event, update
-from test_discovery_flow import guide, merchant, seed_types
-from test_travel_discovery import harness as harness
-from test_travel_discovery import hotspot
 
 from app.discovery.schemas import DiscoveryItem
 from app.discovery.service import resolve_discovery_items
@@ -24,6 +21,9 @@ from app.models import (
     TravelFood,
     TravelHotspot,
 )
+from tests.test_discovery_flow import guide, merchant, seed_types
+from tests.test_travel_discovery import harness as harness
+from tests.test_travel_discovery import hotspot
 
 THEME_NAMES = {
     "en": "Cherry blossoms",

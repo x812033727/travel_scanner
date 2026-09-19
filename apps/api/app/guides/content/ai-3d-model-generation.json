@@ -196,6 +196,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左至右看：每一格寫的是這個階段要決定的事與官方文件的數字，最底下那條是免費層的三個閘門。",
+          "description": "流程由左到右分成四格：輸入可以是文字提示詞、單張圖片或多視角圖片；生成階段產出網格與 PBR 貼圖，Meshy 7 的模型階段扣 25 點、Tripo 用 P1 影像轉模型含貼圖扣 50 點；後處理包含重拓樸 quad（Tripo 轉檔多扣 5 點）、貼圖 8K（Meshy 扣 15 點）與自動綁骨、切件；匯出格式有 GLB、FBX、OBJ、STL、3MF、USDZ，轉檔的 face_limit 預設 10000。之後分兩條路：匯入 Blender 編輯時 glTF 2.0 外掛預設啟用，匯出 glTF 會把四邊面轉成三角面；送進切片軟體列印則要封閉網格，單色用 STL、多色用 3MF，尺寸先在生成工具調好。最下方是免費層的三個閘門：Meshy 免費方案每月 100 點，但下載只給 Meshy 6 Lite、每月 10 次，產出授權是 CC BY 4.0 要標註；Hyper3D 免費方案先看結果再扣點、工作區限 10 個私有資產；Tripo 的 API 有 300 點、期限兩週。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

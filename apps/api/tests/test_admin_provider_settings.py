@@ -1,11 +1,14 @@
 import logging
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, cast
+from uuid import uuid4
 
 import fakeredis.aioredis
 import pytest
 from httpx import ASGITransport, AsyncClient
 from pydantic import ValidationError as PydanticValidationError
+from redis.asyncio import Redis
+from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.admin.service as admin_service
 from app.admin.schemas import ProviderSettingsUpdate
@@ -24,6 +27,7 @@ from app.admin.service import (
     settings_snapshot,
     update_provider_settings,
 )
+from app.ai.itinerary import AIItineraryPlanner
 from app.auth.service import current_user
 from app.config import Settings
 from app.db import get_session
@@ -106,7 +110,7 @@ async def test_setting_update_version_and_legacy_partial_merge(
         else None
     )
     session = UpdateSession(row)
-    actor = User(id=admin_service.uuid4(), email="version@example.com", password_hash="unused")
+    actor = User(id=uuid4(), email="version@example.com", password_hash="unused")
 
     async def snapshot(*_args: object) -> object:
         return object()
@@ -117,12 +121,12 @@ async def test_setting_update_version_and_legacy_partial_merge(
         # Offsets compare as the same instant, not as raw strings.
         payload_data["expected_updated_at"] = "2026-09-01T08:00:00+08:00" if existing else None
     await update_provider_settings(
-        session,
+        cast(AsyncSession, session),
         "google_maps",
         ProviderSettingsUpdate.model_validate(payload_data),
         actor,
-        object(),
-    )  # type: ignore[arg-type]
+        cast(Redis, object()),
+    )
     saved = row or next(value for value in session.added if isinstance(value, ProviderConfig))
     assert isinstance(saved, ProviderConfig)
     assert saved.config["route_cache_ttl_seconds"] == 1200
@@ -148,7 +152,7 @@ async def test_api_settings_version_conflict_has_409_without_writes(expected: st
         secret_config_encrypted=encrypt_secrets({"google_maps_api_key": "never-expose"}),
     )
     session = UpdateSession(row)
-    actor = User(id=admin_service.uuid4(), email="conflict@example.com", is_admin=True)
+    actor = User(id=uuid4(), email="conflict@example.com", is_admin=True)
     previous_overrides = app.dependency_overrides.copy()
     app.dependency_overrides[current_user] = lambda: actor
     app.dependency_overrides[get_session] = lambda: session
@@ -346,21 +350,21 @@ async def test_catalog_review_call_limit_partial_update_keeps_provider_fields_an
         secret_config_encrypted=encrypt_secrets({"hotspot_guide_gemini_api_key": "retained-key"}),
     )
     session = UpdateSession(row)
-    actor = User(id=admin_service.uuid4(), email="catalog-limit@example.com")
+    actor = User(id=uuid4(), email="catalog-limit@example.com")
 
     async def snapshot(*_args: object) -> object:
         return object()
 
     monkeypatch.setattr(admin_service, "settings_snapshot", snapshot)
     await update_provider_settings(
-        session,
+        cast(AsyncSession, session),
         "gemini_guides",
         ProviderSettingsUpdate(
             config={"catalog_review_max_calls": 240}, expected_updated_at=timestamp
         ),
         actor,
-        object(),
-    )  # type: ignore[arg-type]
+        cast(Redis, object()),
+    )
     assert row.config == {**previous_config, "catalog_review_max_calls": 240}
     assert row.enabled is False
     assert decrypt_secrets(row.secret_config_encrypted) == {
@@ -391,7 +395,7 @@ def test_runtime_accepts_independent_hotel_provider_mode() -> None:
     validated = _validate_provider_values(
         "runtime",
         {},
-        admin_service.ProviderSettingsUpdate(
+        ProviderSettingsUpdate(
             config={
                 "travel_provider_mode": "amadeus",
                 "flight_provider_mode": "auto",
@@ -505,7 +509,7 @@ async def test_runtime_update_uses_system_audit_without_sensitive_values(
     monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
     session = UpdateSession()
     actor = User(
-        id=admin_service.uuid4(),
+        id=uuid4(),
         email="admin@example.com",
         password_hash="unused",
         is_admin=True,
@@ -547,7 +551,7 @@ async def test_layout_update_records_changed_fields_and_effective_visibility(
     monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
     session = UpdateSession()
     actor = User(
-        id=admin_service.uuid4(),
+        id=uuid4(),
         email="admin@example.com",
         password_hash="unused",
         is_admin=True,
@@ -587,7 +591,7 @@ def test_booking_demand_environment_uses_only_official_v31_url() -> None:
     validated = _validate_provider_values(
         "booking_demand",
         {},
-        admin_service.ProviderSettingsUpdate(
+        ProviderSettingsUpdate(
             config={
                 "booking_demand_env": "production",
                 "booking_demand_api_base_url": "https://demandapi-sandbox.booking.com/3.1",
@@ -605,7 +609,7 @@ def test_booking_demand_environment_uses_only_official_v31_url() -> None:
         _validate_provider_values(
             "booking_demand",
             {},
-            admin_service.ProviderSettingsUpdate(
+            ProviderSettingsUpdate(
                 config={"booking_demand_api_base_url": "https://example.com/3.1"}
             ),
         )
@@ -613,7 +617,7 @@ def test_booking_demand_environment_uses_only_official_v31_url() -> None:
         _validate_provider_values(
             "booking_demand",
             {},
-            admin_service.ProviderSettingsUpdate(
+            ProviderSettingsUpdate(
                 config={"booking_demand_api_base_url": "https://demandapi.booking.com/3.1"}
             ),
         )
@@ -1117,7 +1121,7 @@ async def test_updating_ai_vendors_keeps_the_row_enabled(monkeypatch: pytest.Mon
     monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
     session = UpdateSession()
     actor = User(
-        id=admin_service.uuid4(),
+        id=uuid4(),
         email="admin@example.com",
         password_hash="unused",
         is_admin=True,
@@ -1540,7 +1544,7 @@ async def test_ai_planner_connection_test_plans_with_real_candidates(
         )
 
     monkeypatch.setattr(trip_router, "_load_ai_planner_candidates", fake_candidates)
-    monkeypatch.setattr(admin_service.AIItineraryPlanner, "generate", fake_generate)
+    monkeypatch.setattr(AIItineraryPlanner, "generate", fake_generate)
 
     session = object()
     message = await admin_service._test_provider(

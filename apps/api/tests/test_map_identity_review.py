@@ -16,7 +16,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 
 from app.auth.service import current_user
 from app.config import Settings
-from app.db import get_session
+from app.db import Base, get_session
 from app.locations import map_identity_review as review_module
 from app.locations import map_identity_router as router_module
 from app.locations import map_identity_tasks as tasks_module
@@ -38,7 +38,7 @@ from app.locations.map_identity_review import (
 )
 from app.locations.map_identity_router import IdentityBatchRequest, list_identities
 from app.locations.map_identity_tasks import batch_key
-from app.models import AdminAuditLog, Base, FoodMerchant, TravelHotspot, TravelServiceProduct, User
+from app.models import AdminAuditLog, FoodMerchant, TravelHotspot, TravelServiceProduct, User
 from app.problems import AppError, app_error_handler
 from app.travel_services.imports import upsert_product
 from app.travel_services.schemas import Facts, ProductInput
@@ -443,7 +443,7 @@ async def test_new_admin_endpoints_require_content_capabilities(database, monkey
     user.__dict__["_admin_roles_cache"] = frozenset({"support"})
     app = FastAPI()
     app.include_router(router_module.router)
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.dependency_overrides[current_user] = lambda: user
     app.dependency_overrides[get_session] = lambda: session
     monkeypatch.setattr(router_module, "load_runtime_settings", AsyncMock(return_value=Settings()))

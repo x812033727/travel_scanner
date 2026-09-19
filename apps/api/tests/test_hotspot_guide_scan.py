@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, cast
 from uuid import UUID, uuid4
 
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql import operators
 
 from app.hotspots import guide_scan
@@ -127,7 +128,7 @@ def _fixture() -> tuple[FakeSession, dict[str, HotspotGuide], TravelHotspot, Tra
 async def test_the_scan_flags_rows_about_another_country_and_nothing_else() -> None:
     session, guides, _ngoc_son, _maruyama = _fixture()
     # The fake returns every row; the statement itself is what narrows production reads.
-    report = await scan_guides(session)
+    report = await scan_guides(cast(AsyncSession, session))
     flagged = {finding.guide_id: finding for finding in report.findings}
     assert set(flagged) == {guides["yushan"].id, guides["taipei"].id, guides["old"].id}
     yushan = flagged[guides["yushan"].id]
@@ -149,7 +150,7 @@ async def test_the_scan_flags_rows_about_another_country_and_nothing_else() -> N
 @pytest.mark.asyncio
 async def test_a_skip_list_keeps_a_known_false_positive() -> None:
     session, guides, _ngoc_son, _maruyama = _fixture()
-    report = await scan_guides(session, skip=[guides["yushan"].id])
+    report = await scan_guides(cast(AsyncSession, session), skip=[guides["yushan"].id])
     assert guides["yushan"].id not in {finding.guide_id for finding in report.findings}
     assert report.skipped == 1
 
@@ -171,7 +172,7 @@ async def test_a_dry_run_lists_named_rows_too_and_writes_nothing() -> None:
     session, guides, _ngoc_son, _maruyama = _fixture()
     missing = uuid4()
     report = await run(
-        session,
+        cast(AsyncSession, session),
         reject=[guides["temple"].id, guides["old"].id, guides["yushan"].id, missing],
     )
     # A named row the rule already flagged is not listed twice; a rejected one and an
@@ -187,7 +188,7 @@ async def test_a_dry_run_lists_named_rows_too_and_writes_nothing() -> None:
 async def test_applying_rejects_findings_and_named_rows_with_one_audit_entry() -> None:
     session, guides, _ngoc_son, _maruyama = _fixture()
     actor = uuid4()
-    report = await run(session, reject=[guides["temple"].id], actor_id=actor)
+    report = await run(cast(AsyncSession, session), reject=[guides["temple"].id], actor_id=actor)
     assert (report.applied, report.rejected) == (True, 4)  # 3 findings + 1 named row
     for key in ("yushan", "taipei", "temple"):
         guide = guides[key]
@@ -216,5 +217,5 @@ async def test_applying_rejects_findings_and_named_rows_with_one_audit_entry() -
 async def test_applying_with_nothing_to_reject_writes_nothing() -> None:
     ngoc_son = _hotspot("玉山祠", city="河內", country="越南", code="VN", destination="hanoi")
     session = FakeSession([(_guide(ngoc_son, "玉山祠｜還劍湖上的文昌帝君廟"), ngoc_son)])
-    report = await run(session, actor_id=uuid4())
+    report = await run(cast(AsyncSession, session), actor_id=uuid4())
     assert (report.applied, report.rejected, session.commits, session.added) == (True, 0, 0, [])

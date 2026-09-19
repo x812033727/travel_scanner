@@ -191,6 +191,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從左看到右：你在編輯器裡的動作經過擴充，變成送往本機 11434 埠的請求，再依角色交給不同的模型；整條路徑都在自己的電腦上。",
+          "description": "上排四個方框從左到右是一條資料流。一，編輯器：VS Code 或 JetBrains，你在裡面打字、選一段程式碼或問問題。二，擴充：Continue，設定檔是家目錄底下的 .continue 資料夾裡的 config.yaml，provider 欄位填 ollama，由它決定哪個角色用哪個模型。三，本機 Ollama：預設位址是 localhost 冒號 11434，官方文件建議程式工作把上下文設到至少 64000 個 token。四，模型：依 roles 欄位分派，整條路徑都在這台電腦上。第四個方框往下接到一條橫線，分出三個角色方框。左邊是 chat 與 edit，用程式模型，例如 qwen3-coder 冒號 30b，下載大小 19GB、上下文視窗 256K。中間是 autocomplete，用小的補全模型 qwen2.5-coder 冒號 1.5b，下載大小 986MB、上下文視窗 32K。右邊是 embed，用嵌入模型 nomic-embed-text，下載大小 274MB，給程式碼庫檢索用。最下面一條紅框提醒 Cursor 是例外：官方說明頁只列 OpenAI、Anthropic、Google、Azure、Bedrock 五家金鑰，沒有自訂端點；自備金鑰只對聊天模型有效，Tab 補全仍走 Cursor 內建模型，而且請求會經過 Cursor 的伺服器。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -241,7 +242,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "text": "GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體",
               "kind": "life",
               "slug": "gguf-quantization-explained"
             }

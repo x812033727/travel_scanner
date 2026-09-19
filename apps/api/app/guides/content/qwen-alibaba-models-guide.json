@@ -99,6 +99,7 @@
           "width": 1600,
           "height": 900,
           "caption": "左半邊是下載得到權重的，右半邊是只能呼叫 API 的；右下角提醒授權有三種，以模型卡寫的為準。",
+          "description": "左半邊是開放權重、下載得到的部分，Hugging Face 的 Qwen 組織列出 465 個模型，分成四類：文字與多模態有 Qwen3.8-2.4T-A95B，總參數 2.4T、啟用 95B，以及 Qwen3.8-27B 與 Qwen3.8-Flash-Next，後者 125B 總參數、6B 啟用；程式是 Qwen3-Coder-Next，80B 總參數、3B 啟用，原生 262,144 token，Apache 2.0；圖片是 Qwen-Image-2512 生成與 Qwen-Image-Edit-2511 編輯，Apache 2.0；語音是 Qwen3-ASR 辨識與 Qwen3-TTS 合成，Apache 2.0。右上是只有 API 的三個，列在 Qwen Cloud 模型市集：Qwen3.8-Max 每百萬 token 輸入 2 美元、輸出 6 美元，Qwen-Image-3.0-Pro 做圖片生成，Wan3.0-Video 做影片生成。右下提醒授權有三種：Apache 2.0 用在 Qwen3.8-27B 與 Coder-Next，Qwen3.8-Max License 用在 2.4T-A95B，Qwen Community License 1.0 用在 Qwen3.8-Flash-Next，後兩種對大規模商用另有條件。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

@@ -70,6 +70,7 @@ async def test_change_password_rejects_wrong_current_password() -> None:
     assert response.status_code == 401
     assert response.json()["code"] == "invalid_credentials"
     session.commit.assert_not_awaited()
+    assert user.password_hash is not None
     assert verify_password("correct-password-1", user.password_hash)
 
 
@@ -121,6 +122,7 @@ async def test_change_password_updates_the_stored_hash() -> None:
             session, Response(), authorization=f"Bearer {old_token}", travel_access=None
         )
     assert caught.value.code == "invalid_user"
+    assert user.password_hash is not None
     assert verify_password("brand-new-password-1", user.password_hash)
     assert not verify_password("correct-password-1", user.password_hash)
 
@@ -139,12 +141,8 @@ async def test_forgot_password_lets_a_social_only_account_establish_a_local_pass
     session = AsyncMock()
     send = AsyncMock()
     monkeypatch.setattr("app.community.accounts.smtp_ready", lambda: True)
-    monkeypatch.setattr(
-        "app.community.accounts.enforce_named_rate_limit", AsyncMock()
-    )
-    monkeypatch.setattr(
-        "app.community.accounts.find_user_by_email", AsyncMock(return_value=user)
-    )
+    monkeypatch.setattr("app.community.accounts.enforce_named_rate_limit", AsyncMock())
+    monkeypatch.setattr("app.community.accounts.find_user_by_email", AsyncMock(return_value=user))
     monkeypatch.setattr("app.community.accounts.request_mail", send)
     app.dependency_overrides[get_session] = lambda: session
     try:

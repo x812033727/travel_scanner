@@ -11,6 +11,7 @@ import json
 import os
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
+from typing import Any, cast
 from unittest.mock import ANY, AsyncMock
 from uuid import UUID, uuid4
 
@@ -18,7 +19,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import event, func, select, text, update
+from sqlalchemy import Table, event, func, select, text, update
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
@@ -44,20 +45,20 @@ from app.models import AdminAuditLog, AffiliateClick, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 
 TABLES = [
-    User.__table__,
-    GuideTopic.__table__,
-    GuideArticle.__table__,
-    GuideArticleLocale.__table__,
-    GuideArticleRevision.__table__,
-    GuideArticleTopic.__table__,
+    cast(Table, User.__table__),
+    cast(Table, GuideTopic.__table__),
+    cast(Table, GuideArticle.__table__),
+    cast(Table, GuideArticleLocale.__table__),
+    cast(Table, GuideArticleRevision.__table__),
+    cast(Table, GuideArticleTopic.__table__),
     # Publication writes the search row and withdrawal deletes it (tests/test_guides_search.py).
-    GuideSearchEntry.__table__,
-    GuideArticleAlias.__table__,
+    cast(Table, GuideSearchEntry.__table__),
+    cast(Table, GuideArticleAlias.__table__),
     # Publication writes the inline link rows (tests/test_guides_links.py).
-    GuideArticleLink.__table__,
-    AdminAuditLog.__table__,
+    cast(Table, GuideArticleLink.__table__),
+    cast(Table, AdminAuditLog.__table__),
     # Partner-link clicks are counted here (tests/test_guide_partner_links.py).
-    AffiliateClick.__table__,
+    cast(Table, AffiliateClick.__table__),
 ]
 
 
@@ -171,8 +172,8 @@ def make_app(database, user=None) -> FastAPI:
     application = FastAPI()
     application.include_router(admin_router, prefix="/api/v1")
     application.include_router(public_router, prefix="/api/v1")
-    application.add_exception_handler(AppError, app_error_handler)
-    application.add_exception_handler(RequestValidationError, validation_error_handler)
+    application.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    application.add_exception_handler(RequestValidationError, validation_error_handler)  # type: ignore[arg-type]
 
     async def session_dependency():
         async with database() as session:
@@ -1234,7 +1235,7 @@ async def test_the_listing_pages_without_repeating_or_dropping_an_article(databa
         seen: list[str] = []
         cursor = None
         for _ in range(10):
-            params = {"locale": "zh-TW", "limit": 3}
+            params: dict[str, Any] = {"locale": "zh-TW", "limit": 3}
             if cursor:
                 params["cursor"] = cursor
             page = (await api.get("/guides", params=params)).json()
@@ -1334,7 +1335,7 @@ async def test_the_curated_order_pages_without_repeating_or_dropping_an_article(
         cursor = None
         pages = 0
         while True:
-            params = {"locale": "zh-TW", "limit": 2, "sort": "curated"}
+            params: dict[str, Any] = {"locale": "zh-TW", "limit": 2, "sort": "curated"}
             if cursor:
                 params["cursor"] = cursor
             page = (await api.get("/guides", params=params)).json()
@@ -1366,7 +1367,7 @@ async def test_a_cursor_minted_under_one_order_is_refused_under_the_other(
         for index in range(3):
             created = await create_article(api, slug=f"note-{index}")
             await publish(api, created["id"], "zh-TW", created["version"])
-        first = {"locale": "zh-TW", "limit": 1}
+        first: dict[str, Any] = {"locale": "zh-TW", "limit": 1}
         latest = (await api.get("/guides", params=first)).json()["next_cursor"]
         curated = (await api.get("/guides", params={**first, "sort": "curated"})).json()[
             "next_cursor"

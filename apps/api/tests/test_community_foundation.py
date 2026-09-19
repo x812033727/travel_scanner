@@ -1137,7 +1137,7 @@ async def test_pet_ai_only_receives_current_verified_compatible_candidates(
         requirements = PetRequirements(species="dog", weight_kg=5)
         result = await filter_candidates(session, candidates, requirements)
         assert [row.key for row in result] == ["hotspot:compatible"]
-        for incompatible in [
+        incompatible_updates: list[dict[str, Any]] = [
             {"species": "cat"},
             {"weight_kg": 20},
             {"count": 3},
@@ -1145,7 +1145,8 @@ async def test_pet_ai_only_receives_current_verified_compatible_candidates(
             {"has_leash": False},
             {"has_stroller": True},
             {"overnight": True},
-        ]:
+        ]
+        for incompatible in incompatible_updates:
             with pytest.raises(AppError) as error:
                 await filter_candidates(
                     session, candidates, requirements.model_copy(update=incompatible)
@@ -1507,9 +1508,8 @@ async def test_each_feature_switch_is_enforced_by_api(harness: Harness) -> None:
             {"name": "Place", "kind": "shop", "country": "TW", "destination": "Taipei"},
         ),
     ]:
-        response = await h.call(
-            method, path, expected=403, **({"json": payload} if payload else {})
-        )
+        body: dict[str, Any] = {"json": payload} if payload else {}
+        response = await h.call(method, path, expected=403, **body)
         assert response.json()["code"] == "community_closed"
     await h.call("GET", "/community/feed", actor=None)
 

@@ -5,10 +5,12 @@ from dataclasses import replace
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from types import SimpleNamespace
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.hotspots import service
 from app.hotspots.catalog import HOTSPOT_SEEDS
@@ -19,10 +21,10 @@ NOW = datetime(2026, 9, 7, tzinfo=UTC)
 
 
 class SeedSession:
-    def __init__(self, rows: list[object] | None = None) -> None:
+    def __init__(self, rows: list[Any] | None = None) -> None:
         self.rows = list(rows or [])
 
-    async def scalars(self, statement: object) -> SimpleNamespace:
+    async def scalars(self, statement: Any) -> SimpleNamespace:
         model = statement.column_descriptions[0]["entity"]
         return SimpleNamespace(all=lambda: [row for row in self.rows if isinstance(row, model)])
 
@@ -38,7 +40,7 @@ class SeedSession:
                 row.map_match_status = "unverified"
 
 
-def snapshot(row: object) -> dict[str, object]:
+def snapshot(row: Any) -> dict[str, object]:
     return {column.key: deepcopy(getattr(row, column.key)) for column in row.__table__.columns}
 
 
@@ -110,7 +112,8 @@ async def test_reseed_preserves_review_decisions_and_the_entire_identity(
     before = snapshot(hotspot), snapshot(localization)
 
     for _ in range(2):
-        assert await service.seed_catalog(session, date(2026, 9, 7)) == [hotspot]
+        seeded = await service.seed_catalog(cast(AsyncSession, session), date(2026, 9, 7))
+        assert seeded == [hotspot]
 
     assert (snapshot(hotspot), snapshot(localization)) == before
     assert session.rows == [hotspot, localization]
@@ -124,7 +127,7 @@ async def test_reseed_preserves_a_discovered_slug_and_pending_review() -> None:
     before = snapshot(hotspot)
     session = SeedSession([hotspot])
 
-    await service.seed_catalog(session, date(2026, 9, 7))
+    await service.seed_catalog(cast(AsyncSession, session), date(2026, 9, 7))
 
     assert snapshot(hotspot) == before
     assert session.rows == [hotspot]
@@ -136,7 +139,7 @@ async def test_reseed_cannot_take_another_rows_wikidata_identity() -> None:
     session = SeedSession([target, owner])
     before = snapshot(target), snapshot(owner)
 
-    await service.seed_catalog(session, date(2026, 9, 7))
+    await service.seed_catalog(cast(AsyncSession, session), date(2026, 9, 7))
 
     assert (snapshot(target), snapshot(owner)) == before
     assert session.rows == [target, owner]
@@ -146,7 +149,7 @@ async def test_fresh_seed_and_unreviewed_seed_updates_remain_idempotent(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     session = SeedSession()
-    first = await service.seed_catalog(session, date(2026, 9, 7))
+    first = await service.seed_catalog(cast(AsyncSession, session), date(2026, 9, 7))
     hotspot = first[0]
     assert hotspot.name == SEED.name
     assert hotspot.slug == SEED.slug
@@ -160,7 +163,7 @@ async def test_fresh_seed_and_unreviewed_seed_updates_remain_idempotent(
     monkeypatch.setattr(service, "HOTSPOT_SEEDS", (corrected,))
 
     for _ in range(2):
-        assert await service.seed_catalog(session, date(2026, 9, 7)) == first
+        assert await service.seed_catalog(cast(AsyncSession, session), date(2026, 9, 7)) == first
 
     assert len(session.rows) == row_count
     assert hotspot.name == corrected.name

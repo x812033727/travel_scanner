@@ -2,11 +2,13 @@
 
 import json
 from datetime import UTC, datetime, timedelta
+from typing import cast
 from uuid import uuid4
 
 import httpx
 import pytest
 from fastapi import FastAPI, Header
+from sqlalchemy import Table
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.analytics.affiliates import LIMIT, affiliate_report
@@ -36,7 +38,7 @@ def click(days: float = 0, **fields: object) -> AffiliateClick:
 async def _factory():
     engine = create_async_engine("sqlite+aiosqlite://")
     async with engine.begin() as connection:
-        await connection.run_sync(AffiliateClick.__table__.create)
+        await connection.run_sync(cast(Table, AffiliateClick.__table__).create)
     return engine, async_sessionmaker(engine, expire_on_commit=False)
 
 
@@ -113,9 +115,7 @@ async def test_report_caps_each_dimension_and_tolerates_an_empty_ledger() -> Non
             assert empty["total"] == 0 and empty["previous_total"] == 0
             assert empty["change"] is None
             assert empty["by_partner"] == [] and empty["top_sub_ids"] == []
-            session.add_all(
-                [click(destination_id=f"city-{index}") for index in range(LIMIT + 5)]
-            )
+            session.add_all([click(destination_id=f"city-{index}") for index in range(LIMIT + 5)])
             await session.commit()
         async with factory() as session:
             report = await affiliate_report(session, "30d", now=NOW)
@@ -139,7 +139,7 @@ async def test_report_route_requires_an_administrator_and_is_never_cached() -> N
         return User(id=uuid4(), email="report@example.test", is_admin=x_test_role == "admin")
 
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(admin_router)
     app.dependency_overrides[get_session] = database
     app.dependency_overrides[current_user] = authenticate

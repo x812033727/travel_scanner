@@ -99,7 +99,7 @@ async def harness(monkeypatch) -> AsyncIterator[Any]:
 
     app = FastAPI()
     app.include_router(router, prefix="/api/v1")
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.dependency_overrides[get_session] = database
     app.dependency_overrides[current_user] = required
     app.dependency_overrides[optional_current_user] = optional

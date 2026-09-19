@@ -10,11 +10,12 @@ from __future__ import annotations
 import json
 from datetime import timedelta
 from pathlib import Path
+from typing import cast
 from unittest.mock import AsyncMock
 from uuid import UUID
 
 import pytest
-from sqlalchemy import func, select, update
+from sqlalchemy import Table, func, select, update
 
 from app.guides import aliases, search
 from app.guides import router as guides_router
@@ -183,8 +184,9 @@ async def test_reindex_rebuilds_what_is_missing_and_drops_what_is_not_published(
         del draft, kept
     async with database() as session:
         # Simulate an index that never saw ``kept`` and still carries a withdrawn one.
+        search_entries = cast(Table, GuideSearchEntry.__table__)
         await session.execute(
-            GuideSearchEntry.__table__.delete().where(
+            search_entries.delete().where(
                 GuideSearchEntry.article_id.in_(
                     select(GuideArticle.id).where(GuideArticle.slug == "kept")
                 )

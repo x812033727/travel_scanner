@@ -252,6 +252,7 @@ async def test_import_uses_existing_relation_ids_dedupes_and_preserves_pending_s
         actor.id,
         run.id,
     )
+    assert row is not None
     categories = list((await session.scalars(select(FoodMerchantCategory))).all())
     foods = list((await session.scalars(select(FoodMerchantFood))).all())
     assert len(categories) == len(foods) == 1

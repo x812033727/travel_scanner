@@ -247,7 +247,7 @@ async def test_youtube_import_preserves_only_explicit_provider_status(embeddable
     if isinstance(embeddable, bool):
         expected["embeddable"] = embeddable
     assert candidate.metadata == {"youtube_status": expected}
-    guide, _ = await upsert_guide(FakeGuideSession(), uuid4(), candidate)
+    guide, _ = await upsert_guide(cast(AsyncSession, FakeGuideSession()), uuid4(), candidate)
     guide.review_status = "approved"
     from app.community.videos import youtube_embed_metadata
 
@@ -297,7 +297,7 @@ async def test_youtube_refresh_never_renews_missing_or_revoked_embed_evidence(me
         metadata=metadata,
     )
     updated, created = await upsert_guide(
-        FakeGuideSession(existing), existing.hotspot_id, candidate
+        cast(AsyncSession, FakeGuideSession(existing)), existing.hotspot_id, candidate
     )
     assert not created and updated.review_status == "approved" and updated.locale == "ja"
     assert updated.metadata_json["youtube_status"].get("embeddable") is not True
@@ -356,7 +356,9 @@ async def test_non_provider_edit_of_existing_video_cannot_renew_embed_evidence()
         canonical_url=existing.canonical_url,
         metadata={"youtube_status": {"privacyStatus": "public", "embeddable": True}},
     )
-    updated, _ = await upsert_guide(FakeGuideSession(existing), existing.hotspot_id, candidate)
+    updated, _ = await upsert_guide(
+        cast(AsyncSession, FakeGuideSession(existing)), existing.hotspot_id, candidate
+    )
     assert updated.metadata_json["youtube_status"] == {}
 
 
@@ -798,9 +800,7 @@ def test_foreign_place_names_the_country_a_candidate_is_really_about() -> None:
     assert foreign_place("還劍湖旅遊指南｜熱門景點資訊、交通地圖", ngoc_son) is None
     # The search term the row was found with counts as this attraction.
     assert (
-        foreign_place(
-            "台灣人也推薦的 Ngoc Son Temple", ngoc_son, own_terms=["Ngoc Son Temple"]
-        )
+        foreign_place("台灣人也推薦的 Ngoc Son Temple", ngoc_son, own_terms=["Ngoc Son Temple"])
         is None
     )
     maruyama = _hotspot_in(
@@ -812,3 +812,60 @@ def test_foreign_place_names_the_country_a_candidate_is_really_about() -> None:
         "紅磚倉庫", city="橫濱", country="日本", country_code="JP", destination_id="yokohama"
     )
     assert foreign_place("東京から日帰りで行ける赤レンガ倉庫", yokohama) is None
+
+
+def test_foreign_place_keeps_a_directory_page_about_this_shop() -> None:
+    # 6da32c2d: NAVITIME's page for MEGAドン・キホーテ渋谷本店 was rejected as Thailand.
+    donki = _hotspot_in(
+        "MEGA 唐吉訶德澀谷本店",
+        city="東京",
+        country="日本",
+        country_code="JP",
+        destination_id="tokyo",
+    )
+    title = "MEGA(メガ)ドン・キホーテ 渋谷本店 | 渋谷区のドンキホーテ・アクセス・地図 - NAVITIME"
+    # 「タイ」 inside 「タイムセール」 names no country at all.
+    assert foreign_place(f"{title} タイムセール情報", donki) is None
+    # The bracketed reading and the space do not hide the shop's own Japanese name.
+    thai_shoppers = f"{title} タイ人観光客に人気"
+    assert foreign_place(thai_shoppers, donki) == "タイ"
+    assert foreign_place(thai_shoppers, donki, own_terms=["MEGAドン・キホーテ渋谷本店"]) is None
+    # A real mention of Thailand still loses to the ward: 渋谷区 is Tokyo.
+    donki.city_code = "NRT"
+    assert foreign_place("渋谷区のドン・キホーテはタイ人観光客に人気", donki) is None
+    donki.city_code = "JP"
+    assert foreign_place("渋谷区のドン・キホーテはタイ人観光客に人気", donki) == "タイ"
+
+
+def test_foreign_place_keeps_the_hoi_an_article_that_lists_the_japanese_bridge() -> None:
+    # c4706b00: the Hoiana article on 會安古城 names 日本橋 (來遠橋) and was rejected as Japan.
+    hoi_an = _hotspot_in(
+        "會安古城", city="峴港", country="越南", country_code="VN", destination_id="da-nang"
+    )
+    article = (
+        "會安古鎮：你應該在會安停留多少天？ | Hoiana Resort & Golf "
+        "來遠橋（日本橋）、燈籠街與河畔咖啡"
+    )
+    assert foreign_place(article, hoi_an) is None
+    # A page that really compares it with Japan is kept only through its own aliases.
+    compared = "會安古鎮與日本京都：兩座古都怎麼選"
+    assert foreign_place(compared, hoi_an) == "日本"
+    assert foreign_place(compared, hoi_an, own_terms=["會安", "Hội An", "ホイアン"]) is None
+
+
+def test_foreign_place_names_the_country_the_text_is_mostly_about() -> None:
+    # d469749d / c7aac200: the same 指南宮 page was reported as 泰國 under one attraction and
+    # 台灣 under another; 57823a26 / 25a519a0: the same blog index as 沖繩 and 台南.
+    hue = _hotspot_in(
+        "安定宮", city="順化", country="越南", country_code="VN", destination_id="hue"
+    )
+    temple = (
+        "觀光景點 景點 指南宮位於台北市文山區，殿內供奉泰國巴博元帥致贈的金佛，"
+        "台北捷運動物園站步行可達"
+    )
+    assert foreign_place(temple, hue) == "台北"
+    jeonju = _hotspot_in(
+        "豐南門", city="全州", country="韓國", country_code="KR", destination_id="jeonju"
+    )
+    blog = "旅遊景點美食親子景點介紹 @ 青青小熊＊旅遊札記 台南美食、沖繩親子行程、台北景點"
+    assert foreign_place(blog, jeonju) == "台南"

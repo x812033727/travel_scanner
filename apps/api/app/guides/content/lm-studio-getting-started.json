@@ -154,7 +154,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "text": "GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體",
               "kind": "life",
               "slug": "gguf-quantization-explained"
             }
@@ -309,6 +309,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從左到右看：只有搜尋與下載模型那一段需要網路，載入模型之後的對話與本機伺服器都在你的電腦裡跑，伺服器監聽在埠 1234。",
+          "description": "三個並排的抽象方塊代表 LM Studio 的三個使用階段。第一個是 Discover 分頁：搜尋關鍵字或貼上 Hugging Face 網址、挑選 GGUF 或 MLX 格式與量化版本、把檔案存到 ~/.lmstudio/models，這一段需要網路。第二個是 Chat 分頁：把模型載入到記憶體、設定上下文視窗與 GPU offload、開始對話並可附加文件檔案。第三個是 Developer 分頁：打開 Start server 開關或執行 lms server start、伺服器監聽在 localhost 的埠 1234、其他程式用 OpenAI 相容端點呼叫。第二與第三個階段被一個虛線框圈起來，標示為在你的電腦裡執行、可以離線。底部說明資料流：只有第一步需要網路，模型下載完成後，第二步與第三步的對話與 API 請求都留在本機。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

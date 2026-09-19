@@ -10,6 +10,7 @@ import {
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getCommunityState } from "@/lib/community/server";
+import { petPlaceSitemapEntries, type PetPlaceSitemapEntry } from "@/lib/community/public.server";
 
 // Evaluate public switches at request time, not while building without the API.
 export const dynamic = "force-dynamic";
@@ -46,11 +47,11 @@ type SitemapRoute = {
  *   shell. /explore no longer sends one -- it is listed below, but only while discovery is on,
  *   since with the switch off it falls back to a grid of links to pages already listed here.
  *   /pet-friendly no longer sends one either and is listed below, behind the community switch.
- * - the per-record community routes -- /pet-friendly/{id}, /community/posts/{id} and
- *   /community/profiles/{handle}. They server-render and are indexable now, but enumerating
- *   them means paging the API from this route on every crawl, which is a separate change
- *   (2026-09-14-sitemap-lists-pet-friendly-places). /pet-friendly links to every place it
- *   lists, so the detail pages are reachable meanwhile.
+ * - /community/posts/{id} and /community/profiles/{handle}. They server-render and are
+ *   indexable, but there is no public endpoint to enumerate them from -- /community/posts is
+ *   the member feed -- so they wait for one. /pet-friendly/{id} has one, the directory's own,
+ *   and is listed by `petPlaceSitemap` after these routes rather than among them: it is a
+ *   read, not a route.
  * - every member and token route, which carries `noindex`.
  * - an article hub in a language that has nothing published in it. Those pages exist and
  *   answer 200, but with one sentence saying the section is empty; `hub` below lists them
@@ -98,7 +99,8 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
 ];
 
 /**
- * The children of the sitemap index, by id. `static` carries every route below; each
+ * The children of the sitemap index, by id. `static` carries every route below and, with
+ * the community switch on, the pet-friendly place pages (`petPlaceSitemap`); each
  * `{section}-{locale}` child carries that section's topic hubs and its first
  * `SITEMAP_CHILD_LIMIT` articles in that language, and `{section}-{locale}-{n}` (n ≥ 2)
  * the next slice of its articles, as many slices as the rows need. So a section has no
@@ -215,7 +217,8 @@ const hubAlternates = (available: readonly Locale[], path: string): Record<strin
 
 /**
  * One entry per locale per route, each carrying the full alternate set. Google wants those
- * reciprocal and self-inclusive, and Next does not add the self link.
+ * reciprocal and self-inclusive, and Next does not add the self link. The pet-friendly place
+ * pages follow the routes (`petPlaceSitemap`).
  *
  * Slugs stay bundled, but indexability depends on the current public switches. One no-store
  * visibility read keeps this list consistent with PublicFeatureGate's metadata: closed or
@@ -223,8 +226,11 @@ const hubAlternates = (available: readonly Locale[], path: string): Record<strin
  * if the settings service is unavailable. The canonical origin is still fixed at build time.
  */
 async function staticSitemap(): Promise<MetadataRoute.Sitemap> {
-  const [visibility, summary, discovery, community] = await Promise.all([
-    getSiteVisibility(), guideSitemapSummary(), getDiscoveryStatus(), getCommunityState(),
+  // The place enumeration starts alongside the switch reads rather than after them: it is the
+  // one read here that pages, and it gates on the same request-scoped community state itself,
+  // so a closed community costs it nothing.
+  const [visibility, summary, discovery, community, places] = await Promise.all([
+    getSiteVisibility(), guideSitemapSummary(), getDiscoveryStatus(), getCommunityState(), petPlaceSitemapEntries(),
   ]);
   const communityOpen = community.status === "ready" && community.flags.enabled;
 
@@ -240,7 +246,7 @@ async function staticSitemap(): Promise<MetadataRoute.Sitemap> {
       ? locales
       : locales.filter((locale) => publishes(summary, route.hub!, locale));
 
-  return SITEMAP_ROUTES.filter(
+  const routes = SITEMAP_ROUTES.filter(
     (route) => (!route.feature || featureEnabled(visibility, route.feature))
       && (!route.discovery || discovery.enabled)
       && (!route.community || communityOpen),
@@ -257,6 +263,44 @@ async function staticSitemap(): Promise<MetadataRoute.Sitemap> {
       // missing signal; one that always says "now" teaches Google to distrust the whole file.
       changeFrequency: route.changeFrequency,
       priority: route.priority,
+      alternates: { languages },
+    }));
+  });
+  // With the switch off there are no place pages, whatever a read that raced the switch
+  // returned: this child and /pet-friendly itself must always agree.
+  return [...routes, ...petPlaceSitemap(communityOpen ? places.entries : [])];
+}
+
+/**
+ * One entry per locale per published place, after the routes and in this child rather than
+ * one of their own: the section children are cut by guide section and language and the index
+ * lists them from the guide summary, whereas what decides whether a place page exists is the
+ * community switch this child already reads. At the enumeration's cap that is 1,000 places,
+ * five rows each -- a tenth of Google's per-file limit. A child of their own is the day the
+ * count needs it.
+ *
+ * Like the routes, each carries the full reciprocal alternate set: the page renders in every
+ * locale from the one record (`names[locale] || name`), and the layout's own hreflang says
+ * the same five plus x-default. Unlike them it may carry `lastModified`, from the one real
+ * date a place has -- when its rules were last verified -- and only when the API sent one: a
+ * place without it gets no date rather than "now".
+ */
+function petPlaceSitemap(places: readonly PetPlaceSitemapEntry[]): MetadataRoute.Sitemap {
+  // The cursor walks (created_at, id), so a repeat is not expected; ruling one out here keeps
+  // "each place once" a property of this file, as the section children do for articles.
+  const listed = new Set<string>();
+  return places.flatMap((place) => {
+    if (listed.has(place.id)) return [];
+    listed.add(place.id);
+    const path = `/pet-friendly/${place.id}`;
+    const languages = languageAlternates(path);
+    return locales.map((locale) => ({
+      url: localeUrl(locale, path),
+      // Rules are re-verified and visits approved on the cadence of an evergreen article, not
+      // a feed; the directory above them is weekly because its membership moves.
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+      ...(place.verified_at ? { lastModified: new Date(place.verified_at) } : {}),
       alternates: { languages },
     }));
   });

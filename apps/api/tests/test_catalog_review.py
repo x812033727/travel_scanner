@@ -1,11 +1,13 @@
 from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
+from typing import Any, cast
 from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
 import pytest
 from pydantic import ValidationError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.catalog_review.budget import run_call_limit
 from app.catalog_review.repository import (
@@ -239,7 +241,8 @@ def test_budget_extension_requires_a_strict_positive_version(version):
 
 
 def test_budget_extension_cannot_include_counter_or_review_mutations():
-    for extra in [{"calls": 0}, {"usage_json": {}}, {"status": "approved"}]:
+    extras: list[dict[str, Any]] = [{"calls": 0}, {"usage_json": {}}, {"status": "approved"}]
+    for extra in extras:
         with pytest.raises(ValidationError):
             ResumeRequest(expected_version=1, max_calls=160, **extra)
 
@@ -265,7 +268,7 @@ def test_saved_call_limits_are_legacy_compatible_and_fail_closed(snapshot, expec
 
 def test_apply_has_no_client_supplied_verification_or_assessment():
     with pytest.raises(ValidationError):
-        ApplyRequest(
+        ApplyRequest(  # type: ignore[call-arg]  # extra="forbid" must reject this field
             item_ids=[uuid4()], action="approve", expected_version=1, map_match_status="verified"
         )
     with pytest.raises(ValidationError):
@@ -603,7 +606,7 @@ async def test_resume_only_clears_current_errors_and_exact_legacy_omissions_and_
     monkeypatch.setattr(service, "load_entity", load)
     monkeypatch.setattr(service, "entity_snapshot", snapshot)
     session = SimpleNamespace(scalar=AsyncMock(return_value=None), add=Mock(), commit=AsyncMock())
-    assert await prepare_resume(session, run.id, uuid4()) is run
+    assert await prepare_resume(cast(AsyncSession, session), run.id, uuid4()) is run
     assert run.status == "queued" and run.version == 5 and run.completed_at is None
     assert run.lease_token is None and run.lease_until is None
     assert run.usage_json == usage

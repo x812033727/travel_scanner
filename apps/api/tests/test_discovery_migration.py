@@ -4,6 +4,7 @@ import importlib.util
 import os
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import cast
 from uuid import uuid4
 
 import pytest
@@ -18,6 +19,7 @@ from app.discovery.models import DiscoveryDismissal, DiscoveryPreference
 def migration():
     path = Path(__file__).parents[1] / "migrations/versions/0065_travel_discovery.py"
     spec = importlib.util.spec_from_file_location("discovery_migration", path)
+    assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -28,8 +30,9 @@ def test_metadata_and_revision_contract():
     assert module.revision == "0065_travel_discovery"
     assert module.down_revision == "0064_klook_affiliate_channels"
     for model in (DiscoveryPreference, DiscoveryDismissal):
-        assert model.__table__.metadata is Base.metadata
-        assert next(iter(model.__table__.c.user_id.foreign_keys)).ondelete == "CASCADE"
+        table = cast(sa.Table, model.__table__)
+        assert table.metadata is Base.metadata
+        assert next(iter(table.c.user_id.foreign_keys)).ondelete == "CASCADE"
     assert [column.name for column in DiscoveryDismissal.__table__.primary_key] == [
         "user_id",
         "content_key",
@@ -46,8 +49,8 @@ def test_sqlite_frozen_and_current_metadata_upgrade_idempotent(monkeypatch, fres
         sa.Table("users", metadata, sa.Column("id", sa.Uuid(), primary_key=True))
         metadata.create_all(connection)
         if fresh:
-            DiscoveryPreference.__table__.create(connection)
-            DiscoveryDismissal.__table__.create(connection)
+            cast(sa.Table, DiscoveryPreference.__table__).create(connection)
+            cast(sa.Table, DiscoveryDismissal.__table__).create(connection)
         with Operations.context(MigrationContext.configure(connection)):
             module.upgrade()
             module.upgrade()
@@ -85,20 +88,22 @@ async def test_postgresql_frozen_and_fresh_upgrade_cascade(monkeypatch, fresh):
             users = sa.Table("users", metadata, sa.Column("id", sa.Uuid(), primary_key=True))
             metadata.create_all(conn)
             if fresh:
-                DiscoveryPreference.__table__.create(conn)
-                DiscoveryDismissal.__table__.create(conn)
+                cast(sa.Table, DiscoveryPreference.__table__).create(conn)
+                cast(sa.Table, DiscoveryDismissal.__table__).create(conn)
             with Operations.context(MigrationContext.configure(conn)):
                 module.upgrade()
                 module.upgrade()
                 user = uuid4()
                 conn.execute(users.insert().values(id=user))
                 conn.execute(
-                    DiscoveryPreference.__table__.insert().values(
-                        user_id=user, destinations=[], topics=[], updated_at=datetime.now(UTC)
-                    )
+                    cast(sa.Table, DiscoveryPreference.__table__)
+                    .insert()
+                    .values(user_id=user, destinations=[], topics=[], updated_at=datetime.now(UTC))
                 )
                 conn.execute(
-                    DiscoveryDismissal.__table__.insert().values(
+                    cast(sa.Table, DiscoveryDismissal.__table__)
+                    .insert()
+                    .values(
                         user_id=user, content_key=f"guide:{uuid4()}", created_at=datetime.now(UTC)
                     )
                 )

@@ -100,7 +100,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "量化是什麼：GGUF、Q4、Q8 怎麼選",
+              "text": "GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體",
               "kind": "life",
               "slug": "gguf-quantization-explained"
             }
@@ -209,6 +209,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從左到右看：先在 Ollama 標籤頁挑尺寸，拉取，用 Modelfile 把繁體中文規則寫死，最後才開始對話與調整思考、上下文。",
+          "description": "一張四步流程圖。第一步選版本：在 Ollama 標籤頁看檔案大小，qwen3.5:9b 是 6.6GB，每個標籤都標 256K 上下文。第二步拉取：ollama pull qwen3.5:9b、ollama run qwen3.5:9b，再用 ollama ps 確認模型載在 GPU 還是 CPU。第三步設定繁體中文：把台灣用語規則寫進 Modelfile 的 SYSTEM，再用 ollama create qwen-zhtw 建成自訂模型。第四步開始對話：用 --think=false 關掉思考，用 /set parameter num_ctx 64000 把上下文視窗開大。圖下方說明為什麼需要第三步：模型卡只寫支援 201 種語言與方言，沒有保證繁體輸出。最下方兩個提醒：授權方面 Qwen3.5、Qwen3.6 與 Qwen3.8-27B 標 Apache 2.0，Qwen3.8-Flash-Next 是 Qwen Community License 1.0；舊寫法方面，把 /nothink 打進提示詞沒有作用，要用 Ollama 的介面指令。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

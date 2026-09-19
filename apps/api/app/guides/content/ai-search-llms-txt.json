@@ -239,6 +239,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由上往下看三條線：每一類在做什麼、各家的 user-agent 例子，以及在 robots.txt 擋掉它的後果。",
+          "description": "一張三列的對照圖。每一列由左到右是：這一類在做什麼、各家的 user-agent 例子、在 robots.txt 擋掉會怎樣。第一列是訓練用爬蟲，抓內容可能用於訓練生成式基礎模型，例子有 Google-Extended、GPTBot、ClaudeBot，官方文件說會遵守，Google 與 Apple 另寫明擋掉不影響搜尋收錄。第二列是搜尋索引爬蟲，建索引讓網站出現在該服務的結果裡，例子有 Googlebot、OAI-SearchBot、Claude-SearchBot，OpenAI 明寫退出的網站不出現在 ChatGPT 答案裡。第三列是代使用者取用的擷取器，使用者提問時去讀那一頁、答案裡附連結，例子有 ChatGPT-User、Claude-User、Perplexity-User，官方文件寫這一類通常忽略 robots.txt，所以那一行接近表態，不是閘門。圖的底部寫著：三件事各自有名字，你在 robots.txt 寫下哪一個，後果完全不同。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

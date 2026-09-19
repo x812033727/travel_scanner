@@ -475,7 +475,9 @@ async def test_cancel_and_due_worker_do_not_deadlock_on_erasure_rows(
                 assert persisted_user.deleted_at is not None
         finally:
             release_worker.set()
-            pending_tasks = [task for task in (cancel_task, worker_task) if not task.done()]
+            pending_tasks = [
+                task for task in (cancel_task, worker_task) if task is not None and not task.done()
+            ]
             for task in pending_tasks:
                 task.cancel()
             if pending_tasks:
@@ -569,9 +571,7 @@ async def test_erasure_barrier_blocks_resend_and_delayed_scrub_catches_inflight_
             )
             == 0
         )
-        mail = await check.scalar(
-            select(Job).where(Job.user_id == target.id, Job.kind == "mail")
-        )
+        mail = await check.scalar(select(Job).where(Job.user_id == target.id, Job.kind == "mail"))
         assert mail is not None
         assert mail.status == "completed" and mail.payload_encrypted is None
         persisted = await check.get(AccountErasureRequest, request.id)

@@ -1032,10 +1032,18 @@ ads settings turn on for the same tag. Everything about it is off by default;
   never going to receive. The one condition the proxy still cannot apply is whether the
   article exists, which needs an API read it cannot afford per request; such a page carries
   no ad code either way.
-- **ads.txt.** `apps/web/public/ads.txt` is a build-time file naming one publisher id, while
-  the id itself is back-office configuration. Changing the id therefore also means changing
-  that file and redeploying, or Google treats the inventory as unauthorised —
-  `2026-09-13-adsense-ads-txt-drift` is the ticket to remove that footgun.
+- **ads.txt.** `/ads.txt` is a Route Handler (`apps/web/app/ads.txt/route.ts`) built from the
+  same configuration the article pages read (`fetchAdsenseConfig`), so the file and the id
+  cannot disagree: change the id in the back office and the next request serves it, no
+  redeploy. Google crawls this file to verify the site, so it answers even when the API does
+  not — the read gives the API one second, answers from its process-local cache, and when the
+  configuration carries no id (the API down for longer than that cache tolerates, advertising
+  switched off, or an empty id) the line names `ADS_TXT_FALLBACK_PUBLISHER_ID`
+  (`app/ads.txt/ads-txt.ts`, the account the site was verified with) rather than nothing.
+  The response carries `Cache-Control: public, max-age=3600`. There is deliberately no
+  `public/ads.txt`: a static file of the same name would win over the route and bring the
+  drift back. `e2e/guides-adsense.spec.ts` checks the served line against the id its API
+  double configures, which is not the fallback.
 - **Query strings.** With advertising on, an article URL carrying a query redirects to the
   clean path before the document loads, because the ad tag can read `location.href` for
   itself. The cost is that `utm_*` and `gclid` do not survive to an article page while

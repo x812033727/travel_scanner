@@ -8,11 +8,12 @@ import json
 from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock, Mock
 from uuid import UUID, uuid4
 
 import pytest
+from redis import Redis as SyncRedis
 from sqlalchemy.sql import operators
 from sqlalchemy.sql.elements import Null
 
@@ -29,6 +30,7 @@ from app.catalog_review.schemas import (
     ReviewAssessment,
 )
 from app.catalog_review.service import allowed_actions as jobs_allowed_actions
+from app.config import Settings
 from app.foods.place_matching import MerchantMatchReport
 from app.models import CatalogReviewItem, CatalogReviewRun, FoodMerchant
 from app.worker import QUEUE_NAMES
@@ -51,6 +53,9 @@ def matches(row: Any, expression: Any) -> bool:
 
 
 class Store:
+    budget: AsyncMock  # the consume_search_budget double ``setup`` installs on ``jobs``
+    sources: AsyncMock  # the fetch_sources double ``setup`` installs on ``jobs``
+
     def __init__(self, run: CatalogReviewRun, items: list[CatalogReviewItem] | None = None):
         self.rows: list[Any] = [run, *(items or [])]
         self.lock = asyncio.Lock()
@@ -225,7 +230,8 @@ def setup(
     provider = FakeProvider(store)
     monkeypatch.setattr(jobs, "SessionFactory", store.session)
     monkeypatch.setattr(jobs, "get_redis", lambda: object())
-    monkeypatch.setattr(jobs, "consume_search_budget", AsyncMock(return_value=True))
+    store.budget = AsyncMock(return_value=True)
+    monkeypatch.setattr(jobs, "consume_search_budget", store.budget)
     monkeypatch.setattr(
         jobs,
         "load_runtime_settings",
@@ -250,7 +256,8 @@ def setup(
             for url in urls
         ]
 
-    monkeypatch.setattr(jobs, "fetch_sources", AsyncMock(side_effect=evidence))
+    store.sources = AsyncMock(side_effect=evidence)
+    monkeypatch.setattr(jobs, "fetch_sources", store.sources)
 
     def factory(_settings: Any, reserve: Any, **_kwargs: Any) -> FakeProvider:
         provider.reserve = reserve
@@ -277,10 +284,11 @@ async def test_only_one_worker_claims_and_stale_tokens_cannot_reserve(
     claimed = await asyncio.gather(jobs._claim_run(run.id), jobs._claim_run(run.id))
     assert sum(value is not None for value in claimed) == 1
     original_token = run.lease_token
+    assert original_token is not None
     run.lease_until = datetime.now(UTC) - timedelta(seconds=1)
     assert await jobs._claim_run(run.id) is run
     assert run.lease_token != original_token
-    settings = SimpleNamespace(hotspot_guide_gemini_daily_search_budget=30)
+    settings = cast(Settings, SimpleNamespace(hotspot_guide_gemini_daily_search_budget=30))
     with pytest.raises(jobs.LeaseLost):
         await jobs.reserve_call(run.id, original_token, settings)
     assert run.usage_json == {}
@@ -290,17 +298,19 @@ async def test_concurrent_budget_reservations_never_exceed_run_limit(
     monkeypatch: pytest.MonkeyPatch,
 ):
     run = new_run(request_json={"max_calls": 1})
-    setup(monkeypatch, run)
+    store, _ = setup(monkeypatch, run)
     await jobs._claim_run(run.id)
-    settings = SimpleNamespace(hotspot_guide_gemini_daily_search_budget=30)
+    token = run.lease_token
+    assert token is not None
+    settings = cast(Settings, SimpleNamespace(hotspot_guide_gemini_daily_search_budget=30))
     values = await asyncio.gather(
-        *(jobs.reserve_call(run.id, run.lease_token, settings) for _ in range(2)),
+        *(jobs.reserve_call(run.id, token, settings) for _ in range(2)),
         return_exceptions=True,
     )
     assert sum(value is True for value in values) == 1
     assert sum(isinstance(value, jobs.BudgetStopped) for value in values) == 1
     assert run.usage_json["calls"] == 1
-    assert jobs.consume_search_budget.await_count == 1
+    assert store.budget.await_count == 1
 
 
 @pytest.mark.parametrize("configured_limit", [40, 80, 300])
@@ -310,12 +320,17 @@ async def test_worker_honors_explicit_run_snapshot_above_80_not_current_settings
     run = new_run(request_json={"max_calls": 160}, usage_json={"calls": 159})
     store, _ = setup(monkeypatch, run)
     await jobs._claim_run(run.id)
-    settings = SimpleNamespace(
-        catalog_review_max_calls=configured_limit,
-        hotspot_guide_gemini_daily_search_budget=250,
+    token = run.lease_token
+    assert token is not None
+    settings = cast(
+        Settings,
+        SimpleNamespace(
+            catalog_review_max_calls=configured_limit,
+            hotspot_guide_gemini_daily_search_budget=250,
+        ),
     )
     values = await asyncio.gather(
-        *(jobs.reserve_call(run.id, run.lease_token, settings) for _ in range(3)),
+        *(jobs.reserve_call(run.id, token, settings) for _ in range(3)),
         return_exceptions=True,
     )
     assert sum(value is True for value in values) == 1
@@ -323,8 +338,8 @@ async def test_worker_honors_explicit_run_snapshot_above_80_not_current_settings
     assert len(stopped) == 2
     assert all(str(value) == "catalog_review_call_limit" for value in stopped)
     assert run.usage_json == {"calls": 160, "member_charged": False}
-    jobs.consume_search_budget.assert_awaited_once()
-    assert jobs.consume_search_budget.await_args.args[1:] == ("gemini", 250)
+    store.budget.assert_awaited_once()
+    assert store.budget.await_args.args[1:] == ("gemini", 250)
     assert store.events[-1] == "commit"
 
 
@@ -332,25 +347,33 @@ async def test_increased_run_cap_does_not_bypass_daily_budget(monkeypatch: pytes
     run = new_run(request_json={"max_calls": 160}, usage_json={"calls": 80})
     setup(monkeypatch, run)
     await jobs._claim_run(run.id)
-    monkeypatch.setattr(jobs, "consume_search_budget", AsyncMock(return_value=False))
-    settings = SimpleNamespace(hotspot_guide_gemini_daily_search_budget=80)
+    budget = AsyncMock(return_value=False)
+    monkeypatch.setattr(jobs, "consume_search_budget", budget)
+    token = run.lease_token
+    assert token is not None
+    settings = cast(Settings, SimpleNamespace(hotspot_guide_gemini_daily_search_budget=80))
     with pytest.raises(jobs.BudgetStopped, match="catalog_review_daily_budget"):
-        await jobs.reserve_call(run.id, run.lease_token, settings)
+        await jobs.reserve_call(run.id, token, settings)
     assert run.usage_json == {"calls": 80}
-    assert jobs.consume_search_budget.await_count == 1
+    assert budget.await_count == 1
 
 
 async def test_missing_legacy_snapshot_still_stops_at_80(monkeypatch: pytest.MonkeyPatch):
     run = new_run(request_json={}, usage_json={"calls": 80})
-    setup(monkeypatch, run)
+    store, _ = setup(monkeypatch, run)
     await jobs._claim_run(run.id)
-    settings = SimpleNamespace(
-        catalog_review_max_calls=1000, hotspot_guide_gemini_daily_search_budget=1000
+    token = run.lease_token
+    assert token is not None
+    settings = cast(
+        Settings,
+        SimpleNamespace(
+            catalog_review_max_calls=1000, hotspot_guide_gemini_daily_search_budget=1000
+        ),
     )
     with pytest.raises(jobs.BudgetStopped, match="catalog_review_call_limit"):
-        await jobs.reserve_call(run.id, run.lease_token, settings)
+        await jobs.reserve_call(run.id, token, settings)
     assert run.usage_json == {"calls": 80}
-    jobs.consume_search_budget.assert_not_awaited()
+    store.budget.assert_not_awaited()
 
 
 async def test_batches_commit_and_resume_retries_only_errors(monkeypatch: pytest.MonkeyPatch):
@@ -373,13 +396,13 @@ async def test_batches_commit_and_resume_retries_only_errors(monkeypatch: pytest
     paid_items = [item_id for batch in provider.assess_calls[1:] for item_id in batch]
     # Explicit API resume retains item states, calls and all saved progress.
     run.status = "queued"
-    _, resumed = setup(monkeypatch, run, items)
+    resumed_store, resumed = setup(monkeypatch, run, items)
     await jobs._run(run.id)
     assert run.status == "completed"
     assert len(resumed.assess_calls) == 1
     assert not set(resumed.assess_calls[0]) & set(paid_items)
     assert run.usage_json["calls"] == 5
-    assert jobs.fetch_sources.await_count == 1  # evidence is re-fetched for the retry
+    assert resumed_store.sources.await_count == 1  # evidence is re-fetched for the retry
     assert store.events.count("http") == 4
 
 
@@ -520,7 +543,7 @@ def test_enqueue_uses_registered_queue_and_closes_sync_redis(monkeypatch: pytest
     queue = Mock()
     queue.enqueue.return_value.id = "job-123"
     factory = Mock(return_value=queue)
-    monkeypatch.setattr(jobs.SyncRedis, "from_url", Mock(return_value=connection))
+    monkeypatch.setattr(SyncRedis, "from_url", Mock(return_value=connection))
     monkeypatch.setattr(jobs, "Queue", factory)
     run_id = uuid4()
     assert jobs.enqueue_catalog_run(run_id) == "job-123"
@@ -541,6 +564,7 @@ async def test_heartbeat_renews_only_the_current_worker_lease(monkeypatch: pytes
     initial = run.lease_until
     monkeypatch.setattr(jobs, "HEARTBEAT_SECONDS", 0.001)
     token = run.lease_token
+    assert token is not None
     heartbeat = asyncio.create_task(jobs._heartbeat(run.id, token))
     for _ in range(100):
         if run.lease_until > initial:
@@ -652,7 +676,7 @@ async def test_provider_circuit_preserves_success_and_unattempted_rows_until_exp
 ):
     run = new_run()
     items = [new_item(run, number) for number in range(1, 41)]
-    _, provider = setup(monkeypatch, run, items)
+    store, provider = setup(monkeypatch, run, items)
     provider.assess_plan = [None] + [
         CatalogAssessmentError("catalog_provider_timeout", retryable=True, details={"attempt": 2})
         for _ in range(3)
@@ -665,7 +689,7 @@ async def test_provider_circuit_preserves_success_and_unattempted_rows_until_exp
     assert run.lease_token is None and run.lease_until is None
     assert run.usage_json["calls"] == 4 and run.usage_json["member_charged"] is False
     assert len(provider.assess_calls) == 4
-    assert jobs.fetch_sources.await_count == 4
+    assert store.sources.await_count == 4
     diagnostic = items[8].assessment_json
     assert diagnostic["code"] == "catalog_provider_timeout"
     assert diagnostic["retryable"] is True
@@ -678,7 +702,7 @@ async def test_provider_circuit_preserves_success_and_unattempted_rows_until_exp
     await jobs._run(run.id)
     assert len(provider.assess_calls) == 4
     run.status = "queued"  # Only the explicit resume API makes this transition.
-    _, resumed = setup(monkeypatch, run, items)
+    resumed_store, resumed = setup(monkeypatch, run, items)
     await jobs._run(run.id)
     assert run.status == "completed"
     assert len(resumed.assess_calls) == 4
@@ -687,7 +711,7 @@ async def test_provider_circuit_preserves_success_and_unattempted_rows_until_exp
     }
     assert [item.assessment_json for item in items[:8]] == prior_assessments
     assert run.usage_json["calls"] == 8
-    assert jobs.fetch_sources.await_count == 4
+    assert resumed_store.sources.await_count == 4
     assert run.result_json["consecutive_provider_failures"] == 0
 
 
@@ -899,7 +923,8 @@ def enrich_setup(
     provider = FakeEnrichProvider(store)
     monkeypatch.setattr(jobs, "SessionFactory", store.session)
     monkeypatch.setattr(jobs, "get_redis", lambda: object())
-    monkeypatch.setattr(jobs, "consume_search_budget", AsyncMock(return_value=True))
+    store.budget = AsyncMock(return_value=True)
+    monkeypatch.setattr(jobs, "consume_search_budget", store.budget)
     monkeypatch.setattr(
         jobs,
         "load_runtime_settings",
@@ -945,7 +970,8 @@ def enrich_setup(
             )
         return sources
 
-    monkeypatch.setattr(jobs, "fetch_sources", AsyncMock(side_effect=evidence))
+    store.sources = AsyncMock(side_effect=evidence)
+    monkeypatch.setattr(jobs, "fetch_sources", store.sources)
     matcher_calls: list[list[str]] = []
     outcomes = list(match_outcomes or [])
 

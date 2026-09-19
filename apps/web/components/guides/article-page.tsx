@@ -284,7 +284,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     partnerDisclosure: t("guides.partnerDisclosure"),
     partner: { badge: t("guides.partnerBadge"), newTab: ts("newTab") },
     blocks: {
-      imageCredit: t("guides.imageCredit"),
+      imageCredit: t("guides.imageCredit"), imageDescription: t("guides.imageDescriptionToggle"),
       tip: t("guides.calloutTip"), warning: t("guides.calloutWarning"), info: t("guides.calloutInfo"),
     },
     term: { card: t("guides.termCard"), readMore: t("guides.termReadMore") },

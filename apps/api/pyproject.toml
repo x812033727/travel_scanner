@@ -114,6 +114,52 @@ ignore = ["S101"]
 python_version = "3.13"
 strict = true
 plugins = ["pydantic.mypy"]
+# `tests/` has no `__init__.py`, and its modules import each other as `tests.test_x`.
+# Without explicit bases mypy also names those files `test_x` and stops at "source file
+# found twice under different module names" before it reports a single type error.
+explicit_package_bases = true
+
+# `tests/` is checked with the error codes that catch a test left behind by a change in
+# `app/` — `arg-type`, `call-arg`, `attr-defined`, `name-defined`, `return-value`,
+# `override`, the import codes — and with `check_untyped_defs`, so the bodies of the
+# unannotated test functions are read too. It is not held to app's annotation discipline:
+# tests are unannotated by convention (pytest calls them), fixtures are shared by
+# importing them from other test modules, JSON payloads are bare dicts. The codes turned
+# off below describe a test's own literal data far more often than a call into `app/`.
+# Measured on 2026-09-19 (tasks/done/2026-09-14-mypy-does-not-check-tests.md): strict
+# reported 2245 errors in 140 files, 1522 of them missing annotations or bare generics;
+# this override kept the 511 that named a call into app/ (269 arg-type, 178 attr-defined,
+# 61 call-arg), and that task fixed them in the tests.
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disallow_untyped_calls = false
+disallow_untyped_decorators = false
+disallow_any_generics = false
+warn_return_any = false
+warn_unused_ignores = false
+implicit_reexport = true
+check_untyped_defs = true
+disable_error_code = [
+    "index",
+    "union-attr",
+    "operator",
+    "assignment",
+    "list-item",
+    "dict-item",
+    "var-annotated",
+    "misc",
+    "comparison-overlap",
+    "type-var",
+    "func-returns-value",
+]
+
+# asyncpg ships neither stubs nor a py.typed marker; two migration tests import it for its
+# exception classes.
+[[tool.mypy.overrides]]
+module = ["asyncpg", "asyncpg.*"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

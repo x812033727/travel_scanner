@@ -12,6 +12,7 @@ import app.trips.stay_router as stay_router
 from app.affiliates.router import DISCLOSURES
 from app.config import Settings
 from app.hotspots.areas import city_areas
+from app.i18n import Locale
 from app.models import AffiliateClick, TripPlan, TripPlanItem, User
 from app.problems import AppError
 from app.providers.mock import MockProvider
@@ -187,7 +188,7 @@ def harness(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
     rows = make_rows(trip)
     provider = CountingMockProvider()
     settings = partner_settings()
-    persisted: list[tuple[int, str]] = []
+    persisted: list[tuple[int, str, set[Any] | None]] = []
 
     async def fake_owned_trip(_session: Any, user_id: Any, trip_id: Any) -> TripPlan:
         if user_id != user.id or trip_id != trip.id:
@@ -526,7 +527,7 @@ def _unquote(value: str) -> str:
 @pytest.mark.asyncio
 @pytest.mark.parametrize("locale", ["en", "ja", "ko", "zh-CN"])
 async def test_stay_disclosure_is_written_in_the_requested_language(
-    harness: dict[str, Any], locale: str
+    harness: dict[str, Any], locale: Locale
 ) -> None:
     """A commission disclosure the reader cannot read is not a disclosure.
 

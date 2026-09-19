@@ -1,12 +1,13 @@
 import hashlib
 import json
 from datetime import UTC, datetime
-from typing import Any
+from typing import Any, cast
 from uuid import uuid4
 
 import fakeredis.aioredis
 import httpx
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.affiliates.router as affiliate_router
 from app.affiliates.registry import PARTNERS_BY_CODE, partner_configured, partners_for_module
@@ -395,7 +396,7 @@ async def test_options_and_clickout_record_append_only_summary_without_usage_cha
     response = await affiliate_router.affiliate_options(
         "hotel",
         user,
-        session,
+        cast(AsyncSession, session),
         search_id=search.id,  # type: ignore[arg-type]
     )
     assert [item.partner for item in response.options] == ["booking"]
@@ -405,7 +406,7 @@ async def test_options_and_clickout_record_append_only_summary_without_usage_cha
         "booking",
         token,
         user,
-        session,  # type: ignore[arg-type]
+        cast(AsyncSession, session),
     )
     assert redirect.status_code == 303
     assert redirect.headers["location"].startswith("https://www.booking.com/search?")
@@ -483,7 +484,7 @@ async def test_verified_destination_brand_replaces_generic_travelpayouts(
     response = await affiliate_router.affiliate_options(
         "activities",
         user,
-        session,
+        cast(AsyncSession, session),
         search_id=search.id,  # type: ignore[arg-type]
     )
     assert [item.partner for item in response.options] == ["klook"]
@@ -546,7 +547,7 @@ async def test_clickout_token_is_isolated_between_members(
     response = await affiliate_router.affiliate_options(
         "connectivity",
         owner,
-        session,
+        cast(AsyncSession, session),
         search_id=search.id,  # type: ignore[arg-type]
     )
     token = response.options[0].clickout_url.rsplit("token=", 1)[-1]
@@ -555,7 +556,7 @@ async def test_clickout_token_is_isolated_between_members(
             "airalo",
             token,
             other,
-            session,  # type: ignore[arg-type]
+            cast(AsyncSession, session),
         )
     assert error.value.code == "affiliate_link_not_found"
     assert session.commits == 0
