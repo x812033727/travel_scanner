@@ -172,6 +172,132 @@
       "url": "https://platform.claude.com/docs/en/api/messages/create",
       "is_vendor_claim": true,
       "verbatim_quote": "\"input_tokens\": 2095,\n    \"output_tokens\": 503"
+    },
+    {
+      "fact": "Auto Router 的用法是把 model 設成 openrouter/auto",
+      "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set your model to openrouter/auto"
+    },
+    {
+      "fact": "cost_tier 是一條價格帶而不是上限，比該帶便宜的模型同樣會被排除",
+      "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A tier is a band, not a ceiling, so models cheaper than the band are excluded as well as models above it."
+    },
+    {
+      "fact": "要限制一次請求的花費，OpenRouter 的 Auto Router 頁指向 provider.max_price，它依價格篩掉端點",
+      "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To cap what a request may cost, provider.max_price still applies: it filters the endpoints of whichever models the router resolves."
+    },
+    {
+      "fact": "LiteLLM 文件的範例用 routing_strategy=\"simple-shuffle\" 建立 Router",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Router(model_list=model_list, routing_strategy=\"simple-shuffle\")"
+    },
+    {
+      "fact": "LiteLLM 的 routing_strategy 可以設成 usage-based-routing",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "routing_strategy=\"usage-based-routing\""
+    },
+    {
+      "fact": "LiteLLM 的 routing_strategy 可以設成 latency-based-routing",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "routing_strategy=\"latency-based-routing\""
+    },
+    {
+      "fact": "LiteLLM 的 routing_strategy 可以設成 cost-based-routing",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "routing_strategy=\"cost-based-routing\""
+    },
+    {
+      "fact": "冷卻期間該節點會暫時從可用名單移除，其他健康的節點繼續服務",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "During cooldown, the specific deployment is temporarily removed from the available pool"
+    },
+    {
+      "fact": "LiteLLM 的 rpm 與 tpm 是各節點每分鐘的用量上限，用來挑節點，不是每請求的金額上限",
+      "url": "https://docs.litellm.ai/docs/routing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Picks a deployment based on the provided Requests per minute (rpm) or Tokens per minute (tpm)"
+    },
+    {
+      "fact": "claude-haiku-4-5-20251001 列在 Claude 模型頁的 Claude API ID 欄",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude-haiku-4-5-20251001"
+    },
+    {
+      "fact": "claude-sonnet-5 列在 Claude 模型頁的 Claude API ID 欄",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude-sonnet-5"
+    },
+    {
+      "fact": "claude-opus-5 列在 Claude 模型頁的 Claude API ID 欄",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude-opus-5"
+    },
+    {
+      "fact": "Claude Haiku 4.5 的輸出價格是每百萬 token 5 美元",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "$5 / output MTok"
+    },
+    {
+      "fact": "Claude Sonnet 5 的輸入價格是每百萬 token 2 美元",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "$2 / input MTok"
+    },
+    {
+      "fact": "Claude Sonnet 5 的輸出價格是每百萬 token 10 美元",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "$10 / output MTok"
+    },
+    {
+      "fact": "Claude Opus 5 的輸入價格是每百萬 token 5 美元（對輕量層的 1 美元是五倍）",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "$5 / input MTok"
+    },
+    {
+      "fact": "Anthropic Python SDK 可以用 with_options 在單次呼叫覆寫 timeout",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "client.with_options(timeout=5.0).messages.create("
+    },
+    {
+      "fact": "max_retries 是 Anthropic 用戶端建構子的選項，預設值是 2",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "max_retries=0,  # default is 2"
+    },
+    {
+      "fact": "逾時的請求預設也會被重試兩次",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Note that requests that time out are retried twice by default."
+    },
+    {
+      "fact": "官方錯誤處理範例捕捉 anthropic.APIConnectionError",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "except anthropic.APIConnectionError as e:"
+    },
+    {
+      "fact": "官方錯誤處理範例捕捉 anthropic.APIStatusError",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "except anthropic.APIStatusError as e:"
     }
   ],
   "unverified_or_excluded": [
@@ -180,14 +306,21 @@
     "LiteLLM Router 的 Redis 相關設定（redis_host 等分散式限流）：屬於正式環境部署細節，不在這篇範圍。",
     "OpenRouter Anthropic Messages 相容端點的 fallbacks 參數（最多 3 筆）：跟這篇直接用 Anthropic SDK 呼叫的路徑不同，混著寫容易讓讀者搞混兩種 fallback 設定方式，只在研究階段確認過，正文不寫。",
     "Claude Fable 5.1 與其他更高階模型：這篇的三階級聯只用 haiku／sonnet／opus，Fable 屬於既有文章「同一家為什麼有好幾個模型」的範圍，不重講。",
-    "自評信心的具體門檻該設多少：查了官方文件都沒有給建議值，這篇的 0.6 只是範例裡的示意數字，FAQ 已經說明不是建議值。"
+    "自評信心的具體門檻該設多少：查了官方文件都沒有給建議值，這篇的 0.6 只是範例裡的示意數字，FAQ 已經說明不是建議值。",
+    "Auto Router 的 allowed_models／excluded_models 萬用字元、session_id 黏著（Session Stickiness）與帳號層級預設：查核時讀過，跟這篇的「規則路由決定起點」不是同一件事，不寫。",
+    "OpenRouter 的 provider.max_price 只在表格的成本控制那一格帶一句：它是依價格篩端點的設定，不是這篇講的每請求累計金額上限，展開會變成 Provider Selection 的教學。",
+    "LiteLLM 的 Budget Routing 是另一個文件頁，這篇引的 Router 頁只在左側導覽出現這個名字，沒有讀那一頁，所以表格只寫 Router 頁上有的 rpm／tpm。",
+    "LiteLLM 的 routing group、session affinity、max_parallel_requests 與 AllowedFailsPolicy：Router 頁上有，但屬於自架部署的細節，超出對照表的範圍。",
+    "Anthropic Python SDK 文件寫的最低版本是 Python 3.10；這篇前提段寫 3.11 以上是本系列技術篇的統一環境要求，不是套件的最低需求。"
   ],
   "must_not_write": [
     "OpenRouter／LiteLLM 的完整路由或 proxy 設定教學（只做對照，不展開成教學主體）。",
     "成本、品質、延遲怎麼量與估算表（本系列「成本、品質、延遲：多模型流程怎麼取捨」的主題）。",
     "OpenAI 相容端點與 base_url 換供應商的寫法（本系列「統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式」的主題）。",
     "為什麼同一家供應商要分旗艦／中階／輕量（既有文章「同一家為什麼有好幾個模型」已經講過）。",
-    "結構化輸出／JSON Schema 驗證的細節（本系列後續「模型之間交接資料」的主題）。"
+    "結構化輸出／JSON Schema 驗證的細節（本系列後續「模型之間交接資料」的主題）。",
+    "不可以把 OpenRouter 那條否定句放寬成「OpenRouter 沒有逾時或重試參數」：查核只查了 Auto Router 與 Model Fallbacks 兩頁，各語系都要照「這篇讀到的兩頁沒有列出」翻。",
+    "不可以寫成「最大嘗試次數把同一顆模型的重試也算進去」：範例的迴圈每次失敗都往上一階，同一顆的重試是套件在一次呼叫內部做的，不進這個計數。"
   ],
   "editorial_brief": "這篇講級聯（cascade）本身：規則路由決定起點、模型自評信心決定要不要升級、逾時與出錯時的 fallback、以及每次請求的成本上限，並用一段可編譯的純 Python 範例串起來。跟第 3 篇「成本、品質、延遲」分工在於：那篇量測與估算，這篇只借用「先便宜後升級」的方向；跟第 4 篇「統一 API 層」分工在於：那篇講 base_url 換供應商，這篇假設呼叫端已經能打到模型，只處理路由與升級邏輯。OpenRouter 的 Auto Router 與 LiteLLM 的 Router 只在對照表出現，不展開教學。",
   "code_samples": [

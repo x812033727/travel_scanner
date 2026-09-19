@@ -201,6 +201,38 @@
       "verbatim": "GPT OSS 120B openai/gpt-oss-120b",
       "checked_on": "2026-09-18",
       "notes": "Groq's own model id string (with openai/ prefix) for OpenAI's open-weight gpt-oss-120b, served over Groq's OpenAI-compatible endpoint https://api.groq.com/openai/v1 per console.groq.com/docs/openai."
+    },
+    {
+      "id": "gemma4:cloud",
+      "vendor": "Ollama cloud (Google Gemma 4)",
+      "url": "https://ollama.com/library/gemma4",
+      "verbatim": "gemma4:cloud",
+      "checked_on": "2026-09-19",
+      "notes": "Cloud tag on the gemma4 library page; its row reads '- · 256K context window · Text, Image · 2 months ago' (size column '-'). Runs on Ollama's cloud, not the local machine; docs.ollama.com/cloud: 'In the Ollama app or CLI, use gemma4:cloud.'"
+    },
+    {
+      "id": "gemma4:31b-cloud",
+      "vendor": "Ollama cloud (Google Gemma 4)",
+      "url": "https://ollama.com/library/gemma4",
+      "verbatim": "ollama run gemma4:31b-cloud",
+      "checked_on": "2026-09-19",
+      "notes": "Cloud tag; the gemma4 readme puts it under a section headed “Ollama’s cloud”. Tag row: '- · 256K context window · Text, Image · 5 months ago'."
+    },
+    {
+      "id": "gpt-oss:20b-cloud",
+      "vendor": "Ollama cloud (OpenAI open-weight)",
+      "url": "https://ollama.com/library/gpt-oss",
+      "verbatim": "gpt-oss:20b-cloud",
+      "checked_on": "2026-09-19",
+      "notes": "Cloud tag on the gpt-oss library page; row reads '- · 128K context window · Text · 12 months ago' (size column '-')."
+    },
+    {
+      "id": "gpt-oss:120b-cloud",
+      "vendor": "Ollama cloud (OpenAI open-weight)",
+      "url": "https://ollama.com/library/gpt-oss",
+      "verbatim": "gpt-oss:120b-cloud",
+      "checked_on": "2026-09-19",
+      "notes": "Cloud tag on the gpt-oss library page; row reads '- · 128K context window · Text · 12 months ago' (size column '-')."
     }
   ]
 }

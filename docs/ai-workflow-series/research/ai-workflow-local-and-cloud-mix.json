@@ -42,7 +42,7 @@
   ],
   "verified_facts": [
     {
-      "fact": "Ollama 的 OpenAI 相容端點，本機用戶端要指到 base_url='http://localhost:11434/v1/'，金鑰隨便填，官方寫 required but ignored。",
+      "fact": "Ollama 的 OpenAI 相容端點，本機範例把 base_url 寫成 'http://localhost:11434/v1/'（這一頁 11 處都帶結尾斜線），金鑰隨便填，官方註解寫 required but ignored。",
       "url": "https://docs.ollama.com/api/openai-compatibility",
       "is_vendor_claim": true,
       "verbatim_quote": "api_key='ollama',  # required but ignored"
@@ -54,10 +54,40 @@
       "verbatim_quote": "These examples connect to your local Ollama server. The client requires an API key value, but Ollama ignores it."
     },
     {
-      "fact": "Ollama 自己的雲端（直接雲端存取），base_url 要改成 https://ollama.com/v1，金鑰從環境變數 OLLAMA_API_KEY 讀。",
+      "fact": "「直接雲端存取」的 Python 範例，base_url 寫 https://ollama.com/v1（不帶結尾斜線），金鑰從環境變數 OLLAMA_API_KEY 讀。",
       "url": "https://docs.ollama.com/api/openai-compatibility",
       "is_vendor_claim": true,
       "verbatim_quote": "base_url=\"https://ollama.com/v1\""
+    },
+    {
+      "fact": "同一個「直接雲端存取」範例用的模型名稱是 gemma4:31b；內容包第三個 code 區塊的雲端預設模型照這一行寫。",
+      "url": "https://docs.ollama.com/api/openai-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model=\"gemma4:31b\""
+    },
+    {
+      "fact": "關鍵限制：透過已登入的本機伺服器也可以選用雲端模型（頁面舉例 gemma4:cloud）。所以只把 base_url 指到 localhost 並不保證資料留在本機，標籤也要是已下載的本機標籤。",
+      "url": "https://docs.ollama.com/api/openai-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Through a signed-in local server, select a cloud model such as gemma4:cloud."
+    },
+    {
+      "fact": "直接對雲端送的請求，模型識別字取自 https://ollama.com/api/tags，不需要先 pull。",
+      "url": "https://docs.ollama.com/api/openai-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Direct cloud requests use the identifiers from https://ollama.com/api/tags and do not require a pull."
+    },
+    {
+      "fact": "/v1/chat/completions 的「Supported request fields」清單裡有 response_format（全頁只出現這一次），「Supported features」清單裡有 JSON mode；內容包第二個 code 區塊用 response_format 就是照這裡。",
+      "url": "https://docs.ollama.com/api/openai-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "response_format"
+    },
+    {
+      "fact": "API 介紹頁的 Base URLs 表，OpenAI 相容那一列是雲端 https://ollama.com/v1、本機 http://localhost:11434/v1（這張表不帶結尾斜線，內容包照這一列寫）。",
+      "url": "https://docs.ollama.com/api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI compatibilityhttps://ollama.com/v1http://localhost:11434/v1"
     },
     {
       "fact": "官方文件寫『雲端請求需要 API 金鑰，本機請求不用』。",
@@ -66,10 +96,16 @@
       "verbatim_quote": "Cloud requests need an API key. Local requests do not."
     },
     {
-      "fact": "Ollama 常見問答寫『Ollama 預設綁定 127.0.0.1 的 11434 埠』，要接觸網路上其他機器才需要改 OLLAMA_HOST。",
+      "fact": "同一段緊接著寫，要透過本機伺服器使用雲端模型就登入 Ollama——與 OpenAI 相容性頁那句互相印證：本機端點也送得出雲端請求。",
+      "url": "https://docs.ollama.com/api",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To use cloud models through your local server, sign in to Ollama."
+    },
+    {
+      "fact": "Ollama 常見問答寫『Ollama 預設綁定 127.0.0.1 的 11434 埠』，改綁定位址要用 OLLAMA_HOST 環境變數；這一題的標題是「How can I expose Ollama on my network?」，頁面沒有寫「區網其他機器一律連不到」這種全稱句。",
       "url": "https://docs.ollama.com/faq",
       "is_vendor_claim": true,
-      "verbatim_quote": "Ollama binds 127.0.0.1 port 11434 by default."
+      "verbatim_quote": "Ollama binds 127.0.0.1 port 11434 by default. Change the bind address with the OLLAMA_HOST environment variable."
     },
     {
       "fact": "官方常見問答被問「Ollama 會不會把提示詞和回覆送回 ollama.com」，回答第一句是「Ollama 是在本機執行的，你在本機執行時我們看不到你的提示詞或資料」。",
@@ -90,43 +126,97 @@
       "verbatim_quote": "Ollama processes cloud prompts and responses to answer your requests. We do not use them to train models."
     },
     {
-      "fact": "雲端頁寫『對 ollama.com 的 API 請求要用清單回傳的名稱，例如 gemma4:31b；在 Ollama 的 App 或 CLI 裡則用 gemma4:cloud』。",
+      "fact": "雲端頁寫『對 ollama.com 的 API 請求要用清單回傳的名稱，例如 gemma4:31b；在 Ollama 的 App 或 CLI 裡則用 gemma4:cloud。雲端模型不需要下載』——cloud 是接在冒號後面的標籤，不是「-cloud 後綴」。",
       "url": "https://docs.ollama.com/cloud",
       "is_vendor_claim": true,
-      "verbatim_quote": "For API requests to ollama.com, use the name returned by this list, such as gemma4:31b"
+      "verbatim_quote": "For API requests to ollama.com, use the name returned by this list, such as gemma4:31b. In the Ollama app or CLI, use gemma4:cloud. Cloud models do not need to be downloaded."
     },
     {
-      "fact": "雲端頁的退場一節寫『已下載的本機模型不受影響』，只有雲端模型會有退場時程。",
+      "fact": "雲端頁的退場一節寫，用量設定頁會列出最近用過的模型的退場時程，要在退場日期前換掉，已下載的本機模型不受影響。",
       "url": "https://docs.ollama.com/cloud",
       "is_vendor_claim": true,
-      "verbatim_quote": "Downloaded local models are not affected."
+      "verbatim_quote": "Usage settings show upcoming retirements for models you’ve recently used. Switch models before the retirement date. Downloaded local models are not affected."
     },
     {
-      "fact": "gemma4 模型庫頁列出的標籤與大小：e2b 7.2GB、128K 上下文視窗。",
+      "fact": "gemma4:e2b 那一列：7.2GB、128K 上下文視窗、Text, Image。（模型庫的列把標籤名和這串規格放在兩個元素裡，所以引文只取規格那一串。）",
       "url": "https://ollama.com/library/gemma4",
       "is_vendor_claim": true,
-      "verbatim_quote": "gemma4:e2b 7.2GB · 128K context window · Text, Image · 5 months ago"
+      "verbatim_quote": "7.2GB · 128K context window · Text, Image · 5 months ago"
     },
     {
-      "fact": "gemma4 的 26B 標籤，官方讀我檔寫是混合專家（MoE）模型，只有 4B 是活躍參數。",
+      "fact": "gemma4:e4b（頁面標 latest）那一列：9.6GB、128K、Text, Image；gemma4:latest 那一列的規格字串完全相同，全頁出現兩次。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "9.6GB · 128K context window · Text, Image · 5 months ago"
+    },
+    {
+      "fact": "gemma4:12b 那一列：7.6GB、256K、Text, Image。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "7.6GB · 256K context window · Text, Image · 3 months ago"
+    },
+    {
+      "fact": "gemma4:31b 那一列：20GB、256K、Text, Image。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "20GB · 256K context window · Text, Image · 5 months ago"
+    },
+    {
+      "fact": "gemma4:cloud 那一列的大小欄是「-」、256K、Text, Image；gemma4:31b-cloud 那一列同樣是「-」與 256K。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "- · 256K context window · Text, Image · 2 months ago"
+    },
+    {
+      "fact": "gemma4 讀我檔把雲端標籤獨立成一節，節名是 Ollama’s cloud，底下的指令是 ollama run gemma4:31b-cloud。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ollama run gemma4:31b-cloud"
+    },
+    {
+      "fact": "gemma4 的 26B 標籤，官方讀我檔寫是混合專家（MoE）模型、4B 活躍參數（原文沒有「只有」這個字；同一頁下方的 Model information 表把 Active Parameters 寫成 3.8B）。這一列在本文的表格只留 19GB／256K，MoE 的說明留給「Ollama 入門」那篇。",
       "url": "https://ollama.com/library/gemma4",
       "is_vendor_claim": true,
       "verbatim_quote": "26B (Mixture of Experts model with 4B active parameters)"
     },
     {
-      "fact": "qwen3.6 模型庫頁列出 35b 標籤（latest 指向它），23GB、256K 上下文視窗。",
+      "fact": "gemma4:26b 那一列：19GB、256K、Text, Image（同樣的規格字串在 gemma4:26b-mlx 之外全頁出現兩次）。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "19GB · 256K context window · Text, Image · 3 weeks ago"
+    },
+    {
+      "fact": "qwen3.6:27b 那一列：18GB、256K、Text, Image。",
       "url": "https://ollama.com/library/qwen3.6",
       "is_vendor_claim": true,
-      "verbatim_quote": "qwen3.6:35b latest 23GB · 256K context window · Text, Image · 3 weeks ago"
+      "verbatim_quote": "18GB · 256K context window · Text, Image · 3 weeks ago"
     },
     {
-      "fact": "gpt-oss 模型庫頁列出 120b 標籤，65GB、128K 上下文視窗。",
+      "fact": "qwen3.6:35b（頁面標 latest）那一列：23GB、256K、Text, Image。這一頁的完整標籤清單（35 個）在查證當天沒有任何名字帶 cloud 字樣——這是當天那一頁的狀態，不是官方宣告過沒有雲端版本。",
+      "url": "https://ollama.com/library/qwen3.6",
+      "is_vendor_claim": true,
+      "verbatim_quote": "23GB · 256K context window · Text, Image · 3 weeks ago"
+    },
+    {
+      "fact": "gpt-oss:20b（頁面標 latest）那一列：14GB、128K、Text。",
       "url": "https://ollama.com/library/gpt-oss",
       "is_vendor_claim": true,
-      "verbatim_quote": "gpt-oss:120b 65GB · 128K context window · Text · 11 months ago"
+      "verbatim_quote": "14GB · 128K context window · Text · 11 months ago"
     },
     {
-      "fact": "gpt-oss 的讀我檔寫 MoE 權重量化成 MXFP4 格式後，20B 模型可以在最低 16GB 記憶體的機器上跑，120B 模型可以塞進一張 80GB 的顯示卡。",
+      "fact": "gpt-oss:120b 那一列：65GB、128K、Text。",
+      "url": "https://ollama.com/library/gpt-oss",
+      "is_vendor_claim": true,
+      "verbatim_quote": "65GB · 128K context window · Text · 11 months ago"
+    },
+    {
+      "fact": "gpt-oss:20b-cloud 與 gpt-oss:120b-cloud 兩列的大小欄都是「-」、128K、Text。",
+      "url": "https://ollama.com/library/gpt-oss",
+      "is_vendor_claim": true,
+      "verbatim_quote": "- · 128K context window · Text · 12 months ago"
+    },
+    {
+      "fact": "gpt-oss 的讀我檔寫 MoE 權重量化成 MXFP4 格式後，較小的模型可以在「最低只有 16GB 記憶體」的機器上跑，較大的模型塞得進單張 80GB 顯示卡（原文是 as little as 16GB memory 與 fit on a single 80GB GPU，不是「最低需求 16GB」這種規格表用語）。",
       "url": "https://ollama.com/library/gpt-oss",
       "is_vendor_claim": true,
       "verbatim_quote": "enables the smaller model to run on systems with as little as 16GB memory, and the larger model to fit on a single 80GB GPU"
@@ -143,43 +233,54 @@
     "本機與雲端實際回覆時間的秒數或 tokens/s 比較：Ollama 的官方頁沒有公開跨硬體的延遲數字，本站也沒有拿同一段文字實測計時，寫進 must_not_write，正文與 FAQ 都明講「本站沒有實測」。",
     "OpenAI、Anthropic 等第三方雲端供應商各自的 base_url、金鑰與定價：這篇的雲端端點只用 Ollama 自己的雲端（https://ollama.com/v1），第三方供應商的統一介面已經有系列另一篇專講，這裡只一句帶過。",
     "Ollama 桌面 App 的圖形介面設定畫面（例如把雲端功能開關做成滑桿）：今天查的是 API／CLI 文件，沒有另外重新截圖或核對桌面版介面文字，不確定當天版本的畫面用詞，故不寫進正文。",
-    "gpt-oss、qwen3.6 之外，Ollama 模型庫其他也能做去識別化的模型（例如通用聊天模型）：任務指派把本機模型 id 限定在 gemma4、qwen3.6、gpt-oss 三個，其餘模型今天沒有逐一查證標籤與大小，不寫。"
+    "gpt-oss、qwen3.6 之外，Ollama 模型庫其他也能做去識別化的模型（例如通用聊天模型）：任務指派把本機模型 id 限定在 gemma4、qwen3.6、gpt-oss 三個，其餘模型今天沒有逐一查證標籤與大小，不寫。",
+    "https://ollama.com/api/tags 上實際的雲端模型清單：查核當天讀到 20 個名字（含 gpt-oss:120b 與 gpt-oss:20b），但這個網址不在 sources[]，不拿它替文章補事實；雲端範例的模型名稱改用官方「直接雲端存取」範例自己寫的 gemma4:31b。",
+    "gemma4、gpt-oss 模型頁上的能力標籤列（vision／tools／thinking／cloud 這排字）：每個字是各自獨立的元素，頁面上沒有可逐字搜尋到的連續字串，所以正文不引用這一排，改引讀我檔的「Ollama’s cloud」一節與標籤清單的「-」大小欄。",
+    "Ollama 雲端的價格、方案與額度：跟這篇「哪些資料不出機」的角度無關，也已經有「本機 vs 雲端 AI 成本試算」那篇在寫。"
   ],
   "must_not_write": [
     "本機與雲端何者「比較快」或「比較準」的結論或排名：本站沒有實測，只引用官方模型庫頁的規格數字。",
+    "「只要 base_url 指到 localhost，資料就不會離開這台機器」：官方 OpenAI 相容性頁明寫「Through a signed-in local server, select a cloud model such as gemma4:cloud.」，已登入的本機伺服器一樣送得出雲端請求，所以正文一律寫「網址與模型標籤兩件事都要釘死」。",
+    "把 cloud 寫成「-cloud 後綴」：官方雲端頁寫的是 gemma4:cloud，cloud 接在冒號後面；gemma4:31b-cloud、gpt-oss:20b-cloud 那種是標籤清單上另外的寫法。",
+    "「qwen3.6 沒有雲端版本／只能在本機跑」這種全稱否定：只能寫成「本文查證當天，那一頁沒有列出帶 cloud 字樣的標籤」。",
+    "去識別化能讓資料處理「合規」「符合個資法」或「保證不外洩」之類的說法：這篇只描述資料實際往哪裡走，不做法規判斷，也要寫明遮蔽由模型判斷、要自己驗過。",
     "「驗證範圍」或其他形式的免責聲明 callout：這篇的唯一一個 callout 留給 cloud 標籤的實際坑，不寫免責聲明。",
-    "Ollama 安裝步驟、系統需求、模型庫頁欄位介紹、本機／雲端成本試算、RAG 檢索流程的完整教學：這三塊分別是「Ollama 入門」「本機 vs 雲端 AI 成本試算」「本機 RAG」三篇的內容，這篇只一句帶過。",
-    "第三方雲端供應商（OpenAI、Anthropic、OpenRouter 等）的 API 金鑰、價格或速率限制數字：這篇的雲端端點只示範 Ollama 自己的雲端，其餘供應商留給「統一 API 層」那篇。"
+    "Ollama 安裝步驟、系統需求、模型庫頁欄位介紹、cloud 標籤的完整解說與關閉方式、本機／雲端成本試算、RAG 檢索流程的完整教學：分別是「Ollama 入門」「本機 vs 雲端 AI 成本試算」「本機 RAG」三篇的內容，這篇只一句帶過。「Ollama 入門」已經列過同一份 gemma4 標籤清單與同一個 cloud 標籤警告，本篇的表格只留這篇要用的「跑在哪裡」一欄。",
+    "第三方雲端供應商（OpenAI、Anthropic、OpenRouter 等）的 API 金鑰、價格或速率限制數字：這篇的雲端端點只示範 Ollama 自己的雲端，其餘供應商留給「統一 API 層」那篇。",
+    "把 timeout 當成 chat.completions.create() 的關鍵字參數：openai 套件的讀我檔只記載 OpenAI(timeout=…) 設全域預設，與 client.with_options(timeout=…).chat.completions.create(…) 做單次覆寫。"
   ],
-  "editorial_brief": "這篇只講本機開放權重模型與雲端模型混搭這一種切法：本機的 Ollama 做分類、去識別化這類碰得到原始個資的敏感步驟，雲端模型只收到乾淨文字並負責收尾，同一支程式靠 base_url 切換。硬體與延遲只引用官方模型庫頁的規格數字，明講本站沒有實測；安裝、成本試算、本機 RAG 三個鄰近主題各一句帶過，交給既有的三篇文章。",
+  "editorial_brief": "這篇只講本機開放權重模型與雲端模型混搭這一種切法：本機的 Ollama 做分類、去識別化這類碰得到原始個資的敏感步驟，雲端模型只收到乾淨文字並負責收尾，同一支程式靠 base_url 切換，而且本機那一步要連模型標籤一起釘死。硬體與延遲只引用官方模型庫頁的規格數字，明講本站沒有實測；安裝、成本試算、本機 RAG 三個鄰近主題各一句帶過，交給既有的三篇文章。",
   "code_samples": [
     {
       "label": "hybrid_client.py：用 base_url 切換本機與雲端（pip install openai）",
       "language": "python",
-      "lines": 34,
-      "compiled_on": "2026-09-18",
+      "lines": 43,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://docs.ollama.com/api/openai-compatibility",
-        "https://docs.ollama.com/api"
+        "https://docs.ollama.com/api",
+        "https://raw.githubusercontent.com/openai/openai-python/main/README.md"
       ]
     },
     {
       "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client）",
       "language": "python",
       "lines": 24,
-      "compiled_on": "2026-09-18",
+      "compiled_on": "2026-09-19",
       "checked_against": [
-        "https://docs.ollama.com/api/openai-compatibility"
+        "https://docs.ollama.com/api/openai-compatibility",
+        "https://raw.githubusercontent.com/openai/openai-python/main/README.md"
       ]
     },
     {
       "label": "finish_in_cloud.py：把去識別化後的文字交給雲端模型收尾（延續同一支程式）",
       "language": "python",
-      "lines": 27,
-      "compiled_on": "2026-09-18",
+      "lines": 29,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://docs.ollama.com/api/openai-compatibility",
-        "https://docs.ollama.com/cloud"
+        "https://docs.ollama.com/cloud",
+        "https://raw.githubusercontent.com/openai/openai-python/main/README.md"
       ]
     }
   ],
@@ -205,6 +306,59 @@
         "本機還原",
         "對照表留在本機"
       ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 七條全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body；正文、摘要、FAQ、callout、表格每一格、兩個 caption、title、description 與三個 code 區塊的每一個識別字逐條回原文比對；三個 code 區塊抽出重跑 python -m py_compile；openai 套件的呼叫寫法與 https://raw.githubusercontent.com/openai/openai-python/main/README.md 逐字核對；研究紀錄每一條 verbatim_quote 綁回它自己的 url、以「HTML 標籤去掉」的連續字串比對。沒有打任何需要金鑰的 API，請求的 UA、標頭與查詢字串都沒有放入 email 或個人資料。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "骨幹更正：原文寫「只要本機那一步真的呼叫的是本機端點……資料根本沒有送出去」，但 OpenAI 相容性頁寫「Through a signed-in local server, select a cloud model such as gemma4:cloud.」，API 介紹頁寫「To use cloud models through your local server, sign in to Ollama.」——已登入的本機伺服器一樣送得出雲端請求。第一節第二段、callout、FAQ 第二與第四題、摘要第四句全部改成「網址指到本機」與「模型用已下載的本機標籤」兩件事都要成立。",
+      "callout 整段重寫：原本的保險做法「去識別化那支函式固定寫死 base_url」被同一份官方文件推翻，已改成同時釘死網址與標籤；停用雲端功能的設定方式改成一句帶過並指向「Ollama 入門」。",
+      "「只有在 Ollama 的 App 或 CLI 裡才需要加上 -cloud 後綴」改寫：官方寫的是 gemma4:cloud（冒號後面的標籤），而且 OpenAI 相容性頁另外列了第三種情況（已登入的本機伺服器）。",
+      "qwen3.6 的全稱否定「等於它只能在本機跑，沒有 Ollama 自己雲端的版本」收斂成「本文查證當天那一頁沒有列出任何帶 cloud 字樣的標籤」。",
+      "第三個 code 區塊的雲端預設模型 gpt-oss:120b 改成 gemma4:31b：sources[] 裡沒有任何一頁把 gpt-oss:120b 寫成 ollama.com 的雲端模型名稱，而官方兩頁的直接雲端存取範例寫的都是 gemma4:31b。",
+      "三個 code 區塊的 timeout 改成 openai 套件讀我檔記載的兩種寫法：OpenAI(timeout=30.0) 設全域預設、client.with_options(timeout=60.0).chat.completions.create(…) 做單次覆寫；create() 不再吃 timeout 關鍵字。第一個區塊另加 LOCAL_MODELS 白名單，把「網址指到本機、標籤卻挑到雲端」擋在函式入口。",
+      "表格第五欄從「官方頁重點」改成「跑在哪裡」：原本那一欄（E 是 effective 參數／工作站等級／密集模型／MoE 4B 活躍參數）與必連的「Ollama 入門」同一份清單幾乎逐字重複，屬於整段重講；改成本篇要回答的「本機還是 Ollama 的雲端」。gpt-oss:20b 補上頁面標的 latest，兩列雲端標籤的大小欄改寫成頁面實際印的「-」。",
+      "FAQ 第六題「本機的 Ollama 端點，預設誰連得到？」整題換掉：答案的「同一個區網的其他機器都連不到」超出 'Ollama binds 127.0.0.1 port 11434 by default.' 的範圍，內容也與「Ollama 入門」重複；換成本篇自己的「怎麼確認本機那一步真的沒有把資料送出去」。",
+      "界線：FAQ 第二題的「不會」改成描述這套流程送出去的是什麼，並補上「遮蔽由模型判斷，要自己拿真實樣本驗過」；第四節第一段同步補這個但書。全篇沒有法規、合規或個資法的字樣，本輪也沒有加。",
+      "限定詞回補：摘要第二句「本機預設只綁定」改「預設綁定」；表格與摘要第三句的「官方寫最低 16GB」改成標明出處的「讀我檔寫量化後最低 16GB」；第三節第二段照原文改寫成 as little as 16GB memory 與 fit on a single 80GB GPU 的直譯。",
+      "第三節第一段「三個系列的網頁都提供 CLI、curl 與 Python 三種呼叫方式，本機那一步無論用哪一種，呼叫的都是同一個 11434 埠」改寫：頁面實際是 CLI／cURL／Python／JavaScript 四個分頁，而「無論用哪一種都走 11434 埠」頁面沒有寫，帶 cloud 的標籤更不成立。",
+      "最後一節刪掉重複第二次的 14GB／16GB／65GB／80GB 敘述與「買一張 80GB 顯示卡不是每個開發者的選項，Ollama 自己的雲端剛好補上這一段」這句帶推薦語氣的話；段落字數 2,515 → 2,860。"
+    ],
+    "checked_and_correct": [
+      "七條 sources 今天全部 HTTP 200 且讀得到正文，不是 JS 空殼。",
+      "base_url 字面：官方 Base URLs 表寫 http://localhost:11434/v1（不帶斜線）、https://ollama.com/v1；OpenAI 相容性頁的本機範例 11 處都寫 http://localhost:11434/v1/（帶斜線）。內容包用的是 Base URLs 表那一種，兩種都在官方頁上。",
+      "api_key='ollama' 是官方本機範例自己寫的必填佔位，頁面註解是 required but ignored；不是真金鑰，雲端那支從 OLLAMA_API_KEY 讀。",
+      "response_format 確實列在 /v1/chat/completions 的 Supported request fields，JSON mode 也列在 Supported features。",
+      "gemma4 五個本機標籤與兩個 cloud 標籤、qwen3.6 兩個標籤、gpt-oss 兩個本機標籤與兩個 cloud 標籤的大小與上下文視窗，今天逐列比對全部相同。",
+      "gemma4:26b 的「Mixture of Experts model with 4B active parameters」今天仍是讀我檔原文（同頁 Model information 表另寫 Active Parameters 3.8B）。",
+      "gpt-oss 讀我檔的 MXFP4、16GB、80GB 與「lower latency, local, or specialized use-cases」四處今天原文未變。",
+      "雲端退場機制、資料處理、常見問答的三句隱私與停用雲端的原文今天皆逐字相符。",
+      "三個 code 區塊 python -m py_compile 全過；沒有字面金鑰、沒有 <YOUR_KEY>、沒有 eval、沒有刪檔命令。",
+      "界線：沒有購買／訂閱／投資建議，沒有推薦式比價，沒有價格數字，沒有沒歸因的廠商宣稱，沒有把預告寫成已推出，沒有寫「台灣可用」，只有一個 callout、沒有免責段落。",
+      "checked_on 2026-09-18 在七條 source 與研究紀錄一致；本輪沒有依今天的頁面改掉任何數字，所以不動這個日期。"
+    ],
+    "left_for_the_owner": [
+      "本機 base_url 的兩種寫法：本篇用 http://localhost:11434/v1（Base URLs 表），既有的「Ollama 入門」用 http://localhost:11434/v1/（OpenAI 相容性頁範例）。兩種都是官方頁上的字，但兩篇並排時讀者會注意到，要不要統一由站主決定。",
+      "與「Ollama 入門」的分工：那篇已經有同一份 gemma4 標籤清單、同一個 cloud 標籤警告、同一句官方隱私原文。本輪把重複最重的表格第五欄與 FAQ 第六題換掉了，但 gemma4 那五列的數字本身仍與那篇相同（數字本來就只有一種寫法）。若站主希望更乾淨，可以把 gemma4 的本機列縮成一句話並整段指向那篇。",
+      "雲端收尾的模型名稱：本輪改成官方範例寫的 gemma4:31b。查核當天讀 https://ollama.com/api/tags 確實看得到 gpt-oss:120b 與 gpt-oss:20b，若站主想寫回 gpt-oss:120b，要先把那個網址加進 sources[]。",
+      "openai 套件沒有安裝在本 repo 的 venv 裡，所以 with_options 與 OpenAI(timeout=…) 只對讀我檔核對過簽名，沒有實際執行。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "hybrid_client.py：用 base_url 切換本機與雲端（pip install openai）",
+        "result": "ok"
+      },
+      {
+        "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client）",
+        "result": "ok"
+      },
+      {
+        "label": "finish_in_cloud.py：把去識別化後的文字交給雲端模型收尾（延續同一支程式）",
+        "result": "ok"
+      }
     ]
   }
 }
