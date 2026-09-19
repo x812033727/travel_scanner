@@ -20,7 +20,7 @@ import { DiscoveryPreferenceEditor } from "./preferences";
 import { TravelExplore } from "@/components/community/explore";
 import styles from "./discovery.module.css";
 
-export function DiscoveryHomeGate({ children, initialEnabled }: { children: ReactNode; initialEnabled?: boolean }) {
+export function DiscoveryHomeGate({ children, initialEnabled, initialFeed }: { children: ReactNode; initialEnabled?: boolean; initialFeed?: InitialDiscoveryFeed }) {
   const { enabled, loading } = resolveDiscoveryStatus(useDiscoveryStatus(), initialEnabled); const router = useRouter();
   useEffect(() => {
     if (!enabled) return;
@@ -30,7 +30,7 @@ export function DiscoveryHomeGate({ children, initialEnabled }: { children: Reac
   // The request's snapshot stands in only until the shared client store resolves. Never remove
   // this gate on the server: a failed status request must still recover after hydration.
   if (loading) return <main className={styles.page}><DiscoverySkeleton /></main>;
-  return enabled ? <DiscoveryExplorer home initialEnabled={initialEnabled} /> : children;
+  return enabled ? <DiscoveryExplorer home initialEnabled={initialEnabled} initialFeed={initialFeed} /> : children;
 }
 /**
  * `initialEnabled` and `initialFeed` are what the server already knows: the switch, and the

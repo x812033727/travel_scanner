@@ -19,6 +19,10 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:30
  *  would resolve through `localeDetection`, and a redirect is not an answer to give a crawler. */
 export const HREFLANG_DEFAULT: Locale = "en";
 
+/** The Atom feed of newest articles. Here rather than in its own route so the handler and the
+ *  `<link rel="alternate">` that advertises it cannot drift apart. */
+export const FEED_PATH = "/feed.xml";
+
 /**
  * `/zh-TW/foods?city=tokyo` -> `/foods`. `/en` -> `/`. Anything without a known locale prefix,
  * and anything missing, falls back to `/` so the canonical degrades to the locale home page
