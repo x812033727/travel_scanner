@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-three-browser-workflows-still-run-every
 title: Three browser workflows still run every branch push twice and never cancel superseded runs
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T04:53:02Z
 created_at: 2026-09-19T04:53:01Z
-completed_at:
+completed_at: 2026-09-19T04:57:26Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -35,18 +35,18 @@ run started 04:50:22-23 UTC, one `pull_request` run at 04:50:25), while `CI` its
 
 ## Definition of done
 
-- [ ] A push to a branch with an open pull request starts each of the three workflows once,
+- [x] A push to a branch with an open pull request starts each of the three workflows once,
       as a `pull_request` run; there is no `push` run for the commit.
-- [ ] A second push in quick succession cancels the previous commit's `pull_request` run of
+- [x] A second push in quick succession cancels the previous commit's `pull_request` run of
       each workflow; runs on `main` are never cancelled.
-- [ ] Nothing else in the three files changes: job names, steps and permissions stay as they
+- [x] Nothing else in the three files changes: job names, steps and permissions stay as they
       are, so any status check that names them keeps its name.
 
 ## Steps
 
 - [x] Give the three files the trigger and `concurrency:` block `ci.yml` uses, with a group
       prefix of their own (`food-map-reservations`, `planner-premium`, `travel-discovery`).
-- [ ] Validate the YAML and push to a branch with an open pull request; read the Actions tab.
+- [x] Validate the YAML and push to a branch with an open pull request; read the Actions tab.
 
 ## How to verify
 
@@ -72,3 +72,9 @@ one `pull_request` run per workflow for the newest commit, the older one cancell
 - The change is the same block as `ci.yml` with the workflow's own group prefix. The push
   carrying it (`f905f1f0`) and the next one are the observation; see the notes below for the
   run numbers.
+- After the change, on the push of `cb12f078` (04:56:54 UTC, the first push once #556 was
+  mergeable again): exactly one `pull_request` run per workflow (Food map and reservations
+  #1325, Planner UX #1532, Travel discovery acceptance #1517, next to CI #3559 and SEO audit
+  #137) and no `push` run for the commit. The push carrying this note is the second push in
+  quick succession; its expected effect, those three runs cancelled and one live run each
+  for the new head, is recorded in #556's description.
