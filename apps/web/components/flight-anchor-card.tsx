@@ -29,14 +29,36 @@ export function flightAnchorInfo(item: TripItem): FlightAnchorInfo | null {
  * whatever zone the reader's browser happens to be in. Only the date is handed to Intl,
  * so the day and month land in the reader's own order while the clock stays untouched.
  */
-function localDateTime(copy: ItineraryCopy, locale: string, value?: string) {
-  if (!value) return copy.flightTimePending;
+/**
+ * The month, day and clock of one flight-related time.
+ *
+ * A value that carries its offset (`Z` or `±HH:MM`; `flight_status.checked_at` is written
+ * in UTC) names one instant, so it is the one value that moves into the reader's zone:
+ * the status line exists to say how long ago the lookup happened, and a Taipei reader
+ * shown the raw UTC clock would take a thirty-minute-old lookup for last night's.
+ * `timeZone` exists for tests; the card leaves it unset so the browser's zone is used.
+ */
+export function formatFlightMoment(locale: string, value: string, timeZone?: string) {
+  if (/(?:Z|[+-]\d{2}:?\d{2})$/.test(value)) {
+    const instant = new Date(value);
+    if (Number.isNaN(instant.getTime())) return value;
+    // ICU separates the date and the clock with a narrow no-break space; the wall-time
+    // branch below prints a plain one, and the two should read the same on the card.
+    return new Intl.DateTimeFormat(locale, {
+      month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone,
+    }).format(instant).replace(/\s/g, " ");
+  }
   const match = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
   if (!match) return value;
   const [, year, month, day, hour, minute] = match;
   const parts = new Intl.DateTimeFormat(locale, { month: "numeric", day: "numeric" })
     .format(new Date(Number(year), Number(month) - 1, Number(day)));
   return `${parts} ${hour}:${minute}`;
+}
+
+function localDateTime(copy: ItineraryCopy, locale: string, value?: string) {
+  if (!value) return copy.flightTimePending;
+  return formatFlightMoment(locale, value);
 }
 
 export function FlightAnchorCard({

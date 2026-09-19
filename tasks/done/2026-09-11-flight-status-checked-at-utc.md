@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-flight-status-checked-at-utc
 title: 航班動態的查詢時間把 UTC 當成地方時顯示
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T04:22:11Z
 created_at: 2026-09-11T20:22:47Z
-completed_at:
-branch:
+completed_at: 2026-09-19T04:46:52Z
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/web/components/flight-anchor-card.tsx
@@ -33,15 +33,15 @@ scope:
 
 ## Definition of done
 
-- [ ] 帶時區的時間戳（`checked_at`）依讀者所在時區顯示。
-- [ ] 不帶時區的牆上時間（`departure_local` / `arrival_local`）維持現在的行為，不被平移。
-- [ ] 有測試同時蓋住這兩種輸入。
+- [x] 帶時區的時間戳（`checked_at`）依讀者所在時區顯示。
+- [x] 不帶時區的牆上時間（`departure_local` / `arrival_local`）維持現在的行為，不被平移。
+- [x] 有測試同時蓋住這兩種輸入。
 
 ## Steps
 
-- [ ] 把兩種情況分開：字串結尾有 `Z` 或 `±HH:MM` 的走 `Date` + `Intl.DateTimeFormat`，
+- [x] 把兩種情況分開：字串結尾有 `Z` 或 `±HH:MM` 的走 `Date` + `Intl.DateTimeFormat`，
       沒有的走現在的逐欄取值。
-- [ ] 測試固定 `TZ`（vitest 可用 `process.env.TZ`）才不會隨執行機器變動。
+- [x] 測試固定 `TZ`（vitest 可用 `process.env.TZ`）才不會隨執行機器變動。
 
 ## How to verify
 
@@ -54,3 +54,12 @@ cd apps/web && npm run test:web -- flight-anchor
 - 在 `2026-09-11-anchor-and-route-cards-hardcoded-zh` 修 i18n 時順手看到的，當時沒改，
   因為那張任務是語系不是時區。
 - `localDateTime` 為什麼刻意不走 `Date`，函式上的註解有寫，改的時候別把那個理由弄丟。
+
+### 2026-09-19 已改（claude-fable-5-1）
+
+`localDateTime` 先看字串結尾：帶 `Z` 或 `±HH:MM` 的當成一個時刻，用 `Date` 加
+`Intl.DateTimeFormat`（月日數字、時分兩位、24 小時制）換成讀者時區；沒有位移的照舊逐欄取值，
+函式上原本解釋為什麼不走 `Date` 的註解保留，並補上一段說明為什麼 `checked_at` 是例外。
+測試檔開頭把 `process.env.TZ` 釘在 `Asia/Taipei`，新增一個案例：`checked_at`
+`2026-11-09T22:30:00+00:00` 顯示成 `11/10 06:30`，同一張卡的 `departure_local` 仍是
+`11/10 08:50`。

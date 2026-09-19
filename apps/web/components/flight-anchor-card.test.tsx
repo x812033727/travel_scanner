@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import type { TripItem } from "@/lib/trip-types";
-import { FlightAnchorCard } from "./flight-anchor-card";
+import { FlightAnchorCard, formatFlightMoment } from "./flight-anchor-card";
 
 const outbound: TripItem = {
   id: "flight-out",
@@ -88,6 +88,33 @@ describe("flight anchor card", () => {
       .toBe("/flights/status?trip_id=t1&direction=outbound");
     // The alert belongs to the quote, so it only appears where there is one.
     expect(screen.getByRole("button", { name: "建立價格通知" })).toBeTruthy();
+  });
+
+  it("moves the UTC lookup time into the reader's zone but leaves airport wall times alone", () => {
+    // The zone is passed explicitly here because a vitest worker cannot repin process TZ;
+    // the card itself leaves it unset and so uses the browser's zone.
+    // What the API writes: datetime.now(UTC).isoformat(). 22:30 UTC is 06:30 next day in Taipei.
+    expect(formatFlightMoment("zh-TW", "2026-11-09T22:30:00+00:00", "Asia/Taipei")).toBe("11/10 06:30");
+    expect(formatFlightMoment("zh-TW", "2026-11-09T22:30:00Z", "Asia/Tokyo")).toBe("11/10 07:30");
+    // A bare wall time is the airport's clock and must not shift with the reader.
+    expect(formatFlightMoment("zh-TW", "2026-11-10T08:50", "Asia/Tokyo")).toBe("11/10 08:50");
+    expect(formatFlightMoment("zh-TW", "2026-11-10T08:50", "America/Los_Angeles")).toBe("11/10 08:50");
+
+    const checked = {
+      ...outbound,
+      offer_id: "offer-1",
+      data: {
+        ...outbound.data,
+        flight_selection_source: "offer",
+        price_snapshot: { total_price: "11500", currency: "TWD", provider: "amadeus" },
+        flight_status: { ident: "BR198", status: "scheduled", departure_delay_seconds: 0, checked_at: "2026-11-09T22:30:00+00:00" },
+      },
+    };
+    render(<FlightAnchorCard item={checked} />);
+    // On the card the lookup time is rendered in whatever zone the test machine has, so
+    // only its shape and the untouched departure time are asserted here.
+    expect(screen.getByText(/查於 \d{1,2}\/\d{1,2} \d{2}:\d{2}$/)).toBeTruthy();
+    expect(screen.getByText("11/10 08:50")).toBeTruthy();
   });
 
   it("offers no price alert and no status line on a hand-typed anchor", () => {
