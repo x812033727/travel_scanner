@@ -51,7 +51,7 @@
         },
         {
           "type": "paragraph",
-          "text": "多模型工作流通常要決定每一步交給哪個模型，其中一種切法是照資料敏不敏感分——原始文字裡有沒有姓名、電話、病歷這類碰不得的內容，是分類這一步就能判斷出來的事，系列裡「一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法」把這種切法和另外三種放在一起講，這篇只把「照資料敏感度分」這一種做完整：分類與去識別化這兩步留在本機的 Ollama，判斷過、遮蔽過的文字才進入下一步，下一步才輪到雲端模型。"
+          "text": "多模型工作流通常要決定每一步交給哪個模型，其中一種切法是照資料敏不敏感分——原始文字裡有沒有姓名、電話、病歷這類碰不得的內容，是分類這一步就能判斷出來的事，系列裡《一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法》把這種切法和另外三種放在一起講，這篇只把「照資料敏感度分」這一種做完整：分類與去識別化這兩步留在本機的 Ollama，判斷過、遮蔽過的文字才進入下一步，下一步才輪到雲端模型。"
         },
         {
           "type": "paragraph",
@@ -64,7 +64,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Ollama 的 API 文件把本機和雲端的網址並排寫在同一張 Base URLs 表裡，OpenAI 相容那一列：本機是 http://localhost:11434/v1，Ollama 自己的雲端是 https://ollama.com/v1；官方原文寫「雲端請求需要 API 金鑰，本機請求不用」。用 openai 這個 Python 套件接兩邊時，程式碼幾乎一樣，差的只有兩處：OpenAI() 建構子裡的 base_url 與 api_key，以及呼叫時填的 model 名稱；如果要接的不是 Ollama 自己的雲端，而是 OpenRouter、LiteLLM 這類統一多家供應商的閘道，系列裡「統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式」另外講那一種寫法。"
+          "text": "Ollama 的 API 文件把本機和雲端的網址並排寫在同一張 Base URLs 表裡，OpenAI 相容那一列：本機是 http://localhost:11434/v1，Ollama 自己的雲端是 https://ollama.com/v1；官方原文寫「雲端請求需要 API 金鑰，本機請求不用」。用 openai 這個 Python 套件接兩邊時，程式碼幾乎一樣，差的只有兩處：OpenAI() 建構子裡的 base_url 與 api_key，以及呼叫時填的 model 名稱；如果要接的不是 Ollama 自己的雲端，而是 OpenRouter、LiteLLM 這類統一多家供應商的閘道，系列裡《統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式》另外講那一種寫法。"
         },
         {
           "type": "code",
@@ -196,7 +196,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這支函式接續前面 hybrid_client.py 定義的 get_client(\"local\") 與 ensure_local_tag，只是把提示詞換成要求模型找出個資並回傳固定格式的 JSON；Ollama 的 OpenAI 相容端點支援 response_format 這個欄位，才能穩定拿回 JSON 而不是一段夾雜說明文字的回答。這種把本機那一步的輸出用固定格式交給下一步的做法，系列裡「模型之間交接資料：JSON Schema 與結構化輸出」講得更完整。"
+          "text": "這支函式接續前面 hybrid_client.py 定義的 get_client(\"local\") 與 ensure_local_tag，只是把提示詞換成要求模型找出個資並回傳固定格式的 JSON；Ollama 的 OpenAI 相容端點支援 response_format 這個欄位，才能穩定拿回 JSON 而不是一段夾雜說明文字的回答。這種把本機那一步的輸出用固定格式交給下一步的做法，系列裡《模型之間交接資料：JSON Schema 與結構化輸出》講得更完整。"
         },
         {
           "type": "code",
