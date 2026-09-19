@@ -1,8 +1,27 @@
-# mokaair site configuration.
+# mokaair site configuration -- a MERGE SOURCE, not a drop-in.
 #
-# Copy to sites-available/ and fill in server_name and the certificate paths; those belong to
-# the host, not to this repository, which is why this file ships as .example. Everything else
-# is meant to be applied as it stands.
+# On a fresh host, install.sh seeds this file as sites-available/mokaair.conf; fill in
+# server_name and the certificate paths (the EDIT markers), which belong to the host and not to
+# this repository. Everything else is meant to be applied as it stands.
+#
+# On a host that already serves the site, the enabled file is the host's own (production:
+# sites-enabled/mokaair.com -> sites-available/mokaair.com), install.sh seeds nothing, and this
+# file is what you merge INTO that one, block by block. Never copy it over the host's file: the
+# live file carries things this example deliberately leaves out, and losing any of them is an
+# outage now or one at the next certificate renewal.
+#   - The ACME webroot on port 80 for certbot: a `location ^~ /.well-known/acme-challenge/`
+#     serving from a directory, placed ahead of the 301 to https. The port-80 server below
+#     redirects everything, and the /.well-known/ location below proxies to Next.js; copied over
+#     the host's, they break the next renewal.
+#   - The extra domains (mocair.io, www.mocair.io), each with its own certificate and its own
+#     301 to the canonical origin.
+#   - Inline ssl_protocols / ssl_ciphers. This example inherits whatever nginx.conf sets.
+#   - default_server on the listen lines, so an unknown Host name lands here and not on a stray
+#     virtual host.
+# What to take from here: the upstream block with its keepalive include, the header-hygiene
+# include in EVERY proxying location, the limit_req / limit_conn lines and which locations are
+# exempt from them, the two error_log lines, and the HSTS add_header. Diff the result against
+# the host file you started from, then nginx -t, then reload.
 #
 # The browser talks only to the Next.js BFF (see architecture.md). The FastAPI service listens
 # on 127.0.0.1:8090 and MUST NOT be proxied here: reaching it directly skips the BFF's
@@ -66,6 +85,14 @@ server {
     # the ones nginx generates itself: redirects, 429s from the limits below, 502s when the
     # upstream is down. "always" because add_header otherwise skips exactly those statuses.
     add_header Strict-Transport-Security "max-age=31536000" always;
+
+    # Where the rate-limit events go. 10-rate-limit.conf logs them at warn, but the stock
+    # Debian/Ubuntu nginx.conf logs at error, so without a warn-level destination every
+    # "limiting requests" line is dropped and the README's Googlebot check reads an empty file.
+    # Both lines: a server-level error_log replaces the inherited one instead of adding to it,
+    # so the first keeps this server's real errors in error.log and the second adds the warn log.
+    error_log /var/log/nginx/error.log error;
+    error_log /var/log/nginx/mokaair-limit.log warn;
 
     client_max_body_size 6m;    # just above the app's own 5 MiB cap, so the app answers
     limit_conn mokaair_conns 20;

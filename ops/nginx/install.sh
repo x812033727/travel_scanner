@@ -7,12 +7,16 @@ if [[ "${EUID}" -ne 0 ]]; then
 fi
 
 SOURCE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CONF_D="/etc/nginx/conf.d"
-SNIPPETS="/etc/nginx/snippets"
-SITE_TARGET="/etc/nginx/sites-available/mokaair.conf"
+NGINX_ETC="/etc/nginx"
+CONF_D="${NGINX_ETC}/conf.d"
+SNIPPETS="${NGINX_ETC}/snippets"
+SITES_AVAILABLE="${NGINX_ETC}/sites-available"
+SITES_ENABLED="${NGINX_ETC}/sites-enabled"
+SITE_TARGET="${SITES_AVAILABLE}/mokaair.conf"
+EXAMPLE="${SOURCE_ROOT}/mokaair.conf.example"
 
-if [[ ! -d /etc/nginx ]]; then
-  echo "No /etc/nginx on this host; install nginx before running this." >&2
+if [[ ! -d "${NGINX_ETC}" ]]; then
+  echo "No ${NGINX_ETC} on this host; install nginx before running this." >&2
   exit 1
 fi
 
@@ -24,22 +28,99 @@ install -m 0644 "${SOURCE_ROOT}/10-rate-limit.conf" "${CONF_D}/mokaair-rate-limi
 install -m 0644 "${SOURCE_ROOT}/proxy-headers.conf" "${SNIPPETS}/mokaair-proxy-headers.conf"
 install -m 0644 "${SOURCE_ROOT}/upstream-keepalive.conf" "${SNIPPETS}/mokaair-upstream-keepalive.conf"
 
+# --- Which site file is really enabled? -------------------------------------------------
+#
 # The site file is the operator's: it carries server_name and certificate paths this repo
-# does not know. Seed it once, then leave it alone -- overwriting it on an upgrade would
-# replace a working certificate path with a placeholder and take the site down on reload.
-if [[ ! -f "${SITE_TARGET}" ]]; then
-  install -d -m 0755 /etc/nginx/sites-available
-  install -m 0644 "${SOURCE_ROOT}/mokaair.conf.example" "${SITE_TARGET}"
+# does not know, and on a host that already serves the site it is usually not called
+# mokaair.conf at all (production enables sites-enabled/mokaair.com -> sites-available/
+# mokaair.com). Seeding mokaair.conf next to it is worse than doing nothing: every EDIT
+# marker gets edited, nginx -t passes, the reload succeeds, and nginx has not read a byte
+# of it -- which is exactly how the 2026-09-12 rollout became a no-op. So look at what is
+# enabled before seeding anything.
+#
+# A file "looks like the mokaair site" when a non-comment line carries one of the markers
+# only a site file has. Comments are stripped first because the snippets and the rate-limit
+# file talk about these names in prose. `limit_req<space>zone=` is a site directive; the
+# `limit_req_zone` declarations in our own conf.d file do not match it.
+SITE_MARKERS='upstream[[:space:]]+mokaair_web|proxy_pass[[:space:]]+https?://mokaair_web|mokaair-proxy-headers\.conf|limit_req[[:space:]]+zone=mokaair_|server_name[[:space:]][^;]*mokaair'
+
+looks_like_mokaair_site() {
+  grep -Ev '^[[:space:]]*#' -- "$1" 2>/dev/null | grep -Eq -- "${SITE_MARKERS}"
+}
+
+# Each entry is "<file to edit>|<how nginx reaches it>". sites-enabled/ holds symlinks on
+# Debian and Ubuntu (followed, so the operator is told the sites-available/ file they must
+# edit), plain files on hosts that skip the convention, and conf.d/*.conf is where the
+# nginx.org packages put a site, where sites-available/ is not even included.
+enabled_sites=()
+for entry in "${SITES_ENABLED}"/* "${CONF_D}"/*.conf; do
+  [[ -e "${entry}" || -L "${entry}" ]] || continue     # unmatched glob
+  if [[ -L "${entry}" ]]; then
+    target="$(readlink -f -- "${entry}" || true)"
+    [[ -n "${target}" && -f "${target}" ]] || continue  # dangling link: nginx -t would already refuse it
+    edit_path="${target}"
+    via="${entry} -> ${target}"
+  elif [[ -f "${entry}" ]]; then
+    edit_path="${entry}"
+    via="${entry}"
+  else
+    continue
+  fi
+  case "${edit_path}" in
+    "${CONF_D}/mokaair-rate-limit.conf") continue ;;    # ours, installed above; not a site
+  esac
+  looks_like_mokaair_site "${edit_path}" || continue
+  enabled_sites+=("${edit_path}|${via}")
+done
+
+target_enabled=0
+enabled_elsewhere=()
+for record in ${enabled_sites[@]+"${enabled_sites[@]}"}; do
+  if [[ "${record%%|*}" == "${SITE_TARGET}" ]]; then
+    target_enabled=1
+  else
+    enabled_elsewhere+=("${record}")
+  fi
+done
+
+if (( ${#enabled_elsewhere[@]} > 0 )); then
+  # The host already serves the site from a file of its own. Do not seed a second one.
+  echo
+  echo "The mokaair site is already enabled on this host as:"
+  for record in "${enabled_elsewhere[@]}"; do
+    echo "    ${record#*|}"
+  done
+  echo "Not seeding ${SITE_TARGET}: nginx would never read it, and editing it changes nothing on the live site."
+  if (( ${#enabled_elsewhere[@]} > 1 )); then
+    echo "More than one enabled file looks like the site; check 'nginx -T' for which one answers before merging."
+  fi
+  echo "Merge ${EXAMPLE} into the enabled file instead; its header lists what the host copy has that the example does not."
+  if [[ -e "${SITE_TARGET}" ]]; then
+    if (( target_enabled )); then
+      echo "${SITE_TARGET} is enabled as well. Two enabled site files is a mistake in itself; keep one."
+    else
+      echo "${SITE_TARGET} exists but nothing enables it -- a leftover seed. Remove it before it misleads the next reader:"
+      echo "    rm ${SITE_TARGET}"
+    fi
+  fi
+elif [[ ! -f "${SITE_TARGET}" ]]; then
+  # A fresh host. Seed once, then leave it alone -- overwriting it on an upgrade would replace a
+  # working certificate path with a placeholder and take the site down on reload.
+  install -d -m 0755 "${SITES_AVAILABLE}"
+  install -m 0644 "${EXAMPLE}" "${SITE_TARGET}"
   echo "Seeded ${SITE_TARGET}. Edit every line marked EDIT before enabling it."
 else
   echo "Kept existing ${SITE_TARGET}; compare it against mokaair.conf.example by hand."
+  if (( ! target_enabled )); then
+    echo "Nothing in ${SITES_ENABLED} points at it yet, so it is not what nginx is serving."
+  fi
 fi
 
 # The keep-alive snippet does nothing until the site's upstream block includes it, and a site file
 # written before the snippet existed still has `keepalive 32;` there instead. nginx -t and the
 # reload both succeed either way, so say it out loud rather than let that pass for an upgrade.
 if ! grep -REqs '^[[:space:]]*include[[:space:]]+[^#]*mokaair-upstream-keepalive\.conf' \
-    /etc/nginx/sites-enabled /etc/nginx/conf.d; then
+    "${SITES_ENABLED}" "${CONF_D}"; then
   echo
   echo "No enabled config includes ${SNIPPETS}/mokaair-upstream-keepalive.conf yet."
   echo "In 'upstream mokaair_web', replace 'keepalive 32;' with:"
@@ -48,13 +129,21 @@ fi
 
 # Deliberately no reload. A bad config that nginx accepts at -t can still be wrong for this
 # host, and reloading from inside an installer removes the operator's chance to look first.
-cat <<'NEXT'
-
-Next, in this order:
-  1. Edit /etc/nginx/sites-available/mokaair.conf (every EDIT marker).
-  2. ln -s /etc/nginx/sites-available/mokaair.conf /etc/nginx/sites-enabled/   # if not linked
-  3. nginx -t
-  4. systemctl reload nginx
-  5. Run the checks in ops/nginx/README.md -- especially the forged-address one, which is
-     the only thing that proves per-source counting cannot be bypassed.
-NEXT
+echo
+echo "Next, in this order:"
+if (( ${#enabled_elsewhere[@]} > 0 )); then
+  echo "  1. Merge ${EXAMPLE} into ${enabled_elsewhere[0]%%|*}"
+  echo "     (keep the host's ACME webroot, extra domains, TLS parameters and default_server;"
+  echo "     bring in the two error_log lines, or the rate-limit log check reads an empty file)."
+  echo "  2. nginx -t"
+  echo "  3. systemctl reload nginx"
+  echo "  4. Run the checks in ops/nginx/README.md. The isolated-nginx proof works as soon as the"
+  echo "     snippet is on disk; the Redis check says when it can be done."
+else
+  echo "  1. Edit ${SITE_TARGET} (every EDIT marker)."
+  echo "  2. ln -s ${SITE_TARGET} ${SITES_ENABLED}/   # if not linked"
+  echo "  3. nginx -t"
+  echo "  4. systemctl reload nginx"
+  echo "  5. Run the checks in ops/nginx/README.md. The isolated-nginx proof works as soon as the"
+  echo "     snippet is on disk; the Redis check says when it can be done."
+fi
