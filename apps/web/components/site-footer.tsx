@@ -3,6 +3,8 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { destinationsCopy } from "@/lib/destinations-copy";
+import { useSiteVisibility } from "@/components/site-visibility-provider";
+import { featureVisible } from "@/lib/site-features";
 
 // The admin console is not a public page and has its own chrome. The planner runs as a
 // full-screen shell that already hides the bottom navigation, and a footer under it would
@@ -14,6 +16,9 @@ export function SiteFooter({ year }: { year: number }) {
   // Not a navigation.json key: those five files belong to two other tasks, and this label
   // already exists in all five locales next to the destination pages it points at.
   const destinations = destinationsCopy(useLocale()).breadcrumb;
+  // `featureVisible`, not `featureEnabled`: a failed settings read must not empty the
+  // footer, which is the only place these three are linked from at all.
+  const visibility = useSiteVisibility();
   const pathname = usePathname();
   if (HIDDEN_ON.some((prefix) => pathname.startsWith(prefix))) return null;
 
@@ -43,6 +48,16 @@ export function SiteFooter({ year }: { year: number }) {
                 once the switch has resolved, so on a first paint this is the only entry. */}
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/guides">{t("guides")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/life">{t("life")}</Link></li>
+            {/* /hotspots, /foods and /explore are in the sitemap but were linked from nowhere:
+                the header renders its nav only after the discovery switch resolves on the
+                client, so no response body carried them and a crawler never reached the 593
+                places or the merchant directory behind them. */}
+            {featureVisible(visibility, "hotspots") && <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/hotspots">{t("hotspots")}</Link></li>}
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/foods">{t("foods")}</Link></li>
+            {/* `bottomExplore` rather than a new key: the label already reads "explore" in all
+                five locales, and inventing a sixth translation for the same word is how the
+                two surfaces end up disagreeing. */}
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/explore">{t("bottomExplore")}</Link></li>
             {/* The header's search box is hidden below lg and its phone icon below 440px in
                 discovery mode; this link is the one entry that is in every response body. */}
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/search/articles">{t("search")}</Link></li>

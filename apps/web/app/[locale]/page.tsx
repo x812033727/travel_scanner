@@ -19,6 +19,7 @@ import { DiscoveryHomeGate } from "@/components/discovery/explorer";
 import { StructuredData } from "@/components/structured-data";
 import { organization, webSite } from "@/lib/structured-data";
 import { getDiscoveryStatus } from "@/lib/discovery-status.server";
+import { discoveryFeedPath, getInitialDiscoveryFeed } from "@/lib/discovery.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 
 export default async function Home() {
@@ -36,6 +37,16 @@ export default async function Home() {
   ];
   const hotspotsEnabled = visibility.status === "ready" && visibility.features.hotspots_enabled;
   const tripsEnabled = visibility.status === "ready" && visibility.features.trips_enabled;
+  // The feed the gate is about to render, fetched here so it is in the response body rather
+  // than three grey rectangles. `/explore` has done this since it was written; the home page
+  // never did, which is why its whole body -- hero, rail and all -- was a skeleton to a
+  // crawler. The home page has no query of its own, so the path is the unfiltered feed.
+  const feed = await getInitialDiscoveryFeed(locale, discoveryFeedPath({}, discovery.enabled));
+  // `feed` is null when the switch is off, when the API could not be read, and when the feed
+  // came back empty. Seeding the gate with `false` there renders `body` -- the hero, the quick
+  // cards and the destination rail -- instead of a skeleton, and the client store still swaps
+  // in the explorer after hydration. A failed read now costs a crawler nothing.
+  const seeded = discovery.enabled && Boolean(feed);
   // Seed the gate, rather than bypassing it, so SSR and client recovery both work.
   const body = (
       <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
@@ -193,7 +204,7 @@ export default async function Home() {
       {/* Outside the gate: when discovery is on, everything inside it is still a skeleton in
           the response body. Here the graph reaches a crawler in both states. */}
       <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
-      <DiscoveryHomeGate initialEnabled={discovery.enabled}>{body}</DiscoveryHomeGate>
+      <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
     </>
   );
 }

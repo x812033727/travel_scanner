@@ -2,6 +2,8 @@ import { render, screen, within } from "@testing-library/react";
 import type React from "react";
 import { describe, expect, it, vi } from "vitest";
 import { SiteFooter } from "./site-footer";
+import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
+import { closedSiteVisibility } from "@/lib/site-features";
 
 const pathname = vi.hoisted(() => ({ value: "/" }));
 
@@ -56,6 +58,11 @@ describe("SiteFooter", () => {
     ["旅遊情報攻略", "/guides"],
     ["生活分享", "/life"],
     ["搜尋文章", "/search/articles"],
+    // Added after a crawl found these three in the sitemap with no inbound link anywhere on
+    // the site: the 593 places and the merchant directory live behind the first two.
+    ["熱門景點", "/hotspots"],
+    ["城市美食", "/foods"],
+    ["探索", "/explore"],
   ])("carries the only entry point to %s that survives a first paint", (name, href) => {
     // The header renders each section only after the discovery switch resolves; these links
     // are in the response body of every public page regardless.
@@ -94,5 +101,30 @@ describe("SiteFooter", () => {
   it("keeps /trips itself, which is a listing rather than the planner", () => {
     renderAt("/trips");
     expect(screen.getByRole("contentinfo")).toBeTruthy();
+  });
+
+  it("drops the hotspots link when the owner closed that feature", () => {
+    // /foods and /explore are not switch-gated, so they stay.
+    pathname.value = "/";
+    render(
+      <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
+        <SiteFooter year={2026} />
+      </SiteVisibilityProvider>,
+    );
+    const footer = screen.getByRole("contentinfo");
+    expect(within(footer).queryByRole("link", { name: "熱門景點" })).toBeNull();
+    expect(within(footer).getByRole("link", { name: "城市美食" })).toBeTruthy();
+  });
+
+  it("keeps every link when the switches could not be read", () => {
+    // featureVisible, not featureEnabled: one failed settings fetch must not strip the only
+    // inbound link these pages have.
+    pathname.value = "/";
+    render(
+      <SiteVisibilityProvider state={{ status: "unavailable", features: closedSiteVisibility }}>
+        <SiteFooter year={2026} />
+      </SiteVisibilityProvider>,
+    );
+    expect(within(screen.getByRole("contentinfo")).getByRole("link", { name: "熱門景點" })).toBeTruthy();
   });
 });
