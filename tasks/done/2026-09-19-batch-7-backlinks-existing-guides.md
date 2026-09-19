@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-batch-7-backlinks-existing-guides
 title: 既有文章補連第七批：25 篇既有文章加 article inline 連到第七批
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T06:50:21Z
 created_at: 2026-09-19T06:50:21Z
-completed_at:
+completed_at: 2026-09-19T08:00:16Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -53,7 +53,7 @@ README 的收件步驟第 6 條要求彙整成一張「既有文章補連第七�
 - [x] 25 篇既有內容包依規格加上 article inline（共 39 個）；`paragraph` 整塊改 `rich_paragraph` 時
       原文一個字不改；規格給的 block 索引都對過現在的檔案內容。
 - [x] `pack_cli lint --kind howto`／`--kind intel` 對這 25 篇沒有新的 error；`tests/test_guides_content_pack.py` 綠。
-- [ ] 合併部署後在正式站 `guides-import` 這 25 個 slug、`guides-links-rebuild`、
+- [x] 合併部署後在正式站 `guides-import` 這 25 個 slug、`guides-links-rebuild`、
       `guides-links-check --locale zh-TW` 都通過（站主在主機上跑，見 How to verify）。
 
 ## Steps
@@ -63,7 +63,7 @@ README 的收件步驟第 6 條要求彙整成一張「既有文章補連第七�
 - [x] 照規格逐篇改（做法與位置見 Notes）。
 - [x] 自檢：新加的每個 inline 的 slug 都有內容包、kind 一致；被改的段落原文只有插入、沒有刪改；
       沒有兩個 offer 相鄰、沒有兩個 article inline 相鄰（一次性腳本，不進 repo）。
-- [ ] 合併後由站主在主機上匯入、重建連結圖、跑連結檢查。
+- [x] 合併後由站主在主機上匯入、重建連結圖、跑連結檢查。
 
 ## How to verify
 
@@ -217,3 +217,8 @@ uv run python -m app.cli guides-links-check --locale zh-TW
 - 這 25 篇已經上線，改的是既有內容包，匯入後 `modified_at` 會動，屬預期。
 - 沒有碰第七批的 20 個內容包，也沒碰規格沒點名的內容包。
 - BEM 首末班、AOT S1 末班、Greenbus、SR 改點這類「兩篇要一起改」的事項是各篇日期票的範圍，不在這裡。
+
+### 2026-09-19 主機執行（claude-opus-5，站主逐項同意；部署 `6a254971` 之後）
+
+- 站主同意後在主機執行：dry-run 25 篇皆 `zh-TW update`、taxonomy `unchanged`；與發布前重跑的 dry-run 逐位元組相同後 `--publish`：`updated 25`、`published 25`、`failed null`；重跑 dry-run 25 篇皆 `unchanged`。
+- `guides-links-rebuild`：materialized 1,270、dropped 0。`guides-links-check --locale zh-TW`：32 筆，`missing` 27 筆全是指向待發布的 AI coding 內容（`2026-09-15-publish-held-ai-coding-content` 記的那 27 條），`raw_url` 5 筆在 `codex-beginner-guide`（4）與 `gemini-guide`（1）；**來源是這 25 篇的問題 0 筆**。

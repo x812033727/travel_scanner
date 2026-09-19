@@ -160,9 +160,14 @@ id 清單（52 筆，供人工核對 `findings` 用）：
 
 ## 掃描結果（主機跑完後填）
 
-- 第 1 步 findings 數量、其中不在上表的：
-- 第 2 步 `rejected` 數量、`already_rejected`、`missing`：
-- 第 3 步重跑結果與公開 API 抽查：
+（2026-09-19，部署 `6a254971` 之後，站主逐項同意）
+
+- 第 1 步 findings 數量、其中不在上表的：掃 6,061 筆，命中 **165 筆**；48 筆在上表（上表另 4 筆是要點名的影片），**117 筆不在上表**。
+  清單在 [`2026-09-19-foreign-guides-unreviewed.json`](2026-09-19-foreign-guides-unreviewed.json)，由票
+  `2026-09-19-review-117-flagged-foreign-guides` 逐筆處理；已知至少一筆誤判（`6da32c2d`，NAVITIME 的澀谷店頁被判成泰國）。
+- 第 2 步 `rejected` 數量、`already_rejected`、`missing`：站主選「只退核對過的 52 筆」，117 筆逐一 `--skip-id`。
+  `rejected 52`、`already_rejected 0`、`missing 0`。
+- 第 3 步重跑結果與公開 API 抽查：重跑剩 117 筆（就是保留的那些），上表 52 筆 0 筆；河內探索 API 查 `ecfc44df` 為 0。
 
 ## 沒退的
 
