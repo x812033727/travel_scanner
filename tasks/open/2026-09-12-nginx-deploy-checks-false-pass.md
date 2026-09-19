@@ -262,3 +262,47 @@ to prevent.
 
 **Definition of done item 1 still needs steps 2-4 on the host, and step 1 after this merges.**
 Step 1 cannot run before the merge for the reason at the top of this section.
+
+### Host verification run, 2026-09-19
+
+**Step 2 (forged address discarded at the edge): PASS.** The isolated nginx on 127.0.0.1:9080
+reading the installed snippet showed the upstream receiving `X-Forwarded-For: 127.0.0.1` and
+`X-Real-IP: 127.0.0.1`, with `198.51.100.1` nowhere and no `X-Travel-Client-IP` at all --
+replaced, not appended. The companion count came out **include=10, proxy_pass=10**, equal, so
+every proxying location in the loaded config carries the snippet; that also covers the four
+crawl-control locations added in this PR.
+
+**Step 3 (forged address opens no counter): NOT APPLICABLE, which the ticket says is the
+correct outcome.** `printenv PUBLIC_READ_RATE_LIMIT_MODE` in the api container returns nothing
+-- `PublicReadRateLimitMiddleware` is not configured on this host -- so the Redis `EXISTS`
+check cannot distinguish "the header was discarded" from "nothing counted this request at all".
+Recorded rather than run, exactly as the ticket asks.
+
+**Step 4 (limiting events are visible): PASS, but the README's recipe needs two corrections.**
+`mokaair-limit.log` appears 3 times in the loaded config. 40 truly-concurrent requests gave
+20 x 200 and 20 x 429, and the log grew by 19.
+
+Two things in the README's own block mislead, which is this ticket's subject:
+
+1. **`seq 1 80 | xargs -P 8` can legitimately produce zero 429s.** Run exactly as written it
+   returned **80 x 200**. Eight requests in flight against a ~1.5 s server-rendered page is
+   about 5.3 r/s, which is the zone's rate, so the burst absorbs the overshoot indefinitely.
+   The natural reading -- "nothing is being limited" -- is wrong, and it is the same trap as
+   the other three. Use a burst that clearly exceeds the rate: `for i in $(seq 1 40); do ... &
+   done; wait` gave 20 x 429 on the same host minutes later.
+2. **`429s` and `grep -c 'limiting requests'` are not the same population.** `limit_conn`
+   also answers 429 (`limit_conn_status 429`) but logs `limiting connections by zone
+   "mokaair_conns"`. At 40 concurrent both fire, so the two numbers differ by however many
+   connection refusals there were -- 20 vs 19 here. Compare against both phrases, or the
+   check reports a mismatch that is not one.
+
+**The question the ticket exists to answer.** Cross-referencing every client address in the new
+`mokaair-limited.log` against `conf.d/05-mokaair-crawler-ranges.conf`: **no allowlisted address
+has ever been refused.** For contrast, 44 refused requests carry a Googlebot or Bingbot
+User-Agent, and every one of them comes from `111.251.215.82` -- the machine running this
+audit. That is the whole argument for keying the exemption on published address ranges rather
+than on the User-Agent, restated as data.
+
+**Still open: step 1.** `install.sh` idempotency has to run after this PR merges and the host
+pulls, for the ordering reason at the top of this section. Definition of done item 1 stays
+unticked until then.
