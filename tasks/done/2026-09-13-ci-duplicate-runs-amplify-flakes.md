@@ -1,14 +1,14 @@
 ---
 id: 2026-09-13-ci-duplicate-runs-amplify-flakes
 title: CI runs every branch push twice and never cancels superseded runs
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T04:22:11Z
 created_at: 2026-09-13T10:49:43Z
-completed_at:
-branch:
+completed_at: 2026-09-19T04:46:52Z
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - .github/workflows/ci.yml
@@ -52,19 +52,19 @@ workflow on the same commit.
 
 ## Definition of done
 
-- [ ] A push to a branch with an open pull request starts **one** run, not two.
-- [ ] Pushing a new commit cancels the superseded run for that branch.
-- [ ] `main` still runs on every push, and is **never** cancelled mid-run — a cancelled run
+- [x] A push to a branch with an open pull request starts **one** run, not two.
+- [x] Pushing a new commit cancels the superseded run for that branch.
+- [x] `main` still runs on every push, and is **never** cancelled mid-run — a cancelled run
       on `main` is what the deploy agent reads as "not green".
-- [ ] The four required checks (`api`, `web`, `containers`, `full-stack-smoke`) keep exactly
+- [x] The four required checks (`api`, `web`, `containers`, `full-stack-smoke`) keep exactly
       the names branch protection expects; renaming a job silently un-protects `main`
       （`.github/BRANCH_PROTECTION.md` 已記過一次這種事故）。
 
 ## Steps
 
-- [ ] Add a concurrency group keyed on workflow + ref, with `cancel-in-progress` **off for
+- [x] Add a concurrency group keyed on workflow + ref, with `cancel-in-progress` **off for
       `main`** and on elsewhere.
-- [ ] Either filter `push:` to `main` (letting `pull_request:` cover branches), or keep both
+- [x] Either filter `push:` to `main` (letting `pull_request:` cover branches), or keep both
       and let the concurrency group collapse them — whichever keeps the required check names
       appearing on pull requests. Verify on a scratch pull request before relying on it.
 
@@ -79,3 +79,18 @@ checks.
 - Do **not** "fix" the flakes by retrying them. The three flake tickets above are still worth
   root-causing; this one only removes the load that makes them fire.
 - Rough saving: four concurrent runs → two, i.e. about half the CI minutes per push.
+
+### 2026-09-19 done in code (claude-fable-5-1)
+
+- `push:` is now `branches: [main]`; `pull_request:` covers every branch, so a branch push
+  starts one run. A branch without a pull request no longer runs CI at all -- open the PR
+  first, which is what branch protection needs anyway.
+- `concurrency.group` is `ci-pr-<number>` on pull_request events with `cancel-in-progress`
+  on, and `ci-push-<sha>` on push events with it off: every `main` push has its own group,
+  so a `main` run is never cancelled and never left pending behind another.
+- Job names untouched: `api`, `web`, `containers`, `full-stack-smoke`.
+- Verification happened on this ticket's own pull request: the branch pushes produced only
+  `pull_request` runs, and a second push cancelled the first run's jobs (see the PR's
+  check history). The other workflows (`planner-premium`, `travel-discovery`,
+  `food-map-reservations`, `seo-audit`, ...) still fire on both events; they are outside
+  this ticket's scope and are the same one-line change each if wanted.

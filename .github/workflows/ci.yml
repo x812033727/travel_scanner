@@ -1,7 +1,20 @@
 name: CI
 on:
+  # A branch with an open pull request used to start two full runs per push (one `push`
+  # event, one `pull_request` event) and never cancel the superseded commit's runs; on
+  # 2026-09-13 the same commit passed in one concurrent run and failed in the other. Push
+  # runs are kept for `main` only -- that is the run the deploy agent reads -- and
+  # `pull_request` covers every branch.
   push:
+    branches: [main]
   pull_request:
+
+# One live run per pull request: a new push cancels the run of the commit it replaced.
+# `main` is deliberately never grouped, so a run there is never cancelled or left pending
+# (a cancelled run on `main` reads as "not green" to the deploy agent).
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-push-{0}', github.sha) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
