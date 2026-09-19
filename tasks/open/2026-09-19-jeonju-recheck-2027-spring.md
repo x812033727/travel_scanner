@@ -50,4 +50,4 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 來源：`docs/travel-guides-batch-7/jeonju-hanok-village-day-trip-from-seoul.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - SRT 改點、Korail 恢復的複查在 `2026-09-19-sr-korail-recheck-daegu-jeonju`（含 `korea-ktx-srt-ticket-guide`）。
 - 目錄缺口：本篇 `destination_id` 是 seoul，全州在第七批之前 0 篇。上線後打開 `destinations/jeonju` 確認相關文章區塊列得出本篇；列不出來就是目錄只看 `destination_id`，要另開票討論一日遊文章在城市頁的露出方式，不要為了露出把 `destination_id` 改成 jeonju。這項 2026-09-19 開票時還沒有人確認過。
-- 反向連結（`korea-ktx-srt-ticket-guide` blocks[25]、`seoul-4-day-itinerary` Day 3、可選的韓服兩篇）在「既有文章補連第七批」那張票。`tasks/BOARD.md` 不要提交。
+- 反向連結（`korea-ktx-srt-ticket-guide` blocks[25]、`seoul-4-day-itinerary` Day 3、可選的韓服兩篇）在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。`tasks/BOARD.md` 不要提交。

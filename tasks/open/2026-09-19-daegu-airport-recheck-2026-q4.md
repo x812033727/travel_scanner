@@ -47,6 +47,6 @@ uv run pytest tests/test_guides_content_pack.py -q
 ## Notes
 
 - 來源：`docs/travel-guides-batch-7/daegu-airport-ktx-subway-guide.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
-- SR 票價表／時刻表換版與 Korail 恢復後的複查在 `2026-09-19-sr-korail-recheck-daegu-jeonju`；反向連結（`korea-ktx-srt-ticket-guide` blocks[25] 等）在「既有文章補連第七批」。
+- SR 票價表／時刻表換版與 Korail 恢復後的複查在 `2026-09-19-sr-korail-recheck-daegu-jeonju`；反向連結（`korea-ktx-srt-ticket-guide` blocks[25] 等）在`2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。
 - diagram-1 只畫 1.8 公里／28 分、9 分、1 小時 38 分／1 小時 31 分、41 分，不畫票價與首末班，本票兩項通常不必改圖。
 - `tasks/BOARD.md` 不要提交。

@@ -19,12 +19,12 @@ scope:
 
 ## Why
 
-`japan-cherry-blossom-2027` 與 `japan-golden-week-2027` 兩篇 intel 都在 2027-05-10 到期。`sendai-matsushima-2-day-itinerary`（長青 howto）季節段春天那句連了櫻花篇；「既有文章補連第七批」會在 `taiwan-long-weekends-2027-flight-planning`（2027-12-31 到期）的撞期段加連黃金週篇，規格明說那屬於季節段例外、要同時開 2027-05-11 的刪除票。兩份規格（`docs/travel-guides-batch-7/sendai-matsushima-2-day-itinerary.md`、`docs/travel-guides-batch-7/japan-golden-week-2027.md`）都要求上線 PR 開票並寫明日期。
+`japan-cherry-blossom-2027` 與 `japan-golden-week-2027` 兩篇 intel 都在 2027-05-10 到期。`sendai-matsushima-2-day-itinerary`（長青 howto）季節段春天那句連了櫻花篇；`2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）已於 2026-09-19 在 `taiwan-long-weekends-2027-flight-planning`（2027-12-31 到期）的撞期段加連黃金週篇，規格明說那屬於季節段例外、要同時開 2027-05-11 的刪除票。兩份規格（`docs/travel-guides-batch-7/sendai-matsushima-2-day-itinerary.md`、`docs/travel-guides-batch-7/japan-golden-week-2027.md`）都要求上線 PR 開票並寫明日期。
 
 ## Definition of done
 
 - [ ] 2027-05-11 起：`sendai-matsushima-2-day-itinerary` 季節段春天那句的 `japan-cherry-blossom-2027` article inline 拆掉，句子保留；屆時若已有 2028 年版櫻花情報就改連新版。`related` 四篇都是長青 howto，不用動。
-- [ ] 2027-05-11 起：`taiwan-long-weekends-2027-flight-planning` 撞期段「勞動節連假夾在日本黃金週裡」後面補的 `japan-golden-week-2027` article inline 拆掉，句子保留（那張票沒加就不用動）。
+- [ ] 2027-05-11 起：`taiwan-long-weekends-2027-flight-planning` 撞期段「勞動節連假夾在日本黃金週裡」後面由 `2026-09-19-batch-7-backlinks-existing-guides` 於 2026-09-19 補的 `japan-golden-week-2027` article inline 拆掉，句子保留。
 - [ ] lint 通過，`guides-links-check --locale zh-TW` 沒有壞連結。
 
 ## Steps

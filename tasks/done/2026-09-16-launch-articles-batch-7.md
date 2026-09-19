@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-launch-articles-batch-7
 title: 撰寫並上線第七批旅遊文章：二十篇 zh-TW 攻略與情報
-status: open
+status: done
 priority: P2
 area: docs
 owner:
 claimed_at:
 created_at: 2026-09-16T23:06:26Z
-completed_at:
+completed_at: 2026-09-19T07:10:12Z
 branch: claude/new-travel-guide-k2q5h3
 depends_on:
   - 2026-09-14-plan-articles-batch-7
@@ -74,11 +74,15 @@ scope:
 - [x] 每個數字撰稿當天在官方頁重新核對過；官方頁沒寫的一律「以官網為準」。每篇留 `notes.md`。
 - [x] 站內文章連結用 `article` inline（不是 `link` 區塊），城市頁與美食目錄用 `link` 區塊、
       網址用 `foods?destination_id=`。
-- [ ] （部署後）`test_guides_content_pack` 綠、`pack_cli lint --kind howto` 與 `--kind intel` 沒有新的 error。
+- [x] （部署後）`test_guides_content_pack` 綠、`pack_cli lint --kind howto` 與 `--kind intel` 沒有新的 error。
       部署後 `guides-import --dry-run` 只有這二十篇是 create，再 `--publish`，然後
-      `guides-links-rebuild` 與 `guides-links-check`。
-- [ ] 上線 PR 把各規格「上線後與交叉檢查」裡有日期的事項開成票，並把既有文章的反向連結
-      彙整成一張票。
+      `guides-links-rebuild` 與 `guides-links-check`。（2026-09-19：二十篇已上線，#555 查 sitemap 20／20；
+      本機 `test_guides_content_pack` 9 passed、lint 對這二十篇零 error；主機上的 `guides-links-rebuild`／
+      `guides-links-check --locale zh-TW` 併入反向連結票 `2026-09-19-batch-7-backlinks-existing-guides` 的
+      主機步驟，那張票 review 中。）
+- [x] 上線 PR 把各規格「上線後與交叉檢查」裡有日期的事項開成票（2026-09-19 開了 24 張，見下方
+      「日期票已開」）。
+- [x] 既有文章的反向連結彙整成一張票：`2026-09-19-batch-7-backlinks-existing-guides`（2026-09-19）。
 
 ## Steps
 
@@ -143,9 +147,10 @@ hero 壓不進 200 KB 時照第六批的做法在 ingest 之後補壓，腳本�
 
 ### 還沒做的
 
-- [ ] 部署，然後在正式站跑 `guides-import --dry-run`（確認只有這二十篇是 create）、`--publish`、
-      `guides-links-rebuild`、`guides-links-check --locale zh-TW`。
-- [ ] 把各規格「上線後與交叉檢查」的日期事項開成票（彙整在 `scratchpad/plan7/followups.md`）。
+- [x] 部署，然後在正式站跑 `guides-import --dry-run`（確認只有這二十篇是 create）、`--publish`、
+      `guides-links-rebuild`、`guides-links-check --locale zh-TW`。（二十篇已於 2026-09-17 上線；連結檢查併入
+      反向連結票的主機步驟。）
+- [x] 把各規格「上線後與交叉檢查」的日期事項開成票（2026-09-19 完成，24 張，見下方「日期票已開」）。
 - [x] 既有文章的反向連結（同一張票）：票 `2026-09-19-batch-7-backlinks-existing-guides`。
 
 ## 釋出認領（由站主授權，2026-09-19）
@@ -165,3 +170,36 @@ Olive Young 不改、狐狸村不列）、可選而沒做的（首爾五大宮�
 規格點名的既有文章待修（曼谷、清邁的季節月份與 PM2.5 說法）早已有專票 `2026-09-16-existing-guides-season-sources`，
 沒有重做。lint 與 `test_guides_content_pack` 綠；合併後主機上的 `guides-import`（25 個 slug）、
 `guides-links-rebuild`、`guides-links-check --locale zh-TW` 步驟寫在那張票的 How to verify。
+
+### 2026-09-19 日期票已開（claude-fable-5-1 子代理）
+
+從 `docs/travel-guides-batch-7/*.md` 二十份規格的「上線後與交叉檢查」重新整理（`scratchpad/plan7/followups.md` 已不在），所有有日期或條件觸發、規格要求開票的事項開成 24 張 `tasks/open` 票，都是 `area: docs`、未認領；2027-01-01 前到期的 P2，其餘 P3。每張票的 scope 是要改的內容包，規格說圖也要改的加上 `apps/web/public/guides/<slug>`；規格寫「同一個 PR 改」的另一篇一起列進 scope。反向連結在 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批），規格點名的既有文章待修在 `2026-09-16-existing-guides-season-sources`，都不在這 24 張裡。
+
+- `2026-09-19-bangkok-stay-recheck-2027-01`（P3）：曼谷住宿篇 BEM 首末班、2027-01-05 BTS 時刻表（與 `bangkok-4-day-itinerary` 同 PR）、2027-01-15 聯合票價（與 `bangkok-bts-mrt-boat-guide` 同 PR）。
+- `2026-09-19-chiang-rai-recheck-2026-11`（P2）：清萊篇每年 11 月前 TAT 東京景點頁、Greenbus 與六個官網恢復後補數字（清邁篇同 PR）。
+- `2026-09-19-daegu-2-day-recheck-2026-12`（P2）：大邱兩天篇 2026-12-01／每年 6、12 月纜車、每年 3 月下旬西門夜市、前山纜車停駛、桐華寺與 E-World。
+- `2026-09-19-daegu-airport-recheck-2026-q4`（P2）：大邱交通篇 2026-10-26 後 TW663／664、2026-12-31 前 DTRO 票價與一日券、businfo 公車。
+- `2026-09-19-sr-korail-recheck-daegu-jeonju`（P3）：大邱交通篇與全州篇的 SR 票價表／時刻表改版、Korail 恢復，與 `korea-ktx-srt-ticket-guide` 同 PR。
+- `2026-09-19-ha-long-recheck-2026-11`（P2）：下龍灣篇每年 4、11 月換季出港時段、每年 3 月廣寧省費率、NQ 原文、雲屯航線。
+- `2026-09-19-hue-recheck-2027-01`（P3）：順化篇每年 1 月門票法規與電子售票、2027-03-01 前 HĐ 觀光列車、hueworldheritage 與 acv.vn 恢復。
+- `2026-09-19-golden-week-nozomi-watch-2027`（P3）：黃金週篇 2027-01 起每月查 smart-ex.jp のぞみ公告（`japan-shinkansen-ticket-guide` 同 PR）。
+- `2026-09-19-lny-links-expire-2027-02-21`（P3）：農曆新年篇過期後刪 `japan-golden-week-2027` 開頭句與 related、刪 `taiwan-long-weekends-2027-flight-planning` 2026-09-19 新增的春節區塊（農曆新年篇與黃金週篇兩份規格）。
+- `2026-09-19-gw-sakura-links-expire-2027-05`（P3）：2027-05-11 `sendai-matsushima-2-day-itinerary` 拆櫻花篇連結、`taiwan-long-weekends-2027-flight-planning` 拆 2026-09-19 補的黃金週篇連結（松島篇與黃金週篇兩份規格）。
+- `2026-09-19-jeonju-recheck-2027-spring`（P3）：全州篇每年春季慶基殿與南部市場夜市、kobus 與全州公車票價恢復。
+- `2026-09-19-andaman-ferry-recheck-2026-11`（P2）：喀比交通篇 2026-12-01、喀比跳島篇（規格「和第 3 篇同一張票」）、普吉跳島篇每年 11 月的 Andaman Wave Master 班表，附 2026-10-15 斯米蘭開放日（可選）。
+- `2026-09-19-krabi-airport-sites-2027-01`（P3）：喀比交通篇 2027-01-31 前重試機場官網與 บขส.、Grab 上車區、Tubkaek 目錄。
+- `2026-09-19-dnp-park-closures-2027-01-15`（P3）：喀比跳島篇與普吉跳島篇 2027-01-15 封園總表（兩份規格互相「通知一起改」）、DNP 新收費規則（含 `chiang-mai-3-day-itinerary` 茵他儂）、皮皮特別費 400／200、翡翠池與虎穴寺。
+- `2026-09-19-lny-2027-vietnam-tet-hk-lcsd`（P2）：農曆新年篇 2026-10-15 起每月查越南 Tết（最晚 2027-01-10）、2027-01 康文署新聞稿；scope 依規格只含本篇。
+- `2026-09-19-macau-recheck-2027-04`（P3）：澳門篇 2027-04 年度複查、噴射飛航新網址、澳巴／新福利、輕軌東線、入境連結。
+- `2026-09-19-sendai-airport-intl-2026-10`（P2）：仙台交通篇 2026-10-31 前國際線冬季班期。
+- `2026-09-19-sendai-matsushima-recheck-2026-q4`（P2）：松島篇每年 10 月圓通院、11 月光のページェント與遊覽船／福浦橋／瑞巖寺、2027-01 前瑞鳳殿、丸文票價。
+- `2026-09-19-zao-fox-winter-2026-11`（P2）：狐狸村篇每年 11 到 12 月冬季營業與山麓アクセス線、官網改 https。
+- `2026-09-19-sendai-four-spring-2027`（P3）：仙台四篇的春季複查——2027-03-20 後空港線、2027-03-25 起立石寺、2027-03-31 前蔵王 GTFS／每年 4 月 takeyakotsu、2027-04-01 前るーぷる／地鐵／まるごとパス、JR 改正後仙石線、jreast 讀得到時四篇補票價（四篇共用數字，規格要求同 PR）。
+- `2026-09-19-sentosa-recheck-2026-09`（P2）：聖淘沙篇 2026-09-19 後 Sentosa Line 維修公告、每季海灘電車與 Grab 接駁、每年票價與步道（`singapore-4-day-itinerary` block 30 同 PR）、環球影城票價、官網口徑統一。
+- `2026-09-19-sea-seasons-recheck-2027-01`（P3）：季節篇 H2-3 補連越南兩篇、2027-01 TAT 東京行事曆與月份表、Air4Thai（含清邁篇）、常年值換版、`2026-09-16-existing-guides-season-sources` 改完後更新小心事項。
+- `2026-09-19-sea-seasons-unlink-2028-01-01`（P3）：季節篇 2028-01-01 拆 `taiwan-long-weekends-2027-flight-planning` 連結。
+- `2026-09-19-vietnam-rail-recheck-2027-01`（P3）：越南交通篇 2027-01-01 前後鐵路票價與退換票政策頁、SE1–SE8 時刻（順化篇同 PR）、航空行李規則、futabus／acv、大叻專篇上線後。
+
+**沒開票的規格條目**（不是日期或條件複查）：各篇「合作方案在後台核准後確認 offer 畫得出來」、ingest 腳本 KNOWN 白名單與自檢、上線前的口徑對稿與照片規則。清萊篇與全州篇「上線後確認城市頁列得出本篇」的目錄缺口只寫進票的 Notes（全州篇在 `2026-09-19-jeonju-recheck-2027-spring`），還沒有人實際確認。
+
+**含反向連結或既有文章待修條目的規格**：除狐狸村篇明寫「不列進那張票」外，其餘十九篇都有反向連結條目，都交給 `2026-09-19-batch-7-backlinks-existing-guides`。曼谷住宿篇、清萊篇、季節篇另有「既有文章待修」（`bangkok-4-day-itinerary` 5–10 月雨季、`chiang-mai-3-day-itinerary` 6–10 月雨季與「3 月最嚴重」），在 `2026-09-16-existing-guides-season-sources`；農曆新年篇另有설날口徑對齊（`taiwan-long-weekends-2027-flight-planning`「日韓同期」欄改成「韓國설 연휴 2/6–2/9（설날 2/7）」），規格說併進反向連結那張票，開票時沒有確認它做了沒有。黃金週篇與農曆新年篇的反向連結各要一張刪除票，就是上面的 `2026-09-19-gw-sakura-links-expire-2027-05` 與 `2026-09-19-lny-links-expire-2027-02-21`。

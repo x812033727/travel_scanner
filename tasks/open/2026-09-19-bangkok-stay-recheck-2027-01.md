@@ -52,5 +52,5 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 來源：`docs/travel-guides-batch-7/bangkok-where-to-stay.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出；先讀規格再改。
 - AOT 的 S1 巴士末班（20:00 與 17:00 兩個版本）不在本票定案：下次重查 `bangkok-airport-to-city` 時一起確認，兩篇同時改。
 - 潑水節：本篇依規格不寫日期，每年官方活動日期公布後不用動。
-- 既有三篇曼谷文的反向連結，以及 `bangkok-4-day-itinerary`「5 月到 10 月雨季」沒有出處的待修，都在「既有文章補連第七批」那張票，不在本票。
+- 既有三篇曼谷文的反向連結在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）；`bangkok-4-day-itinerary`「5 月到 10 月雨季」沒有出處的待修在 `2026-09-16-existing-guides-season-sources`。都不在本票。
 - `tasks/BOARD.md` 由工具產生，不要提交。

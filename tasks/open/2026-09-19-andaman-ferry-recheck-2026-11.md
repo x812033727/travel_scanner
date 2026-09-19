@@ -53,4 +53,4 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 來源：`docs/travel-guides-batch-7/krabi-airport-transport-where-to-stay.md`、`krabi-ao-nang-railay-4-islands.md`、`phuket-phi-phi-james-bond-island-hopping.md` 的「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - 喀比交通篇的 diagram-1 只畫哪幾段只能搭船、沒有時刻，通常不必改；列進 scope 是因為喀比跳島篇的規格把「diagram-1」寫在兩篇共同的那句裡。
 - 國家公園封園日期與 DNP 門票的 2027-01-15 複查在 `2026-09-19-dnp-park-closures-2027-01-15`；喀比機場官網重試在 `2026-09-19-krabi-airport-sites-2027-01`。
-- 反向連結（`phuket-airport-transport-where-to-stay` H2-5、`thailand-esim-sim-wifi`）在「既有文章補連第七批」那張票。`tasks/BOARD.md` 不要提交。
+- 反向連結（`phuket-airport-transport-where-to-stay` H2-5、`thailand-esim-sim-wifi`）在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。`tasks/BOARD.md` 不要提交。

@@ -47,5 +47,5 @@ uv run pytest tests/test_guides_content_pack.py -q
 
 - 來源：`docs/travel-guides-batch-7/lunar-new-year-2027-asia-travel.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。規格明定 scope 只含本篇內容包。
 - 本篇 2027-02-20 到期，過期後不改寫成 2028 年版；2027-02-21 的連結拆除在 `2026-09-19-lny-links-expire-2027-02-21`。
-- 反向連結（`taiwan-long-weekends-2027-flight-planning` 新增區塊）與설날口徑對齊（同一篇表格「日韓同期」欄改成「韓國설 연휴 2/6–2/9（설날 2/7）」）都在「既有文章補連第七批」那張票。
+- 反向連結（`taiwan-long-weekends-2027-flight-planning` 新增區塊）與설날口徑對齊（同一篇表格「日韓同期」欄改成「韓國설 연휴 2/6–2/9（설날 2/7）」）都在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。
 - `tasks/BOARD.md` 不要提交。

@@ -44,5 +44,5 @@ uv run pytest tests/test_guides_content_pack.py -q
 
 - 來源：`docs/travel-guides-batch-7/sendai-airport-access-loople-bus-guide.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - 空港線票價與首末班（2027-03-20 後）、るーぷる與地鐵票券（2027-04-01 前）在 `2026-09-19-sendai-four-spring-2027`，因為那些數字與其他三篇仙台文共用。
-- 反向連結（`japan-ic-card-suica-icoca-guide`、`japan-shinkansen-ticket-guide` blocks[6] 之後新增區塊，第 9、10 篇擇一）在「既有文章補連第七批」那張票。
+- 反向連結（`japan-ic-card-suica-icoca-guide`、`japan-shinkansen-ticket-guide` blocks[6] 之後新增區塊，第 9、10 篇擇一）在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。
 - `tasks/BOARD.md` 不要提交。

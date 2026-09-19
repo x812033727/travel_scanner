@@ -49,5 +49,5 @@ uv run pytest tests/test_guides_content_pack.py -q
 
 - 來源：`docs/travel-guides-batch-7/chiang-rai-2-day-itinerary.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - 燒田季口徑：本篇與 `southeast-asia-seasons-when-to-go` 都只寫「2 月到 4 月前後」與「查 Air4Thai」，不寫「3 月最嚴重」；Air4Thai 讀得到之後的補寫在 `2026-09-19-sea-seasons-recheck-2027-01`。
-- `chiang-mai-3-day-itinerary` 的反向連結與「3 月最嚴重」待修在「既有文章補連第七批」那張票；`foods?city=chiang-mai` 的統一等 `2026-09-14-food-links-city-param-ignored`。
+- `chiang-mai-3-day-itinerary` 的反向連結在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批），「6 月到 10 月是雨季」與「3 月最嚴重」的待修在 `2026-09-16-existing-guides-season-sources`；`foods?city=chiang-mai` 的統一等 `2026-09-14-food-links-city-param-ignored`。
 - `tasks/BOARD.md` 由工具產生，不要提交。

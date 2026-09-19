@@ -50,6 +50,6 @@ uv run pytest tests/test_guides_content_pack.py -q
 ## Notes
 
 - 來源：`docs/travel-guides-batch-7/daegu-airport-ktx-subway-guide.md` 與 `docs/travel-guides-batch-7/jeonju-hanok-village-day-trip-from-seoul.md` 的「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。沒有固定日期，由 SR 公告觸發；SR 通常年初換票價表。
-- `korea-ktx-srt-ticket-guide` blocks[25] 的反向連結（第 13、15 篇合併成同一次編輯）在「既有文章補連第七批」那張票；若那張票還沒做，先做它，否則 block 編號會變。
+- `korea-ktx-srt-ticket-guide` blocks[25] 的反向連結（第 13、15 篇合併成同一次編輯）在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）；若那張票還沒做，先做它，否則 block 編號會變。
 - 大邱篇 2026 年第四季的班表與 DTRO 複查在 `2026-09-19-daegu-airport-recheck-2026-q4`；全州篇的慶基殿年度複查在 `2026-09-19-jeonju-recheck-2027-spring`。
 - `tasks/BOARD.md` 不要提交。

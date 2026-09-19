@@ -52,4 +52,4 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 來源：`docs/travel-guides-batch-7/sendai-matsushima-2-day-itinerary.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - 春季的 JR 改正（仙石線班次、仙台まるごとパス）與 jreast 票價在 `2026-09-19-sendai-four-spring-2027`；2027-05-11 拆櫻花篇連結在 `2026-09-19-gw-sakura-links-expire-2027-05`。
 - 與第 9 篇共用的るーぷる、まるごとパス數字任何一篇改，同一個 PR 改另一篇；本票的項目不碰那些數字。
-- 反向連結在「既有文章補連第七批」那張票。`tasks/BOARD.md` 不要提交。
+- 反向連結在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。`tasks/BOARD.md` 不要提交。

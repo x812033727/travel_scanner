@@ -59,4 +59,4 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 來源：`docs/travel-guides-batch-7/sendai-airport-access-loople-bus-guide.md`、`sendai-matsushima-2-day-itinerary.md`、`yamadera-day-trip-from-sendai.md`、`zao-fox-village-from-sendai.md` 的「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - 松島篇的 diagram-1 只畫移動順序，沒有票價，所以 scope 沒列它的圖目錄；其他三篇的圖有數字。
 - 地下鐵分區間票價表只有圖片與 PDF：這台機器裝了 pdftotext 之後可把均一區外的票價補進交通篇 H2-3；SENDAI AREA PASS 價格出現在交通局官網時補一句進まるごとパス段落。都不是必要條件。
-- 2026 年第四季的仙台項目分別在 `2026-09-19-sendai-airport-intl-2026-10`、`2026-09-19-sendai-matsushima-recheck-2026-q4`、`2026-09-19-zao-fox-winter-2026-11`。反向連結在「既有文章補連第七批」。`tasks/BOARD.md` 不要提交。
+- 2026 年第四季的仙台項目分別在 `2026-09-19-sendai-airport-intl-2026-10`、`2026-09-19-sendai-matsushima-recheck-2026-q4`、`2026-09-19-zao-fox-winter-2026-11`。反向連結在`2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。`tasks/BOARD.md` 不要提交。

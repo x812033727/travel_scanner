@@ -51,4 +51,4 @@ uv run pytest tests/test_guides_content_pack.py -q
 
 - 來源：`docs/travel-guides-batch-7/vietnam-domestic-flights-train-guide.md`「上線後與交叉檢查」，由 `2026-09-16-launch-articles-batch-7` 開出。
 - `ha-long-bay-cruise-from-hanoi` 只共用說法、不共用時刻，所以沒列進 scope；若改了說法，把它加進 scope 同 PR 改。
-- 順化篇自己的門票法規、HĐ 觀光列車複查在 `2026-09-19-hue-recheck-2027-01`。反向連結（四篇既有越南文）在「既有文章補連第七批」。`tasks/BOARD.md` 不要提交。
+- 順化篇自己的門票法規、HĐ 觀光列車複查在 `2026-09-19-hue-recheck-2027-01`。反向連結（四篇既有越南文）在`2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。`tasks/BOARD.md` 不要提交。
