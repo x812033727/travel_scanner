@@ -39,7 +39,7 @@
           "type": "summary",
           "items": [
             "2026 年 9 月 18 日，微軟更新了 Windows 11 測試版的復原功能 Cloud rebuild，這項功能本身在 2026 年 7 月 6 日已於 Experimental 頻道推出，這次只在 Experimental 頻道的 Build 26340.9502 加了兩項能力，並非重新推出或已經對所有使用者開放。",
-            "微軟表示，新增的第一項是可以在重建過程中一併抹除裝置磁碟，WinRE 會多出 Remove files 與 Remove & sanitize files 兩個選項，但抹除是否成功要看儲存硬體支不支援、實作正不正確，Windows 沒辦法自行驗證結果。",
+            "微軟表示，新增的第一項是可以在重建過程中一併抹除裝置磁碟，WinRE 會多一個選擇：Remove files 與 Remove & sanitize files，但抹除是否成功要看儲存硬體支不支援、實作正不正確，Windows 沒辦法自行驗證結果。",
             "第二項新增是 IT 管理者可以透過 Recovery CSP 遠端設定並啟動 Cloud rebuild，並指定要重裝目前的 build 或另外指定的目標 build，不過官方文件寫明這項遠端能力目前只存在於 Windows Insider 預覽版。",
             "微軟的兩份官方文件都沒有寫出 Cloud rebuild 的正式上線時程、價格或版本限制，Recovery CSP 底下的 CloudRebuild 節點也僅限 Windows Insider 預覽版，本文查核日為 2026 年 9 月 20 日，之後如需引用請重新確認微軟頁面。"
           ]
@@ -51,11 +51,11 @@
         },
         {
           "type": "paragraph",
-          "text": "這則公告是微軟例行的 Insider 測試版公告，作者是 Stephen Lines，第一句話就寫明對象是 Beta 與 Experimental 兩個頻道，這兩個頻道當天的 build 分別是 Beta 的 26220.9492 與 Experimental 的 26340.9502。Cloud rebuild 的變更只掛在 Experimental：公告裡該段小標下方印著『Release channel: Experimental』，同一句話出現了三次。"
+          "text": "這則公告是微軟例行的 Insider 測試版公告，作者是 Stephen Lines，開頭就寫明對象是 Beta 與 Experimental 兩個頻道，這兩個頻道當天的 build 分別是 Beta 的 26220.9492 與 Experimental 的 26340.9502。Cloud rebuild 的變更只掛在 Experimental：公告裡該段小標下方印著『Release channel: Experimental』，整頁三個新功能小節各印一次。"
         },
         {
           "type": "paragraph",
-          "text": "這兩項新增現在只有裝了 Experimental 頻道這個 build 的 Windows Insider 看得到，不是所有 Windows 11 使用者都會拿到。版本說明頁寫得很白：測試版裡的功能有可能永遠不會正式推出，而且多數功能用 Controlled Feature Rollout 分批釋出，就算已裝了這個 build，也不保證馬上看得到這兩個新選項。"
+          "text": "這兩項新增現在只有裝了 Experimental 頻道這個 build 的 Windows Insider 看得到，不是所有 Windows 11 使用者都會拿到。版本說明頁寫得很白：測試版裡的功能有可能永遠不會正式推出，而且多數功能用 Controlled Feature Rollout 分批釋出，就算已裝了這個 build，也不保證馬上看得到這兩項能力。"
         },
         {
           "type": "paragraph",
@@ -72,7 +72,7 @@
         },
         {
           "type": "paragraph",
-          "text": "官方接著點出它和內建的『重設此電腦』不同：Cloud rebuild 會把目標系統映像和機器的驅動程式一起從 Windows Update 下載，所以裝置修好後就能完整運作，不需要 USB 安裝媒體、不需要自備映像檔，也不依賴目前已安裝系統的完整性——這三個『不需要』是官方文件的說法，不是本站判斷。"
+          "text": "官方接著點出它和內建的『重設此電腦』不同：Cloud rebuild 會把目標系統映像和機器的驅動程式一起從 Windows Update 下載，所以裝置修好後就能完整運作，不需要 USB 安裝媒體、不需要自備映像檔，也不依賴目前已安裝系統的完整性——最後這三點是官方文件的說法，不是本站判斷。"
         },
         {
           "type": "paragraph",
@@ -83,9 +83,9 @@
           "header": ["特點", "官方說法", "對讀者的意義"],
           "rows": [
             ["映像與驅動一起下載", "從 Windows Update 抓目標系統映像與裝置驅動程式", "不用另外找驅動程式"],
-            ["不需要 USB 安裝媒體", "官方表示不需要 USB 隨身碟", "不用另外準備開機碟"],
+            ["不需要 USB 安裝媒體", "官方表示不需要 USB 媒體", "不用另外準備開機碟"],
             ["不依賴現有系統的完整性", "官方表示不依賴目前已安裝系統的完整性", "作業系統本身有問題也能用"],
-            ["同時服務兩種對象", "說明文件開頭寫明是 IT 管理者與一般使用者", "公司與個人都適用"]
+            ["同時服務兩種對象", "說明文件開頭寫明是 IT 管理者與一般使用者", "公司與個人都是設計對象"]
           ],
           "caption": "整理自微軟 Cloud rebuild 說明文件，查核日 2026 年 9 月 20 日。"
         },
@@ -134,7 +134,7 @@
         },
         {
           "type": "paragraph",
-          "text": "對小公司的報修或交機流程來說，這兩項合起來的意義是：要回收或轉手的筆電，IT 不必實體拿到手上就能遠端觸發整個重裝——官方把這條路徑寫在『企業管理的裝置』這個前提底下。不過要不要連磁碟一起抹除，說明文件寫的是在 WinRE 裡選擇檔案清除程度的那一步決定；Recovery CSP 那一節列出來的，是能不能重建、要重建成哪個 build，以及查詢上一次遠端重建的結果。官方沒有說明遠端啟動需要哪一版 Intune、哪種授權，也沒有給出重建與抹除要花多久。"
+          "text": "對小公司的報修或交機流程來說，這一項的意義是：要回收或轉手的筆電，IT 不必實體拿到手上就能遠端觸發整個重裝——官方把這條路徑寫在『企業管理的裝置』這個前提底下。不過要不要連磁碟一起抹除，說明文件寫的是在 WinRE 裡選擇檔案清除程度的那一步決定；Recovery CSP 那一節列出來的，是能不能重建、要重建成哪個 build，以及查詢上一次遠端重建的結果。兩份文件都沒有說明遠端啟動需要哪一版 Intune、哪種授權，也沒有給出重建與抹除要花多久。"
         },
         {
           "type": "heading",
@@ -151,7 +151,7 @@
         },
         {
           "type": "paragraph",
-          "text": "官方列出的前提條件：裝置要是 Windows 11、且 WinRE 狀態健康；製造商要把相容的網路驅動放進 WinRE，機器在 WinRE 裡連得上網路；硬體要符合 Windows 11 最低需求。最容易卡關的是第二項——官方在排解『連不上網路』那個錯誤碼時寫明，WinRE 環境目前只支援 WPA-2 Personal 的 Wi-Fi，公司或宿舍常見的憑證式無線網路依此推斷連不上，只能改用有線；哪些機型的 WinRE 已內建這個驅動，兩份文件都沒列清單，實際能不能用要看那台機器本身。"
+          "text": "官方列出的前提條件：裝置要是 Windows 11、且 WinRE 狀態健康；製造商要把相容的網路驅動放進 WinRE，機器在 WinRE 裡連得上網路；硬體要符合 Windows 11 最低需求。最容易卡關的是第二項——官方在排解『連不上網路』那個錯誤碼時寫明，WinRE 環境目前只支援 WPA-2 Personal 的 Wi-Fi，公司或宿舍常見的憑證式無線網路依此推斷連不上，要改接有線或其他支援的無線網路；哪些機型的 WinRE 已內建這個驅動，兩份文件都沒列清單，實際能不能用要看那台機器本身。"
         },
         {
           "type": "faq",
@@ -170,11 +170,11 @@
             },
             {
               "question": "公司 IT 一定要用 Microsoft Intune 才能遠端觸發 Cloud rebuild 嗎？",
-              "answer": "不一定。官方文件的原文是『企業端點管理方案，例如 Microsoft Intune』，Intune 只是官方舉的例子，不是唯一途徑；重點是要透過 Recovery CSP 這個管理介面。不過這整個遠端啟動能力目前也只存在於 Windows Insider 預覽版——官方文件寫明 Recovery CSP 底下的 CloudRebuild 節點只有預覽版才有，正式推出前還可能改變，所以現階段還不能當作正式環境可以依賴的報修流程。"
+              "answer": "不一定。官方文件寫的是『企業端點管理方案，例如 Microsoft Intune』，Intune 只是官方舉的例子，不是唯一途徑；重點是要透過 Recovery CSP 這個管理介面。不過這整個遠端啟動能力目前也只存在於 Windows Insider 預覽版——官方文件寫明 Recovery CSP 底下的 CloudRebuild 節點只有預覽版才有，正式推出前還可能改變，所以現階段還不能當作正式環境可以依賴的報修流程。"
             },
             {
               "question": "這跟微軟先前發布的 Project Zenith 是同一件事嗎？",
-              "answer": "不是。Project Zenith 是微軟另一則公告的主題，講的是 Windows 開發機的規格門檻，本站另有一篇報導，連結放在文末。Cloud rebuild 是這次公告裡的系統復原功能，目前只在 Windows Insider 的 Experimental 頻道測試，跟裝置的記憶體規格沒有關係。兩者是微軟先後發布的不同公告，本文查核的四份來源都沒有提到 Project Zenith。"
+              "answer": "不是。Project Zenith 是微軟另一則公告的主題，講的是 Windows 開發機的規格門檻，本站另有一篇報導，連結放在文末。Cloud rebuild 是這次公告裡的系統復原功能，目前只在 Windows Insider 的 Experimental 頻道測試，跟那組規格門檻沒有關係。兩者是微軟先後發布的不同公告，本文查核的四份來源都沒有提到 Project Zenith。"
             }
           ]
         },

@@ -534,11 +534,111 @@
       "說明文件另有一個獨立的命令列抹除工具 DataSanitization.exe（跑完不會重裝 Windows，機器要另外裝回系統），文章沒有寫。這不是錯，是撰稿取捨；站主若要補一句，依據是 verified_facts 第 39、40 條。",
       "事件日若站主改採嚴格的台北換算（部落格 meta 與官方 RSS 都記 2026-09-18T17:02:07+00:00，換算台北是 09-19 凌晨 1 時 2 分），要同步改的只有 slug 後綴、news_date、正文第一段三處，本紀錄與本輪查核的所有事實都不受影響。"
     ],
-    "second_round": null,
+    "second_round": {
+      "checked_by": "independent factcheck agent（第二輪，未參與撰稿、研究與第一輪）",
+      "checked_on": "2026-09-20",
+      "method": "sources[] 四條在 2026-09-20 以 curl -sSL -A \"Mokaair-editorial\" 各重抓一次（請求的 UA、標頭、查詢字串與表單都沒有帶任何 email 或個人資料）。四條都是 HTTP 200、0 次轉址、body 是正文，位元組數與第一輪逐一相同：116,237／42,381／86,582／116,626，可視為這兩天頁面沒有改版。四頁各抽成兩種可見純文字（剝標籤不補空白＝瀏覽器實際渲染出來的字串；剝標籤補空白）再逐句對照。覆核範圍不是整篇重做：以第一輪改動過的十處與它新寫進去的每一句為主，再全篇回掃一次——title、description、正文 17 段拆成 56 個子句、summary 4 句、FAQ 5 題 18 個子句、callout 6 個子句、表格 12 格與 caption、圖解 caption、研究紀錄 diagram 四格與 hero_label、兩個結尾連結，合計 107 條。研究紀錄 50 條 verbatim_quote 全部以程式重跑連續字串比對（原始 HTML／剝標籤補空白／剝標籤不補空白三種形式），50 條全數命中，沒有一條含 … 或 | 的拼接引文，也沒有任何一條是把兩處接起來的。否定句以全文計數重驗：四頁 Zenith 各 0 次、Taiwan 各 0 次、price 各 0 次，正文 28120 命中 0 次（DELTA-4-6 指名不得引進的 26H1 那一頁本輪沒有抓）；s1 的 Release channel: Experimental 正好 3 次、s4 兩次；說明文件 general availability 2 次且兩次都接 before。界線重掃：topics 不帶 finance、只有一個一般 callout、沒有投資免責段落、沒有購買或升級建議、沒有推薦式比價、沒有操作步驟教學、沒有攻擊細節、微軟的效益宣稱都有歸因、沒有推定台灣可用、沒有任何台北時刻。本輪改 12 處（正文 7、summary 1、表格 2、FAQ 2），段落字數 2,964 → 2,971，仍在 3,000 以內；自檢不帶 --full 為 OK。",
+      "claims_checked": 107,
+      "changes": [
+        {
+          "where": "內容包 正文第 3 段（『微軟更新了什麼』第 1 段）",
+          "before": "作者是 Stephen Lines，第一句話就寫明對象是 Beta 與 Experimental 兩個頻道",
+          "after": "作者是 Stephen Lines，開頭就寫明對象是 Beta 與 Experimental 兩個頻道",
+          "why": "公告的第一句是招呼語，講頻道的是下一句；『第一句話』與版面對不上。改成不指定句次的『開頭』，事實不變。",
+          "source": "https://blogs.windows.com/windows-insider/2026/09/18/announcing-new-builds-for-18-september-2026/ — 『Hello Windows Insiders,』 之後才是 『Today, we’re releasing new Windows 11 Insider Preview builds to the Beta and Experimental channels.』"
+        },
+        {
+          "where": "內容包 正文第 3 段最後一句",
+          "before": "公告裡該段小標下方印著『Release channel: Experimental』，同一句話出現了三次。",
+          "after": "公告裡該段小標下方印著『Release channel: Experimental』，整頁三個新功能小節各印一次。",
+          "why": "原句緊接在『該段小標下方』後面，會被讀成 Cloud rebuild 那一節自己印了三次。本輪重數：整頁正好 3 次，分別掛在滑鼠指標、放大鏡、Cloud rebuild 三節底下（verified_facts 第 8 條也是這樣寫的）。點明是三個小節各一次，頻道限定的依據才站得住，也不會被誤讀成強調語氣。",
+          "source": "https://blogs.windows.com/windows-insider/2026/09/18/announcing-new-builds-for-18-september-2026/ — 『Release channel: Experimental』全頁 3 次"
+        },
+        {
+          "where": "內容包 正文第 4 段最後一句",
+          "before": "也不保證馬上看得到這兩個新選項。",
+          "after": "也不保證馬上看得到這兩項能力。",
+          "why": "『新選項』在同一篇裡另有所指（WinRE 的 Remove files／Remove & sanitize files），而四條來源沒有一頁說 Remove files 本身是這次才有的。這裡指的是 9/18 新增的兩項能力，照第 1 段的措辭統一寫成『兩項能力』。",
+          "source": "https://learn.microsoft.com/en-us/windows-insider/release-notes/experimental/preview-build-26340-9502 — 『We're updating Cloud rebuild, the recovery option that restores a Windows 11 PC to a clean, known-good state by performing a full OS reinstall, with two additions.』"
+        },
+        {
+          "where": "內容包 正文第 7 段（『Cloud rebuild 在解決什麼問題』第 2 段）",
+          "before": "這三個『不需要』是官方文件的說法，不是本站判斷。",
+          "after": "最後這三點是官方文件的說法，不是本站判斷。",
+          "why": "三項裡只有前兩項是『不需要』（USB 安裝媒體、自備映像檔），第三項的中文是『不依賴目前已安裝系統的完整性』，把它也叫成『不需要』並加引號，等於替官方造了一個它沒有的措辭。加上『最後』把指涉綁回那三項，也不會被讀成連前面的效益宣稱都算進去。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『…so the device comes back fully functional, without USB media, without a custom image, and without depending on the integrity of the installed operating system.』"
+        },
+        {
+          "where": "內容包 正文第 14 段第 1 句（第一輪刪掉『遠端設定要不要抹除』之後留下的接縫）——本輪最重的一處",
+          "before": "對小公司的報修或交機流程來說，這兩項合起來的意義是：要回收或轉手的筆電，IT 不必實體拿到手上就能遠端觸發整個重裝",
+          "after": "對小公司的報修或交機流程來說，這一項的意義是：要回收或轉手的筆電，IT 不必實體拿到手上就能遠端觸發整個重裝",
+          "why": "第一輪把事實改對了（來源沒有『遠端設定要不要抹除』這種能力），但句首的『這兩項合起來』留著沒動，整段因此自相矛盾：先說兩項合起來等於遠端觸發整個重裝，下一句又說抹除只能在 WinRE 現場那一步選。這一段在『新增之二』底下，講的就是遠端啟動那一項，改成『這一項』。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『Data sanitization is selected during the Cloud rebuild flow in the Windows Recovery Environment, at the point where you choose how thoroughly files are removed.』"
+        },
+        {
+          "where": "內容包 正文第 14 段最後一句",
+          "before": "官方沒有說明遠端啟動需要哪一版 Intune、哪種授權，也沒有給出重建與抹除要花多久。",
+          "after": "兩份文件都沒有說明遠端啟動需要哪一版 Intune、哪種授權，也沒有給出重建與抹除要花多久。",
+          "why": "『官方沒有說明』是範圍不明的否定句——微軟其他頁面說了什麼本文沒查，也不該替它下結論。同一節第 15、16 段用的都是『兩份文件都沒有…』，本句收斂到同一個範圍（本文引用的版本說明與說明文件、查核日 2026-09-20），與 not_said 第 4、5 條一致。",
+          "source": "not_said 第 4 條（四頁沒有價格、沒有寫需要哪一版 Intune／授權／SKU）與第 5 條（只有 might take longer、can take much longer，沒有任何時間數字）"
+        },
+        {
+          "where": "內容包 正文第 17 段（『現在還不知道的事』第 3 段）",
+          "before": "公司或宿舍常見的憑證式無線網路依此推斷連不上，只能改用有線",
+          "after": "公司或宿舍常見的憑證式無線網路依此推斷連不上，要改接有線或其他支援的無線網路",
+          "why": "協調者加的『依此推斷』只標了前半段是推論，後半段的『只能改用有線』等於在推論上再加一層排他，而來源反過來寫得很清楚：有線或一個可用的（WPA-2 Personal）無線網路兩條路都行，例如另接一個 WPA-2 Personal 的網路也可以。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『Ensure that the device has either an active Ethernet connection or an available Wi-Fi connection. At this time, only WPA-2 Personal Wi-Fi connections are supported in the WinRE environment.』"
+        },
+        {
+          "where": "內容包 summary 第 2 句",
+          "before": "WinRE 會多出 Remove files 與 Remove & sanitize files 兩個選項",
+          "after": "WinRE 會多一個選擇：Remove files 與 Remove & sanitize files",
+          "why": "兩個來源說的都是『現在可以在重建時順便抹除』（can now sanitize），沒有一頁說 Remove files 這個選項本身是新的；『多出…兩個選項』把沒查證的部分寫成事實。正文第 9 段寫的是『會多一個選擇』，summary 必須 ⊆ 正文，改成同一個說法。",
+          "source": "https://learn.microsoft.com/en-us/windows-insider/release-notes/experimental/preview-build-26340-9502 — 『Cloud rebuild can now sanitize the device's drives as part of the rebuild. When you start a rebuild in WinRE, choose Remove files if you're keeping the PC, or Remove & sanitize files before recycling, returning, or reassigning it.』"
+        },
+        {
+          "where": "內容包 表格第 2 列第 2 欄",
+          "before": "官方表示不需要 USB 隨身碟",
+          "after": "官方表示不需要 USB 媒體",
+          "why": "這一格掛著『官方表示』，就要貼著原文；原文是 without USB media，『隨身碟』把它縮成其中一種載體。caption 已寫明整張表整理自 Cloud rebuild 說明文件。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『without USB media, without a custom image』"
+        },
+        {
+          "where": "內容包 表格第 4 列第 3 欄",
+          "before": "公司與個人都適用",
+          "after": "公司與個人都是設計對象",
+          "why": "和第一輪在 FAQ 第 5 題修掉的是同一個毛病：『適用』等於說現在用得到，但這是標題掛 (Preview)、只在 Experimental 頻道 Build 26340.9502 的功能，踩到 must_not_write 第 1 條與 not_said 第 2 條（不得反過來寫成所有人都能用）。原文講的是這個功能服務的對象，改成『設計對象』只留對象、不含可用性。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『Cloud rebuild enables IT administrators and users to restore a Windows 11 PC to a clean, known-good state by performing a full operating system reinstall.』／『Cloud rebuild is in preview. Use it for evaluation on non-production devices only.』"
+        },
+        {
+          "where": "內容包 FAQ 第 5 題答句（第一輪改寫過的那一句）",
+          "before": "目前只在 Windows Insider 的 Experimental 頻道測試，跟裝置的記憶體規格沒有關係。",
+          "after": "目前只在 Windows Insider 的 Experimental 頻道測試，跟那組規格門檻沒有關係。",
+          "why": "第一輪改寫時保留了『跟裝置的記憶體規格沒有關係』這句全稱否定，但說明文件的前提條件第三條就是機器要符合 Windows 11 最低硬體需求，那組需求本身含記憶體，所以這句被來源推翻。原意是要和 Project Zenith 的開發機門檻切開，改成指回前一句的『規格門檻』就準確，也不必把 Zenith 的內容寫進來（must_not_write 第 15 條）。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『The device meets Windows 11 minimum hardware requirements.』"
+        },
+        {
+          "where": "內容包 FAQ 第 4 題答句",
+          "before": "官方文件的原文是『企業端點管理方案，例如 Microsoft Intune』",
+          "after": "官方文件寫的是『企業端點管理方案，例如 Microsoft Intune』",
+          "why": "引號裡是中文轉述，不是原文；把它稱為『原文』等於宣稱那串中文是逐字引用。語意（such as＝舉例不是唯一解，not_said 第 9 條）完全不動。",
+          "source": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/ — 『A Cloud rebuild can also be initiated remotely by an IT administrator through an enterprise endpoint management solution, such as Microsoft Intune, using the Recovery CSP.』"
+        }
+      ],
+      "open_questions": [
+        "verbatim_quote 的結論可以比第一輪講得更肯定：50 條全部是頁面上的連續字串，沒有一條用 … 或 | 拼接、也沒有一條跨兩個段落接起來。要注意的只有比對形式——第 1、46 條（published＋日期）與第 23、29、30、33、34、37、39、50 條（Learn 頁用 <strong> 標粗 UI 名稱、部落格用 &nbsp;）只在『剝標籤不補空白』的那一種形式裡連續，而那一種就是瀏覽器渲染出來的字串，空白正規化後完全吻合。因此本輪不改寫這幾條，也不需要改 sourcing_notes：它本來就寫明比對過三種形式並以剝標籤者為準；第一輪 open_questions 第 1 條說它『略微樂觀』這點可以收回。",
+        "來源自己不一致，本輪沒有動，留給站主知道：同一個內建功能在 Cloud rebuild 說明文件印的是 Reset your PC，在 7/6 公告印的是 Reset this PC（兩頁都在 sources[]，本輪各命中 1 次）。正文第 7 段與第二節小標用的『重設此電腦』對得上 7/6 那一頁，也是 Windows 繁中介面的名字，所以不算錯；但那一段的出處是掛在說明文件上的。若要嚴格對齊，把該句的出處改引 7/6 公告即可，不影響其他句子。",
+        "正文第 4 段『這兩項新增現在只有裝了 Experimental 頻道這個 build 的 Windows Insider 看得到』是排他句。來源撐得住的是『公告把這項變更標成 Release channel: Experimental、版本說明列在 Build 26340.9502』，『只有…看得到』是從那裡推出來的。editorial_brief 與 must_not_write 第 4 條都採這個寫法（且不得寫成 Beta 沒有），本輪保留並記下它是推論。",
+        "正文第 8 段『官方說明文件把這兩種啟動方式都寫在「Windows Insider 預覽版」這個前提底下』：原文的 In the Windows Insider preview release 文法上開在本機啟動那一句，遠端那一句是同段接著的 also；遠端那一半另有 Recovery/CloudRebuild nodes … Windows Insider Preview builds only 的 Note，全文開頭還有 Cloud rebuild is in preview 的 Important 方塊。三處合起來判定這句成立，本輪不改。",
+        "正文第 17 段『最容易卡關的是第二項』是編輯判斷，四條來源沒有這句話（研究紀錄 verified_facts 第 42 條也把它標成『台灣讀者最容易踩到的一條』）。保留，記下它不是官方說法。",
+        "協調者已裁決、本輪照辦不再重推：事件日維持 build 釋出日 2026-09-18（不換算 17:02Z、正文不寫任何台北時刻）；DataSanitization.exe 不補；26H1 Build 28120.3032 那一頁不引進（本輪沒有抓它，正文 28120 命中 0 次）。沒有其他需要回一手來源裁決的疑點。"
+      ]
+    },
     "coordinator_rulings": [
       "第 3 段「每週例行」去掉「每週」（公告小標 New builds this week 沒有明寫每週釋出）。",
       "第 17 段憑證式無線網路那句加「依此推斷」，標明是從「只支援 WPA-2 Personal」推出的編輯說明；verified_facts 第 44 條照舊。",
-      "DataSanitization.exe 不補；事件日維持 build 釋出日 2026-09-18（不換算 17:02Z）；3 條跨 span 的 verbatim_quote 由第二輪決定是否改寫成頁面實際形式。"
+      "DataSanitization.exe 不補；事件日維持 build 釋出日 2026-09-18（不換算 17:02Z）；3 條跨 span 的 verbatim_quote 由第二輪決定是否改寫成頁面實際形式。",
+      "第二輪後（2026-09-20）：「重設此電腦」對得上 7/6 公告與繁中介面，第 7 段出處不改；其餘 open_questions（第 4 段排他句、第 8 段前提範圍、「最容易卡關」為編輯判斷）維持現稿。"
     ]
   }
 }
