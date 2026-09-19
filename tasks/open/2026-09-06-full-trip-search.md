@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-full-trip-search
 title: 彈性日期區塊的價格標籤寫死 full_trip_search
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: claude-fable-5-1

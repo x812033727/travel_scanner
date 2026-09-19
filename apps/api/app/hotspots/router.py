@@ -1,14 +1,11 @@
-from datetime import date
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
-from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
@@ -31,7 +28,7 @@ from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import item_names
 from app.locations.coordinates import has_durable_coordinates
 from app.locations.map_identity import catalog_map_identities
-from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
+from app.models import HotspotPlaceProfile, TravelHotspot
 from app.problems import AppError
 from app.trips.hours import fresh_hours
 from app.trips.selections import SelectionPlace, TripSelectionRequest, place_trip_selection

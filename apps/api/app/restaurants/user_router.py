@@ -1,16 +1,12 @@
 from __future__ import annotations
 
-from datetime import date
 from decimal import Decimal
-from typing import Annotated, Literal, cast
-from uuid import UUID
+from typing import Annotated, cast
 
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel, Field
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.localized_names import item_names

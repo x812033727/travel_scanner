@@ -23,6 +23,10 @@ type CreatedTrip = { id: string };
 const lodgingModes = ["hotel", "vacation_rental", "both", "any"] as const;
 const paces = ["relaxed", "balanced", "packed"] as const;
 const routePreferences = ["FEWER_TRANSFERS", "FASTEST", "LESS_WALKING"] as const;
+// The same three airports the planning workbench offers, named from its catalog entries
+// so the two forms cannot drift apart.
+const originAirports = ["TPE", "TSA", "KHH"] as const;
+const originAirportLabels = { TPE: "originTpe", TSA: "originTsa", KHH: "originKhh" } as const;
 const MAX_TRIP_DAYS = 61;
 const DRAFT_STORAGE_KEY = "mokaair-new-trip-draft";
 // Stay inside the server's 24-hour cache window even with a slow connection.
@@ -31,7 +35,7 @@ const fieldClass = newTripFieldClass;
 
 type FormValues = NewTripTravelerValues & NewTripPreferenceValues & {
   name: string; destination_name: string; destination_place_id: string; destination_catalog_id: string;
-  start_date: string; end_date: string; notes: string;
+  start_date: string; end_date: string; origin_airport: string; notes: string;
 };
 type DraftSnapshot = {
   // Retain legacy fields so older drafts can be restored, but never restore AI mode.
@@ -95,6 +99,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
   const locale = useLocale();
   const t = useTranslations("newTrip");
   const catalog = useTranslations("search.catalog");
+  const workbench = useTranslations("search.workbench");
   const copy = newTripCopy(locale);
   // Both caps used to be invisible until the POST came back: the 20-trip limit as a
   // 403 after five sections of form, the remaining uses as a 402 after the search
@@ -123,7 +128,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [selectedShopThemes, setSelectedShopThemes] = useState<string[]>([]);
   const [form, setForm] = useState<FormValues>({
-    name: "", destination_name: "", destination_place_id: "", destination_catalog_id: "", start_date: "", end_date: "",
+    name: "", destination_name: "", destination_place_id: "", destination_catalog_id: "", start_date: "", end_date: "", origin_airport: "TPE",
     adults: "2", children: "0", rooms: "1", budget_twd: "", pace: "balanced", route_preference: "FEWER_TRANSFERS",
     nightly_min: "", nightly_max: "", hotel_min_rating: "", preferred_area: "", max_station_walk_minutes: "",
     min_review_score: "", min_review_count: "", breakfast_required: false, refundable_required: false, avoid_red_eye: true, notes: "",
@@ -136,6 +141,10 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
   const automaticName = automaticTripName(locale, destinationName, days);
   const tripName = (nameEdited ? form.name.trim() : "") || automaticName;
   const holidayMarkets = holidayCountriesFor(destinationName, locale, cities);
+  // The select offers only these three, but a draft is whatever storage returns. Anything
+  // else is left out of the request rather than sent: a code the API refuses would block
+  // the trip, and a trip without an airport is still accepted (/search asks for it then).
+  const originAirport = oneOf(originAirports, form.origin_airport) ? form.origin_airport : undefined;
 
   useEffect(() => { active.current = true; return () => { active.current = false; }; }, []);
   useEffect(() => {
@@ -169,6 +178,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
             if (typeof value !== typeof current[key]) continue;
             if (key === "pace" && !oneOf(paces, value)) continue;
             if (key === "route_preference" && !oneOf(routePreferences, value)) continue;
+            if (key === "origin_airport" && !oneOf(originAirports, value)) continue;
             (next as Record<string, string | boolean>)[key] = value;
           }
           if (!datesValid) { next.start_date = ""; next.end_date = ""; }
@@ -262,7 +272,7 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
         attempt = creationAttempt(JSON.stringify({
           source: "blank", planning_mode: "manual_blank", name: tripName,
           destination_name: destinationName, destination_place_id: form.destination_place_id || null,
-          start_date: form.start_date, end_date: form.end_date, route_preference: form.route_preference,
+          start_date: form.start_date, end_date: form.end_date, origin_airport: originAirport ?? null, route_preference: form.route_preference,
           routing: { auto_compute: false, default_travel_mode: "transit", default_buffer_minutes: 10 },
           travelers: { adults: Number(form.adults), children: Number(form.children), rooms: Number(form.rooms) },
           preferences: newTripPreferencesPayload(form, lodgingMode, selectedInterests, selectedShopThemes),
@@ -356,9 +366,14 @@ function NewTripFormForAccount({ accountId }: { accountId: string }) {
           </div>
         </details>
         <details open={travelersOpen} onToggle={(event) => setTravelersOpen(event.currentTarget.open)} className="calm-new-trip-travelers premium-new-trip-travelers mt-4">
-          <summary className="flex min-h-11 cursor-pointer items-center gap-3 text-sm"><Users size={18} /><span className="flex-1"><span className="block text-xs text-[var(--muted)]">{t("travelers.title")}</span><strong>{t("summary.travelers", { count: Number(form.adults) + Number(form.children), rooms: Number(form.rooms) })}</strong></span><ChevronDown size={16} /></summary>
+          <summary className="flex min-h-11 cursor-pointer items-center gap-3 text-sm"><Users size={18} /><span className="flex-1"><span className="block text-xs text-[var(--muted)]">{t("travelers.title")}</span><strong>{t("summary.travelers", { count: Number(form.adults) + Number(form.children), rooms: Number(form.rooms) })}</strong>{originAirport && <span className="ml-2 text-xs text-[var(--muted)]">{workbench(originAirportLabels[originAirport])}</span>}</span><ChevronDown size={16} /></summary>
           <p className="mb-3 mt-1 text-xs text-[var(--muted)]">{copy.travelersHelp}</p>
           <NewTripTravelerFields values={form} onChange={update} />
+          <label htmlFor="trip-origin-airport" className="mt-4 block text-sm font-semibold">{t("travelers.origin")}</label>
+          <select id="trip-origin-airport" value={form.origin_airport} onChange={(event) => update("origin_airport", event.target.value)} aria-describedby="trip-origin-airport-help" className={fieldClass}>
+            {originAirports.map((code) => <option key={code} value={code}>{workbench(originAirportLabels[code])}</option>)}
+          </select>
+          <p id="trip-origin-airport-help" className="mt-2 text-xs text-[var(--muted)]">{t("travelers.originHelp")}</p>
         </details>
         <details open={advancedOpen} onToggle={(event) => setAdvancedOpen(event.currentTarget.open)} className="premium-new-trip-advanced mt-6 border-t border-[var(--line)] pt-5">
           <summary className="min-h-11 cursor-pointer text-sm font-semibold"><SlidersHorizontal size={16} className="mr-2 inline-block" />{copy.advanced}</summary>

@@ -185,9 +185,7 @@ def _fill_meal_card(
         raise AppError(422, "trip_meal_slot_unavailable", "這一天沒有可設定的餐食卡")
     if meal_slot_occupied(card) and not request.overwrite:
         raise AppError(
-            409,
-            "meal_slot_occupied",
-            "這一餐已經有你選的店家；要換成這個地點，請在確認後帶 overwrite 重送",
+            409, "meal_slot_occupied", "這一餐已經有你選好的店家，確認要換掉再送出一次。"
         )
     # Everything about *when* stays — system_role, position, start and end time,
     # duration, fixed_time, locked — and so do the traveller's notes. Only *where*
