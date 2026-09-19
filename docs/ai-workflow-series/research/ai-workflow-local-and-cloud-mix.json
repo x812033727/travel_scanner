@@ -254,7 +254,7 @@
     {
       "label": "hybrid_client.py：用 base_url 切換本機與雲端（pip install openai）",
       "language": "python",
-      "lines": 43,
+      "lines": 49,
       "compiled_on": "2026-09-19",
       "checked_against": [
         "https://docs.ollama.com/api/openai-compatibility",
@@ -263,9 +263,9 @@
       ]
     },
     {
-      "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client）",
+      "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client 與 ensure_local_tag）",
       "language": "python",
-      "lines": 24,
+      "lines": 25,
       "compiled_on": "2026-09-19",
       "checked_against": [
         "https://docs.ollama.com/api/openai-compatibility",
