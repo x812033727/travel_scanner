@@ -414,9 +414,9 @@ async def test_planner_suggestions_and_placeholders_are_replaced_without_asking(
 
 
 async def test_wrong_day_and_stale_version_keep_their_own_answers(harness: Harness) -> None:
+    lunch = harness.body("hotspot", mode="replace_meal", meal="lunch")
     outside = await harness.client.post(
-        harness.path("hotspot"),
-        json={**harness.body("hotspot", mode="replace_meal", meal="lunch"), "day_date": "2027-03-20"},
+        harness.path("hotspot"), json={**lunch, "day_date": "2027-03-20"}
     )
     assert outside.status_code == 422
     assert outside.json()["code"] == "itinerary_date_out_of_range"
