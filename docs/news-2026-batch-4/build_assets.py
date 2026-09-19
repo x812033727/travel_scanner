@@ -925,6 +925,172 @@ def _app_store_bundles_multiseat(accent: str) -> str:
     return b + circle(1110, 600, 60, PALE, accent) + circle(1110, 600, 20, accent, "none")
 
 
+# --- batch 4.6: the news since 2026-09-18 ---------------------------------------------------
+
+
+def _anthropic_accenture_evaluation(accent: str) -> str:
+    # A dashed report on the left with a question mark above it -- no standard set yet -- and
+    # two equal circles on the right, each wired to the report: the two companies funding it.
+    other = second_colour(accent)
+    b = sheet(250, 330, 300, 360, accent, rows=6, broken=True)
+    b += f'<path d="M351 222 q0 -42 49 -42 q49 0 49 39 q0 25 -28 39 q-21 11 -21 28" fill="none" stroke="{INK}" stroke-width="12" stroke-linecap="round"/>' + circle(400, 310, 9, INK, "none")
+    b += circle(1150, 340, 90, "#FFFFFF", other) + line(1060, 340, 560, 375, other, 10)
+    b += circle(1150, 590, 90, "#FFFFFF", accent) + line(1060, 590, 560, 610, accent, 10)
+    return b
+
+
+def _openai_australia_youth_safety(accent: str) -> str:
+    # An open document at the centre; a solid landmark on the right with a pushpin fixed to it,
+    # a paler dashed landmark on the left, and a dashed line joining the two -- one place already
+    # pinned down, the other still only sketched in.
+    other = second_colour(accent)
+    b = f'<path d="M330 370 L430 482 L430 650 L230 650 L230 482 Z" fill="none" stroke="{other}" stroke-width="8" stroke-linejoin="round" stroke-dasharray="16 12"/>'
+    b += f'<path d="M1300 310 L1410 446 L1410 650 L1190 650 L1190 446 Z" fill="{PALE}" stroke="{accent}" stroke-width="8" stroke-linejoin="round"/>'
+    b += circle(1300, 360, 20, "#FFFFFF", INK) + line(1300, 380, 1300, 415, INK, 8)
+    b += dashed(430, 650, 1190, 650, other, 10)
+    b += sheet(650, 225, 300, 340, accent, rows=6)
+    return b
+
+
+def _gemini_notebook_study_tools(accent: str) -> str:
+    # An open notebook at the centre with four doors around it, each fitted with its own kind of
+    # lock -- the different conditions a company, a school, a personal and an EEA account each
+    # open this under; the fourth door's frame stays dashed for the one still unsettled.
+    other = second_colour(accent)
+    b = rect(130, 190, 210, 240, "#FFFFFF", accent, 24) + padlock(235, 290, 0.8, accent)
+    b += rect(1260, 190, 210, 240, "#FFFFFF", other, 24) + lock(1295, 250)
+    b += rect(130, 500, 210, 210, "#FFFFFF", accent, 24) + key(150, 600, accent)
+    b += f'<rect x="1260" y="500" width="210" height="210" rx="24" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="20 14"/>' + padlock(1365, 585, 0.8, other)
+    b += rect(630, 330, 170, 280, "#FFFFFF", accent, 20) + rect(800, 330, 170, 280, "#FFFFFF", accent, 20) + line(800, 330, 800, 610, accent, 6)
+    b += "".join(line(660, 390 + i * 50, 780, 390 + i * 50, "#C4CCCC", 10) for i in range(3))
+    b += "".join(line(830, 390 + i * 50, 950, 390 + i * 50, "#C4CCCC", 10) for i in range(3))
+    return b
+
+
+def _kimi_k3_bedrock(accent: str) -> str:
+    # A hexagon node on the left where a request is sent, splitting into two dashed paths on the
+    # right: one to a globe -- the broad commercial region -- the other to a bounded square, the
+    # restricted geography a profile can keep it inside.
+    other = second_colour(accent)
+    b = hexagon(310, 450, 110, accent, "#FFFFFF") + circle(310, 450, 30, PALE, accent)
+    b += dashed(420, 420, 1130, 315, other, 10) + dashed(420, 480, 1130, 610, accent, 10)
+    b += circle(1250, 315, 130, "#FFFFFF", other) + f'<ellipse cx="1250" cy="315" rx="52" ry="130" fill="none" stroke="{other}" stroke-width="6"/>' + line(1120, 315, 1380, 315, other, 6)
+    b += rect(1130, 520, 240, 190, "#FFFFFF", accent, 20)
+    return b
+
+
+def _npm_stage_only_tokens(accent: str) -> str:
+    # A key held inside a dashed box -- staged, waiting for review -- an arrow to a shield with a
+    # tick for the two-factor approval, and a second arrow on to a cloud with an upward arrow:
+    # only after approval does it actually publish.
+    other = second_colour(accent)
+    b = outline(175, 320, 270, 220, other) + key(235, 420, accent)
+    b += arrow(470, 660, 430, accent)
+    b += ward(800, 430, 1.0, accent)
+    b += f'<path d="M{800 - 90 * 0.45} 430 l{90 * 0.33} {90 * 0.36} l{90 * 0.65} {-90 * 0.77}" stroke="{other}" fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += arrow(900, 1080, 430, accent)
+    b += circle(1225, 400, 50, "#FFFFFF", other) + circle(1270, 350, 65, "#FFFFFF", other) + circle(1320, 405, 48, "#FFFFFF", other) + rect(1185, 395, 170, 60, "#FFFFFF", other, 30)
+    b += line(1270, 640, 1270, 480, accent, 14) + f'<path d="M1240 510 L1270 468 L1300 510" fill="none" stroke="{accent}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>'
+    return b
+
+
+def _cisa_kev_linux_kernel(accent: str) -> str:
+    # A gear at the centre for the kernel, wired out to three plain outlines -- a phone, a square
+    # chassis, a router with its antennas -- and above it a curved arrow climbing from an open
+    # question to a tick: check for the update. No brand, no real silhouette.
+    other = second_colour(accent)
+    b = phone(180, 300, 170, 320, other) + line(350, 460, 700, 450, other, 8)
+    b += rect(705, 600, 190, 110, "#FFFFFF", accent, 16) + line(800, 541, 800, 600, accent, 8)
+    b += rect(1200, 380, 150, 90, "#FFFFFF", other, 14)
+    b += line(1240, 380, 1225, 320, other, 8) + circle(1225, 315, 8, other, "none")
+    b += line(1310, 380, 1325, 320, other, 8) + circle(1325, 315, 8, other, "none")
+    b += line(920, 430, 1200, 410, other, 8)
+    b += gear(800, 430, 85, accent)
+    b += curve(760, 300, 950, 150, 1128, 233, accent, 10)
+    b += f'<path d="M1100 212 L1134 233 L1104 258" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += pending(1210, 233, 26, other) + line(1236, 233, 1280, 233, "#C4CCCC", 8) + tick(1320, 233, 40, accent)
+    return b
+
+
+def _windows_cloud_rebuild(accent: str) -> str:
+    # A desktop monitor on the left with a cloud and a downward arrow on its screen -- reinstall
+    # pulled from the cloud -- and on the right a square disk crossed by a diagonal for erase,
+    # with a signal arrow reaching right underneath it for the remote start command.
+    other = second_colour(accent)
+    b = monitor(200, 270, 520, 340)
+    b += circle(420, 415, 40, "#FFFFFF", accent) + circle(460, 380, 50, "#FFFFFF", accent) + circle(505, 418, 38, "#FFFFFF", accent) + rect(390, 410, 140, 48, "#FFFFFF", accent, 24)
+    b += line(460, 478, 460, 555, accent, 12) + f'<path d="M430 530 L460 565 L490 530" fill="none" stroke="{accent}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += rect(1150, 240, 220, 220, "#FFFFFF", other, 20) + line(1150, 240, 1370, 460, other, 10)
+    b += f'<path d="M1080 500 A60 60 0 0 1 1080 620" fill="none" stroke="{other}" stroke-width="8" stroke-linecap="round"/>'
+    b += f'<path d="M1055 530 A30 30 0 0 1 1055 590" fill="none" stroke="{other}" stroke-width="8" stroke-linecap="round"/>'
+    b += arrow(1120, 1400, 560, other, 12)
+    return b
+
+
+def _iphone_duo_dev_resources(accent: str) -> str:
+    # A plain tool icon on the left, a large rectangle in the centre split by a dashed line for
+    # the fold, and four boxes on the right each holding one plain mark -- code, a brush, a
+    # document, a person -- the four kinds of developer resource. No body shape, no logo.
+    other = second_colour(accent)
+    b = rect(250, 280, 140, 340, "#FFFFFF", accent, 24) + circle(320, 660, 32, "#FFFFFF", accent) + line(285, 350, 355, 350, "#C4CCCC", 10) + line(285, 410, 355, 410, "#C4CCCC", 10)
+    b += rect(600, 220, 450, 420, "#FFFFFF", accent, 30) + rect(625, 250, 190, 360, PALE, "none", 18) + rect(835, 250, 190, 360, PALE, "none", 18)
+    b += dashed(825, 220, 825, 640, other, 8) + circle(825, 220, 15, accent, "none") + circle(825, 640, 15, accent, "none")
+    b += rect(1100, 200, 170, 250, "#FFFFFF", other, 16)
+    b += f'<path d="M1165 295 L1150 325 L1165 355" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += f'<path d="M1205 295 L1220 325 L1205 355" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += rect(1300, 200, 170, 250, "#FFFFFF", other, 16) + line(1330, 255, 1420, 340, accent, 12) + circle(1420, 340, 12, accent, "none")
+    b += rect(1100, 480, 170, 220, "#FFFFFF", other, 16) + rect(1140, 520, 90, 60, "#FFFFFF", accent, 8) + line(1150, 540, 1220, 540, "#C4CCCC", 8) + line(1150, 558, 1210, 558, "#C4CCCC", 8)
+    b += rect(1300, 480, 170, 220, "#FFFFFF", other, 16) + person(1385, 550, accent)
+    return b
+
+
+def _occ_three_trust_charters(accent: str) -> str:
+    # Three round approval stamps, one on each document; two of the three also stand behind a
+    # dashed fence -- approval alone still leaves paperwork before a charter can actually open.
+    other = second_colour(accent)
+    xs = (200, 610, 1020)
+    b = ""
+    for i, x in enumerate(xs):
+        colour = accent if i % 2 == 0 else other
+        b += sheet(x, 250, 220, 370, colour, rows=6)
+        b += circle(x + 165, 320, 50, "#FFFFFF", accent) + circle(x + 165, 320, 22, accent, "none")
+        if i:
+            rail_y = 660
+            b += dashed(x, rail_y, x + 220, rail_y, other, 10)
+            b += "".join(dashed(x + 10 + j * 45, rail_y, x + 10 + j * 45, rail_y + 55, other, 8) for j in range(5))
+    return b
+
+
+def _eba_third_party_risk(accent: str) -> str:
+    # Four panels: a block drawn inside a large circle for the issuer named as an addressee; a
+    # block left outside the circle with its own branch line for the service provider under a
+    # different statute; two overlapping frames for the ICT and non-ICT split of outsourcing;
+    # and a timeline ending in an empty bracket for the date nobody has set.
+    other = second_colour(accent)
+    b = rect(130, 200, 600, 260, "#FFFFFF", accent, 24) + circle(430, 330, 110, "#FFFFFF", other) + rect(390, 290, 80, 80, "#FFFFFF", accent, 14)
+    b += rect(860, 200, 600, 260, "#FFFFFF", other, 24) + circle(970, 330, 100, "#FFFFFF", other) + rect(1180, 290, 80, 80, "#FFFFFF", accent, 14)
+    b += line(1220, 290, 1220, 240, accent, 8) + circle(1220, 225, 14, accent, "none")
+    b += rect(130, 490, 600, 220, "#FFFFFF", other, 24) + rect(300, 530, 170, 130, "#FFFFFF", accent, 16) + rect(390, 570, 170, 130, "#FFFFFF", other, 16)
+    b += rect(860, 490, 600, 220, "#FFFFFF", accent, 24) + line(920, 600, 1340, 600, "#C4CCCC", 8) + circle(920, 600, 14, other, "none")
+    b += line(1340, 560, 1340, 640, accent, 10) + line(1340, 560, 1358, 560, accent, 10) + line(1340, 640, 1358, 640, accent, 10)
+    b += line(1440, 560, 1440, 640, accent, 10) + line(1440, 560, 1422, 560, accent, 10) + line(1440, 640, 1422, 640, accent, 10)
+    return b
+
+
+def _sec_crypto_fraud_patterns(accent: str) -> str:
+    # A cluster of coins on the left for money raised as a "liquidity pool", a dashed square on
+    # the right for a fake trading platform, and an arrow from each converging on one warning
+    # sign in the middle: two different wrappers, the same harm to an investor.
+    other = second_colour(accent)
+    b = coin(260, 470, 72, accent) + coin(330, 420, 72, other) + coin(220, 400, 72, accent)
+    b += arrow(420, 690, 450, accent)
+    b += f'<rect x="1170" y="290" width="260" height="260" rx="28" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="22 16"/>'
+    b += "".join(line(1210, 350 + i * 50, 1390 - (i % 2) * 40, 350 + i * 50, "#C4CCCC", 10) for i in range(3))
+    b += f'<path d="M1170 450 L916 450" fill="none" stroke="{other}" stroke-width="12" stroke-linecap="round"/>' + f'<path d="M946 420 L910 450 L946 480" fill="none" stroke="{other}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += warning(800, 430, 100)
+    return b
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -981,6 +1147,18 @@ _DRAWINGS = {
     "ai-news-anthropic-pace-metrics-20260917": _anthropic_pace_metrics,
     "ai-news-openai-misalignment-reports-20260917": _openai_misalignment_reports,
     "tech-news-app-store-bundles-multiseat-20260916": _app_store_bundles_multiseat,
+    # 4.6
+    "ai-news-anthropic-accenture-evaluation-20260918": _anthropic_accenture_evaluation,
+    "ai-news-openai-australia-youth-safety-20260918": _openai_australia_youth_safety,
+    "ai-news-gemini-notebook-study-tools-20260918": _gemini_notebook_study_tools,
+    "ai-news-kimi-k3-bedrock-20260918": _kimi_k3_bedrock,
+    "tech-news-npm-stage-only-tokens-20260918": _npm_stage_only_tokens,
+    "tech-news-cisa-kev-linux-kernel-20260918": _cisa_kev_linux_kernel,
+    "tech-news-windows-cloud-rebuild-20260918": _windows_cloud_rebuild,
+    "tech-news-iphone-duo-dev-resources-20260918": _iphone_duo_dev_resources,
+    "crypto-news-occ-three-trust-charters-20260918": _occ_three_trust_charters,
+    "crypto-news-eba-third-party-risk-20260918": _eba_third_party_risk,
+    "crypto-news-sec-crypto-fraud-patterns-20260918": _sec_crypto_fraud_patterns,
 }
 
 
