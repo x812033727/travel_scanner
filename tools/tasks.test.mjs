@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { parseTask, renderBoard, runCommand, selectReady, serializeTask, slugify, validate } from "./tasks.mjs";
+import { parseTask, removeArchivedCopy, renderBoard, runCommand, selectReady, serializeTask, slugify, validate } from "./tasks.mjs";
 
 const AT = (iso) => new Date(iso);
 
@@ -297,4 +297,50 @@ test("an empty backlog says so instead of blaming another agent", () => {
   assert.match(run(root, ["next"]).lines[1], /another agent is changing/);
   assert.equal(run(root, ["list", "--owner", "claude-a"]).lines.length, 1);
   assert.deepEqual(run(root, ["list", "--owner", "gpt-b"]).lines, ["No task matches."]);
+});
+
+test("done refuses to report success while the open copy is still there", () => {
+  const calls = [];
+  const message = removeArchivedCopy("/repo/tasks/open/2026-09-05-x.md", {
+    remove: () => {
+      const error = new Error("busy");
+      error.code = "EBUSY";
+      throw error;
+    },
+    exists: () => true,
+    sleep: (ms) => calls.push(ms),
+  });
+  assert.match(message, /tasks\/open\/2026-09-05-x\.md is still there/);
+  assert.match(message, /\(EBUSY\)/);
+  assert.match(message, /tasks\/done\/ already has the finished task/);
+  assert.deepEqual(calls, [50, 100, 200, 400, 800]);
+  // A deletion that "succeeds" while the file stays visible (a handle held elsewhere, a
+  // sync client putting it back) is the same failure.
+  assert.match(removeArchivedCopy("/repo/tasks/open/y.md", { remove: () => {}, exists: () => true, sleep: () => {} }), /still there/);
+  // Gone on the second look: the command is allowed to say "moved".
+  let looks = 0;
+  assert.equal(removeArchivedCopy("/repo/tasks/open/z.md", { remove: () => {}, exists: () => (looks += 1) < 2, sleep: () => {} }), null);
+});
+
+test("done deletes the file it read and leaves exactly one copy behind", () => {
+  const root = workspace();
+  run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
+  run(root, ["claim", "2026-09-05-alert-list", "--owner", "claude-a"]);
+  const finished = run(root, ["done", "2026-09-05-alert-list"], "2026-09-05T18:00:00Z");
+  assert.equal(finished.code, 0);
+  assert.equal(existsSync(path.join(root, "tasks", "open", "2026-09-05-alert-list.md")), false);
+  assert.equal(existsSync(path.join(root, "tasks", "done", "2026-09-05-alert-list.md")), true);
+  assert.equal(run(root, ["check"]).code, 0);
+});
+
+test("check names the leftover open copy of a finished task", () => {
+  const root = workspace();
+  run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
+  const open = file(root, "open", "2026-09-05-alert-list.md");
+  run(root, ["done", "2026-09-05-alert-list"], "2026-09-05T18:00:00Z");
+  writeFileSync(path.join(root, "tasks", "open", "2026-09-05-alert-list.md"), open);
+  const result = run(root, ["check"]);
+  assert.equal(result.code, 1);
+  assert.match(result.lines.join("\n"), /already used by tasks\/open\/2026-09-05-alert-list\.md; the open copy is what an interrupted 'done' leaves behind/);
+  assert.match(result.lines.join("\n"), /delete tasks\/open\/2026-09-05-alert-list\.md by hand/);
 });
