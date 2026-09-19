@@ -341,6 +341,56 @@
         "label": "eval_compare.py：離線評測集跑分與版本比較（純標準函式庫）",
         "result": "ok"
       }
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent（未參與撰稿，也未參與第一輪）",
+      "checked_on": "2026-09-19",
+      "method": "七條 sources 全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（7/7 HTTP 200、皆為正文，不是空殼或攔截頁）；重點覆核第一輪改動過的每一段與新寫進去的每一句，逐句回貼來源原文；31 條 verbatim_quote 改用「行內標籤不插空白、區塊標籤換行」的還原式去標籤器做連續字串比對（第一輪那種一律以空白取代標籤的做法會在 <code> 邊界製造假的不符）；OpenTelemetry 屬性登錄檔以程式重新解析主屬性表逐列計數；兩個 code 區塊重新抽到暫存目錄 py_compile 並離線實跑兩次；hashlib／json／time／pathlib／stdtypes 五個模組頁今天重抓，逐一比對範例用到的簽名與關鍵字參數；任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料。",
+      "claims_checked": 126,
+      "claims_checked_breakdown": "正文 47 句／子句、summary 4 句、清單 6 項、FAQ 6 題答句、callout 標題與句 3、表格 21 格（含表頭）、表格與圖解 caption 2、title 與 description 2、圖解 nodes 4，外加研究紀錄 31 條 verbatim_quote；程式範例另比對 185 個相異識別字（共 424 次出現）。",
+      "reproduced_from_round_one": [
+        "屬性登錄檔主表逐列重新解析：72 列資料列，全部 gen_ai. 開頭、鍵值不重複，Stability 欄位 72 列全是 Development、Stable 0 列；表中沒有任何含 latency／duration／hash 的鍵，唯一與時間有關的是 gen_ai.response.time_to_first_chunk。第一輪的 72 與「0 個 Stable」完全可重現。",
+        "eval_compare.py 連跑兩次都輸出 {'score_a': 0.75, 'score_b': 0.5, 'regressions': ['ascii-upper', 'digits']}；逐題對照：A 通過 ascii-upper／empty／digits 三題、B 通過 zh-tag／empty 兩題，zh-tag 由不通過變通過、ascii-upper 與 digits 由通過變失敗。正文「A 通過三題、B 通過兩題」「退步兩題」與實跑一致。",
+        "tracer.py 實跑印出一行 JSON：{\"ts\": …, \"step\": \"summarize\", \"model\": \"claude-sonnet-5\", \"input_hash\": \"556085367d642148\", \"input_tokens_est\": 25, \"output_tokens_est\": 5, \"latency_ms\": 0.0, \"status\": \"ok\"}；再跑一次確認是附加而非覆寫，與正文「一行一筆、接在檔尾」相符。",
+        "31 條 verbatim_quote 全部通過連續字串比對（第一輪的 30 條加上本輪新增的頁面標題那一條）；每條都綁回它自己的 url，且 31 條的 url 全在 sources[] 內。",
+        "code_samples 的 lines（64、43）與內容包一致：檢查器用 code.count(\"\\n\") + 1 計算，本輪重算後數字未變。"
+      ],
+      "edits": [
+        "正文第五節第一段：原「現在那一頁的標題已經改成 Moved」改成照頁面用語的「現在那一頁的標題是 Moved: Generative AI semantic conventions」（該頁 <title> 為「Moved: Generative AI semantic conventions | OpenTelemetry」、<h1> 為同一句去掉站名）；同段補上本文實際讀的是搬過去之後哪兩頁——「連過去的是 open-telemetry 底下的 semantic-conventions-genai；本文實際讀的就是該儲存庫 main 分支 docs 目錄裡的兩份檔案：屬性登錄檔與 GenAI spans 頁」，把 sources 第 4、5 條與這段搬遷敘述接起來（原本只說「搬過去的屬性登錄檔」，沒有交代讀的是哪一頁，spans 頁也沒有落點）。",
+        "eval_compare.py 的 pipeline_b 註解：原「regresses the ASCII case」（單數）與第一輪已改正的正文「ascii-upper 與 digits 兩題」不一致，改成「regresses the two ASCII cases」。行數不變（43），py_compile 通過、輸出不變。",
+        "研究紀錄新增一條 verified_fact：頁面標題以 <title> 原文「Moved: Generative AI semantic conventions | OpenTelemetry」為 verbatim_quote，替正文新引的標題句提供一手依據（原本第 8 條的引文只涵蓋搬遷句，不涵蓋標題）。",
+        "研究紀錄 must_not_write 新增兩條：一條把「pipeline_b 註解要維持複數」寫進擋翻譯回退的清單，一條規定談搬遷時必須寫出頁面標題原文並交代本文實際讀的是搬遷後的哪兩頁。"
+      ],
+      "checked_and_correct": [
+        "checked_on 一致性：內容包七條 source、研究紀錄頂層與 code_samples.compiled_on 全部是 2026-09-19；表格 caption、圖解 caption 與正文第二段的「2026 年 9 月查證」屬年月層級，與 2026-09-19 相容。本輪沒有依今天的頁面改動任何數字，因此依規格未動任何 checked_on。",
+        "第一輪動到骨幹的兩處覆核後成立：範例輸出段逐題對得上實跑；Anthropic 那一段壓縮後仍保有歸屬（「Anthropic 的文件」）與但書（「遇到需要較少規則式判斷的複雜情況就不夠細緻」），extremely scalable 譯成「極易擴大規模」、high quality 譯成「品質高」都沒有升級成最高級，Exact match: output == golden_answer 確實列在該頁 Code-based grading 底下。",
+        "沒有為了字數刪掉但書、限定詞或歸因：72 這個數字出現的四處（summary 第 4 句、正文第五節第一、二段、FAQ 第 6 題）都帶「本文查證當天」；表格兩格的否定句都限縮成「那 72 個屬性裡」；範例段仍保有「只是示意」「固定案例只有四題」「數量也要夠多，結論才站得住」。",
+        "summary ⊆ 正文、FAQ 答案 ⊆ 正文、圖解四格無數字；檢查器的 summary 數字與 diagram 數字比對都通過。",
+        "界線：只有一個 warning callout、沒有免責段落；沒有訂閱、購買、升級或投資建議；沒有價格、額度、速率限制與未實測的排名；廠商宣稱全部有歸屬；沒有寫「台灣可用」；結尾兩個 link 的 text 分別逐字等於目錄篇標題與 ai-term-evals 的 zh-TW title。",
+        "與必連三篇無矛盾、無整段重講：ai-term-evals 確實用一節加一表比較程式／人類／模型評分（本篇只寫自己用到的程式評分）；ai-term-agentops 確實把「只監測最後一句回答或模型 API 是否成功，往往不夠」與工具實際結果分開講；claude-code-workflow-evaluation-cost 確實用固定案例與原始紀錄比較。三篇在正文裡被點名時用的都是它們現在的 zh-TW title。",
+        "系列兄弟篇 ai-workflow-cost-quality-latency、ai-workflow-cross-review-judge、ai-workflow-failures-and-guardrails 在本篇正文完全沒有被點名，因此沒有舊標題殘留的問題。",
+        "logging 那一段成立：info(msg, *args, **kwargs) 頁面寫「The arguments are interpreted as for debug().」，而 debug() 底下寫 extra 是第四個關鍵字參數；addHandler 的說明是「Adds the specified handler hdlr to this logger.」；正文「本文的範例不依賴 logging，直接開檔案寫入」與 tracer.py 一致（沒有 import logging）。",
+        "範例的安全性：兩塊都沒有字面金鑰、<YOUR_KEY> 佔位、eval( 或刪檔命令，也沒有任何網路呼叫；唯一的模型 id claude-sonnet-5 在 models-seen.json 內，本輪沒有新增任何模型 id。",
+        "stdlib 簽名今天重新逐一比對：hashlib.sha256() 與 hash.hexdigest()、json.dumps(obj, *, skipkeys=False, ensure_ascii=True, …, default=None, sort_keys=False, …)、time.perf_counter() 與 time.time()、Path.open(mode='r', buffering=-1, encoding=None, …) 與 Path.read_text(encoding=None, …)、str.isascii()（「Return True if the string is empty or all characters in the string are ASCII」，正是 empty 那題兩版都通過的原因）與 str.upper()，全部與範例的拼法與關鍵字參數相符。"
+      ],
+      "left_for_the_owner": [
+        "callout「只看總分會蓋住退步的題目」與 ai-term-evals「整體表現提高，可能同時伴隨少見但重要的請假條件退步」概念仍然相近。本輪同意第一輪的判定：可留（它綁的是本篇程式印出的 regressions 清單，不是評測案例設計方法論，而且是全篇唯一的 callout）。這一條連續兩輪都留給站主，站主若要收掉，最小改法是把 callout 改寫成只講 eval_compare.py 的輸出怎麼讀。",
+        "sources 維持第一輪的七條（含新增的 functools 頁）。本輪覆核後同意保留：functools.wraps 是追蹤器的核心機制，正文那句括號引的就是 functools 頁的原文；logging 頁雖然是範例刻意不用的模組，但正文那一段有四條引文撐著。",
+        "OpenTelemetry GenAI 語意慣例的 72 個屬性與「全部 Development」隨時可能變。本輪重數仍是 72／全部 Development／0 個 Stable，正文、summary 與 FAQ 都寫成「本文查證當天」；日後重查若數字不同，是規格變了，不是本文寫錯，不要把限定詞拿掉改寫成通則。"
+      ],
+      "code_recompiled": [
+        {
+          "label": "tracer.py：JSONL 追蹤裝飾器（純標準函式庫）",
+          "result": "ok",
+          "ran_offline": "印出一行 JSON 紀錄，第二次執行附加成第二行"
+        },
+        {
+          "label": "eval_compare.py：離線評測集跑分與版本比較（純標準函式庫）",
+          "result": "ok",
+          "ran_offline": "{'score_a': 0.75, 'score_b': 0.5, 'regressions': ['ascii-upper', 'digits']}"
+        }
+      ],
+      "verdict": "ok"
+    }
   }
 }

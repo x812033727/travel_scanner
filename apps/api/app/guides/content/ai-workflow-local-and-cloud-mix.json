@@ -59,18 +59,18 @@
         },
         {
           "type": "heading",
-          "text": "同一支 Python：base_url 決定資料去哪裡",
+          "text": "同一支 Python：base_url 和標籤決定資料去哪裡",
           "level": 2
         },
         {
           "type": "paragraph",
-          "text": "Ollama 的 OpenAI 相容端點文件把本機和雲端的網址並排寫在同一張表裡：本機是 http://localhost:11434/v1，Ollama 自己的雲端是 https://ollama.com/v1；官方原文寫「雲端請求需要 API 金鑰，本機請求不用」。用 openai 這個 Python 套件接兩邊時，程式碼幾乎一樣，差的只有兩處：OpenAI() 建構子裡的 base_url 與 api_key，以及呼叫時填的 model 名稱；如果要接的不是 Ollama 自己的雲端，而是 OpenRouter、LiteLLM 這類統一多家供應商的閘道，系列裡「統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式」另外講那一種寫法。"
+          "text": "Ollama 的 API 文件把本機和雲端的網址並排寫在同一張 Base URLs 表裡，OpenAI 相容那一列：本機是 http://localhost:11434/v1，Ollama 自己的雲端是 https://ollama.com/v1；官方原文寫「雲端請求需要 API 金鑰，本機請求不用」。用 openai 這個 Python 套件接兩邊時，程式碼幾乎一樣，差的只有兩處：OpenAI() 建構子裡的 base_url 與 api_key，以及呼叫時填的 model 名稱；如果要接的不是 Ollama 自己的雲端，而是 OpenRouter、LiteLLM 這類統一多家供應商的閘道，系列裡「統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式」另外講那一種寫法。"
         },
         {
           "type": "code",
           "language": "python",
           "label": "hybrid_client.py：用 base_url 切換本機與雲端（pip install openai）",
-          "code": "import os\n\nfrom openai import OpenAI\n\n# Ollama 的 OpenAI 相容端點：本機是 http://localhost:11434/v1，\n# Ollama 自己的雲端是 https://ollama.com/v1（官方文件的 Base URLs 表）。\nLOCAL_BASE_URL = \"http://localhost:11434/v1\"\nCLOUD_BASE_URL = \"https://ollama.com/v1\"\n\n# 只有下載到這台機器的標籤才算本機；帶 cloud 字樣的標籤會送到 Ollama 的雲端，\n# 即使 base_url 指的是本機伺服器也一樣。\nLOCAL_MODELS = {\"gpt-oss:20b\", \"qwen3.6:35b\", \"gemma4:12b\"}\n\n\ndef get_client(target: str) -> OpenAI:\n  \"\"\"target 是 'local' 或 'cloud'，換的只有 base_url 和金鑰。\"\"\"\n  if target == \"local\":\n    # 本機不檢查金鑰，用戶端仍要求填一個值，官方範例填 'ollama'。\n    return OpenAI(base_url=LOCAL_BASE_URL, api_key=\"ollama\", timeout=30.0)\n  if target == \"cloud\":\n    # 雲端要求真正的金鑰，一律從環境變數讀，不寫進程式。\n    return OpenAI(\n      base_url=CLOUD_BASE_URL,\n      api_key=os.environ[\"OLLAMA_API_KEY\"],\n      timeout=30.0,\n    )\n  raise ValueError(f\"unknown target: {target}\")\n\n\ndef ask(target: str, model: str, prompt: str) -> str:\n  if target == \"local\" and model not in LOCAL_MODELS:\n    raise ValueError(f\"{model} is not a downloaded local tag\")\n  client = get_client(target)\n  response = client.chat.completions.create(\n    model=model,\n    messages=[{\"role\": \"user\", \"content\": prompt}],\n  )\n  return response.choices[0].message.content\n\n\nif __name__ == \"__main__\":\n  # 本機模型只留在自己的機器上執行。\n  print(ask(\"local\", \"gpt-oss:20b\", \"用一句話說明什麼是去識別化\"))"
+          "code": "import os\n\nfrom openai import OpenAI\n\n# Ollama 的 OpenAI 相容端點：本機是 http://localhost:11434/v1，\n# Ollama 自己的雲端是 https://ollama.com/v1（官方文件的 Base URLs 表）。\nLOCAL_BASE_URL = \"http://localhost:11434/v1\"\nCLOUD_BASE_URL = \"https://ollama.com/v1\"\n\n# 只有下載到這台機器的標籤才算本機；帶 cloud 字樣的標籤會送到 Ollama 的雲端，\n# 即使 base_url 指的是本機伺服器也一樣。\nLOCAL_MODELS = {\"gpt-oss:20b\", \"qwen3.6:35b\", \"gemma4:12b\"}\n\n\ndef ensure_local_tag(model: str) -> None:\n  \"\"\"本機那一步的守門員：標籤不在白名單就不要送出去。\"\"\"\n  if model not in LOCAL_MODELS:\n    raise ValueError(f\"{model} is not a downloaded local tag\")\n\n\ndef get_client(target: str) -> OpenAI:\n  \"\"\"target 是 'local' 或 'cloud'，換的只有 base_url 和金鑰。\"\"\"\n  if target == \"local\":\n    # 本機不檢查金鑰，用戶端仍要求填一個值，官方範例填 'ollama'。\n    return OpenAI(base_url=LOCAL_BASE_URL, api_key=\"ollama\", timeout=30.0)\n  if target == \"cloud\":\n    # 雲端要求真正的金鑰，一律從環境變數讀，不寫進程式。\n    return OpenAI(\n      base_url=CLOUD_BASE_URL,\n      api_key=os.environ[\"OLLAMA_API_KEY\"],\n      timeout=30.0,\n    )\n  raise ValueError(f\"unknown target: {target}\")\n\n\ndef ask(target: str, model: str, prompt: str) -> str:\n  if target == \"local\":\n    ensure_local_tag(model)\n  client = get_client(target)\n  response = client.chat.completions.create(\n    model=model,\n    messages=[{\"role\": \"user\", \"content\": prompt}],\n  )\n  return response.choices[0].message.content\n\n\nif __name__ == \"__main__\":\n  # 本機模型只留在自己的機器上執行。\n  print(ask(\"local\", \"gpt-oss:20b\", \"用一句話說明什麼是去識別化\"))"
         },
         {
           "type": "paragraph",
@@ -83,7 +83,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這篇的本機模型只挑 Ollama 模型庫裡查證過的三個名字：gemma4、qwen3.6 與 gpt-oss，各自的標籤、下載大小與上下文視窗都照模型庫頁當天寫的數字，標籤寫法也照頁面上的樣子，一律小寫加冒號。三頁上方都排著 CLI、cURL、Python、JavaScript 四個分頁，cURL 那個分頁印出來的位址就是本機的 11434 埠；但要判斷一個標籤到底在自己機器上跑還是送到 Ollama 的雲端，看的是下面這張表最後一欄，不是呼叫方式。"
+          "text": "這篇的本機模型只挑 Ollama 模型庫裡查證過的三個名字：gemma4、qwen3.6 與 gpt-oss，各自的標籤、下載大小與上下文視窗都照模型庫頁當天寫的數字，標籤寫法也照頁面上的樣子，一律小寫加冒號。三頁上方都排著 CLI、cURL、Python、JavaScript 四個分頁，cURL 那個分頁印出來的位址就是本機的 11434 埠；但要判斷一段文字跑在哪裡，看的不是呼叫方式，而是網址加標籤：這張表最後一欄只管標籤這一半，雲端頁寫對 ollama.com 送請求用的正是 gemma4:31b 這種不帶 cloud 的名稱。"
         },
         {
           "type": "table",
@@ -128,14 +128,14 @@
               "20GB",
               "256K",
               "文字、圖片",
-              "本機；也是官方直接雲端存取範例寫的模型名稱"
+              "下載後在本機；雲端頁寫對 ollama.com 送 API 請求也用這個名稱，那一種就跑在雲端"
             ],
             [
               "gemma4:cloud、gemma4:31b-cloud",
               "大小欄寫「-」",
               "256K",
               "文字、圖片",
-              "Ollama 的雲端；讀我檔列在「Ollama's cloud」底下"
+              "Ollama 的雲端；讀我檔的「Ollama's cloud」一節寫 ollama run gemma4:31b-cloud"
             ],
             [
               "qwen3.6:27b",
@@ -186,17 +186,17 @@
         },
         {
           "type": "paragraph",
-          "text": "這裡示範最常見的敏感步驟——去識別化：原始文字裡的姓名、電話、地址先在本機被換成像 [PERSON_1] 這樣的代號，換過的對照表留在本機的記憶體或檔案裡，只有代號版本的文字連同問題送進雲端模型；雲端寫出回覆之後，代號再由本機換回真正的姓名或電話，這一步也在本機做。這樣走一趟，送出去的就只有代號版本的文字。要提醒的是，遮蔽這一步是交給模型判斷的，抓不抓得乾淨沒有人替你保證，正式用之前要自己拿真實樣本驗過。"
+          "text": "這裡示範最常見的敏感步驟——去識別化：原始文字裡的姓名、電話、地址先在本機被換成像 [PERSON_1] 這樣的代號，換過的對照表留在本機的記憶體或檔案裡，只有代號版本的文字連同問題送進雲端模型；雲端寫出回覆之後，代號再由本機換回真正的姓名或電話，這一步也在本機做。要提醒的是，遮蔽這一步是交給模型判斷的，抓不抓得乾淨沒有人替你保證，正式用之前要自己拿真實樣本驗過。"
         },
         {
           "type": "code",
           "language": "python",
-          "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client）",
-          "code": "import json\n\nREDACT_PROMPT = (\n  \"找出下面文字中的姓名、電話、身分證號與地址，\"\n  \"把每一個換成像 [PERSON_1]、[PHONE_1] 這樣的代號，\"\n  \"同一個人或號碼要用同一個代號，只回傳 JSON，\"\n  \"格式是 {\\\"masked\\\": \\\"...\\\", \\\"map\\\": {\\\"[PERSON_1]\\\": \\\"原文\\\"}}。\"\n)\n\n\ndef redact_locally(text: str, model: str = \"qwen3.6:35b\") -> tuple[str, dict[str, str]]:\n  \"\"\"原始文字留在本機，只有這支函式呼叫本機模型。\"\"\"\n  client = get_client(\"local\")\n  # 單次呼叫要另外算逾時，官方套件的寫法是 with_options。\n  response = client.with_options(timeout=60.0).chat.completions.create(\n    model=model,\n    messages=[\n      {\"role\": \"system\", \"content\": REDACT_PROMPT},\n      {\"role\": \"user\", \"content\": text},\n    ],\n    response_format={\"type\": \"json_object\"},\n  )\n  payload = json.loads(response.choices[0].message.content)\n  return payload[\"masked\"], payload[\"map\"]"
+          "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client 與 ensure_local_tag）",
+          "code": "import json\n\nREDACT_PROMPT = (\n  \"找出下面文字中的姓名、電話、身分證號與地址，\"\n  \"把每一個換成像 [PERSON_1]、[PHONE_1] 這樣的代號，\"\n  \"同一個人或號碼要用同一個代號，只回傳 JSON，\"\n  \"格式是 {\\\"masked\\\": \\\"...\\\", \\\"map\\\": {\\\"[PERSON_1]\\\": \\\"原文\\\"}}。\"\n)\n\n\ndef redact_locally(text: str, model: str = \"qwen3.6:35b\") -> tuple[str, dict[str, str]]:\n  \"\"\"原始文字留在本機，只有這支函式呼叫本機模型。\"\"\"\n  ensure_local_tag(model)\n  client = get_client(\"local\")\n  # 單次呼叫要另外算逾時，官方套件的寫法是 with_options。\n  response = client.with_options(timeout=60.0).chat.completions.create(\n    model=model,\n    messages=[\n      {\"role\": \"system\", \"content\": REDACT_PROMPT},\n      {\"role\": \"user\", \"content\": text},\n    ],\n    response_format={\"type\": \"json_object\"},\n  )\n  payload = json.loads(response.choices[0].message.content)\n  return payload[\"masked\"], payload[\"map\"]"
         },
         {
           "type": "paragraph",
-          "text": "這支函式接續前面 hybrid_client.py 定義的 get_client(\"local\")，只是把提示詞換成要求模型找出個資並回傳固定格式的 JSON；Ollama 的 OpenAI 相容端點支援 response_format 這個欄位，才能穩定拿回 JSON 而不是一段夾雜說明文字的回答。這種把本機那一步的輸出用固定格式交給下一步的做法，系列裡「模型之間交接資料：JSON Schema 與結構化輸出」講得更完整。"
+          "text": "這支函式接續前面 hybrid_client.py 定義的 get_client(\"local\") 與 ensure_local_tag，只是把提示詞換成要求模型找出個資並回傳固定格式的 JSON；Ollama 的 OpenAI 相容端點支援 response_format 這個欄位，才能穩定拿回 JSON 而不是一段夾雜說明文字的回答。這種把本機那一步的輸出用固定格式交給下一步的做法，系列裡「模型之間交接資料：JSON Schema 與結構化輸出」講得更完整。"
         },
         {
           "type": "code",
@@ -206,7 +206,7 @@
         },
         {
           "type": "paragraph",
-          "text": "finish_in_cloud 呼叫的是 get_client(\"cloud\")，也就是走 https://ollama.com/v1 這條路，模型名稱用官方直接雲端存取範例寫的 gemma4:31b；restore 那個函式才是還原代號的地方。整段程式從讀取原始文字到印出最終答案，只有 finish_in_cloud 那一次網路呼叫的內容離開本機，而 ask 開頭那道 LOCAL_MODELS 檢查，是為了擋掉「網址指到本機、標籤卻挑到雲端」這種把原文送出去的寫法。"
+          "text": "finish_in_cloud 呼叫的是 get_client(\"cloud\")，也就是走 https://ollama.com/v1 這條路，模型名稱用官方直接雲端存取範例寫的 gemma4:31b；restore 那個函式才是還原代號的地方。整段程式從讀取原始文字到印出最終答案，只有 finish_in_cloud 那一次網路呼叫的內容離開本機；ask 和 redact_locally 走本機那一步之前都先跑 ensure_local_tag，擋掉「網址指到本機、標籤卻挑到雲端」這種把原文送出去的寫法。"
         },
         {
           "type": "image",
@@ -233,7 +233,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本機模型跑不跑得動，Ollama 的模型庫頁只給得出下載大小、上下文視窗與 gpt-oss 讀我檔那種記憶體門檻這類規格數字，沒有一頁公開本機和雲端實際回覆要等多久；本站也沒有拿同一段文字在本機顯示卡和雲端之間各跑一次計時，所以本站沒有實測，這篇不排名誰比較快、誰比較準。能確定的只有上面那張表裡的規格數字，而讀我檔替 120B 開出的那張 80GB 顯示卡，本身就說明了為什麼收尾那一步常常不放在自己的機器上。"
+          "text": "本機模型跑不跑得動，Ollama 的模型庫頁只給得出下載大小、上下文視窗與 gpt-oss 讀我檔那種記憶體門檻這類規格數字，本文引用的官方頁沒有公開本機和雲端實際回覆要等多久；本站也沒有拿同一段文字在本機顯示卡和雲端之間各跑一次計時，所以本站沒有實測，這篇不排名誰比較快、誰比較準。而讀我檔替 120B 開出的那張 80GB 顯示卡，本身就說明了為什麼收尾那一步常常不放在自己的機器上。"
         },
         {
           "type": "paragraph",
@@ -260,7 +260,7 @@
             },
             {
               "question": "為什麼不直接比較本機和雲端的速度？",
-              "answer": "因為沒有一份官方頁公開這個數字，本站也沒有拿同一段文字在本機和雲端各跑一次計時比較，所以本站沒有實測，這篇只引用模型庫頁上的下載大小、上下文視窗和記憶體門檻這類規格數字。"
+              "answer": "因為本文引用的官方頁沒有公開這個數字，本站也沒有拿同一段文字在本機和雲端各跑一次計時比較，所以本站沒有實測，這篇只引用模型庫頁上的下載大小、上下文視窗和記憶體門檻這類規格數字。"
             },
             {
               "question": "怎麼確認本機那一步真的沒有把資料送出去？",

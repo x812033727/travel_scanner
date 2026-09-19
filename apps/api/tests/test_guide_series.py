@@ -268,7 +268,9 @@ async def test_series_route_precedes_kind_route_and_requires_published_hub(datab
 async def test_unavailable_targets_leave_no_public_navigation_or_inline_link(
     database, actor, state, numbers
 ):
-    catalogue = catalogues()[0]
+    # By slug, not by position: the catalogues load in file-name order, and this test
+    # publishes the Claude Code hub, so it must read the Claude Code catalogue.
+    catalogue = next(item for item in catalogues() if item.slug == "claude-code")
     source_slug = catalogue.entries[numbers[0] - 1].slug
     target_slug = catalogue.entries[numbers[1] - 1].slug
     document = rich_document()

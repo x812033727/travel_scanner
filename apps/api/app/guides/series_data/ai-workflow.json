@@ -1,0 +1,469 @@
+{
+  "slug": "ai-workflow",
+  "locale": "zh-TW",
+  "hub": "ai-workflow-tutorials",
+  "groups": [
+    {
+      "id": "A",
+      "title": "觀念：流程、拆法與取捨"
+    },
+    {
+      "id": "B",
+      "title": "接線：統一 API、路由與交接"
+    },
+    {
+      "id": "C",
+      "title": "協作：互審、代理分工與 MCP"
+    },
+    {
+      "id": "D",
+      "title": "營運：本機混搭、追蹤與防護"
+    }
+  ],
+  "paths": [
+    {
+      "id": "concepts",
+      "title": "觀念路線",
+      "slugs": [
+        "ai-workflow-basics",
+        "ai-workflow-split-tasks-across-models",
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "id": "builder",
+      "title": "接線路線",
+      "slugs": [
+        "ai-workflow-basics",
+        "ai-workflow-unified-api-layer",
+        "ai-workflow-model-routing-cascade",
+        "ai-workflow-structured-handoff",
+        "ai-workflow-mcp-shared-tools",
+        "ai-workflow-local-and-cloud-mix"
+      ]
+    },
+    {
+      "id": "operator",
+      "title": "營運路線",
+      "slugs": [
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-cross-review-judge",
+        "ai-workflow-coding-agents-division",
+        "ai-workflow-tracing-evals",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slug": "ai-workflow-basics",
+      "title": "AI 工作流是什麼：從一次對話到可重跑的流程",
+      "outcome": "AI 工作流是把原本擠在一次對話裡臨場決定的每一步，拆成可以個別檢查、重新執行、彼此交接的固定步驟，讓同一件事下次不必重新臨場發揮。",
+      "sources": [
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://openai.github.io/openai-agents-python/",
+        "https://docs.langchain.com/oss/python/langgraph/overview"
+      ],
+      "number": 1,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "工作流",
+        "workflow",
+        "代理",
+        "agent",
+        "提示詞串接"
+      ],
+      "prerequisites": [],
+      "related": [
+        "ai-workflow-split-tasks-across-models",
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "slug": "ai-workflow-split-tasks-across-models",
+      "title": "一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法",
+      "outcome": "把一件工作拆給多個模型分工，可以讓便宜的模型分擔簡單的部分，也更容易看出是哪一步出了問題，但不保證變快。",
+      "sources": [
+        "https://www.anthropic.com/engineering/building-effective-agents",
+        "https://platform.claude.com/docs/en/about-claude/models/overview",
+        "https://platform.openai.com/docs/models"
+      ],
+      "number": 2,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "拆任務",
+        "分工",
+        "子代理",
+        "資料敏感度"
+      ],
+      "prerequisites": [
+        "ai-workflow-basics"
+      ],
+      "related": [
+        "ai-workflow-basics",
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-model-routing-cascade"
+      ]
+    },
+    {
+      "slug": "ai-workflow-cost-quality-latency",
+      "title": "成本、品質、延遲：多模型流程怎麼取捨",
+      "outcome": "多模型流程的成本、品質與延遲要分開量：成本是官方每百萬 token 單價乘上呼叫次數與 token 數，品質要靠自己建的評測集分數而不是各家公布的跑分，延遲要看 p50 與 p95 兩個百分位數而不是平均值。",
+      "sources": [
+        "https://platform.claude.com/docs/en/about-claude/pricing",
+        "https://platform.openai.com/docs/pricing",
+        "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+        "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence"
+      ],
+      "number": 3,
+      "group": "A",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "成本",
+        "延遲",
+        "p95",
+        "快取",
+        "批次",
+        "定價"
+      ],
+      "prerequisites": [
+        "ai-workflow-basics"
+      ],
+      "related": [
+        "ai-workflow-split-tasks-across-models",
+        "ai-workflow-model-routing-cascade",
+        "ai-workflow-tracing-evals"
+      ]
+    },
+    {
+      "slug": "ai-workflow-unified-api-layer",
+      "title": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+      "outcome": "OpenAI 相容端點是供應商提供的 REST 介面，形狀和 OpenAI 的 Chat Completions 端點相同，程式只要換 base_url、金鑰與 model 字串就能連到別家模型，不必重寫呼叫邏輯。",
+      "sources": [
+        "https://openrouter.ai/docs/quickstart",
+        "https://openrouter.ai/docs/api-reference/overview",
+        "https://docs.litellm.ai/docs/",
+        "https://docs.litellm.ai/docs/completion/input",
+        "https://docs.litellm.ai/docs/providers/openrouter",
+        "https://github.com/openai/openai-python",
+        "https://console.groq.com/docs/openai",
+        "https://console.groq.com/docs/models"
+      ],
+      "number": 4,
+      "group": "B",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "OpenRouter",
+        "LiteLLM",
+        "base_url",
+        "OpenAI 相容"
+      ],
+      "prerequisites": [
+        "ai-workflow-cost-quality-latency"
+      ],
+      "related": [
+        "ai-workflow-model-routing-cascade",
+        "ai-workflow-structured-handoff",
+        "ai-workflow-local-and-cloud-mix"
+      ]
+    },
+    {
+      "slug": "ai-workflow-model-routing-cascade",
+      "title": "模型路由與級聯：便宜先試、貴的兜底",
+      "outcome": "多模型級聯（cascade）讓便宜的輕量模型先答，模型自己評估的信心不夠、逾時或呼叫失敗才升級到更貴的模型，藉此把大多數請求的成本壓低，同時對少數困難的請求保留品質。",
+      "sources": [
+        "https://openrouter.ai/docs/guides/routing/routers/auto-router",
+        "https://openrouter.ai/docs/guides/routing/model-fallbacks",
+        "https://docs.litellm.ai/docs/routing",
+        "https://platform.claude.com/docs/en/models/overview",
+        "https://platform.claude.com/docs/en/get-started",
+        "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/python",
+        "https://platform.claude.com/docs/en/api/messages/create"
+      ],
+      "number": 5,
+      "group": "B",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "路由",
+        "級聯",
+        "cascade",
+        "fallback",
+        "重試"
+      ],
+      "prerequisites": [
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-unified-api-layer"
+      ],
+      "related": [
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-unified-api-layer",
+        "ai-workflow-structured-handoff"
+      ]
+    },
+    {
+      "slug": "ai-workflow-structured-handoff",
+      "title": "模型之間交接資料：JSON Schema 與結構化輸出",
+      "outcome": "把交接寫成 JSON Schema，上游模型的輸出先驗證再送下游，是讓多模型流程穩定下來的做法。",
+      "sources": [
+        "https://platform.openai.com/docs/guides/structured-outputs",
+        "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+        "https://ai.google.dev/gemini-api/docs/structured-output",
+        "https://python-jsonschema.readthedocs.io/",
+        "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+        "https://python-jsonschema.readthedocs.io/en/stable/errors/"
+      ],
+      "number": 6,
+      "group": "B",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "JSON Schema",
+        "結構化輸出",
+        "jsonschema",
+        "交接"
+      ],
+      "prerequisites": [
+        "ai-workflow-unified-api-layer"
+      ],
+      "related": [
+        "ai-workflow-model-routing-cascade",
+        "ai-workflow-cross-review-judge",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "slug": "ai-workflow-cross-review-judge",
+      "title": "多模型互審：LLM 當評審、投票與集成怎麼做",
+      "outcome": "多模型互審是讓一個獨立的模型依照寫死的評分準則，對其他模型的答案逐條打分，再用投票或集成整理出判斷。",
+      "sources": [
+        "https://platform.openai.com/docs/guides/evals",
+        "https://platform.openai.com/docs/guides/evaluation-best-practices",
+        "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+        "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+        "https://platform.claude.com/docs/en/api/sdks/python",
+        "https://ai.google.dev/gemini-api/docs/structured-output",
+        "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/types.py",
+        "https://raw.githubusercontent.com/googleapis/python-genai/main/README.md"
+      ],
+      "number": 7,
+      "group": "C",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "評審",
+        "judge",
+        "投票",
+        "rubric",
+        "集成"
+      ],
+      "prerequisites": [
+        "ai-workflow-structured-handoff"
+      ],
+      "related": [
+        "ai-workflow-structured-handoff",
+        "ai-workflow-tracing-evals",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "slug": "ai-workflow-coding-agents-division",
+      "title": "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
+      "outcome": "把 Claude Code、Codex 與 Gemini CLI 接成規劃、執行、審查的一條管線，靠的是三支命令列各自的非互動旗標，本文查證的文件沒有跨工具的整合功能。",
+      "sources": [
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/README.md",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+        "https://code.claude.com/docs/en/permission-modes",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/plan-mode.md"
+      ],
+      "number": 8,
+      "group": "C",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Claude Code",
+        "Codex",
+        "Gemini CLI",
+        "headless",
+        "claude -p",
+        "codex exec"
+      ],
+      "prerequisites": [
+        "ai-workflow-basics"
+      ],
+      "related": [
+        "ai-workflow-mcp-shared-tools",
+        "ai-workflow-structured-handoff",
+        "ai-workflow-cross-review-judge"
+      ]
+    },
+    {
+      "slug": "ai-workflow-mcp-shared-tools",
+      "title": "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
+      "outcome": "同一支用官方 Python SDK 寫成的 MCP 伺服器，不必改一行程式碼就能同時登記進 Claude Code、Codex 與 Gemini CLI：三邊的設定檔位置與加入指令都不一樣，Codex 寫成 TOML、另外兩邊是 JSON，但讀到的是同一份工具名稱、輸入 Schema 與回傳格式。",
+      "sources": [
+        "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+        "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+        "https://py.sdk.modelcontextprotocol.io/servers/tools/",
+        "https://py.sdk.modelcontextprotocol.io/run/",
+        "https://code.claude.com/docs/en/mcp",
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/tools/mcp-server.md"
+      ],
+      "number": 9,
+      "group": "C",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "MCP",
+        "Model Context Protocol",
+        "工具伺服器",
+        "設定檔"
+      ],
+      "prerequisites": [
+        "ai-workflow-coding-agents-division"
+      ],
+      "related": [
+        "ai-workflow-coding-agents-division",
+        "ai-workflow-local-and-cloud-mix",
+        "ai-workflow-unified-api-layer"
+      ]
+    },
+    {
+      "slug": "ai-workflow-local-and-cloud-mix",
+      "title": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+      "outcome": "這篇教你用 Ollama 的 OpenAI 相容端點，把分類與去識別化這類會碰到原始個資的步驟留在本機執行，換成代號的乾淨文字才送進雲端模型收尾，同一支 Python 程式靠 base_url 切換兩端。",
+      "sources": [
+        "https://docs.ollama.com/api/openai-compatibility",
+        "https://docs.ollama.com/api",
+        "https://docs.ollama.com/cloud",
+        "https://docs.ollama.com/faq",
+        "https://ollama.com/library/gemma4",
+        "https://ollama.com/library/qwen3.6",
+        "https://ollama.com/library/gpt-oss"
+      ],
+      "number": 10,
+      "group": "D",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Ollama",
+        "本機",
+        "開放權重",
+        "去識別化",
+        "gemma4"
+      ],
+      "prerequisites": [
+        "ai-workflow-unified-api-layer"
+      ],
+      "related": [
+        "ai-workflow-mcp-shared-tools",
+        "ai-workflow-unified-api-layer",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "slug": "ai-workflow-tracing-evals",
+      "title": "追蹤、評測與可觀測性：知道流程哪一步出錯",
+      "outcome": "多模型工作流串起幾個步驟後，一步答錯或變慢，只看最後輸出看不出問題在哪，必須每一步都留下可查的紀錄。",
+      "sources": [
+        "https://docs.python.org/3/library/logging.html",
+        "https://docs.python.org/3/library/functools.html",
+        "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+        "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+        "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-spans.md",
+        "https://developers.openai.com/api/docs/guides/evals",
+        "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests"
+      ],
+      "number": 11,
+      "group": "D",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "追蹤",
+        "tracing",
+        "評測",
+        "evals",
+        "JSONL",
+        "OpenTelemetry"
+      ],
+      "prerequisites": [
+        "ai-workflow-cross-review-judge"
+      ],
+      "related": [
+        "ai-workflow-cross-review-judge",
+        "ai-workflow-cost-quality-latency",
+        "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "slug": "ai-workflow-failures-and-guardrails",
+      "title": "失敗案例與防護：迴圈、費用爆炸與代理間注入",
+      "outcome": "多模型工作流常見的三種失控，是無限重試迴圈、fan-out 呼叫的費用爆炸，以及上游模型的輸出被下游模型當成指令，三種情況各自可以配一種對應的防護。",
+      "sources": [
+        "https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/",
+        "https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/",
+        "https://genai.owasp.org/llm-top-10/",
+        "https://developers.openai.com/api/docs/guides/safety-best-practices",
+        "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+        "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks"
+      ],
+      "number": 12,
+      "group": "D",
+      "level": "advanced",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "防護",
+        "guardrails",
+        "提示詞注入",
+        "預算",
+        "迴圈"
+      ],
+      "prerequisites": [
+        "ai-workflow-tracing-evals"
+      ],
+      "related": [
+        "ai-workflow-tracing-evals",
+        "ai-workflow-structured-handoff",
+        "ai-workflow-local-and-cloud-mix"
+      ]
+    }
+  ]
+}

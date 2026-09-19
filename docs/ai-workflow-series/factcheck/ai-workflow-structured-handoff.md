@@ -491,6 +491,10 @@ code 2（對 `…/en/stable/validate/`、`…/en/stable/errors/`、`python-jsons
   `gemini-api-files-structured-output` 的 description 逐字寫
   「學完後，你會知道『收到合法 JSON』與『內容確實來自檔案』是兩件需要分別檢查的事」，
   本篇那一句帶過正確；`ai-term-tool-calling` 只被當成「不同機制」點名一次。三篇都沒有被整段重講。
+- 結尾兩個 `link`：第一個 `text` 逐字是「多模型 AI 工作流教學：從拆任務到串接不同模型」，
+  目錄篇 `ai-workflow-tutorials` 的內容包在第二輪時已經存在、`title` 與它一字不差，
+  所以自檢**連規格允許的那一種 FAIL 都沒有出現**；第二個 `text` 逐字等於
+  `gemini-api-files-structured-output` 的 zh-TW `title`，`url` 也指向它。兩個 URL 都沒有查詢字串。
 - `summary` ⊆ 正文（補完「三次」之後四句全部成立）、FAQ 六題答句 ⊆ 正文、
   表格 15 格的每個數字（4.5／4.6／4.7／4.8／5、v1beta、Gemini 3、gpt-6-astra、gemini-3.8-flash）
   都在正文出現、圖解五組節點沒有任何數字、兩個 caption 與研究紀錄一致。
@@ -520,7 +524,8 @@ OK ai-workflow-structured-handoff paragraphs 2923 code_blocks 2 sources 6
 
 ### 第二輪結論
 
-`ok`。第一輪 14 條改動裡，**13 條經覆核成立**（含兩處硬錯誤的修正都正確），
+`ok`。第一輪列的 14 條（其中 9 條真的動了檔、19 個編輯點）逐條覆核，**改對的都成立**，
+包含兩處硬錯誤的修正（Anthropic 系列名、`--json-schema` 旗標）今天重抓後確認正確；
 只有一條是它自己新寫錯的——OpenAI「沒有逐一列出型號」這個否定句，該頁另一節明明列了；
 另外第一輪漏掉一條沒有來源的相容性宣稱（三家 schema 可共用）與一處沒跟著軟化的頻率宣稱。
 本輪改 **5 條主張、7 個編輯點**，全部有來源頁逐字支撐；

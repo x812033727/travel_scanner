@@ -80,10 +80,58 @@
       "verbatim_quote": "check_circle Batch API (50% cost reduction)"
     },
     {
-      "fact": "Anthropic 的文件把批次處理列在比較表裡，標註 50% 的節省、對品質沒有影響，結果通常在 24 小時內送達",
+      "fact": "Anthropic 的文件在「levers」比較表裡把批次 API 那一列記成：節省 50%、品質成本 None、延遲欄 Results within 24 hours。表頭是 Lever / Saving in these runs / Quality cost / Latency / Where，所以 50% 是那些測試裡的節省、None 是品質成本欄的值",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Lever Saving in these runs Quality cost Latency Where"
+    },
+    {
+      "fact": "同一張表那一列的原文",
       "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
       "is_vendor_claim": true,
       "verbatim_quote": "Batch API 50% None Results within 24 hours"
+    },
+    {
+      "fact": "Anthropic 的文件寫，提示快取、token 精簡、批次處理與針對現用模型的提示詞稽核，都能在不降低輸出品質的前提下降低費用；同一段也寫了兩個但書，其中之一就是批次拿延遲換折扣",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Prompt caching, token hygiene, batch processing, and a prompt audit against your current model all lower what you pay without lowering output quality."
+    },
+    {
+      "fact": "Anthropic 的提示快取文件寫，提示快取對輸出 token 的生成沒有影響，收到的回應與沒有用快取時一模一樣（本篇用來替「快取不改變模型輸出」這句話掛上歸屬，且只限 Anthropic 自家快取）",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Prompt caching has no effect on output token generation. The response you receive is identical to what you would get if prompt caching were not used."
+    },
+    {
+      "fact": "Anthropic 的文件寫，除非某個參考另有說明，頁上的量測都是 Anthropic 自己跑這些基準的結果；頁首的策略表下方另註明結果是內部測得、只有方向性、不是保證",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Except where a reference says otherwise, measurements are Anthropic-internal runs of these benchmarks."
+    },
+    {
+      "fact": "Anthropic 的文件描述自建評測集的第一步：從正式環境紀錄抽出幾個任務、照真實流量的比重加權，替每個任務寫可以自動判定的結果檢查（測試通過、工單結案、列數正確），並把每個任務的成本記在分數旁邊",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pull a few tasks from production logs, weighted like real traffic, and write outcome checks for each: tests pass, ticket closed, row count correct. Record cost per task beside the score"
+    },
+    {
+      "fact": "Anthropic 的文件在同一段升級討論裡要讀者先在自己的工作量上量過，再假設換模型會省",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "so measure the upgrade on your own workload before assuming it saves"
+    },
+    {
+      "fact": "Anthropic 的文件寫，帳單是被便宜模型答錯的那些任務決定的：一個失敗的任務照樣要付它的 token 錢，接著是重試，然後是失敗在下游造成的代價（本篇 callout 引用）",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the bill is decided by the tasks the cheaper model fails, because a failed task still bills its tokens, then the retry, then whatever the failure costs downstream"
+    },
+    {
+      "fact": "Gemini 開發者 API 定價頁把 Gemini 3.5 Flash-Lite 的批次價列成標準價的一半（輸入 0.15 美元、輸出 1.25 美元），Google 的付費方案功能清單則寫 Batch API (50% cost reduction)",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Batch Free Tier Paid Tier, per 1M tokens in USD Input price Free of charge $0.15 (text / image / video / audio) Output price (including thinking tokens) Free of charge $1.25"
     },
     {
       "fact": "Anthropic 的文件用一句話寫批次處理的取捨方向：批次處理拿延遲換折扣",
@@ -109,13 +157,22 @@
     "各家模型實際回應秒數的實測——本環境沒有可呼叫的 API 金鑰可以實際計時，只能引官方定價頁與文件描述的取捨方向（例如批次是拿延遲換折扣），沒有寫成具體秒數，正文已注明「本站沒有實測」。",
     "Claude 快取讀寫的精確倍率（0.1 倍讀取、1.25 倍 5 分鐘寫入等）——已經在《Claude API 省錢：提示快取與批次處理怎麼用》整理過，這篇只提概念，不重複數字。",
     "GPT-5.6 Sol、Terra、Luna 與 Claude Fable 5.1、Haiku 4.5 的價格——今天也查證過（見已保存的 openai-pricing.txt 與 claude-pricing.txt），但本篇三個範例情境只需要 Opus 5、Sonnet 5、GPT-6 Astra 與 Gemini 3.5 Flash-Lite 四個型號，其餘沒有寫進正文。",
-    "跨供應商的完整旗艦／中階／輕量價格比較表——《API 價格比較：每百萬 token 各家多少》已經整理過，這篇不重列，只引用查證過的單價做估算表。"
+    "跨供應商的完整旗艦／中階／輕量價格比較表——《API 價格比較：每百萬 token 各家多少》已經整理過，這篇不重列，只引用查證過的單價做估算表。",
+    "Anthropic 定價頁的 Fast mode 價格（研究預覽階段，Claude Opus 5 為 10 美元／50 美元）與 OpenAI 的 Flex、Fast mode 欄——查核當天讀到，但本篇的估算一律用標準價，只在正文與表格 caption 寫明「標準價」，不列這些欄位。",
+    "OpenAI 定價頁的 Long context 欄（gpt-6-astra 20 美元／75 美元）——本篇的假設是 3,000 個輸入 token，屬於 Short context，定價頁沒有寫兩者的分界 token 數，所以只寫「標準價的短上下文欄」，不推測分界。",
+    "Anthropic 定價頁註明 Claude 4.7 以後的模型換了 tokenizer、同一段文字約多出 30% 的 token——會影響跨供應商用同一組 token 假設比價的精確度，但本篇是示範算法、三家共用同一組假設，沒有把這件事寫進正文。",
+    "Anthropic 文件裡 SWE-bench Pro 3、DeepResearch Bench II 等基準的實際分數與每題成本——那是模型比較的內容，本篇只引用它描述的量測方法，不引用分數。"
   ],
   "must_not_write": [
     "各家實際模型回應的秒數（沒有實測）",
     "Claude 快取的精確折扣倍率與存活設定方式",
     "怎麼用程式接上多個模型的 API（留給後面技術篇）",
-    "路由規則怎麼判斷要不要升級、評審模型的評分標準設計"
+    "路由規則怎麼判斷要不要升級、評審模型的評分標準設計",
+    "「級聯 p50 較快、p95 較慢」不可以寫成通則或官方數字：它是本文的推論，兩個前提（升級時多打一次呼叫、輕量模型單次比旗艦快）與「本站沒有實測」必須一起留著，翻譯各語系時也不可以刪。",
+    "「快取／批次對品質沒有影響」不可以寫成放諸四海皆準：Anthropic 的提示快取頁只說自家快取不影響輸出 token 的生成，optimizing 那頁的 Quality cost 欄只是它自己那些測試的結果，一律要帶歸屬。",
+    "p50 不可以寫成「平均」：它是第 50 百分位（中位數）；p95 是第 95 百分位。",
+    "不可以把並行互審的呼叫次數寫成「比單一旗艦多兩三倍」：兩答一評是 3 次呼叫，是單一旗艦的 3 倍（《多模型互審》那篇同樣寫 3 次）。",
+    "站內文章名稱要逐字抄：《多模型互審：LLM 當評審、投票與集成怎麼做》結尾有「怎麼做」三個字，不可以漏。"
   ],
   "editorial_brief": "這篇是系列第三篇，負責把成本、品質、延遲三個量的量法講清楚，並用單一旗艦、級聯、並行互審三種架構的估算表把三個量放在一起比較。跨供應商的完整價格表留給《API 價格比較》，token 計數方法留給《token 計算與費用估算》，Claude 快取與批次的實作細節留給《Claude API 省錢》，路由規則與評審設計則留給系列後面的《模型路由與級聯》與《多模型互審》。",
   "code_samples": [],
@@ -123,7 +180,7 @@
   "diagram": {
     "layout": "flow",
     "title": "三種流程的成本估算",
-    "caption": "三種流程處理同一個假設請求（輸入 3,000 個 token、輸出 600 個 token）的估算成本；單價查證於 2026 年 9 月官方定價頁，實際費用以官網當日公告為準。",
+    "caption": "三種流程處理同一個假設請求（輸入 3,000 個 token、輸出 600 個 token）的估算成本；單價查證於 2026 年 9 月 18 日官方定價頁的標準價，實際費用以官網當日公告為準。",
     "nodes": [
       [
         "共同假設",
