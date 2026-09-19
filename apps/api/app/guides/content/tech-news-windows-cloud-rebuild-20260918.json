@@ -1,0 +1,259 @@
+{
+  "slug": "tech-news-windows-cloud-rebuild-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news",
+    "software"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 319,
+  "related": [
+    "tech-news-npm-stage-only-tokens-20260918",
+    "tech-news-cisa-kev-linux-kernel-20260918",
+    "tech-news-iphone-duo-dev-resources-20260918"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Windows 11 測試頻道更新 Cloud rebuild：重灌可抹除磁碟、IT 可遠端啟動",
+      "description": "2026 年 9 月 18 日，微軟在 Windows Insider 部落格與 Experimental Build 26340.9502 版本說明中，更新測試版復原功能 Cloud rebuild，新增抹除磁碟與 IT 遠端啟動兩項能力；此功能 7 月 6 日已在 Experimental 頻道出現，這次是更新而非首次推出。本文依官方文件整理實際改了什麼、有哪些限制。",
+      "hero": {
+        "src": "/guides/tech-news-windows-cloud-rebuild-20260918/hero.jpg",
+        "alt": "原創插圖：左側一台簡化的桌上型電腦螢幕，螢幕中央畫著一朵雲與一支向下的箭頭代表從雲端重新安裝系統；右側上方是一個方形磁碟圖案，中央以一條對角線表示抹除，磁碟下方是一支向右的訊號箭頭代表遠端啟動的指令",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 18 日，微軟在 Windows Insider 部落格宣布釋出新一批 Windows 11 測試版本，其中 Experimental 頻道的 Build 26340.9502 更新了測試中的復原功能 Cloud rebuild，新增兩項能力：重建時可順便抹除裝置磁碟，以及 IT 可透過 Recovery CSP 遠端設定並啟動重建。公告與版本說明頁都用「更新」這個字——Cloud rebuild 不是這一天才有的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 20 日查核，讀的是這則公告、Experimental Build 26340.9502 的官方版本說明頁，以及微軟 Cloud rebuild 說明文件全文；為了確認是「更新」而非「首次推出」，也讀了 2026 年 7 月 6 日 Cloud rebuild 首次出現時的公告原文。本站沒有實機測試，下文除非另有說明，效果與敘述都是微軟官方所寫。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 18 日，微軟更新了 Windows 11 測試版的復原功能 Cloud rebuild，這項功能本身在 2026 年 7 月 6 日已於 Experimental 頻道推出，這次只在 Experimental 頻道的 Build 26340.9502 加了兩項能力，並非重新推出或已經對所有使用者開放。",
+            "微軟表示，新增的第一項是可以在重建過程中一併抹除裝置磁碟，WinRE 會多一個選擇：Remove files 與 Remove & sanitize files，但抹除是否成功要看儲存硬體支不支援、實作正不正確，Windows 沒辦法自行驗證結果。",
+            "第二項新增是 IT 管理者可以透過 Recovery CSP 遠端設定並啟動 Cloud rebuild，並指定要重裝目前的 build 或另外指定的目標 build，不過官方文件寫明這項遠端能力目前只存在於 Windows Insider 預覽版。",
+            "微軟的兩份官方文件都沒有寫出 Cloud rebuild 的正式上線時程、價格或版本限制，Recovery CSP 底下的 CloudRebuild 節點也僅限 Windows Insider 預覽版，本文查核日為 2026 年 9 月 20 日，之後如需引用請重新確認微軟頁面。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "微軟更新了什麼：Experimental 頻道的一次例行釋出"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則公告是微軟例行的 Insider 測試版公告，作者是 Stephen Lines，開頭就寫明對象是 Beta 與 Experimental 兩個頻道，這兩個頻道當天的 build 分別是 Beta 的 26220.9492 與 Experimental 的 26340.9502。Cloud rebuild 的變更只掛在 Experimental：公告裡該段小標下方印著『Release channel: Experimental』，整頁三個新功能小節各印一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這兩項新增現在只有裝了 Experimental 頻道這個 build 的 Windows Insider 看得到，不是所有 Windows 11 使用者都會拿到。版本說明頁寫得很白：測試版裡的功能有可能永遠不會正式推出，而且多數功能用 Controlled Feature Rollout 分批釋出，就算已裝了這個 build，也不保證馬上看得到這兩項能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloud rebuild 這個功能也不是 9 月 18 日才有的。它第一次出現在 2026 年 7 月 6 日的 Insider 公告，當時同樣是 Experimental 頻道、Build 26300.8782，官方形容它是就算 Windows 開不了機也能用的復原選項。9 月 18 日的公告與版本說明用的字是『更新』這項既有功能、『加兩項』，不是重新推出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Cloud rebuild 在解決什麼問題：跟重設此電腦有何不同"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloud rebuild 要解決的問題，官方定義寫在說明文件開頭：讓 IT 管理者與一般使用者，能把一台 Windows 11 電腦透過完整重灌作業系統的方式，還原成乾淨、已知良好的狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方接著點出它和內建的『重設此電腦』不同：Cloud rebuild 會把目標系統映像和機器的驅動程式一起從 Windows Update 下載，所以裝置修好後就能完整運作，不需要 USB 安裝媒體、不需要自備映像檔，也不依賴目前已安裝系統的完整性——最後這三點是官方文件的說法，不是本站判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "啟動方式有兩種：一是有人在裝置前面，從 WinRE（Windows 復原環境）疑難排解選單自己啟動；二是 IT 透過端點管理方案遠端啟動，這是 9 月 18 日新增的第二項能力，下文說明。官方說明文件把這兩種啟動方式都寫在『Windows Insider 預覽版』這個前提底下。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "特點",
+            "官方說法",
+            "對讀者的意義"
+          ],
+          "rows": [
+            [
+              "映像與驅動一起下載",
+              "從 Windows Update 抓目標系統映像與裝置驅動程式",
+              "不用另外找驅動程式"
+            ],
+            [
+              "不需要 USB 安裝媒體",
+              "官方表示不需要 USB 媒體",
+              "不用另外準備開機碟"
+            ],
+            [
+              "不依賴現有系統的完整性",
+              "官方表示不依賴目前已安裝系統的完整性",
+              "作業系統本身有問題也能用"
+            ],
+            [
+              "同時服務兩種對象",
+              "說明文件開頭寫明是 IT 管理者與一般使用者",
+              "公司與個人都是設計對象"
+            ]
+          ],
+          "caption": "整理自微軟 Cloud rebuild 說明文件，查核日 2026 年 9 月 20 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新增之一：重建時可以順便抹除磁碟"
+        },
+        {
+          "type": "paragraph",
+          "text": "WinRE 啟動 Cloud rebuild 時會多一個選擇：留著自用選 Remove files，較快，但檔案可能被專門救援工具救回；要回收、退貨或轉手前選 Remove & sanitize files，官方說明會用儲存硬體本身的抹除能力先安全清除資料再重裝，且不可逆，可能要花比較久。官方同時提醒：抹除結果要看這台機器的儲存硬體支不支援、有沒有正確實作——Windows 只是下達指令並回報裝置給的結果，無法自行驗證儲存裝置到底做了什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多顆硬碟的裝置還會多一層選擇：Windows disk only 只抹系統碟、其他碟保留；All disks 抹掉每一顆碟，官方說明這會花久很多。依政策或法規報廢、移轉的裝置，官方建議先向製造商確認這個組態支援資料抹除，不支援就改用製造商提供的工具，不要仰賴 Cloud rebuild。"
+        },
+        {
+          "type": "paragraph",
+          "text": "抹除失敗時，畫面上會出現 Skip sanitizing（略過抹除）選項；選下去 Windows 一樣重灌完成，但先前的資料不會被安全清除。官方在警告方塊裡建議：要回收、退貨或轉手的機器不要略過抹除，改用製造商工具清除資料——這一步若在交機前被跳過，沒有被安全清除的資料就會跟著機器一起交出去。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-windows-cloud-rebuild-20260918/diagram-1.svg",
+          "alt": "四格圖解：測試頻道狀態、雲端下載來源、抹除磁碟選項、IT 遠端啟動",
+          "width": 1600,
+          "height": 900,
+          "caption": "微軟 2026 年 9 月 18 日在 Windows 11 測試頻道更新 Cloud rebuild 的整理：從雲端重裝、新增抹除磁碟選項、IT 可遠端啟動，以及官方自己寫下的但書，查核日 2026 年 9 月 20 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "新增之二：IT 可以透過 Recovery CSP 遠端啟動"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二項新增讓 IT 不必人在裝置前面。版本說明寫的是：IT 管理者可透過 Recovery CSP 遠端設定並啟動 Cloud rebuild，能選擇重裝『目前的 build』或『指定的目標 build』；官方則在 Cloud rebuild 說明文件裡寫明條件——負責這件事的 CloudRebuild 節點，只有 Windows Insider 預覽版才有，正式推出前還可能改變。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重建完成後，裝置進入開箱設定（OOBE）。受管理裝置可透過 Windows Autopilot、Microsoft Intune、Backup for Organizations 與 OneDrive 自動重新佈建；未受管理的電腦則跟新電腦一樣自行完成開箱設定。OneDrive 等雲端服務的資料不受磁碟抹除影響，但本機檔案、帳號、應用程式與設定會全部清空——即使只選 Remove files 也一樣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對小公司的報修或交機流程來說，這一項的意義是：要回收或轉手的筆電，IT 不必實體拿到手上就能遠端觸發整個重裝——官方把這條路徑寫在『企業管理的裝置』這個前提底下。不過要不要連磁碟一起抹除，說明文件寫的是在 WinRE 裡選擇檔案清除程度的那一步決定；Recovery CSP 那一節列出來的，是能不能重建、要重建成哪個 build，以及查詢上一次遠端重建的結果。兩份文件都沒有說明遠端啟動需要哪一版 Intune、哪種授權，也沒有給出重建與抹除要花多久。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "現在還不知道的事：時程、資費與哪些機器用得到"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份文件都沒有給出正式版的時程——只寫測試版功能有可能永遠不會正式推出，沒有承諾任何日期。這一點連同下面的價格與相容性限制，都是官方留白，不是本文沒查到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份文件都沒有提到價格、方案或 Windows 11 版本限制。文件裡的 Enterprise 字樣，只是遠端自訂重建時『要裝哪一版』的參數選項，不是『只有企業版能用』的門檻；Intune 也只是官方舉例的一種端點管理方案，不是唯一途徑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方列出的前提條件：裝置要是 Windows 11、且 WinRE 狀態健康；製造商要把相容的網路驅動放進 WinRE，機器在 WinRE 裡連得上網路；硬體要符合 Windows 11 最低需求。最容易卡關的是第二項——官方在排解『連不上網路』那個錯誤碼時寫明，WinRE 環境目前只支援 WPA-2 Personal 的 Wi-Fi，公司或宿舍常見的憑證式無線網路依此推斷連不上，要改接有線或其他支援的無線網路；哪些機型的 WinRE 已內建這個驅動，兩份文件都沒列清單，實際能不能用要看那台機器本身。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "現在人在台灣，我的 Windows 11 電腦可以用到這兩項新功能嗎？",
+              "answer": "以本文查核到 2026 年 9 月 20 日的兩份微軟官方文件，這兩項變更只釋出給加入 Windows Insider 計畫、頻道選在 Experimental、且已更新到 Build 26340.9502 的裝置，而且官方說明多數功能是分批放送，就算符合這些條件也不保證立刻看得到。文件沒有提到台灣或任何地區限制，也沒有提到一般沒加入 Insider 計畫的電腦何時會拿到——換句話說，一般 Windows 11 使用者現在還用不到，微軟也沒有給出正式版的時間表。"
+            },
+            {
+              "question": "選了 Remove & sanitize files，資料真的清得乾淨嗎？",
+              "answer": "微軟官方的說法是『不可逆』，但同一份文件也寫明實際效果要看這台機器的儲存硬體支不支援、有沒有正確實作；Windows 只是送出抹除指令，再把儲存裝置回報的結果顯示出來，沒辦法自己驗證儲存裝置到底做了什麼。如果是依公司政策或法規要求要報廢、移轉的裝置，官方建議先向製造商確認這個組態支援資料抹除，不支援的話要改用製造商提供的工具，不要只靠 Cloud rebuild。"
+            },
+            {
+              "question": "Remove files 跟 Remove & sanitize files 差在哪？",
+              "answer": "官方說明兩者都會重新安裝 Windows，差別在資料處理方式：Remove files 比較快，但檔案理論上還是有可能被專門的救援工具救回來，適合自己要繼續用這台電腦的情境；Remove & sanitize files 會先用儲存硬體本身的抹除能力清除資料再重裝，可能要花比較久，官方建議在回收、退貨或轉手前使用。抹除過程中如果失敗，畫面上會出現 Skip sanitizing 的選項，按下去 Windows 一樣會裝完，但資料不會被安全清除，這一步在交機前是有可能被跳過的。"
+            },
+            {
+              "question": "公司 IT 一定要用 Microsoft Intune 才能遠端觸發 Cloud rebuild 嗎？",
+              "answer": "不一定。官方文件寫的是『企業端點管理方案，例如 Microsoft Intune』，Intune 只是官方舉的例子，不是唯一途徑；重點是要透過 Recovery CSP 這個管理介面。不過這整個遠端啟動能力目前也只存在於 Windows Insider 預覽版——官方文件寫明 Recovery CSP 底下的 CloudRebuild 節點只有預覽版才有，正式推出前還可能改變，所以現階段還不能當作正式環境可以依賴的報修流程。"
+            },
+            {
+              "question": "這跟微軟先前發布的 Project Zenith 是同一件事嗎？",
+              "answer": "不是。Project Zenith 是微軟另一則公告的主題，講的是 Windows 開發機的規格門檻，本站另有一篇報導，連結放在文末。Cloud rebuild 是這次公告裡的系統復原功能，目前只在 Windows Insider 的 Experimental 頻道測試，跟那組規格門檻沒有關係。兩者是微軟先後發布的不同公告，本文查核的四份來源都沒有提到 Project Zenith。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "測試版功能，不是已經上線的更新",
+          "text": "Cloud rebuild 這次新增的抹除磁碟與 IT 遠端啟動，目前只在 Windows Insider 的 Experimental 頻道、Build 26340.9502，微軟自己的說明文件標題就掛著 (Preview)，並要求只拿非正式環境的裝置做評估；版本說明也寫明測試版功能有可能永遠不會正式推出。文中所有效果描述都是微軟官方所述，本站沒有實機測試，也不提供是否應該升級或加入 Insider 計畫的建議。抹除磁碟的實際結果取決於裝置的儲存硬體，Windows 沒辦法自行驗證儲存裝置做了什麼；要依政策或法規報廢、轉移裝置，請先向製造商確認，不支援時改用製造商工具。本文查核日為 2026 年 9 月 20 日，實際功能與時程請以微軟官方頁面最新版本為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻",
+              "kind": "life",
+              "slug": "tech-news-windows-project-zenith-20260904"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Announcing new builds for 18 September 2026",
+          "url": "https://blogs.windows.com/windows-insider/2026/09/18/announcing-new-builds-for-18-september-2026/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Windows 11 Insider Experimental Preview Build 26340.9502（版本說明）",
+          "url": "https://learn.microsoft.com/en-us/windows-insider/release-notes/experimental/preview-build-26340-9502",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Cloud rebuild (Preview)（官方說明文件）",
+          "url": "https://learn.microsoft.com/en-us/windows/configuration/cloud-rebuild/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Announcing new builds for July 6 2026（Cloud rebuild 首次公告）",
+          "url": "https://blogs.windows.com/windows-insider/2026/07/06/announcing-new-builds-for-july-6-2026/",
+          "checked_on": "2026-09-20"
+        }
+      ]
+    }
+  }
+}
