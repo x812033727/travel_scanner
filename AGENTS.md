@@ -38,6 +38,15 @@ npm run test:tools && npm run check:tasks
 cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest
 ```
 
+## Releases on the production host
+
+The host has a one-shot deploy script and staged release drivers that cannot see each
+other, and a container rebuild between two phases of a staged release breaks it. Before
+writing or running any multi-phase release on the host (`prepare` -> `activate` ->
+content phases), read [`ops/release/README.md`](ops/release/README.md): the driver owns
+`/root/travel-scanner-deploy.hold` from `prepare` until its last phase succeeds, through
+`ops/release/hold.py`, and leaves it in place on failure.
+
 ## Where things are
 
 `apps/web` is the Next.js frontend and its same-origin BFF, `apps/api` is the FastAPI

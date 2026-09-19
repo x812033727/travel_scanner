@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-release-drivers-own-deploy-hold
 title: Codex 發布工具自己建立與移除部署暫停檔
-status: open
+status: done
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T04:39:06Z
 created_at: 2026-09-14T08:13:38Z
-completed_at:
-branch:
+completed_at: 2026-09-19T04:46:52Z
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - ops/release
@@ -54,17 +54,17 @@ drafts、publish-articles、publish-index 仍然會因為容器被換掉而拒�
 
 ## Definition of done
 
-- [ ] 從 `prepare` 開始到最後一個階段成功為止，`/root/travel-scanner-deploy.hold` 一直存在並指名這次發布。
+- [x] 從 `prepare` 開始到最後一個階段成功為止，`/root/travel-scanner-deploy.hold` 一直存在並指名這次發布。
       這段期間任何時刻執行一般部署腳本都會 `exit 3`。
-- [ ] 最後一個階段成功後，暫停檔由發布工具移除，而且只移除指名自己的那份。失敗或回滾時保留它，
+- [x] 最後一個階段成功後，暫停檔由發布工具移除，而且只移除指名自己的那份。失敗或回滾時保留它，
       並印出人工檢查後怎麼解除。
-- [ ] 另一個發布已持有暫停檔時，新的 `prepare` 拒絕開始，不覆寫。
-- [ ] 規則寫在 `ops/release/README.md`，`AGENTS.md` 有一段指過去。下一個寫發布工具的 agent
+- [x] 另一個發布已持有暫停檔時，新的 `prepare` 拒絕開始，不覆寫。
+- [x] 規則寫在 `ops/release/README.md`，`AGENTS.md` 有一段指過去。下一個寫發布工具的 agent
       不看這張票也會照做。
 
 ## Steps
 
-- [ ] 新增 `ops/release/hold.py`，只用標準庫，主機是 Python 3.14，不要 import `fcntl`，才能在 Windows 跑測試。提供三個函式：
+- [x] 新增 `ops/release/hold.py`，只用標準庫，主機是 Python 3.14，不要 import `fcntl`，才能在 Windows 跑測試。提供三個函式：
   - `acquire(release_dir, target_sha, owner, phases)`：用 `O_CREAT | O_EXCL` 建立暫停檔（mode 0644）。
     已存在且指名同一個 `release_dir` 與 `target_sha` 時視為續跑；指名別的發布就拒絕。
   - `verify(release_dir, target_sha)`：每個後續階段開始前呼叫。檔案不存在或指名別人就拒絕。
@@ -72,23 +72,23 @@ drafts、publish-articles、publish-index 仍然會因為容器被換掉而拒�
   - 三者都要求呼叫端已持有發布工具現在會拿的四把共用鎖：`/var/lock/travel-scanner-deploy.lock`、
     `/root/mokaair-deploy.lock`、`/run/mokaair-manual-deploy.lock`、`/run/travel-scanner-deployer/deploy.lock`。
     helper 本身不拿鎖。
-- [ ] 暫停檔格式：
+- [x] 暫停檔格式：
   - 第一行給人看，控制在 600 bytes 內，例如
     `codex-gemini-tutorials 正在發布 <sha12>（/root/mokaair-...，階段 prepare→…→publish-index，開始於 <UTC>）；檢查該目錄後才能刪除本檔`。
   - 第二行是一個 JSON，含 `target`、`release_dir`、`owner`、`phases`、`created_at`，給 `verify` 和 `clear` 比對。
   - 不得含任何密鑰或 `.env` 內容。
-- [ ] 新增 `ops/release/test_hold.py`，用 `unittest`，以暫存目錄代替 `/root`。要涵蓋：
+- [x] 新增 `ops/release/test_hold.py`，用 `unittest`，以暫存目錄代替 `/root`。要涵蓋：
   - 新建成功，同一發布可以續跑，別的發布被拒。
   - 檔案被刪或被換成別人的時候，`verify` 拒絕。
   - `clear` 不刪別人的檔案。
   - 第一行不超過 600 bytes。
-- [ ] 新增 `ops/release/README.md`，寫明：
+- [x] 新增 `ops/release/README.md`，寫明：
   - 兩條部署路徑，以及發布工具使用的四把共用鎖（一般部署腳本只拿第一把）。
   - 呼叫時機：`prepare` 拿到鎖之後、建置與記錄基準之前 `acquire`；`activate` 和每個內容階段開始時 `verify`；
     最後一個階段成功後 `clear`。沒有內容階段的純程式發布，在 `activate` 成功後 `clear`。
   - 一般部署腳本實際檢查的兩條規則與 `--ignore-hold`。
   - 放棄一個發布的做法：先檢查發布目錄，在目錄裡寫下決定，再刪暫停檔。
-- [ ] 在 `AGENTS.md` 加一小段：要在正式主機跑多段式發布，先讀 `ops/release/README.md`。
+- [x] 在 `AGENTS.md` 加一小段：要在正式主機跑多段式發布，先讀 `ops/release/README.md`。
 
 ## How to verify
 
@@ -113,3 +113,31 @@ drafts、publish-articles、publish-index 仍然會因為容器被換掉而拒�
   `reconcile_built_release.py`，以及各階段的 `publication-*.json`。
 - 後台部署中心的主機代理（`apps/api/deployment_agent`、`ops/deployer`，預設關閉）是第三條部署路徑，
   啟用前也應該遵守同一個暫停檔。那不在這張票的範圍內。
+
+### 2026-09-19 done in code (claude-fable-5-1)
+
+- `ops/release/hold.py`: `acquire` / `verify` / `clear` plus `read` and a small command line
+  (`show|acquire|verify|clear`, refusal exits 3 like the deploy script). Standard library only,
+  no `fcntl`, no locking of its own. `acquire` creates with `O_CREAT | O_EXCL` (then chmod 0644,
+  because drivers run under umask 077), returns `created` / `resumed`, and raises `HeldByAnother`
+  for any other release and for a hand-written or unparseable hold, so an owner's manual hold is
+  respected too. `verify` raises `HoldMissing` / `HeldByAnother`. `clear` deletes only a file
+  naming this `release_dir` + `target` and returns `missing` rather than raising when there is
+  nothing left, so a release that already succeeded does not end in an error.
+- File shape is the two-line contract `docs/ai-news-2026-ytd/release_hold.py` already wrote on
+  the host (first line for people, JSON with `target`, `release_dir`, `owner`, `phases`,
+  `created_at`); ownership is decided by `target` + `release_dir` only, so holds from that
+  driver and from this module recognise each other (tested). The first line is refused
+  (`ValueError`, nothing written) rather than truncated when it would exceed 600 bytes;
+  inputs are validated first (40-char lowercase SHA, absolute one-line `release_dir`,
+  owner <= 64 chars, non-empty single-line phases, tz-aware `now`).
+- `ops/release/test_hold.py`: 10 unittest cases, `python -m unittest discover -s ops/release -v`
+  from the repository root; a temp dir stands in for `/root`, nothing platform-specific.
+- `ops/release/README.md` has the two paths, the four locks, when to call which function, the
+  deploy script's two rules and `--ignore-hold`, the import/copy snippet, the abandon procedure
+  (inspect dir, write the decision there, only then delete) and the no-touch host rehearsal.
+  `AGENTS.md` gained a "Releases on the production host" section pointing at it.
+- Not done from here, by design: the host rehearsal in "How to verify" (steps 1-4) and the
+  `--dry-run` check between phases belong to whoever runs the next staged release; both are
+  spelled out in the README. No existing release tool was modified. CI does not run
+  `ops/release` tests (no `ops/` job exists); the API job would be the place if wanted.
