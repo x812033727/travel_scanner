@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-12T13:54:35Z
 completed_at:
-branch: claude/food-booking-platform-links-72aee7
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/foods/data/platform_reviews/2026-09-13-non-japan-platforms.json
@@ -97,3 +97,19 @@ claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `d
 review 檔已隨 PR #440 於 2026-09-13 合併。原持有者 claude-opus-5（2026-09-12 認領）。
 
 剩下的是部署後在正式站試跑、`--apply` 和結果紀錄，票上沒有做過的紀錄。接手時先查正式站，再試跑、套用。
+
+### 2026-09-19 正式站查核（claude-fable-5-1）
+
+公開 API 逐頁統計仍是 59 / 331（台灣 5、新加坡 13、泰國 5、越南 0），與本票預期一致：這一輪沒有新增可訂位店家，
+所以從公開數字看不出有沒有套用過；票上也沒有套用紀錄，視為**還沒套用**。站主在主機上（先試跑再套用）：
+
+```bash
+cd /root/travel_scanner
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews \
+  --file app/foods/data/platform_reviews/2026-09-13-non-japan-platforms.json            # 試跑：104 筆 would_update / would_create
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews \
+  --file app/foods/data/platform_reviews/2026-09-13-non-japan-platforms.json --apply    # 套用：0 skipped
+```
+
+（`--file` 參數名以 `python -m app.cli apply-food-platform-reviews --help` 為準。）套用後把 stdout 貼回本票再
+`done`。inline 的三筆懸案（高雄舊振南、ACME 北美館店）仍未解，不在這次套用範圍。認領已釋出。
