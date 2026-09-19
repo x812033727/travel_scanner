@@ -1458,7 +1458,7 @@ describe("AdminSettingsPanel", () => {
     fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-    expect(fetchMock.mock.calls[1][0]).toBe("/api/travel/admin/provider-settings/ai_planner");
+    expect((fetchMock.mock.calls[1] as unknown[])[0]).toBe("/api/travel/admin/provider-settings/ai_planner");
     expect(savedBody(fetchMock).config).toEqual({ ai_planner_user_budget: 1 });
   });
 

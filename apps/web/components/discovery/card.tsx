@@ -27,12 +27,12 @@ export function discoveryDetailHref(item: Pick<DiscoveryItem, "kind" | "id">, re
 }
 // One formatter per reader locale: a feed renders dozens of cards in one pass.
 const languageNames = new Map<string, Intl.DisplayNames>();
-/** The content language in the reader's own words: 日文 for a zh-TW reader, Japanese for an en
- *  reader. CLDR does the translating, so there is no five-way table to keep in step. Null when
- *  the two locales match, when the tag has no name or cannot be parsed, or when the runtime has
- *  no Intl.DisplayNames: in every one of those cases the card stays exactly as it was. Locales
- *  compare as whole canonical tags, the same test the feed's ordering key applies, so zh-TW
- *  readers still see simplified-Chinese content named. */
+/** The content language in the reader's own words: "Japanese" for an en reader, and the zh-TW,
+ *  zh-CN, ja or ko name for those readers. CLDR does the translating, so there is no five-way
+ *  table to keep in step. Null when the two locales match, when the tag has no name or cannot be
+ *  parsed, or when the runtime has no Intl.DisplayNames: in every one of those cases the card
+ *  stays exactly as it was. Locales compare as whole canonical tags, the same test the feed's
+ *  ordering key applies, so a zh-TW reader still sees simplified-Chinese content named. */
 export function contentLanguageName(readerLocale: string, contentLocale: string | null | undefined): string | null {
   try {
     if (typeof contentLocale !== "string" || !contentLocale.trim()) return null;

@@ -1640,7 +1640,9 @@ def test_planner_budgets_are_editable_from_the_planner_card_and_clear_back_to_th
     cleared = _validate_provider_values(
         "ai_planner",
         lowered,
-        ProviderSettingsUpdate(config={"ai_planner_user_budget": None, "ai_planner_ip_budget": None}),
+        ProviderSettingsUpdate(
+            config={"ai_planner_user_budget": None, "ai_planner_ip_budget": None}
+        ),
     )
     assert cleared == {"ai_planner_mode": "auto"}
 

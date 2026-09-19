@@ -7,6 +7,7 @@ from uuid import uuid4
 import fakeredis.aioredis
 import httpx
 import pytest
+from fastapi import Request
 from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.affiliates.router as affiliate_router
@@ -30,6 +31,7 @@ from app.models import (
     User,
 )
 from app.problems import AppError
+from app.travel_services.schemas import CatalogConfig
 
 
 class AffiliateSession:
@@ -517,6 +519,105 @@ async def test_verified_destination_brand_replaces_generic_travelpayouts(
     )
     assert [item.partner for item in response.options] == ["klook"]
     assert "/clickout?placement=trip&token=" in response.options[0].clickout_url
+
+
+class DestinationClickoutSession(AffiliateSession):
+    """The one-row query the destination clickout makes: the offer and its brand."""
+
+    def __init__(self, offer: DestinationAffiliateOffer, brand: TravelServiceBrand) -> None:
+        super().__init__()
+        self.row = (offer, brand)
+
+    async def execute(self, _statement: object) -> Any:
+        row = self.row
+
+        class OneRow:
+            @staticmethod
+            def first() -> tuple[DestinationAffiliateOffer, TravelServiceBrand]:
+                return row
+
+        return OneRow()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("article", "stored"),
+    [
+        ("tokyo-esim-guide", "tokyo-esim-guide"),
+        # Not one of our slugs: upper case, a path, nothing, longer than the column.
+        ("Tokyo-eSIM", None),
+        ("../admin", None),
+        ("", None),
+        ("a" * 121, None),
+    ],
+)
+async def test_destination_clickout_records_the_article_that_placed_the_button(
+    monkeypatch: pytest.MonkeyPatch, article: str, stored: str | None
+) -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    settings = Settings()
+    user = User(id=uuid4(), email="member@example.com", password_hash="unused", is_active=True)
+    brand = TravelServiceBrand(
+        id=uuid4(),
+        project_id="123",
+        code="klook",
+        approval="approved",
+        enabled=True,
+        verified_at=datetime.now(UTC),
+    )
+    offer = DestinationAffiliateOffer(
+        id=uuid4(),
+        brand_id=brand.id,
+        destination_id="tokyo",
+        module="activities",
+        target_url="https://www.klook.com/city/28-tokyo/",
+        status="approved",
+        verified_at=datetime.now(UTC),
+        version=1,
+    )
+    session = DestinationClickoutSession(offer, brand)
+
+    async def runtime_settings(_session: object) -> Settings:
+        return settings
+
+    async def guide_enabled(_session: object) -> tuple[CatalogConfig, int]:
+        return CatalogConfig(affiliate_placements=["guide"]), 1
+
+    async def target(*_args: object, **_kwargs: object) -> str:
+        return "https://www.klook.com/city/28-tokyo/?aid=134379"
+
+    async def no_limit(*_args: object, **_kwargs: object) -> None:
+        return None
+
+    monkeypatch.setattr(affiliate_router, "get_redis", lambda: redis)
+    monkeypatch.setattr(affiliate_router, "load_runtime_settings", runtime_settings)
+    monkeypatch.setattr(affiliate_router, "catalog_config", guide_enabled)
+    monkeypatch.setattr(affiliate_router, "ready_destination_offer", lambda *_args: True)
+    monkeypatch.setattr(affiliate_router, "resolve_offer_target", target)
+    monkeypatch.setattr(affiliate_router, "enforce_named_rate_limit", no_limit)
+
+    redirect = await affiliate_router.destination_affiliate_clickout(
+        offer.id,
+        # Only read for the rate-limit key of an anonymous click; this one has a member.
+        cast(Request, None),
+        cast(AsyncSession, session),
+        user,
+        placement="guide",
+        article=article,
+    )
+    assert redirect.status_code == 303
+    assert redirect.headers["location"] == "https://www.klook.com/city/28-tokyo/?aid=134379"
+    assert session.commits == 1
+    clicks = [item for item in session.added if isinstance(item, AffiliateClick)]
+    assert len(clicks) == 1
+    assert clicks[0].article_slug == stored
+    # Nothing else about the click depends on the article: the surface is still the one
+    # that rendered the button, and the partner-side label still stops at destination x
+    # module x locale x placement.
+    assert clicks[0].placement == "guide"
+    assert clicks[0].sub_id == "dst_activities_tokyo_zh-TW_guide"
+    assert clicks[0].destination_summary == "tokyo"
+    assert clicks[0].status == "redirected"
 
 
 @pytest.mark.asyncio

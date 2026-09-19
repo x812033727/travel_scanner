@@ -1,14 +1,14 @@
 ---
 id: 2026-09-19-aio-answer-first-descriptions-part-2
 title: AIO: answer-first descriptions, part 2 — 東南亞、台灣、港澳新加坡的 how-to 與 intel（33 份文件）
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T11:16:15Z
 created_at: 2026-09-19T11:14:27Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/guides/content/bangkok-4-day-itinerary.json

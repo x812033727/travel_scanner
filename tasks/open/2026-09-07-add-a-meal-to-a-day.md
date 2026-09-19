@@ -12,9 +12,22 @@ branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/foods/router.py
+  - apps/api/app/foods/schemas.py
+  - apps/api/app/foods/selection.py
   - apps/api/app/hotspots/router.py
+  - apps/api/app/i18n.py
   - apps/api/app/restaurants/user_router.py
+  - apps/api/app/trips/selections.py
+  - apps/api/tests/test_trip_selections.py
+  - apps/web/components/frontend-plan-action.test.tsx
+  - apps/web/components/travel-card-actions.test.tsx
   - apps/web/components/travel-card-actions.tsx
+  - apps/web/lib/frontend-navigation.ts
+  - apps/web/messages/en/common.json
+  - apps/web/messages/ja/common.json
+  - apps/web/messages/ko/common.json
+  - apps/web/messages/zh-CN/common.json
+  - apps/web/messages/zh-TW/common.json
 ---
 
 # 行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal|append
