@@ -1,14 +1,14 @@
 ---
 id: 2026-09-15-publish-held-ai-coding-content
 title: 批次 04 與 Claude Code 兩系列要一起發：線上 25 個連結指向它們
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T06:43:40Z
 created_at: 2026-09-15T12:49:32Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-14-sitemap-split-before-1000-rows
   - 2026-09-14-claude-advanced-live-validation
