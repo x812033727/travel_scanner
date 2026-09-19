@@ -1,0 +1,374 @@
+{
+  "slug": "tech-news-cisa-kev-linux-kernel-20260918",
+  "event_date": "2026-09-18",
+  "event_date_basis": "以 CISA 兩則公告自己印出的「Release Date」為準：兩頁都印 September 18, 2026。頁面沒有標示時區，本紀錄也不替它補一個。頁面上機器可讀的 <time datetime> 是 2026-09-18T12:00:00Z，但那是 CISA 網站的佔位時刻，不是真的發布時刻——同站 BOD 26-04 頁面印的是 2026-06-10T12:00:00Z，它下方的相關指令列表印的是 2026-06-10T12:00:00Z 與 2026-02-05T12:00:00Z，全部都落在 12:00:00Z。即使照字面換算，12:00Z 等於台北 2026-09-18 20:00，仍是同一個日曆日；所以事件日（台北）為 2026-09-18，且本文不寫任何發布時刻，也不寫「上午／下午」。另有一條獨立佐證：CISA KEV 目錄對這三個 CVE 印出的「Date Added」都是 2026-09-18。slug 的日期後綴、內容包 news_date、正文第一段的日期三者都用 2026-09-18。",
+  "title": "CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單",
+  "checked_on": "2026-09-20",
+  "sources": [
+    {
+      "title": "CISA Alert：CISA Adds Two Known Exploited Vulnerabilities to Catalog（2026-09-18，CVE-2025-39964 與 CVE-2026-53266）",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "publisher": "Cybersecurity and Infrastructure Security Agency (CISA)",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "CISA Alert：CISA Adds One Known Exploited Vulnerability to Catalog（2026-09-18，CVE-2025-39682）",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "publisher": "Cybersecurity and Infrastructure Security Agency (CISA)",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "CISA：Known Exploited Vulnerabilities Catalog（三筆條目的加入日、期限、描述與必辦事項）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "publisher": "Cybersecurity and Infrastructure Security Agency (CISA)",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "CISA：BOD 26-04 Prioritizing Security Updates Based on Risk（兩則公告共同援引的指令全文）",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "publisher": "Cybersecurity and Infrastructure Security Agency (CISA)",
+      "checked_on": "2026-09-20"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-20（台北）本人以 curl -sL -A \"Mokaair-editorial\" 逐條重新抓取四條 sources[]，請求的 User-Agent、標頭、查詢字串與表單都沒有帶入任何 email、姓名或其他個人資料；每一條都先把 body 抽成純文字讀過，確認是正文而不是拒絕頁或殼頁，才登記 checked_on。結果：(1) adds-two 公告 HTTP 200、53,411 bytes、0 次轉址，正文 4,436 字元；(2) adds-one 公告 HTTP 200、53,224 bytes、0 次轉址，正文 4,400 字元；(3) KEV 目錄頁 HTTP 200、283,978 bytes、0 次轉址，正文 36,823 字元，表格是伺服器端算好的 HTML，三筆條目完整可讀；(4) BOD 26-04 HTTP 200、84,350 bytes、0 次轉址，正文 22,281 字元。四條都是 cisa.gov 一手來源，沒有用任何整合站、科技媒體或封存站補事實。另外讀了兩份輔助資料但刻意不列進 sources[]（理由見 unverified_or_excluded）：KEV 目錄的官方 JSON feed（https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json，HTTP 200、1,735,385 bytes、catalogVersion 2026.09.18、dateReleased 2026-09-18T19:00:05.0974Z、count 1716），它印出的三筆欄位與網頁版逐字相同，且全庫只有這三筆的 dateAdded 是 2026-09-18，所以「同一天就是這三個、沒有漏掉第四個」是查得實的；以及 BOD 26-04 頁面內嵌的表 1 圖片（HTTP 200、204,497 bytes、1024x593），以圖片閱讀工具逐列判讀。nvd.nist.gov/vuln/detail/<CVE> 的人類可讀頁面對 curl 只回 2,092 bytes 的 Angular 殼頁（<title>NVD - Home</title> 加 Cloudflare 挑戰腳本），讀不到正文，因此不論如何都不能放進 sources[]；本文改以 KEV 目錄頁作為三個 CVE 的目錄來源。本文沒有與本垂直既有篇目重複：站上 18 篇 tech-news-* 沒有任何一篇寫過 CISA、KEV 目錄或 Linux 核心漏洞；最接近的鄰居是 tech-news-eu-cra-reporting-20260911（歐盟《網路韌性法》第 14 條的「遭積極利用漏洞」通報義務），題材相鄰但主體是歐盟對製造商的通報制度，兩篇不衝突，適合當第二個結尾連結（其 zh-TW title 為「歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報」，逐字照抄；最終指定仍以指派訊息為準）。",
+  "verified_facts": [
+    {
+      "fact": "CISA 的第一則公告標題是「CISA Adds Two Known Exploited Vulnerabilities to Catalog」，頁面「Release Date」欄印出的日期是 2026 年 9 月 18 日。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Alert CISA Adds Two Known Exploited Vulnerabilities to Catalog Release Date September 18, 2026"
+    },
+    {
+      "fact": "這則公告說 CISA 把兩個新漏洞加進它的「已遭利用漏洞（KEV）目錄」。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog"
+    },
+    {
+      "fact": "CISA 說加入目錄的依據是「有實際遭到利用的證據」。這是 CISA 自己的判斷，公告沒有附上證據本身。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "based on evidence of active exploitation."
+    },
+    {
+      "fact": "這則公告列出的兩個編號與名稱，依頁面順序是 CVE-2025-39964「Linux Kernel Race Condition Vulnerability」與 CVE-2026-53266「Linux Kernel Out-of-Bounds Write Vulnerability」。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2025-39964 Linux Kernel Race Condition Vulnerability CVE-2026-53266 Linux Kernel Out-of-Bounds Write Vulnerability"
+    },
+    {
+      "fact": "公告對這兩個漏洞的通則性描述用複數句：這類漏洞是惡意網路行為者常用的攻擊途徑，對聯邦體系構成重大風險。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These types of vulnerabilities are a frequent attack vector for malicious cyber actors and pose significant risks to the federal enterprise."
+    },
+    {
+      "fact": "兩則公告都援引 CISA 的「Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk」，它替美國聯邦文職行政部門（FCEB）機關訂出漏洞管理要求。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies."
+    },
+    {
+      "fact": "公告寫明 BOD 26-04 只適用於 FCEB 機關；對其他所有組織，CISA 用的字是「鼓勵」（encourages），不是要求。這是整篇文章最重要的界線。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of KEV Catalog vulnerabilities"
+    },
+    {
+      "fact": "公告說 BOD 26-04 還替「機關必須檢查在套用修補之前系統是否已遭入侵」訂出基本期待。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied."
+    },
+    {
+      "fact": "公告頁面上機器可讀的發布時刻標記是 2026-09-18T12:00:00Z。這不是真的發布時刻：同站的 BOD 26-04 頁面與其相關指令列表印的也全是 12:00:00Z（2026-06-10T12:00:00Z、2026-02-05T12:00:00Z），可見 12:00:00Z 是 CISA 網站的佔位時刻。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<time datetime=\"2026-09-18T12:00:00Z\">September 18, 2026"
+    },
+    {
+      "fact": "同一天 CISA 另外發了第二則公告，標題是「CISA Adds One Known Exploited Vulnerability to Catalog」，「Release Date」同樣印 2026 年 9 月 18 日。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Alert CISA Adds One Known Exploited Vulnerability to Catalog Release Date September 18, 2026"
+    },
+    {
+      "fact": "第二則公告加入的一個編號是 CVE-2025-39682，名稱是「Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability」。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2025-39682 Linux Kernel Improper Check for Unusual or Exceptional Conditions Vulnerability"
+    },
+    {
+      "fact": "第二則公告的依據寫法與第一則相同：CISA 說是基於有實際遭到利用的證據，把一個新漏洞加進 KEV 目錄。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation."
+    },
+    {
+      "fact": "第二則公告的通則句用單數（This type of vulnerability is…），與第一則的複數句相對應，是兩則公告唯一的措辭差異；其餘段落逐字相同。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise."
+    },
+    {
+      "fact": "KEV 目錄頁把這三筆的廠商／產品欄都標為「Linux | Kernel」，也就是三個都掛在 Linux 核心底下，不是掛在某一家裝置廠商底下。（查核方法：「Linux | Kernel」在目錄頁第 1 頁的正文裡剛好出現 3 次，且每一次都緊接著這三個編號之一；引文是其中一筆。）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Linux | Kernel CVE-2025-39682"
+    },
+    {
+      "fact": "CVE-2025-39682 在目錄裡的描述指出問題出在核心的 TLS 接收路徑；同一段還寫著受影響的產品可能已經終止支援（EoL／EoS），建議停止使用或改用仍在支援的版本。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path"
+    },
+    {
+      "fact": "CVE-2026-53266 在目錄裡的描述指出問題出在核心 ebtables 的 SNAT target（橋接／封包改寫相關的部分）。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target"
+    },
+    {
+      "fact": "CVE-2025-39964 在目錄裡的描述指出問題出在同一個 AF_ALG socket 的並行寫入（核心加密介面相關的部分）。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket"
+    },
+    {
+      "fact": "三筆之中只有 CVE-2026-53266 與 CVE-2025-39682 帶「受影響產品可能已 EoL／EoS，建議停用或改用仍受支援版本」這句；CVE-2025-39964 的描述沒有這一句。（查核方法：這句在目錄頁第 1 頁的正文裡剛好出現 2 次，以條目切段後分別落在 CVE-2025-39682 與 CVE-2026-53266 段內，CVE-2025-39964 段內沒有。這個差別是查證過的，不要為了整齊抹平。）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+    },
+    {
+      "fact": "三筆的「Date Added」都是 2026-09-18，「Due Date」都是 2026-09-21。（查核方法：「Date Added: 2026-09-18 Due Date: 2026-09-21」這串在目錄頁第 1 頁的正文裡剛好出現 3 次，把正文以每筆條目切段後，三段各命中一次。）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Date Added: 2026-09-18 Due Date: 2026-09-21"
+    },
+    {
+      "fact": "三筆的「Known To Be Used in Ransomware Campaigns?」欄位目前都印 Unknown（未知），不是 Known。（以條目切段逐筆確認；這串在第 1 頁 20 筆裡出現 20 次，所以不能只靠次數，必須逐段看。）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Known To Be Used in Ransomware Campaigns? Unknown"
+    },
+    {
+      "fact": "三筆的「Forensic triage required per BOD-26-04」欄位都印 Yes。（同樣以條目切段逐筆確認。）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Forensic triage required per BOD-26-04: Yes"
+    },
+    {
+      "fact": "三筆的 Action 欄逐字相同，核心要求是「依照廠商指示採取緩解措施」，若沒有可用的緩解措施則停止使用該產品。這就是一般使用者能照著做的那一句。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apply mitigations in accordance with vendor instructions, ensuring compliance with CISA’s BOD 26-04 Prioritizing Security Updates Based on Risk (see URL in Notes) guidance and CISA’s “Forensics Triage Requirements” (see URL in Notes). Follow applicable BOD 26-04 guidance for cloud services or discontinue use of the product if mitigations are unavailable."
+    },
+    {
+      "fact": "三筆的 Additional Notes 第一句逐字相同：這個漏洞影響的是一個開源元件、第三方函式庫、協定或專有實作，可能被不同產品使用。CISA 用的是「可能被不同產品使用」，沒有點名任何產品。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This vulnerability affects an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products."
+    },
+    {
+      "fact": "三筆的 Related CWE 分別是 CWE-754（CVE-2025-39682）、CWE-787（CVE-2026-53266）、CWE-362（CVE-2025-39964）。（以條目切段逐筆確認。注意「Related CWE: CWE-787」在第 1 頁出現 2 次，另一次屬於別的條目，不能只靠字串次數判斷。）",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Related CWE: CWE-754"
+    },
+    {
+      "fact": "CISA 對這份目錄的自述是：它維護的是「已於真實世界遭到利用的漏洞」的權威來源，組織應把它當成漏洞管理排序的輸入之一。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "CISA maintains the authoritative source of vulnerabilities that have been exploited in the wild. Organizations should use the KEV catalog as an input to their vulnerability management prioritization framework."
+    },
+    {
+      "fact": "查核當天（2026-09-20 台北）目錄頁自己印出的總筆數是 1,716 筆，分頁顯示第 1 至 20 筆；這三筆排在最前面。這個數字與排序會隨 CISA 新增條目而改變。",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Showing 1 to 20 of 1716 results"
+    },
+    {
+      "fact": "BOD 26-04 的頁面日期是 2026 年 6 月 10 日，早於這次公告三個多月；它不是為了這三個漏洞而發的。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "BOD 26-04: Prioritizing Security Updates Based on Risk June 10, 2026"
+    },
+    {
+      "fact": "BOD 的性質：對美國聯邦行政部門與機關具強制力的指令，法源是 44 U.S.C. § 3552(b)(1)。台灣的機關、企業與個人都不在它的拘束範圍內。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A Binding Operational Directive is a compulsory direction to federal, executive branch, departments, and agencies for purposes of safeguarding federal information and information systems."
+    },
+    {
+      "fact": "BOD 26-04 取代並廢止了 2019 年的 BOD 19-02 與 2021 年建立 KEV 目錄的 BOD 22-01。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Directive supersedes and hereby revokes BOD 19-02"
+    },
+    {
+      "fact": "BOD 26-04 用四個變數決定修補的急迫性：資產是否對外公開、漏洞是否在 KEV 目錄上、攻擊者能否把利用步驟全部自動化、以及利用後取得的是部分控制還是完全控制。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Asset Exposure: Is the vulnerable asset publicly exposed? KEV Status: Is the vulnerability, as identified by a common vulnerabilities and exposures identifier (CVE ID), on CISA’s Known Exploited Vulnerabilities Catalog ? Exploit Automation: Is an adversary able to automate all the steps necessary to exploit the vulnerability? Technical Impact: Does an adversary gain partial control or total control of the vulnerable asset"
+    },
+    {
+      "fact": "BOD 26-04 明寫「天」指的是日曆天，不是工作天。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Days are calendar days."
+    },
+    {
+      "fact": "BOD 26-04 說明表 1 裡標示「& forensic triage」的那些格，機關要在期限內（三天）完成修補或緩解，並對該資產做一次鑑識初篩，判斷系統是否已被入侵。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "means that the agency must complete remediation or mitigation action within the timeline (three days) and carry out a forensic triage of the asset to assess whether the system is compromised."
+    },
+    {
+      "fact": "BOD 26-04 說明表 1 的期限從「CISA 把漏洞加進 KEV 目錄」或「機關自己在資產上盤點到該漏洞並更新 CDM 儀表板」兩者較早發生的那一刻起算。這解釋了為什麼這三筆的起算日就是 2026-09-18。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The timelines defined in Table 1 begin when either (1) CISA adds the vulnerability to the KEV Catalog, or (2) pursuant to BOD 23-01 , the agency enumerates or identifies the vulnerability on an asset and updates the Continuous Diagnostics and Mitigation (CDM) Program Agency and Federal Dashboard . Whichever event occurs first starts the remediation timeline."
+    },
+    {
+      "fact": "BOD 26-04 的必辦事項分三階段，表 1 的修補期限寫在「Phase III – Within 180 days of issuance」那一段底下；不得自行推算這個 180 天何時屆滿，也不得斷言 2026-09-18 當天表 1 是否已全面生效。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Phase III – Within 180 days of issuance: Remediate each vulnerability as quickly as possible and no later than the timelines set forth in Table 1: Remediation Timelines."
+    },
+    {
+      "fact": "表 1 本身在頁面上是一張圖片（alt 文字為「BOD 26-04: Table1-Remediation Timelines」），不是 HTML 表格。本研究另行下載該圖（HTTP 200、204,497 bytes、1024x593）並以圖片閱讀工具判讀：共 16 列，期限欄的值只有五種——3 days & forensic triage、3 days、14 days、60 days、Fix on system upgrade。也就是說「三天」不是所有情況的期限。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "alt=\"BOD 26-04: Table1-Remediation Timelines\""
+    },
+    {
+      "fact": "BOD 26-04 說明「Fix on system upgrade」的意思是：除非條件改變，該漏洞應在該資產下一次排定的重大升級或重建時一併修掉。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Fix on system upgrade means that, unless conditions change as described in item (e) above, the vulnerability should be remediated the next time the vulnerable asset receives a scheduled major upgrade or rebuild."
+    },
+    {
+      "fact": "BOD 26-04 對 CISA 自己也訂了事項，其中一項是維護 KEV 目錄並在更新時通知機關；這解釋了 9 月 18 日那兩則公告存在的理由。",
+      "url": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Maintain the KEV Catalog at cisa.gov/known-exploited-vulnerabilities-catalog and alert agencies of updates for awareness and action."
+    }
+  ],
+  "not_said": [
+    "CISA 沒有點名任何廠商、品牌、機型或韌體版本。三筆 Notes 只寫「可能被不同產品使用」（could be used by different products），廠商／產品欄一律是 Linux | Kernel。文章因此不得出現任何「某牌 NAS／某牌路由器／某支手機受影響」的句子，連「例如」都不行——舉例會被讀成 CISA 點過名。",
+    "CISA 沒有說誰在利用這三個漏洞、從什麼時候開始、針對哪些國家或哪些產業。兩則公告只寫「基於有實際遭到利用的證據」，沒有附上證據、案例、受害者或時間點。",
+    "CISA 沒有說台灣、亞洲或任何特定國家受到影響，也沒有提到任何非美國的主管機關。",
+    "四條來源都沒有印出受影響的 Linux 核心版本區間，也沒有印出「修好的版本是哪一版」。三筆 Notes 底下列了 git.kernel.org 的連結，但來源沒有說那些連結是修補程式、也沒有說修補已經釋出；不得據此寫「上游早就修好了」。",
+    "四條來源都沒有印出這三個 CVE 最初是什麼時候公開的，也沒有說它們彼此相關、屬於同一波攻擊或同一個攻擊者。",
+    "兩則公告沒有解釋為什麼同一天要分成兩則發布（一則兩個、一則一個），也沒有說三筆的先後順序有任何意義。",
+    "KEV 目錄的「Known To Be Used in Ransomware Campaigns?」對三筆都印 Unknown。來源沒有說 Unknown 代表什麼，更沒有說「沒有被用於勒索軟體」。不得把未知寫成否定。",
+    "KEV 目錄對三筆都只印一個 Due Date（2026-09-21）。來源沒有說這個日期對哪一類資產適用，BOD 26-04 的表 1 反而顯示期限依資產狀況分成 3 天、14 天、60 天與「下次重大升級時一併修」。不得寫「美國聯邦機關必須在三天內把所有機器修好」。",
+    "BOD 26-04 沒有印出被它廢止的 BOD 22-01 舊期限是幾天，所以不得寫「期限從兩週／三週縮短到三天」這種比較。",
+    "BOD 26-04 沒有說 2026-09-18 當天表 1 的期限是否已對機關全面生效——表 1 寫在「Phase III – Within 180 days of issuance」底下，而 Phase I 的「effective immediately」寫的是監看 KEV 更新與積極緩解。不得自行推算 180 天的屆滿日。",
+    "來源沒有說 EoL／EoS 指的是哪些產品、哪些版本，也沒有說要怎麼判斷自己的裝置是不是已經 EoL。",
+    "來源沒有給一般消費者任何期限，也沒有說一般使用者「應該」在什麼時候之前完成更新。",
+    "兩則公告與目錄都沒有說這三個漏洞可以被遠端觸發、需不需要先取得帳號、或影響嚴不嚴重的量級判斷。本文不做這類推論。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "三個 CVE 的公開日期、受影響的 Linux 核心版本區間、以及 CVSS 分數。",
+      "seen_where": "2026-09-20 以 curl -sL -A \"Mokaair-editorial\" 讀 NVD 官方 REST API 2.0（https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=<CVE>，三筆各 HTTP 200，8,165–10,687 bytes），拿到 published／configurations／metrics 等欄位。",
+      "why_excluded": "三個理由，缺一都不會排除：(1) nvd.nist.gov/vuln/detail 的人類可讀頁面對 curl 只回 2,092 bytes 的 Angular 殼頁，讀不到正文，不能列進 sources[]；REST API 端點是 JSON，不是 BRIEF 說的「文章頁的網址」。(2) sources[] 上限四條已由兩則公告、KEV 目錄與 BOD 26-04 用滿，而那四條才是這則新聞的主體。(3) CVSS 本身就不該寫：同一個 CVE 由 kernel.org 這個 CNA 與 NVD 給的分數差很多（CVE-2025-39682 為 9.8 CRITICAL 對 7.1 HIGH、CVE-2025-39964 為 7.8 HIGH 對 5.5 MEDIUM、CVE-2026-53266 只有 CNA 的 8.8 HIGH 而沒有 NVD 的分數），挑任何一個寫成「嚴重度是 X」都是誤導。因此文章一個版本號、一個分數、一個公開日期都不寫。"
+    },
+    {
+      "claim": "「這三個漏洞其實是舊漏洞，早就修好了，新的只是『有人在用』這件事」這個很吸引人的框架。",
+      "seen_where": "NVD API 顯示三筆的 published 分別是 2025-09-05、2025-10-13 與 2026-06-25；KEV Notes 也列了 git.kernel.org 的連結。",
+      "why_excluded": "支撐它的兩個事實都不在 sources[] 四條裡：公開日期只在 NVD（見上一條），而 KEV Notes 只是列出連結、沒有說那是修補。這個框架若沒有來源就是推測，整篇文章不得使用，must_not_write 已列。"
+    },
+    {
+      "claim": "BOD 26-04 表 1 十六列的完整內容與每一列的期限。",
+      "seen_where": "表 1 在 BOD 頁面上是圖片（BOD_26-04_Table_1_Remediation_Timelines_0.png，HTTP 200、204,497 bytes、1024x593），本研究下載後以圖片閱讀工具判讀。",
+      "why_excluded": "讀圖的結果只用來確認一件事：期限不只有三天，還有 14 天、60 天與「下次重大升級時一併修」。正文只引用 BOD 頁面用文字印出來的兩句（「Days are calendar days.」與「& forensic triage」那一格是三天），不逐列複述圖片內容，也不把圖片裡的欄位值寫成表格——那等於把一張沒有替代文字的圖當成結構化資料。"
+    },
+    {
+      "claim": "2026-09-19、09-20 兩天 CISA 有沒有再新增 KEV 條目。",
+      "seen_where": "KEV 官方 JSON feed 在 2026-09-20（台北）抓到的 catalogVersion 仍是 2026.09.18、dateReleased 2026-09-18T19:00:05.0974Z，全庫 dateAdded 最新就是 2026-09-18 的這三筆。",
+      "why_excluded": "這是 live data，隨時會變，而且「週末沒有新增」本身沒有官方說法背書。文章不得寫「這是最新的一批」「之後沒有再新增」。"
+    },
+    {
+      "claim": "這三個漏洞對台灣的實際影響、台灣有沒有機關或廠商跟進發布公告。",
+      "seen_where": "沒有查。",
+      "why_excluded": "DELTA-4-6 第 9 條已說明本批沒有 NCC 消息、NCC 官網改版後舊網址失效，不得猜它的網址或 API；數位發展部與 TWCERT/CC 本輪沒有查證。沒有查過的事不寫，也不得暗示「台灣尚未跟進」。"
+    },
+    {
+      "claim": "Android、NAS、家用路由器等產品實際使用 Linux 核心的比例、版本或更新政策。",
+      "seen_where": "沒有一手來源。",
+      "why_excluded": "「Linux 核心跑在 Android 手機、NAS 與家用路由器裡」屬於常識級背景，寫成一句背景說明可以，但任何比例、市占、版本或「多久會收到更新」的數字都沒有來源，一律不寫。"
+    },
+    {
+      "claim": "CISA 為什麼把同一天的三筆拆成兩則公告。",
+      "seen_where": "兩則公告本身。",
+      "why_excluded": "來源沒有解釋。文章可以寫「同一天發了兩則」這個事實，不得替 CISA 補理由。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般使用者，不是資安從業人員。他看到「CISA 把三個 Linux 核心漏洞列為已遭利用」第一個反應通常是兩種極端：要嘛覺得和自己無關（我又沒有 Linux 電腦），要嘛過度緊張（9 月 21 日？我來不及了）。這篇文章要同時擋掉這兩種誤讀。\n\n骨架就是三句話：同一天兩則公告三個 CVE；一般人家裡其實有不少東西裡面跑著 Linux 核心；更新不在 CISA 手上，在做你那台裝置的廠商手上。\n\n最重要的一件事：**2026 年 9 月 21 日那個期限不是給讀者的。** 兩則公告自己寫得很白——BOD 26-04 只適用於美國聯邦文職行政部門（FCEB）機關，對其他所有組織 CISA 用的字是「鼓勵」。這一點要在第一節就講清楚，不要留到最後一節才澄清。\n\n第二重要的是界線：CISA 一個產品都沒有點名。它三次寫的是同一句——這是一個開源元件，「可能被不同產品使用」。所以文章可以寫「Linux 核心跑在 Android 手機、NAS、家用路由器裡」當背景（並明說這是常識背景、不是 CISA 說的），但絕不能接著說「所以你的某某牌 NAS 受影響」。舉例會被讀成點名。\n\n五節安排：\n一、9 月 18 日發生了什麼：同一天兩則公告（一則兩個、一則一個）、三個 CVE、CISA 的依據是「有實際遭到利用的證據」，以及馬上把「9/21 是誰的期限」交代掉。\n二、三個編號各是什麼：只寫編號、名稱與 CISA 描述裡指出的核心部位（TLS 接收路徑、ebtables 的 SNAT target、AF_ALG socket 的並行寫入），一句機制都不解釋。本節結尾放表：四欄（CVE 編號／CISA 給的名稱／Related CWE／是否帶 EoL 提醒），三列，caption 寫查核日 2026 年 9 月 20 日。特別注意：EoL 那一欄只有 CVE-2026-53266 與 CVE-2025-39682 是「有」，CVE-2025-39964 是「無」——這個差別是查證過的，不要為了整齊抹平。\n三、「Linux 核心」對一般人是什麼：這是全篇最需要原創、也最容易寫錯的一節。用編輯自己設計的生活情境（要明說是編輯設計的例子），說明同一份核心會被包進手機、儲存裝置與網通裝置的韌體裡，所以「我沒有用 Linux」通常不成立；接著立刻補上 CISA 沒有點名任何產品這件事，並解釋為什麼它不點名（它自己寫的是開源元件可能被不同產品使用）。本節結尾放圖解。\n四、那個期限到底是什麼：BOD 26-04 是 2026 年 6 月 10 日發布的指令，取代了 2021 年建立 KEV 目錄的 BOD 22-01；期限用的是日曆天；帶「& forensic triage」的那一格是三天，還要做一次鑑識初篩；期限從 CISA 把漏洞加進目錄那一刻起算。這一節要順手處理一個細節：目錄頁只印一個 Due Date，但 BOD 的表 1 顯示期限依資產狀況有好幾種，所以不要寫成「一律三天」。\n五、一般使用者現在該做什麼：照 CISA 自己那句 Action——依照廠商指示採取緩解措施，沒有可用的緩解措施就停止使用該產品；三筆之中有兩筆還帶了「受影響產品可能已終止支援，建議停用或改用仍受支援版本」。翻成生活語言就是：去做你那台裝置的廠商的支援頁或韌體更新頁看有沒有新版本，而不是等 CISA 或任何媒體告訴你型號。最後一段寫本文刻意不寫什麼（攻擊手法、利用細節、嚴重度分數、版本號），以及原因。\n\n語氣：這不是災難新聞。勒索軟體欄位印的是 Unknown，公告也沒有任何受害案例。整篇要平實到讓讀者做完一件事（去看廠商的更新頁）就能關掉。\n\n第二個結尾連結建議指向 tech-news-eu-cra-reporting-20260911（歐盟《網路韌性法》第 14 條對「遭積極利用漏洞」的通報義務），題材相鄰、主體不同（那篇談的是製造商對監理機關的通報，這篇談的是目錄與更新）。最終以指派訊息為準。",
+  "must_not_write": [
+    "不寫任何攻擊手法、利用細節、PoC、概念驗證程式碼、入侵指標（IoC）、惡意程式或攻擊者名稱，也不寫「怎麼判斷自己有沒有被入侵」的技術步驟。這是本篇的第一條紅線，tech.md 對資安題目的規定就是只寫影響範圍與使用者該做什麼。文章能寫的技術粒度上限是 CISA 描述裡點到的核心部位名稱（TLS 接收路徑、ebtables 的 SNAT target、AF_ALG socket），到此為止。",
+    "不把 NVD 或 git.kernel.org 上的 commit 訊息翻譯或改寫進文章。那些文字是修補的機制描述，照抄等於把漏洞成因寫出來，和上一條是同一條紅線；而且它們不在 sources[] 四條裡。",
+    "不寫任何 CVSS 分數或「高／中／嚴重」這類嚴重度分級。kernel.org 與 NVD 給的分數差很多（詳見 unverified_or_excluded），挑一個寫就是誤導，寫兩個又要解釋評分制度，離題。",
+    "不寫受影響或已修好的 Linux 核心版本號。四條來源一個版本號都沒有印。",
+    "不寫任何具體受影響的產品、品牌、機型、Android 版本或韌體版本，連「例如某某牌」都不行。CISA 三次都只寫「可能被不同產品使用」。",
+    "不寫「CISA 說某某產品不受影響」或「CISA 說台灣不受影響」。來源沒說有，也沒說沒有。",
+    "不寫「請在 9 月 21 日前完成更新」或任何暗示這個期限適用於讀者的句子。那是 BOD 26-04 給美國聯邦機關的期限。",
+    "不寫「美國聯邦機關必須在三天內修好所有系統」。BOD 26-04 的表 1 有 3 天、14 天、60 天與「下次重大升級時一併修」四種結果，取決於資產是否對外公開、能否自動化利用與利用後的控制程度。",
+    "不寫「KEV 的期限從兩週／三週縮短到三天」。BOD 26-04 沒有印出被它廢止的 BOD 22-01 的舊期限。",
+    "不自行推算 BOD 26-04「Phase II 60 天」「Phase III 180 天」何時屆滿，也不斷言 9 月 18 日當天表 1 是否已對機關全面生效。加減乘除出來的日期不是事實。",
+    "不寫「這些漏洞早就修好了，只是現在才發現有人在用」或任何「舊漏洞新利用」的框架。支撐它的公開日期只在 NVD，而 KEV Notes 只是列出 git.kernel.org 連結、沒有說那是修補。",
+    "不寫「目前沒有被用於勒索軟體攻擊」。目錄印的是 Unknown（未知），未知不等於否定。",
+    "不寫兩則公告的發布時刻，也不寫「上午」「下午」「稍晚」。頁面上的 12:00:00Z 是 CISA 網站的佔位時刻。",
+    "不寫「CISA 把這三筆分成兩則公告是因為…」。來源沒有解釋。",
+    "不把 KEV 目錄的總筆數（查核日是 1,716）寫成固定事實，也不寫「排在目錄第一頁」這種會隨新增條目改變的位置描述。",
+    "不寫任何購買或換機建議（「建議換掉舊 NAS」「該升級路由器了」）。tech.md 明文禁止購買建議；可以照抄 CISA 那句「沒有可用的緩解措施就停止使用該產品」，但要標明那是 CISA 的要求，不是本站的建議。",
+    "不寫本站做過任何測試、掃描或驗證讀者裝置的事。本站沒有實測。",
+    "不加投資或財經免責 callout。科技篇不帶 finance 主題（tech.md）。"
+  ],
+  "live_data_warnings": [
+    "KEV 目錄頁是動態頁：查核當天（2026-09-20 台北）這三筆因為是最新加入的而排在第一頁最前面，CISA 一新增條目就會被往後擠。文章不得描述它們在頁面上的位置或頁次，讀者自己開頁時看到的順序會不一樣。",
+    "目錄的總筆數會變：查核當天頁面印 1,716 筆、官方 JSON feed 的 catalogVersion 是 2026.09.18、count 1716。若文章要寫總筆數，必須緊接著寫查核日；更建議完全不寫。",
+    "修補期限 2026-09-21 在文章上線後很快就會成為過去式。要寫成「CISA 對這三筆訂的期限是 2026 年 9 月 21 日」這種釘住日期的寫法，不可以寫「還有三天」「即將到期」「下週一之前」這類相對時間。",
+    "「Known To Be Used in Ransomware Campaigns?」目前是 Unknown，CISA 日後可能改成 Known。文章要寫成「查核日當天目錄印的是未知」，不要寫成這三個漏洞的固有屬性。",
+    "BOD 26-04 頁面自己寫著 CISA 每個會計年度會重新評估表 1 的期限，並持續評估是否要再縮短。所以「三天」「14 天」「60 天」都要繫在查核日與 BOD 26-04 這個版本上。",
+    "CISA 的 KEV 條目內容（描述、Notes、欄位值）事後可被更新。本紀錄逐字引用的是 2026-09-20 讀到的版本；任何後續改稿都要重抓四條來源後才能改字。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "核心在你家，更新在廠商",
+  "diagram": {
+    "title": "同一天兩則公告的四件事",
+    "caption": "2026 年 9 月 18 日 CISA 兩則公告與 KEV 目錄內容的整理：三個 Linux 核心 CVE、修補期限拘束的對象，以及一般使用者該做的事，查核日 2026 年 9 月 20 日。",
+    "nodes": [
+      [
+        "同一天兩則",
+        "CISA 公告共三個 CVE"
+      ],
+      [
+        "漏洞在哪裡",
+        "核心的三個不同部位"
+      ],
+      [
+        "修補期限",
+        "拘束的是美國聯邦機關"
+      ],
+      [
+        "你該做什麼",
+        "照裝置廠商的更新說明"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": null,
+    "checked_on": null,
+    "method": "",
+    "verdict": "pending",
+    "edits_to_the_pack": [],
+    "checked_and_correct": [],
+    "left_for_the_owner": [],
+    "second_round": {}
+  }
+}
