@@ -461,7 +461,99 @@
       "CISA 的中文譯名本站目前只有這一篇用到（全站其他內容包 0 次），本文兩處都寫「美國網路安全暨基礎設施安全署」、FCEB 都寫「美國聯邦文職行政部門」，前後一致；來源沒有官方中文名，是否要改成「局」或「文官」由站主決定，不是事實問題。"
     ],
     "coordinator_rulings": [
-      "BOD 26-04 的發布日不另找來源：正文照第一輪改成「頁面印出的日期」即可；CISA／FCEB 的中文譯名維持本篇用法，不是事實問題。"
-    ]
+      "BOD 26-04 的發布日不另找來源：正文照第一輪改成「頁面印出的日期」即可；CISA／FCEB 的中文譯名維持本篇用法，不是事實問題。",
+      "第二輪後（2026-09-20）：BOD 26-04 頁面上表 1 圖片與決策樹圖是官方頁的一部分，讀圖取得的期限條件可入正文（第一輪的 3／14／60 天也是同一來源），第二輪新加的「KEV 內只會走到 3 天或 14 天」限定句保留。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2)",
+      "checked_on": "2026-09-20",
+      "method": "沒有參與撰稿，也沒有參與第一輪。2026-09-20（台北）以 curl -sL -A \"Mokaair-editorial\" 把 sources[] 四條各重抓一次，請求的 User-Agent、標頭、查詢字串與表單都沒有帶入任何 email、姓名或其他個人資料：(1) adds-two 200、53,411 bytes、0 次轉址、純文字 4,458 字元；(2) adds-one 200、53,224 bytes、0 次轉址、4,422 字元；(3) KEV 目錄頁 200、283,978 bytes、0 次轉址、36,845 字元；(4) BOD 26-04 200、84,350 bytes、0 次轉址、22,303 字元；四份都是正文。落地數字與第一輪登記的完全一致。表 1 是圖片，本輪自己重新下載並重讀（BOD_26-04_Table_1_Remediation_Timelines_0.png，200、204,497 bytes、1024x593），逐列抄下四欄條件與期限欄：16 列，期限值五種——3 days & forensic triage（第 1、3、9 列）、3 days（第 2、5 列）、14 days（第 4、6、7、10、11、12 列）、60 days（第 8、13、14 列）、Fix on system upgrade（第 15、16 列），與第一輪的判讀相同。另外注意到同一頁還有第二張圖（BOD_26-04_Graphic_Remediation_Timelines.png，200、76,435 bytes，頁面文字說 Table 1 is equivalent to the following figure），本輪也讀了，決策樹與表 1 完全一致，並提供本輪最重的一項發現：「On the KEV = Yes」的分支底下只會走到 3 Days & Forensic Triage、3 Days 與 14 Days，60 Days 與 Fix on System Upgrade 只出現在「On the KEV = No」的分支。核對方式：把 title、description、正文 16 段、summary 四句、五個 H2、表格 12 格與 caption、圖說 caption、FAQ 六題、callout 與兩個結尾連結拆成 118 條主張逐條回原文比對；重點放在第一輪改過的十二處與第一輪新寫進去的每一句。研究紀錄 37 條 verbatim_quote 以程式做連續字串比對（curly quote 與空白正規化後，比對純文字與原始 HTML 兩份），37/37 今天仍逐字命中，沒有一條是用 …／| 把兩處拼起來的，37 條的 url 全在 sources[] 內。三筆 KEV 條目以條目切段後重算欄位：三筆 Action 欄 md5 相同、Additional Notes 前段 md5 相同，EoL／EoS 那一句只落在 CVE-2025-39682 與 CVE-2026-53266 段內、CVE-2025-39964 段內沒有；Related CWE 754／787／362 對得上各自的編號；三筆都是 Date Added 2026-09-18、Due Date 2026-09-21、Ransomware Unknown、Forensic triage Yes；「Linux | Kernel」在目錄頁正文出現 3 次、EoL 那句 2 次。第一輪新寫的句子逐句回原文：「頁面印出的日期是 2026 年 6 月 10 日」今天在 sources[] 內部就能反證成立——BOD 26-04 頁面自己的 Related Directives 區塊把 BOD 19-02（全文自己寫 April 29, 2019）與 BOD 22-01（全文自己寫 Nov. 3, 2021）也都印成 Jun 10, 2026，可見那個欄位不是發布日；不必再依賴第一輪另外抓的 BOD 22-01 頁面。「四份來源都沒有替這三個編號印出任何分數」以字串計數複驗：CVSS 在兩則公告與 KEV 目錄各 0 次、在 BOD 26-04 出現 1 次且只是拿來比喻 technical impact，四份都沒有替這三個 CVE 印出任何分數，成立。「除了編號清單與單複數措辭，其餘段落逐字相同」以兩頁正文做逐詞 diff 複驗：差異只有 two/one、vulnerabilities/vulnerability、CVE 清單、These types…are…pose 對 This type…is…poses，成立。「照抄 Date Added 而非起算日」「BOD 26-04 只適用於 FCEB、對所有組織用 encourages」「這類裝置常常」「把這三個編號分成兩則公告」四處今天都撐得住，維持不動。NVD 的任何網址與 API 本輪一個都沒有讀；文章與本紀錄第二輪段落都沒有出現 CVSS、NVD、kernel.org、台北時刻或「舊漏洞新利用」框架。界線複掃：只有一個 callout、不帶 finance 主題、沒有投資免責段落、沒有購買或換機建議、沒有推定台灣可用、廠商與機關宣稱都有歸因。段落字數 2,869 → 2,943（上限 3,000），沒有為了字數刪掉任何但書或限定詞。改完後自檢輸出：OK tech-news-cisa-kev-linux-kernel-20260918 zh-TW paragraphs 2943。",
+      "claims_checked": 118,
+      "changes": [
+        {
+          "where": "內容包 zh-TW 正文第四節第二段（blocks[18]）結尾、FAQ 第 5 題",
+          "before": "分成 3 天（還要多做一次鑑識初篩）、3 天、14 天、60 天，或「下一次系統重大升級或重建時一併修掉」幾種，不是所有情況都是 3 天。",
+          "after": "分成 3 天（部分情況還要多做一次鑑識初篩）、14 天、60 天，或「下一次系統重大升級或重建時一併修掉」幾種，不是所有情況都是 3 天；其中 60 天與「一併修掉」那幾種，都只出現在漏洞不在 KEV 目錄上的那幾列。",
+          "why": "本輪最重的一處。原句把整張表的五種期限攤在「這三筆只印一個到期日」後面，讀者會以為這三個編號也可能落在 60 天或「下次重大升級時一併修」。表 1 與同頁那張等價的決策樹圖都顯示不會：「In the KEV?／On the KEV」為 Yes 的八列（第 1、2、3、4、9、10、11、12 列）只會得到 3 天（含鑑識初篩）或 14 天，60 天（第 8、13、14 列）與 Fix on system upgrade（第 15、16 列）全部落在 KEV 欄為 No 的列。加一句總括的限定，既保住 must_not_write 第 8 條要的「不是一律三天」，又不讓讀者把不可能發生的期限套到這三筆上。仍然沒有逐列複述圖片內容。",
+          "source": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk"
+        },
+        {
+          "where": "內容包 zh-TW summary 第四句與 FAQ 第 5 題",
+          "before": "把修補期限依資產狀況分成 3 天、14 天、60 天等好幾種",
+          "after": "把修補期限依漏洞與資產的四個條件分成 3 天、14 天、60 天等好幾種",
+          "why": "「依資產狀況」把四個變數縮成一個。表 1 的四欄裡只有 Asset Exposure 是資產的狀況，In the KEV、Automatable by Adversary 與 Technical Impact 講的都是漏洞本身；正文 blocks[18] 本來就把四個都列了出來，摘要與 FAQ 卻只留資產。改成「漏洞與資產的四個條件」，並在 blocks[18] 的同一串條件後補上「這四個條件」，讓摘要與 FAQ 的說法在正文裡有對應的字。",
+          "source": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk"
+        },
+        {
+          "where": "內容包 zh-TW summary 第四句開頭",
+          "before": "CISA 依循的指令 BOD 26-04",
+          "after": "兩則公告援引的 BOD 26-04",
+          "why": "關係寫反。BOD 26-04 是 CISA 自己發布、拘束 FCEB 機關的指令（A Binding Operational Directive is a compulsory direction to federal, executive branch, departments, and agencies），不是 CISA 要遵循的上位規則；頁面另有一節 CISA Actions 給 CISA 自己，但那不是摘要這句話的意思。改成兩則公告與正文都成立的敘述。",
+          "source": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk"
+        },
+        {
+          "where": "內容包 zh-TW summary 第三句",
+          "before": "CISA 沒有點名任何廠牌、機型或作業系統版本",
+          "after": "這兩則公告與 KEV 目錄都沒有點名任何廠牌、機型或作業系統版本",
+          "why": "第一輪把 callout 那句沒有範圍的否定限縮成「在這四份來源裡」，卻漏了摘要——而摘要是答案引擎最容易單獨引用的段落。原句讀起來像是 CISA 從來沒有點名過任何產品，來源只撐得住「這幾頁沒有印」。改成與 FAQ 第 2 題同樣的範圍寫法。",
+          "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "where": "內容包 zh-TW description",
+          "before": "CISA 沒有點名任何廠牌機型",
+          "after": "CISA 在這些來源裡沒有點名任何廠牌機型",
+          "why": "同上一條，description 也是一樣的無範圍否定，而且它就是搜尋結果會顯示的那一段。順手把「一般使用者現在可以做的事」的「現在」拿掉，description 維持在 120–200 字元內（171 → 175）。",
+          "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "where": "內容包 zh-TW FAQ 第 2 題答句",
+          "before": "本文查不到、CISA 也沒有公布哪些實際裝置受影響",
+          "after": "本文查不到，這四份來源也沒有列出哪些實際裝置受影響",
+          "why": "「CISA 也沒有公布」是對 CISA 全部產出的否定，本文只讀了四頁。同一題前半已經寫明範圍是「兩則公告與 KEV 目錄」，後半卻把範圍放大。限縮到四份來源。",
+          "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "where": "內容包 zh-TW 正文第五節第二段（blocks[22]）結尾",
+          "before": "CISA 沒有說這句話指的是哪些產品或哪些版本",
+          "after": "CISA 在這四份來源裡沒有說這句話指的是哪些產品或哪些版本",
+          "why": "同一型的無範圍否定，not_said 第 11 條寫的是「來源沒有說 EoL／EoS 指的是哪些產品、哪些版本」。照 not_said 的範圍寫。",
+          "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "where": "內容包 zh-TW 正文第四節第一段（blocks[17]）",
+          "before": "或機關自行盤點到資產上有此漏洞並更新聯邦儀表板",
+          "after": "或機關自行盤點到資產上有此漏洞並更新 CDM 計畫的機關與聯邦儀表板",
+          "why": "來源原文是 the agency enumerates or identifies the vulnerability on an asset and updates the Continuous Diagnostics and Mitigation (CDM) Program Agency and Federal Dashboard，起算條件涵蓋機關儀表板與聯邦儀表板兩者。只寫「聯邦儀表板」把條件縮小成其中一個，屬於安靜收窄來源。",
+          "source": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk"
+        },
+        {
+          "where": "內容包 zh-TW 正文第五節第一段（blocks[21]）",
+          "before": "三筆條目的「Action」欄逐字相同：依照廠商指示採取緩解措施，",
+          "after": "三筆條目的「Action」欄逐字相同，主要要求是：依照廠商指示採取緩解措施，",
+          "why": "「逐字相同：」後面接的是節錄，不是整欄。Action 欄最後還有一句 Stakeholders are responsible for evaluating each asset's internet exposure and ensuring adherence to BOD 26-04 patching guidelines. 沒有寫進來（對一般讀者也不是重點）。加「主要要求是」把它標示成節錄，不再暗示這是整欄照抄。三筆 Action 欄逐字相同這件事本身以 md5 複驗仍成立。",
+          "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "where": "內容包 zh-TW 正文第二節第二段（blocks[9]）",
+          "before": "CVE-2025-39964 出在核心 AF_ALG socket 並行寫入的競態條件",
+          "after": "CVE-2025-39964 出在同一個核心 AF_ALG socket 並行寫入的競態條件",
+          "why": "目錄描述是 allows concurrent writes to the same AF_ALG socket，限定詞是「同一個」。掉了它會讀成任何兩個 AF_ALG socket 之間的並行寫入。本紀錄 verified_facts 那條寫的也是「同一個 AF_ALG socket 的並行寫入」。",
+          "source": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+        },
+        {
+          "where": "內容包 zh-TW 正文第五節第三段（blocks[23]）",
+          "before": "不寫受影響或已修好的核心版本號，因為四份來源也都沒有印出版本號",
+          "after": "不寫受影響或已修好的核心版本號，因為四份來源也都沒有印出核心版本號",
+          "why": "第一輪把這半句改寫後留下一個字面上不成立的全稱否定：四份來源裡印了不少版本號（BOD 26-04 引的 NIST SP 800-40 Rev 4、800-53 rev 5、RFC 1918／4193 等），沒有印的是「核心版本號」。把受詞補回來，否定句就落在四份來源真的沒印的那件事上。",
+          "source": "https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk"
+        }
+      ],
+      "open_questions": [
+        "本輪新引用的事實（60 天與 Fix on system upgrade 只出現在 KEV 欄為 No 的列）來自表 1 圖片與同頁那張決策樹圖，兩張圖互相印證，但 BOD 頁面用文字印出來的只有「Days are calendar days.」「& forensic triage 那一格是三天」與「Fix on system upgrade」的定義三段。第一輪 unverified_or_excluded 第 3 條定的界線是「讀圖只用來確認期限不只三天、不逐列複述」；本輪判斷這句總括限定不是逐列複述，而且不加會讓讀者把 60 天套到這三筆上。若站主認為凡是圖片內容一律不得寫進正文，要改的是 blocks[18] 與 FAQ 第 5 題的期限清單整串，不只本輪加的這一句。",
+        "第一輪為了反證 BOD 頁面日期另外抓了 BOD 22-01 的頁面（未列入 sources[]）。本輪發現同樣的反證在 sources[] 內部就有：BOD 26-04 頁面自己的 Related Directives 區塊把 BOD 19-02 與 BOD 22-01 都印成 Jun 10, 2026，而全文自己寫的是 April 29, 2019 與 Nov. 3, 2021。所以「頁面印出的日期」這個寫法現在完全靠四條來源就站得住，不需要第五條來源；協調者裁決維持不變，本輪沒有改動正文那句。",
+        "兩則公告另有一句本文沒有用到：BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those … on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. 它正好解釋了表 1 為什麼把「對外公開＋完全控制」排在最前面。本輪沒有加進正文（字數與必要性），但若日後要補第四節，這一句在 sources[] 內、不必新增來源。",
+        "到期日 2026-09-21 與「Known To Be Used in Ransomware Campaigns? Unknown」都仍是查核當天的狀態，全文維持釘死日期的寫法、沒有相對時間；目錄總筆數（今天仍印 1,716）與這三筆在頁面上的位置一樣沒有滲進正文、摘要、表格或圖說。上線前若 CISA 把勒索軟體欄改成 Known，要一起改的仍是正文第一節第三段、FAQ 第 3 題與 callout 三處。"
+      ]
+    }
   }
 }
