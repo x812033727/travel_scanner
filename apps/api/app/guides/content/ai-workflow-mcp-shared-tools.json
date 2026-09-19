@@ -73,7 +73,7 @@
         },
         {
           "type": "paragraph",
-          "text": "flight_no 這種有型別但沒有預設值的參數，SDK 會直接標成輸入 Schema 裡的必填欄位，官方文件的說法是兩個參數都在 required 裡，因為兩個都沒有預設值。annotations 裡的 read_only_hint、open_world_hint 是說給客戶端聽的行為提示，官方 SDK 文件講得很白：它們是提示、不是安全機制，還特別要你不要指望客戶端會照做，真正擋不擋還是要看客戶端自己的權限設定。工具執行完會回傳兩種東西：content 是模型會讀到的文字，structured_content 則是給客戶端程式用的結構化輸出，由函式的回傳型別決定要不要有、長什麼樣子。這支範例只示範 stdio 這個傳輸方式；要換成常駐的 Streamable HTTP，官方文件寫只要在啟動時多給 mcp.run() 一個 transport 參數，工具本身不用改。"
+          "text": "flight_no 這種有型別但沒有預設值的參數，SDK 會直接標成輸入 Schema 裡的必填欄位，官方文件的說法是兩個參數都在 required 裡，因為兩個都沒有預設值。annotations 裡的 read_only_hint、open_world_hint 是說給客戶端聽的行為提示，官方 SDK 文件講得很白：它們是提示、不是安全機制，還特別要你不要指望客戶端會照做，真正擋不擋還是要看客戶端自己的權限設定。工具執行完會回傳兩種東西：content 是模型會讀到的文字，structured_content 則是給客戶端程式用的結構化輸出，由函式的回傳型別決定要不要有、長什麼樣子。這支範例只示範 stdio 這個傳輸方式；要換成常駐的 Streamable HTTP，官方文件寫只要在 mcp.run() 裡指定 transport 與它的選項，工具本身不用改，同一頁三個檔案公開的是一模一樣的工具。"
         },
         {
           "type": "heading",
