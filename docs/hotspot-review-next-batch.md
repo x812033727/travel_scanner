@@ -480,3 +480,213 @@ fix them; our rows no longer depend on it.
 row but never rebuilds `search_text`, and `collect_hotspots` skips approved rows, so a moved row
 stays searchable under its old city forever. Three rows are in that state right now. Filed as
 `2026-09-12-search-text`.
+
+# 2026-09-19: 國立民俗博物館 (Q486449), the Busan tombstone that is a Seoul museum
+
+Prepared without production access for `tasks/open/2026-09-12-re-add-the-seoul-national-folk.md`.
+Everything here was read out of the code and nine outbound requests; nothing has been written to the
+database, and the owner still has to run the steps under "Host commands" and "The correction".
+
+## Why the queue cannot re-add it, in code rather than in principle
+
+Row `557a6eb0-0592-4ab2-b2a9-707eabb0febb` (`wikidata-q486449`, 國立民俗博物館, city 釜山, KR) was
+rejected on 2026-09-12 by the catalog-review sweep `0a194879` because the row sat under Busan while
+the museum stands in Jongno-gu, Seoul, 326 km away. The rejection was right about the row and wrong
+about the museum, and three facts now keep the museum out of the catalogue:
+
+- `travel_hotspots.wikidata_item_id` and `slug` are both unique, and the tombstone holds `Q486449`
+  and `wikidata-q486449`. No second row for the museum can exist while it does.
+- Every writer looks the QID up first. `collect_hotspots` and `persist_resolutions`
+  (`import-hotspot-candidates`) skip a `rejected`/`disabled` holder (`skipped:previously_rejected`);
+  `seed_catalog` claims the row by QID and then `_seed_can_reconcile_hotspot` refuses anything that
+  is not an untouched, approved, curated row. A seed entry and a manifest are both no-ops here, by
+  design.
+- `POST /api/v1/admin/hotspots/review` refuses to replace or clear an existing QID
+  (`hotspot_wikidata_identity_locked`), so the tombstone cannot be stripped of its identity through a
+  reviewed path, and stripping it by SQL would be exactly the un-tombstoning the ticket rules out.
+
+The importer would not satisfy the Korean gate even if it could write: `persist_resolutions` stores
+`google_place_id` and has no `naver_map_url` field at all, and for `KR` both `has_exact_map_identity`
+and `build_map_links` accept only the Naver URL.
+
+That leaves the ticket's third route, the one this document already used for 新福宮 and 新營美術園區:
+**correct the existing row in place** through `/admin/hotspots/review` — move it to `seoul`, write the
+Wikidata coordinate and its source, write the exact Naver identity, then approve it as a single-row,
+named-admin decision. Its `review_status` changes exactly once, at the approve, so the Busan tombstone
+is not un-rejected in bulk; it becomes the Seoul row.
+
+## The identity, and where each piece came from
+
+| field | value | source |
+|---|---|---|
+| labels | ko 국립민속박물관 · zh-hant 國立民俗博物館 · en National Folk Museum of Korea · ja 韓国国立民俗博物館 | Wikidata Q486449 |
+| P625 | **37.581625, 126.97909** (one reference on the statement) | https://www.wikidata.org/wiki/Q486449 (revision 2515870060, modified 2026-07-10) |
+| P131 / P17 / P281 | Q36929 鍾路區 / Q884 / postal code 03045 | same |
+| P856 | http://www.nfm.go.kr/ | same |
+| P31 | Q17431399 national museum — `classify_types` maps it to `culture` | same |
+| sitelinks | kowiki 국립민속박물관 · enwiki National Folk Museum of Korea · zhwiki 国立民俗博物馆 | same |
+| Naver place | **`https://map.naver.com/p/entry/place/11620599`** — 국립민속박물관, category 박물관, 서울특별시 종로구 삼청로 37 (jibun 세종로 1-1), 37.5815644, 126.9789313, 187 reviews | `map.naver.com/p/api/search/instant-search?query=국립민속박물관&coords=37.581625,126.97909` |
+
+The Naver pin is **15.5 m** from the Wikidata point; the point is 1.7 km from the ICN discovery centre
+and 326 km from Busan's; `resolve_area_code("ICN", …)` puts it in `jongno` (景福宮／北村／仁寺洞, ratio
+0.33). The URL starts with `https://map.naver.com/p/entry/place/`, so `is_exact_naver_map_url` and the
+`HotspotReviewRequest.naver_map_url` pattern both accept it.
+
+Two neighbours to keep straight when confirming it: `11620680` is 국립민속박물관 어린이박물관 (the
+children's museum, same address) and `18664772` is 국립민속박물관입구, the bus stop. **The owner should
+open `https://map.naver.com/p/entry/place/11620599` in a browser once before pasting it**: the
+instant-search answer identifies the place by name, address and coordinate, but no person has looked
+at the page yet, and the entry URL fetched from here is a 2 KB app shell with nothing to read.
+
+What the nine requests returned, so nobody repeats them (User-Agent `Mokaair-editorial/1.0`, no
+cookies, no personal data):
+
+| request | result |
+|---|---|
+| `wikidata.org/wiki/Special:EntityData/Q486449.json` | 200; everything in the table above |
+| `https://www.nfm.go.kr/`, then `http://www.nfm.go.kr/` | TLS connection reset through the egress proxy; the http form is a 302 back to https. No official-site map link could be read |
+| `ko.wikipedia.org/w/api.php?prop=extlinks&titles=국립민속박물관` | 429 |
+| `map.naver.com/p/api/search/allSearch` | 200 with `ncaptcha` / `CE_EMPTY_TOKEN` and no place data, as the fourth batch recorded — not something to work around |
+| `m.place.naver.com/place/list` | 429 |
+| `map.naver.com/v5/api/search` | 302, not followed |
+| `map.naver.com/p/api/search/instant-search` | **200, plain JSON, no captcha**: five `place` hits, the museum first |
+| `map.naver.com/p/entry/place/11620599` | 200, app shell |
+
+`instant-search` is the map site's own type-ahead endpoint, and it is the first route found from this
+repository that names a Korean row's exact identity without a NAVER key or a Korean browser. Whether
+it may be used for the 164 blocked rows is the owner's call and belongs with
+`tasks/open/2026-09-06-naver-maps-key.md`; it was used here for one query.
+
+## The correction, as the admin UI sends it
+
+Both calls are `POST /api/v1/admin/hotspots/review`, made from `/zh-TW/admin/hotspots` (filter 韓國,
+status `rejected`, destination `busan`; or open the row by id). The handler applies every field below
+whatever the `action` is; the UI splits them across the move box and the location editor, which is
+fine because both send `action: "update"` and leave `review_status` alone.
+
+Step 1 — move, coordinates, identity (`update`; the status stays `rejected`):
+
+```json
+{
+  "ids": ["557a6eb0-0592-4ab2-b2a9-707eabb0febb"],
+  "action": "update",
+  "destination_id": "seoul",
+  "latitude": 37.581625,
+  "longitude": 126.97909,
+  "coordinate_source_type": "wikidata",
+  "coordinate_source_url": "https://www.wikidata.org/wiki/Q486449",
+  "naver_map_url": "https://map.naver.com/p/entry/place/11620599",
+  "map_match_status": "verified",
+  "reason": "2026-09-12 由 catalog-review 0a194879 以「目的地釜山、實體在首爾」駁回；該列即 Q486449 本身，改歸 seoul 而非新增。座標取 Wikidata P625（37.581625, 126.97909）；Naver 精準地點 11620599（서울특별시 종로구 삼청로 37）距 P625 約 15 m。"
+}
+```
+
+`expected_updated_at` is optional; the location editor adds it from the row it loaded, and a hand-sent
+call can omit it rather than risk a `hotspot_review_conflict` on formatting.
+
+What the handler does with step 1: `destination_for_id("seoul")` rewrites `destination_id`,
+`city_code` (`ICN`), `city_name` (首爾), `country_name`, keeps `country_code` `KR`, and passes
+`search_text` through `rehomed_search_text` so the moved row stops answering to 釜山;
+`map_match_status: "verified"` runs `_validate_hotspot_location`, which for `KR` wants exactly the
+Naver prefix, a coordinate pair and a durable source (`wikidata` plus an https URL — all supplied);
+`area_code` is recomputed to `jongno`; `reviewed_by_user_id` and `map_verified_by_user_id` become the
+actor; the reason is stored on the row.
+
+Step 2 — approve (single row, real actor):
+
+```json
+{
+  "ids": ["557a6eb0-0592-4ab2-b2a9-707eabb0febb"],
+  "action": "approve",
+  "expected_updated_ats": {"557a6eb0-0592-4ab2-b2a9-707eabb0febb": "<updated_at as the UI loaded it after step 1>"}
+}
+```
+
+`approve` refuses unless `map_match_status` is already `verified` (`map_verification_required`),
+re-runs the location validation, sets `review_status = approved` and `is_active = true`, and writes
+an `AdminAuditLog` row `hotspot_candidates_reviewed` carrying the actor, `destination_id`,
+`naver_map_url_changed` and `coordinates_changed`. That is the real actor the ticket asks for; the
+CLI has none.
+
+If the Naver URL is doubted after looking at the page, send step 1 without `naver_map_url` and
+`map_match_status` (move plus coordinates only): the row then stays `rejected`, inactive and outside
+every public path until the identity is confirmed, which is the safe failure.
+
+## The manifest, for the record
+
+`import-hotspot-candidates` takes `{"city_code", "candidates": [{"name", "district"}]}`; this is the
+entry that names the museum under Seoul:
+
+```json
+{"city_code": "ICN", "candidates": [{"name": "國立民俗博物館", "district": "鍾路區"}]}
+```
+
+Run it and the resolver spends **one Text Search Pro call** on `國立民俗博物館 鍾路區 首爾`, geosearches
+ko.wikipedia within 1.2 km of Google's pin, matches the article to `Q486449` through its zh-hant label
+(score 1.0), and then `persist_resolutions` reports `rows: {"skipped:previously_rejected": 1}` — with
+or without `--apply`. After the correction above it reports `skipped:already_verified` instead. The
+manifest therefore documents that the import route is closed; it is not the route. September's Text
+Search Pro line (3,713 of 5,000 after the fourth batch) is the reason not to run it idly.
+
+## Host commands, in order
+
+Read-only first — both QIDs the ticket names, so the state of 新福宮 (re-homed to `taipei` and
+approved with an `admin_verified` coordinate in the fourth batch, per this document) is confirmed at
+the same time rather than assumed:
+
+```bash
+docker compose -f docker-compose.prod.yml exec -T postgres sh -lc 'psql -U $POSTGRES_USER -d $POSTGRES_DB' <<'SQL'
+select id, slug, name, city_code, destination_id, review_status, is_active, map_match_status,
+       naver_map_url, latitude, longitude, coordinate_source_type, coordinate_source_url, origin, updated_at
+  from travel_hotspots
+ where wikidata_item_id in ('Q486449', 'Q10306724')
+    or naver_map_url = 'https://map.naver.com/p/entry/place/11620599';
+SQL
+```
+
+Expected before anything is done: one row per QID, `Q486449` as `PUS / busan / rejected / unverified`
+with no `naver_map_url`, and no third row — a hit on the Naver URL would mean another row already holds
+the identity, and the review would answer `hotspot_map_identity_exists`, the duplicate signal the first
+batch describes.
+
+Dry run of the importer (optional, billable, expected to be a no-op — see above):
+
+```bash
+cat > /root/nfm-seoul.json <<'JSON'
+{"city_code": "ICN", "candidates": [{"name": "國立民俗博物館", "district": "鍾路區"}]}
+JSON
+docker compose -f docker-compose.prod.yml exec -T api sh -c 'cat > /tmp/nfm-seoul.json' < /root/nfm-seoul.json
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli import-hotspot-candidates --file /tmp/nfm-seoul.json
+# --apply writes nothing while the tombstone holds Q486449; it is listed only to be exact:
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli import-hotspot-candidates --file /tmp/nfm-seoul.json --apply
+```
+
+Then the correction, steps 1 and 2 above, in the admin UI. Then the public check — rankings are a
+snapshot that `hotspot-collector` rebuilds every 21,600 s, so allow up to six hours after the approve:
+
+```bash
+curl -sS 'https://mokaair.com/api/travel/hotspots/rankings?destination_id=seoul&q=%E6%B0%91%E4%BF%97&limit=50' \
+  | python3 -c 'import json,sys; [print(i["rank"], i["slug"], i["name"], i["destination_id"], i["city_code"]) for i in json.load(sys.stdin)["items"]]'
+# the same query straight at the api container, bypassing the BFF:
+curl -sS 'http://127.0.0.1:8090/api/v1/hotspots/rankings?destination_id=seoul&q=%E6%B0%91%E4%BF%97&limit=50'
+```
+
+`q` matches `name` and `search_text` case-insensitively, so `民俗` finds 國立民俗博物館 without paging;
+the row must come back with `slug wikidata-q486449`, `destination_id seoul`, `city_code ICN`. The same
+SQL as above, re-run, should then read `ICN / seoul / approved / verified` with the Naver URL and
+`coordinate_source_type wikidata`.
+
+## Review notes
+
+- **The Busan row is not un-rejected; it is corrected.** Its `review_status` changes exactly once, in
+  step 2, by a named admin, with the reason from step 1 stored on the row. No sweep, script or CLI
+  touches it, and after the approve `discover_hotspots` finds the row `approved` by QID and only
+  refreshes `last_seen_at` — nothing moves it back to Busan.
+- **新福宮 (Q10306724)** is the same shape — a real place under the wrong city — and the fourth batch
+  resolved it the same way (re-homed to `taipei`, `admin_verified` coordinate from OSM node
+  5110491036, approved). It must stay on every catalog-review skip list, and so must `Q486449` until
+  step 2 lands: a sweep that judges "destination does not match the coordinate" is right about the row
+  and wrong about the place both times, and a second rejection would recreate this ticket.
+- Cross-run exclusion lists are carried forward by hand, or not at all: the morning sweep `d943205e`
+  excluded this row and the afternoon sweep `0a194879` carried only 新福宮, which is how it went
+  through.
