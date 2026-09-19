@@ -199,5 +199,46 @@
         "一次 0.1004 美元"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 五條全部以 curl -sL -A \"Mokaair-editorial\" 今天重抓並讀 body（五條都是正文，不是擋阻頁）；正文 15 段、summary 4 句、FAQ 5 題答句、callout、表格 18 格與 caption、圖解 caption 與 4 組節點、title、description 逐句對回原文；估算表的 7 個金額與 3 個每萬次金額用 decimal 逐一重算；20 條 verbatim_quote 綁回各自的 url 做連續字串比對；模型 id 另外對 Anthropic、OpenAI、Google 三個官方模型頁查證（僅供查核，未寫進 sources）。任何請求的 UA、標頭、查詢字串都沒有放入 email 或個人資料，也沒有用 sources[] 以外的網址替文章補事實。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "summary 第 4 句把 p50 稱作「平均」——p50 是第 50 百分位（中位數），已改成「中位數（p50）」，並補上這是本文的推論與兩個前提。",
+      "正文第 5 段與 FAQ 第 2 題的 p50／p95 定義改寫成百分位數的說法，並刪掉「只看平均值容易被少數很快的請求拉低」這句站不住的因果。",
+      "正文第 7 段整段改寫：原本把「級聯 p50 較快、p95 較慢」寫成通則，現在明寫是本文的推論、列出兩個前提（升級多打一次呼叫、輕量模型單次比旗艦快）並保留「本站沒有實測」。",
+      "「呼叫次數比單一旗艦多了兩三倍」（正文第 7 段與 FAQ 第 1 題）改成「是單一旗艦的三倍」：兩答一評是 3 次呼叫，與《多模型互審》那篇寫的 3 次一致。",
+      "站內文章名稱《多模型互審：LLM 當評審、投票與集成》漏掉「怎麼做」三個字，兩處都補齊。",
+      "Gemini 3.8 Flash 的價格條件照今天的頁面重寫：頁面寫的是「$0.75 through December 31, 2026. $1.50 starting January 1, 2027.」（付費層、標準價），沒有用 promotional／限時這類字眼，原稿的「限時」與「之後調整為」已改掉。",
+      "品質那一段的第一種做法原本寫「才能單獨看出換模型造成的差異」，來源沒有這句；改成 Anthropic 文件實際描述的做法，並補上「量測都是 Anthropic 自己跑的」與「先在自己的工作量上量過再假設會省」。",
+      "「自己出題讓模型評分」收窄成 Anthropic 文件描述的第一步：從正式環境紀錄抽任務、照真實流量加權、寫可自動判定的結果檢查、把成本記在分數旁邊；並把評測集的做法讓給本系列談追蹤與評測那篇。",
+      "快取／批次「對品質沒有影響」補上歸屬與範圍：提示快取引 Anthropic 提示快取頁的原句，批次引 optimizing 頁 Quality cost 欄的 None，並寫明節省欄只是那些測試裡的數字、量測都是 Anthropic 自己跑的。",
+      "開場第 1 段刪掉「沒有一種架構同時在三個量上都贏」——同一批來源自己就有反例（Anthropic 把提示快取記成更省、更快、品質成本 None）。",
+      "單價全部補上限定：Opus 5 寫「基礎輸入單價」（同頁另有研究預覽的 Fast mode 10／50），gpt-6-astra 寫「標準價的短上下文欄」，Flash-Lite 寫「付費層」；表頭改成「標準價」，表格與圖解 caption 補上 2026-09-18 與「不含批次、快取與加速模式」。",
+      "估算的共同假設補寫金額取到小數點後四位；評審那一步的 4,200 個 token 改寫成 3,000 加 600 加 600 的算式；「約 0.0114」的「約」拿掉（數值是精確的），「省了六成以上」改成精確的「少 62%」。",
+      "級聯那段補一句：《模型路由與級聯》的範例分三階，本篇只算兩階；升級條件補上「逾時或出錯」，與那篇一致。",
+      "callout 原本是沒有歸屬的通則，改成引 Anthropic 文件的兩句（最強的模型在規模化時可能太貴／帳單被便宜模型答錯的任務決定）。",
+      "description 與 summary 第 1 句的「各家的宣傳跑分」改成「各家公布的跑分」（不對產品做褒貶）。"
+    ],
+    "checked_and_correct": [
+      "七個金額與三個每萬次金額用 decimal 重算全部相符：0.03、0.0024、0.0114、0.06、0.09、0.0104、0.1004 美元，300／114／1,004 美元；比值 0.0114÷0.03 = 0.38（少 62%）、0.1004÷0.03 = 3.3467（三倍以上）也成立。",
+      "四個單價逐字對今天的定價頁：Claude Opus 5 $5／$25、Claude Sonnet 5 $2／$10（Anthropic 定價頁），gpt-6-astra $10／$50（OpenAI 標準價短上下文欄），Gemini 3.5 Flash-Lite $0.30／$2.50（付費層標準價）。",
+      "四個模型 id（claude-opus-5、claude-sonnet-5、gpt-6-astra、gemini-3.5-flash-lite）今天都在各自的官方模型頁上讀得到，與 models-seen.json 一致，未新增條目。",
+      "批次 50% 三家都對得上：Anthropic「a 50% discount on both input and output tokens」；OpenAI gpt-6-astra 標準 $10／$50 對批次 $5／$25；Google「Batch API (50% cost reduction)」與 Flash-Lite 批次 $0.15／$1.25。",
+      "呼叫次數與《多模型互審》《模型路由與級聯》兩篇不矛盾：兩答一評 3 次呼叫兩篇一致；級聯的升級觸發條件（信心不夠、逾時、出錯）與那篇一致。",
+      "20 條 verbatim_quote 綁回各自的 url 做連續字串比對，全數通過。",
+      "界線：沒有購買、訂閱或升級建議，沒有推薦式比價，沒有跨供應商價目表（只用到估算需要的四個單價），沒有重講快取倍率；只有一個 callout、沒有免責段落；結尾兩個 link 的 text 逐字正確。",
+      "checked_on 2026-09-18 在五條 source 與研究紀錄一致，且本輪沒有依今天的頁面改動任何數字，因此不改。"
+    ],
+    "left_for_the_owner": [
+      "正文與表格的型號寫法不一致：正文用「Claude Opus 5」「Gemini 3.5 Flash-Lite」這種顯示名稱，但 OpenAI 那個用 API id「gpt-6-astra」，表格裡又寫「GPT-6 Astra」。改成顯示名稱會讓檢查器對「GPT-6」發出 models-seen 警告，所以本輪維持原狀。",
+      "Gemini 3.8 Flash 的價格在 2027-01-01 變成 1.50／7.50 美元；2027 年初要回頭確認那一段是否還成立。",
+      "OpenAI 定價頁分 Short context 與 Long context 兩欄，頁面沒有寫分界的 token 數；本篇的 3,000 個 token 屬短上下文，若日後把假設放大到長上下文，單價要改用 20／75 美元那一欄。",
+      "Anthropic 定價頁註明 Claude 4.7 以後換了 tokenizer、同一段文字約多 30% token；本篇三家共用一組 token 假設，實際比價時這一點會讓 Claude 側偏高，站主若要更嚴謹可在正文加一句。",
+      "結尾兩個純 link 仍待協調者跑 relink（自檢的 raw_internal_url WARN）。"
+    ],
+    "code_recompiled": []
   }
 }

@@ -162,10 +162,28 @@
       "verbatim_quote": "20GB · 256K context window · Text, Image · 5 months ago"
     },
     {
-      "fact": "gemma4:cloud 那一列的大小欄是「-」、256K、Text, Image；gemma4:31b-cloud 那一列同樣是「-」與 256K。",
+      "fact": "gemma4:cloud 那一列的大小欄是「-」、256K、Text, Image（這條引文是 gemma4:cloud 那一列，全頁只出現一次；31b-cloud 那一列另外一條）。",
       "url": "https://ollama.com/library/gemma4",
       "is_vendor_claim": true,
       "verbatim_quote": "- · 256K context window · Text, Image · 2 months ago"
+    },
+    {
+      "fact": "gemma4:31b-cloud 那一列的大小欄同樣是「-」、256K、Text, Image（與 gemma4:cloud 那一列差在更新時間，所以是另一條連續字串，全頁只出現一次）。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "- · 256K context window · Text, Image · 5 months ago"
+    },
+    {
+      "fact": "gemma4 讀我檔的「Ollama’s cloud」一節底下只列出 gemma4:31b-cloud 一行指令；gemma4:cloud 只出現在上面的標籤清單，沒有出現在這一節，所以表格那一格只能寫「這一節寫 ollama run gemma4:31b-cloud」。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Models Ollama’s cloud ollama run gemma4:31b-cloud Edge models"
+    },
+    {
+      "fact": "gemma4、qwen3.6、gpt-oss 三個模型庫頁上方都排著 CLI、cURL、Python、JavaScript 四個分頁，cURL 那個分頁印出來的位址是本機的 11434 埠（引文取 gemma4 那一頁，另外兩頁只差模型名稱）。",
+      "url": "https://ollama.com/library/gemma4",
+      "is_vendor_claim": true,
+      "verbatim_quote": "CLI cURL Python JavaScript"
     },
     {
       "fact": "gemma4 讀我檔把雲端標籤獨立成一節，節名是 Ollama’s cloud，底下的指令是 ollama run gemma4:31b-cloud。",
@@ -247,7 +265,9 @@
     "「驗證範圍」或其他形式的免責聲明 callout：這篇的唯一一個 callout 留給 cloud 標籤的實際坑，不寫免責聲明。",
     "Ollama 安裝步驟、系統需求、模型庫頁欄位介紹、cloud 標籤的完整解說與關閉方式、本機／雲端成本試算、RAG 檢索流程的完整教學：分別是「Ollama 入門」「本機 vs 雲端 AI 成本試算」「本機 RAG」三篇的內容，這篇只一句帶過。「Ollama 入門」已經列過同一份 gemma4 標籤清單與同一個 cloud 標籤警告，本篇的表格只留這篇要用的「跑在哪裡」一欄。",
     "第三方雲端供應商（OpenAI、Anthropic、OpenRouter 等）的 API 金鑰、價格或速率限制數字：這篇的雲端端點只示範 Ollama 自己的雲端，其餘供應商留給「統一 API 層」那篇。",
-    "把 timeout 當成 chat.completions.create() 的關鍵字參數：openai 套件的讀我檔只記載 OpenAI(timeout=…) 設全域預設，與 client.with_options(timeout=…).chat.completions.create(…) 做單次覆寫。"
+    "把 timeout 當成 chat.completions.create() 的關鍵字參數：openai 套件的讀我檔只記載 OpenAI(timeout=…) 設全域預設，與 client.with_options(timeout=…).chat.completions.create(…) 做單次覆寫。",
+    "「光看標籤就知道跑在哪裡」這種反向的單一條件：雲端頁寫「For API requests to ollama.com, use the name returned by this list, such as gemma4:31b.」，不帶 cloud 的名稱送到 ollama.com 一樣跑在雲端，所以表格最後一欄只講標籤這一半，判斷資料去哪裡要網址加標籤兩件事一起看。",
+    "只在 ask() 擋雲端標籤、卻讓 redact_locally() 自己收一個 model 參數：去識別化那一步是全篇的重點，白名單檢查抽成 ensure_local_tag()，兩支函式進本機那一步之前都要跑過。"
   ],
   "editorial_brief": "這篇只講本機開放權重模型與雲端模型混搭這一種切法：本機的 Ollama 做分類、去識別化這類碰得到原始個資的敏感步驟，雲端模型只收到乾淨文字並負責收尾，同一支程式靠 base_url 切換，而且本機那一步要連模型標籤一起釘死。硬體與延遲只引用官方模型庫頁的規格數字，明講本站沒有實測；安裝、成本試算、本機 RAG 三個鄰近主題各一句帶過，交給既有的三篇文章。",
   "code_samples": [
@@ -359,6 +379,44 @@
         "label": "finish_in_cloud.py：把去識別化後的文字交給雲端模型收尾（延續同一支程式）",
         "result": "ok"
       }
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-19",
+      "method": "只覆核第一輪改動過的每一段與新寫進去的每一句：sources[] 七條全部以 curl -sL -A \"Mokaair-editorial\" 重抓（HTTP 200、bytes 與第一輪相同、七頁都讀得到正文，不是 JS 空殼），逐句回原文；研究紀錄每一條 verbatim_quote 用程式做連續字串比對（第一輪的 31 條全過，本輪新增 4 條也過）；三個 code 區塊抽出重跑 python -m py_compile，並用假的 OpenAI 用戶端離線跑一次 LOCAL_MODELS 白名單，確認「本機網址配到雲端標籤」在 ask 與 redact_locally 兩支函式都擋得下來；openai 套件的 OpenAI(timeout=…)、with_options(timeout=…) 對讀我檔 Timeouts 一節、response_format={\"type\": \"json_object\"} 另外對 openai-python 的 chat/completions 原始碼核對簽名。沒有打任何需要金鑰的 API，沒有用 sources[] 以外的網址替文章補事實，請求的 UA、標頭與查詢字串都沒有放入 email 或個人資料。",
+      "claims_checked": "第一輪點名的 22 個編輯點全部重看（正文六段、callout 全段、表格第五欄十一格、FAQ 四題、摘要兩句、導言末句、三個 code 區塊改過的行），外加研究紀錄 31 條引文、界線七項與四篇兄弟文的標題逐字比對，合計約 95 條。",
+      "edits": [
+        "骨幹反向錯誤：第三節第一段原本寫「要判斷一個標籤到底在自己機器上跑還是送到 Ollama 的雲端，看的是下面這張表最後一欄，不是呼叫方式」，把「標籤」單獨當成判準，正好是第一輪骨幹修正的反面，也和本篇自己的 code（gemma4:31b 當雲端模型）衝突。雲端頁原文寫「For API requests to ollama.com, use the name returned by this list, such as gemma4:31b.」——不帶 cloud 的名稱送到 ollama.com 一樣跑在雲端。已改成「看的不是呼叫方式，而是網址加標籤：這張表最後一欄只管標籤這一半」。",
+        "第二節的 h2 標題「同一支 Python：base_url 決定資料去哪裡」與骨幹修正矛盾（base_url 一件事決定不了），改成「base_url 和標籤決定資料去哪裡」。",
+        "表格 gemma4:31b 那一格「本機；也是官方直接雲端存取範例寫的模型名稱」放在「跑在哪裡」這個欄名底下自相矛盾，改成「下載後在本機；雲端頁寫對 ollama.com 送 API 請求也用這個名稱，那一種就跑在雲端」。",
+        "表格 gemma4:cloud／gemma4:31b-cloud 那一格寫「讀我檔列在「Ollama’s cloud」底下」，但讀我檔那一節底下只有 ollama run gemma4:31b-cloud 一行，gemma4:cloud 只在上面的標籤清單裡；改成「讀我檔的「Ollama’s cloud」一節寫 ollama run gemma4:31b-cloud」。",
+        "程式：LOCAL_MODELS 的白名單檢查原本只在 ask() 裡，但真正碰到原始個資的 redact_locally() 自己收一個 model 參數、直接呼叫 get_client(\"local\")，完全繞過檢查——與正文「去識別化那支函式要同時釘死網址與標籤」不一致。已把檢查抽成 ensure_local_tag()，ask() 與 redact_locally() 都先跑一次；離線測過 gemma4:cloud、gemma4:31b-cloud、gpt-oss:20b-cloud 都會擋下來。第一塊 43→49 行、第二塊 24→25 行，三塊 py_compile 全過。",
+        "導言第一段末句「程式上本機與雲端只差 base_url 那一行」與第二節、FAQ 第一題（「差別只有兩處：base_url、api_key 與 model」）和 code 本身衝突，改成「差的只有 base_url、api_key 和 model」。",
+        "Base URLs 表的歸屬：正文與摘要第二句都寫成「OpenAI 相容端點文件」的表，但那張表在 docs.ollama.com/api（API 介紹頁），OpenAI 相容只是表裡的一列；兩處都改成「Ollama 的 API 文件……Base URLs 表裡，OpenAI 相容那一列」。",
+        "兩處超出「這幾頁沒有寫」範圍的否定句收斂：第五節第一段「沒有一頁公開本機和雲端實際回覆要等多久」與 FAQ 第五題「因為沒有一份官方頁公開這個數字」，都改成「本文引用的官方頁沒有公開」。",
+        "研究紀錄：gemma4:cloud 那一條引文其實只涵蓋它自己那一列（頁面上 31b-cloud 那一列是「5 months ago」），已把 fact 說明改精確，並另外補上 31b-cloud 那一列、「Ollama’s cloud」一節、模型庫頁四個分頁共三條新引文，四條都通過連續字串比對。must_not_write 新增兩條（反向的單一條件、只在 ask 擋標籤）。",
+        "第四節第一段「這裡示範最常見的敏感步驟」是沒有來源的最高級，改成「一個典型的敏感步驟」。",
+        "字數：為了容納上面的修正，刪掉第四節第一段重複第二次的「這樣走一趟，送出去的就只有代號版本的文字」與第五節第一段重複的「能確定的只有上面那張表裡的規格數字」兩句贅述（都是同段已經講過的話，不是但書或限定詞）。段落字數 2,913 → 2,954。"
+      ],
+      "code_recompiled": [
+        {
+          "label": "hybrid_client.py：用 base_url 切換本機與雲端（pip install openai）",
+          "result": "ok"
+        },
+        {
+          "label": "redact_locally.py：本機模型先做去識別化（延續 hybrid_client.py 的 get_client 與 ensure_local_tag）",
+          "result": "ok"
+        },
+        {
+          "label": "finish_in_cloud.py：把去識別化後的文字交給雲端模型收尾（延續同一支程式）",
+          "result": "ok"
+        }
+      ],
+      "left_for_the_owner": [
+        "第一輪留的四件事本輪都沒有改變：base_url 帶不帶結尾斜線、與「Ollama 入門」重複的 gemma4 數字、雲端收尾要不要寫回 gpt-oss:120b、openai 套件沒裝在本 repo 的 venv 裡。",
+        "必連文章「Ollama 入門」寫「相容到什麼程度官方逐項列了：……不支援 tool_choice」，但 https://docs.ollama.com/api/openai-compatibility 今天的 /v1/chat/completions「Supported request fields」清單裡有 tool_choice。本篇沒有提 tool_choice，所以不構成矛盾，但那一篇的句子看起來已經過時，建議站主排一次重查。"
+      ],
+      "verdict": "ok"
+    }
   }
 }

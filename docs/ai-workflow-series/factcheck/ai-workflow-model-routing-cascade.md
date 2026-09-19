@@ -268,3 +268,225 @@ H2-1 段末、H2-3 第 2 段（三處改寫）、H2-4 第 1 段的「各差到�
 表格四格（LiteLLM 路由依據、OpenRouter 逾時與重試、兩邊的成本控制）、FAQ 第 5 題、
 以及 `cascade.py` 的 import／`except`／`MAX_ATTEMPTS` 註解三行。
 不需要重做全篇。
+
+## 第二輪
+
+查核代理：未參與撰稿，也未參與第一輪。查核日 **2026-09-19**。
+範圍是第一輪改動過的每一段與新寫進去的每一句，不是整篇重做。
+文章的 `checked_on` 仍是 **2026-09-18**：七頁今天重抓後內容沒有變動，
+也沒有依今天的頁面改任何數字，依 FACTCHECK 規則**不因重查而改**。
+
+查核方式：`sources[]` 七條全部以 `curl -sL -A "Mokaair-editorial"` 再抓一次並讀 body；
+研究紀錄的 `verbatim_quote` 用程式做**連續字串**比對；兩個範例重新 `python3 -m py_compile`，
+並在暫存目錄用假的 `anthropic` 模組（第一輪的做法，不打任何 API）跑九種情境。
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料**，
+也**沒有使用 `sources[]` 以外的網址替文章補任何事實**。
+
+覆核的主張：**68 條**（第一輪改過的 20 個編輯點逐句回原文，加上受它們牽動的
+H2-3 第 2 段全段、H2-5 第 3 段全段、表格四格、FAQ 第 5／6 題、圖解與 summary 的數字、
+兩個範例的識別字與行為），外加研究紀錄 43 條引文的連續字串比對。
+**改了 7 處**（其中 2 處是第一輪留給站主的程式問題）。
+
+### 七條 sources 今天仍是正文，不是空殼
+
+| source | HTTP | bytes | body 是正文嗎 |
+| --- | --- | --- | --- |
+| `openrouter.ai/…/routers/auto-router` | 200 | 767,890 | **是**。`<title>` 為「Auto Router - Intelligent Model Selection」；Overview／How It Works／Cost Tier／Pricing 全文可讀 |
+| `openrouter.ai/…/model-fallbacks` | 200 | 602,157 | **是**。`<title>` 為「Model Fallbacks - Automatic Failover Between Models」 |
+| `docs.litellm.ai/docs/routing` | 200 | 648,230 | **是**。`<title>` 為「Router - Load Balancing \| liteLLM」；Routing Strategies、Cooldowns、Retries、Session Affinity 全文可讀 |
+| `platform.claude.com/docs/en/models/overview` | 200 | 367,902 | **是**。四欄比較表整表可讀 |
+| `platform.claude.com/docs/en/get-started` | 200 | **521,993** | **是**。第一輪是 521,783，差 210 bytes 是頁面版本字串，`pip install anthropic`、`export ANTHROPIC_API_KEY` 與引到的兩句原文都沒有變 |
+| `platform.claude.com/docs/en/cli-sdks-libraries/sdks/python` | 200 | 754,022 | **是**。Handling errors／錯誤表／Retries／Timeouts 全文可讀 |
+| `platform.claude.com/docs/en/api/messages/create` | 200 | 1,416,524 | **是**。回應範例含 `content` 與 `usage` 全欄位 |
+
+三頁 `Access Denied`／`Just a moment`／`Enable JavaScript` 皆 **0** 次（七頁都是）。
+
+### 研究紀錄的引文
+
+第一輪留下的 **43 條** `verbatim_quote` 全部以連續字串比對**通過**，
+每條的 `url` 都在 `sources[]` 內，沒有一條需要換片段或刪事實。
+本輪新增 **3 條**（見下面第 4 處），一樣通過比對，合計 **46 條**。
+
+### 改掉的 7 處
+
+**1. `MAX_ATTEMPTS = 4` 在三階級聯裡永遠碰不到**（第一輪留給站主的第 1 件）。
+迴圈每次失敗或升級都 `tier_index += 1`，從最底層起算最多只跑三次，
+所以 `4` 這個上限是死的。改成與階數一致的寫法：
+
+```
+- MAX_ATTEMPTS = 4          # escalations and fallbacks; SDK retries happen inside one call
++ MAX_ATTEMPTS = len(TIERS)  # one call per tier; SDK retries happen inside one call
+```
+
+`len(TIERS)` 讓上限正好等於可達的呼叫次數，日後加一階也自動跟著走。
+模擬跑出來 `MAX_ATTEMPTS = 3`，與可達上限相同。
+
+**2. `run_cascade` 回傳的 `attempts` 比實際呼叫多一**（第一輪留給站主的第 2 件）。
+碰到 `if spent >= COST_CAP_USD: break` 那一圈沒有真的呼叫，迴圈變數卻已經前進。
+改成在呼叫前遞增的獨立計數器：
+
+```
+-   for attempt in range(1, MAX_ATTEMPTS + 1):
++   calls = 0
++   for _ in range(MAX_ATTEMPTS):
+      if spent >= COST_CAP_USD:
+-       break
++       break  # checked before the call, so this round never spends anything
+      tier = TIERS[tier_index]
++     calls += 1
+-   best["attempts"] = attempt
++   best["attempts"] = calls  # calls really made, not loop rounds
+```
+
+修正前後的差別在模擬的第 9 種情境上看得到：成本上限那一圈，
+改前 `attempts=2`（只打了 1 次），改後 `attempts=1`。
+順帶修掉一個潛在的 `NameError`：`MAX_ATTEMPTS` 若被讀者改成 0，
+原本的 `attempt` 不會被繫結。**行數 42 → 44**，研究紀錄 `code_samples` 已同步。
+
+**3. H2-3 第 2 段的「最大嘗試次數」跟著程式改。**
+原文「計的是升級與 fallback 的次數」
+→ 「計的是**實際打出去的呼叫次數**，升級與 fallback 各算一次」，
+並補上一句把程式行為講明白：
+「範例直接把這個上限設成階數：迴圈每失敗或升級一次就往上一階，
+每一階最多只打一次，所以**在這個範例裡**寫成比階數大的數字永遠不會生效。」
+（否定句限縮在「這個範例」，不是對級聯設計的全稱判斷。）
+
+**4. 第一輪換上去的 LiteLLM 策略清單自己漏掉一個值。**
+第一輪把中文描述改成文件真正吃的字串是對的，但它寫
+「官方文件的範例用到的值有 simple-shuffle、usage-based-routing、latency-based-routing 與 cost-based-routing」——
+**同一頁還有 `least-busy`**：策略清單的標題就寫
+`Routing Strategies - Weighted Pick, Rate Limit Aware, Least Busy, Latency Based, Cost Based`，
+頁上也有 `router = Router(model_list=model_list, routing_strategy="least-busy")` 的完整範例。
+四個值讀起來像是完整清單，實際不是。
+改用**文件自己的列舉**（Session Affinity 那節的原文，一句就涵蓋五個值）：
+`so it works with every strategy on this page (simple-shuffle, least-busy, usage-based-routing-v2, latency-based-routing, cost-based-routing)`
+→ 正文與表格都改成「文件把這一頁上的策略列成 simple-shuffle、least-busy、
+usage-based-routing-v2、latency-based-routing 與 cost-based-routing 五個值」。
+（句子限定在「這一頁」，因為 `usage-based-routing` 不帶 `-v2` 的寫法在同一頁另一個範例也還在，
+不做「參數只吃這五個」的全稱宣稱。五個值沒有一個帶 beta／preview／deprecated 標記；
+頁上唯一標 deprecated 的 Semantic Auto Router 本篇沒有引。）
+研究紀錄新增三條引文：上面那句列舉、`Load-balance across multiple deployments (e.g. Azure/OpenAI)`、
+`router = Router(model_list=model_list, routing_strategy="least-busy")`。
+
+**5. FAQ 第 5 題新寫的那句在正文裡沒有對應。**
+第一輪把 FAQ5 拆成兩句是對的，但新句子「LiteLLM 的 Router 則是跑在自己程式裡的套件，
+**在自己設定的多個節點之間分流**」在正文找不到落點——H2-5 第 3 段直接從
+`routing_strategy` 講起，從沒說 Router 是做什麼的。
+已在正文補上（依 Router 頁自己的第一句 `Load-balance across multiple deployments (e.g. Azure/OpenAI)`）：
+「LiteLLM 的 Router 則是**在自己設定的多個節點之間分流**，挑節點的方式在 Router 類別上用
+routing_strategy 這個參數指定……」，FAQ 答案這才 ⊆ 正文。
+
+**6. 表格「路由依據／LiteLLM」那一格同步**：補上「在自己設定的多個節點之間分流」與同一份五個值。
+
+**7. FAQ 第 6 題把「最大嘗試次數」列進「示意數字」，改完程式後不再成立。**
+原文「這篇範例裡的門檻、逾時秒數、**最大嘗試次數**與成本上限都只是示意……不是建議值」
+→ 「這篇範例裡的信心門檻、逾時秒數與成本上限都只是示意……不是建議值；
+**最大嘗試次數則是直接設成階數，不是另外挑的數字**」。
+（不是為了字數刪限定詞：那一項改由正文新句子承接，仍在 FAQ 裡交代。）
+
+### 程式範例重驗
+
+兩塊都從內容包重新抽出到 `SCRATCH/agents/workflow/fc2-ai-workflow-model-routing-cascade/run/`，
+`python3 -m py_compile` **都通過**（改前改後各跑一次）。
+
+| 區塊 | 語言 | 行數 | 編譯 | 本輪比對的重點 | 文件 |
+| --- | --- | --- | --- | --- | --- |
+| `route_and_call.py` | python | 39（未動） | ok | 三個模型 id 與六個單價逐格重對；`with_options(timeout=…)`、`messages.create(model, max_tokens, messages)`、`content` 區塊的 `type`／`text`、`usage.input_tokens`／`output_tokens` | models/overview、sdks/python、api/messages/create |
+| `cascade.py` | python | **42 → 44** | ok | `APITimeoutError`／`APIConnectionError`／`APIStatusError` 三個類別對錯誤表（`APIConnectionError` 的 status code 欄是 `N/A`，單列一列）；`max_retries` 預設 2；`MAX_ATTEMPTS` 與 `attempts` 兩處修正 | get-started、sdks/python |
+
+**離線行為模擬**（假的 `anthropic` 模組，九種情境，完全不連外）：
+
+| 情境 | 實際呼叫 | `attempts` | 結果 |
+| --- | --- | --- | --- |
+| 信心夠，停在第一階 | 1（haiku） | 1 | PASS |
+| 信心不夠連升兩階 | 3（haiku→sonnet→opus） | 3 | PASS |
+| 三階都不夠 | 3 | 3 | PASS，回傳目前最好的答案（sonnet，0.5） |
+| **逾時** → 升級 | 2 | 2 | PASS |
+| **連線錯誤** → 升級 | 2 | 2 | PASS（第一輪補的 `APIConnectionError` 確實生效） |
+| **狀態錯誤** → 升級 | 2 | 2 | PASS |
+| 三階全部失敗 | 3 | 3 | PASS，沒有答案可回 |
+| 長輸入／任務關鍵字 | 1（直接 sonnet） | 1 | PASS |
+| **成本上限觸發** | 1 | **1**（改前是 2） | PASS |
+
+每次呼叫送進去的 `timeout` 都是 `PER_CALL_TIMEOUT`（20.0），
+`Anthropic()` 收到的 `api_key` 來自環境變數、`max_retries=2`。
+金鑰檢查：兩塊都只從 `os.environ` 讀，沒有字面金鑰、沒有 `<YOUR_KEY>`、
+沒有 `eval`、沒有刪檔命令，輸出那一行寫著「示意」。
+
+### 覆核過而且正確、沒有動的部分
+
+- **H2-4「依 Anthropic 的模型頁，由輕到重的輸入與輸出單價各差到五倍」成立。**
+  今天把四欄比較表的欄位對齊後逐格讀：Haiku 4.5 `$1 / input MTok`、`$5 / output MTok`；
+  Sonnet 5 `$2`／`$10`；Opus 5 `$5`／`$25`。輸入 1→5、輸出 5→25，兩個方向都正好五倍。
+  同一頁還有更貴的 Claude Fable 5.1（`$10`／`$50`），但句子限定在本篇的三階，沒有過度宣稱。
+- **OpenRouter 的否定句仍然成立。** Auto Router 與 Model Fallbacks 兩頁的渲染正文以詞界比對
+  `timeout`／`timeouts`／`retry`／`retries` 皆 **0** 次（`max_price` 在 Auto Router 頁 1 次）。
+  表格那一格已經寫明是「這篇讀到的 Auto Router 與 Model Fallbacks 兩頁」，範圍正確。
+- **`cost_tier` 那一串全對**：五個值、`A tier is a band, not a ceiling…`、`provider.max_price`、
+  `openrouter/auto`、`~30 fine-grained task types`、7 天 `Share of Spend`、退回預設模型集。
+  本篇用的是 `openrouter/auto` 而不是頁上的 `openrouter/auto-beta`，
+  也沒有用頁上標 `Deprecated` 的 `cost_quality_tradeoff`。
+- **Anthropic Python SDK 的每一個旋鈕今天都還在頁上**：預設逾時 10 分鐘、
+  `timeout` 接受 float 或 `httpx2.Timeout`、`client.with_options(timeout=5.0).messages.create(`、
+  `max_retries=0,  # default is 2`、`Certain errors are automatically retried 2 times by default`
+  加 `>=500 Internal errors`、`On timeout, the SDK throws an APITimeoutError.`、
+  `Note that requests that time out are retried twice by default.`
+- **Python 版本不改。** SDK 文件今天寫 `Python 3.10 or later is required.`，
+  本篇兩處（導言第 2 段、H2-4 第 1 段）都寫「Python 3.11 以上」，
+  但**都沒有把 3.11 說成 SDK 的要求**——那是 BRIEF 規定的系列統一環境要求，
+  依指派維持 3.11+。
+- **三個模型 id 仍列在模型頁 `Claude API ID` 欄，也都已在 `models-seen.json` 內；
+  本輪沒有新增任何條目。**
+- **第一輪為了字數刪掉但書、限定詞或歸因？沒有。** 第一輪把段落字數從 2,519 推到 2,764，
+  全部是補限定詞（「本站沒有實測」「一條帶不是上限」「這篇讀到的兩頁」「依 Anthropic 的模型頁」）
+  或把中文描述換成文件原字串，沒有一處是刪東西湊字數。本輪再補 112 字，**2,876**（1,800–3,000）。
+- **界線**：整篇**一個** `warning` callout、**沒有**免責段落；沒有購買、訂閱或投資建議；
+  沒有推薦式比價；沒有「台灣可用」；沒有驚嘆號、簡體字、Markdown 或 HTML 語法；
+  廠商宣稱都帶歸屬（「OpenRouter 的文件寫」「文件註明」「Anthropic 官方的 Python 套件文件寫」
+  「依 Anthropic 的模型頁」「文件並註明」）；本篇引到的功能沒有一個帶 beta／preview／deprecated 標記；
+  正文中間沒有 `link` 區塊；FAQ 答案沒有網址。
+- **與兄弟篇的分工與標題**（協調者點名的四篇今天逐字核對過內容包）：
+  本篇正文只點名三篇，且與今天的 zh-TW title 逐字相同——
+  `ai-model-tiers-explained`「同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選」、
+  `ai-workflow-cost-quality-latency`「成本、品質、延遲：多模型流程怎麼取捨」、
+  `ai-workflow-unified-api-layer`「統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式」。
+  `ai-workflow-cross-review-judge`「多模型互審：LLM 當評審、投票與集成怎麼做」、
+  `ai-workflow-failures-and-guardrails`「失敗案例與防護：迴圈、費用爆炸與代理間注入」、
+  `ai-workflow-structured-handoff`「模型之間交接資料：JSON Schema 與結構化輸出」
+  本篇**一個字都沒有點名**，所以沒有標題要對；內容上也沒有碰互審、防護與結構化輸出，
+  不矛盾也不重講。與第 3 篇的分工仍然成立（本篇正文沒有任何單價，單價只在 `TIERS` 裡）；
+  與第 4 篇的 `base_url`／OpenAI 相容端點也完全沒有交集。
+- **結尾兩個 link**：第一個 text 逐字是「多模型 AI 工作流教學：從拆任務到串接不同模型」；
+  第二個指向 `ai-workflow-cost-quality-latency`，text 逐字等於它今天的 zh-TW title
+  「成本、品質、延遲：多模型流程怎麼取捨」（自檢也會擋，今天通過）。
+- **summary 五句、圖解四格、表格十六格都沒有正文以外的數字**；
+  表格用到的「七天」「三十種」在正文都有。
+
+### 留給站主的事
+
+1. **`models-seen.json` 的 Anthropic 條目記的是 `…/docs/en/about-claude/models/overview`，
+   內容包記的是導向後的 `…/docs/en/models/overview`。** 與第一輪同一件事，
+   兩者是同一頁（302）；依規格本代理不改別人的條目，要統一請整份一起換。
+2. **`provider.max_price` 與 `rpm`／`tpm` 只出現在表格，正文沒有展開。**
+   這是研究紀錄 `unverified_or_excluded` 記下的刻意分工（展開會變成 Provider Selection
+   與 Budget Routing 的教學），規格也只要求 summary 與圖解的數字進正文。
+   站主若希望表格完全被正文覆蓋，才需要動。
+3. `pack_cli relink` 的 WARN 仍在，那是協調者的事。
+
+### 自檢
+
+```
+WARN - lint raw_internal_url: 2 article link(s) as raw URLs; run `pack_cli relink` so they become article inlines that follow the target's publication
+OK ai-workflow-model-routing-cascade paragraphs 2876 code_blocks 2 sources 7
+```
+
+**沒有 FAIL。** 段落字數 **2,876**（第一輪後 2,764），code 區塊 39 與 44 行。
+
+### 結論
+
+`ok`。改了 7 處，其中 2 處是第一輪留給站主的程式問題（現在程式與正文一致，
+模擬九種情境全數符合正文描述），1 處是第一輪自己新寫的清單漏了 `least-busy`，
+1 處是第一輪新寫的 FAQ 句子在正文沒有落點。
+**沒有換掉任何程式範例，也沒有動骨幹論述**——級聯的四個步驟、三階的模型與價格、
+信心門檻的設計、規則路由的三條規則都原樣保留。
+第一輪的 15 條改動，覆核後**沒有一條需要退回**。

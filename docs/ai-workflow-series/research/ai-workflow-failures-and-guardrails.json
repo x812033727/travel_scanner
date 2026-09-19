@@ -25,11 +25,6 @@
       "checked_on": "2026-09-19"
     },
     {
-      "title": "Security Best Practices（Model Context Protocol 官方文件，/specification/latest 轉址後的現行版本，頁面標記 Version 2026-07-28 (latest)：協定層級的攻擊面與緩解做法）",
-      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
-      "checked_on": "2026-09-19"
-    },
-    {
       "title": "Mitigate jailbreaks and prompt injections（Claude Platform 官方文件：JSON 編碼未信任內容、用結構化輸出篩選工具回傳結果）",
       "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks",
       "checked_on": "2026-09-19"
@@ -107,18 +102,6 @@
       "url": "https://developers.openai.com/api/docs/guides/safety-best-practices",
       "is_vendor_claim": true,
       "verbatim_quote": "Narrowing the ranges of inputs or outputs, especially drawn from trusted sources, reduces the extent of misuse possible within an application."
-    },
-    {
-      "fact": "MCP 官方 Security Best Practices 文件的宗旨是列出 MCP 實作特有的安全風險、攻擊面與最佳實務；這一句在 2025-11-25 與 2026-07-28 兩個版本上都在",
-      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
-      "is_vendor_claim": true,
-      "verbatim_quote": "This document identifies security risks, attack vectors, and best practices specific to MCP implementations."
-    },
-    {
-      "fact": "MCP 規格現行版本是 2026-07-28：/specification/latest/basic/security_best_practices 今天轉到 /specification/2026-07-28/... 再轉到 /docs/2026-07-28/tutorials/security/security_best_practices，頁首標記 latest",
-      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
-      "is_vendor_claim": true,
-      "verbatim_quote": "Version 2026-07-28 (latest)"
     },
     {
       "fact": "Anthropic 官方文件建議在可行時（Where possible）把第三方字串包成 JSON 物件，不要直接串接成自由格式文字",
