@@ -304,6 +304,12 @@
       "verbatim_quote": "Users will be able to add compatible ebooks they’ve purchased from Google Play Books directly to a Gemini Notebook, making it simple for them to ask questions about a book and receive responses grounded directly in its text."
     },
     {
+      "fact": "（第二輪查核補記，2026-09-20）確認一本書合不合格，官方給的是兩條路，而且第一條有兩個步驟：到 Google Play 圖書，點書籍頁上的「Tools」標記，看那裡有沒有列出 Gemini Notebook；或瀏覽官方的合格書籍集合（browse eligible books 連到 play.google.com/store/books/streamchild/promotion_books_global_expert_intelligence_top_books_collection）。正文原本只寫「可看『Tools』標記」，漏掉「要看標記底下有沒有列出 Gemini Notebook」這一步，第二輪已補。（逐字註記：這條引文在可見文字裡連續，在原始碼裡被結尾的 <a> 標籤切開，引文到 books 為止、不含句號。）",
+      "url": "https://workspaceupdates.googleblog.com/2026/09/introducing-expert-intelligence-in-Gemini-Notebook.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If the ebook is eligible, you’ll see Gemini Notebook listed when you click the “Tools” badge on a book’s detail page, or you can browse eligible books"
+    },
+    {
       "fact": "共享筆記本不會讓別人免費讀到書：官方加註，收件者要在共享筆記本裡對電子書提問或產生內容，自己也必須買過合格的 Play 圖書電子書。",
       "url": "https://workspaceupdates.googleblog.com/2026/09/introducing-expert-intelligence-in-Gemini-Notebook.html",
       "is_vendor_claim": true,
@@ -346,7 +352,7 @@
     "開學工具那一則沒有寫歐洲經濟區例外。以詞界比對查核到 2026-09-20，EEA／European Economic Area／European Union／Europe 在該則的可見文字與原始碼各 0 次。這是「這一頁沒有寫」，不是「歐洲經濟區可用」——不可以反過來寫成該地區確定開放。",
     "沒有一頁寫這些功能什麼時候會鋪完。開學工具只寫 Extended rollout「可能超過 15 天」、起算日 9 月 15 日，沒有結束日；筆記本那一則寫「最多 15 天」、起算日 9 月 14 日；Expert Intelligence 只寫「現在已可使用」。",
     "沒有一頁公布使用量上限的絕對數字。消費端只寫 4 倍與 2 倍，而且兩處註腳都寫明比較基準是「相對於非 AI 訂閱者」；三則 Workspace 公告正文裡 limits 各 0 次。",
-    "沒有一頁列出支援的語言。即時語音對話寫的是「近 100 種語言」、短影片總覽寫「80 種以上語言」，但四頁都沒有印出語言清單；以詞界比對，Chinese 與 Traditional 在四頁的正文各 0 次。文章不可以寫「支援中文」或「支援繁體中文」。",
+    "沒有一頁列出支援的語言。即時語音對話寫的是「近 100 種語言」、短影片總覽寫「80 種以上語言」，但四頁都沒有印出語言清單；以詞界比對，Chinese 與 Traditional 在四頁的正文各 0 次。文章不可以寫「支援中文」或「支援繁體中文」。（第二輪 2026-09-20 補註：四頁裡唯一印出語言名稱的是消費端註腳 2 的 English（This is supported on web and mobile for users (including U18) with English as the selected output language under settings.），那是錄音器「筆記與來源並排」的輸出語言條件，不是支援語言清單；本條與正文的否定句都成立，但正文的「沒有印出語言名稱」已在第二輪限縮成「近 100 種語言」與「80 種以上語言」這兩處，以免被這一句註腳推翻。)",
     "沒有一頁談到錄音與筆記的資料會怎麼被處理。以詞界比對查核到 2026-09-20，三則 Workspace 公告的貼文正文裡 train／training／privacy／data／store／stored／retention 各 0 次；消費端原文的文章段落與註腳也各 0 次。錄音器上線不等於官方交代了錄音的儲存位置或訓練用途。",
     "Expert Intelligence 沒有點名任何一家出版社。原文只寫 major publishers 與「逾 10 萬本」。（獨立查核 2026-09-20 訂正：本條原本還寫「也沒有公布書單」，那是錯的——同一則公告的 End users 段落寫明 To see if a book is eligible for Expert Intelligence, visit Google Play Books…or you can browse eligible books，並把 browse eligible books 連到 play.google.com 的官方合格書籍集合。可以寫「公告沒有把書單印在公告上」，不可以寫「沒有公布書單」。）",
     "沒有一頁說美國以外的 140 多個市場是哪些。註腳只給了一份排除名單（美國、玻利維亞、阿爾巴尼亞、加拿大、澳門、香港、突尼西亞），沒有給包含名單。不在排除名單上不等於在包含名單上。",
@@ -421,7 +427,7 @@
   "corrections_applied": [],
   "hero_label": "發表不等於你能用",
   "diagram": {
-    "title": "同一個產品，開放條件各不同",
+    "title": "同一個名字，開放條件各不同",
     "caption": "Gemini Notebook 在 2026 年 9 月 17 日與 18 日三則官方公告裡，對不同帳號寫出的開放條件整理，查核日 2026 年 9 月 20 日。",
     "nodes": [
       [
@@ -549,7 +555,114 @@
     "coordinator_rulings": [
       "錄音器的英文輸出語言條件不補：本文沒有寫錄音器這項功能，第五節「四份文件沒有列出支援語言清單」仍成立；補一句會引進正文沒有的功能，且段落字數已到 2,967／3,000。",
       "「之後才到 Google AI Pro 與其他方案」維持：others 在原文沒指明對象，現譯法落在原文範圍內。",
-      "台灣可用與否維持不下結論（四頁 Taiwan 各 0 次）。"
-    ]
+      "台灣可用與否維持不下結論（四頁 Taiwan 各 0 次）。",
+      "第二輪後（2026-09-20）：圖解標題「同一個產品」改「同一個名字」（must_not_write 第 12 條：官方自陳 Notebooks in Gemini 是兩個工具的結合）；caption 不含「同一個產品」不動。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent（未參與撰稿，也未參與第一輪）",
+      "checked_on": "2026-09-20",
+      "method": "四條 sources[] 於 2026-09-20 再以 curl -sL -A \"Mokaair-editorial\" 各抓一次，請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的 email 或個人資料。四條都是 HTTP 200、0 次轉址、落地網址等於請求網址、body 是正文而非擋阻頁：s1 208,485 bytes、s2 206,304、s3 207,481、s4 384,870（與第一輪完全相同，s3 也仍是 207,481）。去掉 script／style／註解後抽出可見文字，貼文正文 s1 2,762 字、s2 2,708 字、s3 3,090 字、s4（文章段落＋註腳）4,082 字。本紀錄原有的 51 條 verbatim_quote 以程式做連續字串比對（本輪另外新增第 46 條，陣列索引 45，同樣比對過）：同時比對可見文字與 HTML 實體解碼後的原始碼，51 條全數在來源頁找得到，47 條在原樣或空白正規化後連續，另外 4 條（即時語音對話企業端與消費端、錄音器、Expert Intelligence 開場）只有在把空白全部移除後才連續，原因是 (Android/iOS) 與 Expert Intelligence 被 <a>／<b> 標籤切開，不是引文有誤；沒有一條含 …／...／| 的拼接，沒有一條把兩個段落接在一起。否定敘述重跑詞界計數（只數貼文正文，不含導覽與頁尾）：Taiwan 在四頁各 0 次、Chinese 與 Traditional 各 0 次、European Union 各 0 次、Europe／European 只有 s2 的 European Economic Area 1 次、NotebookLM 各 0 次；s1 的 Ultra／Pro／Plus／price／pricing／cost／free／limits 各 0 次。消費端原文的兩個語系選單以 DOM 祖先重驗：一個在 uni-nav__dropdown-menu（頁首 Preferences）、一個在 uni-footer，raw HTML 裡「台灣」4 次是因為每個 <option> 的 label 屬性與內文各算一次，可見文字仍是 2 次，第一輪的「頁首與頁尾」訂正成立。s1 Resources 的 href 重驗為 s4 的網址（官方自己把兩篇串起來），s3 的 browse eligible books 重驗為 play.google.com 的官方合格書籍集合。s4 的 JSON-LD datePublished 2026-09-15T16:00:00+00:00、meta article:published_time 2026-09-15、頁面自印 Sep 15, 2026 三者一致，第一段「結構化資料也把發布時間標在同一天」成立。覆核範圍：第一輪改動過的每一段與新寫進去的每一句逐句回來源，外加正文 32 句、summary 5 句、FAQ 六題共 18 句、表格 16 格與 caption、callout 3 句、title、description、兩個結尾連結的 text、圖解 4 格＋標題＋hero_label；hero.alt 依規格不查也不改。兩個結尾連結逐字重對：索引標題與 DELTA-4-6 第 5 條相同，第二個連結的 text 與 apps/api/app/guides/content/ai-news-gemini-38-live-20260915.json 的 zh-TW title 完全相同。界線重掃：不帶 finance 主題、只有一個一般 callout、沒有投資免責段落、沒有購買或升級建議、沒有推定台灣可用、廠商宣稱全部歸因、三則的分批鋪開狀態都寫著。",
+      "claims_checked": 151,
+      "verdict": "ok（改了 13 處，都是限定詞、範圍與歸因，沒有動到骨幹論述；改後段落字數 2,982／3,000）",
+      "changes": [
+        {
+          "where": "內容包 zh-TW 第一節第一段（Notebooks in Gemini 的描述）",
+          "before": "一則是 Notebooks in Gemini（本文稱「Gemini App 裡的筆記本」），是把 Gemini App 與 Gemini Notebook 結合起來的功能",
+          "after": "一則是 Notebooks in Gemini（本文稱「Gemini App 裡的筆記本」），官方寫它還結合了 Gemini App 與 Gemini Notebook",
+          "why": "原文的動詞是 also combines——結合兩個工具是那一則附帶寫的一句，不是這個工具的定義；官方給它的定義是標題裡的 a dedicated workspace for focused, organized work 與內文的 a dedicated, focused space。把附帶的一句寫成「是……的功能」等於替官方下定義，也沒有歸因。",
+          "source": "s2 標題：Notebooks in Gemini: a dedicated workspace for focused, organized work, now for schools and organizations／s2：This tool also combines two of Google’s most powerful AI tools, the Gemini app and Gemini Notebook, to unlock new ways of working and studying."
+        },
+        {
+          "where": "內容包 zh-TW 第一節第一段（鋪開起算日那一句）",
+          "before": "其中兩則的鋪開起算日比公告頁面印出的日期更早",
+          "after": "三則裡有兩則的鋪開起算日比公告頁面印出的日期更早",
+          "why": "這一段的主詞是「另外還有兩則」，接著寫「其中兩則」會被讀成那兩則都有起算日；實際上有起算日的是開學工具（9/15，頁面印 9/18）與筆記本（9/14，頁面印 9/17），Expert Intelligence 的鋪開節奏欄只有 Available now。第一輪已經在後半句補了 Expert Intelligence，但前半句的指涉仍然是錯的。",
+          "source": "s1：Extended rollout (potentially longer than 15 days for feature visibility) started on September 15, 2026／s2：Gradual rollout (up to 15 days for feature visibility) started on September 14, 2026／s3：Available now"
+        },
+        {
+          "where": "內容包 zh-TW 第一節第二段",
+          "before": "這三則圍繞同一個產品 Gemini Notebook，各自寫出不同帳號拿得到什麼。",
+          "after": "這三則都和 Gemini Notebook 有關，各自寫出不同帳號拿得到什麼。",
+          "why": "這是第一輪新寫的句子，但它違反同一份紀錄的 must_not_write 第 12 條：官方自陳 Notebooks in Gemini 是 Gemini app 與 Gemini Notebook 兩個工具的結合，不是 Gemini Notebook 本身；「同一個產品 Gemini Notebook」正是那一條要防的混為一談。s2 的產品標籤同時掛了 Gemini、Gemini App 與 Gemini Notebook，寫成「都和 Gemini Notebook 有關」才是三則共同成立的說法。",
+          "source": "s2：This tool also combines two of Google’s most powerful AI tools, the Gemini app and Gemini Notebook／s2 標題：Notebooks in Gemini／s1 標題：New back-to-school features and learning tools available in Gemini Notebook"
+        },
+        {
+          "where": "內容包 zh-TW 第二節第一段（管理員開關那一句）",
+          "before": "官方寫得很明確：這些功能只會出現在「群組或組織單位已把 Gemini Notebook 設為開啟」的使用者身上。",
+          "after": "官方寫的是：這些功能「會提供給所在群組或組織單位已把 Gemini Notebook 設為開啟的使用者」。",
+          "why": "來源那一句是肯定句（will be available to users who are in a group or OU with … set to On），沒有寫「只會」；把它改寫成排他句是 BRIEF 第 1 型的安靜強化，而且前一句「第一步要看管理員有沒有打開設定」已經把門檻講清楚了，不需要靠「只會」。「官方寫得很明確」也是編輯評語，一併拿掉。",
+          "source": "s1：These features will be available to users who are in a group or organizational unit with Gemini Notebook set to On."
+        },
+        {
+          "where": "內容包 zh-TW 第三節第二段（送書那一句引文）",
+          "before": "官方寫『也提供一本書給美國滿 18 歲的使用者，送完為止』",
+          "after": "官方寫『也免費提供一本書給美國滿 18 歲的使用者，送完為止』",
+          "why": "原文是 a book on us，「on us」＝我們請客；譯文放在『』裡當官方原話，卻把免費這一層漏掉，讀起來像是單純提供一本書（可能要付費）。",
+          "source": "s3：We’re also providing a book on us for users 18 years or older in the U.S. while supplies last."
+        },
+        {
+          "where": "內容包 zh-TW 第三節第三段與 FAQ 第五題（美國學生方案）",
+          "before": "美國大學生可免費取得一年 Google AI Pro",
+          "after": "美國合格大學生可免費取得一年 Google AI Pro",
+          "why": "註腳 5 的第一句就是 Eligible students in the U.S. only——「合格」是官方自己印的限定詞。美國以外那一套本來就寫「合格大學生」（For eligible college students），只有美國這一套把它漏掉，兩句不對稱正是漏掉限定詞的徵兆。",
+          "source": "s4 註腳 5：Eligible students in the U.S. only. Offer Terms apply. Redeem until December 31, 2026.／s4 正文：If you’re a college student in the U.S., you can get one year of Google AI Pro for free (valued at $19.99 per month)."
+        },
+        {
+          "where": "內容包 zh-TW 第五節第一段與 FAQ 第二題（台灣）",
+          "before": "四份文件都沒有提到台灣：……消費端原文裡的『台灣』只出現在頁首與頁尾的語系選單",
+          "after": "四份文件的正文都沒有提到台灣：……（同句後半不變）",
+          "why": "整句自相矛盾：開頭說四份都沒有提到台灣，同一句後半又說消費端的語系選單裡有「台灣 (中文)」。第一輪已經把 summary 第五句限縮成「四份文件的正文」，卻沒有把正文與 FAQ 的同一句一起改，本輪補齊。",
+          "source": "s4 原始碼：兩個 class=\"uni-lang-picker\" 的 <select> 各有一個 <option label=\"台灣 (中文)\">，祖先分別是 uni-nav__dropdown-menu 與 uni-footer；四頁的 Taiwan 詞界計數各 0 次。"
+        },
+        {
+          "where": "內容包 zh-TW 第五節第二段（語言）",
+          "before": "即時語音對話寫『近 100 種語言』、短影片總覽寫『80 種以上語言』，都沒有印出語言名稱",
+          "after": "即時語音對話寫『近 100 種語言』、短影片總覽寫『80 種以上語言』，兩處都沒有印出語言名稱",
+          "why": "範圍不明的否定句。四頁裡確實印過一個語言名稱：消費端註腳 2 的 English（錄音器筆記與來源並排的輸出語言條件）。本文沒有寫錄音器（協調者已裁決不補），所以不是補那一句，而是把否定句限縮到它本來要講的那兩處，否則整句會被那一則註腳推翻。本紀錄 not_said 第 6 條也加了同樣的補註。",
+          "source": "s4 註腳 2：This is supported on web and mobile for users (including U18) with English as the selected output language under settings."
+        },
+        {
+          "where": "內容包 zh-TW 第五節第三段（怎麼確認一本書合格）",
+          "before": "但寫明要確認一本書合不合格，可看 Google Play 圖書書籍頁上的「Tools」標記",
+          "after": "但寫明要確認一本書合不合格，可點開 Google Play 圖書書籍頁上的「Tools」標記看有沒有列出 Gemini Notebook",
+          "why": "來源寫的是兩個步驟：點書籍頁的「Tools」標記，然後看那裡有沒有列出 Gemini Notebook。第一輪把它壓成「可看『Tools』標記」，會被讀成「書上有 Tools 標記就代表合格」——Tools 標記在 Google Play 圖書上是通用的，合不合格要看底下列不列 Gemini Notebook。本輪同時把這條引文補進 verified_facts。",
+          "source": "s3：If the ebook is eligible, you’ll see Gemini Notebook listed when you click the “Tools” badge on a book’s detail page, or you can browse eligible books"
+        },
+        {
+          "where": "內容包 zh-TW 第五節第三段（共享筆記本）",
+          "before": "官方寫的是同樣必須買過一本合格的 Play 圖書電子書，不是共享就能免費看內容。",
+          "after": "官方寫的是同樣必須買過一本合格的 Play 圖書電子書。",
+          "why": "刪掉的那一句是編輯推論，而且超出來源範圍：官方的 Note 限制的是「在共享筆記本裡與電子書互動（提問或產生內容）」，完全沒有講共享筆記本的人看不看得到書的內容。刪掉這句也騰出字數給同段的「Tools」訂正。",
+          "source": "s3：Note: To interact with an ebook in a shared notebook—such as asking questions or creating artifacts—recipients must also have purchased an eligible Play Book ebook."
+        },
+        {
+          "where": "內容包 zh-TW summary 第三句",
+          "before": "第二道門是地區與年齡：歐洲經濟區只被排除在「筆記本開放學校與企業」這一則之外，……",
+          "after": "第二道門是地區與年齡：只有「筆記本開放學校與企業」這一則寫了歐洲經濟區的例外，而且只排除企業與 Individual 訂閱者；……",
+          "why": "兩個問題。(1)「只被排除在……這一則之外」照字面讀是「被排除在那一則之外」，意思反了。(2) 就算照原意讀成「只有那一則排除歐洲經濟區」，也漏掉那一則自己的限定：EEA 以外只掛在 Workspace 客戶與 Individual 訂閱者上，個人 Google 帳號那一則明寫 globally。正文本來就寫對，summary 自己收窄過頭。",
+          "source": "s2：Available to all Google Workspace customers and Workspace Individual subscribers outside of the European Economic Area (EEA), as well as users with personal Google accounts globally"
+        },
+        {
+          "where": "內容包 zh-TW 表格第二列「開放對象」欄",
+          "before": "企業、Individual（EEA 外）、個人全球",
+          "after": "企業與 Individual（EEA 外）、個人全球",
+          "why": "原文的 outside of the EEA 同時管 all Google Workspace customers 與 Workspace Individual subscribers 兩者；用頓號隔開再把括號掛在 Individual 後面，會被讀成只有 Individual 受地區限制。正文與 FAQ 第三題本來就寫「企業與 Individual 訂閱者」，表格漏掉。",
+          "source": "s2：Available to all Google Workspace customers and Workspace Individual subscribers outside of the European Economic Area (EEA)"
+        },
+        {
+          "where": "內容包 zh-TW description",
+          "before": "把 9 月 15 日已公布的開學工具等三項 Gemini Notebook 功能，……以及官方對同一項語音功能給出的兩種說法",
+          "after": "把 9 月 15 日已公布的開學工具與另外兩項 Gemini Notebook 功能，……以及官方對同一項語音功能的兩種說法",
+          "why": "「9 月 15 日已公布的開學工具等三項功能」把 9/15 這個日期蓋到三項上，違反 must_not_write 第 0 條：9 月 15 日公布的只有開學工具那一批，Notebooks in Gemini 官方自陳四月就宣布過、Expert Intelligence 是 9/17 那一則才 introducing。summary 第一句本來就寫對（「已經公布的開學工具與另外兩項」），description 沒跟上。description 上限 200 字、原本 199 字，改法會多 2 字，因此把同句的「給出的兩種說法」縮成「的兩種說法」抵掉，改完仍是 199 字，沒有動到任何條件或限定詞。",
+          "source": "s1 標題與 Resources 連結（開學工具那一批，連到 9/15 消費端原文）／s2：In April, we announced notebooks in Gemini／s3：We’re introducing Expert Intelligence"
+        }
+      ],
+      "open_questions": [
+        "圖解標題仍是「同一個產品，開放條件各不同」。本輪把正文的「這三則圍繞同一個產品 Gemini Notebook」改掉（違反 must_not_write 第 12 條），但圖解標題沒有點名是哪個產品，字面上還撐得住，而且它是研究紀錄 editorial_brief 自己的框架（「同一家公司、同一個產品，在三天內對四種身分寫出四套條件」），改它要連帶改 diagram.caption 與內容包的 image caption（check_article 會比對兩者相同）。留給站主決定是否一併收斂。",
+        "正文第三節第三段的續扣句寫「未提前取消就會自動續扣」，來源是 Unless cancelled earlier, … will automatically charge $X/month after the trial ends；「試用結束後」這個時點只寫在 FAQ 第五題、沒有寫在正文（正文用「續扣」帶過），另外兩份註腳結尾的 Cancel anytime. 四處都沒有寫。本輪判斷「續扣」已含時點、且段落字數只剩 18 字（2,982／3,000），未改；若站主要更貼原文，FAQ 那一題已經是完整版。",
+        "第一輪列的三個 open_questions（錄音器的英文輸出語言條件、coming to Google AI Pro and others soon 的譯法、台灣可用與否）本輪都依 coordinator_rulings 維持不動；其中第一項本輪改用「把否定句限縮到兩處」處理，見 changes 第 8 條，沒有把錄音器引進正文。",
+        "本輪沒有發現任何一句需要回一手來源裁決的「原稿疑似有誤」：四條來源今天全部讀得到正文，51 條逐字引文全部對得上，沒有一條是拼接的。"
+      ]
+    }
   }
 }
