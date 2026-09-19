@@ -32,7 +32,7 @@ The catalog now holds no row for it at all — a genuine Seoul attraction is mis
 
 - [x] The museum exists in the catalog under Seoul with an exact map identity (Naver for
       KR, per the publication gate), durable coordinates and their source, and is approved.
-- [ ] It appears in the public rankings for the Seoul destination.
+- [x] It appears in the public rankings for the Seoul destination.
 - [x] The wrong Busan row stays rejected, or is corrected in place through a reviewed
       process — no blanket un-rejection of tombstones.
 
@@ -111,3 +111,7 @@ catalog-review 的 skip list 上。本次沒有寫入任何資料庫，也沒有
 - In `/zh-TW/admin/hotspots?tab=places&section=identity&hotspot_id=557a6eb0-…`: moved to `seoul` with the review document's reason (admin said 「已移動 1 筆景點至 seoul」), then the location editor saved the P625 pair, source `wikidata` + `https://www.wikidata.org/wiki/Q486449`, Naver `https://map.naver.com/p/entry/place/11620599`, `verified`, and the same reason. The owner pressed 核准.
 - Database afterwards: `ICN / seoul / approved / is_active / verified`, Naver URL set, reviewed 2026-09-19 07:56:07 UTC.
 - Still open: the public rankings item. The day's `HotspotRanking` snapshot was rebuilt by the collector right after the 07:41 deploy, before this approval, so the museum joins the Seoul ranking on the next 6-hourly refresh.
+
+### 2026-09-19 public ranking check (claude-opus-5)
+
+- The 08:25 UTC redeploy restarted the collector, whose first run rebuilt the day's snapshot: `/api/travel/hotspots/rankings?destination_id=seoul&q=國立民俗博物館` returns it at rank 44.
