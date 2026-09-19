@@ -6,7 +6,8 @@
 
 1. **只做 zh-TW。** 站主 2026-09-20 決定。內容包 `locales` 只有 `zh-TW`；研究紀錄**沒有** `translations` 欄位；
    沒有翻譯、沒有逐語審稿階段。規格裡凡是「翻譯代理」「逐語審稿」「hero_label 的五語」「圖檔五語」的段落一律跳過；
-   圖檔只出 zh-TW 一份。`check_article.py --assets` 只檢查 zh-TW 圖檔。
+   圖檔只出 zh-TW 一份。**自檢一律不帶 `--full`**：`check_article.py <slug>`（出圖後 `check_article.py <slug> --assets`）。
+   `--full` 只多加四個翻譯的檢查（腳本文件字串第 3–4 行），對 zh-TW-only 文章必然 FAIL，且不帶它不會漏掉任何 zh-TW 原文與研究紀錄的檢查。
 2. **研究紀錄由專責的研究代理寫，不是探索代理。** 探索代理只交候選清單（站主圈選用）；圈選後每個 slug 一位 opus 研究代理，
    照 4.5 的 schema（範例 `docs/ai-news-2026-09-late/research/ai-news-anthropic-pace-metrics-20260917.json`）寫成 JSON。
    最終版放在各垂直工作區（同 DELTA-4-5 第 7 條）：AI `docs/ai-news-2026-09-late/research/`、
