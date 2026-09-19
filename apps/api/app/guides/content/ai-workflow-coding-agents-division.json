@@ -133,7 +133,7 @@
           "type": "callout",
           "tone": "warning",
           "title": "沒人能回答核准提示時，三支 CLI 的文件寫的不是同一件事",
-          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 在沒有另外設定時用 default 核准模式，官方文件寫 --permission-prompt-tool 可以指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 決定誰來回答，傳 none 表示沒有人能回答、Claude Code 改成拒絕；同一頁也寫 dontAsk 模式下會提示的動作一律被拒絕，工作階段不等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never 兩個值，文件寫它控制 Codex 什麼時候暫停等人核准；codex exec 自己的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，而且預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測三支 CLI 在沒人回答時的實際行為，這裡只轉述各自文件寫了什麼。"
+          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 在沒有另外設定時用 default 核准模式，官方文件寫 --permission-prompt-tool 可以指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 決定誰來回答，傳 none 表示沒有人能回答、Claude Code 改成拒絕；核准模式那一頁也寫 dontAsk 模式下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never 兩個值，文件寫它控制 Codex 什麼時候暫停等人核准；codex exec 自己的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，而且預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測三支 CLI 在沒人回答時的實際行為，這裡只轉述各自文件寫了什麼。"
         },
         {
           "type": "code",
