@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 407,
+  "related": [
+    "ai-workflow-mcp-shared-tools",
+    "ai-workflow-structured-handoff",
+    "ai-workflow-cross-review-judge"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
@@ -206,14 +211,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Code｜非互動執行與 JSON 輸出",
-          "url": "https://mokaair.com/zh-TW/life/claude-code-headless-json"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Code｜非互動執行與 JSON 輸出",
+              "kind": "life",
+              "slug": "claude-code-headless-json"
+            }
+          ]
         }
       ],
       "sources": [

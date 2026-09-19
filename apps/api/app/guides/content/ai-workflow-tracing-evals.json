@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 410,
+  "related": [
+    "ai-workflow-cross-review-judge",
+    "ai-workflow-cost-quality-latency",
+    "ai-workflow-failures-and-guardrails"
+  ],
   "locales": {
     "zh-TW": {
       "title": "追蹤、評測與可觀測性：知道流程哪一步出錯",
@@ -237,14 +242,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "模型與代理評測（Evals）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-evals"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）是什麼",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            }
+          ]
         }
       ],
       "sources": [

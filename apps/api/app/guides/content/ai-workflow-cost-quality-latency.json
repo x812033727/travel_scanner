@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 402,
+  "related": [
+    "ai-workflow-split-tasks-across-models",
+    "ai-workflow-model-routing-cascade",
+    "ai-workflow-tracing-evals"
+  ],
   "locales": {
     "zh-TW": {
       "title": "成本、品質、延遲：多模型流程怎麼取捨",
@@ -53,8 +58,33 @@
           "text": "第一個量是成本：把官方定價頁當天的每百萬 token 輸入與輸出單價，乘上一次請求送出與收到的 token 數，再乘呼叫次數。Anthropic、OpenAI 與 Google 的定價頁都用「每百萬 token」計價；各家三個級距的實際價格，《API 價格比較：每百萬 token 各家多少》整理過，這篇不重列。定價頁上有些價格附帶生效日期：Google 的 Gemini 開發者 API 定價頁在 Gemini 3.8 Flash 付費層標準價那欄寫「$0.75 through December 31, 2026. $1.50 starting January 1, 2027.」，也就是每百萬輸入 token 在 2026 年底前 0.75 美元、2027 年起 1.50 美元；那一欄沒有寫促銷或限時，只印出兩段各自帶日期的價格，抄價格要連日期一起抄。"
         },
         {
-          "type": "paragraph",
-          "text": "第二個量是品質，沒有標準答案。一種做法是看公開評測基準：Anthropic 的文件寫，它把近幾代 Claude Opus、Sonnet 與 Fable 型號放進同一套測試框架（harness）跑 SWE-bench Pro 3 的子集，各自用出廠預設值、照定價表計價；同一頁註明除非另有出處，頁上的量測都是 Anthropic 自己跑的，要讀者先在自己的工作量上量過再假設會省，本站沒有實測。另一種是自己建評測集，同一頁描述的做法是從正式環境紀錄抽出幾個任務、照真實流量加權，替每個任務寫可自動判定的結果檢查（測試通過、工單結案、列數正確），把成本記在分數旁邊。評測集怎麼建留給本系列談追蹤與評測那篇，讓另一個模型當評審留給《多模型互審：LLM 當評審、投票與集成怎麼做》。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二個量是品質，沒有標準答案。一種做法是看公開"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "基準：Anthropic 的文件寫，它把近幾代 Claude Opus、Sonnet 與 Fable 型號放進同一套測試框架（harness）跑 SWE-bench Pro 3 的子集，各自用出廠預設值、照定價表計價；同一頁註明除非另有出處，頁上的量測都是 Anthropic 自己跑的，要讀者先在自己的工作量上量過再假設會省，本站沒有實測。另一種是自己建評測集，同一頁描述的做法是從正式環境紀錄抽出幾個任務、照真實流量加權，替每個任務寫可自動判定的結果檢查（測試通過、工單結案、列數正確），把成本記在分數旁邊。評測集怎麼建留給本系列談追蹤與評測那篇，讓另一個模型當評審留給《多模型互審："
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 當評審、投票與集成怎麼做》。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -109,8 +139,23 @@
           "text": "並行互審的成本，以及下一步"
         },
         {
-          "type": "paragraph",
-          "text": "並行互審是兩個模型同時作答、再由第三個模型評審。以 Claude Opus 5 與 gpt-6-astra 為例，OpenAI 定價頁標準價的短上下文欄列出後者的輸入單價每百萬 token 10 美元、輸出 50 美元，套進 3,000 與 600，一次成本 0.06 美元，加上 Opus 5 的 0.03 美元，合計 0.09 美元。評審要讀原始問題與兩份回答，輸入是 3,000 加 600 加 600、等於 4,200 個 token，輸出假設 200 個；以 Claude Sonnet 5 當評審，基礎輸入單價每百萬 token 2 美元、輸出 10 美元，這一步 0.0104 美元。三步加起來 0.1004 美元，是單一旗艦的三倍以上；評分標準怎麼設計留給《多模型互審：LLM 當評審、投票與集成怎麼做》。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "並行互審是兩個模型同時作答、再由第三個"
+            },
+            {
+              "type": "article",
+              "text": "模型評審",
+              "kind": "life",
+              "slug": "ai-term-llm-as-a-judge"
+            },
+            {
+              "type": "text",
+              "text": "。以 Claude Opus 5 與 gpt-6-astra 為例，OpenAI 定價頁標準價的短上下文欄列出後者的輸入單價每百萬 token 10 美元、輸出 50 美元，套進 3,000 與 600，一次成本 0.06 美元，加上 Opus 5 的 0.03 美元，合計 0.09 美元。評審要讀原始問題與兩份回答，輸入是 3,000 加 600 加 600、等於 4,200 個 token，輸出假設 200 個；以 Claude Sonnet 5 當評審，基礎輸入單價每百萬 token 2 美元、輸出 10 美元，這一步 0.0104 美元。三步加起來 0.1004 美元，是單一旗艦的三倍以上；評分標準怎麼設計留給《多模型互審：LLM 當評審、投票與集成怎麼做》。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -202,14 +247,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
-          "url": "https://mokaair.com/zh-TW/life/ai-token-cost-estimation"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "token 計算與費用估算：官方計數工具、一次對話的算式與費用上限",
+              "kind": "life",
+              "slug": "ai-token-cost-estimation"
+            }
+          ]
         }
       ],
       "sources": [

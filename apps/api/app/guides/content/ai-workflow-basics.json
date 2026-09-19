@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 400,
+  "related": [
+    "ai-workflow-split-tasks-across-models",
+    "ai-workflow-cost-quality-latency",
+    "ai-workflow-failures-and-guardrails"
+  ],
   "locales": {
     "zh-TW": {
       "title": "AI 工作流是什麼：從一次對話到可重跑的流程",
@@ -62,8 +67,23 @@
           "text": "流程：把步驟、狀態與輸入輸出契約寫下來"
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 把流程（workflow）定義成：LLM 與工具依照預先寫定的程式路徑被調度的系統。白話來說，就是把對話裡臨場決定的部分，改成寫死在程式裡的固定路徑，先做什麼、再做什麼、每一步收什麼資料、交出什麼資料，全部先講好，不再由那一輪對話臨時決定。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 把流程（workflow）定義成："
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 與工具依照預先寫定的程式路徑被調度的系統。白話來說，就是把對話裡臨場決定的部分，改成寫死在程式裡的固定路徑，先做什麼、再做什麼、每一步收什麼資料、交出什麼資料，全部先講好，不再由那一輪對話臨時決定。"
+            }
+          ]
         },
         {
           "type": "list",
@@ -85,8 +105,23 @@
           "text": "代理：讓模型自己決定下一步"
         },
         {
-          "type": "paragraph",
-          "text": "流程把每一步先寫死，代理則相反。Anthropic 把代理定義成：LLM 自己動態主導自己的處理過程與工具使用、對怎麼完成任務保有主控權的系統。下一步要呼叫哪個工具、要不要再多問一輪，不是程式先寫好的，而是模型自己邊做邊決定，這通常牽涉到工具呼叫（tool calling）與要不要繼續執行的判斷，這也是為什麼同一個任務交給代理處理，兩次執行的路徑不一定一樣。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "流程把每一步先寫死，代理則相反。Anthropic 把代理定義成：LLM 自己動態主導自己的處理過程與"
+            },
+            {
+              "type": "article",
+              "text": "工具使用",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "、對怎麼完成任務保有主控權的系統。下一步要呼叫哪個工具、要不要再多問一輪，不是程式先寫好的，而是模型自己邊做邊決定，這通常牽涉到工具呼叫（tool calling）與要不要繼續執行的判斷，這也是為什麼同一個任務交給代理處理，兩次執行的路徑不一定一樣。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -214,14 +249,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞串接（Prompt Chaining）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-prompt-chaining"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞串接（Prompt Chaining）是什麼",
+              "kind": "life",
+              "slug": "ai-term-prompt-chaining"
+            }
+          ]
         }
       ],
       "sources": [

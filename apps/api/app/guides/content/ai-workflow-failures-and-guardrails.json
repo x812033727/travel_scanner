@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 411,
+  "related": [
+    "ai-workflow-tracing-evals",
+    "ai-workflow-structured-handoff",
+    "ai-workflow-local-and-cloud-mix"
+  ],
   "locales": {
     "zh-TW": {
       "title": "失敗案例與防護：迴圈、費用爆炸與代理間注入",
@@ -31,8 +36,23 @@
           "text": "把好幾個模型串成流程，會出現單一次對話裡看不到的失控方式：一個步驟卡住之後不斷重試、一個步驟同時展開太多平行呼叫、或者前一個模型的輸出被下一個模型當成新的指令執行。這篇要回答的問題是，這三種情況各自該配哪一種防護——步數與預算上限、schema 驗證、把輸出當資料而非指令——才能在流程還在跑的時候就停下來，不必等帳單暴增才發現。"
         },
         {
-          "type": "paragraph",
-          "text": "讀完之後，你會看到三個案例各自怎麼被擋下來，還有兩段可執行的 Python：一段擋掉停不下來的重試迴圈，另一段把上游模型的輸出包成明確標示的資料再交給下一個模型。兩段都只用標準函式庫，Python 3.11 以上就能跑，不需要安裝套件，也不需要任何 API 金鑰；讀這篇之前，建議先看過本站《提示詞注入是什麼：使用者該懂的攻擊》與《安全防護機制（Guardrails）是什麼》，這裡不重複它們講過的定義。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讀完之後，你會看到三個案例各自怎麼被擋下來，還有兩段可執行的 Python：一段擋掉停不下來的重試迴圈，另一段把上游模型的輸出包成明確標示的資料再交給下一個模型。兩段都只用標準函式庫，Python 3.11 以上就能跑，不需要安裝套件，也不需要任何 API 金鑰；讀這篇之前，建議先看過本站《"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "是什麼：使用者該懂的攻擊》與《安全防護機制（Guardrails）是什麼》，這裡不重複它們講過的定義。"
+            }
+          ]
         },
         {
           "type": "summary",
@@ -125,8 +145,23 @@
           "text": "OWASP 把這種情況寫進「LLM05:2025 Improper Output Handling」，定義原文寫模型輸出在交給下游元件與系統前「insufficient validation, sanitization, and handling」；條目裡第一個攻擊情境，是通用模型把回答未經輸出驗證就交給一個擴充功能，害它停機維護——OWASP 寫的下游是擴充功能，不是另一個模型，本篇借的是「輸出沒驗證就往下游送」這個形狀。OWASP 給的防護方向是把模型當成任何其他使用者看待，原文是「Treat the model as any other user, adopting a zero-trust approach」——上游模型不會因為它也是模型就自動更值得信任。"
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 的官方文件把同一個方向寫成更具體的做法，建議在可行時（原文 Where possible）「wrap third-party strings in a JSON object rather than concatenating them into free-form text」，理由是 JSON 編碼能在不可信內容與周圍結構之間提供明確的分隔；這跟本站《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》同一個道理，差別只在於外部內容這裡來自另一個模型的輸出，不是工具或網頁。寫成程式，做法是別把上游輸出直接串進下一個提示詞的指令段落，而是包成有清楚欄位的資料物件。下面這段 Python 就是這個包裝方式；裡面那張措辭比對表只是示意用的提醒，真正擋線的是資料與指令分開本身。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 的官方文件把同一個方向寫成更具體的做法，建議在可行時（原文 Where possible）「wrap third-party strings in a JSON object rather than concatenating them into free-form text」，理由是 JSON 編碼能在不可信內容與周圍結構之間提供明確的分隔；這跟本站《Claude Code｜"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 回傳含有指令時：資料與操作權限分開》同一個道理，差別只在於外部內容這裡來自另一個模型的輸出，不是工具或網頁。寫成程式，做法是別把上游輸出直接串進下一個提示詞的指令段落，而是包成有清楚欄位的資料物件。下面這段 Python 就是這個包裝方式；裡面那張措辭比對表只是示意用的提醒，真正擋線的是資料與指令分開本身。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -156,8 +191,23 @@
           "text": "三個防護管的是三件不一樣的事：步數與預算上限管的是「這個步驟已經跑了多久、花了多少」，跟輸出內容寫了什麼無關；schema 驗證管的是「規劃步驟寫出來的形狀對不對」，跟後續會不會被誤當成指令無關；資料與指令分開管的是「下一個模型會不會把這段文字當成該執行的事」，跟前面兩關有沒有通過也無關。裝了其中一種不會連帶擋住另外兩種：通過 schema 驗證、形狀完全正常的計畫，內容裡一樣可能藏著看起來像指令的文字。"
         },
         {
-          "type": "paragraph",
-          "text": "三層防護一起用，擋的是三種不同的失效路徑，但沒有一種是保證——這句是本站的看法，不是哪一份官方文件的結論，本站也沒有實測過任何一種防護的攔截率。防護擋下來之後，通常還需要知道「這次是哪一關擋下來的、擋了幾次」，這部分屬於追蹤與記錄，細節留給《追蹤、評測與可觀測性：知道流程哪一步出錯》；這篇只處理先設計好哪三道關卡。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "三層防護一起用，擋的是三種不同的失效路徑，但沒有一種是保證——這句是本站的看法，不是哪一份官方文件的結論，本站也沒有實測過任何一種防護的攔截率。防護擋下來之後，通常還需要知道「這次是哪一關擋下來的、擋了幾次」，這部分屬於追蹤與記錄，細節留給《追蹤、"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "與可觀測性：知道流程哪一步出錯》；這篇只處理先設計好哪三道關卡。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -225,14 +275,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "提示詞注入是什麼：使用者該懂的攻擊",
-          "url": "https://mokaair.com/zh-TW/life/ai-prompt-injection-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入是什麼：使用者該懂的攻擊",
+              "kind": "life",
+              "slug": "ai-prompt-injection-explained"
+            }
+          ]
         }
       ],
       "sources": [

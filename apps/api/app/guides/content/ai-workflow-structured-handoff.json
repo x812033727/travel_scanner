@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 405,
+  "related": [
+    "ai-workflow-model-routing-cascade",
+    "ai-workflow-cross-review-judge",
+    "ai-workflow-failures-and-guardrails"
+  ],
   "locales": {
     "zh-TW": {
       "title": "模型之間交接資料：JSON Schema 與結構化輸出",
@@ -216,14 +221,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "API 檔案與 JSON：結構化輸出及驗證",
-          "url": "https://mokaair.com/zh-TW/life/gemini-api-files-structured-output"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "API 檔案與 JSON：結構化輸出及驗證",
+              "kind": "life",
+              "slug": "gemini-api-files-structured-output"
+            }
+          ]
         }
       ],
       "sources": [

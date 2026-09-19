@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 404,
+  "related": [
+    "ai-workflow-cost-quality-latency",
+    "ai-workflow-unified-api-layer",
+    "ai-workflow-structured-handoff"
+  ],
   "locales": {
     "zh-TW": {
       "title": "模型路由與級聯：便宜先試、貴的兜底",
@@ -223,14 +228,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "成本、品質、延遲：多模型流程怎麼取捨",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-cost-quality-latency"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "成本、品質、延遲：多模型流程怎麼取捨",
+              "kind": "life",
+              "slug": "ai-workflow-cost-quality-latency"
+            }
+          ]
         }
       ],
       "sources": [

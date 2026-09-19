@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 409,
+  "related": [
+    "ai-workflow-mcp-shared-tools",
+    "ai-workflow-unified-api-layer",
+    "ai-workflow-failures-and-guardrails"
+  ],
   "locales": {
     "zh-TW": {
       "title": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
@@ -176,8 +181,23 @@
           "caption": "Ollama 模型庫的 gemma4、qwen3.6、gpt-oss 三頁，標籤、大小、上下文視窗與執行的位置，2026 年 9 月查證。"
         },
         {
-          "type": "paragraph",
-          "text": "其中 gpt-oss 的讀我檔把硬體門檻寫得最具體：MoE 權重量化成 MXFP4 格式之後，讀我原文寫這讓較小的模型可以在「最低只有 16GB 記憶體」的機器上跑、較大的模型塞得進單張 80GB 顯示卡，並形容 20B 是「設計給更低延遲、本機或特定用途使用的」。至於哪些名字有雲端版本：gemma4 的讀我檔有一節就叫「Ollama's cloud」，底下寫著 ollama run gemma4:31b-cloud，gpt-oss 的標籤清單也列著 20b-cloud 與 120b-cloud，大小欄同樣是「-」；qwen3.6 那一頁在本文查證當天沒有列出任何帶 cloud 字樣的標籤——這是當天那一頁的狀態，不是官方宣告過它不會有雲端版本。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其中 gpt-oss 的讀我檔把硬體門檻寫得最具體："
+            },
+            {
+              "type": "article",
+              "text": "MoE",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            },
+            {
+              "type": "text",
+              "text": " 權重量化成 MXFP4 格式之後，讀我原文寫這讓較小的模型可以在「最低只有 16GB 記憶體」的機器上跑、較大的模型塞得進單張 80GB 顯示卡，並形容 20B 是「設計給更低延遲、本機或特定用途使用的」。至於哪些名字有雲端版本：gemma4 的讀我檔有一節就叫「Ollama's cloud」，底下寫著 ollama run gemma4:31b-cloud，gpt-oss 的標籤清單也列著 20b-cloud 與 120b-cloud，大小欄同樣是「-」；qwen3.6 那一頁在本文查證當天沒有列出任何帶 cloud 字樣的標籤——這是當天那一頁的狀態，不是官方宣告過它不會有雲端版本。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -236,8 +256,23 @@
           "text": "本機模型跑不跑得動，Ollama 的模型庫頁只給得出下載大小、上下文視窗與 gpt-oss 讀我檔那種記憶體門檻這類規格數字，本文引用的官方頁沒有公開本機和雲端實際回覆要等多久；本站也沒有拿同一段文字在本機顯示卡和雲端之間各跑一次計時，所以本站沒有實測，這篇不排名誰比較快、誰比較準。而讀我檔替 120B 開出的那張 80GB 顯示卡，本身就說明了為什麼收尾那一步常常不放在自己的機器上。"
         },
         {
-          "type": "paragraph",
-          "text": "雲端模型還有本機模型沒有的一種現實：雲端頁的「退場」一節寫，帳號的用量設定頁會列出最近用過、即將退場的模型，要在退場日期前換掉；同一段話也寫「已下載的本機模型不受影響」，這是選擇本機的另一個理由，不只是隱私。本機安裝的完整步驟，以及本機和雲端哪個比較省錢的試算，「Ollama 入門：Windows、Mac 安裝與第一個模型」和「本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算」兩篇已經寫過；如果本機模型要處理的是自己的文件而不是這篇的去識別化，「本機 RAG：跟自己的文件聊天」示範了完整的檢索流程，這篇不重複那三篇的內容。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "雲端模型還有本機模型沒有的一種現實：雲端頁的「退場」一節寫，帳號的用量設定頁會列出最近用過、即將退場的模型，要在退場日期前換掉；同一段話也寫「已下載的本機模型不受影響」，這是選擇本機的另一個理由，不只是隱私。本機安裝的完整步驟，以及本機和雲端哪個比較省錢的試算，「Ollama 入門：Windows、Mac 安裝與第一個模型」和「本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算」兩篇已經寫過；如果本機模型要處理的是自己的文件而不是這篇的去識別化，「本機 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "：跟自己的文件聊天」示範了完整的檢索流程，這篇不重複那三篇的內容。"
+            }
+          ]
         },
         {
           "type": "faq",
@@ -273,14 +308,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

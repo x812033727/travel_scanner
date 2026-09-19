@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 406,
+  "related": [
+    "ai-workflow-structured-handoff",
+    "ai-workflow-tracing-evals",
+    "ai-workflow-failures-and-guardrails"
+  ],
   "locales": {
     "zh-TW": {
       "title": "多模型互審：LLM 當評審、投票與集成怎麼做",
@@ -50,12 +55,42 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "讓模型自己說「我答對了」不太可靠，比較常見的做法是另外找一個角色專門檢查輸出。站內「模型與代理評測（Evals）是什麼」已經整理過案例、評分器與外部結果查核的完整拆分，這裡只取其中「評分器」這一步，聚焦在評分器本身也是一個模型的情況。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讓模型自己說「我答對了」不太可靠，比較常見的做法是另外找一個角色專門檢查輸出。站內「模型與代理"
+            },
+            {
+              "type": "article",
+              "text": "評測",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "（Evals）是什麼」已經整理過案例、評分器與外部結果查核的完整拆分，這裡只取其中「評分器」這一步，聚焦在評分器本身也是一個模型的情況。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "這種讓語言模型當裁判的做法有專門的名字，叫做以語言模型擔任評審（LLM-as-a-Judge），站內「以語言模型擔任評審（LLM-as-a-Judge）是什麼」已經說明單一顆評審模型怎麼設計評分任務、怎麼用參考資料讓評語可以核對。本文接著往下一步：回答的一方從一個模型換成兩個以上，評審的一方也可能從一個模型換成多個，中間多了「該信哪一個」的問題。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這種讓語言模型當裁判的做法有專門的名字，叫做以語言模型擔任評審（"
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "-as-a-Judge），站內「以語言模型擔任評審（LLM-as-a-Judge）是什麼」已經說明單一顆評審模型怎麼設計評分任務、怎麼用參考資料讓評語可以核對。本文接著往下一步：回答的一方從一個模型換成兩個以上，評審的一方也可能從一個模型換成多個，中間多了「該信哪一個」的問題。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -222,14 +257,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
-          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+              "kind": "life",
+              "slug": "ai-term-llm-as-a-judge"
+            }
+          ]
         }
       ],
       "sources": [

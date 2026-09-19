@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 403,
+  "related": [
+    "ai-workflow-model-routing-cascade",
+    "ai-workflow-structured-handoff",
+    "ai-workflow-local-and-cloud-mix"
+  ],
   "locales": {
     "zh-TW": {
       "title": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
@@ -72,8 +77,23 @@
           "code": "import os\n\nfrom openai import OpenAI\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 官方 quickstart：base_url 指到 openrouter.ai，金鑰放 Authorization 標頭\nopenrouter = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=os.environ[\"OPENROUTER_API_KEY\"],\n  timeout=30.0,\n)\nreply = openrouter.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": os.environ.get(\"SITE_URL\", \"\"),\n    \"X-OpenRouter-Title\": os.environ.get(\"SITE_NAME\", \"\"),\n  },\n  model=\"anthropic/claude-sonnet-5\",\n  messages=question,\n)\nprint(\"OpenRouter:\", reply.choices[0].message.content)\n\n# 官方文件：base_url 換成 api.groq.com，金鑰改讀 GROQ_API_KEY\ngroq_client = OpenAI(\n  base_url=\"https://api.groq.com/openai/v1\",\n  api_key=os.environ[\"GROQ_API_KEY\"],\n  timeout=30.0,\n)\nreply = groq_client.chat.completions.create(\n  model=\"openai/gpt-oss-120b\",\n  messages=question,\n)\nprint(\"Groq:\", reply.choices[0].message.content)\n"
         },
         {
-          "type": "paragraph",
-          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁 MODEL ID 欄位上的代號，那一頁把它寫成 OpenAI 的旗艦開放權重模型。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 目錄裡的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁 MODEL ID 欄位上的代號，那一頁把它寫成 OpenAI 的旗艦"
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 目錄裡的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -104,8 +124,23 @@
           "text": "託管閘道與自架 Proxy：OpenRouter 與 LiteLLM 的另一種模式"
         },
         {
-          "type": "paragraph",
-          "text": "前面兩段程式都是「自己的程序直接連出去」：一段連到 OpenRouter 這個別人架好的閘道，一段是 LiteLLM 在自己的程序裡轉接。LiteLLM 其實還有第三種形態，官方文件把它稱為 Proxy Server，是一個要自己架設的閘道伺服器，架起來以後它自己就是一個 OpenAI 相容端點。官方文件把它寫成「給平台團隊用的自架閘道，用來管理整個組織的 LLM 存取」，功能包含依金鑰設定花費上限、集中記錄與快取，還有管理介面能看用量。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "前面兩段程式都是「自己的程序直接連出去」：一段連到 OpenRouter 這個別人架好的閘道，一段是 LiteLLM 在自己的程序裡轉接。LiteLLM 其實還有第三種形態，官方文件把它稱為 Proxy Server，是一個要自己架設的閘道伺服器，架起來以後它自己就是一個 OpenAI 相容端點。官方文件把它寫成「給平台團隊用的自架閘道，用來管理整個組織的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 存取」，功能包含依金鑰設定花費上限、集中記錄與快取，還有管理介面能看用量。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -204,14 +239,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenRouter：一把金鑰用遍各家模型",
-          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenRouter：一把金鑰用遍各家模型",
+              "kind": "life",
+              "slug": "openrouter-multi-model-api"
+            }
+          ]
         }
       ],
       "sources": [

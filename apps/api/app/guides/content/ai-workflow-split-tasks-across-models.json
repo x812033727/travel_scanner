@@ -11,6 +11,11 @@
   "news_date": null,
   "featured": false,
   "display_order": 401,
+  "related": [
+    "ai-workflow-basics",
+    "ai-workflow-cost-quality-latency",
+    "ai-workflow-model-routing-cascade"
+  ],
   "locales": {
     "zh-TW": {
       "title": "一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法",
@@ -80,8 +85,33 @@
           "text": "依能力切：把子任務交給擅長的模型"
         },
         {
-          "type": "paragraph",
-          "text": "依能力切看的不是先後順序，而是這一小塊工作誰做得好。Anthropic 同一篇文章也整理了一種做法，稱為協調者與工作者（orchestrator-workers）：由一個模型當中樞，動態把任務拆開、分派給其他工作模型，再把各自的結果彙整起來；要留意這個詞在原文特指子任務事先預測不到、由中樞看當下的輸入才決定，像下面這種事先就分得出來、還能同時進行的分工，同一篇是歸在平行化（parallelization）的切段（sectioning）底下。這種一個模型分派、其他模型執行、再彙整結果的安排，正是《代理協調（Agent Orchestration）是什麼：安排分工與交付順序》談的範疇；被分派工作的那一端，扮演的則是《子代理（Subagent）是什麼：把有邊界的工作交出去》說的角色，那篇強調重點是委派關係，不一定要換一個模型。Claude 與 OpenAI 的模型文件也都把日常在用的那幾個通用模型，跟另外一組專用模型（specialized models）分開列，OpenAI 的頁面把後面這組形容成為特定任務打造的模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依能力切看的不是先後順序，而是這一小塊工作誰做得好。Anthropic 同一篇文章也整理了一種做法，稱為協調者與工作者（orchestrator-workers）：由一個模型當中樞，動態把任務拆開、分派給其他工作模型，再把各自的結果彙整起來；要留意這個詞在原文特指子任務事先預測不到、由中樞看當下的輸入才決定，像下面這種事先就分得出來、還能同時進行的分工，同一篇是歸在平行化（parallelization）的切段（sectioning）底下。這種一個模型分派、其他模型執行、再彙整結果的安排，正是《代理協調（Agent "
+            },
+            {
+              "type": "article",
+              "text": "Orchestration",
+              "kind": "life",
+              "slug": "ai-term-agent-orchestration"
+            },
+            {
+              "type": "text",
+              "text": "）是什麼：安排分工與交付順序》談的範疇；被分派工作的那一端，扮演的則是《"
+            },
+            {
+              "type": "article",
+              "text": "子代理",
+              "kind": "life",
+              "slug": "ai-term-subagent"
+            },
+            {
+              "type": "text",
+              "text": "（Subagent）是什麼：把有邊界的工作交出去》說的角色，那篇強調重點是委派關係，不一定要換一個模型。Claude 與 OpenAI 的模型文件也都把日常在用的那幾個通用模型，跟另外一組專用模型（specialized models）分開列，OpenAI 的頁面把後面這組形容成為特定任務打造的模型。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -217,14 +247,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
-          "url": "https://mokaair.com/zh-TW/life/ai-model-tiers-explained"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
         }
       ],
       "sources": [
