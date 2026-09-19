@@ -5362,6 +5362,7 @@ async def compute_trip_routes_for_day(
                 trip.id,
                 next_version,
                 payload.day_date,
+                refresh=payload.refresh,
             )
         except Exception as exc:
             trip.data = {

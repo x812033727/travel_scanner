@@ -254,9 +254,7 @@ async def compute_and_apply_routes(
         )
 
     if missing_location_pairs:
-        warnings.append(
-            warning_code("missing_confirmed_locations", count=missing_location_pairs)
-        )
+        warnings.append(warning_code("missing_confirmed_locations", count=missing_location_pairs))
     if unavailable_pairs:
         warnings.append(warning_code("no_route_available", count=unavailable_pairs))
 
@@ -307,7 +305,9 @@ async def compute_and_apply_routes(
     return cast(dict[str, Any], next_data["routing"])
 
 
-async def _run(trip_id: UUID, expected_version: int, target_day: date | None) -> None:
+async def _run(
+    trip_id: UUID, expected_version: int, target_day: date | None, refresh: bool = False
+) -> None:
     async with SessionFactory() as session:
         trip = await session.get(TripPlan, trip_id)
         if trip is None:
@@ -318,6 +318,7 @@ async def _run(trip_id: UUID, expected_version: int, target_day: date | None) ->
                 trip,
                 expected_version=expected_version,
                 target_day=target_day,
+                refresh=refresh,
             )
         except Exception:
             await session.rollback()
@@ -344,13 +345,17 @@ def run_trip_routing_job(
     trip_id: str,
     expected_version: int,
     target_day: str | None = None,
+    refresh: bool = False,
 ) -> None:
+    # ``refresh`` is the fourth positional argument so jobs queued by an older API
+    # process, which sent three, still run with the reuse behaviour they were queued with.
     async def run_and_close_resources() -> None:
         try:
             await _run(
                 UUID(trip_id),
                 expected_version,
                 date.fromisoformat(target_day) if target_day else None,
+                refresh,
             )
         finally:
             try:
@@ -366,13 +371,19 @@ def enqueue_trip_routing(
     trip_id: UUID,
     expected_version: int,
     target_day: date | None = None,
+    *,
+    refresh: bool = False,
 ) -> str:
+    """Queue the routing job. ``refresh`` recomputes saved legs instead of reusing them;
+    the compute-day endpoint accepted the flag and rate-limited on it, but never passed it
+    on, so an explicit refresh behaved like an ordinary run (2026-09-10)."""
     connection = SyncRedis.from_url(get_settings().redis_url)
     queued = Queue("trip-routes", connection=connection).enqueue(
         "app.trips.route_tasks.run_trip_routing_job",
         str(trip_id),
         expected_version,
         target_day.isoformat() if target_day else None,
+        refresh,
         job_timeout=180,
     )
     return str(queued.id)
