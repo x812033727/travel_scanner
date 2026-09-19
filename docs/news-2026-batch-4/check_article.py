@@ -133,6 +133,15 @@ RELATED: dict[str, str] = {
     "crypto-news-fca-perimeter-guidance-20260916": "crypto-news-mica-transition-ends-20260701",
     "crypto-news-cftc-passive-software-20260917": "crypto-news-sec-crypto-interpretation-20260323",
     "crypto-news-fca-p2p-crypto-crackdown-20260917": "crypto-news-fca-perimeter-guidance-20260916",
+    # 4.6（2026-09-18 起，只做 zh-TW）：AI 167–170、科技 317–320；幣圈 214–216 待研究紀錄定 slug 後補。
+    "ai-news-anthropic-accenture-evaluation-20260918": "ai-news-pace-the-frontier-20260912",
+    "ai-news-openai-australia-youth-safety-20260918": "ai-news-google-cc-family-agent-20260918",
+    "ai-news-gemini-notebook-study-tools-20260918": "ai-news-gemini-38-live-20260915",
+    "ai-news-kimi-k3-bedrock-20260918": "ai-news-nvidia-hugging-face-20260903",
+    "tech-news-npm-stage-only-tokens-20260918": "tech-news-eu-cra-reporting-20260911",
+    "tech-news-cisa-kev-linux-kernel-20260918": "tech-news-pixel-drop-20260915",
+    "tech-news-windows-cloud-rebuild-20260918": "tech-news-windows-project-zenith-20260904",
+    "tech-news-iphone-duo-dev-resources-20260918": "tech-news-iphone-duo-20260909",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:
