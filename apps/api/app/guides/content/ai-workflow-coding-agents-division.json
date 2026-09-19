@@ -181,7 +181,7 @@
           "items": [
             {
               "question": "claude -p、codex exec 與 gemini -p 這三種非互動模式，官方文件各自怎麼稱呼？",
-              "answer": "三家用的名字不一樣：Claude Code 的文件把這種用法稱為 print mode；Codex 的文件把 codex exec 稱為 non-interactive mode，說明是讓 Codex 在腳本或 CI 裡執行、不開啟互動式的終端機介面；Gemini CLI 的文件則稱為 headless mode，說明是一個程式化的介面，回傳結構化文字或 JSON 輸出。三個名字指的都是同一件事：給提示詞、跑完、讀輸出、結束。"
+              "answer": "三家用的名字不一樣：Claude Code 的文件稱為 print mode；Codex 的文件把 codex exec 稱為 non-interactive mode，說明是讓 Codex 在腳本或 CI 裡執行、不開啟互動式終端機介面；Gemini CLI 的文件則稱為 headless mode，說明是程式化的介面，回傳結構化文字或 JSON 輸出。三個名字指的是同一件事：給提示詞、跑完、讀輸出、結束。"
             },
             {
               "question": "claude -p、codex exec 與 gemini -p 都能拿到通過驗證的結構化 JSON 輸出嗎？",
