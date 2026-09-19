@@ -1,3 +1,5 @@
+import math
+
 import httpx
 import pytest
 
@@ -189,9 +191,10 @@ def test_types_that_also_describe_real_sights_reach_the_human_queue() -> None:
 
 
 @pytest.mark.asyncio
-async def test_denied_type_outside_the_radius_stays_rejected() -> None:
-    # The radius check used to turn a denied candidate back into pending, so a school
-    # just past the edge of a city still reached the review queue.
+async def test_pages_past_the_radius_are_dropped_and_denied_types_inside_it_stay_rejected() -> None:
+    # The radius check used to turn a denied candidate back into pending, so a school just
+    # past the edge of a city still reached the review queue. Now a page past the configured
+    # radius is not a candidate at all, and a denied type inside it is rejected, not queued.
     def handler(request: httpx.Request) -> httpx.Response:
         if request.url.host == "www.wikidata.org":
             return httpx.Response(
@@ -206,8 +209,9 @@ async def test_denied_type_outside_the_radius_stays_rejected() -> None:
                             "sitelinks": {},
                         }
                         for qid, label, type_id in (
-                            ("Q1", "遠方博物館", "Q33506"),
-                            ("Q2", "遠方學校", "Q3914"),
+                            ("Q1", "近處博物館", "Q33506"),
+                            ("Q2", "近處學校", "Q3914"),
+                            ("Q3", "遠方博物館", "Q33506"),
                         )
                     }
                 },
@@ -220,17 +224,21 @@ async def test_denied_type_outside_the_radius_stays_rejected() -> None:
                         "pages": [
                             {"pageid": 1, "pageprops": {"wikibase_item": "Q1"}},
                             {"pageid": 2, "pageprops": {"wikibase_item": "Q2"}},
+                            {"pageid": 3, "pageprops": {"wikibase_item": "Q3"}},
                         ]
                     }
                 },
             )
+        # The real API never answers past gsradius; a page 18 km out is listed here on
+        # purpose to show the client drops it even if the API returned it.
         return httpx.Response(
             200,
             json={
                 "query": {
                     "geosearch": [
-                        {"pageid": 1, "title": "遠方館", "lat": 25.2, "lon": 121.5654},
-                        {"pageid": 2, "title": "遠方學校", "lat": 25.2, "lon": 121.5654},
+                        {"pageid": 1, "title": "近處館", "lat": 25.10, "lon": 121.5654},
+                        {"pageid": 2, "title": "近處學校", "lat": 25.06, "lon": 121.5654},
+                        {"pageid": 3, "title": "遠方館", "lat": 25.2, "lon": 121.5654},
                     ]
                 }
             },
@@ -248,11 +256,144 @@ async def test_denied_type_outside_the_radius_stays_rejected() -> None:
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http_client:
         client = WikimediaDiscoveryClient("test", 1, http_client)
         candidates = {c.qid: c for c in await client.discover_city(city)}
+    assert set(candidates) == {"Q1", "Q2"}
     assert (candidates["Q1"].review_status, candidates["Q1"].review_reason) == (
-        "pending",
-        "outside_city_radius",
+        "auto_approved",
+        None,
     )
     assert (candidates["Q2"].review_status, candidates["Q2"].review_reason) == (
         "rejected",
         "denylisted_type",
     )
+    assert 7 < candidates["Q1"].distance_km < 8
+
+
+def _flat_offset_km(center: DiscoveryCenter, latitude: float, longitude: float) -> float:
+    """The lattice is laid out on a flat map around the centre; measure it the same way."""
+    from app.hotspots.discovery import KM_PER_DEGREE
+
+    dy = (latitude - center.latitude) * KM_PER_DEGREE
+    dx = (longitude - center.longitude) * KM_PER_DEGREE * math.cos(math.radians(center.latitude))
+    return math.hypot(dx, dy)
+
+
+def test_a_radius_within_the_api_cap_is_one_call_and_a_larger_one_covers_the_disk() -> None:
+    from app.hotspots.discovery import GEOSEARCH_MAX_RADIUS_KM, search_points
+
+    small = DiscoveryCenter(25.033, 121.5654, 8)
+    assert search_points(small) == [(25.033, 121.5654, 8)]
+
+    tokyo = DiscoveryCenter(35.6595, 139.7005, 30)
+    points = search_points(tokyo)
+    assert 15 <= len(points) <= 25
+    assert all(radius == GEOSEARCH_MAX_RADIUS_KM for _, _, radius in points)
+    # No call sits farther out than it needs to (R + r), and every point of the configured
+    # disk is within one call's reach: sample the disk on a fine grid.
+    assert all(_flat_offset_km(tokyo, lat, lon) <= 40 + 0.01 for lat, lon, _ in points)
+    for dx_km in range(-30, 31, 3):
+        for dy_km in range(-30, 31, 3):
+            if math.hypot(dx_km, dy_km) > 30:
+                continue
+            lat = tokyo.latitude + dy_km / 111.32
+            lon = tokyo.longitude + dx_km / (111.32 * math.cos(math.radians(tokyo.latitude)))
+            nearest = min(
+                math.hypot(
+                    (lat - plat) * 111.32,
+                    (lon - plon) * 111.32 * math.cos(math.radians(tokyo.latitude)),
+                )
+                for plat, plon, _ in points
+            )
+            assert nearest <= GEOSEARCH_MAX_RADIUS_KM + 0.01, (dx_km, dy_km, nearest)
+
+
+def _entity(label: str, type_id: str) -> dict[str, object]:
+    return {
+        "labels": {"zh-hant": {"value": label}},
+        "claims": {"P31": [{"mainsnak": {"datavalue": {"value": {"id": type_id}}}}]},
+        "sitelinks": {},
+    }
+
+
+@pytest.mark.asyncio
+async def test_a_wide_city_reaches_pages_past_10_km_and_drops_pages_past_its_radius() -> None:
+    # Kabuki-za sits 10.7 km from Shibuya and could never be discovered under the 10 km
+    # clamp; a page 45 km out is beyond the 30 km radius and must not become a candidate,
+    # even though a fringe call can see it.
+    center = DiscoveryCenter(35.6595, 139.7005, 30)
+    pages = {
+        1: ("歌舞伎座", 35.6695, 139.7677, "Q1"),  # about 6 km east: inside
+        2: ("遠方博物館", 35.6595 + 25 / 111.32, 139.7005, "Q2"),  # 25 km north: inside
+        3: ("更遠博物館", 35.6595 + 45 / 111.32, 139.7005, "Q3"),  # 45 km north: outside
+    }
+    geosearch_calls: list[dict[str, str]] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        params = dict(request.url.params)
+        if request.url.host == "www.wikidata.org":
+            wanted = params["ids"].split("|")
+            return httpx.Response(
+                200,
+                json={
+                    "entities": {
+                        qid: _entity(label, "Q33506")
+                        for _pid, (label, _lat, _lon, qid) in pages.items()
+                        if qid in wanted
+                    }
+                },
+            )
+        if "pageids" in params:
+            ids = [int(value) for value in params["pageids"].split("|")]
+            return httpx.Response(
+                200,
+                json={
+                    "query": {
+                        "pages": [
+                            {"pageid": pid, "pageprops": {"wikibase_item": pages[pid][3]}}
+                            for pid in ids
+                        ]
+                    }
+                },
+            )
+        geosearch_calls.append(params)
+        lat, lon = (float(value) for value in params["gscoord"].split("|"))
+        radius_km = int(params["gsradius"]) / 1000
+        # Every page within this call's circle, like the real API (nearest first).
+        hits = sorted(
+            (
+                (haversine_km(lat, lon, plat, plon), pid, title, plat, plon)
+                for pid, (title, plat, plon, _qid) in pages.items()
+                if haversine_km(lat, lon, plat, plon) <= radius_km
+            )
+        )
+        return httpx.Response(
+            200,
+            json={
+                "query": {
+                    "geosearch": [
+                        {"pageid": pid, "title": title, "lat": plat, "lon": plon}
+                        for _d, pid, title, plat, plon in hits
+                    ]
+                }
+            },
+        )
+
+    city = HotspotCity("TYO", "東京", "JP", "日本", "ja.wikipedia.org", 10, (center,))
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http_client:
+        client = WikimediaDiscoveryClient("test", 1, http_client)
+        candidates = await client.discover_city(city, 100)
+        by_qid = {candidate.qid: candidate for candidate in candidates}
+
+    assert len(geosearch_calls) > 1
+    assert all(call["gsradius"] == "10000" and call["gslimit"] == "500" for call in geosearch_calls)
+    assert set(by_qid) == {"Q1", "Q2"}
+    assert by_qid["Q1"].review_status == "auto_approved"
+    assert 10 < by_qid["Q1"].distance_km < 12 or by_qid["Q1"].distance_km < 10
+    assert 24 < by_qid["Q2"].distance_km < 26
+    # Nearest first, so a per-run limit keeps the closest of what is new.
+    assert [candidate.qid for candidate in candidates] == ["Q1", "Q2"]
+
+    # Items the catalogue already holds are left out before the limit is applied.
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http_client:
+        client = WikimediaDiscoveryClient("test", 1, http_client)
+        remaining = await client.discover_city(city, 1, skip={"Q1"})
+    assert [candidate.qid for candidate in remaining] == ["Q2"]

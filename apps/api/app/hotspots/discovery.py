@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import asyncio
 import math
+from collections.abc import Collection
 from dataclasses import dataclass
 from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
 
-from app.hotspots.cities import HotspotCity
+from app.hotspots.cities import DiscoveryCenter, HotspotCity
 
 ALLOWED_TYPES = {
     "Q33506": "culture",  # museum
@@ -181,6 +182,69 @@ def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return 2 * radius * math.asin(math.sqrt(value))
 
 
+# What one MediaWiki ``list=geosearch`` call can answer (paraminfo read 2026-09-19): pages
+# within at most 10 km of one point, at most 500 of them for a non-bot client, nearest first.
+# A centre configured with a larger radius used to be clamped to this ring and to 100 pages,
+# so Tokyo's search saw the 100 pages nearest Shibuya and Kabuki-za (10.7 km out) could never
+# be discovered. The bound is now the configured radius itself: a city sees every page inside
+# it, and the per-run candidate limit picks the nearest ones that are not already known.
+GEOSEARCH_MAX_RADIUS_KM = 10
+GEOSEARCH_PAGE_LIMIT = 500
+KM_PER_DEGREE = 111.32
+
+
+def search_points(center: DiscoveryCenter) -> list[tuple[float, float, int]]:
+    """``(latitude, longitude, radius_km)`` of the calls that together cover ``center``.
+
+    A radius within the API's cap is one call at the centre. A larger one is a hexagonal
+    lattice of 10 km circles: with lattice points r*sqrt(3) apart every point of the plane
+    lies within r of a lattice point, and keeping the lattice points up to R + r from the
+    centre covers the whole disk of radius R. Tokyo's 30 km takes 19 calls, the 100 km
+    centre about 150; pages beyond the configured radius are dropped by the caller.
+    """
+    r = GEOSEARCH_MAX_RADIUS_KM
+    if center.radius_km <= r:
+        return [(center.latitude, center.longitude, center.radius_km)]
+    reach = center.radius_km + r
+    spacing = r * math.sqrt(3)
+    row_height = spacing * math.sqrt(3) / 2
+    lon_scale = KM_PER_DEGREE * math.cos(math.radians(center.latitude))
+    rows = math.ceil(reach / row_height)
+    cols = math.ceil(reach / spacing) + 1
+    points: list[tuple[float, float, int]] = []
+    for row in range(-rows, rows + 1):
+        y = row * row_height
+        shift = spacing / 2 if row % 2 else 0.0
+        for col in range(-cols, cols + 1):
+            x = col * spacing + shift
+            if math.hypot(x, y) > reach:
+                continue
+            points.append(
+                (
+                    round(center.latitude + y / KM_PER_DEGREE, 5),
+                    round(center.longitude + x / lon_scale, 5),
+                    r,
+                )
+            )
+    return points
+
+
+def distance_to_city_km(city: HotspotCity, latitude: float, longitude: float) -> float:
+    return min(
+        haversine_km(center.latitude, center.longitude, latitude, longitude)
+        for center in city.centers
+    )
+
+
+def inside_city(city: HotspotCity, latitude: float, longitude: float) -> bool:
+    """Within some centre's configured radius (a few metres of slack for rounded coordinates)."""
+    return any(
+        haversine_km(center.latitude, center.longitude, latitude, longitude)
+        <= center.radius_km + 0.05
+        for center in city.centers
+    )
+
+
 # Measured on 2026-09-06 and deliberately left out of ALLOWED_TYPES. The counts are the
 # rows each type would ADD in one city: items whose direct P31 is that type and is not
 # already an allowed type. import-hotspot-candidates publishes a whitelisted type through
@@ -243,53 +307,91 @@ class WikimediaDiscoveryClient:
                 await asyncio.sleep(2**attempt)
         raise AssertionError("unreachable")
 
-    async def discover_city(self, city: HotspotCity, limit: int = 100) -> list[DiscoveredHotspot]:
+    async def discover_city(
+        self, city: HotspotCity, limit: int = 100, *, skip: Collection[str] = ()
+    ) -> list[DiscoveredHotspot]:
+        """Every Wikipedia page with a Wikidata item inside the city's configured radius,
+        nearest first, minus ``skip`` (items the catalogue already holds), cut to ``limit``.
+
+        ``skip`` is what lets a weekly pass advance: without it the same nearest ``limit``
+        items came back every run once they were all in the catalogue.
+        """
         pages_by_qid: dict[str, dict[str, Any]] = {}
+        seen_pages: set[int] = set()
         api = f"https://{city.local_wikipedia}/w/api.php"
         for center in city.centers:
-            payload = await self._get(
-                api,
-                {
-                    "action": "query",
-                    "format": "json",
-                    "formatversion": "2",
-                    "list": "geosearch",
-                    "gscoord": f"{center.latitude}|{center.longitude}",
-                    "gsradius": str(min(center.radius_km * 1000, 10_000)),
-                    "gslimit": str(min(limit, 100)),
-                    "gsnamespace": "0",
-                },
-            )
-            nearby = payload.get("query", {}).get("geosearch", [])
-            for start in range(0, len(nearby), 50):
-                batch = nearby[start : start + 50]
-                details = await self._get(
+            for latitude, longitude, radius_km in search_points(center):
+                payload = await self._get(
                     api,
                     {
                         "action": "query",
                         "format": "json",
                         "formatversion": "2",
-                        "pageids": "|".join(str(page["pageid"]) for page in batch),
-                        "prop": "pageprops",
+                        "list": "geosearch",
+                        "gscoord": f"{latitude}|{longitude}",
+                        "gsradius": str(radius_km * 1000),
+                        "gslimit": str(GEOSEARCH_PAGE_LIMIT),
+                        "gsnamespace": "0",
                     },
                 )
-                qid_by_page_id = {
-                    page["pageid"]: (page.get("pageprops") or {}).get("wikibase_item")
-                    for page in details.get("query", {}).get("pages", [])
-                }
-                for page in batch:
-                    qid = qid_by_page_id.get(page["pageid"])
-                    if not qid:
-                        continue
-                    pages_by_qid.setdefault(
-                        qid,
-                        {
-                            "title": page["title"],
-                            "latitude": page["lat"],
-                            "longitude": page["lon"],
-                        },
-                    )
-        qids = list(pages_by_qid)[:limit]
+                nearby = [
+                    page
+                    for page in payload.get("query", {}).get("geosearch", [])
+                    if page["pageid"] not in seen_pages
+                    and inside_city(city, float(page["lat"]), float(page["lon"]))
+                ]
+                seen_pages.update(page["pageid"] for page in nearby)
+                await self._collect_pages(api, city, nearby, pages_by_qid)
+        skipped = set(skip)
+        qids = [
+            qid
+            for qid in sorted(pages_by_qid, key=lambda item: pages_by_qid[item]["distance_km"])
+            if qid not in skipped
+        ][:limit]
+        return await self._describe(city, qids, pages_by_qid)
+
+    async def _collect_pages(
+        self,
+        api: str,
+        city: HotspotCity,
+        nearby: list[dict[str, Any]],
+        pages_by_qid: dict[str, dict[str, Any]],
+    ) -> None:
+        for start in range(0, len(nearby), 50):
+            batch = nearby[start : start + 50]
+            details = await self._get(
+                api,
+                {
+                    "action": "query",
+                    "format": "json",
+                    "formatversion": "2",
+                    "pageids": "|".join(str(page["pageid"]) for page in batch),
+                    "prop": "pageprops",
+                },
+            )
+            qid_by_page_id = {
+                page["pageid"]: (page.get("pageprops") or {}).get("wikibase_item")
+                for page in details.get("query", {}).get("pages", [])
+            }
+            for page in batch:
+                qid = qid_by_page_id.get(page["pageid"])
+                if not qid:
+                    continue
+                pages_by_qid.setdefault(
+                    qid,
+                    {
+                        "title": page["title"],
+                        "latitude": page["lat"],
+                        "longitude": page["lon"],
+                        "distance_km": distance_to_city_km(
+                            city, float(page["lat"]), float(page["lon"])
+                        ),
+                    },
+                )
+
+    async def _describe(
+        self, city: HotspotCity, qids: list[str], pages_by_qid: dict[str, dict[str, Any]]
+    ) -> list[DiscoveredHotspot]:
         entities: dict[str, Any] = {}
         for start in range(0, len(qids), 50):
             payload = await self._get(
@@ -314,17 +416,11 @@ class WikimediaDiscoveryClient:
             }
             type_ids.discard(None)
             category, status, reason = classify_types(type_ids)
-            distance = min(
-                haversine_km(
-                    center.latitude,
-                    center.longitude,
-                    float(page["latitude"]),
-                    float(page["longitude"]),
-                )
-                for center in city.centers
-            )
-            # A denied type stays rejected wherever it sits; sending it back to review just
-            # because it is past the radius is the flood the denylist exists to stop.
+            distance = float(page["distance_km"])
+            # Pages past the configured radius are dropped before they get here, so this
+            # only catches rounding at the edge. A denied type stays rejected wherever it
+            # sits; sending it back to review just because it is past the radius is the
+            # flood the denylist exists to stop.
             if status != "rejected" and distance > max(center.radius_km for center in city.centers):
                 status, reason = "pending", "outside_city_radius"
             labels = entity.get("labels", {})

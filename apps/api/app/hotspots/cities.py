@@ -5,6 +5,11 @@ from app.destinations.catalog import LEGACY_DESTINATION_IDS
 
 @dataclass(frozen=True)
 class DiscoveryCenter:
+    """A point discovery searches around, and how far: every Wikipedia page with a Wikidata
+    item within ``radius_km`` of it is a candidate. The radius means what it says: MediaWiki
+    answers 10 km per call, so a larger radius is covered by a lattice of calls (see
+    ``discovery.search_points``); until 2026-09-19 it was silently clamped to 10 km."""
+
     latitude: float
     longitude: float
     radius_km: int

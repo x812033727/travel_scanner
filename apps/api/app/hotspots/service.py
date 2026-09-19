@@ -606,11 +606,29 @@ async def discover_hotspots(
     now = datetime.now(UTC)
     added = auto_approved = pending = denied = 0
     errors: list[dict[str, str]] = []
+    # Items the catalogue has already decided on are left out of a city's candidates before
+    # the per-run limit is applied, so a weekly pass keeps advancing across a wide radius
+    # instead of returning the same nearest hundred forever. Pending rows stay in: they are
+    # refreshed by re-discovery and the limit keeps the review queue from growing faster
+    # than it is read.
+    settled = {
+        qid
+        for qid in await session.scalars(
+            select(TravelHotspot.wikidata_item_id).where(
+                TravelHotspot.wikidata_item_id.is_not(None),
+                or_(
+                    TravelHotspot.origin == "curated",
+                    TravelHotspot.review_status.in_(("approved", "rejected", "disabled")),
+                ),
+            )
+        )
+        if qid
+    }
     try:
         for city in HOTSPOT_CITIES:
             try:
                 candidates = await discovery.discover_city(
-                    city, settings.hotspot_discovery_candidate_limit
+                    city, settings.hotspot_discovery_candidate_limit, skip=settled
                 )
                 public_count = int(
                     await session.scalar(
