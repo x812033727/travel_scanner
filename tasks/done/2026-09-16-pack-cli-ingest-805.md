@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-pack-cli-ingest-805
 title: pack_cli ingest 不認子主題，805 篇已上線的內容包重跑會被擋
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T08:32:15Z
 created_at: 2026-09-16T13:31:06Z
-completed_at:
+completed_at: 2026-09-19T08:39:41Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:

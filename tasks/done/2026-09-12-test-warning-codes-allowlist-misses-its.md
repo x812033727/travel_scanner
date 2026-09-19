@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-test-warning-codes-allowlist-misses-its
 title: test_warning_codes allowlist misses its own files on Windows path separators
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T08:32:16Z
 created_at: 2026-09-12T06:10:44Z
-completed_at:
+completed_at: 2026-09-19T08:39:41Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
