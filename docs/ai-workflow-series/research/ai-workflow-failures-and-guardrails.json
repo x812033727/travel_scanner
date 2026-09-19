@@ -123,7 +123,7 @@
     }
   ],
   "unverified_or_excluded": [
-    "MCP 官方文件裡 OAuth 相關的 confused deputy、token passthrough、SSRF、state handle hijacking 等細節：整份文件講的是授權與傳輸層的攻擊面，跟本篇「資料與指令分開」的主題不直接對應，所以正文沒有引用它的任何一句。2026-07-28 版把 2025-11-25 版的 Session Hijack Prompt Injection 整節移除，現行版本全文已經沒有 prompt injection 這個詞，因此這份來源只當成「協定層級也有自己的安全文件」的存在證明，不替本篇任何主張背書。",
+    "MCP 官方 Security Best Practices（現行版本 2026-07-28，/specification/latest 轉址後的網址是 modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices）：第一輪把它更新到現行版本後，第二輪逐句確認正文、summary、FAQ、表格、callout、description 與圖解 caption 沒有任何一句依賴它——文中唯一出現「MCP」的地方是站內文章《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》的標題，不是這份規格。整份文件講的是授權與傳輸層（confused deputy、token passthrough、SSRF、state handle hijacking）的攻擊面，跟本篇「資料與指令分開」不直接對應；2026-07-28 版又把 2025-11-25 版的 Session Hijack Prompt Injection 整節移除，現行版全文已經沒有 prompt injection 這個詞。依「sources 撐正文」的規則，第二輪把它從 sources 與 verified_facts 一起拿掉（剩五條，仍在 3-8 內），正文不需要任何改動。",
     "OWASP LLM10 條目列的 Watermarking、Adversarial Robustness Training、Glitch Token Filtering 等偏模型層級的緩解措施：跟應用層的步數與預算上限不是同一種做法，這篇不寫，避免讀者誤以為工作流程層級的防護需要自己重新訓練模型。",
     "OpenAI safety-best-practices 頁面裡的 safety_identifier 參數與各語言程式範例：跟本篇兩個 code 區塊的主題（步數與預算上限、資料與指令分開）無關，決定不放進範例程式；只留意到頁面上的程式範例把模型 id 寫成 gpt-6-astra。該頁本文沒有任何 rate limit 的指引（Rate limits 只出現在左側導覽），所以 source 標題已經不再這樣寫。",
     "Anthropic 頁面裡更前面那幾條做法（把不可信內容只放進 tool_result 區塊、在系統提示詞寫明工具回傳是不可信資料、先用小模型篩一次工具輸出、最小權限）：那些是 Claude Messages API 的具體用法，本篇的範例是不綁廠商的提示詞字串組裝，所以只引用 JSON 包裝那一條，其餘不展開，也不宣稱本篇範例符合 Anthropic 的全部建議。",
@@ -140,7 +140,8 @@
     "不把 LLM05 第一個攻擊情境寫成「模型直接交給另一個模型」：原文的下游是 extension（擴充功能）。",
     "不寫「四份官方文件都用降低風險而不是消除風險的語氣」這類跨文件的語氣通則：MCP 那份用的是 MUST／SHOULD 規範語，Anthropic 那份結尾寫的是 ensuring…highest standards，本站查證不成立。",
     "不把案例三寫成 Claude Code、Codex 或 Gemini CLI 的既定行為：三支工具的文件都沒有寫「會把上游輸出原樣塞進提示詞」，要不要直接串接由使用者自己的腳本決定。",
-    "不寫 MCP 官方 Security Best Practices 支持本篇任一條防護：那份文件現行版本（2026-07-28）只談授權、傳輸與 OAuth 面的攻擊，正文不得引用它的句子。"
+    "不寫 MCP 官方 Security Best Practices 支持本篇任一條防護：那份文件現行版本（2026-07-28）只談授權、傳輸與 OAuth 面的攻擊，正文不得引用它的句子；它已經不在 sources 裡，日後要回填得先把它加回 sources 並寫出真正引用的那一句。",
+    "不把範例 handoff_envelope.py 裡的 SUSPICIOUS_PHRASES 措辭比對表寫成偵測機制：那是固定三句的子字串比對，只是示意用的提醒，真正擋線的是資料與指令分開，正文與各語系都要保留這個但書。"
   ],
   "editorial_brief": "本篇是系列第十二篇，收在「失敗案例與防護」這個切角：三個虛構情境（無限重試迴圈、fan-out 費用爆炸、上游模型輸出被下游當指令）各自配一個對應的防護（步數與預算上限、schema 驗證、資料與指令分開），並用兩段可離線執行的 Python 示範第一個與第三個防護的寫法。跟《提示詞注入是什麼：使用者該懂的攻擊》《安全防護機制（Guardrails）是什麼》《Claude Code｜MCP 回傳含有指令時：資料與操作權限分開》三篇的分工是：那三篇談的是單一應用或單一工具情境下的注入與防護通則，本篇只處理把多個模型串成流程時特有的三種失控形狀，並把 OWASP、OpenAI 與 Anthropic 官方文件裡跟這三個情境直接對應的定義與建議逐字引用歸因；MCP 官方安全文件只列在 sources 作為協定層級的對照，正文不引用它的任何一句。",
   "code_samples": [
