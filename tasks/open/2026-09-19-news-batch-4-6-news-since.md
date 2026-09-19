@@ -67,7 +67,7 @@ scratchpad `news46/STATE-4-6.md`；探索候選檔 `news46/candidates-{ai,tech,c
 
 - [ ] 11 篇 zh-TW 內容包各有研究紀錄（各垂直 `research/<slug>.json`，4.5 的 schema，無 translations），
       經撰稿、兩輪獨立查核，`check_article.py --full --assets` 全過，`pack_cli lint --kind life` 0 error
-- [ ] 兩則更新只增不刪、`check_article.py --full` 過，匯入時為 `update`
+- [x] 兩則更新：已評估——目標文章是五語系且字數頂格，只加一節與 checker 互斥；兩位代理的改動已還原，另開票 `multi-language-maintenance`（見 Notes）
 - [ ] `check_article.py` RELATED 與 `verticals.py` 接續號段：AI 167–170、科技 317–320、幣圈 214–216
 - [ ] 三個索引文章不改標題；若 `update_index.py` 增補連結，一併列入 `--slug` 匯入
 - [ ] PR 合併、部署後 `guides-import --slug`（先 dry-run 核對計畫），正式站每篇 200、可索引、在 `life-zh-TW.xml`
@@ -79,7 +79,7 @@ scratchpad `news46/STATE-4-6.md`；探索候選檔 `news46/candidates-{ai,tech,c
 - [x] 開 worktree `news46-0918`、分支 `claude/news-batch-4-6-since-0918`、本票
 - [ ] 研究紀錄第一波（opus ×6：AI ×4、幣圈 OCC、EBA）— 已派出，寫到 scratchpad 再搬進工作區
 - [ ] 研究紀錄第二波（opus ×5：科技 ×4、幣圈 SEC）
-- [ ] 更新代理 ×2（sonnet）：馬祖 5G、Apple 開賣
+- [x] 更新代理 ×2（sonnet）：馬祖 5G、Apple 開賣 —— 各完成核對，但 --full 三個結構性 FAIL（字數／來源數／五語 parity）；還原，diff 存 scratchpad，另開票
 - [ ] 幣圈三個 slug 定案後補進本票 scope
 - [ ] `DELTA-4-6.md`、`check_article.py` RELATED、`verticals.py`
 - [ ] 撰稿（sonnet ×11，5 小時窗 19:20Z 重置後派）→ 查核第一輪（opus）→ 第二輪（opus，SECOND-ROUND）
@@ -104,3 +104,4 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 - **EBA 指引適用日在最終報告仍是 `[date]` 佔位**，任何生效日期都不可寫。
 - **SEC Woodcock 演講**探索只讀到 WebFetch 版，研究紀錄代理必須補讀 sec.gov 原文。
 - 探索代理用量：AI 195K、科技 180K、幣圈 256K subagent tokens（讀了三份 OCC PDF）。
+- **兩則更新在本批取消**（2026-09-19 ~20:10Z）：兩篇目標文章都是五語系、zh-TW 已頂 3000 字、sources 已 4 條；DELTA-4-6 第 8 條在它們身上與 checker 互斥。協調者親跑 checker 確認後還原，另開票處理多語維護。匯入清單因此是 **11 篇 create、0 篇 update**。
