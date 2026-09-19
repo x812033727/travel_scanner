@@ -40,7 +40,7 @@
             "claude -p、codex exec 與 gemini -p 都能在腳本裡跑完一次任務就結束，但核准旗標三家各叫各的名字，輸出格式旗標只有 Claude Code 與 Gemini CLI 同名，用哪一支做規劃、執行或審查前都得先讀該廠商當天的官方文件。",
             "本篇示範的 plan.md、patch 與 review.json 是這個網站自己設計的交接檔慣例，不是 Claude Code、Codex 或 Gemini CLI 任何一家的官方規格。",
             "Claude Code 的 --json-schema 與 Codex 的 --output-schema，官方文件都寫了 CLI 會照 JSON Schema 驗證輸出；Gemini CLI 的無頭模式文件只列出 response、stats 與選用的 error 三個外層欄位，本文查證當天沒有在那幾頁看到對應的 schema 驗證旗標。",
-            "Gemini CLI 的無頭模式文件列出四個結束代碼：0 是成功、1 是一般錯誤或 API 失敗、42 是輸入錯誤、53 是對話輪數超過上限；本文這次讀到的 Claude Code 與 Codex 頁面沒有列出這樣的數字對照。"
+            "Gemini CLI 的無頭模式文件列出四個結束代碼與各自的意義；本文這次讀到的 Claude Code 與 Codex 頁面沒有列出這樣的數字對照，串接時只能用『退出碼是不是 0』判斷成敗。"
           ]
         },
         {
@@ -132,8 +132,8 @@
         {
           "type": "callout",
           "tone": "warning",
-          "title": "沒人能回答核准提示時，三支 CLI 的文件寫的不是同一件事",
-          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 在沒有另外設定時用 default 核准模式，官方文件寫 --permission-prompt-tool 可以指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 傳 none 表示沒有人能回答、Claude Code 改成拒絕；核准模式那一頁也寫 dontAsk 模式下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never 兩個值，文件寫它控制 Codex 什麼時候暫停等人核准；codex exec 自己的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測，這裡只轉述各自文件寫了什麼。"
+          "title": "核准提示沒人回答時，三家文件寫的不一樣",
+          "text": "串接前先查這一支 CLI 在沒人回答核准提示時會怎麼做，別假設三家一樣。Claude Code 的 -p 沒另外設定時用 default 核准模式，文件寫 --permission-prompt-tool 可指定一個 MCP 工具在非互動模式下處理核准提示，--permission-prompts 傳 none 表示沒人能回答、Claude Code 改成拒絕；核准模式那頁也寫 dontAsk 下會提示的動作一律被拒絕，工作階段不會等輸入。Codex 的全域旗標 --ask-for-approval 只有 on-request 與 never，文件寫它控制 Codex 何時暫停等人核准；codex exec 的說明寫它是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用，預設沙盒唯讀，自動化要自己指定需要的最小權限。Gemini CLI 的 Plan Mode 文件則明寫，它會停下來等你確認之後才寫正式計畫。本站沒有實測，這裡只轉述各自文件寫了什麼。"
         },
         {
           "type": "code",
