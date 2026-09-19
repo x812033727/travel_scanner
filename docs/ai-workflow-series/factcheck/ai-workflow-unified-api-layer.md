@@ -227,7 +227,7 @@ FAQ、callout、表格每一格、兩個 caption、圖解節點、`hero_label`�
 
 用程式比對，HTML 去標籤後試三種接法（標籤換空白、標籤直接刪、另外把 Next.js flight payload 的跳脫字串
 單獨當一種），並確認**沒有任何一條只靠 payload 成立**——第一輪改掉的第 23 條現在是表格上的
-`GPT OSS 120B openai/gpt-oss-120b`，在「換空白」那一種裡就找得到。八條引文只在「標籤直接刪」那一種命中，
+`GPT OSS 120B openai/gpt-oss-120b`，在「換空白」那一種裡就找得到。九條引文只在「標籤直接刪」那一種命中，
 逐一看過前後文，全部是程式碼區塊被語法高亮切成 span 的結果（例如
 `os.environ["ANTHROPIC_API_KEY"] = "your-api-key"`、`timeout: Optional[Union[float, int]] = None,`），不是拼接。
 
