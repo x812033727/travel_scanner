@@ -1,0 +1,261 @@
+{
+  "slug": "ai-workflow-unified-api-layer",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 403,
+  "locales": {
+    "zh-TW": {
+      "title": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+      "description": "OpenAI 相容端點是供應商提供的 REST 介面，形狀和 OpenAI 的 Chat Completions 端點相同，程式只要換 base_url 與 model 字串就能連到別家模型，不必重寫呼叫邏輯。這篇示範同一段 Python 用 openai 套件連上 OpenRouter 與 Mistral 兩個相容端點，再用 LiteLLM 的 completion() 換三個 model 字串連到三家供應商，並比較 OpenRouter 這個託管閘道，跟 LiteLLM 的 SDK 與自架 Proxy，在「相容」範圍上的限制。",
+      "hero": {
+        "src": "/guides/ai-workflow-unified-api-layer/hero.jpg",
+        "alt": "原創插圖：一張程式碼卡片中間分出兩條線，分別接到寫著 base_url 與 model 字串的不同端點方塊，象徵同一段程式換端點、不換寫法。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「OpenAI 相容」指的是供應商把自己的推論服務包成和 OpenAI Chat Completions 端點同樣形狀的 REST 介面；只要程式呼叫的是這個形狀，換一家供應商通常只需要換 base_url 與 model 字串兩個值，其餘程式碼不用動。這篇說明 OpenAI 相容端點的意思與能相容到什麼程度，再用 openai 套件與 LiteLLM 兩種做法實際切換供應商。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完這篇，你會有一段 Python 程式碼，用 openai 套件的用戶端連上兩個不同的 OpenAI 相容端點；也會有另一段程式，用 LiteLLM 的 completion() 函式只換 model 字串就連到三家供應商，還會知道「相容」指請求與回應的形狀相同，不是每個參數都通用。動手前需要能執行 Python（openai 套件官方文件寫最低支援 3.10）、用 pip 或 uv 裝好 openai 與 litellm 兩個套件，以及要呼叫那幾家供應商各自的 API 金鑰，金鑰一律放進環境變數，不寫進程式碼。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI 相容端點指供應商提供和 OpenAI Chat Completions 格式相同的 REST 介面，官方 openai 套件與 LiteLLM 都能只換 base_url 或 model 字串切換供應商，不必改寫呼叫程式碼。",
+            "OpenRouter 是已經架好、直接連線就能用的託管端點；LiteLLM 除了能在自己的 Python 程序裡呼叫，也能另外自架一個 Proxy 伺服器，讓其他語言的用戶端一樣用同一個 base_url 存取多家模型。",
+            "官方文件寫，OpenRouter 收到某個模型不支援的參數時會直接忽略、其餘照送；LiteLLM 預設遇到不支援的 OpenAI 參數會丟出例外，要自己開啟 drop_params 才會改成忽略。",
+            "換供應商時，金鑰要放的環境變數名稱與 model 字串的寫法都不同，程式應該只從環境變數讀金鑰，並在每次外部呼叫都設好逾時。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "什麼是 OpenAI 相容端點"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 在 Chat Completions 端點定義了一套請求與回應的 JSON 形狀：請求帶 model、messages 等欄位，回應在 choices 裡放 message.content。不少供應商把自己的推論服務包成同一種形狀，Mistral 官方的遷移文件就寫，只要換 base URL 和 model 名稱，就能把原本指向 OpenAI 的用戶端指過來，不用換函式庫。openai 官方套件的說明也寫，用戶端的 base_url 可以直接被覆寫，或改讀 OPENAI_BASE_URL 這個環境變數，程式完全不用動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「相容」指的是形狀，不是每一個參數。OpenRouter 的 API 參考寫得很直接：如果選到的模型不支援某個請求參數，例如非 OpenAI 模型不支援 logit_bias、OpenAI 模型不支援 top_k，那個參數會被忽略，其餘的參數照樣轉送到底層那家供應商的 API。程式不會因為多送了一個參數而報錯，但那個參數也不會真的生效；某個參數在某個模型上到底有沒有用，還是得查那個模型自己的文件，這篇不會每個模型都列。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "換 base_url 與 model 字串：同一支 openai 用戶端打兩家"
+        },
+        {
+          "type": "paragraph",
+          "text": "openai 這個 Python 套件本來是為 OpenAI 自己的 API 寫的，但它的用戶端建構式接受 base_url 這個參數，把網址換成任何一個 OpenAI 相容端點，用戶端就會去打那個網址而不是 api.openai.com。下面的程式先連 OpenRouter：官方 quickstart 寫 base_url 要填 https://openrouter.ai/api/v1，請求送到 /api/v1/chat/completions 這個端點，金鑰放進 Authorization 標頭當 Bearer token；文件另外列了 HTTP-Referer 與 X-OpenRouter-Title 兩個選用標頭，設了應用程式才會出現在 OpenRouter 的排行榜上，不設也能正常呼叫。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "openai 套件：同一段程式換兩個 OpenAI 相容 base_url（需要 openai 套件）",
+          "code": "import os\n\nfrom openai import OpenAI\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 官方 quickstart：base_url 指到 openrouter.ai，金鑰放 Authorization 標頭\nopenrouter = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=os.environ[\"OPENROUTER_API_KEY\"],\n  timeout=30.0,\n)\nreply = openrouter.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": os.environ.get(\"SITE_URL\", \"\"),\n    \"X-OpenRouter-Title\": os.environ.get(\"SITE_NAME\", \"\"),\n  },\n  model=\"anthropic/claude-sonnet-5\",\n  messages=question,\n)\nprint(\"OpenRouter:\", reply.choices[0].message.content)\n\n# 官方遷移指南：base_url 換成 api.mistral.ai，model 換成 Mistral 自己的代號\nmistral = OpenAI(\n  base_url=\"https://api.mistral.ai/v1\",\n  api_key=os.environ[\"MISTRAL_API_KEY\"],\n  timeout=30.0,\n)\nreply = mistral.chat.completions.create(\n  model=\"mistral-small-2603\",\n  messages=question,\n)\nprint(\"Mistral:\", reply.choices[0].message.content)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Mistral 官方的遷移指南寫，要用 OpenAI 相容的用戶端連 Mistral，base URL 換成 https://api.mistral.ai/v1、model 換成 Mistral 自己的模型代號就好；範例裡的 mistral-small-2603 是 Mistral 模型頁上寫的目前這一版 Mistral Small 的代號，不需要像 OpenRouter 那樣在代號前面加供應商名稱。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "LiteLLM：把「換供應商」收進一個函式"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenRouter 是別人已經架好的閘道，帳號、金鑰、儲值都在 openrouter.ai 那一端，站上《OpenRouter：一把金鑰用遍各家模型》整理過，這裡不重複。LiteLLM 走另一條路：它是一個 Python 套件，官方文件把它寫成「OpenAI 用戶端的直接替代品」，重點是 completion()、embedding() 這些函式，直接匯入自己的程序裡呼叫，不需要另外連到誰架的伺服器；安裝指令是 uv add litellm。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LiteLLM 認供應商的方式是看 model 字串：官方文件的例子把供應商名稱寫在最前面、用斜線隔開，例如 model=\"openai/gpt-5.6-terra\"，依對應的環境變數（OPENAI_API_KEY、ANTHROPIC_API_KEY）去拿金鑰；透過 OpenRouter 轉接時要多包一層，寫成 openrouter/ 加上 OpenRouter 自己的供應商／模型代號，範例是 model=\"openrouter/google/palm-2-chat-bison\"，金鑰讀 OPENROUTER_API_KEY，OPENROUTER_API_BASE 是選用欄位，不設定時預設就是 https://openrouter.ai/api/v1。下面同一段迴圈換了三次 model 字串，其他呼叫方式完全沒變；google/gemini-3.8-flash 一樣是 OpenRouter 上的代號，要直接向 Google 申請金鑰、建立第一支呼叫，見《AI Studio 與第一個 Gemini API 呼叫》。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "litellm 套件：completion() 換三個 model 字串（需要 litellm 套件）",
+          "code": "import os\n\nfrom litellm import completion\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 三個字串分屬三家供應商，completion() 的呼叫方式完全相同\nmodel_ids = [\n  \"openai/gpt-5.6-terra\",\n  \"anthropic/claude-sonnet-5\",\n  \"openrouter/google/gemini-3.8-flash\",\n]\n\nfor model_id in model_ids:\n  reply = completion(model=model_id, messages=question, timeout=30)\n  print(model_id, \"->\", reply.choices[0].message.content)\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "三次呼叫用的是同一個 completion() 函式、同一份 messages，差別只有 model 這一個字串，LiteLLM 自己會決定要打哪一家的網址、帶哪一把金鑰，回傳的錯誤也統一成 litellm.AuthenticationError、litellm.RateLimitError 這類同一組例外類別。官方文件也寫，completion() 預設遇到某個供應商不支援的 OpenAI 參數會直接丟出例外，要自己在呼叫時加 drop_params=True，或整體設定 litellm.drop_params = True，才會改成像 OpenRouter 那樣悄悄忽略；這點放進下面的提醒框。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "託管閘道與自架 Proxy：OpenRouter 與 LiteLLM 的另一種模式"
+        },
+        {
+          "type": "paragraph",
+          "text": "前面兩段程式都是「自己的程序直接連出去」：一段連到 OpenRouter 這個別人架好的閘道，一段是 LiteLLM 在自己的程序裡轉接。LiteLLM 其實還有第三種形態，官方文件把它稱為 Proxy Server，是一個要自己架設的閘道伺服器，架起來以後它自己就是一個 OpenAI 相容端點。官方文件把它寫成「給平台團隊用的自架閘道，用來管理整個組織的 LLM 存取」，功能包含依金鑰設定花費上限、集中記錄與快取，還有管理介面能看用量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "架起來之後，呼叫方式反而回到最一開始那個樣子：官方文件的範例直接用 openai 套件的用戶端，把 base_url 指到自己架的位址，範例寫的是 http://0.0.0.0:4000，api_key 隨便填一個字串即可，因為認證是自架的 Proxy 自己在管，不是原本那些供應商在管。這樣看下來，OpenRouter 與 LiteLLM 的 Proxy 其實是同一種角色的兩種做法：OpenRouter 是別人已經架好、你付費使用的託管閘道；LiteLLM 的 Proxy 是同樣的角色但自己架、自己維護，換來的是能自己設定金鑰的花費上限與存取規則；自己維運一台伺服器也是實際的成本，兩者怎麼選要看團隊有沒有人力顧到那台伺服器。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-unified-api-layer/diagram-1.svg",
+          "alt": "流程圖：你的程式 → 換兩個值 → 託管閘道 → 自架閘道 → 到供應商",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右：程式先選好要用哪一支用戶端或函式庫，接著只換 base_url 與 model 字串；第三、四格是兩種常見的中介做法，OpenRouter 是別人已經架好的託管閘道，LiteLLM 可以在自己程序裡呼叫、也能自架成閘道；最後都送到供應商自己的伺服器。查證於 2026 年 9 月。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "相容解決什麼、不解決什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "換 base_url 與 model 字串解決的是「程式不用為每家供應商重寫一份呼叫邏輯」，但解決不了其他幾件事。價格、免費額度、速率限制是供應商自己訂的，換一個相容端點不會讓它們變得一樣，這篇不比價，系列另一篇《成本、品質、延遲：多模型流程怎麼取捨》會專門整理怎麼在三者之間取捨。同樣地，相容層幫忙轉接的是單一次請求，request 裡帶了工具呼叫（tool calling）之類的功能，底層模型本身支不支援仍然是那個模型自己的事，相容層不會替它補上原本沒有的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要確定某個模型、某個供應商實際支援哪些參數，LiteLLM 官方文件提供一個 get_supported_openai_params() 函式，帶入 model 與供應商名稱就能查到一份清單，比自己一個個手動試更快；OpenRouter 則是把整份模型清單放在公開的 API 上，每個模型頁也會列出它支援哪些欄位。這篇只示範兩個直連的端點與一段 LiteLLM 程式，還沒有真的依價格或失敗與否切換供應商，那部分屬於系列另一篇《模型路由與級聯：便宜先試、貴的兜底》要講的內容，這裡不重複。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "做法",
+            "你在程式裡呼叫的東西",
+            "model 字串怎麼寫",
+            "「相容」範圍由誰的文件定義"
+          ],
+          "rows": [
+            [
+              "openai 套件直連",
+              "openai 套件的 OpenAI(...) 用戶端，base_url 指到該供應商",
+              "供應商自己的原生代號，例如 mistral-small-2603",
+              "那家供應商自己的 API 文件"
+            ],
+            [
+              "OpenRouter",
+              "同一支 openai 用戶端，base_url 指到 openrouter.ai",
+              "供應商名稱＋斜線＋模型，例如 anthropic/claude-sonnet-5",
+              "OpenRouter 的 API 參考"
+            ],
+            [
+              "LiteLLM SDK",
+              "從 litellm 匯入的 completion() 函式",
+              "供應商前綴＋原生代號，例如 anthropic/claude-sonnet-5",
+              "LiteLLM 的 Providers 文件頁"
+            ],
+            [
+              "LiteLLM Proxy",
+              "openai 套件的用戶端，base_url 指到自己架的伺服器",
+              "自己在 config.yaml 裡取的 model_name",
+              "架設者自己寫的 config.yaml"
+            ]
+          ],
+          "caption": "整理自 openrouter.ai、docs.litellm.ai 與 docs.mistral.ai 官方文件，查證於 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "同一個參數，兩層的預設反應不一樣",
+          "text": "OpenRouter 的 API 參考寫，收到模型不支援的參數時會直接忽略、其餘照送，程式不會報錯，但那個參數也不會生效。LiteLLM 官方文件則寫，completion() 預設遇到不支援的 OpenAI 參數會丟出例外，要自己設定 drop_params=True，或整體設定 litellm.drop_params = True，才會改成忽略。同一段呼叫換著兩層用，「參數被吃掉卻沒報錯」與「原本想省事卻先噴出例外」都可能發生，換層之前先確認是哪一層在處理這個參數。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "OpenAI 相容是不是代表所有參數都能直接搬過去用？",
+              "answer": "不是。相容指的是請求與回應的 JSON 形狀一樣，不是每一個參數都通用。官方文件寫，OpenRouter 遇到模型不支援的參數會直接忽略、其餘照送；LiteLLM 預設遇到不支援的 OpenAI 參數會丟出例外，要自己開啟才會改成忽略。實際能用哪些參數，還是要查那個模型自己的文件。"
+            },
+            {
+              "question": "OpenRouter 和 LiteLLM 是同一種東西嗎？",
+              "answer": "不是。OpenRouter 是別人已經架好、直接連線就能用的託管端點，帳號、金鑰、儲值都在對方那一端。LiteLLM 是一個 Python 套件，completion() 這些函式是在你自己的程序裡執行；它另外還有一個 Proxy 模式，需要自己架一台伺服器，架起來之後同樣變成一個 OpenAI 相容端點。"
+            },
+            {
+              "question": "換供應商時，程式碼真的只需要改 base_url 和 model 嗎？",
+              "answer": "以這篇示範的兩個呼叫來說是的：openai 套件的用戶端只換了 base_url、金鑰讀的環境變數，和 model 字串三個地方，其餘程式碼沒有變。要注意的是不同供應商的 model 字串寫法不一樣，例如透過 OpenRouter 要在模型代號前面加上供應商名稱，直接連 Mistral 則不用。"
+            },
+            {
+              "question": "LiteLLM 的 model 字串為什麼有時候要加供應商前綴，有時候不用？",
+              "answer": "官方文件的例子多半把供應商名稱寫在 model 字串最前面、用斜線隔開，例如 openai/gpt-5.6-terra，LiteLLM 依這個前綴決定要呼叫哪一家的 API 並讀對應的環境變數；沒有寫前綴時，LiteLLM 也會嘗試從模型名稱本身判斷供應商，但寫清楚前綴比較不會猜錯。"
+            },
+            {
+              "question": "要自己架 LiteLLM 的 Proxy，還是直接用 OpenRouter 比較好？",
+              "answer": "這篇沒有幫你決定，兩者是不同的取捨。OpenRouter 不用自己維運伺服器，但金鑰的花費上限與存取規則要照對方提供的設定做；LiteLLM 的 Proxy 需要自己架設與維運，換來的是能自己設定每把金鑰的花費上限與存取規則。要哪一種看團隊有沒有人力顧到自架的那台伺服器。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+        },
+        {
+          "type": "link",
+          "text": "OpenRouter：一把金鑰用遍各家模型",
+          "url": "https://mokaair.com/zh-TW/life/openrouter-multi-model-api"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenRouter Quickstart（base_url、Authorization Bearer、選用排行榜標頭、OpenAI SDK 範例）",
+          "url": "https://openrouter.ai/docs/quickstart",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenRouter API Reference: Overview（/api/v1/chat/completions 端點、與 OpenAI 格式的差異、不支援參數被忽略）",
+          "url": "https://openrouter.ai/docs/api-reference/overview",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "LiteLLM Docs（Python SDK 與 Proxy 兩種形態、uv add litellm、completion() 範例、例外類別）",
+          "url": "https://docs.litellm.ai/docs/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "LiteLLM Docs: Input Params（completion() 函式簽名、get_supported_openai_params()、drop_params）",
+          "url": "https://docs.litellm.ai/docs/completion/input",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "LiteLLM Docs: OpenRouter（model 字串要加 openrouter/ 前綴、OPENROUTER_API_KEY 與 OPENROUTER_API_BASE）",
+          "url": "https://docs.litellm.ai/docs/providers/openrouter",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "openai-python README（base_url 建構參數、OPENAI_BASE_URL 環境變數、Python 3.10+、timeout 預設 10 分鐘）",
+          "url": "https://github.com/openai/openai-python",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Mistral Docs: Migration guides（OpenAI 相容 base URL 寫法、https://api.mistral.ai/v1、程式範例）",
+          "url": "https://docs.mistral.ai/resources/migration-guides/",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Mistral Docs: Mistral Small 4 模型頁（官方模型代號 mistral-small-2603）",
+          "url": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

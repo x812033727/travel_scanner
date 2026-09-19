@@ -1,0 +1,248 @@
+{
+  "slug": "ai-workflow-unified-api-layer",
+  "title": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "OpenRouter Quickstart（base_url、Authorization Bearer、選用排行榜標頭、OpenAI SDK 範例）",
+      "url": "https://openrouter.ai/docs/quickstart",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenRouter API Reference: Overview（/api/v1/chat/completions 端點、與 OpenAI 格式的差異、不支援參數被忽略）",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LiteLLM Docs（Python SDK 與 Proxy 兩種形態、uv add litellm、completion() 範例、例外類別）",
+      "url": "https://docs.litellm.ai/docs/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LiteLLM Docs: Input Params（completion() 函式簽名、get_supported_openai_params()、drop_params）",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "LiteLLM Docs: OpenRouter（model 字串要加 openrouter/ 前綴、OPENROUTER_API_KEY 與 OPENROUTER_API_BASE）",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "openai-python README（base_url 建構參數、OPENAI_BASE_URL 環境變數、Python 3.10+、timeout 預設 10 分鐘）",
+      "url": "https://github.com/openai/openai-python",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Mistral Docs: Migration guides（OpenAI 相容 base URL 寫法、https://api.mistral.ai/v1、程式範例）",
+      "url": "https://docs.mistral.ai/resources/migration-guides/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Mistral Docs: Mistral Small 4 模型頁（官方模型代號 mistral-small-2603）",
+      "url": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "OpenRouter 的請求要送到 /api/v1/chat/completions 這個端點。",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "request to the /api/v1/chat/completions endpoint"
+    },
+    {
+      "fact": "OpenRouter 官方 quickstart 把 base_url 設成 https://openrouter.ai/api/v1。",
+      "url": "https://openrouter.ai/docs/quickstart",
+      "is_vendor_claim": true,
+      "verbatim_quote": "https://openrouter.ai/api/v1"
+    },
+    {
+      "fact": "如果選到的模型不支援某個請求參數，OpenRouter 會把那個參數忽略，其餘參數照樣轉送。",
+      "url": "https://openrouter.ai/docs/api-reference/overview",
+      "is_vendor_claim": true,
+      "verbatim_quote": "then the parameter is ignored."
+    },
+    {
+      "fact": "OpenRouter 提供 HTTP-Referer 與 X-OpenRouter-Title 兩個選用標頭，用來讓應用程式出現在排行榜上。",
+      "url": "https://openrouter.ai/docs/quickstart",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Optional. Site URL for rankings on openrouter.ai."
+    },
+    {
+      "fact": "openai 套件的用戶端可以用 base_url 這個建構參數指到別的位置，也可以改用 OPENAI_BASE_URL 環境變數。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Or use the `OPENAI_BASE_URL` env var"
+    },
+    {
+      "fact": "openai 套件安裝方式是 pip install openai。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "pip install openai"
+    },
+    {
+      "fact": "openai 套件官方文件寫，這個函式庫支援 Python 3.10 以上。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Python 3.10+"
+    },
+    {
+      "fact": "openai 用戶端預設請求逾時是 10 分鐘，可以用 timeout 這個參數調整。",
+      "url": "https://github.com/openai/openai-python",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default requests time out after 10 minutes."
+    },
+    {
+      "fact": "LiteLLM 官方文件把自己的 Python SDK 定位成 OpenAI 用戶端的直接替代品。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Drop-in replacement for the OpenAI client."
+    },
+    {
+      "fact": "LiteLLM 的 Proxy 官方文件定位成給平台團隊管理整個組織 LLM 存取的自架閘道。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Self-hosted gateway for platform teams managing LLM access across an organization."
+    },
+    {
+      "fact": "LiteLLM 官方文件給的安裝指令是 uv add litellm。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "uv add litellm"
+    },
+    {
+      "fact": "LiteLLM 的 completion() 範例把供應商名稱放在 model 字串最前面，例如 openai/gpt-5.6-terra。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model=\"openai/gpt-5.6-terra\""
+    },
+    {
+      "fact": "LiteLLM 把跨供應商的認證、速率限制等錯誤統一成自己的例外類別，例如 litellm.AuthenticationError。",
+      "url": "https://docs.litellm.ai/docs/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "except litellm.AuthenticationError as e:"
+    },
+    {
+      "fact": "LiteLLM 的 completion() 函式簽名裡，timeout 是型別為 float 或 int 的可選參數。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "timeout: Optional[Union[float, int]] = None,"
+    },
+    {
+      "fact": "LiteLLM 預設遇到不支援的 OpenAI 參數會丟出例外，而不是默默忽略。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default, LiteLLM raises an exception if the openai param being passed in isn't supported."
+    },
+    {
+      "fact": "要讓 LiteLLM 捨棄不支援的參數，需要設定 litellm.drop_params = True。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "litellm.drop_params = True"
+    },
+    {
+      "fact": "LiteLLM 提供 get_supported_openai_params() 函式查某個 model／供應商支援哪些 OpenAI 參數。",
+      "url": "https://docs.litellm.ai/docs/completion/input",
+      "is_vendor_claim": true,
+      "verbatim_quote": "get_supported_openai_params(model=\"anthropic.claude-sonnet-5\", custom_llm_provider=\"bedrock\")"
+    },
+    {
+      "fact": "透過 LiteLLM 呼叫 OpenRouter 時，model 字串要寫成 openrouter/ 加上 OpenRouter 自己的供應商／模型代號。",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model=\"openrouter/google/palm-2-chat-bison\""
+    },
+    {
+      "fact": "LiteLLM 呼叫 OpenRouter 用的 OPENROUTER_API_BASE 是選用欄位，預設就是 https://openrouter.ai/api/v1。",
+      "url": "https://docs.litellm.ai/docs/providers/openrouter",
+      "is_vendor_claim": true,
+      "verbatim_quote": "[OPTIONAL] defaults to https://openrouter.ai/api/v1"
+    },
+    {
+      "fact": "Mistral 官方遷移文件寫，換 OpenAI 相容用戶端只要改 base URL 與 model 名稱，不用換函式庫。",
+      "url": "https://docs.mistral.ai/resources/migration-guides/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "point it at the Mistral API by changing only the base URL and model name. No library swap required."
+    },
+    {
+      "fact": "Mistral 的 OpenAI 相容 base URL 是 https://api.mistral.ai/v1。",
+      "url": "https://docs.mistral.ai/resources/migration-guides/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "https://api.mistral.ai/v1"
+    },
+    {
+      "fact": "mistral-small-2603 是 Mistral 官方模型頁上目前這一版 Mistral Small 的模型代號，別名是 mistral-small-latest。",
+      "url": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Click to copy: mistral-small-2603"
+    }
+  ],
+  "unverified_or_excluded": [
+    "LiteLLM 的 Proxy CLI 完整旗標與 config.yaml 全部欄位：這篇只示範最小可行的一段，其餘旗標留給官方文件，避免塞進太多用不到的細節。",
+    "OpenRouter 的 X-OpenRouter-Categories 標頭：查到但這篇的程式沒有用到行銷分類功能，只在正文提一次，不放進程式碼。",
+    "Mistral 對 OpenAI 相容端點逐一參數層級的支援清單：官方遷移指南只給了 Python／串流方法與 base URL 的對照表，沒有列出參數層級差異，這篇不猜，只引 OpenRouter 查到的 logit_bias／top_k 當「相容不等於全部參數都通」的例子。",
+    "LiteLLM 呼叫 Azure OpenAI、Bedrock、Vertex AI 的完整設定：這篇的重點是 OpenRouter 與另一個原生相容端點的對照，其餘供應商細節留給讀者自己查 LiteLLM 的 Providers 文件。",
+    "Mistral 與 OpenRouter 的定價、免費額度：這篇不比價，留給系列的成本文章處理。"
+  ],
+  "must_not_write": [
+    "OpenRouter 的儲值、手續費、免費模型與隱私設定：站上《OpenRouter：一把金鑰用遍各家模型》已經整理過。",
+    "怎麼依成本、品質或延遲選擇要路由去哪一家：屬於系列另外兩篇的主題。",
+    "本站對任何模型輸出品質或速度的實測結果：本站沒有實測。"
+  ],
+  "editorial_brief": "這篇的切角是「OpenAI 相容」這一層本身：base_url 與 model 字串怎麼換、OpenRouter 這種已經架好的託管閘道和 LiteLLM 的 SDK／Proxy 有什麼差別、相容的範圍到哪裡。OpenRouter 自己的帳號、費用與隱私設定交給《OpenRouter：一把金鑰用遍各家模型》，怎麼依成本或路由規則選供應商交給系列另外兩篇，這篇只示範程式碼怎麼寫、寫完之後行為哪裡會不一樣。",
+  "code_samples": [
+    {
+      "label": "openai 套件：同一段程式換兩個 OpenAI 相容 base_url（需要 openai 套件）",
+      "language": "python",
+      "lines": 34,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://openrouter.ai/docs/quickstart",
+        "https://openrouter.ai/docs/api-reference/overview",
+        "https://github.com/openai/openai-python",
+        "https://docs.mistral.ai/resources/migration-guides/"
+      ]
+    },
+    {
+      "label": "litellm 套件：completion() 換三個 model 字串（需要 litellm 套件）",
+      "language": "python",
+      "lines": 17,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://docs.litellm.ai/docs/",
+        "https://docs.litellm.ai/docs/completion/input",
+        "https://docs.litellm.ai/docs/providers/openrouter"
+      ]
+    }
+  ],
+  "hero_label": "換端點不換程式",
+  "diagram": {
+    "layout": "flow",
+    "title": "OpenAI 相容端點怎麼接",
+    "caption": "由左到右：程式先選好要用哪一支用戶端或函式庫，接著只換 base_url 與 model 字串；第三、四格是兩種常見的中介做法，OpenRouter 是別人已經架好的託管閘道，LiteLLM 可以在自己程序裡呼叫、也能自架成閘道；最後都送到供應商自己的伺服器。查證於 2026 年 9 月。",
+    "nodes": [
+      [
+        "你的程式",
+        "openai／litellm"
+      ],
+      [
+        "換兩個值",
+        "base_url、model"
+      ],
+      [
+        "託管閘道",
+        "OpenRouter架好的"
+      ],
+      [
+        "自架閘道",
+        "LiteLLM自己接"
+      ],
+      [
+        "到供應商",
+        "各家自己的伺服器"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "slug": "ai-workflow-tracing-evals",
+  "title": "追蹤、評測與可觀測性：知道流程哪一步出錯",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Python 官方文件：logging — Logging facility for Python",
+      "url": "https://docs.python.org/3/library/logging.html",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenTelemetry：Generative AI semantic conventions（頁面已標示搬遷）",
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenTelemetry semantic-conventions-genai：屬性登錄檔 gen_ai",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenTelemetry semantic-conventions-genai：GenAI spans",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-spans.md",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI Platform：Working with evals",
+      "url": "https://developers.openai.com/api/docs/guides/evals",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Claude Platform Docs：Define success criteria and build evaluations",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "logging 模組的 Logger.info 等方法可以用 extra 參數把自訂欄位加進 LogRecord，但欄位鍵不能跟系統已使用的鍵衝突",
+      "url": "https://docs.python.org/3/library/logging.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The keys in the dictionary passed in extra should not clash with the keys used by the logging system."
+    },
+    {
+      "fact": "Handler.emit 的基底實作預期由子類別覆寫，用來定義一個 handler 實際怎麼處理一筆 log record",
+      "url": "https://docs.python.org/3/library/logging.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Do whatever it takes to actually log the specified logging record."
+    },
+    {
+      "fact": "Logger.addHandler(hdlr) 把指定的 handler 加到這個 logger 上",
+      "url": "https://docs.python.org/3/library/logging.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Adds the specified handler hdlr to this logger."
+    },
+    {
+      "fact": "logging.getLogger(name) 沒有給名字時回傳的是根 logger",
+      "url": "https://docs.python.org/3/library/logging.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Return a logger with the specified name or, if name is None, return the root logger of the hierarchy."
+    },
+    {
+      "fact": "OpenTelemetry 原本放 GenAI 語意慣例的頁面已標示搬遷，內容移到另一個專屬儲存庫維護",
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GenAI semantic conventions have moved to the OpenTelemetry GenAI semantic conventions repository."
+    },
+    {
+      "fact": "gen_ai.operation.name 定義為正在執行的操作名稱，穩定性狀態標示為 Development",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The name of the operation being performed."
+    },
+    {
+      "fact": "gen_ai.request.model 定義為請求送往的 GenAI 模型名稱",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The name of the GenAI model a request is being made to."
+    },
+    {
+      "fact": "gen_ai.usage.input_tokens 定義為 GenAI 輸入（提示詞）用掉的 token 數",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The number of tokens used in the GenAI input (prompt)."
+    },
+    {
+      "fact": "gen_ai.usage.output_tokens 定義為 GenAI 回應（完成）用掉的 token 數",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/registry/attributes/gen-ai.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The number of tokens used in the GenAI response (completion)."
+    },
+    {
+      "fact": "GenAI span 建議的名稱是操作名稱加上請求的模型名稱",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-spans.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "SHOULD be `{gen_ai.operation.name} {gen_ai.request.model}`."
+    },
+    {
+      "fact": "error.type 描述操作結束時的錯誤類別，穩定性狀態是 Stable，只在操作以錯誤結束時才是必要屬性",
+      "url": "https://raw.githubusercontent.com/open-telemetry/semantic-conventions-genai/main/docs/gen-ai/gen-ai-spans.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Describes a class of error the operation ended with."
+    },
+    {
+      "fact": "OpenAI 的一個 eval 需要兩個要素：測試資料的欄位格式與判斷輸出是否正確的評分器",
+      "url": "https://developers.openai.com/api/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An eval needs two key ingredients:"
+    },
+    {
+      "fact": "testing_criteria 定義為決定模型輸出是否正確的評分器",
+      "url": "https://developers.openai.com/api/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "testing_criteria: The graders that determine if the model output is correct."
+    },
+    {
+      "fact": "OpenAI 的 eval run 建立後會先排入佇列，再非同步依序處理資料集裡的每一列",
+      "url": "https://developers.openai.com/api/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Your eval run has now been queued, and it will execute asynchronously as it processes every row in your data set, generating responses for testing with the prompt and model we specified."
+    },
+    {
+      "fact": "Anthropic 的文件把程式評分形容為最快、最穩定、最容易擴大規模，但對需要較少規則式判斷的複雜情況缺乏細膩度",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Code-based grading: Fastest and most reliable, extremely scalable, but also lacks nuance for more complex judgments that require less rule-based rigidity."
+    },
+    {
+      "fact": "Anthropic 的文件形容人工評分最有彈性、品質最高，但速度慢、成本高，建議能避免就避免",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Human grading: Most flexible and high quality, but slow and expensive. Avoid if possible."
+    },
+    {
+      "fact": "Anthropic 的文件把以模型當評審形容為快速、有彈性、適合複雜判斷，但要先驗證可靠再擴大規模",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "LLM-based grading: Fast and flexible, scalable and suitable for complex judgment. Test to ensure reliability first then scale."
+    },
+    {
+      "fact": "Anthropic 的文件把 A/B 測試定義為拿目前表現跟一個基準模型或舊版本比較",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A/B testing: Compare performance against a baseline model or earlier version."
+    }
+  ],
+  "unverified_or_excluded": [
+    "OpenTelemetry 的 gen_ai.agent.* 與 gen_ai.workflow.* 屬性（代理與工作流層級的命名）：跟本文只講單步呼叫追蹤的範圍沒有直接關係，留給以後專講代理協調或多代理分工的文章。",
+    "OpenAI Evals API 的 webhook 事件（eval.run.succeeded 等）：屬於雲端非同步流程的細節，本文的評測集是離線同步執行，用不到，故不寫入正文。",
+    "Python logging.handlers 模組裡 FileHandler／RotatingFileHandler 等具體類別的行為：官方文件把這些類別的說明放在 logging.handlers 頁面，不在本文查證來源 logging.html 範圍內，為了不超出查證來源，追蹤器改用內建的 open() 直接寫檔，不寫 FileHandler 的細節。",
+    "OpenTelemetry 語意慣例登錄檔所屬的版本號（頁面顯示 Semantic conventions 1.44.0）：版本號變動快，寫進正文容易在讀者查看時就已經過期，只在查證來源時記下，不寫入正文。",
+    "OpenAI Evals 各種評分器（grader）的完整清單與參數：官方文件另有專門頁面說明，本文只取『一個 eval 需要兩個要素』這個結構性概念，避免跟評測案例設計的細節重複。"
+  ],
+  "must_not_write": [
+    "AgentOps、代理協調、多代理分工的細節：交給代理系統維運（AgentOps）是什麼與系列其他篇。",
+    "怎麼設計評測案例、選評分器、判斷通過條件的完整方法論：交給模型與代理評測（Evals）是什麼。",
+    "任何供應商的追蹤或觀測 SaaS 產品評比、導入教學：本文刻意只寫純標準函式庫的做法。",
+    "把 OpenTelemetry SDK 實際接上專案的安裝與設定步驟：本文只對照屬性命名，不示範安裝 SDK。",
+    "模型價格、速率限制、上下文視窗等跟追蹤與評測切角無關的資訊。"
+  ],
+  "editorial_brief": "本篇是系列第十一篇，講多模型工作流「追蹤與評測」這一層：每一步該記什麼欄位、怎麼自己寫一支不綁 SaaS 的 JSONL 追蹤器，以及怎麼用離線評測集比較新舊兩版流程的分數與退步清單。跟代理系統維運（AgentOps）是什麼的分工：那篇談把整個任務的執行軌跡看成一條線、區分回答與操作是否成功；本篇只專注在「一步」要記什麼欄位，記完之後怎麼拿去跑評測。跟模型與代理評測（Evals）是什麼的分工：那篇講怎麼設計案例與評分器；本篇假設案例已經存在，只示範程式怎麼自動跑分、比較兩版。也對照 OpenTelemetry 的 GenAI 語意慣例命名與穩定性狀態，但不實際串接 SDK。",
+  "code_samples": [
+    {
+      "label": "tracer.py：JSONL 追蹤裝飾器（純標準函式庫）",
+      "language": "python",
+      "lines": 64,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://docs.python.org/3/library/logging.html"
+      ]
+    },
+    {
+      "label": "eval_compare.py：離線評測集跑分與版本比較（純標準函式庫）",
+      "language": "python",
+      "lines": 43,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://developers.openai.com/api/docs/guides/evals",
+        "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests"
+      ]
+    }
+  ],
+  "hero_label": "先追蹤、再比較",
+  "diagram": {
+    "layout": "flow",
+    "title": "追蹤與離線評測流程",
+    "caption": "每一步呼叫先記下雜湊、模型與延遲，兩版流程再離線跑同一批題目比較分數（2026 年 9 月查證）。",
+    "nodes": [
+      [
+        "呼叫發生",
+        "流程裡的一次模型呼叫"
+      ],
+      [
+        "立即記錄",
+        "雜湊、模型與 token 數"
+      ],
+      [
+        "寫成一行",
+        "JSON Lines 直接續寫"
+      ],
+      [
+        "離線比對",
+        "兩版本跑同一批題目"
+      ]
+    ]
+  }
+}

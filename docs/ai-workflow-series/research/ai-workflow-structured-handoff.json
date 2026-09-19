@@ -1,0 +1,229 @@
+{
+  "slug": "ai-workflow-structured-handoff",
+  "title": "模型之間交接資料：JSON Schema 與結構化輸出",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Structured model outputs",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Structured outputs (Claude)",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Structured outputs (Gemini API)",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "jsonschema",
+      "url": "https://python-jsonschema.readthedocs.io/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Schema Validation",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Handling Validation Errors",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/errors/",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "OpenAI 文件建議新專案的結構化輸出改用 gpt-6-astra",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For new projects, start with gpt-6-astra"
+    },
+    {
+      "fact": "OpenAI Chat Completions API 的結構化輸出欄位是 response_format，型別 json_schema，內含 strict 旗標",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "response_format: { type: \"json_schema\", json_schema: {\"strict\": true"
+    },
+    {
+      "fact": "OpenAI Responses API 把同樣的設定放在 text.format 底下",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "text: { format: { type: \"json_schema\", \"strict\": true"
+    },
+    {
+      "fact": "OpenAI 要求 schema 裡每個欄位都要列進 required",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "All fields must be required"
+    },
+    {
+      "fact": "OpenAI 要求物件一律加 additionalProperties: false",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "additionalProperties: false must always be set in objects"
+    },
+    {
+      "fact": "OpenAI 的 schema 上限是 5000 個屬性、10 層巢狀",
+      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A schema may have up to 5000 object properties total, with up to 10 levels of nesting."
+    },
+    {
+      "fact": "Anthropic 的結構化輸出欄位是 output_config.format",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "JSON outputs ( output_config.format ): Get Claude's response in a specific JSON format"
+    },
+    {
+      "fact": "Anthropic 已把舊版 output_format 參數與 beta 頭改成正式的 output_config.format",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The output_format parameter has moved to output_config.format"
+    },
+    {
+      "fact": "Anthropic 用 strict: true 讓工具呼叫的參數也符合 schema，跟輸出格式是不同機制",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Strict tool use ( strict: true ): Guarantee schema validation on tool names and inputs"
+    },
+    {
+      "fact": "Anthropic 文件列出支援結構化輸出的模型包含 Sonnet 5、Opus 5、Haiku 4.5",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Supported models Fable 5 and 5.1 Mythos 5, 5.1, and Preview Opus 4.5, 4.6, 4.7, 4.8, and 5 Sonnet 4.5, 4.6, and 5 Haiku 4.5"
+    },
+    {
+      "fact": "Google 的結構化輸出欄位是 response_format，內含 mime_type 與 schema",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To generate a JSON object, configure response_format with an object (or an array containing an object) of type text and set its mime_type to application/json"
+    },
+    {
+      "fact": "Google 的 REST 端點仍掛在 v1beta 路徑下",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": true,
+      "verbatim_quote": "curl -X POST \"https://generativelanguage.googleapis.com/v1beta/interactions\""
+    },
+    {
+      "fact": "Google 文件寫，結構化輸出搭配內建工具目前是 Preview，只給 Gemini 3 系列模型",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Preview: This feature is available only to Gemini 3 series models."
+    },
+    {
+      "fact": "jsonschema 套件的 validate() 函式會拿 instance 比對 schema",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Validate an instance under the given schema."
+    },
+    {
+      "fact": "instance 不符合 schema 時 validate() 丟出 jsonschema.exceptions.ValidationError",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "jsonschema.exceptions.ValidationError – if the instance is invalid"
+    },
+    {
+      "fact": "schema 本身不合法時 validate() 丟出 jsonschema.exceptions.SchemaError",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "jsonschema.exceptions.SchemaError – if the schema itself is invalid"
+    },
+    {
+      "fact": "Validator.iter_errors 可以在 Draft202012Validator 這類版本化驗證器上呼叫",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Here, in the context of jsonschema , the Validator.iter_errors method can be called on jsonschema.validators.Draft202012Validator"
+    },
+    {
+      "fact": "iter_errors() 會一次列出所有驗證錯誤，不是只回傳第一個",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Lazily yield each of the validation errors in the given instance."
+    },
+    {
+      "fact": "ValidationError 的 message 屬性是給人看的錯誤說明",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/errors/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A human readable message explaining the error."
+    },
+    {
+      "fact": "jsonschema 套件同時支援 Draft 2020-12 等六個規格版本",
+      "url": "https://python-jsonschema.readthedocs.io/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Full support for Draft 2020-12 , Draft 2019-09 , Draft 7 , Draft 6 , Draft 4 and Draft 3"
+    },
+    {
+      "fact": "jsonschema 套件用 pip install jsonschema 安裝",
+      "url": "https://python-jsonschema.readthedocs.io/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "pip install jsonschema"
+    }
+  ],
+  "unverified_or_excluded": [
+    "Anthropic 文件另外列出 Amazon Bedrock 上支援結構化輸出的型號子集，與 Claude API 略有差異；本篇只講 Claude API 這一種呼叫方式，沒有把 Bedrock 的子集寫進表格，避免讀者搞混兩種底層平台的支援範圍。",
+    "Google 文件的 Structured outputs with tools（結構化輸出＋內建工具）目前是 Preview，範例用的模型 id 是 gemini-3.1-pro-preview；這個 id 不在 models-seen.json 白名單裡，本篇只用一句話帶過這個限定，不把它寫進程式或逐字列出型號。",
+    "OpenAI 文件另外列出 enum 數量上限（1000 個）與單一 enum 屬性的字串長度上限（超過 250 個值時 15000 字元）；本篇只挑 5000 個屬性、10 層巢狀這一組上限當例子，其餘限額留給讀者自己查文件，避免表格塞太多數字。",
+    "Anthropic 文件提到結構化輸出用約束取樣（constrained sampling）並有 schema 編譯與 24 小時快取，會影響第一次呼叫的延遲；這屬於效能特性而不是欄位命名，跟本篇『契約放哪裡』的切角不同，留給談成本與延遲的文章處理。",
+    "jsonschema 文件另外有 best_match()（從多個錯誤裡挑最相關的一個）與 ErrorTree（把錯誤依欄位分組）兩個進階工具；本篇的重試迴圈只用 iter_errors() 取全部錯誤訊息就夠用，沒有引入這兩個以避免範例過於複雜。"
+  ],
+  "must_not_write": [
+    "不重講 gemini-api-files-structured-output、claude-code-structured-cli-pipeline、ai-term-tool-calling 三篇已經講過的完整內容，只在文字裡一句帶過。",
+    "不寫『驗證範圍』之類的免責聲明式 callout；唯一的 callout 講的是『格式驗證不等於內容正確』這個本篇特有的重點。",
+    "不深入重試上限與費用爆炸的防護設計（那是失敗案例與防護一篇的主題），本篇只點出重試要設上限。",
+    "不比較三家模型的速度或品質高低，因為本站沒有自己實測過。"
+  ],
+  "editorial_brief": "本篇把『交接契約』定義成 JSON Schema，逐字對照 OpenAI、Anthropic、Google 目前把結構化輸出參數放在請求的哪個欄位、現況是不是 beta，再用 jsonschema 套件示範驗證、失敗重試與下游只讀驗證過欄位的完整流程。跟本站已有的 gemini-api-files-structured-output（單一供應商、檔案輸入）、claude-code-structured-cli-pipeline（單一供應商、CLI 腳本）與 ai-term-tool-calling（工具呼叫這個不同機制）分工，本篇的重點是『不同供應商的欄位命名不同、但驗證與交接邏輯可以共用一套』。",
+  "code_samples": [
+    {
+      "label": "schema_and_upstream.py（需要標準庫 urllib）",
+      "language": "python",
+      "lines": 49,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://platform.openai.com/docs/guides/structured-outputs"
+      ]
+    },
+    {
+      "label": "validate_and_handoff.py（需要 jsonschema）",
+      "language": "python",
+      "lines": 45,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://python-jsonschema.readthedocs.io/",
+        "https://python-jsonschema.readthedocs.io/en/stable/validate/"
+      ]
+    }
+  ],
+  "hero_label": "先驗證再交接",
+  "diagram": {
+    "layout": "flow",
+    "title": "模型交接五步驟",
+    "caption": "模型交接的五個步驟（2026 年 9 月查證的三家參數命名為準）",
+    "nodes": [
+      [
+        "定契約",
+        "先講好格式"
+      ],
+      [
+        "問上游",
+        "要求依契約回答"
+      ],
+      [
+        "做驗證",
+        "抓出不合格式欄位"
+      ],
+      [
+        "失敗重試",
+        "把錯誤夾回提示"
+      ],
+      [
+        "才交下游",
+        "只送驗證過欄位"
+      ]
+    ]
+  }
+}
