@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-diagram-descriptions-are-unreadable
 title: 498 SVG diagrams hide their fares and times from every crawler
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:28:46Z
 created_at: 2026-09-14T13:48:24Z
-completed_at:
+completed_at: 2026-09-19T11:00:35Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -49,7 +49,7 @@ than its description carried in the block.
 
 ## Definition of done
 
-- [ ] A diagram's long description is in the article's server HTML, in the language of the
+- [x] A diagram's long description is in the article's server HTML, in the language of the
       document, for every localized document that has one.
 - [x] The visible layout on first paint is unchanged.
 - [x] No SVG markup is inlined into the page (see Notes).
@@ -151,3 +151,9 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 
 Then `curl -s https://<host>/zh-TW/guides/<kind>/korea-ktx-srt-ticket-guide | grep -c '52,200'`
 should be non-zero: the SRT fare is in the HTML, inside the folded `<details>`.
+
+### 2026-09-19 主機匯入（claude-opus-5，站主同意；部署 `14ce467d` 之後）
+
+- #563 改到的 571 個內容包先 dry-run：402 篇只有 `update`／`unchanged`、169 篇含 `create`（未發布的 AI coding、Claude Code、Codex 等，屬 `2026-09-15-publish-held-ai-coding-content` 的發布決定，全數排除，包括 zh-TW 更新、其他語系新建、分類會變的 `codex-beginner-guide`）。站主選「發布 402 篇更新」：發布前重跑計畫 402 篇、分類全 `unchanged`、無 `create`，`--publish` 結果 `updated 467`、`unchanged 51`、`published 467`、`created 0`、`failed null`；重跑 518 個語系全 `unchanged`。`guides-links-check --locale zh-TW` 仍是原本 32 筆（27 `missing` 指向待發布內容、5 `raw_url`），沒有新增。
+- 公開頁抽查 `/zh-TW/guides/howto/japan-shinkansen-ticket-guide`：伺服器 HTML 有 `<details>` 摺疊「閱讀完整文字說明」，內文含圖的 `<desc>` 文字（「問題一：7 天內會搭的新幹線票價加總超過 50,000 日圓嗎」）。
+- 169 個含 `create` 的包沒有匯入：它們的圖說會在各自正式發布時一起上線，不另開票。
