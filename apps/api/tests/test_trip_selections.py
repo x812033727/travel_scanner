@@ -288,8 +288,10 @@ async def test_append_is_the_default_and_leaves_the_meal_cards_alone(
     else:
         assert (added.item_type, added.duration_minutes) == ("custom", 60)
     if kind in {"food", "merchant"}:
+        # A merchant without a named dish is written with its primary dish, as always.
         assert added.data["merchant_id"] == str(harness.ids["merchant"])
-        assert added.data["food_id"] == (str(harness.ids["food"]) if kind == "food" else None)
+        assert added.data["food_id"] == str(harness.ids["food"])
+        assert added.title == "ラーメン · Ichiran Shibuya"
 
 
 @pytest.mark.parametrize("meal", ["lunch", "dinner"])
@@ -324,9 +326,7 @@ async def test_replace_meal_fills_that_card_and_keeps_its_time(
     if kind == "hotspot":
         assert card.title == "淺草寺"
         assert card.data["hotspot_id"] == str(harness.ids["hotspot"])
-    if kind == "merchant":
-        assert card.title == "Ichiran Shibuya"
-    if kind == "food":
+    if kind in {"food", "merchant"}:
         assert card.title == "ラーメン · Ichiran Shibuya"
 
 
@@ -336,7 +336,7 @@ async def test_replace_meal_without_a_meal_is_rejected(harness: Harness, kind: s
 
     missing = await harness.select(kind, mode="replace_meal")
     assert missing.status_code == 422, missing.text
-    assert "meal" in missing.text
+    assert missing.json()["code"] == "validation_error"
     # A meal with no replace_meal would silently append: the bug this contract closes.
     stray = await harness.select(kind, meal="lunch")
     assert stray.status_code == 422, stray.text
@@ -409,8 +409,9 @@ async def test_planner_suggestions_and_placeholders_are_replaced_without_asking(
 
     assert response.status_code == 200, response.text
     card = meal_card(await harness.day_rows(), "lunch")
-    assert card.title == "Ichiran Shibuya"
+    assert card.title == "ラーメン · Ichiran Shibuya"
     assert card.data["meal_selection_source"] == "user"
+    assert "reason" not in card.data or card.data["reason"] == "close by"
 
 
 async def test_wrong_day_and_stale_version_keep_their_own_answers(harness: Harness) -> None:
