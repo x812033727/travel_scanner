@@ -1518,14 +1518,14 @@ async def approve_merchant_coordinates(
                 expected_place_id=item.place_id,
                 actor_id=user.id,
             )
-            if outcome in ("verified", "coordinates_saved"):
+            if outcome in ("verified", "identity_saved"):
                 written += 1
             outcomes.append({"merchant_id": str(item.merchant_id), "outcome": outcome})
         if written:
             session.add(
                 AdminAuditLog(
                     actor_user_id=user.id,
-                    action="food_merchant_coordinates_approved",
+                    action="food_merchant_google_identity_approved",
                     target=f"food_merchants:{written}",
                     metadata_json={"outcomes": outcomes},
                 )

@@ -60,11 +60,10 @@ const PAGE_SIZE = 10;
 // skipped even when a newer server is the one naming the reason.
 const OUTCOMES = [
   "verified",
-  "coordinates_saved",
+  "identity_saved",
   "candidate_changed",
   "place_id_taken",
   "no_result",
-  "already_durable",
   "not_found",
 ] as const;
 
@@ -167,7 +166,7 @@ export function AdminMerchantCoordinateQueue() {
         { method: "POST", body: JSON.stringify({ items }) },
       );
       const skipped = result.outcomes.filter(
-        (outcome) => !["verified", "coordinates_saved"].includes(outcome.outcome),
+        (outcome) => !["verified", "identity_saved"].includes(outcome.outcome),
       );
       setMessage(
         skipped.length
