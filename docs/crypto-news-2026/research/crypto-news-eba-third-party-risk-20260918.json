@@ -1,0 +1,617 @@
+{
+  "slug": "crypto-news-eba-third-party-risk-20260918",
+  "event_date": "2026-09-18",
+  "event_date_basis": "EBA 新聞稿頁面在 Press Release 標籤旁印的日期是 18 September 2026，最終報告 PDF 封面與指引本文首頁同樣印 EBA/GL/2026/09、18 September 2026。以 2026-09-20 用 curl -sL -A \"Mokaair-editorial\" 重抓的新聞稿 HTML（HTTP 200、55,845 bytes、0 次轉址）全頁沒有 <time> 元素，也沒有 article:published_time／datePublished 或任何含時刻的 meta 欄位，因此原文沒有給出發布時刻，本文不寫時刻、也不做時刻的時區換算。時區只影響日期會不會跨天，而這一點另有旁證：EBA 官方 RSS（https://www.eba.europa.eu/rss.xml，2026-09-20 抓取、HTTP 200、10 筆 item）的「EBA E-mail alert 18 September, 2026」該筆 pubDate 為 Fri, 18 Sep 2026 15:00:02 +0000（頁面另印 2026-09-18T17:00:02+02:00），而該筆的 News & Press 區塊就連到本則新聞稿，等於本則在 2026-09-18 15:00 UTC 之前就已存在；15:00 UTC 換成台北時間是 2026-09-18 23:00，仍在同一天。因此台北時間的事件日為 2026-09-18。該 RSS 未列入 sources[]，因為 sources 上限四條，且事件日本身在新聞稿與 PDF 封面上都直接印著。",
+  "title": "歐盟 EBA 第三方風險指引定案：穩定幣中的 ART 發行人入列、服務商不在內，適用日仍是空白",
+  "checked_on": "2026-09-20",
+  "sources": [
+    {
+      "title": "EBA 新聞稿：The EBA publishes its final Guidelines on the management of third-party risk, delivering a more proportionate and consistent framework aligned with DORA",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "publisher": "European Banking Authority",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "EBA 最終報告：Final report on Guidelines on the sound management of third-party risk related to non-ICT services（EBA/GL/2026/09，98 頁 PDF）",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "publisher": "European Banking Authority",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "EBA 單一規則書活動頁：Guidelines on third party risk management（狀態、適用日與合規期限欄位）",
+      "url": "https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-third-party-risk-management?version=2026",
+      "publisher": "European Banking Authority",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "Regulation (EU) 2023/1114（MiCA）歐盟官方公報刊登文本，OJ L 150, 9.6.2023, p. 40",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "publisher": "EUR-Lex / Official Journal of the European Union",
+      "checked_on": "2026-09-20"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條 sources 都在 2026-09-20（台北）由本代理以 curl -sL -A \"Mokaair-editorial\" 親自重抓並讀到正文；請求只帶這一個自訂 User-Agent（EUR-Lex 那一條另加 Accept-Language: eng），沒有在 UA、標頭、查詢字串或表單裡放入任何人的 email 或個人資料。實測值：新聞稿 HTTP 200／55,845 bytes／0 轉址；最終報告 PDF HTTP 200／1,211,561 bytes／content-type application/pdf／md5 f6ec1dc9a0b162b3a17050379849b02f，與新聞稿下載區標示的 1.16 MB 相符，以 pymupdf 抽出 98 頁、259,131 字；活動頁 HTTP 200／62,085 bytes／0 轉址；EUR-Lex CELEX:32023R1114 HTTP 200／1,683,580 bytes／0 轉址，抽文 633,045 字。四條都不是擋阻頁或軟性 404：新聞稿與活動頁的 body 是正文，PDF 以 %PDF-1.7 開頭。\n\n引文驗證方式：每一條 verbatim_quote 都用程式對來源全文做連續字串比對，HTML 先去標籤並 unescape，PDF 先以 pymupdf 抽文，兩者都把所有空白（含 PDF 的換行）壓成單一空白後再比對；本紀錄所有引文一次通過。因此 PDF 的引文是「把原文的斷行壓成空白後的連續字串」，不是頁面上的視覺斷行，這點在引用時要照原樣理解。\n\n引文裡有三處是來源自己的瑕疵，照抄不改：(1) 諮詢回覆表寫的是 \"EBAs scope of action\"，少了撇號——前期候選整理把它寫成 \"EBA's\"，本紀錄以原文為準；(2) 同一句把 MiCAR 拼成全大寫的 MICAR；(3) 正文第 9 段寫 \"and, issuers of asset referenced tokens (ARTs)\"，多一個逗號、且 asset 與 referenced 之間沒有連字號（第 5 段則有）。另外新聞稿 Legal basis 那一句的 \"The final\\u202fGuidelines\\u202fhave been developed\" 夾著兩個 U+202F 窄不斷行空白，本紀錄刻意改引同段後半段純 ASCII 的句子，避免引文裡塞進看不見的字元。\n\n表格規則的處理：CASP 不在範圍這件事，原文最明確的一句在最終報告第 4.2 節「Summary of responses to the consultation and of the EBA's analysis」那張表的 EBA analysis 欄，不在指引正文。正文能對得上的同一件事是第 9 段的受文者清單（點名 ART 發行人、沒有 CASP）與第 5 段的主題段落，本紀錄把三條並列，並在 not_said 寫清楚「正文沒有任何一句直接寫 CASP 被排除」。以詞界比對查核到 2026-09-20，CASP 在全份最終報告只出現 2 次、crypto-asset service 只出現 2 次，都在第 4.2 節的同一列。\n\nEUR-Lex 抓的是 CELEX:32023R1114 的官方公報原始刊登文本（頁首印 OJ L 150/40、9.6.2023），不是合併版；若 MiCA 之後有修正，合併版的條號內容可能與本紀錄引用的文字不同，寫稿時引用要說明依據的是刊登文本。\n\n前期候選整理（scratchpad 的 candidates-crypto.md 第 2 列）另外提到 EBA/GL/2026/04 與 EBA/GL/2026/07 兩份同日指引，本紀錄沒有重抓，因此不寫進文章。",
+  "verified_facts": [
+    {
+      "fact": "EBA 在新聞稿區以這個標題公布本次定案，標題把這份指引定位成「與 DORA 對齊、更具比例原則與一致性的架構」。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The EBA publishes its final Guidelines on the management of third-party risk, delivering a more proportionate and consistent framework aligned with DORA"
+    },
+    {
+      "fact": "新聞稿頁面在「Press Release」標籤旁印的日期是 2026 年 9 月 18 日；頁面沒有印任何時刻（以 2026-09-20 抓下的 HTML 查核，全頁無 <time> 元素、無 article:published_time 或其他 meta 日期欄位）。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "18 September 2026"
+    },
+    {
+      "fact": "最終報告 PDF 封面同時印出文件編號與日期 EBA/GL/2026/09、18 September 2026（引文為 PDF 抽文後把換行壓成單一空白的連續字串）。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "EBA/GL/2026/09 18 September 2026"
+    },
+    {
+      "fact": "指引的正式名稱是「第三方風險的健全管理（非 ICT 服務）」，新聞稿的文件下載區與 EBA 單一規則書活動頁用的都是這個名稱；新聞稿標題只寫 third-party risk，沒有寫非 ICT。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Final report on Guidelines on the sound management of third-party risk related to non-ICT services"
+    },
+    {
+      "fact": "這份指引依 EBA 規則第 16 條發布，第 16(3) 條要求主管機關與金融機構「盡一切努力遵循」，也就是 comply-or-explain，不是直接生效的法規條文。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "competent authorities and financial institutions must make every effort to comply with the Guidelines"
+    },
+    {
+      "fact": "EBA 表示這份指引聚焦在支撐「關鍵或重要功能」（CIF）的第三方安排，也就是一旦中斷會實質損害金融機構表現的那些。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the Guidelines focus on third-party arrangements supporting critical or important functions (CIFs) namely the disruption of which would materially impair the performance of a financial entity"
+    },
+    {
+      "fact": "EBA 表示，把焦點收在這類較高風險的安排，可以在維持健全風險管理的同時減少較不重要安排的營運與監理負擔——這是 EBA 對自己作品的效果宣稱，不是可外部觀察的事實。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the Guidelines reduce unnecessary operational and supervisory burdens for less material ones while maintaining sound risk management"
+    },
+    {
+      "fact": "指引正文第 7 段把 ICT 風險管理與 ICT 服務的第三方使用明文排除在適用範圍外，理由是那些落在 DORA 的範圍。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "are excluded from the scope of application of these Guidelines, as they fall within the scope of DORA"
+    },
+    {
+      "fact": "背景說明第 3 段把兩套架構的分工寫成一句：這份指引管非 ICT 服務的第三方風險，DORA 管 ICT 服務的第三方風險。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "while those Guidelines apply for the management of third-party risk with regard to non-ICT services, DORA provides the framework for managing third-party risk associated with ICT services"
+    },
+    {
+      "fact": "EBA 表示這份指引推動的是跨 ICT 與非 ICT 的整體性第三方風險管理，涵蓋風險評估與盡職調查、簽約、轉包、監控、文件化與退出策略的完整生命週期。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Guidelines promote a holistic approach to third-party risk management across ICT and non-ICT services and cover the full lifecycle of third-party arrangements, including risk assessment and due diligence, contracting, subcontracting, monitoring, documentation and exit strategies."
+    },
+    {
+      "fact": "正文第 9 段的受文者清單，把「資產參考代幣（ART）發行人」與 CRR 定義的機構、第三國分行、MiFID II 投資公司、支付機構、電子貨幣機構、MCD 債權人並列，統稱 financial entities。引文照抄原文，包含原文自己的贅逗號與 asset referenced 之間沒有連字號的寫法。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "issuers of asset referenced tokens (ARTs) as defined in Article 3(1), point 10 of Regulation (EU) 2023/1114"
+    },
+    {
+      "fact": "正文第 5 段的主題段落同樣把 ART 發行人排在支付機構、電子貨幣機構之後，這裡寫的是有連字號的 asset-referenced tokens。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "payment institutions, electronic money institutions, issuers of asset-referenced tokens (ARTs)"
+    },
+    {
+      "fact": "正文第 8 段把主管機關也列為受文者，除了 EBA 規則第 4(2) 條的 (i)、(vi)、(viii) 款，還包括 MiCA 第 3(1) 條第 (35)(a) 款所定義的主管機關。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These Guidelines are addressed to competent authorities as defined in points (i), (vi) and (viii) of Article 4(2) of Regulation (EU) No 1093/2010 and in Article 3(1), point (35)(a) of Regulation (EU) 2023/1114."
+    },
+    {
+      "fact": "背景說明第 9 段自己寫出這次的變化：2019 年那份委外指引「只」適用於 CRD 下的信用機構與投資公司、支付機構與電子貨幣機構。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The EBA is updating its Guidelines on outsourcing arrangements issued in 2019, which applied exclusively to credit institutions and investment firms subject to CRD, payment institutions and electronic money institutions"
+    },
+    {
+      "fact": "同一段接著列出新的適用範圍，清單結尾是「受 MiCA 規範的 ART 發行人」——這是「穩定幣發行人被拉進這份指引」最直接的一句原文依據。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "payment and electronic money institutions (referred to as ‘payment institutions’) and issuers of ARTs subject to MiCAR"
+    },
+    {
+      "fact": "正文第 15 段說明 ART 發行人的適用層級：不是 CRD 機構的 ART 發行人以個體為基礎遵循，必要時再加上集團層級。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Issuers of ARTs which are not institutions subject to Directive 2013/36/EU should comply with these Guidelines on an individual basis and where applicable, on a group wide basis"
+    },
+    {
+      "fact": "MiCA 第 3(1) 條第 (6) 款把「資產參考代幣」定義成不是電子貨幣代幣、且以參照其他價值或權利（可包含一種以上法定貨幣）來維持價值穩定的加密資產。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "‘asset-referenced token’ means a type of crypto-asset that is not an electronic money token and that purports to maintain a stable value by referencing another value or right or a combination thereof, including one or more official currencies"
+    },
+    {
+      "fact": "MiCA 第 3(1) 條第 (7) 款另外定義「電子貨幣代幣（EMT）」：參照單一法定貨幣價值維持穩定的加密資產。ART 與 EMT 在 MiCA 裡是兩類，不是同一個詞。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "‘electronic money token’ or ‘e-money token’ means a type of crypto-asset that purports to maintain a stable value by referencing the value of one official currency"
+    },
+    {
+      "fact": "MiCA 第 48 條要求 EMT 的發行人必須取得信用機構或電子貨幣機構的許可；而 EBA 指引第 9 段的受文者清單裡本來就有 electronic money institutions 與 CRR 機構。兩件事是兩條原文，指引本身沒有把它們接起來講 EMT 發行人。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A person shall not make an offer to the public or seek the admission to trading of an e-money token, within the Union, unless that person is the issuer of such e-money token and: (a) is authorised as a credit institution or as an electronic money institution"
+    },
+    {
+      "fact": "諮詢回覆表（最終報告第 4.2 節「MiCAR – ART issuers and CASP」列）的 EBA analysis 欄寫得很直白：CASP 不在 EBA 職權範圍、不是本指引的受文者、因此不在範圍內；並提醒 MiCA 第 73 條另外規範 CASP 的委外。該列的 Amendments 欄是 No change。引文照抄原文，包含 EBAs 少掉的撇號與 MICAR 的全大寫拼法。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CASP are not within the remit of EBAs scope of action and are not addressees of these Guidelines and therefore not in scope of these Guidelines. It should be noted however that Article 73 of MICAR regulates outsourcing for crypto-asset service providers."
+    },
+    {
+      "fact": "同一列的 Summary of responses 欄記下業界的反對意見：有回覆者認為把加密資產服務商排除，相對於已被納入、同樣在提供加密資產服務的金融機構，構成沒有正當理由的差別待遇。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "some respondents raise that the exclusion of crypto-asset service providers represents an unjustified difference in treatment compared to financial entities already included in the Guidelines and which are providing crypto-assets services"
+    },
+    {
+      "fact": "MiCA 第 73 條的標題就是 Outsourcing，第 1 項要求把營運功能委外的加密資產服務商採取一切合理步驟避免增加營運風險，並對其本 Title 下的義務負完全責任。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Article 73 Outsourcing 1. Crypto-asset service providers that outsource services or activities to third parties for the performance of operational functions shall take all reasonable steps to avoid additional operational risk."
+    },
+    {
+      "fact": "MiCA 第 73 條第 2 項要求加密資產服務商訂定委外政策，包含應變計畫與退出策略，並按規模、性質與服務範圍調整；這是 CASP 這一條路上最接近 EBA 指引要求的條文。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Crypto-asset service providers shall have a policy on their outsourcing, including on contingency plans and exit strategies, taking into account the scale, the nature and the range of crypto-asset services provided."
+    },
+    {
+      "fact": "MiCA 第 3(1) 條第 (35)(a) 款定義的主管機關，在同一款裡同時涵蓋 ART 發行人與加密資產服務商——也就是 EBA 指引第 8 段點名的受文主管機關，本來就同時看著兩邊；被分開的是業者的規範，不是監理機關。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(35) ‘competent authority’ means one or more authorities: (a) designated by each Member State in accordance with Article 93 concerning offerors, persons seeking admission to trading of crypto-assets other than asset-referenced tokens and e-money tokens, issuers of asset-referenced tokens, or crypto-asset service providers;"
+    },
+    {
+      "fact": "最終報告「Date of application」第 18 段的日期是方括號佔位符：指引自 [date] 起適用於當日或之後締結、檢視或修改的第三方安排。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These Guidelines apply from [date] to all third-party arrangements entered into, reviewed or amended on or after this date."
+    },
+    {
+      "fact": "過渡條款第 20 段的日期同樣是佔位符，而且括號裡直接寫著這個日期的算法是「自適用日起兩年」——兩年是從還沒填的適用日起算，不是從發布日起算。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "are not finalised by [date: two years from the date of application]"
+    },
+    {
+      "fact": "廢止條款第 22 段也是佔位符：2019 年 2 月 25 日的 EBA 委外指引自 [date] 起廢止。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The EBA Guidelines on outsourcing of 25 February 2019 are repealed with effect from [date]."
+    },
+    {
+      "fact": "連主管機關回報遵循與否的期限都還沒填：合規與回報義務第 3 段寫的是 by ([dd.mm.yyyy])。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "give reasons for non-compliance, by ([dd.mm.yyyy])"
+    },
+    {
+      "fact": "同一段連回報時要引用的文件編號都還是樣板：文件要以 ‘EBA/GL/XX/XX’ 為參照送出，儘管封面已經印了 EBA/GL/2026/09。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "with the reference ‘EBA/GL/XX/XX’"
+    },
+    {
+      "fact": "最終報告確實有一節叫「Date of application」，只是底下的日期沒填；引文是該節的標題原文。附帶的查核方法紀錄（不是原文印出來的數字）：以詞界比對查核到 2026-09-20，最終報告抽文後 2027、2028、2029 各出現 0 次，方括號日期佔位符共 4 個（[date] 兩個、[date: two years from the date of application] 一個、[dd.mm.yyyy] 一個）。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "3. Implementation Date of application 18."
+    },
+    {
+      "fact": "EBA 單一規則書的活動頁把狀態寫成「最終版、等待翻譯成歐盟官方語言」；新聞稿的 Related content 區塊也是同一個狀態字串。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Final and awaiting translation into the EU official languages"
+    },
+    {
+      "fact": "同一張活動頁的最終報告資料框，三欄一起證實日期還沒有：狀態 Not yet applicable、Application date 空白、Compliance deadline 空白（頁面是伺服器端算好的 HTML，兩個欄位的 <b> 標籤裡沒有任何字）。",
+      "url": "https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-third-party-risk-management?version=2026",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Status: Not yet applicable Application date: Compliance deadline:"
+    },
+    {
+      "fact": "活動頁另外用一句話說明廢止的條件式：這份非 ICT 第三方風險指引「一旦開始適用」，才會廢止現行的委外指引。",
+      "url": "https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-third-party-risk-management?version=2026",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Guidelines on the sound management of third-party risk related to non-ICT services, once applicable, will repeal the Guidelines on outsourcing arrangements."
+    },
+    {
+      "fact": "新聞稿只寫「兩年的過渡期將支撐平順且合乎比例的落實」，沒有寫任何年份或起算日；這句是 EBA 對落實效果的宣稱。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A two-year transitional period will support a smooth and proportionate implementation."
+    },
+    {
+      "fact": "新聞稿的 Legal basis 段落列出納入考量的法源，結尾是 MiCA 第 34 條與 EBA 規則第 16 條；主要授權則是 CRD 第 74 條。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Article 34 of Regulation (EU) 2023/1114 (MiCAR) and Article 16 of Regulation (EU) No 1093/2010 have also been taken into account."
+    },
+    {
+      "fact": "背景說明第 15 段把四條授權逐一對到四種機構：機構依 CRD 第 74 條、支付機構依 PSD2 第 11 條、投資公司依 IFD 第 26 條、ART 發行人依 MiCA 第 34 條，都要有健全的內部治理安排。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Institutions, in accordance with Article 74 of the CRD, payment institutions in line with Article 11 of PSD 2, investment firms in accordance with Article 26 of IFD and issuers of ARTs in accordance with Article 34 of MiCAR should have robust internal governance arrangements"
+    },
+    {
+      "fact": "MiCA 第 34 條的標題是 Governance arrangements，第 1 項要求 ART 發行人具備健全治理安排，包括清楚的組織架構、明確的責任分工，以及辨識、管理、監控與回報風險的有效流程——這就是背景說明第 15 段把 ART 發行人接到這份指引時引用的那一條。注意 MiCA 第 34 條裡給 EBA 的「發布指引」授權是第 13 項（ART 發行人治理安排最低內容，成果是 EBA/GL/2024/06、本報告腳註 30），不是第 1 項；新聞稿 Legal basis 段只把第 34 條列為「納入考量」的法源，寫明授權 EBA 的是 CRD 第 74 條。不可把第 34 條第 1 項寫成本指引的授權依據。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Article 34 Governance arrangements 1. Issuers of asset-referenced tokens shall have robust governance arrangements, including a clear organisational structure with well-defined, transparent and consistent lines of responsibility, effective processes to identify, manage, monitor and report the risks to which they are or might be exposed, and adequate internal control mechanisms, including sound administrative and accounting procedures."
+    },
+    {
+      "fact": "最終報告第 4.2 節開頭記錄諮詢過程：諮詢期三個月，於 2025 年 10 月 8 日結束，收到 72 份回覆，只有非機密的部分公開在 EBA 網站上。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The consultation period lasted for three months and ended on 8 October 2025. Seventy-two (72) responses were received, and only non-confidential ones were published on the EBA website."
+    },
+    {
+      "fact": "EBA 表示定案版在比例原則、範圍說明、聚焦關鍵或重要功能、與 DORA 架構對齊四個方向做了修改，並調整了過渡期以在非關鍵功能的更新上更有彈性。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the Guidelines have been reviewed to provide more proportionality, and more clarity regarding the scope, the focus on critical or important functions, and the alignment with the DORA framework"
+    },
+    {
+      "fact": "正文第 58 段要求受文機構維持一份涵蓋所有在範圍內第三方安排的資訊登記簿，並區分支撐關鍵或重要功能與其他安排。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "financial entities should maintain an updated register of information on all third-party arrangements that are within the scope of these guidelines"
+    },
+    {
+      "fact": "正文第 61 段要求這份非 ICT 登記簿盡可能與 DORA 第 28(3) 條的登記簿一致，並允許合併成同一份。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the register should be consistent to the extent possible, with the register of information under Article 28(3) of DORA"
+    },
+    {
+      "fact": "正文第 69 段管到發行行為本身：若把需要許可才能做的銀行、支付服務或「ART 的發行」交給第三方服務商，只有在該服務商本身取得許可或登記、或依國內法被允許時才可以。這一段引用的是 MiCA 第 3(1) 條第 (6) 款。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the issuance of ARTs as defined in Article 3(1), point (6) of Regulation (EU) 2023/1114"
+    },
+    {
+      "fact": "執行摘要把這套規範的底線寫成一句：使用第三方服務商不得讓金融機構變成缺乏實質、不足以維持許可的「空殼」。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The use of TPSPs must not lead to a situation in which a financial entity becomes an ‘empty shell’ that lacks the substance to remain authorised."
+    },
+    {
+      "fact": "正文第 19 段特別寫下集團內委外不必然風險較低，與集團外的第三方安排適用同一套架構。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Intragroup third-party arrangements are not necessarily less risky than third-party arrangements with TPSPs outside the group."
+    },
+    {
+      "fact": "Title V 第 121 段給主管機關的權力延伸到非關鍵功能：主管機關得要求金融機構就任何第三方安排提供詳細資訊，即使該功能不被認為關鍵或重要。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "competent authorities may require financial entities to provide detailed information on any third-party arrangement, even if the function concerned is not considered critical or important"
+    },
+    {
+      "fact": "Title V 第 126 段寫出最重的手段：治理安排不健全或不符合規定時，主管機關可以限縮委外範圍，或要求退出一個以上的第三方安排。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "limiting or restricting the scope of the non-ICT services supporting critical or important functions provided by TPSPs or requiring exit from one or more third-party arrangements"
+    },
+    {
+      "fact": "指引裡的 MiCA 條號引用前後不一致：受文者第 9 段把 ART 發行人掛在「Article 3(1), point 10」，而第 36 段與第 69 段講 ART 的發行時引用的是「Article 3(1), point (6)」。",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "issuers of asset referenced tokens (ARTs) as defined in Article 3(1), point 10 of Regulation (EU) 2023/1114"
+    },
+    {
+      "fact": "回到 MiCA 原文對照：第 3(1) 條第 (10) 款定義的是「發行人」（發行加密資產的自然人、法人或其他事業），定義「資產參考代幣」的是第 (6) 款。EBA 第 9 段的寫法因此指向的是發行人的定義，不是 ART 的定義。",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114",
+      "is_vendor_claim": false,
+      "verbatim_quote": "(10) ‘issuer’ means a natural or legal person, or other undertaking, who issues crypto-assets"
+    },
+    {
+      "fact": "PDF 的下載網址檔名寫成 third-country risk management，但新聞稿的文件標題、PDF 封面與活動頁寫的都是 third-party risk／non-ICT services；這是 EBA 自己的檔名錯誤，不是兩份不同文件。引文取自新聞稿 HTML 原始碼裡的 href（頁面上看不到），不是可見文字。",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+    }
+  ],
+  "not_said": [
+    "最終報告正文沒有任何一句直接寫「加密資產服務商被排除」：以詞界比對查核到 2026-09-20，CASP 與 crypto-asset service 在全份 98 頁裡各只出現 2 次，全部落在第 4.2 節諮詢回覆表的同一列。正文端能對到的只有第 9 段的受文者清單沒有列 CASP。寫的時候要寫成「EBA 在回覆表裡說明」，不能寫成「指引正文規定排除」。",
+    "原文沒有印任何適用日期：以詞界比對查核到 2026-09-20，最終報告抽文後 2027、2028、2029 各出現 0 次，「apply from」只出現 1 次而後面接的是 [date]。任何年份都是推算，不是來源寫的。",
+    "新聞稿與最終報告都沒有印發布時刻：以 2026-09-20 抓下的新聞稿 HTML 未見 <time> 元素或任何日期 meta 欄位。",
+    "EBA 沒有說 CASP 將來不會被納入，也沒有說會不會再另外訂 CASP 的第三方風險指引；回覆表只寫 CASP 不在 EBA 職權範圍、不是本指引受文者，並指出 MiCA 第 73 條另有規定。",
+    "指引沒有把 EMT（電子貨幣代幣）發行人寫成單獨一類受文者。受文者清單裡有 electronic money institutions 與 CRR 機構，MiCA 第 48 條另外要求 EMT 發行人必須是信用機構或電子貨幣機構——把這兩件事接起來推出「EMT 發行人也被涵蓋」是編輯的推論，原文沒有這樣寫，要寫就必須標明是推論並把兩條原文都寫出來。",
+    "原文沒有提台灣、金管會或《虛擬資產服務法》：以詞界比對查核到 2026-09-20，Taiwan、Taipei、FSC、Chinese 在最終報告抽文裡各出現 0 次。",
+    "原文沒有列出各會員國主管機關要在什麼時候把指引納入自己的監理實務，也沒有印任何一國的名單或進度。",
+    "原文沒有說這份指引會取代或影響 MiCA 第 73 條，只說第 73 條規範 CASP 的委外。",
+    "回覆表那一列的 Amendments to the proposals 欄寫的是 No change，也就是 EBA 沒有因為這些反對意見改動條文；但原文沒有解釋 EBA 為何認為 CASP 不在其職權範圍，不要替它補理由。",
+    "最終報告沒有印諮詢文件的發布日，只印了諮詢期長度（三個月）與結束日（2025 年 10 月 8 日），起算日是算出來的，不要寫。"
+  ],
+  "unverified_or_excluded": [
+    "「2028 年 9 月生效」「兩年過渡期到 2028 年」這類推算日期：坊間摘要會把發布日加兩年推出來，但最終報告第 18、20、22 段與合規回報段的日期全是方括號佔位符，活動頁的 Application date 與 Compliance deadline 也是空欄，一律不寫。這是本篇最容易出錯的地方。",
+    "72 份回覆裡有幾份公開、來自哪些國家或哪類業者：原文只寫 only non-confidential ones were published，沒有數字，不寫。",
+    "EBA 何時會公布各語言譯本、正式適用日會以什麼形式公布：本次查核在新聞稿、最終報告與活動頁三處都沒有讀到時程，不寫。",
+    "BSG 意見裡轉述的 ESMA「Principles on third-party risk」（12 June 2025）：只在最終報告第 4.2 節被轉述，本次沒有回到 ESMA 原文核對，因此除了「BSG 曾提出 EBA 與 ESMA 的做法不同」這個層次外不寫任何細節。",
+    "同日發布的 EBA/GL/2026/04（監理獨立性）與 EBA/GL/2026/07（零售銀行商品監督）：前期候選整理有提到，但本代理沒有重抓，不寫。",
+    "受這份指引影響的 ART 發行人有幾家、ESMA 或各國名冊上現有多少家：名冊是活文件，且本次沒有抓，不寫。",
+    "任何幣價、市值、交易量、穩定幣發行規模、ETF 資金流與報酬數字：幣圈垂直規格禁止，且與本則無關，一律不寫。",
+    "台灣金管會九部 VASP 子法裡「業務委外」的內容與時程：本次沒有查金管會一手來源，文章只能寫「歐盟把發行人與服務商拆成兩套規範」這個對照，不得推測或描述台灣的做法。",
+    "MiCA 合併版（consolidated version）的條文：本次讀的是官方公報原始刊登文本，沒有查合併版，因此不寫「現行有效條文是……」這種需要合併版才能講的話。"
+  ],
+  "editorial_brief": "骨架一句話：歐盟這次是把穩定幣發行人當成「受監理的金融機構」在管第三方委外風險，而加密資產服務商走的是另一條法。\n\n給台灣一般讀者的鋪陳順序建議：\n1) 先講這份文件是什麼、不是什麼：EBA 2026-09-18 定案的第三方風險指引（EBA/GL/2026/09），管的是「非 ICT 服務」的委外與第三方安排，ICT 那一半走 DORA。指引依 EBA 規則第 16(3) 條運作，是 comply-or-explain，不是直接生效的法規。\n2) 再講這次的分界線，也就是全文的重點：受文者清單裡點名了資產參考代幣（ART）發行人，跟銀行、投資公司、支付機構、電子貨幣機構並列，統稱 financial entities；而加密資產服務商（CASP）不是受文者，EBA 在諮詢回覆表裡直說 CASP 不在它的職權範圍，並提醒 MiCA 第 73 條另有委外規定。同一份 MiCA 底下的兩種角色，被分到兩套厚薄完全不同的規範：一邊是近百頁、細到登記簿欄位、稽核權、轉包、退出策略、集中度風險的指引，一邊是第 73 條的七個條件加一個委外政策。\n3) 解釋「為什麼是發行人」：授權來自 MiCA 第 34 條（ART 發行人的治理安排），EBA 依它把發行人拉進來；2019 年那份委外指引明文只適用於 CRD 機構、支付機構與電子貨幣機構，這次的擴張是報告自己寫出來的。可以點出對讀者的實質意義——發行人被要求用跟銀行同一套語言管它的外包商。\n4) 一定要處理日期：最終報告裡適用日、兩年過渡期的終點、舊指引廢止日、主管機關回報期限全是方括號佔位符，EBA 活動頁的 Application date 與 Compliance deadline 也是空的，狀態是「最終版、等待翻譯成歐盟官方語言」。讀者在別處看到「2028 年上路」要知道那是推算的。\n5) 收在「怎麼自己查」：教讀者看 EBA 活動頁那三欄（狀態／適用日／合規期限），以及新聞稿與 PDF 封面上的文件編號 EBA/GL/2026/09。\n\n刻意不談的範圍：MiCA 本身是什麼、過渡期怎麼跑（既有文章已寫）、EMT 的 PSD2 過渡期（既有文章已寫）、台灣子法會怎麼訂、任何行情與投資判斷。生活情境如果要舉例（例如「把客服或帳務外包出去」），要標明是編輯設計的例子。\n\n用語：法規語境寫「虛擬資產」，一般語境寫「加密貨幣」；ART 第一次出現寫「資產參考代幣（asset-referenced token, ART）」，並說明它與電子貨幣代幣（EMT）是 MiCA 底下的兩類，不要用「穩定幣」一詞把兩者混成一個。\n\n標題那句「服務商不在內」指的是不在這份指引的受文者名單，不是不受監理：導言或第一段就要把 MiCA 第 73 條寫出來，否則讀者會把標題讀成「歐盟不管加密服務商的委外」。\n\n與既有文章的關係：`crypto-news-eba-psd2-mica-20260212` 寫的是 EBA 對電子貨幣代幣的 PSD2 過渡期意見書，`crypto-news-mica-transition-ends-20260701` 寫的是 MiCA 第 143(3) 條過渡期屆滿。兩篇都在講「誰要在什麼時候拿到許可」，本篇講的是「已經在管的人，委外要怎麼管」，主體不同。第二個結尾連結指向 `crypto-news-eba-psd2-mica-20260212`。",
+  "must_not_write": [
+    "【最重要】不可以寫任何具體的適用日或生效年份——不可寫「2028 年生效」「2028 年 9 月起適用」「兩年過渡期到 2028 年」「自 2026 年 9 月 18 日起兩年」。最終報告第 18、20、22 段與合規回報第 3 段的日期分別是 [date]、[date: two years from the date of application]、[date]、([dd.mm.yyyy])，EBA 活動頁的 Application date 與 Compliance deadline 兩欄是空的。只能寫「適用日還沒填」「兩年是從尚未公布的適用日起算」。",
+    "不可以把兩年過渡期寫成從發布日或從 2026-09-18 起算。",
+    "不可以寫「指引生效」「正式上路」「開始實施」——它還沒有適用日，而且指引本身是 comply-or-explain，不是直接對業者生效的法規。要寫成「定案」「公布最終版」。",
+    "不可以寫「歐盟把加密資產服務商排除在監理之外」「服務商不用管委外」——原文寫的是 CASP 不是這份指引的受文者，並明白指出 MiCA 第 73 條規範 CASP 的委外。",
+    "不可以寫「MiCA 第 73 條是排除 CASP 的法源」——EBA 給的理由是 CASP 不在 EBA 職權範圍、不是受文者；第 73 條是 EBA 另外提醒的替代規範，不是排除的依據。",
+    "不可以寫「指引正文明文排除 CASP」——那句話在第 4.2 節的諮詢回覆表，不在正文。",
+    "不可以重講 MiCA 是什麼、MiCA 過渡期怎麼跑、各國緩衝長度、電子貨幣代幣的 PSD2 過渡期——那是 `crypto-news-mica-transition-ends-20260701` 與 `crypto-news-eba-psd2-mica-20260212` 兩篇既有文章的內容，本篇只在需要時用一句話帶過並連過去。",
+    "不可以寫「穩定幣發行人第一次被納入歐盟監理」「歐盟首度監管穩定幣發行人」——ART 發行人本來就受 MiCA 規範，新的是被列為這份第三方風險指引的受文者。",
+    "不可以把「ART」寫成「所有穩定幣」或「穩定幣＝ART」——MiCA 第 3(1)(6) 與 (7) 把 ART 與 EMT 分成兩類，受文者清單點名的是 ART 發行人。也不可以反過來寫「EMT 發行人不受這份指引管」：原文沒有這樣寫，受文者清單裡本來就有電子貨幣機構。",
+    "不可以「修正」EBA 自己的條號引用：第 9 段寫的就是 Article 3(1), point 10，不要改寫成 point (6)，也不可以寫「MiCA 第 3(1)(10) 條定義資產參考代幣」——第 (10) 款定義的是「發行人」。要寫就把兩處不一致都寫出來。",
+    "不可以寫這份指引管 ICT、資安或雲端委外——第 7 段把 ICT 明文排除，那一半是 DORA。",
+    "不可以把 EBA 的自我描述寫成事實：「簡化法規架構」「減輕不必要的營運與監理負擔」「支撐平順且合乎比例的落實」「整體性的第三方風險管理」都要寫成「EBA 表示」。",
+    "不可以寫「金管會將比照」「台灣也會這樣規定」「台灣的子法會怎麼訂」——本次沒有任何台灣一手來源。",
+    "不可以引用 CoinDesk、CoinTelegraph 等二手站或任何「幣圈新聞整理」補事實，也不可以引用任何行情或市值 API。",
+    "不可以出現幣價、漲跌幅、市值、交易量、ETF 資金流、質押或空投報酬，也不可以把任何代幣、交易所、錢包寫成可以持有或值得選擇的東西。",
+    "不可以自己加總、換算或清點來源沒有印出的數字（例如受影響的發行人家數、條文條數、頁數以外的統計）。",
+    "不可以寫「72 份回覆中有 N 家業者反對」——原文只寫 some respondents，沒有任何數字。"
+  ],
+  "live_data_warnings": [
+    "適用日是這篇最會變的東西：EBA 之後會把指引翻成各歐盟官方語言並公布正式的適用日（活動頁的 Application date 與 Compliance deadline 兩欄目前是空的）。定稿當天必須重抓 EBA 活動頁，如果欄位已經有值，文章的說法要整段改寫；若還是空的，就把查核日寫進去。",
+    "活動頁與新聞稿上的狀態字串「Final and awaiting translation into the EU official languages」與「Not yet applicable」是當下的值，翻譯完成後會改變，引用時要標出處與查核日。",
+    "最終報告 PDF 的網址含一次性 UUID 路徑（/sites/default/files/2026-09/6b826e13-.../），而且檔名本身就寫錯成 third-country；EBA 若改版或修檔名，這個網址可能失效，發稿前要再抓一次確認 HTTP 200 與檔案大小。",
+    "EUR-Lex 的 CELEX:32023R1114 是官方公報原始刊登文本；MiCA 若有修正，合併版的條文可能與本紀錄引用的文字不同。",
+    "本則沒有任何價格或市場數據，也不得為了時效補上任何行情數字。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "發行人入列，適用日未定",
+  "diagram": {
+    "title": "EBA 指引的四個分界",
+    "caption": "歐盟 EBA 於 2026 年 9 月 18 日定案的第三方風險指引（EBA/GL/2026/09）：誰是受文者、管哪一類委外、適用日為何仍是空白。查核日 2026 年 9 月 20 日。",
+    "nodes": [
+      [
+        "誰被點名",
+        "ART 發行人列入受文者"
+      ],
+      [
+        "誰不在內",
+        "服務商走 MiCA 73 條"
+      ],
+      [
+        "管哪一半",
+        "非 ICT 的第三方委外"
+      ],
+      [
+        "何時開始",
+        "原文仍印方括號佔位"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-20",
+    "method": "四條 sources[] 於 2026-09-20（台北）全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀到正文才開始核對；請求只帶這一個自訂 User-Agent（EUR-Lex 另加 Accept-Language: eng），沒有在 UA、標頭、查詢字串或表單裡放入任何人的 email、姓名或個人資料。今天的落地值：新聞稿 HTTP 200／55,845 bytes／0 轉址；最終報告 PDF HTTP 200／1,211,561 bytes／content-type application/pdf／md5 f6ec1dc9a0b162b3a17050379849b02f，以 %PDF-1.7 開頭，用 pymupdf 1.28.2 抽出 98 頁、257,670 字（本代理未加頁間分隔字元，與 sourcing_notes 記的 259,131 字差在分隔符，不是文件換版）；活動頁 HTTP 200／62,085 bytes／0 轉址；EUR-Lex CELEX:32023R1114 HTTP 200／1,683,580 bytes／0 轉址。四份都是正文，不是擋阻頁或軟性 404，位元組數與研究紀錄當初登記的完全一致。核對方式：把 title、description、17 段正文、summary 四句、五個 H2、表格 12 格與 caption、圖說、FAQ 八題、兩個 callout、兩個結尾連結與 sources[] 拆成 181 條可核對的主張，逐條回到來源原文（PDF 以抽文後把換行壓成單一空白的連續字串比對）；另外把研究紀錄 verified_facts 的 49 條 verbatim_quote 全部重跑一次，49/49 今天仍逐字命中，49 條的 url 也全在 sources[] 內。must_not_write 17 條與 not_said 10 條逐條回頭檢查文章有沒有違反。重點複驗：(a) 以詞界比對，最終報告、新聞稿、活動頁三份的 2027／2028／2029 各 0 次，方括號佔位符仍是 4 個（[date] 兩個、[date: two years from the date of application] 一個、[dd.mm.yyyy] 一個），apply from 只有 1 次且後面接 [date]；活動頁今天仍印 Status: Not yet applicable 與空白的 Application date、Compliance deadline，狀態字串仍是 Final and awaiting translation into the EU official languages，live_data_warnings 第一條的「定稿當天重抓」因此結論是欄位仍空、文章說法不必改寫。(b) CASP 與 crypto-asset service 在 98 頁最終報告各只出現 2 次，全部落在第 4.2 節「MiCAR – ART issuers and CASP」那一列，指引正文確實沒有任何一句寫排除 CASP。(c) Taiwan、Taipei、FSC、Chinese 在最終報告、新聞稿、活動頁三份裡各 0 次。(d) 新聞稿 HTML 今天仍無 <time> 元素、無 article:published_time／datePublished，18 September 2026 只出現一次，事件日 2026-09-18 的裁決不動。沒有引用 sources[] 以外的任何網址補事實；unverified_or_excluded 點名的 ESMA Principles、EBA/GL/2026/04 與 /07、MiCA 合併版本輪同樣沒有讀、沒有引用。",
+    "claims_checked": 181,
+    "changes": [
+      {
+        "where": "內容包 zh-TW 正文第一節第三段（blocks[6]）開頭",
+        "before": "指引第 16(3) 條要求主管機關與金融機構「盡一切努力遵循」，是 comply-or-explain，不是可以直接對業者裁罰的條文本身；",
+        "after": "指引合規義務第 1 段引用 EBA 規則第 16(3) 條，要求主管機關與金融機構「盡一切努力遵循」，是 comply-or-explain，指引本身不是可以直接對業者裁罰的法規；",
+        "why": "條號掛錯機關。最終報告第 15 頁「1. Compliance and reporting obligations」第 1 段原文是 This document contains guidelines issued pursuant to Article 16 of Regulation (EU) No 1093/2010 (17). In accordance with Article 16(3) of Regulation (EU) No 1093/2010, competent authorities and financial institutions must make every effort to comply with the Guidelines.——16(3) 是 EBA 規則（Regulation (EU) No 1093/2010）的條次，不是這份指引的條次；指引自己的第 16 段是 Definitions（第 19 頁），根本沒有第 16(3) 條。文章前面第二段與 FAQ 第一題都寫對成「EBA 規則第 16 條」，只有這一處把它寫成指引自己的條文。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW FAQ 第一題答句（blocks[25].items[0].answer）開頭",
+        "before": "指引依 EBA 規則第 16(3) 條運作，操作性文字是主管機關與金融機構「應盡一切努力遵循」",
+        "after": "指引依 EBA 規則第 16 條發布，同規則第 16(3) 條要求主管機關與金融機構「盡一切努力遵循」",
+        "why": "同一段原文把兩件事分開寫：指引是 issued pursuant to Article 16，comply-or-explain 的義務才是 In accordance with Article 16(3)。原句把發布依據寫成 16(3)，與第二段「指引依 EBA 規則第 16 條發布」自相矛盾。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW 正文第四節第二段（blocks[19]）",
+        "before": "正文第 19 段寫下集團內委外不必然風險較低",
+        "after": "背景說明第 19 段寫下集團內委外不必然風險較低",
+        "why": "段號指到錯的區段。Intragroup third-party arrangements are not necessarily less risky than third-party arrangements with TPSPs outside the group. 是最終報告第 11 頁的句子，屬於「2. Background and rationale」（第 6–12 頁）的第 19 段；指引正文（第 3 節）的第 19 段在第 21 頁，寫的是 Financial entities should review and amend accordingly existing third-party arrangements…。同一篇文章另外兩處「背景說明第 9 段」「背景說明第 15 段」都標對了，只有這一處漏標。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW 正文第三節第一段（blocks[13]）句尾",
+        "before": "以及辨識、管理、監控與回報風險的有效流程——這正是 EBA 這次納入 ART 發行人的授權。",
+        "after": "以及辨識、管理、監控與回報風險的有效流程——這正是最終報告把 ART 發行人接到這份指引的那一條。",
+        "why": "把 MiCA 第 34 條第 1 項寫成 EBA 發布本指引的授權，來源三處都不支持。第 34 條裡給 EBA 的「發布指引」授權是第 13 項（By 30 June 2024, EBA … shall issue guidelines … specifying the minimum content of the governance arrangements），而且那條的成果是另一份 EBA/GL/2024/06（本報告腳註 30 自己引用）；新聞稿 Legal basis 段只寫 Article 34 of Regulation (EU) 2023/1114 (MiCAR) … have also been taken into account，明寫授權 EBA 的是 Article 74 of Directive 2013/36/EU。改後的說法只主張背景說明第 15 段把 ART 發行人與第 34 條接起來，那是原文真的有的。研究紀錄 verified_facts 同一條的 fact 欄也一併補正（見最後一筆）。",
+        "source": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and"
+      },
+      {
+        "where": "內容包 zh-TW summary 第三句（blocks[2].items[2]）",
+        "before": "EBA 這次把 ART 發行人納入的依據是 MiCA 第 34 條的治理安排規定，2019 年的舊委外指引只適用於銀行、支付機構與電子貨幣機構。",
+        "after": "EBA 這次把 ART 發行人接進這份指引，最終報告對到的是 MiCA 第 34 條的治理安排規定；2019 年的舊委外指引只適用於《資本需求指令》下的信用機構與投資公司、支付機構與電子貨幣機構。",
+        "why": "兩處。(1)「依據／授權」的問題同上一筆。(2) 舊指引的適用範圍漏掉一整類：背景說明第 9 段原文是 which applied exclusively to credit institutions and investment firms subject to CRD, payment institutions and electronic money institutions——四類，summary 只寫三類，把投資公司整個刪掉。文章正文第三節第二段本來就寫對成四類，是 summary 自己收窄了。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW 正文第一節第一段（blocks[4]）句尾",
+        "before": "的第三方安排，藉此減少較不重要安排的營運與監理負擔。",
+        "after": "的第三方安排，藉此在維持健全風險管理的同時，減少較不重要安排不必要的營運與監理負擔。",
+        "why": "刪掉兩個限定。新聞稿原文是 By concentrating on these higher-risk arrangements, the Guidelines reduce unnecessary operational and supervisory burdens for less material ones while maintaining sound risk management.——unnecessary 與 while maintaining sound risk management 都被拿掉，等於把 EBA「減少不必要負擔、同時維持健全風險管理」的說法強化成「減少負擔」。句子本來就歸因給 EBA，歸因不動，只把限定詞補回去。",
+        "source": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-its-final-guidelines-management-third-party-risk-delivering-more-proportionate-and"
+      },
+      {
+        "where": "內容包 zh-TW 正文第二節第一段（blocks[8]）受文者清單",
+        "before": "《金融工具市場指令 II》投資公司、支付機構、電子貨幣機構、《消費者抵押貸款指令》債權人並列；",
+        "after": "《金融工具市場指令 II》投資公司（不含小型且無相互連結者）、支付機構、電子貨幣機構、《消費者抵押貸款指令》債權人等並列；",
+        "why": "指引第 9 段對投資公司寫著明確的但書 with the exception of small and non-interconnected investment firms under Article 12(1) of Regulation (EU) 2019/2033，原句把但書刪掉，等於把受文範圍放大。另外第 9 段同段還把取得核准的金融控股公司與混合金融控股公司也列為受文者，原句是一份看起來封閉的清單，補一個「等」字讓它不被讀成全名單。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW 正文第四節第二段（blocks[19]）第 69 段那一句",
+        "before": "把需要許可的銀行、支付服務或 ART 發行交給第三方，",
+        "after": "把需要許可的銀行、支付服務、ART 發行或投資服務交給第三方，",
+        "why": "第 69 段原文列的是四項：functions of banking activities or payment services, the issuance of ARTs …, or investment services as defined in Article 4, point (2) of Directive 2014/65/EU，原句漏掉投資服務，又寫成封閉清單。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW 正文第二節第二段（blocks[9]）後半",
+        "before": "同一欄提醒 MiCA 第 73 條另規範加密資產服務商的委外，要求委外時採取一切合理步驟避免增加營運風險，並訂定含應變計畫與退出策略的委外政策。",
+        "after": "同一欄接著提醒 MiCA 第 73 條另規範加密資產服務商的委外；該條本文要求委外時採取一切合理步驟避免增加營運風險，並訂定含應變計畫與退出策略的委外政策。",
+        "why": "歸因要分兩層。回覆表 EBA analysis 欄只有一句 It should be noted however that Article 73 of MICAR regulates outsourcing for crypto-asset service providers.，而「採取一切合理步驟」「含應變計畫與退出策略的委外政策」是 MiCA 第 73 條第 1、2 項自己的文字（EUR-Lex 刊登文本），回覆表裡沒有。原句一路讀下來會以為那些細節也印在回覆表上，且該欄的兩句原本就是分開的兩句，不是同一句。",
+        "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114"
+      },
+      {
+        "where": "內容包 zh-TW FAQ 第二題答句（blocks[25].items[1].answer）",
+        "before": "EBA 說明加密資產服務商不在自己的職權範圍，因此不是這份指引的受文者；同一句提醒 MiCA 第 73 條另外規範",
+        "after": "EBA 說明加密資產服務商不在自己的職權範圍、不是這份指引的受文者，因此不在這份指引的範圍內；同一欄接著提醒 MiCA 第 73 條另外規範",
+        "why": "原句自己加了一個來源沒有的因果。原文是 CASP are not within the remit of EBAs scope of action and are not addressees of these Guidelines and therefore not in scope of these Guidelines.——「不在職權範圍」與「不是受文者」是並列的兩件事，therefore 接的是「不在範圍內」。另外那是同一欄的第二句，不是同一句。正文第二節第二段本來就寫對，只有 FAQ 這裡把邏輯重排了。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW FAQ 第六題答句（blocks[25].items[5].answer）",
+        "before": "第 36 段與第 69 段講 ART 的發行時卻引用「Article 3(1), point 6」",
+        "after": "第 36 段與第 69 段講 ART 的發行時卻引用「Article 3(1), point (6)」",
+        "why": "這一題整題在講指引自己的條號引用不一致，被引的兩個字串就必須逐字。第 36 段與第 69 段印的都是 point (6)（有括號），第 9 段印的是 point 10（沒有括號）——括號的有無正是這兩處寫法不同的一部分，原句把 (6) 的括號拿掉了。依指示不代 EBA 修正條號，只把照抄的字串校到與原文相同。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW 正文第二段（blocks[1]）與 description",
+        "before": "讀的是 EBA 新聞稿、98 頁最終報告 PDF，以及 EBA 單一規則書活動頁三份官方文件／本文依新聞稿、最終報告與 EBA 活動頁查核",
+        "after": "讀的是 EBA 新聞稿、98 頁最終報告 PDF、EBA 單一規則書活動頁，以及歐盟官方公報刊登的 MiCA 原文四份官方文件／本文依新聞稿、最終報告、EBA 活動頁與 MiCA 原文查核",
+        "why": "sources[] 有四條，文章對 ART／EMT 的定義（MiCA 第 3(1) 條第 (6)、(7) 款）、第 34 條治理安排、第 73 條委外、第 3(1)(35)(a) 主管機關與 FAQ 六的第 (10) 款「發行人」定義，全部只能來自第四條 EUR-Lex 刊登文本，EBA 那三份文件沒有這些條文內容。原句宣告的依據比實際用到的少一份，正好是 BRIEF 第 7 型（每個事實要指得到一條 source）反過來的版本。",
+        "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114"
+      },
+      {
+        "where": "內容包 zh-TW 正文第五節第三段（blocks[24]）",
+        "before": "本文查核到的三份文件都沒有提到台灣、金管會或《虛擬資產服務法》",
+        "after": "本文查核到的三份 EBA 文件都沒有提到台灣、金管會或《虛擬資產服務法》",
+        "why": "上一筆把來源改成四份之後，「三份文件」會變成指涉不明。這句否定句的實際查法是：以詞界比對查核到 2026-09-20，Taiwan、Taipei、FSC、Chinese 在最終報告、新聞稿、活動頁三份 EBA 文件裡各 0 次（第四條 EUR-Lex 的 MiCA 同樣 0 次，但這句要講的是 EBA 的文件）。FAQ 第八題本來就逐一點名那三份，不必改。",
+        "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+      },
+      {
+        "where": "內容包 zh-TW title 與研究紀錄 title（兩處同步）",
+        "before": "歐盟 EBA 第三方風險指引定案：穩定幣（ART）發行人入列、服務商不在內，適用日仍是空白",
+        "after": "歐盟 EBA 第三方風險指引定案：穩定幣中的 ART 發行人入列、服務商不在內，適用日仍是空白",
+        "why": "「穩定幣（ART）」用的是中文的縮寫夾注慣例，讀起來就是「穩定幣＝ART」，正好是本篇 must_not_write 第九條禁止的寫法；而 MiCA 第 3(1) 條把 ART（第 (6) 款）與 EMT（第 (7) 款）分成兩類，指引第 9 段受文者點名的只有 ART 發行人。改成「穩定幣中的 ART」保留一般讀者看得懂的詞，但不再把兩者畫上等號，與內文第三節第三段、FAQ 第三題的說法一致。title 長度 47 字，仍在 60 字上限內；check_article 要求研究紀錄 title 與 zh-TW title 相同，故兩處一起改。",
+        "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114"
+      },
+      {
+        "where": "研究紀錄 verified_facts 裡 MiCA 第 34 條那一條的 fact 欄（verbatim_quote 不動）",
+        "before": "……這就是 EBA 這次據以把 ART 發行人納入的那條授權的內容。",
+        "after": "……這就是背景說明第 15 段把 ART 發行人接到這份指引時引用的那一條。注意 MiCA 第 34 條裡給 EBA 的「發布指引」授權是第 13 項（ART 發行人治理安排最低內容，成果是 EBA/GL/2024/06、本報告腳註 30），不是第 1 項；新聞稿 Legal basis 段只把第 34 條列為「納入考量」的法源，寫明授權 EBA 的是 CRD 第 74 條。不可把第 34 條第 1 項寫成本指引的授權依據。",
+        "why": "內容包那一句的錯誤是照著這條研究紀錄寫的，只改文章不改紀錄的話，下一輪或翻譯時會再犯一次。verbatim_quote 仍是 Article 34(1) 的原文、今天仍逐字命中，只改 fact 的敘述與加上防呆。",
+        "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1114"
+      }
+    ],
+    "open_questions": [
+      "第四節標題「管到什麼委外：登記簿、集中度風險與退出策略」承諾的集中度風險與退出策略，在該節三段正文裡都沒有寫到（該節講的是登記簿、空殼底線、集團內委外、第 69 段的發行委外、主管機關權力）。兩者在指引裡確實各有其位置（Concentration risk 是第 17 段的定義用語，第 14 章是 Exit strategies），所以標題不是假的，但它與底下的內容對不起來。屬於結構問題不是事實錯誤，依「不重寫風格」本輪未動；若站主要修，最省的是把標題改成「登記簿、空殼底線與主管機關的手段」。",
+      "正文第二節第一段把指引第 8 段的依據寫成「EBA 規則第 4(2) 條」，原文是 points (i), (vi) and (viii) of Article 4(2)——只有三款、不是整條。第 9 段的《消費者抵押貸款指令》債權人原文也還帶著 which are financial institutions 的限定。兩處都是把範圍寫得比原文寬一點點，但正文字數已到 2,953（上限 3,000），補上限定詞會逼著刪別處，本輪選擇留下並記在這裡。",
+      "FAQ 第四題用「例如客服、帳務」當非 ICT 委外的例子，四份來源都沒有舉過這兩個例子。正文第五節第三段用同一個例子時有寫「以下是編輯設計的例子」，FAQ 這裡沒有標。若站主希望一致，可在 FAQ 第四題補「（編輯設計的例子）」五個字，FAQ 不計入正文字數。",
+      "第四節第一段「並允許合併成同一份文件」，原文是 combine both in one single register（合併成同一份登記簿）。意思沒有走樣，但「文件」比「登記簿」鬆一格，本輪未改。",
+      "活資料今天的狀態（live_data_warnings 第一、二條的回應）：EBA 活動頁 2026-09-20 仍印 Status: Not yet applicable、Application date 與 Compliance deadline 兩欄的 <b> 標籤裡仍然沒有字，狀態字串仍是 Final and awaiting translation into the EU official languages；最終報告 PDF 的一次性 UUID 網址今天仍回 HTTP 200／1,211,561 bytes、md5 未變、檔名仍是 EBA 自己打錯的 third-country。文章「適用日仍是空白」的整段說法因此不必改寫。發稿當天要再抓一次活動頁：只要那兩欄出現值，第五節、FAQ 第一題與第五題、提醒 callout 就要整段重寫。",
+      "最終報告第 4.2 節那一列的 Summary of responses 欄前半句是 While most of the respondents acknowledge the fact that ART issuers are within the Guidelines (if not already covered as CI)，文章只寫了後半句的反對意見。不是錯（原文的反對意見確實只有 some respondents），但若站主想讓這一段更平衡，可補一句「多數回覆者接受 ART 發行人被納入」，同樣要注意正文字數上限。"
+    ],
+    "coordinator_rulings": [
+      "第一輪 open_questions 的協調者處理（2026-09-20）：第 8 段依據補回「第 (i)、(vi)、(viii) 款」；第 9 段債權人補回「下屬金融機構的」；第 61 段「同一份文件」改「同一份登記簿」；H4 標題改為「登記簿、空殼底線與主管機關的手段」以對上該節內容（集中度風險與退出策略該節沒寫）；FAQ4 的客服、帳務例子標「（編輯設計的例子）」。",
+      "4.2 節回覆表「多數回覆者接受 ART 發行人被納入」這句不補：非錯誤，字數接近上限，留給日後修訂。",
+      "發稿當天要再抓一次 EBA 活動頁：Application date 與 Compliance deadline 兩欄只要出現值，第五節、FAQ 第一與第五題、提醒 callout 要整段重寫（live_data_warnings 第一、二條）。",
+      "第二輪後（2026-09-20）：summary 第二句改「EBA 在回覆表裡只說不在其職權範圍」，與正文「回覆表沒有解釋為什麼」一致；背景說明第 19 段 CRD 豁免但書不補；FAQ6 條號不一致題依 must_not_write 第十條保留；「不是對業者直接生效的法規」的 comply-or-explain 描述維持。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2)",
+      "checked_on": "2026-09-20",
+      "method": "四條 sources[] 於 2026-09-20 由本代理獨立重抓（curl -sL -A \"Mokaair-editorial\"，EUR-Lex 另加 Accept-Language: eng），請求的 UA、標頭、查詢字串與表單都沒有放入任何人的 email、姓名或個人資料。今天的落地值與第一輪完全一致：新聞稿 HTTP 200／55,845 bytes／0 轉址；最終報告 PDF HTTP 200／1,211,561 bytes／application/pdf／md5 f6ec1dc9a0b162b3a17050379849b02f，pymupdf 1.28.2 抽出 98 頁、257,670 字；活動頁 HTTP 200／62,085 bytes；EUR-Lex CELEX:32023R1114 HTTP 200／1,683,581 bytes。四份都是正文。核對方式：(1) 研究紀錄 49 條 verbatim_quote 以程式對今天抽出的正文做連續字串比對（空白壓成單一空白），49/49 命中、沒有任何一條含 …／...／| 的拼接引文，49 條的 url 全在 sources[] 內；(2) 逐條覆核第一輪的 15 處改動與協調者的 5 條裁決（第 16(3) 條、背景說明第 19 段、MiCA 第 34 條的授權改寫、summary 的投資公司、受文者但書、第 69 段的投資服務、unnecessary 與 while maintaining sound risk management、MiCA 73 條的歸因、FAQ6 的 point (6)、「四份」宣告、標題「穩定幣中的 ART」、第 8 段三款、債權人、同一份登記簿、H4 新標題、FAQ4 的編輯設計例子）；(3) 把文章裡 21 處段號引用逐一回到 PDF 的實際編號與頁碼核對（合規義務第 1 段＝第 15 頁、第 5／7／8／9／15 段＝第 16–18 頁、第 36 段＝第 26 頁、第 58／61 段＝第 34 頁、第 69 段＝第 37 頁、第 121／126 段＝第 53–54 頁、第 18／20／22 段＝第 21 頁；背景說明第 9／15／19 段＝第 7／9／10–11 頁，兩套編號沒有混用）；(4) 以詞界比對重跑界線掃描：最終報告、新聞稿、活動頁三份的 2027／2028／2029 與 Taiwan／Taipei／FSC／Chinese 各 0 次，CASP 與 crypto-asset service 在 98 頁裡各 2 次且都在第 4.2 節同一列，方括號佔位符仍是 4 個，apply from 1 次且後接 [date]，Not yet applicable 與 Compliance deadline 在 PDF 裡各 0 次（只在活動頁）；(5) 免責 callout 與 crypto.md 樣板逐字比對相同（只差查核日），第二個結尾連結的 text 與 crypto-news-eba-psd2-mica-20260212 的 zh-TW title 逐字相同。沒有引用 sources[] 以外的任何網址補事實；unverified_or_excluded 點名的 ESMA Principles、EBA/GL/2026/04 與 /07、MiCA 合併版同樣沒有讀、沒有引用。",
+      "claims_checked": 181,
+      "changes": [
+        {
+          "where": "內容包 zh-TW 正文第二節第一段（blocks[8]）受文者清單",
+          "before": "電子貨幣機構、《消費者抵押貸款指令》下屬金融機構的債權人等並列",
+          "after": "電子貨幣機構、本身是金融機構的《消費者抵押貸款指令》債權人等並列",
+          "why": "第一輪協調者補進的「下屬金融機構的」把受文者寫反了。指引第 9 段（第 17 頁）原文是 creditors as defined in point (2) of Article 4 of Directive 2014/17/EU (MCD) which are financial institutions referred to in this paragraph——限定語的意思是「該債權人自己必須是金融機構」。中文「下屬金融機構的債權人」最自然的讀法是「某下屬金融機構的債權人」，把受文者從放款的一方換成它的債權人，方向整個顛倒。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第二節第三段（blocks[10]）開頭",
+          "before": "回覆摘要欄記下業界的反對意見：",
+          "after": "回覆摘要欄記下反對意見：",
+          "why": "第 4.2 節那一列 Summary of responses 欄的主詞是 some respondents，而且前半句是 While most of the respondents acknowledge the fact that ART issuers are within the Guidelines (if not already covered as CI)。「業界的反對意見」會被讀成整個產業反對。後面「有回覆者認為」本來就把範圍寫對，刪掉「業界的」既修正也騰出三個字。協調者裁決「多數回覆者接受 ART 發行人被納入」那句不補，本輪照辦。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第二節第三段（blocks[10]）中段",
+          "before": "修改欄寫的是不修改，EBA 沒有解釋為什麼認定加密資產服務商不在自己的職權範圍",
+          "after": "修改欄寫的是不修改，回覆表沒有解釋為什麼認定加密資產服務商不在自己的職權範圍",
+          "why": "範圍不明的否定句。本文查的是這四份來源，EBA 在別的場合有沒有解釋過無從得知；研究紀錄 not_said 第九條寫的也是「原文沒有解釋」。限縮到回覆表這一欄。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第三節第一段（blocks[13]）開頭",
+          "before": "背景說明第 15 段把四條治理授權對到四種機構：",
+          "after": "背景說明第 15 段把四條治理規定對到四種機構：",
+          "why": "第一輪把句尾的「EBA 納入 ART 發行人的授權」改掉了，同段開頭的「四條治理授權」卻留著，等於把同一個錯誤換個位置重講。背景說明第 15 段（第 9 頁）原文是 Institutions, in accordance with Article 74 of the CRD, payment institutions in line with Article 11 of PSD 2, investment firms in accordance with Article 26 of IFD and issuers of ARTs in accordance with Article 34 of MiCAR should have robust internal governance arrangements——四條都是課在業者身上的治理義務；PSD2 第 11 條是支付機構的許可條件，根本不含任何對 EBA 的授權。MiCA 裡真正授權 EBA 發布指引的是第 34 條第 13 項（EUR-Lex 原文：By 30 June 2024, EBA ... shall issue guidelines ... specifying the minimum content of the governance arrangements），成果是 EBA/GL/2024/06。H2 標題「這次擴張的依據是 MiCA 第 34 條」經複核後保留：最終報告執行摘要（第 4 頁）自己寫 Regulation (EU) 2023/1114 (MiCAR) sets out a specific mandate for the EBA in consultation with ESMA and ECB to develop guidelines on internal governance arrangements regarding issuers of asset-referenced tokens (ARTs)，新聞稿 Legal basis 段也把 Article 34 of MiCAR 列入法源；標題講的是「第 34 條」而不是「第 1 項」，與改寫後的內文不衝突。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第四節第二段（blocks[19]）第 69 段那一句",
+          "before": "把需要許可的銀行、支付服務、ART 發行或投資服務交給第三方",
+          "after": "把需要許可的銀行業務、支付服務、ART 發行或投資服務交給第三方",
+          "why": "第 69 段（第 37 頁）原文列的是 functions of banking activities or payment services, the issuance of ARTs ..., or investment services。把 banking activities 寫成「銀行」，在一串服務名稱裡會被讀成「把銀行外包出去」。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第四節第二段（blocks[19]）兩處贅字",
+          "before": "第 69 段管到發行行為本身：……只有該服務商本身取得許可或登記",
+          "after": "第 69 段管到發行本身：……只有該服務商取得許可或登記",
+          "why": "純精簡，語意不變，為同段與第五節補進的限定詞騰出字數（正文上限 3,000）。沒有刪掉任何但書或限定詞。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第四節第三段（blocks[20]）第 126 段那一句",
+          "before": "主管機關可限縮委外範圍，或要求退出一個以上的第三方安排。",
+          "after": "主管機關可限縮關鍵或重要功能的委外，或要求退出一個以上的第三方安排。",
+          "why": "限定詞被刪，監理權力被放大。第 126 段（第 54 頁）原文是 competent authorities should take appropriate actions, which may include limiting or restricting the scope of the non-ICT services supporting critical or important functions provided by TPSPs or requiring exit from one or more third-party arrangements——可以限縮的只有「支撐關鍵或重要功能的非 ICT 服務」，不是任何委外。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW FAQ 第七題答句（blocks[25].items[6].answer）",
+          "before": "主管機關可以限縮委外範圍，或要求金融機構退出一個以上的第三方安排。",
+          "after": "主管機關可以限縮支撐關鍵或重要功能的非 ICT 服務範圍，或要求金融機構退出一個以上的第三方安排。",
+          "why": "與上一筆同一個錯。FAQ 不計入正文字數，因此這裡用完整的原文限定寫法。",
+          "source": "https://www.eba.europa.eu/sites/default/files/2026-09/6b826e13-fecc-4940-ae21-b741cf76eabc/Final%20report%20on%20GL%20on%20third-country%20risk%20management.pdf"
+        },
+        {
+          "where": "內容包 zh-TW 正文第五節第二段（blocks[23]）",
+          "before": "；最終報告資料框裡，狀態欄寫 Not yet applicable……，同樣沒有寫任何年份或起算日。",
+          "after": "；該頁最終報告資料框裡，狀態欄寫 Not yet applicable……，沒有寫任何年份或起算日。",
+          "why": "出處會被讀錯。Status: Not yet applicable、Application date:、Compliance deadline: 三個欄位只出現在 EBA 活動頁那一張「最終報告」資料框；以詞界比對，今天重抓的 98 頁最終報告 PDF 裡 Not yet applicable 0 次、Compliance deadline 0 次。本文其他地方的「最終報告」一律指那份 PDF，不加「該頁」會被讀成 PDF 自己印了這個狀態框。順手刪掉的「同樣」是連接詞，不是限定詞。",
+          "source": "https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-third-party-risk-management?version=2026"
+        },
+        {
+          "where": "內容包 zh-TW 正文第五節第三段（blocks[24]）句尾",
+          "before": "要確認現況，可直接查 EBA 活動頁的狀態、適用日與合規期限三欄。",
+          "after": "要確認現況，可查 EBA 活動頁的狀態、適用日與合規期限三欄。",
+          "why": "純精簡，語意不變，為本輪補回的限定詞騰字。改完正文 2,979 字（改前 2,980），仍在 1,800–3,000 內。",
+          "source": "https://www.eba.europa.eu/activities/single-rulebook/regulatory-activities/internal-governance/guidelines-third-party-risk-management?version=2026"
+        }
+      ],
+      "open_questions": [
+        "背景說明第 19 段「與集團外的第三方安排適用同一套架構」在原文前面帶著但書：Without prejudice to the waivers included in Article 21 of the CRD that may be granted when the conditions under Article 10 of the CRR are met and waivers under Article 109(1) of the CRD ...（第 10–11 頁）。那是個體適用層級的豁免，技術性強、對一般讀者沒有實益，且正文字數只剩一個字的空間，本輪未補，記在這裡。",
+        "summary 第二句「EBA 在諮詢回覆表裡說明理由」與正文「回覆表沒有解釋為什麼認定加密資產服務商不在自己的職權範圍」語氣有落差：EBA 給了理由（不在職權範圍、不是受文者），但沒有解釋為什麼不在職權範圍。兩句都對，站主若要更一致，可把 summary 改成「EBA 在回覆表裡只說不在其職權範圍」。",
+        "FAQ 第六題整題（第 9 段的 point 10 與第 36、69 段的 point (6)）在正文裡沒有對應段落，嚴格說不合「FAQ 的答案 ⊆ 正文」；但 must_not_write 第十條要求兩種寫法都要寫出來，正文已無字數空間，本輪保留。今天逐字確認：第 9 段（第 17 頁）印 point 10，第 36 段（第 26 頁）與第 69、70 段（第 37 頁）印 point (6)，全部照抄不代改。",
+        "活資料（live_data_warnings 第一、二條）2026-09-20 的狀態：EBA 活動頁仍印 Status: Not yet applicable，Application date 與 Compliance deadline 兩欄仍空，狀態字串仍是 Final and awaiting translation into the EU official languages；最終報告 PDF 的一次性 UUID 網址仍回 HTTP 200／1,211,561 bytes／md5 未變／98 頁，檔名仍是 EBA 自己打錯的 third-country。發稿當天仍要照協調者裁決再抓一次活動頁。",
+        "「不是對業者直接生效的法規」（第二段）與「指引本身不是可以直接對業者裁罰的法規」（第一節第三段）是編輯對 comply-or-explain 法律性質的描述，四份來源只印了 issued pursuant to Article 16 與 must make every effort to comply，沒有逐字這樣寫。本輪判斷屬與來源一致的合理推論，未改；站主若要更保守，可改寫成「不是可以直接對業者執行的條文」。"
+      ]
+    }
+  }
+}

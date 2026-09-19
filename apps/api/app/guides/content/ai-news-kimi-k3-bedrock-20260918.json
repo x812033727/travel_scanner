@@ -1,0 +1,264 @@
+{
+  "slug": "ai-news-kimi-k3-bedrock-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 170,
+  "related": [
+    "ai-news-anthropic-accenture-evaluation-20260918",
+    "ai-news-openai-australia-youth-safety-20260918",
+    "ai-news-gemini-notebook-study-tools-20260918"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Kimi K3 上架 Amazon Bedrock：台灣開發者先確認資料走哪裡",
+      "description": "2026 年 9 月 18 日，AWS 宣布 Moonshot AI 的 Kimi K3 在 Amazon Bedrock 正式可用。本文依 AWS 的兩則公告與 Bedrock 使用者指南，整理兩個跨區推論設定檔的路由範圍、台北區域（ap-east-2）在模型卡上的支援狀態，以及串接前的 API 限制與價目；本站沒有實測，規格數字為 Moonshot AI 與 AWS 自己的說法。",
+      "hero": {
+        "src": "/guides/ai-news-kimi-k3-bedrock-20260918/hero.jpg",
+        "alt": "原創插圖：左邊一個六邊形節點代表送出請求的位置，右邊分成兩條虛線路徑，一條連到大範圍的地球狀輪廓，另一條連到一個限定邊界的方框，代表請求依設定檔被送往全球商用區域或留在限定的地理範圍內。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 18 日，AWS 在 What's New 頁面宣布，Moonshot AI 的 Kimi K3 已在 Amazon Bedrock 正式可用（generally available）。這是上架公告，不是模型發表：四份官方來源都沒有寫出 Moonshot AI 首次公開 Kimi K3 的日期，本文只確認它這一天登上 Amazon Bedrock。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 20 日查核，讀的是 AWS 部落格、What's New 公告，以及 Amazon Bedrock 使用者指南裡 Kimi K3 的模型卡與區域相容性說明。本站沒有實測，也不提供購買或訂閱建議；以下規格與效能數字，一律標明是 Moonshot AI 或 AWS 的說法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 18 日，AWS 宣布 Moonshot AI 的 Kimi K3 在 Amazon Bedrock 正式可用（generally available），可透過跨區推論從全球有 Amazon Bedrock 的區域送出請求。",
+            "Kimi K3 在 Bedrock 上有兩種跨區推論設定檔：global.moonshotai.kimi-k3 路由到全球任一支援的商用 AWS 區域，us.moonshotai.kimi-k3 只在美國地理範圍內路由；AWS 表示全球設定檔比地理設定檔「大約便宜 10%」。",
+            "台北區域 ap-east-2 在模型卡的區域表上，In-Region 與 Geo 兩欄都是不支援，只有 Global 欄是支援，代表從台北送出的請求只能選擇路由到全球任一支援的商用區域這個選項。",
+            "模型卡列出的標準層價格為 Global 每百萬 token 輸入 3.00 美元、輸出 15.00 美元，US 為輸入 3.30 美元、輸出 16.50 美元；AWS 表示 Kimi K3 是 Bedrock 上第一個支援顯式提示快取的開放權重模型。",
+            "AWS 表示使用者的資料會留在 AWS 的資料邊界內處理、不會分享給模型供應商，也不會用於訓練這個模型；四份來源目前沒有說明語言支援、配額數字，也沒有交代模型本身首次發表的日期。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "AWS 公告了什麼，又不是什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS 部落格用一句話描述這次上架：Kimi K3 從 Moonshot AI 登上 Amazon Bedrock，AWS 稱為程式撰寫與知識工作的新選項。部落格寫道 2025 年起 Bedrock 已加入數十個開放權重模型，供應商含 DeepSeek、Google、MiniMax、Mistral AI、Moonshot AI、NVIDIA、OpenAI 與 Qwen；部落格沒有列出評測分數，唯一的比較對象是自家前一代 Kimi K2。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Moonshot AI 怎麼描述這個模型，AWS 用「根據 Moonshot AI 的說法」轉述：Kimi K3 是該公司能力最強的模型，也是第一個達到 2.8 兆參數的開放模型，結合原生視覺與 100 萬 token 脈絡窗，相較 Kimi K2 擴展效率約提升 2.5 倍。這些數字全是廠商的規格宣稱，本站沒有實測，也未與其他模型比較。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型卡另列 Bedrock 生命週期欄位，Model launch date 寫 2026 年 9 月 18 日；但這欄位和「目前狀態 Active」「EOL 日期 N/A」同組，本文讀作 Bedrock 平台的上線日，而不是模型第一次公開發表的日期。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩個跨區推論設定檔差在哪裡"
+        },
+        {
+          "type": "paragraph",
+          "text": "What's New 說，有 Amazon Bedrock 的 AWS 區域都能透過跨區推論送請求給 Kimi K3；Bedrock 文件則說明，使用者選的是送出請求的 AWS 區域，處理由 Bedrock 依設定檔路由，Kimi K3 用同一模型 ID：moonshotai.kimi-k3。AWS 建議無區域限制的工作負載用全球設定檔 global.moonshotai.kimi-k3，路由到全球任一支援的商用 AWS 區域；美國地理設定檔 us.moonshotai.kimi-k3 則留在美國地理範圍內，符合資料落地要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個設定檔的價差，官方只有部落格這一句相對描述：全球跨區推論比地理設定檔「大約便宜 10%」。模型卡價目表另印絕對金額，兩者出自不同頁面，不相除或相減互證：標準層、每百萬 token，Global 輸入 3.00 美元、輸出 15.00 美元，快取讀取 0.30 美元、寫入（30 分鐘）3.75 美元；US 輸入 3.30 美元、輸出 16.50 美元，讀取 0.33 美元、寫入 4.125 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "服務層級部分，模型卡寫 Priority 是標準價 1.75 倍（溢價 75%）、Flex 是 0.5 倍（打五折），倍數要乘在適用的標準價（Global 或 US）上，原文沒印出乘完金額，本文不代為計算；Converse 與 Invoke 目前不支援服務層級，只能用標準隨需推論。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "設定檔",
+            "路由範圍",
+            "輸入／輸出價（每百萬 token）或倍率"
+          ],
+          "rows": [
+            [
+              "global 設定檔",
+              "全球任一支援的商用區域",
+              "3.00／15.00 美元"
+            ],
+            [
+              "us 設定檔",
+              "只留在美國地理範圍",
+              "3.30／16.50 美元"
+            ],
+            [
+              "Priority 服務層級",
+              "沿用上列設定檔",
+              "標準價 1.75 倍"
+            ],
+            [
+              "Flex 服務層級",
+              "沿用上列設定檔",
+              "標準價 0.5 倍"
+            ]
+          ],
+          "caption": "依 Amazon Bedrock 使用者指南 Kimi K3 模型卡整理，價格取自該頁 Pricing 表、為標準層、每百萬 token，查核日 2026 年 9 月 20 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "資料會被送到哪裡，誰拿得到"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bedrock 文件定義三種推論選項：In-Region 是請求絕不離開指定區域，Kimi K3 表上沒有一列 In-Region 支援。Geo（地理）路由到定義好的地理範圍、資料留在範圍內；Kimi K3 的 Geo 欄只有 us-east-1、us-east-2、us-west-1、us-west-2 與 ca-central-1 五區支援，全在北美。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台北區域 ap-east-2 在模型卡區域表那一列，In-Region 與 Geo 都不支援，只有 Global 支援；從台北送出的 Kimi K3 請求，只能選路由到全球任一支援的商用區域，不能留在台北或限定地理範圍內處理。文件把 Global 的資料落地寫成：沒有地理限制，資料可能在任何商用區域被處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS 對資料處理另有一組保證，同樣是廠商的說法：資料在 AWS 的資料邊界內處理，不分享給模型供應商，不用於訓練這個模型；推論請求一律零資料保留，「零操作員存取」指 AWS 操作人員在推論期間也拿不到提示與回覆內容。What's New 重申：Kimi K3 與專有模型跑在同一安全邊界內，存取、加密與稽核的控制項相同；這些是 AWS 的宣稱，四份來源裡沒有第三方稽核佐證。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-kimi-k3-bedrock-20260918/diagram-1.svg",
+          "alt": "四格圖解：你選的發送區域含台北、global 設定檔路由到全球商用區域、us 設定檔只留在美國地理範圍、模型供應商依 AWS 說法拿不到內容",
+          "width": 1600,
+          "height": 900,
+          "caption": "Kimi K3 在 Amazon Bedrock 上兩種跨區推論設定檔的路由範圍整理，依 AWS 公告與 Amazon Bedrock 文件，查核日 2026 年 9 月 20 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "真正要接上去之前，還有什麼要注意"
+        },
+        {
+          "type": "paragraph",
+          "text": "AWS 建議新應用優先用 bedrock-runtime 端點，對 Kimi K3 具體建議用 Chat Completions API，該端點同時支援 Responses 與原生的 Invoke、Converse。文件說 Converse 的已知限制包括：多輪對話帶入前幾輪 reasoning 內容會出現錯誤，也拒收 PDF、HTML 這類附加文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顯式提示快取是 AWS 強調的功能：官方稱這是 Bedrock 上第一個支援顯式提示快取的開放權重模型，但「第一個」限定於 Bedrock 平台與顯式快取——Kimi K3 預設就有隱式（自動）快取，顯式快取要另外設定，且目前僅 Responses 與 Chat Completions 支援，可重用前綴需至少 1,024 個 token 才能設定快取斷點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸入能力也有邊界：Bedrock 不支援 Kimi K3 附加影片輸入，模態表把影片輸入與輸出都標不支援，圖像則輸入支援、輸出不支援。先決條件三項：已開通 Bedrock 存取權的 AWS 帳號、Python 3.10 以上，以及三個 IAM 權限；不寫程式也可用主控台的 Test > Playground 試用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這則公告沒有交代的部分"
+        },
+        {
+          "type": "paragraph",
+          "text": "四份來源完全沒有出現 Taiwan、Taipei 作為市場或使用者情境；唯一出現 Taipei 的地方，是區域表裡的區域代號 ap-east-2 (Taipei)，指 AWS 資料中心區域名稱，不是針對台灣使用者或法規的特別安排。四份來源也沒有出現 China、Chinese 字眼或政治性敘述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告沒有公布配額數字：模型卡的 Quotas and Limits 只寫帳號有預設配額、可能依區域、付款紀錄等因素調整，沒印出每分鐘 token 或請求數上限。四份來源也沒提到 Kimi K3 支援哪些語言，更沒有寫它對繁體中文的表現，本文因此不寫任何語言能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告也沒說可從 Bedrock 下載 Kimi K3 權重或自行架設：部落格與模型卡寫的是透過 bedrock-runtime 端點與兩個跨區推論設定檔呼叫這個模型，模型卡把授權條款連到 Hugging Face 的 LICENSE 頁面。定價方面，部落格只寫「詳見 Amazon Bedrock pricing」，本文沒讀到那頁，價格一律引用模型卡查核日當天的標準層價目表。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Kimi K3 是這一天發表的新模型嗎？",
+              "answer": "不是。四份來源談的都是「在 Amazon Bedrock 上正式可用」這件事，也就是上架這個雲端平台，不是模型第一次公開發表。模型卡上的 Model launch date 欄位屬於 Bedrock 平台的生命週期欄位，本文讀作在 Bedrock 上的上線日；本文引用的四份來源都沒有寫出 Moonshot AI 何時首次發表 Kimi K3 或上傳權重，本文因此只寫「上架 Amazon Bedrock」。"
+            },
+            {
+              "question": "台灣的開發者可以從台北區域使用 Kimi K3 嗎？",
+              "answer": "可以送出請求，但要先知道路由方式。模型卡的區域表裡，ap-east-2（Taipei）那一列的 In-Region 與 Geo 兩欄都是不支援，只有 Global 欄是支援；這代表從台北送出的請求，目前只能選擇 global 這個跨區推論設定檔，也就是接受 Bedrock 依「沒有地理限制，資料可能在任何商用區域被處理」這個說明來路由，不能選擇留在台北或限定在某個地理範圍內處理。"
+            },
+            {
+              "question": "global 設定檔和 us 設定檔差在哪裡？價格差多少？",
+              "answer": "global.moonshotai.kimi-k3 會把請求路由到全球任何一個支援的商用 AWS 區域；us.moonshotai.kimi-k3 只在美國地理範圍內路由，AWS 說明這是為了符合資料落地要求。AWS 部落格寫，全球設定檔比地理設定檔「大約便宜 10%」；模型卡的標準層價目表則是 Global 每百萬 token 輸入 3.00 美元、輸出 15.00 美元，US 為輸入 3.30 美元、輸出 16.50 美元。這兩句話出自不同頁面，本文不把兩者相除或相減互相印證。"
+            },
+            {
+              "question": "AWS 說資料不會給模型供應商，這句話可以完全放心嗎？",
+              "answer": "這是 AWS 對自家服務的宣稱，本文照實轉述，但沒有第三方稽核或認證可以佐證。AWS 表示資料在 AWS 的資料邊界內處理、不分享給模型供應商、不用於訓練這個模型，且推論請求一律零資料保留、零操作員存取；四份來源裡沒有任何外部單位驗證過這些控制項，本文也不能反過來說資料會流向特定國家，因為原文明確寫著不會分享給模型供應商。"
+            },
+            {
+              "question": "串接 Kimi K3 應該用哪個 API？",
+              "answer": "AWS 建議新應用優先用 bedrock-runtime 端點，而對 Kimi K3 具體建議使用 Chat Completions API。這個端點同時支援 OpenAI 相容的 Responses 與 Chat Completions API，以及 Bedrock 原生的 Invoke 與 Converse API；文件另外提醒，Converse 目前若在多輪請求裡帶入前幾輪的 reasoning 內容，會出現 InternalServerException，也會拒收 PDF、HTML 這類附加文件，這會影響 LangChain 與 Strands Agents 等框架的預設設定。"
+            },
+            {
+              "question": "顯式提示快取要怎麼用，怎麼計費？",
+              "answer": "顯式快取目前只有 Responses 與 Chat Completions 這兩個 API 支援，可重用的提示前綴至少要 1,024 個 token，之後加上 prompt_cache_breakpoint 標記結束位置。寫進快取的 token 計費較高，但會保留至少 30 分鐘；之後命中快取的請求以折扣費率計費，且不計入每分鐘輸入 token 的配額。AWS 表示這是 Bedrock 上第一個支援顯式提示快取的開放權重模型，但這個「第一個」限定在 Bedrock 平台與顯式快取這兩件事；模型卡另寫 Kimi K3 預設支援的是隱式（自動）快取。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "上架公告，不是規格測試",
+          "text": "這篇文章整理的是 AWS 在 2026 年 9 月 18 日宣布 Kimi K3 在 Amazon Bedrock 正式可用這件事，規格數字（參數量、脈絡窗、擴展效率）全部是 Moonshot AI 或 AWS 自己的說法，本站沒有實測，四份來源裡也沒有評測或排行榜可以引用，這篇文章不是效能比較，也不是使用建議。價格、區域支援與已知限制都可能隨 Bedrock 文件改版而更動，本文寫的是查核日 2026 年 9 月 20 日當天的狀態，之後如需引用，請直接查看 Amazon Bedrock 官方文件與定價頁確認現況。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "NVIDIA 宣布收購 Hugging Face：公告之外，還有哪些沒說明？",
+              "kind": "life",
+              "slug": "ai-news-nvidia-hugging-face-20260903"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS Machine Learning Blog：Introducing Kimi K3 on Amazon Bedrock",
+          "url": "https://aws.amazon.com/blogs/machine-learning/introducing-kimi-k3-on-amazon-bedrock/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "AWS What's New：Kimi K3 by Moonshot AI is now generally available on Amazon Bedrock",
+          "url": "https://aws.amazon.com/about-aws/whats-new/2026/09/moonshot-ai-kimi-k3-on-amazon-bedrock/",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Amazon Bedrock 使用者指南：Kimi K3 模型卡（模型 ID、價目、區域、已知限制）",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Amazon Bedrock 使用者指南：Regional availability by models（三種推論選項與資料落地定義）",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html",
+          "checked_on": "2026-09-20"
+        }
+      ]
+    }
+  }
+}

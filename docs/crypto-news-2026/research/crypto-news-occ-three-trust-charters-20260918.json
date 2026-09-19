@@ -1,0 +1,1003 @@
+{
+  "slug": "crypto-news-occ-three-trust-charters-20260918",
+  "event_date": "2026-09-18",
+  "event_date_basis": "三份 PDF 的信函抬頭都印 September 18, 2026，OCC 索引頁的 Date of Letter 欄對這三列也都是 09/18/2026，兩邊互相對上，所以事件日取 2026-09-18。三份文件的文字層全文沒有印任何時刻，因此沒有可換算成台北時刻的依據。我另外讀到的是中繼資料而不是文件內容：三份 PDF 的 /CreationDate 分別是 D:20260918141915-04'00'、D:20260918142018-04'00'、D:20260918144905-04'00'，/ModDate 落在同日 14:54–14:55 -04'00'，三份的 HTTP Last-Modified 都是 Fri, 18 Sep 2026 19:55:30 GMT——換算台北時間是 2026-09-19 03:55。也就是說，以台北時間看，這三個檔案上架時已經是 9 月 19 日凌晨。但「檔案上架」與「決定作成」是兩件事，而且中繼資料不是 OCC 印出來的內容，所以事件日仍以 OCC 自己印的信函日期為準，slug 尾碼、news_date 與正文第一段一律寫 2026-09-18，並在正文標明那是美東時間，不寫台北時刻、也不寫「台北時間 9 月 18 日」。",
+  "title": "美國 OCC 同日核准三家加密信託銀行：一張改制、兩張初步，六項條件同一架構",
+  "checked_on": "2026-09-20",
+  "sources": [
+    {
+      "title": "OCC Corporate Decision #1391（Bastion Platforms Trust Company, LLC 改制為無保險國民信託銀行，2026-09-18）",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "OCC Corporate Decision #1392（Catena Trust Bank, N.A. 新設申請的初步附條件核准，2026-09-18）",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "OCC Corporate Decision #1393（Agora National Trust Bank 新設申請的初步附條件核准，2026-09-18）",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "publisher": "Office of the Comptroller of the Currency",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "OCC Interpretations and Decisions 索引頁（Type/Reference Number、Month Published、Date of Letter、Description 四欄）",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "publisher": "Office of the Comptroller of the Currency",
+      "checked_on": "2026-09-20"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "查核日 2026-09-20（台北時間）。四條 sources[] 全部由本人當天以 curl -sSL -A \"Mokaair-editorial\" 重抓、讀完 body 之後才登記 checked_on；請求的 User-Agent、標頭、查詢字串與表單都沒有帶任何人的 email 或個人資料。\n(1) cd1391.pdf → HTTP 200、467,588 bytes、0 次轉址、Last-Modified: Fri, 18 Sep 2026 19:55:30 GMT、md5 5fb177a27d5ee989c7899e9300923ba6、8 頁。\n(2) cd1392.pdf → HTTP 200、534,784 bytes、0 次轉址、同一個 Last-Modified、md5 6dc0123583bedca459c89e572ee503f1、11 頁。\n(3) cd1393.pdf → HTTP 200、516,631 bytes、0 次轉址、同一個 Last-Modified、md5 1eb76246023675d5e3c374d0f1ac344e、10 頁。\n(4) Interpretations and Decisions 索引頁 → HTTP 200、102,733 bytes、0 次轉址；表格共 81 列，整頁 09/18/2026 出現 3 次，就是 1391／1392／1393 三列，排在最上面。\n三份 PDF 以 pdftotext 同時抽 -layout 與預設兩種版本交叉比對，verified_facts 的每一條 verbatim_quote 都以程式做連續字串比對（只正規化換行造成的空白與引號、連字號字形），全部命中。三條原本比對不過的（兩條 180 天條款、一條跨頁的業務描述），原因是內文註腳編號與換頁頁眉插在句子中間，已改成照印刷原樣（含 operating expenses18／22／24 這種緊貼的註腳數字）或拆成前後兩段引用。來源自己的錯字一律照抄並在 fact 裡註明是來源的錯：#1391 的 operate will full fiduciary powers、citizen requirement；#1392 的 The Bank include、Catena Trust Bank, N.A（缺句點）、控制號碼外面的方括號、$5 million, must be held 的多餘逗號；#1393 的 Chartering, Oorganization；索引頁 LLC 與逗號之間的多餘空格。\nPDF 表格規則的處理：三份 PDF 裡真正的表格只有 #1392 與 #1393 的 Organizers, Directors and Officers 兩欄表，本紀錄沒有從它們抽出任何事實（見 unverified_or_excluded）。資本門檻 600 萬／1,000 萬、流動性 300 萬／500 萬、180 天營業費用、六個月／12 個月／18 個月期限，全部出自編號條件與正文段落而不是表格，已逐句附 verbatim_quote。索引頁的 Date of Letter 欄雖然是表格，但三份 PDF 自己的信函抬頭都印 September 18, 2026，兩邊互相對上才登記。\n我自己做過、但沒有寫進 verified_facts 的一致性檢查：#1391／#1393 的 1.7 + 5.5 = 7.2、#1392 的 2.1 + 5.6 = 7.7，各自內部自洽，但三份之間對同一基準日給了兩組數，來源沒有更正。這是加總出來的檢查，不是來源印出來的事實。\n另外查過但不列入 sources[] 的：OCC 新聞 RSS https://www.occ.gov/rss/occ_news.xml（HTTP 200、10 筆 item、最新一筆 pubDate 為 17 Sep 2026 13:00:02 -0400），用來確認 OCC 沒有為這三件發新聞稿；OCC 首頁（HTTP 200、80,748 bytes）用來取得真實的新聞管道網址而不是用猜的；weekly bulletin 索引（HTTP 200，年度清單只到 2025）；四個猜測式的新聞稿／RSS 網址一律 404（同一份 52,597 bytes 的錯誤頁），已依 BRIEF 不採用猜到的網址。Bastion 的 GlobeNewswire 稿兩次都逾時、0 bytes，沒有讀到 body，因此不列入 sources[]，也沒有據以下筆。",
+  "verified_facts": [
+    {
+      "fact": "三份決定的抬頭都印 Corporate Decision 編號與 September 2026，信函日期一律是 2026 年 9 月 18 日（美東）。#1391 的抬頭字串如引文。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Corporate Decision #1391 September 2026 September 18, 2026"
+    },
+    {
+      "fact": "#1392 抬頭與信函日期同樣是 2026 年 9 月 18 日。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Corporate Decision #1392 September 2026 September 18, 2026"
+    },
+    {
+      "fact": "#1393 抬頭與信函日期同樣是 2026 年 9 月 18 日。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Corporate Decision #1393 September 2026 September 18, 2026"
+    },
+    {
+      "fact": "OCC 的 Interpretations and Decisions 索引表欄位是「Type/Reference Number｜Month Published｜Date of Letter｜Description」；查核日讀到的頁面上，整頁只有三列的 Date of Letter 是 09/18/2026，就是 Corporate Decision 1391、1392、1393，而且這三列排在整張表最上面。索引對 #1393 的描述如引文。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Application to charter Agora National Trust Bank, New York, NY"
+    },
+    {
+      "fact": "索引對 #1392 的描述（列名寫 Catena Trust Bank, N.A.）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Application to charter Catena Trust Bank, N.A., New York, NY"
+    },
+    {
+      "fact": "索引對 #1391 的描述寫的是「改制為國民銀行」，沒有寫 national trust bank，而且 LLC 與逗號之間多了一個空格（來源自己的排版）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/index-interpretations-and-decisions.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Application by Bastion Platforms Trust Company, LLC , New York, NY to convert to a national bank."
+    },
+    {
+      "fact": "#1391 是改制案，OCC 用的動詞是「hereby conditionally approves」，全文沒有出現 preliminary 這個字（查核日以純文字逐字檢索：preliminary conditional approval 出現 0 次、hereby conditionally approves 出現 1 次）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Office of the Comptroller of the Currency (OCC) hereby conditionally approves the application filed by Bastion Platforms Trust Company, LLC (BPTC), New York, New York, a New York state trust company, to convert to a national trust bank"
+    },
+    {
+      "fact": "#1392 是新設案，OCC 給的是「preliminary conditional approval」（初步附條件核准）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC hereby grants preliminary conditional approval of your charter application upon determining that your proposal meets certain regulatory and policy requirements."
+    },
+    {
+      "fact": "#1393 同樣是新設案的初步附條件核准。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC hereby grants preliminary conditional approval of this Application upon determining that your proposal meets certain regulatory and policy requirements."
+    },
+    {
+      "fact": "#1392 明白寫「只給初步附條件核准」，最終核准與開業授權要等所有開業前要求都做到才會給。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC has granted preliminary conditional approval only. Final approval and authorization for the Bank to open will not be granted until all preopening requirements are met."
+    },
+    {
+      "fact": "#1393 的同一段把法條也寫進去：依 12 USC 27(a) 的最終核准與開始營業的授權，要等所有開業前要求都做到才會給。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Final approval and authorization pursuant to 12 USC 27(a) for the Bank to commence business will not be granted until all preopening requirements are met."
+    },
+    {
+      "fact": "在最終核准之前，OCC 保留修改、暫停或撤銷這份初步附條件核准的權利（#1392 的寫法，suspend 後面沒有逗號）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Until final approval is granted, the OCC has the right to modify, suspend or rescind this preliminary conditional approval should the OCC deem any interim development to warrant such action."
+    },
+    {
+      "fact": "#1393 同一句多一個逗號（suspend, or rescind），意思相同。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Until final approval is granted, the OCC has the right to modify, suspend, or rescind this preliminary conditional approval should the OCC deem any interim development to warrant such action."
+    },
+    {
+      "fact": "#1392 與 #1393 都寫：在完成籌設中銀行的所有要求並取得 OCC 最終核准之前，該行不得開始經營銀行業務。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank may not begin the business of banking until it fulfills all requirements for a bank in organization and the OCC grants final approval."
+    },
+    {
+      "fact": "#1391 的改制案是另一套程序：改制完成後要繳回 Conversion Completion Certificate，OCC 才會發出 Conversion Completion Acknowledgement 正式授權開業。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When the Bank has satisfactorily completed all of the above steps and has satisfied any conditions imposed by the OCC, the OCC will issue a Conversion Completion Acknowledgement officially authorizing the Bank to commence business as a national trust bank."
+    },
+    {
+      "fact": "#1391 的申請人是紐約州信託公司 Bastion Platforms Trust Company, LLC，改制後名稱為 Bastion Platforms National Trust Company，OCC 執照號碼 27198。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The converted bank will operate under the title of Bastion Platforms National Trust Company (Bank) under OCC Charter Number 27198."
+    },
+    {
+      "fact": "#1391 的控制號碼是 2026-Conversion-345413 與 2026-Waiver-345476，新執照號碼 27198。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OCC Control Number 2026-Conversion-345413 OCC Control Number 2026-Waiver-345476 (collectively, Application) New Charter Number 27198"
+    },
+    {
+      "fact": "業者結構（OCC 轉述申請書）：BPTC 是德拉瓦州私人公司 Bastion Platforms, Inc. 的全資子公司。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "BPTC is a wholly owned subsidiary of Bastion Platforms, Inc. (BPI), a privately-held Delaware corporation."
+    },
+    {
+      "fact": "業者自述的業務（OCC 轉述申請書）：白標穩定幣發行、以受託人身分提供白標託管錢包、給託管客戶的轉換服務，以及提供給其他受監理穩定幣發行人的發行人服務。這句跨頁，引文取前半段。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Bank's proposed activities include white-label stablecoin issuance, white-label"
+    },
+    {
+      "fact": "同一句跨頁後的後半段。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "custodial wallet services in a fiduciary capacity, conversion service for custody customers, and issuer services to other regulated stablecoin issuers."
+    },
+    {
+      "fact": "#1391 寫明該行的託管服務只做穩定幣。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank will only offer custody services for stablecoins."
+    },
+    {
+      "fact": "申請日：BPTC 於 2026 年 3 月 30 日提出改制申請。引文保留來源自己的錯字（operate will full，應為 with）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On March 30, 2026, BPTC filed an application to convert to a national bank and operate will full fiduciary powers."
+    },
+    {
+      "fact": "#1392 的申請人是新設的 Catena Trust Bank，正式名稱 Catena Trust Bank, National Association；控制號碼與執照號碼在來源裡帶著方括號（來源自己的排版沒有清掉）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OCC Control Nos. [2026-Charter-346003] Application for Residency Waivers, [OCC Control No. 2026-Waiver-347456] Proposed Charter No. [27214]"
+    },
+    {
+      "fact": "業者結構（OCC 轉述申請書）：擬設立的 Catena Trust Bank 是 Catena Labs, Inc. 的直接全資子公司。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The proposed Bank would be a direct, wholly owned subsidiary of Catena Labs, Inc."
+    },
+    {
+      "fact": "業者自述的業務（OCC 轉述申請書）：對法定貨幣、投資證券與數位資產（含日後符合 GENIUS Act 的支付型穩定幣）提供託管、投資管理、信託、轉換與清算、執行服務。引文保留來源自己的語法錯誤（The Bank include）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Bank include custody, investment management, trust, conversion and clearing, and execution services for fiat currency, investment securities, and digital assets, including payment stablecoins that will comply with the GENIUS Act, once effective."
+    },
+    {
+      "fact": "#1392 把受託與非受託分開寫：投資管理與信託服務以受託人身分為之，託管則受託與非受託都做。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank will conduct its investment management and trust services in a fiduciary capacity and will provide custody services on both a fiduciary and non-fiduciary basis."
+    },
+    {
+      "fact": "#1393 的申請人是新設的 Agora National Trust Bank，控制號碼 2026-Charter-345708，擬定執照號碼 27207。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Re: Application to Charter Agora National Trust Bank, New York, New York (Proposed), OCC Control No. 2026-Charter-345708, Proposed Charter No. 27207"
+    },
+    {
+      "fact": "業者結構（OCC 轉述申請書）：擬設立的銀行總部在紐約州紐約市，是 2023 年 10 月設立的德拉瓦州公司 Agora Atlas Corp. 的全資子公司。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Bank would be headquartered in New York, New York and a wholly owned subsidiary of Agora Atlas Corp. (Agora Atlas), a Delaware corporation incorporated in October 2023."
+    },
+    {
+      "fact": "業者自述的業務（OCC 轉述申請書，前半）：以非受託人身分做美元計價穩定幣的發行與準備金維護、以非受託人身分做數位資產託管。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "focusing primarily on dollar-backed stablecoin issuance and reserve maintenance in a nonfiduciary capacity; digital asset custody in a non-fiduciary capacity"
+    },
+    {
+      "fact": "業者自述的業務（OCC 轉述申請書，後半）：對在該行託管數位資產的企業客戶提供受託投資顧問服務，分析部位並提供投資與收益機會的建議；文件同段另寫明客戶保有是否採納建議的完全決定權。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "fiduciary investment advisory services to enterprise customers that custody digital assets with the Bank, analyzing client asset positions and providing tailored recommendations for investment and yield generating opportunities within the digital asset ecosystem."
+    },
+    {
+      "fact": "#1393 寫明該行的客戶只會是機構與企業，不是一般散戶。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Bank customers will be exclusively institutional and business participants."
+    },
+    {
+      "fact": "業者計畫（OCC 轉述申請書）：銀行設立後，Agora Atlas 打算把 AUSD 的發行從 Agora Bermuda 移到這家銀行。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "After the Bank is established, Agora Atlas intends to transition the issuance of AUSD from Agora Bermuda to the Bank."
+    },
+    {
+      "fact": "這筆移轉屬於 Regulation W 的關係人交易，OCC 在審查設立時一併核准它適用 12 CFR 223.42(i) 的豁免，免於數量限制、擔保品要求與低品質資產禁令。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the OCC approves the asset purchase as exempt from the quantitative limits, collateral requirements, and low-quality asset prohibition of Regulation W under 12 CFR 223.42(i)."
+    },
+    {
+      "fact": "三份決定的條件都是編號 1 到 6 共六項，結構相同。條件 1 一律是：業務限於信託公司業務及相關活動，且不得落入銀行控股公司法第 2(c)(1)-(2) 條的「銀行」定義。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must limit its operations to those of a trust company and activities related thereto, as specifically stated in the business plan. The Bank must not meet the definition of \"bank\" under section 2(c)(1)-(2) of the Bank Holding Company Act."
+    },
+    {
+      "fact": "條件 2（#1391 版，改制案）：必要時須就穩定幣發行與贖回及其他業務進行調整、停止或處分，以符合 GENIUS Act（12 USC 5901 以下）、任何實施規則與未來生效的其他法令，是否符合由 OCC 全權認定。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If and to the extent necessary, the Bank must conform, cease, or divest its proposed stablecoin issuance and redemption activities and any other activities to comply with the GENIUS Act (12 USC 5901 et seq.), any implementing regulations, and any other applicable laws and regulations that take effect in the future, such compliance to be determined in the sole discretion of the OCC."
+    },
+    {
+      "fact": "條件 2（#1392 版，語序略不同但同樣是 conform／cease／divest、同樣由 OCC 全權認定）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If and to the extent necessary, the Bank must conform, cease, or divest its proposed activities, including stablecoin issuance and redemption activities, to comply with the GENIUS Act (12 USC 5901 et seq.), any implementing regulations, and any other applicable laws and regulations that take effect in the future, such compliance to be determined in the sole discretion of the OCC."
+    },
+    {
+      "fact": "#1393 的條件 2 與 #1392 逐字相同。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If and to the extent necessary, the Bank must conform, cease, or divest its proposed activities, including stablecoin issuance and redemption activities, to comply with the GENIUS Act (12 USC 5901 et seq.), any implementing regulations, and any other applicable laws and regulations that take effect in the future, such compliance to be determined in the sole discretion of the OCC."
+    },
+    {
+      "fact": "OCC 在 #1392 回覆意見時把條件 2 的效果講得更白：如果該行的穩定幣業務不符合 GENIUS Act 與實施規則，這項條件就要求它停止或處分該業務。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the Bank's stablecoin activities do not comply with the GENIUS Act and implementing regulations, the condition requires the Bank to cease or divest of such activities."
+    },
+    {
+      "fact": "同段最後一句是 OCC 的判斷：目前沒有跡象顯示該行無法符合 GENIUS Act。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC has no indication that the Bank will not be able to comply with the GENIUS Act."
+    },
+    {
+      "fact": "條件 4（#1391）：tier 1 資本至少 600 萬美元，其中 tier 1 資本的 50% 或 300 萬美元取高者，必須是 Eligible Liquid Assets。這句在編號 4 的條件段落正文裡，不是表格。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must maintain a minimum of $6 million in tier 1 capital of which the greater of at least 50 percent of its tier 1 capital or $3 million must be held in Eligible Liquid Assets."
+    },
+    {
+      "fact": "條件 4（#1392）：tier 1 資本至少 1,000 萬美元，其中 tier 1 資本的 50% 或 500 萬美元取高者須為 Eligible Liquid Assets。引文保留來源自己多出來的逗號（$5 million, must be held）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must maintain a minimum of $10 million in tier 1 capital of which the greater of at least 50 percent of its tier 1 capital or $5 million, must be held in Eligible Liquid Assets."
+    },
+    {
+      "fact": "條件 4（#1393）：同樣是 1,000 萬與 500 萬美元，但句子少了「of its tier 1 capital」這幾個字，是三份文件裡措辭最短的一版。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must maintain a minimum of $10 million in tier 1 capital of which the greater of at least 50 percent or $5 million must be held in Eligible Liquid Assets."
+    },
+    {
+      "fact": "三份文件的條件 4 都附同一句自評義務：須每季評估資本與流動性水準是否適當，並持有自評認為必要的更高資本與流動性。這一句在三份 PDF 的文字層都被換頁的註腳區塊切斷，引文取 #1393 可連續比對到的前半段。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must assess the appropriateness of its level of capital and liquidity on a quarterly basis and hold such higher amounts of capital and liquidity as it determines necessary to support the Bank's risk profile, business"
+    },
+    {
+      "fact": "同一句換頁後的後半段：依業務策略與未來成長需要，並作為非預期損失的緩衝。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "strategies, and future growth prospects, and to provide a cushion against unexpected losses. This condition will remain in effect during the Bank's first three years of operation."
+    },
+    {
+      "fact": "條件 5（#1391）：另須以 Eligible Liquid Assets 持有 180 天的營業費用，且不得與條件 4 的 Eligible Liquid Assets 重複計算。引文保留內文註腳編號 18。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must maintain 180 days of operating expenses18 in Eligible Liquid Assets. This amount must not be double counted with the Eligible Liquid Assets held to comply with the foregoing condition."
+    },
+    {
+      "fact": "條件 5（#1392），註腳編號 22。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must maintain 180 days of operating expenses22 in Eligible Liquid Assets. This amount must not be double counted with the Eligible Liquid Assets held to comply with the foregoing condition."
+    },
+    {
+      "fact": "條件 5（#1393），註腳編號 24。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank must maintain 180 days of operating expenses24 in Eligible Liquid Assets. This amount must not be double counted with the Eligible Liquid Assets held to comply with the foregoing condition."
+    },
+    {
+      "fact": "那 180 天算的是什麼：註腳寫明須包含在困難、清理結束情境下會發生的全部固定與變動營業費用，不必包含只有正常營運才會有的費用（例如研發）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The minimum 180 days operating expenses must include all fixed and variable operating expenses that would apply in a distressed, wind-down scenario and need not include expenses that would apply only in a normal operating scenario, such as expenses related to research and development."
+    },
+    {
+      "fact": "Eligible Liquid Assets 不是「流動資產」的同義詞：註腳定義它只算超出全部存款、借款與其他須還款負債的流動資產，且不得是被設質、被設定權利或被抵銷的資產，也不得是任何關係企業的債務。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The term \"Eligible Liquid Assets\" means only Liquid Assets that exceed the aggregate amount of all deposits, borrowed funds, and other liabilities on the Bank's balance sheet that reflect an obligation to repay funds to any party."
+    },
+    {
+      "fact": "同一個註腳把 Liquid Assets 限於四類：未設質現金、受保存款機構 90 天內到期的存款、90 天內到期的美國政府債券，以及經 OCC 書面不反對的其他資產。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The term \"Liquid Assets\" means: (i) unencumbered cash; (ii) deposits at insured depository institutions with a maturity of 90 days or less; (iii) United States government obligations maturing within"
+    },
+    {
+      "fact": "有期限的是哪幾項：三份文件都只在條件 3、4、5、6 加上「營運前三年」的字樣（每份文件 three years 共出現 4 次），條件 1 與條件 2 沒有期限。#1391 條件 4 的期限句如引文。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This condition will remain in effect during the Bank's first three years of operations as a national bank."
+    },
+    {
+      "fact": "這六項條件的法律效果：OCC 明寫它們屬於 12 USC 1818 所稱「聯邦銀行主管機關就申請案以書面課加的條件」，因此依 12 USC 1818 可執行。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The conditions of this approval are conditions \"imposed in writing by a federal banking agency in connection with any action on any application, notice, or other request\" within the meaning of 12 USC 1818. As such, the conditions are enforceable under 12 USC 1818."
+    },
+    {
+      "fact": "#1391 的失效期限是六個月：改制若未在決定日起六個月內完成，核准自動失效，除非 OCC 同意展延；同段另寫明除有特殊情事外 OCC 不給展延。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the conversion is not consummated within six months from the date of this decision, the approval will automatically terminate unless the OCC grants an extension."
+    },
+    {
+      "fact": "#1392 的失效期限分兩段：資本未在 12 個月內募足，或未在初步附條件核准日起 18 個月內開業，核准即失效。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the capital for the Bank is not raised within 12 months or if the Bank is not opened for business within 18 months from the preliminary conditional approval date, this approval expires."
+    },
+    {
+      "fact": "#1393 的失效期限與 #1392 逐字相同（12 個月募資、18 個月開業）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the capital for the Bank is not raised within 12 months or if the Bank is not opened for business within 18 months from the preliminary conditional approval date, this approval expires."
+    },
+    {
+      "fact": "#1391 用一句話講清楚這家銀行是什麼：不收存款，也不受聯邦存款保險公司保險。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Bank will not take deposits and will not be insured by the Federal Deposit Insurance Corporation."
+    },
+    {
+      "fact": "#1393 在回覆社區再投資法（CRA）的意見時，附帶確認同一件事：該行不會是受保存款機構。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As noted, the Bank will not be an insured depository institution."
+    },
+    {
+      "fact": "#1393 也因此認定 CRA 於法不適用——CRA 的適用對象是受保存款機構。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The CRA is not applicable as a matter of law."
+    },
+    {
+      "fact": "#1392 把 OCC 對「穩定幣是不是存款」的立場寫成完整一段：國會在 GENIUS Act 明確承認國民銀行發行穩定幣的權限，而且穩定幣不是 FDI Act 下的存款。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Under the GENIUS Act, Congress clearly recognized the authority for national banks to issue stablecoins. Further, stablecoins are not deposits under the FDI Act, which Congress has confirmed in the GENIUS Act."
+    },
+    {
+      "fact": "#1392 引 GENIUS Act 的三件事之一：支付型穩定幣不受 FDIC 的存款保險（OCC 在註腳引 12 USC 5903(e)(1)）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "states that payment stablecoins shall not be subject to deposit insurance by the FDIC"
+    },
+    {
+      "fact": "#1392 引 GENIUS Act 的三件事之二：把支付型穩定幣表示為受聯邦存款保險保障是違法的（OCC 在註腳引 12 USC 5903(e)(2)(A)）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "makes it unlawful to represent payment stablecoins as subject to Federal deposit insurance"
+    },
+    {
+      "fact": "#1392 引 GENIUS Act 的三件事之三：聯邦合格穩定幣發行人的定義包含無保險的國民銀行（OCC 在註腳引 12 USC 5901(11)）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GENIUS Act also defines a federal qualified stablecoin issuer to include an uninsured national bank."
+    },
+    {
+      "fact": "#1393 用一句話交代權限來源：國會在 GENIUS Act 已明文承認無保險國民銀行發行穩定幣的權限（#1391 同一句只是把法名拆在兩行）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Congress in the Guiding and Establishing National Innovation for U.S. Stablecoins (GENIUS) Act has expressly recognized uninsured national banks' authority to issue stablecoins."
+    },
+    {
+      "fact": "三案的公眾意見待遇不一樣：#1391 一件意見都沒有收到。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC did not receive any comments related to this Application."
+    },
+    {
+      "fact": "#1392 收到兩封來自代表銀行業的公會的意見書。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC received two comment letters from trade groups representing banks in connection with the Application."
+    },
+    {
+      "fact": "#1393 也收到兩封來自代表銀行業的公會的意見書。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC received two comment letters from trade groups representing banks."
+    },
+    {
+      "fact": "意見人提出的其中一類質疑：現行加密與穩定幣架構的缺陷、可能的詐欺與財務損失，以及欠缺流動性標準或消費者保護（#1392 版）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "criticisms of the current cryptocurrency and stablecoin framework and insufficiencies related to potential fraud and financial losses, and the absence of liquidity standards or consumer protection"
+    },
+    {
+      "fact": "#1393 的同一段多列了「準備金要求」一項。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "criticisms of the current cryptocurrency and stablecoin framework and insufficiencies related to potential fraud and financial losses, and the absence of liquidity standards, reserve requirements, or consumer protection"
+    },
+    {
+      "fact": "OCC 對這些意見的結論：意見人提出的疑慮不構成駁回申請的理由（#1392 與 #1393 同一句）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The concerns raised by the commenters are not grounds for denial of the Application."
+    },
+    {
+      "fact": "OCC 回應監理能力時自述：有一個專責新型態銀行的監理單位，成員是具備新型業務經驗的檢查人員。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC has a supervisory unit specifically responsible for novel banks consisting of examiners with specialized experience in novel activities."
+    },
+    {
+      "fact": "OCC 回應「倒了怎麼辦」時自述：對無保險國民銀行的清理有專門規則（12 CFR Part 51）處理接管程序，並表示有能力清理一家無保險國民銀行。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC has the capability to resolve an uninsured national bank."
+    },
+    {
+      "fact": "規模背景（#1391 註 5 版本）：截至 2026 年 3 月 31 日，OCC 監理的無保險國民信託銀行合計 7.2 兆美元 assets under administration，其中 1.7 兆是託管與保管帳戶、5.5 兆是受託帳戶。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "as of March 31, 2026, OCC-supervised uninsured national trust banks reported a total of $7.2 trillion in assets under administration. Of that total, $1.7 trillion consisted of custody and safekeeping accounts, while total fiduciary accounts totaled $5.5 trillion."
+    },
+    {
+      "fact": "#1393 註 3 印的是與 #1391 相同的一組數字。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "as of March 31, 2026, OCC-supervised uninsured national trust banks reported a total of $7.2 trillion in assets under administration."
+    },
+    {
+      "fact": "但 #1392 註 4 對同一個基準日印的是另一組數字：7.7 兆、2.1 兆、5.6 兆。同一天、同一個辦公室發出的三份文件，對同一個時點給了兩組不同的合計數。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "as of March 31, 2026, OCC-supervised uninsured national trust banks reported a total of $7.7 trillion in assets under administration. Of that total, $2.1 trillion consisted of custody and safekeeping accounts, while total fiduciary accounts totaled $5.6 trillion."
+    },
+    {
+      "fact": "這三張執照的法律基礎是國民銀行法，不是 GENIUS Act：OCC 依 12 USC 21-27 有權核發國民銀行執照，國會 1978 年特別確認 OCC 得核發業務限於信託公司業務及相關活動的銀行執照。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC is authorized to charter national banks pursuant to the National Bank Act, 12 USC 21-27. In 1978, Congress specifically confirmed the OCC's general authority to charter banks that limit their operations to those of a trust company and activities related thereto."
+    },
+    {
+      "fact": "#1391 的結論句把這一點寫死：該行將是一家業務限於信託公司業務及相關活動的國民銀行，依據是 12 USC 27(a)。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Accordingly, the Bank will be a national bank whose operations are limited to those of a trust company or activities related thereto under 12 USC 27(a)."
+    },
+    {
+      "fact": "這不是第一批：三份文件的註腳都在舉先前已核准的同類執照，寫法是 See 或 See, e.g.（代表是例示、不是完整名單），沒有一份說自己列的是完整名單。#1391 註 8 是 See, e.g. 起頭，舉的是 Foris DAX、Bridge 等；同一份的註 10 起頭是單純的 See。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC recently approved charters for national trust banks to engage in, among other things, digital asset custody activities. See, e.g., OCC Corporate Decision No. 1367 (Feb. 20, 2026) (Foris DAX National Trust Bank); OCC Corporate Decision No. 1365 (Feb. 12, 2026) (Bridge National Trust Bank)"
+    },
+    {
+      "fact": "#1393 註 6 另外舉到 Connectia Trust 與 Laser Digital National Trust Bank，是三份文件裡名單最長的一份。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "See OCC Corporate Decision 1380 (Connectia Trust, National Association conditional approval); OCC Corporate Decision 1377 (Laser Digital National Trust Bank conditional approval)"
+    },
+    {
+      "fact": "#1391 註 10 在轉換服務的脈絡下另外舉到 Coinbase National Trust Company（Corporate Decision No. 1370，2026 年 4 月 2 日）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Corporate Decision No. 1370 (April 2, 2026) (Coinbase National Trust Company)"
+    },
+    {
+      "fact": "#1391 另外核准一項公民身分豁免：依 12 USC 72 對一名董事免除美國公民要求。引文保留來源自己的錯字（citizen requirement）。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC also grants your request to waive the citizen requirement of 12 USC 72"
+    },
+    {
+      "fact": "#1392 核准的是居住地豁免：依 12 USC 72 對三名董事免除居住要求。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC also granted your request to waive the residency requirements of 12 USC 72"
+    },
+    {
+      "fact": "#1393 的 Re: 欄只有一個控制號碼（2026-Charter-345708），沒有 Waiver 控制號碼，文件裡也沒有豁免段落。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1393.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Re: Application to Charter Agora National Trust Bank, New York, New York (Proposed), OCC Control No. 2026-Charter-345708, Proposed Charter No. 27207"
+    },
+    {
+      "fact": "三份決定的署名人都是 Stephen A. Lybarger, Senior Deputy Comptroller, Chartering, Organization and Structure，簽名以 //signed// 表示。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "//signed// Stephen A. Lybarger Senior Deputy Comptroller Chartering, Organization and Structure"
+    },
+    {
+      "fact": "三份決定的結論段都寫：這份核准與 OCC 員工就本案的作為與往來不構成契約或任何拘束 OCC、美國政府或其員工的義務，也不影響 OCC 行使監理、法規與檢查權限。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1392.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This preliminary conditional approval and the activities and communications by OCC employees in connection with the filing do not constitute a contract, express or implied, or any other obligation binding upon the OCC, the United States, any agency or entity of the United States, or any officer or employee of the United States"
+    },
+    {
+      "fact": "三份決定都保留事後翻案的空間：核准是基於申請人陳述與 OCC 當時掌握的資訊，若所依據的資訊在交易日前發生重大變更，OCC 得修改、暫停或撤銷。",
+      "url": "https://www.occ.gov/topics/charters-and-licensing/interpretations-and-decisions/2026/cd1391.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The OCC's approval is based on BPTC's representations, submissions, and information available to the OCC as of this date. The OCC may modify, suspend, or rescind this approval if a material change in the information on which the OCC relied occurs prior to the date of the transaction to which this decision pertains."
+    }
+  ],
+  "not_said": [
+    "沒有台灣、也沒有任何美國以外轄區的內容。三份決定管的是三家設在美國的銀行；查核日讀過的全文沒有出現台灣、亞洲、跨境提供服務或境外使用者的任何規定。文章不得暗示台灣讀者會因此多出或少掉任何權利。",
+    "沒有開業日期。#1392 與 #1393 只寫了「未在 18 個月內開業核准即失效」的上限，#1391 只寫了「六個月內未完成改制核准即失效」，三份都沒有寫預計開業日，也沒有寫下一個程序步驟會在什麼時候完成。",
+    "沒有說這是第一批，也沒有說一共核准了幾家。三份文件的註腳都在列舉先前的同類核准，起頭是 See／See, e.g.，#1393 註 6 另寫 recently approved several charters，都是例示，沒有一份說自己列的是完整名單。文章不得寫「美國第一批」「首批」「第 N 家」或任何自行清點出來的家數。",
+    "沒有說這三家之間有任何關聯。三份決定是三件各自獨立的申請案，控制號碼不同、代理人不同、業務不同；同一天發出不代表 OCC 把它們當成一個政策包裹，文件裡也沒有任何一句把三案相提並論。",
+    "OCC 沒有為這三件發新聞稿。這是我查核日的查證結果、不是文件裡的句子：OCC 新聞 RSS（https://www.occ.gov/rss/occ_news.xml）當天回 HTTP 200、10 筆 item，最新一筆的 pubDate 是 17 Sep 2026 13:00:02 -0400（September 2026 執法行動公告），沒有 09-18 的項目。唯一確定讀到的公告管道是 Interpretations and Decisions 索引頁加三份 PDF。文章要寫成「以查核日讀到的 OCC 新聞 RSS 為準，最新一筆停在 9 月 17 日」，不可以寫成「OCC 刻意低調」或任何動機推測。",
+    "沒有寫 GENIUS Act 什麼時候生效。三份決定只出現「once effective」（#1392）與條件 2 的「未來生效的法令」這種寫法，沒有印任何生效日曆日期。生效時點請引既有文章已核實的內容，不要在本文重新推算。",
+    "沒有任何穩定幣的流通量、準備金金額、資產規模或收費。三份文件裡的金額只有兩類：條件 4／5 的資本與流動性門檻，以及註腳裡 OCC 監理的無保險信託銀行合計管理資產。AUSD、USDC 都只以「業務對象」出現，沒有任何數量。",
+    "沒有寫穩定幣持有人在這三家銀行倒閉時會怎麼樣。#1392 與 #1393 只寫 OCC 對無保險國民銀行的清理有 12 CFR Part 51 的規則、OCC 有能力清理，沒有寫持有人的受償順位、有沒有優先權、準備金是否破產隔離。這一段不得從台灣《虛擬資產服務法》第 38 條的優先受償規定反推。",
+    "沒有寫兩封意見書是哪兩個公會、內容全文為何。#1392 與 #1393 只寫「代表銀行業的公會」並摘述論點；OCC 沒有印出團體名稱，文章不得指名。",
+    "沒有駁回任何案子。三份文件都是核准，沒有任何一份提到同期有申請被駁回、撤件或退回。文章不得用「OCC 這次放行、上次沒放行」這種對照。",
+    "#1391 沒有走「初步核准」那一套。它是既有紐約州信託公司的改制案，全文 preliminary 出現 0 次；不要把 #1392／#1393 的「最終核准前不得開業」套到 Bastion 身上，它的對應機制是六個月內完成改制並繳交 Conversion Completion Certificate。",
+    "沒有把 #1391 的六項條件叫做「conditions」以外的東西，但它另外列了五項 conversion requirements（保證保險、政策程序、申購聯邦準備銀行股份、其他主管機關核准、董事持股）；#1392 與 #1393 則另列 11 項開業前要求。這兩組東西在文件裡與六項條件分開編號，文章不得把它們加進「六項條件」裡湊數。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Bastion 自己發的新聞稿，以及稿中把 #1391 說成「preliminary conditional approval」與 OCC 原文不符這件事。",
+      "seen_where": "探索代理列出的 https://www.globenewswire.com/news-release/2026/09/18/3364956/0/en/bastion-receives-conditional-occ-approval-for-a-national-trust-bank-charter.html",
+      "why_excluded": "查核日 2026-09-20 以 curl -sSL -A \"Mokaair-editorial\" 抓兩次都失敗：第一次逾時被移到背景、最後以 exit 1 結束；第二次加 --max-time 30 得到 curl exit 28「Operation timed out after 30012 milliseconds with 0 bytes received」、HTTP 000、0 bytes。沒有讀到 body 的網址不得列進 sources[]，也不得據以下筆。文章不得寫「Bastion 自己說是初步核准」或任何業者稿的措辭比較；只能寫 OCC 三份文件之間的用語差別。"
+    },
+    {
+      "claim": "三家公司官網或 newsroom 上的自我介紹、成立年份、產品線與客戶規模。",
+      "seen_where": "未取得。本輪沒有取得任何一家公司官網的可讀網址。",
+      "why_excluded": "BRIEF 禁止猜網址；幣圈規格的業者一手來源又限於該公司自己的 newsroom 或法遵公告。本文所有業者自述一律取自 OCC 文件中 OCC 轉述申請書的句子，並以 is_vendor_claim: true 標記。文章不得加入任何三份 OCC 文件以外的公司資訊。"
+    },
+    {
+      "claim": "「OCC 監理的無保險國民信託銀行合計管理 7.2 兆美元」這個單一數字。",
+      "seen_where": "#1391 註 5 與 #1393 註 3 印 7.2／1.7／5.5 兆，#1392 註 4 對同一個基準日（2026-03-31）印 7.7／2.1／5.6 兆。",
+      "why_excluded": "同一天、同一個辦公室、同一個基準日出現兩組數字，來源自己沒有交代哪一組對、也沒有更正。這個數字不得寫成單一數值。要寫就必須兩組都寫、各自標明出自哪一號決定，並寫明這是來源本身的不一致；否則整段不寫。三份文件之外沒有可查的第三方核對點（OCC 的信託資產統計頁本輪沒有取得）。"
+    },
+    {
+      "claim": "這三份決定在台北時間是哪一天公布。",
+      "seen_where": "三份 PDF 的文字層都只印 September 18, 2026，沒有任何時刻。我另外讀到的是檔案層與傳輸層的中繼資料：PDF 的 /CreationDate 分別是 D:20260918141915-04'00'、D:20260918142018-04'00'、D:20260918144905-04'00'，三份的 HTTP Last-Modified 都是 Fri, 18 Sep 2026 19:55:30 GMT。",
+      "why_excluded": "中繼資料不是文件印出來的內容，而且檔案建立時間、上架時間與「決定作成」是三件事。文章只寫 OCC 自己印的日期（美東 2026 年 9 月 18 日），不寫台北時刻，也不得把 Last-Modified 換算出的台北 9 月 19 日凌晨寫成 OCC 的公布時間。"
+    },
+    {
+      "claim": "三案的條件是不是 OCC 對加密信託銀行的「標準格式」。",
+      "seen_where": "三份文件的條件 1 至 6 結構一致、多數句子逐字相同，只有資本金額與期限段落不同。",
+      "why_excluded": "三份一致只證明這三份一致。OCC 沒有在任何一份裡說這是通案格式，本輪也沒有比對過註腳裡列到的任何一份先前決定（1353、1355、1356、1358、1359、1365、1366、1367、1370、1377、1380、1385）。文章可以寫「這三份的條件結構相同」，不得寫「OCC 的標準條件」或「以後每一家都會這樣」。"
+    },
+    {
+      "claim": "GENIUS Act 各該條文（12 USC 5901(11)、5901(22)、5903(e)(1)、5903(e)(2)(A)）的原文。",
+      "seen_where": "只出現在 #1392 對法律的轉述與註腳引用。本輪沒有取得美國法典或公法原文。",
+      "why_excluded": "引用一律要寫成「OCC 在這份決定裡引 GENIUS Act 表示……」，不得寫成「GENIUS Act 規定……」。條號可以照抄 OCC 的引用，但不得聲稱本文讀過法條。"
+    },
+    {
+      "claim": "#1392 註 15 引的 FDIC 提案（91 Fed. Reg. 18534, 18559, Apr. 10, 2026）內容。",
+      "seen_where": "#1392 註 15 的括號引文。",
+      "why_excluded": "本輪沒有重讀聯邦公報那份文件。這一點正好是本站既有文章 crypto-news-fdic-genius-act-20260410 已核實的題目：要寫準備金存款保險不穿透，請用結尾連結指過去或引既有文章，不要在本文自行敘述 FDIC 提案的內容。"
+    },
+    {
+      "claim": "三家銀行的董事與高階主管姓名、職稱對應。",
+      "seen_where": "#1392 與 #1393 各有一張 Organizers, Directors and Officers 的兩欄表格。",
+      "why_excluded": "依本次任務的 PDF 表格規則，從表格抽出來的文字順序不等於欄位對應，而且三份文件的正文沒有任何一句重述這些人名與職稱。文章一律不寫任何個人姓名（含代理律師與 OCC 承辦人）。"
+    },
+    {
+      "claim": "OCC 的 weekly bulletin 或其他公告管道是否另有這三件的登載。",
+      "seen_where": "https://www.occ.gov/topics/charters-and-licensing/weekly-bulletin/index-weekly-bulletin.html 查核日回 HTTP 200，但年度清單只列到 2025，沒有 2026。另外四個猜測式的新聞稿／RSS 網址一律回 404（同一份 52,597 bytes 的錯誤頁）。",
+      "why_excluded": "沒有讀到 2026 年的 weekly bulletin，不能說它有登、也不能說它沒登。文章只寫 Interpretations and Decisions 索引頁這一個確定讀到的管道。"
+    }
+  ],
+  "overlaps_existing_article": "與三篇既有文章同屬一條線，但主體不同，應寫成新文章：\n- crypto-news-genius-act-occ-20260302（OCC 的支付型穩定幣規則草案，91 FR 10202）——寫的是還沒定案的通案規則；本文寫的是個案許可與附帶條件。建議第二個結尾連結指這一篇，text 逐字照抄它的 zh-TW title「美國 OCC 穩定幣發行規則草案：一比一準備金、兩個營業日贖回與定期申報」。\n- crypto-news-fdic-genius-act-20260410（準備金存款保險不穿透到持有人，91 FR 18534）——正好是 #1392 註 15 引的那份提案。「穩定幣不受存款保險」那一段不要重寫，改成引用這一篇。\n- crypto-news-ncua-genius-act-20260518（信用合作社只能透過子公司發行）——同一套法的另一個主管機關，本文不需要展開，最多一句帶過。\n- crypto-news-taiwan-vasp-act-20260630（虛擬資產服務法三讀）——第五節台灣段落的唯一依據，只能引它已核實的條文。",
+  "editorial_brief": "讀者是看過本站三篇 GENIUS Act 系列（OCC 草案、FDIC 草案、NCUA 草案）的台灣一般讀者。那三篇寫的都是「規則還沒定案」，這一篇第一次有具體個案：美國 OCC 在美東時間 2026 年 9 月 18 日同一天發出三份加密／穩定幣信託銀行的決定。本文新增的只有一樣——核准實例與附帶條件，其餘一律引既有文章。\n\n最重要的一件事，也是指派訊息原本的骨架裡寫錯、必須改掉的：這三張不是「依 GENIUS Act 發的第一批執照」。法源是國民銀行法 12 USC 21-27 與 27(a)（1978 年國會確認 OCC 可核發業務限於信託公司的銀行執照），GENIUS Act 在三份文件裡只有兩個身分：承認無保險國民銀行有發行穩定幣的權限，以及條件 2 要求日後不符就得調整、停止或處分。而且三份文件的註腳都以 See, e.g. 起頭列舉 2025 年 12 月以來的同類核准，所以「第一批」「首批」「第 N 家」都不能寫。標題與第一段的正確說法是「同一天三份決定」，不是「第一批執照」。\n\n第二重要的是「核准」有兩種，不能混寫：#1391（Bastion）是既有紐約州信託公司的改制案，OCC 寫的是 hereby conditionally approves，六個月內沒完成改制就自動失效；#1392（Catena）與 #1393（Agora）是新設案，寫的是 preliminary conditional approval，而且明寫最終核准與開業授權要等開業前要求全部做完，12 個月沒募足資本或 18 個月沒開業就失效。一般讀者最容易誤會的就是這裡：拿到核准不等於可以開業，更不等於已經在營業。\n\n五節安排：\n一、這一天發生什麼——同一天三份、兩種核准、OCC 沒有另發新聞稿（只在 Interpretations and Decisions 索引頁掛出來），以及「核准」與「可以開業」之間還隔著幾道手續。\n二、六項條件——結尾放表（4 欄：項目／#1391 Bastion／#1392 Catena／#1393 Agora；列：核准型態、資本門檻、流動性加碼、失效期限）。重點是條件 1、2 沒有期限，條件 3 至 6 只管營運前三年，而且這六項依 12 USC 1818 可執行。\n三、條件 2 這一條在管什麼——不符 GENIUS Act 及其實施規則就要 conform／cease／divest，由 OCC 全權認定；結尾放圖解。這一節只講「這張執照附帶了什麼」，GENIUS Act 的內容引既有文章。\n四、為什麼不收存款、也沒有存款保險——用 #1391 那句「不收存款、不受 FDIC 保險」與 #1393 的「不是受保存款機構」帶出來；穩定幣為何不是存款、準備金存款的保險為何不穿透，一律引 crypto-news-fdic-genius-act-20260410，不要重寫。同時寫出 OCC 只自述「有能力清理無保險國民銀行」，那不是對任何人的保障。\n五、台灣的路不一樣在哪——只引 crypto-news-taiwan-vasp-act-20260630 已核實的條文：台灣走的是《虛擬資產服務法》的分種類許可制（第 7 條），境內發行穩定幣由金管會發一張許可、核發前須會商中央銀行同意（第 34 條），靠的是十足準備資產、存於境內金融機構、扣除繳存準備金後全數信託（第 36 條）與破產時準備資產不入破產財團、持有人優先受償（第 38 條），而不是像美國這樣用「銀行執照＋資本與流動性條件」；而且第 56 條把施行日期交給行政院，既有文章查核到 2026-09-16 仍未定。一邊是銀行法的資本門檻，一邊是專法的信託與優先受償，這是兩種不同的保護機制，不是誰比較嚴。這一節不得新增任何台灣主張或預測。\n\n刻意不寫：三家公司的官網介紹、募資、產品與客戶規模（本輪沒有可讀的一手來源）；Bastion 自家新聞稿與它和 OCC 用語的落差（今天抓不到，見 unverified_or_excluded）；任何穩定幣的流通量、價格或報酬；任何個人姓名；GENIUS Act 的生效日推算；以及把這三份條件和 OCC 那份還沒定案的發行人規則草案拿來比高低。",
+  "must_not_write": [
+    "不寫「美國第一批依 GENIUS Act 拿到信託銀行執照的穩定幣業者」。兩個錯：(a) 執照的法源是國民銀行法 12 USC 21-27／27(a)，不是 GENIUS Act，GENIUS Act 在三份文件裡出現的身分是「承認無保險國民銀行有發行權限」「條件 2 要求日後符合」，以及 #1392 用它說明支付型穩定幣不是 FDI Act 下的存款（第二輪補：第一輪查出第三種身分，原本寫「只有兩種」）；(b) 三份文件的註腳都在舉 2025 年 12 月以來的同類核准（BitGo、Paxos、Ripple、Fidelity、First National Digital Currency Bank、Bridge、Foris DAX、Coinbase、Connectia、Laser Digital、World Liberty 等），起頭是 See／See, e.g.，沒有一份說自己列的是完整名單（依協調者裁決收斂措辭）。正確寫法是「OCC 同一天發出三份加密信託銀行的決定」。",
+    "不把三案寫成同一種核准。#1391 是既有紐約州信託公司的改制案，用語是 hereby conditionally approves；#1392、#1393 是新設案，用語是 preliminary conditional approval，而且明寫最終核准與開業授權要等開業前要求做完。三者的動詞、程序與失效期限都不同，每次提到「核准」都要帶上是哪一種。",
+    "不把失效期限寫混。#1391 是「六個月內未完成改制」；#1392 與 #1393 是「12 個月內未募足資本或 18 個月內未開業」。不要把六個月套在三家身上，也不要把 12／18 個月寫成 Bastion 的期限。",
+    "不把六項條件寫成「全部只管三年」。三年期限只掛在條件 3、4、5、6；條件 1（業務限於信託公司業務）與條件 2（不符 GENIUS Act 即須調整、停止或處分）沒有期限。",
+    "不把資本門檻寫成同一個數字。#1391 是 600 萬美元 tier 1 資本、其中 50% 或 300 萬取高者為 Eligible Liquid Assets；#1392、#1393 是 1,000 萬與 500 萬。每次寫金額都要指名是哪一號決定。",
+    "不把 180 天營業費用和條件 4 的流動性混為一談。條文明寫兩者不得重複計算，而且那 180 天算的是困難、清理結束情境下的費用，不是正常營運費用。",
+    "不把 Eligible Liquid Assets 寫成「流動資產」。定義是扣掉全部須還款負債之後、且未被設質設權的流動資產，另排除關係企業債務；漏掉這一層會讓門檻聽起來比實際寬鬆。",
+    "不重講 GENIUS Act 本身。這部法的內容、適用對象、準備金與贖回要求、生效時點公式，已經寫在 crypto-news-genius-act-occ-20260302、crypto-news-fdic-genius-act-20260410 與 crypto-news-ncua-genius-act-20260518；本文新增的只有「核准實例與附帶條件」。需要前情就用結尾連結指過去，或以一句話帶過並註明出處是既有文章。",
+    "不把 OCC 的規則草案和這三份核准的條件混在一起比較。crypto-news-genius-act-occ-20260302 寫的擬議 15.41 是 500 萬美元與 12 個月總費用的營運後備，那是還沒定案、針對支付型穩定幣發行人的通案規則；這三份決定的 600 萬／1,000 萬與 180 天是執照的附帶條件，兩套規範的對象、階段與效力都不同，不得寫成「門檻從 12 個月降到 180 天」之類的比較。",
+    "不把 AUSD、USDC 或任何穩定幣寫成可以持有、可以買、值不值得的東西。它們在本文只能以「被監理的對象」出現（某家銀行擬發行、擬託管、擬移轉發行主體）。也不得出現流通量、市值、價格或任何報酬數字。",
+    "不轉述 #1393 裡「investment and yield generating opportunities」這段時漏掉它的身分。那是 OCC 轉述申請書描述的一項受託投資顧問業務、對象是企業客戶，不是給讀者的機會；如果寫進文章，必須同時寫出「客戶保有完全決定權」與本站不推薦任何標的的界線，或者乾脆不寫。",
+    "不把「OCC 表示有能力清理無保險國民銀行」寫成「所以存戶或持有人有保障」。那句話的主詞是 OCC 的能力自述，不是對任何人的保證；同一份文件同時寫著不收存款、不受存款保險。",
+    "不寫任何個人姓名：包含三案的代理律師、董事、高階主管與 OCC 承辦人。公司名、銀行名、執照號碼、控制號碼可以寫。",
+    "不把兩組互相矛盾的資產合計數挑一組寫。7.2／1.7／5.5 兆（#1391、#1393）與 7.7／2.1／5.6 兆（#1392）必須兩組都寫並標明出處，或整段不寫。也不得把任一組拿去和其他機構或其他時點相減、相除。",
+    "不寫「OCC 悄悄放行」「沒發新聞稿代表低調」這類動機推測。可以寫的是查核日在 OCC 新聞 RSS 讀到的事實：最新一筆停在 2026 年 9 月 17 日。",
+    "不把三份決定的日期寫成台北時間的 9 月 18 日。文件只印美東日期、沒有印時刻；寫法用「美東時間 2026 年 9 月 18 日」，不換算時刻、不寫台北當天。",
+    "不寫台灣主張。第五節談台灣時只能引 crypto-news-taiwan-vasp-act-20260630 已核實的條文（第 7、34、36、37、38、55、56 條與施行日期未定），不得新增任何對台灣制度的評價、預測或「台灣應該怎麼做」。"
+  ],
+  "live_data_warnings": [
+    "OCC 的 Interpretations and Decisions 索引頁是滾動更新的清單，之後會有新的決定排到這三列上面。文章只用它確認這三列的 Date of Letter 與描述，不引用頁面上的總筆數、排序位置或其他決定。",
+    "三份決定都還沒走完程序：#1392、#1393 是初步核准，最終核准與開業授權尚未給；#1391 的改制尚未完成，而且 OCC 在每一份裡都保留了資訊重大變更時修改、暫停或撤銷的權利。本文查核日為 2026-09-20，此後這三家的狀態隨時可能改變，要引用最新狀態必須回到 OCC 索引頁與該行的後續文件重新查核。",
+    "註腳裡的資產合計數是 2026 年 3 月 31 日的時點快照，而且三份文件之間互相矛盾（見 unverified_or_excluded）。任何時候引用都要寫出基準日與出自哪一號決定。",
+    "條件 2 的觸發點綁在 GENIUS Act 與其實施規則生效之後，而這些規則在本文查核日仍在草案階段（見既有文章）。文章不得預告哪一天會觸發，也不得預測三家會不會通過。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "核准了，還不能開",
+  "diagram": {
+    "title": "三份決定與六項條件",
+    "caption": "美國 OCC 於美東時間 2026 年 9 月 18 日發出的三份加密信託銀行決定：兩種核准型態、六項條件、資本與流動性門檻，以及為何不受存款保險。查核日 2026 年 9 月 20 日。",
+    "nodes": [
+      [
+        "兩種核准",
+        "改制核准與初步核准"
+      ],
+      [
+        "六項條件",
+        "其中四項有三年期限"
+      ],
+      [
+        "資本門檻",
+        "600／1,000 萬美元"
+      ],
+      [
+        "不是存款",
+        "#1391、#1393 明寫不受保"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (first round)",
+    "checked_on": "2026-09-20",
+    "method": "未參與撰稿。2026-09-20 以 curl -sSL -A \"Mokaair-editorial\" 重抓 sources[] 四條並讀 body（請求的 UA、標頭、查詢字串與表單都沒有帶任何人的 email 或個人資料）：cd1391.pdf HTTP 200／467,588 bytes／0 次轉址／md5 5fb177a27d5ee989c7899e9300923ba6；cd1392.pdf 200／534,784／md5 6dc0123583bedca459c89e572ee503f1；cd1393.pdf 200／516,631／md5 1eb76246023675d5e3c374d0f1ac344e——三個 md5 與 sourcing_notes 記的完全相同；Interpretations and Decisions 索引頁 200／102,733 bytes，解析出 81 列，Date of Letter 為 09/18/2026 的正好三列（Corporate Decision 1391／1392／1393），描述與三份 PDF 的抬頭互相對上。三份 PDF 以 pdftotext 同時抽 -layout 與預設兩種版本逐字對照。把內容包拆成約 130 條可核對主張逐條回原文：title、description、正文 16 段每一句、summary 四句、表格 16 格與 caption、圖解 caption、FAQ 六題答句、兩個 callout、四條 source、兩個結尾連結的 text，以及研究紀錄的 diagram 四格與 hero_label。研究紀錄 85 條 verbatim_quote 以程式做連續字串比對（正規化空白、引號與連字號字形後同時比對兩種抽取版本），85 條全部命中，verified_facts 的 url 也都在 sources[] 裡。另外重抓了不列入 sources[] 的 OCC 新聞 RSS（200、10 筆 item、最新一筆 pubDate 為 17 Sep 2026 13:00:02 -0400），只用來確認正文那句「查核日未見這三件的新聞稿」今天仍成立。兩個結尾連結的 text 與 crypto-news-2026-index、crypto-news-genius-act-occ-20260302 的 zh-TW title 逐字相同；第五節台灣段落逐條比對 crypto-news-taiwan-vasp-act-20260630 已核實的條文。沒有用 sources[] 以外的網址替文章補任何事實。",
+    "claims_checked": "約 130 條內容包主張，另以程式核對研究紀錄 85 條 verbatim_quote（全數命中）",
+    "changes": [
+      {
+        "where": "內容包 zh-TW title 與研究紀錄 title",
+        "before": "……一張改制、兩張初步，六項條件相同",
+        "after": "……一張改制、兩張初步，六項條件同一架構",
+        "why": "六項條件只有編號與主題相同，資本金額（600 萬對 1,000 萬）、流動性加碼（300 萬對 500 萬）與期限都不同，同一個內容包的 description 自己就寫「資本門檻與流動性要求不盡相同」。「相同」正是 must_not_write 第 2、3、5 條要擋的誤解。",
+        "source": "cd1391 條件 4／5 與 cd1392、cd1393 條件 4／5"
+      },
+      {
+        "where": "第一節第一段（正文第三段）",
+        "before": "OCC 沒有另發新聞稿，查核日讀到的 OCC 新聞 RSS 最新一筆停在 9 月 17 日，公開紀錄只有索引頁與三份決定書。",
+        "after": "查核日讀到的 OCC 新聞 RSS 未見這三件的新聞稿，最新一筆停在 9 月 17 日；本文讀到的公告管道是索引頁與三份決定書。",
+        "why": "「公開紀錄只有」是查不到的全稱否定：unverified_or_excluded 第 9 條自己寫著 2026 年的 weekly bulletin 沒讀到，「不能說它有登、也不能說它沒登」。改成查核日以 RSS 讀到的範圍與本文實際讀到的管道。",
+        "source": "https://www.occ.gov/rss/occ_news.xml（2026-09-20 重抓：200、10 筆 item、最新 17 Sep 2026 13:00:02 -0400）；unverified_or_excluded 第 9 條"
+      },
+      {
+        "where": "第一節第二段（正文第四段）",
+        "before": "資本未在 12 個月內募足，或未在 18 個月內開業，核准同樣自動失效。",
+        "after": "資本未在 12 個月內募足，或未在 18 個月內開業，核准同樣失效。",
+        "why": "「自動」是從 #1391 的 will automatically terminate 搬過來的。#1392／#1393 印的是 this approval expires，下一句還寫 OCC 只在最特殊情形下才給展延，寫成「自動」會讀成毫無轉圜。",
+        "source": "cd1392／cd1393「If the capital for the Bank is not raised within 12 months or if the Bank is not opened for business within 18 months from the preliminary conditional approval date, this approval expires.」"
+      },
+      {
+        "where": "第一節第三段（正文第五段）",
+        "before": "……不受數量限制、擔保品要求與低品質資產禁令拘束。",
+        "after": "……不受數量限制、擔保品要求與低品質資產禁令拘束；附註另載，該交易仍受安全穩健要求拘束。",
+        "why": "原句讀起來像整筆交易脫離 Regulation W。#1393 註 16 明寫該交易仍受 12 CFR 223.13 的安全穩健要求拘束，漏掉這一層會把豁免寫得比原文寬。",
+        "source": "cd1393 註 16「The transaction remains subject to Regulation W's safety and soundness requirement, set forth in 12 CFR 223.13.」"
+      },
+      {
+        "where": "第一節第三段（正文第五段）",
+        "before": "這是文件裡唯一點名的穩定幣，只以被監理對象出現。",
+        "after": "AUSD 與 #1391 提到的 USDC 一樣，在文件裡只以被監理對象出現。",
+        "why": "「唯一點名的穩定幣」直接被來源推翻：#1391 正文寫客戶可把託管資產與法幣、USDC 互轉，#1391 註 11 與 #1393 註 8 還提到 PAX Gold 與 BUSD。本紀錄的 not_said 第 7 條自己也寫著「AUSD、USDC 都只以業務對象出現」。",
+        "source": "cd1391「permitting customers to transfer and exchange custodied assets into and out of fiat currency and USDC」；cd1391 註 11；cd1393 註 8"
+      },
+      {
+        "where": "第二節第二段（正文第七段）",
+        "before": "附註定義為扣除全部負債後仍剩餘、未被設質或可抵銷的流動資產，且限四類——",
+        "after": "附註定義為扣除全部須償還負債後仍剩餘、未被設質或可抵銷的流動資產，不含關係企業的債務，且限四類——",
+        "why": "原文扣的是「反映對任何一方返還資金義務」的負債，不是全部負債；而且定義最後一句另外排除關係企業的債務。兩處都是 must_not_write 第 7 條點名的「漏掉這一層會讓門檻聽起來比實際寬鬆」。",
+        "source": "三份決定的 Eligible Liquid Assets 附註「means only Liquid Assets that exceed the aggregate amount of all deposits, borrowed funds, and other liabilities … that reflect an obligation to repay funds to any party … shall not include any obligation of any affiliate.」"
+      },
+      {
+        "where": "第二節第三段（正文第八段）",
+        "before": "……不含只有正常營運才有的支出，例如研發費用。",
+        "after": "……不必包含只有正常營運才有的支出，例如研發費用。",
+        "why": "原文是 need not include（不必包含），不是 shall not include（不得包含）。",
+        "source": "三份決定的 180 天附註「need not include expenses that would apply only in a normal operating scenario」"
+      },
+      {
+        "where": "第二節第三段（正文第八段）",
+        "before": "條件 3 到 6（含資本與流動性）都只在開業後前三年有效。",
+        "after": "條件 3 到 6（含資本與流動性）限於營運前三年，#1392、#1393 的條件 3、6 另及於籌設期間。",
+        "why": "#1392 與 #1393 的條件 3、6 明寫 throughout the in-organization period and during the … first three years of operation，寫成「只在開業後前三年」是把來源的範圍收窄了。#1391 才是四項都只掛營運前三年。",
+        "source": "cd1392 條件 3「This condition shall remain in effect throughout the Proposed Bank's in-organization period and during the Bank's first three years of operation.」、條件 6 同旨；cd1393 條件 3、6 同旨"
+      },
+      {
+        "where": "第四節第一段（正文第十一段）",
+        "before": "三份決定都寫明這些銀行不是存款機構。",
+        "after": "三份決定從不同角度寫到存款與存款保險。",
+        "why": "只有 #1391 寫「不收存款、不受 FDIC 保險」，#1393 寫「不會是受保存款機構」；#1392 全文沒有任何一句寫這家銀行不收存款或不受保，它寫的是穩定幣不是 FDI Act 下的存款。「三份都寫明」是把來源沒說的寫成來源說了。",
+        "source": "cd1391「The Bank will not take deposits and will not be insured by the Federal Deposit Insurance Corporation.」；cd1393「As noted, the Bank will not be an insured depository institution.」；cd1392 全文查核到 2026-09-20 未見對該行本身的同類句子"
+      },
+      {
+        "where": "第四節第三段（正文第十三段）",
+        "before": "……流動性標準與消費者保護不足（#1393 另多列準備金要求）。",
+        "after": "……缺乏流動性標準與消費者保護（#1393 另多列準備金要求）。",
+        "why": "原文是 the absence of liquidity standards or consumer protection（缺乏），不是「不足」。",
+        "source": "cd1392／cd1393 Public Comments and Analysis"
+      },
+      {
+        "where": "第五節第一段（正文第十四段）",
+        "before": "把境內提供虛擬資產服務的業者分成七種，依種類分別取得主管機關許可（第 7 條）",
+        "after": "境內提供虛擬資產服務的業者分成七種，須依種類分別取得主管機關許可（第 7 條第 1 項）",
+        "why": "條號掛錯：分成七種的是第 6 條第 2 項，第 7 條第 1 項規定的是「應依這些種類分別取得許可及發給許可證照，始得營業」。改成只把許可規定掛在第 7 條第 1 項。",
+        "source": "既有文章 crypto-news-taiwan-vasp-act-20260630 已核實的條文敘述"
+      },
+      {
+        "where": "第五節第三段（正文第十六段）",
+        "before": "台灣的分類許可制則連授權子法與施行日期都沒公告。",
+        "after": "台灣的分類許可制則仍在等授權子法與施行日期。",
+        "why": "「都沒公告」是查不到的全稱否定；既有文章只核實到金管會表示「將持續積極辦理授權子法之擬訂」、子法幾項與何時完成新聞稿沒有寫。",
+        "source": "既有文章 crypto-news-taiwan-vasp-act-20260630"
+      },
+      {
+        "where": "summary 第三句",
+        "before": "……三家銀行都不收存款，也不受聯邦存款保險保障。",
+        "after": "……#1391 明寫銀行不收存款、不受聯邦存款保險保障，#1393 確認銀行不是受保存款機構。",
+        "why": "與第四節第一段同一個問題：#1392 沒有寫，#1393 也沒有寫「不收存款」。",
+        "source": "同上"
+      },
+      {
+        "where": "FAQ 第一題答句",
+        "before": "GENIUS Act 在三份文件裡只用來說明國會承認無保險國民銀行有發行穩定幣的權限，以及條件 2 要求日後不符就要調整、停止或處分。",
+        "after": "GENIUS Act 在三份文件裡的角色是說明國會承認無保險國民銀行有發行穩定幣的權限、條件 2 要求日後不符就要調整、停止或處分，以及在 #1392 用來說明穩定幣不是《聯邦存款保險法》下的存款，都不是執照的法源。",
+        "why": "「只用來說明……兩件事」被來源推翻：#1392 另外用 GENIUS Act 說明支付型穩定幣不算存款、不受 FDIC 保險、不得表示為受保，並定義聯邦合格發行人包含無保險國民銀行。答案的重點（法源是國民銀行法）不變，但不能寫成「只有兩個身分」。",
+        "source": "cd1392「the GENIUS Act defines a payment stablecoin as not including a digital asset that is a deposit, states that payment stablecoins shall not be subject to deposit insurance by the FDIC, and makes it unlawful to represent payment stablecoins as subject to Federal deposit insurance.」"
+      },
+      {
+        "where": "FAQ 第一題答句",
+        "before": "三份文件的附註都以「See, e.g.」列舉 2025 年 12 月以來的同類核准，屬於例示，不是完整名單",
+        "after": "三份文件的附註都在列舉 2025 年 12 月以來的同類核准，#1391 與 #1392 以「See, e.g.」起頭，#1393 寫的是「recently approved several charters」，都屬於例示，不是完整名單",
+        "why": "#1393 列同類核准的註 6、7、12 起頭都是單純的 See，沒有 e.g.（註 12 還寫「five trust bank applications」）。用「三份都以 See, e.g. 起頭」去撐「不是完整名單」這個論點，論點成立但依據抄錯。",
+        "source": "cd1393 註 6「The OCC recently approved several charters for national trust banks … See OCC Corporate Decision 1380 …」；cd1391 註 8、cd1392 註 7 則為 See, e.g."
+      },
+      {
+        "where": "FAQ 第二題答句",
+        "before": "……或銀行未在 18 個月內開業，核准同樣自動失效。",
+        "after": "……或銀行未在 18 個月內開業，核准同樣失效；OCC 並寫明除最特殊情形外反對展延。",
+        "why": "同第一節第二段：#1392／#1393 印的是 expires，且下一句另有展延的但書，原文沒有「自動」二字。",
+        "source": "cd1392／cd1393「The OCC is opposed to granting extensions, except under the most extenuating circumstances …」"
+      },
+      {
+        "where": "FAQ 第三題答句",
+        "before": "三份決定都寫明銀行不收存款，也不受聯邦存款保險公司（FDIC）保險。",
+        "after": "#1391 寫明銀行不收存款，也不受聯邦存款保險公司（FDIC）保險；#1393 確認銀行不會是受保存款機構；#1392 寫的是穩定幣不是《聯邦存款保險法》下的存款。",
+        "why": "同 summary 第三句與第四節第一段。",
+        "source": "同上"
+      },
+      {
+        "where": "第一個 callout（核准不是最終定案）",
+        "before": "若所依據的資訊在核准後發生重大變更，OCC 得修改、暫停或撤銷這項核准。",
+        "after": "若 OCC 所依據的資訊在本決定所涉交易日之前發生重大變更，OCC 得修改、暫停或撤銷這項核准。",
+        "why": "原文的時間窗是 prior to the date of the transaction to which this decision pertains（本決定所涉交易日之前），不是「核准後」——兩者不是同一段期間。",
+        "source": "三份決定 Conclusion 末段「The OCC may modify, suspend, or rescind this approval if a material change in the information on which the OCC relied occurs prior to the date of the transaction to which this decision pertains.」"
+      },
+      {
+        "where": "表格 caption",
+        "before": "……流動性加碼取「資本 50%」與括號內金額兩者較高者。",
+        "after": "……流動性加碼取「資本 50%」與所列金額兩者較高者。",
+        "why": "表格格子裡沒有括號（寫的是「300 萬美元或資本 50%」），caption 指向一個不存在的版面元素。",
+        "source": "本內容包表格"
+      },
+      {
+        "where": "研究紀錄 diagram 第二格 detail",
+        "before": "其中四項只管前三年",
+        "after": "其中四項有三年期限",
+        "why": "與第二節第三段同一個錯：#1392、#1393 的條件 3、6 還涵蓋籌設期間，不是「只管前三年」。",
+        "source": "cd1392、cd1393 條件 3 與 6"
+      },
+      {
+        "where": "研究紀錄 diagram 第四格 detail",
+        "before": "不收存款也不受保",
+        "after": "兩份明寫不受 FDIC 保險",
+        "why": "與 summary 第三句同一個錯：三份裡只有 #1391 與 #1393 明寫不受保，#1392 沒有。",
+        "source": "cd1391、cd1393"
+      }
+    ],
+    "open_questions": [
+      "本紀錄 must_not_write 第 1 條自己寫著「三份文件的註腳……以 See, e.g. 起頭」，但 #1393 列同類核准的註 6、7、12 起頭都是單純的 See。內容包已改，這條撰稿禁令的措辭留著沒動（它是給撰稿者的界線，不是刊出去的主張），第二輪若要收斂可以一併改。",
+      "#1392 全文沒有任何一句寫「這家銀行不收存款」或「不受 FDIC 保險」，只有 #1391、#1393 有。內容包現在一律逐份歸屬。若站主想要一句涵蓋三家的「都不受保」，需要三份 PDF 以外的來源，本輪沒有。",
+      "「查核日在 OCC 新聞 RSS 未見這三件的新聞稿」這句依據的是 https://www.occ.gov/rss/occ_news.xml，它不在 sources[]（四條已滿）。本輪 2026-09-20 重抓確認仍成立（200、10 筆、最新 17 Sep 2026）。若站主要求每一句都指得到 sources[] 裡的網址，這一句應改寫或刪掉。",
+      "修正後 zh-TW 段落字數 2,987（上限 3,000），只剩 13 字餘裕；之後任何增補都要同時刪去等量的字。"
+    ],
+    "coordinator_rulings": [
+      "第 4 段「查核日讀到的 OCC 新聞 RSS 未見這三件的新聞稿，最新一筆停在 9 月 17 日」刪除（協調者 2026-09-20）：occ_news.xml 不在 sources[]（四條已滿），比照 Australia 篇把 RSS 依據句刪掉的做法；保留「本文讀到的公告管道是索引頁與三份決定書」。",
+      "must_not_write 第 1 條「以 See, e.g. 起頭」的措辭是給撰稿者的界線，不是刊出的主張；第二輪可改成「See／See, e.g.」，內容包已由第一輪改正。",
+      "「都不受 FDIC 保險」涵蓋三家的句子不寫：#1392 全文沒有，維持逐份歸屬。",
+      "第二輪後（2026-09-20）：兩組兆元數字原本只在 FAQ5，為守「FAQ ⊆ 正文」在表格加一列（各欄標明出自哪份決定書、兩組並列）並在 caption 說明不挑一組；正文段落字數不受影響。H4 小標「為什麼不是存款，也沒有存款保險」與圖解 caption 是主題標籤、不是對三家的斷言，維持；圖解第四格已指名 #1391、#1393。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (second round)",
+      "checked_on": "2026-09-20",
+      "method": "沒有參與撰稿，也沒有參與第一輪。2026-09-20 以 curl -sL -A \"Mokaair-editorial\" 把 sources[] 四條重抓一次（請求的 UA、標頭、查詢字串與表單都沒有帶任何人的 email 或個人資料）：cd1391.pdf 200／467,588 bytes／md5 5fb177a27d5ee989c7899e9300923ba6；cd1392.pdf 200／534,784／md5 6dc0123583bedca459c89e572ee503f1；cd1393.pdf 200／516,631／md5 1eb76246023675d5e3c374d0f1ac344e——三個 md5 與 sourcing_notes 及第一輪記的完全相同；Interpretations and Decisions 索引頁 200／102,733 bytes，解析出 81 列，Date of Letter 為 09/18/2026 的正好三列（由上而下 1393、1392、1391），表頭四欄與 source title 寫的 Type/Reference Number、Month Published、Date of Letter、Description 一致。三份 PDF 以 pypdf 與 pdftotext（-layout 與預設兩種）三種抽法交叉比對。重點放在第一輪改過的 21 處與它新寫進去的每一句，另把整份內容包的主張再掃一次。研究紀錄 85 條 verbatim_quote 以程式做連續字串比對（正規化空白、引號與連字號字形後同時比對三種抽取版本）：85 條全部命中，沒有任何一條含 …、... 或 | 的拼接引文，85 條的 url 也都在 sources[] 裡。內容包裡以「」引起來的英文字串（hereby conditionally approves、preliminary conditional approval、See, e.g.、recently approved several charters）逐條以同樣方式驗為單一連續原句。台灣段落與 FAQ 第六題逐句比對 crypto-news-taiwan-vasp-act-20260630 已核實的條文；兩個結尾連結的 text 與 crypto-news-2026-index、crypto-news-genius-act-occ-20260302 的 zh-TW title 逐字相同。沒有用 sources[] 以外的網址替文章補任何事實。",
+      "claims_checked": "第一輪改過的 21 處逐處覆核，另掃過內容包全部主張（正文 16 段、summary 四句、表格 16 格與 caption、圖解 caption、FAQ 六題、兩個 callout、title、description、四條 source、兩個連結），合計約 130 條；研究紀錄 85 條 verbatim_quote 以程式全部重驗",
+      "changes": [
+        {
+          "where": "正文第一段（內容包 blocks[0]）",
+          "before": "三案彼此獨立，OCC 未相提並論。",
+          "after": "三案彼此獨立，三份決定書沒有互相提及。",
+          "why": "「OCC 未相提並論」是沒有範圍的全稱否定——本文只讀了三份決定書與索引頁，管不到 OCC 在其他場合說了什麼。改成查得到的範圍：三份決定的註腳列的是 1353、1355、1356、1358、1359、1365、1366、1367、1370、1377、1380、1385，沒有任何一份引到另外兩份。",
+          "source": "cd1391 註 3、8、10；cd1392 註 7、8；cd1393 註 6、7、11、12（三份互不引用，查核日逐條清點）"
+        },
+        {
+          "where": "正文第三段（第一節第一段）",
+          "before": "……（初步附條件核准），且明寫最終核准要等開業前要求全部做到才會給。",
+          "after": "……（初步附條件核准），最終核准另待開業前要求做完。",
+          "why": "與下一段「銀行完成籌設要求並取得 OCC 最終核准前不得開始營業」是同一件事講兩次。依第二輪規格「要騰字就刪重複的敘述」，把重複的那半句壓縮，騰出的字全部用來補回下面幾處被省掉的限定詞；歸因（「則寫明」）留在下一段。",
+          "source": "cd1392／cd1393「The Bank may not begin the business of banking until it fulfills all requirements for a bank in organization and the OCC grants final approval.」"
+        },
+        {
+          "where": "正文第四段（第一節第二段）",
+          "before": "……；資本未在 12 個月內募足，或未在 18 個月內開業，核准同樣失效。",
+          "after": "……；自初步核准日起，資本未在 12 個月內募足，或未在 18 個月內開業，核准同樣失效。",
+          "why": "原文的兩段期間都從 preliminary conditional approval date 起算，原句沒有起算點，而同一段寫 #1391 時卻寫了「決定日起」，讀者會以為只有 Bastion 有起算點。",
+          "source": "cd1392／cd1393「If the capital for the Bank is not raised within 12 months or if the Bank is not opened for business within 18 months from the preliminary conditional approval date, this approval expires.」"
+        },
+        {
+          "where": "正文第五段（第一節第三段）",
+          "before": "以 #1393 為例，其股東 Agora Atlas Corp.……",
+          "after": "以 #1393 為例，其母公司 Agora Atlas Corp.……",
+          "why": "#1393 寫的是 wholly owned subsidiary——Agora Atlas 是百分之百的母公司，不是「其中一個股東」。",
+          "source": "cd1393「The Bank would be headquartered in New York, New York and a wholly owned subsidiary of Agora Atlas Corp.」"
+        },
+        {
+          "where": "正文第五段（第一節第三段）",
+          "before": "OCC 同時核准這筆關係企業交易適用 Regulation W 第 223.42(i) 條的豁免",
+          "after": "OCC 同時核准這筆向關係企業購買資產的交易適用 Regulation W 第 223.42(i) 條的豁免",
+          "why": "OCC 核准的是 the asset purchase，223.42(i) 也只豁免「新設銀行向關係企業購買資產」這一種交易。寫成「這筆關係企業交易」會讀成整個 cutover 都脫離 Regulation W。",
+          "source": "cd1393「Twelve CFR 223.42(i) provides an exemption from Regulation W for the purchase of assets from an affiliate by a newly formed bank」與「the OCC approves the asset purchase as exempt from the quantitative limits, collateral requirements, and low-quality asset prohibition of Regulation W under 12 CFR 223.42(i).」"
+        },
+        {
+          "where": "正文第五段（第一節第三段）——第一輪新寫的句子",
+          "before": "AUSD 與 #1391 提到的 USDC 一樣，在文件裡只以被監理對象出現。",
+          "after": "AUSD 與 #1391 提到的 USDC 一樣，在文件裡只是業務描述的對象，沒有金額或數量。",
+          "why": "第一輪把 must_not_write 第 10 條給撰稿者的界線（「只能以被監理的對象出現」）寫成了對文件的事實主張，而 USDC 在 #1391 根本不是 OCC 的監理對象——它只出現在一句服務描述裡（託管客戶可把資產與法幣、USDC 互換）。改成查得到的說法，並把本紀錄 not_said 第 7 條真正驗得過的部分（沒有任何數量）寫出來；查核日以程式清點，AUSD 與 USDC 在三份文件裡附近都沒有任何金額或數量。",
+          "source": "cd1391「permitting customers to transfer and exchange custodied assets into and out of fiat currency and USDC」；cd1393「Agora Atlas intends to transition the issuance of AUSD from Agora Bermuda to the Bank」；not_said 第 7 條"
+        },
+        {
+          "where": "正文第六段（第二節第一段）",
+          "before": "六項條件屬於 12 USC 1818 所稱聯邦銀行主管機關就申請案書面課加的條件",
+          "after": "六項條件屬於 12 USC 1818 所稱聯邦銀行主管機關就申請案等書面課加的條件",
+          "why": "原文引的法定範圍是 any application, notice, or other request，三者並列；只寫「申請案」是把來源的清單收窄成一項。加「等」保住非窮盡。",
+          "source": "三份決定「conditions 'imposed in writing by a federal banking agency in connection with any action on any application, notice, or other request' within the meaning of 12 USC 1818」"
+        },
+        {
+          "where": "正文第七段（第二節第二段）——第一輪改過的句子",
+          "before": "……仍剩餘、未被設質或可抵銷的流動資產，不含關係企業的債務",
+          "after": "……仍剩餘、未被設質、也未附留置權或抵銷權等權利的流動資產，不含關係企業的債務",
+          "why": "第一輪補回了「須償還」與「關係企業債務」兩層，但把原文的權利負擔清單（lien, encumbrance, charge, right of set off, credit or preference）壓成「或可抵銷」，只剩兩項，而且漏掉「free and kept free」的持續要求。這正是 must_not_write 第 7 條說的「漏掉這一層會讓門檻聽起來比實際寬鬆」。加「等權利」保住清單是例示。",
+          "source": "三份決定 Eligible Liquid Assets 註「shall not include any assets that are pledged in any manner, nor any assets that are not free and kept free from any lien, encumbrance, charge, right of set off, credit or preference in connection with any claim against the Bank.」"
+        },
+        {
+          "where": "正文第十段（第三節第一段）",
+          "before": "三份決定的條件 2 字句幾乎相同：如有必要，銀行須調整、停止或處分……",
+          "after": "三份決定的條件 2 字句幾乎相同：如有必要且在必要範圍內，銀行須調整、停止或處分……",
+          "why": "條文是 If and to the extent necessary，兩個限定詞；只寫「如有必要」會把條件 2 讀成一觸發就要全部停掉。FAQ 第四題同步補上。",
+          "source": "三份決定條件 2「If and to the extent necessary, the Bank must conform, cease, or divest……」"
+        },
+        {
+          "where": "正文第十三段（第四節第二段）",
+          "before": "但這是 OCC 對自身能力的描述——持有人倒閉時的受償順位，三份文件都沒有寫。",
+          "after": "但這是 OCC 對自身能力的描述——銀行倒閉時持有人的受償順位，三份文件都沒有寫。",
+          "why": "原句字面是「持有人倒閉」，主詞掛錯；同一篇的 FAQ 第三題寫的是「持有人在銀行倒閉時的受償順位」，兩處不一致。",
+          "source": "本內容包 FAQ 第三題；not_said 第 8 條"
+        },
+        {
+          "where": "正文第十四段（第四節第三段）",
+          "before": "各收到兩封代表銀行業公會的意見書",
+          "after": "各收到兩封代表銀行業的公會意見書",
+          "why": "原文是 trade groups representing banks——「代表銀行業」修飾的是公會，不是意見書。原句字面讀成「代表公會的意見書」，而且「銀行業公會」在台灣讀者眼中是特定團體名稱，本紀錄 not_said 第 9 條禁止指名。",
+          "source": "cd1392「The OCC received two comment letters from trade groups representing banks in connection with the Application.」；cd1393 同旨"
+        },
+        {
+          "where": "正文第十五段（第五節第一段）——第一輪改過的句子",
+          "before": "境內提供虛擬資產服務的業者分成七種",
+          "after": "境內為他人提供虛擬資產服務的業者分成七種",
+          "why": "第一輪把條號從第 7 條改成第 7 條第 1 項是對的，但漏了既有文章寫明的「為他人」這個限定詞；少了它，範圍會擴大到自行發行、自行使用的人。",
+          "source": "既有文章 crypto-news-taiwan-vasp-act-20260630「這部法把在我國境內為他人提供虛擬資產服務的業者分成七種」"
+        },
+        {
+          "where": "正文第十七段（第五節第三段）",
+          "before": "台灣這部法還沒有全部施行。",
+          "after": "台灣這部法還沒有施行。",
+          "why": "「還沒有全部施行」暗示已經有一部分施行了，既有文章沒有這回事：第 56 條把施行日期交給行政院，查核到 2026-09-16 為止法規資料庫仍寫生效日期未定，也就是一條都還沒開始跑。",
+          "source": "既有文章 crypto-news-taiwan-vasp-act-20260630（第 56 條、第 55 條兩段期間都還沒開始計算）"
+        },
+        {
+          "where": "表格第三列的列名與 caption",
+          "before": "列名「流動性加碼」；caption「……流動性加碼取「資本 50%」與所列金額兩者較高者。」",
+          "after": "列名「其中合格流動資產」；caption「……「其中合格流動資產」是第一類資本裡必須以合格流動資產持有的部分，不是另外加計，取「資本 50%」與所列金額兩者較高者；失效期限一列的 12／18 個月自初步核准日起算。」",
+          "why": "條件 4 寫的是 $6 million in tier 1 capital **of which** ……must be held in Eligible Liquid Assets——那 300 萬／500 萬是第一類資本「其中」的一部分，不是疊在資本之上的加碼。列名叫「加碼」會讓讀者把門檻算成 900 萬／1,500 萬。正文本來就寫對了（「其中 50% 或 300 萬美元」），錯的只有表格。",
+          "source": "cd1391 條件 4「The Bank must maintain a minimum of $6 million in tier 1 capital of which the greater of at least 50 percent of its tier 1 capital or $3 million must be held in Eligible Liquid Assets.」；cd1392、cd1393 條件 4 同構"
+        },
+        {
+          "where": "FAQ 第一題答句——第一輪新寫的句子",
+          "before": "……三份文件的附註都在列舉 2025 年 12 月以來的同類核准，#1391 與 #1392 以「See, e.g.」起頭，#1393 寫的是「recently approved several charters」，都屬於例示，不是完整名單……",
+          "after": "……三份文件的附註都在列舉 2025 年 12 月以來的同類核准，寫法是「See, e.g.」這種舉例，或「recently approved several charters」這種不定數，沒有一份說自己列的是完整名單……",
+          "why": "第一輪修掉了「三份都以 See, e.g. 起頭」，但新寫的歸屬仍然對不上：#1391 有兩種起頭——註 8 是 See, e.g.，註 10 卻是單純的 See，而且那一條列了七件。逐份歸屬只要再細一層就又會錯，改成不歸屬、只寫兩種寫法各自存在，並把結論收斂成查得到的否定句（沒有一份說自己是完整名單）。",
+          "source": "cd1391 註 8「See, e.g., OCC Corporate Decision No. 1367……」對照註 10「See OCC Conditional Approval No. 1353……」；cd1392 註 7、8 為 See, e.g.；cd1393 註 6「The OCC recently approved several charters for national trust banks……See OCC Corporate Decision 1380……」"
+        },
+        {
+          "where": "FAQ 第一題答句",
+          "before": "三份決定的法律依據是《國民銀行法》（National Bank Act）12 USC 21-27 與 27(a)，OCC 依此有權核發……",
+          "after": "……12 USC 21-27 與 27(a)，OCC 依此有權核發業務限於信託公司業務的銀行執照（#1391 的改制另依 12 USC 35 與 12 CFR 5.24）……",
+          "why": "#1391 不是新核執照而是改制，它的授權條文是 12 USC 35 與 12 CFR 5.24，整整一段在講 section 35 的五項要件。只寫 21-27／27(a) 會漏掉這一案真正的依據。",
+          "source": "cd1391「BPTC is a state trust company organized under New York law and is authorized to convert to a national bank under 12 USC 35 and 12 CFR 5.24.」"
+        },
+        {
+          "where": "FAQ 第二題答句——第一輪改過的句子",
+          "before": "……核准同樣失效；OCC 並寫明除最特殊情形外反對展延。",
+          "after": "……核准同樣失效；這兩份另寫明，OCC 反對展延，除非有最特殊的情形、而且 OCC 認定延誤非申請人所能控制。（#1391 的部分另補「而 #1391 也寫明 OCC 除有特殊情形外不給展延」）",
+          "why": "第一輪補了展延但書，但把 #1392／#1393 的第二個並列要件（and when the OCC determines that the delay is beyond the applicant's control）刪掉了，只剩一個；而且 #1391 的展延但書（does not grant extensions, except under extenuating circumstances）整句沒寫，正文卻只寫「除非 OCC 同意展延」，會讀成展延很平常。兩份的用字也不同（extenuating 對 most extenuating），不能互相套用。",
+          "source": "cd1391「The OCC does not grant extensions of the approval period, except under extenuating circumstances, and expects the conversion to occur as soon as possible after approval.」；cd1392／cd1393「The OCC is opposed to granting extensions, except under the most extenuating circumstances and when the OCC determines that the delay is beyond the applicant's control.」"
+        },
+        {
+          "where": "FAQ 第四題答句",
+          "before": "如果有必要，銀行必須調整、停止或處分穩定幣發行與贖回業務",
+          "after": "如果有必要，銀行必須在必要範圍內調整、停止或處分穩定幣發行與贖回業務",
+          "why": "與正文第十段同一個限定詞（to the extent necessary）。",
+          "source": "三份決定條件 2"
+        },
+        {
+          "where": "FAQ 第五題的問句與答句開頭",
+          "before": "OCC 監理的無保險信託銀行合計管理多少資產？／……對同一個基準日（2026 年 3 月 31 日）印出兩組不同數字",
+          "after": "OCC 監理的無保險國民信託銀行合計管理多少資產？／……對同一個基準日（2026 年 3 月 31 日）的受託管理資產（assets under administration）印出兩組不同數字",
+          "why": "註腳講的是 OCC-supervised uninsured national trust banks，漏掉「國民」會把州立信託公司也算進去；而且那個數字的名目是 assets under administration，不是銀行自己的資產。兩組數字仍照 must_not_write 第 14 條並列、各標出處，沒有挑一組。",
+          "source": "cd1391 註 5／cd1393 註 3「as of March 31, 2026, OCC-supervised uninsured national trust banks reported a total of $7.2 trillion in assets under administration.」；cd1392 註 4 同句但為 $7.7 trillion"
+        },
+        {
+          "where": "第一個 callout（核准不是最終定案）",
+          "before": "本文所寫的六項條件、資本門檻與時限，都是 OCC 在查核日（2026 年 9 月 20 日）公布的三份決定書內容。",
+          "after": "本文所寫的六項條件、資本門檻與時限，都出自查核日（2026 年 9 月 20 日）讀到的三份 OCC 決定書。",
+          "why": "三份決定書的信函日期是美東 2026-09-18，不是 09-20；09-20 是本文重抓與閱讀的日子。原句把查核日寫成 OCC 的公布日，與正文第一段的事件日互相矛盾。",
+          "source": "三份 PDF 抬頭「September 18, 2026」；索引頁 Date of Letter 欄 09/18/2026（三列）"
+        },
+        {
+          "where": "研究紀錄 diagram 第四格 detail——第一輪改過的",
+          "before": "兩份明寫不受 FDIC 保險",
+          "after": "#1391、#1393 明寫不受保",
+          "why": "第一輪把「三份」改成「兩份」是對的，但圖上不寫是哪兩份，讀者無從對照正文的逐份歸屬；圖解是會被單獨轉貼的東西。字數 12.05 個 CJK 單位，在 15 的上限內，1391／1393 兩個數字正文都有。",
+          "source": "cd1391「The Bank will not take deposits and will not be insured by the Federal Deposit Insurance Corporation.」；cd1393「As noted, the Bank will not be an insured depository institution.」；cd1392 全文查核到 2026-09-20 仍未見對該行本身的同類句子"
+        },
+        {
+          "where": "研究紀錄 verified_facts 裡「這不是第一批」那一條",
+          "before": "……而且一律以 See, e.g. 起頭（代表是例示、不是完整名單）。",
+          "after": "……寫法是 See 或 See, e.g.（代表是例示、不是完整名單），沒有一份說自己列的是完整名單。#1391 註 8 是 See, e.g. 起頭……同一份的註 10 起頭是單純的 See。",
+          "why": "這條 fact 的 verbatim_quote 沒問題，錯的是 fact 自己的敘述：「一律」被 #1391 註 10 與 #1393 註 6、7、12 推翻。研究紀錄裡的錯就是下一個撰稿者會照抄的錯。",
+          "source": "同 FAQ 第一題那一處"
+        },
+        {
+          "where": "研究紀錄 not_said 第 3 條與 must_not_write 第 1 條",
+          "before": "「三份文件的註腳都以 See, e.g. 起頭」；must_not_write 第 1 條另寫 GENIUS Act「只以兩種身分出現」",
+          "after": "兩處都改成「起頭是 See／See, e.g.」並補上 #1393 的 recently approved several charters；must_not_write 第 1 條的 GENIUS Act 身分補上第三種（#1392 用它說明支付型穩定幣不是 FDI Act 下的存款）",
+          "why": "依協調者第 2 條裁決收斂 See 的措辭；另外第一輪已經查出 GENIUS Act 有第三種身分並改了 FAQ，但撰稿界線這一條還留著「只有兩種」，下一個代理讀到的會是舊的。",
+          "source": "協調者裁決第 2 條；cd1392「the GENIUS Act defines a payment stablecoin as not including a digital asset that is a deposit……」"
+        }
+      ],
+      "open_questions": [
+        "第一輪 open_questions 第一條（must_not_write 的 See, e.g. 措辭）已依協調者裁決處理，可以視為結案；第二、三條維持原樣（#1392 沒有「不受保」的句子、RSS 那句已由協調者刪掉）。",
+        "第一輪 open_questions 第四條的字數（2,987）是它自己版本的數字；協調者刪掉 RSS 那句之後實際是 2,943，本輪改完是 2,981，離 3,000 還有 19 字。本輪所有增補都用壓縮重複敘述（第三段那半句）換來，沒有刪掉任何但書或限定詞。",
+        "兩組兆元數字（7.2／1.7／5.5 與 7.7／2.1／5.6）只寫在 FAQ 第五題，正文段落沒有。第二輪規格第 4 項的「FAQ 的答案 ⊆ 正文」嚴格讀會不合，但把兩組都搬進正文要約 90 字、現有餘裕不夠，而且 must_not_write 第 14 條要的就是「兩組都寫或整段不寫」。維持現狀，請站主決定要不要為它挪出正文字數。",
+        "第四節的小標「為什麼不是存款，也沒有存款保險」與圖解 caption 的「以及為何不受存款保險」仍是涵蓋三家的說法，而 #1392 全文沒有寫這家銀行不收存款或不受保（協調者已裁決句子維持逐份歸屬）。本輪只把圖解第四格改成指名 #1391、#1393，小標與 caption 沒動——改 caption 要同步內容包與研究紀錄兩處，且會影響已排定的製圖，留給站主決定。",
+        "研究紀錄的 editorial_brief 裡同樣寫著「以 See, e.g. 起頭」與 GENIUS Act「只有兩個身分」。那是發稿前的指示、是歷史紀錄，本輪沒有改動；若之後有人拿它當界線來源，要先看 must_not_write 與本節。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}

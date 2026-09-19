@@ -1,0 +1,830 @@
+{
+  "slug": "tech-news-iphone-duo-dev-resources-20260918",
+  "event_date": "2026-09-18",
+  "event_date_basis": "事件日取公告頁自己印出的日期。2026-09-20 以 curl -sL -A \"Mokaair-editorial\" 重抓 https://developer.apple.com/news/?id=nyuppv9r （HTTP 200、106,738 bytes、0 次轉址），頁面在 <p class=\"lighter  article-date\"> 印出「September 18, 2026」，全頁沒有印出任何時刻。同一天抓 https://developer.apple.com/news/rss/news.rss （200、427,604 bytes），同一篇的 pubDate 是 「Fri, 18 Sep 2026 10:00:57 PDT」，換算成 UTC 是 2026-09-18T17:00:57Z、台北時間是 2026-09-19 01:00:57。這裡沿用本 repo 既有的判例（docs/tech-news-2026/research/tech-news-apple-att-eu-20260916.json）：developer.apple.com/news 的公告以頁面自印的日期為事件日，feed 的 PDT 時刻只記在這裡，不寫進正文、也不在正文換算台北時間。slug 後綴、news_date 與正文第一段都用 2026-09-18。另記一個時間點供比對：工作坊清單上 39 場的 registrationStartDate 都是 2026-09-18T17:45:00Z（台北 2026-09-19 01:45），落在公告刊出之後約 45 分鐘，兩者互相印證公告確實是美西 9 月 18 日上午發出的。",
+  "title": "Apple 公布 iPhone Duo 開發資源：Xcode 26 以前建置的 App 用不滿螢幕",
+  "checked_on": "2026-09-20",
+  "sources": [
+    {
+      "title": "Apple Developer News：Build for iPhone Duo with new resources",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "publisher": "Apple (Apple Developer News)",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "Preparing your app for iPhone Duo（Technology Overviews）",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "publisher": "Apple (Apple Developer Documentation)",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "Xcode 27.1 Beta Release Notes",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "publisher": "Apple (Xcode Release Notes)",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "Meet with Apple：Upcoming activities（含 iPhone Duo 工作坊清單）",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "publisher": "Apple (Meet with Apple)",
+      "checked_on": "2026-09-20"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條 sources[] 全部由本人在 2026-09-20（台北）以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body 後才登記 checked_on；所有請求都沒有帶入任何人的 email、帳號或其他個人資料，也沒有登入。四條都是 Apple 自家網域的一手頁面，沒有用到任何整合站或新聞媒體。\n\n(1) https://developer.apple.com/news/?id=nyuppv9r —— HTTP 200、106,738 bytes、0 次轉址，伺服器直接吐出正文 HTML。同一篇的 RSS 版本（https://developer.apple.com/news/rss/news.rss，200、427,604 bytes，146 個 item）內容逐字相同，用來確認事件日與時刻，但 sources[] 放的是文章頁網址，不是 feed。\n\n(2) https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo —— HTTP 200、19,171 bytes。這是 Apple 的 DocC 文件站，HTML 只是外殼（裡面就寫著 This page requires JavaScript.），正文由同一網域的資料檔提供：https://developer.apple.com/tutorials/data/documentation/technologyoverviews/preparing-your-app-for-iphone-duo.json（200、87,352 bytes）。本文的 verbatim_quote 取自這份 JSON 解碼後的 text 節點，每一條都落在單一節點內、沒有跨越內嵌連結，因此在頁面上是連續文字。查核者重現方式：curl -sL -A \"Mokaair-editorial\" <該 .json 網址>，再以 json.load 後走訪 primaryContentSections 取 type==\"text\" 的字串。\n\n(3) https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes —— HTTP 200、18,811 bytes，同樣是 DocC 外殼，資料檔是 https://developer.apple.com/tutorials/data/documentation/xcode-release-notes/xcode-27_1-release-notes.json（200、6,537 bytes）。這個網址是從 https://developer.apple.com/news/releases/ 的「View release notes」連結 /go/?id=xcode-27_1-sdk-rn 轉出來的真實位址，不是猜的。\n\n(4) https://developer.apple.com/events/view/upcoming-events/ —— HTTP 200、38,407 bytes。這一頁是 Angular 單頁程式，伺服器回的 HTML 只有標題「Schedule - Meet with Apple - Apple Developer」，清單由頁面自己載入的 submoduleDeveloperWebservices.9d2c92d4.bundle.js 向同網域的 /services-public/event/developer/eventList 取得（POST，GET 會回 405）。端點與請求格式都是從這支頁面自己載入的腳本讀出來的，沒有猜任何網址或參數。實際送出的 body 與該腳本的預設值一致：\n  curl -s -A \"Mokaair-editorial\" -H \"Content-Type: application/json\" -X POST --data '{\"pageSize\":100,\"pageNumber\":1,\"search\":\"\",\"filters\":[{\"type\":\"date\",\"field\":\"eventDate\",\"arguments\":[\"2026-09-19T18:45:00Z\",\"2030-01-01T08:00:00Z\"]}],\"sort\":[{\"field\":\"startDate\",\"order\":\"ASC\"}]}' https://developer.apple.com/services-public/event/developer/eventList\n回應 HTTP 200、174,177 bytes、creationTimestamp 2026-09-19T18:40:23Z、totalRecords 58、events 58 筆（第 2 頁為空，確認沒有分頁遺漏）。另外用 search=\"workshop\"（就是公告連結上的過濾條件）跑了一次，回應 200、87,673 bytes、totalRecords 40，其中 39 筆名稱是 Workshop: Optimize your app for iPhone Duo，第 40 筆是不相干的 IETF HLS Interest Day。兩次查詢結果一致。\n\nverbatim_quote 的體例：來自 (1) 的引文照 HTML 原樣抄，包含 Apple 在 iPhone 與 Duo 之間、Apple Design Resources 字間使用的不斷行空格 U+00A0；來自 (2)(3) 的引文照 JSON 解碼後的字串抄，撇號是 U+2019；來自 (4) 的引文照回應本身的 minified JSON 片段抄（形如 \"key\":\"value\"，冒號後沒有空白），中文名稱在原始回應裡是 \\u 逸出序列，引文也照抄逸出後的樣子。以上三種來源各自都可以用上面的指令原樣重現。\n\n兩件沒有寫進 sources[] 但查過的事，理由記在 unverified_or_excluded：Apple Design Resources 頁面上 iPhone Duo 的實際下載項目，以及 Xcode 27.1 beta 的建置編號與釋出日期（在 developer.apple.com/news/releases/ 上）。四條來源的名額已滿，依 BRIEF 的做法是先定來源、再把文章收到來源涵蓋的範圍，所以那兩件事只留在紀錄裡，不進正文。",
+  "verified_facts": [
+    {
+      "fact": "這則消息是 Apple Developer News 在 2026 年 9 月 18 日刊出的開發者公告，標題是「Build for iPhone Duo with new resources」；頁面上 iPhone 與 Duo 之間是不斷行空格（U+00A0），引用時要照抄。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Build for iPhone Duo with new resources"
+    },
+    {
+      "fact": "公告頁自己印出的日期寫在 article-date 那一行，是 2026 年 9 月 18 日；全頁沒有印出任何時刻。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "article-date\">September 18, 2026"
+    },
+    {
+      "fact": "公告全文只有四段，每段一句話加一個連結。第一段叫開發者取得 Xcode 27.1 beta，原文沒有說它是必要條件，也沒有給建置編號。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Get Xcode 27.1 beta."
+    },
+    {
+      "fact": "第二段是設計檔：Apple 說可以從 Apple Design Resources 取得 iPhone Duo 的 Figma 與 Sketch design kits。這是 Apple 對自家頁面的說法，本文只轉述，不描述檔案內容。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Get Figma and Sketch design kits for iPhone Duo from the Apple Design Resources."
+    },
+    {
+      "fact": "第三段是工作坊：Apple 說報名全球各地的工作坊，可以學到怎麼為所有螢幕尺寸最佳化 App 並打造客製化體驗。這句是 Apple 對課程效果的描述。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Sign up for workshops around the world to learn how to optimize your app and build customized experiences for all screen sizes."
+    },
+    {
+      "fact": "第四段是文件：Apple 請開發者去看「怎麼讓 App 為 iPhone Duo 做好準備」。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Find out more about preparing your app for iPhone Duo."
+    },
+    {
+      "fact": "工作坊那一段的連結，指向 Meet with Apple 活動清單以 workshop 過濾後的網址；本文引用的是同一份清單未過濾的版本。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "href=\"https://developer.apple.com/events/view/upcoming-events?search=workshop\""
+    },
+    {
+      "fact": "設計檔那一段的連結指向 Apple Design Resources 首頁。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "href=\"https://developer.apple.com/design/resources/\""
+    },
+    {
+      "fact": "Xcode 那一段的連結指向 Apple Developer 的 Releases 清單頁。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "href=\"https://developer.apple.com/news/releases/\""
+    },
+    {
+      "fact": "最後一段的連結指向 Apple 為 iPhone Duo 開的開發者專頁。",
+      "url": "https://developer.apple.com/news/?id=nyuppv9r",
+      "is_vendor_claim": false,
+      "verbatim_quote": "href=\"https://developer.apple.com/iphone-duo/\""
+    },
+    {
+      "fact": "全篇最關鍵的一句：Apple 明講用 Xcode 26 或更早版本建置的 App，畫面不會延伸到狀態列與相機下方。讀者看到的「上面空一塊」不是 App 寫壞了，而是建置工具的版本決定的。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Build your app with the latest version of Xcode to use all of the available screen space on iPhone Duo. When you build with Xcode 26 and earlier, your app doesn’t extend under the status bar and camera."
+    },
+    {
+      "fact": "Apple 對這份文件的一句話說明：要更新 iOS App，讓它在內外螢幕之間動態改變尺寸、為摺疊螢幕調整版面、把工具列改成直式。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Update your iOS app to dynamically resize for inner and outer displays, adjust your layout for the folding display, and adapt bars for vertical layout."
+    },
+    {
+      "fact": "Apple 描述這支手機在開發者眼中的樣子：外螢幕小、內螢幕大，兩邊都有前鏡頭，內螢幕的前鏡頭不用時會藏起來；開合、半摺與旋轉時內容會在兩個螢幕之間搬家並跟著轉向調整，半摺時畫面要配合摺痕區。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo is a foldable phone, with a compact outer display and a large inner display. Both displays include a front camera, and the inner front-facing camera is hidden when not in use. As iPhone Duo is opened, closed, partially folded, and rotated, content transitions between displays and adjusts for rotated positions. When partially folded, views adapt to the folding region of the display."
+    },
+    {
+      "fact": "Apple 說「會變形」是這支手機上的關鍵特性（原文是 a key feature，不是「最關鍵的一件事」），並說如果 App 本來就能在 iPad 與 Mac 上跑、或已經為 iPhone Mirroring 做過縮放，就已經走了一大段路。這是 Apple 對移植難度的判斷，不是實測。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Resizing is a key feature for your app on iPhone Duo. If your app already works on iPad and Mac or you’ve prepared your app to resize in iPhone Mirroring, you’re well on your way to supporting iPhone Duo."
+    },
+    {
+      "fact": "導覽列、工具列與分頁列在某些姿勢下會被系統整組改成直立、放到螢幕側邊；Apple 要開發者重排，讓常用的控制項留在看得到的地方，不常用的在「空間有限時」（when there’s limited space，這個條件不可省）收進溢出選單。這解釋了讀者看到的「按鈕跑到旁邊去了」。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "iPhone Duo presents navigation bars, toolbars, and tab bars together vertically on the side of the display in some poses. Review and organize your app’s bars to ensure frequently used controls stay visible, and less frequently used controls appear in an overflow menu when there’s limited space."
+    },
+    {
+      "fact": "直式工具列出現的時機寫得很具體：闔起來用外螢幕時會直排，打開時某些放在前緣或後緣的畫面也會直排。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This happens on the outer display when the device is closed, and for some views in the leading or trailing position on the inner display when the device is open."
+    },
+    {
+      "fact": "Apple 列出開發者該自己找出來的毛病，其中一項正是讀者會遇到的現象：摺疊或展開時位置怪掉的畫面、表單與彈出層。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Identify any views, sheets, or popovers that position awkwardly when you fold or open iPhone Duo."
+    },
+    {
+      "fact": "另一項是落在摺痕上、看不清楚也不好按的元件或控制項。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Identify elements or controls in your views that appear in the fold, and are difficult to see or interact with."
+    },
+    {
+      "fact": "Apple 給的第一條建議是用系統提供的版面容器，因為這些容器會自己處理外螢幕、全開或半摺的內螢幕，以及被鏡頭遮住的區域。這是 Apple 對自家元件的說法。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Prefer system-provided layouts and containers, such as split views, tab bars, arrangement views, and navigation stacks. These handle resizing, automatically adjusting for the outer display, fully open or folded inner display, and camera occlusions."
+    },
+    {
+      "fact": "Apple 也把常見的寫法錯誤點名出來：尺寸要相對於容器，不要寫死 iPhone 的尺寸。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Size your views relative to their container rather than to fixed iPhone dimensions."
+    },
+    {
+      "fact": "版面計算要依場景或容器的範圍，不是依螢幕尺寸。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Make layout calculations based on your scene or containing view’s bounds rather than screen dimensions."
+    },
+    {
+      "fact": "工具列項目只給文字、沒有圖示的話，系統就不會把它放進直式工具列——一條很具體、讀者也感受得到的規則（按鈕「不見了」）。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If your item has a title and doesn’t have an icon, the system doesn’t present it vertically."
+    },
+    {
+      "fact": "用自訂視圖而不是文字或圖示做的項目，系統同樣不會直排。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If your item uses a custom view rather than a title or icon, the system doesn’t present it vertically."
+    },
+    {
+      "fact": "系統把摺痕與鏡頭遮蔽統稱為保留區域：摺痕會把一個大畫面切成兩半（division），鏡頭會蓋住內容（occlusion）；內螢幕的前鏡頭啟用時「可能」擋住畫面（原文 can block，不是一定會擋），外螢幕的前鏡頭則永遠擋著（always occludes）。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A division occurs when a folding region divides a large view into smaller views. An occlusion is an area of a view where a hardware element, such as the camera, covers your content so it isn’t visible. The inner front-facing camera can block your view when it’s active, and the outer front-facing camera always occludes your view."
+    },
+    {
+      "fact": "保留區域會隨姿勢生效或失效：半開時摺痕這個保留區域是生效的，全開時就失效。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A reserved region can be active or inactive. For example, a reserved region that represents the fold is active when iPhone Duo is partially open, but inactive when it is fully open."
+    },
+    {
+      "fact": "相機 App 有自己的坑：使用者開合與旋轉手機時，App 可能換到另一個螢幕上，本來在用的鏡頭會變成朝向相反的方向。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When a person opens, closes, and rotates the phone, your app may change which display it’s on, and the camera you’re using may point in the opposite direction."
+    },
+    {
+      "fact": "全開用後鏡頭拍照或錄影時，外螢幕可以同時顯示另一份內容，內螢幕維持顯示 App。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When iPhone Duo is fully open and capturing photos or video with the rear camera, it can show content on the outer display in addition to showing your app on the inner display."
+    },
+    {
+      "fact": "Apple 提供一種叫 arrangement view 的版面容器，讓主、次兩個畫面隨手機姿勢調整；它有 split 與 overlay 兩種擺法。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": ", which is a layout container for a primary view and a secondary view that you can use to adjust to the different device poses. Arrangement views offer two styles of preferred arrangements: split and overlay."
+    },
+    {
+      "fact": "Apple 特別提醒不要把 arrangement view 塞進導覽分割視圖、清單或捲動視圖裡，否則畫面可能有一部分按不到。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Avoid placing an arrangement view inside a navigation split view, list, scroll view, or other container that might cause part of your view to become inaccessible."
+    },
+    {
+      "fact": "這份文件的官方標題就寫著 Beta：Xcode 27.1 目前是測試版，不是正式版。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Xcode 27.1 Beta Release Notes"
+    },
+    {
+      "fact": "Xcode 27.1 beta 內含 Swift 6.4，以及 iOS 27.1、iPadOS 27、tvOS 27、watchOS 27、macOS 27、visionOS 27 的 SDK。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Xcode 27.1 beta includes Swift 6.4 and SDKs for iOS 27.1, iPadOS 27, tvOS 27, watchOS 27, macOS 27, and visionOS 27."
+    },
+    {
+      "fact": "要跑 Xcode 27.1 beta，Mac 必須是 macOS Tahoe 26.6 以上——這是開發者端的門檻，不是使用者端的。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Xcode 27.1 beta requires a Mac running macOS Tahoe 26.6 or later."
+    },
+    {
+      "fact": "實機除錯的支援範圍：iOS 17 以上、tvOS 17 以上、watchOS 10 以上與 visionOS。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Xcode 27.1 beta supports on-device debugging in iOS 17 and later, tvOS 17 and later, watchOS 10 and later, and visionOS."
+    },
+    {
+      "fact": "Apple 自己列出的已知問題之一：iPhone Duo 的模擬器跑不了 StandBy 待機模式。這是「工具現在還測不了」的具體例子。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "StandBy is unavailable in the iPhone Duo Simulator runtime."
+    },
+    {
+      "fact": "另一個已知問題更關鍵：iPhone Duo 的模擬器上，大多數 App extension 沒辦法執行與除錯。小工具、鍵盤、分享選單這類東西都屬於 extension。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Running and debugging most app extensions is unavailable in the iPhone Duo Simulator runtime."
+    },
+    {
+      "fact": "Apple 也寫了模擬器第一次啟動可能要好幾分鐘。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Initial Simulator launch can take several minutes."
+    },
+    {
+      "fact": "預覽功能這次新增的東西，是可以在畫布上預覽裝置「另一個螢幕」的內容，正好對應摺疊機的內外兩塊螢幕。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The canvas overrides picker now includes a Display group for previewing content on a device’s alternative display."
+    },
+    {
+      "fact": "Mac Catalyst 這條路目前是壞的：用到 iOS 27.1 專屬 API 的專案，在建置 Mac Catalyst 時會出現編譯錯誤。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Projects that use APIs specific to iOS 27.1 show compile errors when building for Mac Catalyst"
+    },
+    {
+      "fact": "同一節還寫著：以 iOS 27.1 為目標的專案，看不到 Mac Catalyst 的執行目標。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Projects that target iOS 27.1 show no Mac Catalyst run destination available."
+    },
+    {
+      "fact": "工作坊的正式名稱是「Workshop: Optimize your app for iPhone Duo」；清單上以這個名字出現的場次全部屬於同一系列。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"name\":\"Workshop: Optimize your app for iPhone Duo\""
+    },
+    {
+      "fact": "課程說明由 Apple 撰寫：帶自己的專案來，和 Apple 的人一起改；多數場次還寫著每天的自助式流程相同，來越多天走越遠，需要幾天就報名幾天。2026-09-20 查核：39 場的英文說明共有四種版本（four-day 8 場、three-day 21 場、three-day 另加 App Intents／Siri 段落 3 場＝邁阿密、two-day 7 場＝紐約與 Cupertino），而 two-day 那 7 場的說明裡沒有「self-guided format each day／sign up for as many days as you need」這兩句，因此不可寫成 39 場一律如此。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Bring your project and work alongside Apple experts who will answer your questions, review your project, and help you move forward. The workshop runs in the same self-guided format each day, so the more days you join us, the further you’ll get. Please sign up for as many days as you need."
+    },
+    {
+      "fact": "課程說明也寫明現場會用到實機：這場工作坊是用 iPhone Duo 建置與測試自己的 App。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For this workshop, you’ll build and test your app using iPhone Duo."
+    },
+    {
+      "fact": "Apple 寫的課程目標是「最佳化 App 並探索所有螢幕尺寸的可變形性」，具體題目是導覽、控制項、版面、不同姿勢與設計準則。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "to discover how to optimize your app for iPhone Duo and explore resizability for all screen sizes. Learn to adapt your app’s navigation, controls, and layout for the foldable display, update your app for different poses, and apply design best practices."
+    },
+    {
+      "fact": "場地之一是倫敦的 Apple（Battersea Power Station），清單上的城市欄寫 London、國家欄寫 United Kingdom。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"name\":\"Apple (Battersea Power Station)\",\"countryCode\":\"GBR\",\"countryName\":\"United Kingdom\""
+    },
+    {
+      "fact": "另一個場地是巴黎的 Apple Paris。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"name\":\"Apple Paris\",\"countryCode\":\"FRA\",\"countryName\":\"France\""
+    },
+    {
+      "fact": "第三個場地是柏林的 Apple Berlin。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"name\":\"Apple Berlin\",\"countryCode\":\"DEU\",\"countryName\":\"Germany\""
+    },
+    {
+      "fact": "美國的場地之一是邁阿密的 Apple Miami，清單上的城市欄寫的是 Coral Gables。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"name\":\"Apple Miami\",\"countryCode\":\"USA\",\"countryName\":\"United States\""
+    },
+    {
+      "fact": "另外兩個美國場地是 Cupertino 的 Apple Developer Center 與紐約。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"name\":\"Apple Developer Center Cupertino\",\"countryCode\":\"USA\""
+    },
+    {
+      "fact": "所有工作坊場次的報名開放時間相同，都是 2026-09-18T17:45:00Z，換算台北時間是 9 月 19 日凌晨 1 點 45 分，在公告刊出之後。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"registrationStartDate\":\"2026-09-18T17:45:00Z\""
+    },
+    {
+      "fact": "每一場都是實體活動：清單資料把型態標為 inperson。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"conferenceTypes\":[\"inperson\"]"
+    },
+    {
+      "fact": "工作坊每一場的授課語言欄位都是 en（英文）。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"deliveryLanguage\":\"en\""
+    },
+    {
+      "fact": "報名的地區限制欄位寫的是 Worldwide，也就是不限國家；這和「有沒有你那一區的場次」是兩回事。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"restrictedCountries\":[{\"code\":\"WWW\",\"alpha2\":\"WW\",\"name\":\"Worldwide\"}]"
+    },
+    {
+      "fact": "清單上每一場都帶一個 availableCountForRegistration（可報名人數）欄位，逐場不同；那是查詢當下還開放的人數，不是 Apple 公布的場地容量，也會隨報名而變。2026-09-20 第二輪重查（creationTimestamp 2026-09-19T19:44:44Z）：巴黎最早那場（當地 9 月 28 日）仍是 30，歐洲 29 場落在 3 到 42 之間（其中 18 場在 20–39，所以「多半顯示二、三十個」成立），北美 10 場則是 986 到 999——第一輪寫的下限 985 幾小時後就變了，正文與 FAQ 沒有引用這兩個數字，只有「30」繫著查核日。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"availableCountForRegistration\":30"
+    },
+    {
+      "fact": "亞太地區唯一一場與 iPhone Duo 有關的活動是上海 Apple Developer Center 的線上講座，英文名稱是「Get started with iPhone Duo」。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"en\":{\"name\":\"Get started with iPhone Duo\"}"
+    },
+    {
+      "fact": "上海那一場是 Webex 線上場，授課語言欄位是簡體中文。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"deliveryLanguage\":\"zh_Hans\",\"screeningMethod\":\"firstComeFirstServed\",\"conferenceTypes\":[\"webex\"]"
+    },
+    {
+      "fact": "上海那一場的時間是 2026-09-29T02:00:00Z 到 04:00:00Z，換算台北時間是 9 月 29 日上午 10 點到 12 點；地點欄的 timeZone 寫 Asia/Shanghai，和台北同為 UTC+8。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"startDate\":\"2026-09-29T02:00:00Z\",\"endDate\":\"2026-09-29T04:00:00Z\""
+    },
+    {
+      "fact": "上海那一場的報名在 2026-09-16T02:00:00Z（台北 9 月 16 日上午 10 點）就開放，比 9 月 18 日的開發者公告早兩天，因此不是這則公告的一部分。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"registrationStartDate\":\"2026-09-16T02:00:00Z\""
+    },
+    {
+      "fact": "上海那一場的英文說明寫是半天的線上場次，內容涵蓋設計原則與模式、自適應版面、多視窗與多螢幕體驗，以及內外鏡頭。",
+      "url": "https://developer.apple.com/events/view/upcoming-events/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In this half-day online session, you'll explore design principles and patterns, learn how to adopt responsive and flexible layouts, discover how to build rich multi-window and multi-display experiences, and find out how to leverage the outer and inner cameras."
+    },
+    {
+      "fact": "（查核加入）自訂視圖要自己處理保留區域時，文件給的做法是讀出保留區域的框再據此調整版面；整份文件沒有任何一句叫開發者「避開鏡頭正下方」。",
+      "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Inspect the frames of the reserved regions, and adjust your views accordingly."
+    },
+    {
+      "fact": "（查核加入）Mac Catalyst 那兩條已知問題，Apple 各自附了一個暫行做法；第二條的做法是在目標設定裡加上 Mac Catalyst 27.0 的最低部署版本。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Add a Mac Catalyst 27.0 minimum deployment in target settings."
+    },
+    {
+      "fact": "（查核加入）第一條的暫行做法是用建置期條件式把受影響的程式碼隔開。原文的 #if !targetEnvironment(macCatalyst) 與 #if !TARGET_OS_MACCATALYST 是 codeVoice 節點，會把句子切開，所以這裡只抄得到前半這一段連續字串（尾端的空白照抄）。",
+      "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+      "is_vendor_claim": false,
+      "verbatim_quote": " Use build-time conditionals like "
+    }
+  ],
+  "not_said": [
+    "沒有台灣、日本、韓國的場次。以 2026-09-20 02:40（台北）重抓 developer.apple.com/events/view/upcoming-events/ 這份清單、並把 eventDate 篩選區間設成「現在到 2030-01-01」取回全部 58 筆活動逐筆看過，地區欄只有 Europe（29 筆）、North America（28 筆）與 Asia Pacific（1 筆，上海線上場）三種，沒有任何一筆的國家欄是 Taiwan、Japan 或 Korea。句子只能寫成「查核當天的清單上沒有」，不可寫成 Apple 說不辦、也不可寫成以後不會有。",
+    "公告沒有說 Xcode 27.1 beta 是「必要」的。原文只有「Get Xcode 27.1 beta.」一句；技術文件寫的是「用最新版 Xcode 建置」，並只點名 Xcode 26 與更早的版本會少掉哪一塊。以查核到 2026-09-20 的這兩頁為準，兩邊都沒有寫「必須」，也沒有寫用 Xcode 27 正式版建置會怎樣。",
+    "沒有任何一頁寫出既有 App 什麼時候會修好版面。四條來源都只寫開發者「該怎麼做」，沒有任何時程、沒有點名任何一支第三方 App，也沒有任何比例或統計。",
+    "工作坊沒有寫費用。清單資料與公告都沒有出現價格、免費或收費的字樣，本文不寫「免費」也不寫「要付費」。",
+    "公告沒有提到 iPhone Duo 的任何硬體規格、售價、上市國家或電信商。這則公告全文只有四句話加四個連結，規格與價格是 2026-09-09 那一篇的內容。",
+    "Xcode 27.1 的 release notes 沒有寫正式版的釋出日期，也沒有寫 beta 會持續多久。以查核到 2026-09-20 的頁面為準，整頁只有 Overview、Mac Catalyst、Previews、Simulator 四節，沒有時程表。",
+    "技術文件沒有說 iOS 27.1 會在哪一天給一般使用者。這份文件只談 App 該怎麼改，沒有任何對使用者的日期承諾。",
+    "四條來源都沒有提到台灣的任何機關、電信業者或開發者社群，也沒有繁體中文的活動或文件版本說明。",
+    "公告沒有說明 design kits 是新檔案還是併進既有的檔案裡。原文只寫「從 Apple Design Resources 取得 iPhone Duo 的 Figma 與 Sketch design kits」，沒有寫檔名、版本或更新日期。",
+    "清單資料沒有印出「這 39 場」這個數字。以 search=workshop 查詢時，Apple 自己回的 totalRecords 是 40，其中一筆是名稱完全不同的 IETF HLS Interest Day；39 是本文 2026-09-20 自己逐筆清點的結果，寫進文章時要講明是本站清點的。",
+    "（查核加入）公告沒有直接連到「為 iPhone Duo 準備 App」技術文件，也沒有直接連到 Xcode 27.1 Beta Release Notes。2026-09-20 逐一讀出四個 href：軟體釋出清單 /news/releases/、Apple Design Resources /design/resources/、工作坊清單 /events/view/upcoming-events?search=workshop、iPhone Duo 開發者專頁 /iphone-duo/。文章不可寫成「公告連到技術文件」或「公告連到 Xcode 27.1 beta」。",
+    "（查核加入；第二輪訂正過證據）「為 iPhone Duo 準備 App」技術文件與 Xcode 27.1 Beta Release Notes 兩頁都沒有印出「最後更新日期」：2026-09-20 抓到的 DocC 外殼與資料檔裡，Updated／updated／modified／Last／September 合計 1 次（prep 資料檔裡的一個 updated 出現在推薦影片的摘要文句中，不是頁面日期戳），沒有任何日期戳，metadata 只有 title、role、availableLanguages（prep 另有 images、modules，xcode 另有 roleHeading），沒有任何日期欄位。第一輪在這裡寫「2026 各 0 次」是錯的：prep 資料檔的 2026 出現 5 次、xcode 資料檔 1 次，全部是頁尾的 Copyright © 2026 Apple Inc. 與 wwdc2026／wwdc2025 影片識別碼，都不是更新日期。因此不可以把公告的 2026-09-18 掛到這兩頁上（初稿的 FAQ 第一題曾寫成「2026 年 9 月 18 日的技術文件」），正文與 FAQ 只能寫「沒有標明最後更新日期」，不可寫成「整頁沒有任何年份」。release notes 標題本身帶版本號 27.1，所以也不能寫成「頁面上沒有版本號」。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Apple Design Resources 頁面上，iPhone Duo 的 Figma 與 Sketch design kit 到底是哪個檔案。",
+      "seen_where": "2026-09-20 以 curl -sL -A \"Mokaair-editorial\" 抓 https://developer.apple.com/design/resources/（HTTP 200、152,321 bytes、0 次轉址）並讀完正文。全頁只有三處出現 Duo，都是 Product Bezels 區的「iPhone Duo」（標示 Photoshop, PNG，下載檔 Bezel-iPhone-Duo.dmg）；Figma 與 Sketch 的 UI Kit 掛在「iOS 27 and iPadOS 27」標題之下，Figma 連結是 figma.com 社群檔 ios-and-ipados-27。",
+      "why_excluded": "這一頁沒有進 sources[]（四條名額已滿），而且 Apple 沒有在任何讀得到的頁面說明 Duo 的版型是獨立檔案還是併在 iOS 27 的 UI Kit 裡。文章只能照公告原文轉述 Apple 的說法並標明是 Apple 說的，不得寫成「頁面上有一個叫 iPhone Duo 的 Figma／Sketch 下載」，也不得寫成「頁面上找不到」。"
+    },
+    {
+      "claim": "Xcode 27.1 beta 的建置編號 27A9269，以及它是 2026 年 9 月 18 日釋出的。",
+      "seen_where": "2026-09-20 抓 https://developer.apple.com/news/releases/（HTTP 200、201,698 bytes）讀到正文，清單上印著「Xcode 27.1 beta (27A9269)」與「September 18, 2026」；同一頁還印著 Xcode 27 (27A266a) September 14, 2026 與 Xcode 27.2 beta (27B5019j) September 16, 2026。",
+      "why_excluded": "這一頁沒有進 sources[]，所以文章不寫建置編號、不寫釋出日期，也不寫 27.2 beta。特別注意 27.2 beta 的日期比 27.1 beta 早，兩者的關係官方沒有任何一頁解釋，猜測等同捏造。"
+    },
+    {
+      "claim": "工作坊的報名資格欄位 restrictedDeveloperType 值為 rad 是什麼意思（免費開發者帳號還是付費會員）。",
+      "seen_where": "清單資料每一筆都帶 \"restrictedDeveloperType\":\"rad\"；活動頁自己載入的 submoduleDeveloperWebservices.9d2c92d4.bundle.js 裡這個列舉只有兩個值，Rad=\"rad\" 與 Paid=\"paid\"。",
+      "why_excluded": "Apple 沒有在任何讀到的頁面印出 rad 的全稱或中文說明。文章不翻譯這個欄位、不推論它等於免費帳號或付費會員，只寫地區限制欄位是 Worldwide。"
+    },
+    {
+      "claim": "工作坊的報名流程是「送出申請、由 Apple 決定是否錄取」。",
+      "seen_where": "清單資料把 39 場工作坊的 screeningMethod 標為 screening（上海那場是 firstComeFirstServed）；活動頁的前端腳本 app.bdf7622a.bundle.js 對 screening 類活動把按鈕字串換成 common.cta.request 而不是 register，確認畫面的文案是「We've received your request.」與「If your request is confirmed, you'll receive a confirmation email…」。",
+      "why_excluded": "這些字串在 JavaScript 檔裡，不是讀者打開頁面就看得到的句子，而且要登入才會走到那一步。文章只寫「各場有各自的報名截止時間、名額有限」，不描述錄取流程。"
+    },
+    {
+      "claim": "iPhone Duo Group Labs（9 月 16、17 日）、三種 Q&A（9 月 23 日）與六支技術影片。",
+      "seen_where": "2026-09-20 抓 https://developer.apple.com/iphone-duo/（200、115,345 bytes）與 https://developer.apple.com/events/（200、117,442 bytes），兩頁都列出這些項目，並寫著 More Group Labs coming soon。查核補記：活動清單那 58 筆裡，Q&A 是三種題目（Photos & Camera、SwiftUI、UIKit）各兩個時段共 6 筆，都是 eventURL 線上場、英文、firstComeFirstServed、restrictedCountries 為 Worldwide，地區欄記在 North America（Cupertino）。所以「亞太地區只有上海那一場」講的是清單的地區欄，不等於亞太的開發者沒有別的線上場可參加——正文因此寫成「清單上亞太地區唯一一場」。",
+      "why_excluded": "兩頁都沒有進 sources[]。這些活動也都已經過去或極短期，對台灣讀者沒有可行動的意義，文章不寫。"
+    },
+    {
+      "claim": "「Preparing your app for iPhone Duo」這份文件沒有繁體中文版。",
+      "seen_where": "該文件的 DocC 資料 metadata.availableLanguages 列出 de-DE、en-US、es-419、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN。",
+      "why_excluded": "那是 JSON 的中繼資料，不是頁面印出來的句子，而且「清單上沒有」不等於「Apple 說沒有」。文章不寫這件事。"
+    },
+    {
+      "claim": "第三方 App 什麼時候會更新、哪些 App 已經更新。",
+      "seen_where": "沒有任何一手來源。",
+      "why_excluded": "依指派明文禁止推測，也查不到官方統計。文章只寫 Apple 對開發者的要求與時間表。"
+    },
+    {
+      "claim": "iPhone Duo 的螢幕尺寸、材質、電池、台灣售價與上市時程。",
+      "seen_where": "已在 2026-09-09 的既有文章與 Apple 9 月 9 日新聞稿寫過。",
+      "why_excluded": "依指派，本篇不重講 9 月 9 日那篇的規格與價格；只在結尾連結指回去。"
+    },
+    {
+      "claim": "工作坊在各城市的逐場日期（例如巴黎 9 月 28 日到 10 月 1 日、柏林 11 月 17 日到 19 日）。",
+      "seen_where": "清單資料每一筆都帶 UTC 的 startDate／endDate 與該場地的 timeZone 欄位（Europe/Amsterdam、Europe/London、America/New_York、America/Los_Angeles）；本文用這兩個欄位換算出當地日期，最早一場是當地 2026-09-28（巴黎與 Cupertino），最晚一場是當地 2026-11-19（柏林）。",
+      "why_excluded": "當地日期是換算出來的，Apple 的回應本身只印 UTC 時刻。文章如果要寫日期區間，必須寫明是依清單的 UTC 時刻與場地時區換算，而且要標查核日；逐場日期表不要寫，名額與場次隨時會變。"
+    }
+  ],
+  "editorial_brief": "讀者是看過 2026 年 9 月 9 日那篇 iPhone Duo 發表整理的台灣一般讀者。有些人已經拿到機器，有些人還在觀望，他們共同的疑問只有一個：為什麼打開某些 App，上面空一塊、按鈕跑到側邊、摺起來的時候版面就散掉？這篇不寫規格、不寫價格，只回答那個疑問，並把 Apple 給開發者的時間表攤開來。\n\n骨架是「這不是 App 寫壞了，是建置工具的版本」。最重要的一句是 Apple 自己寫的：用 Xcode 26 或更早的版本建置，App 不會延伸到狀態列與相機下方。這一句要早早出現，而且要講清楚它的邊界——Apple 只點名 Xcode 26 與更早，沒有說用 Xcode 27 正式版建置會怎樣。\n\n五節安排：一、9 月 18 日 Apple 對開發者公布了什麼（四段話、四個連結），以及這則公告頁面沒有印時刻這件事；二、為什麼版面會怪：會變形是前提、工具列會被系統改成直排、摺痕與鏡頭是「保留區域」、只有圖示的按鈕才會直排（結尾放表）；三、Apple 給的工具與它現在的極限：Xcode 27.1 還是 beta、要 macOS Tahoe 26.6 以上、模擬器跑不了 StandBy、大多數 App extension 在模擬器上不能除錯（結尾放圖）；四、工作坊在哪裡、誰報得到：全是實體、全英文、歐美六個場地，報名 9 月 19 日凌晨開、地區限制寫 Worldwide，但清單上沒有台日韓場次，亞太唯一一場是上海的簡體中文線上講座，而且它 9 月 16 日就開放報名、不屬於這則公告；五、讀者現在能做什麼：等 App 更新、看 App 的更新說明，以及本文四條來源都沒有寫的東西（沒有時程、沒有點名任何 App）。\n\n台灣角度要落在第四節：地區限制是 Worldwide 不等於有你這一區的場次，兩件事要分開寫。語氣上不要嘲諷 Apple 沒辦亞洲場，只陳述查核當天的清單。\n\n刻意不寫：任何購買建議或「要不要買摺疊機」；任何第三方 App 的名字與更新時程；Xcode 的建置編號與釋出日期；design kits 的檔案內容；工作坊的錄取流程；9 月 9 日那篇寫過的規格與價格。",
+  "must_not_write": [
+    "不重講 2026-09-09 那篇的內容：螢幕吋數、鈦金屬、軸承、電池與充電、台灣售價與上市時程、eSIM 與電信商，一個都不寫，只在結尾連結指回去。",
+    "不推測任何第三方 App 何時會更新，也不點名任何一支 App 說它「還沒改好」。",
+    "不寫「用 Xcode 27 正式版建置會怎樣」。技術文件只點名 Xcode 26 and earlier，其餘是推論。",
+    "不把 Xcode 27.1 beta 寫成「必要工具」或「強制要求」。公告只寫 Get Xcode 27.1 beta.，文件寫的是用最新版 Xcode 建置。",
+    "不寫 Xcode 27.1 beta 的建置編號、釋出日期，也不提 Xcode 27.2 beta——那一頁不在本文的四條來源裡。",
+    "不把 design kits 寫成「Apple Design Resources 上有一個叫 iPhone Duo 的 Figma／Sketch 下載」，也不寫「找不到」。只能寫成 Apple 表示可從 Apple Design Resources 取得。",
+    "不把 39 這個數字寫成 Apple 公布的數字。Apple 回的是 totalRecords 40（含一筆不相干的活動），39 是本站 2026-09-20 自己清點的，要寫明。",
+    "不寫「Apple 不辦亞洲場」或「以後會辦」。只能寫查核當天的清單上沒有台日韓場次。",
+    "不把上海那場線上講座寫成 9 月 18 日公告的一部分，它 9 月 16 日就開放報名，名稱與型態也和工作坊不同。",
+    "不把工作坊寫成免費或收費——四條來源都沒有提到費用。",
+    "不翻譯 restrictedDeveloperType 的 rad，也不寫「只有付費會員能報名」。",
+    "不描述報名的錄取流程與確認信內容，那些字串只在 JavaScript 檔裡。",
+    "不把公告的 PDT 發布時刻換算寫進正文；公告頁自己沒有印時刻。",
+    "不做購買建議、不比較摺疊機好壞、不寫「值不值得等 App 更新再買」（tech.md 的規定）。",
+    "不把 Apple 對自家元件與課程效果的形容寫成事實，一律寫「Apple 說明」「Apple 表示」。",
+    "圖解不畫任何商標、字標、機身外型或介面截圖，圖上不放正文沒有的數字。"
+  ],
+  "live_data_warnings": [
+    "Meet with Apple 的活動清單是動態資料：每一場的可報名人數每分鐘都在變，Apple 也隨時可能新增場次、換場地或下架。本文清點的是 2026-09-20 02:39 與 02:40（台北）兩次回應，Apple 自己回的 creationTimestamp 分別是 2026-09-19T18:39:04Z 與 18:40:23Z，工作坊 39 場、全部活動 58 筆。之後要再引用這些數字必須重查，文章裡每一個場次數字都要繫著查核日。",
+    "工作坊各場的報名截止時間不同，最早一場（巴黎 9 月 28 日場）的截止是 2026-09-27T15:00:00Z。文章刊出時已經會有場次截止，所以不要寫成「現在還報得到」，只寫報名開放的時間與「各場截止時間不同」。",
+    "Xcode 27.1 目前是 beta。Apple 的 release notes 網址在正式版推出後通常會改寫內容、拿掉 beta 的已知問題，本文引用的「模擬器跑不了 StandBy」「多數 App extension 不能除錯」兩條屆時可能就不在頁面上了，查核日 2026-09-20 要寫清楚。",
+    "Apple Developer 的技術文件是會改版的活頁，頁面上沒有標明最後更新日期。本文引用的「Xcode 26 and earlier」那一句以 2026-09-20 讀到的版本為準。",
+    "（第二輪重數）2026-09-20（台北）以 sourcing_notes 的同一個 POST 端點與同一段 eventDate 區間（2026-09-20T00:00:00Z 起）再抓一次：未過濾 200／174,177 bytes／creationTimestamp 2026-09-19T19:44:40Z／totalRecords 58（第 2 頁 0 筆，沒有分頁遺漏）；search=workshop 200／87,673 bytes／19:44:44Z／totalRecords 40。骨幹數字全部不變：工作坊 39 場（第 40 筆仍是 IETF HLS Interest Day），倫敦 13、柏林 9、巴黎 7、紐約 4、Cupertino 3、邁阿密（Coral Gables）3，全部 inperson、deliveryLanguage en、status published、restrictedCountries Worldwide、registrationStartDate 2026-09-18T17:45:00Z；58 筆的 regionName 仍是 Europe 29／North America 28／Asia Pacific 1，國家欄只有 United States、United Kingdom、Germany、France、Canada、China mainland 六種，沒有 Taiwan／Japan／Korea。英文說明仍是四個版本（three-day 21、four-day 8、two-day 7＝紐約與 Cupertino、three-day 加 App Intents／Siri 3＝邁阿密），沒有 self-guided 那兩句的仍是 two-day 那 7 場，所以「多數場次寫著」成立。報名截止最早的仍是 Cupertino 當地 9 月 28 日那場（2026-09-24T19:00:00Z），查核當下還沒有任何一場截止。",
+    "（查核重數）2026-09-20 以同一個 POST 端點重抓，只把 eventDate 區間的起點改成 2026-09-20T00:00:00Z：未過濾那次回 200／174,177 bytes、creationTimestamp 2026-09-19T19:11:51Z、totalRecords 58；search=workshop 那次回 200／87,673 bytes、creationTimestamp 2026-09-19T19:11:55Z、totalRecords 40（39 場工作坊＋1 筆 IETF HLS Interest Day）。場地分布與撰稿當時相同：倫敦 13、柏林 9、巴黎 7、紐約 4、Cupertino 3、邁阿密 3；地區欄仍是 Europe 29、North America 28、Asia Pacific 1。39 場的 registrationStartDate 全是 2026-09-18T17:45:00Z，全部 inperson、deliveryLanguage en、restrictedCountries Worldwide、status published。報名截止最早的一場不是巴黎，是 Cupertino 當地 9 月 28 日那場（2026-09-24T19:00:00Z）；巴黎最早那場的 2026-09-27T15:00:00Z 是「最早開課」那一場的截止時間，兩者不同，文章只寫「各場截止時間不同」。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "版面得先學會變形",
+  "diagram": {
+    "title": "Apple 給開發者的四樣東西",
+    "caption": "依 Apple 2026 年 9 月 18 日的開發者公告與本文引用的官方頁面整理，查核日 2026 年 9 月 20 日。",
+    "nodes": [
+      [
+        "Xcode 27.1 beta",
+        "SDK 與模擬器，仍是測試版"
+      ],
+      [
+        "設計檔",
+        "Figma 與 Sketch 版型"
+      ],
+      [
+        "說明文件",
+        "怎麼改版面與工具列"
+      ],
+      [
+        "實體工作坊",
+        "歐美六個場地，全英文"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent（第一輪；未參與撰稿）",
+    "checked_on": "2026-09-20",
+    "method": "sources[] 四條全部在 2026-09-20 以 curl -sL -A Mokaair-editorial 重抓並讀 body（所有請求的 UA、標頭、查詢字串、表單都沒有帶入任何人的 email、姓名或其他個人資料，也沒有登入），位元組數與研究紀錄逐一相符：公告頁 200／106,738／0 轉址、技術文件 DocC 外殼 200／19,171 與資料檔 200／87,352、Xcode release notes 外殼 200／18,811 與資料檔 200／6,537、Meet with Apple 外殼 200／38,407。工作坊清單依 sourcing_notes 的配方以 POST /services-public/event/developer/eventList 重抓兩次（未過濾 200／174,177／totalRecords 58；search=workshop 200／87,673／totalRecords 40），逐筆解析 58 筆活動的名稱、場地、國家、地區、時區、起訖時刻、報名起訖、授課語言、型態、可報名人數與篩選方式。另把兩份 DocC 資料檔還原成段落與列表逐句比對。核對範圍：正文 18 段每一句、summary 四句、FAQ 五題答句、callout、表格 12 格與 caption、圖解 caption 與研究紀錄的四格與 hero_label、title、description，約 120 條可核對的主張；研究紀錄 57 條 verbatim_quote 以程式做連續字串比對（公告比對 HTML 原始碼、兩份文件比對 DocC 的 text 節點、清單比對回應本身與 minified JSON），只有「Xcode 27.1 Beta Release Notes」一條不在 text 節點裡，但它是頁面 h1 與 <title> 印出的字串（在 DocC 外殼 HTML 裡找得到），判定成立。第二個結尾連結的 text 與 tech-news-iphone-duo-20260909 的 zh-TW title 逐字相同，第一個與 tech-news-2026-index 的 zh-TW title 逐字相同。沒有用 sources[] 以外的網址替文章補任何事實；為了反駁而讀的 developer.apple.com/design/resources/（200／152,321）只用來確認 unverified_or_excluded 那條今天仍然成立，沒有寫進文章。",
+    "verdict": "needs_fixes（本輪已全部改完；改動 24 處，其中 5 處推翻了原本的事實陳述，建議照 4.2 科技規格的門檻再安排一輪覆核）",
+    "claims_checked": "約 120 條文章主張＋61 條研究紀錄 verbatim_quote（原 57 條全部重驗，另新增 4 條）；另逐筆核對工作坊清單 58 筆活動。",
+    "changes": [
+      {
+        "where": "內容包 zh-TW 第一段",
+        "before": "公告全文只有四段話，每段各搭一個連結，分別指向 Xcode 27.1 beta、設計檔、工作坊報名與技術文件。",
+        "after": "公告全文只有四段話，每段各搭一個連結，分別指向軟體釋出頁、設計資源頁、工作坊清單與 iPhone Duo 開發者專頁。",
+        "why": "四個連結的落點被寫錯了兩個。公告的第一個連結是 View downloads and release notes → /news/releases/（軟體釋出清單，不是 Xcode 27.1 beta 的下載或 release notes），第四個是 Learn more about iPhone Duo → /iphone-duo/（開發者專頁，不是技術文件）。原句把四段話的主題當成連結的落點。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r （2026-09-20 逐一讀出四個 href）"
+      },
+      {
+        "where": "內容包 zh-TW 第二段",
+        "before": "讀的是這則公告與它連到的三份官方頁面",
+        "after": "讀的是這則公告與另外三份官方頁面",
+        "why": "同一個錯的延伸：三份頁面裡只有工作坊清單真的被公告連到，技術文件與 Xcode release notes 都不是公告的連結落點。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r"
+      },
+      {
+        "where": "內容包 zh-TW 第一節第一段",
+        "before": "以及連到「為 iPhone Duo 準備 App」技術文件。",
+        "after": "以及請開發者進一步了解怎麼為 iPhone Duo 準備 App。",
+        "why": "第四段的原文是 Find out more about preparing your app for iPhone Duo.，那是一句話，不是一個指向技術文件的連結；連結在 /iphone-duo/。改成照原文敘述。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r"
+      },
+      {
+        "where": "內容包 zh-TW FAQ 第二題答案",
+        "before": "以及閱讀「為 iPhone Duo 準備 App」的技術文件。",
+        "after": "以及進一步了解怎麼為 iPhone Duo 準備 App。四個連結分別指向軟體釋出頁、Apple Design Resources、工作坊清單與 iPhone Duo 開發者專頁，都不是直接指向技術文件。",
+        "why": "同上；FAQ 不計入正文字數，所以把正確的落點寫在這裡。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r"
+      },
+      {
+        "where": "內容包 zh-TW FAQ 第一題答案",
+        "before": "Apple 在 2026 年 9 月 18 日的技術文件裡說明",
+        "after": "Apple 在「為 iPhone Duo 準備 App」技術文件裡說明（本文 2026 年 9 月 20 日查核，該頁沒有標日期）",
+        "why": "把公告的日期掛到技術文件上。那份 DocC 文件整頁沒有印任何日期（外殼與資料檔裡 Updated／modified／September／2026 各 0 次），9 月 18 日是公告頁自印的日期。",
+        "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+      },
+      {
+        "where": "內容包 zh-TW 第二節第二段",
+        "before": "文件把「會變形」講成這支手機上最關鍵的一件事",
+        "after": "文件把「會變形」講成這支手機上的關鍵特性",
+        "why": "原文是 Resizing is a key feature，一項關鍵特性；「最關鍵的一件事」是把 a key feature 升級成最高級。",
+        "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+      },
+      {
+        "where": "內容包 zh-TW 第二節第三段",
+        "before": "讓常用控制項留在看得到的地方，較少用的收進溢出選單。",
+        "after": "讓常用控制項留在看得到的地方，空間不夠時把較少用的收進溢出選單。",
+        "why": "原文的條件 when there’s limited space 被刪掉；限定詞刪一個就是換一個主張。",
+        "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+      },
+      {
+        "where": "內容包 zh-TW 第二節第三段",
+        "before": "系統都不會直排，這正是「按鈕不見了」的原因。",
+        "after": "系統都不會直排，這也是「按鈕不見了」的原因。",
+        "why": "文件同時寫著溢出選單會用圖示加標題呈現項目，所以沒有圖示的項目不必然消失；「正是」把一個可能原因寫成唯一原因。",
+        "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+      },
+      {
+        "where": "內容包 zh-TW 表格第二列「系統怎麼處理」",
+        "before": "內鏡頭啟用時會擋住內容，外鏡頭永遠擋著",
+        "after": "內鏡頭啟用時可能擋住內容，外鏡頭永遠擋著",
+        "why": "原文是 The inner front-facing camera can block your view when it’s active，can 被刪掉；同一句裡外鏡頭用的才是 always occludes，兩邊的語氣在來源裡本來就不同。",
+        "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+      },
+      {
+        "where": "內容包 zh-TW 表格第二列「文件給開發者的建議」",
+        "before": "避免把重要內容放在鏡頭正下方",
+        "after": "取得保留區域的位置，據此調整版面",
+        "why": "整份文件沒有這條建議。文件對保留區域給的做法是讀出保留區域的框再調整版面（Inspect the frames of the reserved regions, and adjust your views accordingly.）；全文唯一的 Avoid 是叫人不要把 arrangement view 塞進導覽分割視圖、清單或捲動視圖。",
+        "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+      },
+      {
+        "where": "內容包 zh-TW summary 第二句",
+        "before": "這是不少使用者看到版面留白的原因",
+        "after": "這也是版面看起來留白的原因",
+        "why": "「不少使用者」是四條來源都沒有的數量詞，也沒有任何統計；同時「這是…的原因」在 summary 裡比正文更斷定。",
+        "source": "四條 sources 皆無相關統計"
+      },
+      {
+        "where": "內容包 zh-TW summary 第四句",
+        "before": "以本文 2026 年 9 月 20 日查核的清單，工作坊系列共有 39 場…；亞太地區唯一一場是…",
+        "after": "以本文 2026 年 9 月 20 日清點的清單，工作坊系列共有 39 場…；清單上亞太地區唯一一場是…",
+        "why": "39 是本站逐筆清點的數字（Apple 回的 totalRecords 是 40，含一筆 IETF HLS Interest Day），措辭要和正文一樣講明是清點；亞太那句也要繫在清單上，不能被讀成 Apple 不辦亞洲場。",
+        "source": "https://developer.apple.com/events/view/upcoming-events/ （POST eventList，2026-09-20）"
+      },
+      {
+        "where": "內容包 zh-TW 第三節第一段",
+        "before": "開發者要用的工具是 Xcode 27.1，文件標題本身就寫著 Beta",
+        "after": "公告要開發者取得的是 Xcode 27.1 beta，文件標題本身也寫著 Beta",
+        "why": "原句把它寫成開發者「要用」的工具。公告只有一句 Get Xcode 27.1 beta.，技術文件寫的是用最新版 Xcode 建置，兩頁都沒有寫「必須」——這也是研究紀錄 must_not_write 的第 4 條。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r"
+      },
+      {
+        "where": "內容包 zh-TW 第三節第二段",
+        "before": "畫布的裝置選單多了「Display」一組",
+        "after": "畫布的覆寫選單多了「Display」一組",
+        "why": "原文是 canvas overrides picker（覆寫選單），不是裝置選單。",
+        "source": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes"
+      },
+      {
+        "where": "內容包 zh-TW 第三節第三段",
+        "before": "這些都寫在 Xcode 27.1 beta 目前的已知問題清單裡，正式版會不會修好…",
+        "after": "這兩條都寫在 Xcode 27.1 beta 目前的已知問題清單裡，Apple 各附了暫行做法；正式版會不會修好…",
+        "why": "兩條已知問題在原文裡各自印著粗體的 Workaround: 與具體做法，漏掉它會讓讀者以為開發者被卡死。",
+        "source": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes"
+      },
+      {
+        "where": "內容包 zh-TW 第四節第一段",
+        "before": "每天流程相同，來越多天走越遠，需要幾天就報名幾天",
+        "after": "多數場次寫著每天流程相同、來越多天走越遠，需要幾天就報名幾天",
+        "why": "39 場的英文說明有四個版本；紐約與 Cupertino 的 7 場（two-day 版本）裡沒有 self-guided format each day 與 sign up for as many days as you need 這兩句。原句把 32 場的說法寫成全系列的說法。",
+        "source": "https://developer.apple.com/events/view/upcoming-events/ （逐場比對 contents[].localizations.en.description）"
+      },
+      {
+        "where": "內容包 zh-TW 第四節第二段",
+        "before": "名額逐場設定，例如巴黎第一場只開放 30 個名額。",
+        "after": "可報名人數逐場不同，例如查核當天巴黎第一場顯示 30 個。",
+        "why": "清單上的欄位是 availableCountForRegistration——查詢當下還可報名的人數，不是 Apple 公布的名額上限，而且每分鐘都在變（北美同系列場次同一時間顯示 985 到 999）。「只開放 30 個名額」把活資料寫成常數，也寫成了官方設定。",
+        "source": "https://developer.apple.com/events/view/upcoming-events/ （POST eventList，creationTimestamp 2026-09-19T19:11:51Z）"
+      },
+      {
+        "where": "內容包 zh-TW FAQ 第五題答案",
+        "before": "名額則是逐場設定，…歐洲場次多半只開放二、三十個名額",
+        "after": "可報名人數則是逐場不同，…歐洲場次多半顯示二、三十個",
+        "why": "同上，同一個欄位的解讀問題。",
+        "source": "https://developer.apple.com/events/view/upcoming-events/"
+      },
+      {
+        "where": "內容包 zh-TW 第四節第三段",
+        "before": "換算台北時間是 9 月 19 日凌晨 1 點 45 分，略晚於公告刊出；",
+        "after": "換算台北時間是 9 月 19 日凌晨 1 點 45 分；",
+        "why": "公告頁沒有印出任何時刻，四條 sources 裡沒有任何一頁能支撐「報名開放略晚於公告刊出」這個先後順序；唯一的時刻在 RSS 的 pubDate，而 feed 不在 sources[]，研究紀錄的 must_not_write 第 13 條也禁止把它換算進正文。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r （全頁無時刻）"
+      },
+      {
+        "where": "內容包 zh-TW 第四節第四段與 FAQ 第三題答案",
+        "before": "亞太唯一一場相關活動，是上海…",
+        "after": "清單上亞太地區唯一一場相關活動，是上海…",
+        "why": "「亞太唯一」講的是清單的地區欄（Europe 29、North America 28、Asia Pacific 1）。同一份清單上還有三種 iPhone Duo Q&A 共 6 筆線上場，報名不限國家，只是地區欄記在北美——不加「清單上」會被讀成亞太的開發者沒有別的場次可參加。",
+        "source": "https://developer.apple.com/events/view/upcoming-events/ （58 筆逐筆判讀）"
+      },
+      {
+        "where": "內容包 zh-TW 第五節第二段",
+        "before": "讀者能做的、也是本文核實過的作法，是留意…通常會寫在版本記錄裡。",
+        "after": "讀者能做的、編輯建議的作法，是留意…可能會寫在版本記錄裡。",
+        "why": "四條來源都沒有談第三方 App 會不會在 App Store 版本記錄裡交代這件事，所以那不是「本文核實過的作法」，「通常」也沒有依據。改成標明是編輯建議。",
+        "source": "四條 sources 皆無相關敘述"
+      },
+      {
+        "where": "內容包 zh-TW 第五節第三段",
+        "before": "頁面上沒有版本號也沒有標明最後更新日期。",
+        "after": "頁面上沒有標明最後更新日期。",
+        "why": "沒有日期成立（兩頁的外殼與資料檔裡 Updated／modified／2026 各 0 次），但 release notes 的標題本身就是 Xcode 27.1 Beta Release Notes，帶著版本號，所以「沒有版本號」不成立。",
+        "source": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes"
+      },
+      {
+        "where": "內容包 zh-TW description",
+        "before": "…技術文件，以及歐美六個場地的實體工作坊。",
+        "after": "…技術文件與全球工作坊；本站清點清單，場次全在歐美六個場地。",
+        "why": "公告寫的是 workshops around the world，六個場地是本站清點活動清單得到的結果；原句把清點結果掛進「Apple 公布」的賓語裡。",
+        "source": "https://developer.apple.com/news/?id=nyuppv9r 與工作坊清單"
+      },
+      {
+        "where": "研究紀錄本身",
+        "before": "三條 verified_facts 的中文敘述（a key feature／can block／when there’s limited space）與名額那一條；not_said 10 條、live_data_warnings 4 條、unverified 第 5 條",
+        "after": "三條敘述已照原文的語氣改寫、名額那條改寫成欄位語意並補今天的分布；新增 4 條 verified_facts（保留區域的做法、兩條 Mac Catalyst 暫行做法、其中一條說明 codeVoice 會切斷字串）、2 條 not_said（公告沒有直接連到技術文件或 release notes；兩份文件都沒有日期）、1 條 live_data_warnings（今天的重數結果）、unverified 第 5 條補記 Q&A 是三種題目共 6 筆",
+        "why": "研究紀錄對後續的翻譯、審稿與索引同樣有拘束力，推翻掉的敘述留在裡面會再被抄一次。",
+        "source": "本輪重抓的四條 sources"
+      }
+    ],
+    "checked_and_correct": [
+      "四條 sources 今天全部讀得到正文，沒有擋阻頁、沒有軟性 404、沒有轉址，位元組數與研究紀錄逐一相符；兩份 DocC 頁面的外殼確實只是殼（頁面自己印著 This page requires JavaScript.），正文取自同網域的 tutorials/data 資料檔，這件事 sourcing_notes 已經寫明，不是隱瞞。",
+      "事件日 2026-09-18 成立：公告頁 article-date 印的是 September 18, 2026，全頁沒有印任何時刻；slug 後綴、news_date 與正文第一段三者一致。RSS 的 10:00:57 PDT 只留在 event_date_basis，正文沒有出現時刻，也沒有換算台北時間。",
+      "工作坊的骨幹數字今天重數全部相同：39 場（search=workshop 回 totalRecords 40，其中 1 筆是 IETF HLS Interest Day）、六個場地（倫敦 13、柏林 9、巴黎 7、紐約 4、Cupertino 3、邁阿密 3）、全部 inperson、全部 deliveryLanguage en、報名開放時間全部是 2026-09-18T17:45:00Z（台北 9 月 19 日 01:45）、restrictedCountries 全部是 Worldwide；58 筆活動裡沒有任何一筆的國家欄是 Taiwan、Japan 或 Korea。",
+      "上海那一場的每個欄位都對得上：program 是 Apple Developer Center Shanghai、webex、deliveryLanguage zh_Hans、registrationStartDate 2026-09-16T02:00:00Z（台北 9 月 16 日 10:00）、時間 2026-09-29T02:00–04:00Z（台北 10:00–12:00）；比公告早兩天開放報名這件事成立，「不屬於這則公告」的寫法也沒有滑成「Apple 不辦亞洲場」。",
+      "Xcode 27.1 Beta Release Notes 的每一條都對：Swift 6.4 與六個 SDK、macOS Tahoe 26.6 以上、實機偵錯 iOS 17／tvOS 17／watchOS 10 以上與 visionOS、StandBy 不可用、多數 App extension 不能執行與偵錯、初次啟動可能要好幾分鐘、Display 預覽群組、兩條 Mac Catalyst 已知問題；整頁確實只有 Overview／Mac Catalyst／Previews／Simulator 四節，沒有任何正式版時程。",
+      "界線檢查通過：沒有購買建議、沒有推薦式比價、沒有價格；Apple 對自家設計檔、課程效果、移植難度與系統元件的說法都帶著「Apple 說明／Apple 表示／本文只轉述」；beta 狀態、模擬器限制、地區限制都寫了出來；只有一個 callout，沒有投資免責段落；沒有出現「首次」「唯一」「業界第一」這類全稱句（唯一一處「唯一」已繫在清單上）。",
+      "must_not_write 16 條逐條檢查沒有被違反：沒有 9 月 9 日那篇的規格與價格、沒有點名任何第三方 App、沒有寫 Xcode 27 正式版會怎樣、沒有寫建置編號或 27.2 beta、design kits 只轉述 Apple 的說法、39 寫明是本站清點、沒有翻譯 restrictedDeveloperType 的 rad、沒有描述錄取流程、沒有把 PDT 時刻換算進正文、圖解四格沒有數字也沒有商標。",
+      "兩個結尾連結今天逐字比對：第一個等於 tech-news-2026-index 的 zh-TW title，第二個等於 tech-news-iphone-duo-20260909 的 zh-TW title，自檢對兩者都沒有 FAIL。",
+      "summary 四句的數字（39）在正文出現；FAQ 五題答案都是純文字沒有網址；表格 3 欄 4 列、caption 帶查核日；checked_on 在內容包四條 source、研究紀錄、正文第二段、表格 caption 與圖解 caption 都是 2026-09-20，今天就是那一天，未改動。"
+    ],
+    "open_questions": [
+      "公告頁的插圖 alt 文字寫著 in Star White and Night Sky（兩個顏色名）。正文寫「公告本身沒有出現任何硬體規格、售價、上市地區或電信商」——顏色名只在圖片替代文字裡、也不算規格，本輪判定該句成立，但站主若想更嚴，可以把那句改成「公告的四句正文沒有出現…」。",
+      "上海那一場 Apple 自己有官方簡體中文名稱「开始为 iPhone Duo 做好准备」，正文用的是英文名的編輯直譯「iPhone Duo 入門」並已標明是直譯。若站主偏好照抄官方名稱，這一處可以換成簡中原名加括號說明。",
+      "可報名人數是活資料：巴黎最早那場今天仍是 30，但歐洲各場在 3 到 42 之間、北美在 985 到 999 之間，刊出當天可能已經不同。正文與 FAQ 都繫了查核日，若延後刊出建議再重數一次。",
+      "報名截止最早的一場是 Cupertino 當地 9 月 28 日那場（2026-09-24T19:00:00Z），比文章預計刊出的時間還早。正文只寫「各場截止時間不同」、沒有寫「現在還報得到」，符合 live_data_warnings 的要求，但站主若要在刊出時加一句提醒，要重抓後再寫。",
+      "本輪改了 24 處、其中 5 處推翻原本的事實陳述（連結落點、技術文件的日期、鏡頭遮蔽的建議、名額欄位的語意、工作坊說明的涵蓋範圍），依科技垂直查核規格的門檻，建議安排第二輪覆核；骨幹論述（Xcode 26 以前建置會少一塊畫面、工作坊只在歐美六個場地）本輪查證後維持不變。"
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent（未參與撰稿、未參與第一輪）",
+      "checked_on": "2026-09-20",
+      "method": "sources[] 四條在 2026-09-20（台北）以 curl -sL -A \"Mokaair-editorial\" 自行重抓並讀 body，所有請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的 email、姓名或其他個人資料，也沒有登入：公告頁 200／106,738／0 轉址、技術文件 DocC 外殼 200／19,171 與資料檔 200／87,352、Xcode release notes 外殼 200／18,811 與資料檔 200／6,537、Meet with Apple 外殼 200／38,407（<title> 仍是 Schedule - Meet with Apple - Apple Developer），位元組數與第一輪逐一相同。工作坊清單照 sourcing_notes 的配方以 POST /services-public/event/developer/eventList 重抓三次（未過濾、search=workshop、第 2 頁），逐筆解析 58 筆活動的名稱、場地、城市、國家、regionName、時區、起訖時刻、報名起訖、授課語言、conferenceTypes、可報名人數、screeningMethod 與英文說明，並把 39 場的說明分群比對。兩份 DocC 資料檔還原成段落、列表與 aside 逐句比對，公告頁直接讀 HTML 原始碼取出四段文字與四個 href。研究紀錄 61 條 verbatim_quote 全部以程式做連續字串比對（公告比 HTML 原文、兩份文件比 DocC 的 text／codeVoice 節點與還原後的段落、清單比回應本身的 minified JSON 與重新序列化的兩種形式），61／61 命中，沒有任何一條含 …、… 或 | 的拼接引文。覆核重點放在第一輪改動過的 24 處與它新寫進去的句子（四個連結的落點、技術文件沒有日期、can block、空間不夠時、關鍵特性、讀出保留區域的框、多數場次寫著、清單上、可報名人數、公告的四句正文），以及 summary／description／表格／callout／圖解 caption 這些第一輪只改了同一個錯的一半的地方。沒有用 sources[] 以外的網址替文章補任何事實。",
+      "claims_checked": "正文 18 段、summary 4 句、FAQ 5 題答句、callout、表格 12 格與 caption、圖解 caption 與四格、hero_label、title、description，共約 120 條可核對的主張；研究紀錄 61 條 verbatim_quote 全部重驗；工作坊清單 58 筆活動逐筆重數。",
+      "changes": [
+        {
+          "where": "內容包 zh-TW 第二節第一段",
+          "before": "四段話裡最關鍵的一句，寫在「為 iPhone Duo 準備 App」文件裡：",
+          "after": "最關鍵的一句不在公告裡，寫在「為 iPhone Duo 準備 App」文件裡：",
+          "why": "第一輪已經確認公告全文是四句一行的話（Get Xcode 27.1 beta. ／ Get Figma and Sketch design kits… ／ Sign up for workshops… ／ Find out more about preparing your app…），Xcode 26 and earlier 那一句不在其中，而在技術文件裡。原句卻把它算成「四段話裡」的一句，和同一篇第一段、第三段與 FAQ 第二題的更正互相矛盾。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r 與 https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo （2026-09-20 重抓）"
+        },
+        {
+          "where": "內容包 zh-TW 第三節第二段",
+          "before": "可預覽裝置「另一個螢幕」的內容，對應摺疊機的內外兩塊螢幕。",
+          "after": "可預覽裝置「另一個螢幕」的內容——摺疊機正好有內外兩塊螢幕。",
+          "why": "release notes 原文是 The canvas overrides picker now includes a Display group for previewing content on a device’s alternative display.，整句沒有提到摺疊機，也沒有提到 iPhone Duo；「對應摺疊機的內外兩塊螢幕」是本站的推論，卻寫在 Apple 的敘述裡。改寫後前半照原文，後半是技術文件寫過的事實（a compact outer display and a large inner display），推論留給讀者。",
+          "source": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes"
+        },
+        {
+          "where": "內容包 zh-TW summary 第一句",
+          "before": "…公布 iPhone Duo 的開發資源，包括 Xcode 27.1 beta、Figma 與 Sketch 版型、技術文件與實體工作坊。",
+          "after": "…公布 iPhone Duo 的開發資源，四段話各搭一個連結：Xcode 27.1 beta、Figma 與 Sketch 版型、全球工作坊與 iPhone Duo 開發者專頁。",
+          "why": "兩個第一輪已經推翻、但沒有掃到 summary 的錯疊在同一句裡。(1) 公告第四句 Find out more about preparing your app for iPhone Duo. 連到的是 /iphone-duo/ 開發者專頁，不是技術文件；而且那份技術文件整頁沒有印日期，說 Apple 在 9 月 18 日「公布」它沒有任何來源——這正是第一輪在 FAQ 第一題改掉的同一個錯。(2)「實體」是本站清點活動清單（conferenceTypes 全部 inperson）得到的結果，公告寫的是 workshops around the world；第一輪在 description 把同樣的錯改成「本站清點清單」，summary 漏改。新句子每個詞都在正文出現（「四段話」「各搭一個連結」在第一段，「開發者專頁」在第一段，「全球工作坊」在第一節第一段）。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r （四個 href 逐一讀出）與 POST eventList（2026-09-20）"
+        },
+        {
+          "where": "內容包 zh-TW description",
+          "before": "Xcode 27.1 beta、Figma 與 Sketch 版型、技術文件與全球工作坊",
+          "after": "Xcode 27.1 beta、Figma 與 Sketch 版型、開發者專頁與全球工作坊",
+          "why": "同上 (1)。description 長度 187→188，仍在 120–200。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r"
+        },
+        {
+          "where": "內容包 zh-TW 第五節第一段",
+          "before": "這則公告不涉及任何硬體規格、售價或上市地區",
+          "after": "這則公告的正文不涉及硬體規格、售價或上市地區",
+          "why": "協調者已裁決把這個否定句限縮成「公告的四句正文」（公告的插圖 alt 寫著 in Star White and Night Sky 兩個顏色名），但第一輪只改了第一節那一處。同一篇裡同一個主張出現三次，另外兩次仍是無限制的全稱否定，讀者會看到自相矛盾的兩種寫法。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r （插圖 alt：Front and rear views of iPhone Duo shown side by side in Star White and Night Sky…）"
+        },
+        {
+          "where": "內容包 zh-TW FAQ 第二題答案",
+          "before": "公告沒有提到任何硬體規格或售價。",
+          "after": "公告的四句正文沒有提到硬體規格或售價。",
+          "why": "同上，第三處。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r"
+        },
+        {
+          "where": "內容包 zh-TW 表格第一列「系統怎麼處理」",
+          "before": "把一個大畫面切成兩半；半摺時生效、全開時失效",
+          "after": "把一個大畫面切成較小的畫面；半摺時生效、全開時失效",
+          "why": "原文是 A division occurs when a folding region divides a large view into smaller views.，只寫 smaller views，沒有寫「兩」。摺痕只有一道時切成兩塊是合理的推論，但來源沒有印出這個數字，照規格不能當事實寫。",
+          "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+        },
+        {
+          "where": "內容包 zh-TW 表格第二列「文件給開發者的建議」",
+          "before": "取得保留區域的位置，據此調整版面",
+          "after": "讀出保留區域的框，據此調整版面",
+          "why": "原文是 Inspect the frames of the reserved regions, and adjust your views accordingly.；frames 是框（位置加尺寸），只寫「位置」會漏掉尺寸，也和第一輪自己在 changes 裡寫的「讀出保留區域的框」不一致。",
+          "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+        },
+        {
+          "where": "內容包 zh-TW 表格第四列「文件給開發者的建議」",
+          "before": "改用系統提供的標準版面容器",
+          "after": "改成同時指定圖示與標題的項目",
+          "why": "Prefer system-provided layouts and containers… 那一條是「共通版面與縮放」那一節對整體版面的建議，被套到「工具列項目是自訂視圖」這一列上。文件對這一列有一條正對的建議：When you create toolbar items, specify both an icon and a title for items that you want to have the most adaptability.，直接改用它。",
+          "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo （Organize items in your bars 一節）"
+        },
+        {
+          "where": "內容包 zh-TW callout",
+          "before": "工作坊的名額與報名截止時間隨時在變",
+          "after": "工作坊的可報名人數與報名截止時間隨時在變",
+          "why": "第一輪已把正文與 FAQ 的「名額」改成「可報名人數」（availableCountForRegistration 是查詢當下還開放的人數，不是 Apple 公布的名額上限），callout 漏改，同一篇裡兩種說法並存。",
+          "source": "https://developer.apple.com/events/view/upcoming-events/ （POST eventList，2026-09-20）"
+        },
+        {
+          "where": "內容包 zh-TW 圖解 caption 與研究紀錄 diagram.caption（兩邊同步）",
+          "before": "依 Apple 2026 年 9 月 18 日的開發者公告與它連到的官方頁面整理",
+          "after": "依 Apple 2026 年 9 月 18 日的開發者公告與本文引用的官方頁面整理",
+          "why": "第一輪查出公告連到的四頁是 /news/releases/、/design/resources/、工作坊清單、/iphone-duo/，其中三頁不在 sources[]；而圖上第三格的細節「怎麼改版面與工具列」出自技術文件，那一頁正好不是公告連到的頁。原 caption 因此把圖的依據指向一組既不完整、又有三頁沒被引用的頁面。改成「本文引用的官方頁面」之後，四格的依據都落在 sources[] 四條之內。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r （四個 href）"
+        },
+        {
+          "where": "研究紀錄 not_said 最後一條",
+          "before": "…兩頁都沒有印出日期：…Updated／modified／September／2026 各 0 次…",
+          "after": "…兩頁都沒有印出「最後更新日期」：…第一輪寫「2026 各 0 次」是錯的，prep 資料檔的 2026 出現 5 次、xcode 1 次，全部是頁尾的 Copyright © 2026 Apple Inc. 與 wwdc2026／wwdc2025 影片識別碼…",
+          "why": "第一輪新寫進紀錄的證據句今天重抓就對不上：prep.json 有 5 個 2026、xcode.json 有 1 個，另有 1 個 updated 出現在推薦影片的摘要句（the updated software）裡。結論（兩頁都沒有最後更新日期、metadata 沒有日期欄位）仍然成立，但證據要照今天讀到的寫，而且正文只能寫「沒有標明最後更新日期」，不能被讀成「整頁沒有任何年份」。",
+          "source": "兩份 DocC 資料檔（2026-09-20 重抓，87,352／6,537 bytes）"
+        },
+        {
+          "where": "研究紀錄 verified_facts 可報名人數那一條",
+          "before": "北美 10 場則是 985 到 999",
+          "after": "北美 10 場則是 986 到 999（並補記歐洲 29 場有 18 場落在 20–39）",
+          "why": "活資料在兩輪之間就變了，正好證明這個欄位不能當常數；同時補上「29 場裡 18 場在 20–39」這個分母，讓 FAQ 第五題的「歐洲場次多半顯示二、三十個」有可覆核的依據。正文與 FAQ 都沒有引用 985／986 這兩個數字，只有「30」繫著查核日，今天仍是 30。",
+          "source": "https://developer.apple.com/events/view/upcoming-events/ （POST eventList，creationTimestamp 2026-09-19T19:44:44Z）"
+        },
+        {
+          "where": "研究紀錄 live_data_warnings",
+          "before": "（無）",
+          "after": "新增「（第二輪重數）」一條，記下今天三次 POST 的位元組數、creationTimestamp、totalRecords、場地分布、四種英文說明的場次數、regionName 分布與報名截止最早的一場。",
+          "why": "活資料的每一次重數都要留下時點，之後任何人要再引用這些數字才知道跟誰比。",
+          "source": "POST /services-public/event/developer/eventList（2026-09-20）"
+        }
+      ],
+      "open_questions": [
+        "圖解第三格的標題仍是「說明文件」，圖片 alt 也寫成「Xcode 27.1 beta、設計檔、說明文件與實體工作坊，對應 Apple 這次公布的四項開發者資源」。公告第四句是 Find out more about preparing your app for iPhone Duo.、連到 /iphone-duo/ 開發者專頁，而那一格的細節「怎麼改版面與工具列」出自技術文件。caption 改成「本文引用的官方頁面」後四格都有來源，本輪判定可以留；若站主要與改過的 summary 完全一致，這一格可以換成「開發者專頁」——diagram-1.svg 還沒產生，現在改不必重畫。",
+        "FAQ 第五題「歐洲場次多半顯示二、三十個」今天成立（歐洲 29 場裡 18 場落在 20–39），但這是每分鐘都在動的活資料。發稿當天照協調者裁決重數時，這一句要跟著看，分布變了就改。",
+        "第三節第一段「實機偵錯支援 iOS 17、tvOS 17、watchOS 10 以上與 visionOS」把原文三個 and later 併成句尾一個「以上」。中文可以讀成三者共用，本輪不改；若站主要更保險，寫成「iOS 17 以上、tvOS 17 以上、watchOS 10 以上與 visionOS」要多 6 字，改完段落 2,994／3,000 仍放得下。",
+        "沒有需要回一手來源裁決的「原稿疑似有誤」。四條 sources 今天全部讀得到正文、位元組數與第一輪逐一相同，61 條 verbatim_quote 全部是單一連續字串、沒有任何拼接，工作坊 39 場與六個場地的骨幹數字也沒有變。"
+      ],
+      "verdict": "ok（第二輪改 14 處：內容包 11 處、研究紀錄 3 處；沒有推翻任何骨幹論述，也沒有需要站主回一手來源裁決的事）"
+    },
+    "coordinator_rulings": [
+      "「公告本身沒有出現任何硬體規格…」改「公告的四句正文沒有出現…」（插圖 alt 有 Star White／Night Sky 顏色名）。",
+      "上海線上講座維持英文名的編輯直譯並標明直譯；不換成簡中官方名。",
+      "發稿當天：以 POST eventList 重數 39 場、可報名人數與最早截止（Cupertino 9/28 場，2026-09-24T19:00Z 截止）；正文只寫「各場截止時間不同」，不寫「現在還報得到」。",
+      "第二輪照常安排（第一輪推翻 5 處事實陳述）。",
+      "第二輪後（2026-09-20）：三個 and later 改寫成各自「以上」；圖解第三格維持「說明文件」（caption 已改成「本文引用的官方頁面」，四格都有來源）；FAQ5 的可報名人數分布列入發稿日重數。"
+    ]
+  }
+}
